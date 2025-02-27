@@ -149,9 +149,13 @@ namespace SimPe.Plugin
 			//Pumckl Contribution
 			//-- 8< --------------------------------------------- 8< -----
 			if (size == 4 * w * h)
+			{
 				Format = ImageLoader.TxtrFormats.Raw32Bit;
+			}
 			else if (size == 3 * w * h)
+			{
 				Format = ImageLoader.TxtrFormats.Raw24Bit;
+			}
 			else if (size == w * h) // could be RAW8, DXT3 or DXT5
 			{
 				// it seems to be difficult to determine the right format
@@ -170,14 +174,20 @@ namespace SimPe.Plugin
 					// on DXT5 if all alpha are the same the bytes 0 or 1 are not zero
 					// and the bytes 2-7 (codebits) ara all zero
 					if (((alpha & 0xffffffffffff0000) == 0) && ((alpha & 0xffff) != 0))
+					{
 						Format = ImageLoader.TxtrFormats.DXT5Format;
+					}
 					else
+					{
 						Format = ImageLoader.TxtrFormats.DXT3Format;
+					}
 				}
 			}
 			else
+			{
 				Format = ImageLoader.TxtrFormats.DXT1Format; // size < w*h
-															 //-- 8< --------------------------------------------- 8< -----
+			}
+			//-- 8< --------------------------------------------- 8< -----
 
 
 			long p1 = reader.BaseStream.Position;
@@ -210,10 +220,15 @@ namespace SimPe.Plugin
 			writer.Write(ZLevel);
 
 			if (datatype == MipMapType.Texture)
+			{
 				data = ImageLoader.Save(Format, img);
+			}
 
 			if (data == null)
+			{
 				data = new byte[0];
+			}
+
 			writer.Write((int)data.Length);
 			writer.Write(data);
 		}

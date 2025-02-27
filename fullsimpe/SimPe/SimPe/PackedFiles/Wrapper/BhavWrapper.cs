@@ -99,14 +99,22 @@ namespace SimPe.PackedFiles.Wrapper
 			foreach (Instruction item in this)
 			{
 				if (item.Target1 == a)
+				{
 					item.Target1 = (ushort)b;
+				}
 				else if (item.Target1 == b)
+				{
 					item.Target1 = (ushort)a;
+				}
 
 				if (item.Target2 == a)
+				{
 					item.Target2 = (ushort)b;
+				}
 				else if (item.Target2 == b)
+				{
 					item.Target2 = (ushort)a;
+				}
 			}
 		}
 
@@ -118,16 +126,30 @@ namespace SimPe.PackedFiles.Wrapper
 		public new void Move(int from, int to)
 		{
 			if (from == to)
+			{
 				return;
+			}
+
 			if (from < 0 || from >= Count)
+			{
 				return;
+			}
+
 			if (to < 0 || to >= Count)
+			{
 				return;
+			}
 
 			while (from < to)
+			{
 				this.SortSwap(from, ++from);
+			}
+
 			while (from > to)
+			{
 				this.SortSwap(from, --from);
+			}
+
 			OnWrapperChanged(items, new EventArgs());
 		}
 
@@ -173,7 +195,9 @@ namespace SimPe.PackedFiles.Wrapper
 					if (items[i].Target1 <= i || items[i].Target1 >= items.Count)
 					{
 						if (items[i].Target2 <= i || items[i].Target2 >= items.Count)
+						{
 							break;
+						}
 
 						Move(items[i].Target2, start);
 						somethingchanged = true;
@@ -187,13 +211,18 @@ namespace SimPe.PackedFiles.Wrapper
 					}
 				}
 				if (start >= items.Count)
+				{
 					break;
+				}
 
 				for (int i = startnext; i < start; i++)
 				{
 					startnext = i + 1;
 					if (items[i].Target2 < start || items[i].Target2 >= items.Count)
+					{
 						continue;
+					}
+
 					Move(items[i].Target2, start);
 					somethingchanged = true;
 					break;
@@ -201,7 +230,9 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 			internalchg = savedstate;
 			if (somethingchanged)
+			{
 				OnWrapperChanged(items, new EventArgs());
+			}
 		}
 
 		#region AbstractWrapper Member
@@ -254,7 +285,9 @@ namespace SimPe.PackedFiles.Wrapper
 			Header.InstructionCount = (ushort)items.Count; // oh please... because header doesn't have a parent (yet!)
 			Header.Serialize(writer);
 			foreach (Instruction i in items)
+			{
 				i.Serialize(writer);
+			}
 		}
 
 		/// <summary>
@@ -268,7 +301,9 @@ namespace SimPe.PackedFiles.Wrapper
 
 			items = new List<Instruction>();
 			while (items.Count < this.Header.InstructionCount)
+			{
 				items.Add(new Instruction(this, reader));
+			}
 		}
 
 		#endregion
@@ -293,7 +328,10 @@ namespace SimPe.PackedFiles.Wrapper
 		protected override string GetResourceName(Data.TypeAlias ta)
 		{
 			if (!SimPe.Helper.FileFormat)
+			{
 				return base.GetResourceName(ta);
+			}
+
 			SimPe.Interfaces.Files.IPackedFile pf = Package.Read(FileDescriptor);
 			byte[] ab = pf.GetUncompressedData(0x42);
 			return (
@@ -475,9 +513,13 @@ namespace SimPe.PackedFiles.Wrapper
 			headerflag = reader.ReadByte(); //0x0047 - header flag
 			treeversion = reader.ReadUInt32(); //0x0048 - Tree version (4 bytes)
 			if (format > 0x8008)
+			{
 				cacheflags = reader.ReadByte();
+			}
 			else
+			{
 				cacheflags = 0;
+			}
 		}
 
 		/// <summary>
@@ -494,7 +536,9 @@ namespace SimPe.PackedFiles.Wrapper
 			writer.Write(headerflag);
 			writer.Write(treeversion);
 			if (format == 0x8009)
+			{
 				writer.Write(cacheflags);
+			}
 		}
 	}
 
@@ -662,6 +706,7 @@ namespace SimPe.PackedFiles.Wrapper
 		private ushort formatSpecificSetAddr(ushort addr)
 		{
 			if (parent.Header.Format < 0x8007)
+			{
 				switch (addr)
 				{
 					case 0x00FD:
@@ -673,6 +718,8 @@ namespace SimPe.PackedFiles.Wrapper
 					default:
 						return addr;
 				}
+			}
+
 			return addr;
 		}
 
@@ -718,6 +765,7 @@ namespace SimPe.PackedFiles.Wrapper
 		private ushort formatSpecificGetAddr(ushort target)
 		{
 			if (parent.Header.Format < 0x8007)
+			{
 				switch (target)
 				{
 					case 0xFFFC:
@@ -729,6 +777,8 @@ namespace SimPe.PackedFiles.Wrapper
 					default:
 						return (ushort)(target & 0x00FF);
 				}
+			}
+
 			return target;
 		}
 
@@ -800,7 +850,9 @@ namespace SimPe.PackedFiles.Wrapper
 				{
 					array[index] = value;
 					if (parent != null)
+					{
 						parent.Parent.OnWrapperChanged(parent, new EventArgs());
+					}
 				}
 			}
 		}

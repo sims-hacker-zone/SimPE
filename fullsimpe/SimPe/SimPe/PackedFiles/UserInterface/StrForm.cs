@@ -102,16 +102,20 @@ namespace SimPe.PackedFiles.UserInterface
 				GFT_FiletableRefresh
 			);
 			if (Helper.WindowsRegistry.UseBigIcons)
+			{
 				this.lvStrItems.Font = new System.Drawing.Font(
 					"Microsoft Sans Serif",
 					11F
 				);
+			}
 		}
 
 		void GFT_FiletableRefresh(object sender, EventArgs e)
 		{
 			if (wrapper.FileDescriptor == null)
+			{
 				return;
+			}
 
 			byte oldLid = lid;
 			int oldIndex = index;
@@ -159,9 +163,12 @@ namespace SimPe.PackedFiles.UserInterface
 		private bool hex16_IsValid(object sender)
 		{
 			if (alHex16.IndexOf(sender) < 0)
+			{
 				throw new Exception(
 					"hex16_IsValid not applicable to control " + sender.ToString()
 				);
+			}
+
 			try
 			{
 				Convert.ToUInt16(((TextBox)sender).Text, 16);
@@ -192,11 +199,16 @@ namespace SimPe.PackedFiles.UserInterface
 			isEmpty[lid] = true;
 			List<StrItem> sa = wrapper[lid];
 			for (int j = count - 1; j >= 0 && isEmpty[lid]; j--)
+			{
 				if (
 					sa[j] != null
 					&& (sa[j].Title.Trim().Length + sa[j].Description.Trim().Length > 0)
 				)
+				{
 					isEmpty[lid] = false;
+				}
+			}
+
 			this.cbLngSelect.Items[lid - 1] =
 				langName
 				+ (
@@ -216,11 +228,15 @@ namespace SimPe.PackedFiles.UserInterface
 
 			bool empty = true;
 			foreach (StrItem s in wrapper)
+			{
 				if (
 					(s.LanguageID != 1)
 					&& (s.Title.Trim().Length + s.Description.Trim().Length > 0)
 				)
+				{
 					empty = false;
+				}
+			}
 
 			this.btnStrPrev.Enabled = (index > 0);
 			this.btnStrNext.Enabled = (index < count - 1);
@@ -261,9 +277,12 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				isEmpty[i] = !wrapper.HasLanguage(i);
 				if (!isEmpty[i] && i > 1)
+				{
 					onlyDefault = false;
+				}
 
 				while (i >= this.cbLngSelect.Items.Count)
+				{
 					this.cbLngSelect.Items.Add(
 						"0x"
 							+ SimPe.Helper.HexString((byte)this.cbLngSelect.Items.Count)
@@ -271,18 +290,24 @@ namespace SimPe.PackedFiles.UserInterface
 							+ pjse.Localization.GetString("unk")
 							+ ")"
 					);
+				}
+
 				this.cbLngSelect.Items[i] += isEmpty[i]
 					? " (" + pjse.Localization.GetString("empty") + ")"
 					: "";
 
 				if (i > 0)
+				{
 					count = Math.Max(count, wrapper.CountOf(i));
+				}
 			}
 
 			this.btnClearAll.Enabled = !onlyDefault;
 			this.cbLngSelect.Items.RemoveAt(0);
 			while (wrapper.CountOf(1) < count)
+			{
 				wrapper.Add(1, "", "");
+			}
 
 			this.lvStrItems.Columns.Clear();
 			this.lvStrItems.Columns.AddRange(
@@ -331,13 +356,19 @@ namespace SimPe.PackedFiles.UserInterface
 		private void setLid(byte l)
 		{
 			if (lid == l)
+			{
 				return;
+			}
+
 			lid = l;
 			langName = pjse.BhavWiz.readStr(pjse.GS.BhavStr.Languages, lid);
 
 			internalchg = true;
 			if (lid > 0)
+			{
 				this.cbLngSelect.SelectedIndex = l - 1;
+			}
+
 			internalchg = false;
 			this.btnLngFirst.Enabled = this.btnLngPrev.Enabled = (
 				this.cbLngSelect.SelectedIndex > 0
@@ -351,7 +382,10 @@ namespace SimPe.PackedFiles.UserInterface
 				pjse.Localization.GetString("Clear") + " " + langName;
 
 			while (wrapper.CountOf(lid) < count)
+			{
 				wrapper.Add(lid, "", "");
+			}
+
 			this.lvStrItems.Columns[1].Text = this.cbLngSelect.SelectedItem.ToString();
 			for (int i = 0; i < count; i++)
 			{
@@ -366,20 +400,31 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			internalchg = true;
 			if (i >= 0)
+			{
 				this.lvStrItems.Items[i].Selected = true;
+			}
 			else if (index >= 0)
+			{
 				this.lvStrItems.Items[index].Selected = false;
+			}
+
 			internalchg = false;
 
 			if (this.lvStrItems.SelectedItems.Count > 0)
 			{
 				if (this.lvStrItems.Focused)
+				{
 					this.lvStrItems.SelectedItems[0].Focused = true;
+				}
+
 				this.lvStrItems.SelectedItems[0].EnsureVisible();
 			}
 
 			if (index == i)
+			{
 				return;
+			}
+
 			index = i;
 			displayStrItem();
 		}
@@ -489,10 +534,14 @@ namespace SimPe.PackedFiles.UserInterface
 					desc = si.Description;
 				}
 				else
+				{
 					title = desc = "";
+				}
 			}
 			else
+			{
 				title = desc = "";
+			}
 
 			try
 			{
@@ -542,7 +591,9 @@ namespace SimPe.PackedFiles.UserInterface
 							s1.Description = s2.Description;
 						}
 						else
+						{
 							s1.Title = s1.Description = "";
+						}
 					}
 				}
 				wrapper.Remove(wrapper[j, count - 1]);
@@ -566,10 +617,15 @@ namespace SimPe.PackedFiles.UserInterface
 			for (byte m = 1; m < 44; m++)
 			{
 				if (m == lid)
+				{
 					continue;
+				}
 
 				while (wrapper[m, index] == null)
+				{
 					wrapper.Add(m, "", "");
+				}
+
 				wrapper[m, index].Title = wrapper[lid, index].Title;
 				wrapper[m, index].Description = wrapper[lid, index].Description;
 			}
@@ -593,12 +649,16 @@ namespace SimPe.PackedFiles.UserInterface
 				true
 			);
 			if (e == null || !(e.Wrapper is StrWrapper))
+			{
 				return;
+			}
 
 			StrWrapper b = (StrWrapper)e.Wrapper;
 			int strnum = (new pjse.StrChooser()).Strnum(b);
 			if (strnum < 0)
+			{
 				return;
+			}
 
 			bool savedstate = internalchg;
 			internalchg = true;
@@ -609,10 +669,14 @@ namespace SimPe.PackedFiles.UserInterface
 				wrapper[1, index].Description = b[1, strnum].Description;
 			}
 			else
+			{
 				for (byte m = 1; m < 44; m++)
 				{
 					while (wrapper[m, index] == null)
+					{
 						wrapper.Add(m, "", "");
+					}
+
 					if (b[m, strnum] == null)
 					{
 						wrapper[m, index].Title = "";
@@ -624,6 +688,7 @@ namespace SimPe.PackedFiles.UserInterface
 						wrapper[m, index].Description = b[m, strnum].Description;
 					}
 				}
+			}
 
 			byte l = lid;
 			int i = index;
@@ -644,7 +709,9 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				StrItem s = wrapper[m, index];
 				if (s != null)
+				{
 					s.Description = s.Title = "";
+				}
 			}
 
 			byte l = lid;
@@ -674,11 +741,16 @@ namespace SimPe.PackedFiles.UserInterface
 			isEmpty[1] = true;
 			List<StrItem> sa = wrapper[(byte)1];
 			for (int j = count - 1; j >= 0 && isEmpty[1]; j--)
+			{
 				if (
 					sa[j] != null
 					&& (sa[j].Title.Trim().Length + sa[j].Description.Trim().Length > 0)
 				)
+				{
 					isEmpty[1] = false;
+				}
+			}
+
 			this.cbLngSelect.Items[0] =
 				pjse.BhavWiz.readStr(pjse.GS.BhavStr.Languages, 1)
 				+ (isEmpty[1] ? " (" + pjse.Localization.GetString("empty") + ")" : "");
@@ -687,7 +759,9 @@ namespace SimPe.PackedFiles.UserInterface
 		private void Append(pjse.FileTable.Entry e)
 		{
 			if (e == null)
+			{
 				return;
+			}
 
 			bool savedstate = internalchg;
 			internalchg = true;
@@ -697,13 +771,23 @@ namespace SimPe.PackedFiles.UserInterface
 			using (StrWrapper b = (StrWrapper)e.Wrapper)
 			{
 				if (wrapper.Format != 0x0000)
+				{
 					for (byte m = 1; m < 44; m++)
+					{
 						while (wrapper[m, count - 1] == null)
+						{
 							wrapper.Add(m, "", "");
+						}
+					}
+				}
+
 				for (int bi = 0; bi < b.Count; bi++)
 				{
 					if (wrapper.Format == 0x0000 && b[bi].LanguageID != 1)
+					{
 						continue;
+					}
+
 					try
 					{
 						wrapper.Add(b[bi]);
@@ -797,7 +881,9 @@ namespace SimPe.PackedFiles.UserInterface
 					setIndex((i >= count) ? count - 1 : i);
 				}
 				else
+				{
 					wrapper.ExportLanguage(lid, fd.FileName);
+				}
 			}
 		}
 
@@ -840,7 +926,10 @@ namespace SimPe.PackedFiles.UserInterface
 			this.btnCommit.Enabled = wrapper.Changed;
 
 			if (internalchg)
+			{
 				return;
+			}
+
 			internalchg = true;
 			this.Text = this.tbFilename.Text = wrapper.FileName;
 			this.tbFormat.Text = "0x" + Helper.HexString(wrapper.Format);
@@ -1300,7 +1389,9 @@ namespace SimPe.PackedFiles.UserInterface
 		private void textBoxBase_TextChanged(object sender, System.EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
 
 			internalchg = true;
 			switch (alTextBoxBase.IndexOf(sender))
@@ -1323,9 +1414,14 @@ namespace SimPe.PackedFiles.UserInterface
 		private void hex16_TextChanged(object sender, System.EventArgs ev)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (!hex16_IsValid(sender))
+			{
 				return;
+			}
 
 			ushort val = Convert.ToUInt16(((TextBox)sender).Text, 16);
 			internalchg = true;
@@ -1344,7 +1440,10 @@ namespace SimPe.PackedFiles.UserInterface
 		)
 		{
 			if (hex16_IsValid(sender))
+			{
 				return;
+			}
+
 			e.Cancel = true;
 			hex16_Validated(sender, null);
 		}
@@ -1369,9 +1468,14 @@ namespace SimPe.PackedFiles.UserInterface
 		private void cbLngSelect_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (this.cbLngSelect.SelectedIndex >= 0)
+			{
 				setLid((byte)(this.cbLngSelect.SelectedIndex + 1));
+			}
 		}
 
 		private void lvStrItems_ItemActivate(object sender, System.EventArgs e)
@@ -1382,7 +1486,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void lvStrItems_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			setIndex(
 				(this.lvStrItems.SelectedIndices.Count > 0)
 					? this.lvStrItems.SelectedIndices[0]
@@ -1393,7 +1500,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void ckb_CheckedChanged(object sender, System.EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			pjse.Settings.PJSE.StrShowDefault = this.ckbDefault.Checked;
 			pjse.Settings.PJSE.StrShowDesc = this.ckbDescription.Checked;
 
@@ -1409,7 +1519,10 @@ namespace SimPe.PackedFiles.UserInterface
 				: 0;
 
 			if (this.ckbDefault.Checked)
+			{
 				w1 /= 2;
+			}
+
 			w1 -= w2;
 
 			this.chLangDesc.Width = this.chDefault.Width = this.chDefaultDesc.Width = 0;
@@ -1426,14 +1539,18 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			int index = alBigBtn.IndexOf(sender);
 			if (index < 0)
+			{
 				throw new Exception(
 					"btnBigString_Click not applicable to control " + sender.ToString()
 				);
+			}
 
 			RichTextBox[] rtb = { rtbTitle, rtbDescription };
 			string result = (new pjse.StrBig()).doBig(rtb[index].Text);
 			if (result != null)
+			{
 				rtb[index].Text = result;
+			}
 		}
 
 		private void btnStrPrev_Click(object sender, System.EventArgs e)

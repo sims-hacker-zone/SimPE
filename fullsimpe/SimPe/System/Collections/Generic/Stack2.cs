@@ -44,7 +44,10 @@ namespace System.Collections.Generic
 		public Stack2(int capacity)
 		{
 			if (capacity < 0)
+			{
 				throw new ArgumentOutOfRangeException(nameof(capacity), capacity, "SR.ArgumentOutOfRange_NeedNonNegNum");
+			}
+
 			_array = new T[capacity];
 		}
 
@@ -53,7 +56,10 @@ namespace System.Collections.Generic
 		public Stack2(IEnumerable<T> collection)
 		{
 			if (collection == null)
+			{
 				throw new ArgumentNullException(nameof(collection));
+			}
+
 			_array = EnumerableHelpers2.ToArray(collection, out _size);
 		}
 
@@ -255,7 +261,9 @@ namespace System.Collections.Generic
 		public T[] ToArray()
 		{
 			if (_size == 0)
+			{
 				return Array.Empty<T>();
+			}
 
 			T[] objArray = new T[_size];
 			int i = 0;
@@ -298,13 +306,19 @@ namespace System.Collections.Generic
 			{
 				bool retval;
 				if (_version != _stack._version)
+				{
 					throw new InvalidOperationException("SR.InvalidOperation_EnumFailedVersion");
+				}
+
 				if (_index == -2)
 				{  // First call to enumerator.
 					_index = _stack._size - 1;
 					retval = (_index >= 0);
 					if (retval)
+					{
 						_currentElement = _stack._array[_index];
+					}
+
 					return retval;
 				}
 				if (_index == -1)
@@ -314,9 +328,14 @@ namespace System.Collections.Generic
 
 				retval = (--_index >= 0);
 				if (retval)
+				{
 					_currentElement = _stack._array[_index];
+				}
 				else
+				{
 					_currentElement = default(T);
+				}
+
 				return retval;
 			}
 
@@ -325,7 +344,10 @@ namespace System.Collections.Generic
 				get
 				{
 					if (_index < 0)
+					{
 						ThrowEnumerationNotStartedOrEnded();
+					}
+
 					return _currentElement;
 				}
 			}
@@ -341,7 +363,10 @@ namespace System.Collections.Generic
 			void IEnumerator.Reset()
 			{
 				if (_version != _stack._version)
+				{
 					throw new InvalidOperationException("SR.InvalidOperation_EnumFailedVersion");
+				}
+
 				_index = -2;
 				_currentElement = default(T);
 			}

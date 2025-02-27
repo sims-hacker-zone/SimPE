@@ -61,7 +61,10 @@ namespace SimPe.Cache
 			get
 			{
 				if (fi == null)
+				{
 					LoadObjects();
+				}
+
 				return fi;
 			}
 		}

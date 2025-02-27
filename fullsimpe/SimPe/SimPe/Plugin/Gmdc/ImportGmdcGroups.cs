@@ -66,7 +66,9 @@ namespace SimPe.Plugin.Gmdc
 			GmdcImporterAction[] actions = (GmdcImporterAction[])
 				System.Enum.GetValues(typeof(GmdcImporterAction));
 			foreach (GmdcImporterAction a in actions)
+			{
 				this.cbaction.Items.Add(a);
+			}
 
 			//cbboneaction.Items.Add(GmdcImporterAction.Nothing);
 			cbboneaction.Items.Add(GmdcImporterAction.Add);
@@ -794,11 +796,17 @@ namespace SimPe.Plugin.Gmdc
 				this.cbBMesh.Checked = a.UseInBoundingMesh;
 
 				if (a.Group.Opacity >= 0x10)
+				{
 					cbopacity.SelectedIndex = 0;
+				}
 				else if (a.Group.Opacity > 0)
+				{
 					cbopacity.SelectedIndex = 1;
+				}
 				else
+				{
 					cbopacity.SelectedIndex = 2;
+				}
 			}
 			finally
 			{
@@ -853,16 +861,23 @@ namespace SimPe.Plugin.Gmdc
 			{
 				object o = lv.SelectedItems[0].Tag;
 				if (o.GetType() == typeof(ImportedGroup))
+				{
 					SelectGroup();
+				}
 				else
+				{
 					SelectBone();
+				}
 			}
 		}
 
 		public string BuildBoneName(int i)
 		{
 			if (i >= 0 && i < gmdc.Joints.Count)
+			{
 				return i.ToString() + ": " + gmdc.Joints[i].Name;
+			}
+
 			return "Bone " + i.ToString();
 		}
 
@@ -889,18 +904,28 @@ namespace SimPe.Plugin.Gmdc
 			ImportGmdcGroupsForm f = new ImportGmdcGroupsForm();
 			f.gmdc = gmdc;
 			foreach (GmdcGroup g in gmdc.Groups)
+			{
 				f.cbnames.Items.Add(g.Name);
+			}
+
 			for (int i = 0; i < gmdc.Joints.Length; i++)
+			{
 				f.cbbones.Items.Add(f.BuildBoneName(i));
+			}
 
 			bool toobig = false;
 			f.cbBMesh.Enabled = (joints.Count == 0);
 			foreach (ImportedGroup a in actions)
 			{
 				if (a.Group.Name.ToLower().Trim().IndexOf("shadow") > -1)
+				{
 					a.Group.Opacity = (uint)MeshOpacity.Shadow;
+				}
+
 				if (a.Group.Opacity > 0x10 && f.cbBMesh.Enabled)
+				{
 					a.UseInBoundingMesh = true;
+				}
 
 				if (a.Target.Name == "")
 				{
@@ -914,9 +939,14 @@ namespace SimPe.Plugin.Gmdc
 				lvi.SubItems.Add(a.FaceCount.ToString());
 				lvi.SubItems.Add(a.Group.UsedJoints.Count.ToString());
 				if (a.UseInBoundingMesh)
+				{
 					lvi.SubItems.Add("yes");
+				}
 				else
+				{
 					lvi.SubItems.Add("no");
+				}
+
 				lvi.Tag = a;
 				lvi.ForeColor = a.MarkColor;
 
@@ -924,12 +954,17 @@ namespace SimPe.Plugin.Gmdc
 					a.VertexCount
 					> SimPe.Plugin.Gmdc.AbstractGmdcImporter.CRITICAL_VERTEX_AMOUNT
 				)
+				{
 					toobig = true;
+				}
+
 				if (
 					a.FaceCount
 					> SimPe.Plugin.Gmdc.AbstractGmdcImporter.CRITICAL_FACE_AMOUNT
 				)
+				{
 					toobig = true;
+				}
 
 				f.lv.Items.Add(lvi);
 			}
@@ -957,7 +992,9 @@ namespace SimPe.Plugin.Gmdc
 				a.Action = GmdcImporterAction.Update;
 				a.FindBestFitJoint(gmdc);
 				if (ct < gmdc.Joints.Length && a.TargetIndex == -1)
+				{
 					a.TargetIndex = ct;
+				}
 
 				ct++;
 
@@ -973,7 +1010,9 @@ namespace SimPe.Plugin.Gmdc
 				f.lv.Items.Add(lvi);
 			}
 			if (f.lv.Items.Count > 0)
+			{
 				f.lv.Items[0].Selected = true;
+			}
 
 			f.ok = false;
 			f.ShowDialog();
@@ -981,7 +1020,10 @@ namespace SimPe.Plugin.Gmdc
 			//Builk the Result
 			DialogResult dr = DialogResult.Cancel;
 			if (f.ok)
+			{
 				dr = DialogResult.OK;
+			}
+
 			ImportOptions io = new ImportOptions(
 				dr,
 				f.cbcleangrp.Checked,
@@ -994,11 +1036,17 @@ namespace SimPe.Plugin.Gmdc
 		void SetMostLikeName(ImportedGroup a)
 		{
 			if (a.Target.Name == null)
+			{
 				a.Target.Name = "";
+			}
+
 			if (a.Target.Name.Trim() != "")
 			{
 				if (a.Target.Index >= 0 && a.Target.Index < cbnames.Items.Count)
+				{
 					cbnames.SelectedIndex = a.Target.Index;
+				}
+
 				return;
 			}
 
@@ -1028,7 +1076,10 @@ namespace SimPe.Plugin.Gmdc
 						{
 							object o = lv.SelectedItems[i].Tag;
 							if (o.GetType() != typeof(ImportedGroup))
+							{
 								continue;
+							}
+
 							ImportedGroup a = (ImportedGroup)lv.SelectedItems[i].Tag;
 
 							a.Action = (GmdcImporterAction)
@@ -1086,7 +1137,10 @@ namespace SimPe.Plugin.Gmdc
 		private void tbname_TextChanged(object sender, System.EventArgs e)
 		{
 			if (this.Tag != null)
+			{
 				return;
+			}
+
 			if (lv.SelectedItems.Count > 0)
 			{
 				try
@@ -1095,7 +1149,10 @@ namespace SimPe.Plugin.Gmdc
 					{
 						object o = lv.SelectedItems[i].Tag;
 						if (o.GetType() != typeof(ImportedGroup))
+						{
 							continue;
+						}
+
 						GmdcGroupImporterAction a = (GmdcGroupImporterAction)
 							lv.SelectedItems[i].Tag;
 						a.Target.Name = tbname.Text;
@@ -1113,7 +1170,10 @@ namespace SimPe.Plugin.Gmdc
 		private void cbnames_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			if (this.Tag != null)
+			{
 				return;
+			}
+
 			if (lv.SelectedItems.Count > 0)
 			{
 				try
@@ -1122,7 +1182,10 @@ namespace SimPe.Plugin.Gmdc
 					{
 						object o = lv.SelectedItems[i].Tag;
 						if (o.GetType() != typeof(ImportedGroup))
+						{
 							continue;
+						}
+
 						GmdcGroupImporterAction a = (GmdcGroupImporterAction)
 							lv.SelectedItems[i].Tag;
 						a.Target.Name = cbnames.Text;
@@ -1149,7 +1212,10 @@ namespace SimPe.Plugin.Gmdc
 		private void tbscale_TextChanged(object sender, System.EventArgs e)
 		{
 			if (this.Tag != null)
+			{
 				return;
+			}
+
 			if (lv.SelectedItems.Count > 0)
 			{
 				try
@@ -1158,7 +1224,10 @@ namespace SimPe.Plugin.Gmdc
 					{
 						object o = lv.SelectedItems[i].Tag;
 						if (o.GetType() != typeof(ImportedGroup))
+						{
 							continue;
+						}
+
 						GmdcGroupImporterAction a = (GmdcGroupImporterAction)
 							lv.SelectedItems[i].Tag;
 						a.Scale = Convert.ToSingle(tbscale.Text);
@@ -1177,7 +1246,10 @@ namespace SimPe.Plugin.Gmdc
 		private void textBox1_TextChanged(object sender, System.EventArgs e)
 		{
 			if (this.Tag != null)
+			{
 				return;
+			}
+
 			if (lv.SelectedItems.Count > 0)
 			{
 				try
@@ -1186,15 +1258,24 @@ namespace SimPe.Plugin.Gmdc
 					{
 						object o = lv.SelectedItems[i].Tag;
 						if (o.GetType() != typeof(ImportedGroup))
+						{
 							continue;
+						}
+
 						ImportedGroup a = (ImportedGroup)lv.SelectedItems[i].Tag;
 
 						if (cbopacity.SelectedIndex == 0)
+						{
 							a.Group.Opacity = (uint)MeshOpacity.Opaque;
+						}
 						else if (cbopacity.SelectedIndex == 1)
+						{
 							a.Group.Opacity = (uint)MeshOpacity.Shadow;
+						}
 						else
+						{
 							a.Group.Opacity = (uint)MeshOpacity.Unknown;
+						}
 
 						//lv.SelectedItems[i].SubItems[2].Text = a.TargetName;
 					}
@@ -1222,7 +1303,9 @@ namespace SimPe.Plugin.Gmdc
 						{
 							object o = lv.SelectedItems[i].Tag;
 							if (o.GetType() != typeof(ImportedBone))
+							{
 								continue;
+							}
 
 							ImportedBone a = (ImportedBone)o;
 
@@ -1270,7 +1353,10 @@ namespace SimPe.Plugin.Gmdc
 		private void cbbones_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			if (this.Tag != null)
+			{
 				return;
+			}
+
 			if (lv.SelectedItems.Count > 0)
 			{
 				try
@@ -1279,7 +1365,9 @@ namespace SimPe.Plugin.Gmdc
 					{
 						object o = lv.SelectedItems[i].Tag;
 						if (o.GetType() != typeof(ImportedBone))
+						{
 							continue;
+						}
 
 						ImportedBone a = (ImportedBone)o;
 						a.TargetIndex = cbbones.SelectedIndex;
@@ -1301,7 +1389,10 @@ namespace SimPe.Plugin.Gmdc
 		private void cbBMesh_CheckedChanged(object sender, System.EventArgs e)
 		{
 			if (this.Tag != null)
+			{
 				return;
+			}
+
 			if (lv.SelectedItems.Count > 0)
 			{
 				try
@@ -1310,15 +1401,22 @@ namespace SimPe.Plugin.Gmdc
 					{
 						object o = lv.SelectedItems[i].Tag;
 						if (o.GetType() != typeof(ImportedGroup))
+						{
 							continue;
+						}
+
 						ImportedGroup a = (ImportedGroup)lv.SelectedItems[i].Tag;
 
 						a.UseInBoundingMesh = this.cbBMesh.Checked;
 
 						if (a.UseInBoundingMesh)
+						{
 							lv.SelectedItems[i].SubItems[6].Text = "yes";
+						}
 						else
+						{
 							lv.SelectedItems[i].SubItems[6].Text = "no";
+						}
 					}
 				}
 				catch { }

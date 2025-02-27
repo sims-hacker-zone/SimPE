@@ -43,7 +43,9 @@ namespace SimPe.Windows.Forms
 			if (sc == ResourceViewManager.SortColumn.Name)
 			{
 				if (Helper.WindowsRegistry.AsynchronSort)
+				{
 					SimPe.Wait.SubStart(names.Count);
+				}
 
 				SimPe.Wait.Message = SimPe.Localization.GetString(
 					"Loading embedded resource names..."
@@ -99,7 +101,10 @@ namespace SimPe.Windows.Forms
 				if (i > 0)
 				{
 					if (first)
+					{
 						lv.EnsureVisible(i);
+					}
+
 					lv.SelectedIndices.Add(i);
 					first = false;
 				}
@@ -113,22 +118,39 @@ namespace SimPe.Windows.Forms
 				ResourceViewManager.SortColumn.Offset
 			);
 			if (lv.Columns[e.Column] == clTName)
+			{
 				tmp = ResourceViewManager.SortColumn.Name;
+			}
 			else if (lv.Columns[e.Column] == clType)
+			{
 				tmp = ResourceViewManager.SortColumn.Extension;
+			}
 			else if (lv.Columns[e.Column] == clGroup)
+			{
 				tmp = ResourceViewManager.SortColumn.Group;
+			}
 			else if (lv.Columns[e.Column] == clInstHi)
+			{
 				tmp = ResourceViewManager.SortColumn.InstanceHi;
+			}
 			else if (lv.Columns[e.Column] == clInst)
+			{
 				tmp = ResourceViewManager.SortColumn.InstanceLo;
+			}
 			else if (lv.Columns[e.Column] == clSize)
+			{
 				tmp = ResourceViewManager.SortColumn.Size;
+			}
 			else if (lv.Columns[e.Column] == clOffset)
+			{
 				tmp = ResourceViewManager.SortColumn.Offset;
+			}
 
 			if (tmp == SortedColumn)
+			{
 				asc = !asc;
+			}
+
 			SortedColumn = tmp;
 		}
 	}

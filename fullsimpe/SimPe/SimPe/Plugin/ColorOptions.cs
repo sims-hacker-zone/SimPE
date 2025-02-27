@@ -68,6 +68,7 @@ namespace SimPe.Plugin
 		)
 		{
 			foreach (string k in slavemap.Keys)
+			{
 				foreach (string slave in (ArrayList)slavemap[k])
 				{
 					string newname = txmtname.Replace("_" + k + "_", "_" + slave + "_");
@@ -86,6 +87,7 @@ namespace SimPe.Plugin
 						}
 					}
 				}
+			}
 		}
 
 		/// <summary>
@@ -112,10 +114,15 @@ namespace SimPe.Plugin
 
 				//load Slave TXMTs
 				if (slavemap != null)
+				{
 					LoadSlaveTxmt(newpkg, mmat, name, unique, slavemap);
+				}
 
 				if (name.ToLower().EndsWith("_txmt"))
+				{
 					name = name.Substring(0, name.Length - 5);
+				}
+
 				txmt.FileName = FixObject.GetUniqueTxmtName(
 					name,
 					unique,
@@ -140,8 +147,10 @@ namespace SimPe.Plugin
 				{
 					txtr = mmat.GetTxtr(txmt);
 					if (txtr != null)
+					{
 						txtr.FileDescriptor = (Interfaces.Files.IPackedFileDescriptor)
 							txtr.FileDescriptor.Clone();
+					}
 				}
 
 				//Get/Update Texture
@@ -151,17 +160,21 @@ namespace SimPe.Plugin
 
 					md.FileDescription = Hashes.StripHashFromName(txmt.FileName).Trim();
 					if (md.FileDescription.ToLower().EndsWith("_txmt"))
+					{
 						md.FileDescription = md.FileDescription.Substring(
 							0,
 							md.FileDescription.Length - 5
 						);
+					}
 				}
 
 				if (txtr != null)
 				{
 					txtr.SynchronizeUserData();
 					if (newpkg.FindFile(txtr.FileDescriptor) == null)
+					{
 						newpkg.Add(txtr.FileDescriptor);
+					}
 				}
 
 				AddReferencedTxtr(newpkg, txmt, md, unique);
@@ -170,7 +183,9 @@ namespace SimPe.Plugin
 				{
 					txmt.SynchronizeUserData();
 					if (newpkg.FindFile(txmt.FileDescriptor) == null)
+					{
 						newpkg.Add(txmt.FileDescriptor);
+					}
 				}
 			}
 		}
@@ -184,12 +199,16 @@ namespace SimPe.Plugin
 		{
 			string old = Hashes.StripHashFromName(txtr.FileName.Trim().ToLower());
 			if (old.EndsWith("_txtr"))
+			{
 				old = old.Substring(0, old.Length - 5);
+			}
 			//Console.WriteLine("Adding Texture: "+old);
 
 			string name = txtr.FileName.Trim();
 			if (name.ToLower().EndsWith("_txtr"))
+			{
 				name = name.Substring(0, name.Length - 5);
+			}
 
 			string tname = RenameForm.ReplaceOldUnique(name, unique, true);
 			txtr.FileName = tname + "_txtr";
@@ -203,18 +222,22 @@ namespace SimPe.Plugin
 			for (int i = 0; i < md.Listing.Length; i++)
 			{
 				if (Hashes.StripHashFromName(md.Listing[i].Trim().ToLower()) == old)
+				{
 					md.Listing[i] =
 						"##0x"
 						+ Helper.HexString(Data.MetaData.CUSTOM_GROUP)
 						+ "!"
 						+ tname;
+				}
 			}
 
 			//update References
 			foreach (string k in txmt.ReferenceChains.Keys)
 			{
 				if (k == "TXTR" || k == "Generic")
+				{
 					continue;
+				}
 				//Console.WriteLine("    Checking Property "+k);
 				string thisname = Hashes.StripHashFromName(
 					md.FindProperty(k).Value.Trim().ToLower()
@@ -250,7 +273,9 @@ namespace SimPe.Plugin
 			string name = AddTxtr(txtr, unique, txmt, md);
 			txtr.SynchronizeUserData();
 			if (newpkg.FindFile(txtr.FileDescriptor) == null)
+			{
 				newpkg.Add(txtr.FileDescriptor);
+			}
 
 			return name;
 		}
@@ -276,7 +301,10 @@ namespace SimPe.Plugin
 					{
 						string name = Hashes.StripHashFromName(mdp.Value).Trim();
 						if (!name.EndsWith("_txtr"))
+						{
 							name += "_txtr";
+						}
+
 						IPackageFile pkg = txmt.Package;
 						SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds =
 							pkg.FindFile(name, Data.MetaData.TXTR);
@@ -305,7 +333,10 @@ namespace SimPe.Plugin
 		)
 		{
 			if (WaitingScreen.Running)
+			{
 				WaitingScreen.UpdateMessage("Loading Slave Subsets");
+			}
+
 			AddSlavesSubsets(map, fullmap);
 			Hashtable slaves = Scenegraph.GetSlaveSubsets(Package);
 
@@ -317,7 +348,9 @@ namespace SimPe.Plugin
 				{
 					string family = System.Guid.NewGuid().ToString();
 					if (unique == null)
+					{
 						unique = family;
+					}
 
 					foreach (SimPe.Plugin.MmatWrapper mmat in list)
 					{
@@ -361,12 +394,19 @@ namespace SimPe.Plugin
 					foreach (SimPe.Plugin.MmatWrapper cur in list)
 					{
 						if (ret == null)
+						{
 							ret = list;
+						}
+
 						if (cur.TXTR == null)
+						{
 							continue;
+						}
 
 						if (mmat.TXTR.FileName == cur.TXTR.FileName)
+						{
 							return list;
+						}
 					}
 				}
 			}
@@ -388,6 +428,7 @@ namespace SimPe.Plugin
 			foreach (string k in map.Keys)
 			{
 				if (!fullmap.ContainsKey(k))
+				{
 					if (slavemap.ContainsKey(k))
 					{
 						if (map.ContainsKey(k))
@@ -422,17 +463,27 @@ namespace SimPe.Plugin
 							} //foreach list
 						} //if (map.ContainsKey(k))
 					}
+				}
 			}
 
 			Hashtable nmap = new Hashtable();
 			foreach (string k in newmap.Keys)
+			{
 				if (!map.ContainsKey(k))
+				{
 					nmap[k] = newmap[k];
+				}
+			}
 
 			if (newmap.Count > 0)
+			{
 				AddSlavesSubsets(nmap, fullmap);
+			}
+
 			foreach (string k in nmap.Keys)
+			{
 				map[k] = nmap[k];
+			}
 		}
 
 		public delegate void CreateSelectionCallback(
@@ -462,7 +513,9 @@ namespace SimPe.Plugin
 				//Check if the User can select a Subset
 				bool userselect = false;
 				if (map.Count > 1)
+				{
 					userselect = true;
+				}
 				else
 				{
 					if (map.Count == 1)
@@ -471,14 +524,18 @@ namespace SimPe.Plugin
 						{
 							Hashtable ht = (Hashtable)map[s];
 							if (ht.Count > 1)
+							{
 								userselect = true;
+							}
 						}
 					}
 				}
 
 				//let the user Select now
 				if (userselect)
+				{
 					map = SubsetSelectForm.Execute(map, allowedSubsets);
+				}
 
 				ProcessMmatMap(newpkg, map, fullmap);
 			}
@@ -508,7 +565,9 @@ namespace SimPe.Plugin
 				//Check if the User can select a Subset
 				bool userselect = false;
 				if (map.Count > 1)
+				{
 					userselect = true;
+				}
 				else
 				{
 					if (map.Count == 1)
@@ -517,7 +576,9 @@ namespace SimPe.Plugin
 						{
 							Hashtable ht = (Hashtable)map[s];
 							if (ht.Count > 1)
+							{
 								userselect = true;
+							}
 						}
 					}
 				}

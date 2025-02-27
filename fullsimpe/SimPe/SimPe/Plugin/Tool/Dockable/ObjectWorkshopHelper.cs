@@ -150,7 +150,9 @@ namespace SimPe.Plugin.Tool.Dockable
 					SimPe.Interfaces.Wrapper.IGroupCacheItem gci =
 						SimPe.FileTable.GroupCache.GetItem(package.FileName);
 					if (gci != null)
+					{
 						localgroup = gci.LocalGroup;
+					}
 				}
 			}
 			else
@@ -269,7 +271,9 @@ namespace SimPe.Plugin.Tool.Dockable
 								mci.ParentCacheContainer.FileName
 							)
 						)
+						{
 							fii.AddIndexFromPackage(mci.ParentCacheContainer.FileName);
+						}
 
 						localgroup = gci.LocalGroup;
 					}
@@ -321,7 +325,9 @@ namespace SimPe.Plugin.Tool.Dockable
 
 			string name = cres.ToLower().Trim();
 			if (!name.EndsWith("_cres"))
+			{
 				name += "_cres";
+			}
 
 			str.FileName = "Model - Names";
 			str.Add(
@@ -371,15 +377,22 @@ namespace SimPe.Plugin.Tool.Dockable
 		{
 			SimPe.Packages.GeneratableFile package = null;
 			if (ppkg != null)
+			{
 				package = (SimPe.Packages.GeneratableFile)ppkg.Clone();
+			}
+
 			if (ppkg == null || pkgcontainsonlybase)
 			{
 				if (!pkgcontainsonlybase)
+				{
 					package = SimPe.Packages.GeneratableFile.CreateNew();
+				}
 				//Get the Base Object Data from the Objects.package File
 				string[] modelname = new string[0];
 				if (br == CloneSettings.BaseResourceType.Objd)
+				{
 					modelname = BaseClone(localgroup, package, pkgcontainsonlybase);
+				}
 				else
 				{
 					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] fii =
@@ -463,7 +476,10 @@ namespace SimPe.Plugin.Tool.Dockable
 					{
 						string[] modelnames = modelname;
 						if (!((OWCloneSettings)settings).RemoveUselessResource)
+						{
 							modelnames = null;
+						}
+
 						objclone.RemoveSubsetReferences(
 							Scenegraph.GetParentSubsets(package),
 							modelnames
@@ -485,7 +501,10 @@ namespace SimPe.Plugin.Tool.Dockable
 			str.ProcessData(pfd, pkg);
 			SimPe.PackedFiles.Wrapper.StrItemList items = str.LanguageItems(1);
 			for (int i = 1; i < items.Length; i++)
+			{
 				list.Add(items[i].Title);
+			}
+
 			str.Dispose();
 		}
 
@@ -514,7 +533,9 @@ namespace SimPe.Plugin.Tool.Dockable
 						(pfd.Instance == 0x85)
 						&& (pfd.Type == Data.MetaData.STRING_FILE)
 					)
+					{
 						LoadModelName(list, pfd, package);
+					}
 				}
 			}
 			else
@@ -538,7 +559,9 @@ namespace SimPe.Plugin.Tool.Dockable
 					npfd.Type = item.FileDescriptor.Type;
 
 					if (package.FindFile(npfd) == null)
+					{
 						package.Add(npfd);
+					}
 
 					if (
 						(npfd.Instance == 0x85)
@@ -584,7 +607,9 @@ namespace SimPe.Plugin.Tool.Dockable
 						MessageBoxButtons.YesNo
 					) == DialogResult.No
 				)
+				{
 					return package;
+				}
 			}
 
 			SaveFileDialog sfd = new SaveFileDialog();
@@ -596,7 +621,9 @@ namespace SimPe.Plugin.Tool.Dockable
 				}
 			);
 			if (sfd.ShowDialog() != DialogResult.OK)
+			{
 				return package;
+			}
 
 			//create a Cloned Object to get all needed Files for the Process
 			WaitingScreen.Wait();
@@ -605,6 +632,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				WaitingScreen.UpdateMessage("Collecting needed Files");
 
 				if ((package == null) && (pfd != null))
+				{
 					package = RecolorClone(
 						br,
 						package,
@@ -613,6 +641,7 @@ namespace SimPe.Plugin.Tool.Dockable
 						settings,
 						false
 					);
+				}
 			}
 			finally
 			{
@@ -653,7 +682,9 @@ namespace SimPe.Plugin.Tool.Dockable
 						MessageBoxButtons.YesNo
 					) == DialogResult.No
 				)
+				{
 					return package;
+				}
 			}
 
 			SaveFileDialog sfd = new SaveFileDialog();
@@ -665,7 +696,9 @@ namespace SimPe.Plugin.Tool.Dockable
 				}
 			);
 			if (sfd.ShowDialog() != DialogResult.OK)
+			{
 				return package;
+			}
 
 			//create a Cloned Object to get all needed Files for the Process
 			WaitingScreen.Wait();
@@ -673,6 +706,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			{
 				WaitingScreen.UpdateMessage("Collecting needed Files");
 				if ((package == null) && (pfd != null))
+				{
 					package = RecolorClone(
 						br,
 						package,
@@ -681,6 +715,7 @@ namespace SimPe.Plugin.Tool.Dockable
 						settings,
 						pkgcontainsonlybase
 					);
+				}
 			}
 			finally
 			{
@@ -736,8 +771,13 @@ namespace SimPe.Plugin.Tool.Dockable
 				.BaseResourceType
 				.Objd;
 			if (pfd != null)
+			{
 				if (pfd.Type != Data.MetaData.OBJD_FILE)
+				{
 					br = SimPe.Plugin.CloneSettings.BaseResourceType.Xml;
+				}
+			}
+
 			if (settings is OWCloneSettings)
 			{
 				OWCloneSettings cs = (OWCloneSettings)settings;
@@ -762,7 +802,9 @@ namespace SimPe.Plugin.Tool.Dockable
 				{
 					map = fo.GetNameMap(true);
 					if (map == null)
+					{
 						return package;
+					}
 
 					SaveFileDialog sfd = new SaveFileDialog();
 					sfd.Filter = ExtensionProvider.BuildFilterString(
@@ -784,7 +826,10 @@ namespace SimPe.Plugin.Tool.Dockable
 								cs.RemoveUselessResource
 								&& br != SimPe.Plugin.CloneSettings.BaseResourceType.Xml
 							)
+							{
 								fo.CleanUp();
+							}
+
 							package.Save();
 						}
 						finally
@@ -805,7 +850,9 @@ namespace SimPe.Plugin.Tool.Dockable
 					{
 						fo.FixGroup();
 						if (cs.FixResources)
+						{
 							package.Save();
+						}
 					}
 					finally
 					{
@@ -814,7 +861,9 @@ namespace SimPe.Plugin.Tool.Dockable
 				}
 
 				if (cs.ChangeObjectDescription)
+				{
 					UpdateDescription(cs, package);
+				}
 
 				//select a resource to display in SimPe
 				pfd = null;
@@ -823,7 +872,9 @@ namespace SimPe.Plugin.Tool.Dockable
 					SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds =
 						package.FindFiles(Data.MetaData.OBJD_FILE);
 					if (pfds.Length > 0)
+					{
 						pfd = pfds[0];
+					}
 				}
 			}
 			else
@@ -844,7 +895,9 @@ namespace SimPe.Plugin.Tool.Dockable
 					SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds =
 						package.FindFiles(Data.MetaData.TXTR);
 					if (pfds.Length > 0)
+					{
 						pfd = pfds[0];
+					}
 				}
 			}
 
@@ -852,10 +905,14 @@ namespace SimPe.Plugin.Tool.Dockable
 			if (settings.OpenWithRemoteControl)
 			{
 				if (package != null)
+				{
 					if (SimPe.RemoteControl.OpenMemoryPackage(package) && pfd != null)
+					{
 						settings.SetRemoteResult(
 							SimPe.RemoteControl.OpenPackedFile(pfd, package)
 						);
+					}
+				}
 			}
 
 			return package;
@@ -931,9 +988,11 @@ namespace SimPe.Plugin.Tool.Dockable
 		{
 			str.ClearNonDefault();
 			while (str.Items.Length < 2)
+			{
 				str.Add(
 					new SimPe.PackedFiles.Wrapper.StrToken(str.Items.Length, 1, "", "")
 				);
+			}
 
 			str.Items[0].Title = cs.Title;
 			str.Items[1].Title = cs.Description;
@@ -997,7 +1056,9 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 
 			if (package.FileName != null)
+			{
 				package.Save();
+			}
 		}
 		#endregion
 	}

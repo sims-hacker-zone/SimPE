@@ -176,7 +176,9 @@ namespace SimPe.Plugin
 								&& lastSpamMemory.Guid == simMemory.Guid
 								&& lastSpamMemory.SimInstance == simMemory.SimInstance
 							)
+							{
 								memoryToRemove.Add(simMemory);
+							}
 
 							lastSpamMemory = simMemory;
 						}
@@ -193,20 +195,26 @@ namespace SimPe.Plugin
 					fixedCount += memoryToFix.Count;
 
 					if (simDesc != null) // SDesc always returns null so this won't be used as it always throwa an ERROR
+					{
 						trace.AppendFormat(
 							"{0} {1}: {2} \r\n",
 							simDesc.SimName,
 							simDesc.SimFamilyName,
 							memoryToRemove.Count + memoryToFix.Count
 						);
+					}
 
 					foreach (NgbhItem item in memoryToFix)
+					{
 						trace.AppendFormat("[FIX]- {0}\r\n", item.ToString());
+					}
 
 					NgbhItem[] itemsToRemove = (NgbhItem[])
 						memoryToRemove.ToArray(typeof(NgbhItem));
 					foreach (NgbhItem item in itemsToRemove)
+					{
 						trace.AppendFormat("[DEL]- {0}\r\n", item.ToString());
+					}
 
 					trace.Append("\t\r\n\r\n");
 					slot.ItemsB.Remove(itemsToRemove);
@@ -228,11 +236,17 @@ namespace SimPe.Plugin
 		static bool ArrayEquals(ushort[] a, ushort[] b)
 		{
 			if (a.Length != b.Length)
+			{
 				return false;
+			}
 
 			for (int i = 0; i < a.Length; i++)
+			{
 				if (a[i] != b[i])
+				{
 					return false;
+				}
+			}
 
 			return true;
 		}
@@ -248,7 +262,9 @@ namespace SimPe.Plugin
 			{
 				// skip my own memories?
 				if (ownerID == slot.SlotID)
+				{
 					continue;
+				}
 
 				SDesc simDesc =
 					FileTable.ProviderRegistry.SimDescriptionProvider.SimInstance[
@@ -288,13 +304,17 @@ namespace SimPe.Plugin
 						memoryToRemove.Count
 					);
 					foreach (NgbhItem item in memoryToRemove)
+					{
 						trace.AppendFormat("\t- {0}\r\n", item.ToString());
+					}
+
 					trace.Append("\t\r\n\r\n");
 					slot.ItemsB.Remove(memoryToRemove);
 				}
 			}
 
 			if (deletedCount > 0)
+			{
 				Message.Show(
 					String.Format(
 						"Deleted {0} memories from the sim pool",
@@ -304,6 +324,7 @@ namespace SimPe.Plugin
 						+ Helper.lbr
 						+ trace.ToString()
 				);
+			}
 		}
 	}
 
@@ -378,7 +399,10 @@ namespace SimPe.Plugin
 			public static ushort GetSubjectType(uint itemGuid)
 			{
 				if (memorySubjectType.ContainsKey(itemGuid))
+				{
 					return (ushort)memorySubjectType[itemGuid];
+				}
+
 				return 0;
 			}
 

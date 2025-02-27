@@ -139,7 +139,9 @@ namespace SimPe.Plugin
 		private void lv_SelectedSlotChanged(object sender, System.EventArgs e)
 		{
 			if (SelectedSlotChanged != null)
+			{
 				SelectedSlotChanged(this, e);
+			}
 		}
 
 		public NgbhSlot SelectedSlot => lv.SelectedSlot;
@@ -149,7 +151,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (cb.SelectedIndex < 0)
+				{
 					return Data.NeighborhoodSlots.Lots;
+				}
+
 				return (Data.NeighborhoodSlots)cb.SelectedValue;
 			}
 		}

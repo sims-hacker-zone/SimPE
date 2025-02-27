@@ -110,7 +110,10 @@ namespace pjse.BhavOperandWizards.Wiz0x0020
 		private void setGUID(bool setTB, UInt32 guid)
 		{
 			if (setTB)
+			{
 				this.tbGUID.Text = "0x" + SimPe.Helper.HexString(guid);
+			}
+
 			this.lbGUIDText.Text = BhavWiz.FormatGUID(true, guid);
 		}
 
@@ -344,7 +347,10 @@ namespace pjse.BhavOperandWizards.Wiz0x0020
 		private void tbGUID_TextChanged(object sender, EventArgs e)
 		{
 			if (!hex32_IsValid(sender))
+			{
 				return;
+			}
+
 			setGUID(false, Convert.ToUInt32(((TextBox)sender).Text, 16));
 		}
 
@@ -354,7 +360,9 @@ namespace pjse.BhavOperandWizards.Wiz0x0020
 		)
 		{
 			if (hex32_IsValid(sender))
+			{
 				return;
+			}
 
 			e.Cancel = true;
 
@@ -399,7 +407,9 @@ namespace pjse.BhavOperandWizards
 		public override void Dispose()
 		{
 			if (myForm != null)
+			{
 				myForm = null;
+			}
 		}
 		#endregion
 	}

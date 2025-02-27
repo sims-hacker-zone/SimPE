@@ -43,10 +43,12 @@ namespace SimPe.Plugin
 			InitializeComponent();
 
 			if (Helper.WindowsRegistry.UseBigIcons)
+			{
 				this.lblist.Font = new System.Drawing.Font(
 					this.lblist.Font.FontFamily,
 					11F
 				);
+			}
 		}
 
 		/// <summary>
@@ -304,12 +306,18 @@ namespace SimPe.Plugin
 			llcommit.Enabled = false;
 			lldelete.Enabled = false;
 			if (lblist.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			llcommit.Enabled = true;
 			lldelete.Enabled = true;
 
 			if (tbgroup.Tag != null)
+			{
 				return;
+			}
+
 			try
 			{
 				tbgroup.Tag = true;
@@ -342,19 +350,27 @@ namespace SimPe.Plugin
 			{
 				Packages.PackedFileDescriptor pfd = null;
 				if (lblist.SelectedIndex >= 0)
+				{
 					pfd = (Packages.PackedFileDescriptor)
 						lblist.Items[lblist.SelectedIndex];
+				}
 				else
+				{
 					pfd = new NmapItem(wrapper);
+				}
 
 				pfd.Group = Convert.ToUInt32(this.tbgroup.Text, 16);
 				pfd.Instance = Convert.ToUInt32(this.tbinstance.Text, 16);
 				pfd.Filename = this.tbname.Text;
 
 				if (lblist.SelectedIndex >= 0)
+				{
 					lblist.Items[lblist.SelectedIndex] = pfd;
+				}
 				else
+				{
 					lblist.Items.Add(pfd);
+				}
 			}
 			catch (Exception ex)
 			{
@@ -383,7 +399,10 @@ namespace SimPe.Plugin
 			llcommit.Enabled = false;
 			lldelete.Enabled = false;
 			if (lblist.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			llcommit.Enabled = true;
 			lldelete.Enabled = true;
 
@@ -393,11 +412,16 @@ namespace SimPe.Plugin
 		private void AutoChange(object sender, System.EventArgs e)
 		{
 			if (tbgroup.Tag != null)
+			{
 				return;
+			}
 
 			tbgroup.Tag = true;
 			if (lblist.SelectedIndex >= 0)
+			{
 				ChangeFile(null, null);
+			}
+
 			tbgroup.Tag = null;
 		}
 

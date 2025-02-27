@@ -157,9 +157,12 @@ namespace SimPe.PackedFiles.UserInterface
 		private bool hex16_IsValid(object sender)
 		{
 			if (alHex16.IndexOf(sender) < 0)
+			{
 				throw new Exception(
 					"hex16_IsValid not applicable to control " + sender.ToString()
 				);
+			}
+
 			try
 			{
 				Convert.ToUInt16(((TextBox)sender).Text, 16);
@@ -174,9 +177,12 @@ namespace SimPe.PackedFiles.UserInterface
 		private bool hex32_IsValid(object sender)
 		{
 			if (alHex32.IndexOf(sender) < 0)
+			{
 				throw new Exception(
 					"hex32_IsValid not applicable to control " + sender.ToString()
 				);
+			}
+
 			try
 			{
 				Convert.ToUInt32(((TextBox)sender).Text, 16);
@@ -255,16 +261,23 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			ListViewItem lv = this.lvTrcnItem.SelectedItems[0];
 			if (lv == null)
+			{
 				return;
+			}
 
 			lv.SubItems[3].Text = "0x" + SimPe.Helper.HexString(currentItem.ConstId);
 			lv.SubItems[4].Text = "0x" + currentItem.Used.ToString("X");
 			if (wrapper.Version > 0x53)
+			{
 				lv.SubItems[5].Text =
 					"0x" + SimPe.Helper.HexString((byte)currentItem.DefValue);
+			}
 			else
+			{
 				lv.SubItems[5].Text =
 					"0x" + SimPe.Helper.HexString(currentItem.DefValue);
+			}
+
 			lv.SubItems[6].Text = "0x" + SimPe.Helper.HexString(currentItem.MinValue);
 			lv.SubItems[7].Text = "0x" + SimPe.Helper.HexString(currentItem.MaxValue);
 		}
@@ -272,7 +285,9 @@ namespace SimPe.PackedFiles.UserInterface
 		private string[] trcnItemToStringArray(int i)
 		{
 			if (i < 0 || i >= wrapper.Count)
+			{
 				return new string[] { "", "", "", "", "", "", "", "" };
+			}
 
 			TrcnItem ti = wrapper[i];
 			string tiValue =
@@ -304,7 +319,9 @@ namespace SimPe.PackedFiles.UserInterface
 		private void updateLists()
 		{
 			if (wrapper != null)
+			{
 				wrapper.CleanUp();
+			}
 
 			index = -1;
 			bconres = (Bcon)(
@@ -314,22 +331,32 @@ namespace SimPe.PackedFiles.UserInterface
 			this.lvTrcnItem.Items.Clear();
 			int nItems = wrapper == null ? 0 : wrapper.Count;
 			for (int i = 0; i < nItems; i++)
+			{
 				this.lvTrcnItem.Items.Add(new ListViewItem(trcnItemToStringArray(i)));
+			}
 		}
 
 		private void setIndex(int i)
 		{
 			internalchg = true;
 			if (i >= 0)
+			{
 				this.lvTrcnItem.Items[i].Selected = true;
+			}
 			else if (index >= 0)
+			{
 				this.lvTrcnItem.Items[index].Selected = false;
+			}
+
 			internalchg = false;
 
 			if (this.lvTrcnItem.SelectedItems.Count > 0)
 			{
 				if (this.lvTrcnItem.Focused)
+				{
 					this.lvTrcnItem.SelectedItems[0].Focused = true;
+				}
+
 				this.lvTrcnItem.SelectedItems[0].EnsureVisible();
 			}
 			else
@@ -347,7 +374,10 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 
 			if (index == i)
+			{
 				return;
+			}
+
 			index = i;
 			displayTrcnItem();
 		}
@@ -470,7 +500,9 @@ namespace SimPe.PackedFiles.UserInterface
 			int i = index;
 			updateLists();
 			if (tbFormat.Text == "0x00000001")
+			{
 				tbFormat.Text = "0x" + SimPe.Helper.HexString(wrapper.Version);
+			}
 
 			internalchg = savedstate;
 
@@ -545,10 +577,14 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbDesc.ReadOnly = (wrapper.Version <= 0x53);
 			this.btnCommit.Enabled = (wrapper.Changed || wrapper.Version == 1);
 			if (sender.Equals(currentItem))
+			{
 				this.btnCancel.Enabled = true;
+			}
 
 			if (internalchg)
+			{
 				return;
+			}
 
 			if (sender.Equals(wrapper))
 			{
@@ -558,7 +594,9 @@ namespace SimPe.PackedFiles.UserInterface
 				internalchg = false;
 			}
 			else if (!sender.Equals(currentItem))
+			{
 				updateLists();
+			}
 		}
 		#endregion
 
@@ -968,14 +1006,20 @@ namespace SimPe.PackedFiles.UserInterface
 			int before = lvTrcnItem.Columns[0].Width + lvTrcnItem.Columns[1].Width;
 			int after = 0;
 			for (int i = 3; i < lvTrcnItem.Columns.Count; i++)
+			{
 				after += lvTrcnItem.Columns[i].Width;
+			}
+
 			lvTrcnItem.Columns[2].Width = lvTrcnItem.Width - (before + after + 36);
 		}
 
 		private void lvTrcnItem_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			setIndex(
 				(this.lvTrcnItem.SelectedIndices.Count > 0)
 					? this.lvTrcnItem.SelectedIndices[0]
@@ -999,7 +1043,10 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			Bcon bcon = (Bcon)wrapper.SiblingResource(Bcon.Bcontype);
 			if (bcon == null)
+			{
 				return;
+			}
+
 			if (bcon.Package != wrapper.Package)
 			{
 				DialogResult dr = MessageBox.Show(
@@ -1008,7 +1055,9 @@ namespace SimPe.PackedFiles.UserInterface
 					MessageBoxButtons.YesNo
 				);
 				if (dr != DialogResult.Yes)
+				{
 					return;
+				}
 			}
 			SimPe.RemoteControl.OpenPackedFile(bcon.FileDescriptor, bcon.Package);
 		}
@@ -1043,7 +1092,9 @@ namespace SimPe.PackedFiles.UserInterface
 		private void tbText_TextChanged(object sender, System.EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
 
 			internalchg = true;
 			switch (alText.IndexOf(sender))
@@ -1062,7 +1113,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void cbUsed_CheckedChanged(object sender, System.EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			currentItem.Used = (uint)(((CheckBox)sender).Checked ? 1 : 0);
 			updateSelectedItem();
 		}
@@ -1070,9 +1124,14 @@ namespace SimPe.PackedFiles.UserInterface
 		private void hex16_TextChanged(object sender, System.EventArgs ev)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (!hex16_IsValid(sender))
+			{
 				return;
+			}
 
 			internalchg = true;
 			ushort val = Convert.ToUInt16(((TextBox)sender).Text, 16);
@@ -1100,7 +1159,10 @@ namespace SimPe.PackedFiles.UserInterface
 		)
 		{
 			if (hex16_IsValid(sender))
+			{
 				return;
+			}
+
 			e.Cancel = true;
 			hex16_Validated(sender, null);
 		}
@@ -1130,9 +1192,14 @@ namespace SimPe.PackedFiles.UserInterface
 		private void hex32_TextChanged(object sender, System.EventArgs ev)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (!hex32_IsValid(sender))
+			{
 				return;
+			}
 
 			internalchg = true;
 			uint val = Convert.ToUInt32(((TextBox)sender).Text, 16);
@@ -1155,7 +1222,10 @@ namespace SimPe.PackedFiles.UserInterface
 		)
 		{
 			if (hex32_IsValid(sender))
+			{
 				return;
+			}
+
 			e.Cancel = true;
 			hex32_Validated(sender, null);
 		}
@@ -1182,15 +1252,23 @@ namespace SimPe.PackedFiles.UserInterface
 		private void tbDesc_TextChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (wrapper.Version > 0x53)
+			{
 				currentItem.ConstDesc = this.tbDesc.Text;
+			}
 		}
 
 		private void btSetAll_Click(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			internalchg = true;
 			uint fid = 0;
 			foreach (TrcnItem fing in wrapper)
@@ -1198,9 +1276,14 @@ namespace SimPe.PackedFiles.UserInterface
 				fid++;
 				fing.Used = 1;
 				if (fing.MaxValue == 0)
+				{
 					fing.MaxValue = 100;
+				}
+
 				if (fing.ConstId == 0)
+				{
 					fing.ConstId = fid;
+				}
 			}
 			internalchg = false;
 			updateLists();

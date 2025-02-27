@@ -73,21 +73,32 @@ namespace SimPe.Plugin.Gmdc
 			GenericImportForm.Execute(this);
 
 			if (meshes.Length == 0)
+			{
 				return false;
+			}
 
 			if (this.ClearGroupsOnImport)
 			{
 				for (int i = Gmdc.Groups.Length - 1; i >= 0; i--)
+				{
 					Gmdc.RemoveGroup(i);
+				}
+
 				foreach (MeshListViewItemExt m in meshes)
+				{
 					m.Group = null;
+				}
 			}
 
 			foreach (BoneListViewItemExt b in bones)
+			{
 				b.AssignVertices();
+			}
 
 			foreach (MeshListViewItemExt m in meshes)
+			{
 				m.BuildGroup();
+			}
 
 			Scene.ClearTags();
 			return true;

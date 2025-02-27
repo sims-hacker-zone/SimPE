@@ -63,10 +63,13 @@ namespace SimPe.Plugin
 			get
 			{
 				if (sdsc == null)
+				{
 					sdsc =
 						FileTable.ProviderRegistry.SimDescriptionProvider.SimInstance[
 							SimInstance
 						] as SimPe.PackedFiles.Wrapper.ExtSDesc;
+				}
+
 				return sdsc;
 			}
 		}
@@ -103,10 +106,14 @@ namespace SimPe.Plugin
 			{
 				s = SimDescription.SimName + " " + SimDescription.SimFamilyName;
 				if (SimDescription.CharacterDescription.NPCType == 41)
+				{
 					s += " [Reporter]";
+				}
 			}
 			else
+			{
 				s = SimPe.Localization.GetString("Unknown");
+			}
 
 			if (Helper.WindowsRegistry.HiddenMode)
 			{

@@ -156,9 +156,13 @@ namespace SimPe.Data
 			get
 			{
 				if (extension == null)
+				{
 					return "simpe";
+				}
 				else if (extension == "")
+				{
 					return "simpe";
+				}
 
 				return extension;
 			}

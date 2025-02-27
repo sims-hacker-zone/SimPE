@@ -172,7 +172,9 @@ namespace SimPe.PackedFiles.Wrapper
 				{
 					string[] regs = new string[0xff];
 					for (int i = 0; i < regs.Length; i++)
+					{
 						regs[i] = "";
+					}
 
 					Lua.Context cx = new SimPe.PackedFiles.Wrapper.Lua.Context();
 					Root.ToSource(sw, cx);
@@ -337,7 +339,10 @@ namespace SimPe.PackedFiles.Wrapper
 		protected override string GetResourceName(SimPe.Data.TypeAlias ta)
 		{
 			if (!this.Processed)
+			{
 				ProcessData(FileDescriptor, Package);
+			}
+
 			return FileName;
 		}
 	}
@@ -421,9 +426,14 @@ namespace SimPe.PackedFiles.Wrapper
 				{
 					Lua.IOperator lop = line as Lua.IOperator;
 					if (ObjLuaFunction.DEBUG)
+					{
 						content = lop.ToString(cx) + " #" + line.GetType().Name;
+					}
 					else
+					{
 						content = lop.ToString(cx);
+					}
+
 					lop.Run(cx);
 				}
 				else
@@ -434,6 +444,7 @@ namespace SimPe.PackedFiles.Wrapper
 				if (content.Trim() != "")
 				{
 					if (ObjLuaFunction.DEBUG)
+					{
 						sw.Add(
 							Helper.HexString(cx.PC)
 								+ ": "
@@ -441,8 +452,11 @@ namespace SimPe.PackedFiles.Wrapper
 								+ cx.Indent
 								+ content
 						);
+					}
 					else
+					{
 						sw.Add(plusindent + cx.Indent + content);
+					}
 				}
 			}
 		}
@@ -455,7 +469,9 @@ namespace SimPe.PackedFiles.Wrapper
 		void BackIndent(ref string indent)
 		{
 			if (indent.Length > 0)
+			{
 				indent = indent.Substring(0, indent.Length - 1);
+			}
 		}
 
 		internal void ToSource(System.IO.StreamWriter writer, Lua.Context cx)
@@ -514,7 +530,9 @@ namespace SimPe.PackedFiles.Wrapper
 					{
 						int npc = (int)oplines[oplines.Count + line.SBX + 1];
 						for (int id = npc; id < sw.Count; id++)
+						{
 							sw[id] = "\t" + sw[id].ToString();
+						}
 
 						oline.A = (ushort)Math.Abs(oline.A - 1);
 						sw.Insert(
@@ -544,7 +562,9 @@ namespace SimPe.PackedFiles.Wrapper
 							endline.Add(cx.PC + line.SBX);
 						}
 						else
+						{
 							endline.Add(cx.PC);
+						}
 					}
 
 					cx.GoToLine(pc);
@@ -558,9 +578,9 @@ namespace SimPe.PackedFiles.Wrapper
 					int pc = cx.PC;
 					ObjLuaCode eline = line;
 					while (!(eline is Lua.TFORLOOP))
+					{
 						eline = cx.NextLine();
-
-					((Lua.TFORLOOP)eline).Setup(cx);
+					} ((Lua.TFORLOOP)eline).Setup(cx);
 					cx.GoToLine(pc);
 
 					((Lua.TFORREP)line).TFORLOOP = eline as Lua.TFORLOOP;
@@ -583,7 +603,9 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 
 			foreach (string ln in sw)
+			{
 				writer.WriteLine(ln);
+			}
 		}
 
 		internal bool IsLocalRegister(ushort regnr, Lua.Context cx)
@@ -593,12 +615,16 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				line = Codes[i] as ObjLuaCode;
 				if (line != null)
+				{
 					if (line is Lua.ILoadOperator)
 					{
 						Lua.ILoadOperator lop = line as Lua.ILoadOperator;
 						if (lop.LoadsRegister(regnr))
+						{
 							return false;
+						}
 					}
+				}
 			}
 
 			return true;
@@ -688,27 +714,39 @@ namespace SimPe.PackedFiles.Wrapper
 
 			writer.Write((uint)SourceLine.Count);
 			foreach (ObjLuaSourceLine item in SourceLine)
+			{
 				item.Serialize(writer);
+			}
 
 			writer.Write((uint)Locals.Count);
 			foreach (ObjLuaLocalVar item in Locals)
+			{
 				item.Serialize(writer);
+			}
 
 			writer.Write((uint)UpValues.Count);
 			foreach (ObjLuaUpValue item in UpValues)
+			{
 				item.Serialize(writer);
+			}
 
 			writer.Write((uint)Constants.Count);
 			foreach (ObjLuaConstant item in Constants)
+			{
 				item.Serialize(writer);
+			}
 
 			writer.Write((uint)Functions.Count);
 			foreach (ObjLuaFunction item in Functions)
+			{
 				item.Serialize(writer);
+			}
 
 			writer.Write((uint)Codes.Count);
 			foreach (ObjLuaCode item in Codes)
+			{
 				item.Serialize(writer);
+			}
 		}
 
 		#region IDisposable Member
@@ -717,7 +755,10 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			Parent = null;
 			if (Constants != null)
+			{
 				Constants.Clear();
+			}
+
 			Constants = null;
 		}
 
@@ -817,11 +858,13 @@ namespace SimPe.PackedFiles.Wrapper
 					Value = reader.ReadSingle();
 				}
 				else
+				{
 					throw new Exception(
 						"Number Size "
 							+ Parent.Parent.NumberSize.ToString()
 							+ " is not supported!"
 					);
+				}
 			}
 			else if (InstructionType == Type.Empty)
 			{
@@ -856,11 +899,13 @@ namespace SimPe.PackedFiles.Wrapper
 					writer.Write((float)Value);
 				}
 				else
+				{
 					throw new Exception(
 						"Number Size "
 							+ Parent.Parent.NumberSize.ToString()
 							+ " is not supported!"
 					);
+				}
 			}
 			else if (InstructionType == Type.Empty)
 			{
@@ -894,9 +939,13 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			string s = InstructionType.ToString() + ": ";
 			if (InstructionType == Type.String)
+			{
 				s += String;
+			}
 			else if (InstructionType == Type.Number)
+			{
 				s += Value.ToString();
+			}
 
 			return s;
 		}
@@ -1060,7 +1109,10 @@ namespace SimPe.PackedFiles.Wrapper
 			Type t = ocmap[n] as Type;
 
 			if (t == null)
+			{
 				return typeof(ObjLuaCode);
+			}
+
 			return t;
 		}
 
@@ -1258,17 +1310,25 @@ namespace SimPe.PackedFiles.Wrapper
 		public static string GetOpcodeName(byte oc)
 		{
 			if (oc >= 0 && oc < opcodes.Length)
+			{
 				return opcodes[oc];
+			}
 			else
+			{
 				return "UNK_" + Helper.HexString(oc);
+			}
 		}
 
 		public static string GetOpcodeDescription(byte oc)
 		{
 			if (oc >= 0 && oc < opcodedesc.Length)
+			{
 				return opcodedesc[oc];
+			}
 			else
+			{
 				return SimPe.Localization.GetString("Unknown");
+			}
 		}
 
 		#endregion
@@ -1290,7 +1350,9 @@ namespace SimPe.PackedFiles.Wrapper
 			//else if (name=="SETGLOBAL") ret = Gbl(Kst(bx)) + " = " + R(a);
 			//else if (name=="GETUPVAL") ret = R(a) + " = " + UpValue(b);
 			if (name == "SETUPVAL")
+			{
 				ret = UpValue(b) + " = " + R(a);
+			}
 			//else if (name=="GETTABLE") ret = R(a) + " = " + R(b)+"["+RK(c)+"]";
 			//else if (name=="SETTABLE") ret = R(a)+"["+RK(b)+"]" + " = " + RK(c);
 			//else if (name=="ADD") ret = R(a) + " = " + RK(b) + " + " + RK(c);
@@ -1305,12 +1367,14 @@ namespace SimPe.PackedFiles.Wrapper
 			//else if (name=="CALL") ret = ListR(a, a+c-2, " = ", ", ..., ") + R(a) + "(" + ListR(a+1, a+b-1, "", ", ..., ") + ")";
 			//else if (name=="RETURN") ret = "return " + ListR(a, a+b-2, "", ", ..., ");
 			else if (name == "TAILCALL")
+			{
 				ret =
 					"return "
 					+ R(a)
 					+ "("
 					+ ListR(a + 1, a + b - 1, "", ", ..., ")
 					+ ")";
+			}
 			//else if (name=="SELF") ret = R((ushort)(a+1)) + " = " + R(b) + "; " + R(a) + " = " + R(b) + "["+RK(c)+"]";
 			//else if (name=="EQ") ret = "if ((" + RK(b) + " == " + RK(c) + ") == " + Bool(a) + " then PC++";
 			//else if (name=="LT") ret = "if ((" + RK(b) + " < " + RK(c) + ") == " + Bool(a) + " then PC++";
@@ -1322,21 +1386,31 @@ namespace SimPe.PackedFiles.Wrapper
 			//else if (name=="NEWTABLE") ret = R(a) + " = new table["+TblFbp(b)+", "+TblSz(c)+"]";
 			//else if (name=="CLOSURE") ret = R(a) + " = closure(KPROTO["+bx.ToString()+"], "+R(a)+", ...)";
 			else if (name == "CLOSE")
+			{
 				ret = "close all to " + R(a);
+			}
 
 			if (ObjLuaFunction.DEBUG)
 			{
 				if (SimPe.Helper.WindowsRegistry.HiddenMode)
+				{
 					return ret + "; //" + name;
+				}
 				else
+				{
 					return ret + "; //" + name + ": " + GetOpcodeDescription(oc);
+				}
 			}
 			else
 			{
 				if (SimPe.Helper.WindowsRegistry.HiddenMode)
+				{
 					return ret + "; //" + name;
+				}
 				else
+				{
 					return ret + "; //" + GetOpcodeDescription(oc);
+				}
 			}
 			//return ret+"; //"+name+" (a=0x"+Helper.HexString(a)+", b=0x"+Helper.HexString(b)+", c=0x"+Helper.HexString(c)+", bx="+bx.ToString()+", sbx="+sbx.ToString()+") "+GetOpcodeDescription(oc);
 		}
@@ -1344,9 +1418,13 @@ namespace SimPe.PackedFiles.Wrapper
 		protected static string R(ushort v, string[] regs, bool use)
 		{
 			if (use)
+			{
 				return R(v, regs);
+			}
 			else
+			{
 				return R(v);
+			}
 		}
 
 		protected static string R(ushort v)
@@ -1357,16 +1435,23 @@ namespace SimPe.PackedFiles.Wrapper
 		protected static string R(ushort v, string[] regs)
 		{
 			if (regs[v] == null)
+			{
 				return "null";
+			}
+
 			return regs[v];
 		}
 
 		protected string RK(ushort v)
 		{
 			if (v < RK_OFFSET)
+			{
 				return R(v);
+			}
 			else
+			{
 				return (Kst((uint)(v - RK_OFFSET)));
+			}
 		}
 
 		protected string Kst(uint v)
@@ -1375,11 +1460,17 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				ObjLuaConstant oci = (ObjLuaConstant)Parent.Constants[(int)v];
 				if (oci.InstructionType == ObjLuaConstant.Type.String)
+				{
 					return oci.String;
+				}
 				else if (oci.InstructionType == ObjLuaConstant.Type.Number)
+				{
 					return oci.Value.ToString();
+				}
 				else
+				{
 					return "null";
+				}
 			}
 			return v.ToString();
 		}
@@ -1387,16 +1478,23 @@ namespace SimPe.PackedFiles.Wrapper
 		protected string UpValue(ushort v)
 		{
 			if (v >= 0 && v < Parent.UpValues.Count)
+			{
 				return Parent.UpValues[v].ToString();
+			}
+
 			return v.ToString();
 		}
 
 		protected static string Bool(ushort v)
 		{
 			if (v == 0)
+			{
 				return "false";
+			}
 			else
+			{
 				return "true";
+			}
 		}
 
 		protected static string Gbl(string n)
@@ -1427,9 +1525,15 @@ namespace SimPe.PackedFiles.Wrapper
 		protected static string ListR(int start, int end, string prefix, string infix)
 		{
 			if (end < start)
+			{
 				return "";
+			}
+
 			if (end == start)
+			{
 				return R((ushort)start) + prefix;
+			}
+
 			return R((ushort)start) + infix + R((ushort)end) + prefix;
 		}
 

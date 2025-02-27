@@ -222,7 +222,10 @@ namespace SimPe.Plugin
 		public static Idno FromPackage(SimPe.Interfaces.Files.IPackageFile pkg)
 		{
 			if (pkg == null)
+			{
 				return null;
+			}
+
 			Interfaces.Files.IPackedFileDescriptor idno = pkg.FindFile(
 				Data.MetaData.IDNO,
 				0,
@@ -290,28 +293,44 @@ namespace SimPe.Plugin
 		public static void MakeUnique(Idno idno, string filename, Hashtable ids)
 		{
 			if (idno == null)
+			{
 				return;
+			}
+
 			if (filename == null)
+			{
 				return;
+			}
 
 			filename = filename.Trim().ToLower();
 
 			if (ids.ContainsKey(filename))
+			{
 				idno.Uid = (uint)ids[filename];
+			}
 			else
+			{
 				idno.Uid = 1;
+			}
 
 			uint max = 0;
 			foreach (string flname in ids.Keys)
 			{
 				uint id = (uint)ids[flname];
 				if (id > max)
+				{
 					max = id;
+				}
 
 				if (flname == filename)
+				{
 					continue;
+				}
+
 				if (idno.Uid == id)
+				{
 					idno.Uid = max + 1;
+				}
 			}
 		}
 
@@ -334,9 +353,14 @@ namespace SimPe.Plugin
 			string[] parts = filename.Split("_".ToCharArray(), 2);
 
 			if (parts.Length != 2)
+			{
 				return null;
+			}
+
 			if (!parts[0].StartsWith("N"))
+			{
 				return null;
+			}
 
 			idno.OwnerName = parts[0];
 
@@ -387,17 +411,23 @@ namespace SimPe.Plugin
 					"N???_Neighborhood.package"
 				);
 				foreach (string s in a)
+				{
 					names.Add(s);
+				}
 
 				a = System.IO.Directory.GetFiles(folder, "N???_University???.package");
 				foreach (string s in a)
+				{
 					names.Add(s);
+				}
 			}
 			else
 			{
 				string[] a = System.IO.Directory.GetFiles(folder, "*.package");
 				foreach (string s in a)
+				{
 					names.Add(s);
+				}
 			}
 
 			foreach (string name in names)
@@ -417,7 +447,9 @@ namespace SimPe.Plugin
 
 			string[] d = System.IO.Directory.GetDirectories(folder, "*");
 			foreach (string dir in d)
+			{
 				FindUids(dir, ids, scanall);
+			}
 		}
 		#endregion
 
@@ -449,9 +481,13 @@ namespace SimPe.Plugin
 			: base()
 		{
 			if (SimPe.PathProvider.Global.EPInstalled >= 1)
+			{
 				this.version = (uint)NeighborhoodVersion.Sims2_University;
+			}
 			else
+			{
 				this.version = (uint)NeighborhoodVersion.Sims2;
+			}
 
 			this.Type = NeighborhoodType.Normal;
 			over = new byte[0];
@@ -508,7 +544,10 @@ namespace SimPe.Plugin
 				Type = (NeighborhoodType)reader.ReadUInt32();
 				Subtype = reader.ReadUInt32();
 				if (Subtype > 0)
+				{
 					SubName = Helper.ToString(reader.ReadBytes((int)Subtype)); // CJH - was ReadBytes(ct) -ct is parent name length -EndOfStream error when ct is longer than 4 chars
+				}
+
 				if (version >= (int)NeighborhoodVersion.Sims2_Seasons)
 				{
 					ct = reader.ReadInt32();
@@ -557,7 +596,10 @@ namespace SimPe.Plugin
 					writer.Write(b);
 				}
 				else
+				{
 					writer.Write((int)Subtype);
+				}
+
 				if (version >= (int)NeighborhoodVersion.Sims2_Seasons)
 				{
 					writer.Write((int)0);

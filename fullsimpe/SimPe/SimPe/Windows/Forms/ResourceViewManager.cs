@@ -37,10 +37,15 @@ namespace SimPe.Windows.Forms
 				if (lv != value)
 				{
 					if (lv != null)
+					{
 						lv.SetManager(null);
+					}
+
 					lv = value;
 					if (lv != null)
+					{
 						lv.SetManager(this);
+					}
 				}
 			}
 		}
@@ -57,10 +62,15 @@ namespace SimPe.Windows.Forms
 				if (tv != value)
 				{
 					if (tv != null)
+					{
 						tv.SetManager(null);
+					}
+
 					tv = value;
 					if (tv != null)
+					{
 						tv.SetManager(this);
+					}
 				}
 			}
 		}
@@ -99,7 +109,10 @@ namespace SimPe.Windows.Forms
 			lock (maps)
 			{
 				if (lv != null)
+				{
 					lv.BeginUpdate();
+				}
+
 				if (oldpkg != null)
 				{
 					oldpkg.SavedIndex -= new EventHandler(newpkg_SavedIndex);
@@ -114,9 +127,14 @@ namespace SimPe.Windows.Forms
 						Helper.WindowsRegistry.ShowProgressWhenPackageLoads
 						|| !Helper.WindowsRegistry.AsynchronSort
 					)
+					{
 						Wait.Start(newpkg.Index.Length);
+					}
 					else
+					{
 						Wait.Start();
+					}
+
 					Wait.Message = SimPe.Localization.GetString("Loading package...");
 					int ct = 0;
 					foreach (
@@ -128,7 +146,9 @@ namespace SimPe.Windows.Forms
 							newpkg
 						);
 						if (!Helper.WindowsRegistry.AsynchronSort)
+						{
 							npfd.GetRealName();
+						}
 
 						maps.Everything.Add(npfd);
 						AddResourceToMaps(npfd);
@@ -136,7 +156,9 @@ namespace SimPe.Windows.Forms
 							Helper.WindowsRegistry.ShowProgressWhenPackageLoads
 							|| !Helper.WindowsRegistry.AsynchronSort
 						)
+						{
 							Wait.Progress = ct++;
+						}
 					}
 					Wait.Stop();
 				}
@@ -151,7 +173,9 @@ namespace SimPe.Windows.Forms
 				}
 
 				if (lv != null)
+				{
 					lv.EndUpdate();
+				}
 			}
 		}
 
@@ -162,11 +186,16 @@ namespace SimPe.Windows.Forms
 			foreach (NamedPackedFileDescriptor npfd in maps.Everything)
 			{
 				if (!Helper.WindowsRegistry.AsynchronSort)
+				{
 					npfd.GetRealName();
+				}
+
 				AddResourceToMaps(npfd);
 			}
 			if (tv != null)
+			{
 				tv.SetResourceMaps(maps, false, false);
+			}
 			//lv.EndUpdate(false);
 		}
 
@@ -175,7 +204,9 @@ namespace SimPe.Windows.Forms
 			bool donotselect = false;
 			string filonam = "nil";
 			if (pkg != null)
+			{
 				filonam = pkg.FileName;
+			}
 
 			if (
 				(
@@ -192,16 +223,22 @@ namespace SimPe.Windows.Forms
 			if (lv != null && !lettreeviewselect)
 			{
 				if (donotselect)
+				{
 					lv.SetResources(new ResourceNameList());
+				}
 				else
+				{
 					lv.SetResources(maps.Everything);
+				}
 			}
 			if (tv != null)
+			{
 				tv.SetResourceMaps(
 					maps,
 					lettreeviewselect,
 					Helper.IsNeighborhoodFile(filonam)
 				);
+			}
 			// if (tv != null) tv.SetResourceMaps(maps, lettreeviewselect, donotselect);
 			isbigneighbourhood = donotselect;
 		}
@@ -220,7 +257,9 @@ namespace SimPe.Windows.Forms
 		{
 			//OnChangedPackage(pkg, pkg);
 			if (lv != null)
+			{
 				lv.Refresh();
+			}
 		}
 
 		void newpkg_AddedResource(object sender, EventArgs e)
@@ -239,7 +278,9 @@ namespace SimPe.Windows.Forms
 		{
 			ResourceNameList pfdlist = null;
 			if (maps.ByType.ContainsKey(npfd.Descriptor.Type))
+			{
 				pfdlist = maps.ByType[npfd.Descriptor.Type];
+			}
 			else
 			{
 				pfdlist = new ResourceNameList();
@@ -253,7 +294,9 @@ namespace SimPe.Windows.Forms
 		{
 			ResourceNameList pfdlist = null;
 			if (maps.ByGroup.ContainsKey(npfd.Descriptor.Group))
+			{
 				pfdlist = maps.ByGroup[npfd.Descriptor.Group];
+			}
 			else
 			{
 				pfdlist = new ResourceNameList();
@@ -267,7 +310,9 @@ namespace SimPe.Windows.Forms
 		{
 			ResourceNameList pfdlist = null;
 			if (maps.ByInstance.ContainsKey(npfd.Descriptor.LongInstance))
+			{
 				pfdlist = maps.ByInstance[npfd.Descriptor.LongInstance];
+			}
 			else
 			{
 				pfdlist = new ResourceNameList();
@@ -295,21 +340,30 @@ namespace SimPe.Windows.Forms
 		public void CancelThreads()
 		{
 			if (lv != null)
+			{
 				lv.CancelThreads();
+			}
 		}
 
 		public void StoreLayout()
 		{
 			if (lv != null)
+			{
 				lv.StoreLayout();
+			}
 		}
 
 		public void RestoreLayout()
 		{
 			if (lv != null)
+			{
 				lv.RestoreLayout();
+			}
+
 			if (tv != null)
+			{
 				tv.RestoreLayout();
+			}
 		}
 
 		public bool SelectResource(
@@ -318,7 +372,10 @@ namespace SimPe.Windows.Forms
 		{
 			bool res = false;
 			if (lv != null)
+			{
 				res = lv.SelectResource(resource);
+			}
+
 			if (!res && tv != null && lv != null && !isbigneighbourhood)
 			{
 				tv.SelectAll();

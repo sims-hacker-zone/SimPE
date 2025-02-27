@@ -100,11 +100,15 @@ namespace SimPe.Plugin
 
 			writer.Write((int)Vectors1.Count);
 			for (int i = 0; i < Vectors1.Count; i++)
+			{
 				Vectors1[i].Serialize(writer);
+			}
 
 			writer.Write((int)Vectors2.Count);
 			for (int i = 0; i < Vectors2.Count; i++)
+			{
 				Vectors2[i].Serialize(writer);
+			}
 		}
 	}
 
@@ -174,9 +178,13 @@ namespace SimPe.Plugin
 				TSFaceGeometryBuilderItem o = new TSFaceGeometryBuilderItem();
 				o.Unserialize(reader);
 				if (Items.Count <= i)
+				{
 					Items.IntAdd(o);
+				}
 				else
+				{
 					Items[i] = o;
+				}
 			}
 		}
 
@@ -203,7 +211,9 @@ namespace SimPe.Plugin
 			for (int i = 0; i < 10; i++)
 			{
 				if (i < Items.Count)
+				{
 					Items[i].Serialize(writer);
+				}
 				else
 				{
 					TSFaceGeometryBuilderItem o = new TSFaceGeometryBuilderItem();
@@ -219,7 +229,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (tGenericRcol == null)
+				{
 					tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
+				}
+
 				return tGenericRcol;
 			}
 		}
@@ -231,7 +244,10 @@ namespace SimPe.Plugin
 		protected override void InitTabPage()
 		{
 			if (tGenericRcol == null)
+			{
 				tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
+			}
+
 			tGenericRcol.tb_ver.Text = "0x" + Helper.HexString(this.version);
 			tGenericRcol.gen_pg.SelectedObject = this;
 		}
@@ -247,7 +263,10 @@ namespace SimPe.Plugin
 		public override void Dispose()
 		{
 			if (this.tGenericRcol != null)
+			{
 				this.tGenericRcol.Dispose();
+			}
+
 			tGenericRcol = null;
 		}
 
@@ -353,7 +372,9 @@ namespace SimPe.Plugin
 		{
 			TSFaceGeometryBuilderItems list = new TSFaceGeometryBuilderItems();
 			foreach (TSFaceGeometryBuilderItem item in this)
+			{
 				list.Add(item);
+			}
 
 			return list;
 		}

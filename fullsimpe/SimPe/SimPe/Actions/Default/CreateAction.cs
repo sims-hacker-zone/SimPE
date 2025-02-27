@@ -38,7 +38,10 @@ namespace SimPe.Actions.Default
 		)
 		{
 			if (es.LoadedPackage == null)
+			{
 				return false;
+			}
+
 			return es.LoadedPackage.Loaded;
 		}
 
@@ -48,7 +51,9 @@ namespace SimPe.Actions.Default
 		)
 		{
 			if (!ChangeEnabledStateEventHandler(null, e))
+			{
 				return;
+			}
 
 			e.LoadedPackage.Package.Add(
 				e.LoadedPackage.Package.NewDescriptor(

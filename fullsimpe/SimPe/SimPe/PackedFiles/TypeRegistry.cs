@@ -161,9 +161,11 @@ namespace SimPe.PackedFiles
 							WrapperImageList.Images.Add(wrapper.WrapperDescription.Icon);
 						}
 						else
+						{
 							(
 								(AbstractWrapperInfo)wrapper.WrapperDescription
 							).IconIndex = 1;
+						}
 					}
 				}
 			}
@@ -172,8 +174,12 @@ namespace SimPe.PackedFiles
 		public void Register(IWrapper[] wrappers, IWrapper[] guiwrappers)
 		{
 			if (wrappers != null && guiwrappers == null)
+			{
 				foreach (IWrapper wrapper in wrappers)
+				{
 					Register(wrapper);
+				}
+			}
 			else if (wrappers != null && guiwrappers != null)
 			{
 				for (int i = 0; i < wrappers.Length; i++)
@@ -182,8 +188,10 @@ namespace SimPe.PackedFiles
 					//make sure whe have two instances of each Wrapper otherwise,
 					//AbstractWrapper.ResoureceName could corrupt a open Resource
 					if (!wrapper.AllowMultipleInstances && wrapper is AbstractWrapper)
+					{
 						((AbstractWrapper)wrapper).SingleGuiWrapper = (IFileWrapper)
 							guiwrappers[i];
+					}
 
 					Register(wrapper);
 					Register(wrapper);
@@ -208,7 +216,9 @@ namespace SimPe.PackedFiles
 					.GetInterface("SimPe.Interfaces.Plugin.IHelpFactory", false)
 				== typeof(SimPe.Interfaces.Plugin.IHelpFactory)
 			)
+			{
 				Register((factory as SimPe.Interfaces.Plugin.IHelpFactory));
+			}
 
 			if (
 				factory
@@ -216,7 +226,9 @@ namespace SimPe.PackedFiles
 					.GetInterface("SimPe.Interfaces.Plugin.ISettingsFactory", false)
 				== typeof(SimPe.Interfaces.Plugin.ISettingsFactory)
 			)
+			{
 				Register((factory as SimPe.Interfaces.Plugin.ISettingsFactory));
+			}
 
 			if (
 				factory
@@ -224,7 +236,9 @@ namespace SimPe.PackedFiles
 					.GetInterface("SimPe.Interfaces.Plugin.ICommandLineFactory", false)
 				== typeof(SimPe.Interfaces.Plugin.ICommandLineFactory)
 			)
+			{
 				Register((factory as SimPe.Interfaces.Plugin.ICommandLineFactory));
+			}
 		}
 
 		public IWrapper[] Wrappers
@@ -237,7 +251,9 @@ namespace SimPe.PackedFiles
 				foreach (IWrapper w in wrappers)
 				{
 					if (w.Priority >= 0)
+					{
 						wrap.Add(w);
+					}
 				}
 
 				wrappers = new IWrapper[wrap.Count];
@@ -295,7 +311,9 @@ namespace SimPe.PackedFiles
 				foreach (uint atype in h.AssignableTypes)
 				{
 					if (atype == type)
+					{
 						return h;
+					}
 				}
 			}
 
@@ -317,15 +335,23 @@ namespace SimPe.PackedFiles
 			foreach (SimPe.Interfaces.Plugin.IFileWrapper h in wrappers)
 			{
 				if (h.FileSignature == null)
+				{
 					continue;
+				}
+
 				if (h.FileSignature.Length == 0)
+				{
 					continue;
+				}
 
 				bool check = true;
 				for (int i = 0; i < h.FileSignature.Length; i++)
 				{
 					if (i >= data.Length)
+					{
 						break;
+					}
+
 					if (data[i] != h.FileSignature[i])
 					{
 						check = false;
@@ -334,7 +360,9 @@ namespace SimPe.PackedFiles
 				}
 
 				if (check == true)
+				{
 					return h;
+				}
 			}
 			return null;
 		}
@@ -396,7 +424,9 @@ namespace SimPe.PackedFiles
 				)
 				{
 					if (!dtools.Contains(tool))
+					{
 						dtools.Add((SimPe.Interfaces.IDockableTool)tool);
+					}
 				}
 				else if (
 					tool.GetType().GetInterface("SimPe.Interfaces.IToolAction", true)
@@ -404,7 +434,9 @@ namespace SimPe.PackedFiles
 				)
 				{
 					if (!atools.Contains(tool))
+					{
 						atools.Add((SimPe.Interfaces.IToolAction)tool);
+					}
 				}
 				else if (
 					tool.GetType().GetInterface("SimPe.Interfaces.IToolPlus", true)
@@ -412,7 +444,9 @@ namespace SimPe.PackedFiles
 				)
 				{
 					if (!toolsp.Contains(tool))
+					{
 						toolsp.Add((SimPe.Interfaces.IToolPlus)tool);
+					}
 				}
 				else if (
 					Helper.StartedGui != Executable.Classic
@@ -421,7 +455,9 @@ namespace SimPe.PackedFiles
 				)
 				{
 					if (!listeners.Contains((SimPe.Interfaces.IListener)tool))
+					{
 						listeners.Add((SimPe.Interfaces.IListener)tool);
+					}
 				}
 				else if (
 					tool.GetType().GetInterface("SimPe.Interfaces.ITool", true)
@@ -429,7 +465,9 @@ namespace SimPe.PackedFiles
 				)
 				{
 					if (!tools.Contains(tool))
+					{
 						tools.Add((SimPe.Interfaces.ITool)tool);
+					}
 				}
 			}
 		}
@@ -437,8 +475,12 @@ namespace SimPe.PackedFiles
 		public void Register(IToolPlugin[] tools)
 		{
 			if (tools != null)
+			{
 				foreach (IToolPlugin tool in tools)
+				{
 					Register(tool);
+				}
+			}
 		}
 
 		public void Register(IToolFactory factory)
@@ -514,22 +556,32 @@ namespace SimPe.PackedFiles
 		public void Register(SimPe.Interfaces.Plugin.IHelpFactory factory)
 		{
 			if (factory == null)
+			{
 				return;
+			}
+
 			RegisterHelpTopic(factory.KnownHelpTopics);
 		}
 
 		public void RegisterHelpTopic(SimPe.Interfaces.IHelp[] topics)
 		{
 			if (topics == null)
+			{
 				return;
+			}
+
 			foreach (SimPe.Interfaces.IHelp topic in topics)
+			{
 				RegisterHelpTopic(topic);
+			}
 		}
 
 		public void RegisterHelpTopic(SimPe.Interfaces.IHelp topic)
 		{
 			if (topic != null && !helptopics.Contains(topic))
+			{
 				this.helptopics.Add(topic);
+			}
 		}
 
 		/// <summary>
@@ -553,7 +605,10 @@ namespace SimPe.PackedFiles
 		public void Register(ISettingsFactory factory)
 		{
 			if (factory == null)
+			{
 				return;
+			}
+
 			RegisterSettings(factory.KnownSettings);
 		}
 
@@ -570,17 +625,27 @@ namespace SimPe.PackedFiles
 		public void RegisterSettings(ISettings[] settings)
 		{
 			if (settings == null)
+			{
 				return;
+			}
+
 			foreach (ISettings s in settings)
+			{
 				RegisterSettings(s as ISettings);
+			}
 		}
 
 		public void RegisterSettings(ISettings setting)
 		{
 			if (settings == null)
+			{
 				return;
+			}
+
 			if (!settings.Contains(setting))
+			{
 				settings.Add(setting);
+			}
 		}
 
 		#endregion
@@ -590,24 +655,37 @@ namespace SimPe.PackedFiles
 		public void Register(ICommandLineFactory factory)
 		{
 			if (factory == null)
+			{
 				return;
+			}
+
 			RegisterCommandLines(factory.KnownCommandLines);
 		}
 
 		public void RegisterCommandLines(ICommandLine[] CommandLines)
 		{
 			if (cmdlines == null)
+			{
 				return;
+			}
+
 			foreach (ICommandLine c in CommandLines)
+			{
 				RegisterCommandLines(c as ICommandLine);
+			}
 		}
 
 		public void RegisterCommandLines(ICommandLine cmdline)
 		{
 			if (cmdline == null)
+			{
 				return;
+			}
+
 			if (!cmdlines.Contains(cmdline))
+			{
 				cmdlines.Add(cmdline);
+			}
 		}
 
 		public ICommandLine[] CommandLines

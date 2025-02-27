@@ -82,7 +82,9 @@ namespace SimPe.Cache
 			Containers.Clear();
 
 			if (!System.IO.File.Exists(flname))
+			{
 				return;
+			}
 
 			StreamItem si = StreamFactory.UseStream(flname, FileAccess.Read, true);
 			try
@@ -93,6 +95,7 @@ namespace SimPe.Cache
 				{
 					Signature = reader.ReadUInt64();
 					if (Signature != OLDSIG && Signature != SIGNATURE)
+					{
 						throw new CacheException(
 							"Unknown Cache File Signature ("
 								+ Helper.HexString(Signature)
@@ -100,27 +103,38 @@ namespace SimPe.Cache
 							flname,
 							0
 						);
+					}
 
 					Version = reader.ReadByte();
 					if (Version > VERSION)
+					{
 						throw new CacheException(
 							"Unable to read Cache",
 							flname,
 							Version
 						);
+					}
 
 					int count = reader.ReadInt32();
 					if (withprogress)
+					{
 						Wait.MaxProgress = count;
+					}
+
 					for (int i = 0; i < count; i++)
 					{
 						CacheContainer cc = new CacheContainer(DEFAULT_TYPE);
 						cc.Load(reader);
 						Containers.Add(cc);
 						if (withprogress)
+						{
 							Wait.Progress = i;
+						}
+
 						if (i % 10 == 0)
+						{
 							System.Windows.Forms.Application.DoEvents();
+						}
 					}
 				}
 				finally
@@ -191,7 +205,9 @@ namespace SimPe.Cache
 			for (int i = Containers.Count - 1; i >= 0; i--)
 			{
 				if (!Containers[i].Valid)
+				{
 					Containers.RemoveAt(i);
+				}
 			}
 		}
 
@@ -236,7 +252,10 @@ namespace SimPe.Cache
 		public CacheContainer UseConatiner(ContainerType ct, string name)
 		{
 			if (name == null)
+			{
 				name = "";
+			}
+
 			name = name.Trim().ToLower();
 
 			CacheContainer mycc = null;
@@ -262,7 +281,9 @@ namespace SimPe.Cache
 		public virtual void Dispose()
 		{
 			foreach (CacheContainer cc in Containers)
+			{
 				cc.Dispose();
+			}
 
 			Containers.Clear();
 		}

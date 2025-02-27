@@ -67,7 +67,9 @@ namespace SimPe.Windows.Forms
 
 			nodelist.Sort();
 			foreach (ResourceTreeNodeExt node in nodelist)
+			{
 				tn.Nodes.Add(node);
+			}
 		}
 
 		public static void AddSubNodesForTypes(
@@ -85,7 +87,9 @@ namespace SimPe.Windows.Forms
 					map.Add(pfd.Descriptor.Type, list);
 				}
 				else
+				{
 					list = map[pfd.Descriptor.Type];
+				}
 
 				list.Add(pfd);
 			}
@@ -108,7 +112,9 @@ namespace SimPe.Windows.Forms
 					map.Add(pfd.Descriptor.LongInstance, list);
 				}
 				else
+				{
 					list = map[pfd.Descriptor.LongInstance];
+				}
 
 				list.Add(pfd);
 			}

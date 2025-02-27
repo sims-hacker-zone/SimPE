@@ -80,7 +80,10 @@ namespace SimPe.Plugin.Gmdc
 		{
 			double d = Convert.ToDouble(s, AbstractGmdcImporter.DefaultCulture);
 			if (Math.Abs(d) < SMALLNUMBER)
+			{
 				d = 0;
+			}
+
 			return d;
 		}
 
@@ -202,14 +205,21 @@ namespace SimPe.Plugin.Gmdc
 			SetUpAnimationData();
 
 			if (gmdc == null || input == null)
+			{
 				return false;
+			}
 
 			ImportedGroups g = LoadGroups();
 			ImportedBones b = LoadBones();
 
 			if (!AnimationOnly)
+			{
 				if (ValidateImportedGroups(g, b))
+				{
 					ChangeGmdc(g, b);
+				}
+			}
+
 			this.ChangeAnim();
 
 			return true;
@@ -232,12 +242,15 @@ namespace SimPe.Plugin.Gmdc
 			get
 			{
 				if (importoptionsresult == null)
+				{
 					importoptionsresult = new ImportOptions(
 						System.Windows.Forms.DialogResult.Cancel,
 						false,
 						false,
 						false
 					);
+				}
+
 				return importoptionsresult;
 			}
 			set
@@ -267,7 +280,9 @@ namespace SimPe.Plugin.Gmdc
 				{
 					g.Elements[k].Number = g.Elements[k].Values.Count;
 					if (g.Elements[k].Values.Length > 0)
+					{
 						g.Link.ReferencedElement.Add(k);
+					}
 				} // for k
 				  //if (minct==int.MaxValue) minct=0;
 			}
@@ -301,7 +316,9 @@ namespace SimPe.Plugin.Gmdc
 			if (this.Options.CleanGroups)
 			{
 				for (int i = Gmdc.Groups.Length - 1; i >= 0; i--)
+				{
 					Gmdc.RemoveGroup(i);
+				}
 			}
 
 			//Add the Joints
@@ -310,15 +327,25 @@ namespace SimPe.Plugin.Gmdc
 			{
 				ImportedBone b = bns[i];
 				if (b.Action == GmdcImporterAction.Add)
+				{
 					boneIndexMap[i] = AddBone(grps, bns, b, i);
+				}
 				else if (b.Action == GmdcImporterAction.Rename)
+				{
 					boneIndexMap[i] = AddBone(grps, bns, b, i);
+				}
 				else if (b.Action == GmdcImporterAction.Replace)
+				{
 					boneIndexMap[i] = ReplaceBone(grps, bns, b, i);
+				}
 				else if (b.Action == GmdcImporterAction.Update)
+				{
 					boneIndexMap[i] = UpdateBone(grps, b, i);
+				}
 				else
+				{
 					boneIndexMap[i] = NothingBone(grps, b, i);
+				}
 
 				//make sure the Target Index is set correct, and the parrent is set up
 				b.TargetIndex = (int)boneIndexMap[i];
@@ -332,7 +359,9 @@ namespace SimPe.Plugin.Gmdc
 				{
 					int index = g.Group.UsedJoints[i];
 					if (boneIndexMap.ContainsKey(index))
+					{
 						g.Group.UsedJoints[i] = (int)boneIndexMap[index];
+					}
 				}
 			}
 
@@ -342,18 +371,31 @@ namespace SimPe.Plugin.Gmdc
 			foreach (ImportedGroup g in grps)
 			{
 				if (g.Action == GmdcImporterAction.Add)
+				{
 					AddGroup(g);
+				}
 				else if (g.Action == GmdcImporterAction.Rename)
+				{
 					RenameGroup(g);
+				}
 				else if (g.Action == GmdcImporterAction.Replace)
+				{
 					ReplaceGroup(grps, g);
+				}
 				else if (g.Action == GmdcImporterAction.Update)
+				{
 					UpdateGroup(g);
+				}
+
 				if (g.Action != GmdcImporterAction.Nothing)
+				{
 					g.Link.Flatten();
+				}
 
 				if (g.UseInBoundingMesh)
+				{
 					clearbmesh = true;
+				}
 			}
 
 			//Now Update the BoundingMesh if needed
@@ -367,8 +409,12 @@ namespace SimPe.Plugin.Gmdc
 				{
 					Gmdc.Model.ClearBoundingMesh();
 					foreach (ImportedGroup g in grps)
+					{
 						if (g.UseInBoundingMesh)
+						{
 							Gmdc.Model.AddGroupToBoundingMesh(g.Group);
+						}
+					}
 				}
 			}
 
@@ -392,8 +438,10 @@ namespace SimPe.Plugin.Gmdc
 							b.TargetIndex
 						].AssignedTransformNode;
 						if (tn != null)
+						{
 							Gmdc.Model.Transformations[b.TargetIndex] =
 								tn.GetEffectiveTransformation();
+						}
 
 						if (
 							Gmdc.ParentResourceNode != null
@@ -405,8 +453,12 @@ namespace SimPe.Plugin.Gmdc
 							SimPe.Interfaces.Scenegraph.ICresChildren icc =
 								tn.GetFirstParent();
 							if (icc != null)
+							{
 								if (icc.StoredTransformNode != null)
+								{
 									icc.StoredTransformNode.RemoveChild(tn.Index);
+								}
+							}
 
 							//second, add this Joint to it's new Parent (if one is available)
 							if (b.GetParentFrom(bns) != null)
@@ -415,7 +467,9 @@ namespace SimPe.Plugin.Gmdc
 									bns
 								).Bone.AssignedTransformNode;
 								if (np != null)
+								{
 									np.AddChild(tn.Index);
+								}
 							}
 						}
 					}
@@ -423,14 +477,21 @@ namespace SimPe.Plugin.Gmdc
 			}
 
 			if (this.Options.CleanBones)
+			{
 				Gmdc.CleanupBones();
+			}
+
 			if (this.Options.UpdateCres)
 			{
 				if (!IsLocalCres())
+				{
 					this.error +=
 						"\n\nThe referenced CRES and this GMDC are not in the same Package File. For security reasons, SimPe did not Update the Bone Hirarchy and locations!";
+				}
 				else
+				{
 					Gmdc.ParentResourceNode.Parent.SynchronizeUserData();
+				}
 			}
 		}
 
@@ -466,14 +527,23 @@ namespace SimPe.Plugin.Gmdc
 		{
 			int index = g.Target.Index;
 			if (index < 0 || index >= Gmdc.Groups.Length)
+			{
 				index = Gmdc.FindGroupByName(g.Target.Name);
+			}
+
 			if (index >= 0)
+			{
 				Gmdc.RemoveGroup(index);
+			}
 
 			//make sure to update the Groups
 			foreach (ImportedGroup ig in gs)
+			{
 				if (ig.Target.Index > index)
+				{
 					ig.Target.Index--;
+				}
+			}
 
 			RenameGroup(g);
 		}
@@ -486,7 +556,9 @@ namespace SimPe.Plugin.Gmdc
 		{
 			int index = g.Target.Index;
 			if (index < 0 || index >= Gmdc.Groups.Length)
+			{
 				index = Gmdc.FindGroupByName(g.Target.Name);
+			}
 
 			GmdcGroup grp = Gmdc.Groups[index];
 			GmdcLink lnk = Gmdc.Links[grp.LinkIndex];
@@ -536,12 +608,18 @@ namespace SimPe.Plugin.Gmdc
 		bool IsLocalCres()
 		{
 			if (Gmdc.ParentResourceNode == null)
+			{
 				return false;
+			}
+
 			if (
 				Gmdc.ParentResourceNode.Parent.Package.FileName.Trim().ToLower()
 				== Gmdc.Parent.Package.FileName.Trim().ToLower()
 			)
+			{
 				return true;
+			}
+
 			return false;
 		}
 
@@ -571,6 +649,7 @@ namespace SimPe.Plugin.Gmdc
 
 			//Create a TransformNode for the New Bone
 			if (Options.UpdateCres)
+			{
 				if ((Gmdc.ParentResourceNode != null) && (IsLocalCres()))
 				{
 					TransformNode tn = new TransformNode(
@@ -588,6 +667,7 @@ namespace SimPe.Plugin.Gmdc
 								typeof(SimPe.Interfaces.Scenegraph.IRcolBlock)
 							);
 				}
+			}
 
 			return nindex;
 		}
@@ -617,13 +697,17 @@ namespace SimPe.Plugin.Gmdc
 
 			//Change the TransformNode for the New Bone
 			if (Options.UpdateCres)
+			{
 				if (Gmdc.ParentResourceNode != null)
 				{
 					TransformNode tn = Gmdc.Joints[nindex].AssignedTransformNode;
 					tn.ObjectGraphNode.FileName = b.ImportedName;
 					if (tn != null)
+					{
 						tn.Transformation = b.Transformation.Clone();
+					}
 				}
+			}
 
 			return nindex;
 		}
@@ -705,7 +789,10 @@ namespace SimPe.Plugin.Gmdc
 		protected static void BuildCorrectionMap()
 		{
 			if (ajcor != null)
+			{
 				return;
+			}
+
 			ajcor = new Hashtable();
 
 			ajcor["l_thigh"] = new Vector3f(-Quaternion.DegToRad(180), 0, 0);
@@ -724,11 +811,17 @@ namespace SimPe.Plugin.Gmdc
 		public static Vector3f GetCorrectionVector(string name)
 		{
 			if (ajcor == null)
+			{
 				BuildCorrectionMap();
+			}
+
 			Vector3f r = (Vector3f)ajcor[name];
 
 			if (r == null)
+			{
 				r = new Vector3f(0, 0, 0);
+			}
+
 			return r;
 		}
 
@@ -740,10 +833,14 @@ namespace SimPe.Plugin.Gmdc
 		protected void ChangeAnim()
 		{
 			if (Gmdc.LinkedAnimation == null)
+			{
 				return;
+			}
 
 			foreach (ImportedFrameBlock ifb in AnimationBlocks)
+			{
 				ifb.FindTarget(Gmdc.LinkedAnimation);
+			}
 
 			if (ImportJointAnim.Execute(this.AnimationBlocks, Gmdc))
 			{
@@ -752,7 +849,9 @@ namespace SimPe.Plugin.Gmdc
 				if (this.AnimationBlocks.AuskelCorrection)
 				{
 					foreach (ImportedFrameBlock ifb in AnimationBlocks)
+					{
 						if (ifb.Action != AnimImporterAction.Nothing)
+						{
 							foreach (AnimationFrame af in ifb.FrameBlock.Frames)
 							{
 								Vector3f v = GetCorrectionVector(ifb.ImportedName);
@@ -761,14 +860,20 @@ namespace SimPe.Plugin.Gmdc
 								af.Float_Y -= (float)v.Y;
 								af.Float_Z -= (float)v.Z;
 							}
+						}
+					}
 				}
 
 				foreach (ImportedFrameBlock ifb in AnimationBlocks)
 				{
 					if (ifb.Action == AnimImporterAction.Replace)
+					{
 						ifb.ReplaceFrames();
+					}
 					else if (ifb.Action == AnimImporterAction.Add)
+					{
 						ifb.AddFrameBlock(Gmdc.LinkedAnimation);
+					}
 				}
 			}
 		}
@@ -788,7 +893,10 @@ namespace SimPe.Plugin.Gmdc
 			get
 			{
 				if (flname == null)
+				{
 					flname = "";
+				}
+
 				return flname;
 			}
 			set

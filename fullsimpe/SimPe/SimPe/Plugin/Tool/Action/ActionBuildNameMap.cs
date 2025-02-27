@@ -62,11 +62,13 @@ namespace SimPe.Plugin.Tool.Action
 
 			SimPe.Interfaces.Files.IPackedFileDescriptor pfd = null;
 			for (int i = 0; i < es.Count; i++)
+			{
 				if (es[i].HasFileDescriptor)
 				{
 					pfd = es[i].Resource.FileDescriptor;
 					break;
 				}
+			}
 
 			Data.TypeAlias a = Helper.TGILoader.GetByType(pfd.Type);
 			if (Data.MetaData.RcolList.Contains(a.Id))
@@ -84,15 +86,23 @@ namespace SimPe.Plugin.Tool.Action
 				nmap.FileDescriptor = fd;
 				bool add = false;
 				if (es.LoadedPackage.Package.FindFile(fd) == null)
+				{
 					add = true;
+				}
 
 				System.Collections.ArrayList list = new System.Collections.ArrayList();
 				foreach (SimPe.Events.ResourceContainer e in es)
 				{
 					if (!e.HasFileDescriptor)
+					{
 						continue;
+					}
+
 					if (e.Resource.FileDescriptor.Type != a.Id)
+					{
 						continue;
+					}
+
 					try
 					{
 						SimPe.Packages.PackedFileDescriptor p =
@@ -116,7 +126,9 @@ namespace SimPe.Plugin.Tool.Action
 
 				nmap.SynchronizeUserData();
 				if (add)
+				{
 					es.LoadedPackage.Package.Add(nmap.FileDescriptor);
+				}
 			}
 		}
 

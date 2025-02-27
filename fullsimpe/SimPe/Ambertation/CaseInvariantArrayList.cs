@@ -40,16 +40,25 @@ namespace Ambertation
 				foreach (object i in this)
 				{
 					if (i == null)
+					{
 						continue;
+					}
+
 					if (i is string)
+					{
 						if (((string)i).ToLower() == s)
+						{
 							return true;
+						}
+					}
 				}
 
 				return false;
 			}
 			else
+			{
 				return base.Contains(o);
+			}
 		}
 
 		public override void Remove(object obj)
@@ -62,13 +71,18 @@ namespace Ambertation
 				{
 					object i = this[k];
 					if (i == null)
+					{
 						continue;
+					}
+
 					if (i is string)
+					{
 						if (((string)i).ToLower() == s)
 						{
 							base.RemoveAt(k);
 							return;
 						}
+					}
 				}
 			}
 			else

@@ -138,19 +138,28 @@ namespace SimPe.PackedFiles.UserInterface
 				Boolset bs1 = srel.RelationState.Value;
 				Boolset bs2 = srel.RelationState2.Value;
 				for (int i = 0; i < ltcb.Count; i++)
+				{
 					if (ltcb[i] != null)
+					{
 						ltcb[i].Checked = ((Boolset)(i < 16 ? bs1 : bs2))[i & 0x0f];
+					}
+				}
 			}
 			else
 			{
 				Boolset bs1 = srel.RelationState.Value;
 				for (int i = 0; i < 16; i++)
+				{
 					if (ltcb[i] != null)
+					{
 						ltcb[i].Checked = ((Boolset)(bs1))[i & 0x0f];
+					}
+				}
 			}
 
 			form.cbfamtype.SelectedIndex = 0;
 			for (int i = 1; i < form.cbfamtype.Items.Count; i++)
+			{
 				if (
 					form.cbfamtype.Items[i]
 					== new Data.LocalizedRelationshipTypes(srel.FamilyRelation)
@@ -159,6 +168,7 @@ namespace SimPe.PackedFiles.UserInterface
 					form.cbfamtype.SelectedIndex = i;
 					break;
 				}
+			}
 		}
 
 		#endregion

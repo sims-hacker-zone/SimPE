@@ -269,9 +269,15 @@ namespace SimPe.Plugin.TabPage
 		private void FileNameChanged(object sender, System.EventArgs e)
 		{
 			if (this.Tag == null)
+			{
 				return;
+			}
+
 			if (tbdsc.Tag != null)
+			{
 				return;
+			}
+
 			try
 			{
 				tbdsc.Tag = true;
@@ -303,7 +309,9 @@ namespace SimPe.Plugin.TabPage
 		)
 		{
 			if (this.Tag == null)
+			{
 				return;
+			}
 
 			SimPe.Plugin.MaterialDefinition md = (SimPe.Plugin.MaterialDefinition)
 				this.Tag;

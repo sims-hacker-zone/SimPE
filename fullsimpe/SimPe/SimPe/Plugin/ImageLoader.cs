@@ -101,6 +101,7 @@ namespace SimPe.Plugin
 			get
 			{
 				if (img == null)
+				{
 					img = ImageLoader.Load(
 						size,
 						Data.Length,
@@ -109,6 +110,8 @@ namespace SimPe.Plugin
 						-1,
 						count
 					);
+				}
+
 				return img;
 			}
 		}
@@ -141,7 +144,9 @@ namespace SimPe.Plugin
 		public static DDSData[] ParesDDS(string flname)
 		{
 			if (!System.IO.File.Exists(flname))
+			{
 				return new DDSData[0];
+			}
 
 			DDSData[] maps = new DDSData[0];
 			//open the File
@@ -161,18 +166,29 @@ namespace SimPe.Plugin
 				string sig = Helper.ToString(reader.ReadBytes(0x04));
 				TxtrFormats format;
 				if (sig == "DXT1")
+				{
 					format = TxtrFormats.DXT1Format;
+				}
 				else if (sig == "DXT3")
+				{
 					format = TxtrFormats.DXT3Format;
+				}
 				else if (sig == "DXT5")
+				{
 					format = TxtrFormats.DXT5Format;
+				}
 				else
+				{
 					throw new Exception("Unknown DXT Format " + sig);
+				}
 
 				fs.Seek(0x80, System.IO.SeekOrigin.Begin);
 				int blocksize = 0x10;
 				if (format == TxtrFormats.DXT1Format)
+				{
 					blocksize = 0x8;
+				}
+
 				for (int i = 0; i < maps.Length; i++)
 				{
 					byte[] d = reader.ReadBytes(firstsize);
@@ -242,13 +258,21 @@ namespace SimPe.Plugin
 			hg = Math.Max(1, hg);
 
 			if (format == ImageLoader.TxtrFormats.DXT1Format)
+			{
 				datasize = (wd * hg) / 2;
+			}
 			else if (format == ImageLoader.TxtrFormats.Raw24Bit)
+			{
 				datasize = (wd * hg) * 3;
+			}
 			else if (format == ImageLoader.TxtrFormats.Raw32Bit)
+			{
 				datasize = (wd * hg) * 4;
+			}
 			else
+			{
 				datasize = (wd * hg);
+			}
 
 			if (
 				(format == ImageLoader.TxtrFormats.DXT1Format)
@@ -379,7 +403,10 @@ namespace SimPe.Plugin
 						r = reader.ReadByte();
 
 						if ((format == TxtrFormats.Raw32Bit))
+						{
 							a = reader.ReadByte();
+						}
+
 						bmp.SetPixel(x, y, Color.FromArgb(a, r, g, b));
 					}
 					else
@@ -395,7 +422,9 @@ namespace SimPe.Plugin
 		public static byte[] RAWWriter(Image img, TxtrFormats format)
 		{
 			if (img == null)
+			{
 				return new byte[0];
+			}
 
 			System.IO.BinaryWriter writer = new System.IO.BinaryWriter(
 				new System.IO.MemoryStream()
@@ -417,7 +446,9 @@ namespace SimPe.Plugin
 						writer.Write((byte)c.G);
 						writer.Write((byte)c.R);
 						if ((format == TxtrFormats.Raw32Bit))
+						{
 							writer.Write((byte)c.A);
+						}
 					}
 				}
 			}
@@ -686,9 +717,14 @@ namespace SimPe.Plugin
 			foreach (Color c in alphas)
 			{
 				if (c.A > table[0])
+				{
 					table[0] = c.A;
+				}
+
 				if (c.A < table[1])
+				{
 					table[1] = c.A;
+				}
 			}
 
 			//calculate interpolated Alphas
@@ -771,10 +807,12 @@ namespace SimPe.Plugin
 			//if (DXT3ColorDist(table, test) > DXT3ColorDist(test, table)) table= test;
 			//if (table.GetBrightness() > test.GetBrightness()) table=test;
 			if (table.ToArgb() > test.ToArgb())
+			{
 				table = test;
+			}
 			/*if (test.R<table.R) table = Color.FromArgb(table.A, test.R, table.G, table.B);
-			if (test.G<table.G) table = Color.FromArgb(table.A, table.R, test.G, table.B);
-			if (test.B<table.B) table = Color.FromArgb(table.A, table.R, table.G, test.B);*/
+if (test.G<table.G) table = Color.FromArgb(table.A, table.R, test.G, table.B);
+if (test.B<table.B) table = Color.FromArgb(table.A, table.R, table.G, test.B);*/
 		}
 
 		protected static void DXT3MaxColor(ref Color table, Color test)
@@ -782,10 +820,12 @@ namespace SimPe.Plugin
 			//if (DXT3ColorDist(table, test) < DXT3ColorDist(test, table)) table= test;
 			//if (table.GetBrightness() < test.GetBrightness()) table=test;
 			if (table.ToArgb() < test.ToArgb())
+			{
 				table = test;
+			}
 			/*if (test.R>table.R) table = Color.FromArgb(table.A, test.R, table.G, table.B);
-			if (test.G>table.G) table = Color.FromArgb(table.A, table.R, test.G, table.B);
-			if (test.B>table.B) table = Color.FromArgb(table.A, table.R, table.G, test.B);*/
+if (test.G>table.G) table = Color.FromArgb(table.A, table.R, test.G, table.B);
+if (test.B>table.B) table = Color.FromArgb(table.A, table.R, table.G, test.B);*/
 		}
 
 		protected static Color DXT3MixColors(Color c1, Color c2, double f1, double f2)
@@ -867,7 +907,10 @@ namespace SimPe.Plugin
 		public static byte[] DXT3Writer(Image img, TxtrFormats format)
 		{
 			if (img == null)
+			{
 				return new byte[0];
+			}
+
 			System.IO.BinaryWriter writer = new System.IO.BinaryWriter(
 				new System.IO.MemoryStream()
 			);
@@ -969,7 +1012,10 @@ namespace SimPe.Plugin
 			Image prev = new Bitmap(sz.Width, sz.Height);
 
 			if (img == null)
+			{
 				return prev;
+			}
+
 			Graphics g = Graphics.FromImage(prev);
 			g.InterpolationMode = System
 				.Drawing
@@ -1191,23 +1237,49 @@ namespace SimPe.Plugin
 			name = name.Trim().ToLower();
 
 			if (name.EndsWith(".png"))
+			{
 				return System.Drawing.Imaging.ImageFormat.Png;
+			}
+
 			if (name.EndsWith(".bmp"))
+			{
 				return System.Drawing.Imaging.ImageFormat.Bmp;
+			}
+
 			if (name.EndsWith(".gif"))
+			{
 				return System.Drawing.Imaging.ImageFormat.Gif;
+			}
+
 			if (name.EndsWith(".jpg"))
+			{
 				return System.Drawing.Imaging.ImageFormat.Jpeg;
+			}
+
 			if (name.EndsWith(".jpeg"))
+			{
 				return System.Drawing.Imaging.ImageFormat.Jpeg;
+			}
+
 			if (name.EndsWith(".tif"))
+			{
 				return System.Drawing.Imaging.ImageFormat.Tiff;
+			}
+
 			if (name.EndsWith(".tiff"))
+			{
 				return System.Drawing.Imaging.ImageFormat.Tiff;
+			}
+
 			if (name.EndsWith(".emf"))
+			{
 				return System.Drawing.Imaging.ImageFormat.Emf;
+			}
+
 			if (name.EndsWith(".wmf"))
+			{
 				return System.Drawing.Imaging.ImageFormat.Wmf;
+			}
 
 			return System.Drawing.Imaging.ImageFormat.Png;
 		}

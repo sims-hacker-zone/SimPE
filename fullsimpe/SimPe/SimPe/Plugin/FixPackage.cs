@@ -37,7 +37,9 @@ namespace SimPe.Plugin
 		{
 			int i = ArgParser.Parse(argv, "-fix");
 			if (i < 0)
+			{
 				return false;
+			}
 
 			string modelname = "";
 			string prefix = "";
@@ -48,11 +50,20 @@ namespace SimPe.Plugin
 			while (argv.Count > i)
 			{
 				if (ArgParser.Parse(argv, i, "-package", ref package))
+				{
 					continue;
+				}
+
 				if (ArgParser.Parse(argv, i, "-modelname", ref modelname))
+				{
 					continue;
+				}
+
 				if (ArgParser.Parse(argv, i, "-prefix", ref prefix))
+				{
 					continue;
+				}
+
 				if (ArgParser.Parse(argv, i, "-fixversion", ref vertxt))
 				{
 					switch (vertxt.Trim().ToLower())

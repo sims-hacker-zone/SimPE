@@ -34,12 +34,19 @@ namespace SimPe.Actions.Default
 		)
 		{
 			if (es == null)
+			{
 				return false;
+			}
+
 			if (es.LoadedPackage == null)
+			{
 				return false;
+			}
 
 			if (es.LoadedPackage.Loaded)
+			{
 				return es.HasResource;
+			}
 
 			return false;
 		}

@@ -77,7 +77,9 @@ namespace SimPe.Plugin
 						lvi.EnsureVisible();
 					}
 					else
+					{
 						lvi.Selected = false;
+					}
 				}
 
 				lv.Refresh();
@@ -497,7 +499,10 @@ namespace SimPe.Plugin
 		protected void AddItem(NgbhItem item)
 		{
 			if (item == null)
+			{
 				return;
+			}
+
 			ListViewItem lvi = new ListViewItem();
 			lvi.Text = item.ToString();
 			lvi.Tag = item;
@@ -515,21 +520,28 @@ namespace SimPe.Plugin
 		private void tbval_TextChanged(object sender, System.EventArgs e)
 		{
 			if (tbFlag.Tag != null)
+			{
 				return;
+			}
+
 			try
 			{
 				if (Helper.WindowsRegistry.HiddenMode)
+				{
 					GetSelectedItem().Value = Helper.StringToUInt16(
 						tbval.Text,
 						GetSelectedItem().Value,
 						16
 					);
+				}
 				else
+				{
 					GetSelectedItem().Value = Helper.StringToUInt16(
 						tbval.Text,
 						GetSelectedItem().Value,
 						10
 					);
+				}
 			}
 			catch (Exception ex)
 			{
@@ -543,7 +555,10 @@ namespace SimPe.Plugin
 		private void tbUnk_TextChanged(object sender, System.EventArgs e)
 		{
 			if (tbFlag.Tag != null)
+			{
 				return;
+			}
+
 			try
 			{
 				GetSelectedItem().InventoryNumber = Helper.StringToUInt32(
@@ -564,10 +579,15 @@ namespace SimPe.Plugin
 		private void ItemUp(object sender, System.EventArgs e)
 		{
 			if (lbmem.SelectedItems.Count == 0)
+			{
 				return;
+			}
+
 			int SelectedIndex = lbmem.SelectedItems[0].Index;
 			if (SelectedIndex < 1)
+			{
 				return;
+			}
 
 			ListViewItem lvi = (ListViewItem)lbmem.Items[SelectedIndex];
 
@@ -599,12 +619,20 @@ namespace SimPe.Plugin
 		private void ItemDown(object sender, System.EventArgs e)
 		{
 			if (lbmem.SelectedItems.Count == 0)
+			{
 				return;
+			}
+
 			int SelectedIndex = lbmem.SelectedItems[0].Index;
 			if (SelectedIndex < 0)
+			{
 				return;
+			}
+
 			if (SelectedIndex > lbmem.Items.Count - 2)
+			{
 				return;
+			}
 
 			ListViewItem lvi = (ListViewItem)lbmem.Items[SelectedIndex];
 			lbmem.Items[SelectedIndex] = (ListViewItem)
@@ -672,7 +700,10 @@ namespace SimPe.Plugin
 		)
 		{
 			if (lv.SelectedItems.Count == 0)
+			{
 				return;
+			}
+
 			try
 			{
 				PackedFiles.Wrapper.SDesc sdesc = (PackedFiles.Wrapper.SDesc)
@@ -683,7 +714,10 @@ namespace SimPe.Plugin
 				{
 					Interfaces.IAlias a = (Interfaces.IAlias)cbown.Items[i];
 					if (a.Tag == null)
+					{
 						continue;
+					}
+
 					ushort inst = (ushort)a.Tag[0];
 					if (inst == sdesc.Instance)
 					{
@@ -706,7 +740,10 @@ namespace SimPe.Plugin
 			gbmem.Enabled = false;
 			memilist.Images.Clear();
 			if (lv.SelectedItems.Count < 1)
+			{
 				return;
+			}
+
 			gbmem.Enabled = true;
 
 			this.Cursor = Cursors.WaitCursor;
@@ -724,11 +761,17 @@ namespace SimPe.Plugin
 				);
 
 				if (items != null)
+				{
 					foreach (NgbhItem item in items)
+					{
 						this.AddItem(item);
+					}
+				}
 
 				if (lbmem.Items.Count > 0)
+				{
 					lbmem.Items[0].Selected = true;
+				}
 			}
 			catch (Exception ex)
 			{
@@ -744,12 +787,15 @@ namespace SimPe.Plugin
 		protected NgbhItem GetSelectedItem()
 		{
 			if (this.lbmem.SelectedItems.Count == 0)
+			{
 				return new NgbhItem(
 					new NgbhSlot(
 						(Ngbh)wrapper,
 						(Data.NeighborhoodSlots)this.cbtype.SelectedValue
 					)
 				);
+			}
+
 			return (NgbhItem)lbmem.SelectedItems[0].Tag;
 		}
 
@@ -766,9 +812,13 @@ namespace SimPe.Plugin
 			this.tbUnk.Text =
 				"0x" + Helper.HexString(GetSelectedItem().InventoryNumber);
 			if (Helper.WindowsRegistry.HiddenMode)
+			{
 				this.tbval.Text = "0x" + Helper.HexString(GetSelectedItem().Value);
+			}
 			else
+			{
 				this.tbval.Text = GetSelectedItem().Value.ToString();
+			}
 
 			tbFlag.Tag = null;
 
@@ -808,7 +858,10 @@ namespace SimPe.Plugin
 			{
 				Interfaces.IAlias a = (Interfaces.IAlias)cbown.Items[i];
 				if (a.Tag == null)
+				{
 					continue;
+				}
+
 				ushort inst = (ushort)a.Tag[0];
 				if (inst == GetSelectedItem().OwnerInstance)
 				{
@@ -821,7 +874,10 @@ namespace SimPe.Plugin
 			lbdata.Tag = true;
 			lbdata.Text = "";
 			foreach (ushort s in GetSelectedItem().Data)
+			{
 				lbdata.Text += Helper.HexString(s) + " ";
+			}
+
 			lbdata.Tag = null;
 
 			pb.Image = GetSelectedItem().MemoryCacheItem.Icon;
@@ -830,7 +886,10 @@ namespace SimPe.Plugin
 		private void ChgFlags(object sender, System.EventArgs e)
 		{
 			if (tbFlag.Tag != null)
+			{
 				return;
+			}
+
 			tbFlag.Tag = true;
 			GetSelectedItem().Flags.IsVisible = this.cbvis.Checked;
 			GetSelectedItem().Flags.IsControler = this.cbaction.Checked;
@@ -842,7 +901,10 @@ namespace SimPe.Plugin
 		private void ChgFlag(object sender, System.EventArgs e)
 		{
 			if (tbFlag.Tag != null)
+			{
 				return;
+			}
+
 			try
 			{
 				GetSelectedItem().Flags.Value = Convert.ToUInt16(tbFlag.Text, 16);
@@ -859,10 +921,15 @@ namespace SimPe.Plugin
 		private void ChgGuidItem(object sender, System.EventArgs e)
 		{
 			if (tbguid.Tag != null)
+			{
 				return;
+			}
 
 			if (cbguid.SelectedIndex < 1)
+			{
 				return;
+			}
+
 			Interfaces.IAlias a = (Interfaces.IAlias)cbguid.Items[cbguid.SelectedIndex];
 			tbguid.Text = "0x" + Helper.HexString(a.Id);
 		}
@@ -870,7 +937,9 @@ namespace SimPe.Plugin
 		private void ChgGuid(object sender, System.EventArgs e)
 		{
 			if (tbguid.Tag != null)
+			{
 				return;
+			}
 
 			try
 			{
@@ -889,22 +958,33 @@ namespace SimPe.Plugin
 		private void ChgSubjectItem(object sender, System.EventArgs e)
 		{
 			if (tbsub.Tag != null)
+			{
 				return;
+			}
 
 			if (cbsub.SelectedIndex < 1)
+			{
 				return;
+			}
+
 			Interfaces.IAlias a = (Interfaces.IAlias)cbsub.Items[cbsub.SelectedIndex];
 			tbsubid.Text = "0x" + Helper.HexString(a.Id);
 			if (a.Tag != null)
+			{
 				tbsub.Text = "0x" + Helper.HexString((ushort)a.Tag[0]);
+			}
 			else
+			{
 				tbsub.Text = "0x0000";
+			}
 		}
 
 		private void ChgSubject(object sender, System.EventArgs e)
 		{
 			if (tbsub.Tag != null)
+			{
 				return;
+			}
 
 			try
 			{
@@ -923,7 +1003,9 @@ namespace SimPe.Plugin
 		private void ChgSubjectID(object sender, System.EventArgs e)
 		{
 			if (tbsub.Tag != null)
+			{
 				return;
+			}
 
 			try
 			{
@@ -942,21 +1024,32 @@ namespace SimPe.Plugin
 		private void ChgOwnerItem(object sender, System.EventArgs e)
 		{
 			if (tbown.Tag != null)
+			{
 				return;
+			}
 
 			if (cbown.SelectedIndex < 1)
+			{
 				return;
+			}
+
 			Interfaces.IAlias a = (Interfaces.IAlias)cbown.Items[cbown.SelectedIndex];
 			if (a.Tag != null)
+			{
 				tbown.Text = "0x" + Helper.HexString((ushort)a.Tag[0]);
+			}
 			else
+			{
 				tbown.Text = "0x0000";
+			}
 		}
 
 		private void ChgOwner(object sender, System.EventArgs e)
 		{
 			if (tbown.Tag != null)
+			{
 				return;
+			}
 
 			try
 			{
@@ -975,7 +1068,9 @@ namespace SimPe.Plugin
 		private void ChgData(object sender, System.EventArgs e)
 		{
 			if (lbdata.Tag != null)
+			{
 				return;
+			}
 
 			string[] tokens = lbdata.Text.Split(" ".ToCharArray());
 			ushort[] data = new ushort[tokens.Length];
@@ -985,9 +1080,13 @@ namespace SimPe.Plugin
 				for (int i = 0; i < tokens.Length; i++)
 				{
 					if (tokens[i].Trim() != "")
+					{
 						data[i] = Convert.ToUInt16(tokens[i], 16);
+					}
 					else
+					{
 						data[i] = 0;
+					}
 				}
 
 				this.GetSelectedItem().Data = data;
@@ -1024,11 +1123,18 @@ namespace SimPe.Plugin
 		)
 		{
 			if (lbmem.SelectedItems.Count == 0)
+			{
 				return;
+			}
+
 			if (cbtype.SelectedIndex % 2 == 1)
+			{
 				GetSelectedItem().RemoveFromParentB();
+			}
 			else
+			{
 				GetSelectedItem().RemoveFromParentA();
+			}
 
 			lbmem.Items.Remove(lbmem.SelectedItems[0]);
 		}
@@ -1039,7 +1145,9 @@ namespace SimPe.Plugin
 		)
 		{
 			if (lv.SelectedItems.Count <= 0)
+			{
 				return;
+			}
 
 			this.Cursor = Cursors.WaitCursor;
 			try

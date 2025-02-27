@@ -48,9 +48,14 @@ namespace SimPe.Plugin
 		public NgbhSlotList(Ngbh parent)
 		{
 			if (parent != null)
+			{
 				this.Version = parent.Version;
+			}
 			else
+			{
 				this.Version = NgbhVersion.University;
+			}
+
 			this.Parent = parent;
 			itemsa = new SimPe.Plugin.Collections.NgbhItems(this);
 			itemsb = new SimPe.Plugin.Collections.NgbhItems(this);
@@ -76,7 +81,9 @@ namespace SimPe.Plugin
 				{
 					slotid = value;
 					if (Parent != null)
+					{
 						Parent.Changed = true;
+					}
 				}
 			}
 		}
@@ -99,7 +106,9 @@ namespace SimPe.Plugin
 			{
 				itemsa = value;
 				if (Parent != null)
+				{
 					Parent.Changed = true;
+				}
 			}
 		}
 
@@ -121,7 +130,9 @@ namespace SimPe.Plugin
 			{
 				itemsb = value;
 				if (Parent != null)
+				{
 					Parent.Changed = true;
+				}
 			}
 		}
 
@@ -132,7 +143,9 @@ namespace SimPe.Plugin
 				|| id == Data.NeighborhoodSlots.Lots
 				|| id == Data.NeighborhoodSlots.Sims
 			)
+			{
 				return ItemsB;
+			}
 
 			return ItemsA;
 		}
@@ -144,7 +157,9 @@ namespace SimPe.Plugin
 		internal virtual void Unserialize(System.IO.BinaryReader reader)
 		{
 			if ((uint)Parent.Version >= (uint)NgbhVersion.Nightlife)
+			{
 				version = reader.ReadUInt32();
+			}
 
 			uint ct = reader.ReadUInt32();
 			itemsa.Clear();
@@ -163,7 +178,9 @@ namespace SimPe.Plugin
 			}
 
 			if (Parent != null)
+			{
 				Parent.Changed = false;
+			}
 		}
 
 		/// <summary>
@@ -177,15 +194,21 @@ namespace SimPe.Plugin
 		internal virtual void Serialize(System.IO.BinaryWriter writer)
 		{
 			if ((uint)Parent.Version >= (uint)NgbhVersion.Nightlife)
+			{
 				writer.Write(version);
+			}
 
 			writer.Write((uint)itemsa.Length);
 			for (int j = 0; j < itemsa.Length; j++)
+			{
 				itemsa[j].Serialize(writer);
+			}
 
 			writer.Write((uint)itemsb.Length);
 			for (int j = 0; j < itemsb.Length; j++)
+			{
 				itemsb[j].Serialize(writer);
+			}
 		}
 
 		public uint GetNextInventoryNumber()
@@ -200,7 +223,10 @@ namespace SimPe.Plugin
 		{
 			NgbhItem res = itemsa.FindItemByGuid(guid);
 			if (res == null)
+			{
 				res = itemsb.FindItemByGuid(guid);
+			}
+
 			return res;
 		}
 
@@ -208,7 +234,10 @@ namespace SimPe.Plugin
 		{
 			int wooh = itemsa.CountItemsByGuid(guid);
 			if (wooh == 0)
+			{
 				wooh = itemsb.CountItemsByGuid(guid);
+			}
+
 			return wooh;
 		}
 	}
@@ -293,7 +322,9 @@ namespace SimPe.Plugin
 							simMemory.OwnerInstance == this.SlotID
 						)
 					)
+					{
 						memoriesToRemove.Add(simMemory);
+					}
 				}
 
 				if (memoriesToRemove.Count > 0)

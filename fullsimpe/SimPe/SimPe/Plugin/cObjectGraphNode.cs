@@ -134,9 +134,13 @@ namespace SimPe.Plugin
 			}
 
 			if (version == 0x04)
+			{
 				FileName = reader.ReadString();
+			}
 			else
+			{
 				FileName = "cObjectGraphNode";
+			}
 		}
 
 		/// <summary>
@@ -158,7 +162,9 @@ namespace SimPe.Plugin
 			}
 
 			if (version == 0x04)
+			{
 				writer.Write(FileName);
+			}
 		}
 
 		TabPage.ObjectGraphNode tObjectGraphNode;
@@ -167,7 +173,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (tObjectGraphNode == null)
+				{
 					tObjectGraphNode = new SimPe.Plugin.TabPage.ObjectGraphNode();
+				}
+
 				return tObjectGraphNode;
 			}
 		}
@@ -179,11 +188,15 @@ namespace SimPe.Plugin
 		protected override void InitTabPage()
 		{
 			if (tObjectGraphNode == null)
+			{
 				tObjectGraphNode = new SimPe.Plugin.TabPage.ObjectGraphNode();
+			}
 
 			tObjectGraphNode.lb_ogn.Items.Clear();
 			for (int i = 0; i < this.Items.Length; i++)
+			{
 				tObjectGraphNode.lb_ogn.Items.Add(Items[i]);
+			}
 
 			tObjectGraphNode.tb_ogn_file.Text = this.FileName;
 			tObjectGraphNode.tb_ogn_ver.Text = "0x" + Helper.HexString(this.version);
@@ -199,7 +212,10 @@ namespace SimPe.Plugin
 		public override void Dispose()
 		{
 			if (this.tObjectGraphNode != null)
+			{
 				this.tObjectGraphNode.Dispose();
+			}
+
 			tObjectGraphNode = null;
 		}
 

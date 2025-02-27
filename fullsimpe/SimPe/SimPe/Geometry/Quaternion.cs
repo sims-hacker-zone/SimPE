@@ -158,9 +158,13 @@ namespace SimPe.Geometry
 					- (2 * Math.Sqrt(Math.Pow(X + Y + Z + W, 2) - 4.0 * (Norm - z)))
 				) / 8.0;
 			if (d1 < d2)
+			{
 				return d2;
+			}
 			else
+			{
 				return d1;
+			}
 		}
 
 		public double GetMoveMinus(double z)
@@ -176,9 +180,13 @@ namespace SimPe.Geometry
 					- (2 * Math.Sqrt(Math.Pow(X + Y + Z + W, 2) - 4.0 * (Norm - z)))
 				) / 8.0;
 			if (d1 > d2)
+			{
 				return d2;
+			}
 			else
+			{
 				return d1;
+			}
 		}
 #endif
 
@@ -438,7 +446,10 @@ namespace SimPe.Geometry
 				double sina = Math.Sqrt(1 - Math.Pow(W, 2)); //(double)Math.Sin(Angle/2.0);
 
 				if (sina == 0)
+				{
 					return new Vector3f(0, 0, 0);
+				}
+
 				return new Vector3f(X / sina, Y / sina, Z / sina);
 			}
 		}
@@ -477,9 +488,15 @@ namespace SimPe.Geometry
 		protected double Clip1(double d)
 		{
 			if (d < -1)
+			{
 				return -1;
+			}
+
 			if (d > 1)
+			{
 				return 1;
+			}
+
 			return d;
 		}
 
@@ -724,9 +741,14 @@ namespace SimPe.Geometry
 		double NormalizeRad(double rad)
 		{
 			while (rad > Math.PI)
+			{
 				rad -= 2 * Math.PI;
+			}
+
 			while (rad < -Math.PI)
+			{
 				rad += 2 * Math.PI;
+			}
 
 			return rad;
 		}
@@ -971,7 +993,9 @@ namespace SimPe.Geometry
 		{
 			Quaternions list = new Quaternions();
 			foreach (Quaternion item in this)
+			{
 				list.Add(item);
+			}
 
 			return list;
 		}

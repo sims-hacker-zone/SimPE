@@ -91,7 +91,9 @@ namespace SimPe.Plugin
 			}
 
 			if (!check)
+			{
 				ObjectStateIndex = (uint[])Helper.Add(ObjectStateIndex, val);
+			}
 
 			return !check;
 		}

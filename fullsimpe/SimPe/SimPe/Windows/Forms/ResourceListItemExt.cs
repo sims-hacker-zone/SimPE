@@ -51,16 +51,22 @@ namespace SimPe.Windows.Forms
 
 			// Inst
 			if (Helper.WindowsRegistry.ResourceListInstanceFormatHexOnly)
+			{
 				subitems[4] = "0x" + Helper.HexString(pfd.Descriptor.Instance);
+			}
 			else if (Helper.WindowsRegistry.ResourceListInstanceFormatDecOnly)
+			{
 				subitems[4] = ((int)pfd.Descriptor.Instance).ToString();
+			}
 			else
+			{
 				subitems[4] =
 					"0x"
 					+ Helper.HexString(pfd.Descriptor.Instance)
 					+ " ("
 					+ ((int)pfd.Descriptor.Instance).ToString()
 					+ ")";
+			}
 
 			subitems[5] = "0x" + Helper.HexString(pfd.Descriptor.Offset);
 			subitems[6] = "0x" + Helper.HexString(pfd.Descriptor.Size);
@@ -68,7 +74,9 @@ namespace SimPe.Windows.Forms
 			this.SubItems.Clear();
 			this.Text = (string)subitems[0];
 			for (int i = 1; i < subitems.Length; i++)
+			{
 				SubItems.Add(subitems[i]);
+			}
 
 			this.ImageIndex = ResourceViewManager.GetIndexForResourceType(
 				pfd.Descriptor.Type
@@ -87,17 +95,25 @@ namespace SimPe.Windows.Forms
 				Helper.WindowsRegistry.ResourceListExtensionFormat
 				== Registry.ResourceListExtensionFormats.Short
 			)
+			{
 				return pfd.Descriptor.TypeName.shortname;
+			}
+
 			if (
 				Helper.WindowsRegistry.ResourceListExtensionFormat
 				== Registry.ResourceListExtensionFormats.Long
 			)
+			{
 				return pfd.Descriptor.TypeName.Name;
+			}
+
 			if (
 				Helper.WindowsRegistry.ResourceListExtensionFormat
 				== Registry.ResourceListExtensionFormats.Hex
 			)
+			{
 				return "0x" + Helper.HexString(pfd.Descriptor.Type);
+			}
 
 			return "";
 		}
@@ -134,7 +150,9 @@ namespace SimPe.Windows.Forms
 				{
 					vis = value;
 					if (vis)
+					{
 						ChangeDescription(false);
+					}
 				}
 			}
 		}
@@ -155,26 +173,40 @@ namespace SimPe.Windows.Forms
 			{
 				pfd.ResetRealName();
 				if (Visible)
+				{
 					this.Text = pfd.GetRealName();
+				}
 				else
+				{
 					this.Text = pfd.Descriptor.ToResListString();
+				}
 
 				if (Helper.WindowsRegistry.ResourceListShowExtensions)
+				{
 					this.SubItems[1].Text = GetExtText();
+				}
+
 				this.SubItems[2].Text = "0x" + Helper.HexString(pfd.Descriptor.Group);
 				this.SubItems[3].Text = "0x" + Helper.HexString(pfd.Descriptor.SubType);
 				if (Helper.WindowsRegistry.ResourceListInstanceFormatHexOnly)
+				{
 					this.SubItems[4].Text =
 						"0x" + Helper.HexString(pfd.Descriptor.Instance);
+				}
 				else if (Helper.WindowsRegistry.ResourceListInstanceFormatDecOnly)
+				{
 					this.SubItems[4].Text = ((int)pfd.Descriptor.Instance).ToString();
+				}
 				else
+				{
 					this.SubItems[4].Text =
 						"0x"
 						+ Helper.HexString(pfd.Descriptor.Instance)
 						+ " ("
 						+ ((int)pfd.Descriptor.Instance).ToString()
 						+ ")";
+				}
+
 				this.SubItems[5].Text = "0x" + Helper.HexString(pfd.Descriptor.Offset);
 				this.SubItems[6].Text = "0x" + Helper.HexString(pfd.Descriptor.Size);
 			}
@@ -197,20 +229,24 @@ namespace SimPe.Windows.Forms
 			}
 
 			if (pfd.Descriptor.MarkForReCompress)
+			{
 				font = new System.Drawing.Font(
 					font.FontFamily,
 					font.Size,
 					font.Style | System.Drawing.FontStyle.Bold,
 					font.Unit
 				);
+			}
 
 			if (pfd.Descriptor.Changed)
+			{
 				font = new System.Drawing.Font(
 					font.FontFamily,
 					font.Size,
 					font.Style | System.Drawing.FontStyle.Italic,
 					font.Unit
 				);
+			}
 
 			this.Font = font;
 			this.ForeColor = fg;

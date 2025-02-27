@@ -499,13 +499,18 @@ namespace Ambertation.Windows.Forms
 			{
 				data = value;
 				if (data == null)
+				{
 					data = new byte[0];
+				}
+
 				UpdateRows(0);
 				crow = 0;
 
 				bool pause = this.pause;
 				if (!pause)
+				{
 					BeginUpdate();
+				}
 
 				selection.Maximum = data.Length;
 				Highlights.Clear();
@@ -513,10 +518,14 @@ namespace Ambertation.Windows.Forms
 				this.DoSelect(-1, 0);
 				this.Refresh();
 				if (!pause)
+				{
 					EndUpdate();
+				}
 
 				if (DataChanged != null)
+				{
 					DataChanged(this, new EventArgs());
+				}
 			}
 		}
 
@@ -529,7 +538,10 @@ namespace Ambertation.Windows.Forms
 			get
 			{
 				if (SelectionStart < 0)
+				{
 					return 0;
+				}
+
 				return SelectionStart;
 			}
 			set
@@ -580,8 +592,13 @@ namespace Ambertation.Windows.Forms
 					Width - (OffsetBoxWidth + CharBoxWidth + 2 * WINDOWSPACING + 1)
 				);
 				if (sb != null)
+				{
 					if (sb.Visible)
+					{
 						w -= sb.Width + WINDOWSPACING;
+					}
+				}
+
 				return w;
 			}
 		}
@@ -606,7 +623,10 @@ namespace Ambertation.Windows.Forms
 			get
 			{
 				if (Columns == 0)
+				{
 					return 0;
+				}
+
 				return Data.Length / Columns + 1;
 			}
 		}
@@ -673,7 +693,10 @@ namespace Ambertation.Windows.Forms
 			get
 			{
 				if (cwidth == 0)
+				{
 					this.UpdateCharWidth();
+				}
+
 				return cwidth;
 			}
 		}
@@ -890,9 +913,13 @@ namespace Ambertation.Windows.Forms
 		public void AddHighlightInterval(int start, int end)
 		{
 			if (start < end)
+			{
 				AddHighlight(start, end - start);
+			}
 			else
+			{
 				AddHighlight(end, start - end);
+			}
 		}
 
 		public void AddHighlight(int start, int len)
@@ -926,10 +953,15 @@ namespace Ambertation.Windows.Forms
 		public void EndUpdate()
 		{
 			if (!pause)
+			{
 				return;
+			}
+
 			pause = false;
 			if (refresh)
+			{
 				Refresh();
+			}
 		}
 
 		/// <summary>
@@ -960,7 +992,9 @@ namespace Ambertation.Windows.Forms
 			Refresh();
 
 			if (SelectionChanged != null)
+			{
 				SelectionChanged(this, new System.EventArgs());
+			}
 		}
 
 		/// <summary>
@@ -973,9 +1007,15 @@ namespace Ambertation.Windows.Forms
 		internal static string SetLength(string s, int len, char fill)
 		{
 			if (s.Length > len)
+			{
 				return s.Substring(s.Length - len, len);
+			}
+
 			while (s.Length < len)
+			{
 				s = fill + s;
+			}
+
 			return s;
 		}
 
@@ -984,9 +1024,14 @@ namespace Ambertation.Windows.Forms
 		{
 			base.OnVisibleChanged(e);
 			if (this.Visible == false)
+			{
 				BeginUpdate();
+			}
+
 			if (this.Visible == true)
+			{
 				EndUpdate();
+			}
 		}
 
 		protected override void OnResize(EventArgs e)
@@ -994,7 +1039,10 @@ namespace Ambertation.Windows.Forms
 			base.OnResize(e);
 			RedrawGraphics();
 			if (CurrentRow + this.GetHexBoxRowsPerPage() >= Rows)
+			{
 				this.CurrentRow = (int)Math.Max(0, Rows - this.GetHexBoxRowsPerPage());
+			}
+
 			base.Refresh();
 		}
 
@@ -1031,11 +1079,16 @@ namespace Ambertation.Windows.Forms
 			SetScrollBar();
 
 			if (olvis != sb.Visible)
+			{
 				this.RedrawGraphics();
+			}
 			else
 			{
 				if (rows)
+				{
 					this.UpdateRows(0);
+				}
+
 				UpdateGraphics();
 			}
 
@@ -1062,9 +1115,13 @@ namespace Ambertation.Windows.Forms
 					DoSelect(0, -1);
 				}
 				else if (of <= this.SelectionStart)
+				{
 					this.DoSelect(of, this.SelectionStart - of + this.SelectionLength);
+				}
 				else
+				{
 					this.DoSelect(this.SelectionStart, of - this.SelectionStart + 1);
+				}
 			}
 		}
 
@@ -1078,7 +1135,9 @@ namespace Ambertation.Windows.Forms
 			CurrentRow = e.NewValue;
 			//this.Refresh();
 			if (Scroll != null)
+			{
 				Scroll(this, e);
+			}
 		}
 
 		#endregion
@@ -1131,14 +1190,22 @@ namespace Ambertation.Windows.Forms
 		protected void RedrawGraphics()
 		{
 			if (Width == 0)
+			{
 				return;
+			}
+
 			if (Height == 0)
+			{
 				return;
+			}
+
 			SetScrollBar();
 			UpdateHexBoxRowHeight();
 			UpdateRows(0);
 			if (cachedimage != null)
+			{
 				cachedimage.Dispose();
+			}
 
 			cachedimage = new Bitmap(Width, Height);
 			System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(cachedimage);
@@ -1202,9 +1269,14 @@ namespace Ambertation.Windows.Forms
 			int offset = (this.CurrentRow) * Columns;
 
 			if (offset > this.SelectionEnd)
+			{
 				return;
+			}
+
 			if (offset + this.GetHexBoxRowsPerPage() * Columns < this.SelectionStart)
+			{
 				return;
+			}
 
 			int delta = this.SelectionStart - offset;
 			int first = Math.Min(rowimage.Length - 1, Math.Max(0, delta / Columns));
@@ -1213,7 +1285,9 @@ namespace Ambertation.Windows.Forms
 			int last = Math.Min(rowimage.Length - 1, Math.Max(0, delta / Columns));
 
 			for (int i = first; i <= last; i++)
+			{
 				this.PaintRow(rowimage[i], i);
+			}
 		}
 
 		/// <summary>
@@ -1224,9 +1298,14 @@ namespace Ambertation.Windows.Forms
 			int offset = (this.CurrentRow) * Columns;
 
 			if (offset > this.SelectionEnd)
+			{
 				return;
+			}
+
 			if (offset + this.GetHexBoxRowsPerPage() * Columns < this.SelectionStart)
+			{
 				return;
+			}
 
 			int delta = this.SelectionStart - offset;
 			int first = Math.Min(rowimage.Length - 1, Math.Max(0, delta / Columns));
@@ -1243,9 +1322,14 @@ namespace Ambertation.Windows.Forms
 			if (olast < first || ofirst > last)
 			{
 				for (int i = ofirst; i <= olast; i++)
+				{
 					this.PaintRow(rowimage[i], i);
+				}
+
 				for (int i = first; i <= last; i++)
+				{
 					this.PaintRow(rowimage[i], i);
+				}
 			}
 			else
 			{
@@ -1254,7 +1338,9 @@ namespace Ambertation.Windows.Forms
 					int mfirst = Math.Min(ofirst, first);
 					int mlast = Math.Max(ofirst, first);
 					for (int i = mfirst; i <= mlast; i++)
+					{
 						this.PaintRow(rowimage[i], i);
+					}
 				}
 
 				if (olde != this.SelectionEnd)
@@ -1262,7 +1348,9 @@ namespace Ambertation.Windows.Forms
 					int mfirst = Math.Min(olast, last);
 					int mlast = Math.Max(olast, last);
 					for (int i = mfirst; i <= mlast; i++)
+					{
 						this.PaintRow(rowimage[i], i);
+					}
 				}
 			}
 		}
@@ -1274,7 +1362,10 @@ namespace Ambertation.Windows.Forms
 		protected void MoveRows(int delta)
 		{
 			if (delta == 0)
+			{
 				return;
+			}
+
 			if (Math.Abs(delta) >= rowimage.Length)
 			{
 				UpdateRows(delta);
@@ -1293,7 +1384,9 @@ namespace Ambertation.Windows.Forms
 					go = i - delta;
 
 					if (go >= 0 && go < rowimage.Length)
+					{
 						rowimage[go] = rowimage[i];
+					}
 				}
 				for (int i = go + 1; i < end; i++)
 				{
@@ -1311,7 +1404,9 @@ namespace Ambertation.Windows.Forms
 					go = i - delta;
 
 					if (go >= 0 && go < rowimage.Length)
+					{
 						rowimage[go] = rowimage[i];
+					}
 				}
 				for (int i = go - 1; i >= 0; i--)
 				{
@@ -1331,8 +1426,13 @@ namespace Ambertation.Windows.Forms
 		protected void UpdateRows(int delta)
 		{
 			if (rowimage != null)
+			{
 				foreach (Bitmap b in rowimage)
+				{
 					b.Dispose();
+				}
+			}
+
 			rowimage = new Bitmap[(int)this.GetHexBoxRowsPerPage() + 2];
 			for (int i = 0; i < rowimage.Length; i++)
 			{
@@ -1525,7 +1625,10 @@ namespace Ambertation.Windows.Forms
 				width -= radius - COLSPACING;
 			}
 			if (end)
+			{
 				width -= diameter - COLSPACING;
+			}
+
 			Rectangle rect = new Rectangle(left, top, width, src.Top + diameter);
 			int mid = rect.Top + (radius / 2);
 
@@ -1534,14 +1637,24 @@ namespace Ambertation.Windows.Forms
 			System.Drawing.Drawing2D.GraphicsPath gp =
 				new System.Drawing.Drawing2D.GraphicsPath();
 			if (start)
+			{
 				gp.AddArc(src.Left, rect.Top, diameter, diameter, 90, 180);
+			}
 			else
+			{
 				gp.AddLine(src.Left, rect.Bottom, src.Left, rect.Top);
+			}
+
 			gp.AddLine(rect.Left, rect.Top, rect.Right, rect.Top);
 			if (end)
+			{
 				gp.AddArc(rect.Right, rect.Top, diameter, diameter, 270, 180);
+			}
 			else
+			{
 				gp.AddLine(rect.Right, rect.Top, rect.Right, rect.Bottom);
+			}
+
 			gp.AddLine(rect.Right, rect.Bottom, rect.Left, rect.Bottom);
 			/*gp.AddArc(x + width - radius, y + height - radius, radius, radius, 0, 90);
 			gp.AddLine(x + width - radius, y + height, x + radius, y + height);
@@ -1624,16 +1737,23 @@ namespace Ambertation.Windows.Forms
 			int hlen = sel.Length;
 			int hend = sel.End;
 			if (hlen < 1 || hstart < 0)
+			{
 				return;
+			}
+
 			if (hstart < offset + Columns && hend >= offset)
 			{
 				int start = offset;
 				if (hstart >= offset && hstart < offset + Columns)
+				{
 					start = hstart;
+				}
 
 				int end = offset + Columns - 1;
 				if (hend >= offset && hend < offset + Columns)
+				{
 					end = hend;
+				}
 
 				DrawBar(
 					g,
@@ -1704,16 +1824,19 @@ namespace Ambertation.Windows.Forms
 
 			RectangleF dst = new RectangleF(left, 0, width, height);
 			if (offset < data.Length)
+			{
 				g.DrawString(
 					SetLength(offset.ToString("x"), 8, '0'),
 					HeaderFont,
 					ForeBrush,
 					dst
 				);
+			}
 
 			SetGraphicsMode(g, false);
 			DrawRowSelection(g, offset, b.Height);
 			foreach (Highlight h in Highlights)
+			{
 				DrawRowSelection(
 					g,
 					new SolidBrush(HighlightColor),
@@ -1721,6 +1844,8 @@ namespace Ambertation.Windows.Forms
 					b.Height,
 					h
 				);
+			}
+
 			SetGraphicsMode(g, true);
 
 			width = (int)this.HexBoxColumnWidth + COLSPACING;
@@ -1733,23 +1858,34 @@ namespace Ambertation.Windows.Forms
 				{
 					SolidBrush brush;
 					if (selection.Contains(offset))
+					{
 						brush = new SolidBrush(this.SelectionForeColor);
+					}
 					else
+					{
 						brush = ForeBrush;
+					}
 
 					foreach (Highlight h in Highlights)
+					{
 						if (h.Contains(offset))
 						{
 							brush = new SolidBrush(this.HighlightForeColor);
 							break;
 						}
+					}
 
 					left = this.GetHexColLeft(c);
 					string txt;
 					if (vs == ViewState.Hex)
+					{
 						txt = SetLength(data[offset].ToString("x"), 2, '0');
+					}
 					else
+					{
 						txt = data[offset].ToString();
+					}
+
 					dst = new RectangleF(left + COLSPACING, 0, width, height);
 					//if ( row == acell.Y && c==acell.X) DrawHighlightedCell(g, left, 0, width, height);
 					g.DrawString(txt, Font, brush, dst);
@@ -1794,7 +1930,10 @@ namespace Ambertation.Windows.Forms
 		protected void PaintRows(System.Drawing.Graphics g)
 		{
 			if (rowimage.Length == 0)
+			{
 				return;
+			}
+
 			Rectangle src = new Rectangle(
 				0,
 				0,
@@ -1807,12 +1946,14 @@ namespace Ambertation.Windows.Forms
 				int hg = Math.Min(Height - 1 - bm.Height - top, src.Height);
 
 				if (hg > 0)
+				{
 					g.DrawImage(
 						rowimage[r],
 						new Rectangle(0, top, src.Width, hg),
 						new Rectangle(src.Left, src.Top, src.Width, hg),
 						GraphicsUnit.Pixel
 					);
+				}
 			}
 		}
 
@@ -1905,9 +2046,14 @@ namespace Ambertation.Windows.Forms
 			int row = offset / Columns;
 			//if (this.GetHexBoxRowsPerPage()>3) row -= 2;
 			if (row < 0)
+			{
 				row = 0;
+			}
+
 			if (row >= Rows)
+			{
 				row = Rows - 1;
+			}
 
 			if (
 				row < this.CurrentRow
@@ -1917,9 +2063,15 @@ namespace Ambertation.Windows.Forms
 				try
 				{
 					if (row > sb.Maximum)
+					{
 						row = sb.Maximum;
+					}
+
 					if (row < sb.Minimum)
+					{
 						row = sb.Minimum;
+					}
+
 					sb.Value = row;
 					this.CurrentRow = row;
 				}
@@ -1941,10 +2093,14 @@ namespace Ambertation.Windows.Forms
 			set
 			{
 				if (SelectionStart < 0)
+				{
 					return;
+				}
 
 				for (int i = 0; i < Math.Min(SelectionLength, value.Length); i++)
+				{
 					data[SelectionStart + i] = value[i];
+				}
 
 				this.UpdateSelectedRows();
 				Refresh();
@@ -1960,18 +2116,28 @@ namespace Ambertation.Windows.Forms
 			get
 			{
 				if (SelectionStart < 0)
+				{
 					return 0;
+				}
+
 				if (data.Length - SelectionStart < 1)
+				{
 					return 0;
+				}
 
 				return data[SelectionStart];
 			}
 			set
 			{
 				if (SelectionStart < 0)
+				{
 					return;
+				}
+
 				if (data.Length - SelectionStart < 1)
+				{
 					return;
+				}
 
 				data[SelectionStart] = value;
 
@@ -1979,59 +2145,100 @@ namespace Ambertation.Windows.Forms
 				Refresh();
 
 				if (DataChanged != null)
+				{
 					DataChanged(this, new EventArgs());
+				}
 			}
 		}
 
 		void SetValue(object o)
 		{
 			if (o == null)
+			{
 				return;
+			}
+
 			if (SelectionStart < 0)
+			{
 				return;
+			}
 
 			byte[] val;
 			if (o is char)
+			{
 				val = BitConverter.GetBytes((char)o);
+			}
 			else if (o is ushort)
+			{
 				val = BitConverter.GetBytes((ushort)o);
+			}
 			else if (o is short)
+			{
 				val = BitConverter.GetBytes((short)o);
+			}
 			else if (o is uint)
+			{
 				val = BitConverter.GetBytes((uint)o);
+			}
 			else if (o is int)
+			{
 				val = BitConverter.GetBytes((int)o);
+			}
 			else if (o is ulong)
+			{
 				val = BitConverter.GetBytes((ulong)o);
+			}
 			else if (o is long)
+			{
 				val = BitConverter.GetBytes((long)o);
+			}
 			else if (o is float)
+			{
 				val = BitConverter.GetBytes((float)o);
+			}
 			else if (o is double)
+			{
 				val = BitConverter.GetBytes((double)o);
+			}
 			else
+			{
 				val = new byte[0];
+			}
 
 			if (data.Length - SelectionStart < val.Length)
+			{
 				return;
+			}
+
 			int len = Math.Max(val.Length, SelectionLength);
 
 			bool pause = this.pause;
 			if (!pause)
+			{
 				BeginUpdate();
+			}
+
 			if (len != SelectionLength)
+			{
 				DoSelect(SelectionStart, len);
+			}
 
 			for (int i = 0; i < val.Length; i++)
+			{
 				data[SelectionStart + i] = val[i];
+			}
 
 			this.UpdateSelectedRows();
 			Refresh();
 			if (!pause)
+			{
 				EndUpdate();
+			}
 
 			if (DataChanged != null)
+			{
 				DataChanged(this, new EventArgs());
+			}
 		}
 
 		/// <summary>
@@ -2043,9 +2250,14 @@ namespace Ambertation.Windows.Forms
 			get
 			{
 				if (SelectionStart < 0)
+				{
 					return (char)0;
+				}
+
 				if (data.Length - SelectionStart < 1)
+				{
 					return (char)0;
+				}
 
 				try
 				{
@@ -2071,9 +2283,14 @@ namespace Ambertation.Windows.Forms
 			get
 			{
 				if (SelectionStart < 0)
+				{
 					return 0;
+				}
+
 				if (data.Length - SelectionStart < 2)
+				{
 					return 0;
+				}
 
 				return BitConverter.ToUInt16(data, SelectionStart);
 			}
@@ -2092,9 +2309,14 @@ namespace Ambertation.Windows.Forms
 			get
 			{
 				if (SelectionStart < 0)
+				{
 					return 0;
+				}
+
 				if (data.Length - SelectionStart < 2)
+				{
 					return 0;
+				}
 
 				return BitConverter.ToInt16(data, SelectionStart);
 			}
@@ -2113,9 +2335,14 @@ namespace Ambertation.Windows.Forms
 			get
 			{
 				if (SelectionStart < 0)
+				{
 					return 0;
+				}
+
 				if (data.Length - SelectionStart < 4)
+				{
 					return 0;
+				}
 
 				return BitConverter.ToUInt32(data, SelectionStart);
 			}
@@ -2134,9 +2361,14 @@ namespace Ambertation.Windows.Forms
 			get
 			{
 				if (SelectionStart < 0)
+				{
 					return 0;
+				}
+
 				if (data.Length - SelectionStart < 4)
+				{
 					return 0;
+				}
 
 				return BitConverter.ToInt32(data, SelectionStart);
 			}
@@ -2155,9 +2387,14 @@ namespace Ambertation.Windows.Forms
 			get
 			{
 				if (SelectionStart < 0)
+				{
 					return 0;
+				}
+
 				if (data.Length - SelectionStart < 8)
+				{
 					return 0;
+				}
 
 				return BitConverter.ToUInt64(data, SelectionStart);
 			}
@@ -2176,9 +2413,14 @@ namespace Ambertation.Windows.Forms
 			get
 			{
 				if (SelectionStart < 0)
+				{
 					return 0;
+				}
+
 				if (data.Length - SelectionStart < 8)
+				{
 					return 0;
+				}
 
 				return BitConverter.ToInt64(data, SelectionStart);
 			}
@@ -2197,9 +2439,14 @@ namespace Ambertation.Windows.Forms
 			get
 			{
 				if (SelectionStart < 0)
+				{
 					return 0;
+				}
+
 				if (data.Length - SelectionStart < 4)
+				{
 					return 0;
+				}
 
 				return BitConverter.ToSingle(data, SelectionStart);
 			}
@@ -2218,9 +2465,14 @@ namespace Ambertation.Windows.Forms
 			get
 			{
 				if (SelectionStart < 0)
+				{
 					return 0;
+				}
+
 				if (data.Length - SelectionStart < 8)
+				{
 					return 0;
+				}
 
 				return BitConverter.ToDouble(data, SelectionStart);
 			}
@@ -2245,13 +2497,20 @@ namespace Ambertation.Windows.Forms
 			}
 
 			if (len <= 0)
+			{
 				return new byte[0];
+			}
+
 			if (start + len >= data.Length)
+			{
 				len = data.Length - start;
+			}
 
 			byte[] ret = new byte[len];
 			for (int i = start; i < start + len; i++)
+			{
 				ret[i - start] = data[i];
+			}
 
 			return ret;
 		}
@@ -2272,18 +2531,25 @@ namespace Ambertation.Windows.Forms
 			{
 				bool check = true;
 				for (int j = 0; j < hldata.Length; j++)
+				{
 					if (hldata[j] != data[i + j])
 					{
 						check = false;
 						break;
 					}
+				}
 
 				if (check)
+				{
 					this.AddHighlight(i, hldata.Length);
+				}
 			}
 
 			if (Highlights.Length > 0)
+			{
 				GoTo(Highlights[0].Start);
+			}
+
 			Refresh(true);
 		}
 
@@ -2292,12 +2558,14 @@ namespace Ambertation.Windows.Forms
 		public void SelectNextHighlight()
 		{
 			foreach (Highlight h in Highlights)
+			{
 				if (h.Start > this.SelectionStart)
 				{
 					GoTo(h.Start);
 					Select(h.Start, h.Length);
 					return;
 				}
+			}
 		}
 		#endregion
 	}

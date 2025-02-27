@@ -65,7 +65,10 @@ namespace SimPe
 		void wb_Navigating(object sender, WebBrowserNavigatingEventArgs e)
 		{
 			if (e.Url.OriginalString.StartsWith("about:"))
+			{
 				return;
+			}
+
 			if (e.TargetFrameName != "_blank")
 			{
 				e.Cancel = true;
@@ -220,24 +223,36 @@ namespace SimPe
 						+ ".rtf"
 				);
 			if (s == null)
+			{
 				s = this.GetType()
 					.Assembly.GetManifestResourceStream(
 						"SimPe.docs." + flname + "-en.rtf"
 					);
+			}
+
 			if (s != null)
 			{
 				System.IO.StreamReader sr = new System.IO.StreamReader(s);
 				string vtext = Helper.VersionToString(v); //v.FileMajorPart +"."+v.FileMinorPart;
 				if (Helper.QARelease)
+				{
 					vtext = "QA " + vtext;
+				}
+
 				if (Helper.WindowsRegistry.HiddenMode)
+				{
 					vtext += " [debug]";
+				}
 				else
 				{
 					if (Helper.Profile.Length > 0)
+					{
 						vtext += " [" + Helper.Profile + "]"; //CJH
+					}
 					else if (Helper.StartedGui == Executable.Classic)
+					{
 						vtext += " [Classic]"; //CJH
+					}
 				}
 				rtb.Rtf = sr.ReadToEnd().Replace("\\{Version\\}", vtext);
 			}

@@ -232,7 +232,9 @@ namespace SimPe.Plugin
 			{
 				unknown_5 = new byte[9];
 				for (int i = 0; i < value.Length && i < unknown_5.Length; i++)
+				{
 					unknown_5[i] = value[i];
+				}
 			}
 		}
 		public uint LotClass
@@ -293,7 +295,9 @@ namespace SimPe.Plugin
 			{
 				unknown_6 = new byte[9];
 				for (int i = 0; i < value.Length && i < unknown_6.Length; i++)
+				{
 					unknown_6[i] = value[i];
+				}
 			}
 		}
 		public List<SubLot> SubLots
@@ -313,13 +317,20 @@ namespace SimPe.Plugin
 			get
 			{
 				if (Type == LotType.ApartmentBase)
+				{
 					return null;
+				}
+
 				Idno idno = Idno.FromPackage(Package);
 				if (idno == null)
+				{
 					return "-load:\"Tutorial;" + LotName + "\"";
+				}
 				//if (idno == null) return null;
 				if (idno.Type != SimPe.Plugin.NeighborhoodType.Normal)
+				{
 					return null;
+				}
 
 				string appen = "-load:\"";
 				string[] parts = System
@@ -412,16 +423,27 @@ namespace SimPe.Plugin
 			Unknown1 = new List<float>();
 			int len = reader.ReadInt32();
 			for (int i = 0; i < len; i++)
+			{
 				this.Unknown1.Add(reader.ReadSingle());
+			}
 
 			if (subver >= (UInt16)LtxtSubVersion.Voyage)
+			{
 				Unknown3 = reader.ReadSingle();
+			}
 			else
+			{
 				Unknown3 = 0;
+			}
+
 			if (subver >= (UInt16)LtxtSubVersion.Freetime)
+			{
 				Unknown4 = reader.ReadUInt32();
+			}
 			else
+			{
 				Unknown4 = 0; // Lot Hobby Flags, Use as Boolset
+			}
 
 			if (
 				ver >= (UInt16)LtxtVersion.Apartment
@@ -452,9 +474,13 @@ namespace SimPe.Plugin
 			Unknown2 = reader.ReadByte();
 
 			if (ver >= (int)LtxtVersion.Business)
+			{
 				OwnerInstance = reader.ReadUInt32();
+			}
 			else
+			{
 				OwnerInstance = 0;
+			}
 
 			if (
 				ver >= (UInt16)LtxtVersion.Apartment
@@ -469,12 +495,16 @@ namespace SimPe.Plugin
 				SubLots = new List<SubLot>();
 				count = reader.ReadInt32();
 				for (int i = 0; i < count; i++)
+				{
 					SubLots.Add(new SubLot(reader));
+				}
 
 				Unknown7 = new List<uint>();
 				count = reader.ReadInt32();
 				for (int i = 0; i < count; i++)
+				{
 					Unknown7.Add(reader.ReadUInt32());
+				}
 			}
 			else
 			{
@@ -514,12 +544,20 @@ namespace SimPe.Plugin
 
 			writer.Write(Unknown1.Count);
 			foreach (int i in Unknown1)
+			{
 				writer.Write(i);
+			}
 
 			if (subver >= (UInt16)LtxtSubVersion.Voyage)
+			{
 				writer.Write(Unknown3);
+			}
+
 			if (subver >= (UInt16)LtxtSubVersion.Freetime)
+			{
 				writer.Write(Unknown4);
+			}
+
 			if (
 				ver >= (UInt16)LtxtVersion.Apartment
 				|| subver >= (UInt16)LtxtSubVersion.Apartment
@@ -542,7 +580,9 @@ namespace SimPe.Plugin
 			writer.Write(Unknown2);
 
 			if (ver >= (int)LtxtVersion.Business)
+			{
 				writer.Write(OwnerInstance);
+			}
 
 			if (
 				ver >= (UInt16)LtxtVersion.Apartment
@@ -554,11 +594,15 @@ namespace SimPe.Plugin
 
 				writer.Write(SubLots.Count);
 				for (int i = 0; i < SubLots.Count; i++)
+				{
 					SubLots[i].Serialize(writer);
+				}
 
 				writer.Write(Unknown7.Count);
 				for (int i = 0; i < Unknown7.Count; i++)
+				{
 					writer.Write(Unknown7[i]);
+				}
 			}
 
 			writer.Write(Followup);
@@ -588,7 +632,10 @@ namespace SimPe.Plugin
 		protected override string GetResourceName(SimPe.Data.TypeAlias ta)
 		{
 			if (!this.Processed)
+			{
 				ProcessData(FileDescriptor, Package);
+			}
+
 			return LotName;
 		}
 	}

@@ -49,9 +49,15 @@ namespace SimPe.Plugin
 								(citem.UIntegerValue & (uint)Data.SkinCategories.Skin)
 								== (uint)Data.SkinCategories.Skin
 							)
+							{
 								citem.UIntegerValue = (uint)Data.SkinCategories.Skin;
+							}
+
 							if (citem.UIntegerValue != 128 && OutfitPart == 1)
+							{
 								citem.UIntegerValue = (uint)Data.SkinCategories.Hair;
+							}
+
 							return citem.UIntegerValue;
 						}
 					}
@@ -71,7 +77,9 @@ namespace SimPe.Plugin
 					{
 						SimPe.PackedFiles.Wrapper.CpfItem citem = Cpf.GetItem("age");
 						if (citem != null)
+						{
 							return citem.UIntegerValue;
+						}
 					}
 				}
 				catch (Exception) { }
@@ -89,7 +97,9 @@ namespace SimPe.Plugin
 					{
 						SimPe.PackedFiles.Wrapper.CpfItem citem = Cpf.GetItem("name");
 						if (citem != null)
+						{
 							return citem.StringValue;
+						}
 					}
 				}
 				catch (Exception) { }
@@ -107,7 +117,9 @@ namespace SimPe.Plugin
 					{
 						SimPe.PackedFiles.Wrapper.CpfItem citem = Cpf.GetItem("gender");
 						if (citem != null)
+						{
 							return citem.UIntegerValue;
+						}
 					}
 				}
 				catch (Exception) { }
@@ -129,17 +141,24 @@ namespace SimPe.Plugin
 						if (citem != null)
 						{
 							if (citem.UIntegerValue > 0 && citem.UIntegerValue < 255)
+							{
 								return SimPe.Data.MetaData.GetBodyName(
 									citem.UIntegerValue
 								);
+							}
 						}
 						citem = Cpf.GetItem("skintone");
 						if (citem == null)
+						{
 							citem = Cpf.GetItem("skincolor");
+						}
+
 						if (citem != null)
+						{
 							return SimPe.Data.MetaData.GetBodyName(
 								SimPe.Data.MetaData.GetBodyShapeid(citem.StringValue)
 							);
+						}
 					}
 				}
 				catch (Exception) { }
@@ -157,9 +176,14 @@ namespace SimPe.Plugin
 					{
 						SimPe.PackedFiles.Wrapper.CpfItem citem = Cpf.GetItem("outfit");
 						if (citem == null)
+						{
 							citem = Cpf.GetItem("parts");
+						}
+
 						if (citem != null)
+						{
 							return citem.UIntegerValue;
+						}
 					}
 				}
 				catch (Exception) { }
@@ -220,7 +244,9 @@ namespace SimPe.Plugin
 		protected GenericRcol LoadTXTR(GenericRcol txmt)
 		{
 			if (txmt == null)
+			{
 				return null;
+			}
 
 			try
 			{
@@ -229,7 +255,9 @@ namespace SimPe.Plugin
 					.Value.Trim()
 					.ToLower();
 				if (!txtrname.EndsWith("_txtr"))
+				{
 					txtrname += "_txtr";
+				}
 
 				Interfaces.Scenegraph.IScenegraphFileIndexItem item =
 					FileTable.FileIndex.FindFileByName(
@@ -270,7 +298,9 @@ namespace SimPe.Plugin
 								pfd
 							);
 							if (rcol != null)
+							{
 								list.Add(rcol);
+							}
 						}
 					}
 					catch { }
@@ -292,7 +322,9 @@ namespace SimPe.Plugin
 				{
 					SimPe.Plugin.GenericRcol rcol = this.LoadTXTR(txmt);
 					if (rcol != null)
+					{
 						list.Add(rcol);
+					}
 				}
 
 				GenericRcol[] ret = new GenericRcol[list.Count];
@@ -325,7 +357,10 @@ namespace SimPe.Plugin
 
 				GenericRcol[] txmts = TXMTs;
 				if (txmts.Length > 0)
+				{
 					return txmts[0];
+				}
+
 				return null;
 			}
 		}
@@ -336,11 +371,16 @@ namespace SimPe.Plugin
 			{
 				SimPe.Plugin.GenericRcol rcol = LoadTXTR(TXMT);
 				if (rcol != null)
+				{
 					return rcol;
+				}
 
 				GenericRcol[] txtrs = TXTRs;
 				if (txtrs.Length > 0)
+				{
 					return txtrs[0];
+				}
+
 				return null;
 			}
 		}
@@ -357,7 +397,10 @@ namespace SimPe.Plugin
 					if ((cat & (uint)k) == (uint)k)
 					{
 						if (scat != "")
+						{
 							scat += ", ";
+						}
+
 						scat += k.ToString();
 					}
 				}
@@ -378,7 +421,10 @@ namespace SimPe.Plugin
 					if ((part & (uint)k) == (uint)k)
 					{
 						if (spart != "")
+						{
 							spart += ", ";
+						}
+
 						spart += k.ToString();
 					}
 				}
@@ -399,7 +445,10 @@ namespace SimPe.Plugin
 					if ((age & (uint)k) == (uint)k)
 					{
 						if (sage != "")
+						{
 							sage += ", ";
+						}
+
 						sage += k.ToString();
 					}
 				}
@@ -420,7 +469,10 @@ namespace SimPe.Plugin
 					if ((sex & (uint)k) == (uint)k)
 					{
 						if (ssex != "")
+						{
 							ssex += ", ";
+						}
+
 						ssex += k.ToString();
 					}
 				}
@@ -501,17 +553,34 @@ namespace SimPe.Plugin
 			if (Skin != null)
 			{
 				if (Skin.PartNames != "")
+				{
 					name += "; Part=" + Skin.PartNames;
+				}
+
 				if (Skin.CategoryNames != "")
+				{
 					name += "; Category=" + Skin.CategoryNames;
+				}
+
 				if (Skin.AgeNames != "")
+				{
 					name += "; Age=" + Skin.AgeNames;
+				}
+
 				if (Skin.GenderNames != "")
+				{
 					name += "; Gender=" + Skin.GenderNames;
+				}
+
 				if (Skin.Name != "")
+				{
 					name += "; Name=" + Skin.Name;
+				}
+
 				if (Skin.Bodyshape != "Unknown" && !Skin.Bodyshape.Contains("Maxis"))
+				{
 					name += "; Body=" + Skin.Bodyshape;
+				}
 				// name = "Category="+Skin.CategoryNames+"; Age="+Skin.AgeNames+"; Name="+Skin.Name;
 				// name += " ("+base.ToString()+")";
 			}
@@ -532,11 +601,20 @@ namespace SimPe.Plugin
 			if (cpf != null)
 			{
 				foreach (SimPe.PackedFiles.Wrapper.CpfItem citem in cpf.Items)
+				{
 					if (citem.Name.ToLower() == "name")
+					{
 						Name = citem.StringValue;
+					}
+				}
+
 				foreach (SimPe.PackedFiles.Wrapper.CpfItem citem in cpf.Items)
+				{
 					if (citem.Name.ToLower() == "category")
+					{
 						category = citem.UIntegerValue;
+					}
+				}
 			}
 
 			Name = Name.Replace("CASIE_", "");

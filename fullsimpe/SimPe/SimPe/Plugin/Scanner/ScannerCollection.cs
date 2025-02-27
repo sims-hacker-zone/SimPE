@@ -20,7 +20,10 @@ namespace SimPe.Plugin.Scanner
 		public virtual void Add(IScannerPluginBase item)
 		{
 			if (item == null)
+			{
 				return;
+			}
+
 			list.Add(item);
 		}
 
@@ -63,7 +66,10 @@ namespace SimPe.Plugin.Scanner
 		public void Dispose()
 		{
 			if (list != null)
+			{
 				list.Clear();
+			}
+
 			list = null;
 		}
 

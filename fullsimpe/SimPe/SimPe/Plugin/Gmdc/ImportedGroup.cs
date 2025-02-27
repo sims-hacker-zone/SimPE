@@ -159,8 +159,13 @@ namespace SimPe.Plugin.Gmdc
 			{
 				int vc = 0;
 				foreach (int i in Link.ReferencedElement)
+				{
 					if (Elements[i].Identity == ElementIdentity.Vertex)
+					{
 						vc += Elements[i].Values.Count;
+					}
+				}
+
 				return vc;
 			}
 		}
@@ -197,11 +202,20 @@ namespace SimPe.Plugin.Gmdc
 			get
 			{
 				if (Action == GmdcImporterAction.Nothing)
+				{
 					return System.Drawing.Color.Silver;
+				}
+
 				if (VertexCount > AbstractGmdcImporter.CRITICAL_VERTEX_AMOUNT)
+				{
 					return System.Drawing.Color.Red;
+				}
+
 				if (FaceCount > AbstractGmdcImporter.CRITICAL_FACE_AMOUNT)
+				{
 					return System.Drawing.Color.Red;
+				}
+
 				return System.Drawing.SystemColors.WindowText;
 			}
 		}
@@ -309,7 +323,9 @@ namespace SimPe.Plugin.Gmdc
 		{
 			ImportedGroups list = new ImportedGroups();
 			foreach (ImportedGroup item in this)
+			{
 				list.Add(item);
+			}
 
 			return list;
 		}

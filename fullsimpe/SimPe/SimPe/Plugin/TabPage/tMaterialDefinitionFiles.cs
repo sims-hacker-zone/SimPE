@@ -236,9 +236,14 @@ namespace SimPe.Plugin.TabPage
 		private void SelectListFile(object sender, System.EventArgs e)
 		{
 			if (tblistfile.Tag != null)
+			{
 				return;
+			}
+
 			if (lbfl.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			try
 			{
@@ -255,11 +260,19 @@ namespace SimPe.Plugin.TabPage
 		private void ChangeListFile(object sender, System.EventArgs e)
 		{
 			if (this.Tag == null)
+			{
 				return;
+			}
+
 			if (tblistfile.Tag != null)
+			{
 				return;
+			}
+
 			if (lbfl.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			try
 			{
@@ -285,9 +298,15 @@ namespace SimPe.Plugin.TabPage
 		)
 		{
 			if (this.Tag == null)
+			{
 				return;
+			}
+
 			if (lbfl.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			SimPe.Plugin.MaterialDefinition md = (SimPe.Plugin.MaterialDefinition)
 				this.Tag;
 			md.Listing = (string[])
@@ -304,7 +323,10 @@ namespace SimPe.Plugin.TabPage
 		)
 		{
 			if (this.Tag == null)
+			{
 				return;
+			}
+
 			lbfl.Items.Add(tblistfile.Text);
 			lbfl.SelectedIndex = lbfl.Items.Count - 1;
 

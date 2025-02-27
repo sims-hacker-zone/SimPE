@@ -130,7 +130,10 @@ namespace SimPe.Plugin.Gmdc.Exporter
 			{
 				vertexcount++;
 				if (i != 0)
+				{
 					writer.WriteLine(",");
+				}
+
 				Vector3f v = new Vector3f(
 					Link.GetValue(nr, i).Data[0],
 					Link.GetValue(nr, i).Data[1],
@@ -156,13 +159,20 @@ namespace SimPe.Plugin.Gmdc.Exporter
 				if (i % 3 == 0)
 				{
 					if (i != 0)
+					{
 						faces += ", ";
+					}
+
 					faces += Helper.lbr + "3;" + vertexnr.ToString() + ",";
 				}
 				else if (i % 3 == 1)
+				{
 					faces += vertexnr.ToString() + ",";
+				}
 				else
+				{
 					faces += vertexnr.ToString() + ";";
+				}
 			}
 
 			faces += ";";
@@ -180,7 +190,10 @@ namespace SimPe.Plugin.Gmdc.Exporter
 				{
 					vertexcount++;
 					if (i != 0)
+					{
 						writer.WriteLine(",");
+					}
+
 					Vector3f v = new Vector3f(
 						Link.GetValue(nr, i).Data[0],
 						Link.GetValue(nr, i).Data[1],
@@ -209,9 +222,15 @@ namespace SimPe.Plugin.Gmdc.Exporter
 			for (int i = 0; i < Group.Faces.Length; i += 3)
 			{
 				if (i != 0)
+				{
 					writer.Write(",");
+				}
+
 				if (i % 10 == 0)
+				{
 					writer.WriteLine();
+				}
+
 				writer.Write("0");
 			}
 			writer.WriteLine(";;");

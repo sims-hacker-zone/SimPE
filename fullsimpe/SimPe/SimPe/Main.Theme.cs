@@ -101,7 +101,9 @@ namespace SimPe
 			this.SuspendLayout();
 			//store defaults
 			if (defaultlayout == null)
+			{
 				defaultlayout = Ambertation.Windows.Forms.Serializer.Global.ToStream();
+			}
 
 			try
 			{
@@ -127,14 +129,21 @@ namespace SimPe
 			{
 				ToolStripMenuItem tsmi = tsi as ToolStripMenuItem;
 				if (tsmi == null)
+				{
 					continue;
+				}
+
 				if (tsmi.Tag == null)
+				{
 					continue;
+				}
 
 				Ambertation.Windows.Forms.DockPanel dp =
 					tsmi.Tag as Ambertation.Windows.Forms.DockPanel;
 				if (dp != null)
+				{
 					tsmi.Checked = dp.IsOpen;
+				}
 			}
 			this.ResumeLayout();
 		}
@@ -146,9 +155,14 @@ namespace SimPe
 				System.Windows.Forms.ToolStripButton tsb =
 					tsi as System.Windows.Forms.ToolStripButton;
 				if (tsb == null)
+				{
 					continue;
+				}
+
 				if (tsb.Overflow != System.Windows.Forms.ToolStripItemOverflow.Always)
+				{
 					tsb.Checked = false;
+				}
 			}
 		}
 
@@ -159,9 +173,14 @@ namespace SimPe
 				System.Windows.Forms.ToolStripButton tsb =
 					tsi as System.Windows.Forms.ToolStripButton;
 				if (tsb == null)
+				{
 					continue;
+				}
+
 				if (tsb.Image != null)
+				{
 					tsb.Visible = true;
+				}
 			}
 		}
 	}

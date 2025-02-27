@@ -70,7 +70,9 @@ namespace SimPe.Plugin
 				Enum.GetValues(typeof(NhtrListType)) as NhtrListType[];
 			Items = new NhtrList[types.Length];
 			foreach (NhtrListType tp in types)
+			{
 				Items[(int)tp] = new NhtrList(this, tp);
+			}
 		}
 
 		#region IWrapper Member
@@ -110,7 +112,9 @@ namespace SimPe.Plugin
 		{
 			writer.Write(ver);
 			foreach (NhtrList list in Items)
+			{
 				list.Serialize(writer);
+			}
 		}
 		#endregion
 

@@ -47,9 +47,14 @@ namespace SimPe.Plugin
 		private void checkBox1_CheckedChanged(object sender, EventArgs e)
 		{
 			if (checkBox1.Checked == true)
+			{
 				this.TBsting.Text = Wrapper.Twine;
+			}
 			else
+			{
 				this.TBsting.Text = Wrapper.Strung;
+			}
+
 			this.TBsting.Refresh();
 		}
 	}

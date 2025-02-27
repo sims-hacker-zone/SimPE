@@ -89,15 +89,19 @@ namespace SimPe.Plugin.Gmdc.Exporter
 		protected override void InitFile()
 		{
 			if (this.Groups.Length > 1)
+			{
 				throw new SimPe.Warning(
 					"Too Many Meshes Selected",
 					"You've selected too many meshes\nSmd File only support 1 mesh per file"
 				);
+			}
 			else if (this.Groups.Length < 1)
+			{
 				throw new SimPe.Warning(
 					"No Mesh Selected",
 					"You need to select one mesh"
 				);
+			}
 		}
 
 		/// <summary>
@@ -120,11 +124,19 @@ namespace SimPe.Plugin.Gmdc.Exporter
 		{
 			ArrayList tempa = new ArrayList();
 			for (int i = 0; i < tokens.Length - 1; i++)
+			{
 				if (tempa.Contains(tokens[i]) == false)
+				{
 					tempa.Add(tokens[i]);
+				}
+			}
+
 			string[] result = new string[tempa.Count];
 			for (int i = 0; i < tempa.Count; i++)
+			{
 				result[i] = tempa[i].ToString();
+			}
+
 			return result;
 		}
 
@@ -201,9 +213,14 @@ namespace SimPe.Plugin.Gmdc.Exporter
 
 				//correct extrem values of "Factor"
 				if (r > (double)10000000000000000)
+				{
 					r = (double)10000000000000000;
+				}
+
 				if (r < (double)-10000000000000000)
+				{
 					r = (double)-10000000000000000;
+				}
 
 				//Calculate Face Tangent
 				Vector3f tangent = uv2.Y * v1 - uv1.Y * v2;
@@ -259,12 +276,16 @@ namespace SimPe.Plugin.Gmdc.Exporter
 				int nbfaceused = tokens.Length;
 				int[] faceused = new int[nbfaceused];
 				for (int j = 0; j < nbfaceused; j++)
+				{
 					faceused[j] = Convert.ToInt16(tokens[j]);
+				}
 
 				//Add face tangent for each face used
 				Vector3f tangent = new Vector3f(0, 0, 0);
 				for (int j = 0; j < nbfaceused; j++)
+				{
 					tangent += facetangent[faceused[j]];
+				}
 
 				//Finalize tangent calculation
 				tangent = tangent.UnitVector;

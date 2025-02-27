@@ -52,7 +52,10 @@ namespace pjse
 			get
 			{
 				if (resource == null)
+				{
 					Initialize();
+				}
+
 				return resource;
 			}
 		}
@@ -67,7 +70,10 @@ namespace pjse
 		{
 			string res = pjse.Localization.Manager.GetString(name);
 			if (res == null)
+			{
 				res = name;
+			}
+
 			return res;
 		}
 
@@ -81,9 +87,14 @@ namespace pjse
 		{
 			string res = pjse.Localization.Manager.GetString(name);
 			if (res == null)
+			{
 				res = name;
+			}
+
 			for (int i = 0; i < args.Length; i++)
+			{
 				res = res.Replace("{" + i.ToString() + "}", args[i].ToString());
+			}
 
 			return res;
 		}

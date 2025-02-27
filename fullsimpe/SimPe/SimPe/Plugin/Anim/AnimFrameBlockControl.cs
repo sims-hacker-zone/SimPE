@@ -85,7 +85,10 @@ namespace SimPe.Plugin.Anim
 			panel3.BackColor = splitter1.BackColor;
 			panel6.BackColor = splitter1.BackColor;
 			if (Helper.WindowsRegistry.UseBigIcons)
+			{
 				tv.Font = new System.Drawing.Font("Verdana", 12F);
+			}
+
 			Clear();
 		}
 
@@ -1641,15 +1644,21 @@ namespace SimPe.Plugin.Anim
 		protected void AddFrames(AnimationFrame[] fr, string prefix)
 		{
 			foreach (AnimationFrame af in fr)
+			{
 				AddFrames(af, prefix);
+			}
 		}
 
 		protected void AddFrames(AnimationFrame af, string prefix)
 		{
 			int ct = 0;
 			foreach (AnimationAxisTransform aat in af.Blocks)
+			{
 				if (aat != null)
+				{
 					ct++;
+				}
+			}
 
 			TreeNode tn = new TreeNode(
 				prefix
@@ -1676,9 +1685,14 @@ namespace SimPe.Plugin.Anim
 		)
 		{
 			if (parent == null)
+			{
 				return;
+			}
+
 			if (aat == null)
+			{
 				return;
+			}
 
 			TreeNode tn = new TreeNode(prefix + aat.ToString());
 			tn.Tag = aat;
@@ -1704,11 +1718,19 @@ namespace SimPe.Plugin.Anim
 			this.lbTimeCode.Enabled = tbTimeCode.Enabled;
 			llClone.Enabled = false;
 			if (e == null)
+			{
 				return;
+			}
+
 			if (e.Node == null)
+			{
 				return;
+			}
+
 			if (e.Node.Tag == null)
+			{
 				return;
+			}
 
 			if (e.Node.Tag is AnimationAxisTransform)
 			{
@@ -1736,13 +1758,21 @@ namespace SimPe.Plugin.Anim
 				{
 					int ct = 0;
 					if (n.Text[0] == 'X')
+					{
 						ct = 0;
+					}
 					else if (n.Text[0] == 'Y')
+					{
 						ct = 1;
+					}
 					else if (n.Text[0] == 'Z')
+					{
 						ct = 2;
+					}
 					else
+					{
 						continue;
+					}
 
 					aatcs[ct].AxisTransform = (AnimationAxisTransform)n.Tag;
 					aatcs[ct].Tag = n;
@@ -1753,8 +1783,11 @@ namespace SimPe.Plugin.Anim
 						this.tbTimeCode.Enabled = true;
 						this.lbTimeCode.Enabled = tbTimeCode.Enabled;
 						if (aatcs[ct].AxisTransform != null)
+						{
 							tbTimeCode.Text = aatcs[ct]
 								.AxisTransform.TimeCode.ToString();
+						}
+
 						intern = false;
 					}
 				}
@@ -1774,19 +1807,27 @@ namespace SimPe.Plugin.Anim
 		private void pn1_Deleted(object sender, System.EventArgs e)
 		{
 			if (!(sender is AnimAxisTransformControl))
+			{
 				return;
+			}
+
 			AnimAxisTransformControl s = (AnimAxisTransformControl)sender;
 			TreeNode n = (TreeNode)s.Tag;
 
 			n.Parent.Nodes.Remove(n);
 			if (Changed != null)
+			{
 				Changed(this, new System.EventArgs());
+			}
 		}
 
 		private void pn1_Changed(object sender, System.EventArgs e)
 		{
 			if (!(sender is AnimAxisTransformControl))
+			{
 				return;
+			}
+
 			AnimAxisTransformControl s = (AnimAxisTransformControl)sender;
 			TreeNode n = (TreeNode)s.Tag;
 
@@ -1794,7 +1835,9 @@ namespace SimPe.Plugin.Anim
 			{
 				n.Text = n.Text.Substring(0, 3) + s.AxisTransform.ToString();
 				if (Changed != null)
+				{
 					Changed(this, new System.EventArgs());
+				}
 			}
 		}
 
@@ -1807,7 +1850,9 @@ namespace SimPe.Plugin.Anim
 			tv.Nodes.Clear();
 
 			if (Changed != null)
+			{
 				Changed(this, new System.EventArgs());
+			}
 		}
 
 		private void llAdd_LinkClicked(
@@ -1816,7 +1861,9 @@ namespace SimPe.Plugin.Anim
 		)
 		{
 			if (afb.AxisCount == 0)
+			{
 				afb.CreateBaseAxisSet();
+			}
 
 			afb.ChangeTokenType(AnimationTokenType.TwoByte, AnimationTokenType.SixByte);
 			afb.AddFrame((short)(afb.GetDuration() + 1), 0, 0, 0, false);
@@ -1824,18 +1871,28 @@ namespace SimPe.Plugin.Anim
 			AddFrames(afb.Frames[afb.FrameCount - 1], "");
 
 			if (Changed != null)
+			{
 				Changed(this, new System.EventArgs());
+			}
 		}
 
 		private void pn1_CreateClicked(object sender, System.EventArgs e)
 		{
 			if (tv.SelectedNode == null)
+			{
 				return;
+			}
+
 			if (!(tv.SelectedNode.Tag is AnimationFrame))
+			{
 				return;
+			}
+
 			AnimationFrame af = (AnimationFrame)tv.SelectedNode.Tag;
 			while (afb.AxisSet.Length < 1)
+			{
 				afb.AddNewAxis();
+			}
 
 			AnimationAxisTransform aat = afb.AxisSet[0]
 				.Add(af.TimeCode, 0, 0, 0, af.Linear);
@@ -1851,12 +1908,20 @@ namespace SimPe.Plugin.Anim
 		private void pn2_CreateClicked(object sender, System.EventArgs e)
 		{
 			if (tv.SelectedNode == null)
+			{
 				return;
+			}
+
 			if (!(tv.SelectedNode.Tag is AnimationFrame))
+			{
 				return;
+			}
+
 			AnimationFrame af = (AnimationFrame)tv.SelectedNode.Tag;
 			while (afb.AxisSet.Length < 2)
+			{
 				afb.AddNewAxis();
+			}
 
 			AnimationAxisTransform aat = afb.AxisSet[1]
 				.Add(af.TimeCode, 0, 0, 0, af.Linear);
@@ -1872,15 +1937,26 @@ namespace SimPe.Plugin.Anim
 		private void pn3_CreateClicked(object sender, System.EventArgs e)
 		{
 			if (tv.SelectedNode == null)
+			{
 				return;
+			}
+
 			if (!(tv.SelectedNode.Tag is AnimationFrame))
+			{
 				return;
+			}
+
 			AnimationFrame af = (AnimationFrame)tv.SelectedNode.Tag;
 			while (afb.AxisSet.Length < 3)
+			{
 				afb.AddNewAxis();
+			}
 
 			if (afb.AxisSet[2].Type == AnimationTokenType.TwoByte)
+			{
 				afb.AxisSet[2].Type = AnimationTokenType.SixByte;
+			}
+
 			AnimationAxisTransform aat = afb.AxisSet[2]
 				.Add(af.TimeCode, 0, 0, 0, af.Linear);
 			af.ZBlock = afb.AxisSet[2].GetLast();
@@ -1895,11 +1971,20 @@ namespace SimPe.Plugin.Anim
 		private void tbTimeCode_TextChanged(object sender, System.EventArgs e)
 		{
 			if (tv.SelectedNode == null)
+			{
 				return;
+			}
+
 			if (!(tv.SelectedNode.Tag is AnimationFrame))
+			{
 				return;
+			}
+
 			if (intern)
+			{
 				return;
+			}
+
 			intern = true;
 			try
 			{
@@ -1907,11 +1992,19 @@ namespace SimPe.Plugin.Anim
 
 				AnimationFrame af = (AnimationFrame)tv.SelectedNode.Tag;
 				if (af.XBlock != null)
+				{
 					af.XBlock.TimeCode = val;
+				}
+
 				if (af.YBlock != null)
+				{
 					af.YBlock.TimeCode = val;
+				}
+
 				if (af.ZBlock != null)
+				{
 					af.ZBlock.TimeCode = val;
+				}
 
 				this.tv_AfterSelect(
 					tv,
@@ -1933,7 +2026,9 @@ namespace SimPe.Plugin.Anim
 		)
 		{
 			if (e.KeyCode == Keys.Enter)
+			{
 				tbTimeCode_TextChanged(sender, null);
+			}
 		}
 
 		private void llRefresh_LinkClicked(
@@ -1950,9 +2045,14 @@ namespace SimPe.Plugin.Anim
 		)
 		{
 			if (tv.SelectedNode == null)
+			{
 				return;
+			}
+
 			if (!(tv.SelectedNode.Tag is AnimationFrame))
+			{
 				return;
+			}
 
 			AnimationFrame af = (AnimationFrame)tv.SelectedNode.Tag;
 			afb.ChangeTokenType(AnimationTokenType.TwoByte, AnimationTokenType.SixByte);
@@ -1960,17 +2060,28 @@ namespace SimPe.Plugin.Anim
 			AddFrames(afb.Frames[afb.FrameCount - 1], "");
 
 			if (Changed != null)
+			{
 				Changed(this, new System.EventArgs());
+			}
 		}
 
 		private void tbTimeCode_TextChanged_1(object sender, System.EventArgs e)
 		{
 			if (tv.SelectedNode == null)
+			{
 				return;
+			}
+
 			if (!(tv.SelectedNode.Tag is AnimationFrame))
+			{
 				return;
+			}
+
 			if (intern)
+			{
 				return;
+			}
+
 			intern = true;
 			try
 			{
@@ -1978,11 +2089,19 @@ namespace SimPe.Plugin.Anim
 
 				AnimationFrame af = (AnimationFrame)tv.SelectedNode.Tag;
 				if (af.XBlock != null)
+				{
 					af.XBlock.TimeCode = val;
+				}
+
 				if (af.YBlock != null)
+				{
 					af.YBlock.TimeCode = val;
+				}
+
 				if (af.ZBlock != null)
+				{
 					af.ZBlock.TimeCode = val;
+				}
 
 				this.pn1_Changed(pn1, null);
 				this.pn1_Changed(pn2, null);
@@ -2029,84 +2148,147 @@ namespace SimPe.Plugin.Anim
 				{
 					f = af.XBlock.GetCompressedFloat(af.XBlock.Parameter);
 					if (afb.TransformationType == FrameType.Rotation)
+					{
 						f = (float)SimPe.Geometry.Quaternion.RadToDeg(f);
+					}
+
 					if (f == 0)
+					{
 						Clap += "   X: 0";
+					}
 					else
+					{
 						Clap += "   X: " + f.ToString("N8");
+					}
 
 					f1 = af.XBlock.GetCompressedFloat(af.XBlock.Unknown1);
 					if (f1 == 0)
+					{
 						Clap += "; 0";
+					}
 					else
+					{
 						Clap += "; " + f1.ToString("N8");
+					}
 
 					f2 = af.XBlock.GetCompressedFloat(af.XBlock.Unknown2);
 					if (f2 == 0)
+					{
 						Clap += "; 0";
+					}
 					else
+					{
 						Clap += "; " + f2.ToString("N8");
+					}
 
 					if (af.XBlock.Linear)
+					{
 						Clap += " (linear)";
+					}
+
 					if (af.XBlock.ParentLocked)
+					{
 						Clap += " (locked)";
+					}
+
 					Clap += "\r\n";
 				}
 				if (af.YBlock != null)
 				{
 					f = af.YBlock.GetCompressedFloat(af.YBlock.Parameter);
 					if (afb.TransformationType == FrameType.Rotation)
+					{
 						f = (float)SimPe.Geometry.Quaternion.RadToDeg(f);
+					}
+
 					if (f == 0)
+					{
 						Clap += "   Y: 0";
+					}
 					else
+					{
 						Clap += "   Y: " + f.ToString("N8");
+					}
 
 					f1 = af.YBlock.GetCompressedFloat(af.YBlock.Unknown1);
 					if (f1 == 0)
+					{
 						Clap += "; 0";
+					}
 					else
+					{
 						Clap += "; " + f1.ToString("N8");
+					}
 
 					f2 = af.YBlock.GetCompressedFloat(af.YBlock.Unknown2);
 					if (f2 == 0)
+					{
 						Clap += "; 0";
+					}
 					else
+					{
 						Clap += "; " + f2.ToString("N8");
+					}
 
 					if (af.YBlock.Linear)
+					{
 						Clap += " (linear)";
+					}
+
 					if (af.YBlock.ParentLocked)
+					{
 						Clap += " (locked)";
+					}
+
 					Clap += "\r\n";
 				}
 				if (af.ZBlock != null)
 				{
 					f = af.ZBlock.GetCompressedFloat(af.ZBlock.Parameter);
 					if (afb.TransformationType == FrameType.Rotation)
+					{
 						f = (float)SimPe.Geometry.Quaternion.RadToDeg(f);
+					}
+
 					if (f == 0)
+					{
 						Clap += "   Z: 0";
+					}
 					else
+					{
 						Clap += "   Z: " + f.ToString("N8");
+					}
 
 					f1 = af.ZBlock.GetCompressedFloat(af.ZBlock.Unknown1);
 					if (f1 == 0)
+					{
 						Clap += "; 0";
+					}
 					else
+					{
 						Clap += "; " + f1.ToString("N8");
+					}
 
 					f2 = af.ZBlock.GetCompressedFloat(af.ZBlock.Unknown2);
 					if (f2 == 0)
+					{
 						Clap += "; 0";
+					}
 					else
+					{
 						Clap += "; " + f2.ToString("N8");
+					}
 
 					if (af.ZBlock.Linear)
+					{
 						Clap += " (linear)";
+					}
+
 					if (af.ZBlock.ParentLocked)
+					{
 						Clap += " (locked)";
+					}
+
 					Clap += "\r\n";
 				}
 				Clap += "\r\n";
@@ -2117,7 +2299,9 @@ namespace SimPe.Plugin.Anim
 		private void menuItem2_Click(object sender, System.EventArgs e)
 		{
 			foreach (TreeNode tn in tv.Nodes)
+			{
 				tn.ExpandAll();
+			}
 		}
 
 		private void menuItem1_Click(object sender, System.EventArgs e)
@@ -2128,28 +2312,44 @@ namespace SimPe.Plugin.Anim
 				this.RefreshData();
 
 				if (Changed != null)
+				{
 					Changed(this, new System.EventArgs());
+				}
 			}
 		}
 
 		private void tbDuration_TextChanged(object sender, System.EventArgs e)
 		{
 			if (afb == null || intern)
+			{
 				return;
+			}
+
 			afb.Duration = Helper.StringToInt16(tbDuration.Text, afb.Duration, 10);
 			if (afb.Parent != null)
+			{
 				if (afb.Parent.Parent != null)
+				{
 					afb.Parent.Parent.Changed = true;
+				}
+			}
 		}
 
 		private void tbName_TextChanged(object sender, System.EventArgs e)
 		{
 			if (afb == null || intern)
+			{
 				return;
+			}
+
 			afb.Name = tbName.Text;
 			if (afb.Parent != null)
+			{
 				if (afb.Parent.Parent != null)
+				{
 					afb.Parent.Parent.Changed = true;
+				}
+			}
 		}
 
 		private void SortClick(object sender, System.EventArgs e)

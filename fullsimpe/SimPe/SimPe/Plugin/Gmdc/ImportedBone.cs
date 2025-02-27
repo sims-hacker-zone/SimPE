@@ -87,7 +87,10 @@ namespace SimPe.Plugin.Gmdc
 			get
 			{
 				if (Action == GmdcImporterAction.Nothing)
+				{
 					return System.Drawing.Color.Silver;
+				}
+
 				return System.Drawing.Color.DarkBlue;
 			}
 		}
@@ -127,12 +130,16 @@ namespace SimPe.Plugin.Gmdc
 		{
 			ParentName = ParentName.Trim();
 			if (ParentName.Trim() == "")
+			{
 				return null;
+			}
 
 			foreach (ImportedBone b in bones)
 			{
 				if (b.ImportedName.Trim() == ParentName)
+				{
 					return b;
+				}
 			}
 
 			return null;
@@ -250,7 +257,9 @@ namespace SimPe.Plugin.Gmdc
 		{
 			ImportedBones list = new ImportedBones();
 			foreach (ImportedBone item in this)
+			{
 				list.Add(item);
+			}
 
 			return list;
 		}

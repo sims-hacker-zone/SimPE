@@ -47,7 +47,10 @@ namespace SimPe.Plugin
 		)
 		{
 			if (package == null)
+			{
 				return false;
+			}
+
 			return true;
 		}
 
@@ -61,7 +64,9 @@ namespace SimPe.Plugin
 			{
 				System.Collections.Hashtable map = fo.GetNameMap(false);
 				if (map == null)
+				{
 					return new ToolResult(false, false);
+				}
 
 				WaitingScreen.Wait();
 
@@ -79,9 +84,13 @@ namespace SimPe.Plugin
 			}
 
 			if (Helper.StartedGui != Executable.Classic)
+			{
 				return new ToolResult(false, false);
+			}
 			else
+			{
 				return new ToolResult(false, true);
+			}
 		}
 
 		public override string ToString()

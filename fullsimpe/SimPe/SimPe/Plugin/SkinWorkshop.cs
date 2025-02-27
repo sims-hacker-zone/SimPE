@@ -73,15 +73,23 @@ namespace SimPe.Plugin
 		void LoadCachIndex()
 		{
 			if (cachefile != null)
+			{
 				return;
+			}
 
 			cachechg = false;
 			cachefile = new SimPe.Cache.ObjectCacheFile();
 
 			if (!Helper.WindowsRegistry.UseCache)
+			{
 				return;
+			}
+
 			if (WaitingScreen.Running)
+			{
 				WaitingScreen.UpdateMessage("Loading Cache");
+			}
+
 			try
 			{
 				cachefile.Load(CacheFileName);
@@ -100,11 +108,19 @@ namespace SimPe.Plugin
 		void SaveCacheIndex()
 		{
 			if (!Helper.WindowsRegistry.UseCache)
+			{
 				return;
+			}
+
 			if (!cachechg)
+			{
 				return;
+			}
+
 			if (WaitingScreen.Running)
+			{
 				WaitingScreen.UpdateMessage("Saving Cache");
+			}
 
 			cachefile.Save(CacheFileName);
 		}
@@ -133,7 +149,10 @@ namespace SimPe.Plugin
 					)
 					{
 						if (nrefitem.LocalGroup == Data.MetaData.LOCAL_GROUP)
+						{
 							continue;
+						}
+
 						Interfaces.Scenegraph.IScenegraphFileIndexItem[] cacheitems =
 							cachefile.FileIndex.FindFile(
 								nrefitem.FileDescriptor,
@@ -160,9 +179,15 @@ namespace SimPe.Plugin
 								(SimPe.Cache.ObjectCacheItem)
 									cacheitems[cindex].FileDescriptor.Tag;
 							if (oci.Name.Length < 3)
+							{
 								continue;
+							}
+
 							if (!oci.Useable)
+							{
 								continue;
+							}
+
 							Data.Alias a = new Data.Alias(
 								oci.FileDescriptor.Instance,
 								oci.Name
@@ -173,9 +198,14 @@ namespace SimPe.Plugin
 							o[2] = nrefitem.FileDescriptor.Instance;
 							a.Tag = o;
 							if (Helper.WindowsRegistry.ShowObjdNames)
+							{
 								a.Name = oci.ObjectFileName;
+							}
 							else
+							{
 								a.Name = oci.Name;
+							}
+
 							Image img = oci.Thumbnail;
 							lbobj.Items.Add(a);
 						}
@@ -190,7 +220,9 @@ namespace SimPe.Plugin
 									.UncompressedData;
 								cpf.ProcessData(nrefitem);
 								if (cpf.GetItem("name").StringValue.Length < 3)
+								{
 									continue;
+								}
 
 								SimPe.Cache.ObjectCacheItem oci =
 									new SimPe.Cache.ObjectCacheItem();
@@ -519,18 +551,27 @@ namespace SimPe.Plugin
 		private void Select(object sender, System.EventArgs e) // Fuck
 		{
 			if (tbseek.Tag != null)
+			{
 				return;
+			}
+
 			btclone.Enabled = false;
 			btclone.Refresh();
 			if (lbobj.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			btclone.Enabled = true;
 			btclone.Refresh();
 
 			IAlias a = (IAlias)lbobj.Items[lbobj.SelectedIndex];
 			tbseek.Tag = true;
 			if (sender != null)
+			{
 				tbseek.Text = a.Name;
+			}
+
 			tbseek.Tag = null;
 			// pb.Image = GetFumbnail((uint)a.Tag[1], 0, (uint)a.Tag[2]);
 		}
@@ -568,7 +609,10 @@ namespace SimPe.Plugin
 				{
 					map = fo.GetNameMap(true);
 					if (map == null)
+					{
 						return;
+					}
+
 					if (sfd.ShowDialog() == DialogResult.OK)
 					{
 						WaitingScreen.Wait();
@@ -596,7 +640,9 @@ namespace SimPe.Plugin
 					{
 						fo.FixGroup();
 						if (this.cbfix.Checked)
+						{
 							package.Save();
+						}
 					}
 					finally
 					{
@@ -772,7 +818,9 @@ namespace SimPe.Plugin
 				npfd.Type = item.FileDescriptor.Type;
 
 				if (package.FindFile(npfd) == null)
+				{
 					package.Add(npfd);
+				}
 			}
 
 			string[] refname = new string[0];
@@ -828,7 +876,9 @@ namespace SimPe.Plugin
 		)
 		{
 			if (sfd.ShowDialog() != DialogResult.OK)
+			{
 				return;
+			}
 
 			//create a Cloned Object to get all needed Files for the Process
 			bool old = cbgid.Checked;
@@ -838,7 +888,9 @@ namespace SimPe.Plugin
 			{
 				WaitingScreen.UpdateMessage("Collecting needed Files");
 				if ((package == null) && (pfd != null))
+				{
 					RecolorClone(pfd, localgroup, false, false, false);
+				}
 			}
 			finally
 			{
@@ -871,20 +923,27 @@ namespace SimPe.Plugin
 
 			WaitingScreen.Stop(this);
 			if (package != npackage)
+			{
 				package = null;
+			}
 		}
 
 		private void SeekItem(object sender, System.EventArgs e)
 		{
 			if (tbseek.Tag != null)
+			{
 				return;
+			}
 
 			tbseek.Tag = true;
 			try
 			{
 				string name = tbseek.Text.TrimStart().ToLower();
 				if (lbobj.SelectionMode != SelectionMode.One)
+				{
 					lbobj.ClearSelected();
+				}
+
 				for (int i = 0; i < lbobj.Items.Count; i++)
 				{
 					IAlias a = (IAlias)lbobj.Items[i];

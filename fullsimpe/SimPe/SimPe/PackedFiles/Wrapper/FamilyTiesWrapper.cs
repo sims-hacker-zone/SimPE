@@ -95,9 +95,12 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			uint id = reader.ReadUInt32();
 			if (id != 0x00000001)
+			{
 				throw new Exception(
 					"File is not Recognized by the Family Ties Wrapper!"
 				);
+			}
+
 			int count = reader.ReadInt32();
 			sims = new ArrayList(count);
 
@@ -168,10 +171,17 @@ namespace SimPe.PackedFiles.Wrapper
 		public FamilyTieSim FindTies(SDesc sdsc)
 		{
 			if (sdsc == null)
+			{
 				return null;
+			}
+
 			foreach (FamilyTieSim s in sims)
+			{
 				if (s.Instance == sdsc.Instance)
+				{
 					return s;
+				}
+			}
 
 			return null;
 		}

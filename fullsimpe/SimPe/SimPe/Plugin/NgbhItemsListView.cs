@@ -92,7 +92,10 @@ namespace SimPe.Plugin
 					tm = null;
 				}
 				if (clipboard != null)
+				{
 					clipboard.Clear();
+				}
+
 				if (components != null)
 				{
 					components.Dispose();
@@ -320,16 +323,24 @@ namespace SimPe.Plugin
 			get
 			{
 				if (NgbhItems == null)
+				{
 					return null;
+				}
 				else
+				{
 					return NgbhItems.Parent;
+				}
 			}
 			set
 			{
 				if (value != null)
+				{
 					NgbhItems = value.GetItems(this.SlotType);
+				}
 				else
+				{
 					NgbhItems = null;
+				}
 			}
 		}
 
@@ -362,10 +373,14 @@ namespace SimPe.Plugin
 					if (cbnogoss.Checked)
 					{
 						if (!i.IsGossip)
+						{
 							AddItemToList(i);
+						}
 					}
 					else
+					{
 						AddItemToList(i);
+					}
 				}
 				lv.EndUpdate();
 
@@ -376,7 +391,10 @@ namespace SimPe.Plugin
 		public void Refresh(bool full)
 		{
 			if (full)
+			{
 				SetContent();
+			}
+
 			base.Refresh();
 		}
 
@@ -388,7 +406,9 @@ namespace SimPe.Plugin
 		void AddItemToList(NgbhItem item)
 		{
 			if (item == null)
+			{
 				return;
+			}
 
 			NgbhItemsListViewItem lvi = new NgbhItemsListViewItem(this, item);
 		}
@@ -396,7 +416,9 @@ namespace SimPe.Plugin
 		void InsertItemToList(int index, NgbhItem item)
 		{
 			if (item == null)
+			{
 				return;
+			}
 
 			NgbhItemsListViewItem lvi = new NgbhItemsListViewItem(this, item, false);
 			lv.Items.Insert(index, lvi);
@@ -411,6 +433,7 @@ namespace SimPe.Plugin
 				+ ".";
 			SimMemoryType[] sts = Ngbh.AllowedMemoryTypes(st);
 			foreach (SimMemoryType mst in sts)
+			{
 				cbadd.Items.Add(
 					new Data.Alias(
 						(uint)mst,
@@ -418,15 +441,21 @@ namespace SimPe.Plugin
 						"{name}"
 					)
 				);
+			}
+
 			if (cbadd.Items.Count > 0)
+			{
 				cbadd.SelectedIndex = 0;
+			}
 		}
 
 		public void Clear()
 		{
 			lv.Clear();
 			if (lv.SmallImageList != null)
+			{
 				lv.SmallImageList.Images.Clear();
+			}
 		}
 
 		[System.ComponentModel.Browsable(false)]
@@ -435,11 +464,17 @@ namespace SimPe.Plugin
 			get
 			{
 				if (lv.SelectedItems.Count == 0)
+				{
 					return null;
+				}
 
 				if (lv.FocusedItem != null)
+				{
 					if (lv.FocusedItem.Selected)
+					{
 						return lv.FocusedItem as NgbhItemsListViewItem;
+					}
+				}
 
 				return lv.SelectedItems[0] as NgbhItemsListViewItem;
 			}
@@ -451,7 +486,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (SelectedItem == null)
+				{
 					return null;
+				}
+
 				return SelectedItem.Item;
 			}
 		}
@@ -463,10 +501,15 @@ namespace SimPe.Plugin
 			{
 				NgbhSlotList parent = null;
 				if (items != null)
+				{
 					parent = items.Parent;
+				}
+
 				Collections.NgbhItems ret = new Collections.NgbhItems(parent);
 				foreach (NgbhItemsListViewItem lvi in lv.SelectedItems)
+				{
 					ret.Add(lvi.Item);
+				}
 
 				return ret;
 			}
@@ -478,9 +521,14 @@ namespace SimPe.Plugin
 		internal void UpdateSelected(NgbhItem item)
 		{
 			if (item == null)
+			{
 				return;
+			}
+
 			if (SelectedItem == null)
+			{
 				return;
+			}
 
 			SelectedItem.Update();
 			this.Refresh(false);
@@ -507,7 +555,9 @@ namespace SimPe.Plugin
 		private void lv_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (SelectedIndexChanged != null)
+			{
 				SelectedIndexChanged(this, e);
+			}
 		}
 
 		private void cbadd_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -537,7 +587,9 @@ namespace SimPe.Plugin
 		)
 		{
 			if (items == null || cbadd.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			Data.Alias a = cbadd.SelectedItem as Data.Alias;
 			SimMemoryType smt = (SimMemoryType)a.Id;
@@ -557,19 +609,26 @@ namespace SimPe.Plugin
 		)
 		{
 			if (lv.SelectedItems.Count == 0 || items == null)
+			{
 				return;
+			}
 			//NgbhItemsListViewItem item = this.SelectedItem;
 			Collections.NgbhItems nitems = this.SelectedNgbhItems;
 			items.Remove(nitems);
 
 			for (int i = lv.SelectedItems.Count; i > 0; i--)
+			{
 				lv.Items.Remove(lv.SelectedItems[0]);
+			}
 		}
 
 		void SwapListViewItem(int i1, int i2)
 		{
 			if (i1 < 0 || i2 < 0 || i1 >= lv.Items.Count || i2 >= lv.Items.Count)
+			{
 				return;
+			}
+
 			ListViewItem o1 = lv.Items[i1];
 			ListViewItem o2 = lv.Items[i2];
 
@@ -583,7 +642,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (lv.SelectedIndices.Count == 0)
+				{
 					return -1;
+				}
+
 				return lv.SelectedIndices[0];
 			}
 		}
@@ -673,10 +735,14 @@ namespace SimPe.Plugin
 						item = item.Clone(this.Slot);
 
 						if (item.IsMemory && item.OwnerInstance > 0 && !asgossip)
+						{
 							item.OwnerInstance = (ushort)items.Parent.SlotID;
+						}
 
 						if (asgossip)
+						{
 							item.Flags.IsVisible = false;
+						}
 
 						AddItemAfterSelected(item);
 					}
@@ -730,7 +796,9 @@ namespace SimPe.Plugin
 			this.lv.Items[index].Selected = true;
 			this.lv.Items[index].EnsureVisible();
 			if (this.SelectedIndexChanged != null)
+			{
 				SelectedIndexChanged(this, new EventArgs());
+			}
 		}
 
 		int NextItemIndex(bool clearSelection)
@@ -739,13 +807,17 @@ namespace SimPe.Plugin
 
 			// get index of the last selected item (if any)
 			if (this.lv.SelectedIndices.Count > 0)
+			{
 				selectedIndex = this.lv.SelectedIndices[
 					this.lv.SelectedIndices.Count - 1
 				];
+			}
 
 			// deselect previous (if applicable)
 			if (clearSelection)
+			{
 				this.lv.SelectedItems.Clear();
+			}
 
 			// should not exceed the number of items (?)
 			selectedIndex = Math.Min(++selectedIndex, this.lv.Items.Count);
@@ -795,7 +867,10 @@ namespace SimPe.Plugin
 		{
 			NgbhItemsListViewItem li = this.SelectedItem;
 			if (li == null)
+			{
 				return null;
+			}
+
 			return li.Item;
 		}
 
@@ -807,14 +882,20 @@ namespace SimPe.Plugin
 
 				ArrayList guidList = new ArrayList();
 				foreach (NgbhItem item in items)
+				{
 					if (!guidList.Contains(item.Guid))
+					{
 						guidList.Add(item.Guid);
+					}
+				}
 
 				foreach (ListViewItem li in this.lv.Items)
 				{
 					NgbhItem item = li.Tag as NgbhItem;
 					if (guidList.Contains(item.Guid))
+					{
 						li.Selected = true;
+					}
 				}
 
 				this.lv.Enabled = true;
@@ -840,20 +921,26 @@ namespace SimPe.Plugin
 				{
 					ArrayList items = new ArrayList();
 					foreach (ListViewItem li in lv.SelectedItems)
+					{
 						items.Add(li);
+					}
 
 					Collections.NgbhItems memoryItems = this.SelectedNgbhItems;
 
 					if (cascade)
+					{
 						((EnhancedNgbh)Slot.Parent).DeleteMemoryEchoes(
 							memoryItems,
 							Slot.SlotID
 						);
+					}
 
 					memoryItems[0].ParentSlot.ItemsB.Remove(memoryItems);
 
 					foreach (ListViewItem li in items)
+					{
 						lv.Items.Remove(li);
+					}
 
 					lv.SelectedItems.Clear();
 				}

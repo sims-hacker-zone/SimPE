@@ -173,7 +173,10 @@ namespace SimPe
 			this.lbfile.Text = package.FileName;
 
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in package.Index)
+			{
 				lbfiles.Items.Add(pfd);
+			}
+
 			this.lbfiles.Sorted = true;
 			this.Show();
 		}
@@ -181,7 +184,9 @@ namespace SimPe
 		private void StartDrop(object sender, System.Windows.Forms.MouseEventArgs e)
 		{
 			if (lbfiles.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			if (e.Button == MouseButtons.Left)
 			{

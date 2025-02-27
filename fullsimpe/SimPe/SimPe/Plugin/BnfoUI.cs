@@ -113,7 +113,10 @@ namespace SimPe.Plugin
 			//
 			InitializeComponent();
 			if (Helper.WindowsRegistry.UseBigIcons)
+			{
 				this.lv.Font = new System.Drawing.Font("Tahoma", 12F);
+			}
+
 			string ttip =
 				"This info is from the sim\'s character\r\nfile so it can\'t be changed here";
 			this.toolTip1.SetToolTip(this.tbLeft, ttip);
@@ -1242,13 +1245,21 @@ namespace SimPe.Plugin
 		protected override void RefreshGUI()
 		{
 			if (intern)
+			{
 				return;
+			}
+
 			System.Resources.ResourceManager resources =
 				new System.Resources.ResourceManager(typeof(BnfoUI));
 			if (resources.GetString("$this.HeaderText") == null)
+			{
 				this.HeaderText = "Business Info";
+			}
 			else
+			{
 				this.HeaderText = resources.GetString("$this.HeaderText");
+			}
+
 			intern = true;
 			// Clear Panel2 but it doesn't seem to be needed
 			/*
@@ -1280,9 +1291,14 @@ namespace SimPe.Plugin
 					owner = (ushort)ltx.OwnerInstance;
 					ltname = ltx.LotName;
 					if (ltx.Type == Ltxt.LotType.Residential)
+					{
 						homeb = 0;
+					}
 					else
+					{
 						homeb = 1;
+					}
+
 					this.lblot.Text = ltname + " (" + ltx.Type.ToString() + " Lot)";
 				}
 				else
@@ -1421,11 +1437,20 @@ namespace SimPe.Plugin
 					edatas[n] = Bnfo.Expences[i];
 					rdatas[n] = Bnfo.Revenue[i];
 					if (Bnfo.Expences[i] < 0)
+					{
 						rdatas[n] -= Bnfo.Expences[i];
+					}
+
 					if (edatas[n] > mMax)
+					{
 						mMax = edatas[n];
+					}
+
 					if (rdatas[n] > mMax)
+					{
 						mMax = rdatas[n];
+					}
+
 					n++;
 				}
 				lbcashf.Text = "Current Cashflow = " + cflo.ToString("c");
@@ -1442,11 +1467,13 @@ namespace SimPe.Plugin
 		{
 			Image img = null;
 			if (sdesc.HasImage)
+			{
 				img = Ambertation.Drawing.GraphicRoutines.KnockoutImage(
 					sdesc.Image,
 					new Point(0, 0),
 					Color.Magenta
 				);
+			}
 			else
 			{
 				img = SimPe.GetImage.NoOne;
@@ -1476,9 +1503,14 @@ namespace SimPe.Plugin
 		private void biMax_Activate(object sender, System.EventArgs e)
 		{
 			if (lv.Items == null)
+			{
 				return;
+			}
+
 			foreach (BnfoCustomerItem item in lv.Items)
+			{
 				item.LoyaltyScore = 1000;
+			}
 
 			lv.Refresh();
 		}
@@ -1486,7 +1518,10 @@ namespace SimPe.Plugin
 		private void biReward_Activate(object sender, System.EventArgs e)
 		{
 			if (Bnfo == null)
+			{
 				return;
+			}
+
 			Bnfo.CurrentBusinessState = 0;
 			Bnfo.MaxSeenBusinessState = 0;
 			panel2_clear();
@@ -1496,9 +1531,15 @@ namespace SimPe.Plugin
 		private void tbCur_TextChanged(object sender, System.EventArgs e)
 		{
 			if (intern)
+			{
 				return;
+			}
+
 			if (Bnfo == null)
+			{
 				return;
+			}
+
 			Bnfo.CurrentBusinessState = Helper.StringToUInt32(
 				tbCur.Text,
 				Bnfo.CurrentBusinessState,
@@ -1509,9 +1550,15 @@ namespace SimPe.Plugin
 		private void tbMax_TextChanged(object sender, System.EventArgs e)
 		{
 			if (intern)
+			{
 				return;
+			}
+
 			if (Bnfo == null)
+			{
 				return;
+			}
+
 			Bnfo.MaxSeenBusinessState = Helper.StringToUInt32(
 				tbMax.Text,
 				Bnfo.MaxSeenBusinessState,
@@ -1544,7 +1591,9 @@ namespace SimPe.Plugin
 		private void lvEmployees_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (lvEmployees.SelectedItems.Count < 1)
+			{
 				return;
+			}
 
 			intern = true;
 			int payr = 3;
@@ -1554,9 +1603,14 @@ namespace SimPe.Plugin
 			}
 			catch { }
 			if (payr < 0)
+			{
 				payr = 0;
+			}
 			else if (payr > 6)
+			{
 				payr = 6;
+			}
+
 			PayBar(payr);
 			try
 			{
@@ -1576,9 +1630,13 @@ namespace SimPe.Plugin
 					(ushort)sdsc.CharacterDescription.LifeSection
 				);
 				if (sdsc.CharacterDescription.Gender == Data.MetaData.Gender.Female)
+				{
 					tbsgender.Text = "Female";
+				}
 				else
+				{
 					tbsgender.Text = "Male";
+				}
 
 				if (lvEmployees.SelectedItems[0].Text.Contains(" : Owner"))
 				{
@@ -1593,17 +1651,25 @@ namespace SimPe.Plugin
 					pbpay.Visible = pbox.Visible = lbpay.Visible = true;
 					btdelety.Visible = true;
 					if (sdsc.CharacterDescription.GhostFlag.IsGhost)
+					{
 						tbright.Text = sdsc.SimName + " has Died";
+					}
 					else if (sdsc.FamilyInstance == famly)
+					{
 						tbright.Text = "Family Member";
+					}
 					else if (
 						sdsc.CharacterDescription.CareerLevel == 2
 						&& sdsc.CharacterDescription.Career
 							== MetaData.Careers.OwnedBuss
 					)
+					{
 						tbright.Text = "Manager";
+					}
 					else
+					{
 						tbright.Text = "Employee";
+					}
 				}
 
 				tbwages.Text = sdsc.Business.Salary.ToString("C0");
@@ -1643,24 +1709,36 @@ namespace SimPe.Plugin
 		private void lvEmployees_DoubleClick(object sender, System.EventArgs e)
 		{
 			if (lvEmployees.SelectedItems.Count < 1)
+			{
 				return;
+			}
+
 			if (lvEmployees.SelectedItems[0].Tag == null)
+			{
 				return;
+			}
+
 			SimPe.PackedFiles.Wrapper.ExtSDesc sdsc =
 				lvEmployees.SelectedItems[0].Tag as SimPe.PackedFiles.Wrapper.ExtSDesc;
 			if (sdsc == null)
+			{
 				return;
+			}
+
 			Interfaces.Files.IPackedFileDescriptor pfd;
 			try
 			{
 				if (sdsc.Package == Bnfo.Package)
+				{
 					pfd = sdsc.Package.NewDescriptor(
 						0xAACE2EFB,
 						sdsc.FileDescriptor.SubType,
 						sdsc.FileDescriptor.Group,
 						sdsc.FileDescriptor.Instance
 					);
+				}
 				else
+				{
 					pfd = fixlowercase(sdsc.Package.FileName)
 						.NewDescriptor(
 							0xAACE2EFB,
@@ -1668,6 +1746,8 @@ namespace SimPe.Plugin
 							sdsc.FileDescriptor.Group,
 							sdsc.FileDescriptor.Instance
 						);
+				}
+
 				pfd = sdsc.Package.FindFile(pfd);
 				SimPe.RemoteControl.OpenPackedFile(pfd, sdsc.Package);
 			}
@@ -1718,14 +1798,25 @@ namespace SimPe.Plugin
 		private void pbpay_ChangedValue(object sender, EventArgs e)
 		{
 			if (intern)
+			{
 				return;
+			}
+
 			if (pbpay.Value < 1)
+			{
 				pbpay.Value = 1;
+			}
 			else if (pbpay.Value > 7)
+			{
 				pbpay.Value = 7;
+			}
+
 			PayBar(pbpay.Value - 1);
 			if (lvEmployees.SelectedItems.Count < 1)
+			{
 				return;
+			}
+
 			try
 			{
 				int indects = Convert.ToInt32(
@@ -1746,9 +1837,15 @@ namespace SimPe.Plugin
 		private void tbunknown_TextChanged(object sender, EventArgs e)
 		{
 			if (intern)
+			{
 				return;
+			}
+
 			if (lvEmployees.SelectedItems.Count < 1)
+			{
 				return;
+			}
+
 			try
 			{
 				int indects = Convert.ToInt32(
@@ -1758,7 +1855,10 @@ namespace SimPe.Plugin
 				{
 					string fp = tbunknown.Text;
 					if (fp.StartsWith("$"))
+					{
 						fp = fp.Substring(1);
+					}
+
 					Bnfo.A[indects] = Convert.ToUInt32(fp);
 					lvEmployees.SelectedItems[0].SubItems[3].Text = Convert.ToString(
 						Bnfo.A[indects]
@@ -1773,19 +1873,40 @@ namespace SimPe.Plugin
 		{
 			uint inst = 0xABBA2585;
 			if (pbpay.Value == 1)
+			{
 				inst = 0xABBA2595;
+			}
+
 			if (pbpay.Value == 2)
+			{
 				inst = 0xABBA2591;
+			}
+
 			if (pbpay.Value == 3)
+			{
 				inst = 0xABBA2588;
+			}
+
 			if (pbpay.Value == 4)
+			{
 				inst = 0xABBA2585;
+			}
+
 			if (pbpay.Value == 5)
+			{
 				inst = 0xABBA2582;
+			}
+
 			if (pbpay.Value == 6)
+			{
 				inst = 0xABBA2578;
+			}
+
 			if (pbpay.Value == 7)
+			{
 				inst = 0xABBA2575;
+			}
+
 			SimPe.Packages.File pkg = SimPe.Packages.File.LoadFromFile(
 				System.IO.Path.Combine(
 					PathProvider.Global.Latest.InstallFolder,
@@ -1808,10 +1929,14 @@ namespace SimPe.Plugin
 					pbox.Image = pic.Image;
 				}
 				else
+				{
 					pbox.Image = null;
+				}
 			}
 			else
+			{
 				pbox.Image = null;
+			}
 		}
 
 		private void btClearim_Click(object sender, EventArgs e)
@@ -1822,7 +1947,9 @@ namespace SimPe.Plugin
 			foreach (BnfoCustomerItem item in Bnfo.CustomerItems)
 			{
 				if (item.SimDescription != null)
+				{
 					bnff.Add(item);
+				}
 			}
 			Bnfo.CustomerItems.Clear();
 			foreach (BnfoCustomerItem item in bnff)
@@ -1836,12 +1963,18 @@ namespace SimPe.Plugin
 		private void btdelety_Click(object sender, EventArgs e)
 		{
 			if (lvEmployees.SelectedItems.Count < 1)
+			{
 				return;
+			}
+
 			int indects = Convert.ToInt32(
 				lvEmployees.SelectedItems[0].SubItems[2].Text
 			);
 			if (indects < 0)
+			{
 				return;
+			}
+
 			if (lvEmployees.SelectedItems[0].Tag != null)
 			{
 				SimPe.PackedFiles.Wrapper.ExtSDesc sdsc =
@@ -1875,17 +2008,21 @@ namespace SimPe.Plugin
 						}
 					}
 					else
+					{
 						lbadvice.Text =
 							"You will need to find and make changes to "
 							+ sdsc.SimName
 							+ "'s SDSC file";
+					}
 
 					lbadvice.Visible = true;
 				}
 			}
 
 			if (Bnfo.EmployeeCount < 2)
+			{
 				Bnfo.EmployeeCount = 0;
+			}
 			else
 			{
 				try
@@ -1975,7 +2112,9 @@ namespace SimPe.Plugin
 		private void btchadd_Click(object sender, EventArgs e)
 		{
 			if (cbsimselect.SelectedItem == null)
+			{
 				return;
+			}
 
 			SimPe.Interfaces.IAlias a =
 				cbsimselect.SelectedItem as SimPe.Interfaces.IAlias;
@@ -2032,10 +2171,12 @@ namespace SimPe.Plugin
 					}
 				}
 				else
+				{
 					lbadvice.Text =
 						"You will need to find and make changes to "
 						+ s.SimName
 						+ "'s SDSC file";
+				}
 
 				biWorkers.Enabled = true;
 				lbadvice.Visible = true;
@@ -2048,9 +2189,15 @@ namespace SimPe.Plugin
 		private void cbsimselect_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (intern)
+			{
 				return;
+			}
+
 			if (cbsimselect.SelectedItem == null)
+			{
 				return;
+			}
+
 			try
 			{
 				SimPe.Interfaces.IAlias a =
@@ -2064,9 +2211,13 @@ namespace SimPe.Plugin
 						(ushort)s.CharacterDescription.LifeSection
 					);
 					if (s.CharacterDescription.Gender == Data.MetaData.Gender.Female)
+					{
 						tbchgender.Text = "Female";
+					}
 					else
+					{
 						tbchgender.Text = "Male";
+					}
 				}
 				else
 				{
@@ -2079,52 +2230,111 @@ namespace SimPe.Plugin
 		private bool canhire(SimPe.PackedFiles.Wrapper.ExtSDesc sdsc)
 		{
 			foreach (ushort employee in Bnfo.Employees)
+			{
 				if (sdsc.Instance == employee)
+				{
 					return false; // already employee
+				}
+			}
 
 			if (sdsc.CharacterDescription.Realage < 16)
+			{
 				return false; // younger than teen
+			}
+
 			if (sdsc.University.OnCampus == 1)
+			{
 				return false; // young adult
+			}
+
 			if (sdsc.CharacterDescription.GhostFlag.IsGhost)
+			{
 				return false; // Too dead to work
+			}
+
 			if (sdsc.FamilyInstance == famly)
+			{
 				return false; // same family as owner
+			}
+
 			if (sdsc.FamilyInstance == 0)
+			{
 				return false;
+			}
+
 			if (sdsc.FamilyInstance == 0x7FFF)
+			{
 				return false; // service sim
+			}
+
 			if (sdsc.FamilyInstance == 0x7FFD)
+			{
 				return false; // orphans
+			}
+
 			if (sdsc.FamilyInstance == 0x7FE4)
+			{
 				return false; // Iconic Hobby Sim
+			}
+
 			if (sdsc.FamilyInstance == 0x7FF1)
+			{
 				return false; // Tropical Locals
+			}
+
 			if (sdsc.FamilyInstance == 0x7FF2)
+			{
 				return false; // Mountain Locals
+			}
+
 			if (sdsc.FamilyInstance == 0x7FF3)
+			{
 				return false; // Asian Locals
+			}
+
 			if (sdsc.FamilyInstance == 0x7f65)
+			{
 				return false; // West World Locals
+			}
+
 			if (sdsc.FamilyInstance == 0x7f66)
+			{
 				return false; // Natives (castaway)
+			}
+
 			if (sdsc.FamilyInstance == 0x7f67)
+			{
 				return false; // Tau Ceti Locals
+			}
+
 			if (sdsc.FamilyInstance == 0x7f68)
+			{
 				return false; // Alpine Locals
+			}
+
 			if (sdsc.IsNPC)
+			{
 				return false; // NPC unique
-							  // not if is NPC repoter - those are in service sim family and already excluded anyway
+			}
+			// not if is NPC repoter - those are in service sim family and already excluded anyway
 			return sdsc.Nightlife.IsHuman; // no pets
 		}
 
 		private bool AllValid()
 		{
 			if (lv.Items == null)
+			{
 				return true;
+			}
+
 			foreach (BnfoCustomerItem item in lv.Items)
+			{
 				if (item.SimDescription == null)
+				{
 					return false;
+				}
+			}
+
 			return true;
 		}
 
@@ -2161,9 +2371,15 @@ namespace SimPe.Plugin
 		private void cbOsimselect_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (intern)
+			{
 				return;
+			}
+
 			if (cbOsimselect.SelectedItem == null)
+			{
 				return;
+			}
+
 			try
 			{
 				SimPe.Interfaces.IAlias a =
@@ -2177,9 +2393,13 @@ namespace SimPe.Plugin
 						(ushort)s.CharacterDescription.LifeSection
 					);
 					if (s.CharacterDescription.Gender == Data.MetaData.Gender.Female)
+					{
 						tbOgender.Text = "Female";
+					}
 					else
+					{
 						tbOgender.Text = "Male";
+					}
 				}
 				else
 				{
@@ -2198,7 +2418,9 @@ namespace SimPe.Plugin
 		private void btOadd_Click(object sender, EventArgs e)
 		{
 			if (cbOsimselect.SelectedItem == null)
+			{
 				return;
+			}
 
 			SimPe.Interfaces.IAlias a =
 				cbOsimselect.SelectedItem as SimPe.Interfaces.IAlias;
@@ -2241,16 +2463,33 @@ namespace SimPe.Plugin
 		private bool canownim(SimPe.PackedFiles.Wrapper.ExtSDesc sdsc)
 		{
 			foreach (ushort employee in Bnfo.Employees)
+			{
 				if (sdsc.Instance == employee)
+				{
 					return false; // an employee
+				}
+			}
+
 			if (sdsc.Instance == owner)
+			{
 				return false; // current Owner
+			}
+
 			if (sdsc.CharacterDescription.Realage < 16)
+			{
 				return false; // younger than teen
+			}
+
 			if (sdsc.CharacterDescription.GhostFlag.IsGhost)
+			{
 				return false; // Too dead to work
+			}
+
 			if (sdsc.FamilyInstance == 0 || sdsc.FamilyInstance > 0x7F00)
+			{
 				return false; // non Playable
+			}
+
 			return sdsc.Nightlife.IsHuman; // no pets
 		}
 

@@ -58,9 +58,15 @@ namespace SimPe.Plugin
 		)
 		{
 			if (package == null)
+			{
 				return false;
+			}
+
 			if (prov.SimNameProvider == null)
+			{
 				return false;
+			}
+
 			return (
 				Helper.IsNeighborhoodFile(package.FileName)
 				|| Helper.IsLotCatalogFile(package.FileName)

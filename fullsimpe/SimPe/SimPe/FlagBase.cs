@@ -63,7 +63,9 @@ namespace SimPe
 			ushort mask = (ushort)(1 << nr);
 			Value = (ushort)(Value | mask);
 			if (!val)
+			{
 				Value -= mask;
+			}
 		}
 
 		public override string ToString()

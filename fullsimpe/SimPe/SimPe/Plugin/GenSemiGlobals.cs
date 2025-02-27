@@ -35,7 +35,9 @@ namespace SimPe.Plugin
 		public bool Parse(List<string> argv)
 		{
 			if (!argv.Remove("-gensemiglob"))
+			{
 				return false;
+			}
 
 			System.Collections.Generic.List<uint> added =
 				new System.Collections.Generic.List<uint>();
@@ -58,9 +60,12 @@ namespace SimPe.Plugin
 			)
 			{
 				if (ct % 23 == 0)
+				{
 					Splash.Screen.SetMessage(
 						"Wrote " + ct + " (" + unq + " unique) entries"
 					);
+				}
+
 				ct++;
 
 				SimPe.Plugin.Glob glb = new SimPe.Plugin.Glob();

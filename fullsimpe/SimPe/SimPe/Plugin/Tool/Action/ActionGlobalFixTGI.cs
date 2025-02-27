@@ -39,7 +39,9 @@ namespace SimPe.Plugin.Tool.Action
 		public void ExecuteEventHandler(object sender, SimPe.Events.ResourceEventArgs e)
 		{
 			if (!ChangeEnabledStateEventHandler(null, e))
+			{
 				return;
+			}
 
 			foreach (
 				Interfaces.Files.IPackedFileDescriptor pfd in e.LoadedPackage
@@ -55,9 +57,11 @@ namespace SimPe.Plugin.Tool.Action
 					pfd
 				);
 				if (wrapper == null)
+				{
 					wrapper = FileTable.WrapperRegistry.FindHandler(
 						file.UncompressedData
 					);
+				}
 
 				if (wrapper != null)
 				{

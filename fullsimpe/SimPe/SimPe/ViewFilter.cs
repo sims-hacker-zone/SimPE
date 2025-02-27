@@ -55,7 +55,9 @@ namespace SimPe
 				{
 					inst = value;
 					if (ChangedFilter != null && FilterInstance)
+					{
 						ChangedFilter(this, new EventArgs());
+					}
 				}
 			}
 		}
@@ -76,7 +78,9 @@ namespace SimPe
 					doinst = value;
 					Active = dogrp || doinst;
 					if (ChangedFilter != null)
+					{
 						ChangedFilter(this, new EventArgs());
+					}
 				}
 			}
 		}
@@ -99,7 +103,9 @@ namespace SimPe
 				{
 					grp = value;
 					if (ChangedFilter != null && FilterGroup)
+					{
 						ChangedFilter(this, new EventArgs());
+					}
 				}
 			}
 		}
@@ -120,7 +126,9 @@ namespace SimPe
 					dogrp = value;
 					Active = dogrp || doinst;
 					if (ChangedFilter != null)
+					{
 						ChangedFilter(this, new EventArgs());
+					}
 				}
 			}
 		}
@@ -139,11 +147,21 @@ namespace SimPe
 		public bool IsFiltered(SimPe.Interfaces.Files.IPackedFileDescriptor pfd)
 		{
 			if (dogrp)
+			{
 				if (pfd.Group != grp)
+				{
 					return true;
+				}
+			}
+
 			if (doinst)
+			{
 				if (pfd.Instance != inst)
+				{
 					return true;
+				}
+			}
+
 			return false;
 		}
 

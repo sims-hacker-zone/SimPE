@@ -36,7 +36,9 @@ namespace SimPe.Plugin
 		{
 			int i = ArgParser.Parse(argv, "-build");
 			if (i < 0)
+			{
 				return false;
+			}
 
 			Splash.Screen.SetMessage("Building Package...");
 
@@ -46,9 +48,15 @@ namespace SimPe.Plugin
 			while (argv.Count - i > 0 && input.Length == 0 && output.Length == 0)
 			{
 				if (ArgParser.Parse(argv, i, "-desc", ref input))
+				{
 					continue;
+				}
+
 				if (ArgParser.Parse(argv, i, "-out", ref output))
+				{
 					continue;
+				}
+
 				SimPe.Message.Show(Help()[0]);
 				return true;
 			}

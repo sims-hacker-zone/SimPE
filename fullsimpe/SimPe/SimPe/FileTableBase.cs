@@ -58,7 +58,9 @@ namespace SimPe
 				System.Collections.Generic.Dictionary<string, ExpansionItem> shortmap =
 					new System.Collections.Generic.Dictionary<string, ExpansionItem>();
 				foreach (ExpansionItem ei in PathProvider.Global.Expansions)
+				{
 					shortmap[ei.ShortId.ToLower()] = ei;
+				}
 
 				ArrayList folders = new ArrayList();
 
@@ -87,16 +89,22 @@ namespace SimPe
 						while (xr.MoveToNextAttribute())
 						{
 							if (xr.Name == "recursive" && xr.Value != "0")
+							{
 								ftirec = true;
+							}
 							else if (xr.Name == "ignore" && xr.Value != "0")
+							{
 								ftiignore = true;
+							}
 							else if (xr.Name == "version" || xr.Name == "epversion")
+							{
 								try
 								{
 									int ver = Convert.ToInt32(xr.Value);
 									ftiver = ver;
 								}
 								catch { }
+							}
 							else if (xr.Name == "root")
 							{
 								string root = xr.Value.ToLower();
@@ -133,6 +141,7 @@ namespace SimPe
 
 						FileTableItem fti;
 						if (xr.Name == "file")
+						{
 							fti = new FileTableItem(
 								xr.ReadString(),
 								ftitype,
@@ -141,7 +150,9 @@ namespace SimPe
 								ftiver,
 								ftiignore
 							);
+						}
 						else
+						{
 							fti = new FileTableItem(
 								xr.ReadString(),
 								ftitype,
@@ -150,6 +161,8 @@ namespace SimPe
 								ftiver,
 								ftiignore
 							);
+						}
+
 						folders.Add(fti);
 						xr.ReadEndElement();
 					}
@@ -243,12 +256,15 @@ namespace SimPe
 						string s = ei.ShortId.ToLower();
 						{
 							foreach (string folder in ei.PreObjectFileTableFolders)
+							{
 								writenode(xw, shouldignor(ei, folder), s, null, folder);
+							}
 
 							if (
 								ei.Flag.Class == ExpansionItem.Classes.Story
 								|| !ei.Flag.FullObjectsPackage
 							)
+							{
 								writenode(
 									xw,
 									shouldignor(ei, ei.ObjectsSubFolder),
@@ -256,7 +272,9 @@ namespace SimPe
 									null,
 									ei.ObjectsSubFolder
 								);
+							}
 							else
+							{
 								writenode(
 									xw,
 									shouldignor(ei, ei.ObjectsSubFolder),
@@ -264,9 +282,12 @@ namespace SimPe
 									ei.Version.ToString(),
 									ei.ObjectsSubFolder
 								);
+							}
 
 							foreach (string folder in ei.FileTableFolders)
+							{
 								writenode(xw, shouldignor(ei, folder), s, null, folder);
+							}
 						}
 					}
 
@@ -291,7 +312,10 @@ namespace SimPe
 				(PathProvider.Global.GameVersion < 21 && ei.Flag.SimStory)
 				|| (!ei.Exists && ei.InstallFolder == "")
 			)
+			{
 				return true;
+			}
+
 			if (
 				ei.Version == PathProvider.Global.GameVersion
 				&& (
@@ -301,14 +325,20 @@ namespace SimPe
 					|| folder.EndsWith("\\Wants")
 				)
 			)
+			{
 				return false;
+			}
+
 			if (
 				folder.EndsWith("\\3D")
 				|| folder.EndsWith("\\Sims3D")
 				|| folder.EndsWith("\\Stuffpack\\Objects")
 				|| folder.EndsWith("\\Materials")
 			)
+			{
 				return false;
+			}
+
 			return true;
 		}
 
@@ -380,14 +410,22 @@ namespace SimPe
 						}
 
 						if (fti.IsRecursive)
+						{
 							xw.WriteAttributeString("recursive", "1");
+						}
+
 						if (fti.EpVersion >= 0)
+						{
 							xw.WriteAttributeString(
 								"version",
 								fti.EpVersion.ToString()
 							);
+						}
+
 						if (fti.Ignore)
+						{
 							xw.WriteAttributeString("ignore", "1");
+						}
 
 						xw.WriteValue(fti.RelativePath);
 						xw.WriteEndElement();
@@ -417,10 +455,16 @@ namespace SimPe
 		{
 			xw.WriteStartElement("path");
 			if (ign)
+			{
 				xw.WriteAttributeString("ignore", "1");
+			}
+
 			xw.WriteAttributeString("root", root);
 			if (version != null)
+			{
 				xw.WriteAttributeString("version", version);
+			}
+
 			xw.WriteValue(folder);
 			xw.WriteEndElement();
 		}

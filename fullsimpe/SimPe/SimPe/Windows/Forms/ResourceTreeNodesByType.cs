@@ -37,7 +37,9 @@ namespace SimPe.Windows.Forms
 
 			nodelist.Sort();
 			foreach (ResourceTreeNodeExt node in nodelist)
+			{
 				tn.Nodes.Add(node);
+			}
 		}
 	}
 }

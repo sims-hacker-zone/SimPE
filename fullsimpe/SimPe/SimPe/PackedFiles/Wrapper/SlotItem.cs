@@ -199,15 +199,29 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 
 			if (Parent.Version >= 7)
+			{
 				UnknownFloat7 = reader.ReadSingle();
+			}
+
 			if (Parent.Version >= 8)
+			{
 				UnknownInt7 = reader.ReadInt32();
+			}
+
 			if (Parent.Version >= 9)
+			{
 				UnknownInt8 = reader.ReadInt32();
+			}
+
 			if (Parent.Version == 10)
+			{
 				UnknownShort3 = reader.ReadInt16(); // this is in test, before making full use of I need to test, test and fucking test
+			}
+
 			if (Parent.Version >= 0x10)
+			{
 				UnknownFloat8 = reader.ReadSingle();
+			}
 
 			if (Parent.Version >= 0x40)
 			{
@@ -255,15 +269,29 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 
 			if (parent.Version >= 7)
+			{
 				writer.Write(UnknownFloat7);
+			}
+
 			if (parent.Version >= 8)
+			{
 				writer.Write(UnknownInt7);
+			}
+
 			if (parent.Version >= 9)
+			{
 				writer.Write(UnknownInt8);
+			}
+
 			if (parent.Version == 10)
+			{
 				writer.Write(UnknownShort3);
+			}
+
 			if (parent.Version >= 0x10)
+			{
 				writer.Write(UnknownFloat8);
+			}
 
 			if (parent.Version >= 0x40)
 			{
@@ -333,7 +361,9 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			SlotItems list = new SlotItems();
 			foreach (SlotItem item in this)
+			{
 				list.Add(item);
+			}
 
 			return list;
 		}

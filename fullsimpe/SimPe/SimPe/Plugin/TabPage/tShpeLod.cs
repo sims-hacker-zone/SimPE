@@ -214,7 +214,10 @@ namespace SimPe.Plugin.TabPage
 
 				uint[] unknown = new uint[lbunk.Items.Count];
 				for (int i = 0; i < unknown.Length; i++)
+				{
 					unknown[i] = (uint)lbunk.Items[i];
+				}
+
 				shape.Unknwon = unknown;
 			}
 			catch (Exception) { }
@@ -223,9 +226,14 @@ namespace SimPe.Plugin.TabPage
 		private void SelectUnknown(object sender, System.EventArgs e)
 		{
 			if (tbunk.Tag != null)
+			{
 				return;
+			}
+
 			if (lbunk.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			try
 			{
@@ -243,9 +251,14 @@ namespace SimPe.Plugin.TabPage
 		private void ChangeUnknown(object sender, System.EventArgs e)
 		{
 			if (tbunk.Tag != null)
+			{
 				return;
+			}
+
 			if (lbunk.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			try
 			{
@@ -279,7 +292,10 @@ namespace SimPe.Plugin.TabPage
 		)
 		{
 			if (lbunk.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			lbunk.Items.RemoveAt(lbunk.SelectedIndex);
 			UpdateLists();
 		}

@@ -464,16 +464,20 @@ namespace Ambertation.Windows.Forms.Graph
 			if (lcct == LinkControlCapType.Arrow)
 			{
 				if (start)
+				{
 					pen.CustomStartCap =
 						new System.Drawing.Drawing2D.AdjustableArrowCap(
 							hasz.Width,
 							hasz.Height
 						);
+				}
 				else
+				{
 					pen.CustomEndCap = new System.Drawing.Drawing2D.AdjustableArrowCap(
 						hasz.Width,
 						hasz.Height
 					);
+				}
 			}
 			else if (lcct == LinkControlCapType.Disk)
 			{
@@ -538,7 +542,10 @@ namespace Ambertation.Windows.Forms.Graph
 		protected void MoveControl()
 		{
 			if (sc == null || ec == null)
+			{
 				return;
+			}
+
 			Point pstart = this.GetAnchorLocation(sa, sc);
 			Point pend = this.GetAnchorLocation(ea, ec);
 			Size asz = HalfArrowSize;
@@ -583,7 +590,10 @@ namespace Ambertation.Windows.Forms.Graph
 					&& this.esa == LinkControlSnapAnchor.None
 				)
 			)
+			{
 				return;
+			}
+
 			Point b = GraphItemBase.FindBestDocks(sc.Docks, ssa, sa, ec.Docks, esa, ea);
 			this.sa = (byte)b.X;
 			ea = (byte)b.Y;
@@ -604,26 +614,38 @@ namespace Ambertation.Windows.Forms.Graph
 			if (sside)
 			{
 				if (pend.X < pstart.X)
+				{
 					ctrl1 = new Point(pstart.X - Width / 2, pstart.Y);
+				}
 				else
+				{
 					ctrl1 = new Point(pstart.X + Width / 2, pstart.Y);
+				}
 			}
 			else
 			{
 				if (pend.Y < pstart.Y)
+				{
 					ctrl1 = new Point(pstart.X, pstart.Y - Height / 2);
+				}
 			}
 			if (this.EndElement.Docks[this.EndAnchor].IsSideDock)
 			{
 				if (pend.X < pstart.X)
+				{
 					ctrl2 = new Point(pend.X + Width / 2, pend.Y);
+				}
 				else
+				{
 					ctrl2 = new Point(pend.X - Width / 2, pend.Y);
+				}
 			}
 			else
 			{
 				if (pend.Y < pstart.Y)
+				{
 					ctrl2 = new Point(pend.X, pend.Y + Height / 2);
+				}
 			}
 
 			path.AddBezier(
@@ -641,7 +663,9 @@ namespace Ambertation.Windows.Forms.Graph
 		protected override void UserDraw(System.Drawing.Graphics g)
 		{
 			if (sc == null || ec == null)
+			{
 				return;
+			}
 
 			Size asz = HalfArrowSize;
 			Point pstart = this.GetAnchorLocation(sa, sc, this.Location);
@@ -747,7 +771,10 @@ namespace Ambertation.Windows.Forms.Graph
 		protected void SetupAnchor(GraphPanelElement c, bool load)
 		{
 			if (c == null)
+			{
 				return;
+			}
+
 			if (load)
 			{
 				c.Move += new EventHandler(c_Move);

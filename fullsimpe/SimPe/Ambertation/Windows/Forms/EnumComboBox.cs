@@ -51,7 +51,9 @@ namespace Ambertation.Windows.Forms
 					type.Namespace + "." + type.Name + "." + obj.ToString()
 				);
 				if (nname != null)
+				{
 					Name = nname;
+				}
 			}
 			this.Content = obj;
 		}
@@ -86,7 +88,9 @@ namespace Ambertation.Windows.Forms
 			if (disposing)
 			{
 				if (components != null)
+				{
 					components.Dispose();
+				}
 			}
 			base.Dispose(disposing);
 		}
@@ -131,10 +135,16 @@ namespace Ambertation.Windows.Forms
 			get
 			{
 				if (this.SelectedIndex < 0)
+				{
 					return null;
+				}
+
 				object o = Items[SelectedIndex];
 				if (o is EnumComboBoxItem)
+				{
 					return ((EnumComboBoxItem)o).Content;
+				}
+
 				return o;
 			}
 			set
@@ -153,7 +163,10 @@ namespace Ambertation.Windows.Forms
 						{
 							object o = Items[i];
 							if (o is EnumComboBoxItem)
+							{
 								o = ((EnumComboBoxItem)o).Content;
+							}
+
 							if (((System.Enum)o).CompareTo(value) == 0)
 							{
 								sel = i;
@@ -198,9 +211,13 @@ namespace Ambertation.Windows.Forms
 			if (keepselection)
 			{
 				if (last < this.Items.Count)
+				{
 					this.SelectedIndex = last;
+				}
 				else
+				{
 					this.SelectedIndex = Items.Count - 1;
+				}
 			}
 		}
 	}

@@ -54,8 +54,13 @@ namespace SimPe
 			string[] p = ext.Split(";".ToCharArray());
 
 			foreach (string s in p)
+			{
 				if (s.Trim() != "")
+				{
 					Extensions.Add(s.Trim());
+				}
+			}
+
 			this.Text = SimPe.Localization.GetString(name);
 		}
 
@@ -94,7 +99,10 @@ namespace SimPe
 			for (int i = 0; i < Extensions.Count; i++)
 			{
 				if (i != 0)
+				{
 					res += ";";
+				}
+
 				res += Extensions[i];
 			}
 
@@ -119,8 +127,13 @@ namespace SimPe
 		{
 			filename = filename.Trim().ToLower();
 			for (int i = 0; i < Extensions.Count; i++)
+			{
 				if (filename.EndsWith(Extensions[i].ToString().Replace("*", "")))
+				{
 					return true;
+				}
+			}
+
 			return false;
 		}
 	}
@@ -202,10 +215,15 @@ namespace SimPe
 			{
 				string ext = type.Extension.Trim().ToLower();
 				if (ext == "")
+				{
 					continue;
+				}
+
 				ext = "*." + ext + suffix;
 				if (!exts.Contains(ext))
+				{
 					exts.Add(ext);
+				}
 			}
 
 			return exts;
@@ -219,7 +237,10 @@ namespace SimPe
 			get
 			{
 				if (map == null)
+				{
 					BuildMap();
+				}
+
 				return map;
 			}
 		}
@@ -233,7 +254,10 @@ namespace SimPe
 		{
 			ExtensionDescriptor res = (ExtensionDescriptor)ExtensionMap[type];
 			if (res == null)
+			{
 				res = new ExtensionDescriptor("Unknown Type", "*.*");
+			}
+
 			return res;
 		}
 
@@ -248,7 +272,10 @@ namespace SimPe
 			for (int i = 0; i < types.Length; i++)
 			{
 				if (i != 0)
+				{
 					s += "|";
+				}
+
 				s += GetExtension(types[i]).ToString();
 			}
 
@@ -266,7 +293,9 @@ namespace SimPe
 			{
 				ExtensionDescriptor ed = (ExtensionDescriptor)ExtensionMap[et];
 				if (ed.AllowedExtension(filename))
+				{
 					return et;
+				}
 			}
 
 			return ExtensionType.AllFiles;

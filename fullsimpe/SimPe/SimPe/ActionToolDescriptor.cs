@@ -86,9 +86,14 @@ namespace SimPe
 				LinkLabel.Height = 16;
 			}
 			if (tool.Icon != null)
+			{
 				if (tool.Icon is System.Drawing.Bitmap)
+				{
 					//ll.Icon = System.Drawing.Icon.FromHandle(((System.Drawing.Bitmap)tool.Icon).GetHicon());
 					LinkLabel.Text = SimPe.Localization.GetString(tool.ToString());
+				}
+			}
+
 			LinkLabel.LinkArea = new System.Windows.Forms.LinkArea(0, LinkLabel.Text.Length);
 			LinkLabel.Font = new System.Drawing.Font(
 				"Verdana",
@@ -132,13 +137,17 @@ namespace SimPe
 		void mi_CheckedChanged(object sender, EventArgs e)
 		{
 			if (ToolBarButton != null)
+			{
 				ToolBarButton.Checked = MenuButton.Checked;
+			}
 		}
 
 		void mi_EnabledChanged(object sender, EventArgs e)
 		{
 			if (ToolBarButton != null)
+			{
 				ToolBarButton.Enabled = MenuButton.Enabled;
+			}
 		}
 
 		/// <summary>
@@ -164,10 +173,15 @@ namespace SimPe
 		private void LinkClicked(object sender, EventArgs e)
 		{
 			if (lp != null)
+			{
 				lp.PauseIndexChangedEvents();
+			}
+
 			tool.ExecuteEventHandler(sender, lasteventarg);
 			if (lp != null)
+			{
 				lp.RestartIndexChangedEvents();
+			}
 		}
 	}
 }

@@ -88,7 +88,9 @@ namespace SimPe.PackedFiles.UserInterface
 		void GFT_FiletableRefresh(object sender, EventArgs e)
 		{
 			if (wrapper.FileDescriptor == null)
+			{
 				return;
+			}
 
 			bool savedchg = internalchg;
 			internalchg = true;
@@ -100,7 +102,10 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				int max = pjse.BhavWiz.readStr(pjse.GS.BhavStr.OBJFDescs).Count;
 				for (int i = 0; i < max; i++)
+				{
 					wrapper.Add(new ObjfItem(wrapper));
+				}
+
 				lvObjfItem.Items[0].Selected = true;
 			}
 			for (ushort i = 0; i < lvObjfItem.Items.Count; i++)
@@ -122,7 +127,9 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 
 			if (lvObjfItem.SelectedIndices.Count > 0)
+			{
 				setLabel(lvObjfItem.SelectedIndices[0]);
+			}
 
 			if (currentItem != null)
 			{
@@ -169,18 +176,26 @@ namespace SimPe.PackedFiles.UserInterface
 				|| index < 0
 				|| ((pjse.FallbackStrItem)funcDescs[index]) == null
 			)
+			{
 				return;
+			}
+
 			StrItem s = ((pjse.FallbackStrItem)funcDescs[index]).strItem;
 			if (s != null)
+			{
 				lbFunction.Text = s.Description;
+			}
 		}
 
 		private bool hex16_IsValid(object sender)
 		{
 			if (alHex16.IndexOf(sender) < 0)
+			{
 				throw new Exception(
 					"hex16_IsValid not applicable to control " + sender.ToString()
 				);
+			}
+
 			try
 			{
 				Convert.ToUInt16(((TextBox)sender).Text, 16);
@@ -196,7 +211,9 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			TextBox[] tbaAG = { tbAction, tbGuardian };
 			if (!notxt)
+			{
 				tbaAG[which].Text = "0x" + Helper.HexString(target);
+			}
 
 			Label[] lbaAG = { lbAction, lbGuardian };
 			LinkLabel[] llaAG = { llAction, llGuardian };
@@ -235,9 +252,12 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				int max = pjse.BhavWiz.readStr(pjse.GS.BhavStr.OBJFDescs).Count;
 				for (int i = 0; i < max; i++)
+				{
 					wrapper.Add(new ObjfItem(wrapper));
+				}
 			}
 			for (ushort i = 0; i < wrapper.Count; i++)
+			{
 				this.lvObjfItem.Items.Add(
 					new ListViewItem(
 						new string[]
@@ -252,6 +272,7 @@ namespace SimPe.PackedFiles.UserInterface
 						}
 					)
 				);
+			}
 
 			internalchg = false;
 
@@ -269,7 +290,10 @@ namespace SimPe.PackedFiles.UserInterface
 			this.btnCommit.Enabled = wrapper.Changed;
 
 			if (internalchg)
+			{
 				return;
+			}
+
 			internalchg = true;
 			this.Text = tbFilename.Text = wrapper.FileName;
 			internalchg = false;
@@ -528,7 +552,9 @@ namespace SimPe.PackedFiles.UserInterface
 		private void lvObjfItem_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			if (this.internalchg)
+			{
 				return;
+			}
 
 			if (
 				lvObjfItem.SelectedIndices.Count > 0
@@ -613,7 +639,9 @@ namespace SimPe.PackedFiles.UserInterface
 				false
 			);
 			if (item != null)
+			{
 				setBHAV(0, (ushort)item.Instance, false);
+			}
 		}
 
 		private void GetObjfGuard(object sender, System.EventArgs e)
@@ -625,7 +653,9 @@ namespace SimPe.PackedFiles.UserInterface
 				false
 			);
 			if (item != null)
+			{
 				setBHAV(1, (ushort)item.Instance, false);
+			}
 		}
 
 		private void tbFilename_TextChanged(object sender, System.EventArgs e)
@@ -641,9 +671,14 @@ namespace SimPe.PackedFiles.UserInterface
 		private void hex16_TextChanged(object sender, System.EventArgs ev)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (!hex16_IsValid(sender))
+			{
 				return;
+			}
 
 			ushort val = Convert.ToUInt16(((TextBox)sender).Text, 16);
 			internalchg = true;
@@ -667,7 +702,9 @@ namespace SimPe.PackedFiles.UserInterface
 		)
 		{
 			if (hex16_IsValid(sender))
+			{
 				return;
+			}
 
 			e.Cancel = true;
 

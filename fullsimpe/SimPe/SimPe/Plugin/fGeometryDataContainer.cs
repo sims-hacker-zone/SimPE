@@ -187,17 +187,23 @@ namespace SimPe.Plugin
 			Gmdc.BlockFormat[] bls = (Gmdc.BlockFormat[])
 				System.Enum.GetValues(typeof(Gmdc.BlockFormat));
 			foreach (Gmdc.BlockFormat b in bls)
+			{
 				this.cbblock.Items.Add(b);
+			}
 
 			Gmdc.SetFormat[] sets = (Gmdc.SetFormat[])
 				System.Enum.GetValues(typeof(Gmdc.SetFormat));
 			foreach (Gmdc.SetFormat s in sets)
+			{
 				this.cbset.Items.Add(s);
+			}
 
 			Gmdc.ElementIdentity[] eis = (Gmdc.ElementIdentity[])
 				System.Enum.GetValues(typeof(Gmdc.ElementIdentity));
 			foreach (Gmdc.ElementIdentity e in eis)
+			{
 				this.cbid.Items.Add(e);
+			}
 
 			this.cbCorrect.Checked = Helper
 				.WindowsRegistry
@@ -207,17 +213,24 @@ namespace SimPe.Plugin
 			foreach (SimPe.Plugin.Gmdc.ElementSorting es in vs)
 			{
 				if (es == ElementSorting.Preview)
+				{
 					continue;
+				}
+
 				cbaxis.Items.Add(es);
 				if (es == ElementSorting.XZY)
+				{
 					cbaxis.SelectedIndex = cbaxis.Items.Count - 1;
+				}
 			}
 
 			if (
 				DefaultSelectedAxisIndex >= 0
 				&& DefaultSelectedAxisIndex < cbaxis.Items.Count
 			)
+			{
 				cbaxis.SelectedIndex = DefaultSelectedAxisIndex;
+			}
 
 			if (Helper.WindowsRegistry.UseBigIcons)
 			{
@@ -3253,7 +3266,10 @@ namespace SimPe.Plugin
 		private void SettingsChange(object sender, System.EventArgs e)
 		{
 			if (tMesh.Tag == null)
+			{
 				return;
+			}
+
 			try
 			{
 				GeometryDataContainer gdc = (GeometryDataContainer)tMesh.Tag;
@@ -3271,9 +3287,15 @@ namespace SimPe.Plugin
 		private void SelectItemsA(object sender, System.EventArgs e)
 		{
 			if (lb_itemsa.Tag != null)
+			{
 				return;
+			}
+
 			if (lb_itemsa.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				lb_itemsa.Tag = true;
@@ -3291,7 +3313,9 @@ namespace SimPe.Plugin
 				{
 					Gmdc.ElementIdentity b = (ElementIdentity)this.cbid.Items[i];
 					if (b == item.Identity)
+					{
 						cbid.SelectedIndex = i;
+					}
 				}
 
 				cbblock.SelectedIndex = cbblock.Items.Count - 1;
@@ -3299,7 +3323,9 @@ namespace SimPe.Plugin
 				{
 					Gmdc.BlockFormat b = (BlockFormat)this.cbblock.Items[i];
 					if (b == item.BlockFormat)
+					{
 						cbblock.SelectedIndex = i;
+					}
 				}
 
 				cbset.SelectedIndex = cbset.Items.Count - 1;
@@ -3307,16 +3333,22 @@ namespace SimPe.Plugin
 				{
 					Gmdc.SetFormat b = (SetFormat)this.cbset.Items[i];
 					if (b == item.SetFormat)
+					{
 						cbset.SelectedIndex = i;
+					}
 				}
 
 				lb_itemsa1.Items.Clear();
 				foreach (GmdcElementValueBase i in item.Values)
+				{
 					SimPe.CountedListItem.Add(lb_itemsa1, i);
+				}
 
 				lb_itemsa2.Items.Clear();
 				foreach (int i in item.Items)
+				{
 					lb_itemsa2.Items.Add(i);
+				}
 			}
 			catch (Exception ex)
 			{
@@ -3331,11 +3363,20 @@ namespace SimPe.Plugin
 		private void SelectItemsA2(object sender, System.EventArgs e)
 		{
 			if (lb_itemsa.Tag != null)
+			{
 				return;
+			}
+
 			if (lb_itemsa.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			if (lb_itemsa2.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				lb_itemsa.Tag = true;
@@ -3360,9 +3401,15 @@ namespace SimPe.Plugin
 		private void SelectItemsB(object sender, System.EventArgs e)
 		{
 			if (lb_itemsb.Tag != null)
+			{
 				return;
+			}
+
 			if (lb_itemsb.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				lb_itemsb.Tag = true;
@@ -3374,19 +3421,27 @@ namespace SimPe.Plugin
 
 				lb_itemsb2.Items.Clear();
 				foreach (int i in item.ReferencedElement)
+				{
 					lb_itemsb2.Items.Add(i);
+				}
 
 				lb_itemsb3.Items.Clear();
 				foreach (int i in item.AliasValues[0])
+				{
 					lb_itemsb3.Items.Add(i);
+				}
 
 				lb_itemsb4.Items.Clear();
 				foreach (int i in item.AliasValues[1])
+				{
 					lb_itemsb4.Items.Add(i);
+				}
 
 				lb_itemsb5.Items.Clear();
 				foreach (int i in item.AliasValues[2])
+				{
 					lb_itemsb5.Items.Add(i);
+				}
 			}
 			catch (Exception ex)
 			{
@@ -3401,11 +3456,20 @@ namespace SimPe.Plugin
 		private void SelectItemsB2(object sender, System.EventArgs e)
 		{
 			if (lb_itemsb.Tag != null)
+			{
 				return;
+			}
+
 			if (lb_itemsb.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			if (lb_itemsb2.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				lb_itemsb.Tag = true;
@@ -3430,11 +3494,20 @@ namespace SimPe.Plugin
 		private void SelectItemsB3(object sender, System.EventArgs e)
 		{
 			if (lb_itemsb.Tag != null)
+			{
 				return;
+			}
+
 			if (lb_itemsb.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			if (lb_itemsb3.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				lb_itemsb.Tag = true;
@@ -3457,11 +3530,20 @@ namespace SimPe.Plugin
 		private void SelectItemsB4(object sender, System.EventArgs e)
 		{
 			if (lb_itemsb.Tag != null)
+			{
 				return;
+			}
+
 			if (lb_itemsb.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			if (lb_itemsb4.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				lb_itemsb.Tag = true;
@@ -3484,11 +3566,20 @@ namespace SimPe.Plugin
 		private void SelectItemsB5(object sender, System.EventArgs e)
 		{
 			if (lb_itemsb.Tag != null)
+			{
 				return;
+			}
+
 			if (lb_itemsb.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			if (lb_itemsb5.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				lb_itemsb.Tag = true;
@@ -3511,9 +3602,15 @@ namespace SimPe.Plugin
 		private void SelectItemsC(object sender, System.EventArgs e)
 		{
 			if (lb_itemsc.Tag != null)
+			{
 				return;
+			}
+
 			if (lb_itemsc.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				lb_itemsc.Tag = true;
@@ -3526,11 +3623,15 @@ namespace SimPe.Plugin
 
 				lb_itemsc2.Items.Clear();
 				foreach (int i in item.Faces)
+				{
 					lb_itemsc2.Items.Add(i);
+				}
 
 				lb_itemsc3.Items.Clear();
 				foreach (int i in item.UsedJoints)
+				{
 					lb_itemsc3.Items.Add(i);
+				}
 			}
 			catch (Exception ex)
 			{
@@ -3545,11 +3646,20 @@ namespace SimPe.Plugin
 		private void SelectItemsC2(object sender, System.EventArgs e)
 		{
 			if (lb_itemsc.Tag != null)
+			{
 				return;
+			}
+
 			if (lb_itemsc.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			if (lb_itemsc2.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				lb_itemsc.Tag = true;
@@ -3571,11 +3681,20 @@ namespace SimPe.Plugin
 		private void SelectItemsC3(object sender, System.EventArgs e)
 		{
 			if (lb_itemsc.Tag != null)
+			{
 				return;
+			}
+
 			if (lb_itemsc.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			if (lb_itemsc3.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				lb_itemsc.Tag = true;
@@ -3597,9 +3716,15 @@ namespace SimPe.Plugin
 		private void ChangeItemsC(object sender, System.EventArgs e)
 		{
 			if (lb_itemsc.Tag != null)
+			{
 				return;
+			}
+
 			if (lb_itemsc.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				lb_itemsc.Tag = true;
@@ -3654,7 +3779,10 @@ namespace SimPe.Plugin
 			{
 				GeometryDataContainerExt gmdcext = new GeometryDataContainerExt(gmdc);
 				if (this.scenesel.Scene != null)
+				{
 					this.scenesel.Scene.Dispose();
+				}
+
 				this.scenesel.Scene = gmdcext.GetScene(
 					GetModelsExt(),
 					new ElementOrder(Gmdc.ElementSorting.Preview)
@@ -3755,7 +3883,10 @@ namespace SimPe.Plugin
 			if (this.tMesh.Tag != null)
 			{
 				if (lb_itemsc.SelectedIndex < 0)
+				{
 					return;
+				}
+
 				GeometryDataContainer gmdc = (GeometryDataContainer)this.tMesh.Tag;
 				GmdcGroup g = (GmdcGroup)lb_itemsc.SelectedItem;
 
@@ -3794,6 +3925,7 @@ namespace SimPe.Plugin
 		)
 		{
 			if (this.cbGroupJoint.SelectedItem != null)
+			{
 				if (this.lb_itemsc.SelectedItem != null)
 				{
 					GmdcJoint j = (GmdcJoint)
@@ -3833,15 +3965,19 @@ namespace SimPe.Plugin
 					}
 					uint id = 0;
 					for (int i = 0; i < g.UsedJoints.Count; i++)
+					{
 						if (g.UsedJoints[i] == j.Index)
 						{
 							id = (uint)i;
 							break;
 						}
+					}
 
 					GmdcElement v = g.Link.FindElementType(ElementIdentity.Vertex);
 					if (v == null)
+					{
 						return;
+					}
 
 					ba.Values.Clear();
 					ba.BlockFormat = BlockFormat.OneDword;
@@ -3858,6 +3994,7 @@ namespace SimPe.Plugin
 						bw.Values.Add(new GmdcElementValueOneFloat(1.0f));
 					}
 				}
+			}
 		}
 
 		private void dxprev_SizeChanged(object sender, System.EventArgs e)
@@ -3892,7 +4029,10 @@ namespace SimPe.Plugin
 		private void ChangedAxis(object sender, System.EventArgs e)
 		{
 			if (this.tMesh.Tag == null)
+			{
 				return;
+			}
+
 			ComboBox cb = (ComboBox)sender;
 			DefaultSelectedAxisIndex = cb.SelectedIndex;
 		}
@@ -3903,7 +4043,10 @@ namespace SimPe.Plugin
 		)
 		{
 			if (lb_itemsb.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			GmdcLink item = (GmdcLink)
 				((CountedListItem)lb_itemsb.Items[lb_itemsb.SelectedIndex]).Object;
 			item.Flatten();
@@ -3928,8 +4071,10 @@ namespace SimPe.Plugin
 							TransformNode tn = gmdc.Joints[i].AssignedTransformNode;
 
 							if (tn != null)
+							{
 								gmdc.Model.Transformations[i] =
 									tn.GetEffectiveTransformation();
+							}
 						}
 					}
 					else
@@ -3939,8 +4084,10 @@ namespace SimPe.Plugin
 						].AssignedTransformNode;
 
 						if (tn != null)
+						{
 							gmdc.Model.Transformations[lb_model_trans.SelectedIndex] =
 								tn.GetEffectiveTransformation();
+						}
 					}
 				}
 				catch (Exception ex)
@@ -3977,7 +4124,10 @@ namespace SimPe.Plugin
 				GeometryDataContainer gmdc = (GeometryDataContainer)this.tMesh.Tag;
 
 				if (lb_subsets.SelectedIndex < 0)
+				{
 					return;
+				}
+
 				GmdcJoint joint = gmdc.Joints[lb_subsets.SelectedIndex];
 				joint.CollectVertices();
 				gmdc.Refresh();
@@ -4122,7 +4272,10 @@ namespace SimPe.Plugin
 				GeometryDataContainer gmdc = (GeometryDataContainer)this.tMesh.Tag;
 
 				if (lb_subsets.SelectedIndex < 0)
+				{
 					return;
+				}
+
 				gmdc.RemoveBone(lb_subsets.SelectedIndex);
 				gmdc.Refresh();
 				gmdc.Changed = true;
@@ -4139,7 +4292,10 @@ namespace SimPe.Plugin
 				GeometryDataContainer gmdc = (GeometryDataContainer)this.tMesh.Tag;
 
 				if (lb_itemsc.SelectedIndex < 0)
+				{
 					return;
+				}
+
 				gmdc.RemoveGroup(lb_itemsc.SelectedIndex);
 				gmdc.Refresh();
 				gmdc.Changed = true;
@@ -4194,9 +4350,15 @@ namespace SimPe.Plugin
 		private void lb_subsets_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			if (this.lb_subsets.Tag != null)
+			{
 				return;
+			}
+
 			if (lb_subsets.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				lb_subsets.Tag = true;
@@ -4207,11 +4369,15 @@ namespace SimPe.Plugin
 
 				lb_sub_faces.Items.Clear();
 				foreach (Vector3f i in item.Vertices)
+				{
 					SimPe.CountedListItem.Add(lb_sub_faces, i);
+				}
 
 				lb_sub_items.Items.Clear();
 				foreach (int i in item.Items)
+				{
 					SimPe.CountedListItem.Add(lb_sub_items, i);
+				}
 			}
 			catch (Exception ex)
 			{
@@ -4236,14 +4402,20 @@ namespace SimPe.Plugin
 			foreach (IGmdcImporter ex in ExporterLoader.Importers)
 			{
 				if (f != "")
+				{
 					f += "|";
+				}
+
 				f += ex.FileDescription + " Importer ";
 				if (
 					(ex.Author != "")
 					&& (ex.Author != "Quaxi")
 					&& (ex.Author != "Emily")
 				)
+				{
 					f += "by " + ex.Author + " ";
+				}
+
 				f += "(*" + ex.FileExtension + ")|*" + ex.FileExtension;
 			}
 
@@ -4284,6 +4456,7 @@ namespace SimPe.Plugin
 						}
 
 						if (importer.ErrorMessage != "")
+						{
 							Helper.ExceptionMessage(
 								"",
 								new Warning(
@@ -4291,6 +4464,7 @@ namespace SimPe.Plugin
 									importer.ErrorMessage
 								)
 							);
+						}
 					}
 				}
 				finally
@@ -4318,14 +4492,20 @@ namespace SimPe.Plugin
 				foreach (IGmdcExporter ex in ExporterLoader.Exporters)
 				{
 					if (f != "")
+					{
 						f += "|";
+					}
+
 					f += ex.FileDescription + " Exporter ";
 					if (
 						(ex.Author != "")
 						&& (ex.Author != "Quaxi")
 						&& (ex.Author != "Emily")
 					)
+					{
 						f += "by " + ex.Author + " ";
+					}
+
 					f += "(*" + ex.FileExtension + ")|*" + ex.FileExtension;
 				}
 
@@ -4360,7 +4540,9 @@ namespace SimPe.Plugin
 							.ToLower()
 							.EndsWith(exporter.FileExtension.Trim().ToLower())
 					)
+					{
 						sfd.FileName += exporter.FileExtension;
+					}
 
 					exporter.FileName = sfd.FileName;
 					Stream s = exporter.Process(gmdc, groups);

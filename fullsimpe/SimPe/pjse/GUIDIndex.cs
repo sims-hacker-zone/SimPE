@@ -47,7 +47,9 @@ namespace pjse
 		static GUIDIndex()
 		{
 			if (Settings.PJSE.LoadGUIDIndexAtStartup)
+			{
 				TheGUIDIndex.Load();
+			}
 		}
 
 		public void Create()
@@ -76,7 +78,9 @@ namespace pjse
 					{
 						SimPe.Interfaces.Plugin.AbstractWrapper wrapper = item.Wrapper;
 						if (wrapper == null)
+						{
 							continue;
+						}
 
 						IndexItem ii = new IndexItem();
 
@@ -93,13 +97,18 @@ namespace pjse
 						if (reader.BaseStream.Length >= 0x40) // filename length
 						{
 							if (wrapper.FileDescriptor.Group == 0xFFFFFFFF)
+							{
 								ii.objdName =
 									SimPe.Helper.ToString(reader.ReadBytes(0x40)).Trim()
 									+ "**";
+							}
 							else
+							{
 								ii.objdName = SimPe
 									.Helper.ToString(reader.ReadBytes(0x40))
 									.Trim();
+							}
+
 							ii.objdGroup = wrapper.FileDescriptor.Group;
 							if (reader.BaseStream.Length > 0x52 + 2) // sizeof(ushort)
 							{
@@ -150,18 +159,27 @@ namespace pjse
 					if (line.StartsWith("#"))
 					{
 						if (line.Equals("# PJSE GUID Index - version 2"))
+						{
 							hadV2hdr = true;
+						}
+
 						continue;
 					}
 					if (!hadV2hdr)
+					{
 						continue;
+					}
+
 					String[] s = line.Split(
 						new char[] { '=' },
 						5,
 						StringSplitOptions.None
 					);
 					if (s.Length != 5)
+					{
 						continue;
+					}
+
 					try
 					{
 						IndexItem ii = new IndexItem();
@@ -196,12 +214,16 @@ namespace pjse
 					Path.Combine(SimPe.Helper.SimPePluginDataPath, "pjse.coder.plugin")
 				)
 			)
+			{
 				System.IO.Directory.CreateDirectory(
 					Path.Combine(SimPe.Helper.SimPePluginDataPath, "pjse.coder.plugin")
 				);
+			}
+
 			System.IO.StreamWriter sw = new StreamWriter(toFile, false);
 			sw.WriteLine("# PJSE GUID Index - version 2");
 			foreach (UInt32 guid in guidIndex.Keys)
+			{
 				sw.WriteLine(
 					"0x"
 						+ SimPe.Helper.HexString(guid)
@@ -214,6 +236,8 @@ namespace pjse
 						+ "="
 						+ guidIndex[guid].objdName
 				);
+			}
+
 			sw.Close();
 			sw.Dispose();
 			sw = null;
@@ -273,7 +297,10 @@ namespace pjse
 			{
 				List<string> x = new List<string>();
 				foreach (IndexItem ii in guidIndex.Values)
+				{
 					x.Add(ii.objdName);
+				}
+
 				return x;
 			}
 		}
@@ -320,10 +347,12 @@ namespace pjse
 		public void CopyTo(KeyValuePair<uint, string>[] array, int arrayIndex)
 		{
 			foreach (uint key in guidIndex.Keys)
+			{
 				array[arrayIndex++] = new KeyValuePair<uint, string>(
 					key,
 					guidIndex[key].objdName
 				);
+			}
 		}
 
 		public int Count => guidIndex.Count;
@@ -343,7 +372,10 @@ namespace pjse
 		{
 			Dictionary<uint, string> res = new Dictionary<uint, string>();
 			foreach (uint key in guidIndex.Keys)
+			{
 				res.Add(key, guidIndex[key].objdName);
+			}
+
 			return res.GetEnumerator();
 		}
 
@@ -362,8 +394,13 @@ namespace pjse
 		{
 			Dictionary<uint, string> res = new Dictionary<uint, string>();
 			foreach (KeyValuePair<uint, IndexItem> kvp in guidIndex)
+			{
 				if (kvp.Value.objdType == type)
+				{
 					res.Add(kvp.Key, kvp.Value.objdName);
+				}
+			}
+
 			return res;
 		}
 
@@ -376,8 +413,13 @@ namespace pjse
 		{
 			Dictionary<uint, string> res = new Dictionary<uint, string>();
 			foreach (KeyValuePair<uint, IndexItem> kvp in guidIndex)
+			{
 				if (kvp.Value.semiGlobal == semiGroup)
+				{
 					res.Add(kvp.Key, kvp.Value.objdName);
+				}
+			}
+
 			return res;
 		}
 
@@ -390,16 +432,26 @@ namespace pjse
 		{
 			List<uint> res = new List<uint>();
 			foreach (KeyValuePair<uint, IndexItem> kvp in guidIndex)
+			{
 				if (kvp.Value.semiGlobal == semiGroup)
+				{
 					res.Add(kvp.Value.objdGroup);
+				}
+			}
+
 			return res;
 		}
 
 		public uint GUIDforGroup(uint group)
 		{
 			foreach (KeyValuePair<uint, IndexItem> kvp in guidIndex)
+			{
 				if (kvp.Value.objdGroup == group)
+				{
 					return kvp.Key;
+				}
+			}
+
 			return 0;
 		}
 

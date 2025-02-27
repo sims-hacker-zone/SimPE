@@ -89,13 +89,20 @@ namespace SimPe.Packages
 			if (pfd != null)
 			{
 				if (pf == null)
+				{
 					pf = Extract(pfd);
+				}
+
 				if (meta)
+				{
 					SaveMetaInfo(flname + ".xml", pfd);
+				}
 			}
 
 			if (pf != null)
+			{
 				SavePackedFile(flname, pf);
+			}
 		}
 
 		/// <summary>
@@ -126,7 +133,9 @@ namespace SimPe.Packages
 			finally
 			{
 				if (si != null)
+				{
 					si.Close();
+				}
 				else
 				{
 					fs.Close();
@@ -183,7 +192,10 @@ namespace SimPe.Packages
 		{
 			string xml = "";
 			if (header)
+			{
 				xml += "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>" + Helper.lbr;
+			}
+
 			xml +=
 				"<package type=\""
 				+ ((uint)Header.IndexType).ToString()

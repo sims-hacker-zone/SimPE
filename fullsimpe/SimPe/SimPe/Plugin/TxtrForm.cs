@@ -861,9 +861,13 @@ namespace SimPe.Plugin
 				MipMap mm = (MipMap)lbimg.Items[lbimg.SelectedIndex];
 				pb.Image = mm.Texture;
 				if (mm.Texture == null)
+				{
 					tblifo.Text = mm.LifoFile;
+				}
 				else
+				{
 					tblifo.Text = "";
+				}
 
 				btex.Enabled = (pb.Image != null);
 				lldel.Enabled = true;
@@ -895,7 +899,9 @@ namespace SimPe.Plugin
 		private void btex_Click(object sender, System.EventArgs e)
 		{
 			if (pb.Image == null)
+			{
 				return;
+			}
 
 			sfd.FileName =
 				this.tbflname.Text
@@ -926,7 +932,9 @@ namespace SimPe.Plugin
 		private void btim_Click(object sender, System.EventArgs e)
 		{
 			if (lbimg.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			ofd.Filter =
 				"All Image Files (*.jpg;*.jpeg;*.tif.*.tiff;*.wmf;*.emf;*.bmp;*.gif;*.png)|*.jpg;*.jpeg;*.tif.*.tiff;*.wmf;*.emf;*.bmp;*.gif;*.png|Png (*.png)|*.png|Bitmap (*.bmp)|*.bmp|Gif (*.gif)|*.gif|Tiff image (*.tiff;*.tif)|*.tiff;*.tif|Windows Meta File (*.wmf)|*.wmf|Enhanced Meta File (*.emf)|*.emf|JPEG File (*.jpg;*.jpeg)|*.jpg;*.jpeg|All Files (*.*)|*.*";
@@ -944,7 +952,9 @@ namespace SimPe.Plugin
 
 					img = this.CropImage(id, img);
 					if (img == null)
+					{
 						return;
+					}
 
 					lbimg.Tag = true;
 					MipMap mm = (MipMap)lbimg.Items[lbimg.SelectedIndex];
@@ -972,11 +982,17 @@ namespace SimPe.Plugin
 		private void SelectItem(object sender, System.EventArgs e)
 		{
 			if (cbitem.Tag != null)
+			{
 				return;
+			}
+
 			this.cbmipmaps.Items.Clear();
 			this.lbimg.Items.Clear();
 			if (cbitem.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				cbitem.Tag = true;
@@ -987,7 +1003,10 @@ namespace SimPe.Plugin
 				}
 
 				if (cbmipmaps.Items.Count > 0)
+				{
 					cbmipmaps.SelectedIndex = 0;
+				}
+
 				this.tbflname.Text = selecteditem.NameResource.FileName;
 				this.tbwidth.Text = selecteditem.TextureSize.Width.ToString();
 				this.tbheight.Text = selecteditem.TextureSize.Height.ToString();
@@ -1021,9 +1040,15 @@ namespace SimPe.Plugin
 		private void FileNameChanged(object sender, System.EventArgs e)
 		{
 			if (cbitem.Tag != null)
+			{
 				return;
+			}
+
 			if (cbitem.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				cbitem.Tag = true;
@@ -1056,10 +1081,16 @@ namespace SimPe.Plugin
 		private void SelectMipMapBlock(object sender, System.EventArgs e)
 		{
 			if (cbmipmaps.Tag != null)
+			{
 				return;
+			}
+
 			this.lbimg.Items.Clear();
 			if (cbmipmaps.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				cbmipmaps.Tag = true;
@@ -1071,7 +1102,9 @@ namespace SimPe.Plugin
 					mm.ReloadTexture();
 					this.lbimg.Items.Add(mm);
 					if (mm.Texture != null)
+					{
 						minindex = i;
+					}
 				}
 
 				lbimg.SelectedIndex = minindex;
@@ -1092,11 +1125,20 @@ namespace SimPe.Plugin
 		private void ChangeFormat(object sender, System.EventArgs e)
 		{
 			if (cbitem.Tag != null)
+			{
 				return;
+			}
+
 			if (cbitem.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			if (cbformats.SelectedIndex < 1)
+			{
 				return;
+			}
+
 			try
 			{
 				cbitem.Tag = true;
@@ -1129,7 +1171,10 @@ namespace SimPe.Plugin
 		private void SetLifo(object sender, System.EventArgs e)
 		{
 			if (lbimg.Tag != null)
+			{
 				return;
+			}
+
 			try
 			{
 				MipMap mm = (MipMap)lbimg.Items[lbimg.SelectedIndex];
@@ -1153,7 +1198,10 @@ namespace SimPe.Plugin
 		)
 		{
 			if (lbimg.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			lbimg.Items.Remove(lbimg.Items[lbimg.SelectedIndex]);
 			UpdateMimMaps();
 		}
@@ -1213,7 +1261,9 @@ namespace SimPe.Plugin
 			{
 				object o = cbmipmaps.SelectedItem;
 				if (o is MipMapBlock)
+				{
 					return o as MipMapBlock;
+				}
 
 				try
 				{
@@ -1266,7 +1316,9 @@ namespace SimPe.Plugin
 				} // for i
 
 				if (map == null)
+				{
 					return;
+				}
 
 				//create a Scaled Version for each testure
 				for (int i = 0; i < lbimg.Items.Count; i++)
@@ -1404,7 +1456,9 @@ namespace SimPe.Plugin
 		private void ExportAlpha(object sender, System.EventArgs e)
 		{
 			if (pb.Image == null)
+			{
 				return;
+			}
 
 			sfd.FileName =
 				this.tbflname.Text
@@ -1433,7 +1487,9 @@ namespace SimPe.Plugin
 		private void ImportAlpha(object sender, System.EventArgs e)
 		{
 			if (lbimg.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			ofd.Filter =
 				"All Image Files (*.jpg;*.bmp;*.gif;*.png)|*.jpg;*.bmp;*.gif;*.png|Png (*.png)|*.png|Bitmap (*.bmp)|*.bmp|Gif (*.gif)|*.gif|JPEG File (*.jpg)|*.jpg|All Files (*.*)|*.*";
@@ -1451,7 +1507,9 @@ namespace SimPe.Plugin
 
 					img = this.CropImage(id, img);
 					if (img == null)
+					{
 						return;
+					}
 
 					lbimg.Tag = true;
 					MipMap mm = (MipMap)lbimg.Items[lbimg.SelectedIndex];
@@ -1477,9 +1535,15 @@ namespace SimPe.Plugin
 		private void Changedlevel(object sender, System.EventArgs e)
 		{
 			if (cbitem.Tag != null)
+			{
 				return;
+			}
+
 			if (cbitem.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				cbitem.Tag = true;
@@ -1549,7 +1613,10 @@ namespace SimPe.Plugin
 				PathProvider.Global.NvidiaDDSTool
 			);
 			if (lbimg.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				if (lbimg.SelectedIndex >= 0)
@@ -1575,7 +1642,10 @@ namespace SimPe.Plugin
 		private void ImportLifo(object sender, System.EventArgs e)
 		{
 			if (lbimg.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				cbitem.Tag = true;
@@ -1671,7 +1741,10 @@ namespace SimPe.Plugin
 		void LoadDDS(DDSData[] data)
 		{
 			if (data == null)
+			{
 				return;
+			}
+
 			if (data.Length > 0)
 			{
 				try
@@ -1744,9 +1817,15 @@ namespace SimPe.Plugin
 		private void ChangedSize(object sender, System.EventArgs e)
 		{
 			if (cbitem.Tag != null)
+			{
 				return;
+			}
+
 			if (cbitem.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				cbitem.Tag = true;

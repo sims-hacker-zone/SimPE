@@ -81,7 +81,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (tLightT == null)
+				{
 					tLightT = new SimPe.Plugin.TabPage.LightT();
+				}
+
 				return tLightT;
 			}
 		}
@@ -93,7 +96,10 @@ namespace SimPe.Plugin
 		protected override void InitTabPage()
 		{
 			if (tLightT == null)
+			{
 				tLightT = new SimPe.Plugin.TabPage.LightT();
+			}
+
 			tLightT.tb_lt_ver.Text = "0x" + Helper.HexString(this.version);
 			tLightT.tb_lt_name.Text = sgres.FileName;
 		}
@@ -103,7 +109,10 @@ namespace SimPe.Plugin
 		public override void Dispose()
 		{
 			if (tLightT != null)
+			{
 				tLightT.Dispose();
+			}
+
 			tLightT = null;
 		}
 

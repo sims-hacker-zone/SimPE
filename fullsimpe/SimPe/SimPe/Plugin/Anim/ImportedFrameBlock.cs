@@ -103,9 +103,15 @@ namespace SimPe.Plugin.Anim
 			get
 			{
 				if (Action == AnimImporterAction.Nothing)
+				{
 					return System.Drawing.Color.Silver;
+				}
+
 				if (Target == null)
+				{
 					return System.Drawing.Color.Red;
+				}
+
 				return System.Drawing.Color.DarkBlue;
 			}
 		}
@@ -129,12 +135,14 @@ namespace SimPe.Plugin.Anim
 		{
 			Action = AnimImporterAction.Nothing;
 			foreach (AnimationFrameBlock afb in amb.Part2)
+			{
 				if (afb.Name == ImportedName)
 				{
 					Action = AnimImporterAction.Replace;
 					Target = afb;
 					break;
 				}
+			}
 		}
 
 		/// <summary>
@@ -143,20 +151,31 @@ namespace SimPe.Plugin.Anim
 		public void ReplaceFrames()
 		{
 			if (Target == null)
+			{
 				return;
+			}
+
 			Target.ClearFrames();
 			Target.CreateBaseAxisSet(AnimationTokenType.SixByte);
 
 			for (int i = 0; i < Math.Min(Target.AxisCount, FrameBlock.AxisCount); i++)
+			{
 				Target.AxisSet[i].Locked = FrameBlock.AxisSet[i].Locked;
+			}
 
 			Target.TransformationType = FrameBlock.TransformationType;
 			foreach (AnimationFrame af in FrameBlock.Frames)
+			{
 				if (!this.DiscardZeroFrame || af.TimeCode != 0)
+				{
 					Target.AddFrame(af.TimeCode, af.X, af.Y, af.Z, af.Linear);
+				}
+			}
 
 			if (RemoveUnneeded)
+			{
 				Target.RemoveUnneededFrames();
+			}
 
 			Target.Duration = Target.GetDuration();
 		}
@@ -167,12 +186,17 @@ namespace SimPe.Plugin.Anim
 		public void AddFrameBlock(AnimationMeshBlock amb)
 		{
 			if (amb == null)
+			{
 				return;
+			}
 
 			amb.Part2 = (AnimationFrameBlock[])Helper.Add(amb.Part2, FrameBlock);
 
 			if (RemoveUnneeded)
+			{
 				FrameBlock.RemoveUnneededFrames();
+			}
+
 			FrameBlock.Duration = FrameBlock.GetDuration();
 		}
 	}
@@ -270,7 +294,9 @@ namespace SimPe.Plugin.Anim
 		{
 			ImportedFrameBlocks list = new ImportedFrameBlocks();
 			foreach (ImportedFrameBlock item in this)
+			{
 				list.Add(item);
+			}
 
 			return list;
 		}

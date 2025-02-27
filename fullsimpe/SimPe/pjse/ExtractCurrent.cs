@@ -53,7 +53,9 @@ namespace pjse
 
 			DialogResult dr = sfd.ShowDialog();
 			if (dr != DialogResult.OK)
+			{
 				return dr;
+			}
 
 			string path = wrapper.FileDescriptor.Path;
 			string filename = wrapper.FileDescriptor.Filename;

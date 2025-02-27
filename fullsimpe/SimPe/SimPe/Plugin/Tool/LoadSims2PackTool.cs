@@ -43,7 +43,9 @@ namespace SimPe.Plugin.Tool
 		public void Execute(object sender, ResourceEventArgs es)
 		{
 			if (!ChangeEnabledStateEventHandler(sender, es))
+			{
 				return;
+			}
 
 			System.Windows.Forms.OpenFileDialog ofd =
 				new System.Windows.Forms.OpenFileDialog();
@@ -62,8 +64,12 @@ namespace SimPe.Plugin.Tool
 						System.Windows.Forms.SelectionMode.One
 					);
 				if (ds != null)
+				{
 					foreach (SimPe.Packages.S2CPDescriptor d in ds)
+					{
 						SimPe.RemoteControl.OpenMemoryPackage(d.Package);
+					}
+				}
 			}
 		}
 

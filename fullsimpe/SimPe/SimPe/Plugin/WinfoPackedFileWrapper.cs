@@ -133,8 +133,13 @@ namespace SimPe.Plugin
 			westlength = Weaname.Length;
 			writer.Write(westlength);
 			if (Weaname != null)
+			{
 				foreach (char c in Weaname)
+				{
 					writer.Write(c);
+				}
+			}
+
 			writer.Write(unkn1);
 			writer.Write(unkn2);
 			writer.Write(unkn3);

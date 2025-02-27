@@ -69,9 +69,14 @@ namespace SimPe.PackedFiles.Wrapper
 				{
 					char[] cs = value.ToCharArray();
 					for (int i = 0; i < value.Length; i++)
+					{
 						filename[i] = (byte)cs[i];
+					}
+
 					for (int i = value.Length; i < 64; i++)
+					{
 						filename[i] = 0;
+					}
 				}
 			}
 		}
@@ -106,7 +111,10 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				StrLanguageList lngs = new StrLanguageList();
 				foreach (byte k in Lines.Keys)
+				{
 					lngs.Add(k);
+				}
+
 				lngs.Sort();
 
 				return lngs;
@@ -116,7 +124,9 @@ namespace SimPe.PackedFiles.Wrapper
 				foreach (StrLanguage l in value)
 				{
 					if (!Lines.ContainsKey(l.Id))
+					{
 						Lines.Add(l.Id, new StrItemList());
+					}
 				}
 			}
 		}
@@ -145,7 +155,9 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			StrItemList lng = (StrItemList)Lines[item.Language.Id];
 			if (lng != null)
+			{
 				lng.Remove(item);
+			}
 		}
 
 		/// <summary>
@@ -158,7 +170,9 @@ namespace SimPe.PackedFiles.Wrapper
 				StrItemList items = new StrItemList();
 				StrLanguageList lngs = Languages;
 				foreach (StrLanguage k in lngs)
+				{
 					items.AddRange((StrItemList)Lines[k.Id]);
+				}
 
 				return items;
 			}
@@ -166,7 +180,9 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				Lines = new Hashtable();
 				foreach (StrToken i in value)
+				{
 					this.Add(i);
+				}
 			}
 		}
 
@@ -178,7 +194,10 @@ namespace SimPe.PackedFiles.Wrapper
 		public StrItemList LanguageItems(StrLanguage l)
 		{
 			if (l == null)
+			{
 				return new StrItemList();
+			}
+
 			return LanguageItems((Data.MetaData.Languages)l.Id);
 		}
 
@@ -191,7 +210,9 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			StrItemList items = (StrItemList)Lines[(byte)l];
 			if (items == null)
+			{
 				items = new StrItemList();
+			}
 
 			return items;
 		}
@@ -206,15 +227,21 @@ namespace SimPe.PackedFiles.Wrapper
 			StrItemList list = this.LanguageItems(l);
 			StrToken name;
 			if (list.Length > index)
+			{
 				name = list[index];
+			}
 			else
+			{
 				name = new StrToken(0, 0, "", "");
+			}
 
 			if (name.Title.Trim() == "")
 			{
 				list = this.LanguageItems(1);
 				if (list.Length > index)
+				{
 					name = list[index];
+				}
 			}
 
 			return name;
@@ -229,24 +256,37 @@ namespace SimPe.PackedFiles.Wrapper
 		public StrItemList FallbackedLanguageItems(Data.MetaData.Languages l)
 		{
 			if (l == Data.MetaData.Languages.English)
+			{
 				return this.LanguageItems(l);
+			}
 
 			StrItemList real = (StrItemList)LanguageItems(l).Clone();
 			StrItemList fallback = null;
 			if (this.Languages.Contains(Data.MetaData.Languages.English))
+			{
 				fallback = LanguageItems(Data.MetaData.Languages.English);
+			}
 			else if (this.Languages.Count == 1)
 			{
 				fallback = LanguageItems(Languages[0]);
 			}
 			else
+			{
 				fallback = LanguageItems(Data.MetaData.Languages.English);
+			}
 
 			for (int i = 0; i < fallback.Length; i++)
+			{
 				if (real.Length <= i)
+				{
 					real.Add(fallback[i]);
+				}
 				else if ((real[i] == null) || (real[i].Title.Trim() == ""))
+				{
 					real[i] = fallback[i];
+				}
+			}
+
 			return real;
 		}
 
@@ -283,8 +323,12 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			StrItemList sil = this.Items;
 			foreach (StrToken si in sil)
+			{
 				if (si.Language.Id != 1)
+				{
 					this.Remove(si);
+				}
+			}
 		}
 
 		/// <summary>
@@ -295,12 +339,16 @@ namespace SimPe.PackedFiles.Wrapper
 			StrItemList sil = this.Items;
 			StrItemList def = this.LanguageItems(new StrLanguage(1));
 			foreach (StrToken si in sil)
+			{
 				if (si.Language.Id != 1)
+				{
 					if (si.Index > 0 && si.Index < def.Count)
 					{
 						si.Title = def[si.Index].Title;
 						si.Description = def[si.Index].Description;
 					}
+				}
+			}
 		}
 
 		#region IWrapper member
@@ -342,14 +390,18 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			Lines = new Hashtable();
 			if (reader.BaseStream.Length <= 0x40)
+			{
 				return;
+			}
 
 			byte[] fi = reader.ReadBytes(0x40);
 
 			SimPe.Data.MetaData.FormatCode fo = (SimPe.Data.MetaData.FormatCode)
 				reader.ReadUInt16();
 			if (fo != Data.MetaData.FormatCode.normal)
+			{
 				return;
+			}
 
 			ushort count = reader.ReadUInt16();
 
@@ -358,9 +410,14 @@ namespace SimPe.PackedFiles.Wrapper
 			Lines = new Hashtable();
 
 			if ((limit != 0) && (count > limit))
+			{
 				count = (ushort)limit; // limit number of StrItem entries loaded
+			}
+
 			for (int i = 0; i < count; i++)
+			{
 				StrToken.Unserialize(reader, Lines);
+			}
 		}
 
 		/// <summary>
@@ -379,7 +436,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 			ArrayList items = new ArrayList();
 			foreach (StrLanguage k in lngs)
+			{
 				items.AddRange((ArrayList)Lines[k.Id]);
+			}
+
 			writer.Write((ushort)items.Count);
 
 			foreach (StrToken i in items)
@@ -410,8 +470,13 @@ namespace SimPe.PackedFiles.Wrapper
 						Helper.WindowsRegistry.LanguageCode
 					)
 				)
+				{
 					if (i.Title != "")
+					{
 						return n + ", first=" + i.Title;
+					}
+				}
+
 				return n + " (no strings)";
 			}
 		}

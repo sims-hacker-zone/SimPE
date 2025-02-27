@@ -28,7 +28,9 @@ namespace Ambertation.Windows.Forms
 				LinearGradientMode.ForwardDiagonal
 			);
 			for (int i = 0; i < 50000; i++)
+			{
 				DoThePainting(e, b);
+			}
 
 			TimeSpan ts = DateTime.Now - dt;
 			//Console.WriteLine("End: "+ts);

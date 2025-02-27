@@ -15,7 +15,10 @@ namespace SimPe.Plugin.Scanner
 			get
 			{
 				if (glob == null)
+				{
 					glob = new ScannerRegistry();
+				}
+
 				return glob;
 			}
 		}
@@ -41,7 +44,10 @@ namespace SimPe.Plugin.Scanner
 			foreach (string file in files)
 			{
 				if (ignore.Contains(System.IO.Path.GetFileName(file).ToLower()))
+				{
 					continue;
+				}
+
 				object[] args = new object[0];
 				object[] scnrs = SimPe.LoadFileWrappers.LoadPlugins(
 					file,

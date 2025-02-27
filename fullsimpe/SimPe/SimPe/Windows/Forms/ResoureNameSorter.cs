@@ -25,7 +25,9 @@ namespace SimPe.Windows.Forms
 			this.ticket = ticket;
 			this.names = new Stack2<NamedPackedFileDescriptor>();
 			foreach (NamedPackedFileDescriptor pfd in names)
+			{
 				this.names.Push(pfd);
+			}
 
 			counter = 0;
 			if (Helper.WindowsRegistry.AsynchronSort)
@@ -65,10 +67,15 @@ namespace SimPe.Windows.Forms
 				lock (names)
 				{
 					if (names.Count == 0)
+					{
 						break;
+					}
+
 					pfd = names.Pop();
 					if (Helper.WindowsRegistry.AsynchronSort)
+					{
 						SimPe.Wait.Progress = counter++;
+					}
 				}
 				pfd.GetRealName();
 			}

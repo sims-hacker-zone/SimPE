@@ -38,11 +38,19 @@ namespace SimPe.Plugin.Tool
 		public bool ChangeEnabledStateEventHandler(object sender, ResourceEventArgs e)
 		{
 			if (!e.Loaded)
+			{
 				return false;
+			}
+
 			if (!e.HasResource)
+			{
 				return false;
+			}
+
 			if (e.Count > 1)
+			{
 				return false;
+			}
 
 			return ((ResourceContainer)e.Items[0]).Resource.FileDescriptor.Type
 				== Data.MetaData.ANIM;
@@ -51,7 +59,9 @@ namespace SimPe.Plugin.Tool
 		public void Execute(object sender, ResourceEventArgs es)
 		{
 			if (!ChangeEnabledStateEventHandler(sender, es))
+			{
 				return;
+			}
 
 			try
 			{

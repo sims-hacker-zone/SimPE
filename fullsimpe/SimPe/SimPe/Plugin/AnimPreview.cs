@@ -194,8 +194,12 @@ namespace SimPe.Plugin
 		public static void Execute(SimPe.Plugin.Rcol anim)
 		{
 			if (anim.Blocks.Length > 0)
+			{
 				if (anim.Blocks[0] is SimPe.Plugin.Anim.AnimResourceConst)
+				{
 					Execute((SimPe.Plugin.Anim.AnimResourceConst)anim.Blocks[0]);
+				}
+			}
 		}
 
 		public static void Execute(SimPe.Plugin.Anim.AnimResourceConst anim)
@@ -269,12 +273,16 @@ namespace SimPe.Plugin
 				parent.Add(mb);
 
 				foreach (SimPe.Interfaces.Scenegraph.ICresChildren cld in bl)
+				{
 					AddJoint(lmb, cld, mb, tnode.Nodes);
+				}
 			}
 			else
 			{
 				foreach (SimPe.Interfaces.Scenegraph.ICresChildren cld in bl)
+				{
 					AddJoint(lmb, cld, parent, nodes);
+				}
 			}
 		}
 
@@ -295,7 +303,9 @@ namespace SimPe.Plugin
 			if (root != null)
 			{
 				foreach (Ambertation.Graphics.MeshBox mb in root)
+				{
 					dx.Meshes.Add(mb);
+				}
 			}
 		}
 
@@ -306,18 +316,26 @@ namespace SimPe.Plugin
 		private void lb_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			if (lb.SelectedItem == null)
+			{
 				return;
+			}
+
 			jointmap.Clear();
 
 			ListedMeshBlocks lmb = (ListedMeshBlocks)lb.SelectedItem;
 			if (lmb.CRES == null || lmb.GMDC == null)
+			{
 				return;
+			}
 
 			SimPe.Plugin.ResourceNode rn = (SimPe.Plugin.ResourceNode)
 				lmb.CRES.Blocks[0];
 
 			if (root != null)
+			{
 				root.Dispose();
+			}
+
 			root = new Ambertation.Graphics.MeshList();
 
 			AddJoint(lmb, rn, root, tv.Nodes);
@@ -328,7 +346,10 @@ namespace SimPe.Plugin
 				SimPe.Plugin.Anim.AnimationFrameBlock afb2 = afb.CloneBase(true);
 				object o = jointmap[afb.Name];
 				if (o == null)
+				{
 					continue;
+				}
+
 				Ambertation.Graphics.MeshBox mb = (Ambertation.Graphics.MeshBox)o;
 
 				animdata.Add(
@@ -337,7 +358,10 @@ namespace SimPe.Plugin
 			}
 
 			if (inter)
+			{
 				return;
+			}
+
 			inter = true;
 			//dx.Reset();
 			dx.ResetViewport(
@@ -355,9 +379,14 @@ namespace SimPe.Plugin
 		)
 		{
 			if (e.Node == null)
+			{
 				return;
+			}
+
 			if (e.Node.Tag == null)
+			{
 				return;
+			}
 
 			/*if (lastmb!=null) lastmb.Material = mat;
 			Teichion.Graphics.MeshBox mb = (Teichion.Graphics.MeshBox)e.Node.Tag;
@@ -377,7 +406,10 @@ namespace SimPe.Plugin
 		private void btPlay_Click(object sender, System.EventArgs e)
 		{
 			if (lb.SelectedItem == null)
+			{
 				return;
+			}
+
 			ListedMeshBlocks lmb = (ListedMeshBlocks)lb.SelectedItem;
 
 			timer1.Interval = 1000 / 25;
@@ -409,7 +441,9 @@ namespace SimPe.Plugin
 			pb.Value = timecode;
 
 			foreach (AnimationData ad in animdata)
+			{
 				ad.SetFrame(timecode);
+			}
 
 			dx.Render();
 			//Application.DoEvents();

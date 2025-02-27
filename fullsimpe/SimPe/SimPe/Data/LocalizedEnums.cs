@@ -94,16 +94,23 @@ namespace SimPe.Data
 		{
 			string s = Localization.Manager.GetString("RT_" + data.ToString());
 			if (s != null)
+			{
 				return s;
+			}
 			else
+			{
 				return data.ToString();
+			}
 		}
 
 		public override bool Equals(object obj)
 		{
 			bool ret = base.Equals(obj);
 			if (ret)
+			{
 				ret = (((LocalizedRelationshipTypes)obj).data == data);
+			}
+
 			return ret;
 		}
 
@@ -158,7 +165,10 @@ namespace SimPe.Data
 		public static bool operator ==(object op1, LocalizedRelationshipTypes op2)
 		{
 			if (op1.GetType() != typeof(LocalizedRelationshipTypes))
+			{
 				return false;
+			}
+
 			LocalizedRelationshipTypes op = (LocalizedRelationshipTypes)op1;
 			return (op.data == op2.data);
 		}
@@ -166,7 +176,10 @@ namespace SimPe.Data
 		public static bool operator !=(object op1, LocalizedRelationshipTypes op2)
 		{
 			if (op1.GetType() != typeof(LocalizedRelationshipTypes))
+			{
 				return true;
+			}
+
 			LocalizedRelationshipTypes op = (LocalizedRelationshipTypes)op1;
 			return (op.data != op2.data);
 		}
@@ -174,7 +187,10 @@ namespace SimPe.Data
 		public static bool operator ==(LocalizedRelationshipTypes op2, object op1)
 		{
 			if (op1.GetType() != typeof(LocalizedRelationshipTypes))
+			{
 				return false;
+			}
+
 			LocalizedRelationshipTypes op = (LocalizedRelationshipTypes)op1;
 			return (op.data == op2.data);
 		}
@@ -182,7 +198,10 @@ namespace SimPe.Data
 		public static bool operator !=(LocalizedRelationshipTypes op2, object op1)
 		{
 			if (op1.GetType() != typeof(LocalizedRelationshipTypes))
+			{
 				return true;
+			}
+
 			LocalizedRelationshipTypes op = (LocalizedRelationshipTypes)op1;
 			return (op.data != op2.data);
 		}
@@ -260,9 +279,13 @@ namespace SimPe.Data
 		{
 			string s = Localization.Manager.GetString("Grade_" + data.ToString());
 			if (s != null)
+			{
 				return s;
+			}
 			else
+			{
 				return data.ToString();
+			}
 		}
 	}
 
@@ -333,9 +356,13 @@ namespace SimPe.Data
 		{
 			string s = Localization.Manager.GetString(data.ToString());
 			if (s != null)
+			{
 				return s;
+			}
 			else
+			{
 				return data.ToString();
+			}
 		}
 	}
 
@@ -406,9 +433,13 @@ namespace SimPe.Data
 		{
 			string s = Localization.Manager.GetString(data.ToString());
 			if (s != null)
+			{
 				return s;
+			}
 			else
+			{
 				return data.ToString();
+			}
 		}
 	}
 
@@ -485,12 +516,16 @@ namespace SimPe.Data
 			if (s != null)
 			{
 				if (Helper.WindowsRegistry.LoadOnlySimsStory == 28 && s == "Seasons")
+				{
 					s = "Castaway";
+				}
 
 				return s;
 			}
 			else
+			{
 				return data.ToString();
+			}
 		}
 	}
 
@@ -565,9 +600,13 @@ namespace SimPe.Data
 		{
 			string s = Localization.Manager.GetString(data.ToString());
 			if (s != null)
+			{
 				return s;
+			}
 			else
+			{
 				return data.ToString();
+			}
 		}
 	}
 
@@ -644,9 +683,13 @@ namespace SimPe.Data
 				"SimPe.Data.MetaData.AspirationTypes." + data.ToString()
 			);
 			if (s != null)
+			{
 				return s;
+			}
 			else
+			{
 				return data.ToString();
+			}
 		}
 	}
 
@@ -721,9 +764,13 @@ namespace SimPe.Data
 		{
 			string s = Localization.Manager.GetString(data.ToString());
 			if (s != null)
+			{
 				return s;
+			}
 			else
+			{
 				return data.ToString();
+			}
 		}
 	}
 
@@ -798,9 +845,13 @@ namespace SimPe.Data
 		{
 			string s = Localization.Manager.GetString(data.ToString());
 			if (s != null)
+			{
 				return s;
+			}
 			else
+			{
 				return data.ToString();
+			}
 		}
 	}
 
@@ -875,7 +926,9 @@ namespace SimPe.Data
 				return s;
 			}
 			else
+			{
 				return data.ToString();
+			}
 		}
 	}
 
@@ -955,17 +1008,25 @@ namespace SimPe.Data
 					type.Namespace + "." + type.Name + "." + data.ToString()
 				);
 				if (s != null)
+				{
 					return s;
+				}
 				else
+				{
 					return data.ToString();
+				}
 			}
 			else
 			{
 				string s = Localization.Manager.GetString(data.ToString());
 				if (s != null)
+				{
 					return s;
+				}
 				else
+				{
 					return data.ToString();
+				}
 			}
 		}
 	}
@@ -1037,9 +1098,13 @@ namespace SimPe.Data
 		{
 			string s = Localization.Manager.GetString(data.ToString());
 			if (s != null)
+			{
 				return s;
+			}
 			else
+			{
 				return data.ToString();
+			}
 		}
 	}
 }

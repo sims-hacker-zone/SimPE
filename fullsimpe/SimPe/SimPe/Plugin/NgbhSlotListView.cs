@@ -157,7 +157,9 @@ namespace SimPe.Plugin
 				{
 					st = value;
 					if (ngbh != null)
+					{
 						Slots = ngbh.GetSlots(st);
+					}
 				}
 			}
 		}
@@ -183,7 +185,9 @@ namespace SimPe.Plugin
 		private void lv_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			if (SelectedSlotChanged != null)
+			{
 				SelectedSlotChanged(this, e);
+			}
 		}
 
 		public NgbhSlot SelectedSlot
@@ -191,7 +195,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (lv.SelectedItems.Count == 0)
+				{
 					return null;
+				}
+
 				return lv.SelectedItems[0].Tag as NgbhSlot;
 			}
 		}

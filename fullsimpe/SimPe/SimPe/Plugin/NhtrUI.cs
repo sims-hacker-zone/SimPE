@@ -178,7 +178,9 @@ namespace SimPe.Plugin
 		protected override void RefreshGUI()
 		{
 			if (intern)
+			{
 				return;
+			}
 
 			intern = true;
 			lb.Items.Clear();
@@ -186,10 +188,14 @@ namespace SimPe.Plugin
 			if (Nhtr != null)
 			{
 				foreach (NhtrList list in Nhtr.Items)
+				{
 					SimPe.CountedListItem.Add(cb, list);
+				}
 
 				if (cb.Items.Count > 0)
+				{
 					cb.SelectedIndex = 0;
+				}
 
 				lb.Enabled = true;
 				this.Enabled = true;
@@ -228,11 +234,15 @@ namespace SimPe.Plugin
 		{
 			lb.Items.Clear();
 			if (cb.SelectedItem == null)
+			{
 				return;
+			}
 
 			NhtrList list = (cb.SelectedItem as CountedListItem).Object as NhtrList;
 			foreach (NhtrItem i in list)
+			{
 				SimPe.CountedListItem.Add(lb, i);
+			}
 		}
 	}
 }

@@ -55,12 +55,19 @@ namespace SimPe.Plugin
 		public ICresChildren GetBlock(int index)
 		{
 			if (Parent == null)
+			{
 				return null;
+			}
 
 			if (index < 0)
+			{
 				return null;
+			}
+
 			if (index >= this.Parent.Blocks.Length)
+			{
 				return null;
+			}
 
 			object o = Parent.Blocks[index];
 
@@ -68,7 +75,9 @@ namespace SimPe.Plugin
 				o.GetType().GetInterface("ICresChildren", false)
 				== typeof(ICresChildren)
 			)
+			{
 				return (ICresChildren)o;
+			}
 
 			return null;
 		}
@@ -81,10 +90,18 @@ namespace SimPe.Plugin
 			get
 			{
 				if (parent == null)
+				{
 					return -1;
+				}
+
 				for (int i = 0; i < parent.Blocks.Length; i++)
+				{
 					if (parent.Blocks[i] == this)
+					{
 						return i;
+					}
+				}
+
 				return -1;
 			}
 		}
@@ -107,7 +124,9 @@ namespace SimPe.Plugin
 				{
 					SimPe.Interfaces.Scenegraph.ICresChildren icc = (ICresChildren)irb;
 					if (icc.ChildBlocks.Contains(Index))
+					{
 						l.Add(i);
+					}
 				}
 			}
 			return l;
@@ -121,7 +140,10 @@ namespace SimPe.Plugin
 		{
 			IntArrayList l = GetParentBlocks();
 			if (l.Length == 0)
+			{
 				return null;
+			}
+
 			return (SimPe.Interfaces.Scenegraph.ICresChildren)parent.Blocks[l[0]];
 		}
 
@@ -167,13 +189,24 @@ namespace SimPe.Plugin
 		)
 		{
 			if (v == null)
+			{
 				v = new VectorTransformations();
+			}
+
 			if (node == null)
+			{
 				return v;
+			}
+
 			if (node.StoredTransformNode == null)
+			{
 				return v;
+			}
+
 			if (seenbones.Contains(node.Index))
+			{
 				return v;
+			}
 
 			seenbones.Add(node.Index);
 
@@ -274,7 +307,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (pos < this.ChildBlocks.Count && pos >= 0)
+				{
 					return this.GetBlock(this.ChildBlocks[pos]);
+				}
+
 				return null;
 			}
 		}

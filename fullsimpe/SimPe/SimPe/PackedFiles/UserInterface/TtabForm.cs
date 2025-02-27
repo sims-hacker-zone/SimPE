@@ -280,11 +280,16 @@ namespace SimPe.PackedFiles.UserInterface
 		private bool cbHex32_IsValid(object sender)
 		{
 			if (alHex32cb.IndexOf(sender) < 0)
+			{
 				throw new Exception(
 					"cbHex32_IsValid not applicable to control " + sender.ToString()
 				);
+			}
+
 			if (((ComboBox)sender).FindStringExact(((ComboBox)sender).Text) >= 0)
+			{
 				return true;
+			}
 
 			try
 			{
@@ -300,9 +305,12 @@ namespace SimPe.PackedFiles.UserInterface
 		private bool hex16_IsValid(object sender)
 		{
 			if (alHex16.IndexOf(sender) < 0)
+			{
 				throw new Exception(
 					"hex16_IsValid not applicable to control " + sender.ToString()
 				);
+			}
+
 			try
 			{
 				Convert.ToUInt16(((TextBox)sender).Text, 16);
@@ -317,9 +325,12 @@ namespace SimPe.PackedFiles.UserInterface
 		private bool hex32_IsValid(object sender)
 		{
 			if (alHex32.IndexOf(sender) < 0)
+			{
 				throw new Exception(
 					"hex32_IsValid not applicable to control " + sender.ToString()
 				);
+			}
+
 			try
 			{
 				Convert.ToUInt32(((TextBox)sender).Text, 16);
@@ -334,9 +345,12 @@ namespace SimPe.PackedFiles.UserInterface
 		private bool float_IsValid(object sender)
 		{
 			if (alFloats.IndexOf(sender) < 0)
+			{
 				throw new Exception(
 					"float_IsValid not applicable to control " + sender.ToString()
 				);
+			}
+
 			try
 			{
 				Convert.ToSingle(((TextBox)sender).Text);
@@ -351,14 +365,18 @@ namespace SimPe.PackedFiles.UserInterface
 		public void Append(pjse.FileTable.Entry e)
 		{
 			if (e == null || !(e.Wrapper is Ttab))
+			{
 				return;
+			}
 
 			uint offset = getTTAsCount();
 			uint maxtti = getMaxTtabItemStringIndex() + 1;
 			//if (maxtti != wrapper.Count)
 			offset = getUserChoice(offset, maxtti, (uint)wrapper.Count);
 			if (offset >= 0x8000)
+			{
 				return;
+			}
 
 			bool savedstate = internalchg;
 			internalchg = true;
@@ -384,7 +402,10 @@ namespace SimPe.PackedFiles.UserInterface
 			get
 			{
 				if (str == null)
+				{
 					str = new Str(wrapper, wrapper.FileDescriptor.Instance, 0x54544173);
+				}
+
 				return str;
 			}
 		}
@@ -393,11 +414,16 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			Str w = StrRes;
 			if (w == null)
+			{
 				return 0;
+			}
 
 			uint max = 0;
 			for (byte lid = 1; lid < 44; lid++)
+			{
 				max = (uint)Math.Max(max, w[lid].Count);
+			}
+
 			return max;
 		}
 
@@ -405,8 +431,13 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			uint m = 0;
 			foreach (TtabItem ti in wrapper)
+			{
 				if (ti.StringIndex > m)
+				{
 					m = ti.StringIndex;
+				}
+			}
+
 			return m;
 		}
 
@@ -420,7 +451,10 @@ namespace SimPe.PackedFiles.UserInterface
 			pan.Prompt = "";
 			DialogResult dr = pan.ShowDialog();
 			if (dr == DialogResult.OK)
+			{
 				return pan.Value;
+			}
+
 			return 0xffffffff;
 		}
 
@@ -458,9 +492,13 @@ namespace SimPe.PackedFiles.UserInterface
 				cbStringIndexSelectedIndex >= 0
 				&& cbStringIndexSelectedIndex < this.cbStringIndex.Items.Count
 			)
+			{
 				this.cbStringIndex.SelectedIndex = cbStringIndexSelectedIndex;
+			}
 			else
+			{
 				this.cbStringIndex.SelectedIndex = -1;
+			}
 
 			internalchg = prev;
 		}
@@ -475,14 +513,20 @@ namespace SimPe.PackedFiles.UserInterface
 
 			lbttab.Items.Clear();
 			for (int i = 0; i < wrapper.Count; i++)
+			{
 				addItem(i);
+			}
 
 			if (lbttabSelectedIndex >= 0)
 			{
 				if (lbttabSelectedIndex < lbttab.Items.Count)
+				{
 					this.lbttab.SelectedIndex = lbttabSelectedIndex;
+				}
 				else
+				{
 					this.lbttab.SelectedIndex = lbttab.Items.Count - 1;
+				}
 			}
 
 			this.ttabPanel.ResumeLayout();
@@ -497,9 +541,15 @@ namespace SimPe.PackedFiles.UserInterface
 			internalchg = true;
 			Boolset flags = new Boolset(currentItem.Flags);
 			if (wrapper.Format < 0x54)
+			{
 				flags.flip(new int[] { 4, 5, 6 });
+			}
+
 			for (int i = 0; i < flags.Length; i++)
+			{
 				((CheckBox)alFlags[i]).Checked = flags[i];
+			}
+
 			internalchg = false;
 		}
 
@@ -508,7 +558,10 @@ namespace SimPe.PackedFiles.UserInterface
 			internalchg = true;
 			Boolset flags = new Boolset(currentItem.Flags2);
 			for (int i = 0; i < flags.Length; i++)
+			{
 				((CheckBox)alFlags[i + 16]).Checked = flags[i];
+			}
+
 			internalchg = false;
 		}
 
@@ -523,7 +576,9 @@ namespace SimPe.PackedFiles.UserInterface
 			lbttab.SelectedIndex = -1;
 
 			for (int i = 0; i < wrapper.Count; i++)
+			{
 				wrapper[i] = wrapper[i].Clone();
+			}
 
 			// Flip those flags
 			if (
@@ -559,9 +614,13 @@ namespace SimPe.PackedFiles.UserInterface
 					MessageBoxDefaultButton.Button2
 				);
 				if (!DialogResult.OK.Equals(dr))
+				{
 					wrapper.Format = previousFormat;
+				}
 				else
+				{
 					resetFormat();
+				}
 			}
 			else if (
 				wrapper.Format >= 0x44
@@ -577,9 +636,13 @@ namespace SimPe.PackedFiles.UserInterface
 					MessageBoxDefaultButton.Button2
 				);
 				if (!DialogResult.OK.Equals(dr))
+				{
 					wrapper.Format = previousFormat;
+				}
 				else
+				{
 					resetFormat();
+				}
 			}
 			else if (wrapper.Format >= 0x54 && previousFormat < 0x54)
 			{
@@ -591,9 +654,13 @@ namespace SimPe.PackedFiles.UserInterface
 					MessageBoxDefaultButton.Button2
 				);
 				if (!DialogResult.OK.Equals(dr))
+				{
 					wrapper.Format = previousFormat;
+				}
 				else
+				{
 					resetFormat();
+				}
 			}
 
 			this.tbUIDispType.Enabled =
@@ -635,7 +702,9 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				CheckBox lcb = (CheckBox)alFlags[i];
 				if (lcb.Tag != null && lcb.Tag.ToString().Length > 0)
+				{
 					lcb.Text = ((String)lcb.Tag).Split(new char[] { '/' })[index];
+				}
 			}
 
 			if (
@@ -643,7 +712,9 @@ namespace SimPe.PackedFiles.UserInterface
 				&& lbttab.Items.Count > siWas
 				&& lbttab.SelectedIndex == -1
 			)
+			{
 				lbttab.SelectedIndex = siWas;
+			}
 		}
 
 		/// <summary>
@@ -661,8 +732,11 @@ namespace SimPe.PackedFiles.UserInterface
 				wrapper[i] != null
 				&& wrapper[i].StringIndex < cbStringIndex.Items.Count
 			)
+			{
 				return (String)cbStringIndex.Items[(int)wrapper[i].StringIndex];
+			}
 			else
+			{
 				return "[0x"
 					+ i.ToString("X")
 					+ " ("
@@ -672,13 +746,16 @@ namespace SimPe.PackedFiles.UserInterface
 					+ ": 0x"
 					+ SimPe.Helper.HexString(wrapper[i].StringIndex)
 					+ "]";
+			}
 		}
 
 		private void setBHAV(int which, ushort target, bool notxt)
 		{
 			TextBox[] tbaGA = { tbAction, tbGuardian };
 			if (!notxt)
+			{
 				tbaGA[which].Text = "0x" + Helper.HexString(target);
+			}
 
 			bool found = false;
 			Label[] lbaGA = { lbaction, lbguard };
@@ -696,11 +773,16 @@ namespace SimPe.PackedFiles.UserInterface
 			);
 
 			if (doText)
+			{
 				tbStringIndex.Text = "0x" + Helper.HexString(si);
+			}
+
 			if (doCB)
 			{
 				if (si >= 0 && si < cbStringIndex.Items.Count)
+				{
 					this.cbStringIndex.SelectedIndex = (int)si;
+				}
 				else
 				{
 					this.cbStringIndex.SelectedIndex = -1;
@@ -741,9 +823,13 @@ namespace SimPe.PackedFiles.UserInterface
 
 			// Now call TtabSelect (one way or another)
 			if (this.lbttab.Items.Count > 0)
+			{
 				this.lbttab.SelectedIndex = 0;
+			}
 			else
+			{
 				TtabSelect(null, null);
+			}
 
 			if (!setHandler)
 			{
@@ -759,7 +845,9 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			str = null;
 			if (wrapper == null || wrapper.FileDescriptor == null)
+			{
 				return;
+			}
 
 			populateCbStringIndex();
 			populateLbttab();
@@ -770,7 +858,10 @@ namespace SimPe.PackedFiles.UserInterface
 			this.btnCommit.Enabled = wrapper.Changed;
 
 			if (internalchg)
+			{
 				return;
+			}
+
 			internalchg = true;
 
 			if (sender == wrapper)
@@ -780,12 +871,16 @@ namespace SimPe.PackedFiles.UserInterface
 				setFormat();
 			}
 			else if (sender is List<TtabItem>)
+			{
 				populateLbttab();
+			}
 			else if (
 				lbttab.SelectedIndex >= 0
 				&& sender == wrapper[lbttab.SelectedIndex]
 			)
+			{
 				TtabSelect(null, null);
+			}
 
 			internalchg = false;
 		}
@@ -2026,7 +2121,9 @@ namespace SimPe.PackedFiles.UserInterface
 		private void TtabSelect(object sender, System.EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
 
 			internalchg = true;
 
@@ -2108,7 +2205,9 @@ namespace SimPe.PackedFiles.UserInterface
 					tbModelTabID.Text =
 						"";
 				for (int i = 0; i < alFlags.Count; i++)
+				{
 					((CheckBox)alFlags[i]).Checked = false;
+				}
 			}
 
 			this.ttabPanel.ResumeLayout();
@@ -2144,7 +2243,9 @@ namespace SimPe.PackedFiles.UserInterface
 				false
 			);
 			if (item != null)
+			{
 				setBHAV(1, (ushort)item.Instance, false);
+			}
 		}
 
 		private void GetTTABAction(object sender, System.EventArgs e)
@@ -2156,7 +2257,9 @@ namespace SimPe.PackedFiles.UserInterface
 				false
 			);
 			if (item != null)
+			{
 				setBHAV(0, (ushort)item.Instance, false);
+			}
 		}
 
 		private void llBhav_LinkClicked(
@@ -2209,17 +2312,23 @@ namespace SimPe.PackedFiles.UserInterface
 		private void checkbox_CheckedChanged(object sender, System.EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
 
 			if (!(sender is CheckBox))
+			{
 				return;
+			}
 
 			int i = alFlags.IndexOf(sender);
 			if (i < 0)
+			{
 				throw new Exception(
 					"checkbox_CheckedChanged not applicable to control "
 						+ sender.ToString()
 				);
+			}
 
 			internalchg = true;
 			if (i < 16)
@@ -2247,11 +2356,19 @@ namespace SimPe.PackedFiles.UserInterface
 		private void cbHex32_TextChanged(object sender, System.EventArgs ev)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (!cbHex32_IsValid(sender))
+			{
 				return;
+			}
+
 			if (((ComboBox)sender).FindStringExact(((ComboBox)sender).Text) >= 0)
+			{
 				return;
+			}
 
 			uint val = Convert.ToUInt32(((ComboBox)sender).Text, 16);
 			internalchg = true;
@@ -2275,15 +2392,19 @@ namespace SimPe.PackedFiles.UserInterface
 		)
 		{
 			if (cbHex32_IsValid(sender))
+			{
 				return;
+			}
 
 			e.Cancel = true;
 
 			int i = alHex32cb.IndexOf(sender);
 			if (i < 0)
+			{
 				throw new Exception(
 					"cbHex32_Validating not applicable to control " + sender.ToString()
 				);
+			}
 
 			uint val = 0;
 			switch (i)
@@ -2325,11 +2446,16 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			int i = alHex32cb.IndexOf(sender);
 			if (i < 0)
+			{
 				throw new Exception(
 					"cbHex32_Validated not applicable to control " + sender.ToString()
 				);
+			}
+
 			if (((ComboBox)sender).FindStringExact(((ComboBox)sender).Text) >= 0)
+			{
 				return;
+			}
 
 			uint val = Convert.ToUInt32(((ComboBox)sender).Text, 16);
 
@@ -2358,16 +2484,23 @@ namespace SimPe.PackedFiles.UserInterface
 		private void cbHex32_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
 
 			int i = alHex32cb.IndexOf(sender);
 			if (i < 0)
+			{
 				throw new Exception(
 					"cbHex32_SelectedIndexChanged not applicable to control "
 						+ sender.ToString()
 				);
+			}
+
 			if (((ComboBox)sender).SelectedIndex == -1)
+			{
 				return;
+			}
 
 			int val = ((ComboBox)sender).SelectedIndex;
 
@@ -2389,9 +2522,14 @@ namespace SimPe.PackedFiles.UserInterface
 		private void hex16_TextChanged(object sender, System.EventArgs ev)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (!hex16_IsValid(sender))
+			{
 				return;
+			}
 
 			ushort val = Convert.ToUInt16(((TextBox)sender).Text, 16);
 			internalchg = true;
@@ -2426,7 +2564,9 @@ namespace SimPe.PackedFiles.UserInterface
 		)
 		{
 			if (hex16_IsValid(sender))
+			{
 				return;
+			}
 
 			e.Cancel = true;
 
@@ -2471,9 +2611,14 @@ namespace SimPe.PackedFiles.UserInterface
 		private void hex32_TextChanged(object sender, System.EventArgs ev)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (!hex32_IsValid(sender))
+			{
 				return;
+			}
 
 			uint val = Convert.ToUInt32(((TextBox)sender).Text, 16);
 			internalchg = true;
@@ -2510,7 +2655,9 @@ namespace SimPe.PackedFiles.UserInterface
 		)
 		{
 			if (hex32_IsValid(sender))
+			{
 				return;
+			}
 
 			e.Cancel = true;
 
@@ -2556,15 +2703,22 @@ namespace SimPe.PackedFiles.UserInterface
 			((TextBox)sender).SelectAll();
 			internalchg = origstate;
 			if (alHex32.IndexOf(sender) == 0)
+			{
 				setFormat();
+			}
 		}
 
 		private void float_TextChanged(object sender, System.EventArgs ev)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (!float_IsValid(sender))
+			{
 				return;
+			}
 
 			float val = Convert.ToSingle(((TextBox)sender).Text);
 			internalchg = true;
@@ -2586,7 +2740,9 @@ namespace SimPe.PackedFiles.UserInterface
 		)
 		{
 			if (float_IsValid(sender))
+			{
 				return;
+			}
 
 			e.Cancel = true;
 

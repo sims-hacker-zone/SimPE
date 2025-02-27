@@ -136,15 +136,20 @@ namespace SimPe.PackedFiles.UserInterface
 				if (this.item != value)
 				{
 					if (item != null && item.Wrapper != null)
+					{
 						item.Wrapper.WrapperChanged -= new System.EventHandler(
 							this.WrapperChanged
 						);
+					}
+
 					this.item = value;
 					setData();
 					if (item != null)
+					{
 						item.Wrapper.WrapperChanged += new System.EventHandler(
 							this.WrapperChanged
 						);
+					}
 				}
 			}
 		}
@@ -152,7 +157,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void WrapperChanged(object sender, System.EventArgs e)
 		{
 			if (sender != item)
+			{
 				return;
+			}
+
 			setData();
 		}
 
@@ -169,9 +177,14 @@ namespace SimPe.PackedFiles.UserInterface
 				TtabMotiveGroupUI c = new TtabMotiveGroupUI();
 				c.MotiveGroup = item[0];
 				if (item.Type == TtabItemMotiveTableType.Human)
+				{
 					c.MGName = pjse.BhavWiz.readStr(pjse.GS.BhavStr.TTABAges, 0);
+				}
 				else
+				{
 					c.MGName = "[0]";
+				}
+
 				setLocations(c);
 
 				if (item.Count > 1)
@@ -184,19 +197,26 @@ namespace SimPe.PackedFiles.UserInterface
 						this.pnAllGroups.Controls.Add(c);
 						c.MotiveGroup = item[i];
 						if (item.Type == TtabItemMotiveTableType.Human)
+						{
 							c.MGName = pjse.BhavWiz.readStr(
 								pjse.GS.BhavStr.TTABAges,
 								(ushort)i
 							);
+						}
 						else
+						{
 							c.MGName = "[" + i.ToString() + "]";
+						}
+
 						c.Location = new Point(nextLeft, 0);
 						nextLeft += c.Width + 2;
 					}
 				}
 			}
 			else
+			{
 				this.lbNrGroups.Text = (this.lbNrGroups.Text.Split(new char[] { ':' })[0]) + ": 0";
+			}
 
 			cbShowAll_CheckedChanged(null, null);
 		}
@@ -282,7 +302,10 @@ namespace SimPe.PackedFiles.UserInterface
 					m
 				);
 				if (aMotiveLabels[m].Width > maxWidth)
+				{
 					maxWidth = aMotiveLabels[m].Width;
+				}
+
 				cbW = b[m].Width;
 			}
 
@@ -326,7 +349,9 @@ namespace SimPe.PackedFiles.UserInterface
 		private void doCopyMotive(int m)
 		{
 			for (int i = 1; i < item.Count; i++)
+			{
 				item[0][m].CopyTo(item[i][m]);
+			}
 		}
 
 		#endregion
@@ -823,10 +848,16 @@ namespace SimPe.PackedFiles.UserInterface
 			ArrayList alBtnCopy = new ArrayList(aButtons);
 			int bn = alBtnCopy.IndexOf(sender);
 			if (bn >= 0)
+			{
 				doCopyMotive(bn);
+			}
 			else
+			{
 				for (int i = 0; i < aButtons.Length; i++)
+				{
 					doCopyMotive(i);
+				}
+			}
 		}
 
 		private void cbShowAll_CheckedChanged(object sender, System.EventArgs e)

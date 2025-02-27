@@ -91,7 +91,10 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				if (FileDescriptor == null)
+				{
 					return 0;
+				}
+
 				return (FileDescriptor.Instance & 0xffff);
 			}
 		}
@@ -101,7 +104,10 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				if (FileDescriptor == null)
+				{
 					return 0;
+				}
+
 				return ((FileDescriptor.Instance >> 16) & 0xffff);
 			}
 		}
@@ -113,9 +119,13 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				if (src == null)
+				{
 					src = GetDescriptionByInstance(SourceSimInstance);
+				}
 				else if (src.FileDescriptor.Instance != SourceSimInstance)
+				{
 					src = GetDescriptionByInstance(SourceSimInstance);
+				}
 
 				return src;
 			}
@@ -126,9 +136,13 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				if (dst == null)
+				{
 					dst = GetDescriptionByInstance(TargetSimInstance);
+				}
 				else if (dst.FileDescriptor.Instance != TargetSimInstance)
+				{
 					dst = GetDescriptionByInstance(TargetSimInstance);
+				}
 
 				return dst;
 			}
@@ -139,7 +153,10 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				if (SourceSim != null)
+				{
 					return SourceSim.SimName + " " + SourceSim.SimFamilyName;
+				}
+
 				return SimPe.Localization.GetString("Unknown");
 			}
 		}
@@ -149,7 +166,10 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				if (TargetSim != null)
+				{
 					return TargetSim.SimName + " " + TargetSim.SimFamilyName;
+				}
+
 				return SimPe.Localization.GetString("Unknown");
 			}
 		}
@@ -163,9 +183,16 @@ namespace SimPe.PackedFiles.Wrapper
 
 				Image isrc = null;
 				if (SourceSim != null)
+				{
 					if (SourceSim.Image != null)
+					{
 						if (SourceSim.Image.Width > 8)
+						{
 							isrc = SourceSim.Image;
+						}
+					}
+				}
+
 				if (isrc == null)
 				{
 					if (SourceSim != null)
@@ -173,20 +200,31 @@ namespace SimPe.PackedFiles.Wrapper
 						isrc = SimPe.GetImage.NoOne;
 					}
 					else
+					{
 						isrc = SimPe.GetImage.NoOne;
+					}
 				}
 				else
+				{
 					isrc = Ambertation.Drawing.GraphicRoutines.KnockoutImage(
 						isrc,
 						new Point(0, 0),
 						Color.Magenta
 					);
+				}
 
 				Image idst = null;
 				if (TargetSim != null)
+				{
 					if (TargetSim.Image != null)
+					{
 						if (TargetSim.Image.Width > 8)
+						{
 							idst = TargetSim.Image;
+						}
+					}
+				}
+
 				if (idst == null)
 				{
 					if (TargetSim != null)
@@ -194,14 +232,18 @@ namespace SimPe.PackedFiles.Wrapper
 						idst = SimPe.GetImage.NoOne;
 					}
 					else
+					{
 						idst = SimPe.GetImage.NoOne;
+					}
 				}
 				else
+				{
 					idst = Ambertation.Drawing.GraphicRoutines.KnockoutImage(
 						idst,
 						new Point(0, 0),
 						Color.Magenta
 					);
+				}
 
 				const int offsety = 32;
 				g.DrawImage(
@@ -225,7 +267,10 @@ namespace SimPe.PackedFiles.Wrapper
 		protected override string GetResourceName(SimPe.Data.TypeAlias ta)
 		{
 			if (!this.Processed)
+			{
 				ProcessData(FileDescriptor, Package);
+			}
+
 			return SourceSimName
 				+ " "
 				+ SimPe.Localization.GetString("towards")

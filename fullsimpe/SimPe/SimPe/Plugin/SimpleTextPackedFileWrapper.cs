@@ -65,8 +65,12 @@ namespace SimPe.Plugin
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
 			if (strung != null)
+			{
 				foreach (char c in strung)
+				{
 					writer.Write(c);
+				}
+			}
 		}
 		#endregion
 

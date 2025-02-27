@@ -46,9 +46,13 @@ namespace SimPe
 			{
 				//if (tool.GetType().GetInterface("SimPe.Interfaces.IToolExt", true) == typeof(SimPe.Interfaces.IToolExt)) return (SimPe.Interfaces.IToolExt)tool;
 				if (tool is SimPe.Interfaces.IToolExt)
+				{
 					return (SimPe.Interfaces.IToolExt)tool;
+				}
 				else
+				{
 					return null;
+				}
 			}
 		}
 
@@ -60,9 +64,13 @@ namespace SimPe
 			get
 			{
 				if (tool is SimPe.Interfaces.ITool)
+				{
 					return (SimPe.Interfaces.ITool)tool;
+				}
 				else
+				{
 					return null;
+				}
 			}
 		}
 
@@ -74,9 +82,13 @@ namespace SimPe
 			get
 			{
 				if (tool is SimPe.Interfaces.IToolPlus)
+				{
 					return (SimPe.Interfaces.IToolPlus)tool;
+				}
 				else
+				{
 					return null;
+				}
 			}
 		}
 		Interfaces.Files.IPackedFileDescriptor pfd;
@@ -111,7 +123,9 @@ namespace SimPe
 		private void ClickItem(object sender, System.EventArgs e)
 		{
 			if (Tool == null)
+			{
 				return;
+			}
 #if !DEBUG
 			try
 #endif
@@ -131,7 +145,9 @@ namespace SimPe
 							p.FileDescriptor = pfd;
 							p.Result = tr;
 							if (ChangeHandler != null)
+							{
 								ChangeHandler(this, p);
+							}
 						}
 					}
 					finally
@@ -181,12 +197,20 @@ namespace SimPe
 		private void LinkClicked(object sender, EventArgs e)
 		{
 			if (ToolPlus == null)
+			{
 				return;
+			}
+
 			if (lasteventarg.LoadedPackage != null)
+			{
 				lasteventarg.LoadedPackage.PauseIndexChangedEvents();
+			}
+
 			ToolPlus.Execute(sender, lasteventarg);
 			if (lasteventarg.LoadedPackage != null)
+			{
 				lasteventarg.LoadedPackage.RestartIndexChangedEvents();
+			}
 		}
 		#endregion
 

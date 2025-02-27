@@ -1446,15 +1446,29 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 
 			if (wrapper.Version >= 7)
+			{
 				lvi.SubItems.Add(si.UnknownFloat7.ToString());
+			}
+
 			if (wrapper.Version >= 8)
+			{
 				lvi.SubItems.Add(si.UnknownInt7.ToString());
+			}
+
 			if (wrapper.Version >= 9)
+			{
 				lvi.SubItems.Add(si.UnknownInt8.ToString());
+			}
+
 			if (wrapper.Version == 10)
+			{
 				lvi.SubItems.Add(si.UnknownShort3.ToString());
+			}
+
 			if (wrapper.Version >= 0x10)
+			{
 				lvi.SubItems.Add(si.UnknownFloat8.ToString());
+			}
 
 			if (wrapper.Version >= 0x40)
 			{
@@ -1467,7 +1481,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void Select(object sender, System.EventArgs e)
 		{
 			if (lv.SelectedItems.Count == 0)
+			{
 				return;
+			}
+
 			this.Tag = true;
 			try
 			{
@@ -1478,7 +1495,10 @@ namespace SimPe.PackedFiles.UserInterface
 				foreach (SimPe.PackedFiles.Wrapper.SlotItemType sti in cbtype.Items)
 				{
 					if (sti == si.Type)
+					{
 						cbtype.SelectedIndex = ct;
+					}
+
 					ct++;
 				}
 
@@ -1515,16 +1535,24 @@ namespace SimPe.PackedFiles.UserInterface
 		private void Changed(object sender, System.EventArgs e)
 		{
 			if (Tag != null)
+			{
 				return;
+			}
+
 			if (lv.SelectedItems.Count == 0)
+			{
 				return;
+			}
+
 			try
 			{
 				SimPe.PackedFiles.Wrapper.SlotItem si =
 					(SimPe.PackedFiles.Wrapper.SlotItem)lv.SelectedItems[0].Tag;
 
 				if (cbtype.SelectedIndex >= 0)
+				{
 					si.Type = (SlotItemType)cbtype.Items[cbtype.SelectedIndex];
+				}
 
 				si.UnknownFloat1 = Convert.ToSingle(tbf1.Text);
 				si.UnknownFloat2 = Convert.ToSingle(tbf2.Text);
@@ -1560,7 +1588,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void ChangeWrp(object sender, System.EventArgs e)
 		{
 			if (Tag != null)
+			{
 				return;
+			}
+
 			wrapper.FileName = tbname.Text;
 			wrapper.Changed = true;
 		}
@@ -1587,7 +1618,10 @@ namespace SimPe.PackedFiles.UserInterface
 		)
 		{
 			if (lv.SelectedItems.Count == 0)
+			{
 				return;
+			}
+
 			try
 			{
 				SimPe.PackedFiles.Wrapper.SlotItem si =
@@ -1606,7 +1640,10 @@ namespace SimPe.PackedFiles.UserInterface
 		)
 		{
 			if (lv.SelectedItems.Count == 0)
+			{
 				return;
+			}
+
 			SlotItem si = new SlotItem(wrapper);
 			SimPe.PackedFiles.Wrapper.SlotItem sv = (SimPe.PackedFiles.Wrapper.SlotItem)
 				lv.SelectedItems[0].Tag;

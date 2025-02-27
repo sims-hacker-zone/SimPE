@@ -87,7 +87,9 @@ namespace SimPe
 						p.FileDescriptor = pfd;
 						p.Result = tr;
 						if (ChangeHandler != null)
+						{
 							ChangeHandler(this, p);
+						}
 					}
 				}
 			}
@@ -204,7 +206,9 @@ namespace SimPe
 			object o = LoadPlugin(file, typeof(IWrapperFactory), lfw);
 
 			if (o != null)
+			{
 				lfw.reg.Register((IWrapperFactory)o);
+			}
 		}
 
 		public static void LoadErrorWrapper(
@@ -225,7 +229,9 @@ namespace SimPe
 			object o = LoadPlugin(file, typeof(IToolFactory), lfw);
 
 			if (o != null)
+			{
 				lfw.treg.Register((IToolFactory)o);
+			}
 		}
 
 		/// <summary>
@@ -241,11 +247,19 @@ namespace SimPe
 		)
 		{
 			if (lfw.ignore.Contains(System.IO.Path.GetFileName(file).Trim().ToLower()))
+			{
 				return null;
+			}
+
 			if (!File.Exists(file))
+			{
 				return null;
+			}
+
 			if (!Helper.CanLoadPlugin(file))
+			{
 				return null;
+			}
 
 			AssemblyName myAssemblyName;
 			try
@@ -305,9 +319,14 @@ namespace SimPe
 		)
 		{
 			if (!File.Exists(file))
+			{
 				return new object[0];
+			}
+
 			if (!Helper.CanLoadPlugin(file))
+			{
 				return new object[0];
+			}
 
 			AssemblyName myAssemblyName;
 			try
@@ -337,7 +356,9 @@ namespace SimPe
 		)
 		{
 			if (a == null)
+			{
 				return new object[0];
+			}
 
 			ArrayList list = new ArrayList();
 			try
@@ -347,7 +368,9 @@ namespace SimPe
 				foreach (Type t in mytypes)
 				{
 					if (t.IsInterface || t.IsAbstract)
+					{
 						continue;
+					}
 
 					try
 					{
@@ -369,7 +392,9 @@ namespace SimPe
 								}
 
 								if (obj != null)
+								{
 									list.Add(obj);
+								}
 							}
 							catch (Exception ex)
 							{

@@ -70,18 +70,25 @@ namespace SimPe.PackedFiles.Wrapper
 			ArrayList list = new ArrayList();
 			SimPe.PackedFiles.Wrapper.Supporting.FamilyTieSim fts = this.FindTies(sdsc);
 			if (fts != null)
+			{
 				foreach (
 					SimPe.PackedFiles.Wrapper.Supporting.FamilyTieItem fti in fts.Ties
 				)
 				{
 					if (fti.SimDescription == null)
+					{
 						continue;
+					}
+
 					if (
 						fti.Type == Data.MetaData.FamilyTieTypes.MyMotherIs
 						|| fti.Type == Data.MetaData.FamilyTieTypes.MyFatherIs
 					)
+					{
 						list.Add(fti.SimDescription);
+					}
 				}
+			}
 
 			Wrapper.SDesc[] ret = new SDesc[list.Count];
 			list.CopyTo(ret);
@@ -99,18 +106,25 @@ namespace SimPe.PackedFiles.Wrapper
 			SimPe.PackedFiles.Wrapper.Supporting.FamilyTieSim fts = this.FindTies(sdsc);
 
 			if (fts != null)
+			{
 				foreach (
 					SimPe.PackedFiles.Wrapper.Supporting.FamilyTieItem fti in fts.Ties
 				)
 				{
 					if (fti.SimDescription == null)
+					{
 						continue;
+					}
+
 					if (
 						fti.Type == Data.MetaData.FamilyTieTypes.ImMarriedTo
 						|| fti.Type == Data.MetaData.FamilyTieTypes.MySiblingIs
 					)
+					{
 						list.Add(fti.SimDescription);
+					}
 				}
+			}
 
 			Wrapper.SDesc[] ret = new SDesc[list.Count];
 			list.CopyTo(ret);
@@ -128,15 +142,22 @@ namespace SimPe.PackedFiles.Wrapper
 			SimPe.PackedFiles.Wrapper.Supporting.FamilyTieSim fts = this.FindTies(sdsc);
 
 			if (fts != null)
+			{
 				foreach (
 					SimPe.PackedFiles.Wrapper.Supporting.FamilyTieItem fti in fts.Ties
 				)
 				{
 					if (fti.SimDescription == null)
+					{
 						continue;
+					}
+
 					if (fti.Type == Data.MetaData.FamilyTieTypes.MyChildIs)
+					{
 						list.Add(fti.SimDescription);
+					}
 				}
+			}
 
 			Wrapper.SDesc[] ret = new SDesc[list.Count];
 			list.CopyTo(ret);
@@ -154,15 +175,22 @@ namespace SimPe.PackedFiles.Wrapper
 			SimPe.PackedFiles.Wrapper.Supporting.FamilyTieSim fts = this.FindTies(sdsc);
 
 			if (fts != null)
+			{
 				foreach (
 					SimPe.PackedFiles.Wrapper.Supporting.FamilyTieItem fti in fts.Ties
 				)
 				{
 					if (fti.SimDescription == null)
+					{
 						continue;
+					}
+
 					if (fti.Type == Data.MetaData.FamilyTieTypes.ImMarriedTo)
+					{
 						list.Add(fti.SimDescription);
+					}
 				}
+			}
 
 			Wrapper.SDesc[] ret = new SDesc[list.Count];
 			list.CopyTo(ret);

@@ -49,13 +49,21 @@ namespace SimPe
 		static Image LoadFromResource(string name)
 		{
 			if (name == "fail")
+			{
 				return GetIcon.Fail;
+			}
 			else if (name == "ok")
+			{
 				return GetIcon.OK;
+			}
 			else if (name == "warn")
+			{
 				return GetIcon.Warn;
+			}
 			else
+			{
 				return GetIcon.Unk;
+			}
 		}
 
 		static Image iok,
@@ -76,7 +84,10 @@ namespace SimPe
 			get
 			{
 				if (iok == null)
+				{
 					iok = LoadFromResource("ok");
+				}
+
 				return iok;
 			}
 		}
@@ -85,7 +96,10 @@ namespace SimPe
 			get
 			{
 				if (ifail == null)
+				{
 					ifail = LoadFromResource("fail");
+				}
+
 				return ifail;
 			}
 		}
@@ -94,7 +108,10 @@ namespace SimPe
 			get
 			{
 				if (iunk == null)
+				{
 					iunk = LoadFromResource("unk");
+				}
+
 				return iunk;
 			}
 		}
@@ -103,7 +120,10 @@ namespace SimPe
 			get
 			{
 				if (iwarn == null)
+				{
 					iwarn = LoadFromResource("warn");
+				}
+
 				return iwarn;
 			}
 		}
@@ -656,8 +676,12 @@ namespace SimPe
 		public void Reset()
 		{
 			foreach (Control c in this.Controls)
+			{
 				if (c is CheckItem)
+				{
 					((CheckItem)c).Reset();
+				}
+			}
 		}
 
 		private void button1_Click(object sender, System.EventArgs e)
@@ -666,14 +690,25 @@ namespace SimPe
 			this.Cursor = Cursors.WaitCursor;
 			Reset();
 			foreach (Control c in this.Controls)
+			{
 				if (c is CheckItem)
+				{
 					((CheckItem)c).Check();
+				}
+			}
+
 			this.Cursor = Cursors.Default;
 
 			foreach (Control d in this.Controls)
+			{
 				if (d is CheckItem)
+				{
 					if (((CheckItem)d).CheckState != CheckItemState.Ok)
+					{
 						this.button1.Visible = true;
+					}
+				}
+			}
 		}
 
 		public static void ClearCache()
@@ -695,17 +730,21 @@ namespace SimPe
 				}
 			}
 			if (Helper.StartedGui == Executable.Other)
+			{
 				Message.Show(
 					"The caches are cleared.",
 					"Information",
 					MessageBoxButtons.OK
 				);
+			}
 			else
+			{
 				Message.Show(
 					SimPe.Localization.GetString("cache_cleared"),
 					"Information",
 					MessageBoxButtons.OK
 				);
+			}
 		}
 
 		public event System.EventHandler FixedFileTable;
@@ -725,7 +764,10 @@ namespace SimPe
 				foreach (ExpansionItem ei in PathProvider.Global.Expansions)
 				{
 					if (!ei.Exists)
+					{
 						continue;
+					}
+
 					path = ei.InstallFolder; //Helper.WindowsRegistry.GetExecutableFolder(ep);
 					string name = ei.ExeName;
 
@@ -811,11 +853,16 @@ namespace SimPe
 						)
 						.Count > 0
 				)
+				{
 					path = PathProvider.Global.GetSaveGamePathForGroup(
 						SimPe.PathProvider.Global.CurrentGroup
 					)[0];
+				}
 				else
+				{
 					path = PathProvider.SimSavegameFolder;
+				}
+
 				test = System.IO.Path.Combine(path, "Neighborhoods");
 				if (!System.IO.Directory.Exists(test))
 				{
@@ -905,12 +952,15 @@ namespace SimPe
 			isok = CheckItemState.Unknown;
 			PathProvider.Global.SetDefaultPaths();
 			if (Helper.Profile.Length > 0)
+			{
 				System.Windows.Forms.MessageBox.Show(
 					"You will need to re-save profile " + Helper.Profile,
 					"Fix",
 					System.Windows.Forms.MessageBoxButtons.OK,
 					System.Windows.Forms.MessageBoxIcon.Warning
 				);
+			}
+
 			return isok;
 		}
 		#endregion
@@ -933,12 +983,14 @@ namespace SimPe
 				try
 				{
 					if (System.IO.File.Exists(path))
+					{
 						System.IO.File.Delete(
 							System.IO.Path.Combine(
 								Helper.SimPeDataPath,
 								"objcache.simpepkg"
 							)
 						);
+					}
 				}
 				catch { }
 
@@ -1045,7 +1097,10 @@ namespace SimPe
 			{
 				string msg = "your file table folder settings will be reset";
 				if (Helper.Profile.Length > 0)
+				{
 					msg += " and you will need to re-save profile " + Helper.Profile;
+				}
+
 				if (
 					System.Windows.Forms.MessageBox.Show(
 						"The File table settings file was not correct and you have asked to fix it.\n"
@@ -1064,7 +1119,9 @@ namespace SimPe
 					System.IO.File.Delete(Helper.DataFolder.FoldersXREG);
 					FileTable.Reload();
 					if (FixedFileTable != null)
+					{
 						FixedFileTable(this, new EventArgs());
+					}
 				}
 			}
 			catch

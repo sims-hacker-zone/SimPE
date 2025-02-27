@@ -104,13 +104,19 @@ namespace SimPe.Plugin
 			try
 			{
 				if (ChangedNeighborhood(wrp))
+				{
 					WantLoader.WantNameLoader.AddSimNames();
+				}
 
 				SimPe.Interfaces.Wrapper.ISDesc sdsc = wrp.SimDescription;
 				if (sdsc != null)
+				{
 					form.lbsimname.Text = sdsc.SimName + " " + sdsc.SimFamilyName;
+				}
 				else
+				{
 					form.lbsimname.Text = Localization.Manager.GetString("Unknown");
+				}
 
 				form.lastwi = null;
 				form.lastlvi = null;
@@ -119,17 +125,23 @@ namespace SimPe.Plugin
 				form.lvwant.Items.Clear();
 				form.iwant.Images.Clear();
 				foreach (WantItem wi in wrp.Wants)
+				{
 					form.AddWantToList(form.lvwant, form.iwant, wi);
+				}
 
 				form.lvfear.Items.Clear();
 				form.ifear.Images.Clear();
 				foreach (WantItem wi in wrp.Fears)
+				{
 					form.AddWantToList(form.lvfear, form.ifear, wi);
+				}
 
 				form.lvlife.Items.Clear();
 				form.ilife.Images.Clear();
 				foreach (WantItem wi in wrp.LifetimeWants)
+				{
 					form.AddWantToList(form.lvlife, form.ilife, wi);
+				}
 
 				form.tvhist.Nodes.Clear();
 				form.ihist.Images.Clear();

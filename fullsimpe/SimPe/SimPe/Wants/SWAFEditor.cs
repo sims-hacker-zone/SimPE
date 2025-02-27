@@ -91,13 +91,21 @@ namespace SimPe.Wants
 
 			int[] ai = Settings.SWAFColumns;
 			if (ai != null)
+			{
 				for (int i = 0; i < ai.Length; i++)
+				{
 					lvItems.Columns[i].Width = ai[i];
+				}
+			}
 
 			bool[] ab = Settings.SWAFItemTypes;
 			if (ab != null)
+			{
 				for (int i = 0; i < ab.Length; i++)
+				{
 					lincs[i].Checked = ab[i];
+				}
+			}
 
 			//int sd = Settings.SplitterDistance;
 			//if (sd != -1)
@@ -105,11 +113,15 @@ namespace SimPe.Wants
 
 			cbFileVersion.Items.Clear();
 			foreach (uint v in SWAFWrapper.ValidVersions)
+			{
 				cbFileVersion.Items.Add("0x" + Helper.HexString((byte)v));
+			}
 
 			cbSIVersion.Items.Clear();
 			foreach (uint v in SWAFItem.ValidVersions)
+			{
 				cbSIVersion.Items.Add("0x" + Helper.HexString((byte)v));
+			}
 
 			cbSIArgType.Items.Clear();
 			cbSIArgType.Items.AddRange(Enum.GetNames(typeof(SWAFItem.ArgTypes)));
@@ -134,10 +146,15 @@ namespace SimPe.Wants
 
 						XWNTWrapper xwnt = e.Wrapper as XWNTWrapper;
 						if (xwnt == null)
+						{
 							continue;
+						}
 
 						if (xwnt["id"] == null)
+						{
 							continue;
+						}
+
 						uint i = 0;
 						try
 						{
@@ -151,21 +168,34 @@ namespace SimPe.Wants
 							continue;
 						}
 						if (xwnts.ContainsKey(i))
+						{
 							continue;
+						}
 
 						string s = "";
 						if (xwnt["objectType"] != null)
+						{
 							s +=
 								(s.Length > 0 ? " " : "")
 								+ "("
 								+ xwnt["objectType"].Value
 								+ ")";
+						}
+
 						if (xwnt["folder"] != null)
+						{
 							s += (s.Length > 0 ? " " : "") + xwnt["folder"].Value;
+						}
+
 						if (xwnt["nodeText"] != null)
+						{
 							s += (s.Length > 0 ? " / " : "") + xwnt["nodeText"].Value;
+						}
+
 						if (s.Length == 0)
+						{
 							continue;
+						}
 
 						xwnts.Add(i, new object[] { e.FileDescriptor, e.Package });
 						wants.Add(new KeyValuePair<string, uint>(s, i));
@@ -217,10 +247,14 @@ namespace SimPe.Wants
 					new List<KeyValuePair<string, uint>>();
 				XmlNode xn = doc["wantSimulator"]["categories"];
 				if (xn != null)
+				{
 					foreach (XmlNode cat in xn.ChildNodes)
 					{
 						if (cat.Name != "category")
+						{
 							continue;
+						}
+
 						categories.Add(
 							new KeyValuePair<string, uint>(
 								cat.Attributes["name"].Value,
@@ -228,6 +262,8 @@ namespace SimPe.Wants
 							)
 						);
 					}
+				}
+
 				categories.Sort(new byKey());
 				categoryNames = new List<string>();
 				categoryIDs = new List<uint>();
@@ -240,10 +276,14 @@ namespace SimPe.Wants
 				skills = new List<KeyValuePair<ushort, string>>();
 				xn = doc["wantSimulator"]["skills"];
 				if (xn != null)
+				{
 					foreach (XmlNode cat in xn.ChildNodes)
 					{
 						if (cat.Name != "skill")
+						{
 							continue;
+						}
+
 						skills.Add(
 							new KeyValuePair<ushort, string>(
 								Convert.ToUInt16(cat.Attributes["id"].Value),
@@ -251,16 +291,21 @@ namespace SimPe.Wants
 							)
 						);
 					}
+				}
 
 				// Career fallback
 				List<KeyValuePair<string, uint>> careers =
 					new List<KeyValuePair<string, uint>>();
 				xn = doc["wantSimulator"]["careers"];
 				if (xn != null)
+				{
 					foreach (XmlNode cat in xn.ChildNodes)
 					{
 						if (cat.Name != "career")
+						{
 							continue;
+						}
+
 						careers.Add(
 							new KeyValuePair<string, uint>(
 								cat.Attributes["name"].Value
@@ -271,6 +316,8 @@ namespace SimPe.Wants
 							)
 						);
 					}
+				}
+
 				careers.Sort(new byKey());
 				careerNames = new List<string>();
 				careerIDs = new List<uint>();
@@ -284,10 +331,14 @@ namespace SimPe.Wants
 					new List<KeyValuePair<string, uint>>();
 				xn = doc["wantSimulator"]["badges"];
 				if (xn != null)
+				{
 					foreach (XmlNode cat in xn.ChildNodes)
 					{
 						if (cat.Name != "badge")
+						{
 							continue;
+						}
+
 						badges.Add(
 							new KeyValuePair<string, uint>(
 								cat.Attributes["name"].Value,
@@ -295,6 +346,8 @@ namespace SimPe.Wants
 							)
 						);
 					}
+				}
+
 				badges.Sort(new byKey());
 				badgeNames = new List<string>();
 				badgeIDs = new List<uint>();
@@ -313,7 +366,9 @@ namespace SimPe.Wants
 			cbSISkill.Items.Clear();
 			skills.Insert(0, new KeyValuePair<ushort, string>(0, "?any?"));
 			foreach (KeyValuePair<ushort, string> kvp in skills)
+			{
 				cbSISkill.Items.Add(kvp.Value);
+			}
 			#endregion
 
 			#region The GUID Index
@@ -322,7 +377,9 @@ namespace SimPe.Wants
 				Wait.Start();
 				Wait.Message = "The GUID Index...";
 				if (!pjse.GUIDIndex.TheGUIDIndex.IsLoaded)
+				{
 					pjse.GUIDIndex.TheGUIDIndex.Load();
+				}
 
 				if (!pjse.GUIDIndex.TheGUIDIndex.IsLoaded)
 				{
@@ -339,7 +396,9 @@ namespace SimPe.Wants
 					objectIDs.Sort(new byValue(pjse.GUIDIndex.TheGUIDIndex));
 					objectNames = new List<string>();
 					foreach (uint k in objectIDs)
+					{
 						objectNames.Add(pjse.GUIDIndex.TheGUIDIndex[k]);
+					}
 
 					// These should actually be from the CTSS is the same group as the OBJD
 					Wait.Message = "Career names...";
@@ -349,9 +408,11 @@ namespace SimPe.Wants
 					careerIDs.Sort(new byValue(pjse.GUIDIndex.TheGUIDIndex));
 					careerNames = new List<string>();
 					foreach (uint k in careerIDs)
+					{
 						careerNames.Add(
 							pjse.GUIDIndex.TheGUIDIndex[k].Replace("JobData - ", "")
 						);
+					}
 				}
 
 				Wait.Stop();
@@ -467,8 +528,13 @@ namespace SimPe.Wants
 					return getName(categoryNames, categoryIDs, i.Category);
 				case SWAFItem.ArgTypes.Skill:
 					foreach (KeyValuePair<ushort, string> kvp in skills)
+					{
 						if (kvp.Key == i.Skill)
+						{
 							return kvp.Value;
+						}
+					}
+
 					return "0x" + Helper.HexString(i.Skill);
 				case SWAFItem.ArgTypes.Badge:
 					return getName(badgeNames, badgeIDs, i.Badge);
@@ -481,7 +547,10 @@ namespace SimPe.Wants
 		private string SimName(ushort i)
 		{
 			if (i == 0)
+			{
 				return "?any sim?";
+			}
+
 			ExtSDesc sdsc =
 				i != 0
 					? FileTable.ProviderRegistry.SimDescriptionProvider.FindSim(i)
@@ -518,13 +587,25 @@ namespace SimPe.Wants
 		private bool incItem(SWAFItem.SWAFItemType t)
 		{
 			if (t == SWAFItem.SWAFItemType.Wants)
+			{
 				return ckbIncWants.Checked;
+			}
+
 			if (t == SWAFItem.SWAFItemType.Fears)
+			{
 				return ckbIncFears.Checked;
+			}
+
 			if (t == SWAFItem.SWAFItemType.LifetimeWants)
+			{
 				return ckbIncLTWants.Checked;
+			}
+
 			if (t == SWAFItem.SWAFItemType.History)
+			{
 				return ckbIncHistory.Checked;
+			}
+
 			return false;
 		}
 
@@ -540,12 +621,24 @@ namespace SimPe.Wants
 			lvItems.BeginUpdate();
 			lvItems.Items.Clear();
 			foreach (SWAFItem i in current)
+			{
 				if (incItem(i.ItemType))
+				{
 					lvItems.Items.Add(MakeLVI(i));
+				}
+			}
+
 			foreach (KeyValuePair<uint, List<SWAFItem>> kvp in history)
+			{
 				foreach (SWAFItem i in kvp.Value)
+				{
 					if (incItem(i.ItemType))
+					{
 						lvItems.Items.Add(MakeLVI(i));
+					}
+				}
+			}
+
 			lvItems.EndUpdate();
 		}
 
@@ -567,8 +660,13 @@ namespace SimPe.Wants
 			{
 				Image img = null;
 				if (sdsc.Image != null)
+				{
 					if (sdsc.Image.Width > 8)
+					{
 						img = sdsc.Image;
+					}
+				}
+
 				if (img == null)
 				{
 					img = SimPe.GetImage.NoOne;
@@ -582,8 +680,13 @@ namespace SimPe.Wants
 		private int findSkill(ushort skill)
 		{
 			for (int i = 0; i < skills.Count; i++)
+			{
 				if (skills[i].Key == skill)
+				{
 					return i;
+				}
+			}
+
 			return -1;
 		}
 
@@ -695,10 +798,15 @@ namespace SimPe.Wants
 			if (i.WantId != newWantId)
 			{
 				if (i.ItemType == SWAFItem.SWAFItemType.History)
+				{
 					history[i.WantId].Remove(i);
+				}
+
 				i.WantId = newWantId;
 				if (i.ItemType == SWAFItem.SWAFItemType.History)
+				{
 					history[i.WantId].Add(i);
+				}
 			}
 
 			if (!xwnts.ContainsKey(i.WantId))
@@ -779,14 +887,20 @@ namespace SimPe.Wants
 			internalchg = false;
 
 			if (lvItems.Items.Count > 0)
+			{
 				lvItems.Items[0].Selected = true;
+			}
 			else
+			{
 				lvItems_SelectedIndexChanged(null, null);
+			}
 
 			// I don't like this being here
 			int sd = Settings.SWAFSplitterDistance;
 			if (sd != -1)
+			{
 				splitContainer1.SplitterDistance = sd;
+			}
 
 			if (!setHandler)
 			{
@@ -800,7 +914,10 @@ namespace SimPe.Wants
 			this.btnCommit.Enabled = wrapper.Changed;
 
 			if (internalchg)
+			{
 				return;
+			}
+
 			internalchg = true;
 			try
 			{
@@ -847,16 +964,24 @@ namespace SimPe.Wants
 		private void UpdateGroups(ListViewItem lvi)
 		{
 			if (!isRunningXPOrLater)
+			{
 				return;
+			}
+
 			for (int column = 0; column < lvItems.Columns.Count; column++)
+			{
 				UpdateGroupsColumn(lvi, column);
+			}
 		}
 
 		private void UpdateGroupsColumn(ListViewItem lvi, int column)
 		{
 			SWAFItem i = lvi.Tag as SWAFItem;
 			if (groupTables[column] == null)
+			{
 				groupTables[column] = new Hashtable();
+			}
+
 			Hashtable groups = groupTables[column];
 
 			string subItemText = lvi.SubItems[column].Text;
@@ -872,7 +997,9 @@ namespace SimPe.Wants
 						][0]
 						.Wrapper as XWNTWrapper;
 				if (xwnt != null && xwnt["folder"] != null)
+				{
 					subItemText = xwnt["folder"].Value;
+				}
 			}
 			else if (
 				column == 2
@@ -884,21 +1011,27 @@ namespace SimPe.Wants
 					FileTable.ProviderRegistry.SimDescriptionProvider.FindSim(i.Sim)
 					as ExtSDesc;
 				if (sdsc != null && sdsc.SimFamilyName != null)
+				{
 					subItemText = sdsc.SimFamilyName;
+				}
 			}
 
 			if (!groups.Contains(subItemText))
+			{
 				groups.Add(
 					subItemText,
 					new ListViewGroup(subItemText, HorizontalAlignment.Left)
 				);
+			}
 		}
 
 		// Sets myListView to the groups created for the specified column.
 		private void SetGroups(int column)
 		{
 			if (!isRunningXPOrLater)
+			{
 				return;
+			}
 
 			// Remove the current groups.
 			lvItems.Groups.Clear();
@@ -940,7 +1073,9 @@ namespace SimPe.Wants
 									][0]
 									.Wrapper as XWNTWrapper;
 							if (xwnt != null && xwnt["folder"] != null)
+							{
 								subItemText = xwnt["folder"].Value;
+							}
 						}
 						else if (
 							column == 2
@@ -953,7 +1088,9 @@ namespace SimPe.Wants
 									i.Sim
 								) as ExtSDesc;
 							if (sdsc != null && sdsc.SimFamilyName != null)
+							{
 								subItemText = sdsc.SimFamilyName;
+							}
 						}
 					}
 
@@ -988,19 +1125,28 @@ namespace SimPe.Wants
 			{
 				int result;
 				if (column != 0)
+				{
 					result = String.Compare(
 						((ListViewGroup)x).Header,
 						((ListViewGroup)y).Header
 					);
+				}
 				else
+				{
 					result = col0hdrs
 						.IndexOf(((ListViewGroup)x).Header)
 						.CompareTo(col0hdrs.IndexOf(((ListViewGroup)y).Header));
+				}
 
 				if (order == SortOrder.Ascending)
+				{
 					return result;
+				}
 				else if (order == SortOrder.Descending)
+				{
 					return -result;
+				}
+
 				return 0;
 			}
 		}
@@ -1018,12 +1164,18 @@ namespace SimPe.Wants
 		)
 		{
 			if (!sender.Equals(llSimName) && !sender.Equals(llSimName2))
+			{
 				return;
+			}
+
 			if (
 				lvItems.SelectedIndices.Count == 0
 				|| lvItems.SelectedItems[0].Tag as SWAFItem == null
 			)
+			{
 				return;
+			}
+
 			SWAFItem i = lvItems.SelectedItems[0].Tag as SWAFItem;
 
 			ExtSDesc sdsc =
@@ -1031,7 +1183,9 @@ namespace SimPe.Wants
 					sender.Equals(llSimName) ? i.SimID : i.Sim
 				) as ExtSDesc;
 			if (sdsc == null)
+			{
 				return;
+			}
 
 			SimPe.RemoteControl.OpenPackedFile(sdsc.FileDescriptor, sdsc.Package);
 		}
@@ -1042,11 +1196,15 @@ namespace SimPe.Wants
 				lvItems.SelectedIndices.Count == 0
 				|| lvItems.SelectedItems[0].Tag as SWAFItem == null
 			)
+			{
 				return;
+			}
 
 			SWAFItem i = lvItems.SelectedItems[0].Tag as SWAFItem;
 			if (!xwnts.ContainsKey(i.WantId))
+			{
 				return;
+			}
 
 			XWNTWrapper xwnt = new XWNTWrapper();
 			xwnt.ProcessData(
@@ -1056,7 +1214,10 @@ namespace SimPe.Wants
 
 			Form xwntForm = xwnt.UIHandler as Form;
 			if (xwntForm == null)
+			{
 				return;
+			}
+
 			xwnt.RefreshUI();
 			xwntForm.Show();
 		}
@@ -1067,14 +1228,19 @@ namespace SimPe.Wants
 				lvItems.SelectedIndices.Count == 0
 				|| lvItems.SelectedItems[0].Tag as SWAFItem == null
 			)
+			{
 				return;
+			}
+
 			SWAFItem i = lvItems.SelectedItems[0].Tag as SWAFItem;
 
 			ExtSDesc sdsc =
 				FileTable.ProviderRegistry.SimDescriptionProvider.FindSim(i.SimID)
 				as ExtSDesc;
 			if (sdsc == null)
+			{
 				return;
+			}
 
 			SimPe.Interfaces.Files.IPackedFileDescriptor pfd1 = sdsc.Package.FindFile(
 				Data.MetaData.RELATION_FILE,
@@ -1088,9 +1254,15 @@ namespace SimPe.Wants
 		private void cbFileVersion_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (cbFileVersion.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			internalchg = true;
 			try
 			{
@@ -1112,9 +1284,15 @@ namespace SimPe.Wants
 		private void btnAddWantFear_Click(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (sender as Button == null || lbtn.IndexOf((Button)sender) < 0)
+			{
 				return;
+			}
+
 			internalchg = true;
 			try
 			{
@@ -1140,9 +1318,14 @@ namespace SimPe.Wants
 				}
 				i.SimID = (ushort)wrapper.FileDescriptor.Instance;
 				if (i.ItemType == SWAFItem.SWAFItemType.History)
+				{
 					history[i.WantId].Add(i);
+				}
 				else
+				{
 					current.Add(i);
+				}
+
 				lvItems.Items.Add(MakeLVI(i));
 			}
 			finally
@@ -1155,12 +1338,18 @@ namespace SimPe.Wants
 		private void btnDelete_Click(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (
 				lvItems.SelectedIndices.Count == 0
 				|| lvItems.SelectedItems[0].Tag as SWAFItem == null
 			)
+			{
 				return;
+			}
+
 			int pos = lvItems.SelectedIndices[0];
 
 			internalchg = true;
@@ -1169,16 +1358,25 @@ namespace SimPe.Wants
 				SWAFItem i = lvItems.SelectedItems[0].Tag as SWAFItem;
 
 				if (i.ItemType == SWAFItem.SWAFItemType.History)
+				{
 					history[i.WantId].Remove(i);
+				}
 				else
+				{
 					current.Remove(i);
+				}
 
 				lvItems.Items.RemoveAt(pos);
 				pos--;
 				if (pos < 0)
+				{
 					pos = 0;
+				}
+
 				if (pos >= lvItems.Items.Count)
+				{
 					pos = -1;
+				}
 			}
 			finally
 			{
@@ -1186,15 +1384,22 @@ namespace SimPe.Wants
 			}
 
 			if (pos == -1)
+			{
 				lvItems.SelectedIndices.Clear();
+			}
 			else
+			{
 				lvItems.Items[pos].Selected = true;
+			}
 		}
 
 		private void lvItems_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			internalchg = true;
 			try
 			{
@@ -1224,18 +1429,26 @@ namespace SimPe.Wants
 						lbXWNTIntMult.Visible =
 							false;
 					foreach (CheckBox ckb in lflags)
+					{
 						ckb.CheckState = CheckState.Indeterminate;
+					}
+
 					foreach (CheckBox ckb in lincs)
+					{
 						ckb.Enabled = !ckb.Checked; //false;
-													//gbSelectedItem.Icon = null;
-													//gbSelectedItem.HeaderText = "Selected Item";
+					}
+					//gbSelectedItem.Icon = null;
+					//gbSelectedItem.HeaderText = "Selected Item";
 				}
 				else
 				{
 					ExtSDesc sdsc = null;
 					gbSelectedItem.Enabled = btnDelete.Enabled = true;
 					foreach (CheckBox ckb in lincs)
+					{
 						ckb.Enabled = true;
+					}
+
 					SWAFItem i = lvItems.SelectedItems[0].Tag as SWAFItem;
 					lbSIItemType.Text = "" + i.ItemType;
 					cbSIVersion.SelectedIndex = SWAFItem.ValidVersions.IndexOf(
@@ -1266,17 +1479,26 @@ namespace SimPe.Wants
 					{
 						Image img = null;
 						if (sdsc.Image != null)
+						{
 							if (sdsc.Image.Width > 8)
+							{
 								img = sdsc.Image;
+							}
+						}
+
 						if (img == null)
 						{
 							if (
 								sdsc.CharacterDescription.Gender
 								== SimPe.Data.MetaData.Gender.Female
 							)
+							{
 								img = SimPe.GetImage.SheOne;
+							}
 							else
+							{
 								img = SimPe.GetImage.NoOne;
+							}
 						}
 						btnSim.Image = img.GetThumbnailImage(
 							64,
@@ -1301,9 +1523,11 @@ namespace SimPe.Wants
 					tbSIInfluence.Enabled = i.Version >= 0x09;
 					tbSIInfluence.Text = i.Version >= 0x09 ? "" + i.Influence : "";
 					for (int f = 0; f < i.Flags.Length; f++)
+					{
 						lflags[f].CheckState = i.Flags[f]
 							? CheckState.Checked
 							: CheckState.Unchecked;
+					}
 				}
 			}
 			finally
@@ -1322,20 +1546,30 @@ namespace SimPe.Wants
 			{
 				ai = new int[lvItems.Columns.Count];
 				for (int i = 0; i < ai.Length; i++)
+				{
 					ai[i] = lvItems.Columns[i].Width;
+				}
 			}
 			else
+			{
 				ai[e.ColumnIndex] = lvItems.Columns[e.ColumnIndex].Width;
+			}
+
 			Settings.SWAFColumns = ai;
 		}
 
 		private void ckbInc_CheckedChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			CheckBox ckb = sender as CheckBox;
 			if (ckb == null || lincs.IndexOf(ckb) < 0)
+			{
 				return;
+			}
 
 			if (
 				!ckbIncHistory.Checked
@@ -1369,11 +1603,17 @@ namespace SimPe.Wants
 			{
 				ListViewItem lvi = lvItems.SelectedItems[0]; // frows the error when no items exist
 				if (lvi != null && lvItems.Items.Contains(lvi))
+				{
 					lvi.Selected = true;
+				}
 				else if (lvItems.Items.Count > 0)
+				{
 					lvItems.Items[0].Selected = true;
+				}
 				else
+				{
 					lvItems_SelectedIndexChanged(null, null);
+				}
 			}
 			catch { }
 		}
@@ -1381,19 +1621,27 @@ namespace SimPe.Wants
 		private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
 		{
 			if (wrapper == null)
+			{
 				return;
+			}
+
 			Settings.SWAFSplitterDistance = splitContainer1.SplitterDistance;
 		}
 
 		private void tbSISimID2_TextChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (
 				lvItems.SelectedIndices.Count == 0
 				|| lvItems.SelectedItems[0].Tag as SWAFItem == null
 			)
+			{
 				return;
+			}
 
 			SWAFItem i = lvItems.SelectedItems[0].Tag as SWAFItem;
 
@@ -1436,7 +1684,9 @@ namespace SimPe.Wants
 				FileTable.ProviderRegistry
 			);
 			if (pfd == null)
+			{
 				return;
+			}
 
 			tbSISimID2.Text = "0x" + Helper.HexString((ushort)pfd.Instance);
 		}
@@ -1444,14 +1694,22 @@ namespace SimPe.Wants
 		private void cbSISkill_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (!sender.Equals(cbSISkill))
+			{
 				return;
+			}
+
 			if (
 				lvItems.SelectedIndices.Count == 0
 				|| lvItems.SelectedItems[0].Tag as SWAFItem == null
 			)
+			{
 				return;
+			}
 
 			SWAFItem i = lvItems.SelectedItems[0].Tag as SWAFItem;
 
@@ -1471,9 +1729,14 @@ namespace SimPe.Wants
 		private void tbUInt_TextChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (sender as TextBox == null || ltbUint32.IndexOf(sender as TextBox) < 0)
+			{
 				return;
+			}
 
 			TextBox tb = sender as TextBox;
 			uint value = 0;
@@ -1513,8 +1776,9 @@ namespace SimPe.Wants
 							lvItems.SelectedIndices.Count == 0
 							|| lvItems.SelectedItems[0].Tag as SWAFItem == null
 						)
+						{
 							return;
-						(lvItems.SelectedItems[0].Tag as SWAFItem).Counter = value;
+						} (lvItems.SelectedItems[0].Tag as SWAFItem).Counter = value;
 						lvItems.SelectedItems[0].SubItems[4].Text =
 							"0x"
 							+ Helper.HexString(
@@ -1535,14 +1799,22 @@ namespace SimPe.Wants
 		private void tbSIArg2_TextChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (!sender.Equals(tbSIArg2))
+			{
 				return;
+			}
+
 			if (
 				lvItems.SelectedIndices.Count == 0
 				|| lvItems.SelectedItems[0].Tag as SWAFItem == null
 			)
+			{
 				return;
+			}
 
 			ushort value = 0;
 			try
@@ -1576,17 +1848,25 @@ namespace SimPe.Wants
 		private void gc_GUIDChooserValueChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (
 				sender as SimPe.Plugin.GUIDChooser == null
 				|| lgc.IndexOf(sender as SimPe.Plugin.GUIDChooser) < 0
 			)
+			{
 				return;
+			}
+
 			if (
 				lvItems.SelectedIndices.Count == 0
 				|| lvItems.SelectedItems[0].Tag as SWAFItem == null
 			)
+			{
 				return;
+			}
 
 			SimPe.Plugin.GUIDChooser gc = sender as SimPe.Plugin.GUIDChooser;
 			SWAFItem i = lvItems.SelectedItems[0].Tag as SWAFItem;
@@ -1636,9 +1916,14 @@ namespace SimPe.Wants
 		private void tbInt_TextChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (sender as TextBox == null)
+			{
 				return;
+			}
 
 			TextBox tb = sender as TextBox;
 			int value = 0;
@@ -1655,7 +1940,9 @@ namespace SimPe.Wants
 				lvItems.SelectedIndices.Count == 0
 				|| lvItems.SelectedItems[0].Tag as SWAFItem == null
 			)
+			{
 				return;
+			}
 
 			SWAFItem i = lvItems.SelectedItems[0].Tag as SWAFItem;
 
@@ -1675,7 +1962,9 @@ namespace SimPe.Wants
 					UpdateGroupsColumn(lvItems.SelectedItems[0], 6);
 				}
 				else
+				{
 					return;
+				}
 			}
 			finally
 			{
@@ -1686,18 +1975,28 @@ namespace SimPe.Wants
 		private void ckbFlag_CheckedChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (sender as CheckBox == null || lflags.IndexOf(sender as CheckBox) < 0)
+			{
 				return;
+			}
+
 			if (
 				lvItems.SelectedIndices.Count == 0
 				|| lvItems.SelectedItems[0].Tag as SWAFItem == null
 			)
+			{
 				return;
+			}
 
 			CheckBox ckb = sender as CheckBox;
 			if (ckb.CheckState == CheckState.Indeterminate)
+			{
 				return;
+			}
 
 			SWAFItem i = lvItems.SelectedItems[0].Tag as SWAFItem;
 
@@ -1720,14 +2019,22 @@ namespace SimPe.Wants
 		private void cbSIVersion_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (cbSIVersion.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			if (
 				lvItems.SelectedIndices.Count == 0
 				|| lvItems.SelectedItems[0].Tag as SWAFItem == null
 			)
+			{
 				return;
+			}
 
 			SWAFItem i = lvItems.SelectedItems[0].Tag as SWAFItem;
 
@@ -1787,14 +2094,22 @@ namespace SimPe.Wants
 		private void cbSIArgType_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (cbSIArgType.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			if (
 				lvItems.SelectedIndices.Count == 0
 				|| lvItems.SelectedItems[0].Tag as SWAFItem == null
 			)
+			{
 				return;
+			}
 
 			SWAFItem i = lvItems.SelectedItems[0].Tag as SWAFItem;
 
@@ -1808,7 +2123,10 @@ namespace SimPe.Wants
 						break;
 					case SWAFItem.ArgTypes.Sim:
 						if (i.Version >= 0x08)
+						{
 							i.Sim = 0;
+						}
+
 						break;
 					case SWAFItem.ArgTypes.Guid:
 						i.Guid = 0;

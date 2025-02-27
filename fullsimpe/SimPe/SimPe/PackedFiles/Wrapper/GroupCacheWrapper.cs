@@ -83,7 +83,10 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				string add = ei.Version.ToString();
 				if (add == "0")
+				{
 					add = "";
+				}
+
 				flname = flname.Replace(
 					"%gamedatadir" + add + "%",
 					ei.InstallFolder.Trim().ToLower()
@@ -100,7 +103,10 @@ namespace SimPe.PackedFiles.Wrapper
 		public void Add(GroupCacheItem gci)
 		{
 			if (gci.LocalGroup > maxgroup)
+			{
 				maxgroup = gci.LocalGroup;
+			}
+
 			Items.Add(gci);
 			map[AbsoluteFileName(gci.FileName)] = gci;
 		}
@@ -206,7 +212,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 			writer.Write((uint)Items.Length);
 			for (int i = 0; i < Items.Length; i++)
+			{
 				Items[i].Serialize(writer);
+			}
+
 			writer.Write(over);
 		}
 		#endregion

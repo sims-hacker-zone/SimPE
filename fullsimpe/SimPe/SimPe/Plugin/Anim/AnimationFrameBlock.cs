@@ -55,7 +55,9 @@ namespace SimPe.Plugin.Anim
 			{
 				int ct = 0;
 				foreach (AnimationAxisTransformBlock ab in AxisSet)
+				{
 					ct = Math.Max(ct, ab.Count);
+				}
 
 				return ct;
 			}
@@ -70,19 +72,30 @@ namespace SimPe.Plugin.Anim
 		public void InterpolateMissingBlocks(AnimationFrame[] frames, short maxtime)
 		{
 			if (frames.Length == 0)
+			{
 				return;
+			}
 
 			for (int i = 0; i < frames.Length; i++)
+			{
 				for (int j = 0; j < frames[i].Blocks.Length; j++)
+				{
 					if (frames[i].Blocks[j] == null)
+					{
 						Interpolate(frames, i, j, maxtime);
+					}
+				}
+			}
 		}
 
 		public AnimationFrame[] InterpolateMissingFrames()
 		{
 			AnimationFrame[] frames = this.UnlockedFrames;
 			if (frames.Length != 0)
+			{
 				InterpolateMissingBlocks(frames, frames[frames.Length - 1].TimeCode);
+			}
+
 			return frames;
 		}
 
@@ -94,12 +107,16 @@ namespace SimPe.Plugin.Anim
 
 			//get a List of all TimeCodes
 			for (int i = 0; i < MaxAxisFrameCount; i++)
+			{
 				foreach (AnimationAxisTransformBlock ab in AxisSet)
 				{
 					IntArrayList tcs = ab.GetTimeCodes(true, true);
 
 					if (ab.Locked && exludelocked && ab.Count <= 1)
+					{
 						tcs.Clear();
+					}
+
 					foreach (int rtc in tcs)
 					{
 						short tc = (short)rtc;
@@ -110,13 +127,16 @@ namespace SimPe.Plugin.Anim
 						}
 					}
 				}
+			}
 
 			tclist.Sort();
 			for (int part = 0; part < AxisSet.Length; part++)
 			{
 				AnimationAxisTransformBlock ab = AxisSet[part];
 				if (ab.Locked && exludelocked && ab.Count <= 1)
+				{
 					continue;
+				}
 
 				for (int i = 0; i < ab.Count; i++)
 				{
@@ -127,18 +147,26 @@ namespace SimPe.Plugin.Anim
 					if (af != null)
 					{
 						if (part == 0)
+						{
 							af.XBlock = ab[i];
+						}
 						else if (part == 1)
+						{
 							af.YBlock = ab[i];
+						}
 						else if (part == 2)
+						{
 							af.ZBlock = ab[i];
+						}
 					}
 				}
 			}
 
 			//build ordered List
 			foreach (short tc in tclist)
+			{
 				list.Add(ht[tc]);
+			}
 
 			AnimationFrame[] afs = new AnimationFrame[list.Count];
 			list.CopyTo(afs);
@@ -420,7 +448,9 @@ namespace SimPe.Plugin.Anim
 		public void ChangeTokenType(AnimationTokenType t)
 		{
 			for (int i = 0; i < AxisCount; i++)
+			{
 				AxisSet[i].Type = t;
+			}
 		}
 
 		/// <summary>
@@ -431,14 +461,20 @@ namespace SimPe.Plugin.Anim
 		public void ChangeTokenType(AnimationTokenType current, AnimationTokenType t)
 		{
 			for (int i = 0; i < AxisCount; i++)
+			{
 				if (AxisSet[i].Type == current)
+				{
 					AxisSet[i].Type = t;
+				}
+			}
 		}
 
 		public void SortByTimeCode()
 		{
 			for (int i = 0; i < AxisCount; i++)
+			{
 				AxisSet[i].Sort();
+			}
 		}
 
 		public void ClearFrames()
@@ -449,7 +485,9 @@ namespace SimPe.Plugin.Anim
 		public void ClearFrames(bool clearlinear, bool clearnonlinear)
 		{
 			for (int i = 0; i < AxisCount; i++)
+			{
 				AxisSet[i].Clear(clearlinear, clearnonlinear);
+			}
 		}
 
 		/// <summary>
@@ -463,11 +501,17 @@ namespace SimPe.Plugin.Anim
 		public static short GetAxisValue(int id, short x, short y, short z)
 		{
 			if (id == 0)
+			{
 				return x;
+			}
 			else if (id == 1)
+			{
 				return y;
+			}
 			else if (id == 2)
+			{
 				return z;
+			}
 
 			return 0;
 		}
@@ -478,7 +522,9 @@ namespace SimPe.Plugin.Anim
 			foreach (AnimationFrame f in frames)
 			{
 				if (f.TimeCode == tc)
+				{
 					return f;
+				}
 			}
 
 			return null;
@@ -500,7 +546,9 @@ namespace SimPe.Plugin.Anim
 				);
 
 				if (i < 4)
+				{
 					af.Blocks[i] = aat;
+				}
 			}
 
 			return af;
@@ -566,7 +614,9 @@ namespace SimPe.Plugin.Anim
 		{
 			short tc = 0;
 			foreach (AnimationAxisTransformBlock ab in AxisSet)
+			{
 				tc = Math.Max(tc, ab.LastTimeCode);
+			}
 
 			return tc;
 		}
@@ -608,7 +658,9 @@ namespace SimPe.Plugin.Anim
 		internal void SerializePart3Data(System.IO.BinaryWriter writer)
 		{
 			for (int i = 0; i < AxisSet.Length; i++)
+			{
 				AxisSet[i].SerializeData(writer);
+			}
 		}
 
 		/// <summary>
@@ -618,7 +670,9 @@ namespace SimPe.Plugin.Anim
 		internal void UnserializePart3AddonData(System.IO.BinaryReader reader)
 		{
 			for (int i = 0; i < AxisSet.Length; i++)
+			{
 				AxisSet[i].UnserializeAddonData(reader);
+			}
 		}
 
 		/// <summary>
@@ -628,7 +682,9 @@ namespace SimPe.Plugin.Anim
 		internal void SerializePart3AddonData(System.IO.BinaryWriter writer)
 		{
 			for (int i = 0; i < AxisSet.Length; i++)
+			{
 				AxisSet[i].SerializeAddonData(writer);
+			}
 		}
 
 		/// <summary>
@@ -648,7 +704,10 @@ namespace SimPe.Plugin.Anim
 		void SetPart3Count(int ct)
 		{
 			if (ct > 7)
+			{
 				ct = 7;
+			}
+
 			ct = ct & 0x00000007;
 			ct = ct << 0x1D;
 			datai[4] = datai[4] & 0x1FFFFFFF;
@@ -701,7 +760,9 @@ namespace SimPe.Plugin.Anim
 			}
 
 			if (this.AxisCount > 0)
+			{
 				b.SetParent(this.AxisSet[0]);
+			}
 
 			return b;
 		}
@@ -714,14 +775,20 @@ namespace SimPe.Plugin.Anim
 			while (last >= 0)
 			{
 				if (frames[last].Blocks[blid] != null)
+				{
 					break;
+				}
+
 				last--;
 			}
 
 			while (next < frames.Length)
 			{
 				if (frames[next].Blocks[blid] != null)
+				{
 					break;
+				}
+
 				next++;
 			}
 
@@ -735,8 +802,12 @@ namespace SimPe.Plugin.Anim
 				lb.TimeCode = frames[last].TimeCode;
 				lb.Parameter = frames[last].Blocks[blid].Parameter;
 				if (frames[last].Blocks[blid].Parent != null)
+				{
 					if (lb.TimeCode == 0 && frames[last].Blocks[blid].Parent.Locked)
+					{
 						lb.Parameter = 0;
+					}
+				}
 			}
 
 			AnimationAxisTransform nb = new AnimationAxisTransform(null, -1);
@@ -786,13 +857,17 @@ namespace SimPe.Plugin.Anim
 						Math.Abs(iframe.Parameter - this.AxisSet[blid][nr].Parameter)
 						< DELTA
 					)
+					{
 						remlist.Add(nr);
+					}
 				}
 
 				//sort the List and remove the marked Transformations
 				remlist.Sort();
 				for (int i = remlist.Count - 1; i >= 0; i--)
+				{
 					AxisSet[blid].Remove(AxisSet[blid][remlist[i]]);
+				}
 
 				//two or more remaining Frames, where the last two have the same Parameter ==> delete the last one
 				if (AxisSet[blid].Count >= 2)
@@ -801,14 +876,18 @@ namespace SimPe.Plugin.Anim
 						AxisSet[blid][AxisSet[blid].Count - 2].Parameter
 						== AxisSet[blid][AxisSet[blid].Count - 1].Parameter
 					)
+					{
 						AxisSet[blid].Remove(AxisSet[blid][AxisSet[blid].Count - 1]);
+					}
 				}
 
 				//Now set the suggested Type that should be used
 				if (AxisSet[blid].Count == 1)
 				{
 					if (AxisSet[blid].FirstTimeCode == 0)
+					{
 						AxisSet[blid].Type = AnimationTokenType.TwoByte;
+					}
 				}
 				else if (AxisSet[blid].Count == 0)
 				{
@@ -822,12 +901,19 @@ namespace SimPe.Plugin.Anim
 		{
 			string s = this.Name + " (";
 			if (this.TransformationType == FrameType.Translation)
+			{
 				s += "trn";
+			}
 			else
+			{
 				s += "rot";
+			}
 			//s += ", "+this.FrameCount.ToString();
 			for (int i = 0; i < AxisSet.Length; i++)
+			{
 				s += ", " + AxisSet[i].Count.ToString();
+			}
+
 			s += ")";
 			return s;
 		}

@@ -108,7 +108,10 @@ namespace SimPe.PackedFiles.Wrapper
 		public override bool Equals(object obj)
 		{
 			if (obj == null)
+			{
 				return false;
+			}
+
 			if (obj is ClstItem)
 			{
 				ClstItem ci = (ClstItem)obj;
@@ -138,14 +141,19 @@ namespace SimPe.PackedFiles.Wrapper
 				);
 			}
 			else
+			{
 				return base.Equals(obj);
+			}
 		}
 
 		public override string ToString()
 		{
 			string name = this.TypeName + ": 0x" + Helper.HexString(this.Type);
 			if (format == Data.MetaData.IndexTypes.ptLongFileIndex)
+			{
 				name += " - 0x" + Helper.HexString(this.SubType);
+			}
+
 			name +=
 				" - 0x"
 				+ Helper.HexString(this.Group)
@@ -166,9 +174,14 @@ namespace SimPe.PackedFiles.Wrapper
 			Group = reader.ReadUInt32();
 			Instance = reader.ReadUInt32();
 			if (format == Data.MetaData.IndexTypes.ptLongFileIndex)
+			{
 				SubType = reader.ReadUInt32();
+			}
 			else
+			{
 				SubType = 0;
+			}
+
 			UncompressedSize = reader.ReadUInt32();
 		}
 
@@ -187,7 +200,10 @@ namespace SimPe.PackedFiles.Wrapper
 			writer.Write(Group);
 			writer.Write(Instance);
 			if (format == Data.MetaData.IndexTypes.ptLongFileIndex)
+			{
 				writer.Write(SubType);
+			}
+
 			writer.Write(UncompressedSize);
 		}
 	}

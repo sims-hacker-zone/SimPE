@@ -29,7 +29,10 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 		)
 		{
 			if (pfd.Type != 0x4E524546)
+			{
 				return;
+			}
+
 			SimPe.PackedFiles.Wrapper.Nref nref = new Nref();
 			nref.ProcessData(pfd, pkg);
 

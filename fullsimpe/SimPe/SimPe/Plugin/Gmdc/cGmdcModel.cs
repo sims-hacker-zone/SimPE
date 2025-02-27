@@ -190,7 +190,9 @@ namespace SimPe.Plugin.Gmdc
 			}
 			writer.Write((int)BlendGroupDefinition.Length);
 			for (int i = 0; i < BlendGroupDefinition.Length; i++)
+			{
 				BlendGroupDefinition[i].Serialize(writer);
+			}
 
 			BoundingMesh.Serialize(writer);
 		}
@@ -211,9 +213,15 @@ namespace SimPe.Plugin.Gmdc
 		public void AddGroupToBoundingMesh(GmdcGroup g)
 		{
 			if (g == null)
+			{
 				return;
+			}
+
 			if (g.Link == null)
+			{
 				return;
+			}
+
 			int nr = g.Link.GetElementNr(
 				g.Link.FindElementType(ElementIdentity.Vertex)
 			);
@@ -230,7 +238,9 @@ namespace SimPe.Plugin.Gmdc
 			}
 
 			for (int i = 0; i < g.Faces.Count; i++)
+			{
 				this.BoundingMesh.Items.Add(g.Faces[i] + offset);
+			}
 		}
 	}
 
@@ -323,7 +333,9 @@ namespace SimPe.Plugin.Gmdc
 		{
 			GmdcModels list = new GmdcModels();
 			foreach (GmdcModel item in this)
+			{
 				list.Add(item);
+			}
 
 			return list;
 		}
@@ -416,7 +428,9 @@ namespace SimPe.Plugin.Gmdc
 		{
 			GmdcNamePairs list = new GmdcNamePairs();
 			foreach (GmdcNamePair item in this)
+			{
 				list.Add(item);
+			}
 
 			return list;
 		}

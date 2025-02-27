@@ -87,11 +87,20 @@ namespace SimPe.Cache
 			get
 			{
 				if (Version == (byte)ObjectCacheItemVersions.ClassicOW)
+				{
 					return ObjectCacheItemVersions.ClassicOW;
+				}
+
 				if (Version == (byte)ObjectCacheItemVersions.DockableOW)
+				{
 					return ObjectCacheItemVersions.DockableOW;
+				}
+
 				if (Version > VERSION)
+				{
 					return ObjectCacheItemVersions.Unsupported;
+				}
+
 				return ObjectCacheItemVersions.Outdated;
 			}
 			/*set {
@@ -174,12 +183,18 @@ namespace SimPe.Cache
 				Data.ObjFunctionSortBits[] ss = (Data.ObjFunctionSortBits[])
 					System.Enum.GetValues(typeof(Data.ObjFunctionSortBits));
 				foreach (Data.ObjFunctionSortBits s in ss)
+				{
 					if ((ofss & (uint)Math.Pow(2, (byte)s)) != 0)
+					{
 						list.Add(s.ToString());
+					}
+				}
 
 				ret = new string[list.Count][];
 				for (int i = 0; i < list.Count; i++)
+				{
 					ret[i] = new string[] { list[i].ToString() };
+				}
 			}
 			else // if (version == ObjectCacheItemVersions.DockableOW)
 			{
@@ -295,7 +310,9 @@ namespace SimPe.Cache
 				if (ret != null)
 				{
 					foreach (string[] s in ret)
+					{
 						list.Add(s);
+					}
 				}
 				list.Add(
 					new string[]
@@ -316,16 +333,20 @@ namespace SimPe.Cache
 			}
 
 			if (ret == null)
+			{
 				ret = new string[][]
 				{
 					new string[] { SimPe.Localization.GetString("Unknown") },
 				};
+			}
 
 			if (ret.Length == 0)
+			{
 				ret = new string[][]
 				{
 					new string[] { SimPe.Localization.GetString("Unknown") },
 				};
+			}
 
 			return ret;
 		}
@@ -399,7 +420,9 @@ namespace SimPe.Cache
 		{
 			Version = reader.ReadByte();
 			if (Version > VERSION)
+			{
 				throw new CacheException("Unknown CacheItem Version.", null, Version);
+			}
 
 			Name = reader.ReadString();
 			ModelName = reader.ReadString();
@@ -424,13 +447,22 @@ namespace SimPe.Cache
 
 			ObjectType = (Data.ObjectTypes)reader.ReadUInt16();
 			if (Version >= 4)
+			{
 				ObjectFunctionSort = reader.ReadUInt32();
+			}
 			else
+			{
 				ObjectFunctionSort = (uint)reader.ReadInt16();
+			}
+
 			if (Version >= 5)
+			{
 				ObjBuildType = reader.ReadUInt32();
+			}
 			else
+			{
 				ObjBuildType = 0;
+			}
 
 			if (Version >= 2)
 			{
@@ -444,9 +476,13 @@ namespace SimPe.Cache
 			}
 
 			if (Version >= 3)
+			{
 				Class = (ObjectClass)reader.ReadByte();
+			}
 			else
+			{
 				Class = ObjectClass.Object;
+			}
 		}
 
 		public void Save(System.IO.BinaryWriter writer)

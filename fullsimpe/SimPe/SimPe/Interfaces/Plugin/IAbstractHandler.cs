@@ -110,12 +110,19 @@ namespace SimPe.Interfaces.Plugin
 		private string ExceptionMessage(string msg)
 		{
 			if (msg == null)
+			{
 				msg = "";
+			}
+
 			msg += "\n\nPackage: ";
 			if (this.Package != null)
+			{
 				msg += this.Package.FileName;
+			}
 			else
+			{
 				msg += "null";
+			}
 
 			msg += "\nFile: ";
 			if (this.FileDescriptor != null)
@@ -123,7 +130,9 @@ namespace SimPe.Interfaces.Plugin
 				msg += this.FileDescriptor.ExceptionString;
 			}
 			else
+			{
 				msg += "null";
+			}
 
 			return msg;
 		}
@@ -151,7 +160,10 @@ namespace SimPe.Interfaces.Plugin
 			get
 			{
 				if (wrapperinfo == null)
+				{
 					wrapperinfo = this.CreateWrapperInfo();
+				}
+
 				return wrapperinfo;
 			}
 		}
@@ -180,9 +192,13 @@ namespace SimPe.Interfaces.Plugin
 				string[] p = i.Split(",".ToCharArray(), 2);
 
 				if (p.Length > 0)
+				{
 					return p[0].Trim();
+				}
 				else
+				{
 					return SimPe.Localization.GetString("unknown");
+				}
 			}
 		}
 
@@ -311,7 +327,10 @@ namespace SimPe.Interfaces.Plugin
 			get
 			{
 				if (ui == null)
+				{
 					ui = CreateDefaultUIHandler();
+				}
+
 				return ui;
 			}
 			set
@@ -361,9 +380,15 @@ namespace SimPe.Interfaces.Plugin
 		{
 			changed = false;
 			if (pfd == null)
+			{
 				return;
+			}
+
 			if (package == null)
+			{
 				return;
+			}
+
 			if (catchex)
 			{
 				try
@@ -430,9 +455,15 @@ namespace SimPe.Interfaces.Plugin
 		)
 		{
 			if (pfd == null)
+			{
 				return;
+			}
+
 			if (package == null)
+			{
 				return;
+			}
+
 			if (catchex)
 			{
 				try
@@ -544,9 +575,14 @@ namespace SimPe.Interfaces.Plugin
 		string GetEmbeddedFileName(Data.TypeAlias ta)
 		{
 			if (Package == null)
+			{
 				return null;
+			}
+
 			if (FileDescriptor == null)
+			{
 				return null;
+			}
 
 			if (ta.containsfilename)
 			{
@@ -554,7 +590,9 @@ namespace SimPe.Interfaces.Plugin
 				return Helper.ToString(pf.GetUncompressedData(0x40));
 			}
 			else
+			{
 				return null;
+			}
 		}
 
 		/// <summary>
@@ -587,37 +625,57 @@ namespace SimPe.Interfaces.Plugin
 						{
 							res = ta.Name;
 							if (res == "")
+							{
 								res = null;
+							}
 						}
 						else
+						{
 							res = GetResourceName(ta);
+						}
+
 						if (res == null)
+						{
 							res = GetEmbeddedFileName(ta);
+						}
+
 						if (res == null)
+						{
 							res = FileDescriptor.ToResListString();
+						}
 						else if (ta.Name == null)
+						{
 							res = SimPe.Localization.GetString("Unknown") + ": " + res;
+						}
 						else
 						{
 							if (
 								Helper.WindowsRegistry.ResourceListFormat
 								== Registry.ResourceListFormats.LongTypeNames
 							)
+							{
 								res = ta.Name + ": " + res;
+							}
 							else if (
 								Helper.WindowsRegistry.ResourceListFormat
 								== Registry.ResourceListFormats.ShortTypeNames
 							)
+							{
 								res = ta.shortname + ": " + res;
+							}
 							else if (res.Trim() == "")
+							{
 								res = "[" + ta.Name + "]";
+							}
 						}
 					}
 					else
+					{
 						res =
 							SimPe.Localization.GetString("Unknown")
 							+ ": "
 							+ FileDescriptor.ToResListString();
+					}
 				}
 				else
 				{
@@ -665,7 +723,10 @@ namespace SimPe.Interfaces.Plugin
 			if (!this.AllowMultipleInstances)
 			{
 				if (guiwrapper == null)
+				{
 					guiwrapper = (IFileWrapper)Activator.CreateInstance(this.GetType());
+				}
+
 				return guiwrapper;
 			}
 			else
@@ -694,9 +755,15 @@ namespace SimPe.Interfaces.Plugin
 		public virtual void Dispose()
 		{
 			if (wrapperinfo != null)
+			{
 				wrapperinfo.Dispose();
+			}
+
 			if (ui != null)
+			{
 				ui.Dispose();
+			}
+
 			ui = null;
 			package = null;
 			pfd = null;

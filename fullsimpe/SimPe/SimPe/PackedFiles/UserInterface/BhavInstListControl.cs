@@ -72,12 +72,17 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			wrapper = null;
 			if (flowitems != null)
+			{
 				for (int i = 0; i < flowitems.Length; i++)
+				{
 					if (flowitems[i] != null)
 					{
 						flowitems[i].Dispose();
 						flowitems[i] = null;
 					}
+				}
+			}
+
 			flowitems = null;
 			pnflow = null;
 		}
@@ -117,16 +122,23 @@ namespace SimPe.PackedFiles.UserInterface
 		private void WrapperChanged(object sender, System.EventArgs e)
 		{
 			if (wrapper == null)
+			{
 				return;
+			}
 
 			if (internalchg)
+			{
 				return;
+			}
 
 			// Handler for instructions list
 			if (sender is List<Instruction>)
 			{
 				if (csel >= wrapper.Count)
+				{
 					csel = wrapper.Count - 1;
+				}
+
 				myrepaint();
 				OnSelectedInstChanged(new EventArgs());
 			}
@@ -153,15 +165,20 @@ namespace SimPe.PackedFiles.UserInterface
 					value != -1
 					&& (flowitems == null || value < -1 || value >= flowitems.Length)
 				)
+				{
 					throw new Exception(
 						"Internal failure: SelectedIndex out of range: "
 							+ value.ToString()
 					);
+				}
 
 				if (csel != value)
 				{
 					if (csel >= 0)
+					{
 						flowitems[csel].MakeUnselected();
+					}
+
 					csel = value;
 					pnflow.Image = DrawConnectors();
 					OnSelectedInstChanged(new EventArgs());
@@ -180,7 +197,10 @@ namespace SimPe.PackedFiles.UserInterface
 		public void Add(BhavUIAddType type)
 		{
 			if (csel >= wrapper.Count)
+			{
 				throw new Exception("Internal failure: csel out of range");
+			}
+
 			bool savedstate = internalchg;
 			internalchg = true;
 
@@ -194,8 +214,12 @@ namespace SimPe.PackedFiles.UserInterface
 
 				int index = wrapper.Count - 1;
 				if (index != newLine)
+				{
 					wrapper.Move(index, newLine);
+				}
+
 				if (csel >= 0)
+				{
 					switch (type)
 					{
 						case BhavUIAddType.Default:
@@ -209,6 +233,7 @@ namespace SimPe.PackedFiles.UserInterface
 							((Instruction)wrapper[csel]).Target2 = (ushort)newLine;
 							break;
 					}
+				}
 			}
 			catch
 			{
@@ -230,9 +255,14 @@ namespace SimPe.PackedFiles.UserInterface
 		public void Delete(BhavUIDeleteType type)
 		{
 			if (csel < 0)
+			{
 				throw new Exception("No current instruction");
+			}
+
 			if (csel >= wrapper.Count)
+			{
 				throw new Exception("Internal failure: csel out of range");
+			}
 
 			bool savedstate = internalchg;
 			internalchg = true;
@@ -242,9 +272,14 @@ namespace SimPe.PackedFiles.UserInterface
 				{
 					ushort t = (ushort)(csel + 1);
 					if (i.Target1 == csel)
+					{
 						i.Target1 = t;
+					}
+
 					if (i.Target2 == csel)
+					{
 						i.Target2 = t;
+					}
 				}
 			}
 			wrapper.RemoveAt(csel);
@@ -254,25 +289,42 @@ namespace SimPe.PackedFiles.UserInterface
 			csel = -1;
 			myrepaint();
 			if (oldCsel >= wrapper.Count)
+			{
 				flowitems[wrapper.Count - 1].Focus();
+			}
 			else if (oldCsel >= 0)
+			{
 				flowitems[oldCsel].Focus();
+			}
 		}
 
 		public void MoveInst(int delta)
 		{
 			if (csel < 0)
+			{
 				throw new Exception("No current instruction");
+			}
+
 			if (csel >= wrapper.Count)
+			{
 				throw new Exception("Internal failure: csel out of range");
+			}
 
 			int to = csel + delta;
 			if (to < 0)
+			{
 				to = 0;
+			}
+
 			if (to >= wrapper.Count)
+			{
 				to = wrapper.Count - 1;
+			}
+
 			if (csel == to)
+			{
 				return;
+			}
 
 			bool savedstate = internalchg;
 			internalchg = true;
@@ -288,7 +340,9 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			Instruction inst = null;
 			if (csel > -1)
+			{
 				inst = wrapper[csel];
+			}
 
 			bool savedstate = internalchg;
 			internalchg = true;
@@ -301,15 +355,22 @@ namespace SimPe.PackedFiles.UserInterface
 			myrepaint();
 			int index = -1;
 			if (inst != null)
+			{
 				index = wrapper.IndexOf(inst);
+			}
+
 			if (index >= 0)
+			{
 				flowitems[index].Focus();
+			}
 		}
 
 		public void Relink()
 		{
 			if (wrapper.Count == 0)
+			{
 				return;
+			}
 
 			bool savedstate = internalchg;
 			internalchg = true;
@@ -325,17 +386,23 @@ namespace SimPe.PackedFiles.UserInterface
 			internalchg = savedstate;
 			myrepaint();
 			if (csel >= 0)
+			{
 				flowitems[csel].Focus();
+			}
 		}
 
 		public void Append(pjse.FileTable.Entry item)
 		{
 			if (item == null || !(item.Wrapper is Bhav))
+			{
 				return;
+			}
 
 			Bhav b = (Bhav)item.Wrapper;
 			if (b == null)
+			{
 				return;
+			}
 
 			bool savedstate = internalchg;
 			internalchg = true;
@@ -351,9 +418,14 @@ namespace SimPe.PackedFiles.UserInterface
 						wrapper.Add(bi);
 						int i = wrapper.Count - 1;
 						if (wrapper[i].Target1 < 0xFFFC)
+						{
 							wrapper[i].Target1 += offset;
+						}
+
 						if (wrapper[i].Target2 < 0xFFFC)
+						{
 							wrapper[i].Target2 += offset;
+						}
 					}
 					catch
 					{
@@ -369,20 +441,26 @@ namespace SimPe.PackedFiles.UserInterface
 			internalchg = savedstate;
 			myrepaint();
 			if (csel >= 0)
+			{
 				flowitems[csel].Focus();
+			}
 		}
 
 		public void DeleteUnlinked()
 		{
 			if (csel < 0)
+			{
 				return;
+			}
 
 			bool savedstate = internalchg;
 			internalchg = true;
 			this.Parent.Cursor = Cursors.WaitCursor;
 
 			while (csel < wrapper.Count && wrapper.Count > 1)
+			{
 				wrapper.RemoveAt(wrapper.Count - 1);
+			}
 
 			this.Parent.Cursor = Cursors.Default;
 			internalchg = savedstate;
@@ -391,7 +469,9 @@ namespace SimPe.PackedFiles.UserInterface
 			myrepaint();
 			int index = wrapper.Count - 1;
 			if (index >= 0)
+			{
 				flowitems[index].Focus();
+			}
 		}
 
 		private void myrepaint()
@@ -407,12 +487,17 @@ namespace SimPe.PackedFiles.UserInterface
 
 				this.Controls.Clear();
 				if (flowitems != null)
+				{
 					for (int i = 0; i < flowitems.Length; i++)
+					{
 						if (flowitems[i] != null)
 						{
 							flowitems[i].Dispose();
 							flowitems[i] = null;
 						}
+					}
+				}
+
 				flowitems = new BhavInstListItemUI[wrapper.Count];
 
 				for (int i = 0; i < wrapper.Count; i++)
@@ -422,7 +507,9 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 
 				if (csel >= 0)
+				{
 					flowitems[csel].MakeSelected();
+				}
 
 				pnflow.Image = DrawConnectors();
 				this.Controls.Add(pnflow);
@@ -442,6 +529,7 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			bool isTarget = false;
 			for (int j = 0; j < wrapper.Count && !isTarget; j++)
+			{
 				if (
 					ct == 0
 					|| (
@@ -449,7 +537,10 @@ namespace SimPe.PackedFiles.UserInterface
 						&& ((wrapper[j].Target1 == ct) || (wrapper[j].Target2 == ct))
 					)
 				)
+				{
 					isTarget = true;
+				}
+			}
 
 			BhavInstListItemUI i = new BhavInstListItemUI();
 
@@ -482,9 +573,14 @@ namespace SimPe.PackedFiles.UserInterface
 		private Bitmap DrawConnectors()
 		{
 			if (flowitems == null || flowitems.Length == 0)
+			{
 				return null;
+			}
+
 			if (this.ClientRectangle.Width < pnflow.Width)
+			{
 				return null;
+			}
 
 			Bitmap img = new Bitmap(
 				pnflow.Width,
@@ -513,25 +609,47 @@ namespace SimPe.PackedFiles.UserInterface
 			foreach (Connector c in Connector.Connectors(wrapper))
 			{
 				if (c == null)
+				{
 					continue;
+				}
 				//if (c.start == c.stop) continue; // skip go to self
 				if (c.start >= flowitems.Length)
+				{
 					continue;
+				}
 
 				if (c.truerule)
+				{
 					pen = tpen;
+				}
 				else
+				{
 					pen = fpen;
+				}
+
 				if (c.stop == csel)
+				{
 					if (c.truerule)
+					{
 						pen = tpeni;
+					}
 					else
+					{
 						pen = fpeni;
+					}
+				}
+
 				if (c.start == csel)
+				{
 					if (c.truerule)
+					{
 						pen = tpeno;
+					}
 					else
+					{
 						pen = fpeno;
+					}
+				}
 
 				int yPosStart =
 					(BhavInstListItemUI.rowHeight + 4) * c.start
@@ -603,7 +721,9 @@ namespace SimPe.PackedFiles.UserInterface
 			for (int ct = 1; ct < flowitems.Length; ct++)
 			{
 				if (isTarget(ct))
+				{
 					continue;
+				}
 
 				int xPosLeft = 0;
 				int xPosRight = pnflow.Width - 1;
@@ -623,8 +743,13 @@ namespace SimPe.PackedFiles.UserInterface
 		private bool isTarget(int ct)
 		{
 			for (int i = 0; i < wrapper.Count; i++)
+			{
 				if (wrapper[i].Target1 == ct || wrapper[i].Target2 == ct)
+				{
 					return true;
+				}
+			}
+
 			return false;
 		}
 
@@ -741,7 +866,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void bhavInst_Selected(object sender, System.EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			SelectedIndex = (new ArrayList(flowitems)).IndexOf(sender);
 		}
 
@@ -759,7 +887,9 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			int index = (UInt16)e.Link.LinkData;
 			if (index >= 0)
+			{
 				flowitems[index].Focus();
+			}
 		}
 
 		private void bhavInst_KeyDown(
@@ -771,15 +901,24 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				case System.Windows.Forms.Keys.Up:
 					if (csel > 0)
+					{
 						flowitems[csel - 1].Focus();
+					}
+
 					break;
 				case System.Windows.Forms.Keys.Down:
 					if (csel < flowitems.Length - 1)
+					{
 						flowitems[csel + 1].Focus();
+					}
+
 					break;
 				case System.Windows.Forms.Keys.Delete:
 					if (csel > -1 && flowitems.Length > 1)
+					{
 						Delete(BhavUIDeleteType.Default);
+					}
+
 					break;
 				case System.Windows.Forms.Keys.Home:
 					flowitems[0].Focus();
@@ -832,7 +971,9 @@ namespace SimPe.PackedFiles.UserInterface
 		public static Connector[] Connectors(Bhav bhav)
 		{
 			if (bhav == null || bhav == null)
+			{
 				return new Connector[0];
+			}
 
 			Connector[] cs = new Connector[bhav.Count * 2];
 			for (int i = 0; i < bhav.Count; i++)
@@ -878,21 +1019,30 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				c1.lane = -1;
 				if (c1.stop * 2 > connectors.Length)
+				{
 					continue; // off end, doesn't use a lane
-							  //if (c1.stop == c1.start + 1) continue; // next line, doesn't use a lane
-							  //if (c1.stop == c1.start) continue; // same line, doesn't use a lane
+				}
+				//if (c1.stop == c1.start + 1) continue; // next line, doesn't use a lane
+				//if (c1.stop == c1.start) continue; // same line, doesn't use a lane
 
 				ArrayList used = new ArrayList();
 				foreach (Connector c2 in connectors)
 				{
 					if (c2.lane == -1)
+					{
 						continue; // it's not using a lane
+					}
 
 					if (c2.Top > c1.Bottom)
+					{
 						continue; // c1 completely before c2 - skip
+					}
+
 					if (c2.Bottom < c1.Top)
+					{
 						continue; // c1 completely after c2 - skip
-								  //if (c2.truerule == c1.truerule && c2.stop == c1.stop) continue; // same target - skip
+					}
+					//if (c2.truerule == c1.truerule && c2.stop == c1.stop) continue; // same target - skip
 
 					// At this point c2 could be using a lane c1 wants to use
 					used.Add((Int16)c2.lane);
@@ -900,8 +1050,12 @@ namespace SimPe.PackedFiles.UserInterface
 				used.Sort();
 				c1.lane = 0;
 				foreach (Int16 i in used)
+				{
 					if (c1.lane == i)
+					{
 						c1.lane++;
+					}
+				}
 			}
 		}
 		#endregion
@@ -911,7 +1065,9 @@ namespace SimPe.PackedFiles.UserInterface
 		public int CompareTo(object obj)
 		{
 			if (obj.GetType() != typeof(Connector))
+			{
 				return this.GetHashCode().CompareTo(base.GetHashCode());
+			}
 
 			Connector c = (Connector)obj;
 			int i = c.Bottom - c.Top;

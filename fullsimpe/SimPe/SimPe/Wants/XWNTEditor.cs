@@ -131,12 +131,21 @@ namespace SimPe.Wants
 		{
 			string s = "";
 			if (wrapper["folder"] != null)
+			{
 				s += (s.Length > 0 ? " " : "") + wrapper["folder"].Value;
+			}
+
 			if (wrapper["nodeText"] != null)
+			{
 				s += (s.Length > 0 ? " / " : "") + wrapper["nodeText"].Value;
+			}
+
 			if (wrapper["objectType"] != null)
+			{
 				s +=
 					(s.Length > 0 ? " " : "") + "(" + wrapper["objectType"].Value + ")";
+			}
+
 			lbWant.Text = s;
 		}
 		#endregion
@@ -175,17 +184,25 @@ namespace SimPe.Wants
 
 			lvWants.Items.Clear();
 			foreach (XWNTItem xi in wrapper)
+			{
 				if (!xi.Key.StartsWith("<"))
+				{
 					lvWants.Items.Add(
 						new ListViewItem(new string[] { xi.Key, xi.Stype, xi.Value })
 					);
+				}
+			}
 
 			internalchg = false;
 
 			if (lvWants.Items.Count > 0)
+			{
 				lvWants.Items[0].Selected = true;
+			}
 			else
+			{
 				lvWants_SelectedIndexChanged(null, null);
+			}
 
 			if (!setHandler)
 			{
@@ -199,7 +216,10 @@ namespace SimPe.Wants
 			this.btnCommit.Enabled = wrapper.Changed;
 
 			if (internalchg)
+			{
 				return;
+			}
+
 			internalchg = true;
 			try
 			{
@@ -213,7 +233,9 @@ namespace SimPe.Wants
 					);
 					XWNTItem xi = (XWNTItem)sender;
 					if (keys.Contains(xi.Key))
+					{
 						setLbWant();
+					}
 				}
 			}
 			finally
@@ -237,7 +259,10 @@ namespace SimPe.Wants
 		private void lvWants_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			internalchg = true;
 			try
 			{
@@ -271,9 +296,14 @@ namespace SimPe.Wants
 		private void cbProperty_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (cbProperty.SelectedIndex == -1)
+			{
 				return;
+			}
 
 			XWNTItem xi = wrapper[lvWants.SelectedItems[0].Text];
 			string key = XWNTItem.ValidKeys[cbProperty.SelectedIndex];
@@ -349,9 +379,14 @@ namespace SimPe.Wants
 		private void cbValue_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (cbValue.SelectedIndex == -1)
+			{
 				return;
+			}
 
 			lvWants.SelectedItems[0].SubItems[2].Text = wrapper[
 				lvWants.SelectedItems[0].Text
@@ -368,7 +403,10 @@ namespace SimPe.Wants
 		private void tbValue_TextChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			internalchg = true;
 			XWNTItem xi = wrapper[lvWants.SelectedItems[0].Text];
 			try
@@ -401,9 +439,13 @@ namespace SimPe.Wants
 									: 10
 							);
 							if (XWNTItem.IsUint32Long(xi.Key))
+							{
 								xi.Value = "0x" + u.ToString("x").PadLeft(8, '0');
+							}
 							else
+							{
 								xi.Value = u.ToString();
+							}
 						}
 						catch
 						{
@@ -427,7 +469,10 @@ namespace SimPe.Wants
 		{
 			int i = wrapper.Count;
 			if (internalchg)
+			{
 				return;
+			}
+
 			internalchg = true;
 			try
 			{
@@ -454,7 +499,10 @@ namespace SimPe.Wants
 		{
 			int i = lvWants.SelectedIndices[0];
 			if (internalchg)
+			{
 				return;
+			}
+
 			internalchg = true;
 			try
 			{
@@ -467,7 +515,10 @@ namespace SimPe.Wants
 			}
 			i--;
 			if (i < 0 && wrapper.Count > 0)
+			{
 				i = 0;
+			}
+
 			lvWants.Items[i].Selected = true;
 		}
 	}

@@ -19,7 +19,10 @@ namespace SimPe.Plugin
 		public string SuburbName(uint id)
 		{
 			if (SuburbNameFromID.ContainsKey(id))
+			{
 				return SuburbNameFromID[id];
+			}
+
 			return "not found";
 		}
 
@@ -30,9 +33,15 @@ namespace SimPe.Plugin
 		{
 			string val = Convert.ToString(ob);
 			if (SuburbNameFromID.ContainsValue(val))
+			{
 				foreach (KeyValuePair<uint, string> kvp in SuburbNameFromID)
+				{
 					if (kvp.Value == val)
+					{
 						return kvp.Key;
+					}
+				}
+			}
 
 			return 0;
 		}
@@ -40,14 +49,23 @@ namespace SimPe.Plugin
 		public void InitializeSuburbNameFromID(string filename)
 		{
 			if (fnme == filename)
+			{
 				return;
+			}
+
 			fnme = filename;
 			SuburbNameFromID.Clear();
 			SuburbNameFromID.Add(0, "-none-");
 			if (!File.Exists(filename))
+			{
 				return;
+			}
+
 			if (!Helper.IsNeighborhoodFile(filename))
+			{
 				return;
+			}
+
 			string subh;
 			string[] overs = Directory.GetFiles(
 				Path.GetDirectoryName(filename),
@@ -81,10 +99,14 @@ namespace SimPe.Plugin
 									Helper.WindowsRegistry.LanguageCode
 								);
 							if (items.Length > 0)
+							{
 								subh = items[0].Title;
+							}
 						}
 						if (!SuburbNameFromID.ContainsKey(uid))
+						{
 							SuburbNameFromID.Add(uid, subh);
+						}
 					}
 				}
 			}
@@ -96,7 +118,10 @@ namespace SimPe.Plugin
 		public string SimmyName(uint id)
 		{
 			if (SimNamesNids.ContainsKey(id))
+			{
 				return SimNamesNids[id];
+			}
+
 			return "not found";
 		}
 
@@ -107,9 +132,16 @@ namespace SimPe.Plugin
 		{
 			string val = Convert.ToString(ob);
 			if (SimNamesNids.ContainsValue(val))
+			{
 				foreach (KeyValuePair<uint, string> kvp in SimNamesNids)
+				{
 					if (kvp.Value == val)
+					{
 						return kvp.Key;
+					}
+				}
+			}
+
 			return 0;
 		}
 
@@ -132,10 +164,12 @@ namespace SimPe.Plugin
 						&& simdesc.Nightlife.IsHuman
 						&& !simdesc.CharacterDescription.GhostFlag.IsGhost
 					)
+					{
 						SimNamesNids.Add(
 							simdesc.Instance,
 							simdesc.SimName + " " + simdesc.SimFamilyName
 						);
+					}
 				}
 			}
 			catch { }
@@ -144,16 +178,25 @@ namespace SimPe.Plugin
 		public static bool GuidExists(uint gooee)
 		{
 			if (!pjse.GUIDIndex.TheGUIDIndex.IsLoaded)
+			{
 				pjse.GUIDIndex.TheGUIDIndex.Load();
+			}
+
 			return pjse.GUIDIndex.TheGUIDIndex.ContainsKey(gooee);
 		}
 
 		public static bool GuidAdd(uint gooee, uint group, ushort type, string name)
 		{
 			if (!pjse.GUIDIndex.TheGUIDIndex.IsLoaded)
+			{
 				pjse.GUIDIndex.TheGUIDIndex.Load();
+			}
+
 			if (pjse.GUIDIndex.TheGUIDIndex.ContainsKey(gooee))
+			{
 				return false;
+			}
+
 			try
 			{
 				pjse.GUIDIndex.TheGUIDIndex.Add(gooee, group, type, name);
@@ -168,10 +211,16 @@ namespace SimPe.Plugin
 		public static string getgooee(uint gooee)
 		{
 			if (!pjse.GUIDIndex.TheGUIDIndex.IsLoaded)
+			{
 				pjse.GUIDIndex.TheGUIDIndex.Load();
+			}
+
 			string ret = pjse.GUIDIndex.TheGUIDIndex[gooee];
 			if (ret == null)
+			{
 				ret = "";
+			}
+
 			return ret;
 		}
 	}

@@ -77,7 +77,9 @@ namespace SimPe.Cache
 		{
 			Version = reader.ReadByte();
 			if (Version > VERSION)
+			{
 				throw new CacheException("Unknown CacheItem Version.", null, Version);
+			}
 
 			Name = reader.ReadString();
 			pfd = new Packages.PackedFileDescriptor();

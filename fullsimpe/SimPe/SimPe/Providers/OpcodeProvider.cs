@@ -128,14 +128,20 @@ namespace SimPe.Providers
 					{
 						ct++;
 						if (ct % 137 == 1)
+						{
 							WaitingScreen.UpdateMessage(ct.ToString() + max);
+						}
+
 						pfd = item.FileDescriptor;
 
 						string name = "";
 						objd.ProcessData(item);
 
 						if (memories.Contains(objd.Guid))
+						{
 							continue;
+						}
+
 						try
 						{
 							Interfaces.Scenegraph.IScenegraphFileIndexItem[] sitems =
@@ -153,21 +159,27 @@ namespace SimPe.Providers
 										Helper.WindowsRegistry.LanguageCode
 									);
 								if (strs.Length > 0)
+								{
 									name = strs[0].Title;
+								}
 
 								//not found?
 								if (name == "")
 								{
 									strs = str.LanguageItems(1);
 									if (strs.Length > 0)
+									{
 										name = strs[0].Title;
+									}
 								}
 							}
 						}
 						catch (Exception) { }
 						//still no name?
 						if (name == "")
+						{
 							name = objd.FileName;
+						}
 
 #if DEBUG
 						IAlias a = new Alias(objd.Guid, name, "{1}: {name} (0x{id})");
@@ -199,13 +211,17 @@ namespace SimPe.Providers
 						}
 						a.Tag = o;
 						if (!memories.Contains(objd.Guid))
+						{
 							memories.Add(objd.Guid, a);
+						}
 					} //foreach item
 				}
 				finally
 				{
 					if (!wasrunning)
+					{
 						WaitingScreen.Stop();
+					}
 				}
 			} // if items>0
 			  //System.Threading.Thread.CurrentThread.Priority = System.Threading.ThreadPriority.Normal;
@@ -221,7 +237,9 @@ namespace SimPe.Providers
 		{
 			list = new ArrayList();
 			if (BasePackage == null)
+			{
 				return;
+			}
 
 			IPackedFileDescriptor pfd = BasePackage.FindFile(
 				Data.MetaData.STRING_FILE,
@@ -288,7 +306,9 @@ namespace SimPe.Providers
 		{
 			names = new ArrayList();
 			if (BasePackage == null)
+			{
 				return;
+			}
 
 			//IPackedFileDescriptor pfd = BasePackage.FindFile(Data.MetaData.STRING_FILE, 0x00000000, 0x7FE59FD0, 0x0000008B);
 			FileTable.FileIndex.Load();
@@ -350,13 +370,18 @@ namespace SimPe.Providers
 		public string FindName(ushort opcode)
 		{
 			if (opcode >= 0x2000)
+			{
 				return "Unknown Semi Global";
+			}
+
 			LoadPackage();
 
 			if (opcode >= 0x0100)
 			{
 				if (BasePackage == null)
+				{
 					return "Unknown Global";
+				}
 				//IPackedFileDescriptor pfd = BasePackage.FindFile(Data.MetaData.BHAV_FILE, 0x0, 0x7FD46CD0, opcode);
 				FileTable.FileIndex.Load();
 				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
@@ -376,9 +401,13 @@ namespace SimPe.Providers
 						byte[] data = new byte[0];
 						IPackedFile pf = item.Package.Read(item.FileDescriptor);
 						if (pf.IsCompressed)
+						{
 							data = pf.Decompress(0x40);
+						}
 						else
+						{
 							data = pf.Data;
+						}
 
 						return Helper.ToString(data);
 					}
@@ -388,16 +417,24 @@ namespace SimPe.Providers
 			}
 
 			if (names == null)
+			{
 				LoadOpcodes();
+			}
 
 			object o = null;
 			if (opcode < names.Count)
+			{
 				o = names[opcode];
+			}
 
 			if (o != null)
+			{
 				return (string)o;
+			}
 			else
+			{
 				return Localization.Manager.GetString("unknown");
+			}
 		}
 
 		/// <summary>
@@ -407,13 +444,19 @@ namespace SimPe.Providers
 		{
 			LoadPackage();
 			if (BasePackage == null)
+			{
 				return new ArrayList();
+			}
 
 			LoadObjdDescription(type);
 			if (objddesc != null)
+			{
 				return objddesc;
+			}
 			else
+			{
 				return new ArrayList();
+			}
 		}
 
 		/// <summary>
@@ -428,15 +471,21 @@ namespace SimPe.Providers
 
 
 			if (memories == null)
+			{
 				LoadMemories();
+			}
 
 			object o = null;
 			o = memories[guid];
 
 			if (o != null)
+			{
 				return (IAlias)o;
+			}
 			else
+			{
 				return new Alias(guid, Localization.Manager.GetString("unknown"));
+			}
 		}
 
 		/// <summary>
@@ -448,7 +497,10 @@ namespace SimPe.Providers
 			{
 				//LoadPackage();
 				if (memories == null)
+				{
 					LoadMemories();
+				}
+
 				return memories;
 			}
 		}
@@ -462,7 +514,10 @@ namespace SimPe.Providers
 			{
 				LoadPackage();
 				if (motives == null)
+				{
 					this.LoadMotives();
+				}
+
 				return motives;
 			}
 		}
@@ -476,7 +531,10 @@ namespace SimPe.Providers
 			{
 				LoadPackage();
 				if (names == null)
+				{
 					this.LoadOpcodes();
+				}
+
 				return names;
 			}
 		}
@@ -490,7 +548,10 @@ namespace SimPe.Providers
 			{
 				LoadPackage();
 				if (objf == null)
+				{
 					LoadObjf();
+				}
+
 				return objf;
 			}
 		}
@@ -504,19 +565,29 @@ namespace SimPe.Providers
 		{
 			LoadPackage();
 			if (BasePackage == null)
+			{
 				return Localization.Manager.GetString("unk");
+			}
 
 			if (operands == null)
+			{
 				LoadOperators();
+			}
 
 			object o = null;
 			if (op < operands.Count)
+			{
 				o = operands[op];
+			}
 
 			if (o != null)
+			{
 				return o.ToString();
+			}
 			else
+			{
 				return Localization.Manager.GetString("unk");
+			}
 		}
 
 		/// <summary>
@@ -533,19 +604,29 @@ namespace SimPe.Providers
 		{
 			LoadPackage();
 			if (BasePackage == null)
+			{
 				return Localization.Manager.GetString("unk");
+			}
 
 			if (dataowners == null)
+			{
 				LoadDataOwners();
+			}
 
 			object o = null;
 			if (owner < dataowners.Count)
+			{
 				o = dataowners[owner];
+			}
 
 			if (o != null)
+			{
 				return o.ToString();
+			}
 			else
+			{
 				return Localization.Manager.GetString("unk");
+			}
 		}
 
 		/// <summary>
@@ -562,19 +643,29 @@ namespace SimPe.Providers
 		{
 			LoadPackage();
 			if (BasePackage == null)
+			{
 				return Localization.Manager.GetString("unk");
+			}
 
 			if (motives == null)
+			{
 				LoadMotives();
+			}
 
 			object o = null;
 			if (nr < motives.Count)
+			{
 				o = motives[nr];
+			}
 
 			if (o != null)
+			{
 				return o.ToString();
+			}
 			else
+			{
 				return Localization.Manager.GetString("unk");
+			}
 		}
 
 		/// <summary>
@@ -611,7 +702,10 @@ namespace SimPe.Providers
 					null
 				);
 			if (items.Length > 0)
+			{
 				return items[0];
+			}
+
 			return null;
 		}
 

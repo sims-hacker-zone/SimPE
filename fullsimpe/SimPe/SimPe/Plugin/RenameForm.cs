@@ -273,9 +273,13 @@ namespace SimPe.Plugin
 
 					SimPe.PackedFiles.Wrapper.StrItemList sil = str.LanguageItems(1);
 					if (sil.Length > 1)
+					{
 						return sil[1].Title;
+					}
 					else if (str.Items.Length > 1)
+					{
 						return str.Items[1].Title;
+					}
 				}
 			}
 
@@ -286,7 +290,9 @@ namespace SimPe.Plugin
 				cpf.ProcessData(pfd, package);
 
 				if (cpf.GetSaveItem("modelName").StringValue.Trim() != "")
+				{
 					return cpf.GetSaveItem("modelName").StringValue.Trim();
+				}
 			}
 
 			return "SimPe";
@@ -307,7 +313,9 @@ namespace SimPe.Plugin
 			{
 				string[] ends = parts[1].Split("]".ToCharArray(), 2);
 				if (ends.Length > 1)
+				{
 					return parts[0] + newunique + ends[1];
+				}
 			}
 
 			//make sure the uniqe part is added to the ModelName
@@ -320,7 +328,10 @@ namespace SimPe.Plugin
 				foreach (string s in parts)
 				{
 					if (!first)
+					{
 						name += "_";
+					}
+
 					name += s;
 					if (first)
 					{
@@ -351,13 +362,18 @@ namespace SimPe.Plugin
 			username = username.Replace("_", ".");
 
 			if (lv != null)
+			{
 				lv.Items.Clear();
+			}
+
 			Hashtable ht = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
 			string old = Hashes.StripHashFromName(
 				FindMainOldName(package).ToLower().Trim()
 			);
 			if (old.EndsWith("_cres"))
+			{
 				old = old.Substring(0, old.Length - 5);
+			}
 
 			//load all Rcol Files
 			foreach (uint type in Data.MetaData.RcolList)
@@ -371,11 +387,20 @@ namespace SimPe.Plugin
 						rcol.FileName.Trim().ToLower()
 					);
 					if (newname == "")
+					{
 						newname = "SimPE_dummy_" + username;
+					}
+
 					if (old == null)
+					{
 						old = "";
+					}
+
 					if (old == "")
+					{
 						old = " ";
+					}
+
 					if (auto)
 					{
 						string secname = "";
@@ -386,21 +411,33 @@ namespace SimPe.Plugin
 							secname = newname.Replace(old, "");
 							int pos = secname.IndexOf("-");
 							if (pos >= 0 && pos < secname.Length - 1)
+							{
 								pos = secname.IndexOf("-", pos + 1);
+							}
 
 							if (pos >= 0 && pos < secname.Length - 1)
+							{
 								secname =
 									secname.Substring(0, pos + 1)
 									+ mun
 									+ "-"
 									+ secname.Substring(pos + 1);
+							}
 							else
+							{
 								secname = "";
+							}
 						}
 						if (secname == "")
+						{
 							secname = newname.Replace(old, username);
+						}
+
 						if ((secname == newname) && (old != username.Trim().ToLower()))
+						{
 							secname = username + "-" + secname;
+						}
+
 						newname = secname;
 					}
 
@@ -433,7 +470,9 @@ namespace SimPe.Plugin
 
 				string ext = "_" + lvi.SubItems[1].Text.Trim().ToLower();
 				if (!newname.ToLower().EndsWith(ext))
+				{
 					newname = newname + ext;
+				}
 
 				try
 				{
@@ -475,7 +514,10 @@ namespace SimPe.Plugin
 			if (uname == "")
 			{
 				if (retnull)
+				{
 					return null;
+				}
+
 				uname = System.Guid.NewGuid().ToString();
 			}
 			else
@@ -523,16 +565,24 @@ namespace SimPe.Plugin
 			);
 			current_unique = GetUniqueName();
 			if (old.EndsWith("_cres"))
+			{
 				old = old.Substring(0, old.Length - 5);
+			}
+
 			if (uniquename)
 			{
 				string name = RenameForm.ReplaceOldUnique(old, current_unique, true);
 				if (name == old)
+				{
 					name = old + current_unique;
+				}
+
 				rf.tbname.Text = name;
 			}
 			else
+			{
 				rf.tbname.Text = old;
+			}
 
 			GetNames(uniquename, package, rf.lv, rf.tbname.Text);
 			rf.ShowDialog();
@@ -540,13 +590,20 @@ namespace SimPe.Plugin
 			if (rf.ok)
 			{
 				if (rf.cbv2.Checked)
+				{
 					ver = FixVersion.UniversityReady2;
+				}
 				else
+				{
 					ver = FixVersion.UniversityReady;
+				}
+
 				return rf.GetReplacementMap();
 			}
 			else
+			{
 				return null;
+			}
 		}
 
 		private void UpdateNames(

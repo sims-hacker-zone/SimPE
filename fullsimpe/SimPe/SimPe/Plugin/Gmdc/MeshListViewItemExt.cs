@@ -20,7 +20,10 @@ namespace SimPe.Plugin.Gmdc
 		GmdcElement BuildVertexElement()
 		{
 			if (mesh.Vertices.Count == 0)
+			{
 				return null;
+			}
+
 			GmdcElement e = new GmdcElement(gmi.Gmdc);
 			e.SetFormat = SetFormat.Secondary;
 			e.BlockFormat = BlockFormat.ThreeFloat;
@@ -49,7 +52,10 @@ namespace SimPe.Plugin.Gmdc
 		GmdcElement BuildNormalElement()
 		{
 			if (mesh.Normals.Count == 0)
+			{
 				return null;
+			}
+
 			GmdcElement e = new GmdcElement(gmi.Gmdc);
 			e.SetFormat = SetFormat.Secondary;
 			e.BlockFormat = BlockFormat.ThreeFloat;
@@ -78,7 +84,10 @@ namespace SimPe.Plugin.Gmdc
 		GmdcElement BuildTextureElement()
 		{
 			if (mesh.TextureCoordinates.Count == 0)
+			{
 				return null;
+			}
+
 			GmdcElement e = new GmdcElement(gmi.Gmdc);
 			e.SetFormat = SetFormat.Secondary;
 			e.BlockFormat = BlockFormat.TwoFloat;
@@ -88,9 +97,11 @@ namespace SimPe.Plugin.Gmdc
 			e.Number = mesh.Normals.Count;
 
 			foreach (Ambertation.Geometry.Vector2 v in mesh.TextureCoordinates)
+			{
 				e.Values.Add(
 					new GmdcElementValueTwoFloat((float)v.X, (float)(1 - v.Y))
 				);
+			}
 
 			return e;
 		}
@@ -98,7 +109,10 @@ namespace SimPe.Plugin.Gmdc
 		GmdcElement BuildBoneElement()
 		{
 			if (mesh.Envelopes.Count == 0)
+			{
 				return null;
+			}
+
 			GmdcElement e = new GmdcElement(gmi.Gmdc);
 			e.SetFormat = SetFormat.Secondary;
 			e.BlockFormat = BlockFormat.OneDword;
@@ -108,7 +122,9 @@ namespace SimPe.Plugin.Gmdc
 			e.Number = mesh.Vertices.Count;
 
 			for (int i = 0; i < mesh.Vertices.Count; i++)
+			{
 				e.Values.Add(new GmdcElementValueOneInt(-1));
+			}
 
 			return e;
 		}
@@ -116,7 +132,10 @@ namespace SimPe.Plugin.Gmdc
 		GmdcElement BuildWeightElement()
 		{
 			if (mesh.Envelopes.Count == 0)
+			{
 				return null;
+			}
+
 			GmdcElement e = new GmdcElement(gmi.Gmdc);
 			e.SetFormat = SetFormat.Secondary;
 			e.BlockFormat = BlockFormat.ThreeFloat;
@@ -126,7 +145,9 @@ namespace SimPe.Plugin.Gmdc
 			e.Number = mesh.Vertices.Count;
 
 			for (int i = 0; i < mesh.Vertices.Count; i++)
+			{
 				e.Values.Add(new GmdcElementValueThreeFloat(0, 0, 0));
+			}
 
 			return e;
 		}
@@ -134,7 +155,9 @@ namespace SimPe.Plugin.Gmdc
 		void AddElement(GmdcElement e, GmdcGroup g, bool update)
 		{
 			if (e == null)
+			{
 				return;
+			}
 
 			if (update)
 			{
@@ -176,18 +199,23 @@ namespace SimPe.Plugin.Gmdc
 			for (int i = 0; i < e.Weights.Count; i++)
 			{
 				if (e.Weights[i] == 0)
+				{
 					continue;
+				}
+
 				GmdcElementValueOneInt a = be.Values[i] as GmdcElementValueOneInt;
 				GmdcElementValueThreeFloat w =
 					bw.Values[i] as GmdcElementValueThreeFloat;
 
 				int k = -1;
 				for (int j = 0; j < 3; j++)
+				{
 					if (a.Bytes[j] == 0xff)
 					{
 						k = j;
 						break;
 					}
+				}
 
 				if (k != -1)
 				{
@@ -207,12 +235,16 @@ namespace SimPe.Plugin.Gmdc
 			if (be != null && bw != null)
 			{
 				foreach (Ambertation.Scenes.Envelope e in mesh.Envelopes)
+				{
 					if (e.Joint.Tag != null)
+					{
 						if ((int)e.Joint.Tag >= 0)
 						{
 							g.UsedJoints.Add((int)e.Joint.Tag);
 							SetBones(e, g.UsedJoints.Count - 1, be, bw);
 						}
+					}
+				}
 			}
 		}
 		#endregion
@@ -223,18 +255,28 @@ namespace SimPe.Plugin.Gmdc
 				this.Group == null
 				&& this.Action == GenericMeshImport.ImportAction.Replace
 			)
+			{
 				this.Action = GenericMeshImport.ImportAction.Add;
+			}
+
 			if (
 				this.Group == null
 				&& this.Action == GenericMeshImport.ImportAction.Update
 			)
+			{
 				this.Action = GenericMeshImport.ImportAction.Add;
+			}
+
 			if (Action == GenericMeshImport.ImportAction.Ignore)
+			{
 				return;
+			}
 
 			GmdcGroup g;
 			if (Action == GenericMeshImport.ImportAction.Update)
+			{
 				g = Group;
+			}
 			else if (Action == GenericMeshImport.ImportAction.Replace)
 			{
 				int gindex = gmi.Gmdc.FindGroupByName(Group.Name);
@@ -259,9 +301,14 @@ namespace SimPe.Plugin.Gmdc
 
 			g.Name = mesh.Name;
 			if (Shadow)
+			{
 				g.Opacity = 0x10;
+			}
 			else
+			{
 				g.Opacity = 0xffffffff;
+			}
+
 			g.PrimitiveType = PrimitiveType.Triangle;
 
 			mesh.Tag = new object[] { this, g };
@@ -284,7 +331,9 @@ namespace SimPe.Plugin.Gmdc
 
 			SetFaces(g);
 			if (this.ImportEnvelope)
+			{
 				SetUsedJoints(g);
+			}
 		}
 
 		#region IDisposable Member

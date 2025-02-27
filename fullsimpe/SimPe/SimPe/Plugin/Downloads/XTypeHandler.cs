@@ -48,6 +48,7 @@ namespace SimPe.Plugin.Downloads
 			objd = null;
 			cpf = null;
 			if (oci.Tag != null)
+			{
 				if (oci.Tag is SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem)
 				{
 					cpf = new SimPe.PackedFiles.Wrapper.Cpf();
@@ -55,6 +56,7 @@ namespace SimPe.Plugin.Downloads
 						(SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem)oci.Tag
 					);
 				}
+			}
 
 			UpdateXObjScreen(null, false);
 			nfo.Image = oci.Thumbnail;
@@ -96,7 +98,9 @@ namespace SimPe.Plugin.Downloads
 
 					SimPe.PackedFiles.Wrapper.CpfItem item = cpf.GetItem("guid");
 					if (item != null)
+					{
 						nfo.AddGuid(item.UIntegerValue);
+					}
 				}
 			}
 		}
@@ -113,9 +117,14 @@ namespace SimPe.Plugin.Downloads
 		)
 		{
 			if (clear)
+			{
 				ClearScreen();
+			}
+
 			if (cpf == null)
+			{
 				return;
+			}
 
 			nfo.FirstExpansion = PackageInfo.FileFrom(cpf.FileDescriptor);
 			SetupCategories(
@@ -129,15 +138,22 @@ namespace SimPe.Plugin.Downloads
 
 			nfo.Image = GetXThumbnail(cpf);
 			if (pkg != null)
+			{
 				RenderGmdcPreview(pkg);
+			}
 
 			SimPe.PackedFiles.Wrapper.StrItemList strs = GetCtssItems();
 			if (strs != null)
 			{
 				if (strs.Count > 0)
+				{
 					nfo.Name = strs[0].Title;
+				}
+
 				if (strs.Count > 1)
+				{
 					nfo.Description = strs[1].Title;
+				}
 			}
 			else
 			{
@@ -164,7 +180,9 @@ namespace SimPe.Plugin.Downloads
 				return GetCtssItems(ctss, cpf.Package);
 			}
 			else
+			{
 				return base.GetCtssItems();
+			}
 		}
 
 		public static Data.XObjFunctionSubSort GetFunctionSort(
@@ -179,17 +197,29 @@ namespace SimPe.Plugin.Downloads
 				{
 					string stype = cpf.GetSaveItem("sort").StringValue.Trim().ToLower();
 					if (stype == "landmark")
+					{
 						return Data.XObjFunctionSubSort.Hood_Landmark;
+					}
 					else if (stype == "flora")
+					{
 						return Data.XObjFunctionSubSort.Hood_Flora;
+					}
 					else if (stype == "effects")
+					{
 						return Data.XObjFunctionSubSort.Hood_Effects;
+					}
 					else if (stype == "misc")
+					{
 						return Data.XObjFunctionSubSort.Hood_Misc;
+					}
 					else if (stype == "stone")
+					{
 						return Data.XObjFunctionSubSort.Hood_Stone;
+					}
 					else
+					{
 						return Data.XObjFunctionSubSort.Hood_Other;
+					}
 				}
 				case "wall":
 				{
@@ -197,23 +227,41 @@ namespace SimPe.Plugin.Downloads
 						.StringValue.Trim()
 						.ToLower();
 					if (stype == "brick")
+					{
 						return Data.XObjFunctionSubSort.Wall_Brick;
+					}
 					else if (stype == "masonry")
+					{
 						return Data.XObjFunctionSubSort.Wall_Masonry;
+					}
 					else if (stype == "paint")
+					{
 						return Data.XObjFunctionSubSort.Wall_Paint;
+					}
 					else if (stype == "paneling")
+					{
 						return Data.XObjFunctionSubSort.Wall_Paneling;
+					}
 					else if (stype == "poured")
+					{
 						return Data.XObjFunctionSubSort.Wall_Poured;
+					}
 					else if (stype == "siding")
+					{
 						return Data.XObjFunctionSubSort.Wall_Siding;
+					}
 					else if (stype == "tile")
+					{
 						return Data.XObjFunctionSubSort.Wall_Tile;
+					}
 					else if (stype == "wallpaper")
+					{
 						return Data.XObjFunctionSubSort.Wall_Wallpaper;
+					}
 					else
+					{
 						return Data.XObjFunctionSubSort.Wall_Other;
+					}
 				}
 				case "terrainpaint":
 				{
@@ -225,21 +273,37 @@ namespace SimPe.Plugin.Downloads
 						.StringValue.Trim()
 						.ToLower();
 					if (stype == "brick")
+					{
 						return Data.XObjFunctionSubSort.Floor_Brick;
+					}
 					else if (stype == "carpet")
+					{
 						return Data.XObjFunctionSubSort.Floor_Carpet;
+					}
 					else if (stype == "lino")
+					{
 						return Data.XObjFunctionSubSort.Floor_Lino;
+					}
 					else if (stype == "poured")
+					{
 						return Data.XObjFunctionSubSort.Floor_Poured;
+					}
 					else if (stype == "stone")
+					{
 						return Data.XObjFunctionSubSort.Floor_Stone;
+					}
 					else if (stype == "tile")
+					{
 						return Data.XObjFunctionSubSort.Floor_Tile;
+					}
 					else if (stype == "wood")
+					{
 						return Data.XObjFunctionSubSort.Floor_Wood;
+					}
 					else
+					{
 						return Data.XObjFunctionSubSort.Floor_Other;
+					}
 				}
 				case "roof":
 				{
@@ -248,7 +312,10 @@ namespace SimPe.Plugin.Downloads
 				case "fence":
 				{
 					if (cpf.GetSaveItem("ishalfwall").UIntegerValue == 1)
+					{
 						return Data.XObjFunctionSubSort.Fence_Halfwall;
+					}
+
 					return Data.XObjFunctionSubSort.Fence_Rail;
 				}
 				default:
@@ -265,12 +332,14 @@ namespace SimPe.Plugin.Downloads
 		public static Image GetXThumbnail(SimPe.PackedFiles.Wrapper.Cpf cpf)
 		{
 			if (xthumbs == null)
+			{
 				xthumbs = SimPe.Packages.File.LoadFromFile(
 					System.IO.Path.Combine(
 						PathProvider.SimSavegameFolder,
 						"Thumbnails\\BuildModeThumbnails.package"
 					)
 				);
+			}
 
 			SimPe.Packages.File tmbs = xthumbs;
 			Data.XObjFunctionSubSort fss = GetFunctionSort(cpf);
@@ -286,34 +355,45 @@ namespace SimPe.Plugin.Downloads
 			//get Thumbnail Type
 			uint[] types = new uint[] { 0x8C311262, 0x8C31125E }; //floors, walls
 			if (fss == Data.XObjFunctionSubSort.Roof)
+			{
 				types = new uint[] { 0xCC489E46 };
+			}
 			else if (
 				fss == Data.XObjFunctionSubSort.Fence_Rail
 				|| fss == Data.XObjFunctionSubSort.Fence_Halfwall
 			)
+			{
 				types = new uint[] { 0xCC30CDF8 };
+			}
 			else if (fss == Data.XObjFunctionSubSort.Roof)
+			{
 				types = new uint[] { 0xCC489E46 };
+			}
 			else if (fss == Data.XObjFunctionSubSort.Terrain)
 			{
 				types = new uint[] { 0xEC3126C4 };
 				if (cpf.GetItem("texturetname") != null)
+				{
 					inst = Hashes.GetCrc32(
 						Hashes.StripHashFromName(
 							cpf.GetItem("texturetname").StringValue.Trim().ToLower()
 						)
 					);
+				}
 			}
 			else if (cpf.FileDescriptor.Type == Data.MetaData.XNGB)
 			{
 				types = new uint[] { 0x4D533EDD };
 				if (nthumbs == null)
+				{
 					nthumbs = SimPe.Packages.File.LoadFromFile(
 						System.IO.Path.Combine(
 							PathProvider.SimSavegameFolder,
 							"Thumbnails\\CANHObjectsThumbnails.package"
 						)
 					);
+				}
+
 				tmbs = nthumbs;
 			}
 

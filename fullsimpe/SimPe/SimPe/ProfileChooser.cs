@@ -44,7 +44,10 @@ namespace SimPe
 			foreach (
 				string s in Directory.GetDirectories(SimPe.Helper.DataFolder.Profiles)
 			)
+			{
 				cbProfiles.Items.Add(Path.GetFileName(s));
+			}
+
 			cbProfiles.EndUpdate();
 
 			btnOK.Enabled = false;
@@ -56,9 +59,14 @@ namespace SimPe
 				e.CloseReason != CloseReason.UserClosing
 				&& e.CloseReason != CloseReason.None
 			)
+			{
 				return;
+			}
+
 			if (this.DialogResult != DialogResult.OK)
+			{
 				return;
+			}
 
 			cbProfiles.Text = cbProfiles.Text.Trim();
 			if (cbProfiles.Text.Length == 0)
@@ -100,7 +108,9 @@ namespace SimPe
 					MessageBoxDefaultButton.Button1
 				) != DialogResult.OK
 			)
+			{
 				e.Cancel = true;
+			}
 		}
 
 		private void cbProfiles_TextChanged(object sender, EventArgs e)

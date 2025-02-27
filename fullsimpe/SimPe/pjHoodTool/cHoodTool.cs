@@ -36,7 +36,10 @@ namespace pjHoodTool
 		string q(string u)
 		{
 			if (u == null)
+			{
 				return u;
+			}
+
 			return "\"" + u.Replace("\"", "\"\"") + "\"";
 		}
 
@@ -102,13 +105,19 @@ namespace pjHoodTool
 
 			string outPath = Path.GetDirectoryName(output);
 			if (!Directory.Exists(outPath))
+			{
 				Directory.CreateDirectory(outPath);
+			}
 
 			if (group < 1)
+			{
 				group = PathProvider.Global.CurrentGroup;
+			}
 
 			for (int i = 0; i < lotfams.Length; i++)
+			{
 				lotfams[i] = "";
+			}
 
 			//StreamWriter w1 = new StreamWriter(output);
 			StreamWriter w1 = new StreamWriter(output, false, Encoding.Default);
@@ -130,48 +139,86 @@ namespace pjHoodTool
 				#region ExportedSims header
 				string heady = "";
 				if (incbas)
+				{
 					heady = "hood,Hood Name,";
+				}
+
 				heady += "NID,First Name,Last Name";
 				if (incdes)
+				{
 					heady += ",Sim Description";
+				}
+
 				heady += ",FamilyInstance,Household Name,HouseNumber";
 				if (incbas)
+				{
 					heady +=
 						",AvailableCharacterData,Unlinked,ParentA,ParentB,Spouse,Body Condition";
+				}
+
 				heady += ",NPC Type";
 				if (incbas)
+				{
 					heady +=
 						",School Type,Grade,CareerPerformance,Career,CareerLevel,Zodiac Sign";
+				}
+
 				heady += ",Gender,LifeSection";
 				if (incbas)
+				{
 					heady +=
 						",AgeDaysLeft,PrevAgeDays,AgeDuration,BlizLifelinePoints,LifelinePoints,LifelineScore";
+				}
+
 				if (inccha)
+				{
 					heady +=
 						",GenActive,GenNeat,GenNice,GenOutgoing,GenPlayful,Active,Neat,Nice,Outgoing,Playful"; // Character
+				}
+
 				if (incint)
+				{
 					heady +=
 						",Animals,Crime,Culture,Entertainment,Environment,Fashion,Food,Health,Money,Paranormal,Politics,School,Scifi,Sports,Toys,Travel,Weather,Work"; //Interests
+				}
+
 				heady += ",FemalePreference,MalePreference";
 				if (incski)
 				{
 					heady +=
 						",Body,Charisma,Cleaning,Cooking,Creativity,Fatness,Logic,Mechanical"; //Skills
 					if (Helper.WindowsRegistry.ShowMoreSkills)
+					{
 						heady += ",Art,Music";
+					}
 				}
 				if (incuni)
+				{
 					heady +=
 						",IsAtUniversity,UniEffort,UniGrade,UniTime,UniSemester,UniInfluence,UniMajor"; // University
+				}
+
 				if (incpet && incbas)
+				{
 					heady += ",Species";
+				}
+
 				if (incbus)
+				{
 					heady += ",Job Assignment,Lot ID,Salary"; // Business
+				}
+
 				if (incfre)
+				{
 					heady +=
 						",PrimaryAspiration,SecondaryAspiration,Natural Talent,LongtermAspiration"; // FreeTime
+				}
+
 				if (incapa)
+				{
 					heady += ",Reputation,Title"; // Aparments
+				}
+
 				heady += "";
 
 				w1.WriteLine(heady);
@@ -203,14 +250,18 @@ namespace pjHoodTool
 						hood.Length > 0 ? hood : "????"
 					);
 					foreach (string dir in dirs)
+					{
 						AddHood(outPath, dir, w1, w2);
+					}
 				}
 			}
 			finally
 			{
 				w1.Close();
 				if (inclot)
+				{
 					w2.Close();
+				}
 			}
 		}
 
@@ -234,7 +285,9 @@ namespace pjHoodTool
 				SimPe.Data.MetaData.FAMILY_TIES_FILE
 			);
 			if (pfds != null && pfds.Length > 0)
+			{
 				eft.ProcessData(pfds[0], pkg);
+			}
 		}
 
 		DateTime dt = new DateTime(0);
@@ -245,11 +298,16 @@ namespace pjHoodTool
 			string hood = Path.GetFileName(dir);
 			string hoodFile = Path.Combine(dir, hood + "_Neighborhood.package");
 			if (!File.Exists(hoodFile))
+			{
 				return;
+			}
 
 			SimPe.Packages.File pkg = SimPe.Packages.File.LoadFromFile(hoodFile);
 			if (pkg == null)
+			{
 				return;
+			}
+
 			string hoodtipe = "Primary";
 			string hoodName = Localization.GetString("Unknown");
 			IPackedFileDescriptor[] pfds = pkg.FindFiles(SimPe.Data.MetaData.CTSS_FILE);
@@ -260,15 +318,23 @@ namespace pjHoodTool
 				ctss = new StrWrapper();
 				ctss.ProcessData(pfds[0], pkg);
 				if (ctss[(byte)Helper.WindowsRegistry.LanguageCode, 0] == null)
+				{
 					hoodName = q(ctss[1, 0]);
+				}
 				else
+				{
 					hoodName = q(ctss[(byte)Helper.WindowsRegistry.LanguageCode, 0]);
+				}
 			}
 			else
+			{
 				hoodName = hood; // Tutorial Hood has no CTSS
+			}
 
 			if (!Directory.Exists(Path.Combine(outPath, "SimImage")))
+			{
 				Directory.CreateDirectory(Path.Combine(outPath, "SimImage"));
+			}
 
 			System.Windows.Forms.Application.DoEvents();
 			splash("Loading Neighborhood " + hood + ": " + hoodName);
@@ -291,13 +357,17 @@ namespace pjHoodTool
 						|| sdsc.Nightlife.Species == SdscNightlife.SpeciesType.Human
 					)
 				)
+				{
 					AddSim(outPath, hood, hoodName, w1, sdsc);
+				}
 			}
 
 			if (inclot)
 			{
 				if (!Directory.Exists(Path.Combine(outPath, "LotImage")))
+				{
 					Directory.CreateDirectory(Path.Combine(outPath, "LotImage"));
+				}
 
 				dt = new DateTime(0);
 				wasUnk = true;
@@ -332,14 +402,18 @@ namespace pjHoodTool
 									ctss[(byte)Helper.WindowsRegistry.LanguageCode, 0]
 									== null
 								)
+								{
 									hoodName = q(ctss[1, 0]);
+								}
 								else
+								{
 									hoodName = q(
 										ctss[
 											(byte)Helper.WindowsRegistry.LanguageCode,
 											0
 										]
 									);
+								}
 
 								System.Windows.Forms.Application.DoEvents();
 								splash("Loading Subhood : " + hoodName);
@@ -358,7 +432,9 @@ namespace pjHoodTool
 										!= SimPe.Data.MetaData.NeighbourhoodEP.Business
 									&& hoodtipe == "Suburb"
 								)
+								{
 									hoodtipe = "Hidden Suburb";
+								}
 							}
 
 							SetProvider(pkg);
@@ -388,17 +464,24 @@ namespace pjHoodTool
 			#region desc
 			string desc = ",";
 			if (incdes)
+			{
 				desc = ",,";
+			}
+
 			SimPe.Interfaces.Files.IPackageFile pkg = SimPe.Packages.File.LoadFromFile(
 				sdsc.CharacterFileName
 			);
 			if (pkg == null)
 			{
 				if (SimPe.Data.MetaData.GetKnownNPC(sdsc.SimId) != "not found")
+				{
 					desc =
 						q(SimPe.Data.MetaData.GetKnownNPC(sdsc.SimId)) + desc + "(NPC)";
+				}
 				else
+				{
 					return;
+				}
 			}
 			else
 			{
@@ -406,12 +489,16 @@ namespace pjHoodTool
 				if (pfds == null || pfds.Length == 0)
 				{
 					if (SimPe.Data.MetaData.GetKnownNPC(sdsc.SimId) != "not found")
+					{
 						desc =
 							q(SimPe.Data.MetaData.GetKnownNPC(sdsc.SimId))
 							+ desc
 							+ "(NPC)";
+					}
 					else
+					{
 						return;
+					}
 				}
 				else
 				{
@@ -420,24 +507,34 @@ namespace pjHoodTool
 						StrWrapper ctss = new StrWrapper();
 						ctss.ProcessData(pfds[0], pkg);
 						if (ctss[(byte)Helper.WindowsRegistry.LanguageCode, 0] == null)
+						{
 							desc = q(ctss[1, 0]) + ",";
+						}
 						else
+						{
 							desc =
 								q(ctss[(byte)Helper.WindowsRegistry.LanguageCode, 0])
 								+ ","; // firstname
+						}
 
 						if (ctss[(byte)Helper.WindowsRegistry.LanguageCode, 2] == null)
+						{
 							desc += q(ctss[1, 2]) + "";
+						}
 						else
+						{
 							desc +=
 								q(ctss[(byte)Helper.WindowsRegistry.LanguageCode, 2])
 								+ ""; // lastname
+						}
+
 						if (incdes)
 						{
 							if (
 								ctss[(byte)Helper.WindowsRegistry.LanguageCode, 1]
 								== null
 							)
+							{
 								desc +=
 									","
 									+ q(ctss[1, 1])
@@ -445,7 +542,9 @@ namespace pjHoodTool
 										.Replace("\r", "")
 										.Replace("\n", " ")
 									+ "";
+							}
 							else
+							{
 								desc +=
 									","
 									+ q(
@@ -459,6 +558,7 @@ namespace pjHoodTool
 										.Replace("\r", "")
 										.Replace("\n", " ")
 									+ ""; // description
+							}
 						}
 					}
 					catch
@@ -466,16 +566,22 @@ namespace pjHoodTool
 						if (SimPe.Data.MetaData.GetKnownNPC(sdsc.SimId) != "not found")
 						{
 							if (incdes)
+							{
 								desc =
 									q(SimPe.Data.MetaData.GetKnownNPC(sdsc.SimId))
 									+ ",,(NPC)";
+							}
 							else
+							{
 								desc =
 									q(SimPe.Data.MetaData.GetKnownNPC(sdsc.SimId))
 									+ ",(NPC)";
+							}
 						}
 						if (desc.EndsWith(",") && incdes)
+						{
 							desc += ","; // if the CTSS does not have three lines, will throw trying to read lastname so we need a nuver comma
+						}
 					}
 				}
 			}
@@ -503,7 +609,9 @@ namespace pjHoodTool
 					+ fami.LotInstance
 					+ "";
 				if (fami.LotInstance != 0)
+				{
 					lotfams[fami.LotInstance] = sdsc.HouseholdName;
+				}
 			}
 			#endregion
 
@@ -623,7 +731,10 @@ namespace pjHoodTool
 				+ ","
 				+ sdsc.Skills.Mechanical;
 			if (Helper.WindowsRegistry.ShowMoreSkills)
+			{
 				skills += "," + sdsc.Skills.Art + "," + sdsc.Skills.Music;
+			}
+
 			skills += "";
 			#endregion
 
@@ -653,7 +764,9 @@ namespace pjHoodTool
 					&& sdsc.University.Major != SimPe.Data.Majors.Undeclared
 					&& sdsc.University.Major != SimPe.Data.Majors.Unset
 				)
+				{
 					university = "N,,,,,," + sdsc.University.Major;
+				}
 			}
 			#endregion
 
@@ -703,9 +816,11 @@ namespace pjHoodTool
 			{
 				apartments = sdsc.Apartment.Reputation + ",";
 				if (sdsc.Apartment.TitlePostName > 0)
+				{
 					apartments += SimPe.Data.MetaData.GetTitleName(
 						sdsc.Apartment.TitlePostName
 					);
+				}
 			}
 			#endregion
 
@@ -720,20 +835,30 @@ namespace pjHoodTool
 				)
 				{
 					if (sdsc.Castaway.Subspecies == 2)
+					{
 						species = "Orang-utan";
+					}
+
 					if (
 						sdsc.Castaway.Subspecies == 1
 						&& (int)sdsc.Nightlife.Species == 3
 					)
+					{
 						species = "Leopard";
+					}
+
 					if (
 						sdsc.Castaway.Subspecies == 1
 						&& (int)sdsc.Nightlife.Species < 3
 					)
+					{
 						species = "Wild Dog";
+					}
 				}
 				else
+				{
 					species = sdsc.Nightlife.Species.ToString();
+				}
 			}
 
 			#endregion
@@ -759,14 +884,20 @@ namespace pjHoodTool
 					splash("Saving " + sdsc.SimName + " " + sdsc.SimFamilyName);
 				}
 				else
+				{
 					wasUnk = true;
+				}
 			}
 
 			string csv = "";
 			if (incbas)
+			{
 				csv = hood + "," + hoodName + ",";
+			}
+
 			csv += sdsc.Instance + "," + desc + "," + family;
 			if (incbas)
+			{
 				csv +=
 					","
 					+ (sdsc.AvailableCharacterData ? "Y" : "N")
@@ -776,12 +907,15 @@ namespace pjHoodTool
 					+ ties
 					+ ","
 					+ bodycondiion(sdsc);
+			}
+
 			csv +=
 				","
 				+ new SimPe.Data.LocalizedServiceTypes(
 					sdsc.CharacterDescription.ServiceTypes
 				).ToString();
 			if (incbas)
+			{
 				csv +=
 					","
 					+ new SimPe.Data.LocalizedSchoolType(
@@ -801,12 +935,15 @@ namespace pjHoodTool
 					+ sdsc.CharacterDescription.CareerLevel
 					+ ","
 					+ sdsc.CharacterDescription.ZodiacSign;
+			}
+
 			csv +=
 				","
 				+ sdsc.CharacterDescription.Gender
 				+ ","
 				+ sdsc.CharacterDescription.LifeSection;
 			if (incbas)
+			{
 				csv +=
 					","
 					+ sdsc.CharacterDescription.Age
@@ -820,27 +957,53 @@ namespace pjHoodTool
 					+ sdsc.CharacterDescription.LifelinePoints
 					+ ","
 					+ sdsc.CharacterDescription.LifelineScore;
+			}
+
 			if (inccha)
+			{
 				csv += "," + genetics + "," + character;
+			}
+
 			if (incint)
+			{
 				csv += "," + interests;
+			}
+
 			csv +=
 				","
 				+ sdsc.Interests.FemalePreference
 				+ ","
 				+ sdsc.Interests.MalePreference;
 			if (incski)
+			{
 				csv += "," + skills;
+			}
+
 			if (incuni)
+			{
 				csv += "," + university;
+			}
+
 			if (incpet && incbas)
+			{
 				csv += "," + species;
+			}
+
 			if (incbus)
+			{
 				csv += "," + business;
+			}
+
 			if (incfre)
+			{
 				csv += "," + freetime;
+			}
+
 			if (incapa)
+			{
 				csv += "," + apartments;
+			}
+
 			csv += "";
 			w.WriteLine(csv);
 
@@ -855,6 +1018,7 @@ namespace pjHoodTool
 				);
 			}
 			else
+			{
 				AddImage(
 					sdsc.Image,
 					Path.Combine(
@@ -862,6 +1026,7 @@ namespace pjHoodTool
 						hood + "_" + sdsc.Instance + ".jpg"
 					)
 				);
+			}
 		}
 
 		void AddLot(
@@ -876,32 +1041,67 @@ namespace pjHoodTool
 			string perv = "";
 			Boolset bby = ltxt.Unknown0;
 			if (bby[7])
+			{
 				perv = "Has Beach";
+			}
+
 			if (bby[4])
+			{
 				perv += " - Hidden";
+			}
+
 			Boolset tty = ltxt.Unknown4;
 			if (ltxt.Type == Ltxt.LotType.Hobby)
 			{
 				if (tty[9])
+				{
 					perv += " (Music)";
+				}
+
 				if (tty[8])
+				{
 					perv += " (Science)";
+				}
+
 				if (tty[7])
+				{
 					perv += " (Fitness)";
+				}
+
 				if (tty[6])
+				{
 					perv += " (Tinkering)";
+				}
+
 				if (tty[5])
+				{
 					perv += " (Nature)";
+				}
+
 				if (tty[4])
+				{
 					perv += " (Games)";
+				}
+
 				if (tty[3])
+				{
 					perv += " (Sport)";
+				}
+
 				if (tty[2])
+				{
 					perv += " (Films)";
+				}
+
 				if (tty[1])
+				{
 					perv += " (Art)";
+				}
+
 				if (tty[0])
+				{
 					perv += " (Cooking)";
+				}
 			}
 
 			if (
@@ -920,7 +1120,9 @@ namespace pjHoodTool
 					lotfams[ltxt.LotDescription.Instance] == ""
 					&& ltxt.Type == Ltxt.LotType.Residential
 				)
+				{
 					lotfams[ltxt.LotDescription.Instance] = "*For Sale*";
+				}
 			}
 			w.WriteLine(
 				hood
@@ -947,6 +1149,7 @@ namespace pjHoodTool
 			if (ltxt.LotDescription != null)
 			{
 				if (ltxt.LotDescription.Image != null)
+				{
 					AddImage(
 						ltxt.LotDescription.Image,
 						Path.Combine(
@@ -954,7 +1157,9 @@ namespace pjHoodTool
 							hood + "_Lot" + ltxt.FileDescriptor.Instance + ".jpg"
 						)
 					);
+				}
 				else
+				{
 					AddImage(
 						SimPe.GetImage.Network,
 						Path.Combine(
@@ -962,8 +1167,10 @@ namespace pjHoodTool
 							hood + "_Lot" + ltxt.FileDescriptor.Instance + ".png"
 						)
 					);
+				}
 			}
 			else
+			{
 				AddImage(
 					SimPe.GetImage.Network,
 					Path.Combine(
@@ -971,31 +1178,57 @@ namespace pjHoodTool
 						hood + "_Lot" + ltxt.FileDescriptor.Instance + ".png"
 					)
 				);
+			}
 		}
 
 		string bodycondiion(ExtSDesc simdsc)
 		{
 			string bodyflugs = "";
 			if (simdsc.CharacterDescription.GhostFlag.IsGhost)
+			{
 				bodyflugs = "Deceased";
+			}
 			else
 			{
 				if (simdsc.CharacterDescription.BodyFlag.Value == 0)
+				{
 					bodyflugs = "Normal";
+				}
+
 				if (simdsc.CharacterDescription.BodyFlag.BirthControl)
+				{
 					bodyflugs = "BirthControl";
+				}
+
 				if (simdsc.CharacterDescription.BodyFlag.Hospital)
+				{
 					bodyflugs += " Hospital";
+				}
+
 				if (simdsc.CharacterDescription.BodyFlag.Fit)
+				{
 					bodyflugs += " Fit";
+				}
+
 				if (simdsc.CharacterDescription.BodyFlag.Fat)
+				{
 					bodyflugs += " Fat";
+				}
+
 				if (simdsc.CharacterDescription.BodyFlag.PregnantHidden)
+				{
 					bodyflugs += " Pregnant";
+				}
+
 				if (simdsc.CharacterDescription.BodyFlag.PregnantHalf)
+				{
 					bodyflugs += " PregnantHalf";
+				}
+
 				if (simdsc.CharacterDescription.BodyFlag.PregnantFull)
+				{
 					bodyflugs += " PregnantFull";
+				}
 			}
 			return bodyflugs;
 		}
@@ -1005,8 +1238,11 @@ namespace pjHoodTool
 			if (img != null)
 			{
 				if (img.Size.Width > 16 && img.Size.Height > 16)
+				{
 					img.Save(f);
+				}
 				else
+				{
 					System.Diagnostics.Trace.WriteLine(
 						"img too small: "
 							+ Path.GetFileNameWithoutExtension(f)
@@ -1015,6 +1251,7 @@ namespace pjHoodTool
 							+ ";h="
 							+ img.Height
 					);
+				}
 			}
 		}
 
@@ -1043,7 +1280,9 @@ namespace pjHoodTool
 			fbd.ShowNewFolderButton = true;
 			System.Windows.Forms.DialogResult dr = fbd.ShowDialog();
 			if (dr != System.Windows.Forms.DialogResult.OK)
+			{
 				return new ToolResult(false, false);
+			}
 
 			NeighborhoodForm nfm = new NeighborhoodForm();
 			nfm.LoadNgbh = false;
@@ -1057,7 +1296,10 @@ namespace pjHoodTool
 				nfm.DialogResult == System.Windows.Forms.DialogResult.OK
 				&& nfm.SelectedNgbh != null
 			)
+			{
 				hood = Path.GetFileName(Path.GetDirectoryName(nfm.SelectedNgbh));
+			}
+
 			Settims sf = new Settims();
 			sf.Text = hood;
 			sf.ShowDialog();
@@ -1108,7 +1350,10 @@ namespace pjHoodTool
 		{
 			int i = ArgParser.Parse(argv, "-rufio");
 			if (i < 0)
+			{
 				return false;
+			}
+
 			string outpath = "";
 			string hood = "";
 			string group = "";
@@ -1119,11 +1364,20 @@ namespace pjHoodTool
 			while (argv.Count > i)
 			{
 				if (ArgParser.Parse(argv, i, "-out", ref outpath))
+				{
 					continue;
+				}
+
 				if (ArgParser.Parse(argv, i, "-hood", ref hood))
+				{
 					continue;
+				}
+
 				if (ArgParser.Parse(argv, i, "-group", ref group))
+				{
 					continue;
+				}
+
 				SimPe.Message.Show(Help()[0]);
 				return true;
 			}
@@ -1154,7 +1408,9 @@ namespace pjHoodTool
 						groupno < 1
 						|| (groupno & PathProvider.Global.AvailableGroups) == 0
 					)
+					{
 						throw new FormatException();
+					}
 				}
 				catch (FormatException)
 				{

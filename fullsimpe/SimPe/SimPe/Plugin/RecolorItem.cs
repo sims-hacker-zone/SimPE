@@ -32,8 +32,12 @@ namespace SimPe.Plugin
 			{
 				this.colorBin = value;
 				if (!Utility.IsNullOrEmpty(this.Materials))
+				{
 					foreach (MaterialDefinitionRcol mmat in this.Materials)
+					{
 						mmat.ColorBin = value;
+					}
+				}
 			}
 		}
 
@@ -49,7 +53,9 @@ namespace SimPe.Plugin
 			{
 				this.SetValue("product", Convert.ToUInt32(value));
 				if (Convert.ToUInt32(value) > 0)
+				{
 					this.SetValue("creator", "00000000-0000-0000-0000-000000000000");
+				}
 			}
 		}
 
@@ -106,7 +112,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (this.ContainsItem("subtype"))
+				{
 					return (TextureOverlayTypes)CpfItem("subtype").UIntegerValue;
+				}
+
 				return TextureOverlayTypes.EyeBrow;
 			}
 			set
@@ -120,16 +129,23 @@ namespace SimPe.Plugin
 			get
 			{
 				if (this.ContainsItem("outfit"))
+				{
 					return (OutfitType)CpfItem("outfit").UIntegerValue;
+				}
 				else if (this.ContainsItem("parts"))
+				{
 					return (OutfitType)CpfItem("parts").UIntegerValue;
+				}
+
 				return OutfitType.None;
 			}
 			set
 			{
 				this.SetValue("outfit", Convert.ToUInt32(value));
 				if (this.Version >= 4) // Pests?
+				{
 					this.SetValue("parts", Convert.ToUInt32(value));
+				}
 			}
 		}
 
@@ -174,7 +190,10 @@ namespace SimPe.Plugin
 					if (!this.Pinned)
 					{
 						foreach (Rcol rcol in this.Materials)
+						{
 							rcol.FileDescriptor.MarkForDelete = true;
+						}
+
 						return;
 					}
 				}

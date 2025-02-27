@@ -48,6 +48,7 @@ namespace SimPe.PackedFiles.Wrapper
 			try
 			{
 				if (!this.DesignMode)
+				{
 					SimPe
 						.FileTable
 						.ProviderRegistry
@@ -55,6 +56,8 @@ namespace SimPe.PackedFiles.Wrapper
 						.ChangedPackage += new EventHandler(
 						SimDescriptionProvider_ChangedPackage
 					);
+				}
+
 				needreload = true;
 			}
 			catch { }
@@ -148,7 +151,10 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				SimPe.PackedFiles.Wrapper.ExtSDesc sdsc = SelectedSim;
 				if (sdsc != null)
+				{
 					return sdsc.Instance;
+				}
+
 				return 0xffff;
 			}
 			set
@@ -177,7 +183,10 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				SimPe.PackedFiles.Wrapper.ExtSDesc sdsc = SelectedSim;
 				if (sdsc != null)
+				{
 					return sdsc.SimId;
+				}
+
 				return 0xffffffff;
 			}
 			set
@@ -205,7 +214,10 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				if (cb.SelectedItem == null)
+				{
 					return null;
+				}
+
 				SimPe.Interfaces.IAlias a = cb.SelectedItem as SimPe.Interfaces.IAlias;
 				return a.Tag[0] as SimPe.PackedFiles.Wrapper.ExtSDesc;
 			}
@@ -244,7 +256,9 @@ namespace SimPe.PackedFiles.Wrapper
 		private void cb_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			if (SelectedSimChanged != null)
+			{
 				SelectedSimChanged(this, new EventArgs());
+			}
 		}
 
 		bool needreload;
@@ -253,14 +267,18 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			needreload = true;
 			if (this.Visible)
+			{
 				Reload();
+			}
 		}
 
 		protected override void OnVisibleChanged(EventArgs e)
 		{
 			base.OnVisibleChanged(e);
 			if (needreload && Visible)
+			{
 				Reload();
+			}
 		}
 
 		private void cb_TextChanged(object sender, System.EventArgs e)

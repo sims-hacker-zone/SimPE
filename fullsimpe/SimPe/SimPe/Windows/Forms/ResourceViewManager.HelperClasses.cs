@@ -66,48 +66,94 @@ namespace SimPe.Windows.Forms
 					if (Asc)
 					{
 						if (Column == SortColumn.Name)
+						{
 							return x.GetRealName().CompareTo(y.GetRealName());
+						}
+
 						if (Column == SortColumn.Type || Column == SortColumn.Extension)
+						{
 							return x.Descriptor.Type.CompareTo(y.Descriptor.Type);
+						}
+
 						if (Column == SortColumn.Group)
+						{
 							return x.Descriptor.Group.CompareTo(y.Descriptor.Group);
+						}
+
 						if (Column == SortColumn.InstanceHi)
+						{
 							return x.Descriptor.SubType.CompareTo(y.Descriptor.SubType);
+						}
+
 						if (Column == SortColumn.InstanceLo)
+						{
 							return x.Descriptor.Instance.CompareTo(
 								y.Descriptor.Instance
 							);
+						}
+
 						if (Column == SortColumn.Instance)
+						{
 							return x.Descriptor.LongInstance.CompareTo(
 								y.Descriptor.LongInstance
 							);
+						}
+
 						if (Column == SortColumn.Offset)
+						{
 							return x.Descriptor.Offset.CompareTo(y.Descriptor.Offset);
+						}
+
 						if (Column == SortColumn.Size)
+						{
 							return x.Descriptor.Size.CompareTo(y.Descriptor.Size);
+						}
 					}
 					else
 					{
 						if (Column == SortColumn.Name)
+						{
 							return y.GetRealName().CompareTo(x.GetRealName());
+						}
+
 						if (Column == SortColumn.Type || Column == SortColumn.Extension)
+						{
 							return y.Descriptor.Type.CompareTo(x.Descriptor.Type);
+						}
+
 						if (Column == SortColumn.Group)
+						{
 							return y.Descriptor.Group.CompareTo(x.Descriptor.Group);
+						}
+
 						if (Column == SortColumn.InstanceHi)
+						{
 							return y.Descriptor.SubType.CompareTo(x.Descriptor.SubType);
+						}
+
 						if (Column == SortColumn.InstanceLo)
+						{
 							return y.Descriptor.Instance.CompareTo(
 								x.Descriptor.Instance
 							);
+						}
+
 						if (Column == SortColumn.Instance)
+						{
 							return y.Descriptor.LongInstance.CompareTo(
 								x.Descriptor.LongInstance
 							);
+						}
+
 						if (Column == SortColumn.Offset)
+						{
 							return y.Descriptor.Offset.CompareTo(x.Descriptor.Offset);
+						}
+
 						if (Column == SortColumn.Size)
+						{
 							return y.Descriptor.Size.CompareTo(x.Descriptor.Size);
+						}
 					}
 					return 0;
 				}

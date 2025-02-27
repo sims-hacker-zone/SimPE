@@ -86,7 +86,9 @@ namespace pjse
 					break;
 			}
 			if (wiz == null)
+			{
 				return null;
+			}
 
 			Panel pn = wiz.bhavPrimWizPanel;
 			pn.Parent = this;
@@ -230,15 +232,23 @@ namespace pjse.BhavOperandWizards
 		private void cbDataOwner_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (cbDataOwner.SelectedIndex != -1)
+			{
 				SetDataOwner();
+			}
 		}
 
 		private void cbPicker_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (cbPicker.SelectedIndex != -1)
 			{
 				SetValue((ushort)cbPicker.SelectedIndex);
@@ -254,9 +264,15 @@ namespace pjse.BhavOperandWizards
 		private void tbValue_TextChanged(object sender, System.EventArgs ev)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (!tbValue_IsValid((TextBox)sender))
+			{
 				return;
+			}
+
 			SetValue(tbValueConverter((TextBox)sender));
 		}
 
@@ -266,7 +282,10 @@ namespace pjse.BhavOperandWizards
 		)
 		{
 			if (tbValue_IsValid((TextBox)sender))
+			{
 				return;
+			}
+
 			e.Cancel = true;
 			tbValue_Validated(sender, null);
 		}
@@ -282,14 +301,18 @@ namespace pjse.BhavOperandWizards
 		private void ckbDecimal_CheckedChanged(object sender, System.EventArgs e)
 		{
 			if (this.ckbDecimal.Visible)
+			{
 				pjse.Settings.PJSE.DecimalDOValue = this.ckbDecimal.Checked;
+			}
 		}
 
 		private void ckbUseAttrPicker_CheckedChanged(object sender, System.EventArgs e)
 		{
 			if (this.ckbUseInstancePicker.Visible)
+			{
 				pjse.Settings.PJSE.InstancePickerAsText =
 					this.ckbUseInstancePicker.Checked;
+			}
 		}
 
 		#endregion
@@ -311,11 +334,17 @@ namespace pjse.BhavOperandWizards
 		private string tbValueConverter(ushort v)
 		{
 			if (DataOwner == 0x1a)
+			{
 				return pjse.BhavWiz.ExpandBCONtoString(v, false);
+			}
 			else if (DataOwner == 0x2f)
+			{
 				return pjse.BhavWiz.ExpandBCONtoString(v, true);
+			}
 			else if (isDecimal)
+			{
 				return ((short)v).ToString();
+			}
 
 			String s = SimPe.Helper.HexString(v);
 			int i = (bitsInValue + 3) / 4;
@@ -327,13 +356,21 @@ namespace pjse.BhavOperandWizards
 		private ushort tbValueConverter(TextBox sender)
 		{
 			if (DataOwner == 0x1a)
+			{
 				return pjse.BhavWiz.StringtoExpandBCON(sender.Text, false);
+			}
 			else if (DataOwner == 0x2f)
+			{
 				return pjse.BhavWiz.StringtoExpandBCON(sender.Text, true);
+			}
 			else if (isDecimal)
+			{
 				return (ushort)Convert.ToInt16(sender.Text, 10);
+			}
 			else
+			{
 				return Convert.ToUInt16(sender.Text, 16);
+			}
 		}
 
 		#endregion
@@ -423,16 +460,21 @@ namespace pjse.BhavOperandWizards
 					BhavWiz.readStr(GS.BhavStr.DataOwners).ToArray()
 				);
 				if (cbDataOwner.Items.Count > dataOwner)
+				{
 					cbDataOwner.SelectedIndex = dataOwner;
+				}
+
 				this.cbDataOwner.SelectedIndexChanged += new System.EventHandler(
 					this.cbDataOwner_SelectedIndexChanged
 				);
 			}
 
 			if (this.cbPicker != null)
+			{
 				this.cbPicker.SelectedIndexChanged += new System.EventHandler(
 					this.cbPicker_SelectedIndexChanged
 				);
+			}
 
 			if (this.tbValue != null)
 			{
@@ -485,7 +527,9 @@ namespace pjse.BhavOperandWizards
 		{
 			Decimal = pjse.Settings.PJSE.DecimalDOValue;
 			if (ckbDecimal != null && this.ckbDecimal.Checked != Decimal)
+			{
 				this.ckbDecimal.Checked = Decimal;
+			}
 		}
 
 		void PJSE_InstancePickerAsTextChanged(object sender, EventArgs e)
@@ -495,7 +539,9 @@ namespace pjse.BhavOperandWizards
 				ckbUseInstancePicker != null
 				&& this.ckbUseInstancePicker.Checked != UseInstancePicker
 			)
+			{
 				this.ckbUseInstancePicker.Checked = UseInstancePicker;
+			}
 		}
 
 		#region IDisposable Members
@@ -503,25 +549,40 @@ namespace pjse.BhavOperandWizards
 		public void Dispose()
 		{
 			if (this.cbDataOwner != null)
+			{
 				this.cbDataOwner.SelectedIndexChanged -= new System.EventHandler(
 					this.cbDataOwner_SelectedIndexChanged
 				);
+			}
+
 			if (this.cbPicker != null)
+			{
 				this.cbPicker.SelectedIndexChanged -= new System.EventHandler(
 					this.cbPicker_SelectedIndexChanged
 				);
+			}
+
 			if (this.tbValue != null)
+			{
 				this.tbValue.TextChanged -= new System.EventHandler(
 					this.tbValue_TextChanged
 				);
+			}
+
 			if (this.ckbDecimal != null)
+			{
 				this.ckbDecimal.CheckedChanged -= new EventHandler(
 					this.ckbDecimal_CheckedChanged
 				);
+			}
+
 			if (this.ckbUseInstancePicker != null)
+			{
 				this.ckbUseInstancePicker.CheckedChanged -= new EventHandler(
 					this.ckbUseAttrPicker_CheckedChanged
 				);
+			}
+
 			this.inst = null;
 			this.cbDataOwner = null;
 			this.cbPicker = null;
@@ -555,7 +616,9 @@ namespace pjse.BhavOperandWizards
 		private void SetDataOwner()
 		{
 			if (internalchg)
+			{
 				return;
+			}
 
 			internalchg = true;
 
@@ -632,7 +695,10 @@ namespace pjse.BhavOperandWizards
 			if (pickerNames != null && pickerNames.Count > 0)
 			{
 				if (tbValue != null)
+				{
 					tbValue.TabStop = tbValue.Visible = false;
+				}
+
 				cbPicker.TabStop = cbPicker.Visible = true;
 				cbPicker.Items.Clear();
 				cbPicker.Items.AddRange(pickerNames.ToArray());
@@ -642,9 +708,14 @@ namespace pjse.BhavOperandWizards
 			else
 			{
 				if (cbPicker != null)
+				{
 					cbPicker.TabStop = cbPicker.Visible = false;
+				}
+
 				if (tbValue != null)
+				{
 					tbValue.TabStop = tbValue.Visible = true;
+				}
 			}
 
 			setInstanceLabel();
@@ -706,7 +777,9 @@ namespace pjse.BhavOperandWizards
 					if (labels != null)
 					{
 						if (Value < labels.Count)
+						{
 							s = cbDataOwner.Text + ": " + labels[Value];
+						}
 					}
 					else if (DataOwner == 0x1a)
 					{
@@ -741,12 +814,14 @@ namespace pjse.BhavOperandWizards
 		private void setTextBoxLength()
 		{
 			if (this.tbValue != null)
+			{
 				tbValue.MaxLength = Convert.ToInt32(
 					(this.DataOwner == 0x1a) ? 13
 					: (this.DataOwner == 0x2f) ? 15
 					: isDecimal ? 1 + decBitToDigits[bitsInValue - 1]
 					: (use0xPrefix ? 2 : 0) + ((bitsInValue - 1) / 4) + 1
 				);
+			}
 		}
 
 		public BhavWiz Instruction
@@ -896,9 +971,12 @@ namespace pjse.BhavOperandWizards
 				if (flagsFor != value)
 				{
 					if (flagsFor != null)
+					{
 						flagsFor.DataOwnerControlChanged -= new EventHandler(
 							value_DataOwnerControlChanged
 						);
+					}
+
 					flagsFor = value;
 					flagsFor.DataOwnerControlChanged += new EventHandler(
 						value_DataOwnerControlChanged

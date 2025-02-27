@@ -35,11 +35,18 @@ namespace SimPe.Plugin
 			this.BackgroundImageLocation = new System.Drawing.Point(730, 0);
 			this.tbfilenm.Text = Wrapper.FileName;
 			if (Wrapper.FileDescriptor.Instance == 13)
+			{
 				this.lbType.Text = "Type: Walls";
+			}
 			else if (Wrapper.FileDescriptor.Instance == 14)
+			{
 				this.lbType.Text = "Type: Floor Coverings";
+			}
 			else
+			{
 				this.lbType.Text = "";
+			}
+
 			fillimup();
 			holde = false;
 		}
@@ -66,7 +73,10 @@ namespace SimPe.Plugin
 		private void tbfilenm_TextChanged(object sender, EventArgs e)
 		{
 			if (holde)
+			{
 				return;
+			}
+
 			Wrapper.FileName = tbfilenm.Text;
 			this.CanCommit = true;
 			Wrapper.Changed = true;
@@ -75,12 +85,18 @@ namespace SimPe.Plugin
 		private void rtbStrings_TextChanged(object sender, EventArgs e)
 		{
 			if (holde)
+			{
 				return;
+			}
+
 			int i = 0;
 			foreach (string clit in rtbStrings.Lines)
 			{
 				if (i == Wrapper.Strings.Length)
+				{
 					break;
+				}
+
 				Wrapper.Strings[i] = clit;
 				i++;
 			}
@@ -91,7 +107,10 @@ namespace SimPe.Plugin
 		private void btshowim_Click(object sender, EventArgs e)
 		{
 			if (holde)
+			{
 				return;
+			}
+
 			if (this.rtbnames.Visible)
 			{
 				this.rtbnames.Visible = false;
@@ -104,7 +123,10 @@ namespace SimPe.Plugin
 				this.rtbnames.Text = "";
 				uint tmpy = 0;
 				if (wallsandfloors.Count < 1)
+				{
 					fildictionary();
+				}
+
 				foreach (string clit in rtbStrings.Lines)
 				{
 					if (clit.Length < 9)
@@ -113,9 +135,13 @@ namespace SimPe.Plugin
 						{
 							tmpy = Helper.HexStringToUInt(clit);
 							if (wallsandfloors.ContainsKey(tmpy) && tmpy > 0)
+							{
 								rtbnames.Text += wallsandfloors[tmpy] + "\r\n";
+							}
 							else
+							{
 								rtbnames.Text += clit + "\r\n";
+							}
 						}
 						catch
 						{
@@ -123,7 +149,9 @@ namespace SimPe.Plugin
 						}
 					}
 					else
+					{
 						rtbnames.Text += clit + "\r\n";
+					}
 				}
 				this.BackgroundImageLocation = new System.Drawing.Point(930, 0);
 				this.rtbnames.Visible = true;
@@ -167,10 +195,12 @@ namespace SimPe.Plugin
 							colour.GetSaveItem("guid").UIntegerValue
 						)
 					)
+					{
 						wallsandfloors.Add(
 							colour.GetSaveItem("guid").UIntegerValue,
 							colour.GetSaveItem("name").StringValue
 						);
+					}
 				}
 				catch { }
 				Wait.Progress += 1;

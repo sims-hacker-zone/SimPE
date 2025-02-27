@@ -169,7 +169,9 @@ namespace SimPe.Plugin.Anim
 			{
 				add = ct % 2;
 				if (((add + ct) % 4) == 0)
+				{
 					add += 2;
+				}
 			}
 
 			return add;
@@ -184,7 +186,9 @@ namespace SimPe.Plugin.Anim
 		{
 			int add = Align(ct);
 			for (int i = 0; i < add; i++)
+			{
 				reader.ReadByte();
+			}
 		}
 
 		/// <summary>
@@ -196,7 +200,9 @@ namespace SimPe.Plugin.Anim
 		{
 			int add = Align(ct);
 			for (int i = 0; i < add; i++)
+			{
 				writer.Write((byte)i);
+			}
 		}
 		#endregion
 
@@ -208,9 +214,14 @@ namespace SimPe.Plugin.Anim
 
 			HeaderBytes = reader.ReadBytes(HeaderBytes.Length);
 			for (int i = 0; i < HeaderInts.Length; i++)
+			{
 				HeaderInts[i] = reader.ReadUInt32();
+			}
+
 			for (int i = 0; i < HeaderFloats.Length; i++)
+			{
 				HeaderFloats[i] = reader.ReadSingle();
+			}
 
 			ObjName = Helper.ToString(reader.ReadBytes(HeaderBytes[5]));
 			reader.ReadByte(); //read the terminating 0
@@ -229,32 +240,50 @@ namespace SimPe.Plugin.Anim
 				MeshBlock[i].UnserializeData(reader);
 			}
 			for (int i = 0; i < MeshBlock.Length; i++)
+			{
 				len += MeshBlock[i].UnserializeName(reader);
+			}
+
 			Align(reader, len);
 
 			//--- part2 ---
 			len = 0;
 			for (int i = 0; i < MeshBlock.Length; i++)
+			{
 				MeshBlock[i].UnserializePart2Data(reader);
+			}
+
 			for (int i = 0; i < MeshBlock.Length; i++)
+			{
 				len += MeshBlock[i].UnserializePart2Name(reader);
+			}
+
 			Align(reader, len);
 
 			try
 			{
 				//--- part3 ---
 				for (int i = 0; i < MeshBlock.Length; i++)
+				{
 					MeshBlock[i].UnserializePart3Data(reader);
+				}
+
 				for (int i = 0; i < MeshBlock.Length; i++)
+				{
 					MeshBlock[i].UnserializePart3AddonData(reader);
+				}
 
 				//--- part4 ---
 				for (int i = 0; i < MeshBlock.Length; i++)
+				{
 					MeshBlock[i].UnserializePart4Data(reader);
+				}
 
 				//--- part5 ---
 				for (int i = 0; i < MeshBlock.Length; i++)
+				{
 					MeshBlock[i].UnserializePart5Data(reader);
+				}
 
 				//--- part6 ---
 				ab6 = new AnimBlock6[ct2];
@@ -265,7 +294,9 @@ namespace SimPe.Plugin.Anim
 					ab6[i].UnserializeData(reader);
 				}
 				for (int i = 0; i < ab6.Length; i++)
+				{
 					len += ab6[i].UnserializeName(reader);
+				}
 			}
 			catch { }
 
@@ -289,15 +320,26 @@ namespace SimPe.Plugin.Anim
 			HeaderBytes[5] = (byte)bobjname.Length;
 
 			for (int i = 0; i < HeaderInts.Length; i++)
+			{
 				writer.Write(HeaderInts[i]);
+			}
+
 			for (int i = 0; i < HeaderFloats.Length; i++)
+			{
 				writer.Write(HeaderFloats[i]);
+			}
 
 			foreach (byte b in bobjname)
+			{
 				writer.Write(b);
+			}
+
 			writer.Write((byte)0);
 			foreach (byte b in bobjmod)
+			{
 				writer.Write(b);
+			}
+
 			writer.Write((byte)0);
 
 			int ct = HeaderBytes[0] + HeaderBytes[5];
@@ -306,38 +348,64 @@ namespace SimPe.Plugin.Anim
 			//--- part1 ---
 			int len = 0;
 			for (int i = 0; i < MeshBlock.Length; i++)
+			{
 				MeshBlock[i].SerializeData(writer);
+			}
+
 			for (int i = 0; i < MeshBlock.Length; i++)
+			{
 				len += MeshBlock[i].SerializeName(writer);
+			}
+
 			Align(writer, len);
 
 			//--- part2 ---
 			len = 0;
 			for (int i = 0; i < MeshBlock.Length; i++)
+			{
 				MeshBlock[i].SerializePart2Data(writer);
+			}
+
 			for (int i = 0; i < MeshBlock.Length; i++)
+			{
 				len += MeshBlock[i].SerializePart2Name(writer);
+			}
+
 			Align(writer, len);
 
 			//--- part3 ---
 			for (int i = 0; i < MeshBlock.Length; i++)
+			{
 				MeshBlock[i].SerializePart3Data(writer);
+			}
+
 			for (int i = 0; i < MeshBlock.Length; i++)
+			{
 				MeshBlock[i].SerializePart3AddonData(writer);
+			}
 
 			//--- part4 ---
 			for (int i = 0; i < MeshBlock.Length; i++)
+			{
 				MeshBlock[i].SerializePart4Data(writer);
+			}
 
 			//--- part5 ---
 			for (int i = 0; i < MeshBlock.Length; i++)
+			{
 				MeshBlock[i].SerializePart5Data(writer);
+			}
 
 			//--- part6 ---
 			for (int i = 0; i < ab6.Length; i++)
+			{
 				ab6[i].SerializeData(writer);
+			}
+
 			for (int i = 0; i < ab6.Length; i++)
+			{
 				ab6[i].SerializeName(writer);
+			}
 
 			writer.Write(Data);
 		}
@@ -350,7 +418,10 @@ namespace SimPe.Plugin.Anim
 			get
 			{
 				if (form == null)
+				{
 					form = new fAnimResourceConst();
+				}
+
 				return form.tMesh;
 			}
 		}
@@ -362,7 +433,9 @@ namespace SimPe.Plugin.Anim
 		protected override void InitTabPage()
 		{
 			if (form == null)
+			{
 				form = new fAnimResourceConst();
+			}
 
 			form.tv.Nodes.Clear();
 			System.Windows.Forms.TreeNode btn = new System.Windows.Forms.TreeNode(
@@ -483,7 +556,10 @@ namespace SimPe.Plugin.Anim
 		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
 		{
 			if (form == null)
+			{
 				form = new fAnimResourceConst();
+			}
+
 			base.ExtendTabControl(tc);
 
 			form.tMisc.Tag = this;
@@ -491,7 +567,9 @@ namespace SimPe.Plugin.Anim
 
 			form.tAnimResourceConst.Tag = this;
 			if (UserVerification.HaveUserId)
+			{
 				tc.TabPages.Add(form.tAnimResourceConst);
+			}
 		}
 
 		#region IDisposable Member
@@ -499,7 +577,9 @@ namespace SimPe.Plugin.Anim
 		public override void Dispose()
 		{
 			if (this.form != null)
+			{
 				this.form.Dispose();
+			}
 		}
 
 		#endregion

@@ -97,7 +97,9 @@ namespace SimPe.Cache
 		{
 			Version = reader.ReadByte();
 			if (Version > VERSION)
+			{
 				throw new CacheException("Unknown CacheItem Version.", null, Version);
+			}
 
 			ModelName = reader.ReadString();
 			Family = reader.ReadString();

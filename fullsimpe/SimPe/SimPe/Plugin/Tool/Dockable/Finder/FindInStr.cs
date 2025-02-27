@@ -65,7 +65,9 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 			reg = null;
 
 			if (compareType == CompareType.Unknown || name == "")
+			{
 				return false;
+			}
 
 			try
 			{
@@ -77,7 +79,9 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 			catch (Exception ex)
 			{
 				if (this.cbType.SelectedIndex == 4)
+				{
 					Helper.ExceptionMessage(ex);
+				}
 			}
 
 			return true;
@@ -92,7 +96,9 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 				pfd.Type != Data.MetaData.STRING_FILE
 				&& pfd.Type != Data.MetaData.CTSS_FILE
 			)
+			{
 				return;
+			}
 
 			SimPe.PackedFiles.Wrapper.Str str = new SimPe.PackedFiles.Wrapper.Str();
 			str.ProcessData(pfd, pkg);

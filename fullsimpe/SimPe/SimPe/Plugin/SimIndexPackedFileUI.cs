@@ -28,8 +28,10 @@ namespace SimPe.Plugin
 			scinstance = Wrapper.Sciname;
 			scinst.Text = "0x" + Helper.HexString(scinstance);
 			if (!Wrapper.IsOK)
+			{
 				this.desclbl.Text =
 					"The Sim Creation Index\r\n Is only used in a Primary Neighourhood\r\nnot here!";
+			}
 		}
 
 		public override void OnCommit()

@@ -1160,12 +1160,18 @@ namespace SimPe.PackedFiles.UserInterface
 					}
 					fami.Members = members;
 					if (this.tblotinst.Text != "Sim Bin")
+					{
 						fami.LotInstance = Convert.ToUInt32(this.tblotinst.Text, 16);
+					}
 					else
+					{
 						fami.LotInstance = 0;
+					}
 					//name was changed
 					if (tbname.Text != fami.Name)
+					{
 						fami.Name = tbname.Text;
+					}
 
 					wrapper.SynchronizeUserData();
 					MessageBox.Show(Localization.Manager.GetString("commited"));
@@ -1192,7 +1198,10 @@ namespace SimPe.PackedFiles.UserInterface
 				Data.Alias a = (Data.Alias)lbmembers.SelectedItem;
 				SimPe.PackedFiles.Wrapper.SDesc sdsc = fami.GetDescriptionFile(a.Id);
 				if (sdsc == null)
+				{
 					return;
+				}
+
 				Interfaces.Files.IPackedFileDescriptor pfd = sdsc.Package.NewDescriptor(
 					0xAACE2EFB,
 					sdsc.FileDescriptor.SubType,
@@ -1214,8 +1223,10 @@ namespace SimPe.PackedFiles.UserInterface
 
 					xml.Text = "";
 					foreach (string clit in rtb.Lines)
+					{
 						xml.Text += clit + "\r\n"; // RichTextBox converts line breaks to seperate arrays, we need to put the line breaks back (CJH)
-												   // xml.Text = rtb.Text;
+					}
+					// xml.Text = rtb.Text;
 					wrapper.SynchronizeUserData();
 					MessageBox.Show(Localization.Manager.GetString("commited"));
 				}
@@ -1241,10 +1252,14 @@ namespace SimPe.PackedFiles.UserInterface
 							System.Windows.Forms.MessageBoxButtons.OKCancel
 						) == System.Windows.Forms.DialogResult.Cancel
 					)
+					{
 						return;
+					}
 				}
 				if (!this.lbmembers.Items.Contains(cbsims.Items[cbsims.SelectedIndex]))
+				{
 					this.lbmembers.Items.Add(cbsims.Items[cbsims.SelectedIndex]);
+				}
 			}
 		}
 
@@ -1421,7 +1436,10 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			this.btdeletetie.Enabled = false;
 			if (this.cbtiesims.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			FamilyTieSim sim = (FamilyTieSim)cbtiesims.Items[cbtiesims.SelectedIndex];
 
 			this.lbties.Items.Clear();
@@ -1436,10 +1454,16 @@ namespace SimPe.PackedFiles.UserInterface
 			this.btaddtie.Enabled = false;
 			this.btnewtie.Enabled = false;
 			if (this.cballtieablesims.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			this.btnewtie.Enabled = true;
 			if (this.cbtiesims.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			this.btaddtie.Enabled = true;
 		}
 
@@ -1447,16 +1471,24 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			this.btaddtie.Enabled = false;
 			if (this.lbties.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			lbties.Items.Remove(lbties.Items[lbties.SelectedIndex]);
 		}
 
 		private void AddTieClick(object sender, System.EventArgs e)
 		{
 			if (this.cballtieablesims.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			if (this.cbtietype.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			try
 			{
@@ -1483,7 +1515,9 @@ namespace SimPe.PackedFiles.UserInterface
 		)
 		{
 			if (this.cbtiesims.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			if (wrapper != null)
 			{
@@ -1515,7 +1549,10 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			this.btdeletetie.Enabled = false;
 			if (this.lbties.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			this.btdeletetie.Enabled = true;
 		}
 
@@ -1551,7 +1588,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void AddSimToTiesClick(object sender, System.EventArgs e)
 		{
 			if (this.cballtieablesims.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			FamilyTieSim sim = (FamilyTieSim)
 				this.cballtieablesims.Items[cballtieablesims.SelectedIndex];
 			sim.Ties = new FamilyTieItem[0];
@@ -1635,14 +1675,21 @@ namespace SimPe.PackedFiles.UserInterface
 					Boolset bs1 = srel.RelationState.Value;
 					Boolset bs2 = srel.RelationState2.Value;
 					for (int i = 0; i < ltcb.Count; i++)
+					{
 						if (ltcb[i] != null)
+						{
 							ltcb[i].Checked = ((Boolset)(i < 16 ? bs1 : bs2))[i & 0x0f];
+						}
+					}
+
 					srel.RelationState.Value = bs1;
 					srel.RelationState2.Value = bs2;
 
 					if (cbfamtype.SelectedIndex > 0)
+					{
 						srel.FamilyRelation = (Data.LocalizedRelationshipTypes)
 							cbfamtype.Items[cbfamtype.SelectedIndex];
+					}
 
 					wrapper.SynchronizeUserData();
 					MessageBox.Show(Localization.Manager.GetString("commited"));
@@ -1713,7 +1760,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void FlagChanged(object sender, System.EventArgs e)
 		{
 			if (tbflag.Tag != null)
+			{
 				return;
+			}
+
 			tbflag.Tag = true;
 			try
 			{
@@ -1736,7 +1786,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void ChangeFlags(object sender, System.EventArgs e)
 		{
 			if (tbflag.Tag != null)
+			{
 				return;
+			}
+
 			tbflag.Tag = true;
 			try
 			{
@@ -1791,7 +1844,10 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				SimPe.PackedFiles.Wrapper.Fami fami = (Wrapper.Fami)wrapper;
 				if (fami.LotInstance == 0)
+				{
 					return;
+				}
+
 				Interfaces.Files.IPackedFileDescriptor pfd = fami.Package.NewDescriptor(
 					0x0BF999E7,
 					0,
@@ -1813,7 +1869,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void ChangedMoney(object sender, EventArgs e)
 		{
 			if (intern)
+			{
 				return;
+			}
+
 			intern = true;
 			SimPe.PackedFiles.Wrapper.Fami fami = (Wrapper.Fami)wrapper;
 			TextBox tb = (TextBox)sender;
@@ -1821,16 +1880,25 @@ namespace SimPe.PackedFiles.UserInterface
 			fami.CastAwayFood = fami.Money;
 
 			if (tb != tbmoney)
+			{
 				tbmoney.Text = fami.Money.ToString();
+			}
+
 			if (tb != tbcafood1)
+			{
 				tbcafood1.Text = fami.CastAwayFood.ToString();
+			}
+
 			intern = false;
 		}
 
 		private void ChangedBMoney(object sender, EventArgs e)
 		{
 			if (intern)
+			{
 				return;
+			}
+
 			intern = true;
 			SimPe.PackedFiles.Wrapper.Fami fami = (Wrapper.Fami)wrapper;
 			TextBox tb = (TextBox)sender;
@@ -1838,9 +1906,15 @@ namespace SimPe.PackedFiles.UserInterface
 			fami.CastAwayFoodDecay = fami.BusinessMoney;
 
 			if (tb != tbbmoney)
+			{
 				tbbmoney.Text = fami.BusinessMoney.ToString();
+			}
+
 			if (tb != tbcaunk)
+			{
 				tbcaunk.Text = fami.CastAwayFoodDecay.ToString();
+			}
+
 			intern = false;
 		}
 	}

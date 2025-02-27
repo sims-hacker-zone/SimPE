@@ -199,9 +199,13 @@ namespace SimPe.Plugin
 			}
 
 			if (Version >= 0x05)
+			{
 				maxfears = reader.ReadUInt32();
+			}
 			else
+			{
 				maxfears = 3;
+			}
 
 			Fears = new WantItem[reader.ReadUInt32()];
 			for (int i = 0; i < Fears.Length; i++)
@@ -211,7 +215,10 @@ namespace SimPe.Plugin
 			}
 
 			if (Version >= 0x05)
+			{
 				unknown5 = reader.ReadUInt32();
+			}
+
 			unknown1 = reader.ReadUInt32();
 			unknown2 = reader.ReadUInt32();
 
@@ -262,9 +269,13 @@ namespace SimPe.Plugin
 			}
 
 			if (Version >= 0x05)
+			{
 				writer.Write(maxfears);
+			}
 			else
+			{
 				maxfears = 3;
+			}
 
 			writer.Write((uint)Fears.Length);
 			for (int i = 0; i < Fears.Length; i++)
@@ -273,7 +284,10 @@ namespace SimPe.Plugin
 			}
 
 			if (Version >= 0x05)
+			{
 				writer.Write(unknown5);
+			}
+
 			writer.Write(unknown1);
 			writer.Write(unknown2);
 

@@ -85,7 +85,10 @@ namespace SimPe.Plugin.Anim
 			AnimationAxisTransform b = GetBlock((byte)(part % 3));
 
 			if (b == null)
+			{
 				return new AnimationAxisTransform(null, -1);
+			}
+
 			return b;
 		}
 
@@ -221,11 +224,19 @@ namespace SimPe.Plugin.Anim
 				{
 					tc = value;
 					if (Blocks[0] != null)
+					{
 						Blocks[0].TimeCode = value;
+					}
+
 					if (Blocks[1] != null)
+					{
 						Blocks[1].TimeCode = value;
+					}
+
 					if (Blocks[2] != null)
+					{
 						Blocks[2].TimeCode = value;
+					}
 				}
 			}
 		}
@@ -242,21 +253,38 @@ namespace SimPe.Plugin.Anim
 			get
 			{
 				if (Blocks[0] != null)
+				{
 					return Blocks[0].Linear;
+				}
+
 				if (Blocks[1] != null)
+				{
 					return Blocks[1].Linear;
+				}
+
 				if (Blocks[2] != null)
+				{
 					return Blocks[2].Linear;
+				}
+
 				return false;
 			}
 			set
 			{
 				if (Blocks[0] != null)
+				{
 					Blocks[0].Linear = value;
+				}
+
 				if (Blocks[1] != null)
+				{
 					Blocks[1].Linear = value;
+				}
+
 				if (Blocks[2] != null)
+				{
 					Blocks[2].Linear = value;
+				}
 			}
 		}
 

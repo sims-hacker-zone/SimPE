@@ -67,7 +67,10 @@ namespace Ambertation.Windows.Forms.Graph
 			get
 			{
 				if (docks == null)
+				{
 					this.SetupDocks();
+				}
+
 				return docks;
 			}
 		}
@@ -210,13 +213,17 @@ namespace Ambertation.Windows.Forms.Graph
 		void SetLinkLineMode()
 		{
 			foreach (LinkGraphic lc in lcmap.Values)
+			{
 				lc.LineMode = lm;
+			}
 		}
 
 		void SetLinkQuality()
 		{
 			foreach (LinkGraphic lc in lcmap.Values)
+			{
 				lc.Quality = this.Quality;
+			}
 		}
 
 		Hashtable lcmap;
@@ -232,53 +239,71 @@ namespace Ambertation.Windows.Forms.Graph
 		void SendAllLinksToFront()
 		{
 			foreach (LinkGraphic lc in lcmap.Values)
+			{
 				lc.SendToFront();
+			}
 		}
 
 		void SendAllParentLinksToFront()
 		{
 			foreach (GraphItemBase gi in this.ParentItems)
+			{
 				gi.SendAllChildLinksToFront(this);
+			}
 		}
 
 		protected void SendAllChildLinksToFront(GraphItemBase sender)
 		{
 			foreach (GraphItemBase lg in this.ChildItems)
+			{
 				if (lg == sender)
 				{
 					LinkGraphic lc = (LinkGraphic)lcmap[lg];
 					if (lc != null)
+					{
 						lc.SendToFront();
+					}
 				}
+			}
 		}
 
 		void SendAllChildsToFront()
 		{
 			foreach (GraphItemBase gi in this.ChildItems)
+			{
 				gi.SendToFront();
+			}
 		}
 
 		void SendAllParentsToFront()
 		{
 			foreach (GraphItemBase gi in this.ParentItems)
+			{
 				gi.SendToFront();
+			}
 		}
 
 		protected void SetChildLinkColor(GraphItemBase sender, Color cl)
 		{
 			foreach (GraphItemBase lg in this.ChildItems)
+			{
 				if (lg == sender)
 				{
 					LinkGraphic lc = (LinkGraphic)lcmap[lg];
 					if (lc != null)
+					{
 						lc.ForeColor = cl;
+					}
 				}
+			}
 		}
 
 		protected void SetParentLinkColors(Color cl)
 		{
 			foreach (GraphItemBase lg in this.ParentItems)
+			{
 				lg.SetChildLinkColor(this, cl);
+			}
 		}
 
 		Color CurrentLinkColor
@@ -286,7 +311,10 @@ namespace Ambertation.Windows.Forms.Graph
 			get
 			{
 				if (Focused)
+				{
 					return this.ActiveOutgoingLinkColor;
+				}
+
 				return this.LinkColor;
 			}
 		}
@@ -312,7 +340,10 @@ namespace Ambertation.Windows.Forms.Graph
 		protected virtual void SetupDocks()
 		{
 			if (docks == null)
+			{
 				InitDocks();
+			}
+
 			docks[0].X = Left;
 			docks[0].Y = Top + Height / 2;
 			docks[1].X = Left + Width;
@@ -334,9 +365,14 @@ namespace Ambertation.Windows.Forms.Graph
 		private void childs_ItemsChanged(GraphItems sender, GraphItemChangedEventArgs e)
 		{
 			if (e.Added && sender.Count == 1)
+			{
 				Refresh();
+			}
+
 			if (e.Removed && sender.Count == 0)
+			{
 				Refresh();
+			}
 
 			if (e.Added)
 			{
@@ -366,11 +402,19 @@ namespace Ambertation.Windows.Forms.Graph
 				}
 			}
 			if (e.Internal)
+			{
 				return;
+			}
+
 			if (e.Added)
+			{
 				e.GraphItem.ParentItems.SilentAdd(this, e.Text, true);
+			}
+
 			if (e.Removed)
+			{
 				e.GraphItem.ParentItems.SilentRemove(this, true);
+			}
 		}
 
 		private void parents_ItemsChanged(
@@ -379,26 +423,43 @@ namespace Ambertation.Windows.Forms.Graph
 		)
 		{
 			if (e.Added && sender.Count == 1)
+			{
 				Refresh();
+			}
+
 			if (e.Removed && sender.Count == 0)
+			{
 				Refresh();
+			}
 
 			if (e.Internal)
+			{
 				return;
+			}
+
 			if (e.Added)
+			{
 				e.GraphItem.ChildItems.SilentAdd(this, e.Text, true);
+			}
+
 			if (e.Removed)
+			{
 				e.GraphItem.ChildItems.SilentRemove(this, true);
+			}
 		}
 
 		internal override void ChangedParent()
 		{
 			base.ChangedParent();
 			if (Parent != null)
+			{
 				LineMode = Parent.LineMode;
+			}
 
 			foreach (LinkGraphic lc in lcmap.Values)
+			{
 				lc.Parent = this.Parent;
+			}
 		}
 
 		public LinkGraphic[] GetChildLinks()
@@ -406,7 +467,10 @@ namespace Ambertation.Windows.Forms.Graph
 			LinkGraphic[] ret = new LinkGraphic[lcmap.Count];
 			int ct = 0;
 			foreach (LinkGraphic lg in lcmap.Values)
+			{
 				ret[ct++] = lg;
+			}
+
 			return ret;
 		}
 
@@ -427,12 +491,16 @@ namespace Ambertation.Windows.Forms.Graph
 			GraphItemBase[] gibs = new GraphItemBase[ChildItems.Length];
 			ChildItems.CopyTo(gibs);
 			foreach (GraphItemBase gib in gibs)
+			{
 				gib.ParentItems.Remove(this);
+			}
 
 			gibs = new GraphItemBase[ParentItems.Length];
 			ParentItems.CopyTo(gibs);
 			foreach (GraphItemBase gib in gibs)
+			{
 				gib.ChildItems.Remove(this);
+			}
 
 			//foreach (GraphItemBase gib in childs) gib.Dispose();
 			ChildItems.Clear();
@@ -457,12 +525,16 @@ namespace Ambertation.Windows.Forms.Graph
 		{
 			LinkGraphic[] lgs = GetChildLinks();
 			foreach (LinkGraphic lg in lgs)
+			{
 				lg.Parent = null;
+			}
 
 			GraphItemBase[] gibs = new GraphItemBase[ParentItems.Length];
 			ParentItems.CopyTo(gibs);
 			foreach (GraphItemBase gib in gibs)
+			{
 				gib.ChildItems.Remove(this);
+			}
 
 			base.RemoveFromParent();
 		}
@@ -471,7 +543,9 @@ namespace Ambertation.Windows.Forms.Graph
 		{
 			LinkGraphic[] lgs = GetChildLinks();
 			foreach (LinkGraphic lg in lgs)
+			{
 				this.Parent.LinkItems.Add(lg);
+			}
 
 			base.AddToParent();
 		}
@@ -511,13 +585,22 @@ namespace Ambertation.Windows.Forms.Graph
 			for (int i = 0; i < d1.Length; i++)
 			{
 				if (lsa1 == LinkControlSnapAnchor.OnlyCenter && !d1[i].IsCenterDock)
+				{
 					continue;
+				}
+
 				for (int j = d2.Length - 1; j >= 0; j--)
 				{
 					if (d1[i].IsSideDock != d2[j].IsSideDock)
+					{
 						continue;
+					}
+
 					if (lsa2 == LinkControlSnapAnchor.OnlyCenter && !d2[j].IsCenterDock)
+					{
 						continue;
+					}
+
 					double len = d1[i].Distance(d2[j]);
 					if (len - dist <= mindelta)
 					{

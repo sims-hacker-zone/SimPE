@@ -43,16 +43,22 @@ namespace SimPe.Plugin.Tool
 		public void Execute(object sender, ResourceEventArgs es)
 		{
 			if (!ChangeEnabledStateEventHandler(sender, es))
+			{
 				return;
+			}
 
 			if (es.Loaded)
+			{
 				SimPe.Packages.Sims2CommunityPack.ShowSimpleSaveDialog(
 					new SimPe.Packages.GeneratableFile[] { es.LoadedPackage.Package }
 				);
+			}
 			else
+			{
 				SimPe.Packages.Sims2CommunityPack.ShowSimpleSaveDialog(
 					new SimPe.Packages.GeneratableFile[0]
 				);
+			}
 		}
 
 		public override string ToString()

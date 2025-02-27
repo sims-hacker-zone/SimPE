@@ -297,7 +297,9 @@ namespace Ambertation.Drawing
 			ArrayList cmap = new ArrayList();
 
 			for (int r = minr; r < maxr; r++)
+			{
 				for (int g = ming; g < maxg; g++)
+				{
 					for (int b = minb; b < maxb; b++)
 					{
 						ColorMap c = new ColorMap();
@@ -305,6 +307,8 @@ namespace Ambertation.Drawing
 						c.OldColor = Color.FromArgb(r, g, b);
 						cmap.Add(c);
 					}
+				}
+			}
 
 			ColorMap[] res = new ColorMap[cmap.Count];
 			cmap.CopyTo(res);
@@ -327,11 +331,15 @@ namespace Ambertation.Drawing
 			ArrayList cmap = new ArrayList();
 
 			for (int r = minr; r < maxr; r++)
+			{
 				for (int g = ming; g < maxg; g++)
+				{
 					for (int b = minb; b < maxb; b++)
 					{
 						cmap.Add(Color.FromArgb(r, g, b));
 					}
+				}
+			}
 
 			return cmap;
 		}
@@ -432,9 +440,13 @@ namespace Ambertation.Drawing
 		{
 			Bitmap bm = null;
 			if (!save)
+			{
 				bm = new Bitmap(img.Width, img.Height);
+			}
 			else
+			{
 				bm = new Bitmap(img.Width + 2, img.Height + 2);
+			}
 
 			System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(bm);
 			if (save)
@@ -454,7 +466,9 @@ namespace Ambertation.Drawing
 				);
 			}
 			else
+			{
 				g.DrawImageUnscaled(img, 0, 0);
+			}
 
 			g.Dispose();
 
@@ -474,7 +488,9 @@ namespace Ambertation.Drawing
 		public static Image ScaleImage(Image img, int width, int height, bool quality)
 		{
 			if (img == null)
+			{
 				return img;
+			}
 
 			Bitmap bm = new Bitmap(width, height);
 

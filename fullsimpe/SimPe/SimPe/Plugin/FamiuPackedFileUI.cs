@@ -50,6 +50,7 @@ namespace SimPe.Plugin
 
 			this.CanCommit = Wrapper.isnew;
 			if (Wrapper.FamiThumb != null)
+			{
 				pbImage.Image =
 					Ambertation.Windows.Forms.Graph.ImagePanel.CreateThumbnail(
 						Wrapper.FamiThumb,
@@ -63,8 +64,11 @@ namespace SimPe.Plugin
 						4,
 						0
 					);
+			}
 			else
+			{
 				pbImage.Image = null;
+			}
 
 			this.HeaderText = Wrapper.Name + " Family History";
 
@@ -131,7 +135,9 @@ namespace SimPe.Plugin
 						);
 						n++;
 						if (n > goodsections)
+						{
 							break; // catch Index was outside the bounds of the array Exception
+						}
 					}
 				}
 			}
@@ -171,7 +177,10 @@ namespace SimPe.Plugin
 		private void btprev_Click(object sender, EventArgs e)
 		{
 			if (sections == 0)
+			{
 				return;
+			}
+
 			if (currentsection > 1)
 			{
 				currentsection--;
@@ -188,7 +197,10 @@ namespace SimPe.Plugin
 		private void btnext_Click(object sender, EventArgs e)
 		{
 			if (sections == 0)
+			{
 				return;
+			}
+
 			if (currentsection < sections)
 			{
 				currentsection++;
@@ -205,14 +217,22 @@ namespace SimPe.Plugin
 		private void buttonset()
 		{
 			if (currentsection == 1)
+			{
 				btprev.Text = "<- Last Day";
+			}
 			else
+			{
 				btprev.Text = "<- Previous Day";
+			}
 
 			if (currentsection == sections)
+			{
 				btnext.Text = "First Day ->";
+			}
 			else
+			{
 				btnext.Text = "Next Day ->";
+			}
 		}
 
 		private void filimuptext()
@@ -228,27 +248,31 @@ namespace SimPe.Plugin
 			if (shwraw)
 			{
 				if (TestIsValid(currentsectionindex))
+				{
 					gtname.Text =
 						"~ Valid Data Block ~ Number "
 						+ Convert.ToString(currentsection)
 						+ "\r\n";
+				}
 				else
+				{
 					gtname.Text =
 						"~ Invalid Data Block ~ Number "
 						+ Convert.ToString(currentsection)
 						+ "\r\n";
+				}
 				/* Only Unknown values
-				gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 7]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 8]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 9]) + ")\r\n";
-				gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 10]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 11]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 12]) + ")\r\n";
-				gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 13]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 14]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 15]) + ")\r\n";
-				gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 16]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 17]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 18]) + ")\r\n";
-				gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 19]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 20]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 21]) + ")\r\n";
-				gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 22]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 23]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 24]) + ")\r\n";
-				gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 25]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 26]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 27]) + ")\r\n";
-				gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 28]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 29]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 30]) + ")\r\n";
-				gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 31]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 32]) + ")\r\n";
-				gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 36]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 37]) + ")\r\n";
-				*/
+gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 7]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 8]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 9]) + ")\r\n";
+gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 10]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 11]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 12]) + ")\r\n";
+gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 13]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 14]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 15]) + ")\r\n";
+gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 16]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 17]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 18]) + ")\r\n";
+gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 19]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 20]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 21]) + ")\r\n";
+gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 22]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 23]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 24]) + ")\r\n";
+gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 25]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 26]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 27]) + ")\r\n";
+gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 28]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 29]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 30]) + ")\r\n";
+gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 31]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 32]) + ")\r\n";
+gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 36]) + ")  -  (0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 37]) + ")\r\n";
+*/
 				for (int i = 0; i < 42; i += 3)
 				{
 					gtname.Text +=
@@ -304,11 +328,16 @@ namespace SimPe.Plugin
 						+ Convert.ToString(filedata[(currentsectionindex * 42) + 5])
 						+ "\r\n\r\n"; // byte pair 6
 					if (Wrapper.Version == 86)
+					{
 						gtname.Text +=
 							"Resources = " + Convert.ToString(FamFund) + "\r\n";
+					}
 					else
+					{
 						gtname.Text +=
 							"Family Funds = " + FamFund.ToString("C0") + "\r\n";
+					}
+
 					gtname.Text +=
 						"Family Friends = "
 						+ Convert.ToString(filedata[(currentsectionindex * 42) + 35])
@@ -334,9 +363,15 @@ namespace SimPe.Plugin
 				filedata[currentsectionindex * 42] == 0
 				&& !Helper.WindowsRegistry.AllowLotZero
 			)
+			{
 				return false; // Lot Number, only sims in a playable family could age a day
+			}
+
 			if (filedata[(currentsectionindex * 42) + 1] > 32)
+			{
 				return false; // too many sims to be correct
+			}
+
 			if (
 				filedata[(currentsectionindex * 42) + 2]
 					+ filedata[(currentsectionindex * 42) + 3]
@@ -344,7 +379,10 @@ namespace SimPe.Plugin
 					+ filedata[(currentsectionindex * 42) + 5]
 				!= filedata[(currentsectionindex * 42) + 1]
 			)
+			{
 				return false; // bad checksum
+			}
+
 			return true;
 		}
 
@@ -354,7 +392,10 @@ namespace SimPe.Plugin
 			int n = 0;
 			int currentsectionindex = currentsection - 1;
 			if (filedata[(currentsectionindex * 42)] > 0)
+			{
 				goodsections--;
+			}
+
 			sections--;
 			Array.Resize<ushort>(ref filedata, sections * 42);
 			foreach (ushort k in Wrapper.FVal)
@@ -475,7 +516,10 @@ namespace SimPe.Plugin
 			int currentsectionindex = currentsection - 1;
 			bool wasgood = false;
 			if (filedata[(currentsectionindex * 42)] > 0)
+			{
 				wasgood = true;
+			}
+
 			try
 			{
 				int FamFund = Convert.ToInt32(tbFunds.Text);
@@ -514,9 +558,14 @@ namespace SimPe.Plugin
 					tbFriends.Text
 				);
 				if (filedata[(currentsectionindex * 42)] > 0 && !wasgood)
+				{
 					goodsections++;
+				}
 				else if (filedata[(currentsectionindex * 42)] == 0 && wasgood)
+				{
 					goodsections--;
+				}
+
 				this.CanCommit = true;
 				RefreshGraphs();
 				filimuptext();
@@ -569,7 +618,10 @@ namespace SimPe.Plugin
 					+ filedata[(currentsectionindex * 42) + 5]
 				);
 				for (int j = 6; j < 42; j++)
+				{
 					filedata[(currentsectionindex * 42) + j] = 0;
+				}
+
 				filedata[(currentsectionindex * 42) + 33] = Convert.ToUInt16(
 					monee.Substring(4, 4),
 					16
@@ -581,7 +633,10 @@ namespace SimPe.Plugin
 				filedata[(currentsectionindex * 42) + 35] = friendno;
 				filedata[(currentsectionindex * 42) + 38] = 257; // oef marker
 				if (filedata[(currentsectionindex * 42)] > 0)
+				{
 					goodsections++;
+				}
+
 				Wrapper.FVal = filedata;
 				Wrapper.Sections = sections;
 				this.CanCommit = true;

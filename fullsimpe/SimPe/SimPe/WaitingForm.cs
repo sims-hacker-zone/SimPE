@@ -94,7 +94,10 @@ namespace SimPe
 			lock (lockObj)
 			{
 				if (this.image == image)
+				{
 					return;
+				}
+
 				this.image = image;
 				Ambertation.Windows.Forms.APIHelp.SendMessage(
 					myhandle,
@@ -115,7 +118,10 @@ namespace SimPe
 			lock (lockObj)
 			{
 				if (this.Message == message)
+				{
 					return;
+				}
+
 				this.Message = message;
 				Ambertation.Windows.Forms.APIHelp.SendMessage(
 					myhandle,
@@ -160,7 +166,9 @@ namespace SimPe
 						this.Focus();
 					}
 					else
+					{
 						this.Hide();
+					}
 				}
 			}
 			base.WndProc(ref m);

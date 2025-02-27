@@ -101,9 +101,13 @@ namespace SimPe.Plugin
 						ids.Contains(idno.Uid)
 						&& SimPe.PathProvider.Global.EPInstalled < 18
 					)
+					{
 						ps.State = TriState.False;
+					}
 					else
+					{
 						ps.State = TriState.True;
+					}
 				}
 				else
 				{
@@ -127,7 +131,9 @@ namespace SimPe.Plugin
 			if (si.PackageCacheItem.Type == PackageType.Neighbourhood)
 			{
 				if (si.PackageCacheItem.Thumbnail == null)
+				{
 					this.LoadThumbnail(si, ps);
+				}
 
 				//Add the Thumbnail if available
 				if (si.PackageCacheItem.Thumbnail != null)
@@ -228,7 +234,9 @@ namespace SimPe.Plugin
 		)
 		{
 			if (selection == null || SimPe.PathProvider.Global.EPInstalled >= 18)
+			{
 				return;
+			}
 
 			WaitingScreen.Wait();
 			bool chg = false;
@@ -254,7 +262,10 @@ namespace SimPe.Plugin
 							idno.MakeUnique(ids);
 
 							if (ps.Data.Length < 2)
+							{
 								ps.Data = new uint[2];
+							}
+
 							if (idno.Uid != ps.Data[1])
 							{
 								idno.SynchronizeUserData();
@@ -269,7 +280,9 @@ namespace SimPe.Plugin
 				}
 
 				if (chg && this.CallbackFinish != null)
+				{
 					this.CallbackFinish(false, false);
+				}
 			}
 #if !DEBUG
 			catch (Exception ex)

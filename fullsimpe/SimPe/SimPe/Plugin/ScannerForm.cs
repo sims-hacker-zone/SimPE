@@ -146,7 +146,9 @@ namespace SimPe.Plugin
 				if (!uids.Contains(i.Uid))
 				{
 					if (!i.OnTop)
+					{
 						lbscanners.Items.Add(i, i.IsActiveByDefault);
+					}
 					else
 					{
 						lbscanners.Items.Insert(0, i);
@@ -210,9 +212,13 @@ namespace SimPe.Plugin
 			ctrl.Parent = this.pnop;
 
 			if (indent)
+			{
 				ctrl.Left = 16;
+			}
 			else
+			{
 				ctrl.Left = 0;
+			}
 
 			if (ctrl.GetType() == typeof(Panel))
 			{
@@ -223,7 +229,9 @@ namespace SimPe.Plugin
 			ctrl.Top = controltop;
 			controltop += ctrl.Height;
 			if (space)
+			{
 				controltop += 8;
+			}
 
 			ctrl.Visible = true;
 		}
@@ -236,7 +244,9 @@ namespace SimPe.Plugin
 		{
 			System.Windows.Forms.Control ctrl = scanner.OperationControl;
 			if (ctrl == null)
+			{
 				return;
+			}
 
 			Label lb = new Label();
 			lb.AutoSize = true;
@@ -273,7 +283,9 @@ namespace SimPe.Plugin
 		void ShowInfo(ScannerItem si, ListViewItem lvi)
 		{
 			if (si == null)
+			{
 				return;
+			}
 
 			this.cbenable.Tag = true;
 			try
@@ -285,7 +297,9 @@ namespace SimPe.Plugin
 
 				tbflname.Text = si.FileName;
 				if (tbflname.Text.Length > 0)
+				{
 					tbflname.SelectionStart = tbflname.Text.Length - 1;
+				}
 
 				lbname.ForeColor = lvi.ForeColor;
 				lbtype.ForeColor = lvi.ForeColor;
@@ -305,9 +319,11 @@ namespace SimPe.Plugin
 				for (int i = 3; i < lv.Columns.Count; i++)
 				{
 					if (lvi.SubItems[i].Text.Trim() != "")
+					{
 						lbprop.Items.Add(
 							lv.Columns[i].Text + ": " + lvi.SubItems[i].Text
 						);
+					}
 				}
 			}
 			finally
@@ -331,10 +347,17 @@ namespace SimPe.Plugin
 			int ct = files.Length + dfiles.Length + dofiles.Length + tfiles.Length;
 			Scan(files, true, 0, ct, usedscanners);
 			if (!stopClicked)
+			{
 				Scan(dfiles, false, files.Length, ct, usedscanners);
+			}
+
 			if (!stopClicked)
+			{
 				Scan(dofiles, false, files.Length + dfiles.Length, ct, usedscanners);
+			}
+
 			if (!stopClicked)
+			{
 				Scan(
 					tfiles,
 					false,
@@ -342,6 +365,8 @@ namespace SimPe.Plugin
 					ct,
 					usedscanners
 				);
+			}
+
 			pb.Value = 0;
 
 			//issue a recursive Scan
@@ -352,7 +377,9 @@ namespace SimPe.Plugin
 				{
 					Scan(dir, true, usedscanners);
 					if (stopClicked)
+					{
 						break;
+					}
 				}
 			}
 		}
@@ -386,7 +413,9 @@ namespace SimPe.Plugin
 					ScannerItem si = cachefile.LoadItem(file);
 					si.PackageCacheItem.Enabled = enabled;
 					if (WaitingScreen.Running)
+					{
 						WaitingScreen.UpdateMessage(si.PackageCacheItem.Name);
+					}
 
 					//determine Type
 					SimPe.Cache.PackageType pt = si.PackageCacheItem.Type;
@@ -402,7 +431,9 @@ namespace SimPe.Plugin
 								!= SimPe.Cache.PackageType.Undefined
 							)
 						)
+						{
 							break;
+						}
 
 						if (
 							(
@@ -414,11 +445,15 @@ namespace SimPe.Plugin
 								== SimPe.Cache.PackageType.Undefined
 							)
 						)
+						{
 							si.PackageCacheItem.Type = id.GetType(si.Package);
+						}
 					}
 
 					if (pt != si.PackageCacheItem.Type)
+					{
 						cachechg = true;
+					}
 
 					//setup the ListView Item
 					ListViewItem lvi = new ListViewItem();
@@ -428,7 +463,9 @@ namespace SimPe.Plugin
 					lvi.SubItems.Add(si.PackageCacheItem.Type.ToString());
 					lvi.Tag = si;
 					if (!si.PackageCacheItem.Enabled)
+					{
 						lvi.ForeColor = Color.Gray;
+					}
 
 					//run file through available scanners
 					foreach (IScanner s in usedscanners)
@@ -441,19 +478,28 @@ namespace SimPe.Plugin
 						{
 							s.ScanPackage(si, ps, lvi);
 							if (ps.State != SimPe.Cache.TriState.Null)
+							{
 								cachechg = true;
+							}
 						}
 						else
+						{
 							s.UpdateState(si, ps, lvi);
+						}
+
 						if (stopClicked)
+						{
 							break;
+						}
 					}
 
 					lv.Items.Add(lvi);
 
 					Application.DoEvents();
 					if (stopClicked)
+					{
 						break;
+					}
 				}
 				catch (Exception ex)
 				{
@@ -471,11 +517,18 @@ namespace SimPe.Plugin
 		void UpdateList(bool savecache, bool rescan)
 		{
 			if (Helper.WindowsRegistry.UseCache && savecache)
+			{
 				cachefile.Save();
+			}
+
 			if (rescan)
+			{
 				Scan(null, (System.Windows.Forms.LinkLabelLinkClickedEventArgs)null);
+			}
 			else
+			{
 				SelectItem(lv, null);
+			}
 		}
 
 		#region Windows Form Designer generated code
@@ -1180,9 +1233,14 @@ namespace SimPe.Plugin
 			else
 			{
 				if (fbd.SelectedPath == "")
+				{
 					fbd.SelectedPath = PathProvider.SimSavegameFolder;
+				}
+
 				if (fbd.ShowDialog() == DialogResult.OK)
+				{
 					folder = fbd.SelectedPath;
+				}
 			}
 		}
 
@@ -1207,7 +1265,9 @@ namespace SimPe.Plugin
 			{
 				btscan.Enabled = false;
 				if (Helper.WindowsRegistry.UseCache)
+				{
 					cachefile.LoadFiles();
+				}
 
 				//Setup ListView
 				lv.SmallImageList = null;
@@ -1227,7 +1287,9 @@ namespace SimPe.Plugin
 						scanner.EnableControl(true);
 					}
 					else
+					{
 						scanner.EnableControl(false);
+					}
 				}
 
 				SimPe.Plugin.Scanner.AbstractScanner.AssignFileTable();
@@ -1253,13 +1315,18 @@ namespace SimPe.Plugin
 
 				//finish Scanners
 				foreach (IScanner s in scanners)
+				{
 					s.FinishScan();
+				}
+
 				SimPe.Plugin.Scanner.AbstractScanner.DeAssignFileTable();
 
 				try
 				{
 					if (Helper.WindowsRegistry.UseCache && cachechg)
+					{
 						cachefile.Save();
+					}
 				}
 				catch (Exception ex)
 				{
@@ -1283,9 +1350,11 @@ namespace SimPe.Plugin
 			}
 
 			if (errorlog.Trim() != "")
+			{
 				Helper.ExceptionMessage(
 					new Warning("Unreadable Files were found", errorlog)
 				);
+			}
 		}
 
 		private void StopScan(
@@ -1306,7 +1375,9 @@ namespace SimPe.Plugin
 				pnop.Enabled = (lv.SelectedItems.Count != 0);
 
 				if (lv.SelectedItems.Count == 0)
+				{
 					return;
+				}
 
 				ScannerItem si = (ScannerItem)lv.SelectedItems[0].Tag;
 				ShowInfo(si, lv.SelectedItems[0]);
@@ -1322,15 +1393,23 @@ namespace SimPe.Plugin
 					si = (ScannerItem)lvi.Tag;
 					items[ct++] = si;
 					if (si.PackageCacheItem.Enabled)
+					{
 						encount++;
+					}
 				}
 
 				if (encount == lv.SelectedItems.Count)
+				{
 					this.cbenable.CheckState = CheckState.Checked;
+				}
 				else if (encount == 0)
+				{
 					this.cbenable.CheckState = CheckState.Unchecked;
+				}
 				else
+				{
 					this.cbenable.CheckState = CheckState.Indeterminate;
+				}
 
 				//Enable the Scanner Controls
 				foreach (IScanner scanner in this.lbscanners.Items)
@@ -1355,9 +1434,13 @@ namespace SimPe.Plugin
 			if (sorter.CurrentColumn == e.Column)
 			{
 				if (lv.Sorting == SortOrder.Ascending)
+				{
 					lv.Sorting = SortOrder.Descending;
+				}
 				else
+				{
 					lv.Sorting = SortOrder.Ascending;
+				}
 			}
 			else
 			{
@@ -1387,22 +1470,31 @@ namespace SimPe.Plugin
 		private void ReloadCache(object sender, System.EventArgs e)
 		{
 			if (Helper.WindowsRegistry.UseCache)
+			{
 				cachefile.Load(SimPe.Cache.PackageCacheFile.CacheFileName);
+			}
 		}
 
 		private void SetEnabledState(object sender, System.EventArgs e)
 		{
 			if (this.cbenable.Tag != null)
+			{
 				return;
+			}
+
 			if (this.cbenable.CheckState == CheckState.Indeterminate)
+			{
 				return;
+			}
 
 			WaitingScreen.Wait();
 			try
 			{
 				string ext = ".package";
 				if (!this.cbenable.Checked)
+				{
 					ext = ".packagedisabled";
+				}
 
 				WaitingScreen.UpdateMessage("Disable/Enable Packges");
 				int ct = 0;
@@ -1450,7 +1542,9 @@ namespace SimPe.Plugin
 				{
 					WaitingScreen.UpdateMessage("Writing Cache");
 					if (Helper.WindowsRegistry.UseCache)
+					{
 						cachefile.Save();
+					}
 				}
 				catch (Exception ex)
 				{
@@ -1494,7 +1588,9 @@ namespace SimPe.Plugin
 		)
 		{
 			if (SelectedScannerItem == null)
+			{
 				return;
+			}
 
 			this.FileName = SelectedScannerItem.FileName;
 			Close();
@@ -1513,14 +1609,20 @@ namespace SimPe.Plugin
 					try
 					{
 						foreach (ColumnHeader ch in lv.Columns)
+						{
 							sw.Write(ch.Text.Replace(",", ";") + ",");
+						}
+
 						sw.WriteLine();
 
 						foreach (ListViewItem lvi in lv.Items)
 						{
 							//sw.Write(lvi.Text.Replace(",", ";")+",");
 							foreach (ListViewItem.ListViewSubItem lvsi in lvi.SubItems)
+							{
 								sw.Write(lvsi.Text.Replace(",", ";") + ",");
+							}
+
 							sw.WriteLine();
 						}
 					}

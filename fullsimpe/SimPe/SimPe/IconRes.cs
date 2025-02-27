@@ -42,11 +42,17 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.Layout.SelectedTheme == 6)
+				{
 					return global::SimPe.Properties.Resources.blNew;
+				}
 				else if (Helper.WindowsRegistry.Layout.SelectedTheme == 8)
+				{
 					return global::SimPe.Properties.Resources.psNew;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.bgNew;
+				}
 			}
 		}
 
@@ -58,11 +64,17 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.Layout.SelectedTheme == 6)
+				{
 					return global::SimPe.Properties.Resources.blOpen;
+				}
 				else if (Helper.WindowsRegistry.Layout.SelectedTheme == 8)
+				{
 					return global::SimPe.Properties.Resources.psOpen;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.bgOpen;
+				}
 			}
 		}
 
@@ -74,11 +86,17 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.Layout.SelectedTheme == 6)
+				{
 					return global::SimPe.Properties.Resources.blSave;
+				}
 				else if (Helper.WindowsRegistry.Layout.SelectedTheme == 8)
+				{
 					return global::SimPe.Properties.Resources.psSave;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.bgSave;
+				}
 			}
 		}
 
@@ -90,11 +108,17 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.Layout.SelectedTheme == 6)
+				{
 					return global::SimPe.Properties.Resources.blSaveAs;
+				}
 				else if (Helper.WindowsRegistry.Layout.SelectedTheme == 8)
+				{
 					return global::SimPe.Properties.Resources.psSave;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.bgSaveAs;
+				}
 			}
 		}
 
@@ -106,11 +130,17 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.Layout.SelectedTheme == 6)
+				{
 					return global::SimPe.Properties.Resources.blDelete;
+				}
 				else if (Helper.WindowsRegistry.Layout.SelectedTheme == 8)
+				{
 					return global::SimPe.Properties.Resources.psDelete;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.bgDelete;
+				}
 			}
 		}
 
@@ -122,9 +152,13 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.Layout.SelectedTheme == 6)
+				{
 					return global::SimPe.Properties.Resources.blReset;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.bgReset;
+				}
 			}
 		}
 
@@ -139,9 +173,13 @@ namespace SimPe
 					Helper.WindowsRegistry.UseBigIcons
 					&& Helper.WindowsRegistry.Layout.SelectedTheme >= 4
 				)
+				{
 					return global::SimPe.Properties.Resources.acbgclone;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.acclone;
+				}
 			}
 		}
 
@@ -156,9 +194,13 @@ namespace SimPe
 					Helper.WindowsRegistry.UseBigIcons
 					&& Helper.WindowsRegistry.Layout.SelectedTheme >= 4
 				)
+				{
 					return global::SimPe.Properties.Resources.acbgcreate;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.accreate;
+				}
 			}
 		}
 
@@ -173,9 +215,13 @@ namespace SimPe
 					Helper.WindowsRegistry.UseBigIcons
 					&& Helper.WindowsRegistry.Layout.SelectedTheme >= 4
 				)
+				{
 					return global::SimPe.Properties.Resources.acbgdelete;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.acdelete;
+				}
 			}
 		}
 
@@ -190,9 +236,13 @@ namespace SimPe
 					Helper.WindowsRegistry.UseBigIcons
 					&& Helper.WindowsRegistry.Layout.SelectedTheme >= 4
 				)
+				{
 					return global::SimPe.Properties.Resources.acbgexport;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.acexport;
+				}
 			}
 		}
 
@@ -207,9 +257,13 @@ namespace SimPe
 					Helper.WindowsRegistry.UseBigIcons
 					&& Helper.WindowsRegistry.Layout.SelectedTheme >= 4
 				)
+				{
 					return global::SimPe.Properties.Resources.acbgfilter;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.acfilter;
+				}
 			}
 		}
 
@@ -224,9 +278,13 @@ namespace SimPe
 					Helper.WindowsRegistry.UseBigIcons
 					&& Helper.WindowsRegistry.Layout.SelectedTheme >= 4
 				)
+				{
 					return global::SimPe.Properties.Resources.acbgimport;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.acimport;
+				}
 			}
 		}
 
@@ -241,9 +299,13 @@ namespace SimPe
 					Helper.WindowsRegistry.UseBigIcons
 					&& Helper.WindowsRegistry.Layout.SelectedTheme >= 4
 				)
+				{
 					return global::SimPe.Properties.Resources.acbgreplace;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.acreplace;
+				}
 			}
 		}
 
@@ -258,9 +320,13 @@ namespace SimPe
 					Helper.WindowsRegistry.UseBigIcons
 					&& Helper.WindowsRegistry.Layout.SelectedTheme >= 4
 				)
+				{
 					return global::SimPe.Properties.Resources.acbgrestore;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.acrestore;
+				}
 			}
 		}
 
@@ -275,9 +341,13 @@ namespace SimPe
 					Helper.WindowsRegistry.UseBigIcons
 					&& Helper.WindowsRegistry.Layout.SelectedTheme >= 4
 				)
+				{
 					return global::SimPe.Properties.Resources.acbgstart;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.acstart;
+				}
 			}
 		}
 
@@ -292,9 +362,13 @@ namespace SimPe
 					Helper.WindowsRegistry.UseBigIcons
 					&& Helper.WindowsRegistry.Layout.SelectedTheme >= 4
 				)
+				{
 					return global::SimPe.Properties.Resources.acbgfixtgi;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.acfixtgi;
+				}
 			}
 		}
 
@@ -309,9 +383,13 @@ namespace SimPe
 					Helper.WindowsRegistry.UseBigIcons
 					|| Helper.WindowsRegistry.Layout.SelectedTheme >= 4
 				)
+				{
 					return global::SimPe.Properties.Resources.dbbgagent;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.dbagent;
+				}
 			}
 		}
 
@@ -323,9 +401,13 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.UseBigIcons)
+				{
 					return global::SimPe.Properties.Resources.dbbgpackage;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.dbpackage;
+				}
 			}
 		}
 
@@ -337,9 +419,13 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.UseBigIcons)
+				{
 					return global::SimPe.Properties.Resources.dbbgrecur;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.dbrecur;
+				}
 			}
 		}
 
@@ -351,9 +437,13 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.UseBigIcons)
+				{
 					return global::SimPe.Properties.Resources.dbbgS2pack;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.dbS2pack;
+				}
 			}
 		}
 
@@ -365,9 +455,13 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.UseBigIcons)
+				{
 					return global::SimPe.Properties.Resources.dbbgs2pc;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.dbs2pc;
+				}
 			}
 		}
 
@@ -379,9 +473,13 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.UseBigIcons)
+				{
 					return global::SimPe.Properties.Resources.dbbgoS2pack;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.dbS2pack;
+				}
 			}
 		}
 
@@ -393,9 +491,13 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.UseBigIcons)
+				{
 					return global::SimPe.Properties.Resources.dbbgos2pc;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.dbs2pc;
+				}
 			}
 		}
 
@@ -407,9 +509,13 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.UseBigIcons)
+				{
 					return global::SimPe.Properties.Resources.dbbgselected;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.dbselected;
+				}
 			}
 		}
 
@@ -421,9 +527,13 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.UseBigIcons)
+				{
 					return global::SimPe.Properties.Resources.tbbgcamera;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.tbcamera;
+				}
 			}
 		}
 
@@ -435,9 +545,13 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.UseBigIcons)
+				{
 					return global::SimPe.Properties.Resources.tbbgcontents;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.tbcontents;
+				}
 			}
 		}
 
@@ -449,9 +563,13 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.UseBigIcons)
+				{
 					return global::SimPe.Properties.Resources.tbbgcreatepackage;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.tbcreatepackage;
+				}
 			}
 		}
 
@@ -463,9 +581,13 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.UseBigIcons)
+				{
 					return global::SimPe.Properties.Resources.tbbgwcreatepackage;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.tbcreatepackage;
+				}
 			}
 		}
 
@@ -477,9 +599,13 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.UseBigIcons)
+				{
 					return global::SimPe.Properties.Resources.tbbgneighboorhood;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.tbneighboorhood;
+				}
 			}
 		}
 
@@ -491,9 +617,13 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.UseBigIcons)
+				{
 					return global::SimPe.Properties.Resources.tbbgsimbrowser;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.tbsimbrowser;
+				}
 			}
 		}
 
@@ -505,9 +635,13 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.UseBigIcons)
+				{
 					return global::SimPe.Properties.Resources.tbbgsurg;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.tbsurg;
+				}
 			}
 		}
 
@@ -519,9 +653,13 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.UseBigIcons)
+				{
 					return global::SimPe.Properties.Resources.tbbgskinn;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.tbskinn;
+				}
 			}
 		}
 
@@ -533,9 +671,13 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.UseBigIcons)
+				{
 					return global::SimPe.Properties.Resources.tbbggenerator;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.tbgenerator;
+				}
 			}
 		}
 
@@ -547,9 +689,13 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.UseBigIcons)
+				{
 					return global::SimPe.Properties.Resources.tbbgintegrity;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.tbintegrit;
+				}
 			}
 		}
 
@@ -561,9 +707,13 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.UseBigIcons)
+				{
 					return global::SimPe.Properties.Resources.bgdeletesim;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.deletesim;
+				}
 			}
 		}
 
@@ -575,9 +725,13 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.UseBigIcons)
+				{
 					return global::SimPe.Properties.Resources.anibgcamera;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.anicamera;
+				}
 			}
 		}
 
@@ -589,9 +743,13 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.UseBigIcons)
+				{
 					return global::SimPe.Properties.Resources.bghoodtool;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.hoodtool;
+				}
 			}
 		}
 
@@ -603,9 +761,13 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.UseBigIcons)
+				{
 					return global::SimPe.Properties.Resources.bhbglua;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.bhlua;
+				}
 			}
 		}
 
@@ -617,9 +779,13 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.UseBigIcons)
+				{
 					return global::SimPe.Properties.Resources.bhbgimport;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.bhimport;
+				}
 			}
 		}
 
@@ -631,9 +797,13 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.UseBigIcons)
+				{
 					return global::SimPe.Properties.Resources.copyrightbg;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.copyright;
+				}
 			}
 		}
 
@@ -645,9 +815,13 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.UseBigIcons)
+				{
 					return global::SimPe.Properties.Resources.cbgpreview;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.cpreview;
+				}
 			}
 		}
 
@@ -659,9 +833,13 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.UseBigIcons)
+				{
 					return global::SimPe.Properties.Resources.bgacchecktable;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.acchecktable;
+				}
 			}
 		}
 
@@ -673,9 +851,13 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.UseBigIcons)
+				{
 					return global::SimPe.Properties.Resources.bgPhpGuid;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.tbPhpGuid;
+				}
 			}
 		}
 
@@ -687,9 +869,13 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.UseBigIcons)
+				{
 					return global::SimPe.Properties.Resources.bgfinder;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.pjfinder;
+				}
 			}
 		}
 
@@ -701,9 +887,13 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.UseBigIcons)
+				{
 					return global::SimPe.Properties.Resources.bgpjobjdtool;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.pjobjdtool;
+				}
 			}
 		}
 
@@ -715,9 +905,13 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.UseBigIcons)
+				{
 					return global::SimPe.Properties.Resources.bgbookmark;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.bookmark;
+				}
 			}
 		}
 
@@ -744,9 +938,13 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.UseBigIcons)
+				{
 					return global::SimPe.Properties.Resources.bgbutflie;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.butflie;
+				}
 			}
 		}
 
@@ -758,9 +956,13 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.UseBigIcons)
+				{
 					return global::SimPe.Properties.Resources.bgExtractSt;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.ExtractSt;
+				}
 			}
 		}
 
@@ -772,9 +974,13 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.UseBigIcons)
+				{
 					return global::SimPe.Properties.Resources.bgLinkSt;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.LinkSt;
+				}
 			}
 		}
 
@@ -786,9 +992,13 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.UseBigIcons)
+				{
 					return global::SimPe.Properties.Resources.bgKey;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.pjkey;
+				}
 			}
 		}
 
@@ -800,9 +1010,13 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.UseBigIcons)
+				{
 					return global::SimPe.Properties.Resources.Infobg;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.Info;
+				}
 			}
 		}
 
@@ -814,9 +1028,13 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.UseBigIcons)
+				{
 					return global::SimPe.Properties.Resources.bgdebug;
+				}
 				else
+				{
 					return global::SimPe.Properties.Resources.debug;
+				}
 			}
 		}
 	}

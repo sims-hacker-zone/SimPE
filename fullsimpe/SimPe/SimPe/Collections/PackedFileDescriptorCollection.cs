@@ -96,11 +96,16 @@ namespace SimPe.Collections
 		public bool Contains(IPackedFileDescriptor item)
 		{
 			if (item == null)
+			{
 				return false;
+			}
+
 			foreach (IPackedFileDescriptor pfd in this)
 			{
 				if (item.SameAs(pfd))
+				{
 					return true;
+				}
 			}
 
 			return false;
@@ -120,7 +125,9 @@ namespace SimPe.Collections
 		{
 			PackedFileDescriptors list = new PackedFileDescriptors();
 			foreach (IPackedFileDescriptor item in this)
+			{
 				list.Add(item);
+			}
 
 			return list;
 		}

@@ -26,7 +26,10 @@ namespace SimPe.Plugin
 			ArrayList list = new ArrayList();
 			string name = this.GetSaveItem("modelName").StringValue.Trim();
 			if (!name.ToLower().EndsWith("_cres"))
+			{
 				name += "_cres";
+			}
+
 			list.Add(
 				SimPe.Plugin.ScenegraphHelper.BuildPfd(
 					name,
@@ -39,7 +42,10 @@ namespace SimPe.Plugin
 			list = new ArrayList();
 			name = this.GetSaveItem("name").StringValue.Trim();
 			if (!name.ToLower().EndsWith("_txmt"))
+			{
 				name += "_txmt";
+			}
+
 			list.Add(
 				SimPe.Plugin.ScenegraphHelper.BuildPfd(
 					name,
@@ -130,7 +136,9 @@ namespace SimPe.Plugin
 									Data.MetaData.CRES
 								);
 							if (pfds.Length > 0)
+							{
 								pfd = pfds[0];
+							}
 						}
 
 						if (pfd != null)
@@ -194,7 +202,9 @@ namespace SimPe.Plugin
 									Data.MetaData.TXMT
 								);
 							if (pfds.Length > 0)
+							{
 								pfd = pfds[0];
+							}
 						}
 
 						if (pfd != null)
@@ -236,7 +246,10 @@ namespace SimPe.Plugin
 		public GenericRcol GetTxtr(GenericRcol txmt)
 		{
 			if (txmt == null)
+			{
 				return null;
+			}
+
 			Hashtable refs = txmt.ReferenceChains;
 			ArrayList txtrs = (ArrayList)refs["stdMatBaseTextureName"]; //["TXTR"];
 			if (txtrs != null)
@@ -256,7 +269,9 @@ namespace SimPe.Plugin
 								Data.MetaData.TXTR
 							);
 						if (pfds.Length > 0)
+						{
 							pfd = pfds[0];
+						}
 					}
 					if (pfd != null)
 					{
@@ -314,6 +329,7 @@ namespace SimPe.Plugin
 				Hashtable refs = rcol.ReferenceChains;
 				ArrayList shps = (ArrayList)refs["Generic"];
 				if (shps != null)
+				{
 					if (shps.Count > 0)
 					{
 						Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
@@ -329,6 +345,7 @@ namespace SimPe.Plugin
 							refs = shpe.ReferenceChains;
 							ArrayList gmnds = (ArrayList)refs["Models"];
 							if (gmnds != null)
+							{
 								if (gmnds.Count > 0)
 								{
 									items = FileTable.FileIndex.FindFile(
@@ -347,6 +364,7 @@ namespace SimPe.Plugin
 										refs = gmnd.ReferenceChains;
 										ArrayList gmdcs = (ArrayList)refs["Generic"];
 										if (gmdcs != null)
+										{
 											if (gmdcs.Count > 0)
 											{
 												items = FileTable.FileIndex.FindFile(
@@ -368,10 +386,13 @@ namespace SimPe.Plugin
 													return gmdc;
 												}
 											}
+										}
 									}
 								}
+							}
 						}
 					}
+				}
 			}
 
 			return null;
@@ -407,11 +428,16 @@ namespace SimPe.Plugin
 						str += pfd.Filename + " (" + pfd.ToString() + ") | ";
 					}
 					if (((ArrayList)map[s]).Count > 0)
+					{
 						str = str.Substring(0, str.Length - 2);
+					}
+
 					str += ",";
 				}
 				if (map.Count > 0)
+				{
 					str = str.Substring(0, str.Length - 1);
+				}
 
 				return str;
 			}

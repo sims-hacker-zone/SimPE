@@ -154,19 +154,27 @@ namespace SimPe.Plugin
 					foreach (NgbhValueDescriptor nvd in ExtNgbh.ValueDescriptors)
 					{
 						if (nvd.Type == NgbhValueDescriptorType.Badge && badge)
+						{
 							this.cb.Items.Add(nvd);
+						}
 						else if (nvd.Type == NgbhValueDescriptorType.Skill && skill)
+						{
 							this.cb.Items.Add(nvd);
+						}
 						else if (
 							nvd.Type == NgbhValueDescriptorType.ToddlerSkill
 							&& tskill
 						)
+						{
 							this.cb.Items.Add(nvd);
+						}
 					}
 				}
 
 				if (cb.Items.Count > 0)
+				{
 					cb.SelectedIndex = 0;
+				}
 			}
 			catch { }
 		}
@@ -178,7 +186,9 @@ namespace SimPe.Plugin
 		private void cb_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			if (SelectedDescriptorChanged != null)
+			{
 				SelectedDescriptorChanged(this, e);
+			}
 		}
 	}
 }

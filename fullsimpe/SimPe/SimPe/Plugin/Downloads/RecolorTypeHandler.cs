@@ -21,7 +21,9 @@ namespace SimPe.Plugin.Downloads
 			object[] data = nfo.RenderData as object[];
 			tmppkg = SimPe.Packages.GeneratableFile.LoadFromFile(data[1].ToString());
 			if (tmppkg == null)
+			{
 				return;
+			}
 
 			SimPe.Interfaces.Scenegraph.IScenegraphFileIndex fii =
 				SimPe.Plugin.DownloadsToolFactory.TeleportFileIndex.AddNewChild();
@@ -53,7 +55,9 @@ namespace SimPe.Plugin.Downloads
 					catch { }
 				}
 				else
+				{
 					nfo.RenderedImage = GetImage.Demo;
+				}
 			}
 
 			fii.CloseAssignedPackages();
@@ -91,9 +95,15 @@ namespace SimPe.Plugin.Downloads
 						string dir = System.IO.Path.GetDirectoryName(pkg.SaveFileName);
 						string[] files = System.IO.Directory.GetFiles(dir);
 						foreach (string file in files)
+						{
 							if (file.EndsWith(".package") || file.EndsWith(".sims"))
+							{
 								if (!FileTable.FileIndex.Contains(file))
+								{
 									fii.AddIndexFromPackage(file);
+								}
+							}
+						}
 					}
 					if (
 						System.IO.File.Exists(
@@ -118,13 +128,20 @@ namespace SimPe.Plugin.Downloads
 						)
 						{
 							if (tmppkg.Index.Length > 0)
+							{
 								ret = true;
+							}
+
 							tmppkg.CopyDescriptors(pkg);
 							foreach (
 								SimPe.Interfaces.Files.IPackedFileDescriptor pfd in tmppkg.Index
 							)
+							{
 								if (pfd.Equals(mmat.FileDescriptor))
+								{
 									mmat.ProcessData(pfd, tmppkg);
+								}
+							}
 
 							string name = "render.tmp";
 							int index = 0;
@@ -170,7 +187,9 @@ namespace SimPe.Plugin.Downloads
 				tmppkg.Close();
 				SimPe.Packages.StreamFactory.CloseStream(tmppkg.SaveFileName);
 				if (tmppkg is SimPe.Packages.GeneratableFile)
+				{
 					((SimPe.Packages.GeneratableFile)tmppkg).Dispose();
+				}
 			}
 			tmppkg = null;
 		}
@@ -201,7 +220,10 @@ namespace SimPe.Plugin.Downloads
 					if (snfo != null)
 					{
 						if (snfo.Name.Trim() == "")
+						{
 							snfo.Name = nfo.Name;
+						}
+
 						snfo.Image = nfo.Image;
 						snfo.RenderedImage = nfo.RenderedImage;
 						snfo.RenderData = nfo.RenderData;

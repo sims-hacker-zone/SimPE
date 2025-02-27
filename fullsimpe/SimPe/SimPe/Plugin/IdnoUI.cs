@@ -47,7 +47,10 @@ namespace SimPe.Plugin
 			NeighborhoodType[] vals = (NeighborhoodType[])
 				System.Enum.GetValues(typeof(NeighborhoodType));
 			foreach (NeighborhoodType v in vals)
+			{
 				form.cbtype.Items.Add(v);
+			}
+
 			form.cbreqtp.Items.Clear();
 			form.cbsubtp.Items.Clear();
 			foreach (uint i in Enum.GetValues(typeof(Data.MetaData.NeighbourhoodEP)))
@@ -62,19 +65,27 @@ namespace SimPe.Plugin
 
 			NhSeasons[] valf = (NhSeasons[])System.Enum.GetValues(typeof(NhSeasons));
 			foreach (NhSeasons v in valf)
+			{
 				form.cbquada.Items.Add(v);
+			}
 
 			NhSeasons[] valu = (NhSeasons[])System.Enum.GetValues(typeof(NhSeasons));
 			foreach (NhSeasons v in valu)
+			{
 				form.cbquadb.Items.Add(v);
+			}
 
 			NhSeasons[] valc = (NhSeasons[])System.Enum.GetValues(typeof(NhSeasons));
 			foreach (NhSeasons v in valc)
+			{
 				form.cbquadc.Items.Add(v);
+			}
 
 			NhSeasons[] valk = (NhSeasons[])System.Enum.GetValues(typeof(NhSeasons));
 			foreach (NhSeasons v in valk)
+			{
 				form.cbquadd.Items.Add(v);
+			}
 		}
 		#endregion
 

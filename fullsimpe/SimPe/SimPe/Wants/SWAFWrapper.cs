@@ -64,7 +64,10 @@ namespace SimPe.Wants
 		private void setVersion(uint value)
 		{
 			if (!IsValidVersion(value))
+			{
 				throw new ArgumentOutOfRangeException("value");
+			}
+
 			version = value;
 		}
 
@@ -74,9 +77,12 @@ namespace SimPe.Wants
 			get
 			{
 				if (lValidVersions == null)
+				{
 					lValidVersions = new List<uint>(
 						new uint[] { 0x01, 0x05, 0x06, 0x07 }
 					);
+				}
+
 				return lValidVersions;
 			}
 		} // CJH
@@ -105,7 +111,10 @@ namespace SimPe.Wants
 		private void setMaxWants(uint value)
 		{
 			if (version < 0x05)
+			{
 				throw new InvalidOperationException();
+			}
+
 			maxWants = value;
 		}
 
@@ -128,7 +137,10 @@ namespace SimPe.Wants
 		private void setMaxFears(uint value)
 		{
 			if (version < 0x05)
+			{
 				throw new InvalidOperationException();
+			}
+
 			maxFears = value;
 		}
 
@@ -188,7 +200,10 @@ namespace SimPe.Wants
 				bool same = true;
 				same = unknown4.Length == value.Length;
 				for (int i = 0; same && i < unknown4.Length; i++)
+				{
 					same = unknown4[i] == value[i];
+				}
+
 				if (!same)
 				{
 					unknown4 = new byte[value.Length];
@@ -207,8 +222,13 @@ namespace SimPe.Wants
 			{
 				List<SWAFItem> res = new List<SWAFItem>();
 				foreach (SWAFItem item in items)
+				{
 					if (item.ItemType == value)
+					{
 						res.Add(item);
+					}
+				}
+
 				return res;
 			}
 		}
@@ -230,21 +250,27 @@ namespace SimPe.Wants
 
 			count = version >= 0x05 ? reader.ReadUInt32() : 0;
 			for (int i = 0; i < count; i++)
+			{
 				items.Add(
 					new SWAFItem(this, SWAFItem.SWAFItemType.LifetimeWants, reader)
 				);
+			}
 
 			maxWants = version >= 0x05 ? reader.ReadUInt32() : (uint)oldMaxWants;
 
 			count = reader.ReadUInt32();
 			for (int i = 0; i < count; i++)
+			{
 				items.Add(new SWAFItem(this, SWAFItem.SWAFItemType.Wants, reader));
+			}
 
 			maxFears = version >= 0x05 ? reader.ReadUInt32() : (uint)oldMaxFears;
 
 			count = reader.ReadUInt32();
 			for (int i = 0; i < count; i++)
+			{
 				items.Add(new SWAFItem(this, SWAFItem.SWAFItemType.Fears, reader));
+			}
 
 			unknown3 = version >= 0x05 ? reader.ReadUInt32() : 0;
 			unknown1 = reader.ReadUInt32();
@@ -257,9 +283,12 @@ namespace SimPe.Wants
 				List<SWAFItem> value = new List<SWAFItem>();
 				uint hcount = reader.ReadUInt32();
 				for (int j = 0; j < hcount; j++)
+				{
 					value.Add(
 						new SWAFItem(this, SWAFItem.SWAFItemType.History, reader)
 					);
+				}
+
 				history.Add(key, value);
 			}
 
@@ -274,26 +303,44 @@ namespace SimPe.Wants
 
 			List<SWAFItem> l = LifetimeWants;
 			if (version >= 0x05)
+			{
 				writer.Write(l.Count);
+			}
+
 			foreach (SWAFItem i in l)
+			{
 				i.Serialize(writer);
+			}
 
 			if (version >= 0x05)
+			{
 				writer.Write(maxWants);
+			}
+
 			l = Wants;
 			writer.Write(l.Count);
 			foreach (SWAFItem i in l)
+			{
 				i.Serialize(writer);
+			}
 
 			if (version >= 0x05)
+			{
 				writer.Write(maxFears);
+			}
+
 			l = Fears;
 			writer.Write(l.Count);
 			foreach (SWAFItem i in l)
+			{
 				i.Serialize(writer);
+			}
 
 			if (version >= 0x05)
+			{
 				writer.Write(unknown3);
+			}
+
 			writer.Write(unknown1);
 			writer.Write(unknown2);
 
@@ -303,7 +350,9 @@ namespace SimPe.Wants
 				writer.Write(kvp.Key);
 				writer.Write(kvp.Value.Count);
 				foreach (SWAFItem i in kvp.Value)
+				{
 					i.Serialize(writer);
+				}
 			}
 
 			writer.Write(unknown4);
@@ -346,9 +395,13 @@ namespace SimPe.Wants
 					(ushort)this.FileDescriptor.Instance
 				) as ExtSDesc;
 			if (sdsc == null)
+			{
 				return base.GetResourceName(ta);
+			}
 			else
+			{
 				return sdsc.SimName + " " + sdsc.SimFamilyName + " (Wants/Fears)";
+			}
 		}
 		#endregion
 
@@ -386,7 +439,10 @@ namespace SimPe.Wants
 		{
 			int limit = LimitForType(item.ItemType);
 			if (limit >= 0 && CountForType(item.ItemType) >= limit)
+			{
 				throw new InvalidOperationException();
+			}
+
 			base.Add(item);
 		}
 
@@ -394,9 +450,13 @@ namespace SimPe.Wants
 		{
 			int limit = LimitForType(item.ItemType);
 			if (limit >= 0)
+			{
 				Insert(index, item, limit);
+			}
 			else
+			{
 				base.Insert(index, item);
+			}
 		}
 
 		#region IDictionary<uint,List<SWAFItem>> Members
@@ -458,10 +518,12 @@ namespace SimPe.Wants
 		public void CopyTo(KeyValuePair<uint, List<SWAFItem>>[] array, int arrayIndex)
 		{
 			foreach (uint i in history.Keys)
+			{
 				array[arrayIndex++] = new KeyValuePair<uint, List<SWAFItem>>(
 					i,
 					this[i]
 				);
+			}
 		}
 
 		public bool Remove(KeyValuePair<uint, List<SWAFItem>> item)
@@ -538,7 +600,10 @@ namespace SimPe.Wants
 		private void setVersion(uint value)
 		{
 			if (!IsValidVersion(value))
+			{
 				throw new ArgumentOutOfRangeException("value");
+			}
+
 			version = value;
 		}
 
@@ -548,9 +613,12 @@ namespace SimPe.Wants
 			get
 			{
 				if (lValidVersions == null)
+				{
 					lValidVersions = new List<uint>(
 						new uint[] { 0x04, 0x07, 0x08, 0x09, 0x0a }
 					);
+				}
+
 				return lValidVersions;
 			}
 		}
@@ -610,7 +678,10 @@ namespace SimPe.Wants
 		private void setArgType(ArgTypes value)
 		{
 			if (!Enum.IsDefined(ArgType.GetType(), value))
+			{
 				throw new ArgumentOutOfRangeException("value");
+			}
+
 			argType = value;
 		}
 
@@ -709,28 +780,40 @@ namespace SimPe.Wants
 		private ushort getArgUshort(ArgTypes type, uint minVer)
 		{
 			if (argType != type || version < minVer)
+			{
 				throw new InvalidOperationException();
+			}
+
 			return (ushort)arg;
 		}
 
 		private void setArgUshort(ArgTypes type, uint minVer, ushort value)
 		{
 			if (argType != type || version < minVer)
+			{
 				throw new InvalidOperationException();
+			}
+
 			arg = value;
 		}
 
 		private uint getArgUint(ArgTypes type)
 		{
 			if (argType != type)
+			{
 				throw new InvalidOperationException();
+			}
+
 			return (uint)arg;
 		}
 
 		private void setArgUint(ArgTypes type, uint value)
 		{
 			if (argType != type)
+			{
 				throw new InvalidOperationException();
+			}
+
 			arg = value;
 		}
 
@@ -824,7 +907,10 @@ namespace SimPe.Wants
 		private void setInfluence(int value)
 		{
 			if (version < 0x09)
+			{
 				throw new InvalidOperationException();
+			}
+
 			influence = value;
 		}
 
@@ -849,7 +935,10 @@ namespace SimPe.Wants
 		{
 			this.parent = parent;
 			if (!Enum.IsDefined(type.GetType(), type))
+			{
 				throw new ArgumentOutOfRangeException("type");
+			}
+
 			this.ItemType = type;
 		}
 
@@ -861,7 +950,10 @@ namespace SimPe.Wants
 		{
 			this.parent = parent;
 			if (!Enum.IsDefined(type.GetType(), type))
+			{
 				throw new ArgumentOutOfRangeException("type");
+			}
+
 			this.ItemType = type;
 			Unserialize(reader);
 		}
@@ -876,7 +968,10 @@ namespace SimPe.Wants
 			{
 				case ArgTypes.Sim:
 					if (version >= 0x08)
+					{
 						setArgUshort(argType, 0x08, reader.ReadUInt16());
+					}
+
 					break;
 				case ArgTypes.Guid:
 					setArgUint(argType, reader.ReadUInt32());
@@ -914,7 +1009,10 @@ namespace SimPe.Wants
 			{
 				case ArgTypes.Sim:
 					if (version >= 0x08)
+					{
 						writer.Write((ushort)arg);
+					}
+
 					break;
 				case ArgTypes.Guid:
 					writer.Write((uint)arg);
@@ -938,7 +1036,10 @@ namespace SimPe.Wants
 			writer.Write(counter);
 			writer.Write(score);
 			if (version >= 0x09)
+			{
 				writer.Write(influence);
+			}
+
 			writer.Write((byte)flags);
 		}
 	}

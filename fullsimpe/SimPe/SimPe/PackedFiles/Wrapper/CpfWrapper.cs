@@ -92,7 +92,10 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				CpfItem ex = null;
 				if (!duplicate)
+				{
 					ex = this.GetItem(item.Name);
+				}
+
 				if (ex != null)
 				{
 					ex.Datatype = item.Datatype;
@@ -113,8 +116,12 @@ namespace SimPe.PackedFiles.Wrapper
 		public CpfItem GetItem(string name)
 		{
 			foreach (CpfItem item in this.Items)
+			{
 				if (item.Name == name)
+				{
 					return item;
+				}
+			}
 
 			return null;
 		}
@@ -128,9 +135,13 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			CpfItem res = GetItem(name);
 			if (res == null)
+			{
 				return new CpfItem();
+			}
 			else
+			{
 				return res;
+			}
 		}
 
 		#region IWrapper member
@@ -175,12 +186,19 @@ namespace SimPe.PackedFiles.Wrapper
 		protected override string GetResourceName(SimPe.Data.TypeAlias ta)
 		{
 			if (!this.Processed)
+			{
 				ProcessData(FileDescriptor, Package);
+			}
+
 			CpfItem item = this.GetItem("name");
 			if (item == null)
+			{
 				return base.GetResourceName(ta);
+			}
 			else
+			{
 				return item.StringValue;
+			}
 		}
 
 #if DEBUG
@@ -233,15 +251,21 @@ namespace SimPe.PackedFiles.Wrapper
 					{
 						item.Datatype = Data.MetaData.DataTypes.dtUInteger;
 						if (subnode.InnerText.IndexOf("-") != -1)
+						{
 							item.UIntegerValue = (uint)
 								Convert.ToInt32(subnode.InnerText);
+						}
 						else if (subnode.InnerText.IndexOf("0x") == -1)
+						{
 							item.UIntegerValue = Convert.ToUInt32(subnode.InnerText);
+						}
 						else
+						{
 							item.UIntegerValue = Convert.ToUInt32(
 								subnode.InnerText,
 								16
 							);
+						}
 					}
 					else if (
 						(subnode.LocalName.Trim().ToLower() == "anyint32")
@@ -250,9 +274,13 @@ namespace SimPe.PackedFiles.Wrapper
 					{
 						item.Datatype = Data.MetaData.DataTypes.dtInteger;
 						if (subnode.InnerText.IndexOf("0x") == -1)
+						{
 							item.IntegerValue = Convert.ToInt32(subnode.InnerText);
+						}
 						else
+						{
 							item.IntegerValue = Convert.ToInt32(subnode.InnerText, 16);
+						}
 					}
 					else if (subnode.LocalName.Trim().ToLower() == "anystring")
 					{
@@ -341,7 +369,10 @@ namespace SimPe.PackedFiles.Wrapper
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
 			if (Id.Length != 0x06)
+			{
 				Id = SIGNATURE;
+			}
+
 			writer.Write(Id);
 			writer.Write((uint)Items.Length);
 
@@ -375,8 +406,12 @@ namespace SimPe.PackedFiles.Wrapper
 		public bool CanHandleType(uint type)
 		{
 			foreach (uint t in this.AssignableTypes)
+			{
 				if (t == type)
+				{
 					return true;
+				}
+			}
 
 			return false;
 		}
@@ -434,8 +469,12 @@ namespace SimPe.PackedFiles.Wrapper
 			if (Items != null)
 			{
 				for (int i = Items.Length - 1; i >= 0; i--)
+				{
 					if (Items[i] != null)
+					{
 						Items[i].Dispose();
+					}
+				}
 			}
 
 			Items = new CpfItem[0];

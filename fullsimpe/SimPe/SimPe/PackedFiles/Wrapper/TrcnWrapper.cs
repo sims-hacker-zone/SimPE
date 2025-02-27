@@ -111,7 +111,9 @@ namespace SimPe.PackedFiles.Wrapper
 			while (
 				items.Count > 0 && items[items.Count - 1].ConstName.Trim().Length == 0
 			)
+			{
 				items.RemoveAt(items.Count - 1);
+			}
 		}
 
 		#region AbstractWrapper Member
@@ -159,7 +161,9 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			CleanUp();
 			if (header[1] == 1)
+			{
 				header[1] = 0x3f; // upgrades version 1 to 0x3F on saving
+			}
 
 			writer.Write(filename);
 			writer.Write(header[0]);
@@ -169,7 +173,9 @@ namespace SimPe.PackedFiles.Wrapper
 			writer.Write((uint)items.Count);
 
 			foreach (TrcnItem item in items)
+			{
 				item.Serialize(writer);
+			}
 		}
 
 		/// <summary>
@@ -201,7 +207,9 @@ namespace SimPe.PackedFiles.Wrapper
 			reader.BaseStream.Seek(76, System.IO.SeekOrigin.Begin);
 
 			if (TextOnly)
+			{
 				return;
+			}
 
 			uint itemCount = reader.ReadUInt32();
 			if (itemCount >= 0x8000)
@@ -213,7 +221,9 @@ namespace SimPe.PackedFiles.Wrapper
 			try
 			{
 				while (items.Count < itemCount)
+				{
 					items.Add(new TrcnItem(this, reader));
+				}
 			}
 			catch
 			{
@@ -246,7 +256,10 @@ namespace SimPe.PackedFiles.Wrapper
 		protected override string GetResourceName(Data.TypeAlias ta)
 		{
 			if (!SimPe.Helper.FileFormat)
+			{
 				return base.GetResourceName(ta);
+			}
+
 			SimPe.Interfaces.Files.IPackedFile pf = Package.Read(FileDescriptor);
 			byte[] ab = pf.GetUncompressedData(0x48);
 			return (ab.Length > 0x44 ? "0x" + Helper.HexString(ab[0x44]) + ": " : "")

@@ -236,7 +236,10 @@ namespace SimPe
 					System.IO.BinaryReader mbr = new System.IO.BinaryReader(fs);
 					byte[] data = new byte[mbr.BaseStream.Length];
 					for (int i = 0; i < data.Length; i++)
+					{
 						data[i] = mbr.ReadByte();
+					}
+
 					pfd.UserData = data;
 				}
 				catch (Exception ex)
@@ -275,11 +278,19 @@ namespace SimPe
 		public void Execute(SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item)
 		{
 			if (item == null)
+			{
 				return;
+			}
+
 			if (item.FileDescriptor == null)
+			{
 				return;
+			}
+
 			if (item.Package == null)
+			{
 				return;
+			}
 
 			string extfile = System.IO.Path.Combine(
 				System.IO.Path.GetTempPath(),
@@ -287,7 +298,10 @@ namespace SimPe
 			);
 			uint ct = 0;
 			while (System.IO.File.Exists(extfile + Helper.HexString(ct) + ".tmp"))
+			{
 				ct++;
+			}
+
 			extfile = extfile + Helper.HexString(ct) + ".tmp";
 
 			try
@@ -362,9 +376,13 @@ namespace SimPe
 		{
 			string[] str = regname.Split("-".ToCharArray(), 2);
 			if (str.Length > 1)
+			{
 				return str[1];
+			}
 			else
+			{
 				return Localization.Manager.GetString("Unknown");
+			}
 		}
 
 		/// <summary>
@@ -399,7 +417,10 @@ namespace SimPe
 			get
 			{
 				if (items == null)
+				{
 					Load();
+				}
+
 				return items;
 			}
 			set
@@ -415,7 +436,10 @@ namespace SimPe
 		public static void Add(ToolLoaderItemExt tli)
 		{
 			if (items == null)
+			{
 				Load();
+			}
+
 			items = (ToolLoaderItemExt[])Helper.Add(items, tli);
 		}
 
@@ -426,7 +450,10 @@ namespace SimPe
 		public static void Remove(ToolLoaderItemExt tli)
 		{
 			if (items == null)
+			{
 				Load();
+			}
+
 			items = (ToolLoaderItemExt[])Helper.Delete(items, tli);
 		}
 
@@ -436,7 +463,9 @@ namespace SimPe
 		public static void StoreTools()
 		{
 			if (items == null)
+			{
 				return;
+			}
 
 			string[] names = Helper
 				.WindowsRegistry.RegistryKey.CreateSubKey("ExtTools")
@@ -494,16 +523,29 @@ namespace SimPe
 		public static ToolLoaderItemExt[] UsableItems(uint type)
 		{
 			if (items == null)
+			{
 				Load();
+			}
 
 			ArrayList list = new ArrayList();
 			if (type != 0xffffffff)
+			{
 				foreach (ToolLoaderItemExt tli in items)
+				{
 					if (tli.Type == type)
+					{
 						list.Add(tli);
+					}
+				}
+			}
+
 			foreach (ToolLoaderItemExt tli in items)
+			{
 				if (tli.Type == 0xffffffff)
+				{
 					list.Add(tli);
+				}
+			}
 
 			ToolLoaderItemExt[] ret = new ToolLoaderItemExt[list.Count];
 			list.CopyTo(ret);

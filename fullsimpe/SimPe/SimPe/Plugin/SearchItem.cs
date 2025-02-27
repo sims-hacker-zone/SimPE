@@ -50,7 +50,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (flname == null)
+				{
 					return "";
+				}
+
 				return flname;
 			}
 		}
@@ -58,9 +61,13 @@ namespace SimPe.Plugin
 		public override string ToString()
 		{
 			if (flname == null)
+			{
 				return Descriptor.ToString();
+			}
 			else
+			{
 				return flname + ": " + Descriptor.ToString();
+			}
 		}
 	}
 }

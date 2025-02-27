@@ -56,9 +56,14 @@ namespace SimPe
 		{
 			string res = Manager.GetString(name);
 			if (res == null)
+			{
 				res = Manager.GetString(name.Trim().ToLower());
+			}
+
 			if (res == null)
+			{
 				res = name;
+			}
 
 			return res;
 		}
@@ -71,7 +76,10 @@ namespace SimPe
 			get
 			{
 				if (resource == null)
+				{
 					Initialize();
+				}
+
 				return resource;
 			}
 		}

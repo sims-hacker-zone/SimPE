@@ -80,7 +80,9 @@ namespace SimPe.Plugin.Scanner
 						|| sd == SimPe.PackedFiles.Wrapper.ShelveDimension.Indetermined
 						|| sd == SimPe.PackedFiles.Wrapper.ShelveDimension.Unknown2
 					)
+					{
 						ps.State = TriState.False;
+					}
 
 					ps.Data[0] = (uint)sd;
 				}
@@ -167,7 +169,9 @@ namespace SimPe.Plugin.Scanner
 		public void Set(SimPe.PackedFiles.Wrapper.ShelveDimension sd)
 		{
 			if (selection == null)
+			{
 				return;
+			}
 
 			WaitingScreen.Wait();
 			bool chg = false;
@@ -182,9 +186,14 @@ namespace SimPe.Plugin.Scanner
 						true
 					);
 					if (ps.Data.Length < 1)
+					{
 						continue;
+					}
+
 					if (ps.State == TriState.True && selection.Length > 1)
+					{
 						continue;
+					}
 
 					ps.State = TriState.Null;
 					try
@@ -211,7 +220,9 @@ namespace SimPe.Plugin.Scanner
 				}
 
 				if (chg && this.CallbackFinish != null)
+				{
 					this.CallbackFinish(false, false);
+				}
 			}
 			catch (Exception ex)
 			{

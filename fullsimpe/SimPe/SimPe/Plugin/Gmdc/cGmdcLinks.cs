@@ -81,7 +81,9 @@ namespace SimPe.Plugin.Gmdc
 			ReferencedElement = new IntArrayList();
 			AliasValues = new IntArrayList[3];
 			for (int i = 0; i < AliasValues.Length; i++)
+			{
 				AliasValues[i] = new IntArrayList();
+			}
 		}
 
 		/// <summary>
@@ -96,7 +98,9 @@ namespace SimPe.Plugin.Gmdc
 			ActiveElements = reader.ReadInt32();
 
 			for (int i = 0; i < AliasValues.Length; i++)
+			{
 				ReadBlock(reader, AliasValues[i]);
+			}
 		}
 
 		/// <summary>
@@ -115,7 +119,9 @@ namespace SimPe.Plugin.Gmdc
 			writer.Write(ActiveElements);
 
 			for (int i = 0; i < AliasValues.Length; i++)
+			{
 				WriteBlock(writer, AliasValues[i]);
+			}
 		}
 
 		/// <summary>
@@ -126,7 +132,10 @@ namespace SimPe.Plugin.Gmdc
 		{
 			string s = ReferencedElement.Length.ToString();
 			for (int i = 0; i < AliasValues.Length; i++)
+			{
 				s += ", " + AliasValues[i].Length;
+			}
+
 			return s;
 		}
 
@@ -141,7 +150,9 @@ namespace SimPe.Plugin.Gmdc
 			foreach (int i in this.ReferencedElement)
 			{
 				if (parent.Elements[i].Identity == id)
+				{
 					return parent.Elements[i];
+				}
 			}
 
 			return null;
@@ -158,10 +169,17 @@ namespace SimPe.Plugin.Gmdc
 		public int GetElementNr(GmdcElement e)
 		{
 			if (e == null)
+			{
 				return -1;
+			}
+
 			for (int i = 0; i < this.ReferencedElement.Length; i++)
+			{
 				if (parent.Elements[ReferencedElement[i]] == e)
+				{
 					return i;
+				}
+			}
 
 			return -1;
 		}
@@ -227,13 +245,19 @@ namespace SimPe.Plugin.Gmdc
 
 				//Higher Number
 				if (nr >= AliasValues.Length)
+				{
 					return index;
+				}
 
 				//Do we have aliases?
 				if (AliasValues[nr].Length == 0)
+				{
 					return index;
+				}
 				else
+				{
 					return AliasValues[nr][index];
+				}
 			}
 			catch
 			{
@@ -253,20 +277,31 @@ namespace SimPe.Plugin.Gmdc
 			{
 				int id = ReferencedElement[k];
 				if (parent.Elements[id].Values.Length > 0)
+				{
 					minct = Math.Min(minct, parent.Elements[id].Values.Count);
+				}
 			} // for k
 			if (minct == int.MaxValue)
+			{
 				minct = 0;
+			}
 
 			int res = minct;
 
 			//If we have AliasLists, the we need that Number as Reference Count!
 			minct = int.MaxValue;
 			for (int i = 0; i < AliasValues.Length; i++)
+			{
 				if (AliasValues[i].Length > 0)
+				{
 					minct = Math.Min(minct, AliasValues[i].Length);
+				}
+			}
+
 			if (minct != int.MaxValue)
+			{
 				res = minct;
+			}
 
 			return res;
 		}
@@ -301,7 +336,10 @@ namespace SimPe.Plugin.Gmdc
 					|| parent.Elements[i] == ovn
 					|| parent.Elements[i] == ovt
 				)
+				{
 					continue;
+				}
+
 				ovelements.Add(parent.Elements[i]);
 				velements.Add(new GmdcElement(this.Parent));
 			}
@@ -309,13 +347,20 @@ namespace SimPe.Plugin.Gmdc
 			for (int i = 0; i < this.ReferencedSize; i++)
 			{
 				for (int j = 0; j < velements.Length; j++)
+				{
 					velements[j]
 						.Values.Add(ovelements[j].Values[this.GetRealIndex(nv, i)]);
+				}
 
 				if (ovn != null)
+				{
 					vn.Values.Add(ovn.Values[this.GetRealIndex(nvn, i)]);
+				}
+
 				if (ovt != null)
+				{
 					vt.Values.Add(ovt.Values[this.GetRealIndex(nvt, i)]);
+				}
 			}
 
 			for (int i = 0; i < velements.Length; i++)
@@ -335,7 +380,9 @@ namespace SimPe.Plugin.Gmdc
 			}
 
 			for (int i = 0; i < this.AliasValues.Length; i++)
+			{
 				this.AliasValues[i].Clear();
+			}
 		}
 	}
 
@@ -427,7 +474,9 @@ namespace SimPe.Plugin.Gmdc
 		{
 			GmdcLinks list = new GmdcLinks();
 			foreach (GmdcLink item in this)
+			{
 				list.Add(item);
+			}
 
 			return list;
 		}

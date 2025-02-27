@@ -52,7 +52,9 @@ namespace SimPe
 				return "0x" + index.ToString("X") + ": " + Object.ToString();
 			}
 			else
+			{
 				return index.ToString() + ": " + Object.ToString();
+			}
 		}
 
 		/// <summary>

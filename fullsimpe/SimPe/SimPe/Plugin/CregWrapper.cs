@@ -157,11 +157,17 @@ namespace SimPe.Plugin
 				{
 					string s1 = reader.ReadString();
 					if (s1 == "GUID")
+					{
 						GooiVal = reader.ReadString();
+					}
 					else if (s1 == "CRC")
+					{
 						CRCVal = reader.ReadString();
+					}
 					else if (s1 == "Version")
+					{
 						VersVal = reader.ReadString();
+					}
 				}
 			}
 			else if (Vesion == 3) // Olde Quaxi Type
@@ -170,11 +176,17 @@ namespace SimPe.Plugin
 				{
 					string s1 = StreamHelper.ReadString(reader);
 					if (s1 == "GUID")
+					{
 						GooiVal = StreamHelper.ReadString(reader);
+					}
 					else if (s1 == "CRC")
+					{
 						CRCVal = StreamHelper.ReadString(reader);
+					}
 					else if (s1 == "Version")
+					{
 						VersVal = StreamHelper.ReadString(reader);
+					}
 				}
 			}
 			else if (Vesion == 1) // Maxis proper file
@@ -196,7 +208,9 @@ namespace SimPe.Plugin
 				SetContent();
 			}
 			else
+			{
 				SetContent();
+			}
 		}
 
 		/// <summary>

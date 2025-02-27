@@ -96,7 +96,9 @@ namespace SimPe.Plugin.Collections
 		{
 			BnfoCustomerItems ret = new BnfoCustomerItems(newparent);
 			foreach (BnfoCustomerItem s in list)
+			{
 				ret.Add(s);
+			}
 
 			return ret;
 		}
@@ -109,11 +111,17 @@ namespace SimPe.Plugin.Collections
 		public BnfoCustomerItem GetInstanceItem(ushort instance, bool create)
 		{
 			foreach (BnfoCustomerItem s in list)
+			{
 				if (s.SimInstance == instance)
+				{
 					return s;
+				}
+			}
 
 			if (create)
+			{
 				return this.AddNew(instance);
+			}
 
 			return null;
 		}
@@ -123,7 +131,10 @@ namespace SimPe.Plugin.Collections
 		public void Dispose()
 		{
 			if (list != null)
+			{
 				list.Clear();
+			}
+
 			list = null;
 		}
 

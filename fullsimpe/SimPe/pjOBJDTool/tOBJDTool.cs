@@ -46,12 +46,18 @@ namespace pjOBJDTool
 		)
 		{
 			if (package == null)
+			{
 				return false;
+			}
+
 			SimPe.Interfaces.Files.IPackedFileDescriptor[] obbies = package.FindFiles(
 				SimPe.Data.MetaData.OBJD_FILE
 			);
 			if (obbies.Length < 1)
+			{
 				return false;
+			}
+
 			return true;
 		}
 
@@ -69,9 +75,15 @@ namespace pjOBJDTool
 		)
 		{
 			if (!IsReallyEnabled(pfd, package))
+			{
 				return new SimPe.Plugin.ToolResult(false, false);
+			}
+
 			if (cobjdtool == null)
+			{
 				cobjdtool = new cOBJDTool();
+			}
+
 			return cobjdtool.Execute(ref pfd, ref package, prov);
 		}
 

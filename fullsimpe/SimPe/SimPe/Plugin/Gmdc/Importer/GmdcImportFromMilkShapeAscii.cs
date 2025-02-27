@@ -96,6 +96,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 		string[] GetTokens()
 		{
 			if (lineerror != null)
+			{
 				error +=
 					"Line "
 					+ linect.ToString()
@@ -105,9 +106,13 @@ namespace SimPe.Plugin.Gmdc.Importer
 					+ lastline
 					+ ")"
 					+ Helper.lbr;
+			}
+
 			lineerror = null;
 			if (Input.Peek() == -1)
+			{
 				return null;
+			}
 
 			linect++;
 			string line = Input.ReadLine();
@@ -116,13 +121,21 @@ namespace SimPe.Plugin.Gmdc.Importer
 			//cut off comments
 			int pos = line.IndexOf("//");
 			if (pos >= 0)
+			{
 				line = line.Substring(0, pos);
+			}
+
 			line = line.Trim().ToLower();
 			while (line.IndexOf("  ") != -1)
+			{
 				line = line.Replace("  ", " ");
+			}
 
 			if (line.Trim() == "")
+			{
 				return new string[0];
+			}
+
 			string[] linetoks = line.Split(" ".ToCharArray());
 			return linetoks;
 		}
@@ -135,12 +148,17 @@ namespace SimPe.Plugin.Gmdc.Importer
 		{
 			string[] linetoks = GetTokens();
 			if (linetoks == null)
+			{
 				return new string[0];
+			}
+
 			while (linetoks.Length == 0)
 			{
 				linetoks = GetTokens();
 				if (linetoks == null)
+				{
 					return new string[0];
+				}
 			}
 
 			return linetoks;
@@ -272,15 +290,21 @@ namespace SimPe.Plugin.Gmdc.Importer
 				ReadMeshDescription(g);
 				int vertcount = ReadCount();
 				for (int k = 0; k < vertcount; k++)
+				{
 					ReadVertexData(g);
+				}
 
 				int vertnormcount = ReadCount();
 				for (int k = 0; k < vertnormcount; k++)
+				{
 					ReadVertexNormalData(g);
+				}
 
 				int facecount = ReadCount();
 				for (int k = 0; k < facecount; k++)
+				{
 					ReadFaceData(g);
+				}
 
 				RemoveDuplicates(g);
 				grps.Add(g);
@@ -339,11 +363,13 @@ namespace SimPe.Plugin.Gmdc.Importer
 					{
 						//get real Bone Index
 						for (int i = 0; i < g.Group.UsedJoints.Length; i++)
+						{
 							if (g.Group.UsedJoints[i] == b)
 							{
 								b = i;
 								break;
 							}
+						}
 					}
 				}
 
@@ -463,11 +489,15 @@ namespace SimPe.Plugin.Gmdc.Importer
 
 				int poscount = ReadCount();
 				for (int k = 0; k < poscount; k++)
+				{
 					ReadJointPosPhase(b, k, poscount);
+				}
 
 				int rotcount = ReadCount();
 				for (int k = 0; k < rotcount; k++)
+				{
 					ReadJointRotPhase(b, k, rotcount);
+				}
 
 				bones.Add(b);
 			}
@@ -513,9 +543,13 @@ namespace SimPe.Plugin.Gmdc.Importer
 					ifb.FrameBlock.TransformationType = ifb.Target.TransformationType;
 
 					if (ifb.FrameBlock.TransformationType == FrameType.Translation)
+					{
 						curtransblock = ifb.FrameBlock;
+					}
 					else
+					{
 						currotblock = ifb.FrameBlock;
+					}
 				}
 				else
 				{
@@ -621,14 +655,20 @@ namespace SimPe.Plugin.Gmdc.Importer
 				{
 					//Brand this Block as Translation (ignoring all rotations!)
 					if (curtransblock.TransformationType == FrameType.Unknown)
+					{
 						curtransblock.TransformationType = FrameType.Translation;
+					}
 
 					//only process if the Block Type is Translation
 					if (curtransblock.TransformationType == FrameType.Translation)
 					{
 						if (isscaled && index == 0)
+						{
 							for (int i = 0; i < curtransblock.AxisCount; i++)
+							{
 								curtransblock.AxisSet[i].Locked = true;
+							}
+						}
 
 						curtransblock.AddFrame((short)t, trans, false);
 					}
@@ -673,14 +713,20 @@ namespace SimPe.Plugin.Gmdc.Importer
 				{
 					//Brand this Block as Rotation (ignoring all Translation!)
 					if (currotblock.TransformationType == FrameType.Unknown)
+					{
 						currotblock.TransformationType = FrameType.Rotation;
+					}
 
 					//only process if the Block Type is Rotation
 					if (currotblock.TransformationType == FrameType.Rotation)
 					{
 						if (isscaled && index == 0)
+						{
 							for (int i = 0; i < currotblock.AxisCount; i++)
+							{
 								currotblock.AxisSet[i].Locked = true;
+							}
+						}
 
 						currotblock.AddFrame((short)t, rot, false);
 					}
@@ -705,8 +751,12 @@ namespace SimPe.Plugin.Gmdc.Importer
 		bool EqualIndices(ImportedGroup g, int i1, int i2)
 		{
 			for (int i = 0; i < g.Link.AliasValues.Length; i++)
+			{
 				if (g.Link.AliasValues[i][i1] != g.Link.AliasValues[i][i2])
+				{
 					return false;
+				}
+			}
 
 			return true;
 		}
@@ -719,9 +769,15 @@ namespace SimPe.Plugin.Gmdc.Importer
 		bool UseAliasTables(ImportedGroup g)
 		{
 			for (int k = 1; k < g.Link.AliasValues.Length; k++)
+			{
 				for (int i = 0; i < g.Link.AliasValues[0].Length; i++)
+				{
 					if (g.Link.AliasValues[k - 1][i] != g.Link.AliasValues[k][i])
+					{
 						return true;
+					}
+				}
+			}
 
 			return false;
 		}
@@ -741,7 +797,9 @@ namespace SimPe.Plugin.Gmdc.Importer
 			}
 
 			for (int k = 0; k < g.Link.AliasValues.Length; k++)
+			{
 				g.Link.AliasValues[k].Clear();
+			}
 		}
 
 		/// <summary>
@@ -801,7 +859,10 @@ namespace SimPe.Plugin.Gmdc.Importer
 				{
 					list.Add(i);
 					if (offset != 0)
+					{
 						map[i] = i + offset;
+					}
+
 					offsetmap[i] = offset;
 				}
 			}

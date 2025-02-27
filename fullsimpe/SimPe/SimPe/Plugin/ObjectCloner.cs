@@ -252,7 +252,10 @@ namespace SimPe.Plugin
 				0x41A7
 			);
 			if (pfds.Length == 0)
+			{
 				pfds = Package.FindFiles(Data.MetaData.OBJD_FILE);
+			}
+
 			if (pfds.Length > 0)
 			{
 				SimPe.PackedFiles.Wrapper.ExtObjd objd =
@@ -293,7 +296,9 @@ namespace SimPe.Plugin
 		public void UpdateMMATGuids(ArrayList guids, uint primary)
 		{
 			if (primary == 0)
+			{
 				return;
+			}
 
 			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = Package.FindFiles(
 				Data.MetaData.MMAT
@@ -321,7 +326,9 @@ namespace SimPe.Plugin
 		public void RcolModelClone(string modelname)
 		{
 			if (modelname == null)
+			{
 				return;
+			}
 
 			string[] ms = new string[1];
 			ms[0] = modelname;
@@ -363,8 +370,13 @@ namespace SimPe.Plugin
 						if (s != "")
 						{
 							if (ext != null)
+							{
 								if (!s.ToLower().EndsWith(ext))
+								{
 									s += ext;
+								}
+							}
+
 							list.Add(s);
 						}
 					}
@@ -399,13 +411,18 @@ namespace SimPe.Plugin
 		public void RcolModelClone(string[] modelnames, ArrayList exclude)
 		{
 			if (modelnames == null)
+			{
 				return;
+			}
 
 			Scenegraph.FileExcludeList = Scenegraph.DefaultFileExcludeList;
 
 			SimPe.FileTable.FileIndex.Load();
 			if (WaitingScreen.Running)
+			{
 				WaitingScreen.UpdateMessage("Walking Scenegraph");
+			}
+
 			Scenegraph sg = new Scenegraph(modelnames, exclude, this.Setup);
 			if (
 				(Setup.BaseResource & CloneSettings.BaseResourceType.Ref)
@@ -413,7 +430,10 @@ namespace SimPe.Plugin
 			)
 			{
 				if (WaitingScreen.Running)
+				{
 					WaitingScreen.UpdateMessage("Reading 3IDR References");
+				}
+
 				sg.AddFrom3IDR(Package);
 			}
 			if (
@@ -422,36 +442,57 @@ namespace SimPe.Plugin
 			)
 			{
 				if (WaitingScreen.Running)
+				{
 					WaitingScreen.UpdateMessage("Reading XObject Definition");
+				}
+
 				sg.AddFromXml(Package);
 			}
 			if (Setup.IncludeWallmask)
 			{
 				if (WaitingScreen.Running)
+				{
 					WaitingScreen.UpdateMessage("Scanning for Wallmasks");
+				}
+
 				sg.AddWallmasks(modelnames);
 			}
 			if (Setup.PullResourcesByStr)
 			{
 				if (WaitingScreen.Running)
+				{
 					WaitingScreen.UpdateMessage("Scanning for #Str-linked Resources");
+				}
+
 				sg.AddStrLinked(Package, Setup.StrInstances);
 			}
 			if (Setup.IncludeAnimationResources)
 			{
 				if (WaitingScreen.Running)
+				{
 					WaitingScreen.UpdateMessage("Scanning for Animations");
+				}
+
 				sg.AddAnims(this.GetAnimNames());
 			}
 			if (WaitingScreen.Running)
+			{
 				WaitingScreen.UpdateMessage("Collect Slave TXMTs");
+			}
+
 			sg.AddSlaveTxmts(sg.GetSlaveSubsets());
 
 			if (WaitingScreen.Running)
+			{
 				WaitingScreen.UpdateMessage("Building Package");
+			}
+
 			sg.BuildPackage(Package);
 			if (WaitingScreen.Running)
+			{
 				WaitingScreen.UpdateMessage("Collect MMAT Files");
+			}
+
 			sg.AddMaterialOverrides(
 				Package,
 				Setup.OnlyDefaultMmats,
@@ -459,13 +500,19 @@ namespace SimPe.Plugin
 				Setup.ThrowExceptions
 			);
 			if (WaitingScreen.Running)
+			{
 				WaitingScreen.UpdateMessage("Collect Slave TXMTs");
+			}
+
 			Scenegraph.AddSlaveTxmts(Package, Scenegraph.GetSlaveSubsets(Package));
 
 			if (Setup.UpdateMmatGuids)
 			{
 				if (WaitingScreen.Running)
+				{
 					WaitingScreen.UpdateMessage("Fixing MMAT Files");
+				}
+
 				this.UpdateMMATGuids(this.GetGuidList(), this.GetPrimaryGuid());
 			}
 		}
@@ -482,10 +529,15 @@ namespace SimPe.Plugin
 		)
 		{
 			if (WaitingScreen.Running)
+			{
 				WaitingScreen.UpdateMessage("Loading Parent Files");
+			}
+
 			ArrayList names = new ArrayList();
 			foreach (string s in orgmodelnames)
+			{
 				names.Add(s);
+			}
 
 			ArrayList types = new ArrayList();
 			types.Add(Data.MetaData.MMAT);
@@ -501,7 +553,9 @@ namespace SimPe.Plugin
 				foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
 					if (pkg.FindFile(pfd) != null)
+					{
 						continue;
+					}
 
 					SimPe.Interfaces.Files.IPackedFile file = Package.Read(pfd);
 					pfd.UserData = file.UncompressedData;
@@ -514,7 +568,9 @@ namespace SimPe.Plugin
 
 						string n = mmat.ModelName.Trim().ToLower();
 						if (!n.EndsWith("_cres"))
+						{
 							n += "_cres";
+						}
 
 						if (!names.Contains(n))
 						{
@@ -539,7 +595,9 @@ namespace SimPe.Plugin
 		public void RemoveSubsetReferences(ArrayList exclude, string[] modelnames)
 		{
 			if (WaitingScreen.Running)
+			{
 				WaitingScreen.UpdateMessage("Removing unwanted Subsets");
+			}
 			//Build the ModelName List
 			ArrayList mn = new ArrayList();
 			if (modelnames != null)
@@ -548,7 +606,10 @@ namespace SimPe.Plugin
 				{
 					string n = s;
 					if (s.EndsWith("_cres"))
+					{
 						n = s.Substring(0, s.Length - 5);
+					}
+
 					mn.Add(n);
 				}
 			}
@@ -585,13 +646,18 @@ namespace SimPe.Plugin
 					{
 						string n = p.FileName.Trim().ToLower();
 						if (!n.EndsWith("_txmt"))
+						{
 							n += "_txmt";
+						}
 
 						ArrayList names = new ArrayList();
 						Interfaces.Files.IPackedFileDescriptor[] rpfds =
 							Package.FindFile(n, Data.MetaData.TXMT);
 						foreach (Interfaces.Files.IPackedFileDescriptor rpfd in rpfds)
+						{
 							names.Add(rpfd);
+						}
+
 						int pos = 0;
 						while (pos < names.Count)
 						{
@@ -608,12 +674,18 @@ namespace SimPe.Plugin
 
 								Hashtable ht = fl.ReferenceChains;
 								foreach (string k in ht.Keys)
+								{
 									foreach (
 										Interfaces.Files.IPackedFileDescriptor lpfd in (ArrayList)
 											ht[k]
 									)
+									{
 										if (!names.Contains(lpfd))
+										{
 											names.Add(lpfd);
+										}
+									}
+								}
 							}
 						} //while
 					}
@@ -622,7 +694,9 @@ namespace SimPe.Plugin
 
 			//now remova all deleted Files from the Index
 			if (deleted)
+			{
 				Package.RemoveMarked();
+			}
 		}
 	}
 }

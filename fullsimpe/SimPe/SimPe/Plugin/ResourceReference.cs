@@ -73,9 +73,11 @@ namespace SimPe.Plugin
 			{
 				string[] parts = s.Split(new char[] { '-' });
 				if (parts.Length != 4)
+				{
 					throw new FormatException(
 						"The specified string was not in the correct format for a ResourceReference"
 					);
+				}
 
 				NumberStyles format =
 					NumberStyles.AllowHexSpecifier | NumberStyles.HexNumber;

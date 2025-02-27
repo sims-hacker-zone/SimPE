@@ -83,7 +83,9 @@ namespace SimPe.Plugin.UI
 			{
 				uint index = BitConverter.ToUInt32(id.ToByteArray(), 0); // dirty trick
 				if (index < this.cbDefaultProxy.Items.Count)
+				{
 					this.cbDefaultProxy.SelectedIndex = (int)index;
+				}
 			}
 			else
 			{

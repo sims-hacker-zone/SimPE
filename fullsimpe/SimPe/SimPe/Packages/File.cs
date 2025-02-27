@@ -117,9 +117,15 @@ namespace SimPe.Packages
 		public void ReloadReader()
 		{
 			if (Reader != null)
+			{
 				return;
+			}
+
 			if (this.type == PackageBaseType.Stream)
+			{
 				return;
+			}
+
 			StreamItem si = StreamFactory.UseStream(
 				this.flname,
 				System.IO.FileAccess.Read
@@ -138,9 +144,13 @@ namespace SimPe.Packages
 				if (reader != null)
 				{
 					if (reader.BaseStream == null)
+					{
 						reader = null;
+					}
 					else if (!reader.BaseStream.CanRead)
+					{
 						reader = null;
+					}
 				}
 				return reader;
 			}
@@ -185,7 +195,9 @@ namespace SimPe.Packages
 			fhg = 0;
 			reader = br;
 			if (header == null)
+			{
 				header = new HeaderData();
+			}
 
 			if (br != null)
 			{
@@ -216,7 +228,9 @@ namespace SimPe.Packages
 			if (fileindex != null)
 			{
 				for (int i = fileindex.Length - 1; i >= 0; i--)
+				{
 					this.UnlinkResourceDescriptor(fileindex[i]);
+				}
 			}
 			fileindex = new IPackedFileDescriptor[0];
 		}
@@ -332,7 +346,10 @@ namespace SimPe.Packages
 				StreamItem si = StreamFactory.UseStream(flname, FileAccess.Read);
 				si.SetFileAccess(FileAccess.Read);
 				if (si.StreamState != StreamState.Removed)
+				{
 					reader = new System.IO.BinaryReader(si.FileStream);
+				}
+
 				return;
 			}
 			if (type == PackageBaseType.Filename)
@@ -340,10 +357,13 @@ namespace SimPe.Packages
 				CloseReader();
 				StreamItem si = StreamFactory.UseStream(flname, FileAccess.Read);
 				if (si.StreamState == StreamState.Removed)
+				{
 					throw new Exception(
 						"The File was moved or deleted whil SimPe was running.",
 						new Exception("Unable to find " + this.FileName)
 					);
+				}
+
 				reader = new System.IO.BinaryReader(si.FileStream);
 			}
 		}
@@ -351,14 +371,20 @@ namespace SimPe.Packages
 		protected void CloseReader()
 		{
 			if (persistent)
+			{
 				return;
+			}
+
 			if ((type == PackageBaseType.Filename) && (reader != null))
 			{
 				StreamItem si = StreamFactory.FindStreamItem(
 					(FileStream)reader.BaseStream
 				);
 				if (si != null)
+				{
 					si.Close();
+				}
+
 				reader = null;
 			}
 		}
@@ -401,11 +427,16 @@ namespace SimPe.Packages
 			get
 			{
 				if (Index == null)
+				{
 					return false;
+				}
+
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in Index)
 				{
 					if (pfd.Changed)
+					{
 						return true;
+					}
 				}
 				return false;
 			}
@@ -450,11 +481,18 @@ namespace SimPe.Packages
 		public void Remove(IPackedFileDescriptor pfd)
 		{
 			if (fileindex == null)
+			{
 				return;
+			}
+
 			System.Collections.ArrayList list = new System.Collections.ArrayList();
 			for (int i = 0; i < fileindex.Length; i++)
+			{
 				if (fileindex[i] != pfd)
+				{
 					list.Add(fileindex[i]);
+				}
+			}
 
 			PackedFileDescriptor[] newindex = new PackedFileDescriptor[list.Count];
 			list.CopyTo(newindex);
@@ -476,7 +514,9 @@ namespace SimPe.Packages
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in fileindex)
 			{
 				if (!pfd.MarkForDelete)
+				{
 					list.Add(pfd);
+				}
 				else
 				{
 					(
@@ -558,7 +598,9 @@ namespace SimPe.Packages
 		public void Add(IPackedFileDescriptor[] pfds)
 		{
 			foreach (IPackedFileDescriptor pfd in pfds)
+			{
 				Add(pfd);
+			}
 		}
 
 		/// <summary>
@@ -588,8 +630,10 @@ namespace SimPe.Packages
 			}
 
 			if (isnew)
+			{
 				((SimPe.Packages.PackedFileDescriptor)pfd).offset = (uint)
 					this.NextFreeOffset;
+			}
 
 			NextFreeOffset = Math.Max(
 				NextFreeOffset,
@@ -615,7 +659,10 @@ namespace SimPe.Packages
 		public IPackedFileDescriptor GetFileIndex(uint item)
 		{
 			if ((item >= fileindex.Length) || (item < 0))
+			{
 				return null;
+			}
+
 			return fileindex[item];
 		}
 
@@ -627,7 +674,10 @@ namespace SimPe.Packages
 			get
 			{
 				if (fileindex == null)
+				{
 					fileindex = new IPackedFileDescriptor[0];
+				}
+
 				return fileindex;
 			}
 			set
@@ -700,7 +750,9 @@ namespace SimPe.Packages
 
 			//Load the File Index File
 			if (FileList != null)
+			{
 				FileList = FileList;
+			}
 		}
 
 		/// <summary>
@@ -722,10 +774,12 @@ namespace SimPe.Packages
 				this.BeginUpdate();
 				//setup the compression State
 				foreach (PackedFileDescriptor pfd in fileindex)
+				{
 					pfd.WasCompressed = this.GetPackedFile(
 						pfd,
 						new byte[0]
 					).IsCompressed;
+				}
 
 				//now delete all pending Events
 				CloseReader();
@@ -785,7 +839,10 @@ namespace SimPe.Packages
 			holeindex = new HoleIndexItem[header.hole.Count];
 			uint counter = 0;
 			if (reader == null)
+			{
 				OpenReader();
+			}
+
 			reader.BaseStream.Seek(header.hole.offset, System.IO.SeekOrigin.Begin);
 
 			while (counter < holeindex.Length)
@@ -844,7 +901,10 @@ namespace SimPe.Packages
 			get
 			{
 				if (flname == null)
+				{
 					return "";
+				}
+
 				return flname;
 			}
 		}
@@ -859,11 +919,14 @@ namespace SimPe.Packages
 			get
 			{
 				if (fhg == 0)
+				{
 					fhg = (uint)(
 						Hashes.FileGroupHash(
 							System.IO.Path.GetFileNameWithoutExtension(FileName)
 						) | 0x7f000000
 					);
+				}
+
 				return fhg;
 			}
 		}
@@ -889,7 +952,10 @@ namespace SimPe.Packages
 		{
 			PackedFile pf = new PackedFile(data);
 			if (reader == null)
+			{
 				ReloadReader();
+			}
+
 			try
 			{
 				reader.BaseStream.Seek(pfd.Offset, System.IO.SeekOrigin.Begin);
@@ -900,7 +966,9 @@ namespace SimPe.Packages
 					(dummy[0] << 0x10) | (dummy[1] << 0x08) | +dummy[2]
 				);
 				if (pf.Signature == MetaData.COMPRESS_SIGNATURE)
+				{
 					pf.headersize = 9;
+				}
 
 				if ((filelistfile != null) && (pfd.Type != File.FILELIST_TYPE))
 				{
@@ -910,7 +978,9 @@ namespace SimPe.Packages
 						SimPe.PackedFiles.Wrapper.ClstItem fi = (ClstItem)
 							filelistfile.Items[pos];
 						if (header.Version == 0x100000001)
+						{
 							pf.uncsize = fi.UncompressedSize;
+						}
 					}
 				}
 			}
@@ -944,7 +1014,9 @@ namespace SimPe.Packages
 				if ( /*(pf.Size == pfd.Size) &&*/
 					(pf.Signature == MetaData.COMPRESS_SIGNATURE)
 				)
+				{
 					pf.headersize = 9;
+				}
 
 				if ((filelistfile != null) && (pfd.Type != File.FILELIST_TYPE))
 				{
@@ -954,7 +1026,9 @@ namespace SimPe.Packages
 						SimPe.PackedFiles.Wrapper.ClstItem fi = (ClstItem)
 							filelistfile.Items[pos];
 						if (header.Version == 0x100000001)
+						{
 							pf.uncsize = fi.UncompressedSize;
+						}
 					}
 				}
 			}
@@ -998,7 +1072,10 @@ namespace SimPe.Packages
 					OpenReader();
 
 					if (reader == null)
+					{
 						return new PackedFile(new byte[0]);
+					}
+
 					if (reader.BaseStream == null)
 					{
 						CloseReader();
@@ -1011,9 +1088,13 @@ namespace SimPe.Packages
 
 					byte[] data = null;
 					if (pfd.Size > 0)
+					{
 						data = reader.ReadBytes(pfd.Size);
+					}
 					else
+					{
 						data = new byte[0];
+					}
 
 					PackedFile pf = GetPackedFile(pfd, data);
 
@@ -1039,7 +1120,9 @@ namespace SimPe.Packages
 				{
 					IPackedFileDescriptor pfd = fileindex[i];
 					if (pfd.Type == type)
+					{
 						list.Add(pfd);
+					}
 				}
 			}
 
@@ -1063,7 +1146,9 @@ namespace SimPe.Packages
 				{
 					IPackedFileDescriptor pfd = fileindex[i];
 					if (pfd.Group == group)
+					{
 						list.Add(pfd);
+					}
 				}
 			}
 
@@ -1086,7 +1171,10 @@ namespace SimPe.Packages
 
 			IPackedFileDescriptor[] ret = FindFile(st, inst);
 			if (ret.Length == 0)
+			{
 				ret = FindFile(0, inst);
+			}
+
 			return ret;
 		}
 
@@ -1103,7 +1191,10 @@ namespace SimPe.Packages
 
 			IPackedFileDescriptor[] ret = FindFile(type, st, inst);
 			if (ret.Length == 0)
+			{
 				ret = FindFile(type, 0, inst);
+			}
+
 			return ret;
 		}
 
@@ -1119,7 +1210,9 @@ namespace SimPe.Packages
 			foreach (IPackedFileDescriptor pfd in fileindex)
 			{
 				if ((pfd.Instance == instance) && (pfd.SubType == subtype))
+				{
 					list.Add(pfd);
+				}
 			}
 
 			IPackedFileDescriptor[] ret = new IPackedFileDescriptor[list.Count];
@@ -1145,7 +1238,9 @@ namespace SimPe.Packages
 						&& (pfd.Instance == instance)
 						&& (pfd.SubType == subtype)
 					)
+					{
 						list.Add(pfd);
+					}
 				}
 			}
 
@@ -1181,6 +1276,7 @@ namespace SimPe.Packages
 			if (fileindex != null)
 			{
 				foreach (IPackedFileDescriptor pfd in fileindex)
+				{
 					if (
 						(pfd.Type == type)
 						&& (pfd.SubType == subtype)
@@ -1190,6 +1286,7 @@ namespace SimPe.Packages
 					{
 						return pfd;
 					}
+				}
 			}
 
 			return null;
@@ -1209,6 +1306,7 @@ namespace SimPe.Packages
 			if (fileindex != null)
 			{
 				foreach (IPackedFileDescriptor pfd in fileindex)
+				{
 					if (
 						(pfd.Type == type)
 						&& (pfd.SubType == subtype)
@@ -1217,6 +1315,7 @@ namespace SimPe.Packages
 					{
 						return pfd;
 					}
+				}
 			}
 
 			return null;
@@ -1239,24 +1338,35 @@ namespace SimPe.Packages
 		public void Close(bool total)
 		{
 			if (this.Reader != null)
+			{
 				Reader.Close();
+			}
+
 			if (total)
 			{
 				if (this.Index != null)
 				{
 					foreach (Interfaces.Files.IPackedFileDescriptor pfd in this.Index)
+					{
 						if (pfd != null)
+						{
 							pfd.MarkInvalid();
+						}
+					}
 				}
 			}
 
 			if (SimPe.Packages.PackageMaintainer.Maintainer.FileIndex != null)
+			{
 				if (
 					SimPe.Packages.PackageMaintainer.Maintainer.FileIndex.Contains(
 						this.SaveFileName
 					)
 				)
+				{
 					SimPe.Packages.PackageMaintainer.Maintainer.FileIndex.Clear();
+				}
+			}
 		}
 
 		/// <summary>
@@ -1268,7 +1378,10 @@ namespace SimPe.Packages
 		{
 			string s = "";
 			foreach (char c in array)
+			{
 				s += c.ToString();
+			}
+
 			return s;
 		}
 
@@ -1315,7 +1428,9 @@ namespace SimPe.Packages
 				)
 			);
 			if (UserVerification.HaveValidUserId)
+			{
 				gf.Header.Created = UserVerification.UserId;
+			}
 
 			return gf;
 		}
@@ -1325,20 +1440,31 @@ namespace SimPe.Packages
 			if (this.FileName == null)
 			{
 				if (this.Reader == null)
+				{
 					return base.GetHashCode();
+				}
 				else
+				{
 					return this.Reader.GetHashCode();
+				}
 			}
 			else
+			{
 				return FileName.GetHashCode();
+			}
 		}
 
 		public override bool Equals(object obj)
 		{
 			if (obj == null)
+			{
 				return false;
+			}
+
 			if (!(obj is File))
+			{
 				return false;
+			}
 
 			File f = (File)obj;
 
@@ -1348,7 +1474,9 @@ namespace SimPe.Packages
 				return base.Equals(obj);
 			}
 			else if (this.FileName == null)
+			{
 				return false;
+			}
 
 			if (f.FileName == null && this.FileName == null)
 			{
@@ -1357,7 +1485,9 @@ namespace SimPe.Packages
 					return f.Reader == null;
 				}
 				if (f.Reader == null)
+				{
 					return false;
+				}
 
 				return this.Reader.Equals(f.Reader);
 			}
@@ -1381,7 +1511,9 @@ namespace SimPe.Packages
 				return;
 			}
 			if (this.AddedResource != null)
+			{
 				AddedResource(this, new System.EventArgs());
+			}
 		}
 
 		protected void FireRemoveEvent()
@@ -1392,7 +1524,9 @@ namespace SimPe.Packages
 				return;
 			}
 			if (this.RemovedResource != null)
+			{
 				RemovedResource(this, new System.EventArgs());
+			}
 		}
 
 		protected void FireIndexEvent()
@@ -1403,7 +1537,9 @@ namespace SimPe.Packages
 		protected void FireSavedIndexEvent()
 		{
 			if (this.SavedIndex != null)
+			{
 				SavedIndex(this, new System.EventArgs());
+			}
 		}
 
 		protected void FireIndexEvent(System.EventArgs e)
@@ -1414,13 +1550,18 @@ namespace SimPe.Packages
 				return;
 			}
 			if (this.IndexChanged != null)
+			{
 				IndexChanged(this, e);
+			}
 		}
 
 		public void BeginUpdate()
 		{
 			if (pause)
+			{
 				return;
+			}
+
 			ForgetUpdate();
 		}
 
@@ -1433,26 +1574,47 @@ namespace SimPe.Packages
 			if (Index != null)
 			{
 				foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in Index)
+				{
 					if (pfd != null)
+					{
 						pfd.BeginUpdate();
+					}
+				}
 			}
 		}
 
 		public void EndUpdate()
 		{
 			if (!pause)
+			{
 				return;
+			}
+
 			pause = false;
 			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in Index)
+			{
 				pfd.EndUpdate();
+			}
+
 			if ((remevent || indexevent || addevent) && EndedUpdate != null)
+			{
 				EndedUpdate(this, new EventArgs());
+			}
+
 			if (indexevent)
+			{
 				FireIndexEvent();
+			}
+
 			if (remevent)
+			{
 				FireRemoveEvent();
+			}
+
 			if (addevent)
+			{
 				FireAddEvent();
+			}
 		}
 
 		/// <summary>
@@ -1467,7 +1629,9 @@ namespace SimPe.Packages
 		void ResourceChanged(SimPe.Interfaces.Files.IPackedFileDescriptor sender)
 		{
 			if (ChangedResource != null)
+			{
 				ChangedResource(sender);
+			}
 		}
 
 		/// <summary>
@@ -1531,9 +1695,16 @@ namespace SimPe.Packages
 		)
 		{
 			if (fileindex != null)
+			{
 				foreach (IPackedFileDescriptor ipfd in fileindex)
+				{
 					if (ipfd == pfd)
+					{
 						return pfd;
+					}
+				}
+			}
+
 			return null;
 			//return FindExactFile(pfd.Type, pfd.SubType, pfd.Group, pfd.Instance, pfd.Offset);
 		}
@@ -1556,6 +1727,7 @@ namespace SimPe.Packages
 				if (fileindex != null)
 				{
 					foreach (IPackedFileDescriptor pfd in fileindex)
+					{
 						if (
 							(pfd.Type == type)
 							&& (pfd.SubType == subtype)
@@ -1566,6 +1738,7 @@ namespace SimPe.Packages
 						{
 							return pfd;
 						}
+					}
 				}
 			}
 
@@ -1578,7 +1751,9 @@ namespace SimPe.Packages
 		{
 			this.Close(true);
 			if (this.fileindex != null)
+			{
 				this.ClearFileIndex();
+			}
 
 			/*if (this is SimPe.Packages.GeneratableFile)
 				PackageMaintainer.Maintainer.RemovePackage((SimPe.Packages.GeneratableFile)this);*/

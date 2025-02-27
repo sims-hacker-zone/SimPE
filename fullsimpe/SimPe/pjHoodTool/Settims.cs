@@ -70,9 +70,14 @@ namespace pjHoodTool
 			cHoodTool.incbus = cbshowbusi.Checked;
 			cHoodTool.inclot = !cbExcludeLots.Checked;
 			if (rbcsv.Checked)
+			{
 				cHoodTool.outptype = ".csv";
+			}
 			else
+			{
 				cHoodTool.outptype = ".txt";
+			}
+
 			Settings = dun; // Save settings
 			this.Close();
 		}
@@ -86,25 +91,37 @@ namespace pjHoodTool
 						.PathProvider.Global.GetExpansion(SimPe.Expansions.University)
 						.Exists
 				)
+				{
 					noo[4] = ",0";
+				}
+
 				if (
 					!SimPe
 						.PathProvider.Global.GetExpansion(SimPe.Expansions.Business)
 						.Exists
 				)
+				{
 					noo[5] = ",0";
+				}
+
 				if (
 					!SimPe
 						.PathProvider.Global.GetExpansion(SimPe.Expansions.FreeTime)
 						.Exists
 				)
+				{
 					noo[6] = ",0";
+				}
+
 				if (
 					!SimPe
 						.PathProvider.Global.GetExpansion(SimPe.Expansions.Apartments)
 						.Exists
 				)
+				{
 					noo[7] = ",0"; // complete set default values
+				}
+
 				string temp = ""; // default settings, if no SavedValue then temp is used
 				foreach (string s in noo)
 				{
@@ -135,57 +152,122 @@ namespace pjHoodTool
 			{
 				string temp = "";
 				if (cbshowbasic.Checked)
+				{
 					temp = "1";
+				}
 				else
+				{
 					temp = "0";
+				}
+
 				if (cbshowinterests.Checked)
+				{
 					temp += ",1";
+				}
 				else
+				{
 					temp += ",0";
+				}
+
 				if (cbshowcharacter.Checked)
+				{
 					temp += ",1";
+				}
 				else
+				{
 					temp += ",0";
+				}
+
 				if (cbshowskills.Checked)
+				{
 					temp += ",1";
+				}
 				else
+				{
 					temp += ",0";
+				}
+
 				if (cbshowuniversity.Checked)
+				{
 					temp += ",1";
+				}
 				else
+				{
 					temp += ",0";
+				}
+
 				if (cbshowfreetime.Checked)
+				{
 					temp += ",1";
+				}
 				else
+				{
 					temp += ",0";
+				}
+
 				if (cbshowapartments.Checked)
+				{
 					temp += ",1";
+				}
 				else
+				{
 					temp += ",0";
+				}
+
 				if (cbshownpcs.Checked)
+				{
 					temp += ",0";
+				}
 				else
+				{
 					temp += ",1"; // checking switches off
+				}
+
 				if (cbshowdesc.Checked)
+				{
 					temp += ",1";
+				}
 				else
+				{
 					temp += ",0";
+				}
+
 				if (cbshowpets.Checked)
+				{
 					temp += ",1";
+				}
 				else
+				{
 					temp += ",0";
+				}
+
 				if (cbshowbusi.Checked)
+				{
 					temp += ",1";
+				}
 				else
+				{
 					temp += ",0";
+				}
+
 				if (cbExcludeLots.Checked)
+				{
 					temp += ",0";
+				}
 				else
+				{
 					temp += ",1"; // checking switches off
+				}
+
 				if (rbcsv.Checked)
+				{
 					temp += ",.csv";
+				}
 				else
+				{
 					temp += ",.txt";
+				}
+
 				SimPe.XmlRegistryKey rkf =
 					SimPe.Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(
 						"PJSE\\HoodTool"

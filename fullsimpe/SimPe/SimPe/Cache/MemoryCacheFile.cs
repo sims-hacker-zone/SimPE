@@ -107,7 +107,10 @@ namespace SimPe.Cache
 				this.map = null;
 				Wait.Message = "Saving Chache";
 				if (save)
+				{
 					this.Save(this.FileName);
+				}
+
 				this.LoadMemTable();
 				this.LoadMemList();
 			}
@@ -150,12 +153,15 @@ namespace SimPe.Cache
 						null
 					);
 				if (sitems.Length == 0)
+				{
 					sitems = FileTable.FileIndex.FindFile(
 						Data.MetaData.CTSS_FILE,
 						objd.FileDescriptor.Group,
 						objd.CTSSInstance,
 						null
 					);
+				}
+
 				if (sitems.Length > 0)
 				{
 					SimPe.PackedFiles.Wrapper.Str str =
@@ -165,14 +171,18 @@ namespace SimPe.Cache
 						Helper.WindowsRegistry.LanguageCode
 					);
 					if (strs.Length > 0)
+					{
 						mci.Name = strs[0].Title;
+					}
 
 					//not found?
 					if (mci.Name == "")
 					{
 						strs = str.LanguageItems(1);
 						if (strs.Length > 0)
+						{
 							mci.Name = strs[0].Title;
+						}
 					}
 				}
 			}
@@ -197,7 +207,10 @@ namespace SimPe.Cache
 					);
 					string[] res = new string[strs.Count];
 					for (int i = 0; i < res.Length; i++)
+					{
 						res[i] = strs[i].Title;
+					}
+
 					mci.ValueNames = res;
 				}
 			}
@@ -205,25 +218,32 @@ namespace SimPe.Cache
 
 			//still no name?
 			if (mci.Name == "")
+			{
 				mci.Name = objd.FileName;
+			}
 			//having an icon?
 			SimPe.PackedFiles.Wrapper.Picture pic =
 				new SimPe.PackedFiles.Wrapper.Picture();
 			Interfaces.Scenegraph.IScenegraphFileIndexItem[] iitems;
 			if (mci.IsBadge)
+			{
 				iitems = FileTable.FileIndex.FindFile(
 					Data.MetaData.SIM_IMAGE_FILE,
 					objd.FileDescriptor.Group,
 					3,
 					null
 				);
+			}
 			else
+			{
 				iitems = FileTable.FileIndex.FindFile(
 					Data.MetaData.SIM_IMAGE_FILE,
 					objd.FileDescriptor.Group,
 					1,
 					null
 				);
+			}
+
 			if (iitems.Length > 0)
 			{
 				pic.ProcessData(iitems[0]);
@@ -248,7 +268,10 @@ namespace SimPe.Cache
 			get
 			{
 				if (map == null)
+				{
 					LoadMem();
+				}
+
 				return map;
 			}
 		}
@@ -287,7 +310,10 @@ namespace SimPe.Cache
 			get
 			{
 				if (list == null)
+				{
 					LoadMemList();
+				}
+
 				return list;
 			}
 		}
@@ -326,7 +352,10 @@ namespace SimPe.Cache
 			get
 			{
 				if (fi == null)
+				{
 					LoadMemTable();
+				}
+
 				return fi;
 			}
 		}
@@ -383,12 +412,16 @@ namespace SimPe.Cache
 			MemoryCacheItem mci = FindItem(guid);
 			SimPe.Data.Alias a;
 			if (mci == null)
+			{
 				a = new SimPe.Data.Alias(
 					guid,
 					Localization.Manager.GetString("Unknown")
 				);
+			}
 			else
+			{
 				a = new SimPe.Data.Alias(guid, mci.Name);
+			}
 
 			object[] o = new object[3];
 			o[0] = mci.FileDescriptor;

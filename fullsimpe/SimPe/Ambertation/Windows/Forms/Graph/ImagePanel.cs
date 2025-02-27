@@ -202,12 +202,14 @@ namespace Ambertation.Windows.Forms.Graph
 			);
 
 			if (thumb != null)
+			{
 				gr.DrawImage(
 					thumb,
 					trec,
 					new Rectangle(0, 0, thumb.Width, thumb.Height),
 					GraphicsUnit.Pixel
 				);
+			}
 		}
 
 		public static Image CreateThumbnail(
@@ -280,7 +282,10 @@ namespace Ambertation.Windows.Forms.Graph
 			int shift = (int)((r.Height - sz.Height) / 2);
 			int lshift = (int)((r.Width - 8 - sz.Width) / 2);
 			if (!center)
+			{
 				lshift = 0;
+			}
+
 			gr.DrawString(
 				tx,
 				f,
@@ -347,7 +352,9 @@ namespace Ambertation.Windows.Forms.Graph
 		protected override void SetupDocks()
 		{
 			if (docks == null)
+			{
 				InitDocks();
+			}
 
 			Rectangle trec = ThumbnailRectangle;
 			trec = new Rectangle(

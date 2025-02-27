@@ -268,7 +268,9 @@ namespace SimPe
 			f.tbFolder.Text = path;
 
 			if (f.ShowDialog() == DialogResult.OK)
+			{
 				return f.tbFolder.Text;
+			}
 
 			return path;
 		}
@@ -276,10 +278,14 @@ namespace SimPe
 		private void button1_Click(object sender, System.EventArgs e)
 		{
 			if (System.IO.Directory.Exists(tbFolder.Text))
+			{
 				fbd.SelectedPath = tbFolder.Text;
+			}
 
 			if (fbd.ShowDialog() == DialogResult.OK)
+			{
 				tbFolder.Text = fbd.SelectedPath;
+			}
 		}
 
 		private void btOK_Click(object sender, System.EventArgs e)

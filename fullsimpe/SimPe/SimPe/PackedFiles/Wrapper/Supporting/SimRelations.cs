@@ -49,7 +49,9 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		public override string ToString()
 		{
 			if (NameTag != null)
+			{
 				return NameTag;
+			}
 
 			return base.ToString();
 		}
@@ -77,9 +79,14 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 			if (rels != null)
 			{
 				if (rels[0] != null)
+				{
 					rels[0].SynchronizeUserData();
+				}
+
 				if (rels[1] != null)
+				{
 					rels[1].SynchronizeUserData();
+				}
 			}
 		}
 	}

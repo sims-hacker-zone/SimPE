@@ -79,7 +79,9 @@ namespace SimPe.Plugin
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
 			if (!pjse.GUIDIndex.TheGUIDIndex.IsLoaded)
+			{
 				pjse.GUIDIndex.TheGUIDIndex.Load(pjse.GUIDIndex.DefaultGUIDFile);
+			}
 
 			reader.BaseStream.Seek(16, System.IO.SeekOrigin.Begin); // Begin at first GUID
 			guide = reader.ReadUInt32();
@@ -101,13 +103,17 @@ namespace SimPe.Plugin
 				{
 					guidnx = reader.ReadUInt32();
 					if (guidnx != guide)
+					{
 						DispLabel +=
 							"\n GUID 0x"
 							+ SimPe.Helper.HexString(guidnx)
 							+ "  "
 							+ pjse.GUIDIndex.TheGUIDIndex[guidnx];
+					}
 					else
+					{
 						break;
+					}
 				}
 			}
 		}

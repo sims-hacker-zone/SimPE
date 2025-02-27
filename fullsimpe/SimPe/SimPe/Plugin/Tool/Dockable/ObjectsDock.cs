@@ -194,7 +194,10 @@ namespace SimPe.Plugin.Tool.Dockable
 			if (disposing)
 			{
 				if (registry != null)
+				{
 					registry.Dispose();
+				}
+
 				registry = null;
 				if (components != null)
 				{
@@ -1012,9 +1015,13 @@ namespace SimPe.Plugin.Tool.Dockable
 				wizard1.CurrentStep == this.wizardStepPanel3
 				|| wizard1.CurrentStep == this.wizardStepPanel5
 			)
+			{
 				Activate_biNext(sender, e);
+			}
 			else
+			{
 				wizard1.Finish();
+			}
 		}
 
 		private void button1_Click(object sender, System.EventArgs e)
@@ -1039,7 +1046,10 @@ namespace SimPe.Plugin.Tool.Dockable
 				if (lb.Items.Count == 0 && tv.Nodes.Count == 0)
 				{
 					if (RootNode == null)
+					{
 						RootNode = new TreeNode();
+					}
+
 					tv.Enabled = false;
 					lb.Enabled = false;
 					lastselected = null;
@@ -1105,13 +1115,17 @@ namespace SimPe.Plugin.Tool.Dockable
 		)
 		{
 			if (a == null)
+			{
 				return;
+			}
 
 			if (
 				oci.Class == SimPe.Cache.ObjectClass.XObject
 				&& !Helper.WindowsRegistry.OWincludewalls
 			)
+			{
 				return;
+			}
 
 			string[][] cats = oci.ObjectCategory;
 			foreach (string[] ss in cats)
@@ -1133,12 +1147,16 @@ namespace SimPe.Plugin.Tool.Dockable
 		private void ol_Finished(object sender, EventArgs e)
 		{
 			if (tv.InvokeRequired)
+			{
 				tv.Invoke(
 					new System.EventHandler(invoke_ol_Finished),
 					new object[] { sender, e }
 				);
+			}
 			else
+			{
 				invoke_ol_Finished(sender, e);
+			}
 		}
 
 		private void invoke_ol_Finished(object sender, EventArgs e)
@@ -1215,9 +1233,13 @@ namespace SimPe.Plugin.Tool.Dockable
 			if (wizard1.CurrentStepNumber == this.wizardStepPanel2.Index && tv.Visible)
 			{
 				if (tv.SelectedNode == null)
+				{
 					wizard1.NextEnabled = false;
+				}
 				else
+				{
 					wizard1.NextEnabled = tv.SelectedNode.Tag != null;
+				}
 			}
 
 			if (wizard1.NextEnabled)
@@ -1225,7 +1247,9 @@ namespace SimPe.Plugin.Tool.Dockable
 				lastselected = (Data.Alias)tv.SelectedNode.Tag;
 			}
 			else
+			{
 				lastselected = null;
+			}
 
 			UpdateObjectPreview(op1);
 		}
@@ -1242,7 +1266,9 @@ namespace SimPe.Plugin.Tool.Dockable
 				lastselected = (Data.Alias)lb.SelectedItem;
 			}
 			else
+			{
 				lastselected = null;
+			}
 
 			UpdateObjectPreview(op1);
 		}
@@ -1286,11 +1312,17 @@ namespace SimPe.Plugin.Tool.Dockable
 			if (tv.Visible)
 			{
 				if (tv.SelectedNode == null)
+				{
 					e.EnableNext = false;
+				}
 				else if (tv.SelectedNode.Tag == null)
+				{
 					e.EnableNext = false;
+				}
 				else
+				{
 					e.EnableNext = true;
+				}
 			}
 			else
 			{
@@ -1388,9 +1420,13 @@ namespace SimPe.Plugin.Tool.Dockable
 				}
 				this.pbWait.Image = null;
 				if (package != null)
+				{
 					this.lbfinload.Visible = settings.RemoteResult;
+				}
 				else
+				{
 					this.lberr.Visible = true;
+				}
 			}
 
 			this.lbwait.Visible = false;
@@ -1446,13 +1482,19 @@ namespace SimPe.Plugin.Tool.Dockable
 		void UpdateObjectPreview(ObjectPreview op)
 		{
 			if (lastselected != null)
+			{
 				op.SetFromObjectCacheItem(
 					(SimPe.Cache.ObjectCacheItem)lastselected.Tag[3]
 				);
+			}
 			else if (package != null)
+			{
 				op.SetFromPackage(package);
+			}
 			else
+			{
 				op.SelectedObject = null;
+			}
 		}
 
 		private void biAbort_Activate(object sender, System.EventArgs e)
@@ -1510,9 +1552,13 @@ namespace SimPe.Plugin.Tool.Dockable
 			)
 			{
 				if (source < sender.CurrentStep.Index)
+				{
 					wizard1.GoNext();
+				}
 				else
+				{
 					wizard1.GoPrev();
+				}
 			}
 		}
 

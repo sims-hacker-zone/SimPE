@@ -75,7 +75,10 @@ namespace SimPe.PackedFiles.Wrapper
 				{
 					this.EndUpdate();
 					if (!run)
+					{
 						WaitingScreen.Stop();
+					}
+
 					return;
 				}
 
@@ -89,7 +92,10 @@ namespace SimPe.PackedFiles.Wrapper
 				{
 					this.LinearUpdateGraph(sdsc, famt);
 					if (!run)
+					{
 						WaitingScreen.Stop();
+					}
+
 					return;
 				}
 
@@ -181,7 +187,9 @@ namespace SimPe.PackedFiles.Wrapper
 			finally
 			{
 				if (!run)
+				{
 					WaitingScreen.Stop();
+				}
 			}
 		}
 
@@ -265,9 +273,13 @@ namespace SimPe.PackedFiles.Wrapper
 						left += ip.Width + 94;
 					}
 					else if (ct > siblings.Length / 2)
+					{
 						top -= 4;
+					}
 					else
+					{
 						top += 4;
+					}
 				}
 
 				left = (maxw - crect.Width) / 2 + 16;
@@ -307,7 +319,9 @@ namespace SimPe.PackedFiles.Wrapper
 		)
 		{
 			if (MainSimElement == null)
+			{
 				return null;
+			}
 
 			ImagePanel ip = CreateItem(sdsc, left, top);
 
@@ -315,7 +329,9 @@ namespace SimPe.PackedFiles.Wrapper
 			ip.ParentItems.Add(MainSimElement, name);
 			ip.Parent = this;
 			if (isextern)
+			{
 				ip.EndUpdate();
+			}
 
 			return ip;
 		}
@@ -407,7 +423,9 @@ namespace SimPe.PackedFiles.Wrapper
 				if (gpe is ImagePanel)
 				{
 					if (sdsc.Equals(((ImagePanel)gpe).Tag))
+					{
 						return (ImagePanel)gpe;
+					}
 				}
 			}
 
@@ -423,16 +441,25 @@ namespace SimPe.PackedFiles.Wrapper
 				t == Data.MetaData.FamilyTieTypes.MyMotherIs
 				|| t == Data.MetaData.FamilyTieTypes.MyFatherIs
 			)
+			{
 				return Data.MetaData.FamilyTieTypes.MyChildIs;
+			}
+
 			if (t == Data.MetaData.FamilyTieTypes.MyChildIs)
 			{
 				if (sdsc == null)
+				{
 					return Data.MetaData.FamilyTieTypes.MyMotherIs;
+				}
+
 				if (
 					sdsc.CharacterDescription.Gender
 					== SimPe.Data.MetaData.Gender.Female
 				)
+				{
 					return Data.MetaData.FamilyTieTypes.MyMotherIs;
+				}
+
 				return Data.MetaData.FamilyTieTypes.MyFatherIs;
 			}
 

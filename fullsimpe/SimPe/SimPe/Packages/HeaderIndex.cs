@@ -60,11 +60,16 @@ namespace SimPe.Packages
 			get
 			{
 				if (Parent.IndexType == SimPe.Data.MetaData.IndexTypes.ptLongFileIndex)
+				{
 					return 6 * 4;
+				}
 				else if (
 					Parent.IndexType == SimPe.Data.MetaData.IndexTypes.ptShortFileIndex
 				)
+				{
 					return 5 * 4;
+				}
+
 				return base.ItemSize;
 			}
 		}
@@ -77,7 +82,10 @@ namespace SimPe.Packages
 		internal void UseInParent()
 		{
 			if (Parent == null)
+			{
 				return;
+			}
+
 			if (Parent is HeaderData)
 			{
 				HeaderData hd = Parent as HeaderData;

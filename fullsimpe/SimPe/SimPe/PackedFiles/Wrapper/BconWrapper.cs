@@ -151,7 +151,9 @@ namespace SimPe.PackedFiles.Wrapper
 			writer.Write((ushort)countflag);
 
 			foreach (short v in items)
+			{
 				writer.Write(v);
+			}
 		}
 
 		/// <summary>
@@ -167,7 +169,9 @@ namespace SimPe.PackedFiles.Wrapper
 
 			items = new List<BconItem>();
 			while (items.Count < length)
+			{
 				items.Add(reader.ReadInt16());
+			}
 		}
 
 		#endregion

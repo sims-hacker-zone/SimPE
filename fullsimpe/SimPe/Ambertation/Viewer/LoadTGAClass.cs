@@ -259,9 +259,13 @@ namespace Ambertation.Viewer
 						index += bytestocopy;
 					}
 					if (!bottomUp)
+					{
 						decodeLine(b, b.Height - j - 1, byp, linebuffer, ref cd);
+					}
 					else
+					{
 						decodeLine(b, j, byp, linebuffer, ref cd);
+					}
 
 					if (index > maxindex)
 					{
@@ -275,7 +279,9 @@ namespace Ambertation.Viewer
 						index -= maxindex;
 					}
 					else
+					{
 						index = 0;
+					}
 				}
 			}
 			catch (System.IO.EndOfStreamException) { }
@@ -297,9 +303,13 @@ namespace Ambertation.Viewer
 				br.Read(linebuffer, 0, w * byp);
 
 				if (!bottomUp)
+				{
 					decodeLine(b, b.Height - j - 1, byp, linebuffer, ref cd);
+				}
 				else
+				{
 					decodeLine(b, j, byp, linebuffer, ref cd);
+				}
 			}
 		}
 
@@ -323,9 +333,13 @@ namespace Ambertation.Viewer
 			cd.FinalOr = 0xff000000;
 
 			if (hdr.RleEncoded)
+			{
 				decodeRle(b, 1, cd, br, hdr.ImageSpec.BottomUp);
+			}
 			else
+			{
 				decodePlain(b, 1, cd, br, hdr.ImageSpec.BottomUp);
+			}
 		}
 
 		static void decodeSpecial16(
@@ -348,9 +362,13 @@ namespace Ambertation.Viewer
 			cd.FinalOr = 0;
 
 			if (hdr.RleEncoded)
+			{
 				decodeRle(b, 2, cd, br, hdr.ImageSpec.BottomUp);
+			}
 			else
+			{
 				decodePlain(b, 2, cd, br, hdr.ImageSpec.BottomUp);
+			}
 		}
 
 		static void decodeStandard16(
@@ -373,9 +391,13 @@ namespace Ambertation.Viewer
 			cd.FinalOr = 0xff000000;
 
 			if (hdr.RleEncoded)
+			{
 				decodeRle(b, 2, cd, br, hdr.ImageSpec.BottomUp);
+			}
 			else
+			{
 				decodePlain(b, 2, cd, br, hdr.ImageSpec.BottomUp);
+			}
 		}
 
 		static void decodeSpecial24(
@@ -398,9 +420,13 @@ namespace Ambertation.Viewer
 			cd.FinalOr = 0;
 
 			if (hdr.RleEncoded)
+			{
 				decodeRle(b, 3, cd, br, hdr.ImageSpec.BottomUp);
+			}
 			else
+			{
 				decodePlain(b, 3, cd, br, hdr.ImageSpec.BottomUp);
+			}
 		}
 
 		static void decodeStandard24(
@@ -423,9 +449,13 @@ namespace Ambertation.Viewer
 			cd.FinalOr = 0xff000000;
 
 			if (hdr.RleEncoded)
+			{
 				decodeRle(b, 3, cd, br, hdr.ImageSpec.BottomUp);
+			}
 			else
+			{
 				decodePlain(b, 3, cd, br, hdr.ImageSpec.BottomUp);
+			}
 		}
 
 		static void decodeStandard32(
@@ -449,9 +479,13 @@ namespace Ambertation.Viewer
 			cd.NeedNoConvert = true;
 
 			if (hdr.RleEncoded)
+			{
 				decodeRle(b, 4, cd, br, hdr.ImageSpec.BottomUp);
+			}
 			else
+			{
 				decodePlain(b, 4, cd, br, hdr.ImageSpec.BottomUp);
+			}
 		}
 
 		public static System.Drawing.Size GetTGASize(string filename)
@@ -489,18 +523,24 @@ namespace Ambertation.Viewer
 				&& header.ImageSpec.PixelDepth != 24
 				&& header.ImageSpec.PixelDepth != 32
 			)
+			{
 				throw new ArgumentException(
 					"Not a supported tga file. (Pixeldepth="
 						+ header.ImageSpec.PixelDepth
 						+ ") "
 						+ header.ToString()
 				);
+			}
 
 			if (header.ImageSpec.AlphaBits > 8)
+			{
 				throw new ArgumentException("Not a supported tga file.");
+			}
 
 			if (header.ImageSpec.Width > 4096 || header.ImageSpec.Height > 4096)
+			{
 				throw new ArgumentException("Image too large.");
+			}
 
 			System.Drawing.Bitmap b = new System.Drawing.Bitmap(
 				header.ImageSpec.Width,
@@ -517,21 +557,36 @@ namespace Ambertation.Viewer
 			{
 				case 8:
 					if (header.ImageSpec.AlphaBits > 0)
+					{
 						decodeStandard8(bd, header, br);
+					}
 					else
+					{
 						decodeStandard8(bd, header, br);
+					}
+
 					break;
 				case 16:
 					if (header.ImageSpec.AlphaBits > 0)
+					{
 						decodeSpecial16(bd, header, br);
+					}
 					else
+					{
 						decodeStandard16(bd, header, br);
+					}
+
 					break;
 				case 24:
 					if (header.ImageSpec.AlphaBits > 0)
+					{
 						decodeSpecial24(bd, header, br);
+					}
 					else
+					{
 						decodeStandard24(bd, header, br);
+					}
+
 					break;
 				case 32:
 					decodeStandard32(bd, header, br);

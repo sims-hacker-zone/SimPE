@@ -60,7 +60,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (form == null)
+				{
 					return null;
+				}
+
 				return form;
 			}
 		}
@@ -78,17 +81,29 @@ namespace SimPe.Plugin
 
 			form.cbitem.Items.Clear();
 			foreach (IRcolBlock rb in wrp.Blocks)
+			{
 				SimPe.CountedListItem.AddHex(form.cbitem, rb);
+			}
+
 			if (form.cbitem.Items.Count > 0)
+			{
 				form.cbitem.SelectedIndex = 0;
+			}
 			else
+			{
 				form.BuildChildTabControl(null);
+			}
 
 			form.lbref.Items.Clear();
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in wrp.ReferencedFiles)
+			{
 				form.lbref.Items.Add(pfd);
+			}
+
 			if (form.lbref.Items.Count > 0)
+			{
 				form.lbref.SelectedIndex = 0;
+			}
 
 			form.tbResource.TabPages.Remove(form.tpref);
 			form.tv.Nodes.Clear();
@@ -121,10 +136,12 @@ namespace SimPe.Plugin
 			form.tbResource.SelectedIndex = 0;
 
 			if (wrp.Blocks.Length > 0)
+			{
 				((AbstractRcolBlock)wrp.Blocks[0]).AddToResourceTabControl(
 					form.tbResource,
 					form.cbitem
 				);
+			}
 
 			form.Enabled = !wrp.Duff;
 		}

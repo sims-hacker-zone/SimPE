@@ -203,9 +203,13 @@ namespace SimPe.Packages
 			get
 			{
 				if (userdata == null)
+				{
 					return size;
+				}
 				else
+				{
 					return (int)userdata.Length;
+				}
 			}
 			set
 			{
@@ -417,6 +421,7 @@ namespace SimPe.Packages
 				Helper.WindowsRegistry.ResourceListUnknownDescriptionFormat
 				== Registry.ResourceListUnnamedFormats.FullTGI
 			)
+			{
 				return Helper.HexString(this.Type)
 					+ " - "
 					+ Helper.HexString(this.SubType)
@@ -424,14 +429,17 @@ namespace SimPe.Packages
 					+ Helper.HexString(this.Group)
 					+ " - "
 					+ Helper.HexString(this.Instance);
+			}
 
 			if (
 				Helper.WindowsRegistry.ResourceListUnknownDescriptionFormat
 				== Registry.ResourceListUnnamedFormats.Instance
 			)
+			{
 				return Helper.HexString(this.SubType)
 					+ " - "
 					+ Helper.HexString(this.Instance);
+			}
 
 			return Helper.HexString(this.SubType)
 				+ " - "
@@ -446,19 +454,25 @@ namespace SimPe.Packages
 				Helper.WindowsRegistry.ResourceListFormat
 				== Registry.ResourceListFormats.ShortTypeNames
 			)
+			{
 				return this.TypeName.shortname + ": " + GetResDescString();
+			}
 
 			if (
 				Helper.WindowsRegistry.ResourceListFormat
 				== Registry.ResourceListFormats.JustNames
 			)
+			{
 				return this.TypeName.ToString();
+			}
 
 			if (
 				Helper.WindowsRegistry.ResourceListFormat
 				== Registry.ResourceListFormats.JustLongType
 			)
+			{
 				return this.TypeName.ToString();
+			}
 
 			//if ((this.Size==0) && (this.Offset==0)) name += " [UserFile]";
 			return this.TypeName + ": " + GetResDescString();
@@ -473,7 +487,9 @@ namespace SimPe.Packages
 		public bool SameAs(object obj)
 		{
 			if (obj == null)
+			{
 				return false;
+			}
 
 			//passed a FileWrapper, so extract the FileDescriptor
 			if (
@@ -495,7 +511,9 @@ namespace SimPe.Packages
 						) && (GetType() != obj.GetType())
 					)
 				)
+				{
 					return false;
+				}
 			}
 
 			IPackedFileDescriptor pfd = (IPackedFileDescriptor)obj;
@@ -515,7 +533,9 @@ namespace SimPe.Packages
 		public override bool Equals(object obj)
 		{
 			if (obj == null)
+			{
 				return false;
+			}
 
 			//passed a FileWrapper, so extract the FileDescriptor
 			if (
@@ -537,7 +557,9 @@ namespace SimPe.Packages
 						) && (GetType() != obj.GetType())
 					)
 				)
+				{
 					return false;
+				}
 			}
 
 			IPackedFileDescriptor pfd = (IPackedFileDescriptor)obj;
@@ -603,7 +625,9 @@ namespace SimPe.Packages
 					markdeleted = value;
 					DescriptionChangedFkt();
 					if (Deleted != null && markdeleted)
+					{
 						Deleted(this, new EventArgs());
+					}
 				}
 			}
 		}
@@ -681,9 +705,15 @@ namespace SimPe.Packages
 			changed = true;
 			userdata = data;
 			if (PackageInternalUserDataChange != null)
+			{
 				PackageInternalUserDataChange(this);
+			}
+
 			if (ChangedUserData != null && fire)
+			{
 				ChangedUserData(this);
+			}
+
 			ChangedDataFkt();
 		}
 
@@ -726,7 +756,10 @@ namespace SimPe.Packages
 		public void MarkInvalid()
 		{
 			if (Closed != null)
+			{
 				Closed(this);
+			}
+
 			valid = false;
 		}
 
@@ -751,9 +784,14 @@ namespace SimPe.Packages
 		{
 			pause = false;
 			if (changedataevent)
+			{
 				ChangedDataFkt();
+			}
+
 			if (changeddescriptionevent)
+			{
 				DescriptionChangedFkt();
+			}
 		}
 
 		/// <summary>
@@ -810,7 +848,9 @@ namespace SimPe.Packages
 			}
 
 			if (ChangedData != null)
+			{
 				ChangedData(this);
+			}
 		}
 
 		protected override void DescriptionChangedFkt()
@@ -822,7 +862,9 @@ namespace SimPe.Packages
 			}
 
 			if (DescriptionChanged != null)
+			{
 				DescriptionChanged(this, new EventArgs());
+			}
 		}
 		#endregion
 
@@ -855,7 +897,10 @@ namespace SimPe.Packages
 			this.group = reader.ReadUInt32();
 			this.instance = reader.ReadUInt32();
 			if ((header.IsVersion0101) && (header.Index.ItemSize >= 24))
+			{
 				this.subtype = reader.ReadUInt32();
+			}
+
 			this.offset = reader.ReadUInt32();
 			this.size = reader.ReadInt32();
 		}

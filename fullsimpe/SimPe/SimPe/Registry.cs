@@ -82,7 +82,9 @@ namespace SimPe
 			// pepct = this.GetPreviousEpCount();
 			Reload();
 			if (Helper.QARelease)
+			{
 				this.WasQAUser = true;
+			}
 		}
 
 		/// <summary>
@@ -131,11 +133,19 @@ namespace SimPe
 		public void Flush()
 		{
 			if (Layout != null)
+			{
 				Layout.Flush();
+			}
+
 			if (reg != null)
+			{
 				reg.Flush();
+			}
+
 			if (mru != null)
+			{
 				mru.Flush();
+			}
 		}
 
 		/// <summary>
@@ -204,7 +214,10 @@ namespace SimPe
 		{
 			string[] inst = InstalledEPExecutables;
 			if (inst.Length == 0)
+			{
 				return false;
+			}
+
 			string[] eenames =
 			{
 				"sims2.exe",
@@ -231,7 +244,10 @@ namespace SimPe
 			foreach (string si in inst)
 			{
 				if (si == "")
+				{
 					continue;
+				}
+
 				bool found = false;
 				foreach (string n in eenames)
 				{
@@ -242,7 +258,9 @@ namespace SimPe
 					}
 				}
 				if (!found)
+				{
 					return true;
+				}
 			}
 			return false;
 		}
@@ -257,7 +275,10 @@ namespace SimPe
 						false
 					);
 				if (tk == null)
+				{
 					return new string[0];
+				}
+
 				object gr = tk.GetValue("Game Registry", false);
 				Microsoft.Win32.RegistryKey rk =
 					Microsoft.Win32.Registry.LocalMachine.OpenSubKey((string)gr, false);
@@ -265,18 +286,24 @@ namespace SimPe
 				{
 					object o = rk.GetValue("EPsInstalled", "");
 					if (o == null)
+					{
 						return new string[0];
+					}
 
 					string s = o.ToString();
 
 					string[] ret = s.Split(new char[] { ',' });
 					for (int i = 0; i < ret.Length; i++)
+					{
 						ret[i] = ret[i].ToLower().Trim();
+					}
 
 					return ret;
 				}
 				else
+				{
 					return new string[0];
+				}
 			}
 		}
 
@@ -290,7 +317,10 @@ namespace SimPe
 			get
 			{
 				if (HiddenMode)
+				{
 					return false;
+				}
+
 				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("FileTableSimpleSelectUseGroups", true);
 				return Convert.ToBoolean(o);
@@ -334,7 +364,10 @@ namespace SimPe
 					Helper.WindowsRegistry.Layout.IsClassicPreset
 					|| LoadOnlySimsStory > 0
 				)
+				{
 					return false;
+				}
+
 				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("LoadAllHoods", false);
 				return Convert.ToBoolean(o);
@@ -393,7 +426,10 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.Layout.IsClassicPreset)
+				{
 					return false;
+				}
+
 				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("UseBigIcons", false);
 				return Convert.ToBoolean(o);
@@ -416,7 +452,10 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.Layout.IsClassicPreset)
+				{
 					return false;
+				}
+
 				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("ShowMoreSkills", false);
 				return Convert.ToBoolean(o);
@@ -439,7 +478,10 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.Layout.IsClassicPreset)
+				{
 					return false;
+				}
+
 				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("ShowPetAbilities", "false");
 				return Convert.ToBoolean(o);
@@ -534,7 +576,10 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.Layout.IsClassicPreset)
+				{
 					return false;
+				}
+
 				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("AllowChangeOfSecondaryAspiration", true);
 				return Convert.ToBoolean(o);
@@ -629,7 +674,10 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.Layout.IsClassicPreset)
+				{
 					return false;
+				}
+
 				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("DecodeFilenames", true);
 				return Convert.ToBoolean(o);
@@ -687,9 +735,13 @@ namespace SimPe
 				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("Language");
 				if (o == null)
+				{
 					return Helper.GetMatchingLanguage();
+				}
 				else
+				{
 					return (Data.MetaData.Languages)Convert.ToByte(o);
+				}
 			}
 			set
 			{
@@ -1479,9 +1531,13 @@ namespace SimPe
 			XmlRegistryKey rkf = RegistryKey.CreateSubKey("Priorities");
 			object o = rkf.GetValue(Helper.HexString(uid));
 			if (o == null)
+			{
 				return 0x00000000;
+			}
 			else
+			{
 				return Convert.ToInt32(o);
+			}
 		}
 
 		/// <summary>
@@ -1526,11 +1582,19 @@ namespace SimPe
 		public void AddRecentFile(string filename)
 		{
 			if (filename == null)
+			{
 				return;
+			}
+
 			if (filename.Trim() == "")
+			{
 				return;
+			}
+
 			if (!System.IO.File.Exists(filename))
+			{
 				return;
+			}
 
 			filename = filename.Trim();
 			XmlRegistryKey rkf = mrk.CreateSubKey("Listings");
@@ -1538,11 +1602,16 @@ namespace SimPe
 			Ambertation.CaseInvariantArrayList al = (Ambertation.CaseInvariantArrayList)
 				rkf.GetValue("RecentFiles", new Ambertation.CaseInvariantArrayList());
 			if (al.Contains(filename))
+			{
 				al.Remove(filename);
+			}
 
 			al.Insert(0, filename);
 			while (al.Count > RECENT_COUNT)
+			{
 				al.RemoveAt(al.Count - 1);
+			}
+
 			rkf.SetValue("RecentFiles", al);
 			mru.Flush();
 		}
@@ -1557,7 +1626,9 @@ namespace SimPe
 			get
 			{
 				if (!System.IO.File.Exists(PathProvider.Global.StartupCheatFile))
+				{
 					return false;
+				}
 
 				try
 				{
@@ -1574,7 +1645,10 @@ namespace SimPe
 					{
 						string pline = line.ToLower().Trim();
 						while (pline.IndexOf("  ") != -1)
+						{
 							pline = pline.Replace("  ", " ");
+						}
+
 						string[] tokens = pline.Split(" ".ToCharArray());
 
 						if (tokens.Length == 3)
@@ -1584,7 +1658,9 @@ namespace SimPe
 								&& (tokens[1] == "testingcheatsenabled")
 								&& (tokens[2] == "true")
 							)
+							{
 								return true;
+							}
 						}
 					}
 				}
@@ -1601,7 +1677,10 @@ namespace SimPe
 						)
 					)
 				)
+				{
 					return;
+				}
+
 				try
 				{
 					string newcont = "";
@@ -1622,7 +1701,10 @@ namespace SimPe
 						{
 							string pline = line.ToLower().Trim();
 							while (pline.IndexOf("  ") != -1)
+							{
 								pline = pline.Replace("  ", " ");
+							}
+
 							string[] tokens = pline.Split(" ".ToCharArray());
 
 							if (tokens.Length == 3)
@@ -1636,9 +1718,14 @@ namespace SimPe
 									{
 										newcont += "boolProp testingCheatsEnabled ";
 										if (value)
+										{
 											newcont += "true";
+										}
 										else
+										{
 											newcont += "false";
+										}
+
 										newcont += Helper.lbr;
 										found = true;
 									}
@@ -1656,9 +1743,14 @@ namespace SimPe
 					{
 						newcont += "boolProp testingCheatsEnabled ";
 						if (value)
+						{
 							newcont += "true";
+						}
 						else
+						{
 							newcont += "false";
+						}
+
 						newcont += Helper.lbr;
 					}
 

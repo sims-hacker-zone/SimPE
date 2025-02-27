@@ -99,7 +99,9 @@ namespace SimPe.Plugin
 			name = RenameForm.ReplaceOldUnique(name, "", false);
 
 			if (name.ToLower().EndsWith("_txmt"))
+			{
 				name = name.Substring(0, name.Length - 5);
+			}
 
 			string[] parts = name.Split("_".ToCharArray());
 			if (parts.Length > 0)
@@ -131,7 +133,10 @@ namespace SimPe.Plugin
 				foreach (string s in parts)
 				{
 					if (!first)
+					{
 						name += "_";
+					}
+
 					name += s;
 					if (first)
 					{
@@ -146,7 +151,10 @@ namespace SimPe.Plugin
 			}
 
 			if (ext)
+			{
 				name += "_txmt";
+			}
+
 			return name;
 		}
 
@@ -172,7 +180,10 @@ namespace SimPe.Plugin
 			}
 
 			if (newname == null)
+			{
 				newname = name;
+			}
+
 			return newname;
 		}
 
@@ -225,7 +236,10 @@ namespace SimPe.Plugin
 
 			string name = Hashes.StripHashFromName(rcol.FileName);
 			if (name.Length > 5)
+			{
 				name = name.Substring(0, name.Length - 5);
+			}
+
 			matd.FileDescription = name;
 		}
 
@@ -257,11 +271,13 @@ namespace SimPe.Plugin
 								Hashes.StripHashFromName(item.FileName.Trim().ToLower())
 							];
 						if (newref != null)
+						{
 							item.FileName =
 								"##0x"
 								+ Helper.HexString(Data.MetaData.CUSTOM_GROUP)
 								+ "!"
 								+ newref;
+						}
 					}
 
 					foreach (ShapePart part in shp.Parts)
@@ -272,11 +288,13 @@ namespace SimPe.Plugin
 									+ "_txmt"
 							];
 						if (newref != null)
+						{
 							part.FileName =
 								"##0x"
 								+ Helper.HexString(Data.MetaData.CUSTOM_GROUP)
 								+ "!"
 								+ newref.Substring(0, newref.Length - 5);
+						}
 					}
 					break;
 				}
@@ -310,6 +328,7 @@ namespace SimPe.Plugin
 										(string)map[mm.LifoFile.Trim().ToLower()]
 									);
 									if (newref != null)
+									{
 										mm.LifoFile =
 											"##0x"
 											+ Helper.HexString(
@@ -317,6 +336,7 @@ namespace SimPe.Plugin
 											)
 											+ "!"
 											+ newref;
+									}
 								}
 							}
 						}
@@ -330,9 +350,13 @@ namespace SimPe.Plugin
 					string name = Hashes.StripHashFromName(rcol.FileName);
 
 					if (ver == FixVersion.UniversityReady2)
+					{
 						rn.GraphNode.FileName = name;
+					}
 					else if (ver == FixVersion.UniversityReady)
+					{
 						rn.GraphNode.FileName = "##0x1c050000!" + name;
+					}
 
 					break;
 				}
@@ -343,9 +367,13 @@ namespace SimPe.Plugin
 					string name = Hashes.StripHashFromName(rcol.FileName);
 
 					if (ver == FixVersion.UniversityReady2)
+					{
 						gn.ObjectGraphNode.FileName = name;
+					}
 					else if (ver == FixVersion.UniversityReady)
+					{
 						gn.ObjectGraphNode.FileName = "##0x1c050000!" + name;
+					}
 
 					break;
 				}
@@ -395,7 +423,10 @@ namespace SimPe.Plugin
 		public void CleanUp()
 		{
 			if (WaitingScreen.Running)
+			{
 				WaitingScreen.UpdateMessage("Cleaning up");
+			}
+
 			Interfaces.Files.IPackedFileDescriptor[] mpfds = package.FindFiles(
 				Data.MetaData.MMAT
 			); //MMAT
@@ -425,16 +456,23 @@ namespace SimPe.Plugin
 							.FindFile(Hashes.StripHashFromName(txmtname), 0x49596978)
 							.Length < 0
 					)
+					{
 						pfd.MarkForDelete = true;
+					}
+
 					if (
 						package
 							.FindFile(Hashes.StripHashFromName(cresname), 0xE519C933)
 							.Length < 0
 					)
+					{
 						pfd.MarkForDelete = true;
+					}
 
 					if (!pfd.MarkForDelete)
+					{
 						mmats.Add(content);
+					}
 				}
 				else
 				{
@@ -466,12 +504,17 @@ namespace SimPe.Plugin
 			};
 
 			if (WaitingScreen.Running)
+			{
 				WaitingScreen.UpdateMessage("Fixing Groups");
+			}
+
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in package.Index)
 			{
 				bool RCOLcheck = types.Contains(pfd.Type);
 				if (ver == FixVersion.UniversityReady)
+				{
 					RCOLcheck = Data.MetaData.RcolList.Contains(pfd.Type);
+				}
 				//foreach (uint tp in RCOLs) if (tp==pfd.Type) { RCOLcheck=true; break; }
 
 				if (Data.MetaData.RcolList.Contains(pfd.Type))
@@ -486,21 +529,31 @@ namespace SimPe.Plugin
 						if (ver == FixVersion.UniversityReady2)
 						{
 							if (types.Contains(p.Type))
+							{
 								p.Group = Data.MetaData.CUSTOM_GROUP;
+							}
 							else
+							{
 								p.Group = Data.MetaData.LOCAL_GROUP;
+							}
 						}
 						else
 						{
 							if (Data.MetaData.RcolList.Contains(p.Type))
 							{
 								if (p.Type != Data.MetaData.ANIM)
+								{
 									p.Group = Data.MetaData.CUSTOM_GROUP;
+								}
 								else
+								{
 									p.Group = Data.MetaData.GLOBAL_GROUP;
+								}
 							}
 							else
+							{
 								p.Group = Data.MetaData.LOCAL_GROUP;
+							}
 						}
 					}
 					rcol.SynchronizeUserData();
@@ -509,9 +562,13 @@ namespace SimPe.Plugin
 				if (RCOLcheck)
 				{
 					if (pfd.Type != Data.MetaData.ANIM)
+					{
 						pfd.Group = Data.MetaData.CUSTOM_GROUP;
+					}
 					else
+					{
 						pfd.Group = Data.MetaData.GLOBAL_GROUP;
+					}
 				}
 				else
 				{
@@ -523,7 +580,9 @@ namespace SimPe.Plugin
 			if (
 				package.FindFiles(Data.MetaData.XFNC).Length > 0 /*|| package.FindFiles(Data.MetaData.XNGB).Length>0*/
 			)
+			{
 				this.FixFence();
+			}
 		}
 
 		/// <summary>
@@ -558,7 +617,10 @@ namespace SimPe.Plugin
 			Hashtable completerefmap = new Hashtable();
 
 			if (WaitingScreen.Running)
+			{
 				WaitingScreen.UpdateMessage("Fixing Names");
+			}
+
 			FixNames(map);
 
 			foreach (uint type in Data.MetaData.RcolList)
@@ -581,7 +643,9 @@ namespace SimPe.Plugin
 					{
 						string refstr = BuildRefString(rpfd);
 						if (!refmap.Contains(refstr))
+						{
 							refmap.Add(refstr, null);
+						}
 					}
 					//rcol.SynchronizeUserData();
 				}
@@ -589,7 +653,10 @@ namespace SimPe.Plugin
 
 			//Updated TGI Values and update the refmap
 			if (WaitingScreen.Running)
+			{
 				WaitingScreen.UpdateMessage("Updating TGI Values");
+			}
+
 			foreach (uint type in Data.MetaData.RcolList)
 			{
 				Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(type);
@@ -609,14 +676,20 @@ namespace SimPe.Plugin
 					);
 
 					if (refmap.Contains(refstr))
+					{
 						refmap[refstr] = rcol.FileDescriptor;
+					}
+
 					completerefmap[refstr] = rcol.FileDescriptor;
 				}
 			}
 
 			//Update the References
 			if (WaitingScreen.Running)
+			{
 				WaitingScreen.UpdateMessage("Updating TGI References");
+			}
+
 			foreach (uint type in Data.MetaData.RcolList)
 			{
 				Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(type);
@@ -639,16 +712,24 @@ namespace SimPe.Plugin
 						if (ver == FixVersion.UniversityReady2)
 						{
 							if (types.Contains(rpfd.Type))
+							{
 								rpfd.Group = Data.MetaData.CUSTOM_GROUP;
+							}
 							else
+							{
 								rpfd.Group = Data.MetaData.LOCAL_GROUP;
+							}
 						}
 						else
 						{
 							if (rpfd.Type != Data.MetaData.ANIM)
+							{
 								rpfd.Group = Data.MetaData.CUSTOM_GROUP;
+							}
 							else
+							{
 								rpfd.Group = Data.MetaData.GLOBAL_GROUP;
+							}
 						}
 
 						if (refmap.Contains(refstr))
@@ -679,7 +760,10 @@ namespace SimPe.Plugin
 
 			//And finally the Root String
 			if (WaitingScreen.Running)
+			{
 				WaitingScreen.UpdateMessage("Updating Root");
+			}
+
 			SimPe.Interfaces.Files.IPackedFileDescriptor[] mpfds = package.FindFiles(
 				Data.MetaData.STRING_FILE
 			);
@@ -694,16 +778,23 @@ namespace SimPe.Plugin
 					string name = Hashes.StripHashFromName(i.Title.Trim().ToLower());
 
 					if (name == "")
+					{
 						continue;
+					}
+
 					if (pfd.Instance == 0x88)
 					{
 						if (!name.EndsWith("_txmt"))
+						{
 							name += "_txmt";
+						}
 					}
 					else if (pfd.Instance == 0x85)
 					{
 						if (!name.EndsWith("_cres"))
+						{
 							name += "_cres";
+						}
 					}
 					else if (
 						(pfd.Instance == 0x81)
@@ -713,18 +804,26 @@ namespace SimPe.Plugin
 					)
 					{
 						if (!name.EndsWith("_anim"))
+						{
 							name += "_anim";
+						}
 					}
 					else
+					{
 						continue;
+					}
 
 					string newref = (string)map[name];
 					if (newref != null)
+					{
 						i.Title = Hashes.StripHashFromName(
 							newref.Substring(0, newref.Length - 5)
 						);
+					}
 					else
+					{
 						i.Title = Hashes.StripHashFromName(i.Title);
+					}
 
 					if (
 						((ver == FixVersion.UniversityReady) || (pfd.Instance == 0x88))
@@ -741,19 +840,25 @@ namespace SimPe.Plugin
 								|| (pfd.Instance == 0x192)
 							)
 						)
+						{
 							i.Title =
 								"##0x"
 								+ Helper.HexString(Data.MetaData.CUSTOM_GROUP)
 								+ "!"
 								+ i.Title;
+						}
 					}
 					else
 					{
 						uint tp = Data.MetaData.ANIM;
 						if (pfd.Instance == 0x88)
+						{
 							tp = Data.MetaData.TXMT;
+						}
 						else if (pfd.Instance == 0x85)
+						{
 							tp = Data.MetaData.CRES;
+						}
 
 						SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii =
 							FileTable.FileIndex.FindFileByName(
@@ -763,12 +868,16 @@ namespace SimPe.Plugin
 								true
 							);
 						if (fii != null)
+						{
 							if (fii.FileDescriptor.Group == Data.MetaData.CUSTOM_GROUP)
+							{
 								i.Title =
 									"##0x"
 									+ Helper.HexString(Data.MetaData.CUSTOM_GROUP)
 									+ "!"
 									+ Hashes.StripHashFromName(i.Title);
+							}
+						}
 					}
 
 					if (
@@ -776,10 +885,13 @@ namespace SimPe.Plugin
 						&& (i.Language.Id == 1)
 						&& (pfd.Instance == 0x85)
 					)
+					{
 						modelname = name.ToUpper().Replace("-", "_");
+					}
 				}
 
 				if (RemoveNonDefaultTextReferences)
+				{
 					if (
 						pfd.Instance == 0x88
 						|| pfd.Instance == 0x85
@@ -788,7 +900,10 @@ namespace SimPe.Plugin
 						|| (pfd.Instance == 0x86)
 						|| (pfd.Instance == 0x192)
 					)
+					{
 						str.ClearNonDefault();
+					}
+				}
 
 				str.SynchronizeUserData();
 			}
@@ -804,9 +919,13 @@ namespace SimPe.Plugin
 						new SimPe.PackedFiles.Wrapper.Nref();
 					nref.ProcessData(pfd, package);
 					if (ver == FixVersion.UniversityReady)
+					{
 						nref.FileName = "SIMPE_" + modelname;
+					}
 					else
+					{
 						nref.FileName = "SIMPE_v2_" + modelname;
+					}
 
 					nref.SynchronizeUserData();
 				}
@@ -822,7 +941,10 @@ namespace SimPe.Plugin
 		void FixOBJd()
 		{
 			if (WaitingScreen.Running)
+			{
 				WaitingScreen.UpdateMessage("Updating Object Descriuptions");
+			}
+
 			Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(
 				Data.MetaData.OBJD_FILE
 			); //OBJd
@@ -873,7 +995,10 @@ namespace SimPe.Plugin
 		void FixMMAT(Hashtable map, bool uniquefamily, string grouphash)
 		{
 			if (WaitingScreen.Running)
+			{
 				WaitingScreen.UpdateMessage("Updating Material Overrides");
+			}
+
 			Interfaces.Files.IPackedFileDescriptor[] mpfds = package.FindFiles(
 				Data.MetaData.MMAT
 			); //MMAT
@@ -930,7 +1055,9 @@ namespace SimPe.Plugin
 					mmat.ModelName = newref;
 				}
 				else
+				{
 					mmat.ModelName = Hashes.StripHashFromName(mmat.ModelName);
+				}
 
 				if (ver == FixVersion.UniversityReady)
 				{
@@ -944,15 +1071,21 @@ namespace SimPe.Plugin
 
 					bool addfl = true;
 					if (item != null)
+					{
 						if (item.FileDescriptor.Group == Data.MetaData.GLOBAL_GROUP)
+						{
 							addfl = false;
+						}
+					}
 
 					if (addfl)
+					{
 						mmat.ModelName =
 							"##0x"
 							+ Helper.HexString(Data.MetaData.CUSTOM_GROUP)
 							+ "!"
 							+ mmat.ModelName;
+					}
 				}
 
 				//mmat.FileDescriptor.Group = Data.MetaData.LOCAL_GROUP;
@@ -973,19 +1106,27 @@ namespace SimPe.Plugin
 			{
 				SimPe.PackedFiles.Wrapper.CpfItem item = cpf.GetItem(p);
 				if (item == null)
+				{
 					continue;
+				}
 
 				string name = Hashes.StripHashFromName(
 					item.StringValue.Trim().ToLower()
 				);
 				if (!name.EndsWith(sufix))
+				{
 					name += sufix;
+				}
+
 				string newname = (string)namemap[name];
 
 				if (newname != null)
 				{
 					if (newname.EndsWith(sufix))
+					{
 						newname = newname.Substring(0, newname.Length - sufix.Length);
+					}
+
 					item.StringValue = prefix + newname;
 				}
 			}
@@ -1001,7 +1142,9 @@ namespace SimPe.Plugin
 			{
 				SimPe.PackedFiles.Wrapper.CpfItem item = cpf.GetItem(p);
 				if (item == null)
+				{
 					continue;
+				}
 
 				item.UIntegerValue = val;
 			}
@@ -1015,7 +1158,9 @@ namespace SimPe.Plugin
 		{
 			SimPe.PackedFiles.Wrapper.CpfItem item = cpf.GetItem(prop);
 			if (item == null)
+			{
 				return null;
+			}
 
 			item.UIntegerValue = val;
 			return item;
@@ -1114,7 +1259,10 @@ namespace SimPe.Plugin
 			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in spfds)
 			{
 				if (shpnamemap[pfd.LongInstance] == null)
+				{
 					continue;
+				}
+
 				rcol.ProcessData(pfd, package);
 				rcol.FileName = (string)shpnamemap[pfd.LongInstance];
 				rcol.FileDescriptor.Instance = Hashes.InstanceHash(rcol.FileName);
@@ -1174,13 +1322,17 @@ namespace SimPe.Plugin
 
 					string pfx = grphash;
 					if (t == Data.MetaData.XFNC)
+					{
 						pfx = "";
+					}
 
 					FixCpfProperties(cpf, txtr_props, namemap, pfx, "_txtr");
 					FixCpfProperties(cpf, txmt_props, namemap, pfx, "_txmt");
 					FixCpfProperties(cpf, cres_props, namemap, pfx, "_cres");
 					if (pfd.Type == Data.MetaData.XNGB)
+					{
 						FixCpfProperties(cpf, cres_props_ngb, namemap, pfx, "_cres");
+					}
 
 					FixCpfProperties(cpf, groups, Data.MetaData.LOCAL_GROUP);
 					FixCpfProperties(cpf, set_to_guid, guid);

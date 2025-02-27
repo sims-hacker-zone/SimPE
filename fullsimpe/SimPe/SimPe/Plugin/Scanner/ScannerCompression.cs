@@ -115,10 +115,14 @@ namespace SimPe.Plugin.Scanner
 								SimPe.PackedFiles.Wrapper.ExtObjd obj = new ExtObjd();
 								obj.ProcessData(pfd, si.Package);
 								if (obj.Ok != SimPe.PackedFiles.Wrapper.ObjdHealth.Ok)
+								{
 									ps.Data[0] = (uint)HealthState.NonDefaultObjd;
+								}
 								//if (obj.Ok == SimPe.PackedFiles.Wrapper.ObjdHealth.UnmatchingFilenames && UserVerification.HaveUserId) ps.Data[0] = (uint)HealthState.FaultyNamedObjd;
 								if (obj.Ok == ObjdHealth.OverLength)
+								{
 									ps.Data[0] = (uint)HealthState.FaultySizedObjd;
+								}
 							}
 
 							if (pfd.Type == Data.MetaData.GMDC)
@@ -144,12 +148,16 @@ namespace SimPe.Plugin.Scanner
 												.AbstractGmdcImporter
 												.CRITICAL_VERTEX_AMOUNT
 									)
+									{
 										ps.Data[0] = (uint)HealthState.BigMeshGeometry;
+									}
 								}
 							}
 
 							if (!fl.IsCompressed)
+							{
 								continue;
+							}
 
 							int pos = si.Package.FileListFile.FindFile(pfd);
 							if (pos == -1)
@@ -170,7 +178,9 @@ namespace SimPe.Plugin.Scanner
 					}
 				}
 				if (ps.Data[0] != (uint)HealthState.Ok)
+				{
 					ps.State = TriState.False;
+				}
 			}
 
 			UpdateState(si, ps, lvi);
@@ -261,7 +271,9 @@ namespace SimPe.Plugin.Scanner
 		)
 		{
 			if (selection == null)
+			{
 				return;
+			}
 
 			WaitingScreen.Wait();
 			bool chg = false;
@@ -316,8 +328,10 @@ namespace SimPe.Plugin.Scanner
 												HealthState.NonDefaultObjd;
 											//if (objd.Ok == SimPe.PackedFiles.Wrapper.ObjdHealth.UnmatchingFilenames && UserVerification.HaveUserId) ps.Data[0] = (uint)HealthState.FaultyNamedObjd;
 											if (objd.Ok == ObjdHealth.OverLength)
+											{
 												ps.Data[0] = (uint)
 													HealthState.FaultySizedObjd;
+											}
 										}
 									}
 								}
@@ -332,7 +346,9 @@ namespace SimPe.Plugin.Scanner
 				}
 
 				if (chg && this.CallbackFinish != null)
+				{
 					this.CallbackFinish(false, false);
+				}
 			}
 			catch (Exception ex)
 			{

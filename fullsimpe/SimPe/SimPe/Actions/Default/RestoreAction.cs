@@ -42,9 +42,15 @@ namespace SimPe.Actions.Default
 			{
 				res = false;
 				foreach (SimPe.Events.ResourceContainer e in es)
+				{
 					if (e.HasFileDescriptor)
+					{
 						if (e.Resource.FileDescriptor.MarkForDelete)
+						{
 							return true;
+						}
+					}
+				}
 			}
 			return false;
 		}
@@ -55,10 +61,14 @@ namespace SimPe.Actions.Default
 		)
 		{
 			if (!ChangeEnabledStateEventHandler(null, es))
+			{
 				return;
+			}
 
 			foreach (SimPe.Events.ResourceContainer e in es)
+			{
 				e.Resource.FileDescriptor.MarkForDelete = false;
+			}
 		}
 
 		#endregion

@@ -46,10 +46,14 @@ namespace SimPe
 		public static void Refresh()
 		{
 			if (srl != null)
+			{
 				foreach (
 					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem loaded in srl.loaded
 				)
+				{
 					srl.RefreshUI(loaded);
+				}
+			}
 		}
 
 		public static void Refresh(
@@ -57,21 +61,29 @@ namespace SimPe
 		)
 		{
 			if (srl != null)
+			{
 				foreach (
 					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem loaded in srl.loaded.Keys
 				)
+				{
 					if (
 						loaded.Package == fii.Package
 						&& loaded.FileDescriptor.Equals(fii.FileDescriptor)
 					)
+					{
 						srl.RefreshUI(loaded);
+					}
+				}
+			}
 		}
 
 		public void RefreshUI(SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii)
 		{
 			TD.SandDock.DockControl doc = this.GetDocument(fii);
 			if (doc == null)
+			{
 				return;
+			}
 
 			SimPe.Interfaces.Plugin.IFileWrapper wrp =
 				(SimPe.Interfaces.Plugin.IFileWrapper)doc.Tag;
@@ -94,7 +106,9 @@ namespace SimPe
 			loaded = new Hashtable();
 			single = new Hashtable();
 			if (srl == null)
+			{
 				srl = this;
+			}
 		}
 
 		/// <summary>
@@ -107,7 +121,9 @@ namespace SimPe
 		)
 		{
 			if (fii == null)
+			{
 				return null;
+			}
 
 			//try by Type
 			SimPe.Interfaces.Plugin.IFileWrapper wrapper =
@@ -180,7 +196,9 @@ namespace SimPe
 				{
 					TD.SandDock.DockControl doc = this.GetDocument(fii);
 					if (doc == null)
+					{
 						return false;
+					}
 
 					SimPe.Interfaces.Plugin.IFileWrapper wrp =
 						(SimPe.Interfaces.Plugin.IFileWrapper)doc.Tag;
@@ -208,7 +226,9 @@ namespace SimPe
 		)
 		{
 			if (wrapper == null)
+			{
 				return false;
+			}
 
 			if (!wrapper.AllowMultipleInstances)
 			{
@@ -219,7 +239,10 @@ namespace SimPe
 						(SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem)
 							single[id];
 					if (!this.CloseDocument(oldfii))
+					{
 						return false;
+					}
+
 					single.Remove(id);
 					overload = false;
 				}
@@ -244,19 +267,31 @@ namespace SimPe
 			if (wrapper != null)
 			{
 				if (wrapper.FileDescriptor == null)
+				{
 					return false;
+				}
+
 				if (wrapper.Package == null)
+				{
 					return false;
+				}
 
 				//do not open Wrappers for deleted Descriptors
 				if (wrapper.FileDescriptor != null)
+				{
 					if (wrapper.FileDescriptor.MarkForDelete)
+					{
 						return false;
+					}
+				}
 
 				TD.SandDock.DockControl doc = null;
 				bool add = !overload;
 				if (overload)
+				{
 					doc = dc.SelectedPage;
+				}
+
 				if (doc == null)
 				{
 					add = true;
@@ -265,7 +300,9 @@ namespace SimPe
 					doc.AllowDockCenter = true;
 				}
 				else if (!this.UnloadWrapper(doc))
+				{
 					return false;
+				}
 
 				doc.Text = wrapper.ResourceName;
 				doc.Tag = wrapper;
@@ -290,7 +327,10 @@ namespace SimPe
 					doc.AllowCollapse = true;
 
 					if (add)
+					{
 						dc.TabPages.Add(doc);
+					}
+
 					pan.Parent = doc;
 					pan.Left = 0;
 					pan.Top = 0;
@@ -303,9 +343,12 @@ namespace SimPe
 
 
 					if (add)
+					{
 						doc.Closing += new TD.SandDock.DockControlClosingEventHandler(
 							CloseResourceDocument
 						);
+					}
+
 					dc.SelectedPage = (TD.SandDock.TabPage)doc;
 					doc.Manager = dc.Manager;
 					doc.LayoutSystem.LockControls = false;
@@ -313,7 +356,10 @@ namespace SimPe
 					loaded[fii] = doc;
 
 					if (!wrapper.AllowMultipleInstances)
+					{
 						single[wrapper.GetType().ToString()] = fii;
+					}
+
 					wrapper.LoadUI();
 				}
 
@@ -340,22 +386,30 @@ namespace SimPe
 		)
 		{
 			if (!pkg.Loaded)
+			{
 				return false;
+			}
 
 			//already Loaded?
 			if (FocusResource(fii, reload))
+			{
 				return true;
+			}
 
 			//only one File at a Time?
 			if (!Helper.WindowsRegistry.MultipleFiles)
+			{
 				this.Clear();
+			}
 
 			//get the Wrapper
 			SimPe.Interfaces.Plugin.IFileWrapper wrapper = GetWrapper(fii);
 
 			//unload if only one instance can be loaded
 			if (!UnloadSingleInstanceWrappers(wrapper, ref overload))
+			{
 				return false;
+			}
 
 			try
 			{
@@ -385,19 +439,29 @@ namespace SimPe
 		)
 		{
 			if (fii == null)
+			{
 				return false;
+			}
 
 			if (loaded.ContainsKey(fii))
 			{
 				TD.SandDock.DockControl doc = (TD.SandDock.DockControl)loaded[fii];
 
 				if (doc.Parent == null)
+				{
 					return true;
+				}
+
 				if (doc.Parent is TD.SandDock.TabControl)
+				{
 					((TD.SandDock.TabControl)doc.Parent).SelectedPage =
 						(TD.SandDock.TabPage)doc;
+				}
 				else
+				{
 					doc.LayoutSystem.SelectedControl = doc;
+				}
+
 				return true;
 			}
 
@@ -414,7 +478,10 @@ namespace SimPe
 		)
 		{
 			if (loaded.ContainsKey(fii))
+			{
 				return (TD.SandDock.DockControl)loaded[fii];
+			}
+
 			return null;
 		}
 
@@ -432,8 +499,12 @@ namespace SimPe
 				SimPe.Interfaces.Plugin.IFileWrapper wrapper =
 					(SimPe.Interfaces.Plugin.IFileWrapper)doc.Tag;
 				if (wrapper != null)
+				{
 					if (wrapper.FileDescriptor == pfd)
+					{
 						return doc;
+					}
+				}
 			}
 			return null;
 		}
@@ -476,7 +547,9 @@ namespace SimPe
 			{
 				loaded.Remove(fii);
 				if (wrapper != null)
+				{
 					single.Remove(wrapper.GetType().ToString());
+				}
 			}
 		}
 
@@ -490,7 +563,9 @@ namespace SimPe
 			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii =
 				GetResourceFromDocument(doc);
 			if (fii != null)
+			{
 				return CloseDocument(fii);
+			}
 			else
 			{
 				doc.Close();
@@ -508,16 +583,24 @@ namespace SimPe
 			bool remain = false;
 			TD.SandDock.DockControl doc = (TD.SandDock.DockControl)loaded[fii];
 			if (doc != null)
+			{
 				doc.Close();
+			}
 			else
+			{
 				RemoveResource(fii, null);
+			}
 
 			if (doc != null)
 			{
 				if (doc.IsOpen)
+				{
 					remain = true;
+				}
 				else
+				{
 					RemoveResource(fii, null);
+				}
 			}
 
 			return !remain;
@@ -533,14 +616,21 @@ namespace SimPe
 			foreach (
 				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem s in loaded.Keys
 			)
+			{
 				keys.Add(s);
+			}
 
 			bool remain = false;
 			foreach (SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem k in keys)
+			{
 				remain |= !CloseDocument(k);
+			}
 
 			if (!remain)
+			{
 				loaded.Clear();
+			}
+
 			return (loaded.Count == 0);
 		}
 
@@ -574,7 +664,9 @@ namespace SimPe
 		void DisposeSubControls(Control.ControlCollection ctrls)
 		{
 			if (ctrls == null)
+			{
 				return;
+			}
 
 			foreach (Control c in ctrls)
 			{
@@ -590,7 +682,9 @@ namespace SimPe
 		{
 			c.Tag = null;
 			foreach (Control cc in c.Controls)
+			{
 				ClearControls(cc);
+			}
 
 			c.Controls.Clear();
 		}
@@ -619,7 +713,9 @@ namespace SimPe
 					ClearControls(doc);
 				}
 				else
+				{
 					doc.Controls.Clear();
+				}
 
 				this.UnlinkWrapper(wrapper);
 			}
@@ -638,7 +734,9 @@ namespace SimPe
 		bool UnloadWrapper(SimPe.Interfaces.Plugin.IFileWrapper wrapper)
 		{
 			if (wrapper == null)
+			{
 				return false;
+			}
 
 			if (
 				wrapper.GetType().GetInterface("IPackedFileSaveExtension", false)
@@ -652,16 +750,27 @@ namespace SimPe
 					MessageBoxButtons mbb = MessageBoxButtons.YesNoCancel;
 					//Deleted wrappers are Ignored!!!
 					if (wrp.FileDescriptor != null)
+					{
 						if (wrp.FileDescriptor.MarkForDelete)
+						{
 							mbb = MessageBoxButtons.YesNo;
+						}
+					}
 
 					string flname = null;
 					if (wrapper != null)
+					{
 						if (wrapper.Package != null)
+						{
 							flname = wrapper.Package.FileName;
+						}
+					}
 
 					if (flname == null)
+					{
 						flname = SimPe.Localization.Manager.GetString("unknown");
+					}
+
 					DialogResult dr = SimPe.Message.Show(
 						SimPe
 							.Localization.Manager.GetString("savewrapperchanges")
@@ -672,11 +781,17 @@ namespace SimPe
 					);
 
 					if (dr == DialogResult.Yes)
+					{
 						wrp.SynchronizeUserData();
+					}
 					else if (dr == DialogResult.Cancel)
+					{
 						return false;
+					}
 					else if (dr == DialogResult.No)
+					{
 						wrp.Changed = false;
+					}
 				}
 			}
 
@@ -694,7 +809,9 @@ namespace SimPe
 			}
 
 			if (wrapper.AllowMultipleInstances)
+			{
 				wrapper.Dispose();
+			}
 		}
 
 		/// <summary>
@@ -720,8 +837,9 @@ namespace SimPe
 				RemoveResource(fii, wrapper);
 
 				if (multi)
+				{
 					DisposeSubControls(((TD.SandDock.DockControl)sender).Controls);
-				((TD.SandDock.DockControl)sender).Controls.Clear();
+				} ((TD.SandDock.DockControl)sender).Controls.Clear();
 
 				UnlinkWrapper(wrapper);
 			}
@@ -738,7 +856,9 @@ namespace SimPe
 				(SimPe.Packages.PackedFileDescriptor)sender;
 			TD.SandDock.DockControl doc = this.GetDocument(pfd);
 			if (doc != null)
+			{
 				this.CloseDocument(doc);
+			}
 		}
 
 		/// <summary>
@@ -757,11 +877,15 @@ namespace SimPe
 				SimPe.Interfaces.Plugin.IFileWrapper wrapper =
 					(SimPe.Interfaces.Plugin.IFileWrapper)doc.Tag;
 				if (wrapper != null)
+				{
 					if (wrapper.Package != null)
 					{
 						string flname = wrapper.Package.FileName;
 						if (flname == null)
+						{
 							flname = "";
+						}
+
 						System.Windows.Forms.DialogResult dr = System
 							.Windows
 							.Forms
@@ -781,6 +905,7 @@ namespace SimPe
 							wrapper.Refresh();
 						}
 					}
+				}
 			}
 		}
 	}

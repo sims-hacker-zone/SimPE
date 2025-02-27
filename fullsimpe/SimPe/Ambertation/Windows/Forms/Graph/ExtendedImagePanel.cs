@@ -120,7 +120,10 @@ namespace Ambertation.Windows.Forms.Graph
 		)
 		{
 			if (this.properties == null)
+			{
 				return;
+			}
+
 			LinkGraphic.SetGraphicsMode(gr, !Quality);
 
 			Font ftb = new Font(Font.FontFamily, Font.Size, FontStyle.Bold, Font.Unit);
@@ -156,7 +159,10 @@ namespace Ambertation.Windows.Forms.Graph
 			{
 				PropertyItem o = properties[k];
 				if (o == null)
+				{
 					continue;
+				}
+
 				string val = "";
 				val = (string)o.Value;
 
@@ -164,7 +170,10 @@ namespace Ambertation.Windows.Forms.Graph
 				{
 					int indentx = prec.Left + 6;
 					if (top < indent.Height)
+					{
 						indentx = indent.Width;
+					}
+
 					Font ft = new Font(
 						Font.FontFamily,
 						Font.Size,
@@ -231,7 +240,9 @@ namespace Ambertation.Windows.Forms.Graph
 		protected override void SetupDocks()
 		{
 			if (docks == null)
+			{
 				InitDocks();
+			}
 
 			Rectangle trec = ThumbnailRectangle;
 			trec = new Rectangle(

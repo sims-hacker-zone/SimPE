@@ -37,7 +37,9 @@ namespace SimPe.Plugin.Downloads
 		public void AddRange(PackageInfoCollection items)
 		{
 			foreach (PackageInfo item in items)
+			{
 				list.Add(item);
+			}
 		}
 
 		public void Remove(IPackageInfo item)
@@ -74,7 +76,10 @@ namespace SimPe.Plugin.Downloads
 		public void Dispose()
 		{
 			if (list != null)
+			{
 				list.Clear();
+			}
+
 			list = null;
 		}
 

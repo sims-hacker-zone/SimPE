@@ -69,9 +69,13 @@ namespace SimPe.Plugin
 			get
 			{
 				if (FileDescriptor.Group == Data.MetaData.LOCAL_GROUP)
+				{
 					return localgr;
+				}
 				else
+				{
 					return FileDescriptor.Group;
+				}
 			}
 		}
 
@@ -86,11 +90,17 @@ namespace SimPe.Plugin
 		)
 		{
 			if (pfd == null)
+			{
 				pfd = new SimPe.Packages.PackedFileDescriptor();
+			}
+
 			if (package == null)
+			{
 				package = SimPe.Packages.GeneratableFile.LoadFromStream(
 					(System.IO.BinaryReader)null
 				);
+			}
+
 			this.FileDescriptor = pfd;
 			this.Package = package;
 
@@ -100,9 +110,13 @@ namespace SimPe.Plugin
 		public override string ToString()
 		{
 			if (FileDescriptor != null)
+			{
 				return FileDescriptor.Filename;
+			}
 			else
+			{
 				return Localization.Manager.GetString("unknown");
+			}
 		}
 
 		public override int GetHashCode()
@@ -113,15 +127,22 @@ namespace SimPe.Plugin
 		public override bool Equals(object obj)
 		{
 			if (obj == null)
+			{
 				return false;
+			}
+
 			if (obj.GetType() == typeof(FileIndexItem))
 			{
 				FileIndexItem fii = (FileIndexItem)obj;
 				if (fii.FileDescriptor == null)
+				{
 					return this.FileDescriptor == null;
+				}
 
 				if (fii.LocalGroup != LocalGroup)
+				{
 					return false;
+				}
 
 				bool res = fii.FileDescriptor.Equals(this.FileDescriptor);
 
@@ -129,12 +150,18 @@ namespace SimPe.Plugin
 				if (fii.Package == null)
 				{
 					if (Package != null)
+					{
 						return false;
+					}
 					else
+					{
 						return res;
+					}
 				}
 				else if (Package == null)
+				{
 					return false;
+				}
 
 				//null Values for FileNames
 				/*if (fii.Package.FileName==null)
@@ -146,7 +173,9 @@ namespace SimPe.Plugin
 				return (res && fii.Package.Equals(this.Package));
 			}
 			else
+			{
 				return base.Equals(obj);
+			}
 		}
 
 		/// <summary>
@@ -157,7 +186,10 @@ namespace SimPe.Plugin
 		{
 			string flname = this.Package.FileName;
 			if (flname == null)
+			{
 				flname = "";
+			}
+
 			return this.FileDescriptor.ToString() + "-" + flname;
 		}
 
@@ -236,8 +268,12 @@ namespace SimPe.Plugin
 		public bool Contains(FileIndexItem fii)
 		{
 			foreach (FileIndexItem i in this)
+			{
 				if (i.Equals(fii))
+				{
 					return true;
+				}
+			}
 
 			return false;
 		}
@@ -279,7 +315,9 @@ namespace SimPe.Plugin
 				ArrayList ret = new ArrayList();
 
 				foreach (IScenegraphFileIndex fi in childs)
+				{
 					ret.AddRange(((FileIndex)fi).StoredFiles);
+				}
 
 				ret.AddRange(addedfilenames);
 				return ret;
@@ -368,7 +406,9 @@ namespace SimPe.Plugin
 		public void RestoreLastState()
 		{
 			if (oldnames == null || oldindex == null)
+			{
 				return;
+			}
 
 			PrepareAllForRemove();
 
@@ -401,16 +441,22 @@ namespace SimPe.Plugin
 		public void LoadIgnoredFiles()
 		{
 			if (ignoredfl != null)
+			{
 				ignoredfl.Clear();
+			}
 			else
+			{
 				ignoredfl = new ArrayList();
+			}
 
 			if (BaseFolders != null)
 			{
 				foreach (FileTableItem fti in BaseFolders)
 				{
 					if (fti.IsFile && fti.IsUseable && fti.Ignore)
+					{
 						ignoredfl.Add(fti.Name.Trim().ToLower());
+					}
 				}
 			}
 		}
@@ -438,7 +484,10 @@ namespace SimPe.Plugin
 			StoreCurrentState();
 
 			if (folders == null)
+			{
 				folders = FileTable.DefaultFolders;
+			}
+
 			this.BaseFolders = folders;
 		}
 
@@ -461,12 +510,20 @@ namespace SimPe.Plugin
 		public static uint GetLocalGroup(string flname)
 		{
 			if (FileTable.GroupCache == null)
+			{
 				WrapperFactory.LoadGroupCache();
+			}
+
 			if (localGroupMap == null)
+			{
 				localGroupMap = new Hashtable();
+			}
 
 			if (flname == null)
+			{
 				flname = "memoryfile";
+			}
+
 			flname = flname.Trim().ToLower();
 
 			SimPe.Interfaces.Wrapper.IGroupCacheItem gci = FileTable.GroupCache.GetItem(
@@ -490,11 +547,15 @@ namespace SimPe.Plugin
 		public void Load()
 		{
 			if (Loaded)
+			{
 				return;
+			}
 
 			//We do NOT use the Filetable in LocalMode - a ForceReload is required
 			if (Helper.LocalMode)
+			{
 				return;
+			}
 
 			ForceReload();
 		}
@@ -535,16 +596,23 @@ namespace SimPe.Plugin
 			foreach (FileTableItem fti in BaseFolders)
 			{
 				if (HaveToStop)
+				{
 					break;
+				}
+
 				Wait.Progress = ct++;
 				AddIndexFromFolder(fti);
 			}
 
 			Wait.SubStop();
 			if (AllowEvent)
+			{
 				OnFILoad(this, new EventArgs()); // this triggers loading of PJSE filetable
+			}
 			else
+			{
 				AllowEvent = true;
+			}
 		}
 
 		/// <summary>
@@ -570,11 +638,17 @@ namespace SimPe.Plugin
 		public bool ContainsPath(string path)
 		{
 			if (path == null)
+			{
 				return false;
+			}
 
 			foreach (IScenegraphFileIndex fi in childs)
+			{
 				if (fi.ContainsPath(path))
+				{
 					return true;
+				}
+			}
 
 			return paths.Contains(path);
 		}
@@ -587,10 +661,14 @@ namespace SimPe.Plugin
 		{
 			//if (fti.Ignore) return;
 			if (!fti.Use)
+			{
 				return;
+			}
 
 			if (!paths.Contains(fti.Name))
+			{
 				paths.Add(fti.Name);
+			}
 
 			string[] files = fti.GetFiles();
 
@@ -617,7 +695,9 @@ namespace SimPe.Plugin
 			{
 				string[] folders = System.IO.Directory.GetDirectories(fti.Name);
 				foreach (string folder in folders)
+				{
 					AddIndexFromFolder(":" + folder);
+				}
 			}
 
 			//if (err!="") throw new Exception(err);
@@ -631,7 +711,9 @@ namespace SimPe.Plugin
 		{
 			path = path.Trim();
 			if (path == "")
+			{
 				return;
+			}
 
 			FileTableItem fti = new FileTableItem(path);
 			AddIndexFromFolder(fti);
@@ -645,7 +727,9 @@ namespace SimPe.Plugin
 		public void AddIndexFromPackage(string file)
 		{
 			if (this.ignoredfl.Contains(file.Trim().ToLower()))
+			{
 				return;
+			}
 
 			Wait.Message =
 				SimPe.Localization.GetString("Loading")
@@ -684,20 +768,27 @@ namespace SimPe.Plugin
 		)
 		{
 			if (package == null)
+			{
 				return;
+			}
 
 			package.Persistent = true;
 			if (package.FileName != null)
 			{
 				if ((this.Contains(package.FileName.Trim().ToLower())) && !overwrite)
+				{
 					return;
+				}
+
 				addedfilenames.Add(package.FileName.Trim().ToLower());
 			}
 
 			uint local = GetLocalGroup(package);
 
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in package.Index)
+			{
 				AddIndexFromPfd(pfd, package, local);
+			}
 
 			package.Persistent = false;
 		}
@@ -715,13 +806,18 @@ namespace SimPe.Plugin
 		)
 		{
 			if (package == null)
+			{
 				return;
+			}
 
 			package.Persistent = true;
 			if (package.FileName != null)
 			{
 				if ((this.Contains(package.FileName.Trim().ToLower())) && !overwrite)
+				{
 					return;
+				}
+
 				addedfilenames.Add(package.FileName.Trim().ToLower());
 			}
 
@@ -730,7 +826,10 @@ namespace SimPe.Plugin
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in package.Index)
 			{
 				if (pfd.Type != type)
+				{
 					continue;
+				}
+
 				AddIndexFromPfd(pfd, package, local);
 			}
 
@@ -762,7 +861,9 @@ namespace SimPe.Plugin
 		)
 		{
 			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			{
 				AddIndexFromPfd(pfd, package);
+			}
 		}
 
 		/// <summary>
@@ -787,7 +888,9 @@ namespace SimPe.Plugin
 						foreach (
 							SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem pfd in res
 						)
+						{
 							PrepareForRemove(pfd.FileDescriptor);
+						}
 
 						res.Clear();
 					}
@@ -810,7 +913,9 @@ namespace SimPe.Plugin
 						foreach (
 							SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in res
 						)
+						{
 							PrepareForAdd(item.FileDescriptor);
+						}
 					}
 				}
 			}
@@ -827,7 +932,9 @@ namespace SimPe.Plugin
 						foreach (
 							SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in res
 						)
+						{
 							PrepareForRemove(item.FileDescriptor);
+						}
 					}
 				}
 			}
@@ -865,7 +972,9 @@ namespace SimPe.Plugin
 			FileIndexItems files = null;
 
 			if (index.ContainsKey(item.FileDescriptor.Type))
+			{
 				groups = (Hashtable)index[item.FileDescriptor.Type];
+			}
 			else
 			{
 				groups = new Hashtable();
@@ -873,7 +982,9 @@ namespace SimPe.Plugin
 			}
 
 			if (groups.ContainsKey(item.FileDescriptor.Group))
+			{
 				instances = (Hashtable)groups[item.FileDescriptor.Group];
+			}
 			else
 			{
 				instances = new Hashtable();
@@ -881,7 +992,9 @@ namespace SimPe.Plugin
 			}
 
 			if (instances.ContainsKey(item.FileDescriptor.LongInstance))
+			{
 				files = (FileIndexItems)instances[item.FileDescriptor.LongInstance];
+			}
 			else
 			{
 				files = new FileIndexItems();
@@ -889,13 +1002,17 @@ namespace SimPe.Plugin
 			}
 
 			if (Duplicates || (!files.Contains(item)))
+			{
 				files.Add(item);
+			}
 
 			//add it a second Time if it is a local Group
 			if (pfd.Group == 0xffffffff)
 			{
 				if (groups.ContainsKey(localgroup))
+				{
 					instances = (Hashtable)groups[localgroup];
+				}
 				else
 				{
 					instances = new Hashtable();
@@ -903,7 +1020,9 @@ namespace SimPe.Plugin
 				}
 
 				if (instances.ContainsKey(item.FileDescriptor.Group))
+				{
 					files = (FileIndexItems)instances[item.FileDescriptor.LongInstance];
+				}
 				else
 				{
 					files = new FileIndexItems();
@@ -911,7 +1030,9 @@ namespace SimPe.Plugin
 				}
 
 				if (Duplicates || (!files.Contains(item)))
+				{
 					files.Add(item);
+				}
 			}
 		}
 
@@ -979,7 +1100,9 @@ namespace SimPe.Plugin
 					pkg
 				);
 				foreach (IScenegraphFileIndexItem i in res)
+				{
 					list.Add(i);
+				}
 			}
 
 			//second, we scan our FileTable
@@ -990,8 +1113,12 @@ namespace SimPe.Plugin
 				{
 					Hashtable instances = (Hashtable)groups[group];
 					foreach (ulong i in instances.Keys)
+					{
 						if ((i & 0xffffffff) == instance)
+						{
 							list.AddRange((ArrayList)instances[i]);
+						}
+					}
 				}
 			}
 
@@ -1017,7 +1144,9 @@ namespace SimPe.Plugin
 			{
 				IScenegraphFileIndexItem[] res = fi.FindFile(pfd, pkg);
 				foreach (IScenegraphFileIndexItem i in res)
+				{
 					list.Add(i);
+				}
 			}
 
 			//second, we scan our FileTable
@@ -1092,7 +1221,9 @@ namespace SimPe.Plugin
 			foreach (IScenegraphFileIndex fi in childs)
 			{
 				if (fi is FileIndex)
+				{
 					((FileIndex)fi).WriteContentToConsole();
+				}
 			}
 			foreach (uint type in index.Keys)
 			{
@@ -1134,7 +1265,9 @@ namespace SimPe.Plugin
 			{
 				IScenegraphFileIndexItem[] res = fi.FindFile(type, nolocal);
 				foreach (IScenegraphFileIndexItem i in res)
+				{
 					list.Add(i);
+				}
 			}
 
 			//second, we scan our FileTable
@@ -1144,7 +1277,9 @@ namespace SimPe.Plugin
 				foreach (uint group in groups.Keys)
 				{
 					if ((nolocal) && (group == Data.MetaData.LOCAL_GROUP))
+					{
 						continue;
+					}
 
 					if (groups.ContainsKey(group))
 					{
@@ -1202,7 +1337,9 @@ namespace SimPe.Plugin
 			{
 				IScenegraphFileIndexItem[] res = fi.FindFile(type, group);
 				foreach (IScenegraphFileIndexItem i in res)
+				{
 					list.Add(i);
+				}
 			}
 
 			//second, we scan our FileTable
@@ -1258,7 +1395,9 @@ namespace SimPe.Plugin
 					instance
 				);
 				foreach (IScenegraphFileIndexItem i in res)
+				{
 					list.Add(i);
+				}
 			}
 
 			//second, we scan our FileTable
@@ -1298,7 +1437,9 @@ namespace SimPe.Plugin
 			{
 				IScenegraphFileIndexItem[] res = fi.FindFileByInstance(instance);
 				foreach (IScenegraphFileIndexItem i in res)
+				{
 					list.Add(i);
+				}
 			}
 
 			//second, we scan our FileTable
@@ -1342,7 +1483,9 @@ namespace SimPe.Plugin
 					instance
 				);
 				foreach (IScenegraphFileIndexItem i in res)
+				{
 					list.Add(i);
+				}
 			}
 
 			//second, we scan our FileTable
@@ -1353,7 +1496,9 @@ namespace SimPe.Plugin
 				{
 					Hashtable instances = (Hashtable)groups[group];
 					if (instances.ContainsKey(instance))
+					{
 						list.AddRange((ArrayList)instances[instance]);
+					}
 				}
 			}
 
@@ -1375,7 +1520,9 @@ namespace SimPe.Plugin
 			{
 				IScenegraphFileIndexItem[] res = fi.FindFileByGroup(group);
 				foreach (IScenegraphFileIndexItem i in res)
+				{
 					list.Add(i);
+				}
 			}
 
 			//second, we scan our FileTable
@@ -1458,7 +1605,9 @@ namespace SimPe.Plugin
 					pfd.Group = (uint)alternaiveGroups[i];
 					list = this.FindFile(pfd, pkg);
 					if (list.Length > 0)
+					{
 						break;
+					}
 				}
 
 				//ignor Group andd look for any Files with that Instance
@@ -1469,7 +1618,10 @@ namespace SimPe.Plugin
 			}
 
 			if (list.Length > 0)
+			{
 				return list[0];
+			}
+
 			return null;
 		}
 
@@ -1481,7 +1633,9 @@ namespace SimPe.Plugin
 		{
 			FileIndexItems fii = new FileIndexItems();
 			foreach (FileIndexItem f in files)
+			{
 				fii.Add(f);
+			}
 
 			fii.Sort();
 
@@ -1497,12 +1651,18 @@ namespace SimPe.Plugin
 		public void ClosePackage(SimPe.Interfaces.Files.IPackageFile pkg)
 		{
 			if (pkg == null)
+			{
 				return;
+			}
+
 			string flname = pkg.FileName;
 			pkg.Close(true);
 
 			if (flname == null)
+			{
 				return;
+			}
+
 			addedfilenames.Remove(flname.Trim().ToLower());
 		}
 
@@ -1523,7 +1683,9 @@ namespace SimPe.Plugin
 				null
 			);
 			foreach (SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem sgi in sgis)
+			{
 				RemoveItem(sgi);
+			}
 		}
 
 		/// <summary>
@@ -1553,7 +1715,10 @@ namespace SimPe.Plugin
 		{
 			SimPe.Plugin.FileIndex fi = new SimPe.Plugin.FileIndex();
 			if (pfds != null)
+			{
 				fi.AddIndexFromPfd(pfds, package);
+			}
+
 			return fi;
 		}
 
@@ -1567,17 +1732,24 @@ namespace SimPe.Plugin
 			foreach (string file in files)
 			{
 				if (parent != null)
+				{
 					if (parent.addedfilenames.Contains(file))
+					{
 						continue;
+					}
+				}
+
 				bool close = true;
 				if (childs != null)
 				{
 					foreach (FileIndex fi in this.childs)
+					{
 						if (fi.addedfilenames.Contains(file))
 						{
 							close = false;
 							break;
 						}
+					}
 				}
 				if (close)
 				{
@@ -1598,11 +1770,17 @@ namespace SimPe.Plugin
 		{
 			flname = flname.Trim().ToLower();
 			if (addedfilenames.Contains(flname))
+			{
 				return true;
+			}
 
 			foreach (IScenegraphFileIndex fi in childs)
+			{
 				if (fi.Contains(flname))
+				{
 					return true;
+				}
+			}
 
 			return false;
 		}
@@ -1623,7 +1801,10 @@ namespace SimPe.Plugin
 			if (!childs.Contains(cld))
 			{
 				if (cld is FileIndex)
+				{
 					((FileIndex)cld).parent = this;
+				}
+
 				childs.Add(cld);
 			}
 		}
@@ -1638,8 +1819,12 @@ namespace SimPe.Plugin
 			int c = childs.Count;
 			childs.Remove(cld);
 			if (c != childs.Count)
+			{
 				if (cld is FileIndex)
+				{
 					((FileIndex)cld).parent = null;
+				}
+			}
 		}
 		#endregion
 

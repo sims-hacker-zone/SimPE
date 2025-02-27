@@ -121,9 +121,14 @@ namespace SimPe.PackedFiles.UserInterface
 					.CurrentUICulture
 					.TwoLetterISOLanguageName == "en"
 			)
+			{
 				pbLastGrade.DisplayOffset = 0;
+			}
 			else
+			{
 				pbLastGrade.DisplayOffset = 1;
+			}
+
 			InternalChange = false;
 
 			lv.SimDetails = true;
@@ -147,7 +152,9 @@ namespace SimPe.PackedFiles.UserInterface
 				this.lbTurnOn.Font = new System.Drawing.Font("Tahoma", 11);
 				this.lbTurnOff.Font = new System.Drawing.Font("Tahoma", 11);
 				if (Screen.PrimaryScreen.WorkingArea.Width > 1600)
+				{
 					this.ilCollectibles.ImageSize = new System.Drawing.Size(64, 64);
+				}
 			}
 			else
 			{
@@ -233,7 +240,9 @@ namespace SimPe.PackedFiles.UserInterface
 				|| exclude == MetaData.AspirationTypes.Nothing
 				|| asp != exclude
 			)
+			{
 				cb.Items.Add(new LocalizedAspirationTypes(asp));
+			}
 		}
 
 		void SetAspirations(ComboBox cb)
@@ -259,7 +268,10 @@ namespace SimPe.PackedFiles.UserInterface
 		void SelectAspiration(ComboBox cb, Data.MetaData.AspirationTypes val)
 		{
 			if (cb.Items.Count == 0)
+			{
 				return;
+			}
+
 			cb.SelectedIndex = 0;
 			for (int i = 0; i < cb.Items.Count; i++)
 			{
@@ -309,7 +321,10 @@ namespace SimPe.PackedFiles.UserInterface
 					.SDesc
 					.AddonCarrers
 			)
+			{
 				this.cbcareer.Items.Add(a);
+			}
+
 			this.cbcareer.Items.Add(
 				new LocalizedCareers(Data.MetaData.Careers.Unknown)
 			);
@@ -674,10 +689,15 @@ namespace SimPe.PackedFiles.UserInterface
 			foreach (
 				SimPe.Interfaces.IAlias a in SimPe.PackedFiles.Wrapper.SDesc.AddonMajors
 			)
+			{
 				this.cbmajor.Items.Add(a);
+			}
+
 			System.Array majors = System.Enum.GetValues(typeof(Data.Majors));
 			foreach (Data.Majors c in majors)
+			{
 				this.cbmajor.Items.Add(c);
+			}
 
 			this.cbschooltype.Items.Clear();
 			foreach (
@@ -687,7 +707,10 @@ namespace SimPe.PackedFiles.UserInterface
 					.SDesc
 					.AddonSchools
 			)
+			{
 				this.cbschooltype.Items.Add(a);
+			}
+
 			this.cbschooltype.Items.Add(
 				new LocalizedSchoolType(Data.MetaData.SchoolTypes.NoSchool)
 			);
@@ -700,9 +723,11 @@ namespace SimPe.PackedFiles.UserInterface
 
 			this.cbzodiac.Items.Clear();
 			for (ushort i = 0x01; i <= 0x0C; i++)
+			{
 				this.cbzodiac.Items.Add(
 					new LocalizedZodiacSignes((Data.MetaData.ZodiacSignes)i)
 				);
+			}
 
 			this.cbservice.Items.Clear();
 			this.cbservice.Items.Add(
@@ -876,9 +901,12 @@ namespace SimPe.PackedFiles.UserInterface
 						.Exists
 				) || Helper.WindowsRegistry.HiddenMode
 			)
+			{
 				this.cbservice.Items.Add(
 					new LocalizedServiceTypes(Data.MetaData.ServiceTypes.Masseuse)
 				);
+			}
+
 			if (
 				(
 					PathProvider.Global.GetExpansion(SimPe.Expansions.Voyage).Exists
@@ -1014,7 +1042,9 @@ namespace SimPe.PackedFiles.UserInterface
 			foreach (
 				KeyValuePair<short, string> kvp in SimPe.Data.MetaData.TitlePostName
 			)
+			{
 				this.cbpostTitle.Items.Add(kvp.Value);
+			}
 		}
 
 		#region IPackedFileUI Member
@@ -1044,6 +1074,7 @@ namespace SimPe.PackedFiles.UserInterface
 				this.btOriGuid.Visible = this.lbFixedRes.Visible = false;
 
 				if (System.IO.File.Exists(Sdesc.CharacterFileName))
+				{
 					miOpenChar.Text =
 						strresources.GetString("miOpenChar.Text")
 						+ " ("
@@ -1051,8 +1082,11 @@ namespace SimPe.PackedFiles.UserInterface
 							Sdesc.CharacterFileName
 						)
 						+ ")";
+				}
 				else
+				{
 					miOpenChar.Text = strresources.GetString("miOpenChar.Text");
+				}
 
 				if (
 					(int)Sdesc.Version
@@ -1124,40 +1158,83 @@ namespace SimPe.PackedFiles.UserInterface
 					>= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Pets
 				);
 				if (pnRel.Visible && !biRel.Enabled)
+				{
 					this.SelectButton(biId);
+				}
+
 				if (pnEP1.Visible && !biEP1.Enabled)
+				{
 					this.SelectButton(biId);
+				}
+
 				if (pnEP2.Visible && !biEP2.Enabled)
+				{
 					this.SelectButton(biId);
+				}
+
 				if (pnEP3.Visible && !biEP3.Enabled)
+				{
 					this.SelectButton(biId);
+				}
+
 				if (pnVoyage.Visible && !biEP6.Enabled)
+				{
 					this.SelectButton(biId);
+				}
+
 				if (pnEP7.Visible && !biEP7.Enabled)
+				{
 					this.SelectButton(biId);
+				}
+
 				if (pnEP9.Visible && !biEP9.Enabled)
+				{
 					this.SelectButton(biId);
+				}
+
 				if (biRel.Enabled)
+				{
 					pnRel_VisibleChanged(null, null);
+				}
+
 				if (biEP1.Enabled)
+				{
 					RefreshEP1(Sdesc);
+				}
+
 				if (biEP2.Enabled || cbSpecies.Enabled)
+				{
 					RefreshEP2(Sdesc);
+				}
+
 				if (biEP3.Enabled)
+				{
 					RefreshEP3(Sdesc);
+				}
+
 				if (cbSpecies.Enabled)
+				{
 					RefreshEP4(Sdesc);
+				}
 				else
+				{
 					cbSpecies.SelectedValue = SimPe
 						.PackedFiles
 						.Wrapper
 						.SdscNightlife
 						.SpeciesType
 						.Human;
+				}
+
 				if (biEP6.Enabled)
+				{
 					RefreshEP6(Sdesc);
+				}
+
 				if (biEP7.Enabled)
+				{
 					RefreshEP7(Sdesc);
+				}
 				//if (biEP9.Enabled) RefreshEP9(Sdesc);
 			}
 			finally
@@ -1177,9 +1254,13 @@ namespace SimPe.PackedFiles.UserInterface
 				object o = this.cbmajor.Items[i];
 				Data.Majors at;
 				if (o.GetType() == typeof(Alias))
+				{
 					at = (Data.Majors)((uint)((Alias)o).Id);
+				}
 				else
+				{
 					at = (Data.Majors)o;
+				}
 
 				if (at == sdesc.University.Major)
 				{
@@ -1312,7 +1393,9 @@ namespace SimPe.PackedFiles.UserInterface
 							this.pbReputate.Visible = true;
 						}
 						else
+						{
 							this.pbReputate.Visible = false;
+						}
 					}
 				}
 				this.pnSkill.BackgroundImage = pnimage;
@@ -1480,7 +1563,9 @@ namespace SimPe.PackedFiles.UserInterface
 					.IsRoomate;
 			}
 			else
+			{
 				this.tbpersonflags.Visible = tbMotiveDec.Visible = false;
+			}
 
 			this.pnMisc.BackgroundImage = pnimage;
 		}
@@ -1503,19 +1588,27 @@ namespace SimPe.PackedFiles.UserInterface
 			Image img = null;
 
 			if (sdesc.Image != null)
+			{
 				if (sdesc.Image.Width > 5)
+				{
 					img = Ambertation.Drawing.GraphicRoutines.KnockoutImage(
 						sdesc.Image,
 						new Point(0, 0),
 						Color.Magenta
 					);
+				}
+			}
 
 			if (img == null)
 			{
 				if (sdesc.CharacterDescription.Gender == MetaData.Gender.Female)
+				{
 					img = SimPe.GetImage.SheOne;
+				}
 				else
+				{
 					img = SimPe.GetImage.NoOne;
+				}
 			}
 
 			img = Ambertation.Windows.Forms.Graph.ImagePanel.CreateThumbnail(
@@ -1559,9 +1652,13 @@ namespace SimPe.PackedFiles.UserInterface
 				object o = this.cbservice.Items[i];
 				Data.MetaData.ServiceTypes at;
 				if (o.GetType() == typeof(Alias))
+				{
 					at = (Data.LocalizedServiceTypes)((uint)((Alias)o).Id);
+				}
 				else
+				{
 					at = (Data.LocalizedServiceTypes)o;
+				}
 
 				if (at == sdesc.CharacterDescription.ServiceTypes)
 				{
@@ -1593,12 +1690,18 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 			}
 			else
+			{
 				this.lbsubspec.Visible = false;
+			}
 
 			if (sdesc.IsCharSplit)
+			{
 				this.lbSplitChar.Visible = true;
+			}
 			else
+			{
 				this.lbSplitChar.Visible = false;
+			}
 		}
 
 		void RefreshCareer(Wrapper.ExtSDesc sdesc)
@@ -1626,9 +1729,13 @@ namespace SimPe.PackedFiles.UserInterface
 				object o = this.cbcareer.Items[i];
 				Data.MetaData.Careers at;
 				if (o.GetType() == typeof(Alias))
+				{
 					at = (Data.LocalizedCareers)((uint)((Alias)o).Id);
+				}
 				else
+				{
 					at = (Data.LocalizedCareers)o;
+				}
 
 				if (at == sdesc.CharacterDescription.Career)
 				{
@@ -1643,9 +1750,13 @@ namespace SimPe.PackedFiles.UserInterface
 				object o = this.cbRetirement.Items[i];
 				Data.MetaData.Careers at;
 				if (o.GetType() == typeof(Alias))
+				{
 					at = (Data.LocalizedCareers)((uint)((Alias)o).Id);
+				}
 				else
+				{
 					at = (Data.LocalizedCareers)o;
+				}
 
 				if (at == sdesc.CharacterDescription.Retired)
 				{
@@ -1662,9 +1773,13 @@ namespace SimPe.PackedFiles.UserInterface
 				Data.LocalizedSchoolType type;
 				object o = this.cbschooltype.Items[i];
 				if (o.GetType() == typeof(Alias))
+				{
 					type = (Data.LocalizedSchoolType)((uint)((Alias)o).Id);
+				}
 				else
+				{
 					type = (Data.LocalizedSchoolType)o;
+				}
 
 				if (
 					sdesc.CharacterDescription.SchoolType
@@ -1686,9 +1801,14 @@ namespace SimPe.PackedFiles.UserInterface
 				Data.MetaData.Grades grade;
 				object o = this.cbgrade.Items[i];
 				if (o.GetType() == typeof(Alias))
+				{
 					grade = (Data.LocalizedGrades)((uint)((Alias)o).Id);
+				}
 				else
+				{
 					grade = (Data.LocalizedGrades)o;
+				}
+
 				if (sdesc.CharacterDescription.Grade == (Data.MetaData.Grades)grade)
 				{
 					this.cbgrade.SelectedIndex = i;
@@ -1707,11 +1827,15 @@ namespace SimPe.PackedFiles.UserInterface
 					>= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Freetime
 				&& !SimPe.Helper.WindowsRegistry.AllowChangeOfSecondaryAspiration
 			)
+			{
 				this.cbaspiration.Enabled =
 					sdesc.Freetime.SecondaryAspiration
 					== MetaData.AspirationTypes.Nothing;
+			}
 			else
+			{
 				this.cbaspiration.Enabled = true;
+			}
 		}
 
 		void RefreshInterests(Wrapper.ExtSDesc sdesc)
@@ -1798,8 +1922,13 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				InternalChange = true;
 				foreach (Control c in this.pnHumanChar.Controls)
+				{
 					if (c is LabeledProgressBar)
+					{
 						((LabeledProgressBar)c).Value = ((LabeledProgressBar)c).Maximum;
+					}
+				}
+
 				InternalChange = false;
 				this.ChangedChar(null, null);
 			}
@@ -1807,11 +1936,21 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				InternalChange = true;
 				foreach (Control c in this.pnPetInt.Controls)
+				{
 					if (c is LabeledProgressBar)
+					{
 						((LabeledProgressBar)c).Value = ((LabeledProgressBar)c).Maximum;
+					}
+				}
+
 				foreach (Control c in this.pnSimInt.Controls)
+				{
 					if (c is LabeledProgressBar)
+					{
 						((LabeledProgressBar)c).Value = ((LabeledProgressBar)c).Maximum;
+					}
+				}
+
 				InternalChange = false;
 				this.ChangedInt(null, null);
 			}
@@ -1819,7 +1958,10 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				int index = -1;
 				if (lv.SelectedIndices.Count > 0)
+				{
 					index = lv.SelectedIndices[0];
+				}
+
 				foreach (SteepValley.Windows.Forms.XPListViewItem lvi in lv.Items)
 				{
 					if (lvi.GroupIndex != 1)
@@ -1842,9 +1984,13 @@ namespace SimPe.PackedFiles.UserInterface
 					}
 				}
 				if (index >= 0)
+				{
 					lv.Items[index].Selected = true;
+				}
 				else if (lv.Items.Count > 0)
+				{
 					lv.Items[0].Selected = true;
+				}
 			}
 			else if (this.pnEP9.Visible)
 			{
@@ -1861,10 +2007,14 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				InternalChange = true;
 				foreach (Control c in pnSkill.Controls)
+				{
 					if (c is LabeledProgressBar)
+					{
 						((LabeledProgressBar)c).Value = rnd.Next(
 							((LabeledProgressBar)c).Maximum
 						);
+					}
+				}
 
 				InternalChange = false;
 				this.ChangedSkill(null, null);
@@ -1873,10 +2023,15 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				InternalChange = true;
 				foreach (Control c in pnHumanChar.Controls)
+				{
 					if (c is LabeledProgressBar)
+					{
 						((LabeledProgressBar)c).Value = rnd.Next(
 							((LabeledProgressBar)c).Maximum
 						);
+					}
+				}
+
 				InternalChange = false;
 				this.ChangedSkill(null, null);
 			}
@@ -1884,15 +2039,25 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				InternalChange = true;
 				foreach (Control c in pnPetInt.Controls)
+				{
 					if (c is LabeledProgressBar)
+					{
 						((LabeledProgressBar)c).Value = rnd.Next(
 							((LabeledProgressBar)c).Maximum
 						);
+					}
+				}
+
 				foreach (Control c in pnSimInt.Controls)
+				{
 					if (c is LabeledProgressBar)
+					{
 						((LabeledProgressBar)c).Value = rnd.Next(
 							((LabeledProgressBar)c).Maximum
 						);
+					}
+				}
+
 				InternalChange = false;
 				this.ChangedSkill(null, null);
 			}
@@ -1932,7 +2097,9 @@ namespace SimPe.PackedFiles.UserInterface
 					}
 				}
 				if (lv.Items.Count > 0)
+				{
 					lv.Items[0].Selected = true;
+				}
 			}
 		}
 
@@ -1944,16 +2111,25 @@ namespace SimPe.PackedFiles.UserInterface
 		private void cbmajor_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			if (cbmajor.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			object o = cbmajor.Items[cbmajor.SelectedIndex];
 			Data.Majors v;
 			if (o.GetType() == typeof(Data.Alias))
+			{
 				v = (Data.Majors)((Data.Alias)o).Id;
+			}
 			else
+			{
 				v = (Data.Majors)o;
+			}
 
 			if (v == Data.Majors.Unknown)
+			{
 				return;
+			}
 
 			tbmajor.Text = "0x" + Helper.HexString((uint)v);
 		}
@@ -1961,7 +2137,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void cbcareer_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			if (cbcareer.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			object o = cbcareer.Items[cbcareer.SelectedIndex];
 			if (o.GetType() != typeof(Data.Alias))
 			{
@@ -1984,16 +2163,24 @@ namespace SimPe.PackedFiles.UserInterface
 		)
 		{
 			if (InternalChange)
+			{
 				return;
+			}
+
 			if (cbRetirement.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			uint rec = 0;
 			object o = cbRetirement.Items[cbRetirement.SelectedIndex];
 			if (o.GetType() != typeof(Data.Alias))
 			{
 				Data.MetaData.Careers retired = (Data.LocalizedCareers)o;
 				if (retired != Data.MetaData.Careers.Unknown)
+				{
 					rec = (uint)retired;
+				}
 			}
 			else
 			{
@@ -2009,7 +2196,10 @@ namespace SimPe.PackedFiles.UserInterface
 		)
 		{
 			if (cbschooltype.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			object o = cbschooltype.Items[cbschooltype.SelectedIndex];
 			if (o.GetType() != typeof(Data.Alias))
 			{
@@ -2047,7 +2237,9 @@ namespace SimPe.PackedFiles.UserInterface
 				booty = SimPe.Data.MetaData.GetBodyShapeid(sdna.Dominant.Skintone);
 			}
 			else
+			{
 				booty = 0;
+			}
 
 			Sdesc.Interests.Animals = (ushort)slt.Next(400, 600);
 			Sdesc.Interests.Crime = (ushort)slt.Next(400, 600);
@@ -2120,7 +2312,9 @@ namespace SimPe.PackedFiles.UserInterface
 			Sdesc.Nightlife.AttractionTurnOffs3 = 0;
 
 			if (Sdesc.FamilyInstance > 32512)
+			{
 				Sdesc.CharacterDescription.PersonFlags1.WantHistory = true;
+			}
 
 			RefreshSkills(Sdesc);
 			RefreshCharcter(Sdesc);
@@ -2141,7 +2335,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void ChangedId(object sender, System.EventArgs e)
 		{
 			if (InternalChange)
+			{
 				return;
+			}
+
 			InternalChange = true;
 			try
 			{
@@ -2163,9 +2360,14 @@ namespace SimPe.PackedFiles.UserInterface
 					10
 				);
 				if (Sdesc.SimName != tbsimdescname.Text)
+				{
 					Sdesc.SimName = this.tbsimdescname.Text;
+				}
+
 				if (Sdesc.SimFamilyName != tbsimdescfamname.Text)
+				{
 					Sdesc.SimFamilyName = this.tbsimdescfamname.Text;
+				}
 
 				this.tbsim.ReadOnly = !UserVerification.HaveUserId;
 
@@ -2174,9 +2376,14 @@ namespace SimPe.PackedFiles.UserInterface
 					this.cblifesection.SelectedItem;
 
 				if (this.rbfemale.Checked)
+				{
 					Sdesc.CharacterDescription.Gender = Data.MetaData.Gender.Female;
+				}
 				else
+				{
 					Sdesc.CharacterDescription.Gender = Data.MetaData.Gender.Male;
+				}
+
 				Sdesc.Nightlife.Species =
 					(SimPe.PackedFiles.Wrapper.SdscNightlife.SpeciesType)
 						cbSpecies.SelectedValue;
@@ -2210,7 +2417,9 @@ namespace SimPe.PackedFiles.UserInterface
 					}
 				}
 				else
+				{
 					this.lbsubspec.Visible = false;
+				}
 
 				Sdesc.Changed = true;
 
@@ -2225,7 +2434,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void cbservice_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			if (InternalChange)
+			{
 				return;
+			}
+
 			InternalChange = true;
 			try
 			{
@@ -2234,7 +2446,10 @@ namespace SimPe.PackedFiles.UserInterface
 				this.tbnpc.Text =
 					"0x" + Helper.HexString(Sdesc.CharacterDescription.NPCType);
 				if (this.btOriGuid.Enabled)
+				{
 					this.btOriGuid.Visible = true;
+				}
+
 				Sdesc.Changed = true;
 			}
 			finally
@@ -2246,7 +2461,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void ChangedRel(object sender, System.EventArgs e)
 		{
 			if (InternalChange)
+			{
 				return;
+			}
+
 			InternalChange = true;
 			try
 			{
@@ -2260,7 +2478,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void ChangedInt(object sender, System.EventArgs e)
 		{
 			if (InternalChange)
+			{
 				return;
+			}
+
 			InternalChange = true;
 			try
 			{
@@ -2309,7 +2530,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void ChangedCareer(object sender, System.EventArgs e)
 		{
 			if (InternalChange)
+			{
 				return;
+			}
+
 			InternalChange = true;
 			try
 			{
@@ -2375,7 +2599,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void ChangedChar(object sender, System.EventArgs e)
 		{
 			if (InternalChange)
+			{
 				return;
+			}
+
 			InternalChange = true;
 			try
 			{
@@ -2411,7 +2638,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void ChangedSkill(object sender, System.EventArgs e) // Updated Dog skills only for T&A, A&N or Pet Story
 		{
 			if (InternalChange)
+			{
 				return;
+			}
+
 			InternalChange = true;
 			try
 			{
@@ -2493,9 +2723,15 @@ namespace SimPe.PackedFiles.UserInterface
 							Sdesc.Skills.Mechanical = (ushort)this.pbMech.Value;
 							Sdesc.Skills.Fatness = (ushort)this.pbFat.Value;
 							if (Helper.WindowsRegistry.ShowMoreSkills)
+							{
 								Sdesc.Skills.Music = (ushort)this.pbMusic.Value;
+							}
+
 							if (Helper.WindowsRegistry.ShowMoreSkills)
+							{
 								Sdesc.Skills.Art = (ushort)this.pbArty.Value;
+							}
+
 							this.pbPupbody.Visible = false;
 							this.pbPupCharisma.Visible = false;
 							this.pbPupClean.Visible = false;
@@ -2525,7 +2761,9 @@ namespace SimPe.PackedFiles.UserInterface
 								this.pbReputate.Visible = true;
 							}
 							else
+							{
 								this.pbReputate.Visible = false;
+							}
 						}
 					}
 				}
@@ -2540,9 +2778,15 @@ namespace SimPe.PackedFiles.UserInterface
 					Sdesc.Skills.Mechanical = (ushort)this.pbMech.Value;
 					Sdesc.Skills.Fatness = (ushort)this.pbFat.Value;
 					if (Helper.WindowsRegistry.ShowMoreSkills)
+					{
 						Sdesc.Skills.Music = (ushort)this.pbMusic.Value;
+					}
+
 					if (Helper.WindowsRegistry.ShowMoreSkills)
+					{
 						Sdesc.Skills.Art = (ushort)this.pbArty.Value;
+					}
+
 					this.pbPupbody.Visible = false;
 					this.pbPupCharisma.Visible = false;
 					this.pbPupClean.Visible = false;
@@ -2572,7 +2816,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void ChangedOther(object sender, System.EventArgs e)
 		{
 			if (InternalChange)
+			{
 				return;
+			}
+
 			InternalChange = true;
 			try
 			{
@@ -2693,9 +2940,13 @@ namespace SimPe.PackedFiles.UserInterface
 					object o = this.cbservice.Items[i];
 					Data.MetaData.ServiceTypes at;
 					if (o.GetType() == typeof(Alias))
+					{
 						at = (Data.LocalizedServiceTypes)((uint)((Alias)o).Id);
+					}
 					else
+					{
 						at = (Data.LocalizedServiceTypes)o;
+					}
 
 					if (at == Sdesc.CharacterDescription.ServiceTypes)
 					{
@@ -2714,7 +2965,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void ChangedEP1(object sender, System.EventArgs e)
 		{
 			if (InternalChange)
+			{
 				return;
+			}
+
 			InternalChange = true;
 			try
 			{
@@ -2726,9 +2980,13 @@ namespace SimPe.PackedFiles.UserInterface
 					);
 
 				if (this.cboncampus.Checked)
+				{
 					Sdesc.University.OnCampus = 0x1;
+				}
 				else
+				{
 					Sdesc.University.OnCampus = 0x0;
+				}
 
 				Sdesc.University.Effort = (ushort)this.pbEffort.Value;
 				Sdesc.University.Grade = (ushort)this.pbLastGrade.Value;
@@ -2782,7 +3040,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void Changedfreshman(object sender, System.EventArgs e)
 		{
 			if (InternalChange)
+			{
 				return;
+			}
+
 			InternalChange = true;
 			if (this.cbfreshman.Checked)
 			{
@@ -2798,7 +3059,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void ChangedSopho(object sender, System.EventArgs e)
 		{
 			if (InternalChange)
+			{
 				return;
+			}
+
 			InternalChange = true;
 			if (this.cbSopho.Checked)
 			{
@@ -2814,7 +3078,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void ChangedJunior(object sender, System.EventArgs e)
 		{
 			if (InternalChange)
+			{
 				return;
+			}
+
 			InternalChange = true;
 			if (this.cbJunior.Checked)
 			{
@@ -2830,7 +3097,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void ChangedSenior(object sender, System.EventArgs e)
 		{
 			if (InternalChange)
+			{
 				return;
+			}
+
 			InternalChange = true;
 			if (this.cbSenior.Checked)
 			{
@@ -2872,13 +3142,18 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 			}
 			else
+			{
 				this.lbsubspec.Visible = false;
+			}
 		}
 
 		private void cbdataflag1_CheckedChanged(object sender, EventArgs e)
 		{
 			if (InternalChange)
+			{
 				return;
+			}
+
 			Sdesc.CharacterDescription.PersonFlags1.IsZombie = this.cbpfZomb.Checked;
 			Sdesc.CharacterDescription.PersonFlags1.PermaPlatinum =
 				this.cbpfperma.Checked;
@@ -2929,9 +3204,13 @@ namespace SimPe.PackedFiles.UserInterface
 		private void Activate_biMore(object sender, System.EventArgs e)
 		{
 			if (biMore.Text == "More")
+			{
 				mbiLink.Show(this.toolBar1, new Point(443, toolBar1.Height - 2));
+			}
 			else
+			{
 				mbiLink.Show(this.toolBar1, new Point(507, toolBar1.Height - 2));
+			}
 		}
 
 		private void Activate_miRelink(object sender, System.EventArgs e)
@@ -2966,21 +3245,23 @@ namespace SimPe.PackedFiles.UserInterface
 					); //try a Collection File
 				pfd = Sdesc.Package.FindFile(pfd);
 				if (pfd != null)
-					SimPe.RemoteControl.OpenPackedFile(pfd, Sdesc.Package);
-				/*
-				// this don't work and can never have worked, just opens character file
-				if (System.IO.File.Exists(Sdesc.CharacterFileName))
 				{
-					uint inst = Convert.ToUInt32(this.tbfaminst.Text, 16);
-					SimPe.Packages.GeneratableFile fl = SimPe.Packages.GeneratableFile.LoadFromFile(Sdesc.CharacterFileName);
+					SimPe.RemoteControl.OpenPackedFile(pfd, Sdesc.Package);
+				}
+				/*
+// this don't work and can never have worked, just opens character file
+if (System.IO.File.Exists(Sdesc.CharacterFileName))
+{
+	uint inst = Convert.ToUInt32(this.tbfaminst.Text, 16);
+	SimPe.Packages.GeneratableFile fl = SimPe.Packages.GeneratableFile.LoadFromFile(Sdesc.CharacterFileName);
 
-					Interfaces.Files.IPackedFileDescriptor[] pfds = fl.FindFile(0xAC506764, 0, 0x1);
-					if (pfds.Length>0)
-					{
-						SimPe.RemoteControl.OpenPackage(Sdesc.CharacterFileName);
-						SimPe.RemoteControl.OpenPackedFile(pfds[0], fl);
-					}
-				}*/
+	Interfaces.Files.IPackedFileDescriptor[] pfds = fl.FindFile(0xAC506764, 0, 0x1);
+	if (pfds.Length>0)
+	{
+		SimPe.RemoteControl.OpenPackage(Sdesc.CharacterFileName);
+		SimPe.RemoteControl.OpenPackedFile(pfds[0], fl);
+	}
+}*/
 			}
 			catch (Exception ex)
 			{
@@ -3121,11 +3402,17 @@ namespace SimPe.PackedFiles.UserInterface
 			if (pnRel.Visible)
 			{
 				if (lastpkg == null)
+				{
 					LoadRelList();
+				}
 				else if (!lastpkg.Equals(Sdesc.Package))
+				{
 					LoadRelList();
+				}
 				else if (!loadedRel)
+				{
 					UpdateRelList();
+				}
 
 				lastpkg = Sdesc.Package;
 			}
@@ -3135,9 +3422,14 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			lv.Sim = Sdesc;
 			if (Sdesc == null)
+			{
 				lv.Package = null;
+			}
 			else
+			{
 				lv.Package = Sdesc.Package;
+			}
+
 			ResetLabel();
 			loadedRel = true;
 		}
@@ -3189,9 +3481,14 @@ namespace SimPe.PackedFiles.UserInterface
 				+ " "
 				+ srcRel.TargetSimName;
 			if (srcRel.TargetSim == null)
+			{
 				img = null;
+			}
 			else
+			{
 				img = (Image)srcRel.Image;
+			}
+
 			if (img != null)
 			{
 				//img = Ambertation.Drawing.GraphicRoutines.KnockoutImage(img, new Point(0,0), Color.Magenta);
@@ -3211,9 +3508,14 @@ namespace SimPe.PackedFiles.UserInterface
 				+ " "
 				+ dstRel.TargetSimName;
 			if (dstRel.TargetSim == null)
+			{
 				img = null;
+			}
 			else
+			{
 				img = (Image)dstRel.Image.Clone();
+			}
+
 			if (img != null)
 			{
 				//img = Ambertation.Drawing.GraphicRoutines.KnockoutImage(img, new Point(0,0), Color.Magenta);
@@ -3265,7 +3567,9 @@ namespace SimPe.PackedFiles.UserInterface
 		private void SelectedSimRelationChanged(object sender, System.EventArgs e)
 		{
 			if (lv.SelectedItems.Count != 1)
+			{
 				return;
+			}
 
 			PackedFiles.Wrapper.ExtSDesc sdesc = (PackedFiles.Wrapper.ExtSDesc)
 				lv.SelectedItems[0].Tag;
@@ -3280,18 +3584,22 @@ namespace SimPe.PackedFiles.UserInterface
 			if (lv.SelectedItems.Count == 1)
 			{
 				if (Helper.WindowsRegistry.HiddenMode)
+				{
 					this.miAddRelation.Enabled =
 						(
 							(SteepValley.Windows.Forms.XPListViewItem)
 								lv.SelectedItems[0]
 						).GroupIndex == 1;
+				}
 				else
+				{
 					this.miAddRelation.Enabled =
 						(
 							(SteepValley.Windows.Forms.XPListViewItem)
 								lv.SelectedItems[0]
 						).GroupIndex == 1
 						&& !Sdesc.Equals(lv.SelectedItems[0].Tag);
+				}
 
 				this.miRemRelation.Enabled =
 					(
@@ -3338,19 +3646,28 @@ namespace SimPe.PackedFiles.UserInterface
 		private void Activate_miAddRelation(object sender, System.EventArgs e)
 		{
 			if (lv.SelectedItems.Count != 1)
+			{
 				return;
+			}
+
 			PackedFiles.Wrapper.ExtSDesc sdesc = (PackedFiles.Wrapper.ExtSDesc)
 				lv.SelectedItems[0].Tag;
 
 			SimPe.PackedFiles.Wrapper.ExtSrel srel = FindRelation(Sdesc, sdesc);
 			if (srel == null)
+			{
 				srel = Sdesc.CreateRelation(sdesc);
+			}
+
 			Sdesc.AddRelationToCache(srel);
 			Sdesc.AddRelation(sdesc);
 
 			srel = FindRelation(sdesc, Sdesc);
 			if (srel == null)
+			{
 				srel = sdesc.CreateRelation(Sdesc);
+			}
+
 			Sdesc.AddRelationToCache(srel);
 			sdesc.AddRelation(Sdesc);
 
@@ -3364,18 +3681,27 @@ namespace SimPe.PackedFiles.UserInterface
 		private void Activate_miRemRelation(object sender, System.EventArgs e)
 		{
 			if (lv.SelectedItems.Count != 1)
+			{
 				return;
+			}
+
 			PackedFiles.Wrapper.ExtSDesc sdesc = (PackedFiles.Wrapper.ExtSDesc)
 				lv.SelectedItems[0].Tag;
 
 			SimPe.PackedFiles.Wrapper.ExtSrel srel = FindRelation(Sdesc, sdesc);
 			if (srel != null)
+			{
 				Sdesc.RemoveRelationFromCache(srel);
+			}
+
 			Sdesc.RemoveRelation(sdesc);
 
 			srel = FindRelation(sdesc, Sdesc);
 			if (srel != null)
+			{
 				Sdesc.RemoveRelationFromCache(srel);
+			}
+
 			sdesc.RemoveRelation(Sdesc);
 
 			if (
@@ -3383,13 +3709,17 @@ namespace SimPe.PackedFiles.UserInterface
 					(SteepValley.Windows.Forms.XPListViewItem)lv.SelectedItems[0]
 				).GroupIndex == 2
 			)
+			{
 				lv.Items.Remove(
 					(SteepValley.Windows.Forms.XPListViewItem)lv.SelectedItems[0]
 				);
+			}
 			else
+			{
 				(
 					(SteepValley.Windows.Forms.XPListViewItem)lv.SelectedItems[0]
 				).GroupIndex = 1;
+			}
 
 			lv.EnsureVisible(lv.SelectedItems[0].Index);
 			lv.UpdateIcon();
@@ -3425,7 +3755,10 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			int index = -1;
 			if (lv.SelectedIndices.Count > 0)
+			{
 				index = lv.SelectedIndices[0];
+			}
+
 			foreach (SteepValley.Windows.Forms.XPListViewItem lvi in lv.Items)
 			{
 				if (lvi.GroupIndex != 1)
@@ -3455,7 +3788,9 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 
 			if (index >= 0)
+			{
 				lv.Items[index].Selected = true;
+			}
 		}
 		#endregion
 
@@ -3463,12 +3798,16 @@ namespace SimPe.PackedFiles.UserInterface
 		void FillNightlifeListBox(System.Windows.Forms.CheckedListBox clb)
 		{
 			if (clb.Items.Count > 0)
+			{
 				return;
+			}
 
 			SimPe.Providers.TraitAlias[] al =
 				FileTable.ProviderRegistry.SimDescriptionProvider.GetAllTurnOns();
 			foreach (SimPe.Providers.TraitAlias a in al)
+			{
 				clb.Items.Add(a);
+			}
 		}
 
 		void SelectNightlifeItems(
@@ -3529,11 +3868,18 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			ulong val = 0;
 			foreach (int i in clb.CheckedIndices)
+			{
 				val += ((SimPe.Providers.TraitAlias)clb.Items[i]).Id;
+			}
+
 			if (e.NewValue == CheckState.Checked)
+			{
 				val += ((SimPe.Providers.TraitAlias)clb.Items[e.Index]).Id;
+			}
 			else
+			{
 				val -= ((SimPe.Providers.TraitAlias)clb.Items[e.Index]).Id;
+			}
 
 			return val;
 		}
@@ -3541,9 +3887,15 @@ namespace SimPe.PackedFiles.UserInterface
 		void cklb_ItemCheck(object sender, ItemCheckEventArgs e)
 		{
 			if (InternalChange)
+			{
 				return;
+			}
+
 			if (e.CurrentValue == e.NewValue)
+			{
 				return;
+			}
+
 			int which = (
 				new System.Collections.Generic.List<CheckedListBox>(
 					new CheckedListBox[] { lbTraits, lbTurnOn, lbTurnOff }
@@ -3592,7 +3944,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void ChangedEP2(object sender, System.EventArgs e)
 		{
 			if (InternalChange)
+			{
 				return;
+			}
+
 			InternalChange = true;
 			try
 			{
@@ -3623,7 +3978,10 @@ namespace SimPe.PackedFiles.UserInterface
 		void ShowAllCollectibles()
 		{
 			if (lvCollectibles.Items.Count > 0)
+			{
 				return;
+			}
+
 			SimPe.Providers.CollectibleAlias[] al =
 				FileTable.ProviderRegistry.SimDescriptionProvider.GetAllCollectibles();
 			foreach (SimPe.Providers.CollectibleAlias a in al)
@@ -3654,7 +4012,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void ChangedEP6(object sender, System.EventArgs e)
 		{
 			if (InternalChange)
+			{
 				return;
+			}
+
 			InternalChange = true;
 			try
 			{
@@ -3674,8 +4035,10 @@ namespace SimPe.PackedFiles.UserInterface
 						SimPe.Providers.CollectibleAlias a =
 							(SimPe.Providers.CollectibleAlias)lvi.Tag;
 						if (lvi.Checked)
+						{
 							Sdesc.Voyage.CollectiblesPlain =
 								Sdesc.Voyage.CollectiblesPlain | a.Id;
+						}
 					}
 
 					Sdesc.Changed = true;
@@ -3712,7 +4075,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void ChangedEP3(object sender, System.EventArgs e)
 		{
 			if (InternalChange)
+			{
 				return;
+			}
+
 			InternalChange = true;
 			try
 			{
@@ -3748,14 +4114,18 @@ namespace SimPe.PackedFiles.UserInterface
 			if (sblb.SelectedBusiness != null)
 			{
 				if (sblb.SelectedBusiness.BnfoFileIndexItem == null)
+				{
 					llep3openinfo.Links[0].Enabled = false;
+				}
 			}
 		}
 
 		private void llep3openinfo_LinkClicked(object sender, System.EventArgs e)
 		{
 			if (sblb.SelectedBusiness == null)
+			{
 				return;
+			}
 
 			SimPe.RemoteControl.OpenPackedFile(sblb.SelectedBusiness.BnfoFileIndexItem);
 		}
@@ -3774,7 +4144,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void ChangedEP4(object sender, System.EventArgs e)
 		{
 			if (InternalChange)
+			{
 				return;
+			}
+
 			InternalChange = true;
 			try
 			{
@@ -3804,7 +4177,9 @@ namespace SimPe.PackedFiles.UserInterface
 			btProfile.Visible = (showsim && !Helper.WindowsRegistry.HiddenMode);
 			pnPetChar.Visible = pnPetInt.Visible = !showsim;
 			if (!InternalChange && this.btOriGuid.Enabled)
+			{
 				btOriGuid.Visible = true;
+			}
 		}
 
 		private bool IsHumanoid()
@@ -3830,9 +4205,13 @@ namespace SimPe.PackedFiles.UserInterface
 					(int)Sdesc.Version
 					>= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Pets
 				)
+				{
 					showsim = Sdesc.Nightlife.IsHuman;
+				}
 				else
+				{
 					showsim = true;
+				}
 			}
 			pnSimInt.Visible = pnHumanChar.Visible = showsim;
 			btProfile.Visible = (showsim && !Helper.WindowsRegistry.HiddenMode);
@@ -3861,9 +4240,14 @@ namespace SimPe.PackedFiles.UserInterface
 				.AllowChangeOfSecondaryAspiration;
 
 			if (cbHobbyEnth.SelectedIndex < 0)
+			{
 				cbHobbyEnth.SelectedIndex = 0;
+			}
 			else
+			{
 				this.EnthusiasmIndexChanged(cbHobbyEnth, null);
+			}
+
 			cbHobbyPre.SelectedValue = sdesc.Freetime.HobbyPredistined;
 			this.tbBugColl.Text = "0x" + Helper.HexString(sdesc.Freetime.BugCollection);
 			this.tbLtAsp.Text =
@@ -3905,7 +4289,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void ChangedEP7(object sender, System.EventArgs e)
 		{
 			if (InternalChange)
+			{
 				return;
+			}
+
 			InternalChange = true;
 			try
 			{
@@ -3919,8 +4306,10 @@ namespace SimPe.PackedFiles.UserInterface
 						&& cbHobbyEnth.SelectedIndex
 							< Sdesc.Freetime.HobbyEnthusiasm.Count
 					)
+					{
 						Sdesc.Freetime.HobbyEnthusiasm[cbHobbyEnth.SelectedIndex] =
 							(ushort)pbhbenth.Value;
+					}
 
 					Sdesc.Freetime.BugCollection = Helper.StringToUInt32(
 						this.tbBugColl.Text,

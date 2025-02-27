@@ -132,18 +132,30 @@ namespace SimPe
 		protected string GetPath(ExpansionItem ei)
 		{
 			if (ei.InstallFolder == null)
+			{
 				return ei.RealInstallFolder;
+			}
+
 			if (ei.InstallFolder.Trim() == "")
+			{
 				return ei.RealInstallFolder;
+			}
+
 			return ei.InstallFolder;
 		}
 
 		protected string GetPath(string userpath, string defpath)
 		{
 			if (userpath == null)
+			{
 				userpath = "";
+			}
+
 			if (userpath.Trim() == "")
+			{
 				return defpath;
+			}
+
 			return userpath;
 		}
 

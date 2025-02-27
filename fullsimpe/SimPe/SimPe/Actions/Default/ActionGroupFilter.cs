@@ -50,7 +50,9 @@ namespace SimPe.Actions.Default
 		)
 		{
 			if (!ChangeEnabledStateEventHandler(sender, es))
+			{
 				return;
+			}
 
 			if (Filter != null && Filter.FilterGroup)
 			{

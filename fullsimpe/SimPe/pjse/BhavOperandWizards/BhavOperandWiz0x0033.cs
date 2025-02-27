@@ -263,7 +263,10 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 		private void setGUID(bool setTB, UInt32 guid)
 		{
 			if (setTB)
+			{
 				this.tbGUID.Text = "0x" + SimPe.Helper.HexString(guid);
+			}
+
 			this.tbObjName.Text =
 				(guid == 0) ? BhavWiz.dnStkOb() : BhavWiz.FormatGUID(true, guid);
 		}
@@ -289,7 +292,10 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 		private void doFromInventory(bool enable)
 		{
 			if (enable)
+			{
 				cbInventory.Enabled = true;
+			}
+
 			int i = (o5678[1] & 0x07);
 			cbInventory.SelectedIndex = (i < cbInventory.Items.Count) ? i : -1;
 			lbDoid3.Text =
@@ -329,10 +335,14 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 			gbInventoryType.Enabled = true;
 
 			if (operation < aByGUID.Length && aByGUID[operation])
+			{
 				doByGUID();
+			}
 
 			if (operation < aCategory.Length && aCategory[operation])
+			{
 				doTokenType();
+			}
 
 			bool doid1Enabled = pnDoid1.Enabled;
 
@@ -353,7 +363,9 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 			}
 
 			if (!doid1Enabled && pnDoid1.Enabled)
+			{
 				refreshDoid1();
+			}
 		}
 
 		private void doCounted()
@@ -529,9 +541,13 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 			);
 
 			if (rb1Counted.Checked)
+			{
 				doCounted();
+			}
 			else
+			{
 				doSingular();
+			}
 
 			cbOperation.SelectedIndex =
 				(operation < cbOperation.Items.Count) ? operation : -1;
@@ -542,9 +558,15 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 		void doid1_DataOwnerControlChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (doid1.DataOwner >= 0)
+			{
 				o5678[1] = doid1.DataOwner;
+			}
+
 			BhavWiz.FromShort(ref o5678, 2, doid1.Value);
 		}
 
@@ -559,9 +581,11 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 				if (inst.NodeVersion < 1)
 				{
 					if (cbTargetInv.SelectedIndex >= 0)
+					{
 						option1 = (byte)(
 							(option1 & 0xfc) | (cbTargetInv.SelectedIndex & 0x03)
 						);
+					}
 
 					option1[2] = rb1Counted.Checked;
 					option1[3] = !ckbTTInvVisible.Checked;
@@ -570,9 +594,11 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 				else
 				{
 					if (cbTargetInv.SelectedIndex >= 0)
+					{
 						option1 = (byte)(
 							(option1 & 0xf8) | (cbTargetInv.SelectedIndex & 0x07)
 						);
+					}
 
 					option1[3] = rb1Counted.Checked;
 					option1[4] = !ckbTTInvVisible.Checked;
@@ -1156,13 +1182,20 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 		private void rb1_CheckedChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			internalchg = true;
 
 			if (rb1Counted.Checked)
+			{
 				doCounted();
+			}
 			else
+			{
 				doSingular();
+			}
 
 			internalchg = false;
 		}
@@ -1176,10 +1209,15 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 		private void tbGUID_TextChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
 
 			if (!hex32_IsValid(sender))
+			{
 				return;
+			}
+
 			setGUID(false, Convert.ToUInt32(((TextBox)sender).Text, 16));
 		}
 
@@ -1189,7 +1227,9 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 		)
 		{
 			if (hex32_IsValid(sender))
+			{
 				return;
+			}
 
 			e.Cancel = true;
 
@@ -1256,7 +1296,10 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 			internalchg = true;
 
 			if (cbInventory.SelectedIndex >= 0 && cbInventory.SelectedIndex <= 7)
+			{
 				o5678[1] = (byte)((o5678[1] & 0xf8) + cbInventory.SelectedIndex);
+			}
+
 			refreshDoid1();
 
 			pnDoid3.Enabled = (
@@ -1283,7 +1326,9 @@ namespace pjse.BhavOperandWizards
 		public override void Dispose()
 		{
 			if (myForm != null)
+			{
 				myForm = null;
+			}
 		}
 		#endregion
 	}

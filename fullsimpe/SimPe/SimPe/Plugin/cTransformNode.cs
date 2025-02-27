@@ -260,7 +260,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (JointReference == NO_JOINT)
+				{
 					return 0; //clear
+				}
+
 				return 1; //bone
 			}
 		}
@@ -345,7 +348,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (tTransformNode == null)
+				{
 					tTransformNode = new SimPe.Plugin.TabPage.TransformNode();
+				}
+
 				return tTransformNode;
 			}
 		}
@@ -357,12 +363,17 @@ namespace SimPe.Plugin
 		protected override void InitTabPage()
 		{
 			if (tTransformNode == null)
+			{
 				tTransformNode = new SimPe.Plugin.TabPage.TransformNode();
+			}
+
 			tTransformNode.tb_tn_a.Tag = true;
 
 			tTransformNode.lb_tn.Items.Clear();
 			for (int i = 0; i < this.Items.Length; i++)
+			{
 				tTransformNode.lb_tn.Items.Add(Items[i]);
+			}
 
 			tTransformNode.tb_tn_ver.Text = "0x" + Helper.HexString(this.version);
 			tTransformNode.tb_tn_ukn.Text = "0x" + Helper.HexString(this.JointReference);
@@ -396,7 +407,10 @@ namespace SimPe.Plugin
 		{
 			string s = "";
 			if (this.JointReference != NO_JOINT)
+			{
 				s += "[Joint" + this.JointReference.ToString() + "] - ";
+			}
+
 			s += this.ObjectGraphNode.FileName;
 
 			s += ": " + Transformation.ToString() + " (" + base.ToString() + ")";
@@ -448,7 +462,10 @@ namespace SimPe.Plugin
 		public override void Dispose()
 		{
 			if (this.tTransformNode != null)
+			{
 				this.tTransformNode.Dispose();
+			}
+
 			tTransformNode = null;
 			CompositionTreeNode = null;
 			ObjectGraphNode = null;
@@ -547,7 +564,9 @@ namespace SimPe.Plugin
 		{
 			TransformNodeItems list = new TransformNodeItems();
 			foreach (TransformNodeItem item in this)
+			{
 				list.Add(item);
+			}
 
 			return list;
 		}

@@ -66,7 +66,9 @@ namespace SimPe
 		static void LoadFromFolder(string dir, string ext, bool global)
 		{
 			if (!System.IO.Directory.Exists(dir))
+			{
 				return;
+			}
 
 			string[] fls = System.IO.Directory.GetFiles(dir, "*." + ext);
 			foreach (string fl in fls)
@@ -104,7 +106,9 @@ namespace SimPe
 
 					uint type = SimPe.Data.MetaData.OLUA;
 					if (global)
+					{
 						type = SimPe.Data.MetaData.GLUA;
+					}
 
 					SimPe.Interfaces.Files.IPackedFileDescriptor pfd =
 						pkg.NewDescriptor(
@@ -133,7 +137,10 @@ namespace SimPe
 			get
 			{
 				if (pkg == null)
+				{
 					CreatePackge();
+				}
+
 				return pkg;
 			}
 		}

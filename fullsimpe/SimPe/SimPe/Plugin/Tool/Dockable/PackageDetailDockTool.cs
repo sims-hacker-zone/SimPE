@@ -48,13 +48,19 @@ namespace SimPe.Plugin.Tool.Dockable
 		public void RefreshDock(object sender, SimPe.Events.ResourceEventArgs es)
 		{
 			if (!es.Loaded)
+			{
 				dc.SetPackage(null);
+			}
 			else
 			{
 				//Only once for a package
 				if (pkg != null)
+				{
 					if (pkg.Equals(es.LoadedPackage.Package))
+					{
 						return;
+					}
+				}
 
 				dc.SetPackage(es.LoadedPackage.Package);
 			}

@@ -880,7 +880,10 @@ namespace SimPe.Packages
 			this.lblist.SelectionMode = SelectionMode.One;
 
 			if (lblist.Items.Count > 0)
+			{
 				lblist.SelectedIndex = 0;
+			}
+
 			btdelete.Enabled = (lblist.SelectedIndex >= 0);
 
 			this.Checks2cp(this.cb2cp, null);
@@ -894,7 +897,9 @@ namespace SimPe.Packages
 				{
 					s2cps[i] = (S2CPDescriptor)lblist.Items[i];
 					if (extension)
+					{
 						s2cps[i].Update();
+					}
 				}
 
 				return s2cps;
@@ -915,7 +920,9 @@ namespace SimPe.Packages
 			ok = false;
 
 			for (int i = 0; i < files.Length; i++)
+			{
 				lblist.Items.Add(files[i]);
+			}
 
 			this.tbflname.ReadOnly = true;
 			this.tbname.ReadOnly = true;
@@ -938,7 +945,10 @@ namespace SimPe.Packages
 			this.lblist.SelectionMode = selmode;
 
 			if (lblist.Items.Count > 0)
+			{
 				lblist.SelectedIndex = 0;
+			}
+
 			btdelete.Enabled = (lblist.SelectedIndex >= 0);
 
 			this.Checks2cp(this.cb2cp, null);
@@ -976,11 +986,17 @@ namespace SimPe.Packages
 		private void Select(object sender, System.EventArgs e) // CJH
 		{
 			if (lblist.Tag != null)
+			{
 				return;
+			}
+
 			gbsettings.Enabled = false;
 			btdelete.Enabled = false;
 			if (lblist.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			gbsettings.Enabled = true;
 			btdelete.Enabled = true;
 
@@ -1027,9 +1043,14 @@ namespace SimPe.Packages
 		private void ChangeText(object sender, System.EventArgs e)
 		{
 			if (lblist.Tag != null)
+			{
 				return;
+			}
+
 			if (lblist.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			lblist.Tag = true;
 			try
@@ -1083,7 +1104,9 @@ namespace SimPe.Packages
 		private void DeletePackage(object sender, System.EventArgs e)
 		{
 			if (lblist.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			lblist.Items.RemoveAt(lblist.SelectedIndex);
 		}
@@ -1091,11 +1114,16 @@ namespace SimPe.Packages
 		private void S2CPFilename(object sender, System.EventArgs e)
 		{
 			if (this.cb2cp.Checked)
+			{
 				sfd.Filter =
 					"Sims 2 Community Package (*.s2cp)|*.s2cp|All Files (*.*)|*.*";
+			}
 			else
+			{
 				sfd.Filter =
 					"Sims 2 Package (*.sims2pack)|*.sims2pack|All Files (*.*)|*.*";
+			}
+
 			if (sfd.ShowDialog() == DialogResult.OK)
 			{
 				tbflname.Text = sfd.FileName;
@@ -1139,9 +1167,14 @@ namespace SimPe.Packages
 		)
 		{
 			if (lblist.Tag != null)
+			{
 				return;
+			}
+
 			if (lblist.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			lblist.Tag = true;
 			try
@@ -1178,11 +1211,19 @@ namespace SimPe.Packages
 		private void SelectCompression(object sender, System.EventArgs e)
 		{
 			if (lblist.Tag != null)
+			{
 				return;
+			}
+
 			if (lblist.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			if (cbcompress.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			lblist.Tag = true;
 			try
@@ -1222,15 +1263,19 @@ namespace SimPe.Packages
 			if (cb2cp.Checked)
 			{
 				if (this.tbflname.Text.Trim().ToLower().EndsWith(".sims2pack"))
+				{
 					this.tbflname.Text =
 						this.tbflname.Text.Trim()
 							.Substring(0, this.tbflname.Text.Trim().Length - 8)
 						+ ".s2cp";
+				}
 				else if (this.tbflname.Text.Trim().ToLower().EndsWith(".s2cp"))
+				{
 					this.tbflname.Text =
 						this.tbflname.Text.Trim()
 							.Substring(0, this.tbflname.Text.Trim().Length - 5)
 						+ ".sims2pack";
+				}
 			}
 		}
 	}

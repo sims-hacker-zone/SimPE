@@ -110,11 +110,14 @@ namespace SimPe.Plugin.UI
 				this.SaveOutputPreferences(this.box.Settings);
 			*/
 			if (!this.box.IsEmpty)
+			{
 				foreach (System.Windows.Forms.TabPage tp in this.tcMain.TabPages)
 				{
 					((ListView)tp.Controls[0]).Items.Clear();
 					tp.Enabled = true;
 				}
+			}
+
 			this.lvTxmt.Items.Clear();
 			this.lvCresShpe.Items.Clear();
 			this.box.Clear();
@@ -157,9 +160,13 @@ namespace SimPe.Plugin.UI
 					MenuItem item = this.miMoveTo.MenuItems[i];
 					HairColor key = (HairColor)values.GetValue(i);
 					if (key == this.CurrentKey || this.box.Contains(key))
+					{
 						item.Visible = false;
+					}
 					else
+					{
 						item.Visible = true;
+					}
 				}
 			}
 		}
@@ -270,9 +277,13 @@ namespace SimPe.Plugin.UI
 							this.pbTexturePreview.Size
 						);
 						if (img != null)
+						{
 							this.pbTexturePreview.Image = img;
+						}
 						else
+						{
 							this.pbTexturePreview.Image = DefaultPreviewImage;
+						}
 					}
 					this.miMatCopyTxtrRef.Enabled = true;
 					this.Cursor = Cursors.Default;
@@ -331,7 +342,10 @@ namespace SimPe.Plugin.UI
 		private void cbEnablePreview_CheckedChanged(object sender, System.EventArgs e)
 		{
 			if (!this.cbEnablePreview.Checked)
+			{
 				this.pbTexturePreview.Image = DefaultPreviewImage;
+			}
+
 			this.UpdateMaterialsList(this.CurrentView);
 		}
 
@@ -401,7 +415,10 @@ namespace SimPe.Plugin.UI
 			{
 				HairColor newKey = (HairColor)Enum.Parse(typeof(HairColor), item.Text);
 				if (!this.IsTabEnabled(newKey))
+				{
 					return;
+				}
+
 				if (this.box.MovePackage(this.CurrentKey, newKey))
 				{
 					CurrentView.Items.Clear();
@@ -463,9 +480,13 @@ namespace SimPe.Plugin.UI
 				ListViewItem li = lv.Items[e.Index];
 				RecolorItem rcolItem = li.Tag as RecolorItem;
 				if (state == CheckState.Unchecked)
+				{
 					rcolItem.Enabled = false;
+				}
 				else
+				{
 					rcolItem.Enabled = true;
+				}
 			}
 		}
 
@@ -487,7 +508,9 @@ namespace SimPe.Plugin.UI
 			if (lv != null)
 			{
 				if (lv.ListViewItemSorter == null)
+				{
 					lv.ListViewItemSorter = new ColumnSorter();
+				}
 
 				ColumnSorter cmp = lv.ListViewItemSorter as ColumnSorter;
 				if (cmp.CurrentColumn != e.Column)
@@ -505,7 +528,9 @@ namespace SimPe.Plugin.UI
 		private void Handle_ListView_AfterLabelEdit(object sender, LabelEditEventArgs e)
 		{
 			if (e.CancelEdit || Utility.IsNullOrEmpty(e.Label))
+			{
 				return;
+			}
 
 			if (sender is ListView)
 			{
@@ -524,8 +549,13 @@ namespace SimPe.Plugin.UI
 		ListView GetView(HairColor key)
 		{
 			foreach (System.Windows.Forms.TabPage tp in this.tcMain.TabPages)
+			{
 				if (tp.Tag.Equals(key))
+				{
 					return tp.Controls[0] as ListView;
+				}
+			}
+
 			return null;
 		}
 
@@ -540,7 +570,10 @@ namespace SimPe.Plugin.UI
 			li.ToolTipText = String.Format("Original hairtone: {0}", item.Hairtone);
 			li.Checked = item.Enabled;
 			if (item.HasChanges)
+			{
 				li.Font = new Font(li.Font, FontStyle.Italic);
+			}
+
 			return li;
 		}
 
@@ -550,7 +583,9 @@ namespace SimPe.Plugin.UI
 			{
 				HairColor color = (HairColor)tp.Tag;
 				if (key == color)
+				{
 					return tp.Enabled;
+				}
 			}
 			return false;
 		}
@@ -562,7 +597,9 @@ namespace SimPe.Plugin.UI
 			{
 				ListView lv = this.GetView(key);
 				foreach (RecolorItem item in rcolItems)
+				{
 					lv.Items.Add(CreateListItem(item));
+				}
 			}
 		}
 
@@ -575,10 +612,13 @@ namespace SimPe.Plugin.UI
 			);
 			PackageInfo pnfo = this.box.GetPackageInfo(this.CurrentKey);
 			if (pnfo != null)
+			{
 				title.AppendFormat(
 					" - {0}",
 					System.IO.Path.GetFileName(pnfo.Package.FileName)
 				);
+			}
+
 			this.Text = title.ToString();
 		}
 
@@ -599,11 +639,17 @@ namespace SimPe.Plugin.UI
 					foreach (RecolorItem item in rcolItems)
 					{
 						if (this.box.Settings.FamilyGuid == Guid.Empty)
+						{
 							this.box.Settings.FamilyGuid = item.Family;
+						}
+
 						ListViewItem li = CreateListItem(item);
 						lv.Items.Add(li);
 						if (!item.Enabled)
+						{
 							li.ForeColor = Color.Gray;
+						}
+
 						switch (this.box.Settings.PackageType)
 						{
 							case RecolorType.Hairtone:
@@ -692,7 +738,10 @@ namespace SimPe.Plugin.UI
 			{
 				System.Windows.Forms.TabPage tp = this.tcMain.SelectedTab;
 				if (tp != null)
+				{
 					return (HairColor)tp.Tag;
+				}
+
 				return HairColor.Unbinned;
 			}
 		}
@@ -714,7 +763,10 @@ namespace SimPe.Plugin.UI
 				this.lvCresShpe.Items.Clear();
 				ArrayList items = new ArrayList();
 				foreach (ListViewItem item in owner.SelectedItems)
+				{
 					items.Add(item.Tag);
+				}
+
 				MeshTable.MeshInfo[] meshes = this.meshTable.GetMeshReferences(
 					(RecolorItem[])items.ToArray(typeof(RecolorItem))
 				);
@@ -758,12 +810,22 @@ namespace SimPe.Plugin.UI
 					}
 				}
 				if (count == this.lvTxmt.Items.Count)
+				{
 					foreach (int index in selectedIndices)
+					{
 						this.lvTxmt.Items[index].Selected = true;
+					}
+				}
+
 				if (this.lvTxmt.Items.Count == 0)
+				{
 					this.pbTexturePreview.Image = DefaultPreviewImage;
+				}
 				else if (this.lvTxmt.SelectedIndices.Count == 0)
+				{
 					this.lvTxmt.Items[0].Selected = true;
+				}
+
 				this.lvTxmt.ResumeLayout();
 			}
 		}
@@ -822,9 +884,13 @@ namespace SimPe.Plugin.UI
 		void OnSelectMeshItem()
 		{
 			if (this.lvCresShpe.SelectedItems.Count == 0)
+			{
 				this.lvCresShpe.ContextMenu = null;
+			}
 			else
+			{
 				this.lvCresShpe.ContextMenu = this.cmMeshListActions;
+			}
 		}
 
 		void InitDisableControls()
@@ -838,7 +904,9 @@ namespace SimPe.Plugin.UI
 				this.numericUpDown1.Enabled = true;
 			}
 			else
+			{
 				this.numericUpDown1.Enabled = false;
+			}
 		}
 
 		#endregion

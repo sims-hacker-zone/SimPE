@@ -1084,9 +1084,15 @@ namespace SimPe.Data
 		public static string GetKnownNPC(uint id)
 		{
 			if (NPCNameFromID.Count < 2)
+			{
 				InitializeNPCNameFromID();
+			}
+
 			if (NPCNameFromID.ContainsKey(id))
+			{
 				return NPCNameFromID[id];
+			}
+
 			return "not found";
 		}
 
@@ -1297,9 +1303,15 @@ namespace SimPe.Data
 		public static string GetTitleName(short id)
 		{
 			if (TitlePostName.Count < 2)
+			{
 				InitializeTitlePostName();
+			}
+
 			if (TitlePostName.ContainsKey(id))
+			{
 				return TitlePostName[id];
+			}
+
 			return "";
 		}
 
@@ -1310,11 +1322,20 @@ namespace SimPe.Data
 		{
 			string val = Convert.ToString(ob);
 			if (TitlePostName.Count < 2)
+			{
 				InitializeTitlePostName();
+			}
+
 			if (TitlePostName.ContainsValue(val))
+			{
 				foreach (KeyValuePair<short, string> kvp in TitlePostName)
+				{
 					if (kvp.Value == val)
+					{
 						return kvp.Key;
+					}
+				}
+			}
 
 			return 0;
 		}
@@ -1348,9 +1369,15 @@ namespace SimPe.Data
 		public static string GetKnownFence(uint id)
 		{
 			if (KnownFences.Count < 2)
+			{
 				InitializeKnownFences();
+			}
+
 			if (KnownFences.ContainsKey(id))
+			{
 				return KnownFences[id];
+			}
+
 			return "not found";
 		}
 
@@ -1361,11 +1388,21 @@ namespace SimPe.Data
 		{
 			string val = Convert.ToString(ob);
 			if (KnownFences.Count < 2)
+			{
 				InitializeKnownFences();
+			}
+
 			if (KnownFences.ContainsValue(val))
+			{
 				foreach (KeyValuePair<uint, string> kvp in KnownFences)
+				{
 					if (kvp.Value == val)
+					{
 						return kvp.Key;
+					}
+				}
+			}
+
 			return 0;
 		}
 
@@ -1494,7 +1531,10 @@ namespace SimPe.Data
 				)
 				&& Helper.WindowsRegistry.LoadOnlySimsStory != 28
 			)
+			{
 				KnownFences.Add(0xCF61A57E, "Chic Fence");
+			}
+
 			if (PathProvider.Global.GetExpansion(SimPe.Expansions.Nightlife).Exists)
 			{
 				KnownFences.Add(0x0F584F14, "Relvet Vope Fence");
@@ -1814,9 +1854,15 @@ namespace SimPe.Data
 		public static string GetLanguageName(short id)
 		{
 			if (LanguageName.Count < 2)
+			{
 				InitializeLanguageName();
+			}
+
 			if (LanguageName.ContainsKey(id))
+			{
 				return LanguageName[id];
+			}
+
 			return "Invalid Language Id";
 		}
 
@@ -1827,11 +1873,20 @@ namespace SimPe.Data
 		{
 			string val = Convert.ToString(ob);
 			if (LanguageName.Count < 2)
+			{
 				InitializeLanguageName();
+			}
+
 			if (LanguageName.ContainsValue(val))
+			{
 				foreach (KeyValuePair<short, string> kvp in LanguageName)
+				{
 					if (kvp.Value == val)
+					{
 						return kvp.Key;
+					}
+				}
+			}
 
 			return 0;
 		}
@@ -1874,13 +1929,25 @@ namespace SimPe.Data
 		public static string NPCFamily(uint id)
 		{
 			if (NPCFamilyFromInstance.Count < 2)
+			{
 				InitializeNPCFamilyFromInstance();
+			}
+
 			if (NPCFamilyFromInstance.ContainsKey(id))
+			{
 				return NPCFamilyFromInstance[id];
+			}
+
 			if (id == 0)
+			{
 				return "No Family";
+			}
+
 			if (id < 32512)
+			{
 				return "Playable Family";
+			}
+
 			return "Unknown NPC Family";
 		}
 
@@ -1936,9 +2003,15 @@ namespace SimPe.Data
 		public static uint GetBodyShapeid(string id)
 		{
 			if (GUIDsToBody.Count < 2)
+			{
 				InitializeGUIDsToBody();
+			}
+
 			if (GUIDsToBody.ContainsKey(id))
+			{
 				return GUIDsToBody[id];
+			}
+
 			return 0;
 		}
 
@@ -2558,7 +2631,9 @@ namespace SimPe.Data
 			GUIDsToBody.Add("6eea47c7-8a35-4be7-9242-dcd082f53b55", 0x1e);
 
 			foreach (SimPe.Interfaces.IAlias a in AddonSkins)
+			{
 				GUIDsToBody.Add(a.Name, a.Id);
+			}
 		}
 
 		public static Dictionary<uint, string> BodyShapeIds =
@@ -2567,21 +2642,37 @@ namespace SimPe.Data
 		public static string GetBodyName(uint id)
 		{
 			if (BodyShapeIds.Count < 2)
+			{
 				InitializeBodyShapes();
+			}
+
 			if (BodyShapeIds.ContainsKey(id))
+			{
 				return BodyShapeIds[id];
+			}
+
 			return "Unknown";
 		}
 
 		public static uint GetBodyShapeKey(object ob)
 		{
 			if (BodyShapeIds.Count < 2)
+			{
 				InitializeBodyShapes();
+			}
+
 			string val = Convert.ToString(ob);
 			if (BodyShapeIds.ContainsValue(val))
+			{
 				foreach (KeyValuePair<uint, string> kvp in BodyShapeIds)
+				{
 					if (kvp.Value == val)
+					{
 						return kvp.Key;
+					}
+				}
+			}
+
 			return 0;
 		}
 
@@ -2768,7 +2859,10 @@ namespace SimPe.Data
 			get
 			{
 				if (sgl == null)
+				{
 					LoadSemGlobList();
+				}
+
 				return sgl;
 			}
 		}
@@ -2782,21 +2876,31 @@ namespace SimPe.Data
 		public static uint SemiGlobalID(string sgname)
 		{
 			foreach (SemiGlobalAlias sga in SemiGlobals)
+			{
 				if (
 					sga
 						.Name.Trim()
 						.ToLowerInvariant()
 						.Equals(sgname.Trim().ToLowerInvariant())
 				)
+				{
 					return sga.Id;
+				}
+			}
+
 			return 0;
 		}
 
 		public static string SemiGlobalName(uint sgid)
 		{
 			foreach (SemiGlobalAlias sga in SemiGlobals)
+			{
 				if (sga.Id == sgid)
+				{
 					return sga.Name;
+				}
+			}
+
 			return "";
 		}
 
@@ -2812,12 +2916,15 @@ namespace SimPe.Data
 		{
 			Data.TypeAlias a = Helper.TGILoader.GetByType(type);
 			if (a == null)
+			{
 				a = new Data.TypeAlias(
 					false,
 					Localization.Manager.GetString("unk") + "",
 					type,
 					"0x" + Helper.HexString(type)
 				);
+			}
+
 			return a;
 		}
 
@@ -2832,7 +2939,9 @@ namespace SimPe.Data
 			foreach (Alias a in Data.MetaData.SemiGlobals)
 			{
 				if (a.Name.ToLower() == name)
+				{
 					return a;
+				}
 			} //for
 
 			//unknown SemiGlobal
@@ -2849,12 +2958,15 @@ namespace SimPe.Data
 			get
 			{
 				if (addonskins == null)
+				{
 					addonskins = Alias.LoadFromXml(
 						System.IO.Path.Combine(
 							Helper.SimPeDataPath,
 							"additional_skins.xml"
 						)
 					);
+				}
+
 				return addonskins;
 			}
 		}
@@ -2875,7 +2987,9 @@ namespace SimPe.Data
 					cachedft = new System.Collections.Generic.List<uint>();
 
 					foreach (uint i in RcolList)
+					{
 						cachedft.Add(i);
+					}
 
 					cachedft.Add(OBJD_FILE);
 					cachedft.Add(CTSS_FILE);
@@ -2942,19 +3056,33 @@ namespace SimPe.Data
 		{
 			agelist = new Hashtable();
 			if (age == MetaData.LifeSections.Adult)
+			{
 				return Data.Ages.Adult;
+			}
 			else if (age == MetaData.LifeSections.Baby)
+			{
 				return Data.Ages.Baby;
+			}
 			else if (age == MetaData.LifeSections.Child)
+			{
 				return Data.Ages.Child;
+			}
 			else if (age == MetaData.LifeSections.Elder)
+			{
 				return Data.Ages.Elder;
+			}
 			else if (age == MetaData.LifeSections.Teen)
+			{
 				return Data.Ages.Teen;
+			}
 			else if (age == MetaData.LifeSections.Toddler)
+			{
 				return Data.Ages.Toddler;
+			}
 			else
+			{
 				return Data.Ages.Adult;
+			}
 		}
 		#endregion
 	}

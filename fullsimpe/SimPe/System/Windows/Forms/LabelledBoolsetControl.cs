@@ -40,14 +40,20 @@ namespace System.Windows.Forms
 		private void btnAll_Click(object sender, EventArgs e)
 		{
 			for (int i = 0; i < cklbBoolset.Items.Count; i++)
+			{
 				cklbBoolset.SetSelected(i, true);
+			}
+
 			boolset = (ushort)0xffff;
 		}
 
 		private void btnNone_Click(object sender, EventArgs e)
 		{
 			for (int i = 0; i < cklbBoolset.Items.Count; i++)
+			{
 				cklbBoolset.SetSelected(i, false);
+			}
+
 			boolset = (ushort)0;
 		}
 
@@ -80,13 +86,21 @@ namespace System.Windows.Forms
 				ushort oldvalue = boolset;
 				boolset = value;
 				while (labels.Count < boolset.Length)
+				{
 					labels.Add(labels.Count.ToString());
+				}
+
 				cklbBoolset.Items.Clear();
 				cklbBoolset.Items.AddRange(labels.ToArray());
 				for (int i = 0; i < boolset.Length; i++)
+				{
 					cklbBoolset.SetItemChecked(i, boolset[i]);
+				}
+
 				if (oldvalue != boolset)
+				{
 					OnValueChanged(this, new EventArgs());
+				}
 			}
 		}
 
@@ -99,7 +113,9 @@ namespace System.Windows.Forms
 		public virtual void OnValueChanged(object sender, EventArgs e)
 		{
 			if (ValueChanged != null)
+			{
 				ValueChanged(sender, e);
+			}
 		}
 
 		[Browsable(true)]
@@ -115,11 +131,16 @@ namespace System.Windows.Forms
 			{
 				labels = value;
 				while (labels.Count < boolset.Length)
+				{
 					labels.Add(labels.Count.ToString());
+				}
+
 				cklbBoolset.Items.Clear();
 				cklbBoolset.Items.AddRange(labels.ToArray());
 				for (int i = 0; i < boolset.Length; i++)
+				{
 					cklbBoolset.SetItemChecked(i, boolset[i]);
+				}
 			}
 		}
 
@@ -127,11 +148,16 @@ namespace System.Windows.Forms
 		{
 			ushort oldvalue = boolset;
 			if (cklbBoolset.SelectedIndex >= 0)
+			{
 				boolset[cklbBoolset.SelectedIndex] = cklbBoolset.GetItemChecked(
 					cklbBoolset.SelectedIndex
 				);
+			}
+
 			if (oldvalue != boolset)
+			{
 				OnValueChanged(this, new EventArgs());
+			}
 		}
 	}
 }

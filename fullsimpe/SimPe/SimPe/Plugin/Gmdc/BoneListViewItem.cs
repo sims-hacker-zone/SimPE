@@ -37,14 +37,20 @@ namespace SimPe.Plugin.Gmdc
 				(GenericMeshImport.JointImportAction[])
 					Enum.GetValues(typeof(GenericMeshImport.JointImportAction));
 			foreach (GenericMeshImport.JointImportAction a in acts)
+			{
 				cbact.Items.Add(a);
+			}
+
 			cbact.SelectedItem = GenericMeshImport.JointImportAction.Ignore;
 
 			cbgroup = new ComboBox();
 			cbgroup.DropDownStyle = ComboBoxStyle.DropDownList;
 			cbgroup.Items.Add("[" + SimPe.Localization.GetString("none") + "]");
 			foreach (GmdcJoint j in gmi.Gmdc.Joints)
+			{
 				cbgroup.Items.Add(j);
+			}
+
 			cbgroup.SelectedItem = 0;
 
 			int i = gmi.Gmdc.FindJointByName(joint.Name);
@@ -82,20 +88,32 @@ namespace SimPe.Plugin.Gmdc
 			get
 			{
 				if (cbgroup.SelectedItem == null)
+				{
 					return null;
+				}
+
 				if (!(cbgroup.SelectedItem is GmdcJoint))
+				{
 					return null;
+				}
+
 				return cbgroup.SelectedItem as GmdcJoint;
 			}
 			set
 			{
 				if (value == null)
+				{
 					cbgroup.SelectedIndex = 0;
+				}
 				else
+				{
 					cbgroup.SelectedItem = value;
+				}
 
 				if (cbgroup.SelectedIndex < 0)
+				{
 					cbgroup.SelectedIndex = 0;
+				}
 			}
 		}
 
@@ -105,9 +123,14 @@ namespace SimPe.Plugin.Gmdc
 			this.Text = joint.Name;
 			this.SubItems.Add(Action.ToString()); //action
 			if (Joint != null)
+			{
 				this.SubItems.Add(Joint.Name); //target
+			}
 			else
+			{
 				this.SubItems.Add("[" + SimPe.Localization.GetString("none") + "]");
+			}
+
 			this.SubItems.Add(joint.GetAssignedVertexCount().ToString());
 
 			this.ForeColor = MyColor();

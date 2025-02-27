@@ -29,7 +29,9 @@ namespace SimPe.Plugin.Downloads
 					0x856DDBAC
 				);
 				if (pfds.Length > 0)
+				{
 					pfd = pfds[0];
+				}
 			}
 
 			if (pfd != null)

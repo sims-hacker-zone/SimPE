@@ -57,11 +57,17 @@ namespace SimPe
 
 				object o = node.Attributes["type"].Value;
 				if (o == null)
+				{
 					o = "1";
+				}
+
 				type = (Data.MetaData.IndexTypes)uint.Parse(o.ToString());
 
 				if (pb != null)
+				{
 					pb.Maximum = node.ChildNodes.Count;
+				}
+
 				int count = 0;
 				foreach (XmlNode subnode in node)
 				{
@@ -95,7 +101,10 @@ namespace SimPe
 			System.IO.MemoryStream ms = file.Build();
 			file.EndUpdate();
 			if (pb != null)
+			{
 				pb.Value = pb.Maximum;
+			}
+
 			return new System.IO.BinaryReader(ms);
 		}
 
@@ -121,7 +130,10 @@ namespace SimPe
 
 				object o = node.Attributes["type"].Value;
 				if (o == null)
+				{
 					o = "1";
+				}
+
 				foreach (XmlNode subnode in node)
 				{
 					///a New FileItem
@@ -188,10 +200,16 @@ namespace SimPe
 			//now load the Files Data
 			object flname = node.Attributes["name"].Value;
 			if (flname == null)
+			{
 				flname = "";
+			}
+
 			object path = node.Attributes["path"].Value;
 			if (path == null)
+			{
 				path = "";
+			}
+
 			pfd.Path = path.ToString();
 			pfd.Filename = flname.ToString();
 
@@ -208,7 +226,10 @@ namespace SimPe
 				{
 					byte[] data = new byte[mbr.BaseStream.Length];
 					for (int i = 0; i < data.Length; i++)
+					{
 						data[i] = mbr.ReadByte();
+					}
+
 					pfd.UserData = data;
 				}
 				finally

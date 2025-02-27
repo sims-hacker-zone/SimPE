@@ -25,7 +25,10 @@ namespace SimPe.Plugin
 			{
 				StringCollection ret = new StringCollection();
 				foreach (string s in loadedMeshes.Keys)
+				{
 					ret.Add(System.IO.Path.GetFileName(s));
+				}
+
 				return ret;
 			}
 		}
@@ -40,7 +43,9 @@ namespace SimPe.Plugin
 			: this()
 		{
 			if (container != null)
+			{
 				container.Add(this);
+			}
 		}
 
 		public IPackageFile LoadMesh(string filePath)
@@ -57,7 +62,10 @@ namespace SimPe.Plugin
 				}
 			}
 			else
+			{
 				file = this.FindPackage(filePath);
+			}
+
 			return file;
 		}
 
@@ -79,13 +87,17 @@ namespace SimPe.Plugin
 		public void ApplyMesh(RecolorItem item, MeshInfo mesh)
 		{
 			if (item.PropertySet == null)
+			{
 				return;
+			}
 
 			if (
 				!item.ContainsItem("resourcekeyidx")
 				|| !item.ContainsItem("shapekeyidx")
 			)
+			{
 				return;
+			}
 
 			//MeshInfo nodes = this.GetMeshReferences(meshPackage);
 			if (mesh != null)
@@ -118,6 +130,7 @@ namespace SimPe.Plugin
 			if (!this.loadedMeshes.ContainsKey(filePathOrName))
 			{
 				foreach (DictionaryEntry de in this.loadedMeshes)
+				{
 					if (
 						String.Compare(
 							System.IO.Path.GetFileName(Convert.ToString(de.Key)),
@@ -125,7 +138,10 @@ namespace SimPe.Plugin
 							true
 						) == 0
 					)
+					{
 						return (IPackageFile)de.Value;
+					}
+				}
 			}
 			else
 			{
@@ -139,6 +155,7 @@ namespace SimPe.Plugin
 			if (!this.loadedReferences.ContainsKey(filePathOrName))
 			{
 				foreach (DictionaryEntry de in this.loadedReferences)
+				{
 					if (
 						String.Compare(
 							System.IO.Path.GetFileName(Convert.ToString(de.Key)),
@@ -146,7 +163,10 @@ namespace SimPe.Plugin
 							true
 						) == 0
 					)
+					{
 						return (MeshInfo[])de.Value;
+					}
+				}
 			}
 			else
 			{
@@ -158,9 +178,16 @@ namespace SimPe.Plugin
 		public MeshInfo FindMeshByName(string name)
 		{
 			foreach (MeshInfo[] meshes in this.loadedReferences.Values)
+			{
 				foreach (MeshInfo mesh in meshes)
+				{
 					if (String.Compare(mesh.Description, name, true) == 0)
+					{
 						return mesh;
+					}
+				}
+			}
+
 			return null;
 		}
 
@@ -175,7 +202,9 @@ namespace SimPe.Plugin
 					item.PropertySet.FileDescriptor.Instance
 				);
 				if (pfds.Length == 1)
+				{
 					return pfds[0];
+				}
 			}
 			return null;
 		}
@@ -195,7 +224,9 @@ namespace SimPe.Plugin
 					!item.ContainsItem("resourcekeyidx")
 					|| !item.ContainsItem("shapekeyidx")
 				)
+				{
 					continue;
+				}
 
 				IPackedFileDescriptor idr = this.Get3IDRResource(item);
 				if (idr != null)
@@ -245,7 +276,9 @@ namespace SimPe.Plugin
 		public MeshInfo[] GetMeshReferences(IPackageFile meshPackage)
 		{
 			if (meshPackage == null)
+			{
 				return null;
+			}
 
 			ArrayList ret = new ArrayList();
 
@@ -311,7 +344,9 @@ namespace SimPe.Plugin
 				IScenegraphFileIndexItem[] sfi =
 					FileTable.FileIndex.FindFileDiscardingGroup(reference); //, pnfo.Package);
 				if (!Utility.IsNullOrEmpty(sfi))
+				{
 					ret = sfi[0];
+				}
 			}
 
 			return ret;
@@ -323,7 +358,10 @@ namespace SimPe.Plugin
 			{
 				// dispose loaded package files
 				foreach (IDisposable file in this.loadedMeshes.Values)
+				{
 					file.Dispose();
+				}
+
 				this.Clear();
 			}
 			base.Dispose(disposing);

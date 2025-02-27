@@ -52,7 +52,9 @@ namespace SimPe.Plugin
 			InitializeComponent();
 
 			if (UserVerification.HaveUserId)
+			{
 				this.lv.ShowItemToolTips = true;
+			}
 		}
 
 		/// <summary>
@@ -259,9 +261,12 @@ namespace SimPe.Plugin
 					st.Dispose();
 					st = null;
 					if (WaitingScreen.Running)
+					{
 						WaitingScreen.UpdateImage(
 							ImageLoader.Preview(img, WaitingScreen.ImageSize)
 						);
+					}
+
 					this.ilist.Images.Add(img);
 					return;
 				}
@@ -302,7 +307,9 @@ namespace SimPe.Plugin
 				)
 			);
 			if (!System.IO.File.Exists(flname))
+			{
 				return false;
+			}
 
 			AddImage(flname);
 			flname = System.IO.Path.Combine(path, flname);
@@ -326,13 +333,18 @@ namespace SimPe.Plugin
 			ListViewItem lvi = new ListViewItem();
 			lvi.Text = name + actime;
 			if (np.Lable != "")
+			{
 				lvi.Text = np.Lable + ": " + lvi.Text;
+			}
+
 			lvi.ImageIndex = ilist.Images.Count - 1;
 			lvi.SubItems.Add(flname);
 			lvi.SubItems.Add(name);
 			lvi.SubItems.Add(np.Lable);
 			if (UserVerification.HaveUserId)
+			{
 				lvi.ToolTipText = flname;
+			}
 
 			lv.Items.Add(lvi);
 
@@ -365,7 +377,9 @@ namespace SimPe.Plugin
 					).Title;
 				}
 				else if (pk.FileName.Contains("Tutorial"))
+				{
 					name = "Tutorial"; // CJH
+				}
 
 				pfd = pk.FindFile(0xAC8A7A2E, 0, 0xffffffff, 1);
 				if (pfd != null)
@@ -375,7 +389,9 @@ namespace SimPe.Plugin
 					type = idno.Type;
 				}
 				else if (pk.FileName.Contains("Tutorial"))
+				{
 					type = NeighborhoodType.Unknown;
+				}
 				//pk.Reader.Close();
 			}
 			finally
@@ -405,8 +421,12 @@ namespace SimPe.Plugin
 					// string[] dirs = System.IO.Directory.GetDirectories(sourcepath, "????");
 					string[] dirs = System.IO.Directory.GetDirectories(sourcepath, "*"); // CJH - removes the 4 char limit
 					foreach (string dir in dirs)
+					{
 						if (!dir.Contains("Tutorial"))
+						{
 							AddNeighborhood(path, dir);
+						}
+					}
 				}
 				if (Helper.WindowsRegistry.LoadAllNeighbourhoods && LoadNgbh)
 				{
@@ -425,8 +445,12 @@ namespace SimPe.Plugin
 								"*"
 							);
 							foreach (string dir in dirs)
+							{
 								if (!dir.Contains("Tutorial"))
+								{
 									AddNeighborhood(path, dir);
+								}
+							}
 						}
 					}
 					if (
@@ -444,8 +468,12 @@ namespace SimPe.Plugin
 								"*"
 							);
 							foreach (string dir in dirs)
+							{
 								if (!dir.Contains("Tutorial"))
+								{
 									AddNeighborhood(path, dir);
+								}
+							}
 						}
 					}
 					if (
@@ -463,8 +491,12 @@ namespace SimPe.Plugin
 								"*"
 							);
 							foreach (string dir in dirs)
+							{
 								if (!dir.Contains("Tutorial"))
+								{
 									AddNeighborhood(path, dir);
+								}
+							}
 						}
 					}
 				}
@@ -492,7 +524,10 @@ namespace SimPe.Plugin
 			pnOptions.Visible = ShowSubHoods;
 			RemoteControl.ShowSubForm(this);
 			if (this.package != null)
+			{
 				package = this.package;
+			}
+
 			return new Plugin.ToolResult(false, ((this.package != null) || (changed)));
 		}
 
@@ -544,10 +579,14 @@ namespace SimPe.Plugin
 					if (
 						Helper.EqualFileName(file, lv.SelectedItems[0].SubItems[1].Text)
 					)
+					{
 						cbtypes.SelectedIndex = cbtypes.Items.Count - 1;
+					}
 				}
 				if (cbtypes.SelectedIndex < 0 && cbtypes.Items.Count > 0)
+				{
 					cbtypes.SelectedIndex = 0;
+				}
 			}
 			SetSmilyIcon("none");
 		}
@@ -555,15 +594,20 @@ namespace SimPe.Plugin
 		private void NgbOpen(object sender, System.EventArgs e)
 		{
 			if (lv.SelectedItems.Count <= 0)
+			{
 				return;
+			}
 
 			ngbh = cbtypes.SelectedItem as NgbhType;
 			if (ngbh != null)
 			{
 				if (LoadNgbh)
+				{
 					package = SimPe.Packages.GeneratableFile.LoadFromFile(
 						ngbh.FileName
 					);
+				}
+
 				this.DialogResult = DialogResult.OK;
 				Close();
 			}
@@ -592,7 +636,9 @@ namespace SimPe.Plugin
 		private void NgbBackup(object sender, System.EventArgs e)
 		{
 			if (lv.SelectedItems.Count <= 0)
+			{
 				return;
+			}
 
 			SimPe.Packages.StreamFactory.CloseAll();
 			string path = System
@@ -607,10 +653,15 @@ namespace SimPe.Plugin
 				//create a Backup Folder
 				string name = System.IO.Path.GetFileName(path);
 				if (lable != "")
+				{
 					name = lable + "_" + name;
+				}
+
 				long grp = PathProvider.Global.SaveGamePathProvidedByGroup(path);
 				if (grp > 1)
+				{
 					name = grp.ToString() + "_" + name;
+				}
 
 				string backuppath = System.IO.Path.Combine(
 					PathProvider.Global.BackupFolder,
@@ -622,7 +673,9 @@ namespace SimPe.Plugin
 					subname.Replace("\\", "-").Replace("/", "-").Replace(":", "-")
 				);
 				if (!System.IO.Directory.Exists(backuppath))
+				{
 					System.IO.Directory.CreateDirectory(backuppath);
+				}
 
 				Helper.CopyDirectory(path, backuppath, true);
 				SetSmilyIcon("happy");
@@ -637,7 +690,9 @@ namespace SimPe.Plugin
 		private void NgbRestoreBackup(object sender, System.EventArgs e)
 		{
 			if (lv.SelectedItems.Count <= 0)
+			{
 				return;
+			}
 
 			string path = System
 				.IO.Path.GetDirectoryName(lv.SelectedItems[0].SubItems[1].Text)
@@ -649,10 +704,16 @@ namespace SimPe.Plugin
 			NgbBackup nb = new NgbBackup();
 			nb.Text += " (";
 			if (lv.SelectedItems[0].SubItems[3].Text != "")
+			{
 				nb.Text += lv.SelectedItems[0].SubItems[3].Text + ": ";
+			}
+
 			nb.Text += lv.SelectedItems[0].SubItems[2].Text.Trim() + ")";
 			if (UserVerification.HaveUserId)
+			{
 				nb.Text += " " + NeighborhoodIdentifier(path);
+			}
+
 			nb.Execute(path, package, prov, lv.SelectedItems[0].SubItems[3].Text);
 			UpdateList();
 			SetSmilyIcon("none");
@@ -709,18 +770,22 @@ namespace SimPe.Plugin
 				return;
 			}
 			else if (hapy == "happy")
+			{
 				inst = 0xABBA2575;
+			}
 			else if (hapy == "sad")
+			{
 				inst = 0xABBA2591;
+			}
 			/*
-			if (pbpay.Value == 1) inst = 0xABBA2595;
-			if (pbpay.Value == 2) inst = 0xABBA2591;
-			if (pbpay.Value == 3) inst = 0xABBA2588;
-			if (pbpay.Value == 4) inst = 0xABBA2585;
-			if (pbpay.Value == 5) inst = 0xABBA2582;
-			if (pbpay.Value == 6) inst = 0xABBA2578;
-			if (pbpay.Value == 7) inst = 0xABBA2575;
-			*/
+if (pbpay.Value == 1) inst = 0xABBA2595;
+if (pbpay.Value == 2) inst = 0xABBA2591;
+if (pbpay.Value == 3) inst = 0xABBA2588;
+if (pbpay.Value == 4) inst = 0xABBA2585;
+if (pbpay.Value == 5) inst = 0xABBA2582;
+if (pbpay.Value == 6) inst = 0xABBA2578;
+if (pbpay.Value == 7) inst = 0xABBA2575;
+*/
 			SimPe.Packages.File pkg = SimPe.Packages.File.LoadFromFile(
 				System.IO.Path.Combine(
 					PathProvider.Global.Latest.InstallFolder,
@@ -743,10 +808,14 @@ namespace SimPe.Plugin
 					pbox.Image = pic.Image;
 				}
 				else
+				{
 					pbox.Image = null;
+				}
 			}
 			else
+			{
 				pbox.Image = null;
+			}
 		}
 	}
 }

@@ -76,9 +76,14 @@ namespace SimPe.Plugin.Gmdc
 			get
 			{
 				if (parent == null)
+				{
 					return null;
+				}
+
 				if (LinkIndex < 0 || LinkIndex >= parent.Links.Count)
+				{
 					return null;
+				}
 
 				return parent.Links[LinkIndex];
 			}
@@ -142,14 +147,22 @@ namespace SimPe.Plugin.Gmdc
 			ReadBlock(reader, Faces);
 
 			if (parent.Version != 0x03)
+			{
 				Opacity = reader.ReadUInt32();
+			}
 			else
+			{
 				Opacity = 0;
+			}
 
 			if (parent.Version != 0x01)
+			{
 				ReadBlock(reader, UsedJoints);
+			}
 			else
+			{
 				UsedJoints.Clear();
+			}
 		}
 
 		/// <summary>
@@ -169,10 +182,14 @@ namespace SimPe.Plugin.Gmdc
 			WriteBlock(writer, Faces);
 
 			if (parent.Version != 0x03)
+			{
 				writer.Write((uint)Opacity);
+			}
 
 			if (parent.Version != 0x01)
+			{
 				WriteBlock(writer, UsedJoints);
+			}
 		}
 
 		/// <summary>
@@ -189,8 +206,13 @@ namespace SimPe.Plugin.Gmdc
 			{
 				System.Collections.Hashtable refs = new Hashtable();
 				foreach (int i in Faces)
+				{
 					if (!refs.ContainsKey(i))
+					{
 						refs[i] = 1;
+					}
+				}
+
 				int ret = refs.Count;
 				refs.Clear();
 				refs = null;
@@ -209,7 +231,9 @@ namespace SimPe.Plugin.Gmdc
 				if (this.LinkIndex < parent.Links.Count)
 				{
 					if (LinkIndex >= 0 && LinkIndex < parent.Links.Count)
+					{
 						vertcount = parent.Links[LinkIndex].ReferencedSize;
+					}
 				}
 				return vertcount;
 			}
@@ -222,17 +246,21 @@ namespace SimPe.Plugin.Gmdc
 		public override string ToString()
 		{
 			if (this.Faces.Count < 0x2000 || UserVerification.HaveUserId)
+			{
 				return Name
 					+ " (FaceCount="
 					+ (FaceCount).ToString()
 					+ ", VertexCount="
 					+ UsedVertexCount.ToString()
 					+ ")";
+			}
 			else
+			{
 				return Name
 					+ " (FaceCount="
 					+ (FaceCount).ToString()
 					+ ", VertexCount=too many Faces)";
+			}
 		}
 
 		/// <summary>
@@ -258,33 +286,47 @@ namespace SimPe.Plugin.Gmdc
 							GmdcElementValueOneInt oi = (GmdcElementValueOneInt)vb;
 							byte[] data = oi.Bytes;
 							if (data.Length == 4)
+							{
 								v = new SimPe.Geometry.Vector4f(
 									data[0],
 									data[1],
 									data[2],
 									data[3]
 								);
+							}
 							else if (data.Length == 3)
+							{
 								v = new SimPe.Geometry.Vector4f(
 									data[0],
 									data[1],
 									data[2]
 								);
+							}
 							else if (data.Length == 2)
+							{
 								v = new SimPe.Geometry.Vector4f(data[0], data[1], 0);
+							}
 							else
+							{
 								v = new SimPe.Geometry.Vector4f(data[0], 0, 0);
+							}
 						}
 						else if (vb.Data.Length == 3)
+						{
 							v = new SimPe.Geometry.Vector4f(
 								vb.Data[0],
 								vb.Data[1],
 								vb.Data[2]
 							);
+						}
 						else if (vb.Data.Length == 2)
+						{
 							v = new SimPe.Geometry.Vector4f(vb.Data[0], vb.Data[1], 0);
+						}
 						else
+						{
 							v = new SimPe.Geometry.Vector4f(vb.Data[0], 0, 0);
+						}
 
 						ret.Add(v);
 					}
@@ -332,13 +374,24 @@ namespace SimPe.Plugin.Gmdc
 			foreach (SimPe.Geometry.Vector4f v in ret)
 			{
 				if ((int)v.X != 0xff)
+				{
 					v.X = this.UsedJoints[(byte)v.X];
+				}
+
 				if ((int)v.Y != 0xff)
+				{
 					v.Y = this.UsedJoints[(byte)v.Y];
+				}
+
 				if ((int)v.Z != 0xff)
+				{
 					v.Z = this.UsedJoints[(byte)v.Z];
+				}
+
 				if ((int)v.W != 0xff)
+				{
 					v.W = this.UsedJoints[(byte)v.W];
+				}
 			}
 			return ret;
 		}
@@ -364,7 +417,9 @@ namespace SimPe.Plugin.Gmdc
 					v.Z = Faces[i];
 				}
 				else
+				{
 					v.Y = Faces[i];
+				}
 			}
 
 			return ret;
@@ -377,8 +432,12 @@ namespace SimPe.Plugin.Gmdc
 		{
 			SimPe.Geometry.Vectors3i ret = new SimPe.Geometry.Vectors3i();
 			foreach (SimPe.Geometry.Vector3i v in faces)
+			{
 				if (v.X == vertexid || v.Y == vertexid || v.Z == vertexid)
+				{
 					ret.Add(v);
+				}
+			}
 
 			return ret;
 		}
@@ -472,7 +531,9 @@ namespace SimPe.Plugin.Gmdc
 		{
 			GmdcGroups list = new GmdcGroups();
 			foreach (GmdcGroup item in this)
+			{
 				list.Add(item);
+			}
 
 			return list;
 		}

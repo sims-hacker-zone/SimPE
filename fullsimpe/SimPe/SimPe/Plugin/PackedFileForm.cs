@@ -600,7 +600,10 @@ namespace SimPe.Plugin
 		private void SelectType(object sender, System.EventArgs e)
 		{
 			if (cbtypes.Tag != null)
+			{
 				return;
+			}
+
 			tbtype.Text =
 				"0x"
 				+ Helper.HexString(
@@ -654,7 +657,10 @@ namespace SimPe.Plugin
 					true;
 
 			if (tbtype.Tag != null)
+			{
 				return;
+			}
+
 			try
 			{
 				tbtype.Tag = true;
@@ -673,7 +679,9 @@ namespace SimPe.Plugin
 					SkinChain sc = ((RefFileItem)pfd).Skin;
 					SimPe.Plugin.GenericRcol txtr = null;
 					if (sc != null)
+					{
 						txtr = sc.TXTR;
+					}
 
 					//show the Image
 					if (txtr == null)
@@ -686,9 +694,13 @@ namespace SimPe.Plugin
 							pb.Size
 						);
 						if (mm != null)
+						{
 							pb.Image = mm.Texture;
+						}
 						else
+						{
 							pb.Image = imge;
+						}
 					}
 				}
 				else
@@ -718,10 +730,14 @@ namespace SimPe.Plugin
 			{
 				Packages.PackedFileDescriptor pfd = null;
 				if (lblist.SelectedIndex >= 0)
+				{
 					pfd = (Packages.PackedFileDescriptor)
 						lblist.Items[lblist.SelectedIndex];
+				}
 				else
+				{
 					pfd = new Packages.PackedFileDescriptor();
+				}
 
 				pfd.Group = Convert.ToUInt32(this.tbgroup.Text, 16);
 				pfd.Instance = Convert.ToUInt32(this.tbinstance.Text, 16);
@@ -739,7 +755,9 @@ namespace SimPe.Plugin
 					catch { }
 				}
 				else
+				{
 					lblist.Items.Add(pfd);
+				}
 			}
 			catch (Exception ex)
 			{
@@ -761,7 +779,10 @@ namespace SimPe.Plugin
 			btdown.Enabled = false;
 			miRem.Enabled = lldelete.Enabled;
 			if (lblist.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			llcommit.Enabled = true;
 			lldelete.Enabled = true;
 			btup.Enabled = true;
@@ -810,7 +831,9 @@ namespace SimPe.Plugin
 		private void MoveUp(object sender, System.EventArgs e)
 		{
 			if (lblist.SelectedIndex < 1)
+			{
 				return;
+			}
 
 			Interfaces.Files.IPackedFileDescriptor pfd =
 				(Interfaces.Files.IPackedFileDescriptor)
@@ -823,9 +846,14 @@ namespace SimPe.Plugin
 		private void MoveDown(object sender, System.EventArgs e)
 		{
 			if (lblist.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			if (lblist.SelectedIndex > lblist.Items.Count - 2)
+			{
 				return;
+			}
 
 			Interfaces.Files.IPackedFileDescriptor pfd =
 				(Interfaces.Files.IPackedFileDescriptor)
@@ -838,11 +866,16 @@ namespace SimPe.Plugin
 		private void AutoChange(object sender, System.EventArgs e)
 		{
 			if (tbtype.Tag != null)
+			{
 				return;
+			}
 
 			tbtype.Tag = true;
 			if (lblist.SelectedIndex >= 0)
+			{
 				ChangeFile(null, null);
+			}
+
 			tbtype.Tag = null;
 		}
 
@@ -911,9 +944,13 @@ namespace SimPe.Plugin
 		private void pb_SizeChanged(object sender, System.EventArgs e)
 		{
 			if (pb.Height < 421)
+			{
 				pb.Width = pb.Height;
+			}
 			else
+			{
 				pb.Width = 420;
+			}
 		}
 
 		private void miAdd_Click(object sender, System.EventArgs e)

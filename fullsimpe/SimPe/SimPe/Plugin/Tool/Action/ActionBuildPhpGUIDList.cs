@@ -39,7 +39,9 @@ namespace SimPe.Plugin.Tool.Action
 		public void ExecuteEventHandler(object sender, SimPe.Events.ResourceEventArgs e)
 		{
 			if (!ChangeEnabledStateEventHandler(null, e))
+			{
 				return;
+			}
 
 			SimPe.FileTable.FileIndex.Load();
 
@@ -65,14 +67,25 @@ namespace SimPe.Plugin.Tool.Action
 					objd.ProcessData(item);
 
 					if (guids.Contains(objd.Guid))
+					{
 						continue;
+					}
+
 					if (objd.Type == SimPe.Data.ObjectTypes.Memory)
+					{
 						continue;
+					}
+
 					if (objd.Type == SimPe.Data.ObjectTypes.Person)
+					{
 						continue;
+					}
 
 					if (ct > 0)
+					{
 						sw.Write(",");
+					}
+
 					ct++;
 					Wait.Progress = ct;
 					sw.Write("array(");

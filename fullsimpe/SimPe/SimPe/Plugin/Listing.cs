@@ -184,7 +184,9 @@ namespace SimPe.Plugin
 				lb.Items.Add(s);
 			}
 			if (lb.Items.Count > 0)
+			{
 				lb.SelectedIndex = 0;
+			}
 
 			this.ShowDialog();
 
@@ -193,7 +195,9 @@ namespace SimPe.Plugin
 			{
 				str = new WorkshopMMAT[lb.SelectedItems.Count];
 				for (int i = 0; i < lb.SelectedItems.Count; i++)
+				{
 					str[i] = (WorkshopMMAT)lb.SelectedItems[i];
+				}
 			}
 			else
 			{
@@ -210,7 +214,9 @@ namespace SimPe.Plugin
 				lb.Items.Add(s);
 			}
 			if (lb.Items.Count > 0)
+			{
 				lb.SelectedIndex = 0;
+			}
 
 			this.ShowDialog();
 
@@ -219,7 +225,9 @@ namespace SimPe.Plugin
 			{
 				str = new string[lb.SelectedItems.Count];
 				for (int i = 0; i < lb.SelectedItems.Count; i++)
+				{
 					str[i] = (string)lb.SelectedItems[i];
+				}
 			}
 			else
 			{

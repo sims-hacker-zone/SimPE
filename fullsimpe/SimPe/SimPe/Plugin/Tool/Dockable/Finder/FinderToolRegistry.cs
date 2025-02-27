@@ -32,7 +32,10 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 			get
 			{
 				if (glb == null)
+				{
 					glb = new FinderToolRegistry();
+				}
+
 				return glb;
 			}
 		}
@@ -72,7 +75,9 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 		)
 		{
 			if (map.ContainsKey(gui))
+			{
 				return map[gui];
+			}
 
 			SimPe.Interfaces.AFinderTool[] ret = new SimPe.Interfaces.AFinderTool[
 				list.Count

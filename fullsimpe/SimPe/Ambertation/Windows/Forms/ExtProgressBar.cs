@@ -321,7 +321,9 @@ namespace Ambertation.Windows.Forms
 		protected void FireChangedEvent(bool both)
 		{
 			if (Changed != null)
+			{
 				Changed(this, new EventArgs());
+			}
 		}
 
 		#endregion
@@ -332,7 +334,10 @@ namespace Ambertation.Windows.Forms
 		public new void Invalidate()
 		{
 			if (DesignMode)
+			{
 				CompleteRedraw();
+			}
+
 			base.Invalidate();
 		}
 
@@ -360,7 +365,10 @@ namespace Ambertation.Windows.Forms
 				(float)(this.Value - this.Minimum) / (this.Maximum - this.Minimum);
 			int wd = (int)((this.SensitiveWidth) * p) + 1;
 			if (p == 0)
+			{
 				wd = 0;
+			}
+
 			Rectangle selrect = new Rectangle(0, 0, wd, Height);
 			Rectangle rect = new Rectangle(wd, 0, (Width) - wd, Height);
 
@@ -425,13 +433,24 @@ namespace Ambertation.Windows.Forms
 		public void CompleteRedraw()
 		{
 			if (Width <= 8)
+			{
 				return;
+			}
+
 			if (Height <= 8)
+			{
 				return;
+			}
+
 			if (cachedimg != null)
+			{
 				cachedimg.Dispose();
+			}
+
 			if (cachedimgsel != null)
+			{
 				cachedimgsel.Dispose();
+			}
 
 			try
 			{
@@ -462,7 +481,10 @@ namespace Ambertation.Windows.Forms
 		protected override void OnVisibleChanged(EventArgs e)
 		{
 			if (needredraw && Visible)
+			{
 				CompleteRedraw();
+			}
+
 			base.OnVisibleChanged(e);
 		}
 
@@ -487,15 +509,26 @@ namespace Ambertation.Windows.Forms
 			SetGraphicsMode(gsel, !quality);
 
 			if (style == ProgresBarStyle.Flat)
+			{
 				UserDrawFlat(g, gsel);
+			}
 			else if (style == ProgresBarStyle.Simple)
+			{
 				UserDrawSimple(g, gsel);
+			}
 			else if (style == ProgresBarStyle.Increase)
+			{
 				UserDrawIncrease(g, gsel);
+			}
 			else if (style == ProgresBarStyle.Decrease)
+			{
 				UserDrawDecrease(g, gsel);
+			}
 			else if (style == ProgresBarStyle.Balance)
+			{
 				UserDrawBalance(g, gsel);
+			}
+
 			needredraw = false;
 		}
 
@@ -523,11 +556,20 @@ namespace Ambertation.Windows.Forms
 				if (id != null)
 				{
 					if (id.wd != wd)
+					{
 						return false;
+					}
+
 					if (id.hg != hg)
+					{
 						return false;
+					}
+
 					if (id.cl != cl)
+					{
 						return false;
+					}
+
 					return true;
 				}
 				return base.Equals(obj);
@@ -871,9 +913,14 @@ namespace Ambertation.Windows.Forms
 				int left = this.TokenOffset(i);
 				int height = 0;
 				if (i > mid)
+				{
 					height = (int)Math.Floor(minhg + (i - mid) * step);
+				}
 				else
+				{
 					height = (int)Math.Floor(minhg + (mid - i) * step);
+				}
+
 				int top = (Height - 1) - height;
 
 				DrawTokens(g, gsel, left, top, TokenWidth, height);
@@ -888,7 +935,9 @@ namespace Ambertation.Windows.Forms
 			get
 			{
 				if (Style == ProgresBarStyle.Simple)
+				{
 					return Width;
+				}
 
 				return TokenOffset(this.TokenCount - 1) + TokenWidth;
 			}
@@ -902,7 +951,10 @@ namespace Ambertation.Windows.Forms
 		void SetTokenWidth(int val)
 		{
 			if (TokenWidth == val)
+			{
 				return;
+			}
+
 			TokenWidth = Math.Max(4, val);
 			tc = Math.Max(2, (int)Math.Floor((double)((Width - 1) / (TokenWidth + 2))));
 			CompleteRedraw();
@@ -920,7 +972,9 @@ namespace Ambertation.Windows.Forms
 		void SetTokenCount(int val, bool force)
 		{
 			if (tc == val && !force)
+			{
 				return;
+			}
 			//System.Diagnostics.Debug.WriteLine("Set Token Count from " + tc + " to " + val);
 			tc = Math.Max(2, val);
 
@@ -934,7 +988,10 @@ namespace Ambertation.Windows.Forms
 			get
 			{
 				if (style == ProgresBarStyle.Balance && (tc % 2) == 0)
+				{
 					return tc - 1;
+				}
+
 				return tc;
 			}
 			set

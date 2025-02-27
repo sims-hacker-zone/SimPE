@@ -49,7 +49,9 @@ namespace Ambertation.Windows.Forms.Graph
 			this.Parent = null;
 
 			if (this.SourceImage != null)
+			{
 				this.SourceImage.Dispose();
+			}
 		}
 
 		#region Public Properties
@@ -207,13 +209,17 @@ namespace Ambertation.Windows.Forms.Graph
 		internal virtual void OnLostFocus(EventArgs e)
 		{
 			if (LostFocus != null)
+			{
 				LostFocus(this, e);
+			}
 		}
 
 		internal virtual void OnGotFocus(EventArgs e)
 		{
 			if (GotFocus != null)
+			{
 				GotFocus(this, e);
+			}
 		}
 
 		internal void OnPaint(PaintEventArgs e)
@@ -224,7 +230,9 @@ namespace Ambertation.Windows.Forms.Graph
 			);
 			//if (irect==null) return;
 			if (irect.Width == 0 || irect.Height == 0)
+			{
 				return;
+			}
 
 			SetGraphicsMode(e.Graphics, true);
 			Rectangle src = new Rectangle(
@@ -256,7 +264,9 @@ namespace Ambertation.Windows.Forms.Graph
 		public void Refresh()
 		{
 			if (parent != null)
+			{
 				parent.Invalidate(this.BoundingRectangle);
+			}
 		}
 
 		public void Invalidate()
@@ -282,25 +292,41 @@ namespace Ambertation.Windows.Forms.Graph
 			if (parent != null && this.SaveBounds)
 			{
 				if (Right > parent.Width)
+				{
 					Left = parent.Width - Width;
+				}
+
 				if (Bottom > parent.Height)
+				{
 					Top = parent.Height - Height;
+				}
+
 				if (Left < 0)
+				{
 					Left = 0;
+				}
+
 				if (Top < 0)
+				{
 					Top = 0;
+				}
 
 				src = new Rectangle(Left, Top, Width, Height);
 			}
 
 			if (src.X != dst.X || src.Y != dst.Y)
+			{
 				OnMove();
+			}
+
 			if (src.Width != dst.Width || src.Height != dst.Height)
 			{
 				OnSizeChanged();
 				this.CompleteRedraw();
 				if (SizeChanged != null)
+				{
 					SizeChanged(this, new System.EventArgs());
+				}
 			}
 			if ((src.X != dst.X || src.Y != dst.Y) && Move != null)
 			{
@@ -308,7 +334,9 @@ namespace Ambertation.Windows.Forms.Graph
 			}
 
 			if (parent != null)
+			{
 				parent.Invalidate(r);
+			}
 			//Refresh();
 		}
 		#endregion
@@ -356,13 +384,24 @@ namespace Ambertation.Windows.Forms.Graph
 		protected void CompleteRedraw()
 		{
 			if (Updating)
+			{
 				return;
+			}
+
 			if (Width <= 0)
+			{
 				return;
+			}
+
 			if (Height <= 0)
+			{
 				return;
+			}
+
 			if (SourceImage != null)
+			{
 				SourceImage.Dispose();
+			}
 
 			try
 			{
@@ -398,7 +437,10 @@ namespace Ambertation.Windows.Forms.Graph
 		public void SendToBack()
 		{
 			if (parent == null)
+			{
 				return;
+			}
+
 			parent.LinkItems.Remove(this);
 			parent.LinkItems.Insert(0, this);
 			Refresh();
@@ -407,7 +449,10 @@ namespace Ambertation.Windows.Forms.Graph
 		public void SendToFront()
 		{
 			if (parent == null)
+			{
 				return;
+			}
+
 			parent.LinkItems.Remove(this);
 			parent.LinkItems.Add(this);
 			Refresh();

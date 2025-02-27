@@ -85,7 +85,10 @@ namespace SimPe.Plugin
 			set
 			{
 				if (value != null)
+				{
 					DataType = MipMapType.Texture;
+				}
+
 				img = value;
 			}
 		}
@@ -99,7 +102,10 @@ namespace SimPe.Plugin
 			set
 			{
 				if (value != null)
+				{
 					DataType = MipMapType.SimPE_PlainData;
+				}
+
 				data = value;
 			}
 		}
@@ -113,7 +119,10 @@ namespace SimPe.Plugin
 			set
 			{
 				if (value != null)
+				{
 					DataType = MipMapType.LifoReference;
+				}
+
 				lifofile = value;
 			}
 		}
@@ -207,9 +216,13 @@ namespace SimPe.Plugin
 		public void Serialize(System.IO.BinaryWriter writer)
 		{
 			if (DataType == MipMapType.SimPE_PlainData)
+			{
 				writer.Write((byte)MipMapType.Texture);
+			}
 			else
+			{
 				writer.Write((byte)DataType);
+			}
 
 			switch (DataType)
 			{
@@ -219,7 +232,9 @@ namespace SimPe.Plugin
 					try
 					{
 						if (DataType == MipMapType.Texture)
+						{
 							data = ImageLoader.Save(parent.Format, img);
+						}
 					}
 					catch (Exception ex)
 					{
@@ -227,7 +242,9 @@ namespace SimPe.Plugin
 					}
 
 					if (data == null)
+					{
 						data = new byte[0];
+					}
 					//if (data.Length<0x10) data = Helper.SetLength(data, 0x10);
 
 					writer.Write((int)data.Length);
@@ -255,18 +272,24 @@ namespace SimPe.Plugin
 		public override string ToString()
 		{
 			if (this.DataType == MipMapType.LifoReference)
+			{
 				return this.LifoFile;
+			}
 
 			string name;
 			if (img == null)
+			{
 				name = "";
+			}
 			else
+			{
 				name =
 					"Image "
 					+ img.Size.Width.ToString()
 					+ "x"
 					+ img.Size.Height.ToString()
 					+ " - ";
+			}
 
 			name += parent.NameResource.FileName;
 			return name;
@@ -341,7 +364,9 @@ namespace SimPe.Plugin
 				}
 			}
 			else
+			{
 				return true;
+			}
 
 			return false;
 		}
@@ -352,7 +377,10 @@ namespace SimPe.Plugin
 		{
 			this.data = new byte[0];
 			if (this.img != null)
+			{
 				img.Dispose();
+			}
+
 			img = null;
 		}
 
@@ -445,7 +473,9 @@ namespace SimPe.Plugin
 
 			creator = reader.ReadUInt32();
 			if ((parent.Version == 0x08) || (parent.Version == 0x09))
+			{
 				unknown_1 = reader.ReadUInt32();
+			}
 		}
 
 		/// <summary>
@@ -474,7 +504,9 @@ namespace SimPe.Plugin
 
 			writer.Write(creator);
 			if (parent.Version == 0x09)
+			{
 				writer.Write(unknown_1);
+			}
 		}
 		#endregion
 
@@ -494,10 +526,14 @@ namespace SimPe.Plugin
 						if (large != null)
 						{
 							if (large.Texture.Size.Width < img.Size.Width)
+							{
 								large = mm;
+							}
 						}
 						else
+						{
 							large = mm;
+						}
 					}
 				}
 
@@ -520,13 +556,19 @@ namespace SimPe.Plugin
 					if (large != null)
 					{
 						if (large.Texture.Size.Width < img.Size.Width)
+						{
 							large = mm;
+						}
 					}
 					else
+					{
 						large = mm;
+					}
 
 					if ((img.Size.Width > zs.Width) || (img.Size.Height > zs.Height))
+					{
 						break;
+					}
 				}
 			}
 
@@ -539,17 +581,22 @@ namespace SimPe.Plugin
 		public void GetReferencedLifos()
 		{
 			foreach (MipMap mm in this.MipMaps)
+			{
 				mm.GetReferencedLifo();
+			}
 		}
 
 		public override string ToString()
 		{
 			if (MipMaps.Length == 1)
+			{
 				return "0x"
 					+ Helper.HexString(this.creator)
 					+ " - 0x"
 					+ Helper.HexString(this.unknown_1)
 					+ " (1 Item)";
+			}
+
 			return "0x"
 				+ Helper.HexString(this.creator)
 				+ " - 0x"
@@ -564,7 +611,9 @@ namespace SimPe.Plugin
 		public void Dispose()
 		{
 			foreach (MipMap mm in this.MipMaps)
+			{
 				mm.Dispose();
+			}
 
 			MipMaps = new MipMap[0];
 		}
@@ -622,11 +671,13 @@ namespace SimPe.Plugin
 				{
 					//when the Format changes we need to get the Picturedta FIRST
 					foreach (MipMapBlock mmp in this.MipMapBlocks)
+					{
 						foreach (MipMap mm in mmp.MipMaps)
 						{
 							Image img = mm.Texture;
 							mm.Texture = img;
 						}
+					}
 				}
 				format = value;
 			}
@@ -691,7 +742,9 @@ namespace SimPe.Plugin
 			unknown_1 = reader.ReadUInt32();
 
 			if (version == 0x09)
+			{
 				FileNameRepeat = reader.ReadString();
+			}
 
 			for (int i = 0; i < MipMapBlocks.Length; i++)
 			{
@@ -715,9 +768,14 @@ namespace SimPe.Plugin
 				case 0x07:
 				{
 					if (MipMapBlocks.Length > 0)
+					{
 						MipMapLevels = (uint)MipMapBlocks[0].MipMaps.Length;
+					}
 					else
+					{
 						MipMapLevels = 0;
+					}
+
 					break;
 				}
 			}
@@ -740,7 +798,9 @@ namespace SimPe.Plugin
 			writer.Write(unknown_1);
 
 			if (version == 0x09)
+			{
 				writer.Write(FileNameRepeat);
+			}
 
 			for (int i = 0; i < MipMapBlocks.Length; i++)
 			{
@@ -764,6 +824,7 @@ namespace SimPe.Plugin
 				foreach (MipMap mm in mmp.MipMaps)
 				{
 					if (mm.DataType == MipMapType.LifoReference)
+					{
 						list.Add(
 							ScenegraphHelper.BuildPfd(
 								mm.LifoFile,
@@ -771,6 +832,7 @@ namespace SimPe.Plugin
 								parentgroup
 							)
 						);
+					}
 				}
 			}
 			refmap["LIFO"] = list;
@@ -786,7 +848,9 @@ namespace SimPe.Plugin
 			get
 			{
 				if (this.MipMapBlocks.Length == 0)
+				{
 					return null;
+				}
 
 				return MipMapBlocks[0].LargestTexture;
 			}
@@ -799,7 +863,9 @@ namespace SimPe.Plugin
 		public MipMap GetLargestTexture(Size zs)
 		{
 			if (this.MipMapBlocks.Length == 0)
+			{
 				return null;
+			}
 
 			return MipMapBlocks[0].GetLargestTexture(zs);
 		}
@@ -810,7 +876,9 @@ namespace SimPe.Plugin
 		public void GetReferencedLifos()
 		{
 			foreach (MipMapBlock mmp in this.MipMapBlocks)
+			{
 				mmp.GetReferencedLifos();
+			}
 		}
 
 		#region IDisposable Member
@@ -818,7 +886,9 @@ namespace SimPe.Plugin
 		public override void Dispose()
 		{
 			foreach (MipMapBlock mmb in this.MipMapBlocks)
+			{
 				mmb.Dispose();
+			}
 
 			MipMapBlocks = new MipMapBlock[0];
 		}

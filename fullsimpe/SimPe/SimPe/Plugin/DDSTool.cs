@@ -557,7 +557,9 @@ namespace SimPe.Plugin
 			finally
 			{
 				if (System.IO.File.Exists(imgname))
+				{
 					System.IO.File.Delete(imgname);
+				}
 			}
 		}
 
@@ -576,11 +578,17 @@ namespace SimPe.Plugin
 			arg += "-output \"" + ddsfile + "\" ";
 
 			if (format == ImageLoader.TxtrFormats.DXT1Format)
+			{
 				arg += " -dxt1c";
+			}
 			else if (format == ImageLoader.TxtrFormats.DXT5Format)
+			{
 				arg += "-dxt5";
+			}
 			else
+			{
 				arg += "-dxt3";
+			}
 
 			arg += " -nmips " + levels.ToString();
 			arg += " " + parameters;
@@ -588,7 +596,9 @@ namespace SimPe.Plugin
 			string flname = PathProvider.Global.NvidiaDDSTool;
 
 			if (!System.IO.File.Exists(flname))
+			{
 				return new DDSData[0];
+			}
 
 			try
 			{
@@ -603,7 +613,10 @@ namespace SimPe.Plugin
 
 				DDSData[] ret = ImageLoader.ParesDDS(ddsfile);
 				if (System.IO.File.Exists(ddsfile))
+				{
 					System.IO.File.Delete(ddsfile);
+				}
+
 				return ret;
 			}
 			catch (Exception ex)
@@ -613,7 +626,9 @@ namespace SimPe.Plugin
 			finally
 			{
 				if (System.IO.File.Exists(ddsfile))
+				{
 					System.IO.File.Delete(ddsfile);
+				}
 			}
 
 			return new DDSData[0];

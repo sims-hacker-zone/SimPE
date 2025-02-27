@@ -135,7 +135,10 @@ namespace SimPe.Plugin
 				pfd.Type = Data.MetaData.SIM_IMAGE_FILE;
 				pfd.LongInstance = IconInstance;
 				if (pfd.Instance == 0)
+				{
 					pfd.Instance = SecondaryIconInstance;
+				}
+
 				pfd.Group = 0x499DB772;
 
 				return pfd;
@@ -148,7 +151,10 @@ namespace SimPe.Plugin
 		protected override string GetResourceName(SimPe.Data.TypeAlias ta)
 		{
 			if (!this.Processed)
+			{
 				ProcessData(FileDescriptor, Package);
+			}
+
 			return this.NodeText;
 		}
 	}

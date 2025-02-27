@@ -41,7 +41,10 @@ namespace SimPe
 			public ControlEventArgs(uint target, object[] data)
 			{
 				if (data == null)
+				{
 					data = new object[0];
+				}
+
 				this.data = data;
 
 				this.TargetType = target;
@@ -57,9 +60,13 @@ namespace SimPe
 				get
 				{
 					if (data.Length == 0)
+					{
 						return null;
+					}
 					else
+					{
 						return data[0];
+					}
 				}
 			}
 
@@ -90,8 +97,12 @@ namespace SimPe
 			{
 				MessageQueueItemInfo mqi = (MessageQueueItemInfo)events[i];
 				if (mqi.target == type)
+				{
 					if (mqi.fkt == fkt)
+					{
 						events.RemoveAt(i);
+					}
+				}
 			}
 		}
 
@@ -104,7 +115,9 @@ namespace SimPe
 					|| mqi.target == 0xffffffff
 					|| e.TargetType == 0xffffffff
 				)
+				{
 					mqi.fkt(sender, e);
+				}
 			}
 		}
 
@@ -151,28 +164,43 @@ namespace SimPe
 			{
 				appform = value;
 				if (appform != null)
+				{
 					appstate = appform.WindowState;
+				}
 				else
+				{
 					appstate = System.Windows.Forms.FormWindowState.Maximized;
+				}
 			}
 		}
 
 		static bool VisibleForm(System.Windows.Forms.Form form)
 		{
 			if (!form.ShowInTaskbar)
+			{
 				return false;
+			}
+
 			if (
 				form.FormBorderStyle
 				== System.Windows.Forms.FormBorderStyle.FixedToolWindow
 			)
+			{
 				return false;
+			}
+
 			if (
 				form.FormBorderStyle
 				== System.Windows.Forms.FormBorderStyle.SizableToolWindow
 			)
+			{
 				return false;
+			}
+
 			if (form.MinimizeBox == false)
+			{
 				return false;
+			}
 
 			return true;
 		}
@@ -180,16 +208,23 @@ namespace SimPe
 		public static void ShowSubForm(System.Windows.Forms.Form form)
 		{
 			if (VisibleForm(form))
+			{
 				HideApplicationForm();
+			}
+
 			form.ShowDialog(ApplicationForm);
 			if (VisibleForm(form))
+			{
 				ShowApplicationForm();
+			}
 		}
 
 		public static void HideApplicationForm()
 		{
 			if (ApplicationForm == null)
+			{
 				return;
+			}
 
 			if (ApplicationForm.Visible)
 			{
@@ -201,7 +236,10 @@ namespace SimPe
 		public static void ShowApplicationForm()
 		{
 			if (ApplicationForm == null)
+			{
 				return;
+			}
+
 			if (!ApplicationForm.Visible)
 			{
 				ApplicationForm.Show();
@@ -214,7 +252,9 @@ namespace SimPe
 		public static void MinimizeApplicationForm()
 		{
 			if (ApplicationForm == null)
+			{
 				return;
+			}
 
 			if (
 				ApplicationForm.WindowState
@@ -233,12 +273,17 @@ namespace SimPe
 		public static void RestoreApplicationForm()
 		{
 			if (ApplicationForm == null)
+			{
 				return;
+			}
+
 			if (
 				ApplicationForm.WindowState
 				== System.Windows.Forms.FormWindowState.Minimized
 			)
+			{
 				ApplicationForm.WindowState = appstate;
+			}
 		}
 		#endregion
 
@@ -275,7 +320,10 @@ namespace SimPe
 		public static void ShowDock(Ambertation.Windows.Forms.DockPanel doc, bool hide)
 		{
 			if (ShowDockFkt == null)
+			{
 				return;
+			}
+
 			ShowDockFkt(doc, hide);
 		}
 
@@ -287,7 +335,9 @@ namespace SimPe
 		public static bool OpenPackage(string filename)
 		{
 			if (OpenPackageFkt == null)
+			{
 				return false;
+			}
 
 			try
 			{
@@ -321,7 +371,9 @@ namespace SimPe
 		public static bool OpenMemoryPackage(SimPe.Interfaces.Files.IPackageFile pkg)
 		{
 			if (OpenMemoryPackageFkt == null)
+			{
 				return false;
+			}
 
 			try
 			{
@@ -363,7 +415,9 @@ namespace SimPe
 		)
 		{
 			if (OpenPackedFileFkt == null)
+			{
 				return false;
+			}
 
 			try
 			{
@@ -442,7 +496,9 @@ namespace SimPe
 		)
 		{
 			if (ResourceListSelectionChanged != null)
+			{
 				ResourceListSelectionChanged(sender, e);
+			}
 		}
 
 		public static event ResourceListSelectionChangedHandler ResourceListSelectionChanged;

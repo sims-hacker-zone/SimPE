@@ -79,7 +79,9 @@ namespace SimPe.Plugin.Tool.Dockable
 				this.cbTask.Items.Add(tl);
 			}
 			if (cbTask.Items.Count > 0)
+			{
 				this.cbTask.SelectedIndex = 0;
+			}
 		}
 
 		private void CreateThreads(bool start)
@@ -91,7 +93,9 @@ namespace SimPe.Plugin.Tool.Dockable
 				);
 				threads[ct].Name = "Search Thread " + (ct);
 				if (start)
+				{
 					threads[ct].Start();
+				}
 			}
 		}
 
@@ -122,7 +126,9 @@ namespace SimPe.Plugin.Tool.Dockable
 		{
 			pnContainer.Controls.Clear();
 			if (cbTask.SelectedItem == null)
+			{
 				return;
+			}
 
 			Control c = ((SimPe.Interfaces.AFinderTool)cbTask.SelectedItem).SearchGui;
 			pnContainer.Height = c.Height;
@@ -182,8 +188,12 @@ namespace SimPe.Plugin.Tool.Dockable
 		{
 			string cname = name.Trim().ToLower();
 			foreach (SteepValley.Windows.Forms.XPListViewGroup lvg in lv.Groups)
+			{
 				if (lvg.GroupText.Trim().ToLower() == cname)
+				{
 					return lvg.GroupIndex;
+				}
+			}
 
 			SteepValley.Windows.Forms.XPListViewGroup g =
 				new SteepValley.Windows.Forms.XPListViewGroup(name);
@@ -195,7 +205,9 @@ namespace SimPe.Plugin.Tool.Dockable
 		private void lv_DoubleClick(object sender, System.EventArgs e)
 		{
 			if (lv.SelectedItems.Count != 1)
+			{
 				return;
+			}
 
 			IFinderResultItem fri = (IFinderResultItem)lv.SelectedItems[0];
 			fri.OpenResource();
@@ -262,7 +274,9 @@ namespace SimPe.Plugin.Tool.Dockable
 			set
 			{
 				if (value)
+				{
 					StopSearch();
+				}
 			}
 		}
 
@@ -287,12 +301,16 @@ namespace SimPe.Plugin.Tool.Dockable
 		)
 		{
 			if (this.InvokeRequired)
+			{
 				this.BeginInvoke(
 					new InvokeAddResult(InvokedAddResult),
 					new object[] { group, pkg, pfd }
 				);
+			}
 			else
+			{
 				InvokedAddResult(group, pkg, pfd);
+			}
 		}
 
 		protected void InvokedAddResult(
@@ -311,9 +329,13 @@ namespace SimPe.Plugin.Tool.Dockable
 
 				ScenegraphResultItem sri = new ScenegraphResultItem(pkg, pfd);
 				if (group == null)
+				{
 					sri.GroupIndex = AddResultGroup(pkg.SaveFileName);
+				}
 				else
+				{
 					sri.GroupIndex = this.AddResultGroup(group);
+				}
 
 				lv.Items.Add(sri);
 			}
@@ -332,7 +354,9 @@ namespace SimPe.Plugin.Tool.Dockable
 				{
 					string name = fti.Name;
 					if (fti.IsFile)
+					{
 						AddToPackageList(name);
+					}
 					else
 					{
 						string[] files = System.IO.Directory.GetFiles(
@@ -340,7 +364,9 @@ namespace SimPe.Plugin.Tool.Dockable
 							"*.package"
 						);
 						foreach (string s in files)
+						{
 							AddToPackageList(s);
+						}
 					}
 				}
 			}
@@ -352,7 +378,9 @@ namespace SimPe.Plugin.Tool.Dockable
 			//if (packages.Count > 10) return;
 #endif
 			if (!packages.Contains(Helper.CompareableFileName(fl)))
+			{
 				packages.Add(Helper.CompareableFileName(fl));
+			}
 		}
 
 		public void StartSearch(SimPe.Interfaces.AFinderTool sender)
@@ -416,7 +444,10 @@ namespace SimPe.Plugin.Tool.Dockable
 			lv.DoubleBuffering = true;
 
 			if (searchtool != null)
+			{
 				searchtool.NotifyFinishedSearch();
+			}
+
 			pnErr.Text = pnErr.Text.Replace(
 				"{nr}",
 				Helper.WindowsRegistry.MaxSearchResults.ToString()
@@ -442,7 +473,10 @@ namespace SimPe.Plugin.Tool.Dockable
 				lock (packages)
 				{
 					if (packages.Count == 0 || truncated)
+					{
 						break;
+					}
+
 					name = packages[0];
 					packages.RemoveAt(0);
 					Wait.Progress++;
@@ -473,9 +507,13 @@ namespace SimPe.Plugin.Tool.Dockable
 				if (runningthreads == 0)
 				{
 					if (this.InvokeRequired)
+					{
 						this.BeginInvoke(new InvokeDoneSearching(DoneSearching));
+					}
 					else
+					{
 						DoneSearching();
+					}
 				}
 			}
 		}

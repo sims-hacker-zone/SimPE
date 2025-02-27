@@ -66,9 +66,15 @@ namespace SimPe.Plugin
 		)
 		{
 			if (!IsReallyEnabled(pfd, package))
+			{
 				return new SimPe.Plugin.ToolResult(false, false);
+			}
+
 			if (ps == null)
+			{
 				ps = new PhotoStudio();
+			}
+
 			return ps.Execute(ref pfd, ref package, prov);
 		}
 

@@ -40,7 +40,9 @@ namespace SimPe.Plugin
 				{
 					StrItemList items = this.stringList.Items;
 					if (!Utility.IsNullOrEmpty(items))
+					{
 						return ((StrToken)items[0]).Title;
+					}
 				}
 				return String.Empty;
 			}
@@ -51,7 +53,9 @@ namespace SimPe.Plugin
 					StrItemList items = this.stringList.Items;
 
 					if (!Utility.IsNullOrEmpty(items))
+					{
 						((StrToken)items[0]).Title = value;
+					}
 					else
 					{
 						StrToken item = new StrToken(
@@ -94,7 +98,9 @@ namespace SimPe.Plugin
 			{
 				IPackedFileDescriptor textFile = this.CreateTextResource(package);
 				if (textFile != null)
+				{
 					strList = new IPackedFileDescriptor[] { textFile };
+				}
 			}
 
 			if (!Utility.IsNullOrEmpty(strList))
@@ -105,7 +111,9 @@ namespace SimPe.Plugin
 
 			IPackedFileDescriptor[] keyPfd = package.FindFiles(Utility.DataType.XHTN); // Hairtone XML
 			if (Utility.IsNullOrEmpty(keyPfd))
+			{
 				keyPfd = package.FindFiles(Utility.DataType.XSTN); // Skintone XML
+			}
 
 			if (!Utility.IsNullOrEmpty(keyPfd))
 			{
@@ -119,7 +127,10 @@ namespace SimPe.Plugin
 		public IPackedFileDescriptor[] FindFiles(uint type)
 		{
 			if (this.package != null)
+			{
 				return this.package.FindFiles(type);
+			}
+
 			return new IPackedFileDescriptor[0];
 		}
 
@@ -127,7 +138,9 @@ namespace SimPe.Plugin
 		{
 			base.CommitChanges();
 			if (this.stringList != null)
+			{
 				this.stringList.SynchronizeUserData();
+			}
 		}
 
 		private uint GetPackageHash()
@@ -159,7 +172,9 @@ namespace SimPe.Plugin
 		{
 			IPackedFileDescriptor ret = null;
 			if (package == null)
+			{
 				return null;
+			}
 
 			uint group = this.GetScenegraphGroup(package);
 			if (group != 0)
@@ -191,7 +206,9 @@ namespace SimPe.Plugin
 								temp.Add(item);
 								// insert reference node to TextList after the UIData node
 								if (item.Type == 0)
+								{
 									temp.Add(ret);
+								}
 							}
 
 							refFile.Items = (IPackedFileDescriptor[])
@@ -215,11 +232,14 @@ namespace SimPe.Plugin
 		{
 			uint ret = 0;
 			foreach (IPackedFileDescriptor pfd in this.package.Index)
+			{
 				if (MetaData.RcolList.Contains(pfd.Type))
 				{
 					ret = pfd.Group;
 					break;
 				}
+			}
+
 			return ret;
 		}
 
@@ -238,7 +258,9 @@ namespace SimPe.Plugin
 				if (disposing)
 				{
 					if (this.package is IDisposable)
+					{
 						((IDisposable)this.package).Dispose();
+					}
 				}
 				disposed = true;
 			}
@@ -286,7 +308,10 @@ namespace SimPe.Plugin
 		public void RemoveAll()
 		{
 			foreach (PackageInfo pnfo in this.Values)
+			{
 				pnfo.Dispose();
+			}
+
 			this.Clear();
 		}
 
@@ -298,16 +323,26 @@ namespace SimPe.Plugin
 		public bool ContainsValue(PackageInfo pnfo)
 		{
 			foreach (PackageInfo p in this)
+			{
 				if (p == pnfo)
+				{
 					return true;
+				}
+			}
+
 			return false;
 		}
 
 		public bool ContainsPackage(IPackageFile package)
 		{
 			foreach (PackageInfo pnfo in this.Values)
+			{
 				if (Object.ReferenceEquals(pnfo.Package, package))
+				{
 					return true;
+				}
+			}
+
 			return false;
 		}
 
@@ -327,8 +362,12 @@ namespace SimPe.Plugin
 				{
 					// Dispose managed resources.
 					foreach (PackageInfo pnfo in this.Values)
+					{
 						if (pnfo.Package is IDisposable)
+						{
 							((IDisposable)pnfo.Package).Dispose();
+						}
+					}
 				}
 			}
 			disposed = true;

@@ -100,13 +100,18 @@ namespace pjse
 		private void btnCompare_Click(object sender, EventArgs e)
 		{
 			if (wrapper != null)
+			{
 				this.cmenuCompare.Show((Control)sender, new Point(3, 3));
+			}
 		}
 
 		private void cmenuCompare_Opening(object sender, CancelEventArgs e)
 		{
 			while (cmenuCompare.Items.Count > 1)
+			{
 				cmenuCompare.Items.RemoveAt(1);
+			}
+
 			foreach (SimPe.ExpansionItem exp in SimPe.PathProvider.Global.Expansions)
 			{
 				if (exp.Exists && exp.Flag.FullObjectsPackage)
@@ -126,10 +131,12 @@ namespace pjse
 			SimPe.ExpansionItem exp;
 			int i = cmenuCompare.Items.IndexOf((ToolStripItem)sender);
 			if (i < 0)
+			{
 				throw new ArgumentOutOfRangeException(
 					"menuItem",
 					"Unrecognised object triggered event"
 				);
+			}
 			else if (i == 0)
 			{
 				pjse.FileTable.Entry[] items = pjse.FileTable.GFT[
@@ -165,9 +172,12 @@ namespace pjse
 						)
 					);
 				if (op == null)
+				{
 					throw new Exception(
 						"Could not read " + exp.Name + " objects.package"
 					);
+				}
+
 				IPackedFileDescriptor pfd = op.FindFile(wrapper.FileDescriptor);
 				if (pfd == null)
 				{

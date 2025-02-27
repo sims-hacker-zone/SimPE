@@ -176,7 +176,9 @@ namespace SimPe.Plugin
 			zero = new byte[0x10];
 			preitems = new NgbhSlotList[0x02];
 			for (int i = 0; i < preitems.Length; i++)
+			{
 				preitems[i] = new NgbhSlotList(this);
+			}
 
 			slota = new Collections.NgbhSlots(this, Data.NeighborhoodSlots.Lots);
 			slotb = new Collections.NgbhSlots(this, Data.NeighborhoodSlots.Families);
@@ -256,13 +258,17 @@ namespace SimPe.Plugin
 				id == Data.NeighborhoodSlots.Families
 				|| id == Data.NeighborhoodSlots.FamiliesIntern
 			)
+			{
 				return Families;
+			}
 
 			if (
 				id == Data.NeighborhoodSlots.Lots
 				|| id == Data.NeighborhoodSlots.LotsIntern
 			)
+			{
 				return Lots;
+			}
 
 			return Sims;
 		}
@@ -274,17 +280,23 @@ namespace SimPe.Plugin
 				id == Data.NeighborhoodSlots.Families
 				|| id == Data.NeighborhoodSlots.FamiliesIntern
 			)
+			{
 				slots = Families;
+			}
 
 			if (
 				id == Data.NeighborhoodSlots.Lots
 				|| id == Data.NeighborhoodSlots.LotsIntern
 			)
+			{
 				slots = Lots;
+			}
 
 			NgbhSlot slot = slots.GetInstanceSlot(inst);
 			if (slot != null)
+			{
 				return slot.GetItems(id);
+			}
 
 			return null;
 		}
@@ -300,19 +312,28 @@ namespace SimPe.Plugin
 			id = reader.ReadBytes(id.Length);
 			version = reader.ReadUInt32();
 			if (version == (uint)NgbhVersion.Castaway)
+			{
 				header = new byte[12 + 32];
+			}
+
 			header = reader.ReadBytes(header.Length);
 
 			int textlen = reader.ReadInt32();
 			zonename = reader.ReadBytes(textlen);
 			if (version >= (uint)NgbhVersion.Nightlife)
+			{
 				zero = reader.ReadBytes(0x14);
+			}
 			else
+			{
 				zero = reader.ReadBytes(0x18);
+			}
 
 			//read preitems
 			for (int i = 0; i < preitems.Length; i++)
+			{
 				preitems[i].Unserialize(reader);
+			}
 
 			int blocklen = reader.ReadInt32();
 			slota.Clear();
@@ -361,26 +382,39 @@ namespace SimPe.Plugin
 			writer.Write(zonename);
 
 			if (version >= (uint)NgbhVersion.Nightlife)
+			{
 				zero = Helper.SetLength(zero, 0x14);
+			}
 			else
+			{
 				zero = Helper.SetLength(zero, 0x018);
+			}
+
 			writer.Write(zero);
 
 			//write preitems
 			for (int i = 0; i < preitems.Length; i++)
+			{
 				preitems[i].Serialize(writer);
+			}
 
 			writer.Write((int)slota.Length);
 			for (int i = 0; i < slota.Length; i++)
+			{
 				slota[i].Serialize(writer);
+			}
 
 			writer.Write((int)slotb.Length);
 			for (int i = 0; i < slotb.Length; i++)
+			{
 				slotb[i].Serialize(writer);
+			}
 
 			writer.Write((int)slotc.Length);
 			for (int i = 0; i < slotc.Length; i++)
+			{
 				slotc[i].Serialize(writer);
+			}
 
 			/*writer.Write((int)0);
 			writer.Write((int)writer.BaseStream.Position);*/

@@ -53,15 +53,21 @@ namespace SimPe
 
 				// Create background brush
 				if (e.Item.Selected)
+				{
 					background = new SolidBrush(
 						Color.FromArgb(120, ColorTable.MenuItemBorder)
 					);
+				}
 				else if (e.Item.Pressed)
+				{
 					background = new SolidBrush(
 						Color.FromArgb(80, ColorTable.MenuItemBorder)
 					);
+				}
 				else if (((ToolStripButton)e.Item).Checked)
+				{
 					background = new SolidBrush(Color.FromArgb(120, CheckedColor));
+				}
 				else
 				{
 					background = new SolidBrush(
@@ -73,11 +79,16 @@ namespace SimPe
 				e.Graphics.FillRectangle(background, bounds);
 				Pen pen = new Pen(ColorTable.ButtonSelectedBorder);
 				if (!((ToolStripButton)e.Item).Checked)
+				{
 					e.Graphics.DrawRectangle(pen, bounds);
+				}
+
 				background.Dispose();
 			}
 			else
+			{
 				base.OnRenderItemBackground(e);
+			}
 		}
 
 		protected override void OnRenderToolStripBackground(ToolStripRenderEventArgs e)
@@ -88,7 +99,9 @@ namespace SimPe
 				color4;
 
 			if (e.ToolStrip is MenuStrip)
+			{
 				base.OnRenderToolStripBackground(e);
+			}
 			else
 			{
 				// Calculate colours used in gradient

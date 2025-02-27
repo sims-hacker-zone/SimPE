@@ -121,7 +121,9 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 			cbType.Items.AddRange(BhavWiz.readStr(GS.BhavStr.Dialog).ToArray());
 
 			if (typeDescriptions == null)
+			{
 				typeDescriptions = BhavWiz.readStr(GS.BhavStr.DialogDesc);
+			}
 
 			cbTnsStyle.Items.Clear();
 			cbTnsStyle.Items.AddRange(BhavWiz.readStr(GS.BhavStr.TnsStyle).ToArray());
@@ -235,9 +237,12 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 		private bool hex8_IsValid(object sender)
 		{
 			if (alHex8.IndexOf(sender) < 0)
+			{
 				throw new Exception(
 					"hex8_IsValid not applicable to control " + sender.ToString()
 				);
+			}
+
 			try
 			{
 				Convert.ToByte(((TextBox)sender).Text, 16);
@@ -252,9 +257,12 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 		private bool hex16_IsValid(object sender)
 		{
 			if (alHex16.IndexOf(sender) < 0)
+			{
 				throw new Exception(
 					"hex16_IsValid not applicable to control " + sender.ToString()
 				);
+			}
+
 			try
 			{
 				Convert.ToUInt16(((TextBox)sender).Text, 16);
@@ -273,7 +281,9 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 			dialog = (byte)newType;
 
 			if (dialog != cbType.SelectedIndex)
+			{
 				cbType.SelectedIndex = (cbType.Items.Count > dialog) ? dialog : -1;
+			}
 
 			this.lbType.Text =
 				typeDescriptions.Count > dialog ? typeDescriptions[dialog] : "";
@@ -341,7 +351,9 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 
 			// Make the display match the help text
 			for (int i = 0; i < states.Length; i++)
+			{
 				setString(i, messages[i]);
+			}
 		}
 
 		private void setTnsStyle(int newStyle)
@@ -351,10 +363,12 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 			tnsStyle = (byte)newStyle;
 
 			if (cbTnsStyle.Items.Count != tnsStyle)
+			{
 				cbTnsStyle.SelectedIndex =
 					(tnsStyle >= 0 && tnsStyle < cbTnsStyle.Items.Count)
 						? tnsStyle
 						: -1;
+			}
 
 			internalchg = false;
 		}
@@ -366,11 +380,15 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 			scope = (Scope)newScope;
 
 			if (cbScope.SelectedIndex != newScope)
+			{
 				cbScope.SelectedIndex =
 					(newScope >= 0 && newScope < cbScope.Items.Count) ? newScope : -1;
+			}
 
 			for (int i = 0; i < messages.Length; i++)
+			{
 				setString(i, messages[i]);
+			}
 
 			internalchg = false;
 		}
@@ -382,10 +400,13 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 			iconType = (byte)newType;
 
 			if (cbIconType.SelectedIndex != iconType)
+			{
 				cbIconType.SelectedIndex =
 					(iconType >= 0 && iconType < cbIconType.Items.Count)
 						? iconType
 						: -1;
+			}
+
 			tbIconID.Enabled = (iconType == 3);
 			btnStrIcon.Enabled = (iconType == 4);
 
@@ -398,8 +419,10 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 
 			tempVar = (byte)newTempVar;
 			if (cbTempVar.SelectedIndex != tempVar)
+			{
 				cbTempVar.SelectedIndex =
 					(tempVar >= 0 && tempVar < cbTempVar.Items.Count) ? tempVar : -1;
+			}
 
 			internalchg = false;
 		}
@@ -429,7 +452,10 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 			iconID = (byte)newIconID;
 
 			if (internalchg)
+			{
 				return;
+			}
+
 			internalchg = true;
 
 			this.tbIconID.Text = "0x" + SimPe.Helper.HexString((byte)newIconID);
@@ -526,7 +552,10 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 			priority = (byte)newPriority;
 
 			if (internalchg)
+			{
 				return;
+			}
+
 			internalchg = true;
 
 			this.tbPriority.Text = "0x" + SimPe.Helper.HexString((byte)newPriority);
@@ -539,7 +568,10 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 			timeout = (byte)newTimeout;
 
 			if (internalchg)
+			{
 				return;
+			}
+
 			internalchg = true;
 
 			this.tbTimeout.Text = "0x" + SimPe.Helper.HexString((byte)newTimeout);
@@ -552,7 +584,10 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 			localVar = (byte)newLocalVar;
 
 			if (internalchg)
+			{
 				return;
+			}
+
 			internalchg = true;
 
 			this.tbLocalVar.Text = "0x" + SimPe.Helper.HexString((byte)newLocalVar);
@@ -616,11 +651,17 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 			setTnsStyle(ops2[4]);
 
 			if ((ops2[0] & 0x01) != 0)
+			{
 				setScope((int)Scope.SemiGlobal);
+			}
 			else if ((ops2[0] & 0x40) != 0)
+			{
 				setScope((int)Scope.Global);
+			}
 			else
+			{
 				setScope((int)Scope.Private);
+			}
 
 			setIconID(ops1[0x01]);
 
@@ -704,9 +745,13 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 
 				ops2[0] &= 0xbe;
 				if (scope == Scope.SemiGlobal)
+				{
 					ops2[0] |= 0x01;
+				}
 				else if (scope == Scope.Global)
+				{
 					ops2[0] |= 0x40;
+				}
 
 				ops2[1] = (byte)(priority - 1);
 				ops2[2] = timeout;
@@ -1482,7 +1527,9 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 		private void cbType_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
 
 			setType(((ComboBox)sender).SelectedIndex);
 		}
@@ -1490,7 +1537,9 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 		private void cbTnsStyle_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
 
 			setTnsStyle(((ComboBox)sender).SelectedIndex);
 		}
@@ -1498,7 +1547,9 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 		private void cbScope_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
 
 			setScope(((ComboBox)sender).SelectedIndex);
 		}
@@ -1506,7 +1557,9 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 		private void cbIconType_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
 
 			setIconType(((ComboBox)sender).SelectedIndex);
 		}
@@ -1514,7 +1567,9 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 		private void cbBlockBHAV_CheckedChanged(object sender, System.EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
 
 			setBlockBHAV(((CheckBox)sender).Checked);
 		}
@@ -1522,7 +1577,9 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 		private void cbBlockSim_CheckedChanged(object sender, System.EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
 
 			setBlockSim(((CheckBox)sender).Checked);
 		}
@@ -1530,7 +1587,9 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 		private void cbUT_CheckedChanged(object sender, System.EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
 
 			setUseTemp(alCBUseTemp.IndexOf(sender), ((CheckBox)sender).Checked);
 		}
@@ -1538,13 +1597,19 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 		private void cbTempVar_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
 
 			int i = this.alCBTempVar.IndexOf(sender);
 			if (i >= 0)
+			{
 				setString(i, ((ComboBox)sender).SelectedIndex);
+			}
 			else
+			{
 				setTempVar(((ComboBox)sender).SelectedIndex);
+			}
 		}
 
 		private void btnStr_Click(object sender, System.EventArgs e)
@@ -1560,9 +1625,14 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 		private void hex8_TextChanged(object sender, System.EventArgs ev)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (!hex8_IsValid(sender))
+			{
 				return;
+			}
 
 			byte val = Convert.ToByte(((TextBox)sender).Text, 16);
 			int i = alHex8.IndexOf(sender);
@@ -1594,7 +1664,9 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 		)
 		{
 			if (hex8_IsValid(sender))
+			{
 				return;
+			}
 
 			e.Cancel = true;
 
@@ -1638,9 +1710,14 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 		private void hex16_TextChanged(object sender, System.EventArgs ev)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (!hex16_IsValid(sender))
+			{
 				return;
+			}
 
 			internalchg = true;
 			setString(
@@ -1656,7 +1733,9 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 		)
 		{
 			if (hex16_IsValid(sender))
+			{
 				return;
+			}
 
 			e.Cancel = true;
 
@@ -1695,7 +1774,9 @@ namespace pjse.BhavOperandWizards
 		public override void Dispose()
 		{
 			if (myForm != null)
+			{
 				myForm = null;
+			}
 		}
 		#endregion
 	}

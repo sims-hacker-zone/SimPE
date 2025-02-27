@@ -51,13 +51,18 @@ namespace SimPe.Plugin.Tool.Dockable
 		void LoadCachIndex()
 		{
 			if (cachefile != null)
+			{
 				return;
+			}
 
 			cachechg = false;
 			cachefile = new SimPe.Cache.ObjectLoaderCacheFile();
 
 			if (!Helper.WindowsRegistry.UseCache)
+			{
 				return;
+			}
+
 			Wait.Message = "Loading Cache";
 			try
 			{
@@ -77,9 +82,15 @@ namespace SimPe.Plugin.Tool.Dockable
 		void SaveCacheIndex()
 		{
 			if (!Helper.WindowsRegistry.UseCache)
+			{
 				return;
+			}
+
 			if (!cachechg && !ObjectReader.changedcache)
+			{
 				return;
+			}
+
 			Wait.Message = "Saving Cache";
 
 			cachefile.Save(CacheFileName);
@@ -107,14 +118,24 @@ namespace SimPe.Plugin.Tool.Dockable
 				ct++;
 				Interfaces.Scenegraph.IScenegraphFileIndexItem nrefitem = lnrefitem;
 				if (ct % 134 == 1)
+				{
 					Wait.Progress = ct;
+				}
 				//if (nrefitem.FileDescriptor.Instance != 0x41A7) continue;
 				if (nrefitem.LocalGroup == Data.MetaData.LOCAL_GROUP)
+				{
 					continue;
+				}
+
 				if (pitems.Contains(nrefitem))
+				{
 					continue;
+				}
+
 				if (groups.Contains(nrefitem.FileDescriptor.Instance))
+				{
 					continue;
+				}
 
 				//try to find the best objd
 				Interfaces.Scenegraph.IScenegraphFileIndexItem[] cacheitems =
@@ -144,7 +165,10 @@ namespace SimPe.Plugin.Tool.Dockable
 					SimPe.Cache.ObjectCacheItem oci = (SimPe.Cache.ObjectCacheItem)
 						cacheitems[cindex].FileDescriptor.Tag;
 					if (!oci.Useable)
+					{
 						continue;
+					}
+
 					pitems.Add(nrefitem);
 					groups.Add(nrefitem.FileDescriptor.Instance);
 
@@ -193,15 +217,25 @@ namespace SimPe.Plugin.Tool.Dockable
 				ct++;
 				Interfaces.Scenegraph.IScenegraphFileIndexItem nrefitem = lnrefitem;
 				if (ct % 134 == 1)
+				{
 					Wait.Progress = ct;
+				}
 
 				//if (nrefitem.FileDescriptor.Instance != 0x41A7) continue;
 				if (nrefitem.LocalGroup == Data.MetaData.LOCAL_GROUP)
+				{
 					continue;
+				}
+
 				if (pitems.Contains(nrefitem))
+				{
 					continue;
+				}
+
 				if (groups.Contains(nrefitem.LocalGroup))
+				{
 					continue;
+				}
 
 				//try to find the best objd
 				Interfaces.Scenegraph.IScenegraphFileIndexItem[] oitems =
@@ -212,6 +246,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				if (oitems.Length > 1)
 				{
 					for (int i = 0; i < oitems.Length; i++)
+					{
 						if (
 							oitems[i].FileDescriptor.Instance == 0x41A7
 							|| oitems[i].FileDescriptor.Instance == 0x41AF
@@ -220,6 +255,7 @@ namespace SimPe.Plugin.Tool.Dockable
 							nrefitem = oitems[i];
 							break;
 						}
+					}
 				}
 
 				Interfaces.Scenegraph.IScenegraphFileIndexItem[] cacheitems =
@@ -249,7 +285,10 @@ namespace SimPe.Plugin.Tool.Dockable
 					SimPe.Cache.ObjectCacheItem oci = (SimPe.Cache.ObjectCacheItem)
 						cacheitems[cindex].FileDescriptor.Tag;
 					if (!oci.Useable)
+					{
 						continue;
+					}
+
 					pitems.Add(nrefitem);
 					groups.Add(nrefitem.LocalGroup);
 
@@ -304,7 +343,9 @@ namespace SimPe.Plugin.Tool.Dockable
 				new SimPe.PackedFiles.Wrapper.Picture();
 			uint[] picts = pw.AssignableTypes;
 			foreach (uint p in picts)
+			{
 				this.pict.Add(p);
+			}
 		}
 
 		public event ObjectLoader.LoadItemHandler LoadedItem;
@@ -337,7 +378,9 @@ namespace SimPe.Plugin.Tool.Dockable
 
 			oci.ObjectFileName = cpf.GetSaveItem("filename").StringValue;
 			if (oci.ObjectFileName == "")
+			{
 				oci.ObjectFileName = cpf.GetSaveItem("name").StringValue;
+			}
 
 			oci.Useable = true;
 			oci.Class = SimPe.Cache.ObjectClass.XObject;
@@ -357,14 +400,20 @@ namespace SimPe.Plugin.Tool.Dockable
 					deflang
 				);
 				if (items.Length > 0)
+				{
 					oci.Name = items[0].Title;
+				}
 				else
 				{
 					items = str.LanguageItems(1);
 					if (items.Length > 0)
+					{
 						oci.Name = items[0].Title;
+					}
 					else
+					{
 						oci.Name = "";
+					}
 				}
 			}
 			else
@@ -373,20 +422,31 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 
 			if (oci.Name == "")
+			{
 				oci.Name = oci.ObjectFileName;
+			}
 
 			//now the ModeName File
 			if (cpf.GetItem("texturetname") != null)
+			{
 				oci.ModelName = cpf.GetItem("texturetname").StringValue;
+			}
 			else if (cpf.GetItem("filename") != null)
+			{
 				oci.ModelName = cpf.GetItem("filename").StringValue;
+			}
 			else
+			{
 				oci.ModelName = cpf.GetSaveItem("material").StringValue;
+			}
 
 			//oci.Name = cpf.GetSaveItem("type").StringValue + " - "+ cpf.GetSaveItem("subsort").StringValue;
 
 			if (oci.Thumbnail == null)
+			{
 				oci.Thumbnail = ObjectPreview.GetXThumbnail(cpf);
+			}
+
 			ObjectReader.changedcache = true;
 		}
 
@@ -453,14 +513,20 @@ namespace SimPe.Plugin.Tool.Dockable
 						deflang
 					);
 					if (items.Length > 0)
+					{
 						oci.Name = items[0].Title;
+					}
 					else
 					{
 						items = str.LanguageItems(1);
 						if (items.Length > 0)
+						{
 							oci.Name = items[0].Title;
+						}
 						else
+						{
 							oci.Name = "";
+						}
 					}
 				}
 				else
@@ -469,7 +535,9 @@ namespace SimPe.Plugin.Tool.Dockable
 				}
 
 				if (oci.Name == "")
+				{
 					oci.Name = objd.FileName;
+				}
 
 				//now the ModeName File
 				Interfaces.Scenegraph.IScenegraphFileIndexItem[] txtitems =
@@ -486,7 +554,9 @@ namespace SimPe.Plugin.Tool.Dockable
 					str.ProcessData(txtitems[0]);
 					SimPe.PackedFiles.Wrapper.StrItemList items = str.LanguageItems(1);
 					if (items.Length > 1)
+					{
 						oci.ModelName = items[1].Title;
+					}
 				}
 
 				ObjectReader.changedcache = true;
@@ -532,14 +602,21 @@ namespace SimPe.Plugin.Tool.Dockable
 			a.Tag = os;
 
 			if (Helper.WindowsRegistry.ShowObjdNames)
+			{
 				a.Name = oci.ObjectFileName;
+			}
 			else
+			{
 				a.Name = oci.Name;
+			}
+
 			a.Name += " (cached)";
 			Image img = oci.Thumbnail;
 
 			if (LoadedItem != null)
+			{
 				LoadedItem(oci, nrefitem, a);
+			}
 
 			return true;
 		}
@@ -563,7 +640,10 @@ namespace SimPe.Plugin.Tool.Dockable
 		public ObjectLoader(ImageList ilist)
 		{
 			if (ilist == null)
+			{
 				ilist = new ImageList();
+			}
+
 			ilist.ImageSize = new System.Drawing.Size(
 				Helper.WindowsRegistry.OWThumbSize,
 				Helper.WindowsRegistry.OWThumbSize
@@ -644,14 +724,18 @@ namespace SimPe.Plugin.Tool.Dockable
 		)
 		{
 			if (LoadedItem != null)
+			{
 				LoadedItem(oci, fii, a);
+			}
 		}
 
 		private void erz_Finished(object sender, EventArgs e)
 		{
 			Wait.SubStop();
 			if (Finished != null)
+			{
 				Finished(this, new System.EventArgs());
+			}
 		}
 
 		public static TreeNode GetParentNode(
@@ -675,10 +759,14 @@ namespace SimPe.Plugin.Tool.Dockable
 					{
 						ret = tn;
 						if (id < names.Length - 1)
+						{
 							ret = GetParentNode(tn.Nodes, names, id + 1, oci, a, ilist);
+						}
 
 						if (ret == null)
+						{
 							ret = tn;
+						}
 
 						break;
 					}
@@ -689,16 +777,22 @@ namespace SimPe.Plugin.Tool.Dockable
 			if (ret == null)
 			{
 				if (id < names.Length)
+				{
 					ret = new TreeNode(names[id]);
+				}
 				else
+				{
 					ret = new TreeNode(SimPe.Localization.GetString("Unknown"));
+				}
 
 				nodes.Add(ret);
 				ret.SelectedImageIndex = 0;
 				ret.ImageIndex = 0;
 
 				if (id < names.Length - 1)
+				{
 					ret = GetParentNode(ret.Nodes, names, id + 1, oci, a, ilist);
+				}
 			}
 
 			if (id == 0)
@@ -725,8 +819,12 @@ namespace SimPe.Plugin.Tool.Dockable
 					(SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem)oci.Tag;
 				string flname = "";
 				if (fii.Package != null)
+				{
 					if (fii.Package.FileName != null)
+					{
 						flname = fii.Package.FileName.Trim().ToLower();
+					}
+				}
 
 				if (flname.StartsWith(PathProvider.SimSavegameFolder.Trim().ToLower()))
 				{
@@ -747,7 +845,10 @@ namespace SimPe.Plugin.Tool.Dockable
 					tn.ImageIndex = ilist.Images.Count - 1;
 				}
 				else
+				{
 					tn.ImageIndex = 1;
+				}
+
 				tn.SelectedImageIndex = tn.ImageIndex;
 				ret.Nodes.Add(tn);
 			}

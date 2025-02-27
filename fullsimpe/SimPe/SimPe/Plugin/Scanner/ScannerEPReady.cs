@@ -167,7 +167,9 @@ namespace SimPe.Plugin.Scanner
 		public void Fix(string name)
 		{
 			if (selection == null)
+			{
 				return;
+			}
 
 			WaitingScreen.Wait();
 			bool chg = false;
@@ -182,9 +184,14 @@ namespace SimPe.Plugin.Scanner
 						true
 					);
 					if (ps.Data.Length < 1)
+					{
 						continue;
+					}
+
 					if ((ReadyState)ps.Data[0] == ReadyState.Yes)
+					{
 						continue;
+					}
 
 					string mname = name;
 					DateTime now = DateTime.Now;
@@ -210,7 +217,9 @@ namespace SimPe.Plugin.Scanner
 				}
 
 				if (chg && this.CallbackFinish != null)
+				{
 					this.CallbackFinish(false, false);
+				}
 			}
 			catch (Exception ex)
 			{

@@ -145,12 +145,17 @@ namespace SimPe.Plugin
 			int left = 0;
 
 			if (parent != null)
+			{
 				top = parent.Location.Y;
+			}
+
 			do
 			{
 				top += 128;
 				if (coords.ContainsKey(top))
+				{
 					left = (int)coords[top];
+				}
 				//if (parent!=null) if (left<parent.Location.X) left = parent.Location.X;
 			} while (left > Graph.Parent.Width && false);
 
@@ -179,7 +184,9 @@ namespace SimPe.Plugin
 				gi = (GraphItem)names[name];
 
 				if (parent != null)
+				{
 					parent.ChildItems.Add(gi);
+				}
 			}
 			else
 			{
@@ -212,18 +219,24 @@ namespace SimPe.Plugin
 				{
 					gi.Properties["Available"].Value = "true";
 					if (colors.ContainsKey(ta.shortname))
+					{
 						gi.PanelColor = (Color)colors[ta.shortname];
+					}
 
 					if (Data.MetaData.RcolList.Contains(pfd.Type))
-						item = BuildRcol(pkgpfd, pkg, gi);
-					else if (pfd.Type == Data.MetaData.MMAT)
-						item = BuildMmat(pkgpfd, pkg, gi);
-					/*}
-					else
 					{
-						if (Data.MetaData.RcolList.Contains(pfd.Type)) item = BuildRcol(pkgpfd, altpkg, gi);
-						else if (pfd.Type==Data.MetaData.MMAT) item = BuildMmat(pkgpfd, altpkg, gi);
-					}*/
+						item = BuildRcol(pkgpfd, pkg, gi);
+					}
+					else if (pfd.Type == Data.MetaData.MMAT)
+					{
+						item = BuildMmat(pkgpfd, pkg, gi);
+					}
+					/*}
+else
+{
+	if (Data.MetaData.RcolList.Contains(pfd.Type)) item = BuildRcol(pkgpfd, altpkg, gi);
+	else if (pfd.Type==Data.MetaData.MMAT) item = BuildMmat(pkgpfd, altpkg, gi);
+}*/
 
 					//check again if we still don't have that file
 					name = gi.Text.Trim().ToLower();
@@ -239,12 +252,14 @@ namespace SimPe.Plugin
 						{
 							Hashtable ht = item.ReferenceChains;
 							foreach (ArrayList list in ht.Values)
+							{
 								foreach (
 									SimPe.Interfaces.Files.IPackedFileDescriptor spfd in list
 								)
 								{
 									AddItem(spfd, pkg, gi, fileindex);
 								}
+							}
 						}
 					}
 				}
@@ -263,12 +278,16 @@ namespace SimPe.Plugin
 						gi.ForeColor = Color.White;
 						gi.BorderColor = gi.ForeColor;
 						if ((string)gi.Properties["Available"].Value == "extern")
+						{
 							gi.PanelColor = Color.Black;
+						}
 					}
 				}
 
 				if (parent != null)
+				{
 					parent.ChildItems.Add(gi);
+				}
 			}
 
 			//gi.EndUpdate();
@@ -295,14 +314,20 @@ namespace SimPe.Plugin
 			if (Helper.WindowsRegistry.CresPrioritize)
 			{
 				if (WaitingScreen.Running)
+				{
 					WaitingScreen.UpdateMessage("Scaning CRES Tree");
+				}
+
 				pfds = pkg.FindFiles(Data.MetaData.CRES);
 				foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
 					AddItem(pfd, pkg, null, fileindex);
 				}
 				if (WaitingScreen.Running)
+				{
 					WaitingScreen.UpdateMessage("Scaning MMAT Tree");
+				}
+
 				pfds = pkg.FindFiles(Data.MetaData.MMAT);
 				foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
@@ -312,14 +337,20 @@ namespace SimPe.Plugin
 			else
 			{
 				if (WaitingScreen.Running)
+				{
 					WaitingScreen.UpdateMessage("Scaning MMAT Tree");
+				}
+
 				pfds = pkg.FindFiles(Data.MetaData.MMAT);
 				foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
 					AddItem(pfd, pkg, null, fileindex);
 				}
 				if (WaitingScreen.Running)
+				{
 					WaitingScreen.UpdateMessage("Scaning CRES Tree");
+				}
+
 				pfds = pkg.FindFiles(Data.MetaData.CRES);
 				foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
@@ -340,8 +371,12 @@ namespace SimPe.Plugin
 			int top = 0;
 			int left = 0;
 			foreach (int t in coords.Keys)
+			{
 				if (t > top)
+				{
 					top = t;
+				}
+			}
 
 			top += 128;
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pkg.Index)
@@ -371,13 +406,19 @@ namespace SimPe.Plugin
 					gi.Properties["Type"].Value = ta.shortname;
 					gi.Properties["Available"].Value = "true (orphan)";
 					if (colors.ContainsKey(ta.shortname))
+					{
 						gi.PanelColor = (Color)colors[ta.shortname];
+					}
 
 					SimPe.Interfaces.Scenegraph.IScenegraphItem item = null;
 					if (Data.MetaData.RcolList.Contains(pfd.Type))
+					{
 						item = BuildRcol(pfd, pkg, gi);
+					}
 					else if (pfd.Type == Data.MetaData.MMAT)
+					{
 						item = BuildMmat(pfd, pkg, gi);
+					}
 					//gi.Parent = gc;
 					if (item != null)
 					{
@@ -399,7 +440,9 @@ namespace SimPe.Plugin
 		private void gi_GotFocus(object sender, EventArgs e)
 		{
 			if (click != null)
+			{
 				click(sender, e);
+			}
 		}
 	}
 }

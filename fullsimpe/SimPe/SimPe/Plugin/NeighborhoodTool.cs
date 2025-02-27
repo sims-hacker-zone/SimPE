@@ -97,7 +97,9 @@ namespace SimPe.Plugin
 							System.Windows.Forms.MessageBoxButtons.YesNo
 						) == System.Windows.Forms.DialogResult.No
 					)
+					{
 						return new Plugin.ToolResult(false, false);
+					}
 				}
 			}
 			NeighborhoodForm nf = new NeighborhoodForm();
@@ -105,7 +107,10 @@ namespace SimPe.Plugin
 
 			Interfaces.Plugin.IToolResult ret = nf.Execute(ref package, prov);
 			if (ret.ChangedPackage)
+			{
 				pfd = null;
+			}
+
 			return ret;
 		}
 

@@ -89,9 +89,14 @@ namespace SimPe.Plugin.UI
 					object o = this.cbBody.Items[i];
 					Data.MetaData.Bodyshape at;
 					if (o.GetType() == typeof(Alias))
+					{
 						at = (Data.LocalizedBodyshape)((uint)((Alias)o).Id);
+					}
 					else
+					{
 						at = (Data.LocalizedBodyshape)o;
+					}
+
 					if (at == sset.Figure)
 					{
 						this.cbBody.SelectedIndex = i;
@@ -114,37 +119,67 @@ namespace SimPe.Plugin.UI
 				this.Settings.Age = (Ages)BuildListValue(this.clbAges);
 				this.Settings.Gender = (SimGender)BuildListValue(this.clbGender);
 				if (this.cbOutfitType.SelectedItem != null)
+				{
 					this.Settings.OutfitType = (OutfitType)
 						this.cbOutfitType.SelectedItem;
+				}
+
 				if (this.cbShoeType.SelectedItem != null)
+				{
 					this.Settings.ShoeType = (ShoeType)this.cbShoeType.SelectedItem;
+				}
+
 				if (this.cbSpeciesType.SelectedItem != null)
+				{
 					this.Settings.Species = (SpeciesType)
 						this.cbSpeciesType.SelectedItem;
+				}
+
 				if (this.cbOverlayType.SelectedItem != null)
+				{
 					this.Settings.OverlayType = (TextureOverlayTypes)
 						this.cbOverlayType.SelectedItem;
+				}
 			}
 		}
 
 		void InitDisableControls()
 		{
 			if (Tipe == RecolorType.Skin)
+			{
 				this.cbShoeType.Enabled = this.cbBody.Enabled = true;
+			}
 			else
+			{
 				this.cbShoeType.Enabled = this.cbBody.Enabled = false;
+			}
+
 			if (Tipe == RecolorType.Hairtone)
+			{
 				this.cbhat.Enabled = true;
+			}
 			else
+			{
 				this.cbhat.Enabled = false;
+			}
+
 			if (Tipe == RecolorType.TextureOverlay || Tipe == RecolorType.MeshOverlay)
+			{
 				this.cbSpeciesType.Enabled = this.cbOverlayType.Enabled = true;
+			}
 			else
+			{
 				this.cbSpeciesType.Enabled = this.cbOverlayType.Enabled = false;
+			}
+
 			if (Tipe == RecolorType.Skintone)
+			{
 				this.cbavail.Enabled = this.cbhide.Enabled = false;
+			}
 			else
+			{
 				this.cbavail.Enabled = this.cbhide.Enabled = true;
+			}
 		}
 
 		#region Component Designer generated code
@@ -510,9 +545,11 @@ namespace SimPe.Plugin.UI
 		{
 			this.cbBody.Items.Clear();
 			foreach (uint i in Enum.GetValues(typeof(Data.MetaData.Bodyshape)))
+			{
 				this.cbBody.Items.Add(
 					new LocalizedBodyshape((Data.MetaData.Bodyshape)i)
 				);
+			}
 		}
 
 		#endregion
@@ -563,7 +600,9 @@ namespace SimPe.Plugin.UI
 		protected void OnSettingsChanged(EventArgs e)
 		{
 			if (this.SettingsChanged != null && this.fireSettingsChangedEvent)
+			{
 				SettingsChanged(this, e);
+			}
 		}
 
 		void SelectEnumItems(CheckedListBox list, Enum values)
@@ -608,7 +647,10 @@ namespace SimPe.Plugin.UI
 		{
 			ulong ret = 0;
 			foreach (Enum value in list.CheckedItems)
+			{
 				ret |= Convert.ToUInt64(value);
+			}
+
 			return ret;
 		}
 
@@ -628,7 +670,9 @@ namespace SimPe.Plugin.UI
 		static void AddItems(IList target, Type enumType)
 		{
 			foreach (Enum e in Enum.GetValues(enumType))
+			{
 				target.Add(e);
+			}
 		}
 
 		#endregion

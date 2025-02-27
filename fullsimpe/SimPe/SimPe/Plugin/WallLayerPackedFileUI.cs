@@ -24,7 +24,9 @@ namespace SimPe.Plugin
 
 			string es = SimPe.Data.MetaData.GetKnownFence(0x8D0B3B3A); // to intialize the dictionary
 			foreach (KeyValuePair<uint, string> kvp in SimPe.Data.MetaData.KnownFences)
+			{
 				this.cballFences.Items.Add(kvp.Value);
+			}
 
 			this.cballFences.SelectedIndex = 0;
 		}
@@ -72,39 +74,81 @@ namespace SimPe.Plugin
 							SimPe.Data.MetaData.GetKnownFence(Wrapper.bwallid[i])
 						)
 					)
+					{
 						this.cbExistFences.Items.Add(
 							SimPe.Data.MetaData.GetKnownFence(Wrapper.bwallid[i])
 						);
+					}
+
 					fences++;
 				}
 				else if (KnownWallID(Wrapper.bwallid[i]))
 				{
 					if (Wrapper.bwallid[i] == 1)
+					{
 						normal++;
+					}
+
 					if (Wrapper.bwallid[i] == 2)
+					{
 						picket++;
+					}
+
 					if (Wrapper.bwallid[i] == 3)
+					{
 						attic++;
+					}
+
 					if (Wrapper.bwallid[i] == 4)
+					{
 						nrskirt++;
+					}
+
 					if (Wrapper.bwallid[i] == 16)
+					{
 						redskirt++;
+					}
+
 					if (Wrapper.bwallid[i] == 23)
+					{
 						foundation++;
+					}
+
 					if (Wrapper.bwallid[i] == 24)
+					{
 						minskirt++;
+					}
+
 					if (Wrapper.bwallid[i] == 26)
+					{
 						woodfence++;
+					}
+
 					if (Wrapper.bwallid[i] == 29)
+					{
 						pool++;
+					}
+
 					if (Wrapper.bwallid[i] == 90)
+					{
 						unlevel++;
+					}
+
 					if (Wrapper.bwallid[i] == 93)
+					{
 						unlpool++;
+					}
+
 					if (Wrapper.bwallid[i] == 300)
+					{
 						ofbnormal++;
+					}
+
 					if (Wrapper.bwallid[i] == 301)
+					{
 						screenwood++;
+					}
+
 					walls++;
 				}
 				else
@@ -114,25 +158,34 @@ namespace SimPe.Plugin
 							"0x" + Helper.HexString(Wrapper.bwallid[i])
 						)
 					)
+					{
 						this.cbExistFences.Items.Add(
 							"0x" + Helper.HexString(Wrapper.bwallid[i])
 						);
+					}
+
 					fences++;
 				}
 			}
 			if (this.cbExistFences.Items.Count > 0)
+			{
 				this.cbExistFences.SelectedIndex = 0;
+			}
 
 			if (fences == 0)
+			{
 				this.cbClear.Visible =
 					this.lbwarning.Visible =
 					this.btchanger.Visible =
 						false;
+			}
 			else
+			{
 				this.cbClear.Visible =
 					this.lbwarning.Visible =
 					this.btchanger.Visible =
 						true;
+			}
 
 			lbNormal.Text = Convert.ToString(normal) + " normal walls";
 			lbpicket.Text = Convert.ToString(picket) + " picket rail fences";
@@ -190,7 +243,10 @@ namespace SimPe.Plugin
 				|| (uWallID == 300) // normal wall (OFB or later)
 				|| (uWallID == 301) // screen wood (OFB or later)
 			)
+			{
 				return true;
+			}
+
 			return false;
 		}
 
@@ -216,11 +272,16 @@ namespace SimPe.Plugin
 		{
 			uint bfrom;
 			if (SimPe.Data.MetaData.GetFenceId(cbExistFences.SelectedItem) != 0)
+			{
 				bfrom = SimPe.Data.MetaData.GetFenceId(cbExistFences.SelectedItem);
+			}
 			else
+			{
 				bfrom = Helper.HexStringToUInt(
 					Convert.ToString(cbExistFences.SelectedItem)
 				);
+			}
+
 			uint btoo = SimPe.Data.MetaData.GetFenceId(cballFences.SelectedItem);
 			for (int j = 0; j < Wrapper.ItemCount; j++)
 			{
@@ -228,7 +289,9 @@ namespace SimPe.Plugin
 				{
 					Wrapper.bwallid[j] = btoo;
 					if (cbClear.Checked)
+					{
 						Wrapper.lpaint[j] = Wrapper.rpaint[j] = 0;
+					}
 				}
 			}
 
@@ -255,9 +318,11 @@ namespace SimPe.Plugin
 							"0x" + Helper.HexString(Wrapper.bwallid[i])
 						) && !KnownWallID(Wrapper.bwallid[i])
 					)
+					{
 						this.cbExistFences.Items.Add(
 							"0x" + Helper.HexString(Wrapper.bwallid[i])
 						);
+					}
 				}
 			}
 			cbExistFences.SelectedIndex = 0;

@@ -221,7 +221,10 @@ namespace SimPe.Plugin.TabPage
 		private void LTSettingsChanged(object sender, System.EventArgs e)
 		{
 			if (this.Tag == null)
+			{
 				return;
+			}
+
 			try
 			{
 				Plugin.LightT lt = (Plugin.LightT)Tag;

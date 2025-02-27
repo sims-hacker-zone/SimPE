@@ -286,7 +286,10 @@ namespace SimPe.Plugin
 			System.Windows.Forms.FolderBrowserDialog fbd =
 				new System.Windows.Forms.FolderBrowserDialog();
 			if (fbd.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+			{
 				return;
+			}
+
 			this.Language.Enabled =
 				this.btGo.Enabled =
 				this.btCome.Enabled =
@@ -295,7 +298,9 @@ namespace SimPe.Plugin
 			string floder =
 				fbd.SelectedPath + "\\" + languageString[currentLanguage - 1];
 			if (!Directory.Exists(floder))
+			{
 				Directory.CreateDirectory(floder);
+			}
 
 			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfdc =
 				this.package.FindFiles(0x43545353); //CTSS
@@ -316,7 +321,10 @@ namespace SimPe.Plugin
 					new SimPe.PackedFiles.Wrapper.StrWrapper();
 				str.ProcessData(pfd, this.package);
 				if (str.HasLanguage(currentLanguage))
+				{
 					str.ExportLanguage(currentLanguage, floder + "\\" + parf + ".txt");
+				}
+
 				Progress.Value += 1;
 			}
 
@@ -331,7 +339,10 @@ namespace SimPe.Plugin
 					new SimPe.PackedFiles.Wrapper.StrWrapper();
 				str.ProcessData(pfd, this.package);
 				if (str.HasLanguage(currentLanguage))
+				{
 					str.ExportLanguage(currentLanguage, floder + "\\" + parf + ".txt");
+				}
+
 				Progress.Value += 1;
 			}
 
@@ -346,7 +357,10 @@ namespace SimPe.Plugin
 					new SimPe.PackedFiles.Wrapper.StrWrapper();
 				str.ProcessData(pfd, this.package);
 				if (str.HasLanguage(currentLanguage))
+				{
 					str.ExportLanguage(currentLanguage, floder + "\\" + parf + ".txt");
+				}
+
 				Progress.Value += 1;
 			}
 			okay = true;
@@ -361,7 +375,10 @@ namespace SimPe.Plugin
 			System.Windows.Forms.FolderBrowserDialog fbd =
 				new System.Windows.Forms.FolderBrowserDialog();
 			if (fbd.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+			{
 				return;
+			}
+
 			string[] textfiles = Directory.GetFiles(
 				fbd.SelectedPath,
 				"*.txt",
@@ -385,13 +402,22 @@ namespace SimPe.Plugin
 				Progress.Value += 1;
 				twine = Path.GetFileNameWithoutExtension(file);
 				if (twine.StartsWith("catalogue-"))
+				{
 					tipe = 0x43545353;
+				}
 				else if (twine.StartsWith("menu-"))
+				{
 					tipe = 0x54544173;
+				}
 				else if (twine.StartsWith("text-"))
+				{
 					tipe = 0x53545223;
+				}
 				else
+				{
 					break;
+				}
+
 				string[] bits = twine.Split(new char[] { '-' });
 				groop = Helper.HexStringToUInt(bits[1]);
 				insta = Helper.HexStringToUInt(bits[2]);

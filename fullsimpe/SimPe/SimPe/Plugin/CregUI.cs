@@ -83,7 +83,9 @@ namespace SimPe.Plugin
 		private void tbVer_TextChanged(object sender, EventArgs e)
 		{
 			if (!intern)
+			{
 				Wrapper.VersVal = this.tbVer.Text;
+			}
 		}
 	}
 }

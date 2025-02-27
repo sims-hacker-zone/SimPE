@@ -81,7 +81,9 @@ namespace SimPe.Plugin
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in Items)
 			{
 				if (pfd.Filename.Trim().ToLower().StartsWith(start))
+				{
 					a.Add(pfd);
+				}
 			}
 
 			Interfaces.Files.IPackedFileDescriptor[] pfds =

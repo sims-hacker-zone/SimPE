@@ -1024,9 +1024,15 @@ namespace SimPe.Plugin.TabPage
 		private void TNChangeSettings(object sender, System.EventArgs e)
 		{
 			if (this.tb_tn_a.Tag != null)
+			{
 				return;
+			}
+
 			if (Tag == null)
+			{
 				return;
+			}
+
 			try
 			{
 				SimPe.Plugin.TransformNode tn = (SimPe.Plugin.TransformNode)Tag;
@@ -1060,9 +1066,15 @@ namespace SimPe.Plugin.TabPage
 		private void TNChangedQuaternion(object sender, System.EventArgs e)
 		{
 			if (this.tb_tn_a.Tag != null)
+			{
 				return;
+			}
+
 			if (Tag == null)
+			{
 				return;
+			}
+
 			try
 			{
 				SimPe.Plugin.TransformNode tn = (SimPe.Plugin.TransformNode)Tag;
@@ -1138,9 +1150,15 @@ namespace SimPe.Plugin.TabPage
 		private void TNChangedEulerQuaternion(object sender, System.EventArgs e)
 		{
 			if (this.tb_tn_a.Tag != null)
+			{
 				return;
+			}
+
 			if (Tag == null)
+			{
 				return;
+			}
+
 			try
 			{
 				SimPe.Plugin.TransformNode tn = (SimPe.Plugin.TransformNode)Tag;
@@ -1164,9 +1182,14 @@ namespace SimPe.Plugin.TabPage
 		private void TNSelect(object sender, System.EventArgs e)
 		{
 			if (lb_tn.Tag != null)
+			{
 				return;
+			}
+
 			if (this.lb_tn.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			try
 			{
@@ -1192,9 +1215,14 @@ namespace SimPe.Plugin.TabPage
 		private void TNChangedItems(object sender, System.EventArgs e)
 		{
 			if (lb_tn.Tag != null)
+			{
 				return;
+			}
+
 			if (this.lb_tn.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			try
 			{
@@ -1225,7 +1253,10 @@ namespace SimPe.Plugin.TabPage
 		)
 		{
 			if (Tag == null)
+			{
 				return;
+			}
+
 			try
 			{
 				lb_tn.Tag = true;
@@ -1255,9 +1286,15 @@ namespace SimPe.Plugin.TabPage
 		)
 		{
 			if (Tag == null)
+			{
 				return;
+			}
+
 			if (lb_tn.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				lb_tn.Tag = true;

@@ -297,9 +297,12 @@ namespace SimPe.Plugin
 			if (package != null)
 			{
 				if (package.FileName != null)
+				{
 					this.tbtext.Text = System
 						.IO.Path.GetFileNameWithoutExtension(package.FileName)
 						.ToLower();
+				}
+
 				this.tbtext.Text = "Generate Hashes";
 			}
 			else
@@ -318,28 +321,36 @@ namespace SimPe.Plugin
 				if (cbTrim.Checked)
 				{
 					if (rb24.Checked)
+					{
 						hash = Hashes.ToLong(
 							Hashes.Crc24.ComputeHash(
 								Helper.ToBytes(tbtext.Text.ToLower())
 							)
 						);
+					}
 					else
+					{
 						hash = Hashes.ToLong(
 							Hashes.Crc32.ComputeHash(
 								Helper.ToBytes(tbtext.Text.ToLower())
 							)
 						);
+					}
 				}
 				else
 				{
 					if (rb24.Checked)
+					{
 						hash = Hashes.ToLong(
 							Hashes.Crc24.ComputeHash(Helper.ToBytes(tbtext.Text))
 						);
+					}
 					else
+					{
 						hash = Hashes.ToLong(
 							Hashes.Crc32.ComputeHash(Helper.ToBytes(tbtext.Text))
 						);
+					}
 				}
 				tbhash.Text = "0x" + Helper.HexString((uint)hash);
 				setupinuse(hash);
@@ -372,7 +383,9 @@ namespace SimPe.Plugin
 		private void cbTrim_CheckedChanged(object sender, EventArgs e)
 		{
 			if (!radioButton1.Checked)
+			{
 				tbtext_TextChanged(sender, e);
+			}
 		}
 
 		private void setupinuse(ulong vid)
@@ -382,12 +395,18 @@ namespace SimPe.Plugin
 				lbnamer.Visible = true;
 				string objName = pjse.GUIDIndex.TheGUIDIndex[Convert.ToUInt32(vid)];
 				if (objName != null && objName.Length > 0)
+				{
 					lbnamer.Text = objName;
+				}
 				else
+				{
 					lbnamer.Text = "Available";
+				}
 			}
 			else
+			{
 				lbnamer.Visible = false;
+			}
 		}
 	}
 }

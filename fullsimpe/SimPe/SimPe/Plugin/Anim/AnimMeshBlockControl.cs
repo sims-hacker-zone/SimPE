@@ -377,10 +377,14 @@ namespace SimPe.Plugin.Anim
 			if (ambs != null)
 			{
 				foreach (AnimationMeshBlock amb in ambs)
+				{
 					cbSubMesh.Items.Add(amb);
+				}
 
 				if (cbSubMesh.Items.Count > 0)
+				{
 					cbSubMesh.SelectedIndex = 0;
+				}
 			}
 		}
 
@@ -390,10 +394,14 @@ namespace SimPe.Plugin.Anim
 			if (amb != null)
 			{
 				foreach (AnimationFrameBlock afb in amb.Part2)
+				{
 					cbJoint.Items.Add(afb);
+				}
 
 				if (cbJoint.Items.Count > 0)
+				{
 					cbJoint.SelectedIndex = 0;
+				}
 			}
 		}
 
@@ -419,7 +427,9 @@ namespace SimPe.Plugin.Anim
 		private void pnFrames_Changed(object sender, System.EventArgs e)
 		{
 			if (Changed != null)
+			{
 				Changed(this, e);
+			}
 		}
 
 		private void llExport_LinkClicked(
@@ -516,7 +526,10 @@ namespace SimPe.Plugin.Anim
 				ab1.Part2 = (AnimationFrameBlock[])Helper.Delete(ab1.Part2, afb);
 				int sel = cbJoint.SelectedIndex + 1;
 				if (sel >= cbJoint.Items.Count)
+				{
 					sel = cbJoint.Items.Count - 1;
+				}
+
 				cbJoint.Items.Remove(afb);
 				cbJoint.SelectedIndex = sel;
 			}

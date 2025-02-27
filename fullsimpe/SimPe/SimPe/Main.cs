@@ -53,7 +53,9 @@ namespace SimPe
 				Wait.Bar = null;
 
 				if (Helper.WindowsRegistry.Layout.AutoStoreLayout)
+				{
 					StoreLayout();
+				}
 			}
 		}
 
@@ -74,7 +76,9 @@ namespace SimPe
 		void BeforeFileLoad(LoadedPackage sender, FileNameEventArg e)
 		{
 			if (!ClosePackage())
+			{
 				e.Cancel = true;
+			}
 		}
 
 		/// <summary>
@@ -95,7 +99,9 @@ namespace SimPe
 		private void BeforeFileSave(LoadedPackage sender, FileNameEventArg e)
 		{
 			if (!resloader.Flush())
+			{
 				e.Cancel = true;
+			}
 		}
 
 		/// <summary>
@@ -125,7 +131,10 @@ namespace SimPe
 		void UpdateFileInfo()
 		{
 			if (package.Loaded)
+			{
 				Text = "SimPe - " + package.FileName; // CJH
+			}
+
 			UpdateMenuItems();
 		}
 
@@ -151,9 +160,14 @@ namespace SimPe
 		bool ClosePackage()
 		{
 			if (!resloader.Clear())
+			{
 				return false;
+			}
+
 			if (!package.Close())
+			{
 				return false;
+			}
 
 			plugger.ChangedGuiResourceEventHandler(
 				this,
@@ -178,7 +192,10 @@ namespace SimPe
 			{
 				string[] res = new string[a.Length];
 				for (int i = 0; i < a.Length; i++)
+				{
 					res[i] = a.GetValue(i).ToString();
+				}
+
 				return res;
 			}
 
@@ -193,7 +210,9 @@ namespace SimPe
 		DragDropEffects DragDropEffect(string[] names)
 		{
 			if (names.Length == 0)
+			{
 				return DragDropEffects.None;
+			}
 
 			ExtensionType et = ExtensionProvider.GetExtension(names[0]);
 			if (names.Length == 1)
@@ -203,12 +222,16 @@ namespace SimPe
 					|| et == ExtensionType.DisabledPackage
 					|| et == ExtensionType.ExtrackedPackageDescriptor
 				)
+				{
 					return DragDropEffects.Move;
+				}
 				else if (
 					et == ExtensionType.ExtractedFile
 					|| et == ExtensionType.ExtractedFileDescriptor
 				)
+				{
 					return DragDropEffects.Copy;
+				}
 			}
 
 			return DragDropEffects.Copy;
@@ -349,12 +372,18 @@ namespace SimPe
 			try
 			{
 				if (lv.SelectedItems.Count == 0)
+				{
 					resloader.Clear();
+				}
 				else
+				{
 					foreach (
 						SimPe.Windows.Forms.NamedPackedFileDescriptor lvi in lv.SelectedItems
 					)
+					{
 						res.Items.Add(new SimPe.Events.ResourceContainer(lvi.Resource));
+					}
+				}
 			}
 			catch (Exception ex)
 			{
@@ -370,7 +399,10 @@ namespace SimPe
 		)
 		{
 			if (lv.SelectedItem != null)
+			{
 				resloader.AddResource(lv.SelectedItem, !e.CtrlDown);
+			}
+
 			lv.Focus();
 		}
 
@@ -383,9 +415,11 @@ namespace SimPe
 
 			System.Drawing.Icon icon = null;
 			if (miPref.Image is System.Drawing.Bitmap)
+			{
 				icon = System.Drawing.Icon.FromHandle(
 					((System.Drawing.Bitmap)miPref.Image).GetHicon()
 				);
+			}
 
 			of.Execute(icon);
 			package.UpdateRecentFileMenu(this.miRecent);
@@ -396,7 +430,10 @@ namespace SimPe
 			try
 			{
 				if (pk.Result.ChangedPackage)
+				{
 					package.LoadFromPackage((SimPe.Packages.GeneratableFile)pk.Package);
+				}
+
 				if (pk.Result.ChangedFile)
 				{
 					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii =
@@ -446,8 +483,9 @@ namespace SimPe
 					{
 						TD.SandDock.DockControl d = dc.TabPages[i];
 						if (!resloader.CloseDocument(d))
+						{
 							closed = false;
-						;
+						};
 					}
 					e.Cancel = !closed;
 				}
@@ -478,7 +516,9 @@ namespace SimPe
 		private void Activate_miRunSims(object sender, System.EventArgs e)
 		{
 			if (!File.Exists(SimPe.PathProvider.Global.SimsApplication))
+			{
 				return;
+			}
 
 			System.Diagnostics.Process p = new System.Diagnostics.Process();
 			p.StartInfo.FileName = SimPe.PathProvider.Global.SimsApplication;
@@ -538,7 +578,9 @@ namespace SimPe
 			foreach (SimPe.Events.ResourceContainer e in es)
 			{
 				if (e.HasResource)
+				{
 					resourceViewManager1.SelectResource(e.Resource);
+				}
 			}
 		}
 
@@ -579,17 +621,22 @@ namespace SimPe
 					)
 					.Count > 0
 			)
+			{
 				ofd.InitialDirectory = System.IO.Path.Combine(
 					SimPe.PathProvider.Global.GetSaveGamePathForGroup(
 						SimPe.PathProvider.Global.CurrentGroup
 					)[0],
 					"Downloads"
 				);
+			}
 			else
+			{
 				ofd.InitialDirectory = Path.Combine(
 					PathProvider.SimSavegameFolder,
 					"Downloads"
 				);
+			}
+
 			ofd.FileName = "";
 			this.Activate_miOpen(sender, e);
 		}
@@ -629,7 +676,9 @@ namespace SimPe
 					}
 				}
 				else
+				{
 					filter.FilterGroup = false;
+				}
 			}
 			catch
 			{
@@ -643,7 +692,9 @@ namespace SimPe
 		)
 		{
 			if (!e.DockControl.Collapsed)
+			{
 				lv.BringToFront();
+			}
 		}
 
 		private void Activate_miSaveCopyAs(object sender, System.EventArgs e)
@@ -701,9 +752,15 @@ namespace SimPe
 			{
 				ToolStripMenuItem mi = o as ToolStripMenuItem;
 				if (mi == null)
+				{
 					continue;
+				}
+
 				if (mi.Tag == null)
+				{
 					continue;
+				}
+
 				DockPanel dw = mi.Tag as DockPanel;
 
 				MakeFloatable(dw, fl);
@@ -745,7 +802,9 @@ namespace SimPe
 		private void miShowName_Click(object sender, EventArgs e)
 		{
 			if (package == null)
+			{
 				return;
+			}
 
 			string[] sa = package.FileName.Split(new char[] { '\\' });
 			string s = sa[0];
@@ -753,7 +812,10 @@ namespace SimPe
 			{
 				s += "\\\r\n";
 				for (int j = 0; j < i; j++)
+				{
 					s += "  ";
+				}
+
 				s += sa[i];
 			}
 
@@ -780,7 +842,10 @@ namespace SimPe
 		{
 			ProfileChooser pc = new ProfileChooser();
 			if (pc.ShowDialog() != DialogResult.OK)
+			{
 				return;
+			}
+
 			string path = Path.Combine(Helper.DataFolder.Profiles, pc.Value);
 
 			saveProfile();
@@ -813,6 +878,7 @@ namespace SimPe
 					)
 				)
 			)
+			{
 				File.Copy(
 					Helper.DataFolder.ExpansionsXREGW,
 					Path.Combine(
@@ -821,6 +887,7 @@ namespace SimPe
 					),
 					true
 				);
+			}
 
 			MessageBox.Show(
 				Localization.GetString("spWrittenDesc"),

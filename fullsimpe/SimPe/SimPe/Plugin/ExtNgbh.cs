@@ -36,7 +36,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (vd == null)
+				{
 					CreateValueDescriptors();
+				}
+
 				return vd;
 			}
 		}
@@ -54,6 +57,7 @@ namespace SimPe.Plugin
 			)
 			{
 				if (mci.IsBadge)
+				{
 					list.Add(
 						new NgbhValueDescriptor(
 							mci.Name,
@@ -65,6 +69,7 @@ namespace SimPe.Plugin
 							1000
 						)
 					);
+				}
 			}
 
 			list.AddRange(

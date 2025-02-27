@@ -107,7 +107,9 @@ namespace SimPe.Cache
 		{
 			Version = reader.ReadByte();
 			if (Version > VERSION)
+			{
 				throw new CacheException("Unknown CacheItem Version.", null, Version);
+			}
 
 			ResourceName = reader.ReadString();
 			RcolType = (RcolCacheItemType)reader.ReadByte();

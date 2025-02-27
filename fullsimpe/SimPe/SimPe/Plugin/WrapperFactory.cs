@@ -70,7 +70,9 @@ namespace SimPe.Plugin
 		public static void LoadGroupCache(bool force)
 		{
 			if (FileTable.GroupCache != null)
+			{
 				return;
+			}
 
 			SimPe.PackedFiles.Wrapper.GroupCache gc =
 				new SimPe.PackedFiles.Wrapper.GroupCache();
@@ -97,7 +99,9 @@ namespace SimPe.Plugin
 						1
 					);
 					if (pfd != null)
+					{
 						gc.ProcessData(pfd, pkg, false);
+					}
 				}
 			}
 			catch (Exception ex)

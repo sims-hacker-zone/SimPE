@@ -100,9 +100,14 @@ namespace SimPe.Plugin
 			form.tbsubver.Text = wrp.SubVersion.ToString();
 
 			if (form.cbtype.Items.Contains(wrp.Type))
+			{
 				form.cbtype.SelectedIndex = form.cbtype.Items.IndexOf(wrp.Type);
+			}
 			else
+			{
 				form.cbtype.SelectedIndex = 0;
+			}
+
 			form.tbtype.Text = "0x" + Helper.HexString((byte)wrp.Type);
 
 			form.btnAddApt.Enabled = form.btnDelApt.Enabled = (
@@ -127,13 +132,21 @@ namespace SimPe.Plugin
 			{
 				form.cbLotClas.Enabled = true;
 				if (bby[12])
+				{
 					form.cbLotClas.SelectedIndex = 1;
+				}
 				else if (bby[13])
+				{
 					form.cbLotClas.SelectedIndex = 2;
+				}
 				else if (bby[14])
+				{
 					form.cbLotClas.SelectedIndex = 3;
+				}
 				else
+				{
 					form.cbLotClas.SelectedIndex = 0;
+				}
 			}
 			else
 			{
@@ -209,7 +222,10 @@ namespace SimPe.Plugin
 				form.cbhbcook.Checked = tty[0];
 
 				if (wrp.Type != Ltxt.LotType.Hobby)
+				{
 					form.gbtravel.Visible = form.gbhobby.Visible = false;
+				}
+
 				form.cbtrmale.Enabled = !form.cbtrfem.Checked;
 				form.cbtrfem.Enabled = !form.cbtrmale.Checked;
 				form.cbtrclub.Enabled = (wrp.Type == Ltxt.LotType.Hobby);
@@ -252,13 +268,20 @@ namespace SimPe.Plugin
 			form.tbu6.Text = Helper.BytesToHexList(wrp.Unknown6);
 
 			if (wrp.OwnerInstance > 0)
+			{
 				form.label25.ForeColor = System.Drawing.Color.Blue;
+			}
 			else
+			{
 				form.label25.ForeColor = System.Drawing.SystemColors.ControlText;
+			}
 
 			form.lbApts.Items.Clear();
 			foreach (Ltxt.SubLot sl in wrp.SubLots)
+			{
 				form.lbApts.Items.Add("0x" + Helper.HexString(sl.ApartmentSublot));
+			}
+
 			form.tbApartment.Text =
 				form.tbSAFamily.Text =
 				form.tbSAu2.Text =
@@ -267,7 +290,10 @@ namespace SimPe.Plugin
 
 			form.lbu7.Items.Clear();
 			foreach (uint i in wrp.Unknown7)
+			{
 				form.lbu7.Items.Add("0x" + Helper.HexString(i));
+			}
+
 			form.tbu7.Text = "";
 
 			form.tbData.Text = Helper.BytesToHexList(wrp.Followup);

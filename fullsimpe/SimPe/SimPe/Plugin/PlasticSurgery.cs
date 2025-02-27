@@ -174,12 +174,14 @@ namespace SimPe.Plugin
 			*/
 			Interfaces.Files.IPackedFileDescriptor dna = null;
 			if (!this.fromTemplate)
+			{
 				dna = ngbh.FindFile(
 					0xEBFEE33F,
 					0,
 					Data.MetaData.LOCAL_GROUP,
 					sarchetype.Instance
 				);
+			}
 			else
 			{
 				string skintone = this.GetCpfProperty(
@@ -292,7 +294,9 @@ namespace SimPe.Plugin
 					foreach (IPackedFileDescriptor pfd in items)
 					{
 						if ((pfd is RefFileItem) && ((RefFileItem)pfd).Skin != null)
+						{
 							inUse.Add(((RefFileItem)pfd).Skin.Category);
+						}
 					}
 
 					foreach (RefFileItem item in pcItems)
@@ -332,7 +336,9 @@ namespace SimPe.Plugin
 
 							// we don't want skin pointers
 							if ((cat & SkinCategories.Skin) == SkinCategories.Skin)
+							{
 								continue;
+							}
 
 							ret.Add(item);
 						}
@@ -345,8 +351,13 @@ namespace SimPe.Plugin
 		IPackedFileDescriptor GetClothing3IDREntry(IPackageFile file)
 		{
 			foreach (IPackedFileDescriptor pfd in file.Index)
+			{
 				if (pfd.Type == Data.MetaData.REF_FILE && pfd.Instance == 0x01)
+				{
 					return pfd;
+				}
+			}
+
 			return null;
 		}
 
@@ -390,7 +401,9 @@ namespace SimPe.Plugin
 						cpf.ProcessData(pfd, pkg);
 						CpfItem item = cpf.GetItem(key);
 						if (item != null)
+						{
 							return item.StringValue;
+						}
 					}
 				}
 			}
@@ -491,18 +504,29 @@ namespace SimPe.Plugin
 		)
 		{
 			if (reffile == null)
+			{
 				return;
+			}
+
 			if (reffile.Items == null)
+			{
 				return;
+			}
+
 			if (reffile.Package == null)
+			{
 				return;
+			}
 
 			for (int i = 0; i < reffile.Items.Length; i++)
 			{
 				SimPe.Interfaces.Files.IPackedFileDescriptor pfd =
 					(SimPe.Interfaces.Files.IPackedFileDescriptor)reffile.Items[i];
 				if (pfd == null)
+				{
 					continue;
+				}
+
 				if (pfd.Type == Data.MetaData.GZPS)
 				{
 					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] fii =
@@ -535,9 +559,14 @@ namespace SimPe.Plugin
 				txtr.ProcessData(item);
 				name = txtr.FileName.Trim();
 				if (name.ToLower().EndsWith("_txtr"))
+				{
 					name = name.Substring(0, name.Length - 5);
+				}
+
 				if (name.StartsWith("#"))
+				{
 					name = "_" + name;
+				}
 			}
 			name = name.Replace("-", "_");
 
@@ -574,14 +603,19 @@ namespace SimPe.Plugin
 			catch { }
 
 			if (skinfiles[targetskin] == null)
+			{
 				return;
+			}
+
 			foreach (Cpf newcpf in (ArrayList)skinfiles[targetskin])
 			{
 				if (
 					newcpf.GetSaveItem("override0subset").StringValue.Trim().ToLower()
 					== "face"
 				)
+				{
 					if ((newcpf.GetSaveItem("age").UIntegerValue & age) == age)
+					{
 						if (
 							(newcpf.GetSaveItem("gender").UIntegerValue & patientgender)
 							== patientgender
@@ -601,20 +635,26 @@ namespace SimPe.Plugin
 							{
 								string txmtname = txmt.FileName.Trim();
 								if (txmtname.ToLower().EndsWith("_txmt"))
+								{
 									txmtname = txmtname.Substring(
 										0,
 										txmtname.Length - 5
 									);
+								}
 
 								string basename = txtr.FileName.Trim();
 								if (basename.ToLower().EndsWith("_txtr"))
+								{
 									basename = basename.Substring(
 										0,
 										basename.Length - 5
 									);
+								}
 
 								if (txmtname.IndexOf("#") == 0)
+								{
 									txmtname = "_" + txmtname;
+								}
 
 								int count = 0;
 								try
@@ -638,11 +678,17 @@ namespace SimPe.Plugin
 											)
 											.Value.Trim();
 										if (!name.ToLower().EndsWith("_txtr"))
+										{
 											name += "_txtr";
+										}
+
 										name = this.FindTxtrName(name);
 
 										if (i != 0)
+										{
 											txmtname += "_";
+										}
+
 										txmtname += name;
 									}
 
@@ -654,6 +700,8 @@ namespace SimPe.Plugin
 								}
 							}
 						}
+					}
+				}
 			}
 		}
 
@@ -902,7 +950,9 @@ namespace SimPe.Plugin
 					(amd.FindProperty("paramAge").Value == age)
 					&& (amd.FindProperty("paramGender").Value == gender)
 				)
+				{
 					break;
+				}
 			}
 
 			if (amd != null)
@@ -924,20 +974,35 @@ namespace SimPe.Plugin
 						"baseTexture" + i.ToString()
 					);
 					if (i != 0)
+					{
 						md.Add(val);
+					}
+
 					if (i == 1)
+					{
 						if (eyecolor)
+						{
 							md.Add(val);
+						}
 						else if (makeups)
+						{
 							md.Add(val);
+						}
+					}
 
 					string name = val.Value.Trim();
 					if (!name.ToLower().EndsWith("_txtr"))
+					{
 						name += "_txtr";
+					}
+
 					name = this.FindTxtrName(name);
 
 					if (i != 0)
+					{
 						txmtname += "_";
+					}
+
 					txmtname += name;
 				}
 

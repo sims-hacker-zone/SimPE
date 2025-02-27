@@ -76,7 +76,10 @@ namespace SimPe.Plugin
 			pfd.Group = reader.ReadUInt32();
 			pfd.Instance = reader.ReadUInt32();
 			if (Parent.Count == 0xffff0001)
+			{
 				pfd.SubType = reader.ReadUInt32();
+			}
+
 			pfd.Type = reader.ReadUInt32();
 
 			Unknown1 = reader.ReadInt16();
@@ -102,7 +105,10 @@ namespace SimPe.Plugin
 			writer.Write(pfd.Group);
 			writer.Write(pfd.Instance);
 			if (Parent.Count == 0xffff0001)
+			{
 				writer.Write(pfd.SubType);
+			}
+
 			writer.Write(pfd.Type);
 
 			writer.Write(Unknown1);
@@ -116,7 +122,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (tGenericRcol == null)
+				{
 					tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
+				}
+
 				return tGenericRcol;
 			}
 		}
@@ -128,7 +137,10 @@ namespace SimPe.Plugin
 		protected override void InitTabPage()
 		{
 			if (tGenericRcol == null)
+			{
 				tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
+			}
+
 			tGenericRcol.tb_ver.Text = "0x" + Helper.HexString(this.version);
 			tGenericRcol.gen_pg.SelectedObject = this;
 		}
@@ -144,7 +156,10 @@ namespace SimPe.Plugin
 		public override void Dispose()
 		{
 			if (this.tGenericRcol != null)
+			{
 				this.tGenericRcol.Dispose();
+			}
+
 			tGenericRcol = null;
 		}
 

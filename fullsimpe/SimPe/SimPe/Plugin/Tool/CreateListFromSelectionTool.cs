@@ -61,9 +61,14 @@ namespace SimPe.Plugin.Tool
 		{
 			string error = "";
 			if (!e.HasFileDescriptor)
+			{
 				return "";
+			}
+
 			if (!e.HasPackage)
+			{
 				return "";
+			}
 
 			try
 			{
@@ -72,10 +77,15 @@ namespace SimPe.Plugin.Tool
 					(SimPe.Interfaces.Plugin.IFileWrapper)
 						FileTable.WrapperRegistry.FindHandler(pfd.Type);
 				if (wrapper != null)
+				{
 					wrapper.ProcessData(e.Resource);
+				}
 
 				if (first)
+				{
 					WriteHeader(sw, pfd, wrapper);
+				}
+
 				WriteItem(sw, pfd, wrapper);
 			}
 			catch (Exception ex)
@@ -91,7 +101,9 @@ namespace SimPe.Plugin.Tool
 		{
 			//Select the Type
 			if (Helper.WindowsRegistry.ReportFormat == Registry.ReportFormats.CSV)
+			{
 				Serializer.Formater = new CsvSerializer();
+			}
 
 			System.Collections.Hashtable map = new System.Collections.Hashtable();
 
@@ -137,10 +149,15 @@ namespace SimPe.Plugin.Tool
 				WaitingScreen.Stop();
 
 				if (error != "")
+				{
 					throw new Warning("Not all Selected Files were processed.", error);
+				}
 
 				if (f == null)
+				{
 					f = new Report();
+				}
+
 				f.Execute(sw);
 			}
 #if !DEBUG
@@ -167,7 +184,9 @@ namespace SimPe.Plugin.Tool
 		public void Execute(object sender, ResourceEventArgs es)
 		{
 			if (!ChangeEnabledStateEventHandler(sender, es))
+			{
 				return;
+			}
 
 			Execute(es.Items);
 		}

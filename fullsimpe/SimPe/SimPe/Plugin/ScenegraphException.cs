@@ -12,11 +12,19 @@ namespace SimPe.Plugin
 		)
 		{
 			if (item == null)
+			{
 				return "";
+			}
+
 			if (item.Package == null)
+			{
 				return "";
+			}
+
 			if (item.Package.FileName == null)
+			{
 				return "";
+			}
 
 			return item.Package.FileName;
 		}

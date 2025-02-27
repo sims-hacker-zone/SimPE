@@ -90,7 +90,9 @@ namespace SimPe.Plugin
 			}
 
 			if (form.cbitem.Items.Count > 0)
+			{
 				form.cbitem.SelectedIndex = 0;
+			}
 			//if (form.lbimg.Items.Count>0) form.lbimg.SelectedIndex = 0;
 		}
 

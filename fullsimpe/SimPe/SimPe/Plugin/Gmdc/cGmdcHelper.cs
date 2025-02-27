@@ -237,9 +237,13 @@ namespace SimPe.Plugin.Gmdc
 		protected int ReadValue(System.IO.BinaryReader reader)
 		{
 			if (parent.Version == 0x04)
+			{
 				return reader.ReadInt16();
+			}
 			else
+			{
 				return reader.ReadInt32();
+			}
 		}
 
 		/// <summary>
@@ -250,9 +254,13 @@ namespace SimPe.Plugin.Gmdc
 		protected void WriteValue(System.IO.BinaryWriter writer, int val)
 		{
 			if (parent.Version == 0x04)
+			{
 				writer.Write((short)val);
+			}
 			else
+			{
 				writer.Write((int)val);
+			}
 		}
 
 		/// <summary>
@@ -265,8 +273,9 @@ namespace SimPe.Plugin.Gmdc
 			int count = reader.ReadInt32();
 			items.Clear();
 			for (int i = 0; i < count; i++)
+			{
 				items.Add(ReadValue(reader));
-			;
+			};
 		}
 
 		/// <summary>
@@ -278,7 +287,9 @@ namespace SimPe.Plugin.Gmdc
 		{
 			writer.Write((int)items.Length);
 			for (int i = 0; i < items.Length; i++)
+			{
 				WriteValue(writer, items[i]);
+			}
 		}
 	}
 }

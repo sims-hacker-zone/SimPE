@@ -38,9 +38,15 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			line += b;
 			if (b == 0x10000005)
+			{
 				b = 4;
+			}
+
 			if (b == 0x10000007)
+			{
 				b = 10;
+			}
+
 			return line.ToString();
 		}
 
@@ -207,9 +213,13 @@ namespace SimPe.PackedFiles.Wrapper
 					(ushort)this.FileDescriptor.Instance
 				) as ExtSDesc;
 			if (sdsc == null)
+			{
 				return base.GetResourceName(ta);
+			}
 			else
+			{
 				return sdsc.SimName + " " + sdsc.SimFamilyName + " (DNA)";
+			}
 		}
 	}
 }

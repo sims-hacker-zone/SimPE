@@ -15,7 +15,10 @@ namespace SimPe.Plugin.Downloads
 		static void InitPreview()
 		{
 			if (dxp != null)
+			{
 				return;
+			}
+
 			dxp = new Ambertation.Graphics.DirectXPanel();
 			dxp.Width = 128 * 3;
 			dxp.Height = dxp.Width;
@@ -200,7 +203,10 @@ namespace SimPe.Plugin.Downloads
 					inst
 				);
 				if (pfds.Length == 0)
+				{
 					pfds = thumbs.FindFile(type, 0, inst);
+				}
+
 				if (pfds.Length > 0)
 				{
 					Interfaces.Files.IPackedFileDescriptor pfd = pfds[0];
@@ -212,7 +218,10 @@ namespace SimPe.Plugin.Downloads
 						Bitmap bm = (Bitmap)
 							ImageLoader.Preview(pic.Image, WaitingScreen.ImageSize);
 						if (WaitingScreen.Running)
+						{
 							WaitingScreen.Update(bm, message);
+						}
+
 						return pic.Image;
 					}
 					catch (Exception) { }
@@ -232,12 +241,17 @@ namespace SimPe.Plugin.Downloads
 				foreach (string cat in cats)
 				{
 					if (res != "")
+					{
 						res += " / ";
+					}
+
 					res += cat.Trim();
 				}
 
 				if (res != "")
+				{
 					nfo.Category = res;
+				}
 			}
 		}
 
@@ -253,6 +267,7 @@ namespace SimPe.Plugin.Downloads
 
 			objd = null;
 			if (oci.Tag != null)
+			{
 				if (oci.Tag is SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem)
 				{
 					objd = new SimPe.PackedFiles.Wrapper.ExtObjd();
@@ -260,12 +275,18 @@ namespace SimPe.Plugin.Downloads
 						(SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem)oci.Tag
 					);
 				}
+			}
 
 			UpdateScreen(null, false);
 			if (oci.Thumbnail == null)
+			{
 				nfo.Image = null;
+			}
 			else
+			{
 				nfo.Image = oci.Thumbnail;
+			}
+
 			nfo.Name = oci.Name;
 			nfo.VertexCount = 0;
 			nfo.FaceCount = 0;
@@ -302,12 +323,22 @@ namespace SimPe.Plugin.Downloads
 					nfo.AddGuid(mobjd.Guid);
 
 					if (objd == null)
+					{
 						objd = mobjd;
+					}
+
 					if (pfds.Length == 1)
+					{
 						break;
+					}
+
 					if (mobjd.Data.Length > 0xb)
+					{
 						if (mobjd.Data[0xb] == -1)
+						{
 							objd = mobjd;
+						}
+					}
 				}
 			}
 		}
@@ -362,7 +393,10 @@ namespace SimPe.Plugin.Downloads
 					foreach (SimPe.Plugin.Gmdc.GmdcGroup g in gmdc.Groups)
 					{
 						if (g.Opacity == 0xFFFFFFFF)
+						{
 							hasmesh = true;
+						}
+
 						fct += g.FaceCount;
 						vct += g.UsedVertexCount;
 					}
@@ -412,7 +446,10 @@ namespace SimPe.Plugin.Downloads
 		public static Image Get3dPreview(Ambertation.Scenes.Scene scene)
 		{
 			if (scene == null)
+			{
 				return null;
+			}
+
 			scn = scene;
 			InitPreview();
 
@@ -447,9 +484,14 @@ namespace SimPe.Plugin.Downloads
 		public void UpdateScreen(SimPe.Interfaces.Files.IPackageFile pkg, bool clear)
 		{
 			if (clear)
+			{
 				ClearScreen();
+			}
+
 			if (objd == null)
+			{
 				return;
+			}
 
 			nfo.FirstExpansion = PackageInfo.FileFrom(objd.FileDescriptor);
 
@@ -460,10 +502,14 @@ namespace SimPe.Plugin.Downloads
 				nfo.Image = GetThumbnail(objd.FileDescriptor.Group, mn[0]);
 			}
 			else
+			{
 				nfo.Image = null;
+			}
 
 			if (pkg != null)
+			{
 				RenderGmdcPreview(pkg);
+			}
 
 			SetupCategories(
 				SimPe.Cache.ObjectCacheItem.GetCategory(
@@ -478,12 +524,19 @@ namespace SimPe.Plugin.Downloads
 			if (strs != null)
 			{
 				if (strs.Count > 0)
+				{
 					nfo.Name = strs[0].Title;
+				}
+
 				if (strs.Count > 1)
+				{
 					nfo.Description = strs[1].Title;
+				}
 			}
 			else
+			{
 				nfo.Name = objd.FileName;
+			}
 
 			nfo.Price = objd.Price;
 			UpdateScreen();
@@ -492,9 +545,14 @@ namespace SimPe.Plugin.Downloads
 		protected string[] GetModelnames()
 		{
 			if (objd == null)
+			{
 				return new string[0];
+			}
+
 			if (objd.Package == null)
+			{
 				return new string[0];
+			}
 
 			SimPe.Interfaces.Files.IPackedFileDescriptor pfd = objd.Package.FindFile(
 				Data.MetaData.STRING_FILE,
@@ -509,7 +567,9 @@ namespace SimPe.Plugin.Downloads
 				str.ProcessData(pfd, objd.Package);
 				SimPe.PackedFiles.Wrapper.StrItemList items = str.LanguageItems(1);
 				for (int i = 1; i < items.Length; i++)
+				{
 					list.Add(items[i].Title);
+				}
 			}
 			string[] refname = new string[list.Count];
 			list.CopyTo(refname);
@@ -536,11 +596,19 @@ namespace SimPe.Plugin.Downloads
 		protected virtual SimPe.PackedFiles.Wrapper.StrItemList GetCtssItems()
 		{
 			if (objd == null)
+			{
 				return null;
+			}
+
 			if (objd.Package == null)
+			{
 				return null;
+			}
+
 			if (objd.FileDescriptor == null)
+			{
 				return null;
+			}
 
 			//Get the Name of the Object
 			Interfaces.Files.IPackedFileDescriptor ctss = objd.Package.FindFile(

@@ -52,14 +52,18 @@ namespace SimPe.Actions.Default
 				);
 				sfd.Title = SimPe.Localization.GetString(this.ToString());
 				if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+				{
 					return sfd.FileName;
+				}
 			}
 			else
 			{
 				System.Windows.Forms.FolderBrowserDialog fbd =
 					new System.Windows.Forms.FolderBrowserDialog();
 				if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+				{
 					return fbd.SelectedPath;
+				}
 			}
 
 			return null;
@@ -76,7 +80,10 @@ namespace SimPe.Actions.Default
 			string xml = "";
 			bool run = WaitingScreen.Running;
 			if (!run)
+			{
 				WaitingScreen.Wait();
+			}
+
 			try
 			{
 				if (Helper.Profile == "Short")
@@ -93,7 +100,10 @@ namespace SimPe.Actions.Default
 						try
 						{
 							if (!System.IO.Directory.Exists(path))
+							{
 								System.IO.Directory.CreateDirectory(path);
+							}
+
 							fii.Path = "";
 							package.SavePackedFile(name, null, fii, true);
 							filecount++;
@@ -134,7 +144,9 @@ namespace SimPe.Actions.Default
 						try
 						{
 							if (!System.IO.Directory.Exists(path))
+							{
 								System.IO.Directory.CreateDirectory(path);
+							}
 
 							//make sure the sub xmls don't have a Filename
 							fii.Path = "";
@@ -155,6 +167,7 @@ namespace SimPe.Actions.Default
 								ex
 							);
 							if (excount >= 5)
+							{
 								if (
 									Message.Show(
 										Localization.Manager.GetString("ask000"),
@@ -162,7 +175,10 @@ namespace SimPe.Actions.Default
 										System.Windows.Forms.MessageBoxButtons.YesNo
 									) == System.Windows.Forms.DialogResult.Yes
 								)
+								{
 									i = pfds.Length;
+								}
+							}
 						}
 					} //for i
 					xml += "</package>" + Helper.lbr;
@@ -192,7 +208,9 @@ namespace SimPe.Actions.Default
 			finally
 			{
 				if (!run)
+				{
 					WaitingScreen.Stop();
+				}
 			}
 
 			Message.Show(
@@ -212,7 +230,9 @@ namespace SimPe.Actions.Default
 		)
 		{
 			if (!ChangeEnabledStateEventHandler(null, es))
+			{
 				return;
+			}
 
 			bool multi = es.Count > 1;
 			string flname = SetupSaveDialog(
@@ -221,7 +241,9 @@ namespace SimPe.Actions.Default
 			);
 
 			if (flname == null)
+			{
 				return;
+			}
 
 			try
 			{
@@ -244,8 +266,12 @@ namespace SimPe.Actions.Default
 					SimPe.Collections.PackedFileDescriptors pfds =
 						new SimPe.Collections.PackedFileDescriptors();
 					foreach (SimPe.Events.ResourceContainer e in es)
+					{
 						if (e.HasFileDescriptor)
+						{
 							pfds.Add(e.Resource.FileDescriptor);
+						}
+					}
 
 					SimPe.Interfaces.Files.IPackedFileDescriptor[] ar =
 						new SimPe.Interfaces.Files.IPackedFileDescriptor[pfds.Length];

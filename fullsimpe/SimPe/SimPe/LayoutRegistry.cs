@@ -80,7 +80,9 @@ namespace SimPe
 		public void Flush()
 		{
 			if (reg != null)
+			{
 				reg.Flush();
+			}
 		}
 
 		#endregion
@@ -111,7 +113,10 @@ namespace SimPe
 			get
 			{
 				if (Helper.WindowsRegistry.Layout.IsClassicPreset)
+				{
 					return (byte)0;
+				}
+
 				object o = xrk.GetValue("ThemeID", (byte)1);
 				return Math.Min((byte)Convert.ToInt32(o), (byte)10);
 			}
@@ -175,11 +180,21 @@ namespace SimPe
 				System.Collections.Generic.List<string> lc =
 					new System.Collections.Generic.List<string>(colNames);
 				foreach (string v in s)
+				{
 					if (!lc.Contains(v))
+					{
 						ls.Remove(v);
+					}
+				}
+
 				foreach (string v in colNames)
+				{
 					if (!ls.Contains(v))
+					{
 						ls.Add(v);
+					}
+				}
+
 				return ls;
 			}
 			set
@@ -190,11 +205,21 @@ namespace SimPe
 				System.Collections.Generic.List<string> lc =
 					new System.Collections.Generic.List<string>(colNames);
 				foreach (string v in s)
+				{
 					if (!lc.Contains(v))
+					{
 						ls.Remove(v);
+					}
+				}
+
 				foreach (string v in colNames)
+				{
 					if (!ls.Contains(v))
+					{
 						ls.Add(v);
+					}
+				}
+
 				xrk.SetValue("ColumnOrder", String.Join(",", ls.ToArray()));
 			}
 		}

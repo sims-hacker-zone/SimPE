@@ -81,7 +81,9 @@ namespace SimPe.Plugin
 
 			prov = null;
 			if (SimPe.Helper.WindowsRegistry.UseBigIcons)
+			{
 				this.lblist.Font = new System.Drawing.Font("Verdana", 11F);
+			}
 		}
 
 		/// <summary>
@@ -829,14 +831,20 @@ namespace SimPe.Plugin
 					pb.Value = (count++ * pb.Maximum) / pfds.Length;
 					SearchItem si = fkt(pfd, package, prov);
 					if (si != null)
+					{
 						lblist.Items.Add(si);
+					}
 				}
 
 				lblist.Sorted = true;
 				if (lblist.Items.Count == 0)
+				{
 					MessageBox.Show("No Files were found");
+				}
 				else
+				{
 					lblist.SelectedIndex = 0;
+				}
 			}
 			catch (Exception ex)
 			{
@@ -872,7 +880,9 @@ namespace SimPe.Plugin
 			{
 				uint group = Convert.ToUInt32(this.tbbhavgroup.Text, 16);
 				if (pfd.Group != group)
+				{
 					return null;
+				}
 			}
 
 			Bhav bhav = new Bhav(prov.OpcodeProvider);
@@ -940,15 +950,22 @@ namespace SimPe.Plugin
 
 			string ext = "";
 			if (sdesc.Unlinked != 0x00)
+			{
 				ext += "unlinked";
+			}
+
 			if (!sdesc.AvailableCharacterData)
 			{
 				if (ext.Trim() != "")
+				{
 					ext += ", no Character Data";
+				}
 			}
 
 			if (ext.Trim() != "")
+			{
 				ext = " (" + ext + ")";
+			}
 
 			string simname = "";
 
@@ -957,44 +974,54 @@ namespace SimPe.Plugin
 				simname = sdesc.SimFamilyName;
 				simname = simname.Trim().ToLower();
 				if (simname == name)
+				{
 					return new SearchItem(
 						sdesc.SimName + " " + sdesc.SimFamilyName + ext,
 						pfd
 					);
+				}
 
 				simname = sdesc.HouseholdName;
 				simname = simname.Trim().ToLower();
 				if (simname == name)
+				{
 					return new SearchItem(
 						sdesc.SimName + " " + sdesc.SimFamilyName + ext,
 						pfd
 					);
+				}
 			}
 			else
 			{
 				simname = sdesc.SimName + " " + sdesc.SimFamilyName;
 				simname = simname.Trim().ToLower();
 				if (simname == name)
+				{
 					return new SearchItem(
 						sdesc.SimName + " " + sdesc.SimFamilyName + ext,
 						pfd
 					);
+				}
 
 				simname = sdesc.SimName + " " + sdesc.HouseholdName;
 				simname = simname.Trim().ToLower();
 				if (simname == name)
+				{
 					return new SearchItem(
 						sdesc.SimName + " " + sdesc.SimFamilyName + ext,
 						pfd
 					);
+				}
 
 				simname = sdesc.SimName;
 				simname = simname.Trim().ToLower();
 				if (simname == name)
+				{
 					return new SearchItem(
 						sdesc.SimName + " " + sdesc.SimFamilyName + ext,
 						pfd
 					);
+				}
 			}
 
 			return null;
@@ -1025,13 +1052,25 @@ namespace SimPe.Plugin
 					.ToLower(); //i.StringValue.Trim().ToLower();
 				string s2 = tbpropval.Text.Trim().ToLower();
 				if (rbfull.Checked)
+				{
 					check = (s1 == s2);
+				}
+
 				if (rbstart.Checked)
+				{
 					check = (s1.StartsWith(s2));
+				}
+
 				if (rbend.Checked)
+				{
 					check = (s1.EndsWith(s2));
+				}
+
 				if (rbcont.Checked)
+				{
 					check = (s1.IndexOf(s2) != -1);
+				}
+
 				if (check)
 				{
 					return new SearchItem(cpf.FileDescriptor.ToString(), pfd);
@@ -1061,7 +1100,10 @@ namespace SimPe.Plugin
 			objd.ProcessData(pfd, package);
 
 			if (objd.Guid == guid)
+			{
 				return new SearchItem(objd.FileName, pfd);
+			}
+
 			return null;
 		}
 		#endregion
@@ -1112,7 +1154,10 @@ namespace SimPe.Plugin
 		private void Open(object sender, System.EventArgs e)
 		{
 			if (lblist.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				SearchItem si = (SearchItem)lblist.Items[lblist.SelectedIndex];
@@ -1129,7 +1174,10 @@ namespace SimPe.Plugin
 		{
 			this.btopen.Enabled = false;
 			if (lblist.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			this.btopen.Enabled = (btopen.Tag == null);
 		}
 

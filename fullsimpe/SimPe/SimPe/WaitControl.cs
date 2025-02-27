@@ -48,9 +48,13 @@ namespace SimPe
 				if (m.Msg == WM_USER_SHOW_HIDE)
 				{
 					if (m.WParam.ToInt32() == 1)
+					{
 						SetWaiting(true);
+					}
 					else
+					{
 						SetWaiting(false);
+					}
 				}
 				else if (m.Msg == WM_USER_CHANGED_MESSAGE)
 				{
@@ -73,23 +77,35 @@ namespace SimPe
 				else if (m.Msg == WM_USER_SHOW_HIDE_PROGRESS)
 				{
 					if (m.WParam.ToInt32() == 1)
+					{
 						DoShowProgress(true);
+					}
 					else
+					{
 						DoShowProgress(false);
+					}
 				}
 				else if (m.Msg == WM_USER_SHOW_HIDE_ANIMATION)
 				{
 					if (m.WParam.ToInt32() == 1)
+					{
 						DoShowAnimation(true);
+					}
 					else
+					{
 						DoShowAnimation(false);
+					}
 				}
 				else if (m.Msg == WM_USER_SHOW_HIDE_TEXT)
 				{
 					if (m.WParam.ToInt32() == 1)
+					{
 						DoShowText(true);
+					}
 					else
+					{
 						DoShowText(false);
+					}
 				}
 			}
 			base.WndProc(ref m);
@@ -196,7 +212,10 @@ namespace SimPe
 			{
 				int val = 0;
 				if (value)
+				{
 					val = 1;
+				}
+
 				Ambertation.Windows.Forms.APIHelp.SendMessage(
 					myhandle,
 					WM_USER_SHOW_HIDE,
@@ -216,7 +235,10 @@ namespace SimPe
 			else
 			{
 				if (!this.DesignMode && !Helper.WindowsRegistry.ShowWaitBarPermanent)
+				{
 					this.Visible = false;
+				}
+
 				this.Message = "";
 				this.Progress = 0;
 				this.ShowProgress = false;
@@ -234,7 +256,10 @@ namespace SimPe
 			{
 				int val = 0;
 				if (value)
+				{
 					val = 1;
+				}
+
 				Ambertation.Windows.Forms.APIHelp.SendMessage(
 					myhandle,
 					WM_USER_SHOW_HIDE_PROGRESS,
@@ -250,9 +275,13 @@ namespace SimPe
 			pb.Visible = spb;
 			tbPercent.Visible = spb;
 			if (spb)
+			{
 				tbInfo.BorderSides = ToolStripStatusLabelBorderSides.Left;
+			}
 			else
+			{
 				tbInfo.BorderSides = ToolStripStatusLabelBorderSides.None;
+			}
 		}
 
 		bool sanim;
@@ -289,7 +318,10 @@ namespace SimPe
 			{
 				int val = 0;
 				if (value)
+				{
 					val = 1;
+				}
+
 				Ambertation.Windows.Forms.APIHelp.SendMessage(
 					myhandle,
 					WM_USER_SHOW_HIDE_TEXT,

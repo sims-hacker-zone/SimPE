@@ -47,12 +47,17 @@ namespace SimPe.Plugin
 
 			System.Collections.ArrayList names = new System.Collections.ArrayList();
 			foreach (SimPe.Data.SemiGlobalAlias sga in SimPe.Data.MetaData.SemiGlobals)
+			{
 				if (!names.Contains(sga.Name.Trim().ToLower()))
 				{
 					if (sga.Known)
+					{
 						form.cbseminame.Items.Add(sga);
+					}
+
 					names.Add(sga.Name.Trim().ToLower());
 				}
+			}
 		}
 		#endregion
 
@@ -91,9 +96,14 @@ namespace SimPe.Plugin
 					form.cbseminame.SelectedIndex = i;
 					form.tbgroup.Text = "0x" + Helper.HexString(a.Id);
 					if (a.Id == Hashes.GroupHash(wrp.SemiGlobalName))
+					{
 						form.tbgroup.ForeColor = System.Drawing.SystemColors.WindowText;
+					}
 					else
+					{
 						form.tbgroup.ForeColor = System.Drawing.Color.Red;
+					}
+
 					break;
 				}
 			}

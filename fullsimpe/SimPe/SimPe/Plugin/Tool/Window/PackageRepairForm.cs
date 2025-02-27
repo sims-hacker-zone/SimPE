@@ -269,7 +269,9 @@ namespace SimPe.Plugin.Tool.Window
 		public void Setup(string pkgname)
 		{
 			if (pkgname == null)
+			{
 				pkgname = "";
+			}
 
 			this.tbPkg.Text = pkgname;
 			tbs.HeaderText = System.IO.Path.GetFileNameWithoutExtension(pkgname);
@@ -281,14 +283,18 @@ namespace SimPe.Plugin.Tool.Window
 			try
 			{
 				if (System.IO.File.Exists(pkgname))
+				{
 					si = SimPe.Packages.StreamFactory.UseStream(
 						pkgname,
 						System.IO.FileAccess.ReadWrite,
 						false
 					);
+				}
 
 				if (!si.FileStream.CanWrite || !si.FileStream.CanRead)
+				{
 					si = null;
+				}
 
 				if (si != null)
 				{
@@ -316,7 +322,9 @@ namespace SimPe.Plugin.Tool.Window
 				}
 			);
 			if (ofd.ShowDialog() == DialogResult.OK)
+			{
 				Setup(ofd.FileName);
+			}
 		}
 
 		private void llRepair_LinkClicked(

@@ -83,7 +83,9 @@ namespace SimPe
 				{
 					crc <<= 1;
 					if ((crc & 0x1000000) != 0)
+					{
 						crc ^= poly;
+					}
 				}
 			}
 			return (crc & 0x00ffffff);
@@ -198,7 +200,9 @@ namespace SimPe
 		public static string StripHashFromName(string filename)
 		{
 			if (filename == null)
+			{
 				return "";
+			}
 
 			if (filename.IndexOf("#") == 0)
 			{
@@ -258,12 +262,16 @@ namespace SimPe
 		public static uint GenerateUserId(uint guid, string username, string password)
 		{
 			if (username.Trim() == "")
+			{
 				return 0;
+			}
 
 			uint hash = Hashes.GetCrc32(username) & 0xFFFFFFFE;
 			guid = (uint)(guid << 8) & 0xFFFFFF00;
 			if (guid == 0)
+			{
 				return hash;
+			}
 
 			return ((hash | 0x00000001) & 0x000000FF) | guid;
 		}
@@ -271,11 +279,16 @@ namespace SimPe
 		public static bool ValidUserId(uint id, string username, string password)
 		{
 			if (username.Trim() == "")
+			{
 				return id == 0;
+			}
+
 			uint hash = Hashes.GetCrc32(username) & 0xFFFFFFFE;
 
 			if ((id & 1) == 0)
+			{
 				return (id == hash);
+			}
 
 			uint guid = GetUserGuid(id);
 			id = id & 0x000000FE;

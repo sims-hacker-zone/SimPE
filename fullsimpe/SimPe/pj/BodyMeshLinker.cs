@@ -55,7 +55,10 @@ namespace pj
 			ofd.ValidateNames = true;
 			DialogResult dr = ofd.ShowDialog();
 			if (DialogResult.OK.Equals(dr))
+			{
 				return ofd.FileName;
+			}
+
 			return null;
 		}
 
@@ -71,7 +74,9 @@ namespace pj
 					)
 					.Equals(DialogResult.OK)
 			)
+			{
 				return;
+			}
 
 			SimPe.Plugin.RefFile refFile = new SimPe.Plugin.RefFile();
 			refFile.ProcessData(refFilePFD, currentPackage);
@@ -106,7 +111,9 @@ namespace pj
 
 			String meshPackage = getFilename();
 			if (meshPackage == null || meshPackage.Length == 0)
+			{
 				return false;
+			}
 
 			IPackageFile p = null;
 			try
@@ -162,9 +169,14 @@ namespace pj
 		{
 			currentPackage = package;
 			if (pfd != null && pfd.Type == SimPe.Data.MetaData.REF_FILE)
+			{
 				refFilePFD = pfd;
+			}
 			else
+			{
 				refFilePFD = null;
+			}
+
 			return package != null && refFilePFD != null;
 		}
 

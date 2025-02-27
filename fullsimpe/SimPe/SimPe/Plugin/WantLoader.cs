@@ -136,11 +136,16 @@ namespace SimPe.Plugin
 		static void LoadCache()
 		{
 			if (cachefile != null)
+			{
 				return;
+			}
 
 			cachefile = new WantCacheFile();
 			if (!Helper.WindowsRegistry.UseCache)
+			{
 				return;
+			}
+
 			Wait.SubStart();
 			Wait.Message = "Loading Cache";
 			try
@@ -160,9 +165,14 @@ namespace SimPe.Plugin
 		public static void SaveCache()
 		{
 			if (!Helper.WindowsRegistry.UseCache)
+			{
 				return;
+			}
+
 			if (cachefile == null)
+			{
 				return;
+			}
 
 			Wait.SubStart();
 			Wait.Message = "Saveing Cache";
@@ -180,16 +190,22 @@ namespace SimPe.Plugin
 		{
 			LoadCache();
 			if (wantcache == null)
+			{
 				wantcache = cachefile.Map;
+			}
 
 			if (wantcache.ContainsKey(guid))
 			{
 				object o = wantcache[guid];
 				WantInformation wf;
 				if (o.GetType() == typeof(WantInformation))
+				{
 					wf = (WantInformation)o;
+				}
 				else
+				{
 					wf = WantCacheInformation.LoadWant((WantCacheItem)o);
+				}
 
 				return wf;
 			}
@@ -215,7 +231,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (str == null)
+				{
 					return "0x" + Helper.HexString(guid);
+				}
+
 				return str.FallbackedLanguageItem(
 					Helper.WindowsRegistry.LanguageCode,
 					0
@@ -231,7 +250,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (primicon == null)
+				{
 					return null;
+				}
+
 				return primicon.Image;
 			}
 		}
@@ -267,7 +289,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (wants == null)
+				{
 					LoadWants();
+				}
+
 				return wants;
 			}
 		}
@@ -280,7 +305,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (wnl == null)
+				{
 					wnl = new WantNameLoader();
+				}
+
 				return wnl;
 			}
 		}
@@ -350,7 +378,9 @@ namespace SimPe.Plugin
 		public static XWant GetWant(uint guid)
 		{
 			if (wants == null)
+			{
 				LoadWants();
+			}
 
 			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem wts =
 				(SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem)wants[guid];
@@ -376,9 +406,14 @@ namespace SimPe.Plugin
 		public static SimPe.PackedFiles.Wrapper.Str LoadText(XWant wnt)
 		{
 			if (wnt == null)
+			{
 				return null;
+			}
+
 			if (txtpkg == null)
+			{
 				LoadTextPackage();
+			}
 
 			Interfaces.Files.IPackedFileDescriptor[] pfds = txtpkg.FindFile(
 				Data.MetaData.STRING_FILE,
@@ -405,9 +440,14 @@ namespace SimPe.Plugin
 		public static SimPe.PackedFiles.Wrapper.Picture LoadIcon(XWant wnt)
 		{
 			if (wnt == null)
+			{
 				return null;
+			}
+
 			if (txtpkg == null)
+			{
 				LoadTextPackage();
+			}
 
 			Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
 				FileTable.FileIndex.FindFile(wnt.IconFileDescriptor, null);

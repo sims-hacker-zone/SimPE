@@ -152,10 +152,16 @@ namespace SimPe.Plugin
 
 			string name = System.IO.Path.GetFileName(path);
 			if (lable != "")
+			{
 				name = lable + "_" + name;
+			}
+
 			long grp = PathProvider.Global.SaveGamePathProvidedByGroup(path);
 			if (grp > 1)
+			{
 				name = grp.ToString() + "_" + name;
+			}
+
 			backuppath = System.IO.Path.Combine(PathProvider.Global.BackupFolder, name);
 
 			UpdateList();
@@ -172,7 +178,9 @@ namespace SimPe.Plugin
 		private void Restore(object sender, System.EventArgs e)
 		{
 			if (lbdirs.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			prov.SimDescriptionProvider.BasePackage = null;
 			prov.SimFamilynameProvider.BasePackage = null;
@@ -208,7 +216,10 @@ namespace SimPe.Plugin
 									.Replace(".", "-")
 						);
 						if (!System.IO.Directory.Exists(newback))
+						{
 							System.IO.Directory.CreateDirectory(newback);
+						}
+
 						Helper.CopyDirectory(path, newback, true);
 					}
 
@@ -245,7 +256,10 @@ namespace SimPe.Plugin
 		private void Delete(object sender, System.EventArgs e)
 		{
 			if (lbdirs.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			string source = System.IO.Path.Combine(
 				backuppath,
 				lbdirs.Items[lbdirs.SelectedIndex].ToString()
@@ -263,7 +277,10 @@ namespace SimPe.Plugin
 				this.Cursor = Cursors.WaitCursor;
 
 				if (System.IO.Directory.Exists(source))
+				{
 					System.IO.Directory.Delete(source, true);
+				}
+
 				UpdateList();
 				this.Cursor = Cursors.Default;
 			}

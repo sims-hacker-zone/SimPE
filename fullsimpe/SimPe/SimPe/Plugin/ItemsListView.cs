@@ -53,25 +53,38 @@ namespace SimPe.Plugin
 
 			Update();
 			if (autoadd)
+			{
 				parent.Items.Add(this);
+			}
 		}
 
 		internal void Update()
 		{
 			this.Text = Item.ToString();
 			if (!Item.Flags.IsVisible)
+			{
 				this.ForeColor = Color.SteelBlue;
+			}
+
 			if (Item.Flags.IsControler)
+			{
 				this.ForeColor = Color.Gray;
+			}
+
 			if (Item.IsInventory)
+			{
 				this.ForeColor = Color.MediumSeaGreen;
+			}
+
 			if (Item.IsGossip)
+			{
 				this.Font = new Font(
 					this.Font.FontFamily,
 					this.Font.Size,
 					FontStyle.Italic,
 					this.Font.Unit
 				);
+			}
 
 			if (parent.SmallImageList != null)
 			{
@@ -79,7 +92,9 @@ namespace SimPe.Plugin
 				if (i != null)
 				{
 					if (this.ImageIndex >= 0)
+					{
 						parent.SmallImageList.Images[this.ImageIndex] = i;
+					}
 					else
 					{
 						parent.SmallImageList.Images.Add(i);

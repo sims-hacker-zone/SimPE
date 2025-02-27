@@ -45,7 +45,9 @@ namespace SimPe.Plugin
 			form = new RefFileForm();
 
 			foreach (Interfaces.IAlias alias in SimPe.Helper.TGILoader.FileTypes)
+			{
 				form.cbtypes.Items.Add(alias);
+			}
 		}
 		#endregion
 

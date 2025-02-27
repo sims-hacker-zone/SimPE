@@ -191,7 +191,9 @@ namespace SimPe.Plugin.Gmdc
 				LoadSpecialElements(g);
 
 				if (Group != null && VertexElement != null && Link != null)
+				{
 					ProcessGroup();
+				}
 			}
 
 			FinishFile();
@@ -212,9 +214,14 @@ namespace SimPe.Plugin.Gmdc
 			this.Group = group;
 
 			if (group == null)
+			{
 				return;
+			}
+
 			if (Gmdc == null)
+			{
 				return;
+			}
 
 			if (group.LinkIndex < Gmdc.Links.Length)
 			{
@@ -225,11 +232,17 @@ namespace SimPe.Plugin.Gmdc
 					{
 						GmdcElement e = Gmdc.Elements[i];
 						if (e.Identity == ElementIdentity.Vertex)
+						{
 							VertexElement = e;
+						}
 						else if (e.Identity == ElementIdentity.Normal)
+						{
 							NormalElement = e;
+						}
 						else if (e.Identity == ElementIdentity.UVCoordinate)
+						{
 							UVCoordinateElement = e;
+						}
 					}
 				} //foreach
 			}
@@ -313,7 +326,10 @@ namespace SimPe.Plugin.Gmdc
 			get
 			{
 				if (flname == null)
+				{
 					flname = "";
+				}
+
 				return flname;
 			}
 			set

@@ -112,7 +112,10 @@ namespace SimPe.Plugin
 			s += BottomRight.ToString() + "   ";
 
 			if (s.Length > 0xff)
+			{
 				s = s.Substring(0, 0xff) + "...";
+			}
+
 			return s;
 		}
 	}

@@ -138,10 +138,12 @@ namespace SimPe.PackedFiles.Wrapper
 			foreach (StrItem i in items)
 			{
 				if (lngs[i.LanguageID] == null)
+				{
 					lngs[i.LanguageID] = new List<StrItem>();
-				((List<StrItem>)lngs[i.LanguageID]).Add(i);
+				} ((List<StrItem>)lngs[i.LanguageID]).Add(i);
 			}
 			foreach (List<StrItem> l in lngs.Values)
+			{
 				for (int i = l.Count - 1; i >= 0; i--)
 				{
 					if (
@@ -153,8 +155,11 @@ namespace SimPe.PackedFiles.Wrapper
 						items.Remove(l[i]);
 					}
 					else
+					{
 						break;
+					}
 				}
+			}
 		}
 
 		#region AbstractWrapper Member
@@ -211,7 +216,9 @@ namespace SimPe.PackedFiles.Wrapper
 				writer.Write((ushort)items.Count);
 			}
 			foreach (StrItem i in items)
+			{
 				i.Serialize(writer);
+			}
 		}
 
 		/// <summary>
@@ -247,10 +254,13 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				items.Add(new StrItem(this, reader));
 				if (!languages.ContainsKey(items[items.Count - 1].LanguageID))
+				{
 					languages.Add(
 						items[items.Count - 1].LanguageID,
 						new List<StrItem>()
 					);
+				}
+
 				languages[items[items.Count - 1].LanguageID]
 					.Add(items[items.Count - 1]);
 			}
@@ -282,7 +292,10 @@ namespace SimPe.PackedFiles.Wrapper
 		protected override string GetResourceName(Data.TypeAlias ta)
 		{
 			if (!SimPe.Helper.FileFormat)
+			{
 				return base.GetResourceName(ta);
+			}
+
 			SimPe.Interfaces.Files.IPackedFile pf = Package.Read(FileDescriptor);
 			byte[] ab = pf.GetUncompressedData(0x42);
 			return (
@@ -300,7 +313,9 @@ namespace SimPe.PackedFiles.Wrapper
 		public new void Add(StrItem item)
 		{
 			if ((this.format == 0x0000 || this.format == 0xFFFE) && items.Count >= 0xFF)
+			{
 				return;
+			}
 
 			if (this.format == 0x0000)
 			{
@@ -311,13 +326,20 @@ namespace SimPe.PackedFiles.Wrapper
 			item.Parent = this;
 
 			if (!languages.ContainsKey(item.LanguageID))
+			{
 				languages.Add(item.LanguageID, new List<StrItem>());
+			}
+
 			if (!languages[item.LanguageID].Contains(item))
+			{
 				languages[item.LanguageID].Add(item);
+			}
 
 			items.Add(item);
 			if (!item.Title.Trim().Equals("") || !item.Description.Trim().Equals(""))
+			{
 				OnWrapperChanged(items, new EventArgs());
+			}
 		}
 
 		public void Add(byte lid, string title, string desc)
@@ -328,15 +350,23 @@ namespace SimPe.PackedFiles.Wrapper
 		public new bool Remove(StrItem item)
 		{
 			if (item != null && languages.ContainsKey(item.LanguageID))
+			{
 				languages[item.LanguageID].Remove(item);
+			}
+
 			return base.Remove(item);
 		}
 
 		public bool Remove(byte lid)
 		{
 			foreach (StrItem si in items)
+			{
 				if (si.LanguageID == lid)
+				{
 					si.Title = si.Description = "";
+				}
+			}
+
 			CleanUp();
 			return true;
 		}
@@ -344,14 +374,20 @@ namespace SimPe.PackedFiles.Wrapper
 		public void DefaultOnly()
 		{
 			foreach (StrItem si in items)
+			{
 				if (si.LanguageID != 1)
+				{
 					si.Title = si.Description = "";
+				}
+			}
+
 			CleanUp();
 		}
 
 		public void CleanHim()
 		{
 			foreach (StrItem si in items)
+			{
 				if (
 					si.LanguageID < 12
 					|| (si.LanguageID > 12 && si.LanguageID < 21)
@@ -360,9 +396,15 @@ namespace SimPe.PackedFiles.Wrapper
 					|| si.LanguageID == 28
 					|| si.LanguageID == 35
 				)
+				{
 					si.Description = "";
+				}
 				else
+				{
 					si.Title = si.Description = "";
+				}
+			}
+
 			CleanUp();
 		}
 
@@ -413,10 +455,15 @@ namespace SimPe.PackedFiles.Wrapper
 				{
 					sw.WriteLine("<-String->");
 					if (item.Title.Trim().Length > 0)
+					{
 						sw.WriteLine(item.Title);
+					}
+
 					sw.WriteLine("<-Desc->");
 					if (item.Description.Trim().Length > 0)
+					{
 						sw.WriteLine(item.Description);
+					}
 				}
 			}
 			sw.Close();
@@ -445,10 +492,14 @@ namespace SimPe.PackedFiles.Wrapper
 						isDesc = false;
 						lineCt++;
 						if (this[lid, lineCt] != null)
+						{
 							this[lid, lineCt].Description = this[lid, lineCt].Title =
 								"";
+						}
 						else
+						{
 							this.Add(lid, "", "");
+						}
 					}
 					else if (isString && line.Equals("<-Desc->"))
 					{
@@ -456,12 +507,16 @@ namespace SimPe.PackedFiles.Wrapper
 						isDesc = true;
 					}
 					else if (isString)
+					{
 						this[lid, lineCt].Title +=
 							(this[lid, lineCt].Title.Length == 0 ? "" : "\n") + line;
+					}
 					else if (isDesc)
+					{
 						this[lid, lineCt].Description +=
 							(this[lid, lineCt].Description.Length == 0 ? "" : "\n")
 							+ line;
+					}
 				}
 				sr.Close();
 			}
@@ -492,7 +547,9 @@ namespace SimPe.PackedFiles.Wrapper
 				{
 					lid = value;
 					if (parent != null)
+					{
 						parent.OnWrapperChanged(this, new EventArgs());
+					}
 				}
 			}
 		}
@@ -509,7 +566,9 @@ namespace SimPe.PackedFiles.Wrapper
 				{
 					title = value;
 					if (parent != null)
+					{
 						parent.OnWrapperChanged(this, new EventArgs());
+					}
 				}
 			}
 		}
@@ -526,7 +585,9 @@ namespace SimPe.PackedFiles.Wrapper
 				{
 					desc = value;
 					if (parent != null)
+					{
 						parent.OnWrapperChanged(this, new EventArgs());
+					}
 				}
 			}
 		}
@@ -617,7 +678,10 @@ namespace SimPe.PackedFiles.Wrapper
 				{
 					char b = r.ReadChar();
 					if (b == 0)
+					{
 						break;
+					}
+
 					s += b;
 				}
 				catch
@@ -631,8 +695,13 @@ namespace SimPe.PackedFiles.Wrapper
 		private void SerializeStringZero(System.IO.BinaryWriter w, string s)
 		{
 			if (s != null)
+			{
 				foreach (char c in s)
+				{
 					w.Write(c);
+				}
+			}
+
 			w.Write((char)0);
 		}
 	}

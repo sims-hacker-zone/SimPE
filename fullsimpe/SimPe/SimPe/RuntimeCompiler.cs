@@ -47,7 +47,9 @@ namespace SimPe
 			compilerParams.ReferencedAssemblies.Add("system.data.dll");
 			compilerParams.ReferencedAssemblies.Add("system.xml.dll");
 			foreach (string rs in referenced)
+			{
 				compilerParams.ReferencedAssemblies.Add(rs);
+			}
 
 			// Run the compiler and build the assembly
 			CompilerResults res = iCodeCompiler.CompileAssemblyFromSource(
@@ -59,8 +61,12 @@ namespace SimPe
 			{
 				string errs = "";
 				foreach (object o in res.Errors)
+				{
 					if (o != null)
+					{
 						errs += o.ToString() + Helper.lbr;
+					}
+				}
 
 				throw new Exception(
 					"Failed to compile RuntimePathSettings",
@@ -82,7 +88,9 @@ namespace SimPe
 		{
 			Type t = asm.GetType(name, false);
 			if (t == null)
+			{
 				return null;
+			}
 
 			return System.Activator.CreateInstance(t, args);
 		}

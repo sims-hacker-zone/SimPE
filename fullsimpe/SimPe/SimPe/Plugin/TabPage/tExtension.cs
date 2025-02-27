@@ -917,7 +917,10 @@ namespace SimPe.Plugin.TabPage
 		private void GNSettingsChange(object sender, System.EventArgs e)
 		{
 			if (Tag == null)
+			{
 				return;
+			}
+
 			try
 			{
 				SimPe.Plugin.Extension ext = (SimPe.Plugin.Extension)Tag;
@@ -956,10 +959,16 @@ namespace SimPe.Plugin.TabPage
 		private void SelectItem(object sender, System.EventArgs e)
 		{
 			if (tb_itemname.Tag != null)
+			{
 				return;
+			}
+
 			HideAll();
 			if (lb_items.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			lldel.Enabled = true;
 			try
 			{
@@ -1063,7 +1072,9 @@ namespace SimPe.Plugin.TabPage
 					lb_items.Items[lb_items.SelectedIndex];
 				fe.gbIems.Tag = ei.Items;
 				foreach (ExtensionItem i in ei.Items)
+				{
 					fe.lb_items.Items.Add(i);
+				}
 
 				f.ShowDialog();
 
@@ -1258,7 +1269,10 @@ namespace SimPe.Plugin.TabPage
 		)
 		{
 			if (lb_items.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				ExtensionItem[] list = (ExtensionItem[])gbIems.Tag;
@@ -1314,9 +1328,15 @@ namespace SimPe.Plugin.TabPage
 		private void ChangeName(object sender, System.EventArgs e)
 		{
 			if (tb_itemname.Tag != null)
+			{
 				return;
+			}
+
 			if (lb_items.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				tb_itemname.Tag = true;
@@ -1339,9 +1359,15 @@ namespace SimPe.Plugin.TabPage
 		private void ValChange(object sender, System.EventArgs e)
 		{
 			if (tb_itemname.Tag != null)
+			{
 				return;
+			}
+
 			if (lb_items.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				tb_itemname.Tag = true;
@@ -1361,9 +1387,15 @@ namespace SimPe.Plugin.TabPage
 		private void FloatChange(object sender, System.EventArgs e)
 		{
 			if (tb_itemname.Tag != null)
+			{
 				return;
+			}
+
 			if (lb_items.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				tb_itemname.Tag = true;
@@ -1383,9 +1415,15 @@ namespace SimPe.Plugin.TabPage
 		private void TransChange(object sender, System.EventArgs e)
 		{
 			if (tb_itemname.Tag != null)
+			{
 				return;
+			}
+
 			if (lb_items.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				tb_itemname.Tag = true;
@@ -1407,9 +1445,15 @@ namespace SimPe.Plugin.TabPage
 		private void RotChange(object sender, System.EventArgs e)
 		{
 			if (tb_itemname.Tag != null)
+			{
 				return;
+			}
+
 			if (lb_items.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				tb_itemname.Tag = true;
@@ -1432,9 +1476,15 @@ namespace SimPe.Plugin.TabPage
 		private void StrChange(object sender, System.EventArgs e)
 		{
 			if (tb_itemname.Tag != null)
+			{
 				return;
+			}
+
 			if (lb_items.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				tb_itemname.Tag = true;
@@ -1454,9 +1504,15 @@ namespace SimPe.Plugin.TabPage
 		private void BinChange(object sender, System.EventArgs e)
 		{
 			if (tb_itemname.Tag != null)
+			{
 				return;
+			}
+
 			if (lb_items.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				tb_itemname.Tag = true;

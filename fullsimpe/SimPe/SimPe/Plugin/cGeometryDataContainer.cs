@@ -220,7 +220,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (form == null)
+				{
 					form = new fGeometryDataContainer();
+				}
+
 				return form.tMesh;
 			}
 		}
@@ -232,7 +235,10 @@ namespace SimPe.Plugin
 		protected override void InitTabPage()
 		{
 			if (form == null)
+			{
 				form = new fGeometryDataContainer();
+			}
+
 			form.ResetPreview();
 			form.tb_ver.Text = "0x" + Helper.HexString(this.version);
 
@@ -241,22 +247,30 @@ namespace SimPe.Plugin
 				form.label_elements.Text = "Elements: " + Elements.Length.ToString();
 				form.list_elements.Items.Clear();
 				foreach (GmdcElement e in Elements)
+				{
 					SimPe.CountedListItem.Add(form.list_elements, e);
+				}
 
 				form.label_links.Text = "Links: " + Links.Length.ToString();
 				form.list_links.Items.Clear();
 				foreach (GmdcLink l in Links)
+				{
 					SimPe.CountedListItem.Add(form.list_links, l);
+				}
 
 				form.label_groups.Text = "Groups: " + Groups.Length.ToString();
 				form.list_groups.Items.Clear();
 				foreach (GmdcGroup g in Groups)
+				{
 					SimPe.CountedListItem.Add(form.list_groups, g);
+				}
 
 				form.label_subsets.Text = "Joints: " + Joints.Length.ToString();
 				form.list_subsets.Items.Clear();
 				foreach (GmdcJoint s in Joints)
+				{
 					SimPe.CountedListItem.Add(form.list_subsets, s);
+				}
 			}
 
 			try
@@ -280,7 +294,9 @@ namespace SimPe.Plugin
 				form.lb_itemsa2.Items.Clear();
 				form.lb_itemsa.Items.Clear();
 				foreach (GmdcElement i in this.Elements)
+				{
 					SimPe.CountedListItem.Add(form.lb_itemsa, i);
+				}
 
 				form.lb_itemsb2.Items.Clear();
 				form.lb_itemsb3.Items.Clear();
@@ -288,7 +304,9 @@ namespace SimPe.Plugin
 				form.lb_itemsb5.Items.Clear();
 				form.lb_itemsb.Items.Clear();
 				foreach (GmdcLink i in this.Links)
+				{
 					SimPe.CountedListItem.Add(form.lb_itemsb, i);
+				}
 
 				form.lb_subsets.Items.Clear();
 				form.lb_sub_faces.Items.Clear();
@@ -302,16 +320,27 @@ namespace SimPe.Plugin
 
 				form.lb_model_faces.Items.Clear();
 				foreach (Vector3f i in this.Model.BoundingMesh.Vertices)
+				{
 					SimPe.CountedListItem.Add(form.lb_model_faces, i);
+				}
+
 				form.lb_model_items.Items.Clear();
 				foreach (int i in this.Model.BoundingMesh.Items)
+				{
 					SimPe.CountedListItem.Add(form.lb_model_items, i);
+				}
+
 				form.lb_model_names.Items.Clear();
 				foreach (GmdcNamePair i in this.Model.BlendGroupDefinition)
+				{
 					SimPe.CountedListItem.Add(form.lb_model_names, i);
+				}
+
 				form.lb_model_trans.Items.Clear();
 				foreach (VectorTransformation i in this.Model.Transformations)
+				{
 					SimPe.CountedListItem.Add(form.lb_model_trans, i);
+				}
 			}
 			catch (Exception ex)
 			{
@@ -357,7 +386,9 @@ namespace SimPe.Plugin
 		{
 			IGmdcExporter exporter = ExporterLoader.FindExporterByExtension(".x");
 			if (exporter == null)
+			{
 				throw new Exception("No valid Direct X Exporter plugin was found!");
+			}
 
 			exporter.Component.Sorting = ElementSorting.Preview;
 			exporter.Process(this, models);
@@ -395,13 +426,21 @@ namespace SimPe.Plugin
 		public bool RemoveLink(int index)
 		{
 			foreach (GmdcGroup g in Groups)
+			{
 				if (g.LinkIndex == index)
+				{
 					return false;
+				}
+			}
 
 			GmdcLink l = Links[index];
 			foreach (GmdcGroup g in Groups)
+			{
 				if (g.LinkIndex > index)
+				{
 					g.LinkIndex--;
+				}
+			}
 
 			for (int i = 0; i < l.ReferencedElement.Count; i++)
 			{
@@ -428,16 +467,24 @@ namespace SimPe.Plugin
 			foreach (GmdcLink l in Links)
 			{
 				foreach (int i in l.ReferencedElement)
+				{
 					if (i == index)
+					{
 						return false;
+					}
+				}
 			}
 
 			//Adjust the References
 			foreach (GmdcLink l in Links)
 			{
 				for (int i = 0; i < l.ReferencedElement.Count; i++)
+				{
 					if (l.ReferencedElement[i] > index)
+					{
 						l.ReferencedElement[i]--;
+					}
+				}
 			}
 
 			Elements.RemoveAt(index);
@@ -453,7 +500,9 @@ namespace SimPe.Plugin
 			{
 				int ct = 0;
 				foreach (GmdcGroup g in Groups)
+				{
 					ct += g.FaceCount;
+				}
 
 				return ct;
 			}
@@ -468,7 +517,9 @@ namespace SimPe.Plugin
 			{
 				int ct = 0;
 				foreach (GmdcGroup g in Groups)
+				{
 					ct += g.UsedVertexCount;
+				}
 
 				return ct;
 			}
@@ -483,7 +534,9 @@ namespace SimPe.Plugin
 			{
 				int ct = 0;
 				foreach (GmdcGroup g in Groups)
+				{
 					ct += g.ReferencedVertexCount;
+				}
 
 				return ct;
 			}
@@ -500,17 +553,23 @@ namespace SimPe.Plugin
 			foreach (GmdcElement e in Elements)
 			{
 				if (e.Identity == ElementIdentity.BoneAssignment)
+				{
 					foreach (GmdcElementValueOneInt v in e.Values)
 					{
 						if (!usebones.Contains(v.Value & 0xff))
+						{
 							usebones.Add(v.Value & 0xff);
+						}
 					}
+				}
 			}
 
 			for (int i = Joints.Length - 1; i >= 0; i--)
 			{
 				if (!usebones.Contains(i))
+				{
 					RemoveBone(i);
+				}
 			}
 		}
 
@@ -525,6 +584,7 @@ namespace SimPe.Plugin
 			foreach (GmdcElement e in Elements)
 			{
 				if (e.Identity == ElementIdentity.BoneAssignment)
+				{
 					foreach (GmdcElementValueOneInt v in e.Values)
 					{
 						if ((int)v.Bytes[0] == index)
@@ -540,6 +600,7 @@ namespace SimPe.Plugin
 							v.Bytes = b;
 						}*/
 					}
+				}
 			}
 
 			//Update the Bone List in the Groups Section
@@ -548,9 +609,13 @@ namespace SimPe.Plugin
 				for (int i = g.UsedJoints.Count - 1; i >= 0; i--)
 				{
 					if (g.UsedJoints[i] == index)
+					{
 						g.UsedJoints.RemoveAt(i);
+					}
 					else if (g.UsedJoints[i] > index)
+					{
 						g.UsedJoints[i]--;
+					}
 				}
 			}
 
@@ -569,7 +634,9 @@ namespace SimPe.Plugin
 			for (int i = 0; i < Groups.Count; i++)
 			{
 				if (Groups[i].Name.Trim().ToLower() == name)
+				{
 					return i;
+				}
 			}
 
 			return -1;
@@ -586,7 +653,9 @@ namespace SimPe.Plugin
 			for (int i = 0; i < Joints.Count; i++)
 			{
 				if (Joints[i].Name.Trim().ToLower() == name)
+				{
 					return i;
+				}
 			}
 
 			return -1;
@@ -611,12 +680,18 @@ namespace SimPe.Plugin
 				if (!TriedToLoadParentResourceNode)
 				{
 					if (cres == null)
+					{
 						cres = FindReferencingCRES();
+					}
+
 					TriedToLoadParentResourceNode = true;
 				}
 
 				if (cres == null)
+				{
 					return null;
+				}
+
 				return (ResourceNode)cres.Blocks[0];
 			}
 		}
@@ -662,13 +737,17 @@ namespace SimPe.Plugin
 			Wait.Message = "Loading Geometry Node";
 			Rcol step = FindReferencingParent_NoLoad(Data.MetaData.GMND);
 			if (step == null)
+			{
 				return null;
+			}
 
 			//WaitingScreen.UpdateMessage("Loading Shape");
 			Wait.Message = "Loading Shape";
 			step = ((GeometryNode)step.Blocks[0]).FindReferencingSHPE_NoLoad();
 			if (step == null)
+			{
 				return null;
+			}
 
 			//WaitingScreen.UpdateMessage("Loading ResourceNode");
 			Wait.Message = "Loading ResourceNode";
@@ -676,7 +755,9 @@ namespace SimPe.Plugin
 				Data.MetaData.CRES
 			);
 			if (step == null)
+			{
 				return null;
+			}
 
 			return step;
 		}
@@ -694,7 +775,9 @@ namespace SimPe.Plugin
 		)
 		{
 			if (c == null)
+			{
 				return;
+			}
 
 			if (c.GetType() == typeof(TransformNode))
 			{
@@ -735,12 +818,18 @@ namespace SimPe.Plugin
 				return parentmap;
 			}
 			else
+			{
 				LoadJointRelationRec(parentmap, -1, rn);
+			}
 
 			//make sure Bones not defined in the CRES are listed here too
 			for (int i = 0; i < Joints.Count; i++)
+			{
 				if (parentmap[i] == null)
+				{
 					parentmap[i] = -1;
+				}
+			}
 
 			return parentmap;
 		}
@@ -758,14 +847,24 @@ namespace SimPe.Plugin
 		)
 		{
 			if (start == -1)
+			{
 				return;
+			}
+
 			if (l.Contains(start))
+			{
 				return;
+			}
+
 			l.Add(start);
 
 			foreach (int k in relmap.Keys)
+			{
 				if ((int)relmap[k] == start)
+				{
 					SortJointsRec(k, relmap, l);
+				}
+			}
 		}
 
 		/// <summary>
@@ -781,11 +880,13 @@ namespace SimPe.Plugin
 		{
 			int start = -1;
 			foreach (int k in relmap.Keys)
+			{
 				if ((int)relmap[k] == -1)
 				{
 					start = k;
 					break;
 				}
+			}
 
 			if (start != -1)
 			{
@@ -796,15 +897,21 @@ namespace SimPe.Plugin
 				System.Collections.Hashtable nrelmap = (System.Collections.Hashtable)
 					relmap.Clone();
 				foreach (int v in l)
+				{
 					if (nrelmap.ContainsKey(v))
+					{
 						nrelmap.Remove(v);
+					}
+				}
 
 				//recursivley process remaing joints
 				if (nrelmap.Count > 0)
 				{
 					IntArrayList l2 = SortJoints(joints, nrelmap);
 					foreach (int i in l2)
+					{
 						l.Add(i);
+					}
 				}
 
 				return l;
@@ -812,7 +919,9 @@ namespace SimPe.Plugin
 
 			IntArrayList ls = new IntArrayList();
 			foreach (GmdcJoint j in joints)
+			{
 				ls.Add(j.Index);
+			}
 
 			return ls;
 		}
@@ -847,7 +956,9 @@ namespace SimPe.Plugin
 		public override void Dispose()
 		{
 			if (this.form != null)
+			{
 				this.form.Dispose();
+			}
 		}
 
 		#endregion

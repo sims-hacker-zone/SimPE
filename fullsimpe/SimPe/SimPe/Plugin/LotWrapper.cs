@@ -170,16 +170,27 @@ namespace SimPe.Plugin
 			Unknown1 = new List<UInt32>();
 			int len = reader.ReadInt32();
 			for (int i = 0; i < len; i++)
+			{
 				this.Unknown1.Add(reader.ReadUInt32());
+			}
 
 			if (subver >= (UInt16)LtxtSubVersion.Voyage)
+			{
 				Unknown2 = reader.ReadSingle();
+			}
 			else
+			{
 				Unknown2 = 0;
+			}
+
 			if (subver >= (UInt16)LtxtSubVersion.Freetime)
+			{
 				Unknown3 = reader.ReadUInt32();
+			}
 			else
+			{
 				Unknown3 = 0;
+			}
 		}
 
 		/// <summary>
@@ -207,12 +218,19 @@ namespace SimPe.Plugin
 
 			writer.Write(Unknown1.Count);
 			foreach (UInt32 i in Unknown1)
+			{
 				writer.Write(i);
+			}
 
 			if (subver >= (UInt16)LtxtSubVersion.Voyage)
+			{
 				writer.Write(Unknown2);
+			}
+
 			if (subver >= (UInt16)LtxtSubVersion.Freetime)
+			{
 				writer.Write(Unknown3);
+			}
 		}
 		#endregion
 
@@ -239,7 +257,10 @@ namespace SimPe.Plugin
 		protected override string GetResourceName(SimPe.Data.TypeAlias ta)
 		{
 			if (!this.Processed)
+			{
 				ProcessData(FileDescriptor, Package);
+			}
+
 			return LotName;
 		}
 	}

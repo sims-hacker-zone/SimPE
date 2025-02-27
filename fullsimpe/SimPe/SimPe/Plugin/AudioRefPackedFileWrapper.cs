@@ -59,9 +59,13 @@ namespace SimPe.Plugin
 			{
 				char b = reader.ReadChar();
 				if (b != 0)
+				{
 					strung += b;
+				}
 				else
+				{
 					strung += "\n";
+				}
 			}
 		}
 
@@ -70,13 +74,20 @@ namespace SimPe.Plugin
 			byte f = 0;
 			writer.BaseStream.Seek(0x40, System.IO.SeekOrigin.Begin);
 			if (strung != null)
+			{
 				foreach (char c in strung)
 				{
 					if (c != 10)
+					{
 						writer.Write(c);
+					}
 					else
+					{
 						writer.Write(f);
+					}
 				}
+			}
+
 			writer.Write(f);
 		}
 		#endregion

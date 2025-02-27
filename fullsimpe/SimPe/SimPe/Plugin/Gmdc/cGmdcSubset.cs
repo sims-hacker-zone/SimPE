@@ -87,7 +87,9 @@ namespace SimPe.Plugin.Gmdc
 
 					Items.Clear();
 					for (int i = 0; i < count; i++)
+					{
 						Items.Add(this.ReadValue(reader));
+					}
 				}
 				catch (Exception ex)
 				{
@@ -112,9 +114,14 @@ namespace SimPe.Plugin.Gmdc
 			{
 				writer.Write((int)Items.Length);
 				for (int i = 0; i < Vertices.Count; i++)
+				{
 					Vertices[i].Serialize(writer);
+				}
+
 				for (int i = 0; i < Items.Length; i++)
+				{
 					this.WriteValue(writer, Items[i]);
+				}
 			}
 		}
 
@@ -150,7 +157,10 @@ namespace SimPe.Plugin.Gmdc
 			get
 			{
 				if (reftn == null)
+				{
 					reftn = GetAssignedTransformNode(Index);
+				}
+
 				return reftn;
 			}
 		}
@@ -163,7 +173,10 @@ namespace SimPe.Plugin.Gmdc
 			get
 			{
 				if (AssignedTransformNode != null)
+				{
 					return AssignedTransformNode.ObjectGraphNode.FileName;
+				}
+
 				return "Joint" + Index.ToString();
 			}
 		}
@@ -176,7 +189,10 @@ namespace SimPe.Plugin.Gmdc
 		protected TransformNode GetAssignedTransformNode(int index)
 		{
 			if (parent.ParentResourceNode == null)
+			{
 				return null;
+			}
+
 			Rcol cres = parent.ParentResourceNode.Parent;
 
 			foreach (SimPe.Interfaces.Scenegraph.IRcolBlock irb in cres.Blocks)
@@ -185,7 +201,9 @@ namespace SimPe.Plugin.Gmdc
 				{
 					TransformNode tn = (TransformNode)irb;
 					if (tn.JointReference == index)
+					{
 						return tn;
+					}
 				}
 			}
 
@@ -202,7 +220,9 @@ namespace SimPe.Plugin.Gmdc
 		{
 			//no Parent -> no Transform
 			if (parent == null)
+			{
 				return v;
+			}
 
 			//Hashtable map = parent.LoadJointRelationMap();
 			//TransformNode tn = AssignedTransformNode(index);
@@ -220,7 +240,9 @@ namespace SimPe.Plugin.Gmdc
 
 			//Apply Transformations
 			for (int i = t.Count - 1; i >= 0; i--)
+			{
 				v = t[i].Transform(v);
+			}
 
 			return v;
 		}
@@ -237,7 +259,9 @@ namespace SimPe.Plugin.Gmdc
 			this.Items.Clear();
 
 			if (index == -1)
+			{
 				return; //not within Parent!
+			}
 
 			//scan all Groups in the Parent for Joint Assignements
 			foreach (GmdcGroup g in parent.Groups)
@@ -249,7 +273,10 @@ namespace SimPe.Plugin.Gmdc
 				int vindex = l.GetElementNr(vertices);
 
 				if (joints == null || vertices == null)
+				{
 					continue;
+				}
+
 				for (int i = 0; i < g.UsedJoints.Count; i++)
 				{
 					//this Bone is a Match, so add all assigned vertices
@@ -309,9 +336,13 @@ namespace SimPe.Plugin.Gmdc
 									if (!indices.ContainsKey(nr))
 									{
 										if (empty.ContainsKey(nr))
+										{
 											face_index = (int)empty[nr];
+										}
 										else
+										{
 											face_index = nr;
+										}
 
 										indices.Add(nr, face_index);
 										this.Vertices[face_index] = Transform(
@@ -342,7 +373,10 @@ namespace SimPe.Plugin.Gmdc
 		{
 			string s = "";
 			if (Helper.WindowsRegistry.ShowJointNames)
+			{
 				s += this.Name + ": ";
+			}
+
 			s += this.Vertices.Count.ToString() + ", " + this.Items.Count.ToString();
 
 			return s;
@@ -433,8 +467,12 @@ namespace SimPe.Plugin.Gmdc
 		{
 			name = name.Trim().ToLower();
 			foreach (GmdcJoint gj in this)
+			{
 				if (gj.Name.Trim().ToLower() == name)
+				{
 					return true;
+				}
+			}
 
 			return false;
 		}
@@ -452,7 +490,9 @@ namespace SimPe.Plugin.Gmdc
 		{
 			GmdcJoints list = new GmdcJoints();
 			foreach (GmdcJoint item in this)
+			{
 				list.Add(item);
+			}
 
 			return list;
 		}

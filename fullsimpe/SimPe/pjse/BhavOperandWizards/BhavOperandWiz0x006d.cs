@@ -807,14 +807,20 @@ namespace pjse.BhavOperandWizards.Wiz0x006d
 		private void rb1group_CheckedChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			this.MaterialFrom();
 		}
 
 		private void ckbMaterialTemp_CheckedChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			this.MaterialFrom();
 		}
 
@@ -831,21 +837,30 @@ namespace pjse.BhavOperandWizards.Wiz0x006d
 		private void rb3group_CheckedChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			this.MeshFrom();
 		}
 
 		private void ckbAllOver_CheckedChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			this.MeshFrom();
 		}
 
 		private void ckbMeshTemp_CheckedChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			this.MeshFrom();
 		}
 
@@ -862,16 +877,23 @@ namespace pjse.BhavOperandWizards.Wiz0x006d
 		private void cbMatMeshScope_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (sender.Equals(this.cbMatScope))
+			{
 				doStrValue(
 					cbMatScope,
 					GS.GlobalStr.MaterialName,
 					doid3.Value,
 					tbMaterial
 				);
+			}
 			else
+			{
 				doStrValue(cbMeshScope, GS.GlobalStr.MeshGroup, doid5.Value, tbMesh);
+			}
 		}
 	}
 }
@@ -890,7 +912,9 @@ namespace pjse.BhavOperandWizards
 		public override void Dispose()
 		{
 			if (myForm != null)
+			{
 				myForm = null;
+			}
 		}
 		#endregion
 	}

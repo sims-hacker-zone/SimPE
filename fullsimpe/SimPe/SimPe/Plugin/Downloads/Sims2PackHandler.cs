@@ -35,7 +35,9 @@ namespace SimPe.Plugin.Downloads
 				}
 				desc.Package.Save(rname);
 				if (System.IO.File.Exists(rname))
+				{
 					ret.Add(rname);
+				}
 			}
 			return ret;
 		}

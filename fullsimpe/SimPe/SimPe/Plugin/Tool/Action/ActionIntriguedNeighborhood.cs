@@ -35,7 +35,9 @@ namespace SimPe.Plugin.Tool.Action
 		)
 		{
 			if (es.Loaded && Helper.IsNeighborhoodFile(es.LoadedPackage.FileName))
+			{
 				return true;
+			}
 
 			return false;
 		}
@@ -46,7 +48,9 @@ namespace SimPe.Plugin.Tool.Action
 		)
 		{
 			if (!es.Loaded)
+			{
 				return false;
+			}
 
 			return es.LoadedPackage.Package.FindFiles(
 					Data.MetaData.SIM_DESCRIPTION_FILE
@@ -87,7 +91,10 @@ namespace SimPe.Plugin.Tool.Action
 						&& sdesc.Castaway.Subspecies > 0
 					)
 				)
+				{
 					continue;
+				}
+
 				SimPe.Interfaces.Files.IPackedFileDescriptor pfb =
 					e.LoadedPackage.Package.FindFileAnyGroup(
 						Data.MetaData.SDNA,

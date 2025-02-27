@@ -61,13 +61,16 @@ namespace SimPe
 			{
 				string line = sr.ReadLine().Trim();
 				if (line.Length == 0 || line.StartsWith(";"))
+				{
 					continue;
+				}
 
 				//remove comment
 				int pos = line.IndexOf(';');
 				if (pos > 0)
+				{
 					line = line.Substring(0, pos).Trim();
-				;
+				};
 
 				if (line.StartsWith("["))
 				{
@@ -96,11 +99,19 @@ namespace SimPe
 		public bool Flush()
 		{
 			if (fileIsReadonly)
+			{
 				return false;
+			}
+
 			if (IniFile.Length.Equals(0))
+			{
 				return false;
+			}
+
 			if (!File.Exists(IniFile))
+			{
 				return false;
+			}
 
 			try
 			{
@@ -109,11 +120,16 @@ namespace SimPe
 				foreach (string section in reg.Keys)
 				{
 					if (wantBlank)
+					{
 						sw.WriteLine("");
+					}
+
 					sw.WriteLine("[" + section + "]");
 					wantBlank = true;
 					foreach (string key in reg[section].Keys)
+					{
 						sw.WriteLine(key + "=" + reg[section].GetValue(key));
+					}
 				}
 				sw.Close();
 			}
@@ -151,7 +167,9 @@ namespace SimPe
 			}
 
 			if (!create)
+			{
 				return null;
+			}
 
 			SectionContent kl = new SectionContent();
 			reg.Add(section, kl);
@@ -188,7 +206,9 @@ namespace SimPe
 		{
 			SectionContent kl = Section(section, false);
 			if (kl != null)
+			{
 				kl.Clear();
+			}
 		}
 
 		public Sectionlist.KeyCollection Sections => reg.Keys;
@@ -240,7 +260,9 @@ namespace SimPe
 			public void SetValue(string key, string value, bool create)
 			{
 				if (!ContainsKey(key))
+				{
 					list.Add(key, value);
+				}
 				else if (create)
 				{
 					string kv = null;
@@ -254,7 +276,9 @@ namespace SimPe
 					}
 
 					if (kv != null)
+					{
 						list[kv] = value;
+					}
 				}
 			}
 

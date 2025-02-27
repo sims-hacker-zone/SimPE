@@ -57,7 +57,10 @@ namespace SimPe.Plugin
 			s += Helper.BytesToHexList(Data2);
 
 			if (s.Length > 0xff)
+			{
 				s = s.Substring(0, 0xff) + "...";
+			}
+
 			return s;
 		}
 	}

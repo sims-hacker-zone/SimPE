@@ -157,13 +157,19 @@ namespace SimPe.PackedFiles.Wrapper
 				uint simid = value;
 				ObjdItem guid1 = (ObjdItem)attr["guid_1 - Read Only"];
 				if (guid1 == null)
+				{
 					guid1 = new ObjdItem();
+				}
+
 				guid1.val = (ushort)(simid & 0xffff);
 				attr["guid_1 - Read Only"] = guid1;
 
 				ObjdItem guid2 = (ObjdItem)attr["guid_2 - Read Only"];
 				if (guid2 == null)
+				{
 					guid1 = new ObjdItem();
+				}
+
 				guid2.val = (ushort)((simid >> 16) & 0xffff);
 				attr["guid_2 - Read Only"] = guid2;
 			}
@@ -187,13 +193,19 @@ namespace SimPe.PackedFiles.Wrapper
 				uint simid = value;
 				ObjdItem guid1 = (ObjdItem)attr["Proxy GUID 1"];
 				if (guid1 == null)
+				{
 					guid1 = new ObjdItem();
+				}
+
 				guid1.val = (ushort)(simid & 0xffff);
 				attr["guid_1 - Read Only"] = guid1;
 
 				ObjdItem guid2 = (ObjdItem)attr["Proxy GUID 2"];
 				if (guid2 == null)
+				{
 					guid1 = new ObjdItem();
+				}
+
 				guid2.val = (ushort)((simid >> 16) & 0xffff);
 				attr["guid_2 - Read Only"] = guid2;
 			}
@@ -217,13 +229,19 @@ namespace SimPe.PackedFiles.Wrapper
 				uint simid = value;
 				ObjdItem guid1 = (ObjdItem)attr["original guid 1 - Read Only"];
 				if (guid1 == null)
+				{
 					guid1 = new ObjdItem();
+				}
+
 				guid1.val = (ushort)(simid & 0xffff);
 				attr["guid_1 - Read Only"] = guid1;
 
 				ObjdItem guid2 = (ObjdItem)attr["original guid 2 - Read Only"];
 				if (guid2 == null)
+				{
 					guid1 = new ObjdItem();
+				}
+
 				guid2.val = (ushort)((simid >> 16) & 0xffff);
 				attr["guid_2 - Read Only"] = guid2;
 			}
@@ -254,9 +272,13 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			object o = attr[name];
 			if (o == null)
+			{
 				return 0;
+			}
 			else
+			{
 				return ((ObjdItem)o).val;
+			}
 		}
 
 		/// <summary>
@@ -268,9 +290,13 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			object o = attr[name];
 			if (o == null)
+			{
 				return 0;
+			}
 			else
+			{
 				return ((ObjdItem)o).position;
+			}
 		}
 
 		#region IWrapper Member
@@ -311,7 +337,9 @@ namespace SimPe.PackedFiles.Wrapper
 				Type = reader.ReadUInt16();
 			}
 			else
+			{
 				Type = 0;
+			}
 
 			if (reader.BaseStream.Length >= 0x60)
 			{
@@ -319,7 +347,9 @@ namespace SimPe.PackedFiles.Wrapper
 				SimId = reader.ReadUInt32();
 			}
 			else
+			{
 				SimId = 0;
+			}
 
 			if (reader.BaseStream.Length >= 0x7E)
 			{
@@ -327,7 +357,9 @@ namespace SimPe.PackedFiles.Wrapper
 				ProxyGuid = reader.ReadUInt32();
 			}
 			else
+			{
 				ProxyGuid = 0;
+			}
 
 			if (reader.BaseStream.Length >= 0x94)
 			{
@@ -335,7 +367,9 @@ namespace SimPe.PackedFiles.Wrapper
 				CTSSId = reader.ReadUInt16();
 			}
 			else
+			{
 				CTSSId = 0;
+			}
 
 			if (reader.BaseStream.Length >= 0xD0)
 			{
@@ -343,13 +377,18 @@ namespace SimPe.PackedFiles.Wrapper
 				OriginalGuid = reader.ReadUInt32();
 			}
 			else
+			{
 				OriginalGuid = 0;
+			}
 
 			reader.BaseStream.Seek(pos, System.IO.SeekOrigin.Begin);
 
 			ArrayList names = new ArrayList();
 			if (opcodes != null)
+			{
 				names = opcodes.OBJDDescription(Type);
+			}
+
 			if (names.Count == 0)
 			{
 				/*reserved_01 = reader.ReadBytes(0x1C);
@@ -395,13 +434,19 @@ namespace SimPe.PackedFiles.Wrapper
 				foreach (string name in names)
 				{
 					if (reader.BaseStream.Position > reader.BaseStream.Length - 2)
+					{
 						break;
+					}
+
 					ObjdItem item = new ObjdItem();
 					item.position = reader.BaseStream.Position;
 					item.val = reader.ReadUInt16();
 					string sname = name;
 					if (name.Trim() == "")
+					{
 						sname = "0x" + Helper.HexString((uint)item.position);
+					}
+
 					attr[sname] = item;
 				}
 
@@ -417,7 +462,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 			ArrayList names = new ArrayList();
 			if (opcodes != null)
+			{
 				names = opcodes.OBJDDescription(Type);
+			}
+
 			if (names.Count == 0)
 			{
 				writer.Write(reserved_01);
@@ -435,10 +483,16 @@ namespace SimPe.PackedFiles.Wrapper
 				{
 					string sname = name;
 					if (sname.Trim() == "")
+					{
 						sname =
 							"0x" + Helper.HexString((uint)writer.BaseStream.Position);
+					}
+
 					if (attr[sname] == null)
+					{
 						break;
+					}
+
 					writer.Write(this.GetAttributeShort(sname));
 				}
 				CTSSId = this.GetAttributeShort("catalog strings id");
@@ -504,7 +558,10 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				if (attr == null)
+				{
 					attr = new Hashtable();
+				}
+
 				return attr;
 			}
 		}

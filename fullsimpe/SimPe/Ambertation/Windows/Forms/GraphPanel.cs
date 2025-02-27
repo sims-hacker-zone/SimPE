@@ -126,7 +126,10 @@ namespace Ambertation.Windows.Forms
 				if (base.Parent != value)
 				{
 					if (Parent != null)
+					{
 						Parent.SizeChanged -= new EventHandler(Parent_SizeChanged);
+					}
+
 					base.Parent = value;
 					if (Parent != null)
 					{
@@ -220,7 +223,9 @@ namespace Ambertation.Windows.Forms
 			get
 			{
 				if (this.DesignMode && Parent != null)
+				{
 					return Parent.Width;
+				}
 
 				return minwd;
 			}
@@ -237,7 +242,10 @@ namespace Ambertation.Windows.Forms
 			get
 			{
 				if (this.DesignMode && Parent != null)
+				{
 					return Parent.Height;
+				}
+
 				return minhg;
 			}
 			set
@@ -265,24 +273,36 @@ namespace Ambertation.Windows.Forms
 			get
 			{
 				foreach (GraphPanelElement gpe in Items)
+				{
 					if (gpe is DragPanel)
+					{
 						if (((DragPanel)gpe).Focused)
+						{
 							return gpe;
+						}
+					}
+				}
 
 				return null;
 			}
 			set
 			{
 				if (value == null)
+				{
 					return;
+				}
+
 				if (!(value is DragPanel))
+				{
 					return;
+				}
 
 				if (Items.Contains(value))
 				{
 					GraphPanelElement[] elements = new GraphPanelElement[Items.Count];
 					Items.CopyTo(elements);
 					foreach (GraphPanelElement gpe in elements)
+					{
 						if (gpe is DragPanel)
 						{
 							((DragPanel)gpe).SetFocus(gpe == value);
@@ -298,6 +318,7 @@ namespace Ambertation.Windows.Forms
 								lb.Dispose();
 							}*/
 						}
+					}
 				}
 			}
 		}
@@ -314,11 +335,16 @@ namespace Ambertation.Windows.Forms
 		protected override void OnPaint(PaintEventArgs e)
 		{
 			if (update)
+			{
 				return;
+			}
+
 			base.OnPaint(e);
 			GraphPanelElement.SetGraphicsMode(e.Graphics, true);
 			foreach (GraphPanelElement c in Items)
+			{
 				c.OnPaint(e);
+			}
 		}
 
 		protected override void OnMouseDown(MouseEventArgs e)
@@ -334,6 +360,7 @@ namespace Ambertation.Windows.Forms
 				if (c is DragPanel)
 				{
 					if (!hit)
+					{
 						if (((DragPanel)c).OnMouseDown(e))
 						{
 							if (e.Button == System.Windows.Forms.MouseButtons.Left)
@@ -343,9 +370,12 @@ namespace Ambertation.Windows.Forms
 								continue;
 							}
 						}
+					}
 
 					if (e.Button == System.Windows.Forms.MouseButtons.Left)
+					{
 						((DragPanel)c).SetFocus(false);
+					}
 				}
 			}
 		}
@@ -360,7 +390,9 @@ namespace Ambertation.Windows.Forms
 				if (c is DragPanel)
 				{
 					if (((DragPanel)c).OnMouseMove(e))
+					{
 						break;
+					}
 				}
 			}
 		}
@@ -375,7 +407,9 @@ namespace Ambertation.Windows.Forms
 				if (c is DragPanel)
 				{
 					if (((DragPanel)c).OnMouseUp(e))
+					{
 						break;
+					}
 				}
 			}
 		}
@@ -390,19 +424,25 @@ namespace Ambertation.Windows.Forms
 		void SetLinkLineMode()
 		{
 			foreach (GraphPanelElement gpe in Items)
+			{
 				gpe.ChangedParent();
+			}
 		}
 
 		void SetLinkQuality()
 		{
 			foreach (GraphPanelElement gpe in Items)
+			{
 				gpe.ChangedParent();
+			}
 		}
 
 		void SetSaveBound()
 		{
 			foreach (GraphPanelElement gpe in Items)
+			{
 				gpe.SaveBounds = this.SaveBounds;
+			}
 		}
 
 		void SetLocked()
@@ -410,14 +450,19 @@ namespace Ambertation.Windows.Forms
 			foreach (GraphPanelElement gpe in Items)
 			{
 				if (gpe is DragPanel)
+				{
 					((DragPanel)gpe).Movable = !this.LockItems;
+				}
 			}
 		}
 
 		private void li_ItemsChanged(object sender, EventArgs e)
 		{
 			if (!autosz)
+			{
 				return;
+			}
+
 			int mx = 0;
 			int my = 0;
 			foreach (GraphPanelElement gpe in Items)

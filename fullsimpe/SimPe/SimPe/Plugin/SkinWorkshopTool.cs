@@ -59,7 +59,9 @@ namespace SimPe.Plugin
 				if (pkg.Reader != null)
 				{
 					if (!pkg.Reader.BaseStream.CanWrite)
+					{
 						new ToolResult(false, false);
+					}
 				}
 
 				package = pkg;

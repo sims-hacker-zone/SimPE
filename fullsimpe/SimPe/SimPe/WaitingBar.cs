@@ -48,7 +48,10 @@ namespace SimPe
 			get
 			{
 				if (bar != null)
+				{
 					return bar.Running;
+				}
+
 				return false;
 			}
 		}
@@ -58,13 +61,19 @@ namespace SimPe
 			get
 			{
 				if (bar != null)
+				{
 					return bar.Message;
+				}
+
 				return "";
 			}
 			set
 			{
 				if (bar != null)
+				{
 					bar.Message = value;
+				}
+
 				Application.DoEvents();
 			}
 		}
@@ -74,7 +83,10 @@ namespace SimPe
 			get
 			{
 				if (bar != null)
+				{
 					return bar.Image;
+				}
+
 				return null;
 			}
 			set
@@ -91,7 +103,10 @@ namespace SimPe
 			get
 			{
 				if (bar != null)
+				{
 					return bar.Progress;
+				}
+
 				return 0;
 				/*if (bar!=null) return bar.Progress;
 				return IntMaxProgress;*/
@@ -99,7 +114,10 @@ namespace SimPe
 			set
 			{
 				if (bar != null)
+				{
 					bar.Progress = value;
+				}
+
 				Application.DoEvents();
 			}
 		}
@@ -109,13 +127,18 @@ namespace SimPe
 			get
 			{
 				if (bar != null)
+				{
 					return bar.MaxProgress;
+				}
+
 				return 1;
 			}
 			set
 			{
 				if (bar != null)
+				{
 					bar.MaxProgress = value;
+				}
 			}
 		}
 
@@ -125,7 +148,9 @@ namespace SimPe
 			{
 				CommonStart();
 				if (!bar.Running)
+				{
 					bar.Wait();
+				}
 			}
 		}
 
@@ -146,7 +171,9 @@ namespace SimPe
 				CommonStart();
 				bar.ShowProgress = false;
 				if (!bar.Running)
+				{
 					bar.Wait();
+				}
 			}
 		}
 
@@ -156,9 +183,13 @@ namespace SimPe
 			{
 				CommonStart();
 				if (!bar.Running)
+				{
 					bar.Wait(max);
+				}
 				else
+				{
 					bar.MaxProgress = max;
+				}
 			}
 		}
 
@@ -175,26 +206,40 @@ namespace SimPe
 				if (mystack.Count == 0)
 				{
 					if (bar != null)
+					{
 						bar.Stop();
+					}
+
 					return;
 				}
 
 				sd = mystack.Pop();
 
 				if (mystack.Count == 0)
+				{
 					if (bar != null)
+					{
 						bar.Stop();
+					}
+				}
 			}
 
 			if (force)
+			{
 				if (bar != null)
+				{
 					bar.Stop();
+				}
+			}
+
 			ReloadSession(sd);
 
 			if (bar != null)
 			{
 				if (!bar.Running)
+				{
 					bar.ShowProgress = false;
+				}
 			}
 		}
 

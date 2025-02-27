@@ -141,7 +141,10 @@ namespace SimPe.Plugin
 			set
 			{
 				if (ui != null)
+				{
 					ui.SelectedItemChanged -= new EventHandler(ui_SelectedItemChanged);
+				}
+
 				ui = value;
 				if (ui != null)
 				{
@@ -156,7 +159,10 @@ namespace SimPe.Plugin
 		void SetContent()
 		{
 			if (intern)
+			{
 				return;
+			}
+
 			intern = true;
 			if (item != null)
 			{
@@ -185,9 +191,15 @@ namespace SimPe.Plugin
 		private void pb_Changed(object sender, System.EventArgs e)
 		{
 			if (intern)
+			{
 				return;
+			}
+
 			if (item == null)
+			{
 				return;
+			}
+
 			if (pb.Value < 0 && pb.SelectedColor != Color.Coral)
 			{
 				pb.SelectedColor = Color.Coral;

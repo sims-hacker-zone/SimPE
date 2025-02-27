@@ -69,7 +69,9 @@ namespace SimPe.Packages
 		public static bool CanWriteToFile(string flname, bool close)
 		{
 			if (!System.IO.File.Exists(flname))
+			{
 				return true;
+			}
 
 			StreamItem si = StreamFactory.UseStream(
 				flname,
@@ -78,7 +80,10 @@ namespace SimPe.Packages
 			bool res = (si.StreamState == StreamState.Opened);
 
 			if (close && res)
+			{
 				si.Close();
+			}
+
 			return res;
 		}
 
@@ -103,6 +108,7 @@ namespace SimPe.Packages
 
 			//can we write to the .bak File?
 			if (Helper.WindowsRegistry.AutoBackup)
+			{
 				if (!CanWriteToFile(GetBakFileName(flname), true))
 				{
 					Helper.ExceptionMessage(
@@ -113,6 +119,7 @@ namespace SimPe.Packages
 					);
 					return;
 				}
+			}
 
 			this.BeginUpdate();
 			bool wasinfileindex = PackageMaintainer.Maintainer.FileIndex.Contains(
@@ -124,7 +131,10 @@ namespace SimPe.Packages
 				//this.IncrementalBuild();
 				System.IO.MemoryStream ms = this.Build();
 				if (Reader != null)
+				{
 					this.Reader.Close();
+				}
+
 				this.Save(ms, flname);
 
 				//this.reader =  new System.IO.BinaryReader(System.IO.File.OpenRead(flname));
@@ -140,7 +150,9 @@ namespace SimPe.Packages
 				this.EndUpdate();
 
 				if (wasinfileindex)
+				{
 					PackageMaintainer.Maintainer.SyncFileIndex(this);
+				}
 
 				FireSavedIndexEvent();
 			}
@@ -207,7 +219,10 @@ namespace SimPe.Packages
 					{
 						string bakfile = GetBakFileName(flname);
 						if (System.IO.File.Exists(bakfile))
+						{
 							System.IO.File.Delete(bakfile);
+						}
+
 						System.IO.File.Copy(flname, bakfile, true);
 					}
 
@@ -249,10 +264,14 @@ namespace SimPe.Packages
 		void PrepareCompression()
 		{
 			if (fileindex == null)
+			{
 				return;
+			}
 
 			if (filelistfile != null)
+			{
 				return;
+			}
 
 			filelistfile = new SimPe.PackedFiles.Wrapper.CompressedFileList(
 				this.Header.IndexType
@@ -290,7 +309,9 @@ namespace SimPe.Packages
 
 			int oldcount = 0;
 			if (this.Index != null)
+			{
 				oldcount = this.Index.Length;
+			}
 
 			//now save the stuff
 			header.Save(writer);
@@ -299,7 +320,9 @@ namespace SimPe.Packages
 			PackedFileDescriptors tmpindex = new PackedFileDescriptors();
 			ArrayList tmpcmp = new ArrayList();
 			if (this.fileindex == null)
+			{
 				fileindex = new SimPe.Interfaces.Files.IPackedFileDescriptor[0];
+			}
 
 			PrepareCompression();
 
@@ -309,11 +332,19 @@ namespace SimPe.Packages
 
 				//we write the filelist as last File
 				if (pfd == this.filelist)
+				{
 					continue;
+				}
+
 				if (pfd.Type == Data.MetaData.DIRECTORY_FILE)
+				{
 					continue;
+				}
+
 				if (pfd.MarkForDelete)
+				{
 					continue;
+				}
 
 				//PackedFileDescriptor newpfd = (PackedFileDescriptor)pfd.Clone();
 				PackedFileDescriptor newpfd = (PackedFileDescriptor)pfd;
@@ -351,7 +382,9 @@ namespace SimPe.Packages
 						newpfd.SetUserData(pfd.UserData, false);
 
 						if (Helper.WindowsRegistry.HiddenMode)
+						{
 							Helper.ExceptionMessage(ex);
+						}
 					}
 				}
 				else
@@ -403,9 +436,14 @@ namespace SimPe.Packages
 
 			FireIndexEvent();
 			if (Index.Length < oldcount)
+			{
 				this.FireRemoveEvent();
+			}
 			else if (Index.Length > oldcount)
+			{
 				this.FireAddEvent();
+			}
+
 			return ms;
 		}
 
@@ -438,7 +476,9 @@ namespace SimPe.Packages
 			SimPe.PackedFiles.Wrapper.CompressedFileList fl =
 				new SimPe.PackedFiles.Wrapper.CompressedFileList(filelist, this);
 			if (filelist.MarkForDelete)
+			{
 				fl.Clear();
+			}
 
 			SimPe.PackedFiles.Wrapper.CompressedFileList newfl =
 				new SimPe.PackedFiles.Wrapper.CompressedFileList(this.Header.IndexType);
@@ -504,7 +544,10 @@ namespace SimPe.Packages
 					(Header.IsVersion0101)
 					&& (Header.IndexType == Data.MetaData.IndexTypes.ptLongFileIndex)
 				)
+				{
 					writer.Write((uint)item.SubType);
+				}
+
 				writer.Write(item.Offset);
 				writer.Write(item.Size);
 			}

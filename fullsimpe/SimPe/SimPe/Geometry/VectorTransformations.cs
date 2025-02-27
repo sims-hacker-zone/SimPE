@@ -263,7 +263,9 @@ namespace SimPe.Geometry
 		{
 			VectorTransformations list = new VectorTransformations();
 			foreach (VectorTransformation item in this)
+			{
 				list.Add(item);
+			}
 
 			return list;
 		}

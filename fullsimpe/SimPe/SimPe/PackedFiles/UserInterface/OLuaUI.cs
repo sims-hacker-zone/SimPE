@@ -55,7 +55,9 @@ namespace SimPe.PackedFiles.UserInterface
 
 			this.button2.Enabled = Helper.QARelease;
 			if (SimPe.Helper.WindowsRegistry.UseBigIcons)
+			{
 				this.tv.Font = new System.Drawing.Font("Tahoma", 12F);
+			}
 		}
 
 		/// <summary>
@@ -361,7 +363,9 @@ namespace SimPe.PackedFiles.UserInterface
 			);
 			sfd.FileName = Wrapper.FileName;
 			if (sfd.ShowDialog() == DialogResult.OK)
+			{
 				Wrapper.ExportLua(sfd.FileName);
+			}
 		}
 
 		private void btLoad_Click(object sender, System.EventArgs e)
@@ -376,7 +380,9 @@ namespace SimPe.PackedFiles.UserInterface
 			);
 			ofd.FileName = Wrapper.FileName;
 			if (ofd.ShowDialog() == DialogResult.OK)
+			{
 				Wrapper.ImportLua(ofd.FileName);
+			}
 
 			Wrapper.SynchronizeUserData(true, false);
 			UpdateGUI(Wrapper);

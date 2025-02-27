@@ -36,7 +36,9 @@ namespace pj
 			string res = resource.GetString(name);
 #if DEBUG
 			if (res == null)
+			{
 				res = "<<" + name + ">>";
+			}
 #else
 			if (res == null)
 				res = name;

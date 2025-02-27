@@ -56,7 +56,9 @@ namespace SimPe.Plugin
 						rcol.FileDescriptor
 					);
 					if (rcolRef == reference)
+					{
 						return rcol;
+					}
 				}
 			}
 
@@ -70,7 +72,9 @@ namespace SimPe.Plugin
 				if (rcol.FileDescriptor != null)
 				{
 					if (rcol.FileDescriptor.Instance == instance)
+					{
 						return rcol;
+					}
 				}
 			}
 
@@ -82,7 +86,9 @@ namespace SimPe.Plugin
 			ArrayList ret = new ArrayList();
 
 			foreach (Rcol rcol in this.List)
+			{
 				ret.Add(rcol.FileDescriptor);
+			}
 
 			return (IPackedFileDescriptor[])ret.ToArray(typeof(IPackedFileDescriptor));
 		}

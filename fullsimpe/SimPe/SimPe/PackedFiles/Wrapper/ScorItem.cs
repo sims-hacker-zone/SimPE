@@ -43,7 +43,10 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				if (guis == null)
+				{
 					LoadGuielements();
+				}
+
 				return guis;
 			}
 		}
@@ -53,7 +56,10 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				if (guis == null)
+				{
 					LoadGuielements();
+				}
+
 				return readers;
 			}
 		}
@@ -63,7 +69,10 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				if (guis == null)
+				{
 					LoadGuielements();
+				}
+
 				return deftoken;
 			}
 		}
@@ -98,7 +107,10 @@ namespace SimPe.PackedFiles.Wrapper
 					) as SCOR.AScorItem;
 			}
 			if (ret == null)
+			{
 				ret = new SCOR.ScoreItemDefault(this);
+			}
+
 			if (data != null)
 			{
 				System.IO.BinaryReader br = new System.IO.BinaryReader(
@@ -114,7 +126,10 @@ namespace SimPe.PackedFiles.Wrapper
 		internal SCOR.IScorItemToken GetTokenParser(string name)
 		{
 			if (Readers.ContainsKey(name))
+			{
 				return Readers[name];
+			}
+
 			return DefaultTokenParser;
 		}
 		#endregion
@@ -125,7 +140,10 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				if (gui == null)
+				{
 					SetGui("", new byte[0]);
+				}
+
 				return gui;
 			}
 		}
@@ -176,7 +194,9 @@ namespace SimPe.PackedFiles.Wrapper
 				byte[] data = tp.UnserializeToken(this, reader);
 
 				if (tp.ActivatedGUI == null)
+				{
 					SetGui(name, data);
+				}
 				else
 				{
 					gui = tp.ActivatedGUI;
@@ -188,7 +208,10 @@ namespace SimPe.PackedFiles.Wrapper
 		internal static byte[] UnserializeDefaultToken(System.IO.BinaryReader reader)
 		{
 			if (reader.BaseStream.Position > reader.BaseStream.Length - 1)
+			{
 				return new byte[0];
+			}
+
 			System.Collections.ArrayList bytes = new ArrayList();
 
 			byte test = reader.ReadByte();
@@ -197,14 +220,21 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				bytes.Add(test);
 				if (reader.BaseStream.Position > reader.BaseStream.Length - 1)
+				{
 					break;
+				}
+
 				last = test;
 				test = reader.ReadByte();
 			}
 
 			if (reader.BaseStream.Position <= reader.BaseStream.Length - 1)
+			{
 				if (bytes.Count > 0)
+				{
 					bytes.RemoveAt(bytes.Count - 1);
+				}
+			}
 
 			byte[] data = new byte[bytes.Count];
 			bytes.CopyTo(data);
@@ -232,7 +262,9 @@ namespace SimPe.PackedFiles.Wrapper
 		)
 		{
 			if (!last)
+			{
 				writer.Write((ushort)0x0400);
+			}
 		}
 
 		public override string ToString()
@@ -277,8 +309,12 @@ namespace SimPe.PackedFiles.Wrapper
 		protected int FindIndex(string name)
 		{
 			for (int i = 0; i < list.Count; i++)
+			{
 				if (this[i].Gui.Name == name)
+				{
 					return i;
+				}
+			}
 
 			return -1;
 		}

@@ -112,15 +112,20 @@ namespace SimPe.PackedFiles.UserInterface
 				if (this.item != value)
 				{
 					if (item != null)
+					{
 						item.Wrapper.WrapperChanged -= new System.EventHandler(
 							this.WrapperChanged
 						);
+					}
+
 					this.item = value;
 					setData();
 					if (item != null)
+					{
 						item.Wrapper.WrapperChanged += new System.EventHandler(
 							this.WrapperChanged
 						);
+					}
 				}
 			}
 		}
@@ -128,7 +133,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void WrapperChanged(object sender, System.EventArgs e)
 		{
 			if (sender != item)
+			{
 				return;
+			}
+
 			setData();
 		}
 

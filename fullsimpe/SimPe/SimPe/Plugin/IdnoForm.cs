@@ -556,16 +556,23 @@ namespace SimPe.Plugin
 		private void SelectType(object sender, System.EventArgs e)
 		{
 			if (cbtype.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			NeighborhoodType nt = (NeighborhoodType)cbtype.Items[cbtype.SelectedIndex];
 			if (nt != NeighborhoodType.Unknown)
+			{
 				this.tbtype.Text = "0x" + Helper.HexString((uint)nt);
+			}
 
 			tbsubname.Enabled = (nt == NeighborhoodType.University);
 
 			if (this.Tag != null)
+			{
 				return;
+			}
+
 			wrapper.Type = nt;
 			wrapper.Changed = true;
 		}
@@ -573,14 +580,19 @@ namespace SimPe.Plugin
 		private void SelectRtp(object sender, System.EventArgs e)
 		{
 			if (cbreqtp.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			Data.MetaData.NeighbourhoodEP nr = (Data.LocalizedNeighbourhoodEP)
 				cbreqtp.Items[cbreqtp.SelectedIndex];
 			this.tbreqep.Text = "0x" + Helper.HexString((uint)nr);
 
 			if (this.Tag != null)
+			{
 				return;
+			}
+
 			wrapper.Reqep = nr;
 			wrapper.Changed = true;
 			// SelectRep(sender, e);
@@ -589,14 +601,19 @@ namespace SimPe.Plugin
 		private void SelectAtp(object sender, System.EventArgs e)
 		{
 			if (cbsubtp.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			Data.MetaData.NeighbourhoodEP ns = (Data.LocalizedNeighbourhoodEP)
 				cbsubtp.Items[cbsubtp.SelectedIndex];
 			this.tbsubep.Text = "0x" + Helper.HexString((uint)ns);
 
 			if (this.Tag != null)
+			{
 				return;
+			}
+
 			wrapper.Subep = ns;
 			wrapper.Changed = true;
 		}
@@ -604,11 +621,16 @@ namespace SimPe.Plugin
 		private void ChangSeasoa(object sender, System.EventArgs e)
 		{
 			if (cbquada.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			NhSeasons sa = (NhSeasons)cbquada.Items[cbquada.SelectedIndex];
 			if (this.Tag != null)
+			{
 				return;
+			}
+
 			wrapper.Quada = sa;
 			wrapper.Changed = true;
 		}
@@ -616,11 +638,16 @@ namespace SimPe.Plugin
 		private void ChangSeasob(object sender, System.EventArgs e)
 		{
 			if (cbquadb.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			NhSeasons sb = (NhSeasons)cbquadb.Items[cbquadb.SelectedIndex];
 			if (this.Tag != null)
+			{
 				return;
+			}
+
 			wrapper.Quadb = sb;
 			wrapper.Changed = true;
 		}
@@ -628,11 +655,16 @@ namespace SimPe.Plugin
 		private void ChangSeasoc(object sender, System.EventArgs e)
 		{
 			if (cbquadc.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			NhSeasons sc = (NhSeasons)cbquadc.Items[cbquadc.SelectedIndex];
 			if (this.Tag != null)
+			{
 				return;
+			}
+
 			wrapper.Quadc = sc;
 			wrapper.Changed = true;
 		}
@@ -640,11 +672,16 @@ namespace SimPe.Plugin
 		private void ChangSeasod(object sender, System.EventArgs e)
 		{
 			if (cbquadd.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			NhSeasons sd = (NhSeasons)cbquadd.Items[cbquadd.SelectedIndex];
 			if (this.Tag != null)
+			{
 				return;
+			}
+
 			wrapper.Quadd = sd;
 			wrapper.Changed = true;
 		}
@@ -668,7 +705,10 @@ namespace SimPe.Plugin
 		private void Change(object sender, System.EventArgs e)
 		{
 			if (this.Tag != null)
+			{
 				return;
+			}
+
 			try
 			{
 				wrapper.OwnerName = tbname.Text;

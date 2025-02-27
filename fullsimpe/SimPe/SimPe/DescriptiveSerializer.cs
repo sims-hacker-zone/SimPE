@@ -40,14 +40,20 @@ namespace SimPe
 		public override string SubProperty(string name, string val)
 		{
 			if (val == null)
+			{
 				val = "";
+			}
+
 			return name + "={" + val + "}";
 		}
 
 		public override string Property(string name, string val)
 		{
 			if (val == null)
+			{
 				val = "";
+			}
+
 			return name + "=" + SaveStr(val) + "";
 		}
 

@@ -164,7 +164,10 @@ namespace Ambertation.Threading
 			canceled = false;
 
 			for (int i = 0; i < buffer.Length; i++)
+			{
 				buffer[i] = null;
+			}
+
 			counter = 0;
 		}
 
@@ -191,7 +194,9 @@ namespace Ambertation.Threading
 				if (value)
 				{
 					if (Canceling != null)
+					{
 						Canceling(this, new System.EventArgs());
+					}
 
 					// Signal that we have added a Element
 					counter = 0;
@@ -229,7 +234,9 @@ namespace Ambertation.Threading
 						}
 
 						if (Canceled)
+						{
 							return null;
+						}
 					}
 
 					// Hole Daten ab
@@ -271,12 +278,16 @@ namespace Ambertation.Threading
 
 			Finish();
 			while (!finished_consume)
+			{
 				Thread.Sleep(500);
+			}
 
 			Wait.SubStop();
 			OnFinish();
 			if (Finished != null)
+			{
 				Finished(this, new System.EventArgs());
+			}
 		}
 	}
 
@@ -307,7 +318,9 @@ namespace Ambertation.Threading
 				// consume Data
 				Object o = pt.Consume();
 				if (o == null)
+				{
 					break;
+				}
 
 				pt.finished_consume = !Consume(o);
 			}

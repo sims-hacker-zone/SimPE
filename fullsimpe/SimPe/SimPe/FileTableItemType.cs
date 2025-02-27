@@ -56,9 +56,13 @@ namespace SimPe
 			get
 			{
 				if (AsUint <= 0x80000000)
+				{
 					return (Expansions)AsUint;
+				}
 				else
+				{
 					return Expansions.Custom;
+				}
 			}
 		}
 
@@ -67,9 +71,13 @@ namespace SimPe
 			get
 			{
 				if (AsUint > 0x80000000)
+				{
 					return (FileTablePaths)AsUint;
+				}
 				else
+				{
 					return FileTablePaths.Absolute;
+				}
 			}
 		}
 
@@ -79,15 +87,25 @@ namespace SimPe
 		{
 			string ret = null;
 			if (AsUint <= 0x80000000)
+			{
 				ret = PathProvider.Global.GetExpansion(AsExpansions).InstallFolder;
+			}
 			else if (this == FileTablePaths.SaveGameFolder)
+			{
 				ret = PathProvider.SimSavegameFolder;
+			}
 			else if (this == FileTablePaths.SimPEDataFolder)
+			{
 				ret = Helper.SimPeDataPath;
+			}
 			else if (this == FileTablePaths.SimPEFolder)
+			{
 				ret = Helper.SimPePath;
+			}
 			else if (this == FileTablePaths.SimPEPluginFolder)
+			{
 				ret = Helper.SimPePluginPath;
+			}
 			//            else ret = PathProvider.Global.GetExpansion(AsExpansions).InstallFolder;
 
 			return ret;
@@ -96,10 +114,16 @@ namespace SimPe
 		public int GetEPVersion()
 		{
 			if (AsUint > 0x80000000)
+			{
 				return -1;
+			}
+
 			ExpansionItem ei = PathProvider.Global[AsExpansions];
 			if (ei.Flag.Class == ExpansionItem.Classes.Story)
+			{
 				return -1;
+			}
+
 			return ei.Version;
 
 			//return -1;
@@ -110,15 +134,29 @@ namespace SimPe
 		public int CompareTo(object obj)
 		{
 			if (obj is Expansions)
+			{
 				return AsUint.CompareTo((uint)((Expansions)obj));
+			}
+
 			if (obj is FileTablePaths)
+			{
 				return AsUint.CompareTo((uint)((FileTablePaths)obj));
+			}
+
 			if (obj is int)
+			{
 				return AsUint.CompareTo((uint)((int)obj));
+			}
+
 			if (obj is uint)
+			{
 				return AsUint.CompareTo((uint)obj);
+			}
+
 			if (obj is FileTableItemType)
+			{
 				return AsUint.CompareTo(((FileTableItemType)obj).AsUint);
+			}
 
 			return ((object)AsUint) == obj ? 0 : 1; // random objects are not equal
 		}
@@ -170,9 +208,13 @@ namespace SimPe
 		public override string ToString()
 		{
 			if (AsUint > 0x80000000)
+			{
 				return AsFileTablePaths.ToString();
+			}
 			else
+			{
 				return AsExpansions.ToString();
+			}
 		}
 	}
 }

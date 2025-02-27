@@ -317,48 +317,71 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 					{
 						ops1[0x02] &= 0xf3;
 						if (this.cbScope.SelectedIndex == 2)
+						{
 							ops1[0x02] |= 0x04;
+						}
+
 						if (this.cbScope.SelectedIndex == 1)
+						{
 							ops1[0x02] |= 0x08;
+						}
 					}
 
 					ops1[0x02] &= 0xef;
 					if (this.tfActionTemp.Checked)
+					{
 						ops1[0x02] |= 0x10;
+					}
 					else
 					{
 						ushort val = Convert.ToUInt16(this.tbStrIndex.Text, 16);
 						if (inst.NodeVersion < 2)
+						{
 							ops1[0x04] = (byte)(val & 0xff);
+						}
 						else
+						{
 							BhavWiz.FromShort(ref ops2, 6, val);
+						}
 					}
 
 					if (inst.NodeVersion != 0 && this.cbDisabled.SelectedIndex != -1)
 					{
 						ops1[0x03] &= 0xfc;
 						if (this.cbDisabled.SelectedIndex == 0)
+						{
 							ops1[0x03] |= 0x01;
+						}
 						else if (this.cbDisabled.SelectedIndex == 1)
+						{
 							ops1[0x03] |= 0x02;
+						}
 					}
 					if (inst.NodeVersion > 2)
 					{
 						ops1[0x03] &= 0xef;
 						if (this.tfSubQ.Checked)
+						{
 							ops1[0x03] |= 0x10;
+						}
 					}
 				}
 				else
 				{
 					if (ops2[0x01] == 0)
+					{
 						ops2[0x01] = 1;
+					}
 
 					ops1[0x02] &= 0x7f;
 					if (this.tfIconTemp.Checked)
+					{
 						ops1[0x02] |= 0x80;
+					}
 					else
+					{
 						ops2[0x03] = Convert.ToByte(this.tbIconIndex.Text, 16);
+					}
 
 					ops1[0x02] &= 0xdf;
 					if (this.pnThumbnail.Enabled)
@@ -367,7 +390,9 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 
 						ops1[0x02] &= 0xbf;
 						if (this.tfGUIDTemp.Checked)
+						{
 							ops1[0x02] |= 0x40;
+						}
 						else
 						{
 							uint val = Convert.ToUInt32(this.tbGUID.Text, 16);
@@ -799,7 +824,9 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 		)
 		{
 			if (hex8_IsValid(sender))
+			{
 				return;
+			}
 
 			e.Cancel = true;
 
@@ -825,11 +852,18 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 		private void hex16_TextChanged(object sender, System.EventArgs ev)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (inst.NodeVersion < 2 && !hex8_IsValid(sender))
+			{
 				return;
+			}
 			else if (!hex16_IsValid(sender))
+			{
 				return;
+			}
 
 			ushort val = Convert.ToUInt16(((TextBox)sender).Text, 16);
 			this.lbActionString.Text = ((BhavWiz)inst).readStr(
@@ -847,9 +881,13 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 		)
 		{
 			if (inst.NodeVersion < 2 && hex8_IsValid(sender))
+			{
 				return;
+			}
 			else if (hex16_IsValid(sender))
+			{
 				return;
+			}
 
 			e.Cancel = true;
 
@@ -888,7 +926,9 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 		)
 		{
 			if (hex32_IsValid(sender))
+			{
 				return;
+			}
 
 			e.Cancel = true;
 
@@ -920,7 +960,10 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 		private void cbScope_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			this.lbActionString.Text = ((BhavWiz)inst).readStr(
 				this.Scope,
 				GS.GlobalStr.MakeAction,
@@ -986,7 +1029,9 @@ namespace pjse.BhavOperandWizards
 		public override void Dispose()
 		{
 			if (myForm != null)
+			{
 				myForm = null;
+			}
 		}
 		#endregion
 	}

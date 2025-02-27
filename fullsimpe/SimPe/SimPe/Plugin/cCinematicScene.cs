@@ -151,7 +151,9 @@ namespace SimPe.Plugin
 
 			writer.Write((int)items.Length);
 			for (int i = 0; i < items.Length; i++)
+			{
 				items[i].Serialize(writer);
+			}
 
 			writer.Write(unknown1);
 			writer.Write(unknown2);

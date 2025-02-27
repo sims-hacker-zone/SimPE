@@ -593,7 +593,9 @@ namespace SimPe.Plugin
 		private void btex_Click(object sender, System.EventArgs e)
 		{
 			if (pb.Image == null)
+			{
 				return;
+			}
 
 			sfd.FileName =
 				this.tbflname.Text
@@ -628,7 +630,9 @@ namespace SimPe.Plugin
 					Image img = Image.FromFile(ofd.FileName);
 					img = this.CropImage(id, img);
 					if (img == null)
+					{
 						return;
+					}
 
 					id.Texture = img;
 					pb.Image = img;
@@ -646,9 +650,15 @@ namespace SimPe.Plugin
 		private void SelectItem(object sender, System.EventArgs e)
 		{
 			if (cbitem.Tag != null)
+			{
 				return;
+			}
+
 			if (cbitem.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				cbitem.Tag = true;
@@ -689,9 +699,15 @@ namespace SimPe.Plugin
 		private void FileNameChanged(object sender, System.EventArgs e)
 		{
 			if (cbitem.Tag != null)
+			{
 				return;
+			}
+
 			if (cbitem.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				cbitem.Tag = true;
@@ -716,11 +732,20 @@ namespace SimPe.Plugin
 		private void ChangeFormat(object sender, System.EventArgs e)
 		{
 			if (cbitem.Tag != null)
+			{
 				return;
+			}
+
 			if (cbitem.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			if (cbformats.SelectedIndex < 1)
+			{
 				return;
+			}
+
 			try
 			{
 				cbitem.Tag = true;
@@ -867,7 +892,9 @@ namespace SimPe.Plugin
 		private void ExportAlpha(object sender, System.EventArgs e)
 		{
 			if (pb.Image == null)
+			{
 				return;
+			}
 
 			sfd.FileName =
 				this.tbflname.Text
@@ -903,7 +930,9 @@ namespace SimPe.Plugin
 					Image img = Image.FromFile(ofd.FileName);
 					img = this.CropImage(id, img);
 					if (img == null)
+					{
 						return;
+					}
 
 					id.Texture = this.ChangeAlpha(id.Texture, img);
 					;
@@ -977,7 +1006,10 @@ namespace SimPe.Plugin
 		void LoadDDS(DDSData[] data)
 		{
 			if (data == null)
+			{
 				return;
+			}
+
 			if (data.Length > 0)
 			{
 				try

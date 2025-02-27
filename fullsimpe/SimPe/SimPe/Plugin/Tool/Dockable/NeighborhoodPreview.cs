@@ -249,9 +249,15 @@ namespace SimPe.Plugin.Tool.Dockable
 			ClearScreen();
 			this.Package = pkg;
 			if (pkg == null)
+			{
 				return;
+			}
+
 			if (!Helper.IsNeighborhoodFile(pkg.FileName))
+			{
 				return;
+			}
+
 			Loaded = true;
 
 			try
@@ -260,9 +266,14 @@ namespace SimPe.Plugin.Tool.Dockable
 				if (strs != null)
 				{
 					if (strs.Count > 0)
+					{
 						this.lbName.Text = strs[0].Title;
+					}
+
 					if (strs.Count > 1)
+					{
 						this.lbAbout.Text = strs[1].Title;
+					}
 				}
 
 				string tname = System.IO.Path.Combine(
@@ -284,7 +295,9 @@ namespace SimPe.Plugin.Tool.Dockable
 				}
 
 				if (pb.Image == null)
+				{
 					pb.Image = defimg;
+				}
 
 				SimPe.Plugin.Idno idno = SimPe.Plugin.Idno.FromPackage(pkg);
 				if (idno != null)
@@ -343,13 +356,19 @@ namespace SimPe.Plugin.Tool.Dockable
 						idno.Type == SimPe.Plugin.NeighborhoodType.Suburb
 						&& idno.Subep != Data.MetaData.NeighbourhoodEP.Business
 					)
+					{
 						this.lbType.Text =
 							"Hidden " + idno.Type.ToString().Replace("_", " ");
+					}
 					else
+					{
 						this.lbType.Text = idno.Type.ToString().Replace("_", " ");
+					}
 
 					if (Helper.WindowsRegistry.HiddenMode)
+					{
 						ShowVersion();
+					}
 				}
 				else
 				{
@@ -388,14 +407,20 @@ namespace SimPe.Plugin.Tool.Dockable
 			get
 			{
 				if (Package == null)
+				{
 					return null;
+				}
+
 				if (ctss == null)
+				{
 					ctss = Package.FindFile(
 						Data.MetaData.CTSS_FILE,
 						0,
 						Data.MetaData.LOCAL_GROUP,
 						1
 					);
+				}
+
 				return ctss;
 			}
 		}

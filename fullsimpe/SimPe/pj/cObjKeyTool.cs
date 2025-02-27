@@ -53,20 +53,32 @@ namespace pj
 		)
 		{
 			foreach (String p in posspacks)
+			{
 				if (File.Exists(p))
+				{
 					packs.Add(p);
+				}
 				else if (File.Exists(Path.Combine(path, p)))
+				{
 					packs.Add(Path.Combine(path, p));
+				}
 				else if (File.Exists(Path.Combine(path, p + ".package")))
+				{
 					packs.Add(Path.Combine(path, p + ".package"));
+				}
+			}
 		}
 
 		private static void addPackages(ref List<String> packs, String path, bool rec)
 		{
 			addPackages(ref packs, path, Directory.GetFiles(path, "*.package"));
 			if (rec)
+			{
 				foreach (String folder in Directory.GetDirectories(path))
+				{
 					addPackages(ref packs, Path.Combine(path, folder), rec);
+				}
+			}
 		}
 
 		private static void SetPacks()
@@ -98,13 +110,24 @@ namespace pj
 			foreach (SimPe.FileTableItem fii in SimPe.FileTable.DefaultFolders)
 			{
 				if (!fii.Use)
+				{
 					continue;
+				}
+
 				if (fii.IsFile)
+				{
 					for (int i = 0; i < lls.Length; i++)
+					{
 						addPackages(ref lls[i], "", new String[] { fii.Name });
+					}
+				}
 				else if (fii.Type.AsExpansions == SimPe.Expansions.Custom)
+				{
 					for (int i = 0; i < lls.Length; i++)
+					{
 						addPackages(ref lls[i], fii.Name, fii.IsRecursive);
+					}
+				}
 				else if (fii.Name.ToLowerInvariant().EndsWith("3d"))
 				{
 					addPackages(
@@ -176,11 +199,13 @@ namespace pj
 					if (Directory.Exists(name))
 					{
 						foreach (String pkg in Directory.GetFiles(name, "*.package"))
+						{
 							if (!pkg.ToLowerInvariant().Contains("globalcatbin."))
 							{
 								fragkeys.Add(pkg);
 								binkeys.Add(pkg);
 							}
+						}
 
 						addPackages(
 							ref fragkeys,
@@ -205,7 +230,10 @@ namespace pj
 		private bool has3idr(IPackedFileDescriptor pfd, IPackageFile package)
 		{
 			if (pfd == null || package == null)
+			{
 				return false;
+			}
+
 			return findInPackagelist(objkeys, SimPe.Data.MetaData.REF_FILE, pfd)
 				!= null;
 		}
@@ -213,7 +241,10 @@ namespace pj
 		private bool hasCpf(IPackedFileDescriptor pfd, IPackageFile package)
 		{
 			if (pfd == null || package == null)
+			{
 				return false;
+			}
+
 			foreach (
 				uint t in new uint[]
 				{
@@ -224,8 +255,13 @@ namespace pj
 					SimPe.Data.MetaData.GZPS,
 				}
 			)
+			{
 				if (findInPackagelist(objkeys, t, pfd) != null)
+				{
 					return true;
+				}
+			}
+
 			return false;
 		}
 
@@ -234,7 +270,9 @@ namespace pj
 			objKeyCPF = null;
 			objKey3IDR = null;
 			if (currentPfd == null || currentPackage == null)
+			{
 				return;
+			}
 
 			if (
 				currentPfd.Type == 0x0C1FE246 /*XMOL*/
@@ -300,7 +338,9 @@ namespace pj
 			{
 				AbstractWrapper tgt = findInPackage(pkg, Filetype, pfd);
 				if (tgt != null)
+				{
 					return tgt;
+				}
 			}
 			return null;
 		}
@@ -313,7 +353,9 @@ namespace pj
 		{
 			IPackageFile p = SimPe.Packages.File.LoadFromFile(pkg);
 			if (p == null)
+			{
 				return null;
+			}
 
 			IPackedFileDescriptor pt = p.FindFile(
 				Filetype,
@@ -322,7 +364,9 @@ namespace pj
 				pfd.Instance
 			);
 			if (pt == null)
+			{
 				return null;
+			}
 
 			AbstractWrapper tgt;
 			if (Filetype == SimPe.Data.MetaData.REF_FILE)
@@ -349,7 +393,9 @@ namespace pj
 				cpfItem == null
 				|| cpfItem.Datatype != SimPe.Data.MetaData.DataTypes.dtUInteger
 			)
+			{
 				return null;
+			}
 
 			foreach (String pkg in pkgs)
 			{
@@ -358,7 +404,9 @@ namespace pj
 					pkg
 				);
 				if (tgt != null)
+				{
 					return tgt;
+				}
 			}
 			return null;
 		}
@@ -370,11 +418,15 @@ namespace pj
 		{
 			IPackageFile p = SimPe.Packages.File.LoadFromFile(pkg);
 			if (p == null)
+			{
 				return null;
+			}
 
 			IPackedFileDescriptor pc = p.FindFile(tgtpfd);
 			if (pc == null)
+			{
 				return null;
+			}
 
 			IPackedFileDescriptor p3 = p.FindFile(
 				SimPe
@@ -387,7 +439,9 @@ namespace pj
 				pc.Instance
 			);
 			if (p3 == null)
+			{
 				return null;
+			}
 
 			AbstractWrapper[] tgt = new AbstractWrapper[]
 			{
@@ -412,7 +466,9 @@ namespace pj
 				cpfItem == null
 				|| cpfItem.Datatype != SimPe.Data.MetaData.DataTypes.dtUInteger
 			)
+			{
 				return null;
+			}
 
 			foreach (String pkg in pkgs)
 			{
@@ -421,7 +477,9 @@ namespace pj
 					pkg
 				);
 				if (tgt != null)
+				{
 					return tgt;
+				}
 			}
 			return null;
 		}
@@ -435,7 +493,9 @@ namespace pj
 			{
 				SimPe.Plugin.GenericRcol tgt = getRcolPkg(tgtpfd, pkg);
 				if (tgt != null)
+				{
 					return tgt;
+				}
 			}
 			return null;
 		}
@@ -447,11 +507,15 @@ namespace pj
 		{
 			IPackageFile p = SimPe.Packages.File.LoadFromFile(pkg);
 			if (p == null)
+			{
 				return null;
+			}
 
 			IPackedFileDescriptor pr = p.FindFile(tgtpfd);
 			if (pr == null)
+			{
 				return null;
+			}
 
 			SimPe.Plugin.GenericRcol tgt = new SimPe.Plugin.GenericRcol();
 			tgt.ProcessData(pr, p);
@@ -465,7 +529,9 @@ namespace pj
 			{
 				SimPe.Plugin.GenericRcol tgt = getRcolPkg(filename, pkg);
 				if (tgt != null)
+				{
 					return tgt;
+				}
 			}
 			return null;
 		}
@@ -474,11 +540,15 @@ namespace pj
 		{
 			IPackageFile p = SimPe.Packages.File.LoadFromFile(pkg);
 			if (p == null)
+			{
 				return null;
+			}
 
 			IPackedFileDescriptor[] apr = p.FindFile(filename);
 			if (apr == null || apr.Length != 1)
+			{
 				return null;
+			}
 
 			SimPe.Plugin.GenericRcol tgt = new SimPe.Plugin.GenericRcol();
 			tgt.ProcessData(apr[0], p);
@@ -494,7 +564,9 @@ namespace pj
 			{
 				IPackageFile p = SimPe.Packages.File.LoadFromFile(pkg);
 				if (p == null)
+				{
 					continue;
+				}
 
 				IPackedFileDescriptor[] apfd = p.FindFiles(
 					0x0C560F39 /*BINX*/
@@ -516,7 +588,9 @@ namespace pj
 							bx.Instance
 						);
 						if (pfd == null)
+						{
 							continue;
+						}
 
 						// load the pair
 						SimPe.Plugin.RefFile fk3idr = new SimPe.Plugin.RefFile();
@@ -534,9 +608,14 @@ namespace pj
 							|| objKeyIdx.Datatype
 								!= SimPe.Data.MetaData.DataTypes.dtUInteger
 						)
+						{
 							continue;
+						}
+
 						if (!fk3idr.Items[objKeyIdx.UIntegerValue].Equals(objKeyCPF))
+						{
 							continue;
+						}
 
 						// success - save the fragkey
 						fragKeys.Add(new AbstractWrapper[] { fkCpf, fk3idr });
@@ -564,7 +643,10 @@ namespace pj
 					binkeys
 				);
 				if (tgt != null)
+				{
 					binKeys.Add(tgt);
+				}
+
 				SimPe.Wait.Progress++;
 			}
 			SimPe.Wait.SubStop();
@@ -603,7 +685,9 @@ namespace pj
 											gmdcpkg
 										);
 										if (gmdc != null)
+										{
 											rcolChain.Add(gmdc);
+										}
 									}
 								}
 							}
@@ -627,7 +711,9 @@ namespace pj
 			{
 				tgt = getRcol(objKeyCPF, objKey3IDR, s, crespkg);
 				if (tgt != null)
+				{
 					rcolChain.Add(tgt);
+				}
 			}
 
 			uint numOverrides = 0;
@@ -635,7 +721,10 @@ namespace pj
 				"numoverrides"
 			);
 			if (cpfItem.Datatype == SimPe.Data.MetaData.DataTypes.dtUInteger)
+			{
 				numOverrides = cpfItem.UIntegerValue;
+			}
+
 			for (int i = 0; i < numOverrides; i++)
 			{
 				tgt = getRcol(
@@ -670,8 +759,11 @@ namespace pj
 				{
 					rcolChain.Add(txtr);
 					foreach (SimPe.Plugin.ImageData id in txtr.Blocks)
+					{
 						foreach (SimPe.Plugin.MipMapBlock mmb in id.MipMapBlocks)
+						{
 							foreach (SimPe.Plugin.MipMap mm in mmb.MipMaps)
+							{
 								if (
 									mm.DataType == SimPe.Plugin.MipMapType.LifoReference
 									&& mm.LifoFile.Length > 0
@@ -682,8 +774,13 @@ namespace pj
 										lifopkg
 									);
 									if (lifo != null)
+									{
 										rcolChain.Add(lifo);
+									}
 								}
+							}
+						}
+					}
 				}
 			}
 		}
@@ -698,13 +795,17 @@ namespace pj
 				cpfItem == null
 				|| cpfItem.Datatype != SimPe.Data.MetaData.DataTypes.dtUInteger
 			)
+			{
 				return;
+			}
 
 			IPackedFileDescriptor ps = srcCpf.Package.FindFile(
 				src3idr.Items[cpfItem.UIntegerValue]
 			);
 			if (ps == null)
+			{
 				return;
+			}
 
 			SimPe.PackedFiles.Wrapper.Str str = new SimPe.PackedFiles.Wrapper.Str();
 			str.ProcessData(ps, srcCpf.Package);
@@ -720,7 +821,9 @@ namespace pj
 		private void addFile(IPackageFile p, IPackedFileDescriptor pfd)
 		{
 			if (isInPFDList(currentPackage.Index, pfd) || p.FindExactFile(pfd) == null)
+			{
 				return;
+			}
 
 			IPackedFileDescriptor npfd = p.FindExactFile(pfd).Clone();
 			npfd.UserData = p.Read(pfd).UncompressedData;
@@ -733,12 +836,17 @@ namespace pj
 		)
 		{
 			foreach (IPackedFileDescriptor i in pfdList)
+			{
 				if (
 					i.Group == pfd.Group
 					&& i.Type == pfd.Type
 					&& i.LongInstance == pfd.LongInstance
 				)
+				{
 					return true;
+				}
+			}
+
 			return false;
 		}
 
@@ -817,9 +925,13 @@ namespace pj
 			SimPe.Wait.SubStop();
 
 			if (pfd.Equals(objKey3IDR.FileDescriptor))
+			{
 				addFile(objKeyCPF);
+			}
 			else
+			{
 				addFile(objKey3IDR);
+			}
 
 			SimPe.Wait.Stop();
 			SimPe.RemoteControl.ApplicationForm.Cursor = Cursors.Default;
@@ -830,27 +942,38 @@ namespace pj
 		public bool IsEnabled(IPackedFileDescriptor pfd, IPackageFile package)
 		{
 			if (pfd == null || package == null)
+			{
 				return false;
+			}
+
 			return true;
 		}
 
 		private bool IsReallyEnabled(IPackedFileDescriptor pfd, IPackageFile package)
 		{
 			if (pfd == null || package == null)
+			{
 				return false;
+			}
+
 			if (txmtpkg == null)
 			{
 				SetPacks();
 				SimPe.FileTable.FileIndex.FILoad += new EventHandler(FileIndex_FILoad);
 			}
 			if (pfd.Type == SimPe.Data.MetaData.REF_FILE)
+			{
 				return hasCpf(pfd, package);
+			}
 			else if (
 				pfd.Type == 0x0C1FE246 /*XMOL*/
 				|| pfd.Type == 0x2C1FD8A1 /*XTOL*/
 				|| pfd.Type == SimPe.Data.MetaData.GZPS
 			)
+			{
 				return has3idr(pfd, package);
+			}
+
 			return false;
 		}
 

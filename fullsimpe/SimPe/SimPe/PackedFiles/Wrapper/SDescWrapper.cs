@@ -1879,7 +1879,10 @@ namespace SimPe.PackedFiles.Wrapper
 		public SDesc GetSimDescription(ushort instance)
 		{
 			if (instance == parent.FileDescriptor.Instance)
+			{
 				return null;
+			}
+
 			IPackedFileDescriptor pfd = parent.Package.FindFile(
 				Data.MetaData.SIM_DESCRIPTION_FILE,
 				0,
@@ -1893,7 +1896,9 @@ namespace SimPe.PackedFiles.Wrapper
 				parent.sdescprovider
 			);
 			if (pfd != null)
+			{
 				sdesc.ProcessData(pfd, parent.Package);
+			}
 
 			return sdesc;
 		}
@@ -1908,7 +1913,10 @@ namespace SimPe.PackedFiles.Wrapper
 		public SimRelations GetSimRelationships(ushort instance)
 		{
 			if (instance == parent.FileDescriptor.Instance)
+			{
 				return null;
+			}
+
 			IPackedFileDescriptor pfd1 = parent.Package.FindFile(
 				Data.MetaData.RELATION_FILE,
 				0,
@@ -1928,9 +1936,14 @@ namespace SimPe.PackedFiles.Wrapper
 			rels[1] = new SRel();
 
 			if (pfd1 != null)
+			{
 				rels[1].ProcessData(pfd1, parent.Package);
+			}
+
 			if (pfd2 != null)
+			{
 				rels[0].ProcessData(pfd2, parent.Package);
+			}
 
 			return new SimRelations(rels);
 		}
@@ -2159,11 +2172,20 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				if (Species == SpeciesType.Cat)
+				{
 					return false;
+				}
+
 				if (Species == SpeciesType.SmallDog)
+				{
 					return false;
+				}
+
 				if (Species == SpeciesType.LargeDog)
+				{
 					return false;
+				}
+
 				return true;
 			}
 		}
@@ -2659,7 +2681,9 @@ namespace SimPe.PackedFiles.Wrapper
 					{
 						object[] tags = (object[])o;
 						if ((System.Drawing.Image)tags[1] != null)
+						{
 							return true;
+						}
 					}
 				}
 				return false;
@@ -2680,7 +2704,9 @@ namespace SimPe.PackedFiles.Wrapper
 					{
 						object[] tags = (object[])o;
 						if ((System.Drawing.Image)tags[1] != null)
+						{
 							return (System.Drawing.Image)tags[1];
+						}
 					}
 				}
 				return new System.Drawing.Bitmap(1, 1);
@@ -2713,11 +2739,17 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				if (CharacterFileName == null)
+				{
 					return false;
+				}
 				else if (CharacterFileName.Contains(".1"))
+				{
 					return true;
+				}
 				else
+				{
 					return false;
+				}
 			}
 		}
 
@@ -2732,7 +2764,9 @@ namespace SimPe.PackedFiles.Wrapper
 		public virtual bool ChangeNames(string name, string familyname)
 		{
 			if (!System.IO.File.Exists(this.CharacterFileName))
+			{
 				return false;
+			}
 
 			try
 			{
@@ -2749,11 +2783,19 @@ namespace SimPe.PackedFiles.Wrapper
 					foreach (SimPe.PackedFiles.Wrapper.StrLanguage lng in str.Languages)
 					{
 						if (lng == null)
+						{
 							continue;
+						}
+
 						if (str.LanguageItems(lng)[0x0] != null)
+						{
 							str.LanguageItems(lng)[0x0].Title = name;
+						}
+
 						if (str.LanguageItems(lng)[0x2] != null)
+						{
 							str.LanguageItems(lng)[0x2].Title = familyname;
+						}
 					}
 					str.SynchronizeUserData();
 					file.Save();
@@ -2765,7 +2807,9 @@ namespace SimPe.PackedFiles.Wrapper
 				{
 					a.Name = name;
 					if (a.Tag.Length >= 2)
+					{
 						a.Tag[2] = familyname;
+					}
 				}
 				return true;
 			}
@@ -2792,7 +2836,9 @@ namespace SimPe.PackedFiles.Wrapper
 						if (o.Length > 2)
 						{
 							if (o[2] != null)
+							{
 								return o[2].ToString();
+							}
 						}
 					}
 				}
@@ -2818,9 +2864,12 @@ namespace SimPe.PackedFiles.Wrapper
 						familynameprovider.FindName(SimId).Name
 						== SimPe.Localization.GetString("Unknown")
 					)
+					{
 						return Data.MetaData.NPCFamily(
 							Convert.ToUInt32(FamilyInstance)
 						);
+					}
+
 					return familynameprovider.FindName(SimId).Name;
 				}
 				else
@@ -2845,7 +2894,9 @@ namespace SimPe.PackedFiles.Wrapper
 						if (o.Length > 3)
 						{
 							if (o[3] != null)
+							{
 								return (bool)o[3];
+							}
 						}
 					}
 				}
@@ -2914,7 +2965,10 @@ namespace SimPe.PackedFiles.Wrapper
 		protected override string GetResourceName(SimPe.Data.TypeAlias ta)
 		{
 			if (!this.Processed)
+			{
 				ProcessData(FileDescriptor, Package);
+			}
+
 			return this.SimName + " " + this.SimFamilyName;
 		}
 		#endregion
@@ -3015,23 +3069,50 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				if (version == (int)SDescVersions.Castaway)
+				{
 					return 0x19E + 0XA;
+				}
+
 				if (version >= (int)SDescVersions.Apartment)
+				{
 					return 0x1DA + 0xA;
+				}
+
 				if (version >= (int)SDescVersions.Freetime)
+				{
 					return 0x1D4 + 0xA;
+				}
+
 				if (version >= (int)SDescVersions.VoyageB)
+				{
 					return 0x1A4 + 0xA; //0x19e + 0xa?
+				}
+
 				if (version >= (int)SDescVersions.Voyage)
+				{
 					return 0x1A4 + 0xA; //0x19e + 0xa?
+				}
+
 				if (version >= (int)SDescVersions.Pets)
+				{
 					return 0x19C + 0xA;
+				}
+
 				if (version >= (int)SDescVersions.Business)
+				{
 					return 0x19A + 0xA;
+				}
+
 				if (version >= (int)SDescVersions.Nightlife)
+				{
 					return 0x192 + 0xA;
+				}
+
 				if (version >= (int)SDescVersions.University)
+				{
 					return 0x16A + 0x12;
+				}
+
 				return 0x16A;
 			}
 		}
@@ -3193,7 +3274,9 @@ namespace SimPe.PackedFiles.Wrapper
 			for (int i = 0; i < Relations.SimInstances.Length; i++)
 			{
 				if (reader.BaseStream.Length - reader.BaseStream.Position < 4)
+				{
 					continue;
+				}
 				//reader.ReadUInt16();			//yet unknown
 				Relations.SimInstances[i] = (ushort)reader.ReadUInt32();
 				ct++;
@@ -3205,16 +3288,24 @@ namespace SimPe.PackedFiles.Wrapper
 				ushort[] old = Relations.SimInstances;
 				Relations.SimInstances = new ushort[ct];
 				for (int i = 0; i < ct; i++)
+				{
 					Relations.SimInstances[i] = old[i];
+				}
 			}
 
 			if (reader.BaseStream.Length - reader.BaseStream.Position > 0)
+			{
 				EndByte = reader.ReadByte();
+			}
 			else
+			{
 				EndByte = 0x01;
+			}
 
 			if (version >= (int)SDescVersions.Voyage)
+			{
 				Voyage.UnserializeMem(reader);
+			}
 
 			//character (Genetic)
 			reader.BaseStream.Seek(startpos + 0x6A, System.IO.SeekOrigin.Begin);
@@ -3250,31 +3341,45 @@ namespace SimPe.PackedFiles.Wrapper
 
 			//university only Items
 			if (version >= (int)SDescVersions.University)
+			{
 				University.Unserialize(reader);
+			}
 
 			//nightlife only Items
 			if (version >= (int)SDescVersions.Nightlife)
+			{
 				Nightlife.Unserialize(reader, (SDescVersions)version);
+			}
 
 			//business only Items
 			if (version >= (int)SDescVersions.Business)
+			{
 				Business.Unserialize(reader);
+			}
 
 			//pets only Items
 			if (version >= (int)SDescVersions.Pets)
+			{
 				Pets.Unserialize(reader);
+			}
 
 			//voyage only Items
 			if (version >= (int)SDescVersions.Voyage)
+			{
 				Voyage.Unserialize(reader);
+			}
 
 			//castway only Items
 			if (version == (int)SDescVersions.Castaway)
+			{
 				Castaway.Unserialize(reader);
+			}
 
 			//freetime only Items
 			if (version >= (int)SDescVersions.Freetime)
+			{
 				Freetime.Unserialize(reader);
+			}
 
 			//apartment only Items
 			if (version >= (int)SDescVersions.Apartment)
@@ -3306,7 +3411,10 @@ namespace SimPe.PackedFiles.Wrapper
 			);
 			writer.Write(res03);
 			while (writer.BaseStream.Length < 0x16D)
+			{
 				writer.Write((byte)0);
+			}
+
 			long endpos = writer.BaseStream.Position;
 
 			///
@@ -3334,7 +3442,9 @@ namespace SimPe.PackedFiles.Wrapper
 
 			//freetime only Items (has to get processed before the aspiration filed is written)
 			if (version >= (int)SDescVersions.Freetime)
+			{
 				Freetime.Serialize(writer);
+			}
 
 			//random Data
 			writer.BaseStream.Seek(startpos + 0xb4, SeekOrigin.Begin);
@@ -3428,11 +3538,15 @@ namespace SimPe.PackedFiles.Wrapper
 			writer.Write((uint)Relations.SimInstances.Length);
 
 			for (int i = 0; i < Relations.SimInstances.Length; i++)
+			{
 				writer.Write((uint)Relations.SimInstances[i]);
+			}
 
 			writer.Write((byte)EndByte);
 			if (version >= (int)SDescVersions.Voyage)
+			{
 				Voyage.SerializeMem(writer);
+			}
 
 			//skills
 			writer.BaseStream.Seek(startpos + 0x1E, System.IO.SeekOrigin.Begin);
@@ -3484,31 +3598,45 @@ namespace SimPe.PackedFiles.Wrapper
 
 			//university only Items
 			if (version >= (int)SDescVersions.University)
+			{
 				University.Serialize(writer);
+			}
 
 			//nightlife only Items
 			if (version >= (int)SDescVersions.Nightlife)
+			{
 				Nightlife.Serialize(writer, (SDescVersions)version);
+			}
 
 			//business only Items
 			if (version >= (int)SDescVersions.Business)
+			{
 				Business.Serialize(writer);
+			}
 
 			//pets only Items
 			if (version >= (int)SDescVersions.Pets)
+			{
 				Pets.Serialize(writer);
+			}
 
 			//voyage only Items
 			if (version >= (int)SDescVersions.Voyage)
+			{
 				Voyage.Serialize(writer);
+			}
 
 			//castway only Items
 			if (version == (int)SDescVersions.Castaway)
+			{
 				Castaway.Serialize(writer);
+			}
 
 			//apartment only Items
 			if (version >= (int)SDescVersions.Apartment)
+			{
 				Apartment.Serialize(writer);
+			}
 
 			writer.BaseStream.Seek(endpos, System.IO.SeekOrigin.Begin);
 		}
@@ -3539,7 +3667,10 @@ namespace SimPe.PackedFiles.Wrapper
 					+ ", Grade="
 					+ this.CharacterDescription.Grade.ToString();
 				if ((int)this.Version >= (int)SDescVersions.Nightlife)
+				{
 					s += ", Species=" + Nightlife.Species.ToString();
+				}
+
 				return s;
 			}
 		}
@@ -3575,12 +3706,15 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				if (addoncarrer == null)
+				{
 					addoncarrer = Data.Alias.LoadFromXml(
 						System.IO.Path.Combine(
 							Helper.SimPeDataPath,
 							"additional_careers.xml"
 						)
 					);
+				}
+
 				return addoncarrer;
 			}
 		}
@@ -3595,12 +3729,15 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				if (addonmajor == null)
+				{
 					addonmajor = Data.Alias.LoadFromXml(
 						System.IO.Path.Combine(
 							Helper.SimPeDataPath,
 							"additional_majors.xml"
 						)
 					);
+				}
+
 				return addonmajor;
 			}
 		}
@@ -3615,12 +3752,15 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				if (addonschool == null)
+				{
 					addonschool = Data.Alias.LoadFromXml(
 						System.IO.Path.Combine(
 							Helper.SimPeDataPath,
 							"additional_schools.xml"
 						)
 					);
+				}
+
 				return addonschool;
 			}
 		}
@@ -3631,8 +3771,12 @@ namespace SimPe.PackedFiles.Wrapper
 			string[] names = Enum.GetNames(typeof(Expansions));
 			string name = ver.ToString();
 			foreach (string n in names)
+			{
 				if (name == n)
+				{
 					return (Expansions)Enum.Parse(typeof(Expansions), n);
+				}
+			}
 
 			return Expansions.BaseGame;
 		}
@@ -3651,52 +3795,94 @@ namespace SimPe.PackedFiles.Wrapper
 		public static ExpansionItem GetIEVersion(SDescVersions sv)
 		{
 			if (sv == SDescVersions.Apartment)
+			{
 				return PathProvider.Global.Latest;
+			}
+
 			if (sv == SDescVersions.Freetime)
+			{
 				return PathProvider.Global.GetLowestAvailableExpansion(13, 15); // lowest is EP, these SPs lack data so use them last
+			}
+
 			if (sv == SDescVersions.Voyage || sv == SDescVersions.VoyageB)
+			{
 				return PathProvider.Global.GetLowestAvailableExpansion(10, 12);
+			}
+
 			if (sv == SDescVersions.Castaway)
+			{
 				return PathProvider.Global.GetExpansion(28);
+			}
+
 			if (sv == SDescVersions.Pets)
 			{
 				if (Helper.WindowsRegistry.LoadOnlySimsStory == 29)
+				{
 					return PathProvider.Global.GetExpansion(29);
+				}
 				else
+				{
 					return PathProvider.Global.GetHighestAvailableExpansion(6, 9);
+				}
 			}
 			if (sv == SDescVersions.Business)
 			{
 				if (Helper.WindowsRegistry.LoadOnlySimsStory == 30)
+				{
 					return PathProvider.Global.GetExpansion(30);
+				}
 				else
+				{
 					return (PathProvider.Global.GetHighestAvailableExpansion(3, 5));
+				}
 			}
 			if (sv == SDescVersions.Nightlife)
+			{
 				return PathProvider.Global.GetExpansion(2);
+			}
+
 			if (sv == SDescVersions.University)
+			{
 				return PathProvider.Global.GetExpansion(1);
+			}
+
 			if (sv == SDescVersions.BaseGame)
+			{
 				return PathProvider.Global.GetExpansion(0);
+			}
+
 			return null;
 		}
 
 		public override int GetHashCode()
 		{
 			if (this.FileDescriptor == null || this.Package == null)
+			{
 				return base.GetHashCode();
+			}
 			else
+			{
 				return (int)this.SimId;
+			}
 		}
 
 		public override bool Equals(object obj)
 		{
 			if (this.FileDescriptor == null || this.Package == null)
+			{
 				return base.Equals(obj);
+			}
+
 			if (obj == null)
+			{
 				return false;
+			}
+
 			if (!(obj is SDesc))
+			{
 				return false;
+			}
+
 			return (((SDesc)obj).SimId == SimId) && (((SDesc)obj).Instance == Instance);
 		}
 

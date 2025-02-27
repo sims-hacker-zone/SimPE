@@ -263,7 +263,9 @@ namespace SimPe.Plugin.Anim
 		internal void SerializePart2Data(System.IO.BinaryWriter writer)
 		{
 			for (int i = 0; i < Part2.Length; i++)
+			{
 				Part2[i].SerializeData(writer);
+			}
 		}
 
 		/// <summary>
@@ -274,7 +276,10 @@ namespace SimPe.Plugin.Anim
 		{
 			int len = 0;
 			for (int i = 0; i < Part2.Length; i++)
+			{
 				len += Part2[i].UnserializeName(reader);
+			}
+
 			return len;
 		}
 
@@ -286,7 +291,10 @@ namespace SimPe.Plugin.Anim
 		{
 			int len = 0;
 			for (int i = 0; i < Part2.Length; i++)
+			{
 				len += Part2[i].SerializeName(writer);
+			}
+
 			return len;
 		}
 
@@ -297,7 +305,9 @@ namespace SimPe.Plugin.Anim
 		internal void UnserializePart3Data(System.IO.BinaryReader reader)
 		{
 			for (int i = 0; i < Part2.Length; i++)
+			{
 				Part2[i].UnserializePart3Data(reader);
+			}
 		}
 
 		/// <summary>
@@ -307,7 +317,9 @@ namespace SimPe.Plugin.Anim
 		internal void SerializePart3Data(System.IO.BinaryWriter writer)
 		{
 			for (int i = 0; i < Part2.Length; i++)
+			{
 				Part2[i].SerializePart3Data(writer);
+			}
 		}
 
 		/// <summary>
@@ -317,7 +329,9 @@ namespace SimPe.Plugin.Anim
 		internal void UnserializePart3AddonData(System.IO.BinaryReader reader)
 		{
 			for (int i = 0; i < Part2.Length; i++)
+			{
 				Part2[i].UnserializePart3AddonData(reader);
+			}
 		}
 
 		/// <summary>
@@ -327,7 +341,9 @@ namespace SimPe.Plugin.Anim
 		internal void SerializePart3AddonData(System.IO.BinaryWriter writer)
 		{
 			for (int i = 0; i < Part2.Length; i++)
+			{
 				Part2[i].SerializePart3AddonData(writer);
+			}
 		}
 
 		/// <summary>
@@ -351,7 +367,9 @@ namespace SimPe.Plugin.Anim
 		internal void SerializePart4Data(System.IO.BinaryWriter writer)
 		{
 			for (int i = 0; i < Part4.Length; i++)
+			{
 				Part4[i].SerializeData(writer);
+			}
 		}
 
 		/// <summary>
@@ -361,7 +379,9 @@ namespace SimPe.Plugin.Anim
 		internal void UnserializePart5Data(System.IO.BinaryReader reader)
 		{
 			for (int i = 0; i < Part4.Length; i++)
+			{
 				Part4[i].UnserializePart5Data(reader);
+			}
 		}
 
 		/// <summary>
@@ -371,7 +391,9 @@ namespace SimPe.Plugin.Anim
 		internal void SerializePart5Data(System.IO.BinaryWriter writer)
 		{
 			for (int i = 0; i < Part4.Length; i++)
+			{
 				Part4[i].SerializePart5Data(writer);
+			}
 		}
 
 		/// <summary>
@@ -408,7 +430,10 @@ namespace SimPe.Plugin.Anim
 		void SetPart4Count(int ct)
 		{
 			if (ct > 0x3f)
+			{
 				ct = 0x3f;
+			}
+
 			ct = ct & 0x3f;
 
 			datas[2] = (short)((int)datas[2] & 0x0000FFC0);
@@ -429,12 +454,18 @@ namespace SimPe.Plugin.Anim
 				SimPe.Interfaces.Scenegraph.ICresChildren icc = rn.GetBlock(i);
 
 				if (icc != null)
+				{
 					if (icc.StoredTransformNode != null)
+					{
 						if (
 							icc.StoredTransformNode.ObjectGraphNode.FileName
 							== this.Name
 						)
+						{
 							return rcol;
+						}
+					}
+				}
 			}
 			return null;
 		}
@@ -447,7 +478,9 @@ namespace SimPe.Plugin.Anim
 			{
 				GenericRcol rcol = FindDefiningCRES(pfd, Parent.Package);
 				if (rcol != null)
+				{
 					return rcol;
+				}
 			}
 
 			if (
@@ -470,7 +503,9 @@ namespace SimPe.Plugin.Anim
 						item.Package
 					);
 					if (rcol != null)
+					{
 						return rcol;
+					}
 				}
 			}
 			return null;
@@ -479,7 +514,10 @@ namespace SimPe.Plugin.Anim
 		public GenericRcol FindUsedGMDC(GenericRcol cres)
 		{
 			if (cres == null)
+			{
 				return null;
+			}
+
 			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item =
 				cres.FindReferencedType(Data.MetaData.SHPE);
 			if (item != null)
@@ -511,13 +549,22 @@ namespace SimPe.Plugin.Anim
 				FileTable.FileIndex.Load();
 				ulong instns = 0xCCBC1AF8FFE2EDE9; //auskel
 				if (this.Name == "tuskel")
+				{
 					instns = 0x9C1686E9FF68B810;
+				}
 				else if (this.Name == "cuskel")
+				{
 					instns = 0xB7C67187FF38EF7F;
+				}
 				else if (this.Name == "puskel")
+				{
 					instns = 0xFF5F4C89AE871D44;
+				}
 				else if (this.Name == "buskel")
+				{
 					instns = 0x57D5D2CDFF545BA9;
+				}
+
 				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
 					FileTable.FileIndex.FindFile(
 						Data.MetaData.GMDC,
@@ -549,12 +596,16 @@ namespace SimPe.Plugin.Anim
 		public AnimationFrameBlock GetJointTransformation(string name, FrameType type)
 		{
 			foreach (AnimationFrameBlock ab in this.Part2)
+			{
 				if (
 					ab.Name == name
 					&& ab.TransformationType == type
 					&& ab.AxisCount == 3
 				)
+				{
 					return ab;
+				}
+			}
 
 			return null;
 		}

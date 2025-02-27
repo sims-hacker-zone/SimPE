@@ -31,9 +31,13 @@ namespace SimPe.Windows.Forms
 		protected void SignalSelectionChanged()
 		{
 			if (noselectevent > 0)
+			{
 				DoSignalSelectionChanged(myhandle);
+			}
 			else
+			{
 				seltimer.Change(WAIT_SELECT, System.Threading.Timeout.Infinite);
+			}
 		}
 
 		void DoSignalSelectionChanged(IntPtr handle)
@@ -60,7 +64,9 @@ namespace SimPe.Windows.Forms
 					ResourceViewManager.ResourceNameList ret =
 						new ResourceViewManager.ResourceNameList();
 					foreach (int i in lv.SelectedIndices)
+					{
 						ret.Add(names[i]);
+					}
 
 					return ret;
 				}
@@ -73,17 +79,23 @@ namespace SimPe.Windows.Forms
 			if (SelectionChanged != null)
 			{
 				if (noselectevent == 0)
+				{
 					SelectionChanged(this, resselchgea);
+				}
 			}
 			if (noselectevent == 0)
+			{
 				resselchgea = null;
+			}
 			//PrintStats("***OnResourceSelectionChanged");
 		}
 
 		private void lv_Click(object sender, EventArgs e)
 		{
 			if (Helper.WindowsRegistry.SimpleResourceSelect)
+			{
 				OnSelectResource();
+			}
 		}
 
 		private void lv_MouseUp(object sender, MouseEventArgs e)
@@ -112,7 +124,9 @@ namespace SimPe.Windows.Forms
 		private void lv_DoubleClick(object sender, EventArgs e)
 		{
 			if (!Helper.WindowsRegistry.SimpleResourceSelect)
+			{
 				OnSelectResource();
+			}
 		}
 
 		bool ctrldown = false;
@@ -139,15 +153,24 @@ namespace SimPe.Windows.Forms
 					|| e.KeyCode == Keys.End
 				)
 			)
+			{
 				OnSelectResource();
+			}
 
 			if (e.KeyCode == Keys.Enter)
+			{
 				OnSelectResource();
+			}
+
 			if (e.KeyCode == Keys.A && e.Control)
+			{
 				SelectAll();
+			}
 
 			if (ListViewKeyUp != null)
+			{
 				ListViewKeyUp(this, e);
+			}
 		}
 
 		public void SelectAll()
@@ -157,7 +180,10 @@ namespace SimPe.Windows.Forms
 				BeginUpdate();
 				lv.SelectedIndices.Clear();
 				for (int i = 0; i < names.Count; i++)
+				{
 					lv.SelectedIndices.Add(i);
+				}
+
 				EndUpdate();
 			}
 		}
@@ -166,16 +192,22 @@ namespace SimPe.Windows.Forms
 		{
 			bool rctrl = ctrldown;
 			if (!Helper.WindowsRegistry.FirefoxTabbing)
+			{
 				rctrl = false;
+			}
 
 			selresea = new SelectResourceEventArgs(rctrl);
 			if (SelectedResource != null)
 			{
 				if (noselectevent == 0)
+				{
 					SelectedResource(this, selresea);
+				}
 			}
 			if (noselectevent == 0)
+			{
 				selresea = null;
+			}
 			//System.Diagnostics.Debug.WriteLine("Selection changed " + rctrl);
 		}
 
@@ -206,7 +238,10 @@ namespace SimPe.Windows.Forms
 				lock (names)
 				{
 					if (lv.SelectedIndices.Count == 0)
+					{
 						return null;
+					}
+
 					return names[lv.SelectedIndices[0]].Resource;
 				}
 			}

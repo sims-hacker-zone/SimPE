@@ -447,10 +447,14 @@ namespace SimPe.Plugin
 
 			this.lb.Items.Clear();
 			foreach (object o in RoadTextureWrapper)
+			{
 				lb.Items.Add(o);
+			}
 
 			if (lb.Items.Count > 0)
+			{
 				lb.SelectedIndex = 0;
+			}
 		}
 
 		#endregion
@@ -458,9 +462,14 @@ namespace SimPe.Plugin
 		private void lb_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			if (lb.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			if (RoadTextureWrapper == null)
+			{
 				return;
+			}
 
 			if (lb.SelectedItem is uint)
 			{

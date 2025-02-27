@@ -103,7 +103,10 @@ namespace SimPe.Plugin.Anim
 			{
 				char ch = reader.ReadChar();
 				if (ch == 0)
+				{
 					break;
+				}
+
 				name += ch;
 			}
 
@@ -117,7 +120,10 @@ namespace SimPe.Plugin.Anim
 		internal int SerializeName(System.IO.BinaryWriter writer)
 		{
 			foreach (char c in name)
+			{
 				writer.Write(c);
+			}
+
 			writer.Write((byte)0);
 
 			return name.Length + 1;
@@ -224,7 +230,9 @@ namespace SimPe.Plugin.Anim
 		{
 			long pos = reader.BaseStream.Position;
 			if (reader.BaseStream.Length - pos < 4 + 4 + AddonData.Length + 4)
+			{
 				return;
+			}
 
 			datai[0] = reader.ReadUInt32();
 			datai[1] = reader.ReadUInt32();
@@ -273,7 +281,9 @@ namespace SimPe.Plugin.Anim
 		internal void SerializePart5Data(System.IO.BinaryWriter writer)
 		{
 			for (int i = 0; i < Part5.Length; i++)
+			{
 				Part5[i].SerializeData(writer);
+			}
 		}
 
 		/// <summary>
@@ -292,7 +302,10 @@ namespace SimPe.Plugin.Anim
 		void SetPart5Count(int ct)
 		{
 			if (ct > 0xff)
+			{
 				ct = 0xff;
+			}
+
 			AddonData[2] = (byte)(ct & 0xff);
 		}
 

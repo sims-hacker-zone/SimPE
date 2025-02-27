@@ -85,7 +85,9 @@ namespace pjOBJDTool
 		void docCTSSInstance_DataOwnerControlChanged(object sender, EventArgs e)
 		{
 			if (wrapper == null)
+			{
 				return;
+			}
 
 			pjse.FileTable.Entry[] actss = pjse.FileTable.GFT[
 				SimPe.Data.MetaData.CTSS_FILE,
@@ -103,7 +105,9 @@ namespace pjOBJDTool
 				tbCTSSDesc.Text = ((SimPe.PackedFiles.Wrapper.StrItem)ctss[1, 1]).Title;
 			}
 			else
+			{
 				tbCTSSName.Text = tbCTSSDesc.Text = "";
+			}
 		}
 
 		#region ValueMotive shorts
@@ -151,6 +155,7 @@ namespace pjOBJDTool
 			};
 			adocValueMotive = new List<DataOwnerControl>();
 			foreach (TextBox tb in atbValueMotive)
+			{
 				adocValueMotive.Add(
 					new DataOwnerControl(
 						null,
@@ -164,6 +169,8 @@ namespace pjOBJDTool
 						(ushort)0
 					)
 				);
+			}
+
 			foreach (DataOwnerControl doc in adocValueMotive)
 			{
 				doc.Decimal = true;
@@ -178,11 +185,16 @@ namespace pjOBJDTool
 		void adocValueMotive_DataOwnerControlChanged(object sender, EventArgs e)
 		{
 			if (wrapper == null)
+			{
 				return;
+			}
 
 			int i = adocValueMotive.IndexOf((DataOwnerControl)sender);
 			if (i < 0)
+			{
 				return;
+			}
+
 			wrapper[asValueMotive[i]] = adocValueMotive[i].Value;
 		}
 		#endregion
@@ -196,17 +208,24 @@ namespace pjOBJDTool
 		{
 			ackbValue = new List<CheckBox>(new CheckBox[] { ckbSelfDep });
 			foreach (CheckBox ckb in ackbValue)
+			{
 				ckb.CheckedChanged += new EventHandler(ackbValue_CheckedChanged);
+			}
 		}
 
 		void ackbValue_CheckedChanged(object sender, EventArgs e)
 		{
 			if (wrapper == null)
+			{
 				return;
+			}
 
 			int i = ackbValue.IndexOf((CheckBox)sender);
 			if (i < 0)
+			{
 				return;
+			}
+
 			wrapper[abValue[i]] = (ushort)(ackbValue[i].Checked ? 1 : 0);
 		}
 		#endregion
@@ -229,14 +248,19 @@ namespace pjOBJDTool
 				new LabelledBoolsetControl[] { lbcValidEPs1, lbcValidEPs2 }
 			);
 			foreach (LabelledBoolsetControl lbc in albcValidEPs)
+			{
 				lbc.ValueChanged += new EventHandler(rb_CheckedChanged);
+			}
 
 			List<string> l = new List<string>();
 			for (int i = 0; i < abhsEPs.Length; i++)
 			{
 				l = pjse.BhavWiz.readStr(abhsEPs[i]);
 				while (l.Count < 16)
+				{
 					l.Add("-");
+				}
+
 				albcValidEPs[i].Labels = l;
 			}
 		}
@@ -244,11 +268,16 @@ namespace pjOBJDTool
 		void rb_CheckedChanged(object sender, EventArgs e)
 		{
 			if (wrapper == null)
+			{
 				return;
+			}
 
 			int i = albcValidEPs.IndexOf((LabelledBoolsetControl)sender);
 			if (i < 0)
+			{
 				return;
+			}
+
 			wrapper[absEPs[i]] = albcValidEPs[i].Value;
 		}
 
@@ -269,15 +298,20 @@ namespace pjOBJDTool
 				new LabelledBoolsetControl[] { lbcRoom, lbcCommunity }
 			);
 			foreach (LabelledBoolsetControl lbc in albcRoomCommm)
+			{
 				lbc.ValueChanged += new EventHandler(albcRoomCommm_ValueChanged);
+			}
 
 			List<string> l = new List<string>();
 			for (int i = 0; i < abhsRoomComm.Length; i++)
 			{
 				l = pjse.BhavWiz.readStr(abhsRoomComm[i]);
 				while (l.Count < 16)
+				{
 					//l.Add((l.Count + 1).ToString());
 					l.Add("-");
+				}
+
 				albcRoomCommm[i].Labels = l;
 			}
 		}
@@ -285,11 +319,16 @@ namespace pjOBJDTool
 		void albcRoomCommm_ValueChanged(object sender, EventArgs e)
 		{
 			if (wrapper == null)
+			{
 				return;
+			}
 
 			int i = albcRoomCommm.IndexOf((LabelledBoolsetControl)sender);
 			if (i < 0)
+			{
 				return;
+			}
+
 			wrapper[absRoomComm[i]] = albcRoomCommm[i].Value;
 		}
 		#endregion
@@ -315,13 +354,19 @@ namespace pjOBJDTool
 			{
 				acbFuncBuild[i].Items.Add("None");
 				foreach (string label in pjse.BhavWiz.readStr(abhsFuncBuild[i]))
+				{
 					acbFuncBuild[i]
 						.Items.Add(
 							acbFuncBuild[i].Items.Count.ToString() + ". " + label
 						);
+				}
+
 				while (acbFuncBuild[i].Items.Count < 16)
+				{
 					acbFuncBuild[i]
 						.Items.Add(acbFuncBuild[i].Items.Count.ToString() + ".");
+				}
+
 				acbFuncBuild[i].SelectedIndexChanged += new EventHandler(
 					acbFuncBuild_SelectedIndexChanged
 				);
@@ -331,27 +376,36 @@ namespace pjOBJDTool
 				new LabelledBoolsetControl[] { lbcFunction, lbcBuild }
 			);
 			for (int i = 0; i < albcFuncBuild.Count; i++)
+			{
 				albcFuncBuild[i].ValueChanged += new EventHandler(
 					albcFuncBuild_ValueChanged
 				);
+			}
 		}
 
 		void acbFuncBuild_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (wrapper == null)
+			{
 				return;
+			}
 
 			int i = acbFuncBuild.IndexOf((ComboBox)sender);
 			if (i < 0 || acbFuncBuild[i].SelectedIndex < 0)
+			{
 				return;
+			}
 
 			List<string> l = new List<string>();
 			if (acbFuncBuild[i].SelectedIndex == 0)
 			{
 				wrapper[afFuncBuild[i]] = 0;
 				while (l.Count < 16)
+				{
 					//l.Add((l.Count + 1).ToString());
 					l.Add("-");
+				}
+
 				albcFuncBuild[i].Labels = l;
 				return;
 			}
@@ -360,19 +414,27 @@ namespace pjOBJDTool
 			wrapper[afFuncBuild[i]] = (ushort)(1 << j);
 			l = pjse.BhavWiz.readStr((pjse.GS.BhavStr)(0x110 + 16 * i + j));
 			while (l.Count < 16)
+			{
 				//l.Add((l.Count + 1).ToString());
 				l.Add("-");
+			}
+
 			albcFuncBuild[i].Labels = l;
 		}
 
 		void albcFuncBuild_ValueChanged(object sender, EventArgs e)
 		{
 			if (wrapper == null)
+			{
 				return;
+			}
 
 			int i = albcFuncBuild.IndexOf((LabelledBoolsetControl)sender);
 			if (i < 0)
+			{
 				return;
+			}
+
 			wrapper[absFuncBuild[i]] = albcFuncBuild[i].Value;
 		}
 		#endregion
@@ -391,14 +453,22 @@ namespace pjOBJDTool
 			set
 			{
 				if (wrapper == value)
+				{
 					return;
+				}
+
 				if (!SaveAbandonCancel())
+				{
 					return;
+				}
 
 				if (wrapper != null)
+				{
 					wrapper.WrapperChanged -= new System.EventHandler(
 						this.WrapperChanged
 					);
+				}
+
 				wrapper = value;
 
 				LoadOBJD();
@@ -414,7 +484,10 @@ namespace pjOBJDTool
 		private bool SaveAbandonCancel()
 		{
 			if (wrapper == null || !wrapper.Changed)
+			{
 				return true; // nothing to worry about
+			}
+
 			DialogResult dr = MessageBox.Show(
 				"You have uncommitted changes to the Object Definition you are editing. Do you want to save these changes?",
 				"PJ OBJD Tool",
@@ -448,15 +521,30 @@ namespace pjOBJDTool
 						"";
 				cbOBJDvsn.SelectedIndex = -1;
 				for (int i = 0; i < adocValueMotive.Count; i++)
+				{
 					atbValueMotive[i].Text = "";
+				}
+
 				for (int i = 0; i < ackbValue.Count; i++)
+				{
 					ackbValue[i].CheckState = CheckState.Indeterminate;
+				}
+
 				for (int i = 0; i < albcRoomCommm.Count; i++)
+				{
 					albcRoomCommm[i].Value = 0;
+				}
+
 				for (int i = 0; i < acbFuncBuild.Count; i++)
+				{
 					acbFuncBuild[i].SelectedIndex = -1;
+				}
+
 				for (int i = 0; i < albcFuncBuild.Count; i++)
+				{
 					albcFuncBuild[i].Value = 0;
+				}
+
 				cbOBJDvsn.Enabled =
 					tbCTSSInstance.Enabled =
 					gbValue.Enabled =
@@ -501,16 +589,24 @@ namespace pjOBJDTool
 				docCTSSInstance_DataOwnerControlChanged(null, null);
 
 				for (int i = 0; i < adocValueMotive.Count; i++)
+				{
 					atbValueMotive[i].Text = wrapper[asValueMotive[i]].ToString();
+				}
 
 				for (int i = 0; i < ackbValue.Count; i++)
+				{
 					ackbValue[i].Checked = wrapper[abValue[i]] != 0;
+				}
 
 				for (int i = 0; i < albcRoomCommm.Count; i++)
+				{
 					albcRoomCommm[i].Value = (ushort)wrapper[absRoomComm[i]];
+				}
 
 				for (int i = 0; i < albcValidEPs.Count; i++)
+				{
 					albcValidEPs[i].Value = (ushort)wrapper[absEPs[i]];
+				}
 
 				for (int i = 0; i < acbFuncBuild.Count; i++)
 				{
@@ -519,14 +615,19 @@ namespace pjOBJDTool
 					acbFuncBuild[i].SelectedIndex = k < 0 ? 0 : 16 - k;
 				}
 				for (int i = 0; i < albcFuncBuild.Count; i++)
+				{
 					albcFuncBuild[i].Value = (ushort)wrapper[absFuncBuild[i]];
+				}
 			}
 		}
 
 		private void SaveOBJD()
 		{
 			if (wrapper == null)
+			{
 				return; // will never happen
+			}
+
 			changed |=
 				pfd != null
 				&& wrapper.FileDescriptor != null
@@ -548,7 +649,9 @@ namespace pjOBJDTool
 			get
 			{
 				if (availableOBJDs != null)
+				{
 					return availableOBJDs;
+				}
 
 				List<pfOBJD> lpfo = new List<pfOBJD>();
 				pjse.FileTable.Entry[] items = pjse.FileTable.GFT[
@@ -583,7 +686,10 @@ namespace pjOBJDTool
 			Application.OpenForms[0].Cursor = System.Windows.Forms.Cursors.AppStarting;
 
 			if (!initialised)
+			{
 				InitializeForm();
+			}
+
 			availableOBJDs = null;
 
 			this.pfd = pfd;
@@ -595,9 +701,13 @@ namespace pjOBJDTool
 			Application.OpenForms[0].Cursor = System.Windows.Forms.Cursors.Default;
 
 			if (apfs.Count > 1 || apfs.Count == 0)
+			{
 				btnSelectOBJD_Click(null, null);
+			}
 			else
+			{
 				CurrentOBJD = apfs[0];
+			}
 
 			if (wrapper != null)
 			{
@@ -615,7 +725,10 @@ namespace pjOBJDTool
 			cOBJDChooser coc = new cOBJDChooser();
 			DialogResult dr = coc.Execute(AvailableOBJDs);
 			if (dr == DialogResult.OK && coc.Value != null)
+			{
 				CurrentOBJD = coc.Value;
+			}
+
 			coc.Dispose();
 		}
 
@@ -627,7 +740,9 @@ namespace pjOBJDTool
 		private void cbOBJDvsn_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (wrapper == null)
+			{
 				return;
+			}
 
 			ushort value = (ushort)(
 				cbOBJDvsn.SelectedIndex < 1 ? 0x8b
@@ -642,10 +757,14 @@ namespace pjOBJDTool
 				wrapper[absEPs[1]] = 0;
 				gbValidEPs2.Enabled = false;
 				if (value != 0)
+				{
 					wrapper[absEPs[0]] = 0x01;
+				}
 			}
 			else
+			{
 				gbValidEPs2.Enabled = true;
+			}
 			// if (wrapper[0x00] < 0x8c) wrapper[absEPs[0]] = 0;
 		}
 

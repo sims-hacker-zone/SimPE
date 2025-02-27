@@ -46,10 +46,16 @@ namespace SimPe
 		public static int Parse(List<string> argv, int index, List<string> parm)
 		{
 			if (argv.Count <= index)
+			{
 				return -1;
+			}
+
 			int i = parm.IndexOf(argv[index]);
 			if (i >= 0)
+			{
 				argv.RemoveAt(index);
+			}
+
 			return i;
 		}
 
@@ -57,7 +63,10 @@ namespace SimPe
 		{
 			int i = argv.IndexOf(parm);
 			if (i >= 0)
+			{
 				argv.RemoveAt(i);
+			}
+
 			return i;
 		}
 	}

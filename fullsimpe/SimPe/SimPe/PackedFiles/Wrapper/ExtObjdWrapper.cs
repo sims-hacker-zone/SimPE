@@ -127,7 +127,10 @@ namespace SimPe.PackedFiles.Wrapper
 				{
 					short v = Data[0x004F];
 					if (v != 0x64 && v != 0x96 && v != 0 && v != 1 && v != 2)
+					{
 						return ShelveDimension.Indetermined;
+					}
+
 					return (ShelveDimension)v;
 				}
 				return 0;
@@ -135,7 +138,9 @@ namespace SimPe.PackedFiles.Wrapper
 			set
 			{
 				if (Data.Length > 0x004F)
+				{
 					Data[0x004F] = (short)value;
+				}
 			}
 		}
 
@@ -147,13 +152,18 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				if (Data.Length > 0x29)
+				{
 					return (ushort)Data[0x29];
+				}
+
 				return 0;
 			}
 			set
 			{
 				if (Data.Length > 0x29)
+				{
 					Data[0x29] = (short)value;
+				}
 			}
 		}
 
@@ -165,13 +175,18 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				if (Data.Length > 0x09)
+				{
 					return (SimPe.Data.ObjectTypes)Data[0x09];
+				}
+
 				return SimPe.Data.ObjectTypes.Normal;
 			}
 			set
 			{
 				if (Data.Length > 0x09)
+				{
 					Data[0x09] = (short)value;
+				}
 			}
 		}
 
@@ -251,7 +266,9 @@ namespace SimPe.PackedFiles.Wrapper
 				this.EpRequired2 = new Epsreq2(Data[0x41]);
 			}
 			if (Data.Length > 0x64)
+			{
 				this.CommSort = new ComRoomSort(Data[0x64]);
+			}
 		}
 
 		public short Price
@@ -286,12 +303,15 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				if (tpp == null)
+				{
 					tpp = new SimPe.PackedFiles.Wrapper.ObjdPropertyParser(
 						System.IO.Path.Combine(
 							Helper.SimPeDataPath,
 							"objddefinition.xml"
 						)
 					);
+				}
+
 				return tpp;
 			}
 		}
@@ -377,7 +397,9 @@ namespace SimPe.PackedFiles.Wrapper
 				Data[0x41] = (short)this.EpRequired2.Value;
 			}
 			if (Data.Length > 0x64)
+			{
 				Data[0x64] = (short)this.CommSort.Value;
+			}
 
 			writer.Write(filename);
 			int ct = 0;
@@ -386,11 +408,15 @@ namespace SimPe.PackedFiles.Wrapper
 				writer.Write(s);
 				ct++;
 				if (ct >= MAX_VALUES)
+				{
 					break;
+				}
 			}
 
 			while (ct < MAX_VALUES)
+			{
 				writer.Write((short)0);
+			}
 
 			string flname = this.FileName;
 			byte[] name = Helper.ToBytes(flname, 0);
@@ -475,16 +501,22 @@ namespace SimPe.PackedFiles.Wrapper
 			count = 0x6c;
 			Data = new short[count];
 			for (int i = 0; i < count; i++)
+			{
 				Data[i] = reader.ReadInt16();
+			}
 
 			int sz = reader.ReadInt32();
 			filename2 = reader.ReadBytes(sz);
 
 			if (Helper.ToString(filename2) != this.FileName)
+			{
 				Ok = ObjdHealth.FilenameMismatch;
+			}
 
 			if (reader.BaseStream.Position != reader.BaseStream.Length)
+			{
 				Ok = ObjdHealth.OverLength;
+			}
 		}
 
 		protected void UnserializeOld(System.IO.BinaryReader reader)

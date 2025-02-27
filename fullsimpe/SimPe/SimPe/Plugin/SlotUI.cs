@@ -406,10 +406,13 @@ namespace SimPe.Plugin
 			set
 			{
 				if (pc != null)
+				{
 					pc.SelectedSimChanged -=
 						new SimPe.PackedFiles.Wrapper.SimPoolControl.SelectedSimHandler(
 							pc_SelectedSimChanged
 						);
+				}
+
 				pc = value;
 				if (pc != null)
 				{
@@ -465,11 +468,17 @@ namespace SimPe.Plugin
 		private void tabPage2_VisibleChanged(object sender, System.EventArgs e)
 		{
 			if (tabControl1.SelectedPage == this.tabPage1)
+			{
 				memprop.NgbhItemsListView = lv;
+			}
 			else if (tabControl1.SelectedPage == this.tabPage3)
+			{
 				memprop.NgbhItemsListView = lvfam;
+			}
 			else
+			{
 				memprop.NgbhItemsListView = lvint;
+			}
 		}
 	}
 }

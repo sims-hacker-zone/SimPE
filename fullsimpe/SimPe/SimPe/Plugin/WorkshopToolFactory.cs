@@ -69,12 +69,19 @@ namespace SimPe.Plugin
 		void InvokeLoadDocks(System.Collections.ArrayList docks)
 		{
 			if (Helper.StartedGui == Executable.Classic)
+			{
 				docks.Add(new WorkshopTool(this.LinkedRegistry, this.LinkedProvider));
+			}
 			else
+			{
 				docks.Add(new SimPe.Plugin.Tool.Dockable.ObectWorkshopDockTool());
+			}
+
 			docks.Add(new SimPe.Plugin.Tool.Dockable.PackageDetailDockTool());
 			if (Helper.WindowsRegistry.HiddenMode)
+			{
 				docks.Add(new SimPe.Plugin.Tool.Window.PackageRepairTool());
+			}
 		}
 
 		public IToolPlugin[] KnownTools
@@ -82,7 +89,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (Last != null)
+				{
 					return Last;
+				}
+
 				System.Collections.ArrayList list = new System.Collections.ArrayList();
 				InvokeLoadDocks(list);
 

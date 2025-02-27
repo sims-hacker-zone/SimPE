@@ -30,11 +30,17 @@ namespace SimPe.Plugin
 				+ Convert.ToString(Wrapper.isz)
 				+ " Items in this List,\n Press 'Show All Items' to display them all"; // clear previous values
 			if (Wrapper.HasCustom)
+			{
 				this.TBsting.Text +=
 					"\n Press 'Show Only CC' to display Items not in the pjse GUIDIndex";
+			}
+
 			if (Wrapper.IsSims)
+			{
 				this.TBsting.Text =
 					"This Lot has sim(s) on it.\n\n" + this.TBsting.Text;
+			}
+
 			this.btcustom.Visible = this.btcustom.Enabled = Wrapper.HasCustom;
 			this.btShow.Enabled = true;
 			if (Wrapper.IsCorrupt)
@@ -76,7 +82,9 @@ namespace SimPe.Plugin
 			this.btcustom.Enabled = Wrapper.HasCustom;
 			this.TBsting.Text = "";
 			for (int i = 0; i < Wrapper.isz; i++)
+			{
 				this.TBsting.Text += Wrapper.objekts[i];
+			}
 		}
 
 		private void btcustom_Click(object sender, EventArgs e)
@@ -85,10 +93,17 @@ namespace SimPe.Plugin
 			this.btShow.Enabled = true;
 			this.TBsting.Text = "";
 			for (int i = 0; i < Wrapper.isz; i++)
+			{
 				if (Wrapper.objekts[i].Contains("**"))
+				{
 					this.TBsting.Text += Wrapper.objekts[i];
+				}
+			}
+
 			if (this.TBsting.Text == "")
+			{
 				this.TBsting.Text = " This Lot is CC Free"; // Should never be seen
+			}
 		}
 	}
 }

@@ -308,7 +308,10 @@ namespace Ambertation.Windows.Forms
 		void ClearInterface()
 		{
 			foreach (Control c in Controls)
+			{
 				c.Dispose();
+			}
+
 			this.Controls.Clear();
 		}
 
@@ -515,13 +518,19 @@ namespace Ambertation.Windows.Forms
 			);
 			cbzero.Anchor = AnchorStyles.Top | AnchorStyles.Right;
 			if (hvc != null)
+			{
 				cbzero.Checked = hvc.HighlightZeros;
+			}
+
 			cbzero.CheckedChanged += new EventHandler(cb_CheckedChanged);
 
 			cbgrid = CreateCheckBox(gb.Width - 114, ref top, 110, "Show Grid", gb);
 			cbgrid.Anchor = AnchorStyles.Top | AnchorStyles.Right;
 			if (hvc != null)
+			{
 				cbgrid.Checked = this.hvc.ShowGrid;
+			}
+
 			cbgrid.CheckedChanged += new EventHandler(cbgrid_CheckedChanged);
 
 			boxes[0].TextChanged += new EventHandler(HexEditControl_TextChanged);
@@ -570,16 +579,24 @@ namespace Ambertation.Windows.Forms
 				val /= 2;
 			}
 			if (res == "")
+			{
 				res = "0";
+			}
+
 			return res;
 		}
 
 		private void hvc_DataChanged(object sender, EventArgs e)
 		{
 			if (edit)
+			{
 				return;
+			}
+
 			if (sender == null)
+			{
 				return;
+			}
 
 			edit = true;
 			try
@@ -645,9 +662,11 @@ namespace Ambertation.Windows.Forms
 				boxes[9].Text = HexViewControl.SetLength(BinaryString(b[3]), 8, '0');
 
 				if (hvc.SelectionLength > 0)
+				{
 					boxes[11].Text = BitConverter
 						.ToString(hvc.Selection)
 						.Replace("-", " ");
+				}
 			}
 			catch { }
 			finally
@@ -674,35 +693,47 @@ namespace Ambertation.Windows.Forms
 		private void cb_CheckedChanged(object sender, EventArgs e)
 		{
 			if (hvc != null)
+			{
 				hvc.HighlightZeros = ((CheckBox)sender).Checked;
+			}
 		}
 
 		private void cbgrid_CheckedChanged(object sender, EventArgs e)
 		{
 			if (hvc != null)
+			{
 				hvc.ShowGrid = ((CheckBox)sender).Checked;
+			}
 		}
 
 		private void HexEditControl_TextChanged(object sender, EventArgs e)
 		{
 			if (edit)
+			{
 				return;
-			((TextBox)sender).Tag = true;
+			} ((TextBox)sender).Tag = true;
 		}
 
 		#region Byte
 		private void tbbyte_TextLeave(object sender, EventArgs e)
 		{
 			if (((TextBox)sender).Tag == null)
+			{
 				return;
+			}
+
 			try
 			{
 				if (hvc != null)
 				{
 					if (vs == HexViewControl.ViewState.Hex)
+					{
 						hvc.SelectedByte = Convert.ToByte(((TextBox)sender).Text, 16);
+					}
 					else
+					{
 						hvc.SelectedByte = Convert.ToByte(((TextBox)sender).Text);
+					}
 				}
 			}
 			catch { }
@@ -722,20 +753,29 @@ namespace Ambertation.Windows.Forms
 		private void tbshort_TextLeave(object sender, EventArgs e)
 		{
 			if (((TextBox)sender).Tag == null)
+			{
 				return;
+			}
+
 			try
 			{
 				if (hvc != null)
 				{
 					if (vs == HexViewControl.ViewState.Hex)
+					{
 						hvc.SelectedUShort = Convert.ToUInt16(
 							((TextBox)sender).Text,
 							16
 						);
+					}
 					else if (vs == HexViewControl.ViewState.UnsignedDec)
+					{
 						hvc.SelectedUShort = Convert.ToUInt16(((TextBox)sender).Text);
+					}
 					else
+					{
 						hvc.SelectedShort = Convert.ToInt16(((TextBox)sender).Text);
+					}
 				}
 			}
 			catch { }
@@ -755,17 +795,26 @@ namespace Ambertation.Windows.Forms
 		private void tbint_TextLeave(object sender, EventArgs e)
 		{
 			if (((TextBox)sender).Tag == null)
+			{
 				return;
+			}
+
 			try
 			{
 				if (hvc != null)
 				{
 					if (vs == HexViewControl.ViewState.Hex)
+					{
 						hvc.SelectedUInt = Convert.ToUInt32(((TextBox)sender).Text, 16);
+					}
 					else if (vs == HexViewControl.ViewState.UnsignedDec)
+					{
 						hvc.SelectedUInt = Convert.ToUInt32(((TextBox)sender).Text);
+					}
 					else
+					{
 						hvc.SelectedInt = Convert.ToInt32(((TextBox)sender).Text);
+					}
 				}
 			}
 			catch { }
@@ -785,20 +834,29 @@ namespace Ambertation.Windows.Forms
 		private void tblong_TextLeave(object sender, EventArgs e)
 		{
 			if (((TextBox)sender).Tag == null)
+			{
 				return;
+			}
+
 			try
 			{
 				if (hvc != null)
 				{
 					if (vs == HexViewControl.ViewState.Hex)
+					{
 						hvc.SelectedULong = Convert.ToUInt64(
 							((TextBox)sender).Text,
 							16
 						);
+					}
 					else if (vs == HexViewControl.ViewState.UnsignedDec)
+					{
 						hvc.SelectedULong = Convert.ToUInt64(((TextBox)sender).Text);
+					}
 					else
+					{
 						hvc.SelectedLong = Convert.ToInt64(((TextBox)sender).Text);
+					}
 				}
 			}
 			catch { }
@@ -818,7 +876,10 @@ namespace Ambertation.Windows.Forms
 		private void tbsingle_TextLeave(object sender, EventArgs e)
 		{
 			if (((TextBox)sender).Tag == null)
+			{
 				return;
+			}
+
 			try
 			{
 				if (hvc != null)
@@ -843,7 +904,10 @@ namespace Ambertation.Windows.Forms
 		private void tbdouble_TextLeave(object sender, EventArgs e)
 		{
 			if (((TextBox)sender).Tag == null)
+			{
 				return;
+			}
+
 			try
 			{
 				if (hvc != null)
@@ -868,7 +932,10 @@ namespace Ambertation.Windows.Forms
 		private void tbbin_TextLeave(object sender, EventArgs e)
 		{
 			if (((TextBox)sender).Tag == null)
+			{
 				return;
+			}
+
 			try
 			{
 				if (hvc != null)
@@ -899,15 +966,22 @@ namespace Ambertation.Windows.Forms
 		private void tboffset_TextLeave(object sender, EventArgs e)
 		{
 			if (((TextBox)sender).Tag == null)
+			{
 				return;
+			}
+
 			try
 			{
 				if (hvc != null)
 				{
 					if (vs == HexViewControl.ViewState.Hex)
+					{
 						hvc.Offset = Convert.ToInt32(((TextBox)sender).Text, 16);
+					}
 					else
+					{
 						hvc.Offset = Convert.ToInt32(((TextBox)sender).Text);
+					}
 				}
 			}
 			catch { }
@@ -930,7 +1004,10 @@ namespace Ambertation.Windows.Forms
 		private void ll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
 			if (hvc == null)
+			{
 				return;
+			}
+
 			string s = boxes[11].Text.Trim();
 
 			if (s == "")
@@ -940,13 +1017,21 @@ namespace Ambertation.Windows.Forms
 			}
 			s = s.Replace("-", " ");
 			while (s.IndexOf("  ") != -1)
+			{
 				s.Replace("  ", " ");
+			}
+
 			if (s.IndexOf(" ") == -1)
+			{
 				for (int i = s.Length - 1; i >= 0; i--)
 				{
 					if (i % 2 == 0)
+					{
 						s = s.Insert(i, " ");
+					}
 				}
+			}
+
 			string[] parts = s.Trim().Split(" ".ToCharArray());
 
 			byte[] data = new byte[parts.Length];

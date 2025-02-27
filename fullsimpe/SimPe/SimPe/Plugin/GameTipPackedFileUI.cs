@@ -81,7 +81,10 @@ namespace SimPe.Plugin
 					gtipname = Convert.ToUInt16(gtname.Text, 16);
 					gtipname += 1;
 					if (Wrapper.Tipname != gtipname)
+					{
 						button1.Text = "Update\r\nText";
+					}
+
 					Wrapper.Tipname = gtipname;
 					gtname.ForeColor = System.Drawing.SystemColors.WindowText;
 				}
@@ -102,7 +105,10 @@ namespace SimPe.Plugin
 					gtipheader = Convert.ToUInt16(gtheader.Text, 16);
 					gtipheader += 1;
 					if (Wrapper.Tipheader != gtipheader)
+					{
 						button1.Text = "Update\r\nText";
+					}
+
 					Wrapper.Tipheader = gtipheader;
 					gtheader.ForeColor = System.Drawing.SystemColors.WindowText;
 				}
@@ -123,7 +129,10 @@ namespace SimPe.Plugin
 					gtipbody = Convert.ToUInt16(gtbody.Text, 16);
 					gtipbody += 1;
 					if (Wrapper.Tipbody != gtipbody)
+					{
 						button1.Text = "Update\r\nText";
+					}
+
 					Wrapper.Tipbody = gtipbody;
 					gtbody.ForeColor = System.Drawing.SystemColors.WindowText;
 				}
@@ -236,11 +245,19 @@ namespace SimPe.Plugin
 							Helper.WindowsRegistry.LanguageCode
 						);
 					if (items.Length > gtnm)
+					{
 						gtnametxt.Text = items[gtnm].Title;
+					}
+
 					if (items.Length > gthd)
+					{
 						gtheadtxt.Text = items[gthd].Title;
+					}
+
 					if (items.Length > gtby)
+					{
 						gtbodytxt.Text = items[gtby].Title;
+					}
 				}
 			}
 		}
@@ -257,7 +274,9 @@ namespace SimPe.Plugin
 			{
 				this.CanCommit = true;
 				if (button1.Text != "-")
+				{
 					button1.Enabled = true;
+				}
 			}
 			else
 			{

@@ -79,7 +79,9 @@ namespace SimPe.Cache
 		{
 			CacheItems list = new CacheItems();
 			foreach (ICacheItem item in this)
+			{
 				list.Add(item);
+			}
 
 			return list;
 		}
@@ -140,7 +142,9 @@ namespace SimPe.Cache
 		{
 			CacheContainers list = new CacheContainers();
 			foreach (CacheContainer item in this)
+			{
 				list.Add(item);
+			}
 
 			return list;
 		}

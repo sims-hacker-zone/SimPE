@@ -191,7 +191,10 @@ namespace SimPe.Cache
 			get
 			{
 				if (data == null)
+				{
 					data = new uint[0];
+				}
+
 				return data;
 			}
 			set
@@ -208,7 +211,9 @@ namespace SimPe.Cache
 			byte ct = reader.ReadByte();
 			data = new uint[ct];
 			for (int i = 0; i < data.Length; i++)
+			{
 				data[i] = reader.ReadUInt32();
+			}
 		}
 
 		internal virtual void Save(System.IO.BinaryWriter writer)
@@ -226,7 +231,9 @@ namespace SimPe.Cache
 				byte ct = (byte)data.Length;
 				writer.Write(ct);
 				for (int i = 0; i < ct; i++)
+				{
 					writer.Write(data[i]);
+				}
 			}
 		}
 	}
@@ -286,7 +293,9 @@ namespace SimPe.Cache
 		{
 			PackageStates list = new PackageStates();
 			foreach (PackageState item in this)
+			{
 				list.Add(item);
+			}
 
 			return list;
 		}
@@ -351,7 +360,9 @@ namespace SimPe.Cache
 			foreach (PackageState ps in States)
 			{
 				if (ps.Uid == uid)
+				{
 					return ps;
+				}
 			}
 
 			if (create)
@@ -383,7 +394,9 @@ namespace SimPe.Cache
 			States.Clear();
 			version = reader.ReadByte();
 			if (version > VERSION)
+			{
 				throw new CacheException("Unknown CacheItem Version.", null, version);
+			}
 
 			Name = reader.ReadString();
 			Type = (PackageType)reader.ReadUInt32();
@@ -391,7 +404,9 @@ namespace SimPe.Cache
 			int ct = reader.ReadByte();
 			Guids = new uint[ct];
 			for (int i = 0; i < Guids.Length; i++)
+			{
 				Guids[i] = reader.ReadUInt32();
+			}
 
 			ct = reader.ReadByte();
 			for (int i = 0; i < ct; i++)
@@ -425,12 +440,16 @@ namespace SimPe.Cache
 
 			writer.Write((byte)Guids.Length);
 			for (int i = 0; i < Guids.Length; i++)
+			{
 				writer.Write(Guids[i]);
+			}
 
 			byte ct = (byte)States.Count;
 			writer.Write(ct);
 			for (int i = 0; i < ct; i++)
+			{
 				States[i].Save(writer);
+			}
 
 			if (Thumbnail == null)
 			{

@@ -38,15 +38,21 @@ namespace Ambertation
 		public static object ActivateType(Type t, object[] o)
 		{
 			if (o != null)
+			{
 				return System.Activator.CreateInstance(t, o);
+			}
 			else
+			{
 				return System.Activator.CreateInstance(t);
+			}
 		}
 
 		public static Type BuildFlagObject(string classname, Type useenum)
 		{
 			if (!useenum.IsEnum)
+			{
 				return typeof(SimPe.FlagBase);
+			}
 
 			Array values = System.Enum.GetValues(useenum);
 
@@ -73,9 +79,13 @@ namespace Ambertation
 				string name = v.ToString();
 				string[] parts = name.Split("_".ToCharArray(), 2);
 				if (parts.Length == 1)
+				{
 					AddProperty(name, myTypeBuilder, false, "", "", false);
+				}
 				else if (parts.Length == 2)
+				{
 					AddProperty(name, myTypeBuilder, false, "", parts[0], false);
+				}
 			}
 
 			//Creat type and an Instance
@@ -118,20 +128,27 @@ namespace Ambertation
 
 			//Define Category-Attribute
 			if (category != null)
+			{
 				if (category != "")
+				{
 					PropertyObjectBuilderExt.AddAttribute(
 						custNamePropBldr,
 						typeof(CategoryAttribute),
 						category
 					);
+				}
+			}
 
 			//Define Description-Attribute
 			if (description != null)
+			{
 				PropertyObjectBuilderExt.AddAttribute(
 					custNamePropBldr,
 					typeof(DescriptionAttribute),
 					description
 				);
+			}
+
 			PropertyObjectBuilderExt.AddAttribute(
 				custNamePropBldr,
 				typeof(ReadOnlyAttribute),

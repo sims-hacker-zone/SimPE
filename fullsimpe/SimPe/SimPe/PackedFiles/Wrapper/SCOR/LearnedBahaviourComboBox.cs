@@ -59,7 +59,10 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 			get
 			{
 				if (objds == null)
+				{
 					GetPetBehaviours();
+				}
+
 				return objds;
 			}
 		}
@@ -67,7 +70,10 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 		private static void GetPetBehaviours()
 		{
 			if (objds != null)
+			{
 				return;
+			}
+
 			objds = new List<ExtObjd>();
 
 			FileTable.FileIndex.Load();
@@ -115,7 +121,10 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 			{
 				ContainerItem ci = SelectedItem as ContainerItem;
 				if (ci == null)
+				{
 					return 0;
+				}
+
 				return ci.Guid;
 			}
 			set

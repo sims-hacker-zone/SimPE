@@ -59,9 +59,14 @@ namespace SimPe.Providers
 				foreach (object o in Tags)
 				{
 					if (o == null)
+					{
 						continue;
+					}
+
 					if (tp == o.GetType())
+					{
 						return o;
+					}
 				}
 
 				return null;
@@ -112,7 +117,9 @@ namespace SimPe.Providers
 				get
 				{
 					if (LtxtFileIndexItem == null)
+					{
 						return null;
+					}
 
 					SimPe.Interfaces.Files.IPackedFileDescriptor pfd =
 						LtxtFileIndexItem.Package.FindFile(
@@ -122,7 +129,9 @@ namespace SimPe.Providers
 							this.Instance
 						);
 					if (pfd == null)
+					{
 						return null;
+					}
 
 					return new SimPe.Plugin.FileIndexItem(
 						pfd,
@@ -136,7 +145,9 @@ namespace SimPe.Providers
 				get
 				{
 					if (LtxtFileIndexItem == null)
+					{
 						return null;
+					}
 
 					SimPe.Interfaces.Files.IPackedFileDescriptor pfd =
 						LtxtFileIndexItem.Package.FindFile(
@@ -146,7 +157,9 @@ namespace SimPe.Providers
 							this.Instance | 0x8000
 						);
 					if (pfd == null)
+					{
 						return null;
+					}
 
 					return new SimPe.Plugin.FileIndexItem(
 						pfd,
@@ -179,7 +192,9 @@ namespace SimPe.Providers
 						str.Dispose();
 					}
 					else if (this.Instance == 0)
+					{
 						return "Family Bin";
+					}
 
 					return Name;
 				}
@@ -192,7 +207,10 @@ namespace SimPe.Providers
 				Image = null;
 				Name = null;
 				if (Tags != null)
+				{
 					Tags.Clear();
+				}
+
 				Tags = null;
 				LtxtFileIndexItem = null;
 			}
@@ -250,7 +268,9 @@ namespace SimPe.Providers
 				{
 					WaitForEnd(); // wait for any other stoppable threads to end
 					if (dir != value) // if other thread has set dir then it has also set content so lets not wipe it out
+					{
 						content = null;
+					}
 				}
 				dir = value;
 				string[] pe = dir.Split(new char[] { '/', '\\' });
@@ -276,7 +296,10 @@ namespace SimPe.Providers
 				lotfi.FindFile(0x856DDBAC, Data.MetaData.LOCAL_GROUP, 0x35CA0002, null);
 			bool run = Wait.Running;
 			if (!run)
+			{
 				Wait.Start();
+			}
+
 			Wait.SubStart(items.Length);
 			try
 			{
@@ -287,7 +310,9 @@ namespace SimPe.Providers
 				)
 				{
 					if (this.HaveToStop)
+					{
 						break;
+					}
 
 					SimPe.Interfaces.Files.IPackageFile pkg = item.Package;
 
@@ -309,7 +334,9 @@ namespace SimPe.Providers
 								Helper.WindowsRegistry.LanguageCode
 							);
 						if (list.Count > 0)
+						{
 							name = list[0].Title;
+						}
 					}
 
 					SimPe.PackedFiles.Wrapper.Picture pic =
@@ -327,11 +354,16 @@ namespace SimPe.Providers
 						);
 					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem ltxt = null;
 					if (ltxtitems.Length > 0)
+					{
 						ltxt = ltxtitems[0];
+					}
 
 					LotItem li = new LotItem(inst, name, pic.Image, ltxt);
 					if (LoadingLot != null)
+					{
 						LoadingLot(this, li);
+					}
+
 					content[li.Instance] = li;
 					ct++;
 					if (ct % step == 0)
@@ -351,7 +383,9 @@ namespace SimPe.Providers
 			{
 				Wait.SubStop();
 				if (!run)
+				{
 					Wait.Stop(true);
+				}
 			}
 
 			ended.Set();
@@ -390,13 +424,21 @@ namespace SimPe.Providers
 		{
 			WaitForEnd(); // wait for any other stoppable threads to end
 			if (content != null)
+			{
 				return; // if content was set by other thread then lets not do it again
+			}
+
 			content = new Hashtable();
 
 			if (Helper.StartedGui == Executable.Classic)
+			{
 				return;
+			}
+
 			if (!Directory.Exists(dir))
+			{
 				return;
+			}
 
 			Wait.SubStart();
 			ngbhfi.Clear();
@@ -412,12 +454,15 @@ namespace SimPe.Providers
 		{
 			object o = StoredData[inst];
 			if (o == null)
+			{
 				return new LotItem(
 					inst,
 					SimPe.Localization.GetString("Unknown"),
 					null,
 					null
 				);
+			}
+
 			return o as SimPe.Interfaces.Providers.ILotItem;
 		}
 
@@ -427,8 +472,12 @@ namespace SimPe.Providers
 
 			Hashtable ht = this.StoredData;
 			foreach (SimPe.Interfaces.Providers.ILotItem item in ht.Values)
+			{
 				if (item.Owner == siminst)
+				{
 					list.Add(item);
+				}
+			}
 
 			SimPe.Interfaces.Providers.ILotItem[] ret =
 				new SimPe.Interfaces.Providers.ILotItem[list.Count];
@@ -442,7 +491,9 @@ namespace SimPe.Providers
 			string[] ret = new string[c.Values.Count];
 			int ct = 0;
 			foreach (LotItem li in c.Values)
+			{
 				ret[ct++] = li.Name;
+			}
 
 			return ret;
 		}
@@ -455,7 +506,10 @@ namespace SimPe.Providers
 			get
 			{
 				if (content == null)
+				{
 					LoadLotsFromFolder();
+				}
+
 				return content;
 			}
 			set

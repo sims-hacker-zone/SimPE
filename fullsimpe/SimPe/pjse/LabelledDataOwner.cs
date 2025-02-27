@@ -91,7 +91,10 @@ namespace pjse
 			if (disposing && (components != null))
 			{
 				if (doc != null)
+				{
 					doc = null;
+				}
+
 				components.Dispose();
 			}
 			base.Dispose(disposing);
@@ -278,9 +281,13 @@ namespace pjse
 			set
 			{
 				if (value as LabelledDataOwner != null)
+				{
 					doc.FlagsFor = ((LabelledDataOwner)value).doc;
+				}
 				else
+				{
 					doc.FlagsFor = value;
+				}
 			}
 		}
 
@@ -361,9 +368,13 @@ namespace pjse
 			set
 			{
 				if (value >= cbDataOwner.Items.Count)
+				{
 					cbDataOwner.SelectedIndex = -1;
+				}
 				else
+				{
 					cbDataOwner.SelectedIndex = value;
+				}
 			}
 		}
 
@@ -381,10 +392,13 @@ namespace pjse
 			set
 			{
 				if (doc.Decimal)
+				{
 					tbVal.Text = doc.ValueIsByte
 						? ((byte)value).ToString()
 						: ((short)value).ToString();
+				}
 				else
+				{
 					tbVal.Text =
 						"0x"
 						+ (
@@ -392,6 +406,7 @@ namespace pjse
 								? SimPe.Helper.HexString((byte)value)
 								: SimPe.Helper.HexString(value)
 						);
+				}
 			}
 		}
 

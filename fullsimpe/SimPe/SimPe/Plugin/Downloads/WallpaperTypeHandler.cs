@@ -21,8 +21,12 @@ namespace SimPe.Plugin.Downloads
 			{
 				SimPe.Interfaces.Files.IPackedFileDescriptor pfd = pfds[0];
 				foreach (SimPe.Interfaces.Files.IPackedFileDescriptor p in pfds)
+				{
 					if (p.Size > pfd.Size)
+					{
 						pfd = p;
+					}
+				}
 
 				SimPe.Plugin.Rcol rcol = new SimPe.Plugin.GenericRcol();
 				rcol.ProcessData(pfd, pkg);
@@ -39,7 +43,9 @@ namespace SimPe.Plugin.Downloads
 							)
 						);
 						if (m != null)
+						{
 							return m.Texture;
+						}
 					}
 				}
 			}

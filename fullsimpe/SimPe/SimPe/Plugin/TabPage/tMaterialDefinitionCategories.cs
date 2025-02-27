@@ -243,21 +243,33 @@ namespace SimPe.Plugin.TabPage
 		)
 		{
 			if (this.Tag == null)
+			{
 				return;
+			}
+
 			if (pob == null)
+			{
 				return;
+			}
+
 			SimPe.Plugin.MaterialDefinition md = (SimPe.Plugin.MaterialDefinition)
 				this.Tag;
 			object o = pob.Properties[e.ChangedItem.Label];
 			if (o is Boolean)
 			{
 				if ((bool)o)
+				{
 					md.GetProperty(e.ChangedItem.Label).Value = "1";
+				}
 				else
+				{
 					md.GetProperty(e.ChangedItem.Label).Value = "0";
+				}
 			}
 			else
+			{
 				md.GetProperty(e.ChangedItem.Label).Value = o.ToString();
+			}
 
 			md.Parent.Changed = true;
 		}
@@ -265,11 +277,17 @@ namespace SimPe.Plugin.TabPage
 		internal void TxmtChangeTab(object sender, System.EventArgs e)
 		{
 			if (this.Tag == null)
+			{
 				return;
+			}
+
 			SimPe.Plugin.MaterialDefinition md = (SimPe.Plugin.MaterialDefinition)
 				this.Tag;
 			if (Parent == null)
+			{
 				return;
+			}
+
 			if (((TabControl)Parent).SelectedTab == this)
 			{
 				md.Refresh();

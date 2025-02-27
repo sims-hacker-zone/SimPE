@@ -29,16 +29,24 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 			get
 			{
 				if (ParentItem != null)
+				{
 					if (ParentItem.Parent != null)
+					{
 						return ParentItem.Parent.Changed;
+					}
+				}
 
 				return false;
 			}
 			set
 			{
 				if (ParentItem != null)
+				{
 					if (ParentItem.Parent != null)
+					{
 						ParentItem.Parent.Changed = value;
+					}
+				}
 			}
 		}
 
@@ -58,7 +66,9 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 		{
 			this.TokenName = name;
 			if (reader != null)
+			{
 				DoSetData(name, reader);
+			}
 		}
 
 		protected virtual void DoSetData(string name, System.IO.BinaryReader reader)

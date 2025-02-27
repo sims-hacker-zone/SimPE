@@ -242,7 +242,10 @@ namespace pjse.BhavOperandWizards.Wiz0x0076
 				wrappedByteArray ops2 = inst.Reserved1;
 
 				if (cbOperation.SelectedIndex >= 0)
+				{
 					ops1[0x01] = (byte)cbOperation.SelectedIndex;
+				}
+
 				ops1[0x02] = (byte)(rb1My.Checked ? 0x00 : 0x02); // Not sure why "0x02" at the game treats as 0 / !0
 
 				BhavWiz.FromShort(ref ops1, 3, doidArray.Value);
@@ -573,7 +576,9 @@ namespace pjse.BhavOperandWizards
 		public override void Dispose()
 		{
 			if (myForm != null)
+			{
 				myForm = null;
+			}
 		}
 		#endregion
 	}

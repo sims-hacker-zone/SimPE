@@ -51,11 +51,17 @@ namespace SimPe.Windows.Forms
 			lbtxt.Text = msg;
 			lbver.Text = Helper.VersionToString(Helper.SimPeVersion);
 			if (Helper.WindowsRegistry.HiddenMode && Helper.QARelease)
+			{
 				lbver.Text += " [Debug, QA]";
+			}
 			else if (Helper.WindowsRegistry.HiddenMode)
+			{
 				lbver.Text += " [Debug]";
+			}
 			else if (Helper.QARelease)
+			{
 				lbver.Text += " [QA]";
+			}
 		}
 
 		protected override void OnCreateBitmap(Graphics g, Bitmap b)
@@ -86,9 +92,13 @@ namespace SimPe.Windows.Forms
 					if (msg != value)
 					{
 						if (value == null)
+						{
 							msg = "";
+						}
 						else
+						{
 							msg = value;
+						}
 
 						SendMessageChangeSignal();
 					}
@@ -120,12 +130,18 @@ namespace SimPe.Windows.Forms
 					if (i == 1)
 					{
 						if (!this.Visible)
+						{
 							this.ShowDialog();
+						}
 						else
+						{
 							Application.DoEvents();
+						}
 					}
 					else
+					{
 						this.Close();
+					}
 				}
 			}
 			base.WndProc(ref m);

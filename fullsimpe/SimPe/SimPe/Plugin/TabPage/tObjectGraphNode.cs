@@ -459,7 +459,10 @@ namespace SimPe.Plugin.TabPage
 		private void OGNChangeSettings(object sender, System.EventArgs e)
 		{
 			if (Tag == null)
+			{
 				return;
+			}
+
 			try
 			{
 				SimPe.Plugin.ObjectGraphNode ogn = (SimPe.Plugin.ObjectGraphNode)Tag;
@@ -478,11 +481,19 @@ namespace SimPe.Plugin.TabPage
 		private void OGNSelect(object sender, System.EventArgs e)
 		{
 			if (Tag == null)
+			{
 				return;
+			}
+
 			if (lb_ogn.Tag != null)
+			{
 				return;
+			}
+
 			if (this.lb_ogn.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			try
 			{
@@ -509,11 +520,19 @@ namespace SimPe.Plugin.TabPage
 		private void OGNChangedItems(object sender, System.EventArgs e)
 		{
 			if (Tag == null)
+			{
 				return;
+			}
+
 			if (lb_ogn.Tag != null)
+			{
 				return;
+			}
+
 			if (this.lb_ogn.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			try
 			{
@@ -545,7 +564,10 @@ namespace SimPe.Plugin.TabPage
 		)
 		{
 			if (Tag == null)
+			{
 				return;
+			}
+
 			try
 			{
 				lb_ogn.Tag = true;
@@ -576,9 +598,15 @@ namespace SimPe.Plugin.TabPage
 		)
 		{
 			if (Tag == null)
+			{
 				return;
+			}
+
 			if (lb_ogn.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				lb_ogn.Tag = true;

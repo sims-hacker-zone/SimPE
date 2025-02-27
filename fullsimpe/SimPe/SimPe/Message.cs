@@ -137,9 +137,15 @@ namespace SimPe
 			bool run = WaitingScreen.Running;
 			bool spl = Splash.Running;
 			if (run)
+			{
 				WaitingScreen.Stop();
+			}
+
 			if (spl)
+			{
 				Splash.Screen.Stop();
+			}
+
 			try
 			{
 				caption = SimPe.Localization.GetString(caption);
@@ -190,7 +196,10 @@ namespace SimPe
 				}
 
 				if (caption != null)
+				{
 					m.Text = caption;
+				}
+
 				m.label1.AutoSize = true;
 				m.panel1.Width = m.ClientRectangle.Width;
 				m.panel2.Width = m.panel1.Width;
@@ -230,9 +239,14 @@ namespace SimPe
 			finally
 			{
 				if (run)
+				{
 					WaitingScreen.Wait();
+				}
+
 				if (spl)
+				{
 					Splash.Screen.SetMessage("");
+				}
 			}
 		}
 

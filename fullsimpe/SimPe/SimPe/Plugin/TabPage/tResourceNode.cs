@@ -442,7 +442,10 @@ namespace SimPe.Plugin.TabPage
 		private void RNChangeSettings(object sender, System.EventArgs e)
 		{
 			if (Tag == null)
+			{
 				return;
+			}
+
 			try
 			{
 				SimPe.Plugin.ResourceNode rn = (SimPe.Plugin.ResourceNode)Tag;
@@ -463,9 +466,14 @@ namespace SimPe.Plugin.TabPage
 		private void RNSelect(object sender, System.EventArgs e)
 		{
 			if (lb_rn.Tag != null)
+			{
 				return;
+			}
+
 			if (this.lb_rn.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			try
 			{
@@ -490,9 +498,14 @@ namespace SimPe.Plugin.TabPage
 		private void RNChangedItems(object sender, System.EventArgs e)
 		{
 			if (lb_rn.Tag != null)
+			{
 				return;
+			}
+
 			if (this.lb_rn.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			try
 			{
@@ -522,7 +535,10 @@ namespace SimPe.Plugin.TabPage
 		)
 		{
 			if (Tag == null)
+			{
 				return;
+			}
+
 			try
 			{
 				lb_rn.Tag = true;
@@ -552,9 +568,15 @@ namespace SimPe.Plugin.TabPage
 		)
 		{
 			if (Tag == null)
+			{
 				return;
+			}
+
 			if (lb_rn.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				lb_rn.Tag = true;

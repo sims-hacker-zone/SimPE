@@ -46,38 +46,64 @@ namespace System.Windows.Forms
 			this.Text = caption;
 
 			if (buttonsVisible.Length < 3)
+			{
 				throw new ArgumentException(
 					"need three (or more) flags",
 					"buttonsVisible"
 				);
+			}
 
 			//button1.Visible = buttonsVisible[0];
 			//button2.Visible = buttonsVisible[1];
 			//button3.Visible = buttonsVisible[2];
 			if (!buttonsVisible[0])
+			{
 				tlpButtons.Controls.Remove(button1);
+			}
+
 			if (!buttonsVisible[1])
+			{
 				tlpButtons.Controls.Remove(button2);
+			}
+
 			if (!buttonsVisible[2])
+			{
 				tlpButtons.Controls.Remove(button3);
+			}
 
 			if (bsBtns != null && sBtns != null)
 			{
 				if (bsBtns.Length >= 1 && sBtns.Length >= 1 && bsBtns[0])
+				{
 					button1.Text = sBtns[0];
+				}
+
 				if (bsBtns.Length >= 2 && sBtns.Length >= 2 && bsBtns[1])
+				{
 					button2.Text = sBtns[1];
+				}
+
 				if (bsBtns.Length >= 3 && sBtns.Length >= 3 && bsBtns[2])
+				{
 					button3.Text = sBtns[2];
+				}
 			}
 			if (adr != null)
 			{
 				if (bsBtns.Length >= 1 && adr.Length >= 1 && bsBtns[0])
+				{
 					button1.DialogResult = adr[0];
+				}
+
 				if (bsBtns.Length >= 2 && adr.Length >= 2 && bsBtns[1])
+				{
 					button2.DialogResult = adr[1];
+				}
+
 				if (bsBtns.Length >= 3 && adr.Length >= 3 && bsBtns[2])
+				{
 					button3.DialogResult = adr[2];
+				}
 			}
 			else
 			{
@@ -93,9 +119,14 @@ namespace System.Windows.Forms
 			foreach (Button b in new Button[] { button1, button2, button3 })
 			{
 				if (b.DialogResult == DialogResult.OK)
+				{
 					this.AcceptButton = b;
+				}
+
 				if (b.DialogResult == DialogResult.Cancel)
+				{
 					this.CancelButton = b;
+				}
 			}
 		}
 

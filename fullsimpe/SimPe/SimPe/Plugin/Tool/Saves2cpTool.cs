@@ -43,7 +43,9 @@ namespace SimPe.Plugin.Tool
 		public void Execute(object sender, ResourceEventArgs es)
 		{
 			if (!ChangeEnabledStateEventHandler(sender, es))
+			{
 				return;
+			}
 
 			if (es.Loaded)
 			{

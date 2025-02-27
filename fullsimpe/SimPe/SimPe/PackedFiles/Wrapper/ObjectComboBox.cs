@@ -44,7 +44,9 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				if (cachefile == null)
+				{
 					cachefile = MemoryCacheFile.InitCacheFile();
+				}
 
 				return cachefile;
 			}
@@ -131,9 +133,14 @@ namespace SimPe.PackedFiles.Wrapper
 			try
 			{
 				if (!loaded)
+				{
 					return;
+				}
+
 				if (this.DesignMode)
+				{
 					return;
+				}
 
 				cb.Items.Clear();
 				cb.Sorted = false;
@@ -147,22 +154,44 @@ namespace SimPe.PackedFiles.Wrapper
 						&& !mci.IsMemory
 						&& !mci.IsJobData
 					)
+					{
 						use = true;
+					}
+
 					if (this.ShowTokens && mci.IsToken)
+					{
 						use = true;
+					}
+
 					if (this.ShowMemories && !mci.IsToken && mci.IsMemory)
+					{
 						use = true;
+					}
+
 					if (this.ShowJobData && mci.IsJobData)
+					{
 						use = true;
+					}
+
 					if (this.ShowAspiration && mci.IsAspiration)
+					{
 						use = true;
+					}
+
 					if (this.ShowBadge && mci.IsBadge)
+					{
 						use = true;
+					}
+
 					if (this.ShowSkill && mci.IsSkill)
+					{
 						use = true;
+					}
 
 					if (!use)
+					{
 						continue;
+					}
 
 					SimPe.Interfaces.IAlias a = new SimPe.Data.StaticAlias(
 						mci.Guid,
@@ -310,7 +339,10 @@ namespace SimPe.PackedFiles.Wrapper
 				SimPe.Cache.MemoryCacheItem mci = SelectedItem;
 
 				if (mci == null)
+				{
 					return 0xffffffff;
+				}
+
 				return mci.Guid;
 			}
 			set
@@ -338,7 +370,10 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				if (cb.SelectedItem == null)
+				{
 					return null;
+				}
+
 				SimPe.Interfaces.IAlias a = cb.SelectedItem as SimPe.Interfaces.IAlias;
 				return a.Tag[0] as SimPe.Cache.MemoryCacheItem;
 			}
@@ -379,14 +414,18 @@ namespace SimPe.PackedFiles.Wrapper
 		private void cb_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			if (SelectedObjectChanged != null)
+			{
 				SelectedObjectChanged(this, new EventArgs());
+			}
 		}
 
 		protected override void OnVisibleChanged(EventArgs e)
 		{
 			base.OnVisibleChanged(e);
 			if (!loaded && Visible)
+			{
 				Reload();
+			}
 		}
 
 		private void cb_TextChanged(object sender, System.EventArgs e)

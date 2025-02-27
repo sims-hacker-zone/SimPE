@@ -20,7 +20,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (this.textures == null)
+				{
 					this.textures = new RcolTable();
+				}
+
 				return this.textures;
 			}
 			set
@@ -36,7 +39,9 @@ namespace SimPe.Plugin
 				if (this.mmatd == null)
 				{
 					if (!Utility.IsNullOrEmpty(this.Blocks))
+					{
 						this.mmatd = this.Blocks[0] as MaterialDefinition;
+					}
 				}
 				return this.mmatd;
 			}
@@ -52,13 +57,18 @@ namespace SimPe.Plugin
 			get
 			{
 				if (this.MaterialDefinition != null)
+				{
 					return this.mmatd.GetProperty("stdMatBaseTextureName").Value;
+				}
+
 				return String.Empty;
 			}
 			set
 			{
 				if (this.MaterialDefinition != null)
+				{
 					this.mmatd.GetProperty("stdMatBaseTextureName").Value = value;
+				}
 			}
 		}
 
@@ -67,13 +77,18 @@ namespace SimPe.Plugin
 			get
 			{
 				if (this.MaterialDefinition != null)
+				{
 					return mmatd.GetProperty("stdMatNormalMapTextureName").Value;
+				}
+
 				return String.Empty;
 			}
 			set
 			{
 				if (this.MaterialDefinition != null)
+				{
 					mmatd.GetProperty("stdMatNormalMapTextureName").Value = value;
+				}
 			}
 		}
 
@@ -93,7 +108,9 @@ namespace SimPe.Plugin
 				{
 					IPackedFileDescriptor pfd = list[0] as IPackedFileDescriptor;
 					if (pfd != null)
+					{
 						ret.Add(TextureType.Base, pfd);
+					}
 				}
 			}
 
@@ -105,7 +122,9 @@ namespace SimPe.Plugin
 				{
 					IPackedFileDescriptor pfd = list[0] as IPackedFileDescriptor;
 					if (pfd != null)
+					{
 						ret.Add(TextureType.NormalMap, pfd);
+					}
 				}
 			}
 
@@ -117,16 +136,22 @@ namespace SimPe.Plugin
 			Hashtable ret = new Hashtable();
 
 			if (this.MaterialDefinition != null)
+			{
 				foreach (MaterialDefinitionProperty mmatp in mmatd.Properties)
 				{
 					if (String.Compare(mmatp.Name, "stdMatBaseTextureName", true) == 0)
+					{
 						ret.Add(TextureType.Base, mmatp.Value);
+					}
 					else if (
 						String.Compare(mmatp.Name, "stdMatNormalMapTextureName", true)
 						== 0
 					)
+					{
 						ret.Add(TextureType.NormalMap, mmatp.Value);
+					}
 				}
+			}
 
 			return ret;
 		}

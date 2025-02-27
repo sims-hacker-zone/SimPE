@@ -23,10 +23,13 @@ namespace SimPe.Plugin
 			set
 			{
 				if (value == null)
+				{
 					throw new ArgumentNullException(
 						"PropertySet",
 						"The provided Cpf instance cannot be null"
 					);
+				}
+
 				this.propertySet = value;
 			}
 		}
@@ -78,7 +81,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (this.propertySet != null)
+				{
 					return ParseGuidValue(CpfItem("family"));
+				}
+
 				return Guid.Empty;
 			}
 			set
@@ -92,7 +98,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (this.propertySet != null)
+				{
 					return CpfItem("name").StringValue;
+				}
+
 				return null;
 			}
 			set
@@ -122,7 +131,9 @@ namespace SimPe.Plugin
 		public CpfItem GetProperty(string name)
 		{
 			if (this.propertySet == null)
+			{
 				return null;
+			}
 
 			return this.propertySet.GetSaveItem(name);
 		}
@@ -130,7 +141,10 @@ namespace SimPe.Plugin
 		protected CpfItem CpfItem(string name)
 		{
 			if (this.propertySet == null)
+			{
 				return null;
+			}
+
 			CpfItem ret = this.propertySet.GetItem(name);
 			if (ret == null)
 			{
@@ -189,7 +203,9 @@ namespace SimPe.Plugin
 				{
 					string guid = item.StringValue;
 					if (!Utility.IsNullOrEmpty(guid))
+					{
 						ret = new Guid(guid);
+					}
 				}
 				catch { }
 			}
@@ -207,7 +223,9 @@ namespace SimPe.Plugin
 				else
 				{
 					if (!this.Pinned)
+					{
 						this.propertySet.FileDescriptor.MarkForDelete = true;
+					}
 					else
 					{
 						this.propertySet.SynchronizeUserData();

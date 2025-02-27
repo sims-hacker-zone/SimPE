@@ -82,7 +82,10 @@ namespace SimPe.Cache
 			get
 			{
 				if (map == null)
+				{
 					LoadFiles();
+				}
+
 				return map;
 			}
 		}

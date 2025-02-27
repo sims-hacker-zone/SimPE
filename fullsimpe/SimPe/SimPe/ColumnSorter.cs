@@ -52,7 +52,9 @@ namespace SimPe
 				{
 					cc = value;
 					if (Changed != null)
+					{
 						Changed(this, new EventArgs());
+					}
 				}
 			}
 		}
@@ -72,7 +74,9 @@ namespace SimPe
 				{
 					so = value;
 					if (Changed != null)
+					{
 						Changed(this, new EventArgs());
+					}
 				}
 			}
 		}
@@ -157,7 +161,9 @@ namespace SimPe
 					rowB.SubItems[ColumnOrder[cc]].Text
 				);
 				if (cmp != 0)
+				{
 					return cmp;
+				}
 			}
 
 			return 0;

@@ -53,9 +53,13 @@ namespace SimPe.Plugin
 		)
 		{
 			if (package == null || package.FileName == null)
+			{
 				return false;
+			}
 			else
+			{
 				return true;
+			}
 		}
 
 		private bool IsReallyEnabled(
@@ -69,7 +73,10 @@ namespace SimPe.Plugin
 			}
 
 			if (flname.ToLower().Trim() != package.FileName.ToLower().Trim())
+			{
 				sc.Reset();
+			}
+
 			flname = package.FileName;
 			return true;
 		}
@@ -90,7 +97,10 @@ namespace SimPe.Plugin
 				return new ToolResult(false, false);
 			}
 			if (flname.ToLower().Trim() != package.FileName.ToLower().Trim())
+			{
 				sc.Reset();
+			}
+
 			SimPe.Interfaces.Files.IPackedFileDescriptor selpfd = sc.Execute(package);
 
 			if (selpfd != null)

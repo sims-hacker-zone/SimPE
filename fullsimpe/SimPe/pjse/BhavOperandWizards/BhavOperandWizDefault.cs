@@ -445,9 +445,11 @@ namespace pjse.BhavOperandWizards.WizDefault
 					}
 				}
 				else
+				{
 					throw new Exception(
 						"hex8_Validated not applicable to control " + sender.ToString()
 					);
+				}
 			}
 		}
 
@@ -473,9 +475,11 @@ namespace pjse.BhavOperandWizards.WizDefault
 			int i = alDec16.IndexOf(sender) * 2;
 
 			if (i > 2)
+			{
 				throw new Exception(
 					"dec16_Validated not applicable to control " + sender.ToString()
 				);
+			}
 
 			byte v0 = inst.Operands[i];
 			byte v1 = inst.Operands[i + 1];
@@ -509,7 +513,9 @@ namespace pjse.BhavOperandWizards
 		public override void Dispose()
 		{
 			if (myForm != null)
+			{
 				myForm = null;
+			}
 		}
 		#endregion
 	}

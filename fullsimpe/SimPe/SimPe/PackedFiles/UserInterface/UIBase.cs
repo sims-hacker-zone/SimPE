@@ -37,7 +37,9 @@ namespace SimPe.PackedFiles.UserInterface
 		public UIBase()
 		{
 			if (form == null)
+			{
 				form = new Elements();
+			}
 		}
 
 		#region IDisposable Member

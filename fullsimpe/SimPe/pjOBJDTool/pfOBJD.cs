@@ -54,12 +54,15 @@ namespace pjOBJDTool
 			long limit =
 				reader.BaseStream.Length - reader.BaseStream.Position - Filename.Length;
 			while (items.Count * 2 < limit - 1)
+			{
 				items.Add(reader.ReadUInt16());
+			}
 
 			endName = reader.ReadBytes(
 				(int)(reader.BaseStream.Length - reader.BaseStream.Position)
 			);
 			if (!Filename.Equals(SimPe.Helper.ToString(endName)))
+			{
 				throw new InvalidOperationException(
 					"Trailing filename (\""
 						+ SimPe.Helper.ToString(endName)
@@ -67,13 +70,17 @@ namespace pjOBJDTool
 						+ Filename
 						+ "\")"
 				);
+			}
 		}
 
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
 			writer.Write(filename);
 			foreach (pfOBJDItem i in items)
+			{
 				writer.Write((ushort)i);
+			}
+
 			writer.Write(endName);
 		}
 

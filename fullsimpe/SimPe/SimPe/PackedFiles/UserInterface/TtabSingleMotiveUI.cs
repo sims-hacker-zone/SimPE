@@ -87,15 +87,20 @@ namespace SimPe.PackedFiles.UserInterface
 				if (this.item != value)
 				{
 					if (item != null && item.Wrapper != null)
+					{
 						item.Wrapper.WrapperChanged -= new System.EventHandler(
 							this.WrapperChanged
 						);
+					}
+
 					this.item = value;
 					setText();
 					if (item != null && item.Wrapper != null)
+					{
 						item.Wrapper.WrapperChanged += new System.EventHandler(
 							this.WrapperChanged
 						);
+					}
 				}
 			}
 		}
@@ -103,7 +108,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void WrapperChanged(object sender, System.EventArgs e)
 		{
 			if (internalchg || sender != item)
+			{
 				return;
+			}
+
 			setText();
 		}
 
@@ -130,9 +138,12 @@ namespace SimPe.PackedFiles.UserInterface
 		private bool hex16_IsValid(object sender)
 		{
 			if (alHex16.IndexOf(sender) < 0)
+			{
 				throw new Exception(
 					"hex16_IsValid not applicable to control " + sender.ToString()
 				);
+			}
+
 			try
 			{
 				Convert.ToInt16(((TextBox)sender).Text, 16);
@@ -206,9 +217,14 @@ namespace SimPe.PackedFiles.UserInterface
 		private void hex16_TextChanged(object sender, System.EventArgs ev)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (!hex16_IsValid(sender))
+			{
 				return;
+			}
 
 			internalchg = true;
 			short val = Convert.ToInt16(((TextBox)sender).Text, 16);
@@ -233,7 +249,9 @@ namespace SimPe.PackedFiles.UserInterface
 		)
 		{
 			if (hex16_IsValid(sender))
+			{
 				return;
+			}
 
 			e.Cancel = true;
 

@@ -90,9 +90,13 @@ namespace SimPe.Packages
 			set
 			{
 				if (value > 0)
+				{
 					hd.Showicon = 1;
+				}
 				else
+				{
 					hd.Showicon = 0;
+				}
 			}
 		}
 	}
@@ -148,13 +152,17 @@ namespace SimPe.Packages
 			types = new ArrayList();
 			SimPe.Data.TypeAlias[] ftis = Helper.TGILoader.FileTypes;
 			foreach (SimPe.Data.TypeAlias ta in ftis)
+			{
 				types.Add(ta.Id);
+			}
 		}
 
 		bool CouldBeIndexItem(BinaryReader br, long pos, int step, bool strict)
 		{
 			if (pos < 0)
+			{
 				return false;
+			}
 
 			for (int i = 0; i < 4; i++)
 			{
@@ -163,18 +171,31 @@ namespace SimPe.Packages
 				pfd.LoadFromStream(pkg.Header, br);
 
 				if (!types.Contains(pfd.Type))
+				{
 					return false;
+				}
+
 				if (pfd.Size <= 0)
+				{
 					return false;
+				}
+
 				if (pfd.Offset <= 0 || pfd.Offset >= br.BaseStream.Length)
+				{
 					return false;
+				}
 
 				if (strict)
 				{
 					if (pfd.Type == 0x00000000)
+					{
 						return false;
+					}
+
 					if (pfd.Type == 0xffffffff)
+					{
 						return false;
+					}
 				}
 			}
 
@@ -190,11 +211,17 @@ namespace SimPe.Packages
 			HeaderIndex hi = new HeaderIndex(pkg.Header);
 
 			if (pkg is File)
+			{
 				((File)pkg).ReloadReader();
+			}
+
 			BinaryReader br = pkg.Reader;
 			int step = 0x18;
 			if (pkg.Header.IndexType == SimPe.Data.MetaData.IndexTypes.ptShortFileIndex)
+			{
 				step = 0x14;
+			}
+
 			long pos = br.BaseStream.Length - (4 * step + 1);
 
 			long lastitem = -1;
@@ -225,9 +252,13 @@ namespace SimPe.Packages
 					}
 
 					if (lastitem == -1)
+					{
 						pos--;
+					}
 					else
+					{
 						pos -= step;
+					}
 				}
 			}
 			finally
@@ -240,7 +271,9 @@ namespace SimPe.Packages
 			hi.count = hi.size / step;
 
 			if (firstitem == -1)
+			{
 				hi = pkg.Header.Index as HeaderIndex;
+			}
 
 			return hi;
 		}
@@ -265,7 +298,10 @@ namespace SimPe.Packages
 			get
 			{
 				if (pkg is SimPe.Packages.GeneratableFile)
+				{
 					return (SimPe.Packages.GeneratableFile)pkg;
+				}
+
 				return null;
 			}
 		}

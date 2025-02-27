@@ -64,15 +64,19 @@ namespace SimPe.Plugin.Downloads
 				Wait.Message = System.IO.Path.GetFileName(file);
 
 				if (!FileTable.FileIndex.Contains(file))
+				{
 					SimPe.Plugin.DownloadsToolFactory.TeleportFileIndex.AddIndexFromPackage(
 						file
 					);
+				}
 
 				Downloads.IPackageHandler hnd = HandlerRegistry.Global.LoadFileHandler(
 					file
 				);
 				if (hnd != null)
+				{
 					Nfos.AddRange(hnd.Objects);
+				}
 
 				SimPe.Packages.StreamFactory.CloseStream(file);
 			}
@@ -96,9 +100,13 @@ namespace SimPe.Plugin.Downloads
 						|| type == SimPe.Cache.PackageType.Object
 						|| type == SimPe.Cache.PackageType.Sim
 					)
+					{
 						objects.Add(file);
+					}
 					else
+					{
 						other.Add(file);
+					}
 				}
 			}
 			objects.AddRange(other);
@@ -131,7 +139,10 @@ namespace SimPe.Plugin.Downloads
 		public void Dispose()
 		{
 			if (Nfos != null)
+			{
 				Nfos.Clear();
+			}
+
 			Nfos = null;
 			ArchiveName = null;
 		}

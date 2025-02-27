@@ -70,11 +70,16 @@ namespace SimPe.Plugin
 						str += pfd.Filename + " (" + pfd.ToString() + ") | ";
 					}
 					if (((ArrayList)map[s]).Count > 0)
+					{
 						str = str.Substring(0, str.Length - 2);
+					}
+
 					str += ",";
 				}
 				if (map.Count > 0)
+				{
 					str = str.Substring(0, str.Length - 1);
+				}
 
 				return str;
 			}
@@ -123,7 +128,9 @@ namespace SimPe.Plugin
 		{
 			ArrayList list = new ArrayList();
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in this.ReferencedFiles)
+			{
 				list.Add(pfd);
+			}
 
 			refmap["Generic"] = list;
 
@@ -147,6 +154,7 @@ namespace SimPe.Plugin
 		)
 		{
 			foreach (ArrayList list in ReferenceChains.Values)
+			{
 				foreach (object o in list)
 				{
 					SimPe.Interfaces.Files.IPackedFileDescriptor opfd =
@@ -176,15 +184,23 @@ namespace SimPe.Plugin
 									null
 								);
 							if (items.Length > 0)
+							{
 								item = items[0];
+							}
 						}
 						else
+						{
 							item = FileTable.FileIndex.CreateFileIndexItem(pfd, Package);
+						}
 
 						if (item != null)
+						{
 							return item;
+						}
 					}
 				}
+			}
+
 			return null;
 		}
 

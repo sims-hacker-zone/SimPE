@@ -61,7 +61,9 @@ namespace SimPe.Plugin
 			ds.ShowDialog();
 
 			if (ds.FileName == null)
+			{
 				return new ToolResult(false, false);
+			}
 			else
 			{
 				SimPe.Packages.GeneratableFile gf =

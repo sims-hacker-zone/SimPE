@@ -111,7 +111,10 @@ namespace SimPe
 							"SimPe.img." + parts[i] + ".png"
 						);
 						if (imgstr != null)
+						{
 							mi.Image = System.Drawing.Image.FromStream(imgstr);
+						}
+
 						parent.Insert(0, mi);
 					}
 				}
@@ -166,20 +169,32 @@ namespace SimPe
 				if (tsmi == null)
 				{
 					if (i < mi.Count - 1)
+					{
 						starters.Add(mi[i + 1] as ToolStripMenuItem);
+					}
+
 					continue;
 				}
 				if (tsmi.DropDownItems.Count > 0)
+				{
 					submenus.Add(tsmi.DropDownItems);
+				}
 				else
 				{
 					ToolStripMenuItem item = tsmi;
 					if (exclude.Contains(item))
+					{
 						continue;
+					}
+
 					if (item.Image == null)
+					{
 						items.Add(item);
+					}
 					else
+					{
 						items.Insert(0, item);
+					}
 				}
 			}
 
@@ -193,7 +208,10 @@ namespace SimPe
 					(i == 0 && tb.Items.Count > 0) || starters.Contains(item);
 				;
 				if (beggroup)
+				{
 					groupindices.Add(i);
+				}
+
 				tb.Items.Add(bi);
 			}
 
@@ -205,7 +223,9 @@ namespace SimPe
 			}
 
 			for (int i = 0; i < submenus.Count; i++)
+			{
 				BuildToolBar(tb, submenus[i], exclude);
+			}
 		}
 
 		/// <summary>

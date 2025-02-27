@@ -101,7 +101,10 @@ namespace SimPe.PackedFiles.Wrapper
 		public int FindFile(IPackedFileDescriptor pfd)
 		{
 			if (Items == null)
+			{
 				return -1;
+			}
+
 			for (int i = 0; i < this.Items.Length; i++)
 			{
 				ClstItem lfi = Items[i];
@@ -115,7 +118,9 @@ namespace SimPe.PackedFiles.Wrapper
 					)
 					&& (lfi.Type == pfd.Type)
 				)
+				{
 					return i;
+				}
 			}
 
 			return -1;
@@ -179,9 +184,14 @@ namespace SimPe.PackedFiles.Wrapper
 			this.IndexType = package.Header.IndexType;
 			long count = 0;
 			if (IndexType == Data.MetaData.IndexTypes.ptLongFileIndex)
+			{
 				count = reader.BaseStream.Length / 0x14;
+			}
 			else
+			{
 				count = reader.BaseStream.Length / 0x10;
+			}
+
 			Items = new ClstItem[count];
 
 			long pos = reader.BaseStream.Position;
@@ -205,9 +215,13 @@ namespace SimPe.PackedFiles.Wrapper
 					{
 						i = 0;
 						if (IndexType == Data.MetaData.IndexTypes.ptLongFileIndex)
+						{
 							IndexType = Data.MetaData.IndexTypes.ptShortFileIndex;
+						}
 						else
+						{
 							IndexType = Data.MetaData.IndexTypes.ptLongFileIndex;
+						}
 
 						reader.BaseStream.Seek(pos, System.IO.SeekOrigin.Begin);
 						item = new ClstItem(this.IndexType);

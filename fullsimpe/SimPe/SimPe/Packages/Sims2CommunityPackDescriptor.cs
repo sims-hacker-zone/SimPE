@@ -39,7 +39,9 @@ namespace SimPe.Packages
 			{
 				name = System.IO.Path.GetFileName(p.FileName);
 				if (name == "")
+				{
 					name = Localization.Manager.GetString("Unknown") + ".package";
+				}
 
 				string author = "";
 				string title = "";
@@ -99,7 +101,9 @@ namespace SimPe.Packages
 					gameguid = sitems[0].Description;
 				}
 				else
+				{
 					guid = System.Guid.NewGuid().ToString();
+				}
 
 				if (sitems.Length > 1)
 				{
@@ -202,7 +206,9 @@ namespace SimPe.Packages
 			get
 			{
 				if (package == null)
+				{
 					return ValidationState.UnableToValidate;
+				}
 
 				string n = "-";
 				string t = "-";
@@ -221,9 +227,14 @@ namespace SimPe.Packages
 				);
 
 				if (g != guid)
+				{
 					return ValidationState.GlobalGUIDMismatch;
+				}
+
 				if (n != name)
+				{
 					return ValidationState.NameMismatch;
+				}
 
 				return ValidationState.OK;
 			}
@@ -387,11 +398,16 @@ namespace SimPe.Packages
 			gameguid = this.GameGuid;
 
 			if (dependency == null)
+			{
 				Dependency = new S2CPDescriptorBase[0];
+			}
 			else
+			{
 				Dependency = dependency;
+			}
 
 			if (p != null)
+			{
 				guid = GetSetGlobalGuid(
 					p,
 					ref name,
@@ -401,6 +417,7 @@ namespace SimPe.Packages
 					ref this.description,
 					ref gameguid
 				);
+			}
 		}
 
 		/// <summary>
@@ -456,32 +473,43 @@ namespace SimPe.Packages
 			SimPe.PackedFiles.Wrapper.StrItemList items = str.LanguageItems(1);
 
 			if (guid == null)
+			{
 				guid = System.Guid.NewGuid().ToString();
+			}
+
 			if (str.Items.Length > 0)
 			{
 				str.Items[0].Title = guid;
 				str.Items[0].Description = gameguid;
 			}
 			else
+			{
 				str.Add(
 					new SimPe.PackedFiles.Wrapper.StrToken(0, lng[0], guid, gameguid)
 				);
+			}
+
 			if (str.Items.Length > 1)
 			{
 				str.Items[1].Title = author;
 				str.Items[1].Description = contact;
 			}
 			else
+			{
 				str.Add(
 					new SimPe.PackedFiles.Wrapper.StrToken(1, lng[0], author, contact)
 				);
+			}
+
 			if (str.Items.Length > 2)
 			{
 				str.Items[2].Title = name;
 				str.Items[2].Description = "";
 			}
 			else
+			{
 				str.Add(new SimPe.PackedFiles.Wrapper.StrToken(2, lng[0], name, ""));
+			}
 
 			str.SynchronizeUserData();
 		}
@@ -540,16 +568,24 @@ namespace SimPe.Packages
 
 			SimPe.PackedFiles.Wrapper.StrItemList items = str.LanguageItems(1);
 			if (str.Items.Length > 0)
+			{
 				str.Items[0].Title = title;
+			}
 			else
+			{
 				str.Add(new SimPe.PackedFiles.Wrapper.StrToken(0, lng[0], title, ""));
+			}
 
 			if (str.Items.Length > 1)
+			{
 				str.Items[1].Title = description;
+			}
 			else
+			{
 				str.Add(
 					new SimPe.PackedFiles.Wrapper.StrToken(1, lng[0], description, "")
 				);
+			}
 
 			str.SynchronizeUserData();
 		}
@@ -666,7 +702,9 @@ namespace SimPe.Packages
 			get
 			{
 				if (package == null)
+				{
 					return ValidationState.UnableToValidate;
+				}
 
 				string n = "-";
 				string t = "-";
@@ -685,13 +723,24 @@ namespace SimPe.Packages
 				);
 
 				if (g != guid)
+				{
 					return ValidationState.GlobalGUIDMismatch;
+				}
+
 				if (n != name)
+				{
 					return ValidationState.NameMismatch;
+				}
+
 				if (a != author && a != "")
+				{
 					return ValidationState.AuthorMismatch;
+				}
+
 				if (gg != GameGuid && GameGuid != "")
+				{
 					return ValidationState.GameGuidMismatch;
+				}
 
 				return ValidationState.OK;
 			}
@@ -819,9 +868,14 @@ namespace SimPe.Packages
 			get
 			{
 				if (gameguid != null)
+				{
 					return gameguid;
+				}
+
 				if (package == null)
+				{
 					return "";
+				}
 
 				Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(
 					Data.MetaData.OBJD_FILE

@@ -38,7 +38,10 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 		)
 		{
 			if (pfd.Type != Data.MetaData.OBJD_FILE)
+			{
 				return;
+			}
+
 			DoSearchPackage(pkg, pfd);
 		}
 

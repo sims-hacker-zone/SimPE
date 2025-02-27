@@ -197,9 +197,13 @@ namespace SimPe.Data
 				{
 					object o = tag[i];
 					if (o != null)
+					{
 						ret = ret.Replace("{" + i.ToString() + "}", o.ToString());
+					}
 					else
+					{
 						ret = ret.Replace("{" + i.ToString() + "}", "");
+					}
 				}
 			}
 
@@ -215,7 +219,9 @@ namespace SimPe.Data
 		public static SimPe.Interfaces.IAlias[] LoadFromXml(string flname)
 		{
 			if (!System.IO.File.Exists(flname))
+			{
 				return new SimPe.Interfaces.IAlias[0];
+			}
 
 			try
 			{
@@ -242,9 +248,13 @@ namespace SimPe.Data
 							uint val = 0;
 
 							if (sval.StartsWith("0x"))
+							{
 								val = Convert.ToUInt32(sval, 16);
+							}
 							else
+							{
 								val = Convert.ToUInt32(sval);
+							}
 
 							Alias a = new Alias(val, subnode.InnerText.Trim());
 							list.Add((SimPe.Interfaces.IAlias)a);

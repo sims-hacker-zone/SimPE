@@ -98,21 +98,25 @@ namespace Ambertation
 						if (Type.IsEnum)
 						{
 							if (value.GetType() == typeof(int))
+							{
 								prop = System.Enum.ToObject(
 									Type,
 									System.Convert.ToInt32(value)
 								);
+							}
 							/*else if (value.GetType()==typeof(uint))
-								prop = System.Enum.ToObject(type, System.Convert.ToInt32(value));
-							else if (value.GetType()==typeof(short))
-								prop = System.Enum.ToObject(type, System.Convert.ToInt32(value));
-							else if (value.GetType()==typeof(ushort))
-								prop = System.Enum.ToObject(type, System.Convert.ToInt32(value));*/
+	prop = System.Enum.ToObject(type, System.Convert.ToInt32(value));
+else if (value.GetType()==typeof(short))
+	prop = System.Enum.ToObject(type, System.Convert.ToInt32(value));
+else if (value.GetType()==typeof(ushort))
+	prop = System.Enum.ToObject(type, System.Convert.ToInt32(value));*/
 							else
+							{
 								prop = System.Enum.ToObject(
 									Type,
 									Type.GetField(value.ToString()).GetValue(null)
 								);
+							}
 						}
 						else if (
 							(Type == typeof(FloatColor))
@@ -151,9 +155,13 @@ namespace Ambertation
 							string s = (string)value;
 							s = s.Trim();
 							if (s == "0")
+							{
 								prop = false;
+							}
 							else
+							{
 								prop = true;
+							}
 						}
 						else
 						{
@@ -267,7 +275,9 @@ namespace Ambertation
 					PropertyDescription pd = (PropertyDescription)o;
 					o = pd.Property;
 					if (o.GetType() == typeof(FloatColor))
+					{
 						o = ((FloatColor)o).Color;
+					}
 
 					AddProperty(
 						k,
@@ -297,7 +307,9 @@ namespace Ambertation
 					PropertyDescription pd = (PropertyDescription)val;
 					val = pd.Property;
 					if (val.GetType() == typeof(FloatColor))
+					{
 						val = ((FloatColor)val).Color;
+					}
 				}
 
 				custDataType.InvokeMember(
@@ -411,16 +423,23 @@ namespace Ambertation
 
 			//Define Category-Attribute
 			if (category != null)
+			{
 				if (category != "")
+				{
 					AddAttribute(custNamePropBldr, typeof(CategoryAttribute), category);
+				}
+			}
 
 			//Define Description-Attribute
 			if (description != null)
+			{
 				AddAttribute(
 					custNamePropBldr,
 					typeof(DescriptionAttribute),
 					description
 				);
+			}
+
 			AddAttribute(custNamePropBldr, typeof(ReadOnlyAttribute), ro);
 			//AddAttribute(custNamePropBldr, typeof(DefaultValueAttribute), o, true);
 
@@ -468,7 +487,9 @@ namespace Ambertation
 			get
 			{
 				if (Instance == null)
+				{
 					return new Hashtable();
+				}
 
 				Hashtable ret = new Hashtable();
 				foreach (string k in ht.Keys)
@@ -482,9 +503,14 @@ namespace Ambertation
 					);
 
 					if (val.GetType() == typeof(BaseChangeableNumber))
+					{
 						val = ((BaseChangeableNumber)val).ObjectValue;
+					}
 					else if (val is Color)
+					{
 						val = FloatColor.FromColor((Color)val);
+					}
+
 					ret[k] = val;
 				}
 

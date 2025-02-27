@@ -107,9 +107,14 @@ namespace SimPe.Plugin
 		)
 		{
 			if (!joints)
+			{
 				return;
+			}
+
 			if (index < 0 || index >= Gmdc.Joints.Count)
+			{
 				return;
+			}
 
 			GmdcJoint j = Gmdc.Joints[index];
 			Ambertation.Scenes.Joint nj = parent.CreateChild(j.Name);
@@ -144,7 +149,9 @@ namespace SimPe.Plugin
 					{
 						TransformNode tn = cld as TransformNode;
 						if (tn.JointReference != TransformNode.NO_JOINT)
+						{
 							AddJoint(nj, tn.JointReference, jointmap, component);
+						}
 					}
 				}
 			}
@@ -153,13 +160,20 @@ namespace SimPe.Plugin
 		Hashtable AddJointsToScene(Scene scn, ElementOrder component)
 		{
 			if (!joints)
+			{
 				return new Hashtable();
+			}
+
 			IntArrayList js = new IntArrayList();
 			Hashtable relationmap = Gmdc.LoadJointRelationMap();
 
 			foreach (int k in relationmap.Keys)
+			{
 				if ((int)relationmap[k] == -1)
+				{
 					js.Add(k);
+				}
+			}
 
 			Quaternion r = Quaternion.FromRotationMatrix(component.TransformMatrix);
 			Vector3f tmp = r.GetEulerAngles();
@@ -168,7 +182,9 @@ namespace SimPe.Plugin
 
 			Hashtable jointmap = new Hashtable();
 			foreach (int index in js)
+			{
 				AddJoint(scn.RootJoint, index, jointmap, component);
+			}
 
 			return jointmap;
 		}
@@ -200,13 +216,20 @@ namespace SimPe.Plugin
 			if (absimgpath != null)
 			{
 				if (imgfolder == null)
+				{
 					imgfolder = absimgpath;
+				}
+
 				imgfolder = imgfolder.Trim();
 				if (imgfolder.Length > 0 && !imgfolder.EndsWith(@"\"))
+				{
 					imgfolder += @"\";
+				}
 
 				if (!System.IO.Directory.Exists(absimgpath))
+				{
 					System.IO.Directory.CreateDirectory(absimgpath);
+				}
 			}
 
 			Scene scn = new Scene();
@@ -227,7 +250,9 @@ namespace SimPe.Plugin
 			{
 				object o = UserTxmtMap[key];
 				if (o != null)
+				{
 					txmts[key] = UserTxmtMap[key];
+				}
 			}
 
 			Hashtable txtrs = tl.FindReferencedTXTR(txmts, null);
@@ -235,7 +260,9 @@ namespace SimPe.Plugin
 			{
 				object o = UserTxtrMap[key];
 				if (o != null)
+				{
 					txtrs[key] = o;
+				}
 			}
 
 			txtrs = tl.GetLargestImages(txtrs);
@@ -247,9 +274,14 @@ namespace SimPe.Plugin
 				Ambertation.Scenes.Material mat =
 					txmts[g.Name] as Ambertation.Scenes.Material;
 				if (mat == null)
+				{
 					mat = scn.CreateMaterial("mat_" + g.Name);
+				}
 				else
+				{
 					mat.Name = "mat_" + g.Name;
+				}
+
 				System.IO.MemoryStream s = txtrs[g.Name] as System.IO.MemoryStream;
 				if (s != null)
 				{
@@ -257,10 +289,13 @@ namespace SimPe.Plugin
 					{
 						System.Drawing.Image img = System.Drawing.Image.FromStream(s);
 						if (absimgpath != null)
+						{
 							img.Save(
 								System.IO.Path.Combine(absimgpath, g.Name + ".png"),
 								System.Drawing.Imaging.ImageFormat.Png
 							);
+						}
+
 						mat.Texture.FileName = imgfolder + g.Name + ".png";
 						mat.Texture.Size = img.Size;
 						mat.Texture.TextureImage = img;
@@ -345,7 +380,9 @@ namespace SimPe.Plugin
 				}
 
 				for (int i = 0; i < g.Faces.Count - 2; i += 3)
+				{
 					m.FaceIndices.Add(g.Faces[i], g.Faces[i + 1], g.Faces[i + 2]);
+				}
 
 				AddEnvelopes(g, m, bonee, bonewighte, jointmap);
 			}
@@ -376,7 +413,9 @@ namespace SimPe.Plugin
 						{
 							int bnr = g.UsedJoints[b];
 							if (used.Contains(bnr))
+							{
 								continue;
+							}
 
 							used.Add(bnr);
 							Ambertation.Scenes.Joint nj =
@@ -385,6 +424,7 @@ namespace SimPe.Plugin
 							{
 								double w = 1;
 								if (bonewighte != null)
+								{
 									if (bonewighte.Values.Count > pos)
 									{
 										SimPe.Plugin.Gmdc.GmdcElementValueBase v =
@@ -394,6 +434,7 @@ namespace SimPe.Plugin
 											w = v.Data[datapos];
 										}
 									}
+								}
 
 								//if there is no envelope for nj, make sure we get a new one
 								//with pos 0-Weights inserted

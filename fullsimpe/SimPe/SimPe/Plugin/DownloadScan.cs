@@ -93,7 +93,9 @@ namespace SimPe.Plugin
 			sorter = new ColumnSorter();
 
 			if (Helper.WindowsRegistry.Username.Trim() != "")
+			{
 				this.tbname.Text = Helper.WindowsRegistry.Username + "-";
+			}
 		}
 
 		/// <summary>
@@ -972,7 +974,9 @@ namespace SimPe.Plugin
 			if (comboBox1.SelectedIndex == 2)
 			{
 				if (fbd.ShowDialog() == DialogResult.OK)
+				{
 					lbdir.Text = fbd.SelectedPath;
+				}
 			}
 			else if (comboBox1.SelectedIndex == 1)
 			{
@@ -1004,7 +1008,10 @@ namespace SimPe.Plugin
 
 				int nr = -1;
 				if (package.FileListFile != null)
+				{
 					nr = package.FileListFile.FindFile(pfd);
+				}
+
 				bool inlist = (nr != -1);
 
 				if (inlist)
@@ -1014,15 +1021,22 @@ namespace SimPe.Plugin
 						package.FileListFile.Items[nr].UncompressedSize
 						!= uncdata.Length
 					)
+					{
 						return -2;
+					}
 				}
 
 				if (inlist != file.IsCompressed)
+				{
 					incomplete = true;
+				}
 			}
 
 			if (incomplete)
+			{
 				return -1;
+			}
+
 			return 0;
 		}
 
@@ -1057,9 +1071,13 @@ namespace SimPe.Plugin
 				foreach (uint g in prov.OpcodeProvider.StoredMemories.Keys)
 				{
 					if (aguids.Contains(g))
+					{
 						guids.Add(g);
+					}
 					else
+					{
 						aguids.Add(g);
+					}
 				}
 			}
 
@@ -1067,9 +1085,15 @@ namespace SimPe.Plugin
 			{
 				int val = (offset++ * pb.Maximum) / count;
 				if (val > pb.Value)
+				{
 					pb.PerformStep();
+				}
+
 				if (val > pb.Value)
+				{
 					pb.Value = val;
+				}
+
 				string name = System.IO.Path.GetFileNameWithoutExtension(file);
 				string desc = SimPe.Localization.Manager.GetString("Unknown");
 				string state = "OK";
@@ -1112,7 +1136,10 @@ namespace SimPe.Plugin
 					//find Name
 					pfds = package.FindFiles(Data.MetaData.CTSS_FILE);
 					if (pfds.Length == 0)
+					{
 						pfds = package.FindFiles(Data.MetaData.STRING_FILE);
+					}
+
 					if (pfds.Length > 0)
 					{
 						SimPe.PackedFiles.Wrapper.Str str =
@@ -1123,8 +1150,12 @@ namespace SimPe.Plugin
 								Helper.WindowsRegistry.LanguageCode
 							);
 						if (items != null)
+						{
 							if (items.Length > 0)
+							{
 								desc = items[0].Title;
+							}
+						}
 					}
 					else
 					{
@@ -1165,9 +1196,14 @@ namespace SimPe.Plugin
 					{
 						int ret = this.CheckCompressed(package);
 						if (ret == -1)
+						{
 							state = STR_COMP_DIR;
+						}
+
 						if (ret == -2)
+						{
 							state = STR_COMP_SIZE;
+						}
 						//if (ret==-3) state = "Corrupted Compressed Dir";
 					}
 
@@ -1219,9 +1255,13 @@ namespace SimPe.Plugin
 								if (guids.Contains(g))
 								{
 									if (state == "OK")
+									{
 										state = "Duplicate GUID";
+									}
 									else
+									{
 										state = "Duplicate GUID, " + state;
+									}
 								}
 								else
 								{
@@ -1248,13 +1288,19 @@ namespace SimPe.Plugin
 					for (int i = 0; i < guid.Length; i++)
 					{
 						if (i != 0)
+						{
 							s += ", ";
+						}
+
 						s += "0x" + Helper.HexString(guid[i]);
 					}
 					lvi.SubItems.Add(s);
 				}
 				else
+				{
 					lvi.SubItems.Add("");
+				}
+
 				lvi.SubItems.Add(note);
 				lvi.SubItems.Add(state);
 
@@ -1278,16 +1324,23 @@ namespace SimPe.Plugin
 			iList.Images.Clear();
 			lv.SmallImageList = null;
 			if (cbprev.Checked)
+			{
 				iList.ImageSize = new Size(48, 48);
+			}
 			else
+			{
 				iList.ImageSize = new Size(16, 16);
+			}
+
 			lv.SmallImageList = iList;
 
 			lv.ListViewItemSorter = null;
 			tbfilename.Text = "";
 			pb.Value = 0;
 			if (!System.IO.Directory.Exists(lbdir.Text))
+			{
 				return;
+			}
 
 			this.Cursor = Cursors.WaitCursor;
 			string[] files = System.IO.Directory.GetFiles(lbdir.Text, "*.package");
@@ -1309,7 +1362,10 @@ namespace SimPe.Plugin
 		private void Sort(object sender, System.Windows.Forms.ColumnClickEventArgs e)
 		{
 			if (((ListView)sender).ListViewItemSorter == null)
+			{
 				return;
+			}
+
 			sorter.CurrentColumn = e.Column;
 			((ListView)sender).Sort();
 		}
@@ -1319,12 +1375,16 @@ namespace SimPe.Plugin
 			if ((age & cmp) == cmp)
 			{
 				if (cb.CheckState == CheckState.Unchecked)
+				{
 					cb.CheckState = CheckState.Checked;
+				}
 			}
 			else
 			{
 				if (cb.CheckState == CheckState.Checked)
+				{
 					cb.CheckState = CheckState.Indeterminate;
+				}
 			}
 		}
 
@@ -1387,7 +1447,9 @@ namespace SimPe.Plugin
 					cpf.ProcessData(pfd, skin);
 
 					if (cpf.GetSaveItem("type").StringValue == "skin")
+					{
 						SetSkinBoxes(cpf);
+					}
 				}
 			}
 		}
@@ -1437,7 +1499,10 @@ namespace SimPe.Plugin
 			SetSkinBoxes((ListViewItem)null);
 
 			if (lv.SelectedItems.Count == 0)
+			{
 				return;
+			}
+
 			llopen.Enabled = lv.SelectedItems.Count == 1;
 			lldis.Enabled = true;
 
@@ -1458,7 +1523,9 @@ namespace SimPe.Plugin
 			}
 
 			if (Helper.WindowsRegistry.HiddenMode)
+			{
 				llfix.Enabled = true;
+			}
 
 			bool oner = (lv.SelectedItems.Count == 1);
 			foreach (ListViewItem lvi in lv.SelectedItems)
@@ -1494,9 +1561,13 @@ namespace SimPe.Plugin
 					)
 				)
 			)
+			{
 				lldis.Text = "disable";
+			}
 			else
+			{
 				lldis.Text = "enable";
+			}
 		}
 
 		private void Openpackage(
@@ -1505,21 +1576,30 @@ namespace SimPe.Plugin
 		)
 		{
 			if (lv.SelectedItems.Count != 1)
+			{
 				return;
+			}
+
 			this.FileName = System.IO.Path.Combine(
 				lbdir.Text,
 				lv.SelectedItems[0].Text + ".package"
 			);
 			if (!System.IO.File.Exists(FileName))
+			{
 				FileName = System.IO.Path.Combine(
 					lbdir.Text,
 					lv.SelectedItems[0].Text + ".simpedis"
 				);
+			}
 
 			if (!System.IO.File.Exists(FileName))
+			{
 				FileName = null;
+			}
 			else
+			{
 				Close();
+			}
 		}
 
 		private void Disable(
@@ -1528,7 +1608,9 @@ namespace SimPe.Plugin
 		)
 		{
 			if (lv.SelectedItems.Count == 0)
+			{
 				return;
+			}
 
 			foreach (ListViewItem lvi in lv.SelectedItems)
 			{
@@ -1544,10 +1626,16 @@ namespace SimPe.Plugin
 				SimPe.Packages.StreamItem si =
 					SimPe.Packages.StreamFactory.GetStreamItem(filename, false);
 				if (si != null)
+				{
 					si.Close();
+				}
+
 				si = SimPe.Packages.StreamFactory.GetStreamItem(target, false);
 				if (si != null)
+				{
 					si.Close();
+				}
+
 				try
 				{
 					if (System.IO.File.Exists(filename))
@@ -1576,7 +1664,9 @@ namespace SimPe.Plugin
 		)
 		{
 			if (lv.SelectedItems.Count == 0)
+			{
 				return;
+			}
 
 			string mname = tbname.Text;
 			DateTime now = DateTime.Now;
@@ -1598,7 +1688,9 @@ namespace SimPe.Plugin
 						(!Helper.WindowsRegistry.HiddenMode)
 						&& (lvi.SubItems[4].Text != STR_NOT_EP)
 					)
+					{
 						continue;
+					}
 
 					string filename = System.IO.Path.Combine(
 						lbdir.Text,
@@ -1632,11 +1724,15 @@ namespace SimPe.Plugin
 		void SetSkinAge(CheckBox cb, ref uint age, uint cmp)
 		{
 			if (cb.CheckState == CheckState.Indeterminate)
+			{
 				return;
+			}
 
 			age |= cmp;
 			if (cb.CheckState == CheckState.Unchecked)
+			{
 				age ^= cmp;
+			}
 		}
 
 		private void FixCompression(
@@ -1645,7 +1741,9 @@ namespace SimPe.Plugin
 		)
 		{
 			if (lv.SelectedItems.Count < 1)
+			{
 				return;
+			}
 
 			for (int i = 0; i < lv.SelectedItems.Count; i++)
 			{
@@ -1662,10 +1760,12 @@ namespace SimPe.Plugin
 						lvi.Text + ".package"
 					);
 					if (!System.IO.File.Exists(FileName))
+					{
 						FileName = System.IO.Path.Combine(
 							lbdir.Text,
 							lvi.Text + ".simpedis"
 						);
+					}
 
 					if (System.IO.File.Exists(FileName))
 					{
@@ -1722,7 +1822,9 @@ namespace SimPe.Plugin
 		)
 		{
 			if (lv.SelectedItems.Count == 0)
+			{
 				return;
+			}
 
 			uint age = 0;
 			uint cat = 0;
@@ -1767,7 +1869,10 @@ namespace SimPe.Plugin
 									(uint)((uint)Data.Ages.YoungAdult)
 								);
 								if (cbyoung.Checked)
+								{
 									AddUniversityFields(cpf);
+								}
+
 								SetSkinAge(cbadult, ref age, (uint)Data.Ages.Adult);
 								SetSkinAge(cbelder, ref age, (uint)Data.Ages.Elder);
 

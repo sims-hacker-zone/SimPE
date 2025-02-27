@@ -44,7 +44,10 @@ namespace SimPe.Geometry
 			get
 			{
 				if (double.IsNaN(x))
+				{
 					return 0;
+				}
+
 				return x;
 			}
 			set
@@ -61,7 +64,10 @@ namespace SimPe.Geometry
 			get
 			{
 				if (double.IsNaN(y))
+				{
 					return 0;
+				}
+
 				return y;
 			}
 			set
@@ -93,7 +99,10 @@ namespace SimPe.Geometry
 		protected double EpsilonCorrect(double v)
 		{
 			if (Math.Abs(v) < 0.00001)
+			{
 				return 0;
+			}
+
 			return v;
 		}
 
@@ -161,7 +170,10 @@ namespace SimPe.Geometry
 			get
 			{
 				if (double.IsNaN(z))
+				{
 					return 0;
+				}
+
 				return z;
 			}
 			set
@@ -403,7 +415,10 @@ namespace SimPe.Geometry
 		public static bool operator ==(Vector3f v1, Vector3f v2)
 		{
 			if (((object)v1) == null || ((object)v2) == null)
+			{
 				return (((object)v1) == null && ((object)v2) == null);
+			}
+
 			return (v1.X == v2.X) && (v1.Y == v2.Y) && (v1.Z == v2.Z);
 		}
 
@@ -445,11 +460,19 @@ namespace SimPe.Geometry
 		public virtual double GetComponent(int index)
 		{
 			if (index == 0)
+			{
 				return X;
+			}
+
 			if (index == 1)
+			{
 				return Y;
+			}
+
 			if (index == 2)
+			{
 				return Z;
+			}
 
 			return 0;
 		}
@@ -462,11 +485,19 @@ namespace SimPe.Geometry
 		public virtual void SetComponent(int index, double val)
 		{
 			if (index == 0)
+			{
 				X = val;
+			}
+
 			if (index == 1)
+			{
 				Y = val;
+			}
+
 			if (index == 2)
+			{
 				Z = val;
+			}
 		}
 
 		/// <summary>
@@ -654,7 +685,10 @@ namespace SimPe.Geometry
 			get
 			{
 				if (double.IsNaN(w))
+				{
 					return 0;
+				}
+
 				return w;
 			}
 			set
@@ -735,7 +769,10 @@ namespace SimPe.Geometry
 		public override double GetComponent(int index)
 		{
 			if (index == 3)
+			{
 				return W;
+			}
+
 			return base.GetComponent(index);
 		}
 
@@ -748,7 +785,9 @@ namespace SimPe.Geometry
 		{
 			base.SetComponent(index, val);
 			if (index == 3)
+			{
 				W = val;
+			}
 		}
 
 		/// <summary>
@@ -851,7 +890,9 @@ namespace SimPe.Geometry
 		{
 			Vectors3i list = new Vectors3i();
 			foreach (Vector3i item in this)
+			{
 				list.Add(item);
+			}
 
 			return list;
 		}
@@ -944,7 +985,9 @@ namespace SimPe.Geometry
 		{
 			Vectors3f list = new Vectors3f();
 			foreach (Vector3f item in this)
+			{
 				list.Add(item);
+			}
 
 			return list;
 		}
@@ -1037,7 +1080,9 @@ namespace SimPe.Geometry
 		{
 			Vectors2f list = new Vectors2f();
 			foreach (Vector2f item in this)
+			{
 				list.Add(item);
+			}
 
 			return list;
 		}
@@ -1130,7 +1175,9 @@ namespace SimPe.Geometry
 		{
 			Vectors4f list = new Vectors4f();
 			foreach (Vector4f item in this)
+			{
 				list.Add(item);
+			}
 
 			return list;
 		}

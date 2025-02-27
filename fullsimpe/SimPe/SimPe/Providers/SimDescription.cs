@@ -45,7 +45,10 @@ namespace SimPe.Providers
 			get
 			{
 				if (bysimid == null)
+				{
 					LoadDescriptions();
+				}
+
 				return bysimid;
 			}
 		}
@@ -63,7 +66,10 @@ namespace SimPe.Providers
 			get
 			{
 				if (byinstance == null)
+				{
 					LoadDescriptions();
+				}
+
 				return byinstance;
 			}
 		}
@@ -116,7 +122,9 @@ namespace SimPe.Providers
 			byinstance = new Hashtable();
 			bool didwarndoubleguid = false;
 			if (BasePackage == null)
+			{
 				return;
+			}
 
 			IPackedFileDescriptor[] files = BasePackage.FindFiles(
 				Data.MetaData.SIM_DESCRIPTION_FILE
@@ -184,21 +192,30 @@ namespace SimPe.Providers
 			{
 				string n = sdesc.HouseholdName;
 				if (n == null)
+				{
 					n = SimPe.Localization.GetString("Unknown");
+				}
+
 				if (!list.Contains(n))
 				{
 					list.Add(n);
 					if (firstcustum == null && !sdesc.IsNPC && !sdesc.IsTownie)
+					{
 						firstcustum = n;
+					}
 				}
 			}
 
 			if (firstcustum == null)
 			{
 				if (list.Count > 0)
+				{
 					firstcustum = (string)list[0];
+				}
 				else
+				{
 					firstcustum = SimPe.Localization.GetString("Unknown");
+				}
 			}
 
 			list.Sort();
@@ -210,7 +227,10 @@ namespace SimPe.Providers
 		public SimPe.Interfaces.Wrapper.ISDesc FindSim(uint simid)
 		{
 			if (bysimid == null)
+			{
 				LoadDescriptions();
+			}
+
 			return (SimPe.Interfaces.Wrapper.ISDesc)bysimid[simid];
 		}
 
@@ -219,7 +239,10 @@ namespace SimPe.Providers
 		)
 		{
 			if (byinstance == null)
+			{
 				LoadDescriptions();
+			}
+
 			return (SimPe.Interfaces.Wrapper.ISDesc)byinstance[instance];
 		}
 
@@ -227,18 +250,26 @@ namespace SimPe.Providers
 		{
 			SimPe.Interfaces.Wrapper.ISDesc d = FindSim(simid);
 			if (d != null)
+			{
 				return d.Instance;
+			}
 			else
+			{
 				return 0xffff;
+			}
 		}
 
 		public uint GetSimId(ushort instance)
 		{
 			SimPe.Interfaces.Wrapper.ISDesc d = FindSim(instance);
 			if (d != null)
+			{
 				return d.SimId;
+			}
 			else
+			{
 				return 0xffffffff;
+			}
 		}
 
 		#endregion
@@ -251,15 +282,22 @@ namespace SimPe.Providers
 		void LoadTurnOns()
 		{
 			if (turnons != null)
+			{
 				return;
+			}
+
 			turnons = new System.Collections.Generic.Dictionary<int, string>();
 			if (
 				SimPe.PathProvider.Global.EPInstalled < 2
 				&& SimPe.PathProvider.Global.STInstalled < 28
 			)
+			{
 				return;
+			}
 			else if (Helper.WindowsRegistry.LoadOnlySimsStory > 0)
+			{
 				to1 = 12;
+			}
 
 			SimPe.Packages.File pkg = SimPe.Packages.File.LoadFromFile(
 				System.IO.Path.Combine(
@@ -283,13 +321,19 @@ namespace SimPe.Providers
 				if (to1 == 12)
 				{
 					for (int i = 0; i < strs.Count; i++)
+					{
 						if (i != 13)
+						{
 							turnons[i] = strs[i].Title;
+						}
+					}
 				}
 				else
 				{
 					for (int i = 0; i < strs.Count; i++)
+					{
 						turnons[i] = strs[i].Title;
+					}
 				}
 			}
 		}
@@ -297,7 +341,10 @@ namespace SimPe.Providers
 		public TraitAlias[] GetAllTurnOns()
 		{
 			if (turnons == null)
+			{
 				LoadTurnOns();
+			}
+
 			TraitAlias[] a = new TraitAlias[turnons.Count];
 
 			int ct = 0;
@@ -307,7 +354,10 @@ namespace SimPe.Providers
 				string s = turnons[k];
 				int e = k;
 				if (e > to1)
+				{
 					e += j; // Fuck - only 14 bits in traits 1. If A&N's Nudity were anabled this would need to be altered just for A&N
+				}
+
 				a[ct++] = new TraitAlias((ulong)Math.Pow(2, e), s);
 			}
 
@@ -336,7 +386,9 @@ namespace SimPe.Providers
 		public string GetTurnOnName(ushort val1, ushort val2, ushort val3)
 		{
 			if (turnons == null)
+			{
 				LoadTurnOns();
+			}
 
 			ulong v = BuildTurnOnIndex(val1, val2, val3);
 			string ret = "";
@@ -348,9 +400,15 @@ namespace SimPe.Providers
 				{
 					string o = turnons[ct];
 					if (o == null)
+					{
 						return SimPe.Localization.GetString("Unknown");
+					}
+
 					if (ret != "")
+					{
 						ret += ", ";
+					}
+
 					ret += o;
 				}
 
@@ -367,13 +425,18 @@ namespace SimPe.Providers
 		void LoadCollectibles()
 		{
 			if (collectibles != null)
+			{
 				return;
+			}
+
 			collectibles = new System.Collections.Generic.Dictionary<
 				int,
 				CollectibleAlias
 			>();
 			if (SimPe.PathProvider.Global.EPInstalled < 10)
+			{
 				return;
+			}
 
 			SimPe.Packages.File pkg = SimPe.Packages.File.LoadFromFile(
 				System.IO.Path.Combine(
@@ -460,7 +523,9 @@ namespace SimPe.Providers
 								+ e.ToString()
 						);
 						if (Helper.WindowsRegistry.HiddenMode)
+						{
 							Helper.ExceptionMessage(e);
+						}
 					}
 				}
 			}
@@ -482,7 +547,9 @@ namespace SimPe.Providers
 			UInt32 i = Helper.StringToUInt32(stgi[1], 0, 16);
 			string name = GetUITextAttribute(line, "tiptext");
 			if (index < strs.Count)
+			{
 				name = strs[index].Title;
+			}
 
 			System.Drawing.Image img = null;
 
@@ -590,7 +657,10 @@ namespace SimPe.Providers
 		public SimPe.Providers.CollectibleAlias[] GetAllCollectibles()
 		{
 			if (collectibles == null)
+			{
 				LoadCollectibles();
+			}
+
 			SimPe.Providers.CollectibleAlias[] a = new SimPe.Providers.CollectibleAlias[
 				collectibles.Count
 			];
@@ -633,7 +703,9 @@ namespace SimPe.Providers
 		)
 		{
 			if (collectibles == null)
+			{
 				LoadCollectibles();
+			}
 
 			ulong v = BuildCollectibleIndex(val1, val2, val3, val4);
 			string ret = "";
@@ -645,9 +717,15 @@ namespace SimPe.Providers
 				{
 					object o = collectibles[ct];
 					if (o == null)
+					{
 						return SimPe.Localization.GetString("Unknown");
+					}
+
 					if (ret != "")
+					{
 						ret += ", ";
+					}
+
 					ret += o.ToString();
 				}
 

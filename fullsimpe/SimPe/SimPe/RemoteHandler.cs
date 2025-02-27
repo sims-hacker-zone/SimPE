@@ -65,7 +65,9 @@ namespace SimPe
 		public bool OpenPackage(string filename)
 		{
 			if (!System.IO.File.Exists(filename))
+			{
 				return false;
+			}
 
 			return lp.LoadFromFile(filename);
 		}
@@ -73,9 +75,14 @@ namespace SimPe
 		public bool OpenMemPackage(SimPe.Interfaces.Files.IPackageFile pkg)
 		{
 			if (pkg == null)
+			{
 				return false;
+			}
+
 			if (!(pkg is SimPe.Packages.GeneratableFile))
+			{
 				return false;
+			}
 
 			return lp.LoadFromPackage((SimPe.Packages.GeneratableFile)pkg);
 		}
@@ -85,7 +92,9 @@ namespace SimPe
 		)
 		{
 			if (fii == null)
+			{
 				return false;
+			}
 
 			try
 			{
@@ -117,7 +126,9 @@ namespace SimPe
 
 			bool res = rl.AddResource(fii, false);
 			if (res && LoadedResource != null)
+			{
 				FireLoadEvent(fii);
+			}
 
 			return res;
 		}
@@ -147,16 +158,27 @@ namespace SimPe
 		public void ShowDock(Ambertation.Windows.Forms.DockPanel doc, bool hide)
 		{
 			if (hide && (doc.IsOpen))
+			{
 				doc.Close();
+			}
+
 			if (!hide)
 			{
 				if (!doc.IsOpen)
+				{
 					doc.OpenFloating();
+				}
+
 				if (doc.Collapsed)
+				{
 					doc.Expand(false);
+				}
+
 				doc.EnsureVisible();
 				if (!(doc.IsOpen))
+				{
 					plugger.ChangedGuiResourceEventHandler();
+				}
 			}
 
 			foreach (object o in docs.DropDownItems)
@@ -164,9 +186,14 @@ namespace SimPe
 				System.Windows.Forms.ToolStripMenuItem mi =
 					o as System.Windows.Forms.ToolStripMenuItem;
 				if (mi == null)
+				{
 					continue;
+				}
+
 				if (mi.Tag as Ambertation.Windows.Forms.DockPanel == doc)
+				{
 					mi.Checked = doc.IsOpen;
+				}
 			}
 		}
 	}

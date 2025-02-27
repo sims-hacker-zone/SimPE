@@ -553,13 +553,21 @@ namespace SimPe
 			{
 				cs = value;
 				if (cs == CheckItemState.Fail)
+				{
 					pb.Image = CheckControl.FailImage;
+				}
 				else if (cs == CheckItemState.Ok)
+				{
 					pb.Image = CheckControl.OKImage;
+				}
 				else if (cs == CheckItemState.Warning)
+				{
 					pb.Image = CheckControl.WarnImage;
+				}
 				else
+				{
 					pb.Image = CheckControl.UnknownImage;
+				}
 
 				SetContent();
 			}
@@ -611,7 +619,10 @@ namespace SimPe
 		{
 			CheckItemState res = OnCheck();
 			if (CalledCheck != null)
+			{
 				res = CalledCheck(this, res);
+			}
+
 			this.CheckState = res;
 		}
 
@@ -625,7 +636,9 @@ namespace SimPe
 			CheckItemState res = this.CheckState;
 			OnFix();
 			if (ClickedFix != null)
+			{
 				res = ClickedFix(this, res);
+			}
 
 			this.CheckState = res;
 		}

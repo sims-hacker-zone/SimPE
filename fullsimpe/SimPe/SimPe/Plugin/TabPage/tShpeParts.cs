@@ -344,9 +344,14 @@ namespace SimPe.Plugin.TabPage
 		private void SelectPart(object sender, System.EventArgs e)
 		{
 			if (lbpart.Tag != null)
+			{
 				return;
+			}
+
 			if (lbpart.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			try
 			{
@@ -357,7 +362,10 @@ namespace SimPe.Plugin.TabPage
 
 				string s = "";
 				foreach (byte b in item.Data)
+				{
 					s += Helper.HexString(b) + " ";
+				}
+
 				tbpartdata.Text = s;
 			}
 			catch (Exception) { }
@@ -370,9 +378,14 @@ namespace SimPe.Plugin.TabPage
 		private void ChangedPart(object sender, System.EventArgs e)
 		{
 			if (lbpart.Tag != null)
+			{
 				return;
+			}
+
 			if (lbpart.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			try
 			{
@@ -384,7 +397,10 @@ namespace SimPe.Plugin.TabPage
 				string[] tokens = tbpartdata.Text.Trim().Split(" ".ToCharArray());
 				byte[] data = new byte[tokens.Length];
 				for (int i = 0; i < data.Length; i++)
+				{
 					data[i] = Convert.ToByte(tokens[i]);
+				}
+
 				item.Data = data;
 
 				lbpart.Items[lbpart.SelectedIndex] = item;
@@ -404,7 +420,10 @@ namespace SimPe.Plugin.TabPage
 
 				ShapePart[] parts = new ShapePart[lbpart.Items.Count];
 				for (int i = 0; i < parts.Length; i++)
+				{
 					parts[i] = (ShapePart)lbpart.Items[i];
+				}
+
 				shape.Parts = parts;
 			}
 			catch (Exception) { }
@@ -437,7 +456,10 @@ namespace SimPe.Plugin.TabPage
 		)
 		{
 			if (lbpart.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			lbpart.Items.RemoveAt(lbpart.SelectedIndex);
 			UpdateLists();
 		}

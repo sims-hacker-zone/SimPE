@@ -110,7 +110,10 @@ namespace SimPe.Plugin
 			s += max.ToString() + "   ";
 
 			if (s.Length > 0xff)
+			{
 				s = s.Substring(0, 0xff) + "...";
+			}
+
 			return s;
 		}
 	}

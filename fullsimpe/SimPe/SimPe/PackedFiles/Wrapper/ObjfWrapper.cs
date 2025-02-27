@@ -148,8 +148,12 @@ namespace SimPe.PackedFiles.Wrapper
 			writer.Write((uint)items.Count);
 
 			for (int i = 0; i < items.Count; i++)
+			{
 				if (items[i] != null)
+				{
 					((ObjfItem)items[i]).Serialize(writer);
+				}
+			}
 		}
 
 		/// <summary>
@@ -172,7 +176,9 @@ namespace SimPe.PackedFiles.Wrapper
 			//	return; // throws NullReferenceException if items = null
 
 			if (header[2] == 0x4f424a66)
+			{
 				itemCount = reader.ReadUInt32();
+			}
 			else
 			{
 				header[2] = 0x4f424a66; // will be fixed when commited, this allows a corrupt file to load as a blank file
@@ -181,7 +187,9 @@ namespace SimPe.PackedFiles.Wrapper
 
 			items = new List<ObjfItem>();
 			while (items.Count < itemCount)
+			{
 				items.Add(new ObjfItem(this, reader));
+			}
 		}
 
 		#endregion

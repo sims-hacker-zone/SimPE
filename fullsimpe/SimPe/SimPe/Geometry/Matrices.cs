@@ -41,7 +41,9 @@ namespace SimPe.Geometry
 		{
 			m = new double[row][];
 			for (int i = 0; i < row; i++)
+			{
 				m[i] = new double[col];
+			}
 		}
 
 		/// <summary>
@@ -76,9 +78,15 @@ namespace SimPe.Geometry
 		public Vector3f GetVector()
 		{
 			if ((Rows != 3 || Columns != 1) && ((Rows != 1 || Columns != 3)))
+			{
 				return null;
+			}
+
 			if (Rows == 3)
+			{
 				return new Vector3f(m[0][0], m[1][0], m[2][0]);
+			}
+
 			return new Vector3f(m[0][1], m[0][1], m[0][2]);
 		}
 
@@ -89,9 +97,15 @@ namespace SimPe.Geometry
 		public Vector4f GetVector4()
 		{
 			if ((Rows != 4 || Columns != 1) && ((Rows != 1 || Columns != 4)))
+			{
 				return null;
+			}
+
 			if (Rows == 4)
+			{
 				return new Vector4f(m[0][0], m[1][0], m[2][0], m[3][0]);
+			}
+
 			return new Vector4f(m[0][1], m[0][1], m[0][2], m[0][3]);
 		}
 
@@ -102,8 +116,12 @@ namespace SimPe.Geometry
 		{
 			Matrixd res = new Matrixd(Columns, Rows);
 			for (int r = 0; r < Rows; r++)
+			{
 				for (int c = 0; c < Columns; c++)
+				{
 					res[c, r] = this[r, c];
+				}
+			}
 
 			return res;
 		}
@@ -119,13 +137,19 @@ namespace SimPe.Geometry
 			Matrixd i = new Matrixd(row, col);
 
 			for (int r = 0; r < row; r++)
+			{
 				for (int c = 0; c < col; c++)
 				{
 					if (r == c)
+					{
 						i[r, c] = 1;
+					}
 					else
+					{
 						i[r, c] = 0;
+					}
 				}
+			}
 
 			return i;
 		}
@@ -143,7 +167,10 @@ namespace SimPe.Geometry
 			get
 			{
 				if (Rows == 0)
+				{
 					return 0;
+				}
+
 				return m[0].Length;
 			}
 		}
@@ -173,14 +200,19 @@ namespace SimPe.Geometry
 			get
 			{
 				if (Rows != Columns)
+				{
 					throw new GeometryException(
 						"Unable to get Trace for a non Square Matrix ("
 							+ this.ToString()
 							+ ")"
 					);
+				}
+
 				double ret = 0;
 				for (int i = 0; i < Rows; i++)
+				{
 					ret += this[i, i];
+				}
 
 				return ret;
 			}
@@ -196,6 +228,7 @@ namespace SimPe.Geometry
 		public static Matrixd operator *(Matrixd m1, Matrixd m2)
 		{
 			if (m1.Columns != m2.Rows)
+			{
 				throw new GeometryException(
 					"Unable to multiplicate Matrices ("
 						+ m1.ToString()
@@ -203,18 +236,24 @@ namespace SimPe.Geometry
 						+ m2.ToString()
 						+ ")"
 				);
+			}
 
 			Matrixd m = new Matrixd(m1.Rows, m2.Columns);
 			for (int r = 0; r < m.Rows; r++)
+			{
 				for (int c = 0; c < m.Columns; c++)
 				{
 					double res = 0;
 
 					for (int i = 0; i < m1.Columns; i++)
+					{
 						res += m1[r, i] * m2[i, c];
+					}
 
 					m[r, c] = res;
 				} //for m
+			}
+
 			return m;
 		}
 
@@ -228,8 +267,13 @@ namespace SimPe.Geometry
 		{
 			Matrixd m = new Matrixd(m1.Rows, m1.Columns);
 			for (int r = 0; r < m.Rows; r++)
+			{
 				for (int c = 0; c < m.Columns; c++)
+				{
 					m[r, c] = m1[r, c] * d;
+				}
+			}
+
 			return m;
 		}
 
@@ -254,11 +298,19 @@ namespace SimPe.Geometry
 		public static Matrixd operator /(Matrixd m1, double d)
 		{
 			if (d == 0)
+			{
 				throw new GeometryException("Unable to divide by Zero.");
+			}
+
 			Matrixd m = new Matrixd(m1.Rows, m1.Columns);
 			for (int r = 0; r < m.Rows; r++)
+			{
 				for (int c = 0; c < m.Columns; c++)
+				{
 					m[r, c] = m1[r, c] / d;
+				}
+			}
+
 			return m;
 		}
 
@@ -284,15 +336,19 @@ namespace SimPe.Geometry
 		public static Matrixd operator ^(Matrixd m1, float val)
 		{
 			if (m1.Rows != m1.Columns)
+			{
 				throw new GeometryException(
 					"Attempt to find the power of a non square matrix"
 				);
+			}
 			//return null;
 
 			Matrixd result = m1;
 
 			for (int i = 0; i < val; i++)
+			{
 				result = result * m1;
+			}
 
 			return result;
 		}
@@ -308,16 +364,22 @@ namespace SimPe.Geometry
 		public static Matrixd operator +(Matrixd m1, Matrixd m2)
 		{
 			if (m1.Rows != m2.Rows || m1.Columns != m2.Columns)
+			{
 				throw new GeometryException(
 					"Attempt to add matrixes of different sizes."
 				);
+			}
 			//return null;
 
 			Matrixd result = new Matrixd(m1.Rows, m1.Columns);
 
 			for (int i = 0; i < m1.Rows; i++)
+			{
 				for (int j = 0; j < m1.Columns; j++)
+				{
 					result[i, j] = m1[i, j] + m2[i, j];
+				}
+			}
 
 			return result;
 		}
@@ -333,16 +395,22 @@ namespace SimPe.Geometry
 		public static Matrixd operator -(Matrixd m1, Matrixd m2)
 		{
 			if (m1.Rows != m2.Rows || m1.Columns != m2.Columns)
+			{
 				throw new GeometryException(
 					"Attempt to subtract matrixes of different sizes."
 				);
+			}
 			//return null;
 
 			Matrixd result = new Matrixd(m1.Rows, m1.Columns);
 
 			for (int i = 0; i < m1.Rows; i++)
+			{
 				for (int j = 0; j < m1.Columns; j++)
+				{
 					result[i, j] = m1[i, j] - m2[i, j];
+				}
+			}
 
 			return result;
 		}
@@ -366,7 +434,9 @@ namespace SimPe.Geometry
 		public Matrixd GetInverse()
 		{
 			if (Determinant() == 0)
+			{
 				throw new GeometryException("Attempt to invert a singular matrix.");
+			}
 
 			//inverse of a 2x2 matrix
 			if (Rows == 2 && Columns == 2)
@@ -403,8 +473,12 @@ namespace SimPe.Geometry
 			double result = 0;
 
 			for (int i = 0; i < Rows; i++)
+			{
 				for (int j = 0; j < Columns; j++)
+				{
 					result += this[i, j];
+				}
+			}
 
 			return (int)result;
 		}
@@ -417,16 +491,26 @@ namespace SimPe.Geometry
 		public override bool Equals(Object obj)
 		{
 			if (obj.GetType() != typeof(Matrixd))
+			{
 				return false;
+			}
 
 			Matrixd m1 = (Matrixd)obj;
 			if (this.Rows != m1.Rows || this.Columns != m1.Columns)
+			{
 				return false;
+			}
 
 			for (int i = 0; i < this.Rows; i++)
+			{
 				for (int j = 0; j < this.Columns; j++)
+				{
 					if (this[i, j] != m1[i, j])
+					{
 						return false;
+					}
+				}
+			}
 
 			return true;
 		}
@@ -490,11 +574,13 @@ namespace SimPe.Geometry
 		public double Determinant()
 		{
 			if (this.Rows != this.Columns)
+			{
 				throw new GeometryException(
 					"You can only compute the Determinant of a Square Matrix. ("
 						+ ToString()
 						+ ")"
 				);
+			}
 
 			double d = 0;
 
@@ -541,14 +627,17 @@ namespace SimPe.Geometry
 		public Matrixd Adjoint()
 		{
 			if (this.Rows < 2 || this.Columns < 2)
+			{
 				throw new GeometryException(
 					"Adjoint matrix is not available. (" + ToString() + ")"
 				);
+			}
 
 			Matrixd tempMtx = new Matrixd(this.Rows - 1, this.Columns - 1);
 			Matrixd adjMtx = new Matrixd(this.Columns, this.Rows);
 
 			for (int i = 0; i < this.Rows; i++)
+			{
 				for (int j = 0; j < this.Columns; j++)
 				{
 					tempMtx = this.Minor(i, j);
@@ -556,6 +645,7 @@ namespace SimPe.Geometry
 					//put the determinent of the minor in the transposed position
 					adjMtx[j, i] = (int)Math.Pow(-1, i + j) * tempMtx.Determinant();
 				}
+			}
 
 			return adjMtx;
 		}
@@ -571,9 +661,11 @@ namespace SimPe.Geometry
 		public Matrixd Minor(int row, int column)
 		{
 			if (this.Rows < 2 || this.Columns < 2)
+			{
 				throw new GeometryException(
 					"Minor not available. (" + ToString() + ")"
 				);
+			}
 
 			int i,
 				j = 0;
@@ -584,16 +676,24 @@ namespace SimPe.Geometry
 			for (int k = 0; k < minom2.Rows; k++)
 			{
 				if (k >= row)
+				{
 					i = k + 1;
+				}
 				else
+				{
 					i = k;
+				}
 
 				for (int l = 0; l < minom2.Columns; l++)
 				{
 					if (l >= column)
+					{
 						j = l + 1;
+					}
 					else
+					{
 						j = l;
+					}
 
 					minom2[k, l] = this[i, j];
 				}
@@ -611,22 +711,30 @@ namespace SimPe.Geometry
 			get
 			{
 				if (Rows != Columns)
+				{
 					return false;
+				}
 
 				for (int i = 0; i < Rows; i++)
+				{
 					for (int j = 0; j < Columns; j++)
 					{
 						if (i == j)
 						{
 							if (this[i, j] != 1.0f)
+							{
 								return false;
+							}
 						}
 						else
 						{
 							if (this[i, j] != 0.0f)
+							{
 								return false;
+							}
 						}
 					}
+				}
 
 				return true;
 			}
@@ -645,15 +753,21 @@ namespace SimPe.Geometry
 			get
 			{
 				if (Rows != Columns)
+				{
 					return false;
+				}
 
 				Matrixd t = this * this.GetTranspose();
 				if (!t.Identity)
+				{
 					return false;
+				}
 
 				t = this.GetTranspose() * this;
 				if (!t.Identity)
+				{
 					return false;
+				}
 
 				return true;
 			}
@@ -811,7 +925,9 @@ namespace SimPe.Geometry
 		public string ToString(bool full)
 		{
 			if (!full)
+			{
 				return this.ToString();
+			}
 
 			string s = "";
 			for (int r = 0; r < Rows; r++)
@@ -831,8 +947,12 @@ namespace SimPe.Geometry
 			Matrixd m = Matrixd.GetIdentity(3, 3);
 
 			for (int r = 0; r < Math.Min(3, this.Rows); r++)
+			{
 				for (int c = 0; c < Math.Min(3, this.Columns); c++)
+				{
 					m[r, c] = this[r, c];
+				}
+			}
 
 			return m;
 		}

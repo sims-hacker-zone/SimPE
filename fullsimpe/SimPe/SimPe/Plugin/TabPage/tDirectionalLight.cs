@@ -563,7 +563,10 @@ namespace SimPe.Plugin.TabPage
 		private void LSettingsChanged(object sender, System.EventArgs e)
 		{
 			if (this.Tag == null)
+			{
 				return;
+			}
+
 			try
 			{
 				SimPe.Plugin.DirectionalLight dl = (SimPe.Plugin.DirectionalLight)Tag;

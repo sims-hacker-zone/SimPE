@@ -89,7 +89,9 @@ namespace pjse
 		)
 		{
 			if (!ValidTypes.Contains(type))
+			{
 				throw new InvalidOperationException("type must be CTSS, STR# or TTAs");
+			}
 
 			this.Scope = scope;
 			this.Parent = parent;
@@ -128,23 +130,31 @@ namespace pjse
 				{
 					Hashtable instanceHash = (Hashtable)groupHash[group];
 					if (instanceHash == null)
+					{
 						return null;
+					}
 
 					Hashtable typeHash = (Hashtable)instanceHash[type];
 					if (typeHash == null)
+					{
 						return null;
+					}
 
 					return (Str)typeHash[type];
 				}
 				set
 				{
 					if (groupHash[group] == null)
+					{
 						groupHash[group] = new Hashtable();
+					}
 
 					Hashtable instanceHash = (Hashtable)groupHash[group];
 
 					if (instanceHash[instance] == null)
+					{
 						instanceHash[instance] = new Hashtable();
+					}
 
 					Hashtable typeHash = (Hashtable)instanceHash[instance];
 
@@ -154,20 +164,24 @@ namespace pjse
 						{
 							StrWrapper wrapper = ((Str)typeHash[type]).wrapper;
 							if (wrapper != null && wrapper.FileDescriptor != null)
+							{
 								wrapper.FileDescriptor.ChangedData -=
 									new SimPe.Events.PackedFileChanged(
 										this.FileDescriptor_ChangedData
 									);
+							}
 						}
 						typeHash[type] = value;
 						if (typeHash[type] != null)
 						{
 							StrWrapper wrapper = ((Str)typeHash[type]).wrapper;
 							if (wrapper != null && wrapper.FileDescriptor != null)
+							{
 								wrapper.FileDescriptor.ChangedData +=
 									new SimPe.Events.PackedFileChanged(
 										this.FileDescriptor_ChangedData
 									);
+							}
 						}
 					}
 				}
@@ -178,11 +192,19 @@ namespace pjse
 			)
 			{
 				if (pfd == null)
+				{
 					return;
+				}
+
 				if (!ValidTypes.Contains(pfd.Type))
+				{
 					return;
+				}
+
 				if (this[pfd.Group, pfd.Instance, pfd.Type] != null)
+				{
 					this[pfd.Group, pfd.Instance, pfd.Type] = null;
+				}
 			}
 
 			private void GFT_FiletableRefresh(object sender, EventArgs e)
@@ -246,6 +268,7 @@ namespace pjse
 			get
 			{
 				if (semiGlobalStr == null)
+				{
 					semiGlobalStr = new Str(
 						Scope.SemiGlobal,
 						null,
@@ -253,6 +276,8 @@ namespace pjse
 						this.Instance,
 						this.Type
 					);
+				}
+
 				return semiGlobalStr;
 			}
 		}
@@ -263,6 +288,7 @@ namespace pjse
 			get
 			{
 				if (globalStr == null)
+				{
 					globalStr = new Str(
 						Scope.Global,
 						null,
@@ -270,6 +296,8 @@ namespace pjse
 						this.Instance,
 						this.Type
 					);
+				}
+
 				return globalStr;
 			}
 		}
@@ -277,11 +305,20 @@ namespace pjse
 		private bool rejectStrItem(FallbackStrItem fsi)
 		{
 			if (fsi == null)
+			{
 				return true;
+			}
+
 			if (fsi.strItem == null)
+			{
 				return true;
+			}
+
 			if (fsi.strItem.Title.Trim().Length.Equals(0))
+			{
 				return true;
+			}
+
 			return false;
 		}
 
@@ -293,9 +330,14 @@ namespace pjse
 				if (Parent != null && Group != Parent.GlobalGroup)
 				{
 					if (w == null && Group != Parent.SemiGroup && SemiGlobalStr != null)
+					{
 						w = SemiGlobalStr.Wrapper;
+					}
+
 					if (w == null && GlobalStr != null)
+					{
 						w = GlobalStr.Wrapper;
+					}
 				}
 				return (w == null) ? new List<StrItem>() : w[lid];
 			}
@@ -329,7 +371,9 @@ namespace pjse
 				{
 					fsi.strItem = Wrapper[lid, sid]; // try to find instance/lid/sid at scope
 					if (!this.rejectStrItem(fsi))
+					{
 						return fsi;
+					}
 
 					if (lid != 1)
 					{
@@ -337,7 +381,10 @@ namespace pjse
 						if (!this.rejectStrItem(fsi))
 						{
 							if (fsi.fallback.Count == 0) // ignore unless this is the first / only fallback
+							{
 								fsi.lidFallback = true;
+							}
+
 							return fsi;
 						}
 					}
@@ -353,11 +400,14 @@ namespace pjse
 							if (!this.rejectStrItem(fsi))
 							{
 								if (fsi.fallback.Count == 0)
+								{
 									fsi.fallback.Add(
 										pjse.Localization.GetString("Fallback")
 											+ ": "
 											+ pjse.Localization.GetString("SemiGlobal")
 									);
+								}
+
 								return fsi;
 							}
 						}
@@ -368,11 +418,14 @@ namespace pjse
 							if (!this.rejectStrItem(fsi))
 							{
 								if (fsi.fallback.Count == 0)
+								{
 									fsi.fallback.Add(
 										pjse.Localization.GetString("Fallback")
 											+ ": "
 											+ pjse.Localization.GetString("Global")
 									);
+								}
+
 								return fsi;
 							}
 						}

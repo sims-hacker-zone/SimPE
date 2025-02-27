@@ -23,9 +23,14 @@ namespace SimPe.Plugin.Gmdc
 				this.Joint == null
 				&& this.Action == GenericMeshImport.JointImportAction.Update
 			)
+			{
 				this.Action = GenericMeshImport.JointImportAction.Ignore;
+			}
+
 			if (Action == GenericMeshImport.JointImportAction.Ignore)
+			{
 				return;
+			}
 
 			joint.Tag = Joint.Index;
 		}

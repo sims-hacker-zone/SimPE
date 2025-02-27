@@ -133,7 +133,9 @@ namespace SimPe.Plugin.Scanner
 			cbfemale.Tag = Data.Sex.Female;
 
 			if (Helper.WindowsRegistry.Username.Trim() != "")
+			{
 				this.tbname.Text = Helper.WindowsRegistry.Username + "-";
+			}
 
 			this.cbskins.SelectedIndex = 0;
 			sfd.InitialDirectory = PathProvider.SimSavegameFolder;
@@ -163,7 +165,10 @@ namespace SimPe.Plugin.Scanner
 			get
 			{
 				if (form == null)
+				{
 					form = new ScannerPanelForm();
+				}
+
 				return form;
 			}
 		}
@@ -1086,33 +1091,57 @@ namespace SimPe.Plugin.Scanner
 				string skintone = "";
 				string family = "";
 				if (cbskins.SelectedIndex < 4)
+				{
 					skintone =
 						"0000000"
 						+ (cbskins.SelectedIndex + 1).ToString()
 						+ "-0000-0000-0000-000000000000";
+				}
 				else if (cbskins.SelectedIndex == 4)
+				{
 					skintone = "6baf064a-85ad-4e37-8d81-a987e9f8da46"; //Alien Skin
+				}
 				else if (cbskins.SelectedIndex == 5)
+				{
 					skintone = "b6ee1dbc-5bb3-4146-8315-02bd64eda707"; //Zombie Skin
+				}
 				else if (cbskins.SelectedIndex == 6)
+				{
 					skintone = "b9a94827-7544-450c-a8f4-6f643ae89a71"; //Mannequin Skin
+				}
 				else if (cbskins.SelectedIndex == 7)
+				{
 					skintone = "6eea47c7-8a35-4be7-9242-dcd082f53b55"; //CAS Mannequin Skin
+				}
 				else if (cbskins.SelectedIndex == 8)
+				{
 					skintone = "00000000-0000-0000-0000-000000000000"; //Vampire
+				}
 
 				if (cbskins.SelectedIndex < 4)
+				{
 					family = "21afb87c-e872-4f4c-af3c-c3685ed4e220";
+				}
 				else if (cbskins.SelectedIndex == 4)
+				{
 					family = "ad5da337-bdd1-4593-acdd-19001595cbbb"; //Alien Skin
+				}
 				else if (cbskins.SelectedIndex == 5)
+				{
 					family = "b6ee1dbc-5bb3-4146-8315-02bd64eda707"; //Zombie Skin
+				}
 				else if (cbskins.SelectedIndex == 6)
+				{
 					family = "59621330-1005-4b88-b4f2-77deb751fcf3"; //Mannequin Skin
+				}
 				else if (cbskins.SelectedIndex == 7)
+				{
 					family = "59621330-1005-4b88-b4f2-77deb751fcf3"; //CAS Mannequin Skin
+				}
 				else if (cbskins.SelectedIndex == 8)
+				{
 					family = "13ae91e7-b825-4559-82a3-0ead8e8dd7fd"; //Vampire
+				}
 
 				SkinScanner cs = (SkinScanner)pnskin.Tag;
 				cs.CreateOverride(

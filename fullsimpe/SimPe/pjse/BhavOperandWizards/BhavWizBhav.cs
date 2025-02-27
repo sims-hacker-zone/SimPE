@@ -35,7 +35,9 @@ namespace pjse.BhavNameWizards
 			: base(i)
 		{
 			if (i.OpCode < 0x0100)
+			{
 				throw new InvalidOperationException("OpCode not a BHAV");
+			}
 
 			if (i.OpCode < 0x1000)
 			{
@@ -57,7 +59,9 @@ namespace pjse.BhavNameWizards
 		public static implicit operator BhavWizBhav(Instruction i)
 		{
 			if (i.OpCode < 0x0100)
+			{
 				throw new InvalidCastException("OpCode not a BHAV");
+			}
 
 			return new BhavWizBhav(i);
 		}
@@ -93,15 +97,26 @@ namespace pjse.BhavNameWizards
 		internal static dataFormat opFormat(byte nodeVersion, byte[] operands)
 		{
 			if (nodeVersion > 0 && (operands[12] & 0x03) == 0x02)
+			{
 				return dataFormat.useParams;
+			}
+
 			if (
 				(operands[12] & 0x01) == 0x01
 				&& !(nodeVersion > 0 && operands[12] == 0xff)
 			)
+			{
 				return dataFormat.newFormat;
+			}
+
 			for (int i = 0; i < 8; i++)
+			{
 				if (operands[i] != 0xFF)
+				{
 					return dataFormat.oldFormat;
+				}
+			}
+
 			return dataFormat.useTemps;
 		}
 
@@ -115,16 +130,21 @@ namespace pjse.BhavNameWizards
 		{
 			Bhav bhav = Wrapper;
 			if (bhav == null)
+			{
 				return "???";
+			}
 
 			int myArgc = (int)instruction.Parent.Header.ArgumentCount;
 			int thisArgc = bhav.Header.ArgumentCount;
 
 			if (thisArgc == 0)
+			{
 				return lng ? pjse.Localization.GetString("noargs") : "";
+			}
 
 			string s = "";
 			if (lng)
+			{
 				s +=
 					thisArgc.ToString()
 					+ " "
@@ -134,6 +154,7 @@ namespace pjse.BhavNameWizards
 							: pjse.Localization.GetString("manyArgs")
 					)
 					+ ": ";
+			}
 
 			byte[] o = new byte[16];
 			((byte[])instruction.Operands).CopyTo(o, 0);
@@ -157,15 +178,25 @@ namespace pjse.BhavNameWizards
 					break;
 				case dataFormat.newFormat:
 					if (thisArgc < 9)
+					{
 						s += this.do4OI(thisArgc, lng, tprp, o);
+					}
 					else
+					{
 						s += this.doZero(thisArgc, lng, tprp);
+					}
+
 					break;
 				case dataFormat.useParams:
 					if (thisArgc < 9)
+					{
 						s += this.doParams(thisArgc, myArgc, lng, tprp);
+					}
 					else
+					{
 						s += this.doZero(thisArgc, lng, tprp);
+					}
+
 					break;
 			}
 
@@ -177,21 +208,27 @@ namespace pjse.BhavNameWizards
 			get
 			{
 				if (wrapper != null)
+				{
 					return wrapper;
+				}
 
 				if (ftEntry == null)
 				{
 					if (instruction == null || instruction.Parent == null)
+					{
 						throw new Exception(
 							"Can't find wrapper for instruction with no parent"
 						);
+					}
 
 					ftEntry = instruction.Parent.ResourceByInstance(
 						SimPe.Data.MetaData.BHAV_FILE,
 						instruction.OpCode
 					);
 					if (ftEntry == null)
+					{
 						return null;
+					}
 				}
 
 				wrapper = new Bhav();
@@ -242,7 +279,10 @@ namespace pjse.BhavNameWizards
 					+ dataOwner(lng, o[i * 3], o[(i * 3) + 1], o[(i * 3) + 2]);
 			}
 			if (thisArgc > 0)
+			{
 				s += doZero(thisArgc, lng, tprp, 4);
+			}
+
 			return s;
 		}
 
@@ -264,14 +304,19 @@ namespace pjse.BhavNameWizards
 					);
 			}
 			if (thisArgc > 0)
+			{
 				s += doZero(thisArgc, lng, tprp, 8);
+			}
+
 			return s;
 		}
 
 		private string doParams(int thisArgc, int myArgc, bool lng, TPRP tprp)
 		{
 			if (!lng)
+			{
 				return pjse.Localization.GetString("bw_callerparams");
+			}
 
 			string s = "";
 			for (int i = 0; thisArgc > 0 && i < myArgc; i++, thisArgc--)
@@ -286,14 +331,19 @@ namespace pjse.BhavNameWizards
 					+ dataOwner(9, (ushort)i);
 			}
 			if (thisArgc > 0)
+			{
 				s += doZero(thisArgc, lng, tprp, myArgc);
+			}
+
 			return s;
 		}
 
 		private string doTemps(int thisArgc, bool lng, TPRP tprp)
 		{
 			if (!lng)
+			{
 				return pjse.Localization.GetString("bwb_useTemps");
+			}
 
 			string s = "";
 			for (int i = 0; thisArgc > 0 && i < 8; i++, thisArgc--)
@@ -308,7 +358,10 @@ namespace pjse.BhavNameWizards
 					+ dataOwner(8, (ushort)i);
 			}
 			if (thisArgc > 0)
+			{
 				s += doZero(thisArgc, lng, tprp, 8);
+			}
+
 			return s;
 		}
 
@@ -320,10 +373,14 @@ namespace pjse.BhavNameWizards
 		private string doZero(int thisArgc, bool lng, TPRP tprp, int start)
 		{
 			if (start >= 8)
+			{
 				return doUnknown(thisArgc, lng, tprp, start);
+			}
 
 			if (!lng)
+			{
 				return (start > 0 ? "," : pjse.Localization.GetString("allZeros"));
+			}
 
 			string s = "";
 			for (int i = start; thisArgc > 0 && i < 8; i++, thisArgc--)
@@ -338,7 +395,10 @@ namespace pjse.BhavNameWizards
 					+ dataOwner(7, 0);
 			}
 			if (thisArgc > 0)
+			{
 				s += doUnknown(thisArgc, lng, tprp, 8);
+			}
+
 			return s;
 		}
 
@@ -350,7 +410,9 @@ namespace pjse.BhavNameWizards
 		private string doUnknown(int thisArgc, bool lng, TPRP tprp, int start)
 		{
 			if (!lng)
+			{
 				return (start > 0 ? ", " : "") + pjse.Localization.GetString("unkops");
+			}
 
 			string s = "";
 			for (int i = start; thisArgc > 0; i++, thisArgc--)

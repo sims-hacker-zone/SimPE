@@ -273,7 +273,9 @@ namespace SimPe.Plugin
 		protected Image GetItemThumb(int index, ArrayList mmats, Size sz)
 		{
 			if ((index < 0) || (index >= mmats.Count))
+			{
 				return new Bitmap(sz.Width, sz.Height);
+			}
 
 			SimPe.Plugin.MmatWrapper mmat = (SimPe.Plugin.MmatWrapper)mmats[index];
 			GenericRcol txtr = mmat.TXTR;
@@ -283,7 +285,9 @@ namespace SimPe.Plugin
 				MipMap mm = id.LargestTexture;
 
 				if (mm != null)
+				{
 					return ImageLoader.Preview(mm.Texture, sz);
+				}
 			}
 
 			return new Bitmap(sz.Width, sz.Height);
@@ -377,7 +381,9 @@ namespace SimPe.Plugin
 		protected void AddItem(ListView lv, ArrayList mmats)
 		{
 			if (mmats.Count == 0)
+			{
 				return;
+			}
 
 			ListViewItem lvi = new ListViewItem();
 			GenericRcol txtr = ((SimPe.Plugin.MmatWrapper)mmats[0]).TXTR;
@@ -437,7 +443,9 @@ namespace SimPe.Plugin
 				foreach (string subset in map.Keys)
 				{
 					if (!subsets.Contains(subset))
+					{
 						continue;
+					}
 
 					ListView lv = ssf.AddSelection(ssf, subset, ref top);
 					Hashtable families = (Hashtable)map[subset];
@@ -449,7 +457,9 @@ namespace SimPe.Plugin
 					}
 
 					if (lv.Items.Count > 0)
+					{
 						lv.Items[0].Selected = true;
+					}
 				}
 			}
 			finally
@@ -472,7 +482,9 @@ namespace SimPe.Plugin
 			foreach (ListView lv in ssf.ListViews)
 			{
 				if (!lv.Enabled)
+				{
 					continue;
+				}
 
 				if (lv.SelectedItems.Count > 0)
 				{
@@ -512,7 +524,9 @@ namespace SimPe.Plugin
 			get
 			{
 				if (ListViews.Count == 0)
+				{
 					return true;
+				}
 
 				foreach (ListView lv in ListViews)
 				{
@@ -521,7 +535,9 @@ namespace SimPe.Plugin
 						&& lv.Enabled
 						&& lv.Items.Count != 0
 					)
+					{
 						return false;
+					}
 				}
 
 				return true;
@@ -542,7 +558,9 @@ namespace SimPe.Plugin
 		private void SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (internalupdate)
+			{
 				return;
+			}
 
 			internalupdate = true;
 			try
@@ -556,12 +574,16 @@ namespace SimPe.Plugin
 					foreach (ListView lv2 in ListViews)
 					{
 						if (lv2 == lv)
+						{
 							continue;
+						}
 
 						foreach (ListViewItem lvi in lv2.Items)
 						{
 							if (lvi.Text == name)
+							{
 								lvi.Selected = true;
+							}
 						}
 					}
 				}

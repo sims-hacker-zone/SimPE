@@ -358,7 +358,10 @@ namespace SimPe.Plugin.TabPage
 
 				ShapeItem[] items = new ShapeItem[lbitem.Items.Count];
 				for (int i = 0; i < items.Length; i++)
+				{
 					items[i] = (ShapeItem)lbitem.Items[i];
+				}
+
 				shape.Items = items;
 			}
 			catch (Exception) { }
@@ -393,7 +396,10 @@ namespace SimPe.Plugin.TabPage
 		)
 		{
 			if (lbitem.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			lbitem.Items.RemoveAt(lbitem.SelectedIndex);
 			UpdateLists();
 		}
@@ -401,9 +407,14 @@ namespace SimPe.Plugin.TabPage
 		private void ChangeItemUnknown(object sender, System.EventArgs e)
 		{
 			if (lbitem.Tag != null)
+			{
 				return;
+			}
+
 			if (lbitem.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			try
 			{
@@ -425,9 +436,14 @@ namespace SimPe.Plugin.TabPage
 		private void ChangedItemFilename(object sender, System.EventArgs e)
 		{
 			if (lbitem.Tag != null)
+			{
 				return;
+			}
+
 			if (lbitem.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			try
 			{
@@ -446,9 +462,14 @@ namespace SimPe.Plugin.TabPage
 		private void SelectItems(object sender, System.EventArgs e)
 		{
 			if (lbitem.Tag != null)
+			{
 				return;
+			}
+
 			if (lbitem.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			try
 			{

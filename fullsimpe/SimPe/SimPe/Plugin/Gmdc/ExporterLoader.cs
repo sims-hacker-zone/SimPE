@@ -37,7 +37,10 @@ namespace SimPe.Plugin.Gmdc
 			get
 			{
 				if (exporters == null)
+				{
 					LoadExporters();
+				}
+
 				return exporters;
 			}
 		}
@@ -52,7 +55,10 @@ namespace SimPe.Plugin.Gmdc
 			get
 			{
 				if (importers == null)
+				{
 					LoadExporters();
+				}
+
 				return importers;
 			}
 		}
@@ -71,7 +77,9 @@ namespace SimPe.Plugin.Gmdc
 				typeof(SimPe.Plugin.Gmdc.IGmdcExporter)
 			);
 			foreach (IGmdcExporter p in plugs)
+			{
 				list.Add(p);
+			}
 
 			return list;
 		}
@@ -90,7 +98,9 @@ namespace SimPe.Plugin.Gmdc
 				typeof(SimPe.Plugin.Gmdc.IGmdcImporter)
 			);
 			foreach (IGmdcImporter p in plugs)
+			{
 				list.Add(p);
+			}
 
 			return list;
 		}
@@ -116,7 +126,9 @@ namespace SimPe.Plugin.Gmdc
 				foreach (IGmdcExporter p in plugs)
 				{
 					if (p.Version == 1)
+					{
 						list.Add(p);
+					}
 				} //foreach
 
 				plugs = SimPe.LoadFileWrappers.LoadPlugins(
@@ -126,7 +138,9 @@ namespace SimPe.Plugin.Gmdc
 				foreach (IGmdcImporter p in plugs)
 				{
 					if (p.Version == 1)
+					{
 						imlist.Add(p);
+					}
 				} //foreach
 			}
 
@@ -146,9 +160,13 @@ namespace SimPe.Plugin.Gmdc
 		{
 			int res = FindFirstIndexByExtension(fileext);
 			if (res == -1)
+			{
 				return null;
+			}
 			else
+			{
 				return Exporters[res];
+			}
 		}
 
 		/// <summary>
@@ -160,9 +178,13 @@ namespace SimPe.Plugin.Gmdc
 		{
 			int[] res = FindIndexByExtension(fileext);
 			if (res.Length == 0)
+			{
 				return -1;
+			}
 			else
+			{
 				return res[0];
+			}
 		}
 
 		/// <summary>
@@ -174,14 +196,18 @@ namespace SimPe.Plugin.Gmdc
 		{
 			fileext = fileext.Trim().ToLower();
 			if (!fileext.StartsWith("."))
+			{
 				fileext = "." + fileext;
+			}
 
 			System.Collections.ArrayList list = new System.Collections.ArrayList();
 			for (int i = 0; i < Exporters.Length; i++)
 			{
 				IGmdcExporter e = Exporters[i];
 				if (e.FileExtension.Trim().ToLower() == fileext)
+				{
 					list.Add(i);
+				}
 			}
 
 			int[] res = new int[list.Count];
@@ -199,9 +225,13 @@ namespace SimPe.Plugin.Gmdc
 		{
 			int[] res = FindImporterIndexByExtension(fileext);
 			if (res.Length == 0)
+			{
 				return -1;
+			}
 			else
+			{
 				return res[0];
+			}
 		}
 
 		/// <summary>
@@ -213,14 +243,18 @@ namespace SimPe.Plugin.Gmdc
 		{
 			fileext = fileext.Trim().ToLower();
 			if (!fileext.StartsWith("."))
+			{
 				fileext = "." + fileext;
+			}
 
 			System.Collections.ArrayList list = new System.Collections.ArrayList();
 			for (int i = 0; i < Importers.Length; i++)
 			{
 				IGmdcImporter e = Importers[i];
 				if (e.FileExtension.Trim().ToLower() == fileext)
+				{
 					list.Add(i);
+				}
 			}
 
 			int[] res = new int[list.Count];

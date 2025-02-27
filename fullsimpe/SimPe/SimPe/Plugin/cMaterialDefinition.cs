@@ -85,7 +85,9 @@ namespace SimPe.Plugin
 			foreach (MaterialDefinitionProperty mdp in Properties)
 			{
 				if (mdp.Name.Trim().ToLower() == name)
+				{
 					return mdp;
+				}
 			}
 
 			return new MaterialDefinitionProperty();
@@ -133,10 +135,14 @@ namespace SimPe.Plugin
 				}
 
 				if (ex != null)
+				{
 					ex.Value = prop.Value;
+				}
 				else
+				{
 					this.Properties = (MaterialDefinitionProperty[])
 						Helper.Add(Properties, prop);
+				}
 			}
 			else
 			{
@@ -243,7 +249,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (tMaterialDefinition == null)
+				{
 					tMaterialDefinition = new SimPe.Plugin.TabPage.MaterialDefinition();
+				}
+
 				return tMaterialDefinition;
 			}
 		}
@@ -255,15 +264,27 @@ namespace SimPe.Plugin
 		protected override void InitTabPage()
 		{
 			if (tMaterialDefinition == null)
+			{
 				tMaterialDefinition = new SimPe.Plugin.TabPage.MaterialDefinition();
+			}
+
 			if (tMaterialDefinitionProperties == null)
+			{
 				tMaterialDefinitionProperties = new SimPe.Plugin.TabPage.MatdForm();
+			}
+
 			if (tMaterialDefinitionCat == null)
+			{
 				tMaterialDefinitionCat =
 					new SimPe.Plugin.TabPage.MaterialDefinitionCategories();
+			}
+
 			if (tMaterialDefinitionFiles == null)
+			{
 				tMaterialDefinitionFiles =
 					new SimPe.Plugin.TabPage.MaterialDefinitionFiles();
+			}
+
 			tMaterialDefinitionProperties.tbname.Tag = true;
 			tMaterialDefinition.tbdsc.Tag = true;
 			try
@@ -273,14 +294,18 @@ namespace SimPe.Plugin
 				tMaterialDefinitionProperties.lldel.Enabled = false;
 				tMaterialDefinitionProperties.lbprop.Items.Clear();
 				foreach (MaterialDefinitionProperty mdp in this.Properties)
+				{
 					tMaterialDefinitionProperties.lbprop.Items.Add(mdp);
+				}
 
 				tMaterialDefinition.tbdsc.Text = FileDescription;
 				tMaterialDefinition.tbtype.Text = MatterialType;
 
 				tMaterialDefinitionFiles.lbfl.Items.Clear();
 				foreach (string fl in Listing)
+				{
 					tMaterialDefinitionFiles.lbfl.Items.Add(fl);
+				}
 
 				tMaterialDefinitionCat.SetupGrid(this);
 			}
@@ -380,9 +405,11 @@ namespace SimPe.Plugin
 			{
 				string s = this.GetProperty("numTexturesToComposite").Value;
 				if (s != "")
+				{
 					count = Convert.ToInt32(
 						this.GetProperty("numTexturesToComposite").Value
 					);
+				}
 			}
 			catch { }
 			list = new ArrayList();
@@ -393,7 +420,10 @@ namespace SimPe.Plugin
 				if (refname != "")
 				{
 					if (!refname.EndsWith("_txtr"))
+					{
 						refname += "_txtr";
+					}
+
 					list.Add(
 						ScenegraphHelper.BuildPfd(
 							refname,
@@ -418,12 +448,15 @@ namespace SimPe.Plugin
 			get
 			{
 				if (tpp == null)
+				{
 					tpp = new Ambertation.PropertyParser(
 						System.IO.Path.Combine(
 							Helper.SimPeDataPath,
 							"txmtdefinition.xml"
 						)
 					);
+				}
+
 				return tpp;
 			}
 		}
@@ -436,6 +469,7 @@ namespace SimPe.Plugin
 		public void Sort()
 		{
 			for (int i = 0; i < this.Properties.Length - 1; i++)
+			{
 				for (int j = i + 1; j < this.Properties.Length; j++)
 				{
 					if (Properties[i].Name.CompareTo(Properties[j].Name) > 0)
@@ -445,6 +479,7 @@ namespace SimPe.Plugin
 						Properties[j] = dum;
 					}
 				}
+			}
 		}
 
 		/// <summary>
@@ -460,16 +495,27 @@ namespace SimPe.Plugin
 			Ambertation.Scenes.Material mat = scn.CreateMaterial(name);
 			p = this.GetProperty("stdMatSpecCoef");
 			if (p != null)
+			{
 				mat.Specular = p.ToARGB();
+			}
+
 			p = this.GetProperty("stdMatDiffCoef");
 			if (p != null)
+			{
 				mat.Diffuse = p.ToARGB();
+			}
+
 			p = this.GetProperty("stdMatEmissiveCoef");
 			if (p != null)
+			{
 				mat.Emmissive = p.ToARGB();
+			}
+
 			p = this.GetProperty("stdMatSpecPower");
 			if (p != null)
+			{
 				mat.SpecularPower = p.ToValue();
+			}
 
 			p = this.GetProperty("stdMatAlphaBlendMode");
 
@@ -483,11 +529,13 @@ namespace SimPe.Plugin
 					if (p2 != null)
 					{
 						if (p2.ToValue() == 0)
+						{
 							mat.Mode = Ambertation
 								.Scenes
 								.Material
 								.TextureModes
 								.ShadowTexture;
+						}
 					}
 				}
 				//if (mat.Texture.AlphaBlend) mat.Diffuse = System.Drawing.Color.FromArgb(0x10, mat.Diffuse);
@@ -567,7 +615,9 @@ namespace SimPe.Plugin
 					while (xr.MoveToNextAttribute())
 					{
 						if (xr.Name == "name")
+						{
 							p.Name = xr.Value;
+						}
 					}
 					xr.MoveToElement();
 					p.Value = xr.ReadString();
@@ -588,13 +638,25 @@ namespace SimPe.Plugin
 		public override void Dispose()
 		{
 			if (this.tMaterialDefinition != null)
+			{
 				this.tMaterialDefinition.Dispose();
+			}
+
 			if (tMaterialDefinitionProperties != null)
+			{
 				tMaterialDefinitionProperties.Dispose();
+			}
+
 			if (tMaterialDefinitionCat != null)
+			{
 				tMaterialDefinitionCat.Dispose();
+			}
+
 			if (tMaterialDefinitionFiles != null)
+			{
 				tMaterialDefinitionFiles.Dispose();
+			}
+
 			tMaterialDefinitionFiles = null;
 			tMaterialDefinitionCat = null;
 			tMaterialDefinitionProperties = null;
@@ -653,7 +715,10 @@ namespace SimPe.Plugin
 		{
 			double[] list = ToFloat();
 			if (list.Length > 0)
+			{
 				return list[0];
+			}
+
 			return 0;
 		}
 
@@ -662,9 +727,15 @@ namespace SimPe.Plugin
 			double[] list = ToFloat();
 			Ambertation.Geometry.Vector2 v = Ambertation.Geometry.Vector2.Zero;
 			if (list.Length > 0)
+			{
 				v.X = list[0];
+			}
+
 			if (list.Length > 1)
+			{
 				v.Y = list[1];
+			}
+
 			return v;
 		}
 
@@ -697,7 +768,10 @@ namespace SimPe.Plugin
 		public System.Drawing.Color ToARGB()
 		{
 			if (this.ToFloat().Length < 4)
+			{
 				return ToRGB();
+			}
+
 			Ambertation.Geometry.Vector4 v = ToVector4();
 			Clamp(v);
 			return System.Drawing.Color.FromArgb(
@@ -713,11 +787,20 @@ namespace SimPe.Plugin
 			double[] list = ToFloat();
 			Ambertation.Geometry.Vector3 v = Ambertation.Geometry.Vector3.Zero;
 			if (list.Length > 0)
+			{
 				v.X = list[0];
+			}
+
 			if (list.Length > 1)
+			{
 				v.Y = list[1];
+			}
+
 			if (list.Length > 2)
+			{
 				v.Z = list[2];
+			}
+
 			return v;
 		}
 
@@ -731,13 +814,25 @@ namespace SimPe.Plugin
 				0
 			);
 			if (list.Length > 0)
+			{
 				v.X = list[0];
+			}
+
 			if (list.Length > 1)
+			{
 				v.Y = list[1];
+			}
+
 			if (list.Length > 2)
+			{
 				v.Z = list[2];
+			}
+
 			if (list.Length > 3)
+			{
 				v.W = list[3];
+			}
+
 			return v;
 		}
 
@@ -747,6 +842,7 @@ namespace SimPe.Plugin
 				new Ambertation.Collections.DoubleCollection();
 			string[] parts = Value.Split(new char[] { ',' });
 			foreach (string s in parts)
+			{
 				try
 				{
 					dc.Add(
@@ -757,10 +853,14 @@ namespace SimPe.Plugin
 					);
 				}
 				catch { }
+			}
 
 			double[] ret = new double[dc.Count];
 			for (int i = 0; i < dc.Count; i++)
+			{
 				ret[i] = dc[i];
+			}
+
 			return ret;
 		}
 

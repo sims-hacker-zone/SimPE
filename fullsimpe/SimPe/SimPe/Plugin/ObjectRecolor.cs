@@ -54,9 +54,11 @@ namespace SimPe.Plugin
 			this.Package = package;
 
 			if (System.IO.File.Exists(ScenegraphHelper.GMND_PACKAGE))
+			{
 				dn_pkg = SimPe.Packages.GeneratableFile.LoadFromFile(
 					ScenegraphHelper.GMND_PACKAGE
 				);
+			}
 			else
 			{
 				dn_pkg = SimPe.Packages.GeneratableFile.LoadFromStream(
@@ -66,9 +68,11 @@ namespace SimPe.Plugin
 			}
 
 			if (System.IO.File.Exists(ScenegraphHelper.MMAT_PACKAGE))
+			{
 				gm_pkg = SimPe.Packages.GeneratableFile.LoadFromFile(
 					ScenegraphHelper.MMAT_PACKAGE
 				);
+			}
 			else
 			{
 				gm_pkg = SimPe.Packages.GeneratableFile.LoadFromStream(
@@ -143,7 +147,9 @@ namespace SimPe.Plugin
 							dle.Extension.VarName.Trim().ToLower()
 							== "tsdesignmodeenabled"
 						)
+						{
 							return new Rcol[0];
+						}
 					}
 				}
 				list.Add(gmnd);
@@ -282,9 +288,14 @@ namespace SimPe.Plugin
 				foreach (SimPe.Plugin.ShapePart part in sh.Parts)
 				{
 					if (subsets.Contains(part.Subset))
+					{
 						continue;
+					}
+
 					if (localsubsets.Contains(part.Subset))
+					{
 						continue;
+					}
 
 					//Read the MATD
 					Interfaces.Files.IPackedFileDescriptor[] pfds = Package.FindFile(
@@ -340,7 +351,9 @@ namespace SimPe.Plugin
 
 			Listing li = new Listing();
 			if (mmats.Length > 0)
+			{
 				mmats = li.Execute(mmats);
+			}
 
 			foreach (WorkshopMMAT mmat in mmats)
 			{
@@ -393,9 +406,12 @@ namespace SimPe.Plugin
 			mmat.ProcessData(pfd1, Package);
 
 			if (!substate)
+			{
 				mmat.GetSaveItem("family").StringValue = System
 					.Guid.NewGuid()
 					.ToString();
+			}
+
 			mmat.GetSaveItem("name").StringValue = matd.FileName.Substring(
 				0,
 				matd.FileName.Length - 5
@@ -416,7 +432,9 @@ namespace SimPe.Plugin
 				mmat.GetSaveItem("objectGUID").UIntegerValue = objd.SimId;
 
 				if (pfd.Instance == 0x000041A7)
+				{
 					break;
+				}
 			}
 
 			ObjectRecolor.FixMMAT(mmat);
@@ -431,6 +449,7 @@ namespace SimPe.Plugin
 				pfds = ObjectCloner.FindStateMatchingMatd(name, Package);
 
 				if (pfds != null)
+				{
 					if (pfds.Length > 0)
 					{
 						SimPe.Plugin.Rcol submatd = new GenericRcol(null, false);
@@ -447,6 +466,7 @@ namespace SimPe.Plugin
 							"family"
 						).StringValue;
 					}
+				}
 			}
 
 			return mmat;
@@ -519,7 +539,10 @@ namespace SimPe.Plugin
 		{
 			//WaitingScreen.Wait();
 			if (WaitingScreen.Running)
+			{
 				WaitingScreen.UpdateMessage("Loading Material Overrides");
+			}
+
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
 				SimPe.PackedFiles.Wrapper.Cpf mmat =

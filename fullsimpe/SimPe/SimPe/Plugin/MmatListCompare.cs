@@ -38,9 +38,11 @@ namespace SimPe.Plugin
 				mmat1.GetSaveItem("materialStateFlags").IntegerValue
 				- mmat2.GetSaveItem("materialStateFlags").IntegerValue;
 			if (cmp == 0)
+			{
 				cmp =
 					mmat1.GetSaveItem("objectStateIndex").IntegerValue
 					- mmat2.GetSaveItem("objectStateIndex").IntegerValue;
+			}
 
 			return cmp;
 		}

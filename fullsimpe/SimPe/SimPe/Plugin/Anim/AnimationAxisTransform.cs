@@ -95,7 +95,9 @@ namespace SimPe.Plugin.Anim
 			{
 				tc = (ushort)(tc & 0x7fff);
 				if (value)
+				{
 					tc = (ushort)(tc | 0x8000);
+				}
 			}
 		}
 
@@ -108,7 +110,10 @@ namespace SimPe.Plugin.Anim
 			get
 			{
 				if (parent == null)
+				{
 					return true;
+				}
+
 				return parent.Locked;
 			}
 			set
@@ -222,7 +227,9 @@ namespace SimPe.Plugin.Anim
 			Reset();
 			short[] datas = new short[parent.TokenSize];
 			for (int i = 0; i < datas.Length; i++)
+			{
 				datas[i] = reader.ReadInt16();
+			}
 
 			if (parent.Type == AnimationTokenType.TwoByte)
 			{
@@ -270,7 +277,9 @@ namespace SimPe.Plugin.Anim
 			}
 
 			for (int i = 0; i < datas.Length; i++)
+			{
 				writer.Write(datas[i]);
+			}
 		}
 
 		#region IDisposable Member
@@ -304,14 +313,25 @@ namespace SimPe.Plugin.Anim
 			else
 			{
 				if (parent.Type == AnimationTokenType.SixByte)
+				{
 					s += "; " + Unknown1.ToString();
+				}
+
 				if (parent.Type == AnimationTokenType.EightByte)
+				{
 					s += "; " + Unknown1.ToString() + "; " + Unknown2.ToString();
+				}
 			}
 			if (Linear)
+			{
 				s += " (linear)";
+			}
+
 			if (ParentLocked)
+			{
 				s += " (locked)";
+			}
+
 			return s;
 		}
 
@@ -320,9 +340,14 @@ namespace SimPe.Plugin.Anim
 		public int CompareTo(object obj)
 		{
 			if (obj == null)
+			{
 				return 1;
+			}
+
 			if (!(obj is AnimationAxisTransform))
+			{
 				return -1;
+			}
 
 			AnimationAxisTransform aat = (AnimationAxisTransform)obj;
 			return this.TimeCode.CompareTo(aat.TimeCode);
@@ -335,7 +360,10 @@ namespace SimPe.Plugin.Anim
 		public float GetCompressedFloat(short val)
 		{
 			if (parent != null)
+			{
 				return parent.GetCompressedFloat(val);
+			}
+
 			return AnimationAxisTransformBlock.GetCompressedFloat(
 				val,
 				AnimationAxisTransformBlock.SCALE
@@ -345,7 +373,10 @@ namespace SimPe.Plugin.Anim
 		public short FromCompressedFloat(float val)
 		{
 			if (parent != null)
+			{
 				return parent.FromCompressedFloat(val);
+			}
+
 			return AnimationAxisTransformBlock.FromCompressedFloat(
 				val,
 				AnimationAxisTransformBlock.SCALE

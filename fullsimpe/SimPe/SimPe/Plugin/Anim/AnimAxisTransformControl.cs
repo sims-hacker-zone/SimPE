@@ -1573,8 +1573,13 @@ namespace SimPe.Plugin.Anim
 			{
 				aat = value;
 				if (aat != null)
+				{
 					if (aat.Parent == null)
+					{
 						aat = null;
+					}
+				}
+
 				RefreshData();
 			}
 		}
@@ -1611,7 +1616,9 @@ namespace SimPe.Plugin.Anim
 			this.llAdd.Enabled = true;
 
 			if (Cleared != null)
+			{
 				Cleared(this, new EventArgs());
+			}
 
 			intern = false;
 			refresh = false;
@@ -1659,7 +1666,9 @@ namespace SimPe.Plugin.Anim
 				intern = true;
 				refresh = true;
 				if (aat.Parent.Type == AnimationTokenType.TwoByte)
+				{
 					EnableParameter(true);
+				}
 				else if (aat.Parent.Type == AnimationTokenType.SixByte)
 				{
 					EnableTimeCode(true);
@@ -1692,110 +1701,173 @@ namespace SimPe.Plugin.Anim
 		private void tbParameter_TextChanged(object sender, System.EventArgs e)
 		{
 			if (intern && !refresh)
+			{
 				return;
+			}
+
 			intern = true;
 
 			short val = 0;
 			if (aat != null)
+			{
 				val = Helper.StringToInt16(tbParameter.Text, aat.Parameter, 10);
+			}
 
 			tbParameterFloat.Text = val.ToString();
 			if (aat != null)
+			{
 				if (aat.Parent.Parent != null)
 				{
 					float f = aat.GetCompressedFloat(val);
 					if (aat.Parent.Parent.TransformationType == FrameType.Rotation)
+					{
 						f = (float)SimPe.Geometry.Quaternion.RadToDeg(f);
+					}
+
 					tbParameterFloat.Text = f.ToString("N8");
 				}
+			}
 
 			tbParameterHex.Text = "0x" + Helper.HexString(val);
 			tbParameterBin.Text = Convert.ToString(val, 2);
 
 			if (!refresh)
+			{
 				intern = false;
+			}
+
 			if (intern || aat == null)
+			{
 				return;
+			}
+
 			aat.Parameter = val;
 			if (Changed != null)
+			{
 				Changed(this, new System.EventArgs());
+			}
 		}
 
 		private void tbU2_TextChanged(object sender, System.EventArgs e)
 		{
 			if (intern && !refresh)
+			{
 				return;
+			}
+
 			intern = true;
 
 			short val = 0;
 			if (aat != null)
+			{
 				val = Helper.StringToInt16(tbU2.Text, aat.Unknown2, 10);
+			}
 
 			tbU2Float.Text = val.ToString();
 			if (aat != null)
+			{
 				if (aat.Parent.Parent != null)
+				{
 					tbU2Float.Text = aat.GetCompressedFloat(val).ToString("N8");
+				}
+			}
 
 			tbU2Hex.Text = "0x" + Helper.HexString(val);
 			tbU2Bin.Text = Convert.ToString(val, 2);
 
 			if (!refresh)
+			{
 				intern = false;
+			}
+
 			if (intern || aat == null)
+			{
 				return;
+			}
+
 			aat.Unknown2 = val;
 			if (Changed != null)
+			{
 				Changed(this, new System.EventArgs());
+			}
 		}
 
 		private void tbU1_TextChanged(object sender, System.EventArgs e)
 		{
 			if (intern && !refresh)
+			{
 				return;
+			}
+
 			intern = true;
 
 			short val = 0;
 			if (aat != null)
+			{
 				val = Helper.StringToInt16(tbU1.Text, aat.Unknown1, 10);
+			}
 
 			tbU1Float.Text = val.ToString();
 			if (aat != null)
+			{
 				tbU1Float.Text = aat.GetCompressedFloat(val).ToString("N8");
+			}
 
 			tbU1Hex.Text = "0x" + Helper.HexString(val);
 			tbU1Bin.Text = Convert.ToString(val, 2);
 
 			if (!refresh)
+			{
 				intern = false;
+			}
+
 			if (intern || aat == null)
+			{
 				return;
+			}
+
 			aat.Unknown1 = val;
 			if (Changed != null)
+			{
 				Changed(this, new System.EventArgs());
+			}
 		}
 
 		private void tbTimeCode_TextChanged(object sender, System.EventArgs e)
 		{
 			if (intern || aat == null)
+			{
 				return;
+			}
+
 			aat.TimeCode = Helper.StringToInt16(tbTimeCode.Text, aat.TimeCode, 10);
 			if (Changed != null)
+			{
 				Changed(this, new System.EventArgs());
+			}
 		}
 
 		private void cbEvent_CheckedChanged(object sender, System.EventArgs e)
 		{
 			if (intern || aat == null)
+			{
 				return;
+			}
+
 			aat.Linear = cbEvent.Checked;
 			if (Changed != null)
+			{
 				Changed(this, new System.EventArgs());
+			}
 		}
 
 		private void tbParameterFloat_TextChanged(object sender, System.EventArgs e)
 		{
 			if (intern || aat == null)
+			{
 				return;
+			}
+
 			intern = true;
 			short val = 0;
 			if (aat != null)
@@ -1806,7 +1878,10 @@ namespace SimPe.Plugin.Anim
 					{
 						float f = Convert.ToSingle(tbParameterFloat.Text);
 						if (aat.Parent.Parent.TransformationType == FrameType.Rotation)
+						{
 							f = (float)SimPe.Geometry.Quaternion.DegToRad(f);
+						}
+
 						val = aat.FromCompressedFloat(f);
 					}
 				}
@@ -1820,13 +1895,18 @@ namespace SimPe.Plugin.Anim
 			intern = false;
 			aat.Parameter = val;
 			if (Changed != null)
+			{
 				Changed(this, new System.EventArgs());
+			}
 		}
 
 		private void tbU1Float_TextChanged(object sender, System.EventArgs e)
 		{
 			if (intern || aat == null)
+			{
 				return;
+			}
+
 			intern = true;
 			short val = 0;
 			if (aat != null)
@@ -1834,7 +1914,9 @@ namespace SimPe.Plugin.Anim
 				try
 				{
 					if (aat.Parent.Parent != null)
+					{
 						val = aat.FromCompressedFloat(Convert.ToSingle(tbU1Float.Text));
+					}
 				}
 				catch { }
 
@@ -1846,13 +1928,18 @@ namespace SimPe.Plugin.Anim
 			intern = false;
 			aat.Unknown1 = val;
 			if (Changed != null)
+			{
 				Changed(this, new System.EventArgs());
+			}
 		}
 
 		private void tbU2Float_TextChanged(object sender, System.EventArgs e)
 		{
 			if (intern || aat == null)
+			{
 				return;
+			}
+
 			intern = true;
 			short val = 0;
 			if (aat != null)
@@ -1860,7 +1947,9 @@ namespace SimPe.Plugin.Anim
 				try
 				{
 					if (aat.Parent.Parent != null)
+					{
 						val = aat.FromCompressedFloat(Convert.ToSingle(tbU2Float.Text));
+					}
 				}
 				catch { }
 
@@ -1872,169 +1961,249 @@ namespace SimPe.Plugin.Anim
 			intern = false;
 			aat.Unknown2 = val;
 			if (Changed != null)
+			{
 				Changed(this, new System.EventArgs());
+			}
 		}
 
 		private void tbParameterHex_TextChanged(object sender, System.EventArgs e)
 		{
 			if (intern)
+			{
 				return;
+			}
+
 			intern = true;
 
 			short val = 0;
 			if (aat != null)
+			{
 				val = Helper.StringToInt16(tbParameterHex.Text, aat.Parameter, 16);
+			}
 
 			tbParameterFloat.Text = val.ToString();
 			if (aat != null)
+			{
 				if (aat.Parent.Parent != null)
 				{
 					float f = aat.GetCompressedFloat(val);
 					if (aat.Parent.Parent.TransformationType == FrameType.Rotation)
+					{
 						f = (float)SimPe.Geometry.Quaternion.RadToDeg(f);
+					}
+
 					tbParameterFloat.Text = f.ToString("N8");
 				}
+			}
 
 			tbParameter.Text = val.ToString();
 			tbParameterBin.Text = Convert.ToString(val, 2);
 
 			intern = false;
 			if (aat == null)
+			{
 				return;
+			}
+
 			aat.Parameter = val;
 			if (Changed != null)
+			{
 				Changed(this, new System.EventArgs());
+			}
 		}
 
 		private void tbU1Hex_TextChanged(object sender, System.EventArgs e)
 		{
 			if (intern)
+			{
 				return;
+			}
+
 			intern = true;
 
 			short val = 0;
 			if (aat != null)
+			{
 				val = Helper.StringToInt16(tbU1Hex.Text, aat.Unknown1, 16);
+			}
 
 			tbU1Float.Text = val.ToString();
 			if (aat != null)
+			{
 				tbU1Float.Text = aat.GetCompressedFloat(val).ToString("N8");
+			}
 
 			tbU1.Text = val.ToString();
 			tbU1Bin.Text = Convert.ToString(val, 2);
 
 			intern = false;
 			if (aat == null)
+			{
 				return;
+			}
+
 			aat.Unknown1 = val;
 			if (Changed != null)
+			{
 				Changed(this, new System.EventArgs());
+			}
 		}
 
 		private void tbU2Hex_TextChanged(object sender, System.EventArgs e)
 		{
 			if (intern)
+			{
 				return;
+			}
+
 			intern = true;
 
 			short val = 0;
 			if (aat != null)
+			{
 				val = Helper.StringToInt16(tbU2Hex.Text, aat.Unknown2, 16);
+			}
 
 			tbU2Float.Text = val.ToString();
 			if (aat != null)
+			{
 				tbU2Float.Text = aat.GetCompressedFloat(val).ToString("N8");
+			}
 
 			tbU2.Text = val.ToString();
 			tbU2Bin.Text = Convert.ToString(val, 2);
 
 			intern = false;
 			if (aat == null)
+			{
 				return;
+			}
+
 			aat.Unknown2 = val;
 			if (Changed != null)
+			{
 				Changed(this, new System.EventArgs());
+			}
 		}
 
 		private void tbParameterBin_TextChanged(object sender, System.EventArgs e)
 		{
 			if (intern)
+			{
 				return;
+			}
+
 			intern = true;
 
 			short val = 0;
 			if (aat != null)
+			{
 				val = Helper.StringToInt16(tbParameterBin.Text, aat.Parameter, 2);
+			}
 
 			tbParameterFloat.Text = val.ToString();
 			if (aat != null)
+			{
 				if (aat.Parent.Parent != null)
 				{
 					float f = aat.GetCompressedFloat(val);
 					if (aat.Parent.Parent.TransformationType == FrameType.Rotation)
+					{
 						f = (float)SimPe.Geometry.Quaternion.RadToDeg(f);
+					}
+
 					tbParameterFloat.Text = f.ToString("N8");
 				}
+			}
 
 			tbParameter.Text = val.ToString();
 			tbParameterHex.Text = "0x" + Helper.HexString(val);
 
 			intern = false;
 			if (aat == null)
+			{
 				return;
+			}
+
 			aat.Parameter = val;
 			if (Changed != null)
+			{
 				Changed(this, new System.EventArgs());
+			}
 		}
 
 		private void tbU1Bin_TextChanged(object sender, System.EventArgs e)
 		{
 			if (intern)
+			{
 				return;
+			}
+
 			intern = true;
 
 			short val = 0;
 			if (aat != null)
+			{
 				val = Helper.StringToInt16(tbU1Bin.Text, aat.Unknown1, 2);
+			}
 
 			tbU1Float.Text = val.ToString();
 			if (aat != null)
+			{
 				tbU1Float.Text = aat.GetCompressedFloat(val).ToString("N8");
+			}
 
 			tbU1.Text = val.ToString();
 			tbU1Hex.Text = "0x" + Helper.HexString(val);
 
 			intern = false;
 			if (aat == null)
+			{
 				return;
+			}
+
 			aat.Unknown1 = val;
 			if (Changed != null)
+			{
 				Changed(this, new System.EventArgs());
+			}
 		}
 
 		private void tbU2Bin_TextChanged(object sender, System.EventArgs e)
 		{
 			if (intern)
+			{
 				return;
+			}
+
 			intern = true;
 
 			short val = 0;
 			if (aat != null)
+			{
 				val = Helper.StringToInt16(tbU2Bin.Text, aat.Unknown2, 2);
+			}
 
 			tbU2Float.Text = val.ToString();
 			if (aat != null)
+			{
 				tbU2Float.Text = aat.GetCompressedFloat(val).ToString("N8");
+			}
 
 			tbU2.Text = val.ToString();
 			tbU2Hex.Text = "0x" + Helper.HexString(val);
 
 			intern = false;
 			if (aat == null)
+			{
 				return;
+			}
+
 			aat.Unknown2 = val;
 			if (Changed != null)
+			{
 				Changed(this, new System.EventArgs());
+			}
 		}
 
 		private void llDelete_LinkClicked(
@@ -2043,12 +2212,16 @@ namespace SimPe.Plugin.Anim
 		)
 		{
 			if (aat == null)
+			{
 				return;
+			}
 
 			aat.Parent.Remove(aat);
 			aat = null;
 			if (Deleted != null)
+			{
 				Deleted(this, new System.EventArgs());
+			}
 		}
 
 		private void llAdd_LinkClicked(
@@ -2057,18 +2230,25 @@ namespace SimPe.Plugin.Anim
 		)
 		{
 			if (CreateClicked != null)
+			{
 				CreateClicked(this, new EventArgs());
+			}
 		}
 
 		private void cbParentLock_CheckedChanged(object sender, System.EventArgs e)
 		{
 			if (intern || aat == null)
+			{
 				return;
+			}
+
 			aat.ParentLocked = this.cbParentLock.Checked;
 
 			this.RefreshData();
 			if (Changed != null)
+			{
 				Changed(this, new System.EventArgs());
+			}
 		}
 
 		#region Events

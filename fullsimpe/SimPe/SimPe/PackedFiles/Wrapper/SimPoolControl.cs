@@ -55,7 +55,10 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				if (gp.SelectedItems.Count < 1)
+				{
 					return null;
+				}
+
 				return (SimPe.PackedFiles.Wrapper.ExtSDesc)gp.SelectedItems[0].Tag;
 			}
 			set
@@ -69,7 +72,10 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				if (gp.SelectedItems.Count < 1)
+				{
 					return null;
+				}
+
 				return (SimPe.PackedFiles.Wrapper.ExtSDesc)gp.SelectedItems[0].Tag;
 			}
 			set
@@ -90,11 +96,17 @@ namespace SimPe.PackedFiles.Wrapper
 				if (pkg != value)
 				{
 					if (value == null)
+					{
 						pkg = value;
+					}
 					else if (Helper.IsNeighborhoodFile(value.FileName))
+					{
 						pkg = value;
+					}
 					else
+					{
 						return;
+					}
 
 					UpdateContent();
 				}
@@ -130,7 +142,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 			int index = names.IndexOf(house);
 			if (index < 0)
+			{
 				index = names.IndexOf(chouse);
+			}
+
 			cbhousehold.SelectedIndex = index + 1;
 			this.SelectedSim = selectedSim;
 		}
@@ -229,7 +244,10 @@ namespace SimPe.PackedFiles.Wrapper
 			);
 			OnAddSimToPool(e);
 			if (AddSimToPool != null)
+			{
 				AddSimToPool(this, e);
+			}
+
 			return e;
 		}
 
@@ -248,7 +266,9 @@ namespace SimPe.PackedFiles.Wrapper
 				&& selectedSim != null
 				&& selectedSim.HouseholdName != household
 			)
+			{
 				selectedSim = null;
+			}
 
 			gp.BeginUpdate();
 			gp.Clear();
@@ -266,8 +286,12 @@ namespace SimPe.PackedFiles.Wrapper
 			foreach (SimPe.PackedFiles.Wrapper.ExtSDesc sdsc in ht.Values)
 			{
 				if (household != null)
+				{
 					if (household != sdsc.HouseholdName)
+					{
 						continue;
+					}
+				}
 
 				string name = sdsc.SimName + " " + sdsc.SimFamilyName;
 				System.Drawing.Image simimg = gp.GetSimIcon(
@@ -288,7 +312,10 @@ namespace SimPe.PackedFiles.Wrapper
 					eip.GroupIndex = ret.GroupIndex;
 
 					if (map.ContainsKey(name))
+					{
 						name += " (" + sdsc.FileDescriptor.Instance.ToString() + ")";
+					}
+
 					map[name] = eip;
 					Wait.Message = eip.Text;
 				}
@@ -301,12 +328,18 @@ namespace SimPe.PackedFiles.Wrapper
 			if (gp.Items.Count > 0)
 			{
 				if (selectedSim != null)
+				{
 					SelectedSim = selectedSim;
+				}
 				else
+				{
 					gp.Items[0].Selected = true;
+				}
+
 				try
 				{
 					if (SelectedSimChanged != null)
+					{
 						SelectedSimChanged(
 							this,
 							((SimPe.PackedFiles.Wrapper.ExtSDesc)gp.Items[0].Tag).Image,
@@ -314,6 +347,7 @@ namespace SimPe.PackedFiles.Wrapper
 								(SimPe.PackedFiles.Wrapper.ExtSDesc)gp.Items[0].Tag
 							)
 						);
+					}
 				}
 				catch (Exception ex)
 				{
@@ -350,22 +384,33 @@ namespace SimPe.PackedFiles.Wrapper
 			if (sdesc.Unlinked != 0)
 			{
 				if (!sdesc.AvailableCharacterData)
+				{
 					return System.Drawing.Color.FromArgb(72, 0, 72);
+				}
 				else
+				{
 					return System.Drawing.Color.DarkBlue;
+				}
 			}
 			else if (!sdesc.AvailableCharacterData && !sdesc.IsCharSplit)
+			{
 				return System.Drawing.Color.DarkRed;
+			}
 			else if (
 				System.IO.Path.GetFileNameWithoutExtension(sdesc.CharacterFileName)
 				== "objects"
 			)
+			{
 				return System.Drawing.Color.DarkGoldenrod;
+			}
 			else if (
 				sdesc.CharacterDescription.GhostFlag.IsGhost
 				&& sdesc.FamilyInstance == 0
 			)
+			{
 				return System.Drawing.Color.Black;
+			}
+
 			return System.Drawing.SystemColors.ControlDarkDark;
 		}
 
@@ -382,17 +427,22 @@ namespace SimPe.PackedFiles.Wrapper
 
 				System.Drawing.Image img = sdesc.Image;
 				if (img.Width < 8)
+				{
 					img = null;
+				}
+
 				if (img == null)
 				{
 					img = SimPe.GetImage.NoOne;
 				}
 				else if (Helper.WindowsRegistry.GraphQuality)
+				{
 					img = Ambertation.Drawing.GraphicRoutines.KnockoutImage(
 						img,
 						new System.Drawing.Point(0, 0),
 						System.Drawing.Color.Magenta
 					);
+				}
 
 				eip.Image = Ambertation.Drawing.GraphicRoutines.ScaleImage(
 					img,
@@ -677,7 +727,9 @@ namespace SimPe.PackedFiles.Wrapper
 						);
 					}
 					else
+					{
 						gpe.Selected = false;
+					}
 				}
 			}
 		}
@@ -688,9 +740,13 @@ namespace SimPe.PackedFiles.Wrapper
 		public void UpdateSimList()
 		{
 			if (this.cbhousehold.SelectedIndex > 0)
+			{
 				this.UpdateSimList(this.cbhousehold.Text);
+			}
 			else
+			{
 				this.UpdateSimList(null);
+			}
 		}
 
 		private void cbhousehold_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -720,7 +776,10 @@ namespace SimPe.PackedFiles.Wrapper
 		public void Refresh(bool full)
 		{
 			if (full)
+			{
 				this.UpdateContent();
+			}
+
 			base.Refresh();
 		}
 

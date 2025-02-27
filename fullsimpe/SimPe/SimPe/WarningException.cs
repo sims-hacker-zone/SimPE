@@ -32,7 +32,10 @@ namespace SimPe
 			get
 			{
 				if (details == null)
+				{
 					return "";
+				}
+
 				return details;
 			}
 		}

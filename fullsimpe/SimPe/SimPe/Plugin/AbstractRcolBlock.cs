@@ -71,7 +71,10 @@ namespace SimPe.Plugin
 		{
 			this.parent = (Rcol)parent;
 			if (parent != null)
+			{
 				this.Register(Rcol.Tokens);
+			}
+
 			sgres = null;
 			BlockID = 0;
 			version = 0;
@@ -90,7 +93,9 @@ namespace SimPe.Plugin
 			set
 			{
 				if (parent != null)
+				{
 					parent.Changed = value;
+				}
 			}
 		}
 
@@ -130,8 +135,12 @@ namespace SimPe.Plugin
 
 			//remove all additional Pages
 			for (int i = tc.TabPages.Count - 1; i >= 0; i--)
+			{
 				if (tc.TabPages[i].Tag != null)
+				{
 					tc.TabPages.RemoveAt(i);
+				}
+			}
 
 			if (ResourceTabPage != null)
 			{
@@ -149,7 +158,10 @@ namespace SimPe.Plugin
 		public void AddToTabControl(TabControl tc)
 		{
 			if (parent != null)
+			{
 				parent.ClearTabPageChanged();
+			}
+
 			if (TabPage != null)
 			{
 				TabPage.Tag = null;
@@ -237,8 +249,13 @@ namespace SimPe.Plugin
 		{
 			string name = BlockName;
 			if (listing != null)
+			{
 				if (!listing.ContainsKey(name))
+				{
 					listing.Add(name, this.GetType());
+				}
+			}
+
 			return name;
 		}
 
@@ -266,7 +283,9 @@ namespace SimPe.Plugin
 					return "c" + this.GetType().Name;
 				}
 				else
+				{
 					return blockname;
+				}
 			}
 			set
 			{
@@ -329,10 +348,13 @@ namespace SimPe.Plugin
 			}
 
 			if (rcol == null)
+			{
 				throw new Warning(
 					"No Parent was found in the Search Path!",
 					"Either there is no Scenegraph Resource that is referencing the File, or the package containing that Resource is not in the FileTable (see Extra->Preferences...)"
 				);
+			}
+
 			return rcol;
 		}
 
@@ -362,9 +384,11 @@ namespace SimPe.Plugin
 					Wait.SubStart(items.Length);
 				}
 				else
+				{
 					wm = delegate (string message)
 					{
 					};
+				}
 
 				foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
 				{
@@ -376,12 +400,16 @@ namespace SimPe.Plugin
 						item.Package.SaveFileName.Trim().ToLower()
 						== parent.Package.SaveFileName.Trim().ToLower()
 					)
+					{
 						r.ProcessData(
 							parent.Package.FindFile(item.FileDescriptor),
 							parent.Package
 						);
+					}
 					else
+					{
 						r.ProcessData(item);
+					}
 
 					foreach (
 						Interfaces.Files.IPackedFileDescriptor pfd in r.ReferencedFiles
@@ -409,7 +437,9 @@ namespace SimPe.Plugin
 			finally
 			{
 				if (Wait.Running)
+				{
 					Wait.SubStop();
+				}
 			}
 
 			return null;

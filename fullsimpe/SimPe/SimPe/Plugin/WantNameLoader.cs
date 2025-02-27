@@ -235,7 +235,9 @@ namespace SimPe.Plugin
 			Map[WantType.Sim] = ht;
 
 			if (FileTable.ProviderRegistry == null)
+			{
 				return;
+			}
 
 			foreach (
 				ushort inst in FileTable

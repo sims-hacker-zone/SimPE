@@ -148,9 +148,15 @@ namespace SimPe.PackedFiles.UserInterface
 			lvConstants.SelectedItems[0].SubItems[1].Text =
 				"0x" + SimPe.Helper.HexString(currentItem);
 			if (doHex)
+			{
 				tbValueHex.Text = lvConstants.SelectedItems[0].SubItems[1].Text;
+			}
+
 			if (doDec)
+			{
 				tbValueDec.Text = currentItem.ToString();
+			}
+
 			internalchg = false;
 		}
 
@@ -176,27 +182,40 @@ namespace SimPe.PackedFiles.UserInterface
 			this.lvConstants.Items.Clear();
 			int nItems = wrapper == null ? 0 : wrapper.Count;
 			for (int i = 0; i < nItems; i++)
+			{
 				this.lvConstants.Items.Add(lvItem(i));
+			}
 		}
 
 		private void setIndex(int i)
 		{
 			internalchg = true;
 			if (i >= 0)
+			{
 				this.lvConstants.Items[i].Selected = true;
+			}
 			else if (index >= 0)
+			{
 				this.lvConstants.Items[index].Selected = false;
+			}
+
 			internalchg = false;
 
 			if (this.lvConstants.SelectedItems.Count > 0)
 			{
 				if (this.lvConstants.Focused)
+				{
 					this.lvConstants.SelectedItems[0].Focused = true;
+				}
+
 				this.lvConstants.SelectedItems[0].EnsureVisible();
 			}
 
 			if (index == i)
+			{
 				return;
+			}
+
 			index = i;
 			displayBconItem();
 		}
@@ -241,7 +260,9 @@ namespace SimPe.PackedFiles.UserInterface
 					string s = (string)this.Tag;
 					int i = s.IndexOf(";expName=+");
 					if (i >= 0)
+					{
 						return s.Substring(i + 10).TrimEnd(new char[] { '+' });
+					}
 				}
 				foreach (
 					pjse.FileTable.Entry item in pjse.FileTable.GFT[
@@ -249,13 +270,20 @@ namespace SimPe.PackedFiles.UserInterface
 						wrapper.FileDescriptor
 					]
 				)
+				{
 					if (item.PFD == wrapper.FileDescriptor)
 					{
 						if (item.IsMaxis)
+						{
 							return pjse.Localization.GetString("expCurrent");
+						}
 						else
+						{
 							break;
+						}
 					}
+				}
+
 				return pjse.Localization.GetString("expCustom");
 			}
 		}
@@ -270,15 +298,22 @@ namespace SimPe.PackedFiles.UserInterface
 					wrapper.FileDescriptor
 				];
 				if (items.Length <= 1)
+				{
 					return false;
+				}
 
 				pjse.FileTable.Entry item = items[items.Length - 1]; // currentpkg, other, fixed, maxis
 				if (item.PFD == wrapper.FileDescriptor)
+				{
 					return false;
+				}
+
 				if (
 					!item.IsMaxis /*&& !item.IsFixed*/
 				)
+				{
 					return false; // only supporting objects.package really
+				}
 
 				llIsOverride.Tag = item;
 				return true;
@@ -292,16 +327,25 @@ namespace SimPe.PackedFiles.UserInterface
 		)
 		{
 			if (item == null)
+			{
 				return; // this should never happen
+			}
+
 			Bcon bcon = new Bcon();
 			bcon.ProcessData(item.PFD, item.Package);
 
 			BconForm ui = (BconForm)bcon.UIHandler;
 			string tag = "Popup"; // tells the SetReadOnly function it's in a popup - so everything locked down
 			if (noOverride)
+			{
 				tag += ";noOverride"; //
+			}
+
 			if (exp != null)
+			{
 				tag += ";expName=+" + exp.NameShort + "+";
+			}
+
 			ui.Tag = tag;
 
 			bcon.RefreshUI();
@@ -340,13 +384,19 @@ namespace SimPe.PackedFiles.UserInterface
 		private void doUpdateBCON()
 		{
 			if (!isOverride)
+			{
 				return; // this should never happen
+			}
+
 			pjse.FileTable.Entry item = (pjse.FileTable.Entry)llIsOverride.Tag;
 			Bcon bcon = new Bcon();
 			bcon.ProcessData(item.PFD, item.Package);
 			internalchg = true;
 			while (wrapper.Count < bcon.Count)
+			{
 				wrapper.Add(new BconItem(bcon[wrapper.Count]));
+			}
+
 			internalchg = false;
 			updateLists();
 		}
@@ -442,7 +492,10 @@ namespace SimPe.PackedFiles.UserInterface
 						MessageBoxIcon.Warning
 					);
 					if (dr != DialogResult.OK)
+					{
 						return;
+					}
+
 					wrapper.Package.Remove(trcn.FileDescriptor);
 					trcn = null;
 				}
@@ -456,13 +509,18 @@ namespace SimPe.PackedFiles.UserInterface
 						MessageBoxIcon.Warning
 					);
 					if (dr == DialogResult.Cancel)
+					{
 						return;
+					}
 
 					if (!trcn.Package.Equals(wrapper.Package))
 					{
 						// Clone the original into this package
 						if (dr == DialogResult.Yes)
+						{
 							Wait.MaxProgress = trcn.Count;
+						}
+
 						SimPe.Interfaces.Files.IPackedFileDescriptor npfd =
 							trcn.FileDescriptor.Clone();
 						Trcn ntrcn = new Trcn();
@@ -470,20 +528,27 @@ namespace SimPe.PackedFiles.UserInterface
 						wrapper.Package.Add(npfd, true);
 						ntrcn.ProcessData(npfd, wrapper.Package);
 						if (dr == DialogResult.Yes)
+						{
 							foreach (TrcnItem item in trcn)
 							{
 								ntrcn.Add(item);
 								Wait.Progress++;
 							}
+						}
+
 						trcn = ntrcn;
 						trcn.SynchronizeUserData();
 						Wait.MaxProgress = 0;
 					}
 
 					if (dr == DialogResult.Yes)
+					{
 						minArgc = trcn.Count;
+					}
 					else
+					{
 						trcn.Clear();
+					}
 				}
 				else
 				{
@@ -569,7 +634,9 @@ namespace SimPe.PackedFiles.UserInterface
 		private void WrapperChanged(object sender, System.EventArgs e)
 		{
 			if (isPopup)
+			{
 				wrapper.Changed = false;
+			}
 
 			this.btnCommit.Enabled = wrapper.Changed;
 			if (
@@ -583,7 +650,9 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 
 			if (internalchg)
+			{
 				return;
+			}
 
 			if (sender.Equals(wrapper))
 			{
@@ -597,7 +666,9 @@ namespace SimPe.PackedFiles.UserInterface
 				internalchg = false;
 			}
 			else
+			{
 				updateLists();
+			}
 		}
 		#endregion
 
@@ -896,7 +967,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void lvConstants_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			setIndex(
 				(this.lvConstants.SelectedIndices.Count > 0)
 					? this.lvConstants.SelectedIndices[0]
@@ -925,7 +999,10 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			Trcn trcn = (Trcn)wrapper.SiblingResource(Trcn.Trcntype);
 			if (trcn == null)
+			{
 				return;
+			}
+
 			if (trcn.Package != wrapper.Package)
 			{
 				DialogResult dr = MessageBox.Show(
@@ -934,7 +1011,9 @@ namespace SimPe.PackedFiles.UserInterface
 					MessageBoxButtons.YesNo
 				);
 				if (dr != DialogResult.Yes)
+				{
 					return;
+				}
 			}
 			SimPe.RemoteControl.OpenPackedFile(trcn.FileDescriptor, trcn.Package);
 		}
@@ -985,7 +1064,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void cbFlag_CheckedChanged(object sender, System.EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			internalchg = true;
 			wrapper.Flag = ((CheckBox)sender).Checked;
 			internalchg = false;
@@ -999,7 +1081,9 @@ namespace SimPe.PackedFiles.UserInterface
 		private void tbFilename_TextChanged(object sender, System.EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
 
 			internalchg = true;
 			wrapper.FileName = tbFilename.Text;
@@ -1009,9 +1093,15 @@ namespace SimPe.PackedFiles.UserInterface
 		private void hex16_TextChanged(object sender, System.EventArgs ev)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (!hex16_IsValid(sender))
+			{
 				return;
+			}
+
 			UpdateBconItem_Value(
 				Convert.ToInt16(((TextBox)sender).Text, 16),
 				false,
@@ -1025,7 +1115,10 @@ namespace SimPe.PackedFiles.UserInterface
 		)
 		{
 			if (hex16_IsValid(sender))
+			{
 				return;
+			}
+
 			e.Cancel = true;
 			hex16_Validated(sender, null);
 		}
@@ -1041,9 +1134,15 @@ namespace SimPe.PackedFiles.UserInterface
 		private void dec16_TextChanged(object sender, System.EventArgs ev)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (!dec16_IsValid(sender))
+			{
 				return;
+			}
+
 			UpdateBconItem_Value(
 				Convert.ToInt16(((TextBox)sender).Text, 10),
 				true,
@@ -1057,7 +1156,10 @@ namespace SimPe.PackedFiles.UserInterface
 		)
 		{
 			if (dec16_IsValid(sender))
+			{
 				return;
+			}
+
 			e.Cancel = true;
 			dec16_Validated(sender, null);
 		}
@@ -1073,7 +1175,9 @@ namespace SimPe.PackedFiles.UserInterface
 		private void btnClose_Click(object sender, EventArgs e)
 		{
 			if (this.isPopup)
+			{
 				Close();
+			}
 		}
 	}
 }

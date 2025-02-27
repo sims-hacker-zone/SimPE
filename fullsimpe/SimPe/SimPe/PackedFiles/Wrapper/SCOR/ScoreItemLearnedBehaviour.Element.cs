@@ -55,8 +55,13 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 				string s = "0x" + Helper.HexString(Guid);
 				;
 				foreach (ExtObjd objd in LearnedBahaviourComboBox.BehaviourObjds)
+				{
 					if (objd.Guid == Guid)
+					{
 						s = objd.FileName;
+					}
+				}
+
 				s +=
 					"("
 					+ Helper.HexString(Unknown1)

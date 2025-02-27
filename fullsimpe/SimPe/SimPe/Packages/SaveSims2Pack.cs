@@ -474,7 +474,10 @@ namespace SimPe.Packages
 			this.lblist.SelectionMode = SelectionMode.One;
 
 			if (lblist.Items.Count > 0)
+			{
 				lblist.SelectedIndex = 0;
+			}
+
 			btdelete.Enabled = (lblist.SelectedIndex >= 0);
 
 			this.ShowDialog();
@@ -507,7 +510,9 @@ namespace SimPe.Packages
 			ok = false;
 
 			for (int i = 0; i < files.Length; i++)
+			{
 				lblist.Items.Add(files[i]);
+			}
 
 			this.tbflname.ReadOnly = true;
 			this.tbdesc.ReadOnly = true;
@@ -519,7 +524,10 @@ namespace SimPe.Packages
 			this.lblist.SelectionMode = selmode;
 
 			if (lblist.Items.Count > 0)
+			{
 				lblist.SelectedIndex = 0;
+			}
+
 			btdelete.Enabled = (lblist.SelectedIndex >= 0);
 
 			this.ShowDialog();
@@ -546,11 +554,17 @@ namespace SimPe.Packages
 		private void Select(object sender, System.EventArgs e)
 		{
 			if (lblist.Tag != null)
+			{
 				return;
+			}
+
 			gbsettings.Enabled = false;
 			btdelete.Enabled = false;
 			if (lblist.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			gbsettings.Enabled = true;
 			btdelete.Enabled = true;
 
@@ -576,9 +590,14 @@ namespace SimPe.Packages
 		private void ChangeText(object sender, System.EventArgs e)
 		{
 			if (lblist.Tag != null)
+			{
 				return;
+			}
+
 			if (lblist.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			lblist.Tag = true;
 			try
@@ -626,7 +645,9 @@ namespace SimPe.Packages
 		private void DeletePackage(object sender, System.EventArgs e)
 		{
 			if (lblist.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			lblist.Items.RemoveAt(lblist.SelectedIndex);
 		}

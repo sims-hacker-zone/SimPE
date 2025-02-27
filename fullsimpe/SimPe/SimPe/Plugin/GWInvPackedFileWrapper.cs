@@ -72,11 +72,20 @@ namespace SimPe.Plugin
 					if (guide == 0xaef5633a)
 					{
 						if (versh > 202)
+						{
 							reader.BaseStream.Seek(0xa, System.IO.SeekOrigin.Current); // Seasons ++
+						}
+
 						if (versh > 190 && versh < 203)
+						{
 							reader.BaseStream.Seek(0x8, System.IO.SeekOrigin.Current); // OFB to Pets
+						}
+
 						if (versh < 191)
+						{
 							reader.BaseStream.Seek(0x6, System.IO.SeekOrigin.Current); // Nightlife (Base & Uni don't setup the Inventory)
+						}
+
 						quanty = reader.ReadUInt16();
 						fnd = reader.ReadUInt16();
 						fnde = reader.ReadUInt16();
@@ -85,18 +94,27 @@ namespace SimPe.Plugin
 						{
 							loweps = reader.ReadUInt16();
 							if (quanty > 2)
+							{
 								hieps = reader.ReadUInt16(); // game doesn't set game flags 2
+							}
 						}
 						else
 						{
 							if (quanty > 1)
+							{
 								fnd = reader.ReadUInt16(); // move one more if any hold an extra data
+							}
+
 							if (quanty > 2)
+							{
 								fnd = reader.ReadUInt16(); // check for one more just in case
+							}
 						}
 					}
 					else
+					{
 						reader.BaseStream.Seek(0xE, System.IO.SeekOrigin.Current); // move to the end of an 8 byte token, required for Novels
+					}
 				}
 			}
 		}

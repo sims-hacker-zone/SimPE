@@ -52,7 +52,9 @@ namespace pjse
 		public virtual void OnDecimalDOValueChanged(object sender, EventArgs e)
 		{
 			if (DecimalDOValueChanged != null)
+			{
 				DecimalDOValueChanged(sender, e);
+			}
 		}
 
 		[Category("PJSE")]
@@ -86,7 +88,9 @@ namespace pjse
 		public virtual void OnInstancePickerAsTextChanged(object sender, EventArgs e)
 		{
 			if (InstancePickerAsTextChanged != null)
+			{
 				InstancePickerAsTextChanged(sender, e);
+			}
 		}
 
 		[Category("PJSE")]

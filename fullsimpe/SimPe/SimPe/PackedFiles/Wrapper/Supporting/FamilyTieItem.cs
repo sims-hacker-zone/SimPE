@@ -62,7 +62,10 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 			set
 			{
 				if (siminstance != value)
+				{
 					sdesc = null;
+				}
+
 				siminstance = value;
 			}
 		}
@@ -191,10 +194,17 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		public FamilyTieItem FindTie(SDesc sdsc)
 		{
 			if (sdsc == null)
+			{
 				return null;
+			}
+
 			foreach (FamilyTieItem s in Ties)
+			{
 				if (s.Instance == sdsc.Instance)
+				{
 					return s;
+				}
+			}
 
 			return null;
 		}

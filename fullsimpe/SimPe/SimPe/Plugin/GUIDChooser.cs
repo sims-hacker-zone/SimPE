@@ -140,7 +140,10 @@ namespace SimPe.Plugin
 			set
 			{
 				if (currentValue == value)
+				{
 					return;
+				}
+
 				setValue(value, true, true);
 			}
 		}
@@ -156,25 +159,40 @@ namespace SimPe.Plugin
 			{
 				// "None"
 				if (cb)
+				{
 					cbKnownObjects.SelectedIndex = 0;
+				}
+
 				if (tb)
+				{
 					tbGUID.Text = "0x00000000";
+				}
 			}
 			else if (knownGUIDs != null && knownGUIDs.IndexOf(value) >= 0)
 			{
 				// Known
 				if (cb)
+				{
 					cbKnownObjects.SelectedIndex = 2 + knownGUIDs.IndexOf(value);
+				}
+
 				if (tb)
+				{
 					tbGUID.Text = "0x" + SimPe.Helper.HexString(value);
+				}
 			}
 			else
 			{
 				// Unknown
 				if (cb)
+				{
 					cbKnownObjects.SelectedIndex = (knownGUIDs == null) ? -1 : 1;
+				}
+
 				if (tb)
+				{
 					tbGUID.Text = "0x" + SimPe.Helper.HexString(value);
+				}
 			}
 
 			internalchg = origstate;
@@ -214,18 +232,26 @@ namespace SimPe.Plugin
 		private void cbKnownObjects_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
 
 			if (cbKnownObjects.SelectedIndex == 0) // None
+			{
 				setValue(0, false, true);
+			}
 			else if (cbKnownObjects.SelectedIndex > 1) // not Other
+			{
 				setValue(knownGUIDs[cbKnownObjects.SelectedIndex - 2], false, true);
+			}
 		}
 
 		private void tbGUID_TextChanged(object sender, EventArgs e)
 		{
 			if (internalchg || !hex32_IsValid(sender))
+			{
 				return;
+			}
 
 			setValue(Convert.ToUInt32(((TextBox)sender).Text, 16), true, false);
 		}
@@ -236,7 +262,9 @@ namespace SimPe.Plugin
 		)
 		{
 			if (hex32_IsValid(sender))
+			{
 				return;
+			}
 
 			e.Cancel = true;
 

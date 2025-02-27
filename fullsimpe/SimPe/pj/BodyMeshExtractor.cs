@@ -39,9 +39,14 @@ namespace pj
 			foreach (SimPe.FileTableItem fii in SimPe.FileTable.DefaultFolders)
 			{
 				if (!fii.Use)
+				{
 					continue; // comment this out for errors
+				}
+
 				if (fii.IsFile && fii.Name.ToLowerInvariant().EndsWith(".package"))
+				{
 					packs.Insert(0, fii.Name);
+				}
 				else if (
 					fii.Type.AsExpansions != SimPe.Expansions.Custom
 					&& Directory.Exists(fii.Name)
@@ -53,7 +58,9 @@ namespace pj
 						|| fii.Name.ToLowerInvariant()
 							.EndsWith(SimPe.Helper.PATH_SEP + "sims3d")
 					)
+					{
 						AddPack(fii.Name, fii.IsRecursive);
+					}
 				}
 			}
 		}
@@ -66,6 +73,7 @@ namespace pj
 		private static void AddPack(string folder, bool rec)
 		{
 			foreach (string pkg in Directory.GetFiles(folder, "*.package"))
+			{
 				if (
 					pkg.ToLowerInvariant()
 						.EndsWith(SimPe.Helper.PATH_SEP + "sims03.package")
@@ -76,7 +84,10 @@ namespace pj
 					|| pkg.ToLowerInvariant()
 						.EndsWith(SimPe.Helper.PATH_SEP + "sims06.package")
 				)
+				{
 					packs.Add(pkg);
+				}
+			}
 		}
 
 		private IPackageFile currentPackage;
@@ -103,19 +114,28 @@ namespace pj
 			ofd.ValidateNames = true;
 			DialogResult dr = ofd.ShowDialog();
 			if (DialogResult.OK.Equals(dr))
+			{
 				return ofd.FileName;
+			}
+
 			return null;
 		}
 
 		private bool findAndAdd(String name, uint type, String source)
 		{
 			foreach (string pkg in packs)
+			{
 				if (
 					pkg.ToLowerInvariant()
 						.EndsWith(SimPe.Helper.PATH_SEP + source.ToLowerInvariant())
 				)
+				{
 					if (addFromPkg(name, type, pkg))
+					{
 						return true;
+					}
+				}
+			}
 
 			return false;
 		}
@@ -124,30 +144,46 @@ namespace pj
 		{
 			IPackageFile p = SimPe.Packages.File.LoadFromFile(pkg);
 			if (p == null)
+			{
 				return false;
+			}
 
 			IPackedFileDescriptor[] pfa = p.FindFiles(SimPe.Data.MetaData.NAME_MAP);
 			if (pfa == null || pfa.Length != 1)
+			{
 				return false;
+			}
 
 			SimPe.Plugin.Nmap nmap = new SimPe.Plugin.Nmap(null);
 			nmap.ProcessData(pfa[0], p);
 			pfa = nmap.FindFiles(name + "_");
 			if (pfa == null || pfa.Length != 1)
+			{
 				return false;
+			}
 
 			IPackedFileDescriptor pfd = null;
 			for (int j = 0; j < p.Index.Length && pfd == null; j++)
+			{
 				if (
 					p.Index[j].Type == type
 					&& p.Index[j].Group == pfa[0].Group
 					&& p.Index[j].Instance == pfa[0].Instance
 				)
+				{
 					pfd = p.Index[j];
+				}
+			}
+
 			if (pfd == null)
+			{
 				return false;
+			}
+
 			if (isInPFDList(currentPackage.Index, pfd))
+			{
 				return true;
+			}
 
 			IPackedFileDescriptor npfd = pfd.Clone();
 			npfd.UserData = p.Read(pfd).UncompressedData;
@@ -161,15 +197,23 @@ namespace pj
 		)
 		{
 			foreach (IPackedFileDescriptor i in pfdList)
+			{
 				if (i.Filename.Equals(pfd.Filename))
+				{
 					return true;
+				}
+			}
+
 			return false;
 		}
 
 		private bool linkemall(IPackedFileDescriptor pfd)
 		{
 			if (isInPFDList(currentPackage.Index, pfd))
+			{
 				return true; // should prevent doubling up
+			}
+
 			IPackageFile p = null;
 			IPackedFileDescriptor pfa = null;
 			bool found = false;
@@ -187,7 +231,9 @@ namespace pj
 				}
 			}
 			if (pfa == null)
+			{
 				return found;
+			}
 			// find 'im Shape
 			SimPe.Plugin.GenericRcol grl = new SimPe.Plugin.GenericRcol(null, false);
 			grl.ProcessData(pfa, p);
@@ -202,7 +248,9 @@ namespace pj
 				}
 			}
 			if (!found)
+			{
 				return false;
+			}
 
 			found = false;
 			foreach (string pkg in packs)
@@ -220,7 +268,9 @@ namespace pj
 				}
 			}
 			if (!found)
+			{
 				return false;
+			}
 			// find 'im GMND
 			SimPe.Plugin.GenericRcol grn = new SimPe.Plugin.GenericRcol(null, false);
 			grn.ProcessData(pfa, p);
@@ -230,11 +280,15 @@ namespace pj
 			foreach (SimPe.Plugin.ShapeItem si in shp.Items)
 			{
 				if (si.FileName.ToLower().EndsWith("gmnd"))
+				{
 					gmndee = si.FileName;
+				}
 			}
 
 			if (gmndee == null)
+			{
 				return false;
+			}
 
 			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item =
 				SimPe.FileTable.FileIndex.FindFileByName(
@@ -244,7 +298,10 @@ namespace pj
 					true
 				);
 			if (item == null)
+			{
 				return false;
+			}
+
 			pfa = item.FileDescriptor; // pfa now is GMND
 			p = item.Package;
 			IPackedFileDescriptor npfg = pfa.Clone();
@@ -265,7 +322,9 @@ namespace pj
 				}
 			}
 			if (!found)
+			{
 				return false;
+			}
 
 			found = false;
 			foreach (string pkg in packs)
@@ -297,7 +356,9 @@ namespace pj
 			if (dr.Equals(DialogResult.OK))
 			{
 				if (gmn.MeshName.Length > 0)
+				{
 					al.Add(gmn.MeshName);
+				}
 				else
 				{
 					MessageBox.Show(
@@ -314,11 +375,15 @@ namespace pj
 				#region Get body mesh package file name and open the package
 				String bodyMeshPackage = getFilename();
 				if (bodyMeshPackage == null)
+				{
 					return;
+				}
 
 				IPackageFile p = SimPe.Packages.File.LoadFromFile(bodyMeshPackage);
 				if (p == null)
+				{
 					return;
+				}
 				#endregion
 
 				#region Find the Property Set or XML Mesh Overlay
@@ -370,14 +435,21 @@ namespace pj
 					for (int i = 0; i < pfa.Length + pfb.Length; i++)
 					{
 						if (i < pfa.Length)
+						{
 							cpf.ProcessData(pfa[i], p);
+						}
 						else
+						{
 							cpf.ProcessData(pfb[i - pfa.Length], p);
+						}
 
 						for (int j = 0; j < cpf.Items.Length; j++)
 						{
 							if (cpf.Items[j].Name.ToLower().Equals("name"))
+							{
 								al.Add(cpf.Items[j].StringValue);
+							}
+
 							if (al.Count > 1 && !prompted)
 							{
 								if (
@@ -388,7 +460,10 @@ namespace pj
 										MessageBoxIcon.Warning
 									) != DialogResult.Yes
 								)
+								{
 									return;
+								}
+
 								prompted = true;
 							}
 						}
@@ -407,7 +482,9 @@ namespace pj
 				}
 			}
 			else
+			{
 				return;
+			}
 
 			#endregion
 
@@ -418,9 +495,14 @@ namespace pj
 				String[] ma = m.Split(new char[] { '_' });
 				String mesh = ma[ma[0].Equals("CASIE") ? 1 : 0];
 				if (mesh.ToLower().StartsWith("ym"))
+				{
 					mesh = "am" + mesh.Substring(2);
+				}
+
 				if (mesh.ToLower().StartsWith("yf"))
+				{
 					mesh = "af" + mesh.Substring(2);
+				}
 
 				bool success = true;
 				SimPe.RemoteControl.ApplicationForm.Cursor = Cursors.WaitCursor;
@@ -438,12 +520,14 @@ namespace pj
 					&& findAndAdd(mesh, SimPe.Data.MetaData.CRES, "Sims06.package");
 				SimPe.RemoteControl.ApplicationForm.Cursor = Cursors.Default;
 				if (!success)
+				{
 					MessageBox.Show(
 						L.Get("notAllPartsFound") + m,
 						L.Get("pjSME"),
 						MessageBoxButtons.OK,
 						MessageBoxIcon.Warning
 					);
+				}
 			}
 			#endregion
 		}

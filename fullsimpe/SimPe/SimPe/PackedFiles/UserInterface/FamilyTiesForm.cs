@@ -408,7 +408,9 @@ namespace SimPe.PackedFiles.UserInterface
 		)
 		{
 			if (cbLock.Checked)
+			{
 				return;
+			}
 
 			thumb = null;
 			lastsdsc = null;
@@ -425,12 +427,15 @@ namespace SimPe.PackedFiles.UserInterface
 			this.miAddTie.Image = thumb;
 			//this.miOpenSdesc.Image = thumb;
 			if (thumb != null)
+			{
 				miAddTie.Image = Ambertation.Drawing.GraphicRoutines.ScaleImage(
 					thumb,
 					32,
 					32,
 					true
 				);
+			}
+
 			if (lastsdsc != null && currentsdsc != null)
 			{
 				string name = SimPe.Localization.GetString("AddFamilyTieCaption");
@@ -447,8 +452,12 @@ namespace SimPe.PackedFiles.UserInterface
 				SimPe.PackedFiles.Wrapper.Supporting.FamilyTieSim fts =
 					wrapper.FindTies(currentsdsc);
 				if (fts != null)
+				{
 					if (fts.FindTie(lastsdsc) != null)
+					{
 						miAddTie.Enabled = false;
+					}
+				}
 			}
 
 			if (lastsdsc != null)
@@ -558,7 +567,9 @@ namespace SimPe.PackedFiles.UserInterface
 				Ambertation.Windows.Forms.Graph.LinkGraphic lg =
 					ties.MainSimElement.GetChildLink(ip);
 				if (lg != null)
+				{
 					lg.Text = cbrel.Text;
+				}
 
 				if (this.cbkeep.Checked)
 				{
@@ -604,10 +615,12 @@ namespace SimPe.PackedFiles.UserInterface
 		private void Activate_miOpenSDesc(object sender, System.EventArgs e)
 		{
 			if (lastsdsc != null)
+			{
 				SimPe.RemoteControl.OpenPackedFile(
 					lastsdsc.FileDescriptor,
 					lastsdsc.Package
 				);
+			}
 		}
 	}
 }

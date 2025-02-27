@@ -39,7 +39,10 @@ namespace SimPe
 		{
 			ToolStripMenuItem mi = new ToolStripMenuItem(c.Text);
 			if (first)
+			{
 				miWindow.DropDownItems.Add("-");
+			}
+
 			mi.Image = c.TabImage;
 
 			mi.Click += new EventHandler(Activate_miWindowDocks);
@@ -47,11 +50,15 @@ namespace SimPe
 			mi.Checked = c.IsOpen;
 
 			if (c.Tag != null)
+			{
 				if (c.Tag is System.Windows.Forms.Shortcut)
+				{
 					LoadFileWrappersExt.SetShurtcutKey(
 						mi,
 						(System.Windows.Forms.Shortcut)c.Tag
 					);
+				}
+			}
 
 			/*c.VisibleChanged += new EventHandler(CloseDockControl);
 			c.Closed += new EventHandler(CloseDockControl);*/
@@ -73,7 +80,10 @@ namespace SimPe
 			foreach (Ambertation.Windows.Forms.DockPanel c in ctrls)
 			{
 				if (c.Tag != null)
+				{
 					continue;
+				}
+
 				System.Diagnostics.Debug.WriteLine("##1# " + c.ButtonText);
 				AddDockItem(c, first);
 				first = false;
@@ -83,9 +93,15 @@ namespace SimPe
 			foreach (Ambertation.Windows.Forms.DockPanel c in ctrls)
 			{
 				if (c.Tag == null)
+				{
 					continue;
+				}
+
 				if (c.Tag is ToolStripMenuItem)
+				{
 					continue;
+				}
+
 				System.Diagnostics.Debug.WriteLine("##2# " + c.ButtonText);
 				AddDockItem(c, first);
 				first = false;
@@ -101,7 +117,10 @@ namespace SimPe
 			{
 				ToolStripMenuItem mi = o as ToolStripMenuItem;
 				if (mi == null)
+				{
 					continue;
+				}
+
 				if (mi.Tag is Ambertation.Windows.Forms.DockPanel)
 				{
 					Ambertation.Windows.Forms.DockPanel c =

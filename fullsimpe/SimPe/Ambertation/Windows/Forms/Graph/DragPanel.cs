@@ -120,18 +120,29 @@ namespace Ambertation.Windows.Forms.Graph
 		internal bool OnMouseDown(MouseEventArgs e)
 		{
 			if (!this.BoundingRectangle.Contains(e.X, e.Y))
+			{
 				return false;
+			}
+
 			if (e.Clicks == 1 && this.Click != null)
+			{
 				Click(this, new System.EventArgs());
+			}
 			else if (e.Clicks == 2 && this.DoubleClick != null)
 			{
 				DoubleClick(this, new System.EventArgs());
 				return true;
 			}
 			else if (MouseDown != null)
+			{
 				MouseDown(this, FixMouseEventArgs(e));
+			}
+
 			if (!lk)
+			{
 				return true;
+			}
+
 			e = FixMouseEventArgs(e);
 
 			if (e.Button == MouseButtons.Left)
@@ -146,9 +157,15 @@ namespace Ambertation.Windows.Forms.Graph
 		internal bool OnMouseUp(MouseEventArgs e)
 		{
 			if (!this.BoundingRectangle.Contains(e.X, e.Y) && !Down)
+			{
 				return false;
+			}
+
 			if (MouseUp != null)
+			{
 				MouseUp(this, FixMouseEventArgs(e));
+			}
+
 			e = FixMouseEventArgs(e);
 			Down = false;
 
@@ -158,14 +175,25 @@ namespace Ambertation.Windows.Forms.Graph
 		internal bool OnMouseMove(MouseEventArgs e)
 		{
 			if (!this.BoundingRectangle.Contains(e.X, e.Y) && !Down)
+			{
 				return false;
+			}
 
 			if (MouseMove != null)
+			{
 				MouseMove(this, FixMouseEventArgs(e));
+			}
+
 			if (!lk)
+			{
 				return true;
+			}
+
 			if (!Down)
+			{
 				return true;
+			}
+
 			e = FixMouseEventArgs(e);
 
 			Point delta = new Point(Left + e.X - lastpos.X, Top + e.Y - lastpos.Y);
@@ -202,9 +230,13 @@ namespace Ambertation.Windows.Forms.Graph
 			{
 				this.Focused = val;
 				if (Focused)
+				{
 					this.OnGotFocus(new System.EventArgs());
+				}
 				else
+				{
 					this.OnLostFocus(new System.EventArgs());
+				}
 			}
 		}
 
@@ -212,7 +244,9 @@ namespace Ambertation.Windows.Forms.Graph
 		{
 			base.ChangedParent();
 			if (Parent != null)
+			{
 				this.Movable = !Parent.LockItems;
+			}
 		}
 	}
 }

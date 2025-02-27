@@ -88,7 +88,9 @@ namespace SimPe.Plugin
 			//
 			InitializeComponent();
 			foreach (Interfaces.IAlias alias in SimPe.Helper.TGILoader.FileTypes)
+			{
 				cbtypes.Items.Add(alias);
+			}
 		}
 
 		/// <summary>
@@ -1018,17 +1020,28 @@ namespace SimPe.Plugin
 			childtc.TabPages.Clear();
 
 			if (rb == null)
+			{
 				return;
+			}
+
 			if (rb.TabPage != null)
+			{
 				rb.AddToTabControl(childtc);
+			}
 		}
 
 		private void SelectRcolItem(object sender, System.EventArgs e)
 		{
 			if (cbitem.Tag != null)
+			{
 				return;
+			}
+
 			if (cbitem.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				cbitem.Tag = true;
@@ -1040,9 +1053,13 @@ namespace SimPe.Plugin
 				llfix.Enabled = tbflname.Enabled;
 
 				if (rb.NameResource != null)
+				{
 					tbflname.Text = rb.NameResource.FileName;
+				}
 				else
+				{
 					tbflname.Text = "";
+				}
 
 				BuildChildTabControl(rb);
 			}
@@ -1059,9 +1076,15 @@ namespace SimPe.Plugin
 		private void ChangeFileName(object sender, System.EventArgs e)
 		{
 			if (cbitem.Tag != null)
+			{
 				return;
+			}
+
 			if (cbitem.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				cbitem.Tag = true;
@@ -1107,11 +1130,13 @@ namespace SimPe.Plugin
 		{
 			string fl = Hashes.StripHashFromName(this.tbflname.Text);
 			if (wrapper != null)
+			{
 				if (wrapper.FileDescriptor != null)
 				{
 					wrapper.FileDescriptor.Instance = Hashes.InstanceHash(fl);
 					wrapper.FileDescriptor.SubType = Hashes.SubTypeHash(fl);
 				}
+			}
 		}
 
 		private void Commit(object sender, System.EventArgs e)
@@ -1133,7 +1158,10 @@ namespace SimPe.Plugin
 		private void SelectType(object sender, System.EventArgs e)
 		{
 			if (cbtypes.Tag != null)
+			{
 				return;
+			}
+
 			tbtype.Text =
 				"0x"
 				+ Helper.HexString(
@@ -1144,9 +1172,15 @@ namespace SimPe.Plugin
 		protected void Change()
 		{
 			if (lbref.Tag != null)
+			{
 				return;
+			}
+
 			if (lbref.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				lbref.Tag = true;
@@ -1199,9 +1233,15 @@ namespace SimPe.Plugin
 		private void SelectReference(object sender, System.EventArgs e)
 		{
 			if (lbref.Tag != null)
+			{
 				return;
+			}
+
 			if (lbref.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				lbref.Tag = true;
@@ -1261,7 +1301,10 @@ namespace SimPe.Plugin
 		)
 		{
 			if (lbref.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				Interfaces.Files.IPackedFileDescriptor pfd =
@@ -1295,9 +1338,13 @@ namespace SimPe.Plugin
 		)
 		{
 			if (e.KeyState == 0)
+			{
 				e.Action = DragAction.Drop;
+			}
 			else
+			{
 				e.Action = DragAction.Continue;
+			}
 		}
 
 		private void PackageItemDragEnter(object sender, DragEventArgs e)
@@ -1348,10 +1395,14 @@ namespace SimPe.Plugin
 			this.tbflname.Text = "";
 			this.childtc.TabPages.Clear();
 			foreach (SimPe.CountedListItem o in this.lbblocks.Items)
+			{
 				cbitem.Items.Add(o);
+			}
 
 			if (cbitem.Items.Count > 0)
+			{
 				cbitem.SelectedIndex = 0;
+			}
 		}
 
 		private void tabControl1_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -1361,7 +1412,9 @@ namespace SimPe.Plugin
 			{
 				this.lbblocks.Items.Clear();
 				foreach (IRcolBlock irb in wrapper.Blocks)
+				{
 					SimPe.CountedListItem.AddHex(lbblocks, irb);
+				}
 
 				this.cbblocks.Items.Clear();
 				foreach (string s in Rcol.Tokens.Keys)
@@ -1378,14 +1431,19 @@ namespace SimPe.Plugin
 					}
 				} //foreach
 				if (cbblocks.Items.Count > 0)
+				{
 					cbblocks.SelectedIndex = 0;
+				}
 			}
 		}
 
 		private void btup_Click(object sender, System.EventArgs e)
 		{
 			if (lbblocks.SelectedIndex < 1)
+			{
 				return;
+			}
+
 			try
 			{
 				object o = lbblocks.Items[lbblocks.SelectedIndex - 1];
@@ -1416,9 +1474,15 @@ namespace SimPe.Plugin
 		private void btdown_Click(object sender, System.EventArgs e)
 		{
 			if (lbblocks.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			if (lbblocks.SelectedIndex > lbblocks.Items.Count - 2)
+			{
 				return;
+			}
+
 			try
 			{
 				object o = lbblocks.Items[lbblocks.SelectedIndex + 1];
@@ -1454,7 +1518,10 @@ namespace SimPe.Plugin
 					(IRcolBlock)cbblocks.Items[cbblocks.SelectedIndex]
 				).Create();
 				if (irb is AbstractRcolBlock)
+				{
 					((AbstractRcolBlock)irb).Parent = wrapper;
+				}
+
 				SimPe.CountedListItem.AddHex(this.lbblocks, irb);
 				wrapper.Blocks = (IRcolBlock[])
 					Helper.Add(wrapper.Blocks, irb, typeof(IRcolBlock));
@@ -1470,14 +1537,20 @@ namespace SimPe.Plugin
 		{
 			btup.Enabled = btdown.Enabled = btdel.Enabled = false;
 			if (lbblocks.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			btup.Enabled = btdown.Enabled = btdel.Enabled = true;
 		}
 
 		private void btdel_Click(object sender, System.EventArgs e)
 		{
 			if (lbblocks.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				SimPe.CountedListItem cli = (SimPe.CountedListItem)
@@ -1595,7 +1668,10 @@ namespace SimPe.Plugin
 		internal void ClearControlTags()
 		{
 			if (this.Controls == null)
+			{
 				return;
+			}
+
 			ClearControlTags(this);
 		}
 	}

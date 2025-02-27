@@ -49,7 +49,9 @@ namespace SimPe.Plugin.Tool.Action
 		public void ExecuteEventHandler(object sender, SimPe.Events.ResourceEventArgs e)
 		{
 			if (!ChangeEnabledStateEventHandler(null, e))
+			{
 				return;
+			}
 
 			SimPe.FileTable.FileIndex.Load();
 

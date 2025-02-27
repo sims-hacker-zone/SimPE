@@ -55,7 +55,9 @@ namespace SimPe.PackedFiles.UserInterface
 			InitializeComponent();
 
 			if (Helper.WindowsRegistry.UseBigIcons)
+			{
 				this.lbsims.Font = new System.Drawing.Font("Tahoma", 12);
+			}
 		}
 
 		/// <summary>

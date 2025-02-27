@@ -76,6 +76,7 @@ namespace SimPe.Windows.Forms
 							finally
 							{
 								if (bakpfd != null || bakpkg != null)
+								{
 									if (wrp is SimPe.Interfaces.Plugin.AbstractWrapper)
 									{
 										SimPe.Interfaces.Plugin.AbstractWrapper awrp =
@@ -86,12 +87,15 @@ namespace SimPe.Windows.Forms
 											awrp.Package = bakpkg;
 										}
 									}
+								}
 							}
 						} //lock
 					}
 				}
 				if (realname == null)
+				{
 					realname = Descriptor.ToResListString();
+				}
 			}
 
 			return realname;

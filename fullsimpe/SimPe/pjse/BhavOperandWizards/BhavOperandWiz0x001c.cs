@@ -194,9 +194,13 @@ namespace pjse.BhavOperandWizards.Wiz0x001c
 
 			this.cbScope.SelectedIndex = 0; // Private
 			if (options[0])
+			{
 				this.cbScope.SelectedIndex = 2; // Global
+			}
 			else if (options[1])
+			{
 				this.cbScope.SelectedIndex = 1; // SemiGlobal
+			}
 
 			this.tfSemiGlobal.Checked = !options[3];
 			this.tfGlobal.Checked = !options[2];
@@ -254,7 +258,9 @@ namespace pjse.BhavOperandWizards.Wiz0x001c
 				ops1[0x04] = (byte)(doidTree.Value & 0xff);
 
 				if (this.cbRTBNType.SelectedIndex >= 0)
+				{
 					ops1[0x05] = (byte)this.cbRTBNType.SelectedIndex;
+				}
 
 				byte[] lohi = { 0, 0 };
 				ops1[0x06] = ldocArg1.DataOwner;
@@ -568,7 +574,10 @@ namespace pjse.BhavOperandWizards.Wiz0x001c
 		private void cbScope_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			this.lbTreeName.Text = ((BhavWiz)inst).readStr(
 				this.Scope,
 				GS.GlobalStr.NamedTree,
@@ -594,7 +603,9 @@ namespace pjse.BhavOperandWizards
 		public override void Dispose()
 		{
 			if (myForm != null)
+			{
 				myForm = null;
+			}
 		}
 		#endregion
 	}

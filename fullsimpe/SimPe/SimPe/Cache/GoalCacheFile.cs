@@ -72,7 +72,10 @@ namespace SimPe.Cache
 			get
 			{
 				if (map == null)
+				{
 					LoadGoals();
+				}
+
 				return map;
 			}
 		}

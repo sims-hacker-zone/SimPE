@@ -135,25 +135,37 @@ namespace SimPe.Plugin
 			Type = (WantType)reader.ReadByte();
 
 			if (Type == WantType.Skill)
+			{
 				Value = reader.ReadUInt16();
+			}
 			else if (Type == WantType.Sim)
 			{
 				if (Version >= 8)
+				{
 					Value = reader.ReadUInt16();
+				}
 				else
+				{
 					Value = 0;
+				}
 			}
 			else if ((byte)Type > 1)
+			{
 				Value = reader.ReadUInt32();
+			}
 			else
+			{
 				Value = 0;
+			}
 
 			Property = reader.ReadUInt16();
 			Index = reader.ReadUInt32();
 			Score = reader.ReadInt32();
 
 			if (Version >= 9)
+			{
 				Influence = reader.ReadInt32();
+			}
 
 			Flag = new WantFlags(reader.ReadByte());
 		}
@@ -174,25 +186,37 @@ namespace SimPe.Plugin
 			writer.Write((byte)Type);
 
 			if (Type == WantType.Skill)
+			{
 				writer.Write((ushort)Value);
+			}
 			else if (Type == WantType.Sim)
 			{
 				if (Version >= 8)
+				{
 					writer.Write((ushort)Value);
+				}
 				else
+				{
 					Value = 0;
+				}
 			}
 			else if ((byte)Type > 1)
+			{
 				writer.Write((uint)Value);
+			}
 			else
+			{
 				Value = 0;
+			}
 
 			writer.Write(Property);
 			writer.Write(Index);
 			writer.Write(Score);
 
 			if (Version >= 9)
+			{
 				writer.Write(Influence);
+			}
 
 			writer.Write((byte)Flag.Value);
 		}
@@ -207,29 +231,42 @@ namespace SimPe.Plugin
 			if (this.Type == WantType.Career)
 			{
 				if (c != null)
+				{
 					n = n.Replace("$JobTitle", c);
+				}
+
 				if (c != null)
+				{
 					n = n.Replace("$CareerTrack", c);
+				}
 			}
 			else if (this.Type == WantType.Skill)
 			{
 				if (c != null)
+				{
 					n = n.Replace("$Skill", c);
+				}
 			}
 			else if (this.Type == WantType.Category)
 			{
 				if (c != null)
+				{
 					n = n.Replace("$ObjectType", c);
+				}
 			}
 			else if (this.Type == WantType.Object)
 			{
 				if (c != null)
+				{
 					n = n.Replace("$Object", c);
+				}
 			}
 			else if (this.Type == WantType.Sim)
 			{
 				if (c != null)
+				{
 					n = n.Replace("$Neighbor", c);
+				}
 			}
 
 			return n;

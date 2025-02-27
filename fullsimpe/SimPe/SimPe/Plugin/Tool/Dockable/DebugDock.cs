@@ -239,13 +239,18 @@ namespace SimPe.Plugin.Tool.Dockable
 
 				bool copy = false;
 				if ((items.Length - 1) < 4)
+				{
 					ct[(items.Length - 1)]++;
+				}
+
 				foreach (
 					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
 				)
 				{
 					if (item.Package.FileName.Trim().ToLower() != objname)
+					{
 						copy = true;
+					}
 				}
 
 				if (!copy)

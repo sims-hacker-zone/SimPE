@@ -380,7 +380,10 @@ namespace pjse
 		public static implicit operator BhavWiz(Instruction i)
 		{
 			if (i.OpCode < 0x0100)
+			{
 				return (BhavWizPrim)i;
+			}
+
 			return (BhavWizBhav)i;
 		}
 
@@ -481,7 +484,9 @@ namespace pjse
 			string temp = "";
 
 			if (doidGStr[doid] != null)
+			{
 				s += " (" + readStr((GS.BhavStr)doidGStr[doid], instance) + ")";
+			}
 
 			switch (doid)
 			{
@@ -501,7 +506,10 @@ namespace pjse
 						false
 					);
 					if (temp != null && temp.Length > 0)
+					{
 						s += " (" + temp + ")";
+					}
+
 					break;
 				case 0x02:
 				case 0x05:
@@ -519,7 +527,10 @@ namespace pjse
 						false
 					);
 					if (temp != null && temp.Length > 0)
+					{
 						s += " (" + temp + ")";
+					}
+
 					break;
 				case 0x09:
 				case 0x19:
@@ -536,7 +547,10 @@ namespace pjse
 								pjse.Detail.Errors
 							);
 					if (temp.Length > 0)
+					{
 						s += " (" + temp + ")";
+					}
+
 					break;
 				case 0x0b:
 				case 0x11:
@@ -567,7 +581,10 @@ namespace pjse
 						+ SimPe.Helper.HexString((byte)bcon[1]);
 					temp = readBcon((uint)bcon[0], bcon[1], false);
 					if (temp.Length > 0)
+					{
 						s += " (" + temp + ")";
+					}
+
 					break;
 				case 0x29:
 				case 0x2a:
@@ -589,7 +606,10 @@ namespace pjse
 						+ "]";
 					temp = readBcon((uint)bcon[0], bcon[1], true);
 					if (temp.Length > 0)
+					{
 						s += " (" + temp + ")";
+					}
+
 					break;
 			}
 
@@ -604,7 +624,9 @@ namespace pjse
 		protected string dataOwner(bool lng, byte doid, ushort instance)
 		{
 			if (lng)
+			{
 				return dataOwner(doid, instance);
+			}
 
 			ushort[] bcon;
 			switch (doid)
@@ -626,7 +648,10 @@ namespace pjse
 						+ readStr((GS.BhavStr)doidGStr[doid], instance);
 				case 0x04:
 					if (instance == 0x0b)
+					{
 						return DoidName(0x0a);
+					}
+
 					return DoidName(doid)
 						+ " "
 						+ readStr((GS.BhavStr)doidGStr[doid], instance);
@@ -802,34 +827,45 @@ namespace pjse
 				if (detail != Detail.Errors)
 				{
 					if (str.Group == (uint)Group.Parsing)
+					{
 						try
 						{
 							if (
 								((GS.BhavStr)str.Instance).ToString()
 								!= str.Instance.ToString()
 							)
+							{
 								pfname += (GS.BhavStr)str.Instance;
+							}
 							else
+							{
 								pfname +=
 									"["
 									+ pjse.Localization.GetString("unk")
 									+ ": 0x"
 									+ SimPe.Helper.HexString(str.Instance)
 									+ "]";
+							}
 						}
 						catch { }
+					}
 					else
+					{
 						try
 						{
 							if (
 								((GS.GlobalStr)str.Instance).ToString()
 								!= str.Instance.ToString()
 							)
+							{
 								pfname += (GS.GlobalStr)str.Instance;
+							}
 						}
 						catch { }
+					}
 				}
 				if (pfname.Length == 0 && detail != Detail.Normal)
+				{
 					pfname +=
 						"STR# 0x"
 						+ (
@@ -837,8 +873,13 @@ namespace pjse
 								? SimPe.Helper.HexString(str.Instance)
 								: SimPe.Helper.HexString((ushort)str.Instance)
 						);
+				}
+
 				if (pfname.Length != 0)
+				{
 					pfname += ":";
+				}
+
 				pfname +=
 					"0x"
 					+ (
@@ -847,8 +888,10 @@ namespace pjse
 							: SimPe.Helper.HexString((byte)sid)
 					);
 				if (detail == Detail.Full || detail == Detail.Normal)
+				{
 					pfname +=
 						" (" + pjse.Localization.GetString(str.Scope.ToString()) + ")";
+				}
 			}
 
 			if (str != null)
@@ -868,17 +911,24 @@ namespace pjse
 					{
 						s += "[";
 						for (int i = 0; i < fsi.fallback.Count; i++)
+						{
 							s += (i == 0 ? "" : "; ") + fsi.fallback[i];
+						}
+
 						s += "] ";
 					}
 					if (fsi.strItem != null)
 					{
 						if (showLngFB && (s.Length == 0) && fsi.lidFallback)
+						{
 							s +=
 								"["
 								+ pjse.Localization.GetString("Fallback")
 								+ ": LID=1] ";
+						}
+
 						if (addQuotes)
+						{
 							return s
 								+ "\""
 								+ myLeft(fsi.strItem.Title.Trim(), maxlen)
@@ -888,7 +938,9 @@ namespace pjse
 										? " [" + pfname + "]"
 										: ""
 								);
+						}
 						else
+						{
 							return s
 								+ myLeft(fsi.strItem.Title.Trim(), maxlen)
 								+ (
@@ -896,13 +948,19 @@ namespace pjse
 										? " [" + pfname + "]"
 										: ""
 								);
+						}
 					}
 					else
+					{
 						return (detail == Detail.ValueOnly) ? null : s + pfname;
+					}
 				}
 			}
 			if (detail == Detail.ValueOnly)
+			{
 				return null;
+			}
+
 			return "[" + pjse.Localization.GetString("unk") + ": " + pfname + "]";
 		}
 
@@ -933,7 +991,10 @@ namespace pjse
 		public static List<String> readStr(GS.BhavStr instance)
 		{
 			if (GString == null)
+			{
 				return new List<String>();
+			}
+
 			if (!GString.ContainsKey(instance))
 			{
 				List<String> list = new List<String>();
@@ -944,7 +1005,10 @@ namespace pjse
 					(s = readStr(str, i, -1, Detail.ValueOnly, false, false)) != null;
 					i++
 				)
+				{
 					list.Add(s);
+				}
+
 				GString.Add(instance, list);
 			}
 			return GString[instance];
@@ -957,26 +1021,33 @@ namespace pjse
 				|| instruction.Parent == null
 				|| instruction.Parent.FileDescriptor == null
 			)
+			{
 				throw new InvalidOperationException(
 					"Can't read STR# for instruction with no parent"
 				);
+			}
 
 			if (
 				instruction.Parent.Context == Scope.Global && s != Scope.Global
 				|| instruction.Parent.Context == Scope.SemiGlobal && s == Scope.Private
 			)
+			{
 				return null;
+			}
 
 			List<String> al = new List<String>();
 			Str str = new Str(s, instruction.Parent, (uint)instance);
 			int n = (str == null) ? 0 : str[(byte)1].Count;
 			String st;
 			for (ushort i = 0; i < n; i++)
+			{
 				al.Add(
 					(st = readStr(str, i, -1, Detail.ValueOnly, false, false)) == null
 						? ""
 						: st
 				);
+			}
+
 			return al;
 		}
 
@@ -1002,7 +1073,9 @@ namespace pjse
 					Detail.ValueOnly
 				);
 				if (temp != null && temp.Length > 0)
+				{
 					s += " (" + temp + ")";
+				}
 			}
 			return s;
 		}
@@ -1029,7 +1102,10 @@ namespace pjse
 		public static string flagname(byte flagOwner, ushort flagType, ushort flagValue)
 		{
 			if (flagValue == 0)
+			{
 				return "[0: " + pjse.Localization.GetString("invalid") + "]";
+			}
+
 			Hashtable flagTypes = (Hashtable)flagOwners[flagOwner];
 			return (flagTypes == null || flagTypes[flagType] == null)
 				? null
@@ -1151,9 +1227,13 @@ namespace pjse
 			string s = "0x" + SimPe.Helper.HexString((ushort)instance) + ": ";
 
 			if (instance == 0)
+			{
 				return "---";
+			}
 			else if (instance < 0x0100)
+			{
 				return s + readStr(pjse.GS.BhavStr.Primitives, (ushort)instance);
+			}
 
 			pjse.FileTable.Entry ftEntry = parent.ResourceByInstance(
 				SimPe.Data.MetaData.BHAV_FILE,
@@ -1211,9 +1291,11 @@ namespace pjse
 				|| instruction.Parent == null
 				|| instruction.Parent.FileDescriptor == null
 			)
+			{
 				throw new InvalidOperationException(
 					"Can't read TPRP for instruction with no parent"
 				);
+			}
 
 			uint group = instruction.Parent.FileDescriptor.Group;
 			uint instance = instruction.Parent.FileDescriptor.Instance;
@@ -1224,25 +1306,35 @@ namespace pjse
 			];
 
 			if (items == null || items.Length == 0)
+			{
 				return null;
+			}
 
 			List<String> TPRPnames = new List<String>();
 
 			TPRP tprp = new TPRP();
 			tprp.ProcessData(items[0].PFD, items[0].Package);
 			foreach (TPRPItem i in tprp)
+			{
 				if ((local && i is TPRPLocalLabel) || (!local && i is TPRPParamLabel))
+				{
 					TPRPnames.Add(i.Label);
+				}
+			}
+
 			int limit = local
 				? instruction.Parent.Header.LocalVarCount
 				: instruction.Parent.Header.ArgumentCount;
 			while (TPRPnames.Count < limit)
+			{
 				TPRPnames.Add(
 					"("
 						+ (local ? dnLocal() : dnParam())
 						+ TPRPnames.Count.ToString()
 						+ ")"
 				);
+			}
+
 			return TPRPnames;
 		}
 		#endregion
@@ -1282,7 +1374,9 @@ namespace pjse
 				group
 			];
 			if (items == null || items.Length == 0)
+			{
 				return null;
+			}
 
 			Glob glob = new Glob();
 			glob.ProcessData(items[0].PFD, items[0].Package);
@@ -1296,11 +1390,14 @@ namespace pjse
 			if (objName != null && objName.Length > 0)
 			{
 				if (lng)
+				{
 					return "GUID 0x"
 						+ SimPe.Helper.HexString(guid)
 						+ " (\""
 						+ objName
 						+ "\")";
+				}
+
 				return "\"" + myLeft(objName, 60) + "\"";
 			}
 			return (lng ? "GUID " : "") + "0x" + SimPe.Helper.HexString(guid);
@@ -1329,21 +1426,29 @@ namespace pjse
 				|| instruction.Parent == null
 				|| instruction.Parent.FileDescriptor == null
 			)
+			{
 				throw new InvalidOperationException(
 					"Can't read BCON for instruction with no parent"
 				);
+			}
 
 			Scope s = Scope.Private;
 			if (instance < 0x1000)
+			{
 				s = Scope.Global;
+			}
 			else if (instance >= 0x2000)
+			{
 				s = Scope.SemiGlobal;
+			}
 
 			if (
 				instruction.Parent.Context == Scope.Global && s != Scope.Global
 				|| instruction.Parent.Context == Scope.SemiGlobal && s == Scope.Private
 			)
+			{
 				return "";
+			}
 
 			pjse.FileTable.Entry[] items = pjse.FileTable.GFT[
 				0x42434F4E,
@@ -1352,13 +1457,17 @@ namespace pjse
 			];
 
 			if (items == null || items.Length == 0)
+			{
 				return "[" + pjse.Localization.GetString("notfound") + "]";
+			}
 
 			SimPe.PackedFiles.Wrapper.Bcon bcon = new SimPe.PackedFiles.Wrapper.Bcon();
 			bcon.ProcessData(items[0].PFD, items[0].Package);
 
 			if (temp)
+			{
 				return ""; //"Filename: " + bcon.FileName;
+			}
 
 			Trcn trcn = (Trcn)bcon.SiblingResource(Trcn.Trcntype);
 			string label = (
@@ -1367,7 +1476,9 @@ namespace pjse
 			label = label.Length > 0 ? "\"" + label + "\" " : "";
 
 			if (bid >= bcon.Count)
+			{
 				return label + "[" + pjse.Localization.GetString("notset") + "]";
+			}
 
 			return label
 				+ pjse.Localization.GetString("Value")
@@ -1390,9 +1501,13 @@ namespace pjse
 
 			int b;
 			if (!temp)
+			{
 				b = ((instance >> 9) & 0x0040) | ((instance >> 7) & 0x003f); // b..bbbbb b.......
+			}
 			else
+			{
 				b = ((instance >> 5) & 0x0400) | ((instance >> 3) & 0x03ff); // b..bbbbb bbbbb...
+			}
 
 			int a = (instance >> 13) & 0x03; // .aa..... ........
 			switch (a)
@@ -1452,9 +1567,13 @@ namespace pjse
 			output |= (a << 13); // .aa..... ........
 
 			if (!temp)
+			{
 				output |= (b & 0x003f) << 7; // ...bbbbb b.......
+			}
 			else
+			{
 				output |= (b & 0x03ff) << 3; // ...bbbbb bbbbb...
+			}
 
 			output |= values[1] & (!temp ? 0x7f : 0x07); // ........ .ccccccc -or- ........ .....ccc
 
@@ -1492,7 +1611,9 @@ namespace pjse
 					)
 				)
 			)
+			{
 				throw new InvalidCastException();
+			}
 
 			ushort[] b = new ushort[2];
 			b[0] = Convert.ToUInt16(s[0], 16);
@@ -1504,7 +1625,9 @@ namespace pjse
 
 			ushort[] d = ExpandBCON(c, temp);
 			if (d[0] != b[0] || d[1] != b[1])
+			{
 				throw new InvalidCastException();
+			}
 
 			return c;
 		}

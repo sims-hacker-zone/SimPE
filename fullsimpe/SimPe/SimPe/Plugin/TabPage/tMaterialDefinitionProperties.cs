@@ -410,9 +410,15 @@ namespace SimPe.Plugin.TabPage
 		protected void Change()
 		{
 			if (this.Tag == null)
+			{
 				return;
+			}
+
 			if (this.lbprop.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				tbname.Tag = true;
@@ -448,7 +454,9 @@ namespace SimPe.Plugin.TabPage
 		)
 		{
 			if (this.Tag == null)
+			{
 				return;
+			}
 
 			SimPe.Plugin.MaterialDefinition md = (SimPe.Plugin.MaterialDefinition)
 				this.Tag;
@@ -459,16 +467,24 @@ namespace SimPe.Plugin.TabPage
 		private void AutoChange(object sender, System.EventArgs e)
 		{
 			if (tbname.Tag != null)
+			{
 				return;
+			}
+
 			if (this.lbprop.SelectedIndex >= 0)
+			{
 				Change();
+			}
 		}
 
 		private void SelectItem(object sender, System.EventArgs e)
 		{
 			lldel.Enabled = false;
 			if (lbprop.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			lldel.Enabled = true;
 
 			try
@@ -499,7 +515,10 @@ namespace SimPe.Plugin.TabPage
 		)
 		{
 			if (this.Tag == null)
+			{
 				return;
+			}
+
 			SimPe.Plugin.MaterialDefinitionProperty prop =
 				new MaterialDefinitionProperty();
 			lbprop.Items.Add(prop);
@@ -518,9 +537,14 @@ namespace SimPe.Plugin.TabPage
 		)
 		{
 			if (this.Tag == null)
+			{
 				return;
+			}
+
 			if (lbprop.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			SimPe.Plugin.MaterialDefinition md = (SimPe.Plugin.MaterialDefinition)
 				this.Tag;
@@ -533,11 +557,17 @@ namespace SimPe.Plugin.TabPage
 		internal void TxmtChangeTab(object sender, System.EventArgs e)
 		{
 			if (this.Tag == null)
+			{
 				return;
+			}
+
 			SimPe.Plugin.MaterialDefinition md = (SimPe.Plugin.MaterialDefinition)
 				this.Tag;
 			if (Parent == null)
+			{
 				return;
+			}
+
 			if (((TabControl)Parent).SelectedTab == this)
 			{
 				md.Refresh();
@@ -547,12 +577,16 @@ namespace SimPe.Plugin.TabPage
 		private void btnExport_Click(object sender, EventArgs e)
 		{
 			if (this.Tag == null)
+			{
 				return;
+			}
 
 			saveFileDialog1.FileName = "";
 			DialogResult dr = saveFileDialog1.ShowDialog();
 			if (dr != DialogResult.OK)
+			{
 				return;
+			}
 
 			SimPe.Plugin.MaterialDefinition md = (SimPe.Plugin.MaterialDefinition)
 				this.Tag;
@@ -572,19 +606,28 @@ namespace SimPe.Plugin.TabPage
 		private void do_imp_mrg(bool imp)
 		{
 			if (this.Tag == null)
+			{
 				return;
+			}
 
 			openFileDialog1.FileName = "";
 			DialogResult dr = openFileDialog1.ShowDialog();
 			if (dr != DialogResult.OK)
+			{
 				return;
+			}
 
 			SimPe.Plugin.MaterialDefinition md = (SimPe.Plugin.MaterialDefinition)
 				this.Tag;
 			if (imp)
+			{
 				md.ImportProperties(openFileDialog1.FileName);
+			}
 			else
+			{
 				md.MergeProperties(openFileDialog1.FileName);
+			}
+
 			md.Refresh();
 		}
 	}

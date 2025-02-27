@@ -182,7 +182,10 @@ namespace SimPe.Plugin
 		public static void LoadDDS(ImageData id, DDSData[] data)
 		{
 			if (data == null)
+			{
 				return;
+			}
+
 			if (data.Length > 0)
 			{
 				try
@@ -223,7 +226,9 @@ namespace SimPe.Plugin
 		{
 			int i = ArgParser.Parse(argv, "-txtr");
 			if (i < 0)
+			{
 				return false;
+			}
 
 			//get Parameters
 			string filename = "";
@@ -241,11 +246,20 @@ namespace SimPe.Plugin
 			while (argv.Count > i)
 			{
 				if (ArgParser.Parse(argv, i, "-image", ref filename))
+				{
 					continue;
+				}
+
 				if (ArgParser.Parse(argv, i, "-out", ref output))
+				{
 					continue;
+				}
+
 				if (ArgParser.Parse(argv, i, "-name", ref texturename))
+				{
 					continue;
+				}
+
 				if (ArgParser.Parse(argv, i, "-levels", ref num))
 				{
 					levels = Convert.ToInt32(num);

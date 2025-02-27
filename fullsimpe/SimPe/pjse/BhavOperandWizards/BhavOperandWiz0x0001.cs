@@ -83,12 +83,15 @@ namespace pjse.BhavOperandWizards.Wiz0x0001
 
 			this.cbGenericSimsCall.Items.Clear();
 			for (byte i = 0; i < BhavWiz.readStr(GS.BhavStr.Generics).Count; i++)
+			{
 				this.cbGenericSimsCall.Items.Add(
 					"0x"
 						+ SimPe.Helper.HexString(i)
 						+ ": "
 						+ BhavWiz.readStr(GS.BhavStr.Generics, i)
 				);
+			}
+
 			this.lbGenericSimsCallparms.Text = "Should never see this";
 
 			lbGenericSimsCallparms.Text = genericSimsCallparamText(operand0);
@@ -99,7 +102,10 @@ namespace pjse.BhavOperandWizards.Wiz0x0001
 		public Instruction Write(Instruction inst)
 		{
 			if (this.cbGenericSimsCall.SelectedIndex >= 0)
+			{
 				inst.Operands[0] = (byte)this.cbGenericSimsCall.SelectedIndex;
+			}
+
 			return inst;
 		}
 
@@ -184,7 +190,9 @@ namespace pjse.BhavOperandWizards
 		public override void Dispose()
 		{
 			if (myForm != null)
+			{
 				myForm = null;
+			}
 		}
 		#endregion
 	}

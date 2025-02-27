@@ -37,7 +37,9 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 		{
 			cb.Items.Clear();
 			if (reader.BaseStream.Length == 0)
+			{
 				return;
+			}
 
 			int ct = reader.ReadInt32();
 
@@ -49,7 +51,9 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 			}
 
 			if (cb.Items.Count > 0)
+			{
 				cb.SelectedIndex = 0;
+			}
 		}
 
 		internal override void Serialize(System.IO.BinaryWriter writer, bool last)
@@ -88,7 +92,10 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 		private void textBox1_TextChanged_1(object sender, EventArgs ea)
 		{
 			if (intern)
+			{
 				return;
+			}
+
 			Element e = cb.SelectedItem as Element;
 			if (e != null)
 			{
@@ -127,8 +134,12 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 				index = Math.Min(cb.Items.Count - 1, index);
 				cb.SelectedIndex = index;
 				if (ParentItem != null)
+				{
 					if (ParentItem.Parent != null)
+					{
 						ParentItem.Parent.Changed = true;
+					}
+				}
 			}
 		}
 
@@ -141,8 +152,12 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 			cb.Items.Add(e);
 			cb.SelectedIndex = cb.Items.Count - 1;
 			if (ParentItem != null)
+			{
 				if (ParentItem.Parent != null)
+				{
 					ParentItem.Parent.Changed = true;
+				}
+			}
 		}
 	}
 }

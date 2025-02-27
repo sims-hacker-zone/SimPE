@@ -61,7 +61,9 @@ namespace SimPe.Plugin
 			: this()
 		{
 			if (container != null)
+			{
 				container.Add(this);
+			}
 		}
 
 		public bool AddPackage(HairColor key, string fileName)
@@ -160,7 +162,9 @@ namespace SimPe.Plugin
 						}
 
 						if (this.Settings.FamilyGuid == Guid.Empty)
+						{
 							this.Settings.FamilyGuid = pnfo.Family;
+						}
 					}
 					/*
 					if (!FileTable.FileIndex.Loaded && WrapperFactory.Settings.ForceTableLoad)
@@ -170,7 +174,9 @@ namespace SimPe.Plugin
 					}*/
 
 					if (Utility.IsNullOrEmpty(this.Settings.Description))
+					{
 						this.Settings.Description = pnfo.Description; //this.GetPackageText(key);
+					}
 
 					return true;
 				}
@@ -188,7 +194,9 @@ namespace SimPe.Plugin
 				//this.loadedTextures.Clear();
 
 				if (this.packages.Count == 0)
+				{
 					this.Settings = null; //mode = RecolorType.Unsupported;
+				}
 			}
 		}
 
@@ -233,9 +241,13 @@ namespace SimPe.Plugin
 							(item.Age == Ages.Elder ^ newKey == HairColor.Grey)
 							&& newKey != HairColor.Unbinned;
 						if (!greyRecolor)
+						{
 							item.ColorBin = newKey;
+						}
 						else
+						{
 							item.ColorBin = HairColor.Grey;
+						}
 					}
 				}
 
@@ -260,9 +272,14 @@ namespace SimPe.Plugin
 						SimPe.Data.MetaData.GZPS
 					);
 					if (Utility.IsNullOrEmpty(files))
+					{
 						files = pnfo.FindFiles(Utility.DataType.XTOL);
+					}
+
 					if (Utility.IsNullOrEmpty(files))
+					{
 						files = pnfo.FindFiles(Utility.DataType.XMOL);
+					}
 
 					list.AddRange(ProcessCpfItems(files, pnfo.Package));
 				}
@@ -273,9 +290,13 @@ namespace SimPe.Plugin
 						(item.Age == Ages.Elder ^ key == HairColor.Grey)
 						&& key != HairColor.Unbinned;
 					if (!greyRecolor)
+					{
 						item.ColorBin = key;
+					}
 					else
+					{
 						item.ColorBin = HairColor.Grey;
+					}
 				}
 
 				this.recolorItems[key] = list.ToArray(typeof(RecolorItem));
@@ -318,8 +339,13 @@ namespace SimPe.Plugin
 							default:
 								List<CpfItem> items = new List<CpfItem>();
 								foreach (CpfItem c in item.PropertySet.Items)
+								{
 									if (c.Name != "subtype")
+									{
 										items.Add(c);
+									}
+								}
+
 								item.PropertySet.Items = items.ToArray();
 								break;
 						}
@@ -336,7 +362,10 @@ namespace SimPe.Plugin
 		public PackageInfo GetPackageInfo(HairColor key)
 		{
 			if (this.packages.ContainsKey(key))
+			{
 				return this.packages[key];
+			}
+
 			return null;
 		}
 
@@ -380,7 +409,9 @@ namespace SimPe.Plugin
 		string NewTextureName(string baseTextureName, HairColor key)
 		{
 			if (key == HairColor.Unbinned)
+			{
 				return baseTextureName;
+			}
 
 			string[] parts = baseTextureName.Split(new char[] { '-' });
 			System.Text.StringBuilder str = new System.Text.StringBuilder();
@@ -402,7 +433,9 @@ namespace SimPe.Plugin
 			{
 				IPackedFileDescriptor[] txtr = GetTextureDescriptor(rcol);
 				if (!Utility.IsNullOrEmpty(txtr))
+				{
 					ret.AddRange(txtr);
+				}
 			}
 			return (IPackedFileDescriptor[])ret.ToArray(typeof(IPackedFileDescriptor));
 		}
@@ -459,7 +492,9 @@ namespace SimPe.Plugin
 				IScenegraphFileIndexItem[] sfi =
 					FileTable.FileIndex.FindFileDiscardingGroup(reference); //, pnfo.Package);
 				if (!Utility.IsNullOrEmpty(sfi))
+				{
 					ret = sfi[0];
+				}
 			}
 
 			return ret;
@@ -530,7 +565,10 @@ namespace SimPe.Plugin
 		{
 			MaterialDefinitionRcol mmat = rcol as MaterialDefinitionRcol;
 			if (mmat != null)
+			{
 				return mmat.Textures.GetFileDescriptor();
+			}
+
 			return new IPackedFileDescriptor[0];
 		}
 
@@ -561,7 +599,10 @@ namespace SimPe.Plugin
 						this.loadedTextures.Add(key, txtr);
 					}
 					else
+					{
 						txtr = this.loadedTextures[key] as Txtr;
+					}
+
 					ret.Add(txtr);
 				}
 			}
@@ -587,7 +628,10 @@ namespace SimPe.Plugin
 							this.loadedTextures.Add(key, txtr);
 						}
 						else
+						{
 							txtr = this.loadedTextures[key] as Txtr;
+						}
+
 						ret.Add(txtr);
 					}
 				}
@@ -622,8 +666,12 @@ namespace SimPe.Plugin
 						{
 							refFile.ProcessData(pfd, package, false);
 							foreach (IPackedFileDescriptor ptr in refFile.Items)
+							{
 								if (ptr.Type == SimPe.Data.MetaData.TXMT)
+								{
 									ret.Add(new ResourceReference(ptr));
+								}
+							}
 						}
 						catch { }
 						finally
@@ -648,7 +696,9 @@ namespace SimPe.Plugin
 					item.PropertySet.FileDescriptor.Instance
 				);
 				if (pfds.Length == 1)
+				{
 					return pfds[0];
+				}
 			}
 			return null;
 		}
@@ -720,14 +770,22 @@ namespace SimPe.Plugin
 					{
 						keep.AddRange(txtr);
 						foreach (IPackedFileDescriptor pfd in txtr)
+						{
 							if (discard.Contains(pfd))
+							{
 								discard.Remove(pfd);
+							}
+						}
 					}
 					else
 					{
 						foreach (IPackedFileDescriptor pfd in txtr)
+						{
 							if (!keep.Contains(pfd))
+							{
 								discard.Add(pfd);
+							}
+						}
 					}
 
 					item.Family = this.Settings.FamilyGuid;
@@ -751,10 +809,14 @@ namespace SimPe.Plugin
 										!= TextureOverlayTypes.Beard
 								)
 							)
+							{
 								goto default;
+							}
 
 							if (key == HairColor.Unbinned)
+							{
 								hairtoneGuid = item.Family;
+							}
 
 							// special case
 							// TODO: re-check conditions
@@ -762,9 +824,13 @@ namespace SimPe.Plugin
 								item.Age == SimPe.Data.Ages.Elder
 								&& key != HairColor.Unbinned
 							)
+							{
 								item.Hairtone = Utility.HairtoneGuid.Grey;
+							}
 							else
+							{
 								item.Hairtone = hairtoneGuid;
+							}
 
 							#region New name
 							string oldName = item.Name;
@@ -774,9 +840,14 @@ namespace SimPe.Plugin
 							str.Append("_");
 							// special case (again)
 							if (item.Age == SimPe.Data.Ages.Elder)
+							{
 								str.Append(HairColor.Grey.ToString().ToLower());
+							}
 							else
+							{
 								str.Append(key.ToString().ToLower());
+							}
+
 							item.Name = str.ToString();
 							#endregion
 
@@ -788,10 +859,18 @@ namespace SimPe.Plugin
 
 					// process textures
 					if (this.Settings.CompressTextures)
+					{
 						foreach (MaterialDefinitionRcol mmat in item.Materials)
+						{
 							foreach (Txtr textr in mmat.Textures)
+							{
 								if (textr.Package == pnfo.Package) // this is important!!
+								{
 									textr.FileDescriptor.MarkForReCompress = true;
+								}
+							}
+						}
+					}
 
 					item.CommitChanges();
 				}
@@ -801,8 +880,12 @@ namespace SimPe.Plugin
 					SimPe.Data.MetaData.TXTR
 				);
 				foreach (IPackedFileDescriptor pfd in textureFiles)
+				{
 					if (!keep.Contains(pfd))
+					{
 						pfd.MarkForDelete = true;
+					}
+				}
 
 				if (pnfo.PropertySet != null)
 				{
@@ -812,9 +895,13 @@ namespace SimPe.Plugin
 
 						pnfo.Name = key.ToString();
 						if (key != HairColor.Unbinned)
+						{
 							pnfo.SetValue("proxy", hairtoneGuid.ToString());
+						}
 						else if (hset.DefaultProxy != Guid.Empty)
+						{
 							pnfo.SetValue("proxy", hset.DefaultProxy.ToString());
+						}
 					}
 					else if (pnfo.Type == RecolorType.Skintone)
 					{
@@ -852,7 +939,9 @@ namespace SimPe.Plugin
 				HairColor key = (HairColor)values.GetValue(i);
 				GeneratableFile file = this.ProcessPackage(key);
 				if (file != null)
+				{
 					files.Add(key, file);
+				}
 			}
 
 			if (namechange) //  if Save As then is true, will go no further than this
@@ -944,7 +1033,10 @@ namespace SimPe.Plugin
 			{
 				// dispose loaded package files
 				foreach (PackageInfo file in this.packages.Values)
+				{
 					file.Dispose();
+				}
+
 				this.Clear();
 			}
 			base.Dispose(disposing);

@@ -158,9 +158,13 @@ namespace SimPe.Cache
 					{
 						DateTime mod = System.IO.File.GetLastWriteTime(filename);
 						if (mod <= Added)
+						{
 							ValidState = ContainerValid.Yes;
+						}
 						else
+						{
 							ValidState = ContainerValid.Modified;
+						}
 					}
 
 					if (
@@ -239,7 +243,9 @@ namespace SimPe.Cache
 										oci.Version
 										>= MemoryCacheItem.DISCARD_VERSIONS_SMALLER_THAN
 									)
+									{
 										Items.Add(oci);
+									}
 								}
 
 								break;
@@ -292,7 +298,9 @@ namespace SimPe.Cache
 				writer.Write(filename);
 
 				for (int i = 0; i < Items.Count; i++)
+				{
 					Items[i].Save(writer);
+				}
 			}
 		}
 
@@ -303,8 +311,12 @@ namespace SimPe.Cache
 			if (Items != null)
 			{
 				foreach (object o in Items)
+				{
 					if (o is IDisposable)
+					{
 						((IDisposable)o).Dispose();
+					}
+				}
 
 				Items.Clear();
 			}

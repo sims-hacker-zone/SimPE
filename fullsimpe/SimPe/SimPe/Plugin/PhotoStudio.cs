@@ -105,7 +105,9 @@ namespace SimPe.Plugin
 				}
 
 				if (lvbase.Items.Count > 0)
+				{
 					lvbase.Items[0].Selected = true;
+				}
 
 				sfd.InitialDirectory = System.IO.Path.Combine(
 					PathProvider.SimSavegameFolder,
@@ -415,7 +417,9 @@ namespace SimPe.Plugin
 		protected void AddSim(SimPe.PackedFiles.Wrapper.SDesc sdesc)
 		{
 			if (!sdesc.AvailableCharacterData || sdesc.HasImage == false)
+			{
 				return;
+			}
 
 			AddImage(sdesc);
 			ListViewItem lvi = new ListViewItem();
@@ -449,7 +453,10 @@ namespace SimPe.Plugin
 					Data.MetaData.SIM_DESCRIPTION_FILE
 				);
 				if (pfds.Length > 0)
+				{
 					WaitingScreen.Wait();
+				}
+
 				try
 				{
 					foreach (Interfaces.Files.IPackedFileDescriptor spfd in pfds)
@@ -482,9 +489,15 @@ namespace SimPe.Plugin
 			RemoteControl.ShowSubForm(this);
 
 			if (this.pfd != null)
+			{
 				pfd = this.pfd;
+			}
+
 			if (this.package != null)
+			{
 				package = this.package;
+			}
+
 			return new Plugin.ToolResult((this.pfd != null), (this.package != null));
 		}
 
@@ -496,9 +509,13 @@ namespace SimPe.Plugin
 		{
 			ImageLoader.TxtrFormats format = ImageLoader.TxtrFormats.Raw32Bit;
 			if (cbquality.SelectedIndex == 1)
+			{
 				format = ImageLoader.TxtrFormats.DXT1Format;
+			}
 			else if (cbquality.SelectedIndex == 2)
+			{
 				format = ImageLoader.TxtrFormats.DXT1Format;
+			}
 
 			return format;
 		}
@@ -511,7 +528,9 @@ namespace SimPe.Plugin
 		Image ShowPreview(Image img)
 		{
 			if ((!cbprev.Checked) || (img == null) || (lvbase.SelectedItems.Count == 0))
+			{
 				return new Bitmap(1, 1);
+			}
 
 			SimPe.Interfaces.Files.IPackageFile pkg = BuildPicture(
 				"dummy.package",
@@ -617,7 +636,10 @@ namespace SimPe.Plugin
 						(System.IO.BinaryReader)null
 					);
 				if (UserVerification.HaveValidUserId)
+				{
 					pkg.Header.Created = UserVerification.UserId;
+				}
+
 				pkg.FileName = filename;
 
 				string family = System.Guid.NewGuid().ToString();
@@ -641,8 +663,10 @@ namespace SimPe.Plugin
 					mmat.ProcessData(pfd, tpkg);
 					mmat.GetSaveItem("family").StringValue = family;
 					if (rename)
+					{
 						mmat.GetSaveItem("name").StringValue =
 							"##0x1c050000!" + BuildName(template.MatdFile, unique);
+					}
 
 					mmat.SynchronizeUserData();
 					pkg.Add(mmat.FileDescriptor);
@@ -661,6 +685,7 @@ namespace SimPe.Plugin
 					)
 				);
 				if (pfd == null)
+				{
 					pfd = tpkg.FindFile(
 						0x49596978,
 						Hashes.SubTypeHash(
@@ -671,21 +696,31 @@ namespace SimPe.Plugin
 							Hashes.StripHashFromName(template.MatdFile + "_txmt")
 						)
 					);
+				}
+
 				if (pfd != null)
 				{
 					matd.ProcessData(pfd, tpkg);
 					if (rename)
+					{
 						matd.FileName =
 							"##0x1c050000!"
 							+ BuildName(template.MatdFile, unique)
 							+ "_txmt";
+					}
+
 					SimPe.Plugin.MaterialDefinition md =
 						(SimPe.Plugin.MaterialDefinition)matd.Blocks[0];
 					if (rename)
+					{
 						md.GetProperty("stdMatBaseTextureName").Value =
 							"##0x1c050000!" + BuildName(template.TxtrFile, unique);
+					}
+
 					if (rename)
+					{
 						md.Listing[0] = md.GetProperty("stdMatBaseTextureName").Value;
+					}
 
 					matd.FileDescriptor = new Packages.PackedFileDescriptor();
 					matd.FileDescriptor.Type = 0x49596978; //TXMT
@@ -713,6 +748,7 @@ namespace SimPe.Plugin
 					)
 				);
 				if (pfd == null)
+				{
 					pfd = tpkg.FindFile(
 						0x1C4A276C,
 						Hashes.SubTypeHash(
@@ -723,14 +759,18 @@ namespace SimPe.Plugin
 							Hashes.StripHashFromName(template.TxtrFile + "_txtr")
 						)
 					);
+				}
+
 				if (pfd != null)
 				{
 					txtr.ProcessData(pfd, tpkg);
 					if (rename)
+					{
 						txtr.FileName =
 							"##0x1c050000!"
 							+ BuildName(template.TxtrFile, unique)
 							+ "_txtr";
+					}
 
 					SimPe.Plugin.ImageData id = (SimPe.Plugin.ImageData)txtr.Blocks[0];
 					SimPe.Plugin.MipMapBlock mmp = id.MipMapBlocks[0];
@@ -741,7 +781,10 @@ namespace SimPe.Plugin
 					Rectangle rect = new Rectangle(0, 0, img.Width, img.Height);
 					Image mmimg = (Image)img.Clone();
 					if (flip)
+					{
 						mmimg.RotateFlip(System.Drawing.RotateFlipType.RotateNoneFlipX);
+					}
+
 					System.Drawing.Graphics g = Graphics.FromImage(mm.Texture);
 					g.InterpolationMode = System
 						.Drawing
@@ -834,7 +877,10 @@ namespace SimPe.Plugin
 		)
 		{
 			if (lvbase.SelectedItems.Count == 0)
+			{
 				return;
+			}
+
 			Image img = null;
 
 			//get the Image depending on the Active Tab
@@ -845,7 +891,9 @@ namespace SimPe.Plugin
 			else if (tabControl1.SelectedIndex == 1)
 			{
 				if (lv.SelectedItems.Count < 1)
+				{
 					return;
+				}
 
 				PackedFiles.Wrapper.SDesc sdesc = (PackedFiles.Wrapper.SDesc)
 					lv.SelectedItems[0].Tag;
@@ -853,7 +901,10 @@ namespace SimPe.Plugin
 			}
 
 			if (img == null)
+			{
 				return;
+			}
+
 			if (sfd.ShowDialog() == DialogResult.OK)
 			{
 				try
@@ -909,7 +960,9 @@ namespace SimPe.Plugin
 		private void pbpreview_Click(object sender, System.EventArgs e)
 		{
 			if (preview == null)
+			{
 				return;
+			}
 
 			Form form = new Form();
 			form.Width = preview.Width;

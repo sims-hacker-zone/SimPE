@@ -71,7 +71,9 @@ namespace SimPe.Plugin
 
 			biDebug.Visible = Helper.WindowsRegistry.HiddenMode;
 			if (!Helper.WindowsRegistry.HiddenMode)
+			{
 				this.menu.Items.Remove(this.miFix);
+			}
 
 			this.SelectButton(biSim);
 
@@ -98,9 +100,13 @@ namespace SimPe.Plugin
 				uint inst = (uint)os[0];
 
 				if (st == Data.NeighborhoodSlots.SimsIntern && biBadge.Enabled)
+				{
 					this.ChoosePage(biBadge, null);
+				}
 				else
+				{
 					this.ChoosePage(biSim, null);
+				}
 
 				PackedFiles.Wrapper.ExtSDesc sdesc =
 					FileTable.ProviderRegistry.SimDescriptionProvider.FindSim(
@@ -125,7 +131,9 @@ namespace SimPe.Plugin
 			{
 				spc.SelectedElement = sdesc;
 				if (spc.SelectedElement != null)
+				{
 					return true;
+				}
 			}
 
 			return ret;
@@ -519,9 +527,13 @@ namespace SimPe.Plugin
 			SelectButton((ToolStripButton)sender);
 
 			if (pnSims.Visible)
+			{
 				pnSims.Controls.Add(this.spc);
+			}
 			else if (pnBadge.Visible)
+			{
 				pnBadge.Controls.Add(this.spc);
+			}
 		}
 
 		private void spc_SelectedSimChanged(
@@ -572,9 +584,13 @@ namespace SimPe.Plugin
 		private void pnBadge_VisibleChanged(object sender, System.EventArgs e)
 		{
 			if (pnBadge.Visible == true)
+			{
 				updateitems = false;
+			}
 			else if (updateitems)
+			{
 				RefreshContent();
+			}
 		}
 
 		#region Extensions by Theo
@@ -600,6 +616,7 @@ namespace SimPe.Plugin
 						int deletedCount = slot.RemoveMemoriesAboutMe();
 
 						if (deletedCount > 0)
+						{
 							SimPe.Message.Show(
 								String.Format(
 									"Deleted {0} memories from the sim pool",
@@ -608,6 +625,7 @@ namespace SimPe.Plugin
 								"Advice",
 								MessageBoxButtons.OK
 							);
+						}
 
 						spc.Refresh();
 					}

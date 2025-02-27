@@ -64,7 +64,10 @@ namespace SimPe
 				foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in globs)
 				{
 					if (ct % 17 == 0)
+					{
 						WaitingScreen.UpdateMessage(ct.ToString() + max);
+					}
+
 					ct++;
 
 					SimPe.Plugin.NamedGlob glob = new SimPe.Plugin.NamedGlob();
@@ -410,7 +413,10 @@ namespace SimPe
 			this.btimport.Enabled = false;
 
 			if (cbsemi.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			ArrayList loaded = new ArrayList();
 
 			try
@@ -495,8 +501,13 @@ namespace SimPe
 			);
 			uint maxbhavinst = 0x1000;
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			{
 				if ((pfd.Instance < 0x2000) && (pfd.Instance > maxbhavinst))
+				{
 					maxbhavinst = pfd.Instance;
+				}
+			}
+
 			Hashtable bhavalias = new Hashtable();
 			maxbhavinst++;
 
@@ -504,8 +515,13 @@ namespace SimPe
 			pfds = package.FindFiles(0x42434F4E);
 			uint maxbconinst = 0x1000;
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			{
 				if ((pfd.Instance < 0x2000) && (pfd.Instance > maxbconinst))
+				{
 					maxbconinst = pfd.Instance;
+				}
+			}
+
 			Hashtable bconalias = new Hashtable();
 			maxbconinst++;
 
@@ -517,7 +533,10 @@ namespace SimPe
 				for (int i = 0; i < lbfiles.Items.Count; i++)
 				{
 					if (!lbfiles.GetItemChecked(i))
+					{
 						continue;
+					}
+
 					Interfaces.Scenegraph.IScenegraphFileIndexItem item =
 						(Interfaces.Scenegraph.IScenegraphFileIndexItem)
 							lbfiles.Items[i];
@@ -544,7 +563,10 @@ namespace SimPe
 						);
 						bhav.ProcessData(npfd, package);
 						if (cbname.Checked)
+						{
 							bhav.FileName = "[" + cbsemi.Text + "] " + bhav.FileName;
+						}
+
 						bhav.SynchronizeUserData();
 
 						bhavs.Add(bhav);
@@ -558,7 +580,10 @@ namespace SimPe
 						SimPe.Plugin.Bcon bcon = new SimPe.Plugin.Bcon();
 						bcon.ProcessData(npfd, package);
 						if (cbname.Checked)
+						{
 							bcon.FileName = "[" + cbsemi.Text + "] " + bcon.FileName;
+						}
+
 						bcon.SynchronizeUserData();
 					}
 					else if (npfd.Type == 0x54544142) //TTAB
@@ -603,7 +628,9 @@ namespace SimPe
 					foreach (SimPe.PackedFiles.Wrapper.Instruction i in bhav)
 					{
 						if (bhavalias.Contains(i.OpCode))
+						{
 							i.OpCode = (ushort)bhavalias[i.OpCode];
+						}
 					}
 					bhav.SynchronizeUserData();
 				}
@@ -614,9 +641,14 @@ namespace SimPe
 					foreach (SimPe.PackedFiles.Wrapper.TtabItem item in ttab)
 					{
 						if (bhavalias.Contains(item.Guardian))
+						{
 							item.Guardian = (ushort)bhavalias[item.Guardian];
+						}
+
 						if (bhavalias.Contains(item.Action))
+						{
 							item.Action = (ushort)bhavalias[item.Action];
+						}
 					}
 					ttab.SynchronizeUserData();
 				}

@@ -116,9 +116,14 @@ namespace SimPe.Plugin
 							item.Title.Trim().ToLower()
 						);
 						if (!mname.EndsWith("_cres"))
+						{
 							mname += "_cres";
+						}
+
 						if ((mname != "") && (!names.Contains(mname)))
+						{
 							names.Add(mname);
+						}
 					}
 				}
 			}
@@ -136,9 +141,14 @@ namespace SimPe.Plugin
 						cpf.GetSaveItem("modelName").StringValue.Trim().ToLower()
 					);
 					if (!mname.EndsWith("_cres"))
+					{
 						mname += "_cres";
+					}
+
 					if ((mname != "") && (!names.Contains(mname)))
+					{
 						names.Add(mname);
+					}
 				}
 			}
 
@@ -160,7 +170,10 @@ namespace SimPe.Plugin
 			{
 				modelnames[i] = modelnames[i].Trim().ToLower();
 				if (!modelnames[i].EndsWith("_cres"))
+				{
 					modelnames[i] += "_cres";
+				}
+
 				Interfaces.Scenegraph.IScenegraphFileIndexItem item =
 					FileTable.FileIndex.FindFileByName(
 						modelnames[i],
@@ -171,7 +184,9 @@ namespace SimPe.Plugin
 				//Clone(item);
 
 				if (item != null)
+				{
 					cres.Add(item);
+				}
 			}
 
 			return cres;
@@ -200,7 +215,9 @@ namespace SimPe.Plugin
 		{
 			//if we load a CRES, we also have to add the Modelname!
 			if (rcol.FileDescriptor.Type == Data.MetaData.CRES)
+			{
 				modelnames.Add(rcol.FileName.Trim().ToLower());
+			}
 
 			list.Add(rcol);
 			itemlist.Add(item);
@@ -209,19 +226,29 @@ namespace SimPe.Plugin
 			foreach (string s in map.Keys)
 			{
 				if (exclude.Contains(s))
+				{
 					continue;
+				}
 
 				ArrayList descs = (ArrayList)map[s];
 				foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in descs)
 				{
 					if (setup != null)
+					{
 						if (setup.KeepOriginalMesh)
 						{
 							if (pfd.Type == Data.MetaData.GMND)
+							{
 								continue;
+							}
+
 							if (pfd.Type == Data.MetaData.GMDC)
+							{
 								continue;
+							}
 						}
+					}
+
 					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem subitem =
 						FileTable.FileIndex.FindSingleFile(pfd, null, true);
 
@@ -246,9 +273,12 @@ namespace SimPe.Plugin
 										sub.FileName.Trim().ToLower()
 									)
 								)
+								{
 									continue;
+								}
 
 								if (recursive)
+								{
 									LoadReferenced(
 										modelnames,
 										exclude,
@@ -259,6 +289,7 @@ namespace SimPe.Plugin
 										true,
 										setup
 									);
+								}
 							}
 							catch (Exception ex)
 							{
@@ -329,7 +360,9 @@ namespace SimPe.Plugin
 				);
 			}
 			foreach (string s in modelnames)
+			{
 				this.modelnames.Add(s);
+			}
 		}
 
 		/// <summary>
@@ -364,6 +397,7 @@ namespace SimPe.Plugin
 		{
 			string name = rcol.FileName.Trim().ToLower();
 			foreach (string k in slaves.Keys)
+			{
 				foreach (string sub in (ArrayList)slaves[k])
 				{
 					string slavename = name.Replace("_" + k + "_", "_" + sub + "_");
@@ -396,6 +430,7 @@ namespace SimPe.Plugin
 						}
 					}
 				}
+			}
 		}
 
 		/// <summary>
@@ -409,6 +444,7 @@ namespace SimPe.Plugin
 				GenericRcol rcol = (GenericRcol)files[i];
 
 				if (rcol.FileDescriptor.Type == Data.MetaData.TXMT)
+				{
 					AddSlaveTxmts(
 						this.modelnames,
 						this.ExcludedReferences,
@@ -417,6 +453,7 @@ namespace SimPe.Plugin
 						rcol,
 						slaves
 					);
+				}
 			}
 		}
 
@@ -442,6 +479,7 @@ namespace SimPe.Plugin
 				rcol.ProcessData(pfd, pkg);
 
 				if (rcol.FileDescriptor.Type == Data.MetaData.TXMT)
+				{
 					AddSlaveTxmts(
 						new ArrayList(),
 						new ArrayList(),
@@ -450,6 +488,7 @@ namespace SimPe.Plugin
 						rcol,
 						slaves
 					);
+				}
 			}
 
 			foreach (GenericRcol rcol in files)
@@ -469,17 +508,23 @@ namespace SimPe.Plugin
 		static void LoadCache()
 		{
 			if (cachefile != null)
+			{
 				return;
+			}
 
 			cachefile = new SimPe.Cache.MMATCacheFile();
 			if (Helper.WindowsRegistry.UseCache)
+			{
 				cachefile.Load(Helper.SimPeLanguageCache);
+			}
 		}
 
 		static void SaveCache()
 		{
 			if (Helper.WindowsRegistry.UseCache)
+			{
 				cachefile.Save(Helper.SimPeLanguageCache);
+			}
 		}
 		#endregion
 
@@ -537,7 +582,9 @@ namespace SimPe.Plugin
 				}
 			}
 			if (chgcache)
+			{
 				SaveCache();
+			}
 
 			//collect a list of Default Material Override family values first
 			if (onlydefault)
@@ -546,7 +593,9 @@ namespace SimPe.Plugin
 					SimPe.Cache.MMATCacheItem mci in (SimPe.Cache.CacheItems)
 						cachefile.DefaultMap[true]
 				)
+				{
 					defaultfam.Add(mci.Family);
+				}
 			}
 
 			//now do the real collect
@@ -559,7 +608,9 @@ namespace SimPe.Plugin
 					foreach (SimPe.Cache.MMATCacheItem mci in list)
 					{
 						if (onlydefault && !defaultfam.Contains(mci.Family))
+						{
 							continue;
+						}
 
 						string name = k;
 						items = FileTable.FileIndex.FindFile(mci.FileDescriptor, null);
@@ -569,7 +620,10 @@ namespace SimPe.Plugin
 						)
 						{
 							if (itemlist.Contains(item))
+							{
 								continue;
+							}
+
 							itemlist.Add(item);
 							SimPe.Plugin.MmatWrapper mmat = new MmatWrapper();
 							mmat.ProcessData(item);
@@ -584,7 +638,9 @@ namespace SimPe.Plugin
 								if (subitems)
 								{
 									if (pkg.FindFile(mmat.FileDescriptor) == null)
+									{
 										pkg.Add(mmat.FileDescriptor);
+									}
 
 									SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem txmtitem =
 										SimPe.FileTable.FileIndex.FindFileByName(
@@ -639,7 +695,10 @@ namespace SimPe.Plugin
 										string txmtname = mmat.GetSaveItem("name")
 											.StringValue.Trim();
 										if (!txmtname.EndsWith("_txmt"))
+										{
 											txmtname += "_txmt";
+										}
+
 										if (
 											pkg.FindFile(
 												txmtname,
@@ -694,11 +753,16 @@ namespace SimPe.Plugin
 		)
 		{
 			if (blockname == null)
+			{
 				blockname = "";
+			}
+
 			ArrayList list = new ArrayList();
 
 			if (pkg == null)
+			{
 				return list;
+			}
 
 			blockname = blockname.Trim().ToLower();
 			SimPe.Interfaces.Files.IPackedFileDescriptor[] gmnds = pkg.FindFiles(
@@ -749,7 +813,9 @@ namespace SimPe.Plugin
 							string[] slaves = ei.String.Split(",".ToCharArray());
 							ArrayList slavelist = new ArrayList();
 							foreach (string s in slaves)
+							{
 								slavelist.Add(s.Trim().ToLower());
+							}
 
 							map[ei.Name.Trim().ToLower()] = slavelist;
 						}
@@ -768,7 +834,9 @@ namespace SimPe.Plugin
 			foreach (SimPe.Plugin.GenericRcol gmnd in files)
 			{
 				if (gmnd.FileDescriptor.Type == Data.MetaData.GMND)
+				{
 					GetSlaveSubsets(gmnd, map);
+				}
 			}
 			return map;
 		}
@@ -802,7 +870,9 @@ namespace SimPe.Plugin
 		public static Hashtable GetMMATMap(SimPe.Interfaces.Files.IPackageFile pkg)
 		{
 			if (pkg == null)
+			{
 				return new Hashtable();
+			}
 
 			SimPe.Interfaces.Files.IPackedFileDescriptor[] mmats = pkg.FindFiles(
 				Data.MetaData.MMAT
@@ -827,7 +897,9 @@ namespace SimPe.Plugin
 					ht[subset] = families;
 				}
 				else
+				{
 					families = (Hashtable)ht[subset];
+				}
 
 				//get listing of the current Family
 				ArrayList list = null;
@@ -837,7 +909,9 @@ namespace SimPe.Plugin
 					families[family] = list;
 				}
 				else
+				{
 					list = (ArrayList)families[family];
+				}
 
 				//add the MMAT File
 				list.Add(mmat);
@@ -883,7 +957,9 @@ namespace SimPe.Plugin
 				rcol.SynchronizeUserData();
 
 				if (pkg.FindFile(rcol.FileDescriptor) == null)
+				{
 					pkg.Add(rcol.FileDescriptor);
+				}
 			}
 		}
 
@@ -899,7 +975,10 @@ namespace SimPe.Plugin
 		)
 		{
 			if (WaitingScreen.Running)
+			{
 				WaitingScreen.UpdateMessage("Loading Parent Modelnames");
+			}
+
 			ArrayList list = new ArrayList();
 
 			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
@@ -924,10 +1003,14 @@ namespace SimPe.Plugin
 							{
 								string mname = ei.String.Trim().ToLower();
 								if (mname.EndsWith("_cres"))
+								{
 									mname += "_cres";
+								}
 
 								if (!list.Contains(mname))
+								{
 									list.Add(mname);
+								}
 							}
 
 							dle.Extension.Items = new ExtensionItem[0];
@@ -964,7 +1047,9 @@ namespace SimPe.Plugin
 				{
 					string name = Hashes.StripHashFromName(si.Title).Trim();
 					if (name == "")
+					{
 						continue;
+					}
 
 					name += instance.Extension;
 					//Console.WriteLine("Str Linked: "+name);
@@ -1047,11 +1132,15 @@ namespace SimPe.Plugin
 
 			modelname = modelname.Trim().ToLower();
 			if (modelname.EndsWith("_cres"))
+			{
 				modelname = modelname.Substring(0, modelname.Length - 5);
+			}
 
 			//no Modelname => no Wallmask
 			if (modelname == "")
+			{
 				return txmt;
+			}
 
 			//this applies to all found NameMaps for TXTR Files
 			ArrayList foundnames = new ArrayList();
@@ -1149,7 +1238,9 @@ namespace SimPe.Plugin
 
 			name = name.Trim().ToLower();
 			if (!name.EndsWith("_anim"))
+			{
 				name += "_anim";
+			}
 
 			Interfaces.Scenegraph.IScenegraphFileIndexItem item =
 				FileTable.FileIndex.FindFileByName(
@@ -1159,7 +1250,9 @@ namespace SimPe.Plugin
 					true
 				);
 			if (item != null)
+			{
 				anim.Add(item);
+			}
 
 			return anim;
 		}
@@ -1237,7 +1330,9 @@ namespace SimPe.Plugin
 						catch (Exception ex)
 						{
 							if (Helper.WindowsRegistry.HiddenMode)
+							{
 								Helper.ExceptionMessage("", ex);
+							}
 						}
 					}
 				}
@@ -1258,7 +1353,9 @@ namespace SimPe.Plugin
 			{
 				SimPe.PackedFiles.Wrapper.Cpf cpf = new SimPe.PackedFiles.Wrapper.Cpf();
 				if (!cpf.CanHandleType(pfd.Type))
+				{
 					continue;
+				}
 
 				cpf.ProcessData(pfd, pkg);
 
@@ -1267,7 +1364,9 @@ namespace SimPe.Plugin
 
 				//hood object
 				if (pfd.Type == Data.MetaData.XNGB)
+				{
 					AddFromXml(cpf.GetItem("modelname"), "_cres", Data.MetaData.CRES);
+				}
 
 				//fences
 				AddFromXml(cpf.GetItem("diagrail"), "_cres", Data.MetaData.CRES);
@@ -1318,7 +1417,10 @@ namespace SimPe.Plugin
 		)
 		{
 			if (item == null)
+			{
 				return;
+			}
+
 			AddFromXml(item.StringValue + prefix, type);
 		}
 
@@ -1345,7 +1447,10 @@ namespace SimPe.Plugin
 		)
 		{
 			if (item == null)
+			{
 				return;
+			}
+
 			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
 				new SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[1];
 			items[0] = item;
@@ -1379,7 +1484,9 @@ namespace SimPe.Plugin
 				catch (Exception ex)
 				{
 					if (Helper.WindowsRegistry.HiddenMode)
+					{
 						Helper.ExceptionMessage("", ex);
+					}
 				}
 			}
 		}

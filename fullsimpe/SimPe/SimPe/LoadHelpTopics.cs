@@ -23,7 +23,10 @@ namespace SimPe
 		{
 			string[] path = GetMenuPath();
 			if (path.Length > 0)
+			{
 				return SimPe.Localization.GetString(path[path.Length - 1]);
+			}
+
 			return SimPe.Localization.GetString("Unknown");
 		}
 
@@ -58,17 +61,23 @@ namespace SimPe
 			{
 				SetupImages(m);
 				if (parent.Image == null && m.Image != null)
+				{
 					parent.Image = m.Image;
+				}
 			}
 
 			if (parent.Image == null)
+			{
 				parent.Image = GetIcon.Support;
+			}
 		}
 
 		void AddItems(SimPe.Interfaces.IHelpRegistry reg)
 		{
 			foreach (SimPe.Interfaces.IHelp topic in reg.HelpTopics)
+			{
 				AddItem(topic);
+			}
 		}
 
 		void AddItem(SimPe.Interfaces.IHelp topic)

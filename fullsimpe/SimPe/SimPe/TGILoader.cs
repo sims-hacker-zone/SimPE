@@ -93,8 +93,12 @@ namespace SimPe
 		void ParseSubNode(XmlNode node)
 		{
 			foreach (XmlNode subnode in node)
+			{
 				if (subnode.Name == "type")
+				{
 					LoadType(subnode);
+				}
+			}
 		}
 
 		/// <summary>
@@ -119,17 +123,34 @@ namespace SimPe
 			foreach (XmlNode subnode in node)
 			{
 				if (subnode.Name == "known")
+				{
 					known = true;
+				}
+
 				if (subnode.Name == "embeddedfilename")
+				{
 					contfl = true;
+				}
+
 				if (subnode.Name == "name")
+				{
 					name = subnode.InnerText;
+				}
+
 				if (subnode.Name == "shortname")
+				{
 					shortname = subnode.InnerText;
+				}
+
 				if (subnode.Name == "extension")
+				{
 					ext = subnode.InnerText;
+				}
+
 				if (subnode.Name == "nodecompressforcache")
+				{
 					nodecomp = true;
+				}
 			}
 
 			//Data.TypeAlias ta = new Data.TypeAlias(contfl, SimPe.Localization.GetString(shortname), type, SimPe.Localization.GetString(name), ext, known);

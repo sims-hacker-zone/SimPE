@@ -38,7 +38,9 @@ namespace Ambertation
 		)
 		{
 			if (destinationType == typeof(BaseChangeShort))
+			{
 				return true;
+			}
 
 			return base.CanConvertTo(context, destinationType);
 		}
@@ -65,7 +67,9 @@ namespace Ambertation
 		)
 		{
 			if (sourceType == typeof(string))
+			{
 				return true;
+			}
 
 			return base.CanConvertFrom(context, sourceType);
 		}
@@ -120,9 +124,15 @@ namespace Ambertation
 			get
 			{
 				if (DigitBase == 16)
+				{
 					return "Hexadecimal";
+				}
+
 				if (DigitBase == 2)
+				{
 					return "Binary";
+				}
+
 				return "Decimal";
 			}
 		}
@@ -246,7 +256,9 @@ namespace Ambertation
 
 			//Add all properties
 			foreach (string k in ht.Keys)
+			{
 				AddProperty(k, myTypeBuilder);
+			}
 
 			//Creat type and an Instance
 			custDataType = myTypeBuilder.CreateType();
@@ -328,7 +340,9 @@ namespace Ambertation
 			get
 			{
 				if (Instance == null)
+				{
 					return new Hashtable();
+				}
 
 				Hashtable ret = new Hashtable();
 				foreach (string k in ht.Keys)

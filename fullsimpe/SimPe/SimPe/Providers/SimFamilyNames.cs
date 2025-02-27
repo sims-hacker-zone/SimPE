@@ -61,7 +61,9 @@ namespace SimPe.Providers
 		{
 			names = new Hashtable();
 			if (BasePackage == null)
+			{
 				return;
+			}
 
 			SimPe.PackedFiles.Wrapper.Fami fami = new SimPe.PackedFiles.Wrapper.Fami(
 				null
@@ -147,13 +149,19 @@ namespace SimPe.Providers
 		public SimPe.Interfaces.IAlias FindName(uint id)
 		{
 			if (names == null)
+			{
 				LoadSimsFromFolder();
+			}
 
 			object o = names[id];
 			if (o != null)
+			{
 				return (IAlias)o;
+			}
 			else
+			{
 				return new Alias(id, "Unknown");
+			}
 		}
 
 		/// <summary>
@@ -163,7 +171,9 @@ namespace SimPe.Providers
 		public ArrayList GetAllSimIDs()
 		{
 			if (BasePackage == null)
+			{
 				new ArrayList();
+			}
 
 			//load a list of all avail SimID's
 			ArrayList simids = new ArrayList();

@@ -77,11 +77,20 @@ namespace SimPe.Plugin
 		public void MoveComment(int from, int too)
 		{
 			if (from < 0 || from > Count - 1)
+			{
 				return;
+			}
+
 			if (too < 0 || too > Count - 1)
+			{
 				return;
+			}
+
 			if (from == too)
+			{
 				return;
+			}
+
 			string twine = Items[from];
 			Items[from] = Items[too];
 			Items[too] = twine;
@@ -90,14 +99,20 @@ namespace SimPe.Plugin
 		public void WriteComment(int indx, string comment)
 		{
 			if (indx < 0 || indx > Count - 1)
+			{
 				return;
+			}
+
 			Items[indx] = comment;
 		}
 
 		public string ReadComment(int indx)
 		{
 			if (indx < 0 || indx > Count - 1)
+			{
 				return "";
+			}
+
 			return Items[indx];
 		}
 
@@ -111,7 +126,10 @@ namespace SimPe.Plugin
 		public void DeleteBlock()
 		{
 			if (Count < 1)
+			{
 				return;
+			}
+
 			Count--;
 			Array.Resize<string>(ref items, Count);
 		}
@@ -121,14 +139,20 @@ namespace SimPe.Plugin
 		)
 		{
 			if (FileDescriptor == null)
+			{
 				return null;
+			}
+
 			pjse.FileTable.Entry[] items = pjse.FileTable.GFT[
 				type,
 				FileDescriptor.Group,
 				FileDescriptor.Instance
 			];
 			if (items == null || items.Length == 0)
+			{
 				return null;
+			}
+
 			SimPe.Interfaces.Plugin.Internal.IPackedFileWrapper wrp =
 				SimPe.FileTable.WrapperRegistry.FindHandler(type);
 			wrp.ProcessData(items[0].PFD, items[0].Package);
@@ -229,14 +253,20 @@ namespace SimPe.Plugin
 						{
 							chrc = reader.ReadByte();
 							if (chrc != 0)
+							{
 								items[i] += Convert.ToChar(chrc);
+							}
 						}
 						reader.BaseStream.Seek(3, System.IO.SeekOrigin.Current);
 						if (items[i].Length > 128)
+						{
 							items[i] = items[i].Substring(1, items[i].Length - 1);
+						}
 					}
 					else
+					{
 						tmpo = reader.ReadUInt32(); // terminater Byte
+					}
 				}
 			}
 		}
@@ -253,7 +283,10 @@ namespace SimPe.Plugin
 		{
 			writer.BaseStream.Seek(0, System.IO.SeekOrigin.Begin);
 			foreach (char c in FileNam)
+			{
 				writer.Write(c);
+			}
+
 			writer.BaseStream.Seek(0x40, System.IO.SeekOrigin.Begin);
 			writer.Write(Vershin);
 			writer.Write(Unk0);
@@ -293,14 +326,18 @@ namespace SimPe.Plugin
 							lon = Convert.ToUInt16(items[i].Length + 256); // ensure len is not read as zero later
 							writer.Write(lon);
 							foreach (char c in items[i])
+							{
 								writer.Write(c);
+							}
 						}
 						else
 						{
 							len = Convert.ToByte(items[i].Length);
 							writer.Write(len);
 							foreach (char c in items[i])
+							{
 								writer.Write(c);
+							}
 						}
 						writer.Write((int)0);
 					}

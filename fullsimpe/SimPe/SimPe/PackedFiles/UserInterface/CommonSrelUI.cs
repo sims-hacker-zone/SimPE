@@ -428,25 +428,39 @@ namespace SimPe.PackedFiles.UserInterface
 			this.pbLife.Value = Srel.Longterm;
 			Boolset bs = Srel.RelationState.Value;
 			for (int i = 0; i < bs.Length; i++)
+			{
 				if (ltcb[i] != null)
+				{
 					ltcb[i].Checked = bs[i];
+				}
+			}
+
 			if (Srel.RelationState2 != null)
 			{
 				bs = Srel.RelationState2.Value;
 				for (int i = 0; i < bs.Length; i++)
+				{
 					if (ltcb[i + 16] != null)
 					{
 						ltcb[i + 16].Enabled = true;
 						ltcb[i + 16].Checked = bs[i];
 					}
+				}
 			}
 			else
+			{
 				for (int i = 0; i < bs.Length; i++)
+				{
 					if (ltcb[i + 16] != null)
+					{
 						ltcb[i + 16].Enabled = false;
+					}
+				}
+			}
 
 			this.cbfamtype.SelectedIndex = 0;
 			for (int i = 1; i < this.cbfamtype.Items.Count; i++)
+			{
 				if (
 					this.cbfamtype.Items[i]
 					== new Data.LocalizedRelationshipTypes(srel.FamilyRelation)
@@ -455,27 +469,40 @@ namespace SimPe.PackedFiles.UserInterface
 					this.cbfamtype.SelectedIndex = i;
 					break;
 				}
+			}
 
 			this.tbRel.Text = "0x" + Helper.HexString((uint)srel.FamilyRelation);
 
 			if (this.cblove.Checked)
 			{
 				if (pbLife.Value > 90)
+				{
 					pbLife.SelectedColor = Color.HotPink;
+				}
+
 				if (pbDay.Value > 90)
+				{
 					pbDay.SelectedColor = Color.HotPink;
+				}
 			}
 			else
 			{
 				if (pbLife.Value > 90)
+				{
 					pbLife.SelectedColor = Color.Lime;
+				}
+
 				if (pbDay.Value > 90)
+				{
 					pbDay.SelectedColor = Color.Lime;
+				}
 			}
 			intern = false;
 
 			if (ChangedContent != null)
+			{
 				ChangedContent(this, new EventArgs());
+			}
 		}
 
 		private void ChangedLife(object sender, System.EventArgs e)
@@ -493,12 +520,16 @@ namespace SimPe.PackedFiles.UserInterface
 				if (cblove.Checked && pbLife.Value > 90)
 				{
 					if (pbLife.SelectedColor != Color.HotPink)
+					{
 						pbLife.SelectedColor = Color.HotPink;
+					}
 				}
 				else
 				{
 					if (pbLife.SelectedColor != Color.Lime)
+					{
 						pbLife.SelectedColor = Color.Lime;
+					}
 				}
 				/*
 					if (pbLife.SelectedColor != Color.Lime)
@@ -509,7 +540,10 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 
 			if (intern)
+			{
 				return;
+			}
+
 			Srel.Longterm = pbLife.Value;
 			Srel.Changed = true;
 		}
@@ -519,24 +553,33 @@ namespace SimPe.PackedFiles.UserInterface
 			if (pbDay.Value < 0)
 			{
 				if (pbDay.SelectedColor != Color.OrangeRed)
+				{
 					pbDay.SelectedColor = Color.OrangeRed;
+				}
 			}
 			else
 			{
 				if (cblove.Checked && pbDay.Value > 90)
 				{
 					if (pbDay.SelectedColor != Color.HotPink)
+					{
 						pbDay.SelectedColor = Color.HotPink;
+					}
 				}
 				else
 				{
 					if (pbDay.SelectedColor != Color.Lime)
+					{
 						pbDay.SelectedColor = Color.Lime;
+					}
 				}
 			}
 
 			if (intern)
+			{
 				return;
+			}
+
 			Srel.Shortterm = pbDay.Value;
 			Srel.Changed = true;
 		}
@@ -544,8 +587,12 @@ namespace SimPe.PackedFiles.UserInterface
 		private void ChangedRelation(object sender, System.EventArgs e)
 		{
 			if (intern)
+			{
 				return;
+			}
+
 			if (this.cbfamtype.SelectedIndex >= 0)
+			{
 				this.tbRel.Text =
 					"0x"
 					+ Helper.HexString(
@@ -555,12 +602,16 @@ namespace SimPe.PackedFiles.UserInterface
 							)
 						)
 					);
+			}
 		}
 
 		private void ChangedRelationText(object sender, System.EventArgs e)
 		{
 			if (intern)
+			{
 				return;
+			}
+
 			Srel.FamilyRelation = (Data.LocalizedRelationshipTypes)
 				Helper.StringToUInt32(this.tbRel.Text, (uint)Srel.FamilyRelation, 16);
 			Srel.Changed = true;
@@ -569,7 +620,9 @@ namespace SimPe.PackedFiles.UserInterface
 		private void ChangedState(object sender, System.EventArgs e)
 		{
 			if (intern)
+			{
 				return;
+			}
 
 			int i = ltcb.IndexOf((CheckBox)sender);
 			if (i >= 0)
@@ -578,9 +631,14 @@ namespace SimPe.PackedFiles.UserInterface
 					(i < 16) ? Srel.RelationState.Value : Srel.RelationState2.Value;
 				val[i & 0x0f] = ((CheckBox)sender).Checked;
 				if (i < 16)
+				{
 					Srel.RelationState.Value = val;
+				}
 				else
+				{
 					Srel.RelationState2.Value = val;
+				}
+
 				Srel.Changed = true;
 			}
 
@@ -589,12 +647,16 @@ namespace SimPe.PackedFiles.UserInterface
 				if (pbLife.Value > 90)
 				{
 					if (pbLife.SelectedColor != Color.HotPink)
+					{
 						pbLife.SelectedColor = Color.HotPink;
+					}
 				}
 				if (pbDay.Value > 90)
 				{
 					if (pbDay.SelectedColor != Color.HotPink)
+					{
 						pbDay.SelectedColor = Color.HotPink;
+					}
 				}
 			}
 			else
@@ -602,12 +664,16 @@ namespace SimPe.PackedFiles.UserInterface
 				if (pbLife.Value > 90)
 				{
 					if (pbLife.SelectedColor != Color.Lime)
+					{
 						pbLife.SelectedColor = Color.Lime;
+					}
 				}
 				if (pbDay.Value > 90)
 				{
 					if (pbDay.SelectedColor != Color.Lime)
+					{
 						pbDay.SelectedColor = Color.Lime;
+					}
 				}
 			}
 		}
@@ -617,7 +683,10 @@ namespace SimPe.PackedFiles.UserInterface
 			get
 			{
 				if (Srel == null)
+				{
 					return null;
+				}
+
 				return Srel.SourceSim;
 			}
 		}
@@ -627,7 +696,10 @@ namespace SimPe.PackedFiles.UserInterface
 			get
 			{
 				if (Srel == null)
+				{
 					return null;
+				}
+
 				return Srel.TargetSim;
 			}
 		}
@@ -637,7 +709,10 @@ namespace SimPe.PackedFiles.UserInterface
 			get
 			{
 				if (Srel == null)
+				{
 					return SimPe.Localization.GetString("Unknown");
+				}
+
 				return Srel.SourceSimName;
 			}
 		}
@@ -647,7 +722,10 @@ namespace SimPe.PackedFiles.UserInterface
 			get
 			{
 				if (Srel == null)
+				{
 					return SimPe.Localization.GetString("Unknown");
+				}
+
 				return Srel.TargetSimName;
 			}
 		}
@@ -657,7 +735,10 @@ namespace SimPe.PackedFiles.UserInterface
 			get
 			{
 				if (Srel == null)
+				{
 					return null;
+				}
+
 				return Srel.Image;
 			}
 		}

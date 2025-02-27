@@ -282,9 +282,13 @@ namespace SimPe.PackedFiles.Wrapper
 		protected int GetValue(int slot)
 		{
 			if (values.Length > slot)
+			{
 				return values[slot];
+			}
 			else
+			{
 				return 0;
+			}
 		}
 
 		/// <summary>
@@ -309,18 +313,24 @@ namespace SimPe.PackedFiles.Wrapper
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
 			if (reader.BaseStream.Length <= 0)
+			{
 				return;
+			}
 
 			reserved[0] = reader.ReadUInt32(); //unknown
 			uint stored = reader.ReadUInt32();
 			values = new int[Math.Max(3, stored)];
 			for (int i = 0; i < stored; i++)
+			{
 				values[i] = reader.ReadInt32();
+			}
 
 			//set some special Attributes
 			RelationState.Value = (ushort)values[1];
 			if (9 < values.Length)
+			{
 				flags2.Value = (ushort)values[9];
+			}
 		}
 
 		/// <summary>
@@ -336,13 +346,17 @@ namespace SimPe.PackedFiles.Wrapper
 			//set some special Attributes
 			values[1] = (int)((values[1] & 0xffff0000) | RelationState.Value);
 			if (9 < values.Length)
+			{
 				values[9] = (int)((values[9] & 0xffff0000) | flags2.Value);
+			}
 
 			//write to file
 			writer.Write(reserved[0]);
 			writer.Write((uint)values.Length);
 			for (int i = 0; i < values.Length; i++)
+			{
 				writer.Write(values[i]);
+			}
 		}
 		#endregion
 

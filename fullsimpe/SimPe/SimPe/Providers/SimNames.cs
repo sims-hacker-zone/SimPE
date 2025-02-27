@@ -77,7 +77,9 @@ namespace SimPe.Providers
 			foreach (SimPe.ExpansionItem ei in SimPe.PathProvider.Global.Expansions)
 			{
 				if (!ei.Exists)
+				{
 					continue;
+				}
 
 				foreach (string s in ei.SimNameDeepSearch)
 				{
@@ -86,9 +88,14 @@ namespace SimPe.Providers
 						s
 					);
 					if (!Directory.Exists(path))
+					{
 						path = System.IO.Path.Combine(ei.InstallFolder, s);
+					}
+
 					if (Directory.Exists(path))
+					{
 						folders.Add(new SimPe.FileTableItem(path));
+					}
 				}
 			}
 			characterfi = new SimPe.Plugin.FileIndex(folders);
@@ -116,7 +123,9 @@ namespace SimPe.Providers
 				{
 					WaitForEnd(); // wait for any other stoppable threads to end
 					if (dir != value) // if other thread has set dir then it has also set names so lets not wippe them out
+					{
 						names = null;
+					}
 				}
 				dir = value;
 			}
@@ -205,7 +214,9 @@ namespace SimPe.Providers
 					a = new Alias(objd.Guid, its[0].Title, "{name} {2} (0x{id})");
 #endif
 					if (its.Length > 2)
+					{
 						tags[2] = its[2].Title;
+					}
 				}
 			}
 
@@ -217,7 +228,10 @@ namespace SimPe.Providers
 				foreach (IPackedFileDescriptor pfd in piclist)
 				{
 					if (pfd.Group != objd.FileDescriptor.Group)
+					{
 						continue;
+					}
+
 					if (pfd.Instance < 0x200)
 					{
 						SimPe.PackedFiles.Wrapper.Picture pic =
@@ -242,11 +256,19 @@ namespace SimPe.Providers
 
 				//set stuff for NPCs
 				if (npc && a.Tag[2].ToString() != "(NPC)")
+				{
 					a.Tag[2] = a.Tag[2].ToString() + " (NPC)";
+				}
+
 				if (names == null)
+				{
 					return null;
+				}
+
 				if (!names.Contains(objd.Guid))
+				{
 					names.Add(objd.Guid, a);
+				}
 			}
 			return a;
 		}
@@ -257,16 +279,23 @@ namespace SimPe.Providers
 				Helper.StartedGui == Executable.Classic
 				|| !Helper.WindowsRegistry.DeepSimScan
 			)
+			{
 				return;
+			}
+
 			if (Helper.WindowsRegistry.DeepSimTemplateScan)
+			{
 				characterfi.Load();
+			}
 
 			FileTable.FileIndex.AddChild(characterfi); // why if not DeepSimTemplateScan
 			try
 			{
 				ScanFileTable(0x80);
 				if (Helper.WindowsRegistry.DeepSimTemplateScan)
+				{
 					ScanFileTable(0x81); // some templates are instance 0x81
+				}
 			}
 			finally
 			{
@@ -281,7 +310,10 @@ namespace SimPe.Providers
 				Helper.StartedGui == Executable.Classic
 				|| !Helper.WindowsRegistry.DeepSimScan
 			)
+			{
 				return;
+			}
+
 			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
 				FileTable.FileIndex.FindFileDiscardingGroup(
 					Data.MetaData.OBJD_FILE,
@@ -293,7 +325,9 @@ namespace SimPe.Providers
 			foreach (SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
 			{
 				if (this.HaveToStop)
+				{
 					break;
+				}
 
 				SimPe.PackedFiles.Wrapper.ExtObjd objd =
 					new SimPe.PackedFiles.Wrapper.ExtObjd();
@@ -302,10 +336,14 @@ namespace SimPe.Providers
 					Helper.WindowsRegistry.DeepSimTemplateScan
 					&& objd.Type == Data.ObjectTypes.Template
 				)
+				{
 					AddSim(objd, ref ct, step, true);
+				}
 
 				if (objd.Type == Data.ObjectTypes.Person)
+				{
 					AddSim(objd, ref ct, step, true);
+				}
 			}
 		}
 
@@ -315,9 +353,14 @@ namespace SimPe.Providers
 			{
 				string[] files = Directory.GetFiles(dir, "*.package");
 				if (Helper.StartedGui == Executable.Classic)
+				{
 					WaitingScreen.Wait();
+				}
 				else
+				{
 					Wait.SubStart(files.Length);
+				}
+
 				try
 				{
 					bool breaked = false;
@@ -350,12 +393,16 @@ namespace SimPe.Providers
 							Data.MetaData.OBJD_FILE
 						);
 						if (list.Length > 0)
+						{
 							AddSim(fl, list[0], ref ct, step);
+						}
 						//fl.Reader.Close();
 					} //foreach
 
 					if (!breaked)
+					{
 						ScanFileTable();
+					}
 				}
 				catch (Exception ex)
 				{
@@ -364,9 +411,13 @@ namespace SimPe.Providers
 				finally
 				{
 					if (Helper.StartedGui == Executable.Classic)
+					{
 						WaitingScreen.Stop();
+					}
 					else
+					{
 						Wait.Stop(true);
+					}
 				}
 				ended.Set();
 			}
@@ -386,15 +437,24 @@ namespace SimPe.Providers
 		{
 			WaitForEnd(); // wait for any other stoppable threads to end
 			if (names != null)
+			{
 				return; // if names were set by other thread then lets not do it again (and again, and again etc.)
+			}
+
 			names = new Hashtable();
 			if (!Directory.Exists(dir))
+			{
 				return;
+			}
+
 			if (
 				Helper.WindowsRegistry.DeepSimScan
 				&& Helper.StartedGui != Executable.Classic
 			)
+			{
 				FileTable.FileIndex.Load();
+			}
+
 			this.ExecuteThread(
 				ThreadPriority.AboveNormal,
 				"Sim Name Provider",
@@ -419,13 +479,22 @@ namespace SimPe.Providers
 		public IAlias FindName(uint id)
 		{
 			if (names == null)
+			{
 				LoadSimsFromFolder();
+			}
+
 			object o = names[id];
 			if (o != null)
+			{
 				return (IAlias)o;
+			}
+
 			string es = SimPe.Data.MetaData.GetKnownNPC(id);
 			if (es != "not found")
+			{
 				return new Alias(id, es);
+			}
+
 			return new Alias(id, Localization.Manager.GetString("unknown"));
 		}
 
@@ -437,7 +506,10 @@ namespace SimPe.Providers
 			get
 			{
 				if (names == null)
+				{
 					LoadSimsFromFolder();
+				}
+
 				return names;
 			}
 			set

@@ -71,7 +71,9 @@ namespace SimPe.Plugin
 			{
 				this.cbLineStyle.Items.Add(l);
 				if ((int)l == Helper.WindowsRegistry.GraphLineMode)
+				{
 					this.cbLineStyle.SelectedIndex = cbLineStyle.Items.Count - 1;
+				}
 			}
 			//			if (cbLineStyle.SelectedIndex==-1) cbLineStyle.SelectedIndex = 2;
 
@@ -429,7 +431,9 @@ namespace SimPe.Plugin
 				ht = rcol.ReferenceChains;
 
 				if (rcol.Package.FileName == open_pkg.FileName)
+				{
 					selpfd = rcol.FileDescriptor;
+				}
 			}
 			else if (gi.Tag.GetType() == typeof(SimPe.Plugin.MmatWrapper))
 			{
@@ -440,20 +444,28 @@ namespace SimPe.Plugin
 				ht = mmat.ReferenceChains;
 
 				if (mmat.Package.FileName == open_pkg.FileName)
+				{
 					selpfd = mmat.FileDescriptor;
+				}
 			}
 
 			llopen.Enabled = (selpfd != null);
 
 			if (ht != null)
+			{
 				foreach (string s in ht.Keys)
+				{
 					foreach (Interfaces.Files.IPackedFileDescriptor pfd in (ArrayList)ht[s])
 					{
 						this.cbrefnames.Items.Add(pfd.Filename);
 					}
+				}
+			}
 
 			if (cbrefnames.Items.Count > 0)
+			{
 				cbrefnames.SelectedIndex = 0;
+			}
 		}
 
 		SimPe.Interfaces.Files.IPackedFileDescriptor pfd,
@@ -509,12 +521,15 @@ namespace SimPe.Plugin
 				WaitingScreen.Stop();
 				TimeSpan runtime = DateTime.Now.Subtract(start);
 				if (Helper.WindowsRegistry.HiddenMode)
+				{
 					Text =
 						"Runtime: "
 						+ runtime.TotalSeconds
 						+ " sek. = "
 						+ runtime.TotalMinutes
 						+ " min.";
+				}
+
 				RemoteControl.ShowSubForm(this);
 
 				pfd = this.pfd;
@@ -554,7 +569,10 @@ namespace SimPe.Plugin
 		private void cbLineStyle_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			if (cbLineStyle.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			gb.Graph.LineMode = (Ambertation.Windows.Forms.Graph.LinkControlLineMode)
 				cbLineStyle.Items[cbLineStyle.SelectedIndex];
 			Helper.WindowsRegistry.GraphLineMode = (int)gb.Graph.LineMode;

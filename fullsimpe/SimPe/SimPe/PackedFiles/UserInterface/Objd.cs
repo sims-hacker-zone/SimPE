@@ -54,12 +54,15 @@ namespace SimPe.PackedFiles.UserInterface
 			int top = 4;
 			ArrayList keys = new ArrayList();
 			foreach (string k in list.Keys)
+			{
 				keys.Add(
 					"0x"
 						+ Helper.HexString((ushort)objd.GetAttributePosition(k))
 						+ ": "
 						+ k
 				);
+			}
+
 			keys.Sort();
 
 			foreach (string k in keys)
@@ -110,7 +113,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void HexTextChanged(object sender, EventArgs e)
 		{
 			if (systentextupdate)
+			{
 				return;
+			}
+
 			systentextupdate = true;
 			TextBox tb = (TextBox)sender;
 
@@ -141,7 +147,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void DecTextChanged(object sender, EventArgs e)
 		{
 			if (systentextupdate)
+			{
 				return;
+			}
+
 			systentextupdate = true;
 			TextBox tb = (TextBox)sender;
 

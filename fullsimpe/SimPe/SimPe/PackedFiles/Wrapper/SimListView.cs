@@ -116,28 +116,40 @@ namespace SimPe.PackedFiles.Wrapper
 
 			lvi.Text = " " + sdesc.SimName + " " + sdesc.SimFamilyName;
 			if (this.Columns.Count > 1)
+			{
 				lvi.SubItems.Add("    " + Columns[1].Text + ": " + sdesc.HouseholdName);
+			}
+
 			if (this.Columns.Count > 2)
+			{
 				lvi.SubItems.Add(
 					"    " + Columns[2].Text + ": 0x" + Helper.HexString(sdesc.SimId)
 				);
+			}
+
 			if (this.Columns.Count > 3)
+			{
 				lvi.SubItems.Add(
 					"    "
 						+ Columns[3].Text
 						+ ": 0x"
 						+ Helper.HexString((ushort)sdesc.FileDescriptor.Instance)
 				);
+			}
+
 			if (this.Columns.Count > 4)
 			{
 				if (sdesc.University.OnCampus == 0x1)
+				{
 					lvi.SubItems.Add(
 						"    "
 							+ Columns[4].Text
 							+ ": "
 							+ Localization.Manager.GetString("YoungAdult")
 					);
+				}
 				else
+				{
 					lvi.SubItems.Add(
 						"    "
 							+ Columns[4].Text
@@ -146,6 +158,7 @@ namespace SimPe.PackedFiles.Wrapper
 								sdesc.CharacterDescription.LifeSection
 							).ToString()
 					);
+				}
 			}
 
 			this.Items.Add(lvi);
@@ -174,19 +187,27 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				Image img = simicons[guid];
 				if (img != null)
+				{
 					return (Image)img.Clone();
+				}
 			}
 
 			if (imgbig != null)
+			{
 				if (imgbig.Width < 16)
+				{
 					imgbig = null;
+				}
+			}
 
 			if (imgbig != null)
+			{
 				imgbig = Ambertation.Drawing.GraphicRoutines.KnockoutImage(
 					imgbig,
 					new Point(0, 0),
 					Color.Magenta
 				);
+			}
 			else
 			{
 				imgbig = SimPe.GetImage.NoOne;

@@ -20,7 +20,9 @@ namespace Ambertation.Renderer
 		)
 		{
 			if (e.Item.Enabled)
+			{
 				base.OnRenderMenuItemBackground(e);
+			}
 		}
 
 		static byte Interpolate(byte b1, byte b2, float p)
@@ -46,10 +48,12 @@ namespace Ambertation.Renderer
 			this.RoundedEdges = false;
 
 			if (menupattern == null)
+			{
 				menupattern = Image.FromStream(
 					this.GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.pattern.gif")
 				);
+			}
 		}
 
 		static Image menupattern;
@@ -124,7 +128,10 @@ namespace Ambertation.Renderer
 			);
 			e.Graphics.FillRectangle(t, e.AffectedBounds);
 			if (overlay)
+			{
 				e.Graphics.FillRectangle(b, e.AffectedBounds);
+			}
+
 			b.Dispose();
 			t.Dispose();
 		}
@@ -142,7 +149,9 @@ namespace Ambertation.Renderer
 				pen.Dispose();
 			}
 			else
+			{
 				base.OnRenderToolStripBorder(e);
+			}
 		}
 	}
 

@@ -68,7 +68,10 @@ namespace SimPe.Wizards
 			this.ParentWizard = parent;
 			Index = 0;
 			if (parent == null)
+			{
 				return;
+			}
+
 			Index = ((Wizard)parent).Controls.Count - 1;
 			First = (Index == 0);
 
@@ -80,7 +83,10 @@ namespace SimPe.Wizards
 		internal void RemoveParent(Wizard parent)
 		{
 			if (parent == null)
+			{
 				return;
+			}
+
 			parent.Aborted -= new WizardHandle(OnAborted);
 			parent.Finished -= new WizardHandle(OnFinished);
 			parent.Loaded -= new WizardHandle(OnLoaded);
@@ -109,43 +115,57 @@ namespace SimPe.Wizards
 		protected void OnLoaded(Wizard sender)
 		{
 			if (Loaded != null)
+			{
 				Loaded(sender, this);
+			}
 		}
 
 		protected void OnAborted(Wizard sender)
 		{
 			if (Aborted != null)
+			{
 				Aborted(sender, this);
+			}
 		}
 
 		protected void OnFinished(Wizard sender)
 		{
 			if (Finished != null)
+			{
 				Finished(sender, this);
+			}
 		}
 
 		internal void OnPrepare(Wizard sender, int target)
 		{
 			if (Prepare != null)
+			{
 				Prepare(sender, this, target);
+			}
 		}
 
 		internal void OnRollback(Wizard sender, int target)
 		{
 			if (Rollback != null)
+			{
 				Rollback(sender, this, target);
+			}
 		}
 
 		internal void OnShow(Wizard sender, WizardEventArgs e)
 		{
 			if (Activate != null)
+			{
 				Activate(sender, e);
+			}
 		}
 
 		internal void OnShowed(Wizard sender)
 		{
 			if (Activated != null)
+			{
 				Activated(sender, this);
+			}
 		}
 
 		public event WizardStepHandle Loaded;

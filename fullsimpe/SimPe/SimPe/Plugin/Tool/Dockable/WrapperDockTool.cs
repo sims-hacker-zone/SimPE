@@ -45,6 +45,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		public void RefreshDock(object sender, SimPe.Events.ResourceEventArgs es)
 		{
 			if (!es.Empty)
+			{
 				if (es.HasFileDescriptor)
 				{
 					SimPe.Interfaces.IWrapper wrp =
@@ -60,12 +61,18 @@ namespace SimPe.Plugin.Tool.Dockable
 						rd.lbDesc.Text = wrp.WrapperDescription.Description;
 						rd.pb.Image = wrp.WrapperDescription.Icon;
 						if (rd.pb.Image != null)
+						{
 							rd.lbName.Left = rd.pb.Right + 4;
+						}
 						else
+						{
 							rd.lbName.Left = rd.pb.Left;
+						}
+
 						return;
 					}
 				}
+			}
 
 			rd.lbName.Text = SimPe.Localization.GetString("Unknown");
 			rd.lbAuthor.Text = SimPe.Localization.GetString("Unknown");

@@ -480,17 +480,26 @@ namespace SimPe.Plugin.Gmdc
 		{
 			this.cbClear.Checked = gmi.ClearGroupsOnImport;
 			if (chg == null)
+			{
 				chg = new MeshListViewItem.ActionChangedEvent(ActionChangedEvent);
+			}
+
 			if (bonechg == null)
+			{
 				bonechg = new SimPe.Plugin.Gmdc.BoneListViewItem.ActionChangedEvent(
 					BoneActionChangedEvent
 				);
+			}
 
 			foreach (Ambertation.Scenes.Mesh m in gmi.Scene.MeshCollection)
+			{
 				new MeshListViewItemExt(lvmesh, m, gmi, chg);
+			}
 
 			foreach (Ambertation.Scenes.Joint j in gmi.Scene.JointCollection)
+			{
 				new BoneListViewItemExt(this.lvbones, j, gmi, bonechg);
+			}
 		}
 
 		bool ignore = false;
@@ -498,12 +507,18 @@ namespace SimPe.Plugin.Gmdc
 		void ActionChangedEvent(MeshListViewItem sender)
 		{
 			if (ignore)
+			{
 				return;
+			}
+
 			ignore = true;
 			foreach (MeshListViewItem mlvi in lvmesh.SelectedItems)
 			{
 				if (mlvi == sender)
+				{
 					continue;
+				}
+
 				mlvi.Action = sender.Action;
 			}
 			ignore = false;
@@ -512,12 +527,18 @@ namespace SimPe.Plugin.Gmdc
 		void BoneActionChangedEvent(BoneListViewItem sender)
 		{
 			if (ignore)
+			{
 				return;
+			}
+
 			ignore = true;
 			foreach (BoneListViewItem blvi in lvbones.SelectedItems)
 			{
 				if (blvi == sender)
+				{
 					continue;
+				}
+
 				blvi.Action = sender.Action;
 			}
 			ignore = false;

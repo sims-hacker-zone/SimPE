@@ -39,7 +39,9 @@ namespace SimPe
 			foreach (string s in param)
 			{
 				if (System.IO.File.Exists(s))
+				{
 					fllist.Add(s);
+				}
 			}
 
 			Files = new string[fllist.Count];

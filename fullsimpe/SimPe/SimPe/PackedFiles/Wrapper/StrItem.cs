@@ -63,7 +63,10 @@ namespace SimPe.PackedFiles.Wrapper
 				string enumName = ((Data.MetaData.Languages)Id).ToString();
 				string s = Localization.Manager.GetString(enumName);
 				if (s != null)
+				{
 					return s;
+				}
+
 				return enumName;
 			}
 		}
@@ -91,7 +94,10 @@ namespace SimPe.PackedFiles.Wrapper
 		public override bool Equals(object obj)
 		{
 			if (obj.GetType() == typeof(StrLanguage))
+			{
 				return (Id == ((StrLanguage)obj).Id);
+			}
+
 			return base.Equals(obj);
 		}
 
@@ -113,18 +119,30 @@ namespace SimPe.PackedFiles.Wrapper
 				b;
 
 			if (x.GetType() == typeof(StrLanguage))
+			{
 				a = ((StrLanguage)x).Id;
+			}
 			else if (x.GetType() == typeof(byte))
+			{
 				a = (byte)x;
+			}
 			else
+			{
 				return 0;
+			}
 
 			if (y.GetType() == typeof(StrLanguage))
+			{
 				b = ((StrLanguage)y).Id;
+			}
 			else if (y.GetType() == typeof(byte))
+			{
 				b = (byte)y;
+			}
 			else
+			{
 				return 0;
+			}
 
 			return b - a;
 		}
@@ -277,9 +295,9 @@ namespace SimPe.PackedFiles.Wrapper
 			string desc = StreamHelper.ReadPChar(reader);
 
 			if (lines[lid.Id] == null)
+			{
 				lines[lid.Id] = new StrItemList(); // Add a new StrItemList if needed
-
-			((StrItemList)lines[lid.Id]).Add(
+			} ((StrItemList)lines[lid.Id]).Add(
 				new StrToken(((StrItemList)lines[lid.Id]).Count, lid, title, desc)
 			);
 		}
@@ -287,17 +305,31 @@ namespace SimPe.PackedFiles.Wrapper
 		internal void Serialize(BinaryWriter writer)
 		{
 			if (Language != null)
+			{
 				writer.Write(Language.Id);
+			}
 			else
+			{
 				writer.Write((byte)0);
+			}
+
 			if (title != null)
+			{
 				StreamHelper.WritePChar(writer, title);
+			}
 			else
+			{
 				StreamHelper.WritePChar(writer, "");
+			}
+
 			if (desc != null)
+			{
 				StreamHelper.WritePChar(writer, desc);
+			}
 			else
+			{
 				StreamHelper.WritePChar(writer, "");
+			}
 			//			dirty = false;
 			// Mmm, "dirty" means what?  OK, so I added it...
 		}
@@ -367,7 +399,9 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			StrItemList sil = new StrItemList();
 			foreach (StrToken si in this)
+			{
 				sil.Add(si);
+			}
 
 			return sil;
 		}

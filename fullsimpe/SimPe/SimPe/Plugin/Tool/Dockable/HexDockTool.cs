@@ -46,7 +46,10 @@ namespace SimPe.Plugin.Tool.Dockable
 		{
 			rd.button1.Enabled = false;
 			if (!rd.dcHex.IsFloating && !rd.dcHex.IsDocked)
+			{
 				return;
+			}
+
 			if (es.HasFileDescriptor)
 			{
 				foreach (SimPe.Events.ResourceContainer e in es)

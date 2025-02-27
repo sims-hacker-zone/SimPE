@@ -73,7 +73,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (tGenericRcol == null)
+				{
 					tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
+				}
+
 				return tGenericRcol;
 			}
 		}
@@ -85,7 +88,10 @@ namespace SimPe.Plugin
 		protected override void InitTabPage()
 		{
 			if (tGenericRcol == null)
+			{
 				tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
+			}
+
 			tGenericRcol.tb_ver.Text = "0x" + Helper.HexString(this.version);
 			tGenericRcol.gen_pg.SelectedObject = this;
 		}
@@ -95,7 +101,10 @@ namespace SimPe.Plugin
 		public override void Dispose()
 		{
 			if (this.tGenericRcol != null)
+			{
 				this.tGenericRcol.Dispose();
+			}
+
 			tGenericRcol = null;
 		}
 

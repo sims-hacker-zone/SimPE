@@ -44,12 +44,17 @@ namespace SimPe.Interfaces
 		)
 		{
 			if (e == null)
+			{
 				return null;
+			}
+
 			SimPe.Interfaces.Files.IPackedFileDescriptor pfd = null;
 			if (e.Count > 0)
 			{
 				if (e[0].HasFileDescriptor)
+				{
 					pfd = e[0].Resource.FileDescriptor;
+				}
 			}
 
 			return pfd;
@@ -60,16 +65,23 @@ namespace SimPe.Interfaces
 		)
 		{
 			if (e == null)
+			{
 				return null;
+			}
+
 			SimPe.Interfaces.Files.IPackageFile pkg = null;
 			if (e.Count > 0)
 			{
 				if (e[0].HasPackage)
+				{
 					pkg = e[0].Resource.Package;
+				}
 			}
 
 			if (pkg == null && e.Loaded)
+			{
 				pkg = e.LoadedPackage.Package;
+			}
 
 			return pkg;
 		}
@@ -82,7 +94,9 @@ namespace SimPe.Interfaces
 			SimPe.Interfaces.Files.IPackageFile pkg = ExtractPackage(e);
 
 			if (!IsEnabled(pfd, pkg))
+			{
 				return;
+			}
 
 			SimPe.Interfaces.Plugin.IToolResult ires = ShowDialog(ref pfd, ref pkg);
 

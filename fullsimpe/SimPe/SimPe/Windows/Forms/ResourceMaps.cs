@@ -53,7 +53,9 @@ namespace SimPe.Windows.Forms
 			ByGroup.Clear();
 			ByInstance.Clear();
 			if (call)
+			{
 				Everything.Clear();
+			}
 		}
 	}
 }

@@ -52,7 +52,10 @@ namespace SimPe.PackedFiles.Wrapper
 		public PropertyDescription GetDescriptor(ushort index)
 		{
 			if (props == null)
+			{
 				this.Load();
+			}
+
 			return (PropertyDescription)typemap[index];
 		}
 
@@ -79,7 +82,9 @@ namespace SimPe.PackedFiles.Wrapper
 					{
 						ushort index = Convert.ToUInt16(subnode.InnerText);
 						if (!typemap.Contains(index))
+						{
 							typemap[index] = pd;
+						}
 					}
 					catch { }
 				}

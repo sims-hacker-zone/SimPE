@@ -50,11 +50,16 @@ namespace SimPe.Plugin
 		)
 		{
 			if (ds == null)
+			{
 				ds = new ScannerForm();
+			}
+
 			RemoteControl.ShowSubForm(ds);
 
 			if (ds.FileName == null)
+			{
 				return new ToolResult(false, false);
+			}
 			else
 			{
 				SimPe.Packages.GeneratableFile gf =

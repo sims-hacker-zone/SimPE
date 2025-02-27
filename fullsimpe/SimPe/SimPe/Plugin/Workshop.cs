@@ -242,7 +242,9 @@ namespace SimPe.Plugin
 					if (
 						name.StartsWith(PathProvider.SimSavegameFolder.Trim().ToLower())
 					)
+					{
 						node.ImageIndex = 2;
+					}
 				}
 				node.SelectedImageIndex = node.ImageIndex;
 			}
@@ -360,7 +362,9 @@ namespace SimPe.Plugin
 				}
 
 				if (!added)
+				{
 					this.tviother.Nodes.Add(node);
+				}
 			}
 		}
 
@@ -379,13 +383,18 @@ namespace SimPe.Plugin
 		void LoadCachIndex()
 		{
 			if (cachefile != null)
+			{
 				return;
+			}
 
 			cachechg = false;
 			cachefile = new SimPe.Cache.ObjectLoaderCacheFile();
 
 			if (!Helper.WindowsRegistry.UseCache)
+			{
 				return;
+			}
+
 			WaitingScreen.UpdateMessage("Loading Cache");
 			try
 			{
@@ -408,11 +417,19 @@ namespace SimPe.Plugin
 		void SaveCacheIndex()
 		{
 			if (!Helper.WindowsRegistry.UseCache)
+			{
 				return;
+			}
+
 			if (!cachechg)
+			{
 				return;
+			}
+
 			if (WaitingScreen.Running)
+			{
 				WaitingScreen.UpdateMessage("Saving Cache");
+			}
 
 			cachefile.Save(CacheFileName);
 		}
@@ -1081,9 +1098,14 @@ namespace SimPe.Plugin
 			package = null;
 
 			if (!Helper.WindowsRegistry.LoadOWFast)
+			{
 				BuildListing();
+			}
 			else
+			{
 				tabControl2.SelectedIndex = 2;
+			}
+
 			RemoteControl.ShowSubForm(this);
 
 			WaitingScreen.Stop(this);
@@ -1093,24 +1115,37 @@ namespace SimPe.Plugin
 		private void Select(object sender, System.EventArgs e)
 		{
 			if (tbseek.Tag != null)
+			{
 				return;
+			}
+
 			btclone.Enabled = false;
 			btclone.Refresh();
 			if (lbobj.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			btclone.Enabled = true;
 			btclone.Refresh();
 
 			IAlias a = (IAlias)lbobj.Items[lbobj.SelectedIndex];
 			tbseek.Tag = true;
 			if (sender != null)
+			{
 				tbseek.Text = a.Name;
+			}
+
 			tbseek.Tag = null;
 
 			if (a.Tag[2] == null)
+			{
 				pb.Image = null;
+			}
 			else
+			{
 				pb.Image = GetThumbnail((uint)a.Tag[1], (string)a.Tag[2]);
+			}
 		}
 
 		private void Start(object sender, System.EventArgs e)
@@ -1138,7 +1173,9 @@ namespace SimPe.Plugin
 						localgroup = (uint)a.Tag[1];
 					}
 					else
+					{
 						return;
+					}
 				}
 
 				if (this.rbClone.Checked)
@@ -1173,7 +1210,9 @@ namespace SimPe.Plugin
 					{
 						map = fo.GetNameMap(true);
 						if (map == null)
+						{
 							return;
+						}
 					}
 
 					if (this.cbfix.Checked)
@@ -1187,7 +1226,10 @@ namespace SimPe.Plugin
 								fo.Fix(map, true);
 
 								if (cbclean.Checked)
+								{
 									fo.CleanUp();
+								}
+
 								package.Save();
 							}
 							finally
@@ -1208,7 +1250,9 @@ namespace SimPe.Plugin
 						{
 							fo.FixGroup();
 							if (this.cbfix.Checked)
+							{
 								package.Save();
+							}
 						}
 						finally
 						{
@@ -1219,7 +1263,9 @@ namespace SimPe.Plugin
 				else //if Recolor
 				{
 					if (this.cbColor.Checked)
+					{
 						cbColorExt.Checked = false;
+					}
 
 					if (tabControl2.SelectedIndex == 0)
 					{
@@ -1321,7 +1367,10 @@ namespace SimPe.Plugin
 					Bitmap bm = (Bitmap)
 						ImageLoader.Preview(pic.Image, WaitingScreen.ImageSize);
 					if (WaitingScreen.Running)
+					{
 						WaitingScreen.Update(bm, message);
+					}
+
 					return pic.Image;
 				}
 				catch (Exception) { }
@@ -1352,7 +1401,9 @@ namespace SimPe.Plugin
 				string mmatname =
 					cpf.GetItem("name").StringValue.Trim().ToLower() + "_txmt";
 				if (mmatname == name)
+				{
 					list.Add(pfd);
+				}
 			}
 
 			pfds = new Interfaces.Files.IPackedFileDescriptor[list.Count];
@@ -1397,7 +1448,9 @@ namespace SimPe.Plugin
 				npfd.Type = item.FileDescriptor.Type;
 
 				if (package.FindFile(npfd) == null)
+				{
 					package.Add(npfd);
+				}
 
 				if ((npfd.Instance == 0x85) && (npfd.Type == Data.MetaData.STRING_FILE))
 				{
@@ -1406,7 +1459,9 @@ namespace SimPe.Plugin
 					str.ProcessData(npfd, item.Package);
 					SimPe.PackedFiles.Wrapper.StrItemList items = str.LanguageItems(1);
 					for (int i = 1; i < items.Length; i++)
+					{
 						list.Add(items[i].Title);
+					}
 					//if (items.Length>1) refname = items[1].Title;
 				}
 			}
@@ -1485,7 +1540,10 @@ namespace SimPe.Plugin
 			{
 				string[] modelnames = modelname;
 				if (!cbclean.Checked)
+				{
 					modelnames = null;
+				}
+
 				objclone.RemoveSubsetReferences(
 					Scenegraph.GetParentSubsets(package),
 					modelnames
@@ -1516,12 +1574,18 @@ namespace SimPe.Plugin
 						MessageBoxButtons.YesNo
 					) == DialogResult.No
 				)
+				{
 					return;
+				}
 			}
 
 			if (this.cbColorExt.Checked)
+			{
 				if (sfd.ShowDialog() != DialogResult.OK)
+				{
 					return;
+				}
+			}
 
 			//create a Cloned Object to get all needed Files for the Process
 			bool old = cbgid.Checked;
@@ -1531,7 +1595,9 @@ namespace SimPe.Plugin
 			{
 				WaitingScreen.UpdateMessage("Collecting needed Files");
 				if ((package == null) && (pfd != null))
+				{
 					RecolorClone(pfd, localgroup, false, false, false);
+				}
 
 				cbgid.Checked = old;
 
@@ -1547,23 +1613,31 @@ namespace SimPe.Plugin
 
 				SimPe.Packages.GeneratableFile dn_pkg = null;
 				if (System.IO.File.Exists(ScenegraphHelper.GMND_PACKAGE))
+				{
 					dn_pkg = SimPe.Packages.GeneratableFile.LoadFromFile(
 						ScenegraphHelper.GMND_PACKAGE
 					);
+				}
 				else
+				{
 					dn_pkg = SimPe.Packages.GeneratableFile.LoadFromStream(
 						(System.IO.BinaryReader)null
 					);
+				}
 
 				SimPe.Packages.GeneratableFile gm_pkg = null;
 				if (System.IO.File.Exists(ScenegraphHelper.MMAT_PACKAGE))
+				{
 					gm_pkg = SimPe.Packages.GeneratableFile.LoadFromFile(
 						ScenegraphHelper.MMAT_PACKAGE
 					);
+				}
 				else
+				{
 					gm_pkg = SimPe.Packages.GeneratableFile.LoadFromStream(
 						(System.IO.BinaryReader)null
 					);
+				}
 
 				SimPe.Packages.GeneratableFile npackage =
 					SimPe.Packages.GeneratableFile.LoadFromStream(
@@ -1581,7 +1655,9 @@ namespace SimPe.Plugin
 					package = npackage;
 				}
 				if (package != npackage)
+				{
 					package = null;
+				}
 			}
 			finally
 			{
@@ -1592,7 +1668,10 @@ namespace SimPe.Plugin
 		private void rbClone_CheckedChanged(object sender, System.EventArgs e)
 		{
 			if (tabControl1.Tag != null)
+			{
 				return;
+			}
+
 			tabControl1.Tag = true;
 			tabControl1.SelectedIndex = 0;
 			tabControl1.Tag = null;
@@ -1601,7 +1680,10 @@ namespace SimPe.Plugin
 		private void rbColor_CheckedChanged(object sender, System.EventArgs e)
 		{
 			if (tabControl1.Tag != null)
+			{
 				return;
+			}
+
 			tabControl1.Tag = true;
 			tabControl1.SelectedIndex = 1;
 			tabControl1.Tag = null;
@@ -1610,14 +1692,19 @@ namespace SimPe.Plugin
 		private void SeekItem(object sender, System.EventArgs e)
 		{
 			if (tbseek.Tag != null)
+			{
 				return;
+			}
 
 			tbseek.Tag = true;
 			try
 			{
 				string name = tbseek.Text.TrimStart().ToLower();
 				if (lbobj.SelectionMode != SelectionMode.One)
+				{
 					lbobj.ClearSelected();
+				}
+
 				for (int i = 0; i < lbobj.Items.Count; i++)
 				{
 					IAlias a = (IAlias)lbobj.Items[i];
@@ -1660,13 +1747,20 @@ namespace SimPe.Plugin
 		private void TabChanged(object sender, System.EventArgs e)
 		{
 			if (tabControl1.Tag != null)
+			{
 				return;
+			}
 
 			tabControl1.Tag = true;
 			if (this.tabControl1.SelectedIndex == 0)
+			{
 				rbClone.Checked = true;
+			}
 			else
+			{
 				rbColor.Checked = true;
+			}
+
 			tabControl1.Tag = null;
 		}
 
@@ -1697,18 +1791,28 @@ namespace SimPe.Plugin
 			btclone.Enabled = false;
 			btclone.Refresh();
 			if (tv.SelectedNode == null)
+			{
 				return;
+			}
+
 			if (tv.SelectedNode.Tag == null)
+			{
 				return;
+			}
+
 			btclone.Enabled = true;
 			btclone.Refresh();
 
 			IAlias a = (IAlias)tv.SelectedNode.Tag;
 
 			if (a.Tag[2] == null)
+			{
 				pb.Image = null;
+			}
 			else
+			{
 				pb.Image = GetThumbnail((uint)a.Tag[1], (string)a.Tag[2]);
+			}
 		}
 
 		private void TabChange(object sender, System.EventArgs e)
@@ -1724,7 +1828,10 @@ namespace SimPe.Plugin
 				this.SelectTv(null, null);
 			}
 			else
+			{
 				this.btclone.Enabled = System.IO.File.Exists(tbflname.Text);
+			}
+
 			btclone.Refresh();
 		}
 
@@ -1774,6 +1881,7 @@ namespace SimPe.Plugin
 		)
 		{
 			if (oci.ObjectVersion == SimPe.Cache.ObjectCacheItemVersions.DockableOW)
+			{
 				PutItemToTree(
 					a,
 					oci.Thumbnail,
@@ -1785,7 +1893,9 @@ namespace SimPe.Plugin
 					oci.FileDescriptor.Filename,
 					oci.FileDescriptor.Group
 				);
+			}
 			else
+			{
 				PutItemToTree(
 					a,
 					oci.Thumbnail,
@@ -1797,9 +1907,13 @@ namespace SimPe.Plugin
 					oci.FileDescriptor.Filename,
 					oci.FileDescriptor.Group
 				);
+			}
 
 			if (oci.Thumbnail != null)
+			{
 				a.Name = "* " + a.Name;
+			}
+
 			lbobj.Items.Add(a);
 		}
 	}

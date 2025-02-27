@@ -47,20 +47,27 @@ namespace SimPe.Plugin.Tool.Dockable
 		public void RefreshDock(object sender, SimPe.Events.ResourceEventArgs es)
 		{
 			if (es.LoadedPackage != null)
+			{
 				if (es.LoadedPackage.Loaded)
 				{
 					bool newpkg = (pkg == null);
 					if (!newpkg)
+					{
 						newpkg = !es.LoadedPackage.Package.Equals(pkg);
+					}
 
 					if (newpkg)
 					{
 						SimPe.Packages.PackageRepair pr =
 							new SimPe.Packages.PackageRepair(es.LoadedPackage.Package);
 						if (Helper.WindowsRegistry.HiddenMode)
+						{
 							rd.pgHead.SelectedObject = pr.IndexDetailsAdvanced;
+						}
 						else
+						{
 							rd.pgHead.SelectedObject = pr.IndexDetails;
+						}
 
 						pkg = es.LoadedPackage.Package;
 
@@ -78,6 +85,7 @@ namespace SimPe.Plugin.Tool.Dockable
 					}
 					return;
 				}
+			}
 
 			pkg = null;
 			rd.pgHead.SelectedObject = null;

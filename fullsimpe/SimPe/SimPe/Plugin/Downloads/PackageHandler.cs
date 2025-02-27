@@ -26,10 +26,12 @@ namespace SimPe.Plugin.Downloads
 				|| type == SimPe.Cache.PackageType.Sim
 				|| type == SimPe.Cache.PackageType.Object
 			)
+			{
 				SimPe.PackedFiles.Wrapper.ObjectComboBox.ObjectCache.ReloadCache(
 					SimPe.Plugin.DownloadsToolFactory.FileIndex,
 					false
 				);
+			}
 
 			hnd = HandlerRegistry.Global.LoadTypeHandler(type, pkg);
 			LoadContent(pkg);
@@ -45,9 +47,13 @@ namespace SimPe.Plugin.Downloads
 					)
 				)
 			)
+			{
 				type = PackageInfo.ClassifyPackage(pkg);
+			}
 			else
+			{
 				type = SimPe.Cache.PackageType.Undefined;
+			}
 		}
 
 		protected virtual void OnLoadContent(
@@ -65,8 +71,12 @@ namespace SimPe.Plugin.Downloads
 		{
 			hnd.LoadContent(type, pkg);
 			foreach (Downloads.IPackageInfo nfo in hnd.Objects)
+			{
 				if (nfo is Downloads.PackageInfo)
+				{
 					((Downloads.PackageInfo)nfo).Type = type;
+				}
+			}
 
 			OnLoadContent(pkg, type);
 		}

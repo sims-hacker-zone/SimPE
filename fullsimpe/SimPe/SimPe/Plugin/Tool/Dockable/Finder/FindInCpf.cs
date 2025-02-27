@@ -44,12 +44,16 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 			if (type != 0)
 			{
 				if (pfd.Type != type)
+				{
 					return;
+				}
 			}
 			else
 			{
 				if (pfd.Type != Data.MetaData.GZPS && pfd.Type != Data.MetaData.MMAT)
+				{
 					return;
+				}
 			}
 
 			SimPe.PackedFiles.Wrapper.Cpf cpf = new SimPe.PackedFiles.Wrapper.Cpf();
@@ -57,14 +61,18 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 
 			bool found = false;
 			if (field != "")
+			{
 				found = FindInField(cpf, found, field);
+			}
 			else
 			{
 				foreach (SimPe.PackedFiles.Wrapper.CpfItem item in cpf.Items)
 				{
 					found = FindInField(cpf, found, item.Name);
 					if (found)
+					{
 						break;
+					}
 				}
 			}
 

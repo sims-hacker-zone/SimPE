@@ -80,12 +80,17 @@ namespace SimPe
 			foreach (PropertyInfo p in ps)
 			{
 				if (!p.CanRead)
+				{
 					continue;
+				}
 
 				try
 				{
 					if (s != "")
+					{
 						s += Seperator;
+					}
+
 					s += p.Name;
 
 					object v = p.GetValue(o, null);
@@ -96,7 +101,9 @@ namespace SimPe
 						s += ss;
 					}
 					if ((v is Serializer) && ss == "")
+					{
 						s += Serializer.SerializeTypeHeader(v);
+					}
 				}
 				catch (Exception ex)
 				{
@@ -113,19 +120,27 @@ namespace SimPe
 			foreach (PropertyInfo p in ps)
 			{
 				if (!p.CanRead)
+				{
 					continue;
+				}
 
 				try
 				{
 					if (s != "")
+					{
 						s += Seperator;
+					}
 
 					object v = p.GetValue(o, null);
 					if (v == null)
+					{
 						s += NullProperty(p.Name);
+					}
 
 					if (v is Serializer)
+					{
 						s += ((Serializer)v).ToString(p.Name);
+					}
 					else
 					{
 						s += Property(p.Name, v.ToString());
@@ -148,9 +163,13 @@ namespace SimPe
 		{
 			string s = "";
 			if (wrapper != null)
+			{
 				s += SaveStr(wrapper.ResourceName) + Seperator;
+			}
 			else
+			{
 				s += SaveStr(pfd.TypeName.ToString()) + Seperator;
+			}
 
 			s += "0x" + Helper.HexString(pfd.Type) + Seperator;
 			s += "0x" + Helper.HexString(pfd.Group) + Seperator;
@@ -166,7 +185,10 @@ namespace SimPe
 			foreach (string p in props)
 			{
 				if (s != "")
+				{
 					s += Seperator;
+				}
+
 				s += p;
 			}
 			return s;

@@ -184,8 +184,12 @@ namespace SimPe.Plugin
 			{
 				object o = wanttypelookup[ObjectType.Trim().ToLower()];
 				if (o != null)
+				{
 					if (o.GetType() != typeof(string))
+					{
 						return (WantType)o;
+					}
+				}
 
 				return WantType.None;
 			}
@@ -193,8 +197,13 @@ namespace SimPe.Plugin
 			{
 				object o = wantnamelookup[(byte)value];
 				if (o != null)
+				{
 					if (o.GetType() == typeof(string))
+					{
 						ObjectType = (string)o;
+					}
+				}
+
 				ObjectType = "None";
 			}
 		}
@@ -208,7 +217,10 @@ namespace SimPe.Plugin
 				pfd.Type = Data.MetaData.SIM_IMAGE_FILE;
 				pfd.LongInstance = IconInstance;
 				if (pfd.Instance == 0)
+				{
 					pfd.Instance = SecondaryIconInstance;
+				}
+
 				pfd.Group = 0x499DB772;
 
 				return pfd;
@@ -226,7 +238,10 @@ namespace SimPe.Plugin
 		protected override string GetResourceName(SimPe.Data.TypeAlias ta)
 		{
 			if (!this.Processed)
+			{
 				ProcessData(FileDescriptor, Package);
+			}
+
 			return this.Folder + " / " + this.NodeText + " (" + this.ObjectType + ")";
 		}
 	}

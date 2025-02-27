@@ -118,19 +118,35 @@ namespace SimPe.Plugin
 			{
 				virsion = reader.ReadInt32();
 				if (virsion == 0x000000CB)
+				{
 					dataqnt = 10; // Seasons or above
+				}
 				else if (virsion == 0x000000C2)
+				{
 					dataqnt = 8; // Business
+				}
 				else if (virsion == 0x000000BE)
+				{
 					dataqnt = 6; // Nightlife
+				}
 				else if (virsion == 0x0000006F || virsion == 0x00000070)
+				{
 					dataqnt = 2; // Base Game and Uni
+				}
 				else
+				{
 					return; // Castaway doesn't use lot catalog so this shouldn't exist
+				}
+
 				if (virsion >= 0x000000BE)
+				{
 					nuffing = reader.ReadInt32();
+				}
 				else
+				{
 					nuffing = 0;
+				}
+
 				Badges = reader.ReadInt32();
 				if (Badges > 0)
 				{
@@ -173,7 +189,9 @@ namespace SimPe.Plugin
 					}
 				}
 				if (!dided)
+				{
 					Hoodtexture = SimPe.Localization.GetString("Unknown");
+				}
 			}
 			else if (this.FileDescriptor.Type == 0x2DB5C0F4) // Nid Map
 			{
@@ -205,9 +223,13 @@ namespace SimPe.Plugin
 					if (pfd == null)
 					{
 						if (pjse.GUIDIndex.TheGUIDIndex[badgesid[i]] != null)
+						{
 							texchure[i] = pjse.GUIDIndex.TheGUIDIndex[badgesid[i]];
+						}
 						else
+						{
 							texchure[i] = SimPe.Localization.GetString("Unknown");
+						}
 					}
 					else
 					{
@@ -289,12 +311,18 @@ namespace SimPe.Plugin
 						(ushort)this.FileDescriptor.Instance
 					) as PackedFiles.Wrapper.ExtSDesc;
 				if (sdsc == null)
+				{
 					return base.GetResourceName(ta);
+				}
 				else
+				{
 					return sdsc.SimName + " Memories";
+				}
 			}
 			else
+			{
 				return base.GetResourceName(ta);
+			}
 		}
 	}
 }

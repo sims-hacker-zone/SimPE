@@ -58,7 +58,10 @@ namespace SimPe.Plugin
 			set
 			{
 				if (Duff)
+				{
 					return;
+				}
+
 				reffiles = value;
 			}
 		}
@@ -73,7 +76,10 @@ namespace SimPe.Plugin
 			set
 			{
 				if (Duff)
+				{
 					return;
+				}
+
 				blocks = value;
 			}
 		}
@@ -95,17 +101,23 @@ namespace SimPe.Plugin
 		internal void ClearTabPageChanged()
 		{
 			if (TabPageChanged == null)
+			{
 				return;
+			}
 
 			System.Delegate[] list = TabPageChanged.GetInvocationList();
 			foreach (EventHandler d in list)
+			{
 				TabPageChanged -= d;
+			}
 		}
 
 		internal void ChildTabPageChanged(object sender, System.EventArgs e)
 		{
 			if (TabPageChanged != null)
+			{
 				TabPageChanged(sender, e);
+			}
 		}
 
 		static Hashtable tokens;
@@ -114,7 +126,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (tokens == null)
+				{
 					LoadTokens();
+				}
+
 				return tokens;
 			}
 		}
@@ -132,21 +147,36 @@ namespace SimPe.Plugin
 			get
 			{
 				if (Duff)
+				{
 					return SimPe
 						.Localization.GetString("InvalidCRES")
 						.Replace("{0}", e.Message);
+				}
+
 				if (blocks.Length > 0)
+				{
 					if (blocks[0].NameResource != null)
+					{
 						return blocks[0].NameResource.FileName;
+					}
+				}
+
 				return "";
 			}
 			set
 			{
 				if (Duff)
+				{
 					return;
+				}
+
 				if (blocks.Length > 0)
+				{
 					if (blocks[0].NameResource != null)
+					{
 						blocks[0].NameResource.FileName = value;
+					}
+				}
 			}
 		}
 
@@ -162,7 +192,9 @@ namespace SimPe.Plugin
 		{
 			tokens = new Hashtable();
 			foreach (System.Reflection.Assembly a in assemblies)
+			{
 				LoadTokens(a);
+			}
 		}
 
 		static ArrayList assemblies;
@@ -189,7 +221,9 @@ namespace SimPe.Plugin
 		static void LoadTokens(System.Reflection.Assembly a)
 		{
 			if (tokens == null)
+			{
 				tokens = new Hashtable();
+			}
 
 			object[] args = new object[1];
 			args[0] = null;
@@ -199,7 +233,9 @@ namespace SimPe.Plugin
 				args
 			);
 			foreach (SimPe.Interfaces.Scenegraph.IRcolBlock isb in statics)
+			{
 				isb.Register(tokens);
+			}
 		}
 
 		/// <summary>
@@ -270,17 +306,23 @@ namespace SimPe.Plugin
 			string s = reader.ReadString();
 			Type tp = (Type)Tokens[s];
 			if (tp == null)
+			{
 				throw new Exception(
 					"Unknown embedded RCOL Block Name at Offset=0x"
 						+ Helper.HexString((uint)pos),
 					new Exception("RCOL Block Name: " + s)
 				);
+			}
 
 			pos = reader.BaseStream.Position;
 			uint myid = reader.ReadUInt32();
 			if (myid == 0xffffffff)
+			{
 				return null;
+			}
+
 			if (id != myid)
+			{
 				throw new Exception(
 					"Unexpected embedded RCOL Block ID at Offset=0x"
 						+ Helper.HexString((uint)pos),
@@ -291,6 +333,7 @@ namespace SimPe.Plugin
 							+ Helper.HexString(id)
 					)
 				);
+			}
 
 			IRcolBlock wrp = AbstractRcolBlock.Create(tp, this, myid);
 			wrp.Unserialize(reader);
@@ -342,14 +385,19 @@ namespace SimPe.Plugin
 				index = new uint[nn];
 				blocks = new IRcolBlock[index.Length];
 				for (int i = 0; i < index.Length; i++)
+				{
 					index[i] = reader.ReadUInt32();
+				}
 
 				for (int i = 0; i < index.Length; i++)
 				{
 					uint id = index[i];
 					IRcolBlock wrp = ReadBlock(id, reader);
 					if (wrp == null)
+					{
 						break;
+					}
+
 					blocks[i] = wrp;
 				}
 
@@ -357,9 +405,13 @@ namespace SimPe.Plugin
 				{
 					long size = reader.BaseStream.Length - reader.BaseStream.Position;
 					if (size > 0)
+					{
 						oversize = reader.ReadBytes((int)size);
+					}
 					else
+					{
 						oversize = new byte[0];
+					}
 				}
 			}
 			catch (Exception e)
@@ -382,7 +434,10 @@ namespace SimPe.Plugin
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
 			if (Duff)
+			{
 				return;
+			}
+
 			writer.Write(Count == 0xffff0001 ? Count : (uint)reffiles.Length);
 			writer.Write((uint)reffiles.Length);
 			for (int i = 0; i < reffiles.Length; i++)
@@ -392,13 +447,18 @@ namespace SimPe.Plugin
 				writer.Write(pfd.Group);
 				writer.Write(pfd.Instance);
 				if (Count == 0xffff0001)
+				{
 					writer.Write(pfd.SubType);
+				}
+
 				writer.Write(pfd.Type);
 			}
 
 			writer.Write((uint)blocks.Length);
 			for (int i = 0; i < blocks.Length; i++)
+			{
 				writer.Write(blocks[i].BlockID);
+			}
 
 			for (int i = 0; i < blocks.Length; i++)
 			{
@@ -417,7 +477,9 @@ namespace SimPe.Plugin
 		public override void Fix(Interfaces.IWrapperRegistry registry)
 		{
 			if (list == null)
+			{
 				list = new ArrayList();
+			}
 
 			base.Fix(registry);
 
@@ -432,7 +494,9 @@ namespace SimPe.Plugin
 				{
 					//make sure we don't get into an Endless Loop
 					if (list.Contains(pfd))
+					{
 						continue;
+					}
 
 					list.Add(pfd);
 					SimPe.Interfaces.Plugin.IFileWrapper wrapper =
@@ -494,7 +558,10 @@ namespace SimPe.Plugin
 		protected override string GetResourceName(Data.TypeAlias ta)
 		{
 			if (!this.Processed)
+			{
 				ProcessData(FileDescriptor, Package, false);
+			}
+
 			return this.FileName;
 		}
 
@@ -513,8 +580,12 @@ namespace SimPe.Plugin
 		public override void Dispose()
 		{
 			foreach (IRcolBlock irb in this.blocks)
+			{
 				if (irb is IDisposable)
+				{
 					((IDisposable)irb).Dispose();
+				}
+			}
 
 			base.Dispose();
 		}

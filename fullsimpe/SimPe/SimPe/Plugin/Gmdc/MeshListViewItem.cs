@@ -36,14 +36,20 @@ namespace SimPe.Plugin.Gmdc
 			GenericMeshImport.ImportAction[] acts = (GenericMeshImport.ImportAction[])
 				Enum.GetValues(typeof(GenericMeshImport.ImportAction));
 			foreach (GenericMeshImport.ImportAction a in acts)
+			{
 				cbact.Items.Add(a);
+			}
+
 			cbact.SelectedItem = GenericMeshImport.ImportAction.Add;
 
 			cbgroup = new ComboBox();
 			cbgroup.DropDownStyle = ComboBoxStyle.DropDownList;
 			cbgroup.Items.Add("[" + SimPe.Localization.GetString("none") + "]");
 			foreach (GmdcGroup g in gmi.Gmdc.Groups)
+			{
 				cbgroup.Items.Add(g);
+			}
+
 			cbgroup.SelectedItem = 0;
 
 			cbenv = new System.Windows.Forms.CheckBox();
@@ -109,20 +115,32 @@ namespace SimPe.Plugin.Gmdc
 			get
 			{
 				if (cbgroup.SelectedItem == null)
+				{
 					return null;
+				}
+
 				if (!(cbgroup.SelectedItem is GmdcGroup))
+				{
 					return null;
+				}
+
 				return cbgroup.SelectedItem as GmdcGroup;
 			}
 			set
 			{
 				if (value == null)
+				{
 					cbgroup.SelectedIndex = 0;
+				}
 				else
+				{
 					cbgroup.SelectedItem = value;
+				}
 
 				if (cbgroup.SelectedIndex < 0)
+				{
 					cbgroup.SelectedIndex = 0;
+				}
 			}
 		}
 
@@ -132,9 +150,14 @@ namespace SimPe.Plugin.Gmdc
 			this.Text = mesh.Name;
 			this.SubItems.Add(Action.ToString()); //action
 			if (Group != null)
+			{
 				this.SubItems.Add(Group.Name); //target
+			}
 			else
+			{
 				this.SubItems.Add("[" + SimPe.Localization.GetString("none") + "]");
+			}
+
 			this.SubItems.Add(mesh.FaceIndices.Count.ToString());
 			this.SubItems.Add(mesh.Vertices.Count.ToString());
 			this.SubItems.Add("");
@@ -149,12 +172,18 @@ namespace SimPe.Plugin.Gmdc
 				mesh.Vertices.Count
 				> SimPe.Plugin.Gmdc.AbstractGmdcImporter.CRITICAL_VERTEX_AMOUNT
 			)
+			{
 				return Color.Red;
+			}
+
 			if (
 				mesh.FaceIndices.Count
 				> SimPe.Plugin.Gmdc.AbstractGmdcImporter.CRITICAL_FACE_AMOUNT
 			)
+			{
 				return Color.Red;
+			}
+
 			return Color.Black;
 		}
 
@@ -177,7 +206,9 @@ namespace SimPe.Plugin.Gmdc
 			}
 
 			if (cbenv != null)
+			{
 				cbenv.Dispose();
+			}
 
 			parent = null;
 			mesh = null;

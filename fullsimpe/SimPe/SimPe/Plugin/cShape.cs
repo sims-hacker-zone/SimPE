@@ -55,13 +55,17 @@ namespace SimPe.Plugin
 				{
 					data = new byte[9];
 					for (int i = 0; i < 9; i++)
+					{
 						data[i] = value[i];
+					}
 				}
 				else
 				{
 					data = new byte[9];
 					for (int i = 0; i < value.Length; i++)
+					{
 						data[i] = value[i];
+					}
 				}
 			}
 		}
@@ -197,13 +201,17 @@ namespace SimPe.Plugin
 				+ " - 0x"
 				+ Helper.HexString(Unknown2);
 			if ((parent.Version == 0x07) || (parent.Version == 0x06))
+			{
 				return name
 					+ " - 0x"
 					+ Helper.HexString((uint)Unknown3)
 					+ " - 0x"
 					+ Helper.HexString(Unknown4);
+			}
 			else
+			{
 				return name + ": " + FileName;
+			}
 		}
 	}
 
@@ -286,11 +294,18 @@ namespace SimPe.Plugin
 			GraphNode.Unserialize(reader);
 
 			if (version != 0x06)
+			{
 				Unknwon = new uint[reader.ReadUInt32()];
+			}
 			else
+			{
 				Unknwon = new uint[0];
+			}
+
 			for (int i = 0; i < Unknwon.Length; i++)
+			{
 				Unknwon[i] = reader.ReadUInt32();
+			}
 
 			Items = new ShapeItem[reader.ReadUInt32()];
 			for (int i = 0; i < Items.Length; i++)
@@ -334,16 +349,22 @@ namespace SimPe.Plugin
 			{
 				writer.Write((uint)Unknwon.Length);
 				for (int i = 0; i < Unknwon.Length; i++)
+				{
 					writer.Write(Unknwon[i]);
+				}
 			}
 
 			writer.Write((uint)Items.Length);
 			for (int i = 0; i < Items.Length; i++)
+			{
 				Items[i].Serialize(writer);
+			}
 
 			writer.Write((uint)Parts.Length);
 			for (int i = 0; i < Parts.Length; i++)
+			{
 				Parts[i].Serialize(writer);
+			}
 		}
 
 		TabPage.ObjectGraphNode tObjectGraphNode;
@@ -356,7 +377,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (tGenericRcol == null)
+				{
 					tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
+				}
+
 				return tGenericRcol;
 			}
 		}
@@ -368,15 +392,30 @@ namespace SimPe.Plugin
 		protected override void InitTabPage()
 		{
 			if (tObjectGraphNode == null)
+			{
 				tObjectGraphNode = new SimPe.Plugin.TabPage.ObjectGraphNode();
+			}
+
 			if (tGenericRcol == null)
+			{
 				tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
+			}
+
 			if (tShpeLod == null)
+			{
 				tShpeLod = new SimPe.Plugin.TabPage.ShpeLod();
+			}
+
 			if (tShpeItems == null)
+			{
 				tShpeItems = new SimPe.Plugin.TabPage.ShpeItems();
+			}
+
 			if (tShpeParts == null)
+			{
 				tShpeParts = new SimPe.Plugin.TabPage.ShpeParts();
+			}
+
 			tGenericRcol.tb_ver.Text = "0x" + Helper.HexString(this.version);
 			tGenericRcol.gen_pg.SelectedObject = this;
 
@@ -388,13 +427,25 @@ namespace SimPe.Plugin
 				Shape wrp = this;
 
 				foreach (uint val in wrp.Unknwon)
+				{
 					tShpeLod.lbunk.Items.Add(val);
+				}
+
 				foreach (ShapeItem item in wrp.Items)
+				{
 					tShpeItems.lbitem.Items.Add(item);
+				}
+
 				foreach (ShapePart part in wrp.Parts)
+				{
 					tShpeParts.lbpart.Items.Add(part);
+				}
+
 				foreach (ObjectGraphNodeItem ogni in wrp.GraphNode.Items)
+				{
 					tObjectGraphNode.lb_ogn.Items.Add(ogni);
+				}
+
 				tObjectGraphNode.tb_ogn_file.Text = wrp.GraphNode.FileName;
 				tObjectGraphNode.tb_ogn_ver.Text = Helper.HexString(
 					wrp.GraphNode.Version
@@ -421,7 +472,10 @@ namespace SimPe.Plugin
 			tc.TabPages.Add(tShpeParts);
 
 			if (tObjectGraphNode == null)
+			{
 				tObjectGraphNode = new SimPe.Plugin.TabPage.ObjectGraphNode();
+			}
+
 			tObjectGraphNode.Tag = this.GraphNode;
 			tc.TabPages.Add(tObjectGraphNode);
 
@@ -466,23 +520,38 @@ namespace SimPe.Plugin
 		public override void Dispose()
 		{
 			if (this.tObjectGraphNode != null)
+			{
 				this.tObjectGraphNode.Dispose();
+			}
+
 			tObjectGraphNode = null;
 
 			if (this.tGenericRcol != null)
+			{
 				this.tGenericRcol.Dispose();
+			}
+
 			tGenericRcol = null;
 
 			if (tShpeLod != null)
+			{
 				tShpeLod.Dispose();
+			}
+
 			tShpeLod = null;
 
 			if (tShpeItems != null)
+			{
 				tShpeItems.Dispose();
+			}
+
 			tShpeItems = null;
 
 			if (tShpeParts != null)
+			{
 				tShpeParts.Dispose();
+			}
+
 			tShpeParts = null;
 		}
 

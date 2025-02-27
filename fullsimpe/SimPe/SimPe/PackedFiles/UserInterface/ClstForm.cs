@@ -57,7 +57,9 @@ namespace SimPe.PackedFiles.UserInterface
 			InitializeComponent();
 
 			if (Helper.WindowsRegistry.UseBigIcons)
+			{
 				this.lbclst.Font = new System.Drawing.Font("Verdana", 11F);
+			}
 		}
 
 		/// <summary>
@@ -101,10 +103,16 @@ namespace SimPe.PackedFiles.UserInterface
 
 			lbclst.Items.Clear();
 			foreach (ClstItem i in wrapper.Items)
+			{
 				if (i != null)
+				{
 					lbclst.Items.Add(i);
+				}
 				else
+				{
 					lbclst.Items.Add("Error");
+				}
+			}
 		}
 		#endregion
 

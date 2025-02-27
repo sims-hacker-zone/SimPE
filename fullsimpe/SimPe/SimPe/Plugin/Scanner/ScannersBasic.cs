@@ -46,7 +46,10 @@ namespace SimPe.Plugin.Scanner
 			get
 			{
 				if (sz.Width == 0)
+				{
 					sz = new System.Drawing.Size(96, 96);
+				}
+
 				return sz;
 			}
 		}
@@ -68,7 +71,9 @@ namespace SimPe.Plugin.Scanner
 			lv.Columns.Add(ch);
 
 			if (width > 0)
+			{
 				ch.Width = width;
+			}
 		}
 
 		/// <summary>
@@ -104,9 +109,13 @@ namespace SimPe.Plugin.Scanner
 			if (ps != null)
 			{
 				if (ps.State == SimPe.Cache.TriState.True)
+				{
 					cl = System.Drawing.Color.Green;
+				}
 				else if (ps.State == SimPe.Cache.TriState.False)
+				{
 					cl = System.Drawing.Color.Red;
+				}
 			}
 
 			SetSubItem(lvi, index, name, cl);
@@ -127,9 +136,15 @@ namespace SimPe.Plugin.Scanner
 		)
 		{
 			if (cl == System.Drawing.Color.Red)
+			{
 				lvi.ForeColor = cl;
+			}
+
 			while (lvi.SubItems.Count <= index)
+			{
 				lvi.SubItems.Add("");
+			}
+
 			lvi.SubItems[index].Text = name;
 			lvi.SubItems[index].ForeColor = cl;
 		}
@@ -151,7 +166,10 @@ namespace SimPe.Plugin.Scanner
 			get
 			{
 				if (mfi == null)
+				{
 					AssignFileTable();
+				}
+
 				return mfi;
 			}
 		}
@@ -160,9 +178,13 @@ namespace SimPe.Plugin.Scanner
 		{
 			DeAssignFileTable();
 			if (mfi == null)
+			{
 				mfi = FileTable.FileIndex.AddNewChild();
+			}
 			else
+			{
 				FileTable.FileIndex.AddChild(mfi);
+			}
 		}
 
 		public static void DeAssignFileTable()
@@ -242,7 +264,10 @@ namespace SimPe.Plugin.Scanner
 			get
 			{
 				if (mycontrol == null)
+				{
 					mycontrol = CreateOperationControl();
+				}
+
 				return mycontrol;
 			}
 		}
@@ -262,13 +287,17 @@ namespace SimPe.Plugin.Scanner
 				EnableControl(items, active);
 			}
 			else
+			{
 				EnableControl(new ScannerItem[0], active);
+			}
 		}
 
 		public virtual void EnableControl(ScannerItem[] items, bool active)
 		{
 			if (OperationControl != null)
+			{
 				OperationControl.Enabled = active;
+			}
 		}
 
 		/// <summary>
@@ -296,7 +325,9 @@ namespace SimPe.Plugin.Scanner
 
 				string ret = ToString() + ";" + t.Namespace + "." + t.Name + ".";
 				if (parts.Length > 0)
+				{
 					ret += ";" + parts[0];
+				}
 
 				return ret;
 			}
@@ -345,7 +376,9 @@ namespace SimPe.Plugin.Scanner
 				Data.MetaData.CTSS_FILE
 			);
 			if (pfds.Length == 0)
+			{
 				pfds = si.Package.FindFiles(Data.MetaData.STRING_FILE);
+			}
 
 			//Check for Str compatible Items
 			if (pfds.Length > 0)
@@ -369,9 +402,14 @@ namespace SimPe.Plugin.Scanner
 			{
 				pfds = si.Package.FindFiles(Data.MetaData.GZPS);
 				if (pfds.Length == 0)
+				{
 					pfds = si.Package.FindFiles(0xCCA8E925); //Object XML
+				}
+
 				if (pfds.Length == 0)
+				{
 					pfds = si.Package.FindFiles(Data.MetaData.MMAT);
+				}
 
 				//Check for Cpf compatible Items
 				if (pfds.Length > 0)
@@ -382,7 +420,9 @@ namespace SimPe.Plugin.Scanner
 
 					si.PackageCacheItem.Name = cpf.GetSaveItem("name").StringValue;
 					if (si.PackageCacheItem.Name.Trim() != "")
+					{
 						ps.State = TriState.True;
+					}
 				}
 			}
 
@@ -452,14 +492,18 @@ namespace SimPe.Plugin.Scanner
 
 				uint group = 0;
 				if (pfds.Length > 0)
+				{
 					group = pfds[0].Group;
+				}
 
 				if (group == Data.MetaData.LOCAL_GROUP)
 				{
 					SimPe.Interfaces.Wrapper.IGroupCacheItem gci =
 						FileTable.GroupCache.GetItem(si.FileName);
 					if (gci != null)
+					{
 						group = gci.LocalGroup;
+					}
 				}
 				string[] modelnames = SimPe.Plugin.Scenegraph.FindModelNames(
 					si.Package
@@ -491,8 +535,12 @@ namespace SimPe.Plugin.Scanner
 						//get image with smallest Instance
 						SimPe.Interfaces.Files.IPackedFileDescriptor pfd = pfds[0];
 						foreach (SimPe.Interfaces.Files.IPackedFileDescriptor p in pfds)
+						{
 							if (p.Instance < pfd.Instance)
+							{
 								pfd = p;
+							}
+						}
 
 						pic.ProcessData(pfd, si.Package, false);
 
@@ -524,8 +572,12 @@ namespace SimPe.Plugin.Scanner
 					//get biggest texture
 					SimPe.Interfaces.Files.IPackedFileDescriptor pfd = pfds[0];
 					foreach (SimPe.Interfaces.Files.IPackedFileDescriptor p in pfds)
+					{
 						if (p.Size > pfd.Size)
+						{
 							pfd = p;
+						}
+					}
 
 					rcol.ProcessData(pfd, si.Package, false);
 
@@ -602,8 +654,9 @@ namespace SimPe.Plugin.Scanner
 			}
 
 			if (modelname.EndsWith("_cres", true, null))
+			{
 				modelname = modelname.Substring(0, modelname.Length - 5);
-			;
+			};
 
 			uint inst = ThumbnailHash(group, modelname);
 			Interfaces.Files.IPackedFileDescriptor ipfd = thumbs.FindFile(
@@ -651,15 +704,25 @@ namespace SimPe.Plugin.Scanner
 		protected override void DoInitScan()
 		{
 			if (list == null)
+			{
 				list = new Hashtable();
+			}
 			else
+			{
 				list.Clear();
+			}
 
 			string WaitingScreenMessage = "";
 			if (WaitingScreen.Running)
+			{
 				WaitingScreenMessage = WaitingScreen.Message;
+			}
+
 			if (WaitingScreen.Running)
+			{
 				WaitingScreen.Message = "Init Cache File";
+			}
+
 			if (cachefile == null)
 			{
 				cachefile = MemoryCacheFile.InitCacheFile();
@@ -676,14 +739,22 @@ namespace SimPe.Plugin.Scanner
 			AbstractScanner.AddColumn(ListView, "First found", 80);
 
 			if (WaitingScreen.Running)
+			{
 				WaitingScreen.Message = "Create hashtable";
+			}
+
 			foreach (MemoryCacheItem mci in cachefile.List)
 			{
 				string flname = null;
 				if (mci.ParentCacheContainer == null)
+				{
 					flname = mci.FileDescriptor.Filename;
+				}
 				else
+				{
 					flname = mci.ParentCacheContainer.FileName;
+				}
+
 				list[(uint)mci.Guid] = flname;
 				// list[(uint)mci.Guid] = flname.Trim().ToLower();
 				/*if (mci.Guid == guid)
@@ -699,7 +770,9 @@ namespace SimPe.Plugin.Scanner
 				}*/
 			}
 			if (WaitingScreen.Running)
+			{
 				WaitingScreen.Message = WaitingScreenMessage;
+			}
 		}
 
 		public void ScanPackage(
@@ -743,7 +816,10 @@ namespace SimPe.Plugin.Scanner
 				string flname = si.FileName;
 				// string flname = si.FileName.Trim().ToLower();
 				if (guids != "")
+				{
 					guids += ", ";
+				}
+
 				guids += "0x" + Helper.HexString(guid);
 
 				/*foreach (MemoryCacheItem mci in cachefile.List)
@@ -772,7 +848,9 @@ namespace SimPe.Plugin.Scanner
 						ff = cmp;
 					}
 					else
+					{
 						ps.State = TriState.True;
+					}
 				}
 				else
 				{
@@ -782,7 +860,9 @@ namespace SimPe.Plugin.Scanner
 
 			string text = "no";
 			if (ps.State == TriState.False)
+			{
 				text = "yes";
+			}
 
 			AbstractScanner.SetSubItem(lvi, this.StartColum, guids);
 			AbstractScanner.SetSubItem(lvi, this.StartColum + 1, text, ps);
@@ -823,7 +903,9 @@ namespace SimPe.Plugin.Scanner
 		protected override void DoInitScan()
 		{
 			if (cachefile == null)
+			{
 				cachefile = MemoryCacheFile.InitCacheFile();
+			}
 
 			AbstractScanner.AddColumn(ListView, "Found Base", 180);
 		}
@@ -846,9 +928,11 @@ namespace SimPe.Plugin.Scanner
 					System.IO.Path.GetDirectoryName(si.FileName)
 				)
 			)
+			{
 				FileIndex.AddIndexFromFolder(
 					System.IO.Path.GetDirectoryName(si.FileName)
 				);
+			}
 
 			FileIndex.AddIndexFromPackage(si.Package);
 			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
@@ -858,7 +942,9 @@ namespace SimPe.Plugin.Scanner
 
 				string m = mmat.ModelName.Trim().ToLower();
 				if (!m.EndsWith("_cres"))
+				{
 					m += "_cres";
+				}
 
 				//Add the current package
 				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item =
@@ -870,7 +956,9 @@ namespace SimPe.Plugin.Scanner
 					);
 
 				if (item == null)
+				{
 					ps.State = TriState.False;
+				}
 
 				item = null;
 				mmat.Dispose();
@@ -889,7 +977,10 @@ namespace SimPe.Plugin.Scanner
 		{
 			string text = "yes";
 			if (ps.State == TriState.False)
+			{
 				text = "no";
+			}
+
 			AbstractScanner.SetSubItem(lvi, this.StartColum, text, ps);
 		}
 

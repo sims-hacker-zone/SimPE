@@ -16,10 +16,13 @@ namespace SimPe.PackedFiles.Wrapper
 		public SimRelationPoolControl()
 		{
 			if (RelatedImage == null)
+			{
 				RelatedImage = Image.FromStream(
 					this.GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.related.png")
 				);
+			}
+
 			InitializeComponent();
 			showrel = true;
 			cbRelation.Checked = showrel;
@@ -54,7 +57,9 @@ namespace SimPe.PackedFiles.Wrapper
 				);
 				bool hr = sim.HasRelationWith(sdsc);
 				if (hr)
+				{
 					MakeRelationIcon(img);
+				}
 
 				return img;
 			}
@@ -68,9 +73,13 @@ namespace SimPe.PackedFiles.Wrapper
 				bool hr = sim.HasRelationWith(e.SimDescription);
 				bool res = false;
 				if (hr && showrel)
+				{
 					res = true;
+				}
 				else if (!hr && shownorel)
+				{
 					res = true;
+				}
 
 				if (hr)
 				{
@@ -78,15 +87,22 @@ namespace SimPe.PackedFiles.Wrapper
 					e.GroupIndex = 0;
 				}
 				else
+				{
 					e.GroupIndex = 1;
+				}
 
 				if (
 					e.SimDescription.FileDescriptor.Instance
 					== sim.FileDescriptor.Instance
 				)
+				{
 					res = false;
+				}
+
 				if (!res)
+				{
 					e.Cancel = true;
+				}
 			}
 			base.OnAddSimToPool(e);
 		}
@@ -155,24 +171,34 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				// It seems that once set, "sim" somehow tracks "value"
 				if (sim != value)
+				{
 					sim = value;
+				}
 				// So we do this anyway...
 				if (FilteredBySim && this.Package != null)
+				{
 					this.UpdateSimList();
+				}
 			}
 		}
 
 		private void cbNoRelation_CheckedChanged(object sender, EventArgs e)
 		{
 			if (intern)
+			{
 				return;
+			}
+
 			ShowNotRelatedSims = cbNoRelation.Checked;
 		}
 
 		private void cbRelation_CheckedChanged(object sender, EventArgs e)
 		{
 			if (intern)
+			{
 				return;
+			}
+
 			ShowRelatedSims = cbRelation.Checked;
 		}
 	}

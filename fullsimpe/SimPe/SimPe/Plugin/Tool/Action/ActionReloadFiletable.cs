@@ -39,7 +39,9 @@ namespace SimPe.Plugin.Tool.Action
 		public void ExecuteEventHandler(object sender, SimPe.Events.ResourceEventArgs e)
 		{
 			if (!ChangeEnabledStateEventHandler(null, e))
+			{
 				return;
+			}
 
 			// Once you reload the filetable, you're no longer in local mode
 			//bool old = SimPe.Helper.LocalMode;

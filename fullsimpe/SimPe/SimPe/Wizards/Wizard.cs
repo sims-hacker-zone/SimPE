@@ -81,7 +81,9 @@ namespace SimPe.Wizards
 			set
 			{
 				if (value == cur)
+				{
 					this.JumpToStep(value);
+				}
 			}
 		}
 
@@ -103,7 +105,9 @@ namespace SimPe.Wizards
 				{
 					ne = value;
 					if (ChangedNextState != null)
+					{
 						ChangedNextState(this);
+					}
 				}
 			}
 		}
@@ -123,7 +127,9 @@ namespace SimPe.Wizards
 				{
 					pe = value;
 					if (ChangedNextState != null)
+					{
 						ChangedPrevState(this);
+					}
 				}
 			}
 		}
@@ -143,7 +149,9 @@ namespace SimPe.Wizards
 				{
 					fe = value;
 					if (ChangedNextState != null)
+					{
 						ChangedFinishState(this);
+					}
 				}
 			}
 		}
@@ -151,9 +159,14 @@ namespace SimPe.Wizards
 		public bool JumpToStep(int nr)
 		{
 			if (nr < 0)
+			{
 				return false;
+			}
+
 			if (nr >= Controls.Count)
+			{
 				return false;
+			}
 
 			if (this.DesignMode)
 			{
@@ -169,7 +182,9 @@ namespace SimPe.Wizards
 				{
 					((WizardStepPanel)Controls[i]).OnPrepare(this, nr);
 					if (PrepareStep != null)
+					{
 						PrepareStep(this, (WizardStepPanel)Controls[i], nr);
+					}
 				}
 			}
 			else
@@ -178,12 +193,16 @@ namespace SimPe.Wizards
 				{
 					((WizardStepPanel)Controls[i]).OnRollback(this, nr);
 					if (RollbackStep != null)
+					{
 						RollbackStep(this, (WizardStepPanel)Controls[i], nr);
+					}
 				}
 
 				((WizardStepPanel)Controls[nr]).OnPrepare(this, nr);
 				if (PrepareStep != null)
+				{
 					PrepareStep(this, (WizardStepPanel)Controls[nr], nr);
+				}
 			}
 			WizardEventArgs e = new WizardEventArgs(
 				(WizardStepPanel)Controls[nr],
@@ -194,14 +213,25 @@ namespace SimPe.Wizards
 			((WizardStepPanel)Controls[nr]).OnShow(this, e);
 
 			if (e.Cancel)
+			{
 				return false;
+			}
+
 			if (ShowStep != null)
+			{
 				ShowStep(this, e);
+			}
+
 			if (e.Cancel)
+			{
 				return false;
+			}
 
 			foreach (Control c in Controls)
+			{
 				c.Visible = false;
+			}
+
 			this.CurrentStep.Client.Visible = false;
 			this.cur = nr;
 			this.CurrentStep.Client.Visible = true;
@@ -211,14 +241,19 @@ namespace SimPe.Wizards
 
 			((WizardStepPanel)Controls[nr]).OnShowed(this);
 			if (ShowedStep != null)
+			{
 				ShowedStep(this, lastnr);
+			}
+
 			return true;
 		}
 
 		public void Start()
 		{
 			if (Loaded != null)
+			{
 				Loaded(this);
+			}
 
 			this.cur = 0;
 			this.JumpToStep(0);
@@ -237,13 +272,17 @@ namespace SimPe.Wizards
 		public void Finish()
 		{
 			if (Finished != null)
+			{
 				Finished(this);
+			}
 		}
 
 		public void Abort()
 		{
 			if (Aborted != null)
+			{
 				Aborted(this);
+			}
 		}
 
 		public event SimPe.Wizards.WizardHandle Loaded;
@@ -311,7 +350,9 @@ namespace SimPe.Wizards
 				if (c is WizardStepPanel)
 				{
 					if (iws == null)
+					{
 						iws = (WizardStepPanel)c;
+					}
 					else
 					{
 						((WizardStepPanel)c).Last = false;
@@ -320,9 +361,14 @@ namespace SimPe.Wizards
 				}
 			}
 			if (iws == null)
+			{
 				return;
+			}
+
 			if (!this.DesignMode)
+			{
 				iws.Client.Visible = false;
+			}
 
 			iws.SetupParent(this);
 			iws.Client.Parent = this.WizardContainer;
@@ -336,7 +382,9 @@ namespace SimPe.Wizards
 		{
 			//MessageBox.Show("removing");
 			if (!(e.Control is WizardStepPanel))
+			{
 				return;
+			}
 			//MessageBox.Show("doremoving");
 			WizardStepPanel iws = (WizardStepPanel)e.Control;
 

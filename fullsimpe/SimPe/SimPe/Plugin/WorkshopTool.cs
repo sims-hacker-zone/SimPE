@@ -66,7 +66,9 @@ namespace SimPe.Plugin
 						System.Windows.Forms.MessageBoxButtons.YesNo
 					) == System.Windows.Forms.DialogResult.No
 				)
+				{
 					return new ToolResult(false, false);
+				}
 			}
 
 			SimPe.Interfaces.Files.IPackageFile pkg = ws.Execute(prov, package);
@@ -76,7 +78,9 @@ namespace SimPe.Plugin
 				if (pkg.Reader != null)
 				{
 					if (!pkg.Reader.BaseStream.CanWrite)
+					{
 						new ToolResult(false, false);
+					}
 				}
 
 				package = pkg;
@@ -91,9 +95,13 @@ namespace SimPe.Plugin
 		public override string ToString()
 		{
 			if (Helper.StartedGui == Executable.Default)
+			{
 				return "Object Creation\\Windowed Object Workshop...";
+			}
 			else
+			{
 				return "Object Creation\\Object Workshop...";
+			}
 		}
 
 		#endregion
@@ -105,9 +113,13 @@ namespace SimPe.Plugin
 			get
 			{
 				if (Helper.StartedGui == Executable.Default)
+				{
 					return System.Windows.Forms.Shortcut.None;
+				}
 				else
+				{
 					return System.Windows.Forms.Shortcut.CtrlW;
+				}
 			}
 		}
 		#endregion

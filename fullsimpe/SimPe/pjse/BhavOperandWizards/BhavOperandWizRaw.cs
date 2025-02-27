@@ -74,9 +74,15 @@ namespace pjse.BhavOperandWizards.WizRaw
 		{
 			string s = "";
 			for (int i = 0; i < 8; i++)
+			{
 				s += SimPe.Helper.HexString(inst.Operands[i]);
+			}
+
 			for (int i = 0; i < 8; i++)
+			{
 				s += SimPe.Helper.HexString(inst.Reserved1[i]);
+			}
+
 			tbRaw.Text = s;
 		}
 
@@ -86,9 +92,14 @@ namespace pjse.BhavOperandWizards.WizRaw
 			{
 				string s = tbRaw.Text + "00000000000000000000000000000000";
 				for (int i = 0; i < 8; i++)
+				{
 					inst.Operands[i] = Convert.ToByte(s.Substring(i * 2, 2), 16);
+				}
+
 				for (int i = 0; i < 8; i++)
+				{
 					inst.Reserved1[i] = Convert.ToByte(s.Substring((i + 8) * 2, 2), 16);
+				}
 
 				return inst;
 			}
@@ -157,7 +168,9 @@ namespace pjse.BhavOperandWizards
 		public override void Dispose()
 		{
 			if (myForm != null)
+			{
 				myForm = null;
+			}
 		}
 		#endregion
 	}

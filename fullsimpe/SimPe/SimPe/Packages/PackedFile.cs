@@ -131,7 +131,10 @@ namespace SimPe.Packages
 				{
 					Byte[] sub = new Byte[data.Length - headersize];
 					for (int i = headersize; i < data.Length; i++)
+					{
 						sub[i - headersize] = data[i];
+					}
+
 					return sub;
 				}
 				else
@@ -192,9 +195,15 @@ namespace SimPe.Packages
 			public override long Seek(long offset, System.IO.SeekOrigin origin)
 			{
 				if (origin == System.IO.SeekOrigin.Current)
+				{
 					return s.Seek(offset, origin);
+				}
+
 				if (origin == System.IO.SeekOrigin.Begin)
+				{
 					return s.Seek(offset + o, origin);
+				}
+
 				return s.Seek(sz - offset + 0, System.IO.SeekOrigin.Begin);
 			}
 
@@ -254,7 +263,10 @@ namespace SimPe.Packages
 				if (IsCompressed)
 				{
 					if (uncdata == null)
+					{
 						uncdata = Uncompress(data, UncompressedSize, this.headersize);
+					}
+
 					return uncdata;
 				}
 				else
@@ -375,11 +387,15 @@ namespace SimPe.Packages
 					}
 
 					for (int i = 0; i < plaincount; i++)
+					{
 						uncdata[uncindex++] = data[index++];
+					}
 
 					source = uncindex - copyoffset;
 					for (int i = 0; i < copycount; i++)
+					{
 						uncdata[uncindex++] = uncdata[source++];
+					}
 				} //while
 			} //try
 			catch (Exception ex)
@@ -394,7 +410,10 @@ namespace SimPe.Packages
 				for (int i = 0; i < plaincount; i++)
 				{
 					if (uncindex >= uncdata.Length)
+					{
 						break;
+					}
+
 					uncdata[uncindex++] = data[index++];
 				}
 			}
@@ -505,7 +524,10 @@ namespace SimPe.Packages
 					for (int i = 0; i < plaincount; i++)
 					{
 						if (uncdatapt >= uncdataarrayend)
+						{
 							break;
+						}
+
 						*uncdatapt = *datapt;
 						datapt++;
 						uncdatapt++;
@@ -584,20 +606,29 @@ namespace SimPe.Packages
 					}
 
 					for (int i = 0; i < plaincount; i++)
+					{
 						uncdata[uncindex++] = data[index++];
+					}
 
 					source = uncindex - copyoffset;
 					for (int i = 0; i < copycount; i++)
+					{
 						uncdata[uncindex++] = uncdata[source++];
+					}
 
 					if (size != -1)
+					{
 						if (uncindex >= size)
 						{
 							byte[] newdata = new byte[uncindex];
 							for (int i = 0; i < uncindex; i++)
+							{
 								newdata[i] = uncdata[i];
+							}
+
 							return newdata;
 						}
+					}
 				} //while
 			} //try
 			catch (Exception ex)
@@ -612,7 +643,10 @@ namespace SimPe.Packages
 				for (int i = 0; i < plaincount; i++)
 				{
 					if (uncindex >= uncdata.Length)
+					{
 						break;
+					}
+
 					uncdata[uncindex++] = data[index++];
 				}
 			}
@@ -697,11 +731,15 @@ namespace SimPe.Packages
 					}
 
 					for (int i = 0; i < plaincount; i++)
+					{
 						uncdata[uncindex++] = (byte)s.ReadByte();
+					}
 
 					int source = uncindex - copyoffset;
 					for (int i = 0; i < copycount; i++)
+					{
 						uncdata[uncindex++] = uncdata[source++];
+					}
 				} //while
 			} //try
 			catch (Exception ex)
@@ -716,7 +754,10 @@ namespace SimPe.Packages
 				for (int i = 0; i < plaincount; i++)
 				{
 					if (uncindex >= uncdata.Length)
+					{
 						break;
+					}
+
 					uncdata[uncindex++] = (byte)s.ReadByte();
 				}
 			}
@@ -793,7 +834,9 @@ namespace SimPe.Packages
 							indexlist.Add(index);
 						} while (index < lastreadindex);
 						if (end)
+						{
 							break;
+						}
 
 						#endregion
 
@@ -807,7 +850,9 @@ namespace SimPe.Packages
 							int foundindex = (int)
 								indexlist[(indexlist.Count - 1) - loopcount];
 							if ((index - foundindex) >= MAX_OFFSET)
+							{
 								break;
+							}
 
 							loopcount++;
 							copycount = 3;
@@ -819,7 +864,9 @@ namespace SimPe.Packages
 								)
 								&& (copycount < MAX_COPY_COUNT)
 							)
+							{
 								copycount++;
+							}
 
 							if (copycount > offsetcopycount)
 							{
@@ -834,11 +881,17 @@ namespace SimPe.Packages
 
 						//check if we can compress this
 						if (offsetcopycount < 3)
+						{
 							offsetcopycount = 0;
+						}
 						else if ((offsetcopycount < 4) && (copyoffset > 0x400))
+						{
 							offsetcopycount = 0;
+						}
 						else if ((offsetcopycount < 5) && (copyoffset > 0x4000))
+						{
 							offsetcopycount = 0;
+						}
 
 						//this is offset-compressable? so do the compression
 						if (offsetcopycount > 0)
@@ -848,13 +901,18 @@ namespace SimPe.Packages
 							{
 								copycount = (index - lastreadindex);
 								while (copycount > 0x71)
+								{
 									copycount -= 0x71;
+								}
+
 								copycount = copycount & 0xfc;
 								int realcopycount = (copycount >> 2);
 
 								cdata[writeindex++] = (byte)(0xdf + realcopycount);
 								for (int i = 0; i < copycount; i++)
+								{
 									cdata[writeindex++] = data[lastreadindex++];
+								}
 							}
 
 							//offsetcopy
@@ -905,7 +963,10 @@ namespace SimPe.Packages
 
 							//do the offset copy
 							for (int i = 0; i < copycount; i++)
+							{
 								cdata[writeindex++] = data[lastreadindex++];
+							}
+
 							lastreadindex += offsetcopycount;
 						}
 						#endregion
@@ -918,19 +979,26 @@ namespace SimPe.Packages
 					{
 						copycount = (index - lastreadindex);
 						while (copycount > 0x71)
+						{
 							copycount -= 0x71;
+						}
+
 						copycount = copycount & 0xfc;
 						int realcopycount = (copycount >> 2);
 
 						cdata[writeindex++] = (byte)(0xdf + realcopycount);
 						for (int i = 0; i < copycount; i++)
+						{
 							cdata[writeindex++] = data[lastreadindex++];
+						}
 					}
 
 					copycount = index - lastreadindex;
 					cdata[writeindex++] = (byte)(0xfc + copycount);
 					for (int i = 0; i < copycount; i++)
+					{
 						cdata[writeindex++] = data[lastreadindex++];
+					}
 					#endregion
 
 					#region Trim Data & and add Header
@@ -939,31 +1007,47 @@ namespace SimPe.Packages
 
 					byte[] sz = BitConverter.GetBytes((uint)(retdata.Length));
 					for (int i = 0; i < 4; i++)
+					{
 						retdata[i] = sz[i];
+					}
+
 					sz = BitConverter.GetBytes(SimPe.Data.MetaData.COMPRESS_SIGNATURE);
 					for (int i = 0; i < 2; i++)
+					{
 						retdata[i + 4] = sz[i];
+					}
 
 					sz = BitConverter.GetBytes((uint)data.Length);
 					for (int i = 0; i < 3; i++)
+					{
 						retdata[i + 6] = sz[2 - i];
+					}
 
 					for (int i = 0; i < writeindex; i++)
+					{
 						retdata[i + 9] = cdata[i];
+					}
 					#endregion
 					return retdata;
 				}
 				finally
 				{
 					foreach (ArrayList a in cmpmap)
+					{
 						if (a != null)
+						{
 							a.Clear();
+						}
+					}
 
 					cmpmap = null;
 					cdata = null;
 					retdata = null;
 					if (indexlist != null)
+					{
 						indexlist.Clear();
+					}
+
 					indexlist = null;
 				}
 			}

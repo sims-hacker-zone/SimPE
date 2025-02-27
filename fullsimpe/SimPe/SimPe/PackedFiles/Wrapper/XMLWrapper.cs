@@ -77,7 +77,10 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			byte[] data = new byte[Text.Length];
 			for (int i = 0; i < Text.Length; i++)
+			{
 				data[i] = (byte)Text[i];
+			}
+
 			writer.Write(data);
 		}
 		#endregion

@@ -34,7 +34,10 @@ namespace SimPe
 			get
 			{
 				if (formater == null)
+				{
 					ResetFormater();
+				}
+
 				return formater;
 			}
 			set
@@ -133,7 +136,10 @@ namespace SimPe
 		public static string SerializeTypeHeader(object o)
 		{
 			if (o == null)
+			{
 				return "";
+			}
+
 			Type t = o.GetType();
 			PropertyInfo[] ps = t.GetProperties();
 
@@ -161,7 +167,10 @@ namespace SimPe
 			s += Formater.SerializeTGIHeader();
 
 			if (withdesc && wrapper != null)
+			{
 				s += wrapper.DescriptionHeader;
+			}
+
 			return s;
 		}
 
@@ -190,7 +199,10 @@ namespace SimPe
 			if (withdesc)
 			{
 				if (wrapper != null)
+				{
 					s += wrapper.Description;
+				}
+
 				s += Seperator;
 			}
 
@@ -211,13 +223,19 @@ namespace SimPe
 		public static string Serialize(object o, bool writeheader)
 		{
 			if (o == null)
+			{
 				return "";
+			}
+
 			Type t = o.GetType();
 			PropertyInfo[] ps = t.GetProperties();
 
 			string s = "";
 			if (writeheader)
+			{
 				s += Formater.SerializeHeader(o, t, ps);
+			}
+
 			s += Formater.Serialize(o, t, ps);
 			return s;
 		}

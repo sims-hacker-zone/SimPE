@@ -421,7 +421,10 @@ namespace SimPe.Plugin.TabPage
 		private void GrNSettingsChange(object sender, System.EventArgs e)
 		{
 			if (this.Tag == null)
+			{
 				return;
+			}
+
 			try
 			{
 				SimPe.Plugin.GeometryNode arb = (SimPe.Plugin.GeometryNode)Tag;
@@ -442,9 +445,15 @@ namespace SimPe.Plugin.TabPage
 		private void SelectGmndChildBlock(object sender, System.EventArgs e)
 		{
 			if (this.cb_gn_list.Tag != null)
+			{
 				return;
+			}
+
 			if (cb_gn_list.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				cb_gn_list.Tag = true;
@@ -469,9 +478,14 @@ namespace SimPe.Plugin.TabPage
 			this.tc_gn.TabPages.Clear();
 
 			if (rb == null)
+			{
 				return;
+			}
+
 			if (rb.TabPage != null)
+			{
 				rb.AddToTabControl(tc_gn);
+			}
 		}
 	}
 }

@@ -83,7 +83,9 @@ namespace SimPe.Plugin
 								Helper.WindowsRegistry.LanguageCode
 							);
 						if (items.Length > 0)
+						{
 							name = items[0].Title;
+						}
 					}
 				}
 				catch (Exception) { }
@@ -97,12 +99,21 @@ namespace SimPe.Plugin
 		public string Subhood(uint instc)
 		{
 			if (Helper.StartedGui == Executable.Classic || package.FileName == null)
+			{
 				return null;
+			}
+
 			string subh = Localization.Manager.GetString("unknown");
 			if (!Helper.IsNeighborhoodFile(package.FileName))
+			{
 				return subh;
+			}
+
 			if (instc == 0)
+			{
 				return "-Homeless-";
+			}
+
 			string[] overs = Directory.GetFiles(
 				Path.GetDirectoryName(package.FileName),
 				"*.package",
@@ -131,10 +142,15 @@ namespace SimPe.Plugin
 									Helper.WindowsRegistry.LanguageCode
 								);
 							if (items.Length > 0)
+							{
 								subh = items[0].Title;
+							}
 						}
 						else
+						{
 							subh = "Tutorial";
+						}
+
 						return subh;
 					}
 				}
@@ -150,9 +166,15 @@ namespace SimPe.Plugin
 			get
 			{
 				if (Helper.StartedGui == Executable.Classic || package.FileName == null)
+				{
 					return null;
+				}
+
 				if (!Helper.IsNeighborhoodFile(package.FileName))
+				{
 					return null;
+				}
+
 				int inxy =
 					System
 						.IO.Path.GetFileNameWithoutExtension(package.FileName)
@@ -236,7 +258,10 @@ namespace SimPe.Plugin
 		protected override string GetResourceName(SimPe.Data.TypeAlias ta)
 		{
 			if (!this.Processed)
+			{
 				ProcessData(FileDescriptor, Package);
+			}
+
 			return this.Name + " History";
 		}
 
@@ -261,11 +286,14 @@ namespace SimPe.Plugin
 				for (int i = 0; i < Sections; i++)
 				{
 					for (int j = 0; j < 41; j++)
+					{
 						fval[(i * 42) + j] = reader.ReadUInt16();
+					}
 
 					fval[(i * 42) + 41] = Convert.ToUInt16(reader.ReadByte());
 
 					if (Helper.WindowsRegistry.AllowLotZero || fval[i * 42] > 0)
+					{
 						if (
 							(fval[(i * 42) + 1] < 33)
 							&& (
@@ -276,7 +304,10 @@ namespace SimPe.Plugin
 								== fval[(i * 42) + 1]
 							)
 						)
+						{
 							GoodSections++;
+						}
+					}
 				}
 			}
 			catch { }
@@ -300,7 +331,10 @@ namespace SimPe.Plugin
 			for (int i = 0; i < Sections; i++)
 			{
 				for (int j = 0; j < 41; j++)
+				{
 					writer.Write(fval[(i * 42) + j]);
+				}
+
 				writer.Write(Convert.ToByte(fval[(i * 42) + 41]));
 			}
 		}

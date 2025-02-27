@@ -300,13 +300,24 @@ namespace SimPe.PackedFiles.UserInterface
 		)
 		{
 			if (npfd == null)
+			{
 				return;
+			}
+
 			if (entries == null || entries.Length == 0)
+			{
 				return;
+			}
+
 			if (matchDelegates == null || matchDelegates.Length == 0)
+			{
 				return;
+			}
+
 			if (setDelegates == null || setDelegates.Length != matchDelegates.Length)
+			{
 				return;
+			}
 
 			WaitingScreen.Message = "Updating current package - " + typeName + "s...";
 			foreach (pjse.FileTable.Entry i in entries)
@@ -316,10 +327,14 @@ namespace SimPe.PackedFiles.UserInterface
 
 				AbstractWrapper wrapper = i.Wrapper;
 				if (wrapper as IEnumerable == null)
+				{
 					break;
+				}
 
 				if (ieDelegate != null && ieDelegate(i, npfd))
+				{
 					continue;
+				}
 
 				foreach (object o in (IEnumerable)wrapper)
 				{
@@ -353,8 +368,13 @@ namespace SimPe.PackedFiles.UserInterface
 			];
 			ushort newInst = 0x0fff;
 			foreach (pjse.FileTable.Entry i in ai)
+			{
 				if (i.Instance >= 0x1000 && i.Instance < 0x2000 && i.Instance > newInst)
+				{
 					newInst = (ushort)i.Instance;
+				}
+			}
+
 			newInst++;
 			#endregion
 
@@ -496,17 +516,26 @@ namespace SimPe.PackedFiles.UserInterface
 		)
 		{
 			if (item == null)
+			{
 				return; // this should never happen
+			}
+
 			Bhav bhav = new Bhav();
 			bhav.ProcessData(item.PFD, item.Package);
 
 			BhavForm ui = (BhavForm)bhav.UIHandler;
 			string tag = "Popup"; // tells the SetReadOnly function it's in a popup - so everything locked down
 			if (noOverride)
+			{
 				tag += ";noOverride"; // prevents handleOverride displaying anything
+			}
+
 			tag += ";callerID=+" + wrapper.FileDescriptor.ExportFileName + "+";
 			if (exp != null)
+			{
 				tag += ";expName=+" + exp.NameShort + "+";
+			}
+
 			ui.Tag = tag;
 
 			bhav.RefreshUI();
@@ -517,12 +546,16 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			string s = this.Tag as string;
 			if (s == null)
+			{
 				return null;
+			}
 
 			key = ";" + key + "=+";
 			int i = s.IndexOf(key);
 			if (i < 0)
+			{
 				return null;
+			}
 
 			s = s.Substring(i + key.Length);
 			i = s.IndexOf("+");
@@ -542,7 +575,9 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				string s = getValueFromTag("expName");
 				if (s != null)
+				{
 					return s;
+				}
 
 				foreach (
 					pjse.FileTable.Entry item in pjse.FileTable.GFT[
@@ -550,13 +585,20 @@ namespace SimPe.PackedFiles.UserInterface
 						wrapper.FileDescriptor
 					]
 				)
+				{
 					if (item.PFD == wrapper.FileDescriptor)
 					{
 						if (item.IsMaxis)
+						{
 							return pjse.Localization.GetString("expCurrent");
+						}
 						else
+						{
 							break;
+						}
 					}
+				}
+
 				return pjse.Localization.GetString("expCustom");
 			}
 		}
@@ -595,7 +637,9 @@ namespace SimPe.PackedFiles.UserInterface
 			lbHidesOP.Visible = tbHidesOP.Visible = llHidesOP.Visible = false;
 			llHidesOP.Tag = null;
 			if (this.isNoOverride)
+			{
 				return;
+			}
 
 			pjse.FileTable.Entry[] items = pjse.FileTable.GFT[
 				wrapper.Package,
@@ -606,9 +650,14 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				pjse.FileTable.Entry item = items[items.Length - 1];
 				if (item.PFD == wrapper.FileDescriptor)
+				{
 					return;
+				}
+
 				if (!item.IsMaxis && !item.IsFixed)
+				{
 					return;
+				}
 
 				this.lbHidesOP.Visible =
 					this.tbHidesOP.Visible =
@@ -701,7 +750,10 @@ namespace SimPe.PackedFiles.UserInterface
 				if (btnCommit.Visible)
 				{
 					if (changed)
+					{
 						UpdateInstPanel();
+					}
+
 					this.btnCancel.Enabled = true;
 				}
 				internalchg = false;
@@ -815,7 +867,9 @@ namespace SimPe.PackedFiles.UserInterface
 		private void ChangeLongname(byte oldval, byte newval)
 		{
 			if (oldval != newval)
+			{
 				setLongname();
+			}
 		}
 
 		private static string onearg = pjse.Localization.GetString("oneArg");
@@ -824,7 +878,9 @@ namespace SimPe.PackedFiles.UserInterface
 		private void setLongname()
 		{
 			if (currentInst == null || wrapper.IndexOf(currentInst.Instruction) < 0)
+			{
 				this.tbInst_Longname.Text = "";
+			}
 			else
 			{
 				bool state = Application.UseWaitCursor;
@@ -855,9 +911,14 @@ namespace SimPe.PackedFiles.UserInterface
 
 				string operands = "";
 				for (int j = 0; j < 8; j++)
+				{
 					operands += SimPe.Helper.HexString(inst.Operands[j]);
+				}
+
 				for (int j = 0; j < 8; j++)
+				{
 					operands += SimPe.Helper.HexString(inst.Reserved1[j]);
+				}
 
 				listing += (
 					"     "
@@ -890,15 +951,22 @@ namespace SimPe.PackedFiles.UserInterface
 			foreach (string line in listing.Split('\r', '\n'))
 			{
 				if (line.Length == 0)
+				{
 					continue;
+				}
+
 				string[] args = line.Split(new char[] { ':' });
 				if (args.Length != 6)
+				{
 					continue;
+				}
 
 				try
 				{
 					if (Convert.ToUInt32(args[0].Trim(), 16) != i)
+					{
 						throw new Exception("Foo");
+					}
 
 					Instruction inst = new Instruction(wrapper);
 
@@ -907,20 +975,30 @@ namespace SimPe.PackedFiles.UserInterface
 					inst.Target1 = Convert.ToUInt16(args[3].Trim(), 16);
 					inst.Target2 = Convert.ToUInt16(args[4].Trim(), 16);
 					for (int j = 0; j < 8; j++)
+					{
 						inst.Operands[j] = Convert.ToByte(
 							args[5].Trim().Substring(j * 2, 2),
 							16
 						);
+					}
+
 					for (int j = 0; j < 8; j++)
+					{
 						inst.Reserved1[j] = Convert.ToByte(
 							args[5].Trim().Substring(16 + j * 2, 2),
 							16
 						);
+					}
 
 					if (inst.Target1 < 0xfffc)
+					{
 						inst.Target1 = (ushort)(inst.Target1 + origlen);
+					}
+
 					if (inst.Target2 < 0xfffc)
+					{
 						inst.Target2 = (ushort)(inst.Target2 + origlen);
+					}
 
 					wrapper.Add(inst);
 				}
@@ -953,7 +1031,10 @@ namespace SimPe.PackedFiles.UserInterface
 						MessageBoxIcon.Warning
 					);
 					if (dr != DialogResult.OK)
+					{
 						return;
+					}
+
 					wrapper.Package.Remove(tprp.FileDescriptor);
 					tprp = null;
 				}
@@ -967,13 +1048,18 @@ namespace SimPe.PackedFiles.UserInterface
 						MessageBoxIcon.Warning
 					);
 					if (dr == DialogResult.Cancel)
+					{
 						return;
+					}
 
 					if (!tprp.Package.Equals(wrapper.Package))
 					{
 						// Clone the original into this package
 						if (dr == DialogResult.Yes)
+						{
 							Wait.MaxProgress = tprp.Count;
+						}
+
 						SimPe.Interfaces.Files.IPackedFileDescriptor npfd = newPFD(
 							tprp.FileDescriptor
 						);
@@ -981,11 +1067,14 @@ namespace SimPe.PackedFiles.UserInterface
 						ntprp.FileDescriptor = npfd;
 						wrapper.Package.Add(npfd, true);
 						if (dr == DialogResult.Yes)
+						{
 							foreach (TPRPItem item in tprp)
 							{
 								ntprp.Add(item.Clone());
 								Wait.Progress++;
 							}
+						}
+
 						tprp = ntprp;
 						tprp.SynchronizeUserData();
 						Wait.MaxProgress = 0;
@@ -997,7 +1086,9 @@ namespace SimPe.PackedFiles.UserInterface
 						minLocalC = tprp.LocalCount;
 					}
 					else
+					{
 						tprp.Clear();
+					}
 				}
 				else
 				{
@@ -1059,9 +1150,13 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			ushort uval = (ushort)(lo + (hi << 8));
 			if (uval > 32767)
+			{
 				return (short)(uval - 65536);
+			}
 			else
+			{
 				return (short)uval;
+			}
 		}
 
 		private byte[] ShortToOps(short val)
@@ -1069,9 +1164,14 @@ namespace SimPe.PackedFiles.UserInterface
 			byte[] ops = new byte[2];
 			ushort uval;
 			if (val < 0)
+			{
 				uval = (ushort)(65536 + val);
+			}
 			else
+			{
 				uval = (ushort)val;
+			}
+
 			ops[0] = (byte)(uval & 0xFF);
 			ops[1] = (byte)((uval >> 8) & 0xFF);
 			return ops;
@@ -1080,11 +1180,16 @@ namespace SimPe.PackedFiles.UserInterface
 		private bool cbHex16_IsValid(object sender)
 		{
 			if (alHex16cb.IndexOf(sender) < 0)
+			{
 				throw new Exception(
 					"cbHex16_IsValid not applicable to control " + sender.ToString()
 				);
+			}
+
 			if (((ComboBox)sender).Items.IndexOf(((ComboBox)sender).Text) != -1)
+			{
 				return true;
+			}
 
 			try
 			{
@@ -1100,9 +1205,12 @@ namespace SimPe.PackedFiles.UserInterface
 		private bool dec8_IsValid(object sender)
 		{
 			if (alDec8.IndexOf(sender) < 0)
+			{
 				throw new Exception(
 					"dec8_IsValid not applicable to control " + sender.ToString()
 				);
+			}
+
 			try
 			{
 				Convert.ToByte(((TextBox)sender).Text);
@@ -1136,9 +1244,12 @@ namespace SimPe.PackedFiles.UserInterface
 		private bool hex8_IsValid(object sender)
 		{
 			if (alHex8.IndexOf(sender) < 0)
+			{
 				throw new Exception(
 					"hex8_IsValid not applicable to control " + sender.ToString()
 				);
+			}
+
 			try
 			{
 				Convert.ToByte(((TextBox)sender).Text, 16);
@@ -1153,9 +1264,12 @@ namespace SimPe.PackedFiles.UserInterface
 		private bool hex16_IsValid(object sender)
 		{
 			if (alHex16.IndexOf(sender) < 0)
+			{
 				throw new Exception(
 					"hex16_IsValid not applicable to control " + sender.ToString()
 				);
+			}
+
 			try
 			{
 				Convert.ToUInt16(((TextBox)sender).Text, 16);
@@ -1170,9 +1284,12 @@ namespace SimPe.PackedFiles.UserInterface
 		private bool hex32_IsValid(object sender)
 		{
 			if (alHex32.IndexOf(sender) < 0)
+			{
 				throw new Exception(
 					"hex32_IsValid not applicable to control " + sender.ToString()
 				);
+			}
+
 			try
 			{
 				Convert.ToUInt32(((TextBox)sender).Text, 16);
@@ -1304,8 +1421,11 @@ namespace SimPe.PackedFiles.UserInterface
 			pjse_banner1.SiblingEnabled =
 				wrapper.SiblingResource(TPRP.TPRPtype) != null;
 			if (isPopup)
+			{
 				this.Text = formTitle;
+			}
 			else
+			{
 				ttBhavForm.SetToolTip(
 					tbFilename,
 					expName
@@ -1314,12 +1434,15 @@ namespace SimPe.PackedFiles.UserInterface
 							(ushort)wrapper.FileDescriptor.Instance
 						)
 				);
+			}
 		}
 
 		private void WrapperChanged(object sender, System.EventArgs e)
 		{
 			if (isPopup)
+			{
 				wrapper.Changed = false;
+			}
 
 			this.btnCommit.Enabled = wrapper.Changed;
 
@@ -1347,9 +1470,13 @@ namespace SimPe.PackedFiles.UserInterface
 			if (currentInst != null && sender == currentInst.Instruction)
 			{
 				if (internalchg)
+				{
 					this.btnCancel.Enabled = true;
+				}
 				else
+				{
 					pnflowcontainer_SelectedInstChanged(null, null);
+				}
 			}
 		}
 
@@ -2504,9 +2631,13 @@ namespace SimPe.PackedFiles.UserInterface
 		)
 		{
 			if (e.KeyState == 0)
+			{
 				e.Action = DragAction.Drop;
+			}
 			else
+			{
 				e.Action = DragAction.Continue;
+			}
 		}
 
 		private void ItemDragEnter(object sender, DragEventArgs e)
@@ -2557,7 +2688,10 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			TPRP tprp = (TPRP)wrapper.SiblingResource(TPRP.TPRPtype);
 			if (tprp == null)
+			{
 				return;
+			}
+
 			if (tprp.Package != wrapper.Package)
 			{
 				DialogResult dr = MessageBox.Show(
@@ -2566,7 +2700,9 @@ namespace SimPe.PackedFiles.UserInterface
 					MessageBoxButtons.YesNo
 				);
 				if (dr != DialogResult.Yes)
+				{
 					return;
+				}
 			}
 			SimPe.RemoteControl.OpenPackedFile(tprp.FileDescriptor, tprp.Package);
 		}
@@ -2654,7 +2790,9 @@ namespace SimPe.PackedFiles.UserInterface
 		private void btnClose_Click(object sender, System.EventArgs e)
 		{
 			if (this.isPopup)
+			{
 				Close();
+			}
 		}
 
 		private void btnCopyBHAV_Click(object sender, EventArgs e)
@@ -2686,8 +2824,10 @@ namespace SimPe.PackedFiles.UserInterface
 			);
 
 			if (item != null && item.Instance != currentInst.Instruction.OpCode)
+			{
 				this.tbInst_OpCode.Text =
 					"0x" + SimPe.Helper.HexString((ushort)item.Instance);
+			}
 		}
 
 		private void btnOperandWiz_Clicked(object sender, System.EventArgs e)
@@ -2708,9 +2848,14 @@ namespace SimPe.PackedFiles.UserInterface
 			try
 			{
 				for (int i = 0; i < 8; i++)
+				{
 					inst.Operands[i] = 0;
+				}
+
 				for (int i = 0; i < 8; i++)
+				{
 					inst.Reserved1[i] = 0;
+				}
 			}
 			finally
 			{
@@ -2739,11 +2884,19 @@ namespace SimPe.PackedFiles.UserInterface
 		private void cbHex16_TextChanged(object sender, System.EventArgs ev)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (!cbHex16_IsValid(sender))
+			{
 				return;
+			}
+
 			if (((ComboBox)sender).Items.IndexOf(((ComboBox)sender).Text) != -1)
+			{
 				return;
+			}
 
 			ushort val = Convert.ToUInt16(((ComboBox)sender).Text, 16);
 			internalchg = true;
@@ -2768,13 +2921,17 @@ namespace SimPe.PackedFiles.UserInterface
 		)
 		{
 			if (cbHex16_IsValid(sender))
+			{
 				return;
+			}
 
 			int i = alHex16cb.IndexOf(sender);
 			if (i < 0)
+			{
 				throw new Exception(
 					"cbHex16_Validating not applicable to control " + sender.ToString()
 				);
+			}
 
 			e.Cancel = true;
 
@@ -2812,11 +2969,16 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			int i = alHex16cb.IndexOf(sender);
 			if (i < 0)
+			{
 				throw new Exception(
 					"cbHex16_Validated not applicable to control " + sender.ToString()
 				);
+			}
+
 			if (((ComboBox)sender).Items.IndexOf(((ComboBox)sender).Text) != -1)
+			{
 				return;
+			}
 
 			ushort val = Convert.ToUInt16(((ComboBox)sender).Text, 16);
 
@@ -2842,16 +3004,23 @@ namespace SimPe.PackedFiles.UserInterface
 		private void cbHex16_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
 
 			int i = alHex16cb.IndexOf(sender);
 			if (i < 0)
+			{
 				throw new Exception(
 					"cbHex16_SelectedIndexChanged not applicable to control "
 						+ sender.ToString()
 				);
+			}
+
 			if (((ComboBox)sender).SelectedIndex == -1)
+			{
 				return;
+			}
 
 			ushort val = (ushort)((ComboBox)alHex16cb[i]).SelectedIndex;
 			((ComboBox)sender).SelectAll();
@@ -2861,9 +3030,13 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				val += 0xFFFC;
 				if (i == 0)
+				{
 					currentInst.Instruction.Target1 = val;
+				}
 				else
+				{
 					currentInst.Instruction.Target2 = val;
+				}
 			}
 			else
 			{
@@ -2876,9 +3049,14 @@ namespace SimPe.PackedFiles.UserInterface
 		private void dec8_TextChanged(object sender, System.EventArgs ev)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (!dec8_IsValid(sender))
+			{
 				return;
+			}
 
 			byte val = Convert.ToByte(((TextBox)sender).Text);
 			internalchg = true;
@@ -2896,7 +3074,9 @@ namespace SimPe.PackedFiles.UserInterface
 		)
 		{
 			if (dec8_IsValid(sender))
+			{
 				return;
+			}
 
 			e.Cancel = true;
 
@@ -2984,9 +3164,14 @@ namespace SimPe.PackedFiles.UserInterface
 		private void hex8_TextChanged(object sender, System.EventArgs ev)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (!hex8_IsValid(sender))
+			{
 				return;
+			}
 
 			byte val = Convert.ToByte(((TextBox)sender).Text, 16);
 			int i = alHex8.IndexOf(sender);
@@ -3007,6 +3192,7 @@ namespace SimPe.PackedFiles.UserInterface
 				ChangeLongname(oldval, val);
 			}
 			else
+			{
 				switch (i)
 				{
 					case 16:
@@ -3032,6 +3218,7 @@ namespace SimPe.PackedFiles.UserInterface
 						wrapper.Header.LocalVarCount = val;
 						break;
 				}
+			}
 
 			internalchg = false;
 		}
@@ -3042,7 +3229,9 @@ namespace SimPe.PackedFiles.UserInterface
 		)
 		{
 			if (hex8_IsValid(sender))
+			{
 				return;
+			}
 
 			e.Cancel = true;
 
@@ -3050,10 +3239,15 @@ namespace SimPe.PackedFiles.UserInterface
 			int i = alHex8.IndexOf(sender);
 
 			if (i < 8)
+			{
 				val = origInst.Operands[i];
+			}
 			else if (i < 16)
+			{
 				val = origInst.Reserved1[i - 8];
+			}
 			else
+			{
 				switch (i)
 				{
 					case 16:
@@ -3075,8 +3269,7 @@ namespace SimPe.PackedFiles.UserInterface
 						val = wrapper.Header.LocalVarCount;
 						break;
 				}
-
-			((TextBox)sender).Text = ((i >= 16) ? "0x" : "") + Helper.HexString(val);
+			} ((TextBox)sender).Text = ((i >= 16) ? "0x" : "") + Helper.HexString(val);
 			((TextBox)sender).SelectAll();
 		}
 
@@ -3094,9 +3287,14 @@ namespace SimPe.PackedFiles.UserInterface
 		private void hex16_TextChanged(object sender, System.EventArgs ev)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (!hex16_IsValid(sender))
+			{
 				return;
+			}
 
 			ushort val = Convert.ToUInt16(((TextBox)sender).Text, 16);
 			internalchg = true;
@@ -3115,7 +3313,9 @@ namespace SimPe.PackedFiles.UserInterface
 		)
 		{
 			if (hex16_IsValid(sender))
+			{
 				return;
+			}
 
 			e.Cancel = true;
 
@@ -3147,9 +3347,14 @@ namespace SimPe.PackedFiles.UserInterface
 		private void hex32_TextChanged(object sender, System.EventArgs ev)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (!hex32_IsValid(sender))
+			{
 				return;
+			}
 
 			uint val = Convert.ToUInt32(((TextBox)sender).Text, 16);
 			internalchg = true;
@@ -3168,7 +3373,9 @@ namespace SimPe.PackedFiles.UserInterface
 		)
 		{
 			if (hex32_IsValid(sender))
+			{
 				return;
+			}
 
 			e.Cancel = true;
 
@@ -3214,9 +3421,13 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				this.gbMove.Enabled = false;
 				if (sender == this.btnUp)
+				{
 					this.pnflowcontainer.MoveInst(mv * -1);
+				}
 				else
+				{
 					this.pnflowcontainer.MoveInst(mv);
+				}
 			}
 			finally
 			{
@@ -3346,20 +3557,28 @@ namespace SimPe.PackedFiles.UserInterface
 			//DialogResult dr = MessageBox.Show(pjse.Localization.GetString("guidAskMessage"), pjse.Localization.GetString("guidAskTitle"),
 			//    MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
 			if (dr == DialogResult.OK)
+			{
 				defaultFileToolStripMenuItem_Click(
 					this.defaultFileToolStripMenuItem1,
 					null
 				);
+			}
 			else if (dr == DialogResult.Retry)
+			{
 				fileToolStripMenuItem_Click(this.toFileToolStripMenuItem, null);
+			}
 		}
 
 		private void defaultFileToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			if (sender.Equals(this.defaultFileToolStripMenuItem))
+			{
 				pjse.GUIDIndex.TheGUIDIndex.Load();
+			}
 			else
+			{
 				pjse.GUIDIndex.TheGUIDIndex.Save();
+			}
 		}
 
 		private void fileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -3367,9 +3586,14 @@ namespace SimPe.PackedFiles.UserInterface
 			bool load = sender.Equals(this.fromFileToolStripMenuItem);
 			FileDialog fd;
 			if (load)
+			{
 				fd = new OpenFileDialog();
+			}
 			else
+			{
 				fd = new SaveFileDialog();
+			}
+
 			fd.AddExtension = true;
 			fd.CheckFileExists = load;
 			fd.CheckPathExists = true;
@@ -3389,9 +3613,13 @@ namespace SimPe.PackedFiles.UserInterface
 			if (dr == DialogResult.OK)
 			{
 				if (load)
+				{
 					pjse.GUIDIndex.TheGUIDIndex.Load(fd.FileName);
+				}
 				else
+				{
 					pjse.GUIDIndex.TheGUIDIndex.Save(fd.FileName);
+				}
 			}
 		}
 	}

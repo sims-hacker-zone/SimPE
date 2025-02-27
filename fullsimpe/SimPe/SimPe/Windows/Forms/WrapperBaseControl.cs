@@ -112,7 +112,9 @@ namespace SimPe.Windows.Forms
 		~WrapperBaseControl()
 		{
 			if (Wrapper != null)
+			{
 				SetWrapper(null);
+			}
 		}
 
 		/// <summary>
@@ -123,7 +125,10 @@ namespace SimPe.Windows.Forms
 			if (disposing)
 			{
 				if (Wrapper != null)
+				{
 					SetWrapper(null);
+				}
+
 				if (ThemeManager != null)
 				{
 					ThemeManager.Parent = null;
@@ -564,9 +569,15 @@ namespace SimPe.Windows.Forms
 				if (this.Height - this.HeaderHeight > 0)
 				{
 					if (this.GradCentre < 0.02F)
+					{
 						this.GradCentre = this.mCentre = 0.02F;
+					}
+
 					if (this.GradCentre > 0.98F)
+					{
 						this.GradCentre = this.mCentre = 0.98F;
+					}
+
 					Rectangle rec = new Rectangle(
 						0,
 						this.HeaderHeight,
@@ -674,7 +685,9 @@ namespace SimPe.Windows.Forms
 								Hite
 							);
 							if (mPicOpacity >= 1)
+							{
 								e.Graphics.DrawImage(this.BackgroundImage, picrect);
+							}
 							else
 							{
 								float[][] ptsArray =
@@ -739,7 +752,10 @@ namespace SimPe.Windows.Forms
 		private void btCommit_Click(object sender, System.EventArgs e)
 		{
 			if (Commited != null)
+			{
 				Commited(this, e);
+			}
+
 			OnCommit();
 		}
 
@@ -775,7 +791,9 @@ namespace SimPe.Windows.Forms
 			WrapperChangedEventArgs e = new WrapperChangedEventArgs(old, wrp);
 			OnWrapperChanged(e);
 			if (WrapperChanged != null)
+			{
 				WrapperChanged(this, e);
+			}
 		}
 		#endregion
 

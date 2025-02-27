@@ -36,7 +36,10 @@ namespace Ambertation
 		{
 			html = html.Replace("\n", " ");
 			while (html.IndexOf("  ") != -1)
+			{
 				html = html.Replace("  ", " ");
+			}
+
 			html = html.Replace("\\", "/").Replace("{", "(").Replace("}", ")");
 
 			html = html.Replace("<br />", @"\pard\par" + "\n");
@@ -68,7 +71,10 @@ namespace Ambertation
 			html = html.Replace("../", @"http://sims.ambertation.de/");
 			html = html.Replace("./", @"http://sims.ambertation.de/");
 			while (html.IndexOf(" \\") != -1)
+			{
 				html = html.Replace(" \\", "\\");
+			}
+
 			html = Regex.Replace(
 				html,
 				"<span [ ]*class=\"([^\"]*)serif([^\"]*)\"[^>]*>(.*?)<\\/span>",

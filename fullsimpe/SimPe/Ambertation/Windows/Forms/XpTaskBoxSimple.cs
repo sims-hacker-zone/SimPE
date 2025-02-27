@@ -175,7 +175,10 @@ namespace Ambertation.Windows.Forms
 			if (disposing && (this.components != null))
 			{
 				if (canvas != null)
+				{
 					canvas.Dispose();
+				}
+
 				canvas = null;
 				this.components.Dispose();
 			}
@@ -243,7 +246,10 @@ namespace Ambertation.Windows.Forms
 		protected void RebuildCanvas()
 		{
 			if (canvas != null)
+			{
 				canvas.Dispose();
+			}
+
 			if (this.Width <= 7 || this.Height <= headerh + 21)
 			{
 				canvas = null;
@@ -330,14 +336,20 @@ namespace Ambertation.Windows.Forms
 		protected override void OnPaint(PaintEventArgs e)
 		{
 			if (canvas == null)
+			{
 				RebuildCanvas();
+			}
+
 			if (canvas != null)
+			{
 				e.Graphics.DrawImage(
 					canvas,
 					e.ClipRectangle,
 					e.ClipRectangle,
 					GraphicsUnit.Pixel
 				);
+			}
+
 			base.OnPaint(e);
 		}
 

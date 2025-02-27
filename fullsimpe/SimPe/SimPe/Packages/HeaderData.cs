@@ -71,7 +71,10 @@ namespace SimPe.Packages
 			{
 				string ret = "";
 				foreach (char c in id)
+				{
 					ret += c;
+				}
+
 				return ret;
 			}
 		}
@@ -309,23 +312,32 @@ namespace SimPe.Packages
 		{
 			//this.id = new char[4];
 			for (uint i = 0; i < this.id.Length; i++)
+			{
 				this.id[i] = reader.ReadChar();
+			}
+
 			if (!Helper.AnyPackage && Identifier != "DBPF")
+			{
 				throw new InvalidOperationException(
 					"SimPe does not support this type of file." + spore
 				);
+			}
 
 			this.majorversion = reader.ReadInt32();
 			if (!Helper.AnyPackage && this.majorversion > 1)
+			{
 				throw new InvalidOperationException(
 					"SimPe does not support this version of DBPF file." + spore
 				);
+			}
 
 			this.minorversion = reader.ReadInt32();
 
 			//this.reserved_00 = new Int32[3];
 			for (uint i = 0; i < this.reserved_00.Length; i++)
+			{
 				this.reserved_00[i] = reader.ReadInt32();
+			}
 
 			this.created = reader.ReadUInt32();
 			this.modified = reader.ReadInt32();
@@ -349,14 +361,18 @@ namespace SimPe.Packages
 			this.hole.size = reader.ReadInt32();
 
 			if (IsVersion0101)
+			{
 				this.indextype = (Data.MetaData.IndexTypes)reader.ReadUInt32();
+			}
 
 			this.epicon = reader.ReadInt16();
 			this.showicon = reader.ReadInt16();
 
 			//this.reserved_02 = new Int32[8];
 			for (uint i = 0; i < this.reserved_02.Length; i++)
+			{
 				this.reserved_02[i] = reader.ReadInt32();
+			}
 		}
 
 		/// <summary>
@@ -367,13 +383,17 @@ namespace SimPe.Packages
 		internal void Save(BinaryWriter writer)
 		{
 			for (uint i = 0; i < this.id.Length; i++)
+			{
 				writer.Write(this.id[i]);
+			}
 
 			writer.Write(this.majorversion);
 			writer.Write(this.minorversion);
 
 			for (uint i = 0; i < this.reserved_00.Length; i++)
+			{
 				writer.Write(this.reserved_00[i]);
+			}
 
 			writer.Write(this.created);
 			writer.Write(this.modified);
@@ -388,12 +408,17 @@ namespace SimPe.Packages
 			writer.Write(this.hole.size);
 
 			if (IsVersion0101)
+			{
 				writer.Write((uint)this.IndexType);
+			}
+
 			writer.Write(this.epicon);
 			writer.Write(this.showicon);
 
 			for (uint i = 0; i < this.reserved_02.Length; i++)
+			{
 				writer.Write(this.reserved_02[i]);
+			}
 		}
 		#endregion
 

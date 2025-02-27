@@ -41,6 +41,7 @@ namespace SimPe.PackedFiles.UserInterface
 			form.wrapper = fami;
 
 			if (fami.FamiThumb != null)
+			{
 				form.pbImage.Image =
 					Ambertation.Windows.Forms.Graph.ImagePanel.CreateThumbnail(
 						fami.FamiThumb,
@@ -54,10 +55,16 @@ namespace SimPe.PackedFiles.UserInterface
 						4,
 						0
 					);
+			}
 			else if (fami.FileDescriptor.Instance > 32511)
+			{
 				form.pbImage.Image = SimPe.GetImage.Cassie;
+			}
 			else
+			{
 				form.pbImage.Image = null;
+			}
+
 			form.tbname.Text = fami.Name;
 			form.tbmoney.Text = fami.Money.ToString();
 			form.tbfamily.Text = fami.Friends.ToString();
@@ -67,9 +74,14 @@ namespace SimPe.PackedFiles.UserInterface
 				&& fami.FileDescriptor.Instance > 0
 				&& fami.FileDescriptor.Instance < 32512
 			)
+			{
 				form.tblotinst.Text = "Sim Bin";
+			}
 			else
+			{
 				form.tblotinst.Text = "0x" + Helper.HexString(fami.LotInstance);
+			}
+
 			form.tbalbum.Text = "0x" + Helper.HexString(fami.AlbumGUID);
 			form.tbflag.Text = "0x" + Helper.HexString(fami.Flags);
 			form.tbsubhood.Text = "0x" + Helper.HexString(fami.SubHoodNumber);
@@ -114,9 +126,13 @@ namespace SimPe.PackedFiles.UserInterface
 				|| fami.Package.FindFile(0x0BF999E7, 0, 0xFFFFFFFF, fami.LotInstance)
 					== null
 			)
+			{
 				form.label15.ForeColor = System.Drawing.SystemColors.ControlText;
+			}
 			else
+			{
 				form.label15.ForeColor = System.Drawing.Color.Blue;
+			}
 
 			form.lbmembers.Sorted = false;
 			string[] names = fami.SimNames;
@@ -126,7 +142,9 @@ namespace SimPe.PackedFiles.UserInterface
 				form.lbmembers.Items.Add(a);
 			}
 			if (fami.Members.Length > 5)
+			{
 				form.lbmembers.Sorted = true;
+			}
 
 			form.cbsims.Items.Clear();
 			form.cbsims.Sorted = false;

@@ -35,7 +35,10 @@ namespace SimPe
 		void wb_Navigating(object sender, WebBrowserNavigatingEventArgs e)
 		{
 			if (e.Url.OriginalString.StartsWith("about:"))
+			{
 				return;
+			}
+
 			if (e.TargetFrameName != "_blank")
 			{
 				e.Cancel = true;

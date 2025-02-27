@@ -32,11 +32,20 @@ namespace SimPe
 				get
 				{
 					if (RegularExpansion)
+					{
 						return Classes.ExpansionPack;
+					}
+
 					if (StuffPack)
+					{
 						return Classes.StuffPack;
+					}
+
 					if (SimStory)
+					{
 						return Classes.Story;
+					}
+
 					return Classes.BaseGame;
 				}
 			}
@@ -54,6 +63,7 @@ namespace SimPe
 			if (PreObjectFileTableFolders.Count == 0)
 			{
 				if (Flag.Class == ExpansionItem.Classes.BaseGame)
+				{
 					AddFileTableFolder(
 						"!TSData"
 							+ Helper.PATH_SEP
@@ -63,18 +73,23 @@ namespace SimPe
 							+ Helper.PATH_SEP
 							+ "Bins"
 					);
+				}
 			}
 
 			if (FileTableFolders.Count == 0)
 			{
 				if (Flag.Class == ExpansionItem.Classes.BaseGame)
+				{
 					AddFileTableFolder(
 						"TSData" + Helper.PATH_SEP + "Res" + Helper.PATH_SEP + "Sims3D"
 					);
+				}
 				else
+				{
 					AddFileTableFolder(
 						"TSData" + Helper.PATH_SEP + "Res" + Helper.PATH_SEP + "3D"
 					);
+				}
 
 				if ((Helper.ECCorNewSEfound || Version != 12) && Version != 20) // both Store Editions
 				{
@@ -162,9 +177,13 @@ namespace SimPe
 			if (!list.Contains(folder))
 			{
 				if (begin)
+				{
 					list.Insert(0, folder);
+				}
 				else
+				{
 					list.Add(folder);
+				}
 			}
 		}
 
@@ -187,10 +206,12 @@ namespace SimPe
 					false
 				);
 				if (lang == null)
+				{
 					lang = key.OpenSubKey(
 						System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName.ToLower(),
 						false
 					);
+				}
 
 				Version = (int)key.GetValue("Version", 0);
 				PreferedRuntimeVersion = (int)key.GetValue("PreferedRuntimeVersion", Version);
@@ -206,23 +227,34 @@ namespace SimPe
 				if (Helper.WindowsRegistry.LoadOnlySimsStory > 0)
 				{
 					if (Version == Helper.WindowsRegistry.LoadOnlySimsStory)
+					{
 						isfound = true;
+					}
 					else
+					{
 						isfound = false;
+					}
 				}
 				else
 				{
 					if (Version == 0 || Flag.SimStory == true)
+					{
 						isfound = true;
+					}
 					else
 					{
 						isfound = false;
 						foreach (string si in inst)
 						{
 							if (si == "")
+							{
 								continue;
+							}
+
 							if (si == ExeName.ToLower().Trim())
+							{
 								isfound = true;
+							}
 						}
 					}
 				}
@@ -245,11 +277,19 @@ namespace SimPe
 					);
 				}
 				else
+				{
 					Registry = null;
+				}
+
 				if (Version == 18 || Version == 19)
+				{
 					CensorFileName = "";
+				}
 				else
+				{
 					CensorFileName = (string)key.GetValue("Censor", "");
+				}
+
 				Group = (int)key.GetValue("Group", 1);
 				ObjectsSubFolder = (string)
 					key.GetValue(
@@ -268,7 +308,9 @@ namespace SimPe
 						new Ambertation.CaseInvariantArrayList()
 					);
 				if (savegames.Count == 0)
+				{
 					savegames.Add(PathProvider.SimSavegameFolder);
+				}
 
 				Ambertation.CaseInvariantArrayList ftf =
 					(Ambertation.CaseInvariantArrayList)
@@ -277,10 +319,16 @@ namespace SimPe
 							new Ambertation.CaseInvariantArrayList()
 						);
 				if (ftf.Count == 0)
+				{
 					SetDefaultFileTableFolders();
+				}
 				else
+				{
 					foreach (string folder in ftf)
+					{
 						AddFileTableFolder(folder);
+					}
+				}
 
 				ftf = (Ambertation.CaseInvariantArrayList)
 					key.GetValue(
@@ -288,7 +336,9 @@ namespace SimPe
 						new Ambertation.CaseInvariantArrayList()
 					);
 				foreach (string folder in ftf)
+				{
 					AddFileTableFolder(folder);
+				}
 
 				System.Diagnostics.Debug.WriteLine(this.ToString());
 
@@ -299,13 +349,19 @@ namespace SimPe
 					NameShort = (string)lang.GetValue("short", name);
 					NameShorter = (string)lang.GetValue("name", NameShort);
 					if (Registry != null)
+					{
 						dname = (string)Registry.GetValue("DisplayName", NameShorter);
+					}
+
 					Name = (string)lang.GetValue("long", dname);
 				}
 				else //1. check the resource files, then try default language, then set to defaults
 				{
 					if (lang == null)
+					{
 						lang = key.OpenSubKey("en", false);
+					}
+
 					NameShort = SimPe.Localization.GetString("EP SNAME " + Version);
 					NameShorter = NameShort;
 
@@ -315,16 +371,25 @@ namespace SimPe
 						NameShorter = (string)lang.GetValue("name", NameShort);
 					}
 					if (NameShort == "EP SNAME " + Version)
+					{
 						NameShort = name;
+					}
 
 					if (Registry != null)
+					{
 						dname = (string)Registry.GetValue("DisplayName", NameShorter);
+					}
 
 					Name = SimPe.Localization.GetString("EP NAME " + Version);
 					if (Name == "EP NAME " + Version && lang != null)
+					{
 						Name = (string)lang.GetValue("long", dname);
+					}
+
 					if (Name == "EP NAME " + Version)
+					{
 						Name = dname;
+					}
 				}
 			}
 			else
@@ -357,7 +422,9 @@ namespace SimPe
 			{
 				long grp = (long)Math.Pow(2, i);
 				if (this.ShareOneGroup(grp))
+				{
 					mylist.Add(grp);
+				}
 			}
 			Groups = mylist.AsReadOnly();
 		}
@@ -404,7 +471,10 @@ namespace SimPe
 			public override int GetHashCode()
 			{
 				if (Expansion == null)
+				{
 					return 0;
+				}
+
 				return Expansion.Version;
 			}
 
@@ -450,7 +520,10 @@ namespace SimPe
 								{
 									string hood = sec.GetValue(k);
 									if (hood == null)
+									{
 										continue;
+									}
+
 									hood = hood.ToUpper().Trim();
 									string path = System.IO.Path.Combine(
 										pt,
@@ -465,7 +538,9 @@ namespace SimPe
 											hood == defaulthood
 										);
 										if (!hoods.Contains(np))
+										{
 											hoods.Add(np);
+										}
 									}
 								}
 							}
@@ -473,14 +548,18 @@ namespace SimPe
 						catch (Exception ex)
 						{
 							if (Helper.WindowsRegistry.HiddenMode)
+							{
 								Helper.ExceptionMessage(ex);
+							}
 						}
 					}
 					else
 					{
 						NeighborhoodPath np = new NeighborhoodPath("", pt, this, true);
 						if (!hoods.Contains(np))
+						{
 							hoods.Add(np);
+						}
 					}
 				}
 			}
@@ -603,15 +682,19 @@ namespace SimPe
 							System.IO.Path.Combine(InstallFolder, "TSBin\\" + ExeName)
 						)
 					)
+					{
 						return System.IO.Path.Combine(
 							InstallFolder,
 							"TSBin\\" + ExeName
 						);
+					}
 					else
+					{
 						return System.IO.Path.Combine(
 							RealInstallFolder,
 							"TSBin\\" + ExeName
 						);
+					}
 				}
 				catch (Exception)
 				{
@@ -634,7 +717,10 @@ namespace SimPe
 		{
 			string ret = IdKey.Trim().ToUpper().Replace("SIMS2", "");
 			if (ret == "")
+			{
 				return "Game";
+			}
+
 			return ret;
 		}
 
@@ -668,14 +754,21 @@ namespace SimPe
 			get
 			{
 				if (!Exists)
+				{
 					return "";
+				}
+
 				try
 				{
 					object o = tk.GetValue("Path");
 					if (o == null)
+					{
 						return "";
+					}
 					else
+					{
 						return Helper.ToLongPathName(o.ToString());
+					}
 				}
 				catch (Exception)
 				{
@@ -705,7 +798,10 @@ namespace SimPe
 						string fl = o.ToString();
 
 						if (!System.IO.Directory.Exists(fl))
+						{
 							return this.RealInstallFolder;
+						}
+
 						return fl;
 					}
 				}
@@ -720,9 +816,13 @@ namespace SimPe
 					"Settings"
 				);
 				if (value == "")
+				{
 					rkf.DeleteSubKey(IdKey + "Path", false);
+				}
 				else
+				{
 					rkf.SetValue(IdKey + "Path", value);
+				}
 			}
 		}
 
@@ -741,10 +841,16 @@ namespace SimPe
 						false
 					);
 				if (fk == null)
+				{
 					return null;
+				}
+
 				object fr = fk.GetValue("Path");
 				if (fr == null)
+				{
 					return null;
+				}
+
 				return fr.ToString();
 			}
 			catch (Exception)
@@ -806,7 +912,9 @@ namespace SimPe
 						Helper.WindowsRegistry.RegistryKey.CreateSubKey("Settings");
 					object o = rkf.GetValue(IdKey + "Path");
 					if (o == null)
+					{
 						return null;
+					}
 					else
 					{
 						string fl = o.ToString();
@@ -835,7 +943,10 @@ namespace SimPe
 				+ ", "
 				+ Flag.Class;
 			if (Registry != null)
+			{
 				s += ", " + Registry.Name;
+			}
+
 			return s;
 		}
 
@@ -846,9 +957,13 @@ namespace SimPe
 			ExpansionItem a = obj as ExpansionItem;
 
 			if (a == null)
+			{
 				return 0;
+			}
 			else
+			{
 				return Version.CompareTo(a.Version);
+			}
 		}
 
 		#endregion

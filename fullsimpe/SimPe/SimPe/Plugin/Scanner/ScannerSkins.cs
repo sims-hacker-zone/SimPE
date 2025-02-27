@@ -134,7 +134,9 @@ namespace SimPe.Plugin.Scanner
 		)
 		{
 			if (selection.Length > 1)
+			{
 				return;
+			}
 
 			SimPe.Packages.GeneratableFile pkg = BuildOverride(
 				selection[0],
@@ -195,12 +197,19 @@ namespace SimPe.Plugin.Scanner
 					cpf.ProcessData(item);
 
 					if (cpf.GetSaveItem("skintone").StringValue != skintone)
+					{
 						continue;
+					}
 					//if (usefam)
 					if (cpf.GetSaveItem("family").StringValue != family)
+					{
 						continue;
+					}
+
 					if (cpf.GetSaveItem("type").StringValue != "skin")
+					{
 						continue;
+					}
 
 					SimPe.Plugin.SkinChain sc = new SkinChain(cpf);
 					basecpf.Add(sc);
@@ -297,16 +306,27 @@ namespace SimPe.Plugin.Scanner
 									.ToLower();
 
 								if (s1 == "bottom")
+								{
 									s1 = "body";
+								}
 								else if (s1 == "top")
+								{
 									s1 = "body";
+								}
+
 								if (s2 == "bottom")
+								{
 									s2 = "body";
+								}
 								else if (s2 == "top")
+								{
 									s2 = "body";
+								}
 
 								if (s1 != s2)
+								{
 									point--;
+								}
 							}
 							else if (
 								sc.Cpf.GetSaveItem(s).UIntegerValue
@@ -343,7 +363,9 @@ namespace SimPe.Plugin.Scanner
 
 							r.SynchronizeUserData();
 							if (pkg.FindFile(r.FileDescriptor) == null)
+							{
 								pkg.Add(r.FileDescriptor);
+							}
 						}
 
 						if (sc.TXTR != null && newsc.TXTR != null && addtxtr)
@@ -359,7 +381,9 @@ namespace SimPe.Plugin.Scanner
 
 							txtr.SynchronizeUserData();
 							if (pkg.FindFile(txtr.FileDescriptor) == null)
+							{
 								pkg.Add(txtr.FileDescriptor);
+							}
 						}
 
 						if (sc.TXMT != null && newsc.TXMT != null && addtxmt)
@@ -379,7 +403,9 @@ namespace SimPe.Plugin.Scanner
 
 							txmt.SynchronizeUserData();
 							if (pkg.FindFile(txmt.FileDescriptor) == null)
+							{
 								pkg.Add(txmt.FileDescriptor);
+							}
 						}
 					}
 				}

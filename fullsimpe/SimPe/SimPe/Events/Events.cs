@@ -124,8 +124,13 @@ namespace SimPe.Events
 			get
 			{
 				foreach (ResourceContainer r in Items)
+				{
 					if (r.HasResource)
+					{
 						return true;
+					}
+				}
+
 				return false;
 			}
 		}
@@ -138,8 +143,13 @@ namespace SimPe.Events
 			get
 			{
 				foreach (ResourceContainer r in Items)
+				{
 					if (r.HasFileDescriptor)
+					{
 						return true;
+					}
+				}
+
 				return false;
 			}
 		}
@@ -152,8 +162,13 @@ namespace SimPe.Events
 			get
 			{
 				foreach (ResourceContainer r in Items)
+				{
 					if (r.HasPackage)
+					{
 						return true;
+					}
+				}
+
 				return false;
 			}
 		}
@@ -166,7 +181,10 @@ namespace SimPe.Events
 			get
 			{
 				if (this.LoadedPackage == null)
+				{
 					return false;
+				}
+
 				return LoadedPackage.Loaded;
 			}
 		}
@@ -192,8 +210,13 @@ namespace SimPe.Events
 			get
 			{
 				foreach (ResourceContainer c in Items)
+				{
 					if (c.ChangedPackage)
+					{
 						return true;
+					}
+				}
+
 				return false;
 			}
 		}
@@ -203,8 +226,13 @@ namespace SimPe.Events
 			get
 			{
 				foreach (ResourceContainer c in Items)
+				{
 					if (c.ChangedFile)
+					{
 						return true;
+					}
+				}
+
 				return false;
 			}
 		}
@@ -220,7 +248,9 @@ namespace SimPe.Events
 			foreach (SimPe.Events.ResourceContainer e in Items)
 			{
 				if (e.HasFileDescriptor)
+				{
 					pfds.Add(e.Resource.FileDescriptor);
+				}
 			}
 			return pfds;
 		}
@@ -269,16 +299,24 @@ namespace SimPe.Events
 		public override int GetHashCode()
 		{
 			if (this.Resource == null)
+			{
 				return base.GetHashCode();
+			}
+
 			return this.Resource.GetHashCode();
 		}
 
 		public override bool Equals(object obj)
 		{
 			if (obj == null)
+			{
 				return false;
+			}
+
 			if (!(obj is ResourceContainer))
+			{
 				return false;
+			}
 
 			ResourceContainer e = (ResourceContainer)obj;
 
@@ -287,7 +325,9 @@ namespace SimPe.Events
 				return (this.Resource == null);
 			}
 			else if (this.Resource == null)
+			{
 				return false;
+			}
 
 			return (e.Resource.Equals(this.Resource));
 		}
@@ -300,7 +340,10 @@ namespace SimPe.Events
 			get
 			{
 				if (Resource == null)
+				{
 					return false;
+				}
+
 				return true;
 			}
 		}
@@ -313,9 +356,15 @@ namespace SimPe.Events
 			get
 			{
 				if (!HasResource)
+				{
 					return false;
+				}
+
 				if (Resource.FileDescriptor == null)
+				{
 					return false;
+				}
+
 				return true;
 			}
 		}
@@ -328,9 +377,15 @@ namespace SimPe.Events
 			get
 			{
 				if (!HasResource)
+				{
 					return false;
+				}
+
 				if (Resource.Package == null)
+				{
 					return false;
+				}
+
 				return true;
 			}
 		}
@@ -343,9 +398,15 @@ namespace SimPe.Events
 			get
 			{
 				if (!HasPackage)
+				{
 					return "";
+				}
+
 				if (Resource.Package.FileName == null)
+				{
 					return "";
+				}
+
 				return Resource.Package.FileName;
 			}
 		}
@@ -448,7 +509,9 @@ namespace SimPe.Events
 		{
 			ResourceContainers list = new ResourceContainers();
 			foreach (ResourceContainer item in this)
+			{
 				list.Add(item);
+			}
 
 			return list;
 		}

@@ -43,7 +43,9 @@ namespace SimPe
 		static void GetLayoutInformations(Control b, ArrayList list)
 		{
 			foreach (Control c in b.Controls)
+			{
 				GetLayoutInformations(c, list);
+			}
 
 			ToolStrip tb = b as ToolStrip;
 			if (tb != null)
@@ -52,8 +54,10 @@ namespace SimPe
 				{
 					MyButtonItem mbi = o as MyButtonItem;
 					if (mbi != null)
+					{
 						//if (!mbi.HaveDock)
 						mbi.Visible = list.Contains(mbi.Name);
+					}
 				}
 			}
 		}
@@ -69,7 +73,9 @@ namespace SimPe
 		static void SetLayoutInformations(Control b, ArrayList list)
 		{
 			foreach (Control c in b.Controls)
+			{
 				SetLayoutInformations(c, list);
+			}
 
 			ToolStrip tb = b as ToolStrip;
 			if (tb != null)
@@ -78,10 +84,14 @@ namespace SimPe
 				{
 					MyButtonItem mbi = o as MyButtonItem;
 					if (mbi != null)
+					{
 						if (
 							mbi.Visible /*&& !mbi.HaveDock*/
 						)
+						{
 							list.Add(mbi.Name);
+						}
+					}
 				}
 			}
 		}
@@ -121,7 +131,10 @@ namespace SimPe
 				this.Image = item.Image;
 				this.Visible = (item.Image != null);
 				if (this.Image == null)
+				{
 					this.Text = item.Text;
+				}
+
 				this.ToolTipText = item.Text.Replace("&", "");
 				this.Enabled = item.Enabled;
 				this.Click += new EventHandler(MyButtonItem_Activate);
@@ -135,7 +148,9 @@ namespace SimPe
 				HaveDock = false;
 				ToolMenuItemExt tmie = item as ToolMenuItemExt;
 				if (tmie != null)
+				{
 					this.Name = tmie.Name;
+				}
 				else
 				{
 					Ambertation.Windows.Forms.DockPanel dw =
@@ -147,7 +162,9 @@ namespace SimPe
 						HaveDock = true;
 					}
 					else
+					{
 						this.Name = "Button_" + (counter++);
+					}
 				}
 			}
 			else

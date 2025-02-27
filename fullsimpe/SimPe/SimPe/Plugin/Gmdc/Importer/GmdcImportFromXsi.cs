@@ -50,7 +50,10 @@ namespace SimPe.Plugin.Gmdc.Importer
 			get
 			{
 				if (flname == null)
+				{
 					return "";
+				}
+
 				return flname;
 			}
 			set
@@ -65,7 +68,10 @@ namespace SimPe.Plugin.Gmdc.Importer
 			get
 			{
 				if (cmp == null)
+				{
 					cmp = new ElementOrder(Gmdc.ElementSorting.XZY);
+				}
+
 				return cmp;
 			}
 			set

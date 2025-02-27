@@ -16,7 +16,10 @@ namespace SimPe.Plugin.Downloads
 			get
 			{
 				if (defimg == null)
+				{
 					BuildDefaultImage();
+				}
+
 				return defimg;
 			}
 		}
@@ -45,7 +48,9 @@ namespace SimPe.Plugin.Downloads
 					)
 				)
 			)
+			{
 				return SimPe.Cache.PackageType.Undefined;
+			}
 
 			SimPe.Interfaces.Files.IPackageFile pkg =
 				SimPe.Packages.GeneratableFile.LoadFromFile(filename);
@@ -69,7 +74,10 @@ namespace SimPe.Plugin.Downloads
 					)
 				)
 			)
+			{
 				return SimPe.Cache.PackageType.Undefined;
+			}
+
 			SimPe.Cache.PackageType type = SimPe.Cache.PackageType.Undefined;
 			foreach (
 				SimPe.Interfaces.Plugin.Scanner.IIdentifier ident in SimPe
@@ -84,7 +92,10 @@ namespace SimPe.Plugin.Downloads
 					type != SimPe.Cache.PackageType.Unknown
 					&& type != SimPe.Cache.PackageType.Undefined
 				)
+				{
 					break; // this makes no sense, type always is Undefined as we just set it
+				}
+
 				type = ident.GetType(pkg);
 			}
 
@@ -123,14 +134,20 @@ namespace SimPe.Plugin.Downloads
 		public static Expansions FileFrom(string flname)
 		{
 			if (flname == null)
+			{
 				flname = "";
+			}
 			else
+			{
 				flname = Helper.CompareableFileName(flname);
+			}
 
 			foreach (ExpansionItem ei in PathProvider.Global.Expansions)
 			{
 				if (flname.StartsWith(Helper.CompareableFileName(ei.InstallFolder)))
+				{
 					return (ei.Expansion);
+				}
 			}
 			if (
 				flname.StartsWith(
@@ -142,7 +159,10 @@ namespace SimPe.Plugin.Downloads
 					)
 				)
 			)
+			{
 				return Expansions.Custom;
+			}
+
 			return Expansions.None;
 		}
 
@@ -265,15 +285,21 @@ namespace SimPe.Plugin.Downloads
 		)
 		{
 			if (img == null)
+			{
 				return null;
+			}
 
 			if (aspect)
 			{
 				double a = (double)img.Width / (double)img.Height;
 				if (img.Height > img.Width)
+				{
 					sz = new Size((int)(a * sz.Height), sz.Height);
+				}
 				else
+				{
 					sz = new Size(sz.Width, (int)(sz.Width / a));
+				}
 			}
 			if (knockout)
 			{
@@ -328,7 +354,10 @@ namespace SimPe.Plugin.Downloads
 		public Image GetThumbnail(Size sz)
 		{
 			if (Image == null)
+			{
 				return null;
+			}
+
 			return GeneratePreviewImage(sz, Image, KnockoutThumbnail, true);
 		}
 
@@ -347,9 +376,14 @@ namespace SimPe.Plugin.Downloads
 		public void CreatePostponed3DPreview()
 		{
 			if (RenderData == null)
+			{
 				return;
+			}
+
 			if (PostponedRenderer == null)
+			{
 				return;
+			}
 
 			PostponedRenderer(this, new System.EventArgs());
 			PostponedRenderer = null;

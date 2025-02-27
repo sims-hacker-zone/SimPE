@@ -41,9 +41,14 @@ namespace pjse
 				if (gft == null)
 				{
 					if (SimPe.FileTable.FileIndex != null)
+					{
 						gft = new FileTable();
+					}
+
 					if (gft != null && FileTableSettings.FTS.LoadAtStartup)
+					{
 						gft.Refresh();
+					}
 				}
 				return gft;
 			}
@@ -52,9 +57,11 @@ namespace pjse
 		public FileTable()
 		{
 			if (SimPe.FileTable.FileIndex != null)
+			{
 				SimPe.FileTable.FileIndex.FILoad += new System.EventHandler(
 					this.FileIndex_FILoad
 				);
+			}
 		}
 
 		private void FileIndex_FILoad(object sender, System.EventArgs e)
@@ -67,9 +74,15 @@ namespace pjse
 			SimPe.Wait.Message = message;
 			SimPe.Wait.Progress++;
 			if (SimPe.Splash.Running)
+			{
 				SimPe.Splash.Screen.SetMessage(message);
+			}
+
 			if (SimPe.WaitingScreen.Running)
+			{
 				SimPe.WaitingScreen.Message = message;
+			}
+
 			System.Windows.Forms.Application.DoEvents();
 		}
 
@@ -88,9 +101,14 @@ namespace pjse
 			{
 				SimPe.Wait.SubStop();
 				if (SimPe.Splash.Running)
+				{
 					SimPe.Splash.Screen.SetMessage(SplashScreenSetMessage);
+				}
+
 				if (SimPe.WaitingScreen.Running)
+				{
 					SimPe.WaitingScreen.Message = SimPeWaitingScreenMessage;
+				}
 			}
 		}
 
@@ -135,10 +153,17 @@ namespace pjse
 					SimPe.Wait.MaxProgress = SimPe.FileTable.DefaultFolders.Count;
 				}
 				foreach (SimPe.FileTableItem fii in SimPe.FileTable.DefaultFolders)
+				{
 					if (fii.Use)
+					{
 						Add(fii.Name, fii.IsRecursive, fii.Type.AsExpansions, true);
+					}
+				}
+
 				if (SimPe.Wait.Running)
+				{
 					SimPe.Wait.MaxProgress = 0;
+				}
 			}
 
 			this.Add(
@@ -152,6 +177,7 @@ namespace pjse
 			);
 
 			if (loadEverything)
+			{
 				this.Add(
 					Path.Combine(
 						SimPe.Helper.SimPePluginDataPath,
@@ -161,12 +187,14 @@ namespace pjse
 					SimPe.Expansions.Custom,
 					true
 				);
+			}
 
 			string packages_txt = Path.Combine(
 				SimPe.Helper.SimPePluginDataPath,
 				"pjse.coder.plugin\\packages.txt"
 			);
 			if (loadEverything)
+			{
 				if (File.Exists(packages_txt))
 				{
 					System.IO.StreamReader sr = new StreamReader(packages_txt);
@@ -175,16 +203,20 @@ namespace pjse
 						line != null;
 						line = sr.ReadLine()
 					)
+					{
 						this.Add(
 							line.TrimEnd(new char[] { '+' }),
 							line.EndsWith("+"),
 							SimPe.Expansions.Custom,
 							true
 						);
+					}
+
 					sr.Close();
 					sr.Dispose();
 					sr = null;
 				}
+			}
 
 			CurrentPackage = cp;
 		}
@@ -197,7 +229,9 @@ namespace pjse
 		public virtual void OnFiletableRefresh(object sender, EventArgs e)
 		{
 			if (FiletableRefresh != null)
+			{
 				FiletableRefresh(sender, e);
+			}
 		}
 
 		private IPackageFile currentPackage = null;
@@ -225,7 +259,9 @@ namespace pjse
 							&& !IsMaxis(currentPackage)
 							&& !IsFixed(currentPackage)
 						)
+						{
 							Remove(currentPackage);
+						}
 					}
 					currentPackage = value;
 					if (currentPackage != null)
@@ -235,7 +271,10 @@ namespace pjse
 							&& !IsMaxis(currentPackage)
 							&& !IsFixed(currentPackage)
 						)
+						{
 							Add(currentPackage, false, false);
+						}
+
 						currentPackage.AddedResource += new EventHandler(
 							currentPackage_Changed
 						);
@@ -245,7 +284,9 @@ namespace pjse
 						//currentPackage.IndexChanged += new EventHandler(currentPackage_Changed);
 					}
 					if (hasLoaded)
+					{
 						OnFiletableRefresh(this, new EventArgs());
+					}
 				}
 			}
 		}
@@ -260,14 +301,20 @@ namespace pjse
 		private bool IsMaxis(IPackageFile package)
 		{
 			if (!hasLoaded)
+			{
 				Refresh();
+			}
+
 			return (package != null && maxisPackages.Contains(package));
 		}
 
 		private bool IsFixed(IPackageFile package)
 		{
 			if (!hasLoaded)
+			{
 				Refresh();
+			}
+
 			return (package != null && fixedPackages.Contains(package));
 		}
 
@@ -282,39 +329,58 @@ namespace pjse
 			if (Directory.Exists(v))
 			{
 				foreach (string i in Directory.GetFiles(v, "*.package"))
+				{
 					Add(i, false, ep, isFixed);
+				}
 
 				if (recurse)
+				{
 					foreach (string i in Directory.GetDirectories(v))
+					{
 						Add(i, true, ep, isFixed);
+					}
+				}
 			}
 			else if (
 				!v.ToLowerInvariant()
 					.EndsWith(SimPe.Helper.PATH_SEP + "globalcatbin.bundle.package")
 				&& File.Exists(v)
 			)
+			{
 				Add(
 					SimPe.Packages.File.LoadFromFile(v),
 					ep != SimPe.Expansions.Custom,
 					isFixed
 				);
+			}
 		}
 
 		private void Add(IPackageFile package, bool isMaxis, bool isFixed)
 		{
 			if (package == null)
+			{
 				return;
+			}
+
 			if (pfByPackage[package] != null)
+			{
 				return;
+			}
 
 			foreach (IPackedFileDescriptor i in package.Index)
+			{
 				Add(new Entry(package, i, isMaxis, isFixed));
+			}
 
 			if (isMaxis)
+			{
 				maxisPackages.Add(package);
+			}
 
 			if (isFixed)
+			{
 				fixedPackages.Add(package);
+			}
 		}
 
 		private void Add(Entry key)
@@ -327,45 +393,77 @@ namespace pjse
 
 			Hashtable byPackage = (Hashtable)pfByPackage[P];
 			if (byPackage == null)
+			{
 				byPackage = (Hashtable)(pfByPackage[P] = new Hashtable());
+			}
+
 			if (byPackage[key] != null)
+			{
 				throw new Exception("byPackage[key] != null");
+			}
+
 			byPackage[key] = true;
 
 			if (packedFiles[key] != null)
+			{
 				throw new Exception("packedFiles[key] != null");
+			}
+
 			packedFiles[key] = new object[] { P, T, G, I };
 
 			if (key.PFD.MarkForDelete)
+			{
 				return;
+			}
 
 			Hashtable byType = (Hashtable)pfByType[T];
 			if (byType == null)
+			{
 				byType = (Hashtable)(pfByType[T] = new Hashtable());
+			}
+
 			if (byType[key] != null)
+			{
 				throw new Exception("byType[key] != null");
+			}
+
 			byType[key] = val;
 
 			Hashtable byGroup = (Hashtable)pfByGroup[G];
 			if (byGroup == null)
+			{
 				byGroup = (Hashtable)(pfByGroup[G] = new Hashtable());
+			}
+
 			if (byGroup[key] != null)
+			{
 				throw new Exception("byGroup[key] != null");
+			}
+
 			byGroup[key] = val;
 
 			Hashtable tgt = (Hashtable)pfByTypeGroup[T];
 			if (tgt == null)
+			{
 				tgt = (Hashtable)(pfByTypeGroup[T] = new Hashtable());
+			}
+
 			Hashtable byTypeGroup = (Hashtable)(
 				(tgt[G] == null) ? (tgt[G] = new Hashtable()) : tgt[G]
 			);
 			if (byTypeGroup[key] != null)
+			{
 				throw new Exception("byTypeGroup[key] != null");
+			}
+
 			byTypeGroup[key] = val;
 
 			Hashtable tgit = (Hashtable)pfByTypeGroupInstance[T];
 			if (tgit == null)
+			{
 				tgit = (Hashtable)(pfByTypeGroupInstance[T] = new Hashtable());
+			}
+
 			Hashtable tgitg = (Hashtable)(
 				(tgit[G] == null) ? (tgit[G] = new Hashtable()) : tgit[G]
 			);
@@ -373,7 +471,10 @@ namespace pjse
 				(tgitg[I] == null) ? (tgitg[I] = new Hashtable()) : tgitg[I]
 			);
 			if (byTypeGroupInstance[key] != null)
+			{
 				throw new Exception("byTypeGroupInstance[key] != null");
+			}
+
 			byTypeGroupInstance[key] = val;
 
 			key.PFD.DescriptionChanged += new EventHandler(PFD_DescriptionChanged);
@@ -385,11 +486,14 @@ namespace pjse
 
 			Entry key = null;
 			foreach (object i in packedFiles.Keys)
+			{
 				if (((Entry)i).PFD == pfd)
 				{
 					key = (Entry)i;
 					break;
 				}
+			}
+
 			if (key == null)
 			{
 				pfd.DescriptionChanged -= new EventHandler(PFD_DescriptionChanged);
@@ -407,14 +511,18 @@ namespace pjse
 		{
 			Hashtable byPackage = (Hashtable)pfByPackage[package];
 			if (byPackage == null)
+			{
 				return;
+			}
 
 			Entry[] keys = new Entry[byPackage.Keys.Count];
 			byPackage.Keys.CopyTo(keys, 0);
 			try
 			{
 				foreach (object key in keys)
+				{
 					Remove((Entry)key);
+				}
 			}
 			catch (Exception e)
 			{
@@ -442,22 +550,30 @@ namespace pjse
 
 				Hashtable byPackage = (Hashtable)pfByPackage[P];
 				if (byPackage[key] != null)
+				{
 					byPackage.Remove(key);
+				}
 
 				Hashtable byType = (Hashtable)pfByType[T];
 				if (byType != null)
+				{
 					byType.Remove(key);
+				}
 
 				Hashtable byGroup = (Hashtable)pfByGroup[G];
 				if (byGroup != null)
+				{
 					byGroup.Remove(key);
+				}
 
 				Hashtable tgt = (Hashtable)pfByTypeGroup[T];
 				if (tgt != null)
 				{
 					Hashtable byTypeGroup = (Hashtable)tgt[G];
 					if (byTypeGroup != null)
+					{
 						byTypeGroup.Remove(key);
+					}
 				}
 
 				Hashtable tgit = (Hashtable)pfByTypeGroupInstance[T];
@@ -468,7 +584,9 @@ namespace pjse
 					{
 						Hashtable byTypeGroupInstance = (Hashtable)tgitg[I];
 						if (byTypeGroupInstance != null)
+						{
 							byTypeGroupInstance.Remove(key);
+						}
 					}
 				}
 			}
@@ -513,7 +631,10 @@ namespace pjse
 			void pfd_ChangedData(IPackedFileDescriptor sender)
 			{
 				if (FileTable.filenames[this] != null)
+				{
 					FileTable.filenames.Remove(this);
+				}
+
 				FileTable.GFT.OnFiletableRefresh(GFT, new EventArgs());
 			}
 
@@ -550,7 +671,10 @@ namespace pjse
 					AbstractWrapper wrapper = (AbstractWrapper)
 						SimPe.FileTable.WrapperRegistry.FindHandler(Type);
 					if (wrapper != null)
+					{
 						wrapper.ProcessData(PFD, Package);
+					}
+
 					return wrapper;
 				}
 			}
@@ -566,9 +690,11 @@ namespace pjse
 				{
 					AbstractWrapper wrapper = e.Wrapper;
 					if (wrapper != null)
+					{
 						FileTable.filenames[e] = SimPe
 							.Helper.ToString(wrapper.StoredData.ReadBytes(64))
 							.Trim();
+					}
 				}
 
 				return (string)FileTable.filenames[e];
@@ -593,13 +719,22 @@ namespace pjse
 			public int CompareTo(object obj)
 			{
 				if (!(obj is Entry))
+				{
 					return -1;
+				}
+
 				Entry that = (Entry)obj;
 
 				if (this.Type.CompareTo(that.Type) != 0)
+				{
 					return this.Type.CompareTo(that.Type);
+				}
+
 				if (this.Group.CompareTo(that.Group) != 0)
+				{
 					return this.Group.CompareTo(that.Group);
+				}
+
 				return this.Instance.CompareTo(that.Instance);
 			}
 
@@ -634,7 +769,10 @@ namespace pjse
 			get
 			{
 				if (package == null || pfd == null)
+				{
 					return new Entry[0];
+				}
+
 				return this[
 					pfd.Type,
 					pfd.Group,
@@ -653,15 +791,22 @@ namespace pjse
 			get
 			{
 				if (!hasLoaded)
+				{
 					Refresh();
+				}
+
 				if (package == null || pfByPackage[package] == null)
+				{
 					return new Entry[0];
+				}
 
 				ArrayList result = new ArrayList();
 				foreach (Entry e in ((Hashtable)pfByPackage[package]).Keys)
 				{
 					if (!e.PFD.MarkForDelete && e.PFD.Type == packedFileType)
+					{
 						result.Add(e);
+					}
 				}
 				Entry[] es = new Entry[result.Count];
 				result.CopyTo(es);
@@ -681,7 +826,9 @@ namespace pjse
 			get
 			{
 				if (!hasLoaded)
+				{
 					Refresh();
+				}
 
 				return putLocalFirst((Hashtable)pfByType[packedFileType], where);
 			}
@@ -703,11 +850,16 @@ namespace pjse
 			get
 			{
 				if (!hasLoaded)
+				{
 					Refresh();
+				}
 
 				Hashtable tgt = (Hashtable)pfByTypeGroup[packedFileType];
 				if (tgt == null)
+				{
 					return new Entry[0];
+				}
+
 				return putLocalFirst((Hashtable)tgt[group], where);
 			}
 		}
@@ -729,14 +881,22 @@ namespace pjse
 			get
 			{
 				if (!hasLoaded)
+				{
 					Refresh();
+				}
 
 				Hashtable tgit = (Hashtable)pfByTypeGroupInstance[packedFileType];
 				if (tgit == null)
+				{
 					return new Entry[0];
+				}
+
 				Hashtable tgitg = (Hashtable)tgit[group];
 				if (tgitg == null)
+				{
 					return new Entry[0];
+				}
+
 				return putLocalFirst(
 					(Hashtable)tgitg[instance],
 					group == 0xffffffff ? Source.Local : where
@@ -747,10 +907,15 @@ namespace pjse
 		public Entry[] FindGroup(uint group, Source where)
 		{
 			if (!hasLoaded)
+			{
 				Refresh();
+			}
 
 			if (pfByGroup == null)
+			{
 				return new Entry[0];
+			}
+
 			return putLocalFirst(
 				(Hashtable)pfByGroup[group],
 				group == 0xffffffff ? Source.Local : where
@@ -760,7 +925,9 @@ namespace pjse
 		private Entry[] putLocalFirst(Hashtable result, Source where)
 		{
 			if (result == null)
+			{
 				return new Entry[0];
+			}
 
 			ArrayList currpkg = new ArrayList();
 			ArrayList maxispkg = new ArrayList();
@@ -778,7 +945,9 @@ namespace pjse
 				: new ArrayList[] { currpkg, nonfixed, fixedpkg, maxispkg };
 
 			foreach (Entry e in result.Keys)
+			{
 				if (!e.PFD.MarkForDelete)
+				{
 					(
 						(ArrayList)(
 							e.Package == currentPackage ? currpkg
@@ -787,10 +956,14 @@ namespace pjse
 							: nonfixed
 						)
 					).Add(e);
+				}
+			}
 
 			int i = 0;
 			foreach (ArrayList al in resultset)
+			{
 				i += al.Count;
+			}
 
 			Entry[] es = new Entry[i];
 			i = 0;

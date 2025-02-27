@@ -126,27 +126,47 @@ namespace SimPe.Interfaces.Plugin
 			{
 				uint guid0 = 0;
 				foreach (char c in Name)
+				{
 					guid0 += (byte)c * ((guid0 % 27) + 1);
+				}
+
 				foreach (char c in Author)
+				{
 					guid0 += (byte)c * ((guid0 % 17) + 1);
+				}
 
 				uint guid1 = 0;
 				foreach (char c in Name)
+				{
 					guid1 += (byte)c * ((guid1 % 33) + 1);
+				}
+
 				foreach (char c in Author)
+				{
 					guid1 += (byte)c * ((guid1 % 45) + 1);
+				}
 
 				uint guid2 = 0;
 				foreach (char c in Name)
+				{
 					guid2 += (byte)c * ((guid2 % 13) + 1);
+				}
+
 				foreach (char c in Author)
+				{
 					guid2 += (byte)c * ((guid2 % 9) + 1);
+				}
 
 				uint guid3 = 0;
 				foreach (char c in Name)
+				{
 					guid3 += (byte)c * ((guid3 % 19) + 1);
+				}
+
 				foreach (char c in Author)
+				{
 					guid3 += (byte)c * ((guid3 % 41) + 1);
+				}
 
 				return guid0 + (guid1 << 16) + (guid2 << 32) + (guid3 << 48);
 			}
@@ -157,7 +177,10 @@ namespace SimPe.Interfaces.Plugin
 		public virtual void Dispose()
 		{
 			if (this.Icon != null)
+			{
 				Icon.Dispose();
+			}
+
 			this.Icon = null;
 			this.Name = null;
 			this.Author = null;

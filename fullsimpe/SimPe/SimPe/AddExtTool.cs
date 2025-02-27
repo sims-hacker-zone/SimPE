@@ -67,7 +67,9 @@ namespace SimPe
 					cbtypes.Items.Add(an);
 				}
 				else
+				{
 					cbtypes.Items.Add(a);
+				}
 			}
 		}
 
@@ -353,13 +355,18 @@ namespace SimPe
 		{
 			ofd.FileName = tbfile.Text;
 			if (ofd.ShowDialog() == DialogResult.OK)
+			{
 				tbfile.Text = ofd.FileName;
+			}
 		}
 
 		private void TypeSelectClick(object sender, System.EventArgs e)
 		{
 			if (cbtypes.Tag != null)
+			{
 				return;
+			}
+
 			tbtype.Text =
 				"0x"
 				+ Helper.HexString(

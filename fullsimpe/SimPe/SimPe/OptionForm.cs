@@ -55,7 +55,10 @@ namespace SimPe
 							typeof(SimPe.Registry.ResourceListExtensionFormats)
 						);
 				foreach (SimPe.Registry.ResourceListExtensionFormats rl in rls)
+				{
 					cbRLExt.Items.Add(rl);
+				}
+
 				cbRLExt.SelectedIndex = 0;
 
 				SimPe.Registry.ResourceListFormats[] rlf =
@@ -64,7 +67,10 @@ namespace SimPe
 							typeof(SimPe.Registry.ResourceListFormats)
 						);
 				foreach (SimPe.Registry.ResourceListFormats ri in rlf)
+				{
 					cbRLNames.Items.Add(ri);
+				}
+
 				cbRLNames.SelectedIndex = 0;
 
 				SimPe.Registry.ResourceListUnnamedFormats[] rlu =
@@ -73,18 +79,26 @@ namespace SimPe
 							typeof(SimPe.Registry.ResourceListUnnamedFormats)
 						);
 				foreach (SimPe.Registry.ResourceListUnnamedFormats ru in rlu)
+				{
 					cbRLTGI.Items.Add(ru);
+				}
+
 				cbRLTGI.SelectedIndex = 0;
 
 				this.pgPaths.SelectedObject = SimPe.PathSettings.Global;
 
 				for (byte i = 1; i < 0x2d; i++)
+				{
 					this.cblang.Items.Add(new SimPe.PackedFiles.Wrapper.StrLanguage(i)); // CJH
+				}
 
 				SimPe.Registry.ReportFormats[] rfs = (SimPe.Registry.ReportFormats[])
 					System.Enum.GetValues(typeof(SimPe.Registry.ReportFormats));
 				foreach (SimPe.Registry.ReportFormats rf in rfs)
+				{
 					cbReport.Items.Add(rf);
+				}
+
 				cbReport.SelectedIndex = 0;
 
 				foreach (
@@ -92,9 +106,14 @@ namespace SimPe
 						.SettingsRegistry
 						.Settings
 				)
+				{
 					this.cbCustom.Items.Add(settings);
+				}
+
 				if (cbCustom.Items.Count > 0)
+				{
 					cbCustom.SelectedIndex = 0;
+				}
 
 				//if (Helper.WindowsRegistry.UseExpansions2) this.hdFileTable.HeaderText = "File Table (High Level Expansions)";
 
@@ -153,7 +172,10 @@ namespace SimPe
 			this.tbUserid.Text =
 				"0x" + Helper.HexString(Helper.WindowsRegistry.CachedUserId);
 			if (!UserVerification.HaveValidUserId)
+			{
 				this.btcreateid.Visible = true;
+			}
+
 			this.cbblur.Visible = (PathProvider.Global.EPInstalled < 18);
 			this.cbIncCep.Enabled = (PathProvider.Global.GameVersion < 18);
 			this.cbIncCep.Visible = (PathProvider.Global.GameVersion < 18);
@@ -173,7 +195,9 @@ namespace SimPe
 
 			lbext.Items.Clear();
 			foreach (ToolLoaderItemExt tli in ToolLoaderExt.Items)
+			{
 				lbext.Items.Add(tli);
+			}
 
 			//FileTable
 			ArrayList folders = FileTable.DefaultFolders;
@@ -188,31 +212,47 @@ namespace SimPe
 			SimPe.Registry.ReportFormats rf = (SimPe.Registry.ReportFormats)
 				Helper.WindowsRegistry.ReportFormat;
 			for (int i = 0; i < cbReport.Items.Count; i++)
+			{
 				if ((SimPe.Registry.ReportFormats)cbReport.Items[i] == rf)
+				{
 					cbReport.SelectedIndex = i;
+				}
+			}
 
 			SimPe.Registry.ResourceListExtensionFormats rlf =
 				(SimPe.Registry.ResourceListExtensionFormats)
 					Helper.WindowsRegistry.ResourceListExtensionFormat;
 			for (int i = 0; i < cbRLExt.Items.Count; i++)
+			{
 				if (
 					(SimPe.Registry.ResourceListExtensionFormats)cbRLExt.Items[i] == rlf
 				)
+				{
 					cbRLExt.SelectedIndex = i;
+				}
+			}
 
 			SimPe.Registry.ResourceListFormats rif =
 				(SimPe.Registry.ResourceListFormats)
 					Helper.WindowsRegistry.ResourceListFormat;
 			for (int i = 0; i < cbRLNames.Items.Count; i++)
+			{
 				if ((SimPe.Registry.ResourceListFormats)cbRLNames.Items[i] == rif)
+				{
 					cbRLNames.SelectedIndex = i;
+				}
+			}
 
 			SimPe.Registry.ResourceListUnnamedFormats ruf =
 				(SimPe.Registry.ResourceListUnnamedFormats)
 					Helper.WindowsRegistry.ResourceListUnknownDescriptionFormat;
 			for (int i = 0; i < cbRLTGI.Items.Count; i++)
+			{
 				if ((SimPe.Registry.ResourceListUnnamedFormats)cbRLTGI.Items[i] == ruf)
+				{
 					cbRLTGI.SelectedIndex = i;
+				}
+			}
 			// ****************************
 
 			//state
@@ -240,9 +280,14 @@ namespace SimPe
 			Helper.WindowsRegistry.GameDebug = cbdebug.Checked;
 			Helper.WindowsRegistry.AutoBackup = cbautobak.Checked;
 			if (PathProvider.Global.EPInstalled < 18)
+			{
 				Helper.WindowsRegistry.BlurNudity = cbblur.Checked;
+			}
 			else
+			{
 				Helper.WindowsRegistry.BlurNudity = true;
+			}
+
 			Helper.WindowsRegistry.EnableSound = cbsound.Checked;
 			Helper.WindowsRegistry.WaitingScreen = cbwait.Checked;
 			Helper.WindowsRegistry.LoadOWFast = cbow.Checked;
@@ -278,7 +323,10 @@ namespace SimPe
 			System.Collections.Generic.List<FileTableItem> lfti =
 				new System.Collections.Generic.List<FileTableItem>();
 			foreach (FileTableItem fti in lbfolder.Items)
+			{
 				lfti.Add(fti);
+			}
+
 			FileTable.StoreFoldersXml(lfti);
 			try
 			{
@@ -291,8 +339,9 @@ namespace SimPe
 
 			ToolLoaderExt.Items = new ToolLoaderItemExt[0];
 			foreach (ToolLoaderItemExt tli in lbext.Items)
+			{
 				ToolLoaderExt.Add(tli);
-			;
+			};
 			ToolLoaderExt.StoreTools();
 
 			Helper.WindowsRegistry.Flush();
@@ -308,7 +357,10 @@ namespace SimPe
 		)
 		{
 			if (lbext.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			lbext.Items.Remove(lbext.Items[lbext.SelectedIndex]);
 		}
 
@@ -321,15 +373,22 @@ namespace SimPe
 			ToolLoaderItemExt tli = aet.Execute();
 
 			if (tli != null)
+			{
 				lbext.Items.Add(tli);
+			}
 		}
 
 		private void button4_Click(object sender, System.EventArgs e)
 		{
 			if (System.IO.Directory.Exists(tbdds.Text))
+			{
 				ofd.InitialDirectory = tbdds.Text;
+			}
+
 			if (ofd.ShowDialog() == DialogResult.OK)
+			{
 				this.tbdds.Text = System.IO.Path.GetDirectoryName(ofd.FileName);
+			}
 		}
 
 		private void ClearCaches(object sender, System.EventArgs e)
@@ -363,25 +422,33 @@ namespace SimPe
 		{
 			//Helper.WindowsRegistry.ThemedForms = this.cbexthemes.Checked;
 			if (this.Tag == null)
+			{
 				this.lbBigIconNote.Visible = true;
+			}
 		}
 
 		private void ResetLayoutClick(object sender, System.EventArgs e)
 		{
 			if (ResetLayout != null)
+			{
 				ResetLayout(this, e);
+			}
 		}
 
 		private void LockDocksClick(object sender, System.EventArgs e)
 		{
 			if (LockDocks != null)
+			{
 				LockDocks(this, e);
+			}
 		}
 
 		private void UnlockDocksClick(object sender, System.EventArgs e)
 		{
 			if (UnlockDocks != null)
+			{
 				UnlockDocks(this, e);
+			}
 		}
 
 		#region Events
@@ -394,16 +461,20 @@ namespace SimPe
 		public Image GetImage(SimPe.Interfaces.IWrapper wrapper)
 		{
 			if (uids.Contains(wrapper.WrapperDescription.UID))
+			{
 				return System.Drawing.Image.FromStream(
 					this.GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.error.png")
 				);
+			}
 
 			if (wrapper.Priority >= 0)
+			{
 				return System.Drawing.Image.FromStream(
 					this.GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.enabled.png")
 				);
+			}
 
 			return System.Drawing.Image.FromStream(
 				this.GetType()
@@ -460,16 +531,28 @@ namespace SimPe
 		public Control BuildPanel(SimPe.Interfaces.IWrapper wrapper, int index)
 		{
 			if (Helper.WindowsRegistry.HiddenMode)
+			{
 				height = 148;
+			}
+
 			if (uids == null)
+			{
 				uids = new ArrayList();
+			}
+
 			if (wrappers == null)
+			{
 				wrappers = new ArrayList();
+			}
 
 			if (wrapper.Priority >= 0)
+			{
 				wrapper.Priority = index + 1;
+			}
 			else
+			{
 				wrapper.Priority = -1 * (index + 1);
+			}
 
 			const int imgwidth = 22;
 			int top = 4 + index * (height + 4);
@@ -647,11 +730,14 @@ namespace SimPe
 				| AnchorStyles.Right;
 			tb.Text = wrapper.WrapperDescription.Description;
 			if (Helper.WindowsRegistry.HiddenMode)
+			{
 				tb.Text +=
 					Helper.lbr
 					+ wrapper.GetType().FullName
 					+ " "
 					+ wrapper.GetType().Assembly.FullName;
+			}
+
 			tb.Multiline = true;
 			tb.WordWrap = true;
 			tb.ScrollBars = ScrollBars.Vertical;
@@ -719,9 +805,14 @@ namespace SimPe
 				pb.SizeMode = PictureBoxSizeMode.CenterImage;
 				pb.Top = (pn.DisplayRectangle.Top + 1 - pb.Height) / 2;
 				if (wrapper.AllowMultipleInstances)
+				{
 					pb.Left = pn.Width - 4 * pb.Width - pb.Top;
+				}
 				else
+				{
 					pb.Left = pn.Width - 3 * pb.Width - pb.Top;
+				}
+
 				pb.Anchor = AnchorStyles.Top | AnchorStyles.Right;
 				pb.Image = System
 					.Drawing.Image.FromStream(
@@ -829,7 +920,10 @@ namespace SimPe
 		{
 			OptionForm f = this;
 			if (icon != null)
+			{
 				f.Icon = icon;
+			}
+
 			SimPe.Interfaces.IWrapper[] wrappers = FileTable
 				.WrapperRegistry
 				.AllWrappers;
@@ -842,17 +936,21 @@ namespace SimPe
 
 			f.uids.Clear();
 			if (f.cnt.Controls.Count > 0)
+			{
 				f.cnt.Controls[0].Focus();
+			}
 
 			f.Execute();
 
 			foreach (SimPe.Interfaces.IWrapper wrapper in wrappers)
 			{
 				if (!(wrapper is SimPe.PackedFiles.Wrapper.ErrorWrapper))
+				{
 					Helper.WindowsRegistry.SetWrapperPriority(
 						wrapper.WrapperDescription.UID,
 						wrapper.Priority
 					);
+				}
 			}
 		}
 
@@ -889,7 +987,9 @@ namespace SimPe
 
 			lastpn = pn;
 			if (pn.Controls.Count > 9)
+			{
 				pn.Controls[9].BackColor = pn.BackColor;
+			}
 		}
 
 		private void pn_LostFocus(object sender, EventArgs e)
@@ -903,7 +1003,9 @@ namespace SimPe
 				pn.Font.Unit
 			);
 			if (pn.Controls.Count > 9)
+			{
 				pn.Controls[9].BackColor = pn.BackColor;
+			}
 		}
 
 		private void pb_Click(object sender, EventArgs e)
@@ -926,7 +1028,9 @@ namespace SimPe
 			for (int i = 0; i < wrappers.Count; i++)
 			{
 				if (wrappers[i] == pn)
+				{
 					return i;
+				}
 			}
 
 			return -1;
@@ -949,14 +1053,22 @@ namespace SimPe
 			int p2 = w2.Priority;
 
 			if (p1 >= 0)
+			{
 				w1.Priority = Math.Abs(p2);
+			}
 			else
+			{
 				w1.Priority = -1 * Math.Abs(p2);
+			}
 
 			if (p2 >= 0)
+			{
 				w2.Priority = Math.Abs(p1);
+			}
 			else
+			{
 				w2.Priority = -1 * Math.Abs(p1);
+			}
 
 			wrappers[index] = pn2;
 			wrappers[index + o] = pn1;
@@ -967,11 +1079,15 @@ namespace SimPe
 		private void btpup_Click(object sender, System.EventArgs e)
 		{
 			if (lastpn == null)
+			{
 				return;
+			}
 
 			int index = FindPanelIndex(lastpn);
 			if (index < 1)
+			{
 				return;
+			}
 
 			Exchange(index, -1);
 
@@ -981,13 +1097,20 @@ namespace SimPe
 		private void btpdown_Click(object sender, System.EventArgs e)
 		{
 			if (lastpn == null)
+			{
 				return;
+			}
 
 			int index = FindPanelIndex(lastpn);
 			if (index < 0)
+			{
 				return;
+			}
+
 			if (index >= wrappers.Count - 1)
+			{
 				return;
+			}
 
 			Exchange(index, 1);
 
@@ -998,14 +1121,18 @@ namespace SimPe
 		{
 			PictureBox pb = (PictureBox)sender;
 			if (small)
+			{
 				pb.Image = i.GetThumbnailImage(
 					16,
 					16,
 					new Image.GetThumbnailImageAbort(ThumbnailCallback),
 					IntPtr.Zero
 				);
+			}
 			else
+			{
 				pb.Image = i;
+			}
 		}
 
 		private void pb_ExpandClick(object sender, EventArgs e)
@@ -1053,7 +1180,10 @@ namespace SimPe
 		private void tbPassword_Leave(object sender, System.EventArgs e)
 		{
 			if (this.Tag != null)
+			{
 				return;
+			}
+
 			if (
 				this.tbUserid.Text
 				!= "0x"
@@ -1067,7 +1197,10 @@ namespace SimPe
 			)
 			{
 				if (this.tbUserid.Text != "0x00000000")
+				{
 					this.btcreateid.Text = "Update Id";
+				}
+
 				this.btcreateid.Visible = true;
 			}
 		}
@@ -1140,7 +1273,10 @@ namespace SimPe
 				cbIncCep.Width = (cwd / 4) - 4;
 				int left = cbIncCep.Right + 4;
 				if (SimPe.PathProvider.Global.GameVersion >= 18)
+				{
 					left = cbIncCep.Left;
+				}
+
 				int top = cbIncCep.Top;
 
 				CreateFileTableCheckbox(
@@ -1192,7 +1328,10 @@ namespace SimPe
 				System.Collections.Generic.List<FileTableItem> lfti =
 					new System.Collections.Generic.List<FileTableItem>();
 				foreach (FileTableItem fti in lbfolder.Items)
+				{
 					lfti.Add(fti);
+				}
+
 				FileTable.StoreFoldersXml(lfti);
 				FileTable.Reload();
 			}
@@ -1248,7 +1387,9 @@ namespace SimPe
 					|| Helper.CompareableFileName(fti.Name)
 						== Helper.CompareableFileName(Data.MetaData.MMAT_PACKAGE)
 				)
+				{
 					return true;
+				}
 			}
 			else
 			{
@@ -1258,7 +1399,9 @@ namespace SimPe
 						Helper.CompareableFileName(fti.Name)
 						== Helper.CompareableFileName(Data.MetaData.ZCEP_FOLDER)
 					)
+					{
 						return true;
+					}
 				}
 				else
 				{
@@ -1266,7 +1409,9 @@ namespace SimPe
 						Helper.CompareableFileName(fti.Name)
 						== Helper.CompareableFileName(Data.MetaData.CTLG_FOLDER)
 					)
+					{
 						return true;
+					}
 				}
 			}
 			return false;
@@ -1276,23 +1421,34 @@ namespace SimPe
 		{
 			ExpansionItem ei = PathProvider.Global[fti.Type.AsExpansions];
 			if (ei == null || PathProvider.Nil.Equals(ei))
+			{
 				return false;
+			}
+
 			CheckBox cb = lcb[ei.NameShort];
 			if (cb == null)
+			{
 				return false;
+			}
+
 			if (
 				(PathProvider.Global.GameVersion < 21 && ei.Flag.SimStory)
 				|| (!ei.Exists && ei.InstallFolder == "")
 				|| neveruse(ei)
 			)
+			{
 				return false;
+			}
 
 			string cfn = Helper.CompareableFileName(fti.Name);
 			if (
 				ei.Version == PathProvider.Global.GameVersion
 				&& (cfn.EndsWith("\\objects") || cfn.EndsWith("\\overrides"))
 			)
+			{
 				return true;
+			}
+
 			return cfn.EndsWith("\\3d")
 				|| cfn.EndsWith("\\sims3d")
 				|| cfn.EndsWith("\\stuffpack\\objects")
@@ -1320,9 +1476,15 @@ namespace SimPe
 		private bool IsMatch(CheckBox cb, FileTableItem fti, FileTableItemType epver)
 		{
 			if (isCEP(fti))
+			{
 				return cb == this.cbIncCep;
+			}
+
 			if (cb == lcb["cbIncGraphics"])
+			{
 				return IsFtiGraphic(fti);
+			}
+
 			return IsEP(fti, epver);
 		}
 
@@ -1332,16 +1494,24 @@ namespace SimPe
 				PathProvider.Global.GameVersion == 19
 				&& (ti.Version == 18 || ti.Version == 17)
 			)
+			{
 				return true;
+			}
+
 			if (PathProvider.Global.GameVersion == 18 && ti.Version == 17)
+			{
 				return true;
+			}
+
 			return false;
 		}
 
 		private void SetupFileTableCheckboxes(CheckBox cb, FileTableItemType epver)
 		{
 			if (this.cbIncCep.Tag != null)
+			{
 				return;
+			}
 
 			int found = 0;
 			int ignored = 0;
@@ -1352,7 +1522,9 @@ namespace SimPe
 				{
 					found++;
 					if (fti.Ignore)
+					{
 						ignored++;
+					}
 				}
 			}
 
@@ -1371,7 +1543,9 @@ namespace SimPe
 			{
 				ExpansionItem ei = cb.Tag as ExpansionItem;
 				if (ei != null)
+				{
 					SetupFileTableCheckboxes(cb, ei.Expansion);
+				}
 			}
 			SetupFileTableCheckboxes(lcb["cbIncGraphics"], null); // Must be last as refs back to expansion CBs
 		}
@@ -1382,9 +1556,14 @@ namespace SimPe
 		)
 		{
 			if (this.Tag != null)
+			{
 				return;
+			}
+
 			if (lbfolder.SelectedItem == null)
+			{
 				return;
+			}
 
 			this.Enabled = false;
 			try
@@ -1417,7 +1596,10 @@ namespace SimPe
 				FileTableItem fti = (FileTableItem)lbfolder.Items[i];
 
 				if (IsMatch(cb, fti, epver))
+				{
 					lbfolder.SetItemChecked(i, cb.CheckState != CheckState.Unchecked);
+				}
+
 				fti.Ignore = !lbfolder.GetItemChecked(i);
 
 				#region I have no idea what this section of code does
@@ -1450,7 +1632,9 @@ namespace SimPe
 						FileTableItem.GetEPVersion(fti.Type)
 						== PathProvider.Global.GameVersion
 					)
+					{
 						fti.EpVersion = FileTableItem.GetEPVersion(fti.Type);
+					}
 
 					lbfolder.Items[i] = fti;
 				}
@@ -1462,9 +1646,15 @@ namespace SimPe
 		private void cbIncNightlife_CheckedChanged(object sender, System.EventArgs e)
 		{
 			if (speady == true)
+			{
 				return;
+			}
+
 			if (this.cbIncCep.Tag != null)
+			{
 				return;
+			}
+
 			this.Enabled = false;
 			try
 			{
@@ -1474,9 +1664,13 @@ namespace SimPe
 
 				btReload.Enabled = true;
 				if (cb == this.cbIncCep)
+				{
 					ChangeFileTable(cb, null);
+				}
 				else if (cb == lcb["cbIncGraphics"])
+				{
 					ChangeFileTable(cb, null);
+				}
 				else
 				{
 					#region FileTableSimpleSelectUseGroups
@@ -1493,8 +1687,12 @@ namespace SimPe
 							{
 								ExpansionItem eis = cbs.Tag as ExpansionItem;
 								if (eis != null)
+								{
 									if (cbs.Checked && !ei.ShareOneGroup(eis))
+									{
 										cbs.Checked = false;
+									}
+								}
 							}
 						}
 					}
@@ -1528,17 +1726,22 @@ namespace SimPe
 						)
 						.Count > 0
 				)
+				{
 					fti.Name = System.IO.Path.Combine(
 						SimPe.PathProvider.Global.GetSaveGamePathForGroup(
 							SimPe.PathProvider.Global.CurrentGroup
 						)[0],
 						"Downloads"
 					);
+				}
 				else
+				{
 					fti.Name = System.IO.Path.Combine(
 						PathProvider.SimSavegameFolder,
 						"Downloads"
 					);
+				}
+
 				fti.Type = FileTablePaths.SaveGameFolder;
 				lbfolder.Items.Insert(0, fti);
 				this.btReload.Enabled = true;
@@ -1557,7 +1760,10 @@ namespace SimPe
 		)
 		{
 			if (lbfolder.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			this.Enabled = false;
 			try
 			{
@@ -1601,6 +1807,7 @@ namespace SimPe
 		)
 		{
 			if (lbfolder.SelectedItem != null)
+			{
 				if (FileTableItemForm.Execute((FileTableItem)lbfolder.SelectedItem))
 				{
 					this.Enabled = false;
@@ -1617,6 +1824,7 @@ namespace SimPe
 						this.Enabled = true;
 					}
 				}
+			}
 		}
 		#endregion
 
@@ -1625,9 +1833,13 @@ namespace SimPe
 			CheckBox cb = sender as CheckBox;
 
 			if (cb.Checked)
+			{
 				this.LockDocksClick(sender, e);
+			}
 			else
+			{
 				this.UnlockDocksClick(sender, e);
+			}
 		}
 
 		private void checkControl1_FixedFileTable(object sender, System.EventArgs e)
@@ -1646,12 +1858,14 @@ namespace SimPe
 				cbautobak.CheckState == CheckState.Checked
 				&& Helper.WindowsRegistry.AutoBackup == false
 			)
+			{
 				MessageBox.Show(
 					Localization.GetString("cbautobak_CheckedChanged"),
 					this.Text,
 					MessageBoxButtons.OK,
 					MessageBoxIcon.Warning
 				);
+			}
 		}
 
 		class MyPropertyGrid : PropertyGrid
@@ -1682,26 +1896,36 @@ namespace SimPe
 				cbsilent.Enabled = false;
 			}
 			else
+			{
 				cbsilent.Enabled = true;
+			}
 		}
 
 		private void cbautostore_CheckedChanged(object sender, EventArgs e)
 		{
 			if (Helper.WindowsRegistry.Layout.AutoStoreLayout != cbautostore.Checked)
+			{
 				Helper.WindowsRegistry.Layout.AutoStoreLayout = cbautostore.Checked;
+			}
 		}
 
 		private void cbpetability_CheckedChanged(object sender, EventArgs e)
 		{
 			if (this.Tag != null)
+			{
 				return;
+			}
+
 			Helper.WindowsRegistry.ShowPetAbilities = this.cbpetability.Checked;
 		}
 
 		private void cbmoreskills_CheckedChanged(object sender, EventArgs e)
 		{
 			if (this.Tag != null)
+			{
 				return;
+			}
+
 			Helper.WindowsRegistry.ShowMoreSkills = this.cbmoreskills.Checked;
 		}
 
@@ -1725,10 +1949,14 @@ namespace SimPe
 							{
 								ExpansionItem eis = cbs.Tag as ExpansionItem;
 								if (eis != null)
+								{
 									ChangeFileTable(cbs, eis.Expansion);
+								}
 							}
 							else
+							{
 								ChangeFileTable(cbs, null);
+							}
 						}
 					}
 				}
@@ -1822,14 +2050,20 @@ namespace SimPe
 		private void cbtrimname_CheckedChanged(object sender, EventArgs e)
 		{
 			if (this.Tag != null)
+			{
 				return;
+			}
+
 			Helper.WindowsRegistry.OWtrimnames = cbtrimname.Checked;
 		}
 
 		private void cbshowalls_CheckedChanged(object sender, EventArgs e)
 		{
 			if (this.Tag != null)
+			{
 				return;
+			}
+
 			Helper.WindowsRegistry.OWincludewalls = cbshowalls.Checked;
 		}
 	}

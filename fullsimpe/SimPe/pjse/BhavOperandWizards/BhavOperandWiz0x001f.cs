@@ -160,7 +160,10 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 			this.lbGUIDText.Visible = this.tbGUID.Visible = guid;
 			this.tbLocalVar.Visible = local;
 			if (val == cbToNext.SelectedIndex)
+			{
 				return;
+			}
+
 			cbToNext.SelectedIndex = (val >= cbToNext.Items.Count) ? -1 : val;
 		}
 
@@ -175,7 +178,10 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 		private void setGUID(bool setTB, UInt32 guid)
 		{
 			if (setTB)
+			{
 				this.tbGUID.Text = "0x" + SimPe.Helper.HexString(guid);
+			}
+
 			this.lbGUIDText.Text = BhavWiz.FormatGUID(true, guid);
 		}
 
@@ -220,7 +226,10 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 			ushort where = BhavWiz.ToShort(ops2[0x01], ops2[0x02]);
 			this.cbWhere.SelectedIndex = -1;
 			if (this.cbWhere.Items.Count > where)
+			{
 				this.cbWhere.SelectedIndex = where;
+			}
+
 			this.tbWhereVal.Text =
 				"0x" + SimPe.Helper.HexString(BhavWiz.ToShort(ops2[0x03], ops2[0x04]));
 
@@ -240,7 +249,10 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 				ops1[0x02] = (byte)(val >> 16 & 0xff);
 				ops1[0x03] = (byte)(val >> 24 & 0xff);
 				if (this.cbToNext.SelectedIndex >= 0)
+				{
 					ops1[0x04] = (byte)(this.cbToNext.SelectedIndex & 0x7f);
+				}
+
 				ops1[0x04] |= (byte)(!this.ckbStackObj.Checked ? 0x80 : 0x00);
 				ops1[0x05] = doid1.DataOwner;
 				ops1[0x06] = Convert.ToByte(this.tbLocalVar.Text, 16);
@@ -250,7 +262,10 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 				ops2[0x00] |= (byte)(this.ckbDisabled.Checked ? 0x01 : 0x00);
 				ops2[0x00] |= (byte)(this.ckbWhere.Checked ? 0x02 : 0x00);
 				if (this.cbWhere.SelectedIndex >= 0)
+				{
 					BhavWiz.FromShort(ref ops2, 1, (ushort)this.cbWhere.SelectedIndex);
+				}
+
 				BhavWiz.FromShort(
 					ref ops2,
 					3,
@@ -499,7 +514,9 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 		)
 		{
 			if (hex8_IsValid(sender))
+			{
 				return;
+			}
 
 			e.Cancel = true;
 
@@ -527,9 +544,13 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 		)
 		{
 			if (inst.NodeVersion < 2 && hex8_IsValid(sender))
+			{
 				return;
+			}
 			else if (hex16_IsValid(sender))
+			{
 				return;
+			}
 
 			e.Cancel = true;
 
@@ -558,7 +579,10 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 		private void tbGUID_TextChanged(object sender, EventArgs e)
 		{
 			if (!hex32_IsValid(sender))
+			{
 				return;
+			}
+
 			setGUID(false, Convert.ToUInt32(((TextBox)sender).Text, 16));
 		}
 
@@ -568,7 +592,9 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 		)
 		{
 			if (hex32_IsValid(sender))
+			{
 				return;
+			}
 
 			e.Cancel = true;
 
@@ -628,7 +654,9 @@ namespace pjse.BhavOperandWizards
 		public override void Dispose()
 		{
 			if (myForm != null)
+			{
 				myForm = null;
+			}
 		}
 		#endregion
 	}

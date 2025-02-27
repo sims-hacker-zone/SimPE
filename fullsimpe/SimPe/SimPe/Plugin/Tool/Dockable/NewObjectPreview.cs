@@ -221,7 +221,10 @@ namespace SimPe.Plugin.Tool.Dockable
 					inst
 				);
 				if (pfds.Length == 0)
+				{
 					pfds = thumbs.FindFile(type, 0, inst);
+				}
+
 				if (pfds.Length > 0)
 				{
 					Interfaces.Files.IPackedFileDescriptor pfd = pfds[0];
@@ -233,7 +236,10 @@ namespace SimPe.Plugin.Tool.Dockable
 						Bitmap bm = (Bitmap)
 							ImageLoader.Preview(pic.Image, WaitingScreen.ImageSize);
 						if (WaitingScreen.Running)
+						{
 							WaitingScreen.Update(bm, message);
+						}
+
 						return pic.Image;
 					}
 					catch (Exception) { }
@@ -252,13 +258,20 @@ namespace SimPe.Plugin.Tool.Dockable
 				foreach (string cat in cats)
 				{
 					if (res != "")
+					{
 						res += " / ";
+					}
 					else
+					{
 						lbCat.Text = cat;
+					}
+
 					res += cat.Trim();
 				}
 				if (res != "")
+				{
 					this.cbCat.Items.Add(res);
+				}
 			}
 			cbCat.SelectedIndex = cbCat.Items.Count - 1;
 			if (cbCat.Items.Count == 1)
@@ -276,7 +289,10 @@ namespace SimPe.Plugin.Tool.Dockable
 		public static Image GenerateImage(Size sz, Image img, bool knockout)
 		{
 			if (img == null)
+			{
 				return null;
+			}
+
 			if (knockout)
 			{
 				img = Ambertation.Drawing.GraphicRoutines.KnockoutImage(
@@ -325,6 +341,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 			objd = null;
 			if (oci.Tag != null)
+			{
 				if (oci.Tag is SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem)
 				{
 					objd = new SimPe.PackedFiles.Wrapper.ExtObjd();
@@ -332,12 +349,18 @@ namespace SimPe.Plugin.Tool.Dockable
 						(SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem)oci.Tag
 					);
 				}
+			}
 
 			UpdateScreen();
 			if (oci.Thumbnail == null)
+			{
 				pb.Image = defimg;
+			}
 			else
+			{
 				pb.Image = GenerateImage(pb.Size, oci.Thumbnail, true);
+			}
+
 			lbName.Text = oci.Name;
 			lbVert.Text = "---";
 		}
@@ -381,9 +404,13 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 			UpdateScreen();
 			if (fct > 0)
+			{
 				lbVert.Text = vct.ToString() + " (" + fct.ToString() + " Faces)";
+			}
 			else
+			{
 				lbVert.Text = "---";
+			}
 		}
 
 		protected void ClearScreen()
@@ -402,7 +429,9 @@ namespace SimPe.Plugin.Tool.Dockable
 		{
 			ClearScreen();
 			if (objd == null)
+			{
 				return;
+			}
 
 			string[] mn = GetModelnames();
 			if (mn.Length > 0)
@@ -415,10 +444,14 @@ namespace SimPe.Plugin.Tool.Dockable
 				);
 			}
 			else
+			{
 				pb.Image = null;
+			}
 
 			if (pb.Image == null)
+			{
 				pb.Image = defimg;
+			}
 
 			SetupCategories(
 				SimPe.Cache.ObjectCacheItem.GetCategory(
@@ -433,19 +466,28 @@ namespace SimPe.Plugin.Tool.Dockable
 			if (strs != null)
 			{
 				if (strs.Count > 0)
+				{
 					this.lbName.Text = strs[0].Title;
+				}
+
 				if (strs.Count > 1)
+				{
 					this.lbAbout.Text = strs[1].Title;
+				}
 			}
 			else
+			{
 				this.lbName.Text = objd.FileName;
+			}
 
 			this.lbPrice.Text = "$" + objd.Price.ToString();
 
 			Boolset bs = (ushort)objd.Data[0x40]; // EPFlags1
 			this.lbEPList.Text = "";
 			for (int i = 0; i < bs.Length; i++)
+			{
 				if (bs[i])
+				{
 					this.lbEPList.Text +=
 						(this.lbEPList.Text.Length == 0 ? "" : "; ")
 						+ (
@@ -453,15 +495,22 @@ namespace SimPe.Plugin.Tool.Dockable
 								(Data.MetaData.NeighbourhoodEP)i
 							)
 						);
+				}
+			}
+
 			bs = (ushort)objd.Data[0x41]; // EPFlags2
 			for (int i = 0; i < bs.Length; i++)
+			{
 				if (bs[i])
 				{
 					if (i > 2 && i < 15)
+					{
 						this.lbEPList.Text +=
 							(this.lbEPList.Text.Length == 0 ? "" : "; ")
 							+ Localization.Manager.GetString("unknown");
+					}
 					else
+					{
 						this.lbEPList.Text +=
 							(this.lbEPList.Text.Length == 0 ? "" : "; ")
 							+ (
@@ -469,15 +518,22 @@ namespace SimPe.Plugin.Tool.Dockable
 									(Data.MetaData.NeighbourhoodEP)i + 16
 								)
 							);
+					}
 				}
+			}
 		}
 
 		protected string[] GetModelnames()
 		{
 			if (objd == null)
+			{
 				return new string[0];
+			}
+
 			if (objd.Package == null)
+			{
 				return new string[0];
+			}
 
 			SimPe.Interfaces.Files.IPackedFileDescriptor pfd = objd.Package.FindFile(
 				Data.MetaData.STRING_FILE,
@@ -492,7 +548,9 @@ namespace SimPe.Plugin.Tool.Dockable
 				str.ProcessData(pfd, objd.Package);
 				SimPe.PackedFiles.Wrapper.StrItemList items = str.LanguageItems(1);
 				for (int i = 1; i < items.Length; i++)
+				{
 					list.Add(items[i].Title);
+				}
 			}
 			string[] refname = new string[list.Count];
 			list.CopyTo(refname);
@@ -519,11 +577,19 @@ namespace SimPe.Plugin.Tool.Dockable
 		protected virtual SimPe.PackedFiles.Wrapper.StrItemList GetCtssItems()
 		{
 			if (objd == null)
+			{
 				return null;
+			}
+
 			if (objd.Package == null)
+			{
 				return null;
+			}
+
 			if (objd.FileDescriptor == null)
+			{
 				return null;
+			}
 
 			//Get the Name of the Object
 			Interfaces.Files.IPackedFileDescriptor ctss = objd.Package.FindFile(

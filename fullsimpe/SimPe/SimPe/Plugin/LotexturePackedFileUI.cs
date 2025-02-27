@@ -31,7 +31,9 @@ namespace SimPe.Plugin
 			this.CanCommit = false;
 			memorees = Wrapper.Itemnumber;
 			if (memorees == -1)
+			{
 				this.rtLotTex.Text = "Unknown Version!";
+			}
 			else
 			{
 				if (Wrapper.FileDescriptor.Type == 0x4B58975B)
@@ -39,17 +41,29 @@ namespace SimPe.Plugin
 					this.HeaderText = "Lot Texture Reader";
 					hoodtype = Wrapper.Hoodtexture;
 					if (Wrapper.Hoodtexture == "lottexture-test-01")
+					{
 						hoodtype = "Lush";
+					}
 					else if (Wrapper.Hoodtexture == "lottexture-canvas-dirt")
+					{
 						hoodtype = "Dirt";
+					}
 					else if (Wrapper.Hoodtexture == "lottexture-canvas-desert")
+					{
 						hoodtype = "Desert";
+					}
 					else if (Wrapper.Hoodtexture == "lottexture-concrete-01")
+					{
 						hoodtype = "Concrete";
+					}
 					else if (Wrapper.Hoodtexture == "terrain-beach")
+					{
 						hoodtype = "Castaway";
+					}
 					else
+					{
 						hoodtype = SimPe.Localization.GetString("Unknown");
+					}
 
 					rtLotTex.Text =
 						"Base texture is "
@@ -63,7 +77,9 @@ namespace SimPe.Plugin
 						foreach (string tecst in Wrapper.texchure)
 						{
 							if (tecst != null)
+							{
 								rtLotTex.Text += tecst + "\r\n";
+							}
 						}
 					}
 				}
@@ -144,7 +160,10 @@ namespace SimPe.Plugin
 		private void Updatey()
 		{
 			if (rtLotTex.Lines.Length < 5)
+			{
 				return;
+			}
+
 			bool bgine = false;
 			int i = 0;
 			foreach (string clit in rtLotTex.Lines)
@@ -154,10 +173,14 @@ namespace SimPe.Plugin
 					Wrapper.texchure[i] = clit;
 					i++;
 					if (i >= Wrapper.itemnum)
+					{
 						break;
+					}
 				}
 				if (clit.Contains("Other Textures"))
+				{
 					bgine = true;
+				}
 			}
 		}
 

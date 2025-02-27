@@ -83,11 +83,18 @@ namespace SimPe
 			ret = type.GetRoot();
 
 			if (ret != null)
+			{
 				if (!ret.EndsWith(Helper.PATH_SEP))
+				{
 					ret += Helper.PATH_SEP;
+				}
+			}
 
 			if (ret == Helper.PATH_SEP)
+			{
 				ret = null;
+			}
+
 			return ret;
 		}
 
@@ -101,18 +108,26 @@ namespace SimPe
 			try
 			{
 				if (System.IO.Directory.Exists(name))
+				{
 					if (!Helper.IsAbsolutePath(name))
+					{
 						return false;
+					}
+				}
 			}
 			catch { }
 
 			string root = GetRoot(type);
 			if (root == null || root == "" || root == Helper.PATH_SEP)
+			{
 				return false;
+			}
 
 			root = Helper.CompareableFileName(Helper.ToLongPathName(root));
 			if (!root.EndsWith(Helper.PATH_SEP))
+			{
 				root += Helper.PATH_SEP;
+			}
 
 			string ename = Helper.CompareableFileName(name);
 			name = name.Trim();
@@ -126,8 +141,13 @@ namespace SimPe
 			{
 				this.path = name.Substring(root.Length); //ename.Replace(root, "");
 				if (!this.IsFile)
+				{
 					if (this.path.StartsWith(Helper.PATH_SEP))
+					{
 						path = path.Substring(1);
+					}
+				}
+
 				this.Type = type;
 				return true;
 			}
@@ -142,17 +162,30 @@ namespace SimPe
 			foreach (ExpansionItem ei in PathProvider.Global.Expansions)
 			{
 				if (CutName(n, ei.Expansion))
+				{
 					return;
+				}
 			}
 
 			if (CutName(n, FileTablePaths.SaveGameFolder))
+			{
 				return;
+			}
+
 			if (CutName(n, FileTablePaths.SimPEDataFolder))
+			{
 				return;
+			}
+
 			if (CutName(n, FileTablePaths.SimPEFolder))
+			{
 				return;
+			}
+
 			if (CutName(n, FileTablePaths.SimPEPluginFolder))
+			{
 				return;
+			}
 
 			//if (Helper.IsAbsolutePath(name)) name = Helper.CompareableFileName(Helper.ToLongPathName(name));
 			this.path = name;
@@ -190,7 +223,10 @@ namespace SimPe
 			get
 			{
 				if (!IsUseable)
+				{
 					return false;
+				}
+
 				return Exists;
 			}
 		}
@@ -200,9 +236,13 @@ namespace SimPe
 			get
 			{
 				if (IsFile)
+				{
 					return System.IO.File.Exists(Name);
+				}
 				else
+				{
 					return System.IO.Directory.Exists(Name);
+				}
 			}
 		}
 
@@ -213,16 +253,26 @@ namespace SimPe
 				string r = GetRoot(this.Type);
 
 				if (r == null)
+				{
 					return path;
+				}
 
 				string p = path.Trim();
 				if (p.StartsWith(Helper.PATH_SEP))
+				{
 					p = path.Substring(1);
+				}
+
 				string ret = System.IO.Path.Combine(r, p);
 
 				if (this.IsFile)
+				{
 					if (ret.EndsWith(Helper.PATH_SEP))
+					{
 						ret = ret.Substring(0, ret.Length - 1);
+					}
+				}
+
 				return ret;
 			}
 			set
@@ -236,8 +286,13 @@ namespace SimPe
 			get
 			{
 				if (this.IsFile)
+				{
 					if (path.EndsWith(Helper.PATH_SEP))
+					{
 						path = path.Substring(0, path.Length - 1);
+					}
+				}
+
 				return path;
 			}
 		}
@@ -259,9 +314,13 @@ namespace SimPe
 			{
 				string n = this.Name;
 				if (System.IO.Directory.Exists(n))
+				{
 					files = System.IO.Directory.GetFiles(n, "*.package");
+				}
 				else
+				{
 					files = new string[0];
+				}
 			}
 			return files;
 		}
@@ -270,21 +329,41 @@ namespace SimPe
 		{
 			string n = "";
 			if (IsFile)
+			{
 				n += "File: ";
+			}
 			else if (IsRecursive)
+			{
 				n += "RecursiveFolder: ";
+			}
 			else
+			{
 				n += "Folder: ";
+			}
+
 			if (!IsUseable)
+			{
 				n = "(Unused) " + n;
+			}
 			else if (!IsAvail)
+			{
 				n = "(Missing) " + n;
+			}
+
 			if (!Helper.WindowsRegistry.UseExpansions2 && Type.ToString() == "Extra")
+			{
 				n += "{Store}" + path;
+			}
 			else
+			{
 				n += "{" + Type.ToString() + "}" + path;
+			}
+
 			if (EpVersion != -1)
+			{
 				n += " (Only when GameVersion=" + EpVersion.ToString() + ")";
+			}
+
 			return n;
 		}
 	}

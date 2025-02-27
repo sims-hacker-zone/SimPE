@@ -197,7 +197,9 @@ namespace Ambertation.Collections
 		{
 			Highlights list = new Highlights();
 			foreach (Ambertation.Windows.Forms.Highlight item in this)
+			{
 				list.Add(item);
+			}
 
 			return list;
 		}

@@ -72,7 +72,9 @@ namespace SimPe.Providers
 		{
 			OnChangedPackage();
 			if (ChangedPackage != null)
+			{
 				ChangedPackage(this, new EventArgs());
+			}
 		}
 
 		protected abstract void OnChangedPackage();

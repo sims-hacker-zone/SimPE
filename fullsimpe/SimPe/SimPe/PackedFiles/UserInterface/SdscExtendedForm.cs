@@ -272,7 +272,10 @@ namespace SimPe.PackedFiles.UserInterface
 			//string name = Helper.MinStrLength(i.ToString(), 4) + ": ";
 			string name = Helper.HexString(0x0a + 2 * i);
 			if (i > 0)
+			{
 				name += "; 0x" + (Helper.HexString((ushort)(i - 1)));
+			}
+
 			name += ": ";
 			name += ((string)names[i]);
 
@@ -371,7 +374,9 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				string name = GetName(i);
 				if (!ht.Contains(name))
+				{
 					ht.Add(name, shortdata[i]);
+				}
 			}
 
 			pob = new Ambertation.PropertyObjectBuilder(ht);
@@ -381,7 +386,10 @@ namespace SimPe.PackedFiles.UserInterface
 		void UpdateData(byte[] data)
 		{
 			if (!propchanged)
+			{
 				return;
+			}
+
 			propchanged = false;
 
 			try
@@ -392,7 +400,9 @@ namespace SimPe.PackedFiles.UserInterface
 				{
 					string name = GetName(i);
 					if (ht.Contains(name))
+					{
 						shortdata[i] = (short)ht[name];
+					}
 				}
 
 				int j = 0;
@@ -419,11 +429,17 @@ namespace SimPe.PackedFiles.UserInterface
 		private void DigitChanged(object sender, System.EventArgs e)
 		{
 			if (rbhex.Checked)
+			{
 				Ambertation.BaseChangeShort.DigitBase = 16;
+			}
 			else if (rbbin.Checked)
+			{
 				Ambertation.BaseChangeShort.DigitBase = 2;
+			}
 			else
+			{
 				Ambertation.BaseChangeShort.DigitBase = 10;
+			}
 
 			this.pg.Refresh();
 		}

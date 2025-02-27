@@ -37,11 +37,19 @@ namespace Ambertation.Threading
 		protected bool WaitForEnd(int timeout)
 		{
 			if (!async)
+			{
 				return true;
+			}
+
 			if (stop == null)
+			{
 				return true;
+			}
+
 			if (worker == null)
+			{
 				return true;
+			}
 
 			stop.Set();
 			int ct = 0;
@@ -84,8 +92,13 @@ namespace Ambertation.Threading
 			get
 			{
 				if (async)
+				{
 					if (stop.WaitOne(0, true))
+					{
 						return true;
+					}
+				}
+
 				return false;
 			}
 		}
@@ -134,12 +147,16 @@ namespace Ambertation.Threading
 				worker.Start();
 
 				if (sync)
+				{
 					while (worker.IsAlive)
 					{
 						worker.Join(synctime);
 						if (events)
+						{
 							System.Windows.Forms.Application.DoEvents();
+						}
 					}
+				}
 			}
 		}
 	}

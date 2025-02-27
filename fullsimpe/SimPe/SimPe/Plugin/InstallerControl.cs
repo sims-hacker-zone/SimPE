@@ -277,7 +277,10 @@ namespace SimPe.Plugin
 		{
 			Wait.Start(files.Length);
 			foreach (Downloads.IPackageInfo nfo in cb.Items)
+			{
 				nfo.Dispose();
+			}
+
 			this.cb.Items.Clear();
 			Cleanup();
 
@@ -290,12 +293,16 @@ namespace SimPe.Plugin
 				if (hnd != null)
 				{
 					foreach (Downloads.IPackageInfo nfo in hnd.Objects)
+					{
 						cb.Items.Add(nfo);
+					}
 				}
 				hnd.FreeResources();
 			}
 			if (cb.Items.Count > 0)
+			{
 				cb.SelectedIndex = 0;
+			}
 
 			Wait.Stop();
 		}
@@ -315,7 +322,10 @@ namespace SimPe.Plugin
 			{
 				string[] res = new string[a.Length];
 				for (int i = 0; i < a.Length; i++)
+				{
 					res[i] = a.GetValue(i).ToString();
+				}
+
 				return res;
 			}
 
@@ -332,7 +342,9 @@ namespace SimPe.Plugin
 			foreach (string name in names)
 			{
 				if (Downloads.HandlerRegistry.Global.HasFileHandler(name))
+				{
 					return DragDropEffects.Copy;
+				}
 			}
 
 			return DragDropEffects.None;
@@ -415,7 +427,10 @@ namespace SimPe.Plugin
 			{
 				nfo.CreatePostponed3DPreview();
 				if (nfo.Image != null)
+				{
 					pb.Image = nfo.GetThumbnail();
+				}
+
 				tbs.HeaderText = nfo.Name;
 				rtb.Text = nfo.Description;
 				lbCat.Text = nfo.Category;
@@ -425,15 +440,21 @@ namespace SimPe.Plugin
 				lbGuid.Text = "";
 				lbType.Text = nfo.Type.ToString();
 				foreach (uint guid in nfo.Guids)
+				{
 					lbGuid.Text += "0x" + Helper.HexString(guid) + " ";
+				}
 
 				lbVert.ForeColor = Color.Black;
 				if (nfo.HighVertexCount)
+				{
 					lbVert.ForeColor = Color.Red;
+				}
 
 				lbFace.ForeColor = Color.Black;
 				if (nfo.HighFaceCount)
+				{
 					lbFace.ForeColor = Color.Red;
+				}
 			}
 		}
 	}

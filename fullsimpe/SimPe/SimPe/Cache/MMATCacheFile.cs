@@ -71,7 +71,10 @@ namespace SimPe.Cache
 			get
 			{
 				if (fi == null)
+				{
 					LoadOverrides();
+				}
+
 				return fi;
 			}
 		}
@@ -118,7 +121,10 @@ namespace SimPe.Cache
 			get
 			{
 				if (defaultmap == null)
+				{
 					LoadOverrideMaps();
+				}
+
 				return defaultmap;
 			}
 		}
@@ -131,7 +137,10 @@ namespace SimPe.Cache
 			get
 			{
 				if (modelmap == null)
+				{
 					LoadOverrideMaps();
+				}
+
 				return modelmap;
 			}
 		}

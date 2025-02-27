@@ -162,7 +162,9 @@ namespace SimPe.Plugin
 
 			writer.Write((uint)items.Count);
 			foreach (TattItem ti in items)
+			{
 				ti.Serialize(writer);
+			}
 		}
 		#endregion
 

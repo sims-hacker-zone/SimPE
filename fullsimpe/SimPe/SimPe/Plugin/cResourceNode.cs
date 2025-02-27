@@ -190,7 +190,9 @@ namespace SimPe.Plugin
 			parent.Add(node);
 
 			foreach (int i in child.ChildBlocks)
+			{
 				AddChildNode(node.Nodes, i, child.GetBlock(i));
+			}
 		}
 		#endregion
 
@@ -281,7 +283,9 @@ namespace SimPe.Plugin
 
 				writer.Write((byte)Items.Length);
 				for (int i = 0; i < Items.Length; i++)
+				{
 					Items[i].Serialize(writer);
+				}
 
 				writer.Write(Unknown1);
 			}
@@ -292,7 +296,10 @@ namespace SimPe.Plugin
 				GraphNode.Serialize(writer);
 
 				if (Items.Length < 1)
+				{
 					Items = new ResourceNodeItem[1];
+				}
+
 				Items[0].Serialize(writer);
 			}
 			else
@@ -313,7 +320,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (tResourceNode == null)
+				{
 					tResourceNode = new SimPe.Plugin.TabPage.ResourceNode();
+				}
+
 				return tResourceNode;
 			}
 		}
@@ -324,7 +334,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (tCres == null)
+				{
 					tCres = new SimPe.Plugin.TabPage.Cres();
+				}
+
 				return tCres;
 			}
 		}
@@ -337,9 +350,14 @@ namespace SimPe.Plugin
 		protected override void InitResourceTabPage()
 		{
 			if (tResourceNode == null)
+			{
 				tResourceNode = new SimPe.Plugin.TabPage.ResourceNode();
+			}
+
 			if (tCres == null)
+			{
 				tCres = new SimPe.Plugin.TabPage.Cres();
+			}
 
 			this.tCres.cres_tv.Nodes.Clear();
 			tCres.tbfjoint.Text = "";
@@ -353,11 +371,15 @@ namespace SimPe.Plugin
 		protected override void InitTabPage()
 		{
 			if (tResourceNode == null)
+			{
 				tResourceNode = new SimPe.Plugin.TabPage.ResourceNode();
+			}
 
 			tResourceNode.lb_rn.Items.Clear();
 			for (int i = 0; i < this.Items.Length; i++)
+			{
 				tResourceNode.lb_rn.Items.Add(Items[i]);
+			}
 
 			tResourceNode.tb_rn_uk1.Text = "0x" + Helper.HexString((uint)this.Unknown1);
 			tResourceNode.tb_rn_uk2.Text = "0x" + Helper.HexString((uint)this.Unknown2);
@@ -368,7 +390,10 @@ namespace SimPe.Plugin
 		{
 			base.ExtendTabControl(tc);
 			if (TypeCode == 0x1)
+			{
 				this.TreeNode.AddToTabControl(tc);
+			}
+
 			this.GraphNode.AddToTabControl(tc);
 		}
 
@@ -377,10 +402,16 @@ namespace SimPe.Plugin
 		public override void Dispose()
 		{
 			if (this.tResourceNode != null)
+			{
 				this.tResourceNode.Dispose();
+			}
+
 			tResourceNode = null;
 			if (tCres != null)
+			{
 				tCres.Dispose();
+			}
+
 			tCres = null;
 			sgres = null;
 			GraphNode = null;

@@ -89,9 +89,13 @@ namespace SimPe.PackedFiles.Wrapper
 					(ushort)this.FileDescriptor.Instance
 				) as ExtSDesc;
 			if (sdsc == null)
+			{
 				return base.GetResourceName(ta);
+			}
 			else
+			{
 				return sdsc.SimName + " " + sdsc.SimFamilyName + " (Scores)";
+			}
 		}
 
 		#region AbstractWrapper Member
@@ -135,7 +139,9 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 
 			if (LoadedNewResource != null)
+			{
 				LoadedNewResource(this, new EventArgs());
+			}
 		}
 
 		/// <summary>
@@ -208,18 +214,27 @@ namespace SimPe.PackedFiles.Wrapper
 			ChangedListEventArgs e = new ChangedListEventArgs(new ScorItem(name, this));
 			this.Items.Add(e.Item);
 			if (AddedItem != null)
+			{
 				AddedItem(this, e);
+			}
+
 			this.Changed = true;
 		}
 
 		public void Remove(ScorItem si)
 		{
 			if (si == null)
+			{
 				return;
+			}
+
 			Items.Remove(si);
 			ChangedListEventArgs e = new ChangedListEventArgs(si);
 			if (RemovedItem != null)
+			{
 				RemovedItem(this, e);
+			}
+
 			this.Changed = true;
 		}
 

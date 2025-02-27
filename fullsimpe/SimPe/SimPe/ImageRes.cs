@@ -42,10 +42,16 @@ namespace SimPe
 		{
 			// This is used by the EP selecter which may display the logo for an EP that SimPe sees as not installed.
 			if ((ep > 19 && ep < 28) || ep > 30)
+			{
 				ep = 0; // Store doesn't have a logo, there is no EPs between Store (20) and Castaway Story (28) - Return base game Logo
+			}
+
 			ExpansionItem ei = PathProvider.Global.GetExpansion(ep);
 			if (ei.InstalledPath(ep) == null)
+			{
 				return null;
+			}
+
 			SimPe.Packages.File pkg = SimPe.Packages.File.LoadFromFile(
 				ei.InstalledPath(ep) + "\\TSData\\Res\\UI\\ui.package"
 			);

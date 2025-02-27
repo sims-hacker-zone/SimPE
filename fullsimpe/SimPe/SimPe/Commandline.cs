@@ -55,7 +55,10 @@ namespace SimPe
 		)
 		{
 			if (Helper.Profile.Length > 0)
+			{
 				msg += " and you will need to re-save profile " + Helper.Profile;
+			}
+
 			try
 			{
 				CheckXML(file, elementName);
@@ -79,7 +82,9 @@ namespace SimPe
 						System.Windows.Forms.MessageBoxIcon.Error
 					) == System.Windows.Forms.DialogResult.Yes
 				)
+				{
 					System.IO.File.Delete(file);
+				}
 			}
 		}
 
@@ -103,27 +108,39 @@ namespace SimPe
 						Path.Combine(Helper.SimPeDataPath, "additional_careers.xml")
 					)
 				)
+				{
 					CompleteSetup("additional_careers.xml");
+				}
+
 				if (
 					!System.IO.File.Exists(
 						Path.Combine(Helper.SimPeDataPath, "additional_majors.xml")
 					)
 				)
+				{
 					CompleteSetup("additional_majors.xml");
+				}
+
 				if (
 					!System.IO.File.Exists(
 						Path.Combine(Helper.SimPeDataPath, "additional_schools.xml")
 					)
 				)
+				{
 					CompleteSetup("additional_schools.xml");
+				}
+
 				if (
 					System.IO.File.Exists(
 						Path.Combine(Helper.SimPeDataPath, "vport.set")
 					)
 				)
+				{
 					System.IO.File.Delete(
 						Path.Combine(Helper.SimPeDataPath, "vport.set")
 					);
+				}
+
 				CompleteSetup("beauty");
 				CompleteSetup("expansions.xreg");
 				CompleteSetup("expansions2.xreg");
@@ -166,6 +183,7 @@ namespace SimPe
 				{
 					System.IO.File.Delete(Helper.DataFolder.FoldersXREGW);
 					if (Helper.ECCorNewSEfound)
+					{
 						Message.Show(
 							"The Newest Stuff Packs have been found,"
 								+ "\r\n"
@@ -173,7 +191,9 @@ namespace SimPe
 							"Warning",
 							System.Windows.Forms.MessageBoxButtons.OK
 						);
+					}
 					else
+					{
 						Message.Show(
 							"Newest Stuff Packs are gone!"
 								+ "\r\n"
@@ -181,11 +201,13 @@ namespace SimPe
 							"Warning",
 							System.Windows.Forms.MessageBoxButtons.OK
 						);
+					}
 				}
 				Helper.WindowsRegistry.UseExpansions2 = Helper.ECCorNewSEfound;
 				Helper.WindowsRegistry.Flush();
 			}
 			else
+			{
 				//check if the file table is valid
 				CheckFile(
 					Helper.DataFolder.FoldersXREG,
@@ -193,6 +215,7 @@ namespace SimPe
 					"File table settings",
 					"your file table folder settings will be reset"
 				);
+			}
 		}
 		#endregion
 
@@ -209,8 +232,13 @@ namespace SimPe
 		public static bool PreSplash(List<string> argv)
 		{
 			foreach (ICommandLine cmd in preSplashCommands)
+			{
 				if (cmd.Parse(argv))
+				{
 					return true;
+				}
+			}
+
 			return false;
 		}
 
@@ -223,7 +251,10 @@ namespace SimPe
 					ArgParser.Parse(argv, "--splash") >= 0
 					|| ArgParser.Parse(argv, "-splash") >= 0
 				)
+				{
 					Helper.WindowsRegistry.ShowStartupSplash = true;
+				}
+
 				return false;
 			}
 
@@ -243,7 +274,10 @@ namespace SimPe
 					ArgParser.Parse(argv, "--nosplash") >= 0
 					|| ArgParser.Parse(argv, "-nosplash") >= 0
 				)
+				{
 					Helper.WindowsRegistry.ShowStartupSplash = false;
+				}
+
 				return false;
 			}
 
@@ -280,7 +314,9 @@ namespace SimPe
 					needEnable = false;
 				}
 				else
+				{
 					return false;
+				}
 
 				List<string> flags = new List<string>(
 					new string[]
@@ -343,7 +379,9 @@ namespace SimPe
 						}
 					}
 					if (!haveEnable && argv.Count <= i)
+					{
 						break; // processed everything
+					}
 				}
 
 				if (
@@ -353,11 +391,20 @@ namespace SimPe
 				{
 					string s = "";
 					if (Helper.LocalMode)
+					{
 						s += Localization.GetString("InLocalMode") + "\r\n";
+					}
+
 					if (Helper.NoPlugins)
+					{
 						s += "\r\n" + Localization.GetString("NoPlugins") + "\r\n";
+					}
+
 					if (Helper.NoErrors)
+					{
 						s += "\r\n" + Localization.GetString("NoErrors");
+					}
+
 					Message.Show(
 						s,
 						"Notice",
@@ -389,7 +436,10 @@ namespace SimPe
 			{
 				int index = ArgParser.Parse(argv, "-profile");
 				if (index < 0)
+				{
 					return false;
+				}
+
 				if (index >= argv.Count || argv[index].Length == 0)
 				{
 					Message.Show(Help()[0]);
@@ -553,7 +603,9 @@ namespace SimPe
 			public bool Parse(List<string> argv)
 			{
 				if (ArgParser.Parse(argv, "-classicpreset") < 0)
+				{
 					return false;
+				}
 
 				Overridelayout("classic_layout.xreg");
 
@@ -601,7 +653,9 @@ namespace SimPe
 			public bool Parse(List<string> argv)
 			{
 				if (ArgParser.Parse(argv, "-modernpreset") < 0)
+				{
 					return false;
+				}
 
 				ForceModernLayout();
 
@@ -633,7 +687,9 @@ namespace SimPe
 		public static bool FullEnvStart(List<string> argv)
 		{
 			if (argv.Count < 1)
+			{
 				return false;
+			}
 
 			try
 			{
@@ -646,8 +702,13 @@ namespace SimPe
 						.CommandLineRegistry
 						.CommandLines
 				)
+				{
 					if (cmdline.Parse(argv))
+					{
 						return true;
+					}
+				}
+
 				return false;
 			}
 			finally
@@ -686,11 +747,14 @@ namespace SimPe
 				"SimPe.data." + namer
 			);
 			if (namer == "guidindex.txt")
+			{
 				path = Path.Combine(
 					Helper.SimPePluginDataPath,
 					"pjse.coder.plugin\\guidindex.txt"
 				);
+			}
 			else if (namer.Contains(".package"))
+			{
 				path = Path.Combine(
 					Path.Combine(
 						Helper.SimPePluginDataPath,
@@ -698,8 +762,12 @@ namespace SimPe
 					),
 					namer
 				);
+			}
 			else
+			{
 				path = Path.Combine(Helper.SimPeDataPath, namer);
+			}
+
 			if (s != null)
 			{
 				try
@@ -741,7 +809,9 @@ namespace SimPe
 		public bool Parse(List<string> argv)
 		{
 			if (ArgParser.Parse(argv, "-help") < 0)
+			{
 				return false;
+			}
 
 			string pluginHelp = "";
 			foreach (ICommandLine cmdline in Commandline.preSplashCommands)
@@ -749,7 +819,9 @@ namespace SimPe
 				string[] help = cmdline.Help();
 				pluginHelp += "\r\n" + "  " + help[0];
 				if (help[1] != null && help[1].Length > 0)
+				{
 					pluginHelp += "\r\n" + "      " + help[1];
+				}
 			}
 			foreach (
 				ICommandLine cmdline in SimPe.FileTable.CommandLineRegistry.CommandLines
@@ -758,7 +830,9 @@ namespace SimPe
 				string[] help = cmdline.Help();
 				pluginHelp += "\r\n" + "  " + help[0];
 				if (help[1] != null && help[1].Length > 0)
+				{
 					pluginHelp += "\r\n" + "      " + help[1];
+				}
 			}
 
 			SimPe.Splash.Screen.Stop();

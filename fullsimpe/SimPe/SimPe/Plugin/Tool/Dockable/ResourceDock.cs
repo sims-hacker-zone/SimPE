@@ -96,7 +96,10 @@ namespace SimPe.Plugin.Tool.Dockable
 
 			this.lv.View = System.Windows.Forms.View.Details;
 			foreach (SimPe.Data.TypeAlias a in SimPe.Helper.TGILoader.FileTypes)
+			{
 				cbtypes.Items.Add(a);
+			}
+
 			cbtypes.Sorted = true;
 			tbFloat.Width = tbBin.Width;
 		}
@@ -788,7 +791,10 @@ namespace SimPe.Plugin.Tool.Dockable
 		private void cbtypes_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			if (cbtypes.Tag != null)
+			{
 				return;
+			}
+
 			tbtype.Text =
 				"0x"
 				+ Helper.HexString(
@@ -825,13 +831,17 @@ namespace SimPe.Plugin.Tool.Dockable
 		private void tbtype_TextChanged2(object sender, System.EventArgs ea)
 		{
 			if (items == null || ((TextBox)sender).Tag == null)
+			{
 				return;
-			((TextBox)sender).Tag = null;
+			} ((TextBox)sender).Tag = null;
 			guipackage.PauseIndexChangedEvents();
 			foreach (SimPe.Events.ResourceContainer e in items)
 			{
 				if (!e.HasFileDescriptor)
+				{
 					continue;
+				}
+
 				try
 				{
 					e.Resource.FileDescriptor.Type = Convert.ToUInt32(tbtype.Text, 16);
@@ -847,14 +857,18 @@ namespace SimPe.Plugin.Tool.Dockable
 		private void tbgroup_TextChanged(object sender, System.EventArgs ea)
 		{
 			if (items == null || ((TextBox)sender).Tag == null)
+			{
 				return;
-			((TextBox)sender).Tag = null;
+			} ((TextBox)sender).Tag = null;
 
 			guipackage.PauseIndexChangedEvents();
 			foreach (SimPe.Events.ResourceContainer e in items)
 			{
 				if (!e.HasFileDescriptor)
+				{
 					continue;
+				}
+
 				try
 				{
 					e.Resource.FileDescriptor.Group = Convert.ToUInt32(
@@ -873,14 +887,17 @@ namespace SimPe.Plugin.Tool.Dockable
 		private void tbinstance_TextChanged(object sender, System.EventArgs ea)
 		{
 			if (items == null || ((TextBox)sender).Tag == null)
+			{
 				return;
-			((TextBox)sender).Tag = null;
+			} ((TextBox)sender).Tag = null;
 
 			guipackage.PauseIndexChangedEvents();
 			foreach (SimPe.Events.ResourceContainer e in items)
 			{
 				if (!e.HasFileDescriptor)
+				{
 					continue;
+				}
 
 				try
 				{
@@ -901,14 +918,17 @@ namespace SimPe.Plugin.Tool.Dockable
 		private void tbinstance2_TextChanged(object sender, System.EventArgs ea)
 		{
 			if (items == null || ((TextBox)sender).Tag == null)
+			{
 				return;
-			((TextBox)sender).Tag = null;
+			} ((TextBox)sender).Tag = null;
 
 			guipackage.PauseIndexChangedEvents();
 			foreach (SimPe.Events.ResourceContainer e in items)
 			{
 				if (!e.HasFileDescriptor)
+				{
 					continue;
+				}
 
 				try
 				{
@@ -927,17 +947,27 @@ namespace SimPe.Plugin.Tool.Dockable
 		private void cbComp_SelectedIndexChanged(object sender, System.EventArgs ea)
 		{
 			if (this.cbComp.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			if (this.cbComp.SelectedIndex > 1)
+			{
 				return;
+			}
+
 			if (items == null)
+			{
 				return;
+			}
 
 			guipackage.PauseIndexChangedEvents();
 			foreach (SimPe.Events.ResourceContainer e in items)
 			{
 				if (!e.HasFileDescriptor)
+				{
 					continue;
+				}
 
 				try
 				{
@@ -1009,34 +1039,57 @@ namespace SimPe.Plugin.Tool.Dockable
 		void SetConverted(object exclude, long val)
 		{
 			if (exclude != this.tbDec)
+			{
 				this.tbDec.Text = val.ToString();
+			}
+
 			if (exclude != this.tbHex)
+			{
 				this.tbHex.Text = Helper.HexString(val);
+			}
+
 			if (exclude != this.tbBin)
+			{
 				this.tbBin.Text = Convert.ToString(val, 2);
-			;
+			};
 			if (exclude != this.tbFloat)
+			{
 				this.tbFloat.Text = BitConverter
 					.ToSingle(BitConverter.GetBytes((int)val), 0)
 					.ToString();
+			}
 		}
 
 		void ClearConverted(object exclude)
 		{
 			if (exclude != this.tbDec)
+			{
 				this.tbDec.Text = "";
+			}
+
 			if (exclude != this.tbHex)
+			{
 				this.tbHex.Text = "";
+			}
+
 			if (exclude != this.tbBin)
+			{
 				this.tbBin.Text = "";
+			}
+
 			if (exclude != this.tbFloat)
+			{
 				this.tbFloat.Text = "";
+			}
 		}
 
 		private void FloatChanged(object sender, System.EventArgs e)
 		{
 			if (sysupdate)
+			{
 				return;
+			}
+
 			sysupdate = true;
 			try
 			{
@@ -1054,7 +1107,10 @@ namespace SimPe.Plugin.Tool.Dockable
 		private void BinChanged(object sender, System.EventArgs e)
 		{
 			if (sysupdate)
+			{
 				return;
+			}
+
 			sysupdate = true;
 			try
 			{
@@ -1071,7 +1127,10 @@ namespace SimPe.Plugin.Tool.Dockable
 		private void HexChanged(object sender, System.EventArgs e)
 		{
 			if (sysupdate)
+			{
 				return;
+			}
+
 			sysupdate = true;
 			try
 			{
@@ -1088,7 +1147,10 @@ namespace SimPe.Plugin.Tool.Dockable
 		private void DecChanged(object sender, System.EventArgs e)
 		{
 			if (sysupdate)
+			{
 				return;
+			}
+
 			sysupdate = true;
 			try
 			{
@@ -1108,8 +1170,9 @@ namespace SimPe.Plugin.Tool.Dockable
 		private new void TextChanged(object sender, System.EventArgs e)
 		{
 			if (items == null)
+			{
 				return;
-			((TextBox)sender).Tag = true;
+			} ((TextBox)sender).Tag = true;
 		}
 
 		private void button1_Click(object sender, System.EventArgs e)
@@ -1129,12 +1192,18 @@ namespace SimPe.Plugin.Tool.Dockable
 		)
 		{
 			if (items == null)
+			{
 				return;
+			}
+
 			guipackage.PauseIndexChangedEvents();
 			foreach (SimPe.Events.ResourceContainer e in items)
 			{
 				if (!e.HasFileDescriptor)
+				{
 					continue;
+				}
+
 				try
 				{
 					e.Resource.FileDescriptor.Type = Convert.ToUInt32(tbtype.Text, 16);

@@ -127,13 +127,19 @@ namespace Ambertation.Collections
 		internal int SilentAdd(GraphItemBase item, string text, bool inter)
 		{
 			if (this.Contains(item))
+			{
 				return -1;
+			}
+
 			int res = base.Add(item);
 			if (this.ItemsChanged != null)
+			{
 				this.ItemsChanged(
 					this,
 					new GraphItemChangedEventArgs(item, text, true, inter)
 				);
+			}
+
 			return res;
 		}
 
@@ -145,13 +151,18 @@ namespace Ambertation.Collections
 		public void Insert(int index, string text, GraphItemBase item)
 		{
 			if (this.Contains(item))
+			{
 				return;
+			}
+
 			base.Insert(index, item);
 			if (this.ItemsChanged != null)
+			{
 				this.ItemsChanged(
 					this,
 					new GraphItemChangedEventArgs(item, text, true, false)
 				);
+			}
 		}
 
 		/// <summary>
@@ -162,13 +173,18 @@ namespace Ambertation.Collections
 		public void Insert(int index, GraphItemBase item)
 		{
 			if (this.Contains(item))
+			{
 				return;
+			}
+
 			base.Insert(index, item);
 			if (this.ItemsChanged != null)
+			{
 				this.ItemsChanged(
 					this,
 					new GraphItemChangedEventArgs(item, "", true, false)
 				);
+			}
 		}
 
 		/// <summary>
@@ -184,10 +200,12 @@ namespace Ambertation.Collections
 		{
 			base.Remove(item);
 			if (this.ItemsChanged != null)
+			{
 				this.ItemsChanged(
 					this,
 					new GraphItemChangedEventArgs(item, "", false, inter)
 				);
+			}
 		}
 
 		/// <summary>
@@ -213,7 +231,9 @@ namespace Ambertation.Collections
 		{
 			GraphItems list = new GraphItems();
 			foreach (GraphItemBase item in this)
+			{
 				list.Add(item);
+			}
 
 			return list;
 		}
@@ -269,10 +289,16 @@ namespace Ambertation.Collections
 		internal int SilentAdd(GraphPanelElement item, bool inter)
 		{
 			if (this.Contains(item))
+			{
 				return -1;
+			}
+
 			int res = base.Add(item);
 			if (this.ItemsChanged != null)
+			{
 				this.ItemsChanged(this, new System.EventArgs());
+			}
+
 			return res;
 		}
 
@@ -284,10 +310,15 @@ namespace Ambertation.Collections
 		public void Insert(int index, GraphPanelElement item)
 		{
 			if (this.Contains(item))
+			{
 				return;
+			}
+
 			base.Insert(index, item);
 			if (this.ItemsChanged != null)
+			{
 				this.ItemsChanged(this, new System.EventArgs());
+			}
 		}
 
 		/// <summary>
@@ -303,7 +334,9 @@ namespace Ambertation.Collections
 		{
 			base.Remove(item);
 			if (this.ItemsChanged != null)
+			{
 				this.ItemsChanged(this, new System.EventArgs());
+			}
 		}
 
 		/// <summary>
@@ -329,7 +362,9 @@ namespace Ambertation.Collections
 		{
 			GraphElements list = new GraphElements();
 			foreach (GraphPanelElement item in this)
+			{
 				list.Add(item);
+			}
 
 			return list;
 		}
@@ -379,7 +414,9 @@ namespace Ambertation.Collections
 			{
 				int index = this.GetIndexOf(name);
 				if (index >= 0)
+				{
 					return this[index];
+				}
 
 				PropertyItem pi = new PropertyItem(name, null);
 				Add(pi);
@@ -389,9 +426,13 @@ namespace Ambertation.Collections
 			{
 				int index = this.GetIndexOf(name);
 				if (index >= 0)
+				{
 					this[index] = value;
+				}
 				else
+				{
 					Add(name, value);
+				}
 			}
 		}
 
@@ -438,15 +479,22 @@ namespace Ambertation.Collections
 		{
 			int index = GetIndexOf(name);
 			if (index >= 0)
+			{
 				base.RemoveAt(index);
+			}
 		}
 
 		public int GetIndexOf(string name)
 		{
 			name = name.Trim().ToLower();
 			for (int i = 0; i < this.Count; i++)
+			{
 				if (this[i].Name.Trim().ToLower() == name)
+				{
 					return i;
+				}
+			}
+
 			return -1;
 		}
 
@@ -477,7 +525,10 @@ namespace Ambertation.Collections
 				string[] res = new string[this.Count];
 				int ct = 0;
 				foreach (PropertyItem item in this)
+				{
 					res[ct++] = item.Name;
+				}
+
 				return res;
 			}
 		}
@@ -489,7 +540,10 @@ namespace Ambertation.Collections
 				object[] res = new object[this.Count];
 				int ct = 0;
 				foreach (PropertyItem item in this)
+				{
 					res[ct++] = item.Value;
+				}
+
 				return res;
 			}
 		}
@@ -502,7 +556,9 @@ namespace Ambertation.Collections
 		{
 			PropertyItems list = new PropertyItems();
 			foreach (PropertyItem item in this)
+			{
 				list.Add(item);
+			}
 
 			return list;
 		}
@@ -595,7 +651,9 @@ namespace Ambertation.Collections
 		{
 			Images list = new Images();
 			foreach (Image item in this)
+			{
 				list.Add(item);
+			}
 
 			return list;
 		}

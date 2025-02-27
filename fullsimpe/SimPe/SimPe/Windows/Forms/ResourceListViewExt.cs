@@ -39,20 +39,27 @@ namespace SimPe.Windows.Forms
 			asc = true;
 			InitializeComponent();
 			if (Helper.WindowsRegistry.UseBigIcons)
+			{
 				lv.Font = new System.Drawing.Font("Tahoma", this.Font.Size + 3F); // was 1F
+			}
 
 			names = new ResourceViewManager.ResourceNameList();
 			myhandle = Handle;
 
 			if (!Helper.WindowsRegistry.ResourceListShowExtensions)
+			{
 				lv.Columns.Remove(clType);
+			}
+
 			if (!Helper.WindowsRegistry.HiddenMode)
 			{
 				lv.Columns.Remove(clSize);
 				lv.Columns.Remove(clOffset);
 			}
 			if (Helper.StartedGui == Executable.Classic)
+			{
 				clInstHi.Text = "Sub Tyoe";
+			}
 
 			colHeads = new List<ColumnHeader>(
 				new ColumnHeader[]
@@ -106,9 +113,14 @@ namespace SimPe.Windows.Forms
 				if (fireevents)
 				{
 					if (resselchgea != null)
+					{
 						SelectionChanged(this, resselchgea);
+					}
+
 					if (selresea != null)
+					{
 						SelectedResource(this, selresea);
+					}
 				}
 				resselchgea = null;
 				selresea = null;
@@ -127,14 +139,19 @@ namespace SimPe.Windows.Forms
 				if (curfilter != value)
 				{
 					if (curfilter != null)
+					{
 						curfilter.ChangedFilter -= new EventHandler(
 							curfilter_ChangedFilter
 						);
+					}
+
 					curfilter = value;
 					if (curfilter != null)
+					{
 						curfilter.ChangedFilter += new EventHandler(
 							curfilter_ChangedFilter
 						);
+					}
 				}
 			}
 		}
@@ -152,7 +169,9 @@ namespace SimPe.Windows.Forms
 			ResourceViewManager.ResourceNameList nn =
 				new ResourceViewManager.ResourceNameList();
 			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in resources)
+			{
 				nn.Add(new NamedPackedFileDescriptor(pfd, pkg));
+			}
 
 			SetResources(nn);
 		}
@@ -160,7 +179,9 @@ namespace SimPe.Windows.Forms
 		protected void ReplaySetResources()
 		{
 			if (lastresources != null)
+			{
 				SetResources(lastresources);
+			}
 		}
 
 		internal void SetResources(ResourceViewManager.ResourceNameList resources)
@@ -189,7 +210,9 @@ namespace SimPe.Windows.Forms
 				names.Clear();
 
 				if (FileTable.WrapperRegistry != null)
+				{
 					lv.SmallImageList = FileTable.WrapperRegistry.WrapperImageList;
+				}
 				//if (resources != this.resources)
 				{
 					this.Clear();
@@ -198,8 +221,12 @@ namespace SimPe.Windows.Forms
 					{
 						bool add = true;
 						if (curfilter != null)
+						{
 							if (curfilter.Active)
+							{
 								add = !curfilter.IsFiltered(pfd.Descriptor);
+							}
+						}
 
 						if (add)
 						{
@@ -230,12 +257,16 @@ namespace SimPe.Windows.Forms
 
 					SortResources();
 					foreach (NamedPackedFileDescriptor q in rnl)
+					{
 						for (int i = 0; i < names.Count; i++)
+						{
 							if (names[i].Descriptor == q.Descriptor)
 							{
 								lv.SelectedIndices.Add(i);
 								break;
 							}
+						}
+					}
 				}
 				lastresources = resources;
 				DoSignalSelectionChanged(Handle);
@@ -276,7 +307,9 @@ namespace SimPe.Windows.Forms
 					manager != null
 					&& Helper.WindowsRegistry.UpdateResourceListWhenTGIChanges
 				)
+				{
 					manager.UpdateTree();
+				}
 			}
 			this.Refresh();
 		}
@@ -314,7 +347,9 @@ namespace SimPe.Windows.Forms
 						Refresh();
 
 						if (Helper.WindowsRegistry.AsynchronSort)
+						{
 							Wait.SubStop();
+						}
 					}
 				}
 				else if (m.Msg == WM_USER_FIRE_SELECTION)
@@ -341,7 +376,9 @@ namespace SimPe.Windows.Forms
 			lv.Items.Clear();
 
 			foreach (ResourceListItemExt lvi in cache.Values)
+			{
 				lvi.FreeResources();
+			}
 
 			cache.Clear();
 			try
@@ -396,10 +433,14 @@ namespace SimPe.Windows.Forms
 			{
 				bool vis = false;
 				if (lastcache != null)
+				{
 					vis = index >= lastcache.StartIndex && index <= lastcache.EndIndex;
+				}
 
 				if (cache.ContainsKey(index))
+				{
 					ret = cache[index];
+				}
 
 				if (ret == null)
 				{
@@ -408,7 +449,9 @@ namespace SimPe.Windows.Forms
 					//cache.Add(index, ret);
 				}
 				else
+				{
 					ret.Visible = vis;
+				}
 			}
 
 			return ret;
@@ -444,11 +487,20 @@ namespace SimPe.Windows.Forms
 			public int Compare(ColumnHeader x, ColumnHeader y)
 			{
 				if (x.ListView == null && y.ListView == null)
+				{
 					return 0;
+				}
+
 				if (x.ListView == null)
+				{
 					return 1;
+				}
+
 				if (y.ListView == null)
+				{
 					return -1;
+				}
+
 				return x.DisplayIndex.CompareTo(y.DisplayIndex);
 			}
 
@@ -466,17 +518,25 @@ namespace SimPe.Windows.Forms
 			{
 				List<ColumnHeader> columns = new List<ColumnHeader>();
 				foreach (ColumnHeader ch in lv.Columns)
+				{
 					columns.Add(ch);
+				}
 
 				foreach (ColumnHeader ch in colHeads)
+				{
 					if (!columns.Contains(ch))
+					{
 						columns.Add(ch);
+					}
+				}
 
 				columns.Sort(new CHSort());
 
 				order = new List<string>();
 				foreach (ColumnHeader ch in columns)
+				{
 					order.Add(colNames[colHeads.IndexOf(ch)]);
+				}
 
 				return order;
 			}
@@ -508,13 +568,23 @@ namespace SimPe.Windows.Forms
 			order = Helper.WindowsRegistry.Layout.ColumnOrder;
 			lv.Columns.Clear();
 			for (int i = 0; i < colHeads.Count; i++)
+			{
 				lv.Columns.Add(colHeads[i]);
+			}
+
 			for (int i = 0; i < colHeads.Count; i++)
+			{
 				if (colHeads[i].DisplayIndex != order.IndexOf(colNames[i]))
+				{
 					colHeads[i].DisplayIndex = order.IndexOf(colNames[i]);
+				}
+			}
 
 			if (!Helper.WindowsRegistry.ResourceListShowExtensions)
+			{
 				lv.Columns.Remove(clType);
+			}
+
 			if (!Helper.WindowsRegistry.HiddenMode)
 			{
 				lv.Columns.Remove(clSize);

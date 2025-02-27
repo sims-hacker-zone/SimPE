@@ -36,7 +36,10 @@ namespace SimPe.Plugin
 			uint c = Convert.ToUInt32(compositeValue);
 			uint d = Convert.ToUInt32(discreteValue);
 			if (d == 0)
+			{
 				return (c == 0);
+			}
+
 			return (c & d) == d;
 		}
 
@@ -70,7 +73,10 @@ namespace SimPe.Plugin
 						break;
 					default:
 						if (group != file.Group)
+						{
 							continue;
+						}
+
 						break;
 				}
 
@@ -80,7 +86,10 @@ namespace SimPe.Plugin
 						break;
 					default:
 						if (instance != file.Instance)
+						{
 							continue;
+						}
+
 						break;
 				}
 

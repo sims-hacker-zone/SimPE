@@ -38,7 +38,9 @@ namespace SimPe.Actions.Default
 		)
 		{
 			if (!ChangeEnabledStateEventHandler(null, es))
+			{
 				return;
+			}
 
 			foreach (Events.ResourceContainer e in es)
 			{

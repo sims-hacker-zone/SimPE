@@ -105,7 +105,9 @@ namespace SimPe.Plugin
 			if (items != null)
 			{
 				foreach (Plugin.BnfoCustomerItem item in items)
+				{
 					lb.Items.Add(item);
+				}
 			}
 			lb_SelectedIndexChanged(lb, new EventArgs());
 		}
@@ -123,7 +125,9 @@ namespace SimPe.Plugin
 		private void lb_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			if (SelectedItemChanged != null)
+			{
 				SelectedItemChanged(this, new EventArgs());
+			}
 		}
 	}
 }

@@ -250,24 +250,31 @@ namespace SimPe.PackedFiles.UserInterface
 				)
 			);
 			if (Helper.WindowsRegistry.HiddenMode)
+			{
 				this.cbBuildSort.Items.Add(
 					new SimPe.Data.LocalizedBuildSubSort(
 						Data.BuildFunctionSubSort.unknown
 					)
 				);
+			}
 
 			this.cbsort.Enum = typeof(Data.ObjFunctionSubSort);
 			this.cbsort.ResourceManager = SimPe.Localization.Manager;
 
 			if (Helper.ECCorNewSEfound)
+			{
 				this.cbExtras.Text = "Extra Stuff";
+			}
 
 			if (Helper.WindowsRegistry.UseBigIcons)
+			{
 				this.pg.Font = new System.Drawing.Font(
 					"Verdana",
 					10.25F,
 					System.Drawing.FontStyle.Regular
 				);
+			}
+
 			if (
 				!UserVerification.HaveUserId
 				|| SimPe.PathProvider.Global.EPInstalled <= 1
@@ -316,13 +323,17 @@ namespace SimPe.PackedFiles.UserInterface
 				Ambertation.PropertyDescription pf =
 					ExtObjd.PropertyParser.GetDescriptor((ushort)i);
 				if (pf == null)
+				{
 					pf = new Ambertation.PropertyDescription(
 						"Unknown",
 						null,
 						wrapper.Data[i]
 					);
+				}
 				else
+				{
 					pf.Property = wrapper.Data[i];
+				}
 
 				ht[GetName(i)] = pf;
 			}
@@ -334,7 +345,10 @@ namespace SimPe.PackedFiles.UserInterface
 		void UpdateData()
 		{
 			if (!propchanged)
+			{
 				return;
+			}
+
 			propchanged = false;
 
 			try
@@ -350,15 +364,21 @@ namespace SimPe.PackedFiles.UserInterface
 						{
 							object o = ht[name];
 							if (o is SimPe.FlagBase)
+							{
 								wrapper.Data[i] = ((SimPe.FlagBase)ht[name]);
+							}
 							else
+							{
 								wrapper.Data[i] = Convert.ToInt16(ht[name]);
+							}
 						}
 					}
 					catch (Exception ex)
 					{
 						if (Helper.WindowsRegistry.HiddenMode)
+						{
 							Helper.ExceptionMessage("Error converting " + name, ex);
+						}
 					}
 				}
 
@@ -378,9 +398,15 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			string name = null;
 			if (names == null)
+			{
 				readPJSEGlobalStringObjDef();
+			}
+
 			if (names == null)
+			{
 				readGLUAObjDef();
+			}
+
 			if (names == null || names[i] == null)
 			{
 				Ambertation.PropertyDescription pf =
@@ -388,7 +414,10 @@ namespace SimPe.PackedFiles.UserInterface
 				name = pf == null ? null : pf.Description;
 			}
 			else
+			{
 				name = names[i];
+			}
+
 			return "0x"
 				+ Helper.HexString((ushort)i)
 				+ ((name != null) ? ": " + name : "")
@@ -444,7 +473,9 @@ namespace SimPe.PackedFiles.UserInterface
 				int key = Convert.ToInt32(loc[0].Value);
 				loc.RemoveAt(0);
 				if (started)
+				{
 					names[key] = value;
+				}
 				else if (key == 0)
 				{
 					started = true;
@@ -492,7 +523,9 @@ namespace SimPe.PackedFiles.UserInterface
 			);
 			names = new Dictionary<int, string>();
 			for (int i = 0; i < lST.Count; i++)
+			{
 				names[i] = lST[i].Title;
+			}
 		}
 
 		internal void SetFunctionCb(Wrapper.ExtObjd objd)
@@ -623,17 +656,25 @@ namespace SimPe.PackedFiles.UserInterface
 				if (objd.BuildType.Value != 0)
 				{
 					if (Helper.WindowsRegistry.HiddenMode)
+					{
 						this.cbBuildSort.SelectedIndex = 19; // set to unknown
+					}
+
 					for (int i = 0; i < this.cbBuildSort.Items.Count; i++)
 					{
 						object o = this.cbBuildSort.Items[i];
 						Data.BuildFunctionSubSort at;
 						if (o.GetType() == typeof(SimPe.Data.Alias))
+						{
 							at = (Data.LocalizedBuildSubSort)(
 								(uint)((SimPe.Data.Alias)o).Id
 							);
+						}
 						else
+						{
 							at = (Data.LocalizedBuildSubSort)o;
+						}
+
 						if (at == objd.BuildSubSort)
 						{
 							this.cbBuildSort.SelectedIndex = i;
@@ -2326,13 +2367,19 @@ namespace SimPe.PackedFiles.UserInterface
 		private void ChangeType(object sender, System.EventArgs e)
 		{
 			if (this.Tag != null)
+			{
 				return;
+			}
+
 			this.Tag = true;
 
 			try
 			{
 				if (cbtype.SelectedIndex < 0)
+				{
 					return;
+				}
+
 				Data.ObjectTypes ot = (Data.ObjectTypes)
 					cbtype.Items[cbtype.SelectedIndex];
 				tbtype.Text = "0x" + Helper.HexString((ushort)ot);
@@ -2362,14 +2409,20 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			this.lbIsOk.Visible = false;
 			if (this.pg.SelectedObject != null)
+			{
 				UpdateData();
+			}
+
 			wrapper.SynchronizeUserData();
 		}
 
 		private void SetRoomFlags(object sender, System.EventArgs e)
 		{
 			if (this.Tag != null)
+			{
 				return;
+			}
+
 			this.Tag = true;
 
 			try
@@ -2395,7 +2448,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void SetCommFlags(object sender, System.EventArgs e)
 		{
 			if (this.Tag != null)
+			{
 				return;
+			}
+
 			this.Tag = true;
 			try
 			{
@@ -2416,7 +2472,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void SetFunctionFlags(object sender, System.EventArgs e)
 		{
 			if (this.Tag != null)
+			{
 				return;
+			}
+
 			this.Tag = true;
 
 			try
@@ -2444,7 +2503,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void SetExpansionFlags(object sender, System.EventArgs e)
 		{
 			if (this.Tag != null)
+			{
 				return;
+			}
+
 			this.Tag = true;
 
 			try
@@ -2504,7 +2566,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void SetGuide(object sender, System.EventArgs e)
 		{
 			if (this.Tag != null)
+			{
 				return;
+			}
+
 			this.Tag = true;
 			try
 			{
@@ -2533,7 +2598,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void SetGuid(object sender, System.EventArgs e)
 		{
 			if (this.Tag != null)
+			{
 				return;
+			}
+
 			this.Tag = true;
 			try
 			{
@@ -2570,7 +2638,9 @@ namespace SimPe.PackedFiles.UserInterface
 				this.llgetGUID.LinkVisited = true;
 			}
 			else
+			{
 				this.llgetGUID.Links[0].Enabled = false;
+			}
 		}
 
 		private void lladdgooee_LinkClicked(
@@ -2623,7 +2693,10 @@ namespace SimPe.PackedFiles.UserInterface
 			else
 			{
 				if (this.pg.SelectedObject != null)
+				{
 					UpdateData();
+				}
+
 				this.pg.SelectedObject = null;
 			}
 		}
@@ -2639,7 +2712,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void SetFlName(object sender, System.EventArgs e)
 		{
 			if (this.Tag != null)
+			{
 				return;
+			}
+
 			wrapper.FileName = tbflname.Text;
 			wrapper.Changed = true;
 		}
@@ -2647,11 +2723,17 @@ namespace SimPe.PackedFiles.UserInterface
 		private void DigitChanged(object sender, System.EventArgs e)
 		{
 			if (rbhex.Checked)
+			{
 				Ambertation.BaseChangeableNumber.DigitBase = 16;
+			}
 			else if (rbbin.Checked)
+			{
 				Ambertation.BaseChangeableNumber.DigitBase = 2;
+			}
 			else
+			{
 				Ambertation.BaseChangeableNumber.DigitBase = 10;
+			}
 
 			this.pg.Refresh();
 		}
@@ -2659,7 +2741,10 @@ namespace SimPe.PackedFiles.UserInterface
 		private void cbsort_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			if (Tag != null)
+			{
 				return;
+			}
+
 			this.Tag = true;
 			wrapper.FunctionSubSort = (Data.ObjFunctionSubSort)cbsort.SelectedValue;
 			wrapper.Changed = true;
@@ -2670,11 +2755,17 @@ namespace SimPe.PackedFiles.UserInterface
 		private void cbBuildSort_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (Tag != null)
+			{
 				return;
+			}
+
 			this.Tag = true;
 
 			if (cbBuildSort.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			bool skippy = false;
 			if (cbBuildSort.SelectedIndex == 0) // none
 			{
@@ -2772,7 +2863,9 @@ namespace SimPe.PackedFiles.UserInterface
 				wrapper.Type = SimPe.Data.ObjectTypes.Door;
 			}
 			if (cbBuildSort.SelectedIndex == 19) // Unknown - won't change anything
+			{
 				skippy = true;
+			}
 
 			if (!skippy)
 			{
@@ -2790,7 +2883,9 @@ namespace SimPe.PackedFiles.UserInterface
 				this.tbtype.Text = "0x" + Helper.HexString((ushort)(wrapper.Type));
 			}
 			else
+			{
 				this.cbtype.Select();
+			}
 
 			this.Tag = null;
 			wrapper.Changed = true;
@@ -2800,12 +2895,18 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			this.tbPrice.ForeColor = System.Drawing.SystemColors.WindowText;
 			if (this.Tag != null)
+			{
 				return;
+			}
+
 			try
 			{
 				string prise = this.tbPrice.Text;
 				if (prise.StartsWith("�"))
+				{
 					prise = prise.Remove(0, 1);
+				}
+
 				wrapper.Price = Convert.ToInt16(prise);
 			}
 			catch

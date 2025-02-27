@@ -94,16 +94,26 @@ namespace SimPe.Actions.Default
 		)
 		{
 			if (!ChangeEnabledStateEventHandler(null, es))
+			{
 				return;
+			}
 
 			SimPe.Collections.PackedFileDescriptors pfds = this.LoadDescriptors(false);
 			if (es.Count > 0)
 			{
 				foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+				{
 					if (pfd != null)
+					{
 						if (es[0].Resource != null)
+						{
 							if (es[0].Resource.FileDescriptor != null)
+							{
 								es[0].Resource.FileDescriptor.UserData = pfd.UserData;
+							}
+						}
+					}
+				}
 			}
 		}
 

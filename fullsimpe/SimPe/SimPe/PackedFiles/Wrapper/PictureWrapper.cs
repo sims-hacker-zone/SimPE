@@ -73,7 +73,9 @@ namespace SimPe.PackedFiles.Wrapper
 					Color basecol = ((Bitmap)img).GetPixel(x, y);
 					int a = 0xFF - ((basecol.R + basecol.G + basecol.B) / 3);
 					if (a > 0x10)
+					{
 						a = 0xff;
+					}
 
 					Color col = Color.FromArgb(a, basecol);
 					bmp.SetPixel(x, y, col);
@@ -101,10 +103,12 @@ namespace SimPe.PackedFiles.Wrapper
 				catch (Exception ex)
 				{
 					if (errmsg)
+					{
 						Helper.ExceptionMessage(
 							Localization.Manager.GetString("errunsupportedimage"),
 							ex
 						);
+					}
 				}
 			}
 
@@ -178,7 +182,10 @@ namespace SimPe.PackedFiles.Wrapper
 		public override void Dispose()
 		{
 			if (this.image != null)
+			{
 				this.image.Dispose();
+			}
+
 			image = null;
 
 			base.Dispose();

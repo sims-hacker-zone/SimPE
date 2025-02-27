@@ -95,14 +95,19 @@ namespace Ambertation
 			System.Drawing.Color o = System.Drawing.Color.Black;
 
 			while (s.IndexOf(" ") != -1)
+			{
 				s = s.Replace(" ", "");
+			}
 
 			if (s.IndexOf(";") == -1)
 			{
 				string[] parts = s.Split(",".ToCharArray(), 4);
 				if (parts.Length < 3)
+				{
 					o = System.Drawing.Color.Black;
+				}
 				else if (parts.Length == 3)
+				{
 					o = System.Drawing.Color.FromArgb(
 						(int)(
 							System.Convert.ToSingle(
@@ -123,7 +128,9 @@ namespace Ambertation
 							) * 0xff
 						)
 					);
+				}
 				else
+				{
 					o = System.Drawing.Color.FromArgb(
 						(int)(
 							System.Convert.ToSingle(
@@ -150,13 +157,17 @@ namespace Ambertation
 							) * 0xff
 						)
 					);
+				}
 			}
 			else
 			{
 				string[] parts = s.Split(";".ToCharArray(), 4);
 				if (parts.Length < 3)
+				{
 					o = System.Drawing.Color.Black;
+				}
 				else if (parts.Length == 3)
+				{
 					o = System.Drawing.Color.FromArgb(
 						(int)(
 							System.Convert.ToInt16(
@@ -177,7 +188,9 @@ namespace Ambertation
 							)
 						)
 					);
+				}
 				else
+				{
 					o = System.Drawing.Color.FromArgb(
 						(int)(
 							System.Convert.ToInt16(
@@ -204,6 +217,7 @@ namespace Ambertation
 							)
 						)
 					);
+				}
 			}
 
 			return o;
@@ -223,7 +237,9 @@ namespace Ambertation
 		)
 		{
 			if (destinationType == typeof(BaseChangeableNumber))
+			{
 				return true;
+			}
 
 			return base.CanConvertTo(context, destinationType);
 		}
@@ -259,7 +275,9 @@ namespace Ambertation
 		)
 		{
 			if (sourceType == typeof(string))
+			{
 				return true;
+			}
 
 			return base.CanConvertFrom(context, sourceType);
 		}
@@ -277,25 +295,51 @@ namespace Ambertation
 					string s = (string)value;
 
 					if (type == null)
+					{
 						type = context.PropertyDescriptor.PropertyType;
+					}
 
 					BaseChangeableNumber bcn = BaseChangeableNumber.Convert(s, type);
 					if (context.PropertyDescriptor.PropertyType == typeof(long))
+					{
 						return bcn.LongValue;
+					}
+
 					if (context.PropertyDescriptor.PropertyType == typeof(ulong))
+					{
 						return (ulong)bcn.LongValue;
+					}
+
 					if (context.PropertyDescriptor.PropertyType == typeof(int))
+					{
 						return bcn.IntegerValue;
+					}
+
 					if (context.PropertyDescriptor.PropertyType == typeof(uint))
+					{
 						return (uint)bcn.IntegerValue;
+					}
+
 					if (context.PropertyDescriptor.PropertyType == typeof(short))
+					{
 						return (short)bcn.IntegerValue;
+					}
+
 					if (context.PropertyDescriptor.PropertyType == typeof(ushort))
+					{
 						return (ushort)bcn.IntegerValue;
+					}
+
 					if (context.PropertyDescriptor.PropertyType == typeof(byte))
+					{
 						return (byte)bcn.IntegerValue;
+					}
+
 					if (context.PropertyDescriptor.PropertyType == typeof(sbyte))
+					{
 						return (sbyte)bcn.IntegerValue;
+					}
+
 					return bcn;
 				}
 				catch
@@ -342,9 +386,15 @@ namespace Ambertation
 			get
 			{
 				if (DigitBase == 16)
+				{
 					return "Hexadecimal";
+				}
+
 				if (DigitBase == 2)
+				{
 					return "Binary";
+				}
+
 				return "Decimal";
 			}
 		}
@@ -375,21 +425,37 @@ namespace Ambertation
 
 			s = s.Substring(o);
 			if (type == typeof(byte))
+			{
 				val = System.Convert.ToByte(s, b);
+			}
 			else if (type == typeof(sbyte))
+			{
 				val = System.Convert.ToSByte(s, b);
+			}
 			else if (type == typeof(short))
+			{
 				val = System.Convert.ToInt16(s, b);
+			}
 			else if (type == typeof(ushort))
+			{
 				val = System.Convert.ToUInt16(s, b);
+			}
 			else if (type == typeof(int))
+			{
 				val = System.Convert.ToInt32(s, b);
+			}
 			else if (type == typeof(uint))
+			{
 				val = System.Convert.ToUInt32(s, b);
+			}
 			else if (type == typeof(long))
+			{
 				val = System.Convert.ToInt64(s, b);
+			}
 			else if (type == typeof(ulong))
+			{
 				val = (long)System.Convert.ToUInt64(s, b);
+			}
 
 			//SetValue(val, type);
 			return new BaseChangeableNumber(val, type);
@@ -399,7 +465,9 @@ namespace Ambertation
 		{
 			ObjectValue = v;
 			if (v != null)
+			{
 				Type = v.GetType();
+			}
 		}
 
 		internal BaseChangeableNumber(object v, Type t)
@@ -457,21 +525,37 @@ namespace Ambertation
 			Type = t; //o.GetType();
 
 			if (Type == typeof(byte))
+			{
 				LongValue = System.Convert.ToByte(o);
+			}
 			else if (Type == typeof(sbyte))
+			{
 				LongValue = System.Convert.ToSByte(o);
+			}
 			else if (Type == typeof(short))
+			{
 				LongValue = System.Convert.ToInt16(o);
+			}
 			else if (Type == typeof(ushort))
+			{
 				LongValue = System.Convert.ToUInt16(o);
+			}
 			else if (Type == typeof(int))
+			{
 				LongValue = System.Convert.ToInt32(o);
+			}
 			else if (Type == typeof(uint))
+			{
 				LongValue = System.Convert.ToUInt32(o);
+			}
 			else if (Type == typeof(long))
+			{
 				LongValue = System.Convert.ToInt64(o);
+			}
 			else
+			{
 				LongValue = (long)System.Convert.ToUInt64(o);
+			}
 
 			Type = t;
 		}
@@ -488,17 +572,35 @@ namespace Ambertation
 			get
 			{
 				if (Type == typeof(int))
+				{
 					return (int)LongValue;
+				}
+
 				if (Type == typeof(uint))
+				{
 					return (uint)LongValue;
+				}
+
 				if (Type == typeof(short))
+				{
 					return (short)LongValue;
+				}
+
 				if (Type == typeof(ushort))
+				{
 					return (ushort)LongValue;
+				}
+
 				if (Type == typeof(byte))
+				{
 					return (byte)LongValue;
+				}
+
 				if (Type == typeof(ulong))
+				{
 					return (ulong)LongValue;
+				}
+
 				return (long)LongValue;
 			}
 		}
@@ -511,21 +613,37 @@ namespace Ambertation
 		{
 			int len = 64;
 			if (Type == typeof(byte))
+			{
 				len = 8;
+			}
 			else if (Type == typeof(sbyte))
+			{
 				len = 8;
+			}
 			else if (Type == typeof(short))
+			{
 				len = 16;
+			}
 			else if (Type == typeof(ushort))
+			{
 				len = 16;
+			}
 			else if (Type == typeof(int))
+			{
 				len = 32;
+			}
 			else if (Type == typeof(uint))
+			{
 				len = 32;
+			}
 			else if (Type == typeof(long))
+			{
 				len = 64;
+			}
 			else if (Type == typeof(ulong))
+			{
 				len = 64;
+			}
 
 			if (DigitBase == 16)
 			{

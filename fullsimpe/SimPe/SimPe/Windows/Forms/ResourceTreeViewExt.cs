@@ -53,7 +53,9 @@ namespace SimPe.Windows.Forms
 		{
 			tv.Nodes.Clear();
 			if (last != null)
+			{
 				SetResourceMaps(last, true, nosave);
+			}
 		}
 
 		bool allowselectevent;
@@ -82,7 +84,9 @@ namespace SimPe.Windows.Forms
 				tv.StateImageList = tv.ImageList;
 			}
 			if (!nosave)
+			{
 				SaveLastSelection();
+			}
 
 			this.Clear();
 			firstnode = builder.BuildNodes(maps);
@@ -126,9 +130,13 @@ namespace SimPe.Windows.Forms
 		{
 			ResourceTreeNodeExt node = tv.SelectedNode as ResourceTreeNodeExt;
 			if (node != null)
+			{
 				builder.LastSelectedId = node.ID;
+			}
 			else
+			{
 				builder.LastSelectedId = 0;
+			}
 		}
 
 		protected bool SelectID(TreeNode node, ulong id)
@@ -145,8 +153,12 @@ namespace SimPe.Windows.Forms
 			}
 
 			foreach (TreeNode sub in node.Nodes)
+			{
 				if (SelectID(sub, id))
+				{
 					return true;
+				}
+			}
 
 			return false;
 		}
@@ -154,15 +166,23 @@ namespace SimPe.Windows.Forms
 		public void SelectAll()
 		{
 			if (firstnode != null)
+			{
 				tv.SelectedNode = firstnode;
+			}
 		}
 
 		private void tv_AfterSelect(object sender, TreeViewEventArgs e)
 		{
 			if (!allowselectevent)
+			{
 				return;
+			}
+
 			if (e.Node == null)
+			{
 				return;
+			}
+
 			ResourceTreeNodeExt node = e.Node as ResourceTreeNodeExt;
 			if (node != null)
 			{
@@ -186,14 +206,22 @@ namespace SimPe.Windows.Forms
 
 			IResourceTreeNodeBuilder old = builder;
 			if (sender == tbInst)
+			{
 				builder = instbuilder;
+			}
 			else if (sender == tbGroup)
+			{
 				builder = groupbuilder;
+			}
 			else
+			{
 				builder = typebuilder;
+			}
 
 			if (old != builder)
+			{
 				SetResourceMaps(true);
+			}
 		}
 
 		internal void RestoreLayout()

@@ -47,7 +47,9 @@ namespace pjOBJDTool
 			{
 				lbItems.Items.Add((IsLead(item) ? "* " : "   ") + item.Filename);
 				if (IsLead(item))
+				{
 					lbItems.SelectedIndex = lbItems.Items.Count - 1;
+				}
 			}
 
 			return ShowDialog();
@@ -61,7 +63,9 @@ namespace pjOBJDTool
 		private void lbItems_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (lbItems.SelectedIndex >= 0)
+			{
 				Value = items[lbItems.SelectedIndex];
+			}
 		}
 
 		private void lbItems_DoubleClick(object sender, EventArgs e)

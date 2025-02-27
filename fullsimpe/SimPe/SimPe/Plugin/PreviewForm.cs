@@ -127,7 +127,9 @@ namespace SimPe.Plugin
 			{
 				npkg.Close();
 				if (npkg is SimPe.Packages.GeneratableFile)
+				{
 					((SimPe.Packages.GeneratableFile)npkg).Dispose();
+				}
 			}
 			npkg = null;
 
@@ -147,7 +149,9 @@ namespace SimPe.Plugin
 			{
 				npkg.Close();
 				if (npkg is SimPe.Packages.GeneratableFile)
+				{
 					((SimPe.Packages.GeneratableFile)npkg).Dispose();
+				}
 			}
 			npkg = null;
 
@@ -197,9 +201,11 @@ namespace SimPe.Plugin
 			{
 				FileTable.FileIndex.Load();
 				if (System.IO.File.Exists(package.SaveFileName))
+				{
 					fii.AddIndexFromFolder(
 						System.IO.Path.GetDirectoryName(package.SaveFileName)
 					);
+				}
 
 				npkg = SimPe.Plugin.Tool.Dockable.ObjectWorkshopHelper.CreatCloneByCres(
 					mmat.ModelName
@@ -213,7 +219,9 @@ namespace SimPe.Plugin
 						SimPe.Interfaces.Files.IPackedFileDescriptor npfd = pfd.Clone();
 						npfd.UserData = package.Read(pfd).UncompressedData;
 						if (pfd == mmat.FileDescriptor)
+						{
 							mmat.ProcessData(npfd, npkg);
+						}
 
 						npkg.Add(npfd, true);
 					}
@@ -260,7 +268,9 @@ namespace SimPe.Plugin
 						return scene;
 					}
 					else
+					{
 						Exception();
+					}
 				}
 				finally { }
 			}
@@ -286,7 +296,9 @@ namespace SimPe.Plugin
 		)
 		{
 			if (!(cmmat is MmatWrapper))
+			{
 				return;
+			}
 
 			MmatWrapper mmat = cmmat as MmatWrapper;
 
@@ -297,7 +309,10 @@ namespace SimPe.Plugin
 				f.scene = BuildScene(out fii, mmat, package);
 				fii.Clear();
 				if (f.scene == null)
+				{
 					return;
+				}
+
 				f.dx.Reset();
 				f.dx.ResetDefaultViewport();
 				f.ShowDialog();

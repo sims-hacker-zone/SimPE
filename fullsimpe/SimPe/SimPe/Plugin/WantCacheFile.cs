@@ -74,7 +74,10 @@ namespace SimPe.Cache
 			get
 			{
 				if (map == null)
+				{
 					LoadWants();
+				}
+
 				return map;
 			}
 		}

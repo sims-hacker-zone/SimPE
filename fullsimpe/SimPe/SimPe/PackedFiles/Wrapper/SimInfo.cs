@@ -32,25 +32,31 @@ namespace SimPe.PackedFiles.Wrapper
 				Sim.CharacterDescription.Career
 				!= SimPe.Data.MetaData.Careers.Unemployed
 			)
+			{
 				this.lbshead.Text +=
 					",\r\n  Works in the "
 					+ (Data.LocalizedCareers)Sim.CharacterDescription.Career
 					+ " career";
+			}
 			else if (
 				Sim.CharacterDescription.Retired
 					!= SimPe.Data.MetaData.Careers.Unemployed
 				&& Sim.CharacterDescription.Realage > 19
 			)
+			{
 				this.lbshead.Text +=
 					",\r\n  Retired from the "
 					+ (Data.LocalizedCareers)Sim.CharacterDescription.Retired
 					+ " career";
+			}
 			else if (
 				Sim.University.OnCampus == 0x1
 				&& Sim.University.Major != SimPe.Data.Majors.Unset
 			)
+			{
 				this.lbshead.Text +=
 					",\r\n  Studying " + (Data.Majors)Sim.University.Major;
+			}
 			else if (
 				Sim.CharacterDescription.Realage < 17
 				&& Sim.CharacterDescription.SchoolType
@@ -58,15 +64,22 @@ namespace SimPe.PackedFiles.Wrapper
 			)
 			{
 				if (Sim.CharacterDescription.Realage < 3)
+				{
 					this.lbshead.Text +=
 						",\r\n  Will attend "
 						+ (Data.LocalizedSchoolType)Sim.CharacterDescription.SchoolType;
+				}
 				else
+				{
 					this.lbshead.Text +=
 						",\r\n  Attends "
 						+ (Data.LocalizedSchoolType)Sim.CharacterDescription.SchoolType;
+				}
+
 				if (!this.lbshead.Text.EndsWith("School"))
+				{
 					this.lbshead.Text += " School";
+				}
 			}
 			this.lbInform.Text = SimPe.PackedFiles.UserInterface.SimOriGuid.AboutSim(
 				Sim

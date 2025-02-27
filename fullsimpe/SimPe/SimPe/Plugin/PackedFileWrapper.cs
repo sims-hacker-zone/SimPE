@@ -130,7 +130,9 @@ namespace SimPe.Plugin
 				pfd.Group = reader.ReadUInt32();
 				pfd.Instance = reader.ReadUInt32();
 				if (type == Data.MetaData.IndexTypes.ptLongFileIndex)
+				{
 					pfd.SubType = reader.ReadUInt32();
+				}
 
 				/*Interfaces.Files.IPackedFileDescriptor ppfd = Package.FindFile(pfd.Type, pfd.SubType, pfd.Group, pfd.Instance);
 				if (ppfd!=null) items[i]=ppfd;
@@ -161,7 +163,9 @@ namespace SimPe.Plugin
 				writer.Write(pfd.Group);
 				writer.Write(pfd.Instance);
 				if (type == Data.MetaData.IndexTypes.ptLongFileIndex)
+				{
 					writer.Write(pfd.SubType);
+				}
 			}
 		}
 		#endregion

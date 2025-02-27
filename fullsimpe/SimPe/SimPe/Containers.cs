@@ -110,7 +110,9 @@ namespace SimPe
 		{
 			IntArrayList list = new IntArrayList();
 			foreach (int item in this)
+			{
 				list.Add(item);
+			}
 
 			return list;
 		}
@@ -203,7 +205,9 @@ namespace SimPe
 		{
 			StringArrayList list = new StringArrayList();
 			foreach (string item in this)
+			{
 				list.Add(item);
+			}
 
 			return list;
 		}

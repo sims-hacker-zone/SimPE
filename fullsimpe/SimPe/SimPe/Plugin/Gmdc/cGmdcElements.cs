@@ -43,7 +43,10 @@ namespace SimPe.Plugin.Gmdc
 		{
 			GmdcElementValueBase n = evb.Clone();
 			for (int i = 0; i < n.Data.Length; i++)
+			{
 				n.Data[i] = (float)(n.Data[i] * d);
+			}
+
 			return n;
 		}
 
@@ -86,7 +89,9 @@ namespace SimPe.Plugin.Gmdc
 		internal virtual void Unserialize(System.IO.BinaryReader reader)
 		{
 			for (int i = 0; i < Data.Length; i++)
+			{
 				Data[i] = reader.ReadSingle();
+			}
 		}
 
 		/// <summary>
@@ -100,7 +105,9 @@ namespace SimPe.Plugin.Gmdc
 		internal virtual void Serialize(System.IO.BinaryWriter writer)
 		{
 			for (int i = 0; i < Data.Length; i++)
+			{
 				writer.Write(Data[i]);
+			}
 		}
 
 		/// <summary>
@@ -113,7 +120,10 @@ namespace SimPe.Plugin.Gmdc
 			for (int i = 0; i < Data.Length; i++)
 			{
 				if (i != 0)
+				{
 					s += ", ";
+				}
+
 				s += Data[i].ToString("N6");
 			}
 			return s;
@@ -135,31 +145,45 @@ namespace SimPe.Plugin.Gmdc
 		protected void Clone(GmdcElementValueBase dest)
 		{
 			for (int i = 0; i < Data.Length; i++)
+			{
 				dest.Data[i] = Data[i];
+			}
 		}
 
 		public override int GetHashCode()
 		{
 			int f = 0;
 			for (int i = 0; i < Data.Length; i++)
+			{
 				f += Data[i].GetHashCode();
+			}
+
 			return f;
 		}
 
 		public override bool Equals(object obj)
 		{
 			if (obj == null)
+			{
 				return false;
+			}
+
 			if (obj is GmdcElementValueBase)
 			{
 				float epsilon = float.Epsilon * 10;
 				GmdcElementValueBase g = (GmdcElementValueBase)obj;
 				if (g.Data.Length != Data.Length)
+				{
 					return false;
+				}
 
 				for (int i = 0; i < Data.Length; i++)
+				{
 					if (Math.Abs(g.Data[i] - Data[i]) > epsilon)
+					{
 						return false;
+					}
+				}
 
 				return true;
 			}
@@ -340,7 +364,10 @@ namespace SimPe.Plugin.Gmdc
 			string s = Value.ToString() + " (";
 			byte[] b = Bytes;
 			for (int i = 0; i < b.Length; i++)
+			{
 				s += b[i].ToString() + " ";
+			}
+
 			s = s.Trim() + ")";
 			return s;
 		}
@@ -513,8 +540,12 @@ namespace SimPe.Plugin.Gmdc
 			{
 				Number = Values.Length;
 				foreach (int i in this.Items)
+				{
 					if (i > Number)
+					{
 						Number = i - 1;
+					}
+				}
 			}
 
 			writer.Write(Number);
@@ -526,7 +557,9 @@ namespace SimPe.Plugin.Gmdc
 
 			int size = 1;
 			if (Values.Length > 0)
+			{
 				size = Values[0].Size;
+			}
 
 			writer.Write((int)(Values.Length * 4 * size));
 			for (int i = 0; i < Values.Length; i++)
@@ -642,7 +675,9 @@ namespace SimPe.Plugin.Gmdc
 		{
 			GmdcElementValues list = new GmdcElementValues();
 			foreach (GmdcElementValueBase item in this)
+			{
 				list.Add(item);
+			}
 
 			return list;
 		}
@@ -735,7 +770,9 @@ namespace SimPe.Plugin.Gmdc
 		{
 			GmdcElements list = new GmdcElements();
 			foreach (GmdcElement item in this)
+			{
 				list.Add(item);
+			}
 
 			return list;
 		}

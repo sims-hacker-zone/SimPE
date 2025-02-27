@@ -15,7 +15,9 @@ namespace SimPe
 		)
 		{
 			if (destinationType == typeof(SimPe.FlagBase))
+			{
 				return true;
+			}
 
 			return base.CanConvertTo(context, destinationType);
 		}
@@ -40,7 +42,9 @@ namespace SimPe
 		)
 		{
 			if (sourceType == typeof(string))
+			{
 				return true;
+			}
 
 			return base.CanConvertFrom(context, sourceType);
 		}

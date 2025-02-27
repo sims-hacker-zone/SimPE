@@ -39,21 +39,31 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 		internal void AddElement(ScoreItemBusinessRewards.Element e)
 		{
 			if (e == null)
+			{
 				return;
+			}
+
 			lb.Items.Add(e);
 		}
 
 		protected void RemoveElement(ScoreItemBusinessRewards.Element e)
 		{
 			if (e == null)
+			{
 				return;
+			}
+
 			int i = lb.SelectedIndex;
 			lb.Items.Remove(e);
 
 			if (i < lb.Items.Count)
+			{
 				lb.SelectedIndex = i;
+			}
 			else if (i - 1 < lb.Items.Count && i > 0)
+			{
 				lb.SelectedIndex = i - 1;
+			}
 		}
 
 		protected override void DoSetData(string name, System.IO.BinaryReader reader)

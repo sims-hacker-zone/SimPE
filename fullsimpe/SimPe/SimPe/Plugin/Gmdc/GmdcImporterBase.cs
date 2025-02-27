@@ -44,7 +44,10 @@ namespace SimPe.Plugin.Gmdc
 		{
 			object o = alias[index - 1];
 			if (o == null)
+			{
 				return -1;
+			}
+
 			return (int)o;
 		}
 
@@ -56,7 +59,10 @@ namespace SimPe.Plugin.Gmdc
 		public override bool Equals(object obj)
 		{
 			if (obj == null)
+			{
 				return false;
+			}
+
 			if (obj is FaceSetCompare)
 			{
 				FaceSetCompare e = (FaceSetCompare)obj;
@@ -102,7 +108,10 @@ namespace SimPe.Plugin.Gmdc
 		public override bool Equals(object obj)
 		{
 			if (obj == null)
+			{
 				return false;
+			}
+
 			if (obj is ElementSetCompare)
 			{
 				ElementSetCompare e = (ElementSetCompare)obj;
@@ -111,11 +120,19 @@ namespace SimPe.Plugin.Gmdc
 				bool vu = e.VU == null && VU == null;
 
 				if (V != null)
+				{
 					v = V.Equals(e.V);
+				}
+
 				if (VN != null)
+				{
 					vn = VN.Equals(e.VN);
+				}
+
 				if (VU != null)
+				{
 					vu = VU.Equals(e.VU);
+				}
 
 				return v && vn && vu;
 			}
@@ -190,7 +207,9 @@ namespace SimPe.Plugin.Gmdc
 
 				//ignore empty groups
 				if (faces.Count == 0)
+				{
 					continue;
+				}
 
 				ImportedGroup g = PrepareGroup();
 				g.Group.Name = k;
@@ -209,11 +228,16 @@ namespace SimPe.Plugin.Gmdc
 		void AddElement(ImportedGroup g, int index, object val, int slotindex)
 		{
 			if (slotindex == -1)
+			{
 				g.Elements[index].Values.Add(val);
+			}
 			else
 			{
 				while (g.Elements[index].Values.Count <= slotindex)
+				{
 					g.Elements[index].Values.Add(null);
+				}
+
 				g.Elements[index].Values[slotindex] = val as Gmdc.GmdcElementValueBase;
 			}
 		}
@@ -231,10 +255,17 @@ namespace SimPe.Plugin.Gmdc
 		)
 		{
 			if (val == null)
+			{
 				return;
+			}
+
 			for (int i = 0; i < g.Elements[index].Values.Count; i++)
+			{
 				if (g.Elements[index].Values[i] == null)
+				{
 					g.Elements[index].Values[i] = val;
+				}
+			}
 		}
 
 		void BuildAliasMap(Hashtable alias, ArrayList list)
@@ -266,8 +297,12 @@ namespace SimPe.Plugin.Gmdc
 		bool CanKeepOrder(ArrayList faces)
 		{
 			foreach (GmdcElementValueThreeFloat f in faces)
+			{
 				if (f.Data[0] != f.Data[1] || f.Data[0] != f.Data[2])
+				{
 					return false;
+				}
+			}
 
 			return true;
 		}
@@ -317,7 +352,10 @@ namespace SimPe.Plugin.Gmdc
 							if (g.KeepOrder)
 							{
 								if (f.Data[0] > 0)
+								{
 									c = (int)f.Data[0] - 1;
+								}
+
 								cv = c;
 							}
 
@@ -334,7 +372,9 @@ namespace SimPe.Plugin.Gmdc
 					}
 
 					if (fc.V >= 0 || fc.VN >= 0 || fc.VU >= 0)
+					{
 						g.Group.Faces.Add(c);
+					}
 #if DEBUG
 				}
 				catch (Exception ex)
@@ -385,7 +425,10 @@ namespace SimPe.Plugin.Gmdc
 				bool newvt = false;
 
 				if (v <= 0)
+				{
 					throw new Exception("Zero Vertex Index Found!");
+				}
+
 				try
 				{
 					//new Element, so add it to the Map and the List
@@ -449,7 +492,9 @@ namespace SimPe.Plugin.Gmdc
 					if (faces.Count < 0x1000)
 					{
 						for (int i = 0; i < lv.Count; i++)
+						{
 							for (int j = 0; j < lvn.Count; j++)
+							{
 								for (int k = 0; k < lvt.Count; k++)
 								{
 									if (
@@ -472,9 +517,15 @@ namespace SimPe.Plugin.Gmdc
 									{
 										int val = (int)lv[i];
 										if (val == -1)
+										{
 											val = (int)lvn[j];
+										}
+
 										if (val == -1)
+										{
 											val = (int)lvt[k];
+										}
+
 										if (val != -1)
 										{
 											g.Group.Faces.Add(val);
@@ -482,6 +533,8 @@ namespace SimPe.Plugin.Gmdc
 										}
 									}
 								}
+							}
+						}
 					}
 
 					//unfortunatley we did not find matching pairs, so add new Elements
@@ -509,7 +562,9 @@ namespace SimPe.Plugin.Gmdc
 							g.Elements[0].Values.Count != g.Elements[1].Values.Count
 							|| g.Elements[0].Values.Count != g.Elements[2].Values.Count
 						)
+						{
 							throw new Exception("Element Lists are out of Sync");
+						}
 
 						g.Group.Faces.Add(g.Elements[0].Values.Count - 1);
 					}

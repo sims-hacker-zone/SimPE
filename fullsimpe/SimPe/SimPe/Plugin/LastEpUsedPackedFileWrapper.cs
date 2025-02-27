@@ -59,7 +59,9 @@ namespace SimPe.Plugin
 				Prevep = reader.ReadUInt16();
 			}
 			else
+			{
 				Prevep = 0;
+			}
 
 			// Castaway has lots more stuff
 			if (
@@ -76,16 +78,23 @@ namespace SimPe.Plugin
 				uint tempo;
 				int c = 0;
 				while (numba != -1) // find first block
+				{
 					numba = reader.ReadInt32(); //will now have read the FFFFFFFF block start
+				}
 
 				numba = reader.ReadInt32();
 				if (numba == -1)
+				{
 					return; // uninitialized this has to have a different value if story mode has ever run.
+				}
+
 				GotMore = true;
 				for (int n = 0; n < 24; n++) // clear previous use in case going from one player profile to another
 				{
 					for (int i = 0; i < 12; i++)
+					{
 						vdata.SetValue((uint)0, n, i);
+					}
 				}
 				// have read past header and first block so go back 1x4 bytes, now every is the same
 				reader.BaseStream.Seek(-4, System.IO.SeekOrigin.Current);
@@ -97,7 +106,9 @@ namespace SimPe.Plugin
 						vdata.SetValue((uint)0xFFFFFFFF, n, 0);
 						nuffin = reader.ReadInt32();
 						while (nuffin != -1)
+						{
 							nuffin = reader.ReadInt32(); //will now have read the FFFFFFFF block start
+						}
 					}
 					else
 					{
@@ -108,12 +119,17 @@ namespace SimPe.Plugin
 							vdata.SetValue((uint)0xFFFFFFFF, n, 0);
 							nuffin = reader.ReadInt32(); //will now have passed the next pre header and read next header
 							if (nuffin != -1)
+							{
 								nuffin = reader.ReadInt32(); // just to be sure read next header
+							}
 						}
 						else
 						{
 							if (n == 0)
+							{
 								numba++;
+							}
+
 							c = numba;
 							for (int i = 0; i < numba; i++)
 							{
@@ -126,7 +142,10 @@ namespace SimPe.Plugin
 							//should now be at the next pre header, but check - some don't have and some have lots more
 							nuffin = reader.ReadInt32();
 							if (nuffin != -1)
+							{
 								nuffin = reader.ReadInt32(); // now at next header
+							}
+
 							if (nuffin != -1) // found more
 							{
 								nuffin = reader.ReadInt32(); // should be zero
@@ -146,12 +165,16 @@ namespace SimPe.Plugin
 								}
 								nuffin = reader.ReadInt32(); // locate next header
 								if (nuffin != -1)
+								{
 									nuffin = reader.ReadInt32(); // now at next header
+								}
 							}
 						}
 						// nuffin should always be -1 here, perhaps add a check
 						if (nuffin != -1)
+						{
 							nuffin = reader.ReadInt32(); // add a check
+						}
 					}
 				}
 			}

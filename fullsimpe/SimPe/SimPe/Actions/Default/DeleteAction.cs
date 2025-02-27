@@ -42,9 +42,15 @@ namespace SimPe.Actions.Default
 			{
 				res = false;
 				foreach (SimPe.Events.ResourceContainer e in es)
+				{
 					if (e.HasFileDescriptor)
+					{
 						if (!e.Resource.FileDescriptor.MarkForDelete)
+						{
 							return true;
+						}
+					}
+				}
 			}
 			return false;
 		}
@@ -55,19 +61,29 @@ namespace SimPe.Actions.Default
 		)
 		{
 			if (!ChangeEnabledStateEventHandler(null, es))
+			{
 				return;
+			}
 
 			if (es.Loaded)
+			{
 				es.LoadedPackage.Package.BeginUpdate();
+			}
+
 			foreach (SimPe.Events.ResourceContainer e in es)
 			{
 				if (es.Loaded)
+				{
 					es.LoadedPackage.Package.ForgetUpdate();
+				}
+
 				e.Resource.FileDescriptor.MarkForDelete = true;
 			}
 
 			if (es.Loaded)
+			{
 				es.LoadedPackage.Package.EndUpdate();
+			}
 		}
 
 		#endregion

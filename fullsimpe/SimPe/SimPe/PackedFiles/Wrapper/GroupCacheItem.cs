@@ -88,7 +88,9 @@ namespace SimPe.PackedFiles.Wrapper
 			LocalGroup = reader.ReadUInt32();
 			unknown2 = new uint[reader.ReadUInt32()];
 			for (int i = 0; i < unknown2.Length; i++)
+			{
 				unknown2[i] = reader.ReadUInt32();
+			}
 		}
 
 		/// <summary>
@@ -108,7 +110,9 @@ namespace SimPe.PackedFiles.Wrapper
 			writer.Write(unknown1);
 			writer.Write(LocalGroup);
 			for (int i = 0; i < unknown2.Length; i++)
+			{
 				writer.Write(unknown2[i]);
+			}
 		}
 		#endregion
 
@@ -121,7 +125,10 @@ namespace SimPe.PackedFiles.Wrapper
 			for (int i = 0; i < unknown2.Length; i++)
 			{
 				if (i != 0)
+				{
 					n += ", ";
+				}
+
 				n += Helper.HexString(unknown2[i]);
 			}
 			n += " )";
@@ -184,7 +191,9 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			GroupCacheItems list = new GroupCacheItems();
 			foreach (GroupCacheItem item in this)
+			{
 				list.Add(item);
+			}
 
 			return list;
 		}

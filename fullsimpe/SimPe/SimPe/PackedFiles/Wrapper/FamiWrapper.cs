@@ -190,7 +190,9 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				sims = value;
 				if (sims == null)
+				{
 					sims = new uint[0];
+				}
 			}
 		}
 
@@ -272,7 +274,9 @@ namespace SimPe.PackedFiles.Wrapper
 								Helper.WindowsRegistry.LanguageCode
 							);
 						if (items.Length > 0)
+						{
 							name = items[0].Title;
+						}
 					}
 				}
 				catch (Exception) { }
@@ -300,9 +304,14 @@ namespace SimPe.PackedFiles.Wrapper
 						)
 						{
 							if (lng == null)
+							{
 								continue;
+							}
+
 							if (str.LanguageItems(lng)[0x0] != null)
+							{
 								str.LanguageItems(lng)[0x0].Title = value;
+							}
 						}
 
 						str.SynchronizeUserData();
@@ -354,7 +363,10 @@ namespace SimPe.PackedFiles.Wrapper
 						|| this.FileDescriptor.Instance > 32511
 						|| package.FileName == null
 					)
+					{
 						return null;
+					}
+
 					int inxy =
 						System
 							.IO.Path.GetFileNameWithoutExtension(package.FileName)
@@ -418,7 +430,9 @@ namespace SimPe.PackedFiles.Wrapper
 		public SDesc GetDescriptionFile(uint simid)
 		{
 			if (package == null)
+			{
 				throw new Exception("No package loaded!");
+			}
 
 			SDesc sdesc = SDesc.FindForSimId(simid, package);
 			if (sdesc == null)
@@ -435,7 +449,9 @@ namespace SimPe.PackedFiles.Wrapper
 				foreach (IPackedFileDescriptor pfd in files)
 				{
 					if (pfd.Instance > sdesc.Instance)
+					{
 						sdesc.Instance = (ushort)pfd.Instance;
+					}
 				}
 				sdesc.Instance++;
 
@@ -474,14 +490,22 @@ namespace SimPe.PackedFiles.Wrapper
 			unknown = reader.ReadUInt32(); // Always 0x0000
 			LotInstance = reader.ReadUInt32();
 			if ((int)Version >= (int)FamiVersions.Business)
+			{
 				CurrentlyOnLotInstance = reader.ReadUInt32();
+			}
+
 			if ((int)Version >= (int)FamiVersions.Voyage)
+			{
 				VacationLotInstance = reader.ReadUInt32();
+			}
 
 			strinstance = reader.ReadUInt32();
 			Money = reader.ReadInt32();
 			if ((int)Version >= (int)FamiVersions.Castaway)
+			{
 				CastAwayFoodDecay = reader.ReadInt32();
+			}
+
 			Friends = reader.ReadUInt32();
 			this.Flags = reader.ReadUInt32();
 			uint count = reader.ReadUInt32();
@@ -493,7 +517,10 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 			this.AlbumGUID = reader.ReadUInt32(); //relations??
 			if ((int)Version >= (int)FamiVersions.University)
+			{
 				this.SubHoodNumber = reader.ReadUInt32();
+			}
+
 			if ((int)Version >= (int)FamiVersions.Castaway)
 			{
 				CastAwayResources = reader.ReadInt32();
@@ -501,7 +528,9 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 
 			if ((int)Version >= (int)FamiVersions.Business)
+			{
 				BusinessMoney = reader.ReadInt32();
+			}
 		}
 
 		protected override void Serialize(System.IO.BinaryWriter writer)
@@ -511,9 +540,15 @@ namespace SimPe.PackedFiles.Wrapper
 			writer.Write(unknown);
 			writer.Write(LotInstance);
 			if ((int)Version >= (int)FamiVersions.Business)
+			{
 				writer.Write(CurrentlyOnLotInstance);
+			}
+
 			if ((int)Version >= (int)FamiVersions.Voyage)
+			{
 				writer.Write(VacationLotInstance);
+			}
+
 			if ((int)Version >= (int)FamiVersions.Castaway)
 			{
 				writer.Write(CastAwayResources);
@@ -536,7 +571,10 @@ namespace SimPe.PackedFiles.Wrapper
 			writer.Write(this.AlbumGUID);
 
 			if ((int)Version >= (int)FamiVersions.University)
+			{
 				writer.Write(this.SubHoodNumber);
+			}
+
 			if ((int)Version >= (int)FamiVersions.Castaway)
 			{
 				writer.Write(CastAwayResources);
@@ -544,7 +582,9 @@ namespace SimPe.PackedFiles.Wrapper
 				writer.Write(CastAwayFoodDecay);
 			}
 			else if ((int)Version >= (int)FamiVersions.Business)
+			{
 				writer.Write(BusinessMoney);
+			}
 		}
 		#endregion
 
@@ -566,7 +606,10 @@ namespace SimPe.PackedFiles.Wrapper
 		protected override string GetResourceName(SimPe.Data.TypeAlias ta)
 		{
 			if (!this.Processed)
+			{
 				ProcessData(FileDescriptor, Package);
+			}
+
 			return this.Name;
 		}
 

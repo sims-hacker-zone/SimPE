@@ -43,11 +43,16 @@ namespace SimPe.Plugin.Tool.Action
 				{
 					int i = -1;
 					while (++i < es.Count)
+					{
 						if (
 							es.Items[i].Resource.FileDescriptor.Type
 							!= Data.MetaData.SIM_DESCRIPTION_FILE
 						)
+						{
 							return false;
+						}
+					}
+
 					return true;
 				}
 			}
@@ -68,7 +73,10 @@ namespace SimPe.Plugin.Tool.Action
 			}
 			string messige = "All ";
 			if (e.Items.Count > 0)
+			{
 				messige = "The selected ";
+			}
+
 			if (
 				Message.Show(
 					messige
@@ -77,7 +85,10 @@ namespace SimPe.Plugin.Tool.Action
 					System.Windows.Forms.MessageBoxButtons.YesNo
 				) == System.Windows.Forms.DialogResult.No
 			)
+			{
 				return;
+			}
+
 			deleteInvalidDna = (
 				Message.Show(
 					"Delete all orphan DNA, Scores and Wants records as well?",
@@ -112,7 +123,9 @@ namespace SimPe.Plugin.Tool.Action
 						victim.CharacterDescription.Gender == Data.MetaData.Gender.Male
 						&& !victim.IsNPC
 					)
+					{
 						c += DeleteSim(victim);
+					}
 				}
 			}
 
@@ -200,7 +213,9 @@ namespace SimPe.Plugin.Tool.Action
 				uint low = (pfd.Instance & 0x0000FFFFFu);
 
 				if (up == inst || low == inst)
+				{
 					pfd.MarkForDelete = true;
+				}
 			}
 		}
 
@@ -216,7 +231,9 @@ namespace SimPe.Plugin.Tool.Action
 			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
 				if (pfd.Instance == inst)
+				{
 					pfd.MarkForDelete = true;
+				}
 			}
 		}
 
@@ -251,7 +268,9 @@ namespace SimPe.Plugin.Tool.Action
 						)
 						{
 							if (fti.Instance != inst)
+							{
 								items.Add(fti);
+							}
 						}
 
 						fts.Ties =
@@ -292,7 +311,9 @@ namespace SimPe.Plugin.Tool.Action
 				foreach (NgbhSlot s in n.Sims)
 				{
 					if (s.SlotID == inst)
+					{
 						slotsToRemove.Add(s); // remove all my memories and tokens ?!
+					}
 					else
 					{
 						// process other sims memories and tokens
@@ -300,33 +321,47 @@ namespace SimPe.Plugin.Tool.Action
 						ArrayList list = new ArrayList();
 
 						foreach (NgbhItem i in s.ItemsA)
+						{
 							if (
 								i.SimID == guid
 								|| i.SimInstance == inst
 								|| i.OwnerInstance == inst
 							)
+							{
 								list.Add(i);
+							}
+						}
 
 						foreach (NgbhItem i in list)
+						{
 							s.ItemsA.Remove(i);
+						}
 
 						list.Clear();
 
 						foreach (NgbhItem i in s.ItemsB)
+						{
 							if (
 								i.SimID == guid
 								|| i.SimInstance == inst
 								|| i.OwnerInstance == inst
 							)
+							{
 								list.Add(i);
+							}
+						}
 
 						foreach (NgbhItem i in list)
+						{
 							s.ItemsB.Remove(i);
+						}
 					}
 				}
 
 				foreach (NgbhSlot s in slotsToRemove)
+				{
 					n.Sims.Remove(s);
+				}
 				//n.Sims = slots;
 
 				n.SynchronizeUserData();
@@ -354,7 +389,9 @@ namespace SimPe.Plugin.Tool.Action
 				foreach (uint i in f.Members)
 				{
 					if (i != guid)
+					{
 						list.Add(i);
+					}
 				}
 
 				f.Members = new uint[list.Count];
@@ -377,7 +414,9 @@ namespace SimPe.Plugin.Tool.Action
 			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
 				if (pfd.Instance == inst)
+				{
 					continue;
+				}
 
 				ArrayList list = new ArrayList();
 				SimPe.PackedFiles.Wrapper.ExtSDesc sdsc =
@@ -385,8 +424,12 @@ namespace SimPe.Plugin.Tool.Action
 				sdsc.ProcessData(pfd, pkg);
 
 				foreach (uint i in sdsc.Relations.SimInstances)
+				{
 					if (i != inst)
+					{
 						list.Add((ushort)i);
+					}
+				}
 
 				if (list.Count < sdsc.Relations.SimInstances.Length)
 				{
@@ -405,7 +448,10 @@ namespace SimPe.Plugin.Tool.Action
 			); // get the existing SDSCs
 			ArrayList simInstances = new ArrayList();
 			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pSim in pfdSim)
+			{
 				simInstances.Add(pSim.Instance);
+			}
+
 			SimPe.Interfaces.Files.IPackedFileDescriptor[] pfdDna = pkg.FindFiles(
 				0xEBFEE33Fu
 			); // get the existing SDNAs
@@ -417,16 +463,28 @@ namespace SimPe.Plugin.Tool.Action
 			); // get the wants & fears
 
 			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pDna in pfdDna)
+			{
 				if (!simInstances.Contains(pDna.Instance))
+				{
 					pDna.MarkForDelete = true;
+				}
+			}
 
 			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pSco in pfdSco)
+			{
 				if (!simInstances.Contains(pSco.Instance))
+				{
 					pSco.MarkForDelete = true;
+				}
+			}
 
 			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pWaF in pfdWaF)
+			{
 				if (!simInstances.Contains(pWaF.Instance))
+				{
 					pWaF.MarkForDelete = true;
+				}
+			}
 		}
 
 		#region IToolPlugin Member

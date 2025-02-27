@@ -110,11 +110,16 @@ namespace SimPe.Plugin
 		static void LoadCache()
 		{
 			if (cachefile != null)
+			{
 				return;
+			}
 
 			cachefile = new GoalCacheFile();
 			if (!Helper.WindowsRegistry.UseCache)
+			{
 				return;
+			}
+
 			try
 			{
 				cachefile.Load(Helper.SimPeLanguageCache, true);
@@ -131,9 +136,15 @@ namespace SimPe.Plugin
 		public static void SaveCache()
 		{
 			if (!Helper.WindowsRegistry.UseCache)
+			{
 				return;
+			}
+
 			if (cachefile == null || !hasnew)
+			{
 				return;
+			}
+
 			cachefile.Save(Helper.SimPeLanguageCache);
 		}
 		#endregion
@@ -147,16 +158,22 @@ namespace SimPe.Plugin
 		{
 			LoadCache();
 			if (goalcache == null)
+			{
 				goalcache = cachefile.Map;
+			}
 
 			if (goalcache.ContainsKey(guid))
 			{
 				object o = goalcache[guid];
 				GoalInformation wf;
 				if (o.GetType() == typeof(GoalInformation))
+				{
 					wf = (GoalInformation)o;
+				}
 				else
+				{
 					wf = GoalCacheInformation.LoadGoal((GoalCacheItem)o);
+				}
 
 				return wf;
 			}
@@ -184,7 +201,10 @@ namespace SimPe.Plugin
 			{
 				string stg;
 				if (str == null)
+				{
 					return "0x" + Helper.HexString(guid);
+				}
+
 				stg = str.FallbackedLanguageItem(Helper.WindowsRegistry.LanguageCode, 0)
 					.Title.Replace("$NeighborLocal:2", "True Love");
 				return stg.Replace("$NeighborLocal:3", "Orangutan");
@@ -199,7 +219,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (primicon == null)
+				{
 					return null;
+				}
+
 				return primicon.Image;
 			}
 		}
@@ -232,7 +255,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (goals == null)
+				{
 					LoadGoals();
+				}
+
 				return goals;
 			}
 		}
@@ -251,12 +277,14 @@ namespace SimPe.Plugin
 				)
 			);
 			if (txtpkg == null)
+			{
 				txtpkg = SimPe.Packages.File.LoadFromFile(
 					System.IO.Path.Combine(
 						SimPe.PathProvider.Global.Latest.InstallFolder,
 						"TSData\\Res\\Text\\Wants.package"
 					)
 				);
+			}
 		}
 
 		/// <summary>
@@ -308,7 +336,9 @@ namespace SimPe.Plugin
 		public static XGoal GetGoal(uint guid)
 		{
 			if (goals == null)
+			{
 				LoadGoals();
+			}
 
 			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem wts =
 				(SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem)goals[guid];
@@ -334,9 +364,14 @@ namespace SimPe.Plugin
 		public static SimPe.PackedFiles.Wrapper.Str LoadText(XGoal wnt)
 		{
 			if (wnt == null)
+			{
 				return null;
+			}
+
 			if (txtpkg == null)
+			{
 				LoadTextPackage();
+			}
 
 			Interfaces.Files.IPackedFileDescriptor[] pfds = txtpkg.FindFile(
 				Data.MetaData.STRING_FILE,
@@ -363,9 +398,14 @@ namespace SimPe.Plugin
 		public static SimPe.PackedFiles.Wrapper.Picture LoadIcon(XGoal wnt)
 		{
 			if (wnt == null)
+			{
 				return null;
+			}
+
 			if (txtpkg == null)
+			{
 				LoadTextPackage();
+			}
 
 			Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
 				FileTable.FileIndex.FindFile(wnt.IconFileDescriptor, null);

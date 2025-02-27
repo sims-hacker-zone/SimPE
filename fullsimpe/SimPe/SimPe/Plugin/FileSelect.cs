@@ -126,7 +126,10 @@ namespace SimPe.Plugin
 							(skincat & (uint)Data.SkinCategories.Skin)
 							== (uint)Data.SkinCategories.Skin
 						)
+						{
 							skincat = (uint)Data.SkinCategories.Skin;
+						}
+
 						if (
 							skincat != 128
 							&& (
@@ -134,7 +137,9 @@ namespace SimPe.Plugin
 								|| skin.GetSaveItem("parts").UIntegerValue == 1
 							)
 						)
+						{
 							skincat = (uint)Data.SkinCategories.Hair;
+						}
 						//if (skin.GetSaveItem("override0subset").StringValue.Trim().ToLower().StartsWith("hair")) skincat = (uint)Data.SkinCategories.Skin;
 						//if (skin.GetSaveItem("override0subset").StringValue.Trim().ToLower().StartsWith("bang")) skincat = (uint)Data.SkinCategories.Skin; // these don't work
 						uint skinsex = skin.GetSaveItem("gender").UIntegerValue;
@@ -421,7 +426,10 @@ namespace SimPe.Plugin
 		public static SimPe.Interfaces.Files.IPackedFileDescriptor Execute()
 		{
 			if (form == null)
+			{
 				form = new FileSelect();
+			}
+
 			return form.DoExecute();
 		}
 
@@ -458,11 +466,20 @@ namespace SimPe.Plugin
 			lbname.Text = "";
 			last = null;
 			if (e == null)
+			{
 				return;
+			}
+
 			if (e.Node == null)
+			{
 				return;
+			}
+
 			if (e.Node.Tag == null)
+			{
 				return;
+			}
+
 			button1.Enabled = true;
 			last = e.Node;
 
@@ -474,7 +491,9 @@ namespace SimPe.Plugin
 				ImageData id = (ImageData)rcol.Blocks[0];
 				MipMap mm = id.GetLargestTexture(pb.Size);
 				if (mm != null)
+				{
 					pb.Image = ImageLoader.Preview(mm.Texture, pb.Size);
+				}
 			}
 
 			lbname.Text = "Name: " + Helper.lbr + sc.Name + Helper.lbr + Helper.lbr;

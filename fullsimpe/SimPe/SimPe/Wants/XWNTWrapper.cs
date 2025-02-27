@@ -55,9 +55,13 @@ namespace SimPe.Wants
 		void setVersion(string value)
 		{
 			if (IsValidVersion(value))
+			{
 				version = value;
+			}
 			else
+			{
 				throw new ArgumentOutOfRangeException("version");
+			}
 		}
 		#endregion
 
@@ -68,7 +72,10 @@ namespace SimPe.Wants
 			get
 			{
 				if (lValidVersions == null)
+				{
 					lValidVersions = new List<string>(new string[] { "5", "6", "7" });
+				}
+
 				return lValidVersions;
 			}
 		}
@@ -152,7 +159,9 @@ namespace SimPe.Wants
 			bool isCpf = true;
 			byte[] id = new byte[] { 0xE0, 0x50, 0xE7, 0xCB, 0x02, 0x00 };
 			for (int i = 0; i < hdr.Length && isCpf; i++)
+			{
 				isCpf = hdr[i] == id[i];
+			}
 
 			if (isCpf)
 			{
@@ -162,7 +171,9 @@ namespace SimPe.Wants
 				foreach (XWNTItem item in xwnt)
 				{
 					if (item.Key.StartsWith("<!"))
+					{
 						Add(new XWNTItem(this, item.Key, ""));
+					}
 					else
 					{
 						SimPe.PackedFiles.Wrapper.CpfItem cpfitem = cpf.GetItem(
@@ -186,7 +197,9 @@ namespace SimPe.Wants
 							items.Add(new XWNTItem(this, item.Key, value));
 						}
 						else
+						{
 							items.Add(new XWNTItem(this, item.Key, item.Value));
+						}
 					}
 				}
 				return;
@@ -204,9 +217,14 @@ namespace SimPe.Wants
 				&& xr.NodeType.Equals(XmlNodeType.Element)
 				&& xr.Name.Equals("cGZPropertySetString")
 			)
+			{
 				setVersion(xr["version"]);
+			}
 			else
+			{
 				throw new Exception("Invalid XWNT format");
+			}
+
 			xr.Read();
 
 			while (xr.IsStartElement())
@@ -214,9 +232,13 @@ namespace SimPe.Wants
 				items.Add(new XWNTItem(this, xr));
 
 				if (!xr.IsEmptyElement)
+				{
 					xr.ReadEndElement();
+				}
 				else
+				{
 					xr.Skip();
+				}
 			}
 			xr.ReadEndElement();
 		}
@@ -233,14 +255,19 @@ namespace SimPe.Wants
 			foreach (XWNTItem xi in this)
 			{
 				if (xi.Key.StartsWith("<"))
+				{
 					xw.WriteRaw("  " + xi.Key);
+				}
 				else
 				{
 					xw.WriteStartElement(xi.Stype);
 					xw.WriteAttributeString("key", xi.Key);
 					xw.WriteAttributeString("type", xi.Utype);
 					if (xi.Value.Length > 0)
+					{
 						xw.WriteValue(xi.Value);
+					}
+
 					xw.WriteEndElement();
 				}
 			}
@@ -282,16 +309,31 @@ namespace SimPe.Wants
 		{
 			//if (!SimPe.Helper.FileFormat) return base.GetResourceName(ta);
 			if (!this.Processed)
+			{
 				this.ProcessData(FileDescriptor, Package);
+			}
+
 			string s = "";
 			if (SimPe.Helper.FileFormat)
+			{
 				s += version + ":";
+			}
+
 			if (this["objectType"] != null)
+			{
 				s += (s.Length > 0 ? " " : "") + "(" + this["objectType"].Value + ")";
+			}
+
 			if (this["folder"] != null)
+			{
 				s += (s.Length > 0 ? " " : "") + this["folder"].Value;
+			}
+
 			if (this["nodeText"] != null)
+			{
 				s += (s.Length > 0 ? " / " : "") + this["nodeText"].Value;
+			}
+
 			return s;
 		}
 		#endregion
@@ -301,8 +343,13 @@ namespace SimPe.Wants
 			get
 			{
 				foreach (XWNTItem xi in this)
+				{
 					if (xi.Key.Equals(value))
+					{
 						return xi;
+					}
+				}
+
 				return null;
 			}
 		}
@@ -337,9 +384,13 @@ namespace SimPe.Wants
 		void setKey(string value)
 		{
 			if (value.StartsWith("<!") || IsValidKey(value))
+			{
 				key = value;
+			}
 			else
+			{
 				throw new ArgumentOutOfRangeException("key");
+			}
 		}
 
 		public string Stype
@@ -361,9 +412,13 @@ namespace SimPe.Wants
 		void setType(string value)
 		{
 			if (IsValidType(value))
+			{
 				this.type = value;
+			}
 			else
+			{
 				throw new ArgumentOutOfRangeException("type");
+			}
 		}
 
 		public string Utype
@@ -385,9 +440,13 @@ namespace SimPe.Wants
 		void setUtype(string value)
 		{
 			if (IsValidUtype(type, value))
+			{
 				this.utype = value;
+			}
 			else
+			{
 				throw new ArgumentOutOfRangeException("utype");
+			}
 		}
 
 		public string Value
@@ -412,21 +471,33 @@ namespace SimPe.Wants
 			{
 				case "integerOperator":
 					if (!IsValidIntegerOperator(value))
+					{
 						throw new ArgumentOutOfRangeException(
 							"value (integerOperator)"
 						);
+					}
+
 					break;
 				case "integerType":
 					if (!IsValidIntegerType(value))
+					{
 						throw new ArgumentOutOfRangeException("value (integerType)");
+					}
+
 					break;
 				case "level":
 					if (!IsValidLevel(value))
+					{
 						throw new ArgumentOutOfRangeException("value (level)");
+					}
+
 					break;
 				case "objectType":
 					if (!IsValidObjectType(value))
+					{
 						throw new ArgumentOutOfRangeException("value (objectType)");
+					}
+
 					break;
 				default:
 					switch (type)
@@ -472,7 +543,9 @@ namespace SimPe.Wants
 			this.parent = parent;
 			setKey(key);
 			if (key.StartsWith("<!"))
+			{
 				return;
+			}
 
 			setType(StypeForKey(key));
 			setUtype(TypeUtype[type]);
@@ -482,7 +555,9 @@ namespace SimPe.Wants
 		private void Unserialize(XmlReader xr)
 		{
 			if (!xr.NodeType.Equals(XmlNodeType.Element))
+			{
 				setKey(xr.ReadOuterXml());
+			}
 			else
 			{
 				setKey(xr["key"]);
@@ -559,9 +634,13 @@ namespace SimPe.Wants
 		{
 			string stype;
 			if (KeyType.TryGetValue(key, out stype))
+			{
 				return stype;
+			}
 			else
+			{
 				throw new ArgumentOutOfRangeException("key");
+			}
 		}
 		#endregion
 
@@ -603,6 +682,7 @@ namespace SimPe.Wants
 			get
 			{
 				if (lValidIntegerOperators == null)
+				{
 					lValidIntegerOperators = new List<string>(
 						new string[]
 						{
@@ -612,6 +692,8 @@ namespace SimPe.Wants
 							"Less_Then",
 						}
 					);
+				}
+
 				return lValidIntegerOperators;
 			}
 		}
@@ -629,9 +711,12 @@ namespace SimPe.Wants
 			get
 			{
 				if (lValidIntegerTypes == null)
+				{
 					lValidIntegerTypes = new List<string>(
 						new string[] { "None", "Number" }
 					);
+				}
+
 				return lValidIntegerTypes;
 			}
 		}
@@ -649,6 +734,7 @@ namespace SimPe.Wants
 			get
 			{
 				if (lValidLevels == null)
+				{
 					lValidLevels = new List<string>(
 						new string[]
 						{
@@ -659,6 +745,7 @@ namespace SimPe.Wants
 							"Generational",
 						}
 					);
+				}
 
 				return lValidLevels;
 			}
@@ -677,6 +764,7 @@ namespace SimPe.Wants
 			get
 			{
 				if (lValidObjectTypes == null)
+				{
 					lValidObjectTypes = new List<string>(
 						new string[]
 						{
@@ -689,6 +777,8 @@ namespace SimPe.Wants
 							"Skill",
 						}
 					);
+				}
+
 				return lValidObjectTypes;
 			}
 		}

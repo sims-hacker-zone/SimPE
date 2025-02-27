@@ -320,10 +320,16 @@ namespace SimPe.PackedFiles.Wrapper
 		private void CpfItemSelect(object sender, System.EventArgs e)
 		{
 			if (rtbcpfname.Tag != null)
+			{
 				return;
+			}
+
 			this.llcpfchange.Enabled = false;
 			if (this.lbcpf.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			this.llcpfchange.Enabled = true;
 
 			rtbcpfname.Tag = true;
@@ -363,9 +369,14 @@ namespace SimPe.PackedFiles.Wrapper
 					case Data.MetaData.DataTypes.dtBoolean:
 					{
 						if (item.BooleanValue)
+						{
 							rtbcpf.Text = "1";
+						}
 						else
+						{
 							rtbcpf.Text = "0";
+						}
+
 						break;
 					}
 					default:
@@ -394,12 +405,19 @@ namespace SimPe.PackedFiles.Wrapper
 		)
 		{
 			if (cbtype.SelectedIndex < 0)
+			{
 				cbtype.SelectedIndex = cbtype.Items.Count - 1;
+			}
+
 			CpfItem item;
 			if (lbcpf.SelectedIndex < 0)
+			{
 				item = new CpfItem();
+			}
 			else
+			{
 				item = (CpfItem)lbcpf.Items[lbcpf.SelectedIndex];
+			}
 
 			item.Name = rtbcpfname.Text;
 			item.Datatype = (Data.MetaData.DataTypes)cbtype.Items[cbtype.SelectedIndex];
@@ -462,12 +480,18 @@ namespace SimPe.PackedFiles.Wrapper
 			} //switch
 
 			if (lbcpf.SelectedIndex < 0)
+			{
 				lbcpf.Items.Add(item);
+			}
 			else
+			{
 				lbcpf.Items[lbcpf.SelectedIndex] = item;
+			}
 
 			if (wrapper != null)
+			{
 				wrapper.Changed = true;
+			}
 		}
 
 		private void AddCpf(
@@ -487,7 +511,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 			CpfItem[] items = new CpfItem[lbcpf.Items.Count];
 			for (int i = 0; i < items.Length; i++)
+			{
 				items[i] = (CpfItem)lbcpf.Items[i];
+			}
+
 			wrp.Items = items;
 		}
 
@@ -496,7 +523,10 @@ namespace SimPe.PackedFiles.Wrapper
 			try
 			{
 				if (this.lbcpf.SelectedIndex >= 0)
+				{
 					CpfChange(null, null);
+				}
+
 				CpfUpdate();
 				Cpf wrp = (Cpf)wrapper;
 
@@ -552,9 +582,15 @@ namespace SimPe.PackedFiles.Wrapper
 		private void CpfAutoChange()
 		{
 			if (rtbcpfname.Tag != null)
+			{
 				return;
+			}
+
 			if (lbcpf.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			rtbcpfname.Tag = true;
 			try
 			{
@@ -571,7 +607,10 @@ namespace SimPe.PackedFiles.Wrapper
 		private void btprev_Click(object sender, System.EventArgs e)
 		{
 			if (fkt == null)
+			{
 				return;
+			}
+
 			try
 			{
 				Cpf cpf = (Cpf)wrapper;
@@ -589,7 +628,10 @@ namespace SimPe.PackedFiles.Wrapper
 		)
 		{
 			if (lbcpf.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			CpfItem item = (CpfItem)lbcpf.Items[lbcpf.SelectedIndex];
 			lbcpf.Items.Remove(item);
 			CpfUpdate();

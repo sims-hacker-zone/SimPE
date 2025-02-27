@@ -74,7 +74,9 @@ namespace SimPe
 				t.Start();
 			}
 			else
+			{
 				ev1.Set();
+			}
 		}
 
 		SimPe.Windows.Forms.SplashForm frm = null;
@@ -106,20 +108,26 @@ namespace SimPe
 		{
 			mmsg = msg;
 			if (frm != null)
+			{
 				frm.Message = msg;
+			}
 		}
 
 		public void Stop()
 		{
 			if (frm != null)
+			{
 				frm.StopSplash();
+			}
 		}
 
 		public void ShutDown()
 		{
 			Stop();
 			if (t != null)
+			{
 				t.Join();
+			}
 		}
 	}
 }

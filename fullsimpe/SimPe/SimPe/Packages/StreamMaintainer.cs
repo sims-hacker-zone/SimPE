@@ -85,32 +85,49 @@ namespace SimPe.Packages
 		public bool SetFileAccess(FileAccess fa)
 		{
 			if (FileStream == null)
+			{
 				return false;
+			}
 
 			switch (fa)
 			{
 				case FileAccess.Read:
 				{
 					if (FileStream.CanRead)
+					{
 						return true;
+					}
+
 					if (FileStream.CanWrite)
+					{
 						fa = FileAccess.ReadWrite;
+					}
+
 					break;
 				}
 
 				case FileAccess.Write:
 				{
 					if (FileStream.CanWrite)
+					{
 						return true;
+					}
+
 					if (FileStream.CanRead)
+					{
 						fa = FileAccess.ReadWrite;
+					}
+
 					break;
 				}
 
 				default:
 				{
 					if (FileStream.CanRead && FileStream.CanWrite)
+					{
 						return true;
+					}
+
 					break;
 				}
 			}
@@ -118,7 +135,9 @@ namespace SimPe.Packages
 			try
 			{
 				if (this.StreamState == StreamState.Opened)
+				{
 					FileStream.Close();
+				}
 
 				string name = FileStream.Name;
 				FileStream = null;
@@ -127,7 +146,10 @@ namespace SimPe.Packages
 			catch (Exception ex)
 			{
 				if (Helper.WindowsRegistry.HiddenMode)
+				{
 					Helper.ExceptionMessage("", ex);
+				}
+
 				return false;
 			}
 			return true;
@@ -141,10 +163,15 @@ namespace SimPe.Packages
 			get
 			{
 				if (FileStream == null)
+				{
 					return StreamState.Removed;
+				}
 
 				if (FileStream.CanSeek)
+				{
 					return StreamState.Opened;
+				}
+
 				return StreamState.Closed;
 			}
 		}
@@ -183,7 +210,10 @@ namespace SimPe.Packages
 			if (streams.ContainsKey(filename))
 			{
 				if (!locked.Contains(filename))
+				{
 					locked.Add(filename);
+				}
+
 				return true;
 			}
 			return false;
@@ -229,7 +259,9 @@ namespace SimPe.Packages
 		{
 			InitTable();
 			foreach (string k in streams.Keys)
+			{
 				UnlockStream(k);
+			}
 		}
 
 		public static void WriteToConsole()
@@ -245,13 +277,24 @@ namespace SimPe.Packages
 				StreamItem si = streams[k] as StreamItem;
 				string add = k;
 				if (si != null)
+				{
 					add += " [" + si.StreamState + "]";
+				}
+
 				if (IsLocked(k, false))
+				{
 					add = "[locked] " + add;
+				}
 				else if (IsLocked(k, true))
+				{
 					add = "[ftlocked] " + add;
+				}
+
 				if (PackageMaintainer.Maintainer.Contains(k))
+				{
 					add += "[managed]";
+				}
+
 				lb.Items.Add(add);
 			}
 
@@ -294,7 +337,9 @@ namespace SimPe.Packages
 		static void InitTable()
 		{
 			if (streams == null)
+			{
 				streams = new Hashtable();
+			}
 		}
 
 		/// <summary>
@@ -346,7 +391,10 @@ namespace SimPe.Packages
 		{
 			InitTable();
 			if (filename == null)
+			{
 				filename = "";
+			}
+
 			filename = filename.Trim().ToLower();
 			StreamItem si = (StreamItem)streams[filename];
 			if ((si == null) && createnew)
@@ -405,12 +453,18 @@ namespace SimPe.Packages
 
 			// Files does exist -- Removed means never opened here
 			if (si.StreamState == StreamState.Removed)
+			{
 				si.SetFileStream(new FileStream(filename, FileMode.Open, fa));
+			}
 			else if (!si.SetFileAccess(fa))
+			{
 				si.Close();
+			}
 
 			if (si.StreamState == StreamState.Opened)
+			{
 				si.FileStream.Seek(0, SeekOrigin.Begin);
+			}
 
 			return si;
 		}
@@ -423,7 +477,9 @@ namespace SimPe.Packages
 		public static StreamItem FindStreamItem(FileStream fs)
 		{
 			if (fs == null)
+			{
 				return null;
+			}
 
 			return GetStreamItem(fs.Name, false);
 		}
@@ -436,14 +492,19 @@ namespace SimPe.Packages
 		public static bool CloseStream(string filename)
 		{
 			if (IsLocked(filename, false))
+			{
 				return false;
+			}
 
 			StreamItem si = GetStreamItem(filename, false);
 			if (si != null)
 			{
 				si.Close();
 				if (!IsLocked(filename, true))
+				{
 					PackageMaintainer.Maintainer.RemovePackage(filename);
+				}
+
 				return (si.StreamState != StreamState.Opened);
 			}
 			return false;

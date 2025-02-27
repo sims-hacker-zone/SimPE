@@ -312,7 +312,9 @@ namespace SimPe.PackedFiles.UserInterface
 			lb.Items.Remove(e.Item);
 			index = Math.Min(lb.Items.Count - 1, index);
 			if (lb.Items.Count > index)
+			{
 				lb.SelectedIndex = index;
+			}
 		}
 
 		void ScorUI_AddedItem(Scor sender, Scor.ChangedListEventArgs e)
@@ -332,10 +334,14 @@ namespace SimPe.PackedFiles.UserInterface
 			btRem.Enabled = false;
 			lb.Items.Clear();
 			foreach (Wrapper.ScorItem si in Scor)
+			{
 				lb.Items.Add(si);
+			}
 
 			if (lb.Items.Count > 0)
+			{
 				lb.SelectedIndex = 0;
+			}
 		}
 
 		#endregion
@@ -346,10 +352,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//if (Scor != null)
 			{
 				foreach (string s in ScorItem.GuiElements.Keys)
+				{
 					cbType.Items.Add(s);
+				}
 
 				if (cbType.Items.Count > 0)
+				{
 					cbType.SelectedIndex = 0;
+				}
 			}
 		}
 
@@ -383,14 +393,20 @@ namespace SimPe.PackedFiles.UserInterface
 		private void btAdd_Click(object sender, EventArgs e)
 		{
 			if (Scor != null)
+			{
 				if (cbType.SelectedItem != null)
+				{
 					Scor.Add(cbType.SelectedItem.ToString());
+				}
+			}
 		}
 
 		private void btRem_Click(object sender, EventArgs e)
 		{
 			if (Scor != null)
+			{
 				Scor.Remove(lb.SelectedItem as ScorItem);
+			}
 		}
 	}
 }

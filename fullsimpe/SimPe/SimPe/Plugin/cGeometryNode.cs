@@ -157,7 +157,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (tGeometryNode == null)
+				{
 					tGeometryNode = new SimPe.Plugin.TabPage.GeometryNode();
+				}
+
 				return tGeometryNode;
 			}
 		}
@@ -169,7 +172,9 @@ namespace SimPe.Plugin
 		protected override void InitTabPage()
 		{
 			if (tGeometryNode == null)
+			{
 				tGeometryNode = new SimPe.Plugin.TabPage.GeometryNode();
+			}
 
 			tGeometryNode.tb_gn_ver.Text = "0x" + Helper.HexString(this.version);
 
@@ -184,11 +189,18 @@ namespace SimPe.Plugin
 			tGeometryNode.cb_gn_list.Items.Clear();
 
 			foreach (IRcolBlock irb in this.Blocks)
+			{
 				SimPe.CountedListItem.Add(tGeometryNode.cb_gn_list, irb);
+			}
+
 			if (tGeometryNode.cb_gn_list.Items.Count > 0)
+			{
 				tGeometryNode.cb_gn_list.SelectedIndex = 0;
+			}
 			else
+			{
 				tGeometryNode.BuildChildTabControl(null);
+			}
 		}
 
 		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
@@ -226,12 +238,16 @@ namespace SimPe.Plugin
 					item.Package.SaveFileName.Trim().ToLower()
 					== parent.Package.SaveFileName.Trim().ToLower()
 				)
+				{
 					r.ProcessData(
 						parent.Package.FindFile(item.FileDescriptor),
 						parent.Package
 					);
+				}
 				else
+				{
 					r.ProcessData(item);
+				}
 
 				Shape s = (Shape)r.Blocks[0];
 
@@ -239,7 +255,9 @@ namespace SimPe.Plugin
 				{
 					string n = Hashes.StripHashFromName(i.FileName).Trim().ToLower();
 					if (n == mn)
+					{
 						return r;
+					}
 				}
 			}
 
@@ -252,7 +270,10 @@ namespace SimPe.Plugin
 		public override void Dispose()
 		{
 			if (this.tGeometryNode != null)
+			{
 				this.tGeometryNode.Dispose();
+			}
+
 			tGeometryNode = null;
 		}
 

@@ -56,7 +56,9 @@ namespace SimPe.Plugin
 			guid = reader.ReadUInt32();
 			items = new ushort[reader.ReadUInt32()];
 			for (int i = 0; i < items.Length; i++)
+			{
 				items[i] = reader.ReadUInt16();
+			}
 		}
 
 		/// <summary>
@@ -72,7 +74,9 @@ namespace SimPe.Plugin
 			writer.Write(guid);
 			writer.Write((uint)items.Length);
 			for (int i = 0; i < items.Length; i++)
+			{
 				writer.Write(items[i]);
+			}
 		}
 
 		#region IDisposable Member
@@ -88,7 +92,10 @@ namespace SimPe.Plugin
 		{
 			string s = "0x" + Helper.HexString(guid) + ": ";
 			foreach (ushort u in items)
+			{
 				s += Helper.HexString(u) + " ";
+			}
+
 			return s;
 		}
 	}

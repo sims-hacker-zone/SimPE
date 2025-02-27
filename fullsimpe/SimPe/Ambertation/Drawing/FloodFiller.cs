@@ -178,7 +178,9 @@ namespace Ambertation.Drawing
 					|| !CheckPixel((byte*)ptr, startcolor)
 					|| (PixelsChecked[LFillLoc, y])
 				)
+				{
 					break; //exit loop if we're at edge of bitmap or color area
+				}
 			}
 			LFillLoc++;
 
@@ -196,7 +198,9 @@ namespace Ambertation.Drawing
 					|| !CheckPixel((byte*)ptr, startcolor)
 					|| (PixelsChecked[RFillLoc, y])
 				)
+				{
 					break; //exit loop if we're at edge of bitmap or color area
+				}
 			}
 			RFillLoc--;
 
@@ -214,7 +218,9 @@ namespace Ambertation.Drawing
 					)
 					&& (!(PixelsChecked[i, y - 1]))
 				)
+				{
 					LinearFloodFill4(scan0, i, y - 1, bmpsize, stride, startcolor);
+				}
 				//START LOOP DOWNWARDS
 				if (
 					y < (bmpsize.Height - 1)
@@ -224,7 +230,10 @@ namespace Ambertation.Drawing
 					)
 					&& (!(PixelsChecked[i, y + 1]))
 				)
+				{
 					LinearFloodFill4(scan0, i, y + 1, bmpsize, stride, startcolor);
+				}
+
 				ptr += 1;
 			}
 		}
@@ -255,7 +264,9 @@ namespace Ambertation.Drawing
 					|| !CheckPixel((byte*)ptr, startcolor)
 					|| (PixelsChecked[LFillLoc, y])
 				)
+				{
 					break; //exit loop if we're at edge of bitmap or color area
+				}
 			}
 			LFillLoc++;
 
@@ -273,7 +284,9 @@ namespace Ambertation.Drawing
 					|| !CheckPixel((byte*)ptr, startcolor)
 					|| (PixelsChecked[RFillLoc, y])
 				)
+				{
 					break; //exit loop if we're at edge of bitmap or color area
+				}
 			}
 			RFillLoc--;
 
@@ -293,7 +306,9 @@ namespace Ambertation.Drawing
 							startcolor
 						) && (!(PixelsChecked[i, y - 1]))
 					)
+					{
 						LinearFloodFill8(scan0, i, y - 1, bmpsize, stride, startcolor);
+					}
 					//UP-LEFT
 					if (
 						x > 0
@@ -303,6 +318,7 @@ namespace Ambertation.Drawing
 						)
 						&& (!(PixelsChecked[i - 1, y - 1]))
 					)
+					{
 						LinearFloodFill8(
 							scan0,
 							i - 1,
@@ -311,6 +327,7 @@ namespace Ambertation.Drawing
 							stride,
 							startcolor
 						);
+					}
 					//UP-RIGHT
 					if (
 						x < (bmpsize.Width - 1)
@@ -320,6 +337,7 @@ namespace Ambertation.Drawing
 						)
 						&& (!(PixelsChecked[i + 1, y - 1]))
 					)
+					{
 						LinearFloodFill8(
 							scan0,
 							i + 1,
@@ -328,6 +346,7 @@ namespace Ambertation.Drawing
 							stride,
 							startcolor
 						);
+					}
 				}
 
 				if (y < (bmpsize.Height - 1))
@@ -339,7 +358,9 @@ namespace Ambertation.Drawing
 							startcolor
 						) && (!(PixelsChecked[i, y + 1]))
 					)
+					{
 						LinearFloodFill8(scan0, i, y + 1, bmpsize, stride, startcolor);
+					}
 					//DOWN-LEFT
 					if (
 						x > 0
@@ -349,6 +370,7 @@ namespace Ambertation.Drawing
 						)
 						&& (!(PixelsChecked[i - 1, y + 1]))
 					)
+					{
 						LinearFloodFill8(
 							scan0,
 							i - 1,
@@ -357,6 +379,7 @@ namespace Ambertation.Drawing
 							stride,
 							startcolor
 						);
+					}
 					//UP-RIGHT
 					if (
 						x < (bmpsize.Width - 1)
@@ -366,6 +389,7 @@ namespace Ambertation.Drawing
 						)
 						&& (!(PixelsChecked[i + 1, y + 1]))
 					)
+					{
 						LinearFloodFill8(
 							scan0,
 							i + 1,
@@ -374,6 +398,7 @@ namespace Ambertation.Drawing
 							stride,
 							startcolor
 						);
+					}
 				}
 
 				ptr += 1;
@@ -395,9 +420,15 @@ namespace Ambertation.Drawing
 		{
 			//don't go over the edge
 			if ((x < 0) || (x >= bmpsize.Width))
+			{
 				return;
+			}
+
 			if ((y < 0) || (y >= bmpsize.Height))
+			{
 				return;
+			}
+
 			int* p = (int*)(scan0 + (CoordsToIndex(x, y, stride)));
 			if (!(PixelsChecked[x, y]) && CheckPixel((byte*)p, startcolor))
 			{
@@ -427,9 +458,14 @@ namespace Ambertation.Drawing
 		{
 			//don't go over the edge
 			if ((x < 0) || (x >= bmpsize.Width))
+			{
 				return;
+			}
+
 			if ((y < 0) || (y >= bmpsize.Height))
+			{
 				return;
+			}
 
 			//calculate pointer offset
 			int* p = (int*)(scan0 + (CoordsToIndex(x, y, stride)));
@@ -497,9 +533,15 @@ namespace Ambertation.Drawing
 		{
 			//don't go over the edge
 			if ((x < 0) || (x >= bmpsize.Width))
+			{
 				return;
+			}
+
 			if ((y < 0) || (y >= bmpsize.Height))
+			{
 				return;
+			}
+
 			int* p = (int*)(scan0 + (CoordsToIndex(x, y, stride)));
 			if (!(PixelsChecked[x, y]) && CheckPixel((byte*)p, startcolor))
 			{
@@ -529,9 +571,14 @@ namespace Ambertation.Drawing
 		{
 			//don't go over the edge
 			if ((x < 0) || (x >= bmpsize.Width))
+			{
 				return;
+			}
+
 			if ((y < 0) || (y >= bmpsize.Height))
+			{
 				return;
+			}
 
 			//calculate pointer offset
 			int* p = (int*)(scan0 + (CoordsToIndex(x, y, stride)));
@@ -560,9 +607,12 @@ namespace Ambertation.Drawing
 		{
 			bool ret = true;
 			for (byte i = 0; i < 3; i++)
+			{
 				ret &=
 					(px[i] >= (startcolor[i] - m_Tolerance[i]))
 					&& px[i] <= (startcolor[i] + m_Tolerance[i]);
+			}
+
 			return ret;
 		}
 

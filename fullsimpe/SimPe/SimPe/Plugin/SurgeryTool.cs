@@ -58,9 +58,15 @@ namespace SimPe.Plugin
 		)
 		{
 			if (package == null)
+			{
 				return false;
+			}
+
 			if (prov.SimNameProvider == null)
+			{
 				return false;
+			}
+
 			return (
 				Helper.IsNeighborhoodFile(package.FileName)
 				|| Helper.IsLotCatalogFile(package.FileName)
@@ -85,7 +91,10 @@ namespace SimPe.Plugin
 				return new Plugin.ToolResult(false, false);
 			}
 			if (surg == null)
+			{
 				surg = new Surgery();
+			}
+
 			surg.Text = Localization.Manager.GetString("Sims Surgery Tool");
 
 			return surg.Execute(ref pfd, ref package, prov);

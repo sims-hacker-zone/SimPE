@@ -53,7 +53,9 @@ namespace SimPe
 
 			List<string> argv = new List<string>(args);
 			if (Commandline.PreSplash(argv))
+			{
 				return;
+			}
 
 			Commandline.CheckFiles();
 
@@ -76,7 +78,9 @@ namespace SimPe
 						System.Windows.Forms.MessageBoxButtons.YesNo
 					) == System.Windows.Forms.DialogResult.No
 				)
+				{
 					return;
+				}
 			}
 
 			try
@@ -99,9 +103,13 @@ namespace SimPe
 					if (argv.Count > 0)
 					{
 						if (argv[0] != "-load")
+						{
 							Global.package.LoadOrImportFiles(argv.ToArray(), true);
+						}
 						else
+						{
 							Global.package.LoadOrImportFiles(argv.ToArray(), false);
+						}
 					}
 					// Global.package.LoadOrImportFiles(argv.ToArray(), true);
 					Application.Run(Global);
@@ -136,7 +144,9 @@ namespace SimPe
 			finally
 			{
 				if (SimPe.Splash.Running)
+				{
 					SimPe.Splash.Screen.ShutDown();
+				}
 			}
 
 			try

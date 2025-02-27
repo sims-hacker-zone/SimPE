@@ -260,9 +260,13 @@ namespace SimPe.PackedFiles.UserInterface
 					this.lbbody.Text == "Bodyshape = Unknown"
 					|| this.lbbody.Text == "Bodyshape =  Maxis : Default"
 				)
+				{
 					this.lbbody.Visible = false;
+				}
 				else
+				{
 					this.lbbody.Visible = true;
+				}
 
 				SimPe.PackedFiles.Wrapper.SDesc sdsc =
 					FileTable.ProviderRegistry.SimDescriptionProvider.FindSim(
@@ -296,17 +300,23 @@ namespace SimPe.PackedFiles.UserInterface
 						(ushort)Wrapper.FileDescriptor.Instance
 					) as SimPe.PackedFiles.Wrapper.SDesc;
 				if (sdsc == null)
+				{
 					this.HeaderText = "CPF Viewer";
+				}
 				else
+				{
 					this.HeaderText =
 						"CPF Viewer ("
 						+ sdsc.SimName
 						+ " "
 						+ sdsc.SimFamilyName
 						+ " DNA)";
+				}
 
 				foreach (SimPe.PackedFiles.Wrapper.CpfItem item in wrp.Items)
+				{
 					lbcpf.Items.Add(item);
+				}
 			}
 		}
 

@@ -59,7 +59,10 @@ namespace Ambertation
 			get
 			{
 				if (props == null)
+				{
 					Load();
+				}
+
 				return props;
 			}
 		}
@@ -77,28 +80,42 @@ namespace Ambertation
 			if (typename == "int")
 			{
 				if (value == null)
+				{
 					o = 0;
+				}
 				else
+				{
 					o = System.Convert.ToInt32(value);
+				}
 			}
 			else if (typename == "short")
 			{
 				if (value == null)
+				{
 					o = 0;
+				}
 				else
+				{
 					o = System.Convert.ToInt16(value);
+				}
 			}
 			else if (typename == "bool")
 			{
 				if (value == null)
+				{
 					o = false;
+				}
 				else
+				{
 					o = (System.Convert.ToInt16(value) != 0);
+				}
 			}
 			else if (typename == "color")
 			{
 				if (value == null)
+				{
 					o = FloatColor.FromColor(System.Drawing.Color.Black);
+				}
 				else
 				{
 					o = FloatColor.FromString(value);
@@ -107,13 +124,17 @@ namespace Ambertation
 			else if ((typename == "float") || (typename == "transparence"))
 			{
 				if (value == null)
+				{
 					o = (double)1.0;
+				}
 				else
+				{
 					o = (double)
 						System.Convert.ToDouble(
 							value,
 							System.Globalization.CultureInfo.InvariantCulture
 						);
+				}
 			}
 			else if (
 				(typename == "string")
@@ -124,9 +145,13 @@ namespace Ambertation
 			)
 			{
 				if (value == null)
+				{
 					o = "";
+				}
 				else
+				{
 					o = value;
+				}
 			}
 			else if (typename.StartsWith("enum:"))
 			{
@@ -137,9 +162,13 @@ namespace Ambertation
 				{
 					Type t = (Type)enums[typename];
 					if (value == null)
+					{
 						o = System.Enum.ToObject(t, t.GetFields()[0].GetValue(null));
+					}
 					else
+					{
 						o = System.Enum.ToObject(t, System.Convert.ToInt32(value));
+					}
 				}
 				else
 				{
@@ -153,16 +182,22 @@ namespace Ambertation
 
 					Type t = a.GetType(typename);
 					if (t != null)
+					{
 						if (t.IsEnum)
 						{
 							if (value == null)
+							{
 								o = System.Enum.ToObject(t, System.Convert.ToInt32(0));
+							}
 							else
+							{
 								o = System.Enum.ToObject(
 									t,
 									System.Convert.ToInt32(value)
 								);
+							}
 						}
+					}
 				}
 			}
 			else if (typename.StartsWith("class:"))
@@ -180,14 +215,18 @@ namespace Ambertation
 
 				Type t = a.GetType(typename);
 				if (t != null)
+				{
 					if (
 						t.GetInterface("Ambertation.IPropertyClass")
 						== typeof(Ambertation.IPropertyClass)
 					)
+					{
 						o = System.Activator.CreateInstance(
 							t,
 							new object[] { (object)value }
 						);
+					}
+				}
 			}
 
 			return o;
@@ -203,7 +242,9 @@ namespace Ambertation
 			foreach (XmlNode subnode in node)
 			{
 				if (subnode.Name == "property")
+				{
 					HandleProperty(subnode, cat);
+				}
 			}
 		}
 
@@ -234,25 +275,37 @@ namespace Ambertation
 			foreach (XmlNode subnode in node)
 			{
 				if (subnode.Name == "name")
+				{
 					name = subnode.InnerText;
+				}
 
 				if (subnode.Name == "help")
+				{
 					desc = subnode.InnerText;
+				}
 
 				if (subnode.Name == "default")
+				{
 					def = BuildValue(typename, subnode.InnerText);
+				}
 
 				if (subnode.Name == "readonly")
+				{
 					ro = true;
+				}
 			}
 
 			PropertyDescription pd = new PropertyDescription(cat, desc, def, ro);
 			HandleProperty(node, pd);
 
 			if (props.ContainsKey(name))
+			{
 				props[name] = pd;
+			}
 			else
+			{
 				props.Add(name, pd);
+			}
 		}
 
 		/// <summary>
@@ -273,11 +326,13 @@ namespace Ambertation
 			foreach (XmlNode subnode in node)
 			{
 				if (subnode.Name == "field")
+				{
 					myEnumBuilder.DefineLiteral(
 						subnode.InnerText,
 						(object)
 							System.Convert.ToInt32(subnode.Attributes["value"].Value)
 					);
+				}
 			}
 
 			Type t = myEnumBuilder.CreateType();
@@ -306,7 +361,9 @@ namespace Ambertation
 			props = new Hashtable();
 			enums = new Hashtable();
 			if (!System.IO.File.Exists(flname))
+			{
 				return;
+			}
 
 			//read XML File
 			System.Xml.XmlDocument xmlfile = new XmlDocument();
@@ -322,11 +379,19 @@ namespace Ambertation
 				foreach (XmlNode subnode in node)
 				{
 					if (subnode.Name == "property")
+					{
 						HandleProperty(subnode, (string)null);
+					}
+
 					if (subnode.Name == "category")
+					{
 						HandleCategory(subnode);
+					}
+
 					if (subnode.Name == "enum")
+					{
 						HandleEnum(myModBuilder, subnode);
+					}
 				}
 			}
 		}

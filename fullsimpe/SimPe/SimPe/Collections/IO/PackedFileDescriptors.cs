@@ -117,7 +117,9 @@ namespace SimPe.Collections.IO
 		{
 			PackedFileDescriptors list = new PackedFileDescriptors();
 			foreach (IPackedFileDescriptor item in this)
+			{
 				list.Add(item);
+			}
 
 			return list;
 		}

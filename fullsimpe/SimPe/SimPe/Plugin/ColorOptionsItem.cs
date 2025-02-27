@@ -86,7 +86,9 @@ namespace SimPe.Plugin
 						matd.ProcessData(pfds[0], MMAT.Package);
 
 						if (matd.FileName.Trim().ToLower() == flname)
+						{
 							break;
+						}
 					}
 				}
 
@@ -104,7 +106,9 @@ namespace SimPe.Plugin
 			get
 			{
 				if (MATD == null)
+				{
 					return null;
+				}
 
 				if (txtr == null)
 				{
@@ -123,7 +127,9 @@ namespace SimPe.Plugin
 						txtr.ProcessData(pfds[0], MMAT.Package);
 
 						if (txtr.FileName.Trim().ToLower() == flname)
+						{
 							break;
+						}
 					}
 				}
 
@@ -139,7 +145,9 @@ namespace SimPe.Plugin
 			get
 			{
 				if (MATD == null)
+				{
 					return "";
+				}
 
 				MaterialDefinition md = (MaterialDefinition)MATD.Blocks[0];
 				return Hashes.StripHashFromName(
@@ -160,7 +168,9 @@ namespace SimPe.Plugin
 			foreach (SubsetItem i in subsets)
 			{
 				if ((i.Slave) && (i.Name.Trim().ToLower() == subset))
+				{
 					return true;
+				}
 			}
 
 			return false;
@@ -203,7 +213,9 @@ namespace SimPe.Plugin
 			if (guids.Count > 0)
 			{
 				if (!guids.Contains(MMAT.GetSaveItem("objectGUID").UIntegerValue))
+				{
 					MMAT.GetSaveItem("objectGUID").UIntegerValue = (uint)guids[0];
+				}
 			}
 
 			MMAT.GetSaveItem("defaultMaterial").BooleanValue = false;
@@ -237,10 +249,12 @@ namespace SimPe.Plugin
 				{
 					realtxtrname = Hashes.StripHashFromName(TXTR.FileName);
 					if (realtxtrname.Length > 5)
+					{
 						realtxtrname = realtxtrname.Substring(
 							0,
 							realtxtrname.Length - 5
 						);
+					}
 				}
 
 				//we foudn a texture

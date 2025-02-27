@@ -1131,7 +1131,10 @@ namespace SimPe.Plugin
 			Wait.SubStart();
 			tvhist.BeginUpdate();
 			foreach (WantItemContainer wic in wrapper.History)
+			{
 				this.AddWant(tvhist, wic);
+			}
+
 			tvhist.EndUpdate();
 			Wait.SubStop();
 		}
@@ -1235,14 +1238,20 @@ namespace SimPe.Plugin
 			gbprop.Enabled = false;
 			lastwi = null;
 			if (lv.SelectedItems.Count == 0)
+			{
 				return;
+			}
+
 			gbprop.Enabled = true;
 
 			WantItem wi = (WantItem)lv.SelectedItems[0].Tag;
 			lastlvi = lv.SelectedItems[0];
 
 			if (this.Tag != null)
+			{
 				return;
+			}
+
 			this.Tag = true;
 			ShowWantItem(wi);
 			this.Tag = null;
@@ -1251,7 +1260,10 @@ namespace SimPe.Plugin
 		private void cbsel_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			if (cbsel.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			Data.Alias a = (Data.Alias)cbsel.Items[cbsel.SelectedIndex];
 			tbval.Text = "0x" + Helper.HexString(a.Id);
 		}
@@ -1264,15 +1276,23 @@ namespace SimPe.Plugin
 				(WantType)cbtype.Items[cbtype.SelectedIndex]
 			);
 			foreach (Data.Alias a in list)
+			{
 				cbsel.Items.Add(a);
+			}
+
 			cbsel.Sorted = true;
 
 			int ct = 0;
 			foreach (Data.Alias a in cbsel.Items)
 			{
 				if (lastwi != null)
+				{
 					if (a.Id == lastwi.Value)
+					{
 						cbsel.SelectedIndex = ct;
+					}
+				}
+
 				ct++;
 			}
 		}
@@ -1290,7 +1310,9 @@ namespace SimPe.Plugin
 							MessageBoxButtons.YesNo
 						) == DialogResult.Yes
 					)
+					{
 						wrapper.SynchronizeUserData();
+					}
 				}
 
 				//Open File
@@ -1322,9 +1344,15 @@ namespace SimPe.Plugin
 		private void ChangedText(object sender, System.EventArgs e)
 		{
 			if (lastwi == null)
+			{
 				return;
+			}
+
 			if (this.Tag != null)
+			{
 				return;
+			}
+
 			this.Tag = true;
 
 			try
@@ -1338,7 +1366,9 @@ namespace SimPe.Plugin
 				wrapper.Changed = true;
 
 				if (this.lastlvi != null)
+				{
 					lastlvi.Text = lastwi.ToString();
+				}
 			}
 			catch { }
 			finally
@@ -1350,16 +1380,26 @@ namespace SimPe.Plugin
 		private void SelectTab(object sender, System.EventArgs e)
 		{
 			if (tabControl1.SelectedIndex == 2 && tvhist.Nodes.Count == 0)
+			{
 				LoadHistory();
+			}
 
 			if (tabControl1.SelectedIndex == 0)
+			{
 				SelectWant(lvwant, (System.EventArgs)null);
+			}
 			else if (tabControl1.SelectedIndex == 1)
+			{
 				SelectWant(lvfear, (System.EventArgs)null);
+			}
 			else if (tabControl1.SelectedIndex == 3)
+			{
 				SelectWant(lvlife, (System.EventArgs)null);
+			}
 			else
+			{
 				SeletTv(null, lasttve);
+			}
 		}
 
 		System.Windows.Forms.TreeViewEventArgs lasttve;
@@ -1369,9 +1409,14 @@ namespace SimPe.Plugin
 			lastwi = null;
 			gbprop.Enabled = false;
 			if (e == null)
+			{
 				return;
+			}
+
 			if (e.Node == null)
+			{
 				return;
+			}
 
 			lasttve = e;
 			TreeNode node = e.Node;
@@ -1389,7 +1434,9 @@ namespace SimPe.Plugin
 		internal void ListWants()
 		{
 			if (tv.Nodes.Count > 0)
+			{
 				return;
+			}
 
 			itv.Images.Add(
 				new System.Drawing.Bitmap(
@@ -1461,13 +1508,24 @@ namespace SimPe.Plugin
 		private void SelectWant(object sender, System.Windows.Forms.TreeViewEventArgs e)
 		{
 			if (this.Tag != null)
+			{
 				return;
+			}
+
 			if (e == null)
+			{
 				return;
+			}
+
 			if (e.Node == null)
+			{
 				return;
+			}
+
 			if (e.Node.Tag == null)
+			{
 				return;
+			}
 
 			WantInformation wi = (WantInformation)e.Node.Tag;
 			this.tbguid.Text = "0x" + Helper.HexString(wi.Guid);
@@ -1476,11 +1534,14 @@ namespace SimPe.Plugin
 			if (lastlvi != null)
 			{
 				if (lastlvi.ImageIndex >= 0)
+				{
 					lastlvi.ListView.LargeImageList.Images[lastlvi.ImageIndex] =
 						ImageLoader.Preview(
 							wi.Icon,
 							lastlvi.ListView.LargeImageList.ImageSize
 						);
+				}
+
 				lastlvi.Text = wi.Name;
 			}
 
@@ -1498,7 +1559,9 @@ namespace SimPe.Plugin
 			}
 
 			if (lastlvi != null)
+			{
 				lastlvi.ListView.Refresh();
+			}
 		}
 	}
 }

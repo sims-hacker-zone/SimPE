@@ -89,7 +89,10 @@ namespace pjse
 			{
 				case DialogResult.OK:
 					if (lbItemList.SelectedIndex >= 0)
+					{
 						return (int)((SimPe.Data.Alias)lbItemList.SelectedItem).Id;
+					}
+
 					return -1;
 				default:
 					return -1;
@@ -101,9 +104,11 @@ namespace pjse
 			this.lbItemList.Items.Clear();
 
 			for (int i = 0; wrapper[1, i] != null; i++)
+			{
 				lbItemList.Items.Add(
 					new SimPe.Data.Alias((uint)i, wrapper[1, i].Title)
 				);
+			}
 
 			lbItemList.Sorted = sortflag;
 		}

@@ -80,7 +80,10 @@ namespace SimPe
 		public static void WritePChar(System.IO.BinaryWriter w, string s)
 		{
 			foreach (char c in s)
+			{
 				w.Write(c);
+			}
+
 			w.Write((char)0);
 		}
 	}

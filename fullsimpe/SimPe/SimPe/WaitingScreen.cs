@@ -117,9 +117,13 @@ namespace SimPe
 		public static void Stop()
 		{
 			if (Running)
+			{
 				Screen.doStop();
+			}
 			else
+			{
 				Application.UseWaitCursor = false;
+			}
 		}
 
 		/// <summary>
@@ -146,7 +150,9 @@ namespace SimPe
 				lock (lockScr)
 				{
 					if (scr == null)
+					{
 						scr = new WaitingScreen();
+					}
 				}
 				return scr;
 			}
@@ -167,7 +173,9 @@ namespace SimPe
 			{
 				prevImage = image;
 				if (frm != null)
+				{
 					frm.SetImage(image);
+				}
 			}
 			Application.DoEvents();
 		}
@@ -181,7 +189,9 @@ namespace SimPe
 			{
 				prevMessage = msg;
 				if (frm != null)
+				{
 					frm.SetMessage(msg);
+				}
 			}
 			Application.DoEvents();
 		}
@@ -202,24 +212,36 @@ namespace SimPe
 			System.Diagnostics.Trace.WriteLine("SimPe.WaitingScreen.doWait(...): ");
 			++count;
 			if (count > 1)
+			{
 				return;
+			}
 
 			Application.UseWaitCursor = true;
 			if (!Helper.WindowsRegistry.WaitingScreen)
+			{
 				return;
+			}
+
 			lock (lockFrm)
 			{
 				if (parent != form)
 				{
 					if (parent != null)
+					{
 						parent.Activated -= new EventHandler(parent_Activated);
+					}
+
 					parent = form;
 					if (parent != null)
+					{
 						parent.Activated += new EventHandler(parent_Activated);
+					}
 				}
 				parent_Activated(null, null);
 				if (frm != null)
+				{
 					frm.Owner = form;
+				}
 			}
 		}
 
@@ -228,12 +250,17 @@ namespace SimPe
 			System.Diagnostics.Trace.WriteLine("SimPe.WaitingScreen.doStop(): ");
 			count--;
 			if (parent != null && count == 0)
+			{
 				parent.Activate();
+			}
+
 			Application.UseWaitCursor = false;
 			lock (lockFrm)
 			{
 				if (frm != null)
+				{
 					frm.StopSplash();
+				}
 			}
 		}
 

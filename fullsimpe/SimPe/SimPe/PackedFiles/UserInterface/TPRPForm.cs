@@ -152,9 +152,12 @@ namespace SimPe.PackedFiles.UserInterface
 		private bool hex32_IsValid(object sender)
 		{
 			if (alHex32.IndexOf(sender) < 0)
+			{
 				throw new Exception(
 					"hex32_IsValid not applicable to control " + sender.ToString()
 				);
+			}
+
 			try
 			{
 				Convert.ToUInt32(((TextBox)sender).Text, 16);
@@ -249,7 +252,9 @@ namespace SimPe.PackedFiles.UserInterface
 			lvParams.Items.Clear();
 			lvLocals.Items.Clear();
 			foreach (TPRPItem item in wrapper)
+			{
 				LVAdd((item is TPRPLocalLabel) ? lvLocals : lvParams, item);
+			}
 		}
 
 		private void setTab(int l)
@@ -264,7 +269,9 @@ namespace SimPe.PackedFiles.UserInterface
 				setIndex(lvCurrent.Items.Count > 0 ? 0 : -1);
 			}
 			else
+			{
 				index = this.lvCurrent.SelectedIndices[0];
+			}
 
 			displayTPRPItem();
 		}
@@ -273,20 +280,31 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			internalchg = true;
 			if (i >= 0)
+			{
 				this.lvCurrent.Items[i].Selected = true;
+			}
 			else if (index >= 0)
+			{
 				this.lvCurrent.Items[index].Selected = false;
+			}
+
 			internalchg = false;
 
 			if (this.lvCurrent.SelectedItems.Count > 0)
 			{
 				if (this.lvCurrent.Focused)
+				{
 					this.lvCurrent.SelectedItems[0].Focused = true;
+				}
+
 				this.lvCurrent.SelectedItems[0].EnsureVisible();
 			}
 
 			if (index == i)
+			{
 				return;
+			}
+
 			index = i;
 			displayTPRPItem();
 		}
@@ -441,10 +459,14 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			this.btnCommit.Enabled = wrapper.Changed;
 			if (sender.Equals(currentItem))
+			{
 				this.btnCancel.Enabled = true;
+			}
 
 			if (internalchg)
+			{
 				return;
+			}
 
 			if (sender.Equals(wrapper))
 			{
@@ -454,7 +476,9 @@ namespace SimPe.PackedFiles.UserInterface
 				internalchg = false;
 			}
 			else if (!sender.Equals(currentItem))
+			{
 				updateLists();
+			}
 		}
 
 		#endregion
@@ -756,14 +780,20 @@ namespace SimPe.PackedFiles.UserInterface
 		private void tabControl1_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			setTab(tabControl1.SelectedIndex);
 		}
 
 		private void ListView_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			setIndex(
 				(this.lvCurrent.SelectedIndices.Count > 0)
 					? this.lvCurrent.SelectedIndices[0]
@@ -792,7 +822,10 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			Bhav bhav = (Bhav)wrapper.SiblingResource(Bhav.Bhavtype);
 			if (bhav == null)
+			{
 				return;
+			}
+
 			if (bhav.Package != wrapper.Package)
 			{
 				DialogResult dr = MessageBox.Show(
@@ -801,7 +834,9 @@ namespace SimPe.PackedFiles.UserInterface
 					MessageBoxButtons.YesNo
 				);
 				if (dr != DialogResult.Yes)
+				{
 					return;
+				}
 			}
 			SimPe.RemoteControl.OpenPackedFile(bhav.FileDescriptor, bhav.Package);
 		}
@@ -846,7 +881,9 @@ namespace SimPe.PackedFiles.UserInterface
 		private void tbText_TextChanged(object sender, System.EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
 
 			internalchg = true;
 			switch (alText.IndexOf(sender))
@@ -866,9 +903,14 @@ namespace SimPe.PackedFiles.UserInterface
 		private void hex32_TextChanged(object sender, System.EventArgs ev)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (!hex32_IsValid(sender))
+			{
 				return;
+			}
 
 			internalchg = true;
 			uint val = Convert.ToUInt32(((TextBox)sender).Text, 16);
@@ -887,7 +929,10 @@ namespace SimPe.PackedFiles.UserInterface
 		)
 		{
 			if (hex32_IsValid(sender))
+			{
 				return;
+			}
+
 			e.Cancel = true;
 			hex32_Validated(sender, null);
 		}

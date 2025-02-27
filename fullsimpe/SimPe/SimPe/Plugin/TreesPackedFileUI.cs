@@ -61,7 +61,10 @@ namespace SimPe.Plugin
 					btMove.Visible =
 						false;
 				if (listList.Width > 900)
+				{
 					Comment.Width = listList.Width - 680;
+				}
+
 				this.CanCommit = Wrapper.Count < 64;
 				tbheader.Text = "0x" + Helper.HexString(Wrapper.Header);
 				tbunk0.Text = Helper.HexString(Wrapper.Unk0);
@@ -212,9 +215,15 @@ namespace SimPe.Plugin
 		private void textbox_TextChanged(object sender, EventArgs e)
 		{
 			if (holde)
+			{
 				return;
+			}
+
 			if (listList.SelectedItems.Count == 0)
+			{
 				return;
+			}
+
 			ListViewItem lvi = listList.SelectedItems[0];
 			int indx = (int)lvi.Tag;
 			lvi.SubItems[0].Text = tbComment.Text;
@@ -285,9 +294,15 @@ namespace SimPe.Plugin
 		private void textbox2_TextChanged(object sender, EventArgs e)
 		{
 			if (holde)
+			{
 				return;
+			}
+
 			if (listLast.SelectedItems.Count == 0)
+			{
 				return;
+			}
+
 			ListViewItem lvi = listLast.SelectedItems[0];
 			int indx = (int)lvi.Tag;
 			lvi.SubItems[1].Text = tbComment2.Text;
@@ -297,7 +312,9 @@ namespace SimPe.Plugin
 		private void tbfilename_TextChanged(object sender, EventArgs e)
 		{
 			if (!holde)
+			{
 				Wrapper.FileNam = tbfilename.Text;
+			}
 		}
 
 		private void btAdder_Click(object sender, EventArgs e)
@@ -324,7 +341,10 @@ namespace SimPe.Plugin
 			if (Wrapper.Vershin == 69)
 			{
 				if (listLast.SelectedItems.Count == 0)
+				{
 					return;
+				}
+
 				ListViewItem lvi = listLast.SelectedItems[0];
 				int indx = (int)lvi.Tag;
 				Wrapper.MoveComment(indx, indx - 1);
@@ -340,7 +360,10 @@ namespace SimPe.Plugin
 			else
 			{
 				if (listList.SelectedItems.Count == 0)
+				{
 					return;
+				}
+
 				ListViewItem lvi = listList.SelectedItems[0];
 				int indx = (int)lvi.Tag;
 				Wrapper.MoveComment(indx, indx - 1);
@@ -354,9 +377,15 @@ namespace SimPe.Plugin
 			SimPe.PackedFiles.Wrapper.Bhav bhave = (SimPe.PackedFiles.Wrapper.Bhav)
 				Wrapper.SiblingResource(0x42484156);
 			if (bhave == null)
+			{
 				return;
+			}
+
 			if (bhave.Package != Wrapper.Package)
+			{
 				return;
+			}
+
 			SimPe.RemoteControl.OpenPackedFile(bhave.FileDescriptor, bhave.Package);
 		}
 
@@ -366,7 +395,10 @@ namespace SimPe.Plugin
 			if (Wrapper.Vershin == 69)
 			{
 				if (listLast.SelectedItems.Count == 0)
+				{
 					return;
+				}
+
 				ListViewItem lvi = listLast.SelectedItems[0];
 				int indx = (int)lvi.Tag;
 				Wrapper.MoveComment(indx, indx + 1);
@@ -382,7 +414,10 @@ namespace SimPe.Plugin
 			else
 			{
 				if (listList.SelectedItems.Count == 0)
+				{
 					return;
+				}
+
 				ListViewItem lvi = listList.SelectedItems[0];
 				int indx = (int)lvi.Tag;
 				Wrapper.MoveComment(indx, indx + 1);

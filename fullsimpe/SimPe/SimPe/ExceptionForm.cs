@@ -238,7 +238,10 @@ namespace SimPe
 		{
 			string text = "";
 			foreach (string line in rtb.Lines)
+			{
 				text += line + "\r\n"; // RichTextBox converts line breaks to seperate arrays, we need to put the line breaks back (CJH)
+			}
+
 			Clipboard.SetDataObject(text, true);
 			// Clipboard.SetDataObject(rtb.Text, true);
 		}
@@ -271,12 +274,19 @@ namespace SimPe
 		public static void Execute(string message, Exception ex)
 		{
 			if (Helper.NoErrors)
+			{
 				return;
+			}
 
 			if (message == null)
+			{
 				message = "";
+			}
+
 			if (message.Trim() == "")
+			{
 				message = ex.Message;
+			}
 
 			if (message.Contains("Microsoft.DirectX"))
 			{

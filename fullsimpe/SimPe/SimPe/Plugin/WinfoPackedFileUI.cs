@@ -96,11 +96,16 @@ namespace SimPe.Plugin
 				wiunk2.ForeColor = System.Drawing.SystemColors.WindowText;
 				WiMisc++;
 				if (WiMisc > 3)
+				{
 					WiMisc = 0;
+				}
+
 				Wrapper.unkn1 = WiMisc;
 			}
 			else
+			{
 				wiunk2.ForeColor = System.Drawing.Color.DarkRed;
+			}
 		}
 
 		private void wiunk3_TextChanged(object sender, EventArgs e)
@@ -122,7 +127,9 @@ namespace SimPe.Plugin
 				wiunk5.ForeColor = System.Drawing.SystemColors.WindowText;
 			}
 			else
+			{
 				wiunk5.ForeColor = System.Drawing.Color.DarkRed;
+			}
 		}
 
 		private void wiunk6_TextChanged(object sender, EventArgs e)
@@ -134,7 +141,9 @@ namespace SimPe.Plugin
 				wiunk6.ForeColor = System.Drawing.SystemColors.WindowText;
 			}
 			else
+			{
 				wiunk6.ForeColor = System.Drawing.Color.DarkRed;
+			}
 		}
 
 		private void wiunk7_TextChanged(object sender, EventArgs e)
@@ -146,7 +155,9 @@ namespace SimPe.Plugin
 				wiunk7.ForeColor = System.Drawing.SystemColors.WindowText;
 			}
 			else
+			{
 				wiunk7.ForeColor = System.Drawing.Color.DarkRed;
+			}
 		}
 
 		private void wiunk8_TextChanged(object sender, EventArgs e)
@@ -158,7 +169,9 @@ namespace SimPe.Plugin
 				wiunk8.ForeColor = System.Drawing.SystemColors.WindowText;
 			}
 			else
+			{
 				wiunk8.ForeColor = System.Drawing.Color.DarkRed;
+			}
 		}
 
 		private void wiunk9_TextChanged(object sender, EventArgs e)
@@ -170,7 +183,9 @@ namespace SimPe.Plugin
 				wiunk9.ForeColor = System.Drawing.SystemColors.WindowText;
 			}
 			else
+			{
 				wiunk9.ForeColor = System.Drawing.Color.DarkRed;
+			}
 		}
 
 		private void wiunk10_TextChanged(object sender, EventArgs e)
@@ -182,7 +197,9 @@ namespace SimPe.Plugin
 				wiunk10.ForeColor = System.Drawing.SystemColors.WindowText;
 			}
 			else
+			{
 				wiunk10.ForeColor = System.Drawing.Color.DarkRed;
+			}
 		}
 
 		private void witemperate_TextChanged(object sender, EventArgs e)

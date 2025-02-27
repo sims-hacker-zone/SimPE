@@ -69,7 +69,9 @@ namespace SimPe.Plugin.Downloads
 				rkf.SetValue("BuildPreviewForRecolors", value);
 
 				if (value)
+				{
 					LoadBasedataForRecolors = true;
+				}
 			}
 		}
 
@@ -88,7 +90,9 @@ namespace SimPe.Plugin.Downloads
 				rkf.SetValue("LoadBasedataForRecolors", value);
 
 				if (!value)
+				{
 					BuildPreviewForRecolors = false;
+				}
 			}
 		}
 

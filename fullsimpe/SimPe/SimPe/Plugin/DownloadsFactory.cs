@@ -42,7 +42,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (fii == null)
+				{
 					fii = FileTable.FileIndex.AddNewChild();
+				}
+
 				return fii;
 			}
 		}
@@ -51,7 +54,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (tfii == null)
+				{
 					tfii = FileIndex.AddNewChild();
+				}
+
 				return tfii;
 			}
 		}
@@ -109,7 +115,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (settings == null)
+				{
 					settings = new SimPe.Plugin.Downloads.DownloadsSettings();
+				}
+
 				return settings;
 			}
 		}

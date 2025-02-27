@@ -56,9 +56,14 @@ namespace SimPe.PackedFiles.UserInterface
 			pjse.FileTable.GFT.FiletableRefresh += new EventHandler(FiletableRefresh);
 
 			if (strTrue == null)
+			{
 				strTrue = this.trueTarget.Text;
+			}
+
 			if (strFalse == null)
+			{
 				strFalse = this.falseTarget.Text;
+			}
 		}
 
 		/// <summary>
@@ -141,12 +146,18 @@ namespace SimPe.PackedFiles.UserInterface
 				if (wrapper != value)
 				{
 					if (wrapper != null)
+					{
 						wrapper.WrapperChanged -= new EventHandler(WrapperChanged);
+					}
+
 					wrapper = value;
 					if (wrapper != null)
 					{
 						if (index != -1)
+						{
 							this.WrapperChanged(wrapper[index], null);
+						}
+
 						wrapper.WrapperChanged += new EventHandler(WrapperChanged);
 					}
 				}
@@ -161,7 +172,9 @@ namespace SimPe.PackedFiles.UserInterface
 				{
 					index = value;
 					if (wrapper != null && index != -1)
+					{
 						this.WrapperChanged(wrapper[index], null);
+					}
 				}
 			}
 		}
@@ -197,27 +210,38 @@ namespace SimPe.PackedFiles.UserInterface
 		private static string Format(string res, params string[] args)
 		{
 			for (int i = 0; i < args.Length; i++)
+			{
 				res = res.Replace("{" + i.ToString() + "}", args[i]);
+			}
+
 			return res;
 		}
 
 		private static string cleanup(string str)
 		{
 			for (char c = System.Convert.ToChar(1); c < ' '; c++)
+			{
 				str = str.Replace(c, ' ');
+			}
+
 			return str;
 		}
 
 		private void WrapperChanged(object sender, System.EventArgs e)
 		{
 			if (wrapper == null || index == -1)
+			{
 				return;
+			}
 
 			if (
 				!(sender is Instruction)
 				|| wrapper.IndexOf((Instruction)sender) != index
 			)
+			{
 				return;
+			}
+
 			Instruction inst = (Instruction)sender;
 
 			bhavInstListItem.Text = "";
@@ -226,18 +250,25 @@ namespace SimPe.PackedFiles.UserInterface
 			trueTarget.Text = strTrue + ": " + inst.Target1.ToString("X");
 			trueTarget.LinkArea = new LinkArea(0, 0);
 			if (inst.Target1 < wrapper.Count)
+			{
 				trueTarget.Links.Add(6, trueTarget.Text.Length - 6, inst.Target1);
+			}
 
 			falseTarget.Text = strFalse + ": " + inst.Target2.ToString("X");
 			falseTarget.LinkArea = new LinkArea(0, 0);
 			if (inst.Target2 < wrapper.Count)
+			{
 				falseTarget.Links.Add(7, falseTarget.Text.Length - 7, inst.Target2);
+			}
 		}
 
 		private void FiletableRefresh(object sender, System.EventArgs e)
 		{
 			if (wrapper == null || index == -1)
+			{
 				return;
+			}
+
 			instrText.Text = Content(index, wrapper[index]); //LongName;
 		}
 		#endregion

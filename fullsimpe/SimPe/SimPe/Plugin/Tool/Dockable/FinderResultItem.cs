@@ -78,7 +78,9 @@ namespace SimPe.Plugin.Tool.Dockable
 				this.Text = wrp.ResourceName;
 			}
 			else
+			{
 				this.Text = fii.FileDescriptor.ToString();
+			}
 
 			this.SubItems.Add("0x" + Helper.HexString(fii.FileDescriptor.Type));
 			this.SubItems.Add("0x" + Helper.HexString(fii.FileDescriptor.Group));

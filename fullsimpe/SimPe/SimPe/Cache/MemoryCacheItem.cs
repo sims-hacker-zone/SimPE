@@ -88,7 +88,9 @@ namespace SimPe.Cache
 			{
 				valuenames = value;
 				if (valuenames == null)
+				{
 					valuenames = new string[0];
+				}
 			}
 		}
 
@@ -98,7 +100,10 @@ namespace SimPe.Cache
 			get
 			{
 				if (objdname == null)
+				{
 					return Name;
+				}
+
 				return objdname;
 			}
 			set
@@ -119,7 +124,10 @@ namespace SimPe.Cache
 				if (Icon == null)
 				{
 					if (emptyimg == null)
+					{
 						emptyimg = new Bitmap(1, 1);
+					}
+
 					return emptyimg;
 				}
 				return Icon;
@@ -190,19 +198,28 @@ namespace SimPe.Cache
 		{
 			Version = reader.ReadByte();
 			if (Version > VERSION)
+			{
 				throw new CacheException("Unknown CacheItem Version.", null, Version);
+			}
 
 			Name = reader.ReadString();
 			if (Version >= 2)
+			{
 				objdname = reader.ReadString();
+			}
 			else
+			{
 				objdname = null;
+			}
+
 			if (Version >= 3)
 			{
 				int ct = reader.ReadUInt16();
 				valuenames = new string[ct];
 				for (int i = 0; i < ct; i++)
+				{
 					valuenames[i] = reader.ReadString();
+				}
 			}
 			else
 			{
@@ -238,7 +255,10 @@ namespace SimPe.Cache
 			writer.Write(objdname);
 			writer.Write((ushort)valuenames.Length);
 			foreach (string s in valuenames)
+			{
 				writer.Write(s);
+			}
+
 			writer.Write((ushort)ObjectType);
 			writer.Write(pfd.Type);
 			writer.Write(pfd.Group);

@@ -50,11 +50,13 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 			if (type == 0)
 			{
 				foreach (uint tt in SimPe.Data.MetaData.RcolList)
+				{
 					if (tt == pfd.Type)
 					{
 						found = true;
 						break;
 					}
+				}
 			}
 			else
 			{
@@ -62,7 +64,10 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 			}
 
 			if (!found)
+			{
 				return;
+			}
+
 			SimPe.Plugin.GenericRcol rcol = new GenericRcol(null, true);
 			rcol.ProcessData(pfd, pkg);
 

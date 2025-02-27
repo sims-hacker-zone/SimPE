@@ -214,11 +214,14 @@ namespace SimPe.Packages
 						+ "]]></Title>"
 						+ (char)0x0a;
 					if (files[i].ObjectVersion != "0")
+					{
 						xml +=
 							"<ObjectVersion>"
 							+ files[i].ObjectVersion
 							+ "</ObjectVersion>"
 							+ (char)0x0a;
+					}
+
 					xml +=
 						"<GlobalGUID><![CDATA["
 						+ files[i].Guid
@@ -231,18 +234,24 @@ namespace SimPe.Packages
 						xml +=
 							"<Name><![CDATA[" + s2cpd.Name + "]]></Name>" + (char)0x0a;
 						if (s2cpd.ObjectVersion != "0")
+						{
 							xml +=
 								"<ObjectVersion>"
 								+ s2cpd.ObjectVersion
 								+ "</ObjectVersion>"
 								+ (char)0x0a;
+						}
+
 						xml +=
 							"<GlobalGUID><![CDATA["
 							+ s2cpd.Guid
 							+ "]]></GlobalGUID>"
 							+ (char)0x0a;
 						if (s2cpd.Optional)
+						{
 							xml += "<Optional />" + (char)0x0a;
+						}
+
 						xml += "</PackagedFile>" + (char)0x0a;
 					}
 					xml += "</Dependency>" + (char)0x0a;
@@ -258,9 +267,14 @@ namespace SimPe.Packages
 			BinaryWriter bw = new BinaryWriter(ms);
 
 			if (!containscompress)
+			{
 				bw.Write(Helper.ToBytes("Sims2 Packager 1.0"));
+			}
 			else
+			{
 				bw.Write(Helper.ToBytes("Sims2 Packager x.1"));
+			}
+
 			bw.Write((int)(22 + xml.Length));
 			bw.Write(Helper.ToBytes(xml));
 

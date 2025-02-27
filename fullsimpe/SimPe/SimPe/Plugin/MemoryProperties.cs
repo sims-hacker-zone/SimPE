@@ -695,14 +695,19 @@ namespace SimPe.Plugin
 			set
 			{
 				if (nilv != null)
+				{
 					nilv.SelectedIndexChanged -= new EventHandler(
 						nilv_SelectedIndexChanged
 					);
+				}
+
 				nilv = value;
 				if (nilv != null)
+				{
 					nilv.SelectedIndexChanged += new EventHandler(
 						nilv_SelectedIndexChanged
 					);
+				}
 
 				nilv_SelectedIndexChanged(null, null);
 			}
@@ -713,14 +718,18 @@ namespace SimPe.Plugin
 		protected void UpdateNgbhItemsListView()
 		{
 			if (nilv != null)
+			{
 				nilv.UpdateSelected(item);
+			}
 		}
 
 		protected void FireChangeEvent()
 		{
 			UpdateNgbhItemsListView();
 			if (ChangedItem != null)
+			{
 				ChangedItem(this, new EventArgs());
+			}
 		}
 
 		bool inter;
@@ -729,7 +738,10 @@ namespace SimPe.Plugin
 		void SetContent()
 		{
 			if (inter)
+			{
 				return;
+			}
+
 			inter = true;
 			chgraw = false;
 			pg.SelectedObject = null;
@@ -740,12 +752,16 @@ namespace SimPe.Plugin
 				Hashtable ht = new Hashtable();
 				byte ct = 0;
 				foreach (string v in item.MemoryCacheItem.ValueNames)
+				{
 					ht[Helper.HexString(ct) + ": " + v] =
 						new Ambertation.BaseChangeableNumber(item.GetValue(ct++));
+				}
 
 				while (ct < item.Data.Length)
+				{
 					ht[Helper.HexString(ct) + ":"] =
 						new Ambertation.BaseChangeableNumber(item.GetValue(ct++));
+				}
 
 				Ambertation.PropertyObjectBuilderExt pob =
 					new Ambertation.PropertyObjectBuilderExt(ht);
@@ -787,19 +803,25 @@ namespace SimPe.Plugin
 			this.cbMems.Visible = use;
 			this.rbMems.Checked = use;
 			if (use)
+			{
 				SelectNgbhItem(cbMems, item);
+			}
 
 			use = item.MemoryCacheItem.IsToken && !item.MemoryCacheItem.IsInventory;
 			this.cbToks.Visible = use;
 			this.rbToks.Checked = use;
 			if (use)
+			{
 				SelectNgbhItem(cbToks, item);
+			}
 
 			use = (!item.MemoryCacheItem.IsToken && item.MemoryCacheItem.IsInventory);
 			this.cbObjs.Visible = use;
 			this.rbObjs.Checked = use;
 			if (use)
+			{
 				SelectNgbhItem(cbObjs, item);
+			}
 		}
 
 		void SelectNgbhItem(SimPe.PackedFiles.Wrapper.ObjectComboBox cb, NgbhItem item)
@@ -816,9 +838,13 @@ namespace SimPe.Plugin
 		{
 			this.cbSubject.SelectedSimId = item.SubjectGuid;
 			if (item.MemoryType == SimMemoryType.Object)
+			{
 				this.cbSubjectObj.SelectedGuid = item.ReferencedObjectGuid;
+			}
 			else
+			{
 				this.cbSubjectObj.SelectedGuid = item.SubjectGuid;
+			}
 		}
 
 		private void nilv_SelectedIndexChanged(object sender, EventArgs e)
@@ -827,12 +853,18 @@ namespace SimPe.Plugin
 			{
 				Plugin.NgbhItemsListViewItem lvi = nilv.SelectedItem;
 				if (lvi != null && !nilv.SelectedMultiple)
+				{
 					Item = lvi.Item;
+				}
 				else
+				{
 					Item = null;
+				}
 			}
 			else
+			{
 				Item = null;
+			}
 		}
 
 		private void llSetRawLength_LinkClicked(
@@ -846,10 +878,17 @@ namespace SimPe.Plugin
 					Helper.StringToInt32(this.tbRawLength.Text, item.Data.Length, 10)
 				];
 				for (int i = 0; i < ndata.Length; i++)
+				{
 					if (i < item.Data.Length)
+					{
 						ndata[i] = item.Data[i];
+					}
 					else
+					{
 						ndata[i] = 0;
+					}
+				}
+
 				item.Data = ndata;
 				SetContent();
 			}
@@ -858,9 +897,15 @@ namespace SimPe.Plugin
 		private void ChangeGuid(object sender, System.EventArgs e)
 		{
 			if (inter)
+			{
 				return;
+			}
+
 			if (item == null)
+			{
 				return;
+			}
+
 			SimPe.PackedFiles.Wrapper.ObjectComboBox cb =
 				sender as SimPe.PackedFiles.Wrapper.ObjectComboBox;
 			item.Guid = cb.SelectedGuid;
@@ -874,7 +919,10 @@ namespace SimPe.Plugin
 		)
 		{
 			if (item == null)
+			{
 				return;
+			}
+
 			string[] n = e.ChangedItem.Label.Split(new char[] { ':' }, 2);
 			if (n.Length > 0)
 			{
@@ -940,7 +988,10 @@ namespace SimPe.Plugin
 		void SetMe(SimPe.PackedFiles.Wrapper.SimComboBox cb)
 		{
 			if (item == null)
+			{
 				return;
+			}
+
 			cb.SelectedSimInstance = (ushort)item.ParentSlot.SlotID;
 		}
 
@@ -963,9 +1014,14 @@ namespace SimPe.Plugin
 		private void cbOwner_SelectedSimChanged(object sender, System.EventArgs e)
 		{
 			if (inter)
+			{
 				return;
+			}
+
 			if (item == null)
+			{
 				return;
+			}
 
 			item.OwnerInstance = cbOwner.SelectedSimInstance;
 
@@ -976,9 +1032,14 @@ namespace SimPe.Plugin
 		private void cbSubject_SelectedSimChanged(object sender, System.EventArgs e)
 		{
 			if (inter)
+			{
 				return;
+			}
+
 			if (item == null)
+			{
 				return;
+			}
 
 			inter = true;
 			this.cbSubjectObj.SelectedGuid = 0xffffffff;
@@ -998,17 +1059,27 @@ namespace SimPe.Plugin
 		)
 		{
 			if (inter)
+			{
 				return;
+			}
+
 			if (item == null)
+			{
 				return;
+			}
 
 			inter = true;
 
 			this.cbSubject.SelectedSimId = 0xffffffff;
 			if (item.MemoryType == SimMemoryType.Object)
+			{
 				item.ReferencedObjectGuid = this.cbSubjectObj.SelectedGuid;
+			}
 			else
+			{
 				item.SetSubject(0, this.cbSubjectObj.SelectedGuid);
+			}
+
 			inter = false;
 
 			SetContent();
@@ -1018,9 +1089,14 @@ namespace SimPe.Plugin
 		private void tbInv_TextChanged(object sender, System.EventArgs e)
 		{
 			if (inter)
+			{
 				return;
+			}
+
 			if (item == null)
+			{
 				return;
+			}
 
 			item.InventoryNumber = Helper.StringToUInt32(
 				this.tbInv.Text,
@@ -1034,9 +1110,14 @@ namespace SimPe.Plugin
 		private void tbValue_TextChanged(object sender, System.EventArgs e)
 		{
 			if (inter)
+			{
 				return;
+			}
+
 			if (item == null)
+			{
 				return;
+			}
 
 			item.Value = Helper.StringToUInt16(this.tbValue.Text, item.Value, 10);
 			this.FireChangeEvent();
@@ -1045,7 +1126,10 @@ namespace SimPe.Plugin
 		private void tbFlag_TextChanged(object sender, System.EventArgs e)
 		{
 			if (item == null)
+			{
 				return;
+			}
+
 			this.cbCtrl.Checked = item.Flags.IsControler;
 			this.cbVis.Checked = item.Flags.IsVisible;
 		}
@@ -1053,9 +1137,14 @@ namespace SimPe.Plugin
 		private void cbVis_CheckedChanged(object sender, System.EventArgs e)
 		{
 			if (inter)
+			{
 				return;
+			}
+
 			if (item == null)
+			{
 				return;
+			}
 
 			inter = true;
 			item.Flags.IsVisible = this.cbVis.Checked;
@@ -1068,9 +1157,14 @@ namespace SimPe.Plugin
 		private void cbAct_CheckedChanged(object sender, System.EventArgs e)
 		{
 			if (inter)
+			{
 				return;
+			}
+
 			if (item == null)
+			{
 				return;
+			}
 
 			inter = true;
 			item.Flags.IsControler = this.cbCtrl.Checked;
@@ -1083,7 +1177,10 @@ namespace SimPe.Plugin
 		private void rbObjs_CheckedChanged(object sender, System.EventArgs e)
 		{
 			if (inter)
+			{
 				return;
+			}
+
 			cbObjs.Visible = true;
 			cbMems.Visible = false;
 			cbToks.Visible = false;
@@ -1092,7 +1189,10 @@ namespace SimPe.Plugin
 		private void rbMems_CheckedChanged(object sender, System.EventArgs e)
 		{
 			if (inter)
+			{
 				return;
+			}
+
 			cbObjs.Visible = false;
 			cbMems.Visible = true;
 			cbToks.Visible = false;
@@ -1101,7 +1201,10 @@ namespace SimPe.Plugin
 		private void rbToks_CheckedChanged(object sender, System.EventArgs e)
 		{
 			if (inter)
+			{
 				return;
+			}
+
 			cbObjs.Visible = false;
 			cbMems.Visible = false;
 			cbToks.Visible = true;

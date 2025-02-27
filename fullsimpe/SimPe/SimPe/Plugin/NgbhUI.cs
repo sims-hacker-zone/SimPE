@@ -81,7 +81,9 @@ namespace SimPe.Plugin
 					else if (mci.ObjectType == Data.ObjectTypes.Normal)
 					{
 						if (mci.ObjdName.ToLower().IndexOf("token") != -1)
+						{
 							form.cbguid.Items.Add(a);
+						}
 					}
 				}
 				form.cbguid.Sorted = true;

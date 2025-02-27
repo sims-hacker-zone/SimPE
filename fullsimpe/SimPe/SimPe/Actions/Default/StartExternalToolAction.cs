@@ -41,18 +41,30 @@ namespace SimPe.Actions.Default
 		)
 		{
 			if (es.LoadedPackage == null)
+			{
 				return false;
+			}
+
 			if (es.Count != 1)
+			{
 				return false;
+			}
 
 			foreach (SimPe.Events.ResourceContainer e in es)
+			{
 				if (e.HasFileDescriptor)
 				{
 					if (item.Type == 0xffffffff)
+					{
 						return true;
+					}
+
 					if (item.Type == e.Resource.FileDescriptor.Type)
+					{
 						return true;
+					}
 				}
+			}
 
 			return false;
 		}
@@ -63,10 +75,14 @@ namespace SimPe.Actions.Default
 		)
 		{
 			if (!ChangeEnabledStateEventHandler(null, es))
+			{
 				return;
+			}
 
 			foreach (SimPe.Events.ResourceContainer e in es)
+			{
 				item.Execute(e.Resource);
+			}
 		}
 
 		#endregion

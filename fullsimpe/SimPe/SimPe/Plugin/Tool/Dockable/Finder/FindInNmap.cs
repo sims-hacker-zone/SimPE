@@ -47,7 +47,10 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 		)
 		{
 			if (pfd.Type != Data.MetaData.NAME_MAP)
+			{
 				return;
+			}
+
 			SimPe.Plugin.Nmap nmap = new Nmap(FileTable.ProviderRegistry);
 			nmap.ProcessData(pfd, pkg);
 
@@ -91,7 +94,9 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 					foreach (
 						SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem rfii in rfiis
 					)
+					{
 						ResultGui.AddResult(rfii.Package, rfii.FileDescriptor);
+					}
 				}
 			}
 		}

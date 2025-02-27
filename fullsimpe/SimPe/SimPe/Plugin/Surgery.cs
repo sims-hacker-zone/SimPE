@@ -489,42 +489,71 @@ namespace SimPe.Plugin
 		protected void AddSim(SimPe.PackedFiles.Wrapper.ExtSDesc sdesc)
 		{
 			if (!sdesc.AvailableCharacterData)
+			{
 				return;
+			}
+
 			if (sdesc.Nightlife.Species > 0)
+			{
 				return;
+			}
+
 			if (sdesc.IsNPC)
+			{
 				return;
+			}
+
 			if (
 				sdesc.CharacterDescription.ServiceTypes
 				== SimPe.Data.MetaData.ServiceTypes.TinySim
 			)
+			{
 				return;
+			}
+
 			if (
 				(int)sdesc.Version
 					== (int)SimPe.PackedFiles.Wrapper.SDescVersions.Castaway
 				&& sdesc.Castaway.Subspecies > 0
 			)
+			{
 				return;
+			}
+
 			if (!this.cbNpc.Checked && realIsNPC(sdesc))
+			{
 				return;
+			}
+
 			if (!this.cbTownie.Checked && realIsTownie(sdesc))
+			{
 				return;
+			}
+
 			if (
 				this.cbadults.Checked
 				&& sdesc.CharacterDescription.LifeSection
 					!= Data.MetaData.LifeSections.Adult
 			)
+			{
 				return;
+			}
+
 			if (
 				this.cbmens.Checked
 				&& sdesc.CharacterDescription.Gender == Data.MetaData.Gender.Female
 			)
+			{
 				return;
+			}
+
 			if (
 				this.cbgals.Checked
 				&& sdesc.CharacterDescription.Gender == Data.MetaData.Gender.Male
 			)
+			{
 				return;
+			}
 
 			AddImage(sdesc);
 			ListViewItem lvi = new ListViewItem();
@@ -609,9 +638,13 @@ namespace SimPe.Plugin
 							);
 
 							if (tones.Contains(st))
+							{
 								continue;
+							}
 							else
+							{
 								tones.Add(st);
+							}
 
 							SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] idr =
 								FileTable.FileIndex.FindFile(
@@ -629,10 +662,13 @@ namespace SimPe.Plugin
 									skin.GetSaveItem("name").StringValue
 								);
 								if (Helper.WindowsRegistry.HiddenMode)
+								{
 									lvi.Text +=
 										" ("
 										+ skin.GetSaveItem("skintone").StringValue
 										+ ")";
+								}
+
 								lvi.Tag = skin.GetSaveItem("skintone").StringValue;
 								foreach (
 									Interfaces.Files.IPackedFileDescriptor pfd in reffile.Items
@@ -719,7 +755,10 @@ namespace SimPe.Plugin
 
 			SimPe.Plugin.Idno idno = SimPe.Plugin.Idno.FromPackage(package);
 			if (idno != null)
+			{
 				this.lbUbi.Visible = (idno.Type != NeighborhoodType.Normal);
+			}
+
 			this.pfd = null;
 			this.prov = prov;
 			this.ngbh = package;
@@ -755,7 +794,9 @@ namespace SimPe.Plugin
 				this.llusepatient.Enabled = false;
 				this.llexport.Enabled = false;
 				if (lv.Items.Count > 0)
+				{
 					lv.Items[0].Selected = true;
+				}
 			}
 			finally
 			{
@@ -764,21 +805,28 @@ namespace SimPe.Plugin
 			RemoteControl.ShowSubForm(this);
 
 			if (this.pfd != null)
+			{
 				pfd = this.pfd;
+			}
+
 			return new Plugin.ToolResult((this.pfd != null), false);
 		}
 
 		private void Open(object sender, System.EventArgs e)
 		{
 			if (!CanDo())
+			{
 				return;
+			}
 
 			SimPe.Packages.File patient = SimPe.Packages.File.LoadFromFile(
 				spatient.CharacterFileName
 			);
 			SimPe.Packages.File archetype = null;
 			if (sarche != null)
+			{
 				archetype = SimPe.Packages.File.LoadFromFile(sarche.CharacterFileName);
+			}
 			else if (this.tarcheFile != null)
 			{
 				archetype = SimPe.Packages.File.LoadFromFile(this.tarcheFile);
@@ -792,7 +840,9 @@ namespace SimPe.Plugin
 				}
 			}
 			else
+			{
 				archetype = SimPe.Packages.File.LoadFromFile(null);
+			}
 
 			SimPe.Packages.GeneratableFile newpackage = null;
 			PlasticSurgery ps = new PlasticSurgery(
@@ -809,22 +859,32 @@ namespace SimPe.Plugin
 				&& !this.cbmakeup.Checked
 				&& !this.cbeye.Checked
 			)
+			{
 				newpackage = ps.CloneSim();
+			}
 
 			if (this.cbskin.Checked)
 			{
 				if (lvskin.SelectedItems.Count == 0)
+				{
 					return;
+				}
+
 				string skin = (string)lvskin.SelectedItems[0].Tag;
 				if (skin == null)
+				{
 					newpackage = ps.CloneSkinTone(skinfiles);
+				}
 				else
+				{
 					newpackage = ps.CloneSkinTone(skin, skinfiles);
+				}
 			}
 
 			if (this.cbface.Checked)
 			{
 				if (this.cbskin.Checked)
+				{
 					ps = new PlasticSurgery(
 						ngbh,
 						newpackage,
@@ -832,12 +892,15 @@ namespace SimPe.Plugin
 						archetype,
 						sarche
 					);
+				}
+
 				newpackage = ps.CloneFace();
 			}
 
 			if (this.cbmakeup.Checked)
 			{
 				if ((this.cbskin.Checked) || (this.cbface.Checked))
+				{
 					ps = new PlasticSurgery(
 						ngbh,
 						newpackage,
@@ -845,6 +908,8 @@ namespace SimPe.Plugin
 						archetype,
 						sarche
 					);
+				}
+
 				newpackage = ps.CloneMakeup(false, true);
 			}
 
@@ -855,6 +920,7 @@ namespace SimPe.Plugin
 					|| (this.cbface.Checked)
 					|| (this.cbmakeup.Checked)
 				)
+				{
 					ps = new PlasticSurgery(
 						ngbh,
 						newpackage,
@@ -862,6 +928,8 @@ namespace SimPe.Plugin
 						archetype,
 						sarche
 					);
+				}
+
 				newpackage = ps.CloneMakeup(true, false);
 			}
 
@@ -878,7 +946,10 @@ namespace SimPe.Plugin
 			this.llusearche.Enabled = false;
 			this.llusepatient.Enabled = false;
 			if (lv.SelectedItems.Count == 0)
+			{
 				return;
+			}
+
 			this.llusearche.Enabled = true;
 			this.llusepatient.Enabled = !(
 				(SimPe.PackedFiles.Wrapper.ExtSDesc)lv.SelectedItems[0].Tag
@@ -895,9 +966,14 @@ namespace SimPe.Plugin
 		{
 			this.llexport.Enabled = (spatient != null);
 			if (lv.SelectedItems.Count == 0)
+			{
 				return;
+			}
+
 			if (lv.SelectedItems[0].ImageIndex >= 0)
+			{
 				pbpatient.Image = ilist.Images[lv.SelectedItems[0].ImageIndex];
+			}
 
 			spatient = (SimPe.PackedFiles.Wrapper.SDesc)lv.SelectedItems[0].Tag;
 
@@ -915,9 +991,14 @@ namespace SimPe.Plugin
 		)
 		{
 			if (lv.SelectedItems.Count == 0)
+			{
 				return;
+			}
+
 			if (lv.SelectedItems[0].ImageIndex >= 0)
+			{
 				this.pbarche.Image = ilist.Images[lv.SelectedItems[0].ImageIndex];
+			}
 
 			iskin.Images[0] = ImageLoader.Preview(pbarche.Image, iskin.ImageSize);
 			lvskin.Refresh();
@@ -937,11 +1018,15 @@ namespace SimPe.Plugin
 					);
 				SimPe.Packages.File archetype = null;
 				if (sarche != null)
+				{
 					archetype = SimPe.Packages.File.LoadFromFile(
 						sarche.CharacterFileName
 					);
+				}
 				else if (this.tarcheFile != null)
+				{
 					archetype = SimPe.Packages.File.LoadFromFile(this.tarcheFile);
+				}
 
 				if (!this.CheckArchetypeFile(archetype))
 				{
@@ -957,14 +1042,19 @@ namespace SimPe.Plugin
 					0xCCCEF852
 				); //LxNR, Face
 				if (apfds.Length == 0)
+				{
 					return;
+				}
+
 				Interfaces.Files.IPackedFile file = archetype.Read(apfds[0]);
 
 				Interfaces.Files.IPackedFileDescriptor[] ppfds = patient.FindFiles(
 					0xCCCEF852
 				); //LxNR, Face
 				if (ppfds.Length == 0)
+				{
 					return;
+				}
 
 				ppfds[0].UserData = file.UncompressedData;
 
@@ -987,7 +1077,10 @@ namespace SimPe.Plugin
 		)
 		{
 			if (spatient == null)
+			{
 				return;
+			}
+
 			try
 			{
 				//list of all Files top copy from the Archetype
@@ -1084,9 +1177,14 @@ namespace SimPe.Plugin
 											& (uint)Data.Ages.YoungAdult
 										) != 0
 									)
+									{
 										ci.UIntegerValue = 2;
+									}
 									else
+									{
 										ci.UIntegerValue = 1;
+									}
+
 									cpf.AddItem(ci);
 								}
 
@@ -1106,18 +1204,24 @@ namespace SimPe.Plugin
 		bool CanDo()
 		{
 			if (spatient == null)
+			{
 				return false;
+			}
 
 			bool ret = true;
 			if (cbskin.Checked)
 			{
 				ret = (lvskin.SelectedItems.Count == 1);
 				if (ret)
+				{
 					if (
 						lvskin.Items[0].Selected
 						&& (sarche == null && tarcheFile == null)
 					)
+					{
 						ret = false;
+					}
+				}
 			}
 
 			if (!cbskin.Checked || cbface.Checked || cbmakeup.Checked || cbeye.Checked)
@@ -1133,7 +1237,10 @@ namespace SimPe.Plugin
 		private void cbskin_CheckedChanged(object sender, System.EventArgs e) // Fuck
 		{
 			if (!skload)
+			{
 				LoadSkins();
+			}
+
 			lvskin.Enabled = this.cbskin.Checked;
 			button1.Enabled = CanDo();
 			skload = true;
@@ -1199,7 +1306,9 @@ namespace SimPe.Plugin
 		{
 			bool ret = false;
 			if (archeFile == null)
+			{
 				return ret;
+			}
 
 			// Build a list of required file types.
 			// Could this list be static?
@@ -1215,7 +1324,10 @@ namespace SimPe.Plugin
 				i < list.Count && (ret = ContainsType(archeFile.Index, (uint)list[i]));
 				i++
 			)
+			{
 				;
+			}
+
 			return ret;
 		}
 
@@ -1225,8 +1337,13 @@ namespace SimPe.Plugin
 		)
 		{
 			for (int i = 0; i < index.Length; i++)
+			{
 				if (index[i].Type == type && index[i].Group == 0xffffffff)
+				{
 					return true;
+				}
+			}
+
 			return false;
 		}
 
@@ -1240,15 +1357,20 @@ namespace SimPe.Plugin
 			this.pgArchetypeDetails.SelectedObject = null;
 
 			if (this.cbmens.Checked)
+			{
 				this.iskin.Images[0] = ImageLoader.Preview(
 					SimPe.GetImage.NoOne,
 					iskin.ImageSize
 				);
+			}
 			else
+			{
 				this.iskin.Images[0] = ImageLoader.Preview(
 					SimPe.GetImage.SheOne,
 					iskin.ImageSize
 				);
+			}
+
 			lvskin.Refresh();
 
 			this.spatient = null;
@@ -1278,7 +1400,9 @@ namespace SimPe.Plugin
 				this.llusepatient.Enabled = false;
 				this.llexport.Enabled = false;
 				if (lv.Items.Count > 0)
+				{
 					lv.Items[0].Selected = true;
+				}
 			}
 			finally
 			{
@@ -1291,7 +1415,9 @@ namespace SimPe.Plugin
 			this.cbgals.Enabled = !this.cbmens.Checked;
 			this.cbmens.Enabled = !this.cbgals.Checked;
 			if (ngbh != null)
+			{
 				this.FillList();
+			}
 		}
 
 		void ShowSimDetails(SimPe.PackedFiles.Wrapper.SDesc sim, PropertyGrid pg)
@@ -1446,7 +1572,10 @@ namespace SimPe.Plugin
 		public SimInfo(SimPe.PackedFiles.Wrapper.Cpf aged, string filename, string name)
 		{
 			if (aged == null)
+			{
 				throw new ArgumentNullException();
+			}
+
 			this.ageData = aged;
 			this.Filename = filename;
 			this.Name = name;

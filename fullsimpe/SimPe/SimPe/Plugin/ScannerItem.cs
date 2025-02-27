@@ -47,7 +47,10 @@ namespace SimPe.Plugin
 			set
 			{
 				if (filename.Trim().ToLower() != value.Trim().ToLower())
+				{
 					pkg = null;
+				}
+
 				filename = value;
 			}
 		}

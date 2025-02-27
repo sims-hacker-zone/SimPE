@@ -131,9 +131,11 @@ namespace SimPe
 				tbContainer
 			);
 			if (Helper.StartedGui == Executable.Default)
+			{
 				this.menuBar1.ContextMenuStrip = tbContainer
 					.TopToolStripPanel
 					.ContextMenuStrip;
+			}
 
 			Ambertation.Windows.Forms.Serializer.Global.Register(tbContainer);
 			Ambertation.Windows.Forms.Serializer.Global.Register(manager);
@@ -149,7 +151,9 @@ namespace SimPe
 				FileTable.FileIndex.Load();
 			}
 			else
+			{
 				FileTable.FileIndex.AllowEvent = true;
+			}
 
 			waitControl1.ShowProgress = false;
 			waitControl1.Progress = 0;
@@ -175,28 +179,48 @@ namespace SimPe
 				new SimPe.Data.SemiGlobalAlias(true, 0x7FE59FD0, "Behaviour")
 			);
 			foreach (Data.SemiGlobalAlias sga in Data.MetaData.SemiGlobals)
+			{
 				if (sga.Known)
+				{
 					this.cbsemig.Items.Add(sga);
+				}
+			}
+
 			if (cbsemig.Items.Count > 0)
+			{
 				cbsemig.SelectedIndex = 0;
+			}
+
 			if (!System.IO.File.Exists(SimPe.Helper.DataFolder.SimPeLayout))
+			{
 				ResetLayout(this, null);
+			}
 			else
+			{
 				ReloadLayout();
+			}
 
 			//Set the Lock State of the Docks
 			MakeFloatable(!Helper.WindowsRegistry.LockDocks);
 
 			int eep = PathProvider.Global.Latest.Version;
 			if (eep == 20)
+			{
 				eep = 12; //Store new
+			}
+
 			if (eep == 28)
+			{
 				eep = 6; //Castaway
+			}
+
 			if (eep == 29)
+			{
 				eep = 6; //Pet Stories
-						 //Life Stories and Base game = No Icon
-						 //if (GetImage.GetExpansionIcon((byte)eep) == null || Helper.StartedGui == Executable.Classic) this.miRunSims.Image = global::SimPe.Properties.Resources.Sims2;
-						 //else
+			}
+			//Life Stories and Base game = No Icon
+			//if (GetImage.GetExpansionIcon((byte)eep) == null || Helper.StartedGui == Executable.Classic) this.miRunSims.Image = global::SimPe.Properties.Resources.Sims2;
+			//else
 			this.miRunSims.Image = GetImage.GetExpansionIcon((byte)eep);
 			this.miRunSims.Text = "Run " + PathProvider.Global.Latest.NameShorter;
 
@@ -208,7 +232,9 @@ namespace SimPe
 			SimPe.Splash.Screen.Stop();
 
 			if (Helper.WindowsRegistry.PreviousVersion != Helper.SimPeVersionLong)
+			{
 				About.ShowWelcome();
+			}
 		}
 	}
 }

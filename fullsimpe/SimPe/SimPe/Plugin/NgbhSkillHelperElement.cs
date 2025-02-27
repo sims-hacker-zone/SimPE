@@ -208,13 +208,17 @@ namespace SimPe.Plugin
 		private void ui_AddedNewItem(object sender, System.EventArgs e)
 		{
 			if (AddedNewItem != null)
+			{
 				AddedNewItem(this, e);
+			}
 		}
 
 		private void ui_ChangedItem(object sender, System.EventArgs e)
 		{
 			if (ChangedItem != null)
+			{
 				ChangedItem(this, e);
+			}
 		}
 
 		public event EventHandler AddedNewItem;

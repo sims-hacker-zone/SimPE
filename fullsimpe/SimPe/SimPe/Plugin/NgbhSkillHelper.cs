@@ -432,10 +432,13 @@ namespace SimPe.Plugin
 			set
 			{
 				if (pc != null)
+				{
 					pc.SelectedSimChanged -=
 						new SimPe.PackedFiles.Wrapper.SimPoolControl.SelectedSimHandler(
 							pc_SelectedSimChanged
 						);
+				}
+
 				pc = value;
 
 				if (pc != null)
@@ -457,9 +460,13 @@ namespace SimPe.Plugin
 			if (pc != null)
 			{
 				if (pc.SelectedSim != null)
+				{
 					SetImage(pc.SelectedSim.Image);
+				}
 				else
+				{
 					SetImage(new Bitmap(1, 1));
+				}
 			}
 		}
 
@@ -501,13 +508,17 @@ namespace SimPe.Plugin
 		private void skills_AddedNewItem(object sender, System.EventArgs e)
 		{
 			if (AddedNewItem != null)
+			{
 				AddedNewItem(this, e);
+			}
 		}
 
 		private void skills_ChangedItem(object sender, System.EventArgs e)
 		{
 			if (ChangedItem != null)
+			{
 				ChangedItem(this, e);
+			}
 		}
 
 		public event EventHandler AddedNewItem;

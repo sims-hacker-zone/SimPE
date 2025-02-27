@@ -83,7 +83,10 @@ namespace SimPe.Plugin.Gmdc.Importer
 				//cut off comments
 				int pos = line.IndexOf("#");
 				if (pos >= 0)
+				{
 					line = line.Substring(0, pos);
+				}
+
 				line = line.Trim().ToLower();
 
 				pos = line.IndexOf(" ");
@@ -95,24 +98,38 @@ namespace SimPe.Plugin.Gmdc.Importer
 				}
 
 				if (content.Trim() == "")
+				{
 					continue;
+				}
 
 				//remove double whitespaces
 				while (content.IndexOf("  ") != -1)
+				{
 					content = content.Replace("  ", " ");
+				}
 
 				lineerror = null;
 
 				if (line == "v")
+				{
 					ParseTriplets(vertices, content, false); //Vertex
+				}
 				else if (line == "vn")
+				{
 					ParseTriplets(normals, content, true); //Vertex Normal
+				}
 				else if (line == "vt")
+				{
 					ParsePair(uvmaps, content); // Vertex Texture
+				}
 				else if (line == "g")
+				{
 					StartGroup(content); // new Group
+				}
 				else if (line == "f")
+				{
 					ProcessFaceList(content); // Face
+				}
 				else if (line == "s")
 				{
 					;
@@ -126,7 +143,9 @@ namespace SimPe.Plugin.Gmdc.Importer
 					;
 				} //material assignement;
 				else if (Helper.WindowsRegistry.HiddenMode)
+				{
 					lineerror = "[Warning:] Unknown token. (will be ignored)";
+				}
 
 				if (lineerror != null)
 				{
@@ -158,16 +177,23 @@ namespace SimPe.Plugin.Gmdc.Importer
 				try
 				{
 					for (int i = 0; i < 3; i++)
+					{
 						data[i] = Convert.ToSingle(
 							tokens[i],
 							AbstractGmdcImporter.DefaultCulture
 						);
+					}
 
 					Vector3f vec = new Vector3f(data[0], data[1], data[2]);
 					if (!normal)
+					{
 						vec = Component.InverseTransformScaled(vec);
+					}
 					else
+					{
 						vec = Component.InverseTransformNormal(vec);
+					}
+
 					SimPe.Plugin.Gmdc.GmdcElementValueThreeFloat v =
 						new GmdcElementValueThreeFloat(
 							(float)vec.X,
@@ -187,7 +213,9 @@ namespace SimPe.Plugin.Gmdc.Importer
 				tokens.Length < 3
 				|| (tokens.Length != 3 && Helper.WindowsRegistry.HiddenMode)
 			)
+			{
 				lineerror = "No FloatTriplet line";
+			}
 		}
 
 		/// <summary>
@@ -204,10 +232,12 @@ namespace SimPe.Plugin.Gmdc.Importer
 				try
 				{
 					for (int i = 0; i < 2; i++)
+					{
 						data[i] = Convert.ToSingle(
 							tokens[i],
 							AbstractGmdcImporter.DefaultCulture
 						);
+					}
 
 					SimPe.Plugin.Gmdc.GmdcElementValueTwoFloat v =
 						new GmdcElementValueTwoFloat(data[0], -data[1]);
@@ -224,7 +254,9 @@ namespace SimPe.Plugin.Gmdc.Importer
 				tokens.Length < 2
 				|| (tokens.Length != 2 && Helper.WindowsRegistry.HiddenMode)
 			)
+			{
 				lineerror = "No FloatPair line";
+			}
 		}
 
 		/// <summary>
@@ -281,7 +313,10 @@ namespace SimPe.Plugin.Gmdc.Importer
 						for (int j = 0; j < Math.Min(items.Length, 3); j++)
 						{
 							if (items[j].Trim() == "")
+							{
 								items[j] = "0";
+							}
+
 							data[j] = Convert.ToInt32(items[j]);
 						}
 						SimPe.Plugin.Gmdc.GmdcElementValueThreeFloat v =

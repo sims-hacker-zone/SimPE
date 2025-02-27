@@ -116,7 +116,10 @@ namespace SimPe.Providers
 			pfds = package.FindFiles(0x49596978);
 			Plugin.Nmap nmap = new SimPe.Plugin.Nmap(null);
 			if (nmap_pfd.Length > 0)
+			{
 				nmap.ProcessData(nmap_pfd[0], package);
+			}
+
 			bool check = false;
 
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
@@ -220,7 +223,9 @@ namespace SimPe.Providers
 				"Downloads"
 			);
 			if (!System.IO.Directory.Exists(path))
+			{
 				return;
+			}
 
 			string[] files = System.IO.Directory.GetFiles(path, "*.package");
 			foreach (string file in files)
@@ -238,7 +243,9 @@ namespace SimPe.Providers
 				"Downloads"
 			);
 			if (!System.IO.Directory.Exists(path))
+			{
 				return;
+			}
 
 			string[] files = System.IO.Directory.GetFiles(path, "*.package");
 			foreach (string file in files)
@@ -280,9 +287,15 @@ namespace SimPe.Providers
 		public object FindSet(Interfaces.Files.IPackedFileDescriptor spfd)
 		{
 			if (sets == null)
+			{
 				this.LoadSkins();
+			}
+
 			if (sets == null)
+			{
 				return null;
+			}
+
 			foreach (SimPe.PackedFiles.Wrapper.Cpf cpf in sets)
 			{
 				Interfaces.Files.IPackedFileDescriptor pfd = cpf.FileDescriptor;
@@ -330,7 +343,10 @@ namespace SimPe.Providers
 		public string FindTxtrName(string matdname)
 		{
 			if (matdname == null)
+			{
 				return null;
+			}
+
 			string file = System.IO.Path.Combine(
 				SimPe.PathProvider.Global[Expansions.BaseGame].InstallFolder,
 				"TSData\\Res\\Sims3D\\Sims02.package"
@@ -345,7 +361,9 @@ namespace SimPe.Providers
 					0x49596978
 				);
 				if (pfds.Length == 0)
+				{
 					pfds = package.FindFile(matdname, 0x49596978);
+				}
 				//try another Package
 				//look for the right one
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
@@ -374,11 +392,20 @@ namespace SimPe.Providers
 		public string FindTxtrName(Interfaces.Files.IPackedFileDescriptor spfd)
 		{
 			if (matds == null)
+			{
 				this.LoadSkinImages();
+			}
+
 			if (matds == null)
+			{
 				return "";
+			}
+
 			if (refs == null)
+			{
 				return "";
+			}
+
 			foreach (SimPe.Plugin.RefFile reff in refs)
 			{
 				Interfaces.Files.IPackedFileDescriptor pfd = reff.FileDescriptor;
@@ -425,7 +452,10 @@ namespace SimPe.Providers
 		public object FindTxtr(string name)
 		{
 			if (name == null)
+			{
 				return null;
+			}
+
 			string file = System.IO.Path.Combine(
 				SimPe.PathProvider.Global[Expansions.BaseGame].InstallFolder,
 				"TSData\\Res\\Sims3D\\Sims07.package"
@@ -445,7 +475,9 @@ namespace SimPe.Providers
 					SimPe.Plugin.Txtr rcol = new SimPe.Plugin.Txtr(null, false);
 					rcol.ProcessData(pfd, package);
 					if (rcol.FileName.Trim().ToLower() == name.Trim().ToLower())
+					{
 						return rcol;
+					}
 				}
 			}
 
@@ -455,16 +487,26 @@ namespace SimPe.Providers
 		public object FindUserTxtr(string name)
 		{
 			if (txtrs == null)
+			{
 				this.LoadSkinImages();
+			}
+
 			if (txtrs == null)
+			{
 				return null;
+			}
 
 			name = name.ToLower();
 			SimPe.Plugin.Txtr txtr = (SimPe.Plugin.Txtr)txtrs[name];
 			if (txtr == null)
+			{
 				txtr = (SimPe.Plugin.Txtr)txtrs[name + "_txtr"];
+			}
+
 			if (txtr == null)
+			{
 				return null;
+			}
 
 			if (txtr.Fast)
 			{
@@ -494,7 +536,10 @@ namespace SimPe.Providers
 			{
 				LoadPackage();
 				if (this.sets == null)
+				{
 					LoadSkins();
+				}
+
 				return this.sets;
 			}
 		}

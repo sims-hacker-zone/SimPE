@@ -72,14 +72,18 @@ namespace SimPe
 
 				// If no resource table specified by attribute, then build it itself by using namespace and class name.
 				if (tableName.Length == 0)
+				{
 					tableName =
 						basePropertyDescriptor.ComponentType.Namespace
 						+ "."
 						+ basePropertyDescriptor.ComponentType.Name;
+				}
 
 				// If no display name id is specified by attribute, then construct it by using default display name (usually the property name)
 				if (displayName.Length == 0)
+				{
 					displayName = this.basePropertyDescriptor.DisplayName;
+				}
 
 				// Get the string from the resources.
 				// If this fails, then use default display name (usually the property name)
@@ -112,14 +116,18 @@ namespace SimPe
 
 				// If no resource table specified by attribute, then build it itself by using namespace and class name.
 				if (tableName.Length == 0)
+				{
 					tableName =
 						basePropertyDescriptor.ComponentType.Namespace
 						+ "."
 						+ basePropertyDescriptor.ComponentType.Name;
+				}
 
 				// If no display name id is specified by attribute, then construct it by using default display name (usually the property name)
 				if (displayName.Length == 0)
+				{
 					displayName = this.basePropertyDescriptor.Category;
+				}
 
 				// Get the string from the resources.
 				// If this fails, then use default empty string indictating 'no description'
@@ -152,14 +160,18 @@ namespace SimPe
 
 				// If no resource table specified by attribute, then build it itself by using namespace and class name.
 				if (tableName.Length == 0)
+				{
 					tableName =
 						basePropertyDescriptor.ComponentType.Namespace
 						+ "."
 						+ basePropertyDescriptor.ComponentType.Name;
+				}
 
 				// If no display name id is specified by attribute, then construct it by using default display name (usually the property name)
 				if (displayName.Length == 0)
+				{
 					displayName = this.basePropertyDescriptor.DisplayName;
+				}
 
 				// Get the string from the resources.
 				// If this fails, then use default empty string indictating 'no description'

@@ -183,7 +183,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (tDirectionalLight == null)
+				{
 					tDirectionalLight = new SimPe.Plugin.TabPage.DirectionalLight();
+				}
+
 				return tDirectionalLight;
 			}
 		}
@@ -195,7 +198,10 @@ namespace SimPe.Plugin
 		protected override void InitTabPage()
 		{
 			if (tDirectionalLight == null)
+			{
 				tDirectionalLight = new SimPe.Plugin.TabPage.DirectionalLight();
+			}
+
 			tDirectionalLight.tb_l_ver.Text = "0x" + Helper.HexString(this.version);
 			tDirectionalLight.tb_l_name.Text = Name;
 
@@ -230,7 +236,10 @@ namespace SimPe.Plugin
 		public override void Dispose()
 		{
 			if (this.tDirectionalLight != null)
+			{
 				this.tDirectionalLight.Dispose();
+			}
+
 			tDirectionalLight = null;
 		}
 

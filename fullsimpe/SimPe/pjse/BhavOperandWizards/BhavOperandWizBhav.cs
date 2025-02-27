@@ -107,9 +107,15 @@ namespace pjse.BhavOperandWizards.WizBhav
 		void PJSE_DecimalDOValueChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (ckbDecimal.Checked == pjse.Settings.PJSE.DecimalDOValue)
+			{
 				return;
+			}
+
 			internalchg = true;
 			try
 			{
@@ -124,9 +130,15 @@ namespace pjse.BhavOperandWizards.WizBhav
 		void PJSE_InstancePickerAsTextChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (ckbUseInstancePicker.Checked == pjse.Settings.PJSE.InstancePickerAsText)
+			{
 				return;
+			}
+
 			internalchg = true;
 			try
 			{
@@ -202,7 +214,10 @@ namespace pjse.BhavOperandWizards.WizBhav
 		private void setFormat(BhavWizBhav.dataFormat newformat)
 		{
 			if (format == newformat)
+			{
 				return;
+			}
+
 			format = newformat;
 			doFormat();
 		}
@@ -236,19 +251,34 @@ namespace pjse.BhavOperandWizards.WizBhav
 				case BhavWizBhav.dataFormat.useTemps:
 				case BhavWizBhav.dataFormat.oldFormat:
 					if (format == BhavWizBhav.dataFormat.useTemps)
+					{
 						for (int i = 0; i < 8; i++)
+						{
 							operands[i] = 0xff;
+						}
+					}
 					else
+					{
 						for (int i = 0; i < 8; i++)
+						{
 							BhavWiz.FromShort(ref operands, i * 2, aldoc[i].Value);
+						}
+					}
+
 					if (nodeVersion == 0)
+					{
 						operands[12] &= 0xfe;
+					}
 					else
 					{
 						if ((operands[12] & 0xfc) == 0xfc)
+						{
 							operands[12] = 0xff;
+						}
 						else
+						{
 							operands[12] &= 0xfc;
+						}
 					}
 					break;
 				case BhavWizBhav.dataFormat.newFormat:
@@ -258,7 +288,10 @@ namespace pjse.BhavOperandWizards.WizBhav
 						operands[i * 3] = aldoc[i].DataOwner;
 					}
 					if (nodeVersion > 0)
+					{
 						operands[12] &= 0xfc;
+					}
+
 					operands[12] |= 0x01;
 					break;
 				case BhavWizBhav.dataFormat.useParams:
@@ -277,8 +310,13 @@ namespace pjse.BhavOperandWizards.WizBhav
 			get
 			{
 				for (int i = 0; i < 8; i++)
+				{
 					if (operands[i] != 0xFF)
+					{
 						return false;
+					}
+				}
+
 				return oldFormat;
 			}
 		}
@@ -295,7 +333,9 @@ namespace pjse.BhavOperandWizards.WizBhav
 
 			this.inst = inst;
 			foreach (LabelledDataOwner ldoc in aldoc)
+			{
 				ldoc.Instruction = inst;
+			}
 
 			nodeVersion = inst.NodeVersion;
 
@@ -333,12 +373,21 @@ namespace pjse.BhavOperandWizards.WizBhav
 			((byte[])inst.Reserved1).CopyTo(operands, 8);
 
 			for (int i = 0; i < nrArgs; i++)
+			{
 				if (tprp != null && !tprp.TextOnly && i < tprp.ParamCount)
+				{
 					albArg[i].Text = tprp[false, i].Label;
+				}
 				else
+				{
 					albArg[i].Text = pjse.Localization.GetString("unk");
+				}
+			}
+
 			for (int i = nrArgs; i < albArg.Length; i++)
+			{
 				albArg[i].Text = pjse.Localization.GetString("bwb_unused");
+			}
 
 			format = pjse.BhavNameWizards.BhavWizBhav.opFormat(
 				inst.NodeVersion,
@@ -364,9 +413,14 @@ namespace pjse.BhavOperandWizards.WizBhav
 			{
 				updateOperands();
 				for (int i = 0; i < 8; i++)
+				{
 					inst.Operands[i] = operands[i];
+				}
+
 				for (int i = 0; i < 8; i++)
+				{
 					inst.Reserved1[i] = operands[i + 8];
+				}
 			}
 			return inst;
 		}
@@ -376,11 +430,15 @@ namespace pjse.BhavOperandWizards.WizBhav
 		private void rb_CheckedChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
 
 			int i = arbFormat.IndexOf((RadioButton)sender);
 			if (i < 0 || !arbFormat[i].Checked)
+			{
 				return;
+			}
 
 			setFormat(
 				(BhavWizBhav.dataFormat)Enum.Parse(format.GetType(), i.ToString())
@@ -390,7 +448,10 @@ namespace pjse.BhavOperandWizards.WizBhav
 		private void ckbDecimal_CheckedChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			internalchg = true;
 			try
 			{
@@ -405,7 +466,10 @@ namespace pjse.BhavOperandWizards.WizBhav
 		private void ckbUseInstancePicker_CheckedChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			internalchg = true;
 			try
 			{
@@ -433,7 +497,9 @@ namespace pjse.BhavOperandWizards
 		public override void Dispose()
 		{
 			if (myForm != null)
+			{
 				myForm = null;
+			}
 		}
 		#endregion
 	}

@@ -51,13 +51,19 @@ namespace SimPe.Plugin
 		{
 			SimPe.Plugin.Idno idno = SimPe.Plugin.Idno.FromPackage(package);
 			if (idno == null)
+			{
 				IsOK = true;
+			}
 			else
 			{
 				if (idno.Type == SimPe.Plugin.NeighborhoodType.Normal)
+				{
 					IsOK = true;
+				}
 				else
+				{
 					IsOK = false;
+				}
 			}
 
 			reader.BaseStream.Seek(0xc, System.IO.SeekOrigin.Begin);

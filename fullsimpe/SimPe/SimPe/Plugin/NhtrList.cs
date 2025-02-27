@@ -30,24 +30,38 @@ namespace SimPe.Plugin
 			list = new ArrayList();
 
 			if (type == NhtrListType.Trees || type == NhtrListType.Decorations)
+			{
 				unknown = 8;
+			}
 			else
+			{
 				unknown = 3;
+			}
 		}
 
 		public NhtrItem AddNew()
 		{
 			NhtrItem item;
 			if (type == NhtrListType.Decorations)
+			{
 				item = new NhtrDecorationItem(this);
+			}
 			else if (type == NhtrListType.Trees)
+			{
 				item = new NhtrTreeItem(this);
+			}
 			else if (type == NhtrListType.Roads)
+			{
 				item = new NhtrRoadItem(this);
+			}
 			else if (type == NhtrListType.Bridges)
+			{
 				item = new NhtrBridgeItem(this);
+			}
 			else
+			{
 				return null;
+			}
 
 			Add(item);
 			return item;
@@ -96,7 +110,9 @@ namespace SimPe.Plugin
 			writer.Write(unknown);
 			writer.Write((int)list.Count);
 			foreach (NhtrItem i in list)
+			{
 				i.Serialize(writer);
+			}
 		}
 
 		public override string ToString()

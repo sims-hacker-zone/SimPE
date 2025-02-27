@@ -13,7 +13,10 @@ namespace SimPe.Plugin
 		public SimPe.Data.MetaData.AspirationTypes[] LoadAspirations(SDesc sim)
 		{
 			if (sim == null)
+			{
 				return null;
+			}
+
 			LoadMemoryResource(sim);
 			ushort sval = GetSecondaryAspirationValue(sim);
 			SimPe.Data.MetaData.AspirationTypes[] res =
@@ -37,9 +40,13 @@ namespace SimPe.Plugin
 					if ((a & i) == i)
 					{
 						if (res[0] == SimPe.Data.MetaData.AspirationTypes.Nothing)
+						{
 							res[0] = (SimPe.Data.MetaData.AspirationTypes)i;
+						}
 						else
+						{
 							res[1] = (SimPe.Data.MetaData.AspirationTypes)i;
+						}
 					}
 				}
 			}
@@ -53,31 +60,53 @@ namespace SimPe.Plugin
 		)
 		{
 			if (sim == null)
+			{
 				return;
+			}
+
 			if (asps == null)
+			{
 				return;
+			}
+
 			if (asps.Length < 2)
+			{
 				return;
+			}
+
 			SimPe.Data.MetaData.AspirationTypes[] old = LoadAspirations(sim);
 			bool chg = false;
 			bool chg2 = asps[1] != old[1];
 			for (int i = 0; i < 2; i++)
+			{
 				if (asps[i] != old[i])
+				{
 					chg = true;
+				}
+			}
 
 			if (!chg)
+			{
 				return;
+			}
 			//LoadMemoryResource(sim);
 			ushort a = 0;
 			ushort v = 0;
 			for (int i = 0; i < 2; i++)
 			{
 				if (i == 0)
+				{
 					v = (ushort)asps[i];
+				}
 				else if (i == 1 && ((ushort)asps[i]) == v)
+				{
 					v = 0;
+				}
 				else if (i == 1)
+				{
 					v = (ushort)asps[i];
+				}
+
 				a |= (ushort)asps[i];
 			}
 
@@ -99,26 +128,43 @@ namespace SimPe.Plugin
 		protected void LoadMemoryResource(SDesc sim)
 		{
 			if (sim != null && pkg == sim.Package)
+			{
 				return;
+			}
+
 			if (sim != null)
+			{
 				pkg = sim.Package;
+			}
 			else
+			{
 				pkg = null;
+			}
 
 			ngbh = null;
 			if (sim == null)
+			{
 				return;
+			}
+
 			if (sim.Package == null)
+			{
 				return;
+			}
+
 			if (!SimPe.Helper.WindowsRegistry.AllowChangeOfSecondaryAspiration)
+			{
 				return;
+			}
 
 			SimPe.Interfaces.Plugin.IFileWrapper wrapper =
 				(SimPe.Interfaces.Plugin.IFileWrapper)
 					FileTable.WrapperRegistry.FindHandler(SimPe.Data.MetaData.MEMORIES);
 
 			if (wrapper == null)
+			{
 				return;
+			}
 
 			SimPe.Interfaces.Files.IPackedFileDescriptor[] mems = sim.Package.FindFiles(
 				SimPe.Data.MetaData.MEMORIES
@@ -134,7 +180,10 @@ namespace SimPe.Plugin
 		protected NgbhItem GetSecondaryAspirationToken(SDesc sim, bool create)
 		{
 			if (ngbh == null)
+			{
 				return null;
+			}
+
 			NgbhSlot slot = ngbh.Sims.GetInstanceSlot(sim.Instance, true);
 
 			if (slot != null)
@@ -154,10 +203,16 @@ namespace SimPe.Plugin
 		protected ushort GetSecondaryAspirationValue(SDesc sim)
 		{
 			if (!SimPe.Helper.WindowsRegistry.AllowChangeOfSecondaryAspiration)
+			{
 				return 0;
+			}
+
 			NgbhItem ni = GetSecondaryAspirationToken(sim, false);
 			if (ni == null)
+			{
 				return 0;
+			}
+
 			return ni.Value;
 		}
 	}

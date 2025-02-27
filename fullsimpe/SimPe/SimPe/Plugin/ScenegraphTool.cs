@@ -59,9 +59,15 @@ namespace SimPe.Plugin
 			sg.Execute(prov, package, ref pfd);
 
 			if ((pfd == null) && (opfd == null))
+			{
 				return new ToolResult(false, false);
+			}
+
 			if ((pfd != null) && (opfd == null))
+			{
 				return new ToolResult(true, false);
+			}
+
 			return new ToolResult(!pfd.Equals(opfd), false);
 		}
 

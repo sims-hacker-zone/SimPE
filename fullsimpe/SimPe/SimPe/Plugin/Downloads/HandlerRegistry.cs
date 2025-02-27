@@ -14,7 +14,10 @@ namespace SimPe.Plugin.Downloads
 			get
 			{
 				if (glob == null)
+				{
 					glob = new HandlerRegistry();
+				}
+
 				return glob;
 			}
 		}
@@ -35,7 +38,9 @@ namespace SimPe.Plugin.Downloads
 			Ambertation.SevenZip.IO.CommandlineArchive a =
 				new Ambertation.SevenZip.IO.CommandlineArchive("");
 			foreach (string ext in a.SupportedForUnpack)
+			{
 				this.AddFileHandler(ext, typeof(SevenZipHandler));
+			}
 
 			this.AddTypeHandler(SimPe.Cache.PackageType.Lot, typeof(LotTypeHandler));
 			this.AddTypeHandler(
@@ -73,7 +78,10 @@ namespace SimPe.Plugin.Downloads
 			{
 				string fext = mext.Replace("*", "");
 				if (!fext.StartsWith("."))
+				{
 					fext = "." + fext;
+				}
+
 				AddFileHandler(fext, handler);
 			}
 		}
@@ -90,7 +98,9 @@ namespace SimPe.Plugin.Downloads
 		{
 			Type t = subreg[type] as Type;
 			if (t == null)
+			{
 				return new XTypeHandler();
+			}
 
 			return System.Activator.CreateInstance(t, new object[] { }) as ITypeHandler;
 		}
@@ -99,7 +109,10 @@ namespace SimPe.Plugin.Downloads
 		{
 			extension = extension.Trim().ToLower();
 			if (!extension.StartsWith("."))
+			{
 				extension = "." + extension;
+			}
+
 			return extension;
 		}
 
@@ -123,10 +136,15 @@ namespace SimPe.Plugin.Downloads
 			;
 			Type t = reg[ext] as Type;
 			if (t == null)
+			{
 				return null;
+			}
 
 			if (!FileTable.FileIndex.Loaded)
+			{
 				FileTable.FileIndex.Load();
+			}
+
 			return System.Activator.CreateInstance(t, new object[] { filename })
 				as IPackageHandler;
 		}

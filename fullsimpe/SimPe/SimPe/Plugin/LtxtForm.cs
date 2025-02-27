@@ -1353,11 +1353,19 @@ namespace SimPe.Plugin
 		private void SelectType(object sender, System.EventArgs e)
 		{
 			if (wrapper == null)
+			{
 				return;
+			}
+
 			if (Enum.IsDefined(typeof(Ltxt.LotType), cbtype.SelectedItem))
+			{
 				wrapper.Type = (Ltxt.LotType)cbtype.SelectedItem;
+			}
 			else
+			{
 				wrapper.Type = Ltxt.LotType.Unknown;
+			}
+
 			tbtype.Text = "0x" + Helper.HexString((byte)wrapper.Type);
 			btnAddApt.Enabled = btnDelApt.Enabled = (
 				wrapper.Type == Ltxt.LotType.ApartmentBase
@@ -1367,7 +1375,10 @@ namespace SimPe.Plugin
 				gbhobby.Enabled =
 					(wrapper.Type == Ltxt.LotType.Hobby);
 			if (wrapper.SubVersion >= LtxtSubVersion.Freetime)
+			{
 				bthbytrvl.Enabled = (wrapper.Type == Ltxt.LotType.Hobby);
+			}
+
 			if (
 				wrapper.Type == Ltxt.LotType.ApartmentBase
 				|| wrapper.Type == Ltxt.LotType.ApartmentSublot
@@ -1394,7 +1405,10 @@ namespace SimPe.Plugin
 		private void Commit(object sender, System.EventArgs e)
 		{
 			if (wrapper == null)
+			{
 				return;
+			}
+
 			try
 			{
 				wrapper.SynchronizeUserData();
@@ -1412,7 +1426,10 @@ namespace SimPe.Plugin
 		private void CommonChange(object sender, System.EventArgs e)
 		{
 			if (wrapper == null)
+			{
 				return;
+			}
+
 			try
 			{
 				wrapper.LotRoads = Convert.ToByte(this.tbRoads.Text, 16);
@@ -1447,13 +1464,21 @@ namespace SimPe.Plugin
 				{
 					this.cbLotClas.Enabled = true;
 					if (bby[12])
+					{
 						this.cbLotClas.SelectedIndex = 1;
+					}
 					else if (bby[13])
+					{
 						this.cbLotClas.SelectedIndex = 2;
+					}
 					else if (bby[14])
+					{
 						this.cbLotClas.SelectedIndex = 3;
+					}
 					else
+					{
 						this.cbLotClas.SelectedIndex = 0;
+					}
 				}
 				else
 				{
@@ -1533,7 +1558,10 @@ namespace SimPe.Plugin
 		private void cbhidim_CheckedChanged(object sender, System.EventArgs e)
 		{
 			if (wrapper == null)
+			{
 				return;
+			}
+
 			try
 			{
 				Boolset bby = wrapper.Unknown0;
@@ -1561,70 +1589,163 @@ namespace SimPe.Plugin
 		private void hobbytravel_CheckedChanged(object sender, System.EventArgs e)
 		{
 			if (wrapper == null)
+			{
 				return;
+			}
+
 			try
 			{
 				uint tty = 0;
 				if (this.cbhbcook.Checked)
+				{
 					tty += 1;
+				}
+
 				if (this.cbhbart.Checked)
+				{
 					tty += 2;
+				}
+
 				if (this.cbhbfilm.Checked)
+				{
 					tty += 4;
+				}
+
 				if (this.cbhbsport.Checked)
+				{
 					tty += 8;
+				}
+
 				if (this.cbhbgames.Checked)
+				{
 					tty += 16;
+				}
+
 				if (this.cbhbnature.Checked)
+				{
 					tty += 32;
+				}
+
 				if (this.cbhbtinker.Checked)
+				{
 					tty += 64;
+				}
+
 				if (this.cbhbfitness.Checked)
+				{
 					tty += 128;
+				}
+
 				if (this.cbhbscience.Checked)
+				{
 					tty += 256;
+				}
+
 				if (this.cbhbmusic.Checked)
+				{
 					tty += 512;
+				}
+
 				if (this.cbtrclub.Checked)
+				{
 					tty += 1024;
+				}
+
 				if (this.cbtradult.Checked)
+				{
 					tty += 2048;
+				}
+
 				if (this.cbtrredred.Checked)
+				{
 					tty += 4096;
+				}
+
 				if (this.cbtrblue.Checked)
+				{
 					tty += 8192;
+				}
+
 				if (this.cgtrwhite.Checked)
+				{
 					tty += 16384;
+				}
+
 				if (this.cbtrpern.Checked)
+				{
 					tty += 32768;
+				}
+
 				if (this.cbtrnude.Checked)
+				{
 					tty += 65536;
+				}
+
 				if (this.cbtrteen.Checked)
+				{
 					tty += 131072;
+				}
+
 				if (this.cbtrformal.Checked)
+				{
 					tty += 262144;
+				}
+
 				if (this.cbtrbeach.Checked)
+				{
 					tty += 524288;
+				}
+
 				if (this.cbtrfem.Checked)
+				{
 					tty += 1048576;
+				}
+
 				if (this.cbtrmale.Checked)
+				{
 					tty += 2097152;
+				}
+
 				if (this.cbtrpool.Checked)
+				{
 					tty += 4194304;
+				}
+
 				if (this.cbtrhidec.Checked)
+				{
 					tty += 8388608;
+				}
+
 				if (this.cbtrjungle.Checked)
+				{
 					tty += 16777216;
+				}
+
 				if (this.cbtrjflag1.Checked)
+				{
 					tty += 33554432;
+				}
+
 				if (this.cbtrjflag2.Checked)
+				{
 					tty += 67108864;
+				}
+
 				if (this.cbtrjflag3.Checked)
+				{
 					tty += 134217728;
+				}
+
 				if (this.cbtrjflag4.Checked)
+				{
 					tty += 268435456;
+				}
+
 				if (this.cbtrjflag5.Checked)
+				{
 					tty += 536870912;
+				}
+
 				this.cbtrmale.Enabled = !this.cbtrfem.Checked;
 				this.cbtrfem.Enabled = !this.cbtrmale.Checked;
 				wrapper.Unknown4 = tty;
@@ -1641,7 +1762,10 @@ namespace SimPe.Plugin
 		private void Openpntravel(object sender, System.EventArgs e)
 		{
 			if (wrapper == null)
+			{
 				return;
+			}
+
 			try
 			{
 				this.gbunown.Visible = false;
@@ -1659,7 +1783,10 @@ namespace SimPe.Plugin
 		private void ChangeData(object sender, System.EventArgs e)
 		{
 			if (wrapper == null)
+			{
 				return;
+			}
+
 			try
 			{
 				wrapper.Unknown5 = Helper.SetLength(
@@ -1686,14 +1813,21 @@ namespace SimPe.Plugin
 		private void lb_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (wrapper == null)
+			{
 				return;
+			}
+
 			Ltxt wrp = wrapper;
 			wrapper = null;
 
 			if (lb.SelectedIndex < 0)
+			{
 				tbElevationAt.Text = "";
+			}
 			else
+			{
 				tbElevationAt.Text = wrp.Unknown1[lb.SelectedIndex].ToString();
+			}
 
 			wrapper = wrp;
 		}
@@ -1701,9 +1835,14 @@ namespace SimPe.Plugin
 		private void tbElevationAt_TextChanged(object sender, EventArgs e)
 		{
 			if (wrapper == null)
+			{
 				return;
+			}
+
 			if (lb.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			Ltxt wrp = wrapper;
 			wrapper = null;
@@ -1736,7 +1875,10 @@ namespace SimPe.Plugin
 		private void lbApts_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (wrapper == null)
+			{
 				return;
+			}
+
 			Ltxt wrp = wrapper;
 			wrapper = null;
 
@@ -1761,9 +1903,14 @@ namespace SimPe.Plugin
 		private void SAChange(object sender, EventArgs e)
 		{
 			if (wrapper == null)
+			{
 				return;
+			}
+
 			if (lbApts.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			Ltxt wrp = wrapper;
 			wrapper = null;
@@ -1797,14 +1944,21 @@ namespace SimPe.Plugin
 		private void lbu7_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (wrapper == null)
+			{
 				return;
+			}
+
 			Ltxt wrp = wrapper;
 			wrapper = null;
 
 			if (lbu7.SelectedIndex < 0)
+			{
 				tbu7.Text = "";
+			}
 			else
+			{
 				tbu7.Text = (string)lbu7.SelectedItem;
+			}
 
 			wrapper = wrp;
 		}
@@ -1812,9 +1966,14 @@ namespace SimPe.Plugin
 		private void tbu7_TextChanged(object sender, EventArgs e)
 		{
 			if (wrapper == null)
+			{
 				return;
+			}
+
 			if (lbu7.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			Ltxt wrp = wrapper;
 			wrapper = null;
@@ -1876,7 +2035,9 @@ namespace SimPe.Plugin
 			);
 			pfd = wrapper.Package.FindFile(pfd);
 			if (pfd == null)
+			{
 				return;
+			}
 
 			SimPe.RemoteControl.OpenPackedFile(pfd, wrapper.Package);
 		}
@@ -1906,9 +2067,13 @@ namespace SimPe.Plugin
 			lbApts.Items.RemoveAt(i);
 
 			if (i > 0)
+			{
 				i--;
+			}
 			else if (lbApts.Items.Count == 0)
+			{
 				i = -1;
+			}
 
 			lbApts.SelectedIndex = i;
 			lbApts.EndUpdate();
@@ -1919,7 +2084,10 @@ namespace SimPe.Plugin
 		private void tbApBase_TextChanged(object sender, EventArgs e)
 		{
 			if (wrapper == null)
+			{
 				return;
+			}
+
 			wrapper.ApartmentBase = Helper.StringToUInt32(
 				tbApBase.Text,
 				wrapper.ApartmentBase,
@@ -1932,7 +2100,10 @@ namespace SimPe.Plugin
 		{
 			uint simmy = Helper.StringToUInt32(tbowner.Text, wrapper.OwnerInstance, 16);
 			if (simmy == 0)
+			{
 				return;
+			}
+
 			SimPe.PackedFiles.Wrapper.ExtSDesc sdsc =
 				FileTable.ProviderRegistry.SimDescriptionProvider.SimInstance[
 					(ushort)simmy

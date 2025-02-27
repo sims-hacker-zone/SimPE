@@ -51,7 +51,9 @@ namespace SimPe.Plugin
 			for (int i = start; i < frames.Length; i++)
 			{
 				if (frames[i].GetBlock(axis) != null)
+				{
 					return i;
+				}
 			}
 
 			return -1;
@@ -60,7 +62,10 @@ namespace SimPe.Plugin
 		AnimationFrame GetFrame(SimPe.Plugin.Anim.AnimationFrame[] frames, int index)
 		{
 			if (index < 0 || index >= frames.Length)
+			{
 				return null;
+			}
+
 			return frames[index];
 		}
 
@@ -73,7 +78,10 @@ namespace SimPe.Plugin
 			last = GetFrame(iframes, index);
 
 			if (last == null)
+			{
 				return;
+			}
+
 			while (last != null)
 			{
 				InterpolateFrames(axis, first, last);
@@ -90,7 +98,9 @@ namespace SimPe.Plugin
 		{
 			short max = (short)(frames.Length - 1);
 			if (last != null)
+			{
 				max = last.TimeCode;
+			}
 			else
 			{
 				last = new AnimationFrame(max, first.Type);
@@ -100,7 +110,9 @@ namespace SimPe.Plugin
 			}
 
 			for (short i = (short)(first.TimeCode); i <= max; i++)
+			{
 				CreaetInterpolatedFrame(axis, i, first, last);
+			}
 		}
 
 		void CreaetInterpolatedFrame(
@@ -131,6 +143,7 @@ namespace SimPe.Plugin
 		{
 			double f = 0;
 			if (first != null)
+			{
 				f = AnimationAxisTransformBlock.GetCompressedFloat(
 					first.Parameter,
 					AnimationAxisTransformBlock.GetScale(
@@ -138,8 +151,11 @@ namespace SimPe.Plugin
 						afb.TransformationType
 					)
 				);
+			}
+
 			double l = f;
 			if (last != null)
+			{
 				l = (float)
 					AnimationAxisTransformBlock.GetCompressedFloat(
 						last.Parameter,
@@ -148,6 +164,8 @@ namespace SimPe.Plugin
 							afb.TransformationType
 						)
 					);
+			}
+
 			return (f + (pos * (l - f)));
 		}
 

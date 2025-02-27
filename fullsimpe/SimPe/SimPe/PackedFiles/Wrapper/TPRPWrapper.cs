@@ -142,11 +142,17 @@ namespace SimPe.PackedFiles.Wrapper
 			while (
 				paramCount > 0 && this[false, paramCount - 1].Label.Trim().Length == 0
 			)
+			{
 				Remove(this[false, paramCount - 1]);
+			}
+
 			while (
 				localCount > 0 && this[true, localCount - 1].Label.Trim().Length == 0
 			)
+			{
 				Remove(this[true, localCount - 1]);
+			}
+
 			internalchg = false;
 		}
 
@@ -155,12 +161,18 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				if (duff)
+				{
 					throw new InvalidOperationException();
+				}
 
 				if (local)
+				{
 					index += paramCount;
+				}
 				else if (index > paramCount)
+				{
 					throw new ArgumentOutOfRangeException();
+				}
 
 				return this[index];
 			}
@@ -169,15 +181,23 @@ namespace SimPe.PackedFiles.Wrapper
 				if (local)
 				{
 					if (value is TPRPParamLabel)
+					{
 						throw new InvalidCastException();
+					}
+
 					index += paramCount;
 				}
 				else
 				{
 					if (value is TPRPLocalLabel)
+					{
 						throw new InvalidCastException();
+					}
+
 					if (index > paramCount)
+					{
 						throw new ArgumentOutOfRangeException();
+					}
 				}
 
 				this[index] = value;
@@ -262,7 +282,9 @@ namespace SimPe.PackedFiles.Wrapper
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
 			if (duff)
+			{
 				throw new InvalidOperationException("Cannot serialize a duff TPRP");
+			}
 
 			CleanUp();
 
@@ -275,16 +297,29 @@ namespace SimPe.PackedFiles.Wrapper
 			writer.Write(localCount);
 
 			foreach (TPRPItem item in items)
+			{
 				if (item is TPRPParamLabel)
+				{
 					item.Serialize(writer);
+				}
+			}
+
 			foreach (TPRPItem item in items)
+			{
 				if (item is TPRPLocalLabel)
+				{
 					item.Serialize(writer);
+				}
+			}
 
 			writer.Write(reserved);
 			foreach (TPRPItem item in items)
+			{
 				if (item is TPRPParamLabel)
+				{
 					writer.Write(((TPRPParamLabel)item).PData);
+				}
+			}
 
 			writer.Write(trailer[0]);
 			writer.Write(trailer[1]);
@@ -318,14 +353,23 @@ namespace SimPe.PackedFiles.Wrapper
 
 				items = new List<TPRPItem>();
 				for (int i = 0; i < paramCount; i++)
+				{
 					items.Add(new TPRPParamLabel(this, reader));
+				}
+
 				for (int i = 0; i < localCount; i++)
+				{
 					items.Add(new TPRPLocalLabel(this, reader));
+				}
 
 				reserved = reader.ReadUInt32();
 				foreach (TPRPItem item in items)
+				{
 					if (item is TPRPParamLabel)
+					{
 						((TPRPParamLabel)item).ReadPData(reader);
+					}
+				}
 
 				trailer = new uint[2];
 				trailer[0] = reader.ReadUInt32();
@@ -359,7 +403,10 @@ namespace SimPe.PackedFiles.Wrapper
 		protected override string GetResourceName(Data.TypeAlias ta)
 		{
 			if (!SimPe.Helper.FileFormat)
+			{
 				return base.GetResourceName(ta);
+			}
+
 			SimPe.Interfaces.Files.IPackedFile pf = Package.Read(FileDescriptor);
 			byte[] ab = pf.GetUncompressedData(0x48);
 			return (ab.Length > 0x44 ? "0x" + Helper.HexString(ab[0x44]) + ": " : "")
@@ -443,7 +490,9 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			writer.Write((byte)label.Length);
 			foreach (char c in label)
+			{
 				writer.Write(c);
+			}
 		}
 
 		public override string ToString()

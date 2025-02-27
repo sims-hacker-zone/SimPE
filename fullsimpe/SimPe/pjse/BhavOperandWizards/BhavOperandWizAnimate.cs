@@ -359,19 +359,30 @@ namespace pjse.BhavOperandWizards.WizAnimate
 		private Scope AnimScope()
 		{
 			if (mode.Equals("bwp_Object"))
+			{
 				return Scope.Private;
+			}
+
 			return (this.doidAnimType.Value == 0x80) ? Scope.Global : Scope.Private;
 		}
 
 		private GS.GlobalStr AnimInstance()
 		{
 			if (mode.Equals("bwp_Object"))
+			{
 				return GS.GlobalStr.ObjectAnims;
+			}
 
 			if (this.doidAnimType.Value == 0x80)
+			{
 				return GS.GlobalStr.AdultAnims;
+			}
+
 			if (IsAnim(this.doidAnimType.Value))
+			{
 				return (GS.GlobalStr)this.doidAnimType.Value;
+			}
+
 			return GS.GlobalStr.ObjectAnims;
 		}
 
@@ -389,7 +400,10 @@ namespace pjse.BhavOperandWizards.WizAnimate
 		private void doidAnimType_DataOwnerControlChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			internalchg = true;
 
 			try
@@ -412,7 +426,10 @@ namespace pjse.BhavOperandWizards.WizAnimate
 		private void doidAnim_DataOwnerControlChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			doStrValue(doidAnim.Value, tbAnim);
 		}
 
@@ -425,7 +442,10 @@ namespace pjse.BhavOperandWizards.WizAnimate
 				ref found
 			);
 			if (!found)
+			{
 				tbEventTree.Text = "---";
+			}
+
 			llEvent.Enabled = found;
 		}
 
@@ -446,8 +466,13 @@ namespace pjse.BhavOperandWizards.WizAnimate
 		private byte getOptions(List<CheckBox> lckbOptions, Boolset options)
 		{
 			for (int i = 0; i < lckbOptions.Count; i++)
+			{
 				if (lckbOptions[i] != null)
+				{
 					options[i] = lckbOptions[i].Checked;
+				}
+			}
+
 			return options;
 		}
 
@@ -468,7 +493,9 @@ namespace pjse.BhavOperandWizards.WizAnimate
 			internalchg = true;
 
 			foreach (CheckBox c in lckb)
+			{
 				c.Visible = false;
+			}
 
 			doidAnim = new DataOwnerControl(
 				inst,
@@ -584,25 +611,32 @@ namespace pjse.BhavOperandWizards.WizAnimate
 						ckbNotHurryable.Visible = true;
 					}
 					else
+					{
 						priority = ops2[4];
+					}
+
 					scope = ops2[6];
 					options2 = ops2[7];
 					break;
 			}
 
 			for (int i = 0; i < lckbOptions1.Count; i++)
+			{
 				if (lckbOptions1[i] != null)
 				{
 					lckbOptions1[i].Visible = true;
 					lckbOptions1[i].Checked = options1[i];
 				}
+			}
 
 			for (int i = 0; i < lckbOptions2.Count; i++)
+			{
 				if (lckbOptions2[i] != null)
 				{
 					lckbOptions2[i].Visible = true;
 					lckbOptions2[i].Checked = options2[i];
 				}
+			}
 
 			switch (scope)
 			{
@@ -620,14 +654,21 @@ namespace pjse.BhavOperandWizards.WizAnimate
 			internalchg = false;
 
 			if (!mode.Equals("bwp_Object"))
+			{
 				doidAnimType_DataOwnerControlChanged(null, null);
+			}
 			else
+			{
 				doidAnim_DataOwnerControlChanged(null, null);
+			}
+
 			doidEvent_DataOwnerControlChanged(null, null);
 			ckbParam_CheckedChanged(null, null);
 			ckbFlipTemp3_CheckedChanged(null, null);
 			if (priority < cbPriority.Items.Count)
+			{
 				cbPriority.SelectedIndex = priority;
+			}
 		}
 
 		public Instruction Write(Instruction inst)
@@ -679,7 +720,9 @@ namespace pjse.BhavOperandWizards.WizAnimate
 							ops2[4] = options3;
 						}
 						else
+						{
 							ops2[4] = getPriority(ops2[4]);
+						}
 
 						ops2[6] = getScope(ops2[6]);
 						ops2[7] = getOptions(lckbOptions2, ops2[7]);
@@ -1274,8 +1317,10 @@ namespace pjse.BhavOperandWizards.WizAnimate
 				false
 			);
 			if (item != null)
+			{
 				tbValEventTree.Text =
 					"0x" + SimPe.Helper.HexString((ushort)item.Instance);
+			}
 		}
 
 		private void btnAnim_Click(object sender, EventArgs e)
@@ -1286,21 +1331,30 @@ namespace pjse.BhavOperandWizards.WizAnimate
 		private void ckbParam_CheckedChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			doCkbParam();
 		}
 
 		private void ckbFlipTemp3_CheckedChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			ckbFlipped.Enabled = !ckbFlipTemp3.Checked;
 		}
 
 		private void cbAnimType_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (internalchg)
+			{
 				return;
+			}
+
 			internalchg = true;
 
 			try
@@ -1344,7 +1398,9 @@ namespace pjse.BhavOperandWizards
 		public override void Dispose()
 		{
 			if (myForm != null)
+			{
 				myForm = null;
+			}
 		}
 		#endregion
 	}

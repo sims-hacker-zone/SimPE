@@ -77,16 +77,21 @@ namespace pjse
 			{
 				TtabItemAnimalMotiveItem value = new TtabItemAnimalMotiveItem(null);
 				for (int i = 0; i < nrItems; i++)
+				{
 					value.Add(item[i]);
+				}
+
 				return value;
 			}
 			set
 			{
 				if (value.Count > 16)
+				{
 					throw new ArgumentException(
 						"Argument contains too many SingleMotiveItems",
 						"value"
 					);
+				}
 
 				item.Clear();
 				for (int i = 0; i < mUI.Length; i++)
@@ -113,18 +118,26 @@ namespace pjse
 			set
 			{
 				if (value < 0 || value > 16)
+				{
 					throw new ArgumentOutOfRangeException(
 						"value",
 						value,
 						"must be between zero and sixteen"
 					);
+				}
+
 				if (nrItems == value)
+				{
 					return;
+				}
 
 				nrItems = value;
 
 				for (int i = 0; i < mUI.Length; i++)
+				{
 					mUI[i].Enabled = i < nrItems;
+				}
+
 				btnMinus.Enabled = nrItems > 0;
 				btnPlus.Enabled = nrItems < 16;
 			}

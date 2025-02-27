@@ -93,7 +93,10 @@ namespace SimPe.Plugin
 			writer.Write(String2);
 			writer.Write((int)Vectors.Count);
 			for (int i = 0; i < Vectors.Count; i++)
+			{
 				Vectors[i].Serialize(writer);
+			}
+
 			writer.Write(Unknown1);
 		}
 	}
@@ -339,7 +342,9 @@ namespace SimPe.Plugin
 			}
 
 			for (int i = 0; i < Unknown2.Length; i++)
+			{
 				Unknown2[i] = reader.ReadSingle();
+			}
 
 			count = reader.ReadInt32();
 			Items.Clear();
@@ -356,22 +361,30 @@ namespace SimPe.Plugin
 			count = reader.ReadInt32();
 			Numbers1.Clear();
 			for (int i = 0; i < count; i++)
+			{
 				Numbers1.Add(reader.ReadInt32());
+			}
 
 			count = reader.ReadInt32();
 			Numbers2.Clear();
 			for (int i = 0; i < count; i++)
+			{
 				Numbers2.Add(reader.ReadInt32());
+			}
 
 			count = reader.ReadInt32();
 			Numbers3.Clear();
 			for (int i = 0; i < count; i++)
+			{
 				Numbers3.Add(reader.ReadInt32());
+			}
 
 			count = reader.ReadInt32();
 			Numbers4.Clear();
 			for (int i = 0; i < count; i++)
+			{
 				Numbers4.Add(reader.ReadInt32());
+			}
 
 			Unknown5 = reader.ReadInt32();
 			Unknown6 = reader.ReadInt32();
@@ -401,15 +414,21 @@ namespace SimPe.Plugin
 
 			writer.Write((int)Vectors1.Count);
 			for (int i = 0; i < Vectors1.Count; i++)
+			{
 				Vectors1[i].Serialize(writer);
+			}
 
 			writer.Write((int)Vectors2.Count);
 			for (int i = 0; i < Vectors2.Count; i++)
+			{
 				Vectors2[i].Serialize(writer);
+			}
 
 			writer.Write((int)Vectors3.Count);
 			for (int i = 0; i < Vectors3.Count; i++)
+			{
 				Vectors3[i].Serialize(writer);
+			}
 
 			writer.Write(Zero1);
 			writer.Write(ReferencedCount);
@@ -418,41 +437,59 @@ namespace SimPe.Plugin
 
 			writer.Write((int)Vectors4.Count);
 			for (int i = 0; i < Vectors4.Count; i++)
+			{
 				Vectors4[i].Serialize(writer);
+			}
 
 			writer.Write((int)Vectors5.Count);
 			for (int i = 0; i < Vectors5.Count; i++)
+			{
 				Vectors5[i].Serialize(writer);
+			}
 
 			writer.Write((int)Vectors6.Count);
 			for (int i = 0; i < Vectors6.Count; i++)
+			{
 				Vectors6[i].Serialize(writer);
+			}
 
 			for (int i = 0; i < Unknown2.Length; i++)
+			{
 				writer.Write(Unknown2[i]);
+			}
 
 			writer.Write((int)Items.Count);
 			for (int i = 0; i < Items.Count; i++)
+			{
 				Items[i].Serialize(writer);
+			}
 
 			writer.Write(Unknown3);
 			writer.Write(Unknown4);
 
 			writer.Write((int)Numbers1.Count);
 			for (int i = 0; i < Numbers1.Count; i++)
+			{
 				writer.Write(Numbers1[i]);
+			}
 
 			writer.Write((int)Numbers2.Count);
 			for (int i = 0; i < Numbers2.Count; i++)
+			{
 				writer.Write(Numbers2[i]);
+			}
 
 			writer.Write((int)Numbers3.Count);
 			for (int i = 0; i < Numbers3.Count; i++)
+			{
 				writer.Write(Numbers3[i]);
+			}
 
 			writer.Write((int)Numbers4.Count);
 			for (int i = 0; i < Numbers4.Count; i++)
+			{
 				writer.Write(Numbers4[i]);
+			}
 
 			writer.Write(Unknown5);
 			writer.Write(Unknown6);
@@ -471,7 +508,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (tGenericRcol == null)
+				{
 					tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
+				}
+
 				return tGenericRcol;
 			}
 		}
@@ -483,7 +523,10 @@ namespace SimPe.Plugin
 		protected override void InitTabPage()
 		{
 			if (tGenericRcol == null)
+			{
 				tGenericRcol = new SimPe.Plugin.TabPage.GenericRcol();
+			}
+
 			tGenericRcol.tb_ver.Text = "0x" + Helper.HexString(this.version);
 			tGenericRcol.gen_pg.SelectedObject = this;
 		}
@@ -499,7 +542,10 @@ namespace SimPe.Plugin
 		public override void Dispose()
 		{
 			if (this.tGenericRcol != null)
+			{
 				this.tGenericRcol.Dispose();
+			}
+
 			tGenericRcol = null;
 		}
 
@@ -594,7 +640,9 @@ namespace SimPe.Plugin
 		{
 			IndexedMeshBuilderItems list = new IndexedMeshBuilderItems();
 			foreach (IndexedMeshBuilderItem item in this)
+			{
 				list.Add(item);
+			}
 
 			return list;
 		}

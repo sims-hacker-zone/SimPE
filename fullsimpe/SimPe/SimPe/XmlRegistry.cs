@@ -83,10 +83,14 @@ namespace SimPe
 			{
 				object o = tree[name];
 				if (o != null)
+				{
 					if (o.GetType() != typeof(XmlRegistryKey))
+					{
 						throw new Exception(
 							"The SubElement " + name + " is not a Key!"
 						);
+					}
+				}
 
 				return (XmlRegistryKey)o;
 			}
@@ -131,7 +135,9 @@ namespace SimPe
 				key = key.OpenLocalSubKey(path[i], create);
 				curkey += "\\" + path[i];
 				if (key == null)
+				{
 					return null; //throw new Exception("The Key "+curkey+" was not found!");
+				}
 			}
 
 			return key;
@@ -155,7 +161,9 @@ namespace SimPe
 		void DeleteSubKey(string[] path, bool throwOnException)
 		{
 			if (path.Length < 1)
+			{
 				return;
+			}
 
 			XmlRegistryKey key = this;
 
@@ -167,17 +175,26 @@ namespace SimPe
 				if (key == null)
 				{
 					if (throwOnException)
+					{
 						throw new Exception("The Key " + curkey + " was not found!");
+					}
 					else
+					{
 						return;
+					}
 				}
 			}
 
 			string name = path[path.Length - 1];
 			if (!key.tree.Contains(name) && throwOnException)
+			{
 				throw new Exception("The Key " + curkey + " was not found!");
+			}
+
 			if (key.tree.Contains(name))
+			{
 				key.tree.Remove(name);
+			}
 		}
 		#endregion
 
@@ -214,10 +231,18 @@ namespace SimPe
 		{
 			object o = tree[name];
 			if (def != null && o == null)
+			{
 				o = def;
+			}
+
 			if (o != null)
+			{
 				if (o.GetType() == typeof(XmlRegistryKey))
+				{
 					throw new Exception("The SubElement " + name + " is a Key!");
+				}
+			}
+
 			return o;
 		}
 		#endregion
@@ -231,8 +256,12 @@ namespace SimPe
 			ArrayList l = new ArrayList();
 
 			foreach (string s in tree.Keys)
+			{
 				if (tree[s] is XmlRegistryKey)
+				{
 					l.Add(s);
+				}
+			}
 
 			string[] res = new string[l.Count];
 			l.CopyTo(res);
@@ -248,8 +277,12 @@ namespace SimPe
 			ArrayList l = new ArrayList();
 
 			foreach (string s in tree.Keys)
+			{
 				if (!(tree[s] is XmlRegistryKey))
+				{
 					l.Add(s);
+				}
+			}
 
 			string[] res = new string[l.Count];
 			l.CopyTo(res);
@@ -287,11 +320,16 @@ namespace SimPe
 						System.IO.Path.GetDirectoryName(outfilename)
 					)
 				)
+				{
 					System.IO.Directory.CreateDirectory(
 						System.IO.Path.GetDirectoryName(outfilename)
 					);
+				}
+
 				if (!System.IO.File.Exists(outfilename))
+				{
 					Flush(outfilename);
+				}
 			}
 
 			this.filename = outfilename;
@@ -319,21 +357,44 @@ namespace SimPe
 		void ParseValues(XmlNode subnode, XmlRegistryKey subkey)
 		{
 			if (subnode.Name == "string")
+			{
 				ParseStringValue(subnode, subkey);
+			}
+
 			if (subnode.Name == "int")
+			{
 				ParseIntValue(subnode, subkey);
+			}
+
 			if (subnode.Name == "uint")
+			{
 				ParseUIntValue(subnode, subkey);
+			}
+
 			if (subnode.Name == "long")
+			{
 				ParseLongValue(subnode, subkey);
+			}
+
 			if (subnode.Name == "ulong")
+			{
 				ParseULongValue(subnode, subkey);
+			}
+
 			if (subnode.Name == "bool")
+			{
 				ParseBoolValue(subnode, subkey);
+			}
+
 			if (subnode.Name == "float")
+			{
 				ParseFloatValue(subnode, subkey);
+			}
+
 			if (subnode.Name == "datetime")
+			{
 				ParseDateTimeValue(subnode, subkey);
+			}
 		}
 
 		/// <summary>
@@ -347,17 +408,27 @@ namespace SimPe
 
 			//Remember the Name of the Node
 			if (node.Name == "key")
+			{
 				subkey = key.CreateSubKey(node.Attributes["name"].Value);
+			}
 
 			foreach (XmlNode subnode in node)
 			{
 				if (subnode.Name == "key")
+				{
 					ParseSubNode(subnode, subkey);
+				}
+
 				ParseValues(subnode, subkey);
 				if (subnode.Name == "list")
+				{
 					ParseListNode(subnode, subkey, false);
+				}
+
 				if (subnode.Name == "cilist")
+				{
 					ParseListNode(subnode, subkey, true);
+				}
 			}
 		}
 
@@ -374,19 +445,28 @@ namespace SimPe
 			foreach (XmlNode subnode in node)
 			{
 				if (subnode.Attributes == null)
+				{
 					continue;
+				}
+
 				names.Add(subnode.Attributes["name"].Value);
 				ParseValues(subnode, subkey);
 			}
 
 			ArrayList list = null;
 			if (!caseinvariant)
+			{
 				list = new ArrayList();
+			}
 			else
+			{
 				list = new Ambertation.CaseInvariantArrayList();
+			}
 
 			foreach (string s in names)
+			{
 				list.Add(subkey.GetValue(s));
+			}
 
 			key.SetValue(node.Attributes["name"].Value, list);
 		}
@@ -500,9 +580,13 @@ namespace SimPe
 			{
 				string s = node.InnerText.Trim().ToLower();
 				if (s == "false" || s == "no" || s == "off" || s == "0")
+				{
 					val = false;
+				}
 				else
+				{
 					val = true;
+				}
 			}
 			catch { }
 			key.SetValue(node.Attributes["name"].Value, val);
@@ -539,7 +623,10 @@ namespace SimPe
 			{
 				string dir = System.IO.Path.GetDirectoryName(filename);
 				if (!System.IO.Directory.Exists(dir))
+				{
 					throw new Exception("Directory \"" + dir + "\"not found!");
+				}
+
 				System.IO.StreamWriter sw = System.IO.File.CreateText(filename);
 
 				try
@@ -583,18 +670,26 @@ namespace SimPe
 		void WriteKey(System.IO.StreamWriter sw, XmlRegistryKey key)
 		{
 			if (key != CurrentUser)
+			{
 				sw.WriteLine("<key name=\"" + key.Name + "\">");
+			}
 
 			string[] keys = key.GetSubKeyNames();
 			foreach (string s in keys)
+			{
 				WriteKey(sw, key.OpenSubKey(s, false));
+			}
 
 			string[] values = key.GetValueNames();
 			foreach (string s in values)
+			{
 				WriteValue(sw, s, key.GetValue(s));
+			}
 
 			if (key != CurrentUser)
+			{
 				sw.WriteLine("</key>");
+			}
 		}
 
 		/// <summary>
@@ -606,7 +701,10 @@ namespace SimPe
 		void WriteValue(System.IO.StreamWriter sw, string name, object o)
 		{
 			if (o == null)
+			{
 				return;
+			}
+
 			string tag = "string";
 			string val = o.ToString();
 
@@ -619,16 +717,24 @@ namespace SimPe
 				tag = "uint";
 			}
 			else if (o is Int64)
+			{
 				tag = "long";
+			}
 			else if (o is UInt64)
+			{
 				tag = "ulong";
+			}
 			else if (o is Boolean)
 			{
 				tag = "bool";
 				if ((bool)o)
+				{
 					val = "true";
+				}
 				else
+				{
 					val = "false";
+				}
 			}
 			else if (o is float)
 			{
@@ -671,23 +777,38 @@ namespace SimPe
 		)
 		{
 			if (!caseinvariant)
+			{
 				sw.WriteLine("<list name=\"" + name + "\">");
+			}
 			else
+			{
 				sw.WriteLine("<cilist name=\"" + name + "\">");
+			}
+
 			int ct = -1;
 			foreach (object o in list)
 			{
 				ct++;
 				if (o == null)
+				{
 					continue;
+				}
+
 				if (o is ArrayList)
+				{
 					continue;
+				}
+
 				WriteValue(sw, ct.ToString(), o);
 			}
 			if (!caseinvariant)
+			{
 				sw.WriteLine("</list>");
+			}
 			else
+			{
 				sw.WriteLine("</cilist>");
+			}
 		}
 		#endregion
 	}

@@ -93,10 +93,14 @@ namespace pjse.guidtool
 
 			rb1CPOnly.Enabled = packageloaded;
 			if (!rb1CPOnly.Enabled && rb1CPOnly.Checked)
+			{
 				rb1default.Checked = true;
+			}
 
 			if (pjse.FileTable.gft == null)
+			{
 				pjse.FileTable.GFT.Refresh();
+			}
 
 			lHex32 = new List<TextBox>(new TextBox[] { tbNumber });
 			rbGroup = new List<RadioButton>(
@@ -115,11 +119,13 @@ namespace pjse.guidtool
 			sgNames.Add("Behaviour");
 			sgGroups.Add(0x7FE59FD0);
 			foreach (SimPe.Data.SemiGlobalAlias sga in SimPe.Data.MetaData.SemiGlobals)
+			{
 				if (sga.Known)
 				{
 					sgNames.Add(sga.Name);
 					sgGroups.Add(sga.Id);
 				}
+			}
 
 			gcGroup.KnownObjects = new object[] { sgNames, sgGroups };
 			gcGroup.ComboBoxWidth = 420;
@@ -165,11 +171,20 @@ namespace pjse.guidtool
 		{
 			int result = x.Package.FileName.CompareTo(y.Package.FileName);
 			if (result == 0)
+			{
 				result = x.Group.CompareTo(y.Group);
+			}
+
 			if (result == 0)
+			{
 				result = x.Type.CompareTo(y.Type);
+			}
+
 			if (result == 0)
+			{
 				result = x.Instance.CompareTo(y.Instance);
+			}
+
 			return result;
 		}
 
@@ -201,46 +216,73 @@ namespace pjse.guidtool
 						{
 							SimPe.Plugin.Glob glob = ((SimPe.Plugin.Glob)fte.Wrapper);
 							if (glob == null)
+							{
 								continue;
+							}
+
 							if (group != glob.SemiGlobalGroup)
+							{
 								continue;
+							}
 
 							List<pjse.FileTable.Entry> temp =
 								new List<FileTable.Entry>();
 							if (type[7])
+							{
 								temp.AddRange(
 									pjse.FileTable.GFT[Bhav.Bhavtype, fte.Group, where]
 								);
+							}
+
 							if (type[8])
+							{
 								temp.AddRange(
 									pjse.FileTable.GFT[Objf.Objftype, fte.Group, where]
 								);
+							}
+
 							if (type[9])
+							{
 								temp.AddRange(
 									pjse.FileTable.GFT[Ttab.Ttabtype, fte.Group, where]
 								);
+							}
 
 							if (fte.Group == 0xffffffff)
 							{
 								foreach (pjse.FileTable.Entry entry in temp)
+								{
 									if (entry.Package == fte.Package)
+									{
 										results.Add(entry);
+									}
+								}
 							}
 							else
+							{
 								results.AddRange(temp);
+							}
 						}
 						if (type[7])
+						{
 							results.AddRange(
 								pjse.FileTable.GFT[Bhav.Bhavtype, group, where]
 							);
+						}
+
 						if (type[8])
+						{
 							results.AddRange(
 								pjse.FileTable.GFT[Objf.Objftype, group, where]
 							);
+						}
+
 						if (type[9])
+						{
 							results.AddRange(
 								pjse.FileTable.GFT[Ttab.Ttabtype, group, where]
 							);
+						}
 					}
 					#endregion
 					else if (type[10])
@@ -253,9 +295,14 @@ namespace pjse.guidtool
 						{
 							SimPe.Plugin.Glob glob = ((SimPe.Plugin.Glob)fte.Wrapper);
 							if (glob == null)
+							{
 								continue;
+							}
+
 							if (group != glob.SemiGlobalGroup)
+							{
 								continue;
+							}
 
 							pjse.FileTable.Entry[] objds = pjse.FileTable.GFT[
 								SimPe.Data.MetaData.OBJD_FILE,
@@ -264,20 +311,26 @@ namespace pjse.guidtool
 							];
 
 							if (objds.Length == 0)
+							{
 								results.Add(fte);
+							}
 							else
 							{
 								if (fte.Group == 0xffffffff)
 								{
 									foreach (pjse.FileTable.Entry entry in objds)
+									{
 										if (entry.Package == fte.Package)
 										{
 											results.Add(entry);
 											break;
 										}
+									}
 								}
 								else
+								{
 									results.Add(objds[0]);
+								}
 							}
 						}
 					}
@@ -286,6 +339,7 @@ namespace pjse.guidtool
 					#region Search within group
 					{
 						if (type[0] || type[1])
+						{
 							results.AddRange(
 								pjse.FileTable.GFT[
 									SimPe.Data.MetaData.OBJD_FILE,
@@ -293,45 +347,72 @@ namespace pjse.guidtool
 									where
 								]
 							);
+						}
+
 						if (type[2])
+						{
 							results.AddRange(
 								pjse.FileTable.GFT[0x4E524546, group, where]
 							); // NREF
+						}
+
 						if (type[3])
+						{
 							results.AddRange(
 								pjse.FileTable.GFT[Bhav.Bhavtype, group, where]
 							);
+						}
+
 						if (type[4])
+						{
 							results.AddRange(
 								pjse.FileTable.GFT[Bcon.Bcontype, group, where]
 							);
+						}
+
 						if (type[5])
 						{
 							if (type[7])
+							{
 								results.AddRange(
 									pjse.FileTable.GFT[Bhav.Bhavtype, group, where]
 								);
+							}
+
 							if (type[8])
+							{
 								results.AddRange(
 									pjse.FileTable.GFT[Objf.Objftype, group, where]
 								);
+							}
+
 							if (type[9])
+							{
 								results.AddRange(
 									pjse.FileTable.GFT[Ttab.Ttabtype, group, where]
 								);
+							}
 						}
 						if (type[11])
+						{
 							results.AddRange(
 								pjse.FileTable.GFT[StrWrapper.Strtype, group, where]
 							);
+						}
+
 						if (type[12])
+						{
 							results.AddRange(
 								pjse.FileTable.GFT[StrWrapper.CTSStype, group, where]
 							);
+						}
+
 						if (type[13])
+						{
 							results.AddRange(
 								pjse.FileTable.GFT[StrWrapper.TTAstype, group, where]
 							);
+						}
 					}
 					#endregion
 				}
@@ -344,42 +425,70 @@ namespace pjse.guidtool
 					#region Search without group
 					{
 						if (type[0] || type[1])
+						{
 							results.AddRange(
 								pjse.FileTable.GFT[SimPe.Data.MetaData.OBJD_FILE, where]
 							);
+						}
+
 						if (type[2])
+						{
 							results.AddRange(pjse.FileTable.GFT[0x4E524546, where]); // NREF
+						}
+
 						if (type[3])
+						{
 							results.AddRange(pjse.FileTable.GFT[Bhav.Bhavtype, where]);
+						}
+
 						if (type[4])
+						{
 							results.AddRange(pjse.FileTable.GFT[Bcon.Bcontype, where]);
+						}
+
 						if (type[5])
 						{
 							if (type[7])
+							{
 								results.AddRange(
 									pjse.FileTable.GFT[Bhav.Bhavtype, where]
 								);
+							}
+
 							if (type[8])
+							{
 								results.AddRange(
 									pjse.FileTable.GFT[Objf.Objftype, where]
 								);
+							}
+
 							if (type[9])
+							{
 								results.AddRange(
 									pjse.FileTable.GFT[Ttab.Ttabtype, where]
 								);
+							}
 						}
 						if (type[11])
+						{
 							results.AddRange(
 								pjse.FileTable.GFT[StrWrapper.Strtype, where]
 							);
+						}
+
 						if (type[12])
+						{
 							results.AddRange(
 								pjse.FileTable.GFT[StrWrapper.CTSStype, where]
 							);
+						}
+
 						if (type[13])
+						{
 							results.AddRange(
 								pjse.FileTable.GFT[StrWrapper.TTAstype, where]
 							);
+						}
 					}
 					#endregion
 				}
@@ -400,6 +509,7 @@ namespace pjse.guidtool
 
 						System.IO.BinaryReader reader = item.Wrapper.StoredData;
 						if (item.Type == SimPe.Data.MetaData.OBJD_FILE)
+						{
 							if (reader.BaseStream.Length > 0x5c + 4) // sizeof(uint)
 							{
 								reader.BaseStream.Seek(
@@ -408,6 +518,7 @@ namespace pjse.guidtool
 								);
 								itemguid = reader.ReadUInt32();
 							}
+						}
 
 						if (
 							(type[0] && itemguid == searchNumber)
@@ -417,41 +528,60 @@ namespace pjse.guidtool
 							)
 							|| type[10]
 						)
+						{
 							Invoke(addResult, new object[] { itemguid, item });
+						}
 						else if (type[5])
+						{
 							switch (item.Type)
 							{
 								case Bhav.Bhavtype:
 									foreach (Instruction i in (Bhav)item.Wrapper)
+									{
 										if (i.OpCode == searchNumber)
+										{
 											Invoke(
 												addResult,
 												new object[] { itemguid, item }
 											);
+										}
+									}
+
 									break;
 								case Objf.Objftype:
 									foreach (ObjfItem i in (Objf)item.Wrapper)
+									{
 										if (
 											i.Action == searchNumber
 											|| i.Guardian == searchNumber
 										)
+										{
 											Invoke(
 												addResult,
 												new object[] { itemguid, item }
 											);
+										}
+									}
+
 									break;
 								case Ttab.Ttabtype:
 									foreach (TtabItem i in (Ttab)item.Wrapper)
+									{
 										if (
 											i.Action == searchNumber
 											|| i.Guardian == searchNumber
 										)
+										{
 											Invoke(
 												addResult,
 												new object[] { itemguid, item }
 											);
+										}
+									}
+
 									break;
 							}
+						}
 						else if (
 							(
 								(type[11] && item.Type == StrWrapper.Strtype)
@@ -461,6 +591,7 @@ namespace pjse.guidtool
 						)
 						{
 							if (type[14])
+							{
 								foreach (
 									StrItem si in ((StrWrapper)item.Wrapper)[(byte)1]
 								)
@@ -479,7 +610,9 @@ namespace pjse.guidtool
 										break;
 									}
 								}
+							}
 							else
+							{
 								foreach (StrItem si in (StrWrapper)item.Wrapper)
 								{
 									if (
@@ -496,13 +629,16 @@ namespace pjse.guidtool
 										break;
 									}
 								}
+							}
 						}
 					}
 					//DealtWith:
 					Invoke(setProgress, new object[] { true, ++j });
 					Thread.Sleep(0);
 					if ((bool)Invoke(stopSearch))
+					{
 						break;
+					}
 				}
 			}
 			catch (ThreadInterruptedException) { }
@@ -523,7 +659,9 @@ namespace pjse.guidtool
 				this.progressBar1.Maximum = progress;
 			}
 			else
+			{
 				this.progressBar1.Value = progress;
+			}
 		}
 
 		private delegate void AddResultCallback(
@@ -681,7 +819,9 @@ namespace pjse.guidtool
 		private void Stop()
 		{
 			if (!searching)
+			{
 				Complete(null, null);
+			}
 			else
 			{
 				this.btnSearch.Enabled = false;
@@ -694,7 +834,10 @@ namespace pjse.guidtool
 		{
 			searching = false;
 			while (searchThread != null && searchThread.IsAlive)
+			{
 				searchThread.Join(10);
+			}
+
 			searchThread = null;
 			this.Cursor = this.btnSearch.Cursor = System.Windows.Forms.Cursors.Default;
 			ckbObjdGUID.Enabled =
@@ -736,9 +879,12 @@ namespace pjse.guidtool
 		private bool hex32_IsValid(object sender)
 		{
 			if (!(sender is TextBox) || lHex32.IndexOf((TextBox)sender) < 0)
+			{
 				throw new Exception(
 					"hex32_IsValid not applicable to control " + sender.ToString()
 				);
+			}
+
 			try
 			{
 				Convert.ToUInt32(((TextBox)sender).Text, 16);
@@ -1136,7 +1282,9 @@ namespace pjse.guidtool
 		)
 		{
 			if (hex32_IsValid(sender))
+			{
 				return;
+			}
 
 			e.Cancel = true;
 
@@ -1155,9 +1303,13 @@ namespace pjse.guidtool
 		private void btnSearch_Click(object sender, System.EventArgs e)
 		{
 			if (searching)
+			{
 				Stop();
+			}
 			else
+			{
 				Start();
+			}
 		}
 
 		private void btnHelp_Click(object sender, System.EventArgs e)
@@ -1237,7 +1389,9 @@ namespace pjse.guidtool
 					isFlpNamesEnabled;
 
 			if (ckbObjdGUID.Checked)
+			{
 				ckbCallsToBHAV.Checked = ckbGLOB.Checked = false;
+			}
 
 			tbNumber.Enabled = ckbObjdGUID.Checked;
 			lbNumber.Text = ckbObjdGUID.Checked
@@ -1260,7 +1414,9 @@ namespace pjse.guidtool
 					isFlpNamesEnabled;
 
 			if (ckbCallsToBHAV.Checked)
+			{
 				ckbObjdGUID.Checked = ckbGLOB.Checked = false;
+			}
 
 			tbNumber.Enabled =
 				ckbSGSearch.Enabled =
@@ -1288,7 +1444,9 @@ namespace pjse.guidtool
 					isFlpNamesEnabled;
 
 			if (ckbGLOB.Checked)
+			{
 				ckbObjdGUID.Checked = ckbCallsToBHAV.Checked = false;
+			}
 		}
 
 		private void ckbSomeName_CheckedChanged(object sender, EventArgs e)
@@ -1310,7 +1468,10 @@ namespace pjse.guidtool
 		{
 			string text = "";
 			foreach (string clit in this.rtbReport.Lines)
+			{
 				text += clit + "\r\n";
+			}
+
 			Clipboard.SetDataObject(text, true);
 		}
 	}

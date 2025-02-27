@@ -205,7 +205,9 @@ namespace SimPe.Plugin
 			else if (
 				(byte)(reader.BaseStream.Length - reader.BaseStream.Position) > len
 			) // some early files contain a whole bunch of extra junk at the end
+			{
 				bloaty = true;
+			}
 
 			semiglobal = reader.ReadBytes(len);
 			Attributes = new Hashtable();

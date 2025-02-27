@@ -899,7 +899,10 @@ namespace SimPe.Plugin.TabPage
 		private void SRNChangeSettings(object sender, System.EventArgs e)
 		{
 			if (Tag == null)
+			{
 				return;
+			}
+
 			try
 			{
 				SimPe.Plugin.ShapeRefNode srn = (SimPe.Plugin.ShapeRefNode)Tag;
@@ -928,9 +931,14 @@ namespace SimPe.Plugin.TabPage
 		private void SRNSelectA(object sender, System.EventArgs e)
 		{
 			if (lb_srn_a.Tag != null)
+			{
 				return;
+			}
+
 			if (this.lb_srn_a.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			try
 			{
@@ -957,9 +965,14 @@ namespace SimPe.Plugin.TabPage
 		private void SRNChangedItemsA(object sender, System.EventArgs e)
 		{
 			if (lb_srn_a.Tag != null)
+			{
 				return;
+			}
+
 			if (this.lb_srn_a.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			try
 			{
@@ -991,7 +1004,10 @@ namespace SimPe.Plugin.TabPage
 		)
 		{
 			if (Tag == null)
+			{
 				return;
+			}
+
 			try
 			{
 				lb_srn_a.Tag = true;
@@ -1022,9 +1038,15 @@ namespace SimPe.Plugin.TabPage
 		)
 		{
 			if (Tag == null)
+			{
 				return;
+			}
+
 			if (lb_srn_a.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				lb_srn_a.Tag = true;
@@ -1052,9 +1074,14 @@ namespace SimPe.Plugin.TabPage
 		private void SRNSelectB(object sender, System.EventArgs e)
 		{
 			if (lb_srn_b.Tag != null)
+			{
 				return;
+			}
+
 			if (this.lb_srn_b.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			try
 			{
@@ -1081,9 +1108,14 @@ namespace SimPe.Plugin.TabPage
 		private void SRNChangedItemsB(object sender, System.EventArgs e)
 		{
 			if (lb_srn_b.Tag != null)
+			{
 				return;
+			}
+
 			if (this.lb_srn_b.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			try
 			{
@@ -1114,7 +1146,10 @@ namespace SimPe.Plugin.TabPage
 		)
 		{
 			if (Tag == null)
+			{
 				return;
+			}
+
 			try
 			{
 				lb_srn_b.Tag = true;
@@ -1144,9 +1179,15 @@ namespace SimPe.Plugin.TabPage
 		)
 		{
 			if (Tag == null)
+			{
 				return;
+			}
+
 			if (lb_srn_b.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			try
 			{
 				lb_srn_b.Tag = true;

@@ -97,7 +97,10 @@ namespace Ambertation.Windows.Forms.Graph
 		protected override void DrawText(System.Drawing.Graphics gr)
 		{
 			if (this.properties == null)
+			{
 				return;
+			}
+
 			LinkGraphic.SetGraphicsMode(gr, !Quality);
 
 			Pen linepen = new Pen(Color.FromArgb(90, Color.Black));
@@ -128,7 +131,10 @@ namespace Ambertation.Windows.Forms.Graph
 			{
 				PropertyItem o = properties[k];
 				if (o == null)
+				{
 					continue;
+				}
+
 				string val = "";
 				val = (string)o.Value;
 
@@ -136,7 +142,10 @@ namespace Ambertation.Windows.Forms.Graph
 				{
 					int indentx = 0;
 					if (top < indent.Height)
+					{
 						indentx = indent.Width;
+					}
+
 					Font ft = new Font(
 						Font.FontFamily,
 						Font.Size,

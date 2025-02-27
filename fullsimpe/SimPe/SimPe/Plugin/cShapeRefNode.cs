@@ -277,7 +277,10 @@ namespace SimPe.Plugin
 
 			writer.Write((uint)ItemsA.Length);
 			for (int i = 0; i < ItemsA.Length; i++)
+			{
 				ItemsA[i].Serialize(writer);
+			}
+
 			writer.Write(Unknown5);
 
 			writer.Write((uint)ItemsB.Length);
@@ -305,7 +308,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (tShapeRefNode == null)
+				{
 					tShapeRefNode = new SimPe.Plugin.TabPage.ShapeRefNode();
+				}
+
 				return tShapeRefNode;
 			}
 		}
@@ -333,15 +339,21 @@ namespace SimPe.Plugin
 		protected override void InitTabPage()
 		{
 			if (tShapeRefNode == null)
+			{
 				tShapeRefNode = new SimPe.Plugin.TabPage.ShapeRefNode();
+			}
 
 			tShapeRefNode.lb_srn_a.Items.Clear();
 			for (int i = 0; i < this.ItemsA.Length; i++)
+			{
 				tShapeRefNode.lb_srn_a.Items.Add(ItemsA[i]);
+			}
 
 			tShapeRefNode.lb_srn_b.Items.Clear();
 			for (int i = 0; i < this.ItemsB.Length; i++)
+			{
 				tShapeRefNode.lb_srn_b.Items.Add(ItemsB[i]);
+			}
 
 			tShapeRefNode.tb_srn_uk1.Text =
 				"0x" + Helper.HexString((ushort)this.Unknown1);
@@ -384,7 +396,10 @@ namespace SimPe.Plugin
 		public override void Dispose()
 		{
 			if (this.tShapeRefNode != null)
+			{
 				this.tShapeRefNode.Dispose();
+			}
+
 			tShapeRefNode = null;
 		}
 

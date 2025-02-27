@@ -93,7 +93,10 @@ namespace SimPe.Interfaces
 			foreach (SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pkg.Index)
 			{
 				if (ResultGui.ForcedStop)
+				{
 					return;
+				}
+
 				SearchPackage(pkg, pfd);
 			}
 		}
@@ -109,7 +112,10 @@ namespace SimPe.Interfaces
 			foreach (SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii in fiis)
 			{
 				if (ResultGui.ForcedStop)
+				{
 					return;
+				}
+
 				SearchPackage(fii.Package, fii.FileDescriptor);
 			}
 		}
@@ -159,7 +165,9 @@ namespace SimPe.Interfaces
 				}
 			}
 			else
+			{
 				ResultGui.StopSearch();
+			}
 		}
 
 		public override string ToString()

@@ -122,9 +122,14 @@ namespace pjse.BhavOperandWizards.Wiz0x001b
 				Boolset ops16 = ops1[6];
 
 				if (cbLocation.SelectedIndex >= 0)
+				{
 					ops1[2] = ((byte)(cbLocation.SelectedIndex - 2));
+				}
+
 				if (cbDirection.SelectedIndex >= 0)
+				{
 					ops1[3] = ((byte)(cbDirection.SelectedIndex - 2));
+				}
 
 				ops16[1] = ckbNoFailureTrees.Checked;
 				ops16[2] = ckbDifferentAltitudes.Checked;
@@ -257,7 +262,9 @@ namespace pjse.BhavOperandWizards
 		public override void Dispose()
 		{
 			if (myForm != null)
+			{
 				myForm = null;
+			}
 		}
 		#endregion
 	}

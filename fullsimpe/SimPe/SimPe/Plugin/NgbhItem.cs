@@ -117,7 +117,9 @@ namespace SimPe.Plugin
 				Flags.IsVisible = true;
 				Flags.IsControler = false;
 				if (type == SimMemoryType.Gossip)
+				{
 					this.SimInstance = 1;
+				}
 			}
 			else if (
 				type == SimMemoryType.GossipInventory
@@ -205,7 +207,9 @@ namespace SimPe.Plugin
 				{
 					invnr = value;
 					if (parent != null)
+					{
 						parent.Changed = true;
+					}
 				}
 			}
 		}
@@ -220,7 +224,9 @@ namespace SimPe.Plugin
 			{
 				unknown2 = value;
 				if (parent != null)
+				{
 					parent.Changed = true;
+				}
 			}
 		}
 
@@ -252,7 +258,9 @@ namespace SimPe.Plugin
 					mci = null;
 
 					if (parent != null)
+					{
 						parent.Changed = true;
+					}
 				}
 			}
 		}
@@ -270,7 +278,9 @@ namespace SimPe.Plugin
 			{
 				flags = value;
 				if (parent != null)
+				{
 					parent.Changed = true;
+				}
 			}
 		}
 
@@ -287,7 +297,9 @@ namespace SimPe.Plugin
 			{
 				data = value;
 				if (parent != null)
+				{
 					parent.Changed = true;
+				}
 			}
 		}
 
@@ -299,7 +311,9 @@ namespace SimPe.Plugin
 			get
 			{
 				if (objd != null)
+				{
 					return objd;
+				}
 
 				this.objd = new SimPe.PackedFiles.Wrapper.ExtObjd();
 
@@ -324,15 +338,20 @@ namespace SimPe.Plugin
 				try
 				{
 					if (mci == null)
+					{
 						mci =
 							SimPe.PackedFiles.Wrapper.ObjectComboBox.ObjectCache.FindItem(
 								guid
 							);
+					}
 				}
 				catch (Exception) { }
 
 				if (mci == null)
+				{
 					mci = new SimPe.Cache.MemoryCacheItem();
+				}
+
 				return mci;
 			}
 		}
@@ -350,11 +369,15 @@ namespace SimPe.Plugin
 			get
 			{
 				if (ParentSlot is NgbhSlot)
+				{
 					if (
 						this.OwnerInstance != ((NgbhSlot)ParentSlot).SlotID
 						&& this.OwnerInstance != 0
 					)
+					{
 						return true;
+					}
+				}
 
 				return false;
 			}
@@ -369,28 +392,47 @@ namespace SimPe.Plugin
 				if (IsInventory)
 				{
 					if (gossip)
+					{
 						return SimMemoryType.GossipInventory;
+					}
+
 					return SimMemoryType.Inventory;
 				}
 
 				if (this.Flags.IsControler)
 				{
 					if (this.MemoryCacheItem.IsBadge)
+					{
 						return SimMemoryType.Badge;
+					}
+
 					if (this.MemoryCacheItem.IsSkill)
+					{
 						return SimMemoryType.Skill;
+					}
+
 					if (this.MemoryCacheItem.IsAspiration)
+					{
 						return SimMemoryType.Aspiration;
+					}
+
 					if (this.Data.Length < 2)
+					{
 						return SimMemoryType.Token;
+					}
+
 					if (this.Data.Length < 3)
+					{
 						return SimMemoryType.ValueToken;
+					}
 
 					return SimMemoryType.Object;
 				}
 
 				if (gossip)
+				{
 					return SimMemoryType.Gossip;
+				}
 
 				return SimMemoryType.Memory;
 			}
@@ -480,14 +522,20 @@ namespace SimPe.Plugin
 			get
 			{
 				if (MemoryType != SimMemoryType.Object)
+				{
 					return 0;
+				}
+
 				int sid = (this.GetValue(0x02) << 16) + this.GetValue(0x01);
 				return (uint)sid;
 			}
 			set
 			{
 				if (MemoryType != SimMemoryType.Object)
+				{
 					return;
+				}
+
 				this.PutValue(0x01, (ushort)(value & 0x0000ffff));
 				this.PutValue(0x02, (ushort)((value >> 16) & 0x0000ffff));
 			}
@@ -513,14 +561,19 @@ namespace SimPe.Plugin
 		public void SetSubject(ushort inst, uint guid)
 		{
 			if (inst != 0)
+			{
 				SimInstance = inst;
+			}
 			else
 			{
 				if (data.Length == 0xD)
 				{
 					ushort[] nd = new ushort[data.Length - 1];
 					for (int i = 0; i < nd.Length; i++)
+					{
 						nd[i] = data[i];
+					}
+
 					data = nd;
 				}
 			}
@@ -533,9 +586,13 @@ namespace SimPe.Plugin
 				FileTable.ProviderRegistry.SimDescriptionProvider.SimGuidMap[guid]
 				as SimPe.Interfaces.Wrapper.ISDesc;
 			if (sdsc != null)
+			{
 				SetSubject(sdsc.Instance, guid);
+			}
 			else
+			{
 				SetSubject(0, guid);
+			}
 		}
 
 		/// <summary>
@@ -548,15 +605,27 @@ namespace SimPe.Plugin
 
 			flags = new NgbhItemFlags(reader.ReadUInt16());
 			if ((uint)parent.Version >= (uint)NgbhVersion.Business)
+			{
 				flags2 = new NgbhItemFlags(reader.ReadUInt16());
+			}
+
 			if ((uint)parent.Version >= (uint)NgbhVersion.Nightlife)
+			{
 				invnr = reader.ReadUInt32();
+			}
 			else
+			{
 				invnr = 0;
+			}
+
 			if ((uint)parent.Version >= (uint)NgbhVersion.Seasons)
+			{
 				unknown2 = reader.ReadUInt16();
+			}
 			else
+			{
 				unknown2 = 0;
+			}
 
 			data = new ushort[reader.ReadInt32()];
 			for (int i = 0; i < data.Length; i++)
@@ -565,7 +634,9 @@ namespace SimPe.Plugin
 			}
 
 			if (parent != null)
+			{
 				parent.Changed = false;
+			}
 		}
 
 		/// <summary>
@@ -581,11 +652,20 @@ namespace SimPe.Plugin
 			writer.Write(guid);
 			writer.Write(flags.Value);
 			if ((uint)parent.Version >= (uint)NgbhVersion.Business)
+			{
 				writer.Write((ushort)flags2);
+			}
+
 			if ((uint)parent.Version >= (uint)NgbhVersion.Nightlife)
+			{
 				writer.Write(invnr);
+			}
+
 			if ((uint)parent.Version >= (uint)NgbhVersion.Seasons)
+			{
 				writer.Write(unknown2);
+			}
+
 			writer.Write((int)data.Length);
 			for (int i = 0; i < data.Length; i++)
 			{
@@ -609,7 +689,9 @@ namespace SimPe.Plugin
 			data[slot] = val;
 
 			if (parent != null)
+			{
 				parent.Changed = true;
+			}
 		}
 
 		/// <summary>
@@ -620,7 +702,9 @@ namespace SimPe.Plugin
 		public void SetValue(int slot, ushort val)
 		{
 			if (data.Length > slot)
+			{
 				data[slot] = val;
+			}
 		}
 
 		/// <summary>
@@ -631,9 +715,13 @@ namespace SimPe.Plugin
 		internal ushort GetValue(int slot)
 		{
 			if (data.Length > slot)
+			{
 				return data[slot];
+			}
 			else
+			{
 				return 0;
+			}
 		}
 
 		protected string GetSubjectName()
@@ -641,7 +729,9 @@ namespace SimPe.Plugin
 			string ext = " (0x" + Helper.HexString(this.SimID) + ")";
 			string n = SimPe.Localization.GetString("Unknown") + ext;
 			if (parent.Provider.SimNameProvider.StoredData.ContainsKey(this.SimID))
+			{
 				n = parent.Provider.SimNameProvider.FindName(this.SimID).ToString();
+			}
 			else
 			{
 				SimPe.Cache.MemoryCacheItem mci =
@@ -649,7 +739,9 @@ namespace SimPe.Plugin
 						this.SimID
 					);
 				if (mci != null)
+				{
 					n = mci.Name + ext;
+				}
 			}
 
 			return n;
@@ -665,12 +757,18 @@ namespace SimPe.Plugin
 			if (name.Trim() == "")
 			{
 				if (SimPe.Helper.WindowsRegistry.HiddenMode)
+				{
 					name = "---";
+				}
 				else
+				{
 					name = "[GUID=0x" + Helper.HexString(this.guid) + "]";
+				}
 			}
 			if (!this.Flags.IsVisible)
+			{
 				name = "[invisible] " + name;
+			}
 
 			try
 			{
@@ -701,12 +799,18 @@ namespace SimPe.Plugin
 						this.ReferencedObjectGuid
 					);
 				if (mci != null)
+				{
 					name += mci.Name;
+				}
+
 				name += "}";
 			}
 
 			if (SimPe.Helper.WindowsRegistry.HiddenMode)
+			{
 				name += " [GUID=0x" + Helper.HexString(this.guid) + "]";
+			}
+
 			return /*data.Length.ToString()+" "+*/
 			name;
 		}

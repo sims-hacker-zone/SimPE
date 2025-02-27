@@ -24,9 +24,14 @@ namespace SimPe.PackedFiles.Wrapper
 			decays = new List<ushort>();
 
 			for (int i = 0; i < 11; i++)
+			{
 				HobbyEnthusiasm.Add(0);
+			}
+
 			for (int i = 0; i < 7; i++)
+			{
 				decays.Add(0);
+			}
 
 			predestined = 0;
 			LongtermAspiration = 0;
@@ -229,36 +234,55 @@ namespace SimPe.PackedFiles.Wrapper
 			pa = SimPe.Data.MetaData.AspirationTypes.Nothing;
 			SecondaryAspiration = SimPe.Data.MetaData.AspirationTypes.Nothing;
 			if (parent == null)
+			{
 				return;
+			}
+
 			pa = parent.CharacterDescription.Aspiration;
 
 			if (aspeditor == null)
+			{
 				return;
+			}
+
 			SimPe.Data.MetaData.AspirationTypes[] asps = aspeditor.LoadAspirations(
 				this.parent
 			);
 
 			if (asps == null)
+			{
 				return;
+			}
+
 			if (asps.Length > 0)
+			{
 				pa = asps[0];
+			}
+
 			if (asps.Length > 1)
+			{
 				SecondaryAspiration = asps[1];
+			}
 		}
 
 		protected void StoreAspirations()
 		{
 			if (parent == null)
-				return;
-			if (aspeditor == null)
-				return;
-			/*
-			if (pa == SimPe.Data.MetaData.AspirationTypes.Nothing)
 			{
-				pa = SimPe.Data.MetaData.AspirationTypes.Romance;
-				sa = SimPe.Data.MetaData.AspirationTypes.Nothing;
+				return;
 			}
-			*/
+
+			if (aspeditor == null)
+			{
+				return;
+			}
+			/*
+if (pa == SimPe.Data.MetaData.AspirationTypes.Nothing)
+{
+	pa = SimPe.Data.MetaData.AspirationTypes.Romance;
+	sa = SimPe.Data.MetaData.AspirationTypes.Nothing;
+}
+*/
 			SimPe.Data.MetaData.AspirationTypes[] asps =
 				new SimPe.Data.MetaData.AspirationTypes[] { pa, SecondaryAspiration };
 			aspeditor.StoreAspirations(asps, parent);
@@ -273,18 +297,29 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				if (parent == null)
+				{
 					return pa;
+				}
+
 				if ((int)parent.Version >= (int)SDescVersions.Freetime)
+				{
 					return pa;
+				}
 				else
+				{
 					return parent.CharacterDescription.Aspiration;
+				}
 			}
 			set
 			{
 				if ((int)parent.Version >= (int)SDescVersions.Freetime)
+				{
 					pa = value;
+				}
 				else
+				{
 					parent.CharacterDescription.Aspiration = value;
+				}
 			}
 		}
 

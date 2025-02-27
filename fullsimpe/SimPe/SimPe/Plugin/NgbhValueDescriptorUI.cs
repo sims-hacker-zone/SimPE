@@ -505,14 +505,19 @@ namespace SimPe.Plugin
 			set
 			{
 				if (vds != null)
+				{
 					vds.SelectedDescriptorChanged -= new EventHandler(
 						vds_SelectedDescriptorChanged
 					);
+				}
+
 				vds = value;
 				if (vds != null)
+				{
 					vds.SelectedDescriptorChanged += new EventHandler(
 						vds_SelectedDescriptorChanged
 					);
+				}
 			}
 		}
 
@@ -520,9 +525,13 @@ namespace SimPe.Plugin
 		{
 			panel1.Visible = item != null;
 			if (des != null)
+			{
 				panel2.Visible = des.HasComplededFlag && item != null;
+			}
 			else
+			{
 				panel2.Visible = false;
+			}
 
 			panel3.Visible = des != null && item == null;
 		}
@@ -533,7 +542,10 @@ namespace SimPe.Plugin
 		void SetContent()
 		{
 			if (inter)
+			{
 				return;
+			}
+
 			inter = true;
 			if (des != null && slot != null)
 			{
@@ -545,10 +557,14 @@ namespace SimPe.Plugin
 				{
 					pb.Value = item.GetValue(des.DataNumber);
 					if (des.HasComplededFlag)
+					{
 						cb.Checked = item.GetValue(des.CompletedDataNumber) != 0;
+					}
 				}
 				else
+				{
 					lb.Text = des.ToString();
+				}
 
 				this.Enabled = true;
 			}
@@ -585,61 +601,104 @@ namespace SimPe.Plugin
 		)
 		{
 			if (item != null)
+			{
 				return;
+			}
+
 			if (slot == null)
+			{
 				return;
+			}
+
 			if (des == null)
+			{
 				return;
+			}
 
 			if (des.Intern)
+			{
 				item = slot.ItemsA.AddNew(SimMemoryType.Skill);
+			}
 			else
+			{
 				item = slot.ItemsB.AddNew(SimMemoryType.Skill);
+			}
 
 			item.Guid = des.Guid;
 			item.PutValue(des.DataNumber, 0);
 			if (des.HasComplededFlag)
+			{
 				item.PutValue(des.CompletedDataNumber, 0);
+			}
 
 			SetContent();
 
 			if (AddedNewItem != null)
+			{
 				AddedNewItem(this, new EventArgs());
+			}
 		}
 
 		private void cb_CheckedChanged(object sender, System.EventArgs e)
 		{
 			if (inter)
+			{
 				return;
+			}
+
 			if (item == null)
+			{
 				return;
+			}
+
 			if (des == null)
+			{
 				return;
+			}
+
 			if (!des.HasComplededFlag)
+			{
 				return;
+			}
 
 			if (cb.Checked)
+			{
 				item.PutValue(des.CompletedDataNumber, 1);
+			}
 			else
+			{
 				item.PutValue(des.CompletedDataNumber, 0);
+			}
 
 			if (ChangedItem != null)
+			{
 				ChangedItem(this, new EventArgs());
+			}
 		}
 
 		private void pb_Changed(object sender, System.EventArgs e)
 		{
 			if (inter)
+			{
 				return;
+			}
+
 			if (item == null)
+			{
 				return;
+			}
+
 			if (des == null)
+			{
 				return;
+			}
 
 			item.PutValue(des.DataNumber, (ushort)pb.Value);
 
 			if (ChangedItem != null)
+			{
 				ChangedItem(this, new EventArgs());
+			}
 		}
 
 		private void pb_Load(object sender, System.EventArgs e)

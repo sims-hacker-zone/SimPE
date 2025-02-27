@@ -470,7 +470,9 @@ namespace SimPe.Plugin.Anim
 			f.ok = false;
 			f.cbnames.Items.Clear();
 			foreach (AnimationFrameBlock afb in gmdc.LinkedAnimation.Part2)
+			{
 				f.cbnames.Items.Add(afb);
+			}
 
 			f.lv.Items.Clear();
 			foreach (ImportedFrameBlock ifb in amb)
@@ -479,23 +481,36 @@ namespace SimPe.Plugin.Anim
 				lvi.Text = ifb.ImportedName;
 				lvi.SubItems.Add(ifb.Action.ToString());
 				if (ifb.Target != null)
+				{
 					lvi.SubItems.Add(ifb.Target.ToString());
+				}
 				else
+				{
 					lvi.SubItems.Add("---");
+				}
+
 				lvi.SubItems.Add(ifb.FrameBlock.FrameCount.ToString());
 				lvi.SubItems.Add(ifb.FrameBlock.GetDuration().ToString());
 				if (ifb.DiscardZeroFrame)
+				{
 					lvi.SubItems.Add("no");
+				}
 				else
+				{
 					lvi.SubItems.Add("yes");
+				}
 
 				lvi.ForeColor = ifb.MarkColor;
 				lvi.Tag = ifb;
 
 				if (ifb.Target != null)
+				{
 					f.lv.Items.Insert(0, lvi);
+				}
 				else
+				{
 					f.lv.Items.Add(lvi);
+				}
 			}
 			f.ShowDialog();
 
@@ -510,7 +525,9 @@ namespace SimPe.Plugin.Anim
 			{
 				object o = lv.SelectedItems[0].Tag;
 				if (o is ImportedFrameBlock)
+				{
 					SelectJoint();
+				}
 			}
 		}
 
@@ -566,7 +583,9 @@ namespace SimPe.Plugin.Anim
 				((AnimImporterAction)cbaction.SelectedItem)
 				== AnimImporterAction.Replace;
 			if (this.Tag != null)
+			{
 				return;
+			}
 
 			for (int i = 0; i < lv.SelectedItems.Count; i++)
 			{
@@ -580,7 +599,10 @@ namespace SimPe.Plugin.Anim
 		private void cbnames_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			if (this.Tag != null)
+			{
 				return;
+			}
+
 			for (int i = 0; i < lv.SelectedItems.Count; i++)
 			{
 				ImportedFrameBlock a = (ImportedFrameBlock)lv.SelectedItems[i].Tag;
@@ -593,15 +615,23 @@ namespace SimPe.Plugin.Anim
 		private void cbDiscard_CheckedChanged(object sender, System.EventArgs e)
 		{
 			if (this.Tag != null)
+			{
 				return;
+			}
+
 			for (int i = 0; i < lv.SelectedItems.Count; i++)
 			{
 				ImportedFrameBlock a = (ImportedFrameBlock)lv.SelectedItems[i].Tag;
 				a.DiscardZeroFrame = cbDiscard.Checked;
 				if (a.DiscardZeroFrame)
+				{
 					lv.SelectedItems[i].SubItems[5].Text = "no";
+				}
 				else
+				{
 					lv.SelectedItems[i].SubItems[5].Text = "yes";
+				}
+
 				lv.SelectedItems[i].ForeColor = a.MarkColor;
 			}
 		}
@@ -617,7 +647,10 @@ namespace SimPe.Plugin.Anim
 		private void cbRemove_CheckedChanged(object sender, System.EventArgs e)
 		{
 			if (this.Tag != null)
+			{
 				return;
+			}
+
 			for (int i = 0; i < lv.SelectedItems.Count; i++)
 			{
 				ImportedFrameBlock a = (ImportedFrameBlock)lv.SelectedItems[i].Tag;

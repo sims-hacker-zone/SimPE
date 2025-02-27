@@ -49,6 +49,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			rd.items = null;
 			bool check = false;
 			if (!es.Empty)
+			{
 				if (es[0].HasFileDescriptor)
 				{
 					check = true;
@@ -61,6 +62,7 @@ namespace SimPe.Plugin.Tool.Dockable
 					rd.tbinstance2.Text =
 						"0x" + Helper.HexString(es[0].Resource.FileDescriptor.SubType);
 				}
+			}
 
 			rd.pntypes.Enabled = check;
 
@@ -69,7 +71,9 @@ namespace SimPe.Plugin.Tool.Dockable
 			foreach (SimPe.Events.ResourceContainer e in es)
 			{
 				if (!e.HasFileDescriptor)
+				{
 					continue;
+				}
 
 				if (
 					e.Resource.FileDescriptor.MarkForReCompress
@@ -78,15 +82,23 @@ namespace SimPe.Plugin.Tool.Dockable
 						&& !e.Resource.FileDescriptor.HasUserdata
 					)
 				)
+				{
 					tct++;
+				}
 			}
 
 			if (tct == 0)
+			{
 				rd.cbComp.SelectedIndex = 0;
+			}
 			else if (tct == es.Count)
+			{
 				rd.cbComp.SelectedIndex = 1;
+			}
 			else
+			{
 				rd.cbComp.SelectedIndex = 2;
+			}
 
 			rd.cbComp.Enabled = (es.Count > 0);
 			rd.lbComp.Enabled = (es.Count > 0);
@@ -95,8 +107,12 @@ namespace SimPe.Plugin.Tool.Dockable
 			rd.guipackage = es.LoadedPackage;
 
 			if (es.Loaded)
+			{
 				if (!es.LoadedPackage.Package.LoadedCompressedState)
+				{
 					rd.cbComp.Enabled = false;
+				}
+			}
 		}
 
 		#endregion

@@ -90,7 +90,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (varname == null)
+				{
 					return "";
+				}
+
 				return varname;
 			}
 			set
@@ -342,7 +345,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (varname == null)
+				{
 					return "";
+				}
+
 				return varname;
 			}
 			set
@@ -400,16 +406,25 @@ namespace SimPe.Plugin
 			{
 				int sz = 16;
 				if ((TypeCode != 0x03) || (ver == 4))
+				{
 					sz += 15;
+				}
+
 				if ((TypeCode <= 0x03) && (version == 3))
 				{
 					if (ver == 5)
+					{
 						sz = 31;
+					}
 					else
+					{
 						sz = 15;
+					}
 				}
 				if ((TypeCode <= 0x03) && ver == 4)
+				{
 					sz = 31;
+				}
 
 				Items = new ExtensionItem[1];
 				ExtensionItem ei = new ExtensionItem();
@@ -460,19 +475,30 @@ namespace SimPe.Plugin
 			{
 				int sz = 16;
 				if ((TypeCode != 0x03) || (ver == 4))
+				{
 					sz += 15;
+				}
+
 				if ((TypeCode <= 0x03) && (version == 3))
 				{
 					if (ver == 5)
+					{
 						sz = 31;
+					}
 					else
+					{
 						sz = 15;
+					}
 				}
 				if ((TypeCode <= 0x03) && ver == 4)
+				{
 					sz = 31;
+				}
 
 				if (Items.Length > 0)
+				{
 					data = Items[0].Data;
+				}
 
 				data = Helper.SetLength(data, sz);
 				writer.Write(data);
@@ -483,7 +509,9 @@ namespace SimPe.Plugin
 
 				writer.Write((uint)Items.Length);
 				for (int i = 0; i < Items.Length; i++)
+				{
 					Items[i].Serialize(writer);
+				}
 			}
 		}
 
@@ -493,7 +521,10 @@ namespace SimPe.Plugin
 			get
 			{
 				if (form == null)
+				{
 					form = new TabPage.Extension();
+				}
+
 				return form;
 			}
 		}
@@ -505,7 +536,9 @@ namespace SimPe.Plugin
 		protected override void InitTabPage()
 		{
 			if (form == null)
+			{
 				form = new TabPage.Extension();
+			}
 
 			form.tb_ver.Text = "0x" + Helper.HexString(version);
 			form.tb_type.Text = "0x" + Helper.HexString(TypeCode);
@@ -513,7 +546,9 @@ namespace SimPe.Plugin
 
 			form.lb_items.Items.Clear();
 			foreach (ExtensionItem ei in Items)
+			{
 				form.lb_items.Items.Add(ei);
+			}
 
 			form.gbIems.Tag = this.Items;
 		}
@@ -523,7 +558,10 @@ namespace SimPe.Plugin
 		public override void Dispose()
 		{
 			if (this.form != null)
+			{
 				this.form.Dispose();
+			}
+
 			form = null;
 		}
 

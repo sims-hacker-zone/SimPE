@@ -88,16 +88,22 @@ namespace System.Windows.Forms
 			Rectangle subItemRect = Rectangle.Empty;
 
 			if (Item == null)
+			{
 				throw new ArgumentNullException("Item");
+			}
 
 			int[] order = GetColumnOrder();
 			if (order == null) // No Columns
+			{
 				return subItemRect;
+			}
 
 			if (SubItem >= order.Length)
+			{
 				throw new IndexOutOfRangeException(
 					"SubItem " + SubItem + " out of range"
 				);
+			}
 
 			// Retrieve the bounds of the entire ListViewItem (all subitems)
 			Rectangle lviBounds = Item.GetBounds(ItemBoundsPortion.Entire);
@@ -111,7 +117,10 @@ namespace System.Windows.Forms
 			{
 				col = this.Columns[order[i]];
 				if (col.Index == SubItem)
+				{
 					break;
+				}
+
 				subItemX += col.Width;
 			}
 
@@ -146,9 +155,14 @@ namespace System.Windows.Forms
 		public void AddEmbeddedControl(Control c, int col, int row, DockStyle dock)
 		{
 			if (c == null)
+			{
 				throw new ArgumentNullException();
+			}
+
 			if (col >= Columns.Count || row >= Items.Count)
+			{
 				throw new ArgumentOutOfRangeException();
+			}
 
 			EmbeddedControl ec;
 			ec.Control = c;
@@ -172,7 +186,9 @@ namespace System.Windows.Forms
 		public void RemoveEmbeddedControl(Control c)
 		{
 			if (c == null)
+			{
 				throw new ArgumentNullException();
+			}
 
 			for (int i = 0; i < _embeddedControls.Count; i++)
 			{
@@ -197,8 +213,12 @@ namespace System.Windows.Forms
 		public Control GetEmbeddedControl(int col, int row)
 		{
 			foreach (EmbeddedControl ec in _embeddedControls)
+			{
 				if (ec.Row == row && ec.Column == col)
+				{
 					return ec.Control;
+				}
+			}
 
 			return null;
 		}
@@ -214,7 +234,9 @@ namespace System.Windows.Forms
 			{
 				// Embedded controls are rendered only when we're in Details mode
 				foreach (EmbeddedControl ec in _embeddedControls)
+				{
 					ec.Control.Visible = (value == View.Details);
+				}
 
 				base.View = value;
 			}
@@ -226,7 +248,9 @@ namespace System.Windows.Forms
 			{
 				case WM_PAINT:
 					if (View != View.Details)
+					{
 						break;
+					}
 
 					// Calculate the position of all embedded controls
 					foreach (EmbeddedControl ec in _embeddedControls)

@@ -176,11 +176,16 @@ namespace SimPe.Plugin.Gmdc.Exporter
 
 			writer.WriteLine("# number of polygons: " + (Group.Faces.Count / 3));
 			if (modelnr > 0)
+			{
 				writer.WriteLine(
 					"# vertsSoFar: " + ((vertexoffset + vertexcount) - 2).ToString()
 				);
+			}
 			else
+			{
 				writer.WriteLine("# vertsSoFar: 0");
+			}
+
 			writer.WriteLine("# totalVertices: " + (vertexoffset + vertexcount));
 			writer.WriteLine("# vertGroupStart: " + vertexoffset);
 

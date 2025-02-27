@@ -224,7 +224,10 @@ namespace SimPe.Packages
 			}
 
 			if (lblist.Items.Count > 0)
+			{
 				lblist.SelectedIndex = 0;
+			}
+
 			btdelete.Enabled = (lblist.SelectedIndex >= 0);
 
 			this.ShowDialog();
@@ -253,18 +256,24 @@ namespace SimPe.Packages
 				);
 				S2CPDescriptorBase s2cpb = new S2CPDescriptorBase(package);
 				if (s2cpb.Guid == null)
+				{
 					MessageBox.Show(
 						"This Package does not contain a valid GlobalGUID.\nYou can create one by including this File in a diffrent Sims2Community Package or by adding a 'Sims2Comunity Identifier' to the Package."
 					);
+				}
 				else
+				{
 					lblist.Items.Add(s2cpb);
+				}
 			}
 		}
 
 		private void DeletePackage(object sender, System.EventArgs e)
 		{
 			if (lblist.SelectedIndex < 0)
+			{
 				return;
+			}
 
 			lblist.Items.RemoveAt(lblist.SelectedIndex);
 		}
@@ -273,7 +282,10 @@ namespace SimPe.Packages
 		{
 			btdelete.Enabled = false;
 			if (lblist.SelectedIndex < 0)
+			{
 				return;
+			}
+
 			btdelete.Enabled = true;
 		}
 

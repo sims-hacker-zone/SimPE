@@ -68,6 +68,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			objd = null;
 			cpf = null;
 			if (oci.Tag != null)
+			{
 				if (oci.Tag is SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem)
 				{
 					cpf = new SimPe.PackedFiles.Wrapper.Cpf();
@@ -75,14 +76,19 @@ namespace SimPe.Plugin.Tool.Dockable
 						(SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem)oci.Tag
 					);
 				}
+			}
 
 			UpdateXObjScreen();
 			if (pb.Image == null)
 			{
 				if (oci.Thumbnail == null)
+				{
 					pb.Image = defimg;
+				}
 				else
+				{
 					pb.Image = GenerateImage(pb.Size, oci.Thumbnail, true);
+				}
 			}
 			lbName.Text = oci.Name;
 		}
@@ -132,7 +138,10 @@ namespace SimPe.Plugin.Tool.Dockable
 		{
 			ClearScreen();
 			if (cpf == null)
+			{
 				return;
+			}
+
 			this.lbEPs.Visible = this.lbEPList.Visible = false;
 
 			SetupCategories(
@@ -151,9 +160,14 @@ namespace SimPe.Plugin.Tool.Dockable
 			if (strs != null)
 			{
 				if (strs.Count > 0)
+				{
 					this.lbName.Text = strs[0].Title;
+				}
+
 				if (strs.Count > 1)
+				{
 					this.lbAbout.Text = strs[1].Title;
+				}
 			}
 			else
 			{
@@ -164,7 +178,9 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.lbPrice.Text = cpf.GetSaveItem("cost").UIntegerValue.ToString() + " $";
 
 			if (pb.Image == null)
+			{
 				pb.Image = defimg;
+			}
 		}
 
 		protected override SimPe.PackedFiles.Wrapper.StrItemList GetCtssItems()
@@ -182,7 +198,9 @@ namespace SimPe.Plugin.Tool.Dockable
 				return base.GetCtssItems(ctss, cpf.Package);
 			}
 			else
+			{
 				return base.GetCtssItems();
+			}
 		}
 
 		public static Data.XObjFunctionSubSort GetFunctionSort(
@@ -197,17 +215,29 @@ namespace SimPe.Plugin.Tool.Dockable
 				{
 					string stype = cpf.GetSaveItem("sort").StringValue.Trim().ToLower();
 					if (stype == "landmark")
+					{
 						return Data.XObjFunctionSubSort.Hood_Landmark;
+					}
 					else if (stype == "flora")
+					{
 						return Data.XObjFunctionSubSort.Hood_Flora;
+					}
 					else if (stype == "effects")
+					{
 						return Data.XObjFunctionSubSort.Hood_Effects;
+					}
 					else if (stype == "misc")
+					{
 						return Data.XObjFunctionSubSort.Hood_Misc;
+					}
 					else if (stype == "stone")
+					{
 						return Data.XObjFunctionSubSort.Hood_Stone;
+					}
 					else
+					{
 						return Data.XObjFunctionSubSort.Hood_Other;
+					}
 				}
 				case "wall":
 				{
@@ -215,23 +245,41 @@ namespace SimPe.Plugin.Tool.Dockable
 						.StringValue.Trim()
 						.ToLower();
 					if (stype == "brick")
+					{
 						return Data.XObjFunctionSubSort.Wall_Brick;
+					}
 					else if (stype == "masonry")
+					{
 						return Data.XObjFunctionSubSort.Wall_Masonry;
+					}
 					else if (stype == "paint")
+					{
 						return Data.XObjFunctionSubSort.Wall_Paint;
+					}
 					else if (stype == "paneling")
+					{
 						return Data.XObjFunctionSubSort.Wall_Paneling;
+					}
 					else if (stype == "poured")
+					{
 						return Data.XObjFunctionSubSort.Wall_Poured;
+					}
 					else if (stype == "siding")
+					{
 						return Data.XObjFunctionSubSort.Wall_Siding;
+					}
 					else if (stype == "tile")
+					{
 						return Data.XObjFunctionSubSort.Wall_Tile;
+					}
 					else if (stype == "wallpaper")
+					{
 						return Data.XObjFunctionSubSort.Wall_Wallpaper;
+					}
 					else
+					{
 						return Data.XObjFunctionSubSort.Wall_Other;
+					}
 				}
 				case "terrainpaint":
 				{
@@ -243,21 +291,37 @@ namespace SimPe.Plugin.Tool.Dockable
 						.StringValue.Trim()
 						.ToLower();
 					if (stype == "brick")
+					{
 						return Data.XObjFunctionSubSort.Floor_Brick;
+					}
 					else if (stype == "carpet")
+					{
 						return Data.XObjFunctionSubSort.Floor_Carpet;
+					}
 					else if (stype == "lino")
+					{
 						return Data.XObjFunctionSubSort.Floor_Lino;
+					}
 					else if (stype == "poured")
+					{
 						return Data.XObjFunctionSubSort.Floor_Poured;
+					}
 					else if (stype == "stone")
+					{
 						return Data.XObjFunctionSubSort.Floor_Stone;
+					}
 					else if (stype == "tile")
+					{
 						return Data.XObjFunctionSubSort.Floor_Tile;
+					}
 					else if (stype == "wood")
+					{
 						return Data.XObjFunctionSubSort.Floor_Wood;
+					}
 					else
+					{
 						return Data.XObjFunctionSubSort.Floor_Other;
+					}
 				}
 				case "roof":
 				{
@@ -266,7 +330,10 @@ namespace SimPe.Plugin.Tool.Dockable
 				case "fence":
 				{
 					if (cpf.GetSaveItem("ishalfwall").UIntegerValue == 1)
+					{
 						return Data.XObjFunctionSubSort.Fence_Halfwall;
+					}
+
 					return Data.XObjFunctionSubSort.Fence_Rail;
 				}
 				default:
@@ -283,12 +350,15 @@ namespace SimPe.Plugin.Tool.Dockable
 		public static Image GetXThumbnail(SimPe.PackedFiles.Wrapper.Cpf cpf)
 		{
 			if (xthumbs == null)
+			{
 				xthumbs = SimPe.Packages.File.LoadFromFile(
 					System.IO.Path.Combine(
 						PathProvider.SimSavegameFolder,
 						"Thumbnails\\BuildModeThumbnails.package"
 					)
 				);
+			}
+
 			SimPe.Packages.File tmbs = xthumbs;
 			Data.XObjFunctionSubSort fss = ObjectPreview.GetFunctionSort(cpf);
 			uint inst = cpf.GetSaveItem("guid").UIntegerValue;
@@ -302,34 +372,45 @@ namespace SimPe.Plugin.Tool.Dockable
 			//get Thumbnail Type
 			uint[] types = new uint[] { }; //{0x8C311262, 0x8C31125E}; //floors, walls - no point loading these, this can't find these thumbs anyway
 			if (fss == Data.XObjFunctionSubSort.Roof)
+			{
 				types = new uint[] { 0xCC489E46 };
+			}
 			else if (
 				fss == Data.XObjFunctionSubSort.Fence_Rail
 				|| fss == Data.XObjFunctionSubSort.Fence_Halfwall
 			)
+			{
 				types = new uint[] { 0xCC30CDF8 };
+			}
 			else if (fss == Data.XObjFunctionSubSort.Roof)
+			{
 				types = new uint[] { 0xCC489E46 };
+			}
 			else if (fss == Data.XObjFunctionSubSort.Terrain)
 			{
 				types = new uint[] { 0xEC3126C4 };
 				if (cpf.GetItem("texturetname") != null)
+				{
 					inst = Hashes.GetCrc32(
 						Hashes.StripHashFromName(
 							cpf.GetItem("texturetname").StringValue.Trim().ToLower()
 						)
 					);
+				}
 			}
 			else if (cpf.FileDescriptor.Type == Data.MetaData.XNGB)
 			{
 				types = new uint[] { 0x4D533EDD };
 				if (nthumbs == null)
+				{
 					nthumbs = SimPe.Packages.File.LoadFromFile(
 						System.IO.Path.Combine(
 							PathProvider.SimSavegameFolder,
 							"Thumbnails\\CANHObjectsThumbnails.package"
 						)
 					);
+				}
+
 				tmbs = nthumbs;
 			}
 

@@ -164,10 +164,14 @@ namespace SimPe.Plugin.Anim
 			{
 				short tc = short.MaxValue;
 				for (int i = 0; i < this.Count; i++)
+				{
 					tc = Math.Min(tc, GetTimeCode(i));
+				}
 
 				if (tc == short.MaxValue)
+				{
 					tc = 0;
+				}
 
 				return tc;
 			}
@@ -183,7 +187,9 @@ namespace SimPe.Plugin.Anim
 			{
 				short tc = 0;
 				for (int i = 0; i < this.Count; i++)
+				{
 					tc = Math.Max(tc, GetTimeCode(i));
+				}
 
 				return tc;
 			}
@@ -200,11 +206,17 @@ namespace SimPe.Plugin.Anim
 				byte size = 0;
 
 				if (type == 0)
+				{
 					size = 1;
+				}
 				else if (type == 1)
+				{
 					size = 3;
+				}
 				else
+				{
 					size = 4;
+				}
 
 				return size;
 			}
@@ -231,7 +243,10 @@ namespace SimPe.Plugin.Anim
 		public short GetTimeCode(int index)
 		{
 			if (index < 0 || index >= Count)
+			{
 				return 0;
+			}
+
 			return this[index].TimeCode;
 		}
 
@@ -240,7 +255,9 @@ namespace SimPe.Plugin.Anim
 			AnimationAxisTransformBlock ab = new AnimationAxisTransformBlock(null);
 			ab.datai = (uint[])this.datai.Clone();
 			foreach (AnimationAxisTransform aat in items)
+			{
 				ab.Add(aat.CloneBase());
+			}
 
 			ab.type = this.type;
 
@@ -302,20 +319,28 @@ namespace SimPe.Plugin.Anim
 		{
 			//this.Sort();
 			for (int i = 0; i < this.Count; i++)
+			{
 				((AnimationAxisTransform)items[i]).SerializeData(writer);
+			}
 		}
 
 		public override string ToString()
 		{
 			string n = this.Type.ToString();
 			if (n.Length > 4)
+			{
 				n = n.Substring(0, n.Length - 4);
+			}
+
 			string s = n + ": ";
 
 			s += this.TokenSize.ToString() + " " + this.Unknown1Bits.ToString();
 			s += " (" + Count.ToString();
 			if (this.Locked)
+			{
 				s += ", locked";
+			}
+
 			s += ")";
 			return s;
 		}
@@ -361,8 +386,12 @@ namespace SimPe.Plugin.Anim
 			IntArrayList list = new IntArrayList();
 
 			foreach (AnimationAxisTransform aat in items)
+			{
 				if ((aat.Linear && linear) || (!aat.Linear && nonlinear))
+				{
 					list.Add(aat.TimeCode);
+				}
+			}
 
 			return list;
 		}
@@ -392,7 +421,10 @@ namespace SimPe.Plugin.Anim
 		public AnimationAxisTransform GetLast()
 		{
 			if (Count == 0)
+			{
 				return null;
+			}
+
 			return this[Count - 1];
 		}
 
@@ -403,7 +435,10 @@ namespace SimPe.Plugin.Anim
 		public AnimationAxisTransform GetFirst()
 		{
 			if (Count == 0)
+			{
 				return null;
+			}
+
 			return this[0];
 		}
 
@@ -437,9 +472,12 @@ namespace SimPe.Plugin.Anim
 		public void Add(AnimationAxisTransform aat)
 		{
 			if ((aat.Parent != this && aat.Parent != null) || aat.Index != -1)
+			{
 				throw new AxisTransformException(
 					"Can't add the passed AnimationAxisTransform!"
 				);
+			}
+
 			aat.SetIndex(items.Count);
 			aat.SetParent(this);
 			items.Add(aat);
@@ -448,8 +486,12 @@ namespace SimPe.Plugin.Anim
 		public bool ContainsTimeCode(short timecode)
 		{
 			foreach (AnimationAxisTransform a in items)
+			{
 				if (a.TimeCode == timecode)
+				{
 					return true;
+				}
+			}
 
 			return false;
 		}
@@ -480,7 +522,9 @@ namespace SimPe.Plugin.Anim
 				items.Count
 			);
 			if (ContainsTimeCode(timecode))
+			{
 				return null;
+			}
 
 			items.Add(aat);
 			return aat;
@@ -522,9 +566,11 @@ namespace SimPe.Plugin.Anim
 		public void Insert(int index, AnimationAxisTransform aat)
 		{
 			if ((aat.Parent != this && aat.Parent != null) || aat.Index != -1)
+			{
 				throw new AxisTransformException(
 					"Can't add the passed AnimationAxisTransform!"
 				);
+			}
 
 			aat.SetIndex(index);
 			aat.SetParent(this);
@@ -565,7 +611,9 @@ namespace SimPe.Plugin.Anim
 		public void Clear(bool clearlinear, bool clearnonlinear)
 		{
 			if (clearlinear && clearnonlinear)
+			{
 				this.Clear();
+			}
 			else
 			{
 				ArrayList list = new ArrayList();
@@ -573,10 +621,14 @@ namespace SimPe.Plugin.Anim
 				foreach (AnimationAxisTransform aat in items)
 				{
 					if (aat.Linear && !clearlinear)
+					{
 						list.Add(aat);
+					}
 
 					if (!aat.Linear && !clearnonlinear)
+					{
 						list.Add(aat);
+					}
 				}
 
 				items.Clear();
@@ -591,7 +643,9 @@ namespace SimPe.Plugin.Anim
 		public void Clear()
 		{
 			for (int i = items.Count - 1; i >= 0; i--)
+			{
 				((AnimationAxisTransform)items[i]).Dispose();
+			}
 
 			items.Clear();
 		}
@@ -659,7 +713,9 @@ namespace SimPe.Plugin.Anim
 		{
 			start = Math.Max(0, start);
 			for (int i = start; i < items.Count; i++)
+			{
 				((AnimationAxisTransform)items[i]).SetIndex(i);
+			}
 		}
 		#endregion
 
@@ -677,7 +733,9 @@ namespace SimPe.Plugin.Anim
 		{
 			FrameType ft = FrameType.Translation;
 			if (Parent != null)
+			{
 				ft = Parent.TransformationType;
+			}
 
 			return GetScale(ft);
 		}
@@ -701,9 +759,14 @@ namespace SimPe.Plugin.Anim
 		{
 			float scale = SCALE;
 			if (!locked)
+			{
 				scale = scale * 16f;
+			}
+
 			if (ft == FrameType.Rotation)
+			{
 				scale = SCALEROT;
+			}
 
 			return scale;
 		}

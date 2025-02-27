@@ -195,31 +195,41 @@ namespace pjse
 				this.tcResources.SelectedTab == this.tpPackage
 				&& lvPackage.SelectedItems != null
 			)
+			{
 				return lvPackage;
+			}
 
 			if (
 				this.tcResources.SelectedTab == this.tpGroup
 				&& lvGroup.SelectedItems != null
 			)
+			{
 				return lvGroup;
+			}
 
 			if (
 				this.tcResources.SelectedTab == this.tpSemiGroup
 				&& lvSemi.SelectedItems != null
 			)
+			{
 				return lvSemi;
+			}
 
 			if (
 				this.tcResources.SelectedTab == this.tpGlobalGroup
 				&& lvGlobal.SelectedItems != null
 			)
+			{
 				return lvGlobal;
+			}
 
 			if (
 				this.tcResources.SelectedTab == this.tpBuiltIn
 				&& lvPrim.SelectedItems != null
 			)
+			{
 				return lvPrim;
+			}
 
 			return null;
 		}
@@ -288,10 +298,14 @@ namespace pjse
 					.FileTable.GFT.CurrentPackage.FileName.ToLower()
 					.EndsWith("objects.package")
 			)
+			{
 				FillPackage(resourceType, this.lvPackage, this.tpPackage);
+			}
 
 			if (!skip_pages[1])
+			{
 				FillGroup(resourceType, group, this.lvGroup, this.tpGroup);
+			}
 
 			if (!skip_pages[2])
 			{
@@ -309,22 +323,30 @@ namespace pjse
 			}
 
 			if (!skip_pages[3] && group != (uint)Group.Global)
+			{
 				FillGroup(
 					resourceType,
 					(uint)Group.Global,
 					this.lvGlobal,
 					this.tpGlobalGroup
 				);
+			}
 
 			if (!skip_pages[4] && resourceType == SimPe.Data.MetaData.BHAV_FILE)
+			{
 				FillBuiltIn(resourceType, this.lvPrim, this.tpBuiltIn);
+			}
 
 			if (this.tcResources.TabCount > 0)
 			{
 				if (tcResources.Contains(ltp[PersistentTab]))
+				{
 					tcResources.SelectTab(ltp[PersistentTab]);
+				}
 				else
+				{
 					this.tcResources.SelectedIndex = 0;
+				}
 			}
 
 			form.Cursor = Cursors.Default;
@@ -333,7 +355,9 @@ namespace pjse
 
 			DialogResult dr = ShowDialog();
 			while (dr == DialogResult.Retry)
+			{
 				dr = ShowDialog();
+			}
 
 			ChooserSize = this.Size;
 			PersistentTab = ltp.IndexOf(this.tcResources.SelectedTab);
@@ -346,7 +370,9 @@ namespace pjse
 				if (lv != null)
 				{
 					if (lv != lvPrim)
+					{
 						return (pjse.FileTable.Entry)lv.SelectedItems[0].Tag;
+					}
 					else
 					{
 						IPackedFileDescriptor pfd =
@@ -393,7 +419,9 @@ namespace pjse
 			this.tcResources.TabPages.Add(tab);
 			list.ListViewItemSorter = new ListViewItemComparer();
 			if (list.Items.Count > 0)
+			{
 				list.SelectedIndices.Add(0);
+			}
 		}
 
 		private void FillBuiltIn(uint type, ListView list, TabPage tab)
@@ -418,7 +446,9 @@ namespace pjse
 			this.tcResources.TabPages.Add(tab);
 			list.ListViewItemSorter = new ListViewItemComparer();
 			if (list.Items.Count > 0)
+			{
 				list.SelectedIndices.Add(0);
+			}
 		}
 
 		#endregion
@@ -773,17 +803,25 @@ namespace pjse
 		{
 			ChooserOrder = e.Column;
 			foreach (TabPage tp in tcResources.TabPages)
+			{
 				foreach (Control c in tp.Controls)
+				{
 					if (c is ListView)
+					{
 						((ListView)c).ListViewItemSorter = new ListViewItemComparer(
 							e.Column
 						);
+					}
+				}
+			}
 		}
 
 		private void tcResources_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (btnViewBHAV.Visible)
+			{
 				btnViewBHAV.Enabled = tcResources.SelectedTab != this.tpBuiltIn;
+			}
 		}
 
 		private void listView_DoubleClick(object sender, System.EventArgs e)
@@ -802,6 +840,7 @@ namespace pjse
 				pjse.FileTable.Entry e = (pjse.FileTable.Entry)lv.SelectedItems[0].Tag;
 
 				if (CanDoEA && e.Group != 0xffffff && !e.IsFixed)
+				{
 					foreach (
 						pjse.FileTable.Entry f in pjse.FileTable.GFT[
 							e.Type,
@@ -810,6 +849,7 @@ namespace pjse
 							FileTable.Source.Fixed
 						]
 					)
+					{
 						if (f.IsFixed)
 						{
 							DialogResult dr = MessageBox.Show(
@@ -831,9 +871,14 @@ namespace pjse
 								lv.SelectedItems[0].Tag = f;
 							}
 							else
+							{
 								this.DialogResult = DialogResult.Retry;
+							}
+
 							break;
 						}
+					}
+				}
 			}
 		}
 
@@ -841,7 +886,9 @@ namespace pjse
 		{
 			ListView lv = getListView();
 			if (lv == null)
+			{
 				return;
+			}
 
 			pjse.FileTable.Entry item = (pjse.FileTable.Entry)lv.SelectedItems[0].Tag;
 			Bhav b = new Bhav();

@@ -35,9 +35,13 @@ namespace SimPe.Plugin.Identifiers
 			if (x == null)
 			{
 				if (y == null)
+				{
 					return 0;
+				}
 				else
+				{
 					return 1;
+				}
 			}
 
 			IScannerPluginBase ix = (IScannerPluginBase)x;
@@ -78,7 +82,10 @@ namespace SimPe.Plugin.Identifiers
 					.Trim()
 					.ToLower()
 			)
+			{
 				return SimPe.Cache.PackageType.CEP;
+			}
+
 			if (
 				name
 				== System
@@ -86,7 +93,10 @@ namespace SimPe.Plugin.Identifiers
 					.Trim()
 					.ToLower()
 			)
+			{
 				return SimPe.Cache.PackageType.CEP;
+			}
+
 			return SimPe.Cache.PackageType.Unknown;
 		}
 
@@ -115,9 +125,15 @@ namespace SimPe.Plugin.Identifiers
 		public SimPe.Cache.PackageType GetType(SimPe.Interfaces.Files.IPackageFile pkg)
 		{
 			if (pkg.FindFiles(0xCCCEF852).Length != 0)
+			{
 				return SimPe.Cache.PackageType.Sim; //Facial Structure - Pets don't have
+			}
+
 			if (pkg.FindFiles(0xAC598EAC).Length != 0)
+			{
 				return SimPe.Cache.PackageType.Sim; //Age Data - Outfits with GUID do have
+			}
+
 			return SimPe.Cache.PackageType.Unknown;
 		}
 
@@ -146,14 +162,23 @@ namespace SimPe.Plugin.Identifiers
 		public SimPe.Cache.PackageType GetType(SimPe.Interfaces.Files.IPackageFile pkg)
 		{
 			if (pkg.FindFiles(Data.MetaData.OBJD_FILE).Length == 0)
+			{
 				return SimPe.Cache.PackageType.Unknown;
+			}
 
 			if (pkg.FindFiles(0x484F5553).Length > 0)
+			{
 				return SimPe.Cache.PackageType.Lot; //HOUS Resources - Lots won't get here
+			}
+
 			if (pkg.FindFilesByGroup(Data.MetaData.CUSTOM_GROUP).Length > 0)
+			{
 				return SimPe.Cache.PackageType.CustomObject;
+			}
 			else
+			{
 				return SimPe.Cache.PackageType.Object;
+			}
 		}
 
 		#endregion
@@ -184,19 +209,39 @@ namespace SimPe.Plugin.Identifiers
 				Data.MetaData.GZPS
 			);
 			if (pfds.Length == 0)
+			{
 				pfds = pkg.FindFiles(Data.MetaData.XOBJ); //Object XML
+			}
+
 			if (pfds.Length == 0)
+			{
 				pfds = pkg.FindFiles(0x2C1FD8A1); //TextureOverlay XML
+			}
+
 			if (pfds.Length == 0)
+			{
 				pfds = pkg.FindFiles(0x8C1580B5); //Hairtone XML
+			}
+
 			if (pfds.Length == 0)
+			{
 				pfds = pkg.FindFiles(0x0C1FE246); //Mesh Overlay XML
+			}
+
 			if (pfds.Length == 0)
+			{
 				pfds = pkg.FindFiles(Data.MetaData.XROF); //Object XML
+			}
+
 			if (pfds.Length == 0)
+			{
 				pfds = pkg.FindFiles(Data.MetaData.XFLR); //Object XML
+			}
+
 			if (pfds.Length == 0)
+			{
 				pfds = pkg.FindFiles(Data.MetaData.XFNC); //Object XML
+			}
 
 			if (pfds.Length > 0)
 			{
@@ -232,9 +277,13 @@ namespace SimPe.Plugin.Identifiers
 						uint cat = cpf.GetSaveItem("category").UIntegerValue;
 
 						if ((cat & (uint)Data.OutfitCats.Skin) != 0)
+						{
 							return SimPe.Cache.PackageType.Skin;
+						}
 						else
+						{
 							return SimPe.Cache.PackageType.Clothing;
+						}
 					}
 					case "meshoverlay":
 					case "textureoverlay":
@@ -243,45 +292,71 @@ namespace SimPe.Plugin.Identifiers
 							cpf.GetSaveItem("subtype").UIntegerValue
 							== (uint)Data.TextureOverlayTypes.Blush
 						)
+						{
 							return SimPe.Cache.PackageType.Blush;
+						}
+
 						if (
 							cpf.GetSaveItem("subtype").UIntegerValue
 							== (uint)Data.TextureOverlayTypes.Eye
 						)
+						{
 							return SimPe.Cache.PackageType.Eye;
+						}
+
 						if (
 							cpf.GetSaveItem("subtype").UIntegerValue
 							== (uint)Data.TextureOverlayTypes.EyeBrow
 						)
+						{
 							return SimPe.Cache.PackageType.EyeBrow;
+						}
+
 						if (
 							cpf.GetSaveItem("subtype").UIntegerValue
 							== (uint)Data.TextureOverlayTypes.EyeShadow
 						)
+						{
 							return SimPe.Cache.PackageType.EyeShadow;
+						}
+
 						if (
 							cpf.GetSaveItem("subtype").UIntegerValue
 							== (uint)Data.TextureOverlayTypes.Glasses
 						)
+						{
 							return SimPe.Cache.PackageType.Glasses;
+						}
+
 						if (
 							cpf.GetSaveItem("subtype").UIntegerValue
 							== (uint)Data.TextureOverlayTypes.Lipstick
 						)
+						{
 							return SimPe.Cache.PackageType.Lipstick;
+						}
+
 						if (
 							cpf.GetSaveItem("subtype").UIntegerValue
 							== (uint)Data.TextureOverlayTypes.Mask
 						)
+						{
 							return SimPe.Cache.PackageType.Mask;
+						}
+
 						if (
 							cpf.GetSaveItem("subtype").UIntegerValue
 							== (uint)Data.TextureOverlayTypes.Beard
 						)
+						{
 							return SimPe.Cache.PackageType.Beard;
+						}
 
 						if (type == "meshoverlay")
+						{
 							return SimPe.Cache.PackageType.Accessory;
+						}
+
 						return SimPe.Cache.PackageType.Makeup;
 					}
 					case "hairtone":
@@ -319,23 +394,46 @@ namespace SimPe.Plugin.Identifiers
 		public SimPe.Cache.PackageType GetType(SimPe.Interfaces.Files.IPackageFile pkg)
 		{
 			if (pkg.FindFiles(Data.MetaData.TXMT).Length == 0)
+			{
 				return SimPe.Cache.PackageType.Unknown;
+			}
+
 			if (pkg.FindFiles(Data.MetaData.OBJD_FILE).Length != 0)
+			{
 				return SimPe.Cache.PackageType.Unknown;
+			}
+
 			if (pkg.FindFiles(Data.MetaData.GZPS).Length != 0)
+			{
 				return SimPe.Cache.PackageType.Unknown;
+			}
+
 			if (pkg.FindFiles(0xCCA8E925).Length != 0)
+			{
 				return SimPe.Cache.PackageType.Unknown; //Object XML
+			}
+
 			if (pkg.FindFiles(Data.MetaData.REF_FILE).Length != 0)
+			{
 				return SimPe.Cache.PackageType.Unknown;
+			}
+
 			foreach (uint type in Data.MetaData.RcolList)
 			{
 				if (type == Data.MetaData.TXMT)
+				{
 					continue;
+				}
+
 				if (type == Data.MetaData.TXTR)
+				{
 					continue;
+				}
+
 				if (type == Data.MetaData.LIFO)
+				{
 					continue;
+				}
 
 				if (pkg.FindFiles(type).Length != 0)
 				{

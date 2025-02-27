@@ -385,9 +385,13 @@ namespace SimPe.PackedFiles.Wrapper
 		protected bool AsBoolean()
 		{
 			if (Value.Length < 1)
+			{
 				return false;
+			}
 			else
+			{
 				return (Value[0] == 1);
+			}
 		}
 
 		/// <summary>
@@ -403,7 +407,10 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				string ret = "";
 				while (br.PeekChar() != -1)
+				{
 					ret += br.ReadChar();
+				}
+
 				return ret;
 			}
 			catch (Exception)
@@ -515,7 +522,10 @@ namespace SimPe.PackedFiles.Wrapper
 				default:
 				{
 					if (ObjectValue != null)
+					{
 						ret += ObjectValue.ToString();
+					}
+
 					break;
 				}
 			}

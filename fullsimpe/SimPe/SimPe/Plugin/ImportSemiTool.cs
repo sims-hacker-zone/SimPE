@@ -45,12 +45,19 @@ namespace SimPe.Plugin
 		)
 		{
 			if (prov == null)
+			{
 				return false;
+			}
+
 			if (prov.OpcodeProvider == null)
+			{
 				return false;
+			}
 
 			if (package == null)
+			{
 				return false;
+			}
 
 			return true;
 		}
@@ -63,7 +70,9 @@ namespace SimPe.Plugin
 		)
 		{
 			if (isg == null)
+			{
 				isg = new ImportSemi();
+			}
 
 			isg.Execute(package, this.reg, this.prov);
 			return new SimPe.Plugin.ToolResult(false, true);

@@ -108,9 +108,14 @@ namespace pjse.BhavOperandWizards.Wiz0x002d
 
 			int i = 0;
 			if (!ops14[1])
+			{
 				i = BhavWiz.ToShort(ops1[2], ops1[3]);
+			}
+
 			if (i < cbSlotType.Items.Count)
+			{
 				cbSlotType.SelectedIndex = i;
+			}
 
 			ckbNFailTrees.Checked = ops14[0];
 			ckbIgnDstFootprint.Checked = ops14[2];
@@ -286,7 +291,9 @@ namespace pjse.BhavOperandWizards
 		public override void Dispose()
 		{
 			if (myForm != null)
+			{
 				myForm = null;
+			}
 		}
 		#endregion
 	}

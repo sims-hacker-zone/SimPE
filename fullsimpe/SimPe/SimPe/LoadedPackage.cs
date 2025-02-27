@@ -121,9 +121,15 @@ namespace SimPe
 			get
 			{
 				if (Package == null)
+				{
 					return "";
+				}
+
 				if (Package.FileName == null)
+				{
 					return "";
+				}
+
 				return Package.FileName;
 			}
 		}
@@ -180,20 +186,29 @@ namespace SimPe
 			{
 				FileNameEventArg e = new FileNameEventArg(flname);
 				if (BeforeFileLoad != null)
+				{
 					BeforeFileLoad(this, e);
+				}
+
 				if (e.Cancel)
+				{
 					return false;
+				}
 
 				Wait.SubStart();
 				Wait.Message = "Loading File";
 
 				if (Package != null)
+				{
 					this.SetupEvents(false);
+				}
 
 				Package = SimPe.Packages.File.LoadFromFile(e.FileName, sync);
 
 				if (Package.Index.Length < Helper.WindowsRegistry.BigPackageResourceCount)
+				{
 					Package.LoadCompressedState();
+				}
 
 				this.SetupEvents(true);
 				Helper.WindowsRegistry.AddRecentFile(flname);
@@ -201,7 +216,10 @@ namespace SimPe
 				Wait.SubStop();
 
 				if (AfterFileLoad != null)
+				{
 					AfterFileLoad(this);
+				}
+
 				res = true;
 			}
 #if !DEBUG
@@ -212,7 +230,10 @@ namespace SimPe
 #endif
 			finally { }
 			if (res != true)
+			{
 				Package = null;
+			}
+
 			return res;
 		}
 
@@ -223,7 +244,10 @@ namespace SimPe
 		public bool Save()
 		{
 			if (this.FileName.Trim() == "")
+			{
 				return false;
+			}
+
 			return Save(this.FileName, false);
 		}
 
@@ -236,33 +260,47 @@ namespace SimPe
 		public bool Save(string filname, bool savetocopy)
 		{
 			if (!this.Loaded)
+			{
 				return false;
+			}
+
 			try
 			{
 				FileNameEventArg e = new FileNameEventArg(filname);
 				if (BeforeFileSave != null)
+				{
 					BeforeFileSave(this, e);
+				}
+
 				if (e.Cancel)
+				{
 					return false;
+				}
 
 				Wait.SubStart();
 				Wait.Message = "Saving File";
 
 				string oname = this.FileName;
 				if (Package.Header.Created == 0 && UserVerification.HaveValidUserId)
+				{
 					Package.Header.Created = UserVerification.UserId;
+				}
 
 				this.Package.Save(e.FileName);
 
 				if (savetocopy)
+				{
 					Package.FileName = oname;
+				}
 
 				Helper.WindowsRegistry.AddRecentFile(e.FileName);
 
 				Wait.SubStop();
 
 				if (AfterFileSave != null)
+				{
 					AfterFileSave(this);
+				}
 			}
 			catch (Exception ex)
 			{
@@ -281,16 +319,26 @@ namespace SimPe
 		public bool LoadFromPackage(SimPe.Packages.GeneratableFile newpkg)
 		{
 			if (newpkg == null)
+			{
 				return false;
+			}
+
 			string flname = newpkg.FileName;
 			if (flname == null)
+			{
 				flname = "";
+			}
 
 			FileNameEventArg e = new FileNameEventArg(flname);
 			if (BeforeFileLoad != null)
+			{
 				BeforeFileLoad(this, e);
+			}
+
 			if (e.Cancel)
+			{
 				return false;
+			}
 
 			if (Package != null)
 			{
@@ -306,9 +354,14 @@ namespace SimPe
 			}
 
 			if (Package.FileName != null)
+			{
 				Helper.WindowsRegistry.AddRecentFile(Package.FileName);
+			}
+
 			if (AfterFileLoad != null)
+			{
 				AfterFileLoad(this);
+			}
 
 			return true;
 		}
@@ -328,7 +381,9 @@ namespace SimPe
 				{
 					string mname = Helper.GetMainNeighborhoodFile(pkg.SaveFileName);
 					if (mname != pkg.SaveFileName)
+					{
 						pkg = SimPe.Packages.GeneratableFile.LoadFromFile(mname);
+					}
 				}
 				catch { }
 				FileTable.ProviderRegistry.SimFamilynameProvider.BasePackage = pkg;
@@ -389,17 +444,26 @@ namespace SimPe
 					);
 
 					if (dr == DialogResult.Yes)
+					{
 						res = Save();
+					}
 					else if (dr == DialogResult.Cancel)
+					{
 						return false;
+					}
 				}
 				if (res)
 				{
 					FileNameEventArg e = new FileNameEventArg(this.FileName);
 					if (BeforeFileClose != null)
+					{
 						BeforeFileClose(this, e);
+					}
+
 					if (e.Cancel)
+					{
 						res = false;
+					}
 				}
 
 				if (res)
@@ -409,7 +473,9 @@ namespace SimPe
 					Package = null;
 				}
 				else
+				{
 					return false;
+				}
 			}
 
 			return true;
@@ -428,12 +494,20 @@ namespace SimPe
 
 				FileNameEventArg me = new FileNameEventArg(mbi.Tag.ToString());
 				if (BeforeRecentFileLoad != null)
+				{
 					BeforeRecentFileLoad(this, me);
+				}
 
 				if (!me.Cancel)
+				{
 					if (LoadFromFile(me.FileName))
+					{
 						if (AfterRecentFileLoad != null)
+						{
 							AfterRecentFileLoad(this);
+						}
+					}
+				}
 			}
 		}
 
@@ -445,46 +519,104 @@ namespace SimPe
 		System.Windows.Forms.Shortcut GetShortCut(int i)
 		{
 			if (i == 1)
+			{
 				return System.Windows.Forms.Shortcut.Ctrl1;
+			}
+
 			if (i == 2)
+			{
 				return System.Windows.Forms.Shortcut.Ctrl2;
+			}
+
 			if (i == 3)
+			{
 				return System.Windows.Forms.Shortcut.Ctrl3;
+			}
+
 			if (i == 4)
+			{
 				return System.Windows.Forms.Shortcut.Ctrl4;
+			}
+
 			if (i == 5)
+			{
 				return System.Windows.Forms.Shortcut.Ctrl5;
+			}
+
 			if (i == 6)
+			{
 				return System.Windows.Forms.Shortcut.Ctrl6;
+			}
+
 			if (i == 7)
+			{
 				return System.Windows.Forms.Shortcut.Ctrl7;
+			}
+
 			if (i == 8)
+			{
 				return System.Windows.Forms.Shortcut.Ctrl8;
+			}
+
 			if (i == 9)
+			{
 				return System.Windows.Forms.Shortcut.Ctrl9;
+			}
+
 			if (i == 10)
+			{
 				return System.Windows.Forms.Shortcut.Ctrl0;
+			}
 
 			if (i == 11)
+			{
 				return System.Windows.Forms.Shortcut.Alt1;
+			}
+
 			if (i == 12)
+			{
 				return System.Windows.Forms.Shortcut.Alt2;
+			}
+
 			if (i == 13)
+			{
 				return System.Windows.Forms.Shortcut.Alt3;
+			}
+
 			if (i == 14)
+			{
 				return System.Windows.Forms.Shortcut.Alt4;
+			}
+
 			if (i == 15)
+			{
 				return System.Windows.Forms.Shortcut.Alt5;
+			}
+
 			if (i == 16)
+			{
 				return System.Windows.Forms.Shortcut.Alt6;
+			}
+
 			if (i == 17)
+			{
 				return System.Windows.Forms.Shortcut.Alt7;
+			}
+
 			if (i == 18)
+			{
 				return System.Windows.Forms.Shortcut.Alt8;
+			}
+
 			if (i == 19)
+			{
 				return System.Windows.Forms.Shortcut.Alt9;
+			}
+
 			if (i == 20)
+			{
 				return System.Windows.Forms.Shortcut.Alt0;
+			}
 
 			return System.Windows.Forms.Shortcut.None;
 		}
@@ -504,12 +636,14 @@ namespace SimPe
 				{
 					string sname = file;
 					if (sname.Length > MAX_FILENAME_LENGTH)
+					{
 						sname =
 							"..."
 							+ sname.Substring(
 								file.Length - MAX_FILENAME_LENGTH,
 								MAX_FILENAME_LENGTH
 							);
+					}
 
 					System.Windows.Forms.ToolStripMenuItem mbi =
 						new System.Windows.Forms.ToolStripMenuItem(sname);
@@ -535,18 +669,28 @@ namespace SimPe
 		public void LoadOrImportFiles(string[] names, bool create)
 		{
 			if (names.Length == 0)
+			{
 				return; // Tashiketh
+			}
+
 			if (names.Length == 2 && names[0] == "-load")
 			{
 				if (System.IO.File.Exists(names[1]))
+				{
 					this.LoadFromFile(names[1]);
+				}
+
 				return;
 			}
 			if (!Loaded && !create)
+			{
 				return;
+			}
 
 			if (!Loaded && create)
+			{
 				this.LoadFromPackage(SimPe.Packages.GeneratableFile.CreateNew());
+			}
 
 			ExtensionType et = ExtensionProvider.GetExtension(names[0]);
 			if (
@@ -555,7 +699,9 @@ namespace SimPe
 			)
 			{
 				if (System.IO.File.Exists(names[0]))
+				{
 					this.LoadFromFile(names[0]);
+				}
 			}
 			else if (
 				et == ExtensionType.ExtractedFile
@@ -569,6 +715,7 @@ namespace SimPe
 				try
 				{
 					for (int i = 0; i < names.Length; i++)
+					{
 						if (System.IO.File.Exists(names[i]))
 						{
 							PackedFileDescriptors pfds = LoadDescriptorsFromDisk(
@@ -578,8 +725,11 @@ namespace SimPe
 							foreach (
 								SimPe.Interfaces.Files.IPackedFileDescriptor pfd in pfds
 							)
+							{
 								this.Package.Add(pfd);
+							}
 						}
+					}
 				}
 				finally
 				{
@@ -600,7 +750,10 @@ namespace SimPe
 		{
 			PackedFileDescriptors list = new PackedFileDescriptors();
 			foreach (string flname in flnames)
+			{
 				LoadDescriptorsFromDisk(flname, list);
+			}
+
 			return list;
 		}
 
@@ -628,10 +781,16 @@ namespace SimPe
 		)
 		{
 			if (list == null)
+			{
 				return;
+			}
+
 			bool run = WaitingScreen.Running;
 			if (!run)
+			{
 				WaitingScreen.Wait();
+			}
+
 			WaitingScreen.UpdateMessage("Load Descriptors From Disk");
 			//list = new PackedFileDescriptors();
 			try
@@ -646,7 +805,9 @@ namespace SimPe
 						Interfaces.Files.IPackedFile file = pkg.Read(pfd);
 						pfd.UserData = file.UncompressedData;
 						if (!list.Contains(pfd))
+						{
 							list.Add(pfd);
+						}
 					}
 				}
 				else if (flname.ToLower().EndsWith(".xml"))
@@ -654,7 +815,9 @@ namespace SimPe
 					Interfaces.Files.IPackedFileDescriptor pfd =
 						XmlPackageReader.OpenExtractedPackedFile(flname);
 					if (!list.Contains(pfd))
+					{
 						list.Add(pfd);
+					}
 				}
 				else if (
 					flname.ToLower().EndsWith(".package")
@@ -667,7 +830,9 @@ namespace SimPe
 						Interfaces.Files.IPackedFile file = pkg.Read(pfd);
 						pfd.UserData = file.UncompressedData;
 						if (!list.Contains(pfd))
+						{
 							list.Add(pfd);
+						}
 					}
 				}
 				else
@@ -682,7 +847,9 @@ namespace SimPe
 			finally
 			{
 				if (!run)
+				{
 					WaitingScreen.Stop();
+				}
 			}
 		}
 		#endregion
@@ -696,17 +863,25 @@ namespace SimPe
 		void IndexChangedHandler(object sender, EventArgs e)
 		{
 			if (paused)
+			{
 				indexChangedHandler = sender;
+			}
 			else if (IndexChanged != null)
+			{
 				IndexChanged(sender, e);
+			}
 		}
 
 		void SavedIndexHandler(object sender, EventArgs e)
 		{
 			if (paused)
+			{
 				savedIndexHandler = sender;
+			}
 			else if (SavedIndex != null)
+			{
 				SavedIndex(sender, e);
+			}
 		}
 
 		object savedIndexHandler;
@@ -735,29 +910,48 @@ namespace SimPe
 		{
 			paused = false;
 			if (savedIndexHandler != null)
+			{
 				SavedIndexHandler(savedIndexHandler, null);
+			}
+
 			if (indexChangedHandler != null)
+			{
 				IndexChangedHandler(indexChangedHandler, null);
+			}
+
 			if (addedResourceHandler != null)
+			{
 				AddedResourceHandler(addedResourceHandler, null);
+			}
+
 			if (removedResourcehandler != null)
+			{
 				RemovedResourcehandler(removedResourcehandler, null);
+			}
 		}
 
 		private void AddedResourceHandler(object sender, EventArgs e)
 		{
 			if (paused)
+			{
 				addedResourceHandler = sender;
+			}
 			else if (this.AddedResource != null)
+			{
 				AddedResource(sender, e);
+			}
 		}
 
 		private void RemovedResourcehandler(object sender, EventArgs e)
 		{
 			if (paused)
+			{
 				removedResourcehandler = sender;
+			}
 			else if (this.RemovedResource != null)
+			{
 				RemovedResource(sender, e);
+			}
 		}
 		#endregion
 

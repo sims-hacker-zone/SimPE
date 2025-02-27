@@ -205,7 +205,10 @@ namespace Ambertation.Windows.Forms
 			{
 				ns = value;
 				if (ns == 0)
+				{
 					ns = 1;
+				}
+
 				Update();
 			}
 		}
@@ -288,9 +291,14 @@ namespace Ambertation.Windows.Forms
 		protected void FireChangedEvent(bool both)
 		{
 			if (Changed != null && both)
+			{
 				Changed(this, new EventArgs());
+			}
+
 			if (ChangedValue != null)
+			{
 				ChangedValue(this, new EventArgs());
+			}
 		}
 		#endregion
 
@@ -445,7 +453,10 @@ namespace Ambertation.Windows.Forms
 		public new void Update()
 		{
 			if (internalupdate)
+			{
 				return;
+			}
+
 			internalupdate = true;
 			try
 			{
@@ -504,7 +515,10 @@ namespace Ambertation.Windows.Forms
 				bool update = nval != pb.Value;
 				pb.Value = nval;
 				if (update)
+				{
 					FireChangedEvent(false);
+				}
+
 				Update();
 			}
 		}
@@ -512,19 +526,25 @@ namespace Ambertation.Windows.Forms
 		private void pb_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
 		{
 			if (e.Button == MouseButtons.Left)
+			{
 				ProgressBarUpdate(e);
+			}
 		}
 
 		private void pb_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
 		{
 			if (e.Button == MouseButtons.Left)
+			{
 				ProgressBarUpdate(e);
+			}
 		}
 
 		private void pb_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
 		{
 			if (e.Button == MouseButtons.Left)
+			{
 				ProgressBarUpdate(e);
+			}
 		}
 
 		protected override void OnResize(EventArgs e)

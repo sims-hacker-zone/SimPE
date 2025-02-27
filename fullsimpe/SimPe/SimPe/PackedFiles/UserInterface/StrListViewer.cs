@@ -321,7 +321,9 @@ namespace SimPe.PackedFiles.UserInterface
 			StrLanguage l = (StrLanguage)e.Node.Tag;
 			StrItemList items = wrapper.LanguageItems(l);
 			if (items == null)
+			{
 				return;
+			}
 
 			for (int i = 0; i < items.Length; i++)
 			{

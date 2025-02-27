@@ -65,40 +65,56 @@ namespace SimPe.Plugin
 			if (guid == origuid)
 			{
 				if (objName != null && objName.Length > 0)
+				{
 					retst += "  (\"" + objName + "\")";
+				}
 				else if (tpe == 2)
+				{
 					retst += "  (\"" + naem + "\")";
+				}
 				else
+				{
 					retst += "  (\"" + naem + "**\")";
+				}
 			}
 			else
 			{
 				if (objName != null && objName.Length > 0)
+				{
 					retst +=
 						" -FALLBACK 0x"
 						+ SimPe.Helper.HexString(origuid)
 						+ "  (\""
 						+ objName
 						+ "\")";
+				}
 				else if (tpe == 2)
+				{
 					retst +=
 						" -FALLBACK 0x"
 						+ SimPe.Helper.HexString(origuid)
 						+ "  (\""
 						+ naem
 						+ "\")";
+				}
 				else
+				{
 					retst +=
 						" -FALLBACK 0x"
 						+ SimPe.Helper.HexString(origuid)
 						+ "  (\""
 						+ naem
 						+ "**\")";
+				}
 			}
 			if (tpe == 2)
+			{
 				retst += " -(Type: " + Convert.ToString(tpe) + " a Sim!)\n";
+			}
 			else
+			{
 				retst += " -(Type: " + Convert.ToString(tpe) + ")\n";
+			}
 
 			return retst;
 		}
@@ -149,10 +165,15 @@ namespace SimPe.Plugin
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
 			if (!pjse.GUIDIndex.TheGUIDIndex.IsLoaded)
+			{
 				pjse.GUIDIndex.TheGUIDIndex.Load(pjse.GUIDIndex.DefaultGUIDFile);
+			}
 
 			if (isz > 0)
+			{
 				Array.Clear(objekts, 0, objekts.Length); // These bloody arrays have to be cleared of any previous load
+			}
+
 			reader.BaseStream.Seek(76, System.IO.SeekOrigin.Begin); // Begin at first GUID
 			/*
 			int zie = 0;
@@ -182,16 +203,28 @@ namespace SimPe.Plugin
 					tipe = reader.ReadUInt16(); // object Type
 					namer = reader.ReadString(); // internal name, usually from the OBDJ not the catalogue
 					if (namer == "")
+					{
 						namer = SimPe.Localization.GetString("Unknown"); // multi tile items have no name, would be a problem if it's not in the pjse GUID list
+					}
+
 					reader.BaseStream.Seek(4, System.IO.SeekOrigin.Current); // 4 bit byte usually empty but not on multi tile items
 					fbguid = reader.ReadUInt32(); // Fall Back GUID, this is the item a user will get if they don't have the item
 					if (guide == Bugga || fbguid == Bugga)
+					{
 						IsCorrupt = true; // Hug Bug exists
+					}
+
 					if (tipe == 2)
+					{
 						IsSims = true; // Sim(s) exist
+					}
+
 					objekts[isz] = FormatGUID(guide, fbguid, tipe, namer); // public, format the string to appear in the window
 					if (objekts[isz].Contains("**"))
+					{
 						HasCustom = true; // public, CC crap exists
+					}
+
 					isz++; // public, counts the number of items
 				}
 			}

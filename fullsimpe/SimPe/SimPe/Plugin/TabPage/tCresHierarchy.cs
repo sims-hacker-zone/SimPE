@@ -193,7 +193,10 @@ namespace SimPe.Plugin.TabPage
 		internal void ClearCresTv()
 		{
 			if (cres_tv == null)
+			{
 				return;
+			}
+
 			try
 			{
 				cres_tv.BeginUpdate();
@@ -224,7 +227,9 @@ namespace SimPe.Plugin.TabPage
 			{
 				string name = tbfjoint.Text.Trim().ToLower();
 				if (name != "")
+				{
 					SelectJoint(cres_tv.Nodes, name);
+				}
 			}
 			finally
 			{
@@ -238,17 +243,30 @@ namespace SimPe.Plugin.TabPage
 		)
 		{
 			if (tbfjoint.Tag != null)
+			{
 				return;
+			}
+
 			if (e == null)
+			{
 				return;
+			}
+
 			if (e.Node == null)
+			{
 				return;
+			}
+
 			if (e.Node.Tag == null)
+			{
 				return;
+			}
 
 			int index = (int)e.Node.Tag;
 			if (index < 0)
+			{
 				return;
+			}
 
 			ComboBox cb = (ComboBox)(((TabControl)this.Parent).Tag);
 			cb.SelectedIndex = index;
@@ -281,7 +299,9 @@ namespace SimPe.Plugin.TabPage
 					}
 				}
 				if (SelectJoint(tn.Nodes, name))
+				{
 					return true;
+				}
 			}
 
 			return false;

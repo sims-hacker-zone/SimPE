@@ -42,7 +42,9 @@ namespace SimPe.PackedFiles.UserInterface
 		public SlotUI()
 		{
 			if (form == null)
+			{
 				form = new SlotForm();
+			}
 
 			SlotItemType[] vals = (SlotItemType[])
 				System.Enum.GetValues(typeof(SlotItemType));
@@ -83,21 +85,44 @@ namespace SimPe.PackedFiles.UserInterface
 			form.tabControl1.Controls.Remove(form.tabPage7);
 
 			if (wrp.Version >= 5)
+			{
 				form.tabControl1.Controls.Add(form.tabPage1);
+			}
+
 			if (wrp.Version >= 6)
+			{
 				form.tabControl1.Controls.Add(form.tabPage2);
+			}
+
 			if (wrp.Version >= 7)
+			{
 				form.tabControl1.Controls.Add(form.tabPage3);
+			}
+
 			if (wrp.Version >= 8)
+			{
 				form.tabControl1.Controls.Add(form.tabPage4);
+			}
+
 			if (wrp.Version >= 9)
+			{
 				form.tabControl1.Controls.Add(form.tabPage5);
+			}
+
 			if (wrp.Version == 10)
+			{
 				form.tabControl1.Controls.Add(form.tabPageA);
+			}
+
 			if (wrp.Version >= 0x10)
+			{
 				form.tabControl1.Controls.Add(form.tabPage6);
+			}
+
 			if (wrp.Version >= 0x40)
+			{
 				form.tabControl1.Controls.Add(form.tabPage7);
+			}
 
 			try
 			{
@@ -229,7 +254,10 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 
 				foreach (SlotItem i in wrp.Items)
+				{
 					form.ShowItem(i);
+				}
+
 				form.lv.EndUpdate();
 			}
 			finally

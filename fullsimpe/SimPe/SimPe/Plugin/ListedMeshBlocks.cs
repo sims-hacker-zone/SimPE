@@ -33,7 +33,9 @@ namespace SimPe.Plugin
 			this.ANIMBlock = amb;
 			CRES = amb.FindDefiningCRES();
 			if (CRES != null)
+			{
 				GMDC = amb.FindUsedGMDC(CRES);
+			}
 		}
 
 		public AnimationMeshBlock ANIMBlock
@@ -55,9 +57,13 @@ namespace SimPe.Plugin
 		{
 			string s = ANIMBlock.ToString();
 			if (CRES == null)
+			{
 				s += "[No CRES found]";
+			}
 			else if (GMDC == null)
+			{
 				s += "[No GMDC found]";
+			}
 
 			return s;
 		}

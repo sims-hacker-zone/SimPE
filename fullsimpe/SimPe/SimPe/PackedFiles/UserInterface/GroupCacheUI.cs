@@ -42,7 +42,9 @@ namespace SimPe.PackedFiles.UserInterface
 		public GroupCacheUI()
 		{
 			if (form == null)
+			{
 				form = new GroupCacheForm();
+			}
 		}
 		#endregion
 
@@ -68,7 +70,10 @@ namespace SimPe.PackedFiles.UserInterface
 			form.lbgroup.Items.Clear();
 			form.lbgroup.Sorted = false;
 			foreach (GroupCacheItem i in wrp.Items)
+			{
 				form.lbgroup.Items.Add(i);
+			}
+
 			form.lbgroup.Sorted = true;
 			form.lbgroup.EndUpdate();
 		}

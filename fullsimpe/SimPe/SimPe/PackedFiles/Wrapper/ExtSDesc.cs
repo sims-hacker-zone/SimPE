@@ -117,7 +117,10 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				if (sfname == null)
+				{
 					return base.SimFamilyName;
+				}
+
 				return sfname;
 			}
 			set
@@ -132,7 +135,10 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				if (sname == null)
+				{
 					return base.SimName;
+				}
+
 				return sname;
 			}
 			set
@@ -168,7 +174,10 @@ namespace SimPe.PackedFiles.Wrapper
 				}
 				base.Serialize(writer);
 				if (chgname)
+				{
 					ChangeName();
+				}
+
 				SaveRelations();
 			}
 		}
@@ -176,8 +185,12 @@ namespace SimPe.PackedFiles.Wrapper
 		protected virtual void ChangeName()
 		{
 			if (!this.IsNPC)
+			{
 				if (ChangeNames(SimName, SimFamilyName))
+				{
 					chgname = false;
+				}
+			}
 
 			if (!chgname)
 			{
@@ -189,8 +202,13 @@ namespace SimPe.PackedFiles.Wrapper
 		public bool HasRelationWith(ExtSDesc sdsc)
 		{
 			foreach (uint inst in this.Relations.SimInstances)
+			{
 				if (sdsc.FileDescriptor.Instance == inst)
+				{
 					return true;
+				}
+			}
+
 			return false;
 		}
 
@@ -198,8 +216,12 @@ namespace SimPe.PackedFiles.Wrapper
 		public void AddRelation(ExtSDesc sdesc)
 		{
 			foreach (ushort inst in Relations.SimInstances)
+			{
 				if (inst == (ushort)sdesc.FileDescriptor.Instance)
+				{
 					return;
+				}
+			}
 
 			Relations.SimInstances = (ushort[])
 				Helper.Add(
@@ -224,8 +246,12 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				foreach (ExtSrel srel in crmap.Values)
+				{
 					if (srel.Changed)
+					{
 						return true;
+					}
+				}
 
 				return base.Changed;
 			}
@@ -234,7 +260,9 @@ namespace SimPe.PackedFiles.Wrapper
 				base.Changed = value;
 
 				foreach (ExtSrel srel in crmap.Values)
+				{
 					srel.Changed = value;
+				}
 			}
 		}
 
@@ -243,7 +271,10 @@ namespace SimPe.PackedFiles.Wrapper
 		void SaveRelations()
 		{
 			if (locked)
+			{
 				return;
+			}
+
 			SimPe.Collections.PackedFileDescriptors pfds =
 				new SimPe.Collections.PackedFileDescriptors();
 			locked = true;
@@ -253,7 +284,9 @@ namespace SimPe.PackedFiles.Wrapper
 				foreach (ExtSrel srel in crmap.Values)
 				{
 					if (srel.Package != null)
+					{
 						srel.SynchronizeUserData();
+					}
 					else
 					{
 						srel.Package = this.Package;
@@ -264,8 +297,12 @@ namespace SimPe.PackedFiles.Wrapper
 					if (!this.Equals(srel.SourceSim))
 					{
 						if (srel.SourceSim != null)
+						{
 							if (srel.SourceSim.Changed)
+							{
 								srel.SourceSim.SynchronizeUserData();
+							}
+						}
 					}
 				}
 
@@ -279,7 +316,10 @@ namespace SimPe.PackedFiles.Wrapper
 					for (int i = pfds.Count - 1; i >= 0; i--)
 					{
 						if (i == 0)
+						{
 							this.Package.ForgetUpdate();
+						}
+
 						this.Package.Add(pfds[i], true);
 					}
 				}
@@ -297,7 +337,10 @@ namespace SimPe.PackedFiles.Wrapper
 		internal ExtSrel GetCachedRelation(uint inst)
 		{
 			if (crmap.ContainsKey(inst))
+			{
 				return (ExtSrel)crmap[inst];
+			}
+
 			return null;
 		}
 
@@ -309,23 +352,37 @@ namespace SimPe.PackedFiles.Wrapper
 		internal void AddRelationToCache(ExtSrel srel)
 		{
 			if (srel == null)
+			{
 				return;
+			}
+
 			if (srel.FileDescriptor == null)
+			{
 				return;
+			}
 
 			if (!crmap.ContainsKey(srel.FileDescriptor.Instance))
+			{
 				crmap[srel.FileDescriptor.Instance] = srel;
+			}
 		}
 
 		internal void RemoveRelationFromCache(ExtSrel srel)
 		{
 			if (srel == null)
+			{
 				return;
+			}
+
 			if (srel.FileDescriptor == null)
+			{
 				return;
+			}
 
 			if (crmap.ContainsKey(srel.FileDescriptor.Instance))
+			{
 				crmap.Remove(srel.FileDescriptor.Instance);
+			}
 		}
 
 		public static ExtSrel FindRelation(ExtSDesc src, ExtSDesc dst)
@@ -392,7 +449,10 @@ namespace SimPe.PackedFiles.Wrapper
 		public override bool Equals(object obj)
 		{
 			if (obj == null)
+			{
 				return false;
+			}
+
 			if (obj is SDesc)
 			{
 				SDesc s = (SDesc)obj;
@@ -425,10 +485,14 @@ namespace SimPe.PackedFiles.Wrapper
 				list.Add("Version");
 
 				if ((int)this.Version >= (int)SDescVersions.University)
+				{
 					list.Add(SimPe.Serializer.SerializeTypeHeader(this.University));
+				}
 
 				if ((int)this.Version >= (int)SDescVersions.Nightlife)
+				{
 					list.Add(SimPe.Serializer.SerializeTypeHeader(this.Nightlife));
+				}
 
 				return Serializer.ConcatHeader(Serializer.ConvertArrayList(list));
 			}
@@ -466,10 +530,14 @@ namespace SimPe.PackedFiles.Wrapper
 				list.Add(Serializer.Property("Version", this.Version.ToString()));
 
 				if ((int)this.Version >= (int)SDescVersions.University)
+				{
 					list.Add(this.University.ToString());
+				}
 
 				if ((int)this.Version >= (int)SDescVersions.Nightlife)
+				{
 					list.Add(this.Nightlife.ToString());
+				}
 
 				return Serializer.Concat(Serializer.ConvertArrayList(list));
 			}
@@ -517,7 +585,9 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				if ((uint)this.Version < (uint)SDescVersions.Business)
+				{
 					return new SimPe.Interfaces.Providers.ILotItem[0];
+				}
 
 				return FileTable.ProviderRegistry.LotProvider.FindLotsOwnedBySim(
 					this.Instance
@@ -532,16 +602,24 @@ namespace SimPe.PackedFiles.Wrapper
 				ArrayList list = new ArrayList();
 				list.Add(base.DescriptionHeader);
 				if (this.SimDNA != null)
+				{
 					list.Add(this.SimDNA.DescriptionHeader);
+				}
 
 				if ((int)this.Version >= (int)SDescVersions.Business)
+				{
 					list.Add(SimPe.Serializer.SerializeTypeHeader(this.Business));
+				}
 
 				if ((int)this.Version >= (int)SDescVersions.Pets)
+				{
 					list.Add(SimPe.Serializer.SerializeTypeHeader(this.Pets));
+				}
 
 				if ((int)this.Version >= (int)SDescVersions.Voyage)
+				{
 					list.Add(SimPe.Serializer.SerializeTypeHeader(this.Voyage));
+				}
 
 				return Serializer.ConcatHeader(Serializer.ConvertArrayList(list));
 			}
@@ -554,16 +632,24 @@ namespace SimPe.PackedFiles.Wrapper
 				ArrayList list = new ArrayList();
 				list.Add(base.Description);
 				if (this.SimDNA != null)
+				{
 					list.Add(Serializer.SubProperty("DNA", this.SimDNA.Description));
+				}
 
 				if ((int)this.Version >= (int)SDescVersions.Business)
+				{
 					list.Add(this.Business.ToString());
+				}
 
 				if ((int)this.Version >= (int)SDescVersions.Pets)
+				{
 					list.Add(this.Pets.ToString());
+				}
 
 				if ((int)this.Version >= (int)SDescVersions.Voyage)
+				{
 					list.Add(this.Voyage.ToString());
+				}
 
 				return Serializer.Concat(Serializer.ConvertArrayList(list));
 			}

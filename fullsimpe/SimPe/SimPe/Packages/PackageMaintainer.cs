@@ -37,7 +37,10 @@ namespace SimPe.Packages
 			get
 			{
 				if (me == null)
+				{
 					me = new PackageMaintainer();
+				}
+
 				return me;
 			}
 		}
@@ -57,7 +60,9 @@ namespace SimPe.Packages
 			set
 			{
 				if (localfileindex == null)
+				{
 					localfileindex = value;
+				}
 			}
 		}
 
@@ -76,9 +81,14 @@ namespace SimPe.Packages
 		internal void RemovePackage(GeneratableFile pkg)
 		{
 			if (!Helper.WindowsRegistry.UsePackageMaintainer)
+			{
 				return;
+			}
+
 			if (pkg == null)
+			{
 				return;
+			}
 
 			RemovePackage(pkg.FileName);
 		}
@@ -90,16 +100,25 @@ namespace SimPe.Packages
 		public void RemovePackagesInPath(string folder)
 		{
 			if (folder == null)
+			{
 				return;
+			}
+
 			folder = folder.Trim().ToLower();
 
 			ArrayList list = new ArrayList();
 			foreach (string k in ht.Keys)
+			{
 				if (k.Trim().ToLower().StartsWith(folder))
+				{
 					list.Add(k);
+				}
+			}
 
 			foreach (string k in list)
+			{
 				RemovePackage(k);
+			}
 		}
 
 		/// <summary>
@@ -109,7 +128,9 @@ namespace SimPe.Packages
 		internal void RemovePackage(string flname)
 		{
 			if (flname == null)
+			{
 				return;
+			}
 
 			if (ht.ContainsKey(flname))
 			{
@@ -123,7 +144,9 @@ namespace SimPe.Packages
 		{
 			this.FileIndex.Clear();
 			if (pkg.Index.Length <= Helper.WindowsRegistry.BigPackageResourceCount)
+			{
 				this.FileIndex.AddIndexFromPackage(pkg);
+			}
 		}
 
 		/// <summary>
@@ -150,15 +173,21 @@ namespace SimPe.Packages
 		{
 			GeneratableFile ret = null;
 			if (filename == null)
+			{
 				ret = GeneratableFile.CreateNew();
+			}
 			else
 			{
 				if (!Helper.WindowsRegistry.UsePackageMaintainer)
+				{
 					ret = new GeneratableFile(filename);
+				}
 				else
 				{
 					if (!ht.ContainsKey(filename))
+					{
 						ht[filename] = new GeneratableFile(filename);
+					}
 					else if (sync)
 					{
 						SimPe.FileTableBase.FileIndex.ClosePackage(

@@ -34,7 +34,9 @@ namespace SimPe.PackedFiles.Wrapper
 			InitializeComponent();
 
 			if (!DesignMode)
+			{
 				SetContent();
+			}
 		}
 
 		/// <summary>
@@ -111,18 +113,27 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			loaded = Visible;
 			if (!loaded)
+			{
 				return;
+			}
+
 			cb.Items.Clear();
 			if (sdsc != null)
 			{
 				SimPe.Interfaces.Providers.ILotItem[] items = sdsc.BusinessList;
 				foreach (SimPe.Interfaces.Providers.ILotItem item in items)
+				{
 					cb.Items.Add(item);
+				}
 
 				if (cb.Items.Count > 0)
+				{
 					cb.SelectedIndex = 0;
+				}
 				else if (SelectedBusinessChanged != null)
+				{
 					SelectedBusinessChanged(this, new EventArgs());
+				}
 			}
 		}
 
@@ -133,13 +144,17 @@ namespace SimPe.PackedFiles.Wrapper
 		private void cb_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			if (SelectedBusinessChanged != null)
+			{
 				SelectedBusinessChanged(this, new EventArgs());
+			}
 		}
 
 		protected override void OnVisibleChanged(EventArgs e)
 		{
 			if (!loaded)
+			{
 				SetContent();
+			}
 		}
 	}
 }

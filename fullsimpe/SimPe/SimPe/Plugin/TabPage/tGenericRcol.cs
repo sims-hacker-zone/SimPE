@@ -205,7 +205,10 @@ namespace SimPe.Plugin.TabPage
 		private void GNSettingsChange(object sender, System.EventArgs e)
 		{
 			if (this.Tag == null)
+			{
 				return;
+			}
+
 			try
 			{
 				AbstractRcolBlock arb = (AbstractRcolBlock)Tag;

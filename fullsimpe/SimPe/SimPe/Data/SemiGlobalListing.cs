@@ -32,7 +32,9 @@ namespace SimPe.Data
 			{
 				XmlNode node = XMLData.Item(i);
 				foreach (XmlNode subnode in node.ChildNodes)
+				{
 					ProcessItem(subnode);
+				}
 			}
 		}
 
@@ -58,7 +60,9 @@ namespace SimPe.Data
 			}
 
 			if (name != "" && group != 0)
+			{
 				this.Add(new SemiGlobalAlias(known, group, name));
+			}
 		}
 	}
 }

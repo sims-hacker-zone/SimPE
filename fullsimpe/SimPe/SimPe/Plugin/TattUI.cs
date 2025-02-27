@@ -588,7 +588,9 @@ namespace SimPe.Plugin
 
 			this.lb.Items.Clear();
 			foreach (TattItem ti in Tatt)
+			{
 				lb.Items.Add(ti);
+			}
 
 			//inter = false;
 		}

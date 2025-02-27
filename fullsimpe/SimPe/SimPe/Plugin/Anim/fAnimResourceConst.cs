@@ -513,11 +513,19 @@ namespace SimPe.Plugin.Anim
 			rtbnotes.Visible = cbshnote.Visible = false;
 			pg.SelectedObject = null;
 			if (e == null)
+			{
 				return;
+			}
+
 			if (e.Node == null)
+			{
 				return;
+			}
+
 			if (e.Node.Tag == null)
+			{
 				return;
+			}
 
 			pg.SelectedObject = e.Node.Tag;
 
@@ -542,7 +550,10 @@ namespace SimPe.Plugin.Anim
 		private void tb_arc_ver_TextChanged(object sender, System.EventArgs e)
 		{
 			if (this.tb_arc_ver.Tag == null)
+			{
 				return;
+			}
+
 			try
 			{
 				AbstractRcolBlock arb = (AbstractRcolBlock)this.tAnimResourceConst.Tag;
@@ -572,7 +583,9 @@ namespace SimPe.Plugin.Anim
 			}
 
 			if (ab2.AxisCount != 3)
+			{
 				return;
+			}
 
 			ab2.AddFrame((short)(ab2.GetDuration() + 1), 0, 0, 0, false);
 
@@ -592,9 +605,13 @@ namespace SimPe.Plugin.Anim
 		{
 			AnimationFrameBlock ab2 = null;
 			if (tv.SelectedNode.Tag is AnimationFrameBlock)
+			{
 				ab2 = (AnimationFrameBlock)tv.SelectedNode.Tag;
+			}
 			else
+			{
 				ab2 = (AnimationFrameBlock)tv.SelectedNode.Parent.Tag;
+			}
 
 			ab2.ClearFrames();
 
@@ -676,11 +693,15 @@ namespace SimPe.Plugin.Anim
 										FromString(aat, sr.ReadLine());
 									}
 									if (coun > aatb.Count)
+									{
 										aatb.Add(coun - aatb.Count, false);
+									}
 									else if (coun < aatb.Count && coun > 0)
 									{
 										while (coun < aatb.Count)
+										{
 											aatb.Remove(aatb.GetLast());
+										}
 									}
 								}
 							}
@@ -690,13 +711,16 @@ namespace SimPe.Plugin.Anim
 						arc.Refresh();
 						tv_AfterSelect(null, null);
 						if (!nah)
+						{
 							SimPe.Message.Show(
 								"Not all values imported properly",
 								"Warning",
 								System.Windows.Forms.MessageBoxButtons.OK
 							);
+						}
 					}
 					else
+					{
 						SimPe.Message.Show(
 							ofd.FileName
 								+ "\r\nIs not the correct text file for "
@@ -705,6 +729,7 @@ namespace SimPe.Plugin.Anim
 							"Error",
 							MessageBoxButtons.OK
 						);
+					}
 				}
 				finally
 				{
@@ -739,7 +764,9 @@ namespace SimPe.Plugin.Anim
 				{
 					aatfb.Parameter = Convert.ToInt16(sline[0]);
 					if (aatfb.parent.Type == AnimationTokenType.SixByte)
+					{
 						aatfb.Unknown1 = Convert.ToInt16(sline[1]);
+					}
 					else if (aatfb.parent.Type == AnimationTokenType.EightByte)
 					{
 						aatfb.Unknown1 = Convert.ToInt16(sline[1]);
@@ -761,17 +788,28 @@ namespace SimPe.Plugin.Anim
 				int en;
 				int loc = readline.IndexOf("(") + 1;
 				if (readline.Contains(","))
+				{
 					en = readline.IndexOf(",");
+				}
 				else
+				{
 					en = readline.IndexOf(")");
+				}
+
 				coun = Convert.ToInt32(readline.Substring(loc, en - loc));
 				aatbc.Locked = readline.Contains("locked");
 				if (readline.Contains("Two"))
+				{
 					aatbc.Type = AnimationTokenType.TwoByte;
+				}
 				else if (readline.Contains("Six"))
+				{
 					aatbc.Type = AnimationTokenType.SixByte;
+				}
 				else if (readline.Contains("Eight"))
+				{
 					aatbc.Type = AnimationTokenType.EightByte;
+				}
 			}
 			catch
 			{
@@ -787,9 +825,13 @@ namespace SimPe.Plugin.Anim
 				return false;
 			}
 			if (readline.Contains("rot"))
+			{
 				afbc.TransformationType = FrameType.Rotation;
+			}
 			else if (readline.Contains("trn"))
+			{
 				afbc.TransformationType = FrameType.Translation;
+			}
 			else
 			{
 				nah = false;

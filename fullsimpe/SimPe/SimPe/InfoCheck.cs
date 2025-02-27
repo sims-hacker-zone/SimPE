@@ -33,8 +33,10 @@ namespace SimPe
 				);
 				this.button1.Visible = !this.button2.Visible;
 				if (this.button1.Visible)
+				{
 					this.lbRelease.Text =
 						"\r\n\r\nFile Info doesn\'t exist, Update Info to generate one";
+				}
 			}
 			else
 			{
@@ -85,9 +87,14 @@ namespace SimPe
 				this.lbVedict.ForeColor = System.Drawing.Color.Maroon;
 				this.lbVedict.Text = "File(s) Missing or Wrong Version!\n";
 				if (allthere == false)
+				{
 					this.lbVedict.Text += "+ Unknown File(s) found! ";
+				}
+
 				if (allsame == false)
+				{
 					this.lbVedict.Text += "+ File(s) Have changed Size! ";
+				}
 			}
 			else if (allsame == false)
 			{
@@ -96,7 +103,9 @@ namespace SimPe
 				this.lbVedict.ForeColor = System.Drawing.Color.Indigo;
 				this.lbVedict.Text = "File(s) Have changed Size!";
 				if (allthere == false)
+				{
 					this.lbVedict.Text += "\nUnknown File(s) found!";
+				}
 			}
 			else if (allthere == false)
 			{
@@ -140,7 +149,10 @@ namespace SimPe
 			foreach (string file in files)
 			{
 				if (file.Contains("7zecmd") || file.Contains("whse.primitivewizards"))
+				{
 					continue;
+				}
+
 				listing.Add(new FileDescriptor(ReleaseDir, file));
 			}
 			files = System.IO.Directory.GetFiles(
@@ -153,7 +165,10 @@ namespace SimPe
 					file.Contains("simpe.null.plugin")
 					|| file.Contains("simpe.dnaupd.plugin")
 				)
+				{
 					continue;
+				}
+
 				listing.Add(new FileDescriptor(ReleaseDir + "Plugins", file));
 			}
 			files = System.IO.Directory.GetFiles(ReleaseDir, "*.exe");
@@ -164,7 +179,10 @@ namespace SimPe
 					|| file.Contains("ASCIIart")
 					|| file.Contains("unins00")
 				)
+				{
 					continue;
+				}
+
 				listing.Add(new FileDescriptor(ReleaseDir, file));
 			}
 
@@ -264,8 +282,12 @@ namespace SimPe
 		void ParseSubNode(XmlNode node)
 		{
 			foreach (XmlNode subnode in node)
+			{
 				if (subnode.Name == "file")
+				{
 					LoadFile(subnode);
+				}
+			}
 		}
 
 		/// <summary>
@@ -287,9 +309,14 @@ namespace SimPe
 			foreach (XmlNode subnode in node)
 			{
 				if (subnode.Name == "version")
+				{
 					vir = subnode.InnerText;
+				}
+
 				if (subnode.Name == "size")
+				{
 					sise = subnode.InnerText;
+				}
 			}
 			long virsin = Convert.ToInt64(vir);
 			ListViewItem lvi = new ListViewItem();
@@ -316,7 +343,10 @@ namespace SimPe
 					allsame = false;
 				}
 				else
+				{
 					lvi.ForeColor = System.Drawing.Color.Black;
+				}
+
 				s.Close();
 				lv2.Items.Add(lvi);
 			}
@@ -344,7 +374,10 @@ namespace SimPe
 					)
 				)
 			)
+			{
 				allexist = false;
+			}
+
 			if (
 				!System.IO.File.Exists(
 					System.IO.Path.Combine(
@@ -353,7 +386,10 @@ namespace SimPe
 					)
 				)
 			)
+			{
 				allexist = false;
+			}
+
 			if (
 				!System.IO.File.Exists(
 					System.IO.Path.Combine(
@@ -362,43 +398,64 @@ namespace SimPe
 					)
 				)
 			)
+			{
 				allexist = false;
+			}
+
 			if (
 				!System.IO.File.Exists(
 					System.IO.Path.Combine(Helper.SimPeDataPath, "expansions.xreg")
 				)
 			)
+			{
 				allexist = false;
+			}
+
 			if (
 				!System.IO.File.Exists(
 					System.IO.Path.Combine(Helper.SimPeDataPath, "expansions2.xreg")
 				)
 			)
+			{
 				allexist = false;
+			}
+
 			if (
 				!System.IO.File.Exists(
 					System.IO.Path.Combine(Helper.SimPeDataPath, "objddefinition.xml")
 				)
 			)
+			{
 				allexist = false;
+			}
+
 			if (
 				!System.IO.File.Exists(
 					System.IO.Path.Combine(Helper.SimPeDataPath, "semiglobals.xml")
 				)
 			)
+			{
 				allexist = false;
+			}
+
 			if (
 				!System.IO.File.Exists(
 					System.IO.Path.Combine(Helper.SimPeDataPath, "tgi.xml")
 				)
 			)
+			{
 				allexist = false;
+			}
+
 			if (
 				!System.IO.File.Exists(
 					System.IO.Path.Combine(Helper.SimPeDataPath, "txmtdefinition.xml")
 				)
 			)
+			{
 				allexist = false;
+			}
+
 			if (allexist == false)
 			{
 				lvt.Text = "Critical Data Files";
@@ -420,7 +477,10 @@ namespace SimPe
 			foreach (string file in files)
 			{
 				if (file.Contains("7zecmd") || file.Contains("whse.primitivewizards"))
+				{
 					continue;
+				}
+
 				listing.Add(new FileDescriptor(ReleaseDir, file));
 			}
 
@@ -434,7 +494,10 @@ namespace SimPe
 					file.Contains("simpe.null.plugin")
 					|| file.Contains("simpe.dnaupd.plugi")
 				)
+				{
 					continue;
+				}
+
 				listing.Add(new FileDescriptor(ReleaseDir + "Plugins", file));
 			}
 
@@ -446,7 +509,10 @@ namespace SimPe
 					|| file.Contains("ASCIIart")
 					|| file.Contains("unins0")
 				)
+				{
 					continue;
+				}
+
 				listing.Add(new FileDescriptor(ReleaseDir, file));
 			}
 
@@ -465,7 +531,9 @@ namespace SimPe
 					this.lv2.Items.Add(lvi);
 					i++;
 					if (i < 50)
+					{
 						extracrap[i] = f.FileName;
+					}
 				}
 			}
 		}
@@ -490,6 +558,7 @@ namespace SimPe
 								System.IO.Path.Combine(ReleaseDir, crap)
 							)
 						)
+						{
 							try
 							{
 								System.IO.File.Delete(
@@ -497,6 +566,7 @@ namespace SimPe
 								);
 							}
 							catch { }
+						}
 					}
 					if (
 						System.IO.Directory.Exists(
@@ -555,7 +625,10 @@ namespace SimPe
 			this.flname = filename.Trim();
 			this.bp = basepath.Trim();
 			if (!bp.EndsWith(@"\"))
+			{
 				bp += @"\";
+			}
+
 			Exists = false;
 			LoadInfo();
 		}
@@ -563,7 +636,10 @@ namespace SimPe
 		void LoadInfo()
 		{
 			if (!System.IO.File.Exists(flname))
+			{
 				return;
+			}
+
 			Exists = true;
 
 			System.IO.Stream s = System.IO.File.OpenRead(flname);

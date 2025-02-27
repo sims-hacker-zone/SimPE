@@ -51,7 +51,10 @@ namespace pjse
 			this.Changed = true;
 
 			if (internalchg)
+			{
 				return;
+			}
+
 			if (WrapperChanged != null)
 			{
 				WrapperChanged(sender, e);
@@ -66,7 +69,9 @@ namespace pjse
 			get
 			{
 				if (Context == Scope.Global || Context == Scope.SemiGlobal)
+				{
 					return 0;
+				}
 
 				return this.FileDescriptor.Group;
 			}
@@ -80,7 +85,9 @@ namespace pjse
 			get
 			{
 				if (Context == Scope.Global)
+				{
 					return 0;
+				}
 
 				Glob glob = BhavWiz.GlobByGroup(this.FileDescriptor.Group);
 				return (
@@ -109,23 +116,37 @@ namespace pjse
 				)
 				{
 					if (this.FileDescriptor.Instance < 0x1000)
+					{
 						return Scope.Global;
+					}
 					else if (this.FileDescriptor.Instance < 0x2000)
+					{
 						return Scope.Private;
+					}
 					else
+					{
 						return Scope.SemiGlobal;
+					}
 				}
 				else
+				{
 					return Scope.Private; // at least for now
+				}
 			}
 		}
 
 		public uint GroupForScope(Scope s)
 		{
 			if (s == Scope.Global)
+			{
 				return GlobalGroup;
+			}
+
 			if (s == Scope.SemiGlobal)
+			{
 				return SemiGroup;
+			}
+
 			return PrivateGroup;
 		}
 
@@ -151,9 +172,13 @@ namespace pjse
 			)
 			{
 				if (instance < 0x1000)
+				{
 					group = GlobalGroup;
+				}
 				else if (instance >= 0x2000)
+				{
 					group = SemiGroup;
+				}
 			}
 
 			pjse.FileTable.Entry[] items = pjse.FileTable.GFT[
@@ -170,7 +195,9 @@ namespace pjse
 		)
 		{
 			if (FileDescriptor == null)
+			{
 				return null;
+			}
 
 			pjse.FileTable.Entry[] items = pjse.FileTable.GFT[
 				type,
@@ -178,7 +205,9 @@ namespace pjse
 				FileDescriptor.Instance
 			];
 			if (items == null || items.Length == 0)
+			{
 				return null;
+			}
 
 			SimPe.Interfaces.Plugin.Internal.IPackedFileWrapper wrp =
 				SimPe.FileTable.WrapperRegistry.FindHandler(type);
@@ -220,14 +249,20 @@ namespace pjse
 		protected void Add(T item, int limit)
 		{
 			if (items.Count >= limit)
+			{
 				throw new InvalidOperationException();
+			}
+
 			this.Add(item);
 		}
 
 		protected void Insert(int index, T item, int limit)
 		{
 			if (items.Count >= limit)
+			{
 				throw new InvalidOperationException();
+			}
+
 			items.Insert(index, item);
 		}
 
@@ -311,7 +346,10 @@ namespace pjse
 		public void InsertRange(int index, IEnumerable<T> collection)
 		{
 			foreach (T item in collection)
+			{
 				item.Parent = this;
+			}
+
 			items.InsertRange(index, collection);
 			OnWrapperChanged(items, new EventArgs());
 		}
@@ -330,11 +368,19 @@ namespace pjse
 		public int RemoveAll(Predicate<T> match)
 		{
 			foreach (T item in items)
+			{
 				if (match(item))
+				{
 					setNullParent(item);
+				}
+			}
+
 			int i = items.RemoveAll(match);
 			if (i > 0)
+			{
 				OnWrapperChanged(items, new EventArgs());
+			}
+
 			return i;
 		}
 
@@ -346,7 +392,10 @@ namespace pjse
 		public void RemoveRange(int index, int count)
 		{
 			for (int i = index; i < index + count; i++)
+			{
 				setNullParent(items[i]);
+			}
+
 			items.RemoveRange(index, count);
 			OnWrapperChanged(items, new EventArgs());
 		}
@@ -486,7 +535,9 @@ namespace pjse
 			set
 			{
 				if (parent != value)
+				{
 					parent = value;
+				}
 			}
 		}
 

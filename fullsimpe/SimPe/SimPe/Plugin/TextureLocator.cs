@@ -28,11 +28,15 @@ namespace SimPe.Plugin
 		public Rcol FindReferencingGMND(Rcol gmdc, string flname)
 		{
 			if (gmdc == null)
+			{
 				return null;
+			}
 
 			SimPe.Interfaces.Files.IPackageFile lpackage = package;
 			if (flname != null)
+			{
 				lpackage = SimPe.Packages.File.LoadFromFile(flname);
+			}
 
 			Interfaces.Files.IPackedFileDescriptor[] pfds = lpackage.FindFiles(
 				0x7BA3838C
@@ -69,11 +73,15 @@ namespace SimPe.Plugin
 		public Rcol FindReferencingSHPE(Rcol gmnd, string flname)
 		{
 			if (gmnd == null)
+			{
 				return null;
+			}
 
 			SimPe.Interfaces.Files.IPackageFile lpackage = package;
 			if (flname != null)
+			{
 				lpackage = SimPe.Packages.File.LoadFromFile(flname);
+			}
 
 			Interfaces.Files.IPackedFileDescriptor[] pfds = lpackage.FindFiles(
 				0xFC6EB1F7
@@ -109,11 +117,15 @@ namespace SimPe.Plugin
 		{
 			Hashtable ht = new Hashtable();
 			if (shpe == null)
+			{
 				return ht;
+			}
 
 			SimPe.Interfaces.Files.IPackageFile lpackage = package;
 			if (flname != null)
+			{
 				lpackage = SimPe.Packages.File.LoadFromFile(flname);
+			}
 
 			Shape shp = (Shape)shpe.Blocks[0];
 			foreach (ShapePart p in shp.Parts)
@@ -137,7 +149,9 @@ namespace SimPe.Plugin
 					)
 					{
 						if (!ht.Contains(subset))
+						{
 							ht.Add(subset, rcol);
+						}
 					}
 				}
 			}
@@ -155,11 +169,15 @@ namespace SimPe.Plugin
 		{
 			Hashtable ht = new Hashtable();
 			if (txmts == null)
+			{
 				return ht;
+			}
 
 			SimPe.Interfaces.Files.IPackageFile lpackage = package;
 			if (flname != null)
+			{
 				lpackage = SimPe.Packages.File.LoadFromFile(flname);
+			}
 
 			foreach (string subset in txmts.Keys)
 			{
@@ -186,7 +204,9 @@ namespace SimPe.Plugin
 					)
 					{
 						if (!ht.Contains(subset))
+						{
 							ht.Add(subset, txtr);
+						}
 					}
 				}
 			}

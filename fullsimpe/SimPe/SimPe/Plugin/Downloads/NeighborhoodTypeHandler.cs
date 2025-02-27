@@ -22,9 +22,14 @@ namespace SimPe.Plugin.Downloads
 				SimPe.PackedFiles.Wrapper.StrItemList items =
 					Downloads.DefaultTypeHandler.GetCtssItems(pfds[0], pkg);
 				if (items.Length > 0)
+				{
 					nfo.Name = items[0].Title;
+				}
+
 				if (items.Length > 1)
+				{
 					nfo.Description = items[1].Title;
+				}
 			}
 		}
 
