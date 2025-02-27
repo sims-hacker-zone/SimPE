@@ -31,9 +31,8 @@ namespace Ambertation
 		/// <returns>true, if it was found</returns>
 		public override bool Contains(object o)
 		{
-			if (o is string)
+			if (o is string s)
 			{
-				string s = (string)o;
 				s = s.ToLower();
 				foreach (object i in this)
 				{
@@ -61,9 +60,8 @@ namespace Ambertation
 
 		public override void Remove(object obj)
 		{
-			if (obj is string)
+			if (obj is string s)
 			{
-				string s = (string)obj;
 				s = s.ToLower();
 				for (int k = 0; k < Count; k++)
 				{

@@ -488,10 +488,8 @@ namespace SimPe
 		/// <param name="e"></param>
 		void OpenRecent(object sender, EventArgs e)
 		{
-			if (sender is ToolStripMenuItem)
+			if (sender is ToolStripMenuItem mbi)
 			{
-				ToolStripMenuItem mbi = (ToolStripMenuItem)sender;
-
 				FileNameEventArg me = new FileNameEventArg(mbi.Tag.ToString());
 				if (BeforeRecentFileLoad != null)
 				{

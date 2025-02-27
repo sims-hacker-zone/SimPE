@@ -73,10 +73,8 @@ namespace SimPe.Windows.Forms
 							{
 								if (bakpfd != null || bakpkg != null)
 								{
-									if (wrp is Interfaces.Plugin.AbstractWrapper)
+									if (wrp is Interfaces.Plugin.AbstractWrapper awrp)
 									{
-										Interfaces.Plugin.AbstractWrapper awrp =
-											(Interfaces.Plugin.AbstractWrapper)wrp;
 										if (!awrp.AllowMultipleInstances)
 										{
 											awrp.FileDescriptor = bakpfd;

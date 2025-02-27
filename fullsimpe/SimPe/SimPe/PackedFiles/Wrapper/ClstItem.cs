@@ -122,10 +122,8 @@ namespace SimPe.PackedFiles.Wrapper
 					)
 				);
 			}
-			else if (obj is Interfaces.Files.IPackedFileDescriptor)
+			else if (obj is Interfaces.Files.IPackedFileDescriptor ci)
 			{
-				Interfaces.Files.IPackedFileDescriptor ci =
-					(Interfaces.Files.IPackedFileDescriptor)obj;
 				return (
 					ci.Group == Group
 					&& ci.Instance == Instance

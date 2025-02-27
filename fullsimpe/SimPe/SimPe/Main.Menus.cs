@@ -115,10 +115,8 @@ namespace SimPe
 					continue;
 				}
 
-				if (mi.Tag is Ambertation.Windows.Forms.DockPanel)
+				if (mi.Tag is Ambertation.Windows.Forms.DockPanel c)
 				{
-					Ambertation.Windows.Forms.DockPanel c =
-						(Ambertation.Windows.Forms.DockPanel)mi.Tag;
 					mi.Checked = c.IsDocked || c.IsFloating;
 				}
 			}
@@ -131,13 +129,10 @@ namespace SimPe
 		/// <param name="e"></param>
 		private void CloseDockControl(object sender, EventArgs e)
 		{
-			if (sender is Ambertation.Windows.Forms.DockPanel)
+			if (sender is Ambertation.Windows.Forms.DockPanel c)
 			{
-				Ambertation.Windows.Forms.DockPanel c =
-					(Ambertation.Windows.Forms.DockPanel)sender;
-				if (c.Tag is ToolStripMenuItem)
+				if (c.Tag is ToolStripMenuItem mi)
 				{
-					ToolStripMenuItem mi = (ToolStripMenuItem)c.Tag;
 					mi.Checked = c.IsOpen;
 				}
 			}
@@ -150,14 +145,10 @@ namespace SimPe
 		/// <param name="e"></param>
 		private void Activate_miWindowDocks(object sender, EventArgs e)
 		{
-			if (sender is ToolStripMenuItem)
+			if (sender is ToolStripMenuItem mi)
 			{
-				ToolStripMenuItem mi = (ToolStripMenuItem)sender;
-
-				if (mi.Tag is Ambertation.Windows.Forms.DockPanel)
+				if (mi.Tag is Ambertation.Windows.Forms.DockPanel c)
 				{
-					Ambertation.Windows.Forms.DockPanel c =
-						(Ambertation.Windows.Forms.DockPanel)mi.Tag;
 					if (mi.Checked)
 					{
 						c.Close();

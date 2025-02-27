@@ -478,9 +478,8 @@ namespace SimPe.Plugin
 		{
 			for (int i = 0; i < toolBar1.Items.Count; i++)
 			{
-				if (toolBar1.Items[i] is ToolStripButton)
+				if (toolBar1.Items[i] is ToolStripButton item)
 				{
-					ToolStripButton item = (ToolStripButton)toolBar1.Items[i];
 					item.Checked = (item == b);
 
 					if (item.Tag != null)

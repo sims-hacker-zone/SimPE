@@ -219,9 +219,8 @@ namespace SimPe.Plugin
 		public ClothingSettings(PackageSettings settings)
 			: base(settings)
 		{
-			if (settings is ClothingSettings)
+			if (settings is ClothingSettings cSettings)
 			{
-				ClothingSettings cSettings = (ClothingSettings)settings;
 				Age = cSettings.Age;
 				Category = cSettings.Category;
 				OutfitCat = cSettings.OutfitCat;

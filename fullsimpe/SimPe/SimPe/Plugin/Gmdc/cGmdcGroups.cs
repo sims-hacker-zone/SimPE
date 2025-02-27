@@ -279,9 +279,8 @@ namespace SimPe.Plugin.Gmdc
 					{
 						GmdcElementValueBase vb = Link.GetValue(nr, i);
 						Geometry.Vector4f v;
-						if (vb is GmdcElementValueOneInt)
+						if (vb is GmdcElementValueOneInt oi)
 						{
-							GmdcElementValueOneInt oi = (GmdcElementValueOneInt)vb;
 							byte[] data = oi.Bytes;
 							if (data.Length == 4)
 							{

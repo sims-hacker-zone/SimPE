@@ -472,12 +472,10 @@ namespace SimPe
 			DockPanel.DockPanelClosingEvent e
 		)
 		{
-			if (sender is TD.SandDock.DockControl)
+			if (sender is TD.SandDock.DockControl doc)
 			{
-				TD.SandDock.DockControl doc = (TD.SandDock.DockControl)sender;
-				if (doc.Controls[0] is TD.SandDock.TabControl)
+				if (doc.Controls[0] is TD.SandDock.TabControl dc)
 				{
-					TD.SandDock.TabControl dc = (TD.SandDock.TabControl)doc.Controls[0];
 					bool closed = true;
 					for (int i = dc.TabPages.Count - 1; i >= 0; i--)
 					{
@@ -662,10 +660,8 @@ namespace SimPe
 			filter.FilterInstance = false;
 			try
 			{
-				if (cbsemig.SelectedItem is Data.SemiGlobalAlias)
+				if (cbsemig.SelectedItem is Data.SemiGlobalAlias sga)
 				{
-					Data.SemiGlobalAlias sga = (Data.SemiGlobalAlias)
-						cbsemig.SelectedItem;
 					if (sga != null)
 					{
 						string name = Hashes.StripHashFromName(tbRcolName.Text);

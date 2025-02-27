@@ -37,18 +37,16 @@ namespace SimPe.Plugin.UI
 
 		protected override void OnSettingsChanged()
 		{
-			if (Settings is HairtoneSettings)
+			if (Settings is HairtoneSettings hset)
 			{
-				HairtoneSettings hset = (HairtoneSettings)Settings;
 				SetProxyGuid(hset.DefaultProxy);
 			}
 		}
 
 		public override void OnCommitSettings()
 		{
-			if (Settings is HairtoneSettings)
+			if (Settings is HairtoneSettings hset)
 			{
-				HairtoneSettings hset = (HairtoneSettings)Settings;
 				if (cbDefaultProxy.SelectedIndex == 0)
 				{
 					hset.DefaultProxy = Guid.Empty;

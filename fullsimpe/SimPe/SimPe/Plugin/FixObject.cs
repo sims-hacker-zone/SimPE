@@ -1203,9 +1203,8 @@ namespace SimPe.Plugin
 								Interfaces.Scenegraph.IRcolBlock irb in rcol.Blocks
 							)
 							{
-								if (irb is ShapeRefNode)
+								if (irb is ShapeRefNode srn)
 								{
-									ShapeRefNode srn = (ShapeRefNode)irb;
 									shpname = rcol
 										.FileName.Trim()
 										.ToLower()

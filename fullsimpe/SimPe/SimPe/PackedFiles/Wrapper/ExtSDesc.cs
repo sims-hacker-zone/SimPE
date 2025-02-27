@@ -449,9 +449,8 @@ namespace SimPe.PackedFiles.Wrapper
 				return false;
 			}
 
-			if (obj is SDesc)
+			if (obj is SDesc s)
 			{
-				SDesc s = (SDesc)obj;
 				return (s.SimId == SimId);
 			}
 			return base.Equals(obj);

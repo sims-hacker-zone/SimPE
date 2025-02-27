@@ -61,9 +61,8 @@ namespace SimPe.Plugin.Gmdc
 				return false;
 			}
 
-			if (obj is FaceSetCompare)
+			if (obj is FaceSetCompare e)
 			{
-				FaceSetCompare e = (FaceSetCompare)obj;
 				bool v = V.Equals(e.V);
 				bool vn = VN.Equals(e.VN);
 				bool vu = VU.Equals(e.VU);
@@ -110,9 +109,8 @@ namespace SimPe.Plugin.Gmdc
 				return false;
 			}
 
-			if (obj is ElementSetCompare)
+			if (obj is ElementSetCompare e)
 			{
-				ElementSetCompare e = (ElementSetCompare)obj;
 				bool v = e.V == null && V == null;
 				bool vn = e.VN == null && VN == null;
 				bool vu = e.VU == null && VU == null;

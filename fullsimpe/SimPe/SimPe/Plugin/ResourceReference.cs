@@ -31,9 +31,8 @@ namespace SimPe.Plugin
 
 		public override bool Equals(object obj)
 		{
-			if (obj is ResourceReference)
+			if (obj is ResourceReference sr)
 			{
-				ResourceReference sr = (ResourceReference)obj;
 				return GetHashCode() == sr.GetHashCode();
 			}
 			return false;

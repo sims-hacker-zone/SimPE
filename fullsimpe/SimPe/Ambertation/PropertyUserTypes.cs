@@ -283,12 +283,10 @@ namespace Ambertation
 			object value
 		)
 		{
-			if (value is string)
+			if (value is string s)
 			{
 				try
 				{
-					string s = (string)value;
-
 					if (type == null)
 					{
 						type = context.PropertyDescriptor.PropertyType;

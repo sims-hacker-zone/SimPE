@@ -80,11 +80,10 @@ namespace Ambertation
 			object value
 		)
 		{
-			if (value is string)
+			if (value is string s)
 			{
 				try
 				{
-					string s = (string)value;
 					return BaseChangeShort.Convert(s);
 				}
 				catch

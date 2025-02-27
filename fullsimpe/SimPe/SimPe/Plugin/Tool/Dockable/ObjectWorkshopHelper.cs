@@ -779,10 +779,8 @@ namespace SimPe.Plugin.Tool.Dockable
 				}
 			}
 
-			if (settings is OWCloneSettings)
+			if (settings is OWCloneSettings cs)
 			{
-				OWCloneSettings cs = (OWCloneSettings)settings;
-
 				package = RecolorClone(
 					br,
 					package,
