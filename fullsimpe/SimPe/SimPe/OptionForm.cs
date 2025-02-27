@@ -1602,7 +1602,7 @@ namespace SimPe
 
 		private void cbIncNightlife_CheckedChanged(object sender, EventArgs e)
 		{
-			if (speady == true)
+			if (speady)
 			{
 				return;
 			}
@@ -1803,8 +1803,7 @@ namespace SimPe
 		{
 			if (
 				cbautobak.CheckState == CheckState.Checked
-				&& Helper.WindowsRegistry.AutoBackup == false
-			)
+				&& !Helper.WindowsRegistry.AutoBackup)
 			{
 				MessageBox.Show(
 					Localization.GetString("cbautobak_CheckedChanged"),

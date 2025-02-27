@@ -168,7 +168,7 @@ namespace SimPe.Plugin
 
 		private void cbtype_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (reddy == false)
+			if (!reddy)
 			{
 				return;
 			}

@@ -645,7 +645,7 @@ namespace pjse.guidtool
 
 		private void SetProgress(bool maxOrValue, int progress)
 		{
-			if (maxOrValue == false)
+			if (!maxOrValue)
 			{
 				SimPe.WaitingScreen.Stop();
 				progressBar1.Maximum = progress;

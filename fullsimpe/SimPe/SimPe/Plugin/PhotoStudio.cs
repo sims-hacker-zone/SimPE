@@ -410,7 +410,7 @@ namespace SimPe.Plugin
 
 		protected void AddSim(PackedFiles.Wrapper.SDesc sdesc)
 		{
-			if (!sdesc.AvailableCharacterData || sdesc.HasImage == false)
+			if (!sdesc.AvailableCharacterData || !sdesc.HasImage)
 			{
 				return;
 			}

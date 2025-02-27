@@ -937,12 +937,12 @@ namespace Ambertation.Windows.Forms
 		protected override void OnVisibleChanged(EventArgs e)
 		{
 			base.OnVisibleChanged(e);
-			if (Visible == false)
+			if (!Visible)
 			{
 				BeginUpdate();
 			}
 
-			if (Visible == true)
+			if (Visible)
 			{
 				EndUpdate();
 			}

@@ -119,7 +119,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 			ArrayList tempa = new ArrayList();
 			for (int i = 0; i < tokens.Length - 1; i++)
 			{
-				if (tempa.Contains(tokens[i]) == false)
+				if (!tempa.Contains(tokens[i]))
 				{
 					tempa.Add(tokens[i]);
 				}

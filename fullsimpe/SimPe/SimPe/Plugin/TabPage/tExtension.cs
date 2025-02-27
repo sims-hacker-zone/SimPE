@@ -1234,7 +1234,7 @@ namespace SimPe.Plugin.TabPage
 					CheckBox cb = (CheckBox)gb.Controls[index];
 
 					part1 <<= 1;
-					if (cb.Checked == true)
+					if (cb.Checked)
 					{
 						part1 |= 1;
 					}
@@ -1246,7 +1246,7 @@ namespace SimPe.Plugin.TabPage
 					CheckBox cb = (CheckBox)gb.Controls[index];
 
 					part2 <<= 1;
-					if (cb.Checked == true)
+					if (cb.Checked)
 					{
 						part2 |= 1;
 					}

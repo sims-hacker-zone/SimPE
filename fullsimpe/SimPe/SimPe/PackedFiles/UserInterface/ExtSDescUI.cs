@@ -1819,7 +1819,7 @@ namespace SimPe.PackedFiles.UserInterface
 					{
 						((LabeledProgressBar)c).Value = 0;
 					}
-					else if (c is LabeledProgressBar && c.Visible == true)
+					else if (c is LabeledProgressBar && c.Visible)
 					{
 						((LabeledProgressBar)c).Value =
 							((LabeledProgressBar)c).Maximum - 1;

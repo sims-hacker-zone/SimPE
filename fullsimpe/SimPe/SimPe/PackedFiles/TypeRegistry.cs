@@ -359,7 +359,7 @@ namespace SimPe.PackedFiles
 					}
 				}
 
-				if (check == true)
+				if (check)
 				{
 					return h;
 				}

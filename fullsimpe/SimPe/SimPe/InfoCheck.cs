@@ -67,7 +67,7 @@ namespace SimPe
 			}
 			shouldexist(false);
 			confirmothers();
-			if (allexist == false)
+			if (!allexist)
 			{
 				pictureBox1.Image = GetIcon.Fail;
 				button1.Visible = false;
@@ -75,34 +75,34 @@ namespace SimPe
 				lbVedict.Text =
 					"Critical Files Missing!\n SimPe needs to be re-installed under the current user profile";
 			}
-			else if (allgoody == false)
+			else if (!allgoody)
 			{
 				pictureBox1.Image = GetIcon.Fail;
 				button1.Visible = true;
 				lbVedict.ForeColor = Color.Maroon;
 				lbVedict.Text = "File(s) Missing or Wrong Version!\n";
-				if (allthere == false)
+				if (!allthere)
 				{
 					lbVedict.Text += "+ Unknown File(s) found! ";
 				}
 
-				if (allsame == false)
+				if (!allsame)
 				{
 					lbVedict.Text += "+ File(s) Have changed Size! ";
 				}
 			}
-			else if (allsame == false)
+			else if (!allsame)
 			{
 				pictureBox1.Image = GetIcon.Warn;
 				button1.Visible = true;
 				lbVedict.ForeColor = Color.Indigo;
 				lbVedict.Text = "File(s) Have changed Size!";
-				if (allthere == false)
+				if (!allthere)
 				{
 					lbVedict.Text += "\nUnknown File(s) found!";
 				}
 			}
-			else if (allthere == false)
+			else if (!allthere)
 			{
 				pictureBox1.Image = GetIcon.Warn;
 				button1.Visible = true;
@@ -453,7 +453,7 @@ namespace SimPe
 				allexist = false;
 			}
 
-			if (allexist == false)
+			if (!allexist)
 			{
 				lvt.Text = "Critical Data Files";
 				lvt.SubItems.Add("0");
@@ -539,7 +539,7 @@ namespace SimPe
 
 		private void removecrap()
 		{
-			if (allthere == false)
+			if (!allthere)
 			{
 				if (
 					Message.Show(

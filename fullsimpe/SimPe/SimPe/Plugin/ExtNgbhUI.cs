@@ -555,7 +555,7 @@ namespace SimPe.Plugin
 
 		private void pnBadge_VisibleChanged(object sender, EventArgs e)
 		{
-			if (pnBadge.Visible == true)
+			if (pnBadge.Visible)
 			{
 				updateitems = false;
 			}

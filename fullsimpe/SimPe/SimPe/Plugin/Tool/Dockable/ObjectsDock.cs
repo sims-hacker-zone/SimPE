@@ -1493,7 +1493,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		{
 			if (
 				sender.CurrentStep == wizardStepPanel5
-				&& (cbTask.SelectedIndex == 0 || cbDesc.Checked == false)
+				&& (cbTask.SelectedIndex == 0 || !cbDesc.Checked)
 			)
 			{
 				if (source < sender.CurrentStep.Index)

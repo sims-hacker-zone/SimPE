@@ -213,7 +213,7 @@ namespace SimPe
 			}
 #endif
 			finally { }
-			if (res != true)
+			if (!res)
 			{
 				Package = null;
 			}

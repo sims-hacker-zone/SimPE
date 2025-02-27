@@ -208,7 +208,7 @@ namespace SimPe
 				}
 				else
 				{
-					if (Version == 0 || Flag.SimStory == true)
+					if (Version == 0 || Flag.SimStory)
 					{
 						isfound = true;
 					}
@@ -582,7 +582,7 @@ namespace SimPe
 			get;
 		}
 
-		public bool Exists => tk != null && isfound == true;
+		public bool Exists => tk != null && isfound;
 
 		public int Version
 		{

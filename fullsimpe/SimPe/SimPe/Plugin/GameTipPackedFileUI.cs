@@ -74,7 +74,7 @@ namespace SimPe.Plugin
 
 		private void gtname_TextChanged(object sender, EventArgs e)
 		{
-			if (holde == false)
+			if (!holde)
 			{
 				try
 				{
@@ -98,7 +98,7 @@ namespace SimPe.Plugin
 
 		private void gtheader_TextChanged(object sender, EventArgs e)
 		{
-			if (holde == false)
+			if (!holde)
 			{
 				try
 				{
@@ -122,7 +122,7 @@ namespace SimPe.Plugin
 
 		private void gtbody_TextChanged(object sender, EventArgs e)
 		{
-			if (holde == false)
+			if (!holde)
 			{
 				try
 				{
@@ -146,7 +146,7 @@ namespace SimPe.Plugin
 
 		private void gtepack_TextChanged(object sender, EventArgs e)
 		{
-			if (holde == false)
+			if (!holde)
 			{
 				try
 				{
@@ -163,7 +163,7 @@ namespace SimPe.Plugin
 
 		private void gtimagy_TextChanged(object sender, EventArgs e)
 		{
-			if (holde == false)
+			if (!holde)
 			{
 				try
 				{

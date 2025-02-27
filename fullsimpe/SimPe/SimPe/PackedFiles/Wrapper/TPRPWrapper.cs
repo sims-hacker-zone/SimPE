@@ -426,9 +426,9 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		public bool IsParamLabel => pORl == false;
+		public bool IsParamLabel => !pORl;
 
-		public bool IsLocalLabel => pORl == true;
+		public bool IsLocalLabel => pORl;
 		#endregion
 
 		public TPRPItem(TPRP parent, bool pORl)

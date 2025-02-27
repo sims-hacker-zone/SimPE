@@ -308,8 +308,7 @@ namespace SimPe.Plugin
 
 			if (
 				PathProvider.Global.GetExpansion(Expansions.IslandStories).Exists
-				&& Wrapper.GotMore == true
-			)
+				&& Wrapper.GotMore)
 			{
 				mis = 1;
 				CatawayPnl.Visible = true;
