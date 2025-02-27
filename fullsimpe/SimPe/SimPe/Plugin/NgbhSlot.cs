@@ -193,13 +193,7 @@ namespace SimPe.Plugin
 
 		public NgbhItem FindItem(uint guid)
 		{
-			NgbhItem res = itemsa.FindItemByGuid(guid);
-			if (res == null)
-			{
-				res = itemsb.FindItemByGuid(guid);
-			}
-
-			return res;
+			return itemsa.FindItemByGuid(guid) ?? itemsb.FindItemByGuid(guid);
 		}
 
 		public int CountItem(uint guid)

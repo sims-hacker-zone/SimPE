@@ -293,15 +293,11 @@ namespace SimPe.Plugin
 		{
 			long pos = reader.BaseStream.Position;
 			string s = reader.ReadString();
-			Type tp = (Type)Tokens[s];
-			if (tp == null)
-			{
-				throw new Exception(
+			Type tp = (Type)Tokens[s] ?? throw new Exception(
 					"Unknown embedded RCOL Block Name at Offset=0x"
 						+ Helper.HexString((uint)pos),
 					new Exception("RCOL Block Name: " + s)
 				);
-			}
 
 			pos = reader.BaseStream.Position;
 			uint myid = reader.ReadUInt32();

@@ -174,11 +174,7 @@ namespace SimPe.Plugin
 				{
 					if (Cpf != null)
 					{
-						PackedFiles.Wrapper.CpfItem citem = Cpf.GetItem("outfit");
-						if (citem == null)
-						{
-							citem = Cpf.GetItem("parts");
-						}
+						PackedFiles.Wrapper.CpfItem citem = Cpf.GetItem("outfit") ?? Cpf.GetItem("parts");
 
 						if (citem != null)
 						{

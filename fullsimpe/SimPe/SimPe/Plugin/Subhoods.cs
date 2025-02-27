@@ -204,13 +204,7 @@ namespace SimPe.Plugin
 				pjse.GUIDIndex.TheGUIDIndex.Load();
 			}
 
-			string ret = pjse.GUIDIndex.TheGUIDIndex[gooee];
-			if (ret == null)
-			{
-				ret = "";
-			}
-
-			return ret;
+			return pjse.GUIDIndex.TheGUIDIndex[gooee] ?? "";
 		}
 	}
 }

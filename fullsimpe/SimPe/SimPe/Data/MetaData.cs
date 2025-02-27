@@ -2871,16 +2871,12 @@ namespace SimPe.Data
 		/// <returns>The TypeAlias representing the Type</returns>
 		public static TypeAlias FindTypeAlias(uint type)
 		{
-			TypeAlias a = Helper.TGILoader.GetByType(type);
-			if (a == null)
-			{
-				a = new TypeAlias(
+			TypeAlias a = Helper.TGILoader.GetByType(type) ?? new TypeAlias(
 					false,
 					Localization.Manager.GetString("unk") + "",
 					type,
 					"0x" + Helper.HexString(type)
 				);
-			}
 
 			return a;
 		}

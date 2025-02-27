@@ -160,13 +160,9 @@ namespace pjse
 							),
 							"objects.package"
 						)
-					);
-				if (op == null)
-				{
-					throw new Exception(
+					) ?? throw new Exception(
 						"Could not read " + exp.Name + " objects.package"
 					);
-				}
 
 				IPackedFileDescriptor pfd = op.FindFile(wrapper.FileDescriptor);
 				if (pfd == null)

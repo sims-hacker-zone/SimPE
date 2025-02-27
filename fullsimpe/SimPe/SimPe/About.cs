@@ -216,14 +216,10 @@ namespace SimPe
 							.CurrentCulture
 							.TwoLetterISOLanguageName
 						+ ".rtf"
-				);
-			if (s == null)
-			{
-				s = GetType()
+				) ?? GetType()
 					.Assembly.GetManifestResourceStream(
 						"SimPe.docs." + flname + "-en.rtf"
 					);
-			}
 
 			if (s != null)
 			{

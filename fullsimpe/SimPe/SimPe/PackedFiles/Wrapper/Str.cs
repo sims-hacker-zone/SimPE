@@ -196,11 +196,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <returns>List of Strings</returns>
 		public StrItemList LanguageItems(Data.MetaData.Languages l)
 		{
-			StrItemList items = (StrItemList)Lines[(byte)l];
-			if (items == null)
-			{
-				items = new StrItemList();
-			}
+			StrItemList items = (StrItemList)Lines[(byte)l] ?? new StrItemList();
 
 			return items;
 		}

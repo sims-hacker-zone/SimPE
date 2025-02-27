@@ -144,11 +144,7 @@ catch (Exception) {};*/
 			set
 			{
 				uint simid = value;
-				ObjdItem guid1 = (ObjdItem)attr["guid_1 - Read Only"];
-				if (guid1 == null)
-				{
-					guid1 = new ObjdItem();
-				}
+				ObjdItem guid1 = (ObjdItem)attr["guid_1 - Read Only"] ?? new ObjdItem();
 
 				guid1.val = (ushort)(simid & 0xffff);
 				attr["guid_1 - Read Only"] = guid1;
@@ -180,11 +176,7 @@ catch (Exception) {};*/
 			set
 			{
 				uint simid = value;
-				ObjdItem guid1 = (ObjdItem)attr["Proxy GUID 1"];
-				if (guid1 == null)
-				{
-					guid1 = new ObjdItem();
-				}
+				ObjdItem guid1 = (ObjdItem)attr["Proxy GUID 1"] ?? new ObjdItem();
 
 				guid1.val = (ushort)(simid & 0xffff);
 				attr["guid_1 - Read Only"] = guid1;
@@ -216,11 +208,7 @@ catch (Exception) {};*/
 			set
 			{
 				uint simid = value;
-				ObjdItem guid1 = (ObjdItem)attr["original guid 1 - Read Only"];
-				if (guid1 == null)
-				{
-					guid1 = new ObjdItem();
-				}
+				ObjdItem guid1 = (ObjdItem)attr["original guid 1 - Read Only"] ?? new ObjdItem();
 
 				guid1.val = (ushort)(simid & 0xffff);
 				attr["guid_1 - Read Only"] = guid1;

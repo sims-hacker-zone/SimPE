@@ -255,11 +255,7 @@ namespace SimPe
 		/// <returns></returns>
 		public static ExtensionDescriptor GetExtension(ExtensionType type)
 		{
-			ExtensionDescriptor res = (ExtensionDescriptor)ExtensionMap[type];
-			if (res == null)
-			{
-				res = new ExtensionDescriptor("Unknown Type", "*.*");
-			}
+			ExtensionDescriptor res = (ExtensionDescriptor)ExtensionMap[type] ?? new ExtensionDescriptor("Unknown Type", "*.*");
 
 			return res;
 		}

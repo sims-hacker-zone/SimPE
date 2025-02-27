@@ -32,17 +32,12 @@ namespace pj
 
 		public static string Get(string name)
 		{
-			string res = resource.GetString(name);
+			return resource.GetString(name)
 #if DEBUG
-			if (res == null)
-			{
-				res = "<<" + name + ">>";
-			}
+			?? "<<" + name + ">>";
 #else
-			if (res == null)
-				res = name;
+			?? name;
 #endif
-			return res;
 		}
 	}
 }

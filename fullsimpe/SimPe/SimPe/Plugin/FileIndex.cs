@@ -157,13 +157,7 @@ namespace SimPe.Plugin
 		/// <returns></returns>
 		public string GetLongHashCode()
 		{
-			string flname = Package.FileName;
-			if (flname == null)
-			{
-				flname = "";
-			}
-
-			return FileDescriptor.ToString() + "-" + flname;
+			return FileDescriptor.ToString() + "-" + (Package.FileName ?? "");
 		}
 
 		#region IComparer Member

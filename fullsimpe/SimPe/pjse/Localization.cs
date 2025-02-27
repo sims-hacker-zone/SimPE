@@ -65,13 +65,7 @@ namespace pjse
 		/// <remarks>If there is no Translation, the passsed string will be returned</remarks>
 		public static string GetString(string name)
 		{
-			string res = Manager.GetString(name);
-			if (res == null)
-			{
-				res = name;
-			}
-
-			return res;
+			return Manager.GetString(name) ?? name;
 		}
 
 		/// <summary>
@@ -82,11 +76,7 @@ namespace pjse
 		/// <remarks>If there is no Translation, the passsed string will be returned</remarks>
 		public static string GetString(string name, params object[] args)
 		{
-			string res = Manager.GetString(name);
-			if (res == null)
-			{
-				res = name;
-			}
+			string res = Manager.GetString(name) ?? name;
 
 			for (int i = 0; i < args.Length; i++)
 			{

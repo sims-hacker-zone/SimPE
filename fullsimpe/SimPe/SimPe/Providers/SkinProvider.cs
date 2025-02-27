@@ -483,11 +483,7 @@ namespace SimPe.Providers
 			}
 
 			name = name.ToLower();
-			Plugin.Txtr txtr = (Plugin.Txtr)txtrs[name];
-			if (txtr == null)
-			{
-				txtr = (Plugin.Txtr)txtrs[name + "_txtr"];
-			}
+			Plugin.Txtr txtr = (Plugin.Txtr)txtrs[name] ?? (Plugin.Txtr)txtrs[name + "_txtr"];
 
 			if (txtr == null)
 			{

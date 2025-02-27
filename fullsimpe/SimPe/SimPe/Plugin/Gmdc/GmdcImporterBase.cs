@@ -465,30 +465,18 @@ namespace SimPe.Plugin.Gmdc
 					}
 
 					//Now get a List of all position where we can find an instance of the wanted FaceItem
-					ArrayList lv = (ArrayList)valias[v];
-					if (lv == null)
-					{
-						lv = new ArrayList
+					ArrayList lv = (ArrayList)valias[v] ?? new ArrayList
 						{
 							-1
 						};
-					}
-					ArrayList lvn = (ArrayList)vnalias[vn];
-					if (lvn == null)
-					{
-						lvn = new ArrayList
+					ArrayList lvn = (ArrayList)vnalias[vn] ?? new ArrayList
 						{
 							-1
 						};
-					}
-					ArrayList lvt = (ArrayList)vtalias[vt];
-					if (lvt == null)
-					{
-						lvt = new ArrayList
+					ArrayList lvt = (ArrayList)vtalias[vt] ?? new ArrayList
 						{
 							-1
 						};
-					}
 
 					//We need something where als stored Indices are the same, so look for that
 					bool found = false;

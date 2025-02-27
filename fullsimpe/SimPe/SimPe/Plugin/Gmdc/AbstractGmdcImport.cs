@@ -782,14 +782,8 @@ namespace SimPe.Plugin.Gmdc
 				BuildCorrectionMap();
 			}
 
-			Vector3f r = (Vector3f)ajcor[name];
 
-			if (r == null)
-			{
-				r = new Vector3f(0, 0, 0);
-			}
-
-			return r;
+			return (Vector3f)ajcor[name] ?? new Vector3f(0, 0, 0);
 		}
 
 		/// <summary>

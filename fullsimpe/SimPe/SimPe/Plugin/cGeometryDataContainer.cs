@@ -383,11 +383,7 @@ namespace SimPe.Plugin
 		/// <returns>The content of the x File</returns>
 		public MemoryStream GenerateX(GmdcGroups models)
 		{
-			IGmdcExporter exporter = ExporterLoader.FindExporterByExtension(".x");
-			if (exporter == null)
-			{
-				throw new Exception("No valid Direct X Exporter plugin was found!");
-			}
+			IGmdcExporter exporter = ExporterLoader.FindExporterByExtension(".x") ?? throw new Exception("No valid Direct X Exporter plugin was found!");
 
 			exporter.Component.Sorting = ElementSorting.Preview;
 			exporter.Process(this, models);

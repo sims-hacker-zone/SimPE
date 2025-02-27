@@ -388,11 +388,7 @@ namespace pjse
 			uint I = key.Instance;
 			IPackageFile P = key.Package;
 
-			Hashtable byPackage = (Hashtable)pfByPackage[P];
-			if (byPackage == null)
-			{
-				byPackage = (Hashtable)(pfByPackage[P] = new Hashtable());
-			}
+			Hashtable byPackage = (Hashtable)pfByPackage[P] ?? (Hashtable)(pfByPackage[P] = new Hashtable());
 
 			if (byPackage[key] != null)
 			{
@@ -413,11 +409,7 @@ namespace pjse
 				return;
 			}
 
-			Hashtable byType = (Hashtable)pfByType[T];
-			if (byType == null)
-			{
-				byType = (Hashtable)(pfByType[T] = new Hashtable());
-			}
+			Hashtable byType = (Hashtable)pfByType[T] ?? (Hashtable)(pfByType[T] = new Hashtable());
 
 			if (byType[key] != null)
 			{
@@ -426,11 +418,7 @@ namespace pjse
 
 			byType[key] = val;
 
-			Hashtable byGroup = (Hashtable)pfByGroup[G];
-			if (byGroup == null)
-			{
-				byGroup = (Hashtable)(pfByGroup[G] = new Hashtable());
-			}
+			Hashtable byGroup = (Hashtable)pfByGroup[G] ?? (Hashtable)(pfByGroup[G] = new Hashtable());
 
 			if (byGroup[key] != null)
 			{
@@ -439,11 +427,7 @@ namespace pjse
 
 			byGroup[key] = val;
 
-			Hashtable tgt = (Hashtable)pfByTypeGroup[T];
-			if (tgt == null)
-			{
-				tgt = (Hashtable)(pfByTypeGroup[T] = new Hashtable());
-			}
+			Hashtable tgt = (Hashtable)pfByTypeGroup[T] ?? (Hashtable)(pfByTypeGroup[T] = new Hashtable());
 
 			Hashtable byTypeGroup = (Hashtable)(tgt[G] ?? (tgt[G] = new Hashtable()));
 			if (byTypeGroup[key] != null)
@@ -453,11 +437,7 @@ namespace pjse
 
 			byTypeGroup[key] = val;
 
-			Hashtable tgit = (Hashtable)pfByTypeGroupInstance[T];
-			if (tgit == null)
-			{
-				tgit = (Hashtable)(pfByTypeGroupInstance[T] = new Hashtable());
-			}
+			Hashtable tgit = (Hashtable)pfByTypeGroupInstance[T] ?? (Hashtable)(pfByTypeGroupInstance[T] = new Hashtable());
 
 			Hashtable tgitg = (Hashtable)(tgit[G] ?? (tgit[G] = new Hashtable()));
 			Hashtable byTypeGroupInstance = (Hashtable)(tgitg[I] ?? (tgitg[I] = new Hashtable()));

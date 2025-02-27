@@ -55,11 +55,7 @@ namespace SimPe
 			{
 				XmlNode node = XMLData.Item(i);
 
-				object o = node.Attributes["type"].Value;
-				if (o == null)
-				{
-					o = "1";
-				}
+				object o = node.Attributes["type"].Value ?? "1";
 
 				type = (Data.MetaData.IndexTypes)uint.Parse(o.ToString());
 
@@ -128,11 +124,7 @@ namespace SimPe
 			{
 				XmlNode node = XMLData.Item(i);
 
-				object o = node.Attributes["type"].Value;
-				if (o == null)
-				{
-					o = "1";
-				}
+				object o = node.Attributes["type"].Value ?? "1";
 
 				foreach (XmlNode subnode in node)
 				{
@@ -198,17 +190,9 @@ namespace SimPe
 			}
 
 			//now load the Files Data
-			object flname = node.Attributes["name"].Value;
-			if (flname == null)
-			{
-				flname = "";
-			}
+			object flname = node.Attributes["name"].Value ?? "";
 
-			object path = node.Attributes["path"].Value;
-			if (path == null)
-			{
-				path = "";
-			}
+			object path = node.Attributes["path"].Value ?? "";
 
 			pfd.Path = path.ToString();
 			pfd.Filename = flname.ToString();

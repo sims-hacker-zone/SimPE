@@ -53,18 +53,7 @@ namespace SimPe
 		/// <remarks>If there is no Translation, the passsed string will be returned</remarks>
 		public static string GetString(string name)
 		{
-			string res = Manager.GetString(name);
-			if (res == null)
-			{
-				res = Manager.GetString(name.Trim().ToLower());
-			}
-
-			if (res == null)
-			{
-				res = name;
-			}
-
-			return res;
+			return (Manager.GetString(name) ?? Manager.GetString(name.Trim().ToLower())) ?? name;
 		}
 
 		/// <summary>

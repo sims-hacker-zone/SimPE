@@ -3507,11 +3507,7 @@ if (System.IO.File.Exists(Sdesc.CharacterFileName))
 			Wrapper.ExtSDesc sdesc = (Wrapper.ExtSDesc)
 				lv.SelectedItems[0].Tag;
 
-			Wrapper.ExtSrel srel = FindRelation(Sdesc, sdesc);
-			if (srel == null)
-			{
-				srel = Sdesc.CreateRelation(sdesc);
-			}
+			Wrapper.ExtSrel srel = FindRelation(Sdesc, sdesc) ?? Sdesc.CreateRelation(sdesc);
 
 			Sdesc.AddRelationToCache(srel);
 			Sdesc.AddRelation(sdesc);

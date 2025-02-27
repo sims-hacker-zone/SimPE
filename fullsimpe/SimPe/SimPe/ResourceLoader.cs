@@ -877,25 +877,16 @@ namespace SimPe
 				{
 					if (wrapper.Package != null)
 					{
-						string flname = wrapper.Package.FileName;
-						if (flname == null)
-						{
-							flname = "";
-						}
+						string flname = wrapper.Package.FileName ?? "";
 
-						DialogResult dr =
-							DialogResult
-							.Yes;
-						dr = Message.Show(
+						if (Message.Show(
 
-								Localization.GetString("reschanged")
+							Localization.GetString("reschanged")
 								.Replace("{name}", doc.Text)
 								.Replace("{filename}", flname),
 							Localization.GetString("changed?"),
 							MessageBoxButtons.YesNo
-						);
-
-						if (dr == DialogResult.Yes)
+							) == DialogResult.Yes)
 						{
 							wrapper.Refresh();
 						}

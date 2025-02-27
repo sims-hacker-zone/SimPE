@@ -188,11 +188,7 @@ namespace SimPe.Providers
 			firstcustum = null;
 			foreach (LinkedSDesc sdesc in ht.Values)
 			{
-				string n = sdesc.HouseholdName;
-				if (n == null)
-				{
-					n = Localization.GetString("Unknown");
-				}
+				string n = sdesc.HouseholdName ?? Localization.GetString("Unknown");
 
 				if (!list.Contains(n))
 				{

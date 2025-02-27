@@ -302,11 +302,7 @@ namespace SimPe
 				return false;
 			}
 
-			string flname = newpkg.FileName;
-			if (flname == null)
-			{
-				flname = "";
-			}
+			string flname = newpkg.FileName ?? "";
 
 			FileNameEventArg e = new FileNameEventArg(flname);
 			if (BeforeFileLoad != null)

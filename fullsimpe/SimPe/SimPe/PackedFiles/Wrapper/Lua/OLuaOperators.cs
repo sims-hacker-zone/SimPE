@@ -76,11 +76,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 			get => data[index];
 			set
 			{
-				object o = value;
-				if (o == null)
-				{
-					o = Context.Nil;
-				}
+				object o = value ?? Context.Nil;
 
 				data[index] = o;
 			}

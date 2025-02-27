@@ -182,14 +182,10 @@ namespace SimPe
 				XmlRegistryKey lang = key.OpenSubKey(
 					System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLower(),
 					false
-				);
-				if (lang == null)
-				{
-					lang = key.OpenSubKey(
+				) ?? key.OpenSubKey(
 						System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName.ToLower(),
 						false
 					);
-				}
 
 				Version = (int)key.GetValue("Version", 0);
 				PreferedRuntimeVersion = (int)key.GetValue("PreferedRuntimeVersion", Version);
