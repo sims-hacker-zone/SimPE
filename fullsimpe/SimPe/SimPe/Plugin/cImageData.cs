@@ -246,7 +246,7 @@ namespace SimPe.Plugin
 					}
 					//if (data.Length<0x10) data = Helper.SetLength(data, 0x10);
 
-					writer.Write((int)data.Length);
+					writer.Write(data.Length);
 					writer.Write(data);
 
 					break;
@@ -787,8 +787,8 @@ namespace SimPe.Plugin
 			writer.Write(sgres.BlockID);
 			sgres.Serialize(writer);
 
-			writer.Write((int)texturesize.Width);
-			writer.Write((int)texturesize.Height);
+			writer.Write(texturesize.Width);
+			writer.Write(texturesize.Height);
 
 			writer.Write((uint)format);
 			writer.Write(MipMapLevels);

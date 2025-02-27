@@ -109,8 +109,8 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			// op1
 			//
-			op1.Anchor = (
-				(AnchorStyles)(
+			op1.Anchor =
+
 					(
 						(
 							(
@@ -119,8 +119,8 @@ namespace SimPe.Plugin.Tool.Dockable
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			op1.BackColor = Color.Transparent;
 			op1.Font = new Font("Tahoma", 8.25F);
 			op1.LoadCustomImage = true;
@@ -138,8 +138,8 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			// op2
 			//
-			op2.Anchor = (
-				(AnchorStyles)(
+			op2.Anchor =
+
 					(
 						(
 							(
@@ -148,8 +148,8 @@ namespace SimPe.Plugin.Tool.Dockable
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			op2.BackColor = Color.Transparent;
 			op2.Font = new Font("Tahoma", 8.25F);
 			op2.LoadCustomImage = true;

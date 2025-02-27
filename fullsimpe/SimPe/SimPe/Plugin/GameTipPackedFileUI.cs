@@ -9,7 +9,7 @@ namespace SimPe.Plugin
 			IPackedFileUI
 	{
 		protected new GametipPackedFileWrapper Wrapper => base.Wrapper as GametipPackedFileWrapper;
-		public GametipPackedFileWrapper TPFW => (GametipPackedFileWrapper)Wrapper;
+		public GametipPackedFileWrapper TPFW => Wrapper;
 
 		ushort gtipname;
 		ushort gtipheader;

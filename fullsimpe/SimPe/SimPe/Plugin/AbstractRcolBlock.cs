@@ -69,7 +69,7 @@ namespace SimPe.Plugin
 
 		public AbstractRcolBlock(Rcol parent)
 		{
-			this.parent = (Rcol)parent;
+			this.parent = parent;
 			if (parent != null)
 			{
 				Register(Rcol.Tokens);

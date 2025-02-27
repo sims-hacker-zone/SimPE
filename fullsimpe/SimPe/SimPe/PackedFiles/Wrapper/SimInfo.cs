@@ -50,7 +50,7 @@ namespace SimPe.PackedFiles.Wrapper
 			)
 			{
 				lbshead.Text +=
-					",\r\n  Studying " + (Data.Majors)Sim.University.Major;
+					",\r\n  Studying " + Sim.University.Major;
 			}
 			else if (
 				Sim.CharacterDescription.Realage < 17

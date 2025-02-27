@@ -67,7 +67,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label1.Location = new Point(8, 76);
 			label1.Name = "label1";
@@ -78,8 +78,8 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// lv
 			//
-			lv.Anchor = (
-				(AnchorStyles)(
+			lv.Anchor =
+
 					(
 						(
 							(
@@ -88,8 +88,8 @@ namespace SimPe.PackedFiles.UserInterface
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lv.HideSelection = false;
 			lv.LargeImageList = ilist;
 			lv.Location = new Point(32, 96);
@@ -111,22 +111,22 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// label2
 			//
-			label2.Anchor = (
-				(AnchorStyles)(
+			label2.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label2.Font = new Font(
 				"Georgia",
 				9.75F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label2.ForeColor = Color.Red;
 			label2.Location = new Point(8, 8);
@@ -138,14 +138,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// cbfile
 			//
-			cbfile.Anchor = (
-				(AnchorStyles)(
+			cbfile.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			cbfile.FlatStyle = FlatStyle.System;
 			cbfile.Location = new Point(12, 407);
 			cbfile.Name = "cbfile";
@@ -155,14 +155,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// btlink
 			//
-			btlink.Anchor = (
-				(AnchorStyles)(
+			btlink.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			btlink.FlatStyle = FlatStyle.System;
 			btlink.Location = new Point(537, 408);
 			btlink.Name = "btlink";
@@ -185,7 +185,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			Icon = ((Icon)(resources.GetObject("$this.Icon")));
 			Name = "SimRelinkForm";

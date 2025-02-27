@@ -1231,13 +1231,13 @@ namespace SimPe.PackedFiles.Wrapper
 		protected void SetOpcode(byte oc)
 		{
 			Value = (
-				(uint)(
+
 					Value
 					& (
 						0xFFFFFFFF
 						- (Parent.Parent.OpcodeMaks << Parent.Parent.OpcodeShift)
 					)
-				) | (uint)((oc & Parent.Parent.OpcodeMaks) << Parent.Parent.OpcodeShift)
+				 | (oc & Parent.Parent.OpcodeMaks) << Parent.Parent.OpcodeShift
 			);
 		}
 
@@ -1255,10 +1255,10 @@ namespace SimPe.PackedFiles.Wrapper
 			set
 			{
 				Value = (
-					(uint)(
+
 						Value
 						& (0xFFFFFFFF - (Parent.Parent.AMaks << Parent.Parent.AShift))
-					) | (uint)((value & Parent.Parent.AMaks) << Parent.Parent.AShift)
+					 | (value & Parent.Parent.AMaks) << Parent.Parent.AShift
 				);
 			}
 		}
@@ -1275,10 +1275,10 @@ namespace SimPe.PackedFiles.Wrapper
 			set
 			{
 				Value = (
-					(uint)(
+
 						Value
 						& (0xFFFFFFFF - (Parent.Parent.BMaks << Parent.Parent.BShift))
-					) | (uint)((value & Parent.Parent.BMaks) << Parent.Parent.BShift)
+					 | (value & Parent.Parent.BMaks) << Parent.Parent.BShift
 				);
 			}
 		}
@@ -1295,10 +1295,10 @@ namespace SimPe.PackedFiles.Wrapper
 			set
 			{
 				Value = (
-					(uint)(
+
 						Value
 						& (0xFFFFFFFF - (Parent.Parent.CMaks << Parent.Parent.CShift))
-					) | (uint)((value & Parent.Parent.CMaks) << Parent.Parent.CShift)
+					 | (value & Parent.Parent.CMaks) << Parent.Parent.CShift
 				);
 			}
 		}
@@ -1306,7 +1306,7 @@ namespace SimPe.PackedFiles.Wrapper
 		public uint BX => ((B & Parent.Parent.BMaks) << Parent.Parent.CBits)
 					| (C & Parent.Parent.CMaks);
 
-		public int SBX => (int)((long)BX - Parent.Parent.Bias);
+		public int SBX => (int)(BX - Parent.Parent.Bias);
 
 		public static string GetOpcodeName(byte oc)
 		{

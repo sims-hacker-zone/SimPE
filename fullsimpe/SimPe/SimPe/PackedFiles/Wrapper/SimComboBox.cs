@@ -98,7 +98,7 @@ namespace SimPe.PackedFiles.Wrapper
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cb.Location = new System.Drawing.Point(0, 0);
 			cb.Name = "cb";

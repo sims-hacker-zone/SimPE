@@ -323,8 +323,8 @@ namespace SimPe.Plugin
 		{
 			writer.Write(signate);
 			writer.Write(Version);
-			writer.Write((int)0);
-			writer.Write((int)0);
+			writer.Write(0);
+			writer.Write(0);
 			writer.Write(Sections);
 			for (int i = 0; i < Sections; i++)
 			{

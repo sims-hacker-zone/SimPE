@@ -296,7 +296,7 @@ namespace SimPe.Plugin
 				}
 			}
 
-			writer.Write((int)Data.Length);
+			writer.Write(Data.Length);
 			writer.Write(Data);
 			writer.Write(Unknown6);
 		}

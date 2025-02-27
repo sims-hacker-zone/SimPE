@@ -2298,7 +2298,7 @@ namespace SimPe.PackedFiles.UserInterface
 		private void btnNoFlags2_Click(object sender, EventArgs e)
 		{
 			internalchg = true;
-			currentItem.Flags2 = (ushort)0x0000;
+			currentItem.Flags2 = 0x0000;
 			tbFlags2.Text = "0x" + Helper.HexString(currentItem.Flags2);
 			doFlags2();
 			internalchg = false;

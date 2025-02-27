@@ -537,8 +537,8 @@ namespace SimPe.Plugin
 			//
 			// lbobj
 			//
-			lbobj.Anchor = (
-				(AnchorStyles)(
+			lbobj.Anchor =
+
 					(
 						(
 							(
@@ -547,8 +547,8 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lbobj.IntegralHeight = false;
 			lbobj.Location = new Point(8, 32);
 			lbobj.Name = "lbobj";
@@ -559,21 +559,21 @@ namespace SimPe.Plugin
 			//
 			// btclone
 			//
-			btclone.Anchor = (
-				(AnchorStyles)(
+			btclone.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			btclone.FlatStyle = FlatStyle.System;
 			btclone.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			btclone.Location = new Point(408, 212);
 			btclone.Name = "btclone";
@@ -584,16 +584,16 @@ namespace SimPe.Plugin
 			//
 			// groupBox1
 			//
-			groupBox1.Anchor = (
-				(AnchorStyles)(
+			groupBox1.Anchor =
+
 					(
 						(
 							AnchorStyles.Bottom
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			groupBox1.Controls.Add(pb);
 			groupBox1.Controls.Add(rbColor);
 			groupBox1.Controls.Add(rbClone);
@@ -604,7 +604,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			groupBox1.Location = new Point(8, 272);
 			groupBox1.Name = "groupBox1";
@@ -632,7 +632,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			rbColor.Location = new Point(16, 176);
 			rbColor.Name = "rbColor";
@@ -652,7 +652,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			rbClone.Location = new Point(16, 156);
 			rbClone.Name = "rbClone";
@@ -665,14 +665,14 @@ namespace SimPe.Plugin
 			//
 			// tabControl1
 			//
-			tabControl1.Anchor = (
-				(AnchorStyles)(
+			tabControl1.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tabControl1.Controls.Add(tClone);
 			tabControl1.Controls.Add(tColor);
 			tabControl1.Font = new Font(
@@ -680,7 +680,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tabControl1.Location = new Point(150, 24);
 			tabControl1.Name = "tabControl1";
@@ -714,7 +714,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbanim.Location = new Point(8, 128);
 			cbanim.Name = "cbanim";
@@ -732,7 +732,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbwallmask.Location = new Point(8, 108);
 			cbwallmask.Name = "cbwallmask";
@@ -748,7 +748,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbparent.Location = new Point(8, 88);
 			cbparent.Name = "cbparent";
@@ -769,7 +769,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbclean.Location = new Point(24, 48);
 			cbclean.Name = "cbclean";
@@ -787,7 +787,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbfix.Location = new Point(8, 28);
 			cbfix.Name = "cbfix";
@@ -808,7 +808,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbdefault.Location = new Point(8, 68);
 			cbdefault.Name = "cbdefault";
@@ -829,7 +829,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbgid.Location = new Point(8, 8);
 			cbgid.Name = "cbgid";
@@ -857,7 +857,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbColorExt.Location = new Point(8, 8);
 			cbColorExt.Name = "cbColorExt";
@@ -873,7 +873,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbColor.Location = new Point(8, 28);
 			cbColor.Name = "cbColor";
@@ -888,16 +888,16 @@ namespace SimPe.Plugin
 			//
 			// tbseek
 			//
-			tbseek.Anchor = (
-				(AnchorStyles)(
+			tbseek.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbseek.Location = new Point(8, 8);
 			tbseek.Name = "tbseek";
 			tbseek.Size = new Size(464, 21);
@@ -906,8 +906,8 @@ namespace SimPe.Plugin
 			//
 			// tabControl2
 			//
-			tabControl2.Anchor = (
-				(AnchorStyles)(
+			tabControl2.Anchor =
+
 					(
 						(
 							(
@@ -916,8 +916,8 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tabControl2.Controls.Add(tabPage1);
 			tabControl2.Controls.Add(tabPage3);
 			tabControl2.Controls.Add(tabPage2);
@@ -951,8 +951,8 @@ namespace SimPe.Plugin
 			//
 			// tv
 			//
-			tv.Anchor = (
-				(AnchorStyles)(
+			tv.Anchor =
+
 					(
 						(
 							(
@@ -961,8 +961,8 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tv.HideSelection = false;
 			tv.ImageIndex = 0;
 			tv.ImageList = ilist;
@@ -1003,14 +1003,14 @@ namespace SimPe.Plugin
 			//
 			// tbflname
 			//
-			tbflname.Anchor = (
-				(AnchorStyles)(
+			tbflname.Anchor =
+
 					(
 						AnchorStyles.Left
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbflname.Location = new Point(8, 12);
 			tbflname.Name = "tbflname";
 			tbflname.ReadOnly = true;
@@ -1032,7 +1032,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			FormBorderStyle =
 				FormBorderStyle
@@ -1483,7 +1483,7 @@ namespace SimPe.Plugin
 		)
 		{
 			package = Packages.File.LoadFromStream(
-				(System.IO.BinaryReader)null
+				null
 			);
 
 			//Get the Base Object Data from the Objects.package File
@@ -1617,7 +1617,7 @@ namespace SimPe.Plugin
 				else
 				{
 					dn_pkg = Packages.File.LoadFromStream(
-						(System.IO.BinaryReader)null
+						null
 					);
 				}
 
@@ -1631,13 +1631,13 @@ namespace SimPe.Plugin
 				else
 				{
 					gm_pkg = Packages.File.LoadFromStream(
-						(System.IO.BinaryReader)null
+						null
 					);
 				}
 
 				Packages.GeneratableFile npackage =
 					Packages.File.LoadFromStream(
-						(System.IO.BinaryReader)null
+						null
 					);
 				//Create the Templae for an additional MMAT
 				if (cbColorExt.Checked)
@@ -1881,7 +1881,7 @@ namespace SimPe.Plugin
 				PutItemToTree(
 					a,
 					oci.Thumbnail,
-					(ObjectTypes)oci.ObjectType,
+					oci.ObjectType,
 					new PackedFiles.Wrapper.ObjFunctionSort(
 						(oci.ObjectFunctionSort >> 8) & 0xfff
 					),
@@ -1895,7 +1895,7 @@ namespace SimPe.Plugin
 				PutItemToTree(
 					a,
 					oci.Thumbnail,
-					(ObjectTypes)oci.ObjectType,
+					oci.ObjectType,
 					new PackedFiles.Wrapper.ObjFunctionSort(
 						oci.ObjectFunctionSort
 					),

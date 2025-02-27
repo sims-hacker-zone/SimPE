@@ -356,7 +356,7 @@ namespace SimPe.PackedFiles.Wrapper
 					}
 					case Data.MetaData.DataTypes.dtUInteger:
 					{
-						rtbcpf.Text = "0x" + Helper.HexString((uint)item.UIntegerValue);
+						rtbcpf.Text = "0x" + Helper.HexString(item.UIntegerValue);
 						break;
 					}
 					case Data.MetaData.DataTypes.dtBoolean:

@@ -92,8 +92,8 @@ namespace SimPe.Plugin.TabPage
 			//
 			// pg
 			//
-			pg.Anchor = (
-				(AnchorStyles)(
+			pg.Anchor =
+
 					(
 						(
 							(
@@ -102,8 +102,8 @@ namespace SimPe.Plugin.TabPage
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			pg.CommandsBackColor = System.Drawing.SystemColors.ControlLightLight;
 			pg.CommandsVisibleIfAvailable = true;
 			pg.HelpVisible = false;

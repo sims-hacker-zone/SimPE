@@ -142,7 +142,7 @@ namespace pjse.BhavOperandWizards.Wiz0x006d
 				(scope.SelectedIndex < 0)
 					? null
 					: FileTable.GFT[
-						(uint)SimPe.Data.MetaData.STRING_FILE,
+						SimPe.Data.MetaData.STRING_FILE,
 						inst.Parent.GroupForScope(s[scope.SelectedIndex]),
 						(uint)instance
 					];

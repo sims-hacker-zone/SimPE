@@ -9,7 +9,7 @@ namespace SimPe.Plugin
 			IPackedFileUI
 	{
 		protected new InvenIndexPackedFileWrapper Wrapper => base.Wrapper as InvenIndexPackedFileWrapper;
-		public InvenIndexPackedFileWrapper TPFW => (InvenIndexPackedFileWrapper)Wrapper;
+		public InvenIndexPackedFileWrapper TPFW => Wrapper;
 
 		uint scinstance;
 

@@ -216,16 +216,16 @@ namespace SimPe.Plugin
 			//
 			// lv
 			//
-			lv.Anchor = (
-				(AnchorStyles)(
+			lv.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
 						) | AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			lv.Font = new Font("Tahoma", 8.25F);
 			lv.Items = null;
 			lv.Location = new Point(8, 32);
@@ -235,16 +235,16 @@ namespace SimPe.Plugin
 			//
 			// bnfoCustomerItemUI1
 			//
-			bnfoCustomerItemUI1.Anchor = (
-				(AnchorStyles)(
+			bnfoCustomerItemUI1.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
 						) | AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			bnfoCustomerItemUI1.BackColor = Color.Transparent;
 			bnfoCustomerItemUI1.BnfoCustomerItemsUI = lv;
 			bnfoCustomerItemUI1.Font = new Font("Tahoma", 8.25F);
@@ -263,7 +263,7 @@ namespace SimPe.Plugin
 				12F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label1.ImeMode = ImeMode.NoControl;
 			label1.Location = new Point(8, 8);
@@ -282,7 +282,7 @@ namespace SimPe.Plugin
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lblot.ImeMode = ImeMode.NoControl;
 			lblot.Location = new Point(54, 8);
@@ -382,14 +382,14 @@ namespace SimPe.Plugin
 			//
 			// lbcashf
 			//
-			lbcashf.Anchor = (
-				(AnchorStyles)(
+			lbcashf.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			lbcashf.AutoSize = true;
 			lbcashf.Font = new Font(
 				"Tahoma",
@@ -404,14 +404,14 @@ namespace SimPe.Plugin
 			//
 			// gpexpen
 			//
-			gpexpen.Anchor = (
-				(AnchorStyles)(
+			gpexpen.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			gpexpen.BackColor = Color.Transparent;
 			gpexpen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
 			gpexpen.Location = new Point(551, 212);
@@ -421,14 +421,14 @@ namespace SimPe.Plugin
 			//
 			// gpreven
 			//
-			gpreven.Anchor = (
-				(AnchorStyles)(
+			gpreven.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			gpreven.BackColor = Color.Transparent;
 			gpreven.Location = new Point(344, 212);
 			gpreven.Name = "gpreven";
@@ -437,14 +437,14 @@ namespace SimPe.Plugin
 			//
 			// btClearim
 			//
-			btClearim.Anchor = (
-				(AnchorStyles)(
+			btClearim.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			btClearim.Location = new Point(261, 270);
 			btClearim.Name = "btClearim";
 			btClearim.Size = new Size(75, 25);
@@ -459,14 +459,14 @@ namespace SimPe.Plugin
 			//
 			// tbMax
 			//
-			tbMax.Anchor = (
-				(AnchorStyles)(
+			tbMax.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			tbMax.Location = new Point(120, 293);
 			tbMax.Name = "tbMax";
 			tbMax.Size = new Size(100, 21);
@@ -475,14 +475,14 @@ namespace SimPe.Plugin
 			//
 			// tbCur
 			//
-			tbCur.Anchor = (
-				(AnchorStyles)(
+			tbCur.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			tbCur.Location = new Point(120, 269);
 			tbCur.Name = "tbCur";
 			tbCur.Size = new Size(100, 21);
@@ -491,14 +491,14 @@ namespace SimPe.Plugin
 			//
 			// label3
 			//
-			label3.Anchor = (
-				(AnchorStyles)(
+			label3.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			label3.BackColor = Color.Transparent;
 			label3.Font = new Font(
 				"Tahoma",
@@ -515,14 +515,14 @@ namespace SimPe.Plugin
 			//
 			// label2
 			//
-			label2.Anchor = (
-				(AnchorStyles)(
+			label2.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			label2.BackColor = Color.Transparent;
 			label2.Font = new Font(
 				"Tahoma",
@@ -574,14 +574,14 @@ namespace SimPe.Plugin
 			//
 			// btaddim
 			//
-			btaddim.Anchor = (
-				(AnchorStyles)(
+			btaddim.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			btaddim.Location = new Point(710, 291);
 			btaddim.Name = "btaddim";
 			btaddim.Size = new Size(47, 23);
@@ -642,7 +642,7 @@ namespace SimPe.Plugin
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lbchgender.Location = new Point(120, 114);
 			lbchgender.Name = "lbchgender";
@@ -658,7 +658,7 @@ namespace SimPe.Plugin
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lbchage.Location = new Point(143, 80);
 			lbchage.Name = "lbchage";
@@ -748,7 +748,7 @@ namespace SimPe.Plugin
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lbOgender.Location = new Point(120, 114);
 			lbOgender.Name = "lbOgender";
@@ -764,7 +764,7 @@ namespace SimPe.Plugin
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lbOage.Location = new Point(143, 80);
 			lbOage.Name = "lbOage";
@@ -815,7 +815,7 @@ namespace SimPe.Plugin
 				12F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lbadvice.ForeColor = Color.DarkRed;
 			lbadvice.Location = new Point(466, 4);
@@ -827,14 +827,14 @@ namespace SimPe.Plugin
 			//
 			// btdelety
 			//
-			btdelety.Anchor = (
-				(AnchorStyles)(
+			btdelety.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			btdelety.Location = new Point(625, 291);
 			btdelety.Name = "btdelety";
 			btdelety.Size = new Size(75, 23);
@@ -864,7 +864,7 @@ namespace SimPe.Plugin
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lbaward.Location = new Point(388, 156);
 			lbaward.Name = "lbaward";
@@ -895,7 +895,7 @@ namespace SimPe.Plugin
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lbpay.Location = new Point(374, 283);
 			lbpay.Name = "lbpay";
@@ -912,7 +912,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			pbpay.ImeMode = ImeMode.Disable;
 			pbpay.Location = new Point(363, 245);
@@ -934,7 +934,7 @@ namespace SimPe.Plugin
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbassi.Location = new Point(459, 212);
 			tbassi.Name = "tbassi";
@@ -950,7 +950,7 @@ namespace SimPe.Plugin
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lbassi.Location = new Point(361, 216);
 			lbassi.Name = "lbassi";
@@ -966,7 +966,7 @@ namespace SimPe.Plugin
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbwages.Location = new Point(459, 182);
 			tbwages.Name = "tbwages";
@@ -982,7 +982,7 @@ namespace SimPe.Plugin
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lbwages.Location = new Point(353, 186);
 			lbwages.Name = "lbwages";
@@ -998,7 +998,7 @@ namespace SimPe.Plugin
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbsgender.Location = new Point(459, 122);
 			tbsgender.Name = "tbsgender";
@@ -1014,7 +1014,7 @@ namespace SimPe.Plugin
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lbsgender.Location = new Point(393, 126);
 			lbsgender.Name = "lbsgender";
@@ -1030,7 +1030,7 @@ namespace SimPe.Plugin
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			ybsimage.Location = new Point(459, 92);
 			ybsimage.Name = "ybsimage";
@@ -1046,7 +1046,7 @@ namespace SimPe.Plugin
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lbsimage.Location = new Point(416, 96);
 			lbsimage.Name = "lbsimage";
@@ -1062,7 +1062,7 @@ namespace SimPe.Plugin
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lbLaball.Location = new Point(28, 8);
 			lbLaball.Name = "lbLaball";
@@ -1078,7 +1078,7 @@ namespace SimPe.Plugin
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbright.Location = new Point(459, 62);
 			tbright.Name = "tbright";
@@ -1094,7 +1094,7 @@ namespace SimPe.Plugin
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lbright.Location = new Point(401, 66);
 			lbright.Name = "lbright";
@@ -1110,7 +1110,7 @@ namespace SimPe.Plugin
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbLeft.Location = new Point(365, 32);
 			tbLeft.Name = "tbLeft";
@@ -1121,16 +1121,16 @@ namespace SimPe.Plugin
 			//
 			// lvEmployees
 			//
-			lvEmployees.Anchor = (
-				(AnchorStyles)(
+			lvEmployees.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
 						) | AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			lvEmployees.BorderStyle = BorderStyle.None;
 			lvEmployees.FullRowSelect = true;
 			lvEmployees.HideSelection = false;
@@ -1165,14 +1165,14 @@ namespace SimPe.Plugin
 			//
 			// btchngeOwn
 			//
-			btchngeOwn.Anchor = (
-				(AnchorStyles)(
+			btchngeOwn.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			btchngeOwn.Location = new Point(625, 291);
 			btchngeOwn.Name = "btchngeOwn";
 			btchngeOwn.Size = new Size(75, 23);
@@ -2429,7 +2429,7 @@ namespace SimPe.Plugin
 					{
 						Ltxt ltx = new Ltxt();
 						ltx.ProcessData(pfd, Bnfo.Package);
-						ltx.OwnerInstance = (uint)s.Instance;
+						ltx.OwnerInstance = s.Instance;
 						ltx.SynchronizeUserData();
 					}
 					owner = s.Instance;

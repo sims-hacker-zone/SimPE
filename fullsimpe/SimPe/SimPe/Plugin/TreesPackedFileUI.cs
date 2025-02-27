@@ -13,7 +13,7 @@ namespace SimPe.Plugin
 			IPackedFileUI
 	{
 		protected new TreesPackedFileWrapper Wrapper => base.Wrapper as TreesPackedFileWrapper;
-		public TreesPackedFileWrapper TPFW => (TreesPackedFileWrapper)Wrapper;
+		public TreesPackedFileWrapper TPFW => Wrapper;
 
 		#region WrapperBaseControl Member
 
@@ -240,52 +240,52 @@ namespace SimPe.Plugin
 
 			Wrapper.Items[indx] = tbComment.Text;
 			Wrapper.vdata.SetValue(
-				(uint)Helper.StringToUInt32(textBox2.Text, 0, 16),
+				Helper.StringToUInt32(textBox2.Text, 0, 16),
 				0,
 				indx
 			);
 			Wrapper.vdata.SetValue(
-				(uint)Helper.StringToUInt32(textBox3.Text, 0, 16),
+				Helper.StringToUInt32(textBox3.Text, 0, 16),
 				1,
 				indx
 			);
 			Wrapper.vdata.SetValue(
-				(uint)Helper.StringToUInt32(textBox4.Text, 0, 16),
+				Helper.StringToUInt32(textBox4.Text, 0, 16),
 				2,
 				indx
 			);
 			Wrapper.vdata.SetValue(
-				(uint)Helper.StringToUInt32(textBox5.Text, 0, 16),
+				Helper.StringToUInt32(textBox5.Text, 0, 16),
 				3,
 				indx
 			);
 			Wrapper.vdata.SetValue(
-				(uint)Helper.StringToUInt32(textBox6.Text, 0, 16),
+				Helper.StringToUInt32(textBox6.Text, 0, 16),
 				4,
 				indx
 			);
 			Wrapper.vdata.SetValue(
-				(uint)Helper.StringToUInt32(textBox7.Text, 0, 16),
+				Helper.StringToUInt32(textBox7.Text, 0, 16),
 				5,
 				indx
 			);
 			Wrapper.vdata.SetValue(
-				(uint)Helper.StringToUInt32(textBox8.Text, 0, 16),
+				Helper.StringToUInt32(textBox8.Text, 0, 16),
 				6,
 				indx
 			);
 			Wrapper.vdata.SetValue(
-				(uint)Helper.StringToUInt32(textBox9.Text, 0, 16),
+				Helper.StringToUInt32(textBox9.Text, 0, 16),
 				7,
 				indx
 			);
 			Wrapper.vdata.SetValue(
-				(uint)Helper.StringToUInt32(textBox10.Text, 0, 16),
+				Helper.StringToUInt32(textBox10.Text, 0, 16),
 				8,
 				indx
 			);
 			Wrapper.vdata.SetValue(
-				(uint)Helper.StringToUInt32(textBox11.Text, 0, 16),
+				Helper.StringToUInt32(textBox11.Text, 0, 16),
 				9,
 				indx
 			);

@@ -287,7 +287,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns the Length of the File
 		/// </summary>
-		protected int Length => (int)(Data.Length * 2 + 0x40);
+		protected int Length => Data.Length * 2 + 0x40;
 
 		public ObjdHealth Ok
 		{
@@ -1284,11 +1284,11 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				return GetBit((byte)0);
+				return GetBit(0);
 			}
 			set
 			{
-				SetBit((byte)0, value);
+				SetBit(0, value);
 			}
 		}
 
@@ -1296,11 +1296,11 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				return GetBit((byte)1);
+				return GetBit(1);
 			}
 			set
 			{
-				SetBit((byte)1, value);
+				SetBit(1, value);
 			}
 		}
 
@@ -1308,11 +1308,11 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				return GetBit((byte)0xf);
+				return GetBit(0xf);
 			}
 			set
 			{
-				SetBit((byte)0xf, value);
+				SetBit(0xf, value);
 			}
 		}
 	}

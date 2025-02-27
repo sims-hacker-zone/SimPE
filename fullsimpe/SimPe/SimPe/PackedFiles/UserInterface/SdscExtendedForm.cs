@@ -69,8 +69,8 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// pg
 			//
-			pg.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+			pg.Anchor =
+
 					(
 						(
 							(
@@ -79,8 +79,8 @@ namespace SimPe.PackedFiles.UserInterface
 							) | System.Windows.Forms.AnchorStyles.Left
 						) | System.Windows.Forms.AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			pg.HelpVisible = false;
 			pg.LineColor = System.Drawing.SystemColors.ScrollBar;
 			pg.Location = new System.Drawing.Point(8, 40);
@@ -115,14 +115,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// rbhex
 			//
-			rbhex.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+			rbhex.Anchor =
+
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			rbhex.AutoSize = true;
 			rbhex.BackColor = System.Drawing.Color.Transparent;
 			rbhex.Font = new System.Drawing.Font(
@@ -130,7 +130,7 @@ namespace SimPe.PackedFiles.UserInterface
 				9.75F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			rbhex.ForeColor = System.Drawing.Color.Black;
 			rbhex.Location = new System.Drawing.Point(576, 8);
@@ -143,14 +143,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// rbdec
 			//
-			rbdec.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+			rbdec.Anchor =
+
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			rbdec.AutoSize = true;
 			rbdec.BackColor = System.Drawing.Color.Transparent;
 			rbdec.Font = new System.Drawing.Font(
@@ -158,7 +158,7 @@ namespace SimPe.PackedFiles.UserInterface
 				9.75F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			rbdec.ForeColor = System.Drawing.Color.Black;
 			rbdec.Location = new System.Drawing.Point(484, 8);
@@ -171,14 +171,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// rbbin
 			//
-			rbbin.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+			rbbin.Anchor =
+
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			rbbin.AutoSize = true;
 			rbbin.BackColor = System.Drawing.Color.Transparent;
 			rbbin.Font = new System.Drawing.Font(
@@ -186,7 +186,7 @@ namespace SimPe.PackedFiles.UserInterface
 				9.75F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			rbbin.ForeColor = System.Drawing.Color.Black;
 			rbbin.Location = new System.Drawing.Point(402, 8);
@@ -199,14 +199,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// button1
 			//
-			button1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+			button1.Anchor =
+
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
 			button1.Location = new System.Drawing.Point(536, 427);
 			button1.Name = "button1";
@@ -217,14 +217,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// button2
 			//
-			button2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+			button2.Anchor =
+
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			button2.FlatStyle = System.Windows.Forms.FlatStyle.System;
 			button2.Location = new System.Drawing.Point(621, 427);
 			button2.Name = "button2";
@@ -246,7 +246,7 @@ namespace SimPe.PackedFiles.UserInterface
 				9.75F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			Name = "SdscExtendedForm";

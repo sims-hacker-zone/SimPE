@@ -877,9 +877,9 @@ namespace SimPe.Plugin.Gmdc.Importer
 			//Adjust the face List
 			for (int i = 0; i < g.Group.Faces.Count; i++)
 			{
-				if (map.ContainsKey((int)g.Group.Faces[i]))
+				if (map.ContainsKey(g.Group.Faces[i]))
 				{
-					int v = (int)map[(int)g.Group.Faces[i]];
+					int v = (int)map[g.Group.Faces[i]];
 					g.Group.Faces[i] = v;
 				}
 			}

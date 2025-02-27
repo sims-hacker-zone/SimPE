@@ -263,7 +263,7 @@ namespace SimPe.Plugin
 				}
 				case ItemTypes.Binary:
 				{
-					writer.Write((int)Data.Length);
+					writer.Write(Data.Length);
 					writer.Write(Data);
 					break;
 				}

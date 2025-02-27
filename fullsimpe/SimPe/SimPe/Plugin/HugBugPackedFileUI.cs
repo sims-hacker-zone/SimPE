@@ -12,7 +12,7 @@ namespace SimPe.Plugin
 			IPackedFileUI
 	{
 		protected new HugBugPackedFileWrapper Wrapper => base.Wrapper as HugBugPackedFileWrapper;
-		public HugBugPackedFileWrapper TPFW => (HugBugPackedFileWrapper)Wrapper;
+		public HugBugPackedFileWrapper TPFW => Wrapper;
 
 		#region WrapperBaseControl Member
 

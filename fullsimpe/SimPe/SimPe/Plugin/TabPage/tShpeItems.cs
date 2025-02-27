@@ -123,21 +123,21 @@ namespace SimPe.Plugin.TabPage
 			//
 			// linkLabel5
 			//
-			linkLabel5.Anchor = (
-				(AnchorStyles)(
+			linkLabel5.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			linkLabel5.AutoSize = true;
 			linkLabel5.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			linkLabel5.Location = new System.Drawing.Point(484, 120);
 			linkLabel5.Name = "linkLabel5";
@@ -152,21 +152,21 @@ namespace SimPe.Plugin.TabPage
 			//
 			// linkLabel6
 			//
-			linkLabel6.Anchor = (
-				(AnchorStyles)(
+			linkLabel6.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			linkLabel6.AutoSize = true;
 			linkLabel6.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			linkLabel6.Location = new System.Drawing.Point(456, 120);
 			linkLabel6.Name = "linkLabel6";
@@ -186,7 +186,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			tbitemunk4.Location = new System.Drawing.Point(264, 192);
 			tbitemunk4.Name = "tbitemunk4";
@@ -204,7 +204,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			tbitemunk3.Location = new System.Drawing.Point(168, 192);
 			tbitemunk3.Name = "tbitemunk3";
@@ -222,7 +222,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			tbitemunk2.Location = new System.Drawing.Point(112, 192);
 			tbitemunk2.Name = "tbitemunk2";
@@ -240,7 +240,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			tbitemunk1.Location = new System.Drawing.Point(16, 192);
 			tbitemunk1.Name = "tbitemunk1";
@@ -259,7 +259,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			label4.Location = new System.Drawing.Point(8, 176);
 			label4.Name = "label4";
@@ -269,22 +269,22 @@ namespace SimPe.Plugin.TabPage
 			//
 			// tbitemflname
 			//
-			tbitemflname.Anchor = (
-				(AnchorStyles)(
+			tbitemflname.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbitemflname.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			tbitemflname.Location = new System.Drawing.Point(16, 144);
 			tbitemflname.Name = "tbitemflname";
@@ -303,7 +303,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			label3.Location = new System.Drawing.Point(8, 128);
 			label3.Name = "label3";
@@ -313,22 +313,22 @@ namespace SimPe.Plugin.TabPage
 			//
 			// lbitem
 			//
-			lbitem.Anchor = (
-				(AnchorStyles)(
+			lbitem.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lbitem.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			lbitem.HorizontalScrollbar = true;
 			lbitem.IntegralHeight = false;

@@ -117,8 +117,8 @@ namespace SimPe.Plugin.TabPage
 			//
 			// lbprop
 			//
-			lbprop.Anchor = (
-				(AnchorStyles)(
+			lbprop.Anchor =
+
 					(
 						(
 							(
@@ -127,8 +127,8 @@ namespace SimPe.Plugin.TabPage
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lbprop.IntegralHeight = false;
 			lbprop.Location = new System.Drawing.Point(8, 8);
 			lbprop.Name = "lbprop";
@@ -140,14 +140,14 @@ namespace SimPe.Plugin.TabPage
 			//
 			// gbprop
 			//
-			gbprop.Anchor = (
-				(AnchorStyles)(
+			gbprop.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			gbprop.Controls.Add(lldel);
 			gbprop.Controls.Add(lladd);
 			gbprop.Controls.Add(tbval);
@@ -160,7 +160,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			gbprop.Location = new System.Drawing.Point(432, 8);
 			gbprop.Name = "gbprop";
@@ -171,14 +171,14 @@ namespace SimPe.Plugin.TabPage
 			//
 			// btnExport
 			//
-			btnExport.Anchor = (
-				(AnchorStyles)(
+			btnExport.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			btnExport.AutoSize = true;
 			btnExport.Location = new System.Drawing.Point(354, 180);
 			btnExport.Name = "btnExport";
@@ -189,14 +189,14 @@ namespace SimPe.Plugin.TabPage
 			//
 			// btnImport
 			//
-			btnImport.Anchor = (
-				(AnchorStyles)(
+			btnImport.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			btnImport.AutoSize = true;
 			btnImport.Location = new System.Drawing.Point(390, 180);
 			btnImport.Name = "btnImport";
@@ -207,14 +207,14 @@ namespace SimPe.Plugin.TabPage
 			//
 			// btnMerge
 			//
-			btnMerge.Anchor = (
-				(AnchorStyles)(
+			btnMerge.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			btnMerge.AutoSize = true;
 			btnMerge.Location = new System.Drawing.Point(318, 180);
 			btnMerge.Name = "btnMerge";
@@ -225,14 +225,14 @@ namespace SimPe.Plugin.TabPage
 			//
 			// lldel
 			//
-			lldel.Anchor = (
-				(AnchorStyles)(
+			lldel.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lldel.AutoSize = true;
 			lldel.Location = new System.Drawing.Point(244, 80);
 			lldel.Name = "lldel";
@@ -247,14 +247,14 @@ namespace SimPe.Plugin.TabPage
 			//
 			// lladd
 			//
-			lladd.Anchor = (
-				(AnchorStyles)(
+			lladd.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lladd.AutoSize = true;
 			lladd.Location = new System.Drawing.Point(208, 80);
 			lladd.Name = "lladd";
@@ -267,22 +267,22 @@ namespace SimPe.Plugin.TabPage
 			//
 			// tbval
 			//
-			tbval.Anchor = (
-				(AnchorStyles)(
+			tbval.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbval.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbval.Location = new System.Drawing.Point(64, 48);
 			tbval.Name = "tbval";
@@ -292,22 +292,22 @@ namespace SimPe.Plugin.TabPage
 			//
 			// tbname
 			//
-			tbname.Anchor = (
-				(AnchorStyles)(
+			tbname.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbname.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbname.Location = new System.Drawing.Point(64, 24);
 			tbname.Name = "tbname";
@@ -323,7 +323,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label2.Location = new System.Drawing.Point(16, 56);
 			label2.Name = "label2";
@@ -339,7 +339,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label1.Location = new System.Drawing.Point(16, 32);
 			label1.Name = "label1";
@@ -349,14 +349,14 @@ namespace SimPe.Plugin.TabPage
 			//
 			// linkLabel1
 			//
-			linkLabel1.Anchor = (
-				(AnchorStyles)(
+			linkLabel1.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			linkLabel1.AutoSize = true;
 			linkLabel1.Location = new System.Drawing.Point(432, 184);
 			linkLabel1.Name = "linkLabel1";

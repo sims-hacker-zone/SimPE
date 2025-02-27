@@ -334,7 +334,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				}
 				default:
 				{
-					return (Data.XObjFunctionSubSort)0;
+					return 0;
 				}
 			}
 		}

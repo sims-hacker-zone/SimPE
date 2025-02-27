@@ -120,7 +120,7 @@ namespace SimPe.Plugin.Anim
 					foreach (int rtc in tcs)
 					{
 						short tc = (short)rtc;
-						if (!tclist.Contains((short)tc))
+						if (!tclist.Contains(tc))
 						{
 							tclist.Add(tc);
 							ht[tc] = new AnimationFrame(tc, TransformationType);
@@ -288,7 +288,7 @@ namespace SimPe.Plugin.Anim
 				uint i = (uint)value;
 				i = i << 20;
 				i = i & 0x01F00000;
-				Unknown5 = (uint)((Unknown5 & 0xFE0FFFFF) | i);
+				Unknown5 = (Unknown5 & 0xFE0FFFFF) | i;
 			}
 		}
 
@@ -309,7 +309,7 @@ namespace SimPe.Plugin.Anim
 				uint i = (uint)value;
 				i = i & 0x00007FFF;
 				i = i | 0x00008000;
-				Unknown5 = (uint)((Unknown5 & 0xFFFF0000) | i);
+				Unknown5 = (Unknown5 & 0xFFFF0000) | i;
 			}
 		}
 
@@ -750,7 +750,7 @@ namespace SimPe.Plugin.Anim
 				}
 
 				float pos =
-					(float)(b.TimeCode - first.TimeCode)
+					(b.TimeCode - first.TimeCode)
 					/ (float)(last.TimeCode - first.TimeCode);
 				short val = (short)(
 					((last.Parameter - first.Parameter) * pos) + first.Parameter

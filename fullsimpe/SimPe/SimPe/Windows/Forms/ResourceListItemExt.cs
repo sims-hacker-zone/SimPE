@@ -67,7 +67,7 @@ namespace SimPe.Windows.Forms
 			subitems[6] = "0x" + Helper.HexString(pfd.Descriptor.Size);
 
 			SubItems.Clear();
-			Text = (string)subitems[0];
+			Text = subitems[0];
 			for (int i = 1; i < subitems.Length; i++)
 			{
 				SubItems.Add(subitems[i]);

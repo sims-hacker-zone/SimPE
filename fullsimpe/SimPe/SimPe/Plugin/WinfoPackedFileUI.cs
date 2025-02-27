@@ -12,7 +12,7 @@ namespace SimPe.Plugin
 			IPackedFileUI
 	{
 		protected new WinfoPackedFileWrapper Wrapper => base.Wrapper as WinfoPackedFileWrapper;
-		public WinfoPackedFileWrapper TPFW => (WinfoPackedFileWrapper)Wrapper;
+		public WinfoPackedFileWrapper TPFW => Wrapper;
 
 		int WiTemperC;
 		int WiTemperF;

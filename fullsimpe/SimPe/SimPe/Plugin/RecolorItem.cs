@@ -166,7 +166,7 @@ namespace SimPe.Plugin
 			: base(propertySet)
 		{
 			Materials = new RcolTable();
-			colorBin = (HairColor)0;
+			colorBin = 0;
 		}
 
 		public RecolorItem(Cpf propertySet, RcolTable txmt)

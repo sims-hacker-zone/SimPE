@@ -177,7 +177,7 @@ namespace SimPe.Plugin.Gmdc
 		public void Serialize(System.IO.BinaryWriter writer)
 		{
 			int count = Transformations.Length;
-			writer.Write((int)count);
+			writer.Write(count);
 			for (int i = 0; i < count; i++)
 			{
 				Transformations[i].Order = VectorTransformation
@@ -185,7 +185,7 @@ namespace SimPe.Plugin.Gmdc
 					.RotateTranslate;
 				Transformations[i].Serialize(writer);
 			}
-			writer.Write((int)BlendGroupDefinition.Length);
+			writer.Write(BlendGroupDefinition.Length);
 			for (int i = 0; i < BlendGroupDefinition.Length; i++)
 			{
 				BlendGroupDefinition[i].Serialize(writer);

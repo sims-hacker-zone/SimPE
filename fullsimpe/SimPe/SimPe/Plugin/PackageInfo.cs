@@ -38,7 +38,7 @@ namespace SimPe.Plugin
 					StrItemList items = stringList.Items;
 					if (!Utility.IsNullOrEmpty(items))
 					{
-						return ((StrToken)items[0]).Title;
+						return items[0].Title;
 					}
 				}
 				return String.Empty;
@@ -51,7 +51,7 @@ namespace SimPe.Plugin
 
 					if (!Utility.IsNullOrEmpty(items))
 					{
-						((StrToken)items[0]).Title = value;
+						items[0].Title = value;
 					}
 					else
 					{

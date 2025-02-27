@@ -235,9 +235,9 @@ namespace SimPe.Plugin
 			resources.ApplyResources(llOptions, "llOptions");
 			llOptions.BackColor = Color.Transparent;
 			llOptions.LinkColor = Color.FromArgb(
-				((int)(((byte)(224)))),
-				((int)(((byte)(224)))),
-				((int)(((byte)(224))))
+				((byte)(224)),
+				((byte)(224)),
+				((byte)(224))
 			);
 			llOptions.Name = "llOptions";
 			llOptions.TabStop = true;

@@ -318,7 +318,7 @@ namespace SimPe.Plugin.Downloads
 				}
 				default:
 				{
-					return (Data.XObjFunctionSubSort)0;
+					return 0;
 				}
 			}
 		}

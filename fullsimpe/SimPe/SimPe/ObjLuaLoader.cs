@@ -73,8 +73,8 @@ namespace SimPe
 				);
 				try
 				{
-					bw.Write((int)0);
-					bw.Write((int)name.Length);
+					bw.Write(0);
+					bw.Write(name.Length);
 					bw.Write(Helper.ToBytes(name, name.Length));
 
 					System.IO.FileStream fs = System.IO.File.Open(

@@ -129,7 +129,7 @@ namespace SimPe.Plugin.Anim
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			Gradientpanel1.Location = new System.Drawing.Point(0, 0);
 			Gradientpanel1.Name = "Gradientpanel1";
@@ -138,14 +138,14 @@ namespace SimPe.Plugin.Anim
 			//
 			// gbsettings
 			//
-			gbsettings.Anchor = (
-				(AnchorStyles)(
+			gbsettings.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			gbsettings.BackColor = System.Drawing.Color.Transparent;
 			gbsettings.Controls.Add(cbCorrect);
 			gbsettings.Location = new System.Drawing.Point(536, 16);
@@ -161,7 +161,7 @@ namespace SimPe.Plugin.Anim
 				8.25F,
 				System.Drawing.FontStyle.Italic,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbCorrect.Location = new System.Drawing.Point(16, 40);
 			cbCorrect.Name = "cbCorrect";
@@ -171,14 +171,14 @@ namespace SimPe.Plugin.Anim
 			//
 			// gbgroups
 			//
-			gbgroups.Anchor = (
-				(AnchorStyles)(
+			gbgroups.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			gbgroups.BackColor = System.Drawing.Color.Transparent;
 			gbgroups.Controls.Add(cbRemove);
 			gbgroups.Controls.Add(cbDiscard);
@@ -203,7 +203,7 @@ namespace SimPe.Plugin.Anim
 				8.25F,
 				System.Drawing.FontStyle.Italic,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbRemove.Location = new System.Drawing.Point(112, 84);
 			cbRemove.Name = "cbRemove";
@@ -223,7 +223,7 @@ namespace SimPe.Plugin.Anim
 				8.25F,
 				System.Drawing.FontStyle.Italic,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbDiscard.Location = new System.Drawing.Point(112, 64);
 			cbDiscard.Name = "cbDiscard";
@@ -244,7 +244,7 @@ namespace SimPe.Plugin.Anim
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbnames.Location = new System.Drawing.Point(112, 136);
 			cbnames.Name = "cbnames";
@@ -262,7 +262,7 @@ namespace SimPe.Plugin.Anim
 				8.25F,
 				System.Drawing.FontStyle.Italic,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label2.Location = new System.Drawing.Point(16, 40);
 			label2.Name = "label2";
@@ -278,7 +278,7 @@ namespace SimPe.Plugin.Anim
 				8.25F,
 				System.Drawing.FontStyle.Italic,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label3.Location = new System.Drawing.Point(16, 112);
 			label3.Name = "label3";
@@ -294,7 +294,7 @@ namespace SimPe.Plugin.Anim
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lbname.Location = new System.Drawing.Point(112, 40);
 			lbname.Name = "lbname";
@@ -313,7 +313,7 @@ namespace SimPe.Plugin.Anim
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbaction.Location = new System.Drawing.Point(112, 112);
 			cbaction.Name = "cbaction";
@@ -325,21 +325,21 @@ namespace SimPe.Plugin.Anim
 			//
 			// button1
 			//
-			button1.Anchor = (
-				(AnchorStyles)(
+			button1.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			button1.FlatStyle = FlatStyle.System;
 			button1.Font = new System.Drawing.Font(
 				"Verdana",
 				9.75F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			button1.Location = new System.Drawing.Point(739, 406);
 			button1.Name = "button1";
@@ -350,8 +350,8 @@ namespace SimPe.Plugin.Anim
 			//
 			// lv
 			//
-			lv.Anchor = (
-				(AnchorStyles)(
+			lv.Anchor =
+
 					(
 						(
 							(
@@ -360,8 +360,8 @@ namespace SimPe.Plugin.Anim
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lv.BorderStyle = BorderStyle.None;
 			lv.Columns.AddRange(
 				new ColumnHeader[]
@@ -425,7 +425,7 @@ namespace SimPe.Plugin.Anim
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label1.Location = new System.Drawing.Point(8, 16);
 			label1.Name = "label1";
@@ -443,7 +443,7 @@ namespace SimPe.Plugin.Anim
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			Name = "ImportJointAnim";

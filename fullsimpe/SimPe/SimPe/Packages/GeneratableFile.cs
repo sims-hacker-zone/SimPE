@@ -344,7 +344,7 @@ namespace SimPe.Packages
 				}
 
 				//PackedFileDescriptor newpfd = (PackedFileDescriptor)pfd.Clone();
-				PackedFileDescriptor newpfd = (PackedFileDescriptor)pfd;
+				PackedFileDescriptor newpfd = pfd;
 
 				PackedFile pf = null;
 				if (pfd.MarkForReCompress)
@@ -412,13 +412,13 @@ namespace SimPe.Packages
 
 			//write the hole index
 			header.HoleIndex.Offset = 0;
-			header.HoleIndex.Size = (int)(header.HoleIndex.ItemSize * 0);
+			header.HoleIndex.Size = header.HoleIndex.ItemSize * 0;
 			header.HoleIndex.Count = 0;
 			holeindex = new HoleIndexItem[0];
 
 			//write the packed Fileindex
 			header.Index.Offset = (uint)writer.BaseStream.Position;
-			header.Index.Size = (int)(header.Index.ItemSize * myindex.Length);
+			header.Index.Size = header.Index.ItemSize * myindex.Length;
 			header.Index.Count = myindex.Length;
 			SaveIndex(writer, myindex);
 			Index = myindex;
@@ -485,7 +485,7 @@ namespace SimPe.Packages
 			{
 				if ((bool)tmpcmp[i])
 				{
-					int pos = fl.FindFile((IPackedFileDescriptor)tmpindex[i]);
+					int pos = fl.FindFile(tmpindex[i]);
 
 					if (pos != -1) //the file did already exist, so the size did not change!
 					{
@@ -502,7 +502,7 @@ namespace SimPe.Packages
 						fi.Group = pfd.Group;
 						fi.Instance = pfd.Instance;
 						fi.SubType = pfd.SubType;
-						fi.UncompressedSize = (uint)pfd.fldata.UncompressedSize;
+						fi.UncompressedSize = pfd.fldata.UncompressedSize;
 						newfl.Add(fi);
 					}
 				}
@@ -534,15 +534,15 @@ namespace SimPe.Packages
 			long pos = writer.BaseStream.Position;
 			foreach (PackedFileDescriptor item in tmpindex)
 			{
-				writer.Write((uint)item.Type);
-				writer.Write((uint)item.Group);
-				writer.Write((uint)item.Instance);
+				writer.Write(item.Type);
+				writer.Write(item.Group);
+				writer.Write(item.Instance);
 				if (
 					(Header.IsVersion0101)
 					&& (Header.IndexType == Data.MetaData.IndexTypes.ptLongFileIndex)
 				)
 				{
-					writer.Write((uint)item.SubType);
+					writer.Write(item.SubType);
 				}
 
 				writer.Write(item.Offset);

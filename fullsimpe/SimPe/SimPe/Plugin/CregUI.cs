@@ -12,7 +12,7 @@ namespace SimPe.Plugin
 			IPackedFileUI
 	{
 		protected new CregPackedFileWrapper Wrapper => base.Wrapper as CregPackedFileWrapper;
-		public CregPackedFileWrapper TPFW => (CregPackedFileWrapper)Wrapper;
+		public CregPackedFileWrapper TPFW => Wrapper;
 
 		#region WrapperBaseControl Member
 

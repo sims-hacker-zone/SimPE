@@ -39,7 +39,7 @@ namespace System.Windows.Forms
 				cklbBoolset.SetSelected(i, true);
 			}
 
-			boolset = (ushort)0xffff;
+			boolset = 0xffff;
 		}
 
 		private void btnNone_Click(object sender, EventArgs e)

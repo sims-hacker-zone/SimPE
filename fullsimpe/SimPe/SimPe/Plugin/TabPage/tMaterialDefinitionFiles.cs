@@ -100,21 +100,21 @@ namespace SimPe.Plugin.TabPage
 			//
 			// linkLabel4
 			//
-			linkLabel4.Anchor = (
-				(AnchorStyles)(
+			linkLabel4.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			linkLabel4.AutoSize = true;
 			linkLabel4.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			linkLabel4.Location = new System.Drawing.Point(656, 56);
 			linkLabel4.Name = "linkLabel4";
@@ -127,21 +127,21 @@ namespace SimPe.Plugin.TabPage
 			//
 			// linkLabel3
 			//
-			linkLabel3.Anchor = (
-				(AnchorStyles)(
+			linkLabel3.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			linkLabel3.AutoSize = true;
 			linkLabel3.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			linkLabel3.Location = new System.Drawing.Point(692, 56);
 			linkLabel3.Name = "linkLabel3";
@@ -154,22 +154,22 @@ namespace SimPe.Plugin.TabPage
 			//
 			// tblistfile
 			//
-			tblistfile.Anchor = (
-				(AnchorStyles)(
+			tblistfile.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tblistfile.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			tblistfile.Location = new System.Drawing.Point(440, 24);
 			tblistfile.Name = "tblistfile";
@@ -186,7 +186,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			label6.Location = new System.Drawing.Point(432, 8);
 			label6.Name = "label6";
@@ -196,16 +196,16 @@ namespace SimPe.Plugin.TabPage
 			//
 			// lbfl
 			//
-			lbfl.Anchor = (
-				(AnchorStyles)(
+			lbfl.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
 						) | AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			lbfl.HorizontalScrollbar = true;
 			lbfl.IntegralHeight = false;
 			lbfl.Location = new System.Drawing.Point(8, 8);

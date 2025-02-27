@@ -348,10 +348,10 @@ namespace Ambertation.Windows.Forms
 			//
 			pb.BackColor = Color.Transparent;
 			pb.BorderColor = Color.FromArgb(
-				((System.Byte)(100)),
-				((System.Byte)(0)),
-				((System.Byte)(0)),
-				((System.Byte)(0))
+				100,
+				0,
+				0,
+				0
 			);
 			pb.Dock = DockStyle.Fill;
 			pb.Gradient = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
@@ -387,7 +387,7 @@ namespace Ambertation.Windows.Forms
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			lb.Location = new Point(0, -8);
 			lb.Name = "lb";
@@ -435,7 +435,7 @@ namespace Ambertation.Windows.Forms
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			Name = "LabeledProgressBar";
 			Size = new Size(400, 20);
@@ -458,7 +458,7 @@ namespace Ambertation.Windows.Forms
 			internalupdate = true;
 			try
 			{
-				double disp = ((float)Value) * ns + dno;
+				double disp = Value * ns + dno;
 				tb.Text = npre + disp.ToString(nf) + nsu;
 			}
 			catch { }
@@ -505,7 +505,7 @@ namespace Ambertation.Windows.Forms
 						pb.Maximum,
 						Convert.ToInt32(
 							Math.Round(
-								((double)e.X / (double)pb.SensitiveWidth) * pb.Maximum
+								(e.X / (double)pb.SensitiveWidth) * pb.Maximum
 							)
 						)
 					)

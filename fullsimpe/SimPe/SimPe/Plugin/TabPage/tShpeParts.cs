@@ -119,21 +119,21 @@ namespace SimPe.Plugin.TabPage
 			//
 			// linkLabel7
 			//
-			linkLabel7.Anchor = (
-				(AnchorStyles)(
+			linkLabel7.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			linkLabel7.AutoSize = true;
 			linkLabel7.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			linkLabel7.Location = new System.Drawing.Point(484, 120);
 			linkLabel7.Name = "linkLabel7";
@@ -148,21 +148,21 @@ namespace SimPe.Plugin.TabPage
 			//
 			// linkLabel8
 			//
-			linkLabel8.Anchor = (
-				(AnchorStyles)(
+			linkLabel8.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			linkLabel8.AutoSize = true;
 			linkLabel8.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			linkLabel8.Location = new System.Drawing.Point(456, 120);
 			linkLabel8.Name = "linkLabel8";
@@ -177,22 +177,22 @@ namespace SimPe.Plugin.TabPage
 			//
 			// tbpartdata
 			//
-			tbpartdata.Anchor = (
-				(AnchorStyles)(
+			tbpartdata.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbpartdata.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			tbpartdata.Location = new System.Drawing.Point(16, 224);
 			tbpartdata.Name = "tbpartdata";
@@ -209,7 +209,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			label7.Location = new System.Drawing.Point(8, 208);
 			label7.Name = "label7";
@@ -219,22 +219,22 @@ namespace SimPe.Plugin.TabPage
 			//
 			// tbpartdsc
 			//
-			tbpartdsc.Anchor = (
-				(AnchorStyles)(
+			tbpartdsc.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbpartdsc.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			tbpartdsc.Location = new System.Drawing.Point(16, 184);
 			tbpartdsc.Name = "tbpartdsc";
@@ -251,7 +251,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			label6.Location = new System.Drawing.Point(8, 168);
 			label6.Name = "label6";
@@ -261,22 +261,22 @@ namespace SimPe.Plugin.TabPage
 			//
 			// tbparttype
 			//
-			tbparttype.Anchor = (
-				(AnchorStyles)(
+			tbparttype.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbparttype.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			tbparttype.Location = new System.Drawing.Point(16, 144);
 			tbparttype.Name = "tbparttype";
@@ -293,7 +293,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			label5.Location = new System.Drawing.Point(8, 128);
 			label5.Name = "label5";
@@ -303,22 +303,22 @@ namespace SimPe.Plugin.TabPage
 			//
 			// lbpart
 			//
-			lbpart.Anchor = (
-				(AnchorStyles)(
+			lbpart.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lbpart.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			lbpart.HorizontalScrollbar = true;
 			lbpart.IntegralHeight = false;

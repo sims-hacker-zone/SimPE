@@ -99,8 +99,8 @@ namespace SimPe.Plugin.TabPage
 			//
 			// groupBox10
 			//
-			groupBox10.Anchor = (
-				(AnchorStyles)(
+			groupBox10.Anchor =
+
 					(
 						(
 							(
@@ -109,8 +109,8 @@ namespace SimPe.Plugin.TabPage
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			groupBox10.Controls.Add(gen_pg);
 			groupBox10.Controls.Add(tb_ver);
 			groupBox10.Controls.Add(label28);
@@ -120,7 +120,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			groupBox10.Location = new System.Drawing.Point(8, 8);
 			groupBox10.Name = "groupBox10";
@@ -131,8 +131,8 @@ namespace SimPe.Plugin.TabPage
 			//
 			// gen_pg
 			//
-			gen_pg.Anchor = (
-				(AnchorStyles)(
+			gen_pg.Anchor =
+
 					(
 						(
 							(
@@ -141,8 +141,8 @@ namespace SimPe.Plugin.TabPage
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			gen_pg.CommandsBackColor = System
 				.Drawing
 				.SystemColors
@@ -167,7 +167,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			tb_ver.Location = new System.Drawing.Point(16, 40);
 			tb_ver.Name = "tb_ver";
@@ -184,7 +184,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			label28.Location = new System.Drawing.Point(8, 24);
 			label28.Name = "label28";

@@ -973,7 +973,7 @@ namespace SimPe.Plugin
 			button1.Enabled =
 				(pbpatient.Image != null)
 				&& (sarche != null || tarcheFile != null);
-			pfd = (Interfaces.Files.IPackedFileDescriptor)spatient.FileDescriptor;
+			pfd = spatient.FileDescriptor;
 			llexport.Enabled = (spatient != null);
 			ShowSimDetails(spatient, pgPatientDetails);
 		}
@@ -1079,16 +1079,16 @@ namespace SimPe.Plugin
 				//list of all Files top copy from the Archetype
 				ArrayList list = new ArrayList
 				{
-					(uint)0xAC506764, //3IDR
-					(uint)0xE519C933, //CRES
-					(uint)0xEBCF3E27, //GZPS, Property Set
-					(uint)0xAC598EAC, //AGED
-					(uint)0xCCCEF852, //LxNR, Face
+					0xAC506764, //3IDR
+					0xE519C933, //CRES
+					0xEBCF3E27, //GZPS, Property Set
+					0xAC598EAC, //AGED
+					0xCCCEF852, //LxNR, Face
 					(uint)0x0C560F39, //BINX
-					(uint)0xAC4F8687, //GMDC
+					0xAC4F8687, //GMDC
 					(uint)0x7BA3838C, //GMND
 					(uint)0x49596978, //MATD
-					(uint)0xFC6EB1F7 //SHPE
+					0xFC6EB1F7 //SHPE
 				};
 
 				System.IO.BinaryReader br1 = new System.IO.BinaryReader(
@@ -1132,7 +1132,7 @@ namespace SimPe.Plugin
 				{
 					Packages.GeneratableFile patient =
 						Packages.File.LoadFromStream(
-							(System.IO.BinaryReader)null
+							null
 						);
 					patient.FileName = "";
 					patient.Add(pfd1);

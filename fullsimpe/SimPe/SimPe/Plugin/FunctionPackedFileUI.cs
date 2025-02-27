@@ -9,7 +9,7 @@ namespace SimPe.Plugin
 			IPackedFileUI
 	{
 		protected new FunctionPackedFileWrapper Wrapper => base.Wrapper as FunctionPackedFileWrapper;
-		public FunctionPackedFileWrapper TPFW => (FunctionPackedFileWrapper)Wrapper;
+		public FunctionPackedFileWrapper TPFW => Wrapper;
 
 		#region WrapperBaseControl Member
 

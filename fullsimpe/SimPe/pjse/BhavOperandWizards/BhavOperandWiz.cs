@@ -781,7 +781,7 @@ namespace pjse.BhavOperandWizards
 					else if (DataOwner == 0x1a)
 					{
 						ushort[] bcon = BhavWiz.ExpandBCON(Value, false);
-						s = ((BhavWiz)inst).readBcon(bcon[0], bcon[1], false, true);
+						s = inst.readBcon(bcon[0], bcon[1], false, true);
 					}
 				}
 				lbInstance.Text = s;

@@ -443,11 +443,11 @@ namespace SimPe.Plugin
 				if (!mmats.Contains(content))
 				{
 					string txmtname =
-						(string)
+
 							Hashes.StripHashFromName(
 								mmat.GetSaveItem("name").StringValue.Trim().ToLower()
 							) + "_txmt";
-					string cresname = (string)
+					string cresname =
 						Hashes.StripHashFromName(
 							mmat.GetSaveItem("modelName").StringValue.Trim().ToLower()
 						);
@@ -1341,7 +1341,7 @@ namespace SimPe.Plugin
 					FixCpfProperties(
 						cpf,
 						"guid",
-						(uint)((guid & 0x00fffffe) | 0xfb000001)
+						(guid & 0x00fffffe) | 0xfb000001
 					);
 #else
 

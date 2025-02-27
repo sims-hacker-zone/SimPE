@@ -216,14 +216,14 @@ namespace SimPe.Plugin
 			//
 			// button1
 			//
-			button1.Anchor = (
-				(AnchorStyles)(
+			button1.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			button1.FlatStyle = FlatStyle.System;
 			button1.Location = new System.Drawing.Point(776, 579);
 			button1.Name = "button1";
@@ -234,8 +234,8 @@ namespace SimPe.Plugin
 			//
 			// tc
 			//
-			tc.Anchor = (
-				(AnchorStyles)(
+			tc.Anchor =
+
 					(
 						(
 							(
@@ -244,8 +244,8 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tc.Controls.Add(tabPage1);
 			tc.Controls.Add(tabPage2);
 			tc.Location = new System.Drawing.Point(8, 8);
@@ -265,8 +265,8 @@ namespace SimPe.Plugin
 			//
 			// tvfemale
 			//
-			tvfemale.Anchor = (
-				(AnchorStyles)(
+			tvfemale.Anchor =
+
 					(
 						(
 							(
@@ -275,19 +275,19 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tvfemale.BackColor = System.Drawing.Color.FromArgb(
-				((int)(((byte)(255)))),
-				((int)(((byte)(248)))),
-				((int)(((byte)(254))))
+				((byte)(255)),
+				((byte)(248)),
+				((byte)(254))
 			);
 			tvfemale.Font = new System.Drawing.Font(
 				"Verdana",
 				11.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tvfemale.HideSelection = false;
 			tvfemale.Location = new System.Drawing.Point(8, 8);
@@ -309,8 +309,8 @@ namespace SimPe.Plugin
 			//
 			// tvmale
 			//
-			tvmale.Anchor = (
-				(AnchorStyles)(
+			tvmale.Anchor =
+
 					(
 						(
 							(
@@ -319,19 +319,19 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tvmale.BackColor = System.Drawing.Color.FromArgb(
-				((int)(((byte)(248)))),
-				((int)(((byte)(252)))),
-				((int)(((byte)(255))))
+				((byte)(248)),
+				((byte)(252)),
+				((byte)(255))
 			);
 			tvmale.Font = new System.Drawing.Font(
 				"Verdana",
 				11.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tvmale.HideSelection = false;
 			tvmale.Location = new System.Drawing.Point(8, 7);
@@ -344,14 +344,14 @@ namespace SimPe.Plugin
 			//
 			// pb
 			//
-			pb.Anchor = (
-				(AnchorStyles)(
+			pb.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			pb.BorderStyle = BorderStyle.FixedSingle;
 			pb.Location = new System.Drawing.Point(690, 8);
 			pb.Name = "pb";
@@ -362,22 +362,22 @@ namespace SimPe.Plugin
 			//
 			// lbname
 			//
-			lbname.Anchor = (
-				(AnchorStyles)(
+			lbname.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lbname.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lbname.Location = new System.Drawing.Point(690, 323);
 			lbname.Name = "lbname";
@@ -398,7 +398,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			FormBorderStyle =
 				FormBorderStyle

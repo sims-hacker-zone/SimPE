@@ -10,7 +10,7 @@ namespace SimPe.Plugin
 	public partial class LoteUI : Windows.Forms.WrapperBaseControl, IPackedFileUI
 	{
 		protected new Lot Wrapper => base.Wrapper as Lot;
-		public Lot TPFW => (Lot)Wrapper;
+		public Lot TPFW => Wrapper;
 
 		#region WrapperBaseControl Member
 

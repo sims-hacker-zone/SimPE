@@ -84,16 +84,16 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// pbDom
 			//
-			pbDom.Anchor = (
-				(AnchorStyles)(
+			pbDom.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			pbDom.HelpVisible = false;
 			pbDom.LineColor = System.Drawing.SystemColors.ScrollBar;
 			pbDom.Location = new System.Drawing.Point(16, 50);
@@ -111,7 +111,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label1.Location = new System.Drawing.Point(8, 34);
 			label1.Name = "label1";
@@ -127,7 +127,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label2.Location = new System.Drawing.Point(8, 154);
 			label2.Name = "label2";
@@ -137,16 +137,16 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// pbRec
 			//
-			pbRec.Anchor = (
-				(AnchorStyles)(
+			pbRec.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			pbRec.HelpVisible = false;
 			pbRec.LineColor = System.Drawing.SystemColors.ScrollBar;
 			pbRec.Location = new System.Drawing.Point(16, 170);
@@ -158,14 +158,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// lbbody
 			//
-			lbbody.Anchor = (
-				(AnchorStyles)(
+			lbbody.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lbbody.AutoSize = true;
 			lbbody.BackColor = System.Drawing.Color.Transparent;
 			lbbody.Font = new System.Drawing.Font(
@@ -173,7 +173,7 @@ namespace SimPe.PackedFiles.UserInterface
 				9.75F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lbbody.Location = new System.Drawing.Point(282, 28);
 			lbbody.Name = "lbbody";
@@ -185,8 +185,8 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// lbcpf
 			//
-			lbcpf.Anchor = (
-				(AnchorStyles)(
+			lbcpf.Anchor =
+
 					(
 						(
 							(
@@ -195,8 +195,8 @@ namespace SimPe.PackedFiles.UserInterface
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lbcpf.Location = new System.Drawing.Point(8, 40);
 			lbcpf.Name = "lbcpf";
 			lbcpf.Size = new System.Drawing.Size(260, 225);
@@ -216,7 +216,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			Name = "SimDNAUI";
 			Size = new System.Drawing.Size(672, 272);

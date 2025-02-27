@@ -29,7 +29,7 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 			public Element()
 			{
 				Name = "";
-				Data = BitConverter.GetBytes((int)0x00000103);
+				Data = BitConverter.GetBytes(0x00000103);
 			}
 
 			public string Name

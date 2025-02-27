@@ -91,9 +91,9 @@ namespace SimPe.Plugin.Anim
 			}
 			set
 			{
-				Unknown1 = (uint)(
+				Unknown1 =
 					(Unknown1 & 0x0003FFFF) | ((value << 0x12) & 0xFFFC0000)
-				);
+				;
 			}
 		}
 
@@ -785,7 +785,7 @@ namespace SimPe.Plugin.Anim
 
 		public static float GetCompressedFloat(short v, float scale)
 		{
-			return ((float)v * scale);
+			return (v * scale);
 		}
 
 		public static short FromCompressedFloat(float v, float scale)

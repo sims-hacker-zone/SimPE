@@ -171,16 +171,16 @@ namespace SimPe.Plugin
 			//
 			// comboBox1
 			//
-			comboBox1.Anchor = (
-				(AnchorStyles)(
+			comboBox1.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			//this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			comboBox1.Items.AddRange(
 				new object[] { "Download Folder", "Teleport Folder", "..." }
@@ -193,8 +193,8 @@ namespace SimPe.Plugin
 			//
 			// lbdir
 			//
-			lbdir.Anchor = (
-				(AnchorStyles)(
+			lbdir.Anchor =
+
 					(
 						(
 							(
@@ -203,8 +203,8 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lbdir.Controls.Add(llcomp);
 			lbdir.Controls.Add(pbprev);
 			lbdir.Controls.Add(gbskin);
@@ -218,7 +218,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			lbdir.Location = new Point(8, 104);
 			lbdir.Name = "lbdir";
@@ -229,14 +229,14 @@ namespace SimPe.Plugin
 			//
 			// llcomp
 			//
-			llcomp.Anchor = (
-				(AnchorStyles)(
+			llcomp.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			llcomp.AutoSize = true;
 			llcomp.Enabled = false;
 			llcomp.Font = new Font(
@@ -244,7 +244,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			llcomp.Location = new Point(584, 80);
 			llcomp.Name = "llcomp";
@@ -259,16 +259,16 @@ namespace SimPe.Plugin
 			//
 			// pbprev
 			//
-			pbprev.Anchor = (
-				(AnchorStyles)(
+			pbprev.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			pbprev.BorderStyle = BorderStyle.FixedSingle;
 			pbprev.Location = new Point(584, 408);
 			pbprev.Name = "pbprev";
@@ -278,14 +278,14 @@ namespace SimPe.Plugin
 			//
 			// gbskin
 			//
-			gbskin.Anchor = (
-				(AnchorStyles)(
+			gbskin.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			gbskin.Controls.Add(cbswim);
 			gbskin.Controls.Add(cbact);
 			gbskin.Controls.Add(cbskin);
@@ -319,7 +319,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			cbswim.Location = new Point(96, 120);
 			cbswim.Name = "cbswim";
@@ -335,7 +335,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			cbact.Location = new Point(96, 180);
 			cbact.Name = "cbact";
@@ -351,7 +351,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			cbskin.Location = new Point(96, 160);
 			cbskin.Name = "cbskin";
@@ -367,7 +367,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			cbformal.Location = new Point(96, 140);
 			cbformal.Name = "cbformal";
@@ -383,7 +383,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			cbpreg.Location = new Point(16, 180);
 			cbpreg.Name = "cbpreg";
@@ -399,7 +399,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			cbundies.Location = new Point(16, 160);
 			cbundies.Name = "cbundies";
@@ -415,7 +415,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			cbpj.Location = new Point(16, 140);
 			cbpj.Name = "cbpj";
@@ -431,7 +431,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			cbevery.Location = new Point(16, 120);
 			cbevery.Name = "cbevery";
@@ -447,7 +447,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			cbelder.Location = new Point(96, 84);
 			cbelder.Name = "cbelder";
@@ -463,7 +463,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			cbadult.Location = new Point(96, 64);
 			cbadult.Name = "cbadult";
@@ -479,7 +479,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			cbyoung.Location = new Point(96, 24);
 			cbyoung.Name = "cbyoung";
@@ -495,7 +495,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			cbteen.Location = new Point(16, 84);
 			cbteen.Name = "cbteen";
@@ -511,7 +511,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			cbchild.Location = new Point(16, 64);
 			cbchild.Name = "cbchild";
@@ -527,7 +527,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			cbtoddler.Location = new Point(16, 44);
 			cbtoddler.Name = "cbtoddler";
@@ -543,7 +543,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			cbbaby.Location = new Point(16, 24);
 			cbbaby.Name = "cbbaby";
@@ -553,14 +553,14 @@ namespace SimPe.Plugin
 			//
 			// llskin
 			//
-			llskin.Anchor = (
-				(AnchorStyles)(
+			llskin.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			llskin.AutoSize = true;
 			llskin.Enabled = false;
 			llskin.Location = new Point(8, 0);
@@ -576,14 +576,14 @@ namespace SimPe.Plugin
 			//
 			// groupBox2
 			//
-			groupBox2.Anchor = (
-				(AnchorStyles)(
+			groupBox2.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			groupBox2.Controls.Add(llfix);
 			groupBox2.Controls.Add(tbname);
 			groupBox2.Controls.Add(label1);
@@ -596,14 +596,14 @@ namespace SimPe.Plugin
 			//
 			// llfix
 			//
-			llfix.Anchor = (
-				(AnchorStyles)(
+			llfix.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			llfix.AutoSize = true;
 			llfix.Enabled = false;
 			llfix.Location = new Point(8, 0);
@@ -617,20 +617,20 @@ namespace SimPe.Plugin
 			//
 			// tbname
 			//
-			tbname.Anchor = (
-				(AnchorStyles)(
+			tbname.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbname.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			tbname.Location = new Point(24, 45);
 			tbname.Name = "tbname";
@@ -640,20 +640,20 @@ namespace SimPe.Plugin
 			//
 			// label1
 			//
-			label1.Anchor = (
-				(AnchorStyles)(
+			label1.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label1.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			label1.Location = new Point(8, 29);
 			label1.Name = "label1";
@@ -663,14 +663,14 @@ namespace SimPe.Plugin
 			//
 			// lldis
 			//
-			lldis.Anchor = (
-				(AnchorStyles)(
+			lldis.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lldis.AutoSize = true;
 			lldis.Enabled = false;
 			lldis.Location = new Point(584, 64);
@@ -684,14 +684,14 @@ namespace SimPe.Plugin
 			//
 			// llopen
 			//
-			llopen.Anchor = (
-				(AnchorStyles)(
+			llopen.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			llopen.AutoSize = true;
 			llopen.Enabled = false;
 			llopen.Location = new Point(584, 48);
@@ -707,20 +707,20 @@ namespace SimPe.Plugin
 			//
 			// tbfilename
 			//
-			tbfilename.Anchor = (
-				(AnchorStyles)(
+			tbfilename.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbfilename.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			tbfilename.Location = new Point(584, 24);
 			tbfilename.Name = "tbfilename";
@@ -731,8 +731,8 @@ namespace SimPe.Plugin
 			//
 			// lv
 			//
-			lv.Anchor = (
-				(AnchorStyles)(
+			lv.Anchor =
+
 					(
 						(
 							(
@@ -741,8 +741,8 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lv.Columns.AddRange(
 				new ColumnHeader[]
 				{
@@ -758,7 +758,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			lv.FullRowSelect = true;
 			lv.HideSelection = false;
@@ -798,21 +798,21 @@ namespace SimPe.Plugin
 			//
 			// linkLabel1
 			//
-			linkLabel1.Anchor = (
-				(AnchorStyles)(
+			linkLabel1.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			linkLabel1.AutoSize = true;
 			linkLabel1.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			linkLabel1.Location = new Point(752, 32);
 			linkLabel1.Name = "linkLabel1";
@@ -825,16 +825,16 @@ namespace SimPe.Plugin
 			//
 			// pb
 			//
-			pb.Anchor = (
-				(AnchorStyles)(
+			pb.Anchor =
+
 					(
 						(
 							AnchorStyles.Bottom
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			pb.Location = new Point(0, 556);
 			pb.Name = "pb";
 			pb.Size = new Size(792, 16);
@@ -853,7 +853,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			groupBox1.Location = new Point(8, 32);
 			groupBox1.Name = "groupBox1";
@@ -870,7 +870,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			cbprev.Location = new Point(168, 36);
 			cbprev.Name = "cbprev";
@@ -888,7 +888,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			cbready.Location = new Point(168, 16);
 			cbready.Name = "cbready";
@@ -904,7 +904,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			cbguid.Location = new Point(16, 36);
 			cbguid.Name = "cbguid";
@@ -920,7 +920,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			cbcompress.Location = new Point(16, 16);
 			cbcompress.Name = "cbcompress";
@@ -948,7 +948,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			FormBorderStyle =
 				FormBorderStyle
@@ -1863,7 +1863,7 @@ namespace SimPe.Plugin
 								SetSkinAge(
 									cbyoung,
 									ref age,
-									(uint)((uint)Data.Ages.YoungAdult)
+									(uint)Data.Ages.YoungAdult
 								);
 								if (cbyoung.Checked)
 								{

@@ -205,7 +205,7 @@ namespace Ambertation.Drawing
 				if (
 					y > 0
 					&& CheckPixel(
-						(byte*)(scan0 + CoordsToIndex(i, y - 1, stride)),
+						scan0 + CoordsToIndex(i, y - 1, stride),
 						startcolor
 					)
 					&& (!(PixelsChecked[i, y - 1]))
@@ -217,7 +217,7 @@ namespace Ambertation.Drawing
 				if (
 					y < (bmpsize.Height - 1)
 					&& CheckPixel(
-						(byte*)(scan0 + CoordsToIndex(i, y + 1, stride)),
+						scan0 + CoordsToIndex(i, y + 1, stride),
 						startcolor
 					)
 					&& (!(PixelsChecked[i, y + 1]))
@@ -294,7 +294,7 @@ namespace Ambertation.Drawing
 					//UP
 					if (
 						CheckPixel(
-							(byte*)(scan0 + CoordsToIndex(i, y - 1, stride)),
+							scan0 + CoordsToIndex(i, y - 1, stride),
 							startcolor
 						) && (!(PixelsChecked[i, y - 1]))
 					)
@@ -305,7 +305,7 @@ namespace Ambertation.Drawing
 					if (
 						x > 0
 						&& CheckPixel(
-							(byte*)(scan0 + CoordsToIndex(i - 1, y - 1, stride)),
+							scan0 + CoordsToIndex(i - 1, y - 1, stride),
 							startcolor
 						)
 						&& (!(PixelsChecked[i - 1, y - 1]))
@@ -324,7 +324,7 @@ namespace Ambertation.Drawing
 					if (
 						x < (bmpsize.Width - 1)
 						&& CheckPixel(
-							(byte*)(scan0 + CoordsToIndex(i + 1, y - 1, stride)),
+							scan0 + CoordsToIndex(i + 1, y - 1, stride),
 							startcolor
 						)
 						&& (!(PixelsChecked[i + 1, y - 1]))
@@ -346,7 +346,7 @@ namespace Ambertation.Drawing
 					//DOWN
 					if (
 						CheckPixel(
-							(byte*)(scan0 + CoordsToIndex(i, y + 1, stride)),
+							scan0 + CoordsToIndex(i, y + 1, stride),
 							startcolor
 						) && (!(PixelsChecked[i, y + 1]))
 					)
@@ -357,7 +357,7 @@ namespace Ambertation.Drawing
 					if (
 						x > 0
 						&& CheckPixel(
-							(byte*)(scan0 + CoordsToIndex(i - 1, y + 1, stride)),
+							scan0 + CoordsToIndex(i - 1, y + 1, stride),
 							startcolor
 						)
 						&& (!(PixelsChecked[i - 1, y + 1]))
@@ -376,7 +376,7 @@ namespace Ambertation.Drawing
 					if (
 						x < (bmpsize.Width - 1)
 						&& CheckPixel(
-							(byte*)(scan0 + CoordsToIndex(i + 1, y + 1, stride)),
+							scan0 + CoordsToIndex(i + 1, y + 1, stride),
 							startcolor
 						)
 						&& (!(PixelsChecked[i + 1, y + 1]))

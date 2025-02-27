@@ -211,8 +211,8 @@ namespace SimPe.Plugin
 			writer.Write(sgres.BlockID);
 			sgres.Serialize(writer);
 
-			writer.Write((int)texturesize.Width);
-			writer.Write((int)texturesize.Height);
+			writer.Write(texturesize.Width);
+			writer.Write(texturesize.Height);
 			writer.Write(ZLevel);
 
 			if (datatype == MipMapType.Texture)
@@ -225,7 +225,7 @@ namespace SimPe.Plugin
 				data = new byte[0];
 			}
 
-			writer.Write((int)data.Length);
+			writer.Write(data.Length);
 			writer.Write(data);
 		}
 		#endregion

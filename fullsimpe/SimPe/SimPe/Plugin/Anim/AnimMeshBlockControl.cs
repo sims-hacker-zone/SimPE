@@ -135,14 +135,14 @@ namespace SimPe.Plugin.Anim
 			//
 			// cbCorrect
 			//
-			cbCorrect.Anchor = (
-				(AnchorStyles)(
+			cbCorrect.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			cbCorrect.Location = new System.Drawing.Point(584, 0);
 			cbCorrect.Name = "cbCorrect";
 			cbCorrect.Size = new System.Drawing.Size(88, 32);
@@ -154,14 +154,14 @@ namespace SimPe.Plugin.Anim
 			//
 			// llExport
 			//
-			llExport.Anchor = (
-				(AnchorStyles)(
+			llExport.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			llExport.Enabled = false;
 			llExport.Location = new System.Drawing.Point(672, 8);
 			llExport.Name = "llExport";
@@ -177,14 +177,14 @@ namespace SimPe.Plugin.Anim
 			//
 			// llImport
 			//
-			llImport.Anchor = (
-				(AnchorStyles)(
+			llImport.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			llImport.Enabled = false;
 			llImport.Location = new System.Drawing.Point(728, 8);
 			llImport.Name = "llImport";
@@ -210,16 +210,16 @@ namespace SimPe.Plugin.Anim
 			//
 			// cbJoint
 			//
-			cbJoint.Anchor = (
-				(AnchorStyles)(
+			cbJoint.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			cbJoint.ContextMenu = cmJoint;
 			cbJoint.DropDownStyle =
 				ComboBoxStyle
@@ -254,16 +254,16 @@ namespace SimPe.Plugin.Anim
 			//
 			// cbSubMesh
 			//
-			cbSubMesh.Anchor = (
-				(AnchorStyles)(
+			cbSubMesh.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			cbSubMesh.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;

@@ -161,7 +161,7 @@ namespace Ambertation.Drawing
 
 		public static byte GetG(int ARGB)
 		{
-			return HiByte((short)LoWord(ARGB));
+			return HiByte(LoWord(ARGB));
 		}
 
 		public static byte GetB(int ARGB)
@@ -176,17 +176,17 @@ namespace Ambertation.Drawing
 
 		public static int RGBA(byte R, byte G, byte B, byte A)
 		{
-			return (int)(R + (G << 8) + (B << 16) + (A << 24));
+			return R + (G << 8) + (B << 16) + (A << 24);
 		}
 
 		public static int RGB(byte R, byte G, byte B)
 		{
-			return (int)(R + (G << 8) + (B << 16));
+			return R + (G << 8) + (B << 16);
 		}
 
 		public static int BGRA(byte B, byte G, byte R, byte A)
 		{
-			return (int)(B + (G << 8) + (R << 16) + (A << 24));
+			return B + (G << 8) + (R << 16) + (A << 24);
 		}
 
 		public static short LoWord(int n)

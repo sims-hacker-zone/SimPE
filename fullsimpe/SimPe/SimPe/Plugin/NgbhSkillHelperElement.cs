@@ -71,7 +71,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			cb.Location = new System.Drawing.Point(0, 0);
 			cb.Name = "cb";
@@ -90,7 +90,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			ui.Location = new System.Drawing.Point(0, 24);
 			ui.Name = "ui";

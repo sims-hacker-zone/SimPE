@@ -144,9 +144,9 @@ namespace SimPe.PackedFiles
 			{
 				if (!handlers.Contains(wrapper))
 				{
-					((IWrapper)wrapper).Priority =
+					wrapper.Priority =
 						reg.GetWrapperPriority(
-							((IWrapper)wrapper).WrapperDescription.UID
+							wrapper.WrapperDescription.UID
 						);
 					handlers.Add((IFileWrapper)wrapper);
 					if (wrapper.WrapperDescription is AbstractWrapperInfo)
@@ -629,7 +629,7 @@ namespace SimPe.PackedFiles
 
 			foreach (ISettings s in settings)
 			{
-				RegisterSettings(s as ISettings);
+				RegisterSettings(s);
 			}
 		}
 
@@ -669,7 +669,7 @@ namespace SimPe.PackedFiles
 
 			foreach (ICommandLine c in CommandLines)
 			{
-				RegisterCommandLines(c as ICommandLine);
+				RegisterCommandLines(c);
 			}
 		}
 

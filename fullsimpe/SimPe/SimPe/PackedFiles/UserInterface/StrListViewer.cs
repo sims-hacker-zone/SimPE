@@ -96,7 +96,7 @@ namespace SimPe.PackedFiles.UserInterface
 			foreach (StrLanguage l in wrapper.Languages)
 			{
 				TreeNode node = new TreeNode();
-				node.Tag = (object)l;
+				node.Tag = l;
 				node.Text = l.ToString();
 				treeView1.Nodes.Add(node);
 			}

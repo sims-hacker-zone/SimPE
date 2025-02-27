@@ -141,7 +141,7 @@ namespace SimPe.Plugin
 				writer.Write(Unknown3);
 			}
 
-			writer.Write((int)Blocks.Length);
+			writer.Write(Blocks.Length);
 			for (int i = 0; i < Blocks.Length; i++)
 			{
 				writer.Write(Blocks[i].BlockID);

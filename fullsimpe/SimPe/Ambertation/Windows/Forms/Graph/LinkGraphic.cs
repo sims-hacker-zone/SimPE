@@ -58,7 +58,7 @@ namespace Ambertation.Windows.Forms.Graph
 		{
 			get
 			{
-				int yl = ((byte)Type >> 2) & (byte)0x3;
+				int yl = ((byte)Type >> 2) & 0x3;
 				return (yl == 0x2);
 			}
 		}
@@ -67,8 +67,8 @@ namespace Ambertation.Windows.Forms.Graph
 		{
 			get
 			{
-				int xl = (byte)Type & (byte)0x3;
-				int yl = ((byte)Type >> 2) & (byte)0x3;
+				int xl = (byte)Type & 0x3;
+				int yl = ((byte)Type >> 2) & 0x3;
 				return (yl == 0x2 || xl == 0x2);
 			}
 		}
@@ -127,7 +127,7 @@ namespace Ambertation.Windows.Forms.Graph
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 
 			tfg = SystemColors.WindowText;

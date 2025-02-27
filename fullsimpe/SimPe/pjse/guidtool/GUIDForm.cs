@@ -588,7 +588,7 @@ namespace pjse.guidtool
 							if (type[14])
 							{
 								foreach (
-									StrItem si in ((StrWrapper)item.Wrapper)[(byte)1]
+									StrItem si in ((StrWrapper)item.Wrapper)[1]
 								)
 								{
 									if (
@@ -1006,7 +1006,7 @@ namespace pjse.guidtool
 			gcGroup.Label = "Group Filter:";
 			gcGroup.MaximumSize = new System.Drawing.Size(587, 23);
 			gcGroup.Name = "gcGroup";
-			gcGroup.Value = ((uint)(0u));
+			gcGroup.Value = 0u;
 			//
 			// ckbSGSearch
 			//

@@ -112,7 +112,7 @@ namespace Classless.Hasher
 
 				if (param.ReflectInput)
 				{
-					table[i] = Reflect((long)i, 8);
+					table[i] = Reflect(i, 8);
 				}
 
 				table[i] = table[i] << (param.Order - 8);
@@ -196,8 +196,8 @@ namespace Classless.Hasher
 
 				checksum ^= (uint)parameters.FinalXORValue;
 
-				numBytes = (int)parameters.Order / 8;
-				if (((int)parameters.Order - (numBytes * 8)) > 0)
+				numBytes = parameters.Order / 8;
+				if ((parameters.Order - (numBytes * 8)) > 0)
 				{
 					numBytes++;
 				}
@@ -223,7 +223,7 @@ namespace Classless.Hasher
 			{
 				long bitMask = (long)1 << ((numBits - 1) - i);
 
-				if ((temp & (long)1) != 0)
+				if ((temp & 1) != 0)
 				{
 					data |= bitMask;
 				}

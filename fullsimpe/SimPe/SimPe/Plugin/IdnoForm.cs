@@ -73,8 +73,8 @@ namespace SimPe.Plugin
 			//
 			// pnidno
 			//
-			pnidno.Anchor = (
-				(AnchorStyles)(
+			pnidno.Anchor =
+
 					(
 						(
 							(
@@ -83,8 +83,8 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			pnidno.AutoScroll = true;
 			pnidno.BackColor = System.Drawing.Color.Transparent;
 			pnidno.Controls.Add(cbquadd);
@@ -119,7 +119,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			pnidno.Location = new System.Drawing.Point(6, 20);
 			pnidno.Name = "pnidno";
@@ -186,7 +186,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label9.Location = new System.Drawing.Point(6, 241);
 			label9.Name = "label9";
@@ -211,7 +211,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label8.Location = new System.Drawing.Point(316, 79);
 			label8.Name = "label8";
@@ -250,7 +250,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label7.Location = new System.Drawing.Point(6, 207);
 			label7.Name = "label7";
@@ -289,7 +289,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label6.Location = new System.Drawing.Point(6, 173);
 			label6.Name = "label6";
@@ -315,7 +315,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			llunique.Location = new System.Drawing.Point(215, 77);
 			llunique.Name = "llunique";
@@ -336,7 +336,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label5.Location = new System.Drawing.Point(29, 109);
 			label5.Name = "label5";
@@ -389,7 +389,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label4.Location = new System.Drawing.Point(274, 109);
 			label4.Name = "label4";
@@ -406,7 +406,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label3.Location = new System.Drawing.Point(29, 79);
 			label3.Name = "label3";
@@ -423,7 +423,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label2.Location = new System.Drawing.Point(29, 49);
 			label2.Name = "label2";
@@ -460,7 +460,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label1.Location = new System.Drawing.Point(6, 139);
 			label1.Name = "label1";
@@ -471,16 +471,16 @@ namespace SimPe.Plugin
 			//
 			// panel2
 			//
-			panel2.Anchor = (
-				(AnchorStyles)(
+			panel2.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			panel2.Location = new System.Drawing.Point(0, 0);
 			panel2.Margin = new Padding(0);
 			panel2.Name = "panel2";
@@ -497,7 +497,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			Name = "IdnoForm";
 			Text = "IdnoForm";

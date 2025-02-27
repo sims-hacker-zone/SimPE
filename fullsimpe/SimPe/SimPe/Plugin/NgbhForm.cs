@@ -586,7 +586,7 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			ListViewItem lvi = (ListViewItem)lbmem.Items[SelectedIndex];
+			ListViewItem lvi = lbmem.Items[SelectedIndex];
 
 			lbmem.Items[SelectedIndex] = (ListViewItem)
 				lbmem.Items[SelectedIndex - 1].Clone();
@@ -631,7 +631,7 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			ListViewItem lvi = (ListViewItem)lbmem.Items[SelectedIndex];
+			ListViewItem lvi = lbmem.Items[SelectedIndex];
 			lbmem.Items[SelectedIndex] = (ListViewItem)
 				lbmem.Items[SelectedIndex + 1].Clone();
 			lbmem.Items[SelectedIndex + 1] = (ListViewItem)lvi.Clone();

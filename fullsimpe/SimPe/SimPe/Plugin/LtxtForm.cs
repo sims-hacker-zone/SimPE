@@ -2010,15 +2010,15 @@ namespace SimPe.Plugin
 			switch (lll.IndexOf((LinkLabel)sender))
 			{
 				case 0:
-					type = (uint)0x0BF999E7;
+					type = 0x0BF999E7;
 					inst = wrapper.ApartmentBase;
 					break;
 				case 1:
-					type = (uint)0x0BF999E7;
+					type = 0x0BF999E7;
 					inst = wrapper.SubLots[lbApts.SelectedIndex].ApartmentSublot;
 					break;
 				case 2:
-					type = (uint)0x46414D49;
+					type = 0x46414D49;
 					inst = wrapper.SubLots[lbApts.SelectedIndex].Family;
 					break;
 				default:

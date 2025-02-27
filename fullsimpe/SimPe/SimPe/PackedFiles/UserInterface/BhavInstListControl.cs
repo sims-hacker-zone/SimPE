@@ -224,10 +224,10 @@ namespace SimPe.PackedFiles.UserInterface
 						case BhavUIAddType.Unlinked:
 							break;
 						case BhavUIAddType.ViaTrue:
-							((Instruction)wrapper[csel]).Target1 = (ushort)newLine;
+							wrapper[csel].Target1 = (ushort)newLine;
 							break;
 						case BhavUIAddType.ViaFalse:
-							((Instruction)wrapper[csel]).Target2 = (ushort)newLine;
+							wrapper[csel].Target2 = (ushort)newLine;
 							break;
 					}
 				}

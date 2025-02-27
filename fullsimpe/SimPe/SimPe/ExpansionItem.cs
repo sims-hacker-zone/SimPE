@@ -397,7 +397,7 @@ namespace SimPe
 				Flag = new Flags(0);
 				CensorFileName = "";
 				ExeName = "";
-				Expansion = (Expansions)0;
+				Expansion = 0;
 				Version = -1;
 				PreferedRuntimeVersion = -1;
 				SimNameDeepSearch = new Ambertation.CaseInvariantArrayList();

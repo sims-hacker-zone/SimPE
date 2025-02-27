@@ -208,7 +208,7 @@ namespace SimPe
 			lbfolder.SelectedIndex = lbfolder.Items.Count > 0 ? 0 : -1;
 
 			//Report Format
-			Registry.ReportFormats rf = (Registry.ReportFormats)
+			Registry.ReportFormats rf =
 				Helper.WindowsRegistry.ReportFormat;
 			for (int i = 0; i < cbReport.Items.Count; i++)
 			{
@@ -219,7 +219,7 @@ namespace SimPe
 			}
 
 			Registry.ResourceListExtensionFormats rlf =
-				(Registry.ResourceListExtensionFormats)
+
 					Helper.WindowsRegistry.ResourceListExtensionFormat;
 			for (int i = 0; i < cbRLExt.Items.Count; i++)
 			{
@@ -232,7 +232,7 @@ namespace SimPe
 			}
 
 			Registry.ResourceListFormats rif =
-				(Registry.ResourceListFormats)
+
 					Helper.WindowsRegistry.ResourceListFormat;
 			for (int i = 0; i < cbRLNames.Items.Count; i++)
 			{
@@ -243,7 +243,7 @@ namespace SimPe
 			}
 
 			Registry.ResourceListUnnamedFormats ruf =
-				(Registry.ResourceListUnnamedFormats)
+
 					Helper.WindowsRegistry.ResourceListUnknownDescriptionFormat;
 			for (int i = 0; i < cbRLTGI.Items.Count; i++)
 			{

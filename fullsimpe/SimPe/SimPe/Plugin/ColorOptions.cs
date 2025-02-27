@@ -146,7 +146,7 @@ namespace SimPe.Plugin
 					txtr = mmat.GetTxtr(txmt);
 					if (txtr != null)
 					{
-						txtr.FileDescriptor = (IPackedFileDescriptor)
+						txtr.FileDescriptor =
 							txtr.FileDescriptor.Clone();
 					}
 				}

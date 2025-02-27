@@ -453,14 +453,14 @@ namespace SimPe.Plugin
 			//
 			// groupBox1
 			//
-			groupBox1.Anchor = (
-				(AnchorStyles)(
+			groupBox1.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			groupBox1.Controls.Add(tb_itemsa2);
 			groupBox1.Controls.Add(label1);
 			groupBox1.Controls.Add(lb_itemsa2);
@@ -470,7 +470,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			groupBox1.Location = new System.Drawing.Point(612, 152);
 			groupBox1.Name = "groupBox1";
@@ -481,20 +481,20 @@ namespace SimPe.Plugin
 			//
 			// tb_itemsa2
 			//
-			tb_itemsa2.Anchor = (
-				(AnchorStyles)(
+			tb_itemsa2.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			tb_itemsa2.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tb_itemsa2.Location = new System.Drawing.Point(56, 104);
 			tb_itemsa2.Name = "tb_itemsa2";
@@ -505,21 +505,21 @@ namespace SimPe.Plugin
 			//
 			// label1
 			//
-			label1.Anchor = (
-				(AnchorStyles)(
+			label1.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			label1.AutoSize = true;
 			label1.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label1.Location = new System.Drawing.Point(8, 112);
 			label1.Name = "label1";
@@ -529,8 +529,8 @@ namespace SimPe.Plugin
 			//
 			// lb_itemsa2
 			//
-			lb_itemsa2.Anchor = (
-				(AnchorStyles)(
+			lb_itemsa2.Anchor =
+
 					(
 						(
 							(
@@ -539,14 +539,14 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lb_itemsa2.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lb_itemsa2.HorizontalScrollbar = true;
 			lb_itemsa2.IntegralHeight = false;
@@ -560,8 +560,8 @@ namespace SimPe.Plugin
 			//
 			// groupBox3
 			//
-			groupBox3.Anchor = (
-				(AnchorStyles)(
+			groupBox3.Anchor =
+
 					(
 						(
 							(
@@ -570,8 +570,8 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			groupBox3.Controls.Add(cbid);
 			groupBox3.Controls.Add(cbset);
 			groupBox3.Controls.Add(cbblock);
@@ -592,7 +592,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			groupBox3.Location = new System.Drawing.Point(8, 88);
 			groupBox3.Name = "groupBox3";
@@ -603,14 +603,14 @@ namespace SimPe.Plugin
 			//
 			// cbid
 			//
-			cbid.Anchor = (
-				(AnchorStyles)(
+			cbid.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			cbid.DropDownStyle = ComboBoxStyle.DropDownList;
 			cbid.Enabled = false;
 			cbid.Font = new System.Drawing.Font(
@@ -618,7 +618,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbid.Location = new System.Drawing.Point(364, 80);
 			cbid.Name = "cbid";
@@ -627,14 +627,14 @@ namespace SimPe.Plugin
 			//
 			// cbset
 			//
-			cbset.Anchor = (
-				(AnchorStyles)(
+			cbset.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			cbset.DropDownStyle = ComboBoxStyle.DropDownList;
 			cbset.Enabled = false;
 			cbset.Font = new System.Drawing.Font(
@@ -642,7 +642,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbset.Location = new System.Drawing.Point(364, 160);
 			cbset.Name = "cbset";
@@ -651,14 +651,14 @@ namespace SimPe.Plugin
 			//
 			// cbblock
 			//
-			cbblock.Anchor = (
-				(AnchorStyles)(
+			cbblock.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			cbblock.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
@@ -668,7 +668,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbblock.Location = new System.Drawing.Point(364, 120);
 			cbblock.Name = "cbblock";
@@ -677,8 +677,8 @@ namespace SimPe.Plugin
 			//
 			// lb_itemsa
 			//
-			lb_itemsa.Anchor = (
-				(AnchorStyles)(
+			lb_itemsa.Anchor =
+
 					(
 						(
 							(
@@ -687,14 +687,14 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lb_itemsa.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lb_itemsa.HorizontalScrollbar = true;
 			lb_itemsa.IntegralHeight = false;
@@ -708,20 +708,20 @@ namespace SimPe.Plugin
 			//
 			// tb_uk5
 			//
-			tb_uk5.Anchor = (
-				(AnchorStyles)(
+			tb_uk5.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tb_uk5.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tb_uk5.Location = new System.Drawing.Point(372, 40);
 			tb_uk5.Name = "tb_uk5";
@@ -732,21 +732,21 @@ namespace SimPe.Plugin
 			//
 			// label10
 			//
-			label10.Anchor = (
-				(AnchorStyles)(
+			label10.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label10.AutoSize = true;
 			label10.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label10.Location = new System.Drawing.Point(364, 24);
 			label10.Name = "label10";
@@ -756,20 +756,20 @@ namespace SimPe.Plugin
 			//
 			// tb_mod2
 			//
-			tb_mod2.Anchor = (
-				(AnchorStyles)(
+			tb_mod2.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tb_mod2.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tb_mod2.Location = new System.Drawing.Point(268, 160);
 			tb_mod2.Name = "tb_mod2";
@@ -780,21 +780,21 @@ namespace SimPe.Plugin
 			//
 			// label7
 			//
-			label7.Anchor = (
-				(AnchorStyles)(
+			label7.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label7.AutoSize = true;
 			label7.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label7.Location = new System.Drawing.Point(260, 144);
 			label7.Name = "label7";
@@ -804,20 +804,20 @@ namespace SimPe.Plugin
 			//
 			// tb_mod1
 			//
-			tb_mod1.Anchor = (
-				(AnchorStyles)(
+			tb_mod1.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tb_mod1.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tb_mod1.Location = new System.Drawing.Point(268, 120);
 			tb_mod1.Name = "tb_mod1";
@@ -828,21 +828,21 @@ namespace SimPe.Plugin
 			//
 			// label8
 			//
-			label8.Anchor = (
-				(AnchorStyles)(
+			label8.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label8.AutoSize = true;
 			label8.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label8.Location = new System.Drawing.Point(260, 104);
 			label8.Name = "label8";
@@ -852,20 +852,20 @@ namespace SimPe.Plugin
 			//
 			// tb_id
 			//
-			tb_id.Anchor = (
-				(AnchorStyles)(
+			tb_id.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tb_id.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tb_id.Location = new System.Drawing.Point(268, 80);
 			tb_id.Name = "tb_id";
@@ -876,21 +876,21 @@ namespace SimPe.Plugin
 			//
 			// label5
 			//
-			label5.Anchor = (
-				(AnchorStyles)(
+			label5.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label5.AutoSize = true;
 			label5.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label5.Location = new System.Drawing.Point(260, 64);
 			label5.Name = "label5";
@@ -900,20 +900,20 @@ namespace SimPe.Plugin
 			//
 			// tb_uk1
 			//
-			tb_uk1.Anchor = (
-				(AnchorStyles)(
+			tb_uk1.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tb_uk1.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tb_uk1.Location = new System.Drawing.Point(268, 40);
 			tb_uk1.Name = "tb_uk1";
@@ -924,21 +924,21 @@ namespace SimPe.Plugin
 			//
 			// label6
 			//
-			label6.Anchor = (
-				(AnchorStyles)(
+			label6.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label6.AutoSize = true;
 			label6.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label6.Location = new System.Drawing.Point(260, 24);
 			label6.Name = "label6";
@@ -956,7 +956,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			groupBox10.Location = new System.Drawing.Point(8, 8);
 			groupBox10.Name = "groupBox10";
@@ -972,7 +972,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tb_ver.Location = new System.Drawing.Point(16, 40);
 			tb_ver.Name = "tb_ver";
@@ -989,7 +989,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label28.Location = new System.Drawing.Point(8, 24);
 			label28.Name = "label28";
@@ -999,16 +999,16 @@ namespace SimPe.Plugin
 			//
 			// groupBox12
 			//
-			groupBox12.Anchor = (
-				(AnchorStyles)(
+			groupBox12.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			groupBox12.Controls.Add(lb_itemsa1);
 			groupBox12.FlatStyle = FlatStyle.System;
 			groupBox12.Font = new System.Drawing.Font(
@@ -1016,7 +1016,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			groupBox12.Location = new System.Drawing.Point(612, 8);
 			groupBox12.Name = "groupBox12";
@@ -1027,8 +1027,8 @@ namespace SimPe.Plugin
 			//
 			// lb_itemsa1
 			//
-			lb_itemsa1.Anchor = (
-				(AnchorStyles)(
+			lb_itemsa1.Anchor =
+
 					(
 						(
 							(
@@ -1037,14 +1037,14 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lb_itemsa1.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lb_itemsa1.HorizontalScrollbar = true;
 			lb_itemsa1.IntegralHeight = false;
@@ -1107,16 +1107,16 @@ namespace SimPe.Plugin
 			//
 			// list_groups
 			//
-			list_groups.Anchor = (
-				(AnchorStyles)(
+			list_groups.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
 						) | AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			list_groups.Location = new System.Drawing.Point(16, 224);
 			list_groups.Name = "list_groups";
 			list_groups.Size = new System.Drawing.Size(264, 69);
@@ -1174,8 +1174,8 @@ namespace SimPe.Plugin
 			//
 			// pg
 			//
-			pg.Anchor = (
-				(AnchorStyles)(
+			pg.Anchor =
+
 					(
 						(
 							(
@@ -1184,8 +1184,8 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			pg.CommandsBackColor = System.Drawing.SystemColors.ControlLightLight;
 			pg.HelpVisible = false;
 			pg.LineColor = System.Drawing.SystemColors.ScrollBar;
@@ -1213,14 +1213,14 @@ namespace SimPe.Plugin
 			//
 			// groupBox4
 			//
-			groupBox4.Anchor = (
-				(AnchorStyles)(
+			groupBox4.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			groupBox4.Controls.Add(tb_itemsc2);
 			groupBox4.Controls.Add(label4);
 			groupBox4.Controls.Add(lb_itemsc2);
@@ -1230,7 +1230,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			groupBox4.Location = new System.Drawing.Point(612, 8);
 			groupBox4.Name = "groupBox4";
@@ -1241,20 +1241,20 @@ namespace SimPe.Plugin
 			//
 			// tb_itemsc2
 			//
-			tb_itemsc2.Anchor = (
-				(AnchorStyles)(
+			tb_itemsc2.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			tb_itemsc2.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tb_itemsc2.Location = new System.Drawing.Point(56, 104);
 			tb_itemsc2.Name = "tb_itemsc2";
@@ -1265,21 +1265,21 @@ namespace SimPe.Plugin
 			//
 			// label4
 			//
-			label4.Anchor = (
-				(AnchorStyles)(
+			label4.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			label4.AutoSize = true;
 			label4.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label4.Location = new System.Drawing.Point(8, 112);
 			label4.Name = "label4";
@@ -1289,8 +1289,8 @@ namespace SimPe.Plugin
 			//
 			// lb_itemsc2
 			//
-			lb_itemsc2.Anchor = (
-				(AnchorStyles)(
+			lb_itemsc2.Anchor =
+
 					(
 						(
 							(
@@ -1299,14 +1299,14 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lb_itemsc2.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lb_itemsc2.HorizontalScrollbar = true;
 			lb_itemsc2.IntegralHeight = false;
@@ -1320,8 +1320,8 @@ namespace SimPe.Plugin
 			//
 			// groupBox2
 			//
-			groupBox2.Anchor = (
-				(AnchorStyles)(
+			groupBox2.Anchor =
+
 					(
 						(
 							(
@@ -1330,8 +1330,8 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			groupBox2.Controls.Add(llAddBB);
 			groupBox2.Controls.Add(llAssign);
 			groupBox2.Controls.Add(cbGroupJoint);
@@ -1352,7 +1352,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			groupBox2.Location = new System.Drawing.Point(8, 8);
 			groupBox2.Name = "groupBox2";
@@ -1363,14 +1363,14 @@ namespace SimPe.Plugin
 			//
 			// llAddBB
 			//
-			llAddBB.Anchor = (
-				(AnchorStyles)(
+			llAddBB.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			llAddBB.LinkArea = new LinkArea(0, 20);
 			llAddBB.Location = new System.Drawing.Point(268, 128);
 			llAddBB.Name = "llAddBB";
@@ -1386,14 +1386,14 @@ namespace SimPe.Plugin
 			//
 			// llAssign
 			//
-			llAssign.Anchor = (
-				(AnchorStyles)(
+			llAssign.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			llAssign.LinkArea = new LinkArea(0, 6);
 			llAssign.Location = new System.Drawing.Point(456, 208);
 			llAssign.Name = "llAssign";
@@ -1410,14 +1410,14 @@ namespace SimPe.Plugin
 			//
 			// cbGroupJoint
 			//
-			cbGroupJoint.Anchor = (
-				(AnchorStyles)(
+			cbGroupJoint.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			cbGroupJoint.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
@@ -1426,7 +1426,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbGroupJoint.Location = new System.Drawing.Point(272, 184);
 			cbGroupJoint.Name = "cbGroupJoint";
@@ -1435,21 +1435,21 @@ namespace SimPe.Plugin
 			//
 			// label21
 			//
-			label21.Anchor = (
-				(AnchorStyles)(
+			label21.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label21.AutoSize = true;
 			label21.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label21.Location = new System.Drawing.Point(264, 168);
 			label21.Name = "label21";
@@ -1459,14 +1459,14 @@ namespace SimPe.Plugin
 			//
 			// linkLabel2
 			//
-			linkLabel2.Anchor = (
-				(AnchorStyles)(
+			linkLabel2.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			linkLabel2.Location = new System.Drawing.Point(268, 112);
 			linkLabel2.Name = "linkLabel2";
 			linkLabel2.Size = new System.Drawing.Size(48, 23);
@@ -1480,20 +1480,20 @@ namespace SimPe.Plugin
 			//
 			// tb_opacity
 			//
-			tb_opacity.Anchor = (
-				(AnchorStyles)(
+			tb_opacity.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tb_opacity.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tb_opacity.Location = new System.Drawing.Point(492, 40);
 			tb_opacity.Name = "tb_opacity";
@@ -1504,20 +1504,20 @@ namespace SimPe.Plugin
 			//
 			// tb_uk2
 			//
-			tb_uk2.Anchor = (
-				(AnchorStyles)(
+			tb_uk2.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tb_uk2.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tb_uk2.Location = new System.Drawing.Point(268, 40);
 			tb_uk2.Name = "tb_uk2";
@@ -1528,21 +1528,21 @@ namespace SimPe.Plugin
 			//
 			// label3
 			//
-			label3.Anchor = (
-				(AnchorStyles)(
+			label3.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label3.AutoSize = true;
 			label3.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label3.Location = new System.Drawing.Point(484, 24);
 			label3.Name = "label3";
@@ -1552,20 +1552,20 @@ namespace SimPe.Plugin
 			//
 			// tb_uk3
 			//
-			tb_uk3.Anchor = (
-				(AnchorStyles)(
+			tb_uk3.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tb_uk3.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tb_uk3.Location = new System.Drawing.Point(380, 40);
 			tb_uk3.Name = "tb_uk3";
@@ -1576,21 +1576,21 @@ namespace SimPe.Plugin
 			//
 			// label2
 			//
-			label2.Anchor = (
-				(AnchorStyles)(
+			label2.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label2.AutoSize = true;
 			label2.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label2.Location = new System.Drawing.Point(372, 24);
 			label2.Name = "label2";
@@ -1600,8 +1600,8 @@ namespace SimPe.Plugin
 			//
 			// lb_itemsc
 			//
-			lb_itemsc.Anchor = (
-				(AnchorStyles)(
+			lb_itemsc.Anchor =
+
 					(
 						(
 							(
@@ -1610,14 +1610,14 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lb_itemsc.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lb_itemsc.HorizontalScrollbar = true;
 			lb_itemsc.IntegralHeight = false;
@@ -1631,20 +1631,20 @@ namespace SimPe.Plugin
 			//
 			// tb_itemsc_name
 			//
-			tb_itemsc_name.Anchor = (
-				(AnchorStyles)(
+			tb_itemsc_name.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tb_itemsc_name.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tb_itemsc_name.Location = new System.Drawing.Point(268, 80);
 			tb_itemsc_name.Name = "tb_itemsc_name";
@@ -1656,21 +1656,21 @@ namespace SimPe.Plugin
 			//
 			// label11
 			//
-			label11.Anchor = (
-				(AnchorStyles)(
+			label11.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label11.AutoSize = true;
 			label11.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label11.Location = new System.Drawing.Point(260, 64);
 			label11.Name = "label11";
@@ -1680,21 +1680,21 @@ namespace SimPe.Plugin
 			//
 			// label13
 			//
-			label13.Anchor = (
-				(AnchorStyles)(
+			label13.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label13.AutoSize = true;
 			label13.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label13.Location = new System.Drawing.Point(260, 24);
 			label13.Name = "label13";
@@ -1704,16 +1704,16 @@ namespace SimPe.Plugin
 			//
 			// groupBox5
 			//
-			groupBox5.Anchor = (
-				(AnchorStyles)(
+			groupBox5.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			groupBox5.Controls.Add(tb_itemsc3);
 			groupBox5.Controls.Add(label9);
 			groupBox5.Controls.Add(lb_itemsc3);
@@ -1723,7 +1723,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			groupBox5.Location = new System.Drawing.Point(612, 152);
 			groupBox5.Name = "groupBox5";
@@ -1734,20 +1734,20 @@ namespace SimPe.Plugin
 			//
 			// tb_itemsc3
 			//
-			tb_itemsc3.Anchor = (
-				(AnchorStyles)(
+			tb_itemsc3.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			tb_itemsc3.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tb_itemsc3.Location = new System.Drawing.Point(56, 112);
 			tb_itemsc3.Name = "tb_itemsc3";
@@ -1758,21 +1758,21 @@ namespace SimPe.Plugin
 			//
 			// label9
 			//
-			label9.Anchor = (
-				(AnchorStyles)(
+			label9.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			label9.AutoSize = true;
 			label9.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label9.Location = new System.Drawing.Point(8, 120);
 			label9.Name = "label9";
@@ -1782,8 +1782,8 @@ namespace SimPe.Plugin
 			//
 			// lb_itemsc3
 			//
-			lb_itemsc3.Anchor = (
-				(AnchorStyles)(
+			lb_itemsc3.Anchor =
+
 					(
 						(
 							(
@@ -1792,14 +1792,14 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lb_itemsc3.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lb_itemsc3.HorizontalScrollbar = true;
 			lb_itemsc3.IntegralHeight = false;
@@ -1835,14 +1835,14 @@ namespace SimPe.Plugin
 			//
 			// cbCorrect
 			//
-			cbCorrect.Anchor = (
-				(AnchorStyles)(
+			cbCorrect.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			cbCorrect.Location = new System.Drawing.Point(272, 264);
 			cbCorrect.Name = "cbCorrect";
 			cbCorrect.Size = new System.Drawing.Size(96, 32);
@@ -1855,9 +1855,9 @@ namespace SimPe.Plugin
 			// dxprev
 			//
 			dxprev.BackColor = System.Drawing.Color.FromArgb(
-				((int)(((byte)(128)))),
-				((int)(((byte)(128)))),
-				((int)(((byte)(255))))
+				((byte)(128)),
+				((byte)(128)),
+				((byte)(255))
 			);
 			dxprev.Effect = null;
 			dxprev.Location = new System.Drawing.Point(376, 8);
@@ -1871,14 +1871,14 @@ namespace SimPe.Plugin
 			//
 			// cbaxis
 			//
-			cbaxis.Anchor = (
-				(AnchorStyles)(
+			cbaxis.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			cbaxis.DropDownStyle = ComboBoxStyle.DropDownList;
 			cbaxis.Location = new System.Drawing.Point(272, 240);
 			cbaxis.Name = "cbaxis";
@@ -1890,20 +1890,20 @@ namespace SimPe.Plugin
 			//
 			// label12
 			//
-			label12.Anchor = (
-				(AnchorStyles)(
+			label12.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			label12.Font = new System.Drawing.Font(
 				"Microsoft Sans Serif",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label12.Location = new System.Drawing.Point(216, 240);
 			label12.Name = "label12";
@@ -1914,14 +1914,14 @@ namespace SimPe.Plugin
 			//
 			// button1
 			//
-			button1.Anchor = (
-				(AnchorStyles)(
+			button1.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			button1.FlatStyle = FlatStyle.System;
 			button1.Location = new System.Drawing.Point(110, 240);
 			button1.Name = "button1";
@@ -1932,14 +1932,14 @@ namespace SimPe.Plugin
 			//
 			// button5
 			//
-			button5.Anchor = (
-				(AnchorStyles)(
+			button5.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			button5.FlatStyle = FlatStyle.System;
 			button5.Location = new System.Drawing.Point(16, 240);
 			button5.Name = "button5";
@@ -1950,23 +1950,23 @@ namespace SimPe.Plugin
 			//
 			// scenesel
 			//
-			scenesel.Anchor = (
-				(AnchorStyles)(
+			scenesel.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			scenesel.DirectXPanel = dxprev;
 			scenesel.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			scenesel.ForeColor = System.Drawing.SystemColors.ControlDark;
 			scenesel.Location = new System.Drawing.Point(688, 8);
@@ -1977,16 +1977,16 @@ namespace SimPe.Plugin
 			//
 			// lbmodel
 			//
-			lbmodel.Anchor = (
-				(AnchorStyles)(
+			lbmodel.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
 						) | AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			lbmodel.CheckOnClick = true;
 			lbmodel.HorizontalScrollbar = true;
 			lbmodel.Location = new System.Drawing.Point(16, 24);
@@ -2002,7 +2002,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lb_models.Location = new System.Drawing.Point(8, 8);
 			lb_models.Name = "lb_models";
@@ -2012,14 +2012,14 @@ namespace SimPe.Plugin
 			//
 			// button3
 			//
-			button3.Anchor = (
-				(AnchorStyles)(
+			button3.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			button3.FlatStyle = FlatStyle.System;
 			button3.Location = new System.Drawing.Point(16, 272);
 			button3.Name = "button3";
@@ -2030,14 +2030,14 @@ namespace SimPe.Plugin
 			//
 			// button4
 			//
-			button4.Anchor = (
-				(AnchorStyles)(
+			button4.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			button4.FlatStyle = FlatStyle.System;
 			button4.Location = new System.Drawing.Point(219, 272);
 			button4.Name = "button4";
@@ -2062,14 +2062,14 @@ namespace SimPe.Plugin
 			//
 			// groupBox19
 			//
-			groupBox19.Anchor = (
-				(AnchorStyles)(
+			groupBox19.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			groupBox19.Controls.Add(lb_model_items);
 			groupBox19.FlatStyle = FlatStyle.System;
 			groupBox19.Font = new System.Drawing.Font(
@@ -2077,7 +2077,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			groupBox19.Location = new System.Drawing.Point(648, 200);
 			groupBox19.Name = "groupBox19";
@@ -2088,8 +2088,8 @@ namespace SimPe.Plugin
 			//
 			// lb_model_items
 			//
-			lb_model_items.Anchor = (
-				(AnchorStyles)(
+			lb_model_items.Anchor =
+
 					(
 						(
 							(
@@ -2098,14 +2098,14 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lb_model_items.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lb_model_items.HorizontalScrollbar = true;
 			lb_model_items.IntegralHeight = false;
@@ -2116,8 +2116,8 @@ namespace SimPe.Plugin
 			//
 			// groupBox18
 			//
-			groupBox18.Anchor = (
-				(AnchorStyles)(
+			groupBox18.Anchor =
+
 					(
 						(
 							(
@@ -2126,8 +2126,8 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			groupBox18.Controls.Add(llClearBB);
 			groupBox18.Controls.Add(lb_model_faces);
 			groupBox18.FlatStyle = FlatStyle.System;
@@ -2136,7 +2136,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			groupBox18.Location = new System.Drawing.Point(584, 8);
 			groupBox18.Name = "groupBox18";
@@ -2147,14 +2147,14 @@ namespace SimPe.Plugin
 			//
 			// llClearBB
 			//
-			llClearBB.Anchor = (
-				(AnchorStyles)(
+			llClearBB.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			llClearBB.AutoSize = true;
 			llClearBB.Location = new System.Drawing.Point(247, 0);
 			llClearBB.Name = "llClearBB";
@@ -2169,8 +2169,8 @@ namespace SimPe.Plugin
 			//
 			// lb_model_faces
 			//
-			lb_model_faces.Anchor = (
-				(AnchorStyles)(
+			lb_model_faces.Anchor =
+
 					(
 						(
 							(
@@ -2179,14 +2179,14 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lb_model_faces.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lb_model_faces.HorizontalScrollbar = true;
 			lb_model_faces.IntegralHeight = false;
@@ -2197,16 +2197,16 @@ namespace SimPe.Plugin
 			//
 			// groupBox17
 			//
-			groupBox17.Anchor = (
-				(AnchorStyles)(
+			groupBox17.Anchor =
+
 					(
 						(
 							AnchorStyles.Bottom
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			groupBox17.Controls.Add(lb_model_names);
 			groupBox17.FlatStyle = FlatStyle.System;
 			groupBox17.Font = new System.Drawing.Font(
@@ -2214,7 +2214,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			groupBox17.Location = new System.Drawing.Point(8, 200);
 			groupBox17.Name = "groupBox17";
@@ -2225,8 +2225,8 @@ namespace SimPe.Plugin
 			//
 			// lb_model_names
 			//
-			lb_model_names.Anchor = (
-				(AnchorStyles)(
+			lb_model_names.Anchor =
+
 					(
 						(
 							(
@@ -2235,14 +2235,14 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lb_model_names.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lb_model_names.HorizontalScrollbar = true;
 			lb_model_names.IntegralHeight = false;
@@ -2253,16 +2253,16 @@ namespace SimPe.Plugin
 			//
 			// groupBox16
 			//
-			groupBox16.Anchor = (
-				(AnchorStyles)(
+			groupBox16.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
 						) | AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			groupBox16.Controls.Add(linkLabel6);
 			groupBox16.Controls.Add(lb_model_trans);
 			groupBox16.FlatStyle = FlatStyle.System;
@@ -2271,7 +2271,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			groupBox16.Location = new System.Drawing.Point(8, 8);
 			groupBox16.Name = "groupBox16";
@@ -2296,22 +2296,22 @@ namespace SimPe.Plugin
 			//
 			// lb_model_trans
 			//
-			lb_model_trans.Anchor = (
-				(AnchorStyles)(
+			lb_model_trans.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
 						) | AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			lb_model_trans.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lb_model_trans.HorizontalScrollbar = true;
 			lb_model_trans.IntegralHeight = false;
@@ -2340,14 +2340,14 @@ namespace SimPe.Plugin
 			//
 			// groupBox9
 			//
-			groupBox9.Anchor = (
-				(AnchorStyles)(
+			groupBox9.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			groupBox9.Controls.Add(tb_itemsb4);
 			groupBox9.Controls.Add(label15);
 			groupBox9.Controls.Add(lb_itemsb4);
@@ -2357,7 +2357,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			groupBox9.Location = new System.Drawing.Point(644, 8);
 			groupBox9.Name = "groupBox9";
@@ -2368,20 +2368,20 @@ namespace SimPe.Plugin
 			//
 			// tb_itemsb4
 			//
-			tb_itemsb4.Anchor = (
-				(AnchorStyles)(
+			tb_itemsb4.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			tb_itemsb4.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tb_itemsb4.Location = new System.Drawing.Point(56, 104);
 			tb_itemsb4.Name = "tb_itemsb4";
@@ -2392,21 +2392,21 @@ namespace SimPe.Plugin
 			//
 			// label15
 			//
-			label15.Anchor = (
-				(AnchorStyles)(
+			label15.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			label15.AutoSize = true;
 			label15.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label15.Location = new System.Drawing.Point(8, 112);
 			label15.Name = "label15";
@@ -2416,8 +2416,8 @@ namespace SimPe.Plugin
 			//
 			// lb_itemsb4
 			//
-			lb_itemsb4.Anchor = (
-				(AnchorStyles)(
+			lb_itemsb4.Anchor =
+
 					(
 						(
 							(
@@ -2426,14 +2426,14 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lb_itemsb4.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lb_itemsb4.HorizontalScrollbar = true;
 			lb_itemsb4.IntegralHeight = false;
@@ -2447,16 +2447,16 @@ namespace SimPe.Plugin
 			//
 			// groupBox11
 			//
-			groupBox11.Anchor = (
-				(AnchorStyles)(
+			groupBox11.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			groupBox11.Controls.Add(tb_itemsb5);
 			groupBox11.Controls.Add(label17);
 			groupBox11.Controls.Add(lb_itemsb5);
@@ -2466,7 +2466,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			groupBox11.Location = new System.Drawing.Point(644, 152);
 			groupBox11.Name = "groupBox11";
@@ -2477,20 +2477,20 @@ namespace SimPe.Plugin
 			//
 			// tb_itemsb5
 			//
-			tb_itemsb5.Anchor = (
-				(AnchorStyles)(
+			tb_itemsb5.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			tb_itemsb5.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tb_itemsb5.Location = new System.Drawing.Point(56, 112);
 			tb_itemsb5.Name = "tb_itemsb5";
@@ -2501,21 +2501,21 @@ namespace SimPe.Plugin
 			//
 			// label17
 			//
-			label17.Anchor = (
-				(AnchorStyles)(
+			label17.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			label17.AutoSize = true;
 			label17.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label17.Location = new System.Drawing.Point(8, 120);
 			label17.Name = "label17";
@@ -2525,8 +2525,8 @@ namespace SimPe.Plugin
 			//
 			// lb_itemsb5
 			//
-			lb_itemsb5.Anchor = (
-				(AnchorStyles)(
+			lb_itemsb5.Anchor =
+
 					(
 						(
 							(
@@ -2535,14 +2535,14 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lb_itemsb5.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lb_itemsb5.HorizontalScrollbar = true;
 			lb_itemsb5.IntegralHeight = false;
@@ -2556,14 +2556,14 @@ namespace SimPe.Plugin
 			//
 			// groupBox6
 			//
-			groupBox6.Anchor = (
-				(AnchorStyles)(
+			groupBox6.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			groupBox6.Controls.Add(tb_itemsb2);
 			groupBox6.Controls.Add(label14);
 			groupBox6.Controls.Add(lb_itemsb2);
@@ -2573,7 +2573,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			groupBox6.Location = new System.Drawing.Point(404, 8);
 			groupBox6.Name = "groupBox6";
@@ -2584,20 +2584,20 @@ namespace SimPe.Plugin
 			//
 			// tb_itemsb2
 			//
-			tb_itemsb2.Anchor = (
-				(AnchorStyles)(
+			tb_itemsb2.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			tb_itemsb2.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tb_itemsb2.Location = new System.Drawing.Point(56, 104);
 			tb_itemsb2.Name = "tb_itemsb2";
@@ -2608,21 +2608,21 @@ namespace SimPe.Plugin
 			//
 			// label14
 			//
-			label14.Anchor = (
-				(AnchorStyles)(
+			label14.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			label14.AutoSize = true;
 			label14.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label14.Location = new System.Drawing.Point(8, 112);
 			label14.Name = "label14";
@@ -2632,8 +2632,8 @@ namespace SimPe.Plugin
 			//
 			// lb_itemsb2
 			//
-			lb_itemsb2.Anchor = (
-				(AnchorStyles)(
+			lb_itemsb2.Anchor =
+
 					(
 						(
 							(
@@ -2642,14 +2642,14 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lb_itemsb2.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lb_itemsb2.HorizontalScrollbar = true;
 			lb_itemsb2.IntegralHeight = false;
@@ -2663,8 +2663,8 @@ namespace SimPe.Plugin
 			//
 			// groupBox7
 			//
-			groupBox7.Anchor = (
-				(AnchorStyles)(
+			groupBox7.Anchor =
+
 					(
 						(
 							(
@@ -2673,8 +2673,8 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			groupBox7.Controls.Add(linkLabel7);
 			groupBox7.Controls.Add(tb_uk4);
 			groupBox7.Controls.Add(tb_uk6);
@@ -2687,7 +2687,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			groupBox7.Location = new System.Drawing.Point(8, 7);
 			groupBox7.Name = "groupBox7";
@@ -2698,14 +2698,14 @@ namespace SimPe.Plugin
 			//
 			// linkLabel7
 			//
-			linkLabel7.Anchor = (
-				(AnchorStyles)(
+			linkLabel7.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			linkLabel7.Location = new System.Drawing.Point(272, 120);
 			linkLabel7.Name = "linkLabel7";
 			linkLabel7.Size = new System.Drawing.Size(100, 23);
@@ -2719,20 +2719,20 @@ namespace SimPe.Plugin
 			//
 			// tb_uk4
 			//
-			tb_uk4.Anchor = (
-				(AnchorStyles)(
+			tb_uk4.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tb_uk4.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tb_uk4.Location = new System.Drawing.Point(276, 40);
 			tb_uk4.Name = "tb_uk4";
@@ -2743,20 +2743,20 @@ namespace SimPe.Plugin
 			//
 			// tb_uk6
 			//
-			tb_uk6.Anchor = (
-				(AnchorStyles)(
+			tb_uk6.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tb_uk6.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tb_uk6.Location = new System.Drawing.Point(276, 80);
 			tb_uk6.Name = "tb_uk6";
@@ -2767,21 +2767,21 @@ namespace SimPe.Plugin
 			//
 			// label16
 			//
-			label16.Anchor = (
-				(AnchorStyles)(
+			label16.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label16.AutoSize = true;
 			label16.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label16.Location = new System.Drawing.Point(268, 64);
 			label16.Name = "label16";
@@ -2791,8 +2791,8 @@ namespace SimPe.Plugin
 			//
 			// lb_itemsb
 			//
-			lb_itemsb.Anchor = (
-				(AnchorStyles)(
+			lb_itemsb.Anchor =
+
 					(
 						(
 							(
@@ -2801,14 +2801,14 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lb_itemsb.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lb_itemsb.HorizontalScrollbar = true;
 			lb_itemsb.IntegralHeight = false;
@@ -2822,21 +2822,21 @@ namespace SimPe.Plugin
 			//
 			// label18
 			//
-			label18.Anchor = (
-				(AnchorStyles)(
+			label18.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label18.AutoSize = true;
 			label18.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label18.Location = new System.Drawing.Point(268, 24);
 			label18.Name = "label18";
@@ -2846,16 +2846,16 @@ namespace SimPe.Plugin
 			//
 			// groupBox8
 			//
-			groupBox8.Anchor = (
-				(AnchorStyles)(
+			groupBox8.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			groupBox8.Controls.Add(tb_itemsb3);
 			groupBox8.Controls.Add(label19);
 			groupBox8.Controls.Add(lb_itemsb3);
@@ -2865,7 +2865,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			groupBox8.Location = new System.Drawing.Point(404, 152);
 			groupBox8.Name = "groupBox8";
@@ -2876,20 +2876,20 @@ namespace SimPe.Plugin
 			//
 			// tb_itemsb3
 			//
-			tb_itemsb3.Anchor = (
-				(AnchorStyles)(
+			tb_itemsb3.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			tb_itemsb3.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tb_itemsb3.Location = new System.Drawing.Point(56, 112);
 			tb_itemsb3.Name = "tb_itemsb3";
@@ -2900,21 +2900,21 @@ namespace SimPe.Plugin
 			//
 			// label19
 			//
-			label19.Anchor = (
-				(AnchorStyles)(
+			label19.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			label19.AutoSize = true;
 			label19.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label19.Location = new System.Drawing.Point(8, 120);
 			label19.Name = "label19";
@@ -2924,8 +2924,8 @@ namespace SimPe.Plugin
 			//
 			// lb_itemsb3
 			//
-			lb_itemsb3.Anchor = (
-				(AnchorStyles)(
+			lb_itemsb3.Anchor =
+
 					(
 						(
 							(
@@ -2934,14 +2934,14 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lb_itemsb3.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lb_itemsb3.HorizontalScrollbar = true;
 			lb_itemsb3.IntegralHeight = false;
@@ -2968,14 +2968,14 @@ namespace SimPe.Plugin
 			//
 			// groupBox13
 			//
-			groupBox13.Anchor = (
-				(AnchorStyles)(
+			groupBox13.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			groupBox13.Controls.Add(lb_sub_items);
 			groupBox13.FlatStyle = FlatStyle.System;
 			groupBox13.Font = new System.Drawing.Font(
@@ -2983,7 +2983,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			groupBox13.Location = new System.Drawing.Point(604, 160);
 			groupBox13.Name = "groupBox13";
@@ -2994,8 +2994,8 @@ namespace SimPe.Plugin
 			//
 			// lb_sub_items
 			//
-			lb_sub_items.Anchor = (
-				(AnchorStyles)(
+			lb_sub_items.Anchor =
+
 					(
 						(
 							(
@@ -3004,14 +3004,14 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lb_sub_items.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lb_sub_items.HorizontalScrollbar = true;
 			lb_sub_items.IntegralHeight = false;
@@ -3025,16 +3025,16 @@ namespace SimPe.Plugin
 			//
 			// groupBox14
 			//
-			groupBox14.Anchor = (
-				(AnchorStyles)(
+			groupBox14.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			groupBox14.Controls.Add(lb_sub_faces);
 			groupBox14.FlatStyle = FlatStyle.System;
 			groupBox14.Font = new System.Drawing.Font(
@@ -3042,7 +3042,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			groupBox14.Location = new System.Drawing.Point(604, 8);
 			groupBox14.Name = "groupBox14";
@@ -3053,8 +3053,8 @@ namespace SimPe.Plugin
 			//
 			// lb_sub_faces
 			//
-			lb_sub_faces.Anchor = (
-				(AnchorStyles)(
+			lb_sub_faces.Anchor =
+
 					(
 						(
 							(
@@ -3063,14 +3063,14 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lb_sub_faces.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lb_sub_faces.HorizontalScrollbar = true;
 			lb_sub_faces.IntegralHeight = false;
@@ -3081,8 +3081,8 @@ namespace SimPe.Plugin
 			//
 			// groupBox15
 			//
-			groupBox15.Anchor = (
-				(AnchorStyles)(
+			groupBox15.Anchor =
+
 					(
 						(
 							(
@@ -3091,8 +3091,8 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			groupBox15.Controls.Add(linkLabel5);
 			groupBox15.Controls.Add(linkLabel4);
 			groupBox15.Controls.Add(lb_subsets);
@@ -3102,7 +3102,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			groupBox15.Location = new System.Drawing.Point(8, 7);
 			groupBox15.Name = "groupBox15";
@@ -3113,14 +3113,14 @@ namespace SimPe.Plugin
 			//
 			// linkLabel5
 			//
-			linkLabel5.Anchor = (
-				(AnchorStyles)(
+			linkLabel5.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			linkLabel5.Location = new System.Drawing.Point(528, 208);
 			linkLabel5.Name = "linkLabel5";
 			linkLabel5.Size = new System.Drawing.Size(56, 23);
@@ -3135,14 +3135,14 @@ namespace SimPe.Plugin
 			//
 			// linkLabel4
 			//
-			linkLabel4.Anchor = (
-				(AnchorStyles)(
+			linkLabel4.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			linkLabel4.Location = new System.Drawing.Point(528, 256);
 			linkLabel4.Name = "linkLabel4";
 			linkLabel4.Size = new System.Drawing.Size(48, 23);
@@ -3157,8 +3157,8 @@ namespace SimPe.Plugin
 			//
 			// lb_subsets
 			//
-			lb_subsets.Anchor = (
-				(AnchorStyles)(
+			lb_subsets.Anchor =
+
 					(
 						(
 							(
@@ -3167,14 +3167,14 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lb_subsets.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lb_subsets.HorizontalScrollbar = true;
 			lb_subsets.IntegralHeight = false;
@@ -3193,9 +3193,9 @@ namespace SimPe.Plugin
 			// cd
 			//
 			cd.Color = System.Drawing.Color.FromArgb(
-				((int)(((byte)(128)))),
-				((int)(((byte)(128)))),
-				((int)(((byte)(255))))
+				((byte)(128)),
+				((byte)(128)),
+				((byte)(255))
 			);
 			//
 			// ofd
@@ -3982,7 +3982,7 @@ namespace SimPe.Plugin
 					for (int i = 0; i < v.Values.Length; i++)
 					{
 						ba.Values.Add(
-							new GmdcElementValueOneInt((int)((uint)id | 0xffffff00))
+							new GmdcElementValueOneInt((int)(id | 0xffffff00))
 						);
 						bw.Values.Add(new GmdcElementValueOneFloat(1.0f));
 					}

@@ -103,7 +103,7 @@ namespace SimPe.Plugin
 					nuffin = reader.ReadInt32(); // first (useless) line, will be FFFFFFFF if Uninited
 					if (nuffin == -1) // uninitialized block will be 2 zeros
 					{
-						vdata.SetValue((uint)0xFFFFFFFF, n, 0);
+						vdata.SetValue(0xFFFFFFFF, n, 0);
 						nuffin = reader.ReadInt32();
 						while (nuffin != -1)
 						{
@@ -116,7 +116,7 @@ namespace SimPe.Plugin
 						numba = reader.ReadInt32();
 						if (numba == 0) // no data and no more in this block, also no pre header for next block
 						{
-							vdata.SetValue((uint)0xFFFFFFFF, n, 0);
+							vdata.SetValue(0xFFFFFFFF, n, 0);
 							nuffin = reader.ReadInt32(); //will now have passed the next pre header and read next header
 							if (nuffin != -1)
 							{

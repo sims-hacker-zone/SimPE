@@ -10,7 +10,7 @@ namespace SimPe.Plugin
 			IPackedFileUI
 	{
 		protected new GWInvPackedFileWrapper Wrapper => base.Wrapper as GWInvPackedFileWrapper;
-		public GWInvPackedFileWrapper TPFW => (GWInvPackedFileWrapper)Wrapper;
+		public GWInvPackedFileWrapper TPFW => Wrapper;
 
 		#region WrapperBaseControl Member
 

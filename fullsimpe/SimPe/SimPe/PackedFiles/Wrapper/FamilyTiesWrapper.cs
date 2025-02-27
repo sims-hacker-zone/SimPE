@@ -121,14 +121,14 @@ namespace SimPe.PackedFiles.Wrapper
 
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
-			writer.Write((int)0x00000001);
-			writer.Write((int)sims.Count);
+			writer.Write(0x00000001);
+			writer.Write(sims.Count);
 
 			foreach (FamilyTieSim sim in sims)
 			{
 				writer.Write(sim.Instance);
 				writer.Write(sim.BlockDelimiter);
-				writer.Write((int)sim.Ties.Length);
+				writer.Write(sim.Ties.Length);
 				foreach (FamilyTieItem tie in sim.Ties)
 				{
 					writer.Write((uint)tie.Type);

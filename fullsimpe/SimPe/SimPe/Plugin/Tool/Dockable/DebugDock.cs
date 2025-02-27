@@ -78,8 +78,8 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			// lbft
 			//
-			lbft.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+			lbft.Anchor =
+
 					(
 						(
 							(
@@ -88,8 +88,8 @@ namespace SimPe.Plugin.Tool.Dockable
 							) | System.Windows.Forms.AnchorStyles.Left
 						) | System.Windows.Forms.AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lbft.Location = new System.Drawing.Point(16, 72);
 			lbft.Name = "lbft";
 			lbft.Size = new System.Drawing.Size(224, 316);
@@ -103,7 +103,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			label2.Location = new System.Drawing.Point(8, 56);
 			label2.Name = "label2";
@@ -114,23 +114,23 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			// lbMem
 			//
-			lbMem.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+			lbMem.Anchor =
+
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
 							| System.Windows.Forms.AnchorStyles.Left
 						) | System.Windows.Forms.AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lbMem.BackColor = System.Drawing.Color.Transparent;
 			lbMem.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			lbMem.Location = new System.Drawing.Point(16, 24);
 			lbMem.Name = "lbMem";
@@ -147,7 +147,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			label1.Location = new System.Drawing.Point(8, 8);
 			label1.Name = "label1";
@@ -163,7 +163,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			Name = "DebugDock";
 			TabImage = (

@@ -1210,7 +1210,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				return (uint)(lifelinescore * (ushort)10);
+				return (uint)(lifelinescore * 10);
 			}
 			set
 			{
@@ -1927,7 +1927,7 @@ namespace SimPe.PackedFiles.Wrapper
 				MetaData.RELATION_FILE,
 				0,
 				parent.FileDescriptor.Group,
-				(uint)((parent.FileDescriptor.Instance << 16) + instance)
+				(parent.FileDescriptor.Instance << 16) + instance
 			);
 
 			SRel[] rels = new SRel[2];
@@ -2027,13 +2027,13 @@ namespace SimPe.PackedFiles.Wrapper
 
 			writer.BaseStream.Seek(0x160, SeekOrigin.Begin);
 			writer.Write((uint)Major);
-			writer.Write((ushort)Time);
+			writer.Write(Time);
 			writer.Write(SemesterFlag.Value);
 			// writer.BaseStream.Seek(0x2, SeekOrigin.Current);
-			writer.Write((ushort)Semester);
-			writer.Write((ushort)OnCampus);
+			writer.Write(Semester);
+			writer.Write(OnCampus);
 			writer.BaseStream.Seek(0x4, SeekOrigin.Current);
-			writer.Write((ushort)Influence);
+			writer.Write(Influence);
 		}
 	}
 	#endregion
@@ -2227,35 +2227,35 @@ namespace SimPe.PackedFiles.Wrapper
 		internal void Serialize(BinaryWriter writer, SDescVersions ver)
 		{
 			writer.BaseStream.Seek(0x172, SeekOrigin.Begin);
-			writer.Write((ushort)RouteStartSlotOwnerID);
+			writer.Write(RouteStartSlotOwnerID);
 
-			writer.Write((ushort)AttractionTraits1);
-			writer.Write((ushort)AttractionTraits2);
+			writer.Write(AttractionTraits1);
+			writer.Write(AttractionTraits2);
 
-			writer.Write((ushort)AttractionTurnOns1);
-			writer.Write((ushort)AttractionTurnOns2);
+			writer.Write(AttractionTurnOns1);
+			writer.Write(AttractionTurnOns2);
 
-			writer.Write((ushort)AttractionTurnOffs1);
-			writer.Write((ushort)AttractionTurnOffs2);
+			writer.Write(AttractionTurnOffs1);
+			writer.Write(AttractionTurnOffs2);
 
 			writer.Write((ushort)Species);
-			writer.Write((ushort)Countdown);
-			writer.Write((ushort)PerfumeDuration);
+			writer.Write(Countdown);
+			writer.Write(PerfumeDuration);
 
-			writer.Write((ushort)DateTimer);
-			writer.Write((ushort)DateScore);
-			writer.Write((ushort)DateUnlockCounter);
+			writer.Write(DateTimer);
+			writer.Write(DateScore);
+			writer.Write(DateUnlockCounter);
 
-			writer.Write((ushort)LovePotionDuration);
-			writer.Write((ushort)AspirationScoreLock);
+			writer.Write(LovePotionDuration);
+			writer.Write(AspirationScoreLock);
 
 			if ((int)ver >= (int)SDescVersions.Voyage)
 			{
 				writer.BaseStream.Seek(0x19e, SeekOrigin.Begin);
 
-				writer.Write((ushort)AttractionTurnOns3);
-				writer.Write((ushort)AttractionTurnOffs3);
-				writer.Write((ushort)AttractionTraits3);
+				writer.Write(AttractionTurnOns3);
+				writer.Write(AttractionTurnOffs3);
+				writer.Write(AttractionTraits3);
 			}
 		}
 	}
@@ -2311,10 +2311,10 @@ namespace SimPe.PackedFiles.Wrapper
 		internal void Serialize(BinaryWriter writer)
 		{
 			writer.BaseStream.Seek(0x192, SeekOrigin.Begin);
-			writer.Write((ushort)LotID);
-			writer.Write((ushort)Salary);
-			writer.Write((ushort)Flags);
-			writer.Write((ushort)assignment);
+			writer.Write(LotID);
+			writer.Write(Salary);
+			writer.Write(Flags);
+			writer.Write(assignment);
 		}
 	}
 	#endregion
@@ -2344,7 +2344,7 @@ namespace SimPe.PackedFiles.Wrapper
 		internal void Serialize(BinaryWriter writer)
 		{
 			writer.BaseStream.Seek(0x19A, SeekOrigin.Begin);
-			writer.Write((ushort)PetTraits.Value);
+			writer.Write(PetTraits.Value);
 		}
 	}
 	#endregion
@@ -2380,7 +2380,7 @@ namespace SimPe.PackedFiles.Wrapper
 		internal void Serialize(BinaryWriter writer)
 		{
 			writer.BaseStream.Seek(0x19C, SeekOrigin.Begin);
-			writer.Write((ushort)DaysLeft);
+			writer.Write(DaysLeft);
 		}
 
 		internal void UnserializeMem(BinaryReader reader)
@@ -2424,7 +2424,7 @@ namespace SimPe.PackedFiles.Wrapper
 		internal void Serialize(BinaryWriter writer)
 		{
 			writer.BaseStream.Seek(0x19C, SeekOrigin.Begin);
-			writer.Write((ushort)Subspecies);
+			writer.Write(Subspecies);
 		}
 	}
 	#endregion
@@ -3447,16 +3447,16 @@ namespace SimPe.PackedFiles.Wrapper
 
 			//random Data
 			writer.BaseStream.Seek(startpos + 0xb4, SeekOrigin.Begin);
-			writer.Write((ushort)CharacterDescription.PersonFlags1.Value);
+			writer.Write(CharacterDescription.PersonFlags1.Value);
 
 			writer.BaseStream.Seek(startpos + 0x46, SeekOrigin.Begin);
-			writer.Write((ushort)CharacterDescription.MotivesStatic);
+			writer.Write(CharacterDescription.MotivesStatic);
 			writer.BaseStream.Seek(startpos + 0x54, SeekOrigin.Begin);
 			writer.Write(CharacterDescription.AutonomyLevel);
 			writer.BaseStream.Seek(startpos + 0x68, SeekOrigin.Begin);
 			writer.Write((ushort)CharacterDescription.Aspiration);
 			writer.BaseStream.Seek(startpos + 0xBC, SeekOrigin.Begin);
-			writer.Write((ushort)CharacterDescription.VoiceType);
+			writer.Write(CharacterDescription.VoiceType);
 			writer.BaseStream.Seek(startpos + 0x7C, SeekOrigin.Begin);
 			writer.Write((ushort)CharacterDescription.Grade);
 			writer.Write(CharacterDescription.CareerLevel);
@@ -3471,12 +3471,12 @@ namespace SimPe.PackedFiles.Wrapper
 			writer.BaseStream.Seek(startpos + 0x94, SeekOrigin.Begin);
 			writer.Write(CharacterDescription.GhostFlag.Value);
 			writer.BaseStream.Seek(startpos + 0x96, SeekOrigin.Begin);
-			writer.Write((ushort)CharacterDescription.PTO);
+			writer.Write(CharacterDescription.PTO);
 			writer.BaseStream.Seek(startpos + 0x98, SeekOrigin.Begin);
 			writer.Write((ushort)CharacterDescription.ZodiacSign);
 
 			writer.BaseStream.Seek(startpos + 0x102, SeekOrigin.Begin);
-			writer.Write((ushort)CharacterDescription.Pension);
+			writer.Write(CharacterDescription.Pension);
 
 			writer.BaseStream.Seek(startpos + 0xAE, SeekOrigin.Begin);
 			writer.Write(CharacterDescription.BodyFlag.Value);
@@ -3495,7 +3495,7 @@ namespace SimPe.PackedFiles.Wrapper
 			writer.Write((uint)CharacterDescription.Career);
 			writer.BaseStream.Seek(startpos + 0x12C, SeekOrigin.Begin);
 			writer.Write(CharacterDescription.AllocatedSuburb);
-			writer.Write((ushort)CharacterDescription.PersonFlags3.Value);
+			writer.Write(CharacterDescription.PersonFlags3.Value);
 			writer.Write((ushort)CharacterDescription.Bodyshape);
 			writer.BaseStream.Seek(startpos + 0xE2, SeekOrigin.Begin);
 			writer.Write((uint)CharacterDescription.SchoolType);
@@ -3541,7 +3541,7 @@ namespace SimPe.PackedFiles.Wrapper
 				writer.Write((uint)Relations.SimInstances[i]);
 			}
 
-			writer.Write((byte)EndByte);
+			writer.Write(EndByte);
 			if (version >= (int)SDescVersions.Voyage)
 			{
 				Voyage.SerializeMem(writer);

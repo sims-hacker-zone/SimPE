@@ -416,7 +416,7 @@ namespace SimPe.Plugin
 						{
 							GenericRcol txmt = new GenericRcol(null, false);
 							txmt.ProcessData(item);
-							txmt.FileDescriptor = (Interfaces.Files.IPackedFileDescriptor)
+							txmt.FileDescriptor =
 								item.FileDescriptor.Clone();
 
 							LoadReferenced(

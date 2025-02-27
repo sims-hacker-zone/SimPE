@@ -175,7 +175,7 @@ namespace SimPe.Cache
 				writer.Write(SIGNATURE);
 				writer.Write(Version);
 
-				writer.Write((int)Containers.Count);
+				writer.Write(Containers.Count);
 				ArrayList offsets = new ArrayList();
 				//prepare the Index
 				for (int i = 0; i < Containers.Count; i++)

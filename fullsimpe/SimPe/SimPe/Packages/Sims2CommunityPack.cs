@@ -270,7 +270,7 @@ namespace SimPe.Packages
 				bw.Write(Helper.ToBytes("Sims2 Packager x.1"));
 			}
 
-			bw.Write((int)(22 + xml.Length));
+			bw.Write(22 + xml.Length);
 			bw.Write(Helper.ToBytes(xml));
 
 			for (int i = 0; i < streams.Length; i++)

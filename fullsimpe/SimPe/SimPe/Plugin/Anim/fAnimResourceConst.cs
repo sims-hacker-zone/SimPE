@@ -66,7 +66,7 @@ namespace SimPe.Plugin.Anim
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			ambc.Location = new System.Drawing.Point(8, 8);
 			ambc.MeshBlock = null;
@@ -159,8 +159,8 @@ namespace SimPe.Plugin.Anim
 			//
 			// groupBox2
 			//
-			groupBox2.Anchor = (
-				(AnchorStyles)(
+			groupBox2.Anchor =
+
 					(
 						(
 							(
@@ -169,8 +169,8 @@ namespace SimPe.Plugin.Anim
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			groupBox2.Controls.Add(cbshnote);
 			groupBox2.Controls.Add(rtbnotes);
 			groupBox2.Controls.Add(llTxt);
@@ -186,7 +186,7 @@ namespace SimPe.Plugin.Anim
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			groupBox2.Location = new System.Drawing.Point(8, 8);
 			groupBox2.Name = "groupBox2";
@@ -197,21 +197,21 @@ namespace SimPe.Plugin.Anim
 			//
 			// cbshnote
 			//
-			cbshnote.Anchor = (
-				(AnchorStyles)(
+			cbshnote.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			cbshnote.AutoSize = true;
 			cbshnote.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbshnote.Location = new System.Drawing.Point(758, 0);
 			cbshnote.Name = "cbshnote";
@@ -226,8 +226,8 @@ namespace SimPe.Plugin.Anim
 			//
 			// rtbnotes
 			//
-			rtbnotes.Anchor = (
-				(AnchorStyles)(
+			rtbnotes.Anchor =
+
 					(
 						(
 							(
@@ -236,15 +236,15 @@ namespace SimPe.Plugin.Anim
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			rtbnotes.BorderStyle = BorderStyle.FixedSingle;
 			rtbnotes.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			rtbnotes.Location = new System.Drawing.Point(412, 24);
 			rtbnotes.Name = "rtbnotes";
@@ -300,14 +300,14 @@ namespace SimPe.Plugin.Anim
 			//
 			// checkBox1
 			//
-			checkBox1.Anchor = (
-				(AnchorStyles)(
+			checkBox1.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			checkBox1.AutoSize = true;
 			checkBox1.Location = new System.Drawing.Point(828, 30);
 			checkBox1.Name = "checkBox1";
@@ -321,22 +321,22 @@ namespace SimPe.Plugin.Anim
 			//
 			// tv
 			//
-			tv.Anchor = (
-				(AnchorStyles)(
+			tv.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
 						) | AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			tv.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tv.FullRowSelect = true;
 			tv.HideSelection = false;
@@ -365,8 +365,8 @@ namespace SimPe.Plugin.Anim
 			//
 			// pg
 			//
-			pg.Anchor = (
-				(AnchorStyles)(
+			pg.Anchor =
+
 					(
 						(
 							(
@@ -375,15 +375,15 @@ namespace SimPe.Plugin.Anim
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			pg.CommandsBackColor = System.Drawing.SystemColors.ControlLightLight;
 			pg.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			pg.HelpVisible = false;
 			pg.LineColor = System.Drawing.SystemColors.ScrollBar;
@@ -412,7 +412,7 @@ namespace SimPe.Plugin.Anim
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			groupBox12.Location = new System.Drawing.Point(8, 8);
 			groupBox12.Name = "groupBox12";
@@ -428,7 +428,7 @@ namespace SimPe.Plugin.Anim
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tb_arc_ver.Location = new System.Drawing.Point(16, 40);
 			tb_arc_ver.Name = "tb_arc_ver";
@@ -447,7 +447,7 @@ namespace SimPe.Plugin.Anim
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label30.Location = new System.Drawing.Point(8, 24);
 			label30.Name = "label30";
@@ -475,7 +475,7 @@ namespace SimPe.Plugin.Anim
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			gradpanel.Location = new System.Drawing.Point(0, 0);
 			gradpanel.Name = "gradpanel";

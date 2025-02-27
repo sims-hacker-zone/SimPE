@@ -108,8 +108,8 @@ namespace SimPe
 			//
 			// rtb
 			//
-			rtb.Anchor = (
-				(AnchorStyles)(
+			rtb.Anchor =
+
 					(
 						(
 							(
@@ -118,8 +118,8 @@ namespace SimPe
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			rtb.BackColor = Color.White;
 			rtb.BorderStyle = BorderStyle.None;
 			rtb.Cursor = Cursors.Arrow;
@@ -128,7 +128,7 @@ namespace SimPe
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			rtb.Location = new Point(30, 130);
 			rtb.Name = "rtb";
@@ -166,8 +166,8 @@ namespace SimPe
 			//
 			wb.AllowNavigation = false;
 			wb.AllowWebBrowserDrop = false;
-			wb.Anchor = (
-				(AnchorStyles)(
+			wb.Anchor =
+
 					(
 						(
 							(
@@ -176,8 +176,8 @@ namespace SimPe
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			wb.IsWebBrowserContextMenuEnabled = false;
 			wb.Location = new Point(30, 130);
 			wb.MinimumSize = new Size(20, 20);

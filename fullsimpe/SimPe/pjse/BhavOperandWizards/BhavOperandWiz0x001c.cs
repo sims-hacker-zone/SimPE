@@ -138,7 +138,7 @@ namespace pjse.BhavOperandWizards.Wiz0x001c
 		private void doStrChooser()
 		{
 			FileTable.Entry[] items = FileTable.GFT[
-				(uint)SimPe.Data.MetaData.STRING_FILE,
+				SimPe.Data.MetaData.STRING_FILE,
 				inst.Parent.GroupForScope(Scope),
 				(uint)GS.GlobalStr.NamedTree
 			];
@@ -335,7 +335,7 @@ namespace pjse.BhavOperandWizards.Wiz0x001c
 			// ldocArg1
 			//
 			resources.ApplyResources(ldocArg1, "ldocArg1");
-			ldocArg1.DataOwner = ((byte)(255));
+			ldocArg1.DataOwner = 255;
 			ldocArg1.DataOwnerEnabled = true;
 			ldocArg1.DecimalVisible = false;
 			ldocArg1.Instruction = null;
@@ -343,12 +343,12 @@ namespace pjse.BhavOperandWizards.Wiz0x001c
 			ldocArg1.Name = "ldocArg1";
 			ldocArg1.UseFlagNames = false;
 			ldocArg1.UseInstancePickerVisible = false;
-			ldocArg1.Value = ((ushort)(0));
+			ldocArg1.Value = 0;
 			//
 			// ldocArg2
 			//
 			resources.ApplyResources(ldocArg2, "ldocArg2");
-			ldocArg2.DataOwner = ((byte)(255));
+			ldocArg2.DataOwner = 255;
 			ldocArg2.DataOwnerEnabled = true;
 			ldocArg2.DecimalVisible = false;
 			ldocArg2.Instruction = null;
@@ -356,18 +356,18 @@ namespace pjse.BhavOperandWizards.Wiz0x001c
 			ldocArg2.Name = "ldocArg2";
 			ldocArg2.UseFlagNames = false;
 			ldocArg2.UseInstancePickerVisible = false;
-			ldocArg2.Value = ((ushort)(0));
+			ldocArg2.Value = 0;
 			//
 			// ldocArg3
 			//
 			resources.ApplyResources(ldocArg3, "ldocArg3");
-			ldocArg3.DataOwner = ((byte)(255));
+			ldocArg3.DataOwner = 255;
 			ldocArg3.DataOwnerEnabled = true;
 			ldocArg3.Instruction = null;
 			ldocArg3.LabelSize = new System.Drawing.Size(61, 13);
 			ldocArg3.Name = "ldocArg3";
 			ldocArg3.UseFlagNames = false;
-			ldocArg3.Value = ((ushort)(0));
+			ldocArg3.Value = 0;
 			//
 			// btnTreeName
 			//

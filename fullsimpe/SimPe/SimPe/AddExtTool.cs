@@ -115,7 +115,7 @@ namespace SimPe
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			label1.Location = new System.Drawing.Point(61, 16);
 			label1.Name = "label1";
@@ -131,7 +131,7 @@ namespace SimPe
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			label2.Location = new System.Drawing.Point(67, 40);
 			label2.Name = "label2";
@@ -147,7 +147,7 @@ namespace SimPe
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			label3.Location = new System.Drawing.Point(38, 64);
 			label3.Name = "label3";
@@ -163,7 +163,7 @@ namespace SimPe
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			label4.Location = new System.Drawing.Point(24, 88);
 			label4.Name = "label4";
@@ -173,14 +173,14 @@ namespace SimPe
 			//
 			// button1
 			//
-			button1.Anchor = (
-				(AnchorStyles)(
+			button1.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			button1.FlatStyle = FlatStyle.System;
 			button1.Location = new System.Drawing.Point(472, 112);
 			button1.Name = "button1";
@@ -190,16 +190,16 @@ namespace SimPe
 			//
 			// tbname
 			//
-			tbname.Anchor = (
-				(AnchorStyles)(
+			tbname.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbname.Location = new System.Drawing.Point(112, 8);
 			tbname.Name = "tbname";
 			tbname.Size = new System.Drawing.Size(432, 21);
@@ -208,16 +208,16 @@ namespace SimPe
 			//
 			// tbfile
 			//
-			tbfile.Anchor = (
-				(AnchorStyles)(
+			tbfile.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbfile.Location = new System.Drawing.Point(112, 56);
 			tbfile.Name = "tbfile";
 			tbfile.Size = new System.Drawing.Size(352, 21);
@@ -226,16 +226,16 @@ namespace SimPe
 			//
 			// tbattr
 			//
-			tbattr.Anchor = (
-				(AnchorStyles)(
+			tbattr.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbattr.Location = new System.Drawing.Point(112, 80);
 			tbattr.Name = "tbattr";
 			tbattr.Size = new System.Drawing.Size(432, 21);
@@ -244,14 +244,14 @@ namespace SimPe
 			//
 			// button2
 			//
-			button2.Anchor = (
-				(AnchorStyles)(
+			button2.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			button2.FlatStyle = FlatStyle.System;
 			button2.Location = new System.Drawing.Point(472, 56);
 			button2.Name = "button2";
@@ -278,16 +278,16 @@ namespace SimPe
 			//
 			// cbtypes
 			//
-			cbtypes.Anchor = (
-				(AnchorStyles)(
+			cbtypes.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			cbtypes.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
@@ -321,7 +321,7 @@ namespace SimPe
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			FormBorderStyle = FormBorderStyle.FixedToolWindow;
 			Name = "AddExtTool";

@@ -949,12 +949,12 @@ namespace pjse
 				if (!e.PFD.MarkForDelete)
 				{
 					(
-						(ArrayList)(
+
 							e.Package == currentPackage ? currpkg
 							: e.IsMaxis ? maxispkg
 							: e.IsFixed ? fixedpkg
 							: nonfixed
-						)
+
 					).Add(e);
 				}
 			}

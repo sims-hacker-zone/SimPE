@@ -56,9 +56,9 @@ namespace SimPe.Plugin
 			// dx
 			//
 			dx.BackColor = System.Drawing.Color.FromArgb(
-				((System.Byte)(128)),
-				((System.Byte)(128)),
-				((System.Byte)(255))
+				128,
+				128,
+				255
 			);
 			dx.Dock = DockStyle.Fill;
 			dx.Effect = null;
@@ -74,9 +74,9 @@ namespace SimPe.Plugin
 			//
 			AutoScaleBaseSize = new System.Drawing.Size(5, 14);
 			BackColor = System.Drawing.Color.FromArgb(
-				((System.Byte)(128)),
-				((System.Byte)(128)),
-				((System.Byte)(255))
+				128,
+				128,
+				255
 			);
 			ClientSize = new System.Drawing.Size(494, 476);
 			Controls.Add(dx);

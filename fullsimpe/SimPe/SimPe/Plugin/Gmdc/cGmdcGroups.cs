@@ -181,7 +181,7 @@ namespace SimPe.Plugin.Gmdc
 
 			if (parent.Version != 0x03)
 			{
-				writer.Write((uint)Opacity);
+				writer.Write(Opacity);
 			}
 
 			if (parent.Version != 0x01)

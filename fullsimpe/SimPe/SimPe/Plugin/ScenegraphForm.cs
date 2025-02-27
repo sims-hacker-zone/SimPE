@@ -138,7 +138,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			panel2.Location = new System.Drawing.Point(0, 350);
 			panel2.Name = "panel2";
@@ -147,14 +147,14 @@ namespace SimPe.Plugin
 			//
 			// groupBox2
 			//
-			groupBox2.Anchor = (
-				(AnchorStyles)(
+			groupBox2.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			groupBox2.BackColor = System.Drawing.Color.Transparent;
 			groupBox2.Controls.Add(cbPriority);
 			groupBox2.Controls.Add(cbLineStyle);
@@ -165,7 +165,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			groupBox2.Location = new System.Drawing.Point(568, 8);
 			groupBox2.Name = "groupBox2";
@@ -198,7 +198,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbLineStyle.Location = new System.Drawing.Point(32, 64);
 			cbLineStyle.Name = "cbLineStyle";
@@ -216,7 +216,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label3.Location = new System.Drawing.Point(16, 48);
 			label3.Name = "label3";
@@ -233,7 +233,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbQuality.Location = new System.Drawing.Point(16, 24);
 			cbQuality.Name = "cbQuality";
@@ -246,16 +246,16 @@ namespace SimPe.Plugin
 			//
 			// groupBox1
 			//
-			groupBox1.Anchor = (
-				(AnchorStyles)(
+			groupBox1.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			groupBox1.BackColor = System.Drawing.Color.Transparent;
 			groupBox1.Controls.Add(llopen);
 			groupBox1.Controls.Add(cbrefnames);
@@ -267,7 +267,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			groupBox1.Location = new System.Drawing.Point(0, 8);
 			groupBox1.Name = "groupBox1";
@@ -290,22 +290,22 @@ namespace SimPe.Plugin
 			//
 			// cbrefnames
 			//
-			cbrefnames.Anchor = (
-				(AnchorStyles)(
+			cbrefnames.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			cbrefnames.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbrefnames.Location = new System.Drawing.Point(24, 80);
 			cbrefnames.Name = "cbrefnames";
@@ -314,22 +314,22 @@ namespace SimPe.Plugin
 			//
 			// tbflname
 			//
-			tbflname.Anchor = (
-				(AnchorStyles)(
+			tbflname.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbflname.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbflname.Location = new System.Drawing.Point(24, 40);
 			tbflname.Name = "tbflname";
@@ -345,7 +345,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label2.Location = new System.Drawing.Point(16, 64);
 			label2.Name = "label2";
@@ -361,7 +361,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label1.Location = new System.Drawing.Point(16, 24);
 			label1.Name = "label1";
@@ -390,7 +390,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			Name = "ScenegraphForm";

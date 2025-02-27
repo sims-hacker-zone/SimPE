@@ -227,9 +227,9 @@ namespace SimPe.PackedFiles.UserInterface
 			return s;
 		}
 
-		private ListView lvCurrent => (ListView)(
+		private ListView lvCurrent =>
 					(tabControl1.SelectedIndex != 0) ? lvLocals : lvParams
-				);
+				;
 
 		private void LVAdd(ListView lv, TPRPItem item)
 		{
@@ -344,7 +344,7 @@ namespace SimPe.PackedFiles.UserInterface
 			internalchg = true;
 
 			TPRPItem newItem = tabControl1.SelectedIndex.Equals(1)
-				? (TPRPItem)new TPRPLocalLabel(wrapper)
+				? new TPRPLocalLabel(wrapper)
 				: (TPRPItem)new TPRPParamLabel(wrapper);
 
 			try

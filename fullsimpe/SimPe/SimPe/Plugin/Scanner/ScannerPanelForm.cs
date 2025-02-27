@@ -272,7 +272,7 @@ namespace SimPe.Plugin.Scanner
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbname.Location = new System.Drawing.Point(23, 24);
 			tbname.Name = "tbname";
@@ -285,16 +285,16 @@ namespace SimPe.Plugin.Scanner
 			label3.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
-				(
-					(System.Drawing.FontStyle)(
+
+
 						(
 							System.Drawing.FontStyle.Bold
 							| System.Drawing.FontStyle.Italic
 						)
-					)
-				),
+
+				,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label3.Location = new System.Drawing.Point(7, 8);
 			label3.Name = "label3";
@@ -310,7 +310,7 @@ namespace SimPe.Plugin.Scanner
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			visualStyleLinkLabel1.Location = new System.Drawing.Point(0, 56);
 			visualStyleLinkLabel1.Name = "visualStyleLinkLabel1";
@@ -334,16 +334,16 @@ namespace SimPe.Plugin.Scanner
 			//
 			// pncloth
 			//
-			pncloth.Anchor = (
-				(AnchorStyles)(
+			pncloth.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			pncloth.Controls.Add(label6);
 			pncloth.Controls.Add(cbmale);
 			pncloth.Controls.Add(cbfemale);
@@ -379,16 +379,16 @@ namespace SimPe.Plugin.Scanner
 			label6.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
-				(
-					(System.Drawing.FontStyle)(
+
+
 						(
 							System.Drawing.FontStyle.Bold
 							| System.Drawing.FontStyle.Italic
 						)
-					)
-				),
+
+				,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label6.Location = new System.Drawing.Point(24, 139);
 			label6.Name = "label6";
@@ -404,7 +404,7 @@ namespace SimPe.Plugin.Scanner
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbmale.Location = new System.Drawing.Point(104, 155);
 			cbmale.Name = "cbmale";
@@ -420,7 +420,7 @@ namespace SimPe.Plugin.Scanner
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbfemale.Location = new System.Drawing.Point(16, 155);
 			cbfemale.Name = "cbfemale";
@@ -436,7 +436,7 @@ namespace SimPe.Plugin.Scanner
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			llsetsex.Location = new System.Drawing.Point(0, 139);
 			llsetsex.Name = "llsetsex";
@@ -455,7 +455,7 @@ namespace SimPe.Plugin.Scanner
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbout.Location = new System.Drawing.Point(256, 112);
 			cbout.Name = "cbout";
@@ -471,7 +471,7 @@ namespace SimPe.Plugin.Scanner
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			llsetcat.Location = new System.Drawing.Point(0, 72);
 			llsetcat.Name = "llsetcat";
@@ -490,7 +490,7 @@ namespace SimPe.Plugin.Scanner
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			llsetage.Location = new System.Drawing.Point(0, 8);
 			llsetage.Name = "llsetage";
@@ -509,7 +509,7 @@ namespace SimPe.Plugin.Scanner
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbswim.Location = new System.Drawing.Point(16, 112);
 			cbswim.Name = "cbswim";
@@ -525,7 +525,7 @@ namespace SimPe.Plugin.Scanner
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbact.Location = new System.Drawing.Point(192, 112);
 			cbact.Name = "cbact";
@@ -544,7 +544,7 @@ namespace SimPe.Plugin.Scanner
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbskin.Location = new System.Drawing.Point(256, 136);
 			cbskin.Name = "cbskin";
@@ -560,7 +560,7 @@ namespace SimPe.Plugin.Scanner
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbformal.Location = new System.Drawing.Point(182, 88);
 			cbformal.Name = "cbformal";
@@ -576,7 +576,7 @@ namespace SimPe.Plugin.Scanner
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbpreg.Location = new System.Drawing.Point(256, 88);
 			cbpreg.Name = "cbpreg";
@@ -592,7 +592,7 @@ namespace SimPe.Plugin.Scanner
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbundies.Location = new System.Drawing.Point(104, 112);
 			cbundies.Name = "cbundies";
@@ -608,7 +608,7 @@ namespace SimPe.Plugin.Scanner
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbpj.Location = new System.Drawing.Point(104, 88);
 			cbpj.Name = "cbpj";
@@ -624,7 +624,7 @@ namespace SimPe.Plugin.Scanner
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbevery.Location = new System.Drawing.Point(16, 88);
 			cbevery.Name = "cbevery";
@@ -640,7 +640,7 @@ namespace SimPe.Plugin.Scanner
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbelder.Location = new System.Drawing.Point(182, 48);
 			cbelder.Name = "cbelder";
@@ -656,7 +656,7 @@ namespace SimPe.Plugin.Scanner
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbadult.Location = new System.Drawing.Point(112, 48);
 			cbadult.Name = "cbadult";
@@ -672,7 +672,7 @@ namespace SimPe.Plugin.Scanner
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbyoung.Location = new System.Drawing.Point(16, 48);
 			cbyoung.Name = "cbyoung";
@@ -688,7 +688,7 @@ namespace SimPe.Plugin.Scanner
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbteen.Location = new System.Drawing.Point(256, 24);
 			cbteen.Name = "cbteen";
@@ -704,7 +704,7 @@ namespace SimPe.Plugin.Scanner
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbchild.Location = new System.Drawing.Point(182, 24);
 			cbchild.Name = "cbchild";
@@ -720,7 +720,7 @@ namespace SimPe.Plugin.Scanner
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbtoddler.Location = new System.Drawing.Point(104, 24);
 			cbtoddler.Name = "cbtoddler";
@@ -736,7 +736,7 @@ namespace SimPe.Plugin.Scanner
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbbaby.Location = new System.Drawing.Point(16, 24);
 			cbbaby.Name = "cbbaby";
@@ -750,16 +750,16 @@ namespace SimPe.Plugin.Scanner
 			label2.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
-				(
-					(System.Drawing.FontStyle)(
+
+
 						(
 							System.Drawing.FontStyle.Bold
 							| System.Drawing.FontStyle.Italic
 						)
-					)
-				),
+
+				,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label2.Location = new System.Drawing.Point(24, 72);
 			label2.Name = "label2";
@@ -773,16 +773,16 @@ namespace SimPe.Plugin.Scanner
 			label1.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
-				(
-					(System.Drawing.FontStyle)(
+
+
 						(
 							System.Drawing.FontStyle.Bold
 							| System.Drawing.FontStyle.Italic
 						)
-					)
-				),
+
+				,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label1.Location = new System.Drawing.Point(24, 8);
 			label1.Name = "label1";
@@ -811,16 +811,16 @@ namespace SimPe.Plugin.Scanner
 			//
 			// cbshelve
 			//
-			cbshelve.Anchor = (
-				(AnchorStyles)(
+			cbshelve.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			cbshelve.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
@@ -839,16 +839,16 @@ namespace SimPe.Plugin.Scanner
 			label5.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
-				(
-					(System.Drawing.FontStyle)(
+
+
 						(
 							System.Drawing.FontStyle.Bold
 							| System.Drawing.FontStyle.Italic
 						)
-					)
-				),
+
+				,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label5.Location = new System.Drawing.Point(0, 8);
 			label5.Name = "label5";
@@ -864,7 +864,7 @@ namespace SimPe.Plugin.Scanner
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			llShelve.Location = new System.Drawing.Point(0, 56);
 			llShelve.Name = "llShelve";
@@ -950,16 +950,16 @@ namespace SimPe.Plugin.Scanner
 			label4.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
-				(
-					(System.Drawing.FontStyle)(
+
+
 						(
 							System.Drawing.FontStyle.Bold
 							| System.Drawing.FontStyle.Italic
 						)
-					)
-				),
+
+				,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label4.Location = new System.Drawing.Point(0, 8);
 			label4.Name = "label4";
@@ -975,7 +975,7 @@ namespace SimPe.Plugin.Scanner
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			visualStyleLinkLabel2.Location = new System.Drawing.Point(0, 96);
 			visualStyleLinkLabel2.Name = "visualStyleLinkLabel2";
@@ -1012,7 +1012,7 @@ namespace SimPe.Plugin.Scanner
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			Name = "ScannerPanelForm";
 			Text = "ScannerPanelForm";

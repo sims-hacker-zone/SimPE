@@ -588,9 +588,9 @@ namespace Ambertation.Windows.Forms
 		{
 			get
 			{
-				float w = (float)(
+				float w =
 					Width - (OffsetBoxWidth + CharBoxWidth + 2 * WINDOWSPACING + 1)
-				);
+				;
 				if (sb != null)
 				{
 					if (sb.Visible)
@@ -612,7 +612,7 @@ namespace Ambertation.Windows.Forms
 						- ((Columns - 1) * COLSPACING)
 						- bm.Left
 						- ((Blocks - 1) * BLOCKSPACING)
-					) / (float)Columns;
+					) / Columns;
 
 		/// <summary>
 		/// Number of Rows needed to display the Data
@@ -789,7 +789,7 @@ namespace Ambertation.Windows.Forms
 		{
 			int h =
 				Height - (1 + bm.Top + bm.Height + COLSPACING) - (int)HexBoxRowHeight;
-			return (float)((float)h / Math.Ceiling(HexBoxRowHeight + COLSPACING));
+			return (float)(h / Math.Ceiling(HexBoxRowHeight + COLSPACING));
 		}
 
 		/// <summary>
@@ -798,7 +798,7 @@ namespace Ambertation.Windows.Forms
 		/// <returns></returns>
 		protected int GetNumberOfPages()
 		{
-			return (int)Math.Max(0, Rows - (int)Math.Floor(GetHexBoxRowsPerPage()));
+			return Math.Max(0, Rows - (int)Math.Floor(GetHexBoxRowsPerPage()));
 		}
 
 		/// <summary>
@@ -832,7 +832,7 @@ namespace Ambertation.Windows.Forms
 			return OffsetBoxWidth
 				+ (int)HexBoxWidth
 				+ 2 * WINDOWSPACING
-				+ (int)(index * ((int)CharWidth + COLSPACING) + bm.Left);
+				+ index * ((int)CharWidth + COLSPACING) + bm.Left;
 		}
 
 		#endregion
@@ -897,7 +897,7 @@ namespace Ambertation.Windows.Forms
 			sb.Parent = this;
 			sb.Dock = DockStyle.Right;
 			sb.Minimum = 0;
-			sb.Maximum = Math.Max(0, (int)GetNumberOfPages() - 1);
+			sb.Maximum = Math.Max(0, GetNumberOfPages() - 1);
 			sb.Visible = (sb.Minimum != sb.Maximum);
 			sb.Scroll += new ScrollEventHandler(sb_Scroll);
 			#endregion
@@ -1144,7 +1144,7 @@ namespace Ambertation.Windows.Forms
 
 		void SetScrollBar()
 		{
-			sb.Maximum = Math.Max(0, (int)GetNumberOfPages());
+			sb.Maximum = Math.Max(0, GetNumberOfPages());
 			sb.LargeChange = 1; //(int)this.GetHexBoxRowsPerPage();//sb.Maximum / 20;
 								//sb.Maximum += sb.LargeChange+1;
 			sb.Visible = (sb.Minimum != sb.Maximum);
@@ -1968,7 +1968,7 @@ namespace Ambertation.Windows.Forms
 				HexBoxRowHeight + bm.Top - COLSPACING
 			);
 
-			int width = (int)OffsetBoxWidth;
+			int width = OffsetBoxWidth;
 			int top = bm.Top - 2 * COLSPACING;
 			int height = (int)HexBoxRowHeight;
 			int left = bm.Left;
@@ -2025,7 +2025,7 @@ namespace Ambertation.Windows.Forms
 			}
 			DrawImageBox(
 				g,
-				(int)OffsetBoxWidth + WINDOWSPACING,
+				OffsetBoxWidth + WINDOWSPACING,
 				0,
 				(int)HexBoxWidth,
 				Height - 1
@@ -2034,7 +2034,7 @@ namespace Ambertation.Windows.Forms
 				g,
 				(int)(OffsetBoxWidth + HexBoxWidth + 2 * WINDOWSPACING),
 				0,
-				(int)CharBoxWidth,
+				CharBoxWidth,
 				Height - 1
 			);
 		}

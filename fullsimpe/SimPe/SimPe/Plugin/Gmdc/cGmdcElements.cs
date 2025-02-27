@@ -323,7 +323,7 @@ namespace SimPe.Plugin.Gmdc
 			}
 			set
 			{
-				Data[0] = (float)value;
+				Data[0] = value;
 				val = value;
 			}
 		}
@@ -382,7 +382,7 @@ namespace SimPe.Plugin.Gmdc
 		internal override void Unserialize(BinaryReader reader)
 		{
 			val = reader.ReadInt32();
-			Data[0] = (float)val;
+			Data[0] = val;
 		}
 
 		/// <summary>
@@ -560,7 +560,7 @@ namespace SimPe.Plugin.Gmdc
 				size = Values[0].Size;
 			}
 
-			writer.Write((int)(Values.Length * 4 * size));
+			writer.Write(Values.Length * 4 * size);
 			for (int i = 0; i < Values.Length; i++)
 			{
 				Values[i].Serialize(writer);

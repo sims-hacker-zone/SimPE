@@ -375,7 +375,7 @@ namespace Ambertation.Windows.Forms.Graph
 				LinkGraphic lc = new LinkGraphic();
 				lc.Text = e.Text;
 				lc.ForeColor = CurrentLinkColor;
-				lc.Parent = (GraphPanel)Parent;
+				lc.Parent = Parent;
 				lc.StartElement = this;
 				lc.EndElement = e.GraphItem;
 				lc.StartAnchorSnap = LinkControlSnapAnchor.OnlyCenter;

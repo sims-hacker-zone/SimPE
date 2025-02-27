@@ -256,7 +256,7 @@ namespace SimPe.Plugin.Gmdc
 			}
 			else
 			{
-				writer.Write((int)val);
+				writer.Write(val);
 			}
 		}
 
@@ -282,7 +282,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <param name="items"></param>
 		protected void WriteBlock(System.IO.BinaryWriter writer, IntArrayList items)
 		{
-			writer.Write((int)items.Length);
+			writer.Write(items.Length);
 			for (int i = 0; i < items.Length; i++)
 			{
 				WriteValue(writer, items[i]);

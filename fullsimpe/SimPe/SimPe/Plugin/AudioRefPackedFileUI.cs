@@ -9,7 +9,7 @@ namespace SimPe.Plugin
 			IPackedFileUI
 	{
 		protected new AudioRefPackedFileWrapper Wrapper => base.Wrapper as AudioRefPackedFileWrapper;
-		public AudioRefPackedFileWrapper TPFW => (AudioRefPackedFileWrapper)Wrapper;
+		public AudioRefPackedFileWrapper TPFW => Wrapper;
 
 		#region WrapperBaseControl Member
 

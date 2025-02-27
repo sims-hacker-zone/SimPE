@@ -126,14 +126,14 @@ namespace SimPe
 			//
 			// btOK
 			//
-			btOK.Anchor = (
-				(AnchorStyles)(
+			btOK.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			btOK.FlatStyle = FlatStyle.System;
 			btOK.Location = new System.Drawing.Point(512, 52);
 			btOK.Name = "btOK";
@@ -144,14 +144,14 @@ namespace SimPe
 			//
 			// btCancel
 			//
-			btCancel.Anchor = (
-				(AnchorStyles)(
+			btCancel.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			btCancel.DialogResult = DialogResult.Cancel;
 			btCancel.FlatStyle = FlatStyle.System;
 			btCancel.Location = new System.Drawing.Point(592, 52);
@@ -163,16 +163,16 @@ namespace SimPe
 			//
 			// xpLine1
 			//
-			xpLine1.Anchor = (
-				(AnchorStyles)(
+			xpLine1.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			xpLine1.BackColor = System.Drawing.Color.Transparent;
 			xpLine1.ForeColor = System.Drawing.SystemColors.Desktop;
 			xpLine1.LineColor = System.Drawing.SystemColors.Desktop;
@@ -184,16 +184,16 @@ namespace SimPe
 			//
 			// tbFolder
 			//
-			tbFolder.Anchor = (
-				(AnchorStyles)(
+			tbFolder.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbFolder.Location = new System.Drawing.Point(64, 8);
 			tbFolder.Name = "tbFolder";
 			tbFolder.Size = new System.Drawing.Size(520, 21);
@@ -201,14 +201,14 @@ namespace SimPe
 			//
 			// button1
 			//
-			button1.Anchor = (
-				(AnchorStyles)(
+			button1.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			button1.FlatStyle = FlatStyle.System;
 			button1.Location = new System.Drawing.Point(592, 8);
 			button1.Name = "button1";
@@ -225,7 +225,7 @@ namespace SimPe
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label1.Location = new System.Drawing.Point(8, 8);
 			label1.Name = "label1";
@@ -246,7 +246,7 @@ namespace SimPe
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			FormBorderStyle = FormBorderStyle.FixedToolWindow;
 			Name = "SelectSimFolder";

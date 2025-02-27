@@ -522,7 +522,7 @@ namespace SimPe.Plugin
 
 			if (rescan)
 			{
-				Scan(null, (LinkLabelLinkClickedEventArgs)null);
+				Scan(null, null);
 			}
 			else
 			{
@@ -620,7 +620,7 @@ namespace SimPe.Plugin
 				11.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			linkLabel1.Location = new Point(423, 12);
 			linkLabel1.Name = "linkLabel1";
@@ -637,16 +637,16 @@ namespace SimPe.Plugin
 			//
 			// pb
 			//
-			pb.Anchor = (
-				(AnchorStyles)(
+			pb.Anchor =
+
 					(
 						(
 							AnchorStyles.Bottom
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			pb.BackColor = Color.Transparent;
 			pb.Gradient = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
 			pb.Location = new Point(9, 583);
@@ -663,8 +663,8 @@ namespace SimPe.Plugin
 			//
 			// lv
 			//
-			lv.Anchor = (
-				(AnchorStyles)(
+			lv.Anchor =
+
 					(
 						(
 							(
@@ -673,8 +673,8 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lv.Columns.AddRange(
 				new ColumnHeader[]
 				{
@@ -720,16 +720,16 @@ namespace SimPe.Plugin
 			//
 			// tabControl1
 			//
-			tabControl1.Anchor = (
-				(AnchorStyles)(
+			tabControl1.Anchor =
+
 					(
 						(
 							AnchorStyles.Bottom
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tabControl1.Controls.Add(tbscanners);
 			tabControl1.Controls.Add(tboperations);
 			tabControl1.Controls.Add(tbcache);
@@ -752,8 +752,8 @@ namespace SimPe.Plugin
 			//
 			// lbscanners
 			//
-			lbscanners.Anchor = (
-				(AnchorStyles)(
+			lbscanners.Anchor =
+
 					(
 						(
 							(
@@ -762,8 +762,8 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lbscanners.CheckOnClick = true;
 			lbscanners.HorizontalScrollbar = true;
 			lbscanners.Location = new Point(12, 34);
@@ -791,8 +791,8 @@ namespace SimPe.Plugin
 			//
 			// pnop
 			//
-			pnop.Anchor = (
-				(AnchorStyles)(
+			pnop.Anchor =
+
 					(
 						(
 							(
@@ -801,8 +801,8 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			pnop.AutoScroll = true;
 			pnop.BackColor = SystemColors.Window;
 			pnop.BorderStyle = BorderStyle.Fixed3D;
@@ -881,16 +881,16 @@ namespace SimPe.Plugin
 			//
 			// lbscandebug
 			//
-			lbscandebug.Anchor = (
-				(AnchorStyles)(
+			lbscandebug.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lbscandebug.HorizontalScrollbar = true;
 			lbscandebug.Location = new Point(-1, 127);
 			lbscandebug.Name = "lbscandebug";
@@ -908,16 +908,16 @@ namespace SimPe.Plugin
 			//
 			// lbid
 			//
-			lbid.Anchor = (
-				(AnchorStyles)(
+			lbid.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lbid.HorizontalScrollbar = true;
 			lbid.Location = new Point(2, 25);
 			lbid.Name = "lbid";
@@ -935,14 +935,14 @@ namespace SimPe.Plugin
 			//
 			// btscan
 			//
-			btscan.Anchor = (
-				(AnchorStyles)(
+			btscan.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			btscan.BackColor = Color.Transparent;
 			btscan.FlatStyle = FlatStyle.System;
 			btscan.Location = new Point(506, 549);
@@ -955,14 +955,14 @@ namespace SimPe.Plugin
 			//
 			// cbrec
 			//
-			cbrec.Anchor = (
-				(AnchorStyles)(
+			cbrec.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			cbrec.AutoSize = true;
 			cbrec.BackColor = Color.Transparent;
 			cbrec.Location = new Point(590, 555);
@@ -974,14 +974,14 @@ namespace SimPe.Plugin
 			//
 			// gbinfo
 			//
-			gbinfo.Anchor = (
-				(AnchorStyles)(
+			gbinfo.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			gbinfo.BackColor = Color.Transparent;
 			gbinfo.Controls.Add(lbprop);
 			gbinfo.Controls.Add(llSave);
@@ -1006,7 +1006,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lbprop.Location = new Point(9, 190);
 			lbprop.MaxDropDownItems = 100;
@@ -1017,21 +1017,21 @@ namespace SimPe.Plugin
 			//
 			// llSave
 			//
-			llSave.Anchor = (
-				(AnchorStyles)(
+			llSave.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			llSave.AutoSize = true;
 			llSave.Font = new Font(
 				"Microsoft Sans Serif",
 				11.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			llSave.Location = new Point(398, 190);
 			llSave.Name = "llSave";
@@ -1072,7 +1072,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Italic,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lbtype.Location = new Point(143, 45);
 			lbtype.Name = "lbtype";
@@ -1085,16 +1085,16 @@ namespace SimPe.Plugin
 			lbname.Font = new Font(
 				"Verdana",
 				8.25F,
-				(
-					(FontStyle)(
+
+
 						(
 							FontStyle.Bold
 							| FontStyle.Italic
 						)
-					)
-				),
+
+				,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lbname.Location = new Point(143, 65);
 			lbname.Name = "lbname";
@@ -1104,21 +1104,21 @@ namespace SimPe.Plugin
 			//
 			// llopen
 			//
-			llopen.Anchor = (
-				(AnchorStyles)(
+			llopen.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			llopen.AutoSize = true;
 			llopen.Font = new Font(
 				"Microsoft Sans Serif",
 				11.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			llopen.Location = new Point(402, 221);
 			llopen.Name = "llopen";
@@ -1164,7 +1164,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			panel1.Location = new Point(0, 0);
 			panel1.Name = "panel1";

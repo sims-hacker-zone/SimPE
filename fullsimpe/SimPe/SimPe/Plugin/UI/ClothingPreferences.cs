@@ -87,7 +87,7 @@ namespace SimPe.Plugin.UI
 					MetaData.Bodyshape at;
 					if (o.GetType() == typeof(Alias))
 					{
-						at = (LocalizedBodyshape)((uint)((Alias)o).Id);
+						at = (LocalizedBodyshape)((Alias)o).Id;
 					}
 					else
 					{
@@ -350,7 +350,7 @@ namespace SimPe.Plugin.UI
 				9.75F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lbBody.Location = new System.Drawing.Point(180, 109);
 			lbBody.Name = "lbBody";
@@ -392,7 +392,7 @@ namespace SimPe.Plugin.UI
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label5.Location = new System.Drawing.Point(137, 4);
 			label5.Name = "label5";
@@ -419,7 +419,7 @@ namespace SimPe.Plugin.UI
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label4.Location = new System.Drawing.Point(137, 47);
 			label4.Name = "label4";
@@ -434,7 +434,7 @@ namespace SimPe.Plugin.UI
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label3.Location = new System.Drawing.Point(268, 4);
 			label3.Name = "label3";
@@ -449,7 +449,7 @@ namespace SimPe.Plugin.UI
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label2.Location = new System.Drawing.Point(3, 47);
 			label2.Name = "label2";
@@ -464,7 +464,7 @@ namespace SimPe.Plugin.UI
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label1.Location = new System.Drawing.Point(4, 3);
 			label1.Name = "label1";

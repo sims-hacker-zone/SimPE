@@ -579,7 +579,7 @@ namespace pjse
 						+ SimPe.Helper.HexString(bcon[0])
 						+ ":0x"
 						+ SimPe.Helper.HexString((byte)bcon[1]);
-					temp = readBcon((uint)bcon[0], bcon[1], false);
+					temp = readBcon(bcon[0], bcon[1], false);
 					if (temp.Length > 0)
 					{
 						s += " (" + temp + ")";
@@ -604,7 +604,7 @@ namespace pjse
 						+ ":["
 						+ dataOwner(0x08, bcon[1])
 						+ "]";
-					temp = readBcon((uint)bcon[0], bcon[1], true);
+					temp = readBcon(bcon[0], bcon[1], true);
 					if (temp.Length > 0)
 					{
 						s += " (" + temp + ")";
@@ -1380,7 +1380,7 @@ namespace pjse
 		public static Glob GlobByGroup(uint group)
 		{
 			FileTable.Entry[] items = FileTable.GFT[
-				(uint)SimPe.Data.MetaData.GLOB_FILE,
+				SimPe.Data.MetaData.GLOB_FILE,
 				group
 			];
 			if (items == null || items.Length == 0)

@@ -176,21 +176,21 @@ namespace SimPe.Plugin
 			writer.Write(sgres.BlockID);
 			sgres.Serialize(writer);
 
-			writer.Write((int)Elements.Length);
+			writer.Write(Elements.Length);
 			for (int i = 0; i < Elements.Length; i++)
 			{
 				Elements[i].Parent = this;
 				Elements[i].Serialize(writer);
 			}
 
-			writer.Write((int)Links.Length);
+			writer.Write(Links.Length);
 			for (int i = 0; i < Links.Length; i++)
 			{
 				Links[i].Parent = this;
 				Links[i].Serialize(writer);
 			}
 
-			writer.Write((int)Groups.Length);
+			writer.Write(Groups.Length);
 			for (int i = 0; i < Groups.Length; i++)
 			{
 				Groups[i].Parent = this;
@@ -200,7 +200,7 @@ namespace SimPe.Plugin
 			Model.Parent = this;
 			Model.Serialize(writer);
 
-			writer.Write((int)Joints.Length);
+			writer.Write(Joints.Length);
 			for (int i = 0; i < Joints.Length; i++)
 			{
 				Joints[i].Parent = this;
@@ -586,7 +586,7 @@ namespace SimPe.Plugin
 				{
 					foreach (GmdcElementValueOneInt v in e.Values)
 					{
-						if ((int)v.Bytes[0] == index)
+						if (v.Bytes[0] == index)
 						{
 							byte[] b = v.Bytes;
 							b[0] = 0xff;

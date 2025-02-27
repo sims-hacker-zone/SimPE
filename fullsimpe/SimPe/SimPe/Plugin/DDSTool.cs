@@ -128,7 +128,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			linkLabel1.LinkArea = new LinkArea(0, 4);
 			linkLabel1.Location = new Point(48, 160);
@@ -170,7 +170,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			groupBox1.Location = new Point(160, 8);
 			groupBox1.Name = "groupBox1";
@@ -189,7 +189,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbformat.Items.AddRange(
 				new object[]
@@ -225,7 +225,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label6.Location = new Point(136, 48);
 			label6.Name = "label6";
@@ -240,7 +240,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbheight.Location = new Point(152, 40);
 			tbheight.Name = "tbheight";
@@ -256,7 +256,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbwidth.Location = new Point(80, 40);
 			tbwidth.Name = "tbwidth";
@@ -272,7 +272,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tblevel.Location = new Point(80, 16);
 			tblevel.Name = "tblevel";
@@ -288,7 +288,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbfilter.IntegralHeight = false;
 			cbfilter.Items.AddRange(
@@ -324,7 +324,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label5.Location = new Point(35, 120);
 			label5.Name = "label5";
@@ -342,7 +342,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbsharpen.Items.AddRange(
 				new object[]
@@ -378,7 +378,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label4.Location = new Point(16, 96);
 			label4.Name = "label4";
@@ -394,7 +394,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label3.Location = new Point(23, 72);
 			label3.Name = "label3";
@@ -410,7 +410,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label2.Location = new Point(40, 48);
 			label2.Name = "label2";
@@ -426,7 +426,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label1.Location = new Point(28, 24);
 			label1.Name = "label1";
@@ -436,14 +436,14 @@ namespace SimPe.Plugin
 			//
 			// button1
 			//
-			button1.Anchor = (
-				(AnchorStyles)(
+			button1.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			button1.FlatStyle = FlatStyle.System;
 			button1.Location = new Point(397, 224);
 			button1.Name = "button1";
@@ -465,7 +465,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			FormBorderStyle = FormBorderStyle.FixedDialog;
 			Icon = ((Icon)(resources.GetObject("$this.Icon")));

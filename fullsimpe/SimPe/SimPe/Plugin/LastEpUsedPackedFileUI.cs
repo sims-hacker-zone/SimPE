@@ -11,7 +11,7 @@ namespace SimPe.Plugin
 			IPackedFileUI
 	{
 		protected new LastEPusePackedFileWrapper Wrapper => base.Wrapper as LastEPusePackedFileWrapper;
-		public LastEPusePackedFileWrapper TPFW => (LastEPusePackedFileWrapper)Wrapper;
+		public LastEPusePackedFileWrapper TPFW => Wrapper;
 
 		Dictionary<uint, uint> Chap01 = new Dictionary<uint, uint>();
 		Dictionary<uint, uint> Chap02 = new Dictionary<uint, uint>();

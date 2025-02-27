@@ -255,7 +255,7 @@ namespace SimPe.Wants
 				);
 			}
 
-			maxWants = version >= 0x05 ? reader.ReadUInt32() : (uint)oldMaxWants;
+			maxWants = version >= 0x05 ? reader.ReadUInt32() : oldMaxWants;
 
 			count = reader.ReadUInt32();
 			for (int i = 0; i < count; i++)
@@ -263,7 +263,7 @@ namespace SimPe.Wants
 				items.Add(new SWAFItem(this, SWAFItem.SWAFItemType.Wants, reader));
 			}
 
-			maxFears = version >= 0x05 ? reader.ReadUInt32() : (uint)oldMaxFears;
+			maxFears = version >= 0x05 ? reader.ReadUInt32() : oldMaxFears;
 
 			count = reader.ReadUInt32();
 			for (int i = 0; i < count; i++)
@@ -511,7 +511,7 @@ namespace SimPe.Wants
 		public bool Contains(KeyValuePair<uint, List<SWAFItem>> item)
 		{
 			return ContainsKey(item.Key)
-				&& ((List<SWAFItem>)this[item.Key]).Equals(item.Value);
+				&& this[item.Key].Equals(item.Value);
 		}
 
 		public void CopyTo(KeyValuePair<uint, List<SWAFItem>>[] array, int arrayIndex)
@@ -571,7 +571,7 @@ namespace SimPe.Wants
 		private uint counter = 0;
 		private int score = 0;
 		private int influence = 0; // version >= 0x09
-		private Boolset flags = (byte)0;
+		private Boolset flags = 0;
 		#endregion
 
 		#region Accessor Methods

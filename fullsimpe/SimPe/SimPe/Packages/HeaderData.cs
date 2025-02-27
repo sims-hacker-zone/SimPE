@@ -268,7 +268,7 @@ namespace SimPe.Packages
 		{
 			get
 			{
-				return (Data.MetaData.IndexTypes)indextype;
+				return indextype;
 			}
 			set
 			{
@@ -450,7 +450,7 @@ namespace SimPe.Packages
 
 			iph.epicon = epicon;
 			iph.showicon = showicon;
-			return (Interfaces.Files.IPackageHeader)iph;
+			return iph;
 		}
 	}
 }

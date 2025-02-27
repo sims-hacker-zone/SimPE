@@ -102,7 +102,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			int ct = flname.Length;
 			byte[] bs = Helper.ToBytes(flname, 0);
-			writer.Write((int)bs.Length);
+			writer.Write(bs.Length);
 			writer.Write(bs);
 			writer.Write(unknown1);
 			writer.Write(LocalGroup);

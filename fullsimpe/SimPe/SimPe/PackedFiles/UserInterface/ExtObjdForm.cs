@@ -665,9 +665,9 @@ namespace SimPe.PackedFiles.UserInterface
 						Data.BuildFunctionSubSort at;
 						if (o.GetType() == typeof(Data.Alias))
 						{
-							at = (Data.LocalizedBuildSubSort)(
-								(uint)((Data.Alias)o).Id
-							);
+							at = (Data.LocalizedBuildSubSort)
+								((Data.Alias)o).Id
+							;
 						}
 						else
 						{
@@ -851,7 +851,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			pnobjd.Location = new System.Drawing.Point(0, 0);
 			//this.pnobjd.MiddleColour = System.Drawing.SystemColors.Control;
@@ -939,7 +939,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			btnUpdateMMAT.Location = new System.Drawing.Point(50, 117);
 			btnUpdateMMAT.Name = "btnUpdateMMAT";
@@ -971,7 +971,7 @@ namespace SimPe.PackedFiles.UserInterface
 				9.75F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lbIsOk.Location = new System.Drawing.Point(6, 60);
 			lbIsOk.Name = "lbIsOk";
@@ -995,8 +995,8 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// tc
 			//
-			tc.Anchor = (
-				(AnchorStyles)(
+			tc.Anchor =
+
 					(
 						(
 							(
@@ -1005,8 +1005,8 @@ namespace SimPe.PackedFiles.UserInterface
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tc.Controls.Add(tpcatalogsort);
 			tc.Controls.Add(tpreqeps);
 			tc.Controls.Add(tpraw);
@@ -1045,7 +1045,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			pngradient.Location = new System.Drawing.Point(0, 0);
 			//this.pngradient.MiddleColour = System.Drawing.SystemColors.Control;
@@ -1162,7 +1162,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			groupBox2.HeaderFont = new System.Drawing.Font(
 				"Microsoft Sans Serif",
@@ -1203,7 +1203,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbaspiration.Location = new System.Drawing.Point(140, 104);
 			cbaspiration.Name = "cbaspiration";
@@ -1238,7 +1238,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbhobby.Location = new System.Drawing.Point(140, 84);
 			cbhobby.Name = "cbhobby";
@@ -1258,7 +1258,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbappliances.Location = new System.Drawing.Point(18, 24);
 			cbappliances.Name = "cbappliances";
@@ -1278,7 +1278,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbdecorative.Location = new System.Drawing.Point(18, 44);
 			cbdecorative.Name = "cbdecorative";
@@ -1298,7 +1298,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbelectronics.Location = new System.Drawing.Point(18, 64);
 			cbelectronics.Name = "cbelectronics";
@@ -1318,7 +1318,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbgeneral.Location = new System.Drawing.Point(18, 84);
 			cbgeneral.Name = "cbgeneral";
@@ -1338,7 +1338,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cblightning.Location = new System.Drawing.Point(18, 104);
 			cblightning.Name = "cblightning";
@@ -1358,7 +1358,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbplumbing.Location = new System.Drawing.Point(140, 24);
 			cbplumbing.Name = "cbplumbing";
@@ -1378,7 +1378,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbseating.Location = new System.Drawing.Point(140, 44);
 			cbseating.Name = "cbseating";
@@ -1398,7 +1398,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbsurfaces.Location = new System.Drawing.Point(140, 64);
 			cbsurfaces.Name = "cbsurfaces";
@@ -1430,7 +1430,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbsort.Location = new System.Drawing.Point(118, 144);
 			cbsort.Name = "cbsort";
@@ -1449,7 +1449,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label1.Location = new System.Drawing.Point(29, 148);
 			label1.Name = "label1";
@@ -1479,7 +1479,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			groupBox1.HeaderFont = new System.Drawing.Font(
 				"Microsoft Sans Serif",
@@ -1522,7 +1522,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbPrice.Location = new System.Drawing.Point(140, 169);
 			tbPrice.Name = "tbPrice";
@@ -1542,7 +1542,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbkids.Location = new System.Drawing.Point(122, 105);
 			cbkids.Name = "cbkids";
@@ -1560,7 +1560,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbbathroom.Location = new System.Drawing.Point(17, 30);
 			cbbathroom.Name = "cbbathroom";
@@ -1580,7 +1580,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbbedroom.Location = new System.Drawing.Point(17, 55);
 			cbbedroom.Name = "cbbedroom";
@@ -1598,7 +1598,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbdinigroom.Location = new System.Drawing.Point(17, 80);
 			cbdinigroom.Name = "cbdinigroom";
@@ -1618,7 +1618,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbkitchen.Location = new System.Drawing.Point(17, 105);
 			cbkitchen.Name = "cbkitchen";
@@ -1636,7 +1636,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbmisc.Location = new System.Drawing.Point(122, 30);
 			cbmisc.Name = "cbmisc";
@@ -1654,7 +1654,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cboutside.Location = new System.Drawing.Point(122, 55);
 			cboutside.Name = "cboutside";
@@ -1672,7 +1672,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cblivingroom.Location = new System.Drawing.Point(17, 130);
 			cblivingroom.Name = "cblivingroom";
@@ -1692,7 +1692,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbstudy.Location = new System.Drawing.Point(122, 80);
 			cbstudy.Name = "cbstudy";
@@ -1724,7 +1724,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			pnpritty.Location = new System.Drawing.Point(0, 0);
 			//this.pnpritty.MiddleColour = System.Drawing.SystemColors.Control;
@@ -2055,14 +2055,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// panel1
 			//
-			panel1.Anchor = (
-				(AnchorStyles)(
+			panel1.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			panel1.Controls.Add(rbhex);
 			panel1.Controls.Add(rbdec);
 			panel1.Controls.Add(rbbin);
@@ -2120,14 +2120,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// tbtype
 			//
-			tbtype.Anchor = (
-				(AnchorStyles)(
+			tbtype.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbtype.Location = new System.Drawing.Point(920, 32);
 			tbtype.Name = "tbtype";
 			tbtype.ReadOnly = true;
@@ -2137,14 +2137,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// cbtype
 			//
-			cbtype.Anchor = (
-				(AnchorStyles)(
+			cbtype.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			cbtype.DropDownStyle = ComboBoxStyle.DropDownList;
 			cbtype.Location = new System.Drawing.Point(752, 32);
 			cbtype.Name = "cbtype";
@@ -2212,7 +2212,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			llgetGUID.ImeMode = ImeMode.NoControl;
 			llgetGUID.LinkArea = new LinkArea(0, 9);
@@ -2227,14 +2227,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// label65
 			//
-			label65.Anchor = (
-				(AnchorStyles)(
+			label65.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label65.AutoSize = true;
 			label65.BackColor = System.Drawing.Color.Transparent;
 			label65.Font = new System.Drawing.Font(
@@ -2300,16 +2300,16 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// panel6
 			//
-			panel6.Anchor = (
-				(AnchorStyles)(
+			panel6.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			//this.panel6.CanCommit = true;
 			//this.panel6.HeaderText = "Object Data Editor";
 			panel6.Location = new System.Drawing.Point(0, 0);
@@ -2336,7 +2336,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			Name = "ExtObjdForm";
 			Text = "ExtObjdForm";

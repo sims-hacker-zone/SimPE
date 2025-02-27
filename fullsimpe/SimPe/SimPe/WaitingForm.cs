@@ -216,9 +216,9 @@ namespace SimPe
 			//
 			lbmsg.AccessibleRole = AccessibleRole.Text;
 			lbmsg.ForeColor = System.Drawing.Color.FromArgb(
-				((int)(((byte)(204)))),
-				((int)(((byte)(211)))),
-				((int)(((byte)(213))))
+				((byte)(204)),
+				((byte)(211)),
+				((byte)(213))
 			);
 			resources.ApplyResources(lbmsg, "lbmsg");
 			lbmsg.Name = "lbmsg";
@@ -249,9 +249,9 @@ namespace SimPe
 			AccessibleRole = AccessibleRole.None;
 			resources.ApplyResources(this, "$this");
 			BackColor = System.Drawing.Color.FromArgb(
-				((int)(((byte)(102)))),
-				((int)(((byte)(102)))),
-				((int)(((byte)(153))))
+				((byte)(102)),
+				((byte)(102)),
+				((byte)(153))
 			);
 			CausesValidation = false;
 			Controls.Add(panel1);

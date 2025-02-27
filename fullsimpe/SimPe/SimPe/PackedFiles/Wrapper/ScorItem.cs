@@ -319,7 +319,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				return list[FindIndex(name)] as ScorItem;
+				return list[FindIndex(name)];
 			}
 			set
 			{
@@ -331,7 +331,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				return list[index] as ScorItem;
+				return list[index];
 			}
 			set
 			{

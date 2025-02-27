@@ -815,7 +815,7 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			pfd = (Interfaces.Files.IPackedFileDescriptor)
+			pfd =
 				((PackedFiles.Wrapper.SDesc)lv.SelectedItems[0].Tag).FileDescriptor;
 			Close();
 		}

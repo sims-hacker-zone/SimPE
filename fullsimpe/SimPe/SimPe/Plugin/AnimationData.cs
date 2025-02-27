@@ -107,7 +107,7 @@ namespace SimPe.Plugin
 				last.Z = first.Z;
 			}
 
-			for (short i = (short)(first.TimeCode); i <= max; i++)
+			for (short i = first.TimeCode; i <= max; i++)
 			{
 				CreaetInterpolatedFrame(axis, i, first, last);
 			}

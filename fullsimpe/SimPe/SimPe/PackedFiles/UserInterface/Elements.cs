@@ -1667,7 +1667,7 @@ namespace SimPe.PackedFiles.UserInterface
 					{
 						if (ltcb[i] != null)
 						{
-							ltcb[i].Checked = ((Boolset)(i < 16 ? bs1 : bs2))[i & 0x0f];
+							ltcb[i].Checked = (i < 16 ? bs1 : bs2)[i & 0x0f];
 						}
 					}
 
@@ -1720,11 +1720,11 @@ namespace SimPe.PackedFiles.UserInterface
 					}
 
 					objd.Type = (ushort)Helper.HexStringToUInt(tblottype.Text);
-					objd.Guid = (uint)Helper.HexStringToUInt(tbsimid.Text);
+					objd.Guid = Helper.HexStringToUInt(tbsimid.Text);
 					objd.FileName = tbsimname.Text;
-					objd.OriginalGuid = (uint)
+					objd.OriginalGuid =
 						Helper.HexStringToUInt(tborgguid.Text);
-					objd.ProxyGuid = (uint)Helper.HexStringToUInt(tbproxguid.Text);
+					objd.ProxyGuid = Helper.HexStringToUInt(tbproxguid.Text);
 
 					objd.SynchronizeUserData();
 					MessageBox.Show(Localization.Manager.GetString("commited"));

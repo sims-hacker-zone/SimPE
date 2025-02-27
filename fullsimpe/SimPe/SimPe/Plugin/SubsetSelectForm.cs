@@ -84,8 +84,8 @@ namespace SimPe.Plugin
 			//
 			// panel1
 			//
-			panel1.Anchor = (
-				(AnchorStyles)(
+			panel1.Anchor =
+
 					(
 						(
 							(
@@ -94,8 +94,8 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			panel1.Controls.Add(cbauto);
 			panel1.Controls.Add(button1);
 			panel1.Controls.Add(pnselect);
@@ -106,14 +106,14 @@ namespace SimPe.Plugin
 			//
 			// cbauto
 			//
-			cbauto.Anchor = (
-				(AnchorStyles)(
+			cbauto.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			cbauto.Checked = true;
 			cbauto.CheckState = CheckState.Checked;
 			cbauto.FlatStyle = FlatStyle.System;
@@ -125,14 +125,14 @@ namespace SimPe.Plugin
 			//
 			// button1
 			//
-			button1.Anchor = (
-				(AnchorStyles)(
+			button1.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			button1.FlatStyle = FlatStyle.System;
 			button1.Location = new Point(456, 416);
 			button1.Name = "button1";
@@ -142,8 +142,8 @@ namespace SimPe.Plugin
 			//
 			// pnselect
 			//
-			pnselect.Anchor = (
-				(AnchorStyles)(
+			pnselect.Anchor =
+
 					(
 						(
 							(
@@ -152,8 +152,8 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			pnselect.AutoScroll = true;
 			pnselect.Location = new Point(0, 0);
 			pnselect.Name = "pnselect";
@@ -170,7 +170,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			FormBorderStyle =
 				FormBorderStyle

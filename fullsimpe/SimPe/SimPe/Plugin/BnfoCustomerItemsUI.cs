@@ -68,7 +68,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			Name = "BnfoCustomerItemsUI";
 			Size = new System.Drawing.Size(304, 104);

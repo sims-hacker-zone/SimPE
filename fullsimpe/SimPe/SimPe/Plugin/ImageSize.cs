@@ -67,7 +67,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			label5.Location = new Point(104, 16);
 			label5.Name = "label5";
@@ -99,7 +99,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			label4.Location = new Point(8, 16);
 			label4.Name = "label4";
@@ -131,7 +131,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			Name = "ImageSize";

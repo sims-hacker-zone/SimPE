@@ -104,9 +104,9 @@ namespace SimPe
 			rtb.BackColor = System.Drawing.SystemColors.ControlLightLight;
 			rtb.BorderStyle = BorderStyle.None;
 			rtb.ForeColor = System.Drawing.Color.FromArgb(
-				((int)(((byte)(64)))),
-				((int)(((byte)(64)))),
-				((int)(((byte)(64))))
+				((byte)(64)),
+				((byte)(64)),
+				((byte)(64))
 			);
 			rtb.Name = "rtb";
 			rtb.ReadOnly = true;

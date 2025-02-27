@@ -315,8 +315,8 @@ namespace SimPe.Plugin
 			//
 			// lbobj
 			//
-			lbobj.Anchor = (
-				(AnchorStyles)(
+			lbobj.Anchor =
+
 					(
 						(
 							(
@@ -325,8 +325,8 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lbobj.IntegralHeight = false;
 			lbobj.ItemHeight = 16;
 			lbobj.Location = new Point(6, 71);
@@ -338,21 +338,21 @@ namespace SimPe.Plugin
 			//
 			// btclone
 			//
-			btclone.Anchor = (
-				(AnchorStyles)(
+			btclone.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			btclone.FlatStyle = FlatStyle.System;
 			btclone.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			btclone.Location = new Point(400, 141);
 			btclone.Name = "btclone";
@@ -380,7 +380,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbfix.Location = new Point(152, 77);
 			cbfix.Name = "cbfix";
@@ -396,7 +396,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbgid.Location = new Point(152, 47);
 			cbgid.Name = "cbgid";
@@ -411,16 +411,16 @@ namespace SimPe.Plugin
 			//
 			// tbseek
 			//
-			tbseek.Anchor = (
-				(AnchorStyles)(
+			tbseek.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbseek.Location = new Point(6, 44);
 			tbseek.Name = "tbseek";
 			tbseek.Size = new Size(485, 23);
@@ -442,7 +442,7 @@ namespace SimPe.Plugin
 				9.75F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			panel1.Location = new Point(0, 0);
 			panel1.Name = "panel1";
@@ -451,14 +451,14 @@ namespace SimPe.Plugin
 			//
 			// taskBox2
 			//
-			taskBox2.Anchor = (
-				(AnchorStyles)(
+			taskBox2.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			taskBox2.BackColor = Color.Transparent;
 			taskBox2.Controls.Add(cbfix);
 			taskBox2.Controls.Add(btclone);
@@ -472,8 +472,8 @@ namespace SimPe.Plugin
 			//
 			// taskBox1
 			//
-			taskBox1.Anchor = (
-				(AnchorStyles)(
+			taskBox1.Anchor =
+
 					(
 						(
 							(
@@ -482,8 +482,8 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			taskBox1.BackColor = Color.Transparent;
 			taskBox1.Controls.Add(tbseek);
 			taskBox1.Controls.Add(lbobj);
@@ -503,7 +503,7 @@ namespace SimPe.Plugin
 				9.75F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			FormBorderStyle =
 				FormBorderStyle
@@ -839,7 +839,7 @@ namespace SimPe.Plugin
 		)
 		{
 			package = Packages.File.LoadFromStream(
-				(System.IO.BinaryReader)null
+				null
 			);
 
 			//Get the Base Object Data from the Objects.package File
@@ -907,7 +907,7 @@ namespace SimPe.Plugin
 			*/
 			Packages.GeneratableFile npackage =
 				Packages.File.LoadFromStream(
-					(System.IO.BinaryReader)null
+					null
 				);
 
 			npackage.FileName = sfd.FileName;

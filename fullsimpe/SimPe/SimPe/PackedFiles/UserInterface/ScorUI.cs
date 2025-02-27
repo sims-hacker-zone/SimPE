@@ -102,7 +102,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label1.Location = new System.Drawing.Point(8, 40);
 			label1.Name = "label1";
@@ -135,7 +135,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label2.Location = new System.Drawing.Point(8, 64);
 			label2.Name = "label2";
@@ -146,16 +146,16 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// lb
 			//
-			lb.Anchor = (
-				(AnchorStyles)(
+			lb.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
 						) | AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			lb.BorderStyle = BorderStyle.None;
 			lb.HorizontalScrollbar = true;
 			lb.IntegralHeight = false;
@@ -169,8 +169,8 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// pnContainer
 			//
-			pnContainer.Anchor = (
-				(AnchorStyles)(
+			pnContainer.Anchor =
+
 					(
 						(
 							(
@@ -179,8 +179,8 @@ namespace SimPe.PackedFiles.UserInterface
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			pnContainer.Location = new System.Drawing.Point(243, 40);
 			pnContainer.Name = "pnContainer";
 			pnContainer.Size = new System.Drawing.Size(431, 228);
@@ -188,14 +188,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// cbType
 			//
-			cbType.Anchor = (
-				(AnchorStyles)(
+			cbType.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			cbType.DropDownStyle = ComboBoxStyle.DropDownList;
 			cbType.FormattingEnabled = true;
 			cbType.Location = new System.Drawing.Point(11, 217);
@@ -208,14 +208,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// btAdd
 			//
-			btAdd.Anchor = (
-				(AnchorStyles)(
+			btAdd.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			btAdd.Location = new System.Drawing.Point(174, 216);
 			btAdd.Name = "btAdd";
 			btAdd.Size = new System.Drawing.Size(63, 23);
@@ -226,14 +226,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// btRem
 			//
-			btRem.Anchor = (
-				(AnchorStyles)(
+			btRem.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			btRem.Location = new System.Drawing.Point(174, 245);
 			btRem.Name = "btRem";
 			btRem.Size = new System.Drawing.Size(63, 23);
@@ -258,7 +258,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			Name = "ScorUI";
 			Size = new System.Drawing.Size(678, 272);

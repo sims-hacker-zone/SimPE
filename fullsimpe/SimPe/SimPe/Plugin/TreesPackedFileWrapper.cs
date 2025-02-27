@@ -302,7 +302,7 @@ namespace SimPe.Plugin
 				for (int i = 0; i < count; i++)
 				{
 					writer.Write(items[i]);
-					writer.Write((int)0);
+					writer.Write(0);
 				}
 			}
 			else
@@ -339,7 +339,7 @@ namespace SimPe.Plugin
 								writer.Write(c);
 							}
 						}
-						writer.Write((int)0);
+						writer.Write(0);
 					}
 				}
 			}

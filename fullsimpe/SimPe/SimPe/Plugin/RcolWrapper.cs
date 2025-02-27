@@ -585,7 +585,7 @@ namespace SimPe.Plugin
 			{
 				if (irb is IDisposable)
 				{
-					((IDisposable)irb).Dispose();
+					irb.Dispose();
 				}
 			}
 

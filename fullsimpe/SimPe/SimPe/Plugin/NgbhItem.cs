@@ -442,7 +442,7 @@ namespace SimPe.Plugin
 		/// True if this Item can be processed as a Memory
 		/// </summary>
 		public bool IsMemory => (
-					(Data.ObjectTypes)ObjectDataFile.Type
+					ObjectDataFile.Type
 					== SimPe.Data.ObjectTypes.Memory
 				);
 
@@ -666,7 +666,7 @@ namespace SimPe.Plugin
 				writer.Write(unknown2);
 			}
 
-			writer.Write((int)data.Length);
+			writer.Write(data.Length);
 			for (int i = 0; i < data.Length; i++)
 			{
 				writer.Write(data[i]);

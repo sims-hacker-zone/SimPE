@@ -150,7 +150,7 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				if (items[i] != null)
 				{
-					((ObjfItem)items[i]).Serialize(writer);
+					items[i].Serialize(writer);
 				}
 			}
 		}

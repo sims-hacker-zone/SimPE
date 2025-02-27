@@ -351,7 +351,7 @@ namespace SimPe.Plugin
 			int h
 		)
 		{
-			double scale = ((double)parentsize.Width / (double)parentsize.Height);
+			double scale = (parentsize.Width / (double)parentsize.Height);
 
 			/*int w = 0;
 			int h = 0;
@@ -434,17 +434,17 @@ namespace SimPe.Plugin
 				{
 					Color c = bmp.GetPixel(x, y);
 
-					writer.Write((byte)c.B);
+					writer.Write(c.B);
 					if (
 						(format != TxtrFormats.Raw8Bit)
 						&& (format != TxtrFormats.ExtRaw8Bit)
 					)
 					{
-						writer.Write((byte)c.G);
-						writer.Write((byte)c.R);
+						writer.Write(c.G);
+						writer.Write(c.R);
 						if ((format == TxtrFormats.Raw32Bit))
 						{
-							writer.Write((byte)c.A);
+							writer.Write(c.A);
 						}
 					}
 				}
@@ -475,7 +475,7 @@ namespace SimPe.Plugin
 			try
 			{
 				double ration =
-					((double)parentsize.Width) / ((double)parentsize.Height);
+					parentsize.Width / ((double)parentsize.Height);
 
 				if (
 					(format == TxtrFormats.DXT3Format)
@@ -531,7 +531,7 @@ namespace SimPe.Plugin
 							int alpha1 = reader.ReadByte();
 							int alpha2 = reader.ReadByte();
 							long abits =
-								(long)reader.ReadUInt32()
+								reader.ReadUInt32()
 								| ((long)reader.ReadUInt16() << 32);
 							int[] alphas = new int[8]; // holds the calculated alpha values
 							alphas[0] = alpha1;
@@ -1020,7 +1020,7 @@ if (test.B>table.B) table = Color.FromArgb(table.A, table.R, table.G, test.B);*/
 				.InterpolationMode
 				.HighQualityBicubic;
 
-			double ratio = (double)img.Height / (double)img.Width;
+			double ratio = img.Height / (double)img.Width;
 			int wd = sz.Width;
 			int hg = (int)Math.Round(wd * ratio);
 

@@ -112,7 +112,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			linkLabel4.Location = new System.Drawing.Point(188, 56);
 			linkLabel4.Name = "linkLabel4";
@@ -133,7 +133,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			linkLabel3.Location = new System.Drawing.Point(160, 56);
 			linkLabel3.Name = "linkLabel3";
@@ -153,7 +153,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			tbunk.Location = new System.Drawing.Point(144, 32);
 			tbunk.Name = "tbunk";
@@ -169,7 +169,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			lbunk.IntegralHeight = false;
 			lbunk.Location = new System.Drawing.Point(8, 8);
@@ -188,7 +188,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			label1.Location = new System.Drawing.Point(136, 16);
 			label1.Name = "label1";

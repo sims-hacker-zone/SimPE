@@ -257,7 +257,7 @@ namespace SimPe.Data
 							}
 
 							Alias a = new Alias(val, subnode.InnerText.Trim());
-							list.Add((Interfaces.IAlias)a);
+							list.Add(a);
 						}
 					}
 				} // for i

@@ -187,7 +187,7 @@ namespace SimPe.Providers
 						object[] o = new object[3];
 
 						o[0] = pfd;
-						o[1] = (ObjectTypes)objd.Type;
+						o[1] = objd.Type;
 						o[2] = null;
 						PackedFiles.Wrapper.Picture pic =
 							new PackedFiles.Wrapper.Picture();
@@ -385,7 +385,7 @@ namespace SimPe.Providers
 					FileTableBase.FileIndex.FindFile(
 						MetaData.BHAV_FILE,
 						0x7FD46CD0,
-						(ulong)opcode,
+						opcode,
 						null
 					);
 

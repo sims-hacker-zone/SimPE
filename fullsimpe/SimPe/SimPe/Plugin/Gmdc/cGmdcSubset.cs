@@ -106,11 +106,11 @@ namespace SimPe.Plugin.Gmdc
 		/// </remarks>
 		public void Serialize(System.IO.BinaryWriter writer)
 		{
-			writer.Write((int)Vertices.Count);
+			writer.Write(Vertices.Count);
 
 			if (Vertices.Count > 0)
 			{
-				writer.Write((int)Items.Length);
+				writer.Write(Items.Length);
 				for (int i = 0; i < Vertices.Count; i++)
 				{
 					Vertices[i].Serialize(writer);

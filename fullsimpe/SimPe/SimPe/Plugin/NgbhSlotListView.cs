@@ -84,7 +84,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			Name = "NgbhSlotListView";
 			Size = new System.Drawing.Size(272, 168);

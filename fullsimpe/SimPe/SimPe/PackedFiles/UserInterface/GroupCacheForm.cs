@@ -66,8 +66,8 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// lbgroup
 			//
-			lbgroup.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+			lbgroup.Anchor =
+
 					(
 						(
 							(
@@ -76,8 +76,8 @@ namespace SimPe.PackedFiles.UserInterface
 							) | System.Windows.Forms.AnchorStyles.Left
 						) | System.Windows.Forms.AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lbgroup.HorizontalScrollbar = true;
 			lbgroup.IntegralHeight = false;
 			lbgroup.Location = new System.Drawing.Point(8, 32);
@@ -87,16 +87,16 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// panel4
 			//
-			panel4.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+			panel4.Anchor =
+
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
 							| System.Windows.Forms.AnchorStyles.Left
 						) | System.Windows.Forms.AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			panel4.BackColor = System.Drawing.SystemColors.AppWorkspace;
 			panel4.Controls.Add(label12);
 			panel4.Font = new System.Drawing.Font(

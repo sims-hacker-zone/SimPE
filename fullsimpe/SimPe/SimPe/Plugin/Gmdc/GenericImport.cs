@@ -119,16 +119,16 @@ namespace SimPe.Plugin.Gmdc
 			//
 			// panel1
 			//
-			panel1.Anchor = (
-				(AnchorStyles)(
+			panel1.Anchor =
+
 					(
 						(
 							AnchorStyles.Bottom
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			panel1.BackColor = Color.Transparent;
 			panel1.Controls.Add(cbClear);
 			panel1.Controls.Add(button1);
@@ -156,26 +156,26 @@ namespace SimPe.Plugin.Gmdc
 			//
 			// label3
 			//
-			label3.Anchor = (
-				(AnchorStyles)(
+			label3.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label3.BackColor = Color.Transparent;
 			label3.Font = new Font(
 				"Tahoma",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			label3.ForeColor = Color.FromArgb(
-				((System.Byte)(64)),
-				((System.Byte)(64)),
-				((System.Byte)(64))
+				64,
+				64,
+				64
 			);
 			label3.Location = new Point(648, 352);
 			label3.Name = "label3";
@@ -185,16 +185,16 @@ namespace SimPe.Plugin.Gmdc
 			//
 			// xpLine3
 			//
-			xpLine3.Anchor = (
-				(AnchorStyles)(
+			xpLine3.Anchor =
+
 					(
 						(
 							AnchorStyles.Bottom
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			xpLine3.BackColor = Color.Transparent;
 			xpLine3.Location = new Point(9, 376);
 			xpLine3.Name = "xpLine3";
@@ -203,8 +203,8 @@ namespace SimPe.Plugin.Gmdc
 			//
 			// lvbones
 			//
-			lvbones.Anchor = (
-				(AnchorStyles)(
+			lvbones.Anchor =
+
 					(
 						(
 							(
@@ -213,8 +213,8 @@ namespace SimPe.Plugin.Gmdc
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lvbones.BorderStyle = BorderStyle.None;
 			lvbones.Columns.AddRange(
 				new ColumnHeader[]
@@ -264,26 +264,26 @@ namespace SimPe.Plugin.Gmdc
 			//
 			// label2
 			//
-			label2.Anchor = (
-				(AnchorStyles)(
+			label2.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label2.BackColor = Color.Transparent;
 			label2.Font = new Font(
 				"Tahoma",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			label2.ForeColor = Color.FromArgb(
-				((System.Byte)(64)),
-				((System.Byte)(64)),
-				((System.Byte)(64))
+				64,
+				64,
+				64
 			);
 			label2.Location = new Point(648, 184);
 			label2.Name = "label2";
@@ -293,16 +293,16 @@ namespace SimPe.Plugin.Gmdc
 			//
 			// xpLine2
 			//
-			xpLine2.Anchor = (
-				(AnchorStyles)(
+			xpLine2.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			xpLine2.BackColor = Color.Transparent;
 			xpLine2.Location = new Point(9, 208);
 			xpLine2.Name = "xpLine2";
@@ -311,26 +311,26 @@ namespace SimPe.Plugin.Gmdc
 			//
 			// label1
 			//
-			label1.Anchor = (
-				(AnchorStyles)(
+			label1.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label1.BackColor = Color.Transparent;
 			label1.Font = new Font(
 				"Tahoma",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			label1.ForeColor = Color.FromArgb(
-				((System.Byte)(64)),
-				((System.Byte)(64)),
-				((System.Byte)(64))
+				64,
+				64,
+				64
 			);
 			label1.Location = new Point(648, 8);
 			label1.Name = "label1";
@@ -340,16 +340,16 @@ namespace SimPe.Plugin.Gmdc
 			//
 			// xpLine1
 			//
-			xpLine1.Anchor = (
-				(AnchorStyles)(
+			xpLine1.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			xpLine1.BackColor = Color.Transparent;
 			xpLine1.Location = new Point(9, 32);
 			xpLine1.Name = "xpLine1";
@@ -358,16 +358,16 @@ namespace SimPe.Plugin.Gmdc
 			//
 			// lvmesh
 			//
-			lvmesh.Anchor = (
-				(AnchorStyles)(
+			lvmesh.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lvmesh.BorderStyle = BorderStyle.None;
 			lvmesh.Columns.AddRange(
 				new ColumnHeader[]
@@ -438,7 +438,7 @@ namespace SimPe.Plugin.Gmdc
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			FormBorderStyle = FormBorderStyle.FixedDialog;
 			Icon = ((Icon)(resources.GetObject("$this.Icon")));

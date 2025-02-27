@@ -3015,14 +3015,14 @@ namespace SimPe.Data
 				{
 					rcollist = new ArrayList
 					{
-						(uint)GMDC, //GMDC
-						(uint)TXTR, //TXTR
-						(uint)LIFO, //LIFO
-						(uint)TXMT, //MATD
-						(uint)ANIM, //ANIM
-						(uint)GMND, //GMND
-						(uint)SHPE, //SHPE
-						(uint)CRES, //CRES
+						GMDC, //GMDC
+						TXTR, //TXTR
+						LIFO, //LIFO
+						TXMT, //MATD
+						ANIM, //ANIM
+						GMND, //GMND
+						SHPE, //SHPE
+						CRES, //CRES
 						LDIR,
 						LAMB,
 						LSPT,
@@ -3044,7 +3044,7 @@ namespace SimPe.Data
 
 					complist.Add(STRING_FILE);
 					complist.Add((uint)0x0C560F39); //Binary Index
-					complist.Add((uint)0xAC506764); //3D IDR
+					complist.Add(0xAC506764); //3D IDR
 				}
 				return complist;
 			}

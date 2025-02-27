@@ -185,7 +185,7 @@ namespace SimPe.Plugin
 		{
 			get; set;
 		}
-		public byte LotRoads { get; set; } = (byte)0x00;
+		public byte LotRoads { get; set; } = 0x00;
 		public byte LotRotation
 		{
 			get
@@ -534,7 +534,7 @@ namespace SimPe.Plugin
 			writer.Write(sz.Height);
 			writer.Write((byte)Type);
 
-			writer.Write((byte)LotRoads);
+			writer.Write(LotRoads);
 			writer.Write((byte)rotation);
 			writer.Write(Unknown0);
 
@@ -567,8 +567,8 @@ namespace SimPe.Plugin
 				writer.Write(Clset);
 			}
 
-			writer.Write((int)loc.Y);
-			writer.Write((int)loc.X);
+			writer.Write(loc.Y);
+			writer.Write(loc.X);
 
 			writer.Write(LotElevation);
 			writer.Write(LotInstance);

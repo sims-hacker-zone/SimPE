@@ -14,7 +14,7 @@ namespace SimPe.Plugin
 			IPackedFileUI
 	{
 		protected new WallLayerPackedFileWrapper Wrapper => base.Wrapper as WallLayerPackedFileWrapper;
-		public WallLayerPackedFileWrapper TPFW => (WallLayerPackedFileWrapper)Wrapper;
+		public WallLayerPackedFileWrapper TPFW => Wrapper;
 
 		#region WrapperBaseControl Member
 

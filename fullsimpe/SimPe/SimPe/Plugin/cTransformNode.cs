@@ -68,7 +68,7 @@ namespace SimPe.Plugin
 		public override string ToString()
 		{
 			return "0x"
-				+ Helper.HexString((ushort)Unknown1)
+				+ Helper.HexString(Unknown1)
 				+ " 0x"
 				+ Helper.HexString((uint)ChildNode);
 		}

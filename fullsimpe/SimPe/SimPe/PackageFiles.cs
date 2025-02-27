@@ -74,16 +74,16 @@ namespace SimPe
 			//
 			// label1
 			//
-			label1.Anchor = (
-				(AnchorStyles)(
+			label1.Anchor =
+
 					(
 						(
 							AnchorStyles.Bottom
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
 			label1.Location = new System.Drawing.Point(8, 286);
 			label1.Name = "label1";
@@ -101,7 +101,7 @@ namespace SimPe
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			lbfile.Location = new System.Drawing.Point(16, 16);
 			lbfile.Name = "lbfile";
@@ -111,8 +111,8 @@ namespace SimPe
 			//
 			// lbfiles
 			//
-			lbfiles.Anchor = (
-				(AnchorStyles)(
+			lbfiles.Anchor =
+
 					(
 						(
 							(
@@ -121,8 +121,8 @@ namespace SimPe
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lbfiles.Location = new System.Drawing.Point(24, 32);
 			lbfiles.Name = "lbfiles";
 			lbfiles.Size = new System.Drawing.Size(552, 238);
@@ -143,7 +143,7 @@ namespace SimPe
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			FormBorderStyle =
 				FormBorderStyle

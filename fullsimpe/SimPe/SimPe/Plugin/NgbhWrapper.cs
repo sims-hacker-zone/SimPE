@@ -377,7 +377,7 @@ namespace SimPe.Plugin
 			writer.Write(version);
 			writer.Write(header);
 
-			writer.Write((int)zonename.Length);
+			writer.Write(zonename.Length);
 			writer.Write(zonename);
 
 			if (version >= (uint)NgbhVersion.Nightlife)
@@ -397,19 +397,19 @@ namespace SimPe.Plugin
 				preitems[i].Serialize(writer);
 			}
 
-			writer.Write((int)slota.Length);
+			writer.Write(slota.Length);
 			for (int i = 0; i < slota.Length; i++)
 			{
 				slota[i].Serialize(writer);
 			}
 
-			writer.Write((int)slotb.Length);
+			writer.Write(slotb.Length);
 			for (int i = 0; i < slotb.Length; i++)
 			{
 				slotb[i].Serialize(writer);
 			}
 
-			writer.Write((int)slotc.Length);
+			writer.Write(slotc.Length);
 			for (int i = 0; i < slotc.Length; i++)
 			{
 				slotc[i].Serialize(writer);

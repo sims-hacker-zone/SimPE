@@ -75,7 +75,7 @@ namespace SimPe
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			panel2.Location = new Point(0, 0);
 			panel2.Name = "panel2";
@@ -91,7 +91,7 @@ namespace SimPe
 				9.75F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label1.Location = new Point(8, 8);
 			label1.MaximumSize = new Size(524, 0);

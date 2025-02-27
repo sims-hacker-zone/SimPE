@@ -139,7 +139,7 @@ namespace SimPe.PackedFiles.UserInterface
 				{
 					if (ltcb[i] != null)
 					{
-						ltcb[i].Checked = ((Boolset)(i < 16 ? bs1 : bs2))[i & 0x0f];
+						ltcb[i].Checked = (i < 16 ? bs1 : bs2)[i & 0x0f];
 					}
 				}
 			}
@@ -150,7 +150,7 @@ namespace SimPe.PackedFiles.UserInterface
 				{
 					if (ltcb[i] != null)
 					{
-						ltcb[i].Checked = ((Boolset)(bs1))[i & 0x0f];
+						ltcb[i].Checked = bs1[i & 0x0f];
 					}
 				}
 			}

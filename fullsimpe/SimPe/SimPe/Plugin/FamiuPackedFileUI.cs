@@ -13,7 +13,7 @@ namespace SimPe.Plugin
 			IPackedFileUI
 	{
 		protected new FamiuPackedFileWrapper Wrapper => base.Wrapper as FamiuPackedFileWrapper;
-		public FamiuPackedFileWrapper TPFW => (FamiuPackedFileWrapper)Wrapper;
+		public FamiuPackedFileWrapper TPFW => Wrapper;
 
 		ushort[] filedata;
 		int[] sdatas;

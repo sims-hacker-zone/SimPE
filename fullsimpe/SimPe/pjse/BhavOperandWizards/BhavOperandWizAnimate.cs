@@ -303,7 +303,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 		private void doStrChooser(TextBox tbVal, TextBox strText)
 		{
 			FileTable.Entry[] items = FileTable.GFT[
-				(uint)SimPe.Data.MetaData.STRING_FILE,
+				SimPe.Data.MetaData.STRING_FILE,
 				inst.Parent.GroupForScope(AnimScope()),
 				(uint)AnimInstance()
 			];
@@ -554,7 +554,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 						ckbAttrPicker,
 						null,
 						0x07,
-						(byte)ops1[6]
+						ops1[6]
 					);
 					doidAnimType.DataOwnerControlChanged += new EventHandler(
 						doidAnimType_DataOwnerControlChanged
@@ -596,7 +596,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 						ckbAttrPicker,
 						null,
 						0x07,
-						(byte)ops2[1]
+						ops2[1]
 					);
 					doidAnimType.DataOwnerControlChanged += new EventHandler(
 						doidAnimType_DataOwnerControlChanged

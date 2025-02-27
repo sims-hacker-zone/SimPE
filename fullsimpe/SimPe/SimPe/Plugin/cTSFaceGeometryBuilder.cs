@@ -96,13 +96,13 @@ namespace SimPe.Plugin
 			writer.Write(Unknown1);
 			writer.Write(Unknown2);
 
-			writer.Write((int)Vectors1.Count);
+			writer.Write(Vectors1.Count);
 			for (int i = 0; i < Vectors1.Count; i++)
 			{
 				Vectors1[i].Serialize(writer);
 			}
 
-			writer.Write((int)Vectors2.Count);
+			writer.Write(Vectors2.Count);
 			for (int i = 0; i < Vectors2.Count; i++)
 			{
 				Vectors2[i].Serialize(writer);

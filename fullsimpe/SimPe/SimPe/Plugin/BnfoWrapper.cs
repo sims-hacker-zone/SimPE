@@ -214,7 +214,7 @@ namespace SimPe.Plugin
 			writer.Write(unk2);
 			writer.Write(empct);
 
-			writer.Write((int)CustomerItems.Count);
+			writer.Write(CustomerItems.Count);
 			foreach (BnfoCustomerItem item in CustomerItems)
 			{
 				item.Serialize(writer);

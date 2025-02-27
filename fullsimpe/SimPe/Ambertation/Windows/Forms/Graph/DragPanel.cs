@@ -36,7 +36,7 @@ namespace Ambertation.Windows.Forms.Graph
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			//SetStyle(ControlStyles.Selectable, true);
 			Down = false;

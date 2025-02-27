@@ -267,7 +267,7 @@ namespace SimPe
 			}
 
 			uint hash = Hashes.GetCrc32(username) & 0xFFFFFFFE;
-			guid = (uint)(guid << 8) & 0xFFFFFF00;
+			guid = guid << 8 & 0xFFFFFF00;
 			if (guid == 0)
 			{
 				return hash;

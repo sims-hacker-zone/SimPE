@@ -432,7 +432,7 @@ namespace SimPe.Plugin.Anim
 
 			ct = ct & 0x3f;
 
-			datas[2] = (short)((int)datas[2] & 0x0000FFC0);
+			datas[2] = (short)(datas[2] & 0x0000FFC0);
 			datas[2] = (short)((ushort)datas[2] | (ushort)ct);
 		}
 

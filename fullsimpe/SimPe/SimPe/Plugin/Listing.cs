@@ -74,8 +74,8 @@ namespace SimPe.Plugin
 			//
 			// lb
 			//
-			lb.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+			lb.Anchor =
+
 					(
 						(
 							(
@@ -84,8 +84,8 @@ namespace SimPe.Plugin
 							) | System.Windows.Forms.AnchorStyles.Left
 						) | System.Windows.Forms.AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lb.HorizontalScrollbar = true;
 			lb.IntegralHeight = false;
 			lb.Location = new System.Drawing.Point(8, 40);
@@ -97,16 +97,16 @@ namespace SimPe.Plugin
 			//
 			// label1
 			//
-			label1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+			label1.Anchor =
+
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
 							| System.Windows.Forms.AnchorStyles.Left
 						) | System.Windows.Forms.AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
 			label1.Location = new System.Drawing.Point(8, 8);
 			label1.Name = "label1";
@@ -117,21 +117,21 @@ namespace SimPe.Plugin
 			//
 			// linkLabel1
 			//
-			linkLabel1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+			linkLabel1.Anchor =
+
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			linkLabel1.AutoSize = true;
 			linkLabel1.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			linkLabel1.Location = new System.Drawing.Point(197, 240);
 			linkLabel1.Name = "linkLabel1";
@@ -156,7 +156,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			FormBorderStyle = System
 				.Windows

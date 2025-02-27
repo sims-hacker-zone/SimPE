@@ -175,7 +175,7 @@ namespace SimPe.Packages
 			pfd.markcompress = markcompress;
 			pfd.markdeleted = markdeleted;
 
-			return (IPackedFileDescriptor)pfd;
+			return pfd;
 		}
 
 		/// <summary>
@@ -206,7 +206,7 @@ namespace SimPe.Packages
 				}
 				else
 				{
-					return (int)userdata.Length;
+					return userdata.Length;
 				}
 			}
 			set
@@ -254,7 +254,7 @@ namespace SimPe.Packages
 			get
 			{
 				ulong ret = instance;
-				ret = (((ulong)subtype << 32) & 0xffffffff00000000) | (ulong)ret;
+				ret = (((ulong)subtype << 32) & 0xffffffff00000000) | ret;
 				return ret;
 			}
 			set

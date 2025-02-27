@@ -51,7 +51,7 @@ namespace SimPe.Plugin.Tool
 				return false;
 			}
 
-			return ((ResourceContainer)e.Items[0]).Resource.FileDescriptor.Type
+			return e.Items[0].Resource.FileDescriptor.Type
 				== Data.MetaData.ANIM;
 		}
 

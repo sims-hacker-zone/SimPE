@@ -135,7 +135,7 @@ namespace SimPe.Plugin
 			tn.Serialize(writer);
 
 			writer.Write(Unknown1);
-			writer.Write((int)Names.Length);
+			writer.Write(Names.Length);
 			for (int i = 0; i < Names.Length; i++)
 			{
 				writer.Write(Names[i]);

@@ -97,8 +97,8 @@ namespace pjOBJDTool
 			if (actss.Length > 0)
 			{
 				ctss.ProcessData(actss[0].PFD, actss[0].Package);
-				tbCTSSName.Text = ((SimPe.PackedFiles.Wrapper.StrItem)ctss[1, 0]).Title;
-				tbCTSSDesc.Text = ((SimPe.PackedFiles.Wrapper.StrItem)ctss[1, 1]).Title;
+				tbCTSSName.Text = ctss[1, 0].Title;
+				tbCTSSDesc.Text = ctss[1, 1].Title;
 			}
 			else
 			{

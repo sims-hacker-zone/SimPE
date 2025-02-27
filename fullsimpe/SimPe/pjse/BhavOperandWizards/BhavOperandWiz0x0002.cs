@@ -150,7 +150,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0002
 			// labelledDataOwner2
 			//
 			resources.ApplyResources(labelledDataOwner2, "labelledDataOwner2");
-			labelledDataOwner2.DataOwner = ((byte)(255));
+			labelledDataOwner2.DataOwner = 255;
 			labelledDataOwner2.DataOwnerEnabled = true;
 			labelledDataOwner2.FlagsFor = labelledDataOwner1;
 			labelledDataOwner2.Instruction = null;
@@ -158,12 +158,12 @@ namespace pjse.BhavOperandWizards.Wiz0x0002
 			labelledDataOwner2.LabelVisible = false;
 			labelledDataOwner2.Name = "labelledDataOwner2";
 			labelledDataOwner2.UseFlagNames = false;
-			labelledDataOwner2.Value = ((ushort)(0));
+			labelledDataOwner2.Value = 0;
 			//
 			// labelledDataOwner1
 			//
 			resources.ApplyResources(labelledDataOwner1, "labelledDataOwner1");
-			labelledDataOwner1.DataOwner = ((byte)(255));
+			labelledDataOwner1.DataOwner = 255;
 			labelledDataOwner1.DataOwnerEnabled = true;
 			labelledDataOwner1.DecimalVisible = false;
 			labelledDataOwner1.Instruction = null;
@@ -172,7 +172,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0002
 			labelledDataOwner1.Name = "labelledDataOwner1";
 			labelledDataOwner1.UseFlagNames = false;
 			labelledDataOwner1.UseInstancePickerVisible = false;
-			labelledDataOwner1.Value = ((ushort)(0));
+			labelledDataOwner1.Value = 0;
 			//
 			// cbOperator
 			//

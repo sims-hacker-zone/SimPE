@@ -218,7 +218,7 @@ namespace SimPe
 			Splash.Screen.SetMessage("Loading Menu Items");
 			ToolMenuItemExt.ExternalToolNotify chghandler =
 				new ToolMenuItemExt.ExternalToolNotify(ClosedToolPluginHandler);
-			IToolExt[] toolsp = (IToolExt[])FileTable.ToolRegistry.ToolsPlus;
+			IToolExt[] toolsp = FileTable.ToolRegistry.ToolsPlus;
 			foreach (IToolExt tool in toolsp)
 			{
 				string name = tool.ToString();

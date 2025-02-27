@@ -61,7 +61,7 @@ namespace pjse
 		protected BhavOperandWizards.DataOwnerControl doc;
 
 		public LabelledDataOwner()
-			: this(null, 0, (ushort)0) { }
+			: this(null, 0, 0) { }
 
 		public LabelledDataOwner(BhavWiz inst, byte downer, ushort value)
 		{

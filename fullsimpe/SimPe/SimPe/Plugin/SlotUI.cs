@@ -263,7 +263,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			memprop.Item = null;
 			memprop.Location = new Point(0, 168);
@@ -282,7 +282,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			Name = "NgbhSlotUI";
 			Size = new Size(504, 360);

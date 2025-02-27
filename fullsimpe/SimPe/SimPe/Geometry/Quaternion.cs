@@ -222,7 +222,7 @@ namespace SimPe.Geometry
 				(q1.Imaginary | q2.Imaginary)
 					+ (q2.W * q1.Imaginary)
 					+ (q1.W * q2.Imaginary),
-				q1.W * q2.W - ((Vector3f)q1.Imaginary & (Vector3f)q2.Imaginary)
+				q1.W * q2.W - (q1.Imaginary & q2.Imaginary)
 			);
 		}
 
@@ -234,7 +234,7 @@ namespace SimPe.Geometry
 		/// <returns>The resulting Quaternion</returns>
 		public static double operator &(Quaternion q1, Quaternion q2)
 		{
-			return q1.W * q2.W + ((Vector3f)q1.Imaginary & (Vector3f)q2.Imaginary);
+			return q1.W * q2.W + (q1.Imaginary & q2.Imaginary);
 		}
 
 		/// <summary>
@@ -247,7 +247,7 @@ namespace SimPe.Geometry
 		{
 			return new Quaternion(
 				QuaternionParameterType.ImaginaryReal,
-				(Vector3f)q2.Imaginary | (Vector3f)q1.Imaginary,
+				q2.Imaginary | q1.Imaginary,
 				0
 			);
 		}
@@ -262,7 +262,7 @@ namespace SimPe.Geometry
 		{
 			return new Quaternion(
 				QuaternionParameterType.ImaginaryReal,
-				(Vector3f)q1.Imaginary * d,
+				q1.Imaginary * d,
 				q1.W * d
 			);
 		}
@@ -296,7 +296,7 @@ namespace SimPe.Geometry
 		/// <summary>
 		/// Returns the Imaginary Part of the Quaternion
 		/// </summary>
-		public Vector3f Imaginary => (Vector3f)this;
+		public Vector3f Imaginary => this;
 
 		/// <summary>
 		/// Returns an Identity Quaternion

@@ -177,8 +177,8 @@ namespace SimPe.Plugin.TabPage
 			//
 			// gbIems
 			//
-			gbIems.Anchor = (
-				(AnchorStyles)(
+			gbIems.Anchor =
+
 					(
 						(
 							(
@@ -187,8 +187,8 @@ namespace SimPe.Plugin.TabPage
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			gbIems.Controls.Add(gbfloat);
 			gbIems.Controls.Add(gbval);
 			gbIems.Controls.Add(tb_itemname);
@@ -209,7 +209,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			gbIems.Location = new Point(248, 8);
 			gbIems.Name = "gbIems";
@@ -220,14 +220,14 @@ namespace SimPe.Plugin.TabPage
 			//
 			// gbfloat
 			//
-			gbfloat.Anchor = (
-				(AnchorStyles)(
+			gbfloat.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			gbfloat.Controls.Add(tbfloat);
 			gbfloat.FlatStyle = FlatStyle.System;
 			gbfloat.Location = new Point(416, 128);
@@ -244,7 +244,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbfloat.Location = new Point(16, 24);
 			tbfloat.Name = "tbfloat";
@@ -255,14 +255,14 @@ namespace SimPe.Plugin.TabPage
 			//
 			// gbval
 			//
-			gbval.Anchor = (
-				(AnchorStyles)(
+			gbval.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			gbval.Controls.Add(tbval);
 			gbval.FlatStyle = FlatStyle.System;
 			gbval.Location = new Point(160, 216);
@@ -279,7 +279,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbval.Location = new Point(16, 24);
 			tbval.Name = "tbval";
@@ -290,20 +290,20 @@ namespace SimPe.Plugin.TabPage
 			//
 			// tb_itemname
 			//
-			tb_itemname.Anchor = (
-				(AnchorStyles)(
+			tb_itemname.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tb_itemname.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tb_itemname.Location = new Point(288, 40);
 			tb_itemname.Name = "tb_itemname";
@@ -313,21 +313,21 @@ namespace SimPe.Plugin.TabPage
 			//
 			// label3
 			//
-			label3.Anchor = (
-				(AnchorStyles)(
+			label3.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label3.AutoSize = true;
 			label3.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label3.Location = new Point(280, 24);
 			label3.Name = "label3";
@@ -337,14 +337,14 @@ namespace SimPe.Plugin.TabPage
 			//
 			// lldel
 			//
-			lldel.Anchor = (
-				(AnchorStyles)(
+			lldel.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lldel.AutoSize = true;
 			lldel.Location = new Point(488, 264);
 			lldel.Name = "lldel";
@@ -359,14 +359,14 @@ namespace SimPe.Plugin.TabPage
 			//
 			// linkLabel1
 			//
-			linkLabel1.Anchor = (
-				(AnchorStyles)(
+			linkLabel1.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			linkLabel1.AutoSize = true;
 			linkLabel1.Location = new Point(456, 264);
 			linkLabel1.Name = "linkLabel1";
@@ -379,21 +379,21 @@ namespace SimPe.Plugin.TabPage
 			//
 			// cbtype
 			//
-			cbtype.Anchor = (
-				(AnchorStyles)(
+			cbtype.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			cbtype.DropDownStyle = ComboBoxStyle.DropDownList;
 			cbtype.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbtype.Location = new Point(280, 240);
 			cbtype.Name = "cbtype";
@@ -402,14 +402,14 @@ namespace SimPe.Plugin.TabPage
 			//
 			// gbar
 			//
-			gbar.Anchor = (
-				(AnchorStyles)(
+			gbar.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			gbar.FlatStyle = FlatStyle.System;
 			gbar.Location = new Point(16, 216);
 			gbar.Name = "gbar";
@@ -426,7 +426,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			btedit.Location = new Point(16, 24);
 			btedit.Name = "btedit";
@@ -437,14 +437,14 @@ namespace SimPe.Plugin.TabPage
 			//
 			// gfootprintbar
 			//
-			gfootprintbar.Anchor = (
-				(AnchorStyles)(
+			gfootprintbar.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			gfootprintbar.FlatStyle = FlatStyle.System;
 			gfootprintbar.Location = new Point(16, 216);
 			gfootprintbar.Name = "gfootprintbar";
@@ -461,7 +461,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			btfootprintedit.Location = new Point(16, 55);
 			btfootprintedit.Name = "btfootprintedit";
@@ -474,14 +474,14 @@ namespace SimPe.Plugin.TabPage
 			//
 			// gbstr
 			//
-			gbstr.Anchor = (
-				(AnchorStyles)(
+			gbstr.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			gbstr.Controls.Add(tbstr);
 			gbstr.FlatStyle = FlatStyle.System;
 			gbstr.Location = new Point(280, 64);
@@ -493,22 +493,22 @@ namespace SimPe.Plugin.TabPage
 			//
 			// tbstr
 			//
-			tbstr.Anchor = (
-				(AnchorStyles)(
+			tbstr.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbstr.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbstr.Location = new Point(16, 24);
 			tbstr.Name = "tbstr";
@@ -518,14 +518,14 @@ namespace SimPe.Plugin.TabPage
 			//
 			// gbbin
 			//
-			gbbin.Anchor = (
-				(AnchorStyles)(
+			gbbin.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			gbbin.Controls.Add(tbbin);
 			gbbin.FlatStyle = FlatStyle.System;
 			gbbin.Location = new Point(16, 40);
@@ -537,22 +537,22 @@ namespace SimPe.Plugin.TabPage
 			//
 			// tbbin
 			//
-			tbbin.Anchor = (
-				(AnchorStyles)(
+			tbbin.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbbin.Font = new Font(
 				"Courier New",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbbin.Location = new Point(16, 26);
 			tbbin.Multiline = true;
@@ -564,14 +564,14 @@ namespace SimPe.Plugin.TabPage
 			//
 			// gbrot
 			//
-			gbrot.Anchor = (
-				(AnchorStyles)(
+			gbrot.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			gbrot.Controls.Add(tbrot4);
 			gbrot.Controls.Add(tbrot1);
 			gbrot.Controls.Add(tbrot3);
@@ -591,7 +591,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbrot4.Location = new Point(120, 48);
 			tbrot4.Name = "tbrot4";
@@ -607,7 +607,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbrot1.Location = new Point(16, 24);
 			tbrot1.Name = "tbrot1";
@@ -623,7 +623,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbrot3.Location = new Point(16, 48);
 			tbrot3.Name = "tbrot3";
@@ -639,7 +639,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbrot2.Location = new Point(120, 24);
 			tbrot2.Name = "tbrot2";
@@ -650,14 +650,14 @@ namespace SimPe.Plugin.TabPage
 			//
 			// gbtrans
 			//
-			gbtrans.Anchor = (
-				(AnchorStyles)(
+			gbtrans.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			gbtrans.Controls.Add(tbtrans1);
 			gbtrans.Controls.Add(tbtrans3);
 			gbtrans.Controls.Add(tbtrans2);
@@ -676,7 +676,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbtrans1.Location = new Point(16, 24);
 			tbtrans1.Name = "tbtrans1";
@@ -692,7 +692,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbtrans3.Location = new Point(16, 48);
 			tbtrans3.Name = "tbtrans3";
@@ -708,7 +708,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbtrans2.Location = new Point(120, 24);
 			tbtrans2.Name = "tbtrans2";
@@ -719,8 +719,8 @@ namespace SimPe.Plugin.TabPage
 			//
 			// lb_items
 			//
-			lb_items.Anchor = (
-				(AnchorStyles)(
+			lb_items.Anchor =
+
 					(
 						(
 							(
@@ -729,14 +729,14 @@ namespace SimPe.Plugin.TabPage
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lb_items.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lb_items.HorizontalScrollbar = true;
 			lb_items.IntegralHeight = false;
@@ -755,7 +755,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbFootprint.Location = new Point(0, 0);
 			tbFootprint.Name = "tbFootprint";
@@ -776,7 +776,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			groupBox10.Location = new Point(8, 8);
 			groupBox10.Name = "groupBox10";
@@ -792,7 +792,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tb_name.Location = new Point(16, 80);
 			tb_name.Name = "tb_name";
@@ -809,7 +809,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label2.Location = new Point(8, 64);
 			label2.Name = "label2";
@@ -824,7 +824,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tb_type.Location = new Point(128, 40);
 			tb_type.Name = "tb_type";
@@ -841,7 +841,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label1.Location = new Point(120, 24);
 			label1.Name = "label1";
@@ -856,7 +856,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tb_ver.Location = new Point(16, 40);
 			tb_ver.Name = "tb_ver";
@@ -873,7 +873,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label28.Location = new Point(8, 24);
 			label28.Name = "label28";

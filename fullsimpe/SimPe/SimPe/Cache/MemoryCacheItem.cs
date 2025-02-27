@@ -264,7 +264,7 @@ namespace SimPe.Cache
 
 			if (Icon == null)
 			{
-				writer.Write((int)0);
+				writer.Write(0);
 			}
 			else
 			{

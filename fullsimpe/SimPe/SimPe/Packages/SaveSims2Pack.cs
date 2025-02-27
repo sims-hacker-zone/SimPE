@@ -105,16 +105,16 @@ namespace SimPe.Packages
 			//
 			// lblist
 			//
-			lblist.Anchor = (
-				(AnchorStyles)(
+			lblist.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lblist.IntegralHeight = false;
 			lblist.Location = new System.Drawing.Point(8, 40);
 			lblist.Name = "lblist";
@@ -124,16 +124,16 @@ namespace SimPe.Packages
 			//
 			// gbsettings
 			//
-			gbsettings.Anchor = (
-				(AnchorStyles)(
+			gbsettings.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			gbsettings.BackColor = System.Drawing.Color.Transparent;
 			gbsettings.Controls.Add(tbname);
 			gbsettings.Controls.Add(tbdesc);
@@ -145,7 +145,7 @@ namespace SimPe.Packages
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			gbsettings.Location = new System.Drawing.Point(8, 244);
 			gbsettings.Name = "gbsettings";
@@ -156,22 +156,22 @@ namespace SimPe.Packages
 			//
 			// tbname
 			//
-			tbname.Anchor = (
-				(AnchorStyles)(
+			tbname.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbname.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbname.Location = new System.Drawing.Point(16, 144);
 			tbname.Name = "tbname";
@@ -181,22 +181,22 @@ namespace SimPe.Packages
 			//
 			// tbdesc
 			//
-			tbdesc.Anchor = (
-				(AnchorStyles)(
+			tbdesc.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbdesc.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbdesc.Location = new System.Drawing.Point(16, 40);
 			tbdesc.Multiline = true;
@@ -213,7 +213,7 @@ namespace SimPe.Packages
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label5.Location = new System.Drawing.Point(8, 24);
 			label5.Name = "label5";
@@ -229,7 +229,7 @@ namespace SimPe.Packages
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label9.Location = new System.Drawing.Point(8, 128);
 			label9.Name = "label9";
@@ -263,7 +263,7 @@ namespace SimPe.Packages
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label6.Location = new System.Drawing.Point(8, 16);
 			label6.Name = "label6";
@@ -273,22 +273,22 @@ namespace SimPe.Packages
 			//
 			// tbflname
 			//
-			tbflname.Anchor = (
-				(AnchorStyles)(
+			tbflname.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbflname.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbflname.Location = new System.Drawing.Point(80, 8);
 			tbflname.Name = "tbflname";
@@ -309,14 +309,14 @@ namespace SimPe.Packages
 			//
 			// btdelete
 			//
-			btdelete.Anchor = (
-				(AnchorStyles)(
+			btdelete.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			btdelete.BackColor = System.Drawing.Color.Transparent;
 			btdelete.FlatStyle = FlatStyle.System;
 			btdelete.Location = new System.Drawing.Point(493, 222);
@@ -329,14 +329,14 @@ namespace SimPe.Packages
 			//
 			// btsave
 			//
-			btsave.Anchor = (
-				(AnchorStyles)(
+			btsave.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			btsave.FlatStyle = FlatStyle.System;
 			btsave.Location = new System.Drawing.Point(493, 434);
 			btsave.Name = "btsave";
@@ -347,14 +347,14 @@ namespace SimPe.Packages
 			//
 			// button4
 			//
-			button4.Anchor = (
-				(AnchorStyles)(
+			button4.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			button4.FlatStyle = FlatStyle.System;
 			button4.Location = new System.Drawing.Point(412, 434);
 			button4.Name = "button4";
@@ -365,8 +365,8 @@ namespace SimPe.Packages
 			//
 			// panel1
 			//
-			panel1.Anchor = (
-				(AnchorStyles)(
+			panel1.Anchor =
+
 					(
 						(
 							(
@@ -375,8 +375,8 @@ namespace SimPe.Packages
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			panel1.Controls.Add(button4);
 			panel1.Controls.Add(btsave);
 			panel1.Controls.Add(btdelete);
@@ -401,7 +401,7 @@ namespace SimPe.Packages
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			FormBorderStyle = FormBorderStyle.FixedDialog;
 			Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

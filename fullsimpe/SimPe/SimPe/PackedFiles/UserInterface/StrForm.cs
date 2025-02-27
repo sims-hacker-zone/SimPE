@@ -525,7 +525,7 @@ namespace SimPe.PackedFiles.UserInterface
 				desc;
 			if (index >= 0)
 			{
-				StrItem si = (StrItem)wrapper[1, index];
+				StrItem si = wrapper[1, index];
 				if (si != null)
 				{
 					title = si.Title;
@@ -737,7 +737,7 @@ namespace SimPe.PackedFiles.UserInterface
 			].Description;
 
 			isEmpty[1] = true;
-			List<StrItem> sa = wrapper[(byte)1];
+			List<StrItem> sa = wrapper[1];
 			for (int j = count - 1; j >= 0 && isEmpty[1]; j--)
 			{
 				if (
@@ -841,7 +841,7 @@ namespace SimPe.PackedFiles.UserInterface
 		private void StringFile(bool load)
 		{
 			FileDialog fd = load
-				? (FileDialog)new OpenFileDialog()
+				? new OpenFileDialog()
 				: (FileDialog)new SaveFileDialog();
 			fd.AddExtension = true;
 			fd.CheckFileExists = load;

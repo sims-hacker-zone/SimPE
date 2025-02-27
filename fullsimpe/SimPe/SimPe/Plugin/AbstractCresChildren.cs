@@ -113,7 +113,7 @@ namespace SimPe.Plugin
 			for (int i = 0; i < parent.Blocks.Length; i++)
 			{
 				IRcolBlock irb =
-					(IRcolBlock)parent.Blocks[i];
+					parent.Blocks[i];
 				if (
 					irb.GetType().GetInterface("ICresChildren", false)
 					== typeof(ICresChildren)

@@ -156,7 +156,7 @@ namespace SimPe.Packages
 			{
 				o = (int)offset;
 				s = src;
-				sz = (int)size;
+				sz = size;
 			}
 
 			public override bool CanRead => s.CanRead;

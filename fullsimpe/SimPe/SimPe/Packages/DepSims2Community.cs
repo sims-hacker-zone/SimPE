@@ -79,14 +79,14 @@ namespace SimPe.Packages
 			//
 			// btadd
 			//
-			btadd.Anchor = (
-				(AnchorStyles)(
+			btadd.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			btadd.BackColor = System.Drawing.Color.Transparent;
 			btadd.FlatStyle = FlatStyle.System;
 			btadd.Location = new System.Drawing.Point(288, 189);
@@ -99,8 +99,8 @@ namespace SimPe.Packages
 			//
 			// lblist
 			//
-			lblist.Anchor = (
-				(AnchorStyles)(
+			lblist.Anchor =
+
 					(
 						(
 							(
@@ -109,8 +109,8 @@ namespace SimPe.Packages
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lblist.IntegralHeight = false;
 			lblist.Location = new System.Drawing.Point(8, 8);
 			lblist.Name = "lblist";
@@ -120,14 +120,14 @@ namespace SimPe.Packages
 			//
 			// btdelete
 			//
-			btdelete.Anchor = (
-				(AnchorStyles)(
+			btdelete.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			btdelete.BackColor = System.Drawing.Color.Transparent;
 			btdelete.FlatStyle = FlatStyle.System;
 			btdelete.Location = new System.Drawing.Point(198, 189);
@@ -140,14 +140,14 @@ namespace SimPe.Packages
 			//
 			// button2
 			//
-			button2.Anchor = (
-				(AnchorStyles)(
+			button2.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			button2.BackColor = System.Drawing.Color.Transparent;
 			button2.FlatStyle = FlatStyle.System;
 			button2.Location = new System.Drawing.Point(384, 189);
@@ -160,8 +160,8 @@ namespace SimPe.Packages
 			//
 			// panel1
 			//
-			panel1.Anchor = (
-				(AnchorStyles)(
+			panel1.Anchor =
+
 					(
 						(
 							(
@@ -170,8 +170,8 @@ namespace SimPe.Packages
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			panel1.Controls.Add(btdelete);
 			panel1.Controls.Add(button2);
 			panel1.Controls.Add(btadd);
@@ -191,7 +191,7 @@ namespace SimPe.Packages
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			FormBorderStyle =
 				FormBorderStyle

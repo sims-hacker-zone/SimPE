@@ -873,7 +873,7 @@ namespace pjHoodTool
 			{
 				System.Windows.Forms.Application.DoEvents();
 				if (
-					!((string)(sdsc.SimName + " " + sdsc.SimFamilyName))
+					!(sdsc.SimName + " " + sdsc.SimFamilyName)
 						.Trim()
 						.ToLower()
 						.Equals("unknown")

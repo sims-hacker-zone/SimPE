@@ -126,16 +126,16 @@ namespace SimPe.Plugin.TabPage
 			//
 			// groupBox8
 			//
-			groupBox8.Anchor = (
-				(AnchorStyles)(
+			groupBox8.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			groupBox8.Controls.Add(tb_ogn_ver);
 			groupBox8.Controls.Add(label27);
 			groupBox8.Controls.Add(tb_ogn_file);
@@ -146,7 +146,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			groupBox8.Location = new System.Drawing.Point(8, 7);
 			groupBox8.Name = "groupBox8";
@@ -162,7 +162,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			tb_ogn_ver.Location = new System.Drawing.Point(16, 36);
 			tb_ogn_ver.Name = "tb_ogn_ver";
@@ -181,7 +181,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			label27.Location = new System.Drawing.Point(8, 20);
 			label27.Name = "label27";
@@ -191,22 +191,22 @@ namespace SimPe.Plugin.TabPage
 			//
 			// tb_ogn_file
 			//
-			tb_ogn_file.Anchor = (
-				(AnchorStyles)(
+			tb_ogn_file.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tb_ogn_file.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			tb_ogn_file.Location = new System.Drawing.Point(16, 76);
 			tb_ogn_file.Name = "tb_ogn_file";
@@ -225,7 +225,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			label18.Location = new System.Drawing.Point(8, 60);
 			label18.Name = "label18";
@@ -235,16 +235,16 @@ namespace SimPe.Plugin.TabPage
 			//
 			// groupBox9
 			//
-			groupBox9.Anchor = (
-				(AnchorStyles)(
+			groupBox9.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			groupBox9.Controls.Add(tb_ogn_3);
 			groupBox9.Controls.Add(label23);
 			groupBox9.Controls.Add(ll_ogn_add);
@@ -260,7 +260,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			groupBox9.Location = new System.Drawing.Point(528, 8);
 			groupBox9.Name = "groupBox9";
@@ -276,7 +276,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			tb_ogn_3.Location = new System.Drawing.Point(160, 112);
 			tb_ogn_3.Name = "tb_ogn_3";
@@ -297,7 +297,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			label23.Location = new System.Drawing.Point(152, 96);
 			label23.Name = "label23";
@@ -307,14 +307,14 @@ namespace SimPe.Plugin.TabPage
 			//
 			// ll_ogn_add
 			//
-			ll_ogn_add.Anchor = (
-				(AnchorStyles)(
+			ll_ogn_add.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			ll_ogn_add.AutoSize = true;
 			ll_ogn_add.Location = new System.Drawing.Point(176, 136);
 			ll_ogn_add.Name = "ll_ogn_add";
@@ -334,7 +334,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			tb_ogn_2.Location = new System.Drawing.Point(160, 72);
 			tb_ogn_2.Name = "tb_ogn_2";
@@ -356,7 +356,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			label20.Location = new System.Drawing.Point(152, 56);
 			label20.Name = "label20";
@@ -371,7 +371,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			tb_ogn_1.Location = new System.Drawing.Point(160, 32);
 			tb_ogn_1.Name = "tb_ogn_1";
@@ -389,7 +389,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			label21.Location = new System.Drawing.Point(152, 16);
 			label21.Name = "label21";
@@ -399,22 +399,22 @@ namespace SimPe.Plugin.TabPage
 			//
 			// lb_ogn
 			//
-			lb_ogn.Anchor = (
-				(AnchorStyles)(
+			lb_ogn.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
 						) | AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			lb_ogn.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			lb_ogn.IntegralHeight = false;
 			lb_ogn.Location = new System.Drawing.Point(8, 24);
@@ -425,14 +425,14 @@ namespace SimPe.Plugin.TabPage
 			//
 			// ll_ogn_delete
 			//
-			ll_ogn_delete.Anchor = (
-				(AnchorStyles)(
+			ll_ogn_delete.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			ll_ogn_delete.AutoSize = true;
 			ll_ogn_delete.Location = new System.Drawing.Point(204, 136);
 			ll_ogn_delete.Name = "ll_ogn_delete";

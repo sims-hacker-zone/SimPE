@@ -161,20 +161,20 @@ namespace SimPe.Plugin
 				Orientation.Horizontal,
 				new TD.SandDock.LayoutSystemBase[]
 				{
-					(
-						(TD.SandDock.LayoutSystemBase)(
+
+
 							new TD.SandDock.DocumentLayoutSystem(
 								464,
 								430,
 								new TD.SandDock.DockControl[]
 								{
-									((TD.SandDock.DockControl)(tabPage3)),
-									((TD.SandDock.DockControl)(tabPage4)),
+									tabPage3,
+									tabPage4,
 								},
 								tabPage3
 							)
-						)
-					),
+
+					,
 				}
 			);
 			tabControl2.Name = "tabControl2";
@@ -219,7 +219,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(cbSubjectObj, "cbSubjectObj");
 			cbSubjectObj.Name = "cbSubjectObj";
-			cbSubjectObj.SelectedGuid = ((uint)(4294967295u));
+			cbSubjectObj.SelectedGuid = 4294967295u;
 			cbSubjectObj.SelectedItem = null;
 			cbSubjectObj.ShowAspiration = true;
 			cbSubjectObj.ShowBadge = true;
@@ -255,8 +255,8 @@ namespace SimPe.Plugin
 			resources.ApplyResources(cbSubject, "cbSubject");
 			cbSubject.Name = "cbSubject";
 			cbSubject.SelectedSim = null;
-			cbSubject.SelectedSimId = ((uint)(4294967295u));
-			cbSubject.SelectedSimInstance = ((ushort)(65535));
+			cbSubject.SelectedSimId = 4294967295u;
+			cbSubject.SelectedSimInstance = 65535;
 			cbSubject.SelectedSimChanged += new EventHandler(
 				cbSubject_SelectedSimChanged
 			);
@@ -338,8 +338,8 @@ namespace SimPe.Plugin
 			resources.ApplyResources(cbOwner, "cbOwner");
 			cbOwner.Name = "cbOwner";
 			cbOwner.SelectedSim = null;
-			cbOwner.SelectedSimId = ((uint)(4294967295u));
-			cbOwner.SelectedSimInstance = ((ushort)(65535));
+			cbOwner.SelectedSimId = 4294967295u;
+			cbOwner.SelectedSimInstance = 65535;
 			cbOwner.SelectedSimChanged += new EventHandler(
 				cbOwner_SelectedSimChanged
 			);
@@ -403,7 +403,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(cbObjs, "cbObjs");
 			cbObjs.Name = "cbObjs";
-			cbObjs.SelectedGuid = ((uint)(4294967295u));
+			cbObjs.SelectedGuid = 4294967295u;
 			cbObjs.SelectedItem = null;
 			cbObjs.ShowAspiration = false;
 			cbObjs.ShowBadge = false;
@@ -420,7 +420,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(cbToks, "cbToks");
 			cbToks.Name = "cbToks";
-			cbToks.SelectedGuid = ((uint)(4294967295u));
+			cbToks.SelectedGuid = 4294967295u;
 			cbToks.SelectedItem = null;
 			cbToks.ShowAspiration = false;
 			cbToks.ShowBadge = false;
@@ -437,7 +437,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(cbMems, "cbMems");
 			cbMems.Name = "cbMems";
-			cbMems.SelectedGuid = ((uint)(4294967295u));
+			cbMems.SelectedGuid = 4294967295u;
 			cbMems.SelectedItem = null;
 			cbMems.ShowAspiration = false;
 			cbMems.ShowBadge = false;

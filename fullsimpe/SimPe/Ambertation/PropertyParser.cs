@@ -121,11 +121,11 @@ namespace Ambertation
 			{
 				if (value == null)
 				{
-					o = (double)1.0;
+					o = 1.0;
 				}
 				else
 				{
-					o = (double)
+					o =
 						Convert.ToDouble(
 							value,
 							System.Globalization.CultureInfo.InvariantCulture
@@ -219,7 +219,7 @@ namespace Ambertation
 					{
 						o = Activator.CreateInstance(
 							t,
-							new object[] { (object)value }
+							new object[] { value }
 						);
 					}
 				}
@@ -325,7 +325,7 @@ namespace Ambertation
 				{
 					myEnumBuilder.DefineLiteral(
 						subnode.InnerText,
-						(object)
+
 							Convert.ToInt32(subnode.Attributes["value"].Value)
 					);
 				}

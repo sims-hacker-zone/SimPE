@@ -321,56 +321,56 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			// hvc
 			//
-			hvc.Blocks = ((byte)(2));
+			hvc.Blocks = 2;
 			hvc.CharBoxWidth = 220;
 			hvc.CurrentRow = 0;
 			hvc.Data = new byte[0];
 			resources.ApplyResources(hvc, "hvc");
 			hvc.FocusedForeColor = System.Drawing.Color.FromArgb(
-				((int)(((byte)(96)))),
-				((int)(((byte)(0)))),
-				((int)(((byte)(0)))),
-				((int)(((byte)(0))))
+				((byte)(96)),
+				((byte)(0)),
+				((byte)(0)),
+				((byte)(0))
 			);
 			hvc.GridColor = System.Drawing.Color.FromArgb(
-				((int)(((byte)(50)))),
-				((int)(((byte)(255)))),
-				((int)(((byte)(140)))),
-				((int)(((byte)(0))))
+				((byte)(50)),
+				((byte)(255)),
+				((byte)(140)),
+				((byte)(0))
 			);
 			hvc.HeadColor = System.Drawing.Color.DarkOrange;
 			hvc.HeadForeColor = System.Drawing.Color.SeaShell;
 			hvc.HighlightColor = System.Drawing.Color.FromArgb(
-				((int)(((byte)(190)))),
-				((int)(((byte)(255)))),
-				((int)(((byte)(140)))),
-				((int)(((byte)(0))))
+				((byte)(190)),
+				((byte)(255)),
+				((byte)(140)),
+				((byte)(0))
 			);
 			hvc.HighlightForeColor = System.Drawing.SystemColors.HighlightText;
 			hvc.HighlightZeros = false;
 			hvc.Name = "hvc";
 			hvc.Offset = 0;
 			hvc.OffsetBoxWidth = 83;
-			hvc.SelectedByte = ((byte)(0));
+			hvc.SelectedByte = 0;
 			hvc.SelectedChar = '\0';
 			hvc.SelectedDouble = 0;
 			hvc.SelectedFloat = 0F;
 			hvc.SelectedInt = 0;
-			hvc.SelectedLong = ((long)(0));
-			hvc.SelectedShort = ((short)(0));
-			hvc.SelectedUInt = ((uint)(0u));
-			hvc.SelectedULong = ((ulong)(0ul));
-			hvc.SelectedUShort = ((ushort)(0));
+			hvc.SelectedLong = 0;
+			hvc.SelectedShort = 0;
+			hvc.SelectedUInt = 0u;
+			hvc.SelectedULong = 0ul;
+			hvc.SelectedUShort = 0;
 			hvc.Selection = new byte[0];
 			hvc.SelectionColor = System.Drawing.SystemColors.Highlight;
 			hvc.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
 			hvc.ShowGrid = true;
 			hvc.View = HexViewControl.ViewState.Hex;
 			hvc.ZeroCellColor = System.Drawing.Color.FromArgb(
-				((int)(((byte)(150)))),
-				((int)(((byte)(158)))),
-				((int)(((byte)(210)))),
-				((int)(((byte)(49))))
+				((byte)(150)),
+				((byte)(158)),
+				((byte)(210)),
+				((byte)(49))
 			);
 			//
 			// panel1
@@ -395,7 +395,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				8.25F,
 				System.Drawing.FontStyle.Italic,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			hexEditControl1.Name = "hexEditControl1";
 			hexEditControl1.TabStop = false;
@@ -404,7 +404,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			hexEditControl1.Vertical = false;
 			hexEditControl1.View =

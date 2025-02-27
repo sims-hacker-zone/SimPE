@@ -198,7 +198,7 @@ namespace SimPe.Plugin
 				form.tbid.Text = wrp.Uid.ToString();
 				form.tbname.Text = wrp.OwnerName;
 				form.tbsubname.Text = wrp.SubName;
-				form.tbidflags.Text = "0x" + Helper.HexString((uint)wrp.Idflags);
+				form.tbidflags.Text = "0x" + Helper.HexString(wrp.Idflags);
 				if (wrp.Subtype == 0)
 				{
 					form.tbsubname.Visible = false;

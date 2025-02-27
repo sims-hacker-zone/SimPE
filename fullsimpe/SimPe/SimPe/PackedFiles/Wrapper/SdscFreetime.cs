@@ -207,20 +207,20 @@ namespace SimPe.PackedFiles.Wrapper
 
 			for (int i = 0; i < HobbyEnthusiasm.Count; i++)
 			{
-				writer.Write((ushort)HobbyEnthusiasm[i]);
+				writer.Write(HobbyEnthusiasm[i]);
 			}
 
-			writer.Write((ushort)predestined);
-			writer.Write((ushort)LongtermAspiration);
-			writer.Write((ushort)LongtermAspirationUnlockPoints);
-			writer.Write((ushort)LongtermAspirationUnlocksSpent);
+			writer.Write(predestined);
+			writer.Write(LongtermAspiration);
+			writer.Write(LongtermAspirationUnlockPoints);
+			writer.Write(LongtermAspirationUnlocksSpent);
 
 			for (int i = 0; i < decays.Count; i++)
 			{
-				writer.Write((ushort)decays[i]);
+				writer.Write(decays[i]);
 			}
 
-			writer.Write((uint)BugCollection);
+			writer.Write(BugCollection);
 
 			StoreAspirations();
 		}

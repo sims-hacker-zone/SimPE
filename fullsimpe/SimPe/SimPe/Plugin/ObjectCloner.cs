@@ -177,7 +177,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public ObjectCloner()
 		{
-			Package = File.LoadFromStream((System.IO.BinaryReader)null);
+			Package = File.LoadFromStream(null);
 			Setup = new CloneSettings();
 		}
 

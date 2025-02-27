@@ -89,8 +89,8 @@ namespace SimPe
 			//
 			wb.AllowNavigation = false;
 			wb.AllowWebBrowserDrop = false;
-			wb.Anchor = (
-				(AnchorStyles)(
+			wb.Anchor =
+
 					(
 						(
 							(
@@ -99,8 +99,8 @@ namespace SimPe
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			wb.IsWebBrowserContextMenuEnabled = false;
 			wb.Location = new Point(30, 130);
 			wb.MinimumSize = new Size(20, 20);

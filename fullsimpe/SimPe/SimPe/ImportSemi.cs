@@ -126,14 +126,14 @@ namespace SimPe
 			//
 			// btimport
 			//
-			btimport.Anchor = (
-				(AnchorStyles)(
+			btimport.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			btimport.FlatStyle = FlatStyle.System;
 			btimport.Location = new System.Drawing.Point(698, 471);
 			btimport.Name = "btimport";
@@ -144,16 +144,16 @@ namespace SimPe
 			//
 			// cbsemi
 			//
-			cbsemi.Anchor = (
-				(AnchorStyles)(
+			cbsemi.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			cbsemi.DropDownStyle = ComboBoxStyle.DropDownList;
 			cbsemi.Location = new System.Drawing.Point(16, 32);
 			cbsemi.Name = "cbsemi";
@@ -168,7 +168,7 @@ namespace SimPe
 				9.75F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label1.Location = new System.Drawing.Point(16, 6);
 			label1.Name = "label1";
@@ -179,14 +179,14 @@ namespace SimPe
 			//
 			// llscan
 			//
-			llscan.Anchor = (
-				(AnchorStyles)(
+			llscan.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			llscan.AutoSize = true;
 			llscan.BackColor = System.Drawing.Color.Transparent;
 			llscan.Font = new System.Drawing.Font(
@@ -194,7 +194,7 @@ namespace SimPe
 				9.75F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			llscan.Location = new System.Drawing.Point(730, 59);
 			llscan.Name = "llscan";
@@ -209,8 +209,8 @@ namespace SimPe
 			//
 			// lbfiles
 			//
-			lbfiles.Anchor = (
-				(AnchorStyles)(
+			lbfiles.Anchor =
+
 					(
 						(
 							(
@@ -219,8 +219,8 @@ namespace SimPe
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lbfiles.CheckOnClick = true;
 			lbfiles.HorizontalScrollbar = true;
 			lbfiles.IntegralHeight = false;
@@ -237,7 +237,7 @@ namespace SimPe
 				9.75F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label2.Location = new System.Drawing.Point(16, 70);
 			label2.Name = "label2";
@@ -248,14 +248,14 @@ namespace SimPe
 			//
 			// linkLabel1
 			//
-			linkLabel1.Anchor = (
-				(AnchorStyles)(
+			linkLabel1.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			linkLabel1.AutoSize = true;
 			linkLabel1.BackColor = System.Drawing.Color.Transparent;
 			linkLabel1.Font = new System.Drawing.Font(
@@ -263,7 +263,7 @@ namespace SimPe
 				9.75F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			linkLabel1.Location = new System.Drawing.Point(16, 471);
 			linkLabel1.Name = "linkLabel1";
@@ -278,14 +278,14 @@ namespace SimPe
 			//
 			// cbfix
 			//
-			cbfix.Anchor = (
-				(AnchorStyles)(
+			cbfix.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			cbfix.FlatStyle = FlatStyle.System;
 			cbfix.Location = new System.Drawing.Point(506, 470);
 			cbfix.Name = "cbfix";
@@ -300,14 +300,14 @@ namespace SimPe
 			//
 			// cbname
 			//
-			cbname.Anchor = (
-				(AnchorStyles)(
+			cbname.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			cbname.FlatStyle = FlatStyle.System;
 			cbname.Location = new System.Drawing.Point(362, 470);
 			cbname.Name = "cbname";
@@ -322,8 +322,8 @@ namespace SimPe
 			//
 			// panel1
 			//
-			panel1.Anchor = (
-				(AnchorStyles)(
+			panel1.Anchor =
+
 					(
 						(
 							(
@@ -332,8 +332,8 @@ namespace SimPe
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			panel1.BackColor = System.Drawing.Color.Transparent;
 			panel1.Controls.Add(lbfiles);
 			panel1.Controls.Add(label2);
@@ -349,7 +349,7 @@ namespace SimPe
 				9.75F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			panel1.Location = new System.Drawing.Point(0, 0);
 			panel1.Name = "panel1";
@@ -366,7 +366,7 @@ namespace SimPe
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			FormBorderStyle =
 				FormBorderStyle

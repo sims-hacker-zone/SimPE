@@ -167,8 +167,8 @@ namespace SimPe.Plugin
 			//
 			// tbResource
 			//
-			tbResource.Anchor = (
-				(AnchorStyles)(
+			tbResource.Anchor =
+
 					(
 						(
 							(
@@ -177,8 +177,8 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbResource.Controls.Add(tabPage1);
 			tbResource.Controls.Add(tabPage2);
 			tbResource.Controls.Add(tabPage3);
@@ -216,7 +216,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label2.Location = new System.Drawing.Point(8, 16);
 			label2.Name = "label2";
@@ -227,16 +227,16 @@ namespace SimPe.Plugin
 			//
 			// tbflname
 			//
-			tbflname.Anchor = (
-				(AnchorStyles)(
+			tbflname.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbflname.Location = new System.Drawing.Point(72, 32);
 			tbflname.Name = "tbflname";
 			tbflname.Size = new System.Drawing.Size(510, 23);
@@ -245,8 +245,8 @@ namespace SimPe.Plugin
 			//
 			// childtc
 			//
-			childtc.Anchor = (
-				(AnchorStyles)(
+			childtc.Anchor =
+
 					(
 						(
 							(
@@ -255,8 +255,8 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			childtc.Location = new System.Drawing.Point(8, 64);
 			childtc.Multiline = true;
 			childtc.Name = "childtc";
@@ -275,7 +275,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label1.Location = new System.Drawing.Point(8, 34);
 			label1.Name = "label1";
@@ -286,14 +286,14 @@ namespace SimPe.Plugin
 			//
 			// llhash
 			//
-			llhash.Anchor = (
-				(AnchorStyles)(
+			llhash.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			llhash.AutoSize = true;
 			llhash.BackColor = System.Drawing.Color.Transparent;
 			llhash.Font = new System.Drawing.Font(
@@ -301,7 +301,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			llhash.Location = new System.Drawing.Point(664, 40);
 			llhash.Name = "llhash";
@@ -317,14 +317,14 @@ namespace SimPe.Plugin
 			//
 			// llfix
 			//
-			llfix.Anchor = (
-				(AnchorStyles)(
+			llfix.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			llfix.AutoSize = true;
 			llfix.BackColor = System.Drawing.Color.Transparent;
 			llfix.Font = new System.Drawing.Font(
@@ -332,7 +332,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			llfix.Location = new System.Drawing.Point(608, 40);
 			llfix.Name = "llfix";
@@ -345,16 +345,16 @@ namespace SimPe.Plugin
 			//
 			// cbitem
 			//
-			cbitem.Anchor = (
-				(AnchorStyles)(
+			cbitem.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			cbitem.DropDownStyle = ComboBoxStyle.DropDownList;
 			cbitem.Location = new System.Drawing.Point(72, 8);
 			cbitem.Name = "cbitem";
@@ -378,8 +378,8 @@ namespace SimPe.Plugin
 			// lbref
 			//
 			lbref.AllowDrop = true;
-			lbref.Anchor = (
-				(AnchorStyles)(
+			lbref.Anchor =
+
 					(
 						(
 							(
@@ -388,8 +388,8 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lbref.BorderStyle = BorderStyle.None;
 			lbref.IntegralHeight = false;
 			lbref.Location = new System.Drawing.Point(0, 0);
@@ -408,14 +408,14 @@ namespace SimPe.Plugin
 			//
 			// xpTaskBoxSimple2
 			//
-			xpTaskBoxSimple2.Anchor = (
-				(AnchorStyles)(
+			xpTaskBoxSimple2.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			xpTaskBoxSimple2.BackColor = System.Drawing.Color.Transparent;
 			xpTaskBoxSimple2.BodyColor = System.Drawing.SystemColors.ControlLight;
 			xpTaskBoxSimple2.BorderColor = System
@@ -481,7 +481,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lladd.ImeMode = ImeMode.NoControl;
 			lladd.LinkArea = new LinkArea(0, 9);
@@ -505,7 +505,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lldelete.ImeMode = ImeMode.NoControl;
 			lldelete.LinkArea = new LinkArea(0, 7);
@@ -528,7 +528,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbsubtype.Location = new System.Drawing.Point(72, 24);
 			tbsubtype.Name = "tbsubtype";
@@ -545,7 +545,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbinstance.Location = new System.Drawing.Point(72, 72);
 			tbinstance.Name = "tbinstance";
@@ -562,7 +562,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label11.ImeMode = ImeMode.NoControl;
 			label11.Location = new System.Drawing.Point(8, 80);
@@ -579,7 +579,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbtype.Location = new System.Drawing.Point(72, 0);
 			tbtype.Name = "tbtype";
@@ -594,7 +594,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label8.ImeMode = ImeMode.NoControl;
 			label8.Location = new System.Drawing.Point(8, 8);
@@ -611,7 +611,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label9.ImeMode = ImeMode.NoControl;
 			label9.Location = new System.Drawing.Point(8, 56);
@@ -628,7 +628,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label10.ImeMode = ImeMode.NoControl;
 			label10.Location = new System.Drawing.Point(8, 32);
@@ -645,7 +645,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbgroup.Location = new System.Drawing.Point(72, 48);
 			tbgroup.Name = "tbgroup";
@@ -665,7 +665,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbtypes.ItemHeight = 13;
 			cbtypes.Location = new System.Drawing.Point(176, 0);
@@ -679,14 +679,14 @@ namespace SimPe.Plugin
 			//
 			// btref
 			//
-			btref.Anchor = (
-				(AnchorStyles)(
+			btref.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			btref.FlatStyle = FlatStyle.Popup;
 			btref.Font = new System.Drawing.Font(
 				"Microsoft Sans Serif",
@@ -754,16 +754,16 @@ namespace SimPe.Plugin
 			//
 			// cbblocks
 			//
-			cbblocks.Anchor = (
-				(AnchorStyles)(
+			cbblocks.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			cbblocks.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
@@ -818,14 +818,14 @@ namespace SimPe.Plugin
 			//
 			// xpTaskBoxSimple1
 			//
-			xpTaskBoxSimple1.Anchor = (
-				(AnchorStyles)(
+			xpTaskBoxSimple1.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			xpTaskBoxSimple1.BackColor = System.Drawing.Color.Transparent;
 			xpTaskBoxSimple1.BodyColor = System.Drawing.SystemColors.ControlLight;
 			xpTaskBoxSimple1.BorderColor = System
@@ -877,7 +877,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label4.Location = new System.Drawing.Point(16, 80);
 			label4.Name = "label4";
@@ -893,7 +893,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label3.Location = new System.Drawing.Point(16, 56);
 			label3.Name = "label3";
@@ -910,7 +910,7 @@ namespace SimPe.Plugin
 				9.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbfile.Location = new System.Drawing.Point(16, 120);
 			tbfile.Name = "tbfile";
@@ -940,7 +940,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label5.Location = new System.Drawing.Point(8, 104);
 			label5.Name = "label5";
@@ -956,7 +956,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbrefinst.Location = new System.Drawing.Point(80, 80);
 			tbrefinst.Name = "tbrefinst";
@@ -973,7 +973,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbrefgroup.Location = new System.Drawing.Point(80, 48);
 			tbrefgroup.Name = "tbrefgroup";
@@ -1595,7 +1595,7 @@ namespace SimPe.Plugin
 				if (items.Length == 0)
 				{
 					Interfaces.Files.IPackedFileDescriptor npfd =
-						(Interfaces.Files.IPackedFileDescriptor)pfd.Clone();
+						pfd.Clone();
 					npfd.SubType = 0;
 					items = FileTableBase.FileIndex.FindFile(npfd, null);
 				}

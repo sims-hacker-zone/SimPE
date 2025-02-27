@@ -9,7 +9,7 @@ namespace SimPe.Plugin
 			IPackedFileUI
 	{
 		protected new SimindexPackedFileWrapper Wrapper => base.Wrapper as SimindexPackedFileWrapper;
-		public SimindexPackedFileWrapper TPFW => (SimindexPackedFileWrapper)Wrapper;
+		public SimindexPackedFileWrapper TPFW => Wrapper;
 
 		ushort scinstance;
 

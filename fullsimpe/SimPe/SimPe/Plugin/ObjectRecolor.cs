@@ -60,7 +60,7 @@ namespace SimPe.Plugin
 			else
 			{
 				dn_pkg = Packages.File.LoadFromStream(
-					(System.IO.BinaryReader)null
+					null
 				);
 				dn_pkg.FileName = ScenegraphHelper.GMND_PACKAGE;
 			}
@@ -74,7 +74,7 @@ namespace SimPe.Plugin
 			else
 			{
 				gm_pkg = Packages.File.LoadFromStream(
-					(System.IO.BinaryReader)null
+					null
 				);
 				gm_pkg.FileName = ScenegraphHelper.MMAT_PACKAGE;
 			}

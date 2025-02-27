@@ -37,7 +37,7 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				return (int)Math.Ceiling((float)LoyaltyScore / 200.0);
+				return (int)Math.Ceiling(LoyaltyScore / 200.0);
 			}
 			set
 			{

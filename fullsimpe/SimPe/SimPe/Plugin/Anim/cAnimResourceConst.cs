@@ -146,7 +146,7 @@ namespace SimPe.Plugin.Anim
 			SerializeData(bw);
 			byte[] data = ((System.IO.MemoryStream)bw.BaseStream).ToArray();
 
-			writer.Write((int)data.Length);
+			writer.Write(data.Length);
 			writer.Write(data);
 		}
 

@@ -107,7 +107,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label1.Location = new System.Drawing.Point(8, 64);
 			label1.Name = "label1";
@@ -118,21 +118,21 @@ namespace SimPe.Plugin
 			//
 			// label2
 			//
-			label2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+			label2.Anchor =
+
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label2.BackColor = System.Drawing.Color.Transparent;
 			label2.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label2.Location = new System.Drawing.Point(368, 64);
 			label2.Name = "label2";
@@ -143,21 +143,21 @@ namespace SimPe.Plugin
 			//
 			// label3
 			//
-			label3.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+			label3.Anchor =
+
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label3.BackColor = System.Drawing.Color.Transparent;
 			label3.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label3.Location = new System.Drawing.Point(528, 64);
 			label3.Name = "label3";
@@ -174,7 +174,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label4.Location = new System.Drawing.Point(8, 32);
 			label4.Name = "label4";
@@ -185,8 +185,8 @@ namespace SimPe.Plugin
 			//
 			// lb
 			//
-			lb.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+			lb.Anchor =
+
 					(
 						(
 							(
@@ -195,8 +195,8 @@ namespace SimPe.Plugin
 							) | System.Windows.Forms.AnchorStyles.Left
 						) | System.Windows.Forms.AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lb.HorizontalScrollbar = true;
 			lb.IntegralHeight = false;
 			lb.Location = new System.Drawing.Point(8, 96);
@@ -209,16 +209,16 @@ namespace SimPe.Plugin
 			//
 			// tbFlname
 			//
-			tbFlname.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+			tbFlname.Anchor =
+
 					(
 						(
 							System.Windows.Forms.AnchorStyles.Top
 							| System.Windows.Forms.AnchorStyles.Left
 						) | System.Windows.Forms.AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbFlname.Location = new System.Drawing.Point(120, 32);
 			tbFlname.Name = "tbFlname";
 			tbFlname.Size = new System.Drawing.Size(560, 21);
@@ -236,14 +236,14 @@ namespace SimPe.Plugin
 			//
 			// tbUk2
 			//
-			tbUk2.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+			tbUk2.Anchor =
+
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbUk2.Location = new System.Drawing.Point(448, 64);
 			tbUk2.Name = "tbUk2";
 			tbUk2.Size = new System.Drawing.Size(72, 21);
@@ -252,14 +252,14 @@ namespace SimPe.Plugin
 			//
 			// tbUk3
 			//
-			tbUk3.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+			tbUk3.Anchor =
+
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbUk3.Location = new System.Drawing.Point(608, 64);
 			tbUk3.Name = "tbUk3";
 			tbUk3.Size = new System.Drawing.Size(72, 21);
@@ -280,7 +280,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label5.Location = new System.Drawing.Point(8, 48);
 			label5.Name = "label5";
@@ -291,14 +291,14 @@ namespace SimPe.Plugin
 			//
 			// xpTaskBoxSimple1
 			//
-			xpTaskBoxSimple1.Anchor = (
-				(System.Windows.Forms.AnchorStyles)(
+			xpTaskBoxSimple1.Anchor =
+
 					(
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			xpTaskBoxSimple1.BackColor = System.Drawing.Color.Transparent;
 			xpTaskBoxSimple1.Controls.Add(tbTxmt);
 			xpTaskBoxSimple1.Controls.Add(label6);
@@ -337,7 +337,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label6.Location = new System.Drawing.Point(8, 72);
 			label6.Name = "label6";
@@ -354,7 +354,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label7.Location = new System.Drawing.Point(200, 64);
 			label7.Name = "label7";
@@ -394,7 +394,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			HeaderText = "Road Texture";
 			Name = "RoadTextureControl";

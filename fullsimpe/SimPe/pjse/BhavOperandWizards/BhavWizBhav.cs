@@ -131,7 +131,7 @@ namespace pjse.BhavNameWizards
 				return "???";
 			}
 
-			int myArgc = (int)instruction.Parent.Header.ArgumentCount;
+			int myArgc = instruction.Parent.Header.ArgumentCount;
 			int thisArgc = bhav.Header.ArgumentCount;
 
 			if (thisArgc == 0)

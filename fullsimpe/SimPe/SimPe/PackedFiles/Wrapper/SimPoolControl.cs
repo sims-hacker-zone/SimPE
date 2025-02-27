@@ -340,9 +340,9 @@ namespace SimPe.PackedFiles.Wrapper
 						SelectedSimChanged(
 							this,
 							((ExtSDesc)gp.Items[0].Tag).Image,
-							(SDesc)(
+
 								(ExtSDesc)gp.Items[0].Tag
-							)
+
 						);
 					}
 				}
@@ -544,9 +544,9 @@ namespace SimPe.PackedFiles.Wrapper
 				DoubleClickSim(
 					this,
 					gp.LargeImageList.Images[gp.SelectedItems[0].ImageIndex],
-					(SDesc)(
+
 						(ExtSDesc)gp.SelectedItems[0].Tag
-					)
+
 				);
 			}
 		}
@@ -567,7 +567,7 @@ namespace SimPe.PackedFiles.Wrapper
 				ClickOverSim(
 					this,
 					((ExtSDesc)item.Tag).Image,
-					(SDesc)((ExtSDesc)item.Tag)
+					(ExtSDesc)item.Tag
 				);
 			}
 
@@ -589,7 +589,7 @@ namespace SimPe.PackedFiles.Wrapper
 				SelectedSimChanged(
 					this,
 					((ExtSDesc)item.Tag).Image,
-					(SDesc)((ExtSDesc)item.Tag)
+					(ExtSDesc)item.Tag
 				);
 			}
 			//if (lastsel!=null && e.Button!=System.Windows.Forms.MouseButtons.Left) lastsel.Selected = true;

@@ -628,7 +628,7 @@ namespace SimPe.Plugin
 
 				Packages.GeneratableFile pkg =
 					Packages.File.LoadFromStream(
-						(System.IO.BinaryReader)null
+						null
 					);
 				if (UserVerification.HaveValidUserId)
 				{

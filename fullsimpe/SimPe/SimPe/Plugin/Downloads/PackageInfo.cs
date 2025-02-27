@@ -291,7 +291,7 @@ namespace SimPe.Plugin.Downloads
 
 			if (aspect)
 			{
-				double a = (double)img.Width / (double)img.Height;
+				double a = img.Width / (double)img.Height;
 				if (img.Height > img.Width)
 				{
 					sz = new Size((int)(a * sz.Height), sz.Height);

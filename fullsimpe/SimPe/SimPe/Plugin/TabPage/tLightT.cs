@@ -100,16 +100,16 @@ namespace SimPe.Plugin.TabPage
 			//
 			// groupBox14
 			//
-			groupBox14.Anchor = (
-				(AnchorStyles)(
+			groupBox14.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			groupBox14.Controls.Add(tb_lt_name);
 			groupBox14.Controls.Add(label48);
 			groupBox14.Controls.Add(tb_lt_ver);
@@ -120,7 +120,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			groupBox14.Location = new System.Drawing.Point(8, 8);
 			groupBox14.Name = "groupBox14";
@@ -131,22 +131,22 @@ namespace SimPe.Plugin.TabPage
 			//
 			// tb_lt_name
 			//
-			tb_lt_name.Anchor = (
-				(AnchorStyles)(
+			tb_lt_name.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tb_lt_name.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			tb_lt_name.Location = new System.Drawing.Point(16, 88);
 			tb_lt_name.Name = "tb_lt_name";
@@ -165,7 +165,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			label48.Location = new System.Drawing.Point(8, 72);
 			label48.Name = "label48";
@@ -180,7 +180,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			tb_lt_ver.Location = new System.Drawing.Point(16, 40);
 			tb_lt_ver.Name = "tb_lt_ver";
@@ -199,7 +199,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			label47.Location = new System.Drawing.Point(8, 24);
 			label47.Name = "label47";

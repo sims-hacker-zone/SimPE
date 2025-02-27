@@ -52,11 +52,11 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				return GetBit((byte)0);
+				return GetBit(0);
 			}
 			set
 			{
-				SetBit((byte)0, value);
+				SetBit(0, value);
 			}
 		}
 
@@ -64,11 +64,11 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				return GetBit((byte)1);
+				return GetBit(1);
 			}
 			set
 			{
-				SetBit((byte)1, value);
+				SetBit(1, value);
 			}
 		}
 
@@ -76,11 +76,11 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				return GetBit((byte)2);
+				return GetBit(2);
 			}
 			set
 			{
-				SetBit((byte)2, value);
+				SetBit(2, value);
 			}
 		}
 
@@ -88,11 +88,11 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				return GetBit((byte)3);
+				return GetBit(3);
 			}
 			set
 			{
-				SetBit((byte)3, value);
+				SetBit(3, value);
 			}
 		}
 	}
@@ -559,12 +559,12 @@ namespace SimPe.PackedFiles.Wrapper
 				writer.Write(Money);
 			}
 			writer.Write(Friends);
-			writer.Write((uint)Flags);
+			writer.Write(Flags);
 			writer.Write((uint)sims.Length);
 
 			for (int i = 0; i < sims.Length; i++)
 			{
-				writer.Write((uint)sims[i]);
+				writer.Write(sims[i]);
 			}
 			writer.Write(AlbumGUID);
 

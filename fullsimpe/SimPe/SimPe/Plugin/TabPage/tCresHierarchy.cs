@@ -93,16 +93,16 @@ namespace SimPe.Plugin.TabPage
 			//
 			// tbfjoint
 			//
-			tbfjoint.Anchor = (
-				(AnchorStyles)(
+			tbfjoint.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbfjoint.Location = new System.Drawing.Point(88, 8);
 			tbfjoint.Name = "tbfjoint";
 			tbfjoint.Size = new System.Drawing.Size(696, 20);
@@ -119,7 +119,7 @@ namespace SimPe.Plugin.TabPage
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			label58.Location = new System.Drawing.Point(8, 8);
 			label58.Name = "label58";
@@ -130,8 +130,8 @@ namespace SimPe.Plugin.TabPage
 			//
 			// cres_tv
 			//
-			cres_tv.Anchor = (
-				(AnchorStyles)(
+			cres_tv.Anchor =
+
 					(
 						(
 							(
@@ -140,8 +140,8 @@ namespace SimPe.Plugin.TabPage
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			cres_tv.FullRowSelect = true;
 			cres_tv.HideSelection = false;
 			cres_tv.ImageList = iCres;

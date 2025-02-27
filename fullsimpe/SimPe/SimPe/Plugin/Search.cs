@@ -153,16 +153,16 @@ namespace SimPe.Plugin
 			//
 			// tabControl1
 			//
-			tabControl1.Anchor = (
-				(AnchorStyles)(
+			tabControl1.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tabControl1.Controls.Add(tabPage1);
 			tabControl1.Controls.Add(tabPage2);
 			tabControl1.Controls.Add(tabPage3);
@@ -173,7 +173,7 @@ namespace SimPe.Plugin
 				9.75F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tabControl1.Location = new System.Drawing.Point(8, 10);
 			tabControl1.Name = "tabControl1";
@@ -213,7 +213,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label5.Location = new System.Drawing.Point(84, 42);
 			label5.Name = "label5";
@@ -223,14 +223,14 @@ namespace SimPe.Plugin
 			//
 			// llsearch
 			//
-			llsearch.Anchor = (
-				(AnchorStyles)(
+			llsearch.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			llsearch.AutoSize = true;
 			llsearch.FlatStyle = FlatStyle.System;
 			llsearch.Font = new System.Drawing.Font(
@@ -238,7 +238,7 @@ namespace SimPe.Plugin
 				9.75F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			llsearch.Location = new System.Drawing.Point(515, 57);
 			llsearch.Name = "llsearch";
@@ -267,7 +267,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label1.Location = new System.Drawing.Point(16, 16);
 			label1.Name = "label1";
@@ -298,14 +298,14 @@ namespace SimPe.Plugin
 			//
 			// linkLabel1
 			//
-			linkLabel1.Anchor = (
-				(AnchorStyles)(
+			linkLabel1.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			linkLabel1.AutoSize = true;
 			linkLabel1.FlatStyle = FlatStyle.System;
 			linkLabel1.Font = new System.Drawing.Font(
@@ -313,7 +313,7 @@ namespace SimPe.Plugin
 				9.75F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			linkLabel1.Location = new System.Drawing.Point(515, 57);
 			linkLabel1.Name = "linkLabel1";
@@ -328,16 +328,16 @@ namespace SimPe.Plugin
 			//
 			// tbflname
 			//
-			tbflname.Anchor = (
-				(AnchorStyles)(
+			tbflname.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbflname.Location = new System.Drawing.Point(90, 8);
 			tbflname.Name = "tbflname";
 			tbflname.Size = new System.Drawing.Size(653, 23);
@@ -351,7 +351,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label2.Location = new System.Drawing.Point(13, 15);
 			label2.Name = "label2";
@@ -383,14 +383,14 @@ namespace SimPe.Plugin
 			//
 			// linkLabel2
 			//
-			linkLabel2.Anchor = (
-				(AnchorStyles)(
+			linkLabel2.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			linkLabel2.AutoSize = true;
 			linkLabel2.FlatStyle = FlatStyle.System;
 			linkLabel2.Font = new System.Drawing.Font(
@@ -398,7 +398,7 @@ namespace SimPe.Plugin
 				9.75F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			linkLabel2.Location = new System.Drawing.Point(515, 57);
 			linkLabel2.Name = "linkLabel2";
@@ -411,16 +411,16 @@ namespace SimPe.Plugin
 			//
 			// tbsimname
 			//
-			tbsimname.Anchor = (
-				(AnchorStyles)(
+			tbsimname.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbsimname.Location = new System.Drawing.Point(95, 8);
 			tbsimname.Name = "tbsimname";
 			tbsimname.Size = new System.Drawing.Size(648, 23);
@@ -434,7 +434,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label3.Location = new System.Drawing.Point(13, 12);
 			label3.Name = "label3";
@@ -461,16 +461,16 @@ namespace SimPe.Plugin
 			//
 			// tbpropval
 			//
-			tbpropval.Anchor = (
-				(AnchorStyles)(
+			tbpropval.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbpropval.Location = new System.Drawing.Point(454, 8);
 			tbpropval.Name = "tbpropval";
 			tbpropval.Size = new System.Drawing.Size(287, 23);
@@ -484,7 +484,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label7.Location = new System.Drawing.Point(401, 13);
 			label7.Name = "label7";
@@ -532,14 +532,14 @@ namespace SimPe.Plugin
 			//
 			// linkLabel3
 			//
-			linkLabel3.Anchor = (
-				(AnchorStyles)(
+			linkLabel3.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			linkLabel3.AutoSize = true;
 			linkLabel3.FlatStyle = FlatStyle.System;
 			linkLabel3.Font = new System.Drawing.Font(
@@ -547,7 +547,7 @@ namespace SimPe.Plugin
 				9.75F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			linkLabel3.Location = new System.Drawing.Point(515, 57);
 			linkLabel3.Name = "linkLabel3";
@@ -576,7 +576,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label4.Location = new System.Drawing.Point(13, 13);
 			label4.Name = "label4";
@@ -597,14 +597,14 @@ namespace SimPe.Plugin
 			//
 			// linkLabel4
 			//
-			linkLabel4.Anchor = (
-				(AnchorStyles)(
+			linkLabel4.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			linkLabel4.AutoSize = true;
 			linkLabel4.FlatStyle = FlatStyle.System;
 			linkLabel4.Font = new System.Drawing.Font(
@@ -612,7 +612,7 @@ namespace SimPe.Plugin
 				9.75F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			linkLabel4.Location = new System.Drawing.Point(515, 57);
 			linkLabel4.Name = "linkLabel4";
@@ -627,16 +627,16 @@ namespace SimPe.Plugin
 			//
 			// tbguid
 			//
-			tbguid.Anchor = (
-				(AnchorStyles)(
+			tbguid.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbguid.Location = new System.Drawing.Point(87, 7);
 			tbguid.Name = "tbguid";
 			tbguid.Size = new System.Drawing.Size(147, 23);
@@ -651,7 +651,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label6.Location = new System.Drawing.Point(40, 11);
 			label6.Name = "label6";
@@ -661,8 +661,8 @@ namespace SimPe.Plugin
 			//
 			// lblist
 			//
-			lblist.Anchor = (
-				(AnchorStyles)(
+			lblist.Anchor =
+
 					(
 						(
 							(
@@ -671,8 +671,8 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lblist.HorizontalScrollbar = true;
 			lblist.IntegralHeight = false;
 			lblist.Location = new System.Drawing.Point(8, 124);
@@ -685,14 +685,14 @@ namespace SimPe.Plugin
 			//
 			// btopen
 			//
-			btopen.Anchor = (
-				(AnchorStyles)(
+			btopen.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			btopen.FlatStyle = FlatStyle.System;
 			btopen.Location = new System.Drawing.Point(701, 474);
 			btopen.Name = "btopen";
@@ -703,16 +703,16 @@ namespace SimPe.Plugin
 			//
 			// pb
 			//
-			pb.Anchor = (
-				(AnchorStyles)(
+			pb.Anchor =
+
 					(
 						(
 							AnchorStyles.Bottom
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			pb.Location = new System.Drawing.Point(8, 481);
 			pb.Maximum = 1000;
 			pb.Name = "pb";
@@ -720,10 +720,10 @@ namespace SimPe.Plugin
 			pb.TabIndex = 3;
 			pb.BackColor = System.Drawing.Color.Transparent;
 			pb.BorderColor = System.Drawing.Color.FromArgb(
-				((int)(((byte)(100)))),
-				((int)(((byte)(0)))),
-				((int)(((byte)(0)))),
-				((int)(((byte)(0))))
+				((byte)(100)),
+				((byte)(0)),
+				((byte)(0)),
+				((byte)(0))
 			);
 			pb.Gradient = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
 			pb.Quality = true;
@@ -733,8 +733,8 @@ namespace SimPe.Plugin
 			//
 			// panel1
 			//
-			panel1.Anchor = (
-				(AnchorStyles)(
+			panel1.Anchor =
+
 					(
 						(
 							(
@@ -743,8 +743,8 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			panel1.BackColor = System.Drawing.Color.Transparent;
 			panel1.Controls.Add(pb);
 			panel1.Controls.Add(btopen);
@@ -755,7 +755,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			panel1.Location = new System.Drawing.Point(0, 0);
 			panel1.Name = "panel1";
@@ -772,7 +772,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			FormBorderStyle =
 				FormBorderStyle

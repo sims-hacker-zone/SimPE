@@ -729,10 +729,10 @@ namespace SimPe.PackedFiles.Wrapper
 		private void Unserialize(System.IO.BinaryReader reader)
 		{
 			opcode = reader.ReadUInt16();
-			if (((Bhav)parent).Header.Format < 0x8007)
+			if (parent.Header.Format < 0x8007)
 			{
-				addr1 = formatSpecificSetAddr((ushort)reader.ReadByte());
-				addr2 = formatSpecificSetAddr((ushort)reader.ReadByte());
+				addr1 = formatSpecificSetAddr(reader.ReadByte());
+				addr2 = formatSpecificSetAddr(reader.ReadByte());
 			}
 			else
 			{
@@ -740,13 +740,13 @@ namespace SimPe.PackedFiles.Wrapper
 				addr2 = formatSpecificSetAddr(reader.ReadUInt16());
 			}
 
-			if (((Bhav)parent).Header.Format < 0x8003)
+			if (parent.Header.Format < 0x8003)
 			{
 				nodeversion = 0;
 				Operands = new wrappedByteArray(this, reader);
 				Reserved1 = new wrappedByteArray(this, new byte[8]);
 			}
-			else if (((Bhav)parent).Header.Format < 0x8005)
+			else if (parent.Header.Format < 0x8005)
 			{
 				nodeversion = 0;
 				Operands = new wrappedByteArray(this, reader);
@@ -788,7 +788,7 @@ namespace SimPe.PackedFiles.Wrapper
 		internal void Serialize(System.IO.BinaryWriter writer)
 		{
 			writer.Write(opcode);
-			if (((Bhav)parent).Header.Format < 0x8007)
+			if (parent.Header.Format < 0x8007)
 			{
 				writer.Write((byte)formatSpecificGetAddr(addr1));
 				writer.Write((byte)formatSpecificGetAddr(addr2));
@@ -799,11 +799,11 @@ namespace SimPe.PackedFiles.Wrapper
 				writer.Write(formatSpecificGetAddr(addr2));
 			}
 
-			if (((Bhav)parent).Header.Format < 0x8003)
+			if (parent.Header.Format < 0x8003)
 			{
 				Operands.Serialize(writer);
 			}
-			else if (((Bhav)parent).Header.Format < 0x8005)
+			else if (parent.Header.Format < 0x8005)
 			{
 				Operands.Serialize(writer);
 				;

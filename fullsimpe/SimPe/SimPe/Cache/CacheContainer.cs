@@ -287,7 +287,7 @@ namespace SimPe.Cache
 				Version = VERSION;
 				writer.Write(Version);
 				writer.Write((byte)Type);
-				writer.Write((int)Items.Count);
+				writer.Write(Items.Count);
 			}
 			else //Item writing Phase
 			{

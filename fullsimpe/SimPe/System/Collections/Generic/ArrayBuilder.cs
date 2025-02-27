@@ -149,7 +149,7 @@ namespace System.Collections.Generic
 			int capacity = Capacity;
 			int nextCapacity = capacity == 0 ? DefaultCapacity : 2 * capacity;
 
-			if ((uint)nextCapacity > (uint)MaxCoreClrArrayLength)
+			if ((uint)nextCapacity > MaxCoreClrArrayLength)
 			{
 				nextCapacity = Math.Max(capacity + 1, MaxCoreClrArrayLength);
 			}

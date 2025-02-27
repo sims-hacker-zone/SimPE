@@ -147,7 +147,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			txtrPanel.Location = new Point(8, 8);
 			txtrPanel.Name = "txtrPanel";
@@ -156,14 +156,14 @@ namespace SimPe.Plugin
 			//
 			// linkLabel4
 			//
-			linkLabel4.Anchor = (
-				(AnchorStyles)(
+			linkLabel4.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			linkLabel4.AutoSize = true;
 			linkLabel4.BackColor = Color.Transparent;
 			linkLabel4.Font = new Font(
@@ -171,7 +171,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			linkLabel4.LinkArea = new LinkArea(0, 5);
 			linkLabel4.Location = new Point(200, 264);
@@ -195,7 +195,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			linkLabel3.Location = new Point(288, 88);
 			linkLabel3.Name = "linkLabel3";
@@ -215,7 +215,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			linkLabel1.Location = new Point(344, 88);
 			linkLabel1.Name = "linkLabel1";
@@ -246,7 +246,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label8.Location = new Point(240, 136);
 			label8.Name = "label8";
@@ -256,14 +256,14 @@ namespace SimPe.Plugin
 			//
 			// linkLabel2
 			//
-			linkLabel2.Anchor = (
-				(AnchorStyles)(
+			linkLabel2.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			linkLabel2.AutoSize = true;
 			linkLabel2.BackColor = Color.Transparent;
 			linkLabel2.Font = new Font(
@@ -271,7 +271,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			linkLabel2.Location = new Point(344, 264);
 			linkLabel2.Name = "linkLabel2";
@@ -284,14 +284,14 @@ namespace SimPe.Plugin
 			//
 			// lldel
 			//
-			lldel.Anchor = (
-				(AnchorStyles)(
+			lldel.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			lldel.AutoSize = true;
 			lldel.BackColor = Color.Transparent;
 			lldel.Font = new Font(
@@ -299,7 +299,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lldel.Location = new Point(380, 264);
 			lldel.Name = "lldel";
@@ -312,16 +312,16 @@ namespace SimPe.Plugin
 			//
 			// tblifo
 			//
-			tblifo.Anchor = (
-				(AnchorStyles)(
+			tblifo.Anchor =
+
 					(
 						(
 							AnchorStyles.Bottom
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tblifo.Location = new Point(440, 252);
 			tblifo.Name = "tblifo";
 			tblifo.Size = new Size(320, 21);
@@ -330,14 +330,14 @@ namespace SimPe.Plugin
 			//
 			// label6
 			//
-			label6.Anchor = (
-				(AnchorStyles)(
+			label6.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			label6.AutoSize = true;
 			label6.BackColor = Color.Transparent;
 			label6.Font = new Font(
@@ -345,7 +345,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label6.Location = new Point(432, 236);
 			label6.Name = "label6";
@@ -362,7 +362,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label5.Location = new Point(141, 136);
 			label5.Name = "label5";
@@ -395,7 +395,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label4.Location = new Point(43, 136);
 			label4.Name = "label4";
@@ -412,7 +412,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label3.Location = new Point(24, 112);
 			label3.Name = "label3";
@@ -450,7 +450,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label2.Location = new Point(8, 36);
 			label2.Name = "label2";
@@ -484,8 +484,8 @@ namespace SimPe.Plugin
 			//
 			// panel1
 			//
-			panel1.Anchor = (
-				(AnchorStyles)(
+			panel1.Anchor =
+
 					(
 						(
 							(
@@ -494,8 +494,8 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			panel1.AutoScroll = true;
 			panel1.AutoScrollMinSize = new Size(24, 24);
 			panel1.BackColor = Color.Transparent;
@@ -508,14 +508,14 @@ namespace SimPe.Plugin
 			//
 			// label7
 			//
-			label7.Anchor = (
-				(AnchorStyles)(
+			label7.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			label7.AutoSize = true;
 			label7.Font = new Font("Verdana", 8.25F);
 			label7.ForeColor = SystemColors.ActiveCaptionText;
@@ -614,16 +614,16 @@ namespace SimPe.Plugin
 			//
 			// lbimg
 			//
-			lbimg.Anchor = (
-				(AnchorStyles)(
+			lbimg.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
 						) | AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			lbimg.IntegralHeight = false;
 			lbimg.Location = new Point(8, 184);
 			lbimg.Name = "lbimg";
@@ -635,16 +635,16 @@ namespace SimPe.Plugin
 			//
 			// panel2
 			//
-			panel2.Anchor = (
-				(AnchorStyles)(
+			panel2.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			panel2.Controls.Add(btex);
 			panel2.Controls.Add(btim);
 			panel2.Controls.Add(label27);
@@ -663,21 +663,21 @@ namespace SimPe.Plugin
 			//
 			// btex
 			//
-			btex.Anchor = (
-				(AnchorStyles)(
+			btex.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			btex.FlatStyle = FlatStyle.System;
 			btex.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			btex.ForeColor = SystemColors.ControlText;
 			btex.Location = new Point(584, 0);
@@ -689,21 +689,21 @@ namespace SimPe.Plugin
 			//
 			// btim
 			//
-			btim.Anchor = (
-				(AnchorStyles)(
+			btim.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			btim.FlatStyle = FlatStyle.System;
 			btim.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			btim.ForeColor = SystemColors.ControlText;
 			btim.Location = new Point(504, 0);
@@ -725,21 +725,21 @@ namespace SimPe.Plugin
 			//
 			// btcommit
 			//
-			btcommit.Anchor = (
-				(AnchorStyles)(
+			btcommit.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			btcommit.FlatStyle = FlatStyle.System;
 			btcommit.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			btcommit.Location = new Point(688, 0);
 			btcommit.Name = "btcommit";
@@ -756,7 +756,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label1.Location = new Point(28, 168);
 			label1.Name = "label1";
@@ -783,7 +783,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			Name = "TxtrForm";
 			Text = "TxtrForm";
@@ -876,7 +876,7 @@ namespace SimPe.Plugin
 		{
 			try
 			{
-				Txtr wrp = (Txtr)wrapper;
+				Txtr wrp = wrapper;
 				wrp.SynchronizeUserData();
 				MessageBox.Show(Localization.Manager.GetString("commited"));
 			}
@@ -1217,7 +1217,7 @@ namespace SimPe.Plugin
 			ImageData id = null;
 			if (cbitem.SelectedIndex < 0)
 			{
-				Txtr wrp = (Txtr)wrapper;
+				Txtr wrp = wrapper;
 				id = new ImageData(wrp);
 				id.NameResource.FileName = "Unknown";
 
@@ -1405,8 +1405,8 @@ namespace SimPe.Plugin
 
 		protected Image CropImage(ImageData id, Image img)
 		{
-			double ratio = (double)id.TextureSize.Width / (double)id.TextureSize.Height;
-			double newratio = (double)img.Width / (double)img.Height;
+			double ratio = id.TextureSize.Width / (double)id.TextureSize.Height;
+			double newratio = img.Width / (double)img.Height;
 
 			if (ratio != newratio)
 			{

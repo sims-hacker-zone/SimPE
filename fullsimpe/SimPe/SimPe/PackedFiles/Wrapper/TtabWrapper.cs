@@ -1314,7 +1314,7 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				items[i] =
 					type == TtabItemMotiveTableType.Human
-						? (TtabItemMotiveItem)new TtabItemSingleMotiveItem(this)
+						? new TtabItemSingleMotiveItem(this)
 						: (TtabItemMotiveItem)new TtabItemAnimalMotiveItem(this);
 			}
 

@@ -1250,7 +1250,7 @@ namespace SimPe.PackedFiles.UserInterface
 				Majors at;
 				if (o.GetType() == typeof(Alias))
 				{
-					at = (Majors)((uint)((Alias)o).Id);
+					at = (Majors)((Alias)o).Id;
 				}
 				else
 				{
@@ -1648,7 +1648,7 @@ namespace SimPe.PackedFiles.UserInterface
 				MetaData.ServiceTypes at;
 				if (o.GetType() == typeof(Alias))
 				{
-					at = (LocalizedServiceTypes)((uint)((Alias)o).Id);
+					at = (LocalizedServiceTypes)((Alias)o).Id;
 				}
 				else
 				{
@@ -1725,7 +1725,7 @@ namespace SimPe.PackedFiles.UserInterface
 				MetaData.Careers at;
 				if (o.GetType() == typeof(Alias))
 				{
-					at = (LocalizedCareers)((uint)((Alias)o).Id);
+					at = (LocalizedCareers)((Alias)o).Id;
 				}
 				else
 				{
@@ -1746,7 +1746,7 @@ namespace SimPe.PackedFiles.UserInterface
 				MetaData.Careers at;
 				if (o.GetType() == typeof(Alias))
 				{
-					at = (LocalizedCareers)((uint)((Alias)o).Id);
+					at = (LocalizedCareers)((Alias)o).Id;
 				}
 				else
 				{
@@ -1769,7 +1769,7 @@ namespace SimPe.PackedFiles.UserInterface
 				object o = cbschooltype.Items[i];
 				if (o.GetType() == typeof(Alias))
 				{
-					type = (LocalizedSchoolType)((uint)((Alias)o).Id);
+					type = (LocalizedSchoolType)((Alias)o).Id;
 				}
 				else
 				{
@@ -1797,14 +1797,14 @@ namespace SimPe.PackedFiles.UserInterface
 				object o = cbgrade.Items[i];
 				if (o.GetType() == typeof(Alias))
 				{
-					grade = (LocalizedGrades)((uint)((Alias)o).Id);
+					grade = (LocalizedGrades)((Alias)o).Id;
 				}
 				else
 				{
 					grade = (LocalizedGrades)o;
 				}
 
-				if (sdesc.CharacterDescription.Grade == (MetaData.Grades)grade)
+				if (sdesc.CharacterDescription.Grade == grade)
 				{
 					cbgrade.SelectedIndex = i;
 					break;
@@ -2148,7 +2148,7 @@ namespace SimPe.PackedFiles.UserInterface
 			else
 			{
 				Alias a = (Alias)o;
-				tbcareervalue.Text = "0x" + Helper.HexString((uint)a.Id);
+				tbcareervalue.Text = "0x" + Helper.HexString(a.Id);
 			}
 		}
 
@@ -2180,7 +2180,7 @@ namespace SimPe.PackedFiles.UserInterface
 			else
 			{
 				Alias a = (Alias)o;
-				rec = (uint)a.Id;
+				rec = a.Id;
 			}
 			Sdesc.CharacterDescription.Retired = (MetaData.Careers)rec;
 		}
@@ -2207,7 +2207,7 @@ namespace SimPe.PackedFiles.UserInterface
 			else
 			{
 				Alias a = (Alias)o;
-				tbschooltype.Text = "0x" + Helper.HexString((uint)a.Id);
+				tbschooltype.Text = "0x" + Helper.HexString(a.Id);
 			}
 		}
 
@@ -2579,7 +2579,7 @@ namespace SimPe.PackedFiles.UserInterface
 					cbaspiration.SelectedItem;
 				Sdesc.CharacterDescription.LifelineScore = Helper.StringToUInt32(
 					tblifelinescore.Text,
-					(uint)Sdesc.CharacterDescription.LifelineScore,
+					Sdesc.CharacterDescription.LifelineScore,
 					10
 				);
 
@@ -2936,7 +2936,7 @@ namespace SimPe.PackedFiles.UserInterface
 					MetaData.ServiceTypes at;
 					if (o.GetType() == typeof(Alias))
 					{
-						at = (LocalizedServiceTypes)((uint)((Alias)o).Id);
+						at = (LocalizedServiceTypes)((Alias)o).Id;
 					}
 					else
 					{
@@ -3481,7 +3481,7 @@ if (System.IO.File.Exists(Sdesc.CharacterFileName))
 			}
 			else
 			{
-				img = (Image)srcRel.Image;
+				img = srcRel.Image;
 			}
 
 			if (img != null)

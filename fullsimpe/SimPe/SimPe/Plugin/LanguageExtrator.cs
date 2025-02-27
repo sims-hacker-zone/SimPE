@@ -101,7 +101,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			pntheme.Location = new System.Drawing.Point(0, 0);
 			pntheme.Name = "pntheme";
@@ -120,16 +120,16 @@ namespace SimPe.Plugin
 			//
 			// Progress
 			//
-			Progress.Anchor = (
-				(AnchorStyles)(
+			Progress.Anchor =
+
 					(
 						(
 							AnchorStyles.Bottom
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			Progress.BackColor = System.Drawing.Color.Transparent;
 			Progress.Location = new System.Drawing.Point(4, 422);
 			Progress.Maximum = 100;
@@ -149,7 +149,7 @@ namespace SimPe.Plugin
 				18F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lbdone.Location = new System.Drawing.Point(426, 30);
 			lbdone.Name = "lbdone";
@@ -176,7 +176,7 @@ namespace SimPe.Plugin
 				9.75F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lbselect.Location = new System.Drawing.Point(4, 4);
 			lbselect.Name = "lbselect";

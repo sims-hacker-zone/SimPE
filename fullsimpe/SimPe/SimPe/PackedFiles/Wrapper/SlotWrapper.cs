@@ -142,7 +142,7 @@ namespace SimPe.PackedFiles.Wrapper
 			writer.Write(Version);
 			writer.Write(Unknown);
 
-			writer.Write((int)Items.Length);
+			writer.Write(Items.Length);
 			for (int i = 0; i < Items.Length; i++)
 			{
 				Items[i].Serialize(writer, this);

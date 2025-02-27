@@ -144,16 +144,16 @@ namespace SimPe.Plugin
 			//
 			// pb
 			//
-			pb.Anchor = (
-				(AnchorStyles)(
+			pb.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			pb.BorderStyle = BorderStyle.FixedSingle;
 			pb.ImeMode = ImeMode.NoControl;
 			pb.Location = new System.Drawing.Point(240, 168);
@@ -166,14 +166,14 @@ namespace SimPe.Plugin
 			//
 			// button2
 			//
-			button2.Anchor = (
-				(AnchorStyles)(
+			button2.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			button2.FlatStyle = FlatStyle.Popup;
 			button2.Font = new System.Drawing.Font(
 				"Verdana",
@@ -190,14 +190,14 @@ namespace SimPe.Plugin
 			//
 			// button4
 			//
-			button4.Anchor = (
-				(AnchorStyles)(
+			button4.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			button4.FlatStyle = FlatStyle.Popup;
 			button4.Font = new System.Drawing.Font(
 				"Microsoft Sans Serif",
@@ -214,14 +214,14 @@ namespace SimPe.Plugin
 			//
 			// btdown
 			//
-			btdown.Anchor = (
-				(AnchorStyles)(
+			btdown.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			btdown.FlatStyle = FlatStyle.System;
 			btdown.ImeMode = ImeMode.NoControl;
 			btdown.Location = new System.Drawing.Point(176, 192);
@@ -233,14 +233,14 @@ namespace SimPe.Plugin
 			//
 			// btup
 			//
-			btup.Anchor = (
-				(AnchorStyles)(
+			btup.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			btup.FlatStyle = FlatStyle.System;
 			btup.ImeMode = ImeMode.NoControl;
 			btup.Location = new System.Drawing.Point(176, 168);
@@ -252,14 +252,14 @@ namespace SimPe.Plugin
 			//
 			// button1
 			//
-			button1.Anchor = (
-				(AnchorStyles)(
+			button1.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			button1.FlatStyle = FlatStyle.System;
 			button1.ImeMode = ImeMode.NoControl;
 			button1.Location = new System.Drawing.Point(176, 224);
@@ -271,14 +271,14 @@ namespace SimPe.Plugin
 			//
 			// gbtypes
 			//
-			gbtypes.Anchor = (
-				(AnchorStyles)(
+			gbtypes.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			gbtypes.Controls.Add(pntypes);
 			gbtypes.FlatStyle = FlatStyle.System;
 			gbtypes.Font = new System.Drawing.Font(
@@ -480,8 +480,8 @@ namespace SimPe.Plugin
 			// lblist
 			//
 			lblist.AllowDrop = true;
-			lblist.Anchor = (
-				(AnchorStyles)(
+			lblist.Anchor =
+
 					(
 						(
 							(
@@ -490,8 +490,8 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lblist.ContextMenu = contextMenu1;
 			lblist.HorizontalScrollbar = true;
 			lblist.IntegralHeight = false;
@@ -529,16 +529,16 @@ namespace SimPe.Plugin
 			//
 			// panel3
 			//
-			panel3.Anchor = (
-				(AnchorStyles)(
+			panel3.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			panel3.BackColor = System.Drawing.SystemColors.AppWorkspace;
 			panel3.Controls.Add(label1);
 			panel3.Font = new System.Drawing.Font(

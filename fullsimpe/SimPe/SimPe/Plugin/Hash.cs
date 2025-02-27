@@ -99,7 +99,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label1.Location = new System.Drawing.Point(37, 19);
 			label1.Name = "label1";
@@ -117,7 +117,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label4.Location = new System.Drawing.Point(4, 83);
 			label4.Name = "label4";
@@ -128,16 +128,16 @@ namespace SimPe.Plugin
 			//
 			// tbtext
 			//
-			tbtext.Anchor = (
-				(AnchorStyles)(
+			tbtext.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbtext.Location = new System.Drawing.Point(92, 15);
 			tbtext.Name = "tbtext";
 			tbtext.RightToLeft = RightToLeft.No;
@@ -224,7 +224,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			panel1.Location = new System.Drawing.Point(0, 0);
 			panel1.Name = "panel1";
@@ -277,7 +277,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			FormBorderStyle = FormBorderStyle.FixedToolWindow;
 			Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

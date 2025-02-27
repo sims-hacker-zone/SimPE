@@ -314,7 +314,7 @@ namespace SimPe.Packages
 			foreach (IPackedFileDescriptor pfd in Index)
 			{
 				IPackedFileDescriptor npfd =
-					(IPackedFileDescriptor)pfd.Clone();
+					pfd.Clone();
 				npfd.UserData = Read(pfd).UncompressedData;
 
 				fl.Add(npfd);
@@ -331,7 +331,7 @@ namespace SimPe.Packages
 				);
 			}
 
-			return (IPackageFile)fl;
+			return fl;
 		}
 
 		#region Lock handling
@@ -916,11 +916,11 @@ namespace SimPe.Packages
 			{
 				if (fhg == 0)
 				{
-					fhg = (uint)(
+					fhg =
 						Hashes.FileGroupHash(
 							Path.GetFileNameWithoutExtension(FileName)
 						) | 0x7f000000
-					);
+					;
 				}
 
 				return fhg;
@@ -971,7 +971,7 @@ namespace SimPe.Packages
 					int pos = filelistfile.FindFile(pfd);
 					if (pos != -1)
 					{
-						ClstItem fi = (ClstItem)
+						ClstItem fi =
 							filelistfile.Items[pos];
 						if (header.Version == 0x100000001)
 						{
@@ -1019,7 +1019,7 @@ namespace SimPe.Packages
 					int pos = filelistfile.FindFile(pfd);
 					if (pos != -1)
 					{
-						ClstItem fi = (ClstItem)
+						ClstItem fi =
 							filelistfile.Items[pos];
 						if (header.Version == 0x100000001)
 						{
@@ -1096,7 +1096,7 @@ namespace SimPe.Packages
 
 					UnLockStream();
 					CloseReader();
-					return (IPackedFile)pf;
+					return pf;
 				}
 			} // if HasUserdata
 		}

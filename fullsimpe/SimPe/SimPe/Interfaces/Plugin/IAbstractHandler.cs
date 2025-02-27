@@ -147,7 +147,7 @@ namespace SimPe.Interfaces.Plugin
 
 		public void Register(IWrapperRegistry registry)
 		{
-			registry.Register((IWrapper)this);
+			registry.Register(this);
 		}
 
 		public virtual bool CheckVersion(uint version)

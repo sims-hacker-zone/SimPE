@@ -311,7 +311,7 @@ namespace pjse
 				return (
 					guidIndex == null
 					|| !guidIndex.ContainsKey(key)
-					|| (s = (String)guidIndex[key].objdName) == null
+					|| (s = guidIndex[key].objdName) == null
 					|| s.Length == 0
 				)
 					? null

@@ -254,8 +254,8 @@ namespace SimPe.Plugin
 			//
 			// simslot
 			//
-			simslot.Anchor = (
-				(AnchorStyles)(
+			simslot.Anchor =
+
 					(
 						(
 							(
@@ -264,8 +264,8 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			simslot.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			simslot.Location = new System.Drawing.Point(264, 0);
 			simslot.Name = "simslot";
@@ -289,8 +289,8 @@ namespace SimPe.Plugin
 			//
 			// nsui
 			//
-			nsui.Anchor = (
-				(AnchorStyles)(
+			nsui.Anchor =
+
 					(
 						(
 							(
@@ -299,8 +299,8 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			nsui.BackColor = System.Drawing.Color.Transparent;
 			nsui.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			nsui.Location = new System.Drawing.Point(280, 8);
@@ -315,16 +315,16 @@ namespace SimPe.Plugin
 			//
 			// nssel
 			//
-			nssel.Anchor = (
-				(AnchorStyles)(
+			nssel.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
 						) | AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			nssel.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			nssel.Location = new System.Drawing.Point(8, 8);
 			nssel.Name = "nssel";

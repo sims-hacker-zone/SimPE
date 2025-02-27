@@ -138,7 +138,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			linkLabel2.Location = new Point(288, 80);
 			linkLabel2.Name = "linkLabel2";
@@ -157,7 +157,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			linkLabel1.Location = new Point(343, 80);
 			linkLabel1.Name = "linkLabel1";
@@ -179,7 +179,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label1.Location = new Point(248, 136);
 			label1.Name = "label1";
@@ -203,7 +203,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label5.Location = new Point(141, 136);
 			label5.Name = "label5";
@@ -235,7 +235,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label4.Location = new Point(43, 136);
 			label4.Name = "label4";
@@ -251,7 +251,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label3.Location = new Point(24, 112);
 			label3.Name = "label3";
@@ -288,7 +288,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label2.Location = new Point(11, 40);
 			label2.Name = "label2";
@@ -309,8 +309,8 @@ namespace SimPe.Plugin
 			//
 			// panel1
 			//
-			panel1.Anchor = (
-				(AnchorStyles)(
+			panel1.Anchor =
+
 					(
 						(
 							(
@@ -319,8 +319,8 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			panel1.AutoScroll = true;
 			panel1.Controls.Add(pb);
 			panel1.Location = new Point(432, 32);
@@ -383,16 +383,16 @@ namespace SimPe.Plugin
 			//
 			// panel2
 			//
-			panel2.Anchor = (
-				(AnchorStyles)(
+			panel2.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			panel2.BackColor = SystemColors.AppWorkspace;
 			panel2.Controls.Add(btex);
 			panel2.Controls.Add(btim);
@@ -411,21 +411,21 @@ namespace SimPe.Plugin
 			//
 			// btex
 			//
-			btex.Anchor = (
-				(AnchorStyles)(
+			btex.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			btex.FlatStyle = FlatStyle.System;
 			btex.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			btex.Location = new Point(584, 0);
 			btex.Name = "btex";
@@ -436,21 +436,21 @@ namespace SimPe.Plugin
 			//
 			// btim
 			//
-			btim.Anchor = (
-				(AnchorStyles)(
+			btim.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			btim.FlatStyle = FlatStyle.System;
 			btim.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			btim.Location = new Point(504, 0);
 			btim.Name = "btim";
@@ -471,21 +471,21 @@ namespace SimPe.Plugin
 			//
 			// btcommit
 			//
-			btcommit.Anchor = (
-				(AnchorStyles)(
+			btcommit.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			btcommit.FlatStyle = FlatStyle.System;
 			btcommit.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			btcommit.Location = new Point(688, 0);
 			btcommit.Name = "btcommit";
@@ -519,7 +519,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			Name = "LifoForm";
 			Text = "LifoForm";
@@ -572,7 +572,7 @@ namespace SimPe.Plugin
 		{
 			try
 			{
-				Lifo wrp = (Lifo)wrapper;
+				Lifo wrp = wrapper;
 				wrp.SynchronizeUserData();
 				MessageBox.Show(Localization.Manager.GetString("commited"));
 			}
@@ -767,7 +767,7 @@ namespace SimPe.Plugin
 			LevelInfo li = null;
 			if (cbitem.SelectedIndex < 0)
 			{
-				Lifo wrp = (Lifo)wrapper;
+				Lifo wrp = wrapper;
 				li = new LevelInfo(wrp);
 				li.NameResource.FileName = "Unknown";
 
@@ -848,8 +848,8 @@ namespace SimPe.Plugin
 
 		protected Image CropImage(LevelInfo id, Image img)
 		{
-			double ratio = (double)id.TextureSize.Width / (double)id.TextureSize.Height;
-			double newratio = (double)img.Width / (double)img.Height;
+			double ratio = id.TextureSize.Width / (double)id.TextureSize.Height;
+			double newratio = img.Width / (double)img.Height;
 
 			if (ratio != newratio)
 			{
@@ -1042,7 +1042,7 @@ namespace SimPe.Plugin
 			LevelInfo id = null;
 			if (cbitem.SelectedIndex < 0)
 			{
-				Lifo wrp = (Lifo)wrapper;
+				Lifo wrp = wrapper;
 				id = new LevelInfo(wrp);
 				id.NameResource.FileName = "Unknown";
 				id.Format = (ImageLoader.TxtrFormats)cbformats.SelectedItem;

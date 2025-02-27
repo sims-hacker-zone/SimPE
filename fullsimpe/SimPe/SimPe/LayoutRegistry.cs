@@ -110,7 +110,7 @@ namespace SimPe
 			{
 				if (Helper.WindowsRegistry.Layout.IsClassicPreset)
 				{
-					return (byte)0;
+					return 0;
 				}
 
 				object o = xrk.GetValue("ThemeID", (byte)1);
@@ -227,7 +227,7 @@ namespace SimPe
 		{
 			get
 			{
-				object o = xrk.GetValue("NameColumnWidth", (int)280);
+				object o = xrk.GetValue("NameColumnWidth", 280);
 				return Convert.ToInt32(o);
 			}
 			set
@@ -243,7 +243,7 @@ namespace SimPe
 		{
 			get
 			{
-				object o = xrk.GetValue("TypeColumnWidth", (int)70);
+				object o = xrk.GetValue("TypeColumnWidth", 70);
 				return Convert.ToInt32(o);
 			}
 			set
@@ -259,7 +259,7 @@ namespace SimPe
 		{
 			get
 			{
-				object o = xrk.GetValue("GroupColumnWidth", (int)120);
+				object o = xrk.GetValue("GroupColumnWidth", 120);
 				return Convert.ToInt32(o);
 			}
 			set
@@ -275,7 +275,7 @@ namespace SimPe
 		{
 			get
 			{
-				object o = xrk.GetValue("InstanceHighColumnWidth", (int)120);
+				object o = xrk.GetValue("InstanceHighColumnWidth", 120);
 				return Convert.ToInt32(o);
 			}
 			set
@@ -291,7 +291,7 @@ namespace SimPe
 		{
 			get
 			{
-				object o = xrk.GetValue("InstanceColumnWidth", (int)160);
+				object o = xrk.GetValue("InstanceColumnWidth", 160);
 				return Convert.ToInt32(o);
 			}
 			set
@@ -307,7 +307,7 @@ namespace SimPe
 		{
 			get
 			{
-				object o = xrk.GetValue("OffsetColumnWidth", (int)120);
+				object o = xrk.GetValue("OffsetColumnWidth", 120);
 				return Convert.ToInt32(o);
 			}
 			set
@@ -323,7 +323,7 @@ namespace SimPe
 		{
 			get
 			{
-				object o = xrk.GetValue("SizeColumnWidth", (int)140);
+				object o = xrk.GetValue("SizeColumnWidth", 140);
 				return Convert.ToInt32(o);
 			}
 			set

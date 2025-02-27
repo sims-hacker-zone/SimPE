@@ -87,7 +87,7 @@ namespace SimPe.Plugin.Tool.Window
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			xpGradientPanel1.Location = new System.Drawing.Point(0, 0);
 			xpGradientPanel1.Name = "xpGradientPanel1";
@@ -96,8 +96,8 @@ namespace SimPe.Plugin.Tool.Window
 			//
 			// tbs
 			//
-			tbs.Anchor = (
-				(AnchorStyles)(
+			tbs.Anchor =
+
 					(
 						(
 							(
@@ -106,8 +106,8 @@ namespace SimPe.Plugin.Tool.Window
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbs.BackColor = System.Drawing.Color.Transparent;
 			tbs.BodyColor = System.Drawing.SystemColors.ControlLight;
 			tbs.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -139,7 +139,7 @@ namespace SimPe.Plugin.Tool.Window
 				12F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			llOpen.LinkColor = System.Drawing.SystemColors.ControlText;
 			llOpen.Location = new System.Drawing.Point(500, 6);
@@ -156,16 +156,16 @@ namespace SimPe.Plugin.Tool.Window
 			//
 			// pg
 			//
-			pg.Anchor = (
-				(AnchorStyles)(
+			pg.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
 						) | AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			pg.BackColor = System.Drawing.SystemColors.Control;
 			pg.CommandsBackColor = System.Drawing.SystemColors.InactiveCaption;
 			pg.HelpVisible = false;
@@ -185,7 +185,7 @@ namespace SimPe.Plugin.Tool.Window
 				12F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			llRepair.LinkColor = System.Drawing.SystemColors.ControlText;
 			llRepair.Location = new System.Drawing.Point(420, 6);
@@ -226,7 +226,7 @@ namespace SimPe.Plugin.Tool.Window
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label1.Location = new System.Drawing.Point(16, 16);
 			label1.Name = "label1";
@@ -245,7 +245,7 @@ namespace SimPe.Plugin.Tool.Window
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			FormBorderStyle = FormBorderStyle.FixedDialog;
 			Icon = ((System.Drawing.Icon)(resources1.GetObject("$this.Icon")));

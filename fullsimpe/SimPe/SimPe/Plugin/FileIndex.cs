@@ -48,7 +48,7 @@ namespace SimPe.Plugin
 		public Interfaces.Files.IPackedFileDescriptor GetLocalFileDescriptor()
 		{
 			Interfaces.Files.IPackedFileDescriptor p =
-				FileDescriptor.Clone() as Interfaces.Files.IPackedFileDescriptor;
+				FileDescriptor.Clone();
 			p.Group = LocalGroup;
 			return p;
 		}
@@ -97,7 +97,7 @@ namespace SimPe.Plugin
 			if (package == null)
 			{
 				package = Packages.File.LoadFromStream(
-					(System.IO.BinaryReader)null
+					null
 				);
 			}
 
@@ -206,7 +206,7 @@ namespace SimPe.Plugin
 				FileIndexItem b = (FileIndexItem)y;
 
 				return (int)(
-					(long)a.FileDescriptor.Instance - (long)b.FileDescriptor.Instance
+					a.FileDescriptor.Instance - (long)b.FileDescriptor.Instance
 				);
 			}
 			return 0;

@@ -141,8 +141,8 @@ namespace SimPe.Plugin.Gmdc
 			//
 			// lv
 			//
-			lv.Anchor = (
-				(AnchorStyles)(
+			lv.Anchor =
+
 					(
 						(
 							(
@@ -151,8 +151,8 @@ namespace SimPe.Plugin.Gmdc
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lv.BorderStyle = BorderStyle.None;
 			lv.Columns.AddRange(
 				new ColumnHeader[]
@@ -223,7 +223,7 @@ namespace SimPe.Plugin.Gmdc
 				9.75F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label1.Location = new System.Drawing.Point(8, 4);
 			label1.Name = "label1";
@@ -242,7 +242,7 @@ namespace SimPe.Plugin.Gmdc
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbopacity.Items.AddRange(
 				new object[] { "Opaque (Normal)", "Shadow", "Invisible" }
@@ -262,7 +262,7 @@ namespace SimPe.Plugin.Gmdc
 				8.25F,
 				System.Drawing.FontStyle.Italic,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label5.Location = new System.Drawing.Point(18, 74);
 			label5.Name = "label5";
@@ -278,7 +278,7 @@ namespace SimPe.Plugin.Gmdc
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbscale.Location = new System.Drawing.Point(114, 50);
 			tbscale.Name = "tbscale";
@@ -297,7 +297,7 @@ namespace SimPe.Plugin.Gmdc
 				8.25F,
 				System.Drawing.FontStyle.Italic,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label4.Location = new System.Drawing.Point(18, 50);
 			label4.Name = "label4";
@@ -316,7 +316,7 @@ namespace SimPe.Plugin.Gmdc
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbaction.Location = new System.Drawing.Point(114, 154);
 			cbaction.Name = "cbaction";
@@ -333,7 +333,7 @@ namespace SimPe.Plugin.Gmdc
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lbname.Location = new System.Drawing.Point(114, 26);
 			lbname.Name = "lbname";
@@ -349,7 +349,7 @@ namespace SimPe.Plugin.Gmdc
 				8.25F,
 				System.Drawing.FontStyle.Italic,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label3.Location = new System.Drawing.Point(18, 154);
 			label3.Name = "label3";
@@ -365,7 +365,7 @@ namespace SimPe.Plugin.Gmdc
 				8.25F,
 				System.Drawing.FontStyle.Italic,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label2.Location = new System.Drawing.Point(18, 26);
 			label2.Name = "label2";
@@ -384,7 +384,7 @@ namespace SimPe.Plugin.Gmdc
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbnames.Location = new System.Drawing.Point(114, 178);
 			cbnames.Name = "cbnames";
@@ -402,7 +402,7 @@ namespace SimPe.Plugin.Gmdc
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbname.Location = new System.Drawing.Point(114, 178);
 			tbname.Name = "tbname";
@@ -413,21 +413,21 @@ namespace SimPe.Plugin.Gmdc
 			//
 			// button1
 			//
-			button1.Anchor = (
-				(AnchorStyles)(
+			button1.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			button1.FlatStyle = FlatStyle.System;
 			button1.Font = new System.Drawing.Font(
 				"Verdana",
 				9.75F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			button1.Location = new System.Drawing.Point(896, 445);
 			button1.Name = "button1";
@@ -446,7 +446,7 @@ namespace SimPe.Plugin.Gmdc
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbboneaction.Location = new System.Drawing.Point(112, 51);
 			cbboneaction.Name = "cbboneaction";
@@ -463,7 +463,7 @@ namespace SimPe.Plugin.Gmdc
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lbbonename.Location = new System.Drawing.Point(112, 27);
 			lbbonename.Name = "lbbonename";
@@ -479,7 +479,7 @@ namespace SimPe.Plugin.Gmdc
 				8.25F,
 				System.Drawing.FontStyle.Italic,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label9.Location = new System.Drawing.Point(16, 51);
 			label9.Name = "label9";
@@ -495,7 +495,7 @@ namespace SimPe.Plugin.Gmdc
 				8.25F,
 				System.Drawing.FontStyle.Italic,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label10.Location = new System.Drawing.Point(16, 27);
 			label10.Name = "label10";
@@ -514,7 +514,7 @@ namespace SimPe.Plugin.Gmdc
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbbones.Location = new System.Drawing.Point(112, 75);
 			cbbones.Name = "cbbones";
@@ -532,7 +532,7 @@ namespace SimPe.Plugin.Gmdc
 				8.25F,
 				System.Drawing.FontStyle.Italic,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbupdatecres.Location = new System.Drawing.Point(19, 75);
 			cbupdatecres.Name = "cbupdatecres";
@@ -549,7 +549,7 @@ namespace SimPe.Plugin.Gmdc
 				8.25F,
 				System.Drawing.FontStyle.Italic,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbcleanbn.Location = new System.Drawing.Point(19, 47);
 			cbcleanbn.Name = "cbcleanbn";
@@ -564,7 +564,7 @@ namespace SimPe.Plugin.Gmdc
 				8.25F,
 				System.Drawing.FontStyle.Italic,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbcleangrp.Location = new System.Drawing.Point(19, 27);
 			cbcleangrp.Name = "cbcleangrp";
@@ -587,7 +587,7 @@ namespace SimPe.Plugin.Gmdc
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			Gradientpanel1.Location = new System.Drawing.Point(0, 0);
 			Gradientpanel1.Name = "Gradientpanel1";
@@ -596,14 +596,14 @@ namespace SimPe.Plugin.Gmdc
 			//
 			// gbbones
 			//
-			gbbones.Anchor = (
-				(AnchorStyles)(
+			gbbones.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			gbbones.BackColor = System.Drawing.Color.Transparent;
 			gbbones.Controls.Add(cbbones);
 			gbbones.Controls.Add(label10);
@@ -618,14 +618,14 @@ namespace SimPe.Plugin.Gmdc
 			//
 			// gbgroups
 			//
-			gbgroups.Anchor = (
-				(AnchorStyles)(
+			gbgroups.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			gbgroups.BackColor = System.Drawing.Color.Transparent;
 			gbgroups.Controls.Add(lbKeepOrder);
 			gbgroups.Controls.Add(label6);
@@ -653,7 +653,7 @@ namespace SimPe.Plugin.Gmdc
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			lbKeepOrder.Location = new System.Drawing.Point(114, 130);
 			lbKeepOrder.Name = "lbKeepOrder";
@@ -669,7 +669,7 @@ namespace SimPe.Plugin.Gmdc
 				8.25F,
 				System.Drawing.FontStyle.Italic,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label6.Location = new System.Drawing.Point(18, 130);
 			label6.Name = "label6";
@@ -687,7 +687,7 @@ namespace SimPe.Plugin.Gmdc
 				8.25F,
 				System.Drawing.FontStyle.Italic,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			cbBMesh.Location = new System.Drawing.Point(114, 98);
 			cbBMesh.Name = "cbBMesh";
@@ -700,14 +700,14 @@ namespace SimPe.Plugin.Gmdc
 			//
 			// gbsettings
 			//
-			gbsettings.Anchor = (
-				(AnchorStyles)(
+			gbsettings.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			gbsettings.BackColor = System.Drawing.Color.Transparent;
 			gbsettings.Controls.Add(cbupdatecres);
 			gbsettings.Controls.Add(cbcleanbn);
@@ -728,7 +728,7 @@ namespace SimPe.Plugin.Gmdc
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			Name = "ImportGmdcGroupsForm";

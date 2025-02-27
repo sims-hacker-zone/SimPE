@@ -1035,7 +1035,7 @@ namespace SimPe.Wants
 			try
 			{
 				// Retrieve the hash table corresponding to the column.
-				Hashtable groups = (Hashtable)groupTables[column];
+				Hashtable groups = groupTables[column];
 
 				// Copy the groups for the column to an array.
 				ListViewGroup[] groupsArray = new ListViewGroup[groups.Count];

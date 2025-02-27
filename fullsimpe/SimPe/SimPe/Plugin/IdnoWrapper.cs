@@ -581,7 +581,7 @@ namespace SimPe.Plugin
 			writer.Write(version);
 
 			byte[] b = Helper.ToBytes(OwnerName, 0);
-			writer.Write((int)b.Length);
+			writer.Write(b.Length);
 			writer.Write(b);
 			writer.Write(Uid);
 
@@ -591,7 +591,7 @@ namespace SimPe.Plugin
 				if (Subtype > 0)
 				{
 					b = Helper.ToBytes(SubName, 0);
-					writer.Write((int)b.Length);
+					writer.Write(b.Length);
 					writer.Write(b);
 				}
 				else
@@ -601,7 +601,7 @@ namespace SimPe.Plugin
 
 				if (version >= (int)NeighborhoodVersion.Sims2_Seasons)
 				{
-					writer.Write((int)0);
+					writer.Write(0);
 					writer.Write((int)Reqep);
 					writer.Write((int)Subep);
 					writer.Write((int)Idflags);

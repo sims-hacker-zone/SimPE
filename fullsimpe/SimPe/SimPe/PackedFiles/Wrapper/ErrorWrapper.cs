@@ -44,7 +44,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public void Register(Interfaces.IWrapperRegistry registry)
 		{
-			registry.Register((Interfaces.IWrapper)this);
+			registry.Register(this);
 		}
 
 		public int Priority

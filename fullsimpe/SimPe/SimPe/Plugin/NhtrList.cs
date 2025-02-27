@@ -107,7 +107,7 @@ namespace SimPe.Plugin
 		internal virtual void Serialize(System.IO.BinaryWriter writer)
 		{
 			writer.Write(unknown);
-			writer.Write((int)list.Count);
+			writer.Write(list.Count);
 			foreach (NhtrItem i in list)
 			{
 				i.Serialize(writer);

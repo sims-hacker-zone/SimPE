@@ -88,8 +88,8 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// tv
 			//
-			tv.Anchor = (
-				(AnchorStyles)(
+			tv.Anchor =
+
 					(
 						(
 							(
@@ -98,8 +98,8 @@ namespace SimPe.PackedFiles.UserInterface
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tv.BorderStyle = BorderStyle.None;
 			tv.Location = new System.Drawing.Point(8, 40);
 			tv.Name = "tv";
@@ -108,14 +108,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// btSave
 			//
-			btSave.Anchor = (
-				(AnchorStyles)(
+			btSave.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			btSave.FlatStyle = FlatStyle.System;
 			btSave.Location = new System.Drawing.Point(96, 368);
 			btSave.Name = "btSave";
@@ -126,14 +126,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// btLoad
 			//
-			btLoad.Anchor = (
-				(AnchorStyles)(
+			btLoad.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			btLoad.FlatStyle = FlatStyle.System;
 			btLoad.Location = new System.Drawing.Point(8, 368);
 			btLoad.Name = "btLoad";
@@ -150,7 +150,7 @@ namespace SimPe.PackedFiles.UserInterface
 				9.75F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label1.Location = new System.Drawing.Point(8, 11);
 			label1.Name = "label1";
@@ -161,16 +161,16 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// tbName
 			//
-			tbName.Anchor = (
-				(AnchorStyles)(
+			tbName.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbName.Location = new System.Drawing.Point(62, 8);
 			tbName.Name = "tbName";
 			tbName.Size = new System.Drawing.Size(498, 23);
@@ -179,14 +179,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// button1
 			//
-			button1.Anchor = (
-				(AnchorStyles)(
+			button1.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			button1.FlatStyle = FlatStyle.System;
 			button1.Location = new System.Drawing.Point(485, 368);
 			button1.Name = "button1";
@@ -197,14 +197,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// button2
 			//
-			button2.Anchor = (
-				(AnchorStyles)(
+			button2.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			button2.FlatStyle = FlatStyle.System;
 			button2.Location = new System.Drawing.Point(176, 368);
 			button2.Name = "button2";
@@ -227,7 +227,7 @@ namespace SimPe.PackedFiles.UserInterface
 				9.75F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			Name = "ObjLua";
 			Size = new System.Drawing.Size(568, 400);

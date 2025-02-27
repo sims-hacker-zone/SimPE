@@ -206,14 +206,14 @@ namespace SimPe.Plugin.Gmdc.Exporter
 				double r = 1f / (uv1.X * uv2.Y - uv2.X * uv1.Y);
 
 				//correct extrem values of "Factor"
-				if (r > (double)10000000000000000)
+				if (r > 10000000000000000)
 				{
-					r = (double)10000000000000000;
+					r = 10000000000000000;
 				}
 
-				if (r < (double)-10000000000000000)
+				if (r < -10000000000000000)
 				{
-					r = (double)-10000000000000000;
+					r = -10000000000000000;
 				}
 
 				//Calculate Face Tangent

@@ -137,7 +137,7 @@ namespace SimPe.Providers
 
 				if (!didwarndoubleguid)
 				{
-					if (bysimid.ContainsKey((uint)sdesc.SimId))
+					if (bysimid.ContainsKey(sdesc.SimId))
 					{
 						Helper.ExceptionMessage(
 							new Warning(
@@ -151,7 +151,7 @@ namespace SimPe.Providers
 						);
 						didwarndoubleguid = true;
 					}
-					if (byinstance.ContainsKey((ushort)sdesc.Instance))
+					if (byinstance.ContainsKey(sdesc.Instance))
 					{
 						Helper.ExceptionMessage(
 							new Warning(
@@ -167,8 +167,8 @@ namespace SimPe.Providers
 					}
 				}
 
-				bysimid[(uint)sdesc.SimId] = sdesc;
-				byinstance[(ushort)sdesc.Instance] = sdesc;
+				bysimid[sdesc.SimId] = sdesc;
+				byinstance[sdesc.Instance] = sdesc;
 			}
 		}
 

@@ -111,14 +111,14 @@ namespace SimPe.Plugin
 			//
 			// btPlay
 			//
-			btPlay.Anchor = (
-				(AnchorStyles)(
+			btPlay.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			btPlay.Location = new Point(200, 408);
 			btPlay.Name = "btPlay";
 			btPlay.Size = new Size(75, 23);
@@ -169,7 +169,7 @@ namespace SimPe.Plugin
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			Icon = ((Icon)(resources.GetObject("$this.Icon")));
 			Name = "AnimPreview";

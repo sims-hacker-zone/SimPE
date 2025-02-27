@@ -51,7 +51,7 @@ namespace SimPe.Plugin
 		uint GetPatientHash()
 		{
 			Random rn = new Random();
-			uint hashgroup = (uint)((uint)rn.Next(0xffffff) | 0xff000000);
+			uint hashgroup = (uint)rn.Next(0xffffff) | 0xff000000;
 			foreach (IPackedFileDescriptor pfd in patient.Index)
 			{
 				///This is a scenegraph Resource so get the Hash from there!
@@ -74,15 +74,15 @@ namespace SimPe.Plugin
 		public Packages.GeneratableFile CloneSim()
 		{
 			Packages.GeneratableFile ret =
-				Packages.File.LoadFromFile((string)null);
+				Packages.File.LoadFromFile(null);
 
 			ArrayList list = new ArrayList
 			{
-				(uint)0xAC506764, //3IDR
+				0xAC506764, //3IDR
 				MetaData.GZPS, //GZPS, Property Set
-				(uint)0xAC598EAC, //AGED
-				(uint)0xCCCEF852, //LxNR, Face
-				(uint)0x856DDBAC, //IMG
+				0xAC598EAC, //AGED
+				0xCCCEF852, //LxNR, Face
+				0x856DDBAC, //IMG
 				(uint)0x534C4F54 //SLOT
 			};
 			list.AddRange(MetaData.RcolList);
@@ -137,7 +137,7 @@ namespace SimPe.Plugin
 				}
 			}
 
-			list.Add((uint)0xE86B1EEF); //make sure the compressed Directory won't be copied!
+			list.Add(0xE86B1EEF); //make sure the compressed Directory won't be copied!
 			if (fromTemplate)
 			{
 				list.Remove(0x534C4F54u); //SLOT file must remain
@@ -523,7 +523,7 @@ namespace SimPe.Plugin
 			for (int i = 0; i < reffile.Items.Length; i++)
 			{
 				IPackedFileDescriptor pfd =
-					(IPackedFileDescriptor)reffile.Items[i];
+					reffile.Items[i];
 				if (pfd == null)
 				{
 					continue;
@@ -730,12 +730,12 @@ namespace SimPe.Plugin
 		)
 		{
 			Packages.GeneratableFile ret =
-				Packages.File.LoadFromFile((string)null);
+				Packages.File.LoadFromFile(null);
 			string pskin = GetSkintone(patient);
 
 			ArrayList list = new ArrayList
 			{
-				(uint)0xE86B1EEF //make sure the compressed Directory won't be copied!
+				0xE86B1EEF //make sure the compressed Directory won't be copied!
 			};
 			foreach (IPackedFileDescriptor pfd in patient.Index)
 			{
@@ -754,7 +754,7 @@ namespace SimPe.Plugin
 
 					switch (newpfd.Type)
 					{
-						case (uint)0xAC598EAC: //AGED
+						case 0xAC598EAC: //AGED
 						{
 							Cpf cpf = new Cpf();
 							cpf.ProcessData(newpfd, ret);
@@ -842,11 +842,11 @@ namespace SimPe.Plugin
 		public Packages.GeneratableFile CloneFace()
 		{
 			Packages.GeneratableFile ret =
-				Packages.File.LoadFromFile((string)null);
+				Packages.File.LoadFromFile(null);
 
 			ArrayList list = new ArrayList
 			{
-				(uint)0xCCCEF852 //LxNR, Face
+				0xCCCEF852 //LxNR, Face
 			};
 
 			uint hashgroup = GetPatientHash();
@@ -868,7 +868,7 @@ namespace SimPe.Plugin
 				}
 			}
 
-			list.Add((uint)0xE86B1EEF); //make sure the compressed Directory won't be copied!
+			list.Add(0xE86B1EEF); //make sure the compressed Directory won't be copied!
 			foreach (IPackedFileDescriptor pfd in patient.Index)
 			{
 				if (!list.Contains(pfd.Type))
@@ -898,7 +898,7 @@ namespace SimPe.Plugin
 		public void UpdateFaceStructure(Packages.GeneratableFile pkg)
 		{
 			IPackedFileDescriptor[] pfds = pkg.FindFiles(
-				(uint)0xCCCEF852
+				0xCCCEF852
 			); //LxNR, Face
 			IPackedFileDescriptor oldpfd = null;
 			IPackedFileDescriptor newpfd = null;
@@ -1049,11 +1049,11 @@ namespace SimPe.Plugin
 		public Packages.GeneratableFile CloneMakeup(bool eyecolor, bool makeups)
 		{
 			Packages.GeneratableFile ret =
-				Packages.File.LoadFromFile((string)null);
+				Packages.File.LoadFromFile(null);
 
 			ArrayList list = new ArrayList
 			{
-				(uint)0xE86B1EEF //make sure the compressed Directory won't be copied!
+				0xE86B1EEF //make sure the compressed Directory won't be copied!
 			};
 			foreach (IPackedFileDescriptor pfd in patient.Index)
 			{

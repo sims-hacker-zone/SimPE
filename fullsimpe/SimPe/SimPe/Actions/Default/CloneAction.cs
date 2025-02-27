@@ -45,7 +45,7 @@ namespace SimPe.Actions.Default
 				if (e.HasFileDescriptor)
 				{
 					Interfaces.Files.IPackedFileDescriptor pfd =
-						(Interfaces.Files.IPackedFileDescriptor)
+
 							e.Resource.FileDescriptor.Clone();
 
 					pfd.UserData = es

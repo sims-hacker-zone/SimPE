@@ -13,7 +13,7 @@ namespace SimPe.Plugin
 			IPackedFileUI
 	{
 		protected new StringMapPackedFileWrapper Wrapper => base.Wrapper as StringMapPackedFileWrapper;
-		public StringMapPackedFileWrapper TPFW => (StringMapPackedFileWrapper)Wrapper;
+		public StringMapPackedFileWrapper TPFW => Wrapper;
 
 		#region WrapperBaseControl Member
 

@@ -216,7 +216,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get;
 		} = new RelationshipFlags(
-			(ushort)(1 << (byte)Data.MetaData.RelationshipStateBits.Known)
+			1 << (byte)Data.MetaData.RelationshipStateBits.Known
 		);
 
 		/// <summary>

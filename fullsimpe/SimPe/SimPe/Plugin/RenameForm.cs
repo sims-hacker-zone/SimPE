@@ -71,8 +71,8 @@ namespace SimPe.Plugin
 			//
 			// lv
 			//
-			lv.Anchor = (
-				(AnchorStyles)(
+			lv.Anchor =
+
 					(
 						(
 							(
@@ -81,8 +81,8 @@ namespace SimPe.Plugin
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lv.Columns.AddRange(
 				new ColumnHeader[]
 				{
@@ -124,7 +124,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			label1.Location = new System.Drawing.Point(16, 16);
 			label1.Name = "label1";
@@ -134,16 +134,16 @@ namespace SimPe.Plugin
 			//
 			// tbname
 			//
-			tbname.Anchor = (
-				(AnchorStyles)(
+			tbname.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbname.Location = new System.Drawing.Point(24, 32);
 			tbname.Name = "tbname";
 			tbname.Size = new System.Drawing.Size(674, 21);
@@ -152,21 +152,21 @@ namespace SimPe.Plugin
 			//
 			// llname
 			//
-			llname.Anchor = (
-				(AnchorStyles)(
+			llname.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			llname.AutoSize = true;
 			llname.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			llname.Location = new System.Drawing.Point(647, 56);
 			llname.Name = "llname";
@@ -181,14 +181,14 @@ namespace SimPe.Plugin
 			//
 			// button1
 			//
-			button1.Anchor = (
-				(AnchorStyles)(
+			button1.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			button1.FlatStyle = FlatStyle.System;
 			button1.Location = new System.Drawing.Point(623, 304);
 			button1.Name = "button1";
@@ -198,21 +198,21 @@ namespace SimPe.Plugin
 			//
 			// cbv2
 			//
-			cbv2.Anchor = (
-				(AnchorStyles)(
+			cbv2.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
 					)
-				)
-			);
+
+			;
 			cbv2.FlatStyle = FlatStyle.System;
 			cbv2.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			cbv2.Location = new System.Drawing.Point(16, 304);
 			cbv2.Name = "cbv2";
@@ -235,7 +235,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0))
+				0
 			);
 			FormBorderStyle =
 				FormBorderStyle

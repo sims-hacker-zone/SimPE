@@ -89,7 +89,7 @@ namespace SimPe.Plugin
 		{
 			writer.Write(String1);
 			writer.Write(String2);
-			writer.Write((int)Vectors.Count);
+			writer.Write(Vectors.Count);
 			for (int i = 0; i < Vectors.Count; i++)
 			{
 				Vectors[i].Serialize(writer);
@@ -410,19 +410,19 @@ namespace SimPe.Plugin
 			writer.Write(gb.BlockID);
 			gb.Serialize(writer);
 
-			writer.Write((int)Vectors1.Count);
+			writer.Write(Vectors1.Count);
 			for (int i = 0; i < Vectors1.Count; i++)
 			{
 				Vectors1[i].Serialize(writer);
 			}
 
-			writer.Write((int)Vectors2.Count);
+			writer.Write(Vectors2.Count);
 			for (int i = 0; i < Vectors2.Count; i++)
 			{
 				Vectors2[i].Serialize(writer);
 			}
 
-			writer.Write((int)Vectors3.Count);
+			writer.Write(Vectors3.Count);
 			for (int i = 0; i < Vectors3.Count; i++)
 			{
 				Vectors3[i].Serialize(writer);
@@ -433,19 +433,19 @@ namespace SimPe.Plugin
 			writer.Write(Unknown1);
 			writer.Write(Zero2);
 
-			writer.Write((int)Vectors4.Count);
+			writer.Write(Vectors4.Count);
 			for (int i = 0; i < Vectors4.Count; i++)
 			{
 				Vectors4[i].Serialize(writer);
 			}
 
-			writer.Write((int)Vectors5.Count);
+			writer.Write(Vectors5.Count);
 			for (int i = 0; i < Vectors5.Count; i++)
 			{
 				Vectors5[i].Serialize(writer);
 			}
 
-			writer.Write((int)Vectors6.Count);
+			writer.Write(Vectors6.Count);
 			for (int i = 0; i < Vectors6.Count; i++)
 			{
 				Vectors6[i].Serialize(writer);
@@ -456,7 +456,7 @@ namespace SimPe.Plugin
 				writer.Write(Unknown2[i]);
 			}
 
-			writer.Write((int)Items.Count);
+			writer.Write(Items.Count);
 			for (int i = 0; i < Items.Count; i++)
 			{
 				Items[i].Serialize(writer);
@@ -465,25 +465,25 @@ namespace SimPe.Plugin
 			writer.Write(Unknown3);
 			writer.Write(Unknown4);
 
-			writer.Write((int)Numbers1.Count);
+			writer.Write(Numbers1.Count);
 			for (int i = 0; i < Numbers1.Count; i++)
 			{
 				writer.Write(Numbers1[i]);
 			}
 
-			writer.Write((int)Numbers2.Count);
+			writer.Write(Numbers2.Count);
 			for (int i = 0; i < Numbers2.Count; i++)
 			{
 				writer.Write(Numbers2[i]);
 			}
 
-			writer.Write((int)Numbers3.Count);
+			writer.Write(Numbers3.Count);
 			for (int i = 0; i < Numbers3.Count; i++)
 			{
 				writer.Write(Numbers3[i]);
 			}
 
-			writer.Write((int)Numbers4.Count);
+			writer.Write(Numbers4.Count);
 			for (int i = 0; i < Numbers4.Count; i++)
 			{
 				writer.Write(Numbers4[i]);

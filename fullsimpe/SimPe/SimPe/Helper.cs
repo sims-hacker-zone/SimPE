@@ -725,7 +725,7 @@ namespace SimPe
 			anypackage,
 		}; // bit number
 
-		private static Boolset RunModeFlag = (int)0;
+		private static Boolset RunModeFlag = 0;
 
 		/// <summary>
 		/// "localmode": when true, do not load the file table
@@ -1489,7 +1489,7 @@ namespace SimPe
 		/// <returns>Integer Walue</returns>
 		public static int ToInt(short low, short high)
 		{
-			return (int)(low + (high << 16));
+			return low + (high << 16);
 		}
 
 		/// <summary>

@@ -155,10 +155,10 @@ namespace SimPe.PackedFiles.UserInterface
 			panel4.AccessibleName = null;
 			resources.ApplyResources(panel4, "panel4");
 			panel4.BackColor = Color.FromArgb(
-				((int)(((byte)(120)))),
-				((int)(((byte)(0)))),
-				((int)(((byte)(0)))),
-				((int)(((byte)(0))))
+				((byte)(120)),
+				((byte)(0)),
+				((byte)(0)),
+				((byte)(0))
 			);
 			panel4.BackgroundImage = null;
 			panel4.Controls.Add(cbLock);
@@ -218,10 +218,10 @@ namespace SimPe.PackedFiles.UserInterface
 			xpLine1.Font = null;
 			xpLine1.ForeColor = Color.Transparent;
 			xpLine1.LineColor = Color.FromArgb(
-				((int)(((byte)(125)))),
-				((int)(((byte)(0)))),
-				((int)(((byte)(0)))),
-				((int)(((byte)(0))))
+				((byte)(125)),
+				((byte)(0)),
+				((byte)(0)),
+				((byte)(0))
 			);
 			xpLine1.Name = "xpLine1";
 			xpLine1.Orientation = System

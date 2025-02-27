@@ -200,7 +200,7 @@ namespace SimPe.Plugin
 			}
 			else if ((byte)Type > 1)
 			{
-				writer.Write((uint)Value);
+				writer.Write(Value);
 			}
 			else
 			{

@@ -227,8 +227,8 @@ namespace SimPe.Cache
 				else
 				{
 					Data.ObjFunctionSubSort fss = subsort;
-					uint upper = (uint)((ofss >> 8) & 0xfff);
-					uint lower = (uint)(ofss & 0xff);
+					uint upper = (ofss >> 8) & 0xfff;
+					uint lower = ofss & 0xff;
 
 					System.Collections.ArrayList list =
 						new System.Collections.ArrayList();
@@ -496,7 +496,7 @@ namespace SimPe.Cache
 
 			if (Thumbnail == null)
 			{
-				writer.Write((int)0);
+				writer.Write(0);
 			}
 			else
 			{
@@ -511,7 +511,7 @@ namespace SimPe.Cache
 				}
 				catch
 				{
-					writer.Write((int)0);
+					writer.Write(0);
 				}
 			}
 

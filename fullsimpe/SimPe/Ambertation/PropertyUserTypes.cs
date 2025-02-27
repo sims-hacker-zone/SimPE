@@ -56,7 +56,7 @@ namespace Ambertation
 
 		float ToFloat(int cmp)
 		{
-			double d = (double)cmp / (double)0xff;
+			double d = cmp / (double)0xff;
 			return (float)d;
 		}
 
@@ -164,53 +164,53 @@ namespace Ambertation
 				else if (parts.Length == 3)
 				{
 					o = Color.FromArgb(
-						(int)(
+
 							Convert.ToInt16(
 								parts[0],
 								CultureInfo.InvariantCulture
 							)
-						),
-						(int)(
+						,
+
 							Convert.ToInt16(
 								parts[1],
 								CultureInfo.InvariantCulture
 							)
-						),
-						(int)(
+						,
+
 							Convert.ToInt16(
 								parts[2],
 								CultureInfo.InvariantCulture
 							)
-						)
+
 					);
 				}
 				else
 				{
 					o = Color.FromArgb(
-						(int)(
+
 							Convert.ToInt16(
 								parts[0],
 								CultureInfo.InvariantCulture
 							)
-						),
-						(int)(
+						,
+
 							Convert.ToInt16(
 								parts[1],
 								CultureInfo.InvariantCulture
 							)
-						),
-						(int)(
+						,
+
 							Convert.ToInt16(
 								parts[2],
 								CultureInfo.InvariantCulture
 							)
-						),
-						(int)(
+						,
+
 							Convert.ToInt16(
 								parts[3],
 								CultureInfo.InvariantCulture
 							)
-						)
+
 					);
 				}
 			}
@@ -596,7 +596,7 @@ namespace Ambertation
 					return (ulong)LongValue;
 				}
 
-				return (long)LongValue;
+				return LongValue;
 			}
 		}
 

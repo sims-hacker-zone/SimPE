@@ -754,7 +754,7 @@ namespace SimPe.Plugin.Scanner
 					flname = mci.ParentCacheContainer.FileName;
 				}
 
-				list[(uint)mci.Guid] = flname;
+				list[mci.Guid] = flname;
 				// list[(uint)mci.Guid] = flname.Trim().ToLower();
 				/*if (mci.Guid == guid)
 				{

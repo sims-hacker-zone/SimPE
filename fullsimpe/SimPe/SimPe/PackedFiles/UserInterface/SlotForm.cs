@@ -248,21 +248,21 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// visualStyleLinkLabel3
 			//
-			visualStyleLinkLabel3.Anchor = (
-				(AnchorStyles)(
+			visualStyleLinkLabel3.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			visualStyleLinkLabel3.BackColor = System.Drawing.Color.Transparent;
 			visualStyleLinkLabel3.Font = new System.Drawing.Font(
 				"Verdana",
 				11.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			visualStyleLinkLabel3.Location = new System.Drawing.Point(100, 305);
 			visualStyleLinkLabel3.Name = "visualStyleLinkLabel3";
@@ -279,21 +279,21 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// visualStyleLinkLabel2
 			//
-			visualStyleLinkLabel2.Anchor = (
-				(AnchorStyles)(
+			visualStyleLinkLabel2.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			visualStyleLinkLabel2.BackColor = System.Drawing.Color.Transparent;
 			visualStyleLinkLabel2.Font = new System.Drawing.Font(
 				"Verdana",
 				11.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			visualStyleLinkLabel2.Location = new System.Drawing.Point(178, 305);
 			visualStyleLinkLabel2.Name = "visualStyleLinkLabel2";
@@ -310,21 +310,21 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// visualStyleLinkLabel1
 			//
-			visualStyleLinkLabel1.Anchor = (
-				(AnchorStyles)(
+			visualStyleLinkLabel1.Anchor =
+
 					(
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			visualStyleLinkLabel1.BackColor = System.Drawing.Color.Transparent;
 			visualStyleLinkLabel1.Font = new System.Drawing.Font(
 				"Verdana",
 				11.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			visualStyleLinkLabel1.Location = new System.Drawing.Point(266, 305);
 			visualStyleLinkLabel1.Name = "visualStyleLinkLabel1";
@@ -341,8 +341,8 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// lv
 			//
-			lv.Anchor = (
-				(AnchorStyles)(
+			lv.Anchor =
+
 					(
 						(
 							(
@@ -351,8 +351,8 @@ namespace SimPe.PackedFiles.UserInterface
 							) | AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			lv.FullRowSelect = true;
 			lv.GridLines = true;
 			lv.HideSelection = false;
@@ -367,16 +367,16 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// groupBox1
 			//
-			groupBox1.Anchor = (
-				(AnchorStyles)(
+			groupBox1.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			groupBox1.Controls.Add(tbname);
 			groupBox1.Controls.Add(label24);
 			groupBox1.Controls.Add(label23);
@@ -386,7 +386,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			groupBox1.Location = new System.Drawing.Point(8, 32);
 			groupBox1.Name = "groupBox1";
@@ -397,22 +397,22 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// tbname
 			//
-			tbname.Anchor = (
-				(AnchorStyles)(
+			tbname.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbname.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbname.Location = new System.Drawing.Point(72, 48);
 			tbname.Name = "tbname";
@@ -427,7 +427,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label24.Location = new System.Drawing.Point(8, 48);
 			label24.Name = "label24";
@@ -443,7 +443,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			label23.Location = new System.Drawing.Point(8, 24);
 			label23.Name = "label23";
@@ -459,7 +459,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0))
+				0
 			);
 			tbver.Location = new System.Drawing.Point(72, 24);
 			tbver.Name = "tbver";
@@ -470,14 +470,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// tabControl1
 			//
-			tabControl1.Anchor = (
-				(AnchorStyles)(
+			tabControl1.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tabControl1.Controls.Add(tabPage1);
 			tabControl1.Controls.Add(tabPage2);
 			tabControl1.Controls.Add(tabPage3);
@@ -510,14 +510,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// label14
 			//
-			label14.Anchor = (
-				(AnchorStyles)(
+			label14.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label14.Location = new System.Drawing.Point(136, 8);
 			label14.Name = "label14";
 			label14.Size = new System.Drawing.Size(56, 23);
@@ -527,14 +527,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// tbi6
 			//
-			tbi6.Anchor = (
-				(AnchorStyles)(
+			tbi6.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbi6.Location = new System.Drawing.Point(200, 8);
 			tbi6.Name = "tbi6";
 			tbi6.Size = new System.Drawing.Size(64, 21);
@@ -544,14 +544,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// label10
 			//
-			label10.Anchor = (
-				(AnchorStyles)(
+			label10.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label10.Location = new System.Drawing.Point(8, 56);
 			label10.Name = "label10";
 			label10.Size = new System.Drawing.Size(56, 23);
@@ -561,14 +561,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// tbf6
 			//
-			tbf6.Anchor = (
-				(AnchorStyles)(
+			tbf6.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbf6.Location = new System.Drawing.Point(72, 56);
 			tbf6.Name = "tbf6";
 			tbf6.Size = new System.Drawing.Size(64, 21);
@@ -578,14 +578,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// label11
 			//
-			label11.Anchor = (
-				(AnchorStyles)(
+			label11.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label11.Location = new System.Drawing.Point(8, 32);
 			label11.Name = "label11";
 			label11.Size = new System.Drawing.Size(56, 23);
@@ -595,14 +595,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// tbf5
 			//
-			tbf5.Anchor = (
-				(AnchorStyles)(
+			tbf5.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbf5.Location = new System.Drawing.Point(72, 32);
 			tbf5.Name = "tbf5";
 			tbf5.Size = new System.Drawing.Size(64, 21);
@@ -612,14 +612,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// label13
 			//
-			label13.Anchor = (
-				(AnchorStyles)(
+			label13.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label13.Location = new System.Drawing.Point(8, 8);
 			label13.Name = "label13";
 			label13.Size = new System.Drawing.Size(56, 23);
@@ -629,14 +629,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// tbf4
 			//
-			tbf4.Anchor = (
-				(AnchorStyles)(
+			tbf4.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbf4.Location = new System.Drawing.Point(72, 8);
 			tbf4.Name = "tbf4";
 			tbf4.Size = new System.Drawing.Size(64, 21);
@@ -658,14 +658,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// label15
 			//
-			label15.Anchor = (
-				(AnchorStyles)(
+			label15.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label15.Location = new System.Drawing.Point(8, 32);
 			label15.Name = "label15";
 			label15.Size = new System.Drawing.Size(56, 23);
@@ -675,14 +675,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// tbs2
 			//
-			tbs2.Anchor = (
-				(AnchorStyles)(
+			tbs2.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbs2.Location = new System.Drawing.Point(72, 32);
 			tbs2.Name = "tbs2";
 			tbs2.Size = new System.Drawing.Size(64, 21);
@@ -692,14 +692,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// label16
 			//
-			label16.Anchor = (
-				(AnchorStyles)(
+			label16.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label16.Location = new System.Drawing.Point(8, 8);
 			label16.Name = "label16";
 			label16.Size = new System.Drawing.Size(56, 23);
@@ -709,14 +709,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// tbs1
 			//
-			tbs1.Anchor = (
-				(AnchorStyles)(
+			tbs1.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbs1.Location = new System.Drawing.Point(72, 8);
 			tbs1.Name = "tbs1";
 			tbs1.Size = new System.Drawing.Size(64, 21);
@@ -736,14 +736,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// label17
 			//
-			label17.Anchor = (
-				(AnchorStyles)(
+			label17.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label17.Location = new System.Drawing.Point(8, 8);
 			label17.Name = "label17";
 			label17.Size = new System.Drawing.Size(56, 23);
@@ -753,14 +753,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// tbf7
 			//
-			tbf7.Anchor = (
-				(AnchorStyles)(
+			tbf7.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbf7.Location = new System.Drawing.Point(72, 8);
 			tbf7.Name = "tbf7";
 			tbf7.Size = new System.Drawing.Size(64, 21);
@@ -780,14 +780,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// label19
 			//
-			label19.Anchor = (
-				(AnchorStyles)(
+			label19.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label19.Location = new System.Drawing.Point(8, 8);
 			label19.Name = "label19";
 			label19.Size = new System.Drawing.Size(56, 23);
@@ -797,14 +797,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// tbi7
 			//
-			tbi7.Anchor = (
-				(AnchorStyles)(
+			tbi7.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbi7.Location = new System.Drawing.Point(72, 8);
 			tbi7.Name = "tbi7";
 			tbi7.Size = new System.Drawing.Size(64, 21);
@@ -824,14 +824,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// label0A
 			//
-			label0A.Anchor = (
-				(AnchorStyles)(
+			label0A.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label0A.Location = new System.Drawing.Point(8, 8);
 			label0A.Name = "label0A";
 			label0A.Size = new System.Drawing.Size(56, 23);
@@ -841,14 +841,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// tbs3
 			//
-			tbs3.Anchor = (
-				(AnchorStyles)(
+			tbs3.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbs3.Location = new System.Drawing.Point(72, 8);
 			tbs3.Name = "tbs3";
 			tbs3.Size = new System.Drawing.Size(64, 21);
@@ -868,14 +868,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// label20
 			//
-			label20.Anchor = (
-				(AnchorStyles)(
+			label20.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label20.Location = new System.Drawing.Point(8, 8);
 			label20.Name = "label20";
 			label20.Size = new System.Drawing.Size(56, 23);
@@ -885,14 +885,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// tbi8
 			//
-			tbi8.Anchor = (
-				(AnchorStyles)(
+			tbi8.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbi8.Location = new System.Drawing.Point(72, 8);
 			tbi8.Name = "tbi8";
 			tbi8.Size = new System.Drawing.Size(64, 21);
@@ -912,14 +912,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// label18
 			//
-			label18.Anchor = (
-				(AnchorStyles)(
+			label18.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label18.Location = new System.Drawing.Point(8, 8);
 			label18.Name = "label18";
 			label18.Size = new System.Drawing.Size(56, 23);
@@ -929,14 +929,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// tbf8
 			//
-			tbf8.Anchor = (
-				(AnchorStyles)(
+			tbf8.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbf8.Location = new System.Drawing.Point(72, 8);
 			tbf8.Name = "tbf8";
 			tbf8.Size = new System.Drawing.Size(64, 21);
@@ -958,14 +958,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// label21
 			//
-			label21.Anchor = (
-				(AnchorStyles)(
+			label21.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label21.Location = new System.Drawing.Point(8, 32);
 			label21.Name = "label21";
 			label21.Size = new System.Drawing.Size(56, 23);
@@ -975,14 +975,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// tbi10
 			//
-			tbi10.Anchor = (
-				(AnchorStyles)(
+			tbi10.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbi10.Location = new System.Drawing.Point(72, 32);
 			tbi10.Name = "tbi10";
 			tbi10.Size = new System.Drawing.Size(64, 21);
@@ -992,14 +992,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// label22
 			//
-			label22.Anchor = (
-				(AnchorStyles)(
+			label22.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label22.Location = new System.Drawing.Point(8, 8);
 			label22.Name = "label22";
 			label22.Size = new System.Drawing.Size(56, 23);
@@ -1009,14 +1009,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// tbi9
 			//
-			tbi9.Anchor = (
-				(AnchorStyles)(
+			tbi9.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbi9.Location = new System.Drawing.Point(72, 8);
 			tbi9.Name = "tbi9";
 			tbi9.Size = new System.Drawing.Size(64, 21);
@@ -1026,14 +1026,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// cbtype
 			//
-			cbtype.Anchor = (
-				(AnchorStyles)(
+			cbtype.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			cbtype.DropDownStyle = ComboBoxStyle.DropDownList;
 			cbtype.Location = new System.Drawing.Point(392, 32);
 			cbtype.Name = "cbtype";
@@ -1043,14 +1043,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// label9
 			//
-			label9.Anchor = (
-				(AnchorStyles)(
+			label9.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label9.BackColor = System.Drawing.Color.Transparent;
 			label9.Location = new System.Drawing.Point(328, 32);
 			label9.Name = "label9";
@@ -1061,14 +1061,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// label8
 			//
-			label8.Anchor = (
-				(AnchorStyles)(
+			label8.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label8.BackColor = System.Drawing.Color.Transparent;
 			label8.Location = new System.Drawing.Point(584, 88);
 			label8.Name = "label8";
@@ -1079,14 +1079,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// tbi5
 			//
-			tbi5.Anchor = (
-				(AnchorStyles)(
+			tbi5.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbi5.Location = new System.Drawing.Point(648, 88);
 			tbi5.Name = "tbi5";
 			tbi5.Size = new System.Drawing.Size(64, 21);
@@ -1096,14 +1096,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// label7
 			//
-			label7.Anchor = (
-				(AnchorStyles)(
+			label7.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label7.BackColor = System.Drawing.Color.Transparent;
 			label7.Location = new System.Drawing.Point(584, 64);
 			label7.Name = "label7";
@@ -1114,14 +1114,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// tbi4
 			//
-			tbi4.Anchor = (
-				(AnchorStyles)(
+			tbi4.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbi4.Location = new System.Drawing.Point(648, 64);
 			tbi4.Name = "tbi4";
 			tbi4.Size = new System.Drawing.Size(64, 21);
@@ -1131,14 +1131,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// label6
 			//
-			label6.Anchor = (
-				(AnchorStyles)(
+			label6.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label6.BackColor = System.Drawing.Color.Transparent;
 			label6.Location = new System.Drawing.Point(456, 112);
 			label6.Name = "label6";
@@ -1149,14 +1149,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// tbi3
 			//
-			tbi3.Anchor = (
-				(AnchorStyles)(
+			tbi3.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbi3.Location = new System.Drawing.Point(520, 112);
 			tbi3.Name = "tbi3";
 			tbi3.Size = new System.Drawing.Size(64, 21);
@@ -1166,14 +1166,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// label5
 			//
-			label5.Anchor = (
-				(AnchorStyles)(
+			label5.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label5.BackColor = System.Drawing.Color.Transparent;
 			label5.Location = new System.Drawing.Point(456, 88);
 			label5.Name = "label5";
@@ -1184,14 +1184,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// tbi2
 			//
-			tbi2.Anchor = (
-				(AnchorStyles)(
+			tbi2.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbi2.Location = new System.Drawing.Point(520, 88);
 			tbi2.Name = "tbi2";
 			tbi2.Size = new System.Drawing.Size(64, 21);
@@ -1201,14 +1201,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// label4
 			//
-			label4.Anchor = (
-				(AnchorStyles)(
+			label4.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label4.BackColor = System.Drawing.Color.Transparent;
 			label4.Location = new System.Drawing.Point(456, 64);
 			label4.Name = "label4";
@@ -1219,14 +1219,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// tbi1
 			//
-			tbi1.Anchor = (
-				(AnchorStyles)(
+			tbi1.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbi1.Location = new System.Drawing.Point(520, 64);
 			tbi1.Name = "tbi1";
 			tbi1.Size = new System.Drawing.Size(64, 21);
@@ -1236,14 +1236,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// label3
 			//
-			label3.Anchor = (
-				(AnchorStyles)(
+			label3.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label3.BackColor = System.Drawing.Color.Transparent;
 			label3.Location = new System.Drawing.Point(328, 112);
 			label3.Name = "label3";
@@ -1254,14 +1254,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// tbf3
 			//
-			tbf3.Anchor = (
-				(AnchorStyles)(
+			tbf3.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbf3.Location = new System.Drawing.Point(392, 112);
 			tbf3.Name = "tbf3";
 			tbf3.Size = new System.Drawing.Size(64, 21);
@@ -1271,14 +1271,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// label2
 			//
-			label2.Anchor = (
-				(AnchorStyles)(
+			label2.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label2.BackColor = System.Drawing.Color.Transparent;
 			label2.Location = new System.Drawing.Point(328, 88);
 			label2.Name = "label2";
@@ -1289,14 +1289,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// tbf2
 			//
-			tbf2.Anchor = (
-				(AnchorStyles)(
+			tbf2.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbf2.Location = new System.Drawing.Point(392, 88);
 			tbf2.Name = "tbf2";
 			tbf2.Size = new System.Drawing.Size(64, 21);
@@ -1306,14 +1306,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// label1
 			//
-			label1.Anchor = (
-				(AnchorStyles)(
+			label1.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			label1.BackColor = System.Drawing.Color.Transparent;
 			label1.Location = new System.Drawing.Point(328, 64);
 			label1.Name = "label1";
@@ -1324,14 +1324,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// tbf1
 			//
-			tbf1.Anchor = (
-				(AnchorStyles)(
+			tbf1.Anchor =
+
 					(
 						AnchorStyles.Top
 						| AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			tbf1.Location = new System.Drawing.Point(392, 64);
 			tbf1.Name = "tbf1";
 			tbf1.Size = new System.Drawing.Size(64, 21);
@@ -1341,16 +1341,16 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// panel4
 			//
-			panel4.Anchor = (
-				(AnchorStyles)(
+			panel4.Anchor =
+
 					(
 						(
 							AnchorStyles.Top
 							| AnchorStyles.Left
 						) | AnchorStyles.Right
 					)
-				)
-			);
+
+			;
 			panel4.Location = new System.Drawing.Point(0, 0);
 			panel4.Margin = new Padding(0);
 			panel4.Name = "panel4";

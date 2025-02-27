@@ -12,7 +12,7 @@ namespace SimPe.Plugin
 			IPackedFileUI
 	{
 		protected new LotexturePackedFileWrapper Wrapper => base.Wrapper as LotexturePackedFileWrapper;
-		public LotexturePackedFileWrapper TPFW => (LotexturePackedFileWrapper)Wrapper;
+		public LotexturePackedFileWrapper TPFW => Wrapper;
 
 		string hoodtype;
 		int memorees;

@@ -169,7 +169,7 @@ namespace SimPe.Plugin.Scanner
 			FileTableBase.FileIndex.Load();
 			Packages.GeneratableFile pkg =
 				Packages.File.LoadFromStream(
-					(System.IO.BinaryReader)null
+					null
 				);
 
 			WaitingScreen.Wait();

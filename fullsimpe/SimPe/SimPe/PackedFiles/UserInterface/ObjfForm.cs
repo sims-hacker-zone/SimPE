@@ -173,13 +173,13 @@ namespace SimPe.PackedFiles.UserInterface
 			if (
 				funcDescs == null
 				|| index < 0
-				|| ((pjse.FallbackStrItem)funcDescs[index]) == null
+				|| funcDescs[index] == null
 			)
 			{
 				return;
 			}
 
-			StrItem s = ((pjse.FallbackStrItem)funcDescs[index]).strItem;
+			StrItem s = funcDescs[index].strItem;
 			if (s != null)
 			{
 				lbFunction.Text = s.Description;
