@@ -16,15 +16,10 @@ namespace SimPe.Plugin
 			}
 			set
 			{
-				if (value == null)
-				{
-					throw new ArgumentNullException(
+				propertySet = value ?? throw new ArgumentNullException(
 						"PropertySet",
 						"The provided Cpf instance cannot be null"
 					);
-				}
-
-				propertySet = value;
 			}
 		}
 

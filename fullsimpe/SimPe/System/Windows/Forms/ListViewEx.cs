@@ -153,18 +153,13 @@ namespace System.Windows.Forms
 		/// <param name="dock">Location and resize behavior of embedded control</param>
 		public void AddEmbeddedControl(Control c, int col, int row, DockStyle dock)
 		{
-			if (c == null)
-			{
-				throw new ArgumentNullException();
-			}
-
 			if (col >= Columns.Count || row >= Items.Count)
 			{
 				throw new ArgumentOutOfRangeException();
 			}
 
 			EmbeddedControl ec;
-			ec.Control = c;
+			ec.Control = c ?? throw new ArgumentNullException();
 			ec.Column = col;
 			ec.Row = row;
 			ec.Dock = dock;

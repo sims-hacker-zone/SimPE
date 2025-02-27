@@ -12,12 +12,7 @@ namespace System.Collections.Generic
 
 		public StackDebugView2(Stack2<T> stack)
 		{
-			if (stack == null)
-			{
-				throw new ArgumentNullException(nameof(stack));
-			}
-
-			_stack = stack;
+			_stack = stack ?? throw new ArgumentNullException(nameof(stack));
 		}
 
 		[DebuggerBrowsable(DebuggerBrowsableState.RootHidden)]

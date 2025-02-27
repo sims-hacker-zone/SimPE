@@ -67,14 +67,10 @@ namespace Classless.Hasher
 		{
 			lock (this)
 			{
-				if (param == null)
-				{
-					throw new ArgumentNullException(
+				parameters = param ?? throw new ArgumentNullException(
 						"param",
 						"The CRCParameters cannot be null."
 					);
-				}
-				parameters = param;
 				HashSizeValue = param.Order;
 
 				BuildLookup(param);

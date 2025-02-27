@@ -1568,12 +1568,7 @@ namespace SimPe.Plugin
 
 		public SimInfo(PackedFiles.Wrapper.Cpf aged, string filename, string name)
 		{
-			if (aged == null)
-			{
-				throw new ArgumentNullException();
-			}
-
-			ageData = aged;
+			ageData = aged ?? throw new ArgumentNullException();
 			Filename = filename;
 			Name = name;
 		}
