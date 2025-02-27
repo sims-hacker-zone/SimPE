@@ -97,9 +97,9 @@ namespace Ambertation
 						{
 							if (value.GetType() == typeof(int))
 							{
-								prop = System.Enum.ToObject(
+								prop = Enum.ToObject(
 									Type,
-									System.Convert.ToInt32(value)
+									Convert.ToInt32(value)
 								);
 							}
 							/*else if (value.GetType()==typeof(uint))
@@ -110,7 +110,7 @@ else if (value.GetType()==typeof(ushort))
 	prop = System.Enum.ToObject(type, System.Convert.ToInt32(value));*/
 							else
 							{
-								prop = System.Enum.ToObject(
+								prop = Enum.ToObject(
 									Type,
 									Type.GetField(value.ToString()).GetValue(null)
 								);
@@ -135,14 +135,14 @@ else if (value.GetType()==typeof(ushort))
 							== typeof(IPropertyClass)
 						)
 						{
-							prop = System.Activator.CreateInstance(
+							prop = Activator.CreateInstance(
 								Type,
 								new object[] { value }
 							);
 						}
 						else
 						{
-							prop = System.Convert.ChangeType(value, Type);
+							prop = Convert.ChangeType(value, Type);
 						}
 					}
 					catch

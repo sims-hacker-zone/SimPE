@@ -42,7 +42,7 @@ namespace SimPe.Plugin.Gmdc
 
 			cbgroup = new ComboBox();
 			cbgroup.DropDownStyle = ComboBoxStyle.DropDownList;
-			cbgroup.Items.Add("[" + SimPe.Localization.GetString("none") + "]");
+			cbgroup.Items.Add("[" + Localization.GetString("none") + "]");
 			foreach (GmdcGroup g in gmi.Gmdc.Groups)
 			{
 				cbgroup.Items.Add(g);
@@ -153,7 +153,7 @@ namespace SimPe.Plugin.Gmdc
 			}
 			else
 			{
-				this.SubItems.Add("[" + SimPe.Localization.GetString("none") + "]");
+				this.SubItems.Add("[" + Localization.GetString("none") + "]");
 			}
 
 			this.SubItems.Add(mesh.FaceIndices.Count.ToString());
@@ -168,7 +168,7 @@ namespace SimPe.Plugin.Gmdc
 		{
 			if (
 				mesh.Vertices.Count
-				> SimPe.Plugin.Gmdc.AbstractGmdcImporter.CRITICAL_VERTEX_AMOUNT
+				> AbstractGmdcImporter.CRITICAL_VERTEX_AMOUNT
 			)
 			{
 				return Color.Red;
@@ -176,7 +176,7 @@ namespace SimPe.Plugin.Gmdc
 
 			if (
 				mesh.FaceIndices.Count
-				> SimPe.Plugin.Gmdc.AbstractGmdcImporter.CRITICAL_FACE_AMOUNT
+				> AbstractGmdcImporter.CRITICAL_FACE_AMOUNT
 			)
 			{
 				return Color.Red;

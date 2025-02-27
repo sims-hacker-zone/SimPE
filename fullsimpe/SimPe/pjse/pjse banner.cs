@@ -375,7 +375,7 @@ namespace pjse
 
 		private void btnHelp_Click(object sender, EventArgs e)
 		{
-			pjse.HelpHelper.Help(HelpTarget);
+			HelpHelper.Help(HelpTarget);
 		}
 
 		#region Painting

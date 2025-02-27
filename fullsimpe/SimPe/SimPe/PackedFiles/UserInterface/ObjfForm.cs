@@ -471,16 +471,14 @@ namespace SimPe.PackedFiles.UserInterface
 			);
 			this.lvObjfItem.FullRowSelect = true;
 			this.lvObjfItem.GridLines = true;
-			this.lvObjfItem.HeaderStyle = System
-				.Windows
-				.Forms
-				.ColumnHeaderStyle
+			this.lvObjfItem.HeaderStyle =
+				ColumnHeaderStyle
 				.Nonclickable;
 			this.lvObjfItem.HideSelection = false;
 			this.lvObjfItem.MultiSelect = false;
 			this.lvObjfItem.Name = "lvObjfItem";
 			this.lvObjfItem.UseCompatibleStateImageBehavior = false;
-			this.lvObjfItem.View = System.Windows.Forms.View.Details;
+			this.lvObjfItem.View = View.Details;
 			this.lvObjfItem.SelectedIndexChanged += new EventHandler(
 				this.lvObjfItem_SelectedIndexChanged
 			);
@@ -528,13 +526,11 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			resources.ApplyResources(this, "$this");
 			this.Controls.Add(this.objfPanel);
-			this.FormBorderStyle = System
-				.Windows
-				.Forms
-				.FormBorderStyle
+			this.FormBorderStyle =
+				FormBorderStyle
 				.SizableToolWindow;
 			this.Name = "ObjfForm";
-			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+			this.WindowState = FormWindowState.Maximized;
 			this.objfPanel.ResumeLayout(false);
 			this.objfPanel.PerformLayout();
 			this.tableLayoutPanel1.ResumeLayout(false);
@@ -589,7 +585,7 @@ namespace SimPe.PackedFiles.UserInterface
 		)
 		{
 			pjse.FileTable.Entry item = wrapper.ResourceByInstance(
-				SimPe.Data.MetaData.BHAV_FILE,
+				Data.MetaData.BHAV_FILE,
 				(sender == llAction) ? currentItem.Action : currentItem.Guardian
 			);
 			Bhav b = new Bhav();
@@ -632,7 +628,7 @@ namespace SimPe.PackedFiles.UserInterface
 		private void GetObjfAction(object sender, EventArgs e)
 		{
 			pjse.FileTable.Entry item = new pjse.ResourceChooser().Execute(
-				SimPe.Data.MetaData.BHAV_FILE,
+				Data.MetaData.BHAV_FILE,
 				wrapper.FileDescriptor.Group,
 				objfPanel.Parent,
 				false
@@ -646,7 +642,7 @@ namespace SimPe.PackedFiles.UserInterface
 		private void GetObjfGuard(object sender, EventArgs e)
 		{
 			pjse.FileTable.Entry item = new pjse.ResourceChooser().Execute(
-				SimPe.Data.MetaData.BHAV_FILE,
+				Data.MetaData.BHAV_FILE,
 				wrapper.FileDescriptor.Group,
 				objfPanel.Parent,
 				false

@@ -38,7 +38,7 @@ namespace SimPe.Plugin
 			Interfaces.Files.IPackageFile package
 		)
 		{
-			return (SimPe.PathProvider.Global.EPInstalled >= 0x2);
+			return (PathProvider.Global.EPInstalled >= 0x2);
 		}
 
 		public Interfaces.Plugin.IToolResult ShowDialog(
@@ -46,7 +46,7 @@ namespace SimPe.Plugin
 			ref Interfaces.Files.IPackageFile package
 		)
 		{
-			package = SimPe.ObjLuaLoader.VirtualPackage;
+			package = ObjLuaLoader.VirtualPackage;
 			return new ToolResult(false, true);
 		}
 
@@ -62,7 +62,7 @@ namespace SimPe.Plugin
 		#endregion
 
 		#region IToolExt Member
-		public override System.Drawing.Image Icon => SimPe.GetIcon.OpenLua;
+		public override System.Drawing.Image Icon => GetIcon.OpenLua;
 		#endregion
 	}
 }

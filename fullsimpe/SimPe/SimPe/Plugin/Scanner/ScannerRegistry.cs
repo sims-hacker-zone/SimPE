@@ -49,7 +49,7 @@ namespace SimPe.Plugin.Scanner
 				}
 
 				object[] args = new object[0];
-				object[] scnrs = SimPe.LoadFileWrappers.LoadPlugins(
+				object[] scnrs = LoadFileWrappers.LoadPlugins(
 					file,
 					typeof(IScannerPluginBase),
 					args

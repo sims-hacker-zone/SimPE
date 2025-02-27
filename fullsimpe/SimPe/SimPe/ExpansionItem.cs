@@ -61,7 +61,7 @@ namespace SimPe
 		{
 			if (PreObjectFileTableFolders.Count == 0)
 			{
-				if (Flag.Class == ExpansionItem.Classes.BaseGame)
+				if (Flag.Class == Classes.BaseGame)
 				{
 					AddFileTableFolder(
 						"!TSData"
@@ -77,7 +77,7 @@ namespace SimPe
 
 			if (FileTableFolders.Count == 0)
 			{
-				if (Flag.Class == ExpansionItem.Classes.BaseGame)
+				if (Flag.Class == Classes.BaseGame)
 				{
 					AddFileTableFolder(
 						"TSData" + Helper.PATH_SEP + "Res" + Helper.PATH_SEP + "Sims3D"
@@ -361,7 +361,7 @@ namespace SimPe
 						lang = key.OpenSubKey("en", false);
 					}
 
-					NameShort = SimPe.Localization.GetString("EP SNAME " + Version);
+					NameShort = Localization.GetString("EP SNAME " + Version);
 					NameShorter = NameShort;
 
 					if (NameShort == "EP SNAME " + Version && lang != null)
@@ -379,7 +379,7 @@ namespace SimPe
 						dname = (string)Registry.GetValue("DisplayName", NameShorter);
 					}
 
-					Name = SimPe.Localization.GetString("EP NAME " + Version);
+					Name = Localization.GetString("EP NAME " + Version);
 					if (Name == "EP NAME " + Version && lang != null)
 					{
 						Name = (string)lang.GetValue("long", dname);

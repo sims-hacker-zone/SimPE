@@ -43,8 +43,8 @@ namespace SimPe.Plugin.Tool.Action
 
 			// Once you reload the filetable, you're no longer in local mode
 			//bool old = SimPe.Helper.LocalMode;
-			SimPe.Helper.LocalMode = false;
-			SimPe.FileTable.FileIndex.ForceReload();
+			Helper.LocalMode = false;
+			FileTableBase.FileIndex.ForceReload();
 			//SimPe.Helper.LocalMode = old;
 		}
 

@@ -186,8 +186,8 @@ namespace SimPe.Plugin
 			this.linkLabel1.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -215,10 +215,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -268,13 +268,13 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Bottom
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Bottom
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
-			this.cbsel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbsel.DropDownStyle = ComboBoxStyle.DropDownList;
 			this.cbsel.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -295,8 +295,8 @@ namespace SimPe.Plugin
 			this.cblock.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -322,10 +322,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -350,7 +350,7 @@ namespace SimPe.Plugin
 			//
 			// itv
 			//
-			this.itv.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+			this.itv.ColorDepth = ColorDepth.Depth32Bit;
 			this.itv.ImageSize = new System.Drawing.Size(16, 16);
 			this.itv.TransparentColor = System.Drawing.Color.Transparent;
 			//
@@ -359,12 +359,12 @@ namespace SimPe.Plugin
 			this.cbtype.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
-			this.cbtype.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbtype.DropDownStyle = ComboBoxStyle.DropDownList;
 			this.cbtype.Enabled = false;
 			this.cbtype.Font = new System.Drawing.Font(
 				"Verdana",
@@ -386,8 +386,8 @@ namespace SimPe.Plugin
 			this.tbpoints.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -410,8 +410,8 @@ namespace SimPe.Plugin
 			this.tbunknown2.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -434,8 +434,8 @@ namespace SimPe.Plugin
 			this.tbunknown1.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -458,8 +458,8 @@ namespace SimPe.Plugin
 			this.tbindex.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -482,8 +482,8 @@ namespace SimPe.Plugin
 			this.tbsiminst.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -506,8 +506,8 @@ namespace SimPe.Plugin
 			this.tbprop.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -530,8 +530,8 @@ namespace SimPe.Plugin
 			this.tbval.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -570,8 +570,8 @@ namespace SimPe.Plugin
 			this.tbversion.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -594,8 +594,8 @@ namespace SimPe.Plugin
 			this.label10.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -618,8 +618,8 @@ namespace SimPe.Plugin
 			this.label9.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -642,8 +642,8 @@ namespace SimPe.Plugin
 			this.label8.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -666,8 +666,8 @@ namespace SimPe.Plugin
 			this.label7.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -690,8 +690,8 @@ namespace SimPe.Plugin
 			this.label6.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -714,8 +714,8 @@ namespace SimPe.Plugin
 			this.label4.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
@@ -754,8 +754,8 @@ namespace SimPe.Plugin
 			this.label2.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -778,8 +778,8 @@ namespace SimPe.Plugin
 			this.label1.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -802,7 +802,7 @@ namespace SimPe.Plugin
 			this.pb.Location = new System.Drawing.Point(184, 24);
 			this.pb.Name = "pb";
 			this.pb.Size = new System.Drawing.Size(56, 56);
-			this.pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+			this.pb.SizeMode = PictureBoxSizeMode.CenterImage;
 			this.pb.TabIndex = 20;
 			this.pb.TabStop = false;
 			//
@@ -811,8 +811,8 @@ namespace SimPe.Plugin
 			this.label5.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
@@ -836,9 +836,9 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Bottom
-						) | System.Windows.Forms.AnchorStyles.Left
+							AnchorStyles.Top
+							| AnchorStyles.Bottom
+						) | AnchorStyles.Left
 					)
 				)
 			);
@@ -871,10 +871,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -892,7 +892,7 @@ namespace SimPe.Plugin
 			//
 			// iwant
 			//
-			this.iwant.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+			this.iwant.ColorDepth = ColorDepth.Depth32Bit;
 			this.iwant.ImageSize = new System.Drawing.Size(44, 44);
 			this.iwant.TransparentColor = System.Drawing.Color.Transparent;
 			//
@@ -912,10 +912,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -933,7 +933,7 @@ namespace SimPe.Plugin
 			//
 			// ifear
 			//
-			this.ifear.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+			this.ifear.ColorDepth = ColorDepth.Depth32Bit;
 			this.ifear.ImageSize = new System.Drawing.Size(44, 44);
 			this.ifear.TransparentColor = System.Drawing.Color.Transparent;
 			//
@@ -953,10 +953,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -974,7 +974,7 @@ namespace SimPe.Plugin
 			//
 			// ihist
 			//
-			this.ihist.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+			this.ihist.ColorDepth = ColorDepth.Depth32Bit;
 			this.ihist.ImageSize = new System.Drawing.Size(16, 16);
 			this.ihist.TransparentColor = System.Drawing.Color.Transparent;
 			//
@@ -994,10 +994,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -1015,7 +1015,7 @@ namespace SimPe.Plugin
 			//
 			// ilife
 			//
-			this.ilife.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+			this.ilife.ColorDepth = ColorDepth.Depth32Bit;
 			this.ilife.ImageSize = new System.Drawing.Size(44, 44);
 			this.ilife.TransparentColor = System.Drawing.Color.Transparent;
 			//
@@ -1025,9 +1025,9 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -1049,7 +1049,7 @@ namespace SimPe.Plugin
 			//
 			this.lbsimname.AutoSize = true;
 			this.lbsimname.BackColor = System.Drawing.Color.Transparent;
-			this.lbsimname.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.lbsimname.Cursor = Cursors.Hand;
 			this.lbsimname.Font = new System.Drawing.Font(
 				"Verdana",
 				9.75F,
@@ -1057,7 +1057,7 @@ namespace SimPe.Plugin
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lbsimname.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.lbsimname.ImeMode = ImeMode.NoControl;
 			this.lbsimname.Location = new System.Drawing.Point(260, 4);
 			this.lbsimname.Name = "lbsimname";
 			this.lbsimname.Size = new System.Drawing.Size(29, 16);
@@ -1068,7 +1068,7 @@ namespace SimPe.Plugin
 			// label27
 			//
 			this.label27.AutoSize = true;
-			this.label27.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.label27.ImeMode = ImeMode.NoControl;
 			this.label27.Location = new System.Drawing.Point(0, 4);
 			this.label27.Name = "label27";
 			this.label27.Size = new System.Drawing.Size(208, 16);
@@ -1303,8 +1303,8 @@ namespace SimPe.Plugin
 				{
 					if (
 						MessageBox.Show(
-							SimPe.Localization.Manager.GetString("open_wnt_from_sdsc"),
-							SimPe.Localization.Manager.GetString("question"),
+							Localization.Manager.GetString("open_wnt_from_sdsc"),
+							Localization.Manager.GetString("question"),
 							MessageBoxButtons.YesNo
 						) == DialogResult.Yes
 					)
@@ -1323,7 +1323,7 @@ namespace SimPe.Plugin
 						wrapper.FileDescriptor.Instance
 					); //try a W&f File
 				pfd = wrapper.Package.FindFile(pfd);
-				SimPe.RemoteControl.OpenPackedFile(pfd, wrapper.Package);
+				RemoteControl.OpenPackedFile(pfd, wrapper.Package);
 			}
 			catch (Exception ex)
 			{

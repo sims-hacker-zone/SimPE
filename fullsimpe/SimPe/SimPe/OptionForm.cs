@@ -50,7 +50,7 @@ namespace SimPe
 
 				Registry.ResourceListExtensionFormats[] rls =
 					(Registry.ResourceListExtensionFormats[])
-						System.Enum.GetValues(
+						Enum.GetValues(
 							typeof(Registry.ResourceListExtensionFormats)
 						);
 				foreach (Registry.ResourceListExtensionFormats rl in rls)
@@ -62,7 +62,7 @@ namespace SimPe
 
 				Registry.ResourceListFormats[] rlf =
 					(Registry.ResourceListFormats[])
-						System.Enum.GetValues(
+						Enum.GetValues(
 							typeof(Registry.ResourceListFormats)
 						);
 				foreach (Registry.ResourceListFormats ri in rlf)
@@ -74,7 +74,7 @@ namespace SimPe
 
 				Registry.ResourceListUnnamedFormats[] rlu =
 					(Registry.ResourceListUnnamedFormats[])
-						System.Enum.GetValues(
+						Enum.GetValues(
 							typeof(Registry.ResourceListUnnamedFormats)
 						);
 				foreach (Registry.ResourceListUnnamedFormats ru in rlu)
@@ -84,7 +84,7 @@ namespace SimPe
 
 				cbRLTGI.SelectedIndex = 0;
 
-				this.pgPaths.SelectedObject = SimPe.PathSettings.Global;
+				this.pgPaths.SelectedObject = PathSettings.Global;
 
 				for (byte i = 1; i < 0x2d; i++)
 				{
@@ -92,7 +92,7 @@ namespace SimPe
 				}
 
 				Registry.ReportFormats[] rfs = (Registry.ReportFormats[])
-					System.Enum.GetValues(typeof(Registry.ReportFormats));
+					Enum.GetValues(typeof(Registry.ReportFormats));
 				foreach (Registry.ReportFormats rf in rfs)
 				{
 					cbReport.Items.Add(rf);
@@ -199,7 +199,7 @@ namespace SimPe
 			}
 
 			//FileTable
-			ArrayList folders = FileTable.DefaultFolders;
+			ArrayList folders = FileTableBase.DefaultFolders;
 			lbfolder.Items.Clear();
 			foreach (FileTableItem fti in folders)
 			{
@@ -326,7 +326,7 @@ namespace SimPe
 				lfti.Add(fti);
 			}
 
-			FileTable.StoreFoldersXml(lfti);
+			FileTableBase.StoreFoldersXml(lfti);
 			try
 			{
 				Helper.WindowsRegistry.OWThumbSize = Convert.ToInt32(tbthumb.Text);
@@ -345,8 +345,8 @@ namespace SimPe
 
 			Helper.WindowsRegistry.Flush();
 
-			FileTable.FileIndex.BaseFolders.Clear();
-			FileTable.FileIndex.BaseFolders = FileTable.DefaultFolders;
+			FileTableBase.FileIndex.BaseFolders.Clear();
+			FileTableBase.FileIndex.BaseFolders = FileTableBase.DefaultFolders;
 			Close();
 		}
 
@@ -392,7 +392,7 @@ namespace SimPe
 
 		private void ClearCaches(object sender, EventArgs e)
 		{
-			SimPe.CheckControl.ClearCache();
+			CheckControl.ClearCache();
 		}
 
 		private void DDSChanged(object sender, EventArgs e)
@@ -407,7 +407,7 @@ namespace SimPe
 			LinkLabelLinkClickedEventArgs e
 		)
 		{
-			System.Windows.Forms.Help.ShowHelp(
+			Help.ShowHelp(
 				this,
 				"https://developer.nvidia.com/legacy-texture-tools"
 			);
@@ -461,7 +461,7 @@ namespace SimPe
 		{
 			if (uids.Contains(wrapper.WrapperDescription.UID))
 			{
-				return System.Drawing.Image.FromStream(
+				return Image.FromStream(
 					this.GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.error.png")
 				);
@@ -469,13 +469,13 @@ namespace SimPe
 
 			if (wrapper.Priority >= 0)
 			{
-				return System.Drawing.Image.FromStream(
+				return Image.FromStream(
 					this.GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.enabled.png")
 				);
 			}
 
-			return System.Drawing.Image.FromStream(
+			return Image.FromStream(
 				this.GetType()
 					.Assembly.GetManifestResourceStream("SimPe.img.disabled.png")
 			);
@@ -503,14 +503,14 @@ namespace SimPe
 		{
 			if (pn.Height == pn.DisplayRectangle.Top + 1)
 			{
-				return System.Drawing.Image.FromStream(
+				return Image.FromStream(
 					this.GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.expand.png")
 				);
 			}
 			else
 			{
-				return System.Drawing.Image.FromStream(
+				return Image.FromStream(
 					this.GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.shrink.png")
 				);
@@ -561,7 +561,7 @@ namespace SimPe
 			pn.Left = 4;
 			pn.Width =
 				cnt.Width
-				- System.Windows.Forms.SystemInformation.VerticalScrollBarWidth
+				- SystemInformation.VerticalScrollBarWidth
 				- 2
 				- 2 * pn.Left;
 			pn.Height = height;
@@ -767,7 +767,7 @@ namespace SimPe
 				pb.Left = pn.Width - 2 * pb.Width - 16;
 				pb.Top = pn.DisplayRectangle.Top + 4; //pn.DisplayRectangle.Top + 4 + pb.Height + 4; //pn.Height - 2*pb.Height -16;
 				pb.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-				pb.Image = System.Drawing.Image.FromStream(
+				pb.Image = Image.FromStream(
 					this.GetType()
 						.Assembly.GetManifestResourceStream(
 							"SimPe.img.multienabled.png"
@@ -784,7 +784,7 @@ namespace SimPe
 				pb.Top = (pn.DisplayRectangle.Top + 1 - pb.Height) / 2;
 				pb.Left = pn.Width - 3 * pb.Width - pb.Top;
 				pb.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-				pb.Image = System.Drawing.Image.FromStream(
+				pb.Image = Image.FromStream(
 					this.GetType()
 						.Assembly.GetManifestResourceStream(
 							"SimPe.img.smallmultienabled.png"
@@ -813,8 +813,7 @@ namespace SimPe
 				}
 
 				pb.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-				pb.Image = System
-					.Drawing.Image.FromStream(
+				pb.Image = Image.FromStream(
 						this.GetType()
 							.Assembly.GetManifestResourceStream("SimPe.img.error.png")
 					)
@@ -923,7 +922,7 @@ namespace SimPe
 				f.Icon = icon;
 			}
 
-			Interfaces.IWrapper[] wrappers = FileTable
+			Interfaces.IWrapper[] wrappers = FileTableBase
 				.WrapperRegistry
 				.AllWrappers;
 
@@ -1271,7 +1270,7 @@ namespace SimPe
 				int cwd = cbIncCep.Parent.Width - 2 * cbIncCep.Left + 4;
 				cbIncCep.Width = (cwd / 4) - 4;
 				int left = cbIncCep.Right + 4;
-				if (SimPe.PathProvider.Global.GameVersion >= 18)
+				if (PathProvider.Global.GameVersion >= 18)
 				{
 					left = cbIncCep.Left;
 				}
@@ -1282,7 +1281,7 @@ namespace SimPe
 					ref left,
 					ref top,
 					"cbIncGraphics",
-					SimPe.Localization.GetString("FileTableIncludeGraphics")
+					Localization.GetString("FileTableIncludeGraphics")
 				);
 				/* if (!ei.Exists && ei.InstallFolder == "")
 				 * ei.Exists only checks if SimPe found the Window registary entries
@@ -1294,8 +1293,8 @@ namespace SimPe
 						ref left,
 						ref top,
 						ei.NameShort,
-						SimPe
-							.Localization.GetString("FileTableSectionInclude")
+
+							Localization.GetString("FileTableSectionInclude")
 							.Replace("{what}", ei.NameShort)
 					);
 					cb.Tag = ei;
@@ -1331,7 +1330,7 @@ namespace SimPe
 					lfti.Add(fti);
 				}
 
-				FileTable.StoreFoldersXml(lfti);
+				FileTableBase.StoreFoldersXml(lfti);
 				FileTable.Reload();
 			}
 			finally
@@ -1349,9 +1348,9 @@ namespace SimPe
 			this.Enabled = false;
 			try
 			{
-				FileTable.BuildFolderXml();
-				FileTable.FileIndex.BaseFolders.Clear();
-				FileTable.FileIndex.BaseFolders = FileTable.DefaultFolders;
+				FileTableBase.BuildFolderXml();
+				FileTableBase.FileIndex.BaseFolders.Clear();
+				FileTableBase.FileIndex.BaseFolders = FileTableBase.DefaultFolders;
 
 				RebuildFileTableList();
 
@@ -1368,7 +1367,7 @@ namespace SimPe
 		void RebuildFileTableList()
 		{
 			lbfolder.Items.Clear();
-			foreach (FileTableItem fti in FileTable.FileIndex.BaseFolders)
+			foreach (FileTableItem fti in FileTableBase.FileIndex.BaseFolders)
 			{
 				lbfolder.Items.Add(fti, !fti.Ignore);
 			}
@@ -1719,16 +1718,16 @@ namespace SimPe
 			{
 				FileTableItem fti = new FileTableItem("Downloads", true, false, -1);
 				if (
-					SimPe
-						.PathProvider.Global.GetSaveGamePathForGroup(
-							SimPe.PathProvider.Global.CurrentGroup
+
+						PathProvider.Global.GetSaveGamePathForGroup(
+							PathProvider.Global.CurrentGroup
 						)
 						.Count > 0
 				)
 				{
 					fti.Name = System.IO.Path.Combine(
-						SimPe.PathProvider.Global.GetSaveGamePathForGroup(
-							SimPe.PathProvider.Global.CurrentGroup
+						PathProvider.Global.GetSaveGamePathForGroup(
+							PathProvider.Global.CurrentGroup
 						)[0],
 						"Downloads"
 					);

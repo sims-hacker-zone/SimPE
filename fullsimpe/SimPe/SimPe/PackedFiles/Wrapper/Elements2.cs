@@ -109,7 +109,7 @@ namespace SimPe.PackedFiles.Wrapper
 			// cbtype
 			//
 			resources.ApplyResources(this.cbtype, "cbtype");
-			this.cbtype.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbtype.DropDownStyle = ComboBoxStyle.DropDownList;
 			this.cbtype.Name = "cbtype";
 			this.cbtype.SelectedIndexChanged += new EventHandler(
 				this.CpfAutoChange
@@ -124,7 +124,7 @@ namespace SimPe.PackedFiles.Wrapper
 			// rtbcpfname
 			//
 			resources.ApplyResources(this.rtbcpfname, "rtbcpfname");
-			this.rtbcpfname.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.rtbcpfname.BorderStyle = BorderStyle.None;
 			this.rtbcpfname.Name = "rtbcpfname";
 			this.rtbcpfname.TextChanged += new EventHandler(this.CpfAutoChange);
 			//
@@ -137,7 +137,7 @@ namespace SimPe.PackedFiles.Wrapper
 			// rtbcpf
 			//
 			resources.ApplyResources(this.rtbcpf, "rtbcpf");
-			this.rtbcpf.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.rtbcpf.BorderStyle = BorderStyle.None;
 			this.rtbcpf.Name = "rtbcpf";
 			this.rtbcpf.TextChanged += new EventHandler(this.CpfAutoChange);
 			//
@@ -210,7 +210,7 @@ namespace SimPe.PackedFiles.Wrapper
 			// CpfPanel
 			//
 			this.CpfPanel.BackColor = System.Drawing.Color.Transparent;
-			this.CpfPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.CpfPanel.BorderStyle = BorderStyle.FixedSingle;
 			this.CpfPanel.Controls.Add(this.pbicon);
 			this.CpfPanel.Controls.Add(this.lbcpf);
 			this.CpfPanel.Controls.Add(this.panel5);

@@ -325,7 +325,7 @@ namespace SimPe.PackedFiles.Wrapper
 		//all covered by AbstractWrapper
 		protected override string GetResourceName(Data.TypeAlias ta)
 		{
-			if (!SimPe.Helper.FileFormat)
+			if (!Helper.FileFormat)
 			{
 				return base.GetResourceName(ta);
 			}

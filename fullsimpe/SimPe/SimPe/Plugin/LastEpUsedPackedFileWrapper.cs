@@ -45,7 +45,7 @@ namespace SimPe.Plugin
 				"Chris",
 				"To View the Last EP Used in NeighborhoodManager.package",
 				2,
-				SimPe.GetIcon.ReadOnly
+				GetIcon.ReadOnly
 			);
 		}
 
@@ -69,7 +69,7 @@ namespace SimPe.Plugin
 				&& Prevep == 7
 				&& reader.BaseStream.Length > 600
 				&& PathProvider
-					.Global.GetExpansion(SimPe.Expansions.IslandStories)
+					.Global.GetExpansion(Expansions.IslandStories)
 					.Exists
 			)
 			{

@@ -179,7 +179,7 @@ namespace SimPe.Cache
 			{
 				System.Collections.ArrayList list = new System.Collections.ArrayList();
 				Data.ObjFunctionSortBits[] ss = (Data.ObjFunctionSortBits[])
-					System.Enum.GetValues(typeof(Data.ObjFunctionSortBits));
+					Enum.GetValues(typeof(Data.ObjFunctionSortBits));
 				foreach (Data.ObjFunctionSortBits s in ss)
 				{
 					if ((ofss & (uint)Math.Pow(2, (byte)s)) != 0)
@@ -200,8 +200,8 @@ namespace SimPe.Cache
 				{
 					Data.XObjFunctionSubSort fss = (Data.XObjFunctionSubSort)subsort;
 					ret = new string[1][];
-					string[] ps = SimPe
-						.Localization.GetString(
+					string[] ps =
+						Localization.GetString(
 							"SimPe.Data.XObjFunctionSubSort." + fss.ToString()
 						)
 						.Replace(" / ", "_")
@@ -210,7 +210,7 @@ namespace SimPe.Cache
 					{
 						ret[0] = new string[]
 						{
-							SimPe.Localization.GetString("XObject"),
+							Localization.GetString("XObject"),
 							ps[0],
 							ps[1],
 						};
@@ -219,7 +219,7 @@ namespace SimPe.Cache
 					{
 						ret[0] = new string[]
 						{
-							SimPe.Localization.GetString("XObject"),
+							Localization.GetString("XObject"),
 							ps[0],
 						};
 					}
@@ -233,7 +233,7 @@ namespace SimPe.Cache
 					System.Collections.ArrayList list =
 						new System.Collections.ArrayList();
 					Data.ObjFunctionSortBits[] ss = (Data.ObjFunctionSortBits[])
-						System.Enum.GetValues(typeof(Data.ObjFunctionSortBits));
+						Enum.GetValues(typeof(Data.ObjFunctionSortBits));
 
 					foreach (Data.ObjFunctionSortBits s in ss)
 					{
@@ -250,8 +250,8 @@ namespace SimPe.Cache
 										(Data.ObjFunctionSubSort)(
 											((vu & 0xfff) << 8) | (v & 0xff)
 										);
-									string[] ps = SimPe
-										.Localization.GetString(
+									string[] ps =
+										Localization.GetString(
 											"SimPe.Data.ObjFunctionSubSort."
 												+ mss.ToString()
 										)
@@ -267,7 +267,7 @@ namespace SimPe.Cache
 										list.Add(
 											new string[]
 											{
-												SimPe.Localization.GetString(
+												Localization.GetString(
 													"SimPe.Data.ObjFunctionSortBits."
 														+ s.ToString()
 												),
@@ -283,7 +283,7 @@ namespace SimPe.Cache
 								list.Add(
 									new string[]
 									{
-										SimPe.Localization.GetString(
+										Localization.GetString(
 											"SimPe.Data.ObjFunctionSortBits."
 												+ s.ToString()
 										),
@@ -315,8 +315,8 @@ namespace SimPe.Cache
 				list.Add(
 					new string[]
 					{
-						SimPe.Localization.GetString("Other"),
-						SimPe.Localization.GetString(
+						Localization.GetString("Other"),
+						Localization.GetString(
 							"SimPe.Data.ObjectTypes." + type.ToString()
 						),
 					}
@@ -334,7 +334,7 @@ namespace SimPe.Cache
 			{
 				ret = new string[][]
 				{
-					new string[] { SimPe.Localization.GetString("Unknown") },
+					new string[] { Localization.GetString("Unknown") },
 				};
 			}
 
@@ -342,7 +342,7 @@ namespace SimPe.Cache
 			{
 				ret = new string[][]
 				{
-					new string[] { SimPe.Localization.GetString("Unknown") },
+					new string[] { Localization.GetString("Unknown") },
 				};
 			}
 

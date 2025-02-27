@@ -103,7 +103,7 @@ namespace SimPe
 
 		public virtual string GetPropertyDescription()
 		{
-			return SimPe.Serializer.Serialize(this);
+			return Serialize(this);
 		}
 
 		public override string ToString()

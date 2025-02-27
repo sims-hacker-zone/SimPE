@@ -37,7 +37,7 @@ namespace SimPe
 			cbProfiles.BeginUpdate();
 			cbProfiles.Items.Clear();
 			foreach (
-				string s in Directory.GetDirectories(SimPe.Helper.DataFolder.Profiles)
+				string s in Directory.GetDirectories(Helper.DataFolder.Profiles)
 			)
 			{
 				cbProfiles.Items.Add(Path.GetFileName(s));

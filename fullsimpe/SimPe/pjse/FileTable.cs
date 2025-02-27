@@ -40,7 +40,7 @@ namespace pjse
 			{
 				if (gft == null)
 				{
-					if (SimPe.FileTable.FileIndex != null)
+					if (SimPe.FileTableBase.FileIndex != null)
 					{
 						gft = new FileTable();
 					}
@@ -56,9 +56,9 @@ namespace pjse
 
 		public FileTable()
 		{
-			if (SimPe.FileTable.FileIndex != null)
+			if (SimPe.FileTableBase.FileIndex != null)
 			{
-				SimPe.FileTable.FileIndex.FILoad += new EventHandler(
+				SimPe.FileTableBase.FileIndex.FILoad += new EventHandler(
 					this.FileIndex_FILoad
 				);
 			}
@@ -150,9 +150,9 @@ namespace pjse
 				if (SimPe.Wait.Running)
 				{
 					SimPe.Wait.Progress = 0;
-					SimPe.Wait.MaxProgress = SimPe.FileTable.DefaultFolders.Count;
+					SimPe.Wait.MaxProgress = SimPe.FileTableBase.DefaultFolders.Count;
 				}
-				foreach (SimPe.FileTableItem fii in SimPe.FileTable.DefaultFolders)
+				foreach (SimPe.FileTableItem fii in SimPe.FileTableBase.DefaultFolders)
 				{
 					if (fii.Use)
 					{
@@ -324,7 +324,7 @@ namespace pjse
 				"Loading "
 					+ ep
 					+ " "
-					+ System.IO.Path.GetFileName(v).Replace(".package", "")
+					+ Path.GetFileName(v).Replace(".package", "")
 			);
 			if (Directory.Exists(v))
 			{
@@ -620,7 +620,7 @@ namespace pjse
 				this.IsFixed = isFixed;
 
 				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] fiis =
-					SimPe.FileTable.FileIndex.FindFile(pfd, package);
+					SimPe.FileTableBase.FileIndex.FindFile(pfd, package);
 				this.fii = (fiis.Length == 1) ? fiis[0] : null;
 
 				this.PFD.ChangedData += new SimPe.Events.PackedFileChanged(
@@ -630,12 +630,12 @@ namespace pjse
 
 			void pfd_ChangedData(IPackedFileDescriptor sender)
 			{
-				if (FileTable.filenames[this] != null)
+				if (filenames[this] != null)
 				{
-					FileTable.filenames.Remove(this);
+					filenames.Remove(this);
 				}
 
-				FileTable.GFT.OnFiletableRefresh(GFT, new EventArgs());
+				GFT.OnFiletableRefresh(GFT, new EventArgs());
 			}
 
 			public IPackageFile Package
@@ -669,7 +669,7 @@ namespace pjse
 				get
 				{
 					AbstractWrapper wrapper = (AbstractWrapper)
-						SimPe.FileTable.WrapperRegistry.FindHandler(Type);
+						SimPe.FileTableBase.WrapperRegistry.FindHandler(Type);
 					if (wrapper != null)
 					{
 						wrapper.ProcessData(PFD, Package);
@@ -686,18 +686,18 @@ namespace pjse
 
 			public static implicit operator string(Entry e)
 			{
-				if (FileTable.filenames[e] == null)
+				if (filenames[e] == null)
 				{
 					AbstractWrapper wrapper = e.Wrapper;
 					if (wrapper != null)
 					{
-						FileTable.filenames[e] = SimPe
+						filenames[e] = SimPe
 							.Helper.ToString(wrapper.StoredData.ReadBytes(64))
 							.Trim();
 					}
 				}
 
-				return (string)FileTable.filenames[e];
+				return (string)filenames[e];
 			}
 
 			#region IDisposable Members
@@ -984,7 +984,7 @@ namespace pjse
 		public bool IsEnabled(IPackedFileDescriptor pfd, IPackageFile package)
 		{
 #if DEBUG
-			pjse.FileTable.GFT.CurrentPackage = package;
+			FileTable.GFT.CurrentPackage = package;
 #else
 			try
 			{
@@ -1012,7 +1012,7 @@ namespace pjse
 
 		public override string ToString()
 		{
-			return "PJSE\\" + pjse.Localization.GetString("ft_Refresh");
+			return "PJSE\\" + Localization.GetString("ft_Refresh");
 		}
 
 		#endregion
@@ -1070,7 +1070,7 @@ namespace pjse
 
 		public override string ToString()
 		{
-			return pjse.Localization.GetString("ft_Settings");
+			return Localization.GetString("ft_Settings");
 		}
 
 		[System.ComponentModel.Browsable(false)]

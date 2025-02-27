@@ -65,8 +65,8 @@ namespace SimPe.Plugin
 			//
 			// cb
 			//
-			this.cb.Dock = System.Windows.Forms.DockStyle.Top;
-			this.cb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cb.Dock = DockStyle.Top;
+			this.cb.DropDownStyle = ComboBoxStyle.DropDownList;
 			this.cb.Location = new System.Drawing.Point(0, 0);
 			this.cb.Name = "cb";
 			this.cb.Size = new System.Drawing.Size(150, 21);

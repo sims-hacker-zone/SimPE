@@ -158,7 +158,7 @@ namespace SimPe
 				contfl,
 				shortname,
 				type,
-				SimPe.Localization.GetString(name),
+				Localization.GetString(name),
 				ext,
 				known,
 				nodecomp

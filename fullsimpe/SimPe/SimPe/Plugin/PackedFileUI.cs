@@ -41,7 +41,7 @@ namespace SimPe.Plugin
 			//form = WrapperFactory.form;
 			form = new RefFileForm();
 
-			foreach (Interfaces.IAlias alias in SimPe.Helper.TGILoader.FileTypes)
+			foreach (Interfaces.IAlias alias in Helper.TGILoader.FileTypes)
 			{
 				form.cbtypes.Items.Add(alias);
 			}
@@ -63,7 +63,7 @@ namespace SimPe.Plugin
 		/// <param name="wrapper">The Attributes of this Wrapper have to be displayed</param>
 		public void UpdateGUI(IFileWrapper wrapper)
 		{
-			FileTable.FileIndex.Load();
+			FileTableBase.FileIndex.Load();
 			form.wrapper = (IFileWrapperSaveExtension)wrapper;
 
 			RefFile mywrapper = (RefFile)wrapper;

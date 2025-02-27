@@ -135,7 +135,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// treeView1
 			//
 			this.treeView1.ContextMenu = this.cmLangList;
-			this.treeView1.Dock = System.Windows.Forms.DockStyle.Left;
+			this.treeView1.Dock = DockStyle.Left;
 			this.treeView1.ImageIndex = -1;
 			this.treeView1.Location = new System.Drawing.Point(0, 0);
 			this.treeView1.Name = "treeView1";
@@ -164,13 +164,13 @@ namespace SimPe.PackedFiles.UserInterface
 			// menuItem1
 			//
 			this.menuItem1.Index = 0;
-			this.menuItem1.Shortcut = System.Windows.Forms.Shortcut.CtrlC;
+			this.menuItem1.Shortcut = Shortcut.CtrlC;
 			this.menuItem1.Text = "&Copy";
 			//
 			// menuItem2
 			//
 			this.menuItem2.Index = 1;
-			this.menuItem2.Shortcut = System.Windows.Forms.Shortcut.CtrlV;
+			this.menuItem2.Shortcut = Shortcut.CtrlV;
 			this.menuItem2.Text = "&Paste";
 			//
 			// menuItem3
@@ -197,19 +197,17 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 			);
 			this.listView1.ContextMenu = this.cmStrList;
-			this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.listView1.Dock = DockStyle.Fill;
 			this.listView1.FullRowSelect = true;
 			this.listView1.GridLines = true;
-			this.listView1.HeaderStyle = System
-				.Windows
-				.Forms
-				.ColumnHeaderStyle
+			this.listView1.HeaderStyle =
+				ColumnHeaderStyle
 				.Nonclickable;
 			this.listView1.Location = new System.Drawing.Point(219, 0);
 			this.listView1.Name = "listView1";
 			this.listView1.Size = new System.Drawing.Size(621, 144);
 			this.listView1.TabIndex = 2;
-			this.listView1.View = System.Windows.Forms.View.Details;
+			this.listView1.View = View.Details;
 			//
 			// colLine
 			//
@@ -243,13 +241,13 @@ namespace SimPe.PackedFiles.UserInterface
 			// menuItem4
 			//
 			this.menuItem4.Index = 1;
-			this.menuItem4.Shortcut = System.Windows.Forms.Shortcut.CtrlC;
+			this.menuItem4.Shortcut = Shortcut.CtrlC;
 			this.menuItem4.Text = "&Copy";
 			//
 			// menuItem5
 			//
 			this.menuItem5.Index = 2;
-			this.menuItem5.Shortcut = System.Windows.Forms.Shortcut.CtrlV;
+			this.menuItem5.Shortcut = Shortcut.CtrlV;
 			this.menuItem5.Text = "&Paste";
 			//
 			// menuItem6
@@ -265,13 +263,13 @@ namespace SimPe.PackedFiles.UserInterface
 			// menuItem8
 			//
 			this.menuItem8.Index = 4;
-			this.menuItem8.Shortcut = System.Windows.Forms.Shortcut.Ins;
+			this.menuItem8.Shortcut = Shortcut.Ins;
 			this.menuItem8.Text = "&Add";
 			//
 			// menuItem9
 			//
 			this.menuItem9.Index = 5;
-			this.menuItem9.Shortcut = System.Windows.Forms.Shortcut.Del;
+			this.menuItem9.Shortcut = Shortcut.Del;
 			this.menuItem9.Text = "&Delete";
 			//
 			// menuItem10
@@ -283,13 +281,13 @@ namespace SimPe.PackedFiles.UserInterface
 			// menuItem11
 			//
 			this.menuItem11.Index = 4;
-			this.menuItem11.Shortcut = System.Windows.Forms.Shortcut.Ins;
+			this.menuItem11.Shortcut = Shortcut.Ins;
 			this.menuItem11.Text = "&Add";
 			//
 			// menuItem12
 			//
 			this.menuItem12.Index = 5;
-			this.menuItem12.Shortcut = System.Windows.Forms.Shortcut.Del;
+			this.menuItem12.Shortcut = Shortcut.Del;
 			this.menuItem12.Text = "&Delete";
 			//
 			// StrListViewer

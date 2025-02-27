@@ -298,7 +298,7 @@ namespace SimPe.PackedFiles.Wrapper
 			: base()
 		{
 			filename = new byte[64];
-			Format = SimPe.Data.MetaData.FormatCode.normal;
+			Format = Data.MetaData.FormatCode.normal;
 			Lines = new Hashtable();
 			this.limit = limit;
 		}
@@ -310,7 +310,7 @@ namespace SimPe.PackedFiles.Wrapper
 			: base()
 		{
 			filename = new byte[64];
-			Format = SimPe.Data.MetaData.FormatCode.normal;
+			Format = Data.MetaData.FormatCode.normal;
 			Lines = new Hashtable();
 			this.limit = 0;
 		}

@@ -60,7 +60,7 @@ namespace SimPe.Plugin
 			string naem
 		)
 		{
-			string retst = "GUID 0x" + SimPe.Helper.HexString(guid);
+			string retst = "GUID 0x" + Helper.HexString(guid);
 			String objName = pjse.GUIDIndex.TheGUIDIndex[guid];
 			if (guid == origuid)
 			{
@@ -83,7 +83,7 @@ namespace SimPe.Plugin
 				{
 					retst +=
 						" -FALLBACK 0x"
-						+ SimPe.Helper.HexString(origuid)
+						+ Helper.HexString(origuid)
 						+ "  (\""
 						+ objName
 						+ "\")";
@@ -92,7 +92,7 @@ namespace SimPe.Plugin
 				{
 					retst +=
 						" -FALLBACK 0x"
-						+ SimPe.Helper.HexString(origuid)
+						+ Helper.HexString(origuid)
 						+ "  (\""
 						+ naem
 						+ "\")";
@@ -101,7 +101,7 @@ namespace SimPe.Plugin
 				{
 					retst +=
 						" -FALLBACK 0x"
-						+ SimPe.Helper.HexString(origuid)
+						+ Helper.HexString(origuid)
 						+ "  (\""
 						+ naem
 						+ "**\")";
@@ -154,7 +154,7 @@ namespace SimPe.Plugin
 				"Chris",
 				"Reads the Lot Objects componant in a lot. Will test for the Super Duper Hug",
 				2,
-				SimPe.GetIcon.ReadOnly
+				GetIcon.ReadOnly
 			);
 		}
 
@@ -204,7 +204,7 @@ namespace SimPe.Plugin
 					namer = reader.ReadString(); // internal name, usually from the OBDJ not the catalogue
 					if (namer == "")
 					{
-						namer = SimPe.Localization.GetString("Unknown"); // multi tile items have no name, would be a problem if it's not in the pjse GUID list
+						namer = Localization.GetString("Unknown"); // multi tile items have no name, would be a problem if it's not in the pjse GUID list
 					}
 
 					reader.BaseStream.Seek(4, System.IO.SeekOrigin.Current); // 4 bit byte usually empty but not on multi tile items

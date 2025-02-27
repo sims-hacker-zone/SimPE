@@ -82,7 +82,7 @@ namespace SimPe.Plugin
 				"Chris",
 				"To view lot terrain textures, individual sim memories and Nid remapping",
 				3,
-				SimPe.GetIcon.ReadOnly
+				GetIcon.ReadOnly
 			);
 		}
 
@@ -178,7 +178,7 @@ namespace SimPe.Plugin
 				PackedFiles.Wrapper.ExtSDesc sdesc =
 					new PackedFiles.Wrapper.ExtSDesc();
 				Interfaces.Files.IPackedFileDescriptor[] files =
-					package.FindFiles(SimPe.Data.MetaData.SIM_DESCRIPTION_FILE);
+					package.FindFiles(Data.MetaData.SIM_DESCRIPTION_FILE);
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in files)
 				{
 					sdesc.ProcessData(pfd, package);
@@ -190,7 +190,7 @@ namespace SimPe.Plugin
 				}
 				if (!dided)
 				{
-					Hoodtexture = SimPe.Localization.GetString("Unknown");
+					Hoodtexture = Localization.GetString("Unknown");
 				}
 			}
 			else if (this.FileDescriptor.Type == 0x2DB5C0F4) // Nid Map
@@ -228,7 +228,7 @@ namespace SimPe.Plugin
 						}
 						else
 						{
-							texchure[i] = SimPe.Localization.GetString("Unknown");
+							texchure[i] = Localization.GetString("Unknown");
 						}
 					}
 					else
@@ -307,7 +307,7 @@ namespace SimPe.Plugin
 			if (this.FileDescriptor.Type == 0xCDB8BDC4)
 			{
 				PackedFiles.Wrapper.ExtSDesc sdsc =
-					FileTable.ProviderRegistry.SimDescriptionProvider.FindSim(
+					FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
 						(ushort)this.FileDescriptor.Instance
 					) as PackedFiles.Wrapper.ExtSDesc;
 				if (sdsc == null)

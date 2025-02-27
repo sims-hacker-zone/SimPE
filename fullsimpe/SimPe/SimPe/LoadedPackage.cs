@@ -147,11 +147,11 @@ namespace SimPe
 				Package.RemovedResource += new EventHandler(RemovedResourcehandler);
 				Package.SavedIndex += new EventHandler(SavedIndexHandler);
 
-				SimPe.Packages.StreamFactory.LockStream(Package.SaveFileName);
+				Packages.StreamFactory.LockStream(Package.SaveFileName);
 			}
 			else
 			{
-				SimPe.Packages.StreamFactory.UnlockStream(Package.SaveFileName);
+				Packages.StreamFactory.UnlockStream(Package.SaveFileName);
 
 				Package.IndexChanged -= new EventHandler(IndexChangedHandler);
 				Package.AddedResource -= new EventHandler(AddedResourceHandler);
@@ -203,7 +203,7 @@ namespace SimPe
 					this.SetupEvents(false);
 				}
 
-				Package = SimPe.Packages.File.LoadFromFile(e.FileName, sync);
+				Package = Packages.File.LoadFromFile(e.FileName, sync);
 
 				if (Package.Index.Length < Helper.WindowsRegistry.BigPackageResourceCount)
 				{
@@ -382,18 +382,18 @@ namespace SimPe
 					string mname = Helper.GetMainNeighborhoodFile(pkg.SaveFileName);
 					if (mname != pkg.SaveFileName)
 					{
-						pkg = SimPe.Packages.GeneratableFile.LoadFromFile(mname);
+						pkg = Packages.File.LoadFromFile(mname);
 					}
 				}
 				catch { }
-				FileTable.ProviderRegistry.SimFamilynameProvider.BasePackage = pkg;
-				FileTable.ProviderRegistry.SimDescriptionProvider.BasePackage = pkg;
-				FileTable.ProviderRegistry.SimNameProvider.BaseFolder =
+				FileTableBase.ProviderRegistry.SimFamilynameProvider.BasePackage = pkg;
+				FileTableBase.ProviderRegistry.SimDescriptionProvider.BasePackage = pkg;
+				FileTableBase.ProviderRegistry.SimNameProvider.BaseFolder =
 					System.IO.Path.Combine(
 						System.IO.Path.GetDirectoryName(FileName),
 						"Characters"
 					);
-				FileTable.ProviderRegistry.LotProvider.BaseFolder =
+				FileTableBase.ProviderRegistry.LotProvider.BaseFolder =
 					System.IO.Path.Combine(
 						System.IO.Path.GetDirectoryName(FileName),
 						"Lots"
@@ -406,20 +406,20 @@ namespace SimPe
 					&& (Helper.WindowsRegistry.LoadMetaInfo)
 				)
 				{
-					FileTable.ProviderRegistry.SimFamilynameProvider.BasePackage = Package;
-					FileTable.ProviderRegistry.SimDescriptionProvider.BasePackage = Package;
-					FileTable.ProviderRegistry.SimNameProvider.BaseFolder =
+					FileTableBase.ProviderRegistry.SimFamilynameProvider.BasePackage = Package;
+					FileTableBase.ProviderRegistry.SimDescriptionProvider.BasePackage = Package;
+					FileTableBase.ProviderRegistry.SimNameProvider.BaseFolder =
 						System.IO.Path.GetDirectoryName(FileName);
-					FileTable.ProviderRegistry.LotProvider.BaseFolder =
+					FileTableBase.ProviderRegistry.LotProvider.BaseFolder =
 						System.IO.Path.GetDirectoryName(FileName);
 				}
 				else
 				{
-					FileTable.ProviderRegistry.SimNameProvider.BaseFolder = "";
-					FileTable.ProviderRegistry.SimFamilynameProvider.BasePackage = null;
-					FileTable.ProviderRegistry.SimDescriptionProvider.BasePackage =
+					FileTableBase.ProviderRegistry.SimNameProvider.BaseFolder = "";
+					FileTableBase.ProviderRegistry.SimFamilynameProvider.BasePackage = null;
+					FileTableBase.ProviderRegistry.SimDescriptionProvider.BasePackage =
 						null;
-					FileTable.ProviderRegistry.LotProvider.BaseFolder = "";
+					FileTableBase.ProviderRegistry.LotProvider.BaseFolder = "";
 				}
 			}
 		}
@@ -435,11 +435,11 @@ namespace SimPe
 				bool res = true;
 				if (Package.HasUserChanges)
 				{
-					DialogResult dr = SimPe.Message.Show(
-						SimPe
-							.Localization.Manager.GetString("savechanges")
+					DialogResult dr = Message.Show(
+
+							Localization.Manager.GetString("savechanges")
 							.Replace("{filename}", FileName),
-						SimPe.Localization.Manager.GetString("savechanges?"),
+						Localization.Manager.GetString("savechanges?"),
 						MessageBoxButtons.YesNoCancel
 					);
 
@@ -520,105 +520,105 @@ namespace SimPe
 		{
 			if (i == 1)
 			{
-				return System.Windows.Forms.Shortcut.Ctrl1;
+				return Shortcut.Ctrl1;
 			}
 
 			if (i == 2)
 			{
-				return System.Windows.Forms.Shortcut.Ctrl2;
+				return Shortcut.Ctrl2;
 			}
 
 			if (i == 3)
 			{
-				return System.Windows.Forms.Shortcut.Ctrl3;
+				return Shortcut.Ctrl3;
 			}
 
 			if (i == 4)
 			{
-				return System.Windows.Forms.Shortcut.Ctrl4;
+				return Shortcut.Ctrl4;
 			}
 
 			if (i == 5)
 			{
-				return System.Windows.Forms.Shortcut.Ctrl5;
+				return Shortcut.Ctrl5;
 			}
 
 			if (i == 6)
 			{
-				return System.Windows.Forms.Shortcut.Ctrl6;
+				return Shortcut.Ctrl6;
 			}
 
 			if (i == 7)
 			{
-				return System.Windows.Forms.Shortcut.Ctrl7;
+				return Shortcut.Ctrl7;
 			}
 
 			if (i == 8)
 			{
-				return System.Windows.Forms.Shortcut.Ctrl8;
+				return Shortcut.Ctrl8;
 			}
 
 			if (i == 9)
 			{
-				return System.Windows.Forms.Shortcut.Ctrl9;
+				return Shortcut.Ctrl9;
 			}
 
 			if (i == 10)
 			{
-				return System.Windows.Forms.Shortcut.Ctrl0;
+				return Shortcut.Ctrl0;
 			}
 
 			if (i == 11)
 			{
-				return System.Windows.Forms.Shortcut.Alt1;
+				return Shortcut.Alt1;
 			}
 
 			if (i == 12)
 			{
-				return System.Windows.Forms.Shortcut.Alt2;
+				return Shortcut.Alt2;
 			}
 
 			if (i == 13)
 			{
-				return System.Windows.Forms.Shortcut.Alt3;
+				return Shortcut.Alt3;
 			}
 
 			if (i == 14)
 			{
-				return System.Windows.Forms.Shortcut.Alt4;
+				return Shortcut.Alt4;
 			}
 
 			if (i == 15)
 			{
-				return System.Windows.Forms.Shortcut.Alt5;
+				return Shortcut.Alt5;
 			}
 
 			if (i == 16)
 			{
-				return System.Windows.Forms.Shortcut.Alt6;
+				return Shortcut.Alt6;
 			}
 
 			if (i == 17)
 			{
-				return System.Windows.Forms.Shortcut.Alt7;
+				return Shortcut.Alt7;
 			}
 
 			if (i == 18)
 			{
-				return System.Windows.Forms.Shortcut.Alt8;
+				return Shortcut.Alt8;
 			}
 
 			if (i == 19)
 			{
-				return System.Windows.Forms.Shortcut.Alt9;
+				return Shortcut.Alt9;
 			}
 
 			if (i == 20)
 			{
-				return System.Windows.Forms.Shortcut.Alt0;
+				return Shortcut.Alt0;
 			}
 
-			return System.Windows.Forms.Shortcut.None;
+			return Shortcut.None;
 		}
 
 		/// <summary>
@@ -689,7 +689,7 @@ namespace SimPe
 
 			if (!Loaded && create)
 			{
-				this.LoadFromPackage(SimPe.Packages.GeneratableFile.CreateNew());
+				this.LoadFromPackage(Packages.File.CreateNew());
 			}
 
 			ExtensionType et = ExtensionProvider.GetExtension(names[0]);
@@ -797,7 +797,7 @@ namespace SimPe
 			{
 				if (flname.ToLower().EndsWith("package.xml"))
 				{
-					Packages.File pkg = Packages.GeneratableFile.LoadFromStream(
+					Packages.File pkg = Packages.File.LoadFromStream(
 						XmlPackageReader.OpenExtractedPackage(null, flname)
 					);
 					foreach (Interfaces.Files.IPackedFileDescriptor pfd in pkg.Index)
@@ -824,7 +824,7 @@ namespace SimPe
 					|| flname.ToLower().EndsWith(".simpedis")
 				)
 				{
-					Packages.File pkg = SimPe.Packages.File.LoadFromFile(flname);
+					Packages.File pkg = Packages.File.LoadFromFile(flname);
 					foreach (Interfaces.Files.IPackedFileDescriptor pfd in pkg.Index)
 					{
 						Interfaces.Files.IPackedFile file = pkg.Read(pfd);

@@ -32,7 +32,7 @@ namespace SimPe
 
 			public FolderWrapper(string name, string folder)
 			{
-				this.name = SimPe.Localization.GetString(name);
+				this.name = Localization.GetString(name);
 				this.Folder = folder;
 			}
 
@@ -118,7 +118,7 @@ namespace SimPe
 			this.xpGradientPanel1.Controls.Add(this.tbFolder);
 			this.xpGradientPanel1.Controls.Add(this.button1);
 			this.xpGradientPanel1.Controls.Add(this.label1);
-			this.xpGradientPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.xpGradientPanel1.Dock = DockStyle.Fill;
 			this.xpGradientPanel1.Location = new System.Drawing.Point(0, 0);
 			this.xpGradientPanel1.Name = "xpGradientPanel1";
 			this.xpGradientPanel1.Size = new System.Drawing.Size(674, 80);
@@ -129,12 +129,12 @@ namespace SimPe
 			this.btOK.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.btOK.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.btOK.FlatStyle = FlatStyle.System;
 			this.btOK.Location = new System.Drawing.Point(512, 52);
 			this.btOK.Name = "btOK";
 			this.btOK.Size = new System.Drawing.Size(75, 23);
@@ -147,13 +147,13 @@ namespace SimPe
 			this.btCancel.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.btCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.btCancel.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.btCancel.DialogResult = DialogResult.Cancel;
+			this.btCancel.FlatStyle = FlatStyle.System;
 			this.btCancel.Location = new System.Drawing.Point(592, 52);
 			this.btCancel.Name = "btCancel";
 			this.btCancel.Size = new System.Drawing.Size(75, 23);
@@ -167,9 +167,9 @@ namespace SimPe
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -188,9 +188,9 @@ namespace SimPe
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -204,12 +204,12 @@ namespace SimPe
 			this.button1.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.button1.FlatStyle = FlatStyle.System;
 			this.button1.Location = new System.Drawing.Point(592, 8);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(75, 23);
@@ -248,10 +248,10 @@ namespace SimPe
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+			this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
 			this.Name = "SelectSimFolder";
 			this.ShowInTaskbar = false;
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			this.StartPosition = FormStartPosition.CenterScreen;
 			this.Text = "Select Sim Folder";
 			this.xpGradientPanel1.ResumeLayout(false);
 			this.ResumeLayout(false);
@@ -361,7 +361,7 @@ namespace SimPe
 		/// </returns>
 		public string EditValue(string value)
 		{
-			return SimPe.SelectSimFolder.ShowDialog(value);
+			return SelectSimFolder.ShowDialog(value);
 		}
 	}
 }

@@ -59,12 +59,12 @@ namespace pjse
 		{
 			guidIndex = new Dictionary<uint, IndexItem>();
 			FileTable.Entry[] items =
-				(fromCurrent && pjse.FileTable.GFT.CurrentPackage != null)
-					? pjse.FileTable.GFT[
-						pjse.FileTable.GFT.CurrentPackage,
+				(fromCurrent && FileTable.GFT.CurrentPackage != null)
+					? FileTable.GFT[
+						FileTable.GFT.CurrentPackage,
 						SimPe.Data.MetaData.OBJD_FILE
 					]
-					: pjse.FileTable.GFT[SimPe.Data.MetaData.OBJD_FILE];
+					: FileTable.GFT[SimPe.Data.MetaData.OBJD_FILE];
 
 			SimPe.Wait.Start(items.Length);
 			try
@@ -82,7 +82,7 @@ namespace pjse
 
 						IndexItem ii = new IndexItem();
 
-						FileTable.Entry[] globs = pjse.FileTable.GFT[
+						FileTable.Entry[] globs = FileTable.GFT[
 							0x474C4F42,
 							item.Group
 						];
@@ -112,14 +112,14 @@ namespace pjse
 							{
 								reader.BaseStream.Seek(
 									0x52,
-									System.IO.SeekOrigin.Begin
+									SeekOrigin.Begin
 								);
 								ii.objdType = reader.ReadUInt16();
 								if (reader.BaseStream.Length > 0x5c + 4) // sizeof(uint)
 								{
 									reader.BaseStream.Seek(
 										0x5c,
-										System.IO.SeekOrigin.Begin
+										SeekOrigin.Begin
 									);
 									UInt32 objdGUID = reader.ReadUInt32();
 									guidIndex[objdGUID] = ii;
@@ -132,7 +132,7 @@ namespace pjse
 						SimPe.Wait.Progress++;
 					}
 				}
-				pjse.FileTable.GFT.OnFiletableRefresh(this, new EventArgs());
+				FileTable.GFT.OnFiletableRefresh(this, new EventArgs());
 			}
 			finally
 			{
@@ -196,7 +196,7 @@ namespace pjse
 				sr.Close();
 				sr.Dispose();
 				sr = null;
-				pjse.FileTable.GFT.OnFiletableRefresh(this, new EventArgs());
+				FileTable.GFT.OnFiletableRefresh(this, new EventArgs());
 			}
 		}
 
@@ -208,12 +208,12 @@ namespace pjse
 		public void Save(String toFile)
 		{
 			if (
-				!System.IO.Directory.Exists(
+				!Directory.Exists(
 					Path.Combine(SimPe.Helper.SimPePluginDataPath, "pjse.coder.plugin")
 				)
 			)
 			{
-				System.IO.Directory.CreateDirectory(
+				Directory.CreateDirectory(
 					Path.Combine(SimPe.Helper.SimPePluginDataPath, "pjse.coder.plugin")
 				);
 			}
@@ -256,7 +256,7 @@ namespace pjse
 			ii.objdName = name.Trim() + "**";
 			ii.objdType = type;
 			ii.objdGroup = group;
-			FileTable.Entry[] globs = pjse.FileTable.GFT[0x474C4F42, group];
+			FileTable.Entry[] globs = FileTable.GFT[0x474C4F42, group];
 			ii.semiGlobal =
 				(globs.Length == 0)
 					? 0

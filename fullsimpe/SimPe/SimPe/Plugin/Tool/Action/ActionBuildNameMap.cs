@@ -81,7 +81,7 @@ namespace SimPe.Plugin.Tool.Action
 				fd.SubType = 0;
 
 				Nmap nmap = new Nmap(
-					FileTable.ProviderRegistry
+					FileTableBase.ProviderRegistry
 				);
 				nmap.FileDescriptor = fd;
 				bool add = false;
@@ -145,7 +145,7 @@ namespace SimPe.Plugin.Tool.Action
 		#region IToolExt Member
 		public System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.None;
 
-		public System.Drawing.Image Icon => SimPe.GetIcon.NameMap;
+		public System.Drawing.Image Icon => GetIcon.NameMap;
 
 		public virtual bool Visible => true;
 

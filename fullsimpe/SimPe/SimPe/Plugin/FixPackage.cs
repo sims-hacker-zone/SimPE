@@ -73,7 +73,7 @@ namespace SimPe.Plugin
 					}
 					continue;
 				}
-				SimPe.Message.Show(Help()[0]);
+				Message.Show(Help()[0]);
 				return true;
 			}
 
@@ -98,7 +98,7 @@ namespace SimPe.Plugin
 			if (System.IO.File.Exists(package))
 			{
 				Packages.GeneratableFile pkg =
-					SimPe.Packages.GeneratableFile.LoadFromFile(package);
+					Packages.File.LoadFromFile(package);
 
 				System.Collections.Hashtable map = RenameForm.GetNames(
 					(modelname.Trim() != ""),

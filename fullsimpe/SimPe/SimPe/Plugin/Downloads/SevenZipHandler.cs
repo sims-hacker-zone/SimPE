@@ -14,7 +14,7 @@ namespace SimPe.Plugin.Downloads
 			Ambertation.SevenZip.IO.CommandlineArchive a =
 				new Ambertation.SevenZip.IO.CommandlineArchive(this.ArchiveName);
 			Ambertation.SevenZip.IO.ArchiveFile[] content = a.ListContent();
-			a.Extract(SimPe.Helper.SimPeTeleportPath, false);
+			a.Extract(Helper.SimPeTeleportPath, false);
 
 			foreach (Ambertation.SevenZip.IO.ArchiveFile desc in content)
 			{

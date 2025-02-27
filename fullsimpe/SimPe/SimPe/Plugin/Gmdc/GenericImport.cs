@@ -101,7 +101,7 @@ namespace SimPe.Plugin.Gmdc
 			//
 			// Gradientpanel1
 			//
-			this.Gradientpanel1.BackColor = System.Drawing.Color.Transparent;
+			this.Gradientpanel1.BackColor = Color.Transparent;
 			this.Gradientpanel1.Controls.Add(this.panel1);
 			this.Gradientpanel1.Controls.Add(this.label3);
 			this.Gradientpanel1.Controls.Add(this.xpLine3);
@@ -111,7 +111,7 @@ namespace SimPe.Plugin.Gmdc
 			this.Gradientpanel1.Controls.Add(this.label1);
 			this.Gradientpanel1.Controls.Add(this.xpLine1);
 			this.Gradientpanel1.Controls.Add(this.lvmesh);
-			this.Gradientpanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.Gradientpanel1.Dock = DockStyle.Fill;
 			this.Gradientpanel1.Location = new Point(0, 0);
 			this.Gradientpanel1.Name = "Gradientpanel1";
 			this.Gradientpanel1.Size = new Size(752, 486);
@@ -123,13 +123,13 @@ namespace SimPe.Plugin.Gmdc
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Bottom
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Bottom
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
-			this.panel1.BackColor = System.Drawing.Color.Transparent;
+			this.panel1.BackColor = Color.Transparent;
 			this.panel1.Controls.Add(this.cbClear);
 			this.panel1.Controls.Add(this.button1);
 			this.panel1.Location = new Point(0, 384);
@@ -147,7 +147,7 @@ namespace SimPe.Plugin.Gmdc
 			//
 			// button1
 			//
-			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.button1.FlatStyle = FlatStyle.System;
 			this.button1.Location = new Point(672, 72);
 			this.button1.Name = "button1";
 			this.button1.TabIndex = 0;
@@ -159,20 +159,20 @@ namespace SimPe.Plugin.Gmdc
 			this.label3.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.label3.BackColor = System.Drawing.Color.Transparent;
+			this.label3.BackColor = Color.Transparent;
 			this.label3.Font = new Font(
 				"Tahoma",
 				8.25F,
-				System.Drawing.FontStyle.Bold,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Bold,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label3.ForeColor = System.Drawing.Color.FromArgb(
+			this.label3.ForeColor = Color.FromArgb(
 				((System.Byte)(64)),
 				((System.Byte)(64)),
 				((System.Byte)(64))
@@ -181,7 +181,7 @@ namespace SimPe.Plugin.Gmdc
 			this.label3.Name = "label3";
 			this.label3.TabIndex = 9;
 			this.label3.Text = "Options";
-			this.label3.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			this.label3.TextAlign = ContentAlignment.BottomRight;
 			//
 			// xpLine3
 			//
@@ -189,13 +189,13 @@ namespace SimPe.Plugin.Gmdc
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Bottom
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Bottom
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
-			this.xpLine3.BackColor = System.Drawing.Color.Transparent;
+			this.xpLine3.BackColor = Color.Transparent;
 			this.xpLine3.Location = new Point(9, 376);
 			this.xpLine3.Name = "xpLine3";
 			this.xpLine3.Size = new Size(740, 4);
@@ -208,14 +208,14 @@ namespace SimPe.Plugin.Gmdc
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
-			this.lvbones.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.lvbones.BorderStyle = BorderStyle.None;
 			this.lvbones.Columns.AddRange(
 				new ColumnHeader[]
 				{
@@ -226,10 +226,8 @@ namespace SimPe.Plugin.Gmdc
 				}
 			);
 			this.lvbones.FullRowSelect = true;
-			this.lvbones.HeaderStyle = System
-				.Windows
-				.Forms
-				.ColumnHeaderStyle
+			this.lvbones.HeaderStyle =
+				ColumnHeaderStyle
 				.Nonclickable;
 			this.lvbones.HideSelection = false;
 			this.lvbones.Location = new Point(8, 216);
@@ -237,7 +235,7 @@ namespace SimPe.Plugin.Gmdc
 			this.lvbones.Size = new Size(736, 128);
 			this.lvbones.SmallImageList = this.imageList1;
 			this.lvbones.TabIndex = 7;
-			this.lvbones.View = System.Windows.Forms.View.Details;
+			this.lvbones.View = View.Details;
 			//
 			// clBoneName
 			//
@@ -262,27 +260,27 @@ namespace SimPe.Plugin.Gmdc
 			// imageList1
 			//
 			this.imageList1.ImageSize = new Size(1, 16);
-			this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+			this.imageList1.TransparentColor = Color.Transparent;
 			//
 			// label2
 			//
 			this.label2.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.label2.BackColor = System.Drawing.Color.Transparent;
+			this.label2.BackColor = Color.Transparent;
 			this.label2.Font = new Font(
 				"Tahoma",
 				8.25F,
-				System.Drawing.FontStyle.Bold,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Bold,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label2.ForeColor = System.Drawing.Color.FromArgb(
+			this.label2.ForeColor = Color.FromArgb(
 				((System.Byte)(64)),
 				((System.Byte)(64)),
 				((System.Byte)(64))
@@ -291,7 +289,7 @@ namespace SimPe.Plugin.Gmdc
 			this.label2.Name = "label2";
 			this.label2.TabIndex = 6;
 			this.label2.Text = "Skeleton";
-			this.label2.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			this.label2.TextAlign = ContentAlignment.BottomRight;
 			//
 			// xpLine2
 			//
@@ -299,13 +297,13 @@ namespace SimPe.Plugin.Gmdc
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
-			this.xpLine2.BackColor = System.Drawing.Color.Transparent;
+			this.xpLine2.BackColor = Color.Transparent;
 			this.xpLine2.Location = new Point(9, 208);
 			this.xpLine2.Name = "xpLine2";
 			this.xpLine2.Size = new Size(740, 4);
@@ -316,20 +314,20 @@ namespace SimPe.Plugin.Gmdc
 			this.label1.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.label1.BackColor = System.Drawing.Color.Transparent;
+			this.label1.BackColor = Color.Transparent;
 			this.label1.Font = new Font(
 				"Tahoma",
 				8.25F,
-				System.Drawing.FontStyle.Bold,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Bold,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label1.ForeColor = System.Drawing.Color.FromArgb(
+			this.label1.ForeColor = Color.FromArgb(
 				((System.Byte)(64)),
 				((System.Byte)(64)),
 				((System.Byte)(64))
@@ -338,7 +336,7 @@ namespace SimPe.Plugin.Gmdc
 			this.label1.Name = "label1";
 			this.label1.TabIndex = 4;
 			this.label1.Text = "Mesh Groups";
-			this.label1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			this.label1.TextAlign = ContentAlignment.BottomRight;
 			//
 			// xpLine1
 			//
@@ -346,13 +344,13 @@ namespace SimPe.Plugin.Gmdc
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
-			this.xpLine1.BackColor = System.Drawing.Color.Transparent;
+			this.xpLine1.BackColor = Color.Transparent;
 			this.xpLine1.Location = new Point(9, 32);
 			this.xpLine1.Name = "xpLine1";
 			this.xpLine1.Size = new Size(740, 4);
@@ -364,13 +362,13 @@ namespace SimPe.Plugin.Gmdc
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
-			this.lvmesh.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.lvmesh.BorderStyle = BorderStyle.None;
 			this.lvmesh.Columns.AddRange(
 				new ColumnHeader[]
 				{
@@ -384,10 +382,8 @@ namespace SimPe.Plugin.Gmdc
 				}
 			);
 			this.lvmesh.FullRowSelect = true;
-			this.lvmesh.HeaderStyle = System
-				.Windows
-				.Forms
-				.ColumnHeaderStyle
+			this.lvmesh.HeaderStyle =
+				ColumnHeaderStyle
 				.Nonclickable;
 			this.lvmesh.HideSelection = false;
 			this.lvmesh.Location = new Point(8, 40);
@@ -395,7 +391,7 @@ namespace SimPe.Plugin.Gmdc
 			this.lvmesh.Size = new Size(736, 136);
 			this.lvmesh.SmallImageList = this.imageList1;
 			this.lvmesh.TabIndex = 2;
-			this.lvmesh.View = System.Windows.Forms.View.Details;
+			this.lvmesh.View = View.Details;
 			//
 			// chMeshName
 			//
@@ -440,11 +436,11 @@ namespace SimPe.Plugin.Gmdc
 			this.Font = new Font(
 				"Tahoma",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			this.FormBorderStyle = FormBorderStyle.FixedDialog;
 			this.Icon = ((Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;

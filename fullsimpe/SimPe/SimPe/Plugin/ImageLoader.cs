@@ -254,15 +254,15 @@ namespace SimPe.Plugin
 			wd = Math.Max(1, wd);
 			hg = Math.Max(1, hg);
 
-			if (format == ImageLoader.TxtrFormats.DXT1Format)
+			if (format == TxtrFormats.DXT1Format)
 			{
 				datasize = (wd * hg) / 2;
 			}
-			else if (format == ImageLoader.TxtrFormats.Raw24Bit)
+			else if (format == TxtrFormats.Raw24Bit)
 			{
 				datasize = (wd * hg) * 3;
 			}
-			else if (format == ImageLoader.TxtrFormats.Raw32Bit)
+			else if (format == TxtrFormats.Raw32Bit)
 			{
 				datasize = (wd * hg) * 4;
 			}
@@ -272,12 +272,12 @@ namespace SimPe.Plugin
 			}
 
 			if (
-				(format == ImageLoader.TxtrFormats.DXT1Format)
-				|| (format == ImageLoader.TxtrFormats.DXT3Format)
-				|| (format == ImageLoader.TxtrFormats.DXT5Format)
+				(format == TxtrFormats.DXT1Format)
+				|| (format == TxtrFormats.DXT3Format)
+				|| (format == TxtrFormats.DXT5Format)
 			)
 			{
-				img = ImageLoader.DXT3Parser(
+				img = DXT3Parser(
 					imgDimension,
 					format,
 					datasize,
@@ -287,14 +287,14 @@ namespace SimPe.Plugin
 				);
 			}
 			else if (
-				(format == ImageLoader.TxtrFormats.ExtRaw8Bit)
-				|| (format == ImageLoader.TxtrFormats.Raw8Bit)
-				|| (format == ImageLoader.TxtrFormats.Raw24Bit)
-				|| (format == ImageLoader.TxtrFormats.Raw32Bit)
-				|| (format == ImageLoader.TxtrFormats.ExtRaw24Bit)
+				(format == TxtrFormats.ExtRaw8Bit)
+				|| (format == TxtrFormats.Raw8Bit)
+				|| (format == TxtrFormats.Raw24Bit)
+				|| (format == TxtrFormats.Raw32Bit)
+				|| (format == TxtrFormats.ExtRaw24Bit)
 			)
 			{
-				img = ImageLoader.RAWParser(
+				img = RAWParser(
 					imgDimension,
 					format,
 					datasize,
@@ -320,22 +320,22 @@ namespace SimPe.Plugin
 			if (img != null)
 			{
 				if (
-					(format == ImageLoader.TxtrFormats.DXT1Format)
-					|| (format == ImageLoader.TxtrFormats.DXT3Format)
-					|| (format == ImageLoader.TxtrFormats.DXT5Format)
+					(format == TxtrFormats.DXT1Format)
+					|| (format == TxtrFormats.DXT3Format)
+					|| (format == TxtrFormats.DXT5Format)
 				)
 				{
-					data = ImageLoader.DXT3Writer(img, format);
+					data = DXT3Writer(img, format);
 				}
 				else if (
-					(format == ImageLoader.TxtrFormats.ExtRaw8Bit)
-					|| (format == ImageLoader.TxtrFormats.Raw8Bit)
-					|| (format == ImageLoader.TxtrFormats.Raw24Bit)
-					|| (format == ImageLoader.TxtrFormats.Raw32Bit)
-					|| (format == ImageLoader.TxtrFormats.ExtRaw24Bit)
+					(format == TxtrFormats.ExtRaw8Bit)
+					|| (format == TxtrFormats.Raw8Bit)
+					|| (format == TxtrFormats.Raw24Bit)
+					|| (format == TxtrFormats.Raw32Bit)
+					|| (format == TxtrFormats.ExtRaw24Bit)
 				)
 				{
-					data = ImageLoader.RAWWriter(img, format);
+					data = RAWWriter(img, format);
 				}
 			}
 
@@ -1035,7 +1035,7 @@ if (test.B>table.B) table = Color.FromArgb(table.A, table.R, table.G, test.B);*/
 				img,
 				new Rectangle((sz.Width - wd) / 2, (sz.Height - hg) / 2, wd, hg),
 				new Rectangle(0, 0, img.Width, img.Height),
-				System.Drawing.GraphicsUnit.Pixel
+				GraphicsUnit.Pixel
 			);
 
 			return prev;

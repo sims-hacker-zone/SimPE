@@ -125,8 +125,8 @@ namespace Ambertation.Windows.Forms.Graph
 			fnt = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
 
@@ -503,10 +503,10 @@ namespace Ambertation.Windows.Forms.Graph
 
 			Pen linepen = new Pen(this.ForeColor);
 			Brush b = new SolidBrush(this.TextBackColor);
-			Ambertation.Drawing.GraphicRoutines.FillRoundRect(gr, b, srect, rad);
+			Drawing.GraphicRoutines.FillRoundRect(gr, b, srect, rad);
 			b.Dispose();
 
-			Ambertation.Drawing.GraphicRoutines.DrawRoundRect(gr, linepen, srect, rad);
+			Drawing.GraphicRoutines.DrawRoundRect(gr, linepen, srect, rad);
 			linepen.Dispose();
 		}
 		#endregion

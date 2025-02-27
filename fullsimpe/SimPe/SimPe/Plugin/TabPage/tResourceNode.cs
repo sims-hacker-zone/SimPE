@@ -131,9 +131,9 @@ namespace SimPe.Plugin.TabPage
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Bottom
-						) | System.Windows.Forms.AnchorStyles.Left
+							AnchorStyles.Top
+							| AnchorStyles.Bottom
+						) | AnchorStyles.Left
 					)
 				)
 			);
@@ -143,7 +143,7 @@ namespace SimPe.Plugin.TabPage
 			this.groupBox5.Controls.Add(this.label15);
 			this.groupBox5.Controls.Add(this.tb_rn_uk1);
 			this.groupBox5.Controls.Add(this.label22);
-			this.groupBox5.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
+			this.groupBox5.FlatStyle = FlatStyle.Standard;
 			this.groupBox5.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -266,9 +266,9 @@ namespace SimPe.Plugin.TabPage
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Bottom
-						) | System.Windows.Forms.AnchorStyles.Left
+							AnchorStyles.Top
+							| AnchorStyles.Bottom
+						) | AnchorStyles.Left
 					)
 				)
 			);
@@ -279,7 +279,7 @@ namespace SimPe.Plugin.TabPage
 			this.groupBox4.Controls.Add(this.label14);
 			this.groupBox4.Controls.Add(this.lb_rn);
 			this.groupBox4.Controls.Add(this.ll_rn_delete);
-			this.groupBox4.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
+			this.groupBox4.FlatStyle = FlatStyle.Standard;
 			this.groupBox4.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -299,8 +299,8 @@ namespace SimPe.Plugin.TabPage
 			this.ll_rn_add.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -386,9 +386,9 @@ namespace SimPe.Plugin.TabPage
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Bottom
-						) | System.Windows.Forms.AnchorStyles.Left
+							AnchorStyles.Top
+							| AnchorStyles.Bottom
+						) | AnchorStyles.Left
 					)
 				)
 			);
@@ -411,8 +411,8 @@ namespace SimPe.Plugin.TabPage
 			this.ll_rn_delete.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);

@@ -138,18 +138,18 @@ namespace pjse
 			// OK
 			//
 			resources.ApplyResources(this.OK, "OK");
-			this.OK.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.OK.DialogResult = DialogResult.OK;
 			this.OK.Name = "OK";
 			//
 			// Cancel
 			//
 			resources.ApplyResources(this.Cancel, "Cancel");
-			this.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.Cancel.DialogResult = DialogResult.Cancel;
 			this.Cancel.Name = "Cancel";
 			//
 			// panel2
 			//
-			this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.panel2.BorderStyle = BorderStyle.FixedSingle;
 			resources.ApplyResources(this.panel2, "panel2");
 			this.panel2.Name = "panel2";
 			//
@@ -165,14 +165,12 @@ namespace pjse
 			//
 			this.AcceptButton = this.OK;
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.AutoScaleMode = AutoScaleMode.Dpi;
 			this.CancelButton = this.Cancel;
 			this.Controls.Add(this.lbItemList);
 			this.Controls.Add(this.panel1);
-			this.FormBorderStyle = System
-				.Windows
-				.Forms
-				.FormBorderStyle
+			this.FormBorderStyle =
+				FormBorderStyle
 				.SizableToolWindow;
 			this.Name = "StrChooser";
 			this.ShowInTaskbar = false;

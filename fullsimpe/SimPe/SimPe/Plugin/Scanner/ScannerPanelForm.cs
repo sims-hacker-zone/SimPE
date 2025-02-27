@@ -138,7 +138,7 @@ namespace SimPe.Plugin.Scanner
 			sfd.InitialDirectory = PathProvider.SimSavegameFolder;
 
 			cbshelve.Enum = typeof(PackedFiles.Wrapper.ShelveDimension);
-			cbshelve.ResourceManager = SimPe.Localization.Manager;
+			cbshelve.ResourceManager = Localization.Manager;
 		}
 
 		/// <summary>
@@ -338,9 +338,9 @@ namespace SimPe.Plugin.Scanner
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -398,7 +398,7 @@ namespace SimPe.Plugin.Scanner
 			//
 			// cbmale
 			//
-			this.cbmale.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbmale.FlatStyle = FlatStyle.System;
 			this.cbmale.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -414,7 +414,7 @@ namespace SimPe.Plugin.Scanner
 			//
 			// cbfemale
 			//
-			this.cbfemale.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbfemale.FlatStyle = FlatStyle.System;
 			this.cbfemale.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -449,7 +449,7 @@ namespace SimPe.Plugin.Scanner
 			//
 			// cbout
 			//
-			this.cbout.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbout.FlatStyle = FlatStyle.System;
 			this.cbout.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -503,7 +503,7 @@ namespace SimPe.Plugin.Scanner
 			//
 			// cbswim
 			//
-			this.cbswim.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbswim.FlatStyle = FlatStyle.System;
 			this.cbswim.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -519,7 +519,7 @@ namespace SimPe.Plugin.Scanner
 			//
 			// cbact
 			//
-			this.cbact.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbact.FlatStyle = FlatStyle.System;
 			this.cbact.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -538,7 +538,7 @@ namespace SimPe.Plugin.Scanner
 			//
 			// cbskin
 			//
-			this.cbskin.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbskin.FlatStyle = FlatStyle.System;
 			this.cbskin.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -554,7 +554,7 @@ namespace SimPe.Plugin.Scanner
 			//
 			// cbformal
 			//
-			this.cbformal.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbformal.FlatStyle = FlatStyle.System;
 			this.cbformal.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -570,7 +570,7 @@ namespace SimPe.Plugin.Scanner
 			//
 			// cbpreg
 			//
-			this.cbpreg.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbpreg.FlatStyle = FlatStyle.System;
 			this.cbpreg.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -586,7 +586,7 @@ namespace SimPe.Plugin.Scanner
 			//
 			// cbundies
 			//
-			this.cbundies.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbundies.FlatStyle = FlatStyle.System;
 			this.cbundies.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -602,7 +602,7 @@ namespace SimPe.Plugin.Scanner
 			//
 			// cbpj
 			//
-			this.cbpj.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbpj.FlatStyle = FlatStyle.System;
 			this.cbpj.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -618,7 +618,7 @@ namespace SimPe.Plugin.Scanner
 			//
 			// cbevery
 			//
-			this.cbevery.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbevery.FlatStyle = FlatStyle.System;
 			this.cbevery.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -634,7 +634,7 @@ namespace SimPe.Plugin.Scanner
 			//
 			// cbelder
 			//
-			this.cbelder.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbelder.FlatStyle = FlatStyle.System;
 			this.cbelder.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -650,7 +650,7 @@ namespace SimPe.Plugin.Scanner
 			//
 			// cbadult
 			//
-			this.cbadult.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbadult.FlatStyle = FlatStyle.System;
 			this.cbadult.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -666,7 +666,7 @@ namespace SimPe.Plugin.Scanner
 			//
 			// cbyoung
 			//
-			this.cbyoung.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbyoung.FlatStyle = FlatStyle.System;
 			this.cbyoung.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -682,7 +682,7 @@ namespace SimPe.Plugin.Scanner
 			//
 			// cbteen
 			//
-			this.cbteen.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbteen.FlatStyle = FlatStyle.System;
 			this.cbteen.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -698,7 +698,7 @@ namespace SimPe.Plugin.Scanner
 			//
 			// cbchild
 			//
-			this.cbchild.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbchild.FlatStyle = FlatStyle.System;
 			this.cbchild.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -714,7 +714,7 @@ namespace SimPe.Plugin.Scanner
 			//
 			// cbtoddler
 			//
-			this.cbtoddler.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbtoddler.FlatStyle = FlatStyle.System;
 			this.cbtoddler.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -730,7 +730,7 @@ namespace SimPe.Plugin.Scanner
 			//
 			// cbbaby
 			//
-			this.cbbaby.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbbaby.FlatStyle = FlatStyle.System;
 			this.cbbaby.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -815,16 +815,14 @@ namespace SimPe.Plugin.Scanner
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
-			this.cbshelve.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbshelve.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbshelve.Enum = null;
 			this.cbshelve.Location = new System.Drawing.Point(16, 24);
@@ -904,8 +902,8 @@ namespace SimPe.Plugin.Scanner
 			// cbtxtr
 			//
 			this.cbtxtr.Checked = true;
-			this.cbtxtr.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.cbtxtr.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbtxtr.CheckState = CheckState.Checked;
+			this.cbtxtr.FlatStyle = FlatStyle.System;
 			this.cbtxtr.Location = new System.Drawing.Point(136, 48);
 			this.cbtxtr.Name = "cbtxtr";
 			this.cbtxtr.Size = new System.Drawing.Size(104, 24);
@@ -915,8 +913,8 @@ namespace SimPe.Plugin.Scanner
 			// cbtxmt
 			//
 			this.cbtxmt.Checked = true;
-			this.cbtxmt.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.cbtxmt.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbtxmt.CheckState = CheckState.Checked;
+			this.cbtxmt.FlatStyle = FlatStyle.System;
 			this.cbtxmt.Location = new System.Drawing.Point(16, 48);
 			this.cbtxmt.Name = "cbtxmt";
 			this.cbtxmt.Size = new System.Drawing.Size(112, 24);
@@ -925,10 +923,8 @@ namespace SimPe.Plugin.Scanner
 			//
 			// cbskins
 			//
-			this.cbskins.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbskins.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbskins.Items.AddRange(
 				new object[]
@@ -994,7 +990,7 @@ namespace SimPe.Plugin.Scanner
 			//
 			// cbref
 			//
-			this.cbref.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbref.FlatStyle = FlatStyle.System;
 			this.cbref.Location = new System.Drawing.Point(16, 68);
 			this.cbref.Name = "cbref";
 			this.cbref.Size = new System.Drawing.Size(136, 24);
@@ -1168,10 +1164,10 @@ namespace SimPe.Plugin.Scanner
 			PackedFiles.Wrapper.ShelveDimension sd =
 				(PackedFiles.Wrapper.ShelveDimension)cbshelve.SelectedValue;
 			llShelve.Enabled = (
-				sd != SimPe.PackedFiles.Wrapper.ShelveDimension.Indetermined
-				&& sd != SimPe.PackedFiles.Wrapper.ShelveDimension.Multitile
-				&& sd != SimPe.PackedFiles.Wrapper.ShelveDimension.Unknown1
-				&& sd != SimPe.PackedFiles.Wrapper.ShelveDimension.Unknown2
+				sd != PackedFiles.Wrapper.ShelveDimension.Indetermined
+				&& sd != PackedFiles.Wrapper.ShelveDimension.Multitile
+				&& sd != PackedFiles.Wrapper.ShelveDimension.Unknown1
+				&& sd != PackedFiles.Wrapper.ShelveDimension.Unknown2
 			);
 		}
 

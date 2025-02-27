@@ -46,11 +46,11 @@ namespace SimPe.Actions.Default
 				sfd.Filter = ExtensionProvider.BuildFilterString(
 					new ExtensionType[]
 					{
-						SimPe.ExtensionType.ExtractedFile,
-						SimPe.ExtensionType.AllFiles,
+						ExtensionType.ExtractedFile,
+						ExtensionType.AllFiles,
 					}
 				);
-				sfd.Title = SimPe.Localization.GetString(this.ToString());
+				sfd.Title = Localization.GetString(this.ToString());
 				if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
 				{
 					return sfd.FileName;
@@ -300,7 +300,7 @@ namespace SimPe.Actions.Default
 		#endregion
 
 		#region IToolExt Member
-		public override System.Drawing.Image Icon => SimPe.GetIcon.actionExport;
+		public override System.Drawing.Image Icon => GetIcon.actionExport;
 
 		public override System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.ShiftIns;
 		#endregion

@@ -18,15 +18,15 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 			tbInstHi.Text =
 				"0x"
 				+ Helper.HexString(
-					SimPe.Hashes.SubTypeHash(
-						SimPe.Hashes.StripHashFromName(tbName.Text)
+					Hashes.SubTypeHash(
+						Hashes.StripHashFromName(tbName.Text)
 					)
 				);
 			tbInstLo.Text =
 				"0x"
 				+ Helper.HexString(
-					SimPe.Hashes.InstanceHash(
-						SimPe.Hashes.StripHashFromName(tbName.Text)
+					Hashes.InstanceHash(
+						Hashes.StripHashFromName(tbName.Text)
 					)
 				);
 		}

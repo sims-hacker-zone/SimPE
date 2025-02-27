@@ -173,7 +173,7 @@ namespace SimPe.Plugin
 			{
 				foreach (NhtrList list in Nhtr.Items)
 				{
-					SimPe.CountedListItem.Add(cb, list);
+					CountedListItem.Add(cb, list);
 				}
 
 				if (cb.Items.Count > 0)
@@ -225,7 +225,7 @@ namespace SimPe.Plugin
 			NhtrList list = (cb.SelectedItem as CountedListItem).Object as NhtrList;
 			foreach (NhtrItem i in list)
 			{
-				SimPe.CountedListItem.Add(lb, i);
+				CountedListItem.Add(lb, i);
 			}
 		}
 	}

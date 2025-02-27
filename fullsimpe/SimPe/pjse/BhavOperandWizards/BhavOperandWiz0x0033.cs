@@ -347,15 +347,15 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 			{
 				lbDoid1.Text =
 					(pnDoid1.Enabled = (aNames[1][operation] > 0))
-						? pjse.Localization.GetString(names[aNames[1][operation]])
+						? Localization.GetString(names[aNames[1][operation]])
 						: "";
 				lbDoid2.Text =
 					(pnDoid2.Enabled = (aNames[2][operation] > 0))
-						? pjse.Localization.GetString(names[aNames[2][operation]])
+						? Localization.GetString(names[aNames[2][operation]])
 						: "";
 				lbDoid3.Text =
 					(pnDoid3.Enabled = (aNames[3][operation] > 0))
-						? pjse.Localization.GetString(names[aNames[3][operation]])
+						? Localization.GetString(names[aNames[3][operation]])
 						: "";
 			}
 
@@ -767,10 +767,8 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 			//
 			// cbOperation
 			//
-			this.cbOperation.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbOperation.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbOperation.DropDownWidth = 480;
 			this.cbOperation.FormattingEnabled = true;
@@ -809,7 +807,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 			//
 			resources.ApplyResources(this.ckbTTAll, "ckbTTAll");
 			this.ckbTTAll.Checked = true;
-			this.ckbTTAll.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.ckbTTAll.CheckState = CheckState.Checked;
 			this.ckbTTAll.Name = "ckbTTAll";
 			this.ckbTTAll.TabStop = false;
 			this.ckbTTAll.UseVisualStyleBackColor = true;
@@ -890,10 +888,8 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 			//
 			// cbPicker0
 			//
-			this.cbPicker0.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbPicker0.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbPicker0.DropDownWidth = 384;
 			resources.ApplyResources(this.cbPicker0, "cbPicker0");
@@ -908,10 +904,8 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 			//
 			// cbDataOwner0
 			//
-			this.cbDataOwner0.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbDataOwner0.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbDataOwner0.DropDownWidth = 384;
 			resources.ApplyResources(this.cbDataOwner0, "cbDataOwner0");
@@ -947,10 +941,8 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 			//
 			// cbTargetInv
 			//
-			this.cbTargetInv.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbTargetInv.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbTargetInv.FormattingEnabled = true;
 			resources.ApplyResources(this.cbTargetInv, "cbTargetInv");
@@ -974,10 +966,8 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 			//
 			// cbPicker1
 			//
-			this.cbPicker1.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbPicker1.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbPicker1.DropDownWidth = 384;
 			resources.ApplyResources(this.cbPicker1, "cbPicker1");
@@ -992,10 +982,8 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 			//
 			// cbDataOwner1
 			//
-			this.cbDataOwner1.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbDataOwner1.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbDataOwner1.DropDownWidth = 384;
 			resources.ApplyResources(this.cbDataOwner1, "cbDataOwner1");
@@ -1011,10 +999,8 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 			//
 			// cbPicker3
 			//
-			this.cbPicker3.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbPicker3.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbPicker3.DropDownWidth = 384;
 			resources.ApplyResources(this.cbPicker3, "cbPicker3");
@@ -1029,10 +1015,8 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 			//
 			// cbDataOwner3
 			//
-			this.cbDataOwner3.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbDataOwner3.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbDataOwner3.DropDownWidth = 384;
 			resources.ApplyResources(this.cbDataOwner3, "cbDataOwner3");
@@ -1048,10 +1032,8 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 			//
 			// cbPicker2
 			//
-			this.cbPicker2.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbPicker2.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbPicker2.DropDownWidth = 384;
 			resources.ApplyResources(this.cbPicker2, "cbPicker2");
@@ -1066,10 +1048,8 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 			//
 			// cbDataOwner2
 			//
-			this.cbDataOwner2.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbDataOwner2.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbDataOwner2.DropDownWidth = 384;
 			resources.ApplyResources(this.cbDataOwner2, "cbDataOwner2");
@@ -1089,10 +1069,8 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 			//
 			// cbInventory
 			//
-			this.cbInventory.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbInventory.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbInventory.DropDownWidth = 384;
 			resources.ApplyResources(this.cbInventory, "cbInventory");
@@ -1140,7 +1118,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 			// UI
 			//
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.AutoScaleMode = AutoScaleMode.Font;
 			this.Controls.Add(this.pnWiz0x0033);
 			this.Name = "UI";
 			this.pnWiz0x0033.ResumeLayout(false);

@@ -64,8 +64,8 @@ namespace pjse.BhavOperandWizards.WizBhav
 			{
 				foreach (LabelledDataOwner ldoc in aldoc)
 				{
-					ldoc.Decimal = pjse.Settings.PJSE.DecimalDOValue;
-					ldoc.UseInstancePicker = pjse.Settings.PJSE.InstancePickerAsText;
+					ldoc.Decimal = Settings.PJSE.DecimalDOValue;
+					ldoc.UseInstancePicker = Settings.PJSE.InstancePickerAsText;
 				}
 			}
 			finally
@@ -73,10 +73,10 @@ namespace pjse.BhavOperandWizards.WizBhav
 				internalchg = false;
 			}
 
-			pjse.Settings.PJSE.DecimalDOValueChanged += new EventHandler(
+			Settings.PJSE.DecimalDOValueChanged += new EventHandler(
 				PJSE_DecimalDOValueChanged
 			);
-			pjse.Settings.PJSE.InstancePickerAsTextChanged += new EventHandler(
+			Settings.PJSE.InstancePickerAsTextChanged += new EventHandler(
 				PJSE_InstancePickerAsTextChanged
 			);
 		}
@@ -92,10 +92,10 @@ namespace pjse.BhavOperandWizards.WizBhav
 				components.Dispose();
 			}
 			base.Dispose(disposing);
-			pjse.Settings.PJSE.DecimalDOValueChanged -= new EventHandler(
+			Settings.PJSE.DecimalDOValueChanged -= new EventHandler(
 				PJSE_DecimalDOValueChanged
 			);
-			pjse.Settings.PJSE.InstancePickerAsTextChanged -= new EventHandler(
+			Settings.PJSE.InstancePickerAsTextChanged -= new EventHandler(
 				PJSE_InstancePickerAsTextChanged
 			);
 		}
@@ -107,7 +107,7 @@ namespace pjse.BhavOperandWizards.WizBhav
 				return;
 			}
 
-			if (ckbDecimal.Checked == pjse.Settings.PJSE.DecimalDOValue)
+			if (ckbDecimal.Checked == Settings.PJSE.DecimalDOValue)
 			{
 				return;
 			}
@@ -115,7 +115,7 @@ namespace pjse.BhavOperandWizards.WizBhav
 			internalchg = true;
 			try
 			{
-				ckbDecimal.Checked = pjse.Settings.PJSE.DecimalDOValue;
+				ckbDecimal.Checked = Settings.PJSE.DecimalDOValue;
 			}
 			finally
 			{
@@ -130,7 +130,7 @@ namespace pjse.BhavOperandWizards.WizBhav
 				return;
 			}
 
-			if (ckbUseInstancePicker.Checked == pjse.Settings.PJSE.InstancePickerAsText)
+			if (ckbUseInstancePicker.Checked == Settings.PJSE.InstancePickerAsText)
 			{
 				return;
 			}
@@ -138,7 +138,7 @@ namespace pjse.BhavOperandWizards.WizBhav
 			internalchg = true;
 			try
 			{
-				ckbUseInstancePicker.Checked = pjse.Settings.PJSE.InstancePickerAsText;
+				ckbUseInstancePicker.Checked = Settings.PJSE.InstancePickerAsText;
 			}
 			finally
 			{
@@ -324,8 +324,8 @@ namespace pjse.BhavOperandWizards.WizBhav
 		{
 			internalchg = true;
 
-			ckbDecimal.Checked = pjse.Settings.PJSE.DecimalDOValue;
-			ckbUseInstancePicker.Checked = pjse.Settings.PJSE.InstancePickerAsText;
+			ckbDecimal.Checked = Settings.PJSE.DecimalDOValue;
+			ckbUseInstancePicker.Checked = Settings.PJSE.InstancePickerAsText;
 
 			this.inst = inst;
 			foreach (LabelledDataOwner ldoc in aldoc)
@@ -359,7 +359,7 @@ namespace pjse.BhavOperandWizards.WizBhav
 					"0x"
 					+ SimPe.Helper.HexString(inst.OpCode)
 					+ ": ["
-					+ pjse.Localization.GetString("bhavnotfound")
+					+ Localization.GetString("bhavnotfound")
 					+ "]";
 				this.lbArgC.Text = "(???)";
 			}
@@ -376,16 +376,16 @@ namespace pjse.BhavOperandWizards.WizBhav
 				}
 				else
 				{
-					albArg[i].Text = pjse.Localization.GetString("unk");
+					albArg[i].Text = Localization.GetString("unk");
 				}
 			}
 
 			for (int i = nrArgs; i < albArg.Length; i++)
 			{
-				albArg[i].Text = pjse.Localization.GetString("bwb_unused");
+				albArg[i].Text = Localization.GetString("bwb_unused");
 			}
 
-			format = pjse.BhavNameWizards.BhavWizBhav.opFormat(
+			format = BhavWizBhav.opFormat(
 				inst.NodeVersion,
 				operands
 			);
@@ -451,7 +451,7 @@ namespace pjse.BhavOperandWizards.WizBhav
 			internalchg = true;
 			try
 			{
-				pjse.Settings.PJSE.DecimalDOValue = ckbDecimal.Checked;
+				Settings.PJSE.DecimalDOValue = ckbDecimal.Checked;
 			}
 			finally
 			{
@@ -469,7 +469,7 @@ namespace pjse.BhavOperandWizards.WizBhav
 			internalchg = true;
 			try
 			{
-				pjse.Settings.PJSE.InstancePickerAsText = ckbUseInstancePicker.Checked;
+				Settings.PJSE.InstancePickerAsText = ckbUseInstancePicker.Checked;
 			}
 			finally
 			{

@@ -60,7 +60,7 @@ namespace SimPe
 				try
 				{
 					ushort s = Convert.ToUInt16((string)value, 2);
-					return System.Activator.CreateInstance(
+					return Activator.CreateInstance(
 						context.PropertyDescriptor.PropertyType,
 						new object[] { s }
 					);

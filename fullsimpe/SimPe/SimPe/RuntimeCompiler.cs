@@ -91,7 +91,7 @@ namespace SimPe
 				return null;
 			}
 
-			return System.Activator.CreateInstance(t, args);
+			return Activator.CreateInstance(t, args);
 		}
 	}
 }

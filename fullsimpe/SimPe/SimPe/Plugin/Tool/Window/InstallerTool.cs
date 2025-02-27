@@ -35,7 +35,7 @@ namespace SimPe.Plugin.Tool.Window
 
 		public bool Visible => true;
 
-		public Image Icon => SimPe.GetIcon.ContentPreview;
+		public Image Icon => GetIcon.ContentPreview;
 
 		#endregion
 

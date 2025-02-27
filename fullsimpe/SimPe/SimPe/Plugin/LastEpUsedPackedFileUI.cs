@@ -49,7 +49,7 @@ namespace SimPe.Plugin
 		public LastEPusePackedFileUI()
 		{
 			InitializeComponent();
-			if (PathProvider.Global.GetExpansion(SimPe.Expansions.IslandStories).Exists) // && Helper.WindowsRegistry.LoadOnlySimsStory == 28)
+			if (PathProvider.Global.GetExpansion(Expansions.IslandStories).Exists) // && Helper.WindowsRegistry.LoadOnlySimsStory == 28)
 			{
 				Wait.Start(117);
 				Wait.Message = "Loading Castaway Goals...";
@@ -328,7 +328,7 @@ namespace SimPe.Plugin
 			}
 
 			if (
-				PathProvider.Global.GetExpansion(SimPe.Expansions.IslandStories).Exists
+				PathProvider.Global.GetExpansion(Expansions.IslandStories).Exists
 				&& Wrapper.GotMore == true
 			)
 			{

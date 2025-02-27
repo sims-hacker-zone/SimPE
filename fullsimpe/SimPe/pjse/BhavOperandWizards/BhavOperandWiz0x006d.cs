@@ -141,7 +141,7 @@ namespace pjse.BhavOperandWizards.Wiz0x006d
 			FileTable.Entry[] items =
 				(scope.SelectedIndex < 0)
 					? null
-					: pjse.FileTable.GFT[
+					: FileTable.GFT[
 						(uint)SimPe.Data.MetaData.STRING_FILE,
 						inst.Parent.GroupForScope(s[scope.SelectedIndex]),
 						(uint)instance
@@ -150,9 +150,9 @@ namespace pjse.BhavOperandWizards.Wiz0x006d
 			if (items == null || items.Length == 0)
 			{
 				MessageBox.Show(
-					pjse.Localization.GetString("bow_noStrings")
+					Localization.GetString("bow_noStrings")
 						+ " ("
-						+ pjse.Localization.GetString(s[scope.SelectedIndex].ToString())
+						+ Localization.GetString(s[scope.SelectedIndex].ToString())
 						+ ")"
 				);
 				return; // eek!
@@ -188,7 +188,7 @@ namespace pjse.BhavOperandWizards.Wiz0x006d
 						instance,
 						strno,
 						-1,
-						pjse.Detail.ErrorNames
+						Detail.ErrorNames
 					);
 		}
 
@@ -455,10 +455,8 @@ namespace pjse.BhavOperandWizards.Wiz0x006d
 			//
 			// cbPicker2
 			//
-			this.cbPicker2.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbPicker2.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbPicker2.DropDownWidth = 384;
 			resources.ApplyResources(this.cbPicker2, "cbPicker2");
@@ -481,10 +479,8 @@ namespace pjse.BhavOperandWizards.Wiz0x006d
 			//
 			// cbDataOwner2
 			//
-			this.cbDataOwner2.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbDataOwner2.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbDataOwner2.DropDownWidth = 384;
 			resources.ApplyResources(this.cbDataOwner2, "cbDataOwner2");
@@ -515,7 +511,7 @@ namespace pjse.BhavOperandWizards.Wiz0x006d
 			// tbMesh
 			//
 			resources.ApplyResources(this.tbMesh, "tbMesh");
-			this.tbMesh.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.tbMesh.BorderStyle = BorderStyle.None;
 			this.tbMesh.Name = "tbMesh";
 			this.tbMesh.ReadOnly = true;
 			this.tbMesh.TabStop = false;
@@ -547,10 +543,8 @@ namespace pjse.BhavOperandWizards.Wiz0x006d
 			//
 			// cbMeshScope
 			//
-			this.cbMeshScope.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbMeshScope.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbMeshScope.FormattingEnabled = true;
 			this.cbMeshScope.Items.AddRange(
@@ -608,10 +602,8 @@ namespace pjse.BhavOperandWizards.Wiz0x006d
 			//
 			// cbPicker1
 			//
-			this.cbPicker1.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbPicker1.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbPicker1.DropDownWidth = 384;
 			resources.ApplyResources(this.cbPicker1, "cbPicker1");
@@ -624,10 +616,8 @@ namespace pjse.BhavOperandWizards.Wiz0x006d
 			//
 			// cbDataOwner1
 			//
-			this.cbDataOwner1.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbDataOwner1.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbDataOwner1.DropDownWidth = 384;
 			resources.ApplyResources(this.cbDataOwner1, "cbDataOwner1");
@@ -661,7 +651,7 @@ namespace pjse.BhavOperandWizards.Wiz0x006d
 			// tbMaterial
 			//
 			resources.ApplyResources(this.tbMaterial, "tbMaterial");
-			this.tbMaterial.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.tbMaterial.BorderStyle = BorderStyle.None;
 			this.tbMaterial.Name = "tbMaterial";
 			this.tbMaterial.ReadOnly = true;
 			this.tbMaterial.TabStop = false;
@@ -679,10 +669,8 @@ namespace pjse.BhavOperandWizards.Wiz0x006d
 			//
 			// cbMatScope
 			//
-			this.cbMatScope.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbMatScope.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbMatScope.FormattingEnabled = true;
 			this.cbMatScope.Items.AddRange(
@@ -785,7 +773,7 @@ namespace pjse.BhavOperandWizards.Wiz0x006d
 			// UI
 			//
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.AutoScaleMode = AutoScaleMode.Dpi;
 			this.Controls.Add(this.pnWiz0x006d);
 			this.Name = "UI";
 			this.pnWiz0x006d.ResumeLayout(false);

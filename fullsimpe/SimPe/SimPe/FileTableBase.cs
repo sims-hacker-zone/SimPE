@@ -201,7 +201,7 @@ namespace SimPe
 				{
 					xw.WriteStartElement("folders");
 					xw.WriteStartElement("filetable");
-					if (SimPe.PathProvider.Global.GameVersion < 18)
+					if (PathProvider.Global.GameVersion < 18)
 					{
 						xw.WriteStartElement("file");
 						xw.WriteAttributeString("root", "save");

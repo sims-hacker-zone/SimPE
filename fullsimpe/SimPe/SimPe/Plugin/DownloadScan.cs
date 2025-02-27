@@ -175,9 +175,9 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -198,10 +198,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -216,8 +216,8 @@ namespace SimPe.Plugin
 			this.lbdir.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Bold,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Bold,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
 			this.lbdir.Location = new Point(8, 104);
@@ -232,8 +232,8 @@ namespace SimPe.Plugin
 			this.llcomp.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -242,8 +242,8 @@ namespace SimPe.Plugin
 			this.llcomp.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Bold,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Bold,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
 			this.llcomp.Location = new Point(584, 80);
@@ -263,13 +263,13 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Bottom
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Bottom
+						) | AnchorStyles.Right
 					)
 				)
 			);
-			this.pbprev.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.pbprev.BorderStyle = BorderStyle.FixedSingle;
 			this.pbprev.Location = new Point(584, 408);
 			this.pbprev.Name = "pbprev";
 			this.pbprev.Size = new Size(184, 40);
@@ -281,8 +281,8 @@ namespace SimPe.Plugin
 			this.gbskin.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -303,22 +303,22 @@ namespace SimPe.Plugin
 			this.gbskin.Controls.Add(this.cbbaby);
 			this.gbskin.Controls.Add(this.llskin);
 			this.gbskin.Enabled = false;
-			this.gbskin.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.gbskin.FlatStyle = FlatStyle.System;
 			this.gbskin.Location = new Point(584, 192);
 			this.gbskin.Name = "gbskin";
-			this.gbskin.RightToLeft = System.Windows.Forms.RightToLeft.No;
+			this.gbskin.RightToLeft = RightToLeft.No;
 			this.gbskin.Size = new Size(184, 208);
 			this.gbskin.TabIndex = 9;
 			this.gbskin.TabStop = false;
 			//
 			// cbswim
 			//
-			this.cbswim.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbswim.FlatStyle = FlatStyle.System;
 			this.cbswim.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
 			this.cbswim.Location = new Point(96, 120);
@@ -329,12 +329,12 @@ namespace SimPe.Plugin
 			//
 			// cbact
 			//
-			this.cbact.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbact.FlatStyle = FlatStyle.System;
 			this.cbact.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
 			this.cbact.Location = new Point(96, 180);
@@ -345,12 +345,12 @@ namespace SimPe.Plugin
 			//
 			// cbskin
 			//
-			this.cbskin.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbskin.FlatStyle = FlatStyle.System;
 			this.cbskin.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
 			this.cbskin.Location = new Point(96, 160);
@@ -361,12 +361,12 @@ namespace SimPe.Plugin
 			//
 			// cbformal
 			//
-			this.cbformal.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbformal.FlatStyle = FlatStyle.System;
 			this.cbformal.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
 			this.cbformal.Location = new Point(96, 140);
@@ -377,12 +377,12 @@ namespace SimPe.Plugin
 			//
 			// cbpreg
 			//
-			this.cbpreg.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbpreg.FlatStyle = FlatStyle.System;
 			this.cbpreg.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
 			this.cbpreg.Location = new Point(16, 180);
@@ -393,12 +393,12 @@ namespace SimPe.Plugin
 			//
 			// cbundies
 			//
-			this.cbundies.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbundies.FlatStyle = FlatStyle.System;
 			this.cbundies.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
 			this.cbundies.Location = new Point(16, 160);
@@ -409,12 +409,12 @@ namespace SimPe.Plugin
 			//
 			// cbpj
 			//
-			this.cbpj.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbpj.FlatStyle = FlatStyle.System;
 			this.cbpj.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
 			this.cbpj.Location = new Point(16, 140);
@@ -425,12 +425,12 @@ namespace SimPe.Plugin
 			//
 			// cbevery
 			//
-			this.cbevery.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbevery.FlatStyle = FlatStyle.System;
 			this.cbevery.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
 			this.cbevery.Location = new Point(16, 120);
@@ -441,12 +441,12 @@ namespace SimPe.Plugin
 			//
 			// cbelder
 			//
-			this.cbelder.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbelder.FlatStyle = FlatStyle.System;
 			this.cbelder.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
 			this.cbelder.Location = new Point(96, 84);
@@ -457,12 +457,12 @@ namespace SimPe.Plugin
 			//
 			// cbadult
 			//
-			this.cbadult.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbadult.FlatStyle = FlatStyle.System;
 			this.cbadult.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
 			this.cbadult.Location = new Point(96, 64);
@@ -473,12 +473,12 @@ namespace SimPe.Plugin
 			//
 			// cbyoung
 			//
-			this.cbyoung.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbyoung.FlatStyle = FlatStyle.System;
 			this.cbyoung.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
 			this.cbyoung.Location = new Point(96, 24);
@@ -489,12 +489,12 @@ namespace SimPe.Plugin
 			//
 			// cbteen
 			//
-			this.cbteen.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbteen.FlatStyle = FlatStyle.System;
 			this.cbteen.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
 			this.cbteen.Location = new Point(16, 84);
@@ -505,12 +505,12 @@ namespace SimPe.Plugin
 			//
 			// cbchild
 			//
-			this.cbchild.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbchild.FlatStyle = FlatStyle.System;
 			this.cbchild.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
 			this.cbchild.Location = new Point(16, 64);
@@ -521,12 +521,12 @@ namespace SimPe.Plugin
 			//
 			// cbtoddler
 			//
-			this.cbtoddler.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbtoddler.FlatStyle = FlatStyle.System;
 			this.cbtoddler.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
 			this.cbtoddler.Location = new Point(16, 44);
@@ -537,12 +537,12 @@ namespace SimPe.Plugin
 			//
 			// cbbaby
 			//
-			this.cbbaby.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbbaby.FlatStyle = FlatStyle.System;
 			this.cbbaby.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
 			this.cbbaby.Location = new Point(16, 24);
@@ -556,8 +556,8 @@ namespace SimPe.Plugin
 			this.llskin.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -579,15 +579,15 @@ namespace SimPe.Plugin
 			this.groupBox2.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
 			this.groupBox2.Controls.Add(this.llfix);
 			this.groupBox2.Controls.Add(this.tbname);
 			this.groupBox2.Controls.Add(this.label1);
-			this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.groupBox2.FlatStyle = FlatStyle.System;
 			this.groupBox2.Location = new Point(584, 104);
 			this.groupBox2.Name = "groupBox2";
 			this.groupBox2.Size = new Size(184, 72);
@@ -599,8 +599,8 @@ namespace SimPe.Plugin
 			this.llfix.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -620,16 +620,16 @@ namespace SimPe.Plugin
 			this.tbname.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
 			this.tbname.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
 			this.tbname.Location = new Point(24, 45);
@@ -643,16 +643,16 @@ namespace SimPe.Plugin
 			this.label1.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
 			this.label1.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
 			this.label1.Location = new Point(8, 29);
@@ -666,8 +666,8 @@ namespace SimPe.Plugin
 			this.lldis.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -687,8 +687,8 @@ namespace SimPe.Plugin
 			this.llopen.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -710,16 +710,16 @@ namespace SimPe.Plugin
 			this.tbfilename.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
 			this.tbfilename.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
 			this.tbfilename.Location = new Point(584, 24);
@@ -736,10 +736,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -756,8 +756,8 @@ namespace SimPe.Plugin
 			this.lv.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
 			this.lv.FullRowSelect = true;
@@ -766,7 +766,7 @@ namespace SimPe.Plugin
 			this.lv.Name = "lv";
 			this.lv.Size = new Size(568, 420);
 			this.lv.TabIndex = 1;
-			this.lv.View = System.Windows.Forms.View.Details;
+			this.lv.View = View.Details;
 			this.lv.ColumnClick += new ColumnClickEventHandler(
 				this.Sort
 			);
@@ -801,8 +801,8 @@ namespace SimPe.Plugin
 			this.linkLabel1.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -810,8 +810,8 @@ namespace SimPe.Plugin
 			this.linkLabel1.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Bold,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Bold,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
 			this.linkLabel1.Location = new Point(752, 32);
@@ -829,9 +829,9 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Bottom
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Bottom
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -847,12 +847,12 @@ namespace SimPe.Plugin
 			this.groupBox1.Controls.Add(this.cbready);
 			this.groupBox1.Controls.Add(this.cbguid);
 			this.groupBox1.Controls.Add(this.cbcompress);
-			this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.groupBox1.FlatStyle = FlatStyle.System;
 			this.groupBox1.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Bold,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Bold,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
 			this.groupBox1.Location = new Point(8, 32);
@@ -864,12 +864,12 @@ namespace SimPe.Plugin
 			//
 			// cbprev
 			//
-			this.cbprev.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbprev.FlatStyle = FlatStyle.System;
 			this.cbprev.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
 			this.cbprev.Location = new Point(168, 36);
@@ -881,13 +881,13 @@ namespace SimPe.Plugin
 			// cbready
 			//
 			this.cbready.Checked = true;
-			this.cbready.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.cbready.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbready.CheckState = CheckState.Checked;
+			this.cbready.FlatStyle = FlatStyle.System;
 			this.cbready.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
 			this.cbready.Location = new Point(168, 16);
@@ -898,12 +898,12 @@ namespace SimPe.Plugin
 			//
 			// cbguid
 			//
-			this.cbguid.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbguid.FlatStyle = FlatStyle.System;
 			this.cbguid.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
 			this.cbguid.Location = new Point(16, 36);
@@ -914,12 +914,12 @@ namespace SimPe.Plugin
 			//
 			// cbcompress
 			//
-			this.cbcompress.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbcompress.FlatStyle = FlatStyle.System;
 			this.cbcompress.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
 			this.cbcompress.Location = new Point(16, 16);
@@ -930,9 +930,9 @@ namespace SimPe.Plugin
 			//
 			// iList
 			//
-			this.iList.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+			this.iList.ColorDepth = ColorDepth.Depth32Bit;
 			this.iList.ImageSize = new Size(48, 48);
-			this.iList.TransparentColor = System.Drawing.Color.Transparent;
+			this.iList.TransparentColor = Color.Transparent;
 			//
 			// DownloadScan
 			//
@@ -946,14 +946,12 @@ namespace SimPe.Plugin
 			this.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.FormBorderStyle = System
-				.Windows
-				.Forms
-				.FormBorderStyle
+			this.FormBorderStyle =
+				FormBorderStyle
 				.SizableToolWindow;
 			this.Name = "DownloadScan";
 			this.ShowInTaskbar = false;
@@ -980,14 +978,14 @@ namespace SimPe.Plugin
 			else if (comboBox1.SelectedIndex == 1)
 			{
 				lbdir.Text = System.IO.Path.Combine(
-					SimPe.PathProvider.SimSavegameFolder,
+					PathProvider.SimSavegameFolder,
 					"Teleport"
 				);
 			}
 			else
 			{
 				lbdir.Text = System.IO.Path.Combine(
-					SimPe.PathProvider.SimSavegameFolder,
+					PathProvider.SimSavegameFolder,
 					"Downloads"
 				);
 			}
@@ -1094,14 +1092,14 @@ namespace SimPe.Plugin
 				}
 
 				string name = System.IO.Path.GetFileNameWithoutExtension(file);
-				string desc = SimPe.Localization.Manager.GetString("Unknown");
+				string desc = Localization.Manager.GetString("Unknown");
 				string state = "OK";
 				uint[] guid = new uint[0];
 				Image img = null;
 
 				try
 				{
-					Packages.File package = SimPe.Packages.File.LoadFromFile(
+					Packages.File package = Packages.File.LoadFromFile(
 						file
 					);
 
@@ -1433,7 +1431,7 @@ namespace SimPe.Plugin
 			}
 			else
 			{
-				Packages.File skin = SimPe.Packages.File.LoadFromFile(
+				Packages.File skin = Packages.File.LoadFromFile(
 					(string)lvi.Tag
 				);
 				Interfaces.Files.IPackedFileDescriptor[] pfds = skin.FindFiles(
@@ -1463,7 +1461,7 @@ namespace SimPe.Plugin
 			}
 			else
 			{
-				Packages.File skin = SimPe.Packages.File.LoadFromFile(
+				Packages.File skin = Packages.File.LoadFromFile(
 					(string)lvi.Tag
 				);
 				Interfaces.Files.IPackedFileDescriptor[] pfds = skin.FindFiles(
@@ -1623,13 +1621,13 @@ namespace SimPe.Plugin
 				);
 
 				Packages.StreamItem si =
-					SimPe.Packages.StreamFactory.GetStreamItem(filename, false);
+					Packages.StreamFactory.GetStreamItem(filename, false);
 				if (si != null)
 				{
 					si.Close();
 				}
 
-				si = SimPe.Packages.StreamFactory.GetStreamItem(target, false);
+				si = Packages.StreamFactory.GetStreamItem(target, false);
 				if (si != null)
 				{
 					si.Close();
@@ -1700,7 +1698,7 @@ namespace SimPe.Plugin
 
 					try
 					{
-						SimPe.Plugin.FixPackage.Fix(
+						FixPackage.Fix(
 							filename,
 							mname,
 							FixVersion.UniversityReady2
@@ -1769,7 +1767,7 @@ namespace SimPe.Plugin
 					if (System.IO.File.Exists(FileName))
 					{
 						Packages.GeneratableFile pkg =
-							SimPe.Packages.GeneratableFile.LoadFromFile(FileName);
+							Packages.File.LoadFromFile(FileName);
 						foreach (
 							Interfaces.Files.IPackedFileDescriptor pfd in pkg.Index
 						)
@@ -1841,7 +1839,7 @@ namespace SimPe.Plugin
 					{
 						string name = (string)lvi.Tag;
 						Packages.GeneratableFile skin =
-							SimPe.Packages.GeneratableFile.LoadFromFile(name);
+							Packages.File.LoadFromFile(name);
 
 						Interfaces.Files.IPackedFileDescriptor[] pfds =
 							skin.FindFiles(Data.MetaData.GZPS);

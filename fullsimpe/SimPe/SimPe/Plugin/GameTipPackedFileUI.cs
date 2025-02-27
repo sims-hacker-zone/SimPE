@@ -190,7 +190,7 @@ namespace SimPe.Plugin
 		private void getpbpicture()
 		{
 			gtpbimage.Image = null;
-			Packages.File pkg = SimPe.Packages.File.LoadFromFile(
+			Packages.File pkg = Packages.File.LoadFromFile(
 				System.IO.Path.Combine(
 					PathProvider.Global.Latest.InstallFolder,
 					"TSData\\Res\\UI\\ui.package"
@@ -216,12 +216,12 @@ namespace SimPe.Plugin
 
 		private void setgttext()
 		{
-			FileTable.FileIndex.Load();
+			FileTableBase.FileIndex.Load();
 			gtnametxt.Text = gtheadtxt.Text = gtbodytxt.Text = "-";
 			uint gtnm = Convert.ToUInt32(Wrapper.Tipname) - 1;
 			uint gthd = Convert.ToUInt32(Wrapper.Tipheader) - 1;
 			uint gtby = Convert.ToUInt32(Wrapper.Tipbody) - 1;
-			Packages.File package = SimPe.Packages.File.LoadFromFile(
+			Packages.File package = Packages.File.LoadFromFile(
 				System.IO.Path.Combine(
 					PathProvider.Global.Latest.InstallFolder,
 					"TSData\\Res\\Objects\\objects.package"

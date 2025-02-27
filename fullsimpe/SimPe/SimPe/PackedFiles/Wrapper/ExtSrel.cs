@@ -38,7 +38,7 @@ namespace SimPe.PackedFiles.Wrapper
 				"Quaxi",
 				"This File Contians the Relationship states for two Sims.",
 				2,
-				System.Drawing.Image.FromStream(
+				Image.FromStream(
 					this.GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.srel.png")
 				)
@@ -55,7 +55,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			ExtSDesc ret =
 				(ExtSDesc)
-					FileTable.ProviderRegistry.SimDescriptionProvider.FindSim(
+					FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
 						(ushort)inst
 					);
 			return ret;
@@ -153,7 +153,7 @@ namespace SimPe.PackedFiles.Wrapper
 					return SourceSim.SimName + " " + SourceSim.SimFamilyName;
 				}
 
-				return SimPe.Localization.GetString("Unknown");
+				return Localization.GetString("Unknown");
 			}
 		}
 
@@ -166,7 +166,7 @@ namespace SimPe.PackedFiles.Wrapper
 					return TargetSim.SimName + " " + TargetSim.SimFamilyName;
 				}
 
-				return SimPe.Localization.GetString("Unknown");
+				return Localization.GetString("Unknown");
 			}
 		}
 
@@ -193,11 +193,11 @@ namespace SimPe.PackedFiles.Wrapper
 				{
 					if (SourceSim != null)
 					{
-						isrc = SimPe.GetImage.NoOne;
+						isrc = GetImage.NoOne;
 					}
 					else
 					{
-						isrc = SimPe.GetImage.NoOne;
+						isrc = GetImage.NoOne;
 					}
 				}
 				else
@@ -225,11 +225,11 @@ namespace SimPe.PackedFiles.Wrapper
 				{
 					if (TargetSim != null)
 					{
-						idst = SimPe.GetImage.NoOne;
+						idst = GetImage.NoOne;
 					}
 					else
 					{
-						idst = SimPe.GetImage.NoOne;
+						idst = GetImage.NoOne;
 					}
 				}
 				else
@@ -269,7 +269,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 			return SourceSimName
 				+ " "
-				+ SimPe.Localization.GetString("towards")
+				+ Localization.GetString("towards")
 				+ " "
 				+ TargetSimName;
 		}

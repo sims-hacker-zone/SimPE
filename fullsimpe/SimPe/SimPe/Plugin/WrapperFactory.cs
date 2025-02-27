@@ -69,7 +69,7 @@ namespace SimPe.Plugin
 		/// if <see cref="Helper.WindowsRegistry.UseMaxisGroupsCache"/> is set to false</param>
 		public static void LoadGroupCache(bool force)
 		{
-			if (FileTable.GroupCache != null)
+			if (FileTableBase.GroupCache != null)
 			{
 				return;
 			}
@@ -79,7 +79,7 @@ namespace SimPe.Plugin
 
 			if (!Helper.WindowsRegistry.UseMaxisGroupsCache && !force)
 			{
-				FileTable.GroupCache = gc;
+				FileTableBase.GroupCache = gc;
 				return;
 			}
 			try
@@ -91,7 +91,7 @@ namespace SimPe.Plugin
 
 				if (System.IO.File.Exists(name))
 				{
-					Packages.File pkg = SimPe.Packages.File.LoadFromFile(name);
+					Packages.File pkg = Packages.File.LoadFromFile(name);
 					Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(
 						0x54535053,
 						0,
@@ -111,7 +111,7 @@ namespace SimPe.Plugin
 				);
 			}
 
-			FileTable.GroupCache = gc;
+			FileTableBase.GroupCache = gc;
 		}
 
 		/// <summary>
@@ -121,9 +121,9 @@ namespace SimPe.Plugin
 			: base()
 		{
 			//prepare the FileIndex
-			FileTable.FileIndex = new FileIndex();
-			SimPe.Packages.PackageMaintainer.Maintainer.FileIndex =
-				FileTable.FileIndex.AddNewChild();
+			FileTableBase.FileIndex = new FileIndex();
+			Packages.PackageMaintainer.Maintainer.FileIndex =
+				FileTableBase.FileIndex.AddNewChild();
 		}
 
 		#region AbstractWrapperFactory Member
@@ -142,10 +142,10 @@ namespace SimPe.Plugin
 				else
 				{
 					InitRcolBlocks();
-					SimPe.PackedFiles.Wrapper.SdscFreetime.RegisterAsAspirationEditor(
+					SdscFreetime.RegisterAsAspirationEditor(
 						new SimAspirationEditor()
 					);
-					FileTable.ProviderRegistry.LotProvider.LoadingLot +=
+					FileTableBase.ProviderRegistry.LotProvider.LoadingLot +=
 						new Interfaces.Providers.LoadLotData(
 							LotProvider_LoadingLot
 						);
@@ -230,7 +230,7 @@ namespace SimPe.Plugin
 			Interfaces.Providers.ILotItem item
 		)
 		{
-			Interfaces.Files.IPackageFile pkg = FileTable
+			Interfaces.Files.IPackageFile pkg = FileTableBase
 				.ProviderRegistry
 				.SimDescriptionProvider
 				.BasePackage;

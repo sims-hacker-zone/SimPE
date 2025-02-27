@@ -42,9 +42,9 @@ namespace SimPe.Actions.Default
 				ofd.Filter = ExtensionProvider.BuildFilterString(
 					new ExtensionType[]
 					{
-						SimPe.ExtensionType.ExtractedFile,
-						SimPe.ExtensionType.ExtractedFileDescriptor,
-						SimPe.ExtensionType.AllFiles,
+						ExtensionType.ExtractedFile,
+						ExtensionType.ExtractedFileDescriptor,
+						ExtensionType.AllFiles,
 					}
 				);
 			}
@@ -53,17 +53,17 @@ namespace SimPe.Actions.Default
 				ofd.Filter = ExtensionProvider.BuildFilterString(
 					new ExtensionType[]
 					{
-						SimPe.ExtensionType.ExtractedFileDescriptor,
-						SimPe.ExtensionType.ExtrackedPackageDescriptor,
-						SimPe.ExtensionType.ExtractedFile,
-						SimPe.ExtensionType.Package,
-						SimPe.ExtensionType.DisabledPackage,
-						SimPe.ExtensionType.AllFiles,
+						ExtensionType.ExtractedFileDescriptor,
+						ExtensionType.ExtrackedPackageDescriptor,
+						ExtensionType.ExtractedFile,
+						ExtensionType.Package,
+						ExtensionType.DisabledPackage,
+						ExtensionType.AllFiles,
 					}
 				);
 			}
 
-			ofd.Title = SimPe.Localization.GetString(this.ToString());
+			ofd.Title = Localization.GetString(this.ToString());
 			ofd.Multiselect = add;
 			if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
 			{
@@ -127,7 +127,7 @@ namespace SimPe.Actions.Default
 		#endregion
 
 		#region IToolExt Member
-		public override System.Drawing.Image Icon => SimPe.GetIcon.actionReplace;
+		public override System.Drawing.Image Icon => GetIcon.actionReplace;
 
 		public override System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.ShiftIns;
 		#endregion

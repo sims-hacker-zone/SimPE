@@ -45,7 +45,7 @@ namespace pjse.BhavNameWizards
 		protected BhavWizPrim(Instruction i)
 			: base(i)
 		{
-			prefix = pjse.Localization.GetString("lcPrim");
+			prefix = Localization.GetString("lcPrim");
 		}
 
 		public static implicit operator BhavWizPrim(Instruction i)
@@ -390,7 +390,7 @@ namespace pjse.BhavNameWizards
 			if (lng && _operator >= 8 && _operator <= 10) // Flag operation
 			{
 				s +=
-					pjse.Localization.GetString("flagnr")
+					Localization.GetString("flagnr")
 					+ " "
 					+ dataOwner(rhs_data_owner, rhs_value_word);
 				if (
@@ -540,12 +540,12 @@ namespace pjse.BhavNameWizards
 
 			if (o[2] == 0)
 			{
-				s += pjse.Localization.GetString("bwp03_nworst");
+				s += Localization.GetString("bwp03_nworst");
 			}
 			else
 			{
 				int motives = ToShort(o[0], o[1]);
-				s += pjse.Localization.GetString("bwp03_formotive") + ": ";
+				s += Localization.GetString("bwp03_formotive") + ": ";
 				bool found = false;
 				for (ushort i = 0; i < 16; i++) // this should only find 1 motive (if any)
 				{
@@ -558,14 +558,14 @@ namespace pjse.BhavNameWizards
 
 				if (!found)
 				{
-					s += "(" + pjse.Localization.GetString("none") + ")";
+					s += "(" + Localization.GetString("none") + ")";
 				}
 
 				if (lng)
 				{
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp03_remworst")
+						+ Localization.GetString("bwp03_remworst")
 						+ ": "
 						+ ((o[2] & 0x01) != 0).ToString();
 				}
@@ -574,29 +574,29 @@ namespace pjse.BhavNameWizards
 			{
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp03_inroom")
+					+ Localization.GetString("bwp03_inroom")
 					+ " "
 					+ this.dataOwner(0x08, 0) // Temp
 					+ ": "
 					+ ((o[3] & 0x02) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp03_oow")
+					+ Localization.GetString("bwp03_oow")
 					+ ": "
 					+ ((o[3] & 0x04) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp03_nested")
+					+ Localization.GetString("bwp03_nested")
 					+ ": "
 					+ ((o[3] & 0x08) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp03_oninteraction")
+					+ Localization.GetString("bwp03_oninteraction")
 					+ ": "
 					+ ((o[3] & 0x10) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp03_locntemp1")
+					+ Localization.GetString("bwp03_locntemp1")
 					+ ": "
 					+ ((o[3] & 0x20) != 0).ToString();
 			}
@@ -730,7 +730,7 @@ namespace pjse.BhavNameWizards
 			{
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp0b_100tile")
+					+ Localization.GetString("bwp0b_100tile")
 					+ ": "
 					+ ((o[6] & 0x02) != 0).ToString();
 			}
@@ -777,7 +777,7 @@ namespace pjse.BhavNameWizards
 			{
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp0c_degrees")
+					+ Localization.GetString("bwp0c_degrees")
 					+ ": "
 					+ ((o[8] & 0x02) == 0).ToString();
 			}
@@ -816,21 +816,21 @@ namespace pjse.BhavNameWizards
 
 			if (lng)
 			{
-				s += pjse.Localization.GetString("Target") + ": " + dnStkOb() + ", "; // Stack Object
+				s += Localization.GetString("Target") + ": " + dnStkOb() + ", "; // Stack Object
 			}
 
 			s +=
-				(lng ? pjse.Localization.GetString("Object") + ": " : "")
+				(lng ? Localization.GetString("Object") + ": " : "")
 				+ dataOwner(lng, (byte)((o[3] & 0x02) != 0 ? 0x19 : 0x09), o[1]); // local | param
 
-			s += ", " + (lng ? pjse.Localization.GetString("Interaction") + ": " : "");
+			s += ", " + (lng ? Localization.GetString("Interaction") + ": " : "");
 			if ((o[3] & 0x10) != 0)
 			{
 				s += dataOwner(lng, o[5], o[6], o[7]);
 			}
 			else if ((o[14] & 2) != 0)
 			{
-				s += pjse.Localization.GetString("bwp0d_lastfba");
+				s += Localization.GetString("bwp0d_lastfba");
 			}
 			else
 			{
@@ -845,7 +845,7 @@ namespace pjse.BhavNameWizards
 				{
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp0d_IconObject")
+						+ Localization.GetString("bwp0d_IconObject")
 						+ ": "
 						+ dataOwner(0x19, o[4]); // Local
 				}
@@ -853,7 +853,7 @@ namespace pjse.BhavNameWizards
 				{
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp0d_IconObject")
+						+ Localization.GetString("bwp0d_IconObject")
 						+ ": "
 						+ dataOwner(0x08, 0x04)
 						+ ",5"; // Temp
@@ -861,7 +861,7 @@ namespace pjse.BhavNameWizards
 
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp0d_IconIndex")
+					+ Localization.GetString("bwp0d_IconIndex")
 					+ ": "
 					+ (
 						(o[14] & 0x08) != 0
@@ -871,24 +871,24 @@ namespace pjse.BhavNameWizards
 
 				if ((o[14] & 0x01) != 0)
 				{
-					s += ", " + pjse.Localization.GetString("bwp0d_callersparams");
+					s += ", " + Localization.GetString("bwp0d_callersparams");
 				}
 				// if (o[3] & 4) ht_fprintf(outFile,TYPE_NORMAL,", continue as current");
 				if ((o[3] & 0x08) != 0)
 				{
-					s += ", " + pjse.Localization.GetString("bwp0d_usename");
+					s += ", " + Localization.GetString("bwp0d_usename");
 				}
 
 				if ((o[3] & 0x20) != 0)
 				{
-					s += ", " + pjse.Localization.GetString("bwp0d_forcerun");
+					s += ", " + Localization.GetString("bwp0d_forcerun");
 				}
 
 				if ((o[3] & 0x40) != 0)
 				{
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp0d_linkto")
+						+ Localization.GetString("bwp0d_linkto")
 						+ " "
 						+ dataOwner(o[8], o[9], o[10]);
 				}
@@ -897,7 +897,7 @@ namespace pjse.BhavNameWizards
 				{
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp0d_returnID")
+						+ Localization.GetString("bwp0d_returnID")
 						+ " "
 						+ dataOwner(o[11], o[12], o[13]);
 				}
@@ -1024,8 +1024,8 @@ namespace pjse.BhavNameWizards
 			((byte[])instruction.Reserved1).CopyTo(o, 8);
 
 			return ((o[4] & 0x01) != 0)
-				? pjse.Localization.GetString("bwp0f_ignored")
-				: pjse.Localization.GetString("bwp0f_if")
+				? Localization.GetString("bwp0f_ignored")
+				: Localization.GetString("bwp0f_if")
 					+ " "
 					+ dataOwner(lng, o[2], o[0], o[1])
 					+ " != 0";
@@ -1065,7 +1065,7 @@ namespace pjse.BhavNameWizards
 				{
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp10_startAt")
+						+ Localization.GetString("bwp10_startAt")
 						+ " "
 						+ dataOwner(0x19, o[1]); // Local
 				}
@@ -1077,7 +1077,7 @@ namespace pjse.BhavNameWizards
 				{
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp10_relativeTo")
+						+ Localization.GetString("bwp10_relativeTo")
 						+ " "
 						+ dataOwner(o[7], o[8], o[9]);
 				}
@@ -1087,45 +1087,45 @@ namespace pjse.BhavNameWizards
 			{
 				if ((o[2] & 0x08) != 0)
 				{
-					s += ", " + pjse.Localization.GetString("bwp10_facing");
+					s += ", " + Localization.GetString("bwp10_facing");
 					if ((o[3] & 0x01) != 0)
 					{
-						s += " " + pjse.Localization.GetString("compassN");
+						s += " " + Localization.GetString("compassN");
 					}
 
 					if ((o[3] & 0x02) != 0)
 					{
-						s += " " + pjse.Localization.GetString("compassNE");
+						s += " " + Localization.GetString("compassNE");
 					}
 
 					if ((o[3] & 0x04) != 0)
 					{
-						s += " " + pjse.Localization.GetString("compassE");
+						s += " " + Localization.GetString("compassE");
 					}
 
 					if ((o[3] & 0x08) != 0)
 					{
-						s += " " + pjse.Localization.GetString("compassSE");
+						s += " " + Localization.GetString("compassSE");
 					}
 
 					if ((o[3] & 0x10) != 0)
 					{
-						s += " " + pjse.Localization.GetString("compassS");
+						s += " " + Localization.GetString("compassS");
 					}
 
 					if ((o[3] & 0x20) != 0)
 					{
-						s += " " + pjse.Localization.GetString("compassSW");
+						s += " " + Localization.GetString("compassSW");
 					}
 
 					if ((o[3] & 0x40) != 0)
 					{
-						s += " " + pjse.Localization.GetString("compassW");
+						s += " " + Localization.GetString("compassW");
 					}
 
 					if ((o[3] & 0x80) != 0)
 					{
-						s += " " + pjse.Localization.GetString("compassNW");
+						s += " " + Localization.GetString("compassNW");
 					}
 				}
 
@@ -1137,32 +1137,32 @@ namespace pjse.BhavNameWizards
 
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp10_preferEmpty")
+					+ Localization.GetString("bwp10_preferEmpty")
 					+ ": "
 					+ ((o[2] & 0x02) == 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp10_userEditable")
+					+ Localization.GetString("bwp10_userEditable")
 					+ ": "
 					+ ((o[2] & 0x04) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp10_onLevelGround")
+					+ Localization.GetString("bwp10_onLevelGround")
 					+ ": "
 					+ ((o[2] & 0x10) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp10_withEmptyBorder")
+					+ Localization.GetString("bwp10_withEmptyBorder")
 					+ ": "
 					+ ((o[2] & 0x20) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp10_beginInFrontOfRefobj")
+					+ Localization.GetString("bwp10_beginInFrontOfRefobj")
 					+ ": "
 					+ ((o[2] & 0x40) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp10_withLineOfSightToCenter")
+					+ Localization.GetString("bwp10_withLineOfSightToCenter")
 					+ ": "
 					+ ((o[2] & 0x80) != 0).ToString();
 			}
@@ -1248,16 +1248,16 @@ namespace pjse.BhavNameWizards
 
 			if ((o[4] & 0x01) != 0)
 			{
-				s += pjse.Localization.GetString("bwp11_handleSubQueueInteractions");
+				s += Localization.GetString("bwp11_handleSubQueueInteractions");
 			}
 			else
 			{
 				s +=
-					pjse.Localization.GetString("bwp_ticks")
+					Localization.GetString("bwp_ticks")
 					+ ": "
 					+ dataOwner(lng, 0x09, o[0]) // Param
 					+ ", "
-					+ pjse.Localization.GetString("bwp11_allowPush")
+					+ Localization.GetString("bwp11_allowPush")
 					+ ": "
 					+ (ToShort(o[2], o[3]) == 0).ToString();
 			}
@@ -1298,12 +1298,12 @@ namespace pjse.BhavNameWizards
 			{
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp12_returnImmediately")
+					+ Localization.GetString("bwp12_returnImmediately")
 					+ ": "
 					+ ((o[2] & 1) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp12_cleanupAll")
+					+ Localization.GetString("bwp12_cleanupAll")
 					+ ": "
 					+ ((o[2] & 2) == 0).ToString();
 			}
@@ -1338,22 +1338,22 @@ namespace pjse.BhavNameWizards
 			if ((o[9] & 0x01) != 0)
 			{
 				s +=
-					pjse.Localization.GetString("Parent")
+					Localization.GetString("Parent")
 					+ " 1"
 					+ (
 						(o[9] & 0x02) != 0
-							? " " + pjse.Localization.GetString("NeighborID")
+							? " " + Localization.GetString("NeighborID")
 							: ""
 					)
 					+ ": "
 					+ dataOwner(lng, o[6], o[7], o[8]);
 				s += ", ";
 				s +=
-					pjse.Localization.GetString("Parent")
+					Localization.GetString("Parent")
 					+ " 2"
 					+ (
 						(o[9] & 0x04) != 0
-							? " " + pjse.Localization.GetString("NeighborID")
+							? " " + Localization.GetString("NeighborID")
 							: ""
 					)
 					+ ": "
@@ -1361,33 +1361,33 @@ namespace pjse.BhavNameWizards
 			}
 			else
 			{
-				s += pjse.Localization.GetString("bwp13_noParents");
+				s += Localization.GetString("bwp13_noParents");
 			}
 
 			if (lng)
 			{
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp13_personDataSource")
+					+ Localization.GetString("bwp13_personDataSource")
 					+ ": (GUID) "
 					+ dataOwner(0x08, 0x00)
 					+ ",1: "
 					+ ((o[9] & 0x08) != 0).ToString(); // Temp
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp13_personDataSource")
+					+ Localization.GetString("bwp13_personDataSource")
 					+ ": (GUID) "
 					+ "temp Token"
 					+ ": "
 					+ ((o[9] & 0x10) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp13_characterFromBin")
+					+ Localization.GetString("bwp13_characterFromBin")
 					+ ": "
 					+ ((o[9] & 0x20) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp13_thumbnailOutfit")
+					+ Localization.GetString("bwp13_thumbnailOutfit")
 					+ ": "
 					+ (
 						((o[9] & 0x40) != 0)
@@ -1397,30 +1397,30 @@ namespace pjse.BhavNameWizards
 										? dataOwner(0x08, 0x02) + ",3" // Temp
 										: dataOwner(o[10], o[11], o[12])
 								)
-							: pjse.Localization.GetString("default")
+							: Localization.GetString("default")
 					);
 
 				if (o[0] != 0 && o[0] != 0xFF)
 				{
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp13_skinColor")
+						+ Localization.GetString("bwp13_skinColor")
 						+ ": "
 						+ dataOwner(0x19, o[0]); // Local
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp13_age")
+						+ Localization.GetString("bwp13_age")
 						+ ": "
 						+ dataOwner(0x19, o[1]); // Local
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp13_gender")
+						+ Localization.GetString("bwp13_gender")
 						+ ": "
 						+ dataOwner(0x19, o[2]); // Local
 				}
 				else
 				{
-					s += ", " + pjse.Localization.GetString("bwp13_defAgeGenderSkin");
+					s += ", " + Localization.GetString("bwp13_defAgeGenderSkin");
 				}
 			}
 
@@ -1488,17 +1488,17 @@ namespace pjse.BhavNameWizards
 			{
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp14_changeIcon")
+					+ Localization.GetString("bwp14_changeIcon")
 					+ ": "
 					+ ((o[2] & 0x01) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp14_callersParams")
+					+ Localization.GetString("bwp14_callersParams")
 					+ ": "
 					+ ((o[2] & 0x02) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp14_CTonly")
+					+ Localization.GetString("bwp14_CTonly")
 					+ ": "
 					+ ((o[2] & 0x04) != 0).ToString();
 			}
@@ -1557,8 +1557,8 @@ namespace pjse.BhavNameWizards
 
 			s += (
 				(o[4] & 0x40) != 0
-					? pjse.Localization.GetString("Stop")
-					: pjse.Localization.GetString("Play")
+					? Localization.GetString("Stop")
+					: Localization.GetString("Play")
 			);
 
 			int instance = ToShort(o[0], o[1]);
@@ -1589,23 +1589,23 @@ namespace pjse.BhavNameWizards
 			{
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_source")
+					+ Localization.GetString("bwp_source")
 					+ ": "
 					+ dataOwner((byte)((o[4] & 0x02) == 0 ? 0x03 : 0x04), 0x0b);
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp17_autoVary")
+					+ Localization.GetString("bwp17_autoVary")
 					+ ": "
 					+ ((o[4] & 0x10) != 0).ToString();
 
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp17_sampleRate")
+					+ Localization.GetString("bwp17_sampleRate")
 					+ ": 0x"
 					+ SimPe.Helper.HexString(ToShort(o[2], o[3]));
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp17_volume")
+					+ Localization.GetString("bwp17_volume")
 					+ ": 0x"
 					+ SimPe.Helper.HexString(o[5]);
 			}
@@ -1656,7 +1656,7 @@ namespace pjse.BhavNameWizards
 
 			if ((o[4] & 0x01) != 0)
 			{
-				s += pjse.Localization.GetString("bwp19_test") + ": ";
+				s += Localization.GetString("bwp19_test") + ": ";
 			}
 
 			s +=
@@ -1799,7 +1799,7 @@ namespace pjse.BhavNameWizards
 				}
 			}
 
-			s += ", " + pjse.Localization.GetString("bwp1a_relationship") + ": ";
+			s += ", " + Localization.GetString("bwp1a_relationship") + ": ";
 			if (instruction.NodeVersion == 0) // old-style parameter usage
 			{
 				s += readStr(GS.BhavStr.RelVar, (ushort)(o[1] & 3));
@@ -1818,12 +1818,12 @@ namespace pjse.BhavNameWizards
 				{
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp1a_failTooSmall")
+						+ Localization.GetString("bwp1a_failTooSmall")
 						+ ": "
 						+ ((o[2] & 0x01) != 0).ToString();
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp1a_useNIDs")
+						+ Localization.GetString("bwp1a_useNIDs")
 						+ ": "
 						+ ((o[2] & 0x02) != 0).ToString();
 				}
@@ -1831,17 +1831,17 @@ namespace pjse.BhavNameWizards
 				{
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp1a_failTooSmall")
+						+ Localization.GetString("bwp1a_failTooSmall")
 						+ ": "
 						+ ((o[1] & 0x01) != 0).ToString();
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp1a_useNIDs")
+						+ Localization.GetString("bwp1a_useNIDs")
 						+ ": "
 						+ ((o[1] & 0x02) != 0).ToString();
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp1a_noCheckObj2")
+						+ Localization.GetString("bwp1a_noCheckObj2")
 						+ ": "
 						+ ((o[1] & 0x08) != 0).ToString(); // "object to sim" relationship
 				}
@@ -1931,22 +1931,22 @@ namespace pjse.BhavNameWizards
 			string s = "";
 
 			s +=
-				(lng ? pjse.Localization.GetString("bwp_Location") + ": " : "")
+				(lng ? Localization.GetString("bwp_Location") + ": " : "")
 				+ readStr(GS.BhavStr.RelativeLocations, (byte)(o[2] + 2));
 			s +=
 				", "
-				+ (lng ? pjse.Localization.GetString("Direction") + ": " : "")
+				+ (lng ? Localization.GetString("Direction") + ": " : "")
 				+ readStr(GS.BhavStr.RelativeDirections, (byte)(o[3] + 2));
 			if (lng)
 			{
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_noFailureTrees")
+					+ Localization.GetString("bwp_noFailureTrees")
 					+ ": "
 					+ ((o[6] & 0x02) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp1b_differentAltitudes")
+					+ Localization.GetString("bwp1b_differentAltitudes")
 					+ ": "
 					+ ((o[6] & 0x04) != 0).ToString();
 			}
@@ -1999,7 +1999,7 @@ namespace pjse.BhavNameWizards
 
 			if (lng)
 			{
-				s += pjse.Localization.GetString("bwp1c_treeName") + ": ";
+				s += Localization.GetString("bwp1c_treeName") + ": ";
 			}
 
 			s += readStr(
@@ -2012,21 +2012,21 @@ namespace pjse.BhavNameWizards
 
 			if (lng)
 			{
-				s += ", " + pjse.Localization.GetString("bwp1c_search") + ": ";
-				s += pjse.Localization.GetString("Private");
-				s += !options[3] ? " " + pjse.Localization.GetString("SemiGlobal") : "";
-				s += !options[2] ? " " + pjse.Localization.GetString("Global") : "";
+				s += ", " + Localization.GetString("bwp1c_search") + ": ";
+				s += Localization.GetString("Private");
+				s += !options[3] ? " " + Localization.GetString("SemiGlobal") : "";
+				s += !options[2] ? " " + Localization.GetString("Global") : "";
 
 				s += ", " + readStr(GS.BhavStr.RTBNType, o[5]);
 
 				if ((o[2] & 0x30) != 0)
 				{
-					s += ", " + pjse.Localization.GetString("manyArgs") + ": ";
+					s += ", " + Localization.GetString("manyArgs") + ": ";
 				}
 
 				if (options[5])
 				{
-					s += pjse.Localization.GetString("bw_callerparams");
+					s += Localization.GetString("bw_callerparams");
 				}
 
 				if ((o[2] & 0x30) == 0x30)
@@ -2116,16 +2116,16 @@ namespace pjse.BhavNameWizards
 
 			s += (
 				(o[3] & 0x01) != 0
-					? pjse.Localization.GetString("bwp1d_clearAll")
+					? Localization.GetString("bwp1d_clearAll")
 					: dataOwner(lng, 0x0E, o[2]) // My Motives
 						+ " += "
 						+ dataOwner(lng, o[0], o[4], o[5])
 						+ " "
 						+ (
 							lng
-								? pjse.Localization.GetString("bwp1d_perHour")
+								? Localization.GetString("bwp1d_perHour")
 									+ ", "
-									+ pjse.Localization.GetString("bwp1d_stopAt")
+									+ Localization.GetString("bwp1d_stopAt")
 									+ ":"
 								: ".."
 						)
@@ -2137,7 +2137,7 @@ namespace pjse.BhavNameWizards
 			{
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp1d_autoClear")
+					+ Localization.GetString("bwp1d_autoClear")
 					+ ": "
 					+ ((o[3] & 0x02) != 0).ToString();
 			}
@@ -2218,7 +2218,7 @@ namespace pjse.BhavNameWizards
 			{
 				case 0x04:
 				case 0x07:
-					s += ": " + BhavWiz.FormatGUID(lng, o, 0);
+					s += ": " + FormatGUID(lng, o, 0);
 					break;
 				case 0x09:
 				case 0x22:
@@ -2239,7 +2239,7 @@ namespace pjse.BhavNameWizards
 
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp1f_disabledObjects")
+					+ Localization.GetString("bwp1f_disabledObjects")
 					+ ": "
 					+ ((o[8] & 0x01) != 0).ToString();
 			}
@@ -2286,9 +2286,9 @@ namespace pjse.BhavNameWizards
 
 			s += dataOwner(lng, o[6], o[4], o[5]);
 
-			s += ", " + pjse.Localization.GetString("bwp20_isInstanceOf");
+			s += ", " + Localization.GetString("bwp20_isInstanceOf");
 
-			s += ": " + BhavWiz.FormatGUID(lng, o, 0);
+			s += ": " + FormatGUID(lng, o, 0);
 			if (lng)
 			{
 				//if (d1 == 0x4C7CAB2B)
@@ -2296,17 +2296,17 @@ namespace pjse.BhavNameWizards
 
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp20_originalGUID")
+					+ Localization.GetString("bwp20_originalGUID")
 					+ ": "
 					+ ((o[7] & 0x01) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp20_neighbourID")
+					+ Localization.GetString("bwp20_neighbourID")
 					+ ": "
 					+ ((o[7] & 0x02) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp20_returnTemp01")
+					+ Localization.GetString("bwp20_returnTemp01")
 					+ ": "
 					+ ((o[7] & 0x04) != 0).ToString();
 			}
@@ -2428,7 +2428,7 @@ namespace pjse.BhavNameWizards
 
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp22_windowID")
+						+ Localization.GetString("bwp22_windowID")
 						+ ": "
 						+ readStr(
 							scope,
@@ -2442,7 +2442,7 @@ namespace pjse.BhavNameWizards
 				{
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp_TNSID")
+						+ Localization.GetString("bwp_TNSID")
 						+ ": "
 						+ dataOwner(o[13], o[11], o[12]);
 				}
@@ -2453,8 +2453,8 @@ namespace pjse.BhavNameWizards
 						", "
 						+ (
 							ToShort(o[6], o[7]) != 0
-								? pjse.Localization.GetString("bwp22_startingEffect")
-								: pjse.Localization.GetString("bwp22_stoppingEffect")
+								? Localization.GetString("bwp22_startingEffect")
+								: Localization.GetString("bwp22_stoppingEffect")
 						);
 				}
 
@@ -2473,10 +2473,10 @@ namespace pjse.BhavNameWizards
 					bool found = false;
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp_eventTree")
+						+ Localization.GetString("bwp_eventTree")
 						+ ": "
 						+ bhavName(ToShort(o[8], o[9]), ref found);
-					s += " (" + pjse.Localization.GetString(scope.ToString()) + ")";
+					s += " (" + Localization.GetString(scope.ToString()) + ")";
 				}
 			}
 
@@ -2605,41 +2605,41 @@ namespace pjse.BhavNameWizards
 				+ ": "
 				+ (
 					(o[4] & 1) != 0
-						? pjse.Localization.GetString("bwp23_visible")
-						: pjse.Localization.GetString("bwp23_notVisible")
+						? Localization.GetString("bwp23_visible")
+						: Localization.GetString("bwp23_notVisible")
 				);
 
 			s +=
 				", "
-				+ pjse.Localization.GetString("bwp23_zoom")
+				+ Localization.GetString("bwp23_zoom")
 				+ ": 0x"
 				+ SimPe.Helper.HexString(o[3])
 				+ " (";
 			switch (o[3])
 			{
 				case 1:
-					s += pjse.Localization.GetString("bwp23_far");
+					s += Localization.GetString("bwp23_far");
 					break;
 				case 2:
-					s += pjse.Localization.GetString("bwp23_mid");
+					s += Localization.GetString("bwp23_mid");
 					break;
 				case 3:
-					s += pjse.Localization.GetString("bwp23_near");
+					s += Localization.GetString("bwp23_near");
 					break;
 				default:
-					s += pjse.Localization.GetString("unk");
+					s += Localization.GetString("unk");
 					break;
 			}
 			s += ")";
 
 			s +=
 				", "
-				+ pjse.Localization.GetString("bwp23_center")
+				+ Localization.GetString("bwp23_center")
 				+ ": "
 				+ ((o[4] & 0x08) != 0).ToString();
 			s +=
 				", "
-				+ pjse.Localization.GetString("bwp_timeout")
+				+ Localization.GetString("bwp_timeout")
 				+ ": "
 				+ (
 					(o[4] & 0x20) != 0
@@ -2648,7 +2648,7 @@ namespace pjse.BhavNameWizards
 				);
 			s +=
 				", "
-				+ pjse.Localization.GetString("bwp23_slowDown")
+				+ Localization.GetString("bwp23_slowDown")
 				+ ": "
 				+ ((o[4] & 0x40) == 0).ToString();
 
@@ -2800,16 +2800,16 @@ namespace pjse.BhavNameWizards
 			{
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp24_strings")
+					+ Localization.GetString("bwp24_strings")
 					+ ": "
-					+ pjse.Localization.GetString(scope.ToString());
+					+ Localization.GetString(scope.ToString());
 			}
 
 			if (states[4])
 			{
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp24_title")
+					+ Localization.GetString("bwp24_title")
 					+ ": "
 					+ dialogStr(scope, (o[8] & 0x10) != 0, o[6], lng ? -1 : 60);
 			}
@@ -2818,7 +2818,7 @@ namespace pjse.BhavNameWizards
 			{
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_message")
+					+ Localization.GetString("bwp_message")
 					+ ": "
 					+ dialogStr(scope, (o[8] & 0x02) != 0, msg, lng ? -1 : 60);
 			}
@@ -2829,7 +2829,7 @@ namespace pjse.BhavNameWizards
 				{
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp24_button1")
+						+ Localization.GetString("bwp24_button1")
 						+ ": "
 						+ dialogStr(scope, (o[8] & 0x04) != 0, o[3]);
 				}
@@ -2838,7 +2838,7 @@ namespace pjse.BhavNameWizards
 				{
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp24_button2")
+						+ Localization.GetString("bwp24_button2")
 						+ ": "
 						+ dialogStr(scope, (o[8] & 0x08) != 0, o[4]);
 				}
@@ -2847,7 +2847,7 @@ namespace pjse.BhavNameWizards
 				{
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp24_button3")
+						+ Localization.GetString("bwp24_button3")
 						+ ": "
 						+ dialogStr(scope, (o[8] & 0x20) != 0, cnc);
 				}
@@ -2857,19 +2857,19 @@ namespace pjse.BhavNameWizards
 			{
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp24_TNSStyle")
+					+ Localization.GetString("bwp24_TNSStyle")
 					+ ": "
 					+ readStr(GS.BhavStr.TnsStyle, o[12]);
 				if (lng)
 				{
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp_priority")
+						+ Localization.GetString("bwp_priority")
 						+ ": 0x"
 						+ SimPe.Helper.HexString((byte)(o[9] + 1));
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp_timeout")
+						+ Localization.GetString("bwp_timeout")
 						+ ": 0x"
 						+ SimPe.Helper.HexString(o[10]);
 				}
@@ -2884,8 +2884,8 @@ namespace pjse.BhavNameWizards
 						", "
 						+ (
 							o[5] == 0x02
-								? pjse.Localization.GetString("bwp_resultIn")
-								: pjse.Localization.GetString("bwp_TNSID")
+								? Localization.GetString("bwp_resultIn")
+								: Localization.GetString("bwp_TNSID")
 						)
 						+ ": "
 						+ dataOwner(0x08, tempVar); // temp
@@ -2895,7 +2895,7 @@ namespace pjse.BhavNameWizards
 				{
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp24_Locals")
+						+ Localization.GetString("bwp24_Locals")
 						+ ": "
 						+ dataOwner(0x19, o[11]); // local
 				}
@@ -2903,7 +2903,7 @@ namespace pjse.BhavNameWizards
 				byte iconType = (byte)((o[7] >> 1) & 0x07);
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_icon")
+					+ Localization.GetString("bwp_icon")
 					+ ": "
 					+ readStr(GS.BhavStr.DialogIcon, iconType);
 				switch (iconType)
@@ -2920,12 +2920,12 @@ namespace pjse.BhavNameWizards
 
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp24_waitForUser")
+					+ Localization.GetString("bwp24_waitForUser")
 					+ ": "
 					+ ((o[7] & 0x01) == 0);
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp24_blockSimulation")
+					+ Localization.GetString("bwp24_blockSimulation")
 					+ ": "
 					+ ((o[7] & 0x80) == 0);
 
@@ -3091,7 +3091,7 @@ namespace pjse.BhavNameWizards
 				}
 				else
 				{
-					s += "[" + pjse.Localization.GetString("none") + "]";
+					s += "[" + Localization.GetString("none") + "]";
 				}
 			}
 			return s;
@@ -3146,14 +3146,14 @@ namespace pjse.BhavNameWizards
 			}
 			else
 			{
-				s += BhavWiz.FormatGUID(lng, o, 0);
+				s += FormatGUID(lng, o, 0);
 			}
 
 			if (lng)
 			{
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp2a_place")
+					+ Localization.GetString("bwp2a_place")
 					+ ": "
 					+ readStr(GS.BhavStr.CreatePlace, o[4]);
 				switch (o[4])
@@ -3173,23 +3173,23 @@ namespace pjse.BhavNameWizards
 				s += ", " + readStr(GS.BhavStr.CreateHow, (ushort)(o[5] & 0x03));
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp2a_failNonEmpty")
+					+ Localization.GetString("bwp2a_failNonEmpty")
 					+ ": "
 					+ ((o[5] & 0x08) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp2a_passTemp0")
+					+ Localization.GetString("bwp2a_passTemp0")
 					+ ": "
 					+ ((o[5] & 0x10) != 0).ToString();
 
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp2a_moveInNewSim")
+					+ Localization.GetString("bwp2a_moveInNewSim")
 					+ ": "
 					+ ((o[10] & 0x01) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp2a_copyTemp5")
+					+ Localization.GetString("bwp2a_copyTemp5")
 					+ ": "
 					+ ((o[10] & 0x02) != 0).ToString();
 			}
@@ -3278,7 +3278,7 @@ namespace pjse.BhavNameWizards
 						break;
 					case 2:
 						s +=
-							pjse.Localization.GetString("lcGlobal")
+							Localization.GetString("lcGlobal")
 							+ " 0x"
 							+ SimPe.Helper.HexString(ToShort(o[0], o[1]));
 						break;
@@ -3299,17 +3299,17 @@ namespace pjse.BhavNameWizards
 			{
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_noFailureTrees")
+					+ Localization.GetString("bwp_noFailureTrees")
 					+ ": "
 					+ ((o[4] & 0x01) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp2d_ignoreDestObjFootprint")
+					+ Localization.GetString("bwp2d_ignoreDestObjFootprint")
 					+ ": "
 					+ ((o[4] & 0x04) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp2d_allowDiffAltitudes")
+					+ Localization.GetString("bwp2d_allowDiffAltitudes")
 					+ ": "
 					+ ((o[4] & 0x08) != 0).ToString();
 			}
@@ -3395,18 +3395,18 @@ namespace pjse.BhavNameWizards
 			{
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp2e_fromTemp1")
+					+ Localization.GetString("bwp2e_fromTemp1")
 					+ ": "
 					+ (ToShort(o[8], o[9]) == 1).ToString();
 
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp2e_askSimToMove")
+					+ Localization.GetString("bwp2e_askSimToMove")
 					+ ": "
 					+ ((o[4] & 0x02) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_testOnly")
+					+ Localization.GetString("bwp_testOnly")
 					+ ": "
 					+ ((o[4] & 0x10) != 0).ToString();
 			}
@@ -3506,18 +3506,18 @@ namespace pjse.BhavNameWizards
 
 				if (lng)
 				{
-					s += pjse.Localization.GetString("bwp32_addChange");
+					s += Localization.GetString("bwp32_addChange");
 					if (instruction.NodeVersion != 0)
 					{
 						s +=
-							", " + pjse.Localization.GetString("bwp32_disabled") + ": ";
+							", " + Localization.GetString("bwp32_disabled") + ": ";
 						if ((o[3] & 0x01) != 0)
 						{
-							s += pjse.Localization.GetString("bwp32_propagating");
+							s += Localization.GetString("bwp32_propagating");
 						}
 						else if ((o[3] & 0x02) != 0)
 						{
-							s += pjse.Localization.GetString("bwp32_nonPropagating");
+							s += Localization.GetString("bwp32_nonPropagating");
 						}
 						else
 						{
@@ -3528,7 +3528,7 @@ namespace pjse.BhavNameWizards
 					{
 						s +=
 							", "
-							+ pjse.Localization.GetString("bwp32_subqueue")
+							+ Localization.GetString("bwp32_subqueue")
 							+ ": "
 							+ ((o[3] & 0x10) != 0);
 					}
@@ -3563,11 +3563,11 @@ namespace pjse.BhavNameWizards
 			}
 			else
 			{
-				s += pjse.Localization.GetString("bwp32_iconChange");
+				s += Localization.GetString("bwp32_iconChange");
 
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp32_iconIndex")
+					+ Localization.GetString("bwp32_iconIndex")
 					+ ": "
 					+ (
 						((o[2] & 0x80) != 0)
@@ -3581,19 +3581,19 @@ namespace pjse.BhavNameWizards
 					{
 						s +=
 							", "
-							+ pjse.Localization.GetString("bwp32_thumbnailOutfit")
+							+ Localization.GetString("bwp32_thumbnailOutfit")
 							+ ": "
 							+ (
 								((o[2] & 0x40) != 0)
 									? "GUID " + dataOwner(false, 0x08, 2) + ",3" // Temp 2,3
-									: BhavWiz.FormatGUID(lng, o, 5)
+									: FormatGUID(lng, o, 5)
 							);
 					}
 					else
 					{
 						s +=
 							", "
-							+ pjse.Localization.GetString("Object")
+							+ Localization.GetString("Object")
 							+ ": "
 							+ dataOwner(lng, o[11], o[12], o[13]);
 					}
@@ -3887,15 +3887,15 @@ namespace pjse.BhavNameWizards
 			{
 				uint d1 = (uint)(o[5] | (o[6] << 8) | (o[7] << 16) | (o[8] << 24));
 				s +=
-					(lng ? ", " + pjse.Localization.GetString("bwp33_token") + ":" : "")
+					(lng ? ", " + Localization.GetString("bwp33_token") + ":" : "")
 					+ " "
-					+ (d1 == 0 ? dnStkOb() : BhavWiz.FormatGUID(lng, d1));
+					+ (d1 == 0 ? dnStkOb() : FormatGUID(lng, d1));
 			}
 
 			if (toktype != 0)
 			{
 				s +=
-					(lng ? ", " + pjse.Localization.GetString("bwp33_category") : "")
+					(lng ? ", " + Localization.GetString("bwp33_category") : "")
 					+ ": "
 					+ (
 						(instruction.NodeVersion >= 2)
@@ -3911,20 +3911,20 @@ namespace pjse.BhavNameWizards
 				{
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp33_reversed")
+						+ Localization.GetString("bwp33_reversed")
 						+ ": "
 						+ ((c1 & 0x80) != 0).ToString();
 				}
 
 				if (!ignoreinv)
 				{
-					s += ", " + pjse.Localization.GetString("bwp33_Inventory");
+					s += ", " + Localization.GetString("bwp33_Inventory");
 					s +=
 						" ("
 						+ (
 							(c1 & 0x08) != 0
-								? pjse.Localization.GetString("bwp33_counted")
-								: pjse.Localization.GetString("bwp33_singular")
+								? Localization.GetString("bwp33_counted")
+								: Localization.GetString("bwp33_singular")
 						)
 						+ ")";
 					s += ": " + readStr(GS.BhavStr.InventoryType, (ushort)(c1 & 0x07));
@@ -3938,7 +3938,7 @@ namespace pjse.BhavNameWizards
 					{
 						s +=
 							", "
-							+ pjse.Localization.GetString("bwp33_fromInventory")
+							+ Localization.GetString("bwp33_fromInventory")
 							+ ": "
 							+ readStr(GS.BhavStr.InventoryType, (ushort)(o[6] & 0x07));
 						if ((o[6] & 0x07) >= 1 && (o[6] & 0x07) <= 3)
@@ -3952,7 +3952,7 @@ namespace pjse.BhavNameWizards
 					{
 						s +=
 							", "
-							+ pjse.Localization.GetString("bwp33_index")
+							+ Localization.GetString("bwp33_index")
 							+ ": "
 							+ dataOwner(lng, o[10], o[11], o[12]);
 					}
@@ -3961,7 +3961,7 @@ namespace pjse.BhavNameWizards
 					{
 						s +=
 							", "
-							+ pjse.Localization.GetString("bwp33_index")
+							+ Localization.GetString("bwp33_index")
 							+ ": "
 							+ dataOwner(lng, o[6], o[7], o[8]);
 					}
@@ -3971,7 +3971,7 @@ namespace pjse.BhavNameWizards
 				{
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp33_property")
+						+ Localization.GetString("bwp33_property")
 						+ ": "
 						+ dataOwner(lng, o[10], o[11], o[12]);
 				}
@@ -3980,7 +3980,7 @@ namespace pjse.BhavNameWizards
 				{
 					s +=
 						", "
-						+ pjse.Localization.GetString("Value")
+						+ Localization.GetString("Value")
 						+ ": "
 						+ dataOwner(lng, o[13], o[14], o[15]);
 				}
@@ -3989,7 +3989,7 @@ namespace pjse.BhavNameWizards
 				{
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp33_count")
+						+ Localization.GetString("bwp33_count")
 						+ ": "
 						+ dataOwner(lng, o[13], o[14], o[15]);
 				}
@@ -4329,12 +4329,12 @@ namespace pjse.BhavNameWizards
 			string s = "";
 
 			s +=
-				(lng ? pjse.Localization.GetString("Object") + ": " : "")
+				(lng ? Localization.GetString("Object") + ": " : "")
 				+ dataOwner(lng, o[6], o[7], o[8]); // target object
 
 			s +=
 				", "
-				+ (lng ? pjse.Localization.GetString("bwp_animation") + ": " : "")
+				+ (lng ? Localization.GetString("bwp_animation") + ": " : "")
 				+ (
 					(o[2] & 0x04) != 0
 						? "ObjectAnims:[" + dataOwner(lng, 0x09, o[0], o[1]) + "]" // Param
@@ -4351,7 +4351,7 @@ namespace pjse.BhavNameWizards
 				bool found = false;
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_eventTree")
+					+ Localization.GetString("bwp_eventTree")
 					+ ": "
 					+ bhavName(ToShort(o[4], o[5]), ref found);
 
@@ -4365,42 +4365,42 @@ namespace pjse.BhavNameWizards
 					scope = Scope.SemiGlobal;
 				}
 
-				s += " (" + pjse.Localization.GetString(scope.ToString()) + ")";
+				s += " (" + Localization.GetString(scope.ToString()) + ")";
 
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_animSpeed")
+					+ Localization.GetString("bwp_animSpeed")
 					+ ": "
 					+ ((o[2] & 0x02) != 0 ? dataOwner(0x08, 2) : "---"); // Temp 2
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_interruptible")
+					+ Localization.GetString("bwp_interruptible")
 					+ ": "
 					+ ((o[2] & 0x08) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_startTag")
+					+ Localization.GetString("bwp_startTag")
 					+ ": "
 					+ ((o[2] & 0x10) != 0 ? dataOwner(0x08, 0) : "---"); // Temp 0
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_loopCount")
+					+ Localization.GetString("bwp_loopCount")
 					+ ": "
 					+ ((o[2] & 0x20) != 0 ? dataOwner(0x08, 1) : "---");
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_blendOut")
+					+ Localization.GetString("bwp_blendOut")
 					+ ": "
 					+ ((o[2] & 0x40) == 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_blendIn")
+					+ Localization.GetString("bwp_blendIn")
 					+ ": "
 					+ ((o[2] & 0x80) == 0).ToString();
 
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_flipFlag")
+					+ Localization.GetString("bwp_flipFlag")
 					+ ": "
 					+ (
 						(o[10] & 0x01) != 0
@@ -4409,17 +4409,17 @@ namespace pjse.BhavNameWizards
 					);
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_sync")
+					+ Localization.GetString("bwp_sync")
 					+ ": "
 					+ ((o[10] & 0x04) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_alignBlend")
+					+ Localization.GetString("bwp_alignBlend")
 					+ ": "
 					+ ((o[10] & 0x08) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_notHurryable")
+					+ Localization.GetString("bwp_notHurryable")
 					+ ": "
 					+ ((o[10] & 0x80) != 0).ToString();
 			}
@@ -4530,7 +4530,7 @@ namespace pjse.BhavNameWizards
 			}
 
 			s +=
-				(lng ? pjse.Localization.GetString("bwp_animation") + ": " : "")
+				(lng ? Localization.GetString("bwp_animation") + ": " : "")
 				+ (
 					(o[2] & 0x04) != 0
 						? instance.ToString()
@@ -4538,7 +4538,7 @@ namespace pjse.BhavNameWizards
 							+ dataOwner(lng, 0x09, o[0], o[1])
 							+ "]" // Param
 							+ " ("
-							+ pjse.Localization.GetString(scope.ToString())
+							+ Localization.GetString(scope.ToString())
 							+ ")"
 						: readStr(
 							scope,
@@ -4554,7 +4554,7 @@ namespace pjse.BhavNameWizards
 				bool found = false;
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_eventTree")
+					+ Localization.GetString("bwp_eventTree")
 					+ ": "
 					+ bhavName(ToShort(o[4], o[5]), ref found);
 
@@ -4568,42 +4568,42 @@ namespace pjse.BhavNameWizards
 					scope = Scope.SemiGlobal;
 				}
 
-				s += " (" + pjse.Localization.GetString(scope.ToString()) + ")";
+				s += " (" + Localization.GetString(scope.ToString()) + ")";
 
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_animSpeed")
+					+ Localization.GetString("bwp_animSpeed")
 					+ ": "
 					+ ((o[2] & 0x02) != 0 ? dataOwner(0x08, 2) : "---"); // Temp 2
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_interruptible")
+					+ Localization.GetString("bwp_interruptible")
 					+ ": "
 					+ ((o[2] & 0x08) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_startTag")
+					+ Localization.GetString("bwp_startTag")
 					+ ": "
 					+ ((o[2] & 0x10) != 0 ? dataOwner(0x08, 0) : "---"); // Temp 0
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp6a_transToIdle")
+					+ Localization.GetString("bwp6a_transToIdle")
 					+ ": "
 					+ ((o[2] & 0x20) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_blendOut")
+					+ Localization.GetString("bwp_blendOut")
 					+ ": "
 					+ ((o[2] & 0x40) == 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_blendIn")
+					+ Localization.GetString("bwp_blendIn")
 					+ ": "
 					+ ((o[2] & 0x80) == 0).ToString();
 
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_flipFlag")
+					+ Localization.GetString("bwp_flipFlag")
 					+ ": "
 					+ (
 						(o[8] & 0x01) != 0
@@ -4612,44 +4612,44 @@ namespace pjse.BhavNameWizards
 					);
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp6a_sync")
+					+ Localization.GetString("bwp6a_sync")
 					+ ": "
 					+ ((o[8] & 0x02) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp6a_controllerIsSource")
+					+ Localization.GetString("bwp6a_controllerIsSource")
 					+ ": "
 					+ ((o[8] & 0x10) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_notHurryable")
+					+ Localization.GetString("bwp_notHurryable")
 					+ ": "
 					+ ((o[8] & 0x20) != 0).ToString();
 
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp6a_IK")
+					+ Localization.GetString("bwp6a_IK")
 					+ ": "
 					+ dataOwner(o[9], ToShort(o[10], o[11]));
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_priority")
+					+ Localization.GetString("bwp_priority")
 					+ ": 0x"
 					+ SimPe.Helper.HexString(o[12])
 					+ " (";
 				switch (o[12])
 				{
 					case 0:
-						s += pjse.Localization.GetString("bwp_low");
+						s += Localization.GetString("bwp_low");
 						break;
 					case 1:
-						s += pjse.Localization.GetString("bwp_medium");
+						s += Localization.GetString("bwp_medium");
 						break;
 					case 2:
-						s += pjse.Localization.GetString("bwp_high");
+						s += Localization.GetString("bwp_high");
 						break;
 					default:
-						s += pjse.Localization.GetString("unk");
+						s += Localization.GetString("unk");
 						break;
 				}
 				s += ")";
@@ -4802,7 +4802,7 @@ namespace pjse.BhavNameWizards
 			string s = "";
 
 			s +=
-				(lng ? pjse.Localization.GetString("Object") + ": " : "")
+				(lng ? Localization.GetString("Object") + ": " : "")
 				+ dataOwner(lng, o[6], o[7], o[8]); // target object
 
 			Scope scope = Scope.Private;
@@ -4830,7 +4830,7 @@ namespace pjse.BhavNameWizards
 
 			s +=
 				", "
-				+ (lng ? pjse.Localization.GetString("bwp_animation") + ": " : "")
+				+ (lng ? Localization.GetString("bwp_animation") + ": " : "")
 				+ (
 					(o[2] & 0x04) != 0
 						? instance.ToString()
@@ -4840,7 +4840,7 @@ namespace pjse.BhavNameWizards
 							+ (
 								lng
 									? " ("
-										+ pjse.Localization.GetString(scope.ToString())
+										+ Localization.GetString(scope.ToString())
 										+ ")"
 									: ""
 							)
@@ -4858,7 +4858,7 @@ namespace pjse.BhavNameWizards
 				bool found = false;
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_eventTree")
+					+ Localization.GetString("bwp_eventTree")
 					+ ": "
 					+ bhavName(ToShort(o[4], o[5]), ref found);
 
@@ -4872,42 +4872,42 @@ namespace pjse.BhavNameWizards
 					scope = Scope.SemiGlobal;
 				}
 
-				s += " (" + pjse.Localization.GetString(scope.ToString()) + ")";
+				s += " (" + Localization.GetString(scope.ToString()) + ")";
 
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_animSpeed")
+					+ Localization.GetString("bwp_animSpeed")
 					+ ": "
 					+ ((o[2] & 0x02) != 0 ? dataOwner(0x08, 2) : "---"); // Temp 2
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_interruptible")
+					+ Localization.GetString("bwp_interruptible")
 					+ ": "
 					+ ((o[2] & 0x08) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_startTag")
+					+ Localization.GetString("bwp_startTag")
 					+ ": "
 					+ ((o[2] & 0x10) != 0 ? dataOwner(0x08, 0) : "---"); // Temp 0
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_loopCount")
+					+ Localization.GetString("bwp_loopCount")
 					+ ": "
 					+ ((o[2] & 0x20) != 0 ? dataOwner(0x08, 1) : "---");
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_blendOut")
+					+ Localization.GetString("bwp_blendOut")
 					+ ": "
 					+ ((o[2] & 0x40) == 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_blendIn")
+					+ Localization.GetString("bwp_blendIn")
 					+ ": "
 					+ ((o[2] & 0x80) == 0).ToString();
 
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_flipFlag")
+					+ Localization.GetString("bwp_flipFlag")
 					+ ": "
 					+ (
 						(o[15] & 0x01) != 0
@@ -4916,12 +4916,12 @@ namespace pjse.BhavNameWizards
 					);
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_sync")
+					+ Localization.GetString("bwp_sync")
 					+ ": "
 					+ ((o[15] & 0x10) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_alignBlend")
+					+ Localization.GetString("bwp_alignBlend")
 					+ ": "
 					+ ((o[15] & 0x20) != 0).ToString();
 
@@ -4930,7 +4930,7 @@ namespace pjse.BhavNameWizards
 				{
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp_notHurryable")
+						+ Localization.GetString("bwp_notHurryable")
 						+ ": "
 						+ ((o[12] & 0x01) != 0).ToString();
 					priority = o[11];
@@ -4942,23 +4942,23 @@ namespace pjse.BhavNameWizards
 
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_priority")
+					+ Localization.GetString("bwp_priority")
 					+ ": 0x"
 					+ SimPe.Helper.HexString(priority)
 					+ " (";
 				switch (priority)
 				{
 					case 0:
-						s += pjse.Localization.GetString("bwp_low");
+						s += Localization.GetString("bwp_low");
 						break;
 					case 1:
-						s += pjse.Localization.GetString("bwp_medium");
+						s += Localization.GetString("bwp_medium");
 						break;
 					case 2:
-						s += pjse.Localization.GetString("bwp_high");
+						s += Localization.GetString("bwp_high");
 						break;
 					default:
-						s += pjse.Localization.GetString("unk");
+						s += Localization.GetString("unk");
 						break;
 				}
 				s += ")";
@@ -5109,11 +5109,11 @@ namespace pjse.BhavNameWizards
 			string s = "";
 
 			s +=
-				(lng ? pjse.Localization.GetString("Object") + ": " : "")
+				(lng ? Localization.GetString("Object") + ": " : "")
 				+ dataOwner(lng, o[3], o[4], o[5]); // target object
 
 			s +=
-				", " + (lng ? pjse.Localization.GetString("bwp_animation") + ": " : "");
+				", " + (lng ? Localization.GetString("bwp_animation") + ": " : "");
 			if (o[7] == 0)
 			{
 				Scope scope = Scope.Private;
@@ -5148,7 +5148,7 @@ namespace pjse.BhavNameWizards
 							+ (
 								lng
 									? " ("
-										+ pjse.Localization.GetString(scope.ToString())
+										+ Localization.GetString(scope.ToString())
 										+ ")"
 									: ""
 							)
@@ -5170,12 +5170,12 @@ namespace pjse.BhavNameWizards
 			{
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_blendOut")
+					+ Localization.GetString("bwp_blendOut")
 					+ ": "
 					+ ((o[2] & 0x02) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_flipFlag")
+					+ Localization.GetString("bwp_flipFlag")
 					+ ": "
 					+ (
 						(o[2] & 0x08) != 0
@@ -5184,34 +5184,34 @@ namespace pjse.BhavNameWizards
 					);
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp6c_shortBlendOut")
+					+ Localization.GetString("bwp6c_shortBlendOut")
 					+ ": "
 					+ ((o[2] & 0x20) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp6c_normalAndFlipped")
+					+ Localization.GetString("bwp6c_normalAndFlipped")
 					+ ": "
 					+ ((o[2] & 0x40) != 0).ToString();
 
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_priority")
+					+ Localization.GetString("bwp_priority")
 					+ ": 0x"
 					+ SimPe.Helper.HexString(o[8])
 					+ " (";
 				switch (o[8])
 				{
 					case 0:
-						s += pjse.Localization.GetString("bwp_low");
+						s += Localization.GetString("bwp_low");
 						break;
 					case 1:
-						s += pjse.Localization.GetString("bwp_medium");
+						s += Localization.GetString("bwp_medium");
 						break;
 					case 2:
-						s += pjse.Localization.GetString("bwp_high");
+						s += Localization.GetString("bwp_high");
 						break;
 					default:
-						s += pjse.Localization.GetString("unk");
+						s += Localization.GetString("unk");
 						break;
 				}
 				s += ")";
@@ -5371,7 +5371,7 @@ namespace pjse.BhavNameWizards
 			string s = "";
 
 			s +=
-				(lng ? pjse.Localization.GetString("Target") + ": " : "")
+				(lng ? Localization.GetString("Target") + ": " : "")
 				+ dataOwner(lng, o[5], o[6], o[7]); // target object
 
 			Scope matScope = Scope.Private;
@@ -5386,12 +5386,12 @@ namespace pjse.BhavNameWizards
 
 			s +=
 				", "
-				+ (lng ? pjse.Localization.GetString("bwp6d_materialFrom") + ": " : "");
+				+ (lng ? Localization.GetString("bwp6d_materialFrom") + ": " : "");
 			if ((o[13] & 0x02) == 0)
 			{
 				s += (
 					(o[2] & 0x08) != 0
-						? pjse.Localization.GetString("bwp_source")
+						? Localization.GetString("bwp_source")
 						: dnMe()
 				);
 				s +=
@@ -5400,8 +5400,8 @@ namespace pjse.BhavNameWizards
 						lng
 							? (
 								(o[13] & 0x01) != 0
-									? pjse.Localization.GetString("bwp6d_movingTexture")
-									: pjse.Localization.GetString("bwp6d_material")
+									? Localization.GetString("bwp6d_movingTexture")
+									: Localization.GetString("bwp6d_material")
 							) + ": "
 							: ""
 					);
@@ -5438,7 +5438,7 @@ namespace pjse.BhavNameWizards
 			}
 			else
 			{
-				s += pjse.Localization.GetString("bwp6d_screenShot");
+				s += Localization.GetString("bwp6d_screenShot");
 			}
 
 			Scope mgScope = Scope.Private;
@@ -5453,10 +5453,10 @@ namespace pjse.BhavNameWizards
 
 			s +=
 				", "
-				+ (lng ? pjse.Localization.GetString("bwp6d_meshFrom") + ": " : "")
+				+ (lng ? Localization.GetString("bwp6d_meshFrom") + ": " : "")
 				+ (
 					(o[2] & 0x01) != 0
-						? pjse.Localization.GetString("bwp_source")
+						? Localization.GetString("bwp_source")
 						: dnMe()
 				);
 			if ((o[4] & 0x80) == 0) // w3 < 0
@@ -5464,7 +5464,7 @@ namespace pjse.BhavNameWizards
 				s +=
 					" ("
 					+ (
-						lng ? pjse.Localization.GetString("bwp6d_meshGroup") + ": " : ""
+						lng ? Localization.GetString("bwp6d_meshGroup") + ": " : ""
 					);
 				if ((o[2] & 0x20) != 0)
 				{
@@ -5499,14 +5499,14 @@ namespace pjse.BhavNameWizards
 			}
 			else
 			{
-				s += " (" + pjse.Localization.GetString("bwp6d_allOver") + ")";
+				s += " (" + Localization.GetString("bwp6d_allOver") + ")";
 			}
 
 			if (((o[13] & 0x02) == 0 && (o[2] & 0x08) != 0) || (o[2] & 0x01) != 0)
 			{
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_source")
+					+ Localization.GetString("bwp_source")
 					+ ": "
 					+ dataOwner(lng, o[8], o[9], o[10]);
 			}
@@ -5594,11 +5594,11 @@ namespace pjse.BhavNameWizards
 			string s = "";
 
 			s +=
-				(lng ? pjse.Localization.GetString("Target") + ": " : "")
+				(lng ? Localization.GetString("Target") + ": " : "")
 				+ (
 					(o[0] & 0x80) == 0
 						? dataOwner(lng, o[1], o[2], o[3])
-						: pjse.Localization.GetString("bwp6e_camera")
+						: Localization.GetString("bwp6e_camera")
 				);
 
 			s += ", " + Slot(o[14], o[8]);
@@ -5610,7 +5610,7 @@ namespace pjse.BhavNameWizards
 					bool found = false;
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp_eventTree")
+						+ Localization.GetString("bwp_eventTree")
 						+ ": "
 						+ bhavName(ToShort(o[9], o[10]), ref found);
 
@@ -5624,28 +5624,28 @@ namespace pjse.BhavNameWizards
 						scope = Scope.SemiGlobal;
 					}
 
-					s += " (" + pjse.Localization.GetString(scope.ToString()) + ")";
+					s += " (" + Localization.GetString(scope.ToString()) + ")";
 
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp6e_earlyExit")
+						+ Localization.GetString("bwp6e_earlyExit")
 						+ ": "
 						+ ((o[0] & 0x02) == 0).ToString();
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp6e_includeSpine")
+						+ Localization.GetString("bwp6e_includeSpine")
 						+ ": "
 						+ ((o[0] & 0x04) != 0).ToString();
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp6e_duration")
+						+ Localization.GetString("bwp6e_duration")
 						+ ": "
 						+ ((o[0] & 0x10) != 0 ? dataOwner(0x08, 0) : "---"); // Temp 0
 				}
 			}
 			else
 			{
-				s += ": " + pjse.Localization.GetString("bwp6e_STOP");
+				s += ": " + Localization.GetString("bwp6e_STOP");
 			}
 
 			if (lng)
@@ -5654,16 +5654,16 @@ namespace pjse.BhavNameWizards
 				{
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp6e_turnTowards")
+						+ Localization.GetString("bwp6e_turnTowards")
 						+ ": "
 						+ (
 							(o[0] & 0x08) != 0
 								? dataOwner(0x08, 1) // Temp 1
 								: (2 * o[4]).ToString()
 									+ " "
-									+ pjse.Localization.GetString("bwp6e_deg_s")
+									+ Localization.GetString("bwp6e_deg_s")
 						);
-					s += ", " + pjse.Localization.GetString("bwp6e_turnAway") + ": ";
+					s += ", " + Localization.GetString("bwp6e_turnAway") + ": ";
 					if ((o[15] & 0x02) != 0)
 					{
 						s += dataOwner(0x08, 1); // Temp 1
@@ -5677,12 +5677,12 @@ namespace pjse.BhavNameWizards
 						s +=
 							(2 * o[5]).ToString()
 							+ " "
-							+ pjse.Localization.GetString("bwp6e_deg_s");
+							+ Localization.GetString("bwp6e_deg_s");
 					}
 
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp_notHurryable")
+						+ Localization.GetString("bwp_notHurryable")
 						+ ": "
 						+ ((o[15] & 0x04) != 0).ToString();
 				}
@@ -5690,25 +5690,25 @@ namespace pjse.BhavNameWizards
 				{
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp6e_speed")
+						+ Localization.GetString("bwp6e_speed")
 						+ ": "
 						+ (
 							(o[0] & 0x08) != 0
 								? dataOwner(0x08, 1) // Temp 1
 								: o[4].ToString()
 									+ " "
-									+ pjse.Localization.GetString("bwp6e_deg_s")
+									+ Localization.GetString("bwp6e_deg_s")
 						);
 				}
 
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp6e_ignoreRoom")
+					+ Localization.GetString("bwp6e_ignoreRoom")
 					+ ": "
 					+ ((o[0] & 0x20) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp6e_ignoreFrustrum")
+					+ Localization.GetString("bwp6e_ignoreFrustrum")
 					+ ": "
 					+ ((o[0] & 0x40) != 0).ToString();
 			}
@@ -5805,15 +5805,15 @@ namespace pjse.BhavNameWizards
 			string s = "";
 
 			s +=
-				(lng ? pjse.Localization.GetString("Target") + ": " : "")
+				(lng ? Localization.GetString("Target") + ": " : "")
 				+ dataOwner(lng, o[2], o[3], o[4]); // target object
 			s +=
 				", "
-				+ pjse.Localization.GetString("bwp6f_light")
+				+ Localization.GetString("bwp6f_light")
 				+ ": "
 				+ (
 					o[8] == 0xFF
-						? pjse.Localization.GetString("bwp6f_all")
+						? Localization.GetString("bwp6f_all")
 						: readStr(
 							GS.GlobalStr.LightSource,
 							o[8],
@@ -5825,7 +5825,7 @@ namespace pjse.BhavNameWizards
 			{
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp6f_ticks")
+					+ Localization.GetString("bwp6f_ticks")
 					+ ": "
 					+ (
 						(o[1] & 0x01) != 0
@@ -5834,7 +5834,7 @@ namespace pjse.BhavNameWizards
 					);
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp6f_intensity")
+					+ Localization.GetString("bwp6f_intensity")
 					+ ": "
 					+ ((o[1] & 0x02) != 0 ? dataOwner(0x08, 0) : o[7].ToString() + "%");
 			}
@@ -5882,7 +5882,7 @@ namespace pjse.BhavNameWizards
 
 			s +=
 				", "
-				+ (lng ? pjse.Localization.GetString("Target") + ": " : "")
+				+ (lng ? Localization.GetString("Target") + ": " : "")
 				+ dataOwner(lng, o[1], o[2], o[3]); // target object
 
 			if (lng && o[0] != 0x9 && o[0] != 0xE)
@@ -5904,7 +5904,7 @@ namespace pjse.BhavNameWizards
 			{
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp70_effectID")
+					+ Localization.GetString("bwp70_effectID")
 					+ ": "
 					+ ((o[10] & 0x40) != 0 ? dataOwner(0x08, 1) : "---"); // Temp 1
 			}
@@ -5916,7 +5916,7 @@ namespace pjse.BhavNameWizards
 						", "
 						+ readStr(
 							scope,
-							pjse.GS.GlobalStr.Effect,
+							GS.GlobalStr.Effect,
 							o[4],
 							lng ? -1 : 60,
 							lng ? Detail.Normal : Detail.ErrorNames
@@ -5924,13 +5924,13 @@ namespace pjse.BhavNameWizards
 				}
 				else
 				{
-					s += ", " + pjse.Localization.GetString("bwp70_defaultEffect");
+					s += ", " + Localization.GetString("bwp70_defaultEffect");
 				}
 			}
 
 			if (lng)
 			{
-				s += ", " + pjse.Localization.GetString("bwp_icon") + ": ";
+				s += ", " + Localization.GetString("bwp_icon") + ": ";
 				if ((o[10] & 0x04) != 0)
 				{
 					s += dataOwner(o[12], o[13], o[14]);
@@ -5940,7 +5940,7 @@ namespace pjse.BhavNameWizards
 					s +=
 						dataOwner(o[12], o[13], o[14])
 						+ " ("
-						+ pjse.Localization.GetString("NeighborID")
+						+ Localization.GetString("NeighborID")
 						+ ")";
 				}
 				else if ((o[10] & 0x20) != 0)
@@ -5948,14 +5948,14 @@ namespace pjse.BhavNameWizards
 					s +=
 						dataOwner(o[12], o[13], o[14])
 						+ " ("
-						+ pjse.Localization.GetString("bwp70_conversation")
+						+ Localization.GetString("bwp70_conversation")
 						+ ")"
 						+ ", "
-						+ pjse.Localization.GetString("bwp70_sheet")
+						+ Localization.GetString("bwp70_sheet")
 						+ ": "
 						+ readStr(
 							scope,
-							pjse.GS.GlobalStr.IconTexture,
+							GS.GlobalStr.IconTexture,
 							o[15],
 							-1,
 							lng ? Detail.Normal : Detail.ErrorNames
@@ -5971,23 +5971,23 @@ namespace pjse.BhavNameWizards
 				}
 				else
 				{
-					s += pjse.Localization.GetString("bwp70_noIcon");
+					s += Localization.GetString("bwp70_noIcon");
 				}
 
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_priority")
+					+ Localization.GetString("bwp_priority")
 					+ ": "
 					+ ((o[10] & 0x80) != 0).ToString();
 
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp70_model")
+					+ Localization.GetString("bwp70_model")
 					+ ": "
 					+ (
 						(o[11] & 0x08) != 0
 							? dataOwner(0x08, 6) // Temp 6
-							: pjse.Localization.GetString("default")
+							: Localization.GetString("default")
 					);
 			}
 
@@ -6121,14 +6121,14 @@ namespace pjse.BhavNameWizards
 			string s = "";
 
 			s +=
-				(lng ? pjse.Localization.GetString("Object") + ": " : "")
+				(lng ? Localization.GetString("Object") + ": " : "")
 				+ dataOwner(lng, o[0], o[1], o[2])
 				+ ", "
-				+ (lng ? pjse.Localization.GetString("Target") + ": " : "")
+				+ (lng ? Localization.GetString("Target") + ": " : "")
 				+ dataOwner(lng, o[3], o[4], o[5]);
 			s +=
 				", "
-				+ (lng ? pjse.Localization.GetString("bwp_slot") + ": " : "")
+				+ (lng ? Localization.GetString("bwp_slot") + ": " : "")
 				+ (
 					(o[9] & 0x01) != 0
 						? dataOwner(0x08, 0)
@@ -6138,12 +6138,12 @@ namespace pjse.BhavNameWizards
 			{
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_testOnly")
+					+ Localization.GetString("bwp_testOnly")
 					+ ": "
 					+ ((o[9] & 0x02) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp71_resetRootBones")
+					+ Localization.GetString("bwp71_resetRootBones")
 					+ ": "
 					+ ((o[9] & 0x04) != 0).ToString();
 			}
@@ -6186,10 +6186,10 @@ namespace pjse.BhavNameWizards
 			switch (ToShort(o[0], o[1]))
 			{
 				case 0:
-					s += pjse.Localization.GetString("bwp72_popAll");
+					s += Localization.GetString("bwp72_popAll");
 					break;
 				case 1:
-					s += pjse.Localization.GetString("bwp72_pop");
+					s += Localization.GetString("bwp72_pop");
 					break;
 				default:
 					Scope scope = Scope.Private;
@@ -6203,7 +6203,7 @@ namespace pjse.BhavNameWizards
 					}
 
 					s +=
-						pjse.Localization.GetString("bwp72_push")
+						Localization.GetString("bwp72_push")
 						+ ": "
 						+ readStr(
 							scope,
@@ -6380,19 +6380,19 @@ namespace pjse.BhavNameWizards
 			{
 				case 0:
 					s +=
-						pjse.Localization.GetString("bwp74_pickUp")
+						Localization.GetString("bwp74_pickUp")
 						+ ": "
 						+ dataOwner(lng, o[3], ToShort(o[4], o[5]));
 					break;
 				case 1:
 					s +=
-						pjse.Localization.GetString("bwp74_dropOnto")
+						Localization.GetString("bwp74_dropOnto")
 						+ ": "
-						+ pjse.Localization.GetString("bwp74_floor");
+						+ Localization.GetString("bwp74_floor");
 					break;
 				default:
 					s +=
-						pjse.Localization.GetString("bwp74_dropOnto")
+						Localization.GetString("bwp74_dropOnto")
 						+ ": "
 						+ dataOwner(lng, o[3], ToShort(o[4], o[5]));
 					break;
@@ -6400,7 +6400,7 @@ namespace pjse.BhavNameWizards
 
 			s +=
 				", "
-				+ pjse.Localization.GetString("bwp_slot")
+				+ Localization.GetString("bwp_slot")
 				+ ": "
 				+ (
 					(o[9] & 0x01) != 0
@@ -6412,7 +6412,7 @@ namespace pjse.BhavNameWizards
 			{
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp74_objectAnim")
+					+ Localization.GetString("bwp74_objectAnim")
 					+ ": "
 					+ (
 						ToShort(o[13], o[14]) != 0xFFFF
@@ -6422,12 +6422,12 @@ namespace pjse.BhavNameWizards
 								-1,
 								Detail.ErrorNames
 							)
-							: pjse.Localization.GetString("none")
+							: Localization.GetString("none")
 					);
 
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp74_graspAnim")
+					+ Localization.GetString("bwp74_graspAnim")
 					+ ": "
 					+ (
 						ToShort(o[11], o[12]) != 0xFFFF
@@ -6437,17 +6437,17 @@ namespace pjse.BhavNameWizards
 								-1,
 								Detail.ErrorNames
 							)
-							: pjse.Localization.GetString("none")
+							: Localization.GetString("none")
 					);
 
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp74_handedness")
+					+ Localization.GetString("bwp74_handedness")
 					+ ": "
 					+ ((o[9] & 0x02) != 0 ? dataOwner(0x08, 3) : "---"); // Temp 3
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp74_agedAnim")
+					+ Localization.GetString("bwp74_agedAnim")
 					+ ": "
 					+ ((o[9] & 0x04) != 0).ToString();
 			}
@@ -6515,7 +6515,7 @@ namespace pjse.BhavNameWizards
 			}
 			else
 			{
-				s += readStr(pjse.GS.BhavStr.AgePrimAges, o[0]);
+				s += readStr(GS.BhavStr.AgePrimAges, o[0]);
 			}
 
 			return s;
@@ -6571,7 +6571,7 @@ namespace pjse.BhavNameWizards
 
 			string s = "";
 
-			s += pjse.Localization.GetString(
+			s += Localization.GetString(
 				o[2] == 0 ? "bwp_myArray" : "bwp_stackObjectArray"
 			);
 			// See discussion around whether this is a bit vs boolean:
@@ -6582,105 +6582,105 @@ namespace pjse.BhavNameWizards
 			switch (o[1])
 			{
 				case 0x00:
-					s += pjse.Localization.GetString("bwp76_clearContents");
+					s += Localization.GetString("bwp76_clearContents");
 					break;
 				case 0x01:
 					s +=
-						pjse.Localization.GetString("bwp76_getSize")
+						Localization.GetString("bwp76_getSize")
 						+ ": "
 						+ dataOwner(lng, o[5], o[6], o[7]);
 					break;
 				case 0x02:
 					s +=
-						pjse.Localization.GetString("bwp76_setSize")
+						Localization.GetString("bwp76_setSize")
 						+ ": "
 						+ dataOwner(lng, o[5], o[6], o[7]);
 					break;
 				case 0x03:
 					s +=
-						pjse.Localization.GetString("bwp76_setAll")
+						Localization.GetString("bwp76_setAll")
 						+ ": "
 						+ dataOwner(lng, o[5], o[6], o[7]);
 					break;
 				case 0x04:
 					s +=
-						pjse.Localization.GetString("bwp76_unshift")
+						Localization.GetString("bwp76_unshift")
 						+ ": "
 						+ dataOwner(lng, o[5], o[6], o[7]);
 					break;
 				case 0x05:
 					s +=
-						pjse.Localization.GetString("bwp76_push")
+						Localization.GetString("bwp76_push")
 						+ ": "
 						+ dataOwner(lng, o[5], o[6], o[7]);
 					break;
 				case 0x06:
 					s +=
-						pjse.Localization.GetString("bwp76_insert")
+						Localization.GetString("bwp76_insert")
 						+ ": "
 						+ dataOwner(lng, o[5], o[6], o[7])
 						+ ", "
-						+ pjse.Localization.GetString("bwp76_at")
+						+ Localization.GetString("bwp76_at")
 						+ ": "
 						+ dataOwner(lng, o[8], o[9], o[10]);
 					break;
 				case 0x07:
-					s += pjse.Localization.GetString("bwp76_shift");
+					s += Localization.GetString("bwp76_shift");
 					s +=
 						", ?"
-						+ pjse.Localization.GetString("bwp76_into")
+						+ Localization.GetString("bwp76_into")
 						+ ": "
 						+ dataOwner(lng, o[5], o[6], o[7])
 						+ "?";
 					break;
 				case 0x08:
-					s += pjse.Localization.GetString("bwp76_pop");
+					s += Localization.GetString("bwp76_pop");
 					s +=
 						", ?"
-						+ pjse.Localization.GetString("bwp76_into")
+						+ Localization.GetString("bwp76_into")
 						+ ": "
 						+ dataOwner(lng, o[5], o[6], o[7])
 						+ "?";
 					break;
 				case 0x09:
 					s +=
-						pjse.Localization.GetString("bwp76_remove")
+						Localization.GetString("bwp76_remove")
 						+ ": "
 						+ dataOwner(lng, o[8], o[9], o[10]);
 					s +=
 						", ?"
-						+ pjse.Localization.GetString("bwp76_into")
+						+ Localization.GetString("bwp76_into")
 						+ ": "
 						+ dataOwner(lng, o[5], o[6], o[7])
 						+ "?";
 					break;
 				case 0x0a:
 					s +=
-						pjse.Localization.GetString("bwp76_set")
+						Localization.GetString("bwp76_set")
 						+ ": "
 						+ dataOwner(lng, o[8], o[9], o[10])
 						+ ", "
-						+ pjse.Localization.GetString("bwp76_toNext")
+						+ Localization.GetString("bwp76_toNext")
 						+ ": "
 						+ dataOwner(lng, o[5], o[6], o[7]);
 					break;
 				case 0x0b:
 					s +=
-						pjse.Localization.GetString("bwp76_swap")
+						Localization.GetString("bwp76_swap")
 						+ ": "
 						+ dataOwner(lng, o[5], o[6], o[7])
 						+ ", "
 						+ dataOwner(lng, o[8], o[9], o[10]);
 					break;
 				case 0x0c:
-					s += pjse.Localization.GetString("bwp76_sortHiLo");
+					s += Localization.GetString("bwp76_sortHiLo");
 					break;
 				case 0x0d:
-					s += pjse.Localization.GetString("bwp76_sortLoHi");
+					s += Localization.GetString("bwp76_sortLoHi");
 					break;
 				default:
 					s +=
-						pjse.Localization.GetString("unk")
+						Localization.GetString("unk")
 						+ ": 0x"
 						+ SimPe.Helper.HexString(o[1]);
 					break;
@@ -6788,10 +6788,10 @@ namespace pjse.BhavNameWizards
 			string s = "";
 
 			s +=
-				(lng ? pjse.Localization.GetString("bwp_message") + ": " : "")
+				(lng ? Localization.GetString("bwp_message") + ": " : "")
 				+ dataOwner(lng, o[15], o[1], o[2]);
 
-			s += ", " + (lng ? pjse.Localization.GetString("Target") + ": " : "");
+			s += ", " + (lng ? Localization.GetString("Target") + ": " : "");
 			if ((o[4] & 0x04) != 0)
 			{
 				s += dataOwner(lng, o[5], o[6], o[7]);
@@ -6801,38 +6801,38 @@ namespace pjse.BhavNameWizards
 				switch (o[3])
 				{
 					case 0:
-						s += pjse.Localization.GetString("bwp77_selectableSims");
+						s += Localization.GetString("bwp77_selectableSims");
 						break;
 					case 1:
 						s +=
-							pjse.Localization.GetString("bwp77_selectableSims")
+							Localization.GetString("bwp77_selectableSims")
 							+ " + "
-							+ pjse.Localization.GetString("bwp77_neighbors");
+							+ Localization.GetString("bwp77_neighbors");
 						break;
 					case 2:
 						s +=
-							pjse.Localization.GetString("bwp77_selectableSims")
+							Localization.GetString("bwp77_selectableSims")
 							+ " + "
-							+ pjse.Localization.GetString("bwp77_npcs");
+							+ Localization.GetString("bwp77_npcs");
 						break;
 					case 3:
-						s += pjse.Localization.GetString("bwp77_neighbors");
+						s += Localization.GetString("bwp77_neighbors");
 						break;
 					case 4:
-						s += pjse.Localization.GetString("bwp77_npcs");
+						s += Localization.GetString("bwp77_npcs");
 						break;
 					case 5:
-						s += pjse.Localization.GetString("bwp77_allSims");
+						s += Localization.GetString("bwp77_allSims");
 						break;
 					case 6:
-						s += pjse.Localization.GetString("bwp77_objects");
+						s += Localization.GetString("bwp77_objects");
 						break;
 					case 7:
-						s += pjse.Localization.GetString("bwp77_everything");
+						s += Localization.GetString("bwp77_everything");
 						break;
 					default:
 						s +=
-							pjse.Localization.GetString("unk")
+							Localization.GetString("unk")
 							+ ": 0x"
 							+ SimPe.Helper.HexString(o[3]);
 						break;
@@ -6843,34 +6843,34 @@ namespace pjse.BhavNameWizards
 			{
 				s +=
 					", "
-					+ (lng ? pjse.Localization.GetString("bwp_Location") + ": " : "");
+					+ (lng ? Localization.GetString("bwp_Location") + ": " : "");
 				switch (o[0])
 				{
 					case 0:
 						s +=
-							pjse.Localization.GetString("bwp77_room")
+							Localization.GetString("bwp77_room")
 							+ ": "
 							+ (
 								(o[4] & 0x01) == 0
-									? pjse.Localization.GetString("bwp77_same")
+									? Localization.GetString("bwp77_same")
 									: dataOwner(o[5], o[6], o[7])
 							);
 						break;
 					case 1:
-						s += pjse.Localization.GetString("bwp77_onSameLevel");
+						s += Localization.GetString("bwp77_onSameLevel");
 						break;
 					case 2:
-						s += pjse.Localization.GetString("bwp77_onLot");
+						s += Localization.GetString("bwp77_onLot");
 						break;
 					case 3:
-						s += pjse.Localization.GetString("bwp77_insideBuilding");
+						s += Localization.GetString("bwp77_insideBuilding");
 						break;
 					case 4:
-						s += pjse.Localization.GetString("bwp77_outsideBuilding");
+						s += Localization.GetString("bwp77_outsideBuilding");
 						break;
 					default:
 						s +=
-							pjse.Localization.GetString("unk")
+							Localization.GetString("unk")
 							+ ": 0x"
 							+ SimPe.Helper.HexString(o[0]);
 						break;
@@ -6878,13 +6878,13 @@ namespace pjse.BhavNameWizards
 
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_priority")
+					+ Localization.GetString("bwp_priority")
 					+ ": 0x"
 					+ SimPe.Helper.HexString(o[8]);
 
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp77_userData")
+					+ Localization.GetString("bwp77_userData")
 					+ ": ("
 					+ dataOwner(o[9], o[10], o[11])
 					+ ", "
@@ -6979,13 +6979,13 @@ namespace pjse.BhavNameWizards
 			string s = "";
 
 			s +=
-				(lng ? pjse.Localization.GetString("Object") + ": " : "")
+				(lng ? Localization.GetString("Object") + ": " : "")
 				+ dataOwner(lng, o[1], o[2], o[3])
 				+ ", "
 				+ Slot(o[4], o[5]);
 			s +=
 				", "
-				+ (lng ? pjse.Localization.GetString("Target") + ": " : "")
+				+ (lng ? Localization.GetString("Target") + ": " : "")
 				+ dataOwner(lng, o[8], o[9], o[10])
 				+ ", "
 				+ Slot(o[11], o[12]);
@@ -6994,12 +6994,12 @@ namespace pjse.BhavNameWizards
 			{
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp78_windowsIgnored")
+					+ Localization.GetString("bwp78_windowsIgnored")
 					+ ": "
 					+ ((o[15] & 0x01) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_resultIn")
+					+ Localization.GetString("bwp_resultIn")
 					+ ": "
 					+ dataOwner(0x08, 0); // Temp 0
 			}
@@ -7069,24 +7069,24 @@ namespace pjse.BhavNameWizards
 
 			if ((o[0] & 0x10) != 0)
 			{
-				s += pjse.Localization.GetString("bwp79_rebuild") + ", ";
+				s += Localization.GetString("bwp79_rebuild") + ", ";
 			}
 			//else s += "change outfit";
 
 			s +=
-				(lng ? pjse.Localization.GetString("Target") + ": " : "")
+				(lng ? Localization.GetString("Target") + ": " : "")
 				+ dataOwner(lng, o[9], o[10], o[11]);
 
 			if (lng)
 			{
-				s += ", " + pjse.Localization.GetString("bwp_source") + ": ";
+				s += ", " + Localization.GetString("bwp_source") + ": ";
 				if ((o[0] & 0x01) != 0)
 				{
 					s += dnStkOb();
 				}
 				else if ((o[0] & 0x02) != 0)
 				{
-					s += BhavWiz.FormatGUID(lng, o, 4);
+					s += FormatGUID(lng, o, 4);
 				}
 				else if ((o[0] & 0x40) != 0)
 				{
@@ -7094,33 +7094,33 @@ namespace pjse.BhavNameWizards
 				}
 				else
 				{
-					s += pjse.Localization.GetString("bwp79_self");
+					s += Localization.GetString("bwp79_self");
 				}
 
 				s += ", ";
 				if ((o[0] & 4) == 0)
 				{
 					s +=
-						pjse.Localization.GetString("bwp79_outfit")
+						Localization.GetString("bwp79_outfit")
 						+ ": "
 						+ readStr(GS.BhavStr.PersonOutfits, o[8]);
 				}
 				else
 				{
 					s +=
-						pjse.Localization.GetString("bwp79_outfitIndex")
+						Localization.GetString("bwp79_outfitIndex")
 						+ ": "
 						+ dataOwner(o[1], o[2], o[3]);
 				}
 
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp79_personData")
+					+ Localization.GetString("bwp79_personData")
 					+ ": "
 					+ ((o[0] & 0x20) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp79_save")
+					+ Localization.GetString("bwp79_save")
 					+ ": "
 					+ ((o[0] & 0x08) != 0).ToString();
 			}
@@ -7179,17 +7179,17 @@ namespace pjse.BhavNameWizards
 			switch (o[15])
 			{
 				case 0:
-					s += pjse.Localization.GetString("bwp7a_start");
+					s += Localization.GetString("bwp7a_start");
 					break;
 				case 1:
-					s += pjse.Localization.GetString("bwp7a_modify");
+					s += Localization.GetString("bwp7a_modify");
 					break;
 				case 2:
-					s += pjse.Localization.GetString("bwp7a_delete");
+					s += Localization.GetString("bwp7a_delete");
 					break;
 				default:
 					s +=
-						pjse.Localization.GetString("unk")
+						Localization.GetString("unk")
 						+ ": 0x"
 						+ SimPe.Helper.HexString(o[15]);
 					break;
@@ -7199,7 +7199,7 @@ namespace pjse.BhavNameWizards
 			{
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_ticks")
+					+ Localization.GetString("bwp_ticks")
 					+ ": "
 					+ (
 						(o[5] & 0x08) != 0
@@ -7212,7 +7212,7 @@ namespace pjse.BhavNameWizards
 					bool found = false;
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp_eventTree")
+						+ Localization.GetString("bwp_eventTree")
 						+ ": "
 						+ bhavName(ToShort(o[3], o[4]), ref found);
 
@@ -7226,12 +7226,12 @@ namespace pjse.BhavNameWizards
 						scope = Scope.SemiGlobal;
 					}
 
-					s += " (" + pjse.Localization.GetString(scope.ToString()) + ")";
+					s += " (" + Localization.GetString(scope.ToString()) + ")";
 
-					s += ", " + pjse.Localization.GetString("manyArgs") + ": ";
+					s += ", " + Localization.GetString("manyArgs") + ": ";
 					if ((o[5] & 0x01) != 0)
 					{
-						s += pjse.Localization.GetString("bw_callerparams");
+						s += Localization.GetString("bw_callerparams");
 					}
 					else
 					{
@@ -7245,7 +7245,7 @@ namespace pjse.BhavNameWizards
 
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp7a_looping")
+						+ Localization.GetString("bwp7a_looping")
 						+ ": "
 						+ ((o[5] & 0x02) != 0).ToString();
 
@@ -7253,7 +7253,7 @@ namespace pjse.BhavNameWizards
 					{
 						s +=
 							", "
-							+ pjse.Localization.GetString("bwp7a_reset")
+							+ Localization.GetString("bwp7a_reset")
 							+ ": "
 							+ ((o[5] & 0x04) != 0).ToString();
 					}
@@ -7348,7 +7348,7 @@ namespace pjse.BhavNameWizards
 			}
 
 			s +=
-				(lng ? pjse.Localization.GetString("bwp7b_scene") + ": " : "")
+				(lng ? Localization.GetString("bwp7b_scene") + ": " : "")
 				+ (
 					(o[5] & 0x10) != 0
 						? dataOwner(lng, o[6], o[7], o[8])
@@ -7365,13 +7365,13 @@ namespace pjse.BhavNameWizards
 			{
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp7b_array")
+					+ Localization.GetString("bwp7b_array")
 					+ ": "
 					+ dataOwner(lng, o[9], o[10], o[11]);
 
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp_flipFlag")
+					+ Localization.GetString("bwp_flipFlag")
 					+ ": "
 					+ (
 						(o[5] & 0x02) != 0
@@ -7380,12 +7380,12 @@ namespace pjse.BhavNameWizards
 					);
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp7b_start")
+					+ Localization.GetString("bwp7b_start")
 					+ ": "
 					+ ((o[5] & 0x04) != 0).ToString();
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp7b_showHouse")
+					+ Localization.GetString("bwp7b_showHouse")
 					+ ": "
 					+ ((o[5] & 0x08) != 0).ToString();
 			}
@@ -7440,20 +7440,20 @@ namespace pjse.BhavNameWizards
 			string s = "";
 
 			s +=
-				(lng ? pjse.Localization.GetString("Target") + ": " : "")
+				(lng ? Localization.GetString("Target") + ": " : "")
 				+ dataOwner(lng, o[7], o[8], o[9]);
 			// Mmm, wants don't appear to use OBJDs, so GUID lookups don't work...
 			uint want = (uint)(o[3] | o[4] << 8 | o[5] << 16 | o[6] << 24);
 			s +=
 				", "
-				+ pjse.Localization.GetString("bwp7c_want")
+				+ Localization.GetString("bwp7c_want")
 				+ ": 0x"
 				+ SimPe.Helper.HexString(want);
 			if (lng)
 			{
 				s +=
 					", "
-					+ pjse.Localization.GetString("bwp7c_level")
+					+ Localization.GetString("bwp7c_level")
 					+ ": "
 					+ dataOwner(o[10], o[11], o[12]);
 			}
@@ -7522,13 +7522,13 @@ namespace pjse.BhavNameWizards
 			string s = "";
 
 			s +=
-				(lng ? pjse.Localization.GetString("Target") + ": " : "")
+				(lng ? Localization.GetString("Target") + ": " : "")
 				+ dataOwner(lng, o[0], o[1], o[2]);
 
 			if (lng)
 			{
-				s += ", " + pjse.Localization.GetString("bwp_resultIn") + ": ";
-				s += pjse.Localization.GetString(
+				s += ", " + Localization.GetString("bwp_resultIn") + ": ";
+				s += Localization.GetString(
 					o[5] == 0 ? "bwp_myArray" : "bwp_stackObjectArray"
 				);
 				s = s.Replace("[array]", ArrayName(lng, ToShort(o[3], o[4])));
@@ -7571,7 +7571,7 @@ namespace pjse.BhavNameWizards
 
 			if (lng)
 			{
-				s += pjse.Localization.GetString("bwp7e_script") + ": ";
+				s += Localization.GetString("bwp7e_script") + ": ";
 			}
 
 			if (ToShort(o[2], o[3]) != 0)
@@ -7598,7 +7598,7 @@ namespace pjse.BhavNameWizards
 				if ((o4_5 & 0x08) != 0)
 				{
 					s += lng
-						? ", " + pjse.Localization.GetString("manyArgs") + ": "
+						? ", " + Localization.GetString("manyArgs") + ": "
 						: ", ";
 					for (int i = 0; i < 3; i++)
 					{
@@ -7612,27 +7612,27 @@ namespace pjse.BhavNameWizards
 				{
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp7e_type")
+						+ Localization.GetString("bwp7e_type")
 						+ ": "
 						+ (
 							(o4_5 & 0x01) != 0
-								? pjse.Localization.GetString("bwp7e_definition")
-								: pjse.Localization.GetString("bwp7e_dynamic")
+								? Localization.GetString("bwp7e_definition")
+								: Localization.GetString("bwp7e_dynamic")
 						);
 					s +=
 						", "
-						+ pjse.Localization.GetString("bwp7e_definitionIn")
+						+ Localization.GetString("bwp7e_definitionIn")
 						+ ": "
 						+ (
 							((o4_5 & 0x01) != 0)
-								? pjse.Localization.GetString("bwp7e_objLuaFile")
-								: pjse.Localization.GetString("bwp7e_description")
+								? Localization.GetString("bwp7e_objLuaFile")
+								: Localization.GetString("bwp7e_description")
 						);
 				}
 			}
 			else
 			{
-				s += pjse.Localization.GetString("none");
+				s += Localization.GetString("none");
 			}
 
 			return s;

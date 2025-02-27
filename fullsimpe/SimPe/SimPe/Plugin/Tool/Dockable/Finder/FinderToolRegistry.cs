@@ -84,7 +84,7 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 			for (int i = 0; i < list.Count; i++)
 			{
 				ret[i] =
-					System.Activator.CreateInstance(list[i], new object[] { gui })
+					Activator.CreateInstance(list[i], new object[] { gui })
 					as Interfaces.AFinderTool;
 			}
 

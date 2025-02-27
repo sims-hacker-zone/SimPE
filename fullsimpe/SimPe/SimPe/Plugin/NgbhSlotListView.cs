@@ -61,16 +61,16 @@ namespace SimPe.Plugin
 			//
 			// lv
 			//
-			this.lv.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.lv.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.lv.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+			this.lv.BorderStyle = BorderStyle.None;
+			this.lv.Dock = DockStyle.Fill;
+			this.lv.HeaderStyle = ColumnHeaderStyle.Nonclickable;
 			this.lv.HideSelection = false;
 			this.lv.Location = new System.Drawing.Point(1, 1);
 			this.lv.MultiSelect = false;
 			this.lv.Name = "lv";
 			this.lv.Size = new System.Drawing.Size(270, 166);
 			this.lv.TabIndex = 1;
-			this.lv.View = System.Windows.Forms.View.List;
+			this.lv.View = View.List;
 			this.lv.SelectedIndexChanged += new EventHandler(
 				this.lv_SelectedIndexChanged
 			);

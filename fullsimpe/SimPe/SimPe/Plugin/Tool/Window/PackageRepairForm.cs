@@ -81,7 +81,7 @@ namespace SimPe.Plugin.Tool.Window
 			this.xpGradientPanel1.Controls.Add(this.btBrowse);
 			this.xpGradientPanel1.Controls.Add(this.tbPkg);
 			this.xpGradientPanel1.Controls.Add(this.label1);
-			this.xpGradientPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.xpGradientPanel1.Dock = DockStyle.Fill;
 			this.xpGradientPanel1.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -101,10 +101,10 @@ namespace SimPe.Plugin.Tool.Window
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -160,9 +160,9 @@ namespace SimPe.Plugin.Tool.Window
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Bottom
-						) | System.Windows.Forms.AnchorStyles.Left
+							AnchorStyles.Top
+							| AnchorStyles.Bottom
+						) | AnchorStyles.Left
 					)
 				)
 			);
@@ -172,7 +172,7 @@ namespace SimPe.Plugin.Tool.Window
 			this.pg.LineColor = System.Drawing.SystemColors.ScrollBar;
 			this.pg.Location = new System.Drawing.Point(8, 48);
 			this.pg.Name = "pg";
-			this.pg.PropertySort = System.Windows.Forms.PropertySort.Alphabetical;
+			this.pg.PropertySort = PropertySort.Alphabetical;
 			this.pg.Size = new System.Drawing.Size(558, 256);
 			this.pg.TabIndex = 1;
 			this.pg.ToolbarVisible = false;
@@ -202,7 +202,7 @@ namespace SimPe.Plugin.Tool.Window
 			//
 			// btBrowse
 			//
-			this.btBrowse.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.btBrowse.FlatStyle = FlatStyle.System;
 			this.btBrowse.Location = new System.Drawing.Point(509, 16);
 			this.btBrowse.Name = "btBrowse";
 			this.btBrowse.Size = new System.Drawing.Size(75, 23);
@@ -247,11 +247,11 @@ namespace SimPe.Plugin.Tool.Window
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			this.FormBorderStyle = FormBorderStyle.FixedDialog;
 			this.Icon = ((System.Drawing.Icon)(resources1.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
 			this.Name = "PackageRepairForm";
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			this.StartPosition = FormStartPosition.CenterScreen;
 			this.Text = "Package Repair";
 			this.xpGradientPanel1.ResumeLayout(false);
 			this.xpGradientPanel1.PerformLayout();
@@ -281,7 +281,7 @@ namespace SimPe.Plugin.Tool.Window
 			{
 				if (System.IO.File.Exists(pkgname))
 				{
-					si = SimPe.Packages.StreamFactory.UseStream(
+					si = Packages.StreamFactory.UseStream(
 						pkgname,
 						System.IO.FileAccess.ReadWrite,
 						false
@@ -296,7 +296,7 @@ namespace SimPe.Plugin.Tool.Window
 				if (si != null)
 				{
 					pr = new Packages.PackageRepair(
-						SimPe.Packages.GeneratableFile.LoadFromFile(pkgname)
+						Packages.File.LoadFromFile(pkgname)
 					);
 
 					pg.SelectedObject = pr.IndexDetailsAdvanced;
@@ -311,11 +311,11 @@ namespace SimPe.Plugin.Tool.Window
 		private void btBrowse_Click(object sender, EventArgs e)
 		{
 			OpenFileDialog ofd = new OpenFileDialog();
-			ofd.Filter = SimPe.ExtensionProvider.BuildFilterString(
+			ofd.Filter = ExtensionProvider.BuildFilterString(
 				new ExtensionType[]
 				{
-					SimPe.ExtensionType.Package,
-					SimPe.ExtensionType.AllFiles,
+					ExtensionType.Package,
+					ExtensionType.AllFiles,
 				}
 			);
 			if (ofd.ShowDialog() == DialogResult.OK)
@@ -332,7 +332,7 @@ namespace SimPe.Plugin.Tool.Window
 			try
 			{
 				pr.UseIndexData(pr.FindIndexOffset());
-				Message.Show(SimPe.Localization.GetString("FinishedPackageRepair"));
+				Message.Show(Localization.GetString("FinishedPackageRepair"));
 
 				pg.SelectedObject = pr.IndexDetailsAdvanced;
 			}
@@ -349,7 +349,7 @@ namespace SimPe.Plugin.Tool.Window
 		{
 			try
 			{
-				SimPe.RemoteControl.OpenMemoryPackageFkt(pr.Package);
+				RemoteControl.OpenMemoryPackageFkt(pr.Package);
 				Close();
 			}
 			catch (Exception x)

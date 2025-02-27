@@ -265,7 +265,7 @@ namespace SimPe.Plugin
 				if (pnfo != null)
 				{
 					IPackedFileDescriptor[] files = pnfo.FindFiles(
-						SimPe.Data.MetaData.GZPS
+						MetaData.GZPS
 					);
 					if (Utility.IsNullOrEmpty(files))
 					{
@@ -466,7 +466,7 @@ namespace SimPe.Plugin
 			{
 				// find in all packages
 				IScenegraphFileIndexItem[] items =
-					FileTable.FileIndex.FindFileByGroupAndInstance(
+					FileTableBase.FileIndex.FindFileByGroupAndInstance(
 						reference.Group,
 						reference.LongInstance
 					);
@@ -486,7 +486,7 @@ namespace SimPe.Plugin
 			if (ret == null)
 			{
 				IScenegraphFileIndexItem[] sfi =
-					FileTable.FileIndex.FindFileDiscardingGroup(reference); //, pnfo.Package);
+					FileTableBase.FileIndex.FindFileDiscardingGroup(reference); //, pnfo.Package);
 				if (!Utility.IsNullOrEmpty(sfi))
 				{
 					ret = sfi[0];
@@ -646,7 +646,7 @@ namespace SimPe.Plugin
 
 			IPackedFileDescriptor[] pfds = Utility.FindFiles(
 				package,
-				Data.MetaData.REF_FILE,
+				MetaData.REF_FILE,
 				refGroup,
 				refInstance
 			);
@@ -663,7 +663,7 @@ namespace SimPe.Plugin
 							refFile.ProcessData(pfd, package, false);
 							foreach (IPackedFileDescriptor ptr in refFile.Items)
 							{
-								if (ptr.Type == SimPe.Data.MetaData.TXMT)
+								if (ptr.Type == MetaData.TXMT)
 								{
 									ret.Add(new ResourceReference(ptr));
 								}
@@ -687,7 +687,7 @@ namespace SimPe.Plugin
 			{
 				IPackedFileDescriptor[] pfds = Utility.FindFiles(
 					item.PropertySet.Package,
-					Data.MetaData.REF_FILE,
+					MetaData.REF_FILE,
 					item.PropertySet.FileDescriptor.Group,
 					item.PropertySet.FileDescriptor.Instance
 				);
@@ -817,7 +817,7 @@ namespace SimPe.Plugin
 							// special case
 							// TODO: re-check conditions
 							if (
-								item.Age == SimPe.Data.Ages.Elder
+								item.Age == Ages.Elder
 								&& key != HairColor.Unbinned
 							)
 							{
@@ -835,7 +835,7 @@ namespace SimPe.Plugin
 							str.Append(oldName.Split(new char[] { '_' })[0]);
 							str.Append("_");
 							// special case (again)
-							if (item.Age == SimPe.Data.Ages.Elder)
+							if (item.Age == Ages.Elder)
 							{
 								str.Append(HairColor.Grey.ToString().ToLower());
 							}
@@ -873,7 +873,7 @@ namespace SimPe.Plugin
 
 				// textures deemed unnecessary are now marked for deletion
 				IPackedFileDescriptor[] textureFiles = ret.FindFiles(
-					SimPe.Data.MetaData.TXTR
+					MetaData.TXTR
 				);
 				foreach (IPackedFileDescriptor pfd in textureFiles)
 				{
@@ -943,7 +943,7 @@ namespace SimPe.Plugin
 			if (namechange) //  if Save As then is true, will go no further than this
 			{
 				// create THE output file
-				GeneratableFile file = GeneratableFile.LoadFromFile(null);
+				GeneratableFile file = File.LoadFromFile(null);
 				foreach (DictionaryEntry de in files)
 				{
 					GeneratableFile package = de.Value as GeneratableFile;

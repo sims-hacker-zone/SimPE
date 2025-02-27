@@ -184,10 +184,8 @@ namespace pjse.BhavOperandWizards.Wiz0x001b
 			//
 			// cbLocation
 			//
-			this.cbLocation.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbLocation.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbLocation.FormattingEnabled = true;
 			resources.ApplyResources(this.cbLocation, "cbLocation");
@@ -202,10 +200,8 @@ namespace pjse.BhavOperandWizards.Wiz0x001b
 			//
 			// cbDirection
 			//
-			this.cbDirection.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbDirection.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbDirection.FormattingEnabled = true;
 			resources.ApplyResources(this.cbDirection, "cbDirection");
@@ -229,7 +225,7 @@ namespace pjse.BhavOperandWizards.Wiz0x001b
 			// UI
 			//
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.AutoScaleMode = AutoScaleMode.Dpi;
 			this.Controls.Add(this.pnWiz0x001b);
 			this.Name = "UI";
 			this.pnWiz0x001b.ResumeLayout(false);

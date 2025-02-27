@@ -186,7 +186,7 @@ namespace Ambertation.Windows.Forms.Graph
 				fadeColor,
 				focused
 			);
-			Ambertation.Drawing.GraphicRoutines.DrawRoundRect(
+			Drawing.GraphicRoutines.DrawRoundRect(
 				gr,
 				new Pen(borderColor),
 				srect.X - 2,
@@ -225,7 +225,7 @@ namespace Ambertation.Windows.Forms.Graph
 				new Point(tborderx + 2, tbordery + 2),
 				new Size(sz.Width - 2 * tborderx - 4, sz.Height - 2 * tbordery - 4)
 			);
-			img = Ambertation.Drawing.GraphicRoutines.ScaleImage(
+			img = Drawing.GraphicRoutines.ScaleImage(
 				img,
 				trec.Width,
 				trec.Height,

@@ -176,9 +176,9 @@ namespace SimPe.Plugin
 						IScenegraphFileIndexItem item = null;
 						if (pfd == null)
 						{
-							FileTable.FileIndex.Load();
+							FileTableBase.FileIndex.Load();
 							IScenegraphFileIndexItem[] items =
-								FileTable.FileIndex.FindFile(
+								FileTableBase.FileIndex.FindFile(
 									(Interfaces.Files.IPackedFileDescriptor)o,
 									null
 								);
@@ -189,7 +189,7 @@ namespace SimPe.Plugin
 						}
 						else
 						{
-							item = FileTable.FileIndex.CreateFileIndexItem(pfd, Package);
+							item = FileTableBase.FileIndex.CreateFileIndexItem(pfd, Package);
 						}
 
 						if (item != null)

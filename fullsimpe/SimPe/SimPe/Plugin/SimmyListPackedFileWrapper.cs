@@ -61,7 +61,7 @@ namespace SimPe.Plugin
 				"Chris",
 				"To View the List of Neighbours this Neighbourhood has Parsed",
 				1,
-				SimPe.GetIcon.Writable
+				GetIcon.Writable
 			);
 		}
 
@@ -70,10 +70,10 @@ namespace SimPe.Plugin
 			reader.BaseStream.Seek(4, System.IO.SeekOrigin.Begin); // move to the Index (Number of Sims)
 			strung = "";
 			twine = "";
-			Idno idno = SimPe.Plugin.Idno.FromPackage(package);
+			Idno idno = Idno.FromPackage(package);
 			if (idno != null)
 			{
-				if (idno.Type != SimPe.Plugin.NeighborhoodType.Normal)
+				if (idno.Type != NeighborhoodType.Normal)
 				{
 					strung =
 						"-INVALID FILE-\r\nData only Valid in a Primary Neighbourhood\r\n\r\n";
@@ -94,7 +94,7 @@ namespace SimPe.Plugin
 						PackedFiles.Wrapper.ExtSDesc sdesc =
 							new PackedFiles.Wrapper.ExtSDesc();
 						Interfaces.Files.IPackedFileDescriptor[] files =
-							package.FindFiles(SimPe.Data.MetaData.SIM_DESCRIPTION_FILE);
+							package.FindFiles(Data.MetaData.SIM_DESCRIPTION_FILE);
 						foreach (
 							Interfaces.Files.IPackedFileDescriptor pfd in files
 						)

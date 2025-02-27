@@ -91,8 +91,8 @@ namespace SimPe.Plugin.Tool.Dockable
 			tm.AddControl(this.xpGradientPanel3);
 			tm.AddControl(this.xpGradientPanel4);
 
-			this.lv.View = System.Windows.Forms.View.Details;
-			foreach (Data.TypeAlias a in SimPe.Helper.TGILoader.FileTypes)
+			this.lv.View = View.Details;
+			foreach (Data.TypeAlias a in Helper.TGILoader.FileTypes)
 			{
 				cbtypes.Items.Add(a);
 			}
@@ -365,7 +365,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.hvc.SelectionColor = System.Drawing.SystemColors.Highlight;
 			this.hvc.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
 			this.hvc.ShowGrid = true;
-			this.hvc.View = Ambertation.Windows.Forms.HexViewControl.ViewState.Hex;
+			this.hvc.View = HexViewControl.ViewState.Hex;
 			this.hvc.ZeroCellColor = System.Drawing.Color.FromArgb(
 				((int)(((byte)(150)))),
 				((int)(((byte)(158)))),
@@ -389,7 +389,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			// hexEditControl1
 			//
 			resources.ApplyResources(this.hexEditControl1, "hexEditControl1");
-			this.hexEditControl1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.hexEditControl1.FlatStyle = FlatStyle.System;
 			this.hexEditControl1.LabelFont = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
@@ -407,10 +407,8 @@ namespace SimPe.Plugin.Tool.Dockable
 				((byte)(0))
 			);
 			this.hexEditControl1.Vertical = false;
-			this.hexEditControl1.View = Ambertation
-				.Windows
-				.Forms
-				.HexViewControl
+			this.hexEditControl1.View =
+				HexViewControl
 				.ViewState
 				.Hex;
 			this.hexEditControl1.Viewer = this.hvc;
@@ -472,7 +470,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			// cbComp
 			//
 			this.xpCueBannerExtender1.SetCueBannerText(this.cbComp, "");
-			this.cbComp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbComp.DropDownStyle = ComboBoxStyle.DropDownList;
 			resources.ApplyResources(this.cbComp, "cbComp");
 			this.cbComp.Items.AddRange(
 				new object[]
@@ -574,10 +572,8 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			resources.ApplyResources(this.cbtypes, "cbtypes");
 			this.xpCueBannerExtender1.SetCueBannerText(this.cbtypes, "");
-			this.cbtypes.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbtypes.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbtypes.Name = "cbtypes";
 			this.cbtypes.SelectedIndexChanged += new EventHandler(
@@ -627,7 +623,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			);
 			this.lv.FullRowSelect = true;
 			this.lv.GridLines = true;
-			this.lv.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+			this.lv.HeaderStyle = ColumnHeaderStyle.Nonclickable;
 			this.lv.HideSelection = false;
 			this.lv.Name = "lv";
 			this.lv.UseCompatibleStateImageBehavior = false;
@@ -652,7 +648,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			resources.ApplyResources(this.pgHead, "pgHead");
 			this.pgHead.LineColor = System.Drawing.SystemColors.ScrollBar;
 			this.pgHead.Name = "pgHead";
-			this.pgHead.PropertySort = System.Windows.Forms.PropertySort.Alphabetical;
+			this.pgHead.PropertySort = PropertySort.Alphabetical;
 			this.pgHead.ToolbarVisible = false;
 			//
 			// dcWrapper

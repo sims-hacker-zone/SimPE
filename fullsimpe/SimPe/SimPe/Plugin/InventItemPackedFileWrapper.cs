@@ -68,7 +68,7 @@ namespace SimPe.Plugin
 				"Chris",
 				"Reads the Inventory Items",
 				2,
-				SimPe.GetIcon.ReadOnly
+				GetIcon.ReadOnly
 			);
 		}
 
@@ -87,7 +87,7 @@ namespace SimPe.Plugin
 			guide = reader.ReadUInt32();
 			DispLabel =
 				"GUID 0x"
-				+ SimPe.Helper.HexString(guide)
+				+ Helper.HexString(guide)
 				+ "  "
 				+ pjse.GUIDIndex.TheGUIDIndex[guide];
 			guidnx = reader.ReadUInt32();
@@ -95,7 +95,7 @@ namespace SimPe.Plugin
 			{
 				DispLabel +=
 					"\n Contains\n GUID 0x"
-					+ SimPe.Helper.HexString(guidnx)
+					+ Helper.HexString(guidnx)
 					+ "  "
 					+ pjse.GUIDIndex.TheGUIDIndex[guidnx];
 
@@ -106,7 +106,7 @@ namespace SimPe.Plugin
 					{
 						DispLabel +=
 							"\n GUID 0x"
-							+ SimPe.Helper.HexString(guidnx)
+							+ Helper.HexString(guidnx)
 							+ "  "
 							+ pjse.GUIDIndex.TheGUIDIndex[guidnx];
 					}

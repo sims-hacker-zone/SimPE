@@ -41,7 +41,7 @@ namespace SimPe.Plugin
 			{
 				if (fii == null)
 				{
-					fii = FileTable.FileIndex.AddNewChild();
+					fii = FileTableBase.FileIndex.AddNewChild();
 				}
 
 				return fii;
@@ -62,12 +62,12 @@ namespace SimPe.Plugin
 
 		public DownloadsToolFactory()
 		{
-			SimPe.Packages.StreamFactory.CleanupTeleport();
+			Packages.StreamFactory.CleanupTeleport();
 		}
 
 		~DownloadsToolFactory()
 		{
-			SimPe.Packages.StreamFactory.CleanupTeleport();
+			Packages.StreamFactory.CleanupTeleport();
 		}
 
 		#region AbstractWrapperFactory Member

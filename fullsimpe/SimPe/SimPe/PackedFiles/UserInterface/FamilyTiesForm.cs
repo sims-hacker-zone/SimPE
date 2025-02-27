@@ -107,7 +107,7 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// pnfamt
 			//
-			this.pnfamt.BackColor = System.Drawing.SystemColors.Control;
+			this.pnfamt.BackColor = SystemColors.Control;
 			this.pnfamt.BackgroundImage = null;
 			this.pnfamt.Controls.Add(this.panel1);
 			this.pnfamt.Controls.Add(this.panel4);
@@ -119,14 +119,14 @@ namespace SimPe.PackedFiles.UserInterface
 			// panel1
 			//
 			resources.ApplyResources(this.panel1, "panel1");
-			this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+			this.panel1.BackColor = SystemColors.ControlLightLight;
 			this.panel1.Controls.Add(this.ties);
 			this.panel1.Name = "panel1";
 			//
 			// ties
 			//
 			resources.ApplyResources(this.ties, "ties");
-			this.ties.BackColor = System.Drawing.SystemColors.ControlLightLight;
+			this.ties.BackColor = SystemColors.ControlLightLight;
 			this.ties.LineMode = Ambertation
 				.Windows
 				.Forms
@@ -154,7 +154,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.panel4.AccessibleDescription = null;
 			this.panel4.AccessibleName = null;
 			resources.ApplyResources(this.panel4, "panel4");
-			this.panel4.BackColor = System.Drawing.Color.FromArgb(
+			this.panel4.BackColor = Color.FromArgb(
 				((int)(((byte)(120)))),
 				((int)(((byte)(0)))),
 				((int)(((byte)(0)))),
@@ -163,13 +163,13 @@ namespace SimPe.PackedFiles.UserInterface
 			this.panel4.BackgroundImage = null;
 			this.panel4.Controls.Add(this.cbLock);
 			this.panel4.Controls.Add(this.label1);
-			this.panel4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+			this.panel4.ForeColor = SystemColors.ActiveCaptionText;
 			this.panel4.Name = "panel4";
 			//
 			// cbLock
 			//
 			resources.ApplyResources(this.cbLock, "cbLock");
-			this.cbLock.BackColor = System.Drawing.Color.Transparent;
+			this.cbLock.BackColor = Color.Transparent;
 			this.cbLock.Name = "cbLock";
 			this.cbLock.UseVisualStyleBackColor = false;
 			//
@@ -178,7 +178,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.label1.AccessibleDescription = null;
 			this.label1.AccessibleName = null;
 			resources.ApplyResources(this.label1, "label1");
-			this.label1.BackColor = System.Drawing.Color.Transparent;
+			this.label1.BackColor = Color.Transparent;
 			this.label1.Font = null;
 			this.label1.Name = "label1";
 			//
@@ -213,11 +213,11 @@ namespace SimPe.PackedFiles.UserInterface
 			// xpLine1
 			//
 			resources.ApplyResources(this.xpLine1, "xpLine1");
-			this.xpLine1.BackColor = System.Drawing.Color.Transparent;
+			this.xpLine1.BackColor = Color.Transparent;
 			this.xpLine1.BackgroundImage = null;
 			this.xpLine1.Font = null;
-			this.xpLine1.ForeColor = System.Drawing.Color.Transparent;
-			this.xpLine1.LineColor = System.Drawing.Color.FromArgb(
+			this.xpLine1.ForeColor = Color.Transparent;
+			this.xpLine1.LineColor = Color.FromArgb(
 				((int)(((byte)(125)))),
 				((int)(((byte)(0)))),
 				((int)(((byte)(0)))),
@@ -242,18 +242,18 @@ namespace SimPe.PackedFiles.UserInterface
 			// cbkeep
 			//
 			resources.ApplyResources(this.cbkeep, "cbkeep");
-			this.cbkeep.BackColor = System.Drawing.Color.Transparent;
+			this.cbkeep.BackColor = Color.Transparent;
 			this.cbkeep.Checked = true;
-			this.cbkeep.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.cbkeep.CheckState = CheckState.Checked;
 			this.cbkeep.Name = "cbkeep";
 			this.cbkeep.UseVisualStyleBackColor = false;
 			//
 			// cbrel
 			//
-			this.cbrel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbrel.DropDownStyle = ComboBoxStyle.DropDownList;
 			this.cbrel.Enum = null;
 			resources.ApplyResources(this.cbrel, "cbrel");
-			this.cbrel.ForeColor = System.Drawing.SystemColors.ControlText;
+			this.cbrel.ForeColor = SystemColors.ControlText;
 			this.cbrel.Name = "cbrel";
 			this.cbrel.ResourceManager = null;
 			this.cbrel.SelectedIndexChanged += new EventHandler(
@@ -262,7 +262,7 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// llrem
 			//
-			this.llrem.BackColor = System.Drawing.Color.Transparent;
+			this.llrem.BackColor = Color.Transparent;
 			resources.ApplyResources(this.llrem, "llrem");
 			this.llrem.Name = "llrem";
 			this.llrem.TabStop = true;
@@ -273,25 +273,25 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// label3
 			//
-			this.label3.BackColor = System.Drawing.Color.Transparent;
+			this.label3.BackColor = Color.Transparent;
 			resources.ApplyResources(this.label3, "label3");
 			this.label3.Name = "label3";
 			//
 			// lbname
 			//
 			resources.ApplyResources(this.lbname, "lbname");
-			this.lbname.BackColor = System.Drawing.Color.Transparent;
+			this.lbname.BackColor = Color.Transparent;
 			this.lbname.Name = "lbname";
 			//
 			// label2
 			//
-			this.label2.BackColor = System.Drawing.Color.Transparent;
+			this.label2.BackColor = Color.Transparent;
 			resources.ApplyResources(this.label2, "label2");
 			this.label2.Name = "label2";
 			//
 			// panel2
 			//
-			this.panel2.BackColor = System.Drawing.SystemColors.Info;
+			this.panel2.BackColor = SystemColors.Info;
 			this.panel2.Controls.Add(this.pool);
 			resources.ApplyResources(this.panel2, "panel2");
 			this.panel2.Name = "panel2";
@@ -437,7 +437,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 			if (lastsdsc != null && currentsdsc != null)
 			{
-				string name = SimPe.Localization.GetString("AddFamilyTieCaption");
+				string name = Localization.GetString("AddFamilyTieCaption");
 				name = name.Replace(
 					"{name}",
 					lastsdsc.SimName + " " + lastsdsc.SimFamilyName
@@ -461,7 +461,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 			if (lastsdsc != null)
 			{
-				string name = SimPe.Localization.GetString("OpenSDesc");
+				string name = Localization.GetString("OpenSDesc");
 				name = name.Replace(
 					"{name}",
 					lastsdsc.SimName + " " + lastsdsc.SimFamilyName
@@ -615,7 +615,7 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			if (lastsdsc != null)
 			{
-				SimPe.RemoteControl.OpenPackedFile(
+				RemoteControl.OpenPackedFile(
 					lastsdsc.FileDescriptor,
 					lastsdsc.Package
 				);

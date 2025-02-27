@@ -462,17 +462,17 @@ namespace pjse
 
 		public static String dnStkOb()
 		{
-			return pjse.Localization.GetString("stackobj");
+			return Localization.GetString("stackobj");
 		}
 
 		public static String dnMe()
 		{
-			return pjse.Localization.GetString("me");
+			return Localization.GetString("me");
 		}
 
 		public static String dnNeigh()
 		{
-			return pjse.Localization.GetString("neigh");
+			return Localization.GetString("neigh");
 		}
 
 		protected string dataOwner(byte doid, ushort instance)
@@ -501,7 +501,7 @@ namespace pjse
 						),
 						instance,
 						-1,
-						pjse.Detail.ValueOnly,
+						Detail.ValueOnly,
 						true,
 						false
 					);
@@ -522,7 +522,7 @@ namespace pjse
 						),
 						instance,
 						-1,
-						pjse.Detail.ValueOnly,
+						Detail.ValueOnly,
 						true,
 						false
 					);
@@ -539,12 +539,12 @@ namespace pjse
 							? readParam(
 								instruction.Parent,
 								instance,
-								pjse.Detail.Errors
+								Detail.Errors
 							)
 							: readLocal(
 								instruction.Parent,
 								instance,
-								pjse.Detail.Errors
+								Detail.Errors
 							);
 					if (temp.Length > 0)
 					{
@@ -843,7 +843,7 @@ namespace pjse
 							{
 								pfname +=
 									"["
-									+ pjse.Localization.GetString("unk")
+									+ Localization.GetString("unk")
 									+ ": 0x"
 									+ SimPe.Helper.HexString(str.Instance)
 									+ "]";
@@ -892,7 +892,7 @@ namespace pjse
 				if (detail == Detail.Full || detail == Detail.Normal)
 				{
 					pfname +=
-						" (" + pjse.Localization.GetString(str.Scope.ToString()) + ")";
+						" (" + Localization.GetString(str.Scope.ToString()) + ")";
 				}
 			}
 
@@ -925,7 +925,7 @@ namespace pjse
 						{
 							s +=
 								"["
-								+ pjse.Localization.GetString("Fallback")
+								+ Localization.GetString("Fallback")
 								+ ": LID=1] ";
 						}
 
@@ -963,7 +963,7 @@ namespace pjse
 				return null;
 			}
 
-			return "[" + pjse.Localization.GetString("unk") + ": " + pfname + "]";
+			return "[" + Localization.GetString("unk") + ": " + pfname + "]";
 		}
 
 		private static Dictionary<GS.BhavStr, List<String>> gString = null;
@@ -971,13 +971,13 @@ namespace pjse
 		{
 			get
 			{
-				if (gString == null && pjse.FileTable.GFT != null)
+				if (gString == null && FileTable.GFT != null)
 				{
-					pjse.FileTable.GFT.FiletableRefresh -= new EventHandler(
+					FileTable.GFT.FiletableRefresh -= new EventHandler(
 						GFT_FiletableRefresh
 					);
 					gString = new Dictionary<GS.BhavStr, List<String>>();
-					pjse.FileTable.GFT.FiletableRefresh += new EventHandler(
+					FileTable.GFT.FiletableRefresh += new EventHandler(
 						GFT_FiletableRefresh
 					);
 				}
@@ -1098,14 +1098,14 @@ namespace pjse
 			Hashtable flagTypes = (Hashtable)flagOwners[flagOwner];
 			return (flagTypes == null || flagTypes[flagType] == null)
 				? null
-				: BhavWiz.readStr((GS.BhavStr)flagTypes[flagType]);
+				: readStr((GS.BhavStr)flagTypes[flagType]);
 		}
 
 		public static string flagname(byte flagOwner, ushort flagType, ushort flagValue)
 		{
 			if (flagValue == 0)
 			{
-				return "[0: " + pjse.Localization.GetString("invalid") + "]";
+				return "[0: " + Localization.GetString("invalid") + "]";
 			}
 
 			Hashtable flagTypes = (Hashtable)flagOwners[flagOwner];
@@ -1242,7 +1242,7 @@ namespace pjse
 			}
 			else if (instance < 0x0100)
 			{
-				return s + readStr(pjse.GS.BhavStr.Primitives, (ushort)instance);
+				return s + readStr(GS.BhavStr.Primitives, (ushort)instance);
 			}
 
 			FileTable.Entry ftEntry = parent.ResourceByInstance(
@@ -1254,7 +1254,7 @@ namespace pjse
 				+ (
 					found
 						? "\"" + ftEntry + "\""
-						: pjse.Localization.GetString("bhavnotfound")
+						: Localization.GetString("bhavnotfound")
 				);
 		}
 
@@ -1309,7 +1309,7 @@ namespace pjse
 
 			uint group = instruction.Parent.FileDescriptor.Group;
 			uint instance = instruction.Parent.FileDescriptor.Instance;
-			FileTable.Entry[] items = pjse.FileTable.GFT[
+			FileTable.Entry[] items = FileTable.GFT[
 				0x54505250,
 				group,
 				instance
@@ -1356,20 +1356,20 @@ namespace pjse
 			switch (t)
 			{
 				case 0:
-					f += pjse.Localization.GetString("bw_defHeight");
+					f += Localization.GetString("bw_defHeight");
 					break;
 				case 1:
-					f += pjse.Localization.GetString("bw_targetingSlot");
+					f += Localization.GetString("bw_targetingSlot");
 					break;
 				case 2:
-					f += pjse.Localization.GetString("bw_routingSlot");
+					f += Localization.GetString("bw_routingSlot");
 					break;
 				case 3:
-					f += pjse.Localization.GetString("bw_containmentSlot");
+					f += Localization.GetString("bw_containmentSlot");
 					break;
 				default:
 					f +=
-						pjse.Localization.GetString("unk")
+						Localization.GetString("unk")
 						+ ": 0x"
 						+ SimPe.Helper.HexString(t);
 					break;
@@ -1379,7 +1379,7 @@ namespace pjse
 
 		public static Glob GlobByGroup(uint group)
 		{
-			FileTable.Entry[] items = pjse.FileTable.GFT[
+			FileTable.Entry[] items = FileTable.GFT[
 				(uint)SimPe.Data.MetaData.GLOB_FILE,
 				group
 			];
@@ -1395,7 +1395,7 @@ namespace pjse
 
 		public static String FormatGUID(bool lng, UInt32 guid)
 		{
-			String objName = pjse.GUIDIndex.TheGUIDIndex[guid];
+			String objName = GUIDIndex.TheGUIDIndex[guid];
 
 			if (objName != null && objName.Length > 0)
 			{
@@ -1429,7 +1429,7 @@ namespace pjse
 
 		public string readBcon(uint instance, int bid, bool temp, bool useDecimal)
 		{
-			bool inDecimal = useDecimal ? pjse.Settings.PJSE.DecimalDOValue : false;
+			bool inDecimal = useDecimal ? Settings.PJSE.DecimalDOValue : false;
 
 			if (
 				instruction == null
@@ -1460,7 +1460,7 @@ namespace pjse
 				return "";
 			}
 
-			FileTable.Entry[] items = pjse.FileTable.GFT[
+			FileTable.Entry[] items = FileTable.GFT[
 				0x42434F4E,
 				instruction.Parent.GroupForScope(s),
 				instance
@@ -1468,7 +1468,7 @@ namespace pjse
 
 			if (items == null || items.Length == 0)
 			{
-				return "[" + pjse.Localization.GetString("notfound") + "]";
+				return "[" + Localization.GetString("notfound") + "]";
 			}
 
 			SimPe.PackedFiles.Wrapper.Bcon bcon = new SimPe.PackedFiles.Wrapper.Bcon();
@@ -1487,11 +1487,11 @@ namespace pjse
 
 			if (bid >= bcon.Count)
 			{
-				return label + "[" + pjse.Localization.GetString("notset") + "]";
+				return label + "[" + Localization.GetString("notset") + "]";
 			}
 
 			return label
-				+ pjse.Localization.GetString("Value")
+				+ Localization.GetString("Value")
 				+ ": "
 				+ (
 					inDecimal

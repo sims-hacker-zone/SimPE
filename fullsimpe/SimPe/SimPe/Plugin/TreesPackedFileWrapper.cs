@@ -154,7 +154,7 @@ namespace SimPe.Plugin
 			}
 
 			Interfaces.Plugin.Internal.IPackedFileWrapper wrp =
-				SimPe.FileTable.WrapperRegistry.FindHandler(type);
+				FileTableBase.WrapperRegistry.FindHandler(type);
 			wrp.ProcessData(items[0].PFD, items[0].Package);
 			return wrp;
 		}
@@ -196,7 +196,7 @@ namespace SimPe.Plugin
 				"Chris",
 				"To Read Edith Flowchart Tree files",
 				1,
-				SimPe.GetIcon.Writable
+				GetIcon.Writable
 			);
 		}
 

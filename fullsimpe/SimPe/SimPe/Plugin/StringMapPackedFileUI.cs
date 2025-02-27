@@ -178,9 +178,9 @@ namespace SimPe.Plugin
 		private void fildictionary()
 		{
 			wallsandfloors.Add(0x00000000, "none"); //ensure dictionary is no longer empty even if none of the catpatterns are available
-			FileTable.FileIndex.Load();
+			FileTableBase.FileIndex.Load();
 			Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-				FileTable.FileIndex.FindFile(0xCCA8E925, true);
+				FileTableBase.FileIndex.FindFile(0xCCA8E925, true);
 			Wait.SubStart(items.Length);
 			Wait.Message = "Loading Wall & Floor Names";
 			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)

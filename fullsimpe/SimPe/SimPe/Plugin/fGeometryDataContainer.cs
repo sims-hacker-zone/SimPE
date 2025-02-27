@@ -182,21 +182,21 @@ namespace SimPe.Plugin
 			}
 
 			BlockFormat[] bls = (BlockFormat[])
-				System.Enum.GetValues(typeof(BlockFormat));
+				Enum.GetValues(typeof(BlockFormat));
 			foreach (BlockFormat b in bls)
 			{
 				this.cbblock.Items.Add(b);
 			}
 
 			SetFormat[] sets = (SetFormat[])
-				System.Enum.GetValues(typeof(SetFormat));
+				Enum.GetValues(typeof(SetFormat));
 			foreach (SetFormat s in sets)
 			{
 				this.cbset.Items.Add(s);
 			}
 
 			ElementIdentity[] eis = (ElementIdentity[])
-				System.Enum.GetValues(typeof(ElementIdentity));
+				Enum.GetValues(typeof(ElementIdentity));
 			foreach (ElementIdentity e in eis)
 			{
 				this.cbid.Items.Add(e);
@@ -206,7 +206,7 @@ namespace SimPe.Plugin
 				.WindowsRegistry
 				.CorrectJointDefinitionOnExport;
 			ElementSorting[] vs = (ElementSorting[])
-				System.Enum.GetValues(typeof(ElementSorting));
+				Enum.GetValues(typeof(ElementSorting));
 			foreach (ElementSorting es in vs)
 			{
 				if (es == ElementSorting.Preview)
@@ -456,15 +456,15 @@ namespace SimPe.Plugin
 			this.groupBox1.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
 			this.groupBox1.Controls.Add(this.tb_itemsa2);
 			this.groupBox1.Controls.Add(this.label1);
 			this.groupBox1.Controls.Add(this.lb_itemsa2);
-			this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.groupBox1.FlatStyle = FlatStyle.System;
 			this.groupBox1.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -484,8 +484,8 @@ namespace SimPe.Plugin
 			this.tb_itemsa2.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
@@ -508,8 +508,8 @@ namespace SimPe.Plugin
 			this.label1.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
@@ -534,10 +534,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -565,10 +565,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -586,7 +586,7 @@ namespace SimPe.Plugin
 			this.groupBox3.Controls.Add(this.label5);
 			this.groupBox3.Controls.Add(this.tb_uk1);
 			this.groupBox3.Controls.Add(this.label6);
-			this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.groupBox3.FlatStyle = FlatStyle.System;
 			this.groupBox3.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -606,12 +606,12 @@ namespace SimPe.Plugin
 			this.cbid.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.cbid.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbid.DropDownStyle = ComboBoxStyle.DropDownList;
 			this.cbid.Enabled = false;
 			this.cbid.Font = new System.Drawing.Font(
 				"Verdana",
@@ -630,12 +630,12 @@ namespace SimPe.Plugin
 			this.cbset.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.cbset.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbset.DropDownStyle = ComboBoxStyle.DropDownList;
 			this.cbset.Enabled = false;
 			this.cbset.Font = new System.Drawing.Font(
 				"Verdana",
@@ -654,15 +654,13 @@ namespace SimPe.Plugin
 			this.cbblock.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.cbblock.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbblock.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbblock.Enabled = false;
 			this.cbblock.Font = new System.Drawing.Font(
@@ -684,10 +682,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -713,8 +711,8 @@ namespace SimPe.Plugin
 			this.tb_uk5.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -737,8 +735,8 @@ namespace SimPe.Plugin
 			this.label10.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -761,8 +759,8 @@ namespace SimPe.Plugin
 			this.tb_mod2.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -785,8 +783,8 @@ namespace SimPe.Plugin
 			this.label7.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -809,8 +807,8 @@ namespace SimPe.Plugin
 			this.tb_mod1.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -833,8 +831,8 @@ namespace SimPe.Plugin
 			this.label8.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -857,8 +855,8 @@ namespace SimPe.Plugin
 			this.tb_id.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -881,8 +879,8 @@ namespace SimPe.Plugin
 			this.label5.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -905,8 +903,8 @@ namespace SimPe.Plugin
 			this.tb_uk1.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -929,8 +927,8 @@ namespace SimPe.Plugin
 			this.label6.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -952,7 +950,7 @@ namespace SimPe.Plugin
 			//
 			this.groupBox10.Controls.Add(this.tb_ver);
 			this.groupBox10.Controls.Add(this.label28);
-			this.groupBox10.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.groupBox10.FlatStyle = FlatStyle.System;
 			this.groupBox10.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -1005,14 +1003,14 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Bottom
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Bottom
+						) | AnchorStyles.Right
 					)
 				)
 			);
 			this.groupBox12.Controls.Add(this.lb_itemsa1);
-			this.groupBox12.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.groupBox12.FlatStyle = FlatStyle.System;
 			this.groupBox12.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -1034,10 +1032,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -1113,9 +1111,9 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Bottom
-						) | System.Windows.Forms.AnchorStyles.Left
+							AnchorStyles.Top
+							| AnchorStyles.Bottom
+						) | AnchorStyles.Left
 					)
 				)
 			);
@@ -1181,10 +1179,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -1218,15 +1216,15 @@ namespace SimPe.Plugin
 			this.groupBox4.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
 			this.groupBox4.Controls.Add(this.tb_itemsc2);
 			this.groupBox4.Controls.Add(this.label4);
 			this.groupBox4.Controls.Add(this.lb_itemsc2);
-			this.groupBox4.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.groupBox4.FlatStyle = FlatStyle.System;
 			this.groupBox4.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -1246,8 +1244,8 @@ namespace SimPe.Plugin
 			this.tb_itemsc2.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
@@ -1270,8 +1268,8 @@ namespace SimPe.Plugin
 			this.label4.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
@@ -1296,10 +1294,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -1327,10 +1325,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -1348,7 +1346,7 @@ namespace SimPe.Plugin
 			this.groupBox2.Controls.Add(this.tb_itemsc_name);
 			this.groupBox2.Controls.Add(this.label11);
 			this.groupBox2.Controls.Add(this.label13);
-			this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.groupBox2.FlatStyle = FlatStyle.System;
 			this.groupBox2.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -1368,8 +1366,8 @@ namespace SimPe.Plugin
 			this.llAddBB.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -1391,8 +1389,8 @@ namespace SimPe.Plugin
 			this.llAssign.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -1415,15 +1413,13 @@ namespace SimPe.Plugin
 			this.cbGroupJoint.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.cbGroupJoint.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbGroupJoint.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbGroupJoint.Font = new System.Drawing.Font(
 				"Verdana",
@@ -1442,8 +1438,8 @@ namespace SimPe.Plugin
 			this.label21.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -1466,8 +1462,8 @@ namespace SimPe.Plugin
 			this.linkLabel2.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -1487,8 +1483,8 @@ namespace SimPe.Plugin
 			this.tb_opacity.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -1511,8 +1507,8 @@ namespace SimPe.Plugin
 			this.tb_uk2.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -1535,8 +1531,8 @@ namespace SimPe.Plugin
 			this.label3.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -1559,8 +1555,8 @@ namespace SimPe.Plugin
 			this.tb_uk3.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -1583,8 +1579,8 @@ namespace SimPe.Plugin
 			this.label2.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -1609,10 +1605,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -1638,8 +1634,8 @@ namespace SimPe.Plugin
 			this.tb_itemsc_name.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -1663,8 +1659,8 @@ namespace SimPe.Plugin
 			this.label11.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -1687,8 +1683,8 @@ namespace SimPe.Plugin
 			this.label13.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -1712,16 +1708,16 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Bottom
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Bottom
+						) | AnchorStyles.Right
 					)
 				)
 			);
 			this.groupBox5.Controls.Add(this.tb_itemsc3);
 			this.groupBox5.Controls.Add(this.label9);
 			this.groupBox5.Controls.Add(this.lb_itemsc3);
-			this.groupBox5.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.groupBox5.FlatStyle = FlatStyle.System;
 			this.groupBox5.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -1741,8 +1737,8 @@ namespace SimPe.Plugin
 			this.tb_itemsc3.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
@@ -1765,8 +1761,8 @@ namespace SimPe.Plugin
 			this.label9.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
@@ -1791,10 +1787,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -1842,8 +1838,8 @@ namespace SimPe.Plugin
 			this.cbCorrect.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
@@ -1878,12 +1874,12 @@ namespace SimPe.Plugin
 			this.cbaxis.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
-			this.cbaxis.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbaxis.DropDownStyle = ComboBoxStyle.DropDownList;
 			this.cbaxis.Location = new System.Drawing.Point(272, 240);
 			this.cbaxis.Name = "cbaxis";
 			this.cbaxis.Size = new System.Drawing.Size(96, 21);
@@ -1897,8 +1893,8 @@ namespace SimPe.Plugin
 			this.label12.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
@@ -1921,12 +1917,12 @@ namespace SimPe.Plugin
 			this.button1.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
-			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.button1.FlatStyle = FlatStyle.System;
 			this.button1.Location = new System.Drawing.Point(110, 240);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(78, 23);
@@ -1939,12 +1935,12 @@ namespace SimPe.Plugin
 			this.button5.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
-			this.button5.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.button5.FlatStyle = FlatStyle.System;
 			this.button5.Location = new System.Drawing.Point(16, 240);
 			this.button5.Name = "button5";
 			this.button5.Size = new System.Drawing.Size(78, 23);
@@ -1958,9 +1954,9 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Bottom
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Bottom
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -1985,9 +1981,9 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Bottom
-						) | System.Windows.Forms.AnchorStyles.Left
+							AnchorStyles.Top
+							| AnchorStyles.Bottom
+						) | AnchorStyles.Left
 					)
 				)
 			);
@@ -2019,12 +2015,12 @@ namespace SimPe.Plugin
 			this.button3.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
-			this.button3.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.button3.FlatStyle = FlatStyle.System;
 			this.button3.Location = new System.Drawing.Point(16, 272);
 			this.button3.Name = "button3";
 			this.button3.Size = new System.Drawing.Size(172, 23);
@@ -2037,12 +2033,12 @@ namespace SimPe.Plugin
 			this.button4.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
-			this.button4.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.button4.FlatStyle = FlatStyle.System;
 			this.button4.Location = new System.Drawing.Point(219, 272);
 			this.button4.Name = "button4";
 			this.button4.Size = new System.Drawing.Size(32, 23);
@@ -2069,13 +2065,13 @@ namespace SimPe.Plugin
 			this.groupBox19.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
 			this.groupBox19.Controls.Add(this.lb_model_items);
-			this.groupBox19.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.groupBox19.FlatStyle = FlatStyle.System;
 			this.groupBox19.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -2097,10 +2093,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -2125,16 +2121,16 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
 			this.groupBox18.Controls.Add(this.llClearBB);
 			this.groupBox18.Controls.Add(this.lb_model_faces);
-			this.groupBox18.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.groupBox18.FlatStyle = FlatStyle.System;
 			this.groupBox18.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -2154,8 +2150,8 @@ namespace SimPe.Plugin
 			this.llClearBB.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -2178,10 +2174,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -2205,14 +2201,14 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Bottom
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Bottom
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
 			this.groupBox17.Controls.Add(this.lb_model_names);
-			this.groupBox17.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.groupBox17.FlatStyle = FlatStyle.System;
 			this.groupBox17.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -2234,10 +2230,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -2261,15 +2257,15 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Bottom
-						) | System.Windows.Forms.AnchorStyles.Left
+							AnchorStyles.Top
+							| AnchorStyles.Bottom
+						) | AnchorStyles.Left
 					)
 				)
 			);
 			this.groupBox16.Controls.Add(this.linkLabel6);
 			this.groupBox16.Controls.Add(this.lb_model_trans);
-			this.groupBox16.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.groupBox16.FlatStyle = FlatStyle.System;
 			this.groupBox16.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -2304,9 +2300,9 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Bottom
-						) | System.Windows.Forms.AnchorStyles.Left
+							AnchorStyles.Top
+							| AnchorStyles.Bottom
+						) | AnchorStyles.Left
 					)
 				)
 			);
@@ -2347,15 +2343,15 @@ namespace SimPe.Plugin
 			this.groupBox9.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
 			this.groupBox9.Controls.Add(this.tb_itemsb4);
 			this.groupBox9.Controls.Add(this.label15);
 			this.groupBox9.Controls.Add(this.lb_itemsb4);
-			this.groupBox9.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.groupBox9.FlatStyle = FlatStyle.System;
 			this.groupBox9.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -2375,8 +2371,8 @@ namespace SimPe.Plugin
 			this.tb_itemsb4.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
@@ -2399,8 +2395,8 @@ namespace SimPe.Plugin
 			this.label15.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
@@ -2425,10 +2421,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -2455,16 +2451,16 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Bottom
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Bottom
+						) | AnchorStyles.Right
 					)
 				)
 			);
 			this.groupBox11.Controls.Add(this.tb_itemsb5);
 			this.groupBox11.Controls.Add(this.label17);
 			this.groupBox11.Controls.Add(this.lb_itemsb5);
-			this.groupBox11.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.groupBox11.FlatStyle = FlatStyle.System;
 			this.groupBox11.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -2484,8 +2480,8 @@ namespace SimPe.Plugin
 			this.tb_itemsb5.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
@@ -2508,8 +2504,8 @@ namespace SimPe.Plugin
 			this.label17.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
@@ -2534,10 +2530,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -2563,15 +2559,15 @@ namespace SimPe.Plugin
 			this.groupBox6.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
 			this.groupBox6.Controls.Add(this.tb_itemsb2);
 			this.groupBox6.Controls.Add(this.label14);
 			this.groupBox6.Controls.Add(this.lb_itemsb2);
-			this.groupBox6.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.groupBox6.FlatStyle = FlatStyle.System;
 			this.groupBox6.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -2591,8 +2587,8 @@ namespace SimPe.Plugin
 			this.tb_itemsb2.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
@@ -2615,8 +2611,8 @@ namespace SimPe.Plugin
 			this.label14.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
@@ -2641,10 +2637,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -2672,10 +2668,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -2685,7 +2681,7 @@ namespace SimPe.Plugin
 			this.groupBox7.Controls.Add(this.label16);
 			this.groupBox7.Controls.Add(this.lb_itemsb);
 			this.groupBox7.Controls.Add(this.label18);
-			this.groupBox7.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.groupBox7.FlatStyle = FlatStyle.System;
 			this.groupBox7.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -2705,8 +2701,8 @@ namespace SimPe.Plugin
 			this.linkLabel7.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -2726,8 +2722,8 @@ namespace SimPe.Plugin
 			this.tb_uk4.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -2750,8 +2746,8 @@ namespace SimPe.Plugin
 			this.tb_uk6.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -2774,8 +2770,8 @@ namespace SimPe.Plugin
 			this.label16.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -2800,10 +2796,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -2829,8 +2825,8 @@ namespace SimPe.Plugin
 			this.label18.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -2854,16 +2850,16 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Bottom
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Bottom
+						) | AnchorStyles.Right
 					)
 				)
 			);
 			this.groupBox8.Controls.Add(this.tb_itemsb3);
 			this.groupBox8.Controls.Add(this.label19);
 			this.groupBox8.Controls.Add(this.lb_itemsb3);
-			this.groupBox8.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.groupBox8.FlatStyle = FlatStyle.System;
 			this.groupBox8.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -2883,8 +2879,8 @@ namespace SimPe.Plugin
 			this.tb_itemsb3.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
@@ -2907,8 +2903,8 @@ namespace SimPe.Plugin
 			this.label19.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
@@ -2933,10 +2929,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -2975,13 +2971,13 @@ namespace SimPe.Plugin
 			this.groupBox13.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
 			this.groupBox13.Controls.Add(this.lb_sub_items);
-			this.groupBox13.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.groupBox13.FlatStyle = FlatStyle.System;
 			this.groupBox13.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -3003,10 +2999,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -3033,14 +3029,14 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Bottom
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Bottom
+						) | AnchorStyles.Right
 					)
 				)
 			);
 			this.groupBox14.Controls.Add(this.lb_sub_faces);
-			this.groupBox14.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.groupBox14.FlatStyle = FlatStyle.System;
 			this.groupBox14.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -3062,10 +3058,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -3090,17 +3086,17 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
 			this.groupBox15.Controls.Add(this.linkLabel5);
 			this.groupBox15.Controls.Add(this.linkLabel4);
 			this.groupBox15.Controls.Add(this.lb_subsets);
-			this.groupBox15.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.groupBox15.FlatStyle = FlatStyle.System;
 			this.groupBox15.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -3120,8 +3116,8 @@ namespace SimPe.Plugin
 			this.linkLabel5.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -3142,8 +3138,8 @@ namespace SimPe.Plugin
 			this.linkLabel4.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -3166,10 +3162,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -3338,7 +3334,7 @@ namespace SimPe.Plugin
 				lb_itemsa1.Items.Clear();
 				foreach (GmdcElementValueBase i in item.Values)
 				{
-					SimPe.CountedListItem.Add(lb_itemsa1, i);
+					CountedListItem.Add(lb_itemsa1, i);
 				}
 
 				lb_itemsa2.Items.Clear();
@@ -3782,7 +3778,7 @@ namespace SimPe.Plugin
 
 				this.scenesel.Scene = gmdcext.GetScene(
 					GetModelsExt(),
-					new ElementOrder(Gmdc.ElementSorting.Preview)
+					new ElementOrder(ElementSorting.Preview)
 				);
 
 				ResetPreviewCamera(false);
@@ -4367,13 +4363,13 @@ namespace SimPe.Plugin
 				lb_sub_faces.Items.Clear();
 				foreach (Vector3f i in item.Vertices)
 				{
-					SimPe.CountedListItem.Add(lb_sub_faces, i);
+					CountedListItem.Add(lb_sub_faces, i);
 				}
 
 				lb_sub_items.Items.Clear();
 				foreach (int i in item.Items)
 				{
-					SimPe.CountedListItem.Add(lb_sub_items, i);
+					CountedListItem.Add(lb_sub_items, i);
 				}
 			}
 			catch (Exception ex)

@@ -26,9 +26,9 @@ namespace SimPe.Wants
 	class Settings : GlobalizedObject
 	{
 		const string BASENAME = "PJSE\\Wants";
-		XmlRegistryKey xrk = SimPe.Helper.WindowsRegistry.PluginRegistryKey;
+		XmlRegistryKey xrk = Helper.WindowsRegistry.PluginRegistryKey;
 		XmlRegistryKey rkf =
-			SimPe.Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(BASENAME);
+			Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(BASENAME);
 
 		public Settings()
 			: base(new ResourceManager(typeof(Settings))) { }

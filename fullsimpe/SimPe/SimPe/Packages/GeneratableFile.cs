@@ -72,7 +72,7 @@ namespace SimPe.Packages
 
 			StreamItem si = StreamFactory.UseStream(
 				flname,
-				System.IO.FileAccess.ReadWrite
+				FileAccess.ReadWrite
 			);
 			bool res = (si.StreamState == StreamState.Opened);
 
@@ -162,9 +162,9 @@ namespace SimPe.Packages
 		/// <returns>the suggested Backup Filename</returns>
 		protected string GetBakFileName(string flname)
 		{
-			return System.IO.Path.Combine(
-				System.IO.Path.GetDirectoryName(flname),
-				System.IO.Path.GetFileNameWithoutExtension(flname) + ".bak"
+			return Path.Combine(
+				Path.GetDirectoryName(flname),
+				Path.GetFileNameWithoutExtension(flname) + ".bak"
 			);
 			/*
 			string dir = System.IO.Path.GetDirectoryName(flname);
@@ -192,7 +192,7 @@ namespace SimPe.Packages
 		{
 			StreamFactory.CloseStream(flname);
 
-			string tmpfile = System.IO.Path.GetTempFileName();
+			string tmpfile = Path.GetTempFileName();
 			try
 			{
 				// Try to save to a temp file

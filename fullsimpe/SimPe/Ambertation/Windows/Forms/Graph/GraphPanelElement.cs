@@ -255,7 +255,7 @@ namespace Ambertation.Windows.Forms.Graph
 			Rectangle src
 		)
 		{
-			g.DrawImage(canvas, dst, src, System.Drawing.GraphicsUnit.Pixel);
+			g.DrawImage(canvas, dst, src, GraphicsUnit.Pixel);
 		}
 
 		public void Refresh()

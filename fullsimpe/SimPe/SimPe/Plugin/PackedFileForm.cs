@@ -148,18 +148,18 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Bottom
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Bottom
+						) | AnchorStyles.Right
 					)
 				)
 			);
-			this.pb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.pb.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.pb.BorderStyle = BorderStyle.FixedSingle;
+			this.pb.ImeMode = ImeMode.NoControl;
 			this.pb.Location = new System.Drawing.Point(240, 168);
 			this.pb.Name = "pb";
 			this.pb.Size = new System.Drawing.Size(152, 152);
-			this.pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pb.SizeMode = PictureBoxSizeMode.Zoom;
 			this.pb.TabIndex = 43;
 			this.pb.TabStop = false;
 			this.pb.SizeChanged += new EventHandler(this.pb_SizeChanged);
@@ -169,18 +169,18 @@ namespace SimPe.Plugin
 			this.button2.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+			this.button2.FlatStyle = FlatStyle.Popup;
 			this.button2.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.button2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.button2.ImeMode = ImeMode.NoControl;
 			this.button2.Location = new System.Drawing.Point(320, 28);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(72, 21);
@@ -193,18 +193,18 @@ namespace SimPe.Plugin
 			this.button4.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+			this.button4.FlatStyle = FlatStyle.Popup;
 			this.button4.Font = new System.Drawing.Font(
 				"Microsoft Sans Serif",
 				8.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.button4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.button4.ImeMode = ImeMode.NoControl;
 			this.button4.Location = new System.Drawing.Point(288, 28);
 			this.button4.Name = "button4";
 			this.button4.Size = new System.Drawing.Size(21, 21);
@@ -217,13 +217,13 @@ namespace SimPe.Plugin
 			this.btdown.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.btdown.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.btdown.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.btdown.FlatStyle = FlatStyle.System;
+			this.btdown.ImeMode = ImeMode.NoControl;
 			this.btdown.Location = new System.Drawing.Point(176, 192);
 			this.btdown.Name = "btdown";
 			this.btdown.Size = new System.Drawing.Size(48, 23);
@@ -236,13 +236,13 @@ namespace SimPe.Plugin
 			this.btup.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.btup.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.btup.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.btup.FlatStyle = FlatStyle.System;
+			this.btup.ImeMode = ImeMode.NoControl;
 			this.btup.Location = new System.Drawing.Point(176, 168);
 			this.btup.Name = "btup";
 			this.btup.Size = new System.Drawing.Size(48, 23);
@@ -255,13 +255,13 @@ namespace SimPe.Plugin
 			this.button1.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.button1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.button1.FlatStyle = FlatStyle.System;
+			this.button1.ImeMode = ImeMode.NoControl;
 			this.button1.Location = new System.Drawing.Point(176, 224);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(56, 23);
@@ -274,13 +274,13 @@ namespace SimPe.Plugin
 			this.gbtypes.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
 			this.gbtypes.Controls.Add(this.pntypes);
-			this.gbtypes.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.gbtypes.FlatStyle = FlatStyle.System;
 			this.gbtypes.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -320,7 +320,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.lladd.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.lladd.ImeMode = ImeMode.NoControl;
 			this.lladd.LinkArea = new LinkArea(0, 6);
 			this.lladd.Location = new System.Drawing.Point(384, 80);
 			this.lladd.Name = "lladd";
@@ -340,7 +340,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.lldelete.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.lldelete.ImeMode = ImeMode.NoControl;
 			this.lldelete.LinkArea = new LinkArea(0, 6);
 			this.lldelete.Location = new System.Drawing.Point(416, 80);
 			this.lldelete.Name = "lldelete";
@@ -380,7 +380,7 @@ namespace SimPe.Plugin
 			// label11
 			//
 			this.label11.Font = new System.Drawing.Font("Verdana", 8.25F);
-			this.label11.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.label11.ImeMode = ImeMode.NoControl;
 			this.label11.Location = new System.Drawing.Point(0, 72);
 			this.label11.Name = "label11";
 			this.label11.Size = new System.Drawing.Size(112, 17);
@@ -400,7 +400,7 @@ namespace SimPe.Plugin
 			// label8
 			//
 			this.label8.Font = new System.Drawing.Font("Verdana", 8.25F);
-			this.label8.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.label8.ImeMode = ImeMode.NoControl;
 			this.label8.Location = new System.Drawing.Point(0, 0);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(112, 17);
@@ -411,7 +411,7 @@ namespace SimPe.Plugin
 			// label9
 			//
 			this.label9.Font = new System.Drawing.Font("Verdana", 8.25F);
-			this.label9.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.label9.ImeMode = ImeMode.NoControl;
 			this.label9.Location = new System.Drawing.Point(0, 24);
 			this.label9.Name = "label9";
 			this.label9.Size = new System.Drawing.Size(112, 17);
@@ -422,7 +422,7 @@ namespace SimPe.Plugin
 			// label10
 			//
 			this.label10.Font = new System.Drawing.Font("Verdana", 8.25F);
-			this.label10.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.label10.ImeMode = ImeMode.NoControl;
 			this.label10.Location = new System.Drawing.Point(0, 48);
 			this.label10.Name = "label10";
 			this.label10.Size = new System.Drawing.Size(112, 17);
@@ -441,10 +441,8 @@ namespace SimPe.Plugin
 			//
 			// cbtypes
 			//
-			this.cbtypes.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbtypes.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbtypes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
 			this.cbtypes.ItemHeight = 13;
@@ -465,7 +463,7 @@ namespace SimPe.Plugin
 				8.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.llcommit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.llcommit.ImeMode = ImeMode.NoControl;
 			this.llcommit.LinkArea = new LinkArea(0, 6);
 			this.llcommit.Location = new System.Drawing.Point(328, 80);
 			this.llcommit.Name = "llcommit";
@@ -487,10 +485,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -535,9 +533,9 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -558,7 +556,7 @@ namespace SimPe.Plugin
 			// label1
 			//
 			this.label1.AutoSize = true;
-			this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.label1.ImeMode = ImeMode.NoControl;
 			this.label1.Location = new System.Drawing.Point(0, 4);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(201, 19);
@@ -571,14 +569,12 @@ namespace SimPe.Plugin
 			this.ClientSize = new System.Drawing.Size(856, 350);
 			this.Controls.Add(this.wrapperPanel);
 			this.Font = new System.Drawing.Font("Verdana", 8.25F);
-			this.FormBorderStyle = System
-				.Windows
-				.Forms
-				.FormBorderStyle
+			this.FormBorderStyle =
+				FormBorderStyle
 				.SizableToolWindow;
 			this.Name = "RefFileForm";
 			this.Text = "MyPackedFileForm";
-			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+			this.WindowState = FormWindowState.Maximized;
 			this.wrapperPanel.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
 			this.gbtypes.ResumeLayout(false);

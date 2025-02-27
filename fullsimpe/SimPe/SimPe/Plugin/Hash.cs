@@ -103,7 +103,7 @@ namespace SimPe.Plugin
 			);
 			this.label1.Location = new System.Drawing.Point(37, 19);
 			this.label1.Name = "label1";
-			this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+			this.label1.RightToLeft = RightToLeft.No;
 			this.label1.Size = new System.Drawing.Size(50, 13);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "String:";
@@ -121,7 +121,7 @@ namespace SimPe.Plugin
 			);
 			this.label4.Location = new System.Drawing.Point(4, 83);
 			this.label4.Name = "label4";
-			this.label4.RightToLeft = System.Windows.Forms.RightToLeft.No;
+			this.label4.RightToLeft = RightToLeft.No;
 			this.label4.Size = new System.Drawing.Size(83, 13);
 			this.label4.TabIndex = 3;
 			this.label4.Text = "Hash Value:";
@@ -132,18 +132,18 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
 			this.tbtext.Location = new System.Drawing.Point(92, 15);
 			this.tbtext.Name = "tbtext";
-			this.tbtext.RightToLeft = System.Windows.Forms.RightToLeft.No;
+			this.tbtext.RightToLeft = RightToLeft.No;
 			this.tbtext.Size = new System.Drawing.Size(372, 21);
 			this.tbtext.TabIndex = 4;
-			this.tbtext.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.tbtext.TextAlign = HorizontalAlignment.Right;
 			this.tbtext.TextChanged += new EventHandler(this.tbtext_TextChanged);
 			//
 			// tbhash
@@ -151,20 +151,20 @@ namespace SimPe.Plugin
 			this.tbhash.Location = new System.Drawing.Point(92, 79);
 			this.tbhash.Name = "tbhash";
 			this.tbhash.ReadOnly = true;
-			this.tbhash.RightToLeft = System.Windows.Forms.RightToLeft.No;
+			this.tbhash.RightToLeft = RightToLeft.No;
 			this.tbhash.Size = new System.Drawing.Size(372, 21);
 			this.tbhash.TabIndex = 7;
 			this.tbhash.Text = "0xB00B0069";
-			this.tbhash.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.tbhash.TextAlign = HorizontalAlignment.Right;
 			//
 			// rb24
 			//
 			this.rb24.BackColor = System.Drawing.Color.Transparent;
 			this.rb24.Checked = true;
-			this.rb24.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.rb24.FlatStyle = FlatStyle.System;
 			this.rb24.Location = new System.Drawing.Point(240, 42);
 			this.rb24.Name = "rb24";
-			this.rb24.RightToLeft = System.Windows.Forms.RightToLeft.No;
+			this.rb24.RightToLeft = RightToLeft.No;
 			this.rb24.Size = new System.Drawing.Size(72, 24);
 			this.rb24.TabIndex = 8;
 			this.rb24.TabStop = true;
@@ -178,10 +178,10 @@ namespace SimPe.Plugin
 			// rb32
 			//
 			this.rb32.BackColor = System.Drawing.Color.Transparent;
-			this.rb32.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.rb32.FlatStyle = FlatStyle.System;
 			this.rb32.Location = new System.Drawing.Point(320, 42);
 			this.rb32.Name = "rb32";
-			this.rb32.RightToLeft = System.Windows.Forms.RightToLeft.No;
+			this.rb32.RightToLeft = RightToLeft.No;
 			this.rb32.Size = new System.Drawing.Size(72, 24);
 			this.rb32.TabIndex = 9;
 			this.rb32.Text = "CRC 32";
@@ -194,10 +194,10 @@ namespace SimPe.Plugin
 			// radioButton1
 			//
 			this.radioButton1.BackColor = System.Drawing.Color.Transparent;
-			this.radioButton1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.radioButton1.FlatStyle = FlatStyle.System;
 			this.radioButton1.Location = new System.Drawing.Point(400, 42);
 			this.radioButton1.Name = "radioButton1";
-			this.radioButton1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+			this.radioButton1.RightToLeft = RightToLeft.No;
 			this.radioButton1.Size = new System.Drawing.Size(56, 24);
 			this.radioButton1.TabIndex = 10;
 			this.radioButton1.Text = "GUID";
@@ -228,7 +228,7 @@ namespace SimPe.Plugin
 			);
 			this.panel1.Location = new System.Drawing.Point(0, 0);
 			this.panel1.Name = "panel1";
-			this.panel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+			this.panel1.RightToLeft = RightToLeft.No;
 			this.panel1.Size = new System.Drawing.Size(496, 146);
 			this.panel1.TabIndex = 11;
 			//
@@ -246,7 +246,7 @@ namespace SimPe.Plugin
 			//
 			this.cbTrim.AutoSize = true;
 			this.cbTrim.Checked = true;
-			this.cbTrim.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.cbTrim.CheckState = CheckState.Checked;
 			this.cbTrim.Location = new System.Drawing.Point(40, 46);
 			this.cbTrim.Name = "cbTrim";
 			this.cbTrim.Size = new System.Drawing.Size(148, 17);
@@ -279,7 +279,7 @@ namespace SimPe.Plugin
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+			this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "Hash";
 			this.Text = "Hash Generator";
@@ -364,7 +364,7 @@ namespace SimPe.Plugin
 		{
 			tbtext.Enabled = cbTrim.Enabled = false;
 			lbnamer.Visible = false;
-			tbhash.Text = System.Guid.NewGuid().ToString();
+			tbhash.Text = Guid.NewGuid().ToString();
 		}
 
 		private void rb14_CheckedChanged(object sender, EventArgs e)

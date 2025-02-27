@@ -63,13 +63,13 @@ namespace Ambertation
 		public override string ToString()
 		{
 			return ToFloat(Color.R)
-					.ToString("N5", System.Globalization.CultureInfo.InvariantCulture)
+					.ToString("N5", CultureInfo.InvariantCulture)
 				+ ","
 				+ ToFloat(Color.G)
-					.ToString("N5", System.Globalization.CultureInfo.InvariantCulture)
+					.ToString("N5", CultureInfo.InvariantCulture)
 				+ ","
 				+ ToFloat(Color.B)
-					.ToString("N5", System.Globalization.CultureInfo.InvariantCulture);
+					.ToString("N5", CultureInfo.InvariantCulture);
 		}
 
 		// Explicit conversion from DBBool to bool. Throws an
@@ -87,7 +87,7 @@ namespace Ambertation
 		/// <returns></returns>
 		public static Color ToColor(string s)
 		{
-			Color o = System.Drawing.Color.Black;
+			Color o = Color.Black;
 
 			while (s.IndexOf(" ") != -1)
 			{
@@ -99,56 +99,56 @@ namespace Ambertation
 				string[] parts = s.Split(",".ToCharArray(), 4);
 				if (parts.Length < 3)
 				{
-					o = System.Drawing.Color.Black;
+					o = Color.Black;
 				}
 				else if (parts.Length == 3)
 				{
-					o = System.Drawing.Color.FromArgb(
+					o = Color.FromArgb(
 						(int)(
-							System.Convert.ToSingle(
+							Convert.ToSingle(
 								parts[0],
-								System.Globalization.CultureInfo.InvariantCulture
+								CultureInfo.InvariantCulture
 							) * 0xff
 						),
 						(int)(
-							System.Convert.ToSingle(
+							Convert.ToSingle(
 								parts[1],
-								System.Globalization.CultureInfo.InvariantCulture
+								CultureInfo.InvariantCulture
 							) * 0xff
 						),
 						(int)(
-							System.Convert.ToSingle(
+							Convert.ToSingle(
 								parts[2],
-								System.Globalization.CultureInfo.InvariantCulture
+								CultureInfo.InvariantCulture
 							) * 0xff
 						)
 					);
 				}
 				else
 				{
-					o = System.Drawing.Color.FromArgb(
+					o = Color.FromArgb(
 						(int)(
-							System.Convert.ToSingle(
+							Convert.ToSingle(
 								parts[0],
-								System.Globalization.CultureInfo.InvariantCulture
+								CultureInfo.InvariantCulture
 							) * 0xff
 						),
 						(int)(
-							System.Convert.ToSingle(
+							Convert.ToSingle(
 								parts[1],
-								System.Globalization.CultureInfo.InvariantCulture
+								CultureInfo.InvariantCulture
 							) * 0xff
 						),
 						(int)(
-							System.Convert.ToSingle(
+							Convert.ToSingle(
 								parts[2],
-								System.Globalization.CultureInfo.InvariantCulture
+								CultureInfo.InvariantCulture
 							) * 0xff
 						),
 						(int)(
-							System.Convert.ToSingle(
+							Convert.ToSingle(
 								parts[3],
-								System.Globalization.CultureInfo.InvariantCulture
+								CultureInfo.InvariantCulture
 							) * 0xff
 						)
 					);
@@ -159,56 +159,56 @@ namespace Ambertation
 				string[] parts = s.Split(";".ToCharArray(), 4);
 				if (parts.Length < 3)
 				{
-					o = System.Drawing.Color.Black;
+					o = Color.Black;
 				}
 				else if (parts.Length == 3)
 				{
-					o = System.Drawing.Color.FromArgb(
+					o = Color.FromArgb(
 						(int)(
-							System.Convert.ToInt16(
+							Convert.ToInt16(
 								parts[0],
-								System.Globalization.CultureInfo.InvariantCulture
+								CultureInfo.InvariantCulture
 							)
 						),
 						(int)(
-							System.Convert.ToInt16(
+							Convert.ToInt16(
 								parts[1],
-								System.Globalization.CultureInfo.InvariantCulture
+								CultureInfo.InvariantCulture
 							)
 						),
 						(int)(
-							System.Convert.ToInt16(
+							Convert.ToInt16(
 								parts[2],
-								System.Globalization.CultureInfo.InvariantCulture
+								CultureInfo.InvariantCulture
 							)
 						)
 					);
 				}
 				else
 				{
-					o = System.Drawing.Color.FromArgb(
+					o = Color.FromArgb(
 						(int)(
-							System.Convert.ToInt16(
+							Convert.ToInt16(
 								parts[0],
-								System.Globalization.CultureInfo.InvariantCulture
+								CultureInfo.InvariantCulture
 							)
 						),
 						(int)(
-							System.Convert.ToInt16(
+							Convert.ToInt16(
 								parts[1],
-								System.Globalization.CultureInfo.InvariantCulture
+								CultureInfo.InvariantCulture
 							)
 						),
 						(int)(
-							System.Convert.ToInt16(
+							Convert.ToInt16(
 								parts[2],
-								System.Globalization.CultureInfo.InvariantCulture
+								CultureInfo.InvariantCulture
 							)
 						),
 						(int)(
-							System.Convert.ToInt16(
+							Convert.ToInt16(
 								parts[3],
-								System.Globalization.CultureInfo.InvariantCulture
+								CultureInfo.InvariantCulture
 							)
 						)
 					);

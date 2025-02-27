@@ -137,7 +137,7 @@ namespace SimPe
 			//
 			// button1
 			//
-			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.button1.FlatStyle = FlatStyle.System;
 			this.button1.Location = new System.Drawing.Point(200, 112);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(120, 23);
@@ -147,7 +147,7 @@ namespace SimPe
 			//
 			// button2
 			//
-			this.button2.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.button2.FlatStyle = FlatStyle.System;
 			this.button2.Location = new System.Drawing.Point(8, 160);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(128, 23);
@@ -157,7 +157,7 @@ namespace SimPe
 			//
 			// button3
 			//
-			this.button3.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.button3.FlatStyle = FlatStyle.System;
 			this.button3.Location = new System.Drawing.Point(144, 160);
 			this.button3.Name = "button3";
 			this.button3.Size = new System.Drawing.Size(128, 23);
@@ -167,7 +167,7 @@ namespace SimPe
 			//
 			// button4
 			//
-			this.button4.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.button4.FlatStyle = FlatStyle.System;
 			this.button4.Location = new System.Drawing.Point(318, 160);
 			this.button4.Name = "button4";
 			this.button4.Size = new System.Drawing.Size(128, 23);
@@ -196,7 +196,7 @@ namespace SimPe
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			this.FormBorderStyle = FormBorderStyle.FixedDialog;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
@@ -217,7 +217,7 @@ namespace SimPe
 
 		private void UpdateDialog()
 		{
-			this.tbComp.Text = SimPe.Packages.PackedFile.CompressionStrength.ToString();
+			this.tbComp.Text = Packages.PackedFile.CompressionStrength.ToString();
 			tbBig.Text = Helper.WindowsRegistry.BigPackageResourceCount.ToString();
 
 			this.lbMem.Text = GC.GetTotalMemory(false).ToString("N0") + " Byte";
@@ -227,7 +227,7 @@ namespace SimPe
 		{
 			try
 			{
-				SimPe.Packages.PackedFile.CompressionStrength = Convert.ToInt32(
+				Packages.PackedFile.CompressionStrength = Convert.ToInt32(
 					this.tbComp.Text
 				);
 				Helper.WindowsRegistry.BigPackageResourceCount = Convert.ToInt32(
@@ -249,12 +249,12 @@ namespace SimPe
 
 		private void button2_Click(object sender, EventArgs e)
 		{
-			SimPe.Packages.StreamFactory.WriteToConsole();
+			Packages.StreamFactory.WriteToConsole();
 		}
 
 		private void button3_Click(object sender, EventArgs e)
 		{
-			SimPe.FileTable.FileIndex.WriteContentToConsole();
+			FileTableBase.FileIndex.WriteContentToConsole();
 		}
 
 		private void button4_Click(object sender, EventArgs e)

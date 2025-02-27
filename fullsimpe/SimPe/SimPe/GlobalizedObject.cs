@@ -223,7 +223,7 @@ namespace SimPe
 		System.Resources.ResourceManager resource;
 
 		public GlobalizedObject()
-			: this(SimPe.Localization.Manager) { }
+			: this(Localization.Manager) { }
 
 		public GlobalizedObject(System.Resources.ResourceManager resource)
 			: base()

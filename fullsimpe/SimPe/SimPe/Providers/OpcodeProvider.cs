@@ -104,10 +104,10 @@ namespace SimPe.Providers
 				new PackedFiles.Wrapper.ExtObjd();
 			PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
 
-			FileTable.FileIndex.Load();
+			FileTableBase.FileIndex.Load();
 			Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-				FileTable.FileIndex.FindFileDiscardingGroup(
-					Data.MetaData.OBJD_FILE,
+				FileTableBase.FileIndex.FindFileDiscardingGroup(
+					MetaData.OBJD_FILE,
 					0x00000000000041A7
 				);
 
@@ -142,8 +142,8 @@ namespace SimPe.Providers
 						try
 						{
 							Interfaces.Scenegraph.IScenegraphFileIndexItem[] sitems =
-								FileTable.FileIndex.FindFile(
-									Data.MetaData.CTSS_FILE,
+								FileTableBase.FileIndex.FindFile(
+									MetaData.CTSS_FILE,
 									pfd.Group,
 									objd.CTSSInstance,
 									null
@@ -192,8 +192,8 @@ namespace SimPe.Providers
 						PackedFiles.Wrapper.Picture pic =
 							new PackedFiles.Wrapper.Picture();
 						Interfaces.Scenegraph.IScenegraphFileIndexItem[] iitems =
-							FileTable.FileIndex.FindFile(
-								Data.MetaData.SIM_IMAGE_FILE,
+							FileTableBase.FileIndex.FindFile(
+								MetaData.SIM_IMAGE_FILE,
 								pfd.Group,
 								1,
 								null
@@ -239,7 +239,7 @@ namespace SimPe.Providers
 			}
 
 			IPackedFileDescriptor pfd = BasePackage.FindFile(
-				Data.MetaData.STRING_FILE,
+				MetaData.STRING_FILE,
 				0x00000000,
 				0x7FE59FD0,
 				instance
@@ -308,10 +308,10 @@ namespace SimPe.Providers
 			}
 
 			//IPackedFileDescriptor pfd = BasePackage.FindFile(Data.MetaData.STRING_FILE, 0x00000000, 0x7FE59FD0, 0x0000008B);
-			FileTable.FileIndex.Load();
+			FileTableBase.FileIndex.Load();
 			Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-				SimPe.FileTable.FileIndex.FindFile(
-					Data.MetaData.STRING_FILE,
+				FileTableBase.FileIndex.FindFile(
+					MetaData.STRING_FILE,
 					0x7FE59FD0,
 					0x000000000000008B,
 					null
@@ -343,14 +343,14 @@ namespace SimPe.Providers
 			{
 				Registry reg = Helper.WindowsRegistry;
 				string file = System.IO.Path.Combine(
-					SimPe
-						.PathProvider.Global.GetExpansion(Expansions.BaseGame)
+
+						PathProvider.Global.GetExpansion(Expansions.BaseGame)
 						.InstallFolder,
 					"TSData\\Res\\Objects\\objects.package"
 				);
 				if (System.IO.File.Exists(file))
 				{
-					BasePackage = SimPe.Packages.File.LoadFromFile(file);
+					BasePackage = Packages.File.LoadFromFile(file);
 				}
 				else
 				{
@@ -380,10 +380,10 @@ namespace SimPe.Providers
 					return "Unknown Global";
 				}
 				//IPackedFileDescriptor pfd = BasePackage.FindFile(Data.MetaData.BHAV_FILE, 0x0, 0x7FD46CD0, opcode);
-				FileTable.FileIndex.Load();
+				FileTableBase.FileIndex.Load();
 				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-					FileTable.FileIndex.FindFile(
-						Data.MetaData.BHAV_FILE,
+					FileTableBase.FileIndex.FindFile(
+						MetaData.BHAV_FILE,
 						0x7FD46CD0,
 						(ulong)opcode,
 						null
@@ -690,10 +690,10 @@ namespace SimPe.Providers
 		{
 			//LoadPackage();
 			//if (BasePackage==null) return null;
-			FileTable.FileIndex.Load();
+			FileTableBase.FileIndex.Load();
 			Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-				FileTable.FileIndex.FindFile(
-					Data.MetaData.BHAV_FILE,
+				FileTableBase.FileIndex.FindFile(
+					MetaData.BHAV_FILE,
 					group,
 					opcode,
 					null

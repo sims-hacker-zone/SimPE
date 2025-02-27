@@ -42,7 +42,7 @@ namespace SimPe.Plugin.Tool.Window
 
 		public bool Visible => true;
 
-		public Image Icon => System.Drawing.Image.FromStream(
+		public Image Icon => Image.FromStream(
 					this.GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.repair.png")
 				);

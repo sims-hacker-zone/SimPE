@@ -30,9 +30,9 @@ namespace SimPe.Plugin
 			}
 
 			list.Add(
-				SimPe.Plugin.ScenegraphHelper.BuildPfd(
+				ScenegraphHelper.BuildPfd(
 					name,
-					SimPe.Plugin.ScenegraphHelper.CRES,
+					ScenegraphHelper.CRES,
 					parentgroup
 				)
 			);
@@ -46,9 +46,9 @@ namespace SimPe.Plugin
 			}
 
 			list.Add(
-				SimPe.Plugin.ScenegraphHelper.BuildPfd(
+				ScenegraphHelper.BuildPfd(
 					name,
-					SimPe.Plugin.ScenegraphHelper.TXMT,
+					ScenegraphHelper.TXMT,
 					parentgroup
 				)
 			);
@@ -151,7 +151,7 @@ namespace SimPe.Plugin
 						if (pfd == null) //FileTable fallback code
 						{
 							Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-								FileTable.FileIndex.FindFileDiscardingGroup(
+								FileTableBase.FileIndex.FindFileDiscardingGroup(
 									(Interfaces.Files.IPackedFileDescriptor)cress[0]
 								);
 							if (items.Length > 0)
@@ -217,7 +217,7 @@ namespace SimPe.Plugin
 						if (pfd == null) //FileTable fallback code
 						{
 							Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-								FileTable.FileIndex.FindFileDiscardingGroup(
+								FileTableBase.FileIndex.FindFileDiscardingGroup(
 									(Interfaces.Files.IPackedFileDescriptor)txmts[0]
 								);
 							if (items.Length > 0)
@@ -283,7 +283,7 @@ namespace SimPe.Plugin
 					if (pfd == null) //FileTable fallback code
 					{
 						Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-							FileTable.FileIndex.FindFileDiscardingGroup(
+							FileTableBase.FileIndex.FindFileDiscardingGroup(
 								(Interfaces.Files.IPackedFileDescriptor)txtrs[0]
 							);
 						if (items.Length > 0)
@@ -332,7 +332,7 @@ namespace SimPe.Plugin
 					if (shps.Count > 0)
 					{
 						Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-							FileTable.FileIndex.FindFile(
+							FileTableBase.FileIndex.FindFile(
 								(Interfaces.Files.IPackedFileDescriptor)shps[0],
 								null
 							);
@@ -347,7 +347,7 @@ namespace SimPe.Plugin
 							{
 								if (gmnds.Count > 0)
 								{
-									items = FileTable.FileIndex.FindFile(
+									items = FileTableBase.FileIndex.FindFile(
 										(Interfaces.Files.IPackedFileDescriptor)
 											gmnds[0],
 										null
@@ -366,7 +366,7 @@ namespace SimPe.Plugin
 										{
 											if (gmdcs.Count > 0)
 											{
-												items = FileTable.FileIndex.FindFile(
+												items = FileTableBase.FileIndex.FindFile(
 													(Interfaces.Files.IPackedFileDescriptor)
 														gmdcs[0],
 													null

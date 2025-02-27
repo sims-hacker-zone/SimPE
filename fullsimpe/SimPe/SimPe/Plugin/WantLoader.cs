@@ -317,20 +317,20 @@ namespace SimPe.Plugin
 		static void LoadTextPackage()
 		{
 			Wait.SubStart();
-			txtpkg = SimPe.Packages.File.LoadFromFile(
+			txtpkg = Packages.File.LoadFromFile(
 				System.IO.Path.Combine(
-					SimPe.PathProvider.Global.Latest.InstallFolder,
+					PathProvider.Global.Latest.InstallFolder,
 					"TSData\\Res\\Text\\Wants.package"
 				)
 			);
 
 			string img = (
 				System.IO.Path.Combine(
-					SimPe.PathProvider.Global[Expansions.BaseGame].InstallFolder,
+					PathProvider.Global[Expansions.BaseGame].InstallFolder,
 					"TSData\\Res\\UI\\ui.package"
 				)
 			);
-			FileTable.FileIndex.AddIndexFromPackage(img);
+			FileTableBase.FileIndex.AddIndexFromPackage(img);
 			foreach (ExpansionItem ei in PathProvider.Global.Expansions)
 			{
 				if (ei.Exists)
@@ -341,7 +341,7 @@ namespace SimPe.Plugin
 							"TSData\\Res\\UI\\ui.package"
 						)
 					);
-					FileTable.FileIndex.AddIndexFromPackage(img);
+					FileTableBase.FileIndex.AddIndexFromPackage(img);
 				}
 			}
 
@@ -356,9 +356,9 @@ namespace SimPe.Plugin
 			Wait.SubStart();
 			wants = new Hashtable();
 
-			FileTable.FileIndex.Load();
+			FileTableBase.FileIndex.Load();
 			Interfaces.Scenegraph.IScenegraphFileIndexItem[] wtss =
-				FileTable.FileIndex.FindFile(Data.MetaData.XWNT, true);
+				FileTableBase.FileIndex.FindFile(Data.MetaData.XWNT, true);
 
 			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem wts in wtss)
 			{
@@ -448,7 +448,7 @@ namespace SimPe.Plugin
 			}
 
 			Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-				FileTable.FileIndex.FindFile(wnt.IconFileDescriptor, null);
+				FileTableBase.FileIndex.FindFile(wnt.IconFileDescriptor, null);
 			if (items.Length > 0)
 			{
 				PackedFiles.Wrapper.Picture pic =

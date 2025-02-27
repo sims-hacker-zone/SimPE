@@ -73,9 +73,9 @@ namespace SimPe.Windows.Forms
 		)
 		{
 			last = maps;
-			if (FileTable.WrapperRegistry != null)
+			if (FileTableBase.WrapperRegistry != null)
 			{
-				tv.ImageList = FileTable.WrapperRegistry.WrapperImageList;
+				tv.ImageList = FileTableBase.WrapperRegistry.WrapperImageList;
 				tv.StateImageList = tv.ImageList;
 			}
 			if (!nosave)

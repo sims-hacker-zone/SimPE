@@ -39,10 +39,10 @@ namespace SimPe.Windows.Forms
 			{
 				if (Helper.WindowsRegistry.AsynchronSort)
 				{
-					SimPe.Wait.SubStart(names.Count);
+					Wait.SubStart(names.Count);
 				}
 
-				SimPe.Wait.Message = SimPe.Localization.GetString(
+				Wait.Message = Localization.GetString(
 					"Loading embedded resource names..."
 				);
 				sortingthread = new ResoureNameSorter(this, names, sortticket);

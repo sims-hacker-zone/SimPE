@@ -122,10 +122,10 @@ namespace SimPe.Plugin.TabPage
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -143,8 +143,8 @@ namespace SimPe.Plugin.TabPage
 			this.gbprop.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -154,7 +154,7 @@ namespace SimPe.Plugin.TabPage
 			this.gbprop.Controls.Add(this.tbname);
 			this.gbprop.Controls.Add(this.label2);
 			this.gbprop.Controls.Add(this.label1);
-			this.gbprop.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.gbprop.FlatStyle = FlatStyle.System;
 			this.gbprop.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -174,8 +174,8 @@ namespace SimPe.Plugin.TabPage
 			this.btnExport.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -192,8 +192,8 @@ namespace SimPe.Plugin.TabPage
 			this.btnImport.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -210,8 +210,8 @@ namespace SimPe.Plugin.TabPage
 			this.btnMerge.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -228,8 +228,8 @@ namespace SimPe.Plugin.TabPage
 			this.lldel.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -250,8 +250,8 @@ namespace SimPe.Plugin.TabPage
 			this.lladd.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -271,9 +271,9 @@ namespace SimPe.Plugin.TabPage
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -296,9 +296,9 @@ namespace SimPe.Plugin.TabPage
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -352,8 +352,8 @@ namespace SimPe.Plugin.TabPage
 			this.linkLabel1.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);

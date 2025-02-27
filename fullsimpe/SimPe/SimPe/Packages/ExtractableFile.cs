@@ -57,7 +57,7 @@ namespace SimPe.Packages
 		/// <returns>The MemoryStream representing the PackedFile</returns>
 		public MemoryStream Extract(PackedFileDescriptor pfd)
 		{
-			IPackedFile pf = base.Read(pfd);
+			IPackedFile pf = Read(pfd);
 			return new MemoryStream(pf.UncompressedData);
 		}
 
@@ -113,7 +113,7 @@ namespace SimPe.Packages
 			FileStream fs = null;
 			if (si == null)
 			{
-				fs = new FileStream(flname, System.IO.FileMode.Create);
+				fs = new FileStream(flname, FileMode.Create);
 			}
 			else
 			{

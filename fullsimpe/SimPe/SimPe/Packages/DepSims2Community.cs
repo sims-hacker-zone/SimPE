@@ -82,13 +82,13 @@ namespace SimPe.Packages
 			this.btadd.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
 			this.btadd.BackColor = System.Drawing.Color.Transparent;
-			this.btadd.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.btadd.FlatStyle = FlatStyle.System;
 			this.btadd.Location = new System.Drawing.Point(288, 189);
 			this.btadd.Name = "btadd";
 			this.btadd.Size = new System.Drawing.Size(75, 23);
@@ -104,10 +104,10 @@ namespace SimPe.Packages
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -123,13 +123,13 @@ namespace SimPe.Packages
 			this.btdelete.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
 			this.btdelete.BackColor = System.Drawing.Color.Transparent;
-			this.btdelete.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.btdelete.FlatStyle = FlatStyle.System;
 			this.btdelete.Location = new System.Drawing.Point(198, 189);
 			this.btdelete.Name = "btdelete";
 			this.btdelete.Size = new System.Drawing.Size(75, 23);
@@ -143,13 +143,13 @@ namespace SimPe.Packages
 			this.button2.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
 			this.button2.BackColor = System.Drawing.Color.Transparent;
-			this.button2.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.button2.FlatStyle = FlatStyle.System;
 			this.button2.Location = new System.Drawing.Point(384, 189);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(75, 23);
@@ -165,10 +165,10 @@ namespace SimPe.Packages
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -193,13 +193,11 @@ namespace SimPe.Packages
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.FormBorderStyle = System
-				.Windows
-				.Forms
-				.FormBorderStyle
+			this.FormBorderStyle =
+				FormBorderStyle
 				.SizableToolWindow;
 			this.Name = "DepSims2Community";
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			this.StartPosition = FormStartPosition.CenterScreen;
 			this.Text = "Dependencies";
 			this.panel1.ResumeLayout(false);
 			this.ResumeLayout(false);
@@ -247,7 +245,7 @@ namespace SimPe.Packages
 			ofd.Filter = "Sims 2 Package (*.package)|*.package|All Files (*.*)|*.*";
 			if (ofd.ShowDialog() == DialogResult.OK)
 			{
-				GeneratableFile package = GeneratableFile.LoadFromFile(
+				GeneratableFile package = File.LoadFromFile(
 					ofd.FileName
 				);
 				S2CPDescriptorBase s2cpb = new S2CPDescriptorBase(package);

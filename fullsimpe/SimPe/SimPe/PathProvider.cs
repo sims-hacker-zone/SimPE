@@ -63,20 +63,20 @@ namespace SimPe
 			get
 			{
 				string name = Helper.DataFolder.ExpansionsXREG;
-				if (System.IO.File.Exists(name))
+				if (File.Exists(name))
 				{
 					return Helper.DataFolder.ExpansionsXREG;
 				}
 				else if (Helper.ECCorNewSEfound)
 				{
-					return System.IO.Path.Combine(
+					return Path.Combine(
 						Helper.SimPeDataPath,
 						"expansions2.xreg"
 					);
 				}
 				else
 				{
-					return System.IO.Path.Combine(
+					return Path.Combine(
 						Helper.SimPeDataPath,
 						"expansions.xreg"
 					);
@@ -115,13 +115,13 @@ namespace SimPe
 		void Load()
 		{
 			censorfiles.Add(
-				System.IO.Path.Combine(
+				Path.Combine(
 					SimSavegameFolder,
 					@"Downloads\quaxi_nl_censor_v1.package"
 				)
 			);
 			censorfiles.Add(
-				System.IO.Path.Combine(
+				Path.Combine(
 					SimSavegameFolder,
 					@"Downloads\quaxi_nl_censor.package"
 				)
@@ -142,7 +142,7 @@ namespace SimPe
 
 				if (i.CensorFile != "")
 				{
-					string fl = System.IO.Path.Combine(
+					string fl = Path.Combine(
 						SimSavegameFolder,
 						@"Downloads\" + i.CensorFileName
 					);
@@ -151,7 +151,7 @@ namespace SimPe
 						censorfiles.Add(fl);
 					}
 
-					fl = System.IO.Path.Combine(
+					fl = Path.Combine(
 						SimSavegameFolder,
 						@"Config\" + i.CensorFileName
 					);
@@ -183,7 +183,7 @@ namespace SimPe
 			{
 				if (ei.Exists)
 				{
-					if (System.IO.Directory.Exists(ei.InstallFolder))
+					if (Directory.Exists(ei.InstallFolder))
 					{
 						paths.Add(ei.InstallFolder);
 					}
@@ -330,7 +330,7 @@ namespace SimPe
 						return "Invalid Language Id";
 					}
 
-					return SimPe.Data.MetaData.GetLanguageName(
+					return Data.MetaData.GetLanguageName(
 						Convert.ToInt16(o.ToString())
 					);
 				}
@@ -482,7 +482,7 @@ namespace SimPe
 		{
 			get
 			{
-				if (PathProvider.Global.EPInstalled < 18)
+				if (Global.EPInstalled < 18)
 				{
 					if (Latest.CensorFile == "")
 					{
@@ -500,7 +500,7 @@ namespace SimPe
 			}
 			set
 			{
-				if (PathProvider.Global.EPInstalled < 18)
+				if (Global.EPInstalled < 18)
 				{
 					if (Latest.CensorFile == "")
 					{
@@ -545,7 +545,7 @@ namespace SimPe
 		{
 			foreach (string fl in censorfiles)
 			{
-				if (System.IO.File.Exists(fl))
+				if (File.Exists(fl))
 				{
 					return false;
 				}
@@ -556,7 +556,7 @@ namespace SimPe
 
 		void SetBlurNudity(bool value, string resname, bool silent)
 		{
-			if (PathProvider.Global.EPInstalled > 17)
+			if (Global.EPInstalled > 17)
 			{
 				silent = true;
 			}
@@ -565,9 +565,9 @@ namespace SimPe
 			{
 				string fl = Latest.CensorFile;
 				string f2 = Latest.SensorFile;
-				string folder = System.IO.Path.GetDirectoryName(fl);
+				string folder = Path.GetDirectoryName(fl);
 
-				if (System.IO.File.Exists(fl) || System.IO.File.Exists(f2))
+				if (File.Exists(fl) || File.Exists(f2))
 				{
 					return;
 				}
@@ -576,10 +576,10 @@ namespace SimPe
 				{
 					if (
 						System.Windows.Forms.MessageBox.Show(
-							SimPe
-								.Localization.GetString("Censor_Install_Warn")
+
+								Localization.GetString("Censor_Install_Warn")
 								.Replace("{filename}", fl),
-							SimPe.Localization.GetString("Warning"),
+							Localization.GetString("Warning"),
 							System.Windows.Forms.MessageBoxButtons.YesNo
 						) == System.Windows.Forms.DialogResult.No
 					)
@@ -590,9 +590,9 @@ namespace SimPe
 
 				try
 				{
-					if (!System.IO.Directory.Exists(folder))
+					if (!Directory.Exists(folder))
 					{
-						System.IO.Directory.CreateDirectory(folder);
+						Directory.CreateDirectory(folder);
 					}
 
 					string[] names = typeof(Helper).Assembly.GetManifestResourceNames();
@@ -612,7 +612,7 @@ namespace SimPe
 					BinaryReader br = new BinaryReader(s);
 					try
 					{
-						FileStream fs = System.IO.File.Create(fl);
+						FileStream fs = File.Create(fl);
 						BinaryWriter bw = new BinaryWriter(fs);
 						try
 						{
@@ -641,7 +641,7 @@ namespace SimPe
 			{
 				foreach (string fl in censorfiles)
 				{
-					if (System.IO.File.Exists(fl))
+					if (File.Exists(fl))
 					{
 						try
 						{
@@ -649,12 +649,12 @@ namespace SimPe
 							{
 								if (
 									System.Windows.Forms.MessageBox.Show(
-										SimPe
-											.Localization.GetString(
+
+											Localization.GetString(
 												"Censor_UnInstall_Warn"
 											)
 											.Replace("{filename}", fl),
-										SimPe.Localization.GetString("Warning"),
+										Localization.GetString("Warning"),
 										System.Windows.Forms.MessageBoxButtons.YesNo
 									) == System.Windows.Forms.DialogResult.No
 								)
@@ -663,7 +663,7 @@ namespace SimPe
 								}
 							}
 
-							System.IO.File.Delete(fl);
+							File.Delete(fl);
 						}
 						catch (Exception ex)
 						{
@@ -678,14 +678,14 @@ namespace SimPe
 		{
 			get
 			{
-				if (!System.IO.File.Exists(StartupCheatFile))
+				if (!File.Exists(StartupCheatFile))
 				{
 					return true;
 				}
 
 				try
 				{
-					TextReader fs = System.IO.File.OpenText(StartupCheatFile);
+					TextReader fs = File.OpenText(StartupCheatFile);
 					string cont = fs.ReadToEnd();
 					fs.Close();
 					fs.Dispose();
@@ -721,8 +721,8 @@ namespace SimPe
 			set
 			{
 				if (
-					!System.IO.Directory.Exists(
-						System.IO.Path.GetDirectoryName(StartupCheatFile)
+					!Directory.Exists(
+						Path.GetDirectoryName(StartupCheatFile)
 					)
 				)
 				{
@@ -733,9 +733,9 @@ namespace SimPe
 				{
 					string newcont = "";
 					bool found = false;
-					if (System.IO.File.Exists(StartupCheatFile))
+					if (File.Exists(StartupCheatFile))
 					{
-						TextReader fs = System.IO.File.OpenText(
+						TextReader fs = File.OpenText(
 							StartupCheatFile
 						);
 						string cont = fs.ReadToEnd();
@@ -778,7 +778,7 @@ namespace SimPe
 							newcont += Helper.lbr;
 						}
 
-						System.IO.File.Delete(StartupCheatFile);
+						File.Delete(StartupCheatFile);
 					}
 
 					if (!found)
@@ -790,7 +790,7 @@ namespace SimPe
 						}
 					}
 
-					TextWriter fw = System.IO.File.CreateText(
+					TextWriter fw = File.CreateText(
 						StartupCheatFile
 					);
 					fw.Write(newcont.Trim());
@@ -897,17 +897,17 @@ namespace SimPe
 					string path;
 					if (Helper.WindowsRegistry.LoadOnlySimsStory == 0)
 					{
-						path = System.IO.Path.Combine(PersonalFolder, "EA Games");
+						path = Path.Combine(PersonalFolder, "EA Games");
 					}
 					else
 					{
-						path = System.IO.Path.Combine(
+						path = Path.Combine(
 							PersonalFolder,
 							"Electronic Arts"
 						); // For Sim Stories
 					}
 
-					path = System.IO.Path.Combine(path, DisplayedName);
+					path = Path.Combine(path, DisplayedName);
 					return Helper.ToLongPathName(path);
 				}
 				catch (Exception)
@@ -936,7 +936,7 @@ namespace SimPe
 					else
 					{
 						string fl = o.ToString();
-						if (!System.IO.Directory.Exists(fl))
+						if (!Directory.Exists(fl))
 						{
 							return RealSavegamePath;
 						}
@@ -1106,12 +1106,12 @@ namespace SimPe
 		/// <summary>
 		/// The location of theNvidia Tool
 		/// </summary>
-		public string NvidiaDDSTool => System.IO.Path.Combine(NvidiaDDSPath, "nvdxt.exe");
+		public string NvidiaDDSTool => Path.Combine(NvidiaDDSPath, "nvdxt.exe");
 
 		/// <summary>
 		/// Returns the Name of the Startup Cheat File
 		/// </summary>
-		public string StartupCheatFile => System.IO.Path.Combine(
+		public string StartupCheatFile => Path.Combine(
 					SimSavegameFolder,
 					"Config\\userStartup.cheat"
 				);
@@ -1123,7 +1123,7 @@ namespace SimPe
 		/// <returns>the suggested neighborhood folder</returns>
 		protected static string BuildNeighborhoodFolder(string path)
 		{
-			return System.IO.Path.Combine(path, "Neighborhoods");
+			return Path.Combine(path, "Neighborhoods");
 		}
 
 		/// <summary>
@@ -1153,8 +1153,8 @@ namespace SimPe
 			{
 				try
 				{
-					return System.IO.Path.Combine(
-						System.IO.Path.Combine(PersonalFolder, "EA Games"),
+					return Path.Combine(
+						Path.Combine(PersonalFolder, "EA Games"),
 						"SimPE Backup"
 					);
 				}

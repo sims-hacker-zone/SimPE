@@ -136,11 +136,11 @@ namespace SimPe.Plugin.Gmdc.Exporter
 				);
 				v = Component.Transform(v);
 				writer.Write(
-					v.X.ToString("N6", AbstractGmdcExporter.DefaultCulture)
+					v.X.ToString("N6", DefaultCulture)
 						+ ";"
-						+ v.Y.ToString("N6", AbstractGmdcExporter.DefaultCulture)
+						+ v.Y.ToString("N6", DefaultCulture)
 						+ ";"
-						+ v.Z.ToString("N6", AbstractGmdcExporter.DefaultCulture)
+						+ v.Z.ToString("N6", DefaultCulture)
 						+ "; "
 				);
 			}
@@ -196,11 +196,11 @@ namespace SimPe.Plugin.Gmdc.Exporter
 					);
 					v = Component.TransformNormal(v);
 					writer.Write(
-						v.X.ToString("N6", AbstractGmdcExporter.DefaultCulture)
+						v.X.ToString("N6", DefaultCulture)
 							+ ";"
-							+ v.Y.ToString("N6", AbstractGmdcExporter.DefaultCulture)
+							+ v.Y.ToString("N6", DefaultCulture)
 							+ ";"
-							+ v.Z.ToString("N6", AbstractGmdcExporter.DefaultCulture)
+							+ v.Z.ToString("N6", DefaultCulture)
 							+ ";"
 					);
 				}
@@ -235,7 +235,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 				"0.300000;0.300000;0.300000;"
 					+ ((float)(Group.Opacity & 0xff)).ToString(
 						"N6",
-						AbstractGmdcExporter.DefaultCulture
+						DefaultCulture
 					)
 					+ ";;"
 			);
@@ -266,12 +266,12 @@ namespace SimPe.Plugin.Gmdc.Exporter
 					writer.WriteLine(
 						(Link.GetValue(nr, i).Data[0]).ToString(
 							"N6",
-							AbstractGmdcExporter.DefaultCulture
+							DefaultCulture
 						)
 							+ ";"
 							+ (Link.GetValue(nr, i).Data[1]).ToString(
 								"N6",
-								AbstractGmdcExporter.DefaultCulture
+								DefaultCulture
 							)
 							+ ";"
 					);

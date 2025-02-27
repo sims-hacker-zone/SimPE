@@ -65,7 +65,7 @@ namespace SimPe.Plugin
 			//
 			// cb
 			//
-			this.cb.Dock = System.Windows.Forms.DockStyle.Top;
+			this.cb.Dock = DockStyle.Top;
 			this.cb.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
@@ -83,7 +83,7 @@ namespace SimPe.Plugin
 			//
 			// ui
 			//
-			this.ui.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.ui.Dock = DockStyle.Fill;
 			this.ui.Enabled = false;
 			this.ui.Font = new System.Drawing.Font(
 				"Tahoma",

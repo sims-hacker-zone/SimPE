@@ -21,7 +21,7 @@ namespace SimPe.Plugin
 		{
 			InitializeComponent();
 			if (
-				SimPe.Helper.WindowsRegistry.UseBigIcons
+				Helper.WindowsRegistry.UseBigIcons
 				&& Screen.PrimaryScreen.WorkingArea.Width > 1600
 			)
 			{
@@ -386,7 +386,7 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			SimPe.RemoteControl.OpenPackedFile(bhave.FileDescriptor, bhave.Package);
+			RemoteControl.OpenPackedFile(bhave.FileDescriptor, bhave.Package);
 		}
 
 		private void btDown_Click(object sender, EventArgs e)

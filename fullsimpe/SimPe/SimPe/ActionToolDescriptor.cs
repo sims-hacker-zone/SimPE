@@ -90,7 +90,7 @@ namespace SimPe
 				if (tool.Icon is System.Drawing.Bitmap)
 				{
 					//ll.Icon = System.Drawing.Icon.FromHandle(((System.Drawing.Bitmap)tool.Icon).GetHicon());
-					LinkLabel.Text = SimPe.Localization.GetString(tool.ToString());
+					LinkLabel.Text = Localization.GetString(tool.ToString());
 				}
 			}
 

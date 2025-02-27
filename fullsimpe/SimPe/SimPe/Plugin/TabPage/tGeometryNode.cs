@@ -132,7 +132,7 @@ namespace SimPe.Plugin.TabPage
 			this.groupBox11.Controls.Add(this.label36);
 			this.groupBox11.Controls.Add(this.tb_gn_uk1);
 			this.groupBox11.Controls.Add(this.label37);
-			this.groupBox11.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.groupBox11.FlatStyle = FlatStyle.System;
 			this.groupBox11.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -322,16 +322,16 @@ namespace SimPe.Plugin.TabPage
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
 			this.groupBox17.Controls.Add(this.tc_gn);
 			this.groupBox17.Controls.Add(this.cb_gn_list);
-			this.groupBox17.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.groupBox17.FlatStyle = FlatStyle.System;
 			this.groupBox17.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -353,10 +353,10 @@ namespace SimPe.Plugin.TabPage
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -379,16 +379,14 @@ namespace SimPe.Plugin.TabPage
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
-			this.cb_gn_list.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cb_gn_list.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cb_gn_list.Font = new System.Drawing.Font(
 				"Verdana",

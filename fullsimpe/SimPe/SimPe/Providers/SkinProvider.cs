@@ -223,7 +223,7 @@ namespace SimPe.Providers
 			string[] files = System.IO.Directory.GetFiles(path, "*.package");
 			foreach (string file in files)
 			{
-				Packages.File package = SimPe.Packages.File.LoadFromFile(file);
+				Packages.File package = Packages.File.LoadFromFile(file);
 				LoadSkinFormPackage(package);
 				//package.Reader.Close();
 			}
@@ -243,7 +243,7 @@ namespace SimPe.Providers
 			string[] files = System.IO.Directory.GetFiles(path, "*.package");
 			foreach (string file in files)
 			{
-				Packages.File package = SimPe.Packages.File.LoadFromFile(file);
+				Packages.File package = Packages.File.LoadFromFile(file);
 				LoadSkinImageFormPackage(package);
 				//package.Reader.Close();
 			}
@@ -263,7 +263,7 @@ namespace SimPe.Providers
 				);
 				if (System.IO.File.Exists(file))
 				{
-					BasePackage = SimPe.Packages.File.LoadFromFile(file);
+					BasePackage = Packages.File.LoadFromFile(file);
 				}
 				else
 				{
@@ -341,14 +341,14 @@ namespace SimPe.Providers
 			}
 
 			string file = System.IO.Path.Combine(
-				SimPe.PathProvider.Global[Expansions.BaseGame].InstallFolder,
+				PathProvider.Global[Expansions.BaseGame].InstallFolder,
 				"TSData\\Res\\Sims3D\\Sims02.package"
 			);
 
 			if (System.IO.File.Exists(file))
 			{
 				Interfaces.Files.IPackageFile package =
-					SimPe.Packages.File.LoadFromFile(file);
+					Packages.File.LoadFromFile(file);
 				Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFile(
 					matdname.Replace("CASIE_", ""),
 					0x49596978
@@ -450,13 +450,13 @@ namespace SimPe.Providers
 			}
 
 			string file = System.IO.Path.Combine(
-				SimPe.PathProvider.Global[Expansions.BaseGame].InstallFolder,
+				PathProvider.Global[Expansions.BaseGame].InstallFolder,
 				"TSData\\Res\\Sims3D\\Sims07.package"
 			);
 			if (System.IO.File.Exists(file))
 			{
 				Interfaces.Files.IPackageFile package =
-					SimPe.Packages.File.LoadFromFile(file);
+					Packages.File.LoadFromFile(file);
 				Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFile(
 					name,
 					0x1C4A276C
@@ -504,7 +504,7 @@ namespace SimPe.Providers
 			if (txtr.Fast)
 			{
 				txtr.Fast = false;
-				Packages.File fl = SimPe.Packages.File.LoadFromFile(
+				Packages.File fl = Packages.File.LoadFromFile(
 					txtr.Package.FileName
 				);
 				Interfaces.Files.IPackedFileDescriptor pfd = fl.FindFile(

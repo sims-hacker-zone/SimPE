@@ -63,7 +63,7 @@ namespace SimPe.Plugin.Anim
 			InitializeComponent();
 
 			this.pnFrames = new AnimFrameBlockControl();
-			this.pnFrames.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.pnFrames.Dock = DockStyle.Fill;
 			this.pnFrames.FrameBlock = null;
 			this.pnFrames.Location = new System.Drawing.Point(0, 32);
 			this.pnFrames.Name = "pnFrames";
@@ -127,7 +127,7 @@ namespace SimPe.Plugin.Anim
 			this.panel2.Controls.Add(this.llImport);
 			this.panel2.Controls.Add(this.pnJoint);
 			this.panel2.Controls.Add(this.pnSubMesh);
-			this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panel2.Dock = DockStyle.Top;
 			this.panel2.Location = new System.Drawing.Point(0, 0);
 			this.panel2.Name = "panel2";
 			this.panel2.Size = new System.Drawing.Size(776, 32);
@@ -138,8 +138,8 @@ namespace SimPe.Plugin.Anim
 			this.cbCorrect.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -157,8 +157,8 @@ namespace SimPe.Plugin.Anim
 			this.llExport.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -180,8 +180,8 @@ namespace SimPe.Plugin.Anim
 			this.llImport.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -202,7 +202,7 @@ namespace SimPe.Plugin.Anim
 			//
 			this.pnJoint.Controls.Add(this.cbJoint);
 			this.pnJoint.Controls.Add(this.label1);
-			this.pnJoint.Dock = System.Windows.Forms.DockStyle.Left;
+			this.pnJoint.Dock = DockStyle.Left;
 			this.pnJoint.Location = new System.Drawing.Point(256, 0);
 			this.pnJoint.Name = "pnJoint";
 			this.pnJoint.Size = new System.Drawing.Size(248, 32);
@@ -214,17 +214,15 @@ namespace SimPe.Plugin.Anim
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
 			this.cbJoint.ContextMenu = this.cmJoint;
-			this.cbJoint.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbJoint.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbJoint.Location = new System.Drawing.Point(34, 0);
 			this.cbJoint.Name = "cbJoint";
@@ -248,7 +246,7 @@ namespace SimPe.Plugin.Anim
 			//
 			this.pnSubMesh.Controls.Add(this.cbSubMesh);
 			this.pnSubMesh.Controls.Add(this.label2);
-			this.pnSubMesh.Dock = System.Windows.Forms.DockStyle.Left;
+			this.pnSubMesh.Dock = DockStyle.Left;
 			this.pnSubMesh.Location = new System.Drawing.Point(0, 0);
 			this.pnSubMesh.Name = "pnSubMesh";
 			this.pnSubMesh.Size = new System.Drawing.Size(256, 32);
@@ -260,16 +258,14 @@ namespace SimPe.Plugin.Anim
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
-			this.cbSubMesh.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbSubMesh.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbSubMesh.Location = new System.Drawing.Point(56, 0);
 			this.cbSubMesh.Name = "cbSubMesh";

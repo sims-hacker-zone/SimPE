@@ -53,9 +53,9 @@ namespace SimPe
 			Splash.Screen.SetMessage("Loading Type Registry"); // the first message clearly seen
 			PackedFiles.TypeRegistry tr = new PackedFiles.TypeRegistry();
 
-			FileTable.ProviderRegistry = tr;
+			FileTableBase.ProviderRegistry = tr;
 			FileTable.ToolRegistry = tr;
-			FileTable.WrapperRegistry = tr;
+			FileTableBase.WrapperRegistry = tr;
 			FileTable.CommandLineRegistry = tr;
 			FileTable.HelpTopicRegistry = tr;
 			FileTable.SettingsRegistry = tr;
@@ -120,12 +120,12 @@ namespace SimPe
 		void LoadStaticWrappers()
 		{
 			Splash.Screen.SetMessage("Loading Static Wrappers");
-			FileTable.WrapperRegistry.Register(new CommandlineHelpFactory());
-			FileTable.WrapperRegistry.Register(new Custom.SettingsFactory());
-			FileTable.WrapperRegistry.Register(
+			FileTableBase.WrapperRegistry.Register(new CommandlineHelpFactory());
+			FileTableBase.WrapperRegistry.Register(new Custom.SettingsFactory());
+			FileTableBase.WrapperRegistry.Register(
 				new PackedFiles.Wrapper.Factory.SimFactory()
 			);
-			FileTable.WrapperRegistry.Register(
+			FileTableBase.WrapperRegistry.Register(
 				new PackedFiles.Wrapper.Factory.DefaultWrapperFactory()
 			);
 			//FileTable.WrapperRegistry.Register(new Plugin.ScenegraphWrapperFactory());
@@ -141,7 +141,7 @@ namespace SimPe
 			Splash.Screen.SetMessage("Loading Dynamic Wrappers");
 			try
 			{
-				FileTable.WrapperRegistry.Register(new Plugin.WrapperFactory()); //moved here to max priority, when a StaticWrapper Clst was higher
+				FileTableBase.WrapperRegistry.Register(new Plugin.WrapperFactory()); //moved here to max priority, when a StaticWrapper Clst was higher
 				FileTable.ToolRegistry.Register(new Plugin.WrapperFactory());
 			}
 			catch (Exception ex)
@@ -155,14 +155,14 @@ namespace SimPe
 
 			string fil = System.IO.Path.Combine(
 				System.IO.Path.GetDirectoryName(
-					System.Windows.Forms.Application.ExecutablePath
+					Application.ExecutablePath
 				),
 				"simpe.neighbourhood.dll"
 			);
 			try
 			{
-				LoadFileWrappersExt.LoadWrapperFactory(fil, wloader);
-				LoadFileWrappersExt.LoadToolFactory(fil, wloader);
+				LoadFileWrappers.LoadWrapperFactory(fil, wloader);
+				LoadFileWrappers.LoadToolFactory(fil, wloader);
 			}
 			catch (Exception ex)
 			{
@@ -184,7 +184,7 @@ namespace SimPe
 			{
 				try
 				{
-					LoadFileWrappersExt.LoadWrapperFactory(file, wloader);
+					LoadFileWrappers.LoadWrapperFactory(file, wloader);
 				}
 				catch (Exception ex)
 				{
@@ -192,7 +192,7 @@ namespace SimPe
 						"Unable to load WrapperFactory",
 						new Exception("Invalid Interface in " + file, ex)
 					);
-					LoadFileWrappersExt.LoadErrorWrapper(
+					LoadFileWrappers.LoadErrorWrapper(
 						new PackedFiles.Wrapper.ErrorWrapper(file, ex),
 						wloader
 					);
@@ -200,7 +200,7 @@ namespace SimPe
 				}
 				try
 				{
-					LoadFileWrappersExt.LoadToolFactory(file, wloader);
+					LoadFileWrappers.LoadToolFactory(file, wloader);
 				}
 				catch (Exception ex)
 				{

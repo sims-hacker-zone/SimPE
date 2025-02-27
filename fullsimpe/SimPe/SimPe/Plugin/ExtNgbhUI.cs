@@ -67,11 +67,11 @@ namespace SimPe.Plugin
 			this.SelectButton(biSim);
 
 			biBadge.Enabled = (
-				SimPe.PathProvider.Global.EPInstalled >= 3
-				|| SimPe.PathProvider.Global.STInstalled >= 28
+				PathProvider.Global.EPInstalled >= 3
+				|| PathProvider.Global.STInstalled >= 28
 			);
 
-			SimPe.RemoteControl.HookToMessageQueue(
+			RemoteControl.HookToMessageQueue(
 				0x4E474248,
 				new RemoteControl.ControlEvent(ControlEvent)
 			);
@@ -98,7 +98,7 @@ namespace SimPe.Plugin
 				}
 
 				PackedFiles.Wrapper.ExtSDesc sdesc =
-					FileTable.ProviderRegistry.SimDescriptionProvider.FindSim(
+					FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
 						(ushort)inst
 					) as PackedFiles.Wrapper.ExtSDesc;
 				bool found = SelectSimByInstance(sdesc);
@@ -182,7 +182,7 @@ namespace SimPe.Plugin
 			this.pnSims.Controls.Add(this.menuBar1);
 			this.pnSims.Controls.Add(this.spc);
 			this.pnSims.Controls.Add(this.simslot);
-			this.pnSims.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.pnSims.Dock = DockStyle.Fill;
 			this.pnSims.Location = new System.Drawing.Point(0, 76);
 			this.pnSims.Name = "pnSims";
 			this.pnSims.Size = new System.Drawing.Size(680, 292);
@@ -202,7 +202,7 @@ namespace SimPe.Plugin
 			//
 			this.spc.BackColor = System.Drawing.Color.White;
 			this.spc.ContextMenuStrip = this.menu;
-			this.spc.Dock = System.Windows.Forms.DockStyle.Left;
+			this.spc.Dock = DockStyle.Left;
 			this.spc.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			this.spc.Location = new System.Drawing.Point(0, 0);
 			this.spc.Name = "spc";
@@ -259,10 +259,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -273,14 +273,14 @@ namespace SimPe.Plugin
 			this.simslot.SimPoolControl = this.spc;
 			this.simslot.Size = new System.Drawing.Size(416, 290);
 			this.simslot.Slot = null;
-			this.simslot.SlotType = SimPe.Data.NeighborhoodSlots.Sims;
+			this.simslot.SlotType = Data.NeighborhoodSlots.Sims;
 			this.simslot.TabIndex = 2;
 			//
 			// pnDebug
 			//
 			this.pnDebug.Controls.Add(this.nsui);
 			this.pnDebug.Controls.Add(this.nssel);
-			this.pnDebug.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.pnDebug.Dock = DockStyle.Fill;
 			this.pnDebug.Location = new System.Drawing.Point(0, 76);
 			this.pnDebug.Name = "pnDebug";
 			this.pnDebug.Size = new System.Drawing.Size(680, 292);
@@ -294,10 +294,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -310,7 +310,7 @@ namespace SimPe.Plugin
 			this.nsui.tabPage3.Enabled = false;
 			this.nsui.Size = new System.Drawing.Size(392, 276);
 			this.nsui.Slot = null;
-			this.nsui.SlotType = SimPe.Data.NeighborhoodSlots.Sims;
+			this.nsui.SlotType = Data.NeighborhoodSlots.Sims;
 			this.nsui.TabIndex = 1;
 			//
 			// nssel
@@ -319,9 +319,9 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Bottom
-						) | System.Windows.Forms.AnchorStyles.Left
+							AnchorStyles.Top
+							| AnchorStyles.Bottom
+						) | AnchorStyles.Left
 					)
 				)
 			);
@@ -338,7 +338,7 @@ namespace SimPe.Plugin
 			// pnBadge
 			//
 			this.pnBadge.Controls.Add(this.shelper);
-			this.pnBadge.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.pnBadge.Dock = DockStyle.Fill;
 			this.pnBadge.Location = new System.Drawing.Point(0, 76);
 			this.pnBadge.Name = "pnBadge";
 			this.pnBadge.Size = new System.Drawing.Size(680, 292);
@@ -350,7 +350,7 @@ namespace SimPe.Plugin
 			// shelper
 			//
 			this.shelper.BackColor = System.Drawing.Color.Transparent;
-			this.shelper.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.shelper.Dock = DockStyle.Fill;
 			this.shelper.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			this.shelper.Location = new System.Drawing.Point(0, 0);
 			this.shelper.Name = "shelper";
@@ -370,7 +370,7 @@ namespace SimPe.Plugin
 			// toolBar1
 			//
 			this.toolBar1.Font = new System.Drawing.Font("Tahoma", 8.25F);
-			this.toolBar1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+			this.toolBar1.GripStyle = ToolStripGripStyle.Hidden;
 			this.toolBar1.Items.AddRange(
 				new ToolStripItem[]
 				{
@@ -390,18 +390,14 @@ namespace SimPe.Plugin
 			this.biSim.Image = (
 				(System.Drawing.Image)(resources.GetObject("biSim.Image"))
 			);
-			this.biSim.ImageScaling = System
-				.Windows
-				.Forms
-				.ToolStripItemImageScaling
+			this.biSim.ImageScaling =
+				ToolStripItemImageScaling
 				.None;
 			this.biSim.Name = "biSim";
 			this.biSim.Size = new System.Drawing.Size(56, 49);
 			this.biSim.Text = "Memories";
-			this.biSim.TextImageRelation = System
-				.Windows
-				.Forms
-				.TextImageRelation
+			this.biSim.TextImageRelation =
+				TextImageRelation
 				.ImageAboveText;
 			this.biSim.Click += new EventHandler(this.ChoosePage);
 			//
@@ -410,18 +406,14 @@ namespace SimPe.Plugin
 			this.biBadge.Image = (
 				(System.Drawing.Image)(resources.GetObject("biBadge.Image"))
 			);
-			this.biBadge.ImageScaling = System
-				.Windows
-				.Forms
-				.ToolStripItemImageScaling
+			this.biBadge.ImageScaling =
+				ToolStripItemImageScaling
 				.None;
 			this.biBadge.Name = "biBadge";
 			this.biBadge.Size = new System.Drawing.Size(46, 49);
 			this.biBadge.Text = "Badges";
-			this.biBadge.TextImageRelation = System
-				.Windows
-				.Forms
-				.TextImageRelation
+			this.biBadge.TextImageRelation =
+				TextImageRelation
 				.ImageAboveText;
 			this.biBadge.Click += new EventHandler(this.ChoosePage);
 			//
@@ -430,18 +422,14 @@ namespace SimPe.Plugin
 			this.biDebug.Image = (
 				(System.Drawing.Image)(resources.GetObject("biDebug.Image"))
 			);
-			this.biDebug.ImageScaling = System
-				.Windows
-				.Forms
-				.ToolStripItemImageScaling
+			this.biDebug.ImageScaling =
+				ToolStripItemImageScaling
 				.None;
 			this.biDebug.Name = "biDebug";
 			this.biDebug.Size = new System.Drawing.Size(42, 49);
 			this.biDebug.Text = "Debug";
-			this.biDebug.TextImageRelation = System
-				.Windows
-				.Forms
-				.TextImageRelation
+			this.biDebug.TextImageRelation =
+				TextImageRelation
 				.ImageAboveText;
 			this.biDebug.Click += new EventHandler(this.ChoosePage);
 			//
@@ -606,7 +594,7 @@ namespace SimPe.Plugin
 
 						if (deletedCount > 0)
 						{
-							SimPe.Message.Show(
+							Message.Show(
 								String.Format(
 									"Deleted {0} memories from the sim pool",
 									deletedCount

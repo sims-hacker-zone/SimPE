@@ -28,7 +28,7 @@ namespace SimPe.Plugin.Downloads
 		{
 			if (defimg == null)
 			{
-				defimg = SimPe.GetImage.Demo;
+				defimg = GetImage.Demo;
 			}
 		}
 
@@ -43,17 +43,17 @@ namespace SimPe.Plugin.Downloads
 				!System.IO.File.Exists(filename)
 				|| !System.IO.File.Exists(
 					System.IO.Path.Combine(
-						SimPe.Helper.SimPePluginPath,
+						Helper.SimPePluginPath,
 						"simpe.scanfolder.plugin.dll"
 					)
 				)
 			)
 			{
-				return SimPe.Cache.PackageType.Undefined;
+				return Cache.PackageType.Undefined;
 			}
 
 			Interfaces.Files.IPackageFile pkg =
-				SimPe.Packages.GeneratableFile.LoadFromFile(filename);
+				Packages.File.LoadFromFile(filename);
 			return ClassifyPackage(pkg);
 		}
 
@@ -69,28 +69,28 @@ namespace SimPe.Plugin.Downloads
 			if (
 				!System.IO.File.Exists(
 					System.IO.Path.Combine(
-						SimPe.Helper.SimPePluginPath,
+						Helper.SimPePluginPath,
 						"simpe.scanfolder.plugin.dll"
 					)
 				)
 			)
 			{
-				return SimPe.Cache.PackageType.Undefined;
+				return Cache.PackageType.Undefined;
 			}
 
-			Cache.PackageType type = SimPe.Cache.PackageType.Undefined;
+			Cache.PackageType type = Cache.PackageType.Undefined;
 			foreach (
-				Interfaces.Plugin.Scanner.IIdentifier ident in SimPe
-					.Plugin
-					.Scanner
+				Interfaces.Plugin.Scanner.IIdentifier ident in
+
+					Scanner
 					.ScannerRegistry
 					.Global
 					.Identifiers
 			) // depends on simpe.scanfolder.plugin.dll, pity as that may not always exist
 			{
 				if (
-					type != SimPe.Cache.PackageType.Unknown
-					&& type != SimPe.Cache.PackageType.Undefined
+					type != Cache.PackageType.Unknown
+					&& type != Cache.PackageType.Undefined
 				)
 				{
 					break; // this makes no sense, type always is Undefined as we just set it
@@ -112,7 +112,7 @@ namespace SimPe.Plugin.Downloads
 		)
 		{
 			Interfaces.Scenegraph.IScenegraphFileIndexItem[] fiis =
-				FileTable.FileIndex.FindFile(pfd, null);
+				FileTableBase.FileIndex.FindFile(pfd, null);
 			uint min = (uint)(Expansions.None);
 			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem fii in fiis)
 			{
@@ -272,7 +272,7 @@ namespace SimPe.Plugin.Downloads
 			this.VertexCount = 0;
 			this.FaceCount = 0;
 			this.Image = null;
-			Type = SimPe.Cache.PackageType.Undefined;
+			Type = Cache.PackageType.Undefined;
 			FirstExpansion = Expansions.None;
 			ClearGuidList();
 		}

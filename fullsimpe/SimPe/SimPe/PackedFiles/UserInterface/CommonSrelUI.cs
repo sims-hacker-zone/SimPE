@@ -192,10 +192,8 @@ namespace SimPe.PackedFiles.UserInterface
 			// cbfamtype
 			//
 			resources.ApplyResources(this.cbfamtype, "cbfamtype");
-			this.cbfamtype.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbfamtype.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbfamtype.Name = "cbfamtype";
 			this.cbfamtype.SelectedIndexChanged += new EventHandler(
@@ -205,23 +203,23 @@ namespace SimPe.PackedFiles.UserInterface
 			// pbDay
 			//
 			resources.ApplyResources(this.pbDay, "pbDay");
-			this.pbDay.BackColor = System.Drawing.Color.Transparent;
+			this.pbDay.BackColor = Color.Transparent;
 			this.pbDay.Maximum = 200;
 			this.pbDay.Name = "pbDay";
-			this.pbDay.SelectedColor = System.Drawing.Color.Lime;
+			this.pbDay.SelectedColor = Color.Lime;
 			this.pbDay.TokenCount = 30;
-			this.pbDay.UnselectedColor = System.Drawing.Color.Black;
+			this.pbDay.UnselectedColor = Color.Black;
 			this.pbDay.Value = 90;
 			//
 			// pbLife
 			//
 			resources.ApplyResources(this.pbLife, "pbLife");
-			this.pbLife.BackColor = System.Drawing.Color.Transparent;
+			this.pbLife.BackColor = Color.Transparent;
 			this.pbLife.Maximum = 200;
 			this.pbLife.Name = "pbLife";
-			this.pbLife.SelectedColor = System.Drawing.Color.Lime;
+			this.pbLife.SelectedColor = Color.Lime;
 			this.pbLife.TokenCount = 30;
-			this.pbLife.UnselectedColor = System.Drawing.Color.Black;
+			this.pbLife.UnselectedColor = Color.Black;
 			this.pbLife.Value = 90;
 			//
 			// tableLayoutPanel1
@@ -320,14 +318,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// tbRel
 			//
-			this.tbRel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.tbRel.BorderStyle = BorderStyle.None;
 			resources.ApplyResources(this.tbRel, "tbRel");
 			this.tbRel.Name = "tbRel";
 			this.tbRel.TextChanged += new EventHandler(this.ChangedRelationText);
 			//
 			// CommonSrel
 			//
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+			this.AutoScaleMode = AutoScaleMode.Inherit;
 			resources.ApplyResources(this, "$this");
 			this.Controls.Add(this.flowLayoutPanel2);
 			this.Name = "CommonSrel";
@@ -364,41 +362,41 @@ namespace SimPe.PackedFiles.UserInterface
 			this.cbfamtype.Items.Clear();
 			this.cbfamtype.Items.Add(
 				new LocalizedRelationshipTypes(
-					Data.MetaData.RelationshipTypes.Unset_Unknown
+					MetaData.RelationshipTypes.Unset_Unknown
 				)
 			);
 			this.cbfamtype.Items.Add(
-				new LocalizedRelationshipTypes(Data.MetaData.RelationshipTypes.Aunt)
+				new LocalizedRelationshipTypes(MetaData.RelationshipTypes.Aunt)
 			);
 			this.cbfamtype.Items.Add(
-				new LocalizedRelationshipTypes(Data.MetaData.RelationshipTypes.Child)
+				new LocalizedRelationshipTypes(MetaData.RelationshipTypes.Child)
 			);
 			this.cbfamtype.Items.Add(
-				new LocalizedRelationshipTypes(Data.MetaData.RelationshipTypes.Cousin)
-			);
-			this.cbfamtype.Items.Add(
-				new LocalizedRelationshipTypes(
-					Data.MetaData.RelationshipTypes.Grandchild
-				)
+				new LocalizedRelationshipTypes(MetaData.RelationshipTypes.Cousin)
 			);
 			this.cbfamtype.Items.Add(
 				new LocalizedRelationshipTypes(
-					Data.MetaData.RelationshipTypes.Gradparent
+					MetaData.RelationshipTypes.Grandchild
 				)
 			);
 			this.cbfamtype.Items.Add(
 				new LocalizedRelationshipTypes(
-					Data.MetaData.RelationshipTypes.Nice_Nephew
+					MetaData.RelationshipTypes.Gradparent
 				)
 			);
 			this.cbfamtype.Items.Add(
-				new LocalizedRelationshipTypes(Data.MetaData.RelationshipTypes.Parent)
+				new LocalizedRelationshipTypes(
+					MetaData.RelationshipTypes.Nice_Nephew
+				)
 			);
 			this.cbfamtype.Items.Add(
-				new LocalizedRelationshipTypes(Data.MetaData.RelationshipTypes.Sibling)
+				new LocalizedRelationshipTypes(MetaData.RelationshipTypes.Parent)
 			);
 			this.cbfamtype.Items.Add(
-				new LocalizedRelationshipTypes(Data.MetaData.RelationshipTypes.Spouses)
+				new LocalizedRelationshipTypes(MetaData.RelationshipTypes.Sibling)
+			);
+			this.cbfamtype.Items.Add(
+				new LocalizedRelationshipTypes(MetaData.RelationshipTypes.Spouses)
 			);
 		}
 
@@ -704,7 +702,7 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				if (Srel == null)
 				{
-					return SimPe.Localization.GetString("Unknown");
+					return Localization.GetString("Unknown");
 				}
 
 				return Srel.SourceSimName;
@@ -717,7 +715,7 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				if (Srel == null)
 				{
-					return SimPe.Localization.GetString("Unknown");
+					return Localization.GetString("Unknown");
 				}
 
 				return Srel.TargetSimName;

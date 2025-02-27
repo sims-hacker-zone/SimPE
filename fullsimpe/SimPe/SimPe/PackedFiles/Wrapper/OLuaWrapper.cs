@@ -110,7 +110,7 @@ namespace SimPe.PackedFiles.Wrapper
 				"Quaxi",
 				"LUA Resources are external Resources, which contain additional SimAntic Scripts.",
 				1,
-				SimPe.GetIcon.OpenLua
+				GetIcon.OpenLua
 			);
 		}
 		#endregion
@@ -425,7 +425,7 @@ namespace SimPe.PackedFiles.Wrapper
 				if (line is Lua.IOperator)
 				{
 					Lua.IOperator lop = line as Lua.IOperator;
-					if (ObjLuaFunction.DEBUG)
+					if (DEBUG)
 					{
 						content = lop.ToString(cx) + " #" + line.GetType().Name;
 					}
@@ -443,7 +443,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 				if (content.Trim() != "")
 				{
-					if (ObjLuaFunction.DEBUG)
+					if (DEBUG)
 					{
 						sw.Add(
 							Helper.HexString(cx.PC)
@@ -1123,7 +1123,7 @@ namespace SimPe.PackedFiles.Wrapper
 			Type t = GetOpcodeType(oc);
 
 			ObjLuaCode ret = (ObjLuaCode)
-				System.Activator.CreateInstance(t, new object[] { val, parent });
+				Activator.CreateInstance(t, new object[] { val, parent });
 			return ret;
 		}
 
@@ -1328,7 +1328,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 			else
 			{
-				return SimPe.Localization.GetString("Unknown");
+				return Localization.GetString("Unknown");
 			}
 		}
 
@@ -1393,7 +1393,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 			if (ObjLuaFunction.DEBUG)
 			{
-				if (SimPe.Helper.WindowsRegistry.HiddenMode)
+				if (Helper.WindowsRegistry.HiddenMode)
 				{
 					return ret + "; //" + name;
 				}
@@ -1404,7 +1404,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 			else
 			{
-				if (SimPe.Helper.WindowsRegistry.HiddenMode)
+				if (Helper.WindowsRegistry.HiddenMode)
 				{
 					return ret + "; //" + name;
 				}
@@ -1555,7 +1555,7 @@ namespace SimPe.PackedFiles.Wrapper
 		)
 		{
 			uint val = reader.ReadUInt32();
-			ObjLuaCode ret = ObjLuaCode.CreateOperator(val, parent);
+			ObjLuaCode ret = CreateOperator(val, parent);
 			return ret;
 		}
 

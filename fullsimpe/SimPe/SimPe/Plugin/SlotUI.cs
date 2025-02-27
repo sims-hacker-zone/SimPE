@@ -67,7 +67,7 @@ namespace SimPe.Plugin
 				this.tabControl1.LayoutSystem = new TD.SandDock.SplitLayoutSystem(
 					250,
 					400,
-					System.Windows.Forms.Orientation.Horizontal,
+					Orientation.Horizontal,
 					new TD.SandDock.LayoutSystemBase[]
 					{
 						new TD.SandDock.DocumentLayoutSystem(
@@ -128,11 +128,11 @@ namespace SimPe.Plugin
 			this.tabControl1.Controls.Add(this.tabPage1);
 			this.tabControl1.Controls.Add(this.tabPage2);
 			this.tabControl1.Controls.Add(this.tabPage3);
-			this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tabControl1.Dock = DockStyle.Fill;
 			this.tabControl1.LayoutSystem = new TD.SandDock.SplitLayoutSystem(
 				250,
 				400,
-				System.Windows.Forms.Orientation.Horizontal,
+				Orientation.Horizontal,
 				new TD.SandDock.LayoutSystemBase[]
 				{
 					new TD.SandDock.DocumentLayoutSystem(
@@ -155,7 +155,7 @@ namespace SimPe.Plugin
 			//
 			// tabPage1
 			//
-			this.tabPage1.BackColor = System.Drawing.Color.Transparent;
+			this.tabPage1.BackColor = Color.Transparent;
 			this.tabPage1.Controls.Add(this.lv);
 			this.tabPage1.FloatingSize = new Size(550, 400);
 			this.tabPage1.Guid = new System.Guid(
@@ -170,8 +170,8 @@ namespace SimPe.Plugin
 			//
 			// lv
 			//
-			this.lv.BackColor = System.Drawing.Color.Transparent;
-			this.lv.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lv.BackColor = Color.Transparent;
+			this.lv.Dock = DockStyle.Fill;
 			this.lv.Font = new Font("Tahoma", 8.25F);
 			this.lv.Location = new Point(0, 0);
 			this.lv.Name = "lv";
@@ -179,12 +179,12 @@ namespace SimPe.Plugin
 			this.lv.Size = new Size(500, 141);
 			this.lv.Slot = null;
 			this.lv.ShowGossip = true;
-			this.lv.SlotType = SimPe.Data.NeighborhoodSlots.Sims;
+			this.lv.SlotType = Data.NeighborhoodSlots.Sims;
 			this.lv.TabIndex = 0;
 			//
 			// tabPage2
 			//
-			this.tabPage2.BackColor = System.Drawing.Color.Transparent;
+			this.tabPage2.BackColor = Color.Transparent;
 			this.tabPage2.Controls.Add(this.lvint);
 			this.tabPage2.FloatingSize = new Size(550, 400);
 			this.tabPage2.Guid = new System.Guid(
@@ -203,19 +203,19 @@ namespace SimPe.Plugin
 			//
 			// lvint
 			//
-			this.lvint.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lvint.Dock = DockStyle.Fill;
 			this.lvint.Font = new Font("Tahoma", 8.25F);
 			this.lvint.Location = new Point(0, 0);
 			this.lvint.Name = "lvint";
 			this.lvint.NgbhItems = null;
 			this.lvint.Size = new Size(500, 117);
 			this.lvint.Slot = null;
-			this.lvint.SlotType = SimPe.Data.NeighborhoodSlots.Sims;
+			this.lvint.SlotType = Data.NeighborhoodSlots.Sims;
 			this.lvint.TabIndex = 1;
 			//
 			// tabPage3
 			//
-			this.tabPage3.BackColor = System.Drawing.Color.Transparent;
+			this.tabPage3.BackColor = Color.Transparent;
 			this.tabPage3.Controls.Add(this.lvfam);
 			this.tabPage3.FloatingSize = new Size(550, 400);
 			this.tabPage3.Guid = new System.Guid(
@@ -234,20 +234,20 @@ namespace SimPe.Plugin
 			//
 			// lvfam
 			//
-			this.lvfam.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lvfam.Dock = DockStyle.Fill;
 			this.lvfam.Font = new Font("Tahoma", 8.25F);
 			this.lvfam.Location = new Point(0, 0);
 			this.lvfam.Name = "lvfam";
 			this.lvfam.NgbhItems = null;
 			this.lvfam.Size = new Size(500, 117);
 			this.lvfam.Slot = null;
-			this.lvfam.SlotType = SimPe.Data.NeighborhoodSlots.Families;
+			this.lvfam.SlotType = Data.NeighborhoodSlots.Families;
 			this.lvfam.TabIndex = 2;
 			//
 			// splitter1
 			//
-			this.splitter1.BackColor = System.Drawing.SystemColors.AppWorkspace;
-			this.splitter1.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.splitter1.BackColor = SystemColors.AppWorkspace;
+			this.splitter1.Dock = DockStyle.Bottom;
 			this.splitter1.Location = new Point(0, 165);
 			this.splitter1.Name = "splitter1";
 			this.splitter1.Size = new Size(504, 3);
@@ -256,13 +256,13 @@ namespace SimPe.Plugin
 			//
 			// memprop
 			//
-			this.memprop.BackColor = System.Drawing.Color.Transparent;
-			this.memprop.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.memprop.BackColor = Color.Transparent;
+			this.memprop.Dock = DockStyle.Bottom;
 			this.memprop.Font = new Font(
 				"Tahoma",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
 			this.memprop.Item = null;
@@ -280,8 +280,8 @@ namespace SimPe.Plugin
 			this.Font = new Font(
 				"Tahoma",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
 			this.Name = "NgbhSlotUI";
@@ -308,48 +308,48 @@ namespace SimPe.Plugin
 				lv.NgbhItems = null;
 				lvint.NgbhItems = null;
 				lvfam.NgbhItems = null;
-				lvfam.SlotType = SimPe.Data.NeighborhoodSlots.Families;
+				lvfam.SlotType = Data.NeighborhoodSlots.Families;
 				if (
-					st == SimPe.Data.NeighborhoodSlots.Sims
-					|| st == SimPe.Data.NeighborhoodSlots.SimsIntern
+					st == Data.NeighborhoodSlots.Sims
+					|| st == Data.NeighborhoodSlots.SimsIntern
 				)
 				{
-					this.tabPage1.Text = SimPe.Localization.GetString(
+					this.tabPage1.Text = Localization.GetString(
 						"SimPe.Data.NeighborhoodSlots.Sims"
 					);
-					this.tabPage2.Text = SimPe.Localization.GetString(
+					this.tabPage2.Text = Localization.GetString(
 						"SimPe.Data.NeighborhoodSlots.SimsIntern"
 					);
 
-					lv.SlotType = SimPe.Data.NeighborhoodSlots.Sims;
-					lvint.SlotType = SimPe.Data.NeighborhoodSlots.SimsIntern;
+					lv.SlotType = Data.NeighborhoodSlots.Sims;
+					lvint.SlotType = Data.NeighborhoodSlots.SimsIntern;
 				}
 				else if (
-					st == SimPe.Data.NeighborhoodSlots.Families
-					|| st == SimPe.Data.NeighborhoodSlots.FamiliesIntern
+					st == Data.NeighborhoodSlots.Families
+					|| st == Data.NeighborhoodSlots.FamiliesIntern
 				)
 				{
-					this.tabPage1.Text = SimPe.Localization.GetString(
+					this.tabPage1.Text = Localization.GetString(
 						"SimPe.Data.NeighborhoodSlots.Families"
 					);
-					this.tabPage2.Text = SimPe.Localization.GetString(
+					this.tabPage2.Text = Localization.GetString(
 						"SimPe.Data.NeighborhoodSlots.FamiliesIntern"
 					);
 
-					lv.SlotType = SimPe.Data.NeighborhoodSlots.Families;
-					lvint.SlotType = SimPe.Data.NeighborhoodSlots.FamiliesIntern;
+					lv.SlotType = Data.NeighborhoodSlots.Families;
+					lvint.SlotType = Data.NeighborhoodSlots.FamiliesIntern;
 				}
 				else
 				{
-					this.tabPage1.Text = SimPe.Localization.GetString(
+					this.tabPage1.Text = Localization.GetString(
 						"SimPe.Data.NeighborhoodSlots.Lots"
 					);
-					this.tabPage2.Text = SimPe.Localization.GetString(
+					this.tabPage2.Text = Localization.GetString(
 						"SimPe.Data.NeighborhoodSlots.LotsIntern"
 					);
 
-					lv.SlotType = SimPe.Data.NeighborhoodSlots.Lots;
-					lvint.SlotType = SimPe.Data.NeighborhoodSlots.LotsIntern;
+					lv.SlotType = Data.NeighborhoodSlots.Lots;
+					lvint.SlotType = Data.NeighborhoodSlots.LotsIntern;
 				}
 				this.tabPage1.TabText = this.tabPage1.Text;
 				this.tabPage2.TabText = this.tabPage2.Text;
@@ -448,7 +448,7 @@ namespace SimPe.Plugin
 			{
 				if (pc.SelectedSim != null)
 				{
-					this.Slut = ngbh.GetSlots(SimPe.Data.NeighborhoodSlots.Families)
+					this.Slut = ngbh.GetSlots(Data.NeighborhoodSlots.Families)
 						.GetInstanceSlot(pc.SelectedSim.FamilyInstance);
 					this.Slot = ngbh.GetSlots(st)
 						.GetInstanceSlot(pc.SelectedSim.FileDescriptor.Instance);

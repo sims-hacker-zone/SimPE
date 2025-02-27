@@ -99,7 +99,7 @@ namespace SimPe.Windows.Forms
 				mPicFit = false;
 				bklayout = ImageLayout.TopLeft;
 
-				SimPe.ThemeManager.Global.AddControl(this);
+				ThemeManager.Global.AddControl(this);
 
 				txt = "";
 				CanCommit = true;
@@ -712,7 +712,7 @@ namespace SimPe.Windows.Forms
 									0,
 									this.BackgroundImage.Width,
 									this.BackgroundImage.Height,
-									System.Drawing.GraphicsUnit.Pixel,
+									GraphicsUnit.Pixel,
 									imgAttributes
 								);
 								imgAttributes.Dispose();
@@ -727,7 +727,7 @@ namespace SimPe.Windows.Forms
 					hrec,
 					HeadBackColor,
 					HeadEndColor,
-					System.Drawing.Drawing2D.LinearGradientMode.Horizontal
+					LinearGradientMode.Horizontal
 				);
 				SolidBrush fb = new SolidBrush(this.HeadForeColor);
 				ColorBlend hcb = new ColorBlend(2);

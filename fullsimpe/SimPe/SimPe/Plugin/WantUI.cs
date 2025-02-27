@@ -56,7 +56,7 @@ namespace SimPe.Plugin
 				form.ListWants();
 
 				WantLoader.WantNameLoader.AddObjects(
-					SimPe.PackedFiles.Wrapper.ObjectComboBox.ObjectCache.List
+					PackedFiles.Wrapper.ObjectComboBox.ObjectCache.List
 				);
 			}
 		}

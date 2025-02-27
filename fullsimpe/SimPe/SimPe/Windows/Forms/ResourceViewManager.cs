@@ -130,7 +130,7 @@ namespace SimPe.Windows.Forms
 						Wait.Start();
 					}
 
-					Wait.Message = SimPe.Localization.GetString("Loading package...");
+					Wait.Message = Localization.GetString("Loading package...");
 					int ct = 0;
 					foreach (
 						Interfaces.Files.IPackedFileDescriptor pfd in newpkg.Index
@@ -322,7 +322,7 @@ namespace SimPe.Windows.Forms
 			if (Helper.WindowsRegistry.DecodeFilenamesState)
 			{
 				Interfaces.Plugin.Internal.IPackedFileWrapper wrp =
-					FileTable.WrapperRegistry.FindHandler(type);
+					FileTableBase.WrapperRegistry.FindHandler(type);
 				if (wrp != null)
 				{
 					return wrp.WrapperDescription.IconIndex;

@@ -49,7 +49,7 @@ namespace SimPe.Plugin.Scanner
 
 		protected override void DoInitScan()
 		{
-			AbstractScanner.AddColumn(ListView, "Ready?", 80);
+			AddColumn(ListView, "Ready?", 80);
 		}
 
 		public void ScanPackage(
@@ -105,7 +105,7 @@ namespace SimPe.Plugin.Scanner
 			if (ps.State != TriState.Null)
 			{
 				ReadyState cs = (ReadyState)ps.Data[0];
-				AbstractScanner.SetSubItem(lvi, this.StartColum, cs.ToString(), ps);
+				SetSubItem(lvi, this.StartColum, cs.ToString(), ps);
 			}
 		}
 
@@ -202,7 +202,7 @@ namespace SimPe.Plugin.Scanner
 					ps.State = TriState.Null;
 					try
 					{
-						SimPe.Plugin.FixPackage.Fix(
+						FixPackage.Fix(
 							si.FileName,
 							mname,
 							FixVersion.UniversityReady

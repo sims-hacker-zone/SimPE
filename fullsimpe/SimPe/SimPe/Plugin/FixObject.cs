@@ -862,7 +862,7 @@ namespace SimPe.Plugin
 						}
 
 						Interfaces.Scenegraph.IScenegraphFileIndexItem fii =
-							FileTable.FileIndex.FindFileByName(
+							FileTableBase.FileIndex.FindFileByName(
 								i.Title,
 								tp,
 								Data.MetaData.LOCAL_GROUP,
@@ -960,7 +960,7 @@ namespace SimPe.Plugin
 				//is one of the objd's a rug?
 				if (
 					objd.FunctionSubSort
-					== SimPe.Data.ObjFunctionSubSort.Decorative_Rugs
+					== Data.ObjFunctionSubSort.Decorative_Rugs
 				)
 				{
 					updaterugs = true;
@@ -978,9 +978,9 @@ namespace SimPe.Plugin
 					objd.ProcessData(pfd, package);
 
 					//make sure the Type of a Rug is not a Tile, but Normal
-					if (objd.Type == SimPe.Data.ObjectTypes.Tiles)
+					if (objd.Type == Data.ObjectTypes.Tiles)
 					{
-						objd.Type = SimPe.Data.ObjectTypes.Normal;
+						objd.Type = Data.ObjectTypes.Normal;
 						objd.SynchronizeUserData(true, true);
 					}
 				}
@@ -1020,7 +1020,7 @@ namespace SimPe.Plugin
 
 					if (nfamily == null)
 					{
-						nfamily = System.Guid.NewGuid().ToString();
+						nfamily = Guid.NewGuid().ToString();
 						familymap[family] = nfamily;
 					}
 
@@ -1063,7 +1063,7 @@ namespace SimPe.Plugin
 				if (ver == FixVersion.UniversityReady)
 				{
 					Interfaces.Scenegraph.IScenegraphFileIndexItem item =
-						FileTable.FileIndex.FindFileByName(
+						FileTableBase.FileIndex.FindFileByName(
 							mmat.ModelName,
 							Data.MetaData.CRES,
 							Data.MetaData.GLOBAL_GROUP,

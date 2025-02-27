@@ -34,8 +34,8 @@ namespace Ambertation.Windows.Forms.Graph
 			fnt = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
 			//SetStyle(ControlStyles.Selectable, true);

@@ -255,7 +255,7 @@ namespace SimPe.Plugin.Tool
 			this.rtb.BackgroundImage = (
 				(System.Drawing.Image)(resources.GetObject("rtb.BackgroundImage"))
 			);
-			this.rtb.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.rtb.BorderStyle = BorderStyle.None;
 			this.rtb.BulletIndent = ((int)(resources.GetObject("rtb.BulletIndent")));
 			this.rtb.Dock = (
 				(DockStyle)(resources.GetObject("rtb.Dock"))
@@ -323,10 +323,8 @@ namespace SimPe.Plugin.Tool
 			this.Controls.Add(this.xpGradientPanel1);
 			this.Enabled = ((bool)(resources.GetObject("$this.Enabled")));
 			this.Font = ((System.Drawing.Font)(resources.GetObject("$this.Font")));
-			this.FormBorderStyle = System
-				.Windows
-				.Forms
-				.FormBorderStyle
+			this.FormBorderStyle =
+				FormBorderStyle
 				.SizableToolWindow;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.ImeMode = (
@@ -383,7 +381,7 @@ namespace SimPe.Plugin.Tool
 				StreamReader sr = new StreamReader(csv.BaseStream);
 				sr.BaseStream.Seek(0, SeekOrigin.Begin);
 
-				StreamWriter sw = System.IO.File.CreateText(sfd.FileName);
+				StreamWriter sw = File.CreateText(sfd.FileName);
 				try
 				{
 					sw.Write(sr.ReadToEnd());

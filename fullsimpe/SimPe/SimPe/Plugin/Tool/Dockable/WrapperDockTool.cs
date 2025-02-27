@@ -47,7 +47,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				if (es.HasFileDescriptor)
 				{
 					Interfaces.IWrapper wrp =
-						FileTable.WrapperRegistry.FindHandler(
+						FileTableBase.WrapperRegistry.FindHandler(
 							es[0].Resource.FileDescriptor.Type
 						);
 
@@ -72,10 +72,10 @@ namespace SimPe.Plugin.Tool.Dockable
 				}
 			}
 
-			rd.lbName.Text = SimPe.Localization.GetString("Unknown");
-			rd.lbAuthor.Text = SimPe.Localization.GetString("Unknown");
-			rd.lbVersion.Text = SimPe.Localization.GetString("Unknown");
-			rd.lbDesc.Text = SimPe.Localization.GetString("");
+			rd.lbName.Text = Localization.GetString("Unknown");
+			rd.lbAuthor.Text = Localization.GetString("Unknown");
+			rd.lbVersion.Text = Localization.GetString("Unknown");
+			rd.lbDesc.Text = Localization.GetString("");
 			rd.pb.Image = null;
 			rd.lbName.Left = rd.pb.Left;
 		}

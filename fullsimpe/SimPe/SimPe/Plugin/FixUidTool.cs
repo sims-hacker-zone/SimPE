@@ -65,7 +65,7 @@ namespace SimPe.Plugin
 						Wait.Message = file;
 
 						Packages.GeneratableFile fl =
-							SimPe.Packages.GeneratableFile.LoadFromFile(file);
+							Packages.File.LoadFromFile(file);
 						Interfaces.Files.IPackedFileDescriptor[] pfds =
 							fl.FindFiles(Data.MetaData.IDNO);
 						foreach (

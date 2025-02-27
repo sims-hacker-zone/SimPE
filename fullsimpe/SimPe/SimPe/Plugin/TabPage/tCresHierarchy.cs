@@ -53,7 +53,7 @@ namespace SimPe.Plugin.TabPage
 			//
 			InitializeComponent();
 
-			this.Text = SimPe.Localization.GetString("CRES Hierarchie");
+			this.Text = Localization.GetString("CRES Hierarchie");
 			this.UseVisualStyleBackColor = true;
 		}
 
@@ -97,9 +97,9 @@ namespace SimPe.Plugin.TabPage
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -135,10 +135,10 @@ namespace SimPe.Plugin.TabPage
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -158,7 +158,7 @@ namespace SimPe.Plugin.TabPage
 			//
 			// iCres
 			//
-			this.iCres.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+			this.iCres.ColorDepth = ColorDepth.Depth32Bit;
 			this.iCres.ImageSize = new System.Drawing.Size(16, 16);
 			this.iCres.ImageStream = (
 				(ImageListStreamer)(

@@ -177,7 +177,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public ObjectCloner()
 		{
-			Package = GeneratableFile.LoadFromStream((System.IO.BinaryReader)null);
+			Package = File.LoadFromStream((System.IO.BinaryReader)null);
 			Setup = new CloneSettings();
 		}
 
@@ -417,7 +417,7 @@ namespace SimPe.Plugin
 
 			Scenegraph.FileExcludeList = Scenegraph.DefaultFileExcludeList;
 
-			SimPe.FileTable.FileIndex.Load();
+			FileTableBase.FileIndex.Load();
 			if (WaitingScreen.Running)
 			{
 				WaitingScreen.UpdateMessage("Walking Scenegraph");

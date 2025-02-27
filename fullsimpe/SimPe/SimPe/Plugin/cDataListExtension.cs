@@ -146,9 +146,9 @@ namespace SimPe.Plugin
 					}
 
 					list.Add(
-						SimPe.Plugin.ScenegraphHelper.BuildPfd(
+						ScenegraphHelper.BuildPfd(
 							name,
-							SimPe.Plugin.ScenegraphHelper.CRES,
+							ScenegraphHelper.CRES,
 							parentgroup
 						)
 					);

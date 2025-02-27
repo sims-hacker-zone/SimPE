@@ -34,13 +34,13 @@ namespace SimPe.Plugin
 
 			try
 			{
-				tm = SimPe.ThemeManager.Global.CreateChild();
+				tm = ThemeManager.Global.CreateChild();
 				tm.AddControl(this.xpBadges);
 				tm.AddControl(this.xpSkills);
 
 				this.xpBadges.Visible = (
-					SimPe.PathProvider.Global.EPInstalled >= 3
-					|| SimPe.PathProvider.Global.STInstalled >= 28
+					PathProvider.Global.EPInstalled >= 3
+					|| PathProvider.Global.STInstalled >= 28
 				);
 				SetContent();
 			}
@@ -163,12 +163,12 @@ namespace SimPe.Plugin
 			this.xpBadges.AutoScrollMinSize = (
 				(Size)(resources.GetObject("xpBadges.AutoScrollMinSize"))
 			);
-			this.xpBadges.BackColor = System.Drawing.Color.Transparent;
+			this.xpBadges.BackColor = Color.Transparent;
 			this.xpBadges.BackgroundImage = (
 				(Image)(resources.GetObject("xpBadges.BackgroundImage"))
 			);
-			this.xpBadges.BodyColor = System.Drawing.SystemColors.InactiveCaptionText;
-			this.xpBadges.BorderColor = System.Drawing.SystemColors.Window;
+			this.xpBadges.BodyColor = SystemColors.InactiveCaptionText;
+			this.xpBadges.BorderColor = SystemColors.Window;
 			this.xpBadges.Controls.Add(this.badges);
 			this.xpBadges.Dock = (
 				(DockStyle)(resources.GetObject("xpBadges.Dock"))
@@ -184,7 +184,7 @@ namespace SimPe.Plugin
 			this.xpBadges.HeaderFont = new Font(
 				"Microsoft Sans Serif",
 				10.25F,
-				System.Drawing.FontStyle.Bold
+				FontStyle.Bold
 			);
 			this.xpBadges.HeaderText = resources.GetString("xpBadges.HeaderText");
 			this.xpBadges.HeaderTextColor = SystemColors.ControlText;
@@ -236,7 +236,7 @@ namespace SimPe.Plugin
 			this.xpSkills.AutoScrollMinSize = (
 				(Size)(resources.GetObject("xpSkills.AutoScrollMinSize"))
 			);
-			this.xpSkills.BackColor = System.Drawing.Color.Transparent;
+			this.xpSkills.BackColor = Color.Transparent;
 			this.xpSkills.BackgroundImage = (
 				(Image)(resources.GetObject("xpSkills.BackgroundImage"))
 			);
@@ -257,7 +257,7 @@ namespace SimPe.Plugin
 			this.xpSkills.HeaderFont = new Font(
 				"Microsoft Sans Serif",
 				10.25F,
-				System.Drawing.FontStyle.Bold
+				FontStyle.Bold
 			);
 			this.xpSkills.HeaderText = resources.GetString("xpSkills.HeaderText");
 			this.xpSkills.HeaderTextColor = SystemColors.ControlText;

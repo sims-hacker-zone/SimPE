@@ -26,7 +26,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
 
-			tm = SimPe.ThemeManager.Global.CreateChild();
+			tm = ThemeManager.Global.CreateChild();
 			tm.AddControl(this.xpGradientPanel1);
 		}
 
@@ -220,17 +220,17 @@ namespace SimPe.Plugin.Tool.Dockable
 				System.IO.Path.GetFileName(objname)
 					+ "----------------------------------------"
 			);
-			Interfaces.Files.IPackageFile pkg = SimPe.Packages.File.LoadFromFile(
+			Interfaces.Files.IPackageFile pkg = Packages.File.LoadFromFile(
 				objname
 			);
-			FileTable.FileIndex.Load();
+			FileTableBase.FileIndex.Load();
 			lbft.Items.Clear();
 
 			int[] ct = new int[3];
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pkg.Index)
 			{
 				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-					FileTable.FileIndex.FindFile(pfd, null);
+					FileTableBase.FileIndex.FindFile(pfd, null);
 
 				bool copy = false;
 				if ((items.Length - 1) < 4)

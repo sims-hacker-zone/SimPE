@@ -52,10 +52,10 @@ namespace SimPe
 			try
 			{
 				WaitingScreen.UpdateMessage("getting all SemiGlobal Groups");
-				FileTable.FileIndex.Load();
+				FileTableBase.FileIndex.Load();
 
 				Interfaces.Scenegraph.IScenegraphFileIndexItem[] globs =
-					FileTable.FileIndex.FindFile(Data.MetaData.GLOB_FILE, true);
+					FileTableBase.FileIndex.FindFile(Data.MetaData.GLOB_FILE, true);
 				ArrayList names = new ArrayList();
 				string max = " / " + globs.Length.ToString();
 				int ct = 0;
@@ -129,12 +129,12 @@ namespace SimPe
 			this.btimport.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.btimport.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.btimport.FlatStyle = FlatStyle.System;
 			this.btimport.Location = new System.Drawing.Point(698, 471);
 			this.btimport.Name = "btimport";
 			this.btimport.Size = new System.Drawing.Size(75, 23);
@@ -148,13 +148,13 @@ namespace SimPe
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
-			this.cbsemi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbsemi.DropDownStyle = ComboBoxStyle.DropDownList;
 			this.cbsemi.Location = new System.Drawing.Point(16, 32);
 			this.cbsemi.Name = "cbsemi";
 			this.cbsemi.Size = new System.Drawing.Size(758, 24);
@@ -182,8 +182,8 @@ namespace SimPe
 			this.llscan.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -214,10 +214,10 @@ namespace SimPe
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -251,8 +251,8 @@ namespace SimPe
 			this.linkLabel1.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
@@ -281,12 +281,12 @@ namespace SimPe
 			this.cbfix.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.cbfix.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbfix.FlatStyle = FlatStyle.System;
 			this.cbfix.Location = new System.Drawing.Point(506, 470);
 			this.cbfix.Name = "cbfix";
 			this.cbfix.Size = new System.Drawing.Size(176, 24);
@@ -303,12 +303,12 @@ namespace SimPe
 			this.cbname.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.cbname.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbname.FlatStyle = FlatStyle.System;
 			this.cbname.Location = new System.Drawing.Point(362, 470);
 			this.cbname.Name = "cbname";
 			this.cbname.Size = new System.Drawing.Size(128, 24);
@@ -327,10 +327,10 @@ namespace SimPe
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -368,10 +368,8 @@ namespace SimPe
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.FormBorderStyle = System
-				.Windows
-				.Forms
-				.FormBorderStyle
+			this.FormBorderStyle =
+				FormBorderStyle
 				.SizableToolWindow;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "ImportSemi";
@@ -422,7 +420,7 @@ namespace SimPe
 				Plugin.NamedGlob glob = (Plugin.NamedGlob)
 					cbsemi.Items[cbsemi.SelectedIndex];
 				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-					FileTable.FileIndex.FindFileByGroup(glob.SemiGlobalGroup);
+					FileTableBase.FileIndex.FindFileByGroup(glob.SemiGlobalGroup);
 
 				lbfiles.Sorted = false;
 				foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)

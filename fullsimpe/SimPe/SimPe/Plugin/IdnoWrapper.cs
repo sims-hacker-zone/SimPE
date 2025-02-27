@@ -431,7 +431,7 @@ namespace SimPe.Plugin
 
 			foreach (string name in names)
 			{
-				Packages.File fl = SimPe.Packages.File.LoadFromFile(name);
+				Packages.File fl = Packages.File.LoadFromFile(name);
 				Interfaces.Files.IPackedFileDescriptor[] pfds = fl.FindFiles(
 					Data.MetaData.IDNO
 				);
@@ -458,7 +458,7 @@ namespace SimPe.Plugin
 		public void MakeUnique()
 		{
 			Wait.SubStart();
-			Idno.MakeUnique(this, this.Package.FileName, true);
+			MakeUnique(this, this.Package.FileName, true);
 			Wait.SubStop();
 		}
 
@@ -469,7 +469,7 @@ namespace SimPe.Plugin
 		public void MakeUnique(Hashtable ids)
 		{
 			Wait.SubStart();
-			Idno.MakeUnique(this, this.Package.FileName, ids);
+			MakeUnique(this, this.Package.FileName, ids);
 			Wait.SubStop();
 		}
 
@@ -479,7 +479,7 @@ namespace SimPe.Plugin
 		public Idno()
 			: base()
 		{
-			if (SimPe.PathProvider.Global.EPInstalled >= 1)
+			if (PathProvider.Global.EPInstalled >= 1)
 			{
 				this.version = (uint)NeighborhoodVersion.Sims2_University;
 			}

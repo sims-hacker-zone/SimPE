@@ -109,7 +109,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this, "$this");
 			this.Controls.Add(this.pnNice);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+			this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
 			this.Name = "NgbBackup";
 			this.ShowInTaskbar = false;
 			this.pnNice.ResumeLayout(false);
@@ -189,7 +189,7 @@ namespace SimPe.Plugin
 			);
 			if (dr != DialogResult.Cancel)
 			{
-				SimPe.Packages.StreamFactory.CloseAll();
+				Packages.StreamFactory.CloseAll();
 				this.Cursor = Cursors.WaitCursor;
 				WaitingScreen.Wait();
 
@@ -223,7 +223,7 @@ namespace SimPe.Plugin
 					//remove the Neighborhood
 					try
 					{
-						SimPe.Packages.PackageMaintainer.Maintainer.RemovePackagesInPath(
+						Packages.PackageMaintainer.Maintainer.RemovePackagesInPath(
 							path
 						);
 						System.IO.Directory.Delete(path, true);

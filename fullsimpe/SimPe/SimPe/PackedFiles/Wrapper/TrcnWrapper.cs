@@ -254,7 +254,7 @@ namespace SimPe.PackedFiles.Wrapper
 		#region IPackedFileLoadExtension Members
 		protected override string GetResourceName(Data.TypeAlias ta)
 		{
-			if (!SimPe.Helper.FileFormat)
+			if (!Helper.FileFormat)
 			{
 				return base.GetResourceName(ta);
 			}
@@ -461,12 +461,12 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 			else
 			{
-				this.constName = SimPe.Helper.ToString(
+				this.constName = Helper.ToString(
 					reader.ReadBytes(reader.ReadByte())
 				);
 				if (parent.Version > 0x53)
 				{
-					this.constDesc = SimPe.Helper.ToString(
+					this.constDesc = Helper.ToString(
 						reader.ReadBytes(reader.ReadByte())
 					);
 					this.defValue = reader.ReadByte();
@@ -494,12 +494,12 @@ namespace SimPe.PackedFiles.Wrapper
 			writer.Write(this.used);
 			writer.Write(this.constId);
 			writer.Write((byte)this.constName.Length);
-			writer.Write(SimPe.Helper.ToBytes(this.constName, this.constName.Length));
+			writer.Write(Helper.ToBytes(this.constName, this.constName.Length));
 			if (parent.Version > 0x53)
 			{
 				writer.Write((byte)this.constDesc.Length);
 				writer.Write(
-					SimPe.Helper.ToBytes(this.constDesc, this.constDesc.Length)
+					Helper.ToBytes(this.constDesc, this.constDesc.Length)
 				);
 				writer.Write((byte)this.defValue);
 			}

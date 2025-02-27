@@ -264,7 +264,7 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				if (
 					(int)Sim.Version
-					== (int)SimPe.PackedFiles.Wrapper.SDescVersions.Castaway
+					== (int)Wrapper.SDescVersions.Castaway
 				)
 				{
 					gooee = 0x73352057;
@@ -285,7 +285,7 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				if (
 					(int)Sim.Version
-					== (int)SimPe.PackedFiles.Wrapper.SDescVersions.Castaway
+					== (int)Wrapper.SDescVersions.Castaway
 				)
 				{
 					gooee = 0x134B4BCC;
@@ -302,7 +302,7 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				if (
 					(int)Sim.Version
-					== (int)SimPe.PackedFiles.Wrapper.SDescVersions.Castaway
+					== (int)Wrapper.SDescVersions.Castaway
 				)
 				{
 					gooee = 0xB350BB5B;
@@ -447,7 +447,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 
 			Packages.GeneratableFile pkg =
-				SimPe.Packages.GeneratableFile.LoadFromFile(Sim.CharacterFileName);
+				Packages.File.LoadFromFile(Sim.CharacterFileName);
 			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
 				Data.MetaData.AGED
 			);
@@ -514,8 +514,8 @@ namespace SimPe.PackedFiles.UserInterface
 				{
 					Sim.CharacterDescription.NPCType = 79;
 					Sim.Nightlife.Species = 0; // EP9 Tiny Sim, Don't apply gooee and do force age
-					Sim.CharacterDescription.LifeSection = SimPe
-						.Data
+					Sim.CharacterDescription.LifeSection =
+						Data
 						.MetaData
 						.LifeSections
 						.Child;
@@ -610,7 +610,7 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 			}
 
-			Packages.File pkg = SimPe.Packages.File.LoadFromFile(
+			Packages.File pkg = Packages.File.LoadFromFile(
 				System.IO.Path.Combine(
 					PathProvider.Global.Latest.InstallFolder,
 					"TSData\\Res\\UI\\ui.package"
@@ -682,7 +682,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 			if (
 				(int)Sim.Version
-				>= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Nightlife
+				>= (int)Wrapper.SDescVersions.Nightlife
 			)
 			{
 				tmpa = Sim.Nightlife.AttractionTraits2;
@@ -853,56 +853,56 @@ namespace SimPe.PackedFiles.UserInterface
 
 			if (
 				Sim.Freetime.PrimaryAspiration
-				== SimPe.Data.MetaData.AspirationTypes.Romance
+				== Data.MetaData.AspirationTypes.Romance
 			)
 			{
 				ret += "get lots of lovers";
 			}
 			else if (
 				Sim.Freetime.PrimaryAspiration
-				== SimPe.Data.MetaData.AspirationTypes.Family
+				== Data.MetaData.AspirationTypes.Family
 			)
 			{
 				ret += "raise a large, happy family";
 			}
 			else if (
 				Sim.Freetime.PrimaryAspiration
-				== SimPe.Data.MetaData.AspirationTypes.Chees
+				== Data.MetaData.AspirationTypes.Chees
 			) //
 			{
 				ret += "eat grilled cheese";
 			}
 			else if (
 				Sim.Freetime.PrimaryAspiration
-				== SimPe.Data.MetaData.AspirationTypes.Fortune
+				== Data.MetaData.AspirationTypes.Fortune
 			)
 			{
 				ret += "be successful";
 			}
 			else if (
 				Sim.Freetime.PrimaryAspiration
-				== SimPe.Data.MetaData.AspirationTypes.Knowledge
+				== Data.MetaData.AspirationTypes.Knowledge
 			)
 			{
 				ret += "learn all the secrets of the universe";
 			}
 			else if (
 				Sim.Freetime.PrimaryAspiration
-				== SimPe.Data.MetaData.AspirationTypes.Pleasure
+				== Data.MetaData.AspirationTypes.Pleasure
 			)
 			{
 				ret += "party hard and often";
 			}
 			else if (
 				Sim.Freetime.PrimaryAspiration
-				== SimPe.Data.MetaData.AspirationTypes.Reputation
+				== Data.MetaData.AspirationTypes.Reputation
 			)
 			{
 				ret += "make as many friends as possible";
 			}
 			else if (
 				Sim.Freetime.PrimaryAspiration
-				== SimPe.Data.MetaData.AspirationTypes.Growup
+				== Data.MetaData.AspirationTypes.Growup
 			)
 			{
 				ret += "grow up";
@@ -914,60 +914,60 @@ namespace SimPe.PackedFiles.UserInterface
 
 			if (
 				(int)Sim.Version
-				>= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Freetime
+				>= (int)Wrapper.SDescVersions.Freetime
 			)
 			{
 				if (
 					Sim.Freetime.SecondaryAspiration
-					!= SimPe.Data.MetaData.AspirationTypes.Nothing
+					!= Data.MetaData.AspirationTypes.Nothing
 				)
 				{
 					ret += " and ";
 					if (
 						Sim.Freetime.SecondaryAspiration
-						== SimPe.Data.MetaData.AspirationTypes.Romance
+						== Data.MetaData.AspirationTypes.Romance
 					)
 					{
 						ret += "get lots of lovers.";
 					}
 					else if (
 						Sim.Freetime.SecondaryAspiration
-						== SimPe.Data.MetaData.AspirationTypes.Family
+						== Data.MetaData.AspirationTypes.Family
 					)
 					{
 						ret += "raise a large, happy family.";
 					}
 					else if (
 						Sim.Freetime.SecondaryAspiration
-						== SimPe.Data.MetaData.AspirationTypes.Chees
+						== Data.MetaData.AspirationTypes.Chees
 					) //
 					{
 						ret += "eat grilled cheese.";
 					}
 					else if (
 						Sim.Freetime.SecondaryAspiration
-						== SimPe.Data.MetaData.AspirationTypes.Fortune
+						== Data.MetaData.AspirationTypes.Fortune
 					)
 					{
 						ret += "be successful.";
 					}
 					else if (
 						Sim.Freetime.SecondaryAspiration
-						== SimPe.Data.MetaData.AspirationTypes.Knowledge
+						== Data.MetaData.AspirationTypes.Knowledge
 					)
 					{
 						ret += "learn all the secrets of the universe.";
 					}
 					else if (
 						Sim.Freetime.SecondaryAspiration
-						== SimPe.Data.MetaData.AspirationTypes.Pleasure
+						== Data.MetaData.AspirationTypes.Pleasure
 					)
 					{
 						ret += "party hard and often.";
 					}
 					else if (
 						Sim.Freetime.SecondaryAspiration
-						== SimPe.Data.MetaData.AspirationTypes.Reputation
+						== Data.MetaData.AspirationTypes.Reputation
 					)
 					{
 						ret += "make as many friends as possible.";
@@ -985,70 +985,70 @@ namespace SimPe.PackedFiles.UserInterface
 				ret += "\r\n\r\n " + Sim.SimName + " has ";
 				if (
 					Sim.Freetime.HobbyPredistined
-					== SimPe.PackedFiles.Wrapper.Hobbies.Nature
+					== Wrapper.Hobbies.Nature
 				)
 				{
 					ret += "a natural talent for nature and";
 				}
 				else if (
 					Sim.Freetime.HobbyPredistined
-					== SimPe.PackedFiles.Wrapper.Hobbies.Arts
+					== Wrapper.Hobbies.Arts
 				)
 				{
 					ret += "a natural talent for art and craft and";
 				}
 				else if (
 					Sim.Freetime.HobbyPredistined
-					== SimPe.PackedFiles.Wrapper.Hobbies.Cuisine
+					== Wrapper.Hobbies.Cuisine
 				)
 				{
 					ret += "a natural talent for cuisine and";
 				}
 				else if (
 					Sim.Freetime.HobbyPredistined
-					== SimPe.PackedFiles.Wrapper.Hobbies.Film
+					== Wrapper.Hobbies.Film
 				)
 				{
 					ret += "a natural talent for film and literature and";
 				}
 				else if (
 					Sim.Freetime.HobbyPredistined
-					== SimPe.PackedFiles.Wrapper.Hobbies.Fitness
+					== Wrapper.Hobbies.Fitness
 				)
 				{
 					ret += "a natural talent for fitness and";
 				}
 				else if (
 					Sim.Freetime.HobbyPredistined
-					== SimPe.PackedFiles.Wrapper.Hobbies.Games
+					== Wrapper.Hobbies.Games
 				)
 				{
 					ret += "a natural talent for computer games and";
 				}
 				else if (
 					Sim.Freetime.HobbyPredistined
-					== SimPe.PackedFiles.Wrapper.Hobbies.Music
+					== Wrapper.Hobbies.Music
 				)
 				{
 					ret += "a natural talent for music and dance and";
 				}
 				else if (
 					Sim.Freetime.HobbyPredistined
-					== SimPe.PackedFiles.Wrapper.Hobbies.Science
+					== Wrapper.Hobbies.Science
 				)
 				{
 					ret += "a natural talent for science and";
 				}
 				else if (
 					Sim.Freetime.HobbyPredistined
-					== SimPe.PackedFiles.Wrapper.Hobbies.Sport
+					== Wrapper.Hobbies.Sport
 				)
 				{
 					ret += "a natural talent for sport and";
 				}
 				else if (
 					Sim.Freetime.HobbyPredistined
-					== SimPe.PackedFiles.Wrapper.Hobbies.Tinkering
+					== Wrapper.Hobbies.Tinkering
 				)
 				{
 					ret += "a natural talent for fixing things and";
@@ -1229,7 +1229,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 			if (
 				(int)Sim.Version
-				>= (int)SimPe.PackedFiles.Wrapper.SDescVersions.Apartment
+				>= (int)Wrapper.SDescVersions.Apartment
 			)
 			{
 				if (Sim.CharacterDescription.Gender == Data.MetaData.Gender.Female)

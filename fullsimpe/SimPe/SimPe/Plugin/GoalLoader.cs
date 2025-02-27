@@ -266,19 +266,19 @@ namespace SimPe.Plugin
 		/// </summary>
 		static void LoadTextPackage() // fuck
 		{
-			txtpkg = SimPe.Packages.File.LoadFromFile(
+			txtpkg = Packages.File.LoadFromFile(
 				System.IO.Path.Combine(
 					PathProvider
-						.Global.GetExpansion(SimPe.Expansions.IslandStories)
+						.Global.GetExpansion(Expansions.IslandStories)
 						.InstallFolder,
 					"TSData\\Res\\Text\\Wants.package"
 				)
 			);
 			if (txtpkg == null)
 			{
-				txtpkg = SimPe.Packages.File.LoadFromFile(
+				txtpkg = Packages.File.LoadFromFile(
 					System.IO.Path.Combine(
-						SimPe.PathProvider.Global.Latest.InstallFolder,
+						PathProvider.Global.Latest.InstallFolder,
 						"TSData\\Res\\Text\\Wants.package"
 					)
 				);
@@ -291,34 +291,34 @@ namespace SimPe.Plugin
 		static void LoadGoals()
 		{
 			if (
-				PathProvider.Global.GetExpansion(SimPe.Expansions.IslandStories).Exists
+				PathProvider.Global.GetExpansion(Expansions.IslandStories).Exists
 				&& Helper.WindowsRegistry.LoadOnlySimsStory != 28
 			)
 			{
 				string gly = (
 					System.IO.Path.Combine(
 						PathProvider
-							.Global.GetExpansion(SimPe.Expansions.IslandStories)
+							.Global.GetExpansion(Expansions.IslandStories)
 							.InstallFolder,
 						"TSData\\Res\\Wants\\Goals.package"
 					)
 				);
-				FileTable.FileIndex.AddIndexFromPackage(gly);
+				FileTableBase.FileIndex.AddIndexFromPackage(gly);
 				gly = (
 					System.IO.Path.Combine(
 						PathProvider
-							.Global.GetExpansion(SimPe.Expansions.IslandStories)
+							.Global.GetExpansion(Expansions.IslandStories)
 							.InstallFolder,
 						"TSData\\Res\\UI\\ui.package"
 					)
 				);
-				FileTable.FileIndex.AddIndexFromPackage(gly);
+				FileTableBase.FileIndex.AddIndexFromPackage(gly);
 			}
 			goals = new Hashtable();
 
-			FileTable.FileIndex.Load();
+			FileTableBase.FileIndex.Load();
 			Interfaces.Scenegraph.IScenegraphFileIndexItem[] wtss =
-				FileTable.FileIndex.FindFile(0xBEEF7B4D, true);
+				FileTableBase.FileIndex.FindFile(0xBEEF7B4D, true);
 
 			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem wts in wtss)
 			{
@@ -406,7 +406,7 @@ namespace SimPe.Plugin
 			}
 
 			Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-				FileTable.FileIndex.FindFile(wnt.IconFileDescriptor, null);
+				FileTableBase.FileIndex.FindFile(wnt.IconFileDescriptor, null);
 			if (items.Length > 0)
 			{
 				PackedFiles.Wrapper.Picture pic =

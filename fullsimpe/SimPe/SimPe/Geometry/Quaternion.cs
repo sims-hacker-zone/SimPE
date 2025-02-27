@@ -642,7 +642,7 @@ namespace SimPe.Geometry
 				}
 			}
 
-			Quaternion ret = Quaternion.FromImaginaryReal(x, y, z, w);
+			Quaternion ret = FromImaginaryReal(x, y, z, w);
 			ret.MakeRobust();
 			ret.MakeUnitQuaternion();
 			//Console.WriteLine(ret.Length+" "+ret);
@@ -784,11 +784,11 @@ namespace SimPe.Geometry
 				+ ", a="
 				+ RadToDeg(Angle).ToString("N1")
 				+ "    euler=y:"
-				+ Quaternion.RadToDeg(GetEulerAngles().Y).ToString("N1")
+				+ RadToDeg(GetEulerAngles().Y).ToString("N1")
 				+ "; p:"
-				+ Quaternion.RadToDeg(GetEulerAngles().X).ToString("N1")
+				+ RadToDeg(GetEulerAngles().X).ToString("N1")
 				+ "; r:"
-				+ Quaternion.RadToDeg(GetEulerAngles().Z).ToString("N1")
+				+ RadToDeg(GetEulerAngles().Z).ToString("N1")
 				+ ")";
 		}
 

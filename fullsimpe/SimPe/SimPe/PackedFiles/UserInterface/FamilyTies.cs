@@ -35,7 +35,7 @@ namespace SimPe.PackedFiles.UserInterface
 			form.cballtieablesims.Items.Clear();
 			form.cballtieablesims.Sorted = false;
 			Interfaces.Files.IPackedFileDescriptor[] pfds = famt.Package.FindFiles(
-				Data.MetaData.SIM_DESCRIPTION_FILE
+				MetaData.SIM_DESCRIPTION_FILE
 			);
 			Wrapper.SDesc sdesc = new Wrapper.SDesc(
 				famt.NameProvider,
@@ -56,19 +56,19 @@ namespace SimPe.PackedFiles.UserInterface
 
 			form.cbtietype.Items.Clear();
 			form.cbtietype.Items.Add(
-				new LocalizedFamilyTieTypes(Data.MetaData.FamilyTieTypes.MyMotherIs)
+				new LocalizedFamilyTieTypes(MetaData.FamilyTieTypes.MyMotherIs)
 			);
 			form.cbtietype.Items.Add(
-				new LocalizedFamilyTieTypes(Data.MetaData.FamilyTieTypes.MyFatherIs)
+				new LocalizedFamilyTieTypes(MetaData.FamilyTieTypes.MyFatherIs)
 			);
 			form.cbtietype.Items.Add(
-				new LocalizedFamilyTieTypes(Data.MetaData.FamilyTieTypes.ImMarriedTo)
+				new LocalizedFamilyTieTypes(MetaData.FamilyTieTypes.ImMarriedTo)
 			);
 			form.cbtietype.Items.Add(
-				new LocalizedFamilyTieTypes(Data.MetaData.FamilyTieTypes.MySiblingIs)
+				new LocalizedFamilyTieTypes(MetaData.FamilyTieTypes.MySiblingIs)
 			);
 			form.cbtietype.Items.Add(
-				new LocalizedFamilyTieTypes(Data.MetaData.FamilyTieTypes.MyChildIs)
+				new LocalizedFamilyTieTypes(MetaData.FamilyTieTypes.MyChildIs)
 			);
 			form.cbtietype.SelectedIndex = 2;
 

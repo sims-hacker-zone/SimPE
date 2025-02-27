@@ -60,9 +60,9 @@ namespace SimPe.Plugin.Downloads
 				Wait.Progress = nr++;
 				Wait.Message = System.IO.Path.GetFileName(file);
 
-				if (!FileTable.FileIndex.Contains(file))
+				if (!FileTableBase.FileIndex.Contains(file))
 				{
-					SimPe.Plugin.DownloadsToolFactory.TeleportFileIndex.AddIndexFromPackage(
+					DownloadsToolFactory.TeleportFileIndex.AddIndexFromPackage(
 						file
 					);
 				}
@@ -75,7 +75,7 @@ namespace SimPe.Plugin.Downloads
 					Nfos.AddRange(hnd.Objects);
 				}
 
-				SimPe.Packages.StreamFactory.CloseStream(file);
+				Packages.StreamFactory.CloseStream(file);
 			}
 		}
 
@@ -88,14 +88,14 @@ namespace SimPe.Plugin.Downloads
 				if (file.EndsWith(".package", true, null))
 				{
 					Cache.PackageType type = PackageInfo.ClassifyPackage(file);
-					SimPe.Plugin.DownloadsToolFactory.TeleportFileIndex.AddIndexFromPackage(
+					DownloadsToolFactory.TeleportFileIndex.AddIndexFromPackage(
 						file
 					);
 
 					if (
-						type == SimPe.Cache.PackageType.CustomObject
-						|| type == SimPe.Cache.PackageType.Object
-						|| type == SimPe.Cache.PackageType.Sim
+						type == Cache.PackageType.CustomObject
+						|| type == Cache.PackageType.Object
+						|| type == Cache.PackageType.Sim
 					)
 					{
 						objects.Add(file);

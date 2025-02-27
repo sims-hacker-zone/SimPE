@@ -81,7 +81,7 @@ namespace SimPe.Plugin.Identifiers
 					.ToLower()
 			)
 			{
-				return SimPe.Cache.PackageType.CEP;
+				return Cache.PackageType.CEP;
 			}
 
 			if (
@@ -92,10 +92,10 @@ namespace SimPe.Plugin.Identifiers
 					.ToLower()
 			)
 			{
-				return SimPe.Cache.PackageType.CEP;
+				return Cache.PackageType.CEP;
 			}
 
-			return SimPe.Cache.PackageType.Unknown;
+			return Cache.PackageType.Unknown;
 		}
 
 		#endregion
@@ -124,15 +124,15 @@ namespace SimPe.Plugin.Identifiers
 		{
 			if (pkg.FindFiles(0xCCCEF852).Length != 0)
 			{
-				return SimPe.Cache.PackageType.Sim; //Facial Structure - Pets don't have
+				return Cache.PackageType.Sim; //Facial Structure - Pets don't have
 			}
 
 			if (pkg.FindFiles(0xAC598EAC).Length != 0)
 			{
-				return SimPe.Cache.PackageType.Sim; //Age Data - Outfits with GUID do have
+				return Cache.PackageType.Sim; //Age Data - Outfits with GUID do have
 			}
 
-			return SimPe.Cache.PackageType.Unknown;
+			return Cache.PackageType.Unknown;
 		}
 
 		#endregion
@@ -161,21 +161,21 @@ namespace SimPe.Plugin.Identifiers
 		{
 			if (pkg.FindFiles(Data.MetaData.OBJD_FILE).Length == 0)
 			{
-				return SimPe.Cache.PackageType.Unknown;
+				return Cache.PackageType.Unknown;
 			}
 
 			if (pkg.FindFiles(0x484F5553).Length > 0)
 			{
-				return SimPe.Cache.PackageType.Lot; //HOUS Resources - Lots won't get here
+				return Cache.PackageType.Lot; //HOUS Resources - Lots won't get here
 			}
 
 			if (pkg.FindFilesByGroup(Data.MetaData.CUSTOM_GROUP).Length > 0)
 			{
-				return SimPe.Cache.PackageType.CustomObject;
+				return Cache.PackageType.CustomObject;
 			}
 			else
 			{
-				return SimPe.Cache.PackageType.Object;
+				return Cache.PackageType.Object;
 			}
 		}
 
@@ -252,23 +252,23 @@ namespace SimPe.Plugin.Identifiers
 				{
 					case "wall":
 					{
-						return SimPe.Cache.PackageType.Wallpaper;
+						return Cache.PackageType.Wallpaper;
 					}
 					case "terrainpaint":
 					{
-						return SimPe.Cache.PackageType.Terrain;
+						return Cache.PackageType.Terrain;
 					}
 					case "floor":
 					{
-						return SimPe.Cache.PackageType.Floor;
+						return Cache.PackageType.Floor;
 					}
 					case "roof":
 					{
-						return SimPe.Cache.PackageType.Roof;
+						return Cache.PackageType.Roof;
 					}
 					case "fence":
 					{
-						return SimPe.Cache.PackageType.Fence;
+						return Cache.PackageType.Fence;
 					}
 					case "skin":
 					{
@@ -276,11 +276,11 @@ namespace SimPe.Plugin.Identifiers
 
 						if ((cat & (uint)Data.OutfitCats.Skin) != 0)
 						{
-							return SimPe.Cache.PackageType.Skin;
+							return Cache.PackageType.Skin;
 						}
 						else
 						{
-							return SimPe.Cache.PackageType.Clothing;
+							return Cache.PackageType.Clothing;
 						}
 					}
 					case "meshoverlay":
@@ -291,7 +291,7 @@ namespace SimPe.Plugin.Identifiers
 							== (uint)Data.TextureOverlayTypes.Blush
 						)
 						{
-							return SimPe.Cache.PackageType.Blush;
+							return Cache.PackageType.Blush;
 						}
 
 						if (
@@ -299,7 +299,7 @@ namespace SimPe.Plugin.Identifiers
 							== (uint)Data.TextureOverlayTypes.Eye
 						)
 						{
-							return SimPe.Cache.PackageType.Eye;
+							return Cache.PackageType.Eye;
 						}
 
 						if (
@@ -307,7 +307,7 @@ namespace SimPe.Plugin.Identifiers
 							== (uint)Data.TextureOverlayTypes.EyeBrow
 						)
 						{
-							return SimPe.Cache.PackageType.EyeBrow;
+							return Cache.PackageType.EyeBrow;
 						}
 
 						if (
@@ -315,7 +315,7 @@ namespace SimPe.Plugin.Identifiers
 							== (uint)Data.TextureOverlayTypes.EyeShadow
 						)
 						{
-							return SimPe.Cache.PackageType.EyeShadow;
+							return Cache.PackageType.EyeShadow;
 						}
 
 						if (
@@ -323,7 +323,7 @@ namespace SimPe.Plugin.Identifiers
 							== (uint)Data.TextureOverlayTypes.Glasses
 						)
 						{
-							return SimPe.Cache.PackageType.Glasses;
+							return Cache.PackageType.Glasses;
 						}
 
 						if (
@@ -331,7 +331,7 @@ namespace SimPe.Plugin.Identifiers
 							== (uint)Data.TextureOverlayTypes.Lipstick
 						)
 						{
-							return SimPe.Cache.PackageType.Lipstick;
+							return Cache.PackageType.Lipstick;
 						}
 
 						if (
@@ -339,7 +339,7 @@ namespace SimPe.Plugin.Identifiers
 							== (uint)Data.TextureOverlayTypes.Mask
 						)
 						{
-							return SimPe.Cache.PackageType.Mask;
+							return Cache.PackageType.Mask;
 						}
 
 						if (
@@ -347,24 +347,24 @@ namespace SimPe.Plugin.Identifiers
 							== (uint)Data.TextureOverlayTypes.Beard
 						)
 						{
-							return SimPe.Cache.PackageType.Beard;
+							return Cache.PackageType.Beard;
 						}
 
 						if (type == "meshoverlay")
 						{
-							return SimPe.Cache.PackageType.Accessory;
+							return Cache.PackageType.Accessory;
 						}
 
-						return SimPe.Cache.PackageType.Makeup;
+						return Cache.PackageType.Makeup;
 					}
 					case "hairtone":
 					{
-						return SimPe.Cache.PackageType.Hair;
+						return Cache.PackageType.Hair;
 					}
 				}
 			}
 
-			return SimPe.Cache.PackageType.Unknown;
+			return Cache.PackageType.Unknown;
 		}
 
 		#endregion
@@ -393,27 +393,27 @@ namespace SimPe.Plugin.Identifiers
 		{
 			if (pkg.FindFiles(Data.MetaData.TXMT).Length == 0)
 			{
-				return SimPe.Cache.PackageType.Unknown;
+				return Cache.PackageType.Unknown;
 			}
 
 			if (pkg.FindFiles(Data.MetaData.OBJD_FILE).Length != 0)
 			{
-				return SimPe.Cache.PackageType.Unknown;
+				return Cache.PackageType.Unknown;
 			}
 
 			if (pkg.FindFiles(Data.MetaData.GZPS).Length != 0)
 			{
-				return SimPe.Cache.PackageType.Unknown;
+				return Cache.PackageType.Unknown;
 			}
 
 			if (pkg.FindFiles(0xCCA8E925).Length != 0)
 			{
-				return SimPe.Cache.PackageType.Unknown; //Object XML
+				return Cache.PackageType.Unknown; //Object XML
 			}
 
 			if (pkg.FindFiles(Data.MetaData.REF_FILE).Length != 0)
 			{
-				return SimPe.Cache.PackageType.Unknown;
+				return Cache.PackageType.Unknown;
 			}
 
 			foreach (uint type in Data.MetaData.RcolList)
@@ -435,11 +435,11 @@ namespace SimPe.Plugin.Identifiers
 
 				if (pkg.FindFiles(type).Length != 0)
 				{
-					return SimPe.Cache.PackageType.Unknown;
+					return Cache.PackageType.Unknown;
 				}
 			}
 
-			return SimPe.Cache.PackageType.Recolour;
+			return Cache.PackageType.Recolour;
 		}
 
 		#endregion

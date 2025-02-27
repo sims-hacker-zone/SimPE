@@ -40,7 +40,7 @@ namespace SimPe
 					this.button2.Visible =
 					this.lbRelease.Visible =
 						false;
-				this.lbVedict.ForeColor = System.Drawing.Color.Maroon;
+				this.lbVedict.ForeColor = Color.Maroon;
 				this.lbVedict.Text = "Can't Find SimPe at All!";
 				this.lbVedict.Visible = true;
 			}
@@ -49,7 +49,7 @@ namespace SimPe
 		private void button2_Click(object sender, EventArgs e)
 		{
 			this.lbRelease.Font = new Font("Tahoma", 10F);
-			this.lbRelease.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+			this.lbRelease.TextAlign = ContentAlignment.TopLeft;
 			this.lbRelease.Text = ReleaseDir;
 			allgoody = allsame = true;
 			this.lv2.Visible = this.label5.Visible = this.lbVedict.Visible = true;
@@ -71,7 +71,7 @@ namespace SimPe
 			{
 				this.pictureBox1.Image = GetIcon.Fail;
 				this.button1.Visible = false;
-				this.lbVedict.ForeColor = System.Drawing.Color.Maroon;
+				this.lbVedict.ForeColor = Color.Maroon;
 				this.lbVedict.Text =
 					"Critical Files Missing!\n SimPe needs to be re-installed under the current user profile";
 			}
@@ -79,7 +79,7 @@ namespace SimPe
 			{
 				this.pictureBox1.Image = GetIcon.Fail;
 				this.button1.Visible = true;
-				this.lbVedict.ForeColor = System.Drawing.Color.Maroon;
+				this.lbVedict.ForeColor = Color.Maroon;
 				this.lbVedict.Text = "File(s) Missing or Wrong Version!\n";
 				if (allthere == false)
 				{
@@ -95,7 +95,7 @@ namespace SimPe
 			{
 				this.pictureBox1.Image = GetIcon.Warn;
 				this.button1.Visible = true;
-				this.lbVedict.ForeColor = System.Drawing.Color.Indigo;
+				this.lbVedict.ForeColor = Color.Indigo;
 				this.lbVedict.Text = "File(s) Have changed Size!";
 				if (allthere == false)
 				{
@@ -106,13 +106,13 @@ namespace SimPe
 			{
 				this.pictureBox1.Image = GetIcon.Warn;
 				this.button1.Visible = true;
-				this.lbVedict.ForeColor = System.Drawing.Color.MediumVioletRed;
+				this.lbVedict.ForeColor = Color.MediumVioletRed;
 				this.lbVedict.Text = "Unknown File(s) found!";
 			}
 			else
 			{
 				this.pictureBox1.Image = GetIcon.OK;
-				this.lbVedict.ForeColor = System.Drawing.Color.Black;
+				this.lbVedict.ForeColor = Color.Black;
 				this.lbVedict.Text = "Everything appears normal";
 			}
 		}
@@ -121,7 +121,7 @@ namespace SimPe
 		{
 			removecrap();
 			this.lbRelease.Font = new Font("Tahoma", 10F);
-			this.lbRelease.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+			this.lbRelease.TextAlign = ContentAlignment.TopLeft;
 			this.lbRelease.Text = ReleaseDir;
 			this.label1.Visible =
 				this.label3.Visible =
@@ -329,17 +329,17 @@ namespace SimPe
 				lvi.SubItems.Add(Convert.ToString(s.Length));
 				if (cver.FileVersion != LongVersionToString(virsin))
 				{
-					lvi.ForeColor = System.Drawing.Color.DarkRed;
+					lvi.ForeColor = Color.DarkRed;
 					allgoody = false;
 				}
 				else if (s.Length != Convert.ToInt32(sise))
 				{
-					lvi.ForeColor = System.Drawing.Color.Indigo;
+					lvi.ForeColor = Color.Indigo;
 					allsame = false;
 				}
 				else
 				{
-					lvi.ForeColor = System.Drawing.Color.Black;
+					lvi.ForeColor = Color.Black;
 				}
 
 				s.Close();
@@ -352,7 +352,7 @@ namespace SimPe
 				lvi.SubItems.Add("Missing!");
 				lvi.SubItems.Add(sise);
 				lvi.SubItems.Add("0");
-				lvi.ForeColor = System.Drawing.Color.Red;
+				lvi.ForeColor = Color.Red;
 				allgoody = false;
 				lv2.Items.Add(lvi);
 			}
@@ -458,7 +458,7 @@ namespace SimPe
 				lvt.SubItems.Add("Missing!");
 				lvt.SubItems.Add("0");
 				lvt.SubItems.Add("0");
-				lvt.ForeColor = System.Drawing.Color.Red;
+				lvt.ForeColor = Color.Red;
 				lv2.Items.Add(lvt);
 			}
 		}
@@ -521,7 +521,7 @@ namespace SimPe
 					lvi.SubItems.Add(VersionToString(f.Version));
 					lvi.SubItems.Add("0");
 					lvi.SubItems.Add(f.Size.ToString());
-					lvi.ForeColor = System.Drawing.Color.MediumVioletRed;
+					lvi.ForeColor = Color.MediumVioletRed;
 					allthere = false;
 					this.lv2.Items.Add(lvi);
 					i++;
@@ -538,11 +538,11 @@ namespace SimPe
 			if (allthere == false)
 			{
 				if (
-					SimPe.Message.Show(
+					Message.Show(
 						"Settings Manager will either add the unknown files to the known file list or try to remove them.  Do you want Settings Manager to try to remove the Unknown File(s) ?",
 						"Unknown File(s) Found",
-						System.Windows.Forms.MessageBoxButtons.YesNo
-					) == System.Windows.Forms.DialogResult.Yes
+						MessageBoxButtons.YesNo
+					) == DialogResult.Yes
 				)
 				{
 					foreach (string crap in extracrap)

@@ -142,7 +142,7 @@ namespace SimPe.Plugin
 						{
 							if (citem.UIntegerValue > 0 && citem.UIntegerValue < 255)
 							{
-								return SimPe.Data.MetaData.GetBodyName(
+								return Data.MetaData.GetBodyName(
 									citem.UIntegerValue
 								);
 							}
@@ -155,8 +155,8 @@ namespace SimPe.Plugin
 
 						if (citem != null)
 						{
-							return SimPe.Data.MetaData.GetBodyName(
-								SimPe.Data.MetaData.GetBodyShapeid(citem.StringValue)
+							return Data.MetaData.GetBodyName(
+								Data.MetaData.GetBodyShapeid(citem.StringValue)
 							);
 						}
 					}
@@ -228,7 +228,7 @@ namespace SimPe.Plugin
 			if (pfd.Type == type)
 			{
 				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-					FileTable.FileIndex.FindFile(pfd, null);
+					FileTableBase.FileIndex.FindFile(pfd, null);
 				if (items.Length > 0)
 				{
 					GenericRcol rcol = new GenericRcol(null, false);
@@ -260,7 +260,7 @@ namespace SimPe.Plugin
 				}
 
 				Interfaces.Scenegraph.IScenegraphFileIndexItem item =
-					FileTable.FileIndex.FindFileByName(
+					FileTableBase.FileIndex.FindFileByName(
 						txtrname,
 						Data.MetaData.TXTR,
 						Data.MetaData.LOCAL_GROUP,
@@ -391,7 +391,7 @@ namespace SimPe.Plugin
 			{
 				string scat = "";
 				uint cat = this.Category;
-				Array a = System.Enum.GetValues(typeof(Data.SkinCategories));
+				Array a = Enum.GetValues(typeof(Data.SkinCategories));
 				foreach (Data.SkinCategories k in a)
 				{
 					if ((cat & (uint)k) == (uint)k)
@@ -415,7 +415,7 @@ namespace SimPe.Plugin
 			{
 				string spart = "";
 				uint part = this.OutfitPart;
-				Array a = System.Enum.GetValues(typeof(Data.SkinParts));
+				Array a = Enum.GetValues(typeof(Data.SkinParts));
 				foreach (Data.SkinParts k in a)
 				{
 					if ((part & (uint)k) == (uint)k)
@@ -439,7 +439,7 @@ namespace SimPe.Plugin
 			{
 				string sage = "";
 				uint age = this.Age;
-				Array a = System.Enum.GetValues(typeof(Data.Ages));
+				Array a = Enum.GetValues(typeof(Data.Ages));
 				foreach (Data.Ages k in a)
 				{
 					if ((age & (uint)k) == (uint)k)
@@ -463,7 +463,7 @@ namespace SimPe.Plugin
 			{
 				string ssex = "";
 				uint sex = this.Gender;
-				Array a = System.Enum.GetValues(typeof(Data.Sex));
+				Array a = Enum.GetValues(typeof(Data.Sex));
 				foreach (Data.Sex k in a)
 				{
 					if ((sex & (uint)k) == (uint)k)
@@ -525,9 +525,9 @@ namespace SimPe.Plugin
 				{
 					try
 					{
-						FileTable.FileIndex.Load();
+						FileTableBase.FileIndex.Load();
 						Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-							FileTable.FileIndex.FindFile(this, parent.Package);
+							FileTableBase.FileIndex.FindFile(this, parent.Package);
 						if (items.Length > 0)
 						{
 							PackedFiles.Wrapper.Cpf cpff =

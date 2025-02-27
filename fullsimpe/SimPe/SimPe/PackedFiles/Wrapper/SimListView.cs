@@ -76,7 +76,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			return Add(
 				sdesc,
-				SimPe.PackedFiles.Wrapper.SimPoolControl.GetImagePanelColor(sdesc)
+				SimPoolControl.GetImagePanelColor(sdesc)
 			);
 		}
 
@@ -207,7 +207,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 			else
 			{
-				imgbig = SimPe.GetImage.NoOne;
+				imgbig = GetImage.NoOne;
 			}
 
 			imgbig = Ambertation.Windows.Forms.Graph.ImagePanel.CreateThumbnail(

@@ -93,7 +93,7 @@ namespace SimPe.Packages
 		{
 			ICSharpCode.SharpZipLib.BZip2.BZip2.Decompress(instream, outstream, false); // newer ICSharpCode.SharpZipLib requires three parameters, param three means is the stream already in the app
 																						//ICSharpCode.SharpZipLib.BZip2.BZip2.Decompress(instream, outstream); // older ICSharpCode.SharpZipLib requires two parameters
-			outstream.Seek(0, System.IO.SeekOrigin.Begin);
+			outstream.Seek(0, SeekOrigin.Begin);
 		}
 
 		/// <summary>
@@ -114,7 +114,7 @@ namespace SimPe.Packages
 		{
 			Stream bos = outstream;
 			Stream bis = instream;
-			bis.Seek(0, System.IO.SeekOrigin.Begin);
+			bis.Seek(0, SeekOrigin.Begin);
 			int ch = bis.ReadByte();
 			ICSharpCode.SharpZipLib.BZip2.BZip2OutputStream bzos =
 				new ICSharpCode.SharpZipLib.BZip2.BZip2OutputStream(bos, (int)strength);
@@ -338,12 +338,12 @@ namespace SimPe.Packages
 			S2CPDescriptor desc
 		)
 		{
-			reader.BaseStream.Seek(offset, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(offset, SeekOrigin.Begin);
 			MemoryStream ms = new MemoryStream(reader.ReadBytes(length));
 
 			if (desc.Compressed == CompressionStrength.None)
 			{
-				GeneratableFile pkg = GeneratableFile.LoadFromStream(
+				GeneratableFile pkg = File.LoadFromStream(
 					new BinaryReader(ms)
 				);
 				return pkg;
@@ -352,7 +352,7 @@ namespace SimPe.Packages
 			{
 				MemoryStream unc = new MemoryStream();
 				Decompress(ms, unc);
-				GeneratableFile pkg = GeneratableFile.LoadFromStream(
+				GeneratableFile pkg = File.LoadFromStream(
 					new BinaryReader(unc)
 				);
 				pkg.FileName = desc.Name;
@@ -381,7 +381,7 @@ namespace SimPe.Packages
 				"",
 				"",
 				"",
-				Sims2CommunityPack.CompressionStrength.None,
+				CompressionStrength.None,
 				null,
 				true
 			);

@@ -196,7 +196,7 @@ namespace SimPe.Plugin.TabPage
 			this.groupBox7.Controls.Add(this.label19);
 			this.groupBox7.Controls.Add(this.tb_tn_ver);
 			this.groupBox7.Controls.Add(this.label26);
-			this.groupBox7.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.groupBox7.FlatStyle = FlatStyle.System;
 			this.groupBox7.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -285,9 +285,9 @@ namespace SimPe.Plugin.TabPage
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Bottom
-						) | System.Windows.Forms.AnchorStyles.Left
+							AnchorStyles.Top
+							| AnchorStyles.Bottom
+						) | AnchorStyles.Left
 					)
 				)
 			);
@@ -298,7 +298,7 @@ namespace SimPe.Plugin.TabPage
 			this.groupBox6.Controls.Add(this.label17);
 			this.groupBox6.Controls.Add(this.lb_tn);
 			this.groupBox6.Controls.Add(this.ll_tn_delete);
-			this.groupBox6.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.groupBox6.FlatStyle = FlatStyle.System;
 			this.groupBox6.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -318,8 +318,8 @@ namespace SimPe.Plugin.TabPage
 			this.ll_tn_add.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -405,9 +405,9 @@ namespace SimPe.Plugin.TabPage
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Bottom
-						) | System.Windows.Forms.AnchorStyles.Left
+							AnchorStyles.Top
+							| AnchorStyles.Bottom
+						) | AnchorStyles.Left
 					)
 				)
 			);
@@ -430,8 +430,8 @@ namespace SimPe.Plugin.TabPage
 			this.ll_tn_delete.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -455,7 +455,7 @@ namespace SimPe.Plugin.TabPage
 			this.groupBox15.Controls.Add(this.label50);
 			this.groupBox15.Controls.Add(this.tb_tn_tx);
 			this.groupBox15.Controls.Add(this.label49);
-			this.groupBox15.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.groupBox15.FlatStyle = FlatStyle.System;
 			this.groupBox15.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -576,7 +576,7 @@ namespace SimPe.Plugin.TabPage
 			this.groupBox16.Controls.Add(this.label53);
 			this.groupBox16.Controls.Add(this.tb_tn_rx);
 			this.groupBox16.Controls.Add(this.label54);
-			this.groupBox16.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.groupBox16.FlatStyle = FlatStyle.System;
 			this.groupBox16.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -729,7 +729,7 @@ namespace SimPe.Plugin.TabPage
 			this.groupBox12.Controls.Add(this.label56);
 			this.groupBox12.Controls.Add(this.tb_tn_ax);
 			this.groupBox12.Controls.Add(this.label57);
-			this.groupBox12.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.groupBox12.FlatStyle = FlatStyle.System;
 			this.groupBox12.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -888,7 +888,7 @@ namespace SimPe.Plugin.TabPage
 			this.groupBox18.Controls.Add(this.label61);
 			this.groupBox18.Controls.Add(this.tb_tn_ey);
 			this.groupBox18.Controls.Add(this.label62);
-			this.groupBox18.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.groupBox18.FlatStyle = FlatStyle.System;
 			this.groupBox18.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -1075,13 +1075,13 @@ namespace SimPe.Plugin.TabPage
 			try
 			{
 				Plugin.TransformNode tn = (Plugin.TransformNode)Tag;
-				Geometry.Quaternion q = SimPe.Geometry.Quaternion.FromAxisAngle(
+				Geometry.Quaternion q = Geometry.Quaternion.FromAxisAngle(
 					new Geometry.Vector3f(
 						Convert.ToSingle(tb_tn_ax.Text),
 						Convert.ToSingle(tb_tn_ay.Text),
 						Convert.ToSingle(tb_tn_az.Text)
 					),
-					SimPe.Geometry.Quaternion.DegToRad(Convert.ToSingle(tb_tn_a.Text))
+					Geometry.Quaternion.DegToRad(Convert.ToSingle(tb_tn_a.Text))
 				);
 
 				tn.Rotation = q;
@@ -1119,22 +1119,22 @@ namespace SimPe.Plugin.TabPage
 					this.tb_tn_ax.Text = q.Axis.X.ToString("N6");
 					this.tb_tn_ay.Text = q.Axis.Y.ToString("N6");
 					this.tb_tn_az.Text = q.Axis.Z.ToString("N6");
-					this.tb_tn_a.Text = SimPe
-						.Geometry.Quaternion.RadToDeg(q.Angle)
+					this.tb_tn_a.Text =
+						Geometry.Quaternion.RadToDeg(q.Angle)
 						.ToString("N6");
 				}
 
 				if (euler)
 				{
 					Geometry.Vector3f ea = q.GetEulerAngles();
-					this.tb_tn_ey.Text = SimPe
-						.Geometry.Quaternion.RadToDeg(ea.Y)
+					this.tb_tn_ey.Text =
+						Geometry.Quaternion.RadToDeg(ea.Y)
 						.ToString("N6");
-					this.tb_tn_ep.Text = SimPe
-						.Geometry.Quaternion.RadToDeg(ea.X)
+					this.tb_tn_ep.Text =
+						Geometry.Quaternion.RadToDeg(ea.X)
 						.ToString("N6");
-					this.tb_tn_er.Text = SimPe
-						.Geometry.Quaternion.RadToDeg(ea.Z)
+					this.tb_tn_er.Text =
+						Geometry.Quaternion.RadToDeg(ea.Z)
 						.ToString("N6");
 				}
 			}
@@ -1159,10 +1159,10 @@ namespace SimPe.Plugin.TabPage
 			try
 			{
 				Plugin.TransformNode tn = (Plugin.TransformNode)Tag;
-				Geometry.Quaternion q = SimPe.Geometry.Quaternion.FromEulerAngles(
-					SimPe.Geometry.Quaternion.DegToRad(Convert.ToSingle(tb_tn_ey.Text)),
-					SimPe.Geometry.Quaternion.DegToRad(Convert.ToSingle(tb_tn_ep.Text)),
-					SimPe.Geometry.Quaternion.DegToRad(Convert.ToSingle(tb_tn_er.Text))
+				Geometry.Quaternion q = Geometry.Quaternion.FromEulerAngles(
+					Geometry.Quaternion.DegToRad(Convert.ToSingle(tb_tn_ey.Text)),
+					Geometry.Quaternion.DegToRad(Convert.ToSingle(tb_tn_ep.Text)),
+					Geometry.Quaternion.DegToRad(Convert.ToSingle(tb_tn_er.Text))
 				);
 				tn.Rotation = q;
 

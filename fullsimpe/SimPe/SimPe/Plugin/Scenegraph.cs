@@ -177,7 +177,7 @@ namespace SimPe.Plugin
 				}
 
 				IScenegraphFileIndexItem item =
-					FileTable.FileIndex.FindFileByName(
+					FileTableBase.FileIndex.FindFileByName(
 						modelnames[i],
 						Data.MetaData.CRES,
 						Data.MetaData.LOCAL_GROUP,
@@ -252,7 +252,7 @@ namespace SimPe.Plugin
 					}
 
 					IScenegraphFileIndexItem subitem =
-						FileTable.FileIndex.FindSingleFile(pfd, null, true);
+						FileTableBase.FileIndex.FindSingleFile(pfd, null, true);
 
 					if (subitem != null)
 					{
@@ -271,7 +271,7 @@ namespace SimPe.Plugin
 								);
 
 								if (
-									Scenegraph.FileExcludeList.Contains(
+									FileExcludeList.Contains(
 										sub.FileName.Trim().ToLower()
 									)
 								)
@@ -406,7 +406,7 @@ namespace SimPe.Plugin
 					if (slavename != name)
 					{
 						IScenegraphFileIndexItem item =
-							FileTable.FileIndex.FindFileByName(
+							FileTableBase.FileIndex.FindFileByName(
 								slavename,
 								Data.MetaData.TXMT,
 								Data.MetaData.LOCAL_GROUP,
@@ -548,7 +548,7 @@ namespace SimPe.Plugin
 			LoadCache();
 
 			IScenegraphFileIndexItem[] items =
-				FileTable.FileIndex.FindFile(Data.MetaData.MMAT, true);
+				FileTableBase.FileIndex.FindFile(Data.MetaData.MMAT, true);
 			ArrayList itemlist = new ArrayList();
 			ArrayList contentlist = new ArrayList();
 			ArrayList defaultfam = new ArrayList();
@@ -615,7 +615,7 @@ namespace SimPe.Plugin
 						}
 
 						string name = k;
-						items = FileTable.FileIndex.FindFile(mci.FileDescriptor, null);
+						items = FileTableBase.FileIndex.FindFile(mci.FileDescriptor, null);
 
 						foreach (
 							IScenegraphFileIndexItem item in items
@@ -630,7 +630,7 @@ namespace SimPe.Plugin
 							MmatWrapper mmat = new MmatWrapper();
 							mmat.ProcessData(item);
 
-							string content = Scenegraph.MmatContent(mmat);
+							string content = MmatContent(mmat);
 							content = content.Trim().ToLower();
 							if (!contentlist.Contains(content))
 							{
@@ -645,7 +645,7 @@ namespace SimPe.Plugin
 									}
 
 									IScenegraphFileIndexItem txmtitem =
-										SimPe.FileTable.FileIndex.FindFileByName(
+										FileTableBase.FileIndex.FindFileByName(
 											mmat.GetSaveItem("name").StringValue
 												+ "_txmt",
 											Data.MetaData.TXMT,
@@ -929,7 +929,7 @@ namespace SimPe.Plugin
 		public Packages.GeneratableFile BuildPackage()
 		{
 			Packages.GeneratableFile pkg =
-				SimPe.Packages.GeneratableFile.LoadFromFile("simpe_memory");
+				Packages.File.LoadFromFile("simpe_memory");
 			BuildPackage(pkg);
 
 			return pkg;
@@ -1056,7 +1056,7 @@ namespace SimPe.Plugin
 					name += instance.Extension;
 					//Console.WriteLine("Str Linked: "+name);
 					IScenegraphFileIndexItem fii =
-						FileTable.FileIndex.FindFileByName(
+						FileTableBase.FileIndex.FindFileByName(
 							name,
 							instance.Type,
 							Hashes.GetHashGroupFromName(
@@ -1147,7 +1147,7 @@ namespace SimPe.Plugin
 			//this applies to all found NameMaps for TXTR Files
 			ArrayList foundnames = new ArrayList();
 			IScenegraphFileIndexItem[] namemapitems =
-				FileTable.FileIndex.FindFile(
+				FileTableBase.FileIndex.FindFile(
 					Data.MetaData.NAME_MAP,
 					0x52737256,
 					Data.MetaData.TXMT,
@@ -1166,7 +1166,7 @@ namespace SimPe.Plugin
 					if (name.StartsWith(modelname) && name.EndsWith("_wallmask_txmt"))
 					{
 						IScenegraphFileIndexItem item =
-							FileTable.FileIndex.FindFileByName(
+							FileTableBase.FileIndex.FindFileByName(
 								name,
 								Data.MetaData.TXMT,
 								ni.Group,
@@ -1245,7 +1245,7 @@ namespace SimPe.Plugin
 			}
 
 			IScenegraphFileIndexItem item =
-				FileTable.FileIndex.FindFileByName(
+				FileTableBase.FileIndex.FindFileByName(
 					name,
 					Data.MetaData.ANIM,
 					Data.MetaData.LOCAL_GROUP,
@@ -1308,7 +1308,7 @@ namespace SimPe.Plugin
 				foreach (Interfaces.Files.IPackedFileDescriptor p in re.Items)
 				{
 					IScenegraphFileIndexItem[] items =
-						FileTable.FileIndex.FindFile(p, null);
+						FileTableBase.FileIndex.FindFile(p, null);
 					foreach (
 						IScenegraphFileIndexItem item in items
 					)
@@ -1399,7 +1399,7 @@ namespace SimPe.Plugin
 				AddFromXml(cpf.GetItem("textureunder"), "_txtr", Data.MetaData.TXTR);
 
 				IScenegraphFileIndexItem[] items =
-					FileTable.FileIndex.FindFile(
+					FileTableBase.FileIndex.FindFile(
 						cpf.GetSaveItem("stringsetrestypeid").UIntegerValue,
 						cpf.GetSaveItem("stringsetgroupid").UIntegerValue,
 						cpf.GetSaveItem("stringsetid").UIntegerValue,
@@ -1432,7 +1432,7 @@ namespace SimPe.Plugin
 		protected void AddFromXml(string name, uint type)
 		{
 			IScenegraphFileIndexItem item =
-				FileTable.FileIndex.FindFileByName(
+				FileTableBase.FileIndex.FindFileByName(
 					name,
 					type,
 					Data.MetaData.LOCAL_GROUP,

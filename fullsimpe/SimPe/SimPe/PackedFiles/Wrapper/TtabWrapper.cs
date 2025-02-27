@@ -196,7 +196,7 @@ namespace SimPe.PackedFiles.Wrapper
 				throw new Exception(
 					"Unexpected data in TTAB header."
 						+ "  Read 0x"
-						+ SimPe.Helper.HexString(header[0])
+						+ Helper.HexString(header[0])
 						+ "."
 						+ "  Expected 0xFFFFFFFF."
 				);
@@ -245,7 +245,7 @@ namespace SimPe.PackedFiles.Wrapper
 		//all covered by AbstractWrapper
 		protected override string GetResourceName(Data.TypeAlias ta)
 		{
-			if (!SimPe.Helper.FileFormat)
+			if (!Helper.FileFormat)
 			{
 				return base.GetResourceName(ta);
 			}

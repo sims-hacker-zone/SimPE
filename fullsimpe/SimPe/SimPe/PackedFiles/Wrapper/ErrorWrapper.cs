@@ -59,7 +59,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public Interfaces.Plugin.IWrapperInfo WrapperDescription => new Interfaces.Plugin.AbstractWrapperInfo(
 					WrapperFileName,
-					SimPe.Localization.GetString("Unknown"),
+					Localization.GetString("Unknown"),
 					e.ToString() + ":" + e.Message,
 					1
 				);

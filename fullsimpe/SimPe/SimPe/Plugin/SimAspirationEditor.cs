@@ -20,8 +20,8 @@ namespace SimPe.Plugin
 			Data.MetaData.AspirationTypes[] res =
 				new Data.MetaData.AspirationTypes[]
 				{
-					SimPe.Data.MetaData.AspirationTypes.Nothing,
-					SimPe.Data.MetaData.AspirationTypes.Nothing,
+					Data.MetaData.AspirationTypes.Nothing,
+					Data.MetaData.AspirationTypes.Nothing,
 				};
 			ushort a = (ushort)sim.CharacterDescription.Aspiration;
 
@@ -37,7 +37,7 @@ namespace SimPe.Plugin
 				{
 					if ((a & i) == i)
 					{
-						if (res[0] == SimPe.Data.MetaData.AspirationTypes.Nothing)
+						if (res[0] == Data.MetaData.AspirationTypes.Nothing)
 						{
 							res[0] = (Data.MetaData.AspirationTypes)i;
 						}
@@ -111,7 +111,7 @@ namespace SimPe.Plugin
 			sim.CharacterDescription.Aspiration =
 				(Data.MetaData.AspirationTypes)a;
 
-			if (SimPe.Helper.WindowsRegistry.AllowChangeOfSecondaryAspiration && chg2)
+			if (Helper.WindowsRegistry.AllowChangeOfSecondaryAspiration && chg2)
 			{
 				NgbhItem itm = GetSecondaryAspirationToken(sim, true);
 				itm.Value = v;
@@ -150,14 +150,14 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			if (!SimPe.Helper.WindowsRegistry.AllowChangeOfSecondaryAspiration)
+			if (!Helper.WindowsRegistry.AllowChangeOfSecondaryAspiration)
 			{
 				return;
 			}
 
 			Interfaces.Plugin.IFileWrapper wrapper =
 				(Interfaces.Plugin.IFileWrapper)
-					FileTable.WrapperRegistry.FindHandler(SimPe.Data.MetaData.MEMORIES);
+					FileTableBase.WrapperRegistry.FindHandler(Data.MetaData.MEMORIES);
 
 			if (wrapper == null)
 			{
@@ -165,11 +165,11 @@ namespace SimPe.Plugin
 			}
 
 			Interfaces.Files.IPackedFileDescriptor[] mems = sim.Package.FindFiles(
-				SimPe.Data.MetaData.MEMORIES
+				Data.MetaData.MEMORIES
 			);
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in mems)
 			{
-				ngbh = new Ngbh(SimPe.FileTable.ProviderRegistry);
+				ngbh = new Ngbh(FileTableBase.ProviderRegistry);
 				ngbh.ProcessData(pfd, pkg, false);
 				return;
 			}
@@ -200,7 +200,7 @@ namespace SimPe.Plugin
 
 		protected ushort GetSecondaryAspirationValue(SDesc sim)
 		{
-			if (!SimPe.Helper.WindowsRegistry.AllowChangeOfSecondaryAspiration)
+			if (!Helper.WindowsRegistry.AllowChangeOfSecondaryAspiration)
 			{
 				return 0;
 			}

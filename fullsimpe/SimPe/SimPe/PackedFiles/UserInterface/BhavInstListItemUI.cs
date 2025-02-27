@@ -215,7 +215,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private static string cleanup(string str)
 		{
-			for (char c = System.Convert.ToChar(1); c < ' '; c++)
+			for (char c = Convert.ToChar(1); c < ' '; c++)
 			{
 				str = str.Replace(c, ' ');
 			}
@@ -301,7 +301,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.instrText.AutoSize = (
 				(bool)(resources.GetObject("instrText.AutoSize"))
 			);
-			this.instrText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.instrText.BorderStyle = BorderStyle.FixedSingle;
 			this.instrText.Dock = (
 				(DockStyle)(resources.GetObject("instrText.Dock"))
 			);
@@ -524,11 +524,11 @@ namespace SimPe.PackedFiles.UserInterface
 					resources.GetObject("bhavInstListItem.BackgroundImage")
 				)
 			);
-			this.bhavInstListItem.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.bhavInstListItem.BorderStyle = BorderStyle.None;
 			this.bhavInstListItem.Controls.Add(this.falseTarget);
 			this.bhavInstListItem.Controls.Add(this.trueTarget);
 			this.bhavInstListItem.Controls.Add(this.instrText);
-			this.bhavInstListItem.Cursor = System.Windows.Forms.Cursors.Default;
+			this.bhavInstListItem.Cursor = Cursors.Default;
 			this.bhavInstListItem.Dock = (
 				(DockStyle)(
 					resources.GetObject("bhavInstListItem.Dock")

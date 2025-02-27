@@ -38,17 +38,17 @@ namespace pjse.BhavNameWizards
 
 			if (i.OpCode < 0x1000)
 			{
-				prefix = pjse.Localization.GetString("lcGlobal");
+				prefix = Localization.GetString("lcGlobal");
 				group = i.Parent.GlobalGroup;
 			}
 			else if (i.OpCode < 0x2000)
 			{
-				prefix = pjse.Localization.GetString("lcPrivate");
+				prefix = Localization.GetString("lcPrivate");
 				group = i.Parent.PrivateGroup;
 			}
 			else
 			{
-				prefix = pjse.Localization.GetString("lcSemiGlobal");
+				prefix = Localization.GetString("lcSemiGlobal");
 				group = i.Parent.SemiGroup;
 			}
 		}
@@ -73,7 +73,7 @@ namespace pjse.BhavNameWizards
 				);
 				return (ftEntry != null)
 					? ftEntry
-					: pjse.Localization.GetString("bhavnotfound");
+					: Localization.GetString("bhavnotfound");
 			}
 		}
 
@@ -136,7 +136,7 @@ namespace pjse.BhavNameWizards
 
 			if (thisArgc == 0)
 			{
-				return lng ? pjse.Localization.GetString("noargs") : "";
+				return lng ? Localization.GetString("noargs") : "";
 			}
 
 			string s = "";
@@ -147,8 +147,8 @@ namespace pjse.BhavNameWizards
 					+ " "
 					+ (
 						thisArgc == 1
-							? pjse.Localization.GetString("oneArg")
-							: pjse.Localization.GetString("manyArgs")
+							? Localization.GetString("oneArg")
+							: Localization.GetString("manyArgs")
 					)
 					+ ": ";
 			}
@@ -312,7 +312,7 @@ namespace pjse.BhavNameWizards
 		{
 			if (!lng)
 			{
-				return pjse.Localization.GetString("bw_callerparams");
+				return Localization.GetString("bw_callerparams");
 			}
 
 			string s = "";
@@ -339,7 +339,7 @@ namespace pjse.BhavNameWizards
 		{
 			if (!lng)
 			{
-				return pjse.Localization.GetString("bwb_useTemps");
+				return Localization.GetString("bwb_useTemps");
 			}
 
 			string s = "";
@@ -376,7 +376,7 @@ namespace pjse.BhavNameWizards
 
 			if (!lng)
 			{
-				return (start > 0 ? "," : pjse.Localization.GetString("allZeros"));
+				return (start > 0 ? "," : Localization.GetString("allZeros"));
 			}
 
 			string s = "";
@@ -408,7 +408,7 @@ namespace pjse.BhavNameWizards
 		{
 			if (!lng)
 			{
-				return (start > 0 ? ", " : "") + pjse.Localization.GetString("unkops");
+				return (start > 0 ? ", " : "") + Localization.GetString("unkops");
 			}
 
 			string s = "";

@@ -44,7 +44,7 @@ namespace SimPe.Plugin
 			form.cbseminame.Items.Clear();
 
 			System.Collections.ArrayList names = new System.Collections.ArrayList();
-			foreach (Data.SemiGlobalAlias sga in SimPe.Data.MetaData.SemiGlobals)
+			foreach (Data.SemiGlobalAlias sga in Data.MetaData.SemiGlobals)
 			{
 				if (!names.Contains(sga.Name.Trim().ToLower()))
 				{

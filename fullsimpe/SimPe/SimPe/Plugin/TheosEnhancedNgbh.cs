@@ -129,7 +129,7 @@ namespace SimPe.Plugin
 			foreach (NgbhSlot slot in slots)
 			{
 				SDesc simDesc =
-					FileTable.ProviderRegistry.SimDescriptionProvider.SimInstance[
+					FileTableBase.ProviderRegistry.SimDescriptionProvider.SimInstance[
 						slot.SlotID
 					] as SDesc;
 				// SDesc always returns null
@@ -152,7 +152,7 @@ namespace SimPe.Plugin
 						{
 							// fix invalid sim instances, fixes things that aren't broken
 							ushort inst =
-								FileTable.ProviderRegistry.SimDescriptionProvider.GetInstance(
+								FileTableBase.ProviderRegistry.SimDescriptionProvider.GetInstance(
 									simMemory.SimID
 								);
 							if (simMemory.SimInstance != inst)
@@ -267,7 +267,7 @@ namespace SimPe.Plugin
 				}
 
 				SDesc simDesc =
-					FileTable.ProviderRegistry.SimDescriptionProvider.SimInstance[
+					FileTableBase.ProviderRegistry.SimDescriptionProvider.SimInstance[
 						(ushort)slot.SlotID
 					] as SDesc;
 				Collections.NgbhItems simMemories = slot.ItemsB;

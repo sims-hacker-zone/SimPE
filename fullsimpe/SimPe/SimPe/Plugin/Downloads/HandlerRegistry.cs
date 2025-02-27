@@ -42,30 +42,30 @@ namespace SimPe.Plugin.Downloads
 				this.AddFileHandler(ext, typeof(SevenZipHandler));
 			}
 
-			this.AddTypeHandler(SimPe.Cache.PackageType.Lot, typeof(LotTypeHandler));
+			this.AddTypeHandler(Cache.PackageType.Lot, typeof(LotTypeHandler));
 			this.AddTypeHandler(
-				SimPe.Cache.PackageType.Wallpaper,
+				Cache.PackageType.Wallpaper,
 				typeof(WallpaperTypeHandler)
 			);
 			this.AddTypeHandler(
-				SimPe.Cache.PackageType.Floor,
+				Cache.PackageType.Floor,
 				typeof(WallpaperTypeHandler)
 			);
 			this.AddTypeHandler(
-				SimPe.Cache.PackageType.Roof,
+				Cache.PackageType.Roof,
 				typeof(WallpaperTypeHandler)
 			);
 			this.AddTypeHandler(
-				SimPe.Cache.PackageType.Terrain,
+				Cache.PackageType.Terrain,
 				typeof(WallpaperTypeHandler)
 			);
-			this.AddTypeHandler(SimPe.Cache.PackageType.Sim, typeof(SimTypeHandler));
+			this.AddTypeHandler(Cache.PackageType.Sim, typeof(SimTypeHandler));
 			this.AddTypeHandler(
-				SimPe.Cache.PackageType.Neighbourhood,
+				Cache.PackageType.Neighbourhood,
 				typeof(NeighborhoodTypeHandler)
 			);
 			this.AddTypeHandler(
-				SimPe.Cache.PackageType.Recolour,
+				Cache.PackageType.Recolour,
 				typeof(RecolorTypeHandler)
 			);
 		}
@@ -102,7 +102,7 @@ namespace SimPe.Plugin.Downloads
 				return new XTypeHandler();
 			}
 
-			return System.Activator.CreateInstance(t, new object[] { }) as ITypeHandler;
+			return Activator.CreateInstance(t, new object[] { }) as ITypeHandler;
 		}
 
 		string FixedExtension(string extension)
@@ -140,12 +140,12 @@ namespace SimPe.Plugin.Downloads
 				return null;
 			}
 
-			if (!FileTable.FileIndex.Loaded)
+			if (!FileTableBase.FileIndex.Loaded)
 			{
-				FileTable.FileIndex.Load();
+				FileTableBase.FileIndex.Load();
 			}
 
-			return System.Activator.CreateInstance(t, new object[] { filename })
+			return Activator.CreateInstance(t, new object[] { filename })
 				as IPackageHandler;
 		}
 	}

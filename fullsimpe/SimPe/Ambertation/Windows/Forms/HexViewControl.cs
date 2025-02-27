@@ -1058,7 +1058,7 @@ namespace Ambertation.Windows.Forms
 				cachedimage,
 				e.ClipRectangle,
 				e.ClipRectangle,
-				System.Drawing.GraphicsUnit.Pixel
+				GraphicsUnit.Pixel
 			);
 		}
 

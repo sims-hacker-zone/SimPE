@@ -154,7 +154,7 @@ namespace SimPe.Interfaces
 			{
 				if (OnPrepareStart())
 				{
-					btStart.Text = SimPe.Localization.GetString("Stop");
+					btStart.Text = Localization.GetString("Stop");
 					btStart.Tag = true;
 					ResultGui.StartSearch(this);
 				}
@@ -172,7 +172,7 @@ namespace SimPe.Interfaces
 
 		internal void NotifyFinishedSearch()
 		{
-			btStart.Text = SimPe.Localization.GetString("Start");
+			btStart.Text = Localization.GetString("Start");
 			btStart.Tag = null;
 
 			System.Diagnostics.Debug.WriteLine("Notified search finish");

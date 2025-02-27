@@ -114,7 +114,7 @@ namespace SimPe.Plugin.Gmdc
 			TargetIndex = -1;
 			Action = GmdcImporterAction.Add;
 			Transformation = new VectorTransformation(
-				SimPe.Geometry.VectorTransformation.TransformOrder.TranslateRotate
+				VectorTransformation.TransformOrder.TranslateRotate
 			);
 
 			Scale = (float)(1.0);

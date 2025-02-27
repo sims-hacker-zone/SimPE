@@ -72,9 +72,9 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 
 			objds = new List<ExtObjd>();
 
-			FileTable.FileIndex.Load();
+			FileTableBase.FileIndex.Load();
 			Interfaces.Scenegraph.IScenegraphFileIndexItem[] objs =
-				FileTable.FileIndex.FindFileDiscardingGroup(
+				FileTableBase.FileIndex.FindFileDiscardingGroup(
 					Data.MetaData.OBJD_FILE,
 					0x41a7
 				);

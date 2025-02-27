@@ -184,7 +184,7 @@ namespace pj
 		{
 			if (!IsReallyEnabled(pfd, package))
 			{
-				System.Windows.Forms.MessageBox.Show(
+				MessageBox.Show(
 					SimPe.Localization.GetString(
 						"This is not an appropriate context in which to use this tool"
 					),

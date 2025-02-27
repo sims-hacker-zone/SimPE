@@ -206,10 +206,8 @@ namespace pjse.BhavOperandWizards.Wiz0x0008
 			// cbPicker2
 			//
 			resources.ApplyResources(this.cbPicker2, "cbPicker2");
-			this.cbPicker2.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbPicker2.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbPicker2.DropDownWidth = 384;
 			this.cbPicker2.Name = "cbPicker2";
@@ -217,10 +215,8 @@ namespace pjse.BhavOperandWizards.Wiz0x0008
 			// cbPicker1
 			//
 			resources.ApplyResources(this.cbPicker1, "cbPicker1");
-			this.cbPicker1.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbPicker1.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbPicker1.DropDownWidth = 384;
 			this.cbPicker1.Name = "cbPicker1";
@@ -233,10 +229,8 @@ namespace pjse.BhavOperandWizards.Wiz0x0008
 			// cbDataOwner2
 			//
 			resources.ApplyResources(this.cbDataOwner2, "cbDataOwner2");
-			this.cbDataOwner2.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbDataOwner2.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbDataOwner2.DropDownWidth = 384;
 			this.cbDataOwner2.Name = "cbDataOwner2";
@@ -249,10 +243,8 @@ namespace pjse.BhavOperandWizards.Wiz0x0008
 			// cbDataOwner1
 			//
 			resources.ApplyResources(this.cbDataOwner1, "cbDataOwner1");
-			this.cbDataOwner1.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbDataOwner1.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbDataOwner1.DropDownWidth = 384;
 			this.cbDataOwner1.Name = "cbDataOwner1";
@@ -260,7 +252,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0008
 			// UI
 			//
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.AutoScaleMode = AutoScaleMode.Font;
 			this.Controls.Add(this.pnWiz0x0008);
 			this.Name = "UI";
 			this.pnWiz0x0008.ResumeLayout(false);

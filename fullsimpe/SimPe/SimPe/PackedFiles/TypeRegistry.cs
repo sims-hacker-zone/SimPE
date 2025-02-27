@@ -485,7 +485,7 @@ namespace SimPe.PackedFiles
 		{
 			factory.LinkedRegistry = this;
 			factory.LinkedProvider = this;
-			string s = SimPe.Localization.GetString("Unknown");
+			string s = Localization.GetString("Unknown");
 #if !DEBUG
 			try
 #endif

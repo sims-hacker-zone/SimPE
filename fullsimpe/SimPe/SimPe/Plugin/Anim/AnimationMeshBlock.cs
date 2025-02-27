@@ -487,9 +487,9 @@ namespace SimPe.Plugin.Anim
 				|| this.Name == "buskel"
 			)
 			{
-				FileTable.FileIndex.Load();
+				FileTableBase.FileIndex.Load();
 				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-					FileTable.FileIndex.FindFile(Data.MetaData.CRES, true);
+					FileTableBase.FileIndex.FindFile(Data.MetaData.CRES, true);
 				foreach (
 					Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
 				)
@@ -542,7 +542,7 @@ namespace SimPe.Plugin.Anim
 				|| this.Name == "buskel"
 			)
 			{
-				FileTable.FileIndex.Load();
+				FileTableBase.FileIndex.Load();
 				ulong instns = 0xCCBC1AF8FFE2EDE9; //auskel
 				if (this.Name == "tuskel")
 				{
@@ -562,7 +562,7 @@ namespace SimPe.Plugin.Anim
 				}
 
 				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-					FileTable.FileIndex.FindFile(
+					FileTableBase.FileIndex.FindFile(
 						Data.MetaData.GMDC,
 						0x1C0532FA,
 						instns,

@@ -103,7 +103,7 @@ namespace pjse.BhavOperandWizards.WizRaw
 			catch (Exception ex)
 			{
 				SimPe.Helper.ExceptionMessage(
-					pjse.Localization.GetString("errconvert"),
+					Localization.GetString("errconvert"),
 					ex
 				);
 				return null;
@@ -140,7 +140,7 @@ namespace pjse.BhavOperandWizards.WizRaw
 			// UI
 			//
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.AutoScaleMode = AutoScaleMode.Dpi;
 			this.Controls.Add(this.pnWizRaw);
 			this.Name = "UI";
 			this.pnWizRaw.ResumeLayout(false);

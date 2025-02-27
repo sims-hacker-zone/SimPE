@@ -159,7 +159,7 @@ namespace SimPe.Plugin.Anim
 			this.tv.BackgroundImage = (
 				(System.Drawing.Image)(resources.GetObject("tv.BackgroundImage"))
 			);
-			this.tv.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.tv.BorderStyle = BorderStyle.None;
 			this.tv.ContextMenu = this.contextMenu1;
 			this.tv.Dock = (
 				(DockStyle)(resources.GetObject("tv.Dock"))
@@ -2144,7 +2144,7 @@ namespace SimPe.Plugin.Anim
 					f = af.XBlock.GetCompressedFloat(af.XBlock.Parameter);
 					if (afb.TransformationType == FrameType.Rotation)
 					{
-						f = (float)SimPe.Geometry.Quaternion.RadToDeg(f);
+						f = (float)Geometry.Quaternion.RadToDeg(f);
 					}
 
 					if (f == 0)
@@ -2193,7 +2193,7 @@ namespace SimPe.Plugin.Anim
 					f = af.YBlock.GetCompressedFloat(af.YBlock.Parameter);
 					if (afb.TransformationType == FrameType.Rotation)
 					{
-						f = (float)SimPe.Geometry.Quaternion.RadToDeg(f);
+						f = (float)Geometry.Quaternion.RadToDeg(f);
 					}
 
 					if (f == 0)
@@ -2242,7 +2242,7 @@ namespace SimPe.Plugin.Anim
 					f = af.ZBlock.GetCompressedFloat(af.ZBlock.Parameter);
 					if (afb.TransformationType == FrameType.Rotation)
 					{
-						f = (float)SimPe.Geometry.Quaternion.RadToDeg(f);
+						f = (float)Geometry.Quaternion.RadToDeg(f);
 					}
 
 					if (f == 0)

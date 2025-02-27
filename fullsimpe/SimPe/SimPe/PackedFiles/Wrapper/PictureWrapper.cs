@@ -50,7 +50,7 @@ namespace SimPe.PackedFiles.Wrapper
 				"Quaxi",
 				"---",
 				2,
-				System.Drawing.Image.FromStream(
+				Image.FromStream(
 					this.GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.pic.png")
 				)
@@ -89,7 +89,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			try
 			{
-				image = System.Drawing.Image.FromStream(reader.BaseStream);
+				image = Image.FromStream(reader.BaseStream);
 				return true;
 			}
 			catch (Exception)

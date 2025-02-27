@@ -37,7 +37,7 @@ namespace SimPe.Plugin
 				"Chris",
 				"To View/Edit the Invenory Item Index",
 				2,
-				SimPe.GetIcon.GameTit
+				GetIcon.GameTit
 			);
 		}
 

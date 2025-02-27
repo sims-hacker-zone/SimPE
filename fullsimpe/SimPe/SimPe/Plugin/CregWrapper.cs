@@ -138,7 +138,7 @@ namespace SimPe.Plugin
 				"Chris",
 				"Used to Identify custom Content, and keep track of available Game Content",
 				2,
-				SimPe.GetIcon.Writable
+				GetIcon.Writable
 			);
 		}
 
@@ -236,7 +236,7 @@ namespace SimPe.Plugin
 
 		internal void SetContent()
 		{
-			GooiVal = System.Guid.NewGuid().ToString().Replace("-", "");
+			GooiVal = Guid.NewGuid().ToString().Replace("-", "");
 			CRCVal = "00000000000000000000000000000000";
 			VersVal = "01";
 		}

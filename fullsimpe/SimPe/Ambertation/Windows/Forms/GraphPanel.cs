@@ -361,7 +361,7 @@ namespace Ambertation.Windows.Forms
 					{
 						if (((DragPanel)c).OnMouseDown(e))
 						{
-							if (e.Button == System.Windows.Forms.MouseButtons.Left)
+							if (e.Button == MouseButtons.Left)
 							{
 								hit = true;
 								((DragPanel)c).SetFocus(true);
@@ -370,7 +370,7 @@ namespace Ambertation.Windows.Forms
 						}
 					}
 
-					if (e.Button == System.Windows.Forms.MouseButtons.Left)
+					if (e.Button == MouseButtons.Left)
 					{
 						((DragPanel)c).SetFocus(false);
 					}

@@ -33,7 +33,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns the MemoryObject Cache
 		/// </summary>
-		internal static MemoryCacheFile ObjectCache => SimPe.PackedFiles.Wrapper.ObjectComboBox.ObjectCache;
+		internal static MemoryCacheFile ObjectCache => PackedFiles.Wrapper.ObjectComboBox.ObjectCache;
 
 		#region Code to Startup the UI
 

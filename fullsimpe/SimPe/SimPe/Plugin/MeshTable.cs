@@ -280,7 +280,7 @@ namespace SimPe.Plugin
 			ArrayList ret = new ArrayList();
 
 			IPackedFileDescriptor[] cresFiles = meshPackage.FindFiles(
-				SimPe.Data.MetaData.CRES
+				Data.MetaData.CRES
 			);
 			using (GenericRcol rcol = new GenericRcol())
 			{
@@ -320,7 +320,7 @@ namespace SimPe.Plugin
 
 			// find in all packages
 			IScenegraphFileIndexItem[] items =
-				FileTable.FileIndex.FindFileByGroupAndInstance(
+				FileTableBase.FileIndex.FindFileByGroupAndInstance(
 					reference.Group,
 					reference.LongInstance
 				);
@@ -339,7 +339,7 @@ namespace SimPe.Plugin
 			if (ret == null)
 			{
 				IScenegraphFileIndexItem[] sfi =
-					FileTable.FileIndex.FindFileDiscardingGroup(reference); //, pnfo.Package);
+					FileTableBase.FileIndex.FindFileDiscardingGroup(reference); //, pnfo.Package);
 				if (!Utility.IsNullOrEmpty(sfi))
 				{
 					ret = sfi[0];

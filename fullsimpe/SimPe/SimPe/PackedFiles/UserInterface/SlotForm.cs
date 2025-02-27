@@ -251,8 +251,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.visualStyleLinkLabel3.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -282,8 +282,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.visualStyleLinkLabel2.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -313,8 +313,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.visualStyleLinkLabel1.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -346,10 +346,10 @@ namespace SimPe.PackedFiles.UserInterface
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -362,7 +362,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.lv.Size = new System.Drawing.Size(304, 182);
 			this.lv.TabIndex = 24;
 			this.lv.UseCompatibleStateImageBehavior = false;
-			this.lv.View = System.Windows.Forms.View.Details;
+			this.lv.View = View.Details;
 			this.lv.SelectedIndexChanged += new EventHandler(this.Select);
 			//
 			// groupBox1
@@ -371,9 +371,9 @@ namespace SimPe.PackedFiles.UserInterface
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -401,9 +401,9 @@ namespace SimPe.PackedFiles.UserInterface
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -473,8 +473,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tabControl1.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -513,8 +513,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.label14.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -530,8 +530,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbi6.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -547,8 +547,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.label10.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -564,8 +564,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbf6.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -581,8 +581,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.label11.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -598,8 +598,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbf5.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -615,8 +615,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.label13.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -632,8 +632,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbf4.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -661,8 +661,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.label15.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -678,8 +678,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbs2.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -695,8 +695,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.label16.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -712,8 +712,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbs1.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -739,8 +739,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.label17.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -756,8 +756,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbf7.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -783,8 +783,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.label19.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -800,8 +800,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbi7.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -827,8 +827,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.label0A.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -844,8 +844,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbs3.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -871,8 +871,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.label20.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -888,8 +888,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbi8.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -915,8 +915,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.label18.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -932,8 +932,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbf8.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -961,8 +961,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.label21.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -978,8 +978,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbi10.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -995,8 +995,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.label22.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -1012,8 +1012,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbi9.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -1029,12 +1029,12 @@ namespace SimPe.PackedFiles.UserInterface
 			this.cbtype.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.cbtype.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbtype.DropDownStyle = ComboBoxStyle.DropDownList;
 			this.cbtype.Location = new System.Drawing.Point(392, 32);
 			this.cbtype.Name = "cbtype";
 			this.cbtype.Size = new System.Drawing.Size(136, 21);
@@ -1046,8 +1046,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.label9.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -1064,8 +1064,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.label8.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -1082,8 +1082,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbi5.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -1099,8 +1099,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.label7.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -1117,8 +1117,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbi4.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -1134,8 +1134,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.label6.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -1152,8 +1152,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbi3.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -1169,8 +1169,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.label5.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -1187,8 +1187,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbi2.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -1204,8 +1204,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.label4.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -1222,8 +1222,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbi1.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -1239,8 +1239,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.label3.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -1257,8 +1257,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbf3.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -1274,8 +1274,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.label2.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -1292,8 +1292,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbf2.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -1309,8 +1309,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.label1.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -1327,8 +1327,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbf1.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -1345,9 +1345,9 @@ namespace SimPe.PackedFiles.UserInterface
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -1360,7 +1360,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// label12
 			//
 			this.label12.AutoSize = true;
-			this.label12.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.label12.ImeMode = ImeMode.NoControl;
 			this.label12.Location = new System.Drawing.Point(0, 4);
 			this.label12.Name = "label12";
 			this.label12.Size = new System.Drawing.Size(83, 16);

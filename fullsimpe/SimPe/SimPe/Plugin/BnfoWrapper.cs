@@ -136,7 +136,7 @@ namespace SimPe.Plugin
 				"Quaxi",
 				"Contains Information about the Business on a Lot (like Customer Loyality)",
 				2,
-				SimPe.GetIcon.BnfoIco
+				GetIcon.BnfoIco
 			);
 		}
 		#endregion

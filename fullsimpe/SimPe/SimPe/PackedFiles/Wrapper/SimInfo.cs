@@ -14,7 +14,7 @@ namespace SimPe.PackedFiles.Wrapper
 			this.lbshead.Text += "\r\n  From the " + Sim.HouseholdName + " family";
 			if (
 				Sim.CharacterDescription.ServiceTypes
-				!= SimPe.Data.MetaData.ServiceTypes.Normal
+				!= Data.MetaData.ServiceTypes.Normal
 			)
 			{
 				this.lbshead.Text +=
@@ -25,7 +25,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 			else if (
 				Sim.CharacterDescription.Career
-				!= SimPe.Data.MetaData.Careers.Unemployed
+				!= Data.MetaData.Careers.Unemployed
 			)
 			{
 				this.lbshead.Text +=
@@ -35,7 +35,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 			else if (
 				Sim.CharacterDescription.Retired
-					!= SimPe.Data.MetaData.Careers.Unemployed
+					!= Data.MetaData.Careers.Unemployed
 				&& Sim.CharacterDescription.Realage > 19
 			)
 			{
@@ -46,7 +46,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 			else if (
 				Sim.University.OnCampus == 0x1
-				&& Sim.University.Major != SimPe.Data.Majors.Unset
+				&& Sim.University.Major != Data.Majors.Unset
 			)
 			{
 				this.lbshead.Text +=
@@ -55,7 +55,7 @@ namespace SimPe.PackedFiles.Wrapper
 			else if (
 				Sim.CharacterDescription.Realage < 17
 				&& Sim.CharacterDescription.SchoolType
-					!= SimPe.Data.MetaData.SchoolTypes.NoSchool
+					!= Data.MetaData.SchoolTypes.NoSchool
 			)
 			{
 				if (Sim.CharacterDescription.Realage < 3)
@@ -76,7 +76,7 @@ namespace SimPe.PackedFiles.Wrapper
 					this.lbshead.Text += " School";
 				}
 			}
-			this.lbInform.Text = SimPe.PackedFiles.UserInterface.SimOriGuid.AboutSim(
+			this.lbInform.Text = UserInterface.SimOriGuid.AboutSim(
 				Sim
 			);
 		}

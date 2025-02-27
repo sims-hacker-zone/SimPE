@@ -106,7 +106,7 @@ namespace pj
 				binkeys,
 			};
 
-			foreach (SimPe.FileTableItem fii in SimPe.FileTable.DefaultFolders)
+			foreach (SimPe.FileTableItem fii in SimPe.FileTableBase.DefaultFolders)
 			{
 				if (!fii.Use)
 				{
@@ -863,7 +863,7 @@ namespace pj
 			makeCpf3idrPair();
 			if (objKey3IDR == null)
 			{
-				System.Windows.Forms.MessageBox.Show(
+				MessageBox.Show(
 					L.Get("missing3IDR"),
 					L.Get("pjObjKeyHelp"),
 					MessageBoxButtons.OK,
@@ -873,7 +873,7 @@ namespace pj
 			}
 			if (objKeyCPF == null)
 			{
-				System.Windows.Forms.MessageBox.Show(
+				MessageBox.Show(
 					L.Get("missingCPF"),
 					L.Get("pjObjKeyHelp"),
 					MessageBoxButtons.OK,
@@ -958,7 +958,7 @@ namespace pj
 			if (txmtpkg == null)
 			{
 				SetPacks();
-				SimPe.FileTable.FileIndex.FILoad += new EventHandler(FileIndex_FILoad);
+				SimPe.FileTableBase.FileIndex.FILoad += new EventHandler(FileIndex_FILoad);
 			}
 			if (pfd.Type == SimPe.Data.MetaData.REF_FILE)
 			{
@@ -983,7 +983,7 @@ namespace pj
 		{
 			if (!IsReallyEnabled(pfd, package))
 			{
-				System.Windows.Forms.MessageBox.Show(
+				MessageBox.Show(
 					SimPe.Localization.GetString(
 						"This is not an appropriate context in which to use this tool"
 					),

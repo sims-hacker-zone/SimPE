@@ -63,7 +63,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 			{
 				if (cmp == null)
 				{
-					cmp = new ElementOrder(Gmdc.ElementSorting.XZY);
+					cmp = new ElementOrder(ElementSorting.XZY);
 				}
 
 				return cmp;

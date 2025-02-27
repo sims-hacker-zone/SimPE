@@ -58,8 +58,8 @@ namespace SimPe
 					+ "\"), System.ComponentModel.Editor(typeof(SimPe.SelectSimFolderUITypeEditor), typeof(System.Drawing.Design.UITypeEditor)),\n";
 				src +=
 					"\tDescription(\""
-					+ SimPe
-						.Localization.GetString("[Description:]")
+					+
+						Localization.GetString("[Description:]")
 						.Replace("{LongName}", ei.Name)
 						.Trim()
 						.Replace(Helper.lbr, "\\n")
@@ -89,7 +89,7 @@ namespace SimPe
 
 			try
 			{
-				System.Reflection.Assembly a = SimPe.RuntimeCompiler.Compile(
+				System.Reflection.Assembly a = RuntimeCompiler.Compile(
 					src,
 					new string[]
 					{
@@ -98,7 +98,7 @@ namespace SimPe
 					}
 				);
 				return (PathSettings)
-					SimPe.RuntimeCompiler.CreateInstance(
+					RuntimeCompiler.CreateInstance(
 						a,
 						"SimPe.RuntimePathSettings",
 						new object[0]

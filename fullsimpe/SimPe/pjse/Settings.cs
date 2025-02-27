@@ -212,7 +212,7 @@ namespace pjse
 
 		public override string ToString()
 		{
-			return pjse.Localization.GetString("pjse_Settings");
+			return Localization.GetString("pjse_Settings");
 		}
 
 		[Browsable(false)]

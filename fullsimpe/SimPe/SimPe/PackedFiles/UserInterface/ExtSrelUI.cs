@@ -40,7 +40,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		public ExtSrel()
 		{
-			Text = SimPe.Localization.GetString("Sim Relation Editor");
+			Text = Localization.GetString("Sim Relation Editor");
 
 			InitializeComponent();
 
@@ -84,26 +84,26 @@ namespace SimPe.PackedFiles.UserInterface
 			// label1
 			//
 			this.label1.AutoEllipsis = true;
-			this.label1.BackColor = System.Drawing.Color.Transparent;
+			this.label1.BackColor = Color.Transparent;
 			resources.ApplyResources(this.label1, "label1");
 			this.label1.Name = "label1";
 			//
 			// lbsims
 			//
 			resources.ApplyResources(this.lbsims, "lbsims");
-			this.lbsims.BackColor = System.Drawing.Color.Transparent;
+			this.lbsims.BackColor = Color.Transparent;
 			this.lbsims.Name = "lbsims";
 			//
 			// sc
 			//
 			resources.ApplyResources(this.sc, "sc");
-			this.sc.BackColor = System.Drawing.Color.Transparent;
+			this.sc.BackColor = Color.Transparent;
 			this.sc.Name = "sc";
 			this.sc.Srel = null;
 			//
 			// pb
 			//
-			this.pb.BackColor = System.Drawing.Color.Transparent;
+			this.pb.BackColor = Color.Transparent;
 			resources.ApplyResources(this.pb, "pb");
 			this.pb.Name = "pb";
 			this.pb.TabStop = false;
@@ -137,7 +137,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.lbsims.Text =
 				sc.SourceSimName
 				+ " "
-				+ SimPe.Localization.GetString("towards")
+				+ Localization.GetString("towards")
 				+ " "
 				+ sc.TargetSimName;
 			this.pb.Image = Ambertation.Drawing.GraphicRoutines.ScaleImage(
@@ -151,7 +151,7 @@ namespace SimPe.PackedFiles.UserInterface
 				pb.Size,
 				12,
 				Color.FromArgb(90, Color.Black),
-				SimPe.ThemeManager.Global.ThemeColorDark,
+				ThemeManager.Global.ThemeColorDark,
 				Color.White,
 				Color.FromArgb(80, Color.White),
 				true,

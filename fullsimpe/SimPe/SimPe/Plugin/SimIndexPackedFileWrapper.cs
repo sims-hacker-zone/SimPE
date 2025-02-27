@@ -41,20 +41,20 @@ namespace SimPe.Plugin
 				"Chris",
 				"To View/Edit the Index and Neighbour Id of the next sim to be created",
 				2,
-				SimPe.GetIcon.GameTit
+				GetIcon.GameTit
 			);
 		}
 
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
-			Idno idno = SimPe.Plugin.Idno.FromPackage(package);
+			Idno idno = Idno.FromPackage(package);
 			if (idno == null)
 			{
 				IsOK = true;
 			}
 			else
 			{
-				if (idno.Type == SimPe.Plugin.NeighborhoodType.Normal)
+				if (idno.Type == NeighborhoodType.Normal)
 				{
 					IsOK = true;
 				}

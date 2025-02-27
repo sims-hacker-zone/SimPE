@@ -227,7 +227,7 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// btnClear
 			//
-			this.btnClear.BackColor = System.Drawing.Color.Transparent;
+			this.btnClear.BackColor = Color.Transparent;
 			resources.ApplyResources(this.btnClear, "btnClear");
 			this.btnClear.Name = "btnClear";
 			this.btnClear.UseVisualStyleBackColor = false;

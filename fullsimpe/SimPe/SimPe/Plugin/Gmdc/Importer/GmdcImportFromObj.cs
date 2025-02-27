@@ -177,7 +177,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 					{
 						data[i] = Convert.ToSingle(
 							tokens[i],
-							AbstractGmdcImporter.DefaultCulture
+							DefaultCulture
 						);
 					}
 
@@ -232,7 +232,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 					{
 						data[i] = Convert.ToSingle(
 							tokens[i],
-							AbstractGmdcImporter.DefaultCulture
+							DefaultCulture
 						);
 					}
 

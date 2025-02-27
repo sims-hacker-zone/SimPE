@@ -132,16 +132,16 @@ namespace pjse
 			}
 			else if (i == 0)
 			{
-				FileTable.Entry[] items = pjse.FileTable.GFT[
+				FileTable.Entry[] items = FileTable.GFT[
 					wrapper.FileDescriptor.Type,
 					wrapper.FileDescriptor.Group,
 					wrapper.FileDescriptor.Instance,
-					pjse.FileTable.Source.Maxis
+					FileTable.Source.Maxis
 				];
 				if (items == null || items.Length == 0)
 				{
 					MessageBox.Show(
-						pjse.Localization.GetString("cmpNFCurrent", WrapperName),
+						Localization.GetString("cmpNFCurrent", WrapperName),
 						this.Text,
 						MessageBoxButtons.OK,
 						MessageBoxIcon.Stop
@@ -155,7 +155,7 @@ namespace pjse
 			{
 				exp = (SimPe.ExpansionItem)cmenuCompare.Items[i].Tag;
 				SimPe.Packages.GeneratableFile op =
-					SimPe.Packages.GeneratableFile.LoadFromFile(
+					SimPe.Packages.File.LoadFromFile(
 						System.IO.Path.Combine(
 							System.IO.Path.Combine(
 								exp.InstallFolder,
@@ -175,7 +175,7 @@ namespace pjse
 				if (pfd == null)
 				{
 					MessageBox.Show(
-						pjse.Localization.GetString("cmpNFExp", WrapperName, exp.Name),
+						Localization.GetString("cmpNFExp", WrapperName, exp.Name),
 						this.Text,
 						MessageBoxButtons.OK,
 						MessageBoxIcon.Stop

@@ -74,7 +74,7 @@ namespace SimPe.Plugin.Tool
 				Interfaces.Files.IPackedFileDescriptor pfd = e.Resource.FileDescriptor;
 				Interfaces.Plugin.IFileWrapper wrapper =
 					(Interfaces.Plugin.IFileWrapper)
-						FileTable.WrapperRegistry.FindHandler(pfd.Type);
+						FileTableBase.WrapperRegistry.FindHandler(pfd.Type);
 				if (wrapper != null)
 				{
 					wrapper.ProcessData(e.Resource);

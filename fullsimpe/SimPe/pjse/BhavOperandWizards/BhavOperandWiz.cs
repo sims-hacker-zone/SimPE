@@ -135,31 +135,31 @@ namespace pjse
 			// panel1
 			//
 			resources.ApplyResources(this.panel1, "panel1");
-			this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.panel1.BorderStyle = BorderStyle.FixedSingle;
 			this.panel1.Name = "panel1";
 			//
 			// OK
 			//
 			resources.ApplyResources(this.OK, "OK");
-			this.OK.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.OK.DialogResult = DialogResult.OK;
 			this.OK.Name = "OK";
 			//
 			// Cancel
 			//
 			resources.ApplyResources(this.Cancel, "Cancel");
-			this.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.Cancel.DialogResult = DialogResult.Cancel;
 			this.Cancel.Name = "Cancel";
 			//
 			// BhavOperandWiz
 			//
 			this.AcceptButton = this.OK;
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.AutoScaleMode = AutoScaleMode.Dpi;
 			this.CancelButton = this.Cancel;
 			this.Controls.Add(this.OK);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.Cancel);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+			this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
 			this.Name = "BhavOperandWiz";
 			this.ResumeLayout(false);
 		}
@@ -299,7 +299,7 @@ namespace pjse.BhavOperandWizards
 		{
 			if (this.ckbDecimal.Visible)
 			{
-				pjse.Settings.PJSE.DecimalDOValue = this.ckbDecimal.Checked;
+				Settings.PJSE.DecimalDOValue = this.ckbDecimal.Checked;
 			}
 		}
 
@@ -307,7 +307,7 @@ namespace pjse.BhavOperandWizards
 		{
 			if (this.ckbUseInstancePicker.Visible)
 			{
-				pjse.Settings.PJSE.InstancePickerAsText =
+				Settings.PJSE.InstancePickerAsText =
 					this.ckbUseInstancePicker.Checked;
 			}
 		}
@@ -332,11 +332,11 @@ namespace pjse.BhavOperandWizards
 		{
 			if (DataOwner == 0x1a)
 			{
-				return pjse.BhavWiz.ExpandBCONtoString(v, false);
+				return BhavWiz.ExpandBCONtoString(v, false);
 			}
 			else if (DataOwner == 0x2f)
 			{
-				return pjse.BhavWiz.ExpandBCONtoString(v, true);
+				return BhavWiz.ExpandBCONtoString(v, true);
 			}
 			else if (isDecimal)
 			{
@@ -354,11 +354,11 @@ namespace pjse.BhavOperandWizards
 		{
 			if (DataOwner == 0x1a)
 			{
-				return pjse.BhavWiz.StringtoExpandBCON(sender.Text, false);
+				return BhavWiz.StringtoExpandBCON(sender.Text, false);
 			}
 			else if (DataOwner == 0x2f)
 			{
-				return pjse.BhavWiz.StringtoExpandBCON(sender.Text, true);
+				return BhavWiz.StringtoExpandBCON(sender.Text, true);
 			}
 			else if (isDecimal)
 			{
@@ -488,10 +488,10 @@ namespace pjse.BhavOperandWizards
 				this.tbValue.Enter += new EventHandler(this.tbValue_Enter);
 			}
 
-			pjse.Settings.PJSE.DecimalDOValueChanged += new EventHandler(
+			Settings.PJSE.DecimalDOValueChanged += new EventHandler(
 				PJSE_DecimalDOValueChanged
 			);
-			Decimal = pjse.Settings.PJSE.DecimalDOValue;
+			Decimal = Settings.PJSE.DecimalDOValue;
 			if (this.ckbDecimal != null)
 			{
 				this.ckbDecimal.Checked = Decimal;
@@ -500,10 +500,10 @@ namespace pjse.BhavOperandWizards
 				);
 			}
 
-			pjse.Settings.PJSE.InstancePickerAsTextChanged += new EventHandler(
+			Settings.PJSE.InstancePickerAsTextChanged += new EventHandler(
 				PJSE_InstancePickerAsTextChanged
 			);
-			UseInstancePicker = pjse.Settings.PJSE.InstancePickerAsText;
+			UseInstancePicker = Settings.PJSE.InstancePickerAsText;
 			if (this.ckbUseInstancePicker != null)
 			{
 				this.ckbUseInstancePicker.Checked = UseInstancePicker;
@@ -522,7 +522,7 @@ namespace pjse.BhavOperandWizards
 
 		void PJSE_DecimalDOValueChanged(object sender, EventArgs e)
 		{
-			Decimal = pjse.Settings.PJSE.DecimalDOValue;
+			Decimal = Settings.PJSE.DecimalDOValue;
 			if (ckbDecimal != null && this.ckbDecimal.Checked != Decimal)
 			{
 				this.ckbDecimal.Checked = Decimal;
@@ -531,7 +531,7 @@ namespace pjse.BhavOperandWizards
 
 		void PJSE_InstancePickerAsTextChanged(object sender, EventArgs e)
 		{
-			UseInstancePicker = pjse.Settings.PJSE.InstancePickerAsText;
+			UseInstancePicker = Settings.PJSE.InstancePickerAsText;
 			if (
 				ckbUseInstancePicker != null
 				&& this.ckbUseInstancePicker.Checked != UseInstancePicker
@@ -639,7 +639,7 @@ namespace pjse.BhavOperandWizards
 						pickerNames = new List<string>(pickerNames);
 						pickerNames.Insert(
 							0,
-							"[0: " + pjse.Localization.GetString("invalid") + "]"
+							"[0: " + Localization.GetString("invalid") + "]"
 						);
 					}
 				}
@@ -736,7 +736,7 @@ namespace pjse.BhavOperandWizards
 							labels = new List<string>(labels);
 							labels.Insert(
 								0,
-								"[0: " + pjse.Localization.GetString("invalid") + "]"
+								"[0: " + Localization.GetString("invalid") + "]"
 							);
 						}
 					}

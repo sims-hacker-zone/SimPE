@@ -290,7 +290,7 @@ namespace SimPe.PackedFiles.UserInterface
 				);
 				if (System.IO.File.Exists(flname))
 				{
-					Packages.File fl = SimPe.Packages.File.LoadFromFile(flname);
+					Packages.File fl = Packages.File.LoadFromFile(flname);
 					Interfaces.Files.IPackedFileDescriptor pfd = fl.FindFile(
 						0x53545223,
 						0,
@@ -356,7 +356,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.pg.SelectedObject = null;
 
 			names = new Hashtable();
-			ArrayList ns = wnl.GetNames(SimPe.Plugin.WantType.Undefined);
+			ArrayList ns = wnl.GetNames(Plugin.WantType.Undefined);
 
 			int max = -1;
 			foreach (Interfaces.IAlias a in ns)

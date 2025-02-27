@@ -56,7 +56,7 @@ namespace SimPe.Plugin.Scanner
 
 		protected override void DoInitScan()
 		{
-			AbstractScanner.AddColumn(ListView, "Health", 100);
+			AddColumn(ListView, "Health", 100);
 		}
 
 		public void ScanPackage(
@@ -113,7 +113,7 @@ namespace SimPe.Plugin.Scanner
 							{
 								ExtObjd obj = new ExtObjd();
 								obj.ProcessData(pfd, si.Package);
-								if (obj.Ok != SimPe.PackedFiles.Wrapper.ObjdHealth.Ok)
+								if (obj.Ok != ObjdHealth.Ok)
 								{
 									ps.Data[0] = (uint)HealthState.NonDefaultObjd;
 								}
@@ -135,15 +135,15 @@ namespace SimPe.Plugin.Scanner
 								{
 									if (
 										g.FaceCount
-											> SimPe
-												.Plugin
-												.Gmdc
+											>
+
+												Gmdc
 												.AbstractGmdcImporter
 												.CRITICAL_FACE_AMOUNT
 										|| g.UsedVertexCount
-											> SimPe
-												.Plugin
-												.Gmdc
+											>
+
+												Gmdc
 												.AbstractGmdcImporter
 												.CRITICAL_VERTEX_AMOUNT
 									)
@@ -194,7 +194,7 @@ namespace SimPe.Plugin.Scanner
 			if (ps.State != TriState.Null)
 			{
 				HealthState cs = (HealthState)ps.Data[0];
-				AbstractScanner.SetSubItem(lvi, this.StartColum, cs.ToString(), ps);
+				SetSubItem(lvi, this.StartColum, cs.ToString(), ps);
 
 				//if (ps.Data.Length>1) AbstractScanner.SetSubItem(lvi, this.StartColum+1, ps.Data[1].ToString(), ps);
 			}
@@ -314,7 +314,7 @@ namespace SimPe.Plugin.Scanner
 
 									if (
 										objd.Ok
-										!= SimPe.PackedFiles.Wrapper.ObjdHealth.Ok
+										!= ObjdHealth.Ok
 									)
 									{
 										objd.SynchronizeUserData();

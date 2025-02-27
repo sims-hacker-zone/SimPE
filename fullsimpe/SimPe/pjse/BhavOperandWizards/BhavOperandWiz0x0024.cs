@@ -519,13 +519,13 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 
 				((TextBox)alTextBox[which]).Text =
 					(strnum <= 0)
-						? "[" + pjse.Localization.GetString("none") + "]"
+						? "[" + Localization.GetString("none") + "]"
 						: ((BhavWiz)inst).readStr(
 							scope,
 							GS.GlobalStr.DialogString,
 							(ushort)(strnum - 1),
 							-1,
-							pjse.Detail.ErrorNames
+							Detail.ErrorNames
 						);
 
 				((CheckBox)this.alCBUseTemp[which]).Checked = (
@@ -595,7 +595,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 
 		private void doStrChooser(int which)
 		{
-			FileTable.Entry[] items = pjse.FileTable.GFT[
+			FileTable.Entry[] items = FileTable.GFT[
 				(uint)SimPe.Data.MetaData.STRING_FILE,
 				inst.Parent.GroupForScope(scope),
 				(uint)GS.GlobalStr.DialogString
@@ -604,9 +604,9 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 			if (items == null || items.Length == 0)
 			{
 				MessageBox.Show(
-					pjse.Localization.GetString("bow_noStrings")
+					Localization.GetString("bow_noStrings")
 						+ " ("
-						+ pjse.Localization.GetString(scope.ToString())
+						+ Localization.GetString(scope.ToString())
 						+ ")"
 				);
 				return; // eek!
@@ -963,7 +963,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 			//
 			// tbStrTitle
 			//
-			this.tbStrTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.tbStrTitle.BorderStyle = BorderStyle.None;
 			resources.ApplyResources(this.tbStrTitle, "tbStrTitle");
 			this.tbStrTitle.Name = "tbStrTitle";
 			this.tbStrTitle.ReadOnly = true;
@@ -971,7 +971,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 			//
 			// tbStrButton3
 			//
-			this.tbStrButton3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.tbStrButton3.BorderStyle = BorderStyle.None;
 			resources.ApplyResources(this.tbStrButton3, "tbStrButton3");
 			this.tbStrButton3.Name = "tbStrButton3";
 			this.tbStrButton3.ReadOnly = true;
@@ -979,7 +979,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 			//
 			// tbStrButton2
 			//
-			this.tbStrButton2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.tbStrButton2.BorderStyle = BorderStyle.None;
 			resources.ApplyResources(this.tbStrButton2, "tbStrButton2");
 			this.tbStrButton2.Name = "tbStrButton2";
 			this.tbStrButton2.ReadOnly = true;
@@ -1021,10 +1021,8 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 			//
 			// cbTVMessage
 			//
-			this.cbTVMessage.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbTVMessage.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbTVMessage.Items.AddRange(
 				new object[]
@@ -1122,10 +1120,8 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 			//
 			// cbIconType
 			//
-			this.cbIconType.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbIconType.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbIconType.DropDownWidth = 120;
 			resources.ApplyResources(this.cbIconType, "cbIconType");
@@ -1144,7 +1140,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 			//
 			// tbStrButton1
 			//
-			this.tbStrButton1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.tbStrButton1.BorderStyle = BorderStyle.None;
 			resources.ApplyResources(this.tbStrButton1, "tbStrButton1");
 			this.tbStrButton1.Name = "tbStrButton1";
 			this.tbStrButton1.ReadOnly = true;
@@ -1157,7 +1153,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 			//
 			// tbStrMessage
 			//
-			this.tbStrMessage.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.tbStrMessage.BorderStyle = BorderStyle.None;
 			resources.ApplyResources(this.tbStrMessage, "tbStrMessage");
 			this.tbStrMessage.Name = "tbStrMessage";
 			this.tbStrMessage.ReadOnly = true;
@@ -1181,10 +1177,8 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 			//
 			// cbTVTitle
 			//
-			this.cbTVTitle.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbTVTitle.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbTVTitle.Items.AddRange(
 				new object[]
@@ -1208,10 +1202,8 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 			//
 			// cbTVButton3
 			//
-			this.cbTVButton3.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbTVButton3.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbTVButton3.Items.AddRange(
 				new object[]
@@ -1235,10 +1227,8 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 			//
 			// cbTVButton2
 			//
-			this.cbTVButton2.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbTVButton2.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbTVButton2.Items.AddRange(
 				new object[]
@@ -1262,10 +1252,8 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 			//
 			// cbTVButton1
 			//
-			this.cbTVButton1.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbTVButton1.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbTVButton1.Items.AddRange(
 				new object[]
@@ -1302,10 +1290,8 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 			//
 			// cbScope
 			//
-			this.cbScope.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbScope.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbScope.Items.AddRange(
 				new object[]
@@ -1358,7 +1344,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 			//
 			// cbType
 			//
-			this.cbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbType.DropDownStyle = ComboBoxStyle.DropDownList;
 			this.cbType.DropDownWidth = 160;
 			resources.ApplyResources(this.cbType, "cbType");
 			this.cbType.Name = "cbType";
@@ -1399,10 +1385,8 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 			//
 			// cbTempVar
 			//
-			this.cbTempVar.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbTempVar.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbTempVar.Items.AddRange(
 				new object[]
@@ -1482,10 +1466,8 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 			// cbTnsStyle
 			//
 			resources.ApplyResources(this.cbTnsStyle, "cbTnsStyle");
-			this.cbTnsStyle.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbTnsStyle.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbTnsStyle.Name = "cbTnsStyle";
 			this.cbTnsStyle.SelectedIndexChanged += new EventHandler(
@@ -1505,7 +1487,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 			// UI
 			//
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.AutoScaleMode = AutoScaleMode.Dpi;
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.pnWiz0x0024);

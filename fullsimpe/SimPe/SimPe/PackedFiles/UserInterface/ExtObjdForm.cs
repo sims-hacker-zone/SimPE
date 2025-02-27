@@ -258,7 +258,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 
 			this.cbsort.Enum = typeof(Data.ObjFunctionSubSort);
-			this.cbsort.ResourceManager = SimPe.Localization.Manager;
+			this.cbsort.ResourceManager = Localization.Manager;
 
 			if (Helper.ECCorNewSEfound)
 			{
@@ -276,7 +276,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 			if (
 				!UserVerification.HaveUserId
-				|| SimPe.PathProvider.Global.EPInstalled <= 1
+				|| PathProvider.Global.EPInstalled <= 1
 			)
 			{
 				this.cbBuildSort.Visible = this.taskBox1.Visible = false;
@@ -427,14 +427,14 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			names = null;
 			string objDefGLUAFile = System.IO.Path.Combine(
-				SimPe.PathProvider.Global.Latest.InstallFolder,
+				PathProvider.Global.Latest.InstallFolder,
 				"TSData\\Res\\ObjectScripts\\ObjectScripts.package"
 			);
 			if (!System.IO.File.Exists(objDefGLUAFile))
 			{
 				return;
 			}
-			IPackageFile glua = SimPe.Packages.File.LoadFromFile(objDefGLUAFile);
+			IPackageFile glua = Packages.File.LoadFromFile(objDefGLUAFile);
 			if (glua == null)
 			{
 				return;
@@ -488,14 +488,14 @@ namespace SimPe.PackedFiles.UserInterface
 			names = null;
 			string pjseGlobalStringFile;
 			pjseGlobalStringFile = System.IO.Path.Combine(
-				SimPe.Helper.SimPePluginPath,
+				Helper.SimPePluginPath,
 				"pjse.coder.plugin\\GlobalStrings.package"
 			);
 			if (!System.IO.File.Exists(pjseGlobalStringFile))
 			{
 				return;
 			}
-			IPackageFile gs = SimPe.Packages.File.LoadFromFile(pjseGlobalStringFile);
+			IPackageFile gs = Packages.File.LoadFromFile(pjseGlobalStringFile);
 			if (gs == null)
 			{
 				return;
@@ -598,7 +598,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 			try
 			{
-				if (objd.Ok != Wrapper.ObjdHealth.Ok)
+				if (objd.Ok != ObjdHealth.Ok)
 				{
 					this.lbIsOk.Text = "Please commit! (" + objd.Ok.ToString() + ")";
 					this.lbIsOk.Visible = true;
@@ -691,8 +691,8 @@ namespace SimPe.PackedFiles.UserInterface
 
 				this.llgetGUID.Visible = (
 					UserVerification.HaveUserId
-					&& objd.Type != SimPe.Data.ObjectTypes.Person
-					&& objd.Type != SimPe.Data.ObjectTypes.UnlinkedSim
+					&& objd.Type != Data.ObjectTypes.Person
+					&& objd.Type != Data.ObjectTypes.UnlinkedSim
 				);
 				//this.lladdgooee.Visible = (UserVerification.HaveUserId && !SimPe.Plugin.Subhoods.GuidExists(objd.Guid) && objd.Type != SimPe.Data.ObjectTypes.Person && objd.Type != SimPe.Data.ObjectTypes.UnlinkedSim);
 			}
@@ -844,7 +844,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.pnobjd.Controls.Add(this.tbguid);
 			this.pnobjd.Controls.Add(this.label8);
 			this.pnobjd.Controls.Add(this.panel6);
-			this.pnobjd.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.pnobjd.Dock = DockStyle.Fill;
 			//this.pnobjd.EndColour = System.Drawing.SystemColors.Control;
 			this.pnobjd.Font = new System.Drawing.Font(
 				"Verdana",
@@ -899,7 +899,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.label4.ImeMode = ImeMode.NoControl;
 			this.label4.Location = new System.Drawing.Point(8, 288);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(108, 13);
@@ -924,7 +924,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.label3.ImeMode = ImeMode.NoControl;
 			this.label3.Location = new System.Drawing.Point(15, 261);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(101, 13);
@@ -933,7 +933,7 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// btnUpdateMMAT
 			//
-			this.btnUpdateMMAT.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.btnUpdateMMAT.FlatStyle = FlatStyle.System;
 			this.btnUpdateMMAT.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -984,7 +984,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// cball
 			//
 			this.cball.CheckAlign = System.Drawing.ContentAlignment.BottomLeft;
-			this.cball.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cball.FlatStyle = FlatStyle.System;
 			this.cball.Location = new System.Drawing.Point(98, 142);
 			this.cball.Name = "cball";
 			this.cball.Size = new System.Drawing.Size(120, 21);
@@ -1000,10 +1000,10 @@ namespace SimPe.PackedFiles.UserInterface
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -1020,10 +1020,8 @@ namespace SimPe.PackedFiles.UserInterface
 			// tpcatalogsort
 			//
 			this.tpcatalogsort.BackColor = System.Drawing.Color.Transparent;
-			this.tpcatalogsort.BackgroundImageLayout = System
-				.Windows
-				.Forms
-				.ImageLayout
+			this.tpcatalogsort.BackgroundImageLayout =
+				ImageLayout
 				.Zoom;
 			this.tpcatalogsort.Controls.Add(this.pngradient);
 			this.tpcatalogsort.Location = new System.Drawing.Point(4, 22);
@@ -1040,7 +1038,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.pngradient.Controls.Add(this.taskBox1);
 			this.pngradient.Controls.Add(this.groupBox2);
 			this.pngradient.Controls.Add(this.groupBox1);
-			this.pngradient.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.pngradient.Dock = DockStyle.Fill;
 			//this.pngradient.EndColour = System.Drawing.SystemColors.Control;
 			this.pngradient.Font = new System.Drawing.Font(
 				"Verdana",
@@ -1199,7 +1197,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// cbaspiration
 			//
 			this.cbaspiration.AutoSize = true;
-			this.cbaspiration.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbaspiration.FlatStyle = FlatStyle.System;
 			this.cbaspiration.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -1234,7 +1232,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// cbhobby
 			//
 			this.cbhobby.AutoSize = true;
-			this.cbhobby.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbhobby.FlatStyle = FlatStyle.System;
 			this.cbhobby.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -1254,7 +1252,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// cbappliances
 			//
 			this.cbappliances.AutoSize = true;
-			this.cbappliances.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbappliances.FlatStyle = FlatStyle.System;
 			this.cbappliances.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -1274,7 +1272,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// cbdecorative
 			//
 			this.cbdecorative.AutoSize = true;
-			this.cbdecorative.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbdecorative.FlatStyle = FlatStyle.System;
 			this.cbdecorative.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -1294,7 +1292,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// cbelectronics
 			//
 			this.cbelectronics.AutoSize = true;
-			this.cbelectronics.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbelectronics.FlatStyle = FlatStyle.System;
 			this.cbelectronics.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -1314,7 +1312,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// cbgeneral
 			//
 			this.cbgeneral.AutoSize = true;
-			this.cbgeneral.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbgeneral.FlatStyle = FlatStyle.System;
 			this.cbgeneral.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -1334,7 +1332,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// cblightning
 			//
 			this.cblightning.AutoSize = true;
-			this.cblightning.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cblightning.FlatStyle = FlatStyle.System;
 			this.cblightning.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -1354,7 +1352,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// cbplumbing
 			//
 			this.cbplumbing.AutoSize = true;
-			this.cbplumbing.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbplumbing.FlatStyle = FlatStyle.System;
 			this.cbplumbing.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -1374,7 +1372,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// cbseating
 			//
 			this.cbseating.AutoSize = true;
-			this.cbseating.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbseating.FlatStyle = FlatStyle.System;
 			this.cbseating.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -1394,7 +1392,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// cbsurfaces
 			//
 			this.cbsurfaces.AutoSize = true;
-			this.cbsurfaces.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbsurfaces.FlatStyle = FlatStyle.System;
 			this.cbsurfaces.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -1510,7 +1508,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.lbprise.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.lbprise.ImeMode = ImeMode.NoControl;
 			this.lbprise.Location = new System.Drawing.Point(94, 173);
 			this.lbprise.Name = "lbprise";
 			this.lbprise.Size = new System.Drawing.Size(44, 13);
@@ -1538,7 +1536,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// cbkids
 			//
 			this.cbkids.AutoSize = true;
-			this.cbkids.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbkids.FlatStyle = FlatStyle.System;
 			this.cbkids.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -1556,7 +1554,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// cbbathroom
 			//
 			this.cbbathroom.AutoSize = true;
-			this.cbbathroom.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbbathroom.FlatStyle = FlatStyle.System;
 			this.cbbathroom.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -1576,7 +1574,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// cbbedroom
 			//
 			this.cbbedroom.AutoSize = true;
-			this.cbbedroom.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbbedroom.FlatStyle = FlatStyle.System;
 			this.cbbedroom.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -1594,7 +1592,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// cbdinigroom
 			//
 			this.cbdinigroom.AutoSize = true;
-			this.cbdinigroom.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbdinigroom.FlatStyle = FlatStyle.System;
 			this.cbdinigroom.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -1614,7 +1612,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// cbkitchen
 			//
 			this.cbkitchen.AutoSize = true;
-			this.cbkitchen.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbkitchen.FlatStyle = FlatStyle.System;
 			this.cbkitchen.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -1632,7 +1630,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// cbmisc
 			//
 			this.cbmisc.AutoSize = true;
-			this.cbmisc.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbmisc.FlatStyle = FlatStyle.System;
 			this.cbmisc.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -1650,7 +1648,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// cboutside
 			//
 			this.cboutside.AutoSize = true;
-			this.cboutside.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cboutside.FlatStyle = FlatStyle.System;
 			this.cboutside.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -1668,7 +1666,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// cblivingroom
 			//
 			this.cblivingroom.AutoSize = true;
-			this.cblivingroom.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cblivingroom.FlatStyle = FlatStyle.System;
 			this.cblivingroom.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -1688,7 +1686,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// cbstudy
 			//
 			this.cbstudy.AutoSize = true;
-			this.cbstudy.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbstudy.FlatStyle = FlatStyle.System;
 			this.cbstudy.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -1719,7 +1717,7 @@ namespace SimPe.PackedFiles.UserInterface
 			//this.pnpritty.BackgroundImageAnchor = System.Windows.Forms.Panel.ImageLayout.TopRight;
 			//this.pnpritty.BackgroundImageZoomToFit = true;
 			this.pnpritty.Controls.Add(this.tbreqeps);
-			this.pnpritty.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.pnpritty.Dock = DockStyle.Fill;
 			//this.pnpritty.EndColour = System.Drawing.SystemColors.Control;
 			this.pnpritty.Font = new System.Drawing.Font(
 				"Verdana",
@@ -2060,8 +2058,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.panel1.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -2108,7 +2106,7 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// pg
 			//
-			this.pg.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.pg.Dock = DockStyle.Fill;
 			this.pg.HelpVisible = false;
 			this.pg.LineColor = System.Drawing.SystemColors.ScrollBar;
 			this.pg.Location = new System.Drawing.Point(0, 0);
@@ -2125,8 +2123,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.tbtype.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -2142,12 +2140,12 @@ namespace SimPe.PackedFiles.UserInterface
 			this.cbtype.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.cbtype.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbtype.DropDownStyle = ComboBoxStyle.DropDownList;
 			this.cbtype.Location = new System.Drawing.Point(752, 32);
 			this.cbtype.Name = "cbtype";
 			this.cbtype.Size = new System.Drawing.Size(168, 21);
@@ -2165,7 +2163,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.label63.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.label63.ImeMode = ImeMode.NoControl;
 			this.label63.Location = new System.Drawing.Point(41, 207);
 			this.label63.Name = "label63";
 			this.label63.Size = new System.Drawing.Size(75, 13);
@@ -2190,7 +2188,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.label97.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.label97.ImeMode = ImeMode.NoControl;
 			this.label97.Location = new System.Drawing.Point(17, 234);
 			this.label97.Name = "label97";
 			this.label97.Size = new System.Drawing.Size(99, 13);
@@ -2216,7 +2214,7 @@ namespace SimPe.PackedFiles.UserInterface
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.llgetGUID.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.llgetGUID.ImeMode = ImeMode.NoControl;
 			this.llgetGUID.LinkArea = new LinkArea(0, 9);
 			this.llgetGUID.Location = new System.Drawing.Point(213, 99);
 			this.llgetGUID.Name = "llgetGUID";
@@ -2232,8 +2230,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.label65.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -2244,7 +2242,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.label65.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.label65.ImeMode = ImeMode.NoControl;
 			this.label65.Location = new System.Drawing.Point(661, 35);
 			this.label65.Name = "label65";
 			this.label65.Size = new System.Drawing.Size(85, 13);
@@ -2268,7 +2266,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.label9.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.label9.ImeMode = ImeMode.NoControl;
 			this.label9.Location = new System.Drawing.Point(45, 35);
 			this.label9.Name = "label9";
 			this.label9.Size = new System.Drawing.Size(67, 13);
@@ -2293,7 +2291,7 @@ namespace SimPe.PackedFiles.UserInterface
 				8.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.label8.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.label8.ImeMode = ImeMode.NoControl;
 			this.label8.Location = new System.Drawing.Point(69, 99);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(40, 13);
@@ -2306,9 +2304,9 @@ namespace SimPe.PackedFiles.UserInterface
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -2392,8 +2390,8 @@ namespace SimPe.PackedFiles.UserInterface
 						false;
 				this.llgetGUID.Visible = (
 					UserVerification.HaveUserId
-					&& wrapper.Type != SimPe.Data.ObjectTypes.Person
-					&& wrapper.Type != SimPe.Data.ObjectTypes.UnlinkedSim
+					&& wrapper.Type != Data.ObjectTypes.Person
+					&& wrapper.Type != Data.ObjectTypes.UnlinkedSim
 				);
 				//this.lladdgooee.Visible = (UserVerification.HaveUserId && !SimPe.Plugin.Subhoods.GuidExists(wrapper.Guid) && wrapper.Type != SimPe.Data.ObjectTypes.Person && wrapper.Type != SimPe.Data.ObjectTypes.UnlinkedSim);
 				this.Tag = null;
@@ -2579,8 +2577,8 @@ namespace SimPe.PackedFiles.UserInterface
 			finally
 			{
 				if (
-					wrapper.Type != SimPe.Data.ObjectTypes.Person
-					&& wrapper.Type != SimPe.Data.ObjectTypes.UnlinkedSim
+					wrapper.Type != Data.ObjectTypes.Person
+					&& wrapper.Type != Data.ObjectTypes.UnlinkedSim
 				)
 				{
 					this.btnUpdateMMAT.Visible =
@@ -2769,17 +2767,17 @@ namespace SimPe.PackedFiles.UserInterface
 			if (cbBuildSort.SelectedIndex == 0) // none
 			{
 				wrapper.BuildSubSort = 0;
-				wrapper.Type = SimPe.Data.ObjectTypes.Normal;
+				wrapper.Type = Data.ObjectTypes.Normal;
 			}
 			if (cbBuildSort.SelectedIndex == 1)
 			{
 				wrapper.BuildSubSort = Data.BuildFunctionSubSort.General_Columns;
-				wrapper.Type = SimPe.Data.ObjectTypes.ArchitecturalSupport;
+				wrapper.Type = Data.ObjectTypes.ArchitecturalSupport;
 			}
 			if (cbBuildSort.SelectedIndex == 2)
 			{
 				wrapper.BuildSubSort = Data.BuildFunctionSubSort.General_Stairs;
-				wrapper.Type = SimPe.Data.ObjectTypes.Stairs;
+				wrapper.Type = Data.ObjectTypes.Stairs;
 			}
 			if (cbBuildSort.SelectedIndex == 3)
 			{
@@ -2789,12 +2787,12 @@ namespace SimPe.PackedFiles.UserInterface
 			if (cbBuildSort.SelectedIndex == 4)
 			{
 				wrapper.BuildSubSort = Data.BuildFunctionSubSort.General_TallColumns;
-				wrapper.Type = SimPe.Data.ObjectTypes.ArchitecturalSupport;
+				wrapper.Type = Data.ObjectTypes.ArchitecturalSupport;
 			}
 			if (cbBuildSort.SelectedIndex == 5)
 			{
 				wrapper.BuildSubSort = Data.BuildFunctionSubSort.General_Arch;
-				wrapper.Type = SimPe.Data.ObjectTypes.ArchitecturalSupport;
+				wrapper.Type = Data.ObjectTypes.ArchitecturalSupport;
 			}
 			if (cbBuildSort.SelectedIndex == 6)
 			{
@@ -2809,57 +2807,57 @@ namespace SimPe.PackedFiles.UserInterface
 			if (cbBuildSort.SelectedIndex == 8)
 			{
 				wrapper.BuildSubSort = Data.BuildFunctionSubSort.General_Architectural;
-				wrapper.Type = SimPe.Data.ObjectTypes.Normal;
+				wrapper.Type = Data.ObjectTypes.Normal;
 			}
 			if (cbBuildSort.SelectedIndex == 9)
 			{
 				wrapper.BuildSubSort = Data.BuildFunctionSubSort.Garden_Trees;
-				wrapper.Type = SimPe.Data.ObjectTypes.Normal;
+				wrapper.Type = Data.ObjectTypes.Normal;
 			}
 			if (cbBuildSort.SelectedIndex == 10)
 			{
 				wrapper.BuildSubSort = Data.BuildFunctionSubSort.Garden_Shrubs;
-				wrapper.Type = SimPe.Data.ObjectTypes.Normal;
+				wrapper.Type = Data.ObjectTypes.Normal;
 			}
 			if (cbBuildSort.SelectedIndex == 11)
 			{
 				wrapper.BuildSubSort = Data.BuildFunctionSubSort.Garden_Flowers;
-				wrapper.Type = SimPe.Data.ObjectTypes.Normal;
+				wrapper.Type = Data.ObjectTypes.Normal;
 			}
 			if (cbBuildSort.SelectedIndex == 12)
 			{
 				wrapper.BuildSubSort = Data.BuildFunctionSubSort.Garden_Objects;
-				wrapper.Type = SimPe.Data.ObjectTypes.Normal;
+				wrapper.Type = Data.ObjectTypes.Normal;
 			}
 			if (cbBuildSort.SelectedIndex == 13)
 			{
 				wrapper.BuildSubSort = Data.BuildFunctionSubSort.Openings_Door;
-				wrapper.Type = SimPe.Data.ObjectTypes.Door;
+				wrapper.Type = Data.ObjectTypes.Door;
 			}
 			if (cbBuildSort.SelectedIndex == 14)
 			{
 				wrapper.BuildSubSort = Data.BuildFunctionSubSort.Openings_TallWindow;
-				wrapper.Type = SimPe.Data.ObjectTypes.Window;
+				wrapper.Type = Data.ObjectTypes.Window;
 			}
 			if (cbBuildSort.SelectedIndex == 15)
 			{
 				wrapper.BuildSubSort = Data.BuildFunctionSubSort.Openings_Window;
-				wrapper.Type = SimPe.Data.ObjectTypes.Window;
+				wrapper.Type = Data.ObjectTypes.Window;
 			}
 			if (cbBuildSort.SelectedIndex == 16)
 			{
 				wrapper.BuildSubSort = Data.BuildFunctionSubSort.Openings_Gate;
-				wrapper.Type = SimPe.Data.ObjectTypes.Door;
+				wrapper.Type = Data.ObjectTypes.Door;
 			}
 			if (cbBuildSort.SelectedIndex == 17)
 			{
 				wrapper.BuildSubSort = Data.BuildFunctionSubSort.Openings_Arch;
-				wrapper.Type = SimPe.Data.ObjectTypes.Door;
+				wrapper.Type = Data.ObjectTypes.Door;
 			}
 			if (cbBuildSort.SelectedIndex == 18)
 			{
 				wrapper.BuildSubSort = Data.BuildFunctionSubSort.Openings_TallDoor;
-				wrapper.Type = SimPe.Data.ObjectTypes.Door;
+				wrapper.Type = Data.ObjectTypes.Door;
 			}
 			if (cbBuildSort.SelectedIndex == 19) // Unknown - won't change anything
 			{

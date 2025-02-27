@@ -206,10 +206,8 @@ namespace pjse.BhavOperandWizards.Wiz0x002d
 			//
 			// cbSlotType
 			//
-			this.cbSlotType.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbSlotType.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbSlotType.FormattingEnabled = true;
 			this.cbSlotType.Items.AddRange(
@@ -256,7 +254,7 @@ namespace pjse.BhavOperandWizards.Wiz0x002d
 			// UI
 			//
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.AutoScaleMode = AutoScaleMode.Dpi;
 			this.Controls.Add(this.pnWiz0x002d);
 			this.Name = "UI";
 			this.pnWiz0x002d.ResumeLayout(false);

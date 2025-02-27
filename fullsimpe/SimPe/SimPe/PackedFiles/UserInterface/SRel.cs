@@ -39,41 +39,41 @@ namespace SimPe.PackedFiles.UserInterface
 			form.cbfamtype.Items.Clear();
 			form.cbfamtype.Items.Add(
 				new LocalizedRelationshipTypes(
-					Data.MetaData.RelationshipTypes.Unset_Unknown
+					MetaData.RelationshipTypes.Unset_Unknown
 				)
 			);
 			form.cbfamtype.Items.Add(
-				new LocalizedRelationshipTypes(Data.MetaData.RelationshipTypes.Aunt)
+				new LocalizedRelationshipTypes(MetaData.RelationshipTypes.Aunt)
 			);
 			form.cbfamtype.Items.Add(
-				new LocalizedRelationshipTypes(Data.MetaData.RelationshipTypes.Child)
+				new LocalizedRelationshipTypes(MetaData.RelationshipTypes.Child)
 			);
 			form.cbfamtype.Items.Add(
-				new LocalizedRelationshipTypes(Data.MetaData.RelationshipTypes.Cousin)
-			);
-			form.cbfamtype.Items.Add(
-				new LocalizedRelationshipTypes(
-					Data.MetaData.RelationshipTypes.Grandchild
-				)
+				new LocalizedRelationshipTypes(MetaData.RelationshipTypes.Cousin)
 			);
 			form.cbfamtype.Items.Add(
 				new LocalizedRelationshipTypes(
-					Data.MetaData.RelationshipTypes.Gradparent
+					MetaData.RelationshipTypes.Grandchild
 				)
 			);
 			form.cbfamtype.Items.Add(
 				new LocalizedRelationshipTypes(
-					Data.MetaData.RelationshipTypes.Nice_Nephew
+					MetaData.RelationshipTypes.Gradparent
 				)
 			);
 			form.cbfamtype.Items.Add(
-				new LocalizedRelationshipTypes(Data.MetaData.RelationshipTypes.Parent)
+				new LocalizedRelationshipTypes(
+					MetaData.RelationshipTypes.Nice_Nephew
+				)
 			);
 			form.cbfamtype.Items.Add(
-				new LocalizedRelationshipTypes(Data.MetaData.RelationshipTypes.Sibling)
+				new LocalizedRelationshipTypes(MetaData.RelationshipTypes.Parent)
 			);
 			form.cbfamtype.Items.Add(
-				new LocalizedRelationshipTypes(Data.MetaData.RelationshipTypes.Spouses)
+				new LocalizedRelationshipTypes(MetaData.RelationshipTypes.Sibling)
+			);
+			form.cbfamtype.Items.Add(
+				new LocalizedRelationshipTypes(MetaData.RelationshipTypes.Spouses)
 			);
 		}
 

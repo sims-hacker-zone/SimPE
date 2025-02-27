@@ -117,7 +117,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 			this.cbhousehold.Items.Clear();
 			this.cbhousehold.Items.Add(
-				SimPe.Localization.GetString("[All Households]")
+				Localization.GetString("[All Households]")
 			);
 
 			if (pkg == null)
@@ -129,7 +129,7 @@ namespace SimPe.PackedFiles.Wrapper
 			string chouse;
 			List<string> names = new List<string>(
 				(string[])
-					FileTable
+					FileTableBase
 						.ProviderRegistry.SimDescriptionProvider.GetHouseholdNames(
 							out chouse
 						)
@@ -271,7 +271,7 @@ namespace SimPe.PackedFiles.Wrapper
 			gp.Clear();
 			lastsel = null;
 
-			Hashtable ht = FileTable
+			Hashtable ht = FileTableBase
 				.ProviderRegistry
 				.SimDescriptionProvider
 				.SimInstance;
@@ -430,7 +430,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 				if (img == null)
 				{
-					img = SimPe.GetImage.NoOne;
+					img = GetImage.NoOne;
 				}
 				else if (Helper.WindowsRegistry.GraphQuality)
 				{

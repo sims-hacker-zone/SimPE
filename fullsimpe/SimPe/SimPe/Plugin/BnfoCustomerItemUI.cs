@@ -79,7 +79,7 @@ namespace SimPe.Plugin
 			//
 			// pb
 			//
-			this.pb.BackColor = System.Drawing.Color.Transparent;
+			this.pb.BackColor = Color.Transparent;
 			this.pb.DisplayOffset = 0;
 			resources.ApplyResources(this.pb, "pb");
 			this.pb.Maximum = 2000;
@@ -87,10 +87,10 @@ namespace SimPe.Plugin
 			this.pb.NumberFormat = "N0";
 			this.pb.NumberOffset = -1000;
 			this.pb.NumberScale = 0.005;
-			this.pb.SelectedColor = System.Drawing.Color.Gold;
+			this.pb.SelectedColor = Color.Gold;
 			this.pb.Style = Ambertation.Windows.Forms.ProgresBarStyle.Balance;
 			this.pb.TokenCount = 11;
-			this.pb.UnselectedColor = System.Drawing.Color.Black;
+			this.pb.UnselectedColor = Color.Black;
 			this.pb.Value = 1000;
 			this.pb.ChangedValue += new EventHandler(this.pb_Changed);
 			//

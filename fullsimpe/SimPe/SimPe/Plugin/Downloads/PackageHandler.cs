@@ -10,23 +10,23 @@ namespace SimPe.Plugin.Downloads
 		ITypeHandler hnd;
 
 		public PackageHandler(string filename)
-			: this(SimPe.Packages.File.LoadFromFile(filename)) { }
+			: this(Packages.File.LoadFromFile(filename)) { }
 
 		public PackageHandler(Interfaces.Files.IPackageFile pkg)
 		{
 			this.flname = pkg.SaveFileName;
-			type = SimPe.Cache.PackageType.Undefined;
+			type = Cache.PackageType.Undefined;
 			DeterminType(pkg);
 			Reset();
 
 			if (
-				type == SimPe.Cache.PackageType.CustomObject
-				|| type == SimPe.Cache.PackageType.Sim
-				|| type == SimPe.Cache.PackageType.Object
+				type == Cache.PackageType.CustomObject
+				|| type == Cache.PackageType.Sim
+				|| type == Cache.PackageType.Object
 			)
 			{
-				SimPe.PackedFiles.Wrapper.ObjectComboBox.ObjectCache.ReloadCache(
-					SimPe.Plugin.DownloadsToolFactory.FileIndex,
+				PackedFiles.Wrapper.ObjectComboBox.ObjectCache.ReloadCache(
+					DownloadsToolFactory.FileIndex,
 					false
 				);
 			}
@@ -40,7 +40,7 @@ namespace SimPe.Plugin.Downloads
 			if (
 				System.IO.File.Exists(
 					System.IO.Path.Combine(
-						SimPe.Helper.SimPePluginPath,
+						Helper.SimPePluginPath,
 						"simpe.scanfolder.plugin.dll"
 					)
 				)
@@ -50,7 +50,7 @@ namespace SimPe.Plugin.Downloads
 			}
 			else
 			{
-				type = SimPe.Cache.PackageType.Undefined;
+				type = Cache.PackageType.Undefined;
 			}
 		}
 
@@ -87,7 +87,7 @@ namespace SimPe.Plugin.Downloads
 		#region IPackageHandler Member
 		public void FreeResources()
 		{
-			SimPe.Packages.StreamFactory.CloseStream(this.flname);
+			Packages.StreamFactory.CloseStream(this.flname);
 		}
 
 		public IPackageInfo[] Objects => hnd.Objects;

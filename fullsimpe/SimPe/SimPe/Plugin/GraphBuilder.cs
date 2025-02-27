@@ -196,7 +196,7 @@ namespace SimPe.Plugin
 				if (pkgpfd == null)
 				{
 					Interfaces.Scenegraph.IScenegraphFileIndexItem items =
-						FileTable.FileIndex.FindFileByName(
+						FileTableBase.FileIndex.FindFileByName(
 							pfd.Filename,
 							pfd.Type,
 							pfd.Group,

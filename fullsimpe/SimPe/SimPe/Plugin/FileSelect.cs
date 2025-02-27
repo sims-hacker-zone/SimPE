@@ -64,8 +64,8 @@ namespace SimPe.Plugin
 		/// <param name="tv">the TreeView to fill</param>
 		void CreateCategoryNodes(ref Hashtable map, TreeView tv, uint gender)
 		{
-			Array cats = System.Enum.GetValues(typeof(Data.SkinCategories));
-			Array ages = System.Enum.GetValues(typeof(Data.Ages));
+			Array cats = Enum.GetValues(typeof(Data.SkinCategories));
+			Array ages = Enum.GetValues(typeof(Data.Ages));
 
 			foreach (Data.Ages a in ages)
 			{
@@ -101,9 +101,9 @@ namespace SimPe.Plugin
 			WaitingScreen.UpdateMessage("Loading File Table");
 			try
 			{
-				FileTable.FileIndex.Load();
+				FileTableBase.FileIndex.Load();
 				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-					FileTable.FileIndex.FindFile(Data.MetaData.GZPS, true);
+					FileTableBase.FileIndex.FindFile(Data.MetaData.GZPS, true);
 				WaitingScreen.UpdateMessage("Loading Clothing..");
 				foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
 				{
@@ -219,12 +219,12 @@ namespace SimPe.Plugin
 			this.button1.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.button1.FlatStyle = FlatStyle.System;
 			this.button1.Location = new System.Drawing.Point(776, 579);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(75, 23);
@@ -239,10 +239,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -270,10 +270,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -314,10 +314,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -347,16 +347,16 @@ namespace SimPe.Plugin
 			this.pb.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.pb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.pb.BorderStyle = BorderStyle.FixedSingle;
 			this.pb.Location = new System.Drawing.Point(690, 8);
 			this.pb.Name = "pb";
 			this.pb.Size = new System.Drawing.Size(300, 300);
-			this.pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pb.SizeMode = PictureBoxSizeMode.Zoom;
 			this.pb.TabIndex = 3;
 			this.pb.TabStop = false;
 			//
@@ -366,9 +366,9 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Bottom
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Bottom
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -400,14 +400,12 @@ namespace SimPe.Plugin
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.FormBorderStyle = System
-				.Windows
-				.Forms
-				.FormBorderStyle
+			this.FormBorderStyle =
+				FormBorderStyle
 				.SizableToolWindow;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "FileSelect";
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			this.StartPosition = FormStartPosition.CenterScreen;
 			this.Text = "Skin Select";
 			this.tc.ResumeLayout(false);
 			this.tabPage1.ResumeLayout(false);

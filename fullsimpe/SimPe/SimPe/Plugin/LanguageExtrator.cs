@@ -95,7 +95,7 @@ namespace SimPe.Plugin
 			this.pntheme.Controls.Add(this.btGo);
 			this.pntheme.Controls.Add(this.lbselect);
 			this.pntheme.Controls.Add(this.Language);
-			this.pntheme.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.pntheme.Dock = DockStyle.Fill;
 			this.pntheme.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -124,9 +124,9 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Bottom
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Bottom
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -196,14 +196,14 @@ namespace SimPe.Plugin
 			//
 			// LanguageExtrator
 			//
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+			this.AutoScaleMode = AutoScaleMode.Inherit;
 			this.AutoScroll = true;
 			this.ClientSize = new System.Drawing.Size(624, 441);
 			this.Controls.Add(this.pntheme);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MinimumSize = new System.Drawing.Size(640, 480);
 			this.Name = "LanguageExtrator";
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+			this.StartPosition = FormStartPosition.CenterParent;
 			this.Text = "Single Language Extractor / Importer";
 			this.pntheme.ResumeLayout(false);
 			this.pntheme.PerformLayout();
@@ -280,7 +280,7 @@ namespace SimPe.Plugin
 			string parf;
 			FolderBrowserDialog fbd =
 				new FolderBrowserDialog();
-			if (fbd.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+			if (fbd.ShowDialog() != DialogResult.OK)
 			{
 				return;
 			}
@@ -369,7 +369,7 @@ namespace SimPe.Plugin
 			string twine;
 			FolderBrowserDialog fbd =
 				new FolderBrowserDialog();
-			if (fbd.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+			if (fbd.ShowDialog() != DialogResult.OK)
 			{
 				return;
 			}

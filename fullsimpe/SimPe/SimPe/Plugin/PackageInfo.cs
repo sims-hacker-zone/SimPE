@@ -57,7 +57,7 @@ namespace SimPe.Plugin
 					{
 						StrToken item = new StrToken(
 							0,
-							Convert.ToByte(SimPe.Data.MetaData.Languages.English),
+							Convert.ToByte(MetaData.Languages.English),
 							value,
 							String.Empty
 						);
@@ -89,7 +89,7 @@ namespace SimPe.Plugin
 		void ProcessPackage(IPackageFile package)
 		{
 			IPackedFileDescriptor[] strList = package.FindFiles(
-				SimPe.Data.MetaData.STRING_FILE
+				MetaData.STRING_FILE
 			);
 			if (Utility.IsNullOrEmpty(strList))
 			{
@@ -177,7 +177,7 @@ namespace SimPe.Plugin
 			if (group != 0)
 			{
 				ret = package.NewDescriptor(
-					SimPe.Data.MetaData.STRING_FILE,
+					MetaData.STRING_FILE,
 					0x00000000u,
 					group,
 					0x00000001u
@@ -189,7 +189,7 @@ namespace SimPe.Plugin
 				{
 					// link the newly created resource
 					IPackedFileDescriptor[] pfd3IDR = package.FindFiles(
-						SimPe.Data.MetaData.REF_FILE
+						MetaData.REF_FILE
 					);
 					foreach (IPackedFileDescriptor pfd in pfd3IDR)
 					{
@@ -334,7 +334,7 @@ namespace SimPe.Plugin
 		{
 			foreach (PackageInfo pnfo in this.Values)
 			{
-				if (Object.ReferenceEquals(pnfo.Package, package))
+				if (ReferenceEquals(pnfo.Package, package))
 				{
 					return true;
 				}

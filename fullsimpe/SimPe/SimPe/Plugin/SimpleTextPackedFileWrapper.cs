@@ -45,7 +45,7 @@ namespace SimPe.Plugin
 				"Chris",
 				"To View the Simple Text Files",
 				1,
-				SimPe.GetIcon.Writable
+				GetIcon.Writable
 			);
 		}
 

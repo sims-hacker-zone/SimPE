@@ -1717,7 +1717,7 @@ namespace SimPe.Plugin.Anim
 					float f = aat.GetCompressedFloat(val);
 					if (aat.Parent.Parent.TransformationType == FrameType.Rotation)
 					{
-						f = (float)SimPe.Geometry.Quaternion.RadToDeg(f);
+						f = (float)Geometry.Quaternion.RadToDeg(f);
 					}
 
 					tbParameterFloat.Text = f.ToString("N8");
@@ -1875,7 +1875,7 @@ namespace SimPe.Plugin.Anim
 						float f = Convert.ToSingle(tbParameterFloat.Text);
 						if (aat.Parent.Parent.TransformationType == FrameType.Rotation)
 						{
-							f = (float)SimPe.Geometry.Quaternion.DegToRad(f);
+							f = (float)Geometry.Quaternion.DegToRad(f);
 						}
 
 						val = aat.FromCompressedFloat(f);
@@ -1985,7 +1985,7 @@ namespace SimPe.Plugin.Anim
 					float f = aat.GetCompressedFloat(val);
 					if (aat.Parent.Parent.TransformationType == FrameType.Rotation)
 					{
-						f = (float)SimPe.Geometry.Quaternion.RadToDeg(f);
+						f = (float)Geometry.Quaternion.RadToDeg(f);
 					}
 
 					tbParameterFloat.Text = f.ToString("N8");
@@ -2105,7 +2105,7 @@ namespace SimPe.Plugin.Anim
 					float f = aat.GetCompressedFloat(val);
 					if (aat.Parent.Parent.TransformationType == FrameType.Rotation)
 					{
-						f = (float)SimPe.Geometry.Quaternion.RadToDeg(f);
+						f = (float)Geometry.Quaternion.RadToDeg(f);
 					}
 
 					tbParameterFloat.Text = f.ToString("N8");

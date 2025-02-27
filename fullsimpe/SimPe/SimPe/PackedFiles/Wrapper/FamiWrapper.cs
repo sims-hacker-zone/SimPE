@@ -372,7 +372,7 @@ namespace SimPe.PackedFiles.Wrapper
 					string suyt = System
 						.IO.Path.GetFileNameWithoutExtension(package.FileName)
 						.Substring(0, inxy);
-					Packages.File fumbs = SimPe.Packages.File.LoadFromFile(
+					Packages.File fumbs = Packages.File.LoadFromFile(
 						System.IO.Path.Combine(
 							System.IO.Path.GetDirectoryName(package.FileName),
 							"Thumbnails\\" + suyt + "FamilyThumbnails.package"
@@ -438,10 +438,10 @@ namespace SimPe.PackedFiles.Wrapper
 				sdesc = new SDesc(null, null, null);
 				sdesc.SimId = simid;
 				sdesc.CharacterDescription.Age = 28;
-				sdesc.CharacterDescription.Gender = SimPe.Data.MetaData.Gender.Female;
+				sdesc.CharacterDescription.Gender = Data.MetaData.Gender.Female;
 
 				IPackedFileDescriptor[] files = package.FindFiles(
-					SimPe.Data.MetaData.SIM_DESCRIPTION_FILE
+					Data.MetaData.SIM_DESCRIPTION_FILE
 				);
 				sdesc.Instance = 0;
 				foreach (IPackedFileDescriptor pfd in files)
@@ -454,7 +454,7 @@ namespace SimPe.PackedFiles.Wrapper
 				sdesc.Instance++;
 
 				IPackedFileDescriptor fd = package.Add(
-					SimPe.Data.MetaData.SIM_DESCRIPTION_FILE,
+					Data.MetaData.SIM_DESCRIPTION_FILE,
 					0x0,
 					FileDescriptor.Group,
 					sdesc.Instance
@@ -594,7 +594,7 @@ namespace SimPe.PackedFiles.Wrapper
 				"Quaxi",
 				"This File contains Informations about one Sim Family.",
 				7,
-				System.Drawing.Image.FromStream(
+				Image.FromStream(
 					this.GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.fami.png")
 				)

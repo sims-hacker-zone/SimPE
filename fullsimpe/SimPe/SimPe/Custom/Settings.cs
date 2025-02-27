@@ -42,7 +42,7 @@ namespace SimPe.Custom
 			: base(rm) { }
 
 		const string BASENAME = "Settings";
-		XmlRegistryKey xrk = SimPe.Helper.WindowsRegistry.RegistryKey;
+		XmlRegistryKey xrk = Helper.WindowsRegistry.RegistryKey;
 
 		[System.ComponentModel.Category("SimPE")]
 		public bool KeepFilesOpen

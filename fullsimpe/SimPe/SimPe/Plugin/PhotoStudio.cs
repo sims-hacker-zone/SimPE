@@ -67,7 +67,7 @@ namespace SimPe.Plugin
 
 			if (files.Length == 0)
 			{
-				SimPe.WaitingScreen.Stop();
+				WaitingScreen.Stop();
 				MessageBox.Show(
 					"PhotoStudio can't be used because SimPe couldn't\nfind any PhotoStudio Templates in the Data Folder.",
 					"Information",
@@ -77,13 +77,13 @@ namespace SimPe.Plugin
 
 			try
 			{
-				SimPe.WaitingScreen.Wait();
+				WaitingScreen.Wait();
 
 				if (files.Length > 0)
 				{
 					foreach (string file in files)
 					{
-						Packages.File pkg = SimPe.Packages.File.LoadFromFile(
+						Packages.File pkg = Packages.File.LoadFromFile(
 							file
 						);
 						PhotoStudioTemplate pst = new PhotoStudioTemplate(pkg);
@@ -95,7 +95,7 @@ namespace SimPe.Plugin
 							ibase.ImageSize.Height
 						);
 						img = ImageLoader.Preview(pst.Texture, img.Size);
-						SimPe.WaitingScreen.UpdateImage(img);
+						WaitingScreen.UpdateImage(img);
 						ibase.Images.Add(img);
 						lvbase.Items.Add(lvi);
 					}
@@ -120,8 +120,8 @@ namespace SimPe.Plugin
 			}
 			finally
 			{
-				SimPe.WaitingScreen.UpdateImage(null);
-				SimPe.WaitingScreen.Stop();
+				WaitingScreen.UpdateImage(null);
+				WaitingScreen.Stop();
 			}
 		}
 
@@ -182,9 +182,9 @@ namespace SimPe.Plugin
 			//
 			// ilist
 			//
-			this.ilist.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+			this.ilist.ColorDepth = ColorDepth.Depth32Bit;
 			resources.ApplyResources(this.ilist, "ilist");
-			this.ilist.TransparentColor = System.Drawing.Color.Transparent;
+			this.ilist.TransparentColor = Color.Transparent;
 			//
 			// btopen
 			//
@@ -231,15 +231,15 @@ namespace SimPe.Plugin
 			//
 			// ibase
 			//
-			this.ibase.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+			this.ibase.ColorDepth = ColorDepth.Depth32Bit;
 			resources.ApplyResources(this.ibase, "ibase");
-			this.ibase.TransparentColor = System.Drawing.Color.Transparent;
+			this.ibase.TransparentColor = Color.Transparent;
 			//
 			// pbpreview
 			//
 			resources.ApplyResources(this.pbpreview, "pbpreview");
-			this.pbpreview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.pbpreview.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.pbpreview.BorderStyle = BorderStyle.FixedSingle;
+			this.pbpreview.Cursor = Cursors.Hand;
 			this.pbpreview.Name = "pbpreview";
 			this.pbpreview.TabStop = false;
 			this.toolTip1.SetToolTip(
@@ -251,9 +251,9 @@ namespace SimPe.Plugin
 			// cbflip
 			//
 			resources.ApplyResources(this.cbflip, "cbflip");
-			this.cbflip.BackColor = System.Drawing.Color.Transparent;
+			this.cbflip.BackColor = Color.Transparent;
 			this.cbflip.Checked = true;
-			this.cbflip.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.cbflip.CheckState = CheckState.Checked;
 			this.cbflip.Name = "cbflip";
 			this.toolTip1.SetToolTip(
 				this.cbflip,
@@ -277,7 +277,7 @@ namespace SimPe.Plugin
 			//
 			// tabPage1
 			//
-			this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
+			this.tabPage1.BackColor = SystemColors.Control;
 			this.tabPage1.Controls.Add(this.lbsize);
 			this.tabPage1.Controls.Add(this.lbname);
 			this.tabPage1.Controls.Add(this.btopen);
@@ -298,13 +298,13 @@ namespace SimPe.Plugin
 			// pb
 			//
 			resources.ApplyResources(this.pb, "pb");
-			this.pb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.pb.BorderStyle = BorderStyle.FixedSingle;
 			this.pb.Name = "pb";
 			this.pb.TabStop = false;
 			//
 			// tabPage2
 			//
-			this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
+			this.tabPage2.BackColor = SystemColors.Control;
 			this.tabPage2.Controls.Add(this.lv);
 			resources.ApplyResources(this.tabPage2, "tabPage2");
 			this.tabPage2.Name = "tabPage2";
@@ -322,13 +322,13 @@ namespace SimPe.Plugin
 			// label1
 			//
 			resources.ApplyResources(this.label1, "label1");
-			this.label1.BackColor = System.Drawing.Color.Transparent;
+			this.label1.BackColor = Color.Transparent;
 			this.label1.Name = "label1";
 			//
 			// llcreate
 			//
 			resources.ApplyResources(this.llcreate, "llcreate");
-			this.llcreate.BackColor = System.Drawing.Color.Transparent;
+			this.llcreate.BackColor = Color.Transparent;
 			this.llcreate.Name = "llcreate";
 			this.llcreate.TabStop = true;
 			this.llcreate.LinkClicked +=
@@ -339,13 +339,13 @@ namespace SimPe.Plugin
 			// label2
 			//
 			resources.ApplyResources(this.label2, "label2");
-			this.label2.BackColor = System.Drawing.Color.Transparent;
+			this.label2.BackColor = Color.Transparent;
 			this.label2.Name = "label2";
 			//
 			// cbprev
 			//
 			resources.ApplyResources(this.cbprev, "cbprev");
-			this.cbprev.BackColor = System.Drawing.Color.Transparent;
+			this.cbprev.BackColor = Color.Transparent;
 			this.cbprev.Name = "cbprev";
 			this.cbprev.UseVisualStyleBackColor = false;
 			this.cbprev.CheckedChanged += new EventHandler(
@@ -363,7 +363,7 @@ namespace SimPe.Plugin
 			// panel1
 			//
 			resources.ApplyResources(this.panel1, "panel1");
-			this.panel1.BackColor = System.Drawing.Color.Transparent;
+			this.panel1.BackColor = Color.Transparent;
 			this.panel1.Controls.Add(this.label2);
 			this.panel1.Controls.Add(this.pbpreview);
 			this.panel1.Controls.Add(this.lvbase);
@@ -379,10 +379,8 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this, "$this");
 			this.Controls.Add(this.panel1);
-			this.FormBorderStyle = System
-				.Windows
-				.Forms
-				.FormBorderStyle
+			this.FormBorderStyle =
+				FormBorderStyle
 				.SizableToolWindow;
 			this.MaximizeBox = false;
 			this.Name = "PhotoStudio";
@@ -407,7 +405,7 @@ namespace SimPe.Plugin
 			}
 			else
 			{
-				this.ilist.Images.Add(new Bitmap(SimPe.GetImage.NoOne));
+				this.ilist.Images.Add(new Bitmap(GetImage.NoOne));
 			}
 		}
 
@@ -467,7 +465,7 @@ namespace SimPe.Plugin
 						sdesc.ProcessData(spfd, package);
 
 						WaitingScreen.UpdateImage(
-							SimPe.Plugin.ImageLoader.Preview(
+							ImageLoader.Preview(
 								sdesc.Image,
 								new Size(64, 64)
 							)
@@ -577,9 +575,9 @@ namespace SimPe.Plugin
 					lbname.Text = System.IO.Path.GetFileName(ofd.FileName);
 					lbsize.Text =
 						loadimg.Width.ToString() + "x" + loadimg.Height.ToString();
-					pb.Image = SimPe.Plugin.ImageLoader.Preview(loadimg, pb.Size);
+					pb.Image = ImageLoader.Preview(loadimg, pb.Size);
 					preview = this.ShowPreview(loadimg);
-					pbpreview.Image = SimPe.Plugin.ImageLoader.Preview(
+					pbpreview.Image = ImageLoader.Preview(
 						preview,
 						pbpreview.Size
 					);
@@ -629,7 +627,7 @@ namespace SimPe.Plugin
 					new PackedFiles.Wrapper.Cpf();
 
 				Packages.GeneratableFile pkg =
-					SimPe.Packages.GeneratableFile.LoadFromStream(
+					Packages.File.LoadFromStream(
 						(System.IO.BinaryReader)null
 					);
 				if (UserVerification.HaveValidUserId)
@@ -639,11 +637,11 @@ namespace SimPe.Plugin
 
 				pkg.FileName = filename;
 
-				string family = System.Guid.NewGuid().ToString();
+				string family = Guid.NewGuid().ToString();
 				string unique = RenameForm.GetUniqueName();
 
 				Packages.GeneratableFile tpkg =
-					SimPe.Packages.GeneratableFile.LoadFromFile(
+					Packages.File.LoadFromFile(
 						template.Package.FileName
 					);
 
@@ -779,7 +777,7 @@ namespace SimPe.Plugin
 					Image mmimg = (Image)img.Clone();
 					if (flip)
 					{
-						mmimg.RotateFlip(System.Drawing.RotateFlipType.RotateNoneFlipX);
+						mmimg.RotateFlip(RotateFlipType.RotateNoneFlipX);
 					}
 
 					Graphics g = Graphics.FromImage(mm.Texture);
@@ -792,7 +790,7 @@ namespace SimPe.Plugin
 						mmimg,
 						template.TargetRectangle,
 						rect,
-						System.Drawing.GraphicsUnit.Pixel
+						GraphicsUnit.Pixel
 					);
 
 					if (
@@ -839,7 +837,7 @@ namespace SimPe.Plugin
 									mm.Texture.Width,
 									mm.Texture.Height
 								),
-								System.Drawing.GraphicsUnit.Pixel
+								GraphicsUnit.Pixel
 							);
 
 							newmm.Texture = newimg;
@@ -950,7 +948,7 @@ namespace SimPe.Plugin
 				}
 			}
 
-			pbpreview.Image = SimPe.Plugin.ImageLoader.Preview(preview, pbpreview.Size);
+			pbpreview.Image = ImageLoader.Preview(preview, pbpreview.Size);
 			this.Cursor = Cursors.Default;
 		}
 

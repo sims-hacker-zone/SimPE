@@ -22,22 +22,22 @@ namespace SimPe.Plugin
 			this.cbtype.Items.Add(Ltxt.LotType.Unknown);
 			this.cbtype.Items.Add(Ltxt.LotType.Residential);
 			this.cbtype.Items.Add(Ltxt.LotType.Community);
-			if (SimPe.PathProvider.Global.EPInstalled > 0)
+			if (PathProvider.Global.EPInstalled > 0)
 			{
 				this.cbtype.Items.Add(Ltxt.LotType.Dorm);
 				this.cbtype.Items.Add(Ltxt.LotType.GreekHouse);
 				this.cbtype.Items.Add(Ltxt.LotType.SecretSociety);
 			}
-			if (SimPe.PathProvider.Global.EPInstalled > 9)
+			if (PathProvider.Global.EPInstalled > 9)
 			{
 				this.cbtype.Items.Add(Ltxt.LotType.Hotel);
 				this.cbtype.Items.Add(Ltxt.LotType.SecretHoliday);
 			}
-			if (SimPe.PathProvider.Global.EPInstalled > 11)
+			if (PathProvider.Global.EPInstalled > 11)
 			{
 				this.cbtype.Items.Add(Ltxt.LotType.Hobby);
 			}
-			if (SimPe.PathProvider.Global.EPInstalled > 15)
+			if (PathProvider.Global.EPInstalled > 15)
 			{
 				this.cbtype.Items.Add(Ltxt.LotType.ApartmentBase);
 				this.cbtype.Items.Add(Ltxt.LotType.ApartmentSublot);

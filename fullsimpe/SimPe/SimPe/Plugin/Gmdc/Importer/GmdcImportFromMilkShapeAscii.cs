@@ -333,19 +333,19 @@ namespace SimPe.Plugin.Gmdc.Importer
 			try
 			{
 				Vector3f coord = new Vector3f(
-					Convert.ToSingle(linetoks[1], AbstractGmdcImporter.DefaultCulture),
-					Convert.ToSingle(linetoks[2], AbstractGmdcImporter.DefaultCulture),
-					Convert.ToSingle(linetoks[3], AbstractGmdcImporter.DefaultCulture)
+					Convert.ToSingle(linetoks[1], DefaultCulture),
+					Convert.ToSingle(linetoks[2], DefaultCulture),
+					Convert.ToSingle(linetoks[3], DefaultCulture)
 				);
 				coord = Component.InverseTransformScaled(coord);
 
 				float u = Convert.ToSingle(
 					linetoks[4],
-					AbstractGmdcImporter.DefaultCulture
+					DefaultCulture
 				);
 				float v = Convert.ToSingle(
 					linetoks[5],
-					AbstractGmdcImporter.DefaultCulture
+					DefaultCulture
 				);
 				int b = Convert.ToInt32(linetoks[6]);
 				if (b != -1)
@@ -403,9 +403,9 @@ namespace SimPe.Plugin.Gmdc.Importer
 			try
 			{
 				Vector3f coord = new Vector3f(
-					Convert.ToSingle(linetoks[0], AbstractGmdcImporter.DefaultCulture),
-					Convert.ToSingle(linetoks[1], AbstractGmdcImporter.DefaultCulture),
-					Convert.ToSingle(linetoks[2], AbstractGmdcImporter.DefaultCulture)
+					Convert.ToSingle(linetoks[0], DefaultCulture),
+					Convert.ToSingle(linetoks[1], DefaultCulture),
+					Convert.ToSingle(linetoks[2], DefaultCulture)
 				);
 				coord = Component.InverseTransformNormal(coord);
 
@@ -612,7 +612,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 
 				//Quaternion from Euler Angles
 				b.Transformation.Translation = trans;
-				b.Transformation.Rotation = SimPe.Geometry.Quaternion.FromAxisAngle(
+				b.Transformation.Rotation = Quaternion.FromAxisAngle(
 					rot,
 					q.Angle
 				);
@@ -636,7 +636,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 			{
 				float t = Convert.ToSingle(
 					linetoks[0],
-					AbstractGmdcImporter.DefaultCulture
+					DefaultCulture
 				);
 				bool isscaled = (t == -1);
 				t = Math.Max(0, t - 1);
@@ -690,7 +690,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 			{
 				float t = Convert.ToSingle(
 					linetoks[0],
-					AbstractGmdcImporter.DefaultCulture
+					DefaultCulture
 				);
 				bool isscaled = (t == -1);
 				t = Math.Max(0, t - 1);

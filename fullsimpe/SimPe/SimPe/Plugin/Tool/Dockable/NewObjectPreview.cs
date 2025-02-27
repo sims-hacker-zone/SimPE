@@ -127,7 +127,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		{
 			if (thumbs == null)
 			{
-				thumbs = SimPe.Packages.File.LoadFromFile(
+				thumbs = Packages.File.LoadFromFile(
 					System.IO.Path.Combine(
 						PathProvider.SimSavegameFolder,
 						"Thumbnails\\ObjectThumbnails.package"
@@ -318,7 +318,7 @@ namespace SimPe.Plugin.Tool.Dockable
 					sz,
 					8,
 					Color.FromArgb(90, Color.Black),
-					SimPe.ThemeManager.Global.ThemeColorDark,
+					ThemeManager.Global.ThemeColorDark,
 					Color.White,
 					Color.FromArgb(80, Color.White),
 					true,
@@ -452,11 +452,11 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 
 			SetupCategories(
-				SimPe.Cache.ObjectCacheItem.GetCategory(
-					SimPe.Cache.ObjectCacheItemVersions.DockableOW,
+				Cache.ObjectCacheItem.GetCategory(
+					Cache.ObjectCacheItemVersions.DockableOW,
 					objd.FunctionSubSort,
 					objd.Type,
-					SimPe.Cache.ObjectClass.Object
+					Cache.ObjectClass.Object
 				)
 			);
 
@@ -604,7 +604,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		protected void BuildDefaultImage()
 		{
-			defimg = SimPe.GetImage.Demo;
+			defimg = GetImage.Demo;
 		}
 	}
 }

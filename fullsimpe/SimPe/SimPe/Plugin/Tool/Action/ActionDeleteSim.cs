@@ -62,7 +62,7 @@ namespace SimPe.Plugin.Tool.Action
 			if (!ChangeEnabledStateEventHandler(null, e))
 			{
 				System.Windows.Forms.MessageBox.Show(
-					SimPe.Localization.GetString(
+					Localization.GetString(
 						"This is not an appropriate context in which to use this tool"
 					),
 					this.ToString()
@@ -178,7 +178,7 @@ namespace SimPe.Plugin.Tool.Action
 				try
 				{
 					Packages.StreamItem si =
-						SimPe.Packages.StreamFactory.UseStream(
+						Packages.StreamFactory.UseStream(
 							victim.CharacterFileName,
 							System.IO.FileAccess.Read
 						);
@@ -495,7 +495,7 @@ namespace SimPe.Plugin.Tool.Action
 		#region IToolExt Member
 		public System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.None;
 
-		public System.Drawing.Image Icon => SimPe.GetIcon.DeleteSim;
+		public System.Drawing.Image Icon => GetIcon.DeleteSim;
 
 		public virtual bool Visible => true;
 

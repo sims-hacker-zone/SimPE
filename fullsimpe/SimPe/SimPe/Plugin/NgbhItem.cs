@@ -149,8 +149,8 @@ namespace SimPe.Plugin
 		void SetGuidForType(SimMemoryType type)
 		{
 			foreach (
-				Cache.MemoryCacheItem mci in SimPe
-					.PackedFiles
+				Cache.MemoryCacheItem mci in
+					PackedFiles
 					.Wrapper
 					.ObjectComboBox
 					.ObjectCache
@@ -318,7 +318,7 @@ namespace SimPe.Plugin
 				this.objd = new PackedFiles.Wrapper.ExtObjd();
 
 				Cache.MemoryCacheItem mci =
-					SimPe.PackedFiles.Wrapper.ObjectComboBox.ObjectCache.FindItem(guid);
+					PackedFiles.Wrapper.ObjectComboBox.ObjectCache.FindItem(guid);
 				if (mci != null)
 				{
 					objd.Type = mci.ObjectType;
@@ -340,7 +340,7 @@ namespace SimPe.Plugin
 					if (mci == null)
 					{
 						mci =
-							SimPe.PackedFiles.Wrapper.ObjectComboBox.ObjectCache.FindItem(
+							PackedFiles.Wrapper.ObjectComboBox.ObjectCache.FindItem(
 								guid
 							);
 					}
@@ -583,7 +583,7 @@ namespace SimPe.Plugin
 		public void SetSubject(uint guid)
 		{
 			Interfaces.Wrapper.ISDesc sdsc =
-				FileTable.ProviderRegistry.SimDescriptionProvider.SimGuidMap[guid]
+				FileTableBase.ProviderRegistry.SimDescriptionProvider.SimGuidMap[guid]
 				as Interfaces.Wrapper.ISDesc;
 			if (sdsc != null)
 			{
@@ -727,7 +727,7 @@ namespace SimPe.Plugin
 		protected string GetSubjectName()
 		{
 			string ext = " (0x" + Helper.HexString(this.SimID) + ")";
-			string n = SimPe.Localization.GetString("Unknown") + ext;
+			string n = Localization.GetString("Unknown") + ext;
 			if (parent.Provider.SimNameProvider.StoredData.ContainsKey(this.SimID))
 			{
 				n = parent.Provider.SimNameProvider.FindName(this.SimID).ToString();
@@ -735,7 +735,7 @@ namespace SimPe.Plugin
 			else
 			{
 				Cache.MemoryCacheItem mci =
-					SimPe.PackedFiles.Wrapper.ObjectComboBox.ObjectCache.FindItem(
+					PackedFiles.Wrapper.ObjectComboBox.ObjectCache.FindItem(
 						this.SimID
 					);
 				if (mci != null)
@@ -756,7 +756,7 @@ namespace SimPe.Plugin
 			name = name.Replace("$Constant:4097:7", "X Number of");
 			if (name.Trim() == "")
 			{
-				if (SimPe.Helper.WindowsRegistry.HiddenMode)
+				if (Helper.WindowsRegistry.HiddenMode)
 				{
 					name = "---";
 				}
@@ -784,7 +784,7 @@ namespace SimPe.Plugin
 						.Provider.SimDescriptionProvider.FindSim(OwnerInstance)
 						.SimId;
 
-					name += " (" + SimPe.Localization.GetString("Gossip about") + " ";
+					name += " (" + Localization.GetString("Gossip about") + " ";
 					name += parent.Provider.SimNameProvider.FindName(sid);
 					name += ")";
 				}
@@ -795,7 +795,7 @@ namespace SimPe.Plugin
 			{
 				name += " {";
 				Cache.MemoryCacheItem mci =
-					SimPe.PackedFiles.Wrapper.ObjectComboBox.ObjectCache.FindItem(
+					PackedFiles.Wrapper.ObjectComboBox.ObjectCache.FindItem(
 						this.ReferencedObjectGuid
 					);
 				if (mci != null)
@@ -806,7 +806,7 @@ namespace SimPe.Plugin
 				name += "}";
 			}
 
-			if (SimPe.Helper.WindowsRegistry.HiddenMode)
+			if (Helper.WindowsRegistry.HiddenMode)
 			{
 				name += " [GUID=0x" + Helper.HexString(this.guid) + "]";
 			}

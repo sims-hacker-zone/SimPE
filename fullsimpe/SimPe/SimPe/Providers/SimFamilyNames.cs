@@ -87,7 +87,7 @@ namespace SimPe.Providers
 
 			///add unlisted Sims
 			foreach (
-				PackedFiles.Wrapper.SDesc sdesc in FileTable
+				PackedFiles.Wrapper.SDesc sdesc in FileTableBase
 					.ProviderRegistry
 					.SimDescriptionProvider
 					.SimInstance
@@ -109,7 +109,7 @@ namespace SimPe.Providers
 								pkg.FindFile(
 									fami.AssignableTypes[0],
 									0,
-									Data.MetaData.LOCAL_GROUP,
+									MetaData.LOCAL_GROUP,
 									sdesc.FamilyInstance
 								);
 							if (pfd != null)
@@ -183,7 +183,7 @@ namespace SimPe.Providers
 			}*/
 
 			foreach (
-				PackedFiles.Wrapper.SDesc sdesc in FileTable
+				PackedFiles.Wrapper.SDesc sdesc in FileTableBase
 					.ProviderRegistry
 					.SimDescriptionProvider
 					.SimInstance

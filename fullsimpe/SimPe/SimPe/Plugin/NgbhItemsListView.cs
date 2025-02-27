@@ -136,14 +136,14 @@ namespace SimPe.Plugin
 			//
 			// lv
 			//
-			this.lv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.lv.BorderStyle = BorderStyle.FixedSingle;
 			this.lv.ContextMenuStrip = this.menu;
 			resources.ApplyResources(this.lv, "lv");
-			this.lv.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+			this.lv.HeaderStyle = ColumnHeaderStyle.Nonclickable;
 			this.lv.HideSelection = false;
 			this.lv.Name = "lv";
 			this.lv.UseCompatibleStateImageBehavior = false;
-			this.lv.View = System.Windows.Forms.View.List;
+			this.lv.View = View.List;
 			this.lv.SelectedIndexChanged += new EventHandler(
 				this.lv_SelectedIndexChanged_1
 			);
@@ -207,7 +207,7 @@ namespace SimPe.Plugin
 			// panel1
 			//
 			resources.ApplyResources(this.panel1, "panel1");
-			this.panel1.BackColor = System.Drawing.Color.Transparent;
+			this.panel1.BackColor = Color.Transparent;
 			this.panel1.Controls.Add(this.cbnogoss);
 			this.panel1.Controls.Add(this.lladd);
 			this.panel1.Controls.Add(this.cbadd);
@@ -239,8 +239,8 @@ namespace SimPe.Plugin
 			// cbadd
 			//
 			resources.ApplyResources(this.cbadd, "cbadd");
-			this.cbadd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbadd.ForeColor = System.Drawing.SystemColors.ControlText;
+			this.cbadd.DropDownStyle = ComboBoxStyle.DropDownList;
+			this.cbadd.ForeColor = SystemColors.ControlText;
 			this.cbadd.Name = "cbadd";
 			this.cbadd.SelectedIndexChanged += new EventHandler(
 				this.cbadd_SelectedIndexChanged
@@ -436,7 +436,7 @@ namespace SimPe.Plugin
 				cbadd.Items.Add(
 					new Data.Alias(
 						(uint)mst,
-						SimPe.Localization.GetString(prefix + mst.ToString()),
+						Localization.GetString(prefix + mst.ToString()),
 						"{name}"
 					)
 				);

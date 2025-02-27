@@ -424,9 +424,9 @@ namespace SimPe
 			this.rtb.BackgroundImage = (
 				(System.Drawing.Image)(resources.GetObject("rtb.BackgroundImage"))
 			);
-			this.rtb.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.rtb.BorderStyle = BorderStyle.None;
 			this.rtb.BulletIndent = ((int)(resources.GetObject("rtb.BulletIndent")));
-			this.rtb.Cursor = System.Windows.Forms.Cursors.Default;
+			this.rtb.Cursor = Cursors.Default;
 			this.rtb.Dock = (
 				(DockStyle)(resources.GetObject("rtb.Dock"))
 			);

@@ -77,7 +77,7 @@ namespace SimPe.Plugin
 		#endregion
 
 		#region IToolExt Member
-		public override System.Drawing.Image Icon => SimPe.GetIcon.SkinWorkshop;
+		public override System.Drawing.Image Icon => GetIcon.SkinWorkshop;
 		public override System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.None;
 		#endregion
 	}

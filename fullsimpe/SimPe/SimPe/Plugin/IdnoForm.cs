@@ -78,10 +78,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -128,10 +128,8 @@ namespace SimPe.Plugin
 			//
 			// cbquadd
 			//
-			this.cbquadd.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbquadd.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbquadd.Location = new System.Drawing.Point(384, 241);
 			this.cbquadd.Name = "cbquadd";
@@ -143,10 +141,8 @@ namespace SimPe.Plugin
 			//
 			// cbquadc
 			//
-			this.cbquadc.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbquadc.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbquadc.Location = new System.Drawing.Point(312, 241);
 			this.cbquadc.Name = "cbquadc";
@@ -158,10 +154,8 @@ namespace SimPe.Plugin
 			//
 			// cbquadb
 			//
-			this.cbquadb.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbquadb.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbquadb.Location = new System.Drawing.Point(240, 241);
 			this.cbquadb.Name = "cbquadb";
@@ -173,10 +167,8 @@ namespace SimPe.Plugin
 			//
 			// cbquada
 			//
-			this.cbquada.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbquada.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbquada.Location = new System.Drawing.Point(168, 241);
 			this.cbquada.Name = "cbquada";
@@ -239,10 +231,8 @@ namespace SimPe.Plugin
 			//
 			// cbsubtp
 			//
-			this.cbsubtp.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbsubtp.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbsubtp.Location = new System.Drawing.Point(168, 207);
 			this.cbsubtp.Name = "cbsubtp";
@@ -280,10 +270,8 @@ namespace SimPe.Plugin
 			//
 			// cbreqtp
 			//
-			this.cbreqtp.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbreqtp.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbreqtp.Location = new System.Drawing.Point(168, 173);
 			this.cbreqtp.Name = "cbreqtp";
@@ -455,7 +443,7 @@ namespace SimPe.Plugin
 			//
 			// cbtype
 			//
-			this.cbtype.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbtype.DropDownStyle = ComboBoxStyle.DropDownList;
 			this.cbtype.Location = new System.Drawing.Point(168, 139);
 			this.cbtype.Name = "cbtype";
 			this.cbtype.Size = new System.Drawing.Size(190, 21);
@@ -487,9 +475,9 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);

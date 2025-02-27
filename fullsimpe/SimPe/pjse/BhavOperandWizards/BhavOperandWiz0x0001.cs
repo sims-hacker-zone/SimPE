@@ -137,10 +137,8 @@ namespace pjse.BhavOperandWizards.Wiz0x0001
 			//
 			// cbGenericSimsCall
 			//
-			this.cbGenericSimsCall.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbGenericSimsCall.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbGenericSimsCall.DropDownWidth = 352;
 			resources.ApplyResources(this.cbGenericSimsCall, "cbGenericSimsCall");
@@ -152,7 +150,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0001
 			// UI
 			//
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.AutoScaleMode = AutoScaleMode.Dpi;
 			this.Controls.Add(this.pnWiz0x0001);
 			this.Name = "UI";
 			this.pnWiz0x0001.ResumeLayout(false);

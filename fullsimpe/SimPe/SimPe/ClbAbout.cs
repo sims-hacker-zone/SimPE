@@ -40,7 +40,7 @@ namespace SimPe
 			if (e.TargetFrameName != "_blank")
 			{
 				e.Cancel = true;
-				System.Windows.Forms.Help.ShowHelp(wb, e.Url.OriginalString);
+				Help.ShowHelp(wb, e.Url.OriginalString);
 				//wb.Navigate(e.Url, true);
 			}
 		}
@@ -94,10 +94,10 @@ namespace SimPe
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -118,7 +118,7 @@ namespace SimPe
 			this.MinimizeBox = false;
 			this.Name = "ClbAbout";
 			this.ShowIcon = false;
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			this.StartPosition = FormStartPosition.CenterScreen;
 			this.Text = "About";
 			this.ResumeLayout(false);
 		}
@@ -147,7 +147,7 @@ namespace SimPe
 			f.Text = "Colour Binning Tool";
 
 			f.LoadHtmResource("ColourBin");
-			SimPe.Splash.Screen.Stop();
+			Splash.Screen.Stop();
 			f.ShowDialog();
 		}
 

@@ -45,16 +45,16 @@ namespace Ambertation.Threading
 		{
 			lock (buffer_not_empty)
 			{
-				if (OldThreadBuffer.counter == N) // Is Buffer full
+				if (counter == N) // Is Buffer full
 				{
 					// wait until a slot is available
 					Monitor.Wait(buffer_free);
 				}
 
 				// Add Data to the Buffer
-				buffer[OldThreadBuffer.counter] = o;
+				buffer[counter] = o;
 				// -------------
-				OldThreadBuffer.counter++;
+				counter++;
 
 				// Signal that we have added a Element
 				Monitor.PulseAll(buffer_not_empty);
@@ -86,26 +86,26 @@ namespace Ambertation.Threading
 			{
 				lock (consuming)
 				{
-					while (OldThreadBuffer.counter == 0) // is Buffer Empty
+					while (counter == 0) // is Buffer Empty
 					{
-						if (!OldThreadBuffer.finished_create)
+						if (!finished_create)
 						{
 							// wait until an Element is added
 							Monitor.Wait(buffer_not_empty);
 						}
 						else
 						{
-							OldThreadBuffer.finished_consume = true;
+							finished_consume = true;
 							return null;
 						}
 					}
 
 					// Hole Daten ab
-					o = buffer[OldThreadBuffer.counter - 1];
-					buffer[OldThreadBuffer.counter - 1] = null;
+					o = buffer[counter - 1];
+					buffer[counter - 1] = null;
 
 					// -------------
-					OldThreadBuffer.counter--;
+					counter--;
 
 					Monitor.PulseAll(consuming);
 				}

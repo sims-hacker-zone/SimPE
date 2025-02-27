@@ -106,7 +106,7 @@ namespace pjse
 		{
 			public myHT()
 			{
-				pjse.FileTable.GFT.FiletableRefresh += new EventHandler(
+				FileTable.GFT.FiletableRefresh += new EventHandler(
 					this.GFT_FiletableRefresh
 				);
 			}
@@ -230,7 +230,7 @@ namespace pjse
 			public void Dispose()
 			{
 				GFT_FiletableRefresh(null, null);
-				pjse.FileTable.GFT.FiletableRefresh -= new EventHandler(
+				FileTable.GFT.FiletableRefresh -= new EventHandler(
 					this.GFT_FiletableRefresh
 				);
 			}
@@ -245,7 +245,7 @@ namespace pjse
 			{
 				if (wrapper == null)
 				{
-					FileTable.Entry[] items = pjse.FileTable.GFT[
+					FileTable.Entry[] items = FileTable.GFT[
 						this.Type,
 						this.Group,
 						this.Instance
@@ -361,7 +361,7 @@ namespace pjse
 				{
 					fsi.strItem = null;
 					fsi.fallback.Add(
-						pjse.Localization.GetString("strContext")
+						Localization.GetString("strContext")
 					//+ ": " + pjse.Localization.GetString(parent.Context.ToString())
 					);
 					return fsi;
@@ -402,9 +402,9 @@ namespace pjse
 								if (fsi.fallback.Count == 0)
 								{
 									fsi.fallback.Add(
-										pjse.Localization.GetString("Fallback")
+										Localization.GetString("Fallback")
 											+ ": "
-											+ pjse.Localization.GetString("SemiGlobal")
+											+ Localization.GetString("SemiGlobal")
 									);
 								}
 
@@ -420,9 +420,9 @@ namespace pjse
 								if (fsi.fallback.Count == 0)
 								{
 									fsi.fallback.Add(
-										pjse.Localization.GetString("Fallback")
+										Localization.GetString("Fallback")
 											+ ": "
-											+ pjse.Localization.GetString("Global")
+											+ Localization.GetString("Global")
 									);
 								}
 

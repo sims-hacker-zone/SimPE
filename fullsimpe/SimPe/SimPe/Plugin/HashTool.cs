@@ -67,7 +67,7 @@ namespace SimPe.Plugin
 		#endregion
 
 		#region IToolExt Member
-		public override System.Drawing.Image Icon => SimPe.GetIcon.HashGenerator;
+		public override System.Drawing.Image Icon => GetIcon.HashGenerator;
 		#endregion
 	}
 }

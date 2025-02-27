@@ -65,7 +65,7 @@ namespace SimPe.Plugin
 				if (sdsc == null)
 				{
 					sdsc =
-						FileTable.ProviderRegistry.SimDescriptionProvider.SimInstance[
+						FileTableBase.ProviderRegistry.SimDescriptionProvider.SimInstance[
 							SimInstance
 						] as PackedFiles.Wrapper.ExtSDesc;
 				}
@@ -112,7 +112,7 @@ namespace SimPe.Plugin
 			}
 			else
 			{
-				s = SimPe.Localization.GetString("Unknown");
+				s = Localization.GetString("Unknown");
 			}
 
 			if (Helper.WindowsRegistry.HiddenMode)

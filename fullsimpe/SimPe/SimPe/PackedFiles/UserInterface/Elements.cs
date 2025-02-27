@@ -389,7 +389,7 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			this.cbupdate.BackColor = System.Drawing.Color.Transparent;
 			this.cbupdate.Checked = true;
-			this.cbupdate.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.cbupdate.CheckState = CheckState.Checked;
 			resources.ApplyResources(this.cbupdate, "cbupdate");
 			this.cbupdate.Name = "cbupdate";
 			this.cbupdate.UseVisualStyleBackColor = false;
@@ -521,7 +521,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.gbties.Controls.Add(this.btdeletetie);
 			this.gbties.Controls.Add(this.btaddtie);
 			this.gbties.Controls.Add(this.llcommitties);
-			this.gbties.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.gbties.FlatStyle = FlatStyle.System;
 			this.gbties.Name = "gbties";
 			this.gbties.TabStop = false;
 			//
@@ -534,10 +534,8 @@ namespace SimPe.PackedFiles.UserInterface
 			// cballtieablesims
 			//
 			resources.ApplyResources(this.cballtieablesims, "cballtieablesims");
-			this.cballtieablesims.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cballtieablesims.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cballtieablesims.Name = "cballtieablesims";
 			this.cballtieablesims.SelectedIndexChanged += new EventHandler(
@@ -546,10 +544,8 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// cbtietype
 			//
-			this.cbtietype.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbtietype.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			resources.ApplyResources(this.cbtietype, "cbtietype");
 			this.cbtietype.Name = "cbtietype";
@@ -588,10 +584,8 @@ namespace SimPe.PackedFiles.UserInterface
 			// cbtiesims
 			//
 			resources.ApplyResources(this.cbtiesims, "cbtiesims");
-			this.cbtiesims.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbtiesims.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbtiesims.Name = "cbtiesims";
 			this.cbtiesims.SelectedIndexChanged += new EventHandler(
@@ -833,7 +827,7 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// cbsims
 			//
-			this.cbsims.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbsims.DropDownStyle = ComboBoxStyle.DropDownList;
 			resources.ApplyResources(this.cbsims, "cbsims");
 			this.cbsims.Name = "cbsims";
 			this.cbsims.SelectedIndexChanged += new EventHandler(
@@ -942,10 +936,8 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// cbfamtype
 			//
-			this.cbfamtype.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbfamtype.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			resources.ApplyResources(this.cbfamtype, "cbfamtype");
 			this.cbfamtype.Name = "cbfamtype";
@@ -1206,7 +1198,7 @@ namespace SimPe.PackedFiles.UserInterface
 					sdsc.FileDescriptor.Instance
 				);
 				pfd = sdsc.Package.FindFile(pfd);
-				SimPe.RemoteControl.OpenPackedFile(pfd, sdsc.Package);
+				RemoteControl.OpenPackedFile(pfd, sdsc.Package);
 			}
 		}
 
@@ -1246,8 +1238,8 @@ namespace SimPe.PackedFiles.UserInterface
 								+ "The game sees sims with a family value of 0 as not being in a family at all so it will never move the sim out."
 								+ " If the sim is moved to another family the sim will be in two families at once.",
 							"Not A Good Idea!",
-							System.Windows.Forms.MessageBoxButtons.OKCancel
-						) == System.Windows.Forms.DialogResult.Cancel
+							MessageBoxButtons.OKCancel
+						) == DialogResult.Cancel
 					)
 					{
 						return;
@@ -1305,7 +1297,7 @@ namespace SimPe.PackedFiles.UserInterface
 					fami.FileDescriptor.Instance
 				);
 				pfd = fami.Package.FindFile(pfd);
-				SimPe.RemoteControl.OpenPackedFile(pfd, fami.Package);
+				RemoteControl.OpenPackedFile(pfd, fami.Package);
 			}
 			catch (Exception ex)
 			{
@@ -1853,7 +1845,7 @@ namespace SimPe.PackedFiles.UserInterface
 				);
 				pfd = fami.Package.FindFile(pfd);
 				// if (pfd != null)
-				SimPe.RemoteControl.OpenPackedFile(pfd, fami.Package);
+				RemoteControl.OpenPackedFile(pfd, fami.Package);
 			}
 			catch (Exception ex)
 			{

@@ -193,7 +193,7 @@ namespace SimPe
 			);
 			this.chkSimFolder.CanFix = true;
 			this.chkSimFolder.Caption = resources.GetString("chkSimFolder.Caption");
-			this.chkSimFolder.CheckState = SimPe.CheckItemState.Unknown;
+			this.chkSimFolder.CheckState = CheckItemState.Unknown;
 			this.chkSimFolder.Details = "";
 			this.chkSimFolder.Dock = (
 				(DockStyle)(
@@ -263,7 +263,7 @@ namespace SimPe
 			);
 			this.chkCache.CanFix = true;
 			this.chkCache.Caption = resources.GetString("chkCache.Caption");
-			this.chkCache.CheckState = SimPe.CheckItemState.Unknown;
+			this.chkCache.CheckState = CheckItemState.Unknown;
 			this.chkCache.Details = "";
 			this.chkCache.Dock = (
 				(DockStyle)(resources.GetObject("chkCache.Dock"))
@@ -329,7 +329,7 @@ namespace SimPe
 			);
 			this.chkFileTable.CanFix = true;
 			this.chkFileTable.Caption = resources.GetString("chkFileTable.Caption");
-			this.chkFileTable.CheckState = SimPe.CheckItemState.Unknown;
+			this.chkFileTable.CheckState = CheckItemState.Unknown;
 			this.chkFileTable.Details = "";
 			this.chkFileTable.Dock = (
 				(DockStyle)(
@@ -500,7 +500,7 @@ namespace SimPe
 			this.panel2.AutoScrollMinSize = (
 				(Size)(resources.GetObject("panel2.AutoScrollMinSize"))
 			);
-			this.panel2.BackColor = System.Drawing.SystemColors.AppWorkspace;
+			this.panel2.BackColor = SystemColors.AppWorkspace;
 			this.panel2.BackgroundImage = (
 				(Image)(resources.GetObject("panel2.BackgroundImage"))
 			);
@@ -548,7 +548,7 @@ namespace SimPe
 			this.panel3.AutoScrollMinSize = (
 				(Size)(resources.GetObject("panel3.AutoScrollMinSize"))
 			);
-			this.panel3.BackColor = System.Drawing.SystemColors.AppWorkspace;
+			this.panel3.BackColor = SystemColors.AppWorkspace;
 			this.panel3.BackgroundImage = (
 				(Image)(resources.GetObject("panel3.BackgroundImage"))
 			);
@@ -596,7 +596,7 @@ namespace SimPe
 			this.panel4.AutoScrollMinSize = (
 				(Size)(resources.GetObject("panel4.AutoScrollMinSize"))
 			);
-			this.panel4.BackColor = System.Drawing.SystemColors.AppWorkspace;
+			this.panel4.BackColor = SystemColors.AppWorkspace;
 			this.panel4.BackgroundImage = (
 				(Image)(resources.GetObject("panel4.BackgroundImage"))
 			);
@@ -736,7 +736,7 @@ namespace SimPe
 			else
 			{
 				Message.Show(
-					SimPe.Localization.GetString("cache_cleared"),
+					Localization.GetString("cache_cleared"),
 					"Information",
 					MessageBoxButtons.OK
 				);
@@ -777,13 +777,13 @@ namespace SimPe
 						{
 							isok = CheckItemState.Fail;
 							ci.Details +=
-								SimPe
-									.Localization.GetString("Check: Folder not found")
+
+									Localization.GetString("Check: Folder not found")
 									.Replace("{name}", ei.Name) + Helper.lbr;
 							ci.Details +=
 								"    "
-								+ SimPe
-									.Localization.GetString("Check: Unable to locate")
+								+
+									Localization.GetString("Check: Unable to locate")
 									.Replace("{name}", test)
 								+ Helper.lbr
 								+ Helper.lbr;
@@ -804,13 +804,13 @@ namespace SimPe
 						{
 							isok = CheckItemState.Fail;
 							ci.Details +=
-								SimPe
-									.Localization.GetString("Check: Folder not found")
+
+									Localization.GetString("Check: Folder not found")
 									.Replace("{name}", ei.Name) + Helper.lbr;
 							ci.Details +=
 								"    "
-								+ SimPe
-									.Localization.GetString("Check: Unable to locate")
+								+
+									Localization.GetString("Check: Unable to locate")
 									.Replace("{name}", test)
 								+ Helper.lbr
 								+ Helper.lbr;
@@ -827,13 +827,13 @@ namespace SimPe
 						{
 							isok = CheckItemState.Fail;
 							ci.Details +=
-								SimPe
-									.Localization.GetString("Check: Folder not found")
+
+									Localization.GetString("Check: Folder not found")
 									.Replace("{name}", ei.Name) + Helper.lbr;
 							ci.Details +=
 								"    "
-								+ SimPe
-									.Localization.GetString("Check: Unable to locate")
+								+
+									Localization.GetString("Check: Unable to locate")
 									.Replace("{name}", test)
 								+ Helper.lbr
 								+ Helper.lbr;
@@ -843,15 +843,15 @@ namespace SimPe
 				}
 
 				if (
-					SimPe
-						.PathProvider.Global.GetSaveGamePathForGroup(
-							SimPe.PathProvider.Global.CurrentGroup
+
+						PathProvider.Global.GetSaveGamePathForGroup(
+							PathProvider.Global.CurrentGroup
 						)
 						.Count > 0
 				)
 				{
 					path = PathProvider.Global.GetSaveGamePathForGroup(
-						SimPe.PathProvider.Global.CurrentGroup
+						PathProvider.Global.CurrentGroup
 					)[0];
 				}
 				else
@@ -864,16 +864,16 @@ namespace SimPe
 				{
 					isok = CheckItemState.Fail;
 					ci.Details +=
-						SimPe
-							.Localization.GetString("Check: Folder not found")
+
+							Localization.GetString("Check: Folder not found")
 							.Replace(
 								"{name}",
-								SimPe.Localization.GetString("Savegames")
+								Localization.GetString("Savegames")
 							) + Helper.lbr;
 					ci.Details +=
 						"    "
-						+ SimPe
-							.Localization.GetString("Check: Unable to locate")
+						+
+							Localization.GetString("Check: Unable to locate")
 							.Replace("{name}", test)
 						+ Helper.lbr
 						+ Helper.lbr;
@@ -881,19 +881,19 @@ namespace SimPe
 
 				if (isok == CheckItemState.Ok)
 				{
-					if (SimPe.PathProvider.Global.GameVersion < 16)
+					if (PathProvider.Global.GameVersion < 16)
 					{
 						test = Data.MetaData.GMND_PACKAGE;
 						if (!System.IO.File.Exists(test))
 						{
 							isok = CheckItemState.Warning;
 							ci.Details +=
-								SimPe.Localization.GetString("Check: CEP not found")
+								Localization.GetString("Check: CEP not found")
 								+ Helper.lbr;
 							ci.Details +=
 								"    "
-								+ SimPe
-									.Localization.GetString("Check: Unable to locate")
+								+
+									Localization.GetString("Check: Unable to locate")
 									.Replace("{name}", test)
 								+ Helper.lbr
 								+ Helper.lbr;
@@ -903,18 +903,18 @@ namespace SimPe
 						{
 							isok = CheckItemState.Warning;
 							ci.Details +=
-								SimPe.Localization.GetString("Check: CEP not found")
+								Localization.GetString("Check: CEP not found")
 								+ Helper.lbr;
 							ci.Details +=
 								"    "
-								+ SimPe
-									.Localization.GetString("Check: Unable to locate")
+								+
+									Localization.GetString("Check: Unable to locate")
 									.Replace("{name}", test)
 								+ Helper.lbr
 								+ Helper.lbr;
 						}
 					}
-					else if (SimPe.PathProvider.Global.GameVersion > 17)
+					else if (PathProvider.Global.GameVersion > 17)
 					{
 						if (
 							System.IO.File.Exists(Data.MetaData.GMND_PACKAGE)
@@ -925,7 +925,7 @@ namespace SimPe
 						{
 							isok = CheckItemState.Warning;
 							ci.Details +=
-								SimPe.Localization.GetString("Check: CEP is installed")
+								Localization.GetString("Check: CEP is installed")
 								+ Helper.lbr;
 						}
 					}
@@ -949,11 +949,11 @@ namespace SimPe
 			PathProvider.Global.SetDefaultPaths();
 			if (Helper.Profile.Length > 0)
 			{
-				System.Windows.Forms.MessageBox.Show(
+				MessageBox.Show(
 					"You will need to re-save profile " + Helper.Profile,
 					"Fix",
-					System.Windows.Forms.MessageBoxButtons.OK,
-					System.Windows.Forms.MessageBoxIcon.Warning
+					MessageBoxButtons.OK,
+					MessageBoxIcon.Warning
 				);
 			}
 
@@ -998,12 +998,12 @@ namespace SimPe
 				catch (Exception ex)
 				{
 					ci.Details +=
-						SimPe.Localization.GetString("Check: Unable to load cache")
+						Localization.GetString("Check: Unable to load cache")
 						+ Helper.lbr;
 					ci.Details +=
 						"    "
-						+ SimPe
-							.Localization.GetString("Check: Error while load")
+						+
+							Localization.GetString("Check: Error while load")
 							.Replace("{name}", path)
 						+ Helper.lbr;
 					ci.Details += "    " + ex.Message + Helper.lbr + Helper.lbr;
@@ -1037,21 +1037,21 @@ namespace SimPe
 		)
 		{
 			isok = CheckItemState.Ok;
-			FileTable.FileIndex.Load();
+			FileTableBase.FileIndex.Load();
 			CheckItem ci = sender as CheckItem;
 			try
 			{
 				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-					FileTable.FileIndex.FindFile(Data.MetaData.OBJD_FILE, true);
+					FileTableBase.FileIndex.FindFile(Data.MetaData.OBJD_FILE, true);
 				if (items.Length < 3000)
 				{
 					ci.Details +=
-						SimPe.Localization.GetString("Check: No Objects") + Helper.lbr;
+						Localization.GetString("Check: No Objects") + Helper.lbr;
 					isok = CheckItemState.Fail;
 				}
 				else
 				{
-					items = FileTable.FileIndex.FindFile(
+					items = FileTableBase.FileIndex.FindFile(
 						Data.MetaData.OBJD_FILE,
 						0x7F94AFE8,
 						0x000041AB,
@@ -1060,17 +1060,17 @@ namespace SimPe
 					if (items.Length == 0)
 					{
 						ci.Details +=
-							SimPe.Localization.GetString("Check: No Objects")
+							Localization.GetString("Check: No Objects")
 							+ Helper.lbr;
 						isok = CheckItemState.Fail;
 					}
 				}
 
-				items = FileTable.FileIndex.FindFile(Data.MetaData.TXMT, true);
+				items = FileTableBase.FileIndex.FindFile(Data.MetaData.TXMT, true);
 				if (items.Length < 100)
 				{
 					ci.Details +=
-						SimPe.Localization.GetString("Check: No Textures") + Helper.lbr;
+						Localization.GetString("Check: No Textures") + Helper.lbr;
 					isok = CheckItemState.Fail;
 				}
 			}
@@ -1098,7 +1098,7 @@ namespace SimPe
 				}
 
 				if (
-					System.Windows.Forms.MessageBox.Show(
+					MessageBox.Show(
 						"The File table settings file was not correct and you have asked to fix it.\n"
 							+ Helper.DataFolder.FoldersXREG
 							+ "\n"
@@ -1107,9 +1107,9 @@ namespace SimPe
 							+ ").\n\n"
 							+ "Should SimPe delete the File table settings File?",
 						"Fix",
-						System.Windows.Forms.MessageBoxButtons.YesNo,
-						System.Windows.Forms.MessageBoxIcon.Question
-					) == System.Windows.Forms.DialogResult.Yes
+						MessageBoxButtons.YesNo,
+						MessageBoxIcon.Question
+					) == DialogResult.Yes
 				)
 				{
 					System.IO.File.Delete(Helper.DataFolder.FoldersXREG);

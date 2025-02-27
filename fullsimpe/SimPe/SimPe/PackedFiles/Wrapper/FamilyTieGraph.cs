@@ -96,7 +96,7 @@ namespace SimPe.PackedFiles.Wrapper
 					return;
 				}
 
-				double r = GraphPanel.GetPinCircleRadius(
+				double r = GetPinCircleRadius(
 					this.ItemSize,
 					this.ItemSize,
 					maxct
@@ -106,7 +106,7 @@ namespace SimPe.PackedFiles.Wrapper
 					Math.Max(this.Height / 2, (int)r + ItemSize.Height / 2)
 				);
 				MainSimElement = CreateItem(sdsc, 0, 0);
-				MainSimElement.Location = GraphPanel.GetCenterLocationOnPinCircle(
+				MainSimElement.Location = GetCenterLocationOnPinCircle(
 					center,
 					r,
 					ItemSize
@@ -130,7 +130,7 @@ namespace SimPe.PackedFiles.Wrapper
 							tie.FindTie(s).Type,
 							false
 						);
-						ip.Location = GraphPanel.GetItemLocationOnPinCricle(
+						ip.Location = GetItemLocationOnPinCricle(
 							center,
 							r,
 							ct++,
@@ -149,7 +149,7 @@ namespace SimPe.PackedFiles.Wrapper
 							tie.FindTie(s).Type,
 							false
 						);
-						ip.Location = GraphPanel.GetItemLocationOnPinCricle(
+						ip.Location = GetItemLocationOnPinCricle(
 							center,
 							r,
 							ct++,
@@ -168,7 +168,7 @@ namespace SimPe.PackedFiles.Wrapper
 							tie.FindTie(s).Type,
 							false
 						);
-						ip.Location = GraphPanel.GetItemLocationOnPinCricle(
+						ip.Location = GetItemLocationOnPinCricle(
 							center,
 							r,
 							ct++,
@@ -451,7 +451,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 				if (
 					sdsc.CharacterDescription.Gender
-					== SimPe.Data.MetaData.Gender.Female
+					== Data.MetaData.Gender.Female
 				)
 				{
 					return Data.MetaData.FamilyTieTypes.MyMotherIs;

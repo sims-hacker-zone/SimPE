@@ -70,7 +70,7 @@ namespace SimPe
 			if (e.TargetFrameName != "_blank")
 			{
 				e.Cancel = true;
-				System.Windows.Forms.Help.ShowHelp(wb, e.Url.OriginalString);
+				Help.ShowHelp(wb, e.Url.OriginalString);
 				//wb.Navigate(e.Url, true);
 			}
 		}
@@ -113,27 +113,27 @@ namespace SimPe
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
-			this.rtb.BackColor = System.Drawing.Color.White;
-			this.rtb.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.rtb.Cursor = System.Windows.Forms.Cursors.Arrow;
+			this.rtb.BackColor = Color.White;
+			this.rtb.BorderStyle = BorderStyle.None;
+			this.rtb.Cursor = Cursors.Arrow;
 			this.rtb.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.rtb.Location = new Point(30, 130);
 			this.rtb.Name = "rtb";
 			this.rtb.ReadOnly = true;
-			this.rtb.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+			this.rtb.ScrollBars = RichTextBoxScrollBars.Vertical;
 			this.rtb.Size = new Size(975, 484);
 			this.rtb.TabIndex = 2;
 			this.rtb.Text = "";
@@ -171,10 +171,10 @@ namespace SimPe
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -198,7 +198,7 @@ namespace SimPe
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "About";
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			this.StartPosition = FormStartPosition.CenterScreen;
 			this.Text = "About";
 			this.ResumeLayout(false);
 		}
@@ -282,10 +282,10 @@ namespace SimPe
 		public static void ShowAbout()
 		{
 			About f = new About();
-			f.Text = SimPe.Localization.GetString("About");
+			f.Text = Localization.GetString("About");
 
 			f.LoadResource("about");
-			SimPe.Splash.Screen.Stop();
+			Splash.Screen.Stop();
 			f.ShowDialog();
 		}
 
@@ -295,10 +295,10 @@ namespace SimPe
 		public static void ShowWelcome()
 		{
 			About f = new About();
-			f.Text = SimPe.Localization.GetString("Welcome");
+			f.Text = Localization.GetString("Welcome");
 
 			f.LoadResource("welcome");
-			SimPe.Splash.Screen.Stop();
+			Splash.Screen.Stop();
 
 			f.ShowDialog();
 		}
@@ -312,7 +312,7 @@ namespace SimPe
 			f.Text = "File Table and Profiles";
 
 			f.LoadHtmResource("FileTable");
-			SimPe.Splash.Screen.Stop();
+			Splash.Screen.Stop();
 			f.ShowDialog();
 		}
 
@@ -323,7 +323,7 @@ namespace SimPe
 		{
 			try
 			{
-				System.Windows.Forms.Help.ShowHelp(
+				Help.ShowHelp(
 					this,
 					e.LinkText.Replace("http://localhost", Helper.SimPePath)
 				);

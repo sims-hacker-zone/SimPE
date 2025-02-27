@@ -184,10 +184,10 @@ namespace SimPe.Wants
 							string value = "";
 							switch (cpfitem.Datatype) // Argh... So broken...
 							{
-								case SimPe.Data.MetaData.DataTypes.dtInteger:
+								case Data.MetaData.DataTypes.dtInteger:
 									value = cpfitem.IntegerValue.ToString();
 									break;
-								case SimPe.Data.MetaData.DataTypes.dtBoolean:
+								case Data.MetaData.DataTypes.dtBoolean:
 									value = cpfitem.BooleanValue.ToString();
 									break;
 								default:
@@ -314,7 +314,7 @@ namespace SimPe.Wants
 			}
 
 			string s = "";
-			if (SimPe.Helper.FileFormat)
+			if (Helper.FileFormat)
 			{
 				s += version + ":";
 			}

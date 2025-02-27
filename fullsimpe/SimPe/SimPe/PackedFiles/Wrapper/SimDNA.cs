@@ -129,7 +129,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		internal string Description => SimPe.Serializer.Serialize(this);
+		internal string Description => Serialize(this);
 	}
 
 	/// <summary>
@@ -212,7 +212,7 @@ namespace SimPe.PackedFiles.Wrapper
 		protected override string GetResourceName(Data.TypeAlias ta)
 		{
 			ExtSDesc sdsc =
-				FileTable.ProviderRegistry.SimDescriptionProvider.FindSim(
+				FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
 					(ushort)this.FileDescriptor.Instance
 				) as ExtSDesc;
 			if (sdsc == null)

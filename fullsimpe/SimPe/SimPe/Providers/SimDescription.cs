@@ -180,8 +180,8 @@ namespace SimPe.Providers
 
 		public ArrayList GetHouseholdNames(out string firstcustum)
 		{
-			Hashtable ht = SimPe
-				.FileTable
+			Hashtable ht =
+				FileTableBase
 				.ProviderRegistry
 				.SimDescriptionProvider
 				.SimInstance;
@@ -192,7 +192,7 @@ namespace SimPe.Providers
 				string n = sdesc.HouseholdName;
 				if (n == null)
 				{
-					n = SimPe.Localization.GetString("Unknown");
+					n = Localization.GetString("Unknown");
 				}
 
 				if (!list.Contains(n))
@@ -213,7 +213,7 @@ namespace SimPe.Providers
 				}
 				else
 				{
-					firstcustum = SimPe.Localization.GetString("Unknown");
+					firstcustum = Localization.GetString("Unknown");
 				}
 			}
 
@@ -287,8 +287,8 @@ namespace SimPe.Providers
 
 			turnons = new System.Collections.Generic.Dictionary<int, string>();
 			if (
-				SimPe.PathProvider.Global.EPInstalled < 2
-				&& SimPe.PathProvider.Global.STInstalled < 28
+				PathProvider.Global.EPInstalled < 2
+				&& PathProvider.Global.STInstalled < 28
 			)
 			{
 				return;
@@ -298,7 +298,7 @@ namespace SimPe.Providers
 				to1 = 12;
 			}
 
-			Packages.File pkg = SimPe.Packages.File.LoadFromFile(
+			Packages.File pkg = Packages.File.LoadFromFile(
 				System.IO.Path.Combine(
 					PathProvider.Global.Latest.InstallFolder,
 					@"TSData\Res\Text\UIText.package"
@@ -400,7 +400,7 @@ namespace SimPe.Providers
 					string o = turnons[ct];
 					if (o == null)
 					{
-						return SimPe.Localization.GetString("Unknown");
+						return Localization.GetString("Unknown");
 					}
 
 					if (ret != "")
@@ -432,12 +432,12 @@ namespace SimPe.Providers
 				int,
 				CollectibleAlias
 			>();
-			if (SimPe.PathProvider.Global.EPInstalled < 10)
+			if (PathProvider.Global.EPInstalled < 10)
 			{
 				return;
 			}
 
-			Packages.File pkg = SimPe.Packages.File.LoadFromFile(
+			Packages.File pkg = Packages.File.LoadFromFile(
 				System.IO.Path.Combine(
 					PathProvider.Global.Latest.InstallFolder,
 					@"TSData\Res\Text\UIText.package"
@@ -456,7 +456,7 @@ namespace SimPe.Providers
 				StrItemList strs =
 					str.FallbackedLanguageItems(Helper.WindowsRegistry.LanguageCode);
 
-				pkg = SimPe.Packages.File.LoadFromFile(
+				pkg = Packages.File.LoadFromFile(
 					System.IO.Path.Combine(
 						PathProvider.Global.Latest.InstallFolder,
 						@"TSData\Res\UI\ui.package"
@@ -585,7 +585,7 @@ namespace SimPe.Providers
 			UInt32 i
 		)
 		{
-			Packages.File pkg = SimPe.Packages.File.LoadFromFile(
+			Packages.File pkg = Packages.File.LoadFromFile(
 				System.IO.Path.Combine(
 					PathProvider.Global.GetExpansion(10).InstallFolder,
 					"TSData\\Res\\UI\\ui.package"
@@ -717,7 +717,7 @@ namespace SimPe.Providers
 					object o = collectibles[ct];
 					if (o == null)
 					{
-						return SimPe.Localization.GetString("Unknown");
+						return Localization.GetString("Unknown");
 					}
 
 					if (ret != "")

@@ -48,7 +48,7 @@ namespace SimPe.Plugin
 			this.tbown.Visible = false;*/
 #endif
 
-			SimPe.RemoteControl.HookToMessageQueue(
+			RemoteControl.HookToMessageQueue(
 				0x4E474248,
 				new RemoteControl.ControlEvent(ControlEvent)
 			);
@@ -90,7 +90,7 @@ namespace SimPe.Plugin
 		{
 			if (disposing)
 			{
-				SimPe.RemoteControl.UnhookFromMessageQueue(
+				RemoteControl.UnhookFromMessageQueue(
 					0x4E474248,
 					new RemoteControl.ControlEvent(ControlEvent)
 				);
@@ -167,7 +167,7 @@ namespace SimPe.Plugin
 			//
 			// cbtype
 			//
-			this.cbtype.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbtype.DropDownStyle = ComboBoxStyle.DropDownList;
 			resources.ApplyResources(this.cbtype, "cbtype");
 			this.cbtype.Items.AddRange(
 				new object[]
@@ -223,14 +223,14 @@ namespace SimPe.Plugin
 			this.gbmem.Controls.Add(this.label1);
 			this.gbmem.Controls.Add(this.pb);
 			this.gbmem.Controls.Add(this.lbdata);
-			this.gbmem.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.gbmem.FlatStyle = FlatStyle.System;
 			this.gbmem.Name = "gbmem";
 			this.gbmem.TabStop = false;
 			//
 			// cbown
 			//
 			resources.ApplyResources(this.cbown, "cbown");
-			this.cbown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbown.DropDownStyle = ComboBoxStyle.DropDownList;
 			this.cbown.Name = "cbown";
 			this.cbown.SelectedIndexChanged += new EventHandler(
 				this.ChgOwnerItem
@@ -288,16 +288,16 @@ namespace SimPe.Plugin
 			this.lbmem.SmallImageList = this.memilist;
 			this.lbmem.StateImageList = this.memilist;
 			this.lbmem.UseCompatibleStateImageBehavior = false;
-			this.lbmem.View = System.Windows.Forms.View.List;
+			this.lbmem.View = View.List;
 			this.lbmem.SelectedIndexChanged += new EventHandler(
 				this.SelectMemory
 			);
 			//
 			// memilist
 			//
-			this.memilist.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+			this.memilist.ColorDepth = ColorDepth.Depth32Bit;
 			resources.ApplyResources(this.memilist, "memilist");
-			this.memilist.TransparentColor = System.Drawing.Color.Transparent;
+			this.memilist.TransparentColor = Color.Transparent;
 			//
 			// tbown
 			//
@@ -337,7 +337,7 @@ namespace SimPe.Plugin
 			// cbsub
 			//
 			resources.ApplyResources(this.cbsub, "cbsub");
-			this.cbsub.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbsub.DropDownStyle = ComboBoxStyle.DropDownList;
 			this.cbsub.Name = "cbsub";
 			this.cbsub.SelectedIndexChanged += new EventHandler(
 				this.ChgSubjectItem
@@ -357,7 +357,7 @@ namespace SimPe.Plugin
 			// cbguid
 			//
 			resources.ApplyResources(this.cbguid, "cbguid");
-			this.cbguid.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbguid.DropDownStyle = ComboBoxStyle.DropDownList;
 			this.cbguid.Name = "cbguid";
 			this.cbguid.SelectedIndexChanged += new EventHandler(
 				this.ChgGuidItem
@@ -412,7 +412,7 @@ namespace SimPe.Plugin
 			// lv
 			//
 			resources.ApplyResources(this.lv, "lv");
-			this.lv.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.lv.BorderStyle = BorderStyle.None;
 			this.lv.HideSelection = false;
 			this.lv.LargeImageList = this.ilist;
 			this.lv.Name = "lv";
@@ -421,16 +421,16 @@ namespace SimPe.Plugin
 			//
 			// ilist
 			//
-			this.ilist.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+			this.ilist.ColorDepth = ColorDepth.Depth32Bit;
 			resources.ApplyResources(this.ilist, "ilist");
-			this.ilist.TransparentColor = System.Drawing.Color.Transparent;
+			this.ilist.TransparentColor = Color.Transparent;
 			//
 			// panel2
 			//
 			resources.ApplyResources(this.panel2, "panel2");
-			this.panel2.BackColor = System.Drawing.SystemColors.AppWorkspace;
+			this.panel2.BackColor = SystemColors.AppWorkspace;
 			this.panel2.Controls.Add(this.label27);
-			this.panel2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+			this.panel2.ForeColor = SystemColors.ActiveCaptionText;
 			this.panel2.Name = "panel2";
 			//
 			// label27

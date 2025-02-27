@@ -53,13 +53,13 @@ namespace SimPe.Plugin
 
 			if (System.IO.File.Exists(ScenegraphHelper.GMND_PACKAGE))
 			{
-				dn_pkg = SimPe.Packages.GeneratableFile.LoadFromFile(
+				dn_pkg = Packages.File.LoadFromFile(
 					ScenegraphHelper.GMND_PACKAGE
 				);
 			}
 			else
 			{
-				dn_pkg = SimPe.Packages.GeneratableFile.LoadFromStream(
+				dn_pkg = Packages.File.LoadFromStream(
 					(System.IO.BinaryReader)null
 				);
 				dn_pkg.FileName = ScenegraphHelper.GMND_PACKAGE;
@@ -67,13 +67,13 @@ namespace SimPe.Plugin
 
 			if (System.IO.File.Exists(ScenegraphHelper.MMAT_PACKAGE))
 			{
-				gm_pkg = SimPe.Packages.GeneratableFile.LoadFromFile(
+				gm_pkg = Packages.File.LoadFromFile(
 					ScenegraphHelper.MMAT_PACKAGE
 				);
 			}
 			else
 			{
-				gm_pkg = SimPe.Packages.GeneratableFile.LoadFromStream(
+				gm_pkg = Packages.File.LoadFromStream(
 					(System.IO.BinaryReader)null
 				);
 				gm_pkg.FileName = ScenegraphHelper.MMAT_PACKAGE;
@@ -435,7 +435,7 @@ namespace SimPe.Plugin
 				}
 			}
 
-			ObjectRecolor.FixMMAT(mmat);
+			FixMMAT(mmat);
 			mmat.SynchronizeUserData();
 
 			gm_pkg.Add(mmat.FileDescriptor);
@@ -494,7 +494,7 @@ namespace SimPe.Plugin
 		/// <param name="mmat">A valid MMAT file</param>
 		protected void AddMATD(PackedFiles.Wrapper.Cpf mmat)
 		{
-			Packages.File pkg = SimPe.Packages.File.LoadFromFile(
+			Packages.File pkg = Packages.File.LoadFromFile(
 				System.IO.Path.Combine(
 					PathProvider.Global.GetExpansion(Expansions.BaseGame).InstallFolder,
 					"TSData\\Res\\Sims3D\\Objects02.package"

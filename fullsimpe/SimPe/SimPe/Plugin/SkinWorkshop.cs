@@ -136,17 +136,17 @@ namespace SimPe.Plugin
 					lbobj.BeginUpdate();
 					lbobj.Items.Clear();
 					lbobj.Sorted = false;
-					FileTable.FileIndex.Load();
+					FileTableBase.FileIndex.Load();
 					Interfaces.Scenegraph.IScenegraphFileIndexItem[] nrefitems =
-						FileTable.FileIndex.Sort(
-							FileTable.FileIndex.FindFile(type, true)
+						FileTableBase.FileIndex.Sort(
+							FileTableBase.FileIndex.FindFile(type, true)
 						);
 					WaitingScreen.UpdateMessage("Loading Items");
 					foreach (
 						Interfaces.Scenegraph.IScenegraphFileIndexItem nrefitem in nrefitems
 					)
 					{
-						if (nrefitem.LocalGroup == Data.MetaData.LOCAL_GROUP)
+						if (nrefitem.LocalGroup == MetaData.LOCAL_GROUP)
 						{
 							continue;
 						}
@@ -229,7 +229,7 @@ namespace SimPe.Plugin
 								oci.ObjectType = ObjectTypes.Outfit;
 								oci.ObjectFileName = cpf.GetItem("name").StringValue;
 								oci.Useable = true;
-								oci.Class = SimPe.Cache.ObjectClass.Skin;
+								oci.Class = Cache.ObjectClass.Skin;
 
 								Alias a = new Alias(
 									nrefitem.FileDescriptor.Instance,
@@ -320,10 +320,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -331,7 +331,7 @@ namespace SimPe.Plugin
 			this.lbobj.ItemHeight = 16;
 			this.lbobj.Location = new Point(6, 71);
 			this.lbobj.Name = "lbobj";
-			this.lbobj.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+			this.lbobj.SelectionMode = SelectionMode.MultiExtended;
 			this.lbobj.Size = new Size(485, 248);
 			this.lbobj.TabIndex = 0;
 			this.lbobj.SelectedIndexChanged += new EventHandler(this.Select);
@@ -341,17 +341,17 @@ namespace SimPe.Plugin
 			this.btclone.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.btclone.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.btclone.FlatStyle = FlatStyle.System;
 			this.btclone.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.btclone.Location = new Point(400, 141);
@@ -363,23 +363,23 @@ namespace SimPe.Plugin
 			//
 			// pb
 			//
-			this.pb.BackColor = System.Drawing.Color.Transparent;
-			this.pb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.pb.BackColor = Color.Transparent;
+			this.pb.BorderStyle = BorderStyle.FixedSingle;
 			this.pb.Location = new Point(7, 40);
 			this.pb.Name = "pb";
 			this.pb.Size = new Size(128, 128);
-			this.pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.pb.SizeMode = PictureBoxSizeMode.StretchImage;
 			this.pb.TabIndex = 6;
 			this.pb.TabStop = false;
 			//
 			// cbfix
 			//
-			this.cbfix.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbfix.FlatStyle = FlatStyle.System;
 			this.cbfix.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.cbfix.Location = new Point(152, 77);
@@ -390,12 +390,12 @@ namespace SimPe.Plugin
 			//
 			// cbgid
 			//
-			this.cbgid.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbgid.FlatStyle = FlatStyle.System;
 			this.cbgid.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.cbgid.Location = new Point(152, 47);
@@ -415,9 +415,9 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -433,15 +433,15 @@ namespace SimPe.Plugin
 			//
 			// panel1
 			//
-			this.panel1.BackColor = System.Drawing.Color.Transparent;
+			this.panel1.BackColor = Color.Transparent;
 			this.panel1.Controls.Add(this.taskBox2);
 			this.panel1.Controls.Add(this.taskBox1);
-			this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.panel1.Dock = DockStyle.Fill;
 			this.panel1.Font = new Font(
 				"Verdana",
 				9.75F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.panel1.Location = new Point(0, 0);
@@ -454,12 +454,12 @@ namespace SimPe.Plugin
 			this.taskBox2.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
-			this.taskBox2.BackColor = System.Drawing.Color.Transparent;
+			this.taskBox2.BackColor = Color.Transparent;
 			this.taskBox2.Controls.Add(this.cbfix);
 			this.taskBox2.Controls.Add(this.btclone);
 			this.taskBox2.Controls.Add(this.pb);
@@ -477,14 +477,14 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
-			this.taskBox1.BackColor = System.Drawing.Color.Transparent;
+			this.taskBox1.BackColor = Color.Transparent;
 			this.taskBox1.Controls.Add(this.tbseek);
 			this.taskBox1.Controls.Add(this.lbobj);
 			this.taskBox1.Location = new Point(3, 3);
@@ -501,20 +501,18 @@ namespace SimPe.Plugin
 			this.Font = new Font(
 				"Verdana",
 				9.75F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.FormBorderStyle = System
-				.Windows
-				.Forms
-				.FormBorderStyle
+			this.FormBorderStyle =
+				FormBorderStyle
 				.SizableToolWindow;
 			this.Icon = ((Icon)(resources.GetObject("$this.Icon")));
 			this.MinimumSize = new Size(520, 320);
 			this.Name = "SkinWorkshop";
 			this.Opacity = 0.96;
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			this.StartPosition = FormStartPosition.CenterScreen;
 			this.Text = "Skin Workshop (biggest thanks to RGiles and Numenor)";
 			((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
 			this.panel1.ResumeLayout(false);
@@ -531,7 +529,7 @@ namespace SimPe.Plugin
 			this.simpe_pkg = simpe_pkg;
 
 			// WaitingScreen.Wait();
-			FileTable.FileIndex.Load();
+			FileTableBase.FileIndex.Load();
 			package = null;
 
 			BuildListing();
@@ -543,7 +541,7 @@ namespace SimPe.Plugin
 
 		void BuildListing()
 		{
-			BuildListing(Data.MetaData.GZPS);
+			BuildListing(MetaData.GZPS);
 		}
 
 		private void Select(object sender, EventArgs e) // Fuck
@@ -581,7 +579,7 @@ namespace SimPe.Plugin
 				this.Cursor = Cursors.WaitCursor;
 				IAlias a = new Alias(0, "");
 				Interfaces.Files.IPackedFileDescriptor pfd = null;
-				uint localgroup = Data.MetaData.LOCAL_GROUP;
+				uint localgroup = MetaData.LOCAL_GROUP;
 
 				if (lbobj.SelectedIndex >= 0)
 				{
@@ -794,7 +792,7 @@ namespace SimPe.Plugin
 			//Get the Base Object Data from the Objects.package File
 
 			Interfaces.Scenegraph.IScenegraphFileIndexItem[] files =
-				FileTable.FileIndex.FindFileByGroupAndInstance(
+				FileTableBase.FileIndex.FindFileByGroupAndInstance(
 					localgroup,
 					pfd.LongInstance
 				);
@@ -840,7 +838,7 @@ namespace SimPe.Plugin
 			bool anim
 		)
 		{
-			package = SimPe.Packages.GeneratableFile.LoadFromStream(
+			package = Packages.File.LoadFromStream(
 				(System.IO.BinaryReader)null
 			);
 
@@ -908,7 +906,7 @@ namespace SimPe.Plugin
 			else gm_pkg = SimPe.Packages.GeneratableFile.LoadFromStream((System.IO.BinaryReader)null);
 			*/
 			Packages.GeneratableFile npackage =
-				SimPe.Packages.GeneratableFile.LoadFromStream(
+				Packages.File.LoadFromStream(
 					(System.IO.BinaryReader)null
 				);
 

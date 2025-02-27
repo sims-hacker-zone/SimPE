@@ -124,7 +124,7 @@ namespace SimPe.Packages
 
 			StreamItem si = StreamFactory.UseStream(
 				this.flname,
-				System.IO.FileAccess.Read
+				FileAccess.Read
 			); // seams to be no problem, is after all just a reader, not a writer
 			   //StreamItem si = StreamFactory.UseStream(this.flname, System.IO.FileAccess.ReadWrite); // can be an issue with read onlu files, never used to be but suddenly is
 			reader = new BinaryReader(si.FileStream);
@@ -238,10 +238,10 @@ namespace SimPe.Packages
 		internal void ReloadFromFile(string filename)
 		{
 			// Not sure exactly what this does...
-			persistent = SimPe.Custom.Settings.Persistent;
+			persistent = Custom.Settings.Persistent;
 			StreamItem si = StreamFactory.UseStream(
 				filename,
-				System.IO.FileAccess.Read
+				FileAccess.Read
 			);
 
 			if (si.StreamState != StreamState.Removed)
@@ -733,7 +733,7 @@ namespace SimPe.Packages
 		{
 			fileindex = new PackedFileDescriptor[header.index.Count];
 			uint counter = 0;
-			reader.BaseStream.Seek(header.index.offset, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(header.index.offset, SeekOrigin.Begin);
 
 			while (counter < fileindex.Length)
 			{
@@ -839,7 +839,7 @@ namespace SimPe.Packages
 				OpenReader();
 			}
 
-			reader.BaseStream.Seek(header.hole.offset, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(header.hole.offset, SeekOrigin.Begin);
 
 			while (counter < holeindex.Length)
 			{
@@ -918,7 +918,7 @@ namespace SimPe.Packages
 				{
 					fhg = (uint)(
 						Hashes.FileGroupHash(
-							System.IO.Path.GetFileNameWithoutExtension(FileName)
+							Path.GetFileNameWithoutExtension(FileName)
 						) | 0x7f000000
 					);
 				}
@@ -954,7 +954,7 @@ namespace SimPe.Packages
 
 			try
 			{
-				reader.BaseStream.Seek(pfd.Offset, System.IO.SeekOrigin.Begin);
+				reader.BaseStream.Seek(pfd.Offset, SeekOrigin.Begin);
 				pf.size = reader.ReadInt32();
 				pf.signature = reader.ReadUInt16();
 				Byte[] dummy = reader.ReadBytes(3);
@@ -966,7 +966,7 @@ namespace SimPe.Packages
 					pf.headersize = 9;
 				}
 
-				if ((filelistfile != null) && (pfd.Type != File.FILELIST_TYPE))
+				if ((filelistfile != null) && (pfd.Type != FILELIST_TYPE))
 				{
 					int pos = filelistfile.FindFile(pfd);
 					if (pos != -1)
@@ -1000,7 +1000,7 @@ namespace SimPe.Packages
 			{
 				pf.datastart = pfd.Offset;
 				pf.datasize = (uint)pfd.Size;
-				reader.BaseStream.Seek(pfd.Offset, System.IO.SeekOrigin.Begin);
+				reader.BaseStream.Seek(pfd.Offset, SeekOrigin.Begin);
 				pf.size = reader.ReadInt32();
 				pf.signature = reader.ReadUInt16();
 				Byte[] dummy = reader.ReadBytes(3);
@@ -1014,7 +1014,7 @@ namespace SimPe.Packages
 					pf.headersize = 9;
 				}
 
-				if ((filelistfile != null) && (pfd.Type != File.FILELIST_TYPE))
+				if ((filelistfile != null) && (pfd.Type != FILELIST_TYPE))
 				{
 					int pos = filelistfile.FindFile(pfd);
 					if (pos != -1)
@@ -1080,7 +1080,7 @@ namespace SimPe.Packages
 					#endregion
 
 					this.LockStream();
-					reader.BaseStream.Seek(pfd.Offset, System.IO.SeekOrigin.Begin);
+					reader.BaseStream.Seek(pfd.Offset, SeekOrigin.Begin);
 
 					byte[] data = null;
 					if (pfd.Size > 0)
@@ -1352,15 +1352,15 @@ namespace SimPe.Packages
 				}
 			}
 
-			if (SimPe.Packages.PackageMaintainer.Maintainer.FileIndex != null)
+			if (PackageMaintainer.Maintainer.FileIndex != null)
 			{
 				if (
-					SimPe.Packages.PackageMaintainer.Maintainer.FileIndex.Contains(
+					PackageMaintainer.Maintainer.FileIndex.Contains(
 						this.SaveFileName
 					)
 				)
 				{
-					SimPe.Packages.PackageMaintainer.Maintainer.FileIndex.Clear();
+					PackageMaintainer.Maintainer.FileIndex.Clear();
 				}
 			}
 		}
@@ -1418,9 +1418,9 @@ namespace SimPe.Packages
 		/// <returns></returns>
 		public static GeneratableFile CreateNew()
 		{
-			GeneratableFile gf = SimPe.Packages.GeneratableFile.LoadFromStream(
+			GeneratableFile gf = LoadFromStream(
 				new BinaryReader(
-					SimPe.Packages.GeneratableFile.LoadFromStream(null).Build()
+					LoadFromStream(null).Build()
 				)
 			);
 			if (UserVerification.HaveValidUserId)

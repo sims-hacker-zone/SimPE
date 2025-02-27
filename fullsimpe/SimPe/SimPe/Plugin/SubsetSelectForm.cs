@@ -89,10 +89,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -109,14 +109,14 @@ namespace SimPe.Plugin
 			this.cbauto.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
 			this.cbauto.Checked = true;
-			this.cbauto.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.cbauto.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbauto.CheckState = CheckState.Checked;
+			this.cbauto.FlatStyle = FlatStyle.System;
 			this.cbauto.Location = new Point(8, 408);
 			this.cbauto.Name = "cbauto";
 			this.cbauto.Size = new Size(240, 24);
@@ -128,12 +128,12 @@ namespace SimPe.Plugin
 			this.button1.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.button1.FlatStyle = FlatStyle.System;
 			this.button1.Location = new Point(456, 416);
 			this.button1.Name = "button1";
 			this.button1.TabIndex = 2;
@@ -147,10 +147,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -168,14 +168,12 @@ namespace SimPe.Plugin
 			this.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.FormBorderStyle = System
-				.Windows
-				.Forms
-				.FormBorderStyle
+			this.FormBorderStyle =
+				FormBorderStyle
 				.SizableToolWindow;
 			this.Icon = ((Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "SubsetSelectForm";
@@ -601,7 +599,7 @@ namespace SimPe.Plugin
 		{
 			if (!CanContinue)
 			{
-				System.Windows.Forms.MessageBox.Show(
+				MessageBox.Show(
 					"Please select a Texture in each Subset!",
 					"Warning"
 				);

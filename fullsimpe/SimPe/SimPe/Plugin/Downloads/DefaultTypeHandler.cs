@@ -125,7 +125,7 @@ namespace SimPe.Plugin.Downloads
 		{
 			if (thumbs == null)
 			{
-				thumbs = SimPe.Packages.File.LoadFromFile(
+				thumbs = Packages.File.LoadFromFile(
 					System.IO.Path.Combine(
 						PathProvider.SimSavegameFolder,
 						"Thumbnails\\ObjectThumbnails.package"
@@ -352,7 +352,7 @@ namespace SimPe.Plugin.Downloads
 				as GeometryDataContainerExt;
 			Ambertation.Scenes.Scene scn = ext.GetScene(
 				new Gmdc.ElementOrder(
-					SimPe.Plugin.Gmdc.ElementSorting.Preview
+					Gmdc.ElementSorting.Preview
 				)
 			);
 			nfo.RenderedImage = Get3dPreview(scn);
@@ -403,9 +403,9 @@ namespace SimPe.Plugin.Downloads
 
 					bool dispose = true;
 					if (
-						SimPe
-							.Plugin
-							.DownloadsToolFactory
+
+
+							DownloadsToolFactory
 							.Settings
 							.BuildPreviewForObjects
 					)
@@ -435,10 +435,10 @@ namespace SimPe.Plugin.Downloads
 
 			if (
 				!nfo.HasThumbnail
-				&& !SimPe.Plugin.DownloadsToolFactory.Settings.BuildPreviewForObjects
+				&& !DownloadsToolFactory.Settings.BuildPreviewForObjects
 			)
 			{
-				nfo.Image = Downloads.WallpaperTypeHandler.SetFromTxtr(pkg);
+				nfo.Image = WallpaperTypeHandler.SetFromTxtr(pkg);
 				nfo.KnockoutThumbnail = false;
 			}
 		}
@@ -512,11 +512,11 @@ namespace SimPe.Plugin.Downloads
 			}
 
 			SetupCategories(
-				SimPe.Cache.ObjectCacheItem.GetCategory(
-					SimPe.Cache.ObjectCacheItemVersions.DockableOW,
+				Cache.ObjectCacheItem.GetCategory(
+					Cache.ObjectCacheItemVersions.DockableOW,
 					objd.FunctionSubSort,
 					objd.Type,
-					SimPe.Cache.ObjectClass.Object
+					Cache.ObjectClass.Object
 				)
 			);
 

@@ -101,7 +101,7 @@ namespace SimPe.Plugin
 		#endregion
 
 		#region IToolExt Member
-		public override System.Drawing.Image Icon => SimPe.GetIcon.FixIntegrity;
+		public override System.Drawing.Image Icon => GetIcon.FixIntegrity;
 		#endregion
 	}
 }

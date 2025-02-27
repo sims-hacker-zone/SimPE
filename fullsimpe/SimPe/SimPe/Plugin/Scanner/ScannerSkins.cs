@@ -166,17 +166,17 @@ namespace SimPe.Plugin.Scanner
 			bool addref
 		)
 		{
-			FileTable.FileIndex.Load();
+			FileTableBase.FileIndex.Load();
 			Packages.GeneratableFile pkg =
-				SimPe.Packages.GeneratableFile.LoadFromStream(
+				Packages.File.LoadFromStream(
 					(System.IO.BinaryReader)null
 				);
 
 			WaitingScreen.Wait();
 			//Save the old FileTable and the source File
-			FileTable.FileIndex.Load();
-			FileTable.FileIndex.StoreCurrentState();
-			FileTable.FileIndex.AddIndexFromPackage(src);
+			FileTableBase.FileIndex.Load();
+			FileTableBase.FileIndex.StoreCurrentState();
+			FileTableBase.FileIndex.AddIndexFromPackage(src);
 
 			bool usefam = (skintone == "00000000-0000-0000-0000-000000000000");
 			try
@@ -185,7 +185,7 @@ namespace SimPe.Plugin.Scanner
 				ArrayList basecpf = new ArrayList();
 
 				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-					FileTable.FileIndex.FindFile(Data.MetaData.GZPS, true);
+					FileTableBase.FileIndex.FindFile(Data.MetaData.GZPS, true);
 				foreach (
 					Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
 				)
@@ -434,7 +434,7 @@ namespace SimPe.Plugin.Scanner
 			finally
 			{
 				//restore the Previous FileTable
-				FileTable.FileIndex.RestoreLastState();
+				FileTableBase.FileIndex.RestoreLastState();
 				WaitingScreen.Stop();
 			}
 

@@ -92,9 +92,9 @@ namespace pjse.guidtool
 				rb1default.Checked = true;
 			}
 
-			if (pjse.FileTable.gft == null)
+			if (FileTable.gft == null)
 			{
-				pjse.FileTable.GFT.Refresh();
+				FileTable.GFT.Refresh();
 			}
 
 			lHex32 = new List<TextBox>(new TextBox[] { tbNumber });
@@ -205,7 +205,7 @@ namespace pjse.guidtool
 					#region Focus on SemiGlobal group
 					{
 						List<FileTable.Entry> globs = new List<FileTable.Entry>(
-							pjse.FileTable.GFT[SimPe.Data.MetaData.GLOB_FILE, where]
+							FileTable.GFT[SimPe.Data.MetaData.GLOB_FILE, where]
 						);
 						foreach (FileTable.Entry fte in globs)
 						{
@@ -225,21 +225,21 @@ namespace pjse.guidtool
 							if (type[7])
 							{
 								temp.AddRange(
-									pjse.FileTable.GFT[Bhav.Bhavtype, fte.Group, where]
+									FileTable.GFT[Bhav.Bhavtype, fte.Group, where]
 								);
 							}
 
 							if (type[8])
 							{
 								temp.AddRange(
-									pjse.FileTable.GFT[Objf.Objftype, fte.Group, where]
+									FileTable.GFT[Objf.Objftype, fte.Group, where]
 								);
 							}
 
 							if (type[9])
 							{
 								temp.AddRange(
-									pjse.FileTable.GFT[Ttab.Ttabtype, fte.Group, where]
+									FileTable.GFT[Ttab.Ttabtype, fte.Group, where]
 								);
 							}
 
@@ -261,21 +261,21 @@ namespace pjse.guidtool
 						if (type[7])
 						{
 							results.AddRange(
-								pjse.FileTable.GFT[Bhav.Bhavtype, group, where]
+								FileTable.GFT[Bhav.Bhavtype, group, where]
 							);
 						}
 
 						if (type[8])
 						{
 							results.AddRange(
-								pjse.FileTable.GFT[Objf.Objftype, group, where]
+								FileTable.GFT[Objf.Objftype, group, where]
 							);
 						}
 
 						if (type[9])
 						{
 							results.AddRange(
-								pjse.FileTable.GFT[Ttab.Ttabtype, group, where]
+								FileTable.GFT[Ttab.Ttabtype, group, where]
 							);
 						}
 					}
@@ -284,7 +284,7 @@ namespace pjse.guidtool
 					#region References to GLOB
 					{
 						List<FileTable.Entry> globs = new List<FileTable.Entry>(
-							pjse.FileTable.GFT[SimPe.Data.MetaData.GLOB_FILE, where]
+							FileTable.GFT[SimPe.Data.MetaData.GLOB_FILE, where]
 						);
 						foreach (FileTable.Entry fte in globs)
 						{
@@ -299,7 +299,7 @@ namespace pjse.guidtool
 								continue;
 							}
 
-							FileTable.Entry[] objds = pjse.FileTable.GFT[
+							FileTable.Entry[] objds = FileTable.GFT[
 								SimPe.Data.MetaData.OBJD_FILE,
 								fte.Group,
 								where
@@ -336,7 +336,7 @@ namespace pjse.guidtool
 						if (type[0] || type[1])
 						{
 							results.AddRange(
-								pjse.FileTable.GFT[
+								FileTable.GFT[
 									SimPe.Data.MetaData.OBJD_FILE,
 									group,
 									where
@@ -347,21 +347,21 @@ namespace pjse.guidtool
 						if (type[2])
 						{
 							results.AddRange(
-								pjse.FileTable.GFT[0x4E524546, group, where]
+								FileTable.GFT[0x4E524546, group, where]
 							); // NREF
 						}
 
 						if (type[3])
 						{
 							results.AddRange(
-								pjse.FileTable.GFT[Bhav.Bhavtype, group, where]
+								FileTable.GFT[Bhav.Bhavtype, group, where]
 							);
 						}
 
 						if (type[4])
 						{
 							results.AddRange(
-								pjse.FileTable.GFT[Bcon.Bcontype, group, where]
+								FileTable.GFT[Bcon.Bcontype, group, where]
 							);
 						}
 
@@ -370,42 +370,42 @@ namespace pjse.guidtool
 							if (type[7])
 							{
 								results.AddRange(
-									pjse.FileTable.GFT[Bhav.Bhavtype, group, where]
+									FileTable.GFT[Bhav.Bhavtype, group, where]
 								);
 							}
 
 							if (type[8])
 							{
 								results.AddRange(
-									pjse.FileTable.GFT[Objf.Objftype, group, where]
+									FileTable.GFT[Objf.Objftype, group, where]
 								);
 							}
 
 							if (type[9])
 							{
 								results.AddRange(
-									pjse.FileTable.GFT[Ttab.Ttabtype, group, where]
+									FileTable.GFT[Ttab.Ttabtype, group, where]
 								);
 							}
 						}
 						if (type[11])
 						{
 							results.AddRange(
-								pjse.FileTable.GFT[StrWrapper.Strtype, group, where]
+								FileTable.GFT[StrWrapper.Strtype, group, where]
 							);
 						}
 
 						if (type[12])
 						{
 							results.AddRange(
-								pjse.FileTable.GFT[StrWrapper.CTSStype, group, where]
+								FileTable.GFT[StrWrapper.CTSStype, group, where]
 							);
 						}
 
 						if (type[13])
 						{
 							results.AddRange(
-								pjse.FileTable.GFT[StrWrapper.TTAstype, group, where]
+								FileTable.GFT[StrWrapper.TTAstype, group, where]
 							);
 						}
 					}
@@ -422,23 +422,23 @@ namespace pjse.guidtool
 						if (type[0] || type[1])
 						{
 							results.AddRange(
-								pjse.FileTable.GFT[SimPe.Data.MetaData.OBJD_FILE, where]
+								FileTable.GFT[SimPe.Data.MetaData.OBJD_FILE, where]
 							);
 						}
 
 						if (type[2])
 						{
-							results.AddRange(pjse.FileTable.GFT[0x4E524546, where]); // NREF
+							results.AddRange(FileTable.GFT[0x4E524546, where]); // NREF
 						}
 
 						if (type[3])
 						{
-							results.AddRange(pjse.FileTable.GFT[Bhav.Bhavtype, where]);
+							results.AddRange(FileTable.GFT[Bhav.Bhavtype, where]);
 						}
 
 						if (type[4])
 						{
-							results.AddRange(pjse.FileTable.GFT[Bcon.Bcontype, where]);
+							results.AddRange(FileTable.GFT[Bcon.Bcontype, where]);
 						}
 
 						if (type[5])
@@ -446,42 +446,42 @@ namespace pjse.guidtool
 							if (type[7])
 							{
 								results.AddRange(
-									pjse.FileTable.GFT[Bhav.Bhavtype, where]
+									FileTable.GFT[Bhav.Bhavtype, where]
 								);
 							}
 
 							if (type[8])
 							{
 								results.AddRange(
-									pjse.FileTable.GFT[Objf.Objftype, where]
+									FileTable.GFT[Objf.Objftype, where]
 								);
 							}
 
 							if (type[9])
 							{
 								results.AddRange(
-									pjse.FileTable.GFT[Ttab.Ttabtype, where]
+									FileTable.GFT[Ttab.Ttabtype, where]
 								);
 							}
 						}
 						if (type[11])
 						{
 							results.AddRange(
-								pjse.FileTable.GFT[StrWrapper.Strtype, where]
+								FileTable.GFT[StrWrapper.Strtype, where]
 							);
 						}
 
 						if (type[12])
 						{
 							results.AddRange(
-								pjse.FileTable.GFT[StrWrapper.CTSStype, where]
+								FileTable.GFT[StrWrapper.CTSStype, where]
 							);
 						}
 
 						if (type[13])
 						{
 							results.AddRange(
-								pjse.FileTable.GFT[StrWrapper.TTAstype, where]
+								FileTable.GFT[StrWrapper.TTAstype, where]
 							);
 						}
 					}
@@ -770,8 +770,8 @@ namespace pjse.guidtool
 						false;
 			} // don't search for empty string
 			SimPe.WaitingScreen.Wait();
-			this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-			this.btnSearch.Cursor = System.Windows.Forms.Cursors.Default;
+			this.Cursor = Cursors.WaitCursor;
+			this.btnSearch.Cursor = Cursors.Default;
 			groupBox1.Enabled = false;
 			ckbObjdGUID.Enabled =
 				ckbCallsToBHAV.Enabled =
@@ -786,7 +786,7 @@ namespace pjse.guidtool
 				tbName.Enabled =
 				this.btnClose.Enabled =
 					false;
-			this.btnSearch.Text = pjse.Localization.GetString("gt_Stop");
+			this.btnSearch.Text = Localization.GetString("gt_Stop");
 			this.lbStatus.Visible = this.btclipb.Visible = false;
 			this.progressBar1.Value = 0;
 			this.progressBar1.Visible = true;
@@ -820,7 +820,7 @@ namespace pjse.guidtool
 			else
 			{
 				this.btnSearch.Enabled = false;
-				this.btnSearch.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+				this.btnSearch.Cursor = Cursors.WaitCursor;
 				searching = false;
 			}
 		}
@@ -834,7 +834,7 @@ namespace pjse.guidtool
 			}
 
 			searchThread = null;
-			this.Cursor = this.btnSearch.Cursor = System.Windows.Forms.Cursors.Default;
+			this.Cursor = this.btnSearch.Cursor = Cursors.Default;
 			ckbObjdGUID.Enabled =
 				ckbCallsToBHAV.Enabled =
 				ckbFromBHAV.Enabled =
@@ -857,14 +857,14 @@ namespace pjse.guidtool
 			if (matches > 0)
 			{
 				this.lbStatus.Text =
-					pjse.Localization.GetString("gt_MatchesFound")
+					Localization.GetString("gt_MatchesFound")
 					+ ": "
 					+ matches.ToString();
 				this.btclipb.Visible = true;
 			}
 			else
 			{
-				this.lbStatus.Text = pjse.Localization.GetString("gt_NoMatchesFound");
+				this.lbStatus.Text = Localization.GetString("gt_NoMatchesFound");
 				this.btclipb.Visible = false;
 			}
 		}
@@ -1001,7 +1001,7 @@ namespace pjse.guidtool
 			this.gcGroup.BackColor = System.Drawing.Color.Transparent;
 			this.gcGroup.ComboBoxWidth = 420;
 			this.gcGroup.DropDownHeight = 250;
-			this.gcGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+			this.gcGroup.DropDownStyle = ComboBoxStyle.DropDown;
 			this.gcGroup.DropDownWidth = 420;
 			this.gcGroup.Label = "Group Filter:";
 			this.gcGroup.MaximumSize = new System.Drawing.Size(587, 23);
@@ -1037,7 +1037,7 @@ namespace pjse.guidtool
 			//
 			resources.ApplyResources(this.btnClose, "btnClose");
 			this.btnClose.BackColor = System.Drawing.Color.Transparent;
-			this.btnClose.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.btnClose.DialogResult = DialogResult.OK;
 			this.btnClose.Name = "btnClose";
 			this.btnClose.UseVisualStyleBackColor = false;
 			this.btnClose.Click += new EventHandler(this.btnClose_Click);
@@ -1243,7 +1243,7 @@ namespace pjse.guidtool
 			//
 			this.AcceptButton = this.btnSearch;
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.AutoScaleMode = AutoScaleMode.Font;
 			this.CancelButton = this.btnClose;
 			this.Name = "GUIDForm";
 			this.groupBox1.ResumeLayout(false);
@@ -1390,7 +1390,7 @@ namespace pjse.guidtool
 
 			tbNumber.Enabled = ckbObjdGUID.Checked;
 			lbNumber.Text = ckbObjdGUID.Checked
-				? pjse.Localization.GetString("GUID")
+				? Localization.GetString("GUID")
 				: "";
 		}
 
@@ -1420,7 +1420,7 @@ namespace pjse.guidtool
 				ckbFromTtab.Enabled =
 					ckbCallsToBHAV.Checked;
 			lbNumber.Text = ckbCallsToBHAV.Checked
-				? pjse.Localization.GetString("OpCode")
+				? Localization.GetString("OpCode")
 				: "";
 		}
 

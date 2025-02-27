@@ -349,7 +349,7 @@ namespace SimPe.Plugin
 				list.Add(
 					ScenegraphHelper.BuildPfd(
 						name + "_txtr",
-						SimPe.Plugin.ScenegraphHelper.TXTR,
+						ScenegraphHelper.TXTR,
 						parentgroup
 					)
 				);
@@ -363,7 +363,7 @@ namespace SimPe.Plugin
 				{
 					ScenegraphHelper.BuildPfd(
 						refname + "_txtr",
-						SimPe.Plugin.ScenegraphHelper.TXTR,
+						ScenegraphHelper.TXTR,
 						parentgroup
 					)
 				};
@@ -377,7 +377,7 @@ namespace SimPe.Plugin
 				{
 					ScenegraphHelper.BuildPfd(
 						refname + "_txtr",
-						SimPe.Plugin.ScenegraphHelper.TXTR,
+						ScenegraphHelper.TXTR,
 						parentgroup
 					)
 				};
@@ -391,7 +391,7 @@ namespace SimPe.Plugin
 				{
 					ScenegraphHelper.BuildPfd(
 						refname + "_txtr",
-						SimPe.Plugin.ScenegraphHelper.TXTR,
+						ScenegraphHelper.TXTR,
 						parentgroup
 					)
 				};
@@ -426,7 +426,7 @@ namespace SimPe.Plugin
 					list.Add(
 						ScenegraphHelper.BuildPfd(
 							refname,
-							SimPe.Plugin.ScenegraphHelper.TXTR,
+							ScenegraphHelper.TXTR,
 							parentgroup
 						)
 					);

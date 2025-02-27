@@ -77,7 +77,7 @@ namespace Classless.Hasher
 				parameters = param;
 				HashSizeValue = param.Order;
 
-				CRC.BuildLookup(param);
+				BuildLookup(param);
 				lookup = (long[])lookupTables[param];
 				registerMask = (long)(Math.Pow(2, (param.Order - 8)) - 1);
 

@@ -128,7 +128,7 @@ namespace SimPe
 			//try by Type
 			Interfaces.Plugin.IFileWrapper wrapper =
 				(Interfaces.Plugin.IFileWrapper)
-					FileTable.WrapperRegistry.FindHandler(fii.FileDescriptor.Type);
+					FileTableBase.WrapperRegistry.FindHandler(fii.FileDescriptor.Type);
 
 			//try by Signature
 			if (wrapper == null)
@@ -136,7 +136,7 @@ namespace SimPe
 				Interfaces.Files.IPackedFile pf = pkg.Package.Read(
 					fii.FileDescriptor
 				);
-				wrapper = FileTable.WrapperRegistry.FindHandler(
+				wrapper = FileTableBase.WrapperRegistry.FindHandler(
 					pf.GetUncompressedData(0x40)
 				);
 			}
@@ -336,7 +336,7 @@ namespace SimPe
 					pan.Top = 0;
 					pan.Width = doc.ClientRectangle.Width;
 					pan.Height = doc.ClientRectangle.Height;
-					pan.Dock = System.Windows.Forms.DockStyle.Fill;
+					pan.Dock = DockStyle.Fill;
 					pan.Visible = true;
 
 					//pan.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
@@ -768,15 +768,15 @@ namespace SimPe
 
 					if (flname == null)
 					{
-						flname = SimPe.Localization.Manager.GetString("unknown");
+						flname = Localization.Manager.GetString("unknown");
 					}
 
-					DialogResult dr = SimPe.Message.Show(
-						SimPe
-							.Localization.Manager.GetString("savewrapperchanges")
+					DialogResult dr = Message.Show(
+
+							Localization.Manager.GetString("savewrapperchanges")
 							.Replace("{name}", wrapper.ResourceName)
 							.Replace("{filename}", flname),
-						SimPe.Localization.Manager.GetString("savechanges?"),
+						Localization.Manager.GetString("savechanges?"),
 						mbb
 					);
 
@@ -886,21 +886,19 @@ namespace SimPe
 							flname = "";
 						}
 
-						DialogResult dr = System
-							.Windows
-							.Forms
-							.DialogResult
+						DialogResult dr =
+							DialogResult
 							.Yes;
 						dr = Message.Show(
-							SimPe
-								.Localization.GetString("reschanged")
+
+								Localization.GetString("reschanged")
 								.Replace("{name}", doc.Text)
 								.Replace("{filename}", flname),
-							SimPe.Localization.GetString("changed?"),
-							System.Windows.Forms.MessageBoxButtons.YesNo
+							Localization.GetString("changed?"),
+							MessageBoxButtons.YesNo
 						);
 
-						if (dr == System.Windows.Forms.DialogResult.Yes)
+						if (dr == DialogResult.Yes)
 						{
 							wrapper.Refresh();
 						}

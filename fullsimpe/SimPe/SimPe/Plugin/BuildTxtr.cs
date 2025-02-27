@@ -235,9 +235,9 @@ namespace SimPe.Plugin
 			string num = "";
 			int levels = 9;
 			Size sz = new Size(512, 512);
-			ImageLoader.TxtrFormats format = SimPe
-				.Plugin
-				.ImageLoader
+			ImageLoader.TxtrFormats format =
+
+				ImageLoader
 				.TxtrFormats
 				.DXT1Format;
 
@@ -278,39 +278,39 @@ namespace SimPe.Plugin
 					switch (num)
 					{
 						case "dxt1":
-							format = SimPe.Plugin.ImageLoader.TxtrFormats.DXT1Format;
+							format = ImageLoader.TxtrFormats.DXT1Format;
 							break;
 						case "dxt3":
-							format = SimPe.Plugin.ImageLoader.TxtrFormats.DXT3Format;
+							format = ImageLoader.TxtrFormats.DXT3Format;
 							break;
 						case "dxt5":
-							format = SimPe.Plugin.ImageLoader.TxtrFormats.DXT5Format;
+							format = ImageLoader.TxtrFormats.DXT5Format;
 							break;
 						case "raw24":
-							format = SimPe.Plugin.ImageLoader.TxtrFormats.Raw24Bit;
+							format = ImageLoader.TxtrFormats.Raw24Bit;
 							break;
 						case "raw32":
-							format = SimPe.Plugin.ImageLoader.TxtrFormats.Raw32Bit;
+							format = ImageLoader.TxtrFormats.Raw32Bit;
 							break;
 						case "raw8":
-							format = SimPe.Plugin.ImageLoader.TxtrFormats.Raw8Bit;
+							format = ImageLoader.TxtrFormats.Raw8Bit;
 							break;
 					}
 					continue;
 				}
-				SimPe.Message.Show(Help()[0]);
+				Message.Show(Help()[0]);
 				return true;
 			}
 
 			//check if the File exists
 			if (!System.IO.File.Exists(filename))
 			{
-				SimPe.Message.Show(filename + " was not found.");
+				Message.Show(filename + " was not found.");
 				return true;
 			}
 			if (output.Trim() == "")
 			{
-				SimPe.Message.Show("Please specify an output file using -out");
+				Message.Show("Please specify an output file using -out");
 				return true;
 			}
 

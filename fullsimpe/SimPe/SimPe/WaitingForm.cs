@@ -203,7 +203,7 @@ namespace SimPe
 			//
 			// panel1
 			//
-			this.panel1.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+			this.panel1.AccessibleRole = AccessibleRole.None;
 			this.panel1.BackColor = System.Drawing.Color.Transparent;
 			this.panel1.Controls.Add(this.lbmsg);
 			this.panel1.Controls.Add(this.lbwait);
@@ -214,7 +214,7 @@ namespace SimPe
 			//
 			// lbmsg
 			//
-			this.lbmsg.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
+			this.lbmsg.AccessibleRole = AccessibleRole.Text;
 			this.lbmsg.ForeColor = System.Drawing.Color.FromArgb(
 				((int)(((byte)(204)))),
 				((int)(((byte)(211)))),
@@ -225,28 +225,28 @@ namespace SimPe
 			//
 			// lbwait
 			//
-			this.lbwait.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
+			this.lbwait.AccessibleRole = AccessibleRole.StaticText;
 			resources.ApplyResources(this.lbwait, "lbwait");
 			this.lbwait.ForeColor = System.Drawing.Color.Gray;
 			this.lbwait.Name = "lbwait";
 			//
 			// pb
 			//
-			this.pb.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
+			this.pb.AccessibleRole = AccessibleRole.Graphic;
 			resources.ApplyResources(this.pb, "pb");
 			this.pb.Name = "pb";
 			this.pb.TabStop = false;
 			//
 			// pbsimpe
 			//
-			this.pbsimpe.AccessibleRole = System.Windows.Forms.AccessibleRole.Graphic;
+			this.pbsimpe.AccessibleRole = AccessibleRole.Graphic;
 			resources.ApplyResources(this.pbsimpe, "pbsimpe");
 			this.pbsimpe.Name = "pbsimpe";
 			this.pbsimpe.TabStop = false;
 			//
 			// WaitingForm
 			//
-			this.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+			this.AccessibleRole = AccessibleRole.None;
 			resources.ApplyResources(this, "$this");
 			this.BackColor = System.Drawing.Color.FromArgb(
 				((int)(((byte)(102)))),
@@ -255,7 +255,7 @@ namespace SimPe
 			);
 			this.CausesValidation = false;
 			this.Controls.Add(this.panel1);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+			this.FormBorderStyle = FormBorderStyle.None;
 			this.Name = "WaitingForm";
 			this.ShowInTaskbar = false;
 			this.TransparencyKey = System.Drawing.Color.Fuchsia;

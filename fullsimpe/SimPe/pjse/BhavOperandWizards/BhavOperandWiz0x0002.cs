@@ -54,11 +54,11 @@ namespace pjse.BhavOperandWizards.Wiz0x0002
 			cbOperator.Items.Clear();
 			cbOperator.Items.AddRange(BhavWiz.readStr(GS.BhavStr.Operators).ToArray());
 
-			labelledDataOwner2.Decimal = labelledDataOwner1.Decimal = pjse.Settings
+			labelledDataOwner2.Decimal = labelledDataOwner1.Decimal = Settings
 				.PJSE
 				.DecimalDOValue;
 			labelledDataOwner2.UseInstancePicker =
-				labelledDataOwner1.UseInstancePicker = pjse.Settings
+				labelledDataOwner1.UseInstancePicker = Settings
 					.PJSE
 					.InstancePickerAsText;
 		}
@@ -176,10 +176,8 @@ namespace pjse.BhavOperandWizards.Wiz0x0002
 			//
 			// cbOperator
 			//
-			this.cbOperator.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbOperator.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			resources.ApplyResources(this.cbOperator, "cbOperator");
 			this.cbOperator.Name = "cbOperator";
@@ -198,7 +196,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0002
 			// UI
 			//
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.AutoScaleMode = AutoScaleMode.Dpi;
 			this.Controls.Add(this.pnWiz0x0002);
 			this.Name = "UI";
 			this.pnWiz0x0002.ResumeLayout(false);

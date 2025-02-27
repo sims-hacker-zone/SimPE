@@ -229,8 +229,8 @@ namespace SimPe.PackedFiles.Wrapper
 
 		protected void LoadAspirations()
 		{
-			pa = SimPe.Data.MetaData.AspirationTypes.Nothing;
-			SecondaryAspiration = SimPe.Data.MetaData.AspirationTypes.Nothing;
+			pa = Data.MetaData.AspirationTypes.Nothing;
+			SecondaryAspiration = Data.MetaData.AspirationTypes.Nothing;
 			if (parent == null)
 			{
 				return;

@@ -35,12 +35,12 @@ namespace SimPe
 		[STAThread]
 		static void Main(string[] args)
 		{
-			if (System.Environment.Version.Major < 2)
+			if (Environment.Version.Major < 2)
 			{
 				Message.Show(
-					SimPe
-						.Localization.GetString("NoDotNet")
-						.Replace("{VERSION}", System.Environment.Version.ToString())
+
+						Localization.GetString("NoDotNet")
+						.Replace("{VERSION}", Environment.Version.ToString())
 				);
 				return;
 			}
@@ -58,19 +58,19 @@ namespace SimPe
 			{
 				if (
 					Message.Show(
-						SimPe
-							.Localization.GetString("Unknown EP found")
+
+							Localization.GetString("Unknown EP found")
 							.Replace(
 								"{name}",
-								SimPe
-									.PathProvider.Global.GetExpansion(
-										SimPe.PathProvider.Global.LastKnown
+
+									PathProvider.Global.GetExpansion(
+										PathProvider.Global.LastKnown
 									)
 									.Name
 							),
-						SimPe.Localization.GetString("Warning"),
-						System.Windows.Forms.MessageBoxButtons.YesNo
-					) == System.Windows.Forms.DialogResult.No
+						Localization.GetString("Warning"),
+						MessageBoxButtons.YesNo
+					) == DialogResult.No
 				)
 				{
 					return;
@@ -79,8 +79,8 @@ namespace SimPe
 
 			try
 			{
-				SimPe.Splash.Screen.SetMessage(
-					SimPe.Localization.GetString("Starting SimPe...")
+				Splash.Screen.SetMessage(
+					Localization.GetString("Starting SimPe...")
 				);
 
 				Application.DoEvents();
@@ -90,8 +90,8 @@ namespace SimPe
 				if (!Commandline.FullEnvStart(argv))
 				{
 					//load Files passed on the commandline
-					SimPe.Splash.Screen.SetMessage(
-						SimPe.Localization.GetString("Load or Import Files")
+					Splash.Screen.SetMessage(
+						Localization.GetString("Load or Import Files")
 					);
 					// Tashiketh
 					if (argv.Count > 0)
@@ -121,7 +121,7 @@ namespace SimPe
 						"SimPe will shutdown due to an unhandled Exception.\n\nMessage: "
 							+ ex.Message + "\n" + ex.StackTrace
 					);
-					SimPe.Splash.Screen.Stop();
+					Splash.Screen.Stop();
 					Helper.ExceptionMessage(
 						"SimPe will shutdown due to an unhandled Exception.",
 						ex
@@ -137,17 +137,17 @@ namespace SimPe
 			}
 			finally
 			{
-				if (SimPe.Splash.Running)
+				if (Splash.Running)
 				{
-					SimPe.Splash.Screen.ShutDown();
+					Splash.Screen.ShutDown();
 				}
 			}
 
 			try
 			{
-				SimPe.Packages.StreamFactory.UnlockAll();
-				SimPe.Packages.StreamFactory.CloseAll(true);
-				SimPe.Packages.StreamFactory.CleanupTeleport();
+				Packages.StreamFactory.UnlockAll();
+				Packages.StreamFactory.CloseAll(true);
+				Packages.StreamFactory.CleanupTeleport();
 			}
 			catch { }
 		}

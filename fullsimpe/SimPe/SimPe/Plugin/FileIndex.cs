@@ -96,7 +96,7 @@ namespace SimPe.Plugin
 
 			if (package == null)
 			{
-				package = SimPe.Packages.GeneratableFile.LoadFromStream(
+				package = Packages.File.LoadFromStream(
 					(System.IO.BinaryReader)null
 				);
 			}
@@ -487,7 +487,7 @@ namespace SimPe.Plugin
 
 			if (folders == null)
 			{
-				folders = FileTable.DefaultFolders;
+				folders = FileTableBase.DefaultFolders;
 			}
 
 			this.BaseFolders = folders;
@@ -511,7 +511,7 @@ namespace SimPe.Plugin
 		/// <returns>the local Group</returns>
 		public static uint GetLocalGroup(string flname)
 		{
-			if (FileTable.GroupCache == null)
+			if (FileTableBase.GroupCache == null)
 			{
 				WrapperFactory.LoadGroupCache();
 			}
@@ -528,7 +528,7 @@ namespace SimPe.Plugin
 
 			flname = flname.Trim().ToLower();
 
-			Interfaces.Wrapper.IGroupCacheItem gci = FileTable.GroupCache.GetItem(
+			Interfaces.Wrapper.IGroupCacheItem gci = FileTableBase.GroupCache.GetItem(
 				flname
 			);
 			return gci.LocalGroup;
@@ -588,7 +588,7 @@ namespace SimPe.Plugin
 		protected override void StartThread()
 		{
 			Wait.SubStart(BaseFolders.Count);
-			Wait.Message = SimPe.Localization.GetString("Loading") + " Group Cache";
+			Wait.Message = Localization.GetString("Loading") + " Group Cache";
 			WrapperFactory.LoadGroupCache();
 
 			this.Clear();
@@ -734,14 +734,14 @@ namespace SimPe.Plugin
 			}
 
 			Wait.Message =
-				SimPe.Localization.GetString("Loading")
+				Localization.GetString("Loading")
 				+ " \""
 				+ System.IO.Path.GetFileNameWithoutExtension(file)
 				+ "\"";
 			try
 			{
 				Interfaces.Files.IPackageFile package =
-					SimPe.Packages.File.LoadFromFile(file, false);
+					Packages.File.LoadFromFile(file, false);
 				AddIndexFromPackage(package, false);
 			}
 			catch (Exception ex)
@@ -1568,7 +1568,7 @@ namespace SimPe.Plugin
 		)
 		{
 			Interfaces.Files.IPackedFileDescriptor pfd =
-				SimPe.Plugin.ScenegraphHelper.BuildPfd(filename, type, defgroup);
+				ScenegraphHelper.BuildPfd(filename, type, defgroup);
 			IScenegraphFileIndexItem ret = FindSingleFile(pfd, null, betolerant);
 
 			if ((ret == null) && betolerant)
@@ -1755,7 +1755,7 @@ namespace SimPe.Plugin
 				}
 				if (close)
 				{
-					SimPe.Packages.StreamFactory.CloseStream(file);
+					Packages.StreamFactory.CloseStream(file);
 				}
 			}
 

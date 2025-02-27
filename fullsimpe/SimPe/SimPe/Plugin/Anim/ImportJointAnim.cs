@@ -123,7 +123,7 @@ namespace SimPe.Plugin.Anim
 			this.Gradientpanel1.Controls.Add(this.button1);
 			this.Gradientpanel1.Controls.Add(this.lv);
 			this.Gradientpanel1.Controls.Add(this.label1);
-			this.Gradientpanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.Gradientpanel1.Dock = DockStyle.Fill;
 			this.Gradientpanel1.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -141,8 +141,8 @@ namespace SimPe.Plugin.Anim
 			this.gbsettings.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -174,8 +174,8 @@ namespace SimPe.Plugin.Anim
 			this.gbgroups.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -197,7 +197,7 @@ namespace SimPe.Plugin.Anim
 			// cbRemove
 			//
 			this.cbRemove.Checked = true;
-			this.cbRemove.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.cbRemove.CheckState = CheckState.Checked;
 			this.cbRemove.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
@@ -217,7 +217,7 @@ namespace SimPe.Plugin.Anim
 			// cbDiscard
 			//
 			this.cbDiscard.Checked = true;
-			this.cbDiscard.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.cbDiscard.CheckState = CheckState.Checked;
 			this.cbDiscard.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
@@ -236,10 +236,8 @@ namespace SimPe.Plugin.Anim
 			//
 			// cbnames
 			//
-			this.cbnames.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbnames.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbnames.Font = new System.Drawing.Font(
 				"Tahoma",
@@ -307,10 +305,8 @@ namespace SimPe.Plugin.Anim
 			//
 			// cbaction
 			//
-			this.cbaction.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbaction.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbaction.Font = new System.Drawing.Font(
 				"Tahoma",
@@ -332,12 +328,12 @@ namespace SimPe.Plugin.Anim
 			this.button1.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.button1.FlatStyle = FlatStyle.System;
 			this.button1.Font = new System.Drawing.Font(
 				"Verdana",
 				9.75F,
@@ -359,14 +355,14 @@ namespace SimPe.Plugin.Anim
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
-			this.lv.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.lv.BorderStyle = BorderStyle.None;
 			this.lv.Columns.AddRange(
 				new ColumnHeader[]
 				{
@@ -379,14 +375,14 @@ namespace SimPe.Plugin.Anim
 				}
 			);
 			this.lv.FullRowSelect = true;
-			this.lv.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+			this.lv.HeaderStyle = ColumnHeaderStyle.Nonclickable;
 			this.lv.HideSelection = false;
 			this.lv.Location = new System.Drawing.Point(8, 32);
 			this.lv.Name = "lv";
 			this.lv.Size = new System.Drawing.Size(520, 400);
 			this.lv.TabIndex = 0;
 			this.lv.UseCompatibleStateImageBehavior = false;
-			this.lv.View = System.Windows.Forms.View.Details;
+			this.lv.View = View.Details;
 			this.lv.SelectedIndexChanged += new System.EventHandler(
 				this.lv_SelectedIndexChanged
 			);
@@ -409,7 +405,7 @@ namespace SimPe.Plugin.Anim
 			// chCount
 			//
 			this.chCount.Text = "Frames";
-			this.chCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.chCount.TextAlign = HorizontalAlignment.Right;
 			//
 			// chDuration
 			//

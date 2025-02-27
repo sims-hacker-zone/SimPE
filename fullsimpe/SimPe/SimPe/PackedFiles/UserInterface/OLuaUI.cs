@@ -49,7 +49,7 @@ namespace SimPe.PackedFiles.UserInterface
 			InitializeComponent();
 
 			this.button2.Enabled = Helper.QARelease;
-			if (SimPe.Helper.WindowsRegistry.UseBigIcons)
+			if (Helper.WindowsRegistry.UseBigIcons)
 			{
 				this.tv.Font = new System.Drawing.Font("Tahoma", 12F);
 			}
@@ -93,14 +93,14 @@ namespace SimPe.PackedFiles.UserInterface
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
-			this.tv.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.tv.BorderStyle = BorderStyle.None;
 			this.tv.Location = new System.Drawing.Point(8, 40);
 			this.tv.Name = "tv";
 			this.tv.Size = new System.Drawing.Size(552, 320);
@@ -111,12 +111,12 @@ namespace SimPe.PackedFiles.UserInterface
 			this.btSave.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
-			this.btSave.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.btSave.FlatStyle = FlatStyle.System;
 			this.btSave.Location = new System.Drawing.Point(96, 368);
 			this.btSave.Name = "btSave";
 			this.btSave.Size = new System.Drawing.Size(75, 25);
@@ -129,12 +129,12 @@ namespace SimPe.PackedFiles.UserInterface
 			this.btLoad.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
-			this.btLoad.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.btLoad.FlatStyle = FlatStyle.System;
 			this.btLoad.Location = new System.Drawing.Point(8, 368);
 			this.btLoad.Name = "btLoad";
 			this.btLoad.Size = new System.Drawing.Size(75, 25);
@@ -165,9 +165,9 @@ namespace SimPe.PackedFiles.UserInterface
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -182,12 +182,12 @@ namespace SimPe.PackedFiles.UserInterface
 			this.button1.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.button1.FlatStyle = FlatStyle.System;
 			this.button1.Location = new System.Drawing.Point(485, 368);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(75, 25);
@@ -200,12 +200,12 @@ namespace SimPe.PackedFiles.UserInterface
 			this.button2.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
-			this.button2.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.button2.FlatStyle = FlatStyle.System;
 			this.button2.Location = new System.Drawing.Point(176, 368);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(120, 25);
@@ -349,11 +349,11 @@ namespace SimPe.PackedFiles.UserInterface
 		private void btSave_Click(object sender, System.EventArgs e)
 		{
 			SaveFileDialog sfd = new SaveFileDialog();
-			sfd.Filter = SimPe.ExtensionProvider.BuildFilterString(
+			sfd.Filter = ExtensionProvider.BuildFilterString(
 				new ExtensionType[]
 				{
-					SimPe.ExtensionType.LuaScript,
-					SimPe.ExtensionType.AllFiles,
+					ExtensionType.LuaScript,
+					ExtensionType.AllFiles,
 				}
 			);
 			sfd.FileName = Wrapper.FileName;
@@ -366,11 +366,11 @@ namespace SimPe.PackedFiles.UserInterface
 		private void btLoad_Click(object sender, System.EventArgs e)
 		{
 			OpenFileDialog ofd = new OpenFileDialog();
-			ofd.Filter = SimPe.ExtensionProvider.BuildFilterString(
+			ofd.Filter = ExtensionProvider.BuildFilterString(
 				new ExtensionType[]
 				{
-					SimPe.ExtensionType.LuaScript,
-					SimPe.ExtensionType.AllFiles,
+					ExtensionType.LuaScript,
+					ExtensionType.AllFiles,
 				}
 			);
 			ofd.FileName = Wrapper.FileName;
@@ -396,11 +396,11 @@ namespace SimPe.PackedFiles.UserInterface
 		private void button2_Click(object sender, System.EventArgs e)
 		{
 			SaveFileDialog sfd = new SaveFileDialog();
-			sfd.Filter = SimPe.ExtensionProvider.BuildFilterString(
+			sfd.Filter = ExtensionProvider.BuildFilterString(
 				new ExtensionType[]
 				{
-					SimPe.ExtensionType.LuaScript,
-					SimPe.ExtensionType.AllFiles,
+					ExtensionType.LuaScript,
+					ExtensionType.AllFiles,
 				}
 			);
 			sfd.FileName = Wrapper.FileName;

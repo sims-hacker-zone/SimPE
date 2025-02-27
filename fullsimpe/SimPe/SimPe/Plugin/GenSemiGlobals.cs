@@ -39,10 +39,10 @@ namespace SimPe.Plugin
 			List<uint> added =
 				new List<uint>();
 			Splash.Screen.SetMessage("Loading FileTable...");
-			SimPe.FileTable.FileIndex.Load();
+			FileTableBase.FileIndex.Load();
 			Splash.Screen.SetMessage("Looking for GLOB Resources...");
 			Interfaces.Scenegraph.IScenegraphFileIndexItem[] resources =
-				SimPe.FileTable.FileIndex.FindFile(SimPe.Data.MetaData.GLOB_FILE, true);
+				FileTableBase.FileIndex.FindFile(Data.MetaData.GLOB_FILE, true);
 
 			Splash.Screen.SetMessage("Found " + resources.Length + " GLOB Resources");
 			string fl = Helper.SimPeSemiGlobalFile;

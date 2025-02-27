@@ -153,7 +153,7 @@ namespace SimPe
 					continue;
 				}
 
-				if (tsb.Overflow != System.Windows.Forms.ToolStripItemOverflow.Always)
+				if (tsb.Overflow != ToolStripItemOverflow.Always)
 				{
 					tsb.Checked = false;
 				}

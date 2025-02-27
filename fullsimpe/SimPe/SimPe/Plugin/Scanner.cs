@@ -53,7 +53,7 @@ namespace SimPe.Plugin
 					Image img = Image.FromFile(name);
 					si.PackageCacheItem.Thumbnail = ImageLoader.Preview(
 						img,
-						AbstractScanner.ThumbnailSize
+						ThumbnailSize
 					);
 				}
 			}
@@ -70,8 +70,8 @@ namespace SimPe.Plugin
 		{
 			ListView.SmallImageList = ListView.LargeImageList;
 			ids.Clear();
-			AbstractScanner.AddColumn(this.ListView, "Neighbourhood Type", 140);
-			AbstractScanner.AddColumn(this.ListView, "Neighbourhood UID", 80);
+			AddColumn(this.ListView, "Neighbourhood Type", 140);
+			AddColumn(this.ListView, "Neighbourhood UID", 80);
 		}
 
 		public void ScanPackage(
@@ -98,7 +98,7 @@ namespace SimPe.Plugin
 					//check for duplicates
 					if (
 						ids.Contains(idno.Uid)
-						&& SimPe.PathProvider.Global.EPInstalled < 18
+						&& PathProvider.Global.EPInstalled < 18
 					)
 					{
 						ps.State = TriState.False;
@@ -126,7 +126,7 @@ namespace SimPe.Plugin
 			System.Windows.Forms.ListViewItem lvi
 		)
 		{
-			AbstractScanner.SetSubItem(lvi, this.StartColum + 1, "");
+			SetSubItem(lvi, this.StartColum + 1, "");
 			if (si.PackageCacheItem.Type == PackageType.Neighbourhood)
 			{
 				if (si.PackageCacheItem.Thumbnail == null)
@@ -144,12 +144,12 @@ namespace SimPe.Plugin
 				if (ps.Data.Length > 1)
 				{
 					ids.Add(ps.Data[1]);
-					AbstractScanner.SetSubItem(
+					SetSubItem(
 						lvi,
 						this.StartColum,
 						((NeighborhoodType)ps.Data[0]).ToString().Replace("_", " ")
 					);
-					AbstractScanner.SetSubItem(
+					SetSubItem(
 						lvi,
 						this.StartColum + 1,
 						"0x" + Helper.HexString(ps.Data[1]),
@@ -165,7 +165,7 @@ namespace SimPe.Plugin
 
 		protected override System.Windows.Forms.Control CreateOperationControl()
 		{
-			if (SimPe.PathProvider.Global.EPInstalled >= 18)
+			if (PathProvider.Global.EPInstalled >= 18)
 			{
 				System.Windows.Forms.Label ll = new System.Windows.Forms.Label();
 				ll.AutoSize = true;
@@ -174,7 +174,7 @@ namespace SimPe.Plugin
 				ll.Font = new Font(
 					"Verdana",
 					ll.Font.Size,
-					System.Drawing.FontStyle.Bold
+					FontStyle.Bold
 				);
 				return ll;
 			}
@@ -187,7 +187,7 @@ namespace SimPe.Plugin
 				ll.Font = new Font(
 					"Verdana",
 					ll.Font.Size,
-					System.Drawing.FontStyle.Bold
+					FontStyle.Bold
 				);
 				ll.LinkClicked +=
 					new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
@@ -232,7 +232,7 @@ namespace SimPe.Plugin
 			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
 		)
 		{
-			if (selection == null || SimPe.PathProvider.Global.EPInstalled >= 18)
+			if (selection == null || PathProvider.Global.EPInstalled >= 18)
 			{
 				return;
 			}

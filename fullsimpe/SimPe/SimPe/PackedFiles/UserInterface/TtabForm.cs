@@ -741,7 +741,7 @@ namespace SimPe.PackedFiles.UserInterface
 					+ "): "
 					+ pjse.Localization.GetString("unk")
 					+ ": 0x"
-					+ SimPe.Helper.HexString(wrapper[i].StringIndex)
+					+ Helper.HexString(wrapper[i].StringIndex)
 					+ "]";
 			}
 		}
@@ -756,7 +756,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 			bool found = false;
 			Label[] lbaGA = { lbaction, lbguard };
-			lbaGA[which].Text = pjse.BhavWiz.bhavName(wrapper, target, ref found);
+			lbaGA[which].Text = BhavWiz.bhavName(wrapper, target, ref found);
 
 			LinkLabel[] llaGA = { llAction, llGuardian };
 			llaGA[which].Enabled = found;
@@ -1025,7 +1025,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// splitContainer1
 			//
 			resources.ApplyResources(this.splitContainer1, "splitContainer1");
-			this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+			this.splitContainer1.FixedPanel = FixedPanel.Panel1;
 			this.splitContainer1.Name = "splitContainer1";
 			//
 			// splitContainer1.Panel1
@@ -1947,15 +1947,13 @@ namespace SimPe.PackedFiles.UserInterface
 			// TtabForm
 			//
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.AutoScaleMode = AutoScaleMode.Dpi;
 			this.Controls.Add(this.ttabPanel);
-			this.FormBorderStyle = System
-				.Windows
-				.Forms
-				.FormBorderStyle
+			this.FormBorderStyle =
+				FormBorderStyle
 				.SizableToolWindow;
 			this.Name = "TtabForm";
-			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+			this.WindowState = FormWindowState.Maximized;
 			this.ttabPanel.ResumeLayout(false);
 			this.splitContainer1.Panel1.ResumeLayout(false);
 			this.splitContainer1.Panel2.ResumeLayout(false);
@@ -2234,7 +2232,7 @@ namespace SimPe.PackedFiles.UserInterface
 		private void GetTTABGuard(object sender, EventArgs e)
 		{
 			pjse.FileTable.Entry item = new ResourceChooser().Execute(
-				SimPe.Data.MetaData.BHAV_FILE,
+				Data.MetaData.BHAV_FILE,
 				wrapper.FileDescriptor.Group,
 				ttabPanel.Parent,
 				false
@@ -2248,7 +2246,7 @@ namespace SimPe.PackedFiles.UserInterface
 		private void GetTTABAction(object sender, EventArgs e)
 		{
 			pjse.FileTable.Entry item = new ResourceChooser().Execute(
-				SimPe.Data.MetaData.BHAV_FILE,
+				Data.MetaData.BHAV_FILE,
 				wrapper.FileDescriptor.Group,
 				ttabPanel.Parent,
 				false
@@ -2265,7 +2263,7 @@ namespace SimPe.PackedFiles.UserInterface
 		)
 		{
 			pjse.FileTable.Entry item = wrapper.ResourceByInstance(
-				SimPe.Data.MetaData.BHAV_FILE,
+				Data.MetaData.BHAV_FILE,
 				(sender == llAction) ? currentItem.Action : currentItem.Guardian
 			);
 			Bhav b = new Bhav();

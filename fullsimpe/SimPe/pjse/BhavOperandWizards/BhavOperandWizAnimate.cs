@@ -302,7 +302,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 
 		private void doStrChooser(TextBox tbVal, TextBox strText)
 		{
-			FileTable.Entry[] items = pjse.FileTable.GFT[
+			FileTable.Entry[] items = FileTable.GFT[
 				(uint)SimPe.Data.MetaData.STRING_FILE,
 				inst.Parent.GroupForScope(AnimScope()),
 				(uint)AnimInstance()
@@ -311,9 +311,9 @@ namespace pjse.BhavOperandWizards.WizAnimate
 			if (items == null || items.Length == 0)
 			{
 				MessageBox.Show(
-					pjse.Localization.GetString("bow_noStrings")
+					Localization.GetString("bow_noStrings")
 						+ " ("
-						+ pjse.Localization.GetString(AnimScope().ToString())
+						+ Localization.GetString(AnimScope().ToString())
 						+ ")"
 				);
 				return; // eek!
@@ -390,7 +390,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 				AnimInstance(),
 				strno,
 				-1,
-				pjse.Detail.ErrorNames
+				Detail.ErrorNames
 			);
 		}
 
@@ -433,7 +433,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 		private void doidEvent_DataOwnerControlChanged(object sender, EventArgs e)
 		{
 			bool found = false;
-			tbEventTree.Text = pjse.BhavWiz.bhavName(
+			tbEventTree.Text = BhavWiz.bhavName(
 				inst.Parent,
 				doidEvent.Value,
 				ref found
@@ -841,10 +841,8 @@ namespace pjse.BhavOperandWizards.WizAnimate
 			//
 			// cbPickerObject
 			//
-			this.cbPickerObject.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbPickerObject.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbPickerObject.DropDownWidth = 384;
 			resources.ApplyResources(this.cbPickerObject, "cbPickerObject");
@@ -859,10 +857,8 @@ namespace pjse.BhavOperandWizards.WizAnimate
 			//
 			// cbdoObject
 			//
-			this.cbdoObject.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbdoObject.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbdoObject.DropDownWidth = 384;
 			resources.ApplyResources(this.cbdoObject, "cbdoObject");
@@ -884,10 +880,8 @@ namespace pjse.BhavOperandWizards.WizAnimate
 			//
 			// cbPickerIK
 			//
-			this.cbPickerIK.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbPickerIK.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbPickerIK.DropDownWidth = 384;
 			resources.ApplyResources(this.cbPickerIK, "cbPickerIK");
@@ -902,7 +896,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 			//
 			// cbdoIK
 			//
-			this.cbdoIK.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbdoIK.DropDownStyle = ComboBoxStyle.DropDownList;
 			this.cbdoIK.DropDownWidth = 384;
 			resources.ApplyResources(this.cbdoIK, "cbdoIK");
 			this.cbdoIK.Name = "cbdoIK";
@@ -950,10 +944,8 @@ namespace pjse.BhavOperandWizards.WizAnimate
 			//
 			// cbAnimType
 			//
-			this.cbAnimType.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbAnimType.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbAnimType.DropDownWidth = 200;
 			this.cbAnimType.FormattingEnabled = true;
@@ -967,7 +959,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 			// tbAnimType
 			//
 			resources.ApplyResources(this.tbAnimType, "tbAnimType");
-			this.tbAnimType.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.tbAnimType.BorderStyle = BorderStyle.None;
 			this.tbAnimType.Name = "tbAnimType";
 			this.tbAnimType.ReadOnly = true;
 			this.tbAnimType.TabStop = false;
@@ -1001,7 +993,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 			// tbAnim
 			//
 			resources.ApplyResources(this.tbAnim, "tbAnim");
-			this.tbAnim.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.tbAnim.BorderStyle = BorderStyle.None;
 			this.tbAnim.Name = "tbAnim";
 			this.tbAnim.ReadOnly = true;
 			this.tbAnim.TabStop = false;
@@ -1021,10 +1013,8 @@ namespace pjse.BhavOperandWizards.WizAnimate
 			//
 			// cbEventScope
 			//
-			this.cbEventScope.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbEventScope.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbEventScope.FormattingEnabled = true;
 			this.cbEventScope.Items.AddRange(
@@ -1072,7 +1062,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 			// tbEventTree
 			//
 			resources.ApplyResources(this.tbEventTree, "tbEventTree");
-			this.tbEventTree.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.tbEventTree.BorderStyle = BorderStyle.None;
 			this.tbEventTree.Name = "tbEventTree";
 			this.tbEventTree.ReadOnly = true;
 			this.tbEventTree.TabStop = false;
@@ -1225,10 +1215,8 @@ namespace pjse.BhavOperandWizards.WizAnimate
 			//
 			// cbPriority
 			//
-			this.cbPriority.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbPriority.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbPriority.FormattingEnabled = true;
 			this.cbPriority.Items.AddRange(
@@ -1245,7 +1233,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 			// UI
 			//
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.AutoScaleMode = AutoScaleMode.Dpi;
 			this.Controls.Add(this.pnWizAnimate);
 			this.Name = "UI";
 			this.pnWizAnimate.ResumeLayout(false);
@@ -1295,7 +1283,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 				(SimPe.PackedFiles.UserInterface.BhavForm)b.UIHandler;
 			ui.Tag = "Popup"; // tells the SetReadOnly function it's in a popup - so everything locked down
 			ui.Text =
-				pjse.Localization.GetString("viewbhav")
+				Localization.GetString("viewbhav")
 				+ ": "
 				+ b.FileName
 				+ " ["

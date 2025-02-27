@@ -46,13 +46,13 @@ namespace SimPe.Plugin.Tool
 
 			if (es.Loaded)
 			{
-				SimPe.Packages.Sims2CommunityPack.ShowSimpleSaveDialog(
+				Packages.Sims2CommunityPack.ShowSimpleSaveDialog(
 					new Packages.GeneratableFile[] { es.LoadedPackage.Package }
 				);
 			}
 			else
 			{
-				SimPe.Packages.Sims2CommunityPack.ShowSimpleSaveDialog(
+				Packages.Sims2CommunityPack.ShowSimpleSaveDialog(
 					new Packages.GeneratableFile[0]
 				);
 			}
@@ -68,7 +68,7 @@ namespace SimPe.Plugin.Tool
 		#region IToolExt Member
 		public System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.None;
 
-		public System.Drawing.Image Icon => SimPe.GetIcon.S2pack;
+		public System.Drawing.Image Icon => GetIcon.S2pack;
 
 		public virtual bool Visible => true;
 

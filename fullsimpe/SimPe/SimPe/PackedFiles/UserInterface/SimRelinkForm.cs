@@ -65,8 +65,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.label1.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Bold,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Bold,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.label1.Location = new Point(8, 76);
@@ -74,7 +74,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.label1.Size = new Size(110, 19);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Character File:";
-			this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+			this.label1.TextAlign = ContentAlignment.BottomLeft;
 			//
 			// lv
 			//
@@ -83,10 +83,10 @@ namespace SimPe.PackedFiles.UserInterface
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -96,7 +96,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.lv.MultiSelect = false;
 			this.lv.Name = "lv";
 			this.lv.Size = new Size(556, 306);
-			this.lv.Sorting = System.Windows.Forms.SortOrder.Ascending;
+			this.lv.Sorting = SortOrder.Ascending;
 			this.lv.TabIndex = 1;
 			this.lv.UseCompatibleStateImageBehavior = false;
 			this.lv.SelectedIndexChanged += new System.EventHandler(
@@ -105,9 +105,9 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// ilist
 			//
-			this.ilist.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+			this.ilist.ColorDepth = ColorDepth.Depth8Bit;
 			this.ilist.ImageSize = new Size(64, 64);
-			this.ilist.TransparentColor = System.Drawing.Color.Transparent;
+			this.ilist.TransparentColor = Color.Transparent;
 			//
 			// label2
 			//
@@ -115,38 +115,38 @@ namespace SimPe.PackedFiles.UserInterface
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
 			this.label2.Font = new Font(
 				"Georgia",
 				9.75F,
-				System.Drawing.FontStyle.Bold,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Bold,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label2.ForeColor = System.Drawing.Color.Red;
+			this.label2.ForeColor = Color.Red;
 			this.label2.Location = new Point(8, 8);
 			this.label2.Name = "label2";
 			this.label2.Size = new Size(604, 64);
 			this.label2.TabIndex = 2;
 			this.label2.Text = resources.GetString("label2.Text");
-			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.label2.TextAlign = ContentAlignment.MiddleCenter;
 			//
 			// cbfile
 			//
 			this.cbfile.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
-			this.cbfile.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbfile.FlatStyle = FlatStyle.System;
 			this.cbfile.Location = new Point(12, 407);
 			this.cbfile.Name = "cbfile";
 			this.cbfile.Size = new Size(235, 24);
@@ -158,12 +158,12 @@ namespace SimPe.PackedFiles.UserInterface
 			this.btlink.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.btlink.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.btlink.FlatStyle = FlatStyle.System;
 			this.btlink.Location = new Point(537, 408);
 			this.btlink.Name = "btlink";
 			this.btlink.Size = new Size(75, 23);
@@ -183,13 +183,13 @@ namespace SimPe.PackedFiles.UserInterface
 			this.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.Icon = ((Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "SimRelinkForm";
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			this.StartPosition = FormStartPosition.CenterScreen;
 			this.Text = "SimReMapForm";
 			this.ResumeLayout(false);
 		}
@@ -222,7 +222,7 @@ namespace SimPe.PackedFiles.UserInterface
 						if (a.Tag[1] != null)
 						{
 							lvi.ImageIndex = srf.ilist.Images.Count;
-							Image img = SimPe.Plugin.ImageLoader.Preview(
+							Image img = Plugin.ImageLoader.Preview(
 								(Image)a.Tag[1],
 								srf.ilist.ImageSize
 							);
@@ -260,7 +260,7 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				Data.Alias a = (Data.Alias)srf.lv.SelectedItems[0].Tag;
 				Packages.GeneratableFile pkg =
-					SimPe.Packages.GeneratableFile.LoadFromFile((string)a.Tag[0]);
+					Packages.File.LoadFromFile((string)a.Tag[0]);
 
 				Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
 					Data.MetaData.OBJD_FILE

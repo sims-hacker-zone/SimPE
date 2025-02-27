@@ -188,7 +188,7 @@ namespace SimPe.Plugin
 
 			foreach (IRcolBlock irb in this.Blocks)
 			{
-				SimPe.CountedListItem.Add(tGeometryNode.cb_gn_list, irb);
+				CountedListItem.Add(tGeometryNode.cb_gn_list, irb);
 			}
 
 			if (tGeometryNode.cb_gn_list.Items.Count > 0)
@@ -214,7 +214,7 @@ namespace SimPe.Plugin
 		/// <returns>null or the RCOl Ressource</returns>
 		public Rcol FindReferencingSHPE()
 		{
-			FileTable.FileIndex.Load();
+			FileTableBase.FileIndex.Load();
 			return FindReferencingSHPE_NoLoad();
 		}
 
@@ -226,7 +226,7 @@ namespace SimPe.Plugin
 		public Rcol FindReferencingSHPE_NoLoad()
 		{
 			IScenegraphFileIndexItem[] items =
-				FileTable.FileIndex.FindFile(SimPe.Data.MetaData.SHPE, true);
+				FileTableBase.FileIndex.FindFile(Data.MetaData.SHPE, true);
 			string mn = Hashes.StripHashFromName(this.Parent.FileName.Trim().ToLower());
 			foreach (IScenegraphFileIndexItem item in items)
 			{

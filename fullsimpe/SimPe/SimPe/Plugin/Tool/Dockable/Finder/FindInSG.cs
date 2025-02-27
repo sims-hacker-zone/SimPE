@@ -8,9 +8,9 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 			InitializeComponent();
 
 			cbtypes.Items.Add("--- All ---");
-			foreach (uint t in SimPe.Data.MetaData.RcolList)
+			foreach (uint t in Data.MetaData.RcolList)
 			{
-				cbtypes.Items.Add(SimPe.Data.MetaData.FindTypeAlias(t));
+				cbtypes.Items.Add(Data.MetaData.FindTypeAlias(t));
 			}
 			cbtypes.SelectedIndex = 0;
 		}
@@ -41,7 +41,7 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 
 			if (type == 0)
 			{
-				foreach (uint tt in SimPe.Data.MetaData.RcolList)
+				foreach (uint tt in Data.MetaData.RcolList)
 				{
 					if (tt == pfd.Type)
 					{

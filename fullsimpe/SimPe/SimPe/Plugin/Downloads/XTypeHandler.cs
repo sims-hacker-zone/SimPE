@@ -36,7 +36,7 @@ namespace SimPe.Plugin.Downloads
 			}
 
 			//Original Implementation
-			if (oci.Class == SimPe.Cache.ObjectClass.Object)
+			if (oci.Class == Cache.ObjectClass.Object)
 			{
 				cpf = null;
 				base.SetFromObjectCacheItem(oci);
@@ -126,11 +126,11 @@ namespace SimPe.Plugin.Downloads
 
 			nfo.FirstExpansion = PackageInfo.FileFrom(cpf.FileDescriptor);
 			SetupCategories(
-				SimPe.Cache.ObjectCacheItem.GetCategory(
-					SimPe.Cache.ObjectCacheItemVersions.DockableOW,
+				Cache.ObjectCacheItem.GetCategory(
+					Cache.ObjectCacheItemVersions.DockableOW,
 					(Data.ObjFunctionSubSort)GetFunctionSort(cpf),
 					Data.ObjectTypes.Normal,
-					SimPe.Cache.ObjectClass.XObject
+					Cache.ObjectClass.XObject
 				)
 			);
 
@@ -331,7 +331,7 @@ namespace SimPe.Plugin.Downloads
 		{
 			if (xthumbs == null)
 			{
-				xthumbs = SimPe.Packages.File.LoadFromFile(
+				xthumbs = Packages.File.LoadFromFile(
 					System.IO.Path.Combine(
 						PathProvider.SimSavegameFolder,
 						"Thumbnails\\BuildModeThumbnails.package"
@@ -384,7 +384,7 @@ namespace SimPe.Plugin.Downloads
 				types = new uint[] { 0x4D533EDD };
 				if (nthumbs == null)
 				{
-					nthumbs = SimPe.Packages.File.LoadFromFile(
+					nthumbs = Packages.File.LoadFromFile(
 						System.IO.Path.Combine(
 							PathProvider.SimSavegameFolder,
 							"Thumbnails\\CANHObjectsThumbnails.package"

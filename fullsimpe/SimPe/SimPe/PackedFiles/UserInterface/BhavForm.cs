@@ -183,7 +183,7 @@ namespace SimPe.PackedFiles.UserInterface
 			ComboBox[] cb = { tba1, tba2, cbFormat };
 			alHex16cb = new ArrayList(cb);
 
-			this.gbSpecial.Visible = this.cbSpecial.Checked = pjse.Settings
+			this.gbSpecial.Visible = this.cbSpecial.Checked = Settings
 				.PJSE
 				.ShowSpecialButtons;
 
@@ -615,12 +615,12 @@ namespace SimPe.PackedFiles.UserInterface
 						.shortname // Type (short name)
 					,
 					"0x"
-						+ SimPe.Helper.HexString(
+						+ Helper.HexString(
 							wrapper.FileDescriptor.Group
 						) // Group Number
 					,
 					"0x"
-						+ SimPe.Helper.HexString(
+						+ Helper.HexString(
 							(ushort)wrapper.FileDescriptor.Instance
 						) // Instance Number
 					,
@@ -722,7 +722,7 @@ namespace SimPe.PackedFiles.UserInterface
 		private bool instIsBhav()
 		{
 			return wrapper.ResourceByInstance(
-					SimPe.Data.MetaData.BHAV_FILE,
+					Data.MetaData.BHAV_FILE,
 					currentInst.Instruction.OpCode
 				) != null;
 		}
@@ -910,25 +910,25 @@ namespace SimPe.PackedFiles.UserInterface
 				string operands = "";
 				for (int j = 0; j < 8; j++)
 				{
-					operands += SimPe.Helper.HexString(inst.Operands[j]);
+					operands += Helper.HexString(inst.Operands[j]);
 				}
 
 				for (int j = 0; j < 8; j++)
 				{
-					operands += SimPe.Helper.HexString(inst.Reserved1[j]);
+					operands += Helper.HexString(inst.Reserved1[j]);
 				}
 
 				listing += (
 					"     "
-					+ SimPe.Helper.HexString(i)
+					+ Helper.HexString(i)
 					+ " : "
-					+ SimPe.Helper.HexString(inst.OpCode)
+					+ Helper.HexString(inst.OpCode)
 					+ " : "
-					+ SimPe.Helper.HexString(inst.NodeVersion)
+					+ Helper.HexString(inst.NodeVersion)
 					+ " : "
-					+ SimPe.Helper.HexString(inst.Target1)
+					+ Helper.HexString(inst.Target1)
 					+ " : "
-					+ SimPe.Helper.HexString(inst.Target2)
+					+ Helper.HexString(inst.Target2)
 					+ " : "
 					+ operands
 					+ "\r\n"
@@ -1407,7 +1407,7 @@ namespace SimPe.PackedFiles.UserInterface
 					tbFilename,
 					expName
 						+ ": 0x"
-						+ SimPe.Helper.HexString(
+						+ Helper.HexString(
 							(ushort)wrapper.FileDescriptor.Instance
 						)
 				);
@@ -1428,7 +1428,7 @@ namespace SimPe.PackedFiles.UserInterface
 					tbFilename,
 					expName
 						+ ": 0x"
-						+ SimPe.Helper.HexString(
+						+ Helper.HexString(
 							(ushort)wrapper.FileDescriptor.Instance
 						)
 				);
@@ -1649,7 +1649,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// tbInst_Longname
 			//
 			resources.ApplyResources(this.tbInst_Longname, "tbInst_Longname");
-			this.tbInst_Longname.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.tbInst_Longname.BorderStyle = BorderStyle.None;
 			this.tbInst_Longname.Name = "tbInst_Longname";
 			this.tbInst_Longname.ReadOnly = true;
 			this.ttBhavForm.SetToolTip(
@@ -2099,7 +2099,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// bhavPanel
 			//
 			resources.ApplyResources(this.bhavPanel, "bhavPanel");
-			this.bhavPanel.BackColor = System.Drawing.SystemColors.Control;
+			this.bhavPanel.BackColor = SystemColors.Control;
 			this.bhavPanel.Controls.Add(this.pjse_banner1);
 			this.bhavPanel.Controls.Add(this.lbHidesOP);
 			this.bhavPanel.Controls.Add(this.gbSpecial);
@@ -2137,7 +2137,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// pjse_banner1
 			//
 			resources.ApplyResources(this.pjse_banner1, "pjse_banner1");
-			this.pjse_banner1.BackColor = System.Drawing.SystemColors.AppWorkspace;
+			this.pjse_banner1.BackColor = SystemColors.AppWorkspace;
 			this.pjse_banner1.ExtractVisible = true;
 			this.pjse_banner1.FloatVisible = true;
 			this.pjse_banner1.Name = "pjse_banner1";
@@ -2278,8 +2278,8 @@ namespace SimPe.PackedFiles.UserInterface
 			// tbHidesOP
 			//
 			resources.ApplyResources(this.tbHidesOP, "tbHidesOP");
-			this.tbHidesOP.BackColor = System.Drawing.SystemColors.Control;
-			this.tbHidesOP.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.tbHidesOP.BackColor = SystemColors.Control;
+			this.tbHidesOP.BorderStyle = BorderStyle.None;
 			this.tbHidesOP.Name = "tbHidesOP";
 			this.tbHidesOP.ReadOnly = true;
 			//
@@ -2308,7 +2308,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// btnClose
 			//
 			resources.ApplyResources(this.btnClose, "btnClose");
-			this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.btnClose.DialogResult = DialogResult.Cancel;
 			this.btnClose.Name = "btnClose";
 			this.btnClose.Click += new EventHandler(this.btnClose_Click);
 			//
@@ -2580,16 +2580,14 @@ namespace SimPe.PackedFiles.UserInterface
 			// BhavForm
 			//
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.AutoScaleMode = AutoScaleMode.Dpi;
 			this.CancelButton = this.btnClose;
 			this.Controls.Add(this.bhavPanel);
-			this.FormBorderStyle = System
-				.Windows
-				.Forms
-				.FormBorderStyle
+			this.FormBorderStyle =
+				FormBorderStyle
 				.SizableToolWindow;
 			this.Name = "BhavForm";
-			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+			this.WindowState = FormWindowState.Maximized;
 			this.gbInstruction.ResumeLayout(false);
 			this.gbInstruction.PerformLayout();
 			this.bhavPanel.ResumeLayout(false);
@@ -2702,7 +2700,7 @@ namespace SimPe.PackedFiles.UserInterface
 					return;
 				}
 			}
-			SimPe.RemoteControl.OpenPackedFile(tprp.FileDescriptor, tprp.Package);
+			RemoteControl.OpenPackedFile(tprp.FileDescriptor, tprp.Package);
 		}
 
 		private void btnFloat_Click(object sender, EventArgs e)
@@ -2765,7 +2763,7 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			common_LinkClicked(
 				wrapper.ResourceByInstance(
-					SimPe.Data.MetaData.BHAV_FILE,
+					Data.MetaData.BHAV_FILE,
 					currentInst.Instruction.OpCode
 				)
 			);
@@ -2778,7 +2776,7 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			common_LinkClicked(
 				wrapper.ResourceByInstance(
-					SimPe.Data.MetaData.BHAV_FILE,
+					Data.MetaData.BHAV_FILE,
 					wrapper.FileDescriptor.Instance,
 					(pjse.FileTable.Source)llHidesOP.Tag
 				)
@@ -2809,13 +2807,13 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void pjse_banner1_ExtractClick(object sender, EventArgs e)
 		{
-			pjse.ExtractCurrent.Execute(wrapper, pjse_banner1.TitleText);
+			ExtractCurrent.Execute(wrapper, pjse_banner1.TitleText);
 		}
 
 		private void btnOpCode_Clicked(object sender, EventArgs e)
 		{
 			pjse.FileTable.Entry item = new ResourceChooser().Execute(
-				SimPe.Data.MetaData.BHAV_FILE,
+				Data.MetaData.BHAV_FILE,
 				wrapper.FileDescriptor.Group,
 				bhavPanel.Parent,
 				false
@@ -2824,7 +2822,7 @@ namespace SimPe.PackedFiles.UserInterface
 			if (item != null && item.Instance != currentInst.Instruction.OpCode)
 			{
 				this.tbInst_OpCode.Text =
-					"0x" + SimPe.Helper.HexString((ushort)item.Instance);
+					"0x" + Helper.HexString((ushort)item.Instance);
 			}
 		}
 
@@ -3445,7 +3443,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void cbSpecial_CheckStateChanged(object sender, EventArgs e)
 		{
-			gbSpecial.Visible = pjse.Settings.PJSE.ShowSpecialButtons = (
+			gbSpecial.Visible = Settings.PJSE.ShowSpecialButtons = (
 				(CheckBox)sender
 			).Checked;
 		}
@@ -3473,7 +3471,7 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			this.pnflowcontainer.Append(
 				new ResourceChooser().Execute(
-					SimPe.Data.MetaData.BHAV_FILE,
+					Data.MetaData.BHAV_FILE,
 					wrapper.FileDescriptor.Group,
 					bhavPanel.Parent,
 					true,
@@ -3527,7 +3525,7 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			Application.UseWaitCursor = true;
 			Application.DoEvents();
-			pjse.GUIDIndex.TheGUIDIndex.Create(
+			GUIDIndex.TheGUIDIndex.Create(
 				sender.Equals(this.createCurrentPackageToolStripMenuItem)
 			);
 			Application.UseWaitCursor = false;
@@ -3571,11 +3569,11 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			if (sender.Equals(this.defaultFileToolStripMenuItem))
 			{
-				pjse.GUIDIndex.TheGUIDIndex.Load();
+				GUIDIndex.TheGUIDIndex.Load();
 			}
 			else
 			{
-				pjse.GUIDIndex.TheGUIDIndex.Save();
+				GUIDIndex.TheGUIDIndex.Save();
 			}
 		}
 
@@ -3597,7 +3595,7 @@ namespace SimPe.PackedFiles.UserInterface
 			fd.CheckPathExists = true;
 			fd.DefaultExt = "txt";
 			fd.DereferenceLinks = true;
-			fd.FileName = pjse.GUIDIndex.DefaultGUIDFile;
+			fd.FileName = GUIDIndex.DefaultGUIDFile;
 			fd.Filter = pjse.Localization.GetString("guidFilter");
 			fd.FilterIndex = 1;
 			fd.RestoreDirectory = false;
@@ -3612,11 +3610,11 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				if (load)
 				{
-					pjse.GUIDIndex.TheGUIDIndex.Load(fd.FileName);
+					GUIDIndex.TheGUIDIndex.Load(fd.FileName);
 				}
 				else
 				{
-					pjse.GUIDIndex.TheGUIDIndex.Save(fd.FileName);
+					GUIDIndex.TheGUIDIndex.Save(fd.FileName);
 				}
 			}
 		}

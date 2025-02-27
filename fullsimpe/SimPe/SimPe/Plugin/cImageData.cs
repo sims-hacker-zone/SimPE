@@ -302,15 +302,15 @@ namespace SimPe.Plugin
 			if (DataType == MipMapType.LifoReference)
 			{
 				IScenegraphFileIndex nfi =
-					FileTable.FileIndex.AddNewChild();
+					FileTableBase.FileIndex.AddNewChild();
 				nfi.AddIndexFromPackage(this.parent.Parent.Package);
 				bool succ = GetReferencedLifo_NoLoad();
-				FileTable.FileIndex.RemoveChild(nfi);
+				FileTableBase.FileIndex.RemoveChild(nfi);
 				nfi.Clear();
 
-				if (!succ && !FileTable.FileIndex.Loaded)
+				if (!succ && !FileTableBase.FileIndex.Loaded)
 				{
-					FileTable.FileIndex.Load();
+					FileTableBase.FileIndex.Load();
 					GetReferencedLifo_NoLoad();
 				}
 			}
@@ -324,7 +324,7 @@ namespace SimPe.Plugin
 			if (DataType == MipMapType.LifoReference)
 			{
 				IScenegraphFileIndexItem item =
-					FileTable.FileIndex.FindFileByName(
+					FileTableBase.FileIndex.FindFileByName(
 						this.lifofile,
 						SimPe.Data.MetaData.LIFO,
 						SimPe.Data.MetaData.LOCAL_GROUP,
@@ -704,7 +704,7 @@ namespace SimPe.Plugin
 			FileNameRepeat = "";
 			this.version = 0x09;
 			unknown_0 = (float)1.0;
-			format = SimPe.Plugin.ImageLoader.TxtrFormats.ExtRaw24Bit;
+			format = ImageLoader.TxtrFormats.ExtRaw24Bit;
 		}
 
 		#region IRcolBlock Member
@@ -827,7 +827,7 @@ namespace SimPe.Plugin
 						list.Add(
 							ScenegraphHelper.BuildPfd(
 								mm.LifoFile,
-								SimPe.Plugin.ScenegraphHelper.LIFO,
+								ScenegraphHelper.LIFO,
 								parentgroup
 							)
 						);

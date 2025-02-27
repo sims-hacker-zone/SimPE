@@ -83,7 +83,7 @@ namespace SimPe.PackedFiles.UserInterface
 			pjse.FileTable.GFT.FiletableRefresh += new EventHandler(
 				GFT_FiletableRefresh
 			);
-			if (SimPe.Helper.WindowsRegistry.UseBigIcons)
+			if (Helper.WindowsRegistry.UseBigIcons)
 			{
 				this.lvParams.Font = new Font(
 					"Microsoft Sans Serif",
@@ -470,7 +470,7 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				internalchg = true;
 				this.Text = tbFilename.Text = wrapper.FileName;
-				this.tbVersion.Text = "0x" + SimPe.Helper.HexString(wrapper.Version);
+				this.tbVersion.Text = "0x" + Helper.HexString(wrapper.Version);
 				internalchg = false;
 			}
 			else if (!sender.Equals(currentItem))
@@ -610,10 +610,8 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.lvParams, "lvParams");
 			this.lvParams.FullRowSelect = true;
 			this.lvParams.GridLines = true;
-			this.lvParams.HeaderStyle = System
-				.Windows
-				.Forms
-				.ColumnHeaderStyle
+			this.lvParams.HeaderStyle =
+				ColumnHeaderStyle
 				.Nonclickable;
 			this.lvParams.HideSelection = false;
 			this.lvParams.Items.AddRange(
@@ -629,7 +627,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.lvParams.MultiSelect = false;
 			this.lvParams.Name = "lvParams";
 			this.lvParams.UseCompatibleStateImageBehavior = false;
-			this.lvParams.View = System.Windows.Forms.View.Details;
+			this.lvParams.View = View.Details;
 			this.lvParams.ItemActivate += new EventHandler(
 				this.ListView_ItemActivate
 			);
@@ -659,16 +657,14 @@ namespace SimPe.PackedFiles.UserInterface
 			resources.ApplyResources(this.lvLocals, "lvLocals");
 			this.lvLocals.FullRowSelect = true;
 			this.lvLocals.GridLines = true;
-			this.lvLocals.HeaderStyle = System
-				.Windows
-				.Forms
-				.ColumnHeaderStyle
+			this.lvLocals.HeaderStyle =
+				ColumnHeaderStyle
 				.Nonclickable;
 			this.lvLocals.HideSelection = false;
 			this.lvLocals.MultiSelect = false;
 			this.lvLocals.Name = "lvLocals";
 			this.lvLocals.UseCompatibleStateImageBehavior = false;
-			this.lvLocals.View = System.Windows.Forms.View.Details;
+			this.lvLocals.View = View.Details;
 			this.lvLocals.ItemActivate += new EventHandler(
 				this.ListView_ItemActivate
 			);
@@ -687,7 +683,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// btnCancel
 			//
 			resources.ApplyResources(this.btnCancel, "btnCancel");
-			this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.btnCancel.DialogResult = DialogResult.Cancel;
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Click += new EventHandler(this.btnCancel_Click);
 			//
@@ -755,16 +751,14 @@ namespace SimPe.PackedFiles.UserInterface
 			// TPRPForm
 			//
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.AutoScaleMode = AutoScaleMode.Dpi;
 			this.CancelButton = this.btnCancel;
 			this.Controls.Add(this.tprpPanel);
-			this.FormBorderStyle = System
-				.Windows
-				.Forms
-				.FormBorderStyle
+			this.FormBorderStyle =
+				FormBorderStyle
 				.SizableToolWindow;
 			this.Name = "TPRPForm";
-			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+			this.WindowState = FormWindowState.Maximized;
 			this.tprpPanel.ResumeLayout(false);
 			this.tprpPanel.PerformLayout();
 			this.tabControl1.ResumeLayout(false);
@@ -836,7 +830,7 @@ namespace SimPe.PackedFiles.UserInterface
 					return;
 				}
 			}
-			SimPe.RemoteControl.OpenPackedFile(bhav.FileDescriptor, bhav.Package);
+			RemoteControl.OpenPackedFile(bhav.FileDescriptor, bhav.Package);
 		}
 
 		private void btnStrPrev_Click(object sender, EventArgs e)

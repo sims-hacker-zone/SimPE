@@ -41,7 +41,7 @@ namespace SimPe.Plugin.Tool.Action
 				return;
 			}
 
-			SimPe.FileTable.FileIndex.Load();
+			FileTableBase.FileIndex.Load();
 
 			System.IO.StreamWriter sw = new System.IO.StreamWriter(
 				new System.IO.MemoryStream()
@@ -50,7 +50,7 @@ namespace SimPe.Plugin.Tool.Action
 			{
 				System.Collections.ArrayList guids = new System.Collections.ArrayList();
 				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-					SimPe.FileTable.FileIndex.FindFile(Data.MetaData.OBJD_FILE, true);
+					FileTableBase.FileIndex.FindFile(Data.MetaData.OBJD_FILE, true);
 				sw.WriteLine("<?");
 				sw.WriteLine("$guids = array(");
 				sw.Write("    ");
@@ -69,12 +69,12 @@ namespace SimPe.Plugin.Tool.Action
 						continue;
 					}
 
-					if (objd.Type == SimPe.Data.ObjectTypes.Memory)
+					if (objd.Type == Data.ObjectTypes.Memory)
 					{
 						continue;
 					}
 
-					if (objd.Type == SimPe.Data.ObjectTypes.Person)
+					if (objd.Type == Data.ObjectTypes.Person)
 					{
 						continue;
 					}

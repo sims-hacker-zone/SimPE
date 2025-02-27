@@ -208,12 +208,12 @@ namespace SimPe.PackedFiles.Wrapper
 			if (item.IsParamLabel)
 			{
 				paramCount++;
-				base.Insert(paramCount - 1, item);
+				Insert(paramCount - 1, item);
 			}
 			else
 			{
 				localCount++;
-				base.Insert(paramCount + localCount - 1, item);
+				Insert(paramCount + localCount - 1, item);
 			}
 		}
 
@@ -401,7 +401,7 @@ namespace SimPe.PackedFiles.Wrapper
 		//all covered by AbstractWrapper
 		protected override string GetResourceName(Data.TypeAlias ta)
 		{
-			if (!SimPe.Helper.FileFormat)
+			if (!Helper.FileFormat)
 			{
 				return base.GetResourceName(ta);
 			}
@@ -461,7 +461,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public TPRPItem Clone()
 		{
-			TPRPItem clone = (TPRPItem)base.MemberwiseClone();
+			TPRPItem clone = (TPRPItem)MemberwiseClone();
 			clone.label = (string)this.label.Clone();
 			clone.pORl = this.pORl;
 			clone.parent = this.parent;
@@ -474,7 +474,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <param name="reader"></param>
 		internal void Unserialize(System.IO.BinaryReader reader)
 		{
-			label = SimPe.Helper.ToString(reader.ReadBytes(reader.ReadByte()));
+			label = Helper.ToString(reader.ReadBytes(reader.ReadByte()));
 		}
 
 		/// <summary>

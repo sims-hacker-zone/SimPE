@@ -44,25 +44,25 @@ namespace SimPe.Plugin
 		{
 			if (pkg.FindFiles(Data.MetaData.IDNO).Length != 0)
 			{
-				return SimPe.Cache.PackageType.Neighbourhood;
+				return Cache.PackageType.Neighbourhood;
 			}
 
 			if (pkg.FileName.Contains("Tutorial_Neighborhood"))
 			{
-				return SimPe.Cache.PackageType.Neighbourhood;
+				return Cache.PackageType.Neighbourhood;
 			}
 
 			if (pkg.FindFiles(Data.MetaData.HOUS).Length != 0)
 			{
-				return SimPe.Cache.PackageType.Lot;
+				return Cache.PackageType.Lot;
 			}
 
 			if (pkg.FindFiles(Data.MetaData.GINV).Length != 0)
 			{
-				return SimPe.Cache.PackageType.GameInventory;
+				return Cache.PackageType.GameInventory;
 			}
 
-			return SimPe.Cache.PackageType.Unknown;
+			return Cache.PackageType.Unknown;
 		}
 
 		#endregion

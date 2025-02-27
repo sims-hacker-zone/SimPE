@@ -60,7 +60,7 @@ namespace SimPe.Plugin.Gmdc
 			InitializeComponent();
 
 			GmdcImporterAction[] actions = (GmdcImporterAction[])
-				System.Enum.GetValues(typeof(GmdcImporterAction));
+				Enum.GetValues(typeof(GmdcImporterAction));
 			foreach (GmdcImporterAction a in actions)
 			{
 				this.cbaction.Items.Add(a);
@@ -146,14 +146,14 @@ namespace SimPe.Plugin.Gmdc
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
-			this.lv.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.lv.BorderStyle = BorderStyle.None;
 			this.lv.Columns.AddRange(
 				new ColumnHeader[]
 				{
@@ -167,14 +167,14 @@ namespace SimPe.Plugin.Gmdc
 				}
 			);
 			this.lv.FullRowSelect = true;
-			this.lv.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+			this.lv.HeaderStyle = ColumnHeaderStyle.Nonclickable;
 			this.lv.HideSelection = false;
 			this.lv.Location = new System.Drawing.Point(8, 32);
 			this.lv.Name = "lv";
 			this.lv.Size = new System.Drawing.Size(680, 435);
 			this.lv.TabIndex = 0;
 			this.lv.UseCompatibleStateImageBehavior = false;
-			this.lv.View = System.Windows.Forms.View.Details;
+			this.lv.View = View.Details;
 			this.lv.SelectedIndexChanged += new EventHandler(
 				this.listView1_SelectedIndexChanged
 			);
@@ -197,7 +197,7 @@ namespace SimPe.Plugin.Gmdc
 			// chVertex
 			//
 			this.chVertex.Text = "Vertices/Parent Bone";
-			this.chVertex.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.chVertex.TextAlign = HorizontalAlignment.Right;
 			this.chVertex.Width = 140;
 			//
 			// chFace
@@ -234,10 +234,8 @@ namespace SimPe.Plugin.Gmdc
 			//
 			// cbopacity
 			//
-			this.cbopacity.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbopacity.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbopacity.Font = new System.Drawing.Font(
 				"Tahoma",
@@ -310,10 +308,8 @@ namespace SimPe.Plugin.Gmdc
 			//
 			// cbaction
 			//
-			this.cbaction.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbaction.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbaction.Font = new System.Drawing.Font(
 				"Tahoma",
@@ -380,10 +376,8 @@ namespace SimPe.Plugin.Gmdc
 			//
 			// cbnames
 			//
-			this.cbnames.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbnames.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbnames.Font = new System.Drawing.Font(
 				"Tahoma",
@@ -422,12 +416,12 @@ namespace SimPe.Plugin.Gmdc
 			this.button1.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.button1.FlatStyle = FlatStyle.System;
 			this.button1.Font = new System.Drawing.Font(
 				"Verdana",
 				9.75F,
@@ -444,10 +438,8 @@ namespace SimPe.Plugin.Gmdc
 			//
 			// cbboneaction
 			//
-			this.cbboneaction.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbboneaction.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbboneaction.Font = new System.Drawing.Font(
 				"Tahoma",
@@ -514,10 +506,8 @@ namespace SimPe.Plugin.Gmdc
 			//
 			// cbbones
 			//
-			this.cbbones.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbbones.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbbones.Font = new System.Drawing.Font(
 				"Tahoma",
@@ -591,7 +581,7 @@ namespace SimPe.Plugin.Gmdc
 			this.Gradientpanel1.Controls.Add(this.button1);
 			this.Gradientpanel1.Controls.Add(this.lv);
 			this.Gradientpanel1.Controls.Add(this.label1);
-			this.Gradientpanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.Gradientpanel1.Dock = DockStyle.Fill;
 			this.Gradientpanel1.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -609,8 +599,8 @@ namespace SimPe.Plugin.Gmdc
 			this.gbbones.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -631,8 +621,8 @@ namespace SimPe.Plugin.Gmdc
 			this.gbgroups.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -691,7 +681,7 @@ namespace SimPe.Plugin.Gmdc
 			// cbBMesh
 			//
 			this.cbBMesh.Checked = true;
-			this.cbBMesh.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.cbBMesh.CheckState = CheckState.Checked;
 			this.cbBMesh.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
@@ -713,8 +703,8 @@ namespace SimPe.Plugin.Gmdc
 			this.gbsettings.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -742,7 +732,7 @@ namespace SimPe.Plugin.Gmdc
 			);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "ImportGmdcGroupsForm";
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			this.StartPosition = FormStartPosition.CenterScreen;
 			this.Text = "Mesh Group Importer";
 			this.Load += new EventHandler(this.ImportGmdcGroupsForm_Load);
 			this.Gradientpanel1.ResumeLayout(false);
@@ -948,7 +938,7 @@ namespace SimPe.Plugin.Gmdc
 
 				if (
 					a.VertexCount
-					> SimPe.Plugin.Gmdc.AbstractGmdcImporter.CRITICAL_VERTEX_AMOUNT
+					> AbstractGmdcImporter.CRITICAL_VERTEX_AMOUNT
 				)
 				{
 					toobig = true;
@@ -956,7 +946,7 @@ namespace SimPe.Plugin.Gmdc
 
 				if (
 					a.FaceCount
-					> SimPe.Plugin.Gmdc.AbstractGmdcImporter.CRITICAL_FACE_AMOUNT
+					> AbstractGmdcImporter.CRITICAL_FACE_AMOUNT
 				)
 				{
 					toobig = true;
@@ -972,9 +962,9 @@ namespace SimPe.Plugin.Gmdc
 						new Warning(
 							"One or more of the imported Mesh Groups contain too many Vertices or Faces",
 							"If SimPe is not running in Creater Mode, the maximum Number of Vertices is set to "
-								+ SimPe.Plugin.Gmdc.AbstractGmdcImporter.CRITICAL_VERTEX_AMOUNT.ToString()
+								+ AbstractGmdcImporter.CRITICAL_VERTEX_AMOUNT.ToString()
 								+ " and the maximum amount of Faces to "
-								+ SimPe.Plugin.Gmdc.AbstractGmdcImporter.CRITICAL_FACE_AMOUNT.ToString()
+								+ AbstractGmdcImporter.CRITICAL_FACE_AMOUNT.ToString()
 								+ ".\n\nIf you want to Import this Mesh, you have to create a User Id."
 						)
 					);

@@ -36,7 +36,7 @@ namespace SimPe
 		#region Import Data
 		static void CheckXML(string file, string elementName)
 		{
-			if (System.IO.File.Exists(file))
+			if (File.Exists(file))
 			{
 				System.Xml.XmlDocument xmlfile = new System.Xml.XmlDocument();
 				xmlfile.Load(file);
@@ -82,7 +82,7 @@ namespace SimPe
 					) == System.Windows.Forms.DialogResult.Yes
 				)
 				{
-					System.IO.File.Delete(file);
+					File.Delete(file);
 				}
 			}
 		}
@@ -92,9 +92,9 @@ namespace SimPe
 			//check if installation for user is done
 			if (
 				(
-					!System.IO.File.Exists(Helper.DataFolder.ExpansionsXREG)
-					|| !System.IO.File.Exists(
-						System.IO.Path.Combine(Helper.SimPeDataPath, "tgi.xml")
+					!File.Exists(Helper.DataFolder.ExpansionsXREG)
+					|| !File.Exists(
+						Path.Combine(Helper.SimPeDataPath, "tgi.xml")
 					)
 					|| Helper.WindowsRegistry.GetPreviousVersion()
 						!= Helper.SimPeVersionLong
@@ -103,7 +103,7 @@ namespace SimPe
 			)
 			{
 				if (
-					!System.IO.File.Exists(
+					!File.Exists(
 						Path.Combine(Helper.SimPeDataPath, "additional_careers.xml")
 					)
 				)
@@ -112,7 +112,7 @@ namespace SimPe
 				}
 
 				if (
-					!System.IO.File.Exists(
+					!File.Exists(
 						Path.Combine(Helper.SimPeDataPath, "additional_majors.xml")
 					)
 				)
@@ -121,7 +121,7 @@ namespace SimPe
 				}
 
 				if (
-					!System.IO.File.Exists(
+					!File.Exists(
 						Path.Combine(Helper.SimPeDataPath, "additional_schools.xml")
 					)
 				)
@@ -130,12 +130,12 @@ namespace SimPe
 				}
 
 				if (
-					System.IO.File.Exists(
+					File.Exists(
 						Path.Combine(Helper.SimPeDataPath, "vport.set")
 					)
 				)
 				{
-					System.IO.File.Delete(
+					File.Delete(
 						Path.Combine(Helper.SimPeDataPath, "vport.set")
 					);
 				}
@@ -176,11 +176,11 @@ namespace SimPe
 			if (Helper.WindowsRegistry.UseExpansions2 != Helper.ECCorNewSEfound)
 			{
 				if (
-					System.IO.File.Exists(Helper.DataFolder.FoldersXREGW)
+					File.Exists(Helper.DataFolder.FoldersXREGW)
 					&& Helper.Profile.Length == 0
 				)
 				{
-					System.IO.File.Delete(Helper.DataFolder.FoldersXREGW);
+					File.Delete(Helper.DataFolder.FoldersXREGW);
 					if (Helper.ECCorNewSEfound)
 					{
 						Message.Show(
@@ -445,9 +445,9 @@ namespace SimPe
 					return true;
 				}
 				if (
-					System.IO.Directory.Exists(
-						System.IO.Path.Combine(
-							System.IO.Path.Combine(Helper.SimPeDataPath, "Profiles"),
+					Directory.Exists(
+						Path.Combine(
+							Path.Combine(Helper.SimPeDataPath, "Profiles"),
 							argv[index]
 						)
 					)
@@ -531,7 +531,7 @@ namespace SimPe
 			{
 				try
 				{
-					StreamWriter sw = System.IO.File.CreateText(
+					StreamWriter sw = File.CreateText(
 						Helper.DataFolder.Layout2XREGW
 					);
 					sw.BaseStream.SetLength(0);
@@ -562,7 +562,7 @@ namespace SimPe
 			{
 				try
 				{
-					FileStream fs = System.IO.File.OpenWrite(
+					FileStream fs = File.OpenWrite(
 						Helper.DataFolder.SimPeLayoutW
 					);
 					BinaryWriter sw = new BinaryWriter(fs);
@@ -627,13 +627,13 @@ namespace SimPe
 				Helper.WindowsRegistry.Flush();
 
 				System.Windows.Forms.DialogResult dr = Message.Show(
-					SimPe
-						.Localization.GetString("PresetChanged")
+
+						Localization.GetString("PresetChanged")
 						.Replace(
 							"{name}",
-							SimPe.Localization.GetString("PresetClassic")
+							Localization.GetString("PresetClassic")
 						),
-					SimPe.Localization.GetString("Information"),
+					Localization.GetString("Information"),
 					System.Windows.Forms.MessageBoxButtons.YesNo
 				);
 				return dr != System.Windows.Forms.DialogResult.Yes;
@@ -659,13 +659,13 @@ namespace SimPe
 				ForceModernLayout();
 
 				System.Windows.Forms.DialogResult dr = Message.Show(
-					SimPe
-						.Localization.GetString("PresetChanged")
+
+						Localization.GetString("PresetChanged")
 						.Replace(
 							"{name}",
-							SimPe.Localization.GetString("PresetModern")
+							Localization.GetString("PresetModern")
 						),
-					SimPe.Localization.GetString("Information"),
+					Localization.GetString("Information"),
 					System.Windows.Forms.MessageBoxButtons.YesNo
 				);
 				return dr != System.Windows.Forms.DialogResult.Yes;
@@ -693,11 +693,11 @@ namespace SimPe
 			try
 			{
 				SimPe.Splash.Screen.SetMessage(
-					SimPe.Localization.GetString("Checking commandline parameters")
+					Localization.GetString("Checking commandline parameters")
 				);
 				foreach (
-					ICommandLine cmdline in SimPe
-						.FileTable
+					ICommandLine cmdline in
+						FileTable
 						.CommandLineRegistry
 						.CommandLines
 				)
@@ -713,7 +713,7 @@ namespace SimPe
 			finally
 			{
 				SimPe.Splash.Screen.SetMessage(
-					SimPe.Localization.GetString("Checked commandline parameters")
+					Localization.GetString("Checked commandline parameters")
 				);
 			}
 		}
@@ -774,7 +774,7 @@ namespace SimPe
 					BinaryReader br = new BinaryReader(s);
 					try
 					{
-						FileStream fs = System.IO.File.Create(path);
+						FileStream fs = File.Create(path);
 						BinaryWriter bw = new BinaryWriter(fs);
 						try
 						{
@@ -823,7 +823,7 @@ namespace SimPe
 				}
 			}
 			foreach (
-				ICommandLine cmdline in SimPe.FileTable.CommandLineRegistry.CommandLines
+				ICommandLine cmdline in FileTable.CommandLineRegistry.CommandLines
 			)
 			{
 				string[] help = cmdline.Help();
@@ -834,7 +834,7 @@ namespace SimPe
 				}
 			}
 
-			SimPe.Splash.Screen.Stop();
+			Splash.Screen.Stop();
 
 			// System.Windows.Forms.MessageBox.Show(""
 			Message.Show(

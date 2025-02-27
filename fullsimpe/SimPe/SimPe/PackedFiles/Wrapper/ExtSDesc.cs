@@ -62,9 +62,9 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				if (FileTable.ProviderRegistry.SimNameProvider != null)
+				if (FileTableBase.ProviderRegistry.SimNameProvider != null)
 				{
-					object o = FileTable
+					object o = FileTableBase
 						.ProviderRegistry.SimNameProvider.FindName(SimId)
 						.Tag;
 					if (o != null)
@@ -92,7 +92,7 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				if (IsNPC)
 				{
-					object o = FileTable
+					object o = FileTableBase
 						.ProviderRegistry.SimNameProvider.FindName(SimId)
 						.Tag;
 					if (o != null)
@@ -469,23 +469,23 @@ namespace SimPe.PackedFiles.Wrapper
 					"Household ",
 					"isNPC",
 					"isTownie",
-					SimPe.Serializer.SerializeTypeHeader(this.CharacterDescription),
-					SimPe.Serializer.SerializeTypeHeader(this.Character),
+					Serializer.SerializeTypeHeader(this.CharacterDescription),
+					Serializer.SerializeTypeHeader(this.Character),
 					"Genetic"
-						+ SimPe.Serializer.SerializeTypeHeader(this.GeneticCharacter),
-					SimPe.Serializer.SerializeTypeHeader(this.Interests),
-					SimPe.Serializer.SerializeTypeHeader(this.Skills),
+						+ Serializer.SerializeTypeHeader(this.GeneticCharacter),
+					Serializer.SerializeTypeHeader(this.Interests),
+					Serializer.SerializeTypeHeader(this.Skills),
 					"Version"
 				};
 
 				if ((int)this.Version >= (int)SDescVersions.University)
 				{
-					list.Add(SimPe.Serializer.SerializeTypeHeader(this.University));
+					list.Add(Serializer.SerializeTypeHeader(this.University));
 				}
 
 				if ((int)this.Version >= (int)SDescVersions.Nightlife)
 				{
-					list.Add(SimPe.Serializer.SerializeTypeHeader(this.Nightlife));
+					list.Add(Serializer.SerializeTypeHeader(this.Nightlife));
 				}
 
 				return Serializer.ConcatHeader(Serializer.ConvertArrayList(list));
@@ -580,7 +580,7 @@ namespace SimPe.PackedFiles.Wrapper
 					return new Interfaces.Providers.ILotItem[0];
 				}
 
-				return FileTable.ProviderRegistry.LotProvider.FindLotsOwnedBySim(
+				return FileTableBase.ProviderRegistry.LotProvider.FindLotsOwnedBySim(
 					this.Instance
 				);
 			}
@@ -601,17 +601,17 @@ namespace SimPe.PackedFiles.Wrapper
 
 				if ((int)this.Version >= (int)SDescVersions.Business)
 				{
-					list.Add(SimPe.Serializer.SerializeTypeHeader(this.Business));
+					list.Add(Serializer.SerializeTypeHeader(this.Business));
 				}
 
 				if ((int)this.Version >= (int)SDescVersions.Pets)
 				{
-					list.Add(SimPe.Serializer.SerializeTypeHeader(this.Pets));
+					list.Add(Serializer.SerializeTypeHeader(this.Pets));
 				}
 
 				if ((int)this.Version >= (int)SDescVersions.Voyage)
 				{
-					list.Add(SimPe.Serializer.SerializeTypeHeader(this.Voyage));
+					list.Add(Serializer.SerializeTypeHeader(this.Voyage));
 				}
 
 				return Serializer.ConcatHeader(Serializer.ConvertArrayList(list));

@@ -114,14 +114,14 @@ namespace SimPe.Plugin.Tool.Dockable
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
-			this.op1.BackColor = System.Drawing.Color.Transparent;
+			this.op1.BackColor = Color.Transparent;
 			this.op1.Font = new Font("Tahoma", 8.25F);
 			this.op1.LoadCustomImage = true;
 			this.op1.Location = new Point(8, 44);
@@ -143,14 +143,14 @@ namespace SimPe.Plugin.Tool.Dockable
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
-			this.op2.BackColor = System.Drawing.Color.Transparent;
+			this.op2.BackColor = Color.Transparent;
 			this.op2.Font = new Font("Tahoma", 8.25F);
 			this.op2.LoadCustomImage = true;
 			this.op2.Location = new Point(8, 44);
@@ -306,7 +306,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			// xpGradientPanel1
 			//
-			this.xpGradientPanel1.BackColor = System.Drawing.Color.Transparent;
+			this.xpGradientPanel1.BackColor = Color.Transparent;
 			this.xpGradientPanel1.Controls.Add(this.wizard1);
 			this.xpGradientPanel1.Controls.Add(this.toolStrip1);
 			resources.ApplyResources(this.xpGradientPanel1, "xpGradientPanel1");
@@ -314,7 +314,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			// wizard1
 			//
-			this.wizard1.BackColor = System.Drawing.Color.Transparent;
+			this.wizard1.BackColor = Color.Transparent;
 			this.wizard1.Controls.Add(this.wizardStepPanel1);
 			this.wizard1.Controls.Add(this.wizardStepPanel2);
 			this.wizard1.Controls.Add(this.wizardStepPanel3);
@@ -348,7 +348,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			// wizardStepPanel1
 			//
-			this.wizardStepPanel1.BackColor = System.Drawing.Color.Transparent;
+			this.wizardStepPanel1.BackColor = Color.Transparent;
 			this.wizardStepPanel1.Controls.Add(this.xpAdvanced);
 			this.wizardStepPanel1.Controls.Add(this.label4);
 			this.wizardStepPanel1.Controls.Add(this.button2);
@@ -362,7 +362,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			// xpAdvanced
 			//
-			this.xpAdvanced.BackColor = System.Drawing.Color.Transparent;
+			this.xpAdvanced.BackColor = Color.Transparent;
 			this.xpAdvanced.Controls.Add(this.button6);
 			this.xpAdvanced.Controls.Add(this.tbGUID);
 			this.xpAdvanced.Controls.Add(this.button5);
@@ -372,7 +372,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.xpAdvanced.HeaderFont = new Font(
 				"Microsoft Sans Serif",
 				10.25F,
-				System.Drawing.FontStyle.Bold
+				FontStyle.Bold
 			);
 			resources.ApplyResources(this.xpAdvanced, "xpAdvanced");
 			this.xpAdvanced.IconLocation = new Point(4, 12);
@@ -441,7 +441,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			// wizardStepPanel2
 			//
-			this.wizardStepPanel2.BackColor = System.Drawing.Color.Transparent;
+			this.wizardStepPanel2.BackColor = Color.Transparent;
 			this.wizardStepPanel2.Controls.Add(this.lb);
 			this.wizardStepPanel2.Controls.Add(this.tv);
 			this.wizardStepPanel2.Controls.Add(this.splitter1);
@@ -459,7 +459,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			// lb
 			//
-			this.lb.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.lb.BorderStyle = BorderStyle.None;
 			resources.ApplyResources(this.lb, "lb");
 			this.lb.Name = "lb";
 			this.lb.SelectedIndexChanged += new EventHandler(
@@ -468,7 +468,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			// tv
 			//
-			this.tv.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.tv.BorderStyle = BorderStyle.None;
 			resources.ApplyResources(this.tv, "tv");
 			this.tv.ItemHeight = 17;
 			this.tv.Name = "tv";
@@ -478,7 +478,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			// splitter1
 			//
-			this.splitter1.BackColor = System.Drawing.SystemColors.Highlight;
+			this.splitter1.BackColor = SystemColors.Highlight;
 			resources.ApplyResources(this.splitter1, "splitter1");
 			this.splitter1.Name = "splitter1";
 			this.splitter1.TabStop = false;
@@ -491,12 +491,12 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			// xpTaskBoxSimple2
 			//
-			this.xpTaskBoxSimple2.BackColor = System.Drawing.Color.Transparent;
+			this.xpTaskBoxSimple2.BackColor = Color.Transparent;
 			resources.ApplyResources(this.xpTaskBoxSimple2, "xpTaskBoxSimple2");
 			this.xpTaskBoxSimple2.HeaderFont = new Font(
 				"Microsoft Sans Serif",
 				10.25F,
-				System.Drawing.FontStyle.Bold
+				FontStyle.Bold
 			);
 			this.xpTaskBoxSimple2.IconLocation = new Point(4, 12);
 			this.xpTaskBoxSimple2.IconSize = new Size(32, 32);
@@ -504,7 +504,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			// wizardStepPanel3
 			//
-			this.wizardStepPanel3.BackColor = System.Drawing.Color.Transparent;
+			this.wizardStepPanel3.BackColor = Color.Transparent;
 			this.wizardStepPanel3.Controls.Add(this.xpTaskBoxSimple1);
 			this.wizardStepPanel3.Controls.Add(this.gbRecolor);
 			this.wizardStepPanel3.Controls.Add(this.gbClone);
@@ -522,12 +522,12 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			// xpTaskBoxSimple1
 			//
-			this.xpTaskBoxSimple1.BackColor = System.Drawing.Color.Transparent;
+			this.xpTaskBoxSimple1.BackColor = Color.Transparent;
 			resources.ApplyResources(this.xpTaskBoxSimple1, "xpTaskBoxSimple1");
 			this.xpTaskBoxSimple1.HeaderFont = new Font(
 				"Microsoft Sans Serif",
 				10.25F,
-				System.Drawing.FontStyle.Bold
+				FontStyle.Bold
 			);
 			this.xpTaskBoxSimple1.IconLocation = new Point(4, 12);
 			this.xpTaskBoxSimple1.IconSize = new Size(32, 32);
@@ -535,13 +535,13 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			// gbRecolor
 			//
-			this.gbRecolor.BackColor = System.Drawing.Color.Transparent;
+			this.gbRecolor.BackColor = Color.Transparent;
 			this.gbRecolor.Controls.Add(this.cbColorExt);
 			resources.ApplyResources(this.gbRecolor, "gbRecolor");
 			this.gbRecolor.HeaderFont = new Font(
 				"Microsoft Sans Serif",
 				10.25F,
-				System.Drawing.FontStyle.Bold
+				FontStyle.Bold
 			);
 			this.gbRecolor.IconLocation = new Point(4, 12);
 			this.gbRecolor.IconSize = new Size(32, 32);
@@ -550,14 +550,14 @@ namespace SimPe.Plugin.Tool.Dockable
 			// cbColorExt
 			//
 			this.cbColorExt.Checked = true;
-			this.cbColorExt.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.cbColorExt.CheckState = CheckState.Checked;
 			resources.ApplyResources(this.cbColorExt, "cbColorExt");
 			this.cbColorExt.Name = "cbColorExt";
 			this.cbColorExt.UseVisualStyleBackColor = false;
 			//
 			// gbClone
 			//
-			this.gbClone.BackColor = System.Drawing.Color.Transparent;
+			this.gbClone.BackColor = Color.Transparent;
 			this.gbClone.Controls.Add(this.llCloneDef);
 			this.gbClone.Controls.Add(this.cbstrlink);
 			this.gbClone.Controls.Add(this.cbDesc);
@@ -574,7 +574,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.gbClone.HeaderFont = new Font(
 				"Microsoft Sans Serif",
 				10.25F,
-				System.Drawing.FontStyle.Bold
+				FontStyle.Bold
 			);
 			this.gbClone.IconLocation = new Point(4, 0);
 			this.gbClone.IconSize = new Size(32, 32);
@@ -604,7 +604,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			// cbDesc
 			//
 			this.cbDesc.Checked = true;
-			this.cbDesc.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.cbDesc.CheckState = CheckState.Checked;
 			resources.ApplyResources(this.cbDesc, "cbDesc");
 			this.cbDesc.Name = "cbDesc";
 			this.toolTip1.SetToolTip(
@@ -629,7 +629,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			// cbRemTxt
 			//
 			this.cbRemTxt.Checked = true;
-			this.cbRemTxt.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.cbRemTxt.CheckState = CheckState.Checked;
 			resources.ApplyResources(this.cbRemTxt, "cbRemTxt");
 			this.cbRemTxt.Name = "cbRemTxt";
 			this.toolTip1.SetToolTip(
@@ -651,7 +651,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			// cbwallmask
 			//
 			this.cbwallmask.Checked = true;
-			this.cbwallmask.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.cbwallmask.CheckState = CheckState.Checked;
 			resources.ApplyResources(this.cbwallmask, "cbwallmask");
 			this.cbwallmask.Name = "cbwallmask";
 			this.toolTip1.SetToolTip(
@@ -673,7 +673,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			// cbclean
 			//
 			this.cbclean.Checked = true;
-			this.cbclean.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.cbclean.CheckState = CheckState.Checked;
 			resources.ApplyResources(this.cbclean, "cbclean");
 			this.cbclean.Name = "cbclean";
 			this.toolTip1.SetToolTip(
@@ -685,7 +685,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			// cbfix
 			//
 			this.cbfix.Checked = true;
-			this.cbfix.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.cbfix.CheckState = CheckState.Checked;
 			resources.ApplyResources(this.cbfix, "cbfix");
 			this.cbfix.Name = "cbfix";
 			this.toolTip1.SetToolTip(this.cbfix, resources.GetString("cbfix.ToolTip"));
@@ -697,7 +697,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			// cbdefault
 			//
 			this.cbdefault.Checked = true;
-			this.cbdefault.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.cbdefault.CheckState = CheckState.Checked;
 			resources.ApplyResources(this.cbdefault, "cbdefault");
 			this.cbdefault.Name = "cbdefault";
 			this.toolTip1.SetToolTip(
@@ -709,7 +709,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			// cbgid
 			//
 			this.cbgid.Checked = true;
-			this.cbgid.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.cbgid.CheckState = CheckState.Checked;
 			resources.ApplyResources(this.cbgid, "cbgid");
 			this.cbgid.Name = "cbgid";
 			this.toolTip1.SetToolTip(this.cbgid, resources.GetString("cbgid.ToolTip"));
@@ -732,8 +732,8 @@ namespace SimPe.Plugin.Tool.Dockable
 			// cbTask
 			//
 			resources.ApplyResources(this.cbTask, "cbTask");
-			this.cbTask.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbTask.ForeColor = System.Drawing.SystemColors.ControlText;
+			this.cbTask.DropDownStyle = ComboBoxStyle.DropDownList;
+			this.cbTask.ForeColor = SystemColors.ControlText;
 			this.cbTask.Items.AddRange(
 				new object[]
 				{
@@ -753,7 +753,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			// wizardStepPanel5
 			//
-			this.wizardStepPanel5.BackColor = System.Drawing.Color.Transparent;
+			this.wizardStepPanel5.BackColor = Color.Transparent;
 			this.wizardStepPanel5.Controls.Add(this.xpTaskBoxSimple3);
 			resources.ApplyResources(this.wizardStepPanel5, "wizardStepPanel5");
 			this.wizardStepPanel5.First = false;
@@ -768,7 +768,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			// xpTaskBoxSimple3
 			//
-			this.xpTaskBoxSimple3.BackColor = System.Drawing.Color.Transparent;
+			this.xpTaskBoxSimple3.BackColor = Color.Transparent;
 			this.xpTaskBoxSimple3.Controls.Add(this.tbDesc);
 			this.xpTaskBoxSimple3.Controls.Add(this.tbPrice);
 			this.xpTaskBoxSimple3.Controls.Add(this.tbName);
@@ -779,7 +779,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.xpTaskBoxSimple3.HeaderFont = new Font(
 				"Microsoft Sans Serif",
 				10.25F,
-				System.Drawing.FontStyle.Bold
+				FontStyle.Bold
 			);
 			this.xpTaskBoxSimple3.IconLocation = new Point(4, 12);
 			this.xpTaskBoxSimple3.IconSize = new Size(32, 32);
@@ -788,7 +788,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			// tbDesc
 			//
 			resources.ApplyResources(this.tbDesc, "tbDesc");
-			this.tbDesc.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.tbDesc.BorderStyle = BorderStyle.None;
 			this.tbDesc.Name = "tbDesc";
 			//
 			// tbPrice
@@ -818,7 +818,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			// wizardStepPanel4
 			//
-			this.wizardStepPanel4.BackColor = System.Drawing.Color.Transparent;
+			this.wizardStepPanel4.BackColor = Color.Transparent;
 			this.wizardStepPanel4.Controls.Add(this.pnWait);
 			resources.ApplyResources(this.wizardStepPanel4, "wizardStepPanel4");
 			this.wizardStepPanel4.First = false;
@@ -870,7 +870,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			// toolStrip1
 			//
-			this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+			this.toolStrip1.GripStyle = ToolStripGripStyle.Hidden;
 			this.toolStrip1.Items.AddRange(
 				new ToolStripItem[]
 				{
@@ -881,10 +881,8 @@ namespace SimPe.Plugin.Tool.Dockable
 					this.biCatalog,
 				}
 			);
-			this.toolStrip1.LayoutStyle = System
-				.Windows
-				.Forms
-				.ToolStripLayoutStyle
+			this.toolStrip1.LayoutStyle =
+				ToolStripLayoutStyle
 				.HorizontalStackWithOverflow;
 			resources.ApplyResources(this.toolStrip1, "toolStrip1");
 			this.toolStrip1.Name = "toolStrip1";
@@ -916,18 +914,14 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			// biCatalog
 			//
-			this.biCatalog.Alignment = System
-				.Windows
-				.Forms
-				.ToolStripItemAlignment
+			this.biCatalog.Alignment =
+				ToolStripItemAlignment
 				.Right;
 			this.biCatalog.Checked = true;
 			this.biCatalog.CheckOnClick = true;
-			this.biCatalog.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.biCatalog.DisplayStyle = System
-				.Windows
-				.Forms
-				.ToolStripItemDisplayStyle
+			this.biCatalog.CheckState = CheckState.Checked;
+			this.biCatalog.DisplayStyle =
+				ToolStripItemDisplayStyle
 				.Text;
 			resources.ApplyResources(this.biCatalog, "biCatalog");
 			this.biCatalog.Name = "biCatalog";
@@ -935,9 +929,9 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			// ilist
 			//
-			this.ilist.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+			this.ilist.ColorDepth = ColorDepth.Depth32Bit;
 			resources.ApplyResources(this.ilist, "ilist");
-			this.ilist.TransparentColor = System.Drawing.Color.Transparent;
+			this.ilist.TransparentColor = Color.Transparent;
 			//
 			// dcObjectWorkshop
 			//
@@ -1113,7 +1107,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 
 			if (
-				oci.Class == SimPe.Cache.ObjectClass.XObject
+				oci.Class == Cache.ObjectClass.XObject
 				&& !Helper.WindowsRegistry.OWincludewalls
 			)
 			{
@@ -1201,16 +1195,16 @@ namespace SimPe.Plugin.Tool.Dockable
 			ofd.Filter = ExtensionProvider.BuildFilterString(
 				new ExtensionType[]
 				{
-					SimPe.ExtensionType.Package,
-					SimPe.ExtensionType.DisabledPackage,
-					SimPe.ExtensionType.AllFiles,
+					ExtensionType.Package,
+					ExtensionType.DisabledPackage,
+					ExtensionType.AllFiles,
 				}
 			);
 
 			package = null;
 			if (ofd.ShowDialog() == DialogResult.OK)
 			{
-				package = SimPe.Packages.GeneratableFile.LoadFromFile(ofd.FileName);
+				package = Packages.File.LoadFromFile(ofd.FileName);
 				wizard1.JumpToStep(2);
 			}
 		}
@@ -1344,7 +1338,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			Wizards.WizardStepPanel step
 		)
 		{
-			this.pbWait.Image = System.Drawing.Image.FromStream(
+			this.pbWait.Image = Image.FromStream(
 				this.GetType().Assembly.GetManifestResourceStream("SimPe.img.timer.gif")
 			);
 			Packages.GeneratableFile package = null;
@@ -1450,7 +1444,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			{
 				Cache.ObjectCacheItem oci = (Cache.ObjectCacheItem)
 					lastselected.Tag[3];
-				if (oci.Class != SimPe.Cache.ObjectClass.Object)
+				if (oci.Class != Cache.ObjectClass.Object)
 				{
 					cbclean.Enabled = false;
 					cbdefault.Enabled = false;

@@ -61,7 +61,7 @@ namespace SimPe.Plugin
 			gb = new GraphBuilder(panel1, new EventHandler(GraphItemClick));
 			LinkControlLineMode[] ls =
 				(LinkControlLineMode[])
-					System.Enum.GetValues(
+					Enum.GetValues(
 						typeof(LinkControlLineMode)
 					);
 			foreach (LinkControlLineMode l in ls)
@@ -79,7 +79,7 @@ namespace SimPe.Plugin
 
 			cbQuality_CheckedChanged(cbQuality, null);
 			cbLineStyle_SelectedIndexChanged(cbLineStyle, null);
-			ThemeManager tm = SimPe.ThemeManager.Global.CreateChild();
+			ThemeManager tm = ThemeManager.Global.CreateChild();
 			tm.AddControl(this.panel2);
 		}
 
@@ -132,7 +132,7 @@ namespace SimPe.Plugin
 			this.panel2.BackColor = System.Drawing.Color.Transparent;
 			this.panel2.Controls.Add(this.groupBox2);
 			this.panel2.Controls.Add(this.groupBox1);
-			this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.panel2.Dock = DockStyle.Bottom;
 			this.panel2.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -150,8 +150,8 @@ namespace SimPe.Plugin
 			this.groupBox2.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -190,10 +190,8 @@ namespace SimPe.Plugin
 			//
 			// cbLineStyle
 			//
-			this.cbLineStyle.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbLineStyle.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbLineStyle.Font = new System.Drawing.Font(
 				"Verdana",
@@ -229,7 +227,7 @@ namespace SimPe.Plugin
 			// cbQuality
 			//
 			this.cbQuality.AutoSize = true;
-			this.cbQuality.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbQuality.FlatStyle = FlatStyle.System;
 			this.cbQuality.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -252,9 +250,9 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -296,9 +294,9 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -320,9 +318,9 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -374,7 +372,7 @@ namespace SimPe.Plugin
 			// panel1
 			//
 			this.panel1.AutoScroll = true;
-			this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.panel1.Dock = DockStyle.Fill;
 			this.panel1.Location = new System.Drawing.Point(0, 0);
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(800, 350);
@@ -490,14 +488,14 @@ namespace SimPe.Plugin
 				Interfaces.Files.IPackageFile orgpkg = simpe_pkg;
 
 				DateTime start = DateTime.Now;
-				FileTable.FileIndex.Load();
+				FileTableBase.FileIndex.Load();
 				Interfaces.Scenegraph.IScenegraphFileIndex fileindex =
-					FileTable.FileIndex.Clone();
+					FileTableBase.FileIndex.Clone();
 				fileindex.AddIndexFromPackage(simpe_pkg);
 
 				Interfaces.Scenegraph.IScenegraphFileIndex oldfileindex =
-					FileTable.FileIndex;
-				FileTable.FileIndex = fileindex;
+					FileTableBase.FileIndex;
+				FileTableBase.FileIndex = fileindex;
 
 				//find txtr File
 				/*WaitingScreen.UpdateMessage("Collecting Global Files");
@@ -510,7 +508,7 @@ namespace SimPe.Plugin
 				}
 				catch (ScenegraphException) {}*/
 
-				FileTable.FileIndex = oldfileindex;
+				FileTableBase.FileIndex = oldfileindex;
 
 				gb.BuildGraph(simpe_pkg, fileindex);
 				gb.FindUnused(orgpkg);

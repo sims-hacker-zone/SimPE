@@ -335,15 +335,15 @@ namespace SimPe.Plugin
 		public Rcol FindReferencingParent(uint type)
 		{
 			IScenegraphFileIndex nfi =
-				FileTable.FileIndex.AddNewChild();
+				FileTableBase.FileIndex.AddNewChild();
 			nfi.AddIndexFromPackage(this.Parent.Package);
 			Rcol rcol = FindReferencingParent_NoLoad(type);
-			FileTable.FileIndex.RemoveChild(nfi);
+			FileTableBase.FileIndex.RemoveChild(nfi);
 			nfi.Clear();
 
-			if (rcol == null && !FileTable.FileIndex.Loaded)
+			if (rcol == null && !FileTableBase.FileIndex.Loaded)
 			{
-				FileTable.FileIndex.Load();
+				FileTableBase.FileIndex.Load();
 				rcol = FindReferencingParent_NoLoad(type);
 			}
 
@@ -371,7 +371,7 @@ namespace SimPe.Plugin
 			WaitMessasge wm;
 
 			IScenegraphFileIndexItem[] items =
-				FileTable.FileIndex.FindFile(type, true);
+				FileTableBase.FileIndex.FindFile(type, true);
 			try
 			{
 				if (Wait.Running)

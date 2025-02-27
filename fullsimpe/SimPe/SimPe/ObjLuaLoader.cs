@@ -31,7 +31,7 @@ namespace SimPe
 		/// </summary>
 		static void CreatePackge()
 		{
-			pkg = SimPe.Packages.File.CreateNew();
+			pkg = Packages.File.CreateNew();
 
 			foreach (ExpansionItem ei in PathProvider.Global.Expansions)
 			{
@@ -98,17 +98,17 @@ namespace SimPe
 					br = new System.IO.BinaryReader(bw.BaseStream);
 					br.BaseStream.Seek(0, System.IO.SeekOrigin.Begin);
 
-					uint type = SimPe.Data.MetaData.OLUA;
+					uint type = Data.MetaData.OLUA;
 					if (global)
 					{
-						type = SimPe.Data.MetaData.GLUA;
+						type = Data.MetaData.GLUA;
 					}
 
 					Interfaces.Files.IPackedFileDescriptor pfd =
 						pkg.NewDescriptor(
 							type,
 							Hashes.SubTypeHash(name),
-							SimPe.Data.MetaData.LOCAL_GROUP,
+							Data.MetaData.LOCAL_GROUP,
 							Hashes.InstanceHash(name)
 						);
 

@@ -44,7 +44,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
 
-			tm = SimPe.ThemeManager.Global.CreateChild();
+			tm = ThemeManager.Global.CreateChild();
 			tm.AddControl(this.xpGradientPanel1);
 
 			tm.AddControl(this.tbResult);
@@ -248,7 +248,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		#region IToolExt Member
 
-		public Shortcut Shortcut => System.Windows.Forms.Shortcut.None;
+		public Shortcut Shortcut => Shortcut.None;
 
 		public System.Drawing.Image Icon => this.TabImage;
 
@@ -337,12 +337,12 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		protected void SetPackageList()
 		{
-			FileTable.FileIndex.Load();
+			FileTableBase.FileIndex.Load();
 			packages.Clear();
 			truncated = false;
 			pnErr.Visible = false;
 
-			foreach (FileTableItem fti in SimPe.FileTable.FileIndex.BaseFolders)
+			foreach (FileTableItem fti in FileTableBase.FileIndex.BaseFolders)
 			{
 				if (fti.Use)
 				{
@@ -475,7 +475,7 @@ namespace SimPe.Plugin.Tool.Dockable
 					packages.RemoveAt(0);
 					Wait.Progress++;
 					Wait.Message =
-						SimPe.Localization.GetString("Searching")
+						Localization.GetString("Searching")
 						+ " "
 						+ System.IO.Path.GetFileNameWithoutExtension(name);
 					System.Diagnostics.Debug.WriteLine(
@@ -485,7 +485,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 				if (System.IO.File.Exists(name))
 				{
-					Packages.File pkg = SimPe.Packages.File.LoadFromFile(name);
+					Packages.File pkg = Packages.File.LoadFromFile(name);
 					searchtool.SearchPackage(pkg);
 				}
 			}

@@ -150,13 +150,13 @@ namespace SimPe.PackedFiles.UserInterface
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Bottom
-						) | System.Windows.Forms.AnchorStyles.Left
+							AnchorStyles.Top
+							| AnchorStyles.Bottom
+						) | AnchorStyles.Left
 					)
 				)
 			);
-			this.lb.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.lb.BorderStyle = BorderStyle.None;
 			this.lb.HorizontalScrollbar = true;
 			this.lb.IntegralHeight = false;
 			this.lb.Location = new System.Drawing.Point(8, 96);
@@ -174,10 +174,10 @@ namespace SimPe.PackedFiles.UserInterface
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -191,12 +191,12 @@ namespace SimPe.PackedFiles.UserInterface
 			this.cbType.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
-			this.cbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbType.DropDownStyle = ComboBoxStyle.DropDownList;
 			this.cbType.FormattingEnabled = true;
 			this.cbType.Location = new System.Drawing.Point(11, 217);
 			this.cbType.Name = "cbType";
@@ -211,8 +211,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.btAdd.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
@@ -229,8 +229,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.btRem.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);

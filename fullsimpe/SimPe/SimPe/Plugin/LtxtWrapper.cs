@@ -326,7 +326,7 @@ namespace SimPe.Plugin
 					return "-load:\"Tutorial;" + LotName + "\"";
 				}
 				//if (idno == null) return null;
-				if (idno.Type != SimPe.Plugin.NeighborhoodType.Normal)
+				if (idno.Type != NeighborhoodType.Normal)
 				{
 					return null;
 				}
@@ -342,7 +342,7 @@ namespace SimPe.Plugin
 
 		#endregion
 
-		public Interfaces.Providers.ILotItem LotDescription => SimPe.FileTable.ProviderRegistry.LotProvider.FindLot(
+		public Interfaces.Providers.ILotItem LotDescription => FileTableBase.ProviderRegistry.LotProvider.FindLot(
 					this.LotInstance
 				);
 
@@ -352,7 +352,7 @@ namespace SimPe.Plugin
 		}
 
 		public Ltxt()
-			: this(FileTable.ProviderRegistry) { }
+			: this(FileTableBase.ProviderRegistry) { }
 
 		/// <summary>
 		/// Constructor
@@ -393,7 +393,7 @@ namespace SimPe.Plugin
 				"Quaxi",
 				"This File contains the Description for a Lot.",
 				9,
-				System.Drawing.Image.FromStream(
+				Image.FromStream(
 					this.GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.ltxt.png")
 				)

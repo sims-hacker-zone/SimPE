@@ -12,27 +12,27 @@ namespace SimPe
 		/// <summary>
 		/// Sim Image (missing)
 		/// </summary>
-		public static Image NoOne => global::SimPe.Properties.Resources.noone;
+		public static Image NoOne => Properties.Resources.noone;
 
 		/// <summary>
 		/// Sim Image (missing)
 		/// </summary>
-		public static Image SheOne => global::SimPe.Properties.Resources.sheone;
+		public static Image SheOne => Properties.Resources.sheone;
 
 		/// <summary>
 		/// Tool Box Image
 		/// </summary>
-		public static Image Network => global::SimPe.Properties.Resources.network;
+		public static Image Network => Properties.Resources.network;
 
 		/// <summary>
 		/// Tool Box Image
 		/// </summary>
-		public static Image Demo => global::SimPe.Properties.Resources.demo;
+		public static Image Demo => Properties.Resources.demo;
 
 		/// <summary>
 		/// Tool Box Image
 		/// </summary>
-		public static Image Cassie => global::SimPe.Properties.Resources.CAF;
+		public static Image Cassie => Properties.Resources.CAF;
 
 		/// <summary>
 		///  Used in Last EP used and EP Selecter
@@ -51,7 +51,7 @@ namespace SimPe
 				return null;
 			}
 
-			Packages.File pkg = SimPe.Packages.File.LoadFromFile(
+			Packages.File pkg = Packages.File.LoadFromFile(
 				ei.InstalledPath(ep) + "\\TSData\\Res\\UI\\ui.package"
 			);
 			if (pkg != null)
@@ -80,8 +80,8 @@ namespace SimPe
 		public static Image GetExpansionIcon(byte ep)
 		{
 			uint inst = 0xABBB0000 + ep; // 0xABBB0000  0xABBAFFFF
-			Packages.File pkg = SimPe.Packages.File.LoadFromFile(
-				System.IO.Path.Combine(
+			Packages.File pkg = Packages.File.LoadFromFile(
+				Path.Combine(
 					PathProvider.Global.Latest.InstallFolder,
 					"TSData\\Res\\UI\\ui.package"
 				)
@@ -104,19 +104,19 @@ namespace SimPe
 				}
 			}
 			if (
-				System.IO.Directory.Exists(
-					System.IO.Path.Combine(PathProvider.SimSavegameFolder, "Downloads")
+				Directory.Exists(
+					Path.Combine(PathProvider.SimSavegameFolder, "Downloads")
 				)
 			)
 			{
-				string[] files = System.IO.Directory.GetFiles(
-					System.IO.Path.Combine(PathProvider.SimSavegameFolder, "Downloads"),
+				string[] files = Directory.GetFiles(
+					Path.Combine(PathProvider.SimSavegameFolder, "Downloads"),
 					"Bodyshape Icons.package",
 					SearchOption.AllDirectories
 				);
 				if (files.Length > 0)
 				{
-					pkg = SimPe.Packages.File.LoadFromFile(files[0]);
+					pkg = Packages.File.LoadFromFile(files[0]);
 					Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(
 						0x856DDBAC,
 						0,

@@ -43,7 +43,7 @@ namespace SimPe.Plugin.Scanner
 
 		protected override void DoInitScan()
 		{
-			AbstractScanner.AddColumn(ListView, "Shelve Dimension", 80);
+			AddColumn(ListView, "Shelve Dimension", 80);
 		}
 
 		public void ScanPackage(
@@ -53,7 +53,7 @@ namespace SimPe.Plugin.Scanner
 		)
 		{
 			ps.Data = new uint[1];
-			ps.Data[0] = (uint)SimPe.PackedFiles.Wrapper.ShelveDimension.Indetermined;
+			ps.Data[0] = (uint)ShelveDimension.Indetermined;
 			ps.State = TriState.True;
 
 			if (
@@ -67,7 +67,7 @@ namespace SimPe.Plugin.Scanner
 				if (pfds.Length > 1)
 				{
 					ps.Data[0] = (uint)
-						SimPe.PackedFiles.Wrapper.ShelveDimension.Multitile;
+						ShelveDimension.Multitile;
 				}
 				else if (pfds.Length > 0)
 				{
@@ -75,9 +75,9 @@ namespace SimPe.Plugin.Scanner
 					objd.ProcessData(pfds[0], si.Package);
 					ShelveDimension sd = objd.ShelveDimension;
 					if (
-						sd == SimPe.PackedFiles.Wrapper.ShelveDimension.Unknown1
-						|| sd == SimPe.PackedFiles.Wrapper.ShelveDimension.Indetermined
-						|| sd == SimPe.PackedFiles.Wrapper.ShelveDimension.Unknown2
+						sd == ShelveDimension.Unknown1
+						|| sd == ShelveDimension.Indetermined
+						|| sd == ShelveDimension.Unknown2
 					)
 					{
 						ps.State = TriState.False;
@@ -100,7 +100,7 @@ namespace SimPe.Plugin.Scanner
 			{
 				ShelveDimension cs =
 					(ShelveDimension)ps.Data[0];
-				AbstractScanner.SetSubItem(lvi, this.StartColum, cs.ToString(), ps);
+				SetSubItem(lvi, this.StartColum, cs.ToString(), ps);
 			}
 		}
 
@@ -138,10 +138,9 @@ namespace SimPe.Plugin.Scanner
 			}
 			else
 			{
-				ScannerPanelForm.Form.cbshelve.SelectedValue = SimPe
-					.PackedFiles
-					.Wrapper
-					.ShelveDimension
+				ScannerPanelForm.Form.cbshelve.SelectedValue =
+
+					ShelveDimension
 					.Indetermined;
 				OperationControl.Enabled = true;
 			}

@@ -99,7 +99,7 @@ namespace pjse
 		/// <summary>
 		/// The Global group
 		/// </summary>
-		public uint GlobalGroup => (uint)pjse.Group.Global;
+		public uint GlobalGroup => (uint)Group.Global;
 
 		public Scope Context
 		{
@@ -181,7 +181,7 @@ namespace pjse
 				}
 			}
 
-			FileTable.Entry[] items = pjse.FileTable.GFT[
+			FileTable.Entry[] items = FileTable.GFT[
 				type,
 				group,
 				instance,
@@ -199,7 +199,7 @@ namespace pjse
 				return null;
 			}
 
-			FileTable.Entry[] items = pjse.FileTable.GFT[
+			FileTable.Entry[] items = FileTable.GFT[
 				type,
 				FileDescriptor.Group,
 				FileDescriptor.Instance
@@ -210,7 +210,7 @@ namespace pjse
 			}
 
 			SimPe.Interfaces.Plugin.Internal.IPackedFileWrapper wrp =
-				SimPe.FileTable.WrapperRegistry.FindHandler(type);
+				SimPe.FileTableBase.WrapperRegistry.FindHandler(type);
 			wrp.ProcessData(items[0].PFD, items[0].Package);
 
 			return wrp;

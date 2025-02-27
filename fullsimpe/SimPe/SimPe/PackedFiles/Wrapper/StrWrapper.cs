@@ -55,7 +55,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Format Code of the FIle
 		/// </summary>
-		private ushort format = (ushort)SimPe.Data.MetaData.FormatCode.normal;
+		private ushort format = (ushort)Data.MetaData.FormatCode.normal;
 
 		/// <summary>
 		/// Contains the LanguageIDs used in the wrapper
@@ -291,7 +291,7 @@ namespace SimPe.PackedFiles.Wrapper
 		//all covered by AbstractWrapper
 		protected override string GetResourceName(Data.TypeAlias ta)
 		{
-			if (!SimPe.Helper.FileFormat)
+			if (!Helper.FileFormat)
 			{
 				return base.GetResourceName(ta);
 			}

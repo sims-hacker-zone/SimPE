@@ -97,7 +97,7 @@ namespace SimPe.PackedFiles.Wrapper
 			if (GuiElements.ContainsKey(name))
 			{
 				ret =
-					System.Activator.CreateInstance(
+					Activator.CreateInstance(
 						GuiElements[name],
 						new object[] { this }
 					) as AScorItem;

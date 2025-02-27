@@ -24,10 +24,10 @@ namespace SimPe
 			string[] path = GetMenuPath();
 			if (path.Length > 0)
 			{
-				return SimPe.Localization.GetString(path[path.Length - 1]);
+				return Localization.GetString(path[path.Length - 1]);
 			}
 
-			return SimPe.Localization.GetString("Unknown");
+			return Localization.GetString("Unknown");
 		}
 
 		public string[] GetMenuPath()
@@ -51,7 +51,7 @@ namespace SimPe
 		public LoadHelpTopics(System.Windows.Forms.ToolStripMenuItem parentmenu)
 		{
 			mbi = parentmenu;
-			AddItems(SimPe.FileTable.HelpTopicRegistry);
+			AddItems(FileTable.HelpTopicRegistry);
 			SetupImages(parentmenu);
 		}
 
@@ -88,7 +88,7 @@ namespace SimPe
 			System.Windows.Forms.ToolStripMenuItem parent = mbi;
 			for (int i = 0; i < path.Length - 1; i++)
 			{
-				string n = SimPe.Localization.GetString(path[i]);
+				string n = Localization.GetString(path[i]);
 
 				System.Windows.Forms.ToolStripMenuItem m = null;
 				foreach (

@@ -284,13 +284,13 @@ namespace Ambertation.Windows.Forms
 			format1.FormatFlags = StringFormatFlags.NoWrap;
 			borderpen.Alignment = PenAlignment.Inset;
 
-			path = Ambertation.Drawing.GraphicRoutines.GethRoundRectPath(ef1, 7);
+			path = Drawing.GraphicRoutines.GethRoundRectPath(ef1, 7);
 			g.FillPath(brush1, path);
 
-			path = Ambertation.Drawing.GraphicRoutines.GethRoundRectPath(ef3b, 7);
+			path = Drawing.GraphicRoutines.GethRoundRectPath(ef3b, 7);
 			g.FillPath(new SolidBrush(BodyColor), path);
 
-			path = Ambertation.Drawing.GraphicRoutines.GethRoundRectPath(ef1, 7);
+			path = Drawing.GraphicRoutines.GethRoundRectPath(ef1, 7);
 			g.DrawPath(borderpen, path);
 			if (this.mIcon != null)
 			{

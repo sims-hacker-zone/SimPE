@@ -61,7 +61,7 @@ namespace SimPe.Plugin.Tool.Action
 			if (!RealChangeEnabledStateEventHandler(null, e))
 			{
 				System.Windows.Forms.MessageBox.Show(
-					SimPe.Localization.GetString(
+					Localization.GetString(
 						"This is not an appropriate context in which to use this tool"
 					),
 					this.ToString()
@@ -86,7 +86,7 @@ namespace SimPe.Plugin.Tool.Action
 					sdesc.Nightlife.Species != 0
 					|| (
 						(int)sdesc.Version
-							== (int)SimPe.PackedFiles.Wrapper.SDescVersions.Castaway
+							== (int)PackedFiles.Wrapper.SDescVersions.Castaway
 						&& sdesc.Castaway.Subspecies > 0
 					)
 				)

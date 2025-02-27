@@ -107,13 +107,13 @@ namespace SimPe.Plugin.Scanner
 			Color cl = lvi.ForeColor;
 			if (ps != null)
 			{
-				if (ps.State == SimPe.Cache.TriState.True)
+				if (ps.State == TriState.True)
 				{
-					cl = System.Drawing.Color.Green;
+					cl = Color.Green;
 				}
-				else if (ps.State == SimPe.Cache.TriState.False)
+				else if (ps.State == TriState.False)
 				{
-					cl = System.Drawing.Color.Red;
+					cl = Color.Red;
 				}
 			}
 
@@ -134,7 +134,7 @@ namespace SimPe.Plugin.Scanner
 			Color cl
 		)
 		{
-			if (cl == System.Drawing.Color.Red)
+			if (cl == Color.Red)
 			{
 				lvi.ForeColor = cl;
 			}
@@ -178,11 +178,11 @@ namespace SimPe.Plugin.Scanner
 			DeAssignFileTable();
 			if (mfi == null)
 			{
-				mfi = FileTable.FileIndex.AddNewChild();
+				mfi = FileTableBase.FileIndex.AddNewChild();
 			}
 			else
 			{
-				FileTable.FileIndex.AddChild(mfi);
+				FileTableBase.FileIndex.AddChild(mfi);
 			}
 		}
 
@@ -190,7 +190,7 @@ namespace SimPe.Plugin.Scanner
 		{
 			if (mfi != null)
 			{
-				FileTable.FileIndex.RemoveChild(mfi);
+				FileTableBase.FileIndex.RemoveChild(mfi);
 				mfi.Clear();
 				mfi.ClearChilds();
 			}
@@ -359,7 +359,7 @@ namespace SimPe.Plugin.Scanner
 
 		protected override void DoInitScan()
 		{
-			AbstractScanner.AddColumn(ListView, "Caption", 180);
+			AddColumn(ListView, "Caption", 180);
 		}
 
 		public void ScanPackage(
@@ -434,7 +434,7 @@ namespace SimPe.Plugin.Scanner
 			System.Windows.Forms.ListViewItem lvi
 		)
 		{
-			AbstractScanner.SetSubItem(lvi, this.StartColum, si.PackageCacheItem.Name);
+			SetSubItem(lvi, this.StartColum, si.PackageCacheItem.Name);
 		}
 
 		public void FinishScan()
@@ -479,7 +479,7 @@ namespace SimPe.Plugin.Scanner
 			System.Windows.Forms.ListViewItem lvi
 		)
 		{
-			Size sz = AbstractScanner.ThumbnailSize;
+			Size sz = ThumbnailSize;
 			if (
 				si.PackageCacheItem.Type == PackageType.CustomObject
 				|| si.PackageCacheItem.Type == PackageType.Object
@@ -498,13 +498,13 @@ namespace SimPe.Plugin.Scanner
 				if (group == Data.MetaData.LOCAL_GROUP)
 				{
 					Interfaces.Wrapper.IGroupCacheItem gci =
-						FileTable.GroupCache.GetItem(si.FileName);
+						FileTableBase.GroupCache.GetItem(si.FileName);
 					if (gci != null)
 					{
 						group = gci.LocalGroup;
 					}
 				}
-				string[] modelnames = SimPe.Plugin.Scenegraph.FindModelNames(
+				string[] modelnames = Scenegraph.FindModelNames(
 					si.Package
 				);
 
@@ -643,7 +643,7 @@ namespace SimPe.Plugin.Scanner
 		{
 			if (thumbs == null)
 			{
-				thumbs = SimPe.Packages.File.LoadFromFile(
+				thumbs = Packages.File.LoadFromFile(
 					System.IO.Path.Combine(
 						PathProvider.SimSavegameFolder,
 						"Thumbnails\\ObjectThumbnails.package"
@@ -733,9 +733,9 @@ namespace SimPe.Plugin.Scanner
 				cachefile = MemoryCacheFile.InitCacheFile();
 			}
 
-			AbstractScanner.AddColumn(ListView, "GUIDs", 180);
-			AbstractScanner.AddColumn(ListView, "Duplicate GUID", 80);
-			AbstractScanner.AddColumn(ListView, "First found", 80);
+			AddColumn(ListView, "GUIDs", 180);
+			AddColumn(ListView, "Duplicate GUID", 80);
+			AddColumn(ListView, "First found", 80);
 
 			if (WaitingScreen.Running)
 			{
@@ -809,7 +809,7 @@ namespace SimPe.Plugin.Scanner
 		{
 			ps.State = TriState.True;
 			string guids = "";
-			string ff = SimPe.Localization.Manager.GetString("unknown");
+			string ff = Localization.Manager.GetString("unknown");
 			foreach (uint guid in si.PackageCacheItem.Guids)
 			{
 				string flname = si.FileName;
@@ -863,9 +863,9 @@ namespace SimPe.Plugin.Scanner
 				text = "yes";
 			}
 
-			AbstractScanner.SetSubItem(lvi, this.StartColum, guids);
-			AbstractScanner.SetSubItem(lvi, this.StartColum + 1, text, ps);
-			AbstractScanner.SetSubItem(lvi, this.StartColum + 2, ff);
+			SetSubItem(lvi, this.StartColum, guids);
+			SetSubItem(lvi, this.StartColum + 1, text, ps);
+			SetSubItem(lvi, this.StartColum + 2, ff);
 		}
 
 		public void FinishScan()
@@ -906,7 +906,7 @@ namespace SimPe.Plugin.Scanner
 				cachefile = MemoryCacheFile.InitCacheFile();
 			}
 
-			AbstractScanner.AddColumn(ListView, "Found Base", 180);
+			AddColumn(ListView, "Found Base", 180);
 		}
 
 		public void ScanPackage(
@@ -923,7 +923,7 @@ namespace SimPe.Plugin.Scanner
 			ps.State = TriState.True;
 			//FileTable.FileIndex.StoreCurrentState();
 			if (
-				!FileTable.FileIndex.ContainsPath(
+				!FileTableBase.FileIndex.ContainsPath(
 					System.IO.Path.GetDirectoryName(si.FileName)
 				)
 			)
@@ -947,7 +947,7 @@ namespace SimPe.Plugin.Scanner
 
 				//Add the current package
 				Interfaces.Scenegraph.IScenegraphFileIndexItem item =
-					FileTable.FileIndex.FindFileByName(
+					FileTableBase.FileIndex.FindFileByName(
 						m,
 						Data.MetaData.CRES,
 						Data.MetaData.LOCAL_GROUP,
@@ -980,7 +980,7 @@ namespace SimPe.Plugin.Scanner
 				text = "no";
 			}
 
-			AbstractScanner.SetSubItem(lvi, this.StartColum, text, ps);
+			SetSubItem(lvi, this.StartColum, text, ps);
 		}
 
 		public void FinishScan()
@@ -1016,8 +1016,8 @@ namespace SimPe.Plugin.Scanner
 
 		protected override void DoInitScan()
 		{
-			AbstractScanner.AddColumn(ListView, "Vertices", 60);
-			AbstractScanner.AddColumn(ListView, "Faces", 60);
+			AddColumn(ListView, "Vertices", 60);
+			AddColumn(ListView, "Faces", 60);
 		}
 
 		public void ScanPackage(
@@ -1062,8 +1062,8 @@ namespace SimPe.Plugin.Scanner
 		{
 			uint fct = ps.Data[1];
 			uint vct = ps.Data[0];
-			AbstractScanner.SetSubItem(lvi, this.StartColum, vct.ToString(), ps);
-			AbstractScanner.SetSubItem(lvi, this.StartColum + 1, fct.ToString(), ps);
+			SetSubItem(lvi, this.StartColum, vct.ToString(), ps);
+			SetSubItem(lvi, this.StartColum + 1, fct.ToString(), ps);
 		}
 
 		public void FinishScan()

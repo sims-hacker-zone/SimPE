@@ -473,7 +473,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void myrepaint()
 		{
-			SimPe.RemoteControl.ApplicationForm.Cursor = Cursors.WaitCursor;
+			RemoteControl.ApplicationForm.Cursor = Cursors.WaitCursor;
 			//this.Parent.Cursor = Cursors.WaitCursor;
 			//SimPe.Wait.Start(wrapper.Count);
 			try
@@ -516,7 +516,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			finally
 			{
-				SimPe.RemoteControl.ApplicationForm.Cursor = Cursors.Default;
+				RemoteControl.ApplicationForm.Cursor = Cursors.Default;
 				//this.Parent.Cursor = Cursors.Default;
 				//SimPe.Wait.Stop();
 			}
@@ -542,9 +542,9 @@ namespace SimPe.PackedFiles.UserInterface
 			BhavInstListItemUI i = new BhavInstListItemUI();
 
 			i.Anchor =
-				System.Windows.Forms.AnchorStyles.Top
-				| System.Windows.Forms.AnchorStyles.Left
-				| System.Windows.Forms.AnchorStyles.Right;
+				AnchorStyles.Top
+				| AnchorStyles.Left
+				| AnchorStyles.Right;
 			i.Left = this.AutoScrollPosition.X;
 			i.Top = ct * (i.Height + 4) + this.AutoScrollPosition.Y;
 			i.Width = this.ClientRectangle.Width - pnflow.Width;
@@ -896,31 +896,31 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			switch (e.KeyCode)
 			{
-				case System.Windows.Forms.Keys.Up:
+				case Keys.Up:
 					if (csel > 0)
 					{
 						flowitems[csel - 1].Focus();
 					}
 
 					break;
-				case System.Windows.Forms.Keys.Down:
+				case Keys.Down:
 					if (csel < flowitems.Length - 1)
 					{
 						flowitems[csel + 1].Focus();
 					}
 
 					break;
-				case System.Windows.Forms.Keys.Delete:
+				case Keys.Delete:
 					if (csel > -1 && flowitems.Length > 1)
 					{
 						Delete(BhavUIDeleteType.Default);
 					}
 
 					break;
-				case System.Windows.Forms.Keys.Home:
+				case Keys.Home:
 					flowitems[0].Focus();
 					break;
-				case System.Windows.Forms.Keys.End:
+				case Keys.End:
 					flowitems[flowitems.Length - 1].Focus();
 					break;
 			}
@@ -979,7 +979,7 @@ namespace SimPe.PackedFiles.UserInterface
 				cs[i * 2 + 1] = new Connector(i, bhav[i].Target2, false);
 			}
 
-			Connector.ResolveCollisions(cs);
+			ResolveCollisions(cs);
 			return cs;
 		}
 

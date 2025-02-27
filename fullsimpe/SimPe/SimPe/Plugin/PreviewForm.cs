@@ -60,7 +60,7 @@ namespace SimPe.Plugin
 				((System.Byte)(128)),
 				((System.Byte)(255))
 			);
-			this.dx.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.dx.Dock = DockStyle.Fill;
 			this.dx.Effect = null;
 			this.dx.Location = new System.Drawing.Point(0, 0);
 			this.dx.Name = "dx";
@@ -81,12 +81,12 @@ namespace SimPe.Plugin
 			this.ClientSize = new System.Drawing.Size(494, 476);
 			this.Controls.Add(this.dx);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+			this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "PreviewForm";
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			this.StartPosition = FormStartPosition.CenterScreen;
 			this.Text = "Recolour Preview";
 			this.ResumeLayout(false);
 		}
@@ -164,7 +164,7 @@ namespace SimPe.Plugin
 		{
 			npkg = null;
 			Wait.Start();
-			fii = FileTable.FileIndex.AddNewChild();
+			fii = FileTableBase.FileIndex.AddNewChild();
 			try
 			{
 				return BuildScene(fii, mmat, package, out npkg);
@@ -181,7 +181,7 @@ namespace SimPe.Plugin
 			}
 			finally
 			{
-				FileTable.FileIndex.RemoveChild(fii);
+				FileTableBase.FileIndex.RemoveChild(fii);
 				Wait.Stop();
 			}
 		}
@@ -196,7 +196,7 @@ namespace SimPe.Plugin
 			npkg = null;
 			try
 			{
-				FileTable.FileIndex.Load();
+				FileTableBase.FileIndex.Load();
 				if (System.IO.File.Exists(package.SaveFileName))
 				{
 					fii.AddIndexFromFolder(
@@ -204,7 +204,7 @@ namespace SimPe.Plugin
 					);
 				}
 
-				npkg = SimPe.Plugin.Tool.Dockable.ObjectWorkshopHelper.CreatCloneByCres(
+				npkg = Tool.Dockable.ObjectWorkshopHelper.CreatCloneByCres(
 					mmat.ModelName
 				);
 				try

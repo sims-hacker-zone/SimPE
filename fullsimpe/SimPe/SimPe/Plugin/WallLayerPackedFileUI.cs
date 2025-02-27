@@ -22,8 +22,8 @@ namespace SimPe.Plugin
 		{
 			InitializeComponent();
 
-			string es = SimPe.Data.MetaData.GetKnownFence(0x8D0B3B3A); // to intialize the dictionary
-			foreach (KeyValuePair<uint, string> kvp in SimPe.Data.MetaData.KnownFences)
+			string es = Data.MetaData.GetKnownFence(0x8D0B3B3A); // to intialize the dictionary
+			foreach (KeyValuePair<uint, string> kvp in Data.MetaData.KnownFences)
 			{
 				this.cballFences.Items.Add(kvp.Value);
 			}
@@ -67,16 +67,16 @@ namespace SimPe.Plugin
 			this.cbExistFences.Items.Clear();
 			for (int i = 0; i < Wrapper.ItemCount; i++)
 			{
-				if (SimPe.Data.MetaData.KnownFences.ContainsKey(Wrapper.bwallid[i]))
+				if (Data.MetaData.KnownFences.ContainsKey(Wrapper.bwallid[i]))
 				{
 					if (
 						!this.cbExistFences.Items.Contains(
-							SimPe.Data.MetaData.GetKnownFence(Wrapper.bwallid[i])
+							Data.MetaData.GetKnownFence(Wrapper.bwallid[i])
 						)
 					)
 					{
 						this.cbExistFences.Items.Add(
-							SimPe.Data.MetaData.GetKnownFence(Wrapper.bwallid[i])
+							Data.MetaData.GetKnownFence(Wrapper.bwallid[i])
 						);
 					}
 
@@ -271,9 +271,9 @@ namespace SimPe.Plugin
 		private void btchanger_Click(object sender, EventArgs e)
 		{
 			uint bfrom;
-			if (SimPe.Data.MetaData.GetFenceId(cbExistFences.SelectedItem) != 0)
+			if (Data.MetaData.GetFenceId(cbExistFences.SelectedItem) != 0)
 			{
-				bfrom = SimPe.Data.MetaData.GetFenceId(cbExistFences.SelectedItem);
+				bfrom = Data.MetaData.GetFenceId(cbExistFences.SelectedItem);
 			}
 			else
 			{
@@ -282,7 +282,7 @@ namespace SimPe.Plugin
 				);
 			}
 
-			uint btoo = SimPe.Data.MetaData.GetFenceId(cballFences.SelectedItem);
+			uint btoo = Data.MetaData.GetFenceId(cballFences.SelectedItem);
 			for (int j = 0; j < Wrapper.ItemCount; j++)
 			{
 				if (Wrapper.bwallid[j] == bfrom)
@@ -298,16 +298,16 @@ namespace SimPe.Plugin
 			this.cbExistFences.Items.Clear();
 			for (int i = 0; i < Wrapper.ItemCount; i++)
 			{
-				if (SimPe.Data.MetaData.KnownFences.ContainsKey(Wrapper.bwallid[i]))
+				if (Data.MetaData.KnownFences.ContainsKey(Wrapper.bwallid[i]))
 				{
 					if (
 						!this.cbExistFences.Items.Contains(
-							SimPe.Data.MetaData.GetKnownFence(Wrapper.bwallid[i])
+							Data.MetaData.GetKnownFence(Wrapper.bwallid[i])
 						)
 					)
 					{
 						this.cbExistFences.Items.Add(
-							SimPe.Data.MetaData.GetKnownFence(Wrapper.bwallid[i])
+							Data.MetaData.GetKnownFence(Wrapper.bwallid[i])
 						);
 					}
 				}

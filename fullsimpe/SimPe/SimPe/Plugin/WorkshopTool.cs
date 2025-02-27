@@ -59,8 +59,8 @@ namespace SimPe.Plugin
 			{
 				if (
 					Message.Show(
-						SimPe.Localization.GetString("ObsoleteOW"),
-						SimPe.Localization.GetString("Warning"),
+						Localization.GetString("ObsoleteOW"),
+						Localization.GetString("Warning"),
 						System.Windows.Forms.MessageBoxButtons.YesNo
 					) == System.Windows.Forms.DialogResult.No
 				)
@@ -105,7 +105,7 @@ namespace SimPe.Plugin
 		#endregion
 
 		#region IToolExt Member
-		public override System.Drawing.Image Icon => SimPe.GetIcon.CreatePackageW;
+		public override System.Drawing.Image Icon => GetIcon.CreatePackageW;
 		public override System.Windows.Forms.Shortcut Shortcut
 		{
 			get

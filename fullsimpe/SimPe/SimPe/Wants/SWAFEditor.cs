@@ -196,7 +196,7 @@ namespace SimPe.Wants
 
 						xwnts.Add(i, new object[] { e.FileDescriptor, e.Package });
 						wants.Add(new KeyValuePair<string, uint>(s, i));
-						SimPe.Plugin.WantInformation.LoadWant(i);
+						Plugin.WantInformation.LoadWant(i);
 					}
 					finally
 					{
@@ -416,7 +416,7 @@ namespace SimPe.Wants
 			}
 			gcSIObject.KnownObjects = new object[] { objectNames, objectIDs };
 			gcSICareer.KnownObjects = new object[] { careerNames, careerIDs };
-			SimPe.Plugin.WantInformation.SaveCache();
+			Plugin.WantInformation.SaveCache();
 			#endregion
 
 			internalchg = false;
@@ -550,7 +550,7 @@ namespace SimPe.Wants
 
 			ExtSDesc sdsc =
 				i != 0
-					? FileTable.ProviderRegistry.SimDescriptionProvider.FindSim(i)
+					? FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(i)
 						as ExtSDesc
 					: null;
 			return (sdsc == null)
@@ -641,15 +641,15 @@ namespace SimPe.Wants
 
 		private void SISimID2(SWAFItem i)
 		{
-			Image noone = SimPe.GetImage.NoOne;
+			Image noone = GetImage.NoOne;
 			ExtSDesc sdsc =
 				i.Sim != 0
-					? FileTable.ProviderRegistry.SimDescriptionProvider.FindSim(i.Sim)
+					? FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(i.Sim)
 						as ExtSDesc
 					: null;
 			if (sdsc == null)
 			{
-				btnSim2.Image = SimPe.GetIcon.SimBrowser;
+				btnSim2.Image = GetIcon.SimBrowser;
 				llSimName2.Text = "?any sim?";
 				llSREL.Visible = false;
 			}
@@ -666,9 +666,9 @@ namespace SimPe.Wants
 
 				if (img == null)
 				{
-					img = SimPe.GetImage.NoOne;
+					img = GetImage.NoOne;
 				}
-				btnSim2.Image = img.GetThumbnailImage(64, 64, null, System.IntPtr.Zero);
+				btnSim2.Image = img.GetThumbnailImage(64, 64, null, IntPtr.Zero);
 				llSimName2.Text = sdsc.SimName + " " + sdsc.SimFamilyName;
 				llSREL.Visible = true;
 			}
@@ -724,7 +724,7 @@ namespace SimPe.Wants
 					{
 						tbSISimID2.Text = llSimName2.Text = "";
 						llSREL.Visible = false;
-						btnSim2.Image = SimPe.GetIcon.SimBrowser;
+						btnSim2.Image = GetIcon.SimBrowser;
 					}
 					else
 					{
@@ -1005,7 +1005,7 @@ namespace SimPe.Wants
 			)
 			{
 				ExtSDesc sdsc =
-					FileTable.ProviderRegistry.SimDescriptionProvider.FindSim(i.Sim)
+					FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(i.Sim)
 					as ExtSDesc;
 				if (sdsc != null && sdsc.SimFamilyName != null)
 				{
@@ -1081,7 +1081,7 @@ namespace SimPe.Wants
 						)
 						{
 							ExtSDesc sdsc =
-								FileTable.ProviderRegistry.SimDescriptionProvider.FindSim(
+								FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
 									i.Sim
 								) as ExtSDesc;
 							if (sdsc != null && sdsc.SimFamilyName != null)
@@ -1176,7 +1176,7 @@ namespace SimPe.Wants
 			SWAFItem i = lvItems.SelectedItems[0].Tag as SWAFItem;
 
 			ExtSDesc sdsc =
-				FileTable.ProviderRegistry.SimDescriptionProvider.FindSim(
+				FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
 					sender.Equals(llSimName) ? i.SimID : i.Sim
 				) as ExtSDesc;
 			if (sdsc == null)
@@ -1184,7 +1184,7 @@ namespace SimPe.Wants
 				return;
 			}
 
-			SimPe.RemoteControl.OpenPackedFile(sdsc.FileDescriptor, sdsc.Package);
+			RemoteControl.OpenPackedFile(sdsc.FileDescriptor, sdsc.Package);
 		}
 
 		private void llXWNT_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -1232,7 +1232,7 @@ namespace SimPe.Wants
 			SWAFItem i = lvItems.SelectedItems[0].Tag as SWAFItem;
 
 			ExtSDesc sdsc =
-				FileTable.ProviderRegistry.SimDescriptionProvider.FindSim(i.SimID)
+				FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(i.SimID)
 				as ExtSDesc;
 			if (sdsc == null)
 			{
@@ -1245,7 +1245,7 @@ namespace SimPe.Wants
 				sdsc.FileDescriptor.Group,
 				(uint)((i.SimID << 16) + i.Sim)
 			);
-			SimPe.RemoteControl.OpenPackedFile(pfd1, sdsc.Package);
+			RemoteControl.OpenPackedFile(pfd1, sdsc.Package);
 		}
 
 		private void cbFileVersion_SelectedIndexChanged(object sender, EventArgs e)
@@ -1459,16 +1459,16 @@ namespace SimPe.Wants
 							(i.Arg2 != 0);
 					tbSISimID.Text = "0x" + Helper.HexString(i.SimID);
 					sdsc =
-						FileTable.ProviderRegistry.SimDescriptionProvider.FindSim(
+						FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
 							i.SimID
 						) as ExtSDesc;
 					if (sdsc == null)
 					{
-						btnSim.Image = SimPe.GetImage.NoOne.GetThumbnailImage(
+						btnSim.Image = GetImage.NoOne.GetThumbnailImage(
 							64,
 							64,
 							null,
-							System.IntPtr.Zero
+							IntPtr.Zero
 						);
 						llSimName.Text = "";
 					}
@@ -1487,21 +1487,21 @@ namespace SimPe.Wants
 						{
 							if (
 								sdsc.CharacterDescription.Gender
-								== SimPe.Data.MetaData.Gender.Female
+								== Data.MetaData.Gender.Female
 							)
 							{
-								img = SimPe.GetImage.SheOne;
+								img = GetImage.SheOne;
 							}
 							else
 							{
-								img = SimPe.GetImage.NoOne;
+								img = GetImage.NoOne;
 							}
 						}
 						btnSim.Image = img.GetThumbnailImage(
 							64,
 							64,
 							null,
-							System.IntPtr.Zero
+							IntPtr.Zero
 						);
 						llSimName.Text = sdsc.SimName + " " + sdsc.SimFamilyName;
 					}
@@ -1509,7 +1509,7 @@ namespace SimPe.Wants
 					gcSIWant.Value = i.WantId;
 					SIWant(i, i.WantId);
 					Plugin.WantInformation wantim =
-						SimPe.Plugin.WantInformation.LoadWant(i.WantId);
+						Plugin.WantInformation.LoadWant(i.WantId);
 					tbSIArg2.Text = "0x" + Helper.HexString(i.Arg2);
 					cbSIArgType.SelectedIndex = (
 						new List<string>(Enum.GetNames(typeof(SWAFItem.ArgTypes)))
@@ -1678,7 +1678,7 @@ namespace SimPe.Wants
 			IToolResult res = sims.Execute(
 				ref pfd,
 				ref package,
-				FileTable.ProviderRegistry
+				FileTableBase.ProviderRegistry
 			);
 			if (pfd == null)
 			{
@@ -2065,7 +2065,7 @@ namespace SimPe.Wants
 						false;
 				tbSISimID2.Text = llSimName2.Text = "";
 				llSREL.Visible = false;
-				btnSim2.Image = SimPe.GetIcon.SimBrowser;
+				btnSim2.Image = GetIcon.SimBrowser;
 			}
 			if (i.Version >= 0x08)
 			{

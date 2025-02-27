@@ -11,7 +11,7 @@ namespace SimPe.Windows.Forms
 			ResourceTreeNodeExt tn = new ResourceTreeNodeExt(
 				0,
 				maps.Everything,
-				SimPe.Localization.GetString("AllRes")
+				Localization.GetString("AllRes")
 			);
 
 			AddType(maps.ByType, tn);

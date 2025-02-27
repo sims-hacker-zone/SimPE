@@ -288,10 +288,10 @@ namespace pjse
 			// There doesn't appear to be a way to compare two paths and have the OS decide if they refer to the same object
 			if (
 				!skip_pages[0]
-				&& pjse.FileTable.GFT.CurrentPackage != null
-				&& pjse.FileTable.GFT.CurrentPackage.FileName != null
-				&& !pjse
-					.FileTable.GFT.CurrentPackage.FileName.ToLower()
+				&& FileTable.GFT.CurrentPackage != null
+				&& FileTable.GFT.CurrentPackage.FileName != null
+				&& !
+					FileTable.GFT.CurrentPackage.FileName.ToLower()
 					.EndsWith("objects.package")
 			)
 			{
@@ -305,7 +305,7 @@ namespace pjse
 
 			if (!skip_pages[2])
 			{
-				Glob g = pjse.BhavWiz.GlobByGroup(group);
+				Glob g = BhavWiz.GlobByGroup(group);
 				if (g != null)
 				{
 					FillGroup(
@@ -359,7 +359,7 @@ namespace pjse
 			PersistentTab = ltp.IndexOf(this.tcResources.SelectedTab);
 			Close();
 
-			if (dr == System.Windows.Forms.DialogResult.OK)
+			if (dr == DialogResult.OK)
 			{
 				ListView lv = getListView();
 
@@ -384,7 +384,7 @@ namespace pjse
 		private void FillPackage(uint type, ListView list, TabPage tab)
 		{
 			Fill(
-				pjse.FileTable.GFT[pjse.FileTable.GFT.CurrentPackage, type],
+				FileTable.GFT[FileTable.GFT.CurrentPackage, type],
 				list,
 				tab
 			);
@@ -392,7 +392,7 @@ namespace pjse
 
 		private void FillGroup(uint type, uint group, ListView list, TabPage tab)
 		{
-			Fill(pjse.FileTable.GFT[type, group], list, tab);
+			Fill(FileTable.GFT[type, group], list, tab);
 		}
 
 		private void Fill(FileTable.Entry[] items, ListView list, TabPage tab)
@@ -426,7 +426,7 @@ namespace pjse
 			ListViewItem lvi;
 
 			uint i = 0;
-			foreach (string s in BhavWiz.readStr(pjse.GS.BhavStr.Primitives))
+			foreach (string s in BhavWiz.readStr(GS.BhavStr.Primitives))
 			{
 				if (!s.StartsWith("~"))
 				{
@@ -533,9 +533,9 @@ namespace pjse
 			this.lvPackage.MultiSelect = false;
 			this.lvPackage.Name = "lvPackage";
 			this.lvPackage.ShowGroups = false;
-			this.lvPackage.Sorting = System.Windows.Forms.SortOrder.Ascending;
+			this.lvPackage.Sorting = SortOrder.Ascending;
 			this.lvPackage.UseCompatibleStateImageBehavior = false;
-			this.lvPackage.View = System.Windows.Forms.View.Details;
+			this.lvPackage.View = View.Details;
 			this.lvPackage.DoubleClick += new EventHandler(
 				this.listView_DoubleClick
 			);
@@ -583,9 +583,9 @@ namespace pjse
 			this.lvGlobal.MultiSelect = false;
 			this.lvGlobal.Name = "lvGlobal";
 			this.lvGlobal.ShowGroups = false;
-			this.lvGlobal.Sorting = System.Windows.Forms.SortOrder.Ascending;
+			this.lvGlobal.Sorting = SortOrder.Ascending;
 			this.lvGlobal.UseCompatibleStateImageBehavior = false;
-			this.lvGlobal.View = System.Windows.Forms.View.Details;
+			this.lvGlobal.View = View.Details;
 			this.lvGlobal.DoubleClick += new EventHandler(
 				this.listView_DoubleClick
 			);
@@ -633,9 +633,9 @@ namespace pjse
 			this.lvGroup.MultiSelect = false;
 			this.lvGroup.Name = "lvGroup";
 			this.lvGroup.ShowGroups = false;
-			this.lvGroup.Sorting = System.Windows.Forms.SortOrder.Ascending;
+			this.lvGroup.Sorting = SortOrder.Ascending;
 			this.lvGroup.UseCompatibleStateImageBehavior = false;
-			this.lvGroup.View = System.Windows.Forms.View.Details;
+			this.lvGroup.View = View.Details;
 			this.lvGroup.DoubleClick += new EventHandler(
 				this.listView_DoubleClick
 			);
@@ -683,9 +683,9 @@ namespace pjse
 			this.lvSemi.MultiSelect = false;
 			this.lvSemi.Name = "lvSemi";
 			this.lvSemi.ShowGroups = false;
-			this.lvSemi.Sorting = System.Windows.Forms.SortOrder.Ascending;
+			this.lvSemi.Sorting = SortOrder.Ascending;
 			this.lvSemi.UseCompatibleStateImageBehavior = false;
-			this.lvSemi.View = System.Windows.Forms.View.Details;
+			this.lvSemi.View = View.Details;
 			this.lvSemi.DoubleClick += new EventHandler(
 				this.listView_DoubleClick
 			);
@@ -733,7 +733,7 @@ namespace pjse
 			this.lvPrim.Name = "lvPrim";
 			this.lvPrim.ShowGroups = false;
 			this.lvPrim.UseCompatibleStateImageBehavior = false;
-			this.lvPrim.View = System.Windows.Forms.View.Details;
+			this.lvPrim.View = View.Details;
 			this.lvPrim.DoubleClick += new EventHandler(
 				this.listView_DoubleClick
 			);
@@ -752,14 +752,14 @@ namespace pjse
 			// OK
 			//
 			resources.ApplyResources(this.OK, "OK");
-			this.OK.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.OK.DialogResult = DialogResult.OK;
 			this.OK.Name = "OK";
 			this.OK.Click += new EventHandler(this.OK_Click);
 			//
 			// Cancel
 			//
 			resources.ApplyResources(this.Cancel, "Cancel");
-			this.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.Cancel.DialogResult = DialogResult.Cancel;
 			this.Cancel.Name = "Cancel";
 			//
 			// btnViewBHAV
@@ -772,16 +772,14 @@ namespace pjse
 			//
 			this.AcceptButton = this.OK;
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.AutoScaleMode = AutoScaleMode.Dpi;
 			this.CancelButton = this.Cancel;
 			this.Controls.Add(this.btnViewBHAV);
 			this.Controls.Add(this.Cancel);
 			this.Controls.Add(this.OK);
 			this.Controls.Add(this.tcResources);
-			this.FormBorderStyle = System
-				.Windows
-				.Forms
-				.FormBorderStyle
+			this.FormBorderStyle =
+				FormBorderStyle
 				.SizableToolWindow;
 			this.Name = "ResourceChooser";
 			this.ShowInTaskbar = false;
@@ -822,7 +820,7 @@ namespace pjse
 
 		private void listView_DoubleClick(object sender, EventArgs e)
 		{
-			this.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.DialogResult = DialogResult.OK;
 			OK_Click(sender, e);
 			Hide();
 		}
@@ -838,7 +836,7 @@ namespace pjse
 				if (CanDoEA && e.Group != 0xffffff && !e.IsFixed)
 				{
 					foreach (
-						FileTable.Entry f in pjse.FileTable.GFT[
+						FileTable.Entry f in FileTable.GFT[
 							e.Type,
 							e.Group,
 							e.Instance,
@@ -894,7 +892,7 @@ namespace pjse
 				(SimPe.PackedFiles.UserInterface.BhavForm)b.UIHandler;
 			ui.Tag = "Popup"; // tells the SetReadOnly function it's in a popup - so everything locked down
 			ui.Text =
-				pjse.Localization.GetString("viewbhav")
+				Localization.GetString("viewbhav")
 				+ ": "
 				+ b.FileName
 				+ " ["

@@ -197,7 +197,7 @@ namespace SimPe.Interfaces.Plugin
 				}
 				else
 				{
-					return SimPe.Localization.GetString("unknown");
+					return Localization.GetString("unknown");
 				}
 			}
 		}
@@ -645,7 +645,7 @@ namespace SimPe.Interfaces.Plugin
 						}
 						else if (ta.Name == null)
 						{
-							res = SimPe.Localization.GetString("Unknown") + ": " + res;
+							res = Localization.GetString("Unknown") + ": " + res;
 						}
 						else
 						{
@@ -672,14 +672,14 @@ namespace SimPe.Interfaces.Plugin
 					else
 					{
 						res =
-							SimPe.Localization.GetString("Unknown")
+							Localization.GetString("Unknown")
 							+ ": "
 							+ FileDescriptor.ToResListString();
 					}
 				}
 				else
 				{
-					res = SimPe.Localization.GetString("Unknown");
+					res = Localization.GetString("Unknown");
 				}
 
 				return res;

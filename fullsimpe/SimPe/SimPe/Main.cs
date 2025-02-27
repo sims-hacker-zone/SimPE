@@ -313,8 +313,8 @@ namespace SimPe
 
 		private void miKBase_Clicked(object sender, EventArgs e)
 		{
-			SimPe.RemoteControl.ShowHelp(
-				SimPe.Localization.GetString("URLKnowledgeBase")
+			RemoteControl.ShowHelp(
+				Localization.GetString("URLKnowledgeBase")
 			);
 		}
 
@@ -351,7 +351,7 @@ namespace SimPe
 		{
 			if (this.ClosePackage())
 			{
-				package.LoadFromPackage(SimPe.Packages.GeneratableFile.CreateNew());
+				package.LoadFromPackage(Packages.File.CreateNew());
 				this.Text =
 					"SimPe (Version "
 					+ Helper.SimPeVersion.ProductVersion
@@ -511,13 +511,13 @@ namespace SimPe
 
 		private void Activate_miRunSims(object sender, EventArgs e)
 		{
-			if (!File.Exists(SimPe.PathProvider.Global.SimsApplication))
+			if (!File.Exists(PathProvider.Global.SimsApplication))
 			{
 				return;
 			}
 
 			System.Diagnostics.Process p = new System.Diagnostics.Process();
-			p.StartInfo.FileName = SimPe.PathProvider.Global.SimsApplication;
+			p.StartInfo.FileName = PathProvider.Global.SimsApplication;
 			if (Helper.WindowsRegistry.EnableSound)
 			{
 				p.StartInfo.Arguments = "-w";
@@ -539,9 +539,9 @@ namespace SimPe
 			sfd.Filter = ExtensionProvider.BuildFilterString(
 				new ExtensionType[]
 				{
-					SimPe.ExtensionType.Package,
-					SimPe.ExtensionType.DisabledPackage,
-					SimPe.ExtensionType.AllFiles,
+					ExtensionType.Package,
+					ExtensionType.DisabledPackage,
+					ExtensionType.AllFiles,
 				}
 			);
 			sfd.FileName = package.FileName;
@@ -556,7 +556,7 @@ namespace SimPe
 		{
 			if (ClosePackage())
 			{
-				SimPe.Packages.StreamFactory.CloseAll(false);
+				Packages.StreamFactory.CloseAll(false);
 				this.ShowNewFile(true);
 				if (!package.Loaded)
 				{
@@ -601,7 +601,7 @@ namespace SimPe
 		private void Activate_miOpenSimsRes(object sender, EventArgs e)
 		{
 			ofd.InitialDirectory = Path.Combine(
-				SimPe.PathProvider.Global[Expansions.BaseGame].InstallFolder,
+				PathProvider.Global[Expansions.BaseGame].InstallFolder,
 				@"TSData\Res"
 			);
 			ofd.FileName = "";
@@ -611,16 +611,16 @@ namespace SimPe
 		private void Activate_miOpenDownloads(object sender, EventArgs e)
 		{
 			if (
-				SimPe
-					.PathProvider.Global.GetSaveGamePathForGroup(
-						SimPe.PathProvider.Global.CurrentGroup
+
+					PathProvider.Global.GetSaveGamePathForGroup(
+						PathProvider.Global.CurrentGroup
 					)
 					.Count > 0
 			)
 			{
-				ofd.InitialDirectory = System.IO.Path.Combine(
-					SimPe.PathProvider.Global.GetSaveGamePathForGroup(
-						SimPe.PathProvider.Global.CurrentGroup
+				ofd.InitialDirectory = Path.Combine(
+					PathProvider.Global.GetSaveGamePathForGroup(
+						PathProvider.Global.CurrentGroup
 					)[0],
 					"Downloads"
 				);
@@ -698,9 +698,9 @@ namespace SimPe
 			sfd.Filter = ExtensionProvider.BuildFilterString(
 				new ExtensionType[]
 				{
-					SimPe.ExtensionType.Package,
-					SimPe.ExtensionType.DisabledPackage,
-					SimPe.ExtensionType.AllFiles,
+					ExtensionType.Package,
+					ExtensionType.DisabledPackage,
+					ExtensionType.AllFiles,
 				}
 			);
 
@@ -716,7 +716,7 @@ namespace SimPe
 		private void Activate_miObjects(object sender, EventArgs e)
 		{
 			package.LoadFromFile(
-				System.IO.Path.Combine(
+				Path.Combine(
 					PathProvider.Global.Latest.InstallFolder,
 					PathProvider.Global.Latest.ObjectsSubFolder + "\\objects.package"
 				)

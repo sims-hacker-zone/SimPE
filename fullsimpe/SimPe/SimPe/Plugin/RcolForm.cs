@@ -84,7 +84,7 @@ namespace SimPe.Plugin
 			// Required designer variable.
 			//
 			InitializeComponent();
-			foreach (Interfaces.IAlias alias in SimPe.Helper.TGILoader.FileTypes)
+			foreach (Interfaces.IAlias alias in Helper.TGILoader.FileTypes)
 			{
 				cbtypes.Items.Add(alias);
 			}
@@ -172,10 +172,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -231,9 +231,9 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -250,10 +250,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -289,8 +289,8 @@ namespace SimPe.Plugin
 			this.llhash.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -320,8 +320,8 @@ namespace SimPe.Plugin
 			this.llfix.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -349,13 +349,13 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
-			this.cbitem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbitem.DropDownStyle = ComboBoxStyle.DropDownList;
 			this.cbitem.Location = new System.Drawing.Point(72, 8);
 			this.cbitem.Name = "cbitem";
 			this.cbitem.Size = new System.Drawing.Size(664, 23);
@@ -383,14 +383,14 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
-			this.lbref.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.lbref.BorderStyle = BorderStyle.None;
 			this.lbref.IntegralHeight = false;
 			this.lbref.Location = new System.Drawing.Point(0, 0);
 			this.lbref.Name = "lbref";
@@ -411,8 +411,8 @@ namespace SimPe.Plugin
 			this.xpTaskBoxSimple2.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -483,7 +483,7 @@ namespace SimPe.Plugin
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lladd.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.lladd.ImeMode = ImeMode.NoControl;
 			this.lladd.LinkArea = new LinkArea(0, 9);
 			this.lladd.Location = new System.Drawing.Point(344, 80);
 			this.lladd.Name = "lladd";
@@ -507,7 +507,7 @@ namespace SimPe.Plugin
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lldelete.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.lldelete.ImeMode = ImeMode.NoControl;
 			this.lldelete.LinkArea = new LinkArea(0, 7);
 			this.lldelete.Location = new System.Drawing.Point(372, 80);
 			this.lldelete.Name = "lldelete";
@@ -564,7 +564,7 @@ namespace SimPe.Plugin
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label11.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.label11.ImeMode = ImeMode.NoControl;
 			this.label11.Location = new System.Drawing.Point(8, 80);
 			this.label11.Name = "label11";
 			this.label11.Size = new System.Drawing.Size(60, 17);
@@ -596,7 +596,7 @@ namespace SimPe.Plugin
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label8.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.label8.ImeMode = ImeMode.NoControl;
 			this.label8.Location = new System.Drawing.Point(8, 8);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(60, 17);
@@ -613,7 +613,7 @@ namespace SimPe.Plugin
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label9.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.label9.ImeMode = ImeMode.NoControl;
 			this.label9.Location = new System.Drawing.Point(8, 56);
 			this.label9.Name = "label9";
 			this.label9.Size = new System.Drawing.Size(60, 17);
@@ -630,7 +630,7 @@ namespace SimPe.Plugin
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label10.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.label10.ImeMode = ImeMode.NoControl;
 			this.label10.Location = new System.Drawing.Point(8, 32);
 			this.label10.Name = "label10";
 			this.label10.Size = new System.Drawing.Size(60, 17);
@@ -657,10 +657,8 @@ namespace SimPe.Plugin
 			//
 			// cbtypes
 			//
-			this.cbtypes.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbtypes.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbtypes.Font = new System.Drawing.Font(
 				"Tahoma",
@@ -684,19 +682,19 @@ namespace SimPe.Plugin
 			this.btref.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.btref.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+			this.btref.FlatStyle = FlatStyle.Popup;
 			this.btref.Font = new System.Drawing.Font(
 				"Microsoft Sans Serif",
 				8.25F,
 				System.Drawing.FontStyle.Bold
 			);
 			this.btref.ForeColor = System.Drawing.SystemColors.Window;
-			this.btref.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.btref.ImeMode = ImeMode.NoControl;
 			this.btref.Location = new System.Drawing.Point(408, 17);
 			this.btref.Name = "btref";
 			this.btref.Size = new System.Drawing.Size(21, 21);
@@ -721,7 +719,7 @@ namespace SimPe.Plugin
 			//
 			// btup
 			//
-			this.btup.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.btup.FlatStyle = FlatStyle.System;
 			this.btup.Location = new System.Drawing.Point(384, 16);
 			this.btup.Name = "btup";
 			this.btup.Size = new System.Drawing.Size(48, 23);
@@ -731,8 +729,8 @@ namespace SimPe.Plugin
 			//
 			// lbblocks
 			//
-			this.lbblocks.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.lbblocks.Dock = System.Windows.Forms.DockStyle.Left;
+			this.lbblocks.BorderStyle = BorderStyle.None;
+			this.lbblocks.Dock = DockStyle.Left;
 			this.lbblocks.HorizontalScrollbar = true;
 			this.lbblocks.IntegralHeight = false;
 			this.lbblocks.Location = new System.Drawing.Point(0, 0);
@@ -746,7 +744,7 @@ namespace SimPe.Plugin
 			// btup
 			//
 			this.btup.Enabled = false;
-			this.btup.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.btup.FlatStyle = FlatStyle.System;
 			this.btup.Location = new System.Drawing.Point(555, 3);
 			this.btup.Name = "btup";
 			this.btup.Size = new System.Drawing.Size(48, 23);
@@ -760,16 +758,14 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
-			this.cbblocks.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbblocks.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbblocks.Location = new System.Drawing.Point(555, 127);
 			this.cbblocks.Name = "cbblocks";
@@ -779,7 +775,7 @@ namespace SimPe.Plugin
 			//
 			// btadd
 			//
-			this.btadd.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.btadd.FlatStyle = FlatStyle.System;
 			this.btadd.Location = new System.Drawing.Point(555, 96);
 			this.btadd.Name = "btadd";
 			this.btadd.Size = new System.Drawing.Size(72, 23);
@@ -790,7 +786,7 @@ namespace SimPe.Plugin
 			// btdown
 			//
 			this.btdown.Enabled = false;
-			this.btdown.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.btdown.FlatStyle = FlatStyle.System;
 			this.btdown.Location = new System.Drawing.Point(555, 34);
 			this.btdown.Name = "btdown";
 			this.btdown.Size = new System.Drawing.Size(48, 23);
@@ -801,7 +797,7 @@ namespace SimPe.Plugin
 			// btdel
 			//
 			this.btdel.Enabled = false;
-			this.btdel.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.btdel.FlatStyle = FlatStyle.System;
 			this.btdel.Location = new System.Drawing.Point(555, 65);
 			this.btdel.Name = "btdel";
 			this.btdel.Size = new System.Drawing.Size(72, 23);
@@ -825,8 +821,8 @@ namespace SimPe.Plugin
 			this.xpTaskBoxSimple1.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -1410,7 +1406,7 @@ namespace SimPe.Plugin
 				this.lbblocks.Items.Clear();
 				foreach (IRcolBlock irb in wrapper.Blocks)
 				{
-					SimPe.CountedListItem.AddHex(lbblocks, irb);
+					CountedListItem.AddHex(lbblocks, irb);
 				}
 
 				this.cbblocks.Items.Clear();
@@ -1519,7 +1515,7 @@ namespace SimPe.Plugin
 					((AbstractRcolBlock)irb).Parent = wrapper;
 				}
 
-				SimPe.CountedListItem.AddHex(this.lbblocks, irb);
+				CountedListItem.AddHex(this.lbblocks, irb);
 				wrapper.Blocks = (IRcolBlock[])
 					Helper.Add(wrapper.Blocks, irb, typeof(IRcolBlock));
 				UpdateComboBox();
@@ -1577,13 +1573,13 @@ namespace SimPe.Plugin
 				tbrefgroup.Text = "0x" + Helper.HexString(pfd.Group);
 				tbrefinst.Text = "0x" + Helper.HexString(pfd.Instance);
 
-				SimPe.FileTable.FileIndex.Load();
+				FileTableBase.FileIndex.Load();
 				IScenegraphFileIndexItem[] items =
-					FileTable.FileIndex.FindFile(pfd, null);
+					FileTableBase.FileIndex.FindFile(pfd, null);
 				if (items.Length == 0)
 				{
 					IScenegraphFileIndexItem item =
-						FileTable.FileIndex.FindFileByName(
+						FileTableBase.FileIndex.FindFileByName(
 							pfd.Filename,
 							pfd.Type,
 							pfd.Group,
@@ -1601,7 +1597,7 @@ namespace SimPe.Plugin
 					Interfaces.Files.IPackedFileDescriptor npfd =
 						(Interfaces.Files.IPackedFileDescriptor)pfd.Clone();
 					npfd.SubType = 0;
-					items = FileTable.FileIndex.FindFile(npfd, null);
+					items = FileTableBase.FileIndex.FindFile(npfd, null);
 				}
 
 				if (items.Length > 0)
@@ -1623,7 +1619,7 @@ namespace SimPe.Plugin
 			WaitingScreen.Wait();
 			try
 			{
-				SimPe.FileTable.FileIndex.ForceReload();
+				FileTableBase.FileIndex.ForceReload();
 			}
 			finally
 			{

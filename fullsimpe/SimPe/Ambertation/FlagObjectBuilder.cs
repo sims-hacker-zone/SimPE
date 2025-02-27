@@ -37,11 +37,11 @@ namespace Ambertation
 		{
 			if (o != null)
 			{
-				return System.Activator.CreateInstance(t, o);
+				return Activator.CreateInstance(t, o);
 			}
 			else
 			{
-				return System.Activator.CreateInstance(t);
+				return Activator.CreateInstance(t);
 			}
 		}
 
@@ -52,7 +52,7 @@ namespace Ambertation
 				return typeof(SimPe.FlagBase);
 			}
 
-			Array values = System.Enum.GetValues(useenum);
+			Array values = Enum.GetValues(useenum);
 
 			AppDomain myDomain = Thread.GetDomain();
 			AssemblyName myAsmName = typeof(FlagObjectBuilder).Assembly.GetName();

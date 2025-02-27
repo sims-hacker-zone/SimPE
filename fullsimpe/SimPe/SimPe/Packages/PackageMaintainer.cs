@@ -134,7 +134,7 @@ namespace SimPe.Packages
 
 			if (ht.ContainsKey(flname))
 			{
-				SimPe.FileTableBase.FileIndex.ClosePackage((GeneratableFile)ht[flname]);
+				FileTableBase.FileIndex.ClosePackage((GeneratableFile)ht[flname]);
 				//((GeneratableFile)ht[filename]).Close(true);
 				ht.Remove(flname);
 			}
@@ -174,7 +174,7 @@ namespace SimPe.Packages
 			GeneratableFile ret = null;
 			if (filename == null)
 			{
-				ret = GeneratableFile.CreateNew();
+				ret = File.CreateNew();
 			}
 			else
 			{
@@ -190,7 +190,7 @@ namespace SimPe.Packages
 					}
 					else if (sync)
 					{
-						SimPe.FileTableBase.FileIndex.ClosePackage(
+						FileTableBase.FileIndex.ClosePackage(
 							(GeneratableFile)ht[filename]
 						);
 						//((GeneratableFile)ht[filename]).Close(true);

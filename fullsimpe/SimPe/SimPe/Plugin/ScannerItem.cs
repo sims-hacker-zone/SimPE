@@ -69,7 +69,7 @@ namespace SimPe.Plugin
 			{
 				if (pkg == null)
 				{
-					pkg = SimPe.Packages.GeneratableFile.LoadFromFile(FileName);
+					pkg = Packages.File.LoadFromFile(FileName);
 				}
 
 				return pkg;

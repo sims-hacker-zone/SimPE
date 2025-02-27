@@ -45,9 +45,9 @@ namespace SimPe.Plugin.Scanner
 
 		protected override void DoInitScan()
 		{
-			AbstractScanner.AddColumn(ListView, "Ages", 150);
-			AbstractScanner.AddColumn(ListView, "Categories", 150);
-			AbstractScanner.AddColumn(ListView, "Gender", 50);
+			AddColumn(ListView, "Ages", 150);
+			AddColumn(ListView, "Categories", 150);
+			AddColumn(ListView, "Gender", 50);
 		}
 
 		public void ScanPackage(
@@ -57,17 +57,17 @@ namespace SimPe.Plugin.Scanner
 		)
 		{
 			if (
-				si.PackageCacheItem.Type == SimPe.Cache.PackageType.Clothing
-				|| si.PackageCacheItem.Type == SimPe.Cache.PackageType.Skin
+				si.PackageCacheItem.Type == PackageType.Clothing
+				|| si.PackageCacheItem.Type == PackageType.Skin
 				|| (
 					(uint)si.PackageCacheItem.Type
-					& (uint)SimPe.Cache.PackageType.Makeup
-				) == (uint)SimPe.Cache.PackageType.Makeup
+					& (uint)PackageType.Makeup
+				) == (uint)PackageType.Makeup
 				|| (
 					(uint)si.PackageCacheItem.Type
-					& (uint)SimPe.Cache.PackageType.Accessory
-				) == (uint)SimPe.Cache.PackageType.Accessory
-				|| si.PackageCacheItem.Type == SimPe.Cache.PackageType.Hair
+					& (uint)PackageType.Accessory
+				) == (uint)PackageType.Accessory
+				|| si.PackageCacheItem.Type == PackageType.Hair
 			)
 			{
 				Interfaces.Files.IPackedFileDescriptor[] pfds = si.Package.FindFiles(
@@ -122,7 +122,7 @@ namespace SimPe.Plugin.Scanner
 			ListViewItem lvi
 		)
 		{
-			AbstractScanner.SetSubItem(lvi, this.StartColum + 2, "");
+			SetSubItem(lvi, this.StartColum + 2, "");
 
 			System.Drawing.Color cl = lvi.ForeColor;
 			if (ps.State == TriState.True)
@@ -139,7 +139,7 @@ namespace SimPe.Plugin.Scanner
 
 				string age = "";
 				Data.Ages[] ages = (Data.Ages[])
-					System.Enum.GetValues(typeof(Data.Ages));
+					Enum.GetValues(typeof(Data.Ages));
 				foreach (Data.Ages ag in ages)
 				{
 					if ((a & (uint)ag) != 0)
@@ -157,10 +157,10 @@ namespace SimPe.Plugin.Scanner
 					cl = System.Drawing.Color.Red;
 				}
 
-				AbstractScanner.SetSubItem(lvi, this.StartColum, age, cl);
+				SetSubItem(lvi, this.StartColum, age, cl);
 
 				string sex = "";
-				Data.Sex[] sexs = (Data.Sex[])System.Enum.GetValues(typeof(Data.Sex));
+				Data.Sex[] sexs = (Data.Sex[])Enum.GetValues(typeof(Data.Sex));
 				foreach (Data.Sex sx in sexs)
 				{
 					if ((f & (uint)sx) != 0)
@@ -182,13 +182,13 @@ namespace SimPe.Plugin.Scanner
 					cl = lvi.ForeColor;
 				}
 
-				AbstractScanner.SetSubItem(lvi, this.StartColum + 2, sex, cl);
+				SetSubItem(lvi, this.StartColum + 2, sex, cl);
 
-				if (si.PackageCacheItem.Type != SimPe.Cache.PackageType.Skin)
+				if (si.PackageCacheItem.Type != PackageType.Skin)
 				{
 					string category = "";
 					Data.OutfitCats[] cats = (Data.OutfitCats[])
-						System.Enum.GetValues(typeof(Data.OutfitCats));
+						Enum.GetValues(typeof(Data.OutfitCats));
 					foreach (Data.OutfitCats cat in cats)
 					{
 						if ((c & (uint)cat) != 0)
@@ -210,7 +210,7 @@ namespace SimPe.Plugin.Scanner
 						cl = lvi.ForeColor;
 					}
 
-					AbstractScanner.SetSubItem(lvi, this.StartColum + 1, category, cl);
+					SetSubItem(lvi, this.StartColum + 1, category, cl);
 				}
 			}
 		}
@@ -307,26 +307,20 @@ namespace SimPe.Plugin.Scanner
 			{
 				if (agect[i] == 0)
 				{
-					ScannerPanelForm.Form.cbages[i].CheckState = System
-						.Windows
-						.Forms
-						.CheckState
+					ScannerPanelForm.Form.cbages[i].CheckState =
+						CheckState
 						.Unchecked;
 				}
 				else if (agect[i] == maxagecount)
 				{
-					ScannerPanelForm.Form.cbages[i].CheckState = System
-						.Windows
-						.Forms
-						.CheckState
+					ScannerPanelForm.Form.cbages[i].CheckState =
+						CheckState
 						.Checked;
 				}
 				else
 				{
-					ScannerPanelForm.Form.cbages[i].CheckState = System
-						.Windows
-						.Forms
-						.CheckState
+					ScannerPanelForm.Form.cbages[i].CheckState =
+						CheckState
 						.Indeterminate;
 				}
 			}
@@ -336,26 +330,20 @@ namespace SimPe.Plugin.Scanner
 			{
 				if (catct[i] == 0)
 				{
-					ScannerPanelForm.Form.cbcategories[i].CheckState = System
-						.Windows
-						.Forms
-						.CheckState
+					ScannerPanelForm.Form.cbcategories[i].CheckState =
+						CheckState
 						.Unchecked;
 				}
 				else if (catct[i] == maxagecount)
 				{
-					ScannerPanelForm.Form.cbcategories[i].CheckState = System
-						.Windows
-						.Forms
-						.CheckState
+					ScannerPanelForm.Form.cbcategories[i].CheckState =
+						CheckState
 						.Checked;
 				}
 				else
 				{
-					ScannerPanelForm.Form.cbcategories[i].CheckState = System
-						.Windows
-						.Forms
-						.CheckState
+					ScannerPanelForm.Form.cbcategories[i].CheckState =
+						CheckState
 						.Indeterminate;
 				}
 			}
@@ -365,26 +353,20 @@ namespace SimPe.Plugin.Scanner
 			{
 				if (sexct[i] == 0)
 				{
-					ScannerPanelForm.Form.cbsexes[i].CheckState = System
-						.Windows
-						.Forms
-						.CheckState
+					ScannerPanelForm.Form.cbsexes[i].CheckState =
+						CheckState
 						.Unchecked;
 				}
 				else if (sexct[i] == maxagecount)
 				{
-					ScannerPanelForm.Form.cbsexes[i].CheckState = System
-						.Windows
-						.Forms
-						.CheckState
+					ScannerPanelForm.Form.cbsexes[i].CheckState =
+						CheckState
 						.Checked;
 				}
 				else
 				{
-					ScannerPanelForm.Form.cbsexes[i].CheckState = System
-						.Windows
-						.Forms
-						.CheckState
+					ScannerPanelForm.Form.cbsexes[i].CheckState =
+						CheckState
 						.Indeterminate;
 				}
 			}
@@ -441,17 +423,17 @@ namespace SimPe.Plugin.Scanner
 				foreach (ScannerItem si in selection)
 				{
 					if (
-						si.PackageCacheItem.Type == SimPe.Cache.PackageType.Clothing
-						|| si.PackageCacheItem.Type == SimPe.Cache.PackageType.Skin
+						si.PackageCacheItem.Type == PackageType.Clothing
+						|| si.PackageCacheItem.Type == PackageType.Skin
 						|| (
 							(uint)si.PackageCacheItem.Type
-							& (uint)SimPe.Cache.PackageType.Makeup
-						) == (uint)SimPe.Cache.PackageType.Makeup
+							& (uint)PackageType.Makeup
+						) == (uint)PackageType.Makeup
 						|| (
 							(uint)si.PackageCacheItem.Type
-							& (uint)SimPe.Cache.PackageType.Accessory
-						) == (uint)SimPe.Cache.PackageType.Accessory
-						|| si.PackageCacheItem.Type == SimPe.Cache.PackageType.Hair
+							& (uint)PackageType.Accessory
+						) == (uint)PackageType.Accessory
+						|| si.PackageCacheItem.Type == PackageType.Hair
 					)
 					{
 						WaitingScreen.UpdateMessage(si.FileName);

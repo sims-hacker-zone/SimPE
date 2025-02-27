@@ -41,7 +41,7 @@ namespace SimPe
 			string filename
 		)
 		{
-			string path = System.IO.Path.GetDirectoryName(filename);
+			string path = Path.GetDirectoryName(filename);
 			XmlDocument xmlfile = new XmlDocument();
 			xmlfile.Load(filename);
 
@@ -74,7 +74,7 @@ namespace SimPe
 					if (pb != null)
 					{
 						pb.Value = count++;
-						System.Windows.Forms.Application.DoEvents();
+						Application.DoEvents();
 					}
 					///a New FileItem
 					if (subnode.LocalName == "packedfile")
@@ -85,7 +85,7 @@ namespace SimPe
 			}
 
 			Packages.GeneratableFile file =
-				SimPe.Packages.GeneratableFile.CreateNew();
+				Packages.File.CreateNew();
 			file.BeginUpdate();
 			file.Header.IndexType = type;
 
@@ -117,7 +117,7 @@ namespace SimPe
 			string filename
 		)
 		{
-			string path = System.IO.Path.GetDirectoryName(filename);
+			string path = Path.GetDirectoryName(filename);
 			XmlDocument xmlfile = new XmlDocument();
 			xmlfile.Load(filename);
 
@@ -213,14 +213,14 @@ namespace SimPe
 			pfd.Path = path.ToString();
 			pfd.Filename = flname.ToString();
 
-			flname = System.IO.Path.Combine(
+			flname = Path.Combine(
 				parentpath,
-				System.IO.Path.Combine(path.ToString(), flname.ToString())
+				Path.Combine(path.ToString(), flname.ToString())
 			);
 
 			if (File.Exists(flname.ToString()))
 			{
-				FileStream fs = System.IO.File.OpenRead(flname.ToString());
+				FileStream fs = File.OpenRead(flname.ToString());
 				BinaryReader mbr = new BinaryReader(fs);
 				try
 				{

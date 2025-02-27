@@ -118,11 +118,11 @@ namespace SimPe.Plugin.Gmdc.Exporter
 				v = Component.TransformScaled(v);
 				writer.WriteLine(
 					"v "
-						+ v.X.ToString("N12", AbstractGmdcExporter.DefaultCulture)
+						+ v.X.ToString("N12", DefaultCulture)
 						+ " "
-						+ v.Y.ToString("N12", AbstractGmdcExporter.DefaultCulture)
+						+ v.Y.ToString("N12", DefaultCulture)
 						+ " "
-						+ v.Z.ToString("N12", AbstractGmdcExporter.DefaultCulture)
+						+ v.Z.ToString("N12", DefaultCulture)
 				);
 			}
 
@@ -140,11 +140,11 @@ namespace SimPe.Plugin.Gmdc.Exporter
 					v = Component.TransformNormal(v);
 					writer.WriteLine(
 						"vn "
-							+ v.X.ToString("N12", AbstractGmdcExporter.DefaultCulture)
+							+ v.X.ToString("N12", DefaultCulture)
 							+ " "
-							+ v.Y.ToString("N12", AbstractGmdcExporter.DefaultCulture)
+							+ v.Y.ToString("N12", DefaultCulture)
 							+ " "
-							+ v.Z.ToString("N12", AbstractGmdcExporter.DefaultCulture)
+							+ v.Z.ToString("N12", DefaultCulture)
 					);
 				}
 			}
@@ -159,11 +159,11 @@ namespace SimPe.Plugin.Gmdc.Exporter
 						"vt "
 							+ Link.GetValue(nr, i)
 								.Data[0]
-								.ToString("N6", AbstractGmdcExporter.DefaultCulture)
+								.ToString("N6", DefaultCulture)
 							+ " "
 							+ (-Link.GetValue(nr, i).Data[1]).ToString(
 								"N6",
-								AbstractGmdcExporter.DefaultCulture
+								DefaultCulture
 							)
 					);
 				}

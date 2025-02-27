@@ -86,7 +86,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				return;
 			}
 
-			if (!cachechg && !ObjectReader.changedcache)
+			if (!cachechg && !changedcache)
 			{
 				return;
 			}
@@ -105,7 +105,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			int ct = 0;
 			//this is the first part loading by objd Resources
 			Interfaces.Scenegraph.IScenegraphFileIndexItem[] nrefitems =
-				FileTable.FileIndex.Sort(FileTable.FileIndex.FindFile(type, true));
+				FileTableBase.FileIndex.Sort(FileTableBase.FileIndex.FindFile(type, true));
 			string len = " / " + nrefitems.Length.ToString();
 
 			Data.MetaData.Languages deflang = Helper.WindowsRegistry.LanguageCode;
@@ -201,8 +201,8 @@ namespace SimPe.Plugin.Tool.Dockable
 			int ct = 0;
 			//this is the first part loading by objd Resources
 			Interfaces.Scenegraph.IScenegraphFileIndexItem[] nrefitems =
-				FileTable.FileIndex.Sort(
-					FileTable.FileIndex.FindFile(Data.MetaData.OBJD_FILE, true)
+				FileTableBase.FileIndex.Sort(
+					FileTableBase.FileIndex.FindFile(Data.MetaData.OBJD_FILE, true)
 				);
 
 			string len = " / " + nrefitems.Length.ToString();
@@ -239,7 +239,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 				//try to find the best objd
 				Interfaces.Scenegraph.IScenegraphFileIndexItem[] oitems =
-					FileTable.FileIndex.FindFile(
+					FileTableBase.FileIndex.FindFile(
 						nrefitem.FileDescriptor.Type,
 						nrefitem.LocalGroup
 					);
@@ -372,7 +372,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 			oci.FileDescriptor = nrefitem.FileDescriptor;
 			oci.LocalGroup = nrefitem.LocalGroup;
-			oci.ObjectType = SimPe.Data.ObjectTypes.Normal;
+			oci.ObjectType = Data.ObjectTypes.Normal;
 
 			SetFunctionSortForXObj(cpf, oci);
 
@@ -383,10 +383,10 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 
 			oci.Useable = true;
-			oci.Class = SimPe.Cache.ObjectClass.XObject;
+			oci.Class = Cache.ObjectClass.XObject;
 
 			Interfaces.Scenegraph.IScenegraphFileIndexItem[] ctssitems =
-				FileTable.FileIndex.FindFile(
+				FileTableBase.FileIndex.FindFile(
 					cpf.GetSaveItem("stringsetrestypeid").UIntegerValue,
 					cpf.GetSaveItem("stringsetgroupid").UIntegerValue,
 					cpf.GetSaveItem("stringsetid").UIntegerValue,
@@ -470,7 +470,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				(
 					!oci.Useable
 					|| oci.ObjectVersion
-						!= SimPe.Cache.ObjectCacheItemVersions.DockableOW
+						!= Cache.ObjectCacheItemVersions.DockableOW
 				)
 				&& nrefitem.FileDescriptor.Type == Data.MetaData.OBJD_FILE
 			)
@@ -489,7 +489,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				oci.ObjBuildType = (uint)objd.BuildType;
 				oci.ObjectFileName = objd.FileName;
 				oci.Useable = true;
-				oci.Class = SimPe.Cache.ObjectClass.Object;
+				oci.Class = Cache.ObjectClass.Object;
 
 				//this is needed, so that objects get sorted into the right categories
 				/*if (objd.Type == Data.ObjectTypes.Normal && objd.CTSSInstance==0)
@@ -500,7 +500,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 				//Get the Name of the Object
 				Interfaces.Scenegraph.IScenegraphFileIndexItem[] ctssitems =
-					FileTable.FileIndex.FindFile(
+					FileTableBase.FileIndex.FindFile(
 						Data.MetaData.CTSS_FILE,
 						nrefitem.LocalGroup
 					);
@@ -541,7 +541,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 				//now the ModeName File
 				Interfaces.Scenegraph.IScenegraphFileIndexItem[] txtitems =
-					FileTable.FileIndex.FindFile(
+					FileTableBase.FileIndex.FindFile(
 						Data.MetaData.STRING_FILE,
 						nrefitem.LocalGroup,
 						0x85,
@@ -566,7 +566,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				(
 					!oci.Useable
 					|| oci.ObjectVersion
-						!= SimPe.Cache.ObjectCacheItemVersions.DockableOW
+						!= Cache.ObjectCacheItemVersions.DockableOW
 				)
 				&& nrefitem.FileDescriptor.Type != Data.MetaData.OBJD_FILE
 			)
@@ -576,7 +576,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 			if (oci.Thumbnail == null)
 			{
-				oci.Thumbnail = ObjectPreview.GetThumbnail(
+				oci.Thumbnail = SimpleObjectPreview.GetThumbnail(
 					nrefitem.FileDescriptor.Group,
 					oci.ModelName
 				);
@@ -659,7 +659,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		{
 			Cache.ObjectCacheItem oci = new Cache.ObjectCacheItem();
 
-			oci.Class = SimPe.Cache.ObjectClass.Object;
+			oci.Class = Cache.ObjectClass.Object;
 
 			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
 				Data.MetaData.OBJD_FILE
@@ -668,7 +668,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
 				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-					FileTable.FileIndex.FindFile(pfd, pkg);
+					FileTableBase.FileIndex.FindFile(pfd, pkg);
 				foreach (
 					Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
 				)
@@ -699,7 +699,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		public void LoadData()
 		{
 			Wait.SubStart();
-			FileTable.FileIndex.Load();
+			FileTableBase.FileIndex.Load();
 
 			ObjectReader erz = new ObjectReader();
 			ObjectConsumer ver1 = new ObjectConsumer(erz);
@@ -782,7 +782,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				}
 				else
 				{
-					ret = new TreeNode(SimPe.Localization.GetString("Unknown"));
+					ret = new TreeNode(Localization.GetString("Unknown"));
 				}
 
 				nodes.Add(ret);

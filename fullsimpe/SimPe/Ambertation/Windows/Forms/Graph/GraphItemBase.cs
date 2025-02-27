@@ -45,7 +45,7 @@ namespace Ambertation.Windows.Forms.Graph
 			ainlcol = Color.DimGray;
 			AutoBringToFront = true;
 
-			lm = Ambertation.Windows.Forms.Graph.LinkControlLineMode.Bezier;
+			lm = LinkControlLineMode.Bezier;
 
 			lcmap = new Hashtable();
 		}

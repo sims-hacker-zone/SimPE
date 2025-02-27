@@ -78,11 +78,11 @@ namespace pjse.BhavOperandWizards.Wiz0x001c
 			ldocArg3.Decimal =
 				ldocArg2.Decimal =
 				ldocArg1.Decimal =
-					pjse.Settings.PJSE.DecimalDOValue;
+					Settings.PJSE.DecimalDOValue;
 			ldocArg3.UseInstancePicker =
 				ldocArg2.UseInstancePicker =
 				ldocArg1.UseInstancePicker =
-					pjse.Settings.PJSE.InstancePickerAsText;
+					Settings.PJSE.InstancePickerAsText;
 		}
 
 		/// <summary>
@@ -113,7 +113,7 @@ namespace pjse.BhavOperandWizards.Wiz0x001c
 				GS.GlobalStr.NamedTree,
 				(ushort)(doidTree.Value - 1),
 				-1,
-				pjse.Detail.ErrorNames
+				Detail.ErrorNames
 			);
 		}
 
@@ -137,7 +137,7 @@ namespace pjse.BhavOperandWizards.Wiz0x001c
 
 		private void doStrChooser()
 		{
-			FileTable.Entry[] items = pjse.FileTable.GFT[
+			FileTable.Entry[] items = FileTable.GFT[
 				(uint)SimPe.Data.MetaData.STRING_FILE,
 				inst.Parent.GroupForScope(this.Scope),
 				(uint)GS.GlobalStr.NamedTree
@@ -146,9 +146,9 @@ namespace pjse.BhavOperandWizards.Wiz0x001c
 			if (items == null || items.Length == 0)
 			{
 				MessageBox.Show(
-					pjse.Localization.GetString("bow_noStrings")
+					Localization.GetString("bow_noStrings")
 						+ " ("
-						+ pjse.Localization.GetString(this.Scope.ToString())
+						+ Localization.GetString(this.Scope.ToString())
 						+ ")"
 				);
 				return; // eek!
@@ -166,7 +166,7 @@ namespace pjse.BhavOperandWizards.Wiz0x001c
 					GS.GlobalStr.NamedTree,
 					(ushort)i,
 					-1,
-					pjse.Detail.ErrorNames
+					Detail.ErrorNames
 				);
 			}
 		}
@@ -411,16 +411,14 @@ namespace pjse.BhavOperandWizards.Wiz0x001c
 			//
 			resources.ApplyResources(this.tfPrivate, "tfPrivate");
 			this.tfPrivate.Checked = true;
-			this.tfPrivate.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.tfPrivate.CheckState = CheckState.Checked;
 			this.tfPrivate.Name = "tfPrivate";
 			this.tfPrivate.UseVisualStyleBackColor = true;
 			//
 			// cbRTBNType
 			//
-			this.cbRTBNType.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbRTBNType.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbRTBNType.FormattingEnabled = true;
 			this.cbRTBNType.Items.AddRange(
@@ -437,10 +435,8 @@ namespace pjse.BhavOperandWizards.Wiz0x001c
 			// cbScope
 			//
 			resources.ApplyResources(this.cbScope, "cbScope");
-			this.cbScope.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbScope.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbScope.FormattingEnabled = true;
 			this.cbScope.Items.AddRange(
@@ -536,7 +532,7 @@ namespace pjse.BhavOperandWizards.Wiz0x001c
 			// UI
 			//
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.AutoScaleMode = AutoScaleMode.Dpi;
 			this.Controls.Add(this.pnWiz0x001c);
 			this.Name = "UI";
 			this.pnWiz0x001c.ResumeLayout(false);
@@ -580,7 +576,7 @@ namespace pjse.BhavOperandWizards.Wiz0x001c
 				GS.GlobalStr.NamedTree,
 				(ushort)(doidTree.Value - 1),
 				-1,
-				pjse.Detail.ErrorNames
+				Detail.ErrorNames
 			);
 		}
 	}

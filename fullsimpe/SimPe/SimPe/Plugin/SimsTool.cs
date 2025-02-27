@@ -79,7 +79,7 @@ namespace SimPe.Plugin
 			if (!IsReallyEnabled(pfd, package))
 			{
 				System.Windows.Forms.MessageBox.Show(
-					SimPe.Localization.GetString(
+					Localization.GetString(
 						"This is not an appropriate context in which to use this tool"
 					),
 					Localization.Manager.GetString("simsbrowser")
@@ -102,7 +102,7 @@ namespace SimPe.Plugin
 		#endregion
 
 		#region IToolExt Member
-		public override System.Drawing.Image Icon => SimPe.GetIcon.SimBrowser;
+		public override System.Drawing.Image Icon => GetIcon.SimBrowser;
 		public override System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.CtrlShiftS;
 		#endregion
 	}

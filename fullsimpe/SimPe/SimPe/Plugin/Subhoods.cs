@@ -78,7 +78,7 @@ namespace SimPe.Plugin
 				foreach (string file in overs)
 				{
 					subh = Localization.Manager.GetString("unknown");
-					pkg = SimPe.Packages.File.LoadFromFile(file);
+					pkg = Packages.File.LoadFromFile(file);
 					Interfaces.Files.IPackedFileDescriptor pfd =
 						pkg.FindFileAnyGroup(Data.MetaData.IDNO, 0, 1);
 					if (pfd != null)
@@ -151,7 +151,7 @@ namespace SimPe.Plugin
 			try
 			{
 				foreach (
-					PackedFiles.Wrapper.SDesc simdesc in FileTable
+					PackedFiles.Wrapper.SDesc simdesc in FileTableBase
 						.ProviderRegistry
 						.SimDescriptionProvider
 						.SimInstance

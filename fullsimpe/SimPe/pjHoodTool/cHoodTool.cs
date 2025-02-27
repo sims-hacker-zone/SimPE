@@ -48,17 +48,17 @@ namespace pjHoodTool
 		internal static bool incint = true;
 		internal static bool inccha = true;
 		internal static bool incski = true;
-		internal static bool incuni = SimPe
-			.PathProvider.Global.GetExpansion(SimPe.Expansions.University)
+		internal static bool incuni =
+			PathProvider.Global.GetExpansion(Expansions.University)
 			.Exists;
-		internal static bool incbus = SimPe
-			.PathProvider.Global.GetExpansion(SimPe.Expansions.Business)
+		internal static bool incbus =
+			PathProvider.Global.GetExpansion(Expansions.Business)
 			.Exists;
-		internal static bool incfre = SimPe
-			.PathProvider.Global.GetExpansion(SimPe.Expansions.FreeTime)
+		internal static bool incfre =
+			PathProvider.Global.GetExpansion(Expansions.FreeTime)
 			.Exists;
-		internal static bool incapa = SimPe
-			.PathProvider.Global.GetExpansion(SimPe.Expansions.Apartments)
+		internal static bool incapa =
+			PathProvider.Global.GetExpansion(Expansions.Apartments)
 			.Exists;
 		internal static bool incnpc = true;
 		internal static bool incdes = true;
@@ -78,7 +78,7 @@ namespace pjHoodTool
 			{
 				while (
 					Directory.Exists(
-						Path.Combine(SimPe.PathProvider.SimSavegameFolder, foldim)
+						Path.Combine(PathProvider.SimSavegameFolder, foldim)
 					)
 				)
 				{
@@ -86,7 +86,7 @@ namespace pjHoodTool
 					foldim = "Rufio" + Convert.ToString(ct);
 				}
 				output = Path.Combine(
-					Path.Combine(SimPe.PathProvider.SimSavegameFolder, foldim),
+					Path.Combine(PathProvider.SimSavegameFolder, foldim),
 					"ExportedSims" + outptype
 				);
 			}
@@ -245,7 +245,7 @@ namespace pjHoodTool
 				foreach (ExpansionItem.NeighborhoodPath path in paths)
 				{
 					string sourcepath = path.Path;
-					string[] dirs = System.IO.Directory.GetDirectories(
+					string[] dirs = Directory.GetDirectories(
 						sourcepath,
 						hood.Length > 0 ? hood : "????"
 					);
@@ -269,15 +269,15 @@ namespace pjHoodTool
 
 		void SetProvider(IPackageFile pkg)
 		{
-			FileTable.ProviderRegistry.SimFamilynameProvider.BasePackage = pkg;
-			FileTable.ProviderRegistry.SimDescriptionProvider.BasePackage = pkg;
-			FileTable.ProviderRegistry.SimNameProvider.BaseFolder =
-				System.IO.Path.Combine(
-					System.IO.Path.GetDirectoryName(pkg.FileName),
+			FileTableBase.ProviderRegistry.SimFamilynameProvider.BasePackage = pkg;
+			FileTableBase.ProviderRegistry.SimDescriptionProvider.BasePackage = pkg;
+			FileTableBase.ProviderRegistry.SimNameProvider.BaseFolder =
+				Path.Combine(
+					Path.GetDirectoryName(pkg.FileName),
 					"Characters"
 				);
-			FileTable.ProviderRegistry.LotProvider.BaseFolder = System.IO.Path.Combine(
-				System.IO.Path.GetDirectoryName(pkg.FileName),
+			FileTableBase.ProviderRegistry.LotProvider.BaseFolder = Path.Combine(
+				Path.GetDirectoryName(pkg.FileName),
 				"Lots"
 			);
 			eft = new ExtFamilyTies();
@@ -371,7 +371,7 @@ namespace pjHoodTool
 
 				dt = new DateTime(0);
 				wasUnk = true;
-				pfds = pkg.FindFiles(SimPe.Plugin.Ltxt.Ltxttype);
+				pfds = pkg.FindFiles(Ltxt.Ltxttype);
 				foreach (IPackedFileDescriptor spfd in pfds)
 				{
 					Ltxt ltxt = new Ltxt();
@@ -423,7 +423,7 @@ namespace pjHoodTool
 							{
 								ntype = new Idno();
 								ntype.ProcessData(pfds[0], pkg);
-								hoodtipe = System.Enum.GetName(
+								hoodtipe = Enum.GetName(
 									typeof(NeighborhoodType),
 									ntype.Type
 								);
@@ -438,7 +438,7 @@ namespace pjHoodTool
 							}
 
 							SetProvider(pkg);
-							pfds = pkg.FindFiles(SimPe.Plugin.Ltxt.Ltxttype);
+							pfds = pkg.FindFiles(Ltxt.Ltxttype);
 							foreach (IPackedFileDescriptor spfd in pfds)
 							{
 								Ltxt ltxt = new Ltxt();
@@ -598,7 +598,7 @@ namespace pjHoodTool
 			if (pfd != null)
 			{
 				Fami fami = null;
-				fami = new Fami(FileTable.ProviderRegistry.SimNameProvider);
+				fami = new Fami(FileTableBase.ProviderRegistry.SimNameProvider);
 				fami.ProcessData(pfd, sdsc.Package);
 
 				family =
@@ -830,7 +830,7 @@ namespace pjHoodTool
 			{
 				if (
 					(int)sdsc.Version
-						== (int)SimPe.PackedFiles.Wrapper.SDescVersions.Castaway
+						== (int)SDescVersions.Castaway
 					&& sdsc.Castaway.Subspecies > 0
 				)
 				{
@@ -1010,7 +1010,7 @@ namespace pjHoodTool
 			if (!sdsc.HasImage)
 			{
 				AddImage(
-					SimPe.GetImage.NoOne,
+					GetImage.NoOne,
 					Path.Combine(
 						Path.Combine(outPath, "SimImage"),
 						hood + "_" + sdsc.Instance + ".png"
@@ -1161,7 +1161,7 @@ namespace pjHoodTool
 				else
 				{
 					AddImage(
-						SimPe.GetImage.Network,
+						GetImage.Network,
 						Path.Combine(
 							Path.Combine(outPath, "LotImage"),
 							hood + "_Lot" + ltxt.FileDescriptor.Instance + ".png"
@@ -1172,7 +1172,7 @@ namespace pjHoodTool
 			else
 			{
 				AddImage(
-					SimPe.GetImage.Network,
+					GetImage.Network,
 					Path.Combine(
 						Path.Combine(outPath, "LotImage"),
 						hood + "_Lot" + ltxt.FileDescriptor.Instance + ".png"
@@ -1262,7 +1262,7 @@ namespace pjHoodTool
 			ref IPackageFile package
 		)
 		{
-			if (!System.IO.Directory.Exists(PathProvider.Global.NeighborhoodFolder))
+			if (!Directory.Exists(PathProvider.Global.NeighborhoodFolder))
 			{
 				System.Windows.Forms.MessageBox.Show(
 					"The Folder "
@@ -1276,7 +1276,7 @@ namespace pjHoodTool
 			System.Windows.Forms.FolderBrowserDialog fbd =
 				new System.Windows.Forms.FolderBrowserDialog();
 			fbd.Description = "Choose the folder for extracted Sim data";
-			fbd.SelectedPath = SimPe.PathProvider.SimSavegameFolder;
+			fbd.SelectedPath = PathProvider.SimSavegameFolder;
 			fbd.ShowNewFolderButton = true;
 			System.Windows.Forms.DialogResult dr = fbd.ShowDialog();
 			if (dr != System.Windows.Forms.DialogResult.OK)
@@ -1306,10 +1306,10 @@ namespace pjHoodTool
 
 			try
 			{
-				SimPe.WaitingScreen.Wait();
+				WaitingScreen.Wait();
 				splash = delegate (string message)
 				{
-					SimPe.WaitingScreen.UpdateMessage(message);
+					WaitingScreen.UpdateMessage(message);
 				};
 				Rufio(fbd.SelectedPath, hood, 0);
 				return new ToolResult(false, false);
@@ -1317,7 +1317,7 @@ namespace pjHoodTool
 			finally
 			{
 				WaitingScreen.UpdateImage(null);
-				SimPe.WaitingScreen.Stop();
+				WaitingScreen.Stop();
 			}
 		}
 
@@ -1341,7 +1341,7 @@ namespace pjHoodTool
 		#endregion
 
 		#region IToolExt Member
-		public override Image Icon => SimPe.GetIcon.HoodTool;
+		public override Image Icon => GetIcon.HoodTool;
 		#endregion
 
 		#region ICommandLine Members
@@ -1378,19 +1378,19 @@ namespace pjHoodTool
 					continue;
 				}
 
-				SimPe.Message.Show(Help()[0]);
+				Message.Show(Help()[0]);
 				return true;
 			}
 
 			if (outpath.Length > 0 && !Directory.Exists(outpath))
 			{
-				SimPe.Message.Show("Use -out specify an existing folder");
+				Message.Show("Use -out specify an existing folder");
 				return true;
 			}
 
 			if (!Directory.Exists(PathProvider.Global.NeighborhoodFolder))
 			{
-				SimPe.Message.Show(
+				Message.Show(
 					"The Folder "
 						+ PathProvider.Global.NeighborhoodFolder
 						+ " was not found.\r\n"
@@ -1414,7 +1414,7 @@ namespace pjHoodTool
 				}
 				catch (FormatException)
 				{
-					SimPe.Message.Show(
+					Message.Show(
 						"Invalid group.  Please specify a group from expansions.xreg."
 					);
 					return false;

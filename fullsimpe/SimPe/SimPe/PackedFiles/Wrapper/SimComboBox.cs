@@ -44,10 +44,10 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				if (!this.DesignMode)
 				{
-					SimPe
-						.FileTable
-						.ProviderRegistry
-						.SimDescriptionProvider
+
+					FileTableBase
+					.ProviderRegistry
+					.SimDescriptionProvider
 						.ChangedPackage += new EventHandler(
 						SimDescriptionProvider_ChangedPackage
 					);
@@ -65,10 +65,10 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			if (disposing)
 			{
-				SimPe
-					.FileTable
-					.ProviderRegistry
-					.SimDescriptionProvider
+
+				FileTableBase
+				.ProviderRegistry
+				.SimDescriptionProvider
 					.ChangedPackage -= new EventHandler(
 					SimDescriptionProvider_ChangedPackage
 				);
@@ -123,7 +123,7 @@ namespace SimPe.PackedFiles.Wrapper
 			cb.Items.Clear();
 			cb.Sorted = false;
 			foreach (
-				ExtSDesc sdsc in FileTable
+				ExtSDesc sdsc in FileTableBase
 					.ProviderRegistry
 					.SimDescriptionProvider
 					.SimInstance

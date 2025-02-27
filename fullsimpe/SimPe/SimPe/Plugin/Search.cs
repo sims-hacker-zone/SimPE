@@ -77,7 +77,7 @@ namespace SimPe.Plugin
 			InitializeComponent();
 
 			prov = null;
-			if (SimPe.Helper.WindowsRegistry.UseBigIcons)
+			if (Helper.WindowsRegistry.UseBigIcons)
 			{
 				this.lblist.Font = new System.Drawing.Font("Verdana", 11F);
 			}
@@ -157,9 +157,9 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -226,13 +226,13 @@ namespace SimPe.Plugin
 			this.llsearch.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
 			this.llsearch.AutoSize = true;
-			this.llsearch.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.llsearch.FlatStyle = FlatStyle.System;
 			this.llsearch.Font = new System.Drawing.Font(
 				"Verdana",
 				9.75F,
@@ -289,7 +289,7 @@ namespace SimPe.Plugin
 			//
 			// cbusefileindex
 			//
-			this.cbusefileindex.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbusefileindex.FlatStyle = FlatStyle.System;
 			this.cbusefileindex.Location = new System.Drawing.Point(80, 35);
 			this.cbusefileindex.Name = "cbusefileindex";
 			this.cbusefileindex.Size = new System.Drawing.Size(120, 24);
@@ -301,13 +301,13 @@ namespace SimPe.Plugin
 			this.linkLabel1.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
 			this.linkLabel1.AutoSize = true;
-			this.linkLabel1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.linkLabel1.FlatStyle = FlatStyle.System;
 			this.linkLabel1.Font = new System.Drawing.Font(
 				"Verdana",
 				9.75F,
@@ -332,9 +332,9 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -386,13 +386,13 @@ namespace SimPe.Plugin
 			this.linkLabel2.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
 			this.linkLabel2.AutoSize = true;
-			this.linkLabel2.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.linkLabel2.FlatStyle = FlatStyle.System;
 			this.linkLabel2.Font = new System.Drawing.Font(
 				"Verdana",
 				9.75F,
@@ -415,9 +415,9 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -465,9 +465,9 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -494,7 +494,7 @@ namespace SimPe.Plugin
 			//
 			// rbcont
 			//
-			this.rbcont.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.rbcont.FlatStyle = FlatStyle.System;
 			this.rbcont.Location = new System.Drawing.Point(317, 37);
 			this.rbcont.Name = "rbcont";
 			this.rbcont.Size = new System.Drawing.Size(88, 24);
@@ -503,7 +503,7 @@ namespace SimPe.Plugin
 			//
 			// rbend
 			//
-			this.rbend.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.rbend.FlatStyle = FlatStyle.System;
 			this.rbend.Location = new System.Drawing.Point(253, 37);
 			this.rbend.Name = "rbend";
 			this.rbend.Size = new System.Drawing.Size(48, 24);
@@ -513,7 +513,7 @@ namespace SimPe.Plugin
 			// rbstart
 			//
 			this.rbstart.Checked = true;
-			this.rbstart.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.rbstart.FlatStyle = FlatStyle.System;
 			this.rbstart.Location = new System.Drawing.Point(181, 37);
 			this.rbstart.Name = "rbstart";
 			this.rbstart.Size = new System.Drawing.Size(56, 24);
@@ -523,7 +523,7 @@ namespace SimPe.Plugin
 			//
 			// rbfull
 			//
-			this.rbfull.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.rbfull.FlatStyle = FlatStyle.System;
 			this.rbfull.Location = new System.Drawing.Point(88, 37);
 			this.rbfull.Name = "rbfull";
 			this.rbfull.Size = new System.Drawing.Size(77, 24);
@@ -535,13 +535,13 @@ namespace SimPe.Plugin
 			this.linkLabel3.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
 			this.linkLabel3.AutoSize = true;
-			this.linkLabel3.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.linkLabel3.FlatStyle = FlatStyle.System;
 			this.linkLabel3.Font = new System.Drawing.Font(
 				"Verdana",
 				9.75F,
@@ -600,13 +600,13 @@ namespace SimPe.Plugin
 			this.linkLabel4.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
 			this.linkLabel4.AutoSize = true;
-			this.linkLabel4.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.linkLabel4.FlatStyle = FlatStyle.System;
 			this.linkLabel4.Font = new System.Drawing.Font(
 				"Verdana",
 				9.75F,
@@ -631,9 +631,9 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -666,10 +666,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -688,12 +688,12 @@ namespace SimPe.Plugin
 			this.btopen.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.btopen.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.btopen.FlatStyle = FlatStyle.System;
 			this.btopen.Location = new System.Drawing.Point(701, 474);
 			this.btopen.Name = "btopen";
 			this.btopen.Size = new System.Drawing.Size(75, 23);
@@ -707,9 +707,9 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Bottom
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Bottom
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -738,10 +738,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -774,10 +774,8 @@ namespace SimPe.Plugin
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.FormBorderStyle = System
-				.Windows
-				.Forms
-				.FormBorderStyle
+			this.FormBorderStyle =
+				FormBorderStyle
 				.SizableToolWindow;
 			this.Name = "Search";
 			this.ShowInTaskbar = false;
@@ -1214,7 +1212,7 @@ namespace SimPe.Plugin
 				WaitingScreen.Wait();
 				try
 				{
-					SimPe.FileTable.FileIndex.Load();
+					FileTableBase.FileIndex.Load();
 				}
 				finally
 				{
@@ -1232,13 +1230,13 @@ namespace SimPe.Plugin
 				);
 
 				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-					FileTable.FileIndex.FindFileByInstance(pfd.LongInstance);
+					FileTableBase.FileIndex.FindFileByInstance(pfd.LongInstance);
 
 				//short Index
 				if (items.Length == 0)
 				{
 					pfd.SubType = 0;
-					items = FileTable.FileIndex.FindFileByInstance(pfd.LongInstance);
+					items = FileTableBase.FileIndex.FindFileByInstance(pfd.LongInstance);
 				}
 
 				foreach (

@@ -32,7 +32,7 @@ namespace SimPe.Plugin.UI
 			this.components = new System.ComponentModel.Container();
 			this.toolTip1 = new ToolTip(this.components);
 			this.toolTip1.IsBalloon = true;
-			this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+			this.toolTip1.ToolTipIcon = ToolTipIcon.Info;
 		}
 
 		protected virtual void OnSettingsChanged()

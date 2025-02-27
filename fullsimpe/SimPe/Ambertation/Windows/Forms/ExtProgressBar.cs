@@ -397,30 +397,22 @@ namespace Ambertation.Windows.Forms
 		{
 			if (fast)
 			{
-				g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
-				g.CompositingQuality = System
-					.Drawing
-					.Drawing2D
-					.CompositingQuality
+				g.SmoothingMode = SmoothingMode.HighSpeed;
+				g.CompositingQuality =
+					CompositingQuality
 					.HighSpeed;
-				g.InterpolationMode = System
-					.Drawing
-					.Drawing2D
-					.InterpolationMode
+				g.InterpolationMode =
+					InterpolationMode
 					.Default;
 			}
 			else
 			{
-				g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-				g.CompositingQuality = System
-					.Drawing
-					.Drawing2D
-					.CompositingQuality
+				g.SmoothingMode = SmoothingMode.HighQuality;
+				g.CompositingQuality =
+					CompositingQuality
 					.HighQuality;
-				g.InterpolationMode = System
-					.Drawing
-					.Drawing2D
-					.InterpolationMode
+				g.InterpolationMode =
+					InterpolationMode
 					.HighQualityBicubic;
 			}
 		}
@@ -637,7 +629,7 @@ namespace Ambertation.Windows.Forms
 			//System.Diagnostics.Debug.WriteLine("Drawing Token " + left + ", " + top + ", " + width + ", " + height);
 			int rad = 2;
 
-			Ambertation.Drawing.GraphicRoutines.FillRoundRect(
+			Drawing.GraphicRoutines.FillRoundRect(
 				g,
 				new SolidBrush(this.UnselectedColor),
 				left,
@@ -646,7 +638,7 @@ namespace Ambertation.Windows.Forms
 				height,
 				rad
 			);
-			Ambertation.Drawing.GraphicRoutines.FillRoundRect(
+			Drawing.GraphicRoutines.FillRoundRect(
 				gsel,
 				new SolidBrush(this.SelectedColor),
 				left,
@@ -667,7 +659,7 @@ namespace Ambertation.Windows.Forms
 					LinearGradientMode.ForwardDiagonal
 				);
 
-				Ambertation.Drawing.GraphicRoutines.FillRoundRect(
+				Drawing.GraphicRoutines.FillRoundRect(
 					g,
 					b,
 					left,
@@ -684,7 +676,7 @@ namespace Ambertation.Windows.Forms
 				SetGraphicsMode(gsel, !quality);
 			}
 
-			Ambertation.Drawing.GraphicRoutines.DrawRoundRect(
+			Drawing.GraphicRoutines.DrawRoundRect(
 				g,
 				new Pen(this.BorderColor),
 				left,
@@ -693,7 +685,7 @@ namespace Ambertation.Windows.Forms
 				height,
 				rad
 			);
-			Ambertation.Drawing.GraphicRoutines.DrawRoundRect(
+			Drawing.GraphicRoutines.DrawRoundRect(
 				gsel,
 				new Pen(this.BorderColor),
 				left,
@@ -714,7 +706,7 @@ namespace Ambertation.Windows.Forms
 		)
 		{
 			int rad = 2;
-			Ambertation.Drawing.GraphicRoutines.FillRoundRect(
+			Drawing.GraphicRoutines.FillRoundRect(
 				gsel,
 				new SolidBrush(this.SelectedColor),
 				left + 1,
@@ -752,7 +744,7 @@ namespace Ambertation.Windows.Forms
 
 			b.Blend = blend;
 
-			Ambertation.Drawing.GraphicRoutines.FillRoundRect(
+			Drawing.GraphicRoutines.FillRoundRect(
 				g,
 				b,
 				left,
@@ -780,7 +772,7 @@ namespace Ambertation.Windows.Forms
 
 			b.Blend = blend;
 
-			Ambertation.Drawing.GraphicRoutines.FillRoundRect(
+			Drawing.GraphicRoutines.FillRoundRect(
 				g,
 				b,
 				left,
@@ -797,7 +789,7 @@ namespace Ambertation.Windows.Forms
 			System.Drawing.Graphics gsel
 		)
 		{
-			Ambertation.Drawing.GraphicRoutines.FillRoundRect(
+			Drawing.GraphicRoutines.FillRoundRect(
 				gsel,
 				new SolidBrush(this.ProgressBackColor),
 				0,
@@ -806,7 +798,7 @@ namespace Ambertation.Windows.Forms
 				Height - 1,
 				3
 			);
-			Ambertation.Drawing.GraphicRoutines.FillRoundRect(
+			Drawing.GraphicRoutines.FillRoundRect(
 				gsel,
 				new SolidBrush(Color.FromArgb(150, this.BorderColor)),
 				0,
@@ -815,7 +807,7 @@ namespace Ambertation.Windows.Forms
 				Height - 1,
 				3
 			);
-			Ambertation.Drawing.GraphicRoutines.FillRoundRect(
+			Drawing.GraphicRoutines.FillRoundRect(
 				gsel,
 				new SolidBrush(this.ProgressBackColor),
 				1,
@@ -825,7 +817,7 @@ namespace Ambertation.Windows.Forms
 				3
 			);
 
-			Ambertation.Drawing.GraphicRoutines.DrawRoundRect(
+			Drawing.GraphicRoutines.DrawRoundRect(
 				gsel,
 				new Pen(Color.FromArgb(200, this.BorderColor)),
 				0,

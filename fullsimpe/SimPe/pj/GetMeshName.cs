@@ -89,21 +89,21 @@ namespace pj
 			// btnOK
 			//
 			resources.ApplyResources(this.btnOK, "btnOK");
-			this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.btnOK.DialogResult = DialogResult.OK;
 			this.btnOK.Name = "btnOK";
 			this.btnOK.UseVisualStyleBackColor = true;
 			//
 			// btnBrowse
 			//
 			resources.ApplyResources(this.btnBrowse, "btnBrowse");
-			this.btnBrowse.DialogResult = System.Windows.Forms.DialogResult.Retry;
+			this.btnBrowse.DialogResult = DialogResult.Retry;
 			this.btnBrowse.Name = "btnBrowse";
 			this.btnBrowse.UseVisualStyleBackColor = true;
 			//
 			// btnCancel
 			//
 			resources.ApplyResources(this.btnCancel, "btnCancel");
-			this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.btnCancel.DialogResult = DialogResult.Cancel;
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.UseVisualStyleBackColor = true;
 			//
@@ -116,7 +116,7 @@ namespace pj
 			//
 			this.AcceptButton = this.btnOK;
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.AutoScaleMode = AutoScaleMode.Font;
 			this.CancelButton = this.btnCancel;
 			this.ControlBox = false;
 			this.Controls.Add(this.label3);
@@ -127,7 +127,7 @@ namespace pj
 			this.Controls.Add(this.tbMeshName);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.cbusecres);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			this.FormBorderStyle = FormBorderStyle.FixedDialog;
 			this.Name = "GetMeshName";
 			this.ShowInTaskbar = false;
 			this.ResumeLayout(false);

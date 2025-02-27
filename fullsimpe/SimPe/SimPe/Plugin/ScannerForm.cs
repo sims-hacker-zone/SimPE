@@ -100,14 +100,14 @@ namespace SimPe.Plugin
 			}
 
 			//load the Group Cache
-			SimPe.Plugin.WrapperFactory.LoadGroupCache();
+			WrapperFactory.LoadGroupCache();
 
 			this.cbfolder.SelectedIndex = 0;
 
 			cachefile = new Cache.PackageCacheFile();
 			try
 			{
-				cachefile.Load(SimPe.Cache.PackageCacheFile.CacheFileName);
+				cachefile.Load(Cache.PackageCacheFile.CacheFileName);
 			}
 			catch (Exception ex)
 			{
@@ -423,11 +423,11 @@ namespace SimPe.Plugin
 						if (
 							(
 								si.PackageCacheItem.Type
-								!= SimPe.Cache.PackageType.Unknown
+								!= Cache.PackageType.Unknown
 							)
 							&& (
 								si.PackageCacheItem.Type
-								!= SimPe.Cache.PackageType.Undefined
+								!= Cache.PackageType.Undefined
 							)
 						)
 						{
@@ -437,11 +437,11 @@ namespace SimPe.Plugin
 						if (
 							(
 								si.PackageCacheItem.Type
-								== SimPe.Cache.PackageType.Unknown
+								== Cache.PackageType.Unknown
 							)
 							|| (
 								si.PackageCacheItem.Type
-								== SimPe.Cache.PackageType.Undefined
+								== Cache.PackageType.Undefined
 							)
 						)
 						{
@@ -473,10 +473,10 @@ namespace SimPe.Plugin
 							s.Uid,
 							true
 						);
-						if (ps.State == SimPe.Cache.TriState.Null)
+						if (ps.State == Cache.TriState.Null)
 						{
 							s.ScanPackage(si, ps, lvi);
-							if (ps.State != SimPe.Cache.TriState.Null)
+							if (ps.State != Cache.TriState.Null)
 							{
 								cachechg = true;
 							}
@@ -590,10 +590,8 @@ namespace SimPe.Plugin
 			//
 			// cbfolder
 			//
-			this.cbfolder.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbfolder.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbfolder.Items.AddRange(
 				new object[]
@@ -616,12 +614,12 @@ namespace SimPe.Plugin
 			// linkLabel1
 			//
 			this.linkLabel1.AutoSize = true;
-			this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
+			this.linkLabel1.BackColor = Color.Transparent;
 			this.linkLabel1.Font = new Font(
 				"Microsoft Sans Serif",
 				11.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.linkLabel1.Location = new Point(423, 12);
@@ -643,13 +641,13 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Bottom
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Bottom
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
-			this.pb.BackColor = System.Drawing.Color.Transparent;
+			this.pb.BackColor = Color.Transparent;
 			this.pb.Gradient = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
 			this.pb.Location = new Point(9, 583);
 			this.pb.Maximum = 1000;
@@ -659,7 +657,7 @@ namespace SimPe.Plugin
 			this.pb.Size = new Size(943, 16);
 			this.pb.TabIndex = 7;
 			this.pb.TokenCount = 2;
-			this.pb.UnselectedColor = System.Drawing.Color.Black;
+			this.pb.UnselectedColor = Color.Black;
 			this.pb.UseTokenBuffer = false;
 			this.pb.Value = 0;
 			//
@@ -670,10 +668,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -693,7 +691,7 @@ namespace SimPe.Plugin
 			this.lv.Size = new Size(948, 223);
 			this.lv.TabIndex = 3;
 			this.lv.UseCompatibleStateImageBehavior = false;
-			this.lv.View = System.Windows.Forms.View.Details;
+			this.lv.View = View.Details;
 			this.lv.SelectedIndexChanged += new EventHandler(this.SelectItem);
 			this.lv.ColumnClick += new ColumnClickEventHandler(
 				this.SortList
@@ -716,9 +714,9 @@ namespace SimPe.Plugin
 			//
 			// ilist
 			//
-			this.ilist.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+			this.ilist.ColorDepth = ColorDepth.Depth32Bit;
 			this.ilist.ImageSize = new Size(48, 48);
-			this.ilist.TransparentColor = System.Drawing.Color.Transparent;
+			this.ilist.TransparentColor = Color.Transparent;
 			//
 			// tabControl1
 			//
@@ -726,9 +724,9 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Bottom
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Bottom
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -759,10 +757,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -798,16 +796,16 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
 			this.pnop.AutoScroll = true;
-			this.pnop.BackColor = System.Drawing.SystemColors.Window;
-			this.pnop.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.pnop.BackColor = SystemColors.Window;
+			this.pnop.BorderStyle = BorderStyle.Fixed3D;
 			this.pnop.Location = new Point(-1, 9);
 			this.pnop.Name = "pnop";
 			this.pnop.Size = new Size(434, 271);
@@ -826,8 +824,8 @@ namespace SimPe.Plugin
 			//
 			// button3
 			//
-			this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.button3.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.button3.Anchor = AnchorStyles.None;
+			this.button3.FlatStyle = FlatStyle.System;
 			this.button3.Location = new Point(147, 164);
 			this.button3.Name = "button3";
 			this.button3.Size = new Size(133, 24);
@@ -841,8 +839,8 @@ namespace SimPe.Plugin
 			//
 			// button2
 			//
-			this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.button2.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.button2.Anchor = AnchorStyles.None;
+			this.button2.FlatStyle = FlatStyle.System;
 			this.button2.Location = new Point(147, 134);
 			this.button2.Name = "button2";
 			this.button2.Size = new Size(133, 24);
@@ -856,8 +854,8 @@ namespace SimPe.Plugin
 			//
 			// btclear
 			//
-			this.btclear.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.btclear.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.btclear.Anchor = AnchorStyles.None;
+			this.btclear.FlatStyle = FlatStyle.System;
 			this.btclear.Location = new Point(147, 105);
 			this.btclear.Name = "btclear";
 			this.btclear.Size = new Size(133, 24);
@@ -887,9 +885,9 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -914,9 +912,9 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -940,13 +938,13 @@ namespace SimPe.Plugin
 			this.btscan.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.btscan.BackColor = System.Drawing.Color.Transparent;
-			this.btscan.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.btscan.BackColor = Color.Transparent;
+			this.btscan.FlatStyle = FlatStyle.System;
 			this.btscan.Location = new Point(506, 549);
 			this.btscan.Name = "btscan";
 			this.btscan.Size = new Size(80, 24);
@@ -960,13 +958,13 @@ namespace SimPe.Plugin
 			this.cbrec.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
 			this.cbrec.AutoSize = true;
-			this.cbrec.BackColor = System.Drawing.Color.Transparent;
+			this.cbrec.BackColor = Color.Transparent;
 			this.cbrec.Location = new Point(590, 555);
 			this.cbrec.Name = "cbrec";
 			this.cbrec.Size = new Size(82, 17);
@@ -979,12 +977,12 @@ namespace SimPe.Plugin
 			this.gbinfo.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.gbinfo.BackColor = System.Drawing.Color.Transparent;
+			this.gbinfo.BackColor = Color.Transparent;
 			this.gbinfo.Controls.Add(this.lbprop);
 			this.gbinfo.Controls.Add(this.llSave);
 			this.gbinfo.Controls.Add(this.tbflname);
@@ -1002,12 +1000,12 @@ namespace SimPe.Plugin
 			//
 			// lbprop
 			//
-			this.lbprop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.lbprop.DropDownStyle = ComboBoxStyle.DropDownList;
 			this.lbprop.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.lbprop.Location = new Point(9, 190);
@@ -1022,8 +1020,8 @@ namespace SimPe.Plugin
 			this.llSave.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -1031,8 +1029,8 @@ namespace SimPe.Plugin
 			this.llSave.Font = new Font(
 				"Microsoft Sans Serif",
 				11.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.llSave.Location = new Point(398, 190);
@@ -1072,8 +1070,8 @@ namespace SimPe.Plugin
 			this.lbtype.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Italic,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Italic,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.lbtype.Location = new Point(143, 45);
@@ -1090,12 +1088,12 @@ namespace SimPe.Plugin
 				(
 					(FontStyle)(
 						(
-							System.Drawing.FontStyle.Bold
-							| System.Drawing.FontStyle.Italic
+							FontStyle.Bold
+							| FontStyle.Italic
 						)
 					)
 				),
-				System.Drawing.GraphicsUnit.Point,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.lbname.Location = new Point(143, 65);
@@ -1109,8 +1107,8 @@ namespace SimPe.Plugin
 			this.llopen.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -1118,8 +1116,8 @@ namespace SimPe.Plugin
 			this.llopen.Font = new Font(
 				"Microsoft Sans Serif",
 				11.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.llopen.Location = new Point(402, 221);
@@ -1135,12 +1133,12 @@ namespace SimPe.Plugin
 			//
 			// thumb
 			//
-			this.thumb.BackColor = System.Drawing.Color.Transparent;
-			this.thumb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.thumb.BackColor = Color.Transparent;
+			this.thumb.BorderStyle = BorderStyle.FixedSingle;
 			this.thumb.Location = new Point(9, 25);
 			this.thumb.Name = "thumb";
 			this.thumb.Size = new Size(128, 128);
-			this.thumb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.thumb.SizeMode = PictureBoxSizeMode.Zoom;
 			this.thumb.TabIndex = 0;
 			this.thumb.TabStop = false;
 			//
@@ -1151,7 +1149,7 @@ namespace SimPe.Plugin
 			//
 			// panel1
 			//
-			this.panel1.BackColor = System.Drawing.Color.Transparent;
+			this.panel1.BackColor = Color.Transparent;
 			this.panel1.Controls.Add(this.btscan);
 			this.panel1.Controls.Add(this.cbrec);
 			this.panel1.Controls.Add(this.tabControl1);
@@ -1160,12 +1158,12 @@ namespace SimPe.Plugin
 			this.panel1.Controls.Add(this.cbfolder);
 			this.panel1.Controls.Add(this.linkLabel1);
 			this.panel1.Controls.Add(this.gbinfo);
-			this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.panel1.Dock = DockStyle.Fill;
 			this.panel1.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.panel1.Location = new Point(0, 0);
@@ -1180,7 +1178,7 @@ namespace SimPe.Plugin
 			this.Controls.Add(this.panel1);
 			this.Icon = ((Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "ScannerForm";
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+			this.StartPosition = FormStartPosition.CenterParent;
 			this.Text = "Folder Scanner";
 			this.tabControl1.ResumeLayout(false);
 			this.tbscanners.ResumeLayout(false);
@@ -1271,9 +1269,9 @@ namespace SimPe.Plugin
 				//Setup ListView
 				lv.SmallImageList = null;
 				lv.Refresh();
-				SimPe.Plugin.Scanner.AbstractScanner.AddColumn(lv, "Filename", 180);
-				SimPe.Plugin.Scanner.AbstractScanner.AddColumn(lv, "Enabled", 60);
-				SimPe.Plugin.Scanner.AbstractScanner.AddColumn(lv, "Type", 80);
+				AbstractScanner.AddColumn(lv, "Filename", 180);
+				AbstractScanner.AddColumn(lv, "Enabled", 60);
+				AbstractScanner.AddColumn(lv, "Type", 80);
 
 				//Select only checked Scanners
 				ScannerCollection scanners = new ScannerCollection();
@@ -1291,7 +1289,7 @@ namespace SimPe.Plugin
 					}
 				}
 
-				SimPe.Plugin.Scanner.AbstractScanner.AssignFileTable();
+				AbstractScanner.AssignFileTable();
 				//setup Scanners
 				foreach (IScanner s in scanners)
 				{
@@ -1318,7 +1316,7 @@ namespace SimPe.Plugin
 					s.FinishScan();
 				}
 
-				SimPe.Plugin.Scanner.AbstractScanner.DeAssignFileTable();
+				AbstractScanner.DeAssignFileTable();
 
 				try
 				{
@@ -1463,14 +1461,14 @@ namespace SimPe.Plugin
 
 		private void ReloadFileTable(object sender, EventArgs e)
 		{
-			FileTable.FileIndex.ForceReload();
+			FileTableBase.FileIndex.ForceReload();
 		}
 
 		private void ReloadCache(object sender, EventArgs e)
 		{
 			if (Helper.WindowsRegistry.UseCache)
 			{
-				cachefile.Load(SimPe.Cache.PackageCacheFile.CacheFileName);
+				cachefile.Load(Cache.PackageCacheFile.CacheFileName);
 			}
 		}
 
@@ -1515,13 +1513,13 @@ namespace SimPe.Plugin
 					if (!System.IO.File.Exists(newname))
 					{
 						Packages.StreamItem stri =
-							SimPe.Packages.StreamFactory.UseStream(
+							Packages.StreamFactory.UseStream(
 								orgname,
 								System.IO.FileAccess.Read
 							);
 						stri.Close();
 						Packages.StreamItem strit =
-							SimPe.Packages.StreamFactory.UseStream(
+							Packages.StreamFactory.UseStream(
 								newname,
 								System.IO.FileAccess.Read
 							);
@@ -1571,8 +1569,8 @@ namespace SimPe.Plugin
 			{
 				try
 				{
-					System.IO.File.Delete(SimPe.Cache.PackageCacheFile.CacheFileName);
-					cachefile.Load(SimPe.Cache.PackageCacheFile.CacheFileName);
+					System.IO.File.Delete(Cache.PackageCacheFile.CacheFileName);
+					cachefile.Load(Cache.PackageCacheFile.CacheFileName);
 				}
 				catch (Exception ex)
 				{

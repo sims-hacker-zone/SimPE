@@ -148,8 +148,8 @@ namespace SimPe.Plugin
 			{
 				if (Duff)
 				{
-					return SimPe
-						.Localization.GetString("InvalidCRES")
+					return
+						Localization.GetString("InvalidCRES")
 						.Replace("{0}", e.Message);
 				}
 
@@ -229,7 +229,7 @@ namespace SimPe.Plugin
 
 			object[] args = new object[1];
 			args[0] = null;
-			object[] statics = SimPe.LoadFileWrappers.LoadPlugins(
+			object[] statics = LoadFileWrappers.LoadPlugins(
 				a,
 				typeof(IRcolBlock),
 				args

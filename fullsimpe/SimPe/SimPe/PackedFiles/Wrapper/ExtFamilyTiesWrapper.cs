@@ -29,7 +29,7 @@ namespace SimPe.PackedFiles.Wrapper
 	public class ExtFamilyTies : FamilyTies
 	{
 		public ExtFamilyTies()
-			: base(FileTable.ProviderRegistry.SimNameProvider)
+			: base(FileTableBase.ProviderRegistry.SimNameProvider)
 		{
 			//
 			// TODO: Fügen Sie hier die Konstruktorlogik hinzu

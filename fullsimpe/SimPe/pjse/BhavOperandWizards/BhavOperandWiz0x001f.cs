@@ -326,10 +326,8 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 			//
 			// cbToNext
 			//
-			this.cbToNext.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbToNext.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbToNext.DropDownWidth = 450;
 			this.cbToNext.FormattingEnabled = true;
@@ -386,10 +384,8 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 			//
 			// cbWhere
 			//
-			this.cbWhere.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbWhere.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbWhere.DropDownWidth = 280;
 			this.cbWhere.FormattingEnabled = true;
@@ -432,7 +428,7 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 			//
 			// pnObject
 			//
-			this.pnObject.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.pnObject.BorderStyle = BorderStyle.FixedSingle;
 			this.pnObject.Controls.Add(this.cbAttrPicker);
 			this.pnObject.Controls.Add(this.cbDecimal);
 			this.pnObject.Controls.Add(this.cbPicker1);
@@ -453,10 +449,8 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 			//
 			// cbPicker1
 			//
-			this.cbPicker1.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbPicker1.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbPicker1.DropDownWidth = 384;
 			resources.ApplyResources(this.cbPicker1, "cbPicker1");
@@ -469,10 +463,8 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 			//
 			// cbDataOwner1
 			//
-			this.cbDataOwner1.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbDataOwner1.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbDataOwner1.DropDownWidth = 384;
 			resources.ApplyResources(this.cbDataOwner1, "cbDataOwner1");
@@ -490,7 +482,7 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 			// UI
 			//
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.AutoScaleMode = AutoScaleMode.Dpi;
 			this.Controls.Add(this.pnWiz0x001f);
 			this.Name = "UI";
 			this.pnWiz0x001f.ResumeLayout(false);

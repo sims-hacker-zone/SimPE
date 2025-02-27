@@ -44,7 +44,7 @@ namespace SimPe.Plugin
 			form = new IdnoForm();
 
 			NeighborhoodType[] vals = (NeighborhoodType[])
-				System.Enum.GetValues(typeof(NeighborhoodType));
+				Enum.GetValues(typeof(NeighborhoodType));
 			foreach (NeighborhoodType v in vals)
 			{
 				form.cbtype.Items.Add(v);
@@ -62,25 +62,25 @@ namespace SimPe.Plugin
 				);
 			}
 
-			NhSeasons[] valf = (NhSeasons[])System.Enum.GetValues(typeof(NhSeasons));
+			NhSeasons[] valf = (NhSeasons[])Enum.GetValues(typeof(NhSeasons));
 			foreach (NhSeasons v in valf)
 			{
 				form.cbquada.Items.Add(v);
 			}
 
-			NhSeasons[] valu = (NhSeasons[])System.Enum.GetValues(typeof(NhSeasons));
+			NhSeasons[] valu = (NhSeasons[])Enum.GetValues(typeof(NhSeasons));
 			foreach (NhSeasons v in valu)
 			{
 				form.cbquadb.Items.Add(v);
 			}
 
-			NhSeasons[] valc = (NhSeasons[])System.Enum.GetValues(typeof(NhSeasons));
+			NhSeasons[] valc = (NhSeasons[])Enum.GetValues(typeof(NhSeasons));
 			foreach (NhSeasons v in valc)
 			{
 				form.cbquadc.Items.Add(v);
 			}
 
-			NhSeasons[] valk = (NhSeasons[])System.Enum.GetValues(typeof(NhSeasons));
+			NhSeasons[] valk = (NhSeasons[])Enum.GetValues(typeof(NhSeasons));
 			foreach (NhSeasons v in valk)
 			{
 				form.cbquadd.Items.Add(v);

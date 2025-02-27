@@ -60,7 +60,7 @@ namespace SimPe.Plugin.Anim
 			//
 			this.ambc = new AnimMeshBlockControl();
 			this.ambc.BackColor = System.Drawing.Color.Transparent;
-			this.ambc.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.ambc.Dock = DockStyle.Fill;
 			this.ambc.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
@@ -164,10 +164,10 @@ namespace SimPe.Plugin.Anim
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -180,7 +180,7 @@ namespace SimPe.Plugin.Anim
 			this.groupBox2.Controls.Add(this.tv);
 			this.groupBox2.Controls.Add(this.llAdd);
 			this.groupBox2.Controls.Add(this.pg);
-			this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.groupBox2.FlatStyle = FlatStyle.System;
 			this.groupBox2.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -200,8 +200,8 @@ namespace SimPe.Plugin.Anim
 			this.cbshnote.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -231,14 +231,14 @@ namespace SimPe.Plugin.Anim
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
-			this.rtbnotes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.rtbnotes.BorderStyle = BorderStyle.FixedSingle;
 			this.rtbnotes.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -303,8 +303,8 @@ namespace SimPe.Plugin.Anim
 			this.checkBox1.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -325,9 +325,9 @@ namespace SimPe.Plugin.Anim
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Bottom
-						) | System.Windows.Forms.AnchorStyles.Left
+							AnchorStyles.Top
+							| AnchorStyles.Bottom
+						) | AnchorStyles.Left
 					)
 				)
 			);
@@ -370,10 +370,10 @@ namespace SimPe.Plugin.Anim
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -469,7 +469,7 @@ namespace SimPe.Plugin.Anim
 			//
 			this.gradpanel.BackColor = System.Drawing.Color.Transparent;
 			this.gradpanel.Controls.Add(this.groupBox12);
-			this.gradpanel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.gradpanel.Dock = DockStyle.Fill;
 			this.gradpanel.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -709,16 +709,16 @@ namespace SimPe.Plugin.Anim
 						tv_AfterSelect(null, null);
 						if (!nah)
 						{
-							SimPe.Message.Show(
+							Message.Show(
 								"Not all values imported properly",
 								"Warning",
-								System.Windows.Forms.MessageBoxButtons.OK
+								MessageBoxButtons.OK
 							);
 						}
 					}
 					else
 					{
-						SimPe.Message.Show(
+						Message.Show(
 							ofd.FileName
 								+ "\r\nIs not the correct text file for "
 								+ ab1.Name

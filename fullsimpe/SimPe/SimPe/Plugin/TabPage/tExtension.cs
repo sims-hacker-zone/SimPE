@@ -182,10 +182,10 @@ namespace SimPe.Plugin.TabPage
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -203,12 +203,12 @@ namespace SimPe.Plugin.TabPage
 			this.gbIems.Controls.Add(this.gbrot);
 			this.gbIems.Controls.Add(this.gbtrans);
 			this.gbIems.Controls.Add(this.lb_items);
-			this.gbIems.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.gbIems.FlatStyle = FlatStyle.System;
 			this.gbIems.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Bold,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Bold,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.gbIems.Location = new Point(248, 8);
@@ -223,13 +223,13 @@ namespace SimPe.Plugin.TabPage
 			this.gbfloat.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
 			this.gbfloat.Controls.Add(this.tbfloat);
-			this.gbfloat.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.gbfloat.FlatStyle = FlatStyle.System;
 			this.gbfloat.Location = new Point(416, 128);
 			this.gbfloat.Name = "gbfloat";
 			this.gbfloat.Size = new Size(120, 56);
@@ -242,8 +242,8 @@ namespace SimPe.Plugin.TabPage
 			this.tbfloat.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.tbfloat.Location = new Point(16, 24);
@@ -258,13 +258,13 @@ namespace SimPe.Plugin.TabPage
 			this.gbval.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
 			this.gbval.Controls.Add(this.tbval);
-			this.gbval.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.gbval.FlatStyle = FlatStyle.System;
 			this.gbval.Location = new Point(160, 216);
 			this.gbval.Name = "gbval";
 			this.gbval.Size = new Size(120, 56);
@@ -277,8 +277,8 @@ namespace SimPe.Plugin.TabPage
 			this.tbval.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.tbval.Location = new Point(16, 24);
@@ -293,16 +293,16 @@ namespace SimPe.Plugin.TabPage
 			this.tb_itemname.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
 			this.tb_itemname.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.tb_itemname.Location = new Point(288, 40);
@@ -316,8 +316,8 @@ namespace SimPe.Plugin.TabPage
 			this.label3.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -325,8 +325,8 @@ namespace SimPe.Plugin.TabPage
 			this.label3.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Bold,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Bold,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.label3.Location = new Point(280, 24);
@@ -340,8 +340,8 @@ namespace SimPe.Plugin.TabPage
 			this.lldel.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -362,8 +362,8 @@ namespace SimPe.Plugin.TabPage
 			this.linkLabel1.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -382,17 +382,17 @@ namespace SimPe.Plugin.TabPage
 			this.cbtype.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.cbtype.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbtype.DropDownStyle = ComboBoxStyle.DropDownList;
 			this.cbtype.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.cbtype.Location = new Point(280, 240);
@@ -405,12 +405,12 @@ namespace SimPe.Plugin.TabPage
 			this.gbar.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.gbar.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.gbar.FlatStyle = FlatStyle.System;
 			this.gbar.Location = new Point(16, 216);
 			this.gbar.Name = "gbar";
 			this.gbar.Size = new Size(136, 56);
@@ -420,12 +420,12 @@ namespace SimPe.Plugin.TabPage
 			//
 			// btedit
 			//
-			this.btedit.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.btedit.FlatStyle = FlatStyle.System;
 			this.btedit.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.btedit.Location = new Point(16, 24);
@@ -440,12 +440,12 @@ namespace SimPe.Plugin.TabPage
 			this.gfootprintbar.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.gfootprintbar.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.gfootprintbar.FlatStyle = FlatStyle.System;
 			this.gfootprintbar.Location = new Point(16, 216);
 			this.gfootprintbar.Name = "gfootprintbar";
 			this.gfootprintbar.Size = new Size(136, 90);
@@ -455,12 +455,12 @@ namespace SimPe.Plugin.TabPage
 			//
 			// btfootprintedit
 			//
-			this.btfootprintedit.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.btfootprintedit.FlatStyle = FlatStyle.System;
 			this.btfootprintedit.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.btfootprintedit.Location = new Point(16, 55);
@@ -477,13 +477,13 @@ namespace SimPe.Plugin.TabPage
 			this.gbstr.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
 			this.gbstr.Controls.Add(this.tbstr);
-			this.gbstr.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.gbstr.FlatStyle = FlatStyle.System;
 			this.gbstr.Location = new Point(280, 64);
 			this.gbstr.Name = "gbstr";
 			this.gbstr.Size = new Size(240, 56);
@@ -497,17 +497,17 @@ namespace SimPe.Plugin.TabPage
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
 			this.tbstr.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.tbstr.Location = new Point(16, 24);
@@ -521,13 +521,13 @@ namespace SimPe.Plugin.TabPage
 			this.gbbin.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
 			this.gbbin.Controls.Add(this.tbbin);
-			this.gbbin.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.gbbin.FlatStyle = FlatStyle.System;
 			this.gbbin.Location = new Point(16, 40);
 			this.gbbin.Name = "gbbin";
 			this.gbbin.Size = new Size(248, 80);
@@ -541,23 +541,23 @@ namespace SimPe.Plugin.TabPage
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
 			this.tbbin.Font = new Font(
 				"Courier New",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.tbbin.Location = new Point(16, 26);
 			this.tbbin.Multiline = true;
 			this.tbbin.Name = "tbbin";
-			this.tbbin.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.tbbin.ScrollBars = ScrollBars.Vertical;
 			this.tbbin.Size = new Size(216, 40);
 			this.tbbin.TabIndex = 2;
 			this.tbbin.TextChanged += new EventHandler(this.BinChange);
@@ -567,8 +567,8 @@ namespace SimPe.Plugin.TabPage
 			this.gbrot.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -576,7 +576,7 @@ namespace SimPe.Plugin.TabPage
 			this.gbrot.Controls.Add(this.tbrot1);
 			this.gbrot.Controls.Add(this.tbrot3);
 			this.gbrot.Controls.Add(this.tbrot2);
-			this.gbrot.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.gbrot.FlatStyle = FlatStyle.System;
 			this.gbrot.Location = new Point(280, 136);
 			this.gbrot.Name = "gbrot";
 			this.gbrot.Size = new Size(224, 80);
@@ -589,8 +589,8 @@ namespace SimPe.Plugin.TabPage
 			this.tbrot4.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.tbrot4.Location = new Point(120, 48);
@@ -605,8 +605,8 @@ namespace SimPe.Plugin.TabPage
 			this.tbrot1.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.tbrot1.Location = new Point(16, 24);
@@ -621,8 +621,8 @@ namespace SimPe.Plugin.TabPage
 			this.tbrot3.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.tbrot3.Location = new Point(16, 48);
@@ -637,8 +637,8 @@ namespace SimPe.Plugin.TabPage
 			this.tbrot2.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.tbrot2.Location = new Point(120, 24);
@@ -653,15 +653,15 @@ namespace SimPe.Plugin.TabPage
 			this.gbtrans.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
 			this.gbtrans.Controls.Add(this.tbtrans1);
 			this.gbtrans.Controls.Add(this.tbtrans3);
 			this.gbtrans.Controls.Add(this.tbtrans2);
-			this.gbtrans.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.gbtrans.FlatStyle = FlatStyle.System;
 			this.gbtrans.Location = new Point(16, 120);
 			this.gbtrans.Name = "gbtrans";
 			this.gbtrans.Size = new Size(224, 80);
@@ -674,8 +674,8 @@ namespace SimPe.Plugin.TabPage
 			this.tbtrans1.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.tbtrans1.Location = new Point(16, 24);
@@ -690,8 +690,8 @@ namespace SimPe.Plugin.TabPage
 			this.tbtrans3.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.tbtrans3.Location = new Point(16, 48);
@@ -706,8 +706,8 @@ namespace SimPe.Plugin.TabPage
 			this.tbtrans2.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.tbtrans2.Location = new Point(120, 24);
@@ -724,18 +724,18 @@ namespace SimPe.Plugin.TabPage
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
 			this.lb_items.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.lb_items.HorizontalScrollbar = true;
@@ -753,8 +753,8 @@ namespace SimPe.Plugin.TabPage
 			this.tbFootprint.Font = new Font(
 				"Courier New",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.tbFootprint.Location = new Point(0, 0);
@@ -770,12 +770,12 @@ namespace SimPe.Plugin.TabPage
 			this.groupBox10.Controls.Add(this.label1);
 			this.groupBox10.Controls.Add(this.tb_ver);
 			this.groupBox10.Controls.Add(this.label28);
-			this.groupBox10.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.groupBox10.FlatStyle = FlatStyle.System;
 			this.groupBox10.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Bold,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Bold,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.groupBox10.Location = new Point(8, 8);
@@ -790,8 +790,8 @@ namespace SimPe.Plugin.TabPage
 			this.tb_name.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.tb_name.Location = new Point(16, 80);
@@ -807,8 +807,8 @@ namespace SimPe.Plugin.TabPage
 			this.label2.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.label2.Location = new Point(8, 64);
@@ -822,8 +822,8 @@ namespace SimPe.Plugin.TabPage
 			this.tb_type.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.tb_type.Location = new Point(128, 40);
@@ -839,8 +839,8 @@ namespace SimPe.Plugin.TabPage
 			this.label1.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.label1.Location = new Point(120, 24);
@@ -854,8 +854,8 @@ namespace SimPe.Plugin.TabPage
 			this.tb_ver.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.tb_ver.Location = new Point(16, 40);
@@ -871,8 +871,8 @@ namespace SimPe.Plugin.TabPage
 			this.label28.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.label28.Location = new Point(8, 24);
@@ -883,7 +883,7 @@ namespace SimPe.Plugin.TabPage
 			//
 			// Extension
 			//
-			this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+			this.BackColor = SystemColors.ControlLightLight;
 			this.Controls.Add(this.gbIems);
 			this.Controls.Add(this.groupBox10);
 			this.Location = new Point(4, 22);
@@ -1054,7 +1054,7 @@ namespace SimPe.Plugin.TabPage
 			{
 				Extension fe = new Extension();
 				Form f = new Form();
-				f.Text = SimPe.Localization.GetString("Sub Array Editor");
+				f.Text = Localization.GetString("Sub Array Editor");
 				f.ShowInTaskbar = false;
 				f.FormBorderStyle = FormBorderStyle.FixedToolWindow;
 				f.Size = new Size(840, 368);
@@ -1093,7 +1093,7 @@ namespace SimPe.Plugin.TabPage
 			{
 				Extension fe = new Extension();
 				Form f = new Form();
-				f.Text = SimPe.Localization.GetString("Sub Array Editor");
+				f.Text = Localization.GetString("Sub Array Editor");
 				f.ShowInTaskbar = false;
 				f.FormBorderStyle = FormBorderStyle.FixedToolWindow;
 

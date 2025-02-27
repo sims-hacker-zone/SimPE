@@ -19,14 +19,14 @@ namespace SimPe.Plugin.Downloads
 			Wait.Message = "Building Preview";
 			PackageInfo nfo = sender as PackageInfo;
 			object[] data = nfo.RenderData as object[];
-			tmppkg = SimPe.Packages.GeneratableFile.LoadFromFile(data[1].ToString());
+			tmppkg = Packages.File.LoadFromFile(data[1].ToString());
 			if (tmppkg == null)
 			{
 				return;
 			}
 
 			Interfaces.Scenegraph.IScenegraphFileIndex fii =
-				SimPe.Plugin.DownloadsToolFactory.TeleportFileIndex.AddNewChild();
+				DownloadsToolFactory.TeleportFileIndex.AddNewChild();
 			MmatWrapper mmat = data[0] as MmatWrapper;
 
 			mmat.ProcessData(mmat.FileDescriptor, tmppkg);
@@ -36,7 +36,7 @@ namespace SimPe.Plugin.Downloads
 				if (
 					System.IO.File.Exists(
 						System.IO.Path.Combine(
-							SimPe.Helper.SimPePluginPath,
+							Helper.SimPePluginPath,
 							"simpe.workshop.plugin.dll"
 						)
 					)
@@ -45,8 +45,8 @@ namespace SimPe.Plugin.Downloads
 					try
 					{
 						Ambertation.Scenes.Scene scn =
-							SimPe.Plugin.PreviewForm.RenderScene(mmat); // depends on simpe.workshop.plugin.dll, pity as that may not exist
-						nfo.RenderedImage = Downloads.DefaultTypeHandler.Get3dPreview(
+							PreviewForm.RenderScene(mmat); // depends on simpe.workshop.plugin.dll, pity as that may not exist
+						nfo.RenderedImage = DefaultTypeHandler.Get3dPreview(
 							scn
 						);
 						scn.Dispose();
@@ -61,7 +61,7 @@ namespace SimPe.Plugin.Downloads
 			}
 
 			fii.CloseAssignedPackages();
-			SimPe.Plugin.DownloadsToolFactory.TeleportFileIndex.RemoveChild(fii);
+			DownloadsToolFactory.TeleportFileIndex.RemoveChild(fii);
 
 			this.DisposeTmpPkg();
 			Wait.SubStop();
@@ -86,10 +86,10 @@ namespace SimPe.Plugin.Downloads
 				mmat.ProcessData(pfds[0], pkg);
 				nfo.Name = mmat.ModelName + ", " + mmat.SubsetName;
 
-				if (SimPe.Plugin.DownloadsToolFactory.Settings.LoadBasedataForRecolors)
+				if (DownloadsToolFactory.Settings.LoadBasedataForRecolors)
 				{
 					Interfaces.Scenegraph.IScenegraphFileIndex fii =
-						SimPe.Plugin.DownloadsToolFactory.TeleportFileIndex.AddNewChild();
+						DownloadsToolFactory.TeleportFileIndex.AddNewChild();
 					if (System.IO.File.Exists(pkg.SaveFileName))
 					{
 						string dir = System.IO.Path.GetDirectoryName(pkg.SaveFileName);
@@ -98,7 +98,7 @@ namespace SimPe.Plugin.Downloads
 						{
 							if (file.EndsWith(".package") || file.EndsWith(".sims"))
 							{
-								if (!FileTable.FileIndex.Contains(file))
+								if (!FileTableBase.FileIndex.Contains(file))
 								{
 									fii.AddIndexFromPackage(file);
 								}
@@ -108,7 +108,7 @@ namespace SimPe.Plugin.Downloads
 					if (
 						System.IO.File.Exists(
 							System.IO.Path.Combine(
-								SimPe.Helper.SimPePluginPath,
+								Helper.SimPePluginPath,
 								"simpe.workshop.plugin.dll"
 							)
 						)
@@ -116,13 +116,13 @@ namespace SimPe.Plugin.Downloads
 					{
 						//SimPe.Plugin.DownloadsToolFactory.TeleportFileIndex.WriteContentToConsole();
 						tmppkg =
-							SimPe.Plugin.Tool.Dockable.ObjectWorkshopHelper.CreatCloneByGuid(
+							Tool.Dockable.ObjectWorkshopHelper.CreatCloneByGuid(
 								mmat.ObjectGUID
 							); // depends on simpe.workshop.plugin.dll, pity as that may not exist
 						if (
-							SimPe
-								.Plugin
-								.DownloadsToolFactory
+
+
+								DownloadsToolFactory
 								.Settings
 								.BuildPreviewForRecolors
 						)
@@ -163,7 +163,7 @@ namespace SimPe.Plugin.Downloads
 					}
 
 					fii.CloseAssignedPackages();
-					SimPe.Plugin.DownloadsToolFactory.TeleportFileIndex.RemoveChild(
+					DownloadsToolFactory.TeleportFileIndex.RemoveChild(
 						fii
 					);
 				}
@@ -185,7 +185,7 @@ namespace SimPe.Plugin.Downloads
 			if (tmppkg != null)
 			{
 				tmppkg.Close();
-				SimPe.Packages.StreamFactory.CloseStream(tmppkg.SaveFileName);
+				Packages.StreamFactory.CloseStream(tmppkg.SaveFileName);
 				if (tmppkg is Packages.GeneratableFile)
 				{
 					((Packages.GeneratableFile)tmppkg).Dispose();
@@ -209,7 +209,7 @@ namespace SimPe.Plugin.Downloads
 			if (tmppkg != null)
 			{
 				XTypeHandler hnd = new XTypeHandler(
-					SimPe.Cache.PackageType.CustomObject,
+					Cache.PackageType.CustomObject,
 					tmppkg,
 					false,
 					false

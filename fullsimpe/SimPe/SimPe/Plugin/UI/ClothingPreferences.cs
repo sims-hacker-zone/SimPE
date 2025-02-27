@@ -218,7 +218,7 @@ namespace SimPe.Plugin.UI
 			// clbCategories
 			//
 			this.clbCategories.CheckOnClick = true;
-			this.clbCategories.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.clbCategories.Dock = DockStyle.Fill;
 			this.clbCategories.Location = new System.Drawing.Point(0, 0);
 			this.clbCategories.MultiColumn = true;
 			this.clbCategories.Name = "clbCategories";
@@ -233,7 +233,7 @@ namespace SimPe.Plugin.UI
 			this.tabControl1.Controls.Add(this.tabPage1);
 			this.tabControl1.Controls.Add(this.tabPage2);
 			this.tabControl1.Controls.Add(this.tabPage3);
-			this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tabControl1.Dock = DockStyle.Fill;
 			this.tabControl1.Location = new System.Drawing.Point(0, 0);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
@@ -261,7 +261,7 @@ namespace SimPe.Plugin.UI
 			// clbAges
 			//
 			this.clbAges.CheckOnClick = true;
-			this.clbAges.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.clbAges.Dock = DockStyle.Fill;
 			this.clbAges.Location = new System.Drawing.Point(0, 0);
 			this.clbAges.MultiColumn = true;
 			this.clbAges.Name = "clbAges";
@@ -360,7 +360,7 @@ namespace SimPe.Plugin.UI
 			//
 			// cbBody
 			//
-			this.cbBody.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbBody.DropDownStyle = ComboBoxStyle.DropDownList;
 			this.cbBody.Location = new System.Drawing.Point(6, 106);
 			this.cbBody.Name = "cbBody";
 			this.cbBody.Size = new System.Drawing.Size(168, 21);
@@ -375,10 +375,8 @@ namespace SimPe.Plugin.UI
 			//
 			// cbOverlayType
 			//
-			this.cbOverlayType.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbOverlayType.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbOverlayType.Enabled = false;
 			this.cbOverlayType.Location = new System.Drawing.Point(140, 20);
@@ -404,10 +402,8 @@ namespace SimPe.Plugin.UI
 			//
 			// cbSpeciesType
 			//
-			this.cbSpeciesType.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbSpeciesType.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbSpeciesType.Enabled = false;
 			this.cbSpeciesType.Location = new System.Drawing.Point(140, 64);
@@ -490,10 +486,8 @@ namespace SimPe.Plugin.UI
 			//
 			// cbShoeType
 			//
-			this.cbShoeType.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbShoeType.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbShoeType.Location = new System.Drawing.Point(7, 64);
 			this.cbShoeType.Name = "cbShoeType";
@@ -505,10 +499,8 @@ namespace SimPe.Plugin.UI
 			//
 			// cbOutfitType
 			//
-			this.cbOutfitType.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbOutfitType.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbOutfitType.Location = new System.Drawing.Point(7, 20);
 			this.cbOutfitType.Name = "cbOutfitType";

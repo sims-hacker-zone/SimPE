@@ -118,7 +118,7 @@ namespace SimPe.Plugin
 			//
 			// txtrPanel
 			//
-			this.txtrPanel.BackColor = System.Drawing.Color.Transparent;
+			this.txtrPanel.BackColor = Color.Transparent;
 			this.txtrPanel.Controls.Add(this.linkLabel4);
 			this.txtrPanel.Controls.Add(this.linkLabel3);
 			this.txtrPanel.Controls.Add(this.linkLabel1);
@@ -145,8 +145,8 @@ namespace SimPe.Plugin
 			this.txtrPanel.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.txtrPanel.Location = new Point(8, 8);
@@ -159,18 +159,18 @@ namespace SimPe.Plugin
 			this.linkLabel4.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
 			this.linkLabel4.AutoSize = true;
-			this.linkLabel4.BackColor = System.Drawing.Color.Transparent;
+			this.linkLabel4.BackColor = Color.Transparent;
 			this.linkLabel4.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Bold,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Bold,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.linkLabel4.LinkArea = new LinkArea(0, 5);
@@ -189,12 +189,12 @@ namespace SimPe.Plugin
 			// linkLabel3
 			//
 			this.linkLabel3.AutoSize = true;
-			this.linkLabel3.BackColor = System.Drawing.Color.Transparent;
+			this.linkLabel3.BackColor = Color.Transparent;
 			this.linkLabel3.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Bold,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Bold,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.linkLabel3.Location = new Point(288, 88);
@@ -209,12 +209,12 @@ namespace SimPe.Plugin
 			// linkLabel1
 			//
 			this.linkLabel1.AutoSize = true;
-			this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
+			this.linkLabel1.BackColor = Color.Transparent;
 			this.linkLabel1.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Bold,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Bold,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.linkLabel1.Location = new Point(344, 88);
@@ -240,12 +240,12 @@ namespace SimPe.Plugin
 			// label8
 			//
 			this.label8.AutoSize = true;
-			this.label8.BackColor = System.Drawing.Color.Transparent;
+			this.label8.BackColor = Color.Transparent;
 			this.label8.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Bold,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Bold,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.label8.Location = new Point(240, 136);
@@ -259,18 +259,18 @@ namespace SimPe.Plugin
 			this.linkLabel2.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
 			this.linkLabel2.AutoSize = true;
-			this.linkLabel2.BackColor = System.Drawing.Color.Transparent;
+			this.linkLabel2.BackColor = Color.Transparent;
 			this.linkLabel2.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Bold,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Bold,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.linkLabel2.Location = new Point(344, 264);
@@ -287,18 +287,18 @@ namespace SimPe.Plugin
 			this.lldel.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
 			this.lldel.AutoSize = true;
-			this.lldel.BackColor = System.Drawing.Color.Transparent;
+			this.lldel.BackColor = Color.Transparent;
 			this.lldel.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Bold,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Bold,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.lldel.Location = new Point(380, 264);
@@ -316,9 +316,9 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Bottom
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Bottom
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -333,18 +333,18 @@ namespace SimPe.Plugin
 			this.label6.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
 			this.label6.AutoSize = true;
-			this.label6.BackColor = System.Drawing.Color.Transparent;
+			this.label6.BackColor = Color.Transparent;
 			this.label6.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Bold,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Bold,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.label6.Location = new Point(432, 236);
@@ -356,12 +356,12 @@ namespace SimPe.Plugin
 			// label5
 			//
 			this.label5.AutoSize = true;
-			this.label5.BackColor = System.Drawing.Color.Transparent;
+			this.label5.BackColor = Color.Transparent;
 			this.label5.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Bold,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Bold,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.label5.Location = new Point(141, 136);
@@ -389,12 +389,12 @@ namespace SimPe.Plugin
 			// label4
 			//
 			this.label4.AutoSize = true;
-			this.label4.BackColor = System.Drawing.Color.Transparent;
+			this.label4.BackColor = Color.Transparent;
 			this.label4.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Bold,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Bold,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.label4.Location = new Point(43, 136);
@@ -406,12 +406,12 @@ namespace SimPe.Plugin
 			// label3
 			//
 			this.label3.AutoSize = true;
-			this.label3.BackColor = System.Drawing.Color.Transparent;
+			this.label3.BackColor = Color.Transparent;
 			this.label3.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Bold,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Bold,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.label3.Location = new Point(24, 112);
@@ -422,10 +422,8 @@ namespace SimPe.Plugin
 			//
 			// cbformats
 			//
-			this.cbformats.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbformats.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbformats.Location = new Point(80, 108);
 			this.cbformats.Name = "cbformats";
@@ -446,12 +444,12 @@ namespace SimPe.Plugin
 			// label2
 			//
 			this.label2.AutoSize = true;
-			this.label2.BackColor = System.Drawing.Color.Transparent;
+			this.label2.BackColor = Color.Transparent;
 			this.label2.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Bold,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Bold,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.label2.Location = new Point(8, 36);
@@ -462,7 +460,7 @@ namespace SimPe.Plugin
 			//
 			// cbitem
 			//
-			this.cbitem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbitem.DropDownStyle = ComboBoxStyle.DropDownList;
 			this.cbitem.Location = new Point(80, 32);
 			this.cbitem.Name = "cbitem";
 			this.cbitem.Size = new Size(344, 21);
@@ -473,10 +471,8 @@ namespace SimPe.Plugin
 			//
 			// cbmipmaps
 			//
-			this.cbmipmaps.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbmipmaps.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbmipmaps.Location = new Point(80, 160);
 			this.cbmipmaps.Name = "cbmipmaps";
@@ -493,16 +489,16 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
 			this.panel1.AutoScroll = true;
 			this.panel1.AutoScrollMinSize = new Size(24, 24);
-			this.panel1.BackColor = System.Drawing.Color.Transparent;
+			this.panel1.BackColor = Color.Transparent;
 			this.panel1.Controls.Add(this.label7);
 			this.panel1.Controls.Add(this.pb);
 			this.panel1.Location = new Point(432, 32);
@@ -515,15 +511,15 @@ namespace SimPe.Plugin
 			this.label7.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
 			this.label7.AutoSize = true;
 			this.label7.Font = new Font("Verdana", 8.25F);
-			this.label7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-			this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.label7.ForeColor = SystemColors.ActiveCaptionText;
+			this.label7.ImeMode = ImeMode.NoControl;
 			this.label7.Location = new Point(8, 176);
 			this.label7.Name = "label7";
 			this.label7.Size = new Size(293, 13);
@@ -532,7 +528,7 @@ namespace SimPe.Plugin
 			//
 			// pb
 			//
-			this.pb.BackColor = System.Drawing.SystemColors.Control;
+			this.pb.BackColor = SystemColors.Control;
 			this.pb.BackgroundImage = (
 				(Image)(resources.GetObject("pb.BackgroundImage"))
 			);
@@ -540,7 +536,7 @@ namespace SimPe.Plugin
 			this.pb.Location = new Point(0, 0);
 			this.pb.Name = "pb";
 			this.pb.Size = new Size(100, 50);
-			this.pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+			this.pb.SizeMode = PictureBoxSizeMode.AutoSize;
 			this.pb.TabIndex = 5;
 			this.pb.TabStop = false;
 			//
@@ -622,9 +618,9 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Bottom
-						) | System.Windows.Forms.AnchorStyles.Left
+							AnchorStyles.Top
+							| AnchorStyles.Bottom
+						) | AnchorStyles.Left
 					)
 				)
 			);
@@ -643,9 +639,9 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -656,9 +652,9 @@ namespace SimPe.Plugin
 			this.panel2.Font = new Font(
 				"Verdana",
 				9.75F,
-				System.Drawing.FontStyle.Bold
+				FontStyle.Bold
 			);
-			this.panel2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+			this.panel2.ForeColor = SystemColors.ActiveCaptionText;
 			this.panel2.Location = new Point(0, 0);
 			this.panel2.Margin = new Padding(0);
 			this.panel2.Name = "panel2";
@@ -670,20 +666,20 @@ namespace SimPe.Plugin
 			this.btex.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.btex.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.btex.FlatStyle = FlatStyle.System;
 			this.btex.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.btex.ForeColor = System.Drawing.SystemColors.ControlText;
+			this.btex.ForeColor = SystemColors.ControlText;
 			this.btex.Location = new Point(584, 0);
 			this.btex.Name = "btex";
 			this.btex.Size = new Size(80, 23);
@@ -696,20 +692,20 @@ namespace SimPe.Plugin
 			this.btim.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.btim.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.btim.FlatStyle = FlatStyle.System;
 			this.btim.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.btim.ForeColor = System.Drawing.SystemColors.ControlText;
+			this.btim.ForeColor = SystemColors.ControlText;
 			this.btim.Location = new Point(504, 0);
 			this.btim.Name = "btim";
 			this.btim.Size = new Size(75, 23);
@@ -720,7 +716,7 @@ namespace SimPe.Plugin
 			// label27
 			//
 			this.label27.AutoSize = true;
-			this.label27.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.label27.ImeMode = ImeMode.NoControl;
 			this.label27.Location = new Point(0, 4);
 			this.label27.Name = "label27";
 			this.label27.Size = new Size(93, 19);
@@ -732,17 +728,17 @@ namespace SimPe.Plugin
 			this.btcommit.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.btcommit.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.btcommit.FlatStyle = FlatStyle.System;
 			this.btcommit.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
 			this.btcommit.Location = new Point(688, 0);
@@ -754,12 +750,12 @@ namespace SimPe.Plugin
 			// label1
 			//
 			this.label1.AutoSize = true;
-			this.label1.BackColor = System.Drawing.Color.Transparent;
+			this.label1.BackColor = Color.Transparent;
 			this.label1.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Bold,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Bold,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.label1.Location = new Point(28, 168);
@@ -785,8 +781,8 @@ namespace SimPe.Plugin
 			this.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.Name = "TxtrForm";
@@ -1672,7 +1668,7 @@ namespace SimPe.Plugin
 		{
 			try
 			{
-				Size sz = SimPe.Plugin.ImageSize.Execute(
+				Size sz = ImageSize.Execute(
 					SelectedImageData().TextureSize
 				);
 				cbitem.Tag = true;

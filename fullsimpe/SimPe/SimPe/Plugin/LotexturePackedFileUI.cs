@@ -62,7 +62,7 @@ namespace SimPe.Plugin
 					}
 					else
 					{
-						hoodtype = SimPe.Localization.GetString("Unknown");
+						hoodtype = Localization.GetString("Unknown");
 					}
 
 					rtLotTex.Text =

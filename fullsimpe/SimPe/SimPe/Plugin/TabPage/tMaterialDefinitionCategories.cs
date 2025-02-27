@@ -97,10 +97,10 @@ namespace SimPe.Plugin.TabPage
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -209,14 +209,14 @@ namespace SimPe.Plugin.TabPage
 			foreach (MaterialDefinitionProperty mdp in md.Properties)
 			{
 				if (
-					SimPe.Plugin.MaterialDefinition.PropertyParser.Properties.ContainsKey(
+					Plugin.MaterialDefinition.PropertyParser.Properties.ContainsKey(
 						mdp.Name
 					)
 				)
 				{
 					Ambertation.PropertyDescription pd = (
 						(Ambertation.PropertyDescription)
-							SimPe.Plugin.MaterialDefinition.PropertyParser.Properties[
+							Plugin.MaterialDefinition.PropertyParser.Properties[
 								mdp.Name
 							]
 					).Clone();

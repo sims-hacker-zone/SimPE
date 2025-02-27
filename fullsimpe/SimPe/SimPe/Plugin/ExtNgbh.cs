@@ -47,8 +47,8 @@ namespace SimPe.Plugin
 		{
 			ArrayList list = new ArrayList();
 			foreach (
-				Cache.MemoryCacheItem mci in SimPe
-					.PackedFiles
+				Cache.MemoryCacheItem mci in
+					PackedFiles
 					.Wrapper
 					.ObjectComboBox
 					.ObjectCache
@@ -144,7 +144,7 @@ namespace SimPe.Plugin
 				}
 			);
 
-			if (SimPe.PathProvider.Global.EPInstalled >= 13)
+			if (PathProvider.Global.EPInstalled >= 13)
 			{
 				list.AddRange(
 					new NgbhValueDescriptor[]
@@ -163,7 +163,7 @@ namespace SimPe.Plugin
 				);
 			}
 
-			if (PathProvider.Global.GetExpansion(SimPe.Expansions.IslandStories).Exists)
+			if (PathProvider.Global.GetExpansion(Expansions.IslandStories).Exists)
 			{
 				list.AddRange(
 					new NgbhValueDescriptor[]
@@ -187,7 +187,7 @@ namespace SimPe.Plugin
 		#endregion
 
 		public ExtNgbh()
-			: base(FileTable.ProviderRegistry) { }
+			: base(FileTableBase.ProviderRegistry) { }
 
 		#region AbstractWrapper Member
 		protected override IPackedFileUI CreateDefaultUIHandler()

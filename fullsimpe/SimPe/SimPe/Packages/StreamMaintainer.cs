@@ -141,7 +141,7 @@ namespace SimPe.Packages
 
 				string name = FileStream.Name;
 				FileStream = null;
-				FileStream = new FileStream(name, System.IO.FileMode.OpenOrCreate, fa);
+				FileStream = new FileStream(name, FileMode.OpenOrCreate, fa);
 			}
 			catch (Exception ex)
 			{
@@ -249,7 +249,7 @@ namespace SimPe.Packages
 		{
 			filename = filename.Trim().ToLower();
 			return locked.Contains(filename)
-				|| (checkfiletable && SimPe.FileTableBase.FileIndex.Contains(filename));
+				|| (checkfiletable && FileTableBase.FileIndex.Contains(filename));
 		}
 
 		/// <summary>
@@ -308,12 +308,12 @@ namespace SimPe.Packages
 		/// </summary>
 		public static void CleanupTeleport()
 		{
-			string[] files = System.IO.Directory.GetFiles(Helper.SimPeTeleportPath);
+			string[] files = Directory.GetFiles(Helper.SimPeTeleportPath);
 			foreach (string file in files)
 			{
 				try
 				{
-					SimPe.Packages.StreamFactory.CloseStream(file);
+					CloseStream(file);
 					System.IO.File.Delete(file);
 				}
 				catch (Exception ex)
@@ -321,14 +321,14 @@ namespace SimPe.Packages
 					Console.WriteLine(ex);
 				}
 			}
-			string[] subdirs = System.IO.Directory.GetDirectories(
+			string[] subdirs = Directory.GetDirectories(
 				Helper.SimPeTeleportPath
 			);
 			foreach (string subdir in subdirs)
 			{
 				try
 				{
-					System.IO.Directory.Delete(subdir, true);
+					Directory.Delete(subdir, true);
 				}
 				catch { }
 			}
@@ -445,7 +445,7 @@ namespace SimPe.Packages
 				si.Close();
 				si.SetFileStream(
 					create
-						? new FileStream(filename, System.IO.FileMode.OpenOrCreate, fa)
+						? new FileStream(filename, FileMode.OpenOrCreate, fa)
 						: null
 				);
 				return si;

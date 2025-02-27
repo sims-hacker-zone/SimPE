@@ -21,7 +21,7 @@ namespace SimPe.Plugin.Downloads
 			if (pfds.Length > 0)
 			{
 				PackedFiles.Wrapper.StrItemList items =
-					Downloads.DefaultTypeHandler.GetCtssItems(pfds[0], pkg);
+					DefaultTypeHandler.GetCtssItems(pfds[0], pkg);
 				if (items.Length > 0)
 				{
 					nfo.Name = items[0].Title;

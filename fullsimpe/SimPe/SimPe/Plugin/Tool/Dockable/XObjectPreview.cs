@@ -54,7 +54,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 
 			//Original Implementation
-			if (oci.Class == SimPe.Cache.ObjectClass.Object)
+			if (oci.Class == Cache.ObjectClass.Object)
 			{
 				cpf = null;
 				base.SetFromObjectCacheItem(oci);
@@ -141,11 +141,11 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.lbEPs.Visible = this.lbEPList.Visible = false;
 
 			SetupCategories(
-				SimPe.Cache.ObjectCacheItem.GetCategory(
-					SimPe.Cache.ObjectCacheItemVersions.DockableOW,
+				Cache.ObjectCacheItem.GetCategory(
+					Cache.ObjectCacheItemVersions.DockableOW,
 					(Data.ObjFunctionSubSort)GetFunctionSort(cpf),
 					Data.ObjectTypes.Normal,
-					SimPe.Cache.ObjectClass.XObject
+					Cache.ObjectClass.XObject
 				)
 			);
 
@@ -347,7 +347,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		{
 			if (xthumbs == null)
 			{
-				xthumbs = SimPe.Packages.File.LoadFromFile(
+				xthumbs = Packages.File.LoadFromFile(
 					System.IO.Path.Combine(
 						PathProvider.SimSavegameFolder,
 						"Thumbnails\\BuildModeThumbnails.package"
@@ -356,7 +356,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 
 			Packages.File tmbs = xthumbs;
-			Data.XObjFunctionSubSort fss = ObjectPreview.GetFunctionSort(cpf);
+			Data.XObjFunctionSubSort fss = GetFunctionSort(cpf);
 			uint inst = cpf.GetSaveItem("guid").UIntegerValue;
 			uint grp = cpf.FileDescriptor.Group;
 			if (cpf.GetItem("thumbnailinstanceid") != null)
@@ -399,7 +399,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				types = new uint[] { 0x4D533EDD };
 				if (nthumbs == null)
 				{
-					nthumbs = SimPe.Packages.File.LoadFromFile(
+					nthumbs = Packages.File.LoadFromFile(
 						System.IO.Path.Combine(
 							PathProvider.SimSavegameFolder,
 							"Thumbnails\\CANHObjectsThumbnails.package"

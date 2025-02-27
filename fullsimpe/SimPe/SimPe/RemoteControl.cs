@@ -400,7 +400,7 @@ namespace SimPe
 			Interfaces.Files.IPackageFile pkg
 		)
 		{
-			return OpenPackedFile(FileTable.FileIndex.CreateFileIndexItem(pfd, pkg));
+			return OpenPackedFile(FileTableBase.FileIndex.CreateFileIndexItem(pfd, pkg));
 		}
 
 		/// <summary>
@@ -479,7 +479,7 @@ namespace SimPe
 			f.Controls.Add(pg);
 			pg.Dock = System.Windows.Forms.DockStyle.Fill;
 			pg.SelectedObject = settings.GetSettingsObject();
-			RemoteControl.ShowSubForm(f);
+			ShowSubForm(f);
 			f.Dispose();
 		}
 

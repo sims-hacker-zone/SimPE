@@ -350,7 +350,7 @@ namespace SimPe
 
 		public void Wait()
 		{
-			Message = SimPe.Localization.GetString("Please Wait");
+			Message = Localization.GetString("Please Wait");
 			Image = null;
 			Waiting = true;
 		}
@@ -358,7 +358,7 @@ namespace SimPe
 		public void Wait(int max)
 		{
 			ShowProgress = true;
-			Message = SimPe.Localization.GetString("Please Wait");
+			Message = Localization.GetString("Please Wait");
 			Image = null;
 			MaxProgress = max;
 			Waiting = true;

@@ -205,9 +205,9 @@ namespace SimPe.Windows.Forms
 
 				names.Clear();
 
-				if (FileTable.WrapperRegistry != null)
+				if (FileTableBase.WrapperRegistry != null)
 				{
-					lv.SmallImageList = FileTable.WrapperRegistry.WrapperImageList;
+					lv.SmallImageList = FileTableBase.WrapperRegistry.WrapperImageList;
 				}
 				//if (resources != this.resources)
 				{

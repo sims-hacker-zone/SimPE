@@ -54,22 +54,22 @@ namespace SimPe.Plugin
 					continue;
 				}
 
-				SimPe.Message.Show(Help()[0]);
+				Message.Show(Help()[0]);
 				return true;
 			}
 
 			if (input.Length == 0 || output.Length == 0)
 			{
-				SimPe.Message.Show(Help()[0]);
+				Message.Show(Help()[0]);
 				return true;
 			}
 			if (!System.IO.File.Exists(input))
 			{
-				SimPe.Message.Show(Help()[0]);
+				Message.Show(Help()[0]);
 				return true;
 			}
 
-			GeneratableFile pkg = GeneratableFile.LoadFromStream(
+			GeneratableFile pkg = File.LoadFromStream(
 				XmlPackageReader.OpenExtractedPackage(null, input)
 			);
 			pkg.Save(output);

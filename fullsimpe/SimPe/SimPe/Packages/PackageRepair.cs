@@ -216,7 +216,7 @@ namespace SimPe.Packages
 
 			BinaryReader br = pkg.Reader;
 			int step = 0x18;
-			if (pkg.Header.IndexType == SimPe.Data.MetaData.IndexTypes.ptShortFileIndex)
+			if (pkg.Header.IndexType == Data.MetaData.IndexTypes.ptShortFileIndex)
 			{
 				step = 0x14;
 			}
@@ -225,7 +225,7 @@ namespace SimPe.Packages
 
 			long lastitem = -1;
 			long firstitem = -1;
-			SimPe.WaitingScreen.Wait();
+			WaitingScreen.Wait();
 
 			try
 			{

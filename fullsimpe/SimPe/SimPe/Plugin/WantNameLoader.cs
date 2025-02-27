@@ -54,7 +54,7 @@ namespace SimPe.Plugin
 		/// Create a New Instance
 		/// </summary>
 		public WantNameLoader()
-			: this(SimPe.PackedFiles.Wrapper.SDescVersions.Nightlife) { }
+			: this(PackedFiles.Wrapper.SDescVersions.Nightlife) { }
 
 		/// <summary>
 		/// Create a New Instance
@@ -107,10 +107,10 @@ namespace SimPe.Plugin
 		void ParseXml(PackedFiles.Wrapper.SDescVersions version)
 		{
 			// version is Sdsc version - must be converted to EP version
-			ExpansionItem ei = SimPe.PackedFiles.Wrapper.SDesc.GetIEVersion(version);
+			ExpansionItem ei = PackedFiles.Wrapper.SDesc.GetIEVersion(version);
 			if (ei != null)
 			{
-				Packages.File pkg = SimPe.Packages.File.LoadFromFile(
+				Packages.File pkg = Packages.File.LoadFromFile(
 					System.IO.Path.Combine(
 						ei.InstallFolder,
 						"TSData\\Res\\Wants\\WantTuning.package"
@@ -231,13 +231,13 @@ namespace SimPe.Plugin
 			Hashtable ht = new Hashtable();
 			Map[WantType.Sim] = ht;
 
-			if (FileTable.ProviderRegistry == null)
+			if (FileTableBase.ProviderRegistry == null)
 			{
 				return;
 			}
 
 			foreach (
-				ushort inst in FileTable
+				ushort inst in FileTableBase
 					.ProviderRegistry
 					.SimDescriptionProvider
 					.SimInstance
@@ -245,10 +245,10 @@ namespace SimPe.Plugin
 			)
 			{
 				Interfaces.Wrapper.ISDesc isdsc =
-					FileTable.ProviderRegistry.SimDescriptionProvider.FindSim(inst);
+					FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(inst);
 				PackedFiles.Wrapper.SDesc sdsc =
 					(PackedFiles.Wrapper.SDesc)isdsc;
-				sdsc.SetProviders(FileTable.ProviderRegistry);
+				sdsc.SetProviders(FileTableBase.ProviderRegistry);
 				//Data.Alias a = new SimPe.Data.Alias(inst, sdsc.SimName+" "+sdsc.SimFamilyName+" ("+sdsc.HouseholdName+")");
 				ht[(uint)inst] =
 					sdsc.SimName

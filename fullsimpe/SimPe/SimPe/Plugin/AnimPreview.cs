@@ -95,7 +95,7 @@ namespace SimPe.Plugin
 			this.xpGradientPanel1.Controls.Add(this.btPlay);
 			this.xpGradientPanel1.Controls.Add(this.tv);
 			this.xpGradientPanel1.Controls.Add(this.lb);
-			this.xpGradientPanel1.Dock = System.Windows.Forms.DockStyle.Right;
+			this.xpGradientPanel1.Dock = DockStyle.Right;
 			this.xpGradientPanel1.Location = new Point(496, 0);
 			this.xpGradientPanel1.Name = "xpGradientPanel1";
 			this.xpGradientPanel1.Size = new Size(280, 454);
@@ -103,7 +103,7 @@ namespace SimPe.Plugin
 			//
 			// pb
 			//
-			this.pb.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.pb.Dock = DockStyle.Bottom;
 			this.pb.Location = new Point(0, 438);
 			this.pb.Name = "pb";
 			this.pb.Size = new Size(280, 16);
@@ -114,8 +114,8 @@ namespace SimPe.Plugin
 			this.btPlay.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -148,7 +148,7 @@ namespace SimPe.Plugin
 			//
 			// panel1
 			//
-			this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.panel1.Dock = DockStyle.Fill;
 			this.panel1.Location = new Point(0, 0);
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new Size(496, 454);
@@ -167,13 +167,13 @@ namespace SimPe.Plugin
 			this.Font = new Font(
 				"Tahoma",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.Icon = ((Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "AnimPreview";
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			this.StartPosition = FormStartPosition.CenterScreen;
 			this.Text = "Animation Preview";
 			this.xpGradientPanel1.ResumeLayout(false);
 			this.ResumeLayout(false);
@@ -210,7 +210,7 @@ namespace SimPe.Plugin
 			try
 			{
 				WaitingScreen.UpdateMessage(
-					SimPe.Localization.GetString("Loading Meshes")
+					Localization.GetString("Loading Meshes")
 				);
 				int ct = 0;
 				foreach (Anim.AnimationMeshBlock amb in anim.MeshBlock)
@@ -231,7 +231,7 @@ namespace SimPe.Plugin
 		}
 
 		Gmdc.ElementOrder eo = new Gmdc.ElementOrder(
-			SimPe.Plugin.Gmdc.ElementSorting.XYZ
+			Gmdc.ElementSorting.XYZ
 		);
 
 		void AddJoint(

@@ -161,7 +161,7 @@ namespace SimPe.Plugin
 			InitializeComponent();
 
 			wrapper = null;
-			this.cborient.ResourceManager = SimPe.Localization.Manager;
+			this.cborient.ResourceManager = Localization.Manager;
 			this.cborient.Enum = typeof(LotOrientation);
 
 			if (!Helper.WindowsRegistry.UseBigIcons)
@@ -324,7 +324,7 @@ namespace SimPe.Plugin
 			// ltxtPanel
 			//
 			resources.ApplyResources(this.ltxtPanel, "ltxtPanel");
-			this.ltxtPanel.BackColor = System.Drawing.Color.Transparent;
+			this.ltxtPanel.BackColor = Color.Transparent;
 			this.ltxtPanel.Controls.Add(this.lbPlayim);
 			this.ltxtPanel.Controls.Add(this.gbApart);
 			this.ltxtPanel.Controls.Add(this.tbdesc);
@@ -377,7 +377,7 @@ namespace SimPe.Plugin
 			// lbPlayim
 			//
 			resources.ApplyResources(this.lbPlayim, "lbPlayim");
-			this.lbPlayim.ForeColor = System.Drawing.Color.Blue;
+			this.lbPlayim.ForeColor = Color.Blue;
 			this.lbPlayim.Name = "lbPlayim";
 			//
 			// gbApart
@@ -525,7 +525,7 @@ namespace SimPe.Plugin
 			//
 			// gbtravel
 			//
-			this.gbtravel.BackColor = System.Drawing.Color.Transparent;
+			this.gbtravel.BackColor = Color.Transparent;
 			this.gbtravel.Controls.Add(this.cbtrjflag5);
 			this.gbtravel.Controls.Add(this.cbtrjflag4);
 			this.gbtravel.Controls.Add(this.cbtrjflag3);
@@ -743,7 +743,7 @@ namespace SimPe.Plugin
 			//
 			// gbhobby
 			//
-			this.gbhobby.BackColor = System.Drawing.Color.Transparent;
+			this.gbhobby.BackColor = Color.Transparent;
 			this.gbhobby.Controls.Add(this.cbhbmusic);
 			this.gbhobby.Controls.Add(this.cbhbsport);
 			this.gbhobby.Controls.Add(this.cbhbscience);
@@ -1249,7 +1249,7 @@ namespace SimPe.Plugin
 			//
 			// tbver
 			//
-			this.tbver.BackColor = System.Drawing.SystemColors.Window;
+			this.tbver.BackColor = SystemColors.Window;
 			resources.ApplyResources(this.tbver, "tbver");
 			this.tbver.Name = "tbver";
 			this.tbver.ReadOnly = true;
@@ -1267,7 +1267,7 @@ namespace SimPe.Plugin
 			//
 			// tbsubver
 			//
-			this.tbsubver.BackColor = System.Drawing.SystemColors.Window;
+			this.tbsubver.BackColor = SystemColors.Window;
 			resources.ApplyResources(this.tbsubver, "tbsubver");
 			this.tbsubver.Name = "tbsubver";
 			this.tbsubver.ReadOnly = true;
@@ -1304,7 +1304,7 @@ namespace SimPe.Plugin
 			//
 			// tbtype
 			//
-			this.tbtype.BackColor = System.Drawing.SystemColors.Window;
+			this.tbtype.BackColor = SystemColors.Window;
 			resources.ApplyResources(this.tbtype, "tbtype");
 			this.tbtype.Name = "tbtype";
 			this.tbtype.ReadOnly = true;
@@ -2037,7 +2037,7 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			SimPe.RemoteControl.OpenPackedFile(pfd, wrapper.Package);
+			RemoteControl.OpenPackedFile(pfd, wrapper.Package);
 		}
 
 		private void btnAddApt_Click(object sender, EventArgs e)
@@ -2103,7 +2103,7 @@ namespace SimPe.Plugin
 			}
 
 			PackedFiles.Wrapper.ExtSDesc sdsc =
-				FileTable.ProviderRegistry.SimDescriptionProvider.SimInstance[
+				FileTableBase.ProviderRegistry.SimDescriptionProvider.SimInstance[
 					(ushort)simmy
 				] as PackedFiles.Wrapper.ExtSDesc;
 			if (sdsc != null)
@@ -2115,7 +2115,7 @@ namespace SimPe.Plugin
 					sdsc.FileDescriptor.Instance
 				);
 				pfd = sdsc.Package.FindFile(pfd);
-				SimPe.RemoteControl.OpenPackedFile(pfd, sdsc.Package);
+				RemoteControl.OpenPackedFile(pfd, sdsc.Package);
 			}
 		}
 

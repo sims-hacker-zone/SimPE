@@ -112,11 +112,11 @@ namespace SimPe.Plugin
 			//
 			// pb
 			//
-			this.pb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.pb.BorderStyle = BorderStyle.FixedSingle;
 			this.pb.Location = new Point(16, 24);
 			this.pb.Name = "pb";
 			this.pb.Size = new Size(128, 128);
-			this.pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pb.SizeMode = PictureBoxSizeMode.Zoom;
 			this.pb.TabIndex = 0;
 			this.pb.TabStop = false;
 			//
@@ -126,8 +126,8 @@ namespace SimPe.Plugin
 			this.linkLabel1.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Bold,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Bold,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.linkLabel1.LinkArea = new LinkArea(0, 4);
@@ -152,7 +152,7 @@ namespace SimPe.Plugin
 			//
 			// groupBox1
 			//
-			this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+			this.groupBox1.BackColor = Color.Transparent;
 			this.groupBox1.Controls.Add(this.cbformat);
 			this.groupBox1.Controls.Add(this.label6);
 			this.groupBox1.Controls.Add(this.tbheight);
@@ -168,8 +168,8 @@ namespace SimPe.Plugin
 			this.groupBox1.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Bold,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Bold,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.groupBox1.Location = new Point(160, 8);
@@ -181,16 +181,14 @@ namespace SimPe.Plugin
 			//
 			// cbformat
 			//
-			this.cbformat.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbformat.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbformat.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.cbformat.Items.AddRange(
@@ -225,8 +223,8 @@ namespace SimPe.Plugin
 			this.label6.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.label6.Location = new Point(136, 48);
@@ -240,8 +238,8 @@ namespace SimPe.Plugin
 			this.tbheight.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.tbheight.Location = new Point(152, 40);
@@ -256,8 +254,8 @@ namespace SimPe.Plugin
 			this.tbwidth.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.tbwidth.Location = new Point(80, 40);
@@ -272,8 +270,8 @@ namespace SimPe.Plugin
 			this.tblevel.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.tblevel.Location = new Point(80, 16);
@@ -288,8 +286,8 @@ namespace SimPe.Plugin
 			this.cbfilter.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.cbfilter.IntegralHeight = false;
@@ -324,8 +322,8 @@ namespace SimPe.Plugin
 			this.label5.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.label5.Location = new Point(35, 120);
@@ -336,16 +334,14 @@ namespace SimPe.Plugin
 			//
 			// cbsharpen
 			//
-			this.cbsharpen.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbsharpen.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbsharpen.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.cbsharpen.Items.AddRange(
@@ -380,8 +376,8 @@ namespace SimPe.Plugin
 			this.label4.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.label4.Location = new Point(16, 96);
@@ -396,8 +392,8 @@ namespace SimPe.Plugin
 			this.label3.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.label3.Location = new Point(23, 72);
@@ -412,8 +408,8 @@ namespace SimPe.Plugin
 			this.label2.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.label2.Location = new Point(40, 48);
@@ -428,8 +424,8 @@ namespace SimPe.Plugin
 			this.label1.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.label1.Location = new Point(28, 24);
@@ -443,12 +439,12 @@ namespace SimPe.Plugin
 			this.button1.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.button1.FlatStyle = FlatStyle.System;
 			this.button1.Location = new Point(397, 224);
 			this.button1.Name = "button1";
 			this.button1.Size = new Size(75, 23);
@@ -467,11 +463,11 @@ namespace SimPe.Plugin
 			this.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			this.FormBorderStyle = FormBorderStyle.FixedDialog;
 			this.Icon = ((Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;

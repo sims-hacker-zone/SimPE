@@ -37,9 +37,9 @@ namespace SimPe.Plugin
 
 		public WorkshopToolFactory()
 		{
-			SimPe.Plugin.MmatWrapper.GlobalCpfPreview =
+			MmatWrapper.GlobalCpfPreview =
 				new PackedFiles.UserInterface.CpfUI.ExecutePreview(
-					SimPe.Plugin.PreviewForm.Execute
+					PreviewForm.Execute
 				);
 		}
 
@@ -156,8 +156,8 @@ namespace SimPe.Plugin
 
 			public void ShowHelp(ShowHelpEventArgs e)
 			{
-				SimPe.RemoteControl.ShowHelp(
-					"file://" + SimPe.Helper.SimPePath + "/Doc/OWoptions.htm"
+				RemoteControl.ShowHelp(
+					"file://" + Helper.SimPePath + "/Doc/OWoptions.htm"
 				);
 			}
 		}

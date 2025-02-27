@@ -88,9 +88,9 @@ namespace SimPe.PackedFiles.UserInterface
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -98,7 +98,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.pbDom.LineColor = System.Drawing.SystemColors.ScrollBar;
 			this.pbDom.Location = new System.Drawing.Point(16, 50);
 			this.pbDom.Name = "pbDom";
-			this.pbDom.PropertySort = System.Windows.Forms.PropertySort.Alphabetical;
+			this.pbDom.PropertySort = PropertySort.Alphabetical;
 			this.pbDom.Size = new System.Drawing.Size(648, 96);
 			this.pbDom.TabIndex = 0;
 			this.pbDom.ToolbarVisible = false;
@@ -141,9 +141,9 @@ namespace SimPe.PackedFiles.UserInterface
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -151,7 +151,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.pbRec.LineColor = System.Drawing.SystemColors.ScrollBar;
 			this.pbRec.Location = new System.Drawing.Point(16, 170);
 			this.pbRec.Name = "pbRec";
-			this.pbRec.PropertySort = System.Windows.Forms.PropertySort.Alphabetical;
+			this.pbRec.PropertySort = PropertySort.Alphabetical;
 			this.pbRec.Size = new System.Drawing.Size(648, 96);
 			this.pbRec.TabIndex = 2;
 			this.pbRec.ToolbarVisible = false;
@@ -161,8 +161,8 @@ namespace SimPe.PackedFiles.UserInterface
 			this.lbbody.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -190,10 +190,10 @@ namespace SimPe.PackedFiles.UserInterface
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -250,7 +250,7 @@ namespace SimPe.PackedFiles.UserInterface
 				this.lbbody.Text =
 					"Bodyshape = "
 					+ Data.MetaData.GetBodyName(
-						SimPe.Data.MetaData.GetBodyShapeid(Sdna.Dominant.Skintone)
+						Data.MetaData.GetBodyShapeid(Sdna.Dominant.Skintone)
 					);
 				if (
 					this.lbbody.Text == "Bodyshape = Unknown"
@@ -265,7 +265,7 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 
 				Wrapper.SDesc sdsc =
-					FileTable.ProviderRegistry.SimDescriptionProvider.FindSim(
+					FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
 						(ushort)Wrapper.FileDescriptor.Instance
 					) as Wrapper.SDesc;
 				if (sdsc == null)
@@ -292,7 +292,7 @@ namespace SimPe.PackedFiles.UserInterface
 				lbcpf.Visible = true;
 				lbcpf.Items.Clear();
 				Wrapper.SDesc sdsc =
-					FileTable.ProviderRegistry.SimDescriptionProvider.FindSim(
+					FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
 						(ushort)Wrapper.FileDescriptor.Instance
 					) as Wrapper.SDesc;
 				if (sdsc == null)

@@ -112,14 +112,14 @@ namespace SimPe.Plugin
 			//
 			// ilist
 			//
-			this.ilist.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+			this.ilist.ColorDepth = ColorDepth.Depth32Bit;
 			resources.ApplyResources(this.ilist, "ilist");
-			this.ilist.TransparentColor = System.Drawing.Color.Transparent;
+			this.ilist.TransparentColor = Color.Transparent;
 			//
 			// btnOpen
 			//
 			resources.ApplyResources(this.btnOpen, "btnOpen");
-			this.btnOpen.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.btnOpen.DialogResult = DialogResult.OK;
 			this.btnOpen.Name = "btnOpen";
 			this.btnOpen.Click += new EventHandler(this.NgbOpen);
 			//
@@ -138,14 +138,14 @@ namespace SimPe.Plugin
 			// pnBackup
 			//
 			resources.ApplyResources(this.pnBackup, "pnBackup");
-			this.pnBackup.BackColor = System.Drawing.Color.Transparent;
+			this.pnBackup.BackColor = Color.Transparent;
 			this.pnBackup.Controls.Add(this.pbox);
 			this.pnBackup.Controls.Add(this.button3);
 			this.pnBackup.Controls.Add(this.button2);
 			this.pnBackup.HeaderFont = new Font(
 				"Microsoft Sans Serif",
 				10.25F,
-				System.Drawing.FontStyle.Bold
+				FontStyle.Bold
 			);
 			this.pnBackup.IconLocation = new Point(4, 12);
 			this.pnBackup.IconSize = new Size(32, 32);
@@ -154,13 +154,13 @@ namespace SimPe.Plugin
 			// pnOptions
 			//
 			resources.ApplyResources(this.pnOptions, "pnOptions");
-			this.pnOptions.BackColor = System.Drawing.Color.Transparent;
+			this.pnOptions.BackColor = Color.Transparent;
 			this.pnOptions.Controls.Add(this.cbtypes);
 			this.pnOptions.Controls.Add(this.label1);
 			this.pnOptions.HeaderFont = new Font(
 				"Microsoft Sans Serif",
 				10.25F,
-				System.Drawing.FontStyle.Bold
+				FontStyle.Bold
 			);
 			this.pnOptions.IconLocation = new Point(4, 12);
 			this.pnOptions.IconSize = new Size(32, 32);
@@ -183,12 +183,12 @@ namespace SimPe.Plugin
 			// btnClose
 			//
 			resources.ApplyResources(this.btnClose, "btnClose");
-			this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.btnClose.DialogResult = DialogResult.Cancel;
 			this.btnClose.Name = "btnClose";
 			//
 			// pnBoPeep
 			//
-			this.pnBoPeep.BackColor = System.Drawing.Color.Transparent;
+			this.pnBoPeep.BackColor = Color.Transparent;
 			this.pnBoPeep.Controls.Add(this.pnOptions);
 			this.pnBoPeep.Controls.Add(this.btnClose);
 			this.pnBoPeep.Controls.Add(this.btnOpen);
@@ -209,10 +209,8 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this, "$this");
 			this.CancelButton = this.btnClose;
 			this.Controls.Add(this.pnBoPeep);
-			this.FormBorderStyle = System
-				.Windows
-				.Forms
-				.FormBorderStyle
+			this.FormBorderStyle =
+				FormBorderStyle
 				.SizableToolWindow;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
@@ -269,7 +267,7 @@ namespace SimPe.Plugin
 				}
 				catch (ArgumentException) { }
 			}
-			this.ilist.Images.Add(new Bitmap(SimPe.GetImage.Network));
+			this.ilist.Images.Add(new Bitmap(GetImage.Network));
 		}
 
 		protected void AddNeighborhood(ExpansionItem.NeighborhoodPath np, string path)
@@ -320,7 +318,7 @@ namespace SimPe.Plugin
 				ret = true;
 				try
 				{
-					Packages.File pk = SimPe.Packages.File.LoadFromFile(name);
+					Packages.File pk = Packages.File.LoadFromFile(name);
 					NeighborhoodType t;
 					name = LoadLabel(pk, out t);
 				}
@@ -353,7 +351,7 @@ namespace SimPe.Plugin
 			out NeighborhoodType type
 		)
 		{
-			string name = SimPe.Localization.GetString("Unknown");
+			string name = Localization.GetString("Unknown");
 			type = NeighborhoodType.Normal;
 			try
 			{
@@ -429,7 +427,7 @@ namespace SimPe.Plugin
 				{
 					if (
 						PathProvider
-							.Global.GetExpansion(SimPe.Expansions.IslandStories)
+							.Global.GetExpansion(Expansions.IslandStories)
 							.Exists
 					)
 					{
@@ -452,7 +450,7 @@ namespace SimPe.Plugin
 					}
 					if (
 						PathProvider
-							.Global.GetExpansion(SimPe.Expansions.PetStories)
+							.Global.GetExpansion(Expansions.PetStories)
 							.Exists
 					)
 					{
@@ -475,7 +473,7 @@ namespace SimPe.Plugin
 					}
 					if (
 						PathProvider
-							.Global.GetExpansion(SimPe.Expansions.LifeStories)
+							.Global.GetExpansion(Expansions.LifeStories)
 							.Exists
 					)
 					{
@@ -567,7 +565,7 @@ namespace SimPe.Plugin
 
 				foreach (string file in files)
 				{
-					Packages.File pk = SimPe.Packages.File.LoadFromFile(file);
+					Packages.File pk = Packages.File.LoadFromFile(file);
 					NeighborhoodType type;
 					string name = LoadLabel(pk, out type);
 					NgbhType nt = new NgbhType(file, name, type);
@@ -600,7 +598,7 @@ namespace SimPe.Plugin
 			{
 				if (LoadNgbh)
 				{
-					package = SimPe.Packages.GeneratableFile.LoadFromFile(
+					package = Packages.File.LoadFromFile(
 						ngbh.FileName
 					);
 				}
@@ -637,7 +635,7 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			SimPe.Packages.StreamFactory.CloseAll();
+			Packages.StreamFactory.CloseAll();
 			string path = System
 				.IO.Path.GetDirectoryName(lv.SelectedItems[0].SubItems[1].Text)
 				.Trim();
@@ -783,7 +781,7 @@ if (pbpay.Value == 5) inst = 0xABBA2582;
 if (pbpay.Value == 6) inst = 0xABBA2578;
 if (pbpay.Value == 7) inst = 0xABBA2575;
 */
-			Packages.File pkg = SimPe.Packages.File.LoadFromFile(
+			Packages.File pkg = Packages.File.LoadFromFile(
 				System.IO.Path.Combine(
 					PathProvider.Global.Latest.InstallFolder,
 					"TSData\\Res\\UI\\ui.package"

@@ -31,7 +31,7 @@ namespace Ambertation.Windows.Forms.Graph
 		public RoundedPanel()
 			: base()
 		{
-			base.BackColor = Color.Transparent;
+			BackColor = Color.Transparent;
 			bg = Color.DarkOrange;
 			gradcl = Color.White;
 			bdcl = Color.FromArgb(90, Color.Black);
@@ -147,13 +147,13 @@ namespace Ambertation.Windows.Forms.Graph
 					src.Top,
 					src.Width,
 					src.Height,
-					System.Drawing.GraphicsUnit.Pixel,
+					GraphicsUnit.Pixel,
 					imgAttributes
 				);
 			}
 			else
 			{
-				g.DrawImage(canvas, dst, src, System.Drawing.GraphicsUnit.Pixel);
+				g.DrawImage(canvas, dst, src, GraphicsUnit.Pixel);
 			}
 		}
 
@@ -284,7 +284,7 @@ namespace Ambertation.Windows.Forms.Graph
 				blend.Positions = relativePositions;
 				linGrBrush.Blend = blend;
 
-				Ambertation.Drawing.GraphicRoutines.FillRoundRect(
+				Drawing.GraphicRoutines.FillRoundRect(
 					gr,
 					linGrBrush,
 					srect,
@@ -295,7 +295,7 @@ namespace Ambertation.Windows.Forms.Graph
 			else
 			{
 				Brush b = new SolidBrush(bg);
-				Ambertation.Drawing.GraphicRoutines.FillRoundRect(gr, b, srect, rad);
+				Drawing.GraphicRoutines.FillRoundRect(gr, b, srect, rad);
 				b.Dispose();
 			}
 
@@ -318,13 +318,13 @@ namespace Ambertation.Windows.Forms.Graph
 		{
 			Rectangle srect = new Rectangle(left, top, width - 1, height - 1);
 			Pen linepen = new Pen(borderColor);
-			Ambertation.Drawing.GraphicRoutines.DrawRoundRect(gr, linepen, srect, rad);
+			Drawing.GraphicRoutines.DrawRoundRect(gr, linepen, srect, rad);
 			linepen.Dispose();
 
 			if (!focused)
 			{
 				Brush b = new SolidBrush(fadeColor);
-				Ambertation.Drawing.GraphicRoutines.FillRoundRect(gr, b, srect, rad);
+				Drawing.GraphicRoutines.FillRoundRect(gr, b, srect, rad);
 				b.Dispose();
 			}
 		}

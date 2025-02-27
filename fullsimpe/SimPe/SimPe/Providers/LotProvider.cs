@@ -274,7 +274,7 @@ namespace SimPe.Providers
 
 		protected uint GetInstanceFromFilename(string flname)
 		{
-			flname = System.IO.Path.GetFileNameWithoutExtension(flname).ToLower();
+			flname = Path.GetFileNameWithoutExtension(flname).ToLower();
 			int pos = flname.IndexOf("_lot");
 			flname = flname.Substring(pos + 4);
 
@@ -316,7 +316,7 @@ namespace SimPe.Providers
 						Data.MetaData.LOCAL_GROUP,
 						0x00000A46
 					);
-					string name = SimPe.Localization.GetString("Unknown");
+					string name = Localization.GetString("Unknown");
 					if (pfd != null)
 					{
 						PackedFiles.Wrapper.Str str =
@@ -389,12 +389,12 @@ namespace SimPe.Providers
 
 		void AddHoodsToFileIndex()
 		{
-			string mydir = System.IO.Directory.GetParent(dir).FullName;
-			string[] names = System.IO.Directory.GetFiles(mydir, ngbh + "_*.package");
+			string mydir = Directory.GetParent(dir).FullName;
+			string[] names = Directory.GetFiles(mydir, ngbh + "_*.package");
 			foreach (string name in names)
 			{
 				Packages.GeneratableFile pkg =
-					SimPe.Packages.GeneratableFile.LoadFromFile(name);
+					Packages.File.LoadFromFile(name);
 				ngbhfi.AddTypesIndexFromPackage(pkg, 0x0BF999E7, false);
 			}
 		}
@@ -402,11 +402,11 @@ namespace SimPe.Providers
 		void AddLotsToFileIndex()
 		{
 			//ngbhfi.AddIndexFromFolder(dir);
-			string[] names = System.IO.Directory.GetFiles(dir, ngbh + "*_Lot*.package");
+			string[] names = Directory.GetFiles(dir, ngbh + "*_Lot*.package");
 			foreach (string name in names)
 			{
 				Packages.GeneratableFile pkg =
-					SimPe.Packages.GeneratableFile.LoadFromFile(name);
+					Packages.File.LoadFromFile(name);
 				ngbhfi.AddTypesIndexFromPackage(pkg, 0x856DDBAC, false);
 			}
 		}
@@ -451,7 +451,7 @@ namespace SimPe.Providers
 			{
 				return new LotItem(
 					inst,
-					SimPe.Localization.GetString("Unknown"),
+					Localization.GetString("Unknown"),
 					null,
 					null
 				);

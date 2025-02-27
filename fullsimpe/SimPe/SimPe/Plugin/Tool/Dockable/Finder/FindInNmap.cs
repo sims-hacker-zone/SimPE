@@ -43,7 +43,7 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 				return;
 			}
 
-			Nmap nmap = new Nmap(FileTable.ProviderRegistry);
+			Nmap nmap = new Nmap(FileTableBase.ProviderRegistry);
 			nmap.ProcessData(pfd, pkg);
 
 			//check all stored nMap entries for a match
@@ -76,7 +76,7 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 				if (found)
 				{
 					Interfaces.Scenegraph.IScenegraphFileIndexItem[] rfiis =
-						FileTable.FileIndex.FindFileDiscardingHighInstance(
+						FileTableBase.FileIndex.FindFileDiscardingHighInstance(
 							pfd.Instance,
 							mypfd.Group,
 							mypfd.Instance,

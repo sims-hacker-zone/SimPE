@@ -67,21 +67,21 @@ namespace SimPe
 			package.AfterFileSave += new PackageFileSavedEvent(AfterFileSave);
 			package.IndexChanged += new EventHandler(ChangedActiveIndex);
 
-			SimPe.Splash.Screen.SetMessage(
-				SimPe.Localization.GetString("Building View Filter")
+			Splash.Screen.SetMessage(
+				Localization.GetString("Building View Filter")
 			);
 			filter = new ViewFilter();
-			SimPe.Splash.Screen.SetMessage(
-				SimPe.Localization.GetString("Starting Resource Loader")
+			Splash.Screen.SetMessage(
+				Localization.GetString("Starting Resource Loader")
 			);
 			resloader = new ResourceLoader(dc, package);
-			SimPe.Splash.Screen.SetMessage(
-				SimPe.Localization.GetString("Enabling RemoteControl")
+			Splash.Screen.SetMessage(
+				Localization.GetString("Enabling RemoteControl")
 			);
 			remote = new RemoteHandler(this, package, resloader, miWindow);
 
-			SimPe.Splash.Screen.SetMessage(
-				SimPe.Localization.GetString("Loading Plugins...")
+			Splash.Screen.SetMessage(
+				Localization.GetString("Loading Plugins...")
 			);
 			plugger = new PluginManager(
 				miTools,
@@ -142,13 +142,13 @@ namespace SimPe
 
 			if (Helper.WindowsRegistry.LoadTableAtStartup)
 			{
-				FileTable.FileIndex.AllowEvent = false;
-				SimPe.Splash.Screen.SetMessage("Loading the FileTable");
-				FileTable.FileIndex.Load();
+				FileTableBase.FileIndex.AllowEvent = false;
+				Splash.Screen.SetMessage("Loading the FileTable");
+				FileTableBase.FileIndex.Load();
 			}
 			else
 			{
-				FileTable.FileIndex.AllowEvent = true;
+				FileTableBase.FileIndex.AllowEvent = true;
 			}
 
 			waitControl1.ShowProgress = false;
@@ -159,8 +159,8 @@ namespace SimPe
 
 		void LoadForm(object sender, EventArgs e)
 		{
-			SimPe.Splash.Screen.SetMessage(
-				SimPe.Localization.GetString("Starting Main Form")
+			Splash.Screen.SetMessage(
+				Localization.GetString("Starting Main Form")
 			);
 
 			this.SuspendLayout();
@@ -187,7 +187,7 @@ namespace SimPe
 				cbsemig.SelectedIndex = 0;
 			}
 
-			if (!System.IO.File.Exists(SimPe.Helper.DataFolder.SimPeLayout))
+			if (!System.IO.File.Exists(Helper.DataFolder.SimPeLayout))
 			{
 				ResetLayout(this, null);
 			}
@@ -225,7 +225,7 @@ namespace SimPe
 
 			this.ResumeLayout();
 
-			SimPe.Splash.Screen.Stop();
+			Splash.Screen.Stop();
 
 			if (Helper.WindowsRegistry.PreviousVersion != Helper.SimPeVersionLong)
 			{

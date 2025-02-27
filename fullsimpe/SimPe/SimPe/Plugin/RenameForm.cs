@@ -76,10 +76,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -92,7 +92,7 @@ namespace SimPe.Plugin
 				}
 			);
 			this.lv.FullRowSelect = true;
-			this.lv.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+			this.lv.HeaderStyle = ColumnHeaderStyle.Nonclickable;
 			this.lv.HideSelection = false;
 			this.lv.LabelEdit = true;
 			this.lv.Location = new System.Drawing.Point(16, 88);
@@ -100,7 +100,7 @@ namespace SimPe.Plugin
 			this.lv.Name = "lv";
 			this.lv.Size = new System.Drawing.Size(682, 208);
 			this.lv.TabIndex = 0;
-			this.lv.View = System.Windows.Forms.View.Details;
+			this.lv.View = View.Details;
 			//
 			// columnHeader1
 			//
@@ -138,9 +138,9 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -155,8 +155,8 @@ namespace SimPe.Plugin
 			this.llname.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -184,12 +184,12 @@ namespace SimPe.Plugin
 			this.button1.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.button1.FlatStyle = FlatStyle.System;
 			this.button1.Location = new System.Drawing.Point(623, 304);
 			this.button1.Name = "button1";
 			this.button1.TabIndex = 5;
@@ -201,12 +201,12 @@ namespace SimPe.Plugin
 			this.cbv2.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
-			this.cbv2.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbv2.FlatStyle = FlatStyle.System;
 			this.cbv2.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -237,10 +237,8 @@ namespace SimPe.Plugin
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.FormBorderStyle = System
-				.Windows
-				.Forms
-				.FormBorderStyle
+			this.FormBorderStyle =
+				FormBorderStyle
 				.SizableToolWindow;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "RenameForm";
@@ -516,7 +514,7 @@ namespace SimPe.Plugin
 					return null;
 				}
 
-				uname = System.Guid.NewGuid().ToString();
+				uname = Guid.NewGuid().ToString();
 			}
 			else
 			{
@@ -569,7 +567,7 @@ namespace SimPe.Plugin
 
 			if (uniquename)
 			{
-				string name = RenameForm.ReplaceOldUnique(old, current_unique, true);
+				string name = ReplaceOldUnique(old, current_unique, true);
 				if (name == old)
 				{
 					name = old + current_unique;

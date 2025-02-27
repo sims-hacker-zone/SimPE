@@ -35,7 +35,7 @@ namespace pj
 		private static void SetPacks()
 		{
 			packs.Clear();
-			foreach (SimPe.FileTableItem fii in SimPe.FileTable.DefaultFolders)
+			foreach (SimPe.FileTableItem fii in SimPe.FileTableBase.DefaultFolders)
 			{
 				if (!fii.Use)
 				{
@@ -102,7 +102,7 @@ namespace pj
 			ofd.FileName = "";
 			ofd.Filter = L.Get("pkgFilter");
 			ofd.FilterIndex = 0;
-			ofd.InitialDirectory = System.IO.Path.Combine(
+			ofd.InitialDirectory = Path.Combine(
 				SimPe.PathProvider.SimSavegameFolder,
 				"SavedSims"
 			);
@@ -290,7 +290,7 @@ namespace pj
 			}
 
 			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item =
-				SimPe.FileTable.FileIndex.FindFileByName(
+				SimPe.FileTableBase.FileIndex.FindFileByName(
 					gmndee,
 					SimPe.Data.MetaData.GMND,
 					SimPe.Data.MetaData.GLOBAL_GROUP,
@@ -548,7 +548,7 @@ namespace pj
 			{
 				packs = new List<string>();
 				SetPacks();
-				SimPe.FileTable.FileIndex.FILoad += new EventHandler(FileIndex_FILoad);
+				SimPe.FileTableBase.FileIndex.FILoad += new EventHandler(FileIndex_FILoad);
 			}
 			Main();
 			return new SimPe.Plugin.ToolResult(false, false);

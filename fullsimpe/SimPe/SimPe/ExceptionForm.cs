@@ -94,7 +94,7 @@ namespace SimPe
 			resources.ApplyResources(this.gbdetail, "gbdetail");
 			this.gbdetail.Controls.Add(this.rtb);
 			this.gbdetail.Controls.Add(this.linkLabel1);
-			this.gbdetail.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.gbdetail.FlatStyle = FlatStyle.System;
 			this.gbdetail.Name = "gbdetail";
 			this.gbdetail.TabStop = false;
 			//
@@ -102,7 +102,7 @@ namespace SimPe
 			//
 			resources.ApplyResources(this.rtb, "rtb");
 			this.rtb.BackColor = System.Drawing.SystemColors.ControlLightLight;
-			this.rtb.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.rtb.BorderStyle = BorderStyle.None;
 			this.rtb.ForeColor = System.Drawing.Color.FromArgb(
 				((int)(((byte)(64)))),
 				((int)(((byte)(64)))),
@@ -187,10 +187,8 @@ namespace SimPe
 			this.Controls.Add(this.panel2);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.gbdetail);
-			this.FormBorderStyle = System
-				.Windows
-				.Forms
-				.FormBorderStyle
+			this.FormBorderStyle =
+				FormBorderStyle
 				.SizableToolWindow;
 			this.Name = "ExceptionForm";
 			this.gbdetail.ResumeLayout(false);
@@ -219,7 +217,7 @@ namespace SimPe
 		{
 			try
 			{
-				System.Windows.Forms.Help.ShowHelp(this, this.tbsup.Text);
+				Help.ShowHelp(this, this.tbsup.Text);
 			}
 			catch (Exception ex)
 			{
@@ -415,8 +413,8 @@ namespace SimPe
 				text += @"\b .NET Version:\par";
 				text +=
 					@"\pard\li284\b0 "
-					+ System
-						.Environment.Version.ToString()
+					+
+						Environment.Version.ToString()
 						.Replace("\\", "\\\\")
 						.Replace("\n", @"\par\pard\li284")
 					+ @"\par";

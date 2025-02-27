@@ -45,7 +45,7 @@ namespace SimPe.Plugin
 				)
 			)
 		{
-			FileTable.FileIndex.RemoveItem(item);
+			FileTableBase.FileIndex.RemoveItem(item);
 		}
 	}
 

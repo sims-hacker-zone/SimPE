@@ -679,7 +679,7 @@ namespace pjOBJDTool
 			IProviderRegistry prov
 		)
 		{
-			Application.OpenForms[0].Cursor = System.Windows.Forms.Cursors.AppStarting;
+			Application.OpenForms[0].Cursor = Cursors.AppStarting;
 
 			if (!initialised)
 			{
@@ -694,7 +694,7 @@ namespace pjOBJDTool
 			List<pfOBJD> apfs = AvailableOBJDs;
 			btnSelectOBJD.Enabled = apfs.Count > 1;
 
-			Application.OpenForms[0].Cursor = System.Windows.Forms.Cursors.Default;
+			Application.OpenForms[0].Cursor = Cursors.Default;
 
 			if (apfs.Count > 1 || apfs.Count == 0)
 			{

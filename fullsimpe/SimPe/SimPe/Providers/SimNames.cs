@@ -72,7 +72,7 @@ namespace SimPe.Providers
 			this.opcodes = opcodes;
 
 			ArrayList folders = new ArrayList();
-			foreach (ExpansionItem ei in SimPe.PathProvider.Global.Expansions)
+			foreach (ExpansionItem ei in PathProvider.Global.Expansions)
 			{
 				if (!ei.Exists)
 				{
@@ -81,13 +81,13 @@ namespace SimPe.Providers
 
 				foreach (string s in ei.SimNameDeepSearch)
 				{
-					string path = System.IO.Path.Combine(
-						SimPe.PathProvider.Global.Latest.InstallFolder,
+					string path = Path.Combine(
+						PathProvider.Global.Latest.InstallFolder,
 						s
 					);
 					if (!Directory.Exists(path))
 					{
-						path = System.IO.Path.Combine(ei.InstallFolder, s);
+						path = Path.Combine(ei.InstallFolder, s);
 					}
 
 					if (Directory.Exists(path))
@@ -191,7 +191,7 @@ namespace SimPe.Providers
 			Alias a = null;
 
 			IPackedFileDescriptor str_pfd = fl.FindFile(
-				Data.MetaData.CTSS_FILE,
+				MetaData.CTSS_FILE,
 				0,
 				objd.FileDescriptor.Group,
 				objd.CTSSInstance
@@ -221,7 +221,7 @@ namespace SimPe.Providers
 			if (a != null)
 			{
 				IPackedFileDescriptor[] piclist = fl.FindFiles(
-					Data.MetaData.SIM_IMAGE_FILE
+					MetaData.SIM_IMAGE_FILE
 				);
 				foreach (IPackedFileDescriptor pfd in piclist)
 				{
@@ -286,7 +286,7 @@ namespace SimPe.Providers
 				characterfi.Load();
 			}
 
-			FileTable.FileIndex.AddChild(characterfi); // why if not DeepSimTemplateScan
+			FileTableBase.FileIndex.AddChild(characterfi); // why if not DeepSimTemplateScan
 			try
 			{
 				ScanFileTable(0x80);
@@ -297,7 +297,7 @@ namespace SimPe.Providers
 			}
 			finally
 			{
-				FileTable.FileIndex.RemoveChild(characterfi);
+				FileTableBase.FileIndex.RemoveChild(characterfi);
 			}
 		}
 
@@ -313,8 +313,8 @@ namespace SimPe.Providers
 			}
 
 			Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-				FileTable.FileIndex.FindFileDiscardingGroup(
-					Data.MetaData.OBJD_FILE,
+				FileTableBase.FileIndex.FindFileDiscardingGroup(
+					MetaData.OBJD_FILE,
 					inst
 				);
 			Wait.MaxProgress = items.Length;
@@ -332,13 +332,13 @@ namespace SimPe.Providers
 				objd.ProcessData(item);
 				if (
 					Helper.WindowsRegistry.DeepSimTemplateScan
-					&& objd.Type == Data.ObjectTypes.Template
+					&& objd.Type == ObjectTypes.Template
 				)
 				{
 					AddSim(objd, ref ct, step, true);
 				}
 
-				if (objd.Type == Data.ObjectTypes.Person)
+				if (objd.Type == ObjectTypes.Person)
 				{
 					AddSim(objd, ref ct, step, true);
 				}
@@ -380,7 +380,7 @@ namespace SimPe.Providers
 						Packages.File fl = null;
 						try
 						{
-							fl = SimPe.Packages.File.LoadFromFile(file);
+							fl = Packages.File.LoadFromFile(file);
 						}
 						catch
 						{
@@ -388,7 +388,7 @@ namespace SimPe.Providers
 						}
 
 						IPackedFileDescriptor[] list = fl.FindFiles(
-							Data.MetaData.OBJD_FILE
+							MetaData.OBJD_FILE
 						);
 						if (list.Length > 0)
 						{
@@ -450,7 +450,7 @@ namespace SimPe.Providers
 				&& Helper.StartedGui != Executable.Classic
 			)
 			{
-				FileTable.FileIndex.Load();
+				FileTableBase.FileIndex.Load();
 			}
 
 			this.ExecuteThread(
@@ -487,7 +487,7 @@ namespace SimPe.Providers
 				return (IAlias)o;
 			}
 
-			string es = SimPe.Data.MetaData.GetKnownNPC(id);
+			string es = MetaData.GetKnownNPC(id);
 			if (es != "not found")
 			{
 				return new Alias(id, es);

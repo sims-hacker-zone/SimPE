@@ -52,7 +52,7 @@ namespace pjse.guidtool
 
 		public override string ToString()
 		{
-			return "PJSE\\" + pjse.Localization.GetString("gt_ResourceFinder");
+			return "PJSE\\" + Localization.GetString("gt_ResourceFinder");
 		}
 
 		#endregion

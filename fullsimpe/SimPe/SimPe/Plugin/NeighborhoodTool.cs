@@ -122,7 +122,7 @@ namespace SimPe.Plugin
 		#endregion
 
 		#region IToolExt Member
-		public override System.Drawing.Image Icon => SimPe.GetIcon.tbNeighboorhood;
+		public override System.Drawing.Image Icon => GetIcon.tbNeighboorhood;
 		public override System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.CtrlShiftN;
 		#endregion
 	}

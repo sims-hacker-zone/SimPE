@@ -30,16 +30,16 @@ namespace SimPe
 		{
 			InitializeComponent();
 
-			ofd.Filter = SimPe.ExtensionProvider.BuildFilterString(
+			ofd.Filter = ExtensionProvider.BuildFilterString(
 				new ExtensionType[]
 				{
-					SimPe.ExtensionType.Package,
-					SimPe.ExtensionType.AllFiles,
+					ExtensionType.Package,
+					ExtensionType.AllFiles,
 				}
 			);
 
 			this.cbEpVer.Items.Clear();
-			cbEpVer.Items.Add(SimPe.Localization.GetString("All"));
+			cbEpVer.Items.Add(Localization.GetString("All"));
 			foreach (ExpansionItem ei in PathProvider.Global.Expansions)
 			{
 				cbEpVer.Items.Add(ei.Name);
@@ -125,10 +125,8 @@ namespace SimPe
 			//
 			// cbEpVer
 			//
-			this.cbEpVer.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbEpVer.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			resources.ApplyResources(this.cbEpVer, "cbEpVer");
 			this.cbEpVer.Name = "cbEpVer";
@@ -173,7 +171,7 @@ namespace SimPe
 			//
 			resources.ApplyResources(this, "$this");
 			this.Controls.Add(this.xpGradientPanel1);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			this.FormBorderStyle = FormBorderStyle.FixedDialog;
 			this.Name = "FileTableItemForm";
 			this.xpGradientPanel1.ResumeLayout(false);
 			this.xpGradientPanel1.PerformLayout();

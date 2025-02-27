@@ -102,7 +102,7 @@ namespace SimPe.PackedFiles.UserInterface
 			pjse.FileTable.GFT.FiletableRefresh += new EventHandler(
 				this.FiletableRefresh
 			);
-			if (SimPe.Helper.WindowsRegistry.UseBigIcons)
+			if (Helper.WindowsRegistry.UseBigIcons)
 			{
 				this.lvTrcnItem.Font = new Font(
 					"Microsoft Sans Serif",
@@ -200,7 +200,7 @@ namespace SimPe.PackedFiles.UserInterface
 			trcnPanel.Controls.Add(this.lbFilename);
 			tbFilename.ReadOnly = true;
 			tbFilename.Text = wrapper.FileName;
-			tbFormat.Text = SimPe.Helper.HexString(wrapper.Version);
+			tbFormat.Text = Helper.HexString(wrapper.Version);
 			trcnPanel.Controls.Add(this.tbFilename);
 			trcnPanel.Controls.Add(this.lbFormat);
 			trcnPanel.Controls.Add(this.tbFormat);
@@ -263,21 +263,21 @@ namespace SimPe.PackedFiles.UserInterface
 				return;
 			}
 
-			lv.SubItems[3].Text = "0x" + SimPe.Helper.HexString(currentItem.ConstId);
+			lv.SubItems[3].Text = "0x" + Helper.HexString(currentItem.ConstId);
 			lv.SubItems[4].Text = "0x" + currentItem.Used.ToString("X");
 			if (wrapper.Version > 0x53)
 			{
 				lv.SubItems[5].Text =
-					"0x" + SimPe.Helper.HexString((byte)currentItem.DefValue);
+					"0x" + Helper.HexString((byte)currentItem.DefValue);
 			}
 			else
 			{
 				lv.SubItems[5].Text =
-					"0x" + SimPe.Helper.HexString(currentItem.DefValue);
+					"0x" + Helper.HexString(currentItem.DefValue);
 			}
 
-			lv.SubItems[6].Text = "0x" + SimPe.Helper.HexString(currentItem.MinValue);
-			lv.SubItems[7].Text = "0x" + SimPe.Helper.HexString(currentItem.MaxValue);
+			lv.SubItems[6].Text = "0x" + Helper.HexString(currentItem.MinValue);
+			lv.SubItems[7].Text = "0x" + Helper.HexString(currentItem.MaxValue);
 		}
 
 		private string[] trcnItemToStringArray(int i)
@@ -290,7 +290,7 @@ namespace SimPe.PackedFiles.UserInterface
 			TrcnItem ti = wrapper[i];
 			string tiValue =
 				(bconres != null && i < bconres.Count)
-					? "0x" + SimPe.Helper.HexString(bconres[i])
+					? "0x" + Helper.HexString(bconres[i])
 					: "?";
 
 			return new string[]
@@ -299,18 +299,18 @@ namespace SimPe.PackedFiles.UserInterface
 				tiValue,
 				ti.ConstName,
 				"0x"
-					+ SimPe.Helper.HexString(
+					+ Helper.HexString(
 						ti.ConstId & (wrapper.Version == 0x3f ? 0x000f : 0xffffffff)
 					),
 				"0x" + ti.Used.ToString("X"),
 				"0x"
 					+ (
 						wrapper.Version > 0x53
-							? SimPe.Helper.HexString((byte)ti.DefValue)
-							: SimPe.Helper.HexString(ti.DefValue)
+							? Helper.HexString((byte)ti.DefValue)
+							: Helper.HexString(ti.DefValue)
 					),
-				"0x" + SimPe.Helper.HexString(ti.MinValue),
-				"0x" + SimPe.Helper.HexString(ti.MaxValue),
+				"0x" + Helper.HexString(ti.MinValue),
+				"0x" + Helper.HexString(ti.MaxValue),
 			};
 		}
 
@@ -362,7 +362,7 @@ namespace SimPe.PackedFiles.UserInterface
 				internalchg = true;
 				this.tbLabel.Text = "";
 				this.tbID.Text = "";
-				this.cbUsed.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+				this.cbUsed.CheckState = CheckState.Indeterminate;
 				this.tbDesc.Text = "";
 				this.tbDefValue.Text = "";
 				this.tbMinValue.Text = "";
@@ -394,8 +394,8 @@ namespace SimPe.PackedFiles.UserInterface
 				this.tbID.Text = s[3];
 				this.cbUsed.CheckState =
 					currentItem.Used != 0
-						? System.Windows.Forms.CheckState.Checked
-						: System.Windows.Forms.CheckState.Unchecked;
+						? CheckState.Checked
+						: CheckState.Unchecked;
 				this.tbDesc.Text = currentItem.ConstDesc;
 				this.tbDefValue.Text = s[5];
 				this.tbMinValue.Text = s[6];
@@ -425,7 +425,7 @@ namespace SimPe.PackedFiles.UserInterface
 					this.tbMinValue.Text =
 					this.tbMaxValue.Text =
 						"";
-				this.cbUsed.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+				this.cbUsed.CheckState = CheckState.Indeterminate;
 
 				this.tbID.Enabled =
 					this.tbLabel.Enabled =
@@ -499,7 +499,7 @@ namespace SimPe.PackedFiles.UserInterface
 			updateLists();
 			if (tbFormat.Text == "0x00000001")
 			{
-				tbFormat.Text = "0x" + SimPe.Helper.HexString(wrapper.Version);
+				tbFormat.Text = "0x" + Helper.HexString(wrapper.Version);
 			}
 
 			internalchg = savedstate;
@@ -588,7 +588,7 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				internalchg = true;
 				this.Text = tbFilename.Text = wrapper.FileName;
-				this.tbFormat.Text = "0x" + SimPe.Helper.HexString(wrapper.Version);
+				this.tbFormat.Text = "0x" + Helper.HexString(wrapper.Version);
 				internalchg = false;
 			}
 			else if (!sender.Equals(currentItem))
@@ -802,7 +802,7 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// panel1
 			//
-			this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.panel1.BorderStyle = BorderStyle.FixedSingle;
 			this.tlpUnused.SetColumnSpan(this.panel1, 2);
 			resources.ApplyResources(this.panel1, "panel1");
 			this.panel1.Name = "panel1";
@@ -912,10 +912,8 @@ namespace SimPe.PackedFiles.UserInterface
 			);
 			this.lvTrcnItem.FullRowSelect = true;
 			this.lvTrcnItem.GridLines = true;
-			this.lvTrcnItem.HeaderStyle = System
-				.Windows
-				.Forms
-				.ColumnHeaderStyle
+			this.lvTrcnItem.HeaderStyle =
+				ColumnHeaderStyle
 				.Nonclickable;
 			this.lvTrcnItem.HideSelection = false;
 			this.lvTrcnItem.Items.AddRange(
@@ -931,7 +929,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.lvTrcnItem.MultiSelect = false;
 			this.lvTrcnItem.Name = "lvTrcnItem";
 			this.lvTrcnItem.UseCompatibleStateImageBehavior = false;
-			this.lvTrcnItem.View = System.Windows.Forms.View.Details;
+			this.lvTrcnItem.View = View.Details;
 			this.lvTrcnItem.Resize += new EventHandler(this.lvTrcnItem_Resize);
 			this.lvTrcnItem.SelectedIndexChanged += new EventHandler(
 				this.lvTrcnItem_SelectedIndexChanged
@@ -979,15 +977,13 @@ namespace SimPe.PackedFiles.UserInterface
 			// TrcnForm
 			//
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.AutoScaleMode = AutoScaleMode.Dpi;
 			this.Controls.Add(this.trcnPanel);
-			this.FormBorderStyle = System
-				.Windows
-				.Forms
-				.FormBorderStyle
+			this.FormBorderStyle =
+				FormBorderStyle
 				.SizableToolWindow;
 			this.Name = "TrcnForm";
-			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+			this.WindowState = FormWindowState.Maximized;
 			this.trcnPanel.ResumeLayout(false);
 			this.trcnPanel.PerformLayout();
 			this.panel2.ResumeLayout(false);
@@ -1057,7 +1053,7 @@ namespace SimPe.PackedFiles.UserInterface
 					return;
 				}
 			}
-			SimPe.RemoteControl.OpenPackedFile(bcon.FileDescriptor, bcon.Package);
+			RemoteControl.OpenPackedFile(bcon.FileDescriptor, bcon.Package);
 		}
 
 		private void btnStrPrev_Click(object sender, EventArgs e)

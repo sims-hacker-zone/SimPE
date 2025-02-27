@@ -62,7 +62,7 @@ namespace SimPe
 
 			string name = tool.ToString();
 			string[] parts = name.Split("\\".ToCharArray());
-			name = SimPe.Localization.GetString(parts[parts.Length - 1]);
+			name = Localization.GetString(parts[parts.Length - 1]);
 			this.Text = name;
 
 			Click += new EventHandler(ClickItem);
@@ -248,7 +248,7 @@ namespace SimPe
 			LoadFileWrappersExt lfw
 		)
 		{
-			if (lfw.ignore.Contains(System.IO.Path.GetFileName(file).Trim().ToLower()))
+			if (lfw.ignore.Contains(Path.GetFileName(file).Trim().ToLower()))
 			{
 				return null;
 			}
@@ -273,7 +273,7 @@ namespace SimPe
 				return null;
 			}
 
-			Assembly a = System.Reflection.Assembly.LoadFrom(file);
+			Assembly a = Assembly.LoadFrom(file);
 			try
 			{
 				Type[] mytypes = a.GetTypes();
@@ -340,7 +340,7 @@ namespace SimPe
 				return new object[0];
 			}
 
-			Assembly a = System.Reflection.Assembly.LoadFrom(file);
+			Assembly a = Assembly.LoadFrom(file);
 			return LoadPlugins(a, interfaceType, args);
 		}
 

@@ -247,51 +247,51 @@ namespace SimPe.Plugin
 				node.SelectedImageIndex = node.ImageIndex;
 			}
 
-			if (type == Data.ObjectTypes.Stairs)
+			if (type == ObjectTypes.Stairs)
 			{
 				this.tvistairs.Nodes.Add(node);
 			}
-			else if (type == Data.ObjectTypes.ArchitecturalSupport)
+			else if (type == ObjectTypes.ArchitecturalSupport)
 			{
 				this.tviarchsup.Nodes.Add(node);
 			}
-			else if (type == Data.ObjectTypes.Door)
+			else if (type == ObjectTypes.Door)
 			{
 				this.tvidoor.Nodes.Add(node);
 			}
-			else if (type == Data.ObjectTypes.Memory)
+			else if (type == ObjectTypes.Memory)
 			{
 				this.tvimemory.Nodes.Add(node);
 			}
-			else if (type == Data.ObjectTypes.ModularStairs)
+			else if (type == ObjectTypes.ModularStairs)
 			{
 				this.tvimodstair.Nodes.Add(node);
 			}
-			else if (type == Data.ObjectTypes.ModularStairsPortal)
+			else if (type == ObjectTypes.ModularStairsPortal)
 			{
 				this.tvimodstairport.Nodes.Add(node);
 			}
-			else if (type == Data.ObjectTypes.Outfit)
+			else if (type == ObjectTypes.Outfit)
 			{
 				this.tvioutfit.Nodes.Add(node);
 			}
-			else if (type == Data.ObjectTypes.Person)
+			else if (type == ObjectTypes.Person)
 			{
 				this.tviperson.Nodes.Add(node);
 			}
-			else if (type == Data.ObjectTypes.SimType)
+			else if (type == ObjectTypes.SimType)
 			{
 				this.tvisimtype.Nodes.Add(node);
 			}
-			else if (type == Data.ObjectTypes.Template)
+			else if (type == ObjectTypes.Template)
 			{
 				this.tvitemplate.Nodes.Add(node);
 			}
-			else if (type == Data.ObjectTypes.Vehicle)
+			else if (type == ObjectTypes.Vehicle)
 			{
 				this.tvivehicle.Nodes.Add(node);
 			}
-			else if (type == Data.ObjectTypes.Window)
+			else if (type == ObjectTypes.Window)
 			{
 				this.tviwindow.Nodes.Add(node);
 			}
@@ -542,17 +542,17 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
 			this.lbobj.IntegralHeight = false;
 			this.lbobj.Location = new Point(8, 32);
 			this.lbobj.Name = "lbobj";
-			this.lbobj.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+			this.lbobj.SelectionMode = SelectionMode.MultiExtended;
 			this.lbobj.Size = new Size(464, 192);
 			this.lbobj.TabIndex = 0;
 			this.lbobj.SelectedIndexChanged += new EventHandler(this.Select);
@@ -562,17 +562,17 @@ namespace SimPe.Plugin
 			this.btclone.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.btclone.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.btclone.FlatStyle = FlatStyle.System;
 			this.btclone.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.btclone.Location = new Point(408, 212);
@@ -588,9 +588,9 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Bottom
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Bottom
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -602,8 +602,8 @@ namespace SimPe.Plugin
 			this.groupBox1.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Bold,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Bold,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.groupBox1.Location = new Point(8, 272);
@@ -615,23 +615,23 @@ namespace SimPe.Plugin
 			//
 			// pb
 			//
-			this.pb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.pb.BorderStyle = BorderStyle.FixedSingle;
 			this.pb.Location = new Point(8, 24);
 			this.pb.Name = "pb";
 			this.pb.Size = new Size(128, 128);
-			this.pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.pb.SizeMode = PictureBoxSizeMode.StretchImage;
 			this.pb.TabIndex = 6;
 			this.pb.TabStop = false;
 			//
 			// rbColor
 			//
 			this.rbColor.Checked = true;
-			this.rbColor.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.rbColor.FlatStyle = FlatStyle.System;
 			this.rbColor.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.rbColor.Location = new Point(16, 176);
@@ -646,12 +646,12 @@ namespace SimPe.Plugin
 			//
 			// rbClone
 			//
-			this.rbClone.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.rbClone.FlatStyle = FlatStyle.System;
 			this.rbClone.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.rbClone.Location = new Point(16, 156);
@@ -668,8 +668,8 @@ namespace SimPe.Plugin
 			this.tabControl1.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -678,8 +678,8 @@ namespace SimPe.Plugin
 			this.tabControl1.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.tabControl1.Location = new Point(150, 24);
@@ -708,12 +708,12 @@ namespace SimPe.Plugin
 			//
 			// cbanim
 			//
-			this.cbanim.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbanim.FlatStyle = FlatStyle.System;
 			this.cbanim.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.cbanim.Location = new Point(8, 128);
@@ -725,13 +725,13 @@ namespace SimPe.Plugin
 			// cbwallmask
 			//
 			this.cbwallmask.Checked = true;
-			this.cbwallmask.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.cbwallmask.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbwallmask.CheckState = CheckState.Checked;
+			this.cbwallmask.FlatStyle = FlatStyle.System;
 			this.cbwallmask.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.cbwallmask.Location = new Point(8, 108);
@@ -742,12 +742,12 @@ namespace SimPe.Plugin
 			//
 			// cbparent
 			//
-			this.cbparent.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbparent.FlatStyle = FlatStyle.System;
 			this.cbparent.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.cbparent.Location = new Point(8, 88);
@@ -762,13 +762,13 @@ namespace SimPe.Plugin
 			// cbclean
 			//
 			this.cbclean.Checked = true;
-			this.cbclean.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.cbclean.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbclean.CheckState = CheckState.Checked;
+			this.cbclean.FlatStyle = FlatStyle.System;
 			this.cbclean.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.cbclean.Location = new Point(24, 48);
@@ -780,13 +780,13 @@ namespace SimPe.Plugin
 			// cbfix
 			//
 			this.cbfix.Checked = true;
-			this.cbfix.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.cbfix.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbfix.CheckState = CheckState.Checked;
+			this.cbfix.FlatStyle = FlatStyle.System;
 			this.cbfix.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.cbfix.Location = new Point(8, 28);
@@ -801,13 +801,13 @@ namespace SimPe.Plugin
 			// cbdefault
 			//
 			this.cbdefault.Checked = true;
-			this.cbdefault.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.cbdefault.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbdefault.CheckState = CheckState.Checked;
+			this.cbdefault.FlatStyle = FlatStyle.System;
 			this.cbdefault.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.cbdefault.Location = new Point(8, 68);
@@ -822,13 +822,13 @@ namespace SimPe.Plugin
 			// cbgid
 			//
 			this.cbgid.Checked = true;
-			this.cbgid.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.cbgid.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbgid.CheckState = CheckState.Checked;
+			this.cbgid.FlatStyle = FlatStyle.System;
 			this.cbgid.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.cbgid.Location = new Point(8, 8);
@@ -850,13 +850,13 @@ namespace SimPe.Plugin
 			// cbColorExt
 			//
 			this.cbColorExt.Checked = true;
-			this.cbColorExt.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.cbColorExt.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbColorExt.CheckState = CheckState.Checked;
+			this.cbColorExt.FlatStyle = FlatStyle.System;
 			this.cbColorExt.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.cbColorExt.Location = new Point(8, 8);
@@ -867,12 +867,12 @@ namespace SimPe.Plugin
 			//
 			// cbColor
 			//
-			this.cbColor.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.cbColor.FlatStyle = FlatStyle.System;
 			this.cbColor.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.cbColor.Location = new Point(8, 28);
@@ -892,9 +892,9 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -911,10 +911,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -956,10 +956,10 @@ namespace SimPe.Plugin
 					(
 						(
 							(
-								System.Windows.Forms.AnchorStyles.Top
-								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+								AnchorStyles.Top
+								| AnchorStyles.Bottom
+							) | AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -977,9 +977,9 @@ namespace SimPe.Plugin
 			//
 			// ilist
 			//
-			this.ilist.ColorDepth = System.Windows.Forms.ColorDepth.Depth24Bit;
+			this.ilist.ColorDepth = ColorDepth.Depth24Bit;
 			this.ilist.ImageSize = new Size(16, 16);
-			this.ilist.TransparentColor = System.Drawing.Color.Transparent;
+			this.ilist.TransparentColor = Color.Transparent;
 			//
 			// tabPage2
 			//
@@ -993,7 +993,7 @@ namespace SimPe.Plugin
 			//
 			// button1
 			//
-			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.button1.FlatStyle = FlatStyle.System;
 			this.button1.Location = new Point(397, 32);
 			this.button1.Name = "button1";
 			this.button1.Size = new Size(75, 23);
@@ -1006,8 +1006,8 @@ namespace SimPe.Plugin
 			this.tbflname.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Left
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Left
+						| AnchorStyles.Right
 					)
 				)
 			);
@@ -1030,14 +1030,12 @@ namespace SimPe.Plugin
 			this.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.FormBorderStyle = System
-				.Windows
-				.Forms
-				.FormBorderStyle
+			this.FormBorderStyle =
+				FormBorderStyle
 				.SizableToolWindow;
 			this.Icon = ((Icon)(resources1.GetObject("$this.Icon")));
 			this.MinimumSize = new Size(520, 320);
@@ -1153,7 +1151,7 @@ namespace SimPe.Plugin
 				this.Cursor = Cursors.WaitCursor;
 				IAlias a = new Alias(0, "");
 				Interfaces.Files.IPackedFileDescriptor pfd = null;
-				uint localgroup = Data.MetaData.LOCAL_GROUP;
+				uint localgroup = MetaData.LOCAL_GROUP;
 
 				if ((lbobj.SelectedIndex >= 0) && (tabControl2.SelectedIndex == 0))
 				{
@@ -1282,7 +1280,7 @@ namespace SimPe.Plugin
 					}
 					else
 					{
-						ReColor(null, Data.MetaData.LOCAL_GROUP);
+						ReColor(null, MetaData.LOCAL_GROUP);
 					}
 				}
 
@@ -1339,7 +1337,7 @@ namespace SimPe.Plugin
 			uint inst = ThumbnailHash(group, modelname);
 			if (thumbs == null)
 			{
-				thumbs = SimPe.Packages.File.LoadFromFile(
+				thumbs = Packages.File.LoadFromFile(
 					System.IO.Path.Combine(
 						PathProvider.SimSavegameFolder,
 						"Thumbnails\\ObjectThumbnails.package"
@@ -1383,7 +1381,7 @@ namespace SimPe.Plugin
 			string filename
 		)
 		{
-			Packages.File pkg = SimPe.Packages.File.LoadFromFile(filename);
+			Packages.File pkg = Packages.File.LoadFromFile(filename);
 
 			ArrayList list = new ArrayList();
 			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(0x4C697E5A);
@@ -1427,7 +1425,7 @@ namespace SimPe.Plugin
 			//Get the Base Object Data from the Objects.package File
 
 			Interfaces.Scenegraph.IScenegraphFileIndexItem[] files =
-				FileTable.FileIndex.FindFileByGroup(localgroup);
+				FileTableBase.FileIndex.FindFileByGroup(localgroup);
 
 			ArrayList list = new ArrayList();
 			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in files)
@@ -1450,7 +1448,7 @@ namespace SimPe.Plugin
 					package.Add(npfd);
 				}
 
-				if ((npfd.Instance == 0x85) && (npfd.Type == Data.MetaData.STRING_FILE))
+				if ((npfd.Instance == 0x85) && (npfd.Type == MetaData.STRING_FILE))
 				{
 					PackedFiles.Wrapper.Str str =
 						new PackedFiles.Wrapper.Str();
@@ -1484,7 +1482,7 @@ namespace SimPe.Plugin
 			bool anim
 		)
 		{
-			package = SimPe.Packages.GeneratableFile.LoadFromStream(
+			package = Packages.File.LoadFromStream(
 				(System.IO.BinaryReader)null
 			);
 
@@ -1522,7 +1520,7 @@ namespace SimPe.Plugin
 			if ((this.cbparent.Checked) && (!this.rbColor.Checked))
 			{
 				string[] names = Scenegraph.LoadParentModelNames(package, true);
-				Packages.File pkg = SimPe.Packages.File.LoadFromFile(null);
+				Packages.File pkg = Packages.File.LoadFromFile(null);
 
 				ObjectCloner pobj = new ObjectCloner(pkg);
 				pobj.Setup.OnlyDefaultMmats = onlydefault;
@@ -1557,7 +1555,7 @@ namespace SimPe.Plugin
 			// we need packages in the Gmaes and the Download Folder
 
 			if (
-				SimPe.PathProvider.Global.EPInstalled < 16
+				PathProvider.Global.EPInstalled < 16
 				&& (
 					(!System.IO.File.Exists(ScenegraphHelper.GMND_PACKAGE))
 					|| (!System.IO.File.Exists(ScenegraphHelper.MMAT_PACKAGE))
@@ -1612,13 +1610,13 @@ namespace SimPe.Plugin
 				Packages.GeneratableFile dn_pkg = null;
 				if (System.IO.File.Exists(ScenegraphHelper.GMND_PACKAGE))
 				{
-					dn_pkg = SimPe.Packages.GeneratableFile.LoadFromFile(
+					dn_pkg = Packages.File.LoadFromFile(
 						ScenegraphHelper.GMND_PACKAGE
 					);
 				}
 				else
 				{
-					dn_pkg = SimPe.Packages.GeneratableFile.LoadFromStream(
+					dn_pkg = Packages.File.LoadFromStream(
 						(System.IO.BinaryReader)null
 					);
 				}
@@ -1626,19 +1624,19 @@ namespace SimPe.Plugin
 				Packages.GeneratableFile gm_pkg = null;
 				if (System.IO.File.Exists(ScenegraphHelper.MMAT_PACKAGE))
 				{
-					gm_pkg = SimPe.Packages.GeneratableFile.LoadFromFile(
+					gm_pkg = Packages.File.LoadFromFile(
 						ScenegraphHelper.MMAT_PACKAGE
 					);
 				}
 				else
 				{
-					gm_pkg = SimPe.Packages.GeneratableFile.LoadFromStream(
+					gm_pkg = Packages.File.LoadFromStream(
 						(System.IO.BinaryReader)null
 					);
 				}
 
 				Packages.GeneratableFile npackage =
-					SimPe.Packages.GeneratableFile.LoadFromStream(
+					Packages.File.LoadFromStream(
 						(System.IO.BinaryReader)null
 					);
 				//Create the Templae for an additional MMAT
@@ -1766,7 +1764,7 @@ namespace SimPe.Plugin
 		{
 			if (ofd.ShowDialog() == DialogResult.OK)
 			{
-				package = SimPe.Packages.GeneratableFile.LoadFromFile(ofd.FileName);
+				package = Packages.File.LoadFromFile(ofd.FileName);
 				tbflname.Text = ofd.FileName;
 				this.btclone.Enabled = System.IO.File.Exists(tbflname.Text);
 				btclone.Refresh();
@@ -1878,7 +1876,7 @@ namespace SimPe.Plugin
 			Alias a
 		)
 		{
-			if (oci.ObjectVersion == SimPe.Cache.ObjectCacheItemVersions.DockableOW)
+			if (oci.ObjectVersion == Cache.ObjectCacheItemVersions.DockableOW)
 			{
 				PutItemToTree(
 					a,

@@ -291,7 +291,7 @@ gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 36
 				if (TestIsValid(currentsectionindex)) // byte pair 1
 				{
 					LotDescription =
-						SimPe.FileTable.ProviderRegistry.LotProvider.FindLot(
+						FileTableBase.ProviderRegistry.LotProvider.FindLot(
 							filedata[currentsectionindex * 42]
 						);
 					int FamFund =
@@ -457,7 +457,7 @@ gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 36
 				tbGirlNo.ForeColor =
 				tbFriends.ForeColor =
 				tbFunds.ForeColor =
-					System.Drawing.SystemColors.WindowText;
+					SystemColors.WindowText;
 			if (sections == 0)
 			{
 				tbBlocks.Visible = gtname.Visible = BtGoody.Visible = false;
@@ -578,28 +578,28 @@ gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 36
 			{
 				int currentsectionindex = sections;
 				// read everthing into variables first so if error in a text box no change occurs
-				tbLotNo.ForeColor = System.Drawing.Color.Red;
+				tbLotNo.ForeColor = Color.Red;
 				ushort lotno = Convert.ToUInt16(tbLotNo.Text, 16);
-				tbLotNo.ForeColor = System.Drawing.SystemColors.WindowText;
-				tbMenNo.ForeColor = System.Drawing.Color.Red;
+				tbLotNo.ForeColor = SystemColors.WindowText;
+				tbMenNo.ForeColor = Color.Red;
 				ushort meno = Convert.ToUInt16(tbMenNo.Text);
-				tbMenNo.ForeColor = System.Drawing.SystemColors.WindowText;
-				tbLadyNo.ForeColor = System.Drawing.Color.Red;
+				tbMenNo.ForeColor = SystemColors.WindowText;
+				tbLadyNo.ForeColor = Color.Red;
 				ushort ladyno = Convert.ToUInt16(tbLadyNo.Text);
-				tbLadyNo.ForeColor = System.Drawing.SystemColors.WindowText;
-				tbBoyNo.ForeColor = System.Drawing.Color.Red;
+				tbLadyNo.ForeColor = SystemColors.WindowText;
+				tbBoyNo.ForeColor = Color.Red;
 				ushort boyno = Convert.ToUInt16(tbBoyNo.Text);
-				tbBoyNo.ForeColor = System.Drawing.SystemColors.WindowText;
-				tbGirlNo.ForeColor = System.Drawing.Color.Red;
+				tbBoyNo.ForeColor = SystemColors.WindowText;
+				tbGirlNo.ForeColor = Color.Red;
 				ushort girlno = Convert.ToUInt16(tbGirlNo.Text);
-				tbGirlNo.ForeColor = System.Drawing.SystemColors.WindowText;
-				tbFriends.ForeColor = System.Drawing.Color.Red;
+				tbGirlNo.ForeColor = SystemColors.WindowText;
+				tbFriends.ForeColor = Color.Red;
 				ushort friendno = Convert.ToUInt16(tbFriends.Text);
-				tbFriends.ForeColor = System.Drawing.SystemColors.WindowText;
-				tbFunds.ForeColor = System.Drawing.Color.Red;
+				tbFriends.ForeColor = SystemColors.WindowText;
+				tbFunds.ForeColor = Color.Red;
 				int FamFund = Convert.ToInt32(tbFunds.Text);
 				string monee = Helper.HexString(FamFund);
-				tbFunds.ForeColor = System.Drawing.SystemColors.WindowText;
+				tbFunds.ForeColor = SystemColors.WindowText;
 
 				sections++;
 				Array.Resize(ref filedata, sections * 42);

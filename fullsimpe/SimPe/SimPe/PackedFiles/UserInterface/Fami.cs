@@ -57,7 +57,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			else if (fami.FileDescriptor.Instance > 32511)
 			{
-				form.pbImage.Image = SimPe.GetImage.Cassie;
+				form.pbImage.Image = GetImage.Cassie;
 			}
 			else
 			{
@@ -93,23 +93,23 @@ namespace SimPe.PackedFiles.UserInterface
 			form.tbcaunk.Text = "0x" + Helper.HexString(fami.CastAwayFoodDecay);
 			form.label14.Visible = form.tbblot.Visible =
 				(int)fami.Version
-				>= (int)SimPe.PackedFiles.Wrapper.FamiVersions.Business;
+				>= (int)Wrapper.FamiVersions.Business;
 			form.label7.Visible = form.tbvac.Visible =
-				(int)fami.Version == (int)SimPe.PackedFiles.Wrapper.FamiVersions.Voyage;
+				(int)fami.Version == (int)Wrapper.FamiVersions.Voyage;
 			form.tbsubhood.Enabled =
 				(int)fami.Version
-				>= (int)SimPe.PackedFiles.Wrapper.FamiVersions.University;
+				>= (int)Wrapper.FamiVersions.University;
 			form.gbCastaway.Visible =
 				(int)fami.Version
-				== (int)SimPe.PackedFiles.Wrapper.FamiVersions.Castaway;
+				== (int)Wrapper.FamiVersions.Castaway;
 			form.label3.Visible = form.tbmoney.Visible =
 				(int)fami.Version
-				< (int)SimPe.PackedFiles.Wrapper.FamiVersions.Castaway;
+				< (int)Wrapper.FamiVersions.Castaway;
 			form.label16.Visible = form.tbbmoney.Visible = (
 				(int)fami.Version
-					>= (int)SimPe.PackedFiles.Wrapper.FamiVersions.Business
+					>= (int)Wrapper.FamiVersions.Business
 				&& (int)fami.Version
-					< (int)SimPe.PackedFiles.Wrapper.FamiVersions.Castaway
+					< (int)Wrapper.FamiVersions.Castaway
 			);
 			//form.panel4.HeaderText = Data.MetaData.NPCFamily(fami.FileDescriptor.Instance);
 			form.btOpenHistory.Visible = (
@@ -126,11 +126,11 @@ namespace SimPe.PackedFiles.UserInterface
 					== null
 			)
 			{
-				form.label15.ForeColor = System.Drawing.SystemColors.ControlText;
+				form.label15.ForeColor = SystemColors.ControlText;
 			}
 			else
 			{
-				form.label15.ForeColor = System.Drawing.Color.Blue;
+				form.label15.ForeColor = Color.Blue;
 			}
 
 			form.lbmembers.Sorted = false;

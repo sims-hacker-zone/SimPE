@@ -43,7 +43,7 @@ namespace SimPe.Plugin.Gmdc
 
 			cbgroup = new ComboBox();
 			cbgroup.DropDownStyle = ComboBoxStyle.DropDownList;
-			cbgroup.Items.Add("[" + SimPe.Localization.GetString("none") + "]");
+			cbgroup.Items.Add("[" + Localization.GetString("none") + "]");
 			foreach (GmdcJoint j in gmi.Gmdc.Joints)
 			{
 				cbgroup.Items.Add(j);
@@ -126,7 +126,7 @@ namespace SimPe.Plugin.Gmdc
 			}
 			else
 			{
-				this.SubItems.Add("[" + SimPe.Localization.GetString("none") + "]");
+				this.SubItems.Add("[" + Localization.GetString("none") + "]");
 			}
 
 			this.SubItems.Add(joint.GetAssignedVertexCount().ToString());

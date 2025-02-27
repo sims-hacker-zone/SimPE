@@ -54,22 +54,22 @@ namespace SimPe.Plugin
 			form.cbtype.Items.Add(Ltxt.LotType.Unknown);
 			form.cbtype.Items.Add(Ltxt.LotType.Residential);
 			form.cbtype.Items.Add(Ltxt.LotType.Community);
-			if (SimPe.PathProvider.Global.EPInstalled > 0)
+			if (PathProvider.Global.EPInstalled > 0)
 			{
 				form.cbtype.Items.Add(Ltxt.LotType.Dorm);
 				form.cbtype.Items.Add(Ltxt.LotType.GreekHouse);
 				form.cbtype.Items.Add(Ltxt.LotType.SecretSociety);
 			}
-			if (SimPe.PathProvider.Global.EPInstalled > 9)
+			if (PathProvider.Global.EPInstalled > 9)
 			{
 				form.cbtype.Items.Add(Ltxt.LotType.Hotel);
 				form.cbtype.Items.Add(Ltxt.LotType.SecretHoliday);
 			}
-			if (SimPe.PathProvider.Global.EPInstalled > 11)
+			if (PathProvider.Global.EPInstalled > 11)
 			{
 				form.cbtype.Items.Add(Ltxt.LotType.Hobby);
 			}
-			if (SimPe.PathProvider.Global.EPInstalled > 15)
+			if (PathProvider.Global.EPInstalled > 15)
 			{
 				form.cbtype.Items.Add(Ltxt.LotType.ApartmentBase);
 				form.cbtype.Items.Add(Ltxt.LotType.ApartmentSublot);

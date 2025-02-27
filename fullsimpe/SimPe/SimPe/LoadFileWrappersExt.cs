@@ -38,7 +38,7 @@ namespace SimPe
 		/// </param>
 		/// <param name="toolreg">Registry the tools should be added to</param>
 		public LoadFileWrappersExt()
-			: base(FileTable.WrapperRegistry, FileTable.ToolRegistry) { }
+			: base(FileTableBase.WrapperRegistry, FileTable.ToolRegistry) { }
 
 		static ArrayList exclude;
 
@@ -83,7 +83,7 @@ namespace SimPe
 
 			for (int i = 0; i < parts.Length - 1; i++)
 			{
-				string name = SimPe.Localization.GetString(parts[i]);
+				string name = Localization.GetString(parts[i]);
 				ToolStripMenuItem mi = null;
 				//find an existing Menu Item
 				if (parent != null)
@@ -120,7 +120,7 @@ namespace SimPe
 
 			if (item.ToolExt != null)
 			{
-				LoadFileWrappersExt.SetShurtcutKey(item, item.ToolExt.Shortcut);
+				SetShurtcutKey(item, item.ToolExt.Shortcut);
 				item.Image = item.ToolExt.Icon;
 				//item.ToolTipText = item.ToolExt.ToString();
 			}

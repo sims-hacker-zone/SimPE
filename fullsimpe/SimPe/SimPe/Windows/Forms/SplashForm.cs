@@ -31,8 +31,8 @@ namespace SimPe.Windows.Forms
 	{
 		static Image bg;
 		const uint WM_CHANGE_MESSAGE =
-			Ambertation.Windows.Forms.APIHelp.WM_APP + 0x0001;
-		const uint WM_SHOW_HIDE = Ambertation.Windows.Forms.APIHelp.WM_APP + 0x0002;
+			APIHelp.WM_APP + 0x0001;
+		const uint WM_SHOW_HIDE = APIHelp.WM_APP + 0x0002;
 		IntPtr myhandle;
 
 		public SplashForm()
@@ -104,7 +104,7 @@ namespace SimPe.Windows.Forms
 
 		protected void SendMessageChangeSignal()
 		{
-			Ambertation.Windows.Forms.APIHelp.SendMessage(
+			APIHelp.SendMessage(
 				myhandle,
 				WM_CHANGE_MESSAGE,
 				0,
@@ -145,12 +145,12 @@ namespace SimPe.Windows.Forms
 
 		public void StartSplash()
 		{
-			Ambertation.Windows.Forms.APIHelp.SendMessage(myhandle, WM_SHOW_HIDE, 1, 0);
+			APIHelp.SendMessage(myhandle, WM_SHOW_HIDE, 1, 0);
 		}
 
 		public void StopSplash()
 		{
-			Ambertation.Windows.Forms.APIHelp.SendMessage(myhandle, WM_SHOW_HIDE, 0, 0);
+			APIHelp.SendMessage(myhandle, WM_SHOW_HIDE, 0, 0);
 		}
 	}
 }

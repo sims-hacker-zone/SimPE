@@ -64,14 +64,14 @@ namespace SimPe.Plugin.Gmdc
 				if (s == ElementSorting.XZY || s == ElementSorting.Preview)
 				{
 					Geometry.Matrixd mt =
-						SimPe.Geometry.Matrixd.RotateYawPitchRoll(
+						Geometry.Matrixd.RotateYawPitchRoll(
 							Math.PI,
 							-Math.PI / 2,
 							0
 						);
 					TransformMatrix = mt.To33Matrix();
 
-					mt = SimPe.Geometry.Matrixd.RotateYawPitchRoll(
+					mt = Geometry.Matrixd.RotateYawPitchRoll(
 						Math.PI,
 						-Math.PI / 2,
 						0
@@ -80,17 +80,17 @@ namespace SimPe.Plugin.Gmdc
 				}
 				else
 				{
-					TransformMatrix = SimPe.Geometry.Matrixd.GetIdentity(3, 3);
-					mi = SimPe.Geometry.Matrixd.GetIdentity(3, 3);
+					TransformMatrix = Geometry.Matrixd.GetIdentity(3, 3);
+					mi = Geometry.Matrixd.GetIdentity(3, 3);
 				}
 
-				ScaleMatrix = SimPe
-					.Geometry.Matrixd.Scale(
+				ScaleMatrix =
+					Geometry.Matrixd.Scale(
 						Helper.WindowsRegistry.ImportExportScaleFactor
 					)
 					.To33Matrix();
-				msi = SimPe
-					.Geometry.Matrixd.Scale(
+				msi =
+					Geometry.Matrixd.Scale(
 						1.0 / Helper.WindowsRegistry.ImportExportScaleFactor
 					)
 					.To33Matrix();
@@ -135,7 +135,7 @@ namespace SimPe.Plugin.Gmdc
 		{
 			Geometry.Vector3f r = q.Axis;
 			r = this.Transform(r);
-			q = SimPe.Geometry.Quaternion.FromAxisAngle(r, q.Angle);
+			q = Geometry.Quaternion.FromAxisAngle(r, q.Angle);
 
 			return q;
 		}
@@ -146,7 +146,7 @@ namespace SimPe.Plugin.Gmdc
 		{
 			Geometry.Vector3f r = q.Axis;
 			r = this.InverseTransform(r);
-			q = SimPe.Geometry.Quaternion.FromAxisAngle(r, q.Angle);
+			q = Geometry.Quaternion.FromAxisAngle(r, q.Angle);
 
 			return q;
 		}

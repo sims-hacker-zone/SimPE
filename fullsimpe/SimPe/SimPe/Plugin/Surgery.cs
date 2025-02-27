@@ -140,20 +140,20 @@ namespace SimPe.Plugin
 			//
 			// ilist
 			//
-			this.ilist.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+			this.ilist.ColorDepth = ColorDepth.Depth32Bit;
 			resources.ApplyResources(this.ilist, "ilist");
-			this.ilist.TransparentColor = System.Drawing.Color.Transparent;
+			this.ilist.TransparentColor = Color.Transparent;
 			//
 			// lv
 			//
 			resources.ApplyResources(this.lv, "lv");
-			this.lv.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.lv.BorderStyle = BorderStyle.None;
 			this.lv.HideSelection = false;
 			this.lv.LargeImageList = this.ilist;
 			this.lv.MultiSelect = false;
 			this.lv.Name = "lv";
 			this.lv.SmallImageList = this.ilist;
-			this.lv.Sorting = System.Windows.Forms.SortOrder.Ascending;
+			this.lv.Sorting = SortOrder.Ascending;
 			this.lv.StateImageList = this.ilist;
 			this.toolTip1.SetToolTip(this.lv, resources.GetString("lv.ToolTip"));
 			this.lv.UseCompatibleStateImageBehavior = false;
@@ -177,15 +177,15 @@ namespace SimPe.Plugin
 			//
 			// lbUbi
 			//
-			this.lbUbi.BackColor = System.Drawing.SystemColors.Window;
+			this.lbUbi.BackColor = SystemColors.Window;
 			resources.ApplyResources(this.lbUbi, "lbUbi");
-			this.lbUbi.ForeColor = System.Drawing.Color.Brown;
+			this.lbUbi.ForeColor = Color.Brown;
 			this.lbUbi.Name = "lbUbi";
 			//
 			// groupBox1
 			//
 			resources.ApplyResources(this.groupBox1, "groupBox1");
-			this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+			this.groupBox1.BackColor = Color.Transparent;
 			this.groupBox1.Controls.Add(this.pgPatientDetails);
 			this.groupBox1.Controls.Add(this.cbeye);
 			this.groupBox1.Controls.Add(this.cbmakeup);
@@ -199,10 +199,8 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.pgPatientDetails, "pgPatientDetails");
 			this.pgPatientDetails.Name = "pgPatientDetails";
-			this.pgPatientDetails.PropertySort = System
-				.Windows
-				.Forms
-				.PropertySort
+			this.pgPatientDetails.PropertySort =
+				PropertySort
 				.Categorized;
 			this.pgPatientDetails.ToolbarVisible = false;
 			//
@@ -241,7 +239,7 @@ namespace SimPe.Plugin
 			//
 			// pbpatient
 			//
-			this.pbpatient.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.pbpatient.BorderStyle = BorderStyle.FixedSingle;
 			resources.ApplyResources(this.pbpatient, "pbpatient");
 			this.pbpatient.Name = "pbpatient";
 			this.pbpatient.TabStop = false;
@@ -263,7 +261,7 @@ namespace SimPe.Plugin
 			// cbface
 			//
 			resources.ApplyResources(this.cbface, "cbface");
-			this.cbface.ForeColor = System.Drawing.SystemColors.ControlText;
+			this.cbface.ForeColor = SystemColors.ControlText;
 			this.cbface.Name = "cbface";
 			this.toolTip1.SetToolTip(
 				this.cbface,
@@ -276,7 +274,7 @@ namespace SimPe.Plugin
 			// groupBox2
 			//
 			resources.ApplyResources(this.groupBox2, "groupBox2");
-			this.groupBox2.BackColor = System.Drawing.Color.Transparent;
+			this.groupBox2.BackColor = Color.Transparent;
 			this.groupBox2.Controls.Add(this.pgArchetypeDetails);
 			this.groupBox2.Controls.Add(this.ctlLoadPackage);
 			this.groupBox2.Controls.Add(this.llusearche);
@@ -287,10 +285,8 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.pgArchetypeDetails, "pgArchetypeDetails");
 			this.pgArchetypeDetails.Name = "pgArchetypeDetails";
-			this.pgArchetypeDetails.PropertySort = System
-				.Windows
-				.Forms
-				.PropertySort
+			this.pgArchetypeDetails.PropertySort =
+				PropertySort
 				.Categorized;
 			this.pgArchetypeDetails.ToolbarVisible = false;
 			//
@@ -325,7 +321,7 @@ namespace SimPe.Plugin
 			// pbarche
 			//
 			resources.ApplyResources(this.pbarche, "pbarche");
-			this.pbarche.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.pbarche.BorderStyle = BorderStyle.FixedSingle;
 			this.pbarche.Name = "pbarche";
 			this.pbarche.TabStop = false;
 			//
@@ -354,7 +350,7 @@ namespace SimPe.Plugin
 			// groupBox3
 			//
 			resources.ApplyResources(this.groupBox3, "groupBox3");
-			this.groupBox3.BackColor = System.Drawing.Color.Transparent;
+			this.groupBox3.BackColor = Color.Transparent;
 			this.groupBox3.Controls.Add(this.cbskin);
 			this.groupBox3.Controls.Add(this.lvskin);
 			this.groupBox3.Name = "groupBox3";
@@ -362,7 +358,7 @@ namespace SimPe.Plugin
 			// lvskin
 			//
 			resources.ApplyResources(this.lvskin, "lvskin");
-			this.lvskin.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.lvskin.BorderStyle = BorderStyle.None;
 			this.lvskin.HideSelection = false;
 			this.lvskin.LargeImageList = this.iskin;
 			this.lvskin.MultiSelect = false;
@@ -374,9 +370,9 @@ namespace SimPe.Plugin
 			//
 			// iskin
 			//
-			this.iskin.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+			this.iskin.ColorDepth = ColorDepth.Depth32Bit;
 			resources.ApplyResources(this.iskin, "iskin");
-			this.iskin.TransparentColor = System.Drawing.Color.Transparent;
+			this.iskin.TransparentColor = Color.Transparent;
 			//
 			// opd
 			//
@@ -443,13 +439,11 @@ namespace SimPe.Plugin
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.groupBox3);
-			this.FormBorderStyle = System
-				.Windows
-				.Forms
-				.FormBorderStyle
+			this.FormBorderStyle =
+				FormBorderStyle
 				.SizableToolWindow;
 			this.Name = "Surgery";
-			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
+			this.SizeGripStyle = SizeGripStyle.Show;
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
 			((ISupportInitialize)(this.pbpatient)).EndInit();
@@ -471,7 +465,7 @@ namespace SimPe.Plugin
 			}
 			else
 			{
-				this.ilist.Images.Add(new Bitmap(SimPe.GetImage.NoOne));
+				this.ilist.Images.Add(new Bitmap(GetImage.NoOne));
 			}
 		}
 
@@ -504,7 +498,7 @@ namespace SimPe.Plugin
 
 			if (
 				sdesc.CharacterDescription.ServiceTypes
-				== SimPe.Data.MetaData.ServiceTypes.TinySim
+				== Data.MetaData.ServiceTypes.TinySim
 			)
 			{
 				return;
@@ -512,7 +506,7 @@ namespace SimPe.Plugin
 
 			if (
 				(int)sdesc.Version
-					== (int)SimPe.PackedFiles.Wrapper.SDescVersions.Castaway
+					== (int)PackedFiles.Wrapper.SDescVersions.Castaway
 				&& sdesc.Castaway.Subspecies > 0
 			)
 			{
@@ -566,7 +560,7 @@ namespace SimPe.Plugin
 		{
 			iskin.Images.Add(
 				new Bitmap(
-					SimPe.GetImage.SheOne,
+					GetImage.SheOne,
 					iskin.ImageSize.Width,
 					iskin.ImageSize.Height
 				)
@@ -586,9 +580,9 @@ namespace SimPe.Plugin
 			{
 				skinfiles = new Hashtable();
 				ArrayList tones = new ArrayList();
-				FileTable.FileIndex.Load();
+				FileTableBase.FileIndex.Load();
 				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-					FileTable.FileIndex.FindFile(Data.MetaData.GZPS, true);
+					FileTableBase.FileIndex.FindFile(Data.MetaData.GZPS, true);
 				foreach (
 					Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
 				)
@@ -646,7 +640,7 @@ namespace SimPe.Plugin
 							}
 
 							Interfaces.Scenegraph.IScenegraphFileIndexItem[] idr =
-								FileTable.FileIndex.FindFile(
+								FileTableBase.FileIndex.FindFile(
 									0xAC506764,
 									item.FileDescriptor.Group,
 									item.FileDescriptor.LongInstance,
@@ -676,7 +670,7 @@ namespace SimPe.Plugin
 									if (pfd.Type == Data.MetaData.TXMT)
 									{
 										Interfaces.Scenegraph.IScenegraphFileIndexItem[] txmts =
-											FileTable.FileIndex.FindFile(pfd, null);
+											FileTableBase.FileIndex.FindFile(pfd, null);
 										if (txmts.Length > 0)
 										{
 											Rcol rcol = new GenericRcol(
@@ -693,7 +687,7 @@ namespace SimPe.Plugin
 												).Value + "_txtr";
 
 											Interfaces.Scenegraph.IScenegraphFileIndexItem txtri =
-												FileTable.FileIndex.FindFileByName(
+												FileTableBase.FileIndex.FindFileByName(
 													txtrname,
 													Data.MetaData.TXTR,
 													Data.MetaData.LOCAL_GROUP,
@@ -752,7 +746,7 @@ namespace SimPe.Plugin
 		{
 			this.Cursor = Cursors.WaitCursor;
 
-			Idno idno = SimPe.Plugin.Idno.FromPackage(package);
+			Idno idno = Idno.FromPackage(package);
 			if (idno != null)
 			{
 				this.lbUbi.Visible = (idno.Type != NeighborhoodType.Normal);
@@ -818,17 +812,17 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			Packages.File patient = SimPe.Packages.File.LoadFromFile(
+			Packages.File patient = Packages.File.LoadFromFile(
 				spatient.CharacterFileName
 			);
 			Packages.File archetype = null;
 			if (sarche != null)
 			{
-				archetype = SimPe.Packages.File.LoadFromFile(sarche.CharacterFileName);
+				archetype = Packages.File.LoadFromFile(sarche.CharacterFileName);
 			}
 			else if (this.tarcheFile != null)
 			{
-				archetype = SimPe.Packages.File.LoadFromFile(this.tarcheFile);
+				archetype = Packages.File.LoadFromFile(this.tarcheFile);
 				if (!this.CheckArchetypeFile(archetype))
 				{
 					Helper.ExceptionMessage(
@@ -840,7 +834,7 @@ namespace SimPe.Plugin
 			}
 			else
 			{
-				archetype = SimPe.Packages.File.LoadFromFile(null);
+				archetype = Packages.File.LoadFromFile(null);
 			}
 
 			Packages.GeneratableFile newpackage = null;
@@ -1012,19 +1006,19 @@ namespace SimPe.Plugin
 			try
 			{
 				Packages.GeneratableFile patient =
-					SimPe.Packages.GeneratableFile.LoadFromFile(
+					Packages.File.LoadFromFile(
 						spatient.CharacterFileName
 					);
 				Packages.File archetype = null;
 				if (sarche != null)
 				{
-					archetype = SimPe.Packages.File.LoadFromFile(
+					archetype = Packages.File.LoadFromFile(
 						sarche.CharacterFileName
 					);
 				}
 				else if (this.tarcheFile != null)
 				{
-					archetype = SimPe.Packages.File.LoadFromFile(this.tarcheFile);
+					archetype = Packages.File.LoadFromFile(this.tarcheFile);
 				}
 
 				if (!this.CheckArchetypeFile(archetype))
@@ -1131,13 +1125,13 @@ namespace SimPe.Plugin
 				);
 
 				Packages.GeneratableFile source =
-					SimPe.Packages.GeneratableFile.LoadFromFile(
+					Packages.File.LoadFromFile(
 						spatient.CharacterFileName
 					);
 				if (sfd.ShowDialog() == DialogResult.OK)
 				{
 					Packages.GeneratableFile patient =
-						SimPe.Packages.GeneratableFile.LoadFromStream(
+						Packages.File.LoadFromStream(
 							(System.IO.BinaryReader)null
 						);
 					patient.FileName = "";
@@ -1271,14 +1265,14 @@ namespace SimPe.Plugin
 				this.tarcheFile = this.opd.FileName;
 				if (
 					this.CheckArchetypeFile(
-						SimPe.Packages.File.LoadFromFile(tarcheFile)
+						Packages.File.LoadFromFile(tarcheFile)
 					)
 				)
 				{
 					button1.Enabled = (this.spatient != null);
-					pbarche.Image = SimPe.GetImage.NoOne;
+					pbarche.Image = GetImage.NoOne;
 					ShowSimDetails(
-						SimPe.Packages.File.LoadFromFile(tarcheFile),
+						Packages.File.LoadFromFile(tarcheFile),
 						pgArchetypeDetails
 					);
 				}
@@ -1287,7 +1281,7 @@ namespace SimPe.Plugin
 					tarcheFile = null;
 					sarche = null;
 					button1.Enabled = false;
-					pbarche.Image = SimPe.GetIcon.Fail;
+					pbarche.Image = GetIcon.Fail;
 					pgArchetypeDetails.SelectedObject = null;
 				}
 				iskin.Images[0] = ImageLoader.Preview(pbarche.Image, iskin.ImageSize);
@@ -1362,14 +1356,14 @@ namespace SimPe.Plugin
 			if (this.cbmens.Checked)
 			{
 				this.iskin.Images[0] = ImageLoader.Preview(
-					SimPe.GetImage.NoOne,
+					GetImage.NoOne,
 					iskin.ImageSize
 				);
 			}
 			else
 			{
 				this.iskin.Images[0] = ImageLoader.Preview(
-					SimPe.GetImage.SheOne,
+					GetImage.SheOne,
 					iskin.ImageSize
 				);
 			}
@@ -1425,7 +1419,7 @@ namespace SimPe.Plugin
 
 		void ShowSimDetails(PackedFiles.Wrapper.SDesc sim, PropertyGrid pg)
 		{
-			Packages.File package = SimPe.Packages.File.LoadFromFile(
+			Packages.File package = Packages.File.LoadFromFile(
 				sim.CharacterFileName
 			);
 			if (package != null)
@@ -1433,7 +1427,7 @@ namespace SimPe.Plugin
 				Interfaces.Files.IPackedFileDescriptor pfdAged = package.FindFile(
 					0xAC598EAC,
 					0,
-					SimPe.Data.MetaData.LOCAL_GROUP,
+					Data.MetaData.LOCAL_GROUP,
 					1
 				);
 				if (pfdAged != null)
@@ -1457,7 +1451,7 @@ namespace SimPe.Plugin
 			Interfaces.Files.IPackedFileDescriptor pfdAged = package.FindFile(
 				0xAC598EAC,
 				0,
-				SimPe.Data.MetaData.LOCAL_GROUP,
+				Data.MetaData.LOCAL_GROUP,
 				1
 			);
 			if (pfdAged != null)
@@ -1566,8 +1560,8 @@ namespace SimPe.Plugin
 		public string Skin => ageData.GetItem("skincolor").StringValue;
 
 		[Category("Genetics")]
-		public string Bodyshape => SimPe.Data.MetaData.GetBodyName(
-					SimPe.Data.MetaData.GetBodyShapeid(
+		public string Bodyshape => Data.MetaData.GetBodyName(
+					Data.MetaData.GetBodyShapeid(
 						ageData.GetItem("skincolor").StringValue
 					)
 				);

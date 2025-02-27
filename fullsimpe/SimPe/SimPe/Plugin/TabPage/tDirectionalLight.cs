@@ -139,9 +139,9 @@ namespace SimPe.Plugin.TabPage
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -167,7 +167,7 @@ namespace SimPe.Plugin.TabPage
 			this.groupBox13.Controls.Add(this.label34);
 			this.groupBox13.Controls.Add(this.tb_l_ver);
 			this.groupBox13.Controls.Add(this.label32);
-			this.groupBox13.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.groupBox13.FlatStyle = FlatStyle.System;
 			this.groupBox13.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
@@ -476,9 +476,9 @@ namespace SimPe.Plugin.TabPage
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);

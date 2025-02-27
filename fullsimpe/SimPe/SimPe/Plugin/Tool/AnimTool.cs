@@ -82,7 +82,7 @@ namespace SimPe.Plugin.Tool
 		#region IToolExt Member
 		public System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.CtrlShiftA;
 
-		public System.Drawing.Image Icon => SimPe.GetIcon.AnimCamera;
+		public System.Drawing.Image Icon => GetIcon.AnimCamera;
 
 		public virtual bool Visible => true;
 

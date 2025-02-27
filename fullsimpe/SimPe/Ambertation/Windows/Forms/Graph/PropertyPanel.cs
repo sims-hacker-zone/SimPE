@@ -96,7 +96,7 @@ namespace Ambertation.Windows.Forms.Graph
 				return;
 			}
 
-			LinkGraphic.SetGraphicsMode(gr, !Quality);
+			SetGraphicsMode(gr, !Quality);
 
 			Pen linepen = new Pen(Color.FromArgb(90, Color.Black));
 			gr.DrawLine(linepen, new Point(0, 20), new Point(Width, 20));

@@ -143,7 +143,7 @@ namespace SimPe.PackedFiles.UserInterface
 			internalchg = true;
 			wrapper[index] = currentItem = val;
 			lvConstants.SelectedItems[0].SubItems[1].Text =
-				"0x" + SimPe.Helper.HexString(currentItem);
+				"0x" + Helper.HexString(currentItem);
 			if (doHex)
 			{
 				tbValueHex.Text = lvConstants.SelectedItems[0].SubItems[1].Text;
@@ -160,7 +160,7 @@ namespace SimPe.PackedFiles.UserInterface
 		private ListViewItem lvItem(int i)
 		{
 			string cID = "0x" + i.ToString("X") + " (" + i + ")";
-			string cValue = "0x" + SimPe.Helper.HexString(wrapper[i]);
+			string cValue = "0x" + Helper.HexString(wrapper[i]);
 			string cLabel =
 				(trcnres != null && !trcnres.TextOnly && i < trcnres.Count)
 					? trcnres[i].ConstName
@@ -224,7 +224,7 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				origItem = currentItem = wrapper[index];
 
-				this.tbValueHex.Text = "0x" + SimPe.Helper.HexString(currentItem);
+				this.tbValueHex.Text = "0x" + Helper.HexString(currentItem);
 				this.tbValueDec.Text = currentItem.ToString();
 
 				this.tbValueHex.Enabled = this.tbValueDec.Enabled = true;
@@ -363,12 +363,12 @@ namespace SimPe.PackedFiles.UserInterface
 						.shortname // Type (short name)
 					,
 					"0x"
-						+ SimPe.Helper.HexString(
+						+ Helper.HexString(
 							wrapper.FileDescriptor.Group
 						) // Group Number
 					,
 					"0x"
-						+ SimPe.Helper.HexString(
+						+ Helper.HexString(
 							(ushort)wrapper.FileDescriptor.Instance
 						) // Instance Number
 					,
@@ -759,7 +759,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.gbValue.Controls.Add(this.tbValueHex);
 			this.gbValue.Controls.Add(this.label5);
 			this.gbValue.Controls.Add(this.label6);
-			this.gbValue.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.gbValue.FlatStyle = FlatStyle.System;
 			resources.ApplyResources(this.gbValue, "gbValue");
 			this.gbValue.Name = "gbValue";
 			this.gbValue.TabStop = false;
@@ -800,7 +800,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// btnClose
 			//
 			resources.ApplyResources(this.btnClose, "btnClose");
-			this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.btnClose.DialogResult = DialogResult.Cancel;
 			this.btnClose.Name = "btnClose";
 			this.btnClose.Click += new EventHandler(this.btnClose_Click);
 			//
@@ -891,10 +891,8 @@ namespace SimPe.PackedFiles.UserInterface
 			);
 			this.lvConstants.FullRowSelect = true;
 			this.lvConstants.GridLines = true;
-			this.lvConstants.HeaderStyle = System
-				.Windows
-				.Forms
-				.ColumnHeaderStyle
+			this.lvConstants.HeaderStyle =
+				ColumnHeaderStyle
 				.Nonclickable;
 			this.lvConstants.HideSelection = false;
 			this.lvConstants.Items.AddRange(
@@ -910,7 +908,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.lvConstants.MultiSelect = false;
 			this.lvConstants.Name = "lvConstants";
 			this.lvConstants.UseCompatibleStateImageBehavior = false;
-			this.lvConstants.View = System.Windows.Forms.View.Details;
+			this.lvConstants.View = View.Details;
 			this.lvConstants.SelectedIndexChanged += new EventHandler(
 				this.lvConstants_SelectedIndexChanged
 			);
@@ -942,16 +940,14 @@ namespace SimPe.PackedFiles.UserInterface
 			// BconForm
 			//
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.AutoScaleMode = AutoScaleMode.Dpi;
 			this.CancelButton = this.btnClose;
 			this.Controls.Add(this.bconPanel);
-			this.FormBorderStyle = System
-				.Windows
-				.Forms
-				.FormBorderStyle
+			this.FormBorderStyle =
+				FormBorderStyle
 				.SizableToolWindow;
 			this.Name = "BconForm";
-			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+			this.WindowState = FormWindowState.Maximized;
 			this.gbValue.ResumeLayout(false);
 			this.gbValue.PerformLayout();
 			this.bconPanel.ResumeLayout(false);
@@ -1012,7 +1008,7 @@ namespace SimPe.PackedFiles.UserInterface
 					return;
 				}
 			}
-			SimPe.RemoteControl.OpenPackedFile(trcn.FileDescriptor, trcn.Package);
+			RemoteControl.OpenPackedFile(trcn.FileDescriptor, trcn.Package);
 		}
 
 		private void btnStrPrev_Click(object sender, EventArgs e)

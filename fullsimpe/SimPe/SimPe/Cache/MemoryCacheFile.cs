@@ -35,8 +35,8 @@ namespace SimPe.Cache
 		/// <returns></returns>
 		public static MemoryCacheFile InitCacheFile()
 		{
-			FileTable.FileIndex.Load();
-			return InitCacheFile(FileTable.FileIndex);
+			FileTableBase.FileIndex.Load();
+			return InitCacheFile(FileTableBase.FileIndex);
 		}
 
 		/// <summary>
@@ -66,8 +66,8 @@ namespace SimPe.Cache
 
 		public void ReloadCache(bool save)
 		{
-			FileTable.FileIndex.Load();
-			ReloadCache(FileTable.FileIndex, save);
+			FileTableBase.FileIndex.Load();
+			ReloadCache(FileTableBase.FileIndex, save);
 		}
 
 		public void ReloadCache(
@@ -144,7 +144,7 @@ namespace SimPe.Cache
 			try
 			{
 				Interfaces.Scenegraph.IScenegraphFileIndexItem[] sitems =
-					FileTable.FileIndex.FindFile(
+					FileTableBase.FileIndex.FindFile(
 						Data.MetaData.CTSS_FILE,
 						objd.FileDescriptor.Group,
 						objd.CTSSInstance + (ulong)1,
@@ -152,7 +152,7 @@ namespace SimPe.Cache
 					);
 				if (sitems.Length == 0)
 				{
-					sitems = FileTable.FileIndex.FindFile(
+					sitems = FileTableBase.FileIndex.FindFile(
 						Data.MetaData.CTSS_FILE,
 						objd.FileDescriptor.Group,
 						objd.CTSSInstance,
@@ -189,7 +189,7 @@ namespace SimPe.Cache
 			try
 			{
 				Interfaces.Scenegraph.IScenegraphFileIndexItem[] sitems =
-					FileTable.FileIndex.FindFile(
+					FileTableBase.FileIndex.FindFile(
 						Data.MetaData.STRING_FILE,
 						objd.FileDescriptor.Group,
 						0x100,
@@ -225,7 +225,7 @@ namespace SimPe.Cache
 			Interfaces.Scenegraph.IScenegraphFileIndexItem[] iitems;
 			if (mci.IsBadge)
 			{
-				iitems = FileTable.FileIndex.FindFile(
+				iitems = FileTableBase.FileIndex.FindFile(
 					Data.MetaData.SIM_IMAGE_FILE,
 					objd.FileDescriptor.Group,
 					3,
@@ -234,7 +234,7 @@ namespace SimPe.Cache
 			}
 			else
 			{
-				iitems = FileTable.FileIndex.FindFile(
+				iitems = FileTableBase.FileIndex.FindFile(
 					Data.MetaData.SIM_IMAGE_FILE,
 					objd.FileDescriptor.Group,
 					1,

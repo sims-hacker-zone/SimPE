@@ -1883,7 +1883,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 
 			IPackedFileDescriptor pfd = parent.Package.FindFile(
-				Data.MetaData.SIM_DESCRIPTION_FILE,
+				MetaData.SIM_DESCRIPTION_FILE,
 				0,
 				parent.FileDescriptor.Group,
 				instance
@@ -1917,14 +1917,14 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 
 			IPackedFileDescriptor pfd1 = parent.Package.FindFile(
-				Data.MetaData.RELATION_FILE,
+				MetaData.RELATION_FILE,
 				0,
 				parent.FileDescriptor.Group,
 				(uint)((instance << 16) + parent.FileDescriptor.Instance)
 			);
 
 			IPackedFileDescriptor pfd2 = parent.Package.FindFile(
-				Data.MetaData.RELATION_FILE,
+				MetaData.RELATION_FILE,
 				0,
 				parent.FileDescriptor.Group,
 				(uint)((parent.FileDescriptor.Instance << 16) + instance)
@@ -1957,7 +1957,7 @@ namespace SimPe.PackedFiles.Wrapper
 	{
 		internal SdscUniversity()
 		{
-			Major = Data.Majors.Undeclared;
+			Major = Majors.Undeclared;
 			Time = 72;
 			Semester = 1;
 		}
@@ -2762,7 +2762,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public virtual bool ChangeNames(string name, string familyname)
 		{
-			if (!System.IO.File.Exists(this.CharacterFileName))
+			if (!File.Exists(this.CharacterFileName))
 			{
 				return false;
 			}
@@ -2770,9 +2770,9 @@ namespace SimPe.PackedFiles.Wrapper
 			try
 			{
 				Packages.GeneratableFile file =
-					SimPe.Packages.GeneratableFile.LoadFromFile(CharacterFileName);
+					Packages.File.LoadFromFile(CharacterFileName);
 				IPackedFileDescriptor[] pfds = file.FindFiles(
-					Data.MetaData.CTSS_FILE
+					MetaData.CTSS_FILE
 				);
 				if (pfds.Length > 0)
 				{
@@ -2861,10 +2861,10 @@ namespace SimPe.PackedFiles.Wrapper
 				{
 					if (
 						familynameprovider.FindName(SimId).Name
-						== SimPe.Localization.GetString("Unknown")
+						== Localization.GetString("Unknown")
 					)
 					{
-						return Data.MetaData.NPCFamily(
+						return MetaData.NPCFamily(
 							Convert.ToUInt32(FamilyInstance)
 						);
 					}
@@ -2930,7 +2930,7 @@ namespace SimPe.PackedFiles.Wrapper
 		public static SDesc FindForSimId(uint simid, IPackageFile package)
 		{
 			IPackedFileDescriptor[] files = package.FindFiles(
-				SimPe.Data.MetaData.SIM_DESCRIPTION_FILE
+				MetaData.SIM_DESCRIPTION_FILE
 			);
 
 			SDesc sdesc = new SDesc(null, null, null);
@@ -2991,9 +2991,9 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public SDesc()
 			: this(
-				FileTable.ProviderRegistry.SimNameProvider,
-				FileTable.ProviderRegistry.SimFamilynameProvider,
-				FileTable.ProviderRegistry.SimDescriptionProvider
+				FileTableBase.ProviderRegistry.SimNameProvider,
+				FileTableBase.ProviderRegistry.SimFamilynameProvider,
+				FileTableBase.ProviderRegistry.SimDescriptionProvider
 			)
 		{
 		}
@@ -3134,19 +3134,19 @@ namespace SimPe.PackedFiles.Wrapper
 			///
 			/// TODO: This needs to be done more efficient, but for now it will work!
 			///
-			reader.BaseStream.Seek(startpos + 0x04, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0x04, SeekOrigin.Begin);
 			version = reader.ReadInt32();
 
 			//Read the GUID Data
 			reader.BaseStream.Seek(
 				startpos + GuidDataPosition,
-				System.IO.SeekOrigin.Begin
+				SeekOrigin.Begin
 			);
 			Instance = reader.ReadUInt16();
 			SimId = reader.ReadUInt32();
 
 			//decay
-			reader.BaseStream.Seek(startpos + 0xC6, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0xC6, SeekOrigin.Begin);
 			Decay.Hunger = reader.ReadInt16();
 			Decay.Comfort = reader.ReadInt16();
 			Decay.Bladder = reader.ReadInt16();
@@ -3156,11 +3156,11 @@ namespace SimPe.PackedFiles.Wrapper
 			Decay.Social = reader.ReadInt16();
 			Decay.Shopping = reader.ReadInt16();
 			Decay.Fun = reader.ReadInt16();
-			reader.BaseStream.Seek(startpos + 0xE0, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0xE0, SeekOrigin.Begin);
 			Decay.ScratchC = reader.ReadInt16();
 
 			//skills
-			reader.BaseStream.Seek(startpos + 0x1E, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0x1E, SeekOrigin.Begin);
 			Skills.Cleaning = reader.ReadUInt16();
 			Skills.Cooking = reader.ReadUInt16();
 			Skills.Charisma = reader.ReadUInt16();
@@ -3172,14 +3172,14 @@ namespace SimPe.PackedFiles.Wrapper
 			Skills.Body = reader.ReadUInt16();
 			Skills.Logic = reader.ReadUInt16();
 			// Chris H this is Sunshine Motive change to Amorous Personality - reader.BaseStream.Seek(startpos + 0xEA, System.IO.SeekOrigin.Begin);
-			reader.BaseStream.Seek(startpos + 0xB6, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0xB6, SeekOrigin.Begin);
 			Skills.Romance = reader.ReadUInt16();
 
 			//character (Genetic)
-			reader.BaseStream.Seek(startpos + 0x10, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0x10, SeekOrigin.Begin);
 			Character.Nice = reader.ReadUInt16();
 			Character.Active = reader.ReadUInt16();
-			reader.BaseStream.Seek(0x02, System.IO.SeekOrigin.Current);
+			reader.BaseStream.Seek(0x02, SeekOrigin.Current);
 
 			//reader.BaseStream.Seek(0x014, SeekOrigin.Begin);
 			//University.Effort = reader.ReadUInt16();
@@ -3192,80 +3192,80 @@ namespace SimPe.PackedFiles.Wrapper
 			reader.BaseStream.Seek(startpos + 0xb4, SeekOrigin.Begin);
 			CharacterDescription.PersonFlags1.Value = reader.ReadUInt16();
 
-			reader.BaseStream.Seek(startpos + 0x46, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0x46, SeekOrigin.Begin);
 			CharacterDescription.MotivesStatic = reader.ReadUInt16();
-			reader.BaseStream.Seek(startpos + 0x68, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0x68, SeekOrigin.Begin);
 			CharacterDescription.Aspiration = (MetaData.AspirationTypes)reader.ReadUInt16();
-			reader.BaseStream.Seek(startpos + 0xBC, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0xBC, SeekOrigin.Begin);
 			CharacterDescription.VoiceType = reader.ReadUInt16();
-			reader.BaseStream.Seek(startpos + 0x7C, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0x7C, SeekOrigin.Begin);
 			CharacterDescription.Grade = (MetaData.Grades)reader.ReadUInt16();
 			CharacterDescription.CareerLevel = reader.ReadUInt16();
-			reader.BaseStream.Seek(startpos + 0x80, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0x80, SeekOrigin.Begin);
 			CharacterDescription.Realage = reader.ReadUInt16();
-			reader.BaseStream.Seek(startpos + 0x80, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0x80, SeekOrigin.Begin);
 			CharacterDescription.LifeSection = (MetaData.LifeSections)reader.ReadUInt16();
-			reader.BaseStream.Seek(startpos + 0x86, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0x86, SeekOrigin.Begin);
 			FamilyInstance = reader.ReadUInt16();
-			reader.BaseStream.Seek(startpos + 0x8A, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0x8A, SeekOrigin.Begin);
 			CharacterDescription.CareerPerformance = reader.ReadInt16();
-			reader.BaseStream.Seek(startpos + 0x8E, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0x8E, SeekOrigin.Begin);
 			CharacterDescription.Gender = (MetaData.Gender)reader.ReadUInt16();
-			reader.BaseStream.Seek(startpos + 0x94, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0x94, SeekOrigin.Begin);
 			CharacterDescription.GhostFlag.Value = reader.ReadUInt16();
-			reader.BaseStream.Seek(startpos + 0x96, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0x96, SeekOrigin.Begin);
 			CharacterDescription.PTO = reader.ReadUInt16();
-			reader.BaseStream.Seek(startpos + 0x98, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0x98, SeekOrigin.Begin);
 			CharacterDescription.ZodiacSign = (MetaData.ZodiacSignes)reader.ReadUInt16();
 
-			reader.BaseStream.Seek(startpos + 0x102, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0x102, SeekOrigin.Begin);
 			CharacterDescription.Pension = reader.ReadUInt16();
 
-			reader.BaseStream.Seek(startpos + 0xAE, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0xAE, SeekOrigin.Begin);
 			CharacterDescription.BodyFlag.Value = reader.ReadUInt16();
-			reader.BaseStream.Seek(startpos + 0x134, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0x134, SeekOrigin.Begin);
 			CharacterDescription.CultFlag.Value = reader.ReadUInt16();
-			reader.BaseStream.Seek(startpos + 0x13C, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0x13C, SeekOrigin.Begin);
 			CharacterDescription.ReligionId = reader.ReadUInt16();
 			_ = reader.ReadUInt16();
-			reader.BaseStream.Seek(startpos + 0x12A, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0x12A, SeekOrigin.Begin);
 			_ = reader.ReadUInt16();
-			reader.BaseStream.Seek(startpos + 0xBA, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0xBA, SeekOrigin.Begin);
 			_ = reader.ReadUInt16();
-			reader.BaseStream.Seek(startpos + 0xB0, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0xB0, SeekOrigin.Begin);
 			Skills.Fatness = reader.ReadUInt16();
-			reader.BaseStream.Seek(startpos + 0xBE, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0xBE, SeekOrigin.Begin);
 			CharacterDescription.Career = (MetaData.Careers)reader.ReadUInt32();
-			reader.BaseStream.Seek(startpos + 0x12C, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0x12C, SeekOrigin.Begin);
 			CharacterDescription.AllocatedSuburb = reader.ReadUInt16();
 			CharacterDescription.PersonFlags3.Value = reader.ReadUInt16();
 			CharacterDescription.Bodyshape = (MetaData.Bodyshape)reader.ReadUInt16();
-			reader.BaseStream.Seek(startpos + 0xE2, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0xE2, SeekOrigin.Begin);
 			CharacterDescription.SchoolType = (MetaData.SchoolTypes)reader.ReadUInt32();
-			reader.BaseStream.Seek(startpos + 0x14C, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0x14C, SeekOrigin.Begin);
 			CharacterDescription.LifelinePoints = reader.ReadInt16();
 			CharacterDescription.LifelineScore = (uint)(reader.ReadUInt16() * 10);
 			CharacterDescription.BlizLifelinePoints = reader.ReadUInt16();
-			reader.BaseStream.Seek(startpos + 0x142, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0x142, SeekOrigin.Begin);
 			CharacterDescription.ServiceTypes = (MetaData.ServiceTypes)reader.ReadUInt16();
-			reader.BaseStream.Seek(startpos + 0x142, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0x142, SeekOrigin.Begin);
 			CharacterDescription.NPCType = reader.ReadUInt16();
 			CharacterDescription.AgeDuration = reader.ReadUInt16();
-			reader.BaseStream.Seek(startpos + 0x148, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0x148, SeekOrigin.Begin);
 			CharacterDescription.SelectableFlag.Value = reader.ReadUInt16();
-			reader.BaseStream.Seek(startpos + 0x54, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0x54, SeekOrigin.Begin);
 			CharacterDescription.AutonomyLevel = reader.ReadUInt16();
-			reader.BaseStream.Seek(startpos + 0x156, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0x156, SeekOrigin.Begin);
 			Unlinked = reader.ReadUInt16();
 
-			reader.BaseStream.Seek(startpos + 0x15A, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0x15A, SeekOrigin.Begin);
 			CharacterDescription.Retired = (MetaData.Careers)reader.ReadUInt32();
 			CharacterDescription.RetiredLevel = reader.ReadUInt16();
 
 			//available Relationships
 			reader.BaseStream.Seek(
 				startpos + this.RelationPosition,
-				System.IO.SeekOrigin.Begin
+				SeekOrigin.Begin
 			);
 			Relations.SimInstances = new ushort[reader.ReadUInt32()];
 
@@ -3307,7 +3307,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 
 			//character (Genetic)
-			reader.BaseStream.Seek(startpos + 0x6A, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0x6A, SeekOrigin.Begin);
 			GeneticCharacter.Neat = reader.ReadUInt16();
 			GeneticCharacter.Nice = reader.ReadUInt16();
 			GeneticCharacter.Active = reader.ReadUInt16();
@@ -3315,10 +3315,10 @@ namespace SimPe.PackedFiles.Wrapper
 			GeneticCharacter.Playful = reader.ReadUInt16();
 
 			//interests
-			reader.BaseStream.Seek(startpos + 0x038, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0x038, SeekOrigin.Begin);
 			Interests.MalePreference = reader.ReadInt16();
 			Interests.FemalePreference = reader.ReadInt16();
-			reader.BaseStream.Seek(startpos + 0x104, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(startpos + 0x104, SeekOrigin.Begin);
 			Interests.Politics = reader.ReadUInt16();
 			Interests.Money = reader.ReadUInt16();
 			Interests.Environment = reader.ReadUInt16();
@@ -3384,11 +3384,11 @@ namespace SimPe.PackedFiles.Wrapper
 			if (version >= (int)SDescVersions.Apartment)
 			{
 				Apartment.Unserialize(reader);
-				reader.BaseStream.Seek(startpos + 0x1D8, System.IO.SeekOrigin.Begin);
+				reader.BaseStream.Seek(startpos + 0x1D8, SeekOrigin.Begin);
 				CharacterDescription.TitlePostName = (short)reader.ReadUInt16();
 			}
 
-			reader.BaseStream.Seek(endpos, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(endpos, SeekOrigin.Begin);
 		}
 
 		protected override void Serialize(BinaryWriter writer)
@@ -3419,22 +3419,22 @@ namespace SimPe.PackedFiles.Wrapper
 			///
 			/// TODO: This needs to be done more efficient, but for now it will work!
 			///
-			writer.BaseStream.Seek(startpos + 0x04, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(startpos + 0x04, SeekOrigin.Begin);
 			writer.Write(version); //Version Number
 
 			//Write the Guid Data
 			writer.BaseStream.Seek(
 				startpos + GuidDataPosition,
-				System.IO.SeekOrigin.Begin
+				SeekOrigin.Begin
 			);
 			writer.Write(Instance);
 			writer.Write(SimId);
 
 			//character
-			writer.BaseStream.Seek(startpos + 0x10, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(startpos + 0x10, SeekOrigin.Begin);
 			writer.Write(Character.Nice); //Nice
 			writer.Write(Character.Active); //Active
-			writer.BaseStream.Seek(0x02, System.IO.SeekOrigin.Current);
+			writer.BaseStream.Seek(0x02, SeekOrigin.Current);
 			writer.Write(Character.Playful); //Playful
 			writer.Write(Character.Outgoing); //Outgoing
 			writer.Write(Character.Neat); //Neat
@@ -3449,74 +3449,74 @@ namespace SimPe.PackedFiles.Wrapper
 			writer.BaseStream.Seek(startpos + 0xb4, SeekOrigin.Begin);
 			writer.Write((ushort)CharacterDescription.PersonFlags1.Value);
 
-			writer.BaseStream.Seek(startpos + 0x46, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(startpos + 0x46, SeekOrigin.Begin);
 			writer.Write((ushort)CharacterDescription.MotivesStatic);
-			writer.BaseStream.Seek(startpos + 0x54, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(startpos + 0x54, SeekOrigin.Begin);
 			writer.Write(CharacterDescription.AutonomyLevel);
-			writer.BaseStream.Seek(startpos + 0x68, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(startpos + 0x68, SeekOrigin.Begin);
 			writer.Write((ushort)CharacterDescription.Aspiration);
-			writer.BaseStream.Seek(startpos + 0xBC, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(startpos + 0xBC, SeekOrigin.Begin);
 			writer.Write((ushort)CharacterDescription.VoiceType);
-			writer.BaseStream.Seek(startpos + 0x7C, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(startpos + 0x7C, SeekOrigin.Begin);
 			writer.Write((ushort)CharacterDescription.Grade);
 			writer.Write(CharacterDescription.CareerLevel);
-			writer.BaseStream.Seek(startpos + 0x80, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(startpos + 0x80, SeekOrigin.Begin);
 			writer.Write((ushort)CharacterDescription.LifeSection);
-			writer.BaseStream.Seek(startpos + 0x86, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(startpos + 0x86, SeekOrigin.Begin);
 			writer.Write(FamilyInstance);
-			writer.BaseStream.Seek(startpos + 0x8A, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(startpos + 0x8A, SeekOrigin.Begin);
 			writer.Write(CharacterDescription.CareerPerformance);
-			writer.BaseStream.Seek(startpos + 0x8E, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(startpos + 0x8E, SeekOrigin.Begin);
 			writer.Write((ushort)CharacterDescription.Gender);
-			writer.BaseStream.Seek(startpos + 0x94, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(startpos + 0x94, SeekOrigin.Begin);
 			writer.Write(CharacterDescription.GhostFlag.Value);
-			writer.BaseStream.Seek(startpos + 0x96, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(startpos + 0x96, SeekOrigin.Begin);
 			writer.Write((ushort)CharacterDescription.PTO);
-			writer.BaseStream.Seek(startpos + 0x98, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(startpos + 0x98, SeekOrigin.Begin);
 			writer.Write((ushort)CharacterDescription.ZodiacSign);
 
-			writer.BaseStream.Seek(startpos + 0x102, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(startpos + 0x102, SeekOrigin.Begin);
 			writer.Write((ushort)CharacterDescription.Pension);
 
-			writer.BaseStream.Seek(startpos + 0xAE, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(startpos + 0xAE, SeekOrigin.Begin);
 			writer.Write(CharacterDescription.BodyFlag.Value);
-			writer.BaseStream.Seek(startpos + 0x134, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(startpos + 0x134, SeekOrigin.Begin);
 			writer.Write(CharacterDescription.CultFlag.Value);
-			writer.BaseStream.Seek(startpos + 0x13C, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(startpos + 0x13C, SeekOrigin.Begin);
 			writer.Write(CharacterDescription.ReligionId);
 			writer.Write((ushort)0);
-			writer.BaseStream.Seek(startpos + 0x12A, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(startpos + 0x12A, SeekOrigin.Begin);
 			writer.Write((ushort)0);
-			writer.BaseStream.Seek(startpos + 0xBA, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(startpos + 0xBA, SeekOrigin.Begin);
 			writer.Write((ushort)0);
-			writer.BaseStream.Seek(startpos + 0xB0, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(startpos + 0xB0, SeekOrigin.Begin);
 			writer.Write(Skills.Fatness);
-			writer.BaseStream.Seek(startpos + 0xBE, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(startpos + 0xBE, SeekOrigin.Begin);
 			writer.Write((uint)CharacterDescription.Career);
-			writer.BaseStream.Seek(startpos + 0x12C, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(startpos + 0x12C, SeekOrigin.Begin);
 			writer.Write(CharacterDescription.AllocatedSuburb);
 			writer.Write((ushort)CharacterDescription.PersonFlags3.Value);
 			writer.Write((ushort)CharacterDescription.Bodyshape);
-			writer.BaseStream.Seek(startpos + 0xE2, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(startpos + 0xE2, SeekOrigin.Begin);
 			writer.Write((uint)CharacterDescription.SchoolType);
-			writer.BaseStream.Seek(startpos + 0x14C, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(startpos + 0x14C, SeekOrigin.Begin);
 			writer.Write(CharacterDescription.LifelinePoints);
 			writer.Write((ushort)(CharacterDescription.LifelineScore / 10));
 			writer.Write(CharacterDescription.BlizLifelinePoints);
-			writer.BaseStream.Seek(startpos + 0x142, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(startpos + 0x142, SeekOrigin.Begin);
 			writer.Write(CharacterDescription.NPCType);
 			writer.Write(CharacterDescription.AgeDuration);
-			writer.BaseStream.Seek(startpos + 0x148, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(startpos + 0x148, SeekOrigin.Begin);
 			writer.Write(CharacterDescription.SelectableFlag.Value);
-			writer.BaseStream.Seek(startpos + 0x156, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(startpos + 0x156, SeekOrigin.Begin);
 			writer.Write(Unlinked);
 
-			writer.BaseStream.Seek(startpos + 0x15A, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(startpos + 0x15A, SeekOrigin.Begin);
 			writer.Write((uint)CharacterDescription.Retired);
 			writer.Write(CharacterDescription.RetiredLevel);
 
 			//decay
-			writer.BaseStream.Seek(startpos + 0xC6, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(startpos + 0xC6, SeekOrigin.Begin);
 			writer.Write(Decay.Hunger);
 			writer.Write(Decay.Comfort);
 			writer.Write(Decay.Bladder);
@@ -3526,13 +3526,13 @@ namespace SimPe.PackedFiles.Wrapper
 			writer.Write(Decay.Social);
 			writer.Write(Decay.Shopping);
 			writer.Write(Decay.Fun);
-			writer.BaseStream.Seek(startpos + 0xE0, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(startpos + 0xE0, SeekOrigin.Begin);
 			writer.Write(Decay.ScratchC);
 
 			//available Relationships
 			writer.BaseStream.Seek(
 				startpos + this.RelationPosition,
-				System.IO.SeekOrigin.Begin
+				SeekOrigin.Begin
 			);
 			writer.Write((uint)Relations.SimInstances.Length);
 
@@ -3548,7 +3548,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 
 			//skills
-			writer.BaseStream.Seek(startpos + 0x1E, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(startpos + 0x1E, SeekOrigin.Begin);
 			writer.Write(Skills.Cleaning);
 			writer.Write(Skills.Cooking);
 			writer.Write(Skills.Charisma);
@@ -3560,11 +3560,11 @@ namespace SimPe.PackedFiles.Wrapper
 			writer.Write(Skills.Body);
 			writer.Write(Skills.Logic);
 			// Chris H this was Sunshine Motive changed to Amorous Personality - writer.BaseStream.Seek(startpos + 0xEA, System.IO.SeekOrigin.Begin);
-			writer.BaseStream.Seek(startpos + 0xB6, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(startpos + 0xB6, SeekOrigin.Begin);
 			writer.Write(Skills.Romance);
 
 			//character (Genetic)
-			writer.BaseStream.Seek(startpos + 0x6A, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(startpos + 0x6A, SeekOrigin.Begin);
 			writer.Write(GeneticCharacter.Neat);
 			writer.Write(GeneticCharacter.Nice);
 			writer.Write(GeneticCharacter.Active);
@@ -3572,10 +3572,10 @@ namespace SimPe.PackedFiles.Wrapper
 			writer.Write(GeneticCharacter.Playful);
 
 			//interests
-			writer.BaseStream.Seek(startpos + 0x038, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(startpos + 0x038, SeekOrigin.Begin);
 			writer.Write(Interests.MalePreference);
 			writer.Write(Interests.FemalePreference);
-			writer.BaseStream.Seek(startpos + 0x104, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(startpos + 0x104, SeekOrigin.Begin);
 			writer.Write(Interests.Politics);
 			writer.Write(Interests.Money);
 			writer.Write(Interests.Environment);
@@ -3637,7 +3637,7 @@ namespace SimPe.PackedFiles.Wrapper
 				Apartment.Serialize(writer);
 			}
 
-			writer.BaseStream.Seek(endpos, System.IO.SeekOrigin.Begin);
+			writer.BaseStream.Seek(endpos, SeekOrigin.Begin);
 		}
 		#endregion
 
@@ -3706,8 +3706,8 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				if (addoncarrer == null)
 				{
-					addoncarrer = Data.Alias.LoadFromXml(
-						System.IO.Path.Combine(
+					addoncarrer = Alias.LoadFromXml(
+						Path.Combine(
 							Helper.SimPeDataPath,
 							"additional_careers.xml"
 						)
@@ -3729,8 +3729,8 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				if (addonmajor == null)
 				{
-					addonmajor = Data.Alias.LoadFromXml(
-						System.IO.Path.Combine(
+					addonmajor = Alias.LoadFromXml(
+						Path.Combine(
 							Helper.SimPeDataPath,
 							"additional_majors.xml"
 						)
@@ -3752,8 +3752,8 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				if (addonschool == null)
 				{
-					addonschool = Data.Alias.LoadFromXml(
-						System.IO.Path.Combine(
+					addonschool = Alias.LoadFromXml(
+						Path.Combine(
 							Helper.SimPeDataPath,
 							"additional_schools.xml"
 						)

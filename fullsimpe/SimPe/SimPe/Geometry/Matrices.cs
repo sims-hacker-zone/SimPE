@@ -870,7 +870,7 @@ namespace SimPe.Geometry
 		/// <returns></returns>
 		public static Matrixd RotateX(double angle)
 		{
-			Matrixd m = Matrixd.GetIdentity(4, 4);
+			Matrixd m = GetIdentity(4, 4);
 
 			m[1, 1] = Math.Cos(angle);
 			m[1, 2] = -Math.Sin(angle);
@@ -888,7 +888,7 @@ namespace SimPe.Geometry
 		/// <returns></returns>
 		public static Matrixd RotateY(double angle)
 		{
-			Matrixd m = Matrixd.GetIdentity(4, 4);
+			Matrixd m = GetIdentity(4, 4);
 
 			m[0, 0] = Math.Cos(angle);
 			m[0, 2] = Math.Sin(angle);
@@ -906,7 +906,7 @@ namespace SimPe.Geometry
 		/// <returns></returns>
 		public static Matrixd RotateZ(double angle)
 		{
-			Matrixd m = Matrixd.GetIdentity(4, 4);
+			Matrixd m = GetIdentity(4, 4);
 
 			m[0, 0] = Math.Cos(angle);
 			m[0, 1] = -Math.Sin(angle);
@@ -941,7 +941,7 @@ namespace SimPe.Geometry
 
 		public Matrixd To33Matrix()
 		{
-			Matrixd m = Matrixd.GetIdentity(3, 3);
+			Matrixd m = GetIdentity(3, 3);
 
 			for (int r = 0; r < Math.Min(3, this.Rows); r++)
 			{

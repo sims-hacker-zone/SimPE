@@ -51,7 +51,7 @@ namespace SimPe.Plugin.Tool.Action
 				return;
 			}
 
-			SimPe.FileTable.FileIndex.Load();
+			FileTableBase.FileIndex.Load();
 
 			System.IO.StreamWriter sw = new System.IO.StreamWriter(
 				new System.IO.MemoryStream()
@@ -65,7 +65,7 @@ namespace SimPe.Plugin.Tool.Action
 				)
 				{
 					Interfaces.Scenegraph.IScenegraphFileIndexItem[] fiis =
-						FileTable.FileIndex.FindFile(pfd, e.LoadedPackage.Package);
+						FileTableBase.FileIndex.FindFile(pfd, e.LoadedPackage.Package);
 
 					if (fiis.Length != 1)
 					{

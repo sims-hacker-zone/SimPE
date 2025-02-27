@@ -34,7 +34,7 @@ namespace SimPe.Plugin
 			InitializeComponent();
 
 			cb.Enum = typeof(Data.NeighborhoodSlots);
-			cb.ResourceManager = SimPe.Localization.Manager;
+			cb.ResourceManager = Localization.Manager;
 			cb.SelectedIndex = 0;
 		}
 
@@ -75,7 +75,7 @@ namespace SimPe.Plugin
 			this.lv.NgbhResource = null;
 			this.lv.Slot = null;
 			this.lv.Slots = null;
-			this.lv.SlotType = SimPe.Data.NeighborhoodSlots.LotsIntern;
+			this.lv.SlotType = Data.NeighborhoodSlots.LotsIntern;
 			this.lv.SelectedSlotChanged += new EventHandler(
 				this.lv_SelectedSlotChanged
 			);
@@ -83,7 +83,7 @@ namespace SimPe.Plugin
 			// cb
 			//
 			resources.ApplyResources(this.cb, "cb");
-			this.cb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cb.DropDownStyle = ComboBoxStyle.DropDownList;
 			this.cb.Enum = null;
 			this.cb.ForeColor = System.Drawing.SystemColors.ControlText;
 			this.cb.Name = "cb";

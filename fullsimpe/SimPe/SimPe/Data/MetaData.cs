@@ -1417,9 +1417,9 @@ namespace SimPe.Data
 			KnownFences.Add(0xAD0DABD2, "PINEGULTCHER Wood Rail in Light Pine");
 			KnownFences.Add(0x8D0B34FD, "Longhorn Balustrade in Light Wood");
 			if (
-				PathProvider.Global.GetExpansion(SimPe.Expansions.BaseGame).Exists
-				|| PathProvider.Global.GetExpansion(SimPe.Expansions.PetStories).Exists
-				|| PathProvider.Global.GetExpansion(SimPe.Expansions.LifeStories).Exists
+				PathProvider.Global.GetExpansion(Expansions.BaseGame).Exists
+				|| PathProvider.Global.GetExpansion(Expansions.PetStories).Exists
+				|| PathProvider.Global.GetExpansion(Expansions.LifeStories).Exists
 			)
 			{
 				KnownFences.Add(0x6D0B2B38, "Nouvelle Fence in Liberty Green");
@@ -1452,9 +1452,9 @@ namespace SimPe.Data
 				KnownFences.Add(0x0CDF8C99, "WroughtWright, Inc. Iron Age Fence");
 			}
 			if (
-				PathProvider.Global.GetExpansion(SimPe.Expansions.University).Exists
-				|| PathProvider.Global.GetExpansion(SimPe.Expansions.PetStories).Exists
-				|| PathProvider.Global.GetExpansion(SimPe.Expansions.LifeStories).Exists
+				PathProvider.Global.GetExpansion(Expansions.University).Exists
+				|| PathProvider.Global.GetExpansion(Expansions.PetStories).Exists
+				|| PathProvider.Global.GetExpansion(Expansions.LifeStories).Exists
 			)
 			{
 				KnownFences.Add(0xCEC0E4C4, "Running the Rapids Rock Fence");
@@ -1476,9 +1476,9 @@ namespace SimPe.Data
 				KnownFences.Add(0xCEC0E2A8, "Romanesque Wall in Red Stone");
 			}
 			if (
-				PathProvider.Global.GetExpansion(SimPe.Expansions.Nightlife).Exists
-				|| PathProvider.Global.GetExpansion(SimPe.Expansions.PetStories).Exists
-				|| PathProvider.Global.GetExpansion(SimPe.Expansions.LifeStories).Exists
+				PathProvider.Global.GetExpansion(Expansions.Nightlife).Exists
+				|| PathProvider.Global.GetExpansion(Expansions.PetStories).Exists
+				|| PathProvider.Global.GetExpansion(Expansions.LifeStories).Exists
 			)
 			{
 				KnownFences.Add(0x6FB1CF18, "The Wave Half Wall-DarkWood");
@@ -1518,15 +1518,15 @@ namespace SimPe.Data
 			}
 			if (
 				(
-					PathProvider.Global.GetExpansion(SimPe.Expansions.Nightlife).Exists
+					PathProvider.Global.GetExpansion(Expansions.Nightlife).Exists
 					|| PathProvider
-						.Global.GetExpansion(SimPe.Expansions.PetStories)
+						.Global.GetExpansion(Expansions.PetStories)
 						.Exists
 					|| PathProvider
-						.Global.GetExpansion(SimPe.Expansions.LifeStories)
+						.Global.GetExpansion(Expansions.LifeStories)
 						.Exists
 					|| PathProvider
-						.Global.GetExpansion(SimPe.Expansions.Mansions)
+						.Global.GetExpansion(Expansions.Mansions)
 						.Exists
 				)
 				&& Helper.WindowsRegistry.LoadOnlySimsStory != 28
@@ -1535,14 +1535,14 @@ namespace SimPe.Data
 				KnownFences.Add(0xCF61A57E, "Chic Fence");
 			}
 
-			if (PathProvider.Global.GetExpansion(SimPe.Expansions.Nightlife).Exists)
+			if (PathProvider.Global.GetExpansion(Expansions.Nightlife).Exists)
 			{
 				KnownFences.Add(0x0F584F14, "Relvet Vope Fence");
 				KnownFences.Add(0xCF61A594, "Wooden Fence");
 			}
 			if (
-				PathProvider.Global.GetExpansion(SimPe.Expansions.Business).Exists
-				|| PathProvider.Global.GetExpansion(SimPe.Expansions.PetStories).Exists
+				PathProvider.Global.GetExpansion(Expansions.Business).Exists
+				|| PathProvider.Global.GetExpansion(Expansions.PetStories).Exists
 			)
 			{
 				KnownFences.Add(0x309DD1A8, "A Most Splendid Partition in Blue");
@@ -1569,8 +1569,8 @@ namespace SimPe.Data
 				KnownFences.Add(0x309DD155, "Zaunfach Partition Fence in Yellow");
 			}
 			if (
-				PathProvider.Global.GetExpansion(SimPe.Expansions.Pets).Exists
-				|| PathProvider.Global.GetExpansion(SimPe.Expansions.PetStories).Exists
+				PathProvider.Global.GetExpansion(Expansions.Pets).Exists
+				|| PathProvider.Global.GetExpansion(Expansions.PetStories).Exists
 			)
 			{
 				KnownFences.Add(0xD1AF063A, "Railing Atomica in Black");
@@ -1606,9 +1606,9 @@ namespace SimPe.Data
 				);
 			}
 			if (
-				PathProvider.Global.GetExpansion(SimPe.Expansions.Seasons).Exists
+				PathProvider.Global.GetExpansion(Expansions.Seasons).Exists
 				|| PathProvider
-					.Global.GetExpansion(SimPe.Expansions.IslandStories)
+					.Global.GetExpansion(Expansions.IslandStories)
 					.Exists
 			)
 			{
@@ -1617,16 +1617,16 @@ namespace SimPe.Data
 				KnownFences.Add(0xF25CE8FA, "Weathered Failed Fence of Analogia");
 				KnownFences.Add(0xB25CF389, "Farmer Thompson's Stone Wall");
 			}
-			if (PathProvider.Global.GetExpansion(SimPe.Expansions.Seasons).Exists)
+			if (PathProvider.Global.GetExpansion(Expansions.Seasons).Exists)
 			{
 				KnownFences.Add(0x924E0E65, "Green's Greenhouse Wall in Green");
 				KnownFences.Add(0x924E0F6B, "Green's Greenhouse Wall in White");
 				KnownFences.Add(0x724E0F1B, "Green's Greenhouse Wall in Wood");
 			}
 			if (
-				PathProvider.Global.GetExpansion(SimPe.Expansions.Voyage).Exists
+				PathProvider.Global.GetExpansion(Expansions.Voyage).Exists
 				|| PathProvider
-					.Global.GetExpansion(SimPe.Expansions.IslandStories)
+					.Global.GetExpansion(Expansions.IslandStories)
 					.Exists
 			)
 			{
@@ -1648,19 +1648,19 @@ namespace SimPe.Data
 				);
 				KnownFences.Add(0x53742EF3, "Green Bamboo Shortie Fence");
 			}
-			if (PathProvider.Global.GetExpansion(SimPe.Expansions.Fashion).Exists)
+			if (PathProvider.Global.GetExpansion(Expansions.Fashion).Exists)
 			{
 				KnownFences.Add(0xD2F1C049, "Glimmie Black by Irokthis Stage Lamp Co.");
 				KnownFences.Add(0xD2F0A4DB, "Glimmie White by Irokthis Stage Lamp Co.");
 			}
-			if (PathProvider.Global.GetExpansion(SimPe.Expansions.Voyage).Exists)
+			if (PathProvider.Global.GetExpansion(Expansions.Voyage).Exists)
 			{
 				KnownFences.Add(0xB330F5A9, "Fallen Fir Fence-Hickory");
 				KnownFences.Add(0x5330F6C7, "Fallen Fir Fence-Rustic");
 				KnownFences.Add(0xD354C607, "Please Fence Me In Fence");
 			}
 			if (
-				PathProvider.Global.GetExpansion(SimPe.Expansions.Extra).Exists
+				PathProvider.Global.GetExpansion(Expansions.Extra).Exists
 				&& Helper.ECCorNewSEfound
 			)
 			{
@@ -1669,7 +1669,7 @@ namespace SimPe.Data
 				KnownFences.Add(0x2E0B65EB, "Stonework Wall (Red)");
 				KnownFences.Add(0x1801DAD1, "Stonework Wall (Black)");
 			}
-			if (PathProvider.Global.GetExpansion(SimPe.Expansions.Apartments).Exists)
+			if (PathProvider.Global.GetExpansion(Expansions.Apartments).Exists)
 			{
 				KnownFences.Add(
 					0x753F2D78,
@@ -1729,7 +1729,7 @@ namespace SimPe.Data
 				KnownFences.Add(0x752C6D51, "Werknothom Half Wall in White");
 			}
 			if (
-				(PathProvider.Global.GetExpansion(SimPe.Expansions.Mansions).Exists)
+				(PathProvider.Global.GetExpansion(Expansions.Mansions).Exists)
 				&& Helper.WindowsRegistry.LoadOnlySimsStory == 0
 			)
 			{
@@ -1837,7 +1837,7 @@ namespace SimPe.Data
 					"Vector Column Fencing by Dot Products Inc.-Dark"
 				);
 			}
-			if (PathProvider.Global.GetExpansion(SimPe.Expansions.IslandStories).Exists)
+			if (PathProvider.Global.GetExpansion(Expansions.IslandStories).Exists)
 			{
 				KnownFences.Add(0x1354A999, "Boarskin Fence");
 				KnownFences.Add(0x93BE3964, "Low-Lying Garden Edging Rocks");
@@ -2936,7 +2936,7 @@ namespace SimPe.Data
 		public static Alias FindSemiGlobal(string name)
 		{
 			name = name.ToLower();
-			foreach (Alias a in Data.MetaData.SemiGlobals)
+			foreach (Alias a in SemiGlobals)
 			{
 				if (a.Name.ToLower() == name)
 				{
@@ -3042,7 +3042,7 @@ namespace SimPe.Data
 				{
 					complist = RcolList;
 
-					complist.Add(MetaData.STRING_FILE);
+					complist.Add(STRING_FILE);
 					complist.Add((uint)0x0C560F39); //Binary Index
 					complist.Add((uint)0xAC506764); //3D IDR
 				}
@@ -3056,33 +3056,33 @@ namespace SimPe.Data
 		public static Ages AgeTranslation(LifeSections age)
 		{
 			agelist = new Hashtable();
-			if (age == MetaData.LifeSections.Adult)
+			if (age == LifeSections.Adult)
 			{
-				return Data.Ages.Adult;
+				return Ages.Adult;
 			}
-			else if (age == MetaData.LifeSections.Baby)
+			else if (age == LifeSections.Baby)
 			{
-				return Data.Ages.Baby;
+				return Ages.Baby;
 			}
-			else if (age == MetaData.LifeSections.Child)
+			else if (age == LifeSections.Child)
 			{
-				return Data.Ages.Child;
+				return Ages.Child;
 			}
-			else if (age == MetaData.LifeSections.Elder)
+			else if (age == LifeSections.Elder)
 			{
-				return Data.Ages.Elder;
+				return Ages.Elder;
 			}
-			else if (age == MetaData.LifeSections.Teen)
+			else if (age == LifeSections.Teen)
 			{
-				return Data.Ages.Teen;
+				return Ages.Teen;
 			}
-			else if (age == MetaData.LifeSections.Toddler)
+			else if (age == LifeSections.Toddler)
 			{
-				return Data.Ages.Toddler;
+				return Ages.Toddler;
 			}
 			else
 			{
-				return Data.Ages.Adult;
+				return Ages.Adult;
 			}
 		}
 		#endregion

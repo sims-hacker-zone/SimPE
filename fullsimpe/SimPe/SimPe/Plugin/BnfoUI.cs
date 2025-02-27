@@ -220,9 +220,9 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Bottom
-						) | System.Windows.Forms.AnchorStyles.Left
+							AnchorStyles.Top
+							| AnchorStyles.Bottom
+						) | AnchorStyles.Left
 					)
 				)
 			);
@@ -239,13 +239,13 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Bottom
-						) | System.Windows.Forms.AnchorStyles.Left
+							AnchorStyles.Top
+							| AnchorStyles.Bottom
+						) | AnchorStyles.Left
 					)
 				)
 			);
-			this.bnfoCustomerItemUI1.BackColor = System.Drawing.Color.Transparent;
+			this.bnfoCustomerItemUI1.BackColor = Color.Transparent;
 			this.bnfoCustomerItemUI1.BnfoCustomerItemsUI = this.lv;
 			this.bnfoCustomerItemUI1.Font = new Font("Tahoma", 8.25F);
 			this.bnfoCustomerItemUI1.Item = null;
@@ -257,43 +257,43 @@ namespace SimPe.Plugin
 			// label1
 			//
 			this.label1.AutoSize = true;
-			this.label1.BackColor = System.Drawing.Color.Transparent;
+			this.label1.BackColor = Color.Transparent;
 			this.label1.Font = new Font(
 				"Tahoma",
 				12F,
-				System.Drawing.FontStyle.Bold,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Bold,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.label1.ImeMode = ImeMode.NoControl;
 			this.label1.Location = new Point(8, 8);
 			this.label1.Name = "label1";
 			this.label1.Size = new Size(41, 19);
 			this.label1.TabIndex = 5;
 			this.label1.Text = "Lot:";
-			this.label1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			this.label1.TextAlign = ContentAlignment.BottomRight;
 			//
 			// lblot
 			//
 			this.lblot.AutoSize = true;
-			this.lblot.BackColor = System.Drawing.Color.Transparent;
+			this.lblot.BackColor = Color.Transparent;
 			this.lblot.Font = new Font(
 				"Tahoma",
 				12F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lblot.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.lblot.ImeMode = ImeMode.NoControl;
 			this.lblot.Location = new Point(54, 8);
 			this.lblot.Name = "lblot";
 			this.lblot.Size = new Size(0, 19);
 			this.lblot.TabIndex = 6;
-			this.lblot.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+			this.lblot.TextAlign = ContentAlignment.BottomLeft;
 			//
 			// toolBar1
 			//
-			this.toolBar1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+			this.toolBar1.GripStyle = ToolStripGripStyle.Hidden;
 			this.toolBar1.Items.AddRange(
 				new ToolStripItem[]
 				{
@@ -313,18 +313,14 @@ namespace SimPe.Plugin
 			this.biMax.Image = (
 				(Image)(resources.GetObject("biMax.Image"))
 			);
-			this.biMax.ImageScaling = System
-				.Windows
-				.Forms
-				.ToolStripItemImageScaling
+			this.biMax.ImageScaling =
+				ToolStripItemImageScaling
 				.None;
 			this.biMax.Name = "biMax";
 			this.biMax.Size = new Size(62, 51);
 			this.biMax.Text = "Maximize";
-			this.biMax.TextImageRelation = System
-				.Windows
-				.Forms
-				.TextImageRelation
+			this.biMax.TextImageRelation =
+				TextImageRelation
 				.ImageAboveText;
 			this.biMax.Click += new EventHandler(this.biMax_Activate);
 			//
@@ -333,18 +329,14 @@ namespace SimPe.Plugin
 			this.biReward.Image = (
 				(Image)(resources.GetObject("biReward.Image"))
 			);
-			this.biReward.ImageScaling = System
-				.Windows
-				.Forms
-				.ToolStripItemImageScaling
+			this.biReward.ImageScaling =
+				ToolStripItemImageScaling
 				.None;
 			this.biReward.Name = "biReward";
 			this.biReward.Size = new Size(82, 51);
 			this.biReward.Text = "Reward again";
-			this.biReward.TextImageRelation = System
-				.Windows
-				.Forms
-				.TextImageRelation
+			this.biReward.TextImageRelation =
+				TextImageRelation
 				.ImageAboveText;
 			this.biReward.Click += new EventHandler(this.biReward_Activate);
 			//
@@ -353,26 +345,22 @@ namespace SimPe.Plugin
 			this.biWorkers.Image = (
 				(Image)(resources.GetObject("biWorkers.Image"))
 			);
-			this.biWorkers.ImageScaling = System
-				.Windows
-				.Forms
-				.ToolStripItemImageScaling
+			this.biWorkers.ImageScaling =
+				ToolStripItemImageScaling
 				.None;
-			this.biWorkers.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.biWorkers.ImageTransparentColor = Color.Magenta;
 			this.biWorkers.Name = "biWorkers";
 			this.biWorkers.Size = new Size(68, 51);
 			this.biWorkers.Text = "Employees";
-			this.biWorkers.TextImageRelation = System
-				.Windows
-				.Forms
-				.TextImageRelation
+			this.biWorkers.TextImageRelation =
+				TextImageRelation
 				.ImageAboveText;
 			this.biWorkers.ToolTipText = "Change to Employees or Customers";
 			this.biWorkers.Click += new EventHandler(this.biWorkers_Click);
 			//
 			// panel1
 			//
-			this.panel1.BackColor = System.Drawing.Color.Transparent;
+			this.panel1.BackColor = Color.Transparent;
 			this.panel1.Controls.Add(this.lbcashf);
 			this.panel1.Controls.Add(this.gpexpen);
 			this.panel1.Controls.Add(this.gpreven);
@@ -385,7 +373,7 @@ namespace SimPe.Plugin
 			this.panel1.Controls.Add(this.label1);
 			this.panel1.Controls.Add(this.bnfoCustomerItemUI1);
 			this.panel1.Controls.Add(this.lblot);
-			this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.panel1.Dock = DockStyle.Fill;
 			this.panel1.Font = new Font("Tahoma", 8.25F);
 			this.panel1.Location = new Point(0, 78);
 			this.panel1.Name = "panel1";
@@ -397,8 +385,8 @@ namespace SimPe.Plugin
 			this.lbcashf.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
@@ -406,7 +394,7 @@ namespace SimPe.Plugin
 			this.lbcashf.Font = new Font(
 				"Tahoma",
 				12F,
-				System.Drawing.FontStyle.Bold
+				FontStyle.Bold
 			);
 			this.lbcashf.Location = new Point(359, 182);
 			this.lbcashf.Name = "lbcashf";
@@ -419,12 +407,12 @@ namespace SimPe.Plugin
 			this.gpexpen.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
-			this.gpexpen.BackColor = System.Drawing.Color.Transparent;
+			this.gpexpen.BackColor = Color.Transparent;
 			this.gpexpen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
 			this.gpexpen.Location = new Point(551, 212);
 			this.gpexpen.Name = "gpexpen";
@@ -436,12 +424,12 @@ namespace SimPe.Plugin
 			this.gpreven.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
-			this.gpreven.BackColor = System.Drawing.Color.Transparent;
+			this.gpreven.BackColor = Color.Transparent;
 			this.gpreven.Location = new Point(344, 212);
 			this.gpreven.Name = "gpreven";
 			this.gpreven.Size = new Size(201, 105);
@@ -452,8 +440,8 @@ namespace SimPe.Plugin
 			this.btClearim.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
@@ -474,8 +462,8 @@ namespace SimPe.Plugin
 			this.tbMax.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
@@ -490,8 +478,8 @@ namespace SimPe.Plugin
 			this.tbCur.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
@@ -506,52 +494,52 @@ namespace SimPe.Plugin
 			this.label3.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
-			this.label3.BackColor = System.Drawing.Color.Transparent;
+			this.label3.BackColor = Color.Transparent;
 			this.label3.Font = new Font(
 				"Tahoma",
 				8.25F,
-				System.Drawing.FontStyle.Bold
+				FontStyle.Bold
 			);
-			this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.label3.ImeMode = ImeMode.NoControl;
 			this.label3.Location = new Point(8, 293);
 			this.label3.Name = "label3";
 			this.label3.Size = new Size(104, 23);
 			this.label3.TabIndex = 8;
 			this.label3.Text = "Rewarded Level:";
-			this.label3.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			this.label3.TextAlign = ContentAlignment.BottomRight;
 			//
 			// label2
 			//
 			this.label2.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
-			this.label2.BackColor = System.Drawing.Color.Transparent;
+			this.label2.BackColor = Color.Transparent;
 			this.label2.Font = new Font(
 				"Tahoma",
 				8.25F,
-				System.Drawing.FontStyle.Bold
+				FontStyle.Bold
 			);
-			this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.label2.ImeMode = ImeMode.NoControl;
 			this.label2.Location = new Point(8, 269);
 			this.label2.Name = "label2";
 			this.label2.Size = new Size(104, 23);
 			this.label2.TabIndex = 7;
 			this.label2.Text = "Current Level:";
-			this.label2.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			this.label2.TextAlign = ContentAlignment.BottomRight;
 			//
 			// panel2
 			//
-			this.panel2.BackColor = System.Drawing.Color.Transparent;
+			this.panel2.BackColor = Color.Transparent;
 			this.panel2.Controls.Add(this.btchngeOwn);
 			this.panel2.Controls.Add(this.btaddim);
 			this.panel2.Controls.Add(this.Panel3);
@@ -576,7 +564,7 @@ namespace SimPe.Plugin
 			this.panel2.Controls.Add(this.lbright);
 			this.panel2.Controls.Add(this.tbLeft);
 			this.panel2.Controls.Add(this.lvEmployees);
-			this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.panel2.Dock = DockStyle.Fill;
 			this.panel2.Font = new Font("Tahoma", 8.25F);
 			this.panel2.Location = new Point(0, 78);
 			this.panel2.Name = "panel2";
@@ -589,8 +577,8 @@ namespace SimPe.Plugin
 			this.btaddim.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
@@ -609,8 +597,8 @@ namespace SimPe.Plugin
 			//
 			// Panel3
 			//
-			this.Panel3.BackColor = System.Drawing.Color.Transparent;
-			this.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.Panel3.BackColor = Color.Transparent;
+			this.Panel3.BorderStyle = BorderStyle.Fixed3D;
 			this.Panel3.Controls.Add(this.btchcancel);
 			this.Panel3.Controls.Add(this.btchadd);
 			this.Panel3.Controls.Add(this.lbchgender);
@@ -652,8 +640,8 @@ namespace SimPe.Plugin
 			this.lbchgender.Font = new Font(
 				"Tahoma",
 				12F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.lbchgender.Location = new Point(120, 114);
@@ -668,8 +656,8 @@ namespace SimPe.Plugin
 			this.lbchage.Font = new Font(
 				"Tahoma",
 				12F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.lbchage.Location = new Point(143, 80);
@@ -715,8 +703,8 @@ namespace SimPe.Plugin
 			//
 			// Panel4
 			//
-			this.Panel4.BackColor = System.Drawing.Color.Transparent;
-			this.Panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.Panel4.BackColor = Color.Transparent;
+			this.Panel4.BorderStyle = BorderStyle.Fixed3D;
 			this.Panel4.Controls.Add(this.btOcancel);
 			this.Panel4.Controls.Add(this.btOadd);
 			this.Panel4.Controls.Add(this.lbOgender);
@@ -758,8 +746,8 @@ namespace SimPe.Plugin
 			this.lbOgender.Font = new Font(
 				"Tahoma",
 				12F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.lbOgender.Location = new Point(120, 114);
@@ -774,8 +762,8 @@ namespace SimPe.Plugin
 			this.lbOage.Font = new Font(
 				"Tahoma",
 				12F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.lbOage.Location = new Point(143, 80);
@@ -825,11 +813,11 @@ namespace SimPe.Plugin
 			this.lbadvice.Font = new Font(
 				"Tahoma",
 				12F,
-				System.Drawing.FontStyle.Bold,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Bold,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lbadvice.ForeColor = System.Drawing.Color.DarkRed;
+			this.lbadvice.ForeColor = Color.DarkRed;
 			this.lbadvice.Location = new Point(466, 4);
 			this.lbadvice.Name = "lbadvice";
 			this.lbadvice.Size = new Size(77, 19);
@@ -842,8 +830,8 @@ namespace SimPe.Plugin
 			this.btdelety.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
@@ -874,8 +862,8 @@ namespace SimPe.Plugin
 			this.lbaward.Font = new Font(
 				"Tahoma",
 				12F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.lbaward.Location = new Point(388, 156);
@@ -886,7 +874,7 @@ namespace SimPe.Plugin
 			//
 			// tbunknown
 			//
-			this.tbunknown.BackColor = System.Drawing.SystemColors.Window;
+			this.tbunknown.BackColor = SystemColors.Window;
 			this.tbunknown.Font = new Font("Tahoma", 12F);
 			this.tbunknown.Location = new Point(459, 152);
 			this.tbunknown.Name = "tbunknown";
@@ -905,8 +893,8 @@ namespace SimPe.Plugin
 			this.lbpay.Font = new Font(
 				"Tahoma",
 				12F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.lbpay.Location = new Point(374, 283);
@@ -914,38 +902,38 @@ namespace SimPe.Plugin
 			this.lbpay.Size = new Size(227, 19);
 			this.lbpay.TabIndex = 16;
 			this.lbpay.Text = "Fairly Paid (100%)";
-			this.lbpay.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+			this.lbpay.TextAlign = ContentAlignment.TopCenter;
 			//
 			// pbpay
 			//
-			this.pbpay.BackColor = System.Drawing.Color.Transparent;
+			this.pbpay.BackColor = Color.Transparent;
 			this.pbpay.Font = new Font(
 				"Tahoma",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.pbpay.ImeMode = System.Windows.Forms.ImeMode.Disable;
+			this.pbpay.ImeMode = ImeMode.Disable;
 			this.pbpay.Location = new Point(363, 245);
 			this.pbpay.Maximum = 7;
 			this.pbpay.Name = "pbpay";
 			this.pbpay.Padding = new Padding(0, 0, 0, 2);
-			this.pbpay.SelectedColor = System.Drawing.Color.Gold;
+			this.pbpay.SelectedColor = Color.Gold;
 			this.pbpay.Size = new Size(261, 35);
 			this.pbpay.TabIndex = 15;
 			this.pbpay.TokenCount = 7;
-			this.pbpay.UnselectedColor = System.Drawing.Color.Black;
+			this.pbpay.UnselectedColor = Color.Black;
 			this.pbpay.Value = 4;
 			//
 			// tbassi
 			//
-			this.tbassi.BackColor = System.Drawing.SystemColors.Window;
+			this.tbassi.BackColor = SystemColors.Window;
 			this.tbassi.Font = new Font(
 				"Tahoma",
 				12F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.tbassi.Location = new Point(459, 212);
@@ -960,8 +948,8 @@ namespace SimPe.Plugin
 			this.lbassi.Font = new Font(
 				"Tahoma",
 				12F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.lbassi.Location = new Point(361, 216);
@@ -972,12 +960,12 @@ namespace SimPe.Plugin
 			//
 			// tbwages
 			//
-			this.tbwages.BackColor = System.Drawing.SystemColors.Window;
+			this.tbwages.BackColor = SystemColors.Window;
 			this.tbwages.Font = new Font(
 				"Tahoma",
 				12F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.tbwages.Location = new Point(459, 182);
@@ -992,8 +980,8 @@ namespace SimPe.Plugin
 			this.lbwages.Font = new Font(
 				"Tahoma",
 				12F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.lbwages.Location = new Point(353, 186);
@@ -1004,12 +992,12 @@ namespace SimPe.Plugin
 			//
 			// tbsgender
 			//
-			this.tbsgender.BackColor = System.Drawing.SystemColors.Window;
+			this.tbsgender.BackColor = SystemColors.Window;
 			this.tbsgender.Font = new Font(
 				"Tahoma",
 				12F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.tbsgender.Location = new Point(459, 122);
@@ -1024,8 +1012,8 @@ namespace SimPe.Plugin
 			this.lbsgender.Font = new Font(
 				"Tahoma",
 				12F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.lbsgender.Location = new Point(393, 126);
@@ -1036,12 +1024,12 @@ namespace SimPe.Plugin
 			//
 			// ybsimage
 			//
-			this.ybsimage.BackColor = System.Drawing.SystemColors.Window;
+			this.ybsimage.BackColor = SystemColors.Window;
 			this.ybsimage.Font = new Font(
 				"Tahoma",
 				12F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.ybsimage.Location = new Point(459, 92);
@@ -1056,8 +1044,8 @@ namespace SimPe.Plugin
 			this.lbsimage.Font = new Font(
 				"Tahoma",
 				12F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.lbsimage.Location = new Point(416, 96);
@@ -1072,8 +1060,8 @@ namespace SimPe.Plugin
 			this.lbLaball.Font = new Font(
 				"Tahoma",
 				12F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.lbLaball.Location = new Point(28, 8);
@@ -1084,12 +1072,12 @@ namespace SimPe.Plugin
 			//
 			// tbright
 			//
-			this.tbright.BackColor = System.Drawing.SystemColors.Window;
+			this.tbright.BackColor = SystemColors.Window;
 			this.tbright.Font = new Font(
 				"Tahoma",
 				12F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.tbright.Location = new Point(459, 62);
@@ -1104,8 +1092,8 @@ namespace SimPe.Plugin
 			this.lbright.Font = new Font(
 				"Tahoma",
 				12F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.lbright.Location = new Point(401, 66);
@@ -1116,12 +1104,12 @@ namespace SimPe.Plugin
 			//
 			// tbLeft
 			//
-			this.tbLeft.BackColor = System.Drawing.SystemColors.Window;
+			this.tbLeft.BackColor = SystemColors.Window;
 			this.tbLeft.Font = new Font(
 				"Tahoma",
 				12F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.tbLeft.Location = new Point(365, 32);
@@ -1129,7 +1117,7 @@ namespace SimPe.Plugin
 			this.tbLeft.ReadOnly = true;
 			this.tbLeft.Size = new Size(261, 27);
 			this.tbLeft.TabIndex = 3;
-			this.tbLeft.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.tbLeft.TextAlign = HorizontalAlignment.Center;
 			//
 			// lvEmployees
 			//
@@ -1137,13 +1125,13 @@ namespace SimPe.Plugin
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Bottom
-						) | System.Windows.Forms.AnchorStyles.Left
+							AnchorStyles.Top
+							| AnchorStyles.Bottom
+						) | AnchorStyles.Left
 					)
 				)
 			);
-			this.lvEmployees.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.lvEmployees.BorderStyle = BorderStyle.None;
 			this.lvEmployees.FullRowSelect = true;
 			this.lvEmployees.HideSelection = false;
 			this.lvEmployees.LargeImageList = this.ilist;
@@ -1162,9 +1150,9 @@ namespace SimPe.Plugin
 			//
 			// ilist
 			//
-			this.ilist.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+			this.ilist.ColorDepth = ColorDepth.Depth32Bit;
 			this.ilist.ImageSize = new Size(96, 96);
-			this.ilist.TransparentColor = System.Drawing.Color.Transparent;
+			this.ilist.TransparentColor = Color.Transparent;
 			//
 			// toolTip1
 			//
@@ -1172,7 +1160,7 @@ namespace SimPe.Plugin
 			this.toolTip1.InitialDelay = 200;
 			this.toolTip1.IsBalloon = true;
 			this.toolTip1.ReshowDelay = 100;
-			this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+			this.toolTip1.ToolTipIcon = ToolTipIcon.Info;
 			this.toolTip1.ToolTipTitle = "Note";
 			//
 			// btchngeOwn
@@ -1180,8 +1168,8 @@ namespace SimPe.Plugin
 			this.btchngeOwn.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Left
+						AnchorStyles.Bottom
+						| AnchorStyles.Left
 					)
 				)
 			);
@@ -1269,7 +1257,7 @@ namespace SimPe.Plugin
 				biMax.Enabled = biReward.Enabled = biWorkers.Enabled = true;
 				lbcashf.Visible = gpreven.Visible = gpexpen.Visible = true;
 				owner = 0xffff;
-				string ltname = SimPe.Localization.GetString("Unknown");
+				string ltname = Localization.GetString("Unknown");
 
 				Interfaces.Files.IPackedFileDescriptor pfd =
 					Bnfo.Package.FindFile(
@@ -1298,7 +1286,7 @@ namespace SimPe.Plugin
 				else
 				{
 					Interfaces.Providers.ILotItem ili =
-						FileTable.ProviderRegistry.LotProvider.FindLot(
+						FileTableBase.ProviderRegistry.LotProvider.FindLot(
 							Bnfo.FileDescriptor.Instance
 						);
 					if (ili != null)
@@ -1341,7 +1329,7 @@ namespace SimPe.Plugin
 			ExtSDesc sdsc;
 
 			sdsc =
-				FileTable.ProviderRegistry.SimDescriptionProvider.SimInstance[owner]
+				FileTableBase.ProviderRegistry.SimDescriptionProvider.SimInstance[owner]
 				as ExtSDesc;
 			if (sdsc != null)
 			{
@@ -1358,9 +1346,9 @@ namespace SimPe.Plugin
 			}
 			else
 			{
-				this.ilist.Images.Add(new Bitmap(SimPe.GetImage.NoOne));
+				this.ilist.Images.Add(new Bitmap(GetImage.NoOne));
 				ListViewItem lvi = new ListViewItem();
-				lvi.Text = SimPe.Localization.GetString("Unknown") + " : Owner";
+				lvi.Text = Localization.GetString("Unknown") + " : Owner";
 				lvi.ImageIndex = ilist.Images.Count - 1;
 				lvi.Tag = null;
 				lvi.SubItems.Add("3"); // payrate
@@ -1373,7 +1361,7 @@ namespace SimPe.Plugin
 			for (int i = 0; i < Bnfo.EmployeeCount; i++)
 			{
 				sdsc =
-					FileTable.ProviderRegistry.SimDescriptionProvider.SimInstance[
+					FileTableBase.ProviderRegistry.SimDescriptionProvider.SimInstance[
 						Bnfo.Employees[i]
 					] as ExtSDesc;
 				if (sdsc != null)
@@ -1390,9 +1378,9 @@ namespace SimPe.Plugin
 				}
 				else
 				{
-					this.ilist.Images.Add(new Bitmap(SimPe.GetImage.NoOne));
+					this.ilist.Images.Add(new Bitmap(GetImage.NoOne));
 					ListViewItem lvi = new ListViewItem();
-					lvi.Text = SimPe.Localization.GetString("Unknown");
+					lvi.Text = Localization.GetString("Unknown");
 					lvi.ImageIndex = ilist.Images.Count - 1;
 					lvi.Tag = null;
 					lvi.SubItems.Add(Convert.ToString(Bnfo.PayRate[i]));
@@ -1470,7 +1458,7 @@ namespace SimPe.Plugin
 			}
 			else
 			{
-				img = SimPe.GetImage.NoOne;
+				img = GetImage.NoOne;
 			}
 
 			img = Ambertation.Windows.Forms.Graph.ImagePanel.CreateThumbnail(
@@ -1478,7 +1466,7 @@ namespace SimPe.Plugin
 				this.ilist.ImageSize,
 				12,
 				Color.FromArgb(90, Color.Black),
-				SimPe.PackedFiles.Wrapper.SimPoolControl.GetImagePanelColor(sdesc),
+				SimPoolControl.GetImagePanelColor(sdesc),
 				Color.White,
 				Color.FromArgb(80, Color.White),
 				true,
@@ -1623,7 +1611,7 @@ namespace SimPe.Plugin
 					typeof(MetaData.LifeSections),
 					(ushort)sdsc.CharacterDescription.LifeSection
 				);
-				if (sdsc.CharacterDescription.Gender == Data.MetaData.Gender.Female)
+				if (sdsc.CharacterDescription.Gender == MetaData.Gender.Female)
 				{
 					tbsgender.Text = "Female";
 				}
@@ -1678,8 +1666,8 @@ namespace SimPe.Plugin
 			else
 			{
 				tbLeft.Text = "Sim not Found!";
-				ybsimage.Text = SimPe.Localization.GetString("Unknown");
-				tbsgender.Text = SimPe.Localization.GetString("Unknown");
+				ybsimage.Text = Localization.GetString("Unknown");
+				tbsgender.Text = Localization.GetString("Unknown");
 				if (lvEmployees.SelectedItems[0].Text.Contains(" : Owner"))
 				{
 					tbright.Text = "Business Owner";
@@ -1694,8 +1682,8 @@ namespace SimPe.Plugin
 					btdelety.Visible = true;
 					pbpay.Visible = pbox.Visible = lbpay.Visible = true;
 				}
-				tbwages.Text = SimPe.Localization.GetString("Unknown");
-				tbassi.Text = SimPe.Localization.GetString("Unknown");
+				tbwages.Text = Localization.GetString("Unknown");
+				tbassi.Text = Localization.GetString("Unknown");
 			}
 			intern = false;
 		}
@@ -1743,7 +1731,7 @@ namespace SimPe.Plugin
 				}
 
 				pfd = sdsc.Package.FindFile(pfd);
-				SimPe.RemoteControl.OpenPackedFile(pfd, sdsc.Package);
+				RemoteControl.OpenPackedFile(pfd, sdsc.Package);
 			}
 			catch { }
 		}
@@ -1753,37 +1741,37 @@ namespace SimPe.Plugin
 			pbpay.Value = PayRate + 1;
 			if (PayRate == 0)
 			{
-				pbpay.SelectedColor = System.Drawing.Color.DarkRed;
+				pbpay.SelectedColor = Color.DarkRed;
 				lbpay.Text = "Ridiculously Underpaid (25%)";
 			}
 			if (PayRate == 1)
 			{
-				pbpay.SelectedColor = System.Drawing.Color.Red;
+				pbpay.SelectedColor = Color.Red;
 				lbpay.Text = "Very Underpaid (50%)";
 			}
 			if (PayRate == 2)
 			{
-				pbpay.SelectedColor = System.Drawing.Color.OrangeRed;
+				pbpay.SelectedColor = Color.OrangeRed;
 				lbpay.Text = "Underpaid (75%)";
 			}
 			if (PayRate == 3)
 			{
-				pbpay.SelectedColor = System.Drawing.Color.Gold;
+				pbpay.SelectedColor = Color.Gold;
 				lbpay.Text = "Fairly Paid (100%)";
 			}
 			if (PayRate == 4)
 			{
-				pbpay.SelectedColor = System.Drawing.Color.YellowGreen;
+				pbpay.SelectedColor = Color.YellowGreen;
 				lbpay.Text = "Overpaid (125%)";
 			}
 			if (PayRate == 5)
 			{
-				pbpay.SelectedColor = System.Drawing.Color.LimeGreen;
+				pbpay.SelectedColor = Color.LimeGreen;
 				lbpay.Text = "Very Overpaid (150%)";
 			}
 			if (PayRate == 6)
 			{
-				pbpay.SelectedColor = System.Drawing.Color.Green;
+				pbpay.SelectedColor = Color.Green;
 				lbpay.Text = "Ridiculously Overpaid (175%)";
 			}
 			SetSmilyIcon();
@@ -1901,7 +1889,7 @@ namespace SimPe.Plugin
 				inst = 0xABBA2575;
 			}
 
-			Packages.File pkg = SimPe.Packages.File.LoadFromFile(
+			Packages.File pkg = Packages.File.LoadFromFile(
 				System.IO.Path.Combine(
 					PathProvider.Global.Latest.InstallFolder,
 					"TSData\\Res\\UI\\ui.package"
@@ -2074,7 +2062,7 @@ namespace SimPe.Plugin
 				cbsimselect.Items.Clear();
 				cbsimselect.Sorted = false;
 				foreach (
-					ExtSDesc sdsc in FileTable
+					ExtSDesc sdsc in FileTableBase
 						.ProviderRegistry
 						.SimDescriptionProvider
 						.SimInstance
@@ -2204,7 +2192,7 @@ namespace SimPe.Plugin
 						typeof(MetaData.LifeSections),
 						(ushort)s.CharacterDescription.LifeSection
 					);
-					if (s.CharacterDescription.Gender == Data.MetaData.Gender.Female)
+					if (s.CharacterDescription.Gender == MetaData.Gender.Female)
 					{
 						tbchgender.Text = "Female";
 					}
@@ -2339,7 +2327,7 @@ namespace SimPe.Plugin
 				cbOsimselect.Items.Clear();
 				cbOsimselect.Sorted = false;
 				foreach (
-					ExtSDesc sdsc in FileTable
+					ExtSDesc sdsc in FileTableBase
 						.ProviderRegistry
 						.SimDescriptionProvider
 						.SimInstance
@@ -2386,7 +2374,7 @@ namespace SimPe.Plugin
 						typeof(MetaData.LifeSections),
 						(ushort)s.CharacterDescription.LifeSection
 					);
-					if (s.CharacterDescription.Gender == Data.MetaData.Gender.Female)
+					if (s.CharacterDescription.Gender == MetaData.Gender.Female)
 					{
 						tbOgender.Text = "Female";
 					}
@@ -2491,7 +2479,7 @@ namespace SimPe.Plugin
 		{
 			if (System.IO.File.Exists(filyname))
 			{
-				return SimPe.Packages.File.LoadFromFile(filyname);
+				return Packages.File.LoadFromFile(filyname);
 			}
 			return null;
 			/*

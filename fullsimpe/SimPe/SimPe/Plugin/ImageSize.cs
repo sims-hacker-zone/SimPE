@@ -65,8 +65,8 @@ namespace SimPe.Plugin
 			this.label5.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Bold,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Bold,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
 			this.label5.Location = new Point(104, 16);
@@ -97,8 +97,8 @@ namespace SimPe.Plugin
 			this.label4.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Bold,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Bold,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
 			this.label4.Location = new Point(8, 16);
@@ -129,8 +129,8 @@ namespace SimPe.Plugin
 			this.Font = new Font(
 				"Tahoma",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -146,7 +146,7 @@ namespace SimPe.Plugin
 			f.tbheight.Text = sz.Height.ToString();
 			f.tbwidth.Text = sz.Width.ToString();
 
-			SimPe.RemoteControl.ShowSubForm(f);
+			RemoteControl.ShowSubForm(f);
 
 			Size nsz = new Size(
 				Helper.StringToInt32(f.tbwidth.Text, sz.Width, 10),

@@ -488,9 +488,9 @@ namespace SimPe.Plugin
 			foreach (ShapePart part in Parts)
 			{
 				list.Add(
-					SimPe.Plugin.ScenegraphHelper.BuildPfd(
+					ScenegraphHelper.BuildPfd(
 						part.FileName.Trim() + "_txmt",
-						SimPe.Plugin.ScenegraphHelper.TXMT,
+						ScenegraphHelper.TXMT,
 						parentgroup
 					)
 				);
@@ -501,9 +501,9 @@ namespace SimPe.Plugin
 			foreach (ShapeItem item in Items)
 			{
 				list.Add(
-					SimPe.Plugin.ScenegraphHelper.BuildPfd(
+					ScenegraphHelper.BuildPfd(
 						item.FileName.Trim(),
-						SimPe.Plugin.ScenegraphHelper.GMND,
+						ScenegraphHelper.GMND,
 						parentgroup
 					)
 				);

@@ -81,7 +81,7 @@ namespace SimPe.Plugin
 			form.cbitem.Items.Clear();
 			foreach (IRcolBlock rb in wrp.Blocks)
 			{
-				SimPe.CountedListItem.AddHex(form.cbitem, rb);
+				CountedListItem.AddHex(form.cbitem, rb);
 			}
 
 			if (form.cbitem.Items.Count > 0)

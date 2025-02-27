@@ -33,7 +33,7 @@ namespace SimPe.Plugin
 				InitializeComponent();
 
 				this.cbtype.Enum = typeof(SimMemoryType);
-				this.cbtype.ResourceManager = SimPe.Localization.Manager;
+				this.cbtype.ResourceManager = Localization.Manager;
 
 				SetContent();
 				this.Enabled = false;
@@ -142,7 +142,7 @@ namespace SimPe.Plugin
 			resources.ApplyResources(this.pg, "pg");
 			this.pg.LineColor = System.Drawing.SystemColors.ScrollBar;
 			this.pg.Name = "pg";
-			this.pg.PropertySort = System.Windows.Forms.PropertySort.Alphabetical;
+			this.pg.PropertySort = PropertySort.Alphabetical;
 			this.pg.ToolbarVisible = false;
 			this.pg.PropertyValueChanged +=
 				new PropertyValueChangedEventHandler(
@@ -158,7 +158,7 @@ namespace SimPe.Plugin
 			this.tabControl2.LayoutSystem = new TD.SandDock.SplitLayoutSystem(
 				250,
 				400,
-				System.Windows.Forms.Orientation.Horizontal,
+				Orientation.Horizontal,
 				new TD.SandDock.LayoutSystemBase[]
 				{
 					(
@@ -390,7 +390,7 @@ namespace SimPe.Plugin
 			// cbtype
 			//
 			resources.ApplyResources(this.cbtype, "cbtype");
-			this.cbtype.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbtype.DropDownStyle = ComboBoxStyle.DropDownList;
 			this.cbtype.Enum = null;
 			this.cbtype.ForeColor = System.Drawing.SystemColors.ControlText;
 			this.cbtype.Name = "cbtype";
@@ -775,7 +775,7 @@ namespace SimPe.Plugin
 
 				tbInv.Text = item.InventoryNumber.ToString();
 				this.tbValue.Text = item.Value.ToString();
-				tbUnk.Text = SimPe.Helper.HexString(item.UnknownNumber);
+				tbUnk.Text = Helper.HexString(item.UnknownNumber);
 				UpdateFlagsValue();
 			}
 			else

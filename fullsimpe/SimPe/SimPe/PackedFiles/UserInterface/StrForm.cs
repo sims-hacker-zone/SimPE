@@ -283,7 +283,7 @@ namespace SimPe.PackedFiles.UserInterface
 				{
 					this.cbLngSelect.Items.Add(
 						"0x"
-							+ SimPe.Helper.HexString((byte)this.cbLngSelect.Items.Count)
+							+ Helper.HexString((byte)this.cbLngSelect.Items.Count)
 							+ " ("
 							+ pjse.Localization.GetString("unk")
 							+ ")"
@@ -1111,7 +1111,7 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// lvStrItems
 			//
-			this.lvStrItems.Activation = System.Windows.Forms.ItemActivation.OneClick;
+			this.lvStrItems.Activation = ItemActivation.OneClick;
 			resources.ApplyResources(this.lvStrItems, "lvStrItems");
 			this.lvStrItems.Columns.AddRange(
 				new ColumnHeader[]
@@ -1125,10 +1125,8 @@ namespace SimPe.PackedFiles.UserInterface
 			);
 			this.lvStrItems.FullRowSelect = true;
 			this.lvStrItems.GridLines = true;
-			this.lvStrItems.HeaderStyle = System
-				.Windows
-				.Forms
-				.ColumnHeaderStyle
+			this.lvStrItems.HeaderStyle =
+				ColumnHeaderStyle
 				.Nonclickable;
 			this.lvStrItems.HideSelection = false;
 			this.lvStrItems.Items.AddRange(
@@ -1144,7 +1142,7 @@ namespace SimPe.PackedFiles.UserInterface
 			this.lvStrItems.MultiSelect = false;
 			this.lvStrItems.Name = "lvStrItems";
 			this.lvStrItems.UseCompatibleStateImageBehavior = false;
-			this.lvStrItems.View = System.Windows.Forms.View.Details;
+			this.lvStrItems.View = View.Details;
 			this.lvStrItems.ItemActivate += new EventHandler(
 				this.lvStrItems_ItemActivate
 			);
@@ -1234,10 +1232,8 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// cbLngSelect
 			//
-			this.cbLngSelect.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbLngSelect.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbLngSelect.DropDownWidth = 200;
 			resources.ApplyResources(this.cbLngSelect, "cbLngSelect");
@@ -1352,12 +1348,10 @@ namespace SimPe.PackedFiles.UserInterface
 			// StrForm
 			//
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.AutoScaleMode = AutoScaleMode.Dpi;
 			this.Controls.Add(this.strPanel);
-			this.FormBorderStyle = System
-				.Windows
-				.Forms
-				.FormBorderStyle
+			this.FormBorderStyle =
+				FormBorderStyle
 				.SizableToolWindow;
 			this.Name = "StrForm";
 			this.strPanel.ResumeLayout(false);

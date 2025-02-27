@@ -93,7 +93,7 @@ namespace SimPe.Plugin
 			// pndrop
 			//
 			this.pndrop.AllowDrop = true;
-			this.pndrop.BackColor = System.Drawing.Color.Transparent;
+			this.pndrop.BackColor = Color.Transparent;
 			this.pndrop.Controls.Add(this.pb);
 			resources.ApplyResources(this.pndrop, "pndrop");
 			this.pndrop.Name = "pndrop";
@@ -113,9 +113,9 @@ namespace SimPe.Plugin
 			// tbs
 			//
 			resources.ApplyResources(this.tbs, "tbs");
-			this.tbs.BackColor = System.Drawing.Color.Transparent;
-			this.tbs.BodyColor = System.Drawing.SystemColors.Window;
-			this.tbs.BorderColor = System.Drawing.SystemColors.Window;
+			this.tbs.BackColor = Color.Transparent;
+			this.tbs.BodyColor = SystemColors.Window;
+			this.tbs.BorderColor = SystemColors.Window;
 			this.tbs.Controls.Add(this.lbType);
 			this.tbs.Controls.Add(this.label6);
 			this.tbs.Controls.Add(this.lbGuid);
@@ -133,115 +133,115 @@ namespace SimPe.Plugin
 			this.tbs.HeaderFont = new Font(
 				"Microsoft Sans Serif",
 				10.25F,
-				System.Drawing.FontStyle.Bold
+				FontStyle.Bold
 			);
-			this.tbs.HeaderTextColor = System.Drawing.SystemColors.ActiveCaptionText;
+			this.tbs.HeaderTextColor = SystemColors.ActiveCaptionText;
 			this.tbs.IconLocation = new Point(4, 12);
 			this.tbs.IconSize = new Size(32, 32);
-			this.tbs.LeftHeaderColor = System.Drawing.Color.Transparent;
+			this.tbs.LeftHeaderColor = Color.Transparent;
 			this.tbs.Name = "tbs";
-			this.tbs.RightHeaderColor = System.Drawing.Color.Transparent;
+			this.tbs.RightHeaderColor = Color.Transparent;
 			//
 			// lbType
 			//
-			this.lbType.BackColor = System.Drawing.Color.Transparent;
+			this.lbType.BackColor = Color.Transparent;
 			resources.ApplyResources(this.lbType, "lbType");
 			this.lbType.Name = "lbType";
 			//
 			// label6
 			//
-			this.label6.BackColor = System.Drawing.Color.Transparent;
+			this.label6.BackColor = Color.Transparent;
 			resources.ApplyResources(this.label6, "label6");
 			this.label6.Name = "label6";
 			//
 			// lbGuid
 			//
-			this.lbGuid.BackColor = System.Drawing.Color.Transparent;
+			this.lbGuid.BackColor = Color.Transparent;
 			resources.ApplyResources(this.lbGuid, "lbGuid");
 			this.lbGuid.Name = "lbGuid";
 			//
 			// label4
 			//
-			this.label4.BackColor = System.Drawing.Color.Transparent;
+			this.label4.BackColor = Color.Transparent;
 			resources.ApplyResources(this.label4, "label4");
 			this.label4.Name = "label4";
 			//
 			// lbVert
 			//
-			this.lbVert.BackColor = System.Drawing.Color.Transparent;
+			this.lbVert.BackColor = Color.Transparent;
 			resources.ApplyResources(this.lbVert, "lbVert");
 			this.lbVert.Name = "lbVert";
 			//
 			// label5
 			//
-			this.label5.BackColor = System.Drawing.Color.Transparent;
+			this.label5.BackColor = Color.Transparent;
 			resources.ApplyResources(this.label5, "label5");
 			this.label5.Name = "label5";
 			//
 			// lbCat
 			//
-			this.lbCat.BackColor = System.Drawing.Color.Transparent;
+			this.lbCat.BackColor = Color.Transparent;
 			resources.ApplyResources(this.lbCat, "lbCat");
 			this.lbCat.Name = "lbCat";
 			//
 			// label1
 			//
-			this.label1.BackColor = System.Drawing.Color.Transparent;
+			this.label1.BackColor = Color.Transparent;
 			resources.ApplyResources(this.label1, "label1");
 			this.label1.Name = "label1";
 			//
 			// rtb
 			//
 			resources.ApplyResources(this.rtb, "rtb");
-			this.rtb.BackColor = System.Drawing.SystemColors.Window;
-			this.rtb.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.rtb.BackColor = SystemColors.Window;
+			this.rtb.BorderStyle = BorderStyle.None;
 			this.rtb.Name = "rtb";
 			this.rtb.ReadOnly = true;
 			//
 			// cb
 			//
 			resources.ApplyResources(this.cb, "cb");
-			this.cb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cb.DropDownStyle = ComboBoxStyle.DropDownList;
 			this.cb.Name = "cb";
 			this.cb.SelectedIndexChanged += new EventHandler(this.SelectedInfo);
 			//
 			// lbPrice
 			//
-			this.lbPrice.BackColor = System.Drawing.Color.Transparent;
+			this.lbPrice.BackColor = Color.Transparent;
 			resources.ApplyResources(this.lbPrice, "lbPrice");
 			this.lbPrice.Name = "lbPrice";
 			//
 			// label3
 			//
-			this.label3.BackColor = System.Drawing.Color.Transparent;
+			this.label3.BackColor = Color.Transparent;
 			resources.ApplyResources(this.label3, "label3");
 			this.label3.Name = "label3";
 			//
 			// lbFace
 			//
-			this.lbFace.BackColor = System.Drawing.Color.Transparent;
+			this.lbFace.BackColor = Color.Transparent;
 			resources.ApplyResources(this.lbFace, "lbFace");
 			this.lbFace.Name = "lbFace";
 			//
 			// label7
 			//
-			this.label7.BackColor = System.Drawing.Color.Transparent;
+			this.label7.BackColor = Color.Transparent;
 			resources.ApplyResources(this.label7, "label7");
 			this.label7.Name = "label7";
 			//
 			// llOptions
 			//
-			this.llOptions.ActiveLinkColor = System.Drawing.Color.LightCoral;
+			this.llOptions.ActiveLinkColor = Color.LightCoral;
 			resources.ApplyResources(this.llOptions, "llOptions");
-			this.llOptions.BackColor = System.Drawing.Color.Transparent;
-			this.llOptions.LinkColor = System.Drawing.Color.FromArgb(
+			this.llOptions.BackColor = Color.Transparent;
+			this.llOptions.LinkColor = Color.FromArgb(
 				((int)(((byte)(224)))),
 				((int)(((byte)(224)))),
 				((int)(((byte)(224))))
 			);
 			this.llOptions.Name = "llOptions";
 			this.llOptions.TabStop = true;
-			this.llOptions.VisitedLinkColor = System.Drawing.Color.Silver;
+			this.llOptions.VisitedLinkColor = Color.Silver;
 			this.llOptions.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
 					this.ShowOptions
@@ -253,7 +253,7 @@ namespace SimPe.Plugin
 			this.Controls.Add(this.llOptions);
 			this.Controls.Add(this.pndrop);
 			this.Controls.Add(this.tbs);
-			this.ForeColor = System.Drawing.SystemColors.ControlText;
+			this.ForeColor = SystemColors.ControlText;
 			this.Name = "InstallerControl";
 			this.pndrop.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
@@ -264,8 +264,8 @@ namespace SimPe.Plugin
 
 		public static void Cleanup()
 		{
-			SimPe.Plugin.DownloadsToolFactory.TeleportFileIndex.CloseAssignedPackages();
-			SimPe.Packages.StreamFactory.CleanupTeleport();
+			DownloadsToolFactory.TeleportFileIndex.CloseAssignedPackages();
+			Packages.StreamFactory.CleanupTeleport();
 		}
 
 		public void LoadFiles(string[] files)
@@ -410,8 +410,8 @@ namespace SimPe.Plugin
 			LinkLabelLinkClickedEventArgs e
 		)
 		{
-			SimPe.RemoteControl.ShowCustomSettings(
-				SimPe.Plugin.DownloadsToolFactory.Settings
+			RemoteControl.ShowCustomSettings(
+				DownloadsToolFactory.Settings
 			);
 		}
 

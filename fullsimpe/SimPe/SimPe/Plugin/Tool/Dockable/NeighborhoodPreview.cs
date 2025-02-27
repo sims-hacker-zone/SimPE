@@ -100,7 +100,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			// pb
 			//
-			this.pb.BackColor = System.Drawing.Color.Transparent;
+			this.pb.BackColor = Color.Transparent;
 			resources.ApplyResources(this.pb, "pb");
 			this.pb.Name = "pb";
 			this.pb.TabStop = false;
@@ -178,7 +178,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			// NeighborhoodPreview
 			//
-			this.BackColor = System.Drawing.Color.Transparent;
+			this.BackColor = Color.Transparent;
 			resources.ApplyResources(this, "$this");
 			this.Controls.Add(this.lbholi);
 			this.Controls.Add(this.label7);
@@ -283,7 +283,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				{
 					try
 					{
-						pb.Image = ObjectPreview.GenerateImage(
+						pb.Image = SimpleObjectPreview.GenerateImage(
 							pb.Size,
 							Image.FromFile(tname),
 							false
@@ -297,10 +297,10 @@ namespace SimPe.Plugin.Tool.Dockable
 					pb.Image = defimg;
 				}
 
-				Idno idno = SimPe.Plugin.Idno.FromPackage(pkg);
+				Idno idno = Idno.FromPackage(pkg);
 				if (idno != null)
 				{
-					if (idno.Type == SimPe.Plugin.NeighborhoodType.Normal)
+					if (idno.Type == NeighborhoodType.Normal)
 					{
 						this.label2.Visible = true;
 						this.lbPop.Visible = true;
@@ -314,9 +314,9 @@ namespace SimPe.Plugin.Tool.Dockable
 					}
 
 					if (
-						idno.Type == SimPe.Plugin.NeighborhoodType.Normal
+						idno.Type == NeighborhoodType.Normal
 						|| (
-							idno.Type == SimPe.Plugin.NeighborhoodType.Suburb
+							idno.Type == NeighborhoodType.Suburb
 							&& (
 								idno.Subep == Data.MetaData.NeighbourhoodEP.Business
 								|| idno.Subep
@@ -351,7 +351,7 @@ namespace SimPe.Plugin.Tool.Dockable
 					}
 
 					if (
-						idno.Type == SimPe.Plugin.NeighborhoodType.Suburb
+						idno.Type == NeighborhoodType.Suburb
 						&& idno.Subep != Data.MetaData.NeighbourhoodEP.Business
 					)
 					{
@@ -387,9 +387,9 @@ namespace SimPe.Plugin.Tool.Dockable
 					else
 					{
 						this.lbType.Text =
-							SimPe.Plugin.NeighborhoodType.Unknown.ToString();
+							NeighborhoodType.Unknown.ToString();
 						this.lbVer.Text =
-							SimPe.Plugin.NeighborhoodVersion.Unknown.ToString();
+							NeighborhoodVersion.Unknown.ToString();
 					}
 				}
 			}
@@ -425,14 +425,14 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		protected void ShowVersion()
 		{
-			Idno idno = SimPe.Plugin.Idno.FromPackage(Package);
+			Idno idno = Idno.FromPackage(Package);
 			if (idno != null)
 			{
 				this.lbVer.Text = idno.Version.ToString().Replace("_", " ");
 			}
 			else
 			{
-				this.lbVer.Text = SimPe.Plugin.NeighborhoodVersion.Unknown.ToString();
+				this.lbVer.Text = NeighborhoodVersion.Unknown.ToString();
 			}
 		}
 
@@ -457,7 +457,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		protected void BuildDefaultImage()
 		{
-			defimg = SimPe.GetImage.Demo;
+			defimg = GetImage.Demo;
 		}
 
 		private void ctss_ChangedUserData(

@@ -173,7 +173,7 @@ namespace SimPe.Plugin
 
 				if (tb)
 				{
-					tbGUID.Text = "0x" + SimPe.Helper.HexString(value);
+					tbGUID.Text = "0x" + Helper.HexString(value);
 				}
 			}
 			else
@@ -186,7 +186,7 @@ namespace SimPe.Plugin
 
 				if (tb)
 				{
-					tbGUID.Text = "0x" + SimPe.Helper.HexString(value);
+					tbGUID.Text = "0x" + Helper.HexString(value);
 				}
 			}
 
@@ -265,7 +265,7 @@ namespace SimPe.Plugin
 
 			bool origstate = internalchg;
 			internalchg = true;
-			((TextBox)sender).Text = "0x" + SimPe.Helper.HexString(Value);
+			((TextBox)sender).Text = "0x" + Helper.HexString(Value);
 			((TextBox)sender).SelectAll();
 			internalchg = origstate;
 		}
@@ -274,7 +274,7 @@ namespace SimPe.Plugin
 		{
 			bool origstate = internalchg;
 			internalchg = true;
-			((TextBox)sender).Text = "0x" + SimPe.Helper.HexString(Value);
+			((TextBox)sender).Text = "0x" + Helper.HexString(Value);
 			((TextBox)sender).SelectAll();
 			internalchg = origstate;
 		}

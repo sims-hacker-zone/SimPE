@@ -104,10 +104,8 @@ namespace SimPe.Plugin.UI
 			//
 			// cbDefaultProxy
 			//
-			this.cbDefaultProxy.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbDefaultProxy.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbDefaultProxy.Location = new System.Drawing.Point(40, 58);
 			this.cbDefaultProxy.Name = "cbDefaultProxy";
@@ -128,7 +126,7 @@ namespace SimPe.Plugin.UI
 			//
 			this.pnackground.Controls.Add(this.cbDefaultProxy);
 			this.pnackground.Controls.Add(this.label1);
-			this.pnackground.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.pnackground.Dock = DockStyle.Fill;
 			this.pnackground.Location = new System.Drawing.Point(0, 0);
 			this.pnackground.Name = "pnackground";
 			this.pnackground.Size = new System.Drawing.Size(515, 186);

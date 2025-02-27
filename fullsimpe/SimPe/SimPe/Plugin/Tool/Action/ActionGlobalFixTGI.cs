@@ -50,13 +50,13 @@ namespace SimPe.Plugin.Tool.Action
 				//Do we have a registred handler?
 				Interfaces.Plugin.IFileWrapper wrapper =
 					(Interfaces.Plugin.IFileWrapper)
-						FileTable.WrapperRegistry.FindHandler(pfd.Type);
+						FileTableBase.WrapperRegistry.FindHandler(pfd.Type);
 				Interfaces.Files.IPackedFile file = e.LoadedPackage.Package.Read(
 					pfd
 				);
 				if (wrapper == null)
 				{
-					wrapper = FileTable.WrapperRegistry.FindHandler(
+					wrapper = FileTableBase.WrapperRegistry.FindHandler(
 						file.UncompressedData
 					);
 				}
@@ -64,7 +64,7 @@ namespace SimPe.Plugin.Tool.Action
 				if (wrapper != null)
 				{
 					wrapper.ProcessData(pfd, e.LoadedPackage.Package);
-					wrapper.Fix(FileTable.WrapperRegistry);
+					wrapper.Fix(FileTableBase.WrapperRegistry);
 				}
 			}
 		}
@@ -82,7 +82,7 @@ namespace SimPe.Plugin.Tool.Action
 		#region IToolExt Member
 		public System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.None;
 
-		public System.Drawing.Image Icon => SimPe.GetIcon.actionFixTGI;
+		public System.Drawing.Image Icon => GetIcon.actionFixTGI;
 
 		public virtual bool Visible => true;
 

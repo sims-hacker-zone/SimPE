@@ -139,7 +139,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			out Interfaces.Files.IPackedFileDescriptor pfd
 		)
 		{
-			FileTable.FileIndex.Load();
+			FileTableBase.FileIndex.Load();
 			a = null;
 			pfd = null;
 			localgroup = Data.MetaData.LOCAL_GROUP;
@@ -148,7 +148,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				if (package.FileName != null)
 				{
 					Interfaces.Wrapper.IGroupCacheItem gci =
-						SimPe.FileTable.GroupCache.GetItem(package.FileName);
+						FileTableBase.GroupCache.GetItem(package.FileName);
 					if (gci != null)
 					{
 						localgroup = gci.LocalGroup;
@@ -174,7 +174,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			out OWCloneSettings cs
 		)
 		{
-			ObjectWorkshopHelper.PrepareForClone(
+			PrepareForClone(
 				package,
 				null,
 				out a,
@@ -205,12 +205,12 @@ namespace SimPe.Plugin.Tool.Dockable
 		public static Packages.GeneratableFile CreatCloneByGroup(uint gid)
 		{
 			Packages.GeneratableFile package =
-				SimPe.Packages.GeneratableFile.CreateNew();
+				Packages.File.CreateNew();
 			Interfaces.IAlias a;
 			Interfaces.Files.IPackedFileDescriptor pfd;
 			uint localgroup;
 			OWCloneSettings cs;
-			ObjectWorkshopHelper.PrepareForClone(
+			PrepareForClone(
 				package,
 				out a,
 				out localgroup,
@@ -218,9 +218,9 @@ namespace SimPe.Plugin.Tool.Dockable
 				out cs
 			);
 
-			ObjectWorkshopHelper.BaseClone(gid, package, false);
+			BaseClone(gid, package, false);
 
-			return ObjectWorkshopHelper.Start(
+			return Start(
 				package,
 				a,
 				ref pfd,
@@ -238,12 +238,12 @@ namespace SimPe.Plugin.Tool.Dockable
 		public static Packages.GeneratableFile CreatCloneByGuid(uint guid)
 		{
 			Packages.GeneratableFile package =
-				SimPe.Packages.GeneratableFile.CreateNew();
+				Packages.File.CreateNew();
 			Interfaces.IAlias a;
 			Interfaces.Files.IPackedFileDescriptor pfd;
 			uint localgroup;
 			OWCloneSettings cs;
-			ObjectWorkshopHelper.PrepareForClone(
+			PrepareForClone(
 				package,
 				out a,
 				out localgroup,
@@ -251,23 +251,23 @@ namespace SimPe.Plugin.Tool.Dockable
 				out cs
 			);
 			Interfaces.Scenegraph.IScenegraphFileIndex fii =
-				FileTable.FileIndex.AddNewChild();
+				FileTableBase.FileIndex.AddNewChild();
 
 			Cache.MemoryCacheItem mci =
-				SimPe.PackedFiles.Wrapper.ObjectComboBox.ObjectCache.FindItem(guid);
+				PackedFiles.Wrapper.ObjectComboBox.ObjectCache.FindItem(guid);
 			if (mci != null)
 			{
 				localgroup = mci.FileDescriptor.Group;
 				if (localgroup == Data.MetaData.LOCAL_GROUP)
 				{
 					Interfaces.Wrapper.IGroupCacheItem gci =
-						SimPe.FileTable.GroupCache.GetItem(
+						FileTableBase.GroupCache.GetItem(
 							mci.ParentCacheContainer.FileName
 						);
 					if (gci != null)
 					{
 						if (
-							!FileTable.FileIndex.Contains(
+							!FileTableBase.FileIndex.Contains(
 								mci.ParentCacheContainer.FileName
 							)
 						)
@@ -278,10 +278,10 @@ namespace SimPe.Plugin.Tool.Dockable
 						localgroup = gci.LocalGroup;
 					}
 				}
-				ObjectWorkshopHelper.BaseClone(localgroup, package, false);
+				BaseClone(localgroup, package, false);
 			}
 
-			Packages.GeneratableFile ret = ObjectWorkshopHelper.Start(
+			Packages.GeneratableFile ret = Start(
 				package,
 				a,
 				ref pfd,
@@ -290,7 +290,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				true
 			);
 			fii.CloseAssignedPackages();
-			FileTable.FileIndex.RemoveChild(fii);
+			FileTableBase.FileIndex.RemoveChild(fii);
 
 			return ret;
 		}
@@ -303,12 +303,12 @@ namespace SimPe.Plugin.Tool.Dockable
 		public static Packages.GeneratableFile CreatCloneByCres(string cres)
 		{
 			Packages.GeneratableFile package =
-				SimPe.Packages.GeneratableFile.CreateNew();
+				Packages.File.CreateNew();
 			Interfaces.IAlias a;
 			Interfaces.Files.IPackedFileDescriptor pfd;
 			uint localgroup;
 			OWCloneSettings cs;
-			ObjectWorkshopHelper.PrepareForClone(
+			PrepareForClone(
 				package,
 				out a,
 				out localgroup,
@@ -350,7 +350,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 			str.FileDescriptor.MarkForDelete = true;
 
-			return ObjectWorkshopHelper.Start(
+			return Start(
 				package,
 				a,
 				ref pfd,
@@ -385,7 +385,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			{
 				if (!pkgcontainsonlybase)
 				{
-					package = SimPe.Packages.GeneratableFile.CreateNew();
+					package = Packages.File.CreateNew();
 				}
 				//Get the Base Object Data from the Objects.package File
 				string[] modelname = new string[0];
@@ -396,7 +396,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				else
 				{
 					Interfaces.Scenegraph.IScenegraphFileIndexItem[] fii =
-						FileTable.FileIndex.FindFile(pfd, null);
+						FileTableBase.FileIndex.FindFile(pfd, null);
 					if (fii.Length > 0)
 					{
 						Interfaces.Files.IPackedFileDescriptor cpfd = fii[0]
@@ -450,7 +450,7 @@ namespace SimPe.Plugin.Tool.Dockable
 					)
 					{
 						string[] names = Scenegraph.LoadParentModelNames(package, true);
-						Packages.File pkg = SimPe.Packages.File.LoadFromFile(
+						Packages.File pkg = Packages.File.LoadFromFile(
 							null
 						);
 
@@ -541,7 +541,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			else
 			{
 				Interfaces.Scenegraph.IScenegraphFileIndexItem[] files =
-					FileTable.FileIndex.FindFileByGroup(localgroup);
+					FileTableBase.FileIndex.FindFileByGroup(localgroup);
 
 				foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in files)
 				{
@@ -597,7 +597,7 @@ namespace SimPe.Plugin.Tool.Dockable
 					|| !System.IO.File.Exists(ScenegraphHelper.MMAT_PACKAGE)
 				)
 				&& (settings is OWCloneSettings)
-				&& (SimPe.PathProvider.Global.EPInstalled < 16)
+				&& (PathProvider.Global.EPInstalled < 16)
 			)
 			{
 				if (
@@ -616,8 +616,8 @@ namespace SimPe.Plugin.Tool.Dockable
 			sfd.Filter = ExtensionProvider.BuildFilterString(
 				new ExtensionType[]
 				{
-					SimPe.ExtensionType.Package,
-					SimPe.ExtensionType.AllFiles,
+					ExtensionType.Package,
+					ExtensionType.AllFiles,
 				}
 			);
 			if (sfd.ShowDialog() != DialogResult.OK)
@@ -672,7 +672,7 @@ namespace SimPe.Plugin.Tool.Dockable
 					|| !System.IO.File.Exists(ScenegraphHelper.MMAT_PACKAGE)
 				)
 				&& (settings is OWCloneSettings)
-				&& (SimPe.PathProvider.Global.EPInstalled < 16)
+				&& (PathProvider.Global.EPInstalled < 16)
 			)
 			{
 				if (
@@ -691,8 +691,8 @@ namespace SimPe.Plugin.Tool.Dockable
 			sfd.Filter = ExtensionProvider.BuildFilterString(
 				new ExtensionType[]
 				{
-					SimPe.ExtensionType.Package,
-					SimPe.ExtensionType.AllFiles,
+					ExtensionType.Package,
+					ExtensionType.AllFiles,
 				}
 			);
 			if (sfd.ShowDialog() != DialogResult.OK)
@@ -723,7 +723,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 
 			Packages.GeneratableFile npackage =
-				SimPe.Packages.GeneratableFile.CreateNew(); //.LoadFromStream((System.IO.BinaryReader)null);
+				Packages.File.CreateNew(); //.LoadFromStream((System.IO.BinaryReader)null);
 
 			//Create the Templae for an additional MMAT
 			npackage.FileName = sfd.FileName;
@@ -765,16 +765,16 @@ namespace SimPe.Plugin.Tool.Dockable
 		)
 		{
 			Packages.GeneratableFile package = pkg;
-			CloneSettings.BaseResourceType br = SimPe
-				.Plugin
-				.CloneSettings
+			CloneSettings.BaseResourceType br =
+
+				CloneSettings
 				.BaseResourceType
 				.Objd;
 			if (pfd != null)
 			{
 				if (pfd.Type != Data.MetaData.OBJD_FILE)
 				{
-					br = SimPe.Plugin.CloneSettings.BaseResourceType.Xml;
+					br = CloneSettings.BaseResourceType.Xml;
 				}
 			}
 
@@ -810,8 +810,8 @@ namespace SimPe.Plugin.Tool.Dockable
 					sfd.Filter = ExtensionProvider.BuildFilterString(
 						new ExtensionType[]
 						{
-							SimPe.ExtensionType.Package,
-							SimPe.ExtensionType.AllFiles,
+							ExtensionType.Package,
+							ExtensionType.AllFiles,
 						}
 					);
 					if (sfd.ShowDialog() == DialogResult.OK)
@@ -824,7 +824,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 							if (
 								cs.RemoveUselessResource
-								&& br != SimPe.Plugin.CloneSettings.BaseResourceType.Xml
+								&& br != CloneSettings.BaseResourceType.Xml
 							)
 							{
 								fo.CleanUp();
@@ -906,10 +906,10 @@ namespace SimPe.Plugin.Tool.Dockable
 			{
 				if (package != null)
 				{
-					if (SimPe.RemoteControl.OpenMemoryPackage(package) && pfd != null)
+					if (RemoteControl.OpenMemoryPackage(package) && pfd != null)
 					{
 						settings.SetRemoteResult(
-							SimPe.RemoteControl.OpenPackedFile(pfd, package)
+							RemoteControl.OpenPackedFile(pfd, package)
 						);
 					}
 				}

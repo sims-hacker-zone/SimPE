@@ -84,7 +84,7 @@ namespace SimPe.Plugin
 		#endregion
 
 		#region IToolExt Member
-		public override System.Drawing.Image Icon => SimPe.GetIcon.Camera;
+		public override System.Drawing.Image Icon => GetIcon.Camera;
 
 		public override System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.CtrlP;
 		#endregion

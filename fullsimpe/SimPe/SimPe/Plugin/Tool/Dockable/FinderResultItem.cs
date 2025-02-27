@@ -63,11 +63,11 @@ namespace SimPe.Plugin.Tool.Dockable
 		public ScenegraphResultItem(
 			Interfaces.Scenegraph.IScenegraphFileIndexItem fii
 		)
-			: base(SimPe.Localization.GetString("Unknown"))
+			: base(Localization.GetString("Unknown"))
 		{
 			this.fii = fii;
 			Interfaces.Plugin.Internal.IPackedFileWrapper wrp =
-				FileTable.WrapperRegistry.FindHandler(fii.FileDescriptor.Type);
+				FileTableBase.WrapperRegistry.FindHandler(fii.FileDescriptor.Type);
 			if (wrp != null)
 			{
 				((Interfaces.Plugin.AbstractWrapper)wrp).Package = fii.Package;
@@ -102,7 +102,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		public override bool OpenResource()
 		{
-			return SimPe.RemoteControl.OpenPackedFileFkt(this.fii);
+			return RemoteControl.OpenPackedFileFkt(this.fii);
 		}
 	}
 }

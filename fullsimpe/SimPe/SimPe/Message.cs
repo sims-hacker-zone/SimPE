@@ -60,7 +60,7 @@ namespace SimPe
 			//
 			// panel1
 			//
-			this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
+			this.panel1.BackColor = SystemColors.Highlight;
 			this.panel1.Location = new Point(0, 32);
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new Size(548, 40);
@@ -68,13 +68,13 @@ namespace SimPe
 			//
 			// panel2
 			//
-			this.panel2.BackColor = System.Drawing.Color.Transparent;
+			this.panel2.BackColor = Color.Transparent;
 			this.panel2.Controls.Add(this.label1);
 			this.panel2.Font = new Font(
 				"Verdana",
 				8.25F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.panel2.Location = new Point(0, 0);
@@ -85,12 +85,12 @@ namespace SimPe
 			// label1
 			//
 			this.label1.AutoSize = true;
-			this.label1.BackColor = System.Drawing.Color.Transparent;
+			this.label1.BackColor = Color.Transparent;
 			this.label1.Font = new Font(
 				"Microsoft Sans Serif",
 				9.75F,
-				System.Drawing.FontStyle.Regular,
-				System.Drawing.GraphicsUnit.Point,
+				FontStyle.Regular,
+				GraphicsUnit.Point,
 				((byte)(0))
 			);
 			this.label1.Location = new Point(8, 8);
@@ -103,17 +103,17 @@ namespace SimPe
 			// Message
 			//
 			this.AutoScaleBaseSize = new Size(5, 13);
-			this.BackColor = System.Drawing.SystemColors.AppWorkspace;
+			this.BackColor = SystemColors.AppWorkspace;
 			this.ClientSize = new Size(542, 72);
 			this.ControlBox = false;
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.panel2);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			this.FormBorderStyle = FormBorderStyle.FixedDialog;
 			this.Icon = ((Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "Message";
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			this.StartPosition = FormStartPosition.CenterScreen;
 			this.Text = "Message";
 			this.panel2.ResumeLayout(false);
 			this.panel2.PerformLayout();
@@ -146,49 +146,49 @@ namespace SimPe
 
 			try
 			{
-				caption = SimPe.Localization.GetString(caption);
+				caption = Localization.GetString(caption);
 				Message m = new Message();
 				if (mbb == MessageBoxButtons.YesNoCancel)
 				{
 					m.AddButton(
-						SimPe.Localization.Manager.GetString("cancel"),
+						Localization.Manager.GetString("cancel"),
 						DialogResult.Cancel
 					);
 					m.AddButton(
-						SimPe.Localization.Manager.GetString("no"),
+						Localization.Manager.GetString("no"),
 						DialogResult.No
 					);
 					m.AddButton(
-						SimPe.Localization.Manager.GetString("yes"),
+						Localization.Manager.GetString("yes"),
 						DialogResult.Yes
 					);
 				}
 				else if (mbb == MessageBoxButtons.OKCancel)
 				{
 					m.AddButton(
-						SimPe.Localization.Manager.GetString("cancel"),
+						Localization.Manager.GetString("cancel"),
 						DialogResult.Cancel
 					);
 					m.AddButton(
-						SimPe.Localization.Manager.GetString("ok"),
+						Localization.Manager.GetString("ok"),
 						DialogResult.OK
 					);
 				}
 				else if (mbb == MessageBoxButtons.YesNo)
 				{
 					m.AddButton(
-						SimPe.Localization.Manager.GetString("no"),
+						Localization.Manager.GetString("no"),
 						DialogResult.No
 					);
 					m.AddButton(
-						SimPe.Localization.Manager.GetString("yes"),
+						Localization.Manager.GetString("yes"),
 						DialogResult.Yes
 					);
 				}
 				else
 				{
 					m.AddButton(
-						SimPe.Localization.Manager.GetString("ok"),
+						Localization.Manager.GetString("ok"),
 						DialogResult.OK
 					);
 				}
@@ -221,7 +221,7 @@ namespace SimPe
 				m.Height =
 					m.panel2.Height
 					+ m.panel1.Height
-					+ System.Windows.Forms.SystemInformation.CaptionHeight;
+					+ SystemInformation.CaptionHeight;
 
 				ThemeManager.Global.Theme(m.panel2);
 				m.panel1.BackColor = ThemeManager.Global.ThemeColorDark;

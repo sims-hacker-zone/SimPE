@@ -338,10 +338,8 @@ namespace pjse.BhavOperandWizards.Wiz0x0076
 			//
 			// cbPicker2
 			//
-			this.cbPicker2.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbPicker2.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbPicker2.DropDownWidth = 384;
 			resources.ApplyResources(this.cbPicker2, "cbPicker2");
@@ -354,10 +352,8 @@ namespace pjse.BhavOperandWizards.Wiz0x0076
 			//
 			// cbDataOwner2
 			//
-			this.cbDataOwner2.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbDataOwner2.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbDataOwner2.DropDownWidth = 384;
 			resources.ApplyResources(this.cbDataOwner2, "cbDataOwner2");
@@ -384,10 +380,8 @@ namespace pjse.BhavOperandWizards.Wiz0x0076
 			//
 			// cbPicker1
 			//
-			this.cbPicker1.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbPicker1.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbPicker1.DropDownWidth = 384;
 			resources.ApplyResources(this.cbPicker1, "cbPicker1");
@@ -400,10 +394,8 @@ namespace pjse.BhavOperandWizards.Wiz0x0076
 			//
 			// cbDataOwner1
 			//
-			this.cbDataOwner1.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbDataOwner1.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbDataOwner1.DropDownWidth = 384;
 			resources.ApplyResources(this.cbDataOwner1, "cbDataOwner1");
@@ -452,10 +444,8 @@ namespace pjse.BhavOperandWizards.Wiz0x0076
 			//
 			// cbObjectArray
 			//
-			this.cbObjectArray.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbObjectArray.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbObjectArray.DropDownWidth = 384;
 			resources.ApplyResources(this.cbObjectArray, "cbObjectArray");
@@ -463,10 +453,8 @@ namespace pjse.BhavOperandWizards.Wiz0x0076
 			//
 			// cbOperation
 			//
-			this.cbOperation.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbOperation.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbOperation.DropDownWidth = 462;
 			this.cbOperation.Items.AddRange(
@@ -523,14 +511,14 @@ namespace pjse.BhavOperandWizards.Wiz0x0076
 			//
 			// panel3
 			//
-			this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.panel3.BorderStyle = BorderStyle.FixedSingle;
 			resources.ApplyResources(this.panel3, "panel3");
 			this.panel3.Name = "panel3";
 			//
 			// UI
 			//
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.AutoScaleMode = AutoScaleMode.Font;
 			this.Controls.Add(this.pnWiz0x0076);
 			this.Name = "UI";
 			this.pnWiz0x0076.ResumeLayout(false);

@@ -145,9 +145,9 @@ namespace SimPe.Plugin
 			//
 			// ilist
 			//
-			this.ilist.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+			this.ilist.ColorDepth = ColorDepth.Depth32Bit;
 			resources.ApplyResources(this.ilist, "ilist");
-			this.ilist.TransparentColor = System.Drawing.Color.Transparent;
+			this.ilist.TransparentColor = Color.Transparent;
 			//
 			// lv
 			//
@@ -177,7 +177,7 @@ namespace SimPe.Plugin
 			this.lv.SmallImageList = this.iListSmall;
 			this.lv.StateImageList = this.iListSmall;
 			this.lv.UseCompatibleStateImageBehavior = false;
-			this.lv.View = System.Windows.Forms.View.Details;
+			this.lv.View = View.Details;
 			this.lv.DoubleClick += new EventHandler(this.Open);
 			this.lv.ColumnClick += new ColumnClickEventHandler(
 				this.SortList
@@ -233,9 +233,9 @@ namespace SimPe.Plugin
 			//
 			// iListSmall
 			//
-			this.iListSmall.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+			this.iListSmall.ColorDepth = ColorDepth.Depth32Bit;
 			resources.ApplyResources(this.iListSmall, "iListSmall");
-			this.iListSmall.TransparentColor = System.Drawing.Color.Transparent;
+			this.iListSmall.TransparentColor = Color.Transparent;
 			//
 			// button1
 			//
@@ -245,15 +245,15 @@ namespace SimPe.Plugin
 			//
 			// lbUbi
 			//
-			this.lbUbi.BackColor = System.Drawing.SystemColors.Window;
+			this.lbUbi.BackColor = SystemColors.Window;
 			resources.ApplyResources(this.lbUbi, "lbUbi");
-			this.lbUbi.ForeColor = System.Drawing.Color.Brown;
+			this.lbUbi.ForeColor = Color.Brown;
 			this.lbUbi.Name = "lbUbi";
 			//
 			// panel1
 			//
 			resources.ApplyResources(this.panel1, "panel1");
-			this.panel1.BackColor = System.Drawing.Color.SteelBlue;
+			this.panel1.BackColor = Color.SteelBlue;
 			this.panel1.Name = "panel1";
 			//
 			// label1
@@ -269,7 +269,7 @@ namespace SimPe.Plugin
 			// panel2
 			//
 			resources.ApplyResources(this.panel2, "panel2");
-			this.panel2.BackColor = System.Drawing.Color.LightCoral;
+			this.panel2.BackColor = Color.LightCoral;
 			this.panel2.Name = "panel2";
 			//
 			// label3
@@ -280,7 +280,7 @@ namespace SimPe.Plugin
 			// panel3
 			//
 			resources.ApplyResources(this.panel3, "panel3");
-			this.panel3.BackColor = System.Drawing.Color.YellowGreen;
+			this.panel3.BackColor = Color.YellowGreen;
 			this.panel3.Name = "panel3";
 			//
 			// flowLayoutPanel1
@@ -299,7 +299,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.ckbPlayable, "ckbPlayable");
 			this.ckbPlayable.Checked = true;
-			this.ckbPlayable.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.ckbPlayable.CheckState = CheckState.Checked;
 			this.ckbPlayable.Name = "ckbPlayable";
 			this.ckbPlayable.UseVisualStyleBackColor = true;
 			this.ckbPlayable.CheckedChanged += new EventHandler(
@@ -362,7 +362,7 @@ namespace SimPe.Plugin
 			//
 			resources.ApplyResources(this.cbdetail, "cbdetail");
 			this.cbdetail.Checked = true;
-			this.cbdetail.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.cbdetail.CheckState = CheckState.Checked;
 			this.cbdetail.Name = "cbdetail";
 			this.cbdetail.CheckedChanged += new EventHandler(
 				this.checkBox1_CheckedChanged
@@ -382,10 +382,8 @@ namespace SimPe.Plugin
 			this.Controls.Add(this.lbUbi);
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.lv);
-			this.FormBorderStyle = System
-				.Windows
-				.Forms
-				.FormBorderStyle
+			this.FormBorderStyle =
+				FormBorderStyle
 				.SizableToolWindow;
 			this.Name = "Sims";
 			this.flowLayoutPanel1.ResumeLayout(false);
@@ -406,18 +404,18 @@ namespace SimPe.Plugin
 				}
 				else if (
 					sdesc.CharacterDescription.Gender
-					== SimPe.Data.MetaData.Gender.Female
+					== Data.MetaData.Gender.Female
 				)
 				{
 					img = ImageLoader.Preview(
-						SimPe.GetImage.SheOne,
+						GetImage.SheOne,
 						this.ilist.ImageSize
 					);
 				}
 				else
 				{
 					img = ImageLoader.Preview(
-						SimPe.GetImage.NoOne,
+						GetImage.NoOne,
 						this.ilist.ImageSize
 					);
 				}
@@ -481,23 +479,23 @@ namespace SimPe.Plugin
 			{
 				if (
 					sdesc.CharacterDescription.Gender
-					== SimPe.Data.MetaData.Gender.Female
+					== Data.MetaData.Gender.Female
 				)
 				{
-					this.ilist.Images.Add(new Bitmap(SimPe.GetImage.SheOne));
+					this.ilist.Images.Add(new Bitmap(GetImage.SheOne));
 					this.iListSmall.Images.Add(
 						ImageLoader.Preview(
-							new Bitmap(SimPe.GetImage.SheOne),
+							new Bitmap(GetImage.SheOne),
 							iListSmall.ImageSize
 						)
 					);
 				}
 				else
 				{
-					this.ilist.Images.Add(new Bitmap(SimPe.GetImage.NoOne));
+					this.ilist.Images.Add(new Bitmap(GetImage.NoOne));
 					this.iListSmall.Images.Add(
 						ImageLoader.Preview(
-							new Bitmap(SimPe.GetImage.NoOne),
+							new Bitmap(GetImage.NoOne),
 							iListSmall.ImageSize
 						)
 					);
@@ -635,20 +633,20 @@ namespace SimPe.Plugin
 			}
 			if (
 				sdesc.Nightlife.Species
-				== SimPe.PackedFiles.Wrapper.SdscNightlife.SpeciesType.Human
+				== PackedFiles.Wrapper.SdscNightlife.SpeciesType.Human
 			)
 			{
 				lvi.SubItems.Add("Human");
 			}
 			else if (
-				sdesc.Version == SimPe.PackedFiles.Wrapper.SDescVersions.Castaway
+				sdesc.Version == PackedFiles.Wrapper.SDescVersions.Castaway
 				&& sdesc.Castaway.Subspecies == 2
 			)
 			{
 				lvi.SubItems.Add("Orang-utan");
 			}
 			else if (
-				sdesc.Version == SimPe.PackedFiles.Wrapper.SDescVersions.Castaway
+				sdesc.Version == PackedFiles.Wrapper.SDescVersions.Castaway
 				&& sdesc.Castaway.Subspecies > 0
 				&& (int)sdesc.Nightlife.Species == 3
 			)
@@ -656,7 +654,7 @@ namespace SimPe.Plugin
 				lvi.SubItems.Add("Leopard");
 			}
 			else if (
-				sdesc.Version == SimPe.PackedFiles.Wrapper.SDescVersions.Castaway
+				sdesc.Version == PackedFiles.Wrapper.SDescVersions.Castaway
 				&& sdesc.Castaway.Subspecies == 1
 				&& (int)sdesc.Nightlife.Species < 3
 			)
@@ -665,21 +663,21 @@ namespace SimPe.Plugin
 			}
 			else if (
 				sdesc.Nightlife.Species
-				== SimPe.PackedFiles.Wrapper.SdscNightlife.SpeciesType.LargeDog
+				== PackedFiles.Wrapper.SdscNightlife.SpeciesType.LargeDog
 			)
 			{
 				lvi.SubItems.Add("Large Dog");
 			}
 			else if (
 				sdesc.Nightlife.Species
-				== SimPe.PackedFiles.Wrapper.SdscNightlife.SpeciesType.SmallDog
+				== PackedFiles.Wrapper.SdscNightlife.SpeciesType.SmallDog
 			)
 			{
 				lvi.SubItems.Add("Small Dog");
 			}
 			else if (
 				sdesc.Nightlife.Species
-				== SimPe.PackedFiles.Wrapper.SdscNightlife.SpeciesType.Cat
+				== PackedFiles.Wrapper.SdscNightlife.SpeciesType.Cat
 			)
 			{
 				lvi.SubItems.Add("Cat");
@@ -783,7 +781,7 @@ namespace SimPe.Plugin
 			lv.ListViewItemSorter = sorter;
 			this.Cursor = Cursors.WaitCursor;
 
-			Idno idno = SimPe.Plugin.Idno.FromPackage(package);
+			Idno idno = Idno.FromPackage(package);
 			if (idno != null)
 			{
 				this.lbUbi.Visible = (idno.Type != NeighborhoodType.Normal);

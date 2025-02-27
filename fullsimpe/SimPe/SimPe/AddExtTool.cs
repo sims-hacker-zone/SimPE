@@ -49,7 +49,7 @@ namespace SimPe
 		{
 			InitializeComponent();
 
-			foreach (Data.TypeAlias a in SimPe.Helper.TGILoader.FileTypes)
+			foreach (Data.TypeAlias a in Helper.TGILoader.FileTypes)
 			{
 				if (a.Id == 0xffffffff)
 				{
@@ -176,12 +176,12 @@ namespace SimPe
 			this.button1.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Bottom
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Bottom
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.button1.FlatStyle = FlatStyle.System;
 			this.button1.Location = new System.Drawing.Point(472, 112);
 			this.button1.Name = "button1";
 			this.button1.TabIndex = 4;
@@ -194,9 +194,9 @@ namespace SimPe
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -212,9 +212,9 @@ namespace SimPe
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -230,9 +230,9 @@ namespace SimPe
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
@@ -247,12 +247,12 @@ namespace SimPe
 			this.button2.Anchor = (
 				(AnchorStyles)(
 					(
-						System.Windows.Forms.AnchorStyles.Top
-						| System.Windows.Forms.AnchorStyles.Right
+						AnchorStyles.Top
+						| AnchorStyles.Right
 					)
 				)
 			);
-			this.button2.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.button2.FlatStyle = FlatStyle.System;
 			this.button2.Location = new System.Drawing.Point(472, 56);
 			this.button2.Name = "button2";
 			this.button2.TabIndex = 8;
@@ -282,16 +282,14 @@ namespace SimPe
 				(AnchorStyles)(
 					(
 						(
-							System.Windows.Forms.AnchorStyles.Top
-							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
+							AnchorStyles.Top
+							| AnchorStyles.Left
+						) | AnchorStyles.Right
 					)
 				)
 			);
-			this.cbtypes.DropDownStyle = System
-				.Windows
-				.Forms
-				.ComboBoxStyle
+			this.cbtypes.DropDownStyle =
+				ComboBoxStyle
 				.DropDownList;
 			this.cbtypes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
 			this.cbtypes.ItemHeight = 13;
@@ -325,7 +323,7 @@ namespace SimPe
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+			this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
 			this.Name = "AddExtTool";
 			this.ShowInTaskbar = false;
 			this.Text = "Add External Tool";

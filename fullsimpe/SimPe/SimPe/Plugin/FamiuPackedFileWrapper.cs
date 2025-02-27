@@ -124,7 +124,7 @@ namespace SimPe.Plugin
 				Packages.GeneratableFile pkg;
 				foreach (string file in overs)
 				{
-					pkg = SimPe.Packages.File.LoadFromFile(file);
+					pkg = Packages.File.LoadFromFile(file);
 					if (pkg.FindFileAnyGroup(0x0BF999E7, 0, instc) != null)
 					{
 						IPackedFileDescriptor pfd = pkg.FindFileAnyGroup(
@@ -176,15 +176,13 @@ namespace SimPe.Plugin
 				}
 
 				int inxy =
-					System
-						.IO.Path.GetFileNameWithoutExtension(package.FileName)
+					Path.GetFileNameWithoutExtension(package.FileName)
 						.IndexOf("_") + 1;
-				string suyt = System
-					.IO.Path.GetFileNameWithoutExtension(package.FileName)
+				string suyt = Path.GetFileNameWithoutExtension(package.FileName)
 					.Substring(0, inxy);
-				Packages.File fumbs = SimPe.Packages.File.LoadFromFile(
-					System.IO.Path.Combine(
-						System.IO.Path.GetDirectoryName(package.FileName),
+				Packages.File fumbs = Packages.File.LoadFromFile(
+					Path.Combine(
+						Path.GetDirectoryName(package.FileName),
 						"Thumbnails\\" + suyt + "FamilyThumbnails.package"
 					)
 				);
@@ -248,7 +246,7 @@ namespace SimPe.Plugin
 				"Chris",
 				"Contains the history of a well played family",
 				1,
-				System.Drawing.Image.FromStream(
+				Image.FromStream(
 					this.GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.book.png")
 				)
@@ -275,12 +273,12 @@ namespace SimPe.Plugin
 			GoodSections = 0;
 			signate = reader.ReadInt32();
 			Version = reader.ReadByte(); // Versions match Fami Versions
-			reader.BaseStream.Seek(13, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(13, SeekOrigin.Begin);
 			Sections = reader.ReadInt32();
 			int siser = Sections * 42; // 83 bytes - 1 byte + 41 two bit bytes
 			Array.Resize(ref fval, siser);
 
-			reader.BaseStream.Seek(17, System.IO.SeekOrigin.Begin);
+			reader.BaseStream.Seek(17, SeekOrigin.Begin);
 			try
 			{
 				for (int i = 0; i < Sections; i++)

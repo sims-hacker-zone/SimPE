@@ -247,28 +247,28 @@ namespace SimPe.Plugin
 				form.list_elements.Items.Clear();
 				foreach (GmdcElement e in Elements)
 				{
-					SimPe.CountedListItem.Add(form.list_elements, e);
+					CountedListItem.Add(form.list_elements, e);
 				}
 
 				form.label_links.Text = "Links: " + Links.Length.ToString();
 				form.list_links.Items.Clear();
 				foreach (GmdcLink l in Links)
 				{
-					SimPe.CountedListItem.Add(form.list_links, l);
+					CountedListItem.Add(form.list_links, l);
 				}
 
 				form.label_groups.Text = "Groups: " + Groups.Length.ToString();
 				form.list_groups.Items.Clear();
 				foreach (GmdcGroup g in Groups)
 				{
-					SimPe.CountedListItem.Add(form.list_groups, g);
+					CountedListItem.Add(form.list_groups, g);
 				}
 
 				form.label_subsets.Text = "Joints: " + Joints.Length.ToString();
 				form.list_subsets.Items.Clear();
 				foreach (GmdcJoint s in Joints)
 				{
-					SimPe.CountedListItem.Add(form.list_subsets, s);
+					CountedListItem.Add(form.list_subsets, s);
 				}
 			}
 
@@ -294,7 +294,7 @@ namespace SimPe.Plugin
 				form.lb_itemsa.Items.Clear();
 				foreach (GmdcElement i in this.Elements)
 				{
-					SimPe.CountedListItem.Add(form.lb_itemsa, i);
+					CountedListItem.Add(form.lb_itemsa, i);
 				}
 
 				form.lb_itemsb2.Items.Clear();
@@ -304,7 +304,7 @@ namespace SimPe.Plugin
 				form.lb_itemsb.Items.Clear();
 				foreach (GmdcLink i in this.Links)
 				{
-					SimPe.CountedListItem.Add(form.lb_itemsb, i);
+					CountedListItem.Add(form.lb_itemsb, i);
 				}
 
 				form.lb_subsets.Items.Clear();
@@ -313,32 +313,32 @@ namespace SimPe.Plugin
 				form.cbGroupJoint.Items.Clear();
 				foreach (GmdcJoint i in this.Joints)
 				{
-					SimPe.CountedListItem.Add(form.lb_subsets, i);
-					SimPe.CountedListItem.Add(form.cbGroupJoint, i);
+					CountedListItem.Add(form.lb_subsets, i);
+					CountedListItem.Add(form.cbGroupJoint, i);
 				}
 
 				form.lb_model_faces.Items.Clear();
 				foreach (Vector3f i in this.Model.BoundingMesh.Vertices)
 				{
-					SimPe.CountedListItem.Add(form.lb_model_faces, i);
+					CountedListItem.Add(form.lb_model_faces, i);
 				}
 
 				form.lb_model_items.Items.Clear();
 				foreach (int i in this.Model.BoundingMesh.Items)
 				{
-					SimPe.CountedListItem.Add(form.lb_model_items, i);
+					CountedListItem.Add(form.lb_model_items, i);
 				}
 
 				form.lb_model_names.Items.Clear();
 				foreach (GmdcNamePair i in this.Model.BlendGroupDefinition)
 				{
-					SimPe.CountedListItem.Add(form.lb_model_names, i);
+					CountedListItem.Add(form.lb_model_names, i);
 				}
 
 				form.lb_model_trans.Items.Clear();
 				foreach (VectorTransformation i in this.Model.Transformations)
 				{
-					SimPe.CountedListItem.Add(form.lb_model_trans, i);
+					CountedListItem.Add(form.lb_model_trans, i);
 				}
 			}
 			catch (Exception ex)
@@ -706,15 +706,15 @@ namespace SimPe.Plugin
 			try
 			{
 				Interfaces.Scenegraph.IScenegraphFileIndex nfi =
-					FileTable.FileIndex.AddNewChild();
+					FileTableBase.FileIndex.AddNewChild();
 				nfi.AddIndexFromPackage(this.Parent.Package);
 				Rcol cres = FindReferencingCRES_Int();
-				FileTable.FileIndex.RemoveChild(nfi);
+				FileTableBase.FileIndex.RemoveChild(nfi);
 				nfi.Clear();
 
-				if (cres == null && !FileTable.FileIndex.Loaded)
+				if (cres == null && !FileTableBase.FileIndex.Loaded)
 				{
-					FileTable.FileIndex.Load();
+					FileTableBase.FileIndex.Load();
 					cres = FindReferencingCRES_Int();
 				}
 
@@ -810,8 +810,8 @@ namespace SimPe.Plugin
 			if (rn == null)
 			{
 				Message.Show(
-					SimPe.Localization.GetString("NO_CRES_FOUND"),
-					SimPe.Localization.GetString("Information"),
+					Localization.GetString("NO_CRES_FOUND"),
+					Localization.GetString("Information"),
 					System.Windows.Forms.MessageBoxButtons.OK
 				);
 				return parentmap;

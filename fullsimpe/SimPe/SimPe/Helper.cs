@@ -487,22 +487,22 @@ namespace SimPe
 		/// <returns></returns>
 		public static string GetSimPeLanguageCache(string prefix)
 		{
-			if (Helper.WindowsRegistry.LoadOnlySimsStory > 0)
+			if (WindowsRegistry.LoadOnlySimsStory > 0)
 			{
 				return Path.Combine(
-					Helper.SimPeDataPath,
+					SimPeDataPath,
 					prefix
-						+ Helper.HexString((byte)Helper.WindowsRegistry.LanguageCode)
-						+ Convert.ToString(Helper.WindowsRegistry.LoadOnlySimsStory)
+						+ HexString((byte)WindowsRegistry.LanguageCode)
+						+ Convert.ToString(WindowsRegistry.LoadOnlySimsStory)
 						+ ".simpepkg"
 				);
 			}
 			else
 			{
 				return Path.Combine(
-					Helper.SimPeDataPath,
+					SimPeDataPath,
 					prefix
-						+ Helper.HexString((byte)Helper.WindowsRegistry.LanguageCode)
+						+ HexString((byte)WindowsRegistry.LanguageCode)
 						+ ".simpepkg"
 				);
 			}
@@ -521,7 +521,7 @@ namespace SimPe
 		/// <returns></returns>
 		public static string GetSimPeCache(string prefix)
 		{
-			return Path.Combine(Helper.SimPeDataPath, prefix + ".simpepkg");
+			return Path.Combine(SimPeDataPath, prefix + ".simpepkg");
 		}
 
 		/// <summary>
@@ -711,7 +711,7 @@ namespace SimPe
 		/// </summary>
 		public static string SimPeViewportFile => Path.Combine(SimPeDataPath, "vport.set");
 
-		public static string SimPeSemiGlobalFile => Path.Combine(SimPe.Helper.SimPeDataPath, "semiglobals.xml");
+		public static string SimPeSemiGlobalFile => Path.Combine(SimPeDataPath, "semiglobals.xml");
 
 		/// <summary>
 		/// Bit number identifying what's been "enabled" on the commandline
@@ -1078,7 +1078,7 @@ namespace SimPe
 			if (len != 0)
 			{
 				ret = new byte[len];
-				System.Text.Encoding.ASCII.GetBytes(
+				Encoding.ASCII.GetBytes(
 					str,
 					0,
 					Math.Min(len, str.Length),
@@ -1088,7 +1088,7 @@ namespace SimPe
 			}
 			else
 			{
-				ret = System.Text.Encoding.ASCII.GetBytes(str);
+				ret = Encoding.ASCII.GetBytes(str);
 			}
 
 			return ret;
@@ -1314,7 +1314,7 @@ namespace SimPe
 					if (dwords % dwordperrow == dwordperrow - 1)
 					{
 						dwords = 0;
-						s += Helper.lbr;
+						s += lbr;
 					}
 				}
 			}
@@ -1508,7 +1508,7 @@ namespace SimPe
 		/// <summary>
 		/// Returns true, if the Helper dll was compiled with the DEBUG Flag
 		/// </summary>
-		public static bool DebugMode => Helper.WindowsRegistry.HiddenMode;
+		public static bool DebugMode => WindowsRegistry.HiddenMode;
 
 		/// <summary>
 		/// Returns filename of the Main Neighborhood
@@ -1623,7 +1623,7 @@ namespace SimPe
 				return false;
 			}
 
-			if (System.IO.Path.GetDirectoryName(filename).EndsWith("LotCatalog"))
+			if (Path.GetDirectoryName(filename).EndsWith("LotCatalog"))
 			{
 				filename = Path.GetFileName(filename);
 				filename = filename.Trim().ToLower();

@@ -77,7 +77,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <returns></returns>
 		protected static double ToDouble(string s)
 		{
-			double d = Convert.ToDouble(s, AbstractGmdcImporter.DefaultCulture);
+			double d = Convert.ToDouble(s, DefaultCulture);
 			if (Math.Abs(d) < SMALLNUMBER)
 			{
 				d = 0;

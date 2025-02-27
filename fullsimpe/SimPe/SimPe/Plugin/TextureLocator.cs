@@ -13,7 +13,7 @@ namespace SimPe.Plugin
 		public TextureLocator(Interfaces.Files.IPackageFile package)
 		{
 			this.package = package;
-			fii = SimPe.FileTable.FileIndex.AddNewChild();
+			fii = FileTableBase.FileIndex.AddNewChild();
 
 			//fii.AddIndexFromPackage(package);
 		}
@@ -34,7 +34,7 @@ namespace SimPe.Plugin
 			Interfaces.Files.IPackageFile lpackage = package;
 			if (flname != null)
 			{
-				lpackage = SimPe.Packages.File.LoadFromFile(flname);
+				lpackage = Packages.File.LoadFromFile(flname);
 			}
 
 			Interfaces.Files.IPackedFileDescriptor[] pfds = lpackage.FindFiles(
@@ -79,7 +79,7 @@ namespace SimPe.Plugin
 			Interfaces.Files.IPackageFile lpackage = package;
 			if (flname != null)
 			{
-				lpackage = SimPe.Packages.File.LoadFromFile(flname);
+				lpackage = Packages.File.LoadFromFile(flname);
 			}
 
 			Interfaces.Files.IPackedFileDescriptor[] pfds = lpackage.FindFiles(
@@ -123,7 +123,7 @@ namespace SimPe.Plugin
 			Interfaces.Files.IPackageFile lpackage = package;
 			if (flname != null)
 			{
-				lpackage = SimPe.Packages.File.LoadFromFile(flname);
+				lpackage = Packages.File.LoadFromFile(flname);
 			}
 
 			Shape shp = (Shape)shpe.Blocks[0];
@@ -175,7 +175,7 @@ namespace SimPe.Plugin
 			Interfaces.Files.IPackageFile lpackage = package;
 			if (flname != null)
 			{
-				lpackage = SimPe.Packages.File.LoadFromFile(flname);
+				lpackage = Packages.File.LoadFromFile(flname);
 			}
 
 			foreach (string subset in txmts.Keys)
@@ -298,7 +298,7 @@ namespace SimPe.Plugin
 
 		public void Dispose()
 		{
-			SimPe.FileTable.FileIndex.RemoveChild(fii);
+			FileTableBase.FileIndex.RemoveChild(fii);
 			fii.Clear();
 		}
 

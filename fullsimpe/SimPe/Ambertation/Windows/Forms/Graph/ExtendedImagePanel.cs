@@ -119,7 +119,7 @@ namespace Ambertation.Windows.Forms.Graph
 				return;
 			}
 
-			LinkGraphic.SetGraphicsMode(gr, !Quality);
+			SetGraphicsMode(gr, !Quality);
 
 			Font ftb = new Font(Font.FontFamily, Font.Size, FontStyle.Bold, Font.Unit);
 			this.DrawCaption(

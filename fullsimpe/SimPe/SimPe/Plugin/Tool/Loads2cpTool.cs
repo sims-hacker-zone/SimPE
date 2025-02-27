@@ -46,7 +46,7 @@ namespace SimPe.Plugin.Tool
 
 			System.Windows.Forms.OpenFileDialog ofd =
 				new System.Windows.Forms.OpenFileDialog();
-			ofd.Filter = SimPe.ExtensionProvider.BuildFilterString(
+			ofd.Filter = ExtensionProvider.BuildFilterString(
 				new ExtensionType[]
 				{
 					ExtensionType.Sim2PackCommunity,
@@ -56,7 +56,7 @@ namespace SimPe.Plugin.Tool
 			if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
 			{
 				Packages.S2CPDescriptor[] ds =
-					SimPe.Packages.Sims2CommunityPack.ShowOpenDialog(
+					Packages.Sims2CommunityPack.ShowOpenDialog(
 						ofd.FileName,
 						System.Windows.Forms.SelectionMode.MultiExtended
 					);
@@ -64,7 +64,7 @@ namespace SimPe.Plugin.Tool
 				{
 					foreach (Packages.S2CPDescriptor d in ds)
 					{
-						SimPe.RemoteControl.OpenMemoryPackage(d.Package);
+						RemoteControl.OpenMemoryPackage(d.Package);
 					}
 				}
 			}
@@ -80,7 +80,7 @@ namespace SimPe.Plugin.Tool
 		#region IToolExt Member
 		public System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.None;
 
-		public System.Drawing.Image Icon => SimPe.GetIcon.S2pcOpen;
+		public System.Drawing.Image Icon => GetIcon.S2pcOpen;
 
 		public virtual bool Visible => true;
 

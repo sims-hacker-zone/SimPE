@@ -81,7 +81,7 @@ namespace Ambertation
 				}
 				else
 				{
-					o = System.Convert.ToInt32(value);
+					o = Convert.ToInt32(value);
 				}
 			}
 			else if (typename == "short")
@@ -92,7 +92,7 @@ namespace Ambertation
 				}
 				else
 				{
-					o = System.Convert.ToInt16(value);
+					o = Convert.ToInt16(value);
 				}
 			}
 			else if (typename == "bool")
@@ -103,7 +103,7 @@ namespace Ambertation
 				}
 				else
 				{
-					o = (System.Convert.ToInt16(value) != 0);
+					o = (Convert.ToInt16(value) != 0);
 				}
 			}
 			else if (typename == "color")
@@ -126,7 +126,7 @@ namespace Ambertation
 				else
 				{
 					o = (double)
-						System.Convert.ToDouble(
+						Convert.ToDouble(
 							value,
 							System.Globalization.CultureInfo.InvariantCulture
 						);
@@ -159,11 +159,11 @@ namespace Ambertation
 					Type t = (Type)enums[typename];
 					if (value == null)
 					{
-						o = System.Enum.ToObject(t, t.GetFields()[0].GetValue(null));
+						o = Enum.ToObject(t, t.GetFields()[0].GetValue(null));
 					}
 					else
 					{
-						o = System.Enum.ToObject(t, System.Convert.ToInt32(value));
+						o = Enum.ToObject(t, Convert.ToInt32(value));
 					}
 				}
 				else
@@ -172,7 +172,7 @@ namespace Ambertation
 					Assembly a = this.GetType().Assembly;
 					if (parts.Length > 1)
 					{
-						a = System.Reflection.Assembly.LoadFrom(parts[0]);
+						a = Assembly.LoadFrom(parts[0]);
 						typename = parts[1];
 					}
 
@@ -183,13 +183,13 @@ namespace Ambertation
 						{
 							if (value == null)
 							{
-								o = System.Enum.ToObject(t, System.Convert.ToInt32(0));
+								o = Enum.ToObject(t, Convert.ToInt32(0));
 							}
 							else
 							{
-								o = System.Enum.ToObject(
+								o = Enum.ToObject(
 									t,
-									System.Convert.ToInt32(value)
+									Convert.ToInt32(value)
 								);
 							}
 						}
@@ -205,7 +205,7 @@ namespace Ambertation
 				Assembly a = this.GetType().Assembly;
 				if (parts.Length > 1)
 				{
-					a = System.Reflection.Assembly.LoadFrom(parts[0]);
+					a = Assembly.LoadFrom(parts[0]);
 					typename = parts[1];
 				}
 
@@ -217,7 +217,7 @@ namespace Ambertation
 						== typeof(IPropertyClass)
 					)
 					{
-						o = System.Activator.CreateInstance(
+						o = Activator.CreateInstance(
 							t,
 							new object[] { (object)value }
 						);
@@ -326,7 +326,7 @@ namespace Ambertation
 					myEnumBuilder.DefineLiteral(
 						subnode.InnerText,
 						(object)
-							System.Convert.ToInt32(subnode.Attributes["value"].Value)
+							Convert.ToInt32(subnode.Attributes["value"].Value)
 					);
 				}
 			}

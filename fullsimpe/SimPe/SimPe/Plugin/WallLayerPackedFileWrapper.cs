@@ -69,7 +69,7 @@ namespace SimPe.Plugin
 				"Chris",
 				"To View the Wall Layer",
 				69,
-				SimPe.GetIcon.GameTit
+				GetIcon.GameTit
 			);
 		}
 

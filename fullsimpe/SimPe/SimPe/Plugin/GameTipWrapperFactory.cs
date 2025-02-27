@@ -47,8 +47,8 @@ namespace SimPe.Plugin
 
 			public void ShowHelp(ShowHelpEventArgs e)
 			{
-				SimPe.RemoteControl.ShowHelp(
-					"file://" + SimPe.Helper.SimPePath + "/Doc/BeginnerGuide.htm"
+				RemoteControl.ShowHelp(
+					"file://" + Helper.SimPePath + "/Doc/BeginnerGuide.htm"
 				);
 			}
 		}

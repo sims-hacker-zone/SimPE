@@ -54,7 +54,7 @@ namespace Ambertation.Renderer
 		}
 
 		static Image menupattern;
-		protected static Image MenuPattern => GlossyRenderer.menupattern;
+		protected static Image MenuPattern => menupattern;
 
 		protected GlossyColorTable Colors => this.ColorTable as GlossyColorTable;
 
@@ -155,7 +155,7 @@ namespace Ambertation.Renderer
 	public class GlossyColorTable : ProfessionalColorTable
 	{
 		private static GlossyColorTable global = new GlossyColorTable();
-		public static GlossyColorTable Global => GlossyColorTable.global;
+		public static GlossyColorTable Global => global;
 
 		#region Checker
 		public override Color CheckBackground => Color.Transparent;
