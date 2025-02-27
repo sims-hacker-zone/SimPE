@@ -16,6 +16,8 @@ dotnet_analyzer_diagnostic.category-Reliability.severity = suggestion
 dotnet_analyzer_diagnostic.category-Security.severity = suggestion
 dotnet_analyzer_diagnostic.category-Usage.severity = suggestion
 
+dotnet_diagnostic.IDE0058.severity = none
+
 dotnet_style_qualification_for_field = false
 dotnet_style_qualification_for_property = false
 dotnet_style_qualification_for_method = false
