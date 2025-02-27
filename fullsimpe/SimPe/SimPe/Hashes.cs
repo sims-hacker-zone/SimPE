@@ -96,7 +96,7 @@ namespace SimPe
 			ulong ret = 0;
 			foreach (byte b in input)
 			{
-				ret = ret << 8;
+				ret <<= 8;
 				ret += b;
 			}
 
@@ -286,8 +286,8 @@ namespace SimPe
 			}
 
 			uint guid = GetUserGuid(id);
-			id = id & 0x000000FE;
-			hash = hash & 0x000000FE;
+			id &= 0x000000FE;
+			hash &= 0x000000FE;
 			return id == hash;
 		}
 

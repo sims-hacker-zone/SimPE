@@ -66,7 +66,7 @@ namespace SimPe.Plugin.Anim
 				if (value)
 				{
 					i = 1;
-					i = i << 0x12;
+					i <<= 0x12;
 				}
 
 				Unknown1 = (Unknown1 & 0xFFFBFFFF) | i;
@@ -695,7 +695,7 @@ namespace SimPe.Plugin.Anim
 			float scale = SCALE;
 			if (!locked)
 			{
-				scale = scale * 16f;
+				scale *= 16f;
 			}
 
 			if (ft == FrameType.Rotation)

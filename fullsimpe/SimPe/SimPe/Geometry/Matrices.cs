@@ -307,7 +307,7 @@ namespace SimPe.Geometry
 
 			for (int i = 0; i < val; i++)
 			{
-				result = result * m1;
+				result *= m1;
 			}
 
 			return result;

@@ -263,11 +263,11 @@ namespace SimPe
 		{
 			string res = "";
 			res = (l & 0xffff).ToString();
-			l = l >> 16;
+			l >>= 16;
 			res = (l & 0xffff).ToString() + "." + res;
-			l = l >> 16;
+			l >>= 16;
 			res = (l & 0xffff).ToString() + "." + res;
-			l = l >> 16;
+			l >>= 16;
 			res = (l & 0xffff).ToString() + "." + res;
 			return res;
 		}

@@ -194,11 +194,11 @@ namespace SimPe.Plugin.Gmdc.Exporter
 				);
 
 				//calculate vectors v1,v2 and uv1 and uv2
-				v3 = v3 - v1;
+				v3 -= v1;
 				v1 = v2 - v1;
 				v2 = v3;
 
-				uv3 = uv3 - uv1;
+				uv3 -= uv1;
 				uv1 = uv2 - uv1;
 				uv2 = uv3;
 
@@ -218,7 +218,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 
 				//Calculate Face Tangent
 				Vector3f tangent = (uv2.Y * v1) - (uv1.Y * v2);
-				tangent = tangent * r;
+				tangent *= r;
 				facetangent[facenumber] = tangent;
 
 				facenumber++;
@@ -283,7 +283,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 
 				//Finalize tangent calculation
 				tangent = tangent.UnitVector;
-				tangent = tangent - (vertnormalgmdc * (tangent * vertnormalgmdc));
+				tangent -= (vertnormalgmdc * (tangent * vertnormalgmdc));
 				tangent = tangent.UnitVector;
 
 				verttangent[i] = tangent;

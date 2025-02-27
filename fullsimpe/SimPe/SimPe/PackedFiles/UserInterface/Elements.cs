@@ -1783,7 +1783,7 @@ namespace SimPe.PackedFiles.UserInterface
 						NewLot = cblot.Checked
 					};
 
-				flag = flag | flags.Value;
+				flag |= flags.Value;
 				tbflag.Text = "0x" + Helper.HexString(flag);
 			}
 			catch (Exception) { }

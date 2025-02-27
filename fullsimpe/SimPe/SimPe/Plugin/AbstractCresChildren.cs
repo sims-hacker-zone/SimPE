@@ -234,7 +234,7 @@ namespace SimPe.Plugin
 					VectorTransformation t = list[i];
 					t.Rotation.MakeUnitQuaternion();
 
-					v.Rotation = v.Rotation * t.Rotation;
+					v.Rotation *= t.Rotation;
 					v.Translation =
 						t.Rotation.Rotate(v.Translation)
 						- t.Rotation.Rotate(t.Translation);

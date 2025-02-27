@@ -1200,7 +1200,7 @@ namespace SimPe.Plugin.TabPage
 					int isSet = part2 & 1;
 					cb.Checked = isSet == 1;
 					gb.Controls.Add(cb);
-					part2 = part2 >> 1;
+					part2 >>= 1;
 				}
 				for (int k = 0; k < 8; k++)
 				{
@@ -1215,7 +1215,7 @@ namespace SimPe.Plugin.TabPage
 					int isSet = part1 & 1;
 					cb.Checked = isSet == 1;
 					gb.Controls.Add(cb);
-					part1 = part1 >> 1;
+					part1 >>= 1;
 				}
 			}
 		}
@@ -1233,10 +1233,10 @@ namespace SimPe.Plugin.TabPage
 					int index = gb.Controls.IndexOfKey(name);
 					CheckBox cb = (CheckBox)gb.Controls[index];
 
-					part1 = part1 << 1;
+					part1 <<= 1;
 					if (cb.Checked == true)
 					{
-						part1 = part1 | 1;
+						part1 |= 1;
 					}
 				}
 				for (int k = 0; k < 8; k++)
@@ -1245,10 +1245,10 @@ namespace SimPe.Plugin.TabPage
 					int index = gb.Controls.IndexOfKey(name);
 					CheckBox cb = (CheckBox)gb.Controls[index];
 
-					part2 = part2 << 1;
+					part2 <<= 1;
 					if (cb.Checked == true)
 					{
-						part2 = part2 | 1;
+						part2 |= 1;
 					}
 				}
 				item.Data[j + 1] = (byte)part1;

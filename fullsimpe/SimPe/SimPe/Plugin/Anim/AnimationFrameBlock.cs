@@ -256,14 +256,14 @@ namespace SimPe.Plugin.Anim
 			get
 			{
 				uint i = Unknown5 & 0x01F00000;
-				i = i >> 20;
+				i >>= 20;
 				return (FrameType)(byte)i;
 			}
 			set
 			{
 				uint i = (uint)value;
-				i = i << 20;
-				i = i & 0x01F00000;
+				i <<= 20;
+				i &= 0x01F00000;
 				Unknown5 = (Unknown5 & 0xFE0FFFFF) | i;
 			}
 		}
@@ -283,8 +283,8 @@ namespace SimPe.Plugin.Anim
 			set
 			{
 				uint i = (uint)value;
-				i = i & 0x00007FFF;
-				i = i | 0x00008000;
+				i &= 0x00007FFF;
+				i |= 0x00008000;
 				Unknown5 = (Unknown5 & 0xFFFF0000) | i;
 			}
 		}
@@ -314,7 +314,7 @@ namespace SimPe.Plugin.Anim
 			get
 			{
 				uint i = Unknown5 & 0x1E000000;
-				i = i >> 25;
+				i >>= 25;
 				return (byte)i;
 			}
 			set
@@ -672,8 +672,8 @@ namespace SimPe.Plugin.Anim
 				ct = 7;
 			}
 
-			ct = ct & 0x00000007;
-			ct = ct << 0x1D;
+			ct &= 0x00000007;
+			ct <<= 0x1D;
 			datai[4] = datai[4] & 0x1FFFFFFF;
 
 			datai[4] = (uint)((ulong)datai[4] | (uint)ct);

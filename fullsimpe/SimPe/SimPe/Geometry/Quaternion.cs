@@ -334,10 +334,10 @@ namespace SimPe.Geometry
 			double l = Length;
 			if (l != 0)
 			{
-				X = X / l;
-				Y = Y / l;
-				Z = Z / l;
-				W = W / l;
+				X /= l;
+				Y /= l;
+				Z /= l;
+				W /= l;
 			}
 		}
 

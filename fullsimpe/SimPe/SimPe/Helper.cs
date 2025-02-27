@@ -819,11 +819,11 @@ namespace SimPe
 		{
 			string res = "";
 			res = (l & 0xffff).ToString();
-			l = l >> 16;
+			l >>= 16;
 			res = (l & 0xffff).ToString() + "." + res;
-			l = l >> 16;
+			l >>= 16;
 			res = (l & 0xffff).ToString() + "." + res;
-			l = l >> 16;
+			l >>= 16;
 			res = (l & 0xffff).ToString() + "." + res;
 			return res;
 		}
@@ -836,10 +836,10 @@ namespace SimPe
 		public static string LongVersionToShortString(long l)
 		{
 			string res = "";
-			l = l >> 16;
-			l = l >> 16;
+			l >>= 16;
+			l >>= 16;
 			res = (l & 0xffff).ToString();
-			l = l >> 16;
+			l >>= 16;
 			res = (l & 0xffff).ToString() + "." + res;
 			return res;
 		}

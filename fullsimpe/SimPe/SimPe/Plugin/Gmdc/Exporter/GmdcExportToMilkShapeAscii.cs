@@ -197,7 +197,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 						}
 						else
 						{
-							bnr = bnr & 0xff;
+							bnr &= 0xff;
 							bnr = Group.UsedJoints[bnr];
 							for (int ij = 0; ij < js.Count; ij++)
 							{
@@ -436,7 +436,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 								Vector3f v = af.Vector;
 
 								//if (first)
-								v = v + cv; //corect static Values
+								v += cv; //corect static Values
 
 								v = Component.TransformScaled(v);
 
@@ -512,7 +512,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 							v = q.GetEulerAngles();
 
 							//if (first)
-							v = v + Component.Transform(cv); //correct static Values
+							v += Component.Transform(cv); //correct static Values
 
 							int tc = af.TimeCode + 1;
 							if (ab.AxisSet[0].Locked && tc == 1)

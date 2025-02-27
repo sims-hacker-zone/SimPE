@@ -158,7 +158,7 @@ namespace SimPe
 					ver = i.Version;
 					LastKnown = i.Expansion;
 				}
-				AvailableGroups = AvailableGroups | (uint)i.Group;
+				AvailableGroups |= (uint)i.Group;
 			}
 			System.Diagnostics.Debug.WriteLine("----\r\n");
 

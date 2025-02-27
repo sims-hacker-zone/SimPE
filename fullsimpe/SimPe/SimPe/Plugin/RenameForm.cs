@@ -455,7 +455,7 @@ namespace SimPe.Plugin
 				string ext = "_" + lvi.SubItems[1].Text.Trim().ToLower();
 				if (!newname.ToLower().EndsWith(ext))
 				{
-					newname = newname + ext;
+					newname += ext;
 				}
 
 				try

@@ -370,7 +370,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 					}
 				}
 
-				b = b & 0xFF;
+				b &= 0xFF;
 				b = (int)((uint)b | 0xFFFFFF00);
 
 				g.Elements[0]

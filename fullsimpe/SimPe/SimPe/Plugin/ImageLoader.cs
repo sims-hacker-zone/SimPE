@@ -716,8 +716,8 @@ namespace SimPe.Plugin
 					}
 				}
 
-				abits = abits << 3;
-				abits = abits | (uint)index;
+				abits <<= 3;
+				abits |= (uint)index;
 			}
 
 			ushort abits1 = (ushort)((abits >> 32) & 0x0000ffff);
@@ -809,10 +809,10 @@ if (test.B>table.B) table = Color.FromArgb(table.A, table.R, table.G, test.B);*/
 
 			res = (col.R * 0x1f / 0xff) & 0x1f;
 
-			res = res << 6;
+			res <<= 6;
 			res |= (col.G * 0x3f / 0xff) & 0x3f;
 
-			res = res << 5;
+			res <<= 5;
 			res |= (col.B * 0x1f / 0xff) & 0x1f;
 
 			return (short)res;
@@ -863,8 +863,8 @@ if (test.B>table.B) table = Color.FromArgb(table.A, table.R, table.G, test.B);*/
 				int dum = 0;
 				for (short x = 3; x >= 0; x--)
 				{
-					dum = dum << 2;
-					dum = dum | (DXT3NearestTableColor(table, colors[x, y]));
+					dum <<= 2;
+					dum |= (DXT3NearestTableColor(table, colors[x, y]));
 				}
 				writer.Write((byte)dum);
 			}

@@ -894,7 +894,7 @@ namespace SimPe.Packages
 									copycount -= 0x71;
 								}
 
-								copycount = copycount & 0xfc;
+								copycount &= 0xfc;
 								int realcopycount = copycount >> 2;
 
 								cdata[writeindex++] = (byte)(0xdf + realcopycount);
@@ -972,7 +972,7 @@ namespace SimPe.Packages
 							copycount -= 0x71;
 						}
 
-						copycount = copycount & 0xfc;
+						copycount &= 0xfc;
 						int realcopycount = copycount >> 2;
 
 						cdata[writeindex++] = (byte)(0xdf + realcopycount);

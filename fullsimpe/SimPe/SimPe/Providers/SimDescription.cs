@@ -389,7 +389,7 @@ namespace SimPe.Providers
 					ret += o;
 				}
 
-				v = v >> 1;
+				v >>= 1;
 			}
 
 			return ret;
@@ -706,7 +706,7 @@ namespace SimPe.Providers
 					ret += o.ToString();
 				}
 
-				v = v >> 1;
+				v >>= 1;
 			}
 
 			return ret;
