@@ -58,10 +58,7 @@ namespace SimPe.Plugin.Scanner
 
 		public void Dispose()
 		{
-			if (list != null)
-			{
-				list.Clear();
-			}
+			list?.Clear();
 
 			list = null;
 		}

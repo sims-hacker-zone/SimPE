@@ -27,10 +27,7 @@ namespace SimPe.Plugin
 		{
 			if (disposing)
 			{
-				if (components != null)
-				{
-					components.Dispose();
-				}
+				components?.Dispose();
 			}
 			base.Dispose(disposing);
 		}

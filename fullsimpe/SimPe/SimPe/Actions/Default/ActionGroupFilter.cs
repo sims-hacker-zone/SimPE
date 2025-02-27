@@ -22,7 +22,7 @@ namespace SimPe.Actions.Default
 	class ActionGroupFilter : AbstractActionDefault
 	{
 		private Windows.Forms.ResourceListViewExt lv = null;
-		private ViewFilter Filter => (ViewFilter)((lv == null) ? null : lv.Filter);
+		private ViewFilter Filter => (ViewFilter)(lv?.Filter);
 
 		public ActionGroupFilter(Windows.Forms.ResourceListViewExt value)
 		{

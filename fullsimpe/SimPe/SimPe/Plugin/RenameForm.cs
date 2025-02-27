@@ -41,10 +41,7 @@ namespace SimPe.Plugin
 		{
 			if (disposing)
 			{
-				if (components != null)
-				{
-					components.Dispose();
-				}
+				components?.Dispose();
 			}
 			base.Dispose(disposing);
 		}
@@ -357,10 +354,7 @@ namespace SimPe.Plugin
 		{
 			username = username.Replace("_", ".");
 
-			if (lv != null)
-			{
-				lv.Items.Clear();
-			}
+			lv?.Items.Clear();
 
 			Hashtable ht = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
 			string old = Hashes.StripHashFromName(

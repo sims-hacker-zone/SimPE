@@ -1025,19 +1025,13 @@ namespace SimPe.Packages
 				{
 					foreach (ArrayList a in cmpmap)
 					{
-						if (a != null)
-						{
-							a.Clear();
-						}
+						a?.Clear();
 					}
 
 					cmpmap = null;
 					cdata = null;
 					retdata = null;
-					if (indexlist != null)
-					{
-						indexlist.Clear();
-					}
+					indexlist?.Clear();
 
 					indexlist = null;
 				}

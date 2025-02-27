@@ -150,10 +150,7 @@ namespace SimPe.PackedFiles.Wrapper
 		public void Remove(StrToken item)
 		{
 			StrItemList lng = (StrItemList)Lines[item.Language.Id];
-			if (lng != null)
-			{
-				lng.Remove(item);
-			}
+			lng?.Remove(item);
 		}
 
 		/// <summary>

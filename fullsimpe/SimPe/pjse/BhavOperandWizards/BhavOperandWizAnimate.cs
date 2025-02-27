@@ -261,10 +261,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 		{
 			if (disposing)
 			{
-				if (components != null)
-				{
-					components.Dispose();
-				}
+				components?.Dispose();
 			}
 			base.Dispose(disposing);
 

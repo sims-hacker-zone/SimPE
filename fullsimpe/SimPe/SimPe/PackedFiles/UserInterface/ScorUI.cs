@@ -68,10 +68,7 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			if (disposing)
 			{
-				if (components != null)
-				{
-					components.Dispose();
-				}
+				components?.Dispose();
 			}
 			base.Dispose(disposing);
 		}
@@ -398,10 +395,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void btRem_Click(object sender, EventArgs e)
 		{
-			if (Scor != null)
-			{
-				Scor.Remove(lb.SelectedItem as ScorItem);
-			}
+			Scor?.Remove(lb.SelectedItem as ScorItem);
 		}
 	}
 }

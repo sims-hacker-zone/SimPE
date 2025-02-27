@@ -106,10 +106,7 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			if (tLightT != null)
-			{
-				tLightT.Dispose();
-			}
+			tLightT?.Dispose();
 
 			tLightT = null;
 		}

@@ -150,10 +150,7 @@ namespace SimPe.Plugin.Gmdc
 			}
 			cbact = null;
 
-			if (cbgroup != null)
-			{
-				cbgroup.Dispose();
-			}
+			cbgroup?.Dispose();
 
 			parent = null;
 			joint = null;

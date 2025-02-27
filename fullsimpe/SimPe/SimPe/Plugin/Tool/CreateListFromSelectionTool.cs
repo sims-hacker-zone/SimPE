@@ -75,10 +75,7 @@ namespace SimPe.Plugin.Tool
 				Interfaces.Plugin.IFileWrapper wrapper =
 					(Interfaces.Plugin.IFileWrapper)
 						FileTableBase.WrapperRegistry.FindHandler(pfd.Type);
-				if (wrapper != null)
-				{
-					wrapper.ProcessData(e.Resource);
-				}
+				wrapper?.ProcessData(e.Resource);
 
 				if (first)
 				{

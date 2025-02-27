@@ -91,10 +91,7 @@ namespace Ambertation.Windows.Forms
 		{
 			if (disposing)
 			{
-				if (components != null)
-				{
-					components.Dispose();
-				}
+				components?.Dispose();
 			}
 			base.Dispose(disposing);
 		}
@@ -399,15 +396,9 @@ namespace Ambertation.Windows.Forms
 				return;
 			}
 
-			if (cachedimg != null)
-			{
-				cachedimg.Dispose();
-			}
+			cachedimg?.Dispose();
 
-			if (cachedimgsel != null)
-			{
-				cachedimgsel.Dispose();
-			}
+			cachedimgsel?.Dispose();
 
 			try
 			{

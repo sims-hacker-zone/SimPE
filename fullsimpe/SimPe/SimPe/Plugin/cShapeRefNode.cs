@@ -396,10 +396,7 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			if (tShapeRefNode != null)
-			{
-				tShapeRefNode.Dispose();
-			}
+			tShapeRefNode?.Dispose();
 
 			tShapeRefNode = null;
 		}

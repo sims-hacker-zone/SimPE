@@ -145,10 +145,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 			for (int i = 0; i < items.Count; i++)
 			{
-				if (items[i] != null)
-				{
-					items[i].Serialize(writer);
-				}
+				items[i]?.Serialize(writer);
 			}
 		}
 

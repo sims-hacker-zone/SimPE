@@ -181,10 +181,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public override void Dispose()
 		{
-			if (image != null)
-			{
-				image.Dispose();
-			}
+			image?.Dispose();
 
 			image = null;
 

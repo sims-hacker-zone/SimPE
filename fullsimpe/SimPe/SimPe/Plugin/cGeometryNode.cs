@@ -267,10 +267,7 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			if (tGeometryNode != null)
-			{
-				tGeometryNode.Dispose();
-			}
+			tGeometryNode?.Dispose();
 
 			tGeometryNode = null;
 		}

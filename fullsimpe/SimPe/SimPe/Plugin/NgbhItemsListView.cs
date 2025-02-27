@@ -92,15 +92,9 @@ namespace SimPe.Plugin
 					tm.Parent = null;
 					tm = null;
 				}
-				if (clipboard != null)
-				{
-					clipboard.Clear();
-				}
+				clipboard?.Clear();
 
-				if (components != null)
-				{
-					components.Dispose();
-				}
+				components?.Dispose();
 			}
 			base.Dispose(disposing);
 		}
@@ -444,10 +438,7 @@ namespace SimPe.Plugin
 		public void Clear()
 		{
 			lv.Clear();
-			if (lv.SmallImageList != null)
-			{
-				lv.SmallImageList.Images.Clear();
-			}
+			lv.SmallImageList?.Images.Clear();
 		}
 
 		[Browsable(false)]

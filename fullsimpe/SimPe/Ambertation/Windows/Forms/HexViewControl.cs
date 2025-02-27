@@ -1135,10 +1135,7 @@ namespace Ambertation.Windows.Forms
 			SetScrollBar();
 			UpdateHexBoxRowHeight();
 			UpdateRows(0);
-			if (cachedimage != null)
-			{
-				cachedimage.Dispose();
-			}
+			cachedimage?.Dispose();
 
 			cachedimage = new Bitmap(Width, Height);
 			System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(cachedimage);

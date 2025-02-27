@@ -56,10 +56,7 @@ namespace SimPe.Plugin.Tool
 		{
 			if (disposing)
 			{
-				if (components != null)
-				{
-					components.Dispose();
-				}
+				components?.Dispose();
 			}
 			base.Dispose(disposing);
 			if (csv != null)

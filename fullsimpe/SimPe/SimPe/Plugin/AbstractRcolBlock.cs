@@ -136,10 +136,7 @@ namespace SimPe.Plugin
 		/// <param name="tc">The tabControl the Page will be added to</param>
 		public void AddToTabControl(TabControl tc)
 		{
-			if (parent != null)
-			{
-				parent.ClearTabPageChanged();
-			}
+			parent?.ClearTabPageChanged();
 
 			if (TabPage != null)
 			{

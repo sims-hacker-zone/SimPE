@@ -402,16 +402,10 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			if (tResourceNode != null)
-			{
-				tResourceNode.Dispose();
-			}
+			tResourceNode?.Dispose();
 
 			tResourceNode = null;
-			if (tCres != null)
-			{
-				tCres.Dispose();
-			}
+			tCres?.Dispose();
 
 			tCres = null;
 			sgres = null;

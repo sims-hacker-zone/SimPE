@@ -189,15 +189,9 @@ namespace SimPe.Plugin.Gmdc
 			}
 			cbact = null;
 
-			if (cbgroup != null)
-			{
-				cbgroup.Dispose();
-			}
+			cbgroup?.Dispose();
 
-			if (cbenv != null)
-			{
-				cbenv.Dispose();
-			}
+			cbenv?.Dispose();
 
 			parent = null;
 			mesh = null;

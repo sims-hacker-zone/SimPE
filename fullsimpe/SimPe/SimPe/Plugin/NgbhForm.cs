@@ -93,10 +93,7 @@ namespace SimPe.Plugin
 					0x4E474248,
 					new RemoteControl.ControlEvent(ControlEvent)
 				);
-				if (components != null)
-				{
-					components.Dispose();
-				}
+				components?.Dispose();
 			}
 			base.Dispose(disposing);
 		}

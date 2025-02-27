@@ -754,10 +754,7 @@ namespace SimPe.PackedFiles.Wrapper
 		public void Dispose()
 		{
 			Parent = null;
-			if (Constants != null)
-			{
-				Constants.Clear();
-			}
+			Constants?.Clear();
 
 			Constants = null;
 		}

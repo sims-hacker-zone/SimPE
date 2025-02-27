@@ -61,10 +61,7 @@ namespace SimPe.Plugin
 		{
 			if (disposing)
 			{
-				if (components != null)
-				{
-					components.Dispose();
-				}
+				components?.Dispose();
 			}
 			base.Dispose(disposing);
 		}
@@ -232,7 +229,7 @@ namespace SimPe.Plugin
 		public bool LoadNgbh { get; set; } = true;
 
 		NgbhType ngbh = null;
-		public string SelectedNgbh => ngbh == null ? null : ngbh.FileName;
+		public string SelectedNgbh => ngbh?.FileName;
 
 		Packages.GeneratableFile package;
 		Packages.File source_package;

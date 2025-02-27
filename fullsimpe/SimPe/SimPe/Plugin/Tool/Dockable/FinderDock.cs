@@ -442,10 +442,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			lv.EndUpdate();
 			lv.DoubleBuffering = true;
 
-			if (searchtool != null)
-			{
-				searchtool.NotifyFinishedSearch();
-			}
+			searchtool?.NotifyFinishedSearch();
 
 			pnErr.Text = pnErr.Text.Replace(
 				"{nr}",

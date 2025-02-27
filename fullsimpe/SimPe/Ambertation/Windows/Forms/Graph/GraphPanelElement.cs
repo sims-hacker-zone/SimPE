@@ -45,10 +45,7 @@ namespace Ambertation.Windows.Forms.Graph
 		{
 			Parent = null;
 
-			if (SourceImage != null)
-			{
-				SourceImage.Dispose();
-			}
+			SourceImage?.Dispose();
 		}
 
 		#region Public Properties
@@ -230,10 +227,7 @@ namespace Ambertation.Windows.Forms.Graph
 
 		public void Refresh()
 		{
-			if (parent != null)
-			{
-				parent.Invalidate(BoundingRectangle);
-			}
+			parent?.Invalidate(BoundingRectangle);
 		}
 
 		public void Invalidate()
@@ -300,10 +294,7 @@ namespace Ambertation.Windows.Forms.Graph
 				Move(this, new EventArgs());
 			}
 
-			if (parent != null)
-			{
-				parent.Invalidate(r);
-			}
+			parent?.Invalidate(r);
 			//Refresh();
 		}
 		#endregion
@@ -365,10 +356,7 @@ namespace Ambertation.Windows.Forms.Graph
 				return;
 			}
 
-			if (SourceImage != null)
-			{
-				SourceImage.Dispose();
-			}
+			SourceImage?.Dispose();
 
 			try
 			{

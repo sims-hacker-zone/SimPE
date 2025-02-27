@@ -45,10 +45,7 @@ namespace SimPe.PackedFiles.Wrapper
 			if (disposing)
 			{
 				Clear();
-				if (components != null)
-				{
-					components.Dispose();
-				}
+				components?.Dispose();
 			}
 			base.Dispose(disposing);
 		}

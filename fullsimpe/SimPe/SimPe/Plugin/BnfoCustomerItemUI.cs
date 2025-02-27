@@ -46,10 +46,7 @@ namespace SimPe.Plugin
 			if (disposing)
 			{
 				BnfoCustomerItemsUI = null;
-				if (components != null)
-				{
-					components.Dispose();
-				}
+				components?.Dispose();
 			}
 			base.Dispose(disposing);
 		}

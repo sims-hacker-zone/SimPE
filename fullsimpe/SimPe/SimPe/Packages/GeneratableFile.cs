@@ -129,10 +129,7 @@ namespace SimPe.Packages
 			{
 				//this.IncrementalBuild();
 				MemoryStream ms = Build();
-				if (Reader != null)
-				{
-					Reader.Close();
-				}
+				Reader?.Close();
 
 				Save(ms, flname);
 

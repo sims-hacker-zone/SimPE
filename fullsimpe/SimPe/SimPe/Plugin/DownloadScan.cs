@@ -104,10 +104,7 @@ namespace SimPe.Plugin
 		{
 			if (disposing)
 			{
-				if (components != null)
-				{
-					components.Dispose();
-				}
+				components?.Dispose();
 			}
 			base.Dispose(disposing);
 		}
@@ -1624,16 +1621,10 @@ namespace SimPe.Plugin
 
 				Packages.StreamItem si =
 					Packages.StreamFactory.GetStreamItem(filename, false);
-				if (si != null)
-				{
-					si.Close();
-				}
+				si?.Close();
 
 				si = Packages.StreamFactory.GetStreamItem(target, false);
-				if (si != null)
-				{
-					si.Close();
-				}
+				si?.Close();
 
 				try
 				{

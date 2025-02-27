@@ -40,7 +40,7 @@ namespace SimPe
 		/// </summary>
 		public static System.Drawing.Image Image
 		{
-			get => scr == null ? null : scr.prevImage;
+			get => scr?.prevImage;
 			set => Screen.doUpdate(value);
 		}
 
@@ -158,10 +158,7 @@ namespace SimPe
 			lock (lockFrm)
 			{
 				prevImage = image;
-				if (frm != null)
-				{
-					frm.SetImage(image);
-				}
+				frm?.SetImage(image);
 			}
 			Application.DoEvents();
 		}
@@ -174,10 +171,7 @@ namespace SimPe
 			lock (lockFrm)
 			{
 				prevMessage = msg;
-				if (frm != null)
-				{
-					frm.SetMessage(msg);
-				}
+				frm?.SetMessage(msg);
 			}
 			Application.DoEvents();
 		}
@@ -243,10 +237,7 @@ namespace SimPe
 			Application.UseWaitCursor = false;
 			lock (lockFrm)
 			{
-				if (frm != null)
-				{
-					frm.StopSplash();
-				}
+				frm?.StopSplash();
 			}
 		}
 

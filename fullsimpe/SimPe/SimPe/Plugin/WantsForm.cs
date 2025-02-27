@@ -91,10 +91,7 @@ namespace SimPe.Plugin
 		{
 			if (disposing)
 			{
-				if (components != null)
-				{
-					components.Dispose();
-				}
+				components?.Dispose();
 			}
 			base.Dispose(disposing);
 		}
@@ -1564,10 +1561,7 @@ namespace SimPe.Plugin
 				ShowWantItem(lastwi);
 			}
 
-			if (lastlvi != null)
-			{
-				lastlvi.ListView.Refresh();
-			}
+			lastlvi?.ListView.Refresh();
 		}
 	}
 }

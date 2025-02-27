@@ -174,10 +174,7 @@ namespace SimPe.Interfaces.Plugin
 		#region IDisposable Member
 		public virtual void Dispose()
 		{
-			if (Icon != null)
-			{
-				Icon.Dispose();
-			}
+			Icon?.Dispose();
 
 			Icon = null;
 			Name = null;

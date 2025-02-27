@@ -204,10 +204,7 @@ namespace SimPe
 		public void ClearSection(string section)
 		{
 			SectionContent kl = Section(section, false);
-			if (kl != null)
-			{
-				kl.Clear();
-			}
+			kl?.Clear();
 		}
 
 		public Sectionlist.KeyCollection Sections => reg.Keys;
@@ -386,10 +383,7 @@ namespace SimPe
 		public void SetValue(string section, string key, string value, bool create)
 		{
 			SectionContent kl = Section(section, true);
-			if (kl != null)
-			{
-				kl.SetValue(key, value, create);
-			}
+			kl?.SetValue(key, value, create);
 		}
 		#endregion
 

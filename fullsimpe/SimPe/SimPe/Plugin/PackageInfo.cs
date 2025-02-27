@@ -131,10 +131,7 @@ namespace SimPe.Plugin
 		public override void CommitChanges()
 		{
 			base.CommitChanges();
-			if (stringList != null)
-			{
-				stringList.SynchronizeUserData();
-			}
+			stringList?.SynchronizeUserData();
 		}
 
 		private uint GetPackageHash()

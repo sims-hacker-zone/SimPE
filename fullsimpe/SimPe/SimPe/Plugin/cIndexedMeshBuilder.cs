@@ -539,10 +539,7 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			if (tGenericRcol != null)
-			{
-				tGenericRcol.Dispose();
-			}
+			tGenericRcol?.Dispose();
 
 			tGenericRcol = null;
 		}

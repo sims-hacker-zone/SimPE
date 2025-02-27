@@ -200,10 +200,7 @@ namespace SimPe
 			{
 				if (mystack.Count == 0)
 				{
-					if (bar != null)
-					{
-						bar.Stop();
-					}
+					bar?.Stop();
 
 					return;
 				}
@@ -212,19 +209,13 @@ namespace SimPe
 
 				if (mystack.Count == 0)
 				{
-					if (bar != null)
-					{
-						bar.Stop();
-					}
+					bar?.Stop();
 				}
 			}
 
 			if (force)
 			{
-				if (bar != null)
-				{
-					bar.Stop();
-				}
+				bar?.Stop();
 			}
 
 			ReloadSession(sd);

@@ -517,10 +517,7 @@ namespace SimPe.Interfaces.Plugin
 
 		public void RefreshUI()
 		{
-			if (UIHandler != null)
-			{
-				UIHandler.UpdateGUI((IFileWrapper)this);
-			}
+			UIHandler?.UpdateGUI((IFileWrapper)this);
 		}
 
 		public void Refresh()
@@ -736,15 +733,9 @@ namespace SimPe.Interfaces.Plugin
 		#region IDisposable Member
 		public virtual void Dispose()
 		{
-			if (wrapperinfo != null)
-			{
-				wrapperinfo.Dispose();
-			}
+			wrapperinfo?.Dispose();
 
-			if (ui != null)
-			{
-				ui.Dispose();
-			}
+			ui?.Dispose();
 
 			ui = null;
 			package = null;

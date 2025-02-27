@@ -68,10 +68,7 @@ namespace SimPe.Plugin.Downloads
 
 		public void Dispose()
 		{
-			if (list != null)
-			{
-				list.Clear();
-			}
+			list?.Clear();
 
 			list = null;
 		}

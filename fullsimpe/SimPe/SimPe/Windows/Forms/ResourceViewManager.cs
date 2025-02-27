@@ -28,16 +28,10 @@ namespace SimPe.Windows.Forms
 			{
 				if (lv != value)
 				{
-					if (lv != null)
-					{
-						lv.SetManager(null);
-					}
+					lv?.SetManager(null);
 
 					lv = value;
-					if (lv != null)
-					{
-						lv.SetManager(this);
-					}
+					lv?.SetManager(this);
 				}
 			}
 		}
@@ -50,16 +44,10 @@ namespace SimPe.Windows.Forms
 			{
 				if (tv != value)
 				{
-					if (tv != null)
-					{
-						tv.SetManager(null);
-					}
+					tv?.SetManager(null);
 
 					tv = value;
-					if (tv != null)
-					{
-						tv.SetManager(this);
-					}
+					tv?.SetManager(this);
 				}
 			}
 		}
@@ -94,10 +82,7 @@ namespace SimPe.Windows.Forms
 		{
 			lock (maps)
 			{
-				if (lv != null)
-				{
-					lv.BeginUpdate();
-				}
+				lv?.BeginUpdate();
 
 				if (oldpkg != null)
 				{
@@ -158,10 +143,7 @@ namespace SimPe.Windows.Forms
 					newpkg.SavedIndex += new EventHandler(newpkg_SavedIndex);
 				}
 
-				if (lv != null)
-				{
-					lv.EndUpdate();
-				}
+				lv?.EndUpdate();
 			}
 		}
 
@@ -178,10 +160,7 @@ namespace SimPe.Windows.Forms
 
 				AddResourceToMaps(npfd);
 			}
-			if (tv != null)
-			{
-				tv.SetResourceMaps(maps, false, false);
-			}
+			tv?.SetResourceMaps(maps, false, false);
 			//lv.EndUpdate(false);
 		}
 
@@ -217,14 +196,11 @@ namespace SimPe.Windows.Forms
 					lv.SetResources(maps.Everything);
 				}
 			}
-			if (tv != null)
-			{
-				tv.SetResourceMaps(
+			tv?.SetResourceMaps(
 					maps,
 					lettreeviewselect,
 					Helper.IsNeighborhoodFile(filonam)
 				);
-			}
 			// if (tv != null) tv.SetResourceMaps(maps, lettreeviewselect, donotselect);
 			isbigneighbourhood = donotselect;
 		}
@@ -242,10 +218,7 @@ namespace SimPe.Windows.Forms
 		void newpkg_RemovedResource(object sender, EventArgs e)
 		{
 			//OnChangedPackage(pkg, pkg);
-			if (lv != null)
-			{
-				lv.Refresh();
-			}
+			lv?.Refresh();
 		}
 
 		void newpkg_AddedResource(object sender, EventArgs e)
@@ -325,31 +298,19 @@ namespace SimPe.Windows.Forms
 
 		public void CancelThreads()
 		{
-			if (lv != null)
-			{
-				lv.CancelThreads();
-			}
+			lv?.CancelThreads();
 		}
 
 		public void StoreLayout()
 		{
-			if (lv != null)
-			{
-				lv.StoreLayout();
-			}
+			lv?.StoreLayout();
 		}
 
 		public void RestoreLayout()
 		{
-			if (lv != null)
-			{
-				lv.RestoreLayout();
-			}
+			lv?.RestoreLayout();
 
-			if (tv != null)
-			{
-				tv.RestoreLayout();
-			}
+			tv?.RestoreLayout();
 		}
 
 		public bool SelectResource(

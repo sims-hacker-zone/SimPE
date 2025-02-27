@@ -180,10 +180,7 @@ namespace SimPe.Windows.Forms
 			{
 				if (manager != null)
 				{
-					if (manager.ListView != null)
-					{
-						manager.ListView.SetResources(node.Resources);
-					}
+					manager.ListView?.SetResources(node.Resources);
 				}
 			}
 		}

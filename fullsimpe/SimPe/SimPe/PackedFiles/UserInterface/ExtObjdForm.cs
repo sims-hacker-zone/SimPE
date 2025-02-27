@@ -295,10 +295,7 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			if (disposing)
 			{
-				if (components != null)
-				{
-					components.Dispose();
-				}
+				components?.Dispose();
 			}
 			base.Dispose(disposing);
 
@@ -410,7 +407,7 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				Ambertation.PropertyDescription pf =
 					ExtObjd.PropertyParser.GetDescriptor((ushort)i);
-				name = pf == null ? null : pf.Description;
+				name = pf?.Description;
 			}
 			else
 			{

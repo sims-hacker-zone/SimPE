@@ -233,10 +233,7 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			if (tDirectionalLight != null)
-			{
-				tDirectionalLight.Dispose();
-			}
+			tDirectionalLight?.Dispose();
 
 			tDirectionalLight = null;
 		}

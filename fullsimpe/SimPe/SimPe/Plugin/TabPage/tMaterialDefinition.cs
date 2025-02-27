@@ -61,10 +61,7 @@ namespace SimPe.Plugin.TabPage
 			if (disposing)
 			{
 				Tag = null;
-				if (components != null)
-				{
-					components.Dispose();
-				}
+				components?.Dispose();
 			}
 			base.Dispose(disposing);
 		}

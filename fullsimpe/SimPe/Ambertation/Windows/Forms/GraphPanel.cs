@@ -80,10 +80,7 @@ namespace Ambertation.Windows.Forms
 		{
 			if (disposing)
 			{
-				if (components != null)
-				{
-					components.Dispose();
-				}
+				components?.Dispose();
 
 				if (Items != null)
 				{

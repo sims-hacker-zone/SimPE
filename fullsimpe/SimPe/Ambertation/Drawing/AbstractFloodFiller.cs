@@ -181,10 +181,7 @@ namespace Ambertation.Drawing
 
 		protected void OnFillFinished(FillFinishedEventArgs args)
 		{
-			if (FillFinished != null)
-			{
-				FillFinished.BeginInvoke(this, args, null, null);
-			}
+			FillFinished?.BeginInvoke(this, args, null, null);
 		}
 	}
 

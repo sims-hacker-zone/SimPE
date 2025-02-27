@@ -198,16 +198,10 @@ namespace SimPe
 				return;
 			}
 
-			if (lasteventarg.LoadedPackage != null)
-			{
-				lasteventarg.LoadedPackage.PauseIndexChangedEvents();
-			}
+			lasteventarg.LoadedPackage?.PauseIndexChangedEvents();
 
 			ToolPlus.Execute(sender, lasteventarg);
-			if (lasteventarg.LoadedPackage != null)
-			{
-				lasteventarg.LoadedPackage.RestartIndexChangedEvents();
-			}
+			lasteventarg.LoadedPackage?.RestartIndexChangedEvents();
 		}
 		#endregion
 

@@ -134,10 +134,7 @@ namespace SimPe.Windows.Forms
 					ThemeManager.Dispose();
 				}
 				ThemeManager = null;
-				if (components != null)
-				{
-					components.Dispose();
-				}
+				components?.Dispose();
 			}
 			base.Dispose(disposing);
 		}

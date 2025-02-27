@@ -39,10 +39,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			{
 				tm.RemoveControl(xpGradientPanel1);
 				tm = null;
-				if (components != null)
-				{
-					components.Dispose();
-				}
+				components?.Dispose();
 			}
 			base.Dispose(disposing);
 		}

@@ -125,10 +125,7 @@ namespace SimPe.Plugin.Collections
 
 		public void Dispose()
 		{
-			if (list != null)
-			{
-				list.Clear();
-			}
+			list?.Clear();
 
 			list = null;
 		}

@@ -72,10 +72,7 @@ namespace SimPe.PackedFiles.Wrapper
 					.ChangedPackage -= new EventHandler(
 					SimDescriptionProvider_ChangedPackage
 				);
-				if (components != null)
-				{
-					components.Dispose();
-				}
+				components?.Dispose();
 			}
 			base.Dispose(disposing);
 		}

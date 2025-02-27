@@ -240,10 +240,7 @@ namespace Ambertation.Windows.Forms.Graph
 				if (lg == sender)
 				{
 					LinkGraphic lc = (LinkGraphic)lcmap[lg];
-					if (lc != null)
-					{
-						lc.SendToFront();
-					}
+					lc?.SendToFront();
 				}
 			}
 		}

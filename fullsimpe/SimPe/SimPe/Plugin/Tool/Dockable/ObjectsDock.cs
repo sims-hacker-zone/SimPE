@@ -186,16 +186,10 @@ namespace SimPe.Plugin.Tool.Dockable
 		{
 			if (disposing)
 			{
-				if (registry != null)
-				{
-					registry.Dispose();
-				}
+				registry?.Dispose();
 
 				registry = null;
-				if (components != null)
-				{
-					components.Dispose();
-				}
+				components?.Dispose();
 			}
 			base.Dispose(disposing);
 		}

@@ -546,25 +546,16 @@ namespace pjse
 				}
 
 				Hashtable byType = (Hashtable)pfByType[T];
-				if (byType != null)
-				{
-					byType.Remove(key);
-				}
+				byType?.Remove(key);
 
 				Hashtable byGroup = (Hashtable)pfByGroup[G];
-				if (byGroup != null)
-				{
-					byGroup.Remove(key);
-				}
+				byGroup?.Remove(key);
 
 				Hashtable tgt = (Hashtable)pfByTypeGroup[T];
 				if (tgt != null)
 				{
 					Hashtable byTypeGroup = (Hashtable)tgt[G];
-					if (byTypeGroup != null)
-					{
-						byTypeGroup.Remove(key);
-					}
+					byTypeGroup?.Remove(key);
 				}
 
 				Hashtable tgit = (Hashtable)pfByTypeGroupInstance[T];
@@ -574,10 +565,7 @@ namespace pjse
 					if (tgitg != null)
 					{
 						Hashtable byTypeGroupInstance = (Hashtable)tgitg[I];
-						if (byTypeGroupInstance != null)
-						{
-							byTypeGroupInstance.Remove(key);
-						}
+						byTypeGroupInstance?.Remove(key);
 					}
 				}
 			}
@@ -661,10 +649,7 @@ namespace pjse
 				{
 					AbstractWrapper wrapper = (AbstractWrapper)
 						SimPe.FileTableBase.WrapperRegistry.FindHandler(Type);
-					if (wrapper != null)
-					{
-						wrapper.ProcessData(PFD, Package);
-					}
+					wrapper?.ProcessData(PFD, Package);
 
 					return wrapper;
 				}

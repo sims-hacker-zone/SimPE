@@ -807,10 +807,7 @@ namespace SimPe.PackedFiles.Wrapper
 				if (array[index] != value)
 				{
 					array[index] = value;
-					if (parent != null)
-					{
-						parent.Parent.OnWrapperChanged(parent, new EventArgs());
-					}
+					parent?.Parent.OnWrapperChanged(parent, new EventArgs());
 				}
 			}
 		}

@@ -200,10 +200,7 @@ namespace SimPe.Providers
 			{
 				Image = null;
 				Name = null;
-				if (Tags != null)
-				{
-					Tags.Clear();
-				}
+				Tags?.Clear();
 
 				Tags = null;
 				LtxtFileIndexItem = null;

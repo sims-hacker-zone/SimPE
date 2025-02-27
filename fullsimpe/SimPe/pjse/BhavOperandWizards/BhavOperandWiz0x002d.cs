@@ -63,10 +63,7 @@ namespace pjse.BhavOperandWizards.Wiz0x002d
 		{
 			if (disposing)
 			{
-				if (components != null)
-				{
-					components.Dispose();
-				}
+				components?.Dispose();
 			}
 			base.Dispose(disposing);
 

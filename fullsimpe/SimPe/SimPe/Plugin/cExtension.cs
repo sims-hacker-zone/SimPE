@@ -551,10 +551,7 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			if (form != null)
-			{
-				form.Dispose();
-			}
+			form?.Dispose();
 
 			form = null;
 		}

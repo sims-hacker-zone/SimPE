@@ -87,10 +87,7 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			if (disposing)
 			{
-				if (components != null)
-				{
-					components.Dispose();
-				}
+				components?.Dispose();
 			}
 			base.Dispose(disposing);
 			if (setHandler && wrapper != null)
@@ -173,7 +170,7 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			index = -1;
 			trcnres = (Trcn)(
-				wrapper == null ? null : wrapper.SiblingResource(Trcn.Trcntype)
+				wrapper?.SiblingResource(Trcn.Trcntype)
 			);
 
 			lvConstants.Items.Clear();

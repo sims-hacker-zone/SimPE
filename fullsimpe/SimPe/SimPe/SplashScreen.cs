@@ -111,19 +111,13 @@ namespace SimPe
 
 		public void Stop()
 		{
-			if (frm != null)
-			{
-				frm.StopSplash();
-			}
+			frm?.StopSplash();
 		}
 
 		public void ShutDown()
 		{
 			Stop();
-			if (t != null)
-			{
-				t.Join();
-			}
+			t?.Join();
 		}
 	}
 }

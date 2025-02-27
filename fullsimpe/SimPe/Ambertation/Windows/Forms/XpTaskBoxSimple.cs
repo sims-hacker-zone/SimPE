@@ -152,10 +152,7 @@ namespace Ambertation.Windows.Forms
 		{
 			if (disposing && (components != null))
 			{
-				if (canvas != null)
-				{
-					canvas.Dispose();
-				}
+				canvas?.Dispose();
 
 				canvas = null;
 				components.Dispose();
@@ -217,10 +214,7 @@ namespace Ambertation.Windows.Forms
 
 		protected void RebuildCanvas()
 		{
-			if (canvas != null)
-			{
-				canvas.Dispose();
-			}
+			canvas?.Dispose();
 
 			if (Width <= 7 || Height <= headerh + 21)
 			{

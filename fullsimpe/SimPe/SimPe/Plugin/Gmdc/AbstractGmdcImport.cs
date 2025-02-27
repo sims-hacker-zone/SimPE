@@ -451,10 +451,7 @@ namespace SimPe.Plugin.Gmdc
 								tn.GetFirstParent();
 							if (icc != null)
 							{
-								if (icc.StoredTransformNode != null)
-								{
-									icc.StoredTransformNode.RemoveChild(tn.Index);
-								}
+								icc.StoredTransformNode?.RemoveChild(tn.Index);
 							}
 
 							//second, add this Joint to it's new Parent (if one is available)
@@ -463,10 +460,7 @@ namespace SimPe.Plugin.Gmdc
 								TransformNode np = b.GetParentFrom(
 									bns
 								).Bone.AssignedTransformNode;
-								if (np != null)
-								{
-									np.AddChild(tn.Index);
-								}
+								np?.AddChild(tn.Index);
 							}
 						}
 					}

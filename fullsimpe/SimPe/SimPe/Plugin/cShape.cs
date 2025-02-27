@@ -514,38 +514,23 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			if (tObjectGraphNode != null)
-			{
-				tObjectGraphNode.Dispose();
-			}
+			tObjectGraphNode?.Dispose();
 
 			tObjectGraphNode = null;
 
-			if (tGenericRcol != null)
-			{
-				tGenericRcol.Dispose();
-			}
+			tGenericRcol?.Dispose();
 
 			tGenericRcol = null;
 
-			if (tShpeLod != null)
-			{
-				tShpeLod.Dispose();
-			}
+			tShpeLod?.Dispose();
 
 			tShpeLod = null;
 
-			if (tShpeItems != null)
-			{
-				tShpeItems.Dispose();
-			}
+			tShpeItems?.Dispose();
 
 			tShpeItems = null;
 
-			if (tShpeParts != null)
-			{
-				tShpeParts.Dispose();
-			}
+			tShpeParts?.Dispose();
 
 			tShpeParts = null;
 		}

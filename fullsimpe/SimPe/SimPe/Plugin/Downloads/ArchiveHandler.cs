@@ -135,10 +135,7 @@ namespace SimPe.Plugin.Downloads
 
 		public void Dispose()
 		{
-			if (Nfos != null)
-			{
-				Nfos.Clear();
-			}
+			Nfos?.Clear();
 
 			Nfos = null;
 			ArchiveName = null;

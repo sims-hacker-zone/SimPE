@@ -369,10 +369,7 @@ namespace SimPe.Plugin
 		public void Dispose()
 		{
 			data = new byte[0];
-			if (img != null)
-			{
-				img.Dispose();
-			}
+			img?.Dispose();
 
 			img = null;
 		}

@@ -251,10 +251,7 @@ namespace SimPe.Plugin
 		{
 			if (disposing)
 			{
-				if (components != null)
-				{
-					components.Dispose();
-				}
+				components?.Dispose();
 			}
 			base.Dispose(disposing);
 		}
@@ -3771,10 +3768,7 @@ namespace SimPe.Plugin
 			try
 			{
 				GeometryDataContainerExt gmdcext = new GeometryDataContainerExt(gmdc);
-				if (scenesel.Scene != null)
-				{
-					scenesel.Scene.Dispose();
-				}
+				scenesel.Scene?.Dispose();
 
 				scenesel.Scene = gmdcext.GetScene(
 					GetModelsExt(),

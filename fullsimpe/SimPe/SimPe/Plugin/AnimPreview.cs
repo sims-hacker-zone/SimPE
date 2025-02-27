@@ -63,10 +63,7 @@ namespace SimPe.Plugin
 		{
 			if (disposing)
 			{
-				if (components != null)
-				{
-					components.Dispose();
-				}
+				components?.Dispose();
 			}
 			base.Dispose(disposing);
 		}
@@ -336,10 +333,7 @@ namespace SimPe.Plugin
 			ResourceNode rn = (ResourceNode)
 				lmb.CRES.Blocks[0];
 
-			if (root != null)
-			{
-				root.Dispose();
-			}
+			root?.Dispose();
 
 			root = new Ambertation.Graphics.MeshList();
 

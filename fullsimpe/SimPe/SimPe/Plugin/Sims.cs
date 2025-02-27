@@ -83,16 +83,10 @@ namespace SimPe.Plugin
 		{
 			if (disposing)
 			{
-				if (reg != null)
-				{
-					reg.Dispose();
-				}
+				reg?.Dispose();
 
 				reg = null;
-				if (components != null)
-				{
-					components.Dispose();
-				}
+				components?.Dispose();
 			}
 			base.Dispose(disposing);
 		}

@@ -98,10 +98,7 @@ namespace SimPe.Plugin
 			if (disposing)
 			{
 				ClearControlTags();
-				if (components != null)
-				{
-					components.Dispose();
-				}
+				components?.Dispose();
 			}
 			base.Dispose(disposing);
 		}

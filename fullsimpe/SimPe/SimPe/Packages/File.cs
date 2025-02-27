@@ -375,10 +375,7 @@ namespace SimPe.Packages
 				StreamItem si = StreamFactory.FindStreamItem(
 					(FileStream)reader.BaseStream
 				);
-				if (si != null)
-				{
-					si.Close();
-				}
+				si?.Close();
 
 				reader = null;
 			}
@@ -1331,10 +1328,7 @@ namespace SimPe.Packages
 		/// <param name="total">true, if the FileDescriptors should be marked invalid</param>
 		public void Close(bool total)
 		{
-			if (Reader != null)
-			{
-				Reader.Close();
-			}
+			Reader?.Close();
 
 			if (total)
 			{
@@ -1342,10 +1336,7 @@ namespace SimPe.Packages
 				{
 					foreach (IPackedFileDescriptor pfd in Index)
 					{
-						if (pfd != null)
-						{
-							pfd.MarkInvalid();
-						}
+						pfd?.MarkInvalid();
 					}
 				}
 			}
@@ -1569,10 +1560,7 @@ namespace SimPe.Packages
 			{
 				foreach (IPackedFileDescriptor pfd in Index)
 				{
-					if (pfd != null)
-					{
-						pfd.BeginUpdate();
-					}
+					pfd?.BeginUpdate();
 				}
 			}
 		}

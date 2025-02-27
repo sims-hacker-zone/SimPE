@@ -205,10 +205,7 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			if (tObjectGraphNode != null)
-			{
-				tObjectGraphNode.Dispose();
-			}
+			tObjectGraphNode?.Dispose();
 
 			tObjectGraphNode = null;
 		}

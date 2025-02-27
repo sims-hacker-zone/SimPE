@@ -640,25 +640,13 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			if (tMaterialDefinition != null)
-			{
-				tMaterialDefinition.Dispose();
-			}
+			tMaterialDefinition?.Dispose();
 
-			if (tMaterialDefinitionProperties != null)
-			{
-				tMaterialDefinitionProperties.Dispose();
-			}
+			tMaterialDefinitionProperties?.Dispose();
 
-			if (tMaterialDefinitionCat != null)
-			{
-				tMaterialDefinitionCat.Dispose();
-			}
+			tMaterialDefinitionCat?.Dispose();
 
-			if (tMaterialDefinitionFiles != null)
-			{
-				tMaterialDefinitionFiles.Dispose();
-			}
+			tMaterialDefinitionFiles?.Dispose();
 
 			tMaterialDefinitionFiles = null;
 			tMaterialDefinitionCat = null;

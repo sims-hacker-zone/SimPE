@@ -49,10 +49,7 @@ namespace SimPe.Plugin
 		{
 			if (disposing)
 			{
-				if (components != null)
-				{
-					components.Dispose();
-				}
+				components?.Dispose();
 			}
 			base.Dispose(disposing);
 		}
@@ -706,10 +703,7 @@ namespace SimPe.Plugin
 
 		protected void UpdateNgbhItemsListView()
 		{
-			if (nilv != null)
-			{
-				nilv.UpdateSelected(item);
-			}
+			nilv?.UpdateSelected(item);
 		}
 
 		protected void FireChangeEvent()

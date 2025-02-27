@@ -443,7 +443,7 @@ namespace pjse
 		)
 		{
 			Str str = new Str(parent, group, instance);
-			return str == null ? null : str[lid, sid];
+			return str?[lid, sid];
 		}
 
 		#region IDisposable Members

@@ -127,10 +127,7 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			if (disposing)
 			{
-				if (components != null)
-				{
-					components.Dispose();
-				}
+				components?.Dispose();
 			}
 			base.Dispose(disposing);
 		}

@@ -129,20 +129,11 @@ namespace SimPe
 		/// </summary>
 		public void Flush()
 		{
-			if (Layout != null)
-			{
-				Layout.Flush();
-			}
+			Layout?.Flush();
 
-			if (reg != null)
-			{
-				reg.Flush();
-			}
+			reg?.Flush();
 
-			if (mru != null)
-			{
-				mru.Flush();
-			}
+			mru?.Flush();
 		}
 
 		/// <summary>

@@ -414,10 +414,7 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			if (tTransformNode != null)
-			{
-				tTransformNode.Dispose();
-			}
+			tTransformNode?.Dispose();
 
 			tTransformNode = null;
 			CompositionTreeNode = null;

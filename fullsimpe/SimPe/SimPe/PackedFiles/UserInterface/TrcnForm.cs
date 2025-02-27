@@ -123,10 +123,7 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			if (disposing)
 			{
-				if (components != null)
-				{
-					components.Dispose();
-				}
+				components?.Dispose();
 			}
 			base.Dispose(disposing);
 			if (setHandler && wrapper != null)
@@ -320,14 +317,11 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void updateLists()
 		{
-			if (wrapper != null)
-			{
-				wrapper.CleanUp();
-			}
+			wrapper?.CleanUp();
 
 			index = -1;
 			bconres = (Bcon)(
-				wrapper == null ? null : wrapper.SiblingResource(Bcon.Bcontype)
+				wrapper?.SiblingResource(Bcon.Bcontype)
 			);
 
 			lvTrcnItem.Items.Clear();

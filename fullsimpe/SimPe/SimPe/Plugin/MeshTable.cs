@@ -39,10 +39,7 @@ namespace SimPe.Plugin
 		public MeshTable(System.ComponentModel.IContainer container)
 			: this()
 		{
-			if (container != null)
-			{
-				container.Add(this);
-			}
+			container?.Add(this);
 		}
 
 		public IPackageFile LoadMesh(string filePath)

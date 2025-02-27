@@ -66,10 +66,7 @@ namespace SimPe.Plugin.TabPage
 			{
 				ClearCresTv();
 				Tag = null;
-				if (components != null)
-				{
-					components.Dispose();
-				}
+				components?.Dispose();
 			}
 			base.Dispose(disposing);
 		}

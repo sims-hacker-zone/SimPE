@@ -470,10 +470,7 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				for (int i = Items.Length - 1; i >= 0; i--)
 				{
-					if (Items[i] != null)
-					{
-						Items[i].Dispose();
-					}
+					Items[i]?.Dispose();
 				}
 			}
 

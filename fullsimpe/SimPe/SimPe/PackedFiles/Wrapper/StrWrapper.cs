@@ -525,10 +525,7 @@ namespace SimPe.PackedFiles.Wrapper
 				if (lid != value)
 				{
 					lid = value;
-					if (parent != null)
-					{
-						parent.OnWrapperChanged(this, new EventArgs());
-					}
+					parent?.OnWrapperChanged(this, new EventArgs());
 				}
 			}
 		}
@@ -541,10 +538,7 @@ namespace SimPe.PackedFiles.Wrapper
 				if (title != value)
 				{
 					title = value;
-					if (parent != null)
-					{
-						parent.OnWrapperChanged(this, new EventArgs());
-					}
+					parent?.OnWrapperChanged(this, new EventArgs());
 				}
 			}
 		}
@@ -557,10 +551,7 @@ namespace SimPe.PackedFiles.Wrapper
 				if (desc != value)
 				{
 					desc = value;
-					if (parent != null)
-					{
-						parent.OnWrapperChanged(this, new EventArgs());
-					}
+					parent?.OnWrapperChanged(this, new EventArgs());
 				}
 			}
 		}

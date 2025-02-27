@@ -185,10 +185,7 @@ namespace SimPe.Plugin
 				//gi.EndUpdate();
 				gi = (GraphItem)names[name];
 
-				if (parent != null)
-				{
-					parent.ChildItems.Add(gi);
-				}
+				parent?.ChildItems.Add(gi);
 			}
 			else
 			{
@@ -286,10 +283,7 @@ else
 					}
 				}
 
-				if (parent != null)
-				{
-					parent.ChildItems.Add(gi);
-				}
+				parent?.ChildItems.Add(gi);
 			}
 
 			//gi.EndUpdate();

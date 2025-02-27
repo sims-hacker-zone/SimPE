@@ -40,10 +40,7 @@ namespace SimPe.Plugin.Tool.Window
 		{
 			if (disposing)
 			{
-				if (components != null)
-				{
-					components.Dispose();
-				}
+				components?.Dispose();
 			}
 			base.Dispose(disposing);
 		}

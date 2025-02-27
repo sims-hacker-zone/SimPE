@@ -75,10 +75,7 @@ namespace SimPe
 		/// </summary>
 		public void Flush()
 		{
-			if (reg != null)
-			{
-				reg.Flush();
-			}
+			reg?.Flush();
 		}
 
 		#endregion

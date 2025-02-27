@@ -594,10 +594,7 @@ namespace SimPe.Plugin.Anim
 
 		public override void Dispose()
 		{
-			if (form != null)
-			{
-				form.Dispose();
-			}
+			form?.Dispose();
 		}
 
 		#endregion
