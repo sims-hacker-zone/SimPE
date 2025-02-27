@@ -48,7 +48,7 @@
 namespace Classless.Hasher
 {
 	/// <summary>An abstract class that represents the parameters necessary to initialize a hashing algorithm.</summary>
-	abstract public class HashAlgorithmParameters
+	public abstract class HashAlgorithmParameters
 	{
 	}
 }

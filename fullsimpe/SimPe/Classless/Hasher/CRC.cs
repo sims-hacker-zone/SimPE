@@ -89,7 +89,7 @@ namespace Classless.Hasher
 		}
 
 		/// <summary>Build the CRC lookup table for a given polynomial.</summary>
-		static private void BuildLookup(CRCParameters param)
+		private static void BuildLookup(CRCParameters param)
 		{
 			if (lookupTables.Contains(param))
 			{
@@ -138,7 +138,7 @@ namespace Classless.Hasher
 		}
 
 		/// <summary>Initializes the algorithm.</summary>
-		override public void Initialize()
+		public override void Initialize()
 		{
 			lock (this)
 			{
@@ -155,7 +155,7 @@ namespace Classless.Hasher
 		/// <param name="array">The array containing the data.</param>
 		/// <param name="ibStart">The position in the array to begin reading from.</param>
 		/// <param name="cbSize">How many bytes in the array to read.</param>
-		override protected void HashCore(byte[] array, int ibStart, int cbSize)
+		protected override void HashCore(byte[] array, int ibStart, int cbSize)
 		{
 			lock (this)
 			{
@@ -181,7 +181,7 @@ namespace Classless.Hasher
 
 		/// <summary>Performs any final activities required by the hash algorithm.</summary>
 		/// <returns>The final hash value.</returns>
-		override protected byte[] HashFinal()
+		protected override byte[] HashFinal()
 		{
 			lock (this)
 			{
@@ -211,7 +211,7 @@ namespace Classless.Hasher
 		/// <param name="data">The value to reflect.</param>
 		/// <param name="numBits">The number of bits to reflect.</param>
 		/// <returns>The reflected value.</returns>
-		static private long Reflect(long data, int numBits)
+		private static long Reflect(long data, int numBits)
 		{
 			long temp = data;
 
