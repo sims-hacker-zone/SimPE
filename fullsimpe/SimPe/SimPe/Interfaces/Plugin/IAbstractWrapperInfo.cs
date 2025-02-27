@@ -41,11 +41,11 @@ namespace SimPe.Interfaces.Plugin
 			System.Drawing.Image icon
 		)
 		{
-			this.Name = name;
-			this.Author = author;
-			this.Description = description;
-			this.Version = version;
-			this.Icon = icon;
+			Name = name;
+			Author = author;
+			Description = description;
+			Version = version;
+			Icon = icon;
 
 			IconIndex = -1;
 		}
@@ -174,14 +174,14 @@ namespace SimPe.Interfaces.Plugin
 		#region IDisposable Member
 		public virtual void Dispose()
 		{
-			if (this.Icon != null)
+			if (Icon != null)
 			{
 				Icon.Dispose();
 			}
 
-			this.Icon = null;
-			this.Name = null;
-			this.Author = null;
+			Icon = null;
+			Name = null;
+			Author = null;
 		}
 		#endregion
 	}

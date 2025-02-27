@@ -60,7 +60,7 @@ namespace SimPe.Events
 		/// <param name="lp"></param>
 		public ResourceEventArgs(LoadedPackage lp)
 		{
-			this.LoadedPackage = lp;
+			LoadedPackage = lp;
 			Items = new ResourceContainers();
 		}
 
@@ -179,7 +179,7 @@ namespace SimPe.Events
 		{
 			get
 			{
-				if (this.LoadedPackage == null)
+				if (LoadedPackage == null)
 				{
 					return false;
 				}
@@ -266,7 +266,7 @@ namespace SimPe.Events
 			Interfaces.Scenegraph.IScenegraphFileIndexItem item
 		)
 		{
-			this.Resource = item;
+			Resource = item;
 			ChangedFile = false;
 			ChangedPackage = false;
 		}
@@ -297,12 +297,12 @@ namespace SimPe.Events
 
 		public override int GetHashCode()
 		{
-			if (this.Resource == null)
+			if (Resource == null)
 			{
 				return base.GetHashCode();
 			}
 
-			return this.Resource.GetHashCode();
+			return Resource.GetHashCode();
 		}
 
 		public override bool Equals(object obj)
@@ -321,14 +321,14 @@ namespace SimPe.Events
 
 			if (e.Resource == null)
 			{
-				return (this.Resource == null);
+				return (Resource == null);
 			}
-			else if (this.Resource == null)
+			else if (Resource == null)
 			{
 				return false;
 			}
 
-			return (e.Resource.Equals(this.Resource));
+			return (e.Resource.Equals(Resource));
 		}
 
 		/// <summary>
@@ -414,7 +414,7 @@ namespace SimPe.Events
 
 		public void Dispose()
 		{
-			this.Resource = null;
+			Resource = null;
 		}
 
 		#endregion
@@ -498,7 +498,7 @@ namespace SimPe.Events
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length => this.Count;
+		public int Length => Count;
 
 		/// <summary>
 		/// Create a clone of this Object
@@ -528,7 +528,7 @@ namespace SimPe.Events
 		public FileNameEventArg(string filename)
 		{
 			Cancel = false;
-			this.FileName = filename;
+			FileName = filename;
 		}
 
 		public string FileName

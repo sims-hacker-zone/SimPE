@@ -145,7 +145,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <returns>null or the First mathcing Element</returns>
 		public GmdcElement FindElementType(ElementIdentity id)
 		{
-			foreach (int i in this.ReferencedElement)
+			foreach (int i in ReferencedElement)
 			{
 				if (parent.Elements[i].Identity == id)
 				{
@@ -171,7 +171,7 @@ namespace SimPe.Plugin.Gmdc
 				return -1;
 			}
 
-			for (int i = 0; i < this.ReferencedElement.Length; i++)
+			for (int i = 0; i < ReferencedElement.Length; i++)
 			{
 				if (parent.Elements[ReferencedElement[i]] == e)
 				{
@@ -194,10 +194,10 @@ namespace SimPe.Plugin.Gmdc
 			try
 			{
 				//if (nr>=this.items1.Length) return null;
-				int enr = this.ReferencedElement[nr];
+				int enr = ReferencedElement[nr];
 
 				//if (enr>=this.parent.Elements.Length) return null;
-				GmdcElement e = this.parent.Elements[enr];
+				GmdcElement e = parent.Elements[enr];
 
 				//Higher Number
 				if (nr >= AliasValues.Length)
@@ -237,9 +237,9 @@ namespace SimPe.Plugin.Gmdc
 		{
 			try
 			{
-				int enr = this.ReferencedElement[nr];
+				int enr = ReferencedElement[nr];
 
-				GmdcElement e = this.parent.Elements[enr];
+				GmdcElement e = parent.Elements[enr];
 
 				//Higher Number
 				if (nr >= AliasValues.Length)
@@ -271,7 +271,7 @@ namespace SimPe.Plugin.Gmdc
 		{
 			int minct = int.MaxValue;
 			//add all populated Element Lists
-			for (int k = 0; k < this.ReferencedElement.Count; k++)
+			for (int k = 0; k < ReferencedElement.Count; k++)
 			{
 				int id = ReferencedElement[k];
 				if (parent.Elements[id].Values.Length > 0)
@@ -309,25 +309,25 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public void Flatten()
 		{
-			GmdcElement vn = new GmdcElement(this.parent);
-			GmdcElement vt = new GmdcElement(this.parent);
+			GmdcElement vn = new GmdcElement(parent);
+			GmdcElement vt = new GmdcElement(parent);
 
-			GmdcElement ovn = this.FindElementType(ElementIdentity.Normal);
-			GmdcElement ovt = this.FindElementType(ElementIdentity.UVCoordinate);
+			GmdcElement ovn = FindElementType(ElementIdentity.Normal);
+			GmdcElement ovt = FindElementType(ElementIdentity.UVCoordinate);
 
 			//contains a List of all additional Elements assigned to this Link, which
 			//are related to the Vertex Element (like BoneWeights)
 			GmdcElements ovelements = new GmdcElements();
 			GmdcElements velements = new GmdcElements();
-			ovelements.Add(this.FindElementType(ElementIdentity.Vertex));
-			velements.Add(new GmdcElement(this.Parent));
+			ovelements.Add(FindElementType(ElementIdentity.Vertex));
+			velements.Add(new GmdcElement(Parent));
 
-			int nv = this.GetElementNr(ovelements[0]);
-			int nvn = this.GetElementNr(ovn);
-			int nvt = this.GetElementNr(ovt);
+			int nv = GetElementNr(ovelements[0]);
+			int nvn = GetElementNr(ovn);
+			int nvt = GetElementNr(ovt);
 
 			//add all other Elements
-			foreach (int i in this.ReferencedElement)
+			foreach (int i in ReferencedElement)
 			{
 				if (
 					ovelements.Contains(parent.Elements[i])
@@ -339,25 +339,25 @@ namespace SimPe.Plugin.Gmdc
 				}
 
 				ovelements.Add(parent.Elements[i]);
-				velements.Add(new GmdcElement(this.Parent));
+				velements.Add(new GmdcElement(Parent));
 			}
 
-			for (int i = 0; i < this.ReferencedSize; i++)
+			for (int i = 0; i < ReferencedSize; i++)
 			{
 				for (int j = 0; j < velements.Length; j++)
 				{
 					velements[j]
-						.Values.Add(ovelements[j].Values[this.GetRealIndex(nv, i)]);
+						.Values.Add(ovelements[j].Values[GetRealIndex(nv, i)]);
 				}
 
 				if (ovn != null)
 				{
-					vn.Values.Add(ovn.Values[this.GetRealIndex(nvn, i)]);
+					vn.Values.Add(ovn.Values[GetRealIndex(nvn, i)]);
 				}
 
 				if (ovt != null)
 				{
-					vt.Values.Add(ovt.Values[this.GetRealIndex(nvt, i)]);
+					vt.Values.Add(ovt.Values[GetRealIndex(nvt, i)]);
 				}
 			}
 
@@ -377,9 +377,9 @@ namespace SimPe.Plugin.Gmdc
 				ovt.Number = ReferencedSize;
 			}
 
-			for (int i = 0; i < this.AliasValues.Length; i++)
+			for (int i = 0; i < AliasValues.Length; i++)
 			{
-				this.AliasValues[i].Clear();
+				AliasValues[i].Clear();
 			}
 		}
 	}
@@ -462,7 +462,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length => this.Count;
+		public int Length => Count;
 
 		/// <summary>
 		/// Create a clone of this Object

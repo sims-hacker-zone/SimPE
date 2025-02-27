@@ -105,7 +105,7 @@ namespace SimPe.Plugin.Scanner
 			if (ps.State != TriState.Null)
 			{
 				ReadyState cs = (ReadyState)ps.Data[0];
-				SetSubItem(lvi, this.StartColum, cs.ToString(), ps);
+				SetSubItem(lvi, StartColum, cs.ToString(), ps);
 			}
 		}
 
@@ -129,7 +129,7 @@ namespace SimPe.Plugin.Scanner
 			foreach (ScannerItem item in items)
 			{
 				PackageState ps = item.PackageCacheItem.FindState(
-					this.Uid,
+					Uid,
 					true
 				);
 				if ((ps.State != TriState.Null) && (ps.Data.Length > 0))
@@ -178,7 +178,7 @@ namespace SimPe.Plugin.Scanner
 					WaitingScreen.UpdateMessage(si.FileName);
 
 					PackageState ps = si.PackageCacheItem.FindState(
-						this.Uid,
+						Uid,
 						true
 					);
 					if (ps.Data.Length < 1)
@@ -214,9 +214,9 @@ namespace SimPe.Plugin.Scanner
 					}
 				}
 
-				if (chg && this.CallbackFinish != null)
+				if (chg && CallbackFinish != null)
 				{
-					this.CallbackFinish(false, false);
+					CallbackFinish(false, false);
 				}
 			}
 			catch (Exception ex)

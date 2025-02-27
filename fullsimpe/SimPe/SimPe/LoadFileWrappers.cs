@@ -63,7 +63,7 @@ namespace SimPe
 			string name = tool.ToString();
 			string[] parts = name.Split("\\".ToCharArray());
 			name = Localization.GetString(parts[parts.Length - 1]);
-			this.Text = name;
+			Text = name;
 
 			Click += new EventHandler(ClickItem);
 			ChangeHandler = chghnd;

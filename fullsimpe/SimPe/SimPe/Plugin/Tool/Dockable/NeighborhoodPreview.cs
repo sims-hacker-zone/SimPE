@@ -80,125 +80,125 @@ namespace SimPe.Plugin.Tool.Dockable
 				new ComponentResourceManager(
 					typeof(NeighborhoodPreview)
 				);
-			this.pb = new PictureBox();
-			this.label1 = new Label();
-			this.label3 = new Label();
-			this.lbName = new Label();
-			this.lbAbout = new Label();
-			this.label2 = new Label();
-			this.lbPop = new Label();
-			this.label4 = new Label();
-			this.lbUni = new Label();
-			this.label5 = new Label();
-			this.lbVer = new Label();
-			this.lbType = new Label();
-			this.label6 = new Label();
-			this.label7 = new Label();
-			this.lbholi = new Label();
-			((ISupportInitialize)(this.pb)).BeginInit();
-			this.SuspendLayout();
+			pb = new PictureBox();
+			label1 = new Label();
+			label3 = new Label();
+			lbName = new Label();
+			lbAbout = new Label();
+			label2 = new Label();
+			lbPop = new Label();
+			label4 = new Label();
+			lbUni = new Label();
+			label5 = new Label();
+			lbVer = new Label();
+			lbType = new Label();
+			label6 = new Label();
+			label7 = new Label();
+			lbholi = new Label();
+			((ISupportInitialize)(pb)).BeginInit();
+			SuspendLayout();
 			//
 			// pb
 			//
-			this.pb.BackColor = Color.Transparent;
-			resources.ApplyResources(this.pb, "pb");
-			this.pb.Name = "pb";
-			this.pb.TabStop = false;
+			pb.BackColor = Color.Transparent;
+			resources.ApplyResources(pb, "pb");
+			pb.Name = "pb";
+			pb.TabStop = false;
 			//
 			// label1
 			//
-			resources.ApplyResources(this.label1, "label1");
-			this.label1.Name = "label1";
+			resources.ApplyResources(label1, "label1");
+			label1.Name = "label1";
 			//
 			// label3
 			//
-			resources.ApplyResources(this.label3, "label3");
-			this.label3.Name = "label3";
+			resources.ApplyResources(label3, "label3");
+			label3.Name = "label3";
 			//
 			// lbName
 			//
-			resources.ApplyResources(this.lbName, "lbName");
-			this.lbName.Name = "lbName";
+			resources.ApplyResources(lbName, "lbName");
+			lbName.Name = "lbName";
 			//
 			// lbAbout
 			//
-			resources.ApplyResources(this.lbAbout, "lbAbout");
-			this.lbAbout.MaximumSize = new Size(800, 0);
-			this.lbAbout.Name = "lbAbout";
+			resources.ApplyResources(lbAbout, "lbAbout");
+			lbAbout.MaximumSize = new Size(800, 0);
+			lbAbout.Name = "lbAbout";
 			//
 			// label2
 			//
-			resources.ApplyResources(this.label2, "label2");
-			this.label2.Name = "label2";
+			resources.ApplyResources(label2, "label2");
+			label2.Name = "label2";
 			//
 			// lbPop
 			//
-			resources.ApplyResources(this.lbPop, "lbPop");
-			this.lbPop.Name = "lbPop";
+			resources.ApplyResources(lbPop, "lbPop");
+			lbPop.Name = "lbPop";
 			//
 			// label4
 			//
-			resources.ApplyResources(this.label4, "label4");
-			this.label4.Name = "label4";
+			resources.ApplyResources(label4, "label4");
+			label4.Name = "label4";
 			//
 			// lbUni
 			//
-			resources.ApplyResources(this.lbUni, "lbUni");
-			this.lbUni.Name = "lbUni";
+			resources.ApplyResources(lbUni, "lbUni");
+			lbUni.Name = "lbUni";
 			//
 			// label5
 			//
-			resources.ApplyResources(this.label5, "label5");
-			this.label5.Name = "label5";
+			resources.ApplyResources(label5, "label5");
+			label5.Name = "label5";
 			//
 			// lbVer
 			//
-			resources.ApplyResources(this.lbVer, "lbVer");
-			this.lbVer.Name = "lbVer";
+			resources.ApplyResources(lbVer, "lbVer");
+			lbVer.Name = "lbVer";
 			//
 			// lbType
 			//
-			resources.ApplyResources(this.lbType, "lbType");
-			this.lbType.Name = "lbType";
+			resources.ApplyResources(lbType, "lbType");
+			lbType.Name = "lbType";
 			//
 			// label6
 			//
-			resources.ApplyResources(this.label6, "label6");
-			this.label6.Name = "label6";
+			resources.ApplyResources(label6, "label6");
+			label6.Name = "label6";
 			//
 			// label7
 			//
-			resources.ApplyResources(this.label7, "label7");
-			this.label7.Name = "label7";
+			resources.ApplyResources(label7, "label7");
+			label7.Name = "label7";
 			//
 			// lbholi
 			//
-			resources.ApplyResources(this.lbholi, "lbholi");
-			this.lbholi.Name = "lbholi";
+			resources.ApplyResources(lbholi, "lbholi");
+			lbholi.Name = "lbholi";
 			//
 			// NeighborhoodPreview
 			//
-			this.BackColor = Color.Transparent;
+			BackColor = Color.Transparent;
 			resources.ApplyResources(this, "$this");
-			this.Controls.Add(this.lbholi);
-			this.Controls.Add(this.label7);
-			this.Controls.Add(this.label6);
-			this.Controls.Add(this.pb);
-			this.Controls.Add(this.lbType);
-			this.Controls.Add(this.lbVer);
-			this.Controls.Add(this.label5);
-			this.Controls.Add(this.lbUni);
-			this.Controls.Add(this.label4);
-			this.Controls.Add(this.lbPop);
-			this.Controls.Add(this.lbAbout);
-			this.Controls.Add(this.lbName);
-			this.Controls.Add(this.label1);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.label3);
-			this.DoubleBuffered = true;
-			this.Name = "NeighborhoodPreview";
-			((ISupportInitialize)(this.pb)).EndInit();
-			this.ResumeLayout(false);
+			Controls.Add(lbholi);
+			Controls.Add(label7);
+			Controls.Add(label6);
+			Controls.Add(pb);
+			Controls.Add(lbType);
+			Controls.Add(lbVer);
+			Controls.Add(label5);
+			Controls.Add(lbUni);
+			Controls.Add(label4);
+			Controls.Add(lbPop);
+			Controls.Add(lbAbout);
+			Controls.Add(lbName);
+			Controls.Add(label1);
+			Controls.Add(label2);
+			Controls.Add(label3);
+			DoubleBuffered = true;
+			Name = "NeighborhoodPreview";
+			((ISupportInitialize)(pb)).EndInit();
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -226,7 +226,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			label5.Visible = Helper.WindowsRegistry.HiddenMode;
 			lbVer.Visible = Helper.WindowsRegistry.HiddenMode;
 
-			if (this.CatalogDescription != null)
+			if (CatalogDescription != null)
 			{
 				ctss.ChangedData -= new Events.PackedFileChanged(
 					ctss_ChangedUserData
@@ -234,18 +234,18 @@ namespace SimPe.Plugin.Tool.Dockable
 				ctss = null;
 			}
 			pb.Image = defimg;
-			this.lbAbout.Text = "";
-			this.lbName.Text = "";
-			this.lbPop.Text = "???";
-			this.lbUni.Text = "???";
-			this.lbholi.Text = "???";
+			lbAbout.Text = "";
+			lbName.Text = "";
+			lbPop.Text = "???";
+			lbUni.Text = "???";
+			lbholi.Text = "???";
 		}
 
 		public void SetFromPackage(Interfaces.Files.IPackageFile pkg)
 		{
 			Loaded = false;
 			ClearScreen();
-			this.Package = pkg;
+			Package = pkg;
 			if (pkg == null)
 			{
 				return;
@@ -265,12 +265,12 @@ namespace SimPe.Plugin.Tool.Dockable
 				{
 					if (strs.Count > 0)
 					{
-						this.lbName.Text = strs[0].Title;
+						lbName.Text = strs[0].Title;
 					}
 
 					if (strs.Count > 1)
 					{
-						this.lbAbout.Text = strs[1].Title;
+						lbAbout.Text = strs[1].Title;
 					}
 				}
 
@@ -302,15 +302,15 @@ namespace SimPe.Plugin.Tool.Dockable
 				{
 					if (idno.Type == NeighborhoodType.Normal)
 					{
-						this.label2.Visible = true;
-						this.lbPop.Visible = true;
+						label2.Visible = true;
+						lbPop.Visible = true;
 						lbPop.Text = pkg.FindFiles(Data.MetaData.SIM_DESCRIPTION_FILE)
 							.Length.ToString();
 					}
 					else
 					{
-						this.label2.Visible = false;
-						this.lbPop.Visible = false;
+						label2.Visible = false;
+						lbPop.Visible = false;
 					}
 
 					if (
@@ -325,10 +325,10 @@ namespace SimPe.Plugin.Tool.Dockable
 						)
 					)
 					{
-						this.label4.Visible = true;
-						this.label7.Visible = true;
-						this.lbUni.Visible = true;
-						this.lbholi.Visible = true;
+						label4.Visible = true;
+						label7.Visible = true;
+						lbUni.Visible = true;
+						lbholi.Visible = true;
 						lbUni.Text = System
 							.IO.Directory.GetFiles(
 								System.IO.Path.GetDirectoryName(pkg.FileName),
@@ -344,10 +344,10 @@ namespace SimPe.Plugin.Tool.Dockable
 					}
 					else
 					{
-						this.label4.Visible = false;
-						this.label7.Visible = false;
-						this.lbUni.Visible = false;
-						this.lbholi.Visible = false;
+						label4.Visible = false;
+						label7.Visible = false;
+						lbUni.Visible = false;
+						lbholi.Visible = false;
 					}
 
 					if (
@@ -355,12 +355,12 @@ namespace SimPe.Plugin.Tool.Dockable
 						&& idno.Subep != Data.MetaData.NeighbourhoodEP.Business
 					)
 					{
-						this.lbType.Text =
+						lbType.Text =
 							"Hidden " + idno.Type.ToString().Replace("_", " ");
 					}
 					else
 					{
-						this.lbType.Text = idno.Type.ToString().Replace("_", " ");
+						lbType.Text = idno.Type.ToString().Replace("_", " ");
 					}
 
 					if (Helper.WindowsRegistry.HiddenMode)
@@ -370,32 +370,32 @@ namespace SimPe.Plugin.Tool.Dockable
 				}
 				else
 				{
-					this.label2.Visible = false;
-					this.label4.Visible = false;
-					this.label7.Visible = false;
-					this.lbPop.Visible = false;
-					this.lbUni.Visible = false;
-					this.lbholi.Visible = false;
+					label2.Visible = false;
+					label4.Visible = false;
+					label7.Visible = false;
+					lbPop.Visible = false;
+					lbUni.Visible = false;
+					lbholi.Visible = false;
 					if (pkg.FileName.Contains("Tutorial"))
 					{
-						this.lbType.Text = "Tutorial Neighbourhood";
-						this.lbVer.Text = "Every EP";
-						this.lbName.Text = "Tutorial";
-						this.lbAbout.Text =
+						lbType.Text = "Tutorial Neighbourhood";
+						lbVer.Text = "Every EP";
+						lbName.Text = "Tutorial";
+						lbAbout.Text =
 							"This neighbourhood is for you to learn with, don't make changes here but in game you may do whatever you like.";
 					}
 					else
 					{
-						this.lbType.Text =
+						lbType.Text =
 							NeighborhoodType.Unknown.ToString();
-						this.lbVer.Text =
+						lbVer.Text =
 							NeighborhoodVersion.Unknown.ToString();
 					}
 				}
 			}
 			catch (Exception ex)
 			{
-				this.lbAbout.Text = ex.Message;
+				lbAbout.Text = ex.Message;
 			}
 		}
 
@@ -428,11 +428,11 @@ namespace SimPe.Plugin.Tool.Dockable
 			Idno idno = Idno.FromPackage(Package);
 			if (idno != null)
 			{
-				this.lbVer.Text = idno.Version.ToString().Replace("_", " ");
+				lbVer.Text = idno.Version.ToString().Replace("_", " ");
 			}
 			else
 			{
-				this.lbVer.Text = NeighborhoodVersion.Unknown.ToString();
+				lbVer.Text = NeighborhoodVersion.Unknown.ToString();
 			}
 		}
 
@@ -464,7 +464,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			Interfaces.Files.IPackedFileDescriptor sender
 		)
 		{
-			SetFromPackage(this.Package);
+			SetFromPackage(Package);
 		}
 	}
 }

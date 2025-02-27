@@ -34,8 +34,8 @@ namespace System.Windows.Forms
 		{
 			InitializeComponent();
 
-			this.tbMessage.Text = text;
-			this.Text = caption;
+			tbMessage.Text = text;
+			Text = caption;
 
 			if (buttonsVisible.Length < 3)
 			{
@@ -104,20 +104,20 @@ namespace System.Windows.Forms
 				button3.DialogResult = DialogResult.None;
 			}
 
-			int x = Convert.ToInt32((this.Width - tlpButtons.Width) / 2);
+			int x = Convert.ToInt32((Width - tlpButtons.Width) / 2);
 			tlpButtons.Left = x;
 
-			this.AcceptButton = this.CancelButton = null;
+			AcceptButton = CancelButton = null;
 			foreach (Button b in new Button[] { button1, button2, button3 })
 			{
 				if (b.DialogResult == DialogResult.OK)
 				{
-					this.AcceptButton = b;
+					AcceptButton = b;
 				}
 
 				if (b.DialogResult == DialogResult.Cancel)
 				{
-					this.CancelButton = b;
+					CancelButton = b;
 				}
 			}
 		}

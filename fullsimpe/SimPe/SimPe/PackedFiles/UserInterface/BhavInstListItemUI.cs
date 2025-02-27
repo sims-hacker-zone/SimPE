@@ -47,18 +47,18 @@ namespace SimPe.PackedFiles.UserInterface
 			InitializeComponent();
 
 			// TODO: Add any initialization after the InitializeComponent call
-			this.Height = rowHeight;
+			Height = rowHeight;
 			MakeUnselected();
 			pjse.FileTable.GFT.FiletableRefresh += new EventHandler(FiletableRefresh);
 
 			if (strTrue == null)
 			{
-				strTrue = this.trueTarget.Text;
+				strTrue = trueTarget.Text;
 			}
 
 			if (strFalse == null)
 			{
-				strFalse = this.falseTarget.Text;
+				strFalse = falseTarget.Text;
 			}
 		}
 
@@ -151,7 +151,7 @@ namespace SimPe.PackedFiles.UserInterface
 					{
 						if (index != -1)
 						{
-							this.WrapperChanged(wrapper[index], null);
+							WrapperChanged(wrapper[index], null);
 						}
 
 						wrapper.WrapperChanged += new EventHandler(WrapperChanged);
@@ -169,7 +169,7 @@ namespace SimPe.PackedFiles.UserInterface
 					index = value;
 					if (wrapper != null && index != -1)
 					{
-						this.WrapperChanged(wrapper[index], null);
+						WrapperChanged(wrapper[index], null);
 					}
 				}
 			}
@@ -177,7 +177,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		public void MakeSelected()
 		{
-			this.BackColor = this.bhavInstListItem.BackColor = System
+			BackColor = bhavInstListItem.BackColor = System
 				.Drawing
 				.Color
 				.LightGray; // .PowderBlue;
@@ -185,7 +185,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		public void MakeUnselected()
 		{
-			this.BackColor = this.bhavInstListItem.BackColor = System
+			BackColor = bhavInstListItem.BackColor = System
 				.Drawing
 				.Color
 				.White;
@@ -278,362 +278,362 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			System.Resources.ResourceManager resources =
 				new System.Resources.ResourceManager(typeof(BhavInstListItemUI));
-			this.instrText = new Label();
-			this.trueTarget = new LinkLabel();
-			this.falseTarget = new LinkLabel();
-			this.bhavInstListItem = new TextBox();
-			this.bhavInstListItem.SuspendLayout();
-			this.SuspendLayout();
+			instrText = new Label();
+			trueTarget = new LinkLabel();
+			falseTarget = new LinkLabel();
+			bhavInstListItem = new TextBox();
+			bhavInstListItem.SuspendLayout();
+			SuspendLayout();
 			//
 			// instrText
 			//
-			this.instrText.AccessibleDescription = resources.GetString(
+			instrText.AccessibleDescription = resources.GetString(
 				"instrText.AccessibleDescription"
 			);
-			this.instrText.AccessibleName = resources.GetString(
+			instrText.AccessibleName = resources.GetString(
 				"instrText.AccessibleName"
 			);
-			this.instrText.Anchor = (
+			instrText.Anchor = (
 				(AnchorStyles)(
 					resources.GetObject("instrText.Anchor")
 				)
 			);
-			this.instrText.AutoSize = (
+			instrText.AutoSize = (
 				(bool)(resources.GetObject("instrText.AutoSize"))
 			);
-			this.instrText.BorderStyle = BorderStyle.FixedSingle;
-			this.instrText.Dock = (
+			instrText.BorderStyle = BorderStyle.FixedSingle;
+			instrText.Dock = (
 				(DockStyle)(resources.GetObject("instrText.Dock"))
 			);
-			this.instrText.Enabled = ((bool)(resources.GetObject("instrText.Enabled")));
-			this.instrText.Font = (
+			instrText.Enabled = ((bool)(resources.GetObject("instrText.Enabled")));
+			instrText.Font = (
 				(System.Drawing.Font)(resources.GetObject("instrText.Font"))
 			);
-			this.instrText.Image = (
+			instrText.Image = (
 				(System.Drawing.Image)(resources.GetObject("instrText.Image"))
 			);
-			this.instrText.ImageAlign = (
+			instrText.ImageAlign = (
 				(System.Drawing.ContentAlignment)(
 					resources.GetObject("instrText.ImageAlign")
 				)
 			);
-			this.instrText.ImageIndex = (
+			instrText.ImageIndex = (
 				(int)(resources.GetObject("instrText.ImageIndex"))
 			);
-			this.instrText.ImeMode = (
+			instrText.ImeMode = (
 				(ImeMode)(resources.GetObject("instrText.ImeMode"))
 			);
-			this.instrText.Location = (
+			instrText.Location = (
 				(System.Drawing.Point)(resources.GetObject("instrText.Location"))
 			);
-			this.instrText.Name = "instrText";
-			this.instrText.RightToLeft = (
+			instrText.Name = "instrText";
+			instrText.RightToLeft = (
 				(RightToLeft)(
 					resources.GetObject("instrText.RightToLeft")
 				)
 			);
-			this.instrText.Size = (
+			instrText.Size = (
 				(System.Drawing.Size)(resources.GetObject("instrText.Size"))
 			);
-			this.instrText.TabIndex = (
+			instrText.TabIndex = (
 				(int)(resources.GetObject("instrText.TabIndex"))
 			);
-			this.instrText.Text = resources.GetString("instrText.Text");
-			this.instrText.TextAlign = (
+			instrText.Text = resources.GetString("instrText.Text");
+			instrText.TextAlign = (
 				(System.Drawing.ContentAlignment)(
 					resources.GetObject("instrText.TextAlign")
 				)
 			);
-			this.instrText.UseMnemonic = false;
-			this.instrText.Visible = ((bool)(resources.GetObject("instrText.Visible")));
-			this.instrText.Click += new EventHandler(this.Control_Click);
+			instrText.UseMnemonic = false;
+			instrText.Visible = ((bool)(resources.GetObject("instrText.Visible")));
+			instrText.Click += new EventHandler(Control_Click);
 			//
 			// trueTarget
 			//
-			this.trueTarget.AccessibleDescription = resources.GetString(
+			trueTarget.AccessibleDescription = resources.GetString(
 				"trueTarget.AccessibleDescription"
 			);
-			this.trueTarget.AccessibleName = resources.GetString(
+			trueTarget.AccessibleName = resources.GetString(
 				"trueTarget.AccessibleName"
 			);
-			this.trueTarget.Anchor = (
+			trueTarget.Anchor = (
 				(AnchorStyles)(
 					resources.GetObject("trueTarget.Anchor")
 				)
 			);
-			this.trueTarget.AutoSize = (
+			trueTarget.AutoSize = (
 				(bool)(resources.GetObject("trueTarget.AutoSize"))
 			);
-			this.trueTarget.Dock = (
+			trueTarget.Dock = (
 				(DockStyle)(resources.GetObject("trueTarget.Dock"))
 			);
-			this.trueTarget.Enabled = (
+			trueTarget.Enabled = (
 				(bool)(resources.GetObject("trueTarget.Enabled"))
 			);
-			this.trueTarget.Font = (
+			trueTarget.Font = (
 				(System.Drawing.Font)(resources.GetObject("trueTarget.Font"))
 			);
-			this.trueTarget.Image = (
+			trueTarget.Image = (
 				(System.Drawing.Image)(resources.GetObject("trueTarget.Image"))
 			);
-			this.trueTarget.ImageAlign = (
+			trueTarget.ImageAlign = (
 				(System.Drawing.ContentAlignment)(
 					resources.GetObject("trueTarget.ImageAlign")
 				)
 			);
-			this.trueTarget.ImageIndex = (
+			trueTarget.ImageIndex = (
 				(int)(resources.GetObject("trueTarget.ImageIndex"))
 			);
-			this.trueTarget.ImeMode = (
+			trueTarget.ImeMode = (
 				(ImeMode)(
 					resources.GetObject("trueTarget.ImeMode")
 				)
 			);
-			this.trueTarget.LinkArea = (
+			trueTarget.LinkArea = (
 				(LinkArea)(
 					resources.GetObject("trueTarget.LinkArea")
 				)
 			);
-			this.trueTarget.Location = (
+			trueTarget.Location = (
 				(System.Drawing.Point)(resources.GetObject("trueTarget.Location"))
 			);
-			this.trueTarget.Name = "trueTarget";
-			this.trueTarget.RightToLeft = (
+			trueTarget.Name = "trueTarget";
+			trueTarget.RightToLeft = (
 				(RightToLeft)(
 					resources.GetObject("trueTarget.RightToLeft")
 				)
 			);
-			this.trueTarget.Size = (
+			trueTarget.Size = (
 				(System.Drawing.Size)(resources.GetObject("trueTarget.Size"))
 			);
-			this.trueTarget.TabIndex = (
+			trueTarget.TabIndex = (
 				(int)(resources.GetObject("trueTarget.TabIndex"))
 			);
-			this.trueTarget.Text = resources.GetString("trueTarget.Text");
-			this.trueTarget.TextAlign = (
+			trueTarget.Text = resources.GetString("trueTarget.Text");
+			trueTarget.TextAlign = (
 				(System.Drawing.ContentAlignment)(
 					resources.GetObject("trueTarget.TextAlign")
 				)
 			);
-			this.trueTarget.Visible = (
+			trueTarget.Visible = (
 				(bool)(resources.GetObject("trueTarget.Visible"))
 			);
-			this.trueTarget.Click += new EventHandler(this.Control_Click);
-			this.trueTarget.LinkClicked +=
+			trueTarget.Click += new EventHandler(Control_Click);
+			trueTarget.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.Target_LinkClicked
+					Target_LinkClicked
 				);
 			//
 			// falseTarget
 			//
-			this.falseTarget.AccessibleDescription = resources.GetString(
+			falseTarget.AccessibleDescription = resources.GetString(
 				"falseTarget.AccessibleDescription"
 			);
-			this.falseTarget.AccessibleName = resources.GetString(
+			falseTarget.AccessibleName = resources.GetString(
 				"falseTarget.AccessibleName"
 			);
-			this.falseTarget.Anchor = (
+			falseTarget.Anchor = (
 				(AnchorStyles)(
 					resources.GetObject("falseTarget.Anchor")
 				)
 			);
-			this.falseTarget.AutoSize = (
+			falseTarget.AutoSize = (
 				(bool)(resources.GetObject("falseTarget.AutoSize"))
 			);
-			this.falseTarget.Dock = (
+			falseTarget.Dock = (
 				(DockStyle)(
 					resources.GetObject("falseTarget.Dock")
 				)
 			);
-			this.falseTarget.Enabled = (
+			falseTarget.Enabled = (
 				(bool)(resources.GetObject("falseTarget.Enabled"))
 			);
-			this.falseTarget.Font = (
+			falseTarget.Font = (
 				(System.Drawing.Font)(resources.GetObject("falseTarget.Font"))
 			);
-			this.falseTarget.Image = (
+			falseTarget.Image = (
 				(System.Drawing.Image)(resources.GetObject("falseTarget.Image"))
 			);
-			this.falseTarget.ImageAlign = (
+			falseTarget.ImageAlign = (
 				(System.Drawing.ContentAlignment)(
 					resources.GetObject("falseTarget.ImageAlign")
 				)
 			);
-			this.falseTarget.ImageIndex = (
+			falseTarget.ImageIndex = (
 				(int)(resources.GetObject("falseTarget.ImageIndex"))
 			);
-			this.falseTarget.ImeMode = (
+			falseTarget.ImeMode = (
 				(ImeMode)(
 					resources.GetObject("falseTarget.ImeMode")
 				)
 			);
-			this.falseTarget.LinkArea = (
+			falseTarget.LinkArea = (
 				(LinkArea)(
 					resources.GetObject("falseTarget.LinkArea")
 				)
 			);
-			this.falseTarget.Location = (
+			falseTarget.Location = (
 				(System.Drawing.Point)(resources.GetObject("falseTarget.Location"))
 			);
-			this.falseTarget.Name = "falseTarget";
-			this.falseTarget.RightToLeft = (
+			falseTarget.Name = "falseTarget";
+			falseTarget.RightToLeft = (
 				(RightToLeft)(
 					resources.GetObject("falseTarget.RightToLeft")
 				)
 			);
-			this.falseTarget.Size = (
+			falseTarget.Size = (
 				(System.Drawing.Size)(resources.GetObject("falseTarget.Size"))
 			);
-			this.falseTarget.TabIndex = (
+			falseTarget.TabIndex = (
 				(int)(resources.GetObject("falseTarget.TabIndex"))
 			);
-			this.falseTarget.Text = resources.GetString("falseTarget.Text");
-			this.falseTarget.TextAlign = (
+			falseTarget.Text = resources.GetString("falseTarget.Text");
+			falseTarget.TextAlign = (
 				(System.Drawing.ContentAlignment)(
 					resources.GetObject("falseTarget.TextAlign")
 				)
 			);
-			this.falseTarget.Visible = (
+			falseTarget.Visible = (
 				(bool)(resources.GetObject("falseTarget.Visible"))
 			);
-			this.falseTarget.Click += new EventHandler(this.Control_Click);
-			this.falseTarget.LinkClicked +=
+			falseTarget.Click += new EventHandler(Control_Click);
+			falseTarget.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.Target_LinkClicked
+					Target_LinkClicked
 				);
 			//
 			// bhavInstListItem
 			//
-			this.bhavInstListItem.AccessibleDescription = resources.GetString(
+			bhavInstListItem.AccessibleDescription = resources.GetString(
 				"bhavInstListItem.AccessibleDescription"
 			);
-			this.bhavInstListItem.AccessibleName = resources.GetString(
+			bhavInstListItem.AccessibleName = resources.GetString(
 				"bhavInstListItem.AccessibleName"
 			);
-			this.bhavInstListItem.Anchor = (
+			bhavInstListItem.Anchor = (
 				(AnchorStyles)(
 					resources.GetObject("bhavInstListItem.Anchor")
 				)
 			);
-			this.bhavInstListItem.AutoSize = (
+			bhavInstListItem.AutoSize = (
 				(bool)(resources.GetObject("bhavInstListItem.AutoSize"))
 			);
-			this.bhavInstListItem.BackColor = System.Drawing.Color.White;
-			this.bhavInstListItem.BackgroundImage = (
+			bhavInstListItem.BackColor = System.Drawing.Color.White;
+			bhavInstListItem.BackgroundImage = (
 				(System.Drawing.Image)(
 					resources.GetObject("bhavInstListItem.BackgroundImage")
 				)
 			);
-			this.bhavInstListItem.BorderStyle = BorderStyle.None;
-			this.bhavInstListItem.Controls.Add(this.falseTarget);
-			this.bhavInstListItem.Controls.Add(this.trueTarget);
-			this.bhavInstListItem.Controls.Add(this.instrText);
-			this.bhavInstListItem.Cursor = Cursors.Default;
-			this.bhavInstListItem.Dock = (
+			bhavInstListItem.BorderStyle = BorderStyle.None;
+			bhavInstListItem.Controls.Add(falseTarget);
+			bhavInstListItem.Controls.Add(trueTarget);
+			bhavInstListItem.Controls.Add(instrText);
+			bhavInstListItem.Cursor = Cursors.Default;
+			bhavInstListItem.Dock = (
 				(DockStyle)(
 					resources.GetObject("bhavInstListItem.Dock")
 				)
 			);
-			this.bhavInstListItem.Enabled = (
+			bhavInstListItem.Enabled = (
 				(bool)(resources.GetObject("bhavInstListItem.Enabled"))
 			);
-			this.bhavInstListItem.Font = (
+			bhavInstListItem.Font = (
 				(System.Drawing.Font)(resources.GetObject("bhavInstListItem.Font"))
 			);
-			this.bhavInstListItem.ImeMode = (
+			bhavInstListItem.ImeMode = (
 				(ImeMode)(
 					resources.GetObject("bhavInstListItem.ImeMode")
 				)
 			);
-			this.bhavInstListItem.Location = (
+			bhavInstListItem.Location = (
 				(System.Drawing.Point)(resources.GetObject("bhavInstListItem.Location"))
 			);
-			this.bhavInstListItem.MaxLength = (
+			bhavInstListItem.MaxLength = (
 				(int)(resources.GetObject("bhavInstListItem.MaxLength"))
 			);
-			this.bhavInstListItem.Multiline = (
+			bhavInstListItem.Multiline = (
 				(bool)(resources.GetObject("bhavInstListItem.Multiline"))
 			);
-			this.bhavInstListItem.Name = "bhavInstListItem";
-			this.bhavInstListItem.PasswordChar = (
+			bhavInstListItem.Name = "bhavInstListItem";
+			bhavInstListItem.PasswordChar = (
 				(char)(resources.GetObject("bhavInstListItem.PasswordChar"))
 			);
-			this.bhavInstListItem.RightToLeft = (
+			bhavInstListItem.RightToLeft = (
 				(RightToLeft)(
 					resources.GetObject("bhavInstListItem.RightToLeft")
 				)
 			);
-			this.bhavInstListItem.ScrollBars = (
+			bhavInstListItem.ScrollBars = (
 				(ScrollBars)(
 					resources.GetObject("bhavInstListItem.ScrollBars")
 				)
 			);
-			this.bhavInstListItem.Size = (
+			bhavInstListItem.Size = (
 				(System.Drawing.Size)(resources.GetObject("bhavInstListItem.Size"))
 			);
-			this.bhavInstListItem.TabIndex = (
+			bhavInstListItem.TabIndex = (
 				(int)(resources.GetObject("bhavInstListItem.TabIndex"))
 			);
-			this.bhavInstListItem.Text = resources.GetString("bhavInstListItem.Text");
-			this.bhavInstListItem.TextAlign = (
+			bhavInstListItem.Text = resources.GetString("bhavInstListItem.Text");
+			bhavInstListItem.TextAlign = (
 				(HorizontalAlignment)(
 					resources.GetObject("bhavInstListItem.TextAlign")
 				)
 			);
-			this.bhavInstListItem.Visible = (
+			bhavInstListItem.Visible = (
 				(bool)(resources.GetObject("bhavInstListItem.Visible"))
 			);
-			this.bhavInstListItem.WordWrap = (
+			bhavInstListItem.WordWrap = (
 				(bool)(resources.GetObject("bhavInstListItem.WordWrap"))
 			);
-			this.bhavInstListItem.KeyDown += new KeyEventHandler(
-				this.bhavInstListItem_KeyDown
+			bhavInstListItem.KeyDown += new KeyEventHandler(
+				bhavInstListItem_KeyDown
 			);
 			//
 			// BhavInstListItemUI
 			//
-			this.AccessibleDescription = resources.GetString(
+			AccessibleDescription = resources.GetString(
 				"$this.AccessibleDescription"
 			);
-			this.AccessibleName = resources.GetString("$this.AccessibleName");
-			this.AutoScroll = ((bool)(resources.GetObject("$this.AutoScroll")));
-			this.AutoScrollMargin = (
+			AccessibleName = resources.GetString("$this.AccessibleName");
+			AutoScroll = ((bool)(resources.GetObject("$this.AutoScroll")));
+			AutoScrollMargin = (
 				(System.Drawing.Size)(resources.GetObject("$this.AutoScrollMargin"))
 			);
-			this.AutoScrollMinSize = (
+			AutoScrollMinSize = (
 				(System.Drawing.Size)(resources.GetObject("$this.AutoScrollMinSize"))
 			);
-			this.BackColor = System.Drawing.SystemColors.Control;
-			this.BackgroundImage = (
+			BackColor = System.Drawing.SystemColors.Control;
+			BackgroundImage = (
 				(System.Drawing.Image)(resources.GetObject("$this.BackgroundImage"))
 			);
-			this.Controls.Add(this.bhavInstListItem);
-			this.Enabled = ((bool)(resources.GetObject("$this.Enabled")));
-			this.Font = ((System.Drawing.Font)(resources.GetObject("$this.Font")));
-			this.ImeMode = (
+			Controls.Add(bhavInstListItem);
+			Enabled = ((bool)(resources.GetObject("$this.Enabled")));
+			Font = ((System.Drawing.Font)(resources.GetObject("$this.Font")));
+			ImeMode = (
 				(ImeMode)(resources.GetObject("$this.ImeMode"))
 			);
-			this.Location = (
+			Location = (
 				(System.Drawing.Point)(resources.GetObject("$this.Location"))
 			);
-			this.Name = "BhavInstListItemUI";
-			this.RightToLeft = (
+			Name = "BhavInstListItemUI";
+			RightToLeft = (
 				(RightToLeft)(
 					resources.GetObject("$this.RightToLeft")
 				)
 			);
-			this.Size = ((System.Drawing.Size)(resources.GetObject("$this.Size")));
-			this.Enter += new EventHandler(this.bhavInstListItemUI_Enter);
-			this.Leave += new EventHandler(this.bhavInstListItemUI_Leave);
-			this.bhavInstListItem.ResumeLayout(false);
-			this.ResumeLayout(false);
+			Size = ((System.Drawing.Size)(resources.GetObject("$this.Size")));
+			Enter += new EventHandler(bhavInstListItemUI_Enter);
+			Leave += new EventHandler(bhavInstListItemUI_Leave);
+			bhavInstListItem.ResumeLayout(false);
+			ResumeLayout(false);
 		}
 		#endregion
 
 		private void bhavInstListItemUI_Enter(object sender, EventArgs e)
 		{
 			//MakeSelected();
-			this.BackColor = this.bhavInstListItem.BackColor = System
+			BackColor = bhavInstListItem.BackColor = System
 				.Drawing
 				.Color
 				.PowderBlue;
@@ -642,7 +642,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void bhavInstListItemUI_Leave(object sender, EventArgs e)
 		{
-			this.BackColor = this.bhavInstListItem.BackColor = System
+			BackColor = bhavInstListItem.BackColor = System
 				.Drawing
 				.Color
 				.LightGray;
@@ -654,12 +654,12 @@ namespace SimPe.PackedFiles.UserInterface
 			KeyEventArgs e
 		)
 		{
-			this.OnKeyDown(e);
+			OnKeyDown(e);
 		}
 
 		private void Control_Click(object sender, EventArgs e)
 		{
-			this.Focus();
+			Focus();
 		}
 
 		private void Target_LinkClicked(

@@ -89,7 +89,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			IndexType = package.Header.IndexType;
 			Items = new ClstItem[0];
-			this.ProcessData(pfd, package);
+			ProcessData(pfd, package);
 		}
 
 		/// <summary>
@@ -104,7 +104,7 @@ namespace SimPe.PackedFiles.Wrapper
 				return -1;
 			}
 
-			for (int i = 0; i < this.Items.Length; i++)
+			for (int i = 0; i < Items.Length; i++)
 			{
 				ClstItem lfi = Items[i];
 
@@ -168,7 +168,7 @@ namespace SimPe.PackedFiles.Wrapper
 				"This File contains a List of all compressed Files that are stored within this Package.",
 				2,
 				System.Drawing.Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.clst.png")
 				)
 			);
@@ -180,7 +180,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <param name="reader">The Stream that contains the FileData</param>
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
-			this.IndexType = package.Header.IndexType;
+			IndexType = package.Header.IndexType;
 			long count = 0;
 			if (IndexType == Data.MetaData.IndexTypes.ptLongFileIndex)
 			{
@@ -197,7 +197,7 @@ namespace SimPe.PackedFiles.Wrapper
 			bool switch_t = false;
 			for (int i = 0; i < count; i++)
 			{
-				ClstItem item = new ClstItem(this.IndexType);
+				ClstItem item = new ClstItem(IndexType);
 				item.Unserialize(reader);
 
 				if ((i == 2) && (!switch_t))
@@ -223,7 +223,7 @@ namespace SimPe.PackedFiles.Wrapper
 						}
 
 						reader.BaseStream.Seek(pos, System.IO.SeekOrigin.Begin);
-						item = new ClstItem(this.IndexType);
+						item = new ClstItem(IndexType);
 						item.Unserialize(reader);
 					}
 				}
@@ -244,7 +244,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			for (int i = 0; i < Items.Length; i++)
 			{
-				Items[i].Serialize(writer, this.IndexType);
+				Items[i].Serialize(writer, IndexType);
 			}
 		}
 		#endregion

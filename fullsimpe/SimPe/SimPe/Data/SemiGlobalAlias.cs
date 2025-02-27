@@ -35,7 +35,7 @@ namespace SimPe.Data
 		public SemiGlobalAlias(bool known, uint id, string name)
 			: base(id, name)
 		{
-			this.Known = known;
+			Known = known;
 		}
 
 		/// <summary>
@@ -48,7 +48,7 @@ namespace SimPe.Data
 
 		public override string ToString()
 		{
-			return this.Name;
+			return Name;
 		}
 
 		#region IComparable<SemiGlobalAlias> Member

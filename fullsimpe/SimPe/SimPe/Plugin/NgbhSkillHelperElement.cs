@@ -59,56 +59,56 @@ namespace SimPe.Plugin
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.cb = new NgbhValueDescriptorSelection();
-			this.ui = new NgbhValueDescriptorUI();
-			this.SuspendLayout();
+			cb = new NgbhValueDescriptorSelection();
+			ui = new NgbhValueDescriptorUI();
+			SuspendLayout();
 			//
 			// cb
 			//
-			this.cb.Dock = DockStyle.Top;
-			this.cb.Font = new System.Drawing.Font(
+			cb.Dock = DockStyle.Top;
+			cb.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cb.Location = new System.Drawing.Point(0, 0);
-			this.cb.Name = "cb";
-			this.cb.ShowBadges = true;
-			this.cb.ShowSkills = true;
-			this.cb.ShowToddlerSkills = true;
-			this.cb.Size = new System.Drawing.Size(400, 24);
-			this.cb.TabIndex = 0;
+			cb.Location = new System.Drawing.Point(0, 0);
+			cb.Name = "cb";
+			cb.ShowBadges = true;
+			cb.ShowSkills = true;
+			cb.ShowToddlerSkills = true;
+			cb.Size = new System.Drawing.Size(400, 24);
+			cb.TabIndex = 0;
 			//
 			// ui
 			//
-			this.ui.Dock = DockStyle.Fill;
-			this.ui.Enabled = false;
-			this.ui.Font = new System.Drawing.Font(
+			ui.Dock = DockStyle.Fill;
+			ui.Enabled = false;
+			ui.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.ui.Location = new System.Drawing.Point(0, 24);
-			this.ui.Name = "ui";
-			this.ui.NgbhValueDescriptor = null;
-			this.ui.NgbhValueDescriptorSelection = this.cb;
-			this.ui.Size = new System.Drawing.Size(400, 104);
-			this.ui.Slot = null;
-			this.ui.TabIndex = 1;
-			this.ui.AddedNewItem += new EventHandler(this.ui_AddedNewItem);
-			this.ui.ChangedItem += new EventHandler(this.ui_ChangedItem);
+			ui.Location = new System.Drawing.Point(0, 24);
+			ui.Name = "ui";
+			ui.NgbhValueDescriptor = null;
+			ui.NgbhValueDescriptorSelection = cb;
+			ui.Size = new System.Drawing.Size(400, 104);
+			ui.Slot = null;
+			ui.TabIndex = 1;
+			ui.AddedNewItem += new EventHandler(ui_AddedNewItem);
+			ui.ChangedItem += new EventHandler(ui_ChangedItem);
 			//
 			// NgbhSkillHelperElement
 			//
-			this.Controls.Add(this.ui);
-			this.Controls.Add(this.cb);
-			this.Name = "NgbhSkillHelperElement";
-			this.Size = new System.Drawing.Size(400, 128);
-			this.ResumeLayout(false);
+			Controls.Add(ui);
+			Controls.Add(cb);
+			Name = "NgbhSkillHelperElement";
+			Size = new System.Drawing.Size(400, 128);
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -198,7 +198,7 @@ namespace SimPe.Plugin
 
 		void SetContent()
 		{
-			this.ui.Slot = slot;
+			ui.Slot = slot;
 		}
 
 		private void ui_AddedNewItem(object sender, EventArgs e)

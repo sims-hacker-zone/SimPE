@@ -114,14 +114,14 @@ namespace SimPe.Plugin
 				tGenericRcol = new TabPage.GenericRcol();
 			}
 
-			tGenericRcol.tb_ver.Text = "0x" + Helper.HexString(this.version);
+			tGenericRcol.tb_ver.Text = "0x" + Helper.HexString(version);
 			tGenericRcol.gen_pg.SelectedObject = this;
 		}
 
 		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
 		{
 			base.ExtendTabControl(tc);
-			this.Extension.AddToTabControl(tc);
+			Extension.AddToTabControl(tc);
 			tc.SelectedIndex = tc.TabPages.Count - 1;
 		}
 
@@ -134,10 +134,10 @@ namespace SimPe.Plugin
 
 		public void ReferencedItems(Hashtable refmap, uint parentgroup)
 		{
-			if (this.Extension.VarName.Trim().ToLower() == "tsmaterialsmeshname")
+			if (Extension.VarName.Trim().ToLower() == "tsmaterialsmeshname")
 			{
 				ArrayList list = new ArrayList();
-				foreach (ExtensionItem ei in this.Extension.Items)
+				foreach (ExtensionItem ei in Extension.Items)
 				{
 					string name = ei.String.Trim();
 					if (!name.ToLower().EndsWith("_cres"))
@@ -164,9 +164,9 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			if (this.tGenericRcol != null)
+			if (tGenericRcol != null)
 			{
-				this.tGenericRcol.Dispose();
+				tGenericRcol.Dispose();
 			}
 
 			tGenericRcol = null;

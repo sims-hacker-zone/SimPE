@@ -43,10 +43,10 @@ namespace SimPe.PackedFiles.Wrapper
 			this.format = format;
 			if (pfd != null)
 			{
-				this.Type = pfd.Type;
-				this.Instance = pfd.Instance;
-				this.SubType = pfd.SubType;
-				this.Group = pfd.Group;
+				Type = pfd.Type;
+				Instance = pfd.Instance;
+				SubType = pfd.SubType;
+				Group = pfd.Group;
 			}
 		}
 
@@ -98,7 +98,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public override int GetHashCode()
 		{
-			return (int)(this.Type | this.Instance) - (int)(this.Type & this.Instance);
+			return (int)(Type | Instance) - (int)(Type & Instance);
 		}
 
 		public override bool Equals(object obj)
@@ -144,17 +144,17 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public override string ToString()
 		{
-			string name = this.TypeName + ": 0x" + Helper.HexString(this.Type);
+			string name = TypeName + ": 0x" + Helper.HexString(Type);
 			if (format == Data.MetaData.IndexTypes.ptLongFileIndex)
 			{
-				name += " - 0x" + Helper.HexString(this.SubType);
+				name += " - 0x" + Helper.HexString(SubType);
 			}
 
 			name +=
 				" - 0x"
-				+ Helper.HexString(this.Group)
+				+ Helper.HexString(Group)
 				+ " - 0x"
-				+ Helper.HexString(this.Instance);
+				+ Helper.HexString(Instance);
 
 			name += " = 0x" + Helper.HexString(UncompressedSize) + " byte";
 			return name;

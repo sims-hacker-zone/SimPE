@@ -54,7 +54,7 @@ namespace SimPe.Plugin
 				"This File is part of the Scenegraph. It contains the Texture for a Mesh Group/Subset.",
 				13,
 				System.Drawing.Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.txtr.png")
 				)
 			);

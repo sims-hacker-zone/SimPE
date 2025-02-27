@@ -86,14 +86,14 @@ namespace SimPe.Plugin
 			//
 			InitializeComponent();
 
-			this.comboBox1.SelectedIndex = 0;
+			comboBox1.SelectedIndex = 0;
 			Select(null, null);
 
 			sorter = new ColumnSorter();
 
 			if (Helper.WindowsRegistry.Username.Trim() != "")
 			{
-				this.tbname.Text = Helper.WindowsRegistry.Username + "-";
+				tbname.Text = Helper.WindowsRegistry.Username + "-";
 			}
 		}
 
@@ -119,59 +119,59 @@ namespace SimPe.Plugin
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
-			this.comboBox1 = new ComboBox();
-			this.fbd = new FolderBrowserDialog();
-			this.lbdir = new GroupBox();
-			this.llcomp = new LinkLabel();
-			this.pbprev = new PictureBox();
-			this.gbskin = new GroupBox();
-			this.cbswim = new CheckBox();
-			this.cbact = new CheckBox();
-			this.cbskin = new CheckBox();
-			this.cbformal = new CheckBox();
-			this.cbpreg = new CheckBox();
-			this.cbundies = new CheckBox();
-			this.cbpj = new CheckBox();
-			this.cbevery = new CheckBox();
-			this.cbelder = new CheckBox();
-			this.cbadult = new CheckBox();
-			this.cbyoung = new CheckBox();
-			this.cbteen = new CheckBox();
-			this.cbchild = new CheckBox();
-			this.cbtoddler = new CheckBox();
-			this.cbbaby = new CheckBox();
-			this.llskin = new LinkLabel();
-			this.groupBox2 = new GroupBox();
-			this.llfix = new LinkLabel();
-			this.tbname = new TextBox();
-			this.label1 = new Label();
-			this.lldis = new LinkLabel();
-			this.llopen = new LinkLabel();
-			this.tbfilename = new TextBox();
-			this.lv = new ListView();
-			this.columnHeader1 = new ColumnHeader();
-			this.columnHeader2 = new ColumnHeader();
-			this.columnHeader5 = new ColumnHeader();
-			this.columnHeader4 = new ColumnHeader();
-			this.columnHeader3 = new ColumnHeader();
-			this.linkLabel1 = new LinkLabel();
-			this.pb = new ProgressBar();
-			this.groupBox1 = new GroupBox();
-			this.cbprev = new CheckBox();
-			this.cbready = new CheckBox();
-			this.cbguid = new CheckBox();
-			this.cbcompress = new CheckBox();
-			this.iList = new ImageList(this.components);
-			this.lbdir.SuspendLayout();
-			this.gbskin.SuspendLayout();
-			this.groupBox2.SuspendLayout();
-			this.groupBox1.SuspendLayout();
-			this.SuspendLayout();
+			components = new System.ComponentModel.Container();
+			comboBox1 = new ComboBox();
+			fbd = new FolderBrowserDialog();
+			lbdir = new GroupBox();
+			llcomp = new LinkLabel();
+			pbprev = new PictureBox();
+			gbskin = new GroupBox();
+			cbswim = new CheckBox();
+			cbact = new CheckBox();
+			cbskin = new CheckBox();
+			cbformal = new CheckBox();
+			cbpreg = new CheckBox();
+			cbundies = new CheckBox();
+			cbpj = new CheckBox();
+			cbevery = new CheckBox();
+			cbelder = new CheckBox();
+			cbadult = new CheckBox();
+			cbyoung = new CheckBox();
+			cbteen = new CheckBox();
+			cbchild = new CheckBox();
+			cbtoddler = new CheckBox();
+			cbbaby = new CheckBox();
+			llskin = new LinkLabel();
+			groupBox2 = new GroupBox();
+			llfix = new LinkLabel();
+			tbname = new TextBox();
+			label1 = new Label();
+			lldis = new LinkLabel();
+			llopen = new LinkLabel();
+			tbfilename = new TextBox();
+			lv = new ListView();
+			columnHeader1 = new ColumnHeader();
+			columnHeader2 = new ColumnHeader();
+			columnHeader5 = new ColumnHeader();
+			columnHeader4 = new ColumnHeader();
+			columnHeader3 = new ColumnHeader();
+			linkLabel1 = new LinkLabel();
+			pb = new ProgressBar();
+			groupBox1 = new GroupBox();
+			cbprev = new CheckBox();
+			cbready = new CheckBox();
+			cbguid = new CheckBox();
+			cbcompress = new CheckBox();
+			iList = new ImageList(components);
+			lbdir.SuspendLayout();
+			gbskin.SuspendLayout();
+			groupBox2.SuspendLayout();
+			groupBox1.SuspendLayout();
+			SuspendLayout();
 			//
 			// comboBox1
 			//
-			this.comboBox1.Anchor = (
+			comboBox1.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -182,18 +182,18 @@ namespace SimPe.Plugin
 				)
 			);
 			//this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.comboBox1.Items.AddRange(
+			comboBox1.Items.AddRange(
 				new object[] { "Download Folder", "Teleport Folder", "..." }
 			);
-			this.comboBox1.Location = new Point(8, 8);
-			this.comboBox1.Name = "comboBox1";
-			this.comboBox1.Size = new Size(776, 21);
-			this.comboBox1.TabIndex = 0;
-			this.comboBox1.SelectedIndexChanged += new EventHandler(this.Select);
+			comboBox1.Location = new Point(8, 8);
+			comboBox1.Name = "comboBox1";
+			comboBox1.Size = new Size(776, 21);
+			comboBox1.TabIndex = 0;
+			comboBox1.SelectedIndexChanged += new EventHandler(Select);
 			//
 			// lbdir
 			//
-			this.lbdir.Anchor = (
+			lbdir.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -205,31 +205,31 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.lbdir.Controls.Add(this.llcomp);
-			this.lbdir.Controls.Add(this.pbprev);
-			this.lbdir.Controls.Add(this.gbskin);
-			this.lbdir.Controls.Add(this.groupBox2);
-			this.lbdir.Controls.Add(this.lldis);
-			this.lbdir.Controls.Add(this.llopen);
-			this.lbdir.Controls.Add(this.tbfilename);
-			this.lbdir.Controls.Add(this.lv);
-			this.lbdir.Font = new Font(
+			lbdir.Controls.Add(llcomp);
+			lbdir.Controls.Add(pbprev);
+			lbdir.Controls.Add(gbskin);
+			lbdir.Controls.Add(groupBox2);
+			lbdir.Controls.Add(lldis);
+			lbdir.Controls.Add(llopen);
+			lbdir.Controls.Add(tbfilename);
+			lbdir.Controls.Add(lv);
+			lbdir.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.lbdir.Location = new Point(8, 104);
-			this.lbdir.Name = "lbdir";
-			this.lbdir.Size = new Size(776, 452);
-			this.lbdir.TabIndex = 1;
-			this.lbdir.TabStop = false;
-			this.lbdir.Text = "---";
+			lbdir.Location = new Point(8, 104);
+			lbdir.Name = "lbdir";
+			lbdir.Size = new Size(776, 452);
+			lbdir.TabIndex = 1;
+			lbdir.TabStop = false;
+			lbdir.Text = "---";
 			//
 			// llcomp
 			//
-			this.llcomp.Anchor = (
+			llcomp.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -237,29 +237,29 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.llcomp.AutoSize = true;
-			this.llcomp.Enabled = false;
-			this.llcomp.Font = new Font(
+			llcomp.AutoSize = true;
+			llcomp.Enabled = false;
+			llcomp.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.llcomp.Location = new Point(584, 80);
-			this.llcomp.Name = "llcomp";
-			this.llcomp.Size = new Size(106, 17);
-			this.llcomp.TabIndex = 11;
-			this.llcomp.TabStop = true;
-			this.llcomp.Text = "fix Compression";
-			this.llcomp.LinkClicked +=
+			llcomp.Location = new Point(584, 80);
+			llcomp.Name = "llcomp";
+			llcomp.Size = new Size(106, 17);
+			llcomp.TabIndex = 11;
+			llcomp.TabStop = true;
+			llcomp.Text = "fix Compression";
+			llcomp.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.FixCompression
+					FixCompression
 				);
 			//
 			// pbprev
 			//
-			this.pbprev.Anchor = (
+			pbprev.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -269,16 +269,16 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.pbprev.BorderStyle = BorderStyle.FixedSingle;
-			this.pbprev.Location = new Point(584, 408);
-			this.pbprev.Name = "pbprev";
-			this.pbprev.Size = new Size(184, 40);
-			this.pbprev.TabIndex = 10;
-			this.pbprev.TabStop = false;
+			pbprev.BorderStyle = BorderStyle.FixedSingle;
+			pbprev.Location = new Point(584, 408);
+			pbprev.Name = "pbprev";
+			pbprev.Size = new Size(184, 40);
+			pbprev.TabIndex = 10;
+			pbprev.TabStop = false;
 			//
 			// gbskin
 			//
-			this.gbskin.Anchor = (
+			gbskin.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -286,274 +286,274 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.gbskin.Controls.Add(this.cbswim);
-			this.gbskin.Controls.Add(this.cbact);
-			this.gbskin.Controls.Add(this.cbskin);
-			this.gbskin.Controls.Add(this.cbformal);
-			this.gbskin.Controls.Add(this.cbpreg);
-			this.gbskin.Controls.Add(this.cbundies);
-			this.gbskin.Controls.Add(this.cbpj);
-			this.gbskin.Controls.Add(this.cbevery);
-			this.gbskin.Controls.Add(this.cbelder);
-			this.gbskin.Controls.Add(this.cbadult);
-			this.gbskin.Controls.Add(this.cbyoung);
-			this.gbskin.Controls.Add(this.cbteen);
-			this.gbskin.Controls.Add(this.cbchild);
-			this.gbskin.Controls.Add(this.cbtoddler);
-			this.gbskin.Controls.Add(this.cbbaby);
-			this.gbskin.Controls.Add(this.llskin);
-			this.gbskin.Enabled = false;
-			this.gbskin.FlatStyle = FlatStyle.System;
-			this.gbskin.Location = new Point(584, 192);
-			this.gbskin.Name = "gbskin";
-			this.gbskin.RightToLeft = RightToLeft.No;
-			this.gbskin.Size = new Size(184, 208);
-			this.gbskin.TabIndex = 9;
-			this.gbskin.TabStop = false;
+			gbskin.Controls.Add(cbswim);
+			gbskin.Controls.Add(cbact);
+			gbskin.Controls.Add(cbskin);
+			gbskin.Controls.Add(cbformal);
+			gbskin.Controls.Add(cbpreg);
+			gbskin.Controls.Add(cbundies);
+			gbskin.Controls.Add(cbpj);
+			gbskin.Controls.Add(cbevery);
+			gbskin.Controls.Add(cbelder);
+			gbskin.Controls.Add(cbadult);
+			gbskin.Controls.Add(cbyoung);
+			gbskin.Controls.Add(cbteen);
+			gbskin.Controls.Add(cbchild);
+			gbskin.Controls.Add(cbtoddler);
+			gbskin.Controls.Add(cbbaby);
+			gbskin.Controls.Add(llskin);
+			gbskin.Enabled = false;
+			gbskin.FlatStyle = FlatStyle.System;
+			gbskin.Location = new Point(584, 192);
+			gbskin.Name = "gbskin";
+			gbskin.RightToLeft = RightToLeft.No;
+			gbskin.Size = new Size(184, 208);
+			gbskin.TabIndex = 9;
+			gbskin.TabStop = false;
 			//
 			// cbswim
 			//
-			this.cbswim.FlatStyle = FlatStyle.System;
-			this.cbswim.Font = new Font(
+			cbswim.FlatStyle = FlatStyle.System;
+			cbswim.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbswim.Location = new Point(96, 120);
-			this.cbswim.Name = "cbswim";
-			this.cbswim.Size = new Size(80, 24);
-			this.cbswim.TabIndex = 21;
-			this.cbswim.Text = "Swim.";
+			cbswim.Location = new Point(96, 120);
+			cbswim.Name = "cbswim";
+			cbswim.Size = new Size(80, 24);
+			cbswim.TabIndex = 21;
+			cbswim.Text = "Swim.";
 			//
 			// cbact
 			//
-			this.cbact.FlatStyle = FlatStyle.System;
-			this.cbact.Font = new Font(
+			cbact.FlatStyle = FlatStyle.System;
+			cbact.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbact.Location = new Point(96, 180);
-			this.cbact.Name = "cbact";
-			this.cbact.Size = new Size(64, 24);
-			this.cbact.TabIndex = 20;
-			this.cbact.Text = "Active";
+			cbact.Location = new Point(96, 180);
+			cbact.Name = "cbact";
+			cbact.Size = new Size(64, 24);
+			cbact.TabIndex = 20;
+			cbact.Text = "Active";
 			//
 			// cbskin
 			//
-			this.cbskin.FlatStyle = FlatStyle.System;
-			this.cbskin.Font = new Font(
+			cbskin.FlatStyle = FlatStyle.System;
+			cbskin.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbskin.Location = new Point(96, 160);
-			this.cbskin.Name = "cbskin";
-			this.cbskin.Size = new Size(64, 24);
-			this.cbskin.TabIndex = 19;
-			this.cbskin.Text = "Skin";
+			cbskin.Location = new Point(96, 160);
+			cbskin.Name = "cbskin";
+			cbskin.Size = new Size(64, 24);
+			cbskin.TabIndex = 19;
+			cbskin.Text = "Skin";
 			//
 			// cbformal
 			//
-			this.cbformal.FlatStyle = FlatStyle.System;
-			this.cbformal.Font = new Font(
+			cbformal.FlatStyle = FlatStyle.System;
+			cbformal.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbformal.Location = new Point(96, 140);
-			this.cbformal.Name = "cbformal";
-			this.cbformal.Size = new Size(80, 24);
-			this.cbformal.TabIndex = 18;
-			this.cbformal.Text = "Formal";
+			cbformal.Location = new Point(96, 140);
+			cbformal.Name = "cbformal";
+			cbformal.Size = new Size(80, 24);
+			cbformal.TabIndex = 18;
+			cbformal.Text = "Formal";
 			//
 			// cbpreg
 			//
-			this.cbpreg.FlatStyle = FlatStyle.System;
-			this.cbpreg.Font = new Font(
+			cbpreg.FlatStyle = FlatStyle.System;
+			cbpreg.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbpreg.Location = new Point(16, 180);
-			this.cbpreg.Name = "cbpreg";
-			this.cbpreg.Size = new Size(64, 24);
-			this.cbpreg.TabIndex = 17;
-			this.cbpreg.Text = "Preg.";
+			cbpreg.Location = new Point(16, 180);
+			cbpreg.Name = "cbpreg";
+			cbpreg.Size = new Size(64, 24);
+			cbpreg.TabIndex = 17;
+			cbpreg.Text = "Preg.";
 			//
 			// cbundies
 			//
-			this.cbundies.FlatStyle = FlatStyle.System;
-			this.cbundies.Font = new Font(
+			cbundies.FlatStyle = FlatStyle.System;
+			cbundies.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbundies.Location = new Point(16, 160);
-			this.cbundies.Name = "cbundies";
-			this.cbundies.Size = new Size(64, 24);
-			this.cbundies.TabIndex = 16;
-			this.cbundies.Text = "Undies";
+			cbundies.Location = new Point(16, 160);
+			cbundies.Name = "cbundies";
+			cbundies.Size = new Size(64, 24);
+			cbundies.TabIndex = 16;
+			cbundies.Text = "Undies";
 			//
 			// cbpj
 			//
-			this.cbpj.FlatStyle = FlatStyle.System;
-			this.cbpj.Font = new Font(
+			cbpj.FlatStyle = FlatStyle.System;
+			cbpj.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbpj.Location = new Point(16, 140);
-			this.cbpj.Name = "cbpj";
-			this.cbpj.Size = new Size(64, 24);
-			this.cbpj.TabIndex = 15;
-			this.cbpj.Text = "PJ";
+			cbpj.Location = new Point(16, 140);
+			cbpj.Name = "cbpj";
+			cbpj.Size = new Size(64, 24);
+			cbpj.TabIndex = 15;
+			cbpj.Text = "PJ";
 			//
 			// cbevery
 			//
-			this.cbevery.FlatStyle = FlatStyle.System;
-			this.cbevery.Font = new Font(
+			cbevery.FlatStyle = FlatStyle.System;
+			cbevery.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbevery.Location = new Point(16, 120);
-			this.cbevery.Name = "cbevery";
-			this.cbevery.Size = new Size(80, 24);
-			this.cbevery.TabIndex = 14;
-			this.cbevery.Text = "Everyday";
+			cbevery.Location = new Point(16, 120);
+			cbevery.Name = "cbevery";
+			cbevery.Size = new Size(80, 24);
+			cbevery.TabIndex = 14;
+			cbevery.Text = "Everyday";
 			//
 			// cbelder
 			//
-			this.cbelder.FlatStyle = FlatStyle.System;
-			this.cbelder.Font = new Font(
+			cbelder.FlatStyle = FlatStyle.System;
+			cbelder.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbelder.Location = new Point(96, 84);
-			this.cbelder.Name = "cbelder";
-			this.cbelder.Size = new Size(64, 24);
-			this.cbelder.TabIndex = 13;
-			this.cbelder.Text = "Elder";
+			cbelder.Location = new Point(96, 84);
+			cbelder.Name = "cbelder";
+			cbelder.Size = new Size(64, 24);
+			cbelder.TabIndex = 13;
+			cbelder.Text = "Elder";
 			//
 			// cbadult
 			//
-			this.cbadult.FlatStyle = FlatStyle.System;
-			this.cbadult.Font = new Font(
+			cbadult.FlatStyle = FlatStyle.System;
+			cbadult.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbadult.Location = new Point(96, 64);
-			this.cbadult.Name = "cbadult";
-			this.cbadult.Size = new Size(64, 24);
-			this.cbadult.TabIndex = 12;
-			this.cbadult.Text = "Adult";
+			cbadult.Location = new Point(96, 64);
+			cbadult.Name = "cbadult";
+			cbadult.Size = new Size(64, 24);
+			cbadult.TabIndex = 12;
+			cbadult.Text = "Adult";
 			//
 			// cbyoung
 			//
-			this.cbyoung.FlatStyle = FlatStyle.System;
-			this.cbyoung.Font = new Font(
+			cbyoung.FlatStyle = FlatStyle.System;
+			cbyoung.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbyoung.Location = new Point(96, 24);
-			this.cbyoung.Name = "cbyoung";
-			this.cbyoung.Size = new Size(64, 32);
-			this.cbyoung.TabIndex = 11;
-			this.cbyoung.Text = "young Adult";
+			cbyoung.Location = new Point(96, 24);
+			cbyoung.Name = "cbyoung";
+			cbyoung.Size = new Size(64, 32);
+			cbyoung.TabIndex = 11;
+			cbyoung.Text = "young Adult";
 			//
 			// cbteen
 			//
-			this.cbteen.FlatStyle = FlatStyle.System;
-			this.cbteen.Font = new Font(
+			cbteen.FlatStyle = FlatStyle.System;
+			cbteen.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbteen.Location = new Point(16, 84);
-			this.cbteen.Name = "cbteen";
-			this.cbteen.Size = new Size(64, 24);
-			this.cbteen.TabIndex = 10;
-			this.cbteen.Text = "teen";
+			cbteen.Location = new Point(16, 84);
+			cbteen.Name = "cbteen";
+			cbteen.Size = new Size(64, 24);
+			cbteen.TabIndex = 10;
+			cbteen.Text = "teen";
 			//
 			// cbchild
 			//
-			this.cbchild.FlatStyle = FlatStyle.System;
-			this.cbchild.Font = new Font(
+			cbchild.FlatStyle = FlatStyle.System;
+			cbchild.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbchild.Location = new Point(16, 64);
-			this.cbchild.Name = "cbchild";
-			this.cbchild.Size = new Size(64, 24);
-			this.cbchild.TabIndex = 9;
-			this.cbchild.Text = "child";
+			cbchild.Location = new Point(16, 64);
+			cbchild.Name = "cbchild";
+			cbchild.Size = new Size(64, 24);
+			cbchild.TabIndex = 9;
+			cbchild.Text = "child";
 			//
 			// cbtoddler
 			//
-			this.cbtoddler.FlatStyle = FlatStyle.System;
-			this.cbtoddler.Font = new Font(
+			cbtoddler.FlatStyle = FlatStyle.System;
+			cbtoddler.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbtoddler.Location = new Point(16, 44);
-			this.cbtoddler.Name = "cbtoddler";
-			this.cbtoddler.Size = new Size(64, 24);
-			this.cbtoddler.TabIndex = 8;
-			this.cbtoddler.Text = "toddler";
+			cbtoddler.Location = new Point(16, 44);
+			cbtoddler.Name = "cbtoddler";
+			cbtoddler.Size = new Size(64, 24);
+			cbtoddler.TabIndex = 8;
+			cbtoddler.Text = "toddler";
 			//
 			// cbbaby
 			//
-			this.cbbaby.FlatStyle = FlatStyle.System;
-			this.cbbaby.Font = new Font(
+			cbbaby.FlatStyle = FlatStyle.System;
+			cbbaby.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbbaby.Location = new Point(16, 24);
-			this.cbbaby.Name = "cbbaby";
-			this.cbbaby.Size = new Size(64, 24);
-			this.cbbaby.TabIndex = 7;
-			this.cbbaby.Text = "baby";
+			cbbaby.Location = new Point(16, 24);
+			cbbaby.Name = "cbbaby";
+			cbbaby.Size = new Size(64, 24);
+			cbbaby.TabIndex = 7;
+			cbbaby.Text = "baby";
 			//
 			// llskin
 			//
-			this.llskin.Anchor = (
+			llskin.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -561,22 +561,22 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.llskin.AutoSize = true;
-			this.llskin.Enabled = false;
-			this.llskin.Location = new Point(8, 0);
-			this.llskin.Name = "llskin";
-			this.llskin.Size = new Size(55, 17);
-			this.llskin.TabIndex = 6;
-			this.llskin.TabStop = true;
-			this.llskin.Text = "set Skin";
-			this.llskin.LinkClicked +=
+			llskin.AutoSize = true;
+			llskin.Enabled = false;
+			llskin.Location = new Point(8, 0);
+			llskin.Name = "llskin";
+			llskin.Size = new Size(55, 17);
+			llskin.TabIndex = 6;
+			llskin.TabStop = true;
+			llskin.Text = "set Skin";
+			llskin.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.SetSkinAge
+					SetSkinAge
 				);
 			//
 			// groupBox2
 			//
-			this.groupBox2.Anchor = (
+			groupBox2.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -584,19 +584,19 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.groupBox2.Controls.Add(this.llfix);
-			this.groupBox2.Controls.Add(this.tbname);
-			this.groupBox2.Controls.Add(this.label1);
-			this.groupBox2.FlatStyle = FlatStyle.System;
-			this.groupBox2.Location = new Point(584, 104);
-			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new Size(184, 72);
-			this.groupBox2.TabIndex = 8;
-			this.groupBox2.TabStop = false;
+			groupBox2.Controls.Add(llfix);
+			groupBox2.Controls.Add(tbname);
+			groupBox2.Controls.Add(label1);
+			groupBox2.FlatStyle = FlatStyle.System;
+			groupBox2.Location = new Point(584, 104);
+			groupBox2.Name = "groupBox2";
+			groupBox2.Size = new Size(184, 72);
+			groupBox2.TabIndex = 8;
+			groupBox2.TabStop = false;
 			//
 			// llfix
 			//
-			this.llfix.Anchor = (
+			llfix.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -604,20 +604,20 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.llfix.AutoSize = true;
-			this.llfix.Enabled = false;
-			this.llfix.Location = new Point(8, 0);
-			this.llfix.Name = "llfix";
-			this.llfix.Size = new Size(102, 17);
-			this.llfix.TabIndex = 5;
-			this.llfix.TabStop = true;
-			this.llfix.Text = "make EP Ready";
-			this.llfix.LinkClicked +=
-				new LinkLabelLinkClickedEventHandler(this.Fix);
+			llfix.AutoSize = true;
+			llfix.Enabled = false;
+			llfix.Location = new Point(8, 0);
+			llfix.Name = "llfix";
+			llfix.Size = new Size(102, 17);
+			llfix.TabIndex = 5;
+			llfix.TabStop = true;
+			llfix.Text = "make EP Ready";
+			llfix.LinkClicked +=
+				new LinkLabelLinkClickedEventHandler(Fix);
 			//
 			// tbname
 			//
-			this.tbname.Anchor = (
+			tbname.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -625,22 +625,22 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.tbname.Font = new Font(
+			tbname.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tbname.Location = new Point(24, 45);
-			this.tbname.Name = "tbname";
-			this.tbname.Size = new Size(152, 21);
-			this.tbname.TabIndex = 7;
-			this.tbname.Text = "SimPe-";
+			tbname.Location = new Point(24, 45);
+			tbname.Name = "tbname";
+			tbname.Size = new Size(152, 21);
+			tbname.TabIndex = 7;
+			tbname.Text = "SimPe-";
 			//
 			// label1
 			//
-			this.label1.Anchor = (
+			label1.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -648,22 +648,22 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.label1.Font = new Font(
+			label1.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label1.Location = new Point(8, 29);
-			this.label1.Name = "label1";
-			this.label1.Size = new Size(128, 16);
-			this.label1.TabIndex = 6;
-			this.label1.Text = "using Modelname";
+			label1.Location = new Point(8, 29);
+			label1.Name = "label1";
+			label1.Size = new Size(128, 16);
+			label1.TabIndex = 6;
+			label1.Text = "using Modelname";
 			//
 			// lldis
 			//
-			this.lldis.Anchor = (
+			lldis.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -671,20 +671,20 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.lldis.AutoSize = true;
-			this.lldis.Enabled = false;
-			this.lldis.Location = new Point(584, 64);
-			this.lldis.Name = "lldis";
-			this.lldis.Size = new Size(50, 17);
-			this.lldis.TabIndex = 4;
-			this.lldis.TabStop = true;
-			this.lldis.Text = "disable";
-			this.lldis.LinkClicked +=
-				new LinkLabelLinkClickedEventHandler(this.Disable);
+			lldis.AutoSize = true;
+			lldis.Enabled = false;
+			lldis.Location = new Point(584, 64);
+			lldis.Name = "lldis";
+			lldis.Size = new Size(50, 17);
+			lldis.TabIndex = 4;
+			lldis.TabStop = true;
+			lldis.Text = "disable";
+			lldis.LinkClicked +=
+				new LinkLabelLinkClickedEventHandler(Disable);
 			//
 			// llopen
 			//
-			this.llopen.Anchor = (
+			llopen.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -692,22 +692,22 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.llopen.AutoSize = true;
-			this.llopen.Enabled = false;
-			this.llopen.Location = new Point(584, 48);
-			this.llopen.Name = "llopen";
-			this.llopen.Size = new Size(35, 17);
-			this.llopen.TabIndex = 3;
-			this.llopen.TabStop = true;
-			this.llopen.Text = "open";
-			this.llopen.LinkClicked +=
+			llopen.AutoSize = true;
+			llopen.Enabled = false;
+			llopen.Location = new Point(584, 48);
+			llopen.Name = "llopen";
+			llopen.Size = new Size(35, 17);
+			llopen.TabIndex = 3;
+			llopen.TabStop = true;
+			llopen.Text = "open";
+			llopen.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.Openpackage
+					Openpackage
 				);
 			//
 			// tbfilename
 			//
-			this.tbfilename.Anchor = (
+			tbfilename.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -715,23 +715,23 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.tbfilename.Font = new Font(
+			tbfilename.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tbfilename.Location = new Point(584, 24);
-			this.tbfilename.Name = "tbfilename";
-			this.tbfilename.ReadOnly = true;
-			this.tbfilename.Size = new Size(184, 21);
-			this.tbfilename.TabIndex = 2;
-			this.tbfilename.Text = "";
+			tbfilename.Location = new Point(584, 24);
+			tbfilename.Name = "tbfilename";
+			tbfilename.ReadOnly = true;
+			tbfilename.Size = new Size(184, 21);
+			tbfilename.TabIndex = 2;
+			tbfilename.Text = "";
 			//
 			// lv
 			//
-			this.lv.Anchor = (
+			lv.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -743,62 +743,62 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.lv.Columns.AddRange(
+			lv.Columns.AddRange(
 				new ColumnHeader[]
 				{
-					this.columnHeader1,
-					this.columnHeader2,
-					this.columnHeader5,
-					this.columnHeader4,
-					this.columnHeader3,
+					columnHeader1,
+					columnHeader2,
+					columnHeader5,
+					columnHeader4,
+					columnHeader3,
 				}
 			);
-			this.lv.Font = new Font(
+			lv.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.lv.FullRowSelect = true;
-			this.lv.HideSelection = false;
-			this.lv.Location = new Point(8, 24);
-			this.lv.Name = "lv";
-			this.lv.Size = new Size(568, 420);
-			this.lv.TabIndex = 1;
-			this.lv.View = View.Details;
-			this.lv.ColumnClick += new ColumnClickEventHandler(
-				this.Sort
+			lv.FullRowSelect = true;
+			lv.HideSelection = false;
+			lv.Location = new Point(8, 24);
+			lv.Name = "lv";
+			lv.Size = new Size(568, 420);
+			lv.TabIndex = 1;
+			lv.View = View.Details;
+			lv.ColumnClick += new ColumnClickEventHandler(
+				Sort
 			);
-			this.lv.SelectedIndexChanged += new EventHandler(this.SelectPackage);
+			lv.SelectedIndexChanged += new EventHandler(SelectPackage);
 			//
 			// columnHeader1
 			//
-			this.columnHeader1.Text = "Package File";
-			this.columnHeader1.Width = 192;
+			columnHeader1.Text = "Package File";
+			columnHeader1.Width = 192;
 			//
 			// columnHeader2
 			//
-			this.columnHeader2.Text = "Content";
-			this.columnHeader2.Width = 146;
+			columnHeader2.Text = "Content";
+			columnHeader2.Width = 146;
 			//
 			// columnHeader5
 			//
-			this.columnHeader5.Text = "GUID";
-			this.columnHeader5.Width = 75;
+			columnHeader5.Text = "GUID";
+			columnHeader5.Width = 75;
 			//
 			// columnHeader4
 			//
-			this.columnHeader4.Text = "Enabled";
+			columnHeader4.Text = "Enabled";
 			//
 			// columnHeader3
 			//
-			this.columnHeader3.Text = "State";
-			this.columnHeader3.Width = 89;
+			columnHeader3.Text = "State";
+			columnHeader3.Width = 89;
 			//
 			// linkLabel1
 			//
-			this.linkLabel1.Anchor = (
+			linkLabel1.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -806,26 +806,26 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.linkLabel1.AutoSize = true;
-			this.linkLabel1.Font = new Font(
+			linkLabel1.AutoSize = true;
+			linkLabel1.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.linkLabel1.Location = new Point(752, 32);
-			this.linkLabel1.Name = "linkLabel1";
-			this.linkLabel1.Size = new Size(33, 17);
-			this.linkLabel1.TabIndex = 0;
-			this.linkLabel1.TabStop = true;
-			this.linkLabel1.Text = "scan";
-			this.linkLabel1.LinkClicked +=
-				new LinkLabelLinkClickedEventHandler(this.Scan);
+			linkLabel1.Location = new Point(752, 32);
+			linkLabel1.Name = "linkLabel1";
+			linkLabel1.Size = new Size(33, 17);
+			linkLabel1.TabIndex = 0;
+			linkLabel1.TabStop = true;
+			linkLabel1.Text = "scan";
+			linkLabel1.LinkClicked +=
+				new LinkLabelLinkClickedEventHandler(Scan);
 			//
 			// pb
 			//
-			this.pb.Anchor = (
+			pb.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -835,132 +835,132 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.pb.Location = new Point(0, 556);
-			this.pb.Name = "pb";
-			this.pb.Size = new Size(792, 16);
-			this.pb.Step = 1;
-			this.pb.TabIndex = 2;
+			pb.Location = new Point(0, 556);
+			pb.Name = "pb";
+			pb.Size = new Size(792, 16);
+			pb.Step = 1;
+			pb.TabIndex = 2;
 			//
 			// groupBox1
 			//
-			this.groupBox1.Controls.Add(this.cbprev);
-			this.groupBox1.Controls.Add(this.cbready);
-			this.groupBox1.Controls.Add(this.cbguid);
-			this.groupBox1.Controls.Add(this.cbcompress);
-			this.groupBox1.FlatStyle = FlatStyle.System;
-			this.groupBox1.Font = new Font(
+			groupBox1.Controls.Add(cbprev);
+			groupBox1.Controls.Add(cbready);
+			groupBox1.Controls.Add(cbguid);
+			groupBox1.Controls.Add(cbcompress);
+			groupBox1.FlatStyle = FlatStyle.System;
+			groupBox1.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.groupBox1.Location = new Point(8, 32);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new Size(272, 64);
-			this.groupBox1.TabIndex = 3;
-			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "Options";
+			groupBox1.Location = new Point(8, 32);
+			groupBox1.Name = "groupBox1";
+			groupBox1.Size = new Size(272, 64);
+			groupBox1.TabIndex = 3;
+			groupBox1.TabStop = false;
+			groupBox1.Text = "Options";
 			//
 			// cbprev
 			//
-			this.cbprev.FlatStyle = FlatStyle.System;
-			this.cbprev.Font = new Font(
+			cbprev.FlatStyle = FlatStyle.System;
+			cbprev.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbprev.Location = new Point(168, 36);
-			this.cbprev.Name = "cbprev";
-			this.cbprev.Size = new Size(96, 24);
-			this.cbprev.TabIndex = 3;
-			this.cbprev.Text = "Preview";
+			cbprev.Location = new Point(168, 36);
+			cbprev.Name = "cbprev";
+			cbprev.Size = new Size(96, 24);
+			cbprev.TabIndex = 3;
+			cbprev.Text = "Preview";
 			//
 			// cbready
 			//
-			this.cbready.Checked = true;
-			this.cbready.CheckState = CheckState.Checked;
-			this.cbready.FlatStyle = FlatStyle.System;
-			this.cbready.Font = new Font(
+			cbready.Checked = true;
+			cbready.CheckState = CheckState.Checked;
+			cbready.FlatStyle = FlatStyle.System;
+			cbready.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbready.Location = new Point(168, 16);
-			this.cbready.Name = "cbready";
-			this.cbready.Size = new Size(96, 24);
-			this.cbready.TabIndex = 2;
-			this.cbready.Text = "EP Ready?";
+			cbready.Location = new Point(168, 16);
+			cbready.Name = "cbready";
+			cbready.Size = new Size(96, 24);
+			cbready.TabIndex = 2;
+			cbready.Text = "EP Ready?";
 			//
 			// cbguid
 			//
-			this.cbguid.FlatStyle = FlatStyle.System;
-			this.cbguid.Font = new Font(
+			cbguid.FlatStyle = FlatStyle.System;
+			cbguid.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbguid.Location = new Point(16, 36);
-			this.cbguid.Name = "cbguid";
-			this.cbguid.Size = new Size(96, 24);
-			this.cbguid.TabIndex = 1;
-			this.cbguid.Text = "Guid check";
+			cbguid.Location = new Point(16, 36);
+			cbguid.Name = "cbguid";
+			cbguid.Size = new Size(96, 24);
+			cbguid.TabIndex = 1;
+			cbguid.Text = "Guid check";
 			//
 			// cbcompress
 			//
-			this.cbcompress.FlatStyle = FlatStyle.System;
-			this.cbcompress.Font = new Font(
+			cbcompress.FlatStyle = FlatStyle.System;
+			cbcompress.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbcompress.Location = new Point(16, 16);
-			this.cbcompress.Name = "cbcompress";
-			this.cbcompress.Size = new Size(136, 24);
-			this.cbcompress.TabIndex = 0;
-			this.cbcompress.Text = "Compression check";
+			cbcompress.Location = new Point(16, 16);
+			cbcompress.Name = "cbcompress";
+			cbcompress.Size = new Size(136, 24);
+			cbcompress.TabIndex = 0;
+			cbcompress.Text = "Compression check";
 			//
 			// iList
 			//
-			this.iList.ColorDepth = ColorDepth.Depth32Bit;
-			this.iList.ImageSize = new Size(48, 48);
-			this.iList.TransparentColor = Color.Transparent;
+			iList.ColorDepth = ColorDepth.Depth32Bit;
+			iList.ImageSize = new Size(48, 48);
+			iList.TransparentColor = Color.Transparent;
 			//
 			// DownloadScan
 			//
-			this.AutoScaleBaseSize = new Size(6, 14);
-			this.ClientSize = new Size(792, 574);
-			this.Controls.Add(this.groupBox1);
-			this.Controls.Add(this.pb);
-			this.Controls.Add(this.lbdir);
-			this.Controls.Add(this.comboBox1);
-			this.Controls.Add(this.linkLabel1);
-			this.Font = new Font(
+			AutoScaleBaseSize = new Size(6, 14);
+			ClientSize = new Size(792, 574);
+			Controls.Add(groupBox1);
+			Controls.Add(pb);
+			Controls.Add(lbdir);
+			Controls.Add(comboBox1);
+			Controls.Add(linkLabel1);
+			Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.FormBorderStyle =
+			FormBorderStyle =
 				FormBorderStyle
 				.SizableToolWindow;
-			this.Name = "DownloadScan";
-			this.ShowInTaskbar = false;
-			this.Text = "Scan Folders";
-			this.lbdir.ResumeLayout(false);
-			this.gbskin.ResumeLayout(false);
-			this.groupBox2.ResumeLayout(false);
-			this.groupBox1.ResumeLayout(false);
-			this.ResumeLayout(false);
+			Name = "DownloadScan";
+			ShowInTaskbar = false;
+			Text = "Scan Folders";
+			lbdir.ResumeLayout(false);
+			gbskin.ResumeLayout(false);
+			groupBox2.ResumeLayout(false);
+			groupBox1.ResumeLayout(false);
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -1063,7 +1063,7 @@ namespace SimPe.Plugin
 		{
 			ArrayList guids = new ArrayList();
 			ArrayList aguids = new ArrayList();
-			if ((this.cbguid.Checked) && (this.prov != null))
+			if ((cbguid.Checked) && (prov != null))
 			{
 				foreach (uint g in prov.OpcodeProvider.StoredMemories.Keys)
 				{
@@ -1189,9 +1189,9 @@ namespace SimPe.Plugin
 						isskin = true;
 					}
 
-					if (this.cbcompress.Checked)
+					if (cbcompress.Checked)
 					{
-						int ret = this.CheckCompressed(package);
+						int ret = CheckCompressed(package);
 						if (ret == -1)
 						{
 							state = STR_COMP_DIR;
@@ -1204,7 +1204,7 @@ namespace SimPe.Plugin
 						//if (ret==-3) state = "Corrupted Compressed Dir";
 					}
 
-					if ((this.cbready.Checked) && (!isskin))
+					if ((cbready.Checked) && (!isskin))
 					{
 						if (
 							(
@@ -1242,9 +1242,9 @@ namespace SimPe.Plugin
 						}
 					}
 
-					if (this.cbguid.Checked)
+					if (cbguid.Checked)
 					{
-						guid = this.CheckGuid(package);
+						guid = CheckGuid(package);
 						foreach (uint g in guid)
 						{
 							if (g != 0)
@@ -1339,17 +1339,17 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			this.Cursor = Cursors.WaitCursor;
+			Cursor = Cursors.WaitCursor;
 			string[] files = System.IO.Directory.GetFiles(lbdir.Text, "*.package");
 			string[] dis_files = System.IO.Directory.GetFiles(lbdir.Text, "*.simpedis");
-			this.AddFiles(files, "yes", files.Length + dis_files.Length, 0);
-			this.AddFiles(
+			AddFiles(files, "yes", files.Length + dis_files.Length, 0);
+			AddFiles(
 				dis_files,
 				"no",
 				files.Length + dis_files.Length,
 				files.Length
 			);
-			this.Cursor = Cursors.Default;
+			Cursor = Cursors.Default;
 			lv.ListViewItemSorter = sorter;
 			pb.Value = 0;
 		}
@@ -1412,13 +1412,13 @@ namespace SimPe.Plugin
 		{
 			if (lvi == null)
 			{
-				this.cbbaby.CheckState = CheckState.Unchecked;
-				this.cbtoddler.CheckState = CheckState.Unchecked;
-				this.cbchild.CheckState = CheckState.Unchecked;
-				this.cbteen.CheckState = CheckState.Unchecked;
-				this.cbyoung.CheckState = CheckState.Unchecked;
-				this.cbadult.CheckState = CheckState.Unchecked;
-				this.cbelder.CheckState = CheckState.Unchecked;
+				cbbaby.CheckState = CheckState.Unchecked;
+				cbtoddler.CheckState = CheckState.Unchecked;
+				cbchild.CheckState = CheckState.Unchecked;
+				cbteen.CheckState = CheckState.Unchecked;
+				cbyoung.CheckState = CheckState.Unchecked;
+				cbadult.CheckState = CheckState.Unchecked;
+				cbelder.CheckState = CheckState.Unchecked;
 
 				cbact.CheckState = CheckState.Unchecked;
 				cbevery.CheckState = CheckState.Unchecked;
@@ -1543,7 +1543,7 @@ namespace SimPe.Plugin
 					{
 						object[] os = new object[1];
 						os[0] = lvi;
-						this.BeginInvoke(new ShowTextureDelegate(ShowTexture), os);
+						BeginInvoke(new ShowTextureDelegate(ShowTexture), os);
 					}
 				}
 			}
@@ -1577,7 +1577,7 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			this.FileName = System.IO.Path.Combine(
+			FileName = System.IO.Path.Combine(
 				lbdir.Text,
 				lv.SelectedItems[0].Text + ".package"
 			);
@@ -1752,7 +1752,7 @@ namespace SimPe.Plugin
 					|| (lvi.SubItems[4].Text.IndexOf(STR_COMP_SIZE) != -1)
 				)
 				{
-					this.FileName = System.IO.Path.Combine(
+					FileName = System.IO.Path.Combine(
 						lbdir.Text,
 						lvi.Text + ".package"
 					);
@@ -1832,7 +1832,7 @@ namespace SimPe.Plugin
 				int pos = 0;
 				foreach (ListViewItem lvi in lv.SelectedItems)
 				{
-					this.pb.Value = (pos++ * pb.Maximum) / count;
+					pb.Value = (pos++ * pb.Maximum) / count;
 					Application.DoEvents();
 
 					if (lvi.SubItems[1].Text.StartsWith("[skin]"))

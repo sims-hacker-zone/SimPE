@@ -100,7 +100,7 @@ namespace SimPe.Plugin.Scanner
 			{
 				ShelveDimension cs =
 					(ShelveDimension)ps.Data[0];
-				SetSubItem(lvi, this.StartColum, cs.ToString(), ps);
+				SetSubItem(lvi, StartColum, cs.ToString(), ps);
 			}
 		}
 
@@ -128,7 +128,7 @@ namespace SimPe.Plugin.Scanner
 			else if (items.Length == 1)
 			{
 				PackageState ps = items[0]
-					.PackageCacheItem.FindState(this.Uid, true);
+					.PackageCacheItem.FindState(Uid, true);
 				if (ps.Data.Length > 0)
 				{
 					ScannerPanelForm.Form.cbshelve.SelectedValue =
@@ -180,7 +180,7 @@ namespace SimPe.Plugin.Scanner
 					WaitingScreen.UpdateMessage(si.FileName);
 
 					PackageState ps = si.PackageCacheItem.FindState(
-						this.Uid,
+						Uid,
 						true
 					);
 					if (ps.Data.Length < 1)
@@ -217,9 +217,9 @@ namespace SimPe.Plugin.Scanner
 					}
 				}
 
-				if (chg && this.CallbackFinish != null)
+				if (chg && CallbackFinish != null)
 				{
-					this.CallbackFinish(false, false);
+					CallbackFinish(false, false);
 				}
 			}
 			catch (Exception ex)

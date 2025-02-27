@@ -233,7 +233,7 @@ namespace SimPe.Packages
 								src,
 								Size,
 								UncompressedSize,
-								this.headersize
+								headersize
 							);
 						}
 						else
@@ -261,7 +261,7 @@ namespace SimPe.Packages
 				{
 					if (uncdata == null)
 					{
-						uncdata = Uncompress(data, UncompressedSize, this.headersize);
+						uncdata = Uncompress(data, UncompressedSize, headersize);
 					}
 
 					return uncdata;
@@ -287,7 +287,7 @@ namespace SimPe.Packages
 					byte[] uncdata = Uncompress(
 						data,
 						UncompressedSize,
-						this.headersize,
+						headersize,
 						maxsize
 					);
 					return uncdata;
@@ -309,7 +309,7 @@ namespace SimPe.Packages
 			size = Math.Max(size, UncompressedSize);
 			lock (data)
 			{
-				return Uncompress(data, (uint)size, this.headersize);
+				return Uncompress(data, (uint)size, headersize);
 			}
 		}
 
@@ -1062,8 +1062,8 @@ namespace SimPe.Packages
 
 		public void Dispose()
 		{
-			this.data = null;
-			this.uncdata = null;
+			data = null;
+			uncdata = null;
 		}
 
 		#endregion

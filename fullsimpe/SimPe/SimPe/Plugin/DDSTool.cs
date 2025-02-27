@@ -89,109 +89,109 @@ namespace SimPe.Plugin
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(DDSTool));
-			this.pb = new PictureBox();
-			this.linkLabel1 = new LinkLabel();
-			this.ofd = new OpenFileDialog();
-			this.groupBox1 = new GroupBox();
-			this.cbformat = new ComboBox();
-			this.label6 = new Label();
-			this.tbheight = new TextBox();
-			this.tbwidth = new TextBox();
-			this.tblevel = new TextBox();
-			this.cbfilter = new CheckedListBox();
-			this.label5 = new Label();
-			this.cbsharpen = new ComboBox();
-			this.label4 = new Label();
-			this.label3 = new Label();
-			this.label2 = new Label();
-			this.label1 = new Label();
-			this.button1 = new Button();
-			((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
-			this.groupBox1.SuspendLayout();
-			this.SuspendLayout();
+			pb = new PictureBox();
+			linkLabel1 = new LinkLabel();
+			ofd = new OpenFileDialog();
+			groupBox1 = new GroupBox();
+			cbformat = new ComboBox();
+			label6 = new Label();
+			tbheight = new TextBox();
+			tbwidth = new TextBox();
+			tblevel = new TextBox();
+			cbfilter = new CheckedListBox();
+			label5 = new Label();
+			cbsharpen = new ComboBox();
+			label4 = new Label();
+			label3 = new Label();
+			label2 = new Label();
+			label1 = new Label();
+			button1 = new Button();
+			((System.ComponentModel.ISupportInitialize)(pb)).BeginInit();
+			groupBox1.SuspendLayout();
+			SuspendLayout();
 			//
 			// pb
 			//
-			this.pb.BorderStyle = BorderStyle.FixedSingle;
-			this.pb.Location = new Point(16, 24);
-			this.pb.Name = "pb";
-			this.pb.Size = new Size(128, 128);
-			this.pb.SizeMode = PictureBoxSizeMode.Zoom;
-			this.pb.TabIndex = 0;
-			this.pb.TabStop = false;
+			pb.BorderStyle = BorderStyle.FixedSingle;
+			pb.Location = new Point(16, 24);
+			pb.Name = "pb";
+			pb.Size = new Size(128, 128);
+			pb.SizeMode = PictureBoxSizeMode.Zoom;
+			pb.TabIndex = 0;
+			pb.TabStop = false;
 			//
 			// linkLabel1
 			//
-			this.linkLabel1.AutoSize = true;
-			this.linkLabel1.Font = new Font(
+			linkLabel1.AutoSize = true;
+			linkLabel1.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.linkLabel1.LinkArea = new LinkArea(0, 4);
-			this.linkLabel1.Location = new Point(48, 160);
-			this.linkLabel1.Name = "linkLabel1";
-			this.linkLabel1.Size = new Size(93, 18);
-			this.linkLabel1.TabIndex = 1;
-			this.linkLabel1.TabStop = true;
-			this.linkLabel1.Text = "open Image...";
-			this.linkLabel1.UseCompatibleTextRendering = true;
-			this.linkLabel1.LinkClicked +=
+			linkLabel1.LinkArea = new LinkArea(0, 4);
+			linkLabel1.Location = new Point(48, 160);
+			linkLabel1.Name = "linkLabel1";
+			linkLabel1.Size = new Size(93, 18);
+			linkLabel1.TabIndex = 1;
+			linkLabel1.TabStop = true;
+			linkLabel1.Text = "open Image...";
+			linkLabel1.UseCompatibleTextRendering = true;
+			linkLabel1.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.linkLabel1_LinkClicked
+					linkLabel1_LinkClicked
 				);
 			//
 			// ofd
 			//
-			this.ofd.Filter =
+			ofd.Filter =
 				"All Image Files (*.jpg;*.bmp;*.gif;*.png)|*.jpg;*.bmp;*.gif;*.png|Bitmap (*.bmp)|"
 				+ "*.bmp|Gif (*.gif)|*.gif|JPEG File (*.jpg)|*.jpg|Png (*.png)|*.png|All Files (*.*"
 				+ ")|*.*";
 			//
 			// groupBox1
 			//
-			this.groupBox1.BackColor = Color.Transparent;
-			this.groupBox1.Controls.Add(this.cbformat);
-			this.groupBox1.Controls.Add(this.label6);
-			this.groupBox1.Controls.Add(this.tbheight);
-			this.groupBox1.Controls.Add(this.tbwidth);
-			this.groupBox1.Controls.Add(this.tblevel);
-			this.groupBox1.Controls.Add(this.cbfilter);
-			this.groupBox1.Controls.Add(this.label5);
-			this.groupBox1.Controls.Add(this.cbsharpen);
-			this.groupBox1.Controls.Add(this.label4);
-			this.groupBox1.Controls.Add(this.label3);
-			this.groupBox1.Controls.Add(this.label2);
-			this.groupBox1.Controls.Add(this.label1);
-			this.groupBox1.Font = new Font(
+			groupBox1.BackColor = Color.Transparent;
+			groupBox1.Controls.Add(cbformat);
+			groupBox1.Controls.Add(label6);
+			groupBox1.Controls.Add(tbheight);
+			groupBox1.Controls.Add(tbwidth);
+			groupBox1.Controls.Add(tblevel);
+			groupBox1.Controls.Add(cbfilter);
+			groupBox1.Controls.Add(label5);
+			groupBox1.Controls.Add(cbsharpen);
+			groupBox1.Controls.Add(label4);
+			groupBox1.Controls.Add(label3);
+			groupBox1.Controls.Add(label2);
+			groupBox1.Controls.Add(label1);
+			groupBox1.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.groupBox1.Location = new Point(160, 8);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new Size(312, 208);
-			this.groupBox1.TabIndex = 2;
-			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "Settings";
+			groupBox1.Location = new Point(160, 8);
+			groupBox1.Name = "groupBox1";
+			groupBox1.Size = new Size(312, 208);
+			groupBox1.TabIndex = 2;
+			groupBox1.TabStop = false;
+			groupBox1.Text = "Settings";
 			//
 			// cbformat
 			//
-			this.cbformat.DropDownStyle =
+			cbformat.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbformat.Font = new Font(
+			cbformat.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbformat.Items.AddRange(
+			cbformat.Items.AddRange(
 				new object[]
 				{
 					"None",
@@ -212,86 +212,86 @@ namespace SimPe.Plugin
 					"MeanRemoval",
 				}
 			);
-			this.cbformat.Location = new Point(80, 64);
-			this.cbformat.Name = "cbformat";
-			this.cbformat.Size = new Size(224, 21);
-			this.cbformat.TabIndex = 12;
+			cbformat.Location = new Point(80, 64);
+			cbformat.Name = "cbformat";
+			cbformat.Size = new Size(224, 21);
+			cbformat.TabIndex = 12;
 			//
 			// label6
 			//
-			this.label6.AutoSize = true;
-			this.label6.Font = new Font(
+			label6.AutoSize = true;
+			label6.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label6.Location = new Point(136, 48);
-			this.label6.Name = "label6";
-			this.label6.Size = new Size(14, 13);
-			this.label6.TabIndex = 11;
-			this.label6.Text = "x";
+			label6.Location = new Point(136, 48);
+			label6.Name = "label6";
+			label6.Size = new Size(14, 13);
+			label6.TabIndex = 11;
+			label6.Text = "x";
 			//
 			// tbheight
 			//
-			this.tbheight.Font = new Font(
+			tbheight.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbheight.Location = new Point(152, 40);
-			this.tbheight.Name = "tbheight";
-			this.tbheight.ReadOnly = true;
-			this.tbheight.Size = new Size(48, 21);
-			this.tbheight.TabIndex = 10;
-			this.tbheight.Text = "0";
+			tbheight.Location = new Point(152, 40);
+			tbheight.Name = "tbheight";
+			tbheight.ReadOnly = true;
+			tbheight.Size = new Size(48, 21);
+			tbheight.TabIndex = 10;
+			tbheight.Text = "0";
 			//
 			// tbwidth
 			//
-			this.tbwidth.Font = new Font(
+			tbwidth.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbwidth.Location = new Point(80, 40);
-			this.tbwidth.Name = "tbwidth";
-			this.tbwidth.ReadOnly = true;
-			this.tbwidth.Size = new Size(48, 21);
-			this.tbwidth.TabIndex = 9;
-			this.tbwidth.Text = "0";
+			tbwidth.Location = new Point(80, 40);
+			tbwidth.Name = "tbwidth";
+			tbwidth.ReadOnly = true;
+			tbwidth.Size = new Size(48, 21);
+			tbwidth.TabIndex = 9;
+			tbwidth.Text = "0";
 			//
 			// tblevel
 			//
-			this.tblevel.Font = new Font(
+			tblevel.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tblevel.Location = new Point(80, 16);
-			this.tblevel.Name = "tblevel";
-			this.tblevel.Size = new Size(80, 21);
-			this.tblevel.TabIndex = 8;
-			this.tblevel.Text = "0";
+			tblevel.Location = new Point(80, 16);
+			tblevel.Name = "tblevel";
+			tblevel.Size = new Size(80, 21);
+			tblevel.TabIndex = 8;
+			tblevel.Text = "0";
 			//
 			// cbfilter
 			//
-			this.cbfilter.CheckOnClick = true;
-			this.cbfilter.Font = new Font(
+			cbfilter.CheckOnClick = true;
+			cbfilter.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbfilter.IntegralHeight = false;
-			this.cbfilter.Items.AddRange(
+			cbfilter.IntegralHeight = false;
+			cbfilter.Items.AddRange(
 				new object[]
 				{
 					"dither",
@@ -311,40 +311,40 @@ namespace SimPe.Plugin
 					"Kaiser",
 				}
 			);
-			this.cbfilter.Location = new Point(80, 120);
-			this.cbfilter.Name = "cbfilter";
-			this.cbfilter.Size = new Size(224, 80);
-			this.cbfilter.TabIndex = 7;
+			cbfilter.Location = new Point(80, 120);
+			cbfilter.Name = "cbfilter";
+			cbfilter.Size = new Size(224, 80);
+			cbfilter.TabIndex = 7;
 			//
 			// label5
 			//
-			this.label5.AutoSize = true;
-			this.label5.Font = new Font(
+			label5.AutoSize = true;
+			label5.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label5.Location = new Point(35, 120);
-			this.label5.Name = "label5";
-			this.label5.Size = new Size(40, 13);
-			this.label5.TabIndex = 6;
-			this.label5.Text = "Filter:";
+			label5.Location = new Point(35, 120);
+			label5.Name = "label5";
+			label5.Size = new Size(40, 13);
+			label5.TabIndex = 6;
+			label5.Text = "Filter:";
 			//
 			// cbsharpen
 			//
-			this.cbsharpen.DropDownStyle =
+			cbsharpen.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbsharpen.Font = new Font(
+			cbsharpen.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbsharpen.Items.AddRange(
+			cbsharpen.Items.AddRange(
 				new object[]
 				{
 					"None",
@@ -365,78 +365,78 @@ namespace SimPe.Plugin
 					"MeanRemoval",
 				}
 			);
-			this.cbsharpen.Location = new Point(80, 88);
-			this.cbsharpen.Name = "cbsharpen";
-			this.cbsharpen.Size = new Size(224, 21);
-			this.cbsharpen.TabIndex = 5;
+			cbsharpen.Location = new Point(80, 88);
+			cbsharpen.Name = "cbsharpen";
+			cbsharpen.Size = new Size(224, 21);
+			cbsharpen.TabIndex = 5;
 			//
 			// label4
 			//
-			this.label4.AutoSize = true;
-			this.label4.Font = new Font(
+			label4.AutoSize = true;
+			label4.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label4.Location = new Point(16, 96);
-			this.label4.Name = "label4";
-			this.label4.Size = new Size(60, 13);
-			this.label4.TabIndex = 3;
-			this.label4.Text = "Sharpen:";
+			label4.Location = new Point(16, 96);
+			label4.Name = "label4";
+			label4.Size = new Size(60, 13);
+			label4.TabIndex = 3;
+			label4.Text = "Sharpen:";
 			//
 			// label3
 			//
-			this.label3.AutoSize = true;
-			this.label3.Font = new Font(
+			label3.AutoSize = true;
+			label3.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label3.Location = new Point(23, 72);
-			this.label3.Name = "label3";
-			this.label3.Size = new Size(52, 13);
-			this.label3.TabIndex = 2;
-			this.label3.Text = "Format:";
+			label3.Location = new Point(23, 72);
+			label3.Name = "label3";
+			label3.Size = new Size(52, 13);
+			label3.TabIndex = 2;
+			label3.Text = "Format:";
 			//
 			// label2
 			//
-			this.label2.AutoSize = true;
-			this.label2.Font = new Font(
+			label2.AutoSize = true;
+			label2.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label2.Location = new Point(40, 48);
-			this.label2.Name = "label2";
-			this.label2.Size = new Size(36, 13);
-			this.label2.TabIndex = 1;
-			this.label2.Text = "Size:";
+			label2.Location = new Point(40, 48);
+			label2.Name = "label2";
+			label2.Size = new Size(36, 13);
+			label2.TabIndex = 1;
+			label2.Text = "Size:";
 			//
 			// label1
 			//
-			this.label1.AutoSize = true;
-			this.label1.Font = new Font(
+			label1.AutoSize = true;
+			label1.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label1.Location = new Point(28, 24);
-			this.label1.Name = "label1";
-			this.label1.Size = new Size(48, 13);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Levels:";
+			label1.Location = new Point(28, 24);
+			label1.Name = "label1";
+			label1.Size = new Size(48, 13);
+			label1.TabIndex = 0;
+			label1.Text = "Levels:";
 			//
 			// button1
 			//
-			this.button1.Anchor = (
+			button1.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -444,40 +444,40 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.button1.FlatStyle = FlatStyle.System;
-			this.button1.Location = new Point(397, 224);
-			this.button1.Name = "button1";
-			this.button1.Size = new Size(75, 23);
-			this.button1.TabIndex = 3;
-			this.button1.Text = "Build";
-			this.button1.Click += new EventHandler(this.Build);
+			button1.FlatStyle = FlatStyle.System;
+			button1.Location = new Point(397, 224);
+			button1.Name = "button1";
+			button1.Size = new Size(75, 23);
+			button1.TabIndex = 3;
+			button1.Text = "Build";
+			button1.Click += new EventHandler(Build);
 			//
 			// DDSTool
 			//
-			this.AutoScaleBaseSize = new Size(6, 14);
-			this.ClientSize = new Size(480, 254);
-			this.Controls.Add(this.button1);
-			this.Controls.Add(this.groupBox1);
-			this.Controls.Add(this.linkLabel1);
-			this.Controls.Add(this.pb);
-			this.Font = new Font(
+			AutoScaleBaseSize = new Size(6, 14);
+			ClientSize = new Size(480, 254);
+			Controls.Add(button1);
+			Controls.Add(groupBox1);
+			Controls.Add(linkLabel1);
+			Controls.Add(pb);
+			Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.FormBorderStyle = FormBorderStyle.FixedDialog;
-			this.Icon = ((Icon)(resources.GetObject("$this.Icon")));
-			this.MaximizeBox = false;
-			this.MinimizeBox = false;
-			this.Name = "DDSTool";
-			this.Text = "DDS Builder";
-			((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
-			this.groupBox1.ResumeLayout(false);
-			this.groupBox1.PerformLayout();
-			this.ResumeLayout(false);
-			this.PerformLayout();
+			FormBorderStyle = FormBorderStyle.FixedDialog;
+			Icon = ((Icon)(resources.GetObject("$this.Icon")));
+			MaximizeBox = false;
+			MinimizeBox = false;
+			Name = "DDSTool";
+			Text = "DDS Builder";
+			((System.ComponentModel.ISupportInitialize)(pb)).EndInit();
+			groupBox1.ResumeLayout(false);
+			groupBox1.PerformLayout();
+			ResumeLayout(false);
+			PerformLayout();
 		}
 		#endregion
 
@@ -491,10 +491,10 @@ namespace SimPe.Plugin
 			img = null;
 			dds = null;
 
-			this.cbsharpen.SelectedIndex = 0;
-			this.tblevel.Text = level.ToString();
-			this.tbwidth.Text = size.Width.ToString();
-			this.tbheight.Text = size.Height.ToString();
+			cbsharpen.SelectedIndex = 0;
+			tblevel.Text = level.ToString();
+			tbwidth.Text = size.Width.ToString();
+			tbheight.Text = size.Height.ToString();
 
 			cbformat.SelectedIndex = 2;
 			for (int i = 0; i < cbformat.Items.Count; i++)
@@ -507,7 +507,7 @@ namespace SimPe.Plugin
 				}
 			}
 
-			this.button1.Enabled = false;
+			button1.Enabled = false;
 			ShowDialog();
 
 			return dds;
@@ -530,7 +530,7 @@ namespace SimPe.Plugin
 
 				tbwidth.Text = img.Width.ToString();
 				tbheight.Text = img.Height.ToString();
-				this.button1.Enabled = (img != null);
+				button1.Enabled = (img != null);
 			}
 		}
 

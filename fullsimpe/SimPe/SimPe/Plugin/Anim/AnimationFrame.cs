@@ -33,7 +33,7 @@ namespace SimPe.Plugin.Anim
 		public AnimationFrame(short tc, FrameType tp)
 		{
 			this.tc = tc;
-			this.Type = tp;
+			Type = tp;
 			Blocks = new AnimationAxisTransform[3];
 		}
 
@@ -372,11 +372,11 @@ namespace SimPe.Plugin.Anim
 		{
 			get
 			{
-				double x = this.Float_X;
-				double y = this.Float_Y;
-				double z = this.Float_Z;
+				double x = Float_X;
+				double y = Float_Y;
+				double z = Float_Z;
 
-				return new Vector3f(this.Float_X, this.Float_Y, this.Float_Z);
+				return new Vector3f(Float_X, Float_Y, Float_Z);
 			}
 		}
 

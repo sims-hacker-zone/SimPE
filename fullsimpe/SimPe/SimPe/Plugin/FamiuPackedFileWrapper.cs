@@ -70,8 +70,8 @@ namespace SimPe.Plugin
 					IPackedFileDescriptor pfd = package.FindFile(
 						Data.MetaData.STRING_FILE,
 						0,
-						this.FileDescriptor.Group,
-						this.FileDescriptor.Instance
+						FileDescriptor.Group,
+						FileDescriptor.Instance
 					);
 					if (pfd != null)
 					{
@@ -189,7 +189,7 @@ namespace SimPe.Plugin
 				IPackedFileDescriptor pfd = fumbs.FindFileAnyGroup(
 					0x8C3CE95A,
 					0,
-					this.FileDescriptor.Instance
+					FileDescriptor.Instance
 				);
 				if (pfd != null)
 				{
@@ -247,7 +247,7 @@ namespace SimPe.Plugin
 				"Contains the history of a well played family",
 				1,
 				Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.book.png")
 				)
 			);
@@ -255,12 +255,12 @@ namespace SimPe.Plugin
 
 		protected override string GetResourceName(Data.TypeAlias ta)
 		{
-			if (!this.Processed)
+			if (!Processed)
 			{
 				ProcessData(FileDescriptor, Package);
 			}
 
-			return this.Name + " History";
+			return Name + " History";
 		}
 
 		/// <summary>

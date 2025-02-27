@@ -63,7 +63,7 @@ namespace SimPe.Actions.Default
 				);
 			}
 
-			ofd.Title = Localization.GetString(this.ToString());
+			ofd.Title = Localization.GetString(ToString());
 			ofd.Multiselect = add;
 			if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
 			{
@@ -96,7 +96,7 @@ namespace SimPe.Actions.Default
 				return;
 			}
 
-			Collections.PackedFileDescriptors pfds = this.LoadDescriptors(false);
+			Collections.PackedFileDescriptors pfds = LoadDescriptors(false);
 			if (es.Count > 0)
 			{
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)

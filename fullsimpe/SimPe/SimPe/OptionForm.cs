@@ -38,15 +38,15 @@ namespace SimPe
 				Application.DoEvents();
 				InitializeComponent();
 
-				this.tbFolders.Tag = hcFolders;
-				this.tbFileTable.Tag = hcFileTable;
-				this.tbCheck.Tag = hcCheck;
-				this.tbSettings.Tag = hcSettings;
-				this.tbCustom.Tag = hcCustom;
-				this.tbSceneGraph.Tag = hcSceneGraph;
-				this.tbPlugins.Tag = hcPlugins;
-				this.tbTools.Tag = hcTools;
-				this.tbIdent.Tag = hcIdent;
+				tbFolders.Tag = hcFolders;
+				tbFileTable.Tag = hcFileTable;
+				tbCheck.Tag = hcCheck;
+				tbSettings.Tag = hcSettings;
+				tbCustom.Tag = hcCustom;
+				tbSceneGraph.Tag = hcSceneGraph;
+				tbPlugins.Tag = hcPlugins;
+				tbTools.Tag = hcTools;
+				tbIdent.Tag = hcIdent;
 
 				Registry.ResourceListExtensionFormats[] rls =
 					(Registry.ResourceListExtensionFormats[])
@@ -84,11 +84,11 @@ namespace SimPe
 
 				cbRLTGI.SelectedIndex = 0;
 
-				this.pgPaths.SelectedObject = PathSettings.Global;
+				pgPaths.SelectedObject = PathSettings.Global;
 
 				for (byte i = 1; i < 0x2d; i++)
 				{
-					this.cblang.Items.Add(new PackedFiles.Wrapper.StrLanguage(i)); // CJH
+					cblang.Items.Add(new PackedFiles.Wrapper.StrLanguage(i)); // CJH
 				}
 
 				Registry.ReportFormats[] rfs = (Registry.ReportFormats[])
@@ -106,7 +106,7 @@ namespace SimPe
 						.Settings
 				)
 				{
-					this.cbCustom.Items.Add(settings);
+					cbCustom.Items.Add(settings);
 				}
 
 				if (cbCustom.Items.Count > 0)
@@ -116,8 +116,8 @@ namespace SimPe
 
 				//if (Helper.WindowsRegistry.UseExpansions2) this.hdFileTable.HeaderText = "File Table (High Level Expansions)";
 
-				this.toolTip1.SetToolTip(
-					this.cblang,
+				toolTip1.SetToolTip(
+					cblang,
 					"Game Language is " + PathProvider.Global.InGameLang
 				);
 
@@ -131,9 +131,9 @@ namespace SimPe
 
 		void Execute()
 		{
-			this.Tag = true;
+			Tag = true;
 			tbdds.Text = PathProvider.Global.NvidiaDDSPath;
-			this.cbdebug.Checked = Helper.WindowsRegistry.GameDebug;
+			cbdebug.Checked = Helper.WindowsRegistry.GameDebug;
 			cbautobak.Checked = Helper.WindowsRegistry.AutoBackup;
 			cbblur.Checked = Helper.WindowsRegistry.BlurNudity;
 			cbsound.Checked = Helper.WindowsRegistry.EnableSound;
@@ -164,25 +164,25 @@ namespace SimPe
 			cbmoreskills.Checked = Helper.WindowsRegistry.ShowMoreSkills;
 			cbpetability.Checked = Helper.WindowsRegistry.ShowPetAbilities;
 
-			this.cbLock_CheckedChanged(cbLock, null);
+			cbLock_CheckedChanged(cbLock, null);
 
-			this.tbUsername.Text = Helper.WindowsRegistry.Username;
-			this.tbPassword.Text = Helper.WindowsRegistry.Password;
-			this.tbUserid.Text =
+			tbUsername.Text = Helper.WindowsRegistry.Username;
+			tbPassword.Text = Helper.WindowsRegistry.Password;
+			tbUserid.Text =
 				"0x" + Helper.HexString(Helper.WindowsRegistry.CachedUserId);
 			if (!UserVerification.HaveValidUserId)
 			{
-				this.btcreateid.Visible = true;
+				btcreateid.Visible = true;
 			}
 
-			this.cbblur.Visible = (PathProvider.Global.EPInstalled < 18);
-			this.cbIncCep.Enabled = (PathProvider.Global.GameVersion < 18);
-			this.cbIncCep.Visible = (PathProvider.Global.GameVersion < 18);
+			cbblur.Visible = (PathProvider.Global.EPInstalled < 18);
+			cbIncCep.Enabled = (PathProvider.Global.GameVersion < 18);
+			cbIncCep.Visible = (PathProvider.Global.GameVersion < 18);
 
-			this.toolTip1.SetToolTip(this.panel1, "");
+			toolTip1.SetToolTip(panel1, "");
 
-			this.groupBox5.Visible = !Helper.WindowsRegistry.Layout.IsClassicPreset;
-			this.cbBigIcons.Visible = !Helper.WindowsRegistry.Layout.IsClassicPreset;
+			groupBox5.Visible = !Helper.WindowsRegistry.Layout.IsClassicPreset;
+			cbBigIcons.Visible = !Helper.WindowsRegistry.Layout.IsClassicPreset;
 
 			if (
 				((byte)Helper.WindowsRegistry.LanguageCode <= cblang.Items.Count)
@@ -264,11 +264,11 @@ namespace SimPe
 				groupBox9.Height += groupBox8.Height;
 			}
 
-			this.Tag = null;
+			Tag = null;
 			btReload.Enabled = Helper.LocalMode; // When in LocalMode, default the Reload button to enabled.
 			SetupFileTableCheckboxes();
 
-			this.ShowDialog();
+			ShowDialog();
 		}
 
 		private void SaveOptionsClick(object sender, EventArgs e)
@@ -386,7 +386,7 @@ namespace SimPe
 
 			if (ofd.ShowDialog() == DialogResult.OK)
 			{
-				this.tbdds.Text = System.IO.Path.GetDirectoryName(ofd.FileName);
+				tbdds.Text = System.IO.Path.GetDirectoryName(ofd.FileName);
 			}
 		}
 
@@ -397,7 +397,7 @@ namespace SimPe
 
 		private void DDSChanged(object sender, EventArgs e)
 		{
-			string name = System.IO.Path.Combine(this.tbdds.Text, "nvdxt.exe");
+			string name = System.IO.Path.Combine(tbdds.Text, "nvdxt.exe");
 			lldds.Visible = (!System.IO.File.Exists(name));
 			lldds2.Visible = lldds.Visible;
 		}
@@ -420,9 +420,9 @@ namespace SimPe
 		private void cbexthemes_CheckedChanged(object sender, EventArgs e)
 		{
 			//Helper.WindowsRegistry.ThemedForms = this.cbexthemes.Checked;
-			if (this.Tag == null)
+			if (Tag == null)
 			{
-				this.lbBigIconNote.Visible = true;
+				lbBigIconNote.Visible = true;
 			}
 		}
 
@@ -462,7 +462,7 @@ namespace SimPe
 			if (uids.Contains(wrapper.WrapperDescription.UID))
 			{
 				return Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.error.png")
 				);
 			}
@@ -470,13 +470,13 @@ namespace SimPe
 			if (wrapper.Priority >= 0)
 			{
 				return Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.enabled.png")
 				);
 			}
 
 			return Image.FromStream(
-				this.GetType()
+				GetType()
 					.Assembly.GetManifestResourceStream("SimPe.img.disabled.png")
 			);
 		}
@@ -504,14 +504,14 @@ namespace SimPe
 			if (pn.Height == pn.DisplayRectangle.Top + 1)
 			{
 				return Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.expand.png")
 				);
 			}
 			else
 			{
 				return Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.shrink.png")
 				);
 			}
@@ -768,13 +768,13 @@ namespace SimPe
 				pb.Top = pn.DisplayRectangle.Top + 4; //pn.DisplayRectangle.Top + 4 + pb.Height + 4; //pn.Height - 2*pb.Height -16;
 				pb.Anchor = AnchorStyles.Top | AnchorStyles.Right;
 				pb.Image = Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream(
 							"SimPe.img.multienabled.png"
 						)
 				);
 				pb.Click += new EventHandler(pn_Click);
-				this.toolTip1.SetToolTip(pb, "Allows Multiple instance");
+				toolTip1.SetToolTip(pb, "Allows Multiple instance");
 
 				pb = new PictureBox();
 				pb.Parent = pn;
@@ -785,14 +785,14 @@ namespace SimPe
 				pb.Left = pn.Width - 3 * pb.Width - pb.Top;
 				pb.Anchor = AnchorStyles.Top | AnchorStyles.Right;
 				pb.Image = Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream(
 							"SimPe.img.smallmultienabled.png"
 						)
 				);
 				pb.BackColor = Color.Transparent;
 
-				this.toolTip1.SetToolTip(pb, "Allows Multiple instance.");
+				toolTip1.SetToolTip(pb, "Allows Multiple instance.");
 			}
 
 			if (wrapper is PackedFiles.Wrapper.ErrorWrapper)
@@ -814,7 +814,7 @@ namespace SimPe
 
 				pb.Anchor = AnchorStyles.Top | AnchorStyles.Right;
 				pb.Image = Image.FromStream(
-						this.GetType()
+						GetType()
 							.Assembly.GetManifestResourceStream("SimPe.img.error.png")
 					)
 					.GetThumbnailImage(
@@ -825,7 +825,7 @@ namespace SimPe
 					);
 				;
 				pb.BackColor = Color.Transparent;
-				this.toolTip1.SetToolTip(
+				toolTip1.SetToolTip(
 					pb,
 					"This wrapper caused an Error while loading."
 				);
@@ -868,7 +868,7 @@ namespace SimPe
 			pbe.Tag = pn;
 			pbe.BackColor = Color.Transparent;
 			pbe.Click += new EventHandler(pb_ExpandClick);
-			this.toolTip1.SetToolTip(pbe, "Collapse/Expand");
+			toolTip1.SetToolTip(pbe, "Collapse/Expand");
 
 			pb = new PictureBox();
 			pb.Parent = pn;
@@ -881,7 +881,7 @@ namespace SimPe
 			pb.Tag = pn;
 			pb.BackColor = Color.Transparent;
 			pb.Click += new EventHandler(pb_Click);
-			this.toolTip1.SetToolTip(pb, "Enable/Disable");
+			toolTip1.SetToolTip(pb, "Enable/Disable");
 
 			pb = new PictureBox();
 			pb.Parent = pn;
@@ -901,10 +901,10 @@ namespace SimPe
 			pb.BackColor = Color.Transparent;
 			pb.Tag = pn;
 			pb.Click += new EventHandler(pb_Click);
-			this.toolTip1.SetToolTip(pb, "Enable/Disable");
+			toolTip1.SetToolTip(pb, "Enable/Disable");
 
 			Panel pan = new Panel();
-			pan.BackColor = this.cnt.BackColor;
+			pan.BackColor = cnt.BackColor;
 			pan.Parent = pn;
 			pan.Height = 4;
 			pan.Dock = DockStyle.Bottom;
@@ -1015,7 +1015,7 @@ namespace SimPe
 			wrapper.Priority *= -1;
 			SetPanel(wrapper, pn);
 
-			Image i = this.GetImage(wrapper);
+			Image i = GetImage(wrapper);
 
 			SetBackgroundColor(pn.Controls[pn.Controls.Count - 2], i, true);
 			SetBackgroundColor(pn.Controls[pn.Controls.Count - 3], i, false);
@@ -1158,7 +1158,7 @@ namespace SimPe
 		{
 			if (lastpn != null)
 			{
-				this.pn_Focused(lastpn, null);
+				pn_Focused(lastpn, null);
 			}
 		}
 
@@ -1177,29 +1177,29 @@ namespace SimPe
 
 		private void tbPassword_Leave(object sender, EventArgs e)
 		{
-			if (this.Tag != null)
+			if (Tag != null)
 			{
 				return;
 			}
 
 			if (
-				this.tbUserid.Text
+				tbUserid.Text
 				!= "0x"
 					+ Helper.HexString(
 						UserVerification.GenerateUserId(
 							0,
-							this.tbUsername.Text,
-							this.tbPassword.Text
+							tbUsername.Text,
+							tbPassword.Text
 						)
 					)
 			)
 			{
-				if (this.tbUserid.Text != "0x00000000")
+				if (tbUserid.Text != "0x00000000")
 				{
-					this.btcreateid.Text = "Update Id";
+					btcreateid.Text = "Update Id";
 				}
 
-				this.btcreateid.Visible = true;
+				btcreateid.Visible = true;
 			}
 		}
 
@@ -1210,9 +1210,9 @@ namespace SimPe
 				tbUsername.Text,
 				tbPassword.Text
 			);
-			this.tbUserid.Text =
+			tbUserid.Text =
 				"0x" + Helper.HexString(Helper.WindowsRegistry.CachedUserId);
-			this.btcreateid.Visible = false;
+			btcreateid.Visible = false;
 		}
 
 		private void cbblur_CheckedChanged(object sender, EventArgs e)
@@ -1250,7 +1250,7 @@ namespace SimPe
 			lcb.Add(key, cb);
 			cb.Text = text;
 			cb.CheckedChanged += new EventHandler(
-				this.cbIncNightlife_CheckedChanged
+				cbIncNightlife_CheckedChanged
 			);
 
 			cb.Visible = true;
@@ -1262,7 +1262,7 @@ namespace SimPe
 
 		private void CreateFileTableCheckboxes()
 		{
-			this.Enabled = false;
+			Enabled = false;
 			try
 			{
 				lcb = new Dictionary<string, CheckBox>();
@@ -1313,13 +1313,13 @@ namespace SimPe
 			finally
 			{
 				Application.DoEvents();
-				this.Enabled = true;
+				Enabled = true;
 			}
 		}
 
 		private void btReload_Click(object sender, EventArgs e)
 		{
-			this.Enabled = false;
+			Enabled = false;
 			try
 			{
 				Helper.LocalMode = btReload.Enabled = false; // We're no longer in LocalMode after a filetable reload
@@ -1336,7 +1336,7 @@ namespace SimPe
 			finally
 			{
 				Application.DoEvents();
-				this.Enabled = true;
+				Enabled = true;
 			}
 		}
 
@@ -1345,7 +1345,7 @@ namespace SimPe
 			LinkLabelLinkClickedEventArgs e
 		)
 		{
-			this.Enabled = false;
+			Enabled = false;
 			try
 			{
 				FileTableBase.BuildFolderXml();
@@ -1360,7 +1360,7 @@ namespace SimPe
 			finally
 			{
 				Application.DoEvents();
-				this.Enabled = true;
+				Enabled = true;
 			}
 		}
 
@@ -1475,7 +1475,7 @@ namespace SimPe
 		{
 			if (isCEP(fti))
 			{
-				return cb == this.cbIncCep;
+				return cb == cbIncCep;
 			}
 
 			if (cb == lcb["cbIncGraphics"])
@@ -1506,7 +1506,7 @@ namespace SimPe
 
 		private void SetupFileTableCheckboxes(CheckBox cb, FileTableItemType epver)
 		{
-			if (this.cbIncCep.Tag != null)
+			if (cbIncCep.Tag != null)
 			{
 				return;
 			}
@@ -1526,17 +1526,17 @@ namespace SimPe
 				}
 			}
 
-			this.cbIncCep.Tag = true;
+			cbIncCep.Tag = true;
 			cb.CheckState =
 				ignored == 0 ? CheckState.Checked
 				: ignored == found ? CheckState.Unchecked
 				: CheckState.Indeterminate;
-			this.cbIncCep.Tag = null;
+			cbIncCep.Tag = null;
 		}
 
 		private void SetupFileTableCheckboxes()
 		{
-			SetupFileTableCheckboxes(this.cbIncCep, null);
+			SetupFileTableCheckboxes(cbIncCep, null);
 			foreach (CheckBox cb in lcb.Values)
 			{
 				ExpansionItem ei = cb.Tag as ExpansionItem;
@@ -1553,7 +1553,7 @@ namespace SimPe
 			ItemCheckEventArgs e
 		)
 		{
-			if (this.Tag != null)
+			if (Tag != null)
 			{
 				return;
 			}
@@ -1563,7 +1563,7 @@ namespace SimPe
 				return;
 			}
 
-			this.Enabled = false;
+			Enabled = false;
 			try
 			{
 				((FileTableItem)lbfolder.SelectedItem).Ignore =
@@ -1574,7 +1574,7 @@ namespace SimPe
 			finally
 			{
 				Application.DoEvents();
-				this.Enabled = true;
+				Enabled = true;
 			}
 		}
 
@@ -1588,7 +1588,7 @@ namespace SimPe
 		void ChangeFileTable(CheckBox cb, FileTableItemType epver)
 		{
 			bool firstobjpkg = true;
-			this.cbIncCep.Tag = true;
+			cbIncCep.Tag = true;
 			for (int i = 0; i < lbfolder.Items.Count; i++)
 			{
 				FileTableItem fti = (FileTableItem)lbfolder.Items[i];
@@ -1638,7 +1638,7 @@ namespace SimPe
 				}
 				#endregion
 			}
-			this.cbIncCep.Tag = null;
+			cbIncCep.Tag = null;
 		}
 
 		private void cbIncNightlife_CheckedChanged(object sender, EventArgs e)
@@ -1648,20 +1648,20 @@ namespace SimPe
 				return;
 			}
 
-			if (this.cbIncCep.Tag != null)
+			if (cbIncCep.Tag != null)
 			{
 				return;
 			}
 
-			this.Enabled = false;
+			Enabled = false;
 			try
 			{
 				CheckBox cb = (CheckBox)sender;
 
-				this.Tag = true;
+				Tag = true;
 
 				btReload.Enabled = true;
-				if (cb == this.cbIncCep)
+				if (cb == cbIncCep)
 				{
 					ChangeFileTable(cb, null);
 				}
@@ -1698,13 +1698,13 @@ namespace SimPe
 					ChangeFileTable(cb, ei.Expansion);
 				}
 
-				this.Tag = null;
+				Tag = null;
 				SetupFileTableCheckboxes();
 			}
 			finally
 			{
 				Application.DoEvents();
-				this.Enabled = true;
+				Enabled = true;
 			}
 		}
 
@@ -1713,7 +1713,7 @@ namespace SimPe
 			LinkLabelLinkClickedEventArgs e
 		)
 		{
-			this.Enabled = false;
+			Enabled = false;
 			try
 			{
 				FileTableItem fti = new FileTableItem("Downloads", true, false, -1);
@@ -1742,13 +1742,13 @@ namespace SimPe
 
 				fti.Type = FileTablePaths.SaveGameFolder;
 				lbfolder.Items.Insert(0, fti);
-				this.btReload.Enabled = true;
+				btReload.Enabled = true;
 				SetupFileTableCheckboxes();
 			}
 			finally
 			{
 				Application.DoEvents();
-				this.Enabled = true;
+				Enabled = true;
 			}
 		}
 
@@ -1762,17 +1762,17 @@ namespace SimPe
 				return;
 			}
 
-			this.Enabled = false;
+			Enabled = false;
 			try
 			{
 				lbfolder.Items.RemoveAt(lbfolder.SelectedIndex);
-				this.btReload.Enabled = true;
+				btReload.Enabled = true;
 				SetupFileTableCheckboxes();
 			}
 			finally
 			{
 				Application.DoEvents();
-				this.Enabled = true;
+				Enabled = true;
 			}
 		}
 
@@ -1784,17 +1784,17 @@ namespace SimPe
 			FileTableItem fti = FileTableItemForm.Execute();
 			if (fti != null)
 			{
-				this.Enabled = false;
+				Enabled = false;
 				try
 				{
 					lbfolder.Items.Insert(0, fti);
-					this.btReload.Enabled = true;
+					btReload.Enabled = true;
 					SetupFileTableCheckboxes();
 				}
 				finally
 				{
 					Application.DoEvents();
-					this.Enabled = true;
+					Enabled = true;
 				}
 			}
 		}
@@ -1808,18 +1808,18 @@ namespace SimPe
 			{
 				if (FileTableItemForm.Execute((FileTableItem)lbfolder.SelectedItem))
 				{
-					this.Enabled = false;
+					Enabled = false;
 					try
 					{
 						lbfolder.Items[lbfolder.SelectedIndex] = (FileTableItem)
 							lbfolder.SelectedItem;
-						this.btReload.Enabled = true;
+						btReload.Enabled = true;
 						SetupFileTableCheckboxes();
 					}
 					finally
 					{
 						Application.DoEvents();
-						this.Enabled = true;
+						Enabled = true;
 					}
 				}
 			}
@@ -1832,11 +1832,11 @@ namespace SimPe
 
 			if (cb.Checked)
 			{
-				this.LockDocksClick(sender, e);
+				LockDocksClick(sender, e);
 			}
 			else
 			{
-				this.UnlockDocksClick(sender, e);
+				UnlockDocksClick(sender, e);
 			}
 		}
 
@@ -1847,7 +1847,7 @@ namespace SimPe
 
 		private void cbCustom_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			this.pgcustom.SelectedObject = cbCustom.SelectedItem;
+			pgcustom.SelectedObject = cbCustom.SelectedItem;
 		}
 
 		void cbautobak_CheckedChanged(object sender, EventArgs e)
@@ -1859,7 +1859,7 @@ namespace SimPe
 			{
 				MessageBox.Show(
 					Localization.GetString("cbautobak_CheckedChanged"),
-					this.Text,
+					Text,
 					MessageBoxButtons.OK,
 					MessageBoxIcon.Warning
 				);
@@ -1873,7 +1873,7 @@ namespace SimPe
 		private void lbAboot_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
 			About.ShowFileTable();
-			this.lbAboot.LinkVisited = true;
+			lbAboot.LinkVisited = true;
 		}
 
 		private void cbBigIcons_CheckedChanged(object sender, EventArgs e)
@@ -1881,7 +1881,7 @@ namespace SimPe
 			if (Helper.WindowsRegistry.UseBigIcons != cbBigIcons.Checked)
 			{
 				Helper.WindowsRegistry.UseBigIcons = cbBigIcons.Checked;
-				this.lbBigIconNote.Visible = true;
+				lbBigIconNote.Visible = true;
 			}
 		}
 
@@ -1909,28 +1909,28 @@ namespace SimPe
 
 		private void cbpetability_CheckedChanged(object sender, EventArgs e)
 		{
-			if (this.Tag != null)
+			if (Tag != null)
 			{
 				return;
 			}
 
-			Helper.WindowsRegistry.ShowPetAbilities = this.cbpetability.Checked;
+			Helper.WindowsRegistry.ShowPetAbilities = cbpetability.Checked;
 		}
 
 		private void cbmoreskills_CheckedChanged(object sender, EventArgs e)
 		{
-			if (this.Tag != null)
+			if (Tag != null)
 			{
 				return;
 			}
 
-			Helper.WindowsRegistry.ShowMoreSkills = this.cbmoreskills.Checked;
+			Helper.WindowsRegistry.ShowMoreSkills = cbmoreskills.Checked;
 		}
 
 		private void btNuffing_Click(object sender, EventArgs e)
 		{
-			this.Enabled = false;
-			this.Tag = true;
+			Enabled = false;
+			Tag = true;
 			speady = true;
 			try
 			{
@@ -1958,21 +1958,21 @@ namespace SimPe
 						}
 					}
 				}
-				this.Tag = null;
+				Tag = null;
 				SetupFileTableCheckboxes();
 			}
 			finally
 			{
 				speady = false;
 				Application.DoEvents();
-				this.Enabled = true;
+				Enabled = true;
 			}
 		}
 
 		private void btevryfing_Click(object sender, EventArgs e)
 		{
-			this.Enabled = false;
-			this.Tag = true;
+			Enabled = false;
+			Tag = true;
 			speady = true;
 			try
 			{
@@ -2012,14 +2012,14 @@ namespace SimPe
 						}
 					}
 				}
-				this.Tag = null;
+				Tag = null;
 				SetupFileTableCheckboxes();
 			}
 			finally
 			{
 				speady = false;
 				Application.DoEvents();
-				this.Enabled = true;
+				Enabled = true;
 			}
 		}
 
@@ -2030,7 +2030,7 @@ namespace SimPe
 
 		public void SelectButton(ToolStripButton b)
 		{
-			for (int i = 0; i < this.toolBar1.Items.Count; i++)
+			for (int i = 0; i < toolBar1.Items.Count; i++)
 			{
 				if (toolBar1.Items[i] is ToolStripButton)
 				{
@@ -2047,7 +2047,7 @@ namespace SimPe
 
 		private void cbtrimname_CheckedChanged(object sender, EventArgs e)
 		{
-			if (this.Tag != null)
+			if (Tag != null)
 			{
 				return;
 			}
@@ -2057,7 +2057,7 @@ namespace SimPe
 
 		private void cbshowalls_CheckedChanged(object sender, EventArgs e)
 		{
-			if (this.Tag != null)
+			if (Tag != null)
 			{
 				return;
 			}

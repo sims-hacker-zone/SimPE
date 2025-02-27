@@ -53,8 +53,8 @@ namespace SimPe.Plugin.TabPage
 			//
 			InitializeComponent();
 
-			this.Text = Localization.GetString("CRES Hierarchie");
-			this.UseVisualStyleBackColor = true;
+			Text = Localization.GetString("CRES Hierarchie");
+			UseVisualStyleBackColor = true;
 		}
 
 		/// <summary>
@@ -65,7 +65,7 @@ namespace SimPe.Plugin.TabPage
 			if (disposing)
 			{
 				ClearCresTv();
-				this.Tag = null;
+				Tag = null;
 				if (components != null)
 				{
 					components.Dispose();
@@ -81,19 +81,19 @@ namespace SimPe.Plugin.TabPage
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
+			components = new System.ComponentModel.Container();
 			System.Resources.ResourceManager resources =
 				new System.Resources.ResourceManager(typeof(Cres));
-			this.tbfjoint = new TextBox();
-			this.label58 = new Label();
-			this.cres_tv = new TreeView();
-			this.iCres = new ImageList(this.components);
-			this.toolTip1 = new ToolTip(this.components);
-			this.SuspendLayout();
+			tbfjoint = new TextBox();
+			label58 = new Label();
+			cres_tv = new TreeView();
+			iCres = new ImageList(components);
+			toolTip1 = new ToolTip(components);
+			SuspendLayout();
 			//
 			// tbfjoint
 			//
-			this.tbfjoint.Anchor = (
+			tbfjoint.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -103,34 +103,34 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.tbfjoint.Location = new System.Drawing.Point(88, 8);
-			this.tbfjoint.Name = "tbfjoint";
-			this.tbfjoint.Size = new System.Drawing.Size(696, 20);
-			this.tbfjoint.TabIndex = 2;
-			this.tbfjoint.Text = "";
-			this.tbfjoint.TextChanged += new EventHandler(
-				this.tbfjoint_TextChanged
+			tbfjoint.Location = new System.Drawing.Point(88, 8);
+			tbfjoint.Name = "tbfjoint";
+			tbfjoint.Size = new System.Drawing.Size(696, 20);
+			tbfjoint.TabIndex = 2;
+			tbfjoint.Text = "";
+			tbfjoint.TextChanged += new EventHandler(
+				tbfjoint_TextChanged
 			);
 			//
 			// label58
 			//
-			this.label58.Font = new System.Drawing.Font(
+			label58.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label58.Location = new System.Drawing.Point(8, 8);
-			this.label58.Name = "label58";
-			this.label58.Size = new System.Drawing.Size(72, 23);
-			this.label58.TabIndex = 1;
-			this.label58.Text = "Find Joint:";
-			this.label58.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label58.Location = new System.Drawing.Point(8, 8);
+			label58.Name = "label58";
+			label58.Size = new System.Drawing.Size(72, 23);
+			label58.TabIndex = 1;
+			label58.Text = "Find Joint:";
+			label58.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// cres_tv
 			//
-			this.cres_tv.Anchor = (
+			cres_tv.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -142,41 +142,41 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.cres_tv.FullRowSelect = true;
-			this.cres_tv.HideSelection = false;
-			this.cres_tv.ImageList = this.iCres;
-			this.cres_tv.Location = new System.Drawing.Point(8, 32);
-			this.cres_tv.Name = "cres_tv";
-			this.cres_tv.Size = new System.Drawing.Size(776, 226);
-			this.cres_tv.TabIndex = 0;
-			this.cres_tv.DoubleClick += new EventHandler(
-				this.cres_tv_DoubleClick
+			cres_tv.FullRowSelect = true;
+			cres_tv.HideSelection = false;
+			cres_tv.ImageList = iCres;
+			cres_tv.Location = new System.Drawing.Point(8, 32);
+			cres_tv.Name = "cres_tv";
+			cres_tv.Size = new System.Drawing.Size(776, 226);
+			cres_tv.TabIndex = 0;
+			cres_tv.DoubleClick += new EventHandler(
+				cres_tv_DoubleClick
 			);
-			this.cres_tv.AfterSelect += new TreeViewEventHandler(
-				this.SelectCresTv
+			cres_tv.AfterSelect += new TreeViewEventHandler(
+				SelectCresTv
 			);
 			//
 			// iCres
 			//
-			this.iCres.ColorDepth = ColorDepth.Depth32Bit;
-			this.iCres.ImageSize = new System.Drawing.Size(16, 16);
-			this.iCres.ImageStream = (
+			iCres.ColorDepth = ColorDepth.Depth32Bit;
+			iCres.ImageSize = new System.Drawing.Size(16, 16);
+			iCres.ImageStream = (
 				(ImageListStreamer)(
 					resources.GetObject("iCres.ImageStream")
 				)
 			);
-			this.iCres.TransparentColor = System.Drawing.Color.Transparent;
+			iCres.TransparentColor = System.Drawing.Color.Transparent;
 			//
 			// Cres
 			//
-			this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-			this.Controls.Add(this.tbfjoint);
-			this.Controls.Add(this.label58);
-			this.Controls.Add(this.cres_tv);
-			this.Location = new System.Drawing.Point(4, 22);
-			this.Name = "Cres";
-			this.Size = new System.Drawing.Size(792, 262);
-			this.ResumeLayout(false);
+			BackColor = System.Drawing.SystemColors.ControlLightLight;
+			Controls.Add(tbfjoint);
+			Controls.Add(label58);
+			Controls.Add(cres_tv);
+			Location = new System.Drawing.Point(4, 22);
+			Name = "Cres";
+			Size = new System.Drawing.Size(792, 262);
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -265,9 +265,9 @@ namespace SimPe.Plugin.TabPage
 				return;
 			}
 
-			ComboBox cb = (ComboBox)(((TabControl)this.Parent).Tag);
+			ComboBox cb = (ComboBox)(((TabControl)Parent).Tag);
 			cb.SelectedIndex = index;
-			((TabControl)this.Parent).SelectedIndex = 0;
+			((TabControl)Parent).SelectedIndex = 0;
 		}
 
 		bool SelectJoint(TreeNodeCollection nodes, string name)
@@ -276,7 +276,7 @@ namespace SimPe.Plugin.TabPage
 			{
 				if (tn.Tag != null)
 				{
-					ComboBox cb = (ComboBox)(((TabControl)this.Parent).Tag);
+					ComboBox cb = (ComboBox)(((TabControl)Parent).Tag);
 
 					object o = (cb.Items[(int)tn.Tag] as CountedListItem).Object;
 					if (o is AbstractCresChildren)

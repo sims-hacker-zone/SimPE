@@ -200,23 +200,23 @@ namespace SimPe.Plugin
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(FileSelect));
-			this.button1 = new Button();
-			this.tc = new TabControl();
-			this.tabPage1 = new System.Windows.Forms.TabPage();
-			this.tvfemale = new TreeView();
-			this.tabPage2 = new System.Windows.Forms.TabPage();
-			this.tvmale = new TreeView();
-			this.pb = new PictureBox();
-			this.lbname = new Label();
-			this.tc.SuspendLayout();
-			this.tabPage1.SuspendLayout();
-			this.tabPage2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
-			this.SuspendLayout();
+			button1 = new Button();
+			tc = new TabControl();
+			tabPage1 = new System.Windows.Forms.TabPage();
+			tvfemale = new TreeView();
+			tabPage2 = new System.Windows.Forms.TabPage();
+			tvmale = new TreeView();
+			pb = new PictureBox();
+			lbname = new Label();
+			tc.SuspendLayout();
+			tabPage1.SuspendLayout();
+			tabPage2.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(pb)).BeginInit();
+			SuspendLayout();
 			//
 			// button1
 			//
-			this.button1.Anchor = (
+			button1.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -224,17 +224,17 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.button1.FlatStyle = FlatStyle.System;
-			this.button1.Location = new System.Drawing.Point(776, 579);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(75, 23);
-			this.button1.TabIndex = 1;
-			this.button1.Text = "Use";
-			this.button1.Click += new EventHandler(this.button1_Click);
+			button1.FlatStyle = FlatStyle.System;
+			button1.Location = new System.Drawing.Point(776, 579);
+			button1.Name = "button1";
+			button1.Size = new System.Drawing.Size(75, 23);
+			button1.TabIndex = 1;
+			button1.Text = "Use";
+			button1.Click += new EventHandler(button1_Click);
 			//
 			// tc
 			//
-			this.tc.Anchor = (
+			tc.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -246,26 +246,26 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.tc.Controls.Add(this.tabPage1);
-			this.tc.Controls.Add(this.tabPage2);
-			this.tc.Location = new System.Drawing.Point(8, 8);
-			this.tc.Name = "tc";
-			this.tc.SelectedIndex = 0;
-			this.tc.Size = new System.Drawing.Size(677, 595);
-			this.tc.TabIndex = 2;
+			tc.Controls.Add(tabPage1);
+			tc.Controls.Add(tabPage2);
+			tc.Location = new System.Drawing.Point(8, 8);
+			tc.Name = "tc";
+			tc.SelectedIndex = 0;
+			tc.Size = new System.Drawing.Size(677, 595);
+			tc.TabIndex = 2;
 			//
 			// tabPage1
 			//
-			this.tabPage1.Controls.Add(this.tvfemale);
-			this.tabPage1.Location = new System.Drawing.Point(4, 22);
-			this.tabPage1.Name = "tabPage1";
-			this.tabPage1.Size = new System.Drawing.Size(669, 569);
-			this.tabPage1.TabIndex = 0;
-			this.tabPage1.Text = "Female";
+			tabPage1.Controls.Add(tvfemale);
+			tabPage1.Location = new System.Drawing.Point(4, 22);
+			tabPage1.Name = "tabPage1";
+			tabPage1.Size = new System.Drawing.Size(669, 569);
+			tabPage1.TabIndex = 0;
+			tabPage1.Text = "Female";
 			//
 			// tvfemale
 			//
-			this.tvfemale.Anchor = (
+			tvfemale.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -277,39 +277,39 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.tvfemale.BackColor = System.Drawing.Color.FromArgb(
+			tvfemale.BackColor = System.Drawing.Color.FromArgb(
 				((int)(((byte)(255)))),
 				((int)(((byte)(248)))),
 				((int)(((byte)(254))))
 			);
-			this.tvfemale.Font = new System.Drawing.Font(
+			tvfemale.Font = new System.Drawing.Font(
 				"Verdana",
 				11.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tvfemale.HideSelection = false;
-			this.tvfemale.Location = new System.Drawing.Point(8, 8);
-			this.tvfemale.Name = "tvfemale";
-			this.tvfemale.Size = new System.Drawing.Size(653, 555);
-			this.tvfemale.TabIndex = 0;
-			this.tvfemale.AfterSelect += new TreeViewEventHandler(
-				this.Select
+			tvfemale.HideSelection = false;
+			tvfemale.Location = new System.Drawing.Point(8, 8);
+			tvfemale.Name = "tvfemale";
+			tvfemale.Size = new System.Drawing.Size(653, 555);
+			tvfemale.TabIndex = 0;
+			tvfemale.AfterSelect += new TreeViewEventHandler(
+				Select
 			);
 			//
 			// tabPage2
 			//
-			this.tabPage2.Controls.Add(this.tvmale);
-			this.tabPage2.Location = new System.Drawing.Point(4, 22);
-			this.tabPage2.Name = "tabPage2";
-			this.tabPage2.Size = new System.Drawing.Size(669, 569);
-			this.tabPage2.TabIndex = 1;
-			this.tabPage2.Text = "Male";
+			tabPage2.Controls.Add(tvmale);
+			tabPage2.Location = new System.Drawing.Point(4, 22);
+			tabPage2.Name = "tabPage2";
+			tabPage2.Size = new System.Drawing.Size(669, 569);
+			tabPage2.TabIndex = 1;
+			tabPage2.Text = "Male";
 			//
 			// tvmale
 			//
-			this.tvmale.Anchor = (
+			tvmale.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -321,30 +321,30 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.tvmale.BackColor = System.Drawing.Color.FromArgb(
+			tvmale.BackColor = System.Drawing.Color.FromArgb(
 				((int)(((byte)(248)))),
 				((int)(((byte)(252)))),
 				((int)(((byte)(255))))
 			);
-			this.tvmale.Font = new System.Drawing.Font(
+			tvmale.Font = new System.Drawing.Font(
 				"Verdana",
 				11.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tvmale.HideSelection = false;
-			this.tvmale.Location = new System.Drawing.Point(8, 7);
-			this.tvmale.Name = "tvmale";
-			this.tvmale.Size = new System.Drawing.Size(653, 555);
-			this.tvmale.TabIndex = 1;
-			this.tvmale.AfterSelect += new TreeViewEventHandler(
-				this.Select
+			tvmale.HideSelection = false;
+			tvmale.Location = new System.Drawing.Point(8, 7);
+			tvmale.Name = "tvmale";
+			tvmale.Size = new System.Drawing.Size(653, 555);
+			tvmale.TabIndex = 1;
+			tvmale.AfterSelect += new TreeViewEventHandler(
+				Select
 			);
 			//
 			// pb
 			//
-			this.pb.Anchor = (
+			pb.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -352,17 +352,17 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.pb.BorderStyle = BorderStyle.FixedSingle;
-			this.pb.Location = new System.Drawing.Point(690, 8);
-			this.pb.Name = "pb";
-			this.pb.Size = new System.Drawing.Size(300, 300);
-			this.pb.SizeMode = PictureBoxSizeMode.Zoom;
-			this.pb.TabIndex = 3;
-			this.pb.TabStop = false;
+			pb.BorderStyle = BorderStyle.FixedSingle;
+			pb.Location = new System.Drawing.Point(690, 8);
+			pb.Name = "pb";
+			pb.Size = new System.Drawing.Size(300, 300);
+			pb.SizeMode = PictureBoxSizeMode.Zoom;
+			pb.TabIndex = 3;
+			pb.TabStop = false;
 			//
 			// lbname
 			//
-			this.lbname.Anchor = (
+			lbname.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -372,46 +372,46 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.lbname.Font = new System.Drawing.Font(
+			lbname.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lbname.Location = new System.Drawing.Point(690, 323);
-			this.lbname.Name = "lbname";
-			this.lbname.Size = new System.Drawing.Size(300, 253);
-			this.lbname.TabIndex = 5;
-			this.lbname.Text = "label1";
+			lbname.Location = new System.Drawing.Point(690, 323);
+			lbname.Name = "lbname";
+			lbname.Size = new System.Drawing.Size(300, 253);
+			lbname.TabIndex = 5;
+			lbname.Text = "label1";
 			//
 			// FileSelect
 			//
-			this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
-			this.ClientSize = new System.Drawing.Size(994, 611);
-			this.Controls.Add(this.lbname);
-			this.Controls.Add(this.pb);
-			this.Controls.Add(this.tc);
-			this.Controls.Add(this.button1);
-			this.Font = new System.Drawing.Font(
+			AutoScaleBaseSize = new System.Drawing.Size(6, 14);
+			ClientSize = new System.Drawing.Size(994, 611);
+			Controls.Add(lbname);
+			Controls.Add(pb);
+			Controls.Add(tc);
+			Controls.Add(button1);
+			Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.FormBorderStyle =
+			FormBorderStyle =
 				FormBorderStyle
 				.SizableToolWindow;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.Name = "FileSelect";
-			this.StartPosition = FormStartPosition.CenterScreen;
-			this.Text = "Skin Select";
-			this.tc.ResumeLayout(false);
-			this.tabPage1.ResumeLayout(false);
-			this.tabPage2.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
-			this.ResumeLayout(false);
+			Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			Name = "FileSelect";
+			StartPosition = FormStartPosition.CenterScreen;
+			Text = "Skin Select";
+			tc.ResumeLayout(false);
+			tabPage1.ResumeLayout(false);
+			tabPage2.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(pb)).EndInit();
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -437,7 +437,7 @@ namespace SimPe.Plugin
 			ok = false;
 			last = null;
 			button1.Enabled = false;
-			this.ShowDialog();
+			ShowDialog();
 
 			if ((ok) && (last != null))
 			{

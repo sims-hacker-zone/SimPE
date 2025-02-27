@@ -29,22 +29,22 @@ namespace SimPe.Plugin
 		{
 			holde = true;
 			base.RefreshGUI();
-			this.CanCommit = false;
-			this.rtbnames.Visible = false;
-			this.btshowim.Text = "Show Names";
-			this.BackgroundImageLocation = new System.Drawing.Point(730, 0);
-			this.tbfilenm.Text = Wrapper.FileName;
+			CanCommit = false;
+			rtbnames.Visible = false;
+			btshowim.Text = "Show Names";
+			BackgroundImageLocation = new System.Drawing.Point(730, 0);
+			tbfilenm.Text = Wrapper.FileName;
 			if (Wrapper.FileDescriptor.Instance == 13)
 			{
-				this.lbType.Text = "Type: Walls";
+				lbType.Text = "Type: Walls";
 			}
 			else if (Wrapper.FileDescriptor.Instance == 14)
 			{
-				this.lbType.Text = "Type: Floor Coverings";
+				lbType.Text = "Type: Floor Coverings";
 			}
 			else
 			{
-				this.lbType.Text = "";
+				lbType.Text = "";
 			}
 
 			fillimup();
@@ -66,7 +66,7 @@ namespace SimPe.Plugin
 
 		void IDisposable.Dispose()
 		{
-			this.TPFW.Dispose();
+			TPFW.Dispose();
 		}
 		#endregion
 
@@ -78,7 +78,7 @@ namespace SimPe.Plugin
 			}
 
 			Wrapper.FileName = tbfilenm.Text;
-			this.CanCommit = true;
+			CanCommit = true;
 			Wrapper.Changed = true;
 		}
 
@@ -100,7 +100,7 @@ namespace SimPe.Plugin
 				Wrapper.Strings[i] = clit;
 				i++;
 			}
-			this.CanCommit = true;
+			CanCommit = true;
 			Wrapper.Changed = true;
 		}
 
@@ -111,16 +111,16 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			if (this.rtbnames.Visible)
+			if (rtbnames.Visible)
 			{
-				this.rtbnames.Visible = false;
-				this.BackgroundImageLocation = new System.Drawing.Point(730, 0);
-				this.btshowim.Text = "Show Names";
+				rtbnames.Visible = false;
+				BackgroundImageLocation = new System.Drawing.Point(730, 0);
+				btshowim.Text = "Show Names";
 			}
 			else
 			{
 				holde = true;
-				this.rtbnames.Text = "";
+				rtbnames.Text = "";
 				uint tmpy = 0;
 				if (wallsandfloors.Count < 1)
 				{
@@ -153,9 +153,9 @@ namespace SimPe.Plugin
 						rtbnames.Text += clit + "\r\n";
 					}
 				}
-				this.BackgroundImageLocation = new System.Drawing.Point(930, 0);
-				this.rtbnames.Visible = true;
-				this.btshowim.Text = "Hide Names";
+				BackgroundImageLocation = new System.Drawing.Point(930, 0);
+				rtbnames.Visible = true;
+				btshowim.Text = "Hide Names";
 				holde = false;
 			}
 		}

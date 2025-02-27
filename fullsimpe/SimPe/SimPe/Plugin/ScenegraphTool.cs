@@ -78,7 +78,7 @@ namespace SimPe.Plugin
 
 		#region IToolExt Member
 		public override System.Drawing.Image Icon => System.Drawing.Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream(
 							"SimPe.img.scenegrapher.png"
 						)

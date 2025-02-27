@@ -123,9 +123,9 @@ namespace SimPe.Plugin.Tool.Dockable
 		public OWRecolorSettings()
 			: base()
 		{
-			this.IncludeAnimationResources = false;
-			this.IncludeWallmask = false;
-			this.OnlyDefaultMmats = false;
+			IncludeAnimationResources = false;
+			IncludeWallmask = false;
+			OnlyDefaultMmats = false;
 		}
 	}
 

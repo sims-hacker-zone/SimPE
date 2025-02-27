@@ -30,9 +30,9 @@ namespace Ambertation.Windows.Forms.Graph
 	{
 		public DockPoint(int x, int y, LinkControlType type)
 		{
-			this.X = x;
-			this.Y = y;
-			this.Type = type;
+			X = x;
+			Y = y;
+			Type = type;
 		}
 
 		public int X
@@ -114,11 +114,11 @@ namespace Ambertation.Windows.Forms.Graph
 	{
 		public LinkGraphic()
 		{
-			this.sa = 0;
-			this.ea = 0;
-			this.lclm = LinkControlLineMode.Bezier;
-			this.psa = LinkControlCapType.Disk;
-			this.pea = LinkControlCapType.Arrow;
+			sa = 0;
+			ea = 0;
+			lclm = LinkControlLineMode.Bezier;
+			psa = LinkControlCapType.Disk;
+			pea = LinkControlCapType.Arrow;
 			ssa = LinkControlSnapAnchor.OnlyCenter;
 			esa = LinkControlSnapAnchor.Normal;
 			txt = "";
@@ -138,7 +138,7 @@ namespace Ambertation.Windows.Forms.Graph
 		public override void Dispose()
 		{
 			base.Dispose();
-			this.Clear();
+			Clear();
 		}
 
 		#region Public Properties
@@ -154,7 +154,7 @@ namespace Ambertation.Windows.Forms.Graph
 				if (fnt != value)
 				{
 					fnt = value;
-					this.Refresh();
+					Refresh();
 				}
 			}
 		}
@@ -398,8 +398,8 @@ namespace Ambertation.Windows.Forms.Graph
 			set
 			{
 				txt = value;
-				this.SetBounds(Left, Top, Width, Height);
-				this.Invalidate();
+				SetBounds(Left, Top, Width, Height);
+				Invalidate();
 			}
 		}
 
@@ -479,7 +479,7 @@ namespace Ambertation.Windows.Forms.Graph
 			else if (lcct == LinkControlCapType.Disk)
 			{
 				g.FillEllipse(
-					new SolidBrush(this.ForeColor),
+					new SolidBrush(ForeColor),
 					loc.X - hasz.Width,
 					loc.Y - hasz.Height,
 					asz.Width,
@@ -501,8 +501,8 @@ namespace Ambertation.Windows.Forms.Graph
 		{
 			Rectangle srect = new Rectangle(left, top, width - 1, height - 1);
 
-			Pen linepen = new Pen(this.ForeColor);
-			Brush b = new SolidBrush(this.TextBackColor);
+			Pen linepen = new Pen(ForeColor);
+			Brush b = new SolidBrush(TextBackColor);
 			Drawing.GraphicRoutines.FillRoundRect(gr, b, srect, rad);
 			b.Dispose();
 
@@ -543,8 +543,8 @@ namespace Ambertation.Windows.Forms.Graph
 				return;
 			}
 
-			Point pstart = this.GetAnchorLocation(sa, sc);
-			Point pend = this.GetAnchorLocation(ea, ec);
+			Point pstart = GetAnchorLocation(sa, sc);
+			Point pend = GetAnchorLocation(ea, ec);
 			Size asz = HalfArrowSize;
 
 			Point min = MinPoint(pstart, pend);
@@ -574,7 +574,7 @@ namespace Ambertation.Windows.Forms.Graph
 				wd = nwd;
 				hg = nhg;
 			}
-			this.SetBounds(left, top, wd, hg);
+			SetBounds(left, top, wd, hg);
 		}
 
 		protected void AlignToControl()
@@ -584,7 +584,7 @@ namespace Ambertation.Windows.Forms.Graph
 				|| ec == null
 				|| (
 					ssa == LinkControlSnapAnchor.None
-					&& this.esa == LinkControlSnapAnchor.None
+					&& esa == LinkControlSnapAnchor.None
 				)
 			)
 			{
@@ -592,7 +592,7 @@ namespace Ambertation.Windows.Forms.Graph
 			}
 
 			Point b = GraphItemBase.FindBestDocks(sc.Docks, ssa, sa, ec.Docks, esa, ea);
-			this.sa = (byte)b.X;
+			sa = (byte)b.X;
 			ea = (byte)b.Y;
 		}
 		#endregion
@@ -626,7 +626,7 @@ namespace Ambertation.Windows.Forms.Graph
 					ctrl1 = new Point(pstart.X, pstart.Y - Height / 2);
 				}
 			}
-			if (this.EndElement.Docks[this.EndAnchor].IsSideDock)
+			if (EndElement.Docks[EndAnchor].IsSideDock)
 			{
 				if (pend.X < pstart.X)
 				{
@@ -665,8 +665,8 @@ namespace Ambertation.Windows.Forms.Graph
 			}
 
 			Size asz = HalfArrowSize;
-			Point pstart = this.GetAnchorLocation(sa, sc, this.Location);
-			Point pend = this.GetAnchorLocation(ea, ec, this.Location);
+			Point pstart = GetAnchorLocation(sa, sc, Location);
+			Point pend = GetAnchorLocation(ea, ec, Location);
 
 			System.Drawing.Drawing2D.GraphicsPath path =
 				new System.Drawing.Drawing2D.GraphicsPath();
@@ -679,45 +679,45 @@ namespace Ambertation.Windows.Forms.Graph
 			{
 				if (
 					Text != ""
-					&& this.EndElement.Docks[this.EndAnchor].IsSideDock
-						!= this.StartElement.Docks[this.StartAnchor].IsSideDock
+					&& EndElement.Docks[EndAnchor].IsSideDock
+						!= StartElement.Docks[StartAnchor].IsSideDock
 				)
 				{
 					Point pmid = new Point(
 						(pstart.X + pend.X) / 2,
 						(pstart.Y + pend.Y) / 2
 					);
-					this.AddBezierPath(
+					AddBezierPath(
 						path,
 						pstart,
 						pmid,
-						this.StartElement.Docks[this.StartAnchor].IsSideDock,
-						this.StartElement.Docks[this.StartAnchor].IsSideDock
+						StartElement.Docks[StartAnchor].IsSideDock,
+						StartElement.Docks[StartAnchor].IsSideDock
 					);
-					this.AddBezierPath(
+					AddBezierPath(
 						path,
 						pmid,
 						pend,
-						this.EndElement.Docks[this.EndAnchor].IsSideDock,
-						this.EndElement.Docks[this.EndAnchor].IsSideDock
+						EndElement.Docks[EndAnchor].IsSideDock,
+						EndElement.Docks[EndAnchor].IsSideDock
 					);
 				}
 				else
 				{
-					this.AddBezierPath(
+					AddBezierPath(
 						path,
 						pstart,
 						pend,
-						this.StartElement.Docks[this.StartAnchor].IsSideDock,
-						this.EndElement.Docks[this.EndAnchor].IsSideDock
+						StartElement.Docks[StartAnchor].IsSideDock,
+						EndElement.Docks[EndAnchor].IsSideDock
 					);
 				}
 			}
 			else
 			{
 				if (
-					this.EndElement.Docks[this.EndAnchor].IsSideDock
-					&& this.StartElement.Docks[this.StartAnchor].IsSideDock
+					EndElement.Docks[EndAnchor].IsSideDock
+					&& StartElement.Docks[StartAnchor].IsSideDock
 				)
 				{
 					path.AddLine(pstart.X, pstart.Y, Width / 2, pstart.Y);
@@ -732,7 +732,7 @@ namespace Ambertation.Windows.Forms.Graph
 				}
 			}
 
-			Pen pen = new Pen(this.ForeColor, lw);
+			Pen pen = new Pen(ForeColor, lw);
 
 			PaintCap(g, pen, pstart, psa, true);
 			PaintCap(g, pen, pend, pea, false);
@@ -755,7 +755,7 @@ namespace Ambertation.Windows.Forms.Graph
 					trec.Height,
 					(int)sz.Height / 2
 				);
-				SolidBrush b = new SolidBrush(this.TextForeColor);
+				SolidBrush b = new SolidBrush(TextForeColor);
 				g.DrawString(Text, Font, b, trec.Left + 2, trec.Top + 2);
 				b.Dispose();
 			}
@@ -787,23 +787,23 @@ namespace Ambertation.Windows.Forms.Graph
 		private void c_Move(object sender, EventArgs e)
 		{
 			AlignToControl();
-			this.MoveControl();
-			this.CompleteRedraw();
+			MoveControl();
+			CompleteRedraw();
 		}
 		#endregion
 
 		private void c_SizeChanged(object sender, EventArgs e)
 		{
 			AlignToControl();
-			this.MoveControl();
-			this.CompleteRedraw();
+			MoveControl();
+			CompleteRedraw();
 		}
 
 		public override void Clear()
 		{
-			this.StartElement = null;
-			this.EndElement = null;
-			this.SetBounds(0, 0, 1, 1);
+			StartElement = null;
+			EndElement = null;
+			SetBounds(0, 0, 1, 1);
 		}
 	}
 }

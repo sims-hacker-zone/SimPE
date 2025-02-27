@@ -39,7 +39,7 @@ namespace SimPe.PackedFiles.Wrapper
 				"This File Contians the Relationship states for two Sims.",
 				2,
 				Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.srel.png")
 				)
 			);
@@ -262,7 +262,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		protected override string GetResourceName(Data.TypeAlias ta)
 		{
-			if (!this.Processed)
+			if (!Processed)
 			{
 				ProcessData(FileDescriptor, Package);
 			}

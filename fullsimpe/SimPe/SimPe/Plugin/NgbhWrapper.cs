@@ -150,13 +150,13 @@ namespace SimPe.Plugin
 		public Ngbh(Interfaces.IProviderRegistry provider)
 			: base()
 		{
-			this.Provider = provider;
+			Provider = provider;
 
-			this.id = new byte[] { (byte)'H', (byte)'B', (byte)'G', (byte)'N' };
+			id = new byte[] { (byte)'H', (byte)'B', (byte)'G', (byte)'N' };
 
-			this.Version = NgbhVersion.University;
+			Version = NgbhVersion.University;
 
-			this.header = new byte[]
+			header = new byte[]
 			{
 				0,
 				0,
@@ -245,7 +245,7 @@ namespace SimPe.Plugin
 				"This File contains the Memories and Inventories of all Sims that Live in this Neighbourhood.",
 				12,
 				System.Drawing.Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.ngbh.png")
 				)
 			);

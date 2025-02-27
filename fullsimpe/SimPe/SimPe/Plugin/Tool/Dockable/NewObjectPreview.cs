@@ -79,13 +79,13 @@ namespace SimPe.Plugin.Tool.Dockable
 		public virtual bool Loaded => objd != null;
 
 		[Browsable(false)]
-		public string Title => this.lbName.Text;
+		public string Title => lbName.Text;
 
 		[Browsable(false)]
-		public string Description => this.lbAbout.Text;
+		public string Description => lbAbout.Text;
 
 		[Browsable(false)]
-		public short Price => Helper.StringToInt16(this.lbPrice.Text.Replace(" $", ""), 0, 10);
+		public short Price => Helper.StringToInt16(lbPrice.Text.Replace(" $", ""), 0, 10);
 		#endregion
 
 		#region Thumbnails
@@ -268,7 +268,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				}
 				if (res != "")
 				{
-					this.cbCat.Items.Add(res);
+					cbCat.Items.Add(res);
 				}
 			}
 			cbCat.SelectedIndex = cbCat.Items.Count - 1;
@@ -414,13 +414,13 @@ namespace SimPe.Plugin.Tool.Dockable
 		protected void ClearScreen()
 		{
 			pb.Image = defimg;
-			this.lbAbout.Text = "";
-			this.lbEPList.Text = "";
-			this.lbName.Text = "";
-			this.lbPrice.Text = "";
-			this.lbVert.Text = "";
-			this.lbCat.Text = "";
-			this.cbCat.Items.Clear();
+			lbAbout.Text = "";
+			lbEPList.Text = "";
+			lbName.Text = "";
+			lbPrice.Text = "";
+			lbVert.Text = "";
+			lbCat.Text = "";
+			cbCat.Items.Clear();
 		}
 
 		public void UpdateScreen()
@@ -465,29 +465,29 @@ namespace SimPe.Plugin.Tool.Dockable
 			{
 				if (strs.Count > 0)
 				{
-					this.lbName.Text = strs[0].Title;
+					lbName.Text = strs[0].Title;
 				}
 
 				if (strs.Count > 1)
 				{
-					this.lbAbout.Text = strs[1].Title;
+					lbAbout.Text = strs[1].Title;
 				}
 			}
 			else
 			{
-				this.lbName.Text = objd.FileName;
+				lbName.Text = objd.FileName;
 			}
 
-			this.lbPrice.Text = "$" + objd.Price.ToString();
+			lbPrice.Text = "$" + objd.Price.ToString();
 
 			Boolset bs = (ushort)objd.Data[0x40]; // EPFlags1
-			this.lbEPList.Text = "";
+			lbEPList.Text = "";
 			for (int i = 0; i < bs.Length; i++)
 			{
 				if (bs[i])
 				{
-					this.lbEPList.Text +=
-						(this.lbEPList.Text.Length == 0 ? "" : "; ")
+					lbEPList.Text +=
+						(lbEPList.Text.Length == 0 ? "" : "; ")
 						+ (
 							new Data.LocalizedNeighbourhoodEP(
 								(Data.MetaData.NeighbourhoodEP)i
@@ -503,14 +503,14 @@ namespace SimPe.Plugin.Tool.Dockable
 				{
 					if (i > 2 && i < 15)
 					{
-						this.lbEPList.Text +=
-							(this.lbEPList.Text.Length == 0 ? "" : "; ")
+						lbEPList.Text +=
+							(lbEPList.Text.Length == 0 ? "" : "; ")
 							+ Localization.Manager.GetString("unknown");
 					}
 					else
 					{
-						this.lbEPList.Text +=
-							(this.lbEPList.Text.Length == 0 ? "" : "; ")
+						lbEPList.Text +=
+							(lbEPList.Text.Length == 0 ? "" : "; ")
 							+ (
 								new Data.LocalizedNeighbourhoodEP(
 									(Data.MetaData.NeighbourhoodEP)i + 16

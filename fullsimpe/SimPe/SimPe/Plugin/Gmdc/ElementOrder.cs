@@ -134,7 +134,7 @@ namespace SimPe.Plugin.Gmdc
 		public Geometry.Quaternion TransformRotation(Geometry.Quaternion q)
 		{
 			Geometry.Vector3f r = q.Axis;
-			r = this.Transform(r);
+			r = Transform(r);
 			q = Geometry.Quaternion.FromAxisAngle(r, q.Angle);
 
 			return q;
@@ -145,7 +145,7 @@ namespace SimPe.Plugin.Gmdc
 		)
 		{
 			Geometry.Vector3f r = q.Axis;
-			r = this.InverseTransform(r);
+			r = InverseTransform(r);
 			q = Geometry.Quaternion.FromAxisAngle(r, q.Angle);
 
 			return q;

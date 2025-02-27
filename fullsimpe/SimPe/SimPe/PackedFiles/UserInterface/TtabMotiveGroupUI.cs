@@ -58,9 +58,9 @@ namespace SimPe.PackedFiles.UserInterface
 				muiH = c.Height;
 			}
 
-			this.lbMin.Left = muiW / 6 - this.lbMin.Width / 2;
-			this.lbDelta.Left = muiW / 2 - this.lbDelta.Width / 2;
-			this.lbType.Left = (5 * muiW) / 6 - this.lbType.Width / 2;
+			lbMin.Left = muiW / 6 - lbMin.Width / 2;
+			lbDelta.Left = muiW / 2 - lbDelta.Width / 2;
+			lbType.Left = (5 * muiW) / 6 - lbType.Width / 2;
 		}
 
 		/// <summary>
@@ -84,11 +84,11 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			get
 			{
-				return this.gbMotiveGroup.Text;
+				return gbMotiveGroup.Text;
 			}
 			set
 			{
-				this.gbMotiveGroup.Text = value;
+				gbMotiveGroup.Text = value;
 			}
 		}
 
@@ -106,21 +106,21 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			set
 			{
-				if (this.item != value)
+				if (item != value)
 				{
 					if (item != null)
 					{
 						item.Wrapper.WrapperChanged -= new EventHandler(
-							this.WrapperChanged
+							WrapperChanged
 						);
 					}
 
-					this.item = value;
+					item = value;
 					setData();
 					if (item != null)
 					{
 						item.Wrapper.WrapperChanged += new EventHandler(
-							this.WrapperChanged
+							WrapperChanged
 						);
 					}
 				}
@@ -139,28 +139,28 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void setData()
 		{
-			this.SuspendLayout();
+			SuspendLayout();
 
-			this.gbMotiveGroup.Controls.Clear();
+			gbMotiveGroup.Controls.Clear();
 			tops = new ArrayList();
 
-			int nextTop = this.lbMin.Bottom + 2;
-			int width = this.Width;
+			int nextTop = lbMin.Bottom + 2;
+			int width = Width;
 
 			if (item != null)
 			{
 				if (item.Parent.Type == TtabItemMotiveTableType.Human)
 				{
-					this.gbMotiveGroup.Controls.Add(this.lbMin);
-					this.gbMotiveGroup.Controls.Add(this.lbDelta);
-					this.gbMotiveGroup.Controls.Add(this.lbType);
+					gbMotiveGroup.Controls.Add(lbMin);
+					gbMotiveGroup.Controls.Add(lbDelta);
+					gbMotiveGroup.Controls.Add(lbType);
 
 					for (int i = 0; i < item.Count; i++)
 					{
 						TtabSingleMotiveUI c = new TtabSingleMotiveUI();
 						c.Motive = (TtabItemSingleMotiveItem)item[i];
 
-						this.gbMotiveGroup.Controls.Add(c);
+						gbMotiveGroup.Controls.Add(c);
 						c.Location = new Point(2, nextTop);
 						tops.Add(nextTop);
 						nextTop += c.Height + 2;
@@ -174,7 +174,7 @@ namespace SimPe.PackedFiles.UserInterface
 						TtabAnimalMotiveUI c = new TtabAnimalMotiveUI();
 						c.Motive = (TtabItemAnimalMotiveItem)item[i];
 
-						this.gbMotiveGroup.Controls.Add(c);
+						gbMotiveGroup.Controls.Add(c);
 						c.Location = new Point(2, nextTop);
 						tops.Add(nextTop);
 						nextTop += c.Height + 2;
@@ -183,15 +183,15 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 			}
 
-			this.Width = 2 + width + 2;
-			this.gbMotiveGroup.Controls.Add(this.btnClear);
-			this.btnClear.Location = new Point(
-				(this.Width - this.btnClear.Width) / 2,
+			Width = 2 + width + 2;
+			gbMotiveGroup.Controls.Add(btnClear);
+			btnClear.Location = new Point(
+				(Width - btnClear.Width) / 2,
 				nextTop + 2
 			);
-			this.Height = this.btnClear.Bottom + 4;
+			Height = btnClear.Bottom + 4;
 
-			this.ResumeLayout();
+			ResumeLayout();
 		}
 
 		#endregion
@@ -207,55 +207,55 @@ namespace SimPe.PackedFiles.UserInterface
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(TtabMotiveGroupUI)
 				);
-			this.gbMotiveGroup = new System.Windows.Forms.GroupBox();
-			this.btnClear = new System.Windows.Forms.Button();
-			this.lbMin = new System.Windows.Forms.Label();
-			this.lbDelta = new System.Windows.Forms.Label();
-			this.lbType = new System.Windows.Forms.Label();
-			this.gbMotiveGroup.SuspendLayout();
-			this.SuspendLayout();
+			gbMotiveGroup = new System.Windows.Forms.GroupBox();
+			btnClear = new System.Windows.Forms.Button();
+			lbMin = new System.Windows.Forms.Label();
+			lbDelta = new System.Windows.Forms.Label();
+			lbType = new System.Windows.Forms.Label();
+			gbMotiveGroup.SuspendLayout();
+			SuspendLayout();
 			//
 			// gbMotiveGroup
 			//
-			this.gbMotiveGroup.Controls.Add(this.btnClear);
-			this.gbMotiveGroup.Controls.Add(this.lbMin);
-			this.gbMotiveGroup.Controls.Add(this.lbDelta);
-			this.gbMotiveGroup.Controls.Add(this.lbType);
-			resources.ApplyResources(this.gbMotiveGroup, "gbMotiveGroup");
-			this.gbMotiveGroup.Name = "gbMotiveGroup";
-			this.gbMotiveGroup.TabStop = false;
+			gbMotiveGroup.Controls.Add(btnClear);
+			gbMotiveGroup.Controls.Add(lbMin);
+			gbMotiveGroup.Controls.Add(lbDelta);
+			gbMotiveGroup.Controls.Add(lbType);
+			resources.ApplyResources(gbMotiveGroup, "gbMotiveGroup");
+			gbMotiveGroup.Name = "gbMotiveGroup";
+			gbMotiveGroup.TabStop = false;
 			//
 			// btnClear
 			//
-			this.btnClear.BackColor = Color.Transparent;
-			resources.ApplyResources(this.btnClear, "btnClear");
-			this.btnClear.Name = "btnClear";
-			this.btnClear.UseVisualStyleBackColor = false;
-			this.btnClear.Click += new EventHandler(this.btnClear_Click);
+			btnClear.BackColor = Color.Transparent;
+			resources.ApplyResources(btnClear, "btnClear");
+			btnClear.Name = "btnClear";
+			btnClear.UseVisualStyleBackColor = false;
+			btnClear.Click += new EventHandler(btnClear_Click);
 			//
 			// lbMin
 			//
-			resources.ApplyResources(this.lbMin, "lbMin");
-			this.lbMin.Name = "lbMin";
+			resources.ApplyResources(lbMin, "lbMin");
+			lbMin.Name = "lbMin";
 			//
 			// lbDelta
 			//
-			resources.ApplyResources(this.lbDelta, "lbDelta");
-			this.lbDelta.Name = "lbDelta";
+			resources.ApplyResources(lbDelta, "lbDelta");
+			lbDelta.Name = "lbDelta";
 			//
 			// lbType
 			//
-			resources.ApplyResources(this.lbType, "lbType");
-			this.lbType.Name = "lbType";
+			resources.ApplyResources(lbType, "lbType");
+			lbType.Name = "lbType";
 			//
 			// TtabMotiveGroupUI
 			//
-			this.Controls.Add(this.gbMotiveGroup);
-			this.Name = "TtabMotiveGroupUI";
+			Controls.Add(gbMotiveGroup);
+			Name = "TtabMotiveGroupUI";
 			resources.ApplyResources(this, "$this");
-			this.gbMotiveGroup.ResumeLayout(false);
-			this.gbMotiveGroup.PerformLayout();
-			this.ResumeLayout(false);
+			gbMotiveGroup.ResumeLayout(false);
+			gbMotiveGroup.PerformLayout();
+			ResumeLayout(false);
 		}
 		#endregion
 

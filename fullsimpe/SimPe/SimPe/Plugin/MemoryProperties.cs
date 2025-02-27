@@ -32,11 +32,11 @@ namespace SimPe.Plugin
 				// Required designer variable.
 				InitializeComponent();
 
-				this.cbtype.Enum = typeof(SimMemoryType);
-				this.cbtype.ResourceManager = Localization.Manager;
+				cbtype.Enum = typeof(SimMemoryType);
+				cbtype.ResourceManager = Localization.Manager;
 
 				SetContent();
-				this.Enabled = false;
+				Enabled = false;
 				cbCtrl.Enabled = Helper.WindowsRegistry.HiddenMode;
 			}
 			catch { }
@@ -68,94 +68,94 @@ namespace SimPe.Plugin
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(MemoryProperties)
 				);
-			this.pg = new PropertyGrid();
-			this.tabControl2 = new TD.SandDock.TabControl();
-			this.tabPage3 = new TD.SandDock.TabPage();
-			this.panel2 = new Panel();
-			this.pnObjectGuid = new Panel();
-			this.cbSubjectObj = new PackedFiles.Wrapper.ObjectComboBox();
-			this.label5 = new Label();
-			this.pnSubject = new Panel();
-			this.label4 = new Label();
-			this.cbSubject = new PackedFiles.Wrapper.SimComboBox();
-			this.llme2 = new LinkLabel();
-			this.pnSub2 = new Panel();
-			this.pnSub1 = new Panel();
-			this.label6 = new Label();
-			this.pnValue = new Panel();
-			this.tbValue = new TextBox();
-			this.label8 = new Label();
-			this.pnInventory = new Panel();
-			this.tbInv = new TextBox();
-			this.label7 = new Label();
-			this.pnOwner = new Panel();
-			this.cbOwner = new PackedFiles.Wrapper.SimComboBox();
-			this.llme = new LinkLabel();
-			this.label3 = new Label();
-			this.pnSelection = new Panel();
-			this.lbtype = new Label();
-			this.label2 = new Label();
-			this.pb = new PictureBox();
-			this.cbtype = new Ambertation.Windows.Forms.EnumComboBox();
-			this.cbObjs = new PackedFiles.Wrapper.ObjectComboBox();
-			this.cbToks = new PackedFiles.Wrapper.ObjectComboBox();
-			this.cbMems = new PackedFiles.Wrapper.ObjectComboBox();
-			this.pnListing = new Panel();
-			this.rbObjs = new RadioButton();
-			this.rbToks = new RadioButton();
-			this.rbMems = new RadioButton();
-			this.label10 = new Label();
-			this.pnFlags = new Panel();
-			this.cbVis = new CheckBox();
-			this.cbCtrl = new CheckBox();
-			this.tbFlag = new TextBox();
-			this.label9 = new Label();
-			this.panel3 = new Panel();
-			this.tabPage4 = new TD.SandDock.TabPage();
-			this.panel1 = new Panel();
-			this.llSetRawLength = new LinkLabel();
-			this.tbRawLength = new TextBox();
-			this.label1 = new Label();
-			this.label11 = new Label();
-			this.tbUnk = new TextBox();
-			this.tabControl2.SuspendLayout();
-			this.tabPage3.SuspendLayout();
-			this.panel2.SuspendLayout();
-			this.pnObjectGuid.SuspendLayout();
-			this.pnSubject.SuspendLayout();
-			this.pnSub1.SuspendLayout();
-			this.pnValue.SuspendLayout();
-			this.pnInventory.SuspendLayout();
-			this.pnOwner.SuspendLayout();
-			this.pnSelection.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
-			this.pnListing.SuspendLayout();
-			this.pnFlags.SuspendLayout();
-			this.panel3.SuspendLayout();
-			this.tabPage4.SuspendLayout();
-			this.panel1.SuspendLayout();
-			this.SuspendLayout();
+			pg = new PropertyGrid();
+			tabControl2 = new TD.SandDock.TabControl();
+			tabPage3 = new TD.SandDock.TabPage();
+			panel2 = new Panel();
+			pnObjectGuid = new Panel();
+			cbSubjectObj = new PackedFiles.Wrapper.ObjectComboBox();
+			label5 = new Label();
+			pnSubject = new Panel();
+			label4 = new Label();
+			cbSubject = new PackedFiles.Wrapper.SimComboBox();
+			llme2 = new LinkLabel();
+			pnSub2 = new Panel();
+			pnSub1 = new Panel();
+			label6 = new Label();
+			pnValue = new Panel();
+			tbValue = new TextBox();
+			label8 = new Label();
+			pnInventory = new Panel();
+			tbInv = new TextBox();
+			label7 = new Label();
+			pnOwner = new Panel();
+			cbOwner = new PackedFiles.Wrapper.SimComboBox();
+			llme = new LinkLabel();
+			label3 = new Label();
+			pnSelection = new Panel();
+			lbtype = new Label();
+			label2 = new Label();
+			pb = new PictureBox();
+			cbtype = new Ambertation.Windows.Forms.EnumComboBox();
+			cbObjs = new PackedFiles.Wrapper.ObjectComboBox();
+			cbToks = new PackedFiles.Wrapper.ObjectComboBox();
+			cbMems = new PackedFiles.Wrapper.ObjectComboBox();
+			pnListing = new Panel();
+			rbObjs = new RadioButton();
+			rbToks = new RadioButton();
+			rbMems = new RadioButton();
+			label10 = new Label();
+			pnFlags = new Panel();
+			cbVis = new CheckBox();
+			cbCtrl = new CheckBox();
+			tbFlag = new TextBox();
+			label9 = new Label();
+			panel3 = new Panel();
+			tabPage4 = new TD.SandDock.TabPage();
+			panel1 = new Panel();
+			llSetRawLength = new LinkLabel();
+			tbRawLength = new TextBox();
+			label1 = new Label();
+			label11 = new Label();
+			tbUnk = new TextBox();
+			tabControl2.SuspendLayout();
+			tabPage3.SuspendLayout();
+			panel2.SuspendLayout();
+			pnObjectGuid.SuspendLayout();
+			pnSubject.SuspendLayout();
+			pnSub1.SuspendLayout();
+			pnValue.SuspendLayout();
+			pnInventory.SuspendLayout();
+			pnOwner.SuspendLayout();
+			pnSelection.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(pb)).BeginInit();
+			pnListing.SuspendLayout();
+			pnFlags.SuspendLayout();
+			panel3.SuspendLayout();
+			tabPage4.SuspendLayout();
+			panel1.SuspendLayout();
+			SuspendLayout();
 			//
 			// pg
 			//
-			this.pg.CommandsBackColor = System.Drawing.SystemColors.ControlLight;
-			resources.ApplyResources(this.pg, "pg");
-			this.pg.LineColor = System.Drawing.SystemColors.ScrollBar;
-			this.pg.Name = "pg";
-			this.pg.PropertySort = PropertySort.Alphabetical;
-			this.pg.ToolbarVisible = false;
-			this.pg.PropertyValueChanged +=
+			pg.CommandsBackColor = System.Drawing.SystemColors.ControlLight;
+			resources.ApplyResources(pg, "pg");
+			pg.LineColor = System.Drawing.SystemColors.ScrollBar;
+			pg.Name = "pg";
+			pg.PropertySort = PropertySort.Alphabetical;
+			pg.ToolbarVisible = false;
+			pg.PropertyValueChanged +=
 				new PropertyValueChangedEventHandler(
-					this.pg_PropertyValueChanged
+					pg_PropertyValueChanged
 				);
 			//
 			// tabControl2
 			//
-			this.tabControl2.BorderStyle = TD.SandDock.Rendering.BorderStyle.None;
-			this.tabControl2.Controls.Add(this.tabPage3);
-			this.tabControl2.Controls.Add(this.tabPage4);
-			resources.ApplyResources(this.tabControl2, "tabControl2");
-			this.tabControl2.LayoutSystem = new TD.SandDock.SplitLayoutSystem(
+			tabControl2.BorderStyle = TD.SandDock.Rendering.BorderStyle.None;
+			tabControl2.Controls.Add(tabPage3);
+			tabControl2.Controls.Add(tabPage4);
+			resources.ApplyResources(tabControl2, "tabControl2");
+			tabControl2.LayoutSystem = new TD.SandDock.SplitLayoutSystem(
 				250,
 				400,
 				Orientation.Horizontal,
@@ -168,448 +168,448 @@ namespace SimPe.Plugin
 								430,
 								new TD.SandDock.DockControl[]
 								{
-									((TD.SandDock.DockControl)(this.tabPage3)),
-									((TD.SandDock.DockControl)(this.tabPage4)),
+									((TD.SandDock.DockControl)(tabPage3)),
+									((TD.SandDock.DockControl)(tabPage4)),
 								},
-								this.tabPage3
+								tabPage3
 							)
 						)
 					),
 				}
 			);
-			this.tabControl2.Name = "tabControl2";
+			tabControl2.Name = "tabControl2";
 			//
 			// tabPage3
 			//
-			resources.ApplyResources(this.tabPage3, "tabPage3");
-			this.tabPage3.Controls.Add(this.panel3);
-			this.tabPage3.Controls.Add(this.panel2);
-			this.tabPage3.Controls.Add(this.pnValue);
-			this.tabPage3.Controls.Add(this.pnInventory);
-			this.tabPage3.Controls.Add(this.pnOwner);
-			this.tabPage3.Controls.Add(this.pnSelection);
-			this.tabPage3.Controls.Add(this.pnListing);
-			this.tabPage3.Controls.Add(this.pnFlags);
-			this.tabPage3.FloatingSize = new System.Drawing.Size(550, 400);
-			this.tabPage3.Guid = new Guid(
+			resources.ApplyResources(tabPage3, "tabPage3");
+			tabPage3.Controls.Add(panel3);
+			tabPage3.Controls.Add(panel2);
+			tabPage3.Controls.Add(pnValue);
+			tabPage3.Controls.Add(pnInventory);
+			tabPage3.Controls.Add(pnOwner);
+			tabPage3.Controls.Add(pnSelection);
+			tabPage3.Controls.Add(pnListing);
+			tabPage3.Controls.Add(pnFlags);
+			tabPage3.FloatingSize = new System.Drawing.Size(550, 400);
+			tabPage3.Guid = new Guid(
 				"4e851d66-304f-4d0f-9896-8d73154946f3"
 			);
-			this.tabPage3.Name = "tabPage3";
-			this.tabPage3.VisibleChanged += new EventHandler(
-				this.tabPage3_VisibleChanged
+			tabPage3.Name = "tabPage3";
+			tabPage3.VisibleChanged += new EventHandler(
+				tabPage3_VisibleChanged
 			);
 			//
 			// panel2
 			//
-			this.panel2.Controls.Add(this.pnObjectGuid);
-			this.panel2.Controls.Add(this.pnSubject);
-			this.panel2.Controls.Add(this.pnSub2);
-			this.panel2.Controls.Add(this.pnSub1);
-			resources.ApplyResources(this.panel2, "panel2");
-			this.panel2.Name = "panel2";
+			panel2.Controls.Add(pnObjectGuid);
+			panel2.Controls.Add(pnSubject);
+			panel2.Controls.Add(pnSub2);
+			panel2.Controls.Add(pnSub1);
+			resources.ApplyResources(panel2, "panel2");
+			panel2.Name = "panel2";
 			//
 			// pnObjectGuid
 			//
-			this.pnObjectGuid.Controls.Add(this.cbSubjectObj);
-			this.pnObjectGuid.Controls.Add(this.label5);
-			resources.ApplyResources(this.pnObjectGuid, "pnObjectGuid");
-			this.pnObjectGuid.Name = "pnObjectGuid";
+			pnObjectGuid.Controls.Add(cbSubjectObj);
+			pnObjectGuid.Controls.Add(label5);
+			resources.ApplyResources(pnObjectGuid, "pnObjectGuid");
+			pnObjectGuid.Name = "pnObjectGuid";
 			//
 			// cbSubjectObj
 			//
-			resources.ApplyResources(this.cbSubjectObj, "cbSubjectObj");
-			this.cbSubjectObj.Name = "cbSubjectObj";
-			this.cbSubjectObj.SelectedGuid = ((uint)(4294967295u));
-			this.cbSubjectObj.SelectedItem = null;
-			this.cbSubjectObj.ShowAspiration = true;
-			this.cbSubjectObj.ShowBadge = true;
-			this.cbSubjectObj.ShowInventory = true;
-			this.cbSubjectObj.ShowJobData = true;
-			this.cbSubjectObj.ShowMemories = true;
-			this.cbSubjectObj.ShowSkill = true;
-			this.cbSubjectObj.ShowTokens = false;
-			this.cbSubjectObj.SelectedObjectChanged += new EventHandler(
-				this.cbSubjectObj_SelectedObjectChanged
+			resources.ApplyResources(cbSubjectObj, "cbSubjectObj");
+			cbSubjectObj.Name = "cbSubjectObj";
+			cbSubjectObj.SelectedGuid = ((uint)(4294967295u));
+			cbSubjectObj.SelectedItem = null;
+			cbSubjectObj.ShowAspiration = true;
+			cbSubjectObj.ShowBadge = true;
+			cbSubjectObj.ShowInventory = true;
+			cbSubjectObj.ShowJobData = true;
+			cbSubjectObj.ShowMemories = true;
+			cbSubjectObj.ShowSkill = true;
+			cbSubjectObj.ShowTokens = false;
+			cbSubjectObj.SelectedObjectChanged += new EventHandler(
+				cbSubjectObj_SelectedObjectChanged
 			);
 			//
 			// label5
 			//
-			resources.ApplyResources(this.label5, "label5");
-			this.label5.Name = "label5";
+			resources.ApplyResources(label5, "label5");
+			label5.Name = "label5";
 			//
 			// pnSubject
 			//
-			this.pnSubject.Controls.Add(this.label4);
-			this.pnSubject.Controls.Add(this.cbSubject);
-			this.pnSubject.Controls.Add(this.llme2);
-			resources.ApplyResources(this.pnSubject, "pnSubject");
-			this.pnSubject.Name = "pnSubject";
+			pnSubject.Controls.Add(label4);
+			pnSubject.Controls.Add(cbSubject);
+			pnSubject.Controls.Add(llme2);
+			resources.ApplyResources(pnSubject, "pnSubject");
+			pnSubject.Name = "pnSubject";
 			//
 			// label4
 			//
-			resources.ApplyResources(this.label4, "label4");
-			this.label4.Name = "label4";
+			resources.ApplyResources(label4, "label4");
+			label4.Name = "label4";
 			//
 			// cbSubject
 			//
-			resources.ApplyResources(this.cbSubject, "cbSubject");
-			this.cbSubject.Name = "cbSubject";
-			this.cbSubject.SelectedSim = null;
-			this.cbSubject.SelectedSimId = ((uint)(4294967295u));
-			this.cbSubject.SelectedSimInstance = ((ushort)(65535));
-			this.cbSubject.SelectedSimChanged += new EventHandler(
-				this.cbSubject_SelectedSimChanged
+			resources.ApplyResources(cbSubject, "cbSubject");
+			cbSubject.Name = "cbSubject";
+			cbSubject.SelectedSim = null;
+			cbSubject.SelectedSimId = ((uint)(4294967295u));
+			cbSubject.SelectedSimInstance = ((ushort)(65535));
+			cbSubject.SelectedSimChanged += new EventHandler(
+				cbSubject_SelectedSimChanged
 			);
 			//
 			// llme2
 			//
-			resources.ApplyResources(this.llme2, "llme2");
-			this.llme2.Name = "llme2";
-			this.llme2.TabStop = true;
-			this.llme2.LinkClicked +=
+			resources.ApplyResources(llme2, "llme2");
+			llme2.Name = "llme2";
+			llme2.TabStop = true;
+			llme2.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.linkLabel1_LinkClicked
+					linkLabel1_LinkClicked
 				);
 			//
 			// pnSub2
 			//
-			resources.ApplyResources(this.pnSub2, "pnSub2");
-			this.pnSub2.Name = "pnSub2";
+			resources.ApplyResources(pnSub2, "pnSub2");
+			pnSub2.Name = "pnSub2";
 			//
 			// pnSub1
 			//
-			this.pnSub1.Controls.Add(this.label6);
-			resources.ApplyResources(this.pnSub1, "pnSub1");
-			this.pnSub1.Name = "pnSub1";
+			pnSub1.Controls.Add(label6);
+			resources.ApplyResources(pnSub1, "pnSub1");
+			pnSub1.Name = "pnSub1";
 			//
 			// label6
 			//
-			resources.ApplyResources(this.label6, "label6");
-			this.label6.Name = "label6";
+			resources.ApplyResources(label6, "label6");
+			label6.Name = "label6";
 			//
 			// pnValue
 			//
-			this.pnValue.Controls.Add(this.tbValue);
-			this.pnValue.Controls.Add(this.label8);
-			resources.ApplyResources(this.pnValue, "pnValue");
-			this.pnValue.Name = "pnValue";
+			pnValue.Controls.Add(tbValue);
+			pnValue.Controls.Add(label8);
+			resources.ApplyResources(pnValue, "pnValue");
+			pnValue.Name = "pnValue";
 			//
 			// tbValue
 			//
-			resources.ApplyResources(this.tbValue, "tbValue");
-			this.tbValue.Name = "tbValue";
-			this.tbValue.TextChanged += new EventHandler(
-				this.tbValue_TextChanged
+			resources.ApplyResources(tbValue, "tbValue");
+			tbValue.Name = "tbValue";
+			tbValue.TextChanged += new EventHandler(
+				tbValue_TextChanged
 			);
 			//
 			// label8
 			//
-			resources.ApplyResources(this.label8, "label8");
-			this.label8.Name = "label8";
+			resources.ApplyResources(label8, "label8");
+			label8.Name = "label8";
 			//
 			// pnInventory
 			//
-			this.pnInventory.Controls.Add(this.tbInv);
-			this.pnInventory.Controls.Add(this.label7);
-			resources.ApplyResources(this.pnInventory, "pnInventory");
-			this.pnInventory.Name = "pnInventory";
+			pnInventory.Controls.Add(tbInv);
+			pnInventory.Controls.Add(label7);
+			resources.ApplyResources(pnInventory, "pnInventory");
+			pnInventory.Name = "pnInventory";
 			//
 			// tbInv
 			//
-			resources.ApplyResources(this.tbInv, "tbInv");
-			this.tbInv.Name = "tbInv";
-			this.tbInv.TextChanged += new EventHandler(this.tbInv_TextChanged);
+			resources.ApplyResources(tbInv, "tbInv");
+			tbInv.Name = "tbInv";
+			tbInv.TextChanged += new EventHandler(tbInv_TextChanged);
 			//
 			// label7
 			//
-			resources.ApplyResources(this.label7, "label7");
-			this.label7.Name = "label7";
+			resources.ApplyResources(label7, "label7");
+			label7.Name = "label7";
 			//
 			// pnOwner
 			//
-			this.pnOwner.Controls.Add(this.cbOwner);
-			this.pnOwner.Controls.Add(this.llme);
-			this.pnOwner.Controls.Add(this.label3);
-			resources.ApplyResources(this.pnOwner, "pnOwner");
-			this.pnOwner.Name = "pnOwner";
+			pnOwner.Controls.Add(cbOwner);
+			pnOwner.Controls.Add(llme);
+			pnOwner.Controls.Add(label3);
+			resources.ApplyResources(pnOwner, "pnOwner");
+			pnOwner.Name = "pnOwner";
 			//
 			// cbOwner
 			//
-			resources.ApplyResources(this.cbOwner, "cbOwner");
-			this.cbOwner.Name = "cbOwner";
-			this.cbOwner.SelectedSim = null;
-			this.cbOwner.SelectedSimId = ((uint)(4294967295u));
-			this.cbOwner.SelectedSimInstance = ((ushort)(65535));
-			this.cbOwner.SelectedSimChanged += new EventHandler(
-				this.cbOwner_SelectedSimChanged
+			resources.ApplyResources(cbOwner, "cbOwner");
+			cbOwner.Name = "cbOwner";
+			cbOwner.SelectedSim = null;
+			cbOwner.SelectedSimId = ((uint)(4294967295u));
+			cbOwner.SelectedSimInstance = ((ushort)(65535));
+			cbOwner.SelectedSimChanged += new EventHandler(
+				cbOwner_SelectedSimChanged
 			);
 			//
 			// llme
 			//
-			resources.ApplyResources(this.llme, "llme");
-			this.llme.Name = "llme";
-			this.llme.TabStop = true;
-			this.llme.LinkClicked +=
+			resources.ApplyResources(llme, "llme");
+			llme.Name = "llme";
+			llme.TabStop = true;
+			llme.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.llme_LinkClicked
+					llme_LinkClicked
 				);
 			//
 			// label3
 			//
-			resources.ApplyResources(this.label3, "label3");
-			this.label3.Name = "label3";
+			resources.ApplyResources(label3, "label3");
+			label3.Name = "label3";
 			//
 			// pnSelection
 			//
-			this.pnSelection.Controls.Add(this.lbtype);
-			this.pnSelection.Controls.Add(this.label2);
-			this.pnSelection.Controls.Add(this.pb);
-			this.pnSelection.Controls.Add(this.cbtype);
-			this.pnSelection.Controls.Add(this.cbObjs);
-			this.pnSelection.Controls.Add(this.cbToks);
-			this.pnSelection.Controls.Add(this.cbMems);
-			resources.ApplyResources(this.pnSelection, "pnSelection");
-			this.pnSelection.Name = "pnSelection";
+			pnSelection.Controls.Add(lbtype);
+			pnSelection.Controls.Add(label2);
+			pnSelection.Controls.Add(pb);
+			pnSelection.Controls.Add(cbtype);
+			pnSelection.Controls.Add(cbObjs);
+			pnSelection.Controls.Add(cbToks);
+			pnSelection.Controls.Add(cbMems);
+			resources.ApplyResources(pnSelection, "pnSelection");
+			pnSelection.Name = "pnSelection";
 			//
 			// lbtype
 			//
-			resources.ApplyResources(this.lbtype, "lbtype");
-			this.lbtype.Name = "lbtype";
+			resources.ApplyResources(lbtype, "lbtype");
+			lbtype.Name = "lbtype";
 			//
 			// label2
 			//
-			resources.ApplyResources(this.label2, "label2");
-			this.label2.Name = "label2";
+			resources.ApplyResources(label2, "label2");
+			label2.Name = "label2";
 			//
 			// pb
 			//
-			resources.ApplyResources(this.pb, "pb");
-			this.pb.Name = "pb";
-			this.pb.TabStop = false;
+			resources.ApplyResources(pb, "pb");
+			pb.Name = "pb";
+			pb.TabStop = false;
 			//
 			// cbtype
 			//
-			resources.ApplyResources(this.cbtype, "cbtype");
-			this.cbtype.DropDownStyle = ComboBoxStyle.DropDownList;
-			this.cbtype.Enum = null;
-			this.cbtype.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.cbtype.Name = "cbtype";
-			this.cbtype.ResourceManager = null;
-			this.cbtype.SelectedIndexChanged += new EventHandler(
-				this.cbtype_SelectedIndexChanged
+			resources.ApplyResources(cbtype, "cbtype");
+			cbtype.DropDownStyle = ComboBoxStyle.DropDownList;
+			cbtype.Enum = null;
+			cbtype.ForeColor = System.Drawing.SystemColors.ControlText;
+			cbtype.Name = "cbtype";
+			cbtype.ResourceManager = null;
+			cbtype.SelectedIndexChanged += new EventHandler(
+				cbtype_SelectedIndexChanged
 			);
 			//
 			// cbObjs
 			//
-			resources.ApplyResources(this.cbObjs, "cbObjs");
-			this.cbObjs.Name = "cbObjs";
-			this.cbObjs.SelectedGuid = ((uint)(4294967295u));
-			this.cbObjs.SelectedItem = null;
-			this.cbObjs.ShowAspiration = false;
-			this.cbObjs.ShowBadge = false;
-			this.cbObjs.ShowInventory = true;
-			this.cbObjs.ShowJobData = false;
-			this.cbObjs.ShowMemories = false;
-			this.cbObjs.ShowSkill = false;
-			this.cbObjs.ShowTokens = false;
-			this.cbObjs.SelectedObjectChanged += new EventHandler(
-				this.ChangeGuid
+			resources.ApplyResources(cbObjs, "cbObjs");
+			cbObjs.Name = "cbObjs";
+			cbObjs.SelectedGuid = ((uint)(4294967295u));
+			cbObjs.SelectedItem = null;
+			cbObjs.ShowAspiration = false;
+			cbObjs.ShowBadge = false;
+			cbObjs.ShowInventory = true;
+			cbObjs.ShowJobData = false;
+			cbObjs.ShowMemories = false;
+			cbObjs.ShowSkill = false;
+			cbObjs.ShowTokens = false;
+			cbObjs.SelectedObjectChanged += new EventHandler(
+				ChangeGuid
 			);
 			//
 			// cbToks
 			//
-			resources.ApplyResources(this.cbToks, "cbToks");
-			this.cbToks.Name = "cbToks";
-			this.cbToks.SelectedGuid = ((uint)(4294967295u));
-			this.cbToks.SelectedItem = null;
-			this.cbToks.ShowAspiration = false;
-			this.cbToks.ShowBadge = false;
-			this.cbToks.ShowInventory = false;
-			this.cbToks.ShowJobData = false;
-			this.cbToks.ShowMemories = false;
-			this.cbToks.ShowSkill = false;
-			this.cbToks.ShowTokens = true;
-			this.cbToks.SelectedObjectChanged += new EventHandler(
-				this.ChangeGuid
+			resources.ApplyResources(cbToks, "cbToks");
+			cbToks.Name = "cbToks";
+			cbToks.SelectedGuid = ((uint)(4294967295u));
+			cbToks.SelectedItem = null;
+			cbToks.ShowAspiration = false;
+			cbToks.ShowBadge = false;
+			cbToks.ShowInventory = false;
+			cbToks.ShowJobData = false;
+			cbToks.ShowMemories = false;
+			cbToks.ShowSkill = false;
+			cbToks.ShowTokens = true;
+			cbToks.SelectedObjectChanged += new EventHandler(
+				ChangeGuid
 			);
 			//
 			// cbMems
 			//
-			resources.ApplyResources(this.cbMems, "cbMems");
-			this.cbMems.Name = "cbMems";
-			this.cbMems.SelectedGuid = ((uint)(4294967295u));
-			this.cbMems.SelectedItem = null;
-			this.cbMems.ShowAspiration = false;
-			this.cbMems.ShowBadge = false;
-			this.cbMems.ShowInventory = false;
-			this.cbMems.ShowJobData = false;
-			this.cbMems.ShowMemories = true;
-			this.cbMems.ShowSkill = false;
-			this.cbMems.ShowTokens = false;
-			this.cbMems.SelectedObjectChanged += new EventHandler(
-				this.ChangeGuid
+			resources.ApplyResources(cbMems, "cbMems");
+			cbMems.Name = "cbMems";
+			cbMems.SelectedGuid = ((uint)(4294967295u));
+			cbMems.SelectedItem = null;
+			cbMems.ShowAspiration = false;
+			cbMems.ShowBadge = false;
+			cbMems.ShowInventory = false;
+			cbMems.ShowJobData = false;
+			cbMems.ShowMemories = true;
+			cbMems.ShowSkill = false;
+			cbMems.ShowTokens = false;
+			cbMems.SelectedObjectChanged += new EventHandler(
+				ChangeGuid
 			);
 			//
 			// pnListing
 			//
-			this.pnListing.Controls.Add(this.rbObjs);
-			this.pnListing.Controls.Add(this.rbToks);
-			this.pnListing.Controls.Add(this.rbMems);
-			this.pnListing.Controls.Add(this.label10);
-			resources.ApplyResources(this.pnListing, "pnListing");
-			this.pnListing.Name = "pnListing";
+			pnListing.Controls.Add(rbObjs);
+			pnListing.Controls.Add(rbToks);
+			pnListing.Controls.Add(rbMems);
+			pnListing.Controls.Add(label10);
+			resources.ApplyResources(pnListing, "pnListing");
+			pnListing.Name = "pnListing";
 			//
 			// rbObjs
 			//
-			resources.ApplyResources(this.rbObjs, "rbObjs");
-			this.rbObjs.Name = "rbObjs";
-			this.rbObjs.CheckedChanged += new EventHandler(
-				this.rbObjs_CheckedChanged
+			resources.ApplyResources(rbObjs, "rbObjs");
+			rbObjs.Name = "rbObjs";
+			rbObjs.CheckedChanged += new EventHandler(
+				rbObjs_CheckedChanged
 			);
 			//
 			// rbToks
 			//
-			resources.ApplyResources(this.rbToks, "rbToks");
-			this.rbToks.Name = "rbToks";
-			this.rbToks.CheckedChanged += new EventHandler(
-				this.rbToks_CheckedChanged
+			resources.ApplyResources(rbToks, "rbToks");
+			rbToks.Name = "rbToks";
+			rbToks.CheckedChanged += new EventHandler(
+				rbToks_CheckedChanged
 			);
 			//
 			// rbMems
 			//
-			resources.ApplyResources(this.rbMems, "rbMems");
-			this.rbMems.Name = "rbMems";
-			this.rbMems.CheckedChanged += new EventHandler(
-				this.rbMems_CheckedChanged
+			resources.ApplyResources(rbMems, "rbMems");
+			rbMems.Name = "rbMems";
+			rbMems.CheckedChanged += new EventHandler(
+				rbMems_CheckedChanged
 			);
 			//
 			// label10
 			//
-			resources.ApplyResources(this.label10, "label10");
-			this.label10.Name = "label10";
+			resources.ApplyResources(label10, "label10");
+			label10.Name = "label10";
 			//
 			// pnFlags
 			//
-			this.pnFlags.Controls.Add(this.cbVis);
-			this.pnFlags.Controls.Add(this.cbCtrl);
-			this.pnFlags.Controls.Add(this.tbFlag);
-			this.pnFlags.Controls.Add(this.label9);
-			resources.ApplyResources(this.pnFlags, "pnFlags");
-			this.pnFlags.Name = "pnFlags";
+			pnFlags.Controls.Add(cbVis);
+			pnFlags.Controls.Add(cbCtrl);
+			pnFlags.Controls.Add(tbFlag);
+			pnFlags.Controls.Add(label9);
+			resources.ApplyResources(pnFlags, "pnFlags");
+			pnFlags.Name = "pnFlags";
 			//
 			// cbVis
 			//
-			resources.ApplyResources(this.cbVis, "cbVis");
-			this.cbVis.Name = "cbVis";
-			this.cbVis.CheckedChanged += new EventHandler(
-				this.cbVis_CheckedChanged
+			resources.ApplyResources(cbVis, "cbVis");
+			cbVis.Name = "cbVis";
+			cbVis.CheckedChanged += new EventHandler(
+				cbVis_CheckedChanged
 			);
 			//
 			// cbCtrl
 			//
-			resources.ApplyResources(this.cbCtrl, "cbCtrl");
-			this.cbCtrl.Name = "cbCtrl";
-			this.cbCtrl.CheckedChanged += new EventHandler(
-				this.cbAct_CheckedChanged
+			resources.ApplyResources(cbCtrl, "cbCtrl");
+			cbCtrl.Name = "cbCtrl";
+			cbCtrl.CheckedChanged += new EventHandler(
+				cbAct_CheckedChanged
 			);
 			//
 			// tbFlag
 			//
-			resources.ApplyResources(this.tbFlag, "tbFlag");
-			this.tbFlag.Name = "tbFlag";
-			this.tbFlag.ReadOnly = true;
-			this.tbFlag.TextChanged += new EventHandler(this.tbFlag_TextChanged);
+			resources.ApplyResources(tbFlag, "tbFlag");
+			tbFlag.Name = "tbFlag";
+			tbFlag.ReadOnly = true;
+			tbFlag.TextChanged += new EventHandler(tbFlag_TextChanged);
 			//
 			// label9
 			//
-			resources.ApplyResources(this.label9, "label9");
-			this.label9.Name = "label9";
+			resources.ApplyResources(label9, "label9");
+			label9.Name = "label9";
 			//
 			// panel3
 			//
-			this.panel3.Controls.Add(this.tbUnk);
-			this.panel3.Controls.Add(this.label11);
-			resources.ApplyResources(this.panel3, "panel3");
-			this.panel3.Name = "panel3";
+			panel3.Controls.Add(tbUnk);
+			panel3.Controls.Add(label11);
+			resources.ApplyResources(panel3, "panel3");
+			panel3.Name = "panel3";
 			//
 			// tabPage4
 			//
-			this.tabPage4.BackColor = System.Drawing.SystemColors.ControlLight;
-			this.tabPage4.Controls.Add(this.pg);
-			this.tabPage4.Controls.Add(this.panel1);
-			this.tabPage4.FloatingSize = new System.Drawing.Size(550, 400);
-			this.tabPage4.Guid = new Guid(
+			tabPage4.BackColor = System.Drawing.SystemColors.ControlLight;
+			tabPage4.Controls.Add(pg);
+			tabPage4.Controls.Add(panel1);
+			tabPage4.FloatingSize = new System.Drawing.Size(550, 400);
+			tabPage4.Guid = new Guid(
 				"3b0d25ef-e354-4693-8339-f171a2b4f000"
 			);
-			resources.ApplyResources(this.tabPage4, "tabPage4");
-			this.tabPage4.Name = "tabPage4";
+			resources.ApplyResources(tabPage4, "tabPage4");
+			tabPage4.Name = "tabPage4";
 			//
 			// panel1
 			//
-			this.panel1.Controls.Add(this.llSetRawLength);
-			this.panel1.Controls.Add(this.tbRawLength);
-			this.panel1.Controls.Add(this.label1);
-			resources.ApplyResources(this.panel1, "panel1");
-			this.panel1.Name = "panel1";
+			panel1.Controls.Add(llSetRawLength);
+			panel1.Controls.Add(tbRawLength);
+			panel1.Controls.Add(label1);
+			resources.ApplyResources(panel1, "panel1");
+			panel1.Name = "panel1";
 			//
 			// llSetRawLength
 			//
-			resources.ApplyResources(this.llSetRawLength, "llSetRawLength");
-			this.llSetRawLength.Name = "llSetRawLength";
-			this.llSetRawLength.TabStop = true;
-			this.llSetRawLength.LinkClicked +=
+			resources.ApplyResources(llSetRawLength, "llSetRawLength");
+			llSetRawLength.Name = "llSetRawLength";
+			llSetRawLength.TabStop = true;
+			llSetRawLength.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.llSetRawLength_LinkClicked
+					llSetRawLength_LinkClicked
 				);
 			//
 			// tbRawLength
 			//
-			resources.ApplyResources(this.tbRawLength, "tbRawLength");
-			this.tbRawLength.Name = "tbRawLength";
+			resources.ApplyResources(tbRawLength, "tbRawLength");
+			tbRawLength.Name = "tbRawLength";
 			//
 			// label1
 			//
-			resources.ApplyResources(this.label1, "label1");
-			this.label1.Name = "label1";
+			resources.ApplyResources(label1, "label1");
+			label1.Name = "label1";
 			//
 			// label11
 			//
-			resources.ApplyResources(this.label11, "label11");
-			this.label11.Name = "label11";
+			resources.ApplyResources(label11, "label11");
+			label11.Name = "label11";
 			//
 			// tbUnk
 			//
-			resources.ApplyResources(this.tbUnk, "tbUnk");
-			this.tbUnk.Name = "tbUnk";
-			this.tbUnk.ReadOnly = true;
+			resources.ApplyResources(tbUnk, "tbUnk");
+			tbUnk.Name = "tbUnk";
+			tbUnk.ReadOnly = true;
 			//
 			// MemoryProperties
 			//
-			this.Controls.Add(this.tabControl2);
+			Controls.Add(tabControl2);
 			resources.ApplyResources(this, "$this");
-			this.Name = "MemoryProperties";
-			this.tabControl2.ResumeLayout(false);
-			this.tabPage3.ResumeLayout(false);
-			this.panel2.ResumeLayout(false);
-			this.pnObjectGuid.ResumeLayout(false);
-			this.pnSubject.ResumeLayout(false);
-			this.pnSub1.ResumeLayout(false);
-			this.pnValue.ResumeLayout(false);
-			this.pnValue.PerformLayout();
-			this.pnInventory.ResumeLayout(false);
-			this.pnInventory.PerformLayout();
-			this.pnOwner.ResumeLayout(false);
-			this.pnSelection.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
-			this.pnListing.ResumeLayout(false);
-			this.pnFlags.ResumeLayout(false);
-			this.pnFlags.PerformLayout();
-			this.panel3.ResumeLayout(false);
-			this.panel3.PerformLayout();
-			this.tabPage4.ResumeLayout(false);
-			this.panel1.ResumeLayout(false);
-			this.panel1.PerformLayout();
-			this.ResumeLayout(false);
+			Name = "MemoryProperties";
+			tabControl2.ResumeLayout(false);
+			tabPage3.ResumeLayout(false);
+			panel2.ResumeLayout(false);
+			pnObjectGuid.ResumeLayout(false);
+			pnSubject.ResumeLayout(false);
+			pnSub1.ResumeLayout(false);
+			pnValue.ResumeLayout(false);
+			pnValue.PerformLayout();
+			pnInventory.ResumeLayout(false);
+			pnInventory.PerformLayout();
+			pnOwner.ResumeLayout(false);
+			pnSelection.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(pb)).EndInit();
+			pnListing.ResumeLayout(false);
+			pnFlags.ResumeLayout(false);
+			pnFlags.PerformLayout();
+			panel3.ResumeLayout(false);
+			panel3.PerformLayout();
+			tabPage4.ResumeLayout(false);
+			panel1.ResumeLayout(false);
+			panel1.PerformLayout();
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -743,7 +743,7 @@ namespace SimPe.Plugin
 			pb.Image = null;
 			if (item != null)
 			{
-				this.Enabled = true;
+				Enabled = true;
 				Hashtable ht = new Hashtable();
 				byte ct = 0;
 				foreach (string v in item.MemoryCacheItem.ValueNames)
@@ -763,31 +763,31 @@ namespace SimPe.Plugin
 
 				pg.SelectedObject = pob.Instance;
 
-				this.tbRawLength.Text = item.Data.Length.ToString();
-				this.cbtype.SelectedValue = item.MemoryType;
+				tbRawLength.Text = item.Data.Length.ToString();
+				cbtype.SelectedValue = item.MemoryType;
 
 				UpdateSelectedItem();
 
 				pb.Image = item.MemoryCacheItem.Image;
 
-				SelectOwner(this.cbOwner, item);
+				SelectOwner(cbOwner, item);
 				SelectSubject(item);
 
 				tbInv.Text = item.InventoryNumber.ToString();
-				this.tbValue.Text = item.Value.ToString();
+				tbValue.Text = item.Value.ToString();
 				tbUnk.Text = Helper.HexString(item.UnknownNumber);
 				UpdateFlagsValue();
 			}
 			else
 			{
-				this.Enabled = false;
+				Enabled = false;
 			}
 			inter = false;
 		}
 
 		void UpdateFlagsValue()
 		{
-			this.tbFlag.Text = "0x" + Helper.HexString(item.Flags.Value);
+			tbFlag.Text = "0x" + Helper.HexString(item.Flags.Value);
 		}
 
 		void UpdateSelectedItem()
@@ -795,24 +795,24 @@ namespace SimPe.Plugin
 			bool use = (
 				!item.MemoryCacheItem.IsToken && !item.MemoryCacheItem.IsInventory
 			);
-			this.cbMems.Visible = use;
-			this.rbMems.Checked = use;
+			cbMems.Visible = use;
+			rbMems.Checked = use;
 			if (use)
 			{
 				SelectNgbhItem(cbMems, item);
 			}
 
 			use = item.MemoryCacheItem.IsToken && !item.MemoryCacheItem.IsInventory;
-			this.cbToks.Visible = use;
-			this.rbToks.Checked = use;
+			cbToks.Visible = use;
+			rbToks.Checked = use;
 			if (use)
 			{
 				SelectNgbhItem(cbToks, item);
 			}
 
 			use = (!item.MemoryCacheItem.IsToken && item.MemoryCacheItem.IsInventory);
-			this.cbObjs.Visible = use;
-			this.rbObjs.Checked = use;
+			cbObjs.Visible = use;
+			rbObjs.Checked = use;
 			if (use)
 			{
 				SelectNgbhItem(cbObjs, item);
@@ -831,14 +831,14 @@ namespace SimPe.Plugin
 
 		void SelectSubject(NgbhItem item)
 		{
-			this.cbSubject.SelectedSimId = item.SubjectGuid;
+			cbSubject.SelectedSimId = item.SubjectGuid;
 			if (item.MemoryType == SimMemoryType.Object)
 			{
-				this.cbSubjectObj.SelectedGuid = item.ReferencedObjectGuid;
+				cbSubjectObj.SelectedGuid = item.ReferencedObjectGuid;
 			}
 			else
 			{
-				this.cbSubjectObj.SelectedGuid = item.SubjectGuid;
+				cbSubjectObj.SelectedGuid = item.SubjectGuid;
 			}
 		}
 
@@ -867,10 +867,10 @@ namespace SimPe.Plugin
 			LinkLabelLinkClickedEventArgs e
 		)
 		{
-			if (this.item != null)
+			if (item != null)
 			{
 				ushort[] ndata = new ushort[
-					Helper.StringToInt32(this.tbRawLength.Text, item.Data.Length, 10)
+					Helper.StringToInt32(tbRawLength.Text, item.Data.Length, 10)
 				];
 				for (int i = 0; i < ndata.Length; i++)
 				{
@@ -905,7 +905,7 @@ namespace SimPe.Plugin
 				sender as PackedFiles.Wrapper.ObjectComboBox;
 			item.Guid = cb.SelectedGuid;
 			SetContent();
-			this.FireChangeEvent();
+			FireChangeEvent();
 		}
 
 		private void pg_PropertyValueChanged(
@@ -939,7 +939,7 @@ namespace SimPe.Plugin
 
 		private void tabPage3_VisibleChanged(object sender, EventArgs e)
 		{
-			if (this.tabPage3.Visible && chgraw)
+			if (tabPage3.Visible && chgraw)
 			{
 				SetContent();
 			}
@@ -949,35 +949,35 @@ namespace SimPe.Plugin
 		{
 			SimMemoryType smt = (SimMemoryType)cbtype.SelectedValue;
 
-			this.pnOwner.Visible = (
+			pnOwner.Visible = (
 				smt == SimMemoryType.Memory
 				|| smt == SimMemoryType.Gossip
 				|| smt == SimMemoryType.GossipInventory
 			);
-			this.pnSub1.Visible = (
+			pnSub1.Visible = (
 				smt == SimMemoryType.Memory || smt == SimMemoryType.Gossip
 			);
-			this.pnSub2.Visible = this.pnSub1.Visible;
-			this.pnSubject.Visible = (
+			pnSub2.Visible = pnSub1.Visible;
+			pnSubject.Visible = (
 				smt == SimMemoryType.Memory || smt == SimMemoryType.Gossip
 			);
-			this.pnObjectGuid.Visible = (
+			pnObjectGuid.Visible = (
 				smt == SimMemoryType.Memory
 				|| smt == SimMemoryType.Gossip
 				|| smt == SimMemoryType.Object
 			);
 
-			this.pnInventory.Visible = (
+			pnInventory.Visible = (
 				smt == SimMemoryType.Inventory || smt == SimMemoryType.GossipInventory
 			);
-			this.pnValue.Visible = (
+			pnValue.Visible = (
 				smt == SimMemoryType.Skill
 				|| smt == SimMemoryType.Badge
 				|| smt == SimMemoryType.ValueToken
 			);
-			this.pnFlags.Visible = true;
+			pnFlags.Visible = true;
 
-			this.pnListing.Visible = Helper.WindowsRegistry.HiddenMode;
+			pnListing.Visible = Helper.WindowsRegistry.HiddenMode;
 		}
 
 		void SetMe(PackedFiles.Wrapper.SimComboBox cb)
@@ -995,7 +995,7 @@ namespace SimPe.Plugin
 			LinkLabelLinkClickedEventArgs e
 		)
 		{
-			SetMe(this.cbOwner);
+			SetMe(cbOwner);
 		}
 
 		private void linkLabel1_LinkClicked(
@@ -1003,7 +1003,7 @@ namespace SimPe.Plugin
 			LinkLabelLinkClickedEventArgs e
 		)
 		{
-			SetMe(this.cbSubject);
+			SetMe(cbSubject);
 		}
 
 		private void cbOwner_SelectedSimChanged(object sender, EventArgs e)
@@ -1021,7 +1021,7 @@ namespace SimPe.Plugin
 			item.OwnerInstance = cbOwner.SelectedSimInstance;
 
 			SetContent();
-			this.FireChangeEvent();
+			FireChangeEvent();
 		}
 
 		private void cbSubject_SelectedSimChanged(object sender, EventArgs e)
@@ -1037,15 +1037,15 @@ namespace SimPe.Plugin
 			}
 
 			inter = true;
-			this.cbSubjectObj.SelectedGuid = 0xffffffff;
+			cbSubjectObj.SelectedGuid = 0xffffffff;
 			item.SetSubject(
-				this.cbSubject.SelectedSimInstance,
-				this.cbSubject.SelectedSimId
+				cbSubject.SelectedSimInstance,
+				cbSubject.SelectedSimId
 			);
 			inter = false;
 
 			SetContent();
-			this.FireChangeEvent();
+			FireChangeEvent();
 		}
 
 		private void cbSubjectObj_SelectedObjectChanged(
@@ -1065,20 +1065,20 @@ namespace SimPe.Plugin
 
 			inter = true;
 
-			this.cbSubject.SelectedSimId = 0xffffffff;
+			cbSubject.SelectedSimId = 0xffffffff;
 			if (item.MemoryType == SimMemoryType.Object)
 			{
-				item.ReferencedObjectGuid = this.cbSubjectObj.SelectedGuid;
+				item.ReferencedObjectGuid = cbSubjectObj.SelectedGuid;
 			}
 			else
 			{
-				item.SetSubject(0, this.cbSubjectObj.SelectedGuid);
+				item.SetSubject(0, cbSubjectObj.SelectedGuid);
 			}
 
 			inter = false;
 
 			SetContent();
-			this.FireChangeEvent();
+			FireChangeEvent();
 		}
 
 		private void tbInv_TextChanged(object sender, EventArgs e)
@@ -1094,12 +1094,12 @@ namespace SimPe.Plugin
 			}
 
 			item.InventoryNumber = Helper.StringToUInt32(
-				this.tbInv.Text,
+				tbInv.Text,
 				item.InventoryNumber,
 				10
 			);
 			SetContent();
-			this.FireChangeEvent();
+			FireChangeEvent();
 		}
 
 		private void tbValue_TextChanged(object sender, EventArgs e)
@@ -1114,8 +1114,8 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			item.Value = Helper.StringToUInt16(this.tbValue.Text, item.Value, 10);
-			this.FireChangeEvent();
+			item.Value = Helper.StringToUInt16(tbValue.Text, item.Value, 10);
+			FireChangeEvent();
 		}
 
 		private void tbFlag_TextChanged(object sender, EventArgs e)
@@ -1125,8 +1125,8 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			this.cbCtrl.Checked = item.Flags.IsControler;
-			this.cbVis.Checked = item.Flags.IsVisible;
+			cbCtrl.Checked = item.Flags.IsControler;
+			cbVis.Checked = item.Flags.IsVisible;
 		}
 
 		private void cbVis_CheckedChanged(object sender, EventArgs e)
@@ -1142,11 +1142,11 @@ namespace SimPe.Plugin
 			}
 
 			inter = true;
-			item.Flags.IsVisible = this.cbVis.Checked;
+			item.Flags.IsVisible = cbVis.Checked;
 			UpdateFlagsValue();
 			inter = false;
 			SetContent();
-			this.FireChangeEvent();
+			FireChangeEvent();
 		}
 
 		private void cbAct_CheckedChanged(object sender, EventArgs e)
@@ -1162,11 +1162,11 @@ namespace SimPe.Plugin
 			}
 
 			inter = true;
-			item.Flags.IsControler = this.cbCtrl.Checked;
+			item.Flags.IsControler = cbCtrl.Checked;
 			UpdateFlagsValue();
 			inter = false;
 			SetContent();
-			this.FireChangeEvent();
+			FireChangeEvent();
 		}
 
 		private void rbObjs_CheckedChanged(object sender, EventArgs e)

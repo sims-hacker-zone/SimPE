@@ -173,14 +173,14 @@ namespace SimPe.Wizards
 
 			c.OnComponentChanging(
 				wz,
-				TypeDescriptor.GetProperties(this.wz)["Controls"]
+				TypeDescriptor.GetProperties(wz)["Controls"]
 			);
 			c.OnComponentChanging(pn, null);
 			wz.Controls.Add(pn);
 			c.OnComponentChanged(pn, null, null, null);
 			c.OnComponentChanged(
 				wz,
-				TypeDescriptor.GetProperties(this.wz)["Controls"],
+				TypeDescriptor.GetProperties(wz)["Controls"],
 				null,
 				null
 			);

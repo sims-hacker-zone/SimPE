@@ -296,26 +296,26 @@ namespace SimPe.Plugin
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(SkinWorkshop)
 				);
-			this.lbobj = new ListBox();
-			this.btclone = new Button();
-			this.pb = new PictureBox();
-			this.cbfix = new CheckBox();
-			this.cbgid = new CheckBox();
-			this.sfd = new SaveFileDialog();
-			this.tbseek = new TextBox();
-			this.ofd = new OpenFileDialog();
-			this.panel1 = new Panel();
-			this.taskBox2 = new GroupBox();
-			this.taskBox1 = new GroupBox();
-			((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
-			this.panel1.SuspendLayout();
-			this.taskBox2.SuspendLayout();
-			this.taskBox1.SuspendLayout();
-			this.SuspendLayout();
+			lbobj = new ListBox();
+			btclone = new Button();
+			pb = new PictureBox();
+			cbfix = new CheckBox();
+			cbgid = new CheckBox();
+			sfd = new SaveFileDialog();
+			tbseek = new TextBox();
+			ofd = new OpenFileDialog();
+			panel1 = new Panel();
+			taskBox2 = new GroupBox();
+			taskBox1 = new GroupBox();
+			((System.ComponentModel.ISupportInitialize)(pb)).BeginInit();
+			panel1.SuspendLayout();
+			taskBox2.SuspendLayout();
+			taskBox1.SuspendLayout();
+			SuspendLayout();
 			//
 			// lbobj
 			//
-			this.lbobj.Anchor = (
+			lbobj.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -327,18 +327,18 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.lbobj.IntegralHeight = false;
-			this.lbobj.ItemHeight = 16;
-			this.lbobj.Location = new Point(6, 71);
-			this.lbobj.Name = "lbobj";
-			this.lbobj.SelectionMode = SelectionMode.MultiExtended;
-			this.lbobj.Size = new Size(485, 248);
-			this.lbobj.TabIndex = 0;
-			this.lbobj.SelectedIndexChanged += new EventHandler(this.Select);
+			lbobj.IntegralHeight = false;
+			lbobj.ItemHeight = 16;
+			lbobj.Location = new Point(6, 71);
+			lbobj.Name = "lbobj";
+			lbobj.SelectionMode = SelectionMode.MultiExtended;
+			lbobj.Size = new Size(485, 248);
+			lbobj.TabIndex = 0;
+			lbobj.SelectedIndexChanged += new EventHandler(Select);
 			//
 			// btclone
 			//
-			this.btclone.Anchor = (
+			btclone.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -346,72 +346,72 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.btclone.FlatStyle = FlatStyle.System;
-			this.btclone.Font = new Font(
+			btclone.FlatStyle = FlatStyle.System;
+			btclone.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.btclone.Location = new Point(400, 141);
-			this.btclone.Name = "btclone";
-			this.btclone.Size = new Size(75, 23);
-			this.btclone.TabIndex = 1;
-			this.btclone.Text = "Start";
-			this.btclone.Click += new EventHandler(this.Start);
+			btclone.Location = new Point(400, 141);
+			btclone.Name = "btclone";
+			btclone.Size = new Size(75, 23);
+			btclone.TabIndex = 1;
+			btclone.Text = "Start";
+			btclone.Click += new EventHandler(Start);
 			//
 			// pb
 			//
-			this.pb.BackColor = Color.Transparent;
-			this.pb.BorderStyle = BorderStyle.FixedSingle;
-			this.pb.Location = new Point(7, 40);
-			this.pb.Name = "pb";
-			this.pb.Size = new Size(128, 128);
-			this.pb.SizeMode = PictureBoxSizeMode.StretchImage;
-			this.pb.TabIndex = 6;
-			this.pb.TabStop = false;
+			pb.BackColor = Color.Transparent;
+			pb.BorderStyle = BorderStyle.FixedSingle;
+			pb.Location = new Point(7, 40);
+			pb.Name = "pb";
+			pb.Size = new Size(128, 128);
+			pb.SizeMode = PictureBoxSizeMode.StretchImage;
+			pb.TabIndex = 6;
+			pb.TabStop = false;
 			//
 			// cbfix
 			//
-			this.cbfix.FlatStyle = FlatStyle.System;
-			this.cbfix.Font = new Font(
+			cbfix.FlatStyle = FlatStyle.System;
+			cbfix.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbfix.Location = new Point(152, 77);
-			this.cbfix.Name = "cbfix";
-			this.cbfix.Size = new Size(224, 24);
-			this.cbfix.TabIndex = 5;
-			this.cbfix.Text = "Fix Cloned Files (sug. by.  wes_h)";
+			cbfix.Location = new Point(152, 77);
+			cbfix.Name = "cbfix";
+			cbfix.Size = new Size(224, 24);
+			cbfix.TabIndex = 5;
+			cbfix.Text = "Fix Cloned Files (sug. by.  wes_h)";
 			//
 			// cbgid
 			//
-			this.cbgid.FlatStyle = FlatStyle.System;
-			this.cbgid.Font = new Font(
+			cbgid.FlatStyle = FlatStyle.System;
+			cbgid.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbgid.Location = new Point(152, 47);
-			this.cbgid.Name = "cbgid";
-			this.cbgid.Size = new Size(248, 24);
-			this.cbgid.TabIndex = 2;
-			this.cbgid.Text = "Set Custom Group ID (0x1c050000)";
+			cbgid.Location = new Point(152, 47);
+			cbgid.Name = "cbgid";
+			cbgid.Size = new Size(248, 24);
+			cbgid.TabIndex = 2;
+			cbgid.Text = "Set Custom Group ID (0x1c050000)";
 			//
 			// sfd
 			//
-			this.sfd.Filter = "Package File (*.package)|*.package|All Files (*.*)|*.*";
-			this.sfd.Title = "Alternative Colour Pacakge";
+			sfd.Filter = "Package File (*.package)|*.package|All Files (*.*)|*.*";
+			sfd.Title = "Alternative Colour Pacakge";
 			//
 			// tbseek
 			//
-			this.tbseek.Anchor = (
+			tbseek.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -421,37 +421,37 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.tbseek.Location = new Point(6, 44);
-			this.tbseek.Name = "tbseek";
-			this.tbseek.Size = new Size(485, 23);
-			this.tbseek.TabIndex = 3;
-			this.tbseek.TextChanged += new EventHandler(this.SeekItem);
+			tbseek.Location = new Point(6, 44);
+			tbseek.Name = "tbseek";
+			tbseek.Size = new Size(485, 23);
+			tbseek.TabIndex = 3;
+			tbseek.TextChanged += new EventHandler(SeekItem);
 			//
 			// ofd
 			//
-			this.ofd.Filter = "Package File (*.package)|*.package|All Files (*.*)|*.*";
+			ofd.Filter = "Package File (*.package)|*.package|All Files (*.*)|*.*";
 			//
 			// panel1
 			//
-			this.panel1.BackColor = Color.Transparent;
-			this.panel1.Controls.Add(this.taskBox2);
-			this.panel1.Controls.Add(this.taskBox1);
-			this.panel1.Dock = DockStyle.Fill;
-			this.panel1.Font = new Font(
+			panel1.BackColor = Color.Transparent;
+			panel1.Controls.Add(taskBox2);
+			panel1.Controls.Add(taskBox1);
+			panel1.Dock = DockStyle.Fill;
+			panel1.Font = new Font(
 				"Verdana",
 				9.75F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.panel1.Location = new Point(0, 0);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new Size(504, 518);
-			this.panel1.TabIndex = 5;
+			panel1.Location = new Point(0, 0);
+			panel1.Name = "panel1";
+			panel1.Size = new Size(504, 518);
+			panel1.TabIndex = 5;
 			//
 			// taskBox2
 			//
-			this.taskBox2.Anchor = (
+			taskBox2.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -459,20 +459,20 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.taskBox2.BackColor = Color.Transparent;
-			this.taskBox2.Controls.Add(this.cbfix);
-			this.taskBox2.Controls.Add(this.btclone);
-			this.taskBox2.Controls.Add(this.pb);
-			this.taskBox2.Controls.Add(this.cbgid);
-			this.taskBox2.Location = new Point(3, 340);
-			this.taskBox2.Name = "taskBox2";
-			this.taskBox2.Padding = new Padding(4, 44, 4, 4);
-			this.taskBox2.Size = new Size(498, 175);
-			this.taskBox2.TabIndex = 6;
+			taskBox2.BackColor = Color.Transparent;
+			taskBox2.Controls.Add(cbfix);
+			taskBox2.Controls.Add(btclone);
+			taskBox2.Controls.Add(pb);
+			taskBox2.Controls.Add(cbgid);
+			taskBox2.Location = new Point(3, 340);
+			taskBox2.Name = "taskBox2";
+			taskBox2.Padding = new Padding(4, 44, 4, 4);
+			taskBox2.Size = new Size(498, 175);
+			taskBox2.TabIndex = 6;
 			//
 			// taskBox1
 			//
-			this.taskBox1.Anchor = (
+			taskBox1.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -484,42 +484,42 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.taskBox1.BackColor = Color.Transparent;
-			this.taskBox1.Controls.Add(this.tbseek);
-			this.taskBox1.Controls.Add(this.lbobj);
-			this.taskBox1.Location = new Point(3, 3);
-			this.taskBox1.Name = "taskBox1";
-			this.taskBox1.Padding = new Padding(4, 44, 4, 4);
-			this.taskBox1.Size = new Size(498, 326);
-			this.taskBox1.TabIndex = 5;
+			taskBox1.BackColor = Color.Transparent;
+			taskBox1.Controls.Add(tbseek);
+			taskBox1.Controls.Add(lbobj);
+			taskBox1.Location = new Point(3, 3);
+			taskBox1.Name = "taskBox1";
+			taskBox1.Padding = new Padding(4, 44, 4, 4);
+			taskBox1.Size = new Size(498, 326);
+			taskBox1.TabIndex = 5;
 			//
 			// SkinWorkshop
 			//
-			this.AutoScaleBaseSize = new Size(7, 16);
-			this.ClientSize = new Size(504, 518);
-			this.Controls.Add(this.panel1);
-			this.Font = new Font(
+			AutoScaleBaseSize = new Size(7, 16);
+			ClientSize = new Size(504, 518);
+			Controls.Add(panel1);
+			Font = new Font(
 				"Verdana",
 				9.75F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.FormBorderStyle =
+			FormBorderStyle =
 				FormBorderStyle
 				.SizableToolWindow;
-			this.Icon = ((Icon)(resources.GetObject("$this.Icon")));
-			this.MinimumSize = new Size(520, 320);
-			this.Name = "SkinWorkshop";
-			this.Opacity = 0.96;
-			this.StartPosition = FormStartPosition.CenterScreen;
-			this.Text = "Skin Workshop (biggest thanks to RGiles and Numenor)";
-			((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
-			this.panel1.ResumeLayout(false);
-			this.taskBox2.ResumeLayout(false);
-			this.taskBox1.ResumeLayout(false);
-			this.taskBox1.PerformLayout();
-			this.ResumeLayout(false);
+			Icon = ((Icon)(resources.GetObject("$this.Icon")));
+			MinimumSize = new Size(520, 320);
+			Name = "SkinWorkshop";
+			Opacity = 0.96;
+			StartPosition = FormStartPosition.CenterScreen;
+			Text = "Skin Workshop (biggest thanks to RGiles and Numenor)";
+			((System.ComponentModel.ISupportInitialize)(pb)).EndInit();
+			panel1.ResumeLayout(false);
+			taskBox2.ResumeLayout(false);
+			taskBox1.ResumeLayout(false);
+			taskBox1.PerformLayout();
+			ResumeLayout(false);
 		}
 		#endregion
 		public Interfaces.Files.IPackageFile Execute(
@@ -576,7 +576,7 @@ namespace SimPe.Plugin
 		{
 			try
 			{
-				this.Cursor = Cursors.WaitCursor;
+				Cursor = Cursors.WaitCursor;
 				IAlias a = new Alias(0, "");
 				Interfaces.Files.IPackedFileDescriptor pfd = null;
 				uint localgroup = MetaData.LOCAL_GROUP;
@@ -591,7 +591,7 @@ namespace SimPe.Plugin
 				WaitingScreen.Wait();
 				try
 				{
-					this.RecolorClone(pfd, localgroup, false, false, false);
+					RecolorClone(pfd, localgroup, false, false, false);
 				}
 				finally
 				{
@@ -601,7 +601,7 @@ namespace SimPe.Plugin
 				FixObject fo = new FixObject(package, FixVersion.UniversityReady, true);
 				Hashtable map = null;
 
-				if (this.cbfix.Checked)
+				if (cbfix.Checked)
 				{
 					map = fo.GetNameMap(true);
 					if (map == null)
@@ -629,13 +629,13 @@ namespace SimPe.Plugin
 					}
 				}
 
-				if ((this.cbgid.Checked) && (package != null))
+				if ((cbgid.Checked) && (package != null))
 				{
 					WaitingScreen.Wait();
 					try
 					{
 						fo.FixGroup();
-						if (this.cbfix.Checked)
+						if (cbfix.Checked)
 						{
 							package.Save();
 						}
@@ -654,7 +654,7 @@ namespace SimPe.Plugin
 			finally
 			{
 				WaitingScreen.Stop(this);
-				this.Cursor = Cursors.Default;
+				Cursor = Cursors.Default;
 			}
 		}
 
@@ -976,7 +976,7 @@ namespace SimPe.Plugin
 			finally
 			{
 				tbseek.Tag = null;
-				this.Select(null, null);
+				Select(null, null);
 			}
 		}
 	}

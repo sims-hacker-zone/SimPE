@@ -52,7 +52,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 			if (Helper.WindowsRegistry.UseBigIcons)
 			{
-				this.lbclst.Font = new System.Drawing.Font("Verdana", 11F);
+				lbclst.Font = new System.Drawing.Font("Verdana", 11F);
 			}
 		}
 
@@ -119,55 +119,55 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(ClstForm));
-			this.clstPanel = new System.Windows.Forms.Panel();
-			this.lbformat = new System.Windows.Forms.Label();
-			this.label9 = new System.Windows.Forms.Label();
-			this.lbclst = new System.Windows.Forms.ListBox();
-			this.panel4 = new System.Windows.Forms.Panel();
-			this.clstPanel.SuspendLayout();
-			this.SuspendLayout();
+			clstPanel = new System.Windows.Forms.Panel();
+			lbformat = new System.Windows.Forms.Label();
+			label9 = new System.Windows.Forms.Label();
+			lbclst = new System.Windows.Forms.ListBox();
+			panel4 = new System.Windows.Forms.Panel();
+			clstPanel.SuspendLayout();
+			SuspendLayout();
 			//
 			// clstPanel
 			//
-			this.clstPanel.BackColor = System.Drawing.Color.Transparent;
-			this.clstPanel.Controls.Add(this.lbformat);
-			this.clstPanel.Controls.Add(this.label9);
-			this.clstPanel.Controls.Add(this.lbclst);
-			this.clstPanel.Controls.Add(this.panel4);
-			resources.ApplyResources(this.clstPanel, "clstPanel");
-			this.clstPanel.Name = "clstPanel";
+			clstPanel.BackColor = System.Drawing.Color.Transparent;
+			clstPanel.Controls.Add(lbformat);
+			clstPanel.Controls.Add(label9);
+			clstPanel.Controls.Add(lbclst);
+			clstPanel.Controls.Add(panel4);
+			resources.ApplyResources(clstPanel, "clstPanel");
+			clstPanel.Name = "clstPanel";
 			//
 			// lbformat
 			//
-			resources.ApplyResources(this.lbformat, "lbformat");
-			this.lbformat.BackColor = System.Drawing.Color.Transparent;
-			this.lbformat.Name = "lbformat";
+			resources.ApplyResources(lbformat, "lbformat");
+			lbformat.BackColor = System.Drawing.Color.Transparent;
+			lbformat.Name = "lbformat";
 			//
 			// label9
 			//
-			resources.ApplyResources(this.label9, "label9");
-			this.label9.BackColor = System.Drawing.Color.Transparent;
-			this.label9.Name = "label9";
+			resources.ApplyResources(label9, "label9");
+			label9.BackColor = System.Drawing.Color.Transparent;
+			label9.Name = "label9";
 			//
 			// lbclst
 			//
-			resources.ApplyResources(this.lbclst, "lbclst");
-			this.lbclst.Name = "lbclst";
-			this.lbclst.Sorted = true;
+			resources.ApplyResources(lbclst, "lbclst");
+			lbclst.Name = "lbclst";
+			lbclst.Sorted = true;
 			//
 			// panel4
 			//
-			resources.ApplyResources(this.panel4, "panel4");
-			this.panel4.Name = "panel4";
+			resources.ApplyResources(panel4, "panel4");
+			panel4.Name = "panel4";
 			//
 			// ClstForm
 			//
 			resources.ApplyResources(this, "$this");
-			this.Controls.Add(this.clstPanel);
-			this.Name = "ClstForm";
-			this.clstPanel.ResumeLayout(false);
-			this.clstPanel.PerformLayout();
-			this.ResumeLayout(false);
+			Controls.Add(clstPanel);
+			Name = "ClstForm";
+			clstPanel.ResumeLayout(false);
+			clstPanel.PerformLayout();
+			ResumeLayout(false);
 		}
 
 		#endregion

@@ -79,87 +79,87 @@ namespace SimPe.Plugin.Tool
 		{
 			System.Resources.ResourceManager resources =
 				new System.Resources.ResourceManager(typeof(Report));
-			this.xpGradientPanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
-			this.linkLabel1 = new LinkLabel();
-			this.rtb = new RichTextBox();
-			this.sfd = new SaveFileDialog();
-			this.xpGradientPanel1.SuspendLayout();
-			this.SuspendLayout();
+			xpGradientPanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
+			linkLabel1 = new LinkLabel();
+			rtb = new RichTextBox();
+			sfd = new SaveFileDialog();
+			xpGradientPanel1.SuspendLayout();
+			SuspendLayout();
 			//
 			// xpGradientPanel1
 			//
-			this.xpGradientPanel1.AccessibleDescription = resources.GetString(
+			xpGradientPanel1.AccessibleDescription = resources.GetString(
 				"xpGradientPanel1.AccessibleDescription"
 			);
-			this.xpGradientPanel1.AccessibleName = resources.GetString(
+			xpGradientPanel1.AccessibleName = resources.GetString(
 				"xpGradientPanel1.AccessibleName"
 			);
-			this.xpGradientPanel1.Anchor = (
+			xpGradientPanel1.Anchor = (
 				(AnchorStyles)(
 					resources.GetObject("xpGradientPanel1.Anchor")
 				)
 			);
-			this.xpGradientPanel1.AutoScroll = (
+			xpGradientPanel1.AutoScroll = (
 				(bool)(resources.GetObject("xpGradientPanel1.AutoScroll"))
 			);
-			this.xpGradientPanel1.AutoScrollMargin = (
+			xpGradientPanel1.AutoScrollMargin = (
 				(System.Drawing.Size)(
 					resources.GetObject("xpGradientPanel1.AutoScrollMargin")
 				)
 			);
-			this.xpGradientPanel1.AutoScrollMinSize = (
+			xpGradientPanel1.AutoScrollMinSize = (
 				(System.Drawing.Size)(
 					resources.GetObject("xpGradientPanel1.AutoScrollMinSize")
 				)
 			);
-			this.xpGradientPanel1.BackgroundImage = (
+			xpGradientPanel1.BackgroundImage = (
 				(System.Drawing.Image)(
 					resources.GetObject("xpGradientPanel1.BackgroundImage")
 				)
 			);
-			this.xpGradientPanel1.Controls.Add(this.linkLabel1);
-			this.xpGradientPanel1.Controls.Add(this.rtb);
-			this.xpGradientPanel1.Dock = (
+			xpGradientPanel1.Controls.Add(linkLabel1);
+			xpGradientPanel1.Controls.Add(rtb);
+			xpGradientPanel1.Dock = (
 				(DockStyle)(
 					resources.GetObject("xpGradientPanel1.Dock")
 				)
 			);
-			this.xpGradientPanel1.Enabled = (
+			xpGradientPanel1.Enabled = (
 				(bool)(resources.GetObject("xpGradientPanel1.Enabled"))
 			);
-			this.xpGradientPanel1.Font = (
+			xpGradientPanel1.Font = (
 				(System.Drawing.Font)(resources.GetObject("xpGradientPanel1.Font"))
 			);
-			this.xpGradientPanel1.ImeMode = (
+			xpGradientPanel1.ImeMode = (
 				(ImeMode)(
 					resources.GetObject("xpGradientPanel1.ImeMode")
 				)
 			);
-			this.xpGradientPanel1.Location = (
+			xpGradientPanel1.Location = (
 				(System.Drawing.Point)(resources.GetObject("xpGradientPanel1.Location"))
 			);
-			this.xpGradientPanel1.Name = "xpGradientPanel1";
-			this.xpGradientPanel1.RightToLeft = (
+			xpGradientPanel1.Name = "xpGradientPanel1";
+			xpGradientPanel1.RightToLeft = (
 				(RightToLeft)(
 					resources.GetObject("xpGradientPanel1.RightToLeft")
 				)
 			);
-			this.xpGradientPanel1.Size = (
+			xpGradientPanel1.Size = (
 				(System.Drawing.Size)(resources.GetObject("xpGradientPanel1.Size"))
 			);
-			this.xpGradientPanel1.TabIndex = (
+			xpGradientPanel1.TabIndex = (
 				(int)(resources.GetObject("xpGradientPanel1.TabIndex"))
 			);
-			this.xpGradientPanel1.Text = resources.GetString("xpGradientPanel1.Text");
-			this.xpGradientPanel1.Visible = (
+			xpGradientPanel1.Text = resources.GetString("xpGradientPanel1.Text");
+			xpGradientPanel1.Visible = (
 				(bool)(resources.GetObject("xpGradientPanel1.Visible"))
 			);
-			this.xpGradientPanel1.Watermark = (
+			xpGradientPanel1.Watermark = (
 				(System.Drawing.Image)(
 					resources.GetObject("xpGradientPanel1.Watermark")
 				)
 			);
-			this.xpGradientPanel1.WatermarkSize = (
+			xpGradientPanel1.WatermarkSize = (
 				(System.Drawing.Size)(
 					resources.GetObject("xpGradientPanel1.WatermarkSize")
 				)
@@ -167,192 +167,192 @@ namespace SimPe.Plugin.Tool
 			//
 			// linkLabel1
 			//
-			this.linkLabel1.AccessibleDescription = resources.GetString(
+			linkLabel1.AccessibleDescription = resources.GetString(
 				"linkLabel1.AccessibleDescription"
 			);
-			this.linkLabel1.AccessibleName = resources.GetString(
+			linkLabel1.AccessibleName = resources.GetString(
 				"linkLabel1.AccessibleName"
 			);
-			this.linkLabel1.Anchor = (
+			linkLabel1.Anchor = (
 				(AnchorStyles)(
 					resources.GetObject("linkLabel1.Anchor")
 				)
 			);
-			this.linkLabel1.AutoSize = (
+			linkLabel1.AutoSize = (
 				(bool)(resources.GetObject("linkLabel1.AutoSize"))
 			);
-			this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
-			this.linkLabel1.Dock = (
+			linkLabel1.BackColor = System.Drawing.Color.Transparent;
+			linkLabel1.Dock = (
 				(DockStyle)(resources.GetObject("linkLabel1.Dock"))
 			);
-			this.linkLabel1.Enabled = (
+			linkLabel1.Enabled = (
 				(bool)(resources.GetObject("linkLabel1.Enabled"))
 			);
-			this.linkLabel1.Font = (
+			linkLabel1.Font = (
 				(System.Drawing.Font)(resources.GetObject("linkLabel1.Font"))
 			);
-			this.linkLabel1.Image = (
+			linkLabel1.Image = (
 				(System.Drawing.Image)(resources.GetObject("linkLabel1.Image"))
 			);
-			this.linkLabel1.ImageAlign = (
+			linkLabel1.ImageAlign = (
 				(System.Drawing.ContentAlignment)(
 					resources.GetObject("linkLabel1.ImageAlign")
 				)
 			);
-			this.linkLabel1.ImageIndex = (
+			linkLabel1.ImageIndex = (
 				(int)(resources.GetObject("linkLabel1.ImageIndex"))
 			);
-			this.linkLabel1.ImeMode = (
+			linkLabel1.ImeMode = (
 				(ImeMode)(
 					resources.GetObject("linkLabel1.ImeMode")
 				)
 			);
-			this.linkLabel1.LinkArea = (
+			linkLabel1.LinkArea = (
 				(LinkArea)(
 					resources.GetObject("linkLabel1.LinkArea")
 				)
 			);
-			this.linkLabel1.Location = (
+			linkLabel1.Location = (
 				(System.Drawing.Point)(resources.GetObject("linkLabel1.Location"))
 			);
-			this.linkLabel1.Name = "linkLabel1";
-			this.linkLabel1.RightToLeft = (
+			linkLabel1.Name = "linkLabel1";
+			linkLabel1.RightToLeft = (
 				(RightToLeft)(
 					resources.GetObject("linkLabel1.RightToLeft")
 				)
 			);
-			this.linkLabel1.Size = (
+			linkLabel1.Size = (
 				(System.Drawing.Size)(resources.GetObject("linkLabel1.Size"))
 			);
-			this.linkLabel1.TabIndex = (
+			linkLabel1.TabIndex = (
 				(int)(resources.GetObject("linkLabel1.TabIndex"))
 			);
-			this.linkLabel1.TabStop = true;
-			this.linkLabel1.Text = resources.GetString("linkLabel1.Text");
-			this.linkLabel1.TextAlign = (
+			linkLabel1.TabStop = true;
+			linkLabel1.Text = resources.GetString("linkLabel1.Text");
+			linkLabel1.TextAlign = (
 				(System.Drawing.ContentAlignment)(
 					resources.GetObject("linkLabel1.TextAlign")
 				)
 			);
-			this.linkLabel1.Visible = (
+			linkLabel1.Visible = (
 				(bool)(resources.GetObject("linkLabel1.Visible"))
 			);
-			this.linkLabel1.LinkClicked +=
+			linkLabel1.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.linkLabel1_LinkClicked
+					linkLabel1_LinkClicked
 				);
 			//
 			// rtb
 			//
-			this.rtb.AccessibleDescription = resources.GetString(
+			rtb.AccessibleDescription = resources.GetString(
 				"rtb.AccessibleDescription"
 			);
-			this.rtb.AccessibleName = resources.GetString("rtb.AccessibleName");
-			this.rtb.Anchor = (
+			rtb.AccessibleName = resources.GetString("rtb.AccessibleName");
+			rtb.Anchor = (
 				(AnchorStyles)(resources.GetObject("rtb.Anchor"))
 			);
-			this.rtb.AutoSize = ((bool)(resources.GetObject("rtb.AutoSize")));
-			this.rtb.BackgroundImage = (
+			rtb.AutoSize = ((bool)(resources.GetObject("rtb.AutoSize")));
+			rtb.BackgroundImage = (
 				(System.Drawing.Image)(resources.GetObject("rtb.BackgroundImage"))
 			);
-			this.rtb.BorderStyle = BorderStyle.None;
-			this.rtb.BulletIndent = ((int)(resources.GetObject("rtb.BulletIndent")));
-			this.rtb.Dock = (
+			rtb.BorderStyle = BorderStyle.None;
+			rtb.BulletIndent = ((int)(resources.GetObject("rtb.BulletIndent")));
+			rtb.Dock = (
 				(DockStyle)(resources.GetObject("rtb.Dock"))
 			);
-			this.rtb.Enabled = ((bool)(resources.GetObject("rtb.Enabled")));
-			this.rtb.Font = ((System.Drawing.Font)(resources.GetObject("rtb.Font")));
-			this.rtb.ImeMode = (
+			rtb.Enabled = ((bool)(resources.GetObject("rtb.Enabled")));
+			rtb.Font = ((System.Drawing.Font)(resources.GetObject("rtb.Font")));
+			rtb.ImeMode = (
 				(ImeMode)(resources.GetObject("rtb.ImeMode"))
 			);
-			this.rtb.Location = (
+			rtb.Location = (
 				(System.Drawing.Point)(resources.GetObject("rtb.Location"))
 			);
-			this.rtb.MaxLength = ((int)(resources.GetObject("rtb.MaxLength")));
-			this.rtb.Multiline = ((bool)(resources.GetObject("rtb.Multiline")));
-			this.rtb.Name = "rtb";
-			this.rtb.ReadOnly = true;
-			this.rtb.RightMargin = ((int)(resources.GetObject("rtb.RightMargin")));
-			this.rtb.RightToLeft = (
+			rtb.MaxLength = ((int)(resources.GetObject("rtb.MaxLength")));
+			rtb.Multiline = ((bool)(resources.GetObject("rtb.Multiline")));
+			rtb.Name = "rtb";
+			rtb.ReadOnly = true;
+			rtb.RightMargin = ((int)(resources.GetObject("rtb.RightMargin")));
+			rtb.RightToLeft = (
 				(RightToLeft)(
 					resources.GetObject("rtb.RightToLeft")
 				)
 			);
-			this.rtb.ScrollBars = (
+			rtb.ScrollBars = (
 				(RichTextBoxScrollBars)(
 					resources.GetObject("rtb.ScrollBars")
 				)
 			);
-			this.rtb.ShowSelectionMargin = true;
-			this.rtb.Size = ((System.Drawing.Size)(resources.GetObject("rtb.Size")));
-			this.rtb.TabIndex = ((int)(resources.GetObject("rtb.TabIndex")));
-			this.rtb.Text = resources.GetString("rtb.Text");
-			this.rtb.Visible = ((bool)(resources.GetObject("rtb.Visible")));
-			this.rtb.WordWrap = ((bool)(resources.GetObject("rtb.WordWrap")));
-			this.rtb.ZoomFactor = (
+			rtb.ShowSelectionMargin = true;
+			rtb.Size = ((System.Drawing.Size)(resources.GetObject("rtb.Size")));
+			rtb.TabIndex = ((int)(resources.GetObject("rtb.TabIndex")));
+			rtb.Text = resources.GetString("rtb.Text");
+			rtb.Visible = ((bool)(resources.GetObject("rtb.Visible")));
+			rtb.WordWrap = ((bool)(resources.GetObject("rtb.WordWrap")));
+			rtb.ZoomFactor = (
 				(System.Single)(resources.GetObject("rtb.ZoomFactor"))
 			);
 			//
 			// sfd
 			//
-			this.sfd.Filter = resources.GetString("sfd.Filter");
-			this.sfd.Title = resources.GetString("sfd.Title");
+			sfd.Filter = resources.GetString("sfd.Filter");
+			sfd.Title = resources.GetString("sfd.Title");
 			//
 			// Report
 			//
-			this.AccessibleDescription = resources.GetString(
+			AccessibleDescription = resources.GetString(
 				"$this.AccessibleDescription"
 			);
-			this.AccessibleName = resources.GetString("$this.AccessibleName");
-			this.AutoScaleBaseSize = (
+			AccessibleName = resources.GetString("$this.AccessibleName");
+			AutoScaleBaseSize = (
 				(System.Drawing.Size)(resources.GetObject("$this.AutoScaleBaseSize"))
 			);
-			this.AutoScroll = ((bool)(resources.GetObject("$this.AutoScroll")));
-			this.AutoScrollMargin = (
+			AutoScroll = ((bool)(resources.GetObject("$this.AutoScroll")));
+			AutoScrollMargin = (
 				(System.Drawing.Size)(resources.GetObject("$this.AutoScrollMargin"))
 			);
-			this.AutoScrollMinSize = (
+			AutoScrollMinSize = (
 				(System.Drawing.Size)(resources.GetObject("$this.AutoScrollMinSize"))
 			);
-			this.BackgroundImage = (
+			BackgroundImage = (
 				(System.Drawing.Image)(resources.GetObject("$this.BackgroundImage"))
 			);
-			this.ClientSize = (
+			ClientSize = (
 				(System.Drawing.Size)(resources.GetObject("$this.ClientSize"))
 			);
-			this.Controls.Add(this.xpGradientPanel1);
-			this.Enabled = ((bool)(resources.GetObject("$this.Enabled")));
-			this.Font = ((System.Drawing.Font)(resources.GetObject("$this.Font")));
-			this.FormBorderStyle =
+			Controls.Add(xpGradientPanel1);
+			Enabled = ((bool)(resources.GetObject("$this.Enabled")));
+			Font = ((System.Drawing.Font)(resources.GetObject("$this.Font")));
+			FormBorderStyle =
 				FormBorderStyle
 				.SizableToolWindow;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.ImeMode = (
+			Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			ImeMode = (
 				(ImeMode)(resources.GetObject("$this.ImeMode"))
 			);
-			this.Location = (
+			Location = (
 				(System.Drawing.Point)(resources.GetObject("$this.Location"))
 			);
-			this.MaximumSize = (
+			MaximumSize = (
 				(System.Drawing.Size)(resources.GetObject("$this.MaximumSize"))
 			);
-			this.MinimumSize = (
+			MinimumSize = (
 				(System.Drawing.Size)(resources.GetObject("$this.MinimumSize"))
 			);
-			this.Name = "Report";
-			this.RightToLeft = (
+			Name = "Report";
+			RightToLeft = (
 				(RightToLeft)(
 					resources.GetObject("$this.RightToLeft")
 				)
 			);
-			this.StartPosition = (
+			StartPosition = (
 				(FormStartPosition)(
 					resources.GetObject("$this.StartPosition")
 				)
 			);
-			this.Text = resources.GetString("$this.Text");
-			this.xpGradientPanel1.ResumeLayout(false);
-			this.ResumeLayout(false);
+			Text = resources.GetString("$this.Text");
+			xpGradientPanel1.ResumeLayout(false);
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -366,8 +366,8 @@ namespace SimPe.Plugin.Tool
 			sr.BaseStream.Seek(0, SeekOrigin.Begin);
 
 			this.csv = csv;
-			this.rtb.Text = sr.ReadToEnd();
-			this.ShowDialog();
+			rtb.Text = sr.ReadToEnd();
+			ShowDialog();
 		}
 
 		private void linkLabel1_LinkClicked(

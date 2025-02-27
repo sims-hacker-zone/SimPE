@@ -249,7 +249,7 @@ namespace SimPe.Plugin.Anim
 		/// <param name="writer">The Stream that receives the Data</param>
 		internal void SerializeData(System.IO.BinaryWriter writer)
 		{
-			this.SetPart5Count(Part5.Length);
+			SetPart5Count(Part5.Length);
 
 			writer.Write(datai[0]);
 			writer.Write(datai[1]);
@@ -309,9 +309,9 @@ namespace SimPe.Plugin.Anim
 		public override string ToString()
 		{
 			return "AnimBlock4: "
-				+ this.Part5Count.ToString()
+				+ Part5Count.ToString()
 				+ " "
-				+ this.AddonData.Length.ToString();
+				+ AddonData.Length.ToString();
 		}
 	}
 
@@ -420,7 +420,7 @@ namespace SimPe.Plugin.Anim
 			return "0x"
 				+ Helper.HexString(Unknown2)
 				+ " "
-				+ this.AddonData.Length.ToString();
+				+ AddonData.Length.ToString();
 		}
 	}
 

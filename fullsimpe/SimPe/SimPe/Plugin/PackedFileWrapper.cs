@@ -101,7 +101,7 @@ namespace SimPe.Plugin
 				"This File contains References to 3D Elements (from the Scenegraph) of a Sim, Skin or Clothing.",
 				5,
 				System.Drawing.Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.3didr.png")
 				)
 			);

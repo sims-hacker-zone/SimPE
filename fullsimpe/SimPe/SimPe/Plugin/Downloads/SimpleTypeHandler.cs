@@ -81,7 +81,7 @@ namespace SimPe.Plugin.Downloads
 
 		public virtual void Dispose()
 		{
-			this.nfo = null;
+			nfo = null;
 		}
 
 		#endregion

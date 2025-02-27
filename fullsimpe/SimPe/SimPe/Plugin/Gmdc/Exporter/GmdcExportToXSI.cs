@@ -83,23 +83,23 @@ namespace SimPe.Plugin.Gmdc.Exporter
 		/// </remarks>
 		protected override void InitFile()
 		{
-			string name = System.IO.Path.GetFileNameWithoutExtension(this.FileName);
-			string path = System.IO.Path.GetDirectoryName(this.FileName);
+			string name = System.IO.Path.GetFileNameWithoutExtension(FileName);
+			string path = System.IO.Path.GetDirectoryName(FileName);
 			path = System.IO.Path.Combine(path, name + ".IMG");
 
 			GeometryDataContainerExt gext = new GeometryDataContainerExt(Gmdc);
 			Ambertation.Scenes.Scene scn = gext.GetScene(
-				this.Groups,
+				Groups,
 				path,
 				name + ".IMG",
-				this.Component
+				Component
 			);
 
 			Ambertation.XSI.IO.AsciiFile xsi = Ambertation.XSI.IO.AsciiFile.FromScene(
 				scn,
 				FileName
 			);
-			xsi.SaveToStream(this.writer);
+			xsi.SaveToStream(writer);
 		}
 
 		/// <summary>

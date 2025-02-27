@@ -85,7 +85,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 			vertexoffset = 0;
 
 			//When we have a Animation, we need to Set the Frame Count
-			if (this.Gmdc.LinkedAnimation != null)
+			if (Gmdc.LinkedAnimation != null)
 			{
 				int maxframe = 1;
 				//foreach (AnimBlock2 ab2 in Gmdc.LinkedAnimation.Part2)
@@ -96,7 +96,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 				writer.WriteLine("Frame: 1");
 			}
 
-			writer.WriteLine("Meshes: " + this.Groups.Count.ToString());
+			writer.WriteLine("Meshes: " + Groups.Count.ToString());
 		}
 
 		/// <summary>
@@ -115,7 +115,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 		protected override void ProcessGroup()
 		{
 			//Find the BoneAssignment
-			GmdcElement boneelement = this.Link.FindElementType(
+			GmdcElement boneelement = Link.FindElementType(
 				ElementIdentity.BoneAssignment
 			);
 			//List of ordered Joints
@@ -127,7 +127,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 			int vertexcount = 0;
 			int nr = Link.GetElementNr(VertexElement);
 			int nnr = -1;
-			if (this.UVCoordinateElement != null)
+			if (UVCoordinateElement != null)
 			{
 				nnr = Link.GetElementNr(UVCoordinateElement);
 			}
@@ -215,7 +215,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 			}
 
 			//Add a MeshNormal Section if available
-			if (this.NormalElement != null)
+			if (NormalElement != null)
 			{
 				nr = Link.GetElementNr(NormalElement);
 				writer.WriteLine(Link.ReferencedSize.ToString());
@@ -317,7 +317,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 
 			Hashtable correct_rot = new Hashtable();
 			Hashtable correct_trans = new Hashtable();
-			if (this.CorrectJointSetup)
+			if (CorrectJointSetup)
 			{
 				//Correct the Exported Joint Definitions in a way that _trans
 				//Joint sonly conatin Translations and _rot Joints only contain Rotations
@@ -388,7 +388,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 				if (Gmdc.Joints[i].AssignedTransformNode != null)
 				{
 					Vector3f t = Gmdc.Joints[i].AssignedTransformNode.Translation;
-					if (this.CorrectJointSetup)
+					if (CorrectJointSetup)
 					{
 						t = Correct(t, correct_trans[Gmdc.Joints[i].Name]);
 					}
@@ -396,7 +396,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 					t = Component.TransformScaled(t);
 
 					Quaternion q = Gmdc.Joints[i].AssignedTransformNode.Rotation;
-					if (this.CorrectJointSetup)
+					if (CorrectJointSetup)
 					{
 						q = Correct(q, correct_rot[Gmdc.Joints[i].Name]);
 					}

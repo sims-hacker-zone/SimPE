@@ -62,7 +62,7 @@ namespace SimPe.Plugin
 			: base(parent)
 		{
 			ObjectGraphNode = new ObjectGraphNode(null);
-			this.sgres = new SGResource(null);
+			sgres = new SGResource(null);
 
 			version = 0x0c;
 			BlockID = 0x7BA3838C;
@@ -174,19 +174,19 @@ namespace SimPe.Plugin
 				tGeometryNode = new TabPage.GeometryNode();
 			}
 
-			tGeometryNode.tb_gn_ver.Text = "0x" + Helper.HexString(this.version);
+			tGeometryNode.tb_gn_ver.Text = "0x" + Helper.HexString(version);
 
 			tGeometryNode.tb_gn_uk1.Text =
-				"0x" + Helper.HexString((ushort)this.Unknown1);
+				"0x" + Helper.HexString((ushort)Unknown1);
 			tGeometryNode.tb_gn_uk2.Text =
-				"0x" + Helper.HexString((ushort)this.Unknown2);
-			tGeometryNode.tb_gn_uk3.Text = "0x" + Helper.HexString(this.Unknown3);
+				"0x" + Helper.HexString((ushort)Unknown2);
+			tGeometryNode.tb_gn_uk3.Text = "0x" + Helper.HexString(Unknown3);
 
 			tGeometryNode.tb_gn_count.Text = Count.ToString();
 
 			tGeometryNode.cb_gn_list.Items.Clear();
 
-			foreach (IRcolBlock irb in this.Blocks)
+			foreach (IRcolBlock irb in Blocks)
 			{
 				CountedListItem.Add(tGeometryNode.cb_gn_list, irb);
 			}
@@ -204,7 +204,7 @@ namespace SimPe.Plugin
 		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
 		{
 			base.ExtendTabControl(tc);
-			this.ObjectGraphNode.AddToTabControl(tc);
+			ObjectGraphNode.AddToTabControl(tc);
 		}
 
 		#region ReferencingShape
@@ -227,7 +227,7 @@ namespace SimPe.Plugin
 		{
 			IScenegraphFileIndexItem[] items =
 				FileTableBase.FileIndex.FindFile(Data.MetaData.SHPE, true);
-			string mn = Hashes.StripHashFromName(this.Parent.FileName.Trim().ToLower());
+			string mn = Hashes.StripHashFromName(Parent.FileName.Trim().ToLower());
 			foreach (IScenegraphFileIndexItem item in items)
 			{
 				Rcol r = new GenericRcol(null, false);
@@ -267,9 +267,9 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			if (this.tGeometryNode != null)
+			if (tGeometryNode != null)
 			{
-				this.tGeometryNode.Dispose();
+				tGeometryNode.Dispose();
 			}
 
 			tGeometryNode = null;

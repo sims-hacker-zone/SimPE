@@ -79,7 +79,7 @@ namespace SimPe
 
 		public void RefreshUI(Interfaces.Scenegraph.IScenegraphFileIndexItem fii)
 		{
-			TD.SandDock.DockControl doc = this.GetDocument(fii);
+			TD.SandDock.DockControl doc = GetDocument(fii);
 			if (doc == null)
 			{
 				return;
@@ -194,7 +194,7 @@ namespace SimPe
 			{
 				if (reload)
 				{
-					TD.SandDock.DockControl doc = this.GetDocument(fii);
+					TD.SandDock.DockControl doc = GetDocument(fii);
 					if (doc == null)
 					{
 						return false;
@@ -238,7 +238,7 @@ namespace SimPe
 					Interfaces.Scenegraph.IScenegraphFileIndexItem oldfii =
 						(Interfaces.Scenegraph.IScenegraphFileIndexItem)
 							single[id];
-					if (!this.CloseDocument(oldfii))
+					if (!CloseDocument(oldfii))
 					{
 						return false;
 					}
@@ -299,7 +299,7 @@ namespace SimPe
 					doc.AllowClose = true;
 					doc.AllowDockCenter = true;
 				}
-				else if (!this.UnloadWrapper(doc))
+				else if (!UnloadWrapper(doc))
 				{
 					return false;
 				}
@@ -399,7 +399,7 @@ namespace SimPe
 			//only one File at a Time?
 			if (!Helper.WindowsRegistry.MultipleFiles)
 			{
-				this.Clear();
+				Clear();
 			}
 
 			//get the Wrapper
@@ -704,7 +704,7 @@ namespace SimPe
 			{
 				//doc.Controls.Clear();
 				Interfaces.Scenegraph.IScenegraphFileIndexItem fii =
-					this.GetResourceFromDocument(doc);
+					GetResourceFromDocument(doc);
 				RemoveResource(fii, wrapper);
 
 				if (multi)
@@ -717,7 +717,7 @@ namespace SimPe
 					doc.Controls.Clear();
 				}
 
-				this.UnlinkWrapper(wrapper);
+				UnlinkWrapper(wrapper);
 			}
 
 			return res;
@@ -854,10 +854,10 @@ namespace SimPe
 		{
 			Packages.PackedFileDescriptor pfd =
 				(Packages.PackedFileDescriptor)sender;
-			TD.SandDock.DockControl doc = this.GetDocument(pfd);
+			TD.SandDock.DockControl doc = GetDocument(pfd);
 			if (doc != null)
 			{
-				this.CloseDocument(doc);
+				CloseDocument(doc);
 			}
 		}
 
@@ -871,7 +871,7 @@ namespace SimPe
 		{
 			Packages.PackedFileDescriptor pfd =
 				(Packages.PackedFileDescriptor)sender;
-			TD.SandDock.DockControl doc = this.GetDocument(pfd);
+			TD.SandDock.DockControl doc = GetDocument(pfd);
 			if (doc != null)
 			{
 				Interfaces.Plugin.IFileWrapper wrapper =

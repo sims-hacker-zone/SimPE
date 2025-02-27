@@ -10,13 +10,13 @@ namespace SimPe
 		public ToolStripProfessionalSquareRenderer(ProfessionalColorTable ct)
 			: base(ct)
 		{
-			this.RoundedEdges = false;
+			RoundedEdges = false;
 		}
 
 		public ToolStripProfessionalSquareRenderer()
 			: base()
 		{
-			this.RoundedEdges = false;
+			RoundedEdges = false;
 		}
 	}
 
@@ -102,8 +102,8 @@ namespace SimPe
 			else
 			{
 				// Calculate colours used in gradient
-				color1 = this.ColorTable.ToolStripGradientBegin;
-				color2 = this.ColorTable.ToolStripGradientEnd;
+				color1 = ColorTable.ToolStripGradientBegin;
+				color2 = ColorTable.ToolStripGradientEnd;
 				color3 = InterpolateColors(color1, color2, 0.4F);
 				color4 = InterpolateColors(color1, color2, 0.8F);
 

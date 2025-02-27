@@ -53,10 +53,10 @@ namespace SimPe.Wizards
 			bool canfin
 		)
 		{
-			this.Step = step;
-			this.EnableNext = ennext;
-			this.EnablePrev = enprev;
-			this.CanFinish = canfin;
+			Step = step;
+			EnableNext = ennext;
+			EnablePrev = enprev;
+			CanFinish = canfin;
 			Cancel = false;
 		}
 	}

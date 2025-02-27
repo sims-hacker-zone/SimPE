@@ -82,8 +82,8 @@ namespace SimPe.Plugin
 
 		public ScannerItem(PackageCacheItem pci, CacheContainer cc)
 		{
-			this.PackageCacheItem = pci;
-			this.ParentContainer = cc;
+			PackageCacheItem = pci;
+			ParentContainer = cc;
 			filename = "";
 		}
 

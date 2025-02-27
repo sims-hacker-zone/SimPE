@@ -57,34 +57,34 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.cb = new ComboBox();
-			this.SuspendLayout();
+			cb = new ComboBox();
+			SuspendLayout();
 			//
 			// cb
 			//
-			this.cb.Dock = DockStyle.Top;
-			this.cb.DropDownStyle = ComboBoxStyle.DropDownList;
-			this.cb.Location = new System.Drawing.Point(0, 0);
-			this.cb.Name = "cb";
-			this.cb.Size = new System.Drawing.Size(150, 21);
-			this.cb.TabIndex = 0;
-			this.cb.SelectedIndexChanged += new EventHandler(
-				this.cb_SelectedIndexChanged
+			cb.Dock = DockStyle.Top;
+			cb.DropDownStyle = ComboBoxStyle.DropDownList;
+			cb.Location = new System.Drawing.Point(0, 0);
+			cb.Name = "cb";
+			cb.Size = new System.Drawing.Size(150, 21);
+			cb.TabIndex = 0;
+			cb.SelectedIndexChanged += new EventHandler(
+				cb_SelectedIndexChanged
 			);
 			//
 			// SimBusinessList
 			//
-			this.Controls.Add(this.cb);
-			this.Font = new System.Drawing.Font(
+			Controls.Add(cb);
+			Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.Name = "SimBusinessList";
-			this.Size = new System.Drawing.Size(150, 24);
-			this.ResumeLayout(false);
+			Name = "SimBusinessList";
+			Size = new System.Drawing.Size(150, 24);
+			ResumeLayout(false);
 		}
 		#endregion
 

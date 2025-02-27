@@ -39,7 +39,7 @@ namespace Ambertation.Windows.Forms
 		/// <param name="max"></param>
 		public Highlight(int start, int len, int max)
 		{
-			this.Maximum = max;
+			Maximum = max;
 			this.len = len;
 			Start = start;
 		}
@@ -187,7 +187,7 @@ namespace Ambertation.Collections
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length => this.Count;
+		public int Length => Count;
 
 		/// <summary>
 		/// Create a clone of this Object

@@ -52,72 +52,72 @@ namespace SimPe
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(Message));
-			this.panel1 = new Panel();
-			this.panel2 = new SteepValley.Windows.Forms.XPGradientPanel();
-			this.label1 = new Label();
-			this.panel2.SuspendLayout();
-			this.SuspendLayout();
+			panel1 = new Panel();
+			panel2 = new SteepValley.Windows.Forms.XPGradientPanel();
+			label1 = new Label();
+			panel2.SuspendLayout();
+			SuspendLayout();
 			//
 			// panel1
 			//
-			this.panel1.BackColor = SystemColors.Highlight;
-			this.panel1.Location = new Point(0, 32);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new Size(548, 40);
-			this.panel1.TabIndex = 0;
+			panel1.BackColor = SystemColors.Highlight;
+			panel1.Location = new Point(0, 32);
+			panel1.Name = "panel1";
+			panel1.Size = new Size(548, 40);
+			panel1.TabIndex = 0;
 			//
 			// panel2
 			//
-			this.panel2.BackColor = Color.Transparent;
-			this.panel2.Controls.Add(this.label1);
-			this.panel2.Font = new Font(
+			panel2.BackColor = Color.Transparent;
+			panel2.Controls.Add(label1);
+			panel2.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.panel2.Location = new Point(0, 0);
-			this.panel2.Name = "panel2";
-			this.panel2.Size = new Size(548, 32);
-			this.panel2.TabIndex = 1;
+			panel2.Location = new Point(0, 0);
+			panel2.Name = "panel2";
+			panel2.Size = new Size(548, 32);
+			panel2.TabIndex = 1;
 			//
 			// label1
 			//
-			this.label1.AutoSize = true;
-			this.label1.BackColor = Color.Transparent;
-			this.label1.Font = new Font(
+			label1.AutoSize = true;
+			label1.BackColor = Color.Transparent;
+			label1.Font = new Font(
 				"Microsoft Sans Serif",
 				9.75F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label1.Location = new Point(8, 8);
-			this.label1.MaximumSize = new Size(524, 0);
-			this.label1.Name = "label1";
-			this.label1.Size = new Size(45, 16);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "label1";
+			label1.Location = new Point(8, 8);
+			label1.MaximumSize = new Size(524, 0);
+			label1.Name = "label1";
+			label1.Size = new Size(45, 16);
+			label1.TabIndex = 0;
+			label1.Text = "label1";
 			//
 			// Message
 			//
-			this.AutoScaleBaseSize = new Size(5, 13);
-			this.BackColor = SystemColors.AppWorkspace;
-			this.ClientSize = new Size(542, 72);
-			this.ControlBox = false;
-			this.Controls.Add(this.panel1);
-			this.Controls.Add(this.panel2);
-			this.FormBorderStyle = FormBorderStyle.FixedDialog;
-			this.Icon = ((Icon)(resources.GetObject("$this.Icon")));
-			this.MaximizeBox = false;
-			this.MinimizeBox = false;
-			this.Name = "Message";
-			this.StartPosition = FormStartPosition.CenterScreen;
-			this.Text = "Message";
-			this.panel2.ResumeLayout(false);
-			this.panel2.PerformLayout();
-			this.ResumeLayout(false);
+			AutoScaleBaseSize = new Size(5, 13);
+			BackColor = SystemColors.AppWorkspace;
+			ClientSize = new Size(542, 72);
+			ControlBox = false;
+			Controls.Add(panel1);
+			Controls.Add(panel2);
+			FormBorderStyle = FormBorderStyle.FixedDialog;
+			Icon = ((Icon)(resources.GetObject("$this.Icon")));
+			MaximizeBox = false;
+			MinimizeBox = false;
+			Name = "Message";
+			StartPosition = FormStartPosition.CenterScreen;
+			Text = "Message";
+			panel2.ResumeLayout(false);
+			panel2.PerformLayout();
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -251,7 +251,7 @@ namespace SimPe
 		void AddButton(string caption, DialogResult dr)
 		{
 			Button bn = new Button();
-			bn.Parent = this.panel1;
+			bn.Parent = panel1;
 			int pos = (int)panel1.Tag;
 			panel1.Tag = pos + 1;
 
@@ -267,7 +267,7 @@ namespace SimPe
 
 		private void ButtonClick(object sender, EventArgs e)
 		{
-			this.DialogResult = ((Button)sender).DialogResult;
+			DialogResult = ((Button)sender).DialogResult;
 			Close();
 		}
 	}

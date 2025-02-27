@@ -301,7 +301,7 @@ namespace SimPe.Plugin
 			Transformation.Order = VectorTransformation.TransformOrder.TranslateRotate;
 			Transformation.Unserialize(reader);
 #if DEBUG
-			Transformation.Name = this.ObjectGraphNode.FileName;
+			Transformation.Name = ObjectGraphNode.FileName;
 #endif
 			//trans.Rotation = Quaternion.FromAxisAngle(trans.Rotation.X, trans.Rotation.Y, trans.Rotation.Z, Quaternion.DegToRad(trans.Rotation.W));
 
@@ -369,13 +369,13 @@ namespace SimPe.Plugin
 			tTransformNode.tb_tn_a.Tag = true;
 
 			tTransformNode.lb_tn.Items.Clear();
-			for (int i = 0; i < this.Items.Length; i++)
+			for (int i = 0; i < Items.Length; i++)
 			{
 				tTransformNode.lb_tn.Items.Add(Items[i]);
 			}
 
-			tTransformNode.tb_tn_ver.Text = "0x" + Helper.HexString(this.version);
-			tTransformNode.tb_tn_ukn.Text = "0x" + Helper.HexString(this.JointReference);
+			tTransformNode.tb_tn_ver.Text = "0x" + Helper.HexString(version);
+			tTransformNode.tb_tn_ukn.Text = "0x" + Helper.HexString(JointReference);
 
 			tTransformNode.tb_tn_tx.Text = Transformation.Translation.X.ToString("N6");
 			tTransformNode.tb_tn_ty.Text = Transformation.Translation.Y.ToString("N6");
@@ -398,19 +398,19 @@ namespace SimPe.Plugin
 		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
 		{
 			base.ExtendTabControl(tc);
-			this.ObjectGraphNode.AddToTabControl(tc);
-			this.CompositionTreeNode.AddToTabControl(tc);
+			ObjectGraphNode.AddToTabControl(tc);
+			CompositionTreeNode.AddToTabControl(tc);
 		}
 
 		public override string ToString()
 		{
 			string s = "";
-			if (this.JointReference != NO_JOINT)
+			if (JointReference != NO_JOINT)
 			{
-				s += "[Joint" + this.JointReference.ToString() + "] - ";
+				s += "[Joint" + JointReference.ToString() + "] - ";
 			}
 
-			s += this.ObjectGraphNode.FileName;
+			s += ObjectGraphNode.FileName;
 
 			s += ": " + Transformation.ToString() + " (" + base.ToString() + ")";
 			return s;
@@ -460,9 +460,9 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			if (this.tTransformNode != null)
+			if (tTransformNode != null)
 			{
-				this.tTransformNode.Dispose();
+				tTransformNode.Dispose();
 			}
 
 			tTransformNode = null;
@@ -553,7 +553,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length => this.Count;
+		public int Length => Count;
 
 		/// <summary>
 		/// Create a clone of this Object

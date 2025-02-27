@@ -356,10 +356,10 @@ namespace SimPe.Plugin
 				tCres = new TabPage.Cres();
 			}
 
-			this.tCres.cres_tv.Nodes.Clear();
+			tCres.cres_tv.Nodes.Clear();
 			tCres.tbfjoint.Text = "";
-			AddChildNode(this.tCres.cres_tv.Nodes, 0, this);
-			this.tCres.cres_tv.ExpandAll();
+			AddChildNode(tCres.cres_tv.Nodes, 0, this);
+			tCres.cres_tv.ExpandAll();
 		}
 
 		/// <summary>
@@ -373,14 +373,14 @@ namespace SimPe.Plugin
 			}
 
 			tResourceNode.lb_rn.Items.Clear();
-			for (int i = 0; i < this.Items.Length; i++)
+			for (int i = 0; i < Items.Length; i++)
 			{
 				tResourceNode.lb_rn.Items.Add(Items[i]);
 			}
 
-			tResourceNode.tb_rn_uk1.Text = "0x" + Helper.HexString((uint)this.Unknown1);
-			tResourceNode.tb_rn_uk2.Text = "0x" + Helper.HexString((uint)this.Unknown2);
-			tResourceNode.tb_rn_ver.Text = "0x" + Helper.HexString(this.version);
+			tResourceNode.tb_rn_uk1.Text = "0x" + Helper.HexString((uint)Unknown1);
+			tResourceNode.tb_rn_uk2.Text = "0x" + Helper.HexString((uint)Unknown2);
+			tResourceNode.tb_rn_ver.Text = "0x" + Helper.HexString(version);
 		}
 
 		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
@@ -388,19 +388,19 @@ namespace SimPe.Plugin
 			base.ExtendTabControl(tc);
 			if (TypeCode == 0x1)
 			{
-				this.TreeNode.AddToTabControl(tc);
+				TreeNode.AddToTabControl(tc);
 			}
 
-			this.GraphNode.AddToTabControl(tc);
+			GraphNode.AddToTabControl(tc);
 		}
 
 		#region IDisposable Member
 
 		public override void Dispose()
 		{
-			if (this.tResourceNode != null)
+			if (tResourceNode != null)
 			{
-				this.tResourceNode.Dispose();
+				tResourceNode.Dispose();
 			}
 
 			tResourceNode = null;

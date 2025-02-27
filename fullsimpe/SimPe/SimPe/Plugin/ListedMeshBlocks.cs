@@ -28,7 +28,7 @@ namespace SimPe.Plugin
 	{
 		public ListedMeshBlocks(AnimationMeshBlock amb)
 		{
-			this.ANIMBlock = amb;
+			ANIMBlock = amb;
 			CRES = amb.FindDefiningCRES();
 			if (CRES != null)
 			{

@@ -419,14 +419,14 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public TrcnItem Clone()
 		{
-			TrcnItem clone = new TrcnItem(this.parent);
-			clone.used = this.used;
-			clone.constId = this.constId;
-			clone.constName = this.constName;
-			clone.constDesc = this.constDesc;
-			clone.defValue = this.defValue;
-			clone.minValue = this.minValue;
-			clone.maxValue = this.maxValue;
+			TrcnItem clone = new TrcnItem(parent);
+			clone.used = used;
+			clone.constId = constId;
+			clone.constName = constName;
+			clone.constDesc = constDesc;
+			clone.defValue = defValue;
+			clone.minValue = minValue;
+			clone.maxValue = maxValue;
 			return clone;
 		}
 
@@ -436,14 +436,14 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <param name="reader"></param>
 		protected void Unserialize(System.IO.BinaryReader reader)
 		{
-			this.used = reader.ReadUInt32();
-			this.constId = reader.ReadUInt32();
+			used = reader.ReadUInt32();
+			constId = reader.ReadUInt32();
 			if (parent.Version == 1) // I doubt version 1 actually exists but this reads the unreadable type as version 1
 			{
 				char b = reader.ReadChar();
 				while (b != 0)
 				{
-					this.constName += b;
+					constName += b;
 					b = reader.ReadChar();
 				}
 				byte bum = reader.ReadByte();
@@ -454,30 +454,30 @@ namespace SimPe.PackedFiles.Wrapper
 					bum = reader.ReadByte();
 				}
 				bum = reader.ReadByte();
-				this.constDesc = ""; // These attributes are unused.
-				this.defValue = 0; // Was silly to throw so many
-				this.minValue = 0; // constant labels away by trying
-				this.maxValue = 100; // to glean these values!
+				constDesc = ""; // These attributes are unused.
+				defValue = 0; // Was silly to throw so many
+				minValue = 0; // constant labels away by trying
+				maxValue = 100; // to glean these values!
 			}
 			else
 			{
-				this.constName = Helper.ToString(
+				constName = Helper.ToString(
 					reader.ReadBytes(reader.ReadByte())
 				);
 				if (parent.Version > 0x53)
 				{
-					this.constDesc = Helper.ToString(
+					constDesc = Helper.ToString(
 						reader.ReadBytes(reader.ReadByte())
 					);
-					this.defValue = reader.ReadByte();
+					defValue = reader.ReadByte();
 				}
 				else
 				{
-					this.constDesc = "";
-					this.defValue = reader.ReadUInt16();
+					constDesc = "";
+					defValue = reader.ReadUInt16();
 				}
-				this.minValue = reader.ReadUInt16();
-				this.maxValue = reader.ReadUInt16();
+				minValue = reader.ReadUInt16();
+				maxValue = reader.ReadUInt16();
 			}
 		}
 
@@ -491,24 +491,24 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </remarks>
 		internal void Serialize(System.IO.BinaryWriter writer)
 		{
-			writer.Write(this.used);
-			writer.Write(this.constId);
-			writer.Write((byte)this.constName.Length);
-			writer.Write(Helper.ToBytes(this.constName, this.constName.Length));
+			writer.Write(used);
+			writer.Write(constId);
+			writer.Write((byte)constName.Length);
+			writer.Write(Helper.ToBytes(constName, constName.Length));
 			if (parent.Version > 0x53)
 			{
-				writer.Write((byte)this.constDesc.Length);
+				writer.Write((byte)constDesc.Length);
 				writer.Write(
-					Helper.ToBytes(this.constDesc, this.constDesc.Length)
+					Helper.ToBytes(constDesc, constDesc.Length)
 				);
-				writer.Write((byte)this.defValue);
+				writer.Write((byte)defValue);
 			}
 			else
 			{
-				writer.Write(this.defValue);
+				writer.Write(defValue);
 			}
-			writer.Write(this.minValue);
-			writer.Write(this.maxValue);
+			writer.Write(minValue);
+			writer.Write(maxValue);
 		}
 
 		public override string ToString()

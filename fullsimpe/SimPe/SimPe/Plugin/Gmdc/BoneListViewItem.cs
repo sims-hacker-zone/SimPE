@@ -117,21 +117,21 @@ namespace SimPe.Plugin.Gmdc
 
 		void Setup()
 		{
-			this.SubItems.Clear();
-			this.Text = joint.Name;
-			this.SubItems.Add(Action.ToString()); //action
+			SubItems.Clear();
+			Text = joint.Name;
+			SubItems.Add(Action.ToString()); //action
 			if (Joint != null)
 			{
-				this.SubItems.Add(Joint.Name); //target
+				SubItems.Add(Joint.Name); //target
 			}
 			else
 			{
-				this.SubItems.Add("[" + Localization.GetString("none") + "]");
+				SubItems.Add("[" + Localization.GetString("none") + "]");
 			}
 
-			this.SubItems.Add(joint.GetAssignedVertexCount().ToString());
+			SubItems.Add(joint.GetAssignedVertexCount().ToString());
 
-			this.ForeColor = MyColor();
+			ForeColor = MyColor();
 		}
 
 		Color MyColor()

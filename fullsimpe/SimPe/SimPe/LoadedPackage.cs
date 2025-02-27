@@ -200,7 +200,7 @@ namespace SimPe
 
 				if (Package != null)
 				{
-					this.SetupEvents(false);
+					SetupEvents(false);
 				}
 
 				Package = Packages.File.LoadFromFile(e.FileName, sync);
@@ -210,7 +210,7 @@ namespace SimPe
 					Package.LoadCompressedState();
 				}
 
-				this.SetupEvents(true);
+				SetupEvents(true);
 				Helper.WindowsRegistry.AddRecentFile(flname);
 
 				Wait.SubStop();
@@ -243,12 +243,12 @@ namespace SimPe
 		/// <returns></returns>
 		public bool Save()
 		{
-			if (this.FileName.Trim() == "")
+			if (FileName.Trim() == "")
 			{
 				return false;
 			}
 
-			return Save(this.FileName, false);
+			return Save(FileName, false);
 		}
 
 		/// <summary>
@@ -259,7 +259,7 @@ namespace SimPe
 		/// <returns></returns>
 		public bool Save(string filname, bool savetocopy)
 		{
-			if (!this.Loaded)
+			if (!Loaded)
 			{
 				return false;
 			}
@@ -280,13 +280,13 @@ namespace SimPe
 				Wait.SubStart();
 				Wait.Message = "Saving File";
 
-				string oname = this.FileName;
+				string oname = FileName;
 				if (Package.Header.Created == 0 && UserVerification.HaveValidUserId)
 				{
 					Package.Header.Created = UserVerification.UserId;
 				}
 
-				this.Package.Save(e.FileName);
+				Package.Save(e.FileName);
 
 				if (savetocopy)
 				{
@@ -342,7 +342,7 @@ namespace SimPe
 
 			if (Package != null)
 			{
-				this.SetupEvents(false);
+				SetupEvents(false);
 			}
 
 			Package = newpkg;
@@ -350,7 +350,7 @@ namespace SimPe
 
 			if (Package != null)
 			{
-				this.SetupEvents(true);
+				SetupEvents(true);
 			}
 
 			if (Package.FileName != null)
@@ -454,7 +454,7 @@ namespace SimPe
 				}
 				if (res)
 				{
-					FileNameEventArg e = new FileNameEventArg(this.FileName);
+					FileNameEventArg e = new FileNameEventArg(FileName);
 					if (BeforeFileClose != null)
 					{
 						BeforeFileClose(this, e);
@@ -469,7 +469,7 @@ namespace SimPe
 				if (res)
 				{
 					Package.Close();
-					this.SetupEvents(false);
+					SetupEvents(false);
 					Package = null;
 				}
 				else
@@ -677,7 +677,7 @@ namespace SimPe
 			{
 				if (System.IO.File.Exists(names[1]))
 				{
-					this.LoadFromFile(names[1]);
+					LoadFromFile(names[1]);
 				}
 
 				return;
@@ -689,7 +689,7 @@ namespace SimPe
 
 			if (!Loaded && create)
 			{
-				this.LoadFromPackage(Packages.File.CreateNew());
+				LoadFromPackage(Packages.File.CreateNew());
 			}
 
 			ExtensionType et = ExtensionProvider.GetExtension(names[0]);
@@ -700,7 +700,7 @@ namespace SimPe
 			{
 				if (System.IO.File.Exists(names[0]))
 				{
-					this.LoadFromFile(names[0]);
+					LoadFromFile(names[0]);
 				}
 			}
 			else if (
@@ -710,8 +710,8 @@ namespace SimPe
 				|| et == ExtensionType.ExtrackedPackageDescriptor
 			)
 			{
-				this.PauseIndexChangedEvents();
-				this.Package.BeginUpdate();
+				PauseIndexChangedEvents();
+				Package.BeginUpdate();
 				try
 				{
 					for (int i = 0; i < names.Length; i++)
@@ -726,15 +726,15 @@ namespace SimPe
 								Interfaces.Files.IPackedFileDescriptor pfd in pfds
 							)
 							{
-								this.Package.Add(pfd);
+								Package.Add(pfd);
 							}
 						}
 					}
 				}
 				finally
 				{
-					this.Package.EndUpdate();
-					this.RestartIndexChangedEvents();
+					Package.EndUpdate();
+					RestartIndexChangedEvents();
 				}
 			}
 		}
@@ -936,7 +936,7 @@ namespace SimPe
 			{
 				addedResourceHandler = sender;
 			}
-			else if (this.AddedResource != null)
+			else if (AddedResource != null)
 			{
 				AddedResource(sender, e);
 			}
@@ -948,7 +948,7 @@ namespace SimPe
 			{
 				removedResourcehandler = sender;
 			}
-			else if (this.RemovedResource != null)
+			else if (RemovedResource != null)
 			{
 				RemovedResource(sender, e);
 			}

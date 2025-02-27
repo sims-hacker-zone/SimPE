@@ -267,7 +267,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 		{
 			for (int i = 0; i < ct; i++)
 			{
-				ImportedGroup g = this.PrepareGroup();
+				ImportedGroup g = PrepareGroup();
 
 				//BoneLinks-----
 				GmdcElement e = new GmdcElement(Gmdc);
@@ -524,7 +524,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 			b.ParentName = linetoks[0];
 
 			//Animations
-			if (this.AnimationBlocks != null && Gmdc.LinkedAnimation != null)
+			if (AnimationBlocks != null && Gmdc.LinkedAnimation != null)
 			{
 				curtransblock = null;
 				currotblock = null;
@@ -565,7 +565,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 					{
 						currotblock = ifb.FrameBlock;
 						ifb.FrameBlock.CreateBaseAxisSet(AnimationTokenType.SixByte);
-						this.AnimationBlocks.Add(ifb);
+						AnimationBlocks.Add(ifb);
 
 						ifb = new ImportedFrameBlock(
 							new AnimationFrameBlock(Gmdc.LinkedAnimation)
@@ -578,7 +578,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 
 				ifb.FrameBlock.CreateBaseAxisSet(AnimationTokenType.SixByte);
 
-				this.AnimationBlocks.Add(ifb);
+				AnimationBlocks.Add(ifb);
 			}
 
 			//if (curanimblock==null) curanimblock = new SimPe.Plugin.AnimBlock2();

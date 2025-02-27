@@ -68,7 +68,7 @@ namespace SimPe.Plugin
 		{
 			if (Helper.StartedGui == Executable.Classic)
 			{
-				docks.Add(new WorkshopTool(this.LinkedRegistry, this.LinkedProvider));
+				docks.Add(new WorkshopTool(LinkedRegistry, LinkedProvider));
 			}
 			else
 			{

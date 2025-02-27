@@ -246,8 +246,8 @@ namespace SimPe.Plugin
 		public Rcol(Interfaces.IProviderRegistry provider, bool fast)
 			: base()
 		{
-			this.Fast = fast;
-			this.Provider = provider;
+			Fast = fast;
+			Provider = provider;
 			reffiles = new Interfaces.Files.IPackedFileDescriptor[0];
 			index = new uint[0];
 			blocks = new IRcolBlock[0];
@@ -291,7 +291,7 @@ namespace SimPe.Plugin
 				"This File is part of the Scenegraph. The Scenegraph is used to build the 3D Objects in \"The Sims 2\".",
 				10,
 				System.Drawing.Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.resource.png")
 				)
 			);
@@ -361,7 +361,7 @@ namespace SimPe.Plugin
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
 			Duff = false;
-			this.e = null;
+			e = null;
 
 			Count = reader.ReadUInt32();
 
@@ -486,10 +486,10 @@ namespace SimPe.Plugin
 			base.Fix(registry);
 
 			//first we need to fix all referenced Files
-			for (int i = 0; i < this.ReferencedFiles.Length; i++)
+			for (int i = 0; i < ReferencedFiles.Length; i++)
 			{
-				Interfaces.Files.IPackedFileDescriptor lpfd = this.ReferencedFiles[i];
-				Interfaces.Files.IPackedFileDescriptor pfd = this.Package.FindFile(
+				Interfaces.Files.IPackedFileDescriptor lpfd = ReferencedFiles[i];
+				Interfaces.Files.IPackedFileDescriptor pfd = Package.FindFile(
 					lpfd
 				);
 				if (pfd != null)
@@ -517,15 +517,15 @@ namespace SimPe.Plugin
 			}
 
 			//so now we do fix the Instances
-			this.FileDescriptor.SubType = Hashes.SubTypeHash(
-				Hashes.StripHashFromName(this.FileName)
+			FileDescriptor.SubType = Hashes.SubTypeHash(
+				Hashes.StripHashFromName(FileName)
 			);
-			this.FileDescriptor.Instance = Hashes.InstanceHash(
-				Hashes.StripHashFromName(this.FileName)
+			FileDescriptor.Instance = Hashes.InstanceHash(
+				Hashes.StripHashFromName(FileName)
 			);
 
 			//commit
-			this.SynchronizeUserData();
+			SynchronizeUserData();
 		}
 
 		#endregion
@@ -559,12 +559,12 @@ namespace SimPe.Plugin
 		/// <returns>null, if the Default Name should be generated</returns>
 		protected override string GetResourceName(Data.TypeAlias ta)
 		{
-			if (!this.Processed)
+			if (!Processed)
 			{
 				ProcessData(FileDescriptor, Package, false);
 			}
 
-			return this.FileName;
+			return FileName;
 		}
 
 		#endregion
@@ -573,15 +573,15 @@ namespace SimPe.Plugin
 		public override object[] GetConstructorArguments()
 		{
 			object[] o = new object[2];
-			o[0] = this.Provider;
-			o[1] = this.Fast;
+			o[0] = Provider;
+			o[1] = Fast;
 			return o;
 		}
 		#endregion
 
 		public override void Dispose()
 		{
-			foreach (IRcolBlock irb in this.blocks)
+			foreach (IRcolBlock irb in blocks)
 			{
 				if (irb is IDisposable)
 				{

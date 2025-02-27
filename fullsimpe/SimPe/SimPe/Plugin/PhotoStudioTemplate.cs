@@ -36,7 +36,7 @@ namespace SimPe.Plugin
 		/// <param name="package"></param>
 		public PhotoStudioTemplate(Interfaces.Files.IPackageFile package)
 		{
-			this.Package = package;
+			Package = package;
 
 			Interfaces.Files.IPackedFileDescriptor pfd = package.FindFile(
 				0xEBCF3E27,

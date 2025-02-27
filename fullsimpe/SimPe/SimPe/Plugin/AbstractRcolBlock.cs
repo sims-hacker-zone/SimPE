@@ -72,7 +72,7 @@ namespace SimPe.Plugin
 			this.parent = (Rcol)parent;
 			if (parent != null)
 			{
-				this.Register(Rcol.Tokens);
+				Register(Rcol.Tokens);
 			}
 
 			sgres = null;
@@ -168,7 +168,7 @@ namespace SimPe.Plugin
 				InitTabPage();
 			}
 			AddToTabControl(tc, this);
-			this.ExtendTabControl(tc);
+			ExtendTabControl(tc);
 		}
 
 		/// <summary>
@@ -208,7 +208,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public IRcolBlock Create()
 		{
-			return Create(this.GetType(), this.parent);
+			return Create(GetType(), parent);
 		}
 
 		/// <summary>
@@ -237,7 +237,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public IRcolBlock Create(uint id)
 		{
-			return Create(this.GetType(), this.parent, id);
+			return Create(GetType(), parent, id);
 		}
 
 		/// <summary>
@@ -252,7 +252,7 @@ namespace SimPe.Plugin
 			{
 				if (!listing.ContainsKey(name))
 				{
-					listing.Add(name, this.GetType());
+					listing.Add(name, GetType());
 				}
 			}
 
@@ -280,7 +280,7 @@ namespace SimPe.Plugin
 			{
 				if (blockname == null)
 				{
-					return "c" + this.GetType().Name;
+					return "c" + GetType().Name;
 				}
 				else
 				{
@@ -317,13 +317,13 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			if (this.sgres == null)
+			if (sgres == null)
 			{
-				return this.BlockName;
+				return BlockName;
 			}
 			else
 			{
-				return sgres.FileName + " (" + this.BlockName + ")";
+				return sgres.FileName + " (" + BlockName + ")";
 			}
 		}
 
@@ -336,7 +336,7 @@ namespace SimPe.Plugin
 		{
 			IScenegraphFileIndex nfi =
 				FileTableBase.FileIndex.AddNewChild();
-			nfi.AddIndexFromPackage(this.Parent.Package);
+			nfi.AddIndexFromPackage(Parent.Package);
 			Rcol rcol = FindReferencingParent_NoLoad(type);
 			FileTableBase.FileIndex.RemoveChild(nfi);
 			nfi.Clear();
@@ -416,17 +416,17 @@ namespace SimPe.Plugin
 					)
 					{
 						if (
-							pfd.Type == this.Parent.FileDescriptor.Type
+							pfd.Type == Parent.FileDescriptor.Type
 							&& (
-								pfd.Group == this.Parent.FileDescriptor.Group
+								pfd.Group == Parent.FileDescriptor.Group
 								|| (
 									pfd.Group == Data.MetaData.GLOBAL_GROUP
 									&& Parent.FileDescriptor.Group
 										== Data.MetaData.LOCAL_GROUP
 								)
 							)
-							&& pfd.SubType == this.Parent.FileDescriptor.SubType
-							&& pfd.Instance == this.Parent.FileDescriptor.Instance
+							&& pfd.SubType == Parent.FileDescriptor.SubType
+							&& pfd.Instance == Parent.FileDescriptor.Instance
 						)
 						{
 							return r;

@@ -76,59 +76,59 @@ namespace SimPe.Plugin
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(Hash));
-			this.label1 = new Label();
-			this.label4 = new Label();
-			this.tbtext = new TextBox();
-			this.tbhash = new TextBox();
-			this.rb24 = new RadioButton();
-			this.rb32 = new RadioButton();
-			this.radioButton1 = new RadioButton();
-			this.panel1 = new Panel();
-			this.btcopy = new Button();
-			this.cbTrim = new CheckBox();
-			this.lbnamer = new Label();
-			this.panel1.SuspendLayout();
-			this.SuspendLayout();
+			label1 = new Label();
+			label4 = new Label();
+			tbtext = new TextBox();
+			tbhash = new TextBox();
+			rb24 = new RadioButton();
+			rb32 = new RadioButton();
+			radioButton1 = new RadioButton();
+			panel1 = new Panel();
+			btcopy = new Button();
+			cbTrim = new CheckBox();
+			lbnamer = new Label();
+			panel1.SuspendLayout();
+			SuspendLayout();
 			//
 			// label1
 			//
-			this.label1.AutoSize = true;
-			this.label1.BackColor = System.Drawing.Color.Transparent;
-			this.label1.Font = new System.Drawing.Font(
+			label1.AutoSize = true;
+			label1.BackColor = System.Drawing.Color.Transparent;
+			label1.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label1.Location = new System.Drawing.Point(37, 19);
-			this.label1.Name = "label1";
-			this.label1.RightToLeft = RightToLeft.No;
-			this.label1.Size = new System.Drawing.Size(50, 13);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "String:";
+			label1.Location = new System.Drawing.Point(37, 19);
+			label1.Name = "label1";
+			label1.RightToLeft = RightToLeft.No;
+			label1.Size = new System.Drawing.Size(50, 13);
+			label1.TabIndex = 0;
+			label1.Text = "String:";
 			//
 			// label4
 			//
-			this.label4.AutoSize = true;
-			this.label4.BackColor = System.Drawing.Color.Transparent;
-			this.label4.Font = new System.Drawing.Font(
+			label4.AutoSize = true;
+			label4.BackColor = System.Drawing.Color.Transparent;
+			label4.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label4.Location = new System.Drawing.Point(4, 83);
-			this.label4.Name = "label4";
-			this.label4.RightToLeft = RightToLeft.No;
-			this.label4.Size = new System.Drawing.Size(83, 13);
-			this.label4.TabIndex = 3;
-			this.label4.Text = "Hash Value:";
+			label4.Location = new System.Drawing.Point(4, 83);
+			label4.Name = "label4";
+			label4.RightToLeft = RightToLeft.No;
+			label4.Size = new System.Drawing.Size(83, 13);
+			label4.TabIndex = 3;
+			label4.Text = "Hash Value:";
 			//
 			// tbtext
 			//
-			this.tbtext.Anchor = (
+			tbtext.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -138,154 +138,154 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.tbtext.Location = new System.Drawing.Point(92, 15);
-			this.tbtext.Name = "tbtext";
-			this.tbtext.RightToLeft = RightToLeft.No;
-			this.tbtext.Size = new System.Drawing.Size(372, 21);
-			this.tbtext.TabIndex = 4;
-			this.tbtext.TextAlign = HorizontalAlignment.Right;
-			this.tbtext.TextChanged += new EventHandler(this.tbtext_TextChanged);
+			tbtext.Location = new System.Drawing.Point(92, 15);
+			tbtext.Name = "tbtext";
+			tbtext.RightToLeft = RightToLeft.No;
+			tbtext.Size = new System.Drawing.Size(372, 21);
+			tbtext.TabIndex = 4;
+			tbtext.TextAlign = HorizontalAlignment.Right;
+			tbtext.TextChanged += new EventHandler(tbtext_TextChanged);
 			//
 			// tbhash
 			//
-			this.tbhash.Location = new System.Drawing.Point(92, 79);
-			this.tbhash.Name = "tbhash";
-			this.tbhash.ReadOnly = true;
-			this.tbhash.RightToLeft = RightToLeft.No;
-			this.tbhash.Size = new System.Drawing.Size(372, 21);
-			this.tbhash.TabIndex = 7;
-			this.tbhash.Text = "0xB00B0069";
-			this.tbhash.TextAlign = HorizontalAlignment.Right;
+			tbhash.Location = new System.Drawing.Point(92, 79);
+			tbhash.Name = "tbhash";
+			tbhash.ReadOnly = true;
+			tbhash.RightToLeft = RightToLeft.No;
+			tbhash.Size = new System.Drawing.Size(372, 21);
+			tbhash.TabIndex = 7;
+			tbhash.Text = "0xB00B0069";
+			tbhash.TextAlign = HorizontalAlignment.Right;
 			//
 			// rb24
 			//
-			this.rb24.BackColor = System.Drawing.Color.Transparent;
-			this.rb24.Checked = true;
-			this.rb24.FlatStyle = FlatStyle.System;
-			this.rb24.Location = new System.Drawing.Point(240, 42);
-			this.rb24.Name = "rb24";
-			this.rb24.RightToLeft = RightToLeft.No;
-			this.rb24.Size = new System.Drawing.Size(72, 24);
-			this.rb24.TabIndex = 8;
-			this.rb24.TabStop = true;
-			this.rb24.Text = "CRC 24";
-			this.rb24.UseVisualStyleBackColor = false;
-			this.rb24.Click += new EventHandler(this.tbtext_TextChanged);
-			this.rb24.CheckedChanged += new EventHandler(
-				this.rb14_CheckedChanged
+			rb24.BackColor = System.Drawing.Color.Transparent;
+			rb24.Checked = true;
+			rb24.FlatStyle = FlatStyle.System;
+			rb24.Location = new System.Drawing.Point(240, 42);
+			rb24.Name = "rb24";
+			rb24.RightToLeft = RightToLeft.No;
+			rb24.Size = new System.Drawing.Size(72, 24);
+			rb24.TabIndex = 8;
+			rb24.TabStop = true;
+			rb24.Text = "CRC 24";
+			rb24.UseVisualStyleBackColor = false;
+			rb24.Click += new EventHandler(tbtext_TextChanged);
+			rb24.CheckedChanged += new EventHandler(
+				rb14_CheckedChanged
 			);
 			//
 			// rb32
 			//
-			this.rb32.BackColor = System.Drawing.Color.Transparent;
-			this.rb32.FlatStyle = FlatStyle.System;
-			this.rb32.Location = new System.Drawing.Point(320, 42);
-			this.rb32.Name = "rb32";
-			this.rb32.RightToLeft = RightToLeft.No;
-			this.rb32.Size = new System.Drawing.Size(72, 24);
-			this.rb32.TabIndex = 9;
-			this.rb32.Text = "CRC 32";
-			this.rb32.UseVisualStyleBackColor = false;
-			this.rb32.Click += new EventHandler(this.tbtext_TextChanged);
-			this.rb32.CheckedChanged += new EventHandler(
-				this.rb32_CheckedChanged
+			rb32.BackColor = System.Drawing.Color.Transparent;
+			rb32.FlatStyle = FlatStyle.System;
+			rb32.Location = new System.Drawing.Point(320, 42);
+			rb32.Name = "rb32";
+			rb32.RightToLeft = RightToLeft.No;
+			rb32.Size = new System.Drawing.Size(72, 24);
+			rb32.TabIndex = 9;
+			rb32.Text = "CRC 32";
+			rb32.UseVisualStyleBackColor = false;
+			rb32.Click += new EventHandler(tbtext_TextChanged);
+			rb32.CheckedChanged += new EventHandler(
+				rb32_CheckedChanged
 			);
 			//
 			// radioButton1
 			//
-			this.radioButton1.BackColor = System.Drawing.Color.Transparent;
-			this.radioButton1.FlatStyle = FlatStyle.System;
-			this.radioButton1.Location = new System.Drawing.Point(400, 42);
-			this.radioButton1.Name = "radioButton1";
-			this.radioButton1.RightToLeft = RightToLeft.No;
-			this.radioButton1.Size = new System.Drawing.Size(56, 24);
-			this.radioButton1.TabIndex = 10;
-			this.radioButton1.Text = "GUID";
-			this.radioButton1.UseVisualStyleBackColor = false;
-			this.radioButton1.CheckedChanged += new EventHandler(
-				this.guid_CheckedChanged
+			radioButton1.BackColor = System.Drawing.Color.Transparent;
+			radioButton1.FlatStyle = FlatStyle.System;
+			radioButton1.Location = new System.Drawing.Point(400, 42);
+			radioButton1.Name = "radioButton1";
+			radioButton1.RightToLeft = RightToLeft.No;
+			radioButton1.Size = new System.Drawing.Size(56, 24);
+			radioButton1.TabIndex = 10;
+			radioButton1.Text = "GUID";
+			radioButton1.UseVisualStyleBackColor = false;
+			radioButton1.CheckedChanged += new EventHandler(
+				guid_CheckedChanged
 			);
 			//
 			// panel1
 			//
-			this.panel1.BackColor = System.Drawing.Color.Transparent;
-			this.panel1.Controls.Add(this.lbnamer);
-			this.panel1.Controls.Add(this.cbTrim);
-			this.panel1.Controls.Add(this.btcopy);
-			this.panel1.Controls.Add(this.label1);
-			this.panel1.Controls.Add(this.radioButton1);
-			this.panel1.Controls.Add(this.rb32);
-			this.panel1.Controls.Add(this.rb24);
-			this.panel1.Controls.Add(this.tbhash);
-			this.panel1.Controls.Add(this.tbtext);
-			this.panel1.Controls.Add(this.label4);
-			this.panel1.Font = new System.Drawing.Font(
+			panel1.BackColor = System.Drawing.Color.Transparent;
+			panel1.Controls.Add(lbnamer);
+			panel1.Controls.Add(cbTrim);
+			panel1.Controls.Add(btcopy);
+			panel1.Controls.Add(label1);
+			panel1.Controls.Add(radioButton1);
+			panel1.Controls.Add(rb32);
+			panel1.Controls.Add(rb24);
+			panel1.Controls.Add(tbhash);
+			panel1.Controls.Add(tbtext);
+			panel1.Controls.Add(label4);
+			panel1.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.panel1.Location = new System.Drawing.Point(0, 0);
-			this.panel1.Name = "panel1";
-			this.panel1.RightToLeft = RightToLeft.No;
-			this.panel1.Size = new System.Drawing.Size(496, 146);
-			this.panel1.TabIndex = 11;
+			panel1.Location = new System.Drawing.Point(0, 0);
+			panel1.Name = "panel1";
+			panel1.RightToLeft = RightToLeft.No;
+			panel1.Size = new System.Drawing.Size(496, 146);
+			panel1.TabIndex = 11;
 			//
 			// btcopy
 			//
-			this.btcopy.Location = new System.Drawing.Point(389, 109);
-			this.btcopy.Name = "btcopy";
-			this.btcopy.Size = new System.Drawing.Size(75, 23);
-			this.btcopy.TabIndex = 11;
-			this.btcopy.Text = "Copy";
-			this.btcopy.UseVisualStyleBackColor = true;
-			this.btcopy.Click += new EventHandler(this.btcopy_Click);
+			btcopy.Location = new System.Drawing.Point(389, 109);
+			btcopy.Name = "btcopy";
+			btcopy.Size = new System.Drawing.Size(75, 23);
+			btcopy.TabIndex = 11;
+			btcopy.Text = "Copy";
+			btcopy.UseVisualStyleBackColor = true;
+			btcopy.Click += new EventHandler(btcopy_Click);
 			//
 			// cbTrim
 			//
-			this.cbTrim.AutoSize = true;
-			this.cbTrim.Checked = true;
-			this.cbTrim.CheckState = CheckState.Checked;
-			this.cbTrim.Location = new System.Drawing.Point(40, 46);
-			this.cbTrim.Name = "cbTrim";
-			this.cbTrim.Size = new System.Drawing.Size(148, 17);
-			this.cbTrim.TabIndex = 12;
-			this.cbTrim.Text = "Use Lower Case Only";
-			this.cbTrim.UseVisualStyleBackColor = true;
-			this.cbTrim.CheckedChanged += new EventHandler(
-				this.cbTrim_CheckedChanged
+			cbTrim.AutoSize = true;
+			cbTrim.Checked = true;
+			cbTrim.CheckState = CheckState.Checked;
+			cbTrim.Location = new System.Drawing.Point(40, 46);
+			cbTrim.Name = "cbTrim";
+			cbTrim.Size = new System.Drawing.Size(148, 17);
+			cbTrim.TabIndex = 12;
+			cbTrim.Text = "Use Lower Case Only";
+			cbTrim.UseVisualStyleBackColor = true;
+			cbTrim.CheckedChanged += new EventHandler(
+				cbTrim_CheckedChanged
 			);
 			//
 			// lbnamer
 			//
-			this.lbnamer.AutoSize = true;
-			this.lbnamer.Location = new System.Drawing.Point(4, 114);
-			this.lbnamer.Name = "lbnamer";
-			this.lbnamer.Size = new System.Drawing.Size(59, 13);
-			this.lbnamer.TabIndex = 13;
-			this.lbnamer.Text = "Available";
-			this.lbnamer.Visible = false;
+			lbnamer.AutoSize = true;
+			lbnamer.Location = new System.Drawing.Point(4, 114);
+			lbnamer.Name = "lbnamer";
+			lbnamer.Size = new System.Drawing.Size(59, 13);
+			lbnamer.TabIndex = 13;
+			lbnamer.Text = "Available";
+			lbnamer.Visible = false;
 			//
 			// Hash
 			//
-			this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
-			this.ClientSize = new System.Drawing.Size(494, 144);
-			this.Controls.Add(this.panel1);
-			this.Font = new System.Drawing.Font(
+			AutoScaleBaseSize = new System.Drawing.Size(6, 14);
+			ClientSize = new System.Drawing.Size(494, 144);
+			Controls.Add(panel1);
+			Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.Name = "Hash";
-			this.Text = "Hash Generator";
-			this.panel1.ResumeLayout(false);
-			this.panel1.PerformLayout();
-			this.ResumeLayout(false);
+			FormBorderStyle = FormBorderStyle.FixedToolWindow;
+			Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			Name = "Hash";
+			Text = "Hash Generator";
+			panel1.ResumeLayout(false);
+			panel1.PerformLayout();
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -295,19 +295,19 @@ namespace SimPe.Plugin
 			{
 				if (package.FileName != null)
 				{
-					this.tbtext.Text = System
+					tbtext.Text = System
 						.IO.Path.GetFileNameWithoutExtension(package.FileName)
 						.ToLower();
 				}
 
-				this.tbtext.Text = "Generate Hashes";
+				tbtext.Text = "Generate Hashes";
 			}
 			else
 			{
-				this.tbtext.Text = "Generate Hashes";
+				tbtext.Text = "Generate Hashes";
 			}
 
-			this.Show();
+			Show();
 		}
 
 		private void tbtext_TextChanged(object sender, EventArgs e)

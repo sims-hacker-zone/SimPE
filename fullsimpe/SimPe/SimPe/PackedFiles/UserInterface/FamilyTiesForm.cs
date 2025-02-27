@@ -41,10 +41,10 @@ namespace SimPe.PackedFiles.UserInterface
 			InitializeComponent();
 
 			ties.Parent = null;
-			ties.Parent = this.panel1;
+			ties.Parent = panel1;
 
-			this.cbrel.Enum = typeof(Data.MetaData.FamilyTieTypes);
-			this.cbrel.ResourceManager = Localization.Manager;
+			cbrel.Enum = typeof(Data.MetaData.FamilyTieTypes);
+			cbrel.ResourceManager = Localization.Manager;
 		}
 
 		/// <summary>
@@ -69,162 +69,162 @@ namespace SimPe.PackedFiles.UserInterface
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new Container();
+			components = new Container();
 			ComponentResourceManager resources =
 				new ComponentResourceManager(
 					typeof(FamilyTiesForm)
 				);
-			this.pnfamt = new Panel();
-			this.panel1 = new Panel();
-			this.ties = new FamilyTieGraph();
-			this.panel4 = new Panel();
-			this.cbLock = new CheckBox();
-			this.label1 = new Label();
-			this.panel3 = new Panel();
-			this.xpGradientPanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
-			this.xpLine1 = new SteepValley.Windows.Forms.XPLine();
-			this.button1 = new Button();
-			this.cbkeep = new CheckBox();
-			this.cbrel = new Ambertation.Windows.Forms.EnumComboBox();
-			this.llrem = new LinkLabel();
-			this.label3 = new Label();
-			this.lbname = new Label();
-			this.label2 = new Label();
-			this.panel2 = new Panel();
-			this.pool = new SimPoolControl();
-			this.miTies = new ContextMenuStrip(this.components);
-			this.miAddTie = new ToolStripMenuItem();
-			this.miOpenSdesc = new ToolStripMenuItem();
-			this.label12 = new Label();
-			this.pnfamt.SuspendLayout();
-			this.panel1.SuspendLayout();
-			this.panel4.SuspendLayout();
-			this.panel3.SuspendLayout();
-			this.xpGradientPanel1.SuspendLayout();
-			this.panel2.SuspendLayout();
-			this.miTies.SuspendLayout();
-			this.SuspendLayout();
+			pnfamt = new Panel();
+			panel1 = new Panel();
+			ties = new FamilyTieGraph();
+			panel4 = new Panel();
+			cbLock = new CheckBox();
+			label1 = new Label();
+			panel3 = new Panel();
+			xpGradientPanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
+			xpLine1 = new SteepValley.Windows.Forms.XPLine();
+			button1 = new Button();
+			cbkeep = new CheckBox();
+			cbrel = new Ambertation.Windows.Forms.EnumComboBox();
+			llrem = new LinkLabel();
+			label3 = new Label();
+			lbname = new Label();
+			label2 = new Label();
+			panel2 = new Panel();
+			pool = new SimPoolControl();
+			miTies = new ContextMenuStrip(components);
+			miAddTie = new ToolStripMenuItem();
+			miOpenSdesc = new ToolStripMenuItem();
+			label12 = new Label();
+			pnfamt.SuspendLayout();
+			panel1.SuspendLayout();
+			panel4.SuspendLayout();
+			panel3.SuspendLayout();
+			xpGradientPanel1.SuspendLayout();
+			panel2.SuspendLayout();
+			miTies.SuspendLayout();
+			SuspendLayout();
 			//
 			// pnfamt
 			//
-			this.pnfamt.BackColor = SystemColors.Control;
-			this.pnfamt.BackgroundImage = null;
-			this.pnfamt.Controls.Add(this.panel1);
-			this.pnfamt.Controls.Add(this.panel4);
-			this.pnfamt.Controls.Add(this.panel3);
-			this.pnfamt.Controls.Add(this.panel2);
-			resources.ApplyResources(this.pnfamt, "pnfamt");
-			this.pnfamt.Name = "pnfamt";
+			pnfamt.BackColor = SystemColors.Control;
+			pnfamt.BackgroundImage = null;
+			pnfamt.Controls.Add(panel1);
+			pnfamt.Controls.Add(panel4);
+			pnfamt.Controls.Add(panel3);
+			pnfamt.Controls.Add(panel2);
+			resources.ApplyResources(pnfamt, "pnfamt");
+			pnfamt.Name = "pnfamt";
 			//
 			// panel1
 			//
-			resources.ApplyResources(this.panel1, "panel1");
-			this.panel1.BackColor = SystemColors.ControlLightLight;
-			this.panel1.Controls.Add(this.ties);
-			this.panel1.Name = "panel1";
+			resources.ApplyResources(panel1, "panel1");
+			panel1.BackColor = SystemColors.ControlLightLight;
+			panel1.Controls.Add(ties);
+			panel1.Name = "panel1";
 			//
 			// ties
 			//
-			resources.ApplyResources(this.ties, "ties");
-			this.ties.BackColor = SystemColors.ControlLightLight;
-			this.ties.LineMode = Ambertation
+			resources.ApplyResources(ties, "ties");
+			ties.BackColor = SystemColors.ControlLightLight;
+			ties.LineMode = Ambertation
 				.Windows
 				.Forms
 				.Graph
 				.LinkControlLineMode
 				.Bezier;
-			this.ties.LockItems = false;
-			this.ties.MinHeight = 344;
-			this.ties.MinWidth = 720;
-			this.ties.Name = "ties";
-			this.ties.Quality = true;
-			this.ties.SaveBounds = true;
-			this.ties.SelectedElement = null;
-			this.ties.SelectedSimChanged +=
+			ties.LockItems = false;
+			ties.MinHeight = 344;
+			ties.MinWidth = 720;
+			ties.Name = "ties";
+			ties.Quality = true;
+			ties.SaveBounds = true;
+			ties.SelectedElement = null;
+			ties.SelectedSimChanged +=
 				new SimPoolControl.SelectedSimHandler(
-					this.ties_SelectedSimChanged
+					ties_SelectedSimChanged
 				);
-			this.ties.DoubleClickSim +=
+			ties.DoubleClickSim +=
 				new SimPoolControl.SelectedSimHandler(
-					this.ties_DoubleClickSim
+					ties_DoubleClickSim
 				);
 			//
 			// panel3
 			//
-			this.panel4.AccessibleDescription = null;
-			this.panel4.AccessibleName = null;
-			resources.ApplyResources(this.panel4, "panel4");
-			this.panel4.BackColor = Color.FromArgb(
+			panel4.AccessibleDescription = null;
+			panel4.AccessibleName = null;
+			resources.ApplyResources(panel4, "panel4");
+			panel4.BackColor = Color.FromArgb(
 				((int)(((byte)(120)))),
 				((int)(((byte)(0)))),
 				((int)(((byte)(0)))),
 				((int)(((byte)(0))))
 			);
-			this.panel4.BackgroundImage = null;
-			this.panel4.Controls.Add(this.cbLock);
-			this.panel4.Controls.Add(this.label1);
-			this.panel4.ForeColor = SystemColors.ActiveCaptionText;
-			this.panel4.Name = "panel4";
+			panel4.BackgroundImage = null;
+			panel4.Controls.Add(cbLock);
+			panel4.Controls.Add(label1);
+			panel4.ForeColor = SystemColors.ActiveCaptionText;
+			panel4.Name = "panel4";
 			//
 			// cbLock
 			//
-			resources.ApplyResources(this.cbLock, "cbLock");
-			this.cbLock.BackColor = Color.Transparent;
-			this.cbLock.Name = "cbLock";
-			this.cbLock.UseVisualStyleBackColor = false;
+			resources.ApplyResources(cbLock, "cbLock");
+			cbLock.BackColor = Color.Transparent;
+			cbLock.Name = "cbLock";
+			cbLock.UseVisualStyleBackColor = false;
 			//
 			// label1
 			//
-			this.label1.AccessibleDescription = null;
-			this.label1.AccessibleName = null;
-			resources.ApplyResources(this.label1, "label1");
-			this.label1.BackColor = Color.Transparent;
-			this.label1.Font = null;
-			this.label1.Name = "label1";
+			label1.AccessibleDescription = null;
+			label1.AccessibleName = null;
+			resources.ApplyResources(label1, "label1");
+			label1.BackColor = Color.Transparent;
+			label1.Font = null;
+			label1.Name = "label1";
 			//
 			// panel3
 			//
-			this.panel3.AccessibleDescription = null;
-			this.panel3.AccessibleName = null;
-			resources.ApplyResources(this.panel3, "panel3");
-			this.panel3.BackgroundImage = null;
-			this.panel3.Controls.Add(this.xpGradientPanel1);
-			this.panel3.Font = null;
-			this.panel3.Name = "panel3";
+			panel3.AccessibleDescription = null;
+			panel3.AccessibleName = null;
+			resources.ApplyResources(panel3, "panel3");
+			panel3.BackgroundImage = null;
+			panel3.Controls.Add(xpGradientPanel1);
+			panel3.Font = null;
+			panel3.Name = "panel3";
 			//
 			// xpGradientPanel1
 			//
-			this.xpGradientPanel1.AccessibleDescription = null;
-			this.xpGradientPanel1.AccessibleName = null;
-			resources.ApplyResources(this.xpGradientPanel1, "xpGradientPanel1");
-			this.xpGradientPanel1.BackgroundImage = null;
-			this.xpGradientPanel1.Controls.Add(this.xpLine1);
-			this.xpGradientPanel1.Controls.Add(this.button1);
-			this.xpGradientPanel1.Controls.Add(this.cbkeep);
-			this.xpGradientPanel1.Controls.Add(this.cbrel);
-			this.xpGradientPanel1.Controls.Add(this.llrem);
-			this.xpGradientPanel1.Controls.Add(this.label3);
-			this.xpGradientPanel1.Controls.Add(this.lbname);
-			this.xpGradientPanel1.Controls.Add(this.label2);
-			this.xpGradientPanel1.Font = null;
-			this.xpGradientPanel1.Name = "xpGradientPanel1";
-			this.xpGradientPanel1.Watermark = null;
+			xpGradientPanel1.AccessibleDescription = null;
+			xpGradientPanel1.AccessibleName = null;
+			resources.ApplyResources(xpGradientPanel1, "xpGradientPanel1");
+			xpGradientPanel1.BackgroundImage = null;
+			xpGradientPanel1.Controls.Add(xpLine1);
+			xpGradientPanel1.Controls.Add(button1);
+			xpGradientPanel1.Controls.Add(cbkeep);
+			xpGradientPanel1.Controls.Add(cbrel);
+			xpGradientPanel1.Controls.Add(llrem);
+			xpGradientPanel1.Controls.Add(label3);
+			xpGradientPanel1.Controls.Add(lbname);
+			xpGradientPanel1.Controls.Add(label2);
+			xpGradientPanel1.Font = null;
+			xpGradientPanel1.Name = "xpGradientPanel1";
+			xpGradientPanel1.Watermark = null;
 			//
 			// xpLine1
 			//
-			resources.ApplyResources(this.xpLine1, "xpLine1");
-			this.xpLine1.BackColor = Color.Transparent;
-			this.xpLine1.BackgroundImage = null;
-			this.xpLine1.Font = null;
-			this.xpLine1.ForeColor = Color.Transparent;
-			this.xpLine1.LineColor = Color.FromArgb(
+			resources.ApplyResources(xpLine1, "xpLine1");
+			xpLine1.BackColor = Color.Transparent;
+			xpLine1.BackgroundImage = null;
+			xpLine1.Font = null;
+			xpLine1.ForeColor = Color.Transparent;
+			xpLine1.LineColor = Color.FromArgb(
 				((int)(((byte)(125)))),
 				((int)(((byte)(0)))),
 				((int)(((byte)(0)))),
 				((int)(((byte)(0))))
 			);
-			this.xpLine1.Name = "xpLine1";
-			this.xpLine1.Orientation = System
+			xpLine1.Name = "xpLine1";
+			xpLine1.Orientation = System
 				.Drawing
 				.Drawing2D
 				.LinearGradientMode
@@ -232,139 +232,139 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			// button1
 			//
-			this.button1.AccessibleDescription = null;
-			this.button1.AccessibleName = null;
-			resources.ApplyResources(this.button1, "button1");
-			this.button1.BackgroundImage = null;
-			this.button1.Name = "button1";
-			this.button1.Click += new EventHandler(this.button1_Click);
+			button1.AccessibleDescription = null;
+			button1.AccessibleName = null;
+			resources.ApplyResources(button1, "button1");
+			button1.BackgroundImage = null;
+			button1.Name = "button1";
+			button1.Click += new EventHandler(button1_Click);
 			//
 			// cbkeep
 			//
-			resources.ApplyResources(this.cbkeep, "cbkeep");
-			this.cbkeep.BackColor = Color.Transparent;
-			this.cbkeep.Checked = true;
-			this.cbkeep.CheckState = CheckState.Checked;
-			this.cbkeep.Name = "cbkeep";
-			this.cbkeep.UseVisualStyleBackColor = false;
+			resources.ApplyResources(cbkeep, "cbkeep");
+			cbkeep.BackColor = Color.Transparent;
+			cbkeep.Checked = true;
+			cbkeep.CheckState = CheckState.Checked;
+			cbkeep.Name = "cbkeep";
+			cbkeep.UseVisualStyleBackColor = false;
 			//
 			// cbrel
 			//
-			this.cbrel.DropDownStyle = ComboBoxStyle.DropDownList;
-			this.cbrel.Enum = null;
-			resources.ApplyResources(this.cbrel, "cbrel");
-			this.cbrel.ForeColor = SystemColors.ControlText;
-			this.cbrel.Name = "cbrel";
-			this.cbrel.ResourceManager = null;
-			this.cbrel.SelectedIndexChanged += new EventHandler(
-				this.cbrel_SelectedIndexChanged
+			cbrel.DropDownStyle = ComboBoxStyle.DropDownList;
+			cbrel.Enum = null;
+			resources.ApplyResources(cbrel, "cbrel");
+			cbrel.ForeColor = SystemColors.ControlText;
+			cbrel.Name = "cbrel";
+			cbrel.ResourceManager = null;
+			cbrel.SelectedIndexChanged += new EventHandler(
+				cbrel_SelectedIndexChanged
 			);
 			//
 			// llrem
 			//
-			this.llrem.BackColor = Color.Transparent;
-			resources.ApplyResources(this.llrem, "llrem");
-			this.llrem.Name = "llrem";
-			this.llrem.TabStop = true;
-			this.llrem.LinkClicked +=
+			llrem.BackColor = Color.Transparent;
+			resources.ApplyResources(llrem, "llrem");
+			llrem.Name = "llrem";
+			llrem.TabStop = true;
+			llrem.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.llrem_LinkClicked
+					llrem_LinkClicked
 				);
 			//
 			// label3
 			//
-			this.label3.BackColor = Color.Transparent;
-			resources.ApplyResources(this.label3, "label3");
-			this.label3.Name = "label3";
+			label3.BackColor = Color.Transparent;
+			resources.ApplyResources(label3, "label3");
+			label3.Name = "label3";
 			//
 			// lbname
 			//
-			resources.ApplyResources(this.lbname, "lbname");
-			this.lbname.BackColor = Color.Transparent;
-			this.lbname.Name = "lbname";
+			resources.ApplyResources(lbname, "lbname");
+			lbname.BackColor = Color.Transparent;
+			lbname.Name = "lbname";
 			//
 			// label2
 			//
-			this.label2.BackColor = Color.Transparent;
-			resources.ApplyResources(this.label2, "label2");
-			this.label2.Name = "label2";
+			label2.BackColor = Color.Transparent;
+			resources.ApplyResources(label2, "label2");
+			label2.Name = "label2";
 			//
 			// panel2
 			//
-			this.panel2.BackColor = SystemColors.Info;
-			this.panel2.Controls.Add(this.pool);
-			resources.ApplyResources(this.panel2, "panel2");
-			this.panel2.Name = "panel2";
+			panel2.BackColor = SystemColors.Info;
+			panel2.Controls.Add(pool);
+			resources.ApplyResources(panel2, "panel2");
+			panel2.Name = "panel2";
 			//
 			// pool
 			//
-			this.pool.ContextMenuStrip = this.miTies;
-			resources.ApplyResources(this.pool, "pool");
-			this.pool.Name = "pool";
-			this.pool.Package = null;
-			this.pool.RightClickSelect = false;
-			this.pool.SelectedElement = null;
-			this.pool.SelectedSim = null;
-			this.pool.SimDetails = false;
-			this.pool.TileColumns = new int[] { 1 };
-			this.pool.ClickOverSim +=
+			pool.ContextMenuStrip = miTies;
+			resources.ApplyResources(pool, "pool");
+			pool.Name = "pool";
+			pool.Package = null;
+			pool.RightClickSelect = false;
+			pool.SelectedElement = null;
+			pool.SelectedSim = null;
+			pool.SimDetails = false;
+			pool.TileColumns = new int[] { 1 };
+			pool.ClickOverSim +=
 				new SimPoolControl.SelectedSimHandler(
-					this.pool_ClickOverSim
+					pool_ClickOverSim
 				);
-			this.pool.SelectedSimChanged +=
+			pool.SelectedSimChanged +=
 				new SimPoolControl.SelectedSimHandler(
-					this.pool_SelectedSimChanged
+					pool_SelectedSimChanged
 				);
 			//
 			// miTies
 			//
-			this.miTies.Items.AddRange(
+			miTies.Items.AddRange(
 				new ToolStripItem[]
 				{
-					this.miAddTie,
-					this.miOpenSdesc,
+					miAddTie,
+					miOpenSdesc,
 				}
 			);
-			this.miTies.Name = "miTies";
-			resources.ApplyResources(this.miTies, "miTies");
-			this.miTies.VisibleChanged += new EventHandler(
-				this.miAddTie_BeforePopup
+			miTies.Name = "miTies";
+			resources.ApplyResources(miTies, "miTies");
+			miTies.VisibleChanged += new EventHandler(
+				miAddTie_BeforePopup
 			);
 			//
 			// miAddTie
 			//
-			this.miAddTie.Name = "miAddTie";
-			resources.ApplyResources(this.miAddTie, "miAddTie");
-			this.miAddTie.Tag = "\"{name}\" in die Familie von \"{gname}\" aufnehmen";
-			this.miAddTie.Click += new EventHandler(this.Activate_miAddTie);
+			miAddTie.Name = "miAddTie";
+			resources.ApplyResources(miAddTie, "miAddTie");
+			miAddTie.Tag = "\"{name}\" in die Familie von \"{gname}\" aufnehmen";
+			miAddTie.Click += new EventHandler(Activate_miAddTie);
 			//
 			// miOpenSdesc
 			//
-			resources.ApplyResources(this.miOpenSdesc, "miOpenSdesc");
-			this.miOpenSdesc.Name = "miOpenSdesc";
-			this.miOpenSdesc.Click += new EventHandler(
-				this.Activate_miOpenSDesc
+			resources.ApplyResources(miOpenSdesc, "miOpenSdesc");
+			miOpenSdesc.Name = "miOpenSdesc";
+			miOpenSdesc.Click += new EventHandler(
+				Activate_miOpenSDesc
 			);
 			//
 			// label12
 			//
-			resources.ApplyResources(this.label12, "label12");
-			this.label12.Name = "label12";
+			resources.ApplyResources(label12, "label12");
+			label12.Name = "label12";
 			//
 			// FamilyTiesForm
 			//
 			resources.ApplyResources(this, "$this");
-			this.Controls.Add(this.pnfamt);
-			this.Name = "FamilyTiesForm";
-			this.pnfamt.ResumeLayout(false);
-			this.panel4.ResumeLayout(false);
-			this.panel4.PerformLayout();
-			this.panel1.ResumeLayout(false);
-			this.panel1.PerformLayout();
-			this.panel3.ResumeLayout(false);
-			this.panel2.ResumeLayout(false);
-			this.miTies.ResumeLayout(false);
-			this.ResumeLayout(false);
+			Controls.Add(pnfamt);
+			Name = "FamilyTiesForm";
+			pnfamt.ResumeLayout(false);
+			panel4.ResumeLayout(false);
+			panel4.PerformLayout();
+			panel1.ResumeLayout(false);
+			panel1.PerformLayout();
+			panel3.ResumeLayout(false);
+			panel2.ResumeLayout(false);
+			miTies.ResumeLayout(false);
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -419,11 +419,11 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void miAddTie_BeforePopup(object sender, EventArgs e)
 		{
-			this.miAddTie.Enabled = (
+			miAddTie.Enabled = (
 				lastsdsc != null && currentsdsc != null && currentsdsc != lastsdsc
 			);
-			this.miOpenSdesc.Enabled = (lastsdsc != null);
-			this.miAddTie.Image = thumb;
+			miOpenSdesc.Enabled = (lastsdsc != null);
+			miAddTie.Image = thumb;
 			//this.miOpenSdesc.Image = thumb;
 			if (thumb != null)
 			{
@@ -446,7 +446,7 @@ namespace SimPe.PackedFiles.UserInterface
 					"{gname}",
 					currentsdsc.SimName + " " + currentsdsc.SimFamilyName
 				);
-				this.miAddTie.Text = name;
+				miAddTie.Text = name;
 
 				Wrapper.Supporting.FamilyTieSim fts =
 					wrapper.FindTies(currentsdsc);
@@ -466,7 +466,7 @@ namespace SimPe.PackedFiles.UserInterface
 					"{name}",
 					lastsdsc.SimName + " " + lastsdsc.SimFamilyName
 				);
-				this.miOpenSdesc.Text = name;
+				miOpenSdesc.Text = name;
 			}
 		}
 
@@ -492,7 +492,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 			ties.AddTieToGraph(lastsdsc, 0, 0, fti.Type);
 
-			if (this.cbkeep.Checked)
+			if (cbkeep.Checked)
 			{
 				fts = wrapper.CreateTie(lastsdsc);
 				fti = fts.CreateTie(
@@ -512,8 +512,8 @@ namespace SimPe.PackedFiles.UserInterface
 			if (sdesc != null)
 			{
 				cbrel.Tag = null;
-				this.lbname.Text = sdesc.SimName + " " + sdesc.SimFamilyName;
-				this.labelidd.Text = "0x" + Helper.HexString(sdesc.Instance);
+				lbname.Text = sdesc.SimName + " " + sdesc.SimFamilyName;
+				labelidd.Text = "0x" + Helper.HexString(sdesc.Instance);
 				cbrel.Enabled = (sdesc != currentsdsc);
 				if (cbrel.Enabled)
 				{
@@ -570,7 +570,7 @@ namespace SimPe.PackedFiles.UserInterface
 					lg.Text = cbrel.Text;
 				}
 
-				if (this.cbkeep.Checked)
+				if (cbkeep.Checked)
 				{
 					Wrapper.Supporting.FamilyTieSim fts =
 						wrapper.CreateTie(fti.SimDescription);

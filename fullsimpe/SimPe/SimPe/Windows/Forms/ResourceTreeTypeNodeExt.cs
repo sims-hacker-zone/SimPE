@@ -8,11 +8,11 @@ namespace SimPe.Windows.Forms
 		)
 			: base(type, list, "")
 		{
-			this.Type = type;
-			this.ImageIndex = ResourceViewManager.GetIndexForResourceType(type);
-			this.SelectedImageIndex = this.ImageIndex;
+			Type = type;
+			ImageIndex = ResourceViewManager.GetIndexForResourceType(type);
+			SelectedImageIndex = ImageIndex;
 			Data.TypeAlias ta = Data.MetaData.FindTypeAlias(type);
-			this.Text = ta.Name + " (" + ta.shortname + ") (" + list.Count + ")";
+			Text = ta.Name + " (" + ta.shortname + ") (" + list.Count + ")";
 		}
 
 		public uint Type
@@ -24,7 +24,7 @@ namespace SimPe.Windows.Forms
 
 		public new int CompareTo(ResourceTreeNodeExt other)
 		{
-			return this.Text.CompareTo(other.Text);
+			return Text.CompareTo(other.Text);
 		}
 
 		#endregion

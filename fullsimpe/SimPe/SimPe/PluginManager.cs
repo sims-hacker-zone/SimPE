@@ -61,9 +61,9 @@ namespace SimPe
 			FileTable.SettingsRegistry = tr;
 			wloader = new LoadFileWrappersExt();
 
-			this.LoadDynamicWrappers();
-			this.LoadStaticWrappers();
-			this.LoadMenuItems(toolmenu, tootoolbar);
+			LoadDynamicWrappers();
+			LoadStaticWrappers();
+			LoadMenuItems(toolmenu, tootoolbar);
 
 			Splash.Screen.SetMessage("Loading Listeners");
 			wloader.AddListeners(ref ChangedGuiResourceEvent);
@@ -269,7 +269,7 @@ namespace SimPe
 			Delegate[] dls = ChangedGuiResourceEvent.GetInvocationList();
 			foreach (Delegate d in dls)
 			{
-				if (this.HaveToStop)
+				if (HaveToStop)
 				{
 					break;
 				} ((Events.ChangedResourceEvent)d)(thsender, the);

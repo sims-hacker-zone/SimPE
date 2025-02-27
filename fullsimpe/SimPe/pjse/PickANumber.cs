@@ -42,22 +42,22 @@ namespace pjse
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(PickANumber));
-			this.tableLayoutPanel1.Controls.Clear();
-			this.tableLayoutPanel1.ColumnStyles.Clear();
-			this.tableLayoutPanel1.RowStyles.Clear();
-			this.tableLayoutPanel1.RowCount = 0;
-			this.tableLayoutPanel1.ColumnCount = 2;
-			this.tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
-			this.tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
+			tableLayoutPanel1.Controls.Clear();
+			tableLayoutPanel1.ColumnStyles.Clear();
+			tableLayoutPanel1.RowStyles.Clear();
+			tableLayoutPanel1.RowCount = 0;
+			tableLayoutPanel1.ColumnCount = 2;
+			tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
+			tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
 
-			this.tableLayoutPanel1.RowCount++;
-			this.tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-			this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
+			tableLayoutPanel1.RowCount++;
+			tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+			tableLayoutPanel1.Controls.Add(label1, 0, 0);
 
 			for (int i = 0; i < values.Length; i++)
 			{
-				this.tableLayoutPanel1.RowCount++;
-				this.tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+				tableLayoutPanel1.RowCount++;
+				tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.AutoSize));
 
 				TextBox t = new TextBox();
 				t.Name = "textBox" + (i + 2).ToString();
@@ -77,7 +77,7 @@ namespace pjse
 						values[i]
 					);
 				ldoc.Add(d);
-				this.tableLayoutPanel1.Controls.Add(
+				tableLayoutPanel1.Controls.Add(
 					t,
 					1,
 					tableLayoutPanel1.RowCount - 1
@@ -88,11 +88,11 @@ namespace pjse
 				r.Text = labels[i];
 				r.Checked = false;
 				r.CheckedChanged += new EventHandler(
-					this.radioButton1_CheckedChanged
+					radioButton1_CheckedChanged
 				);
 				r.TextAlign = ContentAlignment.MiddleRight;
 				lrb.Add(r);
-				this.tableLayoutPanel1.Controls.Add(
+				tableLayoutPanel1.Controls.Add(
 					r,
 					0,
 					tableLayoutPanel1.RowCount - 1
@@ -100,17 +100,17 @@ namespace pjse
 			}
 
 			ltb[ltb.Count - 1].Enabled = true;
-			ltb[ltb.Count - 1].Enter += new EventHandler(this.ltbLast_Enter);
+			ltb[ltb.Count - 1].Enter += new EventHandler(ltbLast_Enter);
 			lrb[0].Checked = true;
 
-			this.tableLayoutPanel1.RowCount++;
-			int last = this.tableLayoutPanel1.RowStyles.Add(
+			tableLayoutPanel1.RowCount++;
+			int last = tableLayoutPanel1.RowStyles.Add(
 				new RowStyle(SizeType.Absolute, (float)(btnOK.Height * 1.5))
 			);
-			this.tableLayoutPanel1.Controls.Add(btnOK, 0, last);
-			this.tableLayoutPanel1.Controls.Add(btnCancel, 1, last);
-			this.AcceptButton = btnOK;
-			this.CancelButton = btnCancel;
+			tableLayoutPanel1.Controls.Add(btnOK, 0, last);
+			tableLayoutPanel1.Controls.Add(btnCancel, 1, last);
+			AcceptButton = btnOK;
+			CancelButton = btnCancel;
 		}
 
 		public uint Value => (selectedRB >= 0) ? ldoc[selectedRB].Value : (ushort)0xffff;
@@ -119,11 +119,11 @@ namespace pjse
 		{
 			get
 			{
-				return this.Text;
+				return Text;
 			}
 			set
 			{
-				this.Text = value;
+				Text = value;
 			}
 		}
 
@@ -131,11 +131,11 @@ namespace pjse
 		{
 			get
 			{
-				return this.label1.Text;
+				return label1.Text;
 			}
 			set
 			{
-				this.label1.Text = value;
+				label1.Text = value;
 			}
 		}
 

@@ -68,7 +68,7 @@ namespace SimPe.PackedFiles.Wrapper
 		public Cpf()
 			: base()
 		{
-			Id = this.FileSignature;
+			Id = FileSignature;
 			Items = new CpfItem[0];
 		}
 
@@ -93,7 +93,7 @@ namespace SimPe.PackedFiles.Wrapper
 				CpfItem ex = null;
 				if (!duplicate)
 				{
-					ex = this.GetItem(item.Name);
+					ex = GetItem(item.Name);
 				}
 
 				if (ex != null)
@@ -115,7 +115,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <returns>null or the Item</returns>
 		public CpfItem GetItem(string name)
 		{
-			foreach (CpfItem item in this.Items)
+			foreach (CpfItem item in Items)
 			{
 				if (item.Name == name)
 				{
@@ -177,7 +177,7 @@ namespace SimPe.PackedFiles.Wrapper
 				"This File is a structured Text File (like an .ini or .xml File), that contains Key Value Pairs.",
 				8,
 				System.Drawing.Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.cpf.png")
 				)
 			);
@@ -185,12 +185,12 @@ namespace SimPe.PackedFiles.Wrapper
 
 		protected override string GetResourceName(Data.TypeAlias ta)
 		{
-			if (!this.Processed)
+			if (!Processed)
 			{
 				ProcessData(FileDescriptor, Package);
 			}
 
-			CpfItem item = this.GetItem("name");
+			CpfItem item = GetItem("name");
 			if (item == null)
 			{
 				return base.GetResourceName(ta);
@@ -208,14 +208,14 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				string s = "";
 
-				s += this.GetSaveItem("name").StringValue + "; ";
-				s += this.GetSaveItem("age").StringValue + "; ";
-				s += this.GetSaveItem("gender").StringValue + "; ";
-				s += this.GetSaveItem("fitness").StringValue + "; ";
-				s += this.GetSaveItem("override0subset").StringValue + "; ";
-				s += this.GetSaveItem("category").StringValue + "; ";
-				s += this.GetSaveItem("outfit").StringValue + "; ";
-				s += this.GetSaveItem("flags").StringValue + "; ";
+				s += GetSaveItem("name").StringValue + "; ";
+				s += GetSaveItem("age").StringValue + "; ";
+				s += GetSaveItem("gender").StringValue + "; ";
+				s += GetSaveItem("fitness").StringValue + "; ";
+				s += GetSaveItem("override0subset").StringValue + "; ";
+				s += GetSaveItem("category").StringValue + "; ";
+				s += GetSaveItem("outfit").StringValue + "; ";
+				s += GetSaveItem("flags").StringValue + "; ";
 				return s;
 			}
 		}
@@ -345,7 +345,7 @@ namespace SimPe.PackedFiles.Wrapper
 			if (Id[0] != SIGNATURE[0])
 			{
 				Id = SIGNATURE;
-				this.UnserializeXml(reader);
+				UnserializeXml(reader);
 
 				return;
 			}
@@ -405,7 +405,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool CanHandleType(uint type)
 		{
-			foreach (uint t in this.AssignableTypes)
+			foreach (uint t in AssignableTypes)
 			{
 				if (t == type)
 				{

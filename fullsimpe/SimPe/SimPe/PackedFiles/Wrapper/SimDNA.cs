@@ -171,7 +171,7 @@ namespace SimPe.PackedFiles.Wrapper
 				"This File contains the DNA of a Sim.",
 				1,
 				System.Drawing.Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.dna.png")
 				)
 			);
@@ -187,8 +187,8 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				System.Collections.ArrayList list = new System.Collections.ArrayList
 				{
-					"Dominant " + Serializer.SerializeTypeHeader(this.Dominant),
-					"Recessive " + Serializer.SerializeTypeHeader(this.Recessive)
+					"Dominant " + Serializer.SerializeTypeHeader(Dominant),
+					"Recessive " + Serializer.SerializeTypeHeader(Recessive)
 				};
 
 				return Serializer.ConcatHeader(Serializer.ConvertArrayList(list));
@@ -201,8 +201,8 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				System.Collections.ArrayList list = new System.Collections.ArrayList
 				{
-					this.Dominant.ToString("Dominant"),
-					this.Recessive.ToString("Recessive")
+					Dominant.ToString("Dominant"),
+					Recessive.ToString("Recessive")
 				};
 
 				return Serializer.Concat(Serializer.ConvertArrayList(list));
@@ -213,7 +213,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			ExtSDesc sdsc =
 				FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
-					(ushort)this.FileDescriptor.Instance
+					(ushort)FileDescriptor.Instance
 				) as ExtSDesc;
 			if (sdsc == null)
 			{

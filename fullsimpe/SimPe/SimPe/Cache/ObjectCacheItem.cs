@@ -353,10 +353,10 @@ namespace SimPe.Cache
 		/// Returs the Category this Object should get sorted in
 		/// </summary>
 		public string[][] ObjectCategory => GetCategory(
-					this.ObjectVersion,
-					(Data.ObjFunctionSubSort)this.ObjectFunctionSort,
-					this.ObjectType,
-					this.Class
+					ObjectVersion,
+					(Data.ObjFunctionSubSort)ObjectFunctionSort,
+					ObjectType,
+					Class
 				);
 
 		/// <summary>

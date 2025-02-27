@@ -91,7 +91,7 @@ namespace Ambertation.Windows.Forms.Graph
 
 		protected override void DrawText(System.Drawing.Graphics gr)
 		{
-			if (this.properties == null)
+			if (properties == null)
 			{
 				return;
 			}
@@ -108,7 +108,7 @@ namespace Ambertation.Windows.Forms.Graph
 			gr.DrawString(
 				Text,
 				ftb,
-				new Pen(this.ForeColor).Brush,
+				new Pen(ForeColor).Brush,
 				new RectangleF(new PointF(4, 4), new SizeF(Width - 8, Height - 8)),
 				sf
 			);
@@ -151,7 +151,7 @@ namespace Ambertation.Windows.Forms.Graph
 					gr.DrawString(
 						k + ":",
 						ft,
-						new Pen(Color.FromArgb(160, this.ForeColor)).Brush,
+						new Pen(Color.FromArgb(160, ForeColor)).Brush,
 						new RectangleF(
 							new PointF(indentx + 10, top),
 							new SizeF(Width - (24 + indentx), top + 16)
@@ -163,7 +163,7 @@ namespace Ambertation.Windows.Forms.Graph
 					gr.DrawString(
 						val,
 						Font,
-						new Pen(Color.FromArgb(140, this.ForeColor)).Brush,
+						new Pen(Color.FromArgb(140, ForeColor)).Brush,
 						new RectangleF(
 							new PointF(indentx + 12 + sz.Width, top),
 							new SizeF(Width - (24 + sz.Width + indentx), top + 16)

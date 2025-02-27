@@ -42,37 +42,37 @@ namespace SimPe.Plugin
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.lb = new System.Windows.Forms.ListBox();
-			this.SuspendLayout();
+			lb = new System.Windows.Forms.ListBox();
+			SuspendLayout();
 			//
 			// lb
 			//
-			this.lb.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-			this.lb.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.lb.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.lb.HorizontalScrollbar = true;
-			this.lb.IntegralHeight = false;
-			this.lb.Location = new System.Drawing.Point(0, 0);
-			this.lb.Name = "lb";
-			this.lb.Size = new System.Drawing.Size(304, 104);
-			this.lb.TabIndex = 0;
-			this.lb.SelectedIndexChanged += new EventHandler(
-				this.lb_SelectedIndexChanged
+			lb.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+			lb.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			lb.Dock = System.Windows.Forms.DockStyle.Fill;
+			lb.HorizontalScrollbar = true;
+			lb.IntegralHeight = false;
+			lb.Location = new System.Drawing.Point(0, 0);
+			lb.Name = "lb";
+			lb.Size = new System.Drawing.Size(304, 104);
+			lb.TabIndex = 0;
+			lb.SelectedIndexChanged += new EventHandler(
+				lb_SelectedIndexChanged
 			);
 			//
 			// BnfoCustomerItemsUI
 			//
-			this.Controls.Add(this.lb);
-			this.Font = new System.Drawing.Font(
+			Controls.Add(lb);
+			Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.Name = "BnfoCustomerItemsUI";
-			this.Size = new System.Drawing.Size(304, 104);
-			this.ResumeLayout(false);
+			Name = "BnfoCustomerItemsUI";
+			Size = new System.Drawing.Size(304, 104);
+			ResumeLayout(false);
 		}
 		#endregion
 

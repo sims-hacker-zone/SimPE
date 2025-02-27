@@ -85,7 +85,7 @@ namespace SimPe.PackedFiles.UserInterface
 			form.llcpfchange.Enabled = false;
 			form.btprev.Visible = (fkt != null);
 
-			form.fkt = this.fkt;
+			form.fkt = fkt;
 		}
 
 		#endregion
@@ -93,8 +93,8 @@ namespace SimPe.PackedFiles.UserInterface
 		#region IDisposable Member
 		public virtual void Dispose()
 		{
-			this.form.Dispose();
-			this.fkt = null;
+			form.Dispose();
+			fkt = null;
 		}
 		#endregion
 	}

@@ -90,7 +90,7 @@ namespace SimPe.Plugin.Anim
 
 		public AnimationFrame[] InterpolateMissingFrames()
 		{
-			AnimationFrame[] frames = this.UnlockedFrames;
+			AnimationFrame[] frames = UnlockedFrames;
 			if (frames.Length != 0)
 			{
 				InterpolateMissingBlocks(frames, frames[frames.Length - 1].TimeCode);
@@ -123,7 +123,7 @@ namespace SimPe.Plugin.Anim
 						if (!tclist.Contains((short)tc))
 						{
 							tclist.Add(tc);
-							ht[tc] = new AnimationFrame(tc, this.TransformationType);
+							ht[tc] = new AnimationFrame(tc, TransformationType);
 						}
 					}
 				}
@@ -248,7 +248,7 @@ namespace SimPe.Plugin.Anim
 		{
 			get
 			{
-				byte[] rt = Hashes.Crc32.ComputeHash(Helper.ToBytes(this.Name, 0)); //CRC24Seed, CRC24Poly, filename.ToCharArray());
+				byte[] rt = Hashes.Crc32.ComputeHash(Helper.ToBytes(Name, 0)); //CRC24Seed, CRC24Poly, filename.ToCharArray());
 
 				return (uint)Hashes.ToLong(rt);
 			}
@@ -322,7 +322,7 @@ namespace SimPe.Plugin.Anim
 			set
 			{
 				base.Name = value;
-				this.NameChecksum = this.GeneratedNameChecksum;
+				NameChecksum = GeneratedNameChecksum;
 			}
 		}
 
@@ -401,16 +401,16 @@ namespace SimPe.Plugin.Anim
 
 		public AnimationFrameBlock CloneBase(bool fullclone)
 		{
-			AnimationFrameBlock ab = new AnimationFrameBlock(this.Parent);
+			AnimationFrameBlock ab = new AnimationFrameBlock(Parent);
 
-			ab.datai = (uint[])this.datai.Clone();
-			ab.name = this.name;
+			ab.datai = (uint[])datai.Clone();
+			ab.name = name;
 			if (fullclone)
 			{
-				ab.AxisSet = new AnimationAxisTransformBlock[this.AxisCount];
+				ab.AxisSet = new AnimationAxisTransformBlock[AxisCount];
 				for (int i = 0; i < ab.AxisCount; i++)
 				{
-					ab.AxisSet[i] = this.AxisSet[i].CloneBase();
+					ab.AxisSet[i] = AxisSet[i].CloneBase();
 				}
 			}
 
@@ -518,7 +518,7 @@ namespace SimPe.Plugin.Anim
 
 		public AnimationFrame GetFrameAtTimeCode(short tc)
 		{
-			AnimationFrame[] frames = this.Frames;
+			AnimationFrame[] frames = Frames;
 			foreach (AnimationFrame f in frames)
 			{
 				if (f.TimeCode == tc)
@@ -581,15 +581,15 @@ namespace SimPe.Plugin.Anim
 
 		public AnimationFrameBlock(AnimationMeshBlock parent)
 		{
-			this.Parent = parent;
+			Parent = parent;
 			datai = new uint[6];
 			datai[0] = 297403888;
 			datai[1] = 297403888;
 			datai[3] = 297403888;
 			datai[5] = 297403888;
-			this.Unknown5Bits = 15;
+			Unknown5Bits = 15;
 			AxisSet = new AnimationAxisTransformBlock[0];
-			this.TransformationType = FrameType.Unknown;
+			TransformationType = FrameType.Unknown;
 		}
 
 		/// <summary>
@@ -627,7 +627,7 @@ namespace SimPe.Plugin.Anim
 		/// <param name="writer">The Stream that receives the Data</param>
 		internal void SerializeData(System.IO.BinaryWriter writer)
 		{
-			this.SetPart3Count(AxisSet.Length);
+			SetPart3Count(AxisSet.Length);
 
 			writer.Write(datai[0]);
 			writer.Write(datai[1]);
@@ -759,9 +759,9 @@ namespace SimPe.Plugin.Anim
 				b.Parameter = val;
 			}
 
-			if (this.AxisCount > 0)
+			if (AxisCount > 0)
 			{
-				b.SetParent(this.AxisSet[0]);
+				b.SetParent(AxisSet[0]);
 			}
 
 			return b;
@@ -838,23 +838,23 @@ namespace SimPe.Plugin.Anim
 		public void RemoveUnneededFrames()
 		{
 			const float DELTA = float.Epsilon * 10;
-			for (int blid = this.AxisSet.Length - 1; blid >= 0; blid--)
+			for (int blid = AxisSet.Length - 1; blid >= 0; blid--)
 			{
 				IntArrayList remlist = new IntArrayList();
-				for (int nr = 1; nr < this.AxisSet[blid].Count - 1; nr++)
+				for (int nr = 1; nr < AxisSet[blid].Count - 1; nr++)
 				{
 					AnimationAxisTransform iframe = null;
 					/*if (nr==0) iframe = this.AxisSet[blid][nr+1];
 					else if (nr==this.AxisSet[blid].Count-1) iframe = this.AxisSet[blid][nr+1];
 					else*/
 					iframe = InterpolateFrame(
-						this.AxisSet[blid][nr - 1],
-						this.AxisSet[blid][nr + 1],
-						this.AxisSet[blid][nr].TimeCode
+						AxisSet[blid][nr - 1],
+						AxisSet[blid][nr + 1],
+						AxisSet[blid][nr].TimeCode
 					);
 
 					if (
-						Math.Abs(iframe.Parameter - this.AxisSet[blid][nr].Parameter)
+						Math.Abs(iframe.Parameter - AxisSet[blid][nr].Parameter)
 						< DELTA
 					)
 					{
@@ -899,8 +899,8 @@ namespace SimPe.Plugin.Anim
 
 		public override string ToString()
 		{
-			string s = this.Name + " (";
-			if (this.TransformationType == FrameType.Translation)
+			string s = Name + " (";
+			if (TransformationType == FrameType.Translation)
 			{
 				s += "trn";
 			}

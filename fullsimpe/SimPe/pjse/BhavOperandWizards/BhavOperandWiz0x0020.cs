@@ -108,14 +108,14 @@ namespace pjse.BhavOperandWizards.Wiz0x0020
 		{
 			if (setTB)
 			{
-				this.tbGUID.Text = "0x" + SimPe.Helper.HexString(guid);
+				tbGUID.Text = "0x" + SimPe.Helper.HexString(guid);
 			}
 
-			this.lbGUIDText.Text = BhavWiz.FormatGUID(true, guid);
+			lbGUIDText.Text = BhavWiz.FormatGUID(true, guid);
 		}
 
 		#region iBhavOperandWizForm
-		public Panel WizPanel => this.pnWiz0x001f;
+		public Panel WizPanel => pnWiz0x001f;
 
 		public void Execute(Instruction inst)
 		{
@@ -130,20 +130,20 @@ namespace pjse.BhavOperandWizards.Wiz0x0020
 
 			doid1 = new DataOwnerControl(
 				inst,
-				this.cbDataOwner1,
-				this.cbPicker1,
-				this.tbVal1,
-				this.cbDecimal,
-				this.cbAttrPicker,
+				cbDataOwner1,
+				cbPicker1,
+				tbVal1,
+				cbDecimal,
+				cbAttrPicker,
 				null,
 				ops1[0x06],
 				BhavWiz.ToShort(ops1[0x04], ops1[0x05])
 			);
 
 			Boolset ops1_7 = ops1[0x07];
-			this.ckbOrigGUID.Checked = ops1_7[0];
-			this.ckbNID.Checked = ops1_7[1];
-			this.ckbTemp01.Checked = ops1_7[2];
+			ckbOrigGUID.Checked = ops1_7[0];
+			ckbNID.Checked = ops1_7[1];
+			ckbTemp01.Checked = ops1_7[2];
 
 			internalchg = false;
 		}
@@ -155,7 +155,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0020
 				wrappedByteArray ops1 = inst.Operands;
 				wrappedByteArray ops2 = inst.Reserved1;
 
-				UInt32 val = Convert.ToUInt32(this.tbGUID.Text, 16);
+				UInt32 val = Convert.ToUInt32(tbGUID.Text, 16);
 				ops1[0x00] = (byte)(val & 0xff);
 				ops1[0x01] = (byte)(val >> 8 & 0xff);
 				ops1[0x02] = (byte)(val >> 16 & 0xff);
@@ -166,9 +166,9 @@ namespace pjse.BhavOperandWizards.Wiz0x0020
 				ops1[0x05] = (byte)(doid1.Value >> 8 & 0xff);
 
 				Boolset ops1_7 = ops1[0x07];
-				ops1_7[0] = this.ckbOrigGUID.Checked;
-				ops1_7[1] = this.ckbNID.Checked;
-				ops1_7[2] = this.ckbTemp01.Checked;
+				ops1_7[0] = ckbOrigGUID.Checked;
+				ops1_7[1] = ckbNID.Checked;
+				ops1_7[2] = ckbTemp01.Checked;
 				ops1[0x07] = ops1_7;
 			}
 			return inst;
@@ -185,155 +185,155 @@ namespace pjse.BhavOperandWizards.Wiz0x0020
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(UI));
-			this.pnWiz0x001f = new Panel();
-			this.flowLayoutPanel1 = new FlowLayoutPanel();
-			this.label1 = new Label();
-			this.pnObject = new Panel();
-			this.cbAttrPicker = new CheckBox();
-			this.cbDecimal = new CheckBox();
-			this.cbPicker1 = new ComboBox();
-			this.tbVal1 = new TextBox();
-			this.cbDataOwner1 = new ComboBox();
-			this.ckbNID = new CheckBox();
-			this.ckbOrigGUID = new CheckBox();
-			this.label2 = new Label();
-			this.flowLayoutPanel2 = new FlowLayoutPanel();
-			this.tbGUID = new TextBox();
-			this.lbGUIDText = new Label();
-			this.ckbTemp01 = new CheckBox();
-			this.pnWiz0x001f.SuspendLayout();
-			this.flowLayoutPanel1.SuspendLayout();
-			this.pnObject.SuspendLayout();
-			this.flowLayoutPanel2.SuspendLayout();
-			this.SuspendLayout();
+			pnWiz0x001f = new Panel();
+			flowLayoutPanel1 = new FlowLayoutPanel();
+			label1 = new Label();
+			pnObject = new Panel();
+			cbAttrPicker = new CheckBox();
+			cbDecimal = new CheckBox();
+			cbPicker1 = new ComboBox();
+			tbVal1 = new TextBox();
+			cbDataOwner1 = new ComboBox();
+			ckbNID = new CheckBox();
+			ckbOrigGUID = new CheckBox();
+			label2 = new Label();
+			flowLayoutPanel2 = new FlowLayoutPanel();
+			tbGUID = new TextBox();
+			lbGUIDText = new Label();
+			ckbTemp01 = new CheckBox();
+			pnWiz0x001f.SuspendLayout();
+			flowLayoutPanel1.SuspendLayout();
+			pnObject.SuspendLayout();
+			flowLayoutPanel2.SuspendLayout();
+			SuspendLayout();
 			//
 			// pnWiz0x001f
 			//
-			this.pnWiz0x001f.Controls.Add(this.flowLayoutPanel1);
-			resources.ApplyResources(this.pnWiz0x001f, "pnWiz0x001f");
-			this.pnWiz0x001f.Name = "pnWiz0x001f";
+			pnWiz0x001f.Controls.Add(flowLayoutPanel1);
+			resources.ApplyResources(pnWiz0x001f, "pnWiz0x001f");
+			pnWiz0x001f.Name = "pnWiz0x001f";
 			//
 			// flowLayoutPanel1
 			//
-			this.flowLayoutPanel1.Controls.Add(this.label1);
-			this.flowLayoutPanel1.Controls.Add(this.pnObject);
-			this.flowLayoutPanel1.Controls.Add(this.ckbNID);
-			this.flowLayoutPanel1.Controls.Add(this.ckbOrigGUID);
-			this.flowLayoutPanel1.Controls.Add(this.label2);
-			this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel2);
-			this.flowLayoutPanel1.Controls.Add(this.ckbTemp01);
-			resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
-			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+			flowLayoutPanel1.Controls.Add(label1);
+			flowLayoutPanel1.Controls.Add(pnObject);
+			flowLayoutPanel1.Controls.Add(ckbNID);
+			flowLayoutPanel1.Controls.Add(ckbOrigGUID);
+			flowLayoutPanel1.Controls.Add(label2);
+			flowLayoutPanel1.Controls.Add(flowLayoutPanel2);
+			flowLayoutPanel1.Controls.Add(ckbTemp01);
+			resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
+			flowLayoutPanel1.Name = "flowLayoutPanel1";
 			//
 			// label1
 			//
-			resources.ApplyResources(this.label1, "label1");
-			this.label1.Name = "label1";
+			resources.ApplyResources(label1, "label1");
+			label1.Name = "label1";
 			//
 			// pnObject
 			//
-			this.pnObject.BorderStyle = BorderStyle.FixedSingle;
-			this.pnObject.Controls.Add(this.cbAttrPicker);
-			this.pnObject.Controls.Add(this.cbDecimal);
-			this.pnObject.Controls.Add(this.cbPicker1);
-			this.pnObject.Controls.Add(this.tbVal1);
-			this.pnObject.Controls.Add(this.cbDataOwner1);
-			resources.ApplyResources(this.pnObject, "pnObject");
-			this.pnObject.Name = "pnObject";
+			pnObject.BorderStyle = BorderStyle.FixedSingle;
+			pnObject.Controls.Add(cbAttrPicker);
+			pnObject.Controls.Add(cbDecimal);
+			pnObject.Controls.Add(cbPicker1);
+			pnObject.Controls.Add(tbVal1);
+			pnObject.Controls.Add(cbDataOwner1);
+			resources.ApplyResources(pnObject, "pnObject");
+			pnObject.Name = "pnObject";
 			//
 			// cbAttrPicker
 			//
-			resources.ApplyResources(this.cbAttrPicker, "cbAttrPicker");
-			this.cbAttrPicker.Name = "cbAttrPicker";
+			resources.ApplyResources(cbAttrPicker, "cbAttrPicker");
+			cbAttrPicker.Name = "cbAttrPicker";
 			//
 			// cbDecimal
 			//
-			resources.ApplyResources(this.cbDecimal, "cbDecimal");
-			this.cbDecimal.Name = "cbDecimal";
+			resources.ApplyResources(cbDecimal, "cbDecimal");
+			cbDecimal.Name = "cbDecimal";
 			//
 			// cbPicker1
 			//
-			this.cbPicker1.DropDownStyle =
+			cbPicker1.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbPicker1.DropDownWidth = 384;
-			resources.ApplyResources(this.cbPicker1, "cbPicker1");
-			this.cbPicker1.Name = "cbPicker1";
+			cbPicker1.DropDownWidth = 384;
+			resources.ApplyResources(cbPicker1, "cbPicker1");
+			cbPicker1.Name = "cbPicker1";
 			//
 			// tbVal1
 			//
-			resources.ApplyResources(this.tbVal1, "tbVal1");
-			this.tbVal1.Name = "tbVal1";
+			resources.ApplyResources(tbVal1, "tbVal1");
+			tbVal1.Name = "tbVal1";
 			//
 			// cbDataOwner1
 			//
-			this.cbDataOwner1.DropDownStyle =
+			cbDataOwner1.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbDataOwner1.DropDownWidth = 384;
-			resources.ApplyResources(this.cbDataOwner1, "cbDataOwner1");
-			this.cbDataOwner1.Name = "cbDataOwner1";
+			cbDataOwner1.DropDownWidth = 384;
+			resources.ApplyResources(cbDataOwner1, "cbDataOwner1");
+			cbDataOwner1.Name = "cbDataOwner1";
 			//
 			// ckbNID
 			//
-			resources.ApplyResources(this.ckbNID, "ckbNID");
-			this.ckbNID.Name = "ckbNID";
-			this.ckbNID.UseVisualStyleBackColor = true;
+			resources.ApplyResources(ckbNID, "ckbNID");
+			ckbNID.Name = "ckbNID";
+			ckbNID.UseVisualStyleBackColor = true;
 			//
 			// ckbOrigGUID
 			//
-			resources.ApplyResources(this.ckbOrigGUID, "ckbOrigGUID");
-			this.flowLayoutPanel1.SetFlowBreak(this.ckbOrigGUID, true);
-			this.ckbOrigGUID.Name = "ckbOrigGUID";
-			this.ckbOrigGUID.UseVisualStyleBackColor = true;
+			resources.ApplyResources(ckbOrigGUID, "ckbOrigGUID");
+			flowLayoutPanel1.SetFlowBreak(ckbOrigGUID, true);
+			ckbOrigGUID.Name = "ckbOrigGUID";
+			ckbOrigGUID.UseVisualStyleBackColor = true;
 			//
 			// label2
 			//
-			resources.ApplyResources(this.label2, "label2");
-			this.label2.Name = "label2";
+			resources.ApplyResources(label2, "label2");
+			label2.Name = "label2";
 			//
 			// flowLayoutPanel2
 			//
-			this.flowLayoutPanel2.Controls.Add(this.tbGUID);
-			this.flowLayoutPanel2.Controls.Add(this.lbGUIDText);
-			resources.ApplyResources(this.flowLayoutPanel2, "flowLayoutPanel2");
-			this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+			flowLayoutPanel2.Controls.Add(tbGUID);
+			flowLayoutPanel2.Controls.Add(lbGUIDText);
+			resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
+			flowLayoutPanel2.Name = "flowLayoutPanel2";
 			//
 			// tbGUID
 			//
-			resources.ApplyResources(this.tbGUID, "tbGUID");
-			this.tbGUID.Name = "tbGUID";
-			this.tbGUID.TextChanged += new EventHandler(this.tbGUID_TextChanged);
-			this.tbGUID.Validated += new EventHandler(this.hex32_Validated);
-			this.tbGUID.Validating += new System.ComponentModel.CancelEventHandler(
-				this.hex32_Validating
+			resources.ApplyResources(tbGUID, "tbGUID");
+			tbGUID.Name = "tbGUID";
+			tbGUID.TextChanged += new EventHandler(tbGUID_TextChanged);
+			tbGUID.Validated += new EventHandler(hex32_Validated);
+			tbGUID.Validating += new System.ComponentModel.CancelEventHandler(
+				hex32_Validating
 			);
 			//
 			// lbGUIDText
 			//
-			resources.ApplyResources(this.lbGUIDText, "lbGUIDText");
-			this.lbGUIDText.Name = "lbGUIDText";
+			resources.ApplyResources(lbGUIDText, "lbGUIDText");
+			lbGUIDText.Name = "lbGUIDText";
 			//
 			// ckbTemp01
 			//
-			resources.ApplyResources(this.ckbTemp01, "ckbTemp01");
-			this.ckbTemp01.Name = "ckbTemp01";
-			this.ckbTemp01.UseVisualStyleBackColor = true;
+			resources.ApplyResources(ckbTemp01, "ckbTemp01");
+			ckbTemp01.Name = "ckbTemp01";
+			ckbTemp01.UseVisualStyleBackColor = true;
 			//
 			// UI
 			//
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = AutoScaleMode.Dpi;
-			this.Controls.Add(this.pnWiz0x001f);
-			this.Name = "UI";
-			this.pnWiz0x001f.ResumeLayout(false);
-			this.flowLayoutPanel1.ResumeLayout(false);
-			this.flowLayoutPanel1.PerformLayout();
-			this.pnObject.ResumeLayout(false);
-			this.pnObject.PerformLayout();
-			this.flowLayoutPanel2.ResumeLayout(false);
-			this.flowLayoutPanel2.PerformLayout();
-			this.ResumeLayout(false);
+			AutoScaleMode = AutoScaleMode.Dpi;
+			Controls.Add(pnWiz0x001f);
+			Name = "UI";
+			pnWiz0x001f.ResumeLayout(false);
+			flowLayoutPanel1.ResumeLayout(false);
+			flowLayoutPanel1.PerformLayout();
+			pnObject.ResumeLayout(false);
+			pnObject.PerformLayout();
+			flowLayoutPanel2.ResumeLayout(false);
+			flowLayoutPanel2.PerformLayout();
+			ResumeLayout(false);
 		}
 		#endregion
 

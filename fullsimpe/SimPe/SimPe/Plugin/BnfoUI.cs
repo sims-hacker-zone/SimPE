@@ -108,17 +108,17 @@ namespace SimPe.Plugin
 			InitializeComponent();
 			if (Helper.WindowsRegistry.UseBigIcons)
 			{
-				this.lv.Font = new Font("Tahoma", 12F);
+				lv.Font = new Font("Tahoma", 12F);
 			}
 
 			string ttip =
 				"This info is from the sim\'s character\r\nfile so it can\'t be changed here";
-			this.toolTip1.SetToolTip(this.tbLeft, ttip);
-			this.toolTip1.SetToolTip(this.tbright, ttip);
-			this.toolTip1.SetToolTip(this.ybsimage, ttip);
-			this.toolTip1.SetToolTip(this.tbsgender, ttip);
-			this.toolTip1.SetToolTip(this.tbwages, ttip);
-			this.toolTip1.SetToolTip(this.tbassi, ttip);
+			toolTip1.SetToolTip(tbLeft, ttip);
+			toolTip1.SetToolTip(tbright, ttip);
+			toolTip1.SetToolTip(ybsimage, ttip);
+			toolTip1.SetToolTip(tbsgender, ttip);
+			toolTip1.SetToolTip(tbwages, ttip);
+			toolTip1.SetToolTip(tbassi, ttip);
 		}
 
 		/// <summary>
@@ -143,80 +143,80 @@ namespace SimPe.Plugin
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new Container();
+			components = new Container();
 			ComponentResourceManager resources =
 				new ComponentResourceManager(typeof(BnfoUI));
-			this.lv = new BnfoCustomerItemsUI();
-			this.bnfoCustomerItemUI1 = new BnfoCustomerItemUI();
-			this.label1 = new Label();
-			this.lblot = new Label();
-			this.toolBar1 = new ToolStrip();
-			this.biMax = new ToolStripButton();
-			this.biReward = new ToolStripButton();
-			this.biWorkers = new ToolStripButton();
-			this.panel1 = new Panel();
-			this.lbcashf = new Label();
-			this.gpexpen = new Panel();
-			this.gpreven = new Panel();
-			this.btClearim = new Button();
-			this.tbMax = new TextBox();
-			this.tbCur = new TextBox();
-			this.label3 = new Label();
-			this.label2 = new Label();
-			this.panel2 = new Panel();
-			this.btaddim = new Button();
-			this.Panel3 = new Panel();
-			this.btchcancel = new Button();
-			this.btchadd = new Button();
-			this.lbchgender = new Label();
-			this.lbchage = new Label();
-			this.tbchgender = new TextBox();
-			this.tbchage = new TextBox();
-			this.lbchoose = new Label();
-			this.cbsimselect = new ComboBox();
-			this.lbadvice = new Label();
-			this.btdelety = new Button();
-			this.pbox = new PictureBox();
-			this.lbaward = new Label();
-			this.tbunknown = new TextBox();
-			this.lbpay = new Label();
-			this.pbpay = new ExtProgressBar();
-			this.tbassi = new TextBox();
-			this.lbassi = new Label();
-			this.tbwages = new TextBox();
-			this.lbwages = new Label();
-			this.tbsgender = new TextBox();
-			this.lbsgender = new Label();
-			this.ybsimage = new TextBox();
-			this.lbsimage = new Label();
-			this.lbLaball = new Label();
-			this.tbright = new TextBox();
-			this.lbright = new Label();
-			this.tbLeft = new TextBox();
-			this.lvEmployees = new ListView();
-			this.ilist = new ImageList(this.components);
-			this.toolTip1 = new ToolTip(this.components);
-			this.btchngeOwn = new Button();
-			this.Panel4 = new Panel();
-			this.btOcancel = new Button();
-			this.btOadd = new Button();
-			this.lbOgender = new Label();
-			this.lbOage = new Label();
-			this.tbOgender = new TextBox();
-			this.tbOchage = new TextBox();
-			this.lbOchoos = new Label();
-			this.cbOsimselect = new ComboBox();
-			this.toolBar1.SuspendLayout();
-			this.panel1.SuspendLayout();
-			this.panel2.SuspendLayout();
-			this.Panel3.SuspendLayout();
-			this.Panel4.SuspendLayout();
-			((ISupportInitialize)(this.pbox)).BeginInit();
-			this.SuspendLayout();
+			lv = new BnfoCustomerItemsUI();
+			bnfoCustomerItemUI1 = new BnfoCustomerItemUI();
+			label1 = new Label();
+			lblot = new Label();
+			toolBar1 = new ToolStrip();
+			biMax = new ToolStripButton();
+			biReward = new ToolStripButton();
+			biWorkers = new ToolStripButton();
+			panel1 = new Panel();
+			lbcashf = new Label();
+			gpexpen = new Panel();
+			gpreven = new Panel();
+			btClearim = new Button();
+			tbMax = new TextBox();
+			tbCur = new TextBox();
+			label3 = new Label();
+			label2 = new Label();
+			panel2 = new Panel();
+			btaddim = new Button();
+			Panel3 = new Panel();
+			btchcancel = new Button();
+			btchadd = new Button();
+			lbchgender = new Label();
+			lbchage = new Label();
+			tbchgender = new TextBox();
+			tbchage = new TextBox();
+			lbchoose = new Label();
+			cbsimselect = new ComboBox();
+			lbadvice = new Label();
+			btdelety = new Button();
+			pbox = new PictureBox();
+			lbaward = new Label();
+			tbunknown = new TextBox();
+			lbpay = new Label();
+			pbpay = new ExtProgressBar();
+			tbassi = new TextBox();
+			lbassi = new Label();
+			tbwages = new TextBox();
+			lbwages = new Label();
+			tbsgender = new TextBox();
+			lbsgender = new Label();
+			ybsimage = new TextBox();
+			lbsimage = new Label();
+			lbLaball = new Label();
+			tbright = new TextBox();
+			lbright = new Label();
+			tbLeft = new TextBox();
+			lvEmployees = new ListView();
+			ilist = new ImageList(components);
+			toolTip1 = new ToolTip(components);
+			btchngeOwn = new Button();
+			Panel4 = new Panel();
+			btOcancel = new Button();
+			btOadd = new Button();
+			lbOgender = new Label();
+			lbOage = new Label();
+			tbOgender = new TextBox();
+			tbOchage = new TextBox();
+			lbOchoos = new Label();
+			cbOsimselect = new ComboBox();
+			toolBar1.SuspendLayout();
+			panel1.SuspendLayout();
+			panel2.SuspendLayout();
+			Panel3.SuspendLayout();
+			Panel4.SuspendLayout();
+			((ISupportInitialize)(pbox)).BeginInit();
+			SuspendLayout();
 			//
 			// lv
 			//
-			this.lv.Anchor = (
+			lv.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -226,16 +226,16 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.lv.Font = new Font("Tahoma", 8.25F);
-			this.lv.Items = null;
-			this.lv.Location = new Point(8, 32);
-			this.lv.Name = "lv";
-			this.lv.Size = new Size(328, 229);
-			this.lv.TabIndex = 1;
+			lv.Font = new Font("Tahoma", 8.25F);
+			lv.Items = null;
+			lv.Location = new Point(8, 32);
+			lv.Name = "lv";
+			lv.Size = new Size(328, 229);
+			lv.TabIndex = 1;
 			//
 			// bnfoCustomerItemUI1
 			//
-			this.bnfoCustomerItemUI1.Anchor = (
+			bnfoCustomerItemUI1.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -245,144 +245,144 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.bnfoCustomerItemUI1.BackColor = Color.Transparent;
-			this.bnfoCustomerItemUI1.BnfoCustomerItemsUI = this.lv;
-			this.bnfoCustomerItemUI1.Font = new Font("Tahoma", 8.25F);
-			this.bnfoCustomerItemUI1.Item = null;
-			this.bnfoCustomerItemUI1.Location = new Point(344, 32);
-			this.bnfoCustomerItemUI1.Name = "bnfoCustomerItemUI1";
-			this.bnfoCustomerItemUI1.Size = new Size(408, 140);
-			this.bnfoCustomerItemUI1.TabIndex = 2;
+			bnfoCustomerItemUI1.BackColor = Color.Transparent;
+			bnfoCustomerItemUI1.BnfoCustomerItemsUI = lv;
+			bnfoCustomerItemUI1.Font = new Font("Tahoma", 8.25F);
+			bnfoCustomerItemUI1.Item = null;
+			bnfoCustomerItemUI1.Location = new Point(344, 32);
+			bnfoCustomerItemUI1.Name = "bnfoCustomerItemUI1";
+			bnfoCustomerItemUI1.Size = new Size(408, 140);
+			bnfoCustomerItemUI1.TabIndex = 2;
 			//
 			// label1
 			//
-			this.label1.AutoSize = true;
-			this.label1.BackColor = Color.Transparent;
-			this.label1.Font = new Font(
+			label1.AutoSize = true;
+			label1.BackColor = Color.Transparent;
+			label1.Font = new Font(
 				"Tahoma",
 				12F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label1.ImeMode = ImeMode.NoControl;
-			this.label1.Location = new Point(8, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new Size(41, 19);
-			this.label1.TabIndex = 5;
-			this.label1.Text = "Lot:";
-			this.label1.TextAlign = ContentAlignment.BottomRight;
+			label1.ImeMode = ImeMode.NoControl;
+			label1.Location = new Point(8, 8);
+			label1.Name = "label1";
+			label1.Size = new Size(41, 19);
+			label1.TabIndex = 5;
+			label1.Text = "Lot:";
+			label1.TextAlign = ContentAlignment.BottomRight;
 			//
 			// lblot
 			//
-			this.lblot.AutoSize = true;
-			this.lblot.BackColor = Color.Transparent;
-			this.lblot.Font = new Font(
+			lblot.AutoSize = true;
+			lblot.BackColor = Color.Transparent;
+			lblot.Font = new Font(
 				"Tahoma",
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lblot.ImeMode = ImeMode.NoControl;
-			this.lblot.Location = new Point(54, 8);
-			this.lblot.Name = "lblot";
-			this.lblot.Size = new Size(0, 19);
-			this.lblot.TabIndex = 6;
-			this.lblot.TextAlign = ContentAlignment.BottomLeft;
+			lblot.ImeMode = ImeMode.NoControl;
+			lblot.Location = new Point(54, 8);
+			lblot.Name = "lblot";
+			lblot.Size = new Size(0, 19);
+			lblot.TabIndex = 6;
+			lblot.TextAlign = ContentAlignment.BottomLeft;
 			//
 			// toolBar1
 			//
-			this.toolBar1.GripStyle = ToolStripGripStyle.Hidden;
-			this.toolBar1.Items.AddRange(
+			toolBar1.GripStyle = ToolStripGripStyle.Hidden;
+			toolBar1.Items.AddRange(
 				new ToolStripItem[]
 				{
-					this.biMax,
-					this.biReward,
-					this.biWorkers,
+					biMax,
+					biReward,
+					biWorkers,
 				}
 			);
-			this.toolBar1.Location = new Point(0, 24);
-			this.toolBar1.Name = "toolBar1";
-			this.toolBar1.Size = new Size(760, 54);
-			this.toolBar1.TabIndex = 7;
-			this.toolBar1.Text = "toolBar1";
+			toolBar1.Location = new Point(0, 24);
+			toolBar1.Name = "toolBar1";
+			toolBar1.Size = new Size(760, 54);
+			toolBar1.TabIndex = 7;
+			toolBar1.Text = "toolBar1";
 			//
 			// biMax
 			//
-			this.biMax.Image = (
+			biMax.Image = (
 				(Image)(resources.GetObject("biMax.Image"))
 			);
-			this.biMax.ImageScaling =
+			biMax.ImageScaling =
 				ToolStripItemImageScaling
 				.None;
-			this.biMax.Name = "biMax";
-			this.biMax.Size = new Size(62, 51);
-			this.biMax.Text = "Maximize";
-			this.biMax.TextImageRelation =
+			biMax.Name = "biMax";
+			biMax.Size = new Size(62, 51);
+			biMax.Text = "Maximize";
+			biMax.TextImageRelation =
 				TextImageRelation
 				.ImageAboveText;
-			this.biMax.Click += new EventHandler(this.biMax_Activate);
+			biMax.Click += new EventHandler(biMax_Activate);
 			//
 			// biReward
 			//
-			this.biReward.Image = (
+			biReward.Image = (
 				(Image)(resources.GetObject("biReward.Image"))
 			);
-			this.biReward.ImageScaling =
+			biReward.ImageScaling =
 				ToolStripItemImageScaling
 				.None;
-			this.biReward.Name = "biReward";
-			this.biReward.Size = new Size(82, 51);
-			this.biReward.Text = "Reward again";
-			this.biReward.TextImageRelation =
+			biReward.Name = "biReward";
+			biReward.Size = new Size(82, 51);
+			biReward.Text = "Reward again";
+			biReward.TextImageRelation =
 				TextImageRelation
 				.ImageAboveText;
-			this.biReward.Click += new EventHandler(this.biReward_Activate);
+			biReward.Click += new EventHandler(biReward_Activate);
 			//
 			// biWorkers
 			//
-			this.biWorkers.Image = (
+			biWorkers.Image = (
 				(Image)(resources.GetObject("biWorkers.Image"))
 			);
-			this.biWorkers.ImageScaling =
+			biWorkers.ImageScaling =
 				ToolStripItemImageScaling
 				.None;
-			this.biWorkers.ImageTransparentColor = Color.Magenta;
-			this.biWorkers.Name = "biWorkers";
-			this.biWorkers.Size = new Size(68, 51);
-			this.biWorkers.Text = "Employees";
-			this.biWorkers.TextImageRelation =
+			biWorkers.ImageTransparentColor = Color.Magenta;
+			biWorkers.Name = "biWorkers";
+			biWorkers.Size = new Size(68, 51);
+			biWorkers.Text = "Employees";
+			biWorkers.TextImageRelation =
 				TextImageRelation
 				.ImageAboveText;
-			this.biWorkers.ToolTipText = "Change to Employees or Customers";
-			this.biWorkers.Click += new EventHandler(this.biWorkers_Click);
+			biWorkers.ToolTipText = "Change to Employees or Customers";
+			biWorkers.Click += new EventHandler(biWorkers_Click);
 			//
 			// panel1
 			//
-			this.panel1.BackColor = Color.Transparent;
-			this.panel1.Controls.Add(this.lbcashf);
-			this.panel1.Controls.Add(this.gpexpen);
-			this.panel1.Controls.Add(this.gpreven);
-			this.panel1.Controls.Add(this.btClearim);
-			this.panel1.Controls.Add(this.tbMax);
-			this.panel1.Controls.Add(this.tbCur);
-			this.panel1.Controls.Add(this.label3);
-			this.panel1.Controls.Add(this.label2);
-			this.panel1.Controls.Add(this.lv);
-			this.panel1.Controls.Add(this.label1);
-			this.panel1.Controls.Add(this.bnfoCustomerItemUI1);
-			this.panel1.Controls.Add(this.lblot);
-			this.panel1.Dock = DockStyle.Fill;
-			this.panel1.Font = new Font("Tahoma", 8.25F);
-			this.panel1.Location = new Point(0, 78);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new Size(760, 320);
-			this.panel1.TabIndex = 8;
+			panel1.BackColor = Color.Transparent;
+			panel1.Controls.Add(lbcashf);
+			panel1.Controls.Add(gpexpen);
+			panel1.Controls.Add(gpreven);
+			panel1.Controls.Add(btClearim);
+			panel1.Controls.Add(tbMax);
+			panel1.Controls.Add(tbCur);
+			panel1.Controls.Add(label3);
+			panel1.Controls.Add(label2);
+			panel1.Controls.Add(lv);
+			panel1.Controls.Add(label1);
+			panel1.Controls.Add(bnfoCustomerItemUI1);
+			panel1.Controls.Add(lblot);
+			panel1.Dock = DockStyle.Fill;
+			panel1.Font = new Font("Tahoma", 8.25F);
+			panel1.Location = new Point(0, 78);
+			panel1.Name = "panel1";
+			panel1.Size = new Size(760, 320);
+			panel1.TabIndex = 8;
 			//
 			// lbcashf
 			//
-			this.lbcashf.Anchor = (
+			lbcashf.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -390,21 +390,21 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.lbcashf.AutoSize = true;
-			this.lbcashf.Font = new Font(
+			lbcashf.AutoSize = true;
+			lbcashf.Font = new Font(
 				"Tahoma",
 				12F,
 				FontStyle.Bold
 			);
-			this.lbcashf.Location = new Point(359, 182);
-			this.lbcashf.Name = "lbcashf";
-			this.lbcashf.Size = new Size(170, 19);
-			this.lbcashf.TabIndex = 14;
-			this.lbcashf.Text = "Last Cashflow  = $0";
+			lbcashf.Location = new Point(359, 182);
+			lbcashf.Name = "lbcashf";
+			lbcashf.Size = new Size(170, 19);
+			lbcashf.TabIndex = 14;
+			lbcashf.Text = "Last Cashflow  = $0";
 			//
 			// gpexpen
 			//
-			this.gpexpen.Anchor = (
+			gpexpen.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -412,16 +412,16 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.gpexpen.BackColor = Color.Transparent;
-			this.gpexpen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-			this.gpexpen.Location = new Point(551, 212);
-			this.gpexpen.Name = "gpexpen";
-			this.gpexpen.Size = new Size(201, 105);
-			this.gpexpen.TabIndex = 13;
+			gpexpen.BackColor = Color.Transparent;
+			gpexpen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+			gpexpen.Location = new Point(551, 212);
+			gpexpen.Name = "gpexpen";
+			gpexpen.Size = new Size(201, 105);
+			gpexpen.TabIndex = 13;
 			//
 			// gpreven
 			//
-			this.gpreven.Anchor = (
+			gpreven.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -429,15 +429,15 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.gpreven.BackColor = Color.Transparent;
-			this.gpreven.Location = new Point(344, 212);
-			this.gpreven.Name = "gpreven";
-			this.gpreven.Size = new Size(201, 105);
-			this.gpreven.TabIndex = 12;
+			gpreven.BackColor = Color.Transparent;
+			gpreven.Location = new Point(344, 212);
+			gpreven.Name = "gpreven";
+			gpreven.Size = new Size(201, 105);
+			gpreven.TabIndex = 12;
 			//
 			// btClearim
 			//
-			this.btClearim.Anchor = (
+			btClearim.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -445,21 +445,21 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.btClearim.Location = new Point(261, 270);
-			this.btClearim.Name = "btClearim";
-			this.btClearim.Size = new Size(75, 25);
-			this.btClearim.TabIndex = 11;
-			this.btClearim.Text = "Clean Up";
-			this.toolTip1.SetToolTip(
-				this.btClearim,
+			btClearim.Location = new Point(261, 270);
+			btClearim.Name = "btClearim";
+			btClearim.Size = new Size(75, 25);
+			btClearim.TabIndex = 11;
+			btClearim.Text = "Clean Up";
+			toolTip1.SetToolTip(
+				btClearim,
 				"Remove Unknown\r\nSims from this list"
 			);
-			this.btClearim.UseVisualStyleBackColor = true;
-			this.btClearim.Click += new EventHandler(this.btClearim_Click);
+			btClearim.UseVisualStyleBackColor = true;
+			btClearim.Click += new EventHandler(btClearim_Click);
 			//
 			// tbMax
 			//
-			this.tbMax.Anchor = (
+			tbMax.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -467,15 +467,15 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.tbMax.Location = new Point(120, 293);
-			this.tbMax.Name = "tbMax";
-			this.tbMax.Size = new Size(100, 21);
-			this.tbMax.TabIndex = 10;
-			this.tbMax.TextChanged += new EventHandler(this.tbMax_TextChanged);
+			tbMax.Location = new Point(120, 293);
+			tbMax.Name = "tbMax";
+			tbMax.Size = new Size(100, 21);
+			tbMax.TabIndex = 10;
+			tbMax.TextChanged += new EventHandler(tbMax_TextChanged);
 			//
 			// tbCur
 			//
-			this.tbCur.Anchor = (
+			tbCur.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -483,15 +483,15 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.tbCur.Location = new Point(120, 269);
-			this.tbCur.Name = "tbCur";
-			this.tbCur.Size = new Size(100, 21);
-			this.tbCur.TabIndex = 9;
-			this.tbCur.TextChanged += new EventHandler(this.tbCur_TextChanged);
+			tbCur.Location = new Point(120, 269);
+			tbCur.Name = "tbCur";
+			tbCur.Size = new Size(100, 21);
+			tbCur.TabIndex = 9;
+			tbCur.TextChanged += new EventHandler(tbCur_TextChanged);
 			//
 			// label3
 			//
-			this.label3.Anchor = (
+			label3.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -499,23 +499,23 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.label3.BackColor = Color.Transparent;
-			this.label3.Font = new Font(
+			label3.BackColor = Color.Transparent;
+			label3.Font = new Font(
 				"Tahoma",
 				8.25F,
 				FontStyle.Bold
 			);
-			this.label3.ImeMode = ImeMode.NoControl;
-			this.label3.Location = new Point(8, 293);
-			this.label3.Name = "label3";
-			this.label3.Size = new Size(104, 23);
-			this.label3.TabIndex = 8;
-			this.label3.Text = "Rewarded Level:";
-			this.label3.TextAlign = ContentAlignment.BottomRight;
+			label3.ImeMode = ImeMode.NoControl;
+			label3.Location = new Point(8, 293);
+			label3.Name = "label3";
+			label3.Size = new Size(104, 23);
+			label3.TabIndex = 8;
+			label3.Text = "Rewarded Level:";
+			label3.TextAlign = ContentAlignment.BottomRight;
 			//
 			// label2
 			//
-			this.label2.Anchor = (
+			label2.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -523,58 +523,58 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.label2.BackColor = Color.Transparent;
-			this.label2.Font = new Font(
+			label2.BackColor = Color.Transparent;
+			label2.Font = new Font(
 				"Tahoma",
 				8.25F,
 				FontStyle.Bold
 			);
-			this.label2.ImeMode = ImeMode.NoControl;
-			this.label2.Location = new Point(8, 269);
-			this.label2.Name = "label2";
-			this.label2.Size = new Size(104, 23);
-			this.label2.TabIndex = 7;
-			this.label2.Text = "Current Level:";
-			this.label2.TextAlign = ContentAlignment.BottomRight;
+			label2.ImeMode = ImeMode.NoControl;
+			label2.Location = new Point(8, 269);
+			label2.Name = "label2";
+			label2.Size = new Size(104, 23);
+			label2.TabIndex = 7;
+			label2.Text = "Current Level:";
+			label2.TextAlign = ContentAlignment.BottomRight;
 			//
 			// panel2
 			//
-			this.panel2.BackColor = Color.Transparent;
-			this.panel2.Controls.Add(this.btchngeOwn);
-			this.panel2.Controls.Add(this.btaddim);
-			this.panel2.Controls.Add(this.Panel3);
-			this.panel2.Controls.Add(this.Panel4);
-			this.panel2.Controls.Add(this.lbadvice);
-			this.panel2.Controls.Add(this.btdelety);
-			this.panel2.Controls.Add(this.pbox);
-			this.panel2.Controls.Add(this.lbaward);
-			this.panel2.Controls.Add(this.tbunknown);
-			this.panel2.Controls.Add(this.lbpay);
-			this.panel2.Controls.Add(this.pbpay);
-			this.panel2.Controls.Add(this.tbassi);
-			this.panel2.Controls.Add(this.lbassi);
-			this.panel2.Controls.Add(this.tbwages);
-			this.panel2.Controls.Add(this.lbwages);
-			this.panel2.Controls.Add(this.tbsgender);
-			this.panel2.Controls.Add(this.lbsgender);
-			this.panel2.Controls.Add(this.ybsimage);
-			this.panel2.Controls.Add(this.lbsimage);
-			this.panel2.Controls.Add(this.lbLaball);
-			this.panel2.Controls.Add(this.tbright);
-			this.panel2.Controls.Add(this.lbright);
-			this.panel2.Controls.Add(this.tbLeft);
-			this.panel2.Controls.Add(this.lvEmployees);
-			this.panel2.Dock = DockStyle.Fill;
-			this.panel2.Font = new Font("Tahoma", 8.25F);
-			this.panel2.Location = new Point(0, 78);
-			this.panel2.Name = "panel2";
-			this.panel2.Size = new Size(760, 320);
-			this.panel2.TabIndex = 9;
-			this.panel2.Visible = false;
+			panel2.BackColor = Color.Transparent;
+			panel2.Controls.Add(btchngeOwn);
+			panel2.Controls.Add(btaddim);
+			panel2.Controls.Add(Panel3);
+			panel2.Controls.Add(Panel4);
+			panel2.Controls.Add(lbadvice);
+			panel2.Controls.Add(btdelety);
+			panel2.Controls.Add(pbox);
+			panel2.Controls.Add(lbaward);
+			panel2.Controls.Add(tbunknown);
+			panel2.Controls.Add(lbpay);
+			panel2.Controls.Add(pbpay);
+			panel2.Controls.Add(tbassi);
+			panel2.Controls.Add(lbassi);
+			panel2.Controls.Add(tbwages);
+			panel2.Controls.Add(lbwages);
+			panel2.Controls.Add(tbsgender);
+			panel2.Controls.Add(lbsgender);
+			panel2.Controls.Add(ybsimage);
+			panel2.Controls.Add(lbsimage);
+			panel2.Controls.Add(lbLaball);
+			panel2.Controls.Add(tbright);
+			panel2.Controls.Add(lbright);
+			panel2.Controls.Add(tbLeft);
+			panel2.Controls.Add(lvEmployees);
+			panel2.Dock = DockStyle.Fill;
+			panel2.Font = new Font("Tahoma", 8.25F);
+			panel2.Location = new Point(0, 78);
+			panel2.Name = "panel2";
+			panel2.Size = new Size(760, 320);
+			panel2.TabIndex = 9;
+			panel2.Visible = false;
 			//
 			// btaddim
 			//
-			this.btaddim.Anchor = (
+			btaddim.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -582,252 +582,252 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.btaddim.Location = new Point(710, 291);
-			this.btaddim.Name = "btaddim";
-			this.btaddim.Size = new Size(47, 23);
-			this.btaddim.TabIndex = 23;
-			this.btaddim.Text = "Add";
-			this.toolTip1.SetToolTip(
-				this.btaddim,
+			btaddim.Location = new Point(710, 291);
+			btaddim.Name = "btaddim";
+			btaddim.Size = new Size(47, 23);
+			btaddim.TabIndex = 23;
+			btaddim.Text = "Add";
+			toolTip1.SetToolTip(
+				btaddim,
 				"This just adds an employee to\r\nhere. You may need to open\r\nthe sim\'s SDSC file an"
 					+ "d add the\r\nbusiness data and career."
 			);
-			this.btaddim.UseVisualStyleBackColor = true;
-			this.btaddim.Click += new EventHandler(this.btaddim_Click);
+			btaddim.UseVisualStyleBackColor = true;
+			btaddim.Click += new EventHandler(btaddim_Click);
 			//
 			// Panel3
 			//
-			this.Panel3.BackColor = Color.Transparent;
-			this.Panel3.BorderStyle = BorderStyle.Fixed3D;
-			this.Panel3.Controls.Add(this.btchcancel);
-			this.Panel3.Controls.Add(this.btchadd);
-			this.Panel3.Controls.Add(this.lbchgender);
-			this.Panel3.Controls.Add(this.lbchage);
-			this.Panel3.Controls.Add(this.tbchgender);
-			this.Panel3.Controls.Add(this.tbchage);
-			this.Panel3.Controls.Add(this.lbchoose);
-			this.Panel3.Controls.Add(this.cbsimselect);
-			this.Panel3.Font = new Font("Tahoma", 12F);
-			this.Panel3.Location = new Point(357, 46);
-			this.Panel3.Name = "Panel3";
-			this.Panel3.Size = new Size(365, 215);
-			this.Panel3.TabIndex = 22;
-			this.Panel3.Visible = false;
+			Panel3.BackColor = Color.Transparent;
+			Panel3.BorderStyle = BorderStyle.Fixed3D;
+			Panel3.Controls.Add(btchcancel);
+			Panel3.Controls.Add(btchadd);
+			Panel3.Controls.Add(lbchgender);
+			Panel3.Controls.Add(lbchage);
+			Panel3.Controls.Add(tbchgender);
+			Panel3.Controls.Add(tbchage);
+			Panel3.Controls.Add(lbchoose);
+			Panel3.Controls.Add(cbsimselect);
+			Panel3.Font = new Font("Tahoma", 12F);
+			Panel3.Location = new Point(357, 46);
+			Panel3.Name = "Panel3";
+			Panel3.Size = new Size(365, 215);
+			Panel3.TabIndex = 22;
+			Panel3.Visible = false;
 			//
 			// btchcancel
 			//
-			this.btchcancel.Location = new Point(168, 164);
-			this.btchcancel.Name = "btchcancel";
-			this.btchcancel.Size = new Size(84, 29);
-			this.btchcancel.TabIndex = 13;
-			this.btchcancel.Text = "Cancel";
-			this.btchcancel.UseVisualStyleBackColor = true;
-			this.btchcancel.Click += new EventHandler(this.btchcancel_Click);
+			btchcancel.Location = new Point(168, 164);
+			btchcancel.Name = "btchcancel";
+			btchcancel.Size = new Size(84, 29);
+			btchcancel.TabIndex = 13;
+			btchcancel.Text = "Cancel";
+			btchcancel.UseVisualStyleBackColor = true;
+			btchcancel.Click += new EventHandler(btchcancel_Click);
 			//
 			// btchadd
 			//
-			this.btchadd.Location = new Point(269, 164);
-			this.btchadd.Name = "btchadd";
-			this.btchadd.Size = new Size(84, 29);
-			this.btchadd.TabIndex = 12;
-			this.btchadd.Text = "Apply";
-			this.btchadd.UseVisualStyleBackColor = true;
-			this.btchadd.Click += new EventHandler(this.btchadd_Click);
+			btchadd.Location = new Point(269, 164);
+			btchadd.Name = "btchadd";
+			btchadd.Size = new Size(84, 29);
+			btchadd.TabIndex = 12;
+			btchadd.Text = "Apply";
+			btchadd.UseVisualStyleBackColor = true;
+			btchadd.Click += new EventHandler(btchadd_Click);
 			//
 			// lbchgender
 			//
-			this.lbchgender.AutoSize = true;
-			this.lbchgender.Font = new Font(
+			lbchgender.AutoSize = true;
+			lbchgender.Font = new Font(
 				"Tahoma",
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lbchgender.Location = new Point(120, 114);
-			this.lbchgender.Name = "lbchgender";
-			this.lbchgender.Size = new Size(60, 19);
-			this.lbchgender.TabIndex = 11;
-			this.lbchgender.Text = "Gender";
+			lbchgender.Location = new Point(120, 114);
+			lbchgender.Name = "lbchgender";
+			lbchgender.Size = new Size(60, 19);
+			lbchgender.TabIndex = 11;
+			lbchgender.Text = "Gender";
 			//
 			// lbchage
 			//
-			this.lbchage.AutoSize = true;
-			this.lbchage.Font = new Font(
+			lbchage.AutoSize = true;
+			lbchage.Font = new Font(
 				"Tahoma",
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lbchage.Location = new Point(143, 80);
-			this.lbchage.Name = "lbchage";
-			this.lbchage.Size = new Size(37, 19);
-			this.lbchage.TabIndex = 10;
-			this.lbchage.Text = "Age";
+			lbchage.Location = new Point(143, 80);
+			lbchage.Name = "lbchage";
+			lbchage.Size = new Size(37, 19);
+			lbchage.TabIndex = 10;
+			lbchage.Text = "Age";
 			//
 			// tbchgender
 			//
-			this.tbchgender.Location = new Point(186, 110);
-			this.tbchgender.Name = "tbchgender";
-			this.tbchgender.Size = new Size(167, 27);
-			this.tbchgender.TabIndex = 3;
+			tbchgender.Location = new Point(186, 110);
+			tbchgender.Name = "tbchgender";
+			tbchgender.Size = new Size(167, 27);
+			tbchgender.TabIndex = 3;
 			//
 			// tbchage
 			//
-			this.tbchage.Location = new Point(186, 76);
-			this.tbchage.Name = "tbchage";
-			this.tbchage.Size = new Size(167, 27);
-			this.tbchage.TabIndex = 2;
+			tbchage.Location = new Point(186, 76);
+			tbchage.Name = "tbchage";
+			tbchage.Size = new Size(167, 27);
+			tbchage.TabIndex = 2;
 			//
 			// lbchoose
 			//
-			this.lbchoose.AutoSize = true;
-			this.lbchoose.Location = new Point(22, 19);
-			this.lbchoose.Name = "lbchoose";
-			this.lbchoose.Size = new Size(106, 19);
-			this.lbchoose.TabIndex = 1;
-			this.lbchoose.Text = "Choose a Sim";
+			lbchoose.AutoSize = true;
+			lbchoose.Location = new Point(22, 19);
+			lbchoose.Name = "lbchoose";
+			lbchoose.Size = new Size(106, 19);
+			lbchoose.TabIndex = 1;
+			lbchoose.Text = "Choose a Sim";
 			//
 			// cbsimselect
 			//
-			this.cbsimselect.FormattingEnabled = true;
-			this.cbsimselect.Location = new Point(134, 15);
-			this.cbsimselect.Name = "cbsimselect";
-			this.cbsimselect.Size = new Size(219, 27);
-			this.cbsimselect.TabIndex = 0;
-			this.cbsimselect.SelectedIndexChanged += new EventHandler(
-				this.cbsimselect_SelectedIndexChanged
+			cbsimselect.FormattingEnabled = true;
+			cbsimselect.Location = new Point(134, 15);
+			cbsimselect.Name = "cbsimselect";
+			cbsimselect.Size = new Size(219, 27);
+			cbsimselect.TabIndex = 0;
+			cbsimselect.SelectedIndexChanged += new EventHandler(
+				cbsimselect_SelectedIndexChanged
 			);
 
 			//
 			// Panel4
 			//
-			this.Panel4.BackColor = Color.Transparent;
-			this.Panel4.BorderStyle = BorderStyle.Fixed3D;
-			this.Panel4.Controls.Add(this.btOcancel);
-			this.Panel4.Controls.Add(this.btOadd);
-			this.Panel4.Controls.Add(this.lbOgender);
-			this.Panel4.Controls.Add(this.lbOage);
-			this.Panel4.Controls.Add(this.tbOgender);
-			this.Panel4.Controls.Add(this.tbOchage);
-			this.Panel4.Controls.Add(this.lbOchoos);
-			this.Panel4.Controls.Add(this.cbOsimselect);
-			this.Panel4.Font = new Font("Tahoma", 12F);
-			this.Panel4.Location = new Point(357, 46);
-			this.Panel4.Name = "Panel4";
-			this.Panel4.Size = new Size(365, 215);
-			this.Panel4.TabIndex = 23;
-			this.Panel4.Visible = false;
+			Panel4.BackColor = Color.Transparent;
+			Panel4.BorderStyle = BorderStyle.Fixed3D;
+			Panel4.Controls.Add(btOcancel);
+			Panel4.Controls.Add(btOadd);
+			Panel4.Controls.Add(lbOgender);
+			Panel4.Controls.Add(lbOage);
+			Panel4.Controls.Add(tbOgender);
+			Panel4.Controls.Add(tbOchage);
+			Panel4.Controls.Add(lbOchoos);
+			Panel4.Controls.Add(cbOsimselect);
+			Panel4.Font = new Font("Tahoma", 12F);
+			Panel4.Location = new Point(357, 46);
+			Panel4.Name = "Panel4";
+			Panel4.Size = new Size(365, 215);
+			Panel4.TabIndex = 23;
+			Panel4.Visible = false;
 			//
 			// btOcancel
 			//
-			this.btOcancel.Location = new Point(168, 164);
-			this.btOcancel.Name = "btOcancel";
-			this.btOcancel.Size = new Size(84, 29);
-			this.btOcancel.TabIndex = 13;
-			this.btOcancel.Text = "Cancel";
-			this.btOcancel.UseVisualStyleBackColor = true;
-			this.btOcancel.Click += new EventHandler(this.btOcancel_Click);
+			btOcancel.Location = new Point(168, 164);
+			btOcancel.Name = "btOcancel";
+			btOcancel.Size = new Size(84, 29);
+			btOcancel.TabIndex = 13;
+			btOcancel.Text = "Cancel";
+			btOcancel.UseVisualStyleBackColor = true;
+			btOcancel.Click += new EventHandler(btOcancel_Click);
 			//
 			// btOadd
 			//
-			this.btOadd.Location = new Point(269, 164);
-			this.btOadd.Name = "btOadd";
-			this.btOadd.Size = new Size(84, 29);
-			this.btOadd.TabIndex = 12;
-			this.btOadd.Text = "Apply";
-			this.btOadd.UseVisualStyleBackColor = true;
-			this.btOadd.Click += new EventHandler(this.btOadd_Click);
+			btOadd.Location = new Point(269, 164);
+			btOadd.Name = "btOadd";
+			btOadd.Size = new Size(84, 29);
+			btOadd.TabIndex = 12;
+			btOadd.Text = "Apply";
+			btOadd.UseVisualStyleBackColor = true;
+			btOadd.Click += new EventHandler(btOadd_Click);
 			//
 			// lbOgender
 			//
-			this.lbOgender.AutoSize = true;
-			this.lbOgender.Font = new Font(
+			lbOgender.AutoSize = true;
+			lbOgender.Font = new Font(
 				"Tahoma",
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lbOgender.Location = new Point(120, 114);
-			this.lbOgender.Name = "lbOgender";
-			this.lbOgender.Size = new Size(60, 19);
-			this.lbOgender.TabIndex = 11;
-			this.lbOgender.Text = "Gender";
+			lbOgender.Location = new Point(120, 114);
+			lbOgender.Name = "lbOgender";
+			lbOgender.Size = new Size(60, 19);
+			lbOgender.TabIndex = 11;
+			lbOgender.Text = "Gender";
 			//
 			// lbOage
 			//
-			this.lbOage.AutoSize = true;
-			this.lbOage.Font = new Font(
+			lbOage.AutoSize = true;
+			lbOage.Font = new Font(
 				"Tahoma",
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lbOage.Location = new Point(143, 80);
-			this.lbOage.Name = "lbOage";
-			this.lbOage.Size = new Size(37, 19);
-			this.lbOage.TabIndex = 10;
-			this.lbOage.Text = "Age";
+			lbOage.Location = new Point(143, 80);
+			lbOage.Name = "lbOage";
+			lbOage.Size = new Size(37, 19);
+			lbOage.TabIndex = 10;
+			lbOage.Text = "Age";
 			//
 			// tbOgender
 			//
-			this.tbOgender.Location = new Point(186, 110);
-			this.tbOgender.Name = "tbOgender";
-			this.tbOgender.Size = new Size(167, 27);
-			this.tbOgender.TabIndex = 3;
+			tbOgender.Location = new Point(186, 110);
+			tbOgender.Name = "tbOgender";
+			tbOgender.Size = new Size(167, 27);
+			tbOgender.TabIndex = 3;
 			//
 			// tbOchage
 			//
-			this.tbOchage.Location = new Point(186, 76);
-			this.tbOchage.Name = "tbOchage";
-			this.tbOchage.Size = new Size(167, 27);
-			this.tbOchage.TabIndex = 2;
+			tbOchage.Location = new Point(186, 76);
+			tbOchage.Name = "tbOchage";
+			tbOchage.Size = new Size(167, 27);
+			tbOchage.TabIndex = 2;
 			//
 			// lbOchoos
 			//
-			this.lbOchoos.AutoSize = true;
-			this.lbOchoos.Location = new Point(22, 19);
-			this.lbOchoos.Name = "lbOchoos";
-			this.lbOchoos.Size = new Size(106, 19);
-			this.lbOchoos.TabIndex = 1;
-			this.lbOchoos.Text = "Choose a Sim";
+			lbOchoos.AutoSize = true;
+			lbOchoos.Location = new Point(22, 19);
+			lbOchoos.Name = "lbOchoos";
+			lbOchoos.Size = new Size(106, 19);
+			lbOchoos.TabIndex = 1;
+			lbOchoos.Text = "Choose a Sim";
 			//
 			// cbOsimselect
 			//
-			this.cbOsimselect.FormattingEnabled = true;
-			this.cbOsimselect.Location = new Point(134, 15);
-			this.cbOsimselect.Name = "cbOsimselect";
-			this.cbOsimselect.Size = new Size(219, 27);
-			this.cbOsimselect.TabIndex = 0;
-			this.cbOsimselect.SelectedIndexChanged += new EventHandler(
-				this.cbOsimselect_SelectedIndexChanged
+			cbOsimselect.FormattingEnabled = true;
+			cbOsimselect.Location = new Point(134, 15);
+			cbOsimselect.Name = "cbOsimselect";
+			cbOsimselect.Size = new Size(219, 27);
+			cbOsimselect.TabIndex = 0;
+			cbOsimselect.SelectedIndexChanged += new EventHandler(
+				cbOsimselect_SelectedIndexChanged
 			);
 
 			//
 			// lbadvice
 			//
-			this.lbadvice.AutoSize = true;
-			this.lbadvice.Font = new Font(
+			lbadvice.AutoSize = true;
+			lbadvice.Font = new Font(
 				"Tahoma",
 				12F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lbadvice.ForeColor = Color.DarkRed;
-			this.lbadvice.Location = new Point(466, 4);
-			this.lbadvice.Name = "lbadvice";
-			this.lbadvice.Size = new Size(77, 19);
-			this.lbadvice.TabIndex = 21;
-			this.lbadvice.Text = "Warning";
-			this.lbadvice.Visible = false;
+			lbadvice.ForeColor = Color.DarkRed;
+			lbadvice.Location = new Point(466, 4);
+			lbadvice.Name = "lbadvice";
+			lbadvice.Size = new Size(77, 19);
+			lbadvice.TabIndex = 21;
+			lbadvice.Text = "Warning";
+			lbadvice.Visible = false;
 			//
 			// btdelety
 			//
-			this.btdelety.Anchor = (
+			btdelety.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -835,293 +835,293 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.btdelety.Location = new Point(625, 291);
-			this.btdelety.Name = "btdelety";
-			this.btdelety.Size = new Size(75, 23);
-			this.btdelety.TabIndex = 20;
-			this.btdelety.Text = "Remove";
-			this.toolTip1.SetToolTip(
-				this.btdelety,
+			btdelety.Location = new Point(625, 291);
+			btdelety.Name = "btdelety";
+			btdelety.Size = new Size(75, 23);
+			btdelety.TabIndex = 20;
+			btdelety.Text = "Remove";
+			toolTip1.SetToolTip(
+				btdelety,
 				"This just removes the employee\r\nfrom here. You may need to open\r\nthe sim\'s SDSC f"
 					+ "ile and clear any\r\nbusiness data and career."
 			);
-			this.btdelety.UseVisualStyleBackColor = true;
-			this.btdelety.Click += new EventHandler(this.btdelety_Click);
+			btdelety.UseVisualStyleBackColor = true;
+			btdelety.Click += new EventHandler(btdelety_Click);
 			//
 			// pbox
 			//
-			this.pbox.Location = new Point(646, 32);
-			this.pbox.Name = "pbox";
-			this.pbox.Size = new Size(40, 41);
-			this.pbox.TabIndex = 19;
-			this.pbox.TabStop = false;
+			pbox.Location = new Point(646, 32);
+			pbox.Name = "pbox";
+			pbox.Size = new Size(40, 41);
+			pbox.TabIndex = 19;
+			pbox.TabStop = false;
 			//
 			// lbaward
 			//
-			this.lbaward.AutoSize = true;
-			this.lbaward.Font = new Font(
+			lbaward.AutoSize = true;
+			lbaward.Font = new Font(
 				"Tahoma",
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lbaward.Location = new Point(388, 156);
-			this.lbaward.Name = "lbaward";
-			this.lbaward.Size = new Size(65, 19);
-			this.lbaward.TabIndex = 18;
-			this.lbaward.Text = "Fair Pay";
+			lbaward.Location = new Point(388, 156);
+			lbaward.Name = "lbaward";
+			lbaward.Size = new Size(65, 19);
+			lbaward.TabIndex = 18;
+			lbaward.Text = "Fair Pay";
 			//
 			// tbunknown
 			//
-			this.tbunknown.BackColor = SystemColors.Window;
-			this.tbunknown.Font = new Font("Tahoma", 12F);
-			this.tbunknown.Location = new Point(459, 152);
-			this.tbunknown.Name = "tbunknown";
-			this.tbunknown.Size = new Size(167, 27);
-			this.tbunknown.TabIndex = 17;
-			this.toolTip1.SetToolTip(
-				this.tbunknown,
+			tbunknown.BackColor = SystemColors.Window;
+			tbunknown.Font = new Font("Tahoma", 12F);
+			tbunknown.Location = new Point(459, 152);
+			tbunknown.Name = "tbunknown";
+			tbunknown.Size = new Size(167, 27);
+			tbunknown.TabIndex = 17;
+			toolTip1.SetToolTip(
+				tbunknown,
 				resources.GetString("tbunknown.ToolTip")
 			);
-			this.tbunknown.TextChanged += new EventHandler(
-				this.tbunknown_TextChanged
+			tbunknown.TextChanged += new EventHandler(
+				tbunknown_TextChanged
 			);
 			//
 			// lbpay
 			//
-			this.lbpay.Font = new Font(
+			lbpay.Font = new Font(
 				"Tahoma",
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lbpay.Location = new Point(374, 283);
-			this.lbpay.Name = "lbpay";
-			this.lbpay.Size = new Size(227, 19);
-			this.lbpay.TabIndex = 16;
-			this.lbpay.Text = "Fairly Paid (100%)";
-			this.lbpay.TextAlign = ContentAlignment.TopCenter;
+			lbpay.Location = new Point(374, 283);
+			lbpay.Name = "lbpay";
+			lbpay.Size = new Size(227, 19);
+			lbpay.TabIndex = 16;
+			lbpay.Text = "Fairly Paid (100%)";
+			lbpay.TextAlign = ContentAlignment.TopCenter;
 			//
 			// pbpay
 			//
-			this.pbpay.BackColor = Color.Transparent;
-			this.pbpay.Font = new Font(
+			pbpay.BackColor = Color.Transparent;
+			pbpay.Font = new Font(
 				"Tahoma",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.pbpay.ImeMode = ImeMode.Disable;
-			this.pbpay.Location = new Point(363, 245);
-			this.pbpay.Maximum = 7;
-			this.pbpay.Name = "pbpay";
-			this.pbpay.Padding = new Padding(0, 0, 0, 2);
-			this.pbpay.SelectedColor = Color.Gold;
-			this.pbpay.Size = new Size(261, 35);
-			this.pbpay.TabIndex = 15;
-			this.pbpay.TokenCount = 7;
-			this.pbpay.UnselectedColor = Color.Black;
-			this.pbpay.Value = 4;
+			pbpay.ImeMode = ImeMode.Disable;
+			pbpay.Location = new Point(363, 245);
+			pbpay.Maximum = 7;
+			pbpay.Name = "pbpay";
+			pbpay.Padding = new Padding(0, 0, 0, 2);
+			pbpay.SelectedColor = Color.Gold;
+			pbpay.Size = new Size(261, 35);
+			pbpay.TabIndex = 15;
+			pbpay.TokenCount = 7;
+			pbpay.UnselectedColor = Color.Black;
+			pbpay.Value = 4;
 			//
 			// tbassi
 			//
-			this.tbassi.BackColor = SystemColors.Window;
-			this.tbassi.Font = new Font(
+			tbassi.BackColor = SystemColors.Window;
+			tbassi.Font = new Font(
 				"Tahoma",
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbassi.Location = new Point(459, 212);
-			this.tbassi.Name = "tbassi";
-			this.tbassi.ReadOnly = true;
-			this.tbassi.Size = new Size(167, 27);
-			this.tbassi.TabIndex = 14;
+			tbassi.Location = new Point(459, 212);
+			tbassi.Name = "tbassi";
+			tbassi.ReadOnly = true;
+			tbassi.Size = new Size(167, 27);
+			tbassi.TabIndex = 14;
 			//
 			// lbassi
 			//
-			this.lbassi.AutoSize = true;
-			this.lbassi.Font = new Font(
+			lbassi.AutoSize = true;
+			lbassi.Font = new Font(
 				"Tahoma",
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lbassi.Location = new Point(361, 216);
-			this.lbassi.Name = "lbassi";
-			this.lbassi.Size = new Size(92, 19);
-			this.lbassi.TabIndex = 13;
-			this.lbassi.Text = "Assignment";
+			lbassi.Location = new Point(361, 216);
+			lbassi.Name = "lbassi";
+			lbassi.Size = new Size(92, 19);
+			lbassi.TabIndex = 13;
+			lbassi.Text = "Assignment";
 			//
 			// tbwages
 			//
-			this.tbwages.BackColor = SystemColors.Window;
-			this.tbwages.Font = new Font(
+			tbwages.BackColor = SystemColors.Window;
+			tbwages.Font = new Font(
 				"Tahoma",
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbwages.Location = new Point(459, 182);
-			this.tbwages.Name = "tbwages";
-			this.tbwages.ReadOnly = true;
-			this.tbwages.Size = new Size(167, 27);
-			this.tbwages.TabIndex = 12;
+			tbwages.Location = new Point(459, 182);
+			tbwages.Name = "tbwages";
+			tbwages.ReadOnly = true;
+			tbwages.Size = new Size(167, 27);
+			tbwages.TabIndex = 12;
 			//
 			// lbwages
 			//
-			this.lbwages.AutoSize = true;
-			this.lbwages.Font = new Font(
+			lbwages.AutoSize = true;
+			lbwages.Font = new Font(
 				"Tahoma",
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lbwages.Location = new Point(353, 186);
-			this.lbwages.Name = "lbwages";
-			this.lbwages.Size = new Size(100, 19);
-			this.lbwages.TabIndex = 11;
-			this.lbwages.Text = "Hourly Wage";
+			lbwages.Location = new Point(353, 186);
+			lbwages.Name = "lbwages";
+			lbwages.Size = new Size(100, 19);
+			lbwages.TabIndex = 11;
+			lbwages.Text = "Hourly Wage";
 			//
 			// tbsgender
 			//
-			this.tbsgender.BackColor = SystemColors.Window;
-			this.tbsgender.Font = new Font(
+			tbsgender.BackColor = SystemColors.Window;
+			tbsgender.Font = new Font(
 				"Tahoma",
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbsgender.Location = new Point(459, 122);
-			this.tbsgender.Name = "tbsgender";
-			this.tbsgender.ReadOnly = true;
-			this.tbsgender.Size = new Size(167, 27);
-			this.tbsgender.TabIndex = 10;
+			tbsgender.Location = new Point(459, 122);
+			tbsgender.Name = "tbsgender";
+			tbsgender.ReadOnly = true;
+			tbsgender.Size = new Size(167, 27);
+			tbsgender.TabIndex = 10;
 			//
 			// lbsgender
 			//
-			this.lbsgender.AutoSize = true;
-			this.lbsgender.Font = new Font(
+			lbsgender.AutoSize = true;
+			lbsgender.Font = new Font(
 				"Tahoma",
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lbsgender.Location = new Point(393, 126);
-			this.lbsgender.Name = "lbsgender";
-			this.lbsgender.Size = new Size(60, 19);
-			this.lbsgender.TabIndex = 9;
-			this.lbsgender.Text = "Gender";
+			lbsgender.Location = new Point(393, 126);
+			lbsgender.Name = "lbsgender";
+			lbsgender.Size = new Size(60, 19);
+			lbsgender.TabIndex = 9;
+			lbsgender.Text = "Gender";
 			//
 			// ybsimage
 			//
-			this.ybsimage.BackColor = SystemColors.Window;
-			this.ybsimage.Font = new Font(
+			ybsimage.BackColor = SystemColors.Window;
+			ybsimage.Font = new Font(
 				"Tahoma",
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.ybsimage.Location = new Point(459, 92);
-			this.ybsimage.Name = "ybsimage";
-			this.ybsimage.ReadOnly = true;
-			this.ybsimage.Size = new Size(167, 27);
-			this.ybsimage.TabIndex = 8;
+			ybsimage.Location = new Point(459, 92);
+			ybsimage.Name = "ybsimage";
+			ybsimage.ReadOnly = true;
+			ybsimage.Size = new Size(167, 27);
+			ybsimage.TabIndex = 8;
 			//
 			// lbsimage
 			//
-			this.lbsimage.AutoSize = true;
-			this.lbsimage.Font = new Font(
+			lbsimage.AutoSize = true;
+			lbsimage.Font = new Font(
 				"Tahoma",
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lbsimage.Location = new Point(416, 96);
-			this.lbsimage.Name = "lbsimage";
-			this.lbsimage.Size = new Size(37, 19);
-			this.lbsimage.TabIndex = 7;
-			this.lbsimage.Text = "Age";
+			lbsimage.Location = new Point(416, 96);
+			lbsimage.Name = "lbsimage";
+			lbsimage.Size = new Size(37, 19);
+			lbsimage.TabIndex = 7;
+			lbsimage.Text = "Age";
 			//
 			// lbLaball
 			//
-			this.lbLaball.AutoSize = true;
-			this.lbLaball.Font = new Font(
+			lbLaball.AutoSize = true;
+			lbLaball.Font = new Font(
 				"Tahoma",
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lbLaball.Location = new Point(28, 8);
-			this.lbLaball.Name = "lbLaball";
-			this.lbLaball.Size = new Size(85, 19);
-			this.lbLaball.TabIndex = 6;
-			this.lbLaball.Text = "Employees";
+			lbLaball.Location = new Point(28, 8);
+			lbLaball.Name = "lbLaball";
+			lbLaball.Size = new Size(85, 19);
+			lbLaball.TabIndex = 6;
+			lbLaball.Text = "Employees";
 			//
 			// tbright
 			//
-			this.tbright.BackColor = SystemColors.Window;
-			this.tbright.Font = new Font(
+			tbright.BackColor = SystemColors.Window;
+			tbright.Font = new Font(
 				"Tahoma",
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbright.Location = new Point(459, 62);
-			this.tbright.Name = "tbright";
-			this.tbright.ReadOnly = true;
-			this.tbright.Size = new Size(167, 27);
-			this.tbright.TabIndex = 5;
+			tbright.Location = new Point(459, 62);
+			tbright.Name = "tbright";
+			tbright.ReadOnly = true;
+			tbright.Size = new Size(167, 27);
+			tbright.TabIndex = 5;
 			//
 			// lbright
 			//
-			this.lbright.AutoSize = true;
-			this.lbright.Font = new Font(
+			lbright.AutoSize = true;
+			lbright.Font = new Font(
 				"Tahoma",
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lbright.Location = new Point(401, 66);
-			this.lbright.Name = "lbright";
-			this.lbright.Size = new Size(52, 19);
-			this.lbright.TabIndex = 4;
-			this.lbright.Text = "Status";
+			lbright.Location = new Point(401, 66);
+			lbright.Name = "lbright";
+			lbright.Size = new Size(52, 19);
+			lbright.TabIndex = 4;
+			lbright.Text = "Status";
 			//
 			// tbLeft
 			//
-			this.tbLeft.BackColor = SystemColors.Window;
-			this.tbLeft.Font = new Font(
+			tbLeft.BackColor = SystemColors.Window;
+			tbLeft.Font = new Font(
 				"Tahoma",
 				12F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbLeft.Location = new Point(365, 32);
-			this.tbLeft.Name = "tbLeft";
-			this.tbLeft.ReadOnly = true;
-			this.tbLeft.Size = new Size(261, 27);
-			this.tbLeft.TabIndex = 3;
-			this.tbLeft.TextAlign = HorizontalAlignment.Center;
+			tbLeft.Location = new Point(365, 32);
+			tbLeft.Name = "tbLeft";
+			tbLeft.ReadOnly = true;
+			tbLeft.Size = new Size(261, 27);
+			tbLeft.TabIndex = 3;
+			tbLeft.TextAlign = HorizontalAlignment.Center;
 			//
 			// lvEmployees
 			//
-			this.lvEmployees.Anchor = (
+			lvEmployees.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -1131,41 +1131,41 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.lvEmployees.BorderStyle = BorderStyle.None;
-			this.lvEmployees.FullRowSelect = true;
-			this.lvEmployees.HideSelection = false;
-			this.lvEmployees.LargeImageList = this.ilist;
-			this.lvEmployees.Location = new Point(8, 32);
-			this.lvEmployees.MultiSelect = false;
-			this.lvEmployees.Name = "lvEmployees";
-			this.lvEmployees.Size = new Size(330, 270);
-			this.lvEmployees.TabIndex = 1;
-			this.lvEmployees.UseCompatibleStateImageBehavior = false;
-			this.lvEmployees.SelectedIndexChanged += new EventHandler(
-				this.lvEmployees_SelectedIndexChanged
+			lvEmployees.BorderStyle = BorderStyle.None;
+			lvEmployees.FullRowSelect = true;
+			lvEmployees.HideSelection = false;
+			lvEmployees.LargeImageList = ilist;
+			lvEmployees.Location = new Point(8, 32);
+			lvEmployees.MultiSelect = false;
+			lvEmployees.Name = "lvEmployees";
+			lvEmployees.Size = new Size(330, 270);
+			lvEmployees.TabIndex = 1;
+			lvEmployees.UseCompatibleStateImageBehavior = false;
+			lvEmployees.SelectedIndexChanged += new EventHandler(
+				lvEmployees_SelectedIndexChanged
 			);
-			this.lvEmployees.DoubleClick += new EventHandler(
-				this.lvEmployees_DoubleClick
+			lvEmployees.DoubleClick += new EventHandler(
+				lvEmployees_DoubleClick
 			);
 			//
 			// ilist
 			//
-			this.ilist.ColorDepth = ColorDepth.Depth32Bit;
-			this.ilist.ImageSize = new Size(96, 96);
-			this.ilist.TransparentColor = Color.Transparent;
+			ilist.ColorDepth = ColorDepth.Depth32Bit;
+			ilist.ImageSize = new Size(96, 96);
+			ilist.TransparentColor = Color.Transparent;
 			//
 			// toolTip1
 			//
-			this.toolTip1.AutoPopDelay = 8000;
-			this.toolTip1.InitialDelay = 200;
-			this.toolTip1.IsBalloon = true;
-			this.toolTip1.ReshowDelay = 100;
-			this.toolTip1.ToolTipIcon = ToolTipIcon.Info;
-			this.toolTip1.ToolTipTitle = "Note";
+			toolTip1.AutoPopDelay = 8000;
+			toolTip1.InitialDelay = 200;
+			toolTip1.IsBalloon = true;
+			toolTip1.ReshowDelay = 100;
+			toolTip1.ToolTipIcon = ToolTipIcon.Info;
+			toolTip1.ToolTipTitle = "Note";
 			//
 			// btchngeOwn
 			//
-			this.btchngeOwn.Anchor = (
+			btchngeOwn.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -1173,46 +1173,46 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.btchngeOwn.Location = new Point(625, 291);
-			this.btchngeOwn.Name = "btchngeOwn";
-			this.btchngeOwn.Size = new Size(75, 23);
-			this.btchngeOwn.TabIndex = 24;
-			this.btchngeOwn.Text = "Change";
-			this.toolTip1.SetToolTip(
-				this.btchngeOwn,
+			btchngeOwn.Location = new Point(625, 291);
+			btchngeOwn.Name = "btchngeOwn";
+			btchngeOwn.Size = new Size(75, 23);
+			btchngeOwn.TabIndex = 24;
+			btchngeOwn.Text = "Change";
+			toolTip1.SetToolTip(
+				btchngeOwn,
 				"Owner information is not held in this BNFO, this changes\r\nthe owner value in the Lot file (LTXT)"
 			);
-			this.btchngeOwn.UseVisualStyleBackColor = true;
-			this.btchngeOwn.Visible = false;
-			this.btchngeOwn.Click += new EventHandler(this.btchngeOwn_Click);
+			btchngeOwn.UseVisualStyleBackColor = true;
+			btchngeOwn.Visible = false;
+			btchngeOwn.Click += new EventHandler(btchngeOwn_Click);
 			//
 			// BnfoUI
 			//
-			this.BackgroundImageLocation = new Point(760, 54);
-			this.BackgroundImageZoomToFit = true;
-			this.Controls.Add(this.panel1);
-			this.Controls.Add(this.panel2);
-			this.Controls.Add(this.toolBar1);
-			this.Font = new Font("Microsoft Sans Serif", 8.25F);
-			this.HeaderText = "Business Info";
-			this.Name = "BnfoUI";
-			this.Size = new Size(760, 398);
-			this.Controls.SetChildIndex(this.toolBar1, 0);
-			this.Controls.SetChildIndex(this.panel2, 0);
-			this.Controls.SetChildIndex(this.panel1, 0);
-			this.toolBar1.ResumeLayout(false);
-			this.toolBar1.PerformLayout();
-			this.panel1.ResumeLayout(false);
-			this.panel1.PerformLayout();
-			this.panel2.ResumeLayout(false);
-			this.panel2.PerformLayout();
-			this.Panel3.ResumeLayout(false);
-			this.Panel3.PerformLayout();
-			this.Panel4.ResumeLayout(false);
-			this.Panel4.PerformLayout();
-			((ISupportInitialize)(this.pbox)).EndInit();
-			this.ResumeLayout(false);
-			this.PerformLayout();
+			BackgroundImageLocation = new Point(760, 54);
+			BackgroundImageZoomToFit = true;
+			Controls.Add(panel1);
+			Controls.Add(panel2);
+			Controls.Add(toolBar1);
+			Font = new Font("Microsoft Sans Serif", 8.25F);
+			HeaderText = "Business Info";
+			Name = "BnfoUI";
+			Size = new Size(760, 398);
+			Controls.SetChildIndex(toolBar1, 0);
+			Controls.SetChildIndex(panel2, 0);
+			Controls.SetChildIndex(panel1, 0);
+			toolBar1.ResumeLayout(false);
+			toolBar1.PerformLayout();
+			panel1.ResumeLayout(false);
+			panel1.PerformLayout();
+			panel2.ResumeLayout(false);
+			panel2.PerformLayout();
+			Panel3.ResumeLayout(false);
+			Panel3.PerformLayout();
+			Panel4.ResumeLayout(false);
+			Panel4.PerformLayout();
+			((ISupportInitialize)(pbox)).EndInit();
+			ResumeLayout(false);
+			PerformLayout();
 		}
 		#endregion
 
@@ -1235,11 +1235,11 @@ namespace SimPe.Plugin
 				new System.Resources.ResourceManager(typeof(BnfoUI));
 			if (resources.GetString("$this.HeaderText") == null)
 			{
-				this.HeaderText = "Business Info";
+				HeaderText = "Business Info";
 			}
 			else
 			{
-				this.HeaderText = resources.GetString("$this.HeaderText");
+				HeaderText = resources.GetString("$this.HeaderText");
 			}
 
 			intern = true;
@@ -1281,7 +1281,7 @@ namespace SimPe.Plugin
 						homeb = 1;
 					}
 
-					this.lblot.Text = ltname + " (" + ltx.Type.ToString() + " Lot)";
+					lblot.Text = ltname + " (" + ltx.Type.ToString() + " Lot)";
 				}
 				else
 				{
@@ -1293,7 +1293,7 @@ namespace SimPe.Plugin
 					{
 						ltname = ili.LotName;
 						owner = (ushort)ili.Owner;
-						this.lblot.Text = ltname;
+						lblot.Text = ltname;
 					}
 					homeb = 1;
 				}
@@ -1301,8 +1301,8 @@ namespace SimPe.Plugin
 				tbCur.Text = Bnfo.CurrentBusinessState.ToString();
 				tbMax.Text = Bnfo.MaxSeenBusinessState.ToString();
 
-				this.HeaderText += ": " + ltname;
-				this.lbLaball.Text = ltname + " Employees";
+				HeaderText += ": " + ltname;
+				lbLaball.Text = ltname + " Employees";
 				GetEmployees();
 				RefreshGraphs();
 				btClearim.Visible = !AllValid();
@@ -1310,7 +1310,7 @@ namespace SimPe.Plugin
 			else
 			{
 				lv.Items = null;
-				this.lblot.Text = "";
+				lblot.Text = "";
 				biMax.Enabled = biReward.Enabled = biWorkers.Enabled = false;
 				btClearim.Visible =
 					lbcashf.Visible =
@@ -1346,7 +1346,7 @@ namespace SimPe.Plugin
 			}
 			else
 			{
-				this.ilist.Images.Add(new Bitmap(GetImage.NoOne));
+				ilist.Images.Add(new Bitmap(GetImage.NoOne));
 				ListViewItem lvi = new ListViewItem();
 				lvi.Text = Localization.GetString("Unknown") + " : Owner";
 				lvi.ImageIndex = ilist.Images.Count - 1;
@@ -1378,7 +1378,7 @@ namespace SimPe.Plugin
 				}
 				else
 				{
-					this.ilist.Images.Add(new Bitmap(GetImage.NoOne));
+					ilist.Images.Add(new Bitmap(GetImage.NoOne));
 					ListViewItem lvi = new ListViewItem();
 					lvi.Text = Localization.GetString("Unknown");
 					lvi.ImageIndex = ilist.Images.Count - 1;
@@ -1463,7 +1463,7 @@ namespace SimPe.Plugin
 
 			img = Ambertation.Windows.Forms.Graph.ImagePanel.CreateThumbnail(
 				img,
-				this.ilist.ImageSize,
+				ilist.ImageSize,
 				12,
 				Color.FromArgb(90, Color.Black),
 				SimPoolControl.GetImagePanelColor(sdesc),
@@ -1473,7 +1473,7 @@ namespace SimPe.Plugin
 				4,
 				0
 			);
-			this.ilist.Images.Add(img);
+			ilist.Images.Add(img);
 		}
 
 		public override void OnCommit()
@@ -1552,20 +1552,20 @@ namespace SimPe.Plugin
 		{
 			if (employees)
 			{
-				this.panel2.Visible = false;
-				this.panel1.Visible = true;
-				this.biWorkers.Text = "Employees";
+				panel2.Visible = false;
+				panel1.Visible = true;
+				biWorkers.Text = "Employees";
 				biMax.Enabled = biReward.Enabled = (Bnfo != null);
-				this.CanCommit = true;
+				CanCommit = true;
 				employees = false;
 			}
 			else
 			{
-				this.panel2.Visible = true;
-				this.panel1.Visible = false;
-				this.biWorkers.Text = "Customers";
+				panel2.Visible = true;
+				panel1.Visible = false;
+				biWorkers.Text = "Customers";
 				biMax.Enabled = biReward.Enabled = false;
-				this.CanCommit = false;
+				CanCommit = false;
 				employees = true;
 			}
 		}
@@ -1810,7 +1810,7 @@ namespace SimPe.Plugin
 					lvEmployees.SelectedItems[0].SubItems[1].Text = Convert.ToString(
 						pbpay.Value - 1
 					);
-					this.CanCommit = true;
+					CanCommit = true;
 				}
 			}
 			catch { }
@@ -1845,7 +1845,7 @@ namespace SimPe.Plugin
 					lvEmployees.SelectedItems[0].SubItems[3].Text = Convert.ToString(
 						Bnfo.A[indects]
 					);
-					this.CanCommit = true;
+					CanCommit = true;
 				}
 			}
 			catch { }
@@ -2041,7 +2041,7 @@ namespace SimPe.Plugin
 
 		private void panel2_clear()
 		{
-			this.CanCommit = true;
+			CanCommit = true;
 			PayBar(3);
 			tbassi.Text =
 				tbwages.Text =
@@ -2076,7 +2076,7 @@ namespace SimPe.Plugin
 							sdsc.SimName + " " + sdsc.SimFamilyName,
 							new object[] { sdsc }
 						);
-						this.cbsimselect.Items.Add(a);
+						cbsimselect.Items.Add(a);
 					}
 				}
 				cbsimselect.Sorted = true;
@@ -2341,7 +2341,7 @@ namespace SimPe.Plugin
 							sdsc.SimName + " " + sdsc.SimFamilyName,
 							new object[] { sdsc }
 						);
-						this.cbOsimselect.Items.Add(a);
+						cbOsimselect.Items.Add(a);
 					}
 				}
 				cbOsimselect.Sorted = true;

@@ -251,14 +251,14 @@ namespace SimPe.PackedFiles.Wrapper
 			get
 			{
 				//string name = Localization.Manager.GetString("Unknown");
-				string name = Data.MetaData.NPCFamily(this.FileDescriptor.Instance);
+				string name = Data.MetaData.NPCFamily(FileDescriptor.Instance);
 				try
 				{
 					IPackedFileDescriptor pfd = package.FindFile(
 						Data.MetaData.STRING_FILE,
 						0,
-						this.FileDescriptor.Group,
-						this.FileDescriptor.Instance
+						FileDescriptor.Group,
+						FileDescriptor.Instance
 					);
 
 					//found a Text Resource
@@ -287,8 +287,8 @@ namespace SimPe.PackedFiles.Wrapper
 					IPackedFileDescriptor pfd = package.FindFile(
 						Data.MetaData.STRING_FILE,
 						0,
-						this.FileDescriptor.Group,
-						this.FileDescriptor.Instance
+						FileDescriptor.Group,
+						FileDescriptor.Instance
 					);
 
 					// found a Text Resource
@@ -358,7 +358,7 @@ namespace SimPe.PackedFiles.Wrapper
 				{
 					if (
 						Helper.StartedGui == Executable.Classic
-						|| this.FileDescriptor.Instance > 32511
+						|| FileDescriptor.Instance > 32511
 						|| package.FileName == null
 					)
 					{
@@ -381,7 +381,7 @@ namespace SimPe.PackedFiles.Wrapper
 					IPackedFileDescriptor pfd = fumbs.FindFileAnyGroup(
 						0x8C3CE95A,
 						0,
-						this.FileDescriptor.Instance
+						FileDescriptor.Instance
 					);
 					if (pfd != null)
 					{
@@ -505,7 +505,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 
 			Friends = reader.ReadUInt32();
-			this.Flags = reader.ReadUInt32();
+			Flags = reader.ReadUInt32();
 			uint count = reader.ReadUInt32();
 			sims = new uint[count];
 
@@ -513,10 +513,10 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				sims[i] = reader.ReadUInt32();
 			}
-			this.AlbumGUID = reader.ReadUInt32(); //relations??
+			AlbumGUID = reader.ReadUInt32(); //relations??
 			if ((int)Version >= (int)FamiVersions.University)
 			{
-				this.SubHoodNumber = reader.ReadUInt32();
+				SubHoodNumber = reader.ReadUInt32();
 			}
 
 			if ((int)Version >= (int)FamiVersions.Castaway)
@@ -559,18 +559,18 @@ namespace SimPe.PackedFiles.Wrapper
 				writer.Write(Money);
 			}
 			writer.Write(Friends);
-			writer.Write((uint)this.Flags);
+			writer.Write((uint)Flags);
 			writer.Write((uint)sims.Length);
 
 			for (int i = 0; i < sims.Length; i++)
 			{
 				writer.Write((uint)sims[i]);
 			}
-			writer.Write(this.AlbumGUID);
+			writer.Write(AlbumGUID);
 
 			if ((int)Version >= (int)FamiVersions.University)
 			{
-				writer.Write(this.SubHoodNumber);
+				writer.Write(SubHoodNumber);
 			}
 
 			if ((int)Version >= (int)FamiVersions.Castaway)
@@ -595,7 +595,7 @@ namespace SimPe.PackedFiles.Wrapper
 				"This File contains Informations about one Sim Family.",
 				7,
 				Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.fami.png")
 				)
 			);
@@ -603,12 +603,12 @@ namespace SimPe.PackedFiles.Wrapper
 
 		protected override string GetResourceName(Data.TypeAlias ta)
 		{
-			if (!this.Processed)
+			if (!Processed)
 			{
 				ProcessData(FileDescriptor, Package);
 			}
 
-			return this.Name;
+			return Name;
 		}
 
 		#endregion

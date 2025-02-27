@@ -76,7 +76,7 @@ namespace SimPe.Cache
 		/// <exception cref="CacheException">Thrown if the File is not readable (ie, wrong Version or Signature)</exception>
 		public void Load(string flname, bool withprogress)
 		{
-			this.FileName = flname;
+			FileName = flname;
 			Containers.Clear();
 
 			if (!System.IO.File.Exists(flname))
@@ -160,8 +160,8 @@ namespace SimPe.Cache
 		/// <param name="flname">the name of the File</param>
 		public void Save(string flname)
 		{
-			this.FileName = flname;
-			this.Version = VERSION;
+			FileName = flname;
+			Version = VERSION;
 
 			StreamItem si = StreamFactory.UseStream(flname, FileAccess.Write, true);
 			try

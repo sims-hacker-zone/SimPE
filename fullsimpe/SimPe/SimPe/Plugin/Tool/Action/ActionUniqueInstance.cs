@@ -87,7 +87,7 @@ namespace SimPe.Plugin.Tool.Action
 					Localization.GetString(
 						"This is not an appropriate context in which to use this tool"
 					),
-					Localization.GetString(this.ToString())
+					Localization.GetString(ToString())
 				);
 				return;
 			}
@@ -125,7 +125,7 @@ namespace SimPe.Plugin.Tool.Action
 		public System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.None;
 
 		public System.Drawing.Image Icon => System.Drawing.Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.agent.png")
 				);
 

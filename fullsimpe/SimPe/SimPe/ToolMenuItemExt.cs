@@ -105,8 +105,8 @@ namespace SimPe
 		public ToolMenuItemExt(string text, IToolPlugin tool, ExternalToolNotify chghnd)
 		{
 			this.tool = tool;
-			this.Text = text;
-			this.ToolTipText = text;
+			Text = text;
+			ToolTipText = text;
 			Checked = false;
 			Click += new EventHandler(LinkClicked);
 			Click += new EventHandler(ClickItem);
@@ -170,8 +170,8 @@ namespace SimPe
 			Events.ResourceEventArgs e
 		)
 		{
-			this.Package = AbstractToolPlus.ExtractPackage(e);
-			this.FileDescriptor = AbstractToolPlus.ExtractFileDescriptor(e);
+			Package = AbstractToolPlus.ExtractPackage(e);
+			FileDescriptor = AbstractToolPlus.ExtractFileDescriptor(e);
 
 			if (Tool != null)
 			{
@@ -180,7 +180,7 @@ namespace SimPe
 			else if (ToolPlus != null)
 			{
 				lasteventarg = e;
-				this.Enabled = ToolPlus.ChangeEnabledStateEventHandler(sender, e);
+				Enabled = ToolPlus.ChangeEnabledStateEventHandler(sender, e);
 			}
 		}
 

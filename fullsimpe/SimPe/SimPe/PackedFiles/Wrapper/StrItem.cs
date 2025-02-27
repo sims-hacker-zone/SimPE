@@ -40,7 +40,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <param name="lid">The Language ID</param>
 		public StrLanguage(byte lid)
 		{
-			this.Id = lid;
+			Id = lid;
 		}
 
 		#region Accessor methods
@@ -74,7 +74,7 @@ namespace SimPe.PackedFiles.Wrapper
 		#region Cast methods
 		public override string ToString()
 		{
-			return "0x" + Helper.HexString(Id) + " - " + this.Name;
+			return "0x" + Helper.HexString(Id) + " - " + Name;
 		}
 
 		// Enable casting byte to StrLanguage
@@ -188,7 +188,7 @@ namespace SimPe.PackedFiles.Wrapper
 			return base.Contains(strlng);
 		}
 
-		public int Length => this.Count;
+		public int Length => Count;
 
 		public override void Sort()
 		{
@@ -217,8 +217,8 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <param name="desc">Item Description</param>
 		public StrToken(int index, byte lid, string title, string desc)
 		{
-			this.Index = index;
-			this.Language = new StrLanguage(lid);
+			Index = index;
+			Language = new StrLanguage(lid);
 			this.title = title;
 			this.desc = desc;
 			IsDirty = false;
@@ -336,7 +336,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public override string ToString()
 		{
-			return "0x" + Index.ToString("X") + " - " + this.Title;
+			return "0x" + Index.ToString("X") + " - " + Title;
 		}
 	}
 	#endregion
@@ -392,7 +392,7 @@ namespace SimPe.PackedFiles.Wrapper
 			return base.Contains(stritem);
 		}
 
-		public int Length => this.Count;
+		public int Length => Count;
 
 		public override object Clone()
 		{

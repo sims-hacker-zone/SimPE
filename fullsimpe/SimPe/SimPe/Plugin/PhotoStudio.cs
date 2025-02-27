@@ -147,253 +147,253 @@ namespace SimPe.Plugin
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
+			components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(PhotoStudio));
-			this.ilist = new ImageList(this.components);
-			this.toolTip1 = new ToolTip(this.components);
-			this.btopen = new Button();
-			this.cbquality = new ComboBox();
-			this.lvbase = new ListView();
-			this.ibase = new ImageList(this.components);
-			this.pbpreview = new PictureBox();
-			this.cbflip = new CheckBox();
-			this.tabControl1 = new TabControl();
-			this.tabPage1 = new System.Windows.Forms.TabPage();
-			this.lbsize = new Label();
-			this.lbname = new Label();
-			this.pb = new PictureBox();
-			this.tabPage2 = new System.Windows.Forms.TabPage();
-			this.lv = new ListView();
-			this.label1 = new Label();
-			this.llcreate = new LinkLabel();
-			this.label2 = new Label();
-			this.cbprev = new CheckBox();
-			this.ofd = new OpenFileDialog();
-			this.sfd = new SaveFileDialog();
-			this.panel1 = new Panel();
-			((System.ComponentModel.ISupportInitialize)(this.pbpreview)).BeginInit();
-			this.tabControl1.SuspendLayout();
-			this.tabPage1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
-			this.tabPage2.SuspendLayout();
-			this.panel1.SuspendLayout();
-			this.SuspendLayout();
+			ilist = new ImageList(components);
+			toolTip1 = new ToolTip(components);
+			btopen = new Button();
+			cbquality = new ComboBox();
+			lvbase = new ListView();
+			ibase = new ImageList(components);
+			pbpreview = new PictureBox();
+			cbflip = new CheckBox();
+			tabControl1 = new TabControl();
+			tabPage1 = new System.Windows.Forms.TabPage();
+			lbsize = new Label();
+			lbname = new Label();
+			pb = new PictureBox();
+			tabPage2 = new System.Windows.Forms.TabPage();
+			lv = new ListView();
+			label1 = new Label();
+			llcreate = new LinkLabel();
+			label2 = new Label();
+			cbprev = new CheckBox();
+			ofd = new OpenFileDialog();
+			sfd = new SaveFileDialog();
+			panel1 = new Panel();
+			((System.ComponentModel.ISupportInitialize)(pbpreview)).BeginInit();
+			tabControl1.SuspendLayout();
+			tabPage1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(pb)).BeginInit();
+			tabPage2.SuspendLayout();
+			panel1.SuspendLayout();
+			SuspendLayout();
 			//
 			// ilist
 			//
-			this.ilist.ColorDepth = ColorDepth.Depth32Bit;
-			resources.ApplyResources(this.ilist, "ilist");
-			this.ilist.TransparentColor = Color.Transparent;
+			ilist.ColorDepth = ColorDepth.Depth32Bit;
+			resources.ApplyResources(ilist, "ilist");
+			ilist.TransparentColor = Color.Transparent;
 			//
 			// btopen
 			//
-			resources.ApplyResources(this.btopen, "btopen");
-			this.btopen.Name = "btopen";
-			this.toolTip1.SetToolTip(
-				this.btopen,
+			resources.ApplyResources(btopen, "btopen");
+			btopen.Name = "btopen";
+			toolTip1.SetToolTip(
+				btopen,
 				resources.GetString("btopen.ToolTip")
 			);
-			this.btopen.Click += new EventHandler(this.OpenImage);
+			btopen.Click += new EventHandler(OpenImage);
 			//
 			// cbquality
 			//
-			resources.ApplyResources(this.cbquality, "cbquality");
+			resources.ApplyResources(cbquality, "cbquality");
 			//this.cbquality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbquality.Items.AddRange(
+			cbquality.Items.AddRange(
 				new object[]
 				{
 					resources.GetString("cbquality.Items"),
 					resources.GetString("cbquality.Items1"),
 				}
 			);
-			this.cbquality.Name = "cbquality";
-			this.toolTip1.SetToolTip(
-				this.cbquality,
+			cbquality.Name = "cbquality";
+			toolTip1.SetToolTip(
+				cbquality,
 				resources.GetString("cbquality.ToolTip")
 			);
 			//
 			// lvbase
 			//
-			resources.ApplyResources(this.lvbase, "lvbase");
-			this.lvbase.HideSelection = false;
-			this.lvbase.LargeImageList = this.ibase;
-			this.lvbase.MultiSelect = false;
-			this.lvbase.Name = "lvbase";
-			this.toolTip1.SetToolTip(
-				this.lvbase,
+			resources.ApplyResources(lvbase, "lvbase");
+			lvbase.HideSelection = false;
+			lvbase.LargeImageList = ibase;
+			lvbase.MultiSelect = false;
+			lvbase.Name = "lvbase";
+			toolTip1.SetToolTip(
+				lvbase,
 				resources.GetString("lvbase.ToolTip")
 			);
-			this.lvbase.UseCompatibleStateImageBehavior = false;
-			this.lvbase.SelectedIndexChanged += new EventHandler(
-				this.lvbase_SelectedIndexChanged
+			lvbase.UseCompatibleStateImageBehavior = false;
+			lvbase.SelectedIndexChanged += new EventHandler(
+				lvbase_SelectedIndexChanged
 			);
 			//
 			// ibase
 			//
-			this.ibase.ColorDepth = ColorDepth.Depth32Bit;
-			resources.ApplyResources(this.ibase, "ibase");
-			this.ibase.TransparentColor = Color.Transparent;
+			ibase.ColorDepth = ColorDepth.Depth32Bit;
+			resources.ApplyResources(ibase, "ibase");
+			ibase.TransparentColor = Color.Transparent;
 			//
 			// pbpreview
 			//
-			resources.ApplyResources(this.pbpreview, "pbpreview");
-			this.pbpreview.BorderStyle = BorderStyle.FixedSingle;
-			this.pbpreview.Cursor = Cursors.Hand;
-			this.pbpreview.Name = "pbpreview";
-			this.pbpreview.TabStop = false;
-			this.toolTip1.SetToolTip(
-				this.pbpreview,
+			resources.ApplyResources(pbpreview, "pbpreview");
+			pbpreview.BorderStyle = BorderStyle.FixedSingle;
+			pbpreview.Cursor = Cursors.Hand;
+			pbpreview.Name = "pbpreview";
+			pbpreview.TabStop = false;
+			toolTip1.SetToolTip(
+				pbpreview,
 				resources.GetString("pbpreview.ToolTip")
 			);
-			this.pbpreview.Click += new EventHandler(this.pbpreview_Click);
+			pbpreview.Click += new EventHandler(pbpreview_Click);
 			//
 			// cbflip
 			//
-			resources.ApplyResources(this.cbflip, "cbflip");
-			this.cbflip.BackColor = Color.Transparent;
-			this.cbflip.Checked = true;
-			this.cbflip.CheckState = CheckState.Checked;
-			this.cbflip.Name = "cbflip";
-			this.toolTip1.SetToolTip(
-				this.cbflip,
+			resources.ApplyResources(cbflip, "cbflip");
+			cbflip.BackColor = Color.Transparent;
+			cbflip.Checked = true;
+			cbflip.CheckState = CheckState.Checked;
+			cbflip.Name = "cbflip";
+			toolTip1.SetToolTip(
+				cbflip,
 				resources.GetString("cbflip.ToolTip")
 			);
-			this.cbflip.UseVisualStyleBackColor = false;
-			this.cbflip.CheckedChanged += new EventHandler(
-				this.lvbase_SelectedIndexChanged
+			cbflip.UseVisualStyleBackColor = false;
+			cbflip.CheckedChanged += new EventHandler(
+				lvbase_SelectedIndexChanged
 			);
 			//
 			// tabControl1
 			//
-			resources.ApplyResources(this.tabControl1, "tabControl1");
-			this.tabControl1.Controls.Add(this.tabPage1);
-			this.tabControl1.Controls.Add(this.tabPage2);
-			this.tabControl1.Name = "tabControl1";
-			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.SelectedIndexChanged += new EventHandler(
-				this.lvbase_SelectedIndexChanged
+			resources.ApplyResources(tabControl1, "tabControl1");
+			tabControl1.Controls.Add(tabPage1);
+			tabControl1.Controls.Add(tabPage2);
+			tabControl1.Name = "tabControl1";
+			tabControl1.SelectedIndex = 0;
+			tabControl1.SelectedIndexChanged += new EventHandler(
+				lvbase_SelectedIndexChanged
 			);
 			//
 			// tabPage1
 			//
-			this.tabPage1.BackColor = SystemColors.Control;
-			this.tabPage1.Controls.Add(this.lbsize);
-			this.tabPage1.Controls.Add(this.lbname);
-			this.tabPage1.Controls.Add(this.btopen);
-			this.tabPage1.Controls.Add(this.pb);
-			resources.ApplyResources(this.tabPage1, "tabPage1");
-			this.tabPage1.Name = "tabPage1";
+			tabPage1.BackColor = SystemColors.Control;
+			tabPage1.Controls.Add(lbsize);
+			tabPage1.Controls.Add(lbname);
+			tabPage1.Controls.Add(btopen);
+			tabPage1.Controls.Add(pb);
+			resources.ApplyResources(tabPage1, "tabPage1");
+			tabPage1.Name = "tabPage1";
 			//
 			// lbsize
 			//
-			resources.ApplyResources(this.lbsize, "lbsize");
-			this.lbsize.Name = "lbsize";
+			resources.ApplyResources(lbsize, "lbsize");
+			lbsize.Name = "lbsize";
 			//
 			// lbname
 			//
-			resources.ApplyResources(this.lbname, "lbname");
-			this.lbname.Name = "lbname";
+			resources.ApplyResources(lbname, "lbname");
+			lbname.Name = "lbname";
 			//
 			// pb
 			//
-			resources.ApplyResources(this.pb, "pb");
-			this.pb.BorderStyle = BorderStyle.FixedSingle;
-			this.pb.Name = "pb";
-			this.pb.TabStop = false;
+			resources.ApplyResources(pb, "pb");
+			pb.BorderStyle = BorderStyle.FixedSingle;
+			pb.Name = "pb";
+			pb.TabStop = false;
 			//
 			// tabPage2
 			//
-			this.tabPage2.BackColor = SystemColors.Control;
-			this.tabPage2.Controls.Add(this.lv);
-			resources.ApplyResources(this.tabPage2, "tabPage2");
-			this.tabPage2.Name = "tabPage2";
+			tabPage2.BackColor = SystemColors.Control;
+			tabPage2.Controls.Add(lv);
+			resources.ApplyResources(tabPage2, "tabPage2");
+			tabPage2.Name = "tabPage2";
 			//
 			// lv
 			//
-			resources.ApplyResources(this.lv, "lv");
-			this.lv.LargeImageList = this.ilist;
-			this.lv.Name = "lv";
-			this.lv.UseCompatibleStateImageBehavior = false;
-			this.lv.SelectedIndexChanged += new EventHandler(
-				this.lvbase_SelectedIndexChanged
+			resources.ApplyResources(lv, "lv");
+			lv.LargeImageList = ilist;
+			lv.Name = "lv";
+			lv.UseCompatibleStateImageBehavior = false;
+			lv.SelectedIndexChanged += new EventHandler(
+				lvbase_SelectedIndexChanged
 			);
 			//
 			// label1
 			//
-			resources.ApplyResources(this.label1, "label1");
-			this.label1.BackColor = Color.Transparent;
-			this.label1.Name = "label1";
+			resources.ApplyResources(label1, "label1");
+			label1.BackColor = Color.Transparent;
+			label1.Name = "label1";
 			//
 			// llcreate
 			//
-			resources.ApplyResources(this.llcreate, "llcreate");
-			this.llcreate.BackColor = Color.Transparent;
-			this.llcreate.Name = "llcreate";
-			this.llcreate.TabStop = true;
-			this.llcreate.LinkClicked +=
+			resources.ApplyResources(llcreate, "llcreate");
+			llcreate.BackColor = Color.Transparent;
+			llcreate.Name = "llcreate";
+			llcreate.TabStop = true;
+			llcreate.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.CreateImage
+					CreateImage
 				);
 			//
 			// label2
 			//
-			resources.ApplyResources(this.label2, "label2");
-			this.label2.BackColor = Color.Transparent;
-			this.label2.Name = "label2";
+			resources.ApplyResources(label2, "label2");
+			label2.BackColor = Color.Transparent;
+			label2.Name = "label2";
 			//
 			// cbprev
 			//
-			resources.ApplyResources(this.cbprev, "cbprev");
-			this.cbprev.BackColor = Color.Transparent;
-			this.cbprev.Name = "cbprev";
-			this.cbprev.UseVisualStyleBackColor = false;
-			this.cbprev.CheckedChanged += new EventHandler(
-				this.lvbase_SelectedIndexChanged
+			resources.ApplyResources(cbprev, "cbprev");
+			cbprev.BackColor = Color.Transparent;
+			cbprev.Name = "cbprev";
+			cbprev.UseVisualStyleBackColor = false;
+			cbprev.CheckedChanged += new EventHandler(
+				lvbase_SelectedIndexChanged
 			);
 			//
 			// ofd
 			//
-			resources.ApplyResources(this.ofd, "ofd");
+			resources.ApplyResources(ofd, "ofd");
 			//
 			// sfd
 			//
-			resources.ApplyResources(this.sfd, "sfd");
+			resources.ApplyResources(sfd, "sfd");
 			//
 			// panel1
 			//
-			resources.ApplyResources(this.panel1, "panel1");
-			this.panel1.BackColor = Color.Transparent;
-			this.panel1.Controls.Add(this.label2);
-			this.panel1.Controls.Add(this.pbpreview);
-			this.panel1.Controls.Add(this.lvbase);
-			this.panel1.Controls.Add(this.cbquality);
-			this.panel1.Controls.Add(this.llcreate);
-			this.panel1.Controls.Add(this.label1);
-			this.panel1.Controls.Add(this.tabControl1);
-			this.panel1.Controls.Add(this.cbprev);
-			this.panel1.Controls.Add(this.cbflip);
-			this.panel1.Name = "panel1";
+			resources.ApplyResources(panel1, "panel1");
+			panel1.BackColor = Color.Transparent;
+			panel1.Controls.Add(label2);
+			panel1.Controls.Add(pbpreview);
+			panel1.Controls.Add(lvbase);
+			panel1.Controls.Add(cbquality);
+			panel1.Controls.Add(llcreate);
+			panel1.Controls.Add(label1);
+			panel1.Controls.Add(tabControl1);
+			panel1.Controls.Add(cbprev);
+			panel1.Controls.Add(cbflip);
+			panel1.Name = "panel1";
 			//
 			// PhotoStudio
 			//
 			resources.ApplyResources(this, "$this");
-			this.Controls.Add(this.panel1);
-			this.FormBorderStyle =
+			Controls.Add(panel1);
+			FormBorderStyle =
 				FormBorderStyle
 				.SizableToolWindow;
-			this.MaximizeBox = false;
-			this.Name = "PhotoStudio";
-			this.ShowInTaskbar = false;
-			((System.ComponentModel.ISupportInitialize)(this.pbpreview)).EndInit();
-			this.tabControl1.ResumeLayout(false);
-			this.tabPage1.ResumeLayout(false);
-			this.tabPage1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
-			this.tabPage2.ResumeLayout(false);
-			this.panel1.ResumeLayout(false);
-			this.panel1.PerformLayout();
-			this.ResumeLayout(false);
+			MaximizeBox = false;
+			Name = "PhotoStudio";
+			ShowInTaskbar = false;
+			((System.ComponentModel.ISupportInitialize)(pbpreview)).EndInit();
+			tabControl1.ResumeLayout(false);
+			tabPage1.ResumeLayout(false);
+			tabPage1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(pb)).EndInit();
+			tabPage2.ResumeLayout(false);
+			panel1.ResumeLayout(false);
+			panel1.PerformLayout();
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -401,11 +401,11 @@ namespace SimPe.Plugin
 		{
 			if (sdesc.HasImage)
 			{
-				this.ilist.Images.Add(sdesc.Image);
+				ilist.Images.Add(sdesc.Image);
 			}
 			else
 			{
-				this.ilist.Images.Add(new Bitmap(GetImage.NoOne));
+				ilist.Images.Add(new Bitmap(GetImage.NoOne));
 			}
 		}
 
@@ -434,7 +434,7 @@ namespace SimPe.Plugin
 			Interfaces.IProviderRegistry prov
 		)
 		{
-			this.Cursor = Cursors.WaitCursor;
+			Cursor = Cursors.WaitCursor;
 
 			this.pfd = null;
 			this.package = null;
@@ -480,7 +480,7 @@ namespace SimPe.Plugin
 				}
 			}
 
-			this.Cursor = Cursors.Default;
+			Cursor = Cursors.Default;
 			RemoteControl.ShowSubForm(this);
 
 			if (this.pfd != null)
@@ -576,7 +576,7 @@ namespace SimPe.Plugin
 					lbsize.Text =
 						loadimg.Width.ToString() + "x" + loadimg.Height.ToString();
 					pb.Image = ImageLoader.Preview(loadimg, pb.Size);
-					preview = this.ShowPreview(loadimg);
+					preview = ShowPreview(loadimg);
 					pbpreview.Image = ImageLoader.Preview(
 						preview,
 						pbpreview.Size
@@ -904,8 +904,8 @@ namespace SimPe.Plugin
 			{
 				try
 				{
-					this.Cursor = Cursors.WaitCursor;
-					this.package = BuildPicture(
+					Cursor = Cursors.WaitCursor;
+					package = BuildPicture(
 						sfd.FileName,
 						img,
 						(PhotoStudioTemplate)lvbase.SelectedItems[0].Tag,
@@ -914,8 +914,8 @@ namespace SimPe.Plugin
 						true,
 						cbflip.Checked
 					);
-					((Packages.GeneratableFile)this.package).Save();
-					this.Cursor = Cursors.Default;
+					((Packages.GeneratableFile)package).Save();
+					Cursor = Cursors.Default;
 					Close();
 				}
 				catch (Exception ex)
@@ -929,10 +929,10 @@ namespace SimPe.Plugin
 
 		private void lvbase_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			this.Cursor = Cursors.WaitCursor;
+			Cursor = Cursors.WaitCursor;
 			if (tabControl1.SelectedIndex == 0)
 			{
-				preview = this.ShowPreview(loadimg);
+				preview = ShowPreview(loadimg);
 			}
 			else
 			{
@@ -940,7 +940,7 @@ namespace SimPe.Plugin
 				{
 					PackedFiles.Wrapper.SDesc sdesc = (PackedFiles.Wrapper.SDesc)
 						lv.SelectedItems[0].Tag;
-					preview = this.ShowPreview(sdesc.Image);
+					preview = ShowPreview(sdesc.Image);
 				}
 				else
 				{
@@ -949,7 +949,7 @@ namespace SimPe.Plugin
 			}
 
 			pbpreview.Image = ImageLoader.Preview(preview, pbpreview.Size);
-			this.Cursor = Cursors.Default;
+			Cursor = Cursors.Default;
 		}
 
 		private void pbpreview_Click(object sender, EventArgs e)

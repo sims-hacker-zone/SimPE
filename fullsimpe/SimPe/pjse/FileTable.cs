@@ -59,7 +59,7 @@ namespace pjse
 			if (SimPe.FileTableBase.FileIndex != null)
 			{
 				SimPe.FileTableBase.FileIndex.FILoad += new EventHandler(
-					this.FileIndex_FILoad
+					FileIndex_FILoad
 				);
 			}
 		}
@@ -95,7 +95,7 @@ namespace pjse
 
 			try
 			{
-				this.Refresh(true);
+				Refresh(true);
 			}
 			finally
 			{
@@ -126,7 +126,7 @@ namespace pjse
 
 		public void Refresh()
 		{
-			this.Refresh(!SimPe.Helper.LocalMode);
+			Refresh(!SimPe.Helper.LocalMode);
 		}
 
 		private void Refresh(bool loadEverything)
@@ -166,7 +166,7 @@ namespace pjse
 				}
 			}
 
-			this.Add(
+			Add(
 				Path.Combine(
 					SimPe.Helper.SimPePluginPath,
 					"pjse.coder.plugin\\GlobalStrings.package"
@@ -178,7 +178,7 @@ namespace pjse
 
 			if (loadEverything)
 			{
-				this.Add(
+				Add(
 					Path.Combine(
 						SimPe.Helper.SimPePluginDataPath,
 						"pjse.coder.plugin\\Includes"
@@ -204,7 +204,7 @@ namespace pjse
 						line = sr.ReadLine()
 					)
 					{
-						this.Add(
+						Add(
 							line.TrimEnd(new char[] { '+' }),
 							line.EndsWith("+"),
 							SimPe.Expansions.Custom,
@@ -614,16 +614,16 @@ namespace pjse
 				bool isFixed
 			)
 			{
-				this.Package = package;
-				this.PFD = pfd;
-				this.IsMaxis = isMaxis;
-				this.IsFixed = isFixed;
+				Package = package;
+				PFD = pfd;
+				IsMaxis = isMaxis;
+				IsFixed = isFixed;
 
 				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] fiis =
 					SimPe.FileTableBase.FileIndex.FindFile(pfd, package);
-				this.fii = (fiis.Length == 1) ? fiis[0] : null;
+				fii = (fiis.Length == 1) ? fiis[0] : null;
 
-				this.PFD.ChangedData += new SimPe.Events.PackedFileChanged(
+				PFD.ChangedData += new SimPe.Events.PackedFileChanged(
 					pfd_ChangedData
 				);
 			}
@@ -704,12 +704,12 @@ namespace pjse
 
 			public void Dispose()
 			{
-				this.Package = null;
+				Package = null;
 
-				this.PFD.ChangedData -= new SimPe.Events.PackedFileChanged(
+				PFD.ChangedData -= new SimPe.Events.PackedFileChanged(
 					pfd_ChangedData
 				);
-				this.PFD = null;
+				PFD = null;
 			}
 
 			#endregion
@@ -725,17 +725,17 @@ namespace pjse
 
 				Entry that = (Entry)obj;
 
-				if (this.Type.CompareTo(that.Type) != 0)
+				if (Type.CompareTo(that.Type) != 0)
 				{
-					return this.Type.CompareTo(that.Type);
+					return Type.CompareTo(that.Type);
 				}
 
-				if (this.Group.CompareTo(that.Group) != 0)
+				if (Group.CompareTo(that.Group) != 0)
 				{
-					return this.Group.CompareTo(that.Group);
+					return Group.CompareTo(that.Group);
 				}
 
-				return this.Instance.CompareTo(that.Instance);
+				return Instance.CompareTo(that.Instance);
 			}
 
 			#endregion

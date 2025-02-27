@@ -63,7 +63,7 @@ namespace SimPe.Cache
 		public CacheContainer(ContainerType type)
 		{
 			Version = VERSION;
-			this.Type = type;
+			Type = type;
 			Added = DateTime.Now;
 			filename = "";
 			ValidState = ContainerValid.Yes;

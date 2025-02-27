@@ -234,7 +234,7 @@ namespace SimPe.Plugin.Anim
 			int len = 0;
 			for (int i = 0; i < MeshBlock.Length; i++)
 			{
-				MeshBlock[i] = new AnimationMeshBlock(this.Parent);
+				MeshBlock[i] = new AnimationMeshBlock(Parent);
 				MeshBlock[i].UnserializeData(reader);
 			}
 			for (int i = 0; i < MeshBlock.Length; i++)
@@ -442,7 +442,7 @@ namespace SimPe.Plugin.Anim
 			btn.Tag = this;
 			form.tv.Nodes.Add(btn);
 			// can get a null reference exception here, it seems some AnimationMeshBlocks may not be readable
-			foreach (AnimationMeshBlock ab in this.MeshBlock)
+			foreach (AnimationMeshBlock ab in MeshBlock)
 			{
 				try
 				{
@@ -535,7 +535,7 @@ namespace SimPe.Plugin.Anim
 				}
 			}
 
-			foreach (AnimBlock6 ab in this.ab6)
+			foreach (AnimBlock6 ab in ab6)
 			{
 				System.Windows.Forms.TreeNode tn = new System.Windows.Forms.TreeNode(
 					ab.ToString()
@@ -545,10 +545,10 @@ namespace SimPe.Plugin.Anim
 			}
 
 			form.tb_arc_ver.Tag = true;
-			form.tb_arc_ver.Text = "0x" + Helper.HexString(this.version);
+			form.tb_arc_ver.Text = "0x" + Helper.HexString(version);
 			form.tb_arc_ver.Tag = null;
 
-			form.ambc.MeshBlocks = this.MeshBlock;
+			form.ambc.MeshBlocks = MeshBlock;
 		}
 
 		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
@@ -574,9 +574,9 @@ namespace SimPe.Plugin.Anim
 
 		public override void Dispose()
 		{
-			if (this.form != null)
+			if (form != null)
 			{
-				this.form.Dispose();
+				form.Dispose();
 			}
 		}
 

@@ -414,7 +414,7 @@ namespace SimPe.Plugin
 				tShpeParts = new TabPage.ShpeParts();
 			}
 
-			tGenericRcol.tb_ver.Text = "0x" + Helper.HexString(this.version);
+			tGenericRcol.tb_ver.Text = "0x" + Helper.HexString(version);
 			tGenericRcol.gen_pg.SelectedObject = this;
 
 			tShpeLod.lbunk.Items.Clear();
@@ -474,7 +474,7 @@ namespace SimPe.Plugin
 				tObjectGraphNode = new TabPage.ObjectGraphNode();
 			}
 
-			tObjectGraphNode.Tag = this.GraphNode;
+			tObjectGraphNode.Tag = GraphNode;
 			tc.TabPages.Add(tObjectGraphNode);
 
 			tc.SelectedTab = tShpeParts;
@@ -517,16 +517,16 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			if (this.tObjectGraphNode != null)
+			if (tObjectGraphNode != null)
 			{
-				this.tObjectGraphNode.Dispose();
+				tObjectGraphNode.Dispose();
 			}
 
 			tObjectGraphNode = null;
 
-			if (this.tGenericRcol != null)
+			if (tGenericRcol != null)
 			{
-				this.tGenericRcol.Dispose();
+				tGenericRcol.Dispose();
 			}
 
 			tGenericRcol = null;

@@ -168,9 +168,9 @@ namespace pjse.BhavOperandWizards.WizAnimate
 							ckbNotHurryable,
 						}
 					);
-					this.flpnMain.Controls.Remove(flpnAnimType);
-					this.flpnMain.Controls.Remove(pnIKObject);
-					this.flpnOptions.Controls.Remove(gbPriority);
+					flpnMain.Controls.Remove(flpnAnimType);
+					flpnMain.Controls.Remove(pnIKObject);
+					flpnOptions.Controls.Remove(gbPriority);
 					break;
 				case "bwp_Sim":
 					lckbOptions1 = new List<CheckBox>(
@@ -198,7 +198,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 							ckbNotHurryable,
 						}
 					);
-					this.flpnMain.Controls.Remove(pnObject);
+					flpnMain.Controls.Remove(pnObject);
 					break;
 				case "bwp_Overlay":
 					lckbOptions1 = new List<CheckBox>(
@@ -225,7 +225,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 							ckbAlignBlend,
 						}
 					);
-					this.flpnMain.Controls.Remove(pnIKObject);
+					flpnMain.Controls.Remove(pnIKObject);
 					break;
 				default:
 					throw new ArgumentException(
@@ -360,7 +360,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 				return Scope.Private;
 			}
 
-			return (this.doidAnimType.Value == 0x80) ? Scope.Global : Scope.Private;
+			return (doidAnimType.Value == 0x80) ? Scope.Global : Scope.Private;
 		}
 
 		private GS.GlobalStr AnimInstance()
@@ -370,14 +370,14 @@ namespace pjse.BhavOperandWizards.WizAnimate
 				return GS.GlobalStr.ObjectAnims;
 			}
 
-			if (this.doidAnimType.Value == 0x80)
+			if (doidAnimType.Value == 0x80)
 			{
 				return GS.GlobalStr.AdultAnims;
 			}
 
-			if (IsAnim(this.doidAnimType.Value))
+			if (IsAnim(doidAnimType.Value))
 			{
-				return (GS.GlobalStr)this.doidAnimType.Value;
+				return (GS.GlobalStr)doidAnimType.Value;
 			}
 
 			return GS.GlobalStr.ObjectAnims;
@@ -410,7 +410,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 				);
 				tbAnimType.Text =
 					(cbAnimType.SelectedIndex >= 0)
-						? this.cbAnimType.SelectedItem.ToString()
+						? cbAnimType.SelectedItem.ToString()
 						: "---";
 			}
 			finally
@@ -474,7 +474,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 		}
 
 		#region iBhavOperandWizForm
-		public Panel WizPanel => this.pnWizAnimate;
+		public Panel WizPanel => pnWizAnimate;
 
 		public void Execute(Instruction inst)
 		{
@@ -740,284 +740,284 @@ namespace pjse.BhavOperandWizards.WizAnimate
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(UI));
-			this.pnWizAnimate = new Panel();
-			this.flpnMain = new FlowLayoutPanel();
-			this.pnObject = new Panel();
-			this.cbPickerObject = new ComboBox();
-			this.tbValObject = new TextBox();
-			this.cbdoObject = new ComboBox();
-			this.label1 = new Label();
-			this.pnIKObject = new Panel();
-			this.cbPickerIK = new ComboBox();
-			this.tbValIK = new TextBox();
-			this.cbdoIK = new ComboBox();
-			this.label3 = new Label();
-			this.pnDoidOptions = new Panel();
-			this.ckbAttrPicker = new CheckBox();
-			this.ckbDecimal = new CheckBox();
-			this.flpnAnimType = new FlowLayoutPanel();
-			this.label4 = new Label();
-			this.tbValAnimType = new TextBox();
-			this.cbAnimType = new ComboBox();
-			this.tbAnimType = new TextBox();
-			this.flpnAnim = new FlowLayoutPanel();
-			this.lbParam = new Label();
-			this.tbValAnim = new TextBox();
-			this.btnAnim = new Button();
-			this.tbAnim = new TextBox();
-			this.flpnEventScope = new FlowLayoutPanel();
-			this.label2 = new Label();
-			this.cbEventScope = new ComboBox();
-			this.flpnEventTree = new FlowLayoutPanel();
-			this.llEvent = new LinkLabel();
-			this.tbValEventTree = new TextBox();
-			this.btnEventTree = new Button();
-			this.tbEventTree = new TextBox();
-			this.flpnOptions = new FlowLayoutPanel();
-			this.groupBox1 = new GroupBox();
-			this.flpnOptions1 = new FlowLayoutPanel();
-			this.ckbFlipped = new CheckBox();
-			this.ckbAnimSpeed = new CheckBox();
-			this.ckbParam = new CheckBox();
-			this.ckbInterruptible = new CheckBox();
-			this.ckbStartTag = new CheckBox();
-			this.ckbLoopCount = new CheckBox();
-			this.ckbTransToIdle = new CheckBox();
-			this.ckbBlendOut = new CheckBox();
-			this.ckbBlendIn = new CheckBox();
-			this.groupBox2 = new GroupBox();
-			this.flpnOptions2 = new FlowLayoutPanel();
-			this.ckbFlipTemp3 = new CheckBox();
-			this.ckbSync = new CheckBox();
-			this.ckbAlignBlend = new CheckBox();
-			this.ckbControllerIsSource = new CheckBox();
-			this.ckbNotHurryable = new CheckBox();
-			this.gbPriority = new GroupBox();
-			this.cbPriority = new ComboBox();
-			this.pnWizAnimate.SuspendLayout();
-			this.flpnMain.SuspendLayout();
-			this.pnObject.SuspendLayout();
-			this.pnIKObject.SuspendLayout();
-			this.pnDoidOptions.SuspendLayout();
-			this.flpnAnimType.SuspendLayout();
-			this.flpnAnim.SuspendLayout();
-			this.flpnEventScope.SuspendLayout();
-			this.flpnEventTree.SuspendLayout();
-			this.flpnOptions.SuspendLayout();
-			this.groupBox1.SuspendLayout();
-			this.flpnOptions1.SuspendLayout();
-			this.groupBox2.SuspendLayout();
-			this.flpnOptions2.SuspendLayout();
-			this.gbPriority.SuspendLayout();
-			this.SuspendLayout();
+			pnWizAnimate = new Panel();
+			flpnMain = new FlowLayoutPanel();
+			pnObject = new Panel();
+			cbPickerObject = new ComboBox();
+			tbValObject = new TextBox();
+			cbdoObject = new ComboBox();
+			label1 = new Label();
+			pnIKObject = new Panel();
+			cbPickerIK = new ComboBox();
+			tbValIK = new TextBox();
+			cbdoIK = new ComboBox();
+			label3 = new Label();
+			pnDoidOptions = new Panel();
+			ckbAttrPicker = new CheckBox();
+			ckbDecimal = new CheckBox();
+			flpnAnimType = new FlowLayoutPanel();
+			label4 = new Label();
+			tbValAnimType = new TextBox();
+			cbAnimType = new ComboBox();
+			tbAnimType = new TextBox();
+			flpnAnim = new FlowLayoutPanel();
+			lbParam = new Label();
+			tbValAnim = new TextBox();
+			btnAnim = new Button();
+			tbAnim = new TextBox();
+			flpnEventScope = new FlowLayoutPanel();
+			label2 = new Label();
+			cbEventScope = new ComboBox();
+			flpnEventTree = new FlowLayoutPanel();
+			llEvent = new LinkLabel();
+			tbValEventTree = new TextBox();
+			btnEventTree = new Button();
+			tbEventTree = new TextBox();
+			flpnOptions = new FlowLayoutPanel();
+			groupBox1 = new GroupBox();
+			flpnOptions1 = new FlowLayoutPanel();
+			ckbFlipped = new CheckBox();
+			ckbAnimSpeed = new CheckBox();
+			ckbParam = new CheckBox();
+			ckbInterruptible = new CheckBox();
+			ckbStartTag = new CheckBox();
+			ckbLoopCount = new CheckBox();
+			ckbTransToIdle = new CheckBox();
+			ckbBlendOut = new CheckBox();
+			ckbBlendIn = new CheckBox();
+			groupBox2 = new GroupBox();
+			flpnOptions2 = new FlowLayoutPanel();
+			ckbFlipTemp3 = new CheckBox();
+			ckbSync = new CheckBox();
+			ckbAlignBlend = new CheckBox();
+			ckbControllerIsSource = new CheckBox();
+			ckbNotHurryable = new CheckBox();
+			gbPriority = new GroupBox();
+			cbPriority = new ComboBox();
+			pnWizAnimate.SuspendLayout();
+			flpnMain.SuspendLayout();
+			pnObject.SuspendLayout();
+			pnIKObject.SuspendLayout();
+			pnDoidOptions.SuspendLayout();
+			flpnAnimType.SuspendLayout();
+			flpnAnim.SuspendLayout();
+			flpnEventScope.SuspendLayout();
+			flpnEventTree.SuspendLayout();
+			flpnOptions.SuspendLayout();
+			groupBox1.SuspendLayout();
+			flpnOptions1.SuspendLayout();
+			groupBox2.SuspendLayout();
+			flpnOptions2.SuspendLayout();
+			gbPriority.SuspendLayout();
+			SuspendLayout();
 			//
 			// pnWizAnimate
 			//
-			resources.ApplyResources(this.pnWizAnimate, "pnWizAnimate");
-			this.pnWizAnimate.Controls.Add(this.flpnMain);
-			this.pnWizAnimate.Name = "pnWizAnimate";
+			resources.ApplyResources(pnWizAnimate, "pnWizAnimate");
+			pnWizAnimate.Controls.Add(flpnMain);
+			pnWizAnimate.Name = "pnWizAnimate";
 			//
 			// flpnMain
 			//
-			resources.ApplyResources(this.flpnMain, "flpnMain");
-			this.flpnMain.Controls.Add(this.pnObject);
-			this.flpnMain.Controls.Add(this.pnIKObject);
-			this.flpnMain.Controls.Add(this.pnDoidOptions);
-			this.flpnMain.Controls.Add(this.flpnAnimType);
-			this.flpnMain.Controls.Add(this.flpnAnim);
-			this.flpnMain.Controls.Add(this.flpnEventScope);
-			this.flpnMain.Controls.Add(this.flpnEventTree);
-			this.flpnMain.Controls.Add(this.flpnOptions);
-			this.flpnMain.Name = "flpnMain";
+			resources.ApplyResources(flpnMain, "flpnMain");
+			flpnMain.Controls.Add(pnObject);
+			flpnMain.Controls.Add(pnIKObject);
+			flpnMain.Controls.Add(pnDoidOptions);
+			flpnMain.Controls.Add(flpnAnimType);
+			flpnMain.Controls.Add(flpnAnim);
+			flpnMain.Controls.Add(flpnEventScope);
+			flpnMain.Controls.Add(flpnEventTree);
+			flpnMain.Controls.Add(flpnOptions);
+			flpnMain.Name = "flpnMain";
 			//
 			// pnObject
 			//
-			this.pnObject.Controls.Add(this.cbPickerObject);
-			this.pnObject.Controls.Add(this.tbValObject);
-			this.pnObject.Controls.Add(this.cbdoObject);
-			this.pnObject.Controls.Add(this.label1);
-			resources.ApplyResources(this.pnObject, "pnObject");
-			this.pnObject.Name = "pnObject";
+			pnObject.Controls.Add(cbPickerObject);
+			pnObject.Controls.Add(tbValObject);
+			pnObject.Controls.Add(cbdoObject);
+			pnObject.Controls.Add(label1);
+			resources.ApplyResources(pnObject, "pnObject");
+			pnObject.Name = "pnObject";
 			//
 			// cbPickerObject
 			//
-			this.cbPickerObject.DropDownStyle =
+			cbPickerObject.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbPickerObject.DropDownWidth = 384;
-			resources.ApplyResources(this.cbPickerObject, "cbPickerObject");
-			this.cbPickerObject.Name = "cbPickerObject";
-			this.cbPickerObject.TabStop = false;
+			cbPickerObject.DropDownWidth = 384;
+			resources.ApplyResources(cbPickerObject, "cbPickerObject");
+			cbPickerObject.Name = "cbPickerObject";
+			cbPickerObject.TabStop = false;
 			//
 			// tbValObject
 			//
-			resources.ApplyResources(this.tbValObject, "tbValObject");
-			this.tbValObject.Name = "tbValObject";
-			this.tbValObject.TabStop = false;
+			resources.ApplyResources(tbValObject, "tbValObject");
+			tbValObject.Name = "tbValObject";
+			tbValObject.TabStop = false;
 			//
 			// cbdoObject
 			//
-			this.cbdoObject.DropDownStyle =
+			cbdoObject.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbdoObject.DropDownWidth = 384;
-			resources.ApplyResources(this.cbdoObject, "cbdoObject");
-			this.cbdoObject.Name = "cbdoObject";
+			cbdoObject.DropDownWidth = 384;
+			resources.ApplyResources(cbdoObject, "cbdoObject");
+			cbdoObject.Name = "cbdoObject";
 			//
 			// label1
 			//
-			resources.ApplyResources(this.label1, "label1");
-			this.label1.Name = "label1";
+			resources.ApplyResources(label1, "label1");
+			label1.Name = "label1";
 			//
 			// pnIKObject
 			//
-			this.pnIKObject.Controls.Add(this.cbPickerIK);
-			this.pnIKObject.Controls.Add(this.tbValIK);
-			this.pnIKObject.Controls.Add(this.cbdoIK);
-			this.pnIKObject.Controls.Add(this.label3);
-			resources.ApplyResources(this.pnIKObject, "pnIKObject");
-			this.pnIKObject.Name = "pnIKObject";
+			pnIKObject.Controls.Add(cbPickerIK);
+			pnIKObject.Controls.Add(tbValIK);
+			pnIKObject.Controls.Add(cbdoIK);
+			pnIKObject.Controls.Add(label3);
+			resources.ApplyResources(pnIKObject, "pnIKObject");
+			pnIKObject.Name = "pnIKObject";
 			//
 			// cbPickerIK
 			//
-			this.cbPickerIK.DropDownStyle =
+			cbPickerIK.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbPickerIK.DropDownWidth = 384;
-			resources.ApplyResources(this.cbPickerIK, "cbPickerIK");
-			this.cbPickerIK.Name = "cbPickerIK";
-			this.cbPickerIK.TabStop = false;
+			cbPickerIK.DropDownWidth = 384;
+			resources.ApplyResources(cbPickerIK, "cbPickerIK");
+			cbPickerIK.Name = "cbPickerIK";
+			cbPickerIK.TabStop = false;
 			//
 			// tbValIK
 			//
-			resources.ApplyResources(this.tbValIK, "tbValIK");
-			this.tbValIK.Name = "tbValIK";
-			this.tbValIK.TabStop = false;
+			resources.ApplyResources(tbValIK, "tbValIK");
+			tbValIK.Name = "tbValIK";
+			tbValIK.TabStop = false;
 			//
 			// cbdoIK
 			//
-			this.cbdoIK.DropDownStyle = ComboBoxStyle.DropDownList;
-			this.cbdoIK.DropDownWidth = 384;
-			resources.ApplyResources(this.cbdoIK, "cbdoIK");
-			this.cbdoIK.Name = "cbdoIK";
+			cbdoIK.DropDownStyle = ComboBoxStyle.DropDownList;
+			cbdoIK.DropDownWidth = 384;
+			resources.ApplyResources(cbdoIK, "cbdoIK");
+			cbdoIK.Name = "cbdoIK";
 			//
 			// label3
 			//
-			resources.ApplyResources(this.label3, "label3");
-			this.label3.Name = "label3";
+			resources.ApplyResources(label3, "label3");
+			label3.Name = "label3";
 			//
 			// pnDoidOptions
 			//
-			this.pnDoidOptions.Controls.Add(this.ckbAttrPicker);
-			this.pnDoidOptions.Controls.Add(this.ckbDecimal);
-			resources.ApplyResources(this.pnDoidOptions, "pnDoidOptions");
-			this.pnDoidOptions.Name = "pnDoidOptions";
+			pnDoidOptions.Controls.Add(ckbAttrPicker);
+			pnDoidOptions.Controls.Add(ckbDecimal);
+			resources.ApplyResources(pnDoidOptions, "pnDoidOptions");
+			pnDoidOptions.Name = "pnDoidOptions";
 			//
 			// ckbAttrPicker
 			//
-			resources.ApplyResources(this.ckbAttrPicker, "ckbAttrPicker");
-			this.ckbAttrPicker.Name = "ckbAttrPicker";
+			resources.ApplyResources(ckbAttrPicker, "ckbAttrPicker");
+			ckbAttrPicker.Name = "ckbAttrPicker";
 			//
 			// ckbDecimal
 			//
-			resources.ApplyResources(this.ckbDecimal, "ckbDecimal");
-			this.ckbDecimal.Name = "ckbDecimal";
+			resources.ApplyResources(ckbDecimal, "ckbDecimal");
+			ckbDecimal.Name = "ckbDecimal";
 			//
 			// flpnAnimType
 			//
-			resources.ApplyResources(this.flpnAnimType, "flpnAnimType");
-			this.flpnAnimType.Controls.Add(this.label4);
-			this.flpnAnimType.Controls.Add(this.tbValAnimType);
-			this.flpnAnimType.Controls.Add(this.cbAnimType);
-			this.flpnAnimType.Controls.Add(this.tbAnimType);
-			this.flpnAnimType.Name = "flpnAnimType";
+			resources.ApplyResources(flpnAnimType, "flpnAnimType");
+			flpnAnimType.Controls.Add(label4);
+			flpnAnimType.Controls.Add(tbValAnimType);
+			flpnAnimType.Controls.Add(cbAnimType);
+			flpnAnimType.Controls.Add(tbAnimType);
+			flpnAnimType.Name = "flpnAnimType";
 			//
 			// label4
 			//
-			resources.ApplyResources(this.label4, "label4");
-			this.label4.Name = "label4";
+			resources.ApplyResources(label4, "label4");
+			label4.Name = "label4";
 			//
 			// tbValAnimType
 			//
-			resources.ApplyResources(this.tbValAnimType, "tbValAnimType");
-			this.tbValAnimType.Name = "tbValAnimType";
+			resources.ApplyResources(tbValAnimType, "tbValAnimType");
+			tbValAnimType.Name = "tbValAnimType";
 			//
 			// cbAnimType
 			//
-			this.cbAnimType.DropDownStyle =
+			cbAnimType.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbAnimType.DropDownWidth = 200;
-			this.cbAnimType.FormattingEnabled = true;
-			resources.ApplyResources(this.cbAnimType, "cbAnimType");
-			this.cbAnimType.Name = "cbAnimType";
-			this.cbAnimType.TabStop = false;
-			this.cbAnimType.SelectedIndexChanged += new EventHandler(
-				this.cbAnimType_SelectedIndexChanged
+			cbAnimType.DropDownWidth = 200;
+			cbAnimType.FormattingEnabled = true;
+			resources.ApplyResources(cbAnimType, "cbAnimType");
+			cbAnimType.Name = "cbAnimType";
+			cbAnimType.TabStop = false;
+			cbAnimType.SelectedIndexChanged += new EventHandler(
+				cbAnimType_SelectedIndexChanged
 			);
 			//
 			// tbAnimType
 			//
-			resources.ApplyResources(this.tbAnimType, "tbAnimType");
-			this.tbAnimType.BorderStyle = BorderStyle.None;
-			this.tbAnimType.Name = "tbAnimType";
-			this.tbAnimType.ReadOnly = true;
-			this.tbAnimType.TabStop = false;
+			resources.ApplyResources(tbAnimType, "tbAnimType");
+			tbAnimType.BorderStyle = BorderStyle.None;
+			tbAnimType.Name = "tbAnimType";
+			tbAnimType.ReadOnly = true;
+			tbAnimType.TabStop = false;
 			//
 			// flpnAnim
 			//
-			resources.ApplyResources(this.flpnAnim, "flpnAnim");
-			this.flpnAnim.Controls.Add(this.lbParam);
-			this.flpnAnim.Controls.Add(this.tbValAnim);
-			this.flpnAnim.Controls.Add(this.btnAnim);
-			this.flpnAnim.Controls.Add(this.tbAnim);
-			this.flpnAnim.Name = "flpnAnim";
+			resources.ApplyResources(flpnAnim, "flpnAnim");
+			flpnAnim.Controls.Add(lbParam);
+			flpnAnim.Controls.Add(tbValAnim);
+			flpnAnim.Controls.Add(btnAnim);
+			flpnAnim.Controls.Add(tbAnim);
+			flpnAnim.Name = "flpnAnim";
 			//
 			// lbParam
 			//
-			resources.ApplyResources(this.lbParam, "lbParam");
-			this.lbParam.Name = "lbParam";
-			this.lbParam.Tag = "Param|Animation String";
+			resources.ApplyResources(lbParam, "lbParam");
+			lbParam.Name = "lbParam";
+			lbParam.Tag = "Param|Animation String";
 			//
 			// tbValAnim
 			//
-			resources.ApplyResources(this.tbValAnim, "tbValAnim");
-			this.tbValAnim.Name = "tbValAnim";
+			resources.ApplyResources(tbValAnim, "tbValAnim");
+			tbValAnim.Name = "tbValAnim";
 			//
 			// btnAnim
 			//
-			resources.ApplyResources(this.btnAnim, "btnAnim");
-			this.btnAnim.Name = "btnAnim";
-			this.btnAnim.Click += new EventHandler(this.btnAnim_Click);
+			resources.ApplyResources(btnAnim, "btnAnim");
+			btnAnim.Name = "btnAnim";
+			btnAnim.Click += new EventHandler(btnAnim_Click);
 			//
 			// tbAnim
 			//
-			resources.ApplyResources(this.tbAnim, "tbAnim");
-			this.tbAnim.BorderStyle = BorderStyle.None;
-			this.tbAnim.Name = "tbAnim";
-			this.tbAnim.ReadOnly = true;
-			this.tbAnim.TabStop = false;
+			resources.ApplyResources(tbAnim, "tbAnim");
+			tbAnim.BorderStyle = BorderStyle.None;
+			tbAnim.Name = "tbAnim";
+			tbAnim.ReadOnly = true;
+			tbAnim.TabStop = false;
 			//
 			// flpnEventScope
 			//
-			resources.ApplyResources(this.flpnEventScope, "flpnEventScope");
-			this.flpnEventScope.Controls.Add(this.label2);
-			this.flpnEventScope.Controls.Add(this.cbEventScope);
-			this.flpnEventScope.Name = "flpnEventScope";
+			resources.ApplyResources(flpnEventScope, "flpnEventScope");
+			flpnEventScope.Controls.Add(label2);
+			flpnEventScope.Controls.Add(cbEventScope);
+			flpnEventScope.Name = "flpnEventScope";
 			//
 			// label2
 			//
-			resources.ApplyResources(this.label2, "label2");
-			this.label2.Name = "label2";
-			this.label2.Tag = "";
+			resources.ApplyResources(label2, "label2");
+			label2.Name = "label2";
+			label2.Tag = "";
 			//
 			// cbEventScope
 			//
-			this.cbEventScope.DropDownStyle =
+			cbEventScope.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbEventScope.FormattingEnabled = true;
-			this.cbEventScope.Items.AddRange(
+			cbEventScope.FormattingEnabled = true;
+			cbEventScope.Items.AddRange(
 				new object[]
 				{
 					resources.GetString("cbEventScope.Items"),
@@ -1025,201 +1025,201 @@ namespace pjse.BhavOperandWizards.WizAnimate
 					resources.GetString("cbEventScope.Items2"),
 				}
 			);
-			resources.ApplyResources(this.cbEventScope, "cbEventScope");
-			this.cbEventScope.Name = "cbEventScope";
+			resources.ApplyResources(cbEventScope, "cbEventScope");
+			cbEventScope.Name = "cbEventScope";
 			//
 			// flpnEventTree
 			//
-			resources.ApplyResources(this.flpnEventTree, "flpnEventTree");
-			this.flpnEventTree.Controls.Add(this.llEvent);
-			this.flpnEventTree.Controls.Add(this.tbValEventTree);
-			this.flpnEventTree.Controls.Add(this.btnEventTree);
-			this.flpnEventTree.Controls.Add(this.tbEventTree);
-			this.flpnEventTree.Name = "flpnEventTree";
+			resources.ApplyResources(flpnEventTree, "flpnEventTree");
+			flpnEventTree.Controls.Add(llEvent);
+			flpnEventTree.Controls.Add(tbValEventTree);
+			flpnEventTree.Controls.Add(btnEventTree);
+			flpnEventTree.Controls.Add(tbEventTree);
+			flpnEventTree.Name = "flpnEventTree";
 			//
 			// llEvent
 			//
-			resources.ApplyResources(this.llEvent, "llEvent");
-			this.llEvent.Name = "llEvent";
-			this.llEvent.TabStop = true;
-			this.llEvent.UseCompatibleTextRendering = true;
-			this.llEvent.LinkClicked +=
+			resources.ApplyResources(llEvent, "llEvent");
+			llEvent.Name = "llEvent";
+			llEvent.TabStop = true;
+			llEvent.UseCompatibleTextRendering = true;
+			llEvent.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.llEvent_LinkClicked
+					llEvent_LinkClicked
 				);
 			//
 			// tbValEventTree
 			//
-			resources.ApplyResources(this.tbValEventTree, "tbValEventTree");
-			this.tbValEventTree.Name = "tbValEventTree";
+			resources.ApplyResources(tbValEventTree, "tbValEventTree");
+			tbValEventTree.Name = "tbValEventTree";
 			//
 			// btnEventTree
 			//
-			resources.ApplyResources(this.btnEventTree, "btnEventTree");
-			this.btnEventTree.Name = "btnEventTree";
-			this.btnEventTree.Click += new EventHandler(this.btnEventTree_Click);
+			resources.ApplyResources(btnEventTree, "btnEventTree");
+			btnEventTree.Name = "btnEventTree";
+			btnEventTree.Click += new EventHandler(btnEventTree_Click);
 			//
 			// tbEventTree
 			//
-			resources.ApplyResources(this.tbEventTree, "tbEventTree");
-			this.tbEventTree.BorderStyle = BorderStyle.None;
-			this.tbEventTree.Name = "tbEventTree";
-			this.tbEventTree.ReadOnly = true;
-			this.tbEventTree.TabStop = false;
+			resources.ApplyResources(tbEventTree, "tbEventTree");
+			tbEventTree.BorderStyle = BorderStyle.None;
+			tbEventTree.Name = "tbEventTree";
+			tbEventTree.ReadOnly = true;
+			tbEventTree.TabStop = false;
 			//
 			// flpnOptions
 			//
-			resources.ApplyResources(this.flpnOptions, "flpnOptions");
-			this.flpnOptions.Controls.Add(this.groupBox1);
-			this.flpnOptions.Controls.Add(this.groupBox2);
-			this.flpnOptions.Controls.Add(this.gbPriority);
-			this.flpnOptions.Name = "flpnOptions";
+			resources.ApplyResources(flpnOptions, "flpnOptions");
+			flpnOptions.Controls.Add(groupBox1);
+			flpnOptions.Controls.Add(groupBox2);
+			flpnOptions.Controls.Add(gbPriority);
+			flpnOptions.Name = "flpnOptions";
 			//
 			// groupBox1
 			//
-			resources.ApplyResources(this.groupBox1, "groupBox1");
-			this.groupBox1.Controls.Add(this.flpnOptions1);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.TabStop = false;
+			resources.ApplyResources(groupBox1, "groupBox1");
+			groupBox1.Controls.Add(flpnOptions1);
+			groupBox1.Name = "groupBox1";
+			groupBox1.TabStop = false;
 			//
 			// flpnOptions1
 			//
-			resources.ApplyResources(this.flpnOptions1, "flpnOptions1");
-			this.flpnOptions1.Controls.Add(this.ckbFlipped);
-			this.flpnOptions1.Controls.Add(this.ckbAnimSpeed);
-			this.flpnOptions1.Controls.Add(this.ckbParam);
-			this.flpnOptions1.Controls.Add(this.ckbInterruptible);
-			this.flpnOptions1.Controls.Add(this.ckbStartTag);
-			this.flpnOptions1.Controls.Add(this.ckbLoopCount);
-			this.flpnOptions1.Controls.Add(this.ckbTransToIdle);
-			this.flpnOptions1.Controls.Add(this.ckbBlendOut);
-			this.flpnOptions1.Controls.Add(this.ckbBlendIn);
-			this.flpnOptions1.Name = "flpnOptions1";
+			resources.ApplyResources(flpnOptions1, "flpnOptions1");
+			flpnOptions1.Controls.Add(ckbFlipped);
+			flpnOptions1.Controls.Add(ckbAnimSpeed);
+			flpnOptions1.Controls.Add(ckbParam);
+			flpnOptions1.Controls.Add(ckbInterruptible);
+			flpnOptions1.Controls.Add(ckbStartTag);
+			flpnOptions1.Controls.Add(ckbLoopCount);
+			flpnOptions1.Controls.Add(ckbTransToIdle);
+			flpnOptions1.Controls.Add(ckbBlendOut);
+			flpnOptions1.Controls.Add(ckbBlendIn);
+			flpnOptions1.Name = "flpnOptions1";
 			//
 			// ckbFlipped
 			//
-			resources.ApplyResources(this.ckbFlipped, "ckbFlipped");
-			this.ckbFlipped.Name = "ckbFlipped";
-			this.ckbFlipped.UseVisualStyleBackColor = true;
+			resources.ApplyResources(ckbFlipped, "ckbFlipped");
+			ckbFlipped.Name = "ckbFlipped";
+			ckbFlipped.UseVisualStyleBackColor = true;
 			//
 			// ckbAnimSpeed
 			//
-			resources.ApplyResources(this.ckbAnimSpeed, "ckbAnimSpeed");
-			this.ckbAnimSpeed.Name = "ckbAnimSpeed";
-			this.ckbAnimSpeed.UseVisualStyleBackColor = true;
+			resources.ApplyResources(ckbAnimSpeed, "ckbAnimSpeed");
+			ckbAnimSpeed.Name = "ckbAnimSpeed";
+			ckbAnimSpeed.UseVisualStyleBackColor = true;
 			//
 			// ckbParam
 			//
-			resources.ApplyResources(this.ckbParam, "ckbParam");
-			this.ckbParam.Name = "ckbParam";
-			this.ckbParam.UseVisualStyleBackColor = true;
-			this.ckbParam.CheckedChanged += new EventHandler(
-				this.ckbParam_CheckedChanged
+			resources.ApplyResources(ckbParam, "ckbParam");
+			ckbParam.Name = "ckbParam";
+			ckbParam.UseVisualStyleBackColor = true;
+			ckbParam.CheckedChanged += new EventHandler(
+				ckbParam_CheckedChanged
 			);
 			//
 			// ckbInterruptible
 			//
-			resources.ApplyResources(this.ckbInterruptible, "ckbInterruptible");
-			this.ckbInterruptible.Name = "ckbInterruptible";
-			this.ckbInterruptible.UseVisualStyleBackColor = true;
+			resources.ApplyResources(ckbInterruptible, "ckbInterruptible");
+			ckbInterruptible.Name = "ckbInterruptible";
+			ckbInterruptible.UseVisualStyleBackColor = true;
 			//
 			// ckbStartTag
 			//
-			resources.ApplyResources(this.ckbStartTag, "ckbStartTag");
-			this.ckbStartTag.Name = "ckbStartTag";
-			this.ckbStartTag.UseVisualStyleBackColor = true;
+			resources.ApplyResources(ckbStartTag, "ckbStartTag");
+			ckbStartTag.Name = "ckbStartTag";
+			ckbStartTag.UseVisualStyleBackColor = true;
 			//
 			// ckbLoopCount
 			//
-			resources.ApplyResources(this.ckbLoopCount, "ckbLoopCount");
-			this.ckbLoopCount.Name = "ckbLoopCount";
-			this.ckbLoopCount.UseVisualStyleBackColor = true;
+			resources.ApplyResources(ckbLoopCount, "ckbLoopCount");
+			ckbLoopCount.Name = "ckbLoopCount";
+			ckbLoopCount.UseVisualStyleBackColor = true;
 			//
 			// ckbTransToIdle
 			//
-			resources.ApplyResources(this.ckbTransToIdle, "ckbTransToIdle");
-			this.ckbTransToIdle.Name = "ckbTransToIdle";
-			this.ckbTransToIdle.UseVisualStyleBackColor = true;
+			resources.ApplyResources(ckbTransToIdle, "ckbTransToIdle");
+			ckbTransToIdle.Name = "ckbTransToIdle";
+			ckbTransToIdle.UseVisualStyleBackColor = true;
 			//
 			// ckbBlendOut
 			//
-			resources.ApplyResources(this.ckbBlendOut, "ckbBlendOut");
-			this.ckbBlendOut.Name = "ckbBlendOut";
-			this.ckbBlendOut.UseVisualStyleBackColor = true;
+			resources.ApplyResources(ckbBlendOut, "ckbBlendOut");
+			ckbBlendOut.Name = "ckbBlendOut";
+			ckbBlendOut.UseVisualStyleBackColor = true;
 			//
 			// ckbBlendIn
 			//
-			resources.ApplyResources(this.ckbBlendIn, "ckbBlendIn");
-			this.ckbBlendIn.Name = "ckbBlendIn";
-			this.ckbBlendIn.UseVisualStyleBackColor = true;
+			resources.ApplyResources(ckbBlendIn, "ckbBlendIn");
+			ckbBlendIn.Name = "ckbBlendIn";
+			ckbBlendIn.UseVisualStyleBackColor = true;
 			//
 			// groupBox2
 			//
-			resources.ApplyResources(this.groupBox2, "groupBox2");
-			this.groupBox2.Controls.Add(this.flpnOptions2);
-			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.TabStop = false;
+			resources.ApplyResources(groupBox2, "groupBox2");
+			groupBox2.Controls.Add(flpnOptions2);
+			groupBox2.Name = "groupBox2";
+			groupBox2.TabStop = false;
 			//
 			// flpnOptions2
 			//
-			resources.ApplyResources(this.flpnOptions2, "flpnOptions2");
-			this.flpnOptions2.Controls.Add(this.ckbFlipTemp3);
-			this.flpnOptions2.Controls.Add(this.ckbSync);
-			this.flpnOptions2.Controls.Add(this.ckbAlignBlend);
-			this.flpnOptions2.Controls.Add(this.ckbControllerIsSource);
-			this.flpnOptions2.Controls.Add(this.ckbNotHurryable);
-			this.flpnOptions2.Name = "flpnOptions2";
+			resources.ApplyResources(flpnOptions2, "flpnOptions2");
+			flpnOptions2.Controls.Add(ckbFlipTemp3);
+			flpnOptions2.Controls.Add(ckbSync);
+			flpnOptions2.Controls.Add(ckbAlignBlend);
+			flpnOptions2.Controls.Add(ckbControllerIsSource);
+			flpnOptions2.Controls.Add(ckbNotHurryable);
+			flpnOptions2.Name = "flpnOptions2";
 			//
 			// ckbFlipTemp3
 			//
-			resources.ApplyResources(this.ckbFlipTemp3, "ckbFlipTemp3");
-			this.ckbFlipTemp3.Name = "ckbFlipTemp3";
-			this.ckbFlipTemp3.UseVisualStyleBackColor = true;
-			this.ckbFlipTemp3.CheckedChanged += new EventHandler(
-				this.ckbFlipTemp3_CheckedChanged
+			resources.ApplyResources(ckbFlipTemp3, "ckbFlipTemp3");
+			ckbFlipTemp3.Name = "ckbFlipTemp3";
+			ckbFlipTemp3.UseVisualStyleBackColor = true;
+			ckbFlipTemp3.CheckedChanged += new EventHandler(
+				ckbFlipTemp3_CheckedChanged
 			);
 			//
 			// ckbSync
 			//
-			resources.ApplyResources(this.ckbSync, "ckbSync");
-			this.ckbSync.Name = "ckbSync";
-			this.ckbSync.UseVisualStyleBackColor = true;
+			resources.ApplyResources(ckbSync, "ckbSync");
+			ckbSync.Name = "ckbSync";
+			ckbSync.UseVisualStyleBackColor = true;
 			//
 			// ckbAlignBlend
 			//
-			resources.ApplyResources(this.ckbAlignBlend, "ckbAlignBlend");
-			this.ckbAlignBlend.Name = "ckbAlignBlend";
-			this.ckbAlignBlend.UseVisualStyleBackColor = true;
+			resources.ApplyResources(ckbAlignBlend, "ckbAlignBlend");
+			ckbAlignBlend.Name = "ckbAlignBlend";
+			ckbAlignBlend.UseVisualStyleBackColor = true;
 			//
 			// ckbControllerIsSource
 			//
 			resources.ApplyResources(
-				this.ckbControllerIsSource,
+				ckbControllerIsSource,
 				"ckbControllerIsSource"
 			);
-			this.ckbControllerIsSource.Name = "ckbControllerIsSource";
-			this.ckbControllerIsSource.UseVisualStyleBackColor = true;
+			ckbControllerIsSource.Name = "ckbControllerIsSource";
+			ckbControllerIsSource.UseVisualStyleBackColor = true;
 			//
 			// ckbNotHurryable
 			//
-			resources.ApplyResources(this.ckbNotHurryable, "ckbNotHurryable");
-			this.ckbNotHurryable.Name = "ckbNotHurryable";
-			this.ckbNotHurryable.UseVisualStyleBackColor = true;
+			resources.ApplyResources(ckbNotHurryable, "ckbNotHurryable");
+			ckbNotHurryable.Name = "ckbNotHurryable";
+			ckbNotHurryable.UseVisualStyleBackColor = true;
 			//
 			// gbPriority
 			//
-			resources.ApplyResources(this.gbPriority, "gbPriority");
-			this.gbPriority.Controls.Add(this.cbPriority);
-			this.gbPriority.Name = "gbPriority";
-			this.gbPriority.TabStop = false;
+			resources.ApplyResources(gbPriority, "gbPriority");
+			gbPriority.Controls.Add(cbPriority);
+			gbPriority.Name = "gbPriority";
+			gbPriority.TabStop = false;
 			//
 			// cbPriority
 			//
-			this.cbPriority.DropDownStyle =
+			cbPriority.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbPriority.FormattingEnabled = true;
-			this.cbPriority.Items.AddRange(
+			cbPriority.FormattingEnabled = true;
+			cbPriority.Items.AddRange(
 				new object[]
 				{
 					resources.GetString("cbPriority.Items"),
@@ -1227,46 +1227,46 @@ namespace pjse.BhavOperandWizards.WizAnimate
 					resources.GetString("cbPriority.Items2"),
 				}
 			);
-			resources.ApplyResources(this.cbPriority, "cbPriority");
-			this.cbPriority.Name = "cbPriority";
+			resources.ApplyResources(cbPriority, "cbPriority");
+			cbPriority.Name = "cbPriority";
 			//
 			// UI
 			//
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = AutoScaleMode.Dpi;
-			this.Controls.Add(this.pnWizAnimate);
-			this.Name = "UI";
-			this.pnWizAnimate.ResumeLayout(false);
-			this.pnWizAnimate.PerformLayout();
-			this.flpnMain.ResumeLayout(false);
-			this.flpnMain.PerformLayout();
-			this.pnObject.ResumeLayout(false);
-			this.pnObject.PerformLayout();
-			this.pnIKObject.ResumeLayout(false);
-			this.pnIKObject.PerformLayout();
-			this.pnDoidOptions.ResumeLayout(false);
-			this.pnDoidOptions.PerformLayout();
-			this.flpnAnimType.ResumeLayout(false);
-			this.flpnAnimType.PerformLayout();
-			this.flpnAnim.ResumeLayout(false);
-			this.flpnAnim.PerformLayout();
-			this.flpnEventScope.ResumeLayout(false);
-			this.flpnEventScope.PerformLayout();
-			this.flpnEventTree.ResumeLayout(false);
-			this.flpnEventTree.PerformLayout();
-			this.flpnOptions.ResumeLayout(false);
-			this.flpnOptions.PerformLayout();
-			this.groupBox1.ResumeLayout(false);
-			this.groupBox1.PerformLayout();
-			this.flpnOptions1.ResumeLayout(false);
-			this.flpnOptions1.PerformLayout();
-			this.groupBox2.ResumeLayout(false);
-			this.groupBox2.PerformLayout();
-			this.flpnOptions2.ResumeLayout(false);
-			this.flpnOptions2.PerformLayout();
-			this.gbPriority.ResumeLayout(false);
-			this.ResumeLayout(false);
-			this.PerformLayout();
+			AutoScaleMode = AutoScaleMode.Dpi;
+			Controls.Add(pnWizAnimate);
+			Name = "UI";
+			pnWizAnimate.ResumeLayout(false);
+			pnWizAnimate.PerformLayout();
+			flpnMain.ResumeLayout(false);
+			flpnMain.PerformLayout();
+			pnObject.ResumeLayout(false);
+			pnObject.PerformLayout();
+			pnIKObject.ResumeLayout(false);
+			pnIKObject.PerformLayout();
+			pnDoidOptions.ResumeLayout(false);
+			pnDoidOptions.PerformLayout();
+			flpnAnimType.ResumeLayout(false);
+			flpnAnimType.PerformLayout();
+			flpnAnim.ResumeLayout(false);
+			flpnAnim.PerformLayout();
+			flpnEventScope.ResumeLayout(false);
+			flpnEventScope.PerformLayout();
+			flpnEventTree.ResumeLayout(false);
+			flpnEventTree.PerformLayout();
+			flpnOptions.ResumeLayout(false);
+			flpnOptions.PerformLayout();
+			groupBox1.ResumeLayout(false);
+			groupBox1.PerformLayout();
+			flpnOptions1.ResumeLayout(false);
+			flpnOptions1.PerformLayout();
+			groupBox2.ResumeLayout(false);
+			groupBox2.PerformLayout();
+			flpnOptions2.ResumeLayout(false);
+			flpnOptions2.PerformLayout();
+			gbPriority.ResumeLayout(false);
+			ResumeLayout(false);
+			PerformLayout();
 		}
 		#endregion
 
@@ -1310,7 +1310,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 
 		private void btnAnim_Click(object sender, EventArgs e)
 		{
-			this.doStrChooser(this.tbValAnim, this.tbAnim);
+			doStrChooser(tbValAnim, tbAnim);
 		}
 
 		private void ckbParam_CheckedChanged(object sender, EventArgs e)
@@ -1344,12 +1344,12 @@ namespace pjse.BhavOperandWizards.WizAnimate
 
 			try
 			{
-				if (this.cbAnimType.SelectedIndex >= 0)
+				if (cbAnimType.SelectedIndex >= 0)
 				{
 					GS.GlobalStr gs = (GS.GlobalStr)
 						Enum.Parse(
 							typeof(GS.GlobalStr),
-							this.cbAnimType.SelectedItem.ToString()
+							cbAnimType.SelectedItem.ToString()
 						);
 					tbValAnimType.Text = "0x" + ((ushort)gs).ToString("X");
 				}
@@ -1357,8 +1357,8 @@ namespace pjse.BhavOperandWizards.WizAnimate
 			finally
 			{
 				tbAnimType.Text =
-					(this.cbAnimType.SelectedIndex >= 0)
-						? this.cbAnimType.SelectedItem.ToString()
+					(cbAnimType.SelectedIndex >= 0)
+						? cbAnimType.SelectedItem.ToString()
 						: "---";
 			}
 			doStrValue(doidAnim.Value, tbAnim);

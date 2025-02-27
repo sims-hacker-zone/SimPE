@@ -144,7 +144,7 @@ namespace SimPe.Wants
 			items.Add(new XWNTItem(this, "eventRequiresObject", Boolean.FalseString));
 			items.Add(new XWNTItem(this, "eventRequiresSim", Boolean.FalseString));
 			items.Add(new XWNTItem(this, "deprecated", Boolean.FalseString));
-			this.SynchronizeUserData();
+			SynchronizeUserData();
 		}
 
 		protected override void Unserialize(System.IO.BinaryReader reader)
@@ -166,7 +166,7 @@ namespace SimPe.Wants
 			if (isCpf)
 			{
 				PackedFiles.Wrapper.Cpf cpf = new PackedFiles.Wrapper.Cpf();
-				cpf.ProcessData(this.FileDescriptor, this.Package);
+				cpf.ProcessData(FileDescriptor, Package);
 				XWNTWrapper xwnt = new XWNTWrapper();
 				foreach (XWNTItem item in xwnt)
 				{
@@ -308,9 +308,9 @@ namespace SimPe.Wants
 		protected override string GetResourceName(Data.TypeAlias ta)
 		{
 			//if (!SimPe.Helper.FileFormat) return base.GetResourceName(ta);
-			if (!this.Processed)
+			if (!Processed)
 			{
-				this.ProcessData(FileDescriptor, Package);
+				ProcessData(FileDescriptor, Package);
 			}
 
 			string s = "";
@@ -413,7 +413,7 @@ namespace SimPe.Wants
 		{
 			if (IsValidType(value))
 			{
-				this.type = value;
+				type = value;
 			}
 			else
 			{
@@ -441,7 +441,7 @@ namespace SimPe.Wants
 		{
 			if (IsValidUtype(type, value))
 			{
-				this.utype = value;
+				utype = value;
 			}
 			else
 			{

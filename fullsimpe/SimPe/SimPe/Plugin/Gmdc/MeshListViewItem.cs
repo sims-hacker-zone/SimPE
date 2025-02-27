@@ -144,24 +144,24 @@ namespace SimPe.Plugin.Gmdc
 
 		void Setup()
 		{
-			this.SubItems.Clear();
-			this.Text = mesh.Name;
-			this.SubItems.Add(Action.ToString()); //action
+			SubItems.Clear();
+			Text = mesh.Name;
+			SubItems.Add(Action.ToString()); //action
 			if (Group != null)
 			{
-				this.SubItems.Add(Group.Name); //target
+				SubItems.Add(Group.Name); //target
 			}
 			else
 			{
-				this.SubItems.Add("[" + Localization.GetString("none") + "]");
+				SubItems.Add("[" + Localization.GetString("none") + "]");
 			}
 
-			this.SubItems.Add(mesh.FaceIndices.Count.ToString());
-			this.SubItems.Add(mesh.Vertices.Count.ToString());
-			this.SubItems.Add("");
-			this.SubItems.Add(mesh.Envelopes.Count.ToString());
+			SubItems.Add(mesh.FaceIndices.Count.ToString());
+			SubItems.Add(mesh.Vertices.Count.ToString());
+			SubItems.Add("");
+			SubItems.Add(mesh.Envelopes.Count.ToString());
 
-			this.ForeColor = MyColor();
+			ForeColor = MyColor();
 		}
 
 		Color MyColor()

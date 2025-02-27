@@ -45,7 +45,7 @@ namespace SimPe.Packages
 		protected override IPackageFile NewCloneBase()
 		{
 			ExtractableFile fl = new ExtractableFile((BinaryReader)null);
-			fl.header = this.header;
+			fl.header = header;
 
 			return fl;
 		}
@@ -197,7 +197,7 @@ namespace SimPe.Packages
 				+ ((uint)Header.IndexType).ToString()
 				+ "\">"
 				+ Helper.lbr;
-			foreach (PackedFileDescriptor pfd in this.fileindex)
+			foreach (PackedFileDescriptor pfd in fileindex)
 			{
 				xml += pfd.GenerateXmlMetaInfo() + Helper.lbr;
 			}

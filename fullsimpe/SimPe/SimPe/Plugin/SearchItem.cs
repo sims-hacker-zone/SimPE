@@ -28,13 +28,13 @@ namespace SimPe.Plugin
 
 		public SearchItem(Interfaces.Files.IPackedFileDescriptor pfd)
 		{
-			this.Descriptor = pfd;
-			this.flname = null;
+			Descriptor = pfd;
+			flname = null;
 		}
 
 		public SearchItem(string flname, Interfaces.Files.IPackedFileDescriptor pfd)
 		{
-			this.Descriptor = pfd;
+			Descriptor = pfd;
 			this.flname = flname;
 		}
 

@@ -60,7 +60,7 @@ namespace SimPe
 				}
 			}
 
-			this.Text = Localization.GetString(name);
+			Text = Localization.GetString(name);
 		}
 
 		/// <summary>
@@ -68,8 +68,8 @@ namespace SimPe
 		/// </summary>
 		internal ExtensionDescriptor(string name, ArrayList ext)
 		{
-			this.Extensions = ext;
-			this.Text = Localization.GetString(name);
+			Extensions = ext;
+			Text = Localization.GetString(name);
 		}
 
 		/// <summary>

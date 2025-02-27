@@ -67,14 +67,14 @@ namespace SimPe.Plugin
 		)
 		{
 			this.name = name;
-			this.Guid = guid;
-			this.CompletedGuid = fullguid;
-			this.DataNumber = valuenr;
-			this.CompletedDataNumber = fullnr;
-			this.Maximum = max;
-			this.Minimum = min;
-			this.Type = type;
-			this.Intern = intern;
+			Guid = guid;
+			CompletedGuid = fullguid;
+			DataNumber = valuenr;
+			CompletedDataNumber = fullnr;
+			Maximum = max;
+			Minimum = min;
+			Type = type;
+			Intern = intern;
 		}
 
 		public bool Intern

@@ -199,8 +199,8 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public void ClearBoundingMesh()
 		{
-			this.BoundingMesh.Items.Clear();
-			this.BoundingMesh.Vertices.Clear();
+			BoundingMesh.Items.Clear();
+			BoundingMesh.Vertices.Clear();
 		}
 
 		/// <summary>
@@ -222,7 +222,7 @@ namespace SimPe.Plugin.Gmdc
 			int nr = g.Link.GetElementNr(
 				g.Link.FindElementType(ElementIdentity.Vertex)
 			);
-			int offset = this.BoundingMesh.VertexCount;
+			int offset = BoundingMesh.VertexCount;
 
 			for (int i = 0; i < g.Link.ReferencedSize; i++)
 			{
@@ -231,12 +231,12 @@ namespace SimPe.Plugin.Gmdc
 					g.Link.GetValue(nr, i).Data[1],
 					g.Link.GetValue(nr, i).Data[2]
 				);
-				this.BoundingMesh.Vertices.Add(v);
+				BoundingMesh.Vertices.Add(v);
 			}
 
 			for (int i = 0; i < g.Faces.Count; i++)
 			{
-				this.BoundingMesh.Items.Add(g.Faces[i] + offset);
+				BoundingMesh.Items.Add(g.Faces[i] + offset);
 			}
 		}
 	}
@@ -320,7 +320,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length => this.Count;
+		public int Length => Count;
 
 		/// <summary>
 		/// Create a clone of this Object
@@ -415,7 +415,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length => this.Count;
+		public int Length => Count;
 
 		/// <summary>
 		/// Create a clone of this Object

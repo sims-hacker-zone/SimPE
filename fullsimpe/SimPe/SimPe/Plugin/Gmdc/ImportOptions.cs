@@ -35,10 +35,10 @@ namespace SimPe.Plugin.Gmdc
 		/// <param name="uc">Want to Update the Crew, with the new Bone Hirarchy and Location</param>
 		public ImportOptions(DialogResult res, bool cg, bool cb, bool uc)
 		{
-			this.Result = res;
-			this.CleanBones = cb;
-			this.CleanGroups = cg;
-			this.UpdateCres = uc;
+			Result = res;
+			CleanBones = cb;
+			CleanGroups = cg;
+			UpdateCres = uc;
 		}
 
 		/// <summary>

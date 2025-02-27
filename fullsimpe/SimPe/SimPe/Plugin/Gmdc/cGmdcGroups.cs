@@ -193,7 +193,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// The Face Count for this Group
 		/// </summary>
-		public int FaceCount => this.Faces.Count / 3;
+		public int FaceCount => Faces.Count / 3;
 
 		/// <summary>
 		/// The Number of diffrent Vertices used by this Group
@@ -226,7 +226,7 @@ namespace SimPe.Plugin.Gmdc
 			get
 			{
 				int vertcount = 0;
-				if (this.LinkIndex < parent.Links.Count)
+				if (LinkIndex < parent.Links.Count)
 				{
 					if (LinkIndex >= 0 && LinkIndex < parent.Links.Count)
 					{
@@ -243,7 +243,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <returns>A String Describing the Data</returns>
 		public override string ToString()
 		{
-			if (this.Faces.Count < 0x2000 || UserVerification.HaveUserId)
+			if (Faces.Count < 0x2000 || UserVerification.HaveUserId)
 			{
 				return Name
 					+ " (FaceCount="
@@ -268,12 +268,12 @@ namespace SimPe.Plugin.Gmdc
 		public Geometry.Vectors4f GetVectors(ElementIdentity id)
 		{
 			Geometry.Vectors4f ret = new Geometry.Vectors4f();
-			if (this.Link != null)
+			if (Link != null)
 			{
-				GmdcElement e = this.Link.FindElementType(id);
+				GmdcElement e = Link.FindElementType(id);
 				if (e != null)
 				{
-					int nr = this.Link.GetElementNr(e);
+					int nr = Link.GetElementNr(e);
 
 					for (int i = 0; i < Link.ReferencedSize; i++)
 					{
@@ -373,22 +373,22 @@ namespace SimPe.Plugin.Gmdc
 			{
 				if ((int)v.X != 0xff)
 				{
-					v.X = this.UsedJoints[(byte)v.X];
+					v.X = UsedJoints[(byte)v.X];
 				}
 
 				if ((int)v.Y != 0xff)
 				{
-					v.Y = this.UsedJoints[(byte)v.Y];
+					v.Y = UsedJoints[(byte)v.Y];
 				}
 
 				if ((int)v.Z != 0xff)
 				{
-					v.Z = this.UsedJoints[(byte)v.Z];
+					v.Z = UsedJoints[(byte)v.Z];
 				}
 
 				if ((int)v.W != 0xff)
 				{
-					v.W = this.UsedJoints[(byte)v.W];
+					v.W = UsedJoints[(byte)v.W];
 				}
 			}
 			return ret;
@@ -519,7 +519,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length => this.Count;
+		public int Length => Count;
 
 		/// <summary>
 		/// Create a clone of this Object

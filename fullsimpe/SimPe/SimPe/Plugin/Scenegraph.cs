@@ -448,8 +448,8 @@ namespace SimPe.Plugin
 				if (rcol.FileDescriptor.Type == Data.MetaData.TXMT)
 				{
 					AddSlaveTxmts(
-						this.modelnames,
-						this.ExcludedReferences,
+						modelnames,
+						ExcludedReferences,
 						files,
 						itemlist,
 						rcol,
@@ -665,8 +665,8 @@ namespace SimPe.Plugin
 											);
 											ArrayList newfiles = new ArrayList();
 											LoadReferenced(
-												this.modelnames,
-												this.ExcludedReferences,
+												modelnames,
+												ExcludedReferences,
 												newfiles,
 												itemlist,
 												sub,
@@ -1095,8 +1095,8 @@ namespace SimPe.Plugin
 					GenericRcol sub = new GenericRcol(null, false);
 					sub.ProcessData(item);
 					LoadReferenced(
-						this.modelnames,
-						this.ExcludedReferences,
+						modelnames,
+						ExcludedReferences,
 						files,
 						itemlist,
 						sub,
@@ -1215,7 +1215,7 @@ namespace SimPe.Plugin
 					sub.ProcessData(item);
 					LoadReferenced(
 						this.modelnames,
-						this.ExcludedReferences,
+						ExcludedReferences,
 						files,
 						itemlist,
 						sub,
@@ -1276,8 +1276,8 @@ namespace SimPe.Plugin
 					GenericRcol sub = new GenericRcol(null, false);
 					sub.ProcessData(item);
 					LoadReferenced(
-						this.modelnames,
-						this.ExcludedReferences,
+						modelnames,
+						ExcludedReferences,
 						files,
 						itemlist,
 						sub,
@@ -1319,8 +1319,8 @@ namespace SimPe.Plugin
 							GenericRcol sub = new GenericRcol(null, false);
 							sub.ProcessData(item);
 							LoadReferenced(
-								this.modelnames,
-								this.ExcludedReferences,
+								modelnames,
+								ExcludedReferences,
 								files,
 								itemlist,
 								sub,
@@ -1473,8 +1473,8 @@ namespace SimPe.Plugin
 					GenericRcol sub = new GenericRcol(null, false);
 					sub.ProcessData(item);
 					LoadReferenced(
-						this.modelnames,
-						this.ExcludedReferences,
+						modelnames,
+						ExcludedReferences,
 						files,
 						itemlist,
 						sub,

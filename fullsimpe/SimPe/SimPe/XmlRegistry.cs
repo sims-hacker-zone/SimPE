@@ -114,7 +114,7 @@ namespace SimPe
 		/// <exception cref="Exception">Thrown if the passed Element is not a Key but a value</exception>
 		public XmlRegistryKey OpenSubKey(string name, bool create)
 		{
-			return OpenSubKey(this.GetPath(name), create);
+			return OpenSubKey(GetPath(name), create);
 		}
 
 		/// <summary>
@@ -331,7 +331,7 @@ namespace SimPe
 				}
 			}
 
-			this.filename = outfilename;
+			filename = outfilename;
 
 			//read XML File
 			XmlDocument xmlfile = new XmlDocument();

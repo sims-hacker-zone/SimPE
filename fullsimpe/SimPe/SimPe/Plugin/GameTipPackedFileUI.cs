@@ -68,7 +68,7 @@ namespace SimPe.Plugin
 
 		void IDisposable.Dispose()
 		{
-			this.TPFW.Dispose();
+			TPFW.Dispose();
 		}
 		#endregion
 
@@ -182,7 +182,7 @@ namespace SimPe.Plugin
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			this.button1.Text = "-";
+			button1.Text = "-";
 			button1.Enabled = false;
 			setgttext();
 		}
@@ -272,7 +272,7 @@ namespace SimPe.Plugin
 				&& gtimagy.ForeColor == System.Drawing.SystemColors.WindowText
 			)
 			{
-				this.CanCommit = true;
+				CanCommit = true;
 				if (button1.Text != "-")
 				{
 					button1.Enabled = true;
@@ -280,7 +280,7 @@ namespace SimPe.Plugin
 			}
 			else
 			{
-				this.CanCommit = false;
+				CanCommit = false;
 				button1.Enabled = false;
 			}
 		}

@@ -159,7 +159,7 @@ namespace SimPe.Windows.Forms
 			{
 				sorter.Column = col;
 				sorter.Asc = asc;
-				this.Sort(sorter);
+				Sort(sorter);
 			}
 		}
 	}

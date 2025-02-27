@@ -43,8 +43,8 @@ namespace SimPe.PackedFiles.Wrapper
 
 			if (Helper.WindowsRegistry.UseBigIcons)
 			{
-				this.lbcpf.Font = new System.Drawing.Font("Verdana", 12F);
-				this.rtbcpfname.Font = this.rtbcpf.Font = new System.Drawing.Font(
+				lbcpf.Font = new System.Drawing.Font("Verdana", 12F);
+				rtbcpfname.Font = rtbcpf.Font = new System.Drawing.Font(
 					"Verdana",
 					11F
 				);
@@ -75,211 +75,211 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(Elements2));
-			this.btprev = new Button();
-			this.cbtype = new ComboBox();
-			this.label8 = new Label();
-			this.rtbcpfname = new RichTextBox();
-			this.label7 = new Label();
-			this.rtbcpf = new RichTextBox();
-			this.label6 = new Label();
-			this.lbcpf = new ListBox();
-			this.panel5 = new Panel();
-			this.tbNref = new TextBox();
-			this.label10 = new Label();
-			this.tbnrefhash = new TextBox();
-			this.label9 = new Label();
-			this.NrefPanel = new Panel();
-			this.panel4 = new Panel();
-			this.CpfPanel = new Panel();
-			this.pbicon = new PictureBox();
-			this.llcpfadd = new LinkLabel();
-			this.llcpfchange = new LinkLabel();
-			this.linkLabel1 = new LinkLabel();
-			this.NrefPanel.SuspendLayout();
-			this.CpfPanel.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pbicon)).BeginInit();
-			this.SuspendLayout();
+			btprev = new Button();
+			cbtype = new ComboBox();
+			label8 = new Label();
+			rtbcpfname = new RichTextBox();
+			label7 = new Label();
+			rtbcpf = new RichTextBox();
+			label6 = new Label();
+			lbcpf = new ListBox();
+			panel5 = new Panel();
+			tbNref = new TextBox();
+			label10 = new Label();
+			tbnrefhash = new TextBox();
+			label9 = new Label();
+			NrefPanel = new Panel();
+			panel4 = new Panel();
+			CpfPanel = new Panel();
+			pbicon = new PictureBox();
+			llcpfadd = new LinkLabel();
+			llcpfchange = new LinkLabel();
+			linkLabel1 = new LinkLabel();
+			NrefPanel.SuspendLayout();
+			CpfPanel.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(pbicon)).BeginInit();
+			SuspendLayout();
 			//
 			// btprev
 			//
-			resources.ApplyResources(this.btprev, "btprev");
-			this.btprev.Name = "btprev";
-			this.btprev.Click += new EventHandler(this.btprev_Click);
+			resources.ApplyResources(btprev, "btprev");
+			btprev.Name = "btprev";
+			btprev.Click += new EventHandler(btprev_Click);
 			//
 			// cbtype
 			//
-			resources.ApplyResources(this.cbtype, "cbtype");
-			this.cbtype.DropDownStyle = ComboBoxStyle.DropDownList;
-			this.cbtype.Name = "cbtype";
-			this.cbtype.SelectedIndexChanged += new EventHandler(
-				this.CpfAutoChange
+			resources.ApplyResources(cbtype, "cbtype");
+			cbtype.DropDownStyle = ComboBoxStyle.DropDownList;
+			cbtype.Name = "cbtype";
+			cbtype.SelectedIndexChanged += new EventHandler(
+				CpfAutoChange
 			);
 			//
 			// label8
 			//
-			resources.ApplyResources(this.label8, "label8");
-			this.label8.BackColor = System.Drawing.Color.Transparent;
-			this.label8.Name = "label8";
+			resources.ApplyResources(label8, "label8");
+			label8.BackColor = System.Drawing.Color.Transparent;
+			label8.Name = "label8";
 			//
 			// rtbcpfname
 			//
-			resources.ApplyResources(this.rtbcpfname, "rtbcpfname");
-			this.rtbcpfname.BorderStyle = BorderStyle.None;
-			this.rtbcpfname.Name = "rtbcpfname";
-			this.rtbcpfname.TextChanged += new EventHandler(this.CpfAutoChange);
+			resources.ApplyResources(rtbcpfname, "rtbcpfname");
+			rtbcpfname.BorderStyle = BorderStyle.None;
+			rtbcpfname.Name = "rtbcpfname";
+			rtbcpfname.TextChanged += new EventHandler(CpfAutoChange);
 			//
 			// label7
 			//
-			resources.ApplyResources(this.label7, "label7");
-			this.label7.BackColor = System.Drawing.Color.Transparent;
-			this.label7.Name = "label7";
+			resources.ApplyResources(label7, "label7");
+			label7.BackColor = System.Drawing.Color.Transparent;
+			label7.Name = "label7";
 			//
 			// rtbcpf
 			//
-			resources.ApplyResources(this.rtbcpf, "rtbcpf");
-			this.rtbcpf.BorderStyle = BorderStyle.None;
-			this.rtbcpf.Name = "rtbcpf";
-			this.rtbcpf.TextChanged += new EventHandler(this.CpfAutoChange);
+			resources.ApplyResources(rtbcpf, "rtbcpf");
+			rtbcpf.BorderStyle = BorderStyle.None;
+			rtbcpf.Name = "rtbcpf";
+			rtbcpf.TextChanged += new EventHandler(CpfAutoChange);
 			//
 			// label6
 			//
-			resources.ApplyResources(this.label6, "label6");
-			this.label6.BackColor = System.Drawing.Color.Transparent;
-			this.label6.Name = "label6";
+			resources.ApplyResources(label6, "label6");
+			label6.BackColor = System.Drawing.Color.Transparent;
+			label6.Name = "label6";
 			//
 			// lbcpf
 			//
-			resources.ApplyResources(this.lbcpf, "lbcpf");
-			this.lbcpf.Name = "lbcpf";
-			this.lbcpf.SelectedIndexChanged += new EventHandler(
-				this.CpfItemSelect
+			resources.ApplyResources(lbcpf, "lbcpf");
+			lbcpf.Name = "lbcpf";
+			lbcpf.SelectedIndexChanged += new EventHandler(
+				CpfItemSelect
 			);
 			//
 			// panel5
 			//
-			resources.ApplyResources(this.panel5, "panel5");
+			resources.ApplyResources(panel5, "panel5");
 			//this.panel5.CanCommit = true;
-			this.panel5.Name = "panel5";
+			panel5.Name = "panel5";
 			//this.panel5.OnCommit += new System.Windows.Forms.Panel.EventHandler(this.CpfCommit);
 			//
 			// tbNref
 			//
-			resources.ApplyResources(this.tbNref, "tbNref");
-			this.tbNref.Name = "tbNref";
-			this.tbNref.TextChanged += new EventHandler(this.tbnref_TextChanged);
+			resources.ApplyResources(tbNref, "tbNref");
+			tbNref.Name = "tbNref";
+			tbNref.TextChanged += new EventHandler(tbnref_TextChanged);
 			//
 			// label10
 			//
-			resources.ApplyResources(this.label10, "label10");
-			this.label10.BackColor = System.Drawing.Color.Transparent;
-			this.label10.Name = "label10";
+			resources.ApplyResources(label10, "label10");
+			label10.BackColor = System.Drawing.Color.Transparent;
+			label10.Name = "label10";
 			//
 			// tbnrefhash
 			//
-			resources.ApplyResources(this.tbnrefhash, "tbnrefhash");
-			this.tbnrefhash.Name = "tbnrefhash";
-			this.tbnrefhash.ReadOnly = true;
+			resources.ApplyResources(tbnrefhash, "tbnrefhash");
+			tbnrefhash.Name = "tbnrefhash";
+			tbnrefhash.ReadOnly = true;
 			//
 			// label9
 			//
-			resources.ApplyResources(this.label9, "label9");
-			this.label9.BackColor = System.Drawing.Color.Transparent;
-			this.label9.Name = "label9";
+			resources.ApplyResources(label9, "label9");
+			label9.BackColor = System.Drawing.Color.Transparent;
+			label9.Name = "label9";
 			//
 			// NrefPanel
 			//
-			this.NrefPanel.BackColor = System.Drawing.Color.Transparent;
+			NrefPanel.BackColor = System.Drawing.Color.Transparent;
 			//this.NrefPanel.BackgroundImageAnchor = System.Windows.Forms.Panel.ImageLayout.CenterTop;
 			//this.NrefPanel.BackgroundImageLocation = new System.Drawing.Point(0, 24);
 			//this.NrefPanel.BackgroundImageZoomToFit = true;
-			this.NrefPanel.Controls.Add(this.panel4);
-			this.NrefPanel.Controls.Add(this.tbnrefhash);
-			this.NrefPanel.Controls.Add(this.tbNref);
-			this.NrefPanel.Controls.Add(this.label9);
-			this.NrefPanel.Controls.Add(this.label10);
-			resources.ApplyResources(this.NrefPanel, "NrefPanel");
-			this.NrefPanel.Name = "NrefPanel";
+			NrefPanel.Controls.Add(panel4);
+			NrefPanel.Controls.Add(tbnrefhash);
+			NrefPanel.Controls.Add(tbNref);
+			NrefPanel.Controls.Add(label9);
+			NrefPanel.Controls.Add(label10);
+			resources.ApplyResources(NrefPanel, "NrefPanel");
+			NrefPanel.Name = "NrefPanel";
 			//
 			// panel4
 			//
-			resources.ApplyResources(this.panel4, "panel4");
+			resources.ApplyResources(panel4, "panel4");
 			//this.panel4.CanCommit = true;
-			this.panel4.Name = "panel4";
+			panel4.Name = "panel4";
 			//this.panel4.OnCommit += new System.Windows.Forms.Panel.EventHandler(this.NrefCommit);
 			//
 			// CpfPanel
 			//
-			this.CpfPanel.BackColor = System.Drawing.Color.Transparent;
-			this.CpfPanel.BorderStyle = BorderStyle.FixedSingle;
-			this.CpfPanel.Controls.Add(this.pbicon);
-			this.CpfPanel.Controls.Add(this.lbcpf);
-			this.CpfPanel.Controls.Add(this.panel5);
-			this.CpfPanel.Controls.Add(this.btprev);
-			this.CpfPanel.Controls.Add(this.rtbcpf);
-			this.CpfPanel.Controls.Add(this.llcpfadd);
-			this.CpfPanel.Controls.Add(this.llcpfchange);
-			this.CpfPanel.Controls.Add(this.linkLabel1);
-			this.CpfPanel.Controls.Add(this.rtbcpfname);
-			this.CpfPanel.Controls.Add(this.cbtype);
-			this.CpfPanel.Controls.Add(this.label6);
-			this.CpfPanel.Controls.Add(this.label8);
-			this.CpfPanel.Controls.Add(this.label7);
+			CpfPanel.BackColor = System.Drawing.Color.Transparent;
+			CpfPanel.BorderStyle = BorderStyle.FixedSingle;
+			CpfPanel.Controls.Add(pbicon);
+			CpfPanel.Controls.Add(lbcpf);
+			CpfPanel.Controls.Add(panel5);
+			CpfPanel.Controls.Add(btprev);
+			CpfPanel.Controls.Add(rtbcpf);
+			CpfPanel.Controls.Add(llcpfadd);
+			CpfPanel.Controls.Add(llcpfchange);
+			CpfPanel.Controls.Add(linkLabel1);
+			CpfPanel.Controls.Add(rtbcpfname);
+			CpfPanel.Controls.Add(cbtype);
+			CpfPanel.Controls.Add(label6);
+			CpfPanel.Controls.Add(label8);
+			CpfPanel.Controls.Add(label7);
 			//this.CpfPanel.EndColour = System.Drawing.SystemColors.Control;
-			resources.ApplyResources(this.CpfPanel, "CpfPanel");
+			resources.ApplyResources(CpfPanel, "CpfPanel");
 			//this.CpfPanel.MiddleColour = System.Drawing.SystemColors.Control;
-			this.CpfPanel.Name = "CpfPanel";
+			CpfPanel.Name = "CpfPanel";
 			//this.CpfPanel.StartColour = System.Drawing.SystemColors.Control;
 			//
 			// pbicon
 			//
-			resources.ApplyResources(this.pbicon, "pbicon");
-			this.pbicon.Name = "pbicon";
-			this.pbicon.TabStop = false;
+			resources.ApplyResources(pbicon, "pbicon");
+			pbicon.Name = "pbicon";
+			pbicon.TabStop = false;
 			//
 			// llcpfadd
 			//
-			resources.ApplyResources(this.llcpfadd, "llcpfadd");
-			this.llcpfadd.BackColor = System.Drawing.Color.Transparent;
-			this.llcpfadd.Name = "llcpfadd";
-			this.llcpfadd.TabStop = true;
-			this.llcpfadd.UseCompatibleTextRendering = true;
-			this.llcpfadd.LinkClicked +=
-				new LinkLabelLinkClickedEventHandler(this.AddCpf);
+			resources.ApplyResources(llcpfadd, "llcpfadd");
+			llcpfadd.BackColor = System.Drawing.Color.Transparent;
+			llcpfadd.Name = "llcpfadd";
+			llcpfadd.TabStop = true;
+			llcpfadd.UseCompatibleTextRendering = true;
+			llcpfadd.LinkClicked +=
+				new LinkLabelLinkClickedEventHandler(AddCpf);
 			//
 			// llcpfchange
 			//
-			resources.ApplyResources(this.llcpfchange, "llcpfchange");
-			this.llcpfchange.BackColor = System.Drawing.Color.Transparent;
-			this.llcpfchange.Name = "llcpfchange";
-			this.llcpfchange.TabStop = true;
-			this.llcpfchange.LinkClicked +=
+			resources.ApplyResources(llcpfchange, "llcpfchange");
+			llcpfchange.BackColor = System.Drawing.Color.Transparent;
+			llcpfchange.Name = "llcpfchange";
+			llcpfchange.TabStop = true;
+			llcpfchange.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.CpfChange
+					CpfChange
 				);
 			//
 			// linkLabel1
 			//
-			resources.ApplyResources(this.linkLabel1, "linkLabel1");
-			this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
-			this.linkLabel1.Name = "linkLabel1";
-			this.linkLabel1.TabStop = true;
-			this.linkLabel1.LinkClicked +=
+			resources.ApplyResources(linkLabel1, "linkLabel1");
+			linkLabel1.BackColor = System.Drawing.Color.Transparent;
+			linkLabel1.Name = "linkLabel1";
+			linkLabel1.TabStop = true;
+			linkLabel1.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.DeleteCpf
+					DeleteCpf
 				);
 			//
 			// Elements2
 			//
 			resources.ApplyResources(this, "$this");
-			this.Controls.Add(this.NrefPanel);
-			this.Controls.Add(this.CpfPanel);
-			this.Name = "Elements2";
-			this.NrefPanel.ResumeLayout(false);
-			this.NrefPanel.PerformLayout();
-			this.CpfPanel.ResumeLayout(false);
-			this.CpfPanel.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pbicon)).EndInit();
-			this.ResumeLayout(false);
+			Controls.Add(NrefPanel);
+			Controls.Add(CpfPanel);
+			Name = "Elements2";
+			NrefPanel.ResumeLayout(false);
+			NrefPanel.PerformLayout();
+			CpfPanel.ResumeLayout(false);
+			CpfPanel.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(pbicon)).EndInit();
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -317,19 +317,19 @@ namespace SimPe.PackedFiles.Wrapper
 				return;
 			}
 
-			this.llcpfchange.Enabled = false;
-			if (this.lbcpf.SelectedIndex < 0)
+			llcpfchange.Enabled = false;
+			if (lbcpf.SelectedIndex < 0)
 			{
 				return;
 			}
 
-			this.llcpfchange.Enabled = true;
+			llcpfchange.Enabled = true;
 
 			rtbcpfname.Tag = true;
 			try
 			{
 				CpfItem item = (CpfItem)lbcpf.Items[lbcpf.SelectedIndex];
-				this.rtbcpfname.Text = item.Name;
+				rtbcpfname.Text = item.Name;
 				for (int i = 0; i < cbtype.Items.Count; i++)
 				{
 					cbtype.SelectedIndex = -1;
@@ -515,7 +515,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			try
 			{
-				if (this.lbcpf.SelectedIndex >= 0)
+				if (lbcpf.SelectedIndex >= 0)
 				{
 					CpfChange(null, null);
 				}

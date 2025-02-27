@@ -89,7 +89,7 @@ namespace SimPe.Plugin.Scanner
 			foreach (ScannerItem item in items)
 			{
 				PackageState ps = item.PackageCacheItem.FindState(
-					this.Uid,
+					Uid,
 					true
 				);
 				if (item.PackageCacheItem.Type == PackageType.Skin)

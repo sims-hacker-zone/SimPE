@@ -61,7 +61,7 @@ namespace Ambertation.Windows.Forms
 			);
 			Items = new Collections.GraphElements();
 			Items.ItemsChanged += new EventHandler(li_ItemsChanged);
-			this.BackColor = SystemColors.ControlLightLight;
+			BackColor = SystemColors.ControlLightLight;
 			lm = LinkControlLineMode.Bezier;
 			quality = true;
 			savebound = true;
@@ -177,11 +177,11 @@ namespace Ambertation.Windows.Forms
 			set
 			{
 				autosz = value;
-				this.li_ItemsChanged(Items, null);
+				li_ItemsChanged(Items, null);
 				if (autosz)
 				{
 					Dock = DockStyle.None;
-					this.SetBounds(0, 0, Width, Height);
+					SetBounds(0, 0, Width, Height);
 				}
 			}
 		}
@@ -195,7 +195,7 @@ namespace Ambertation.Windows.Forms
 			set
 			{
 				lm = value;
-				this.SetLinkLineMode();
+				SetLinkLineMode();
 			}
 		}
 
@@ -209,7 +209,7 @@ namespace Ambertation.Windows.Forms
 			set
 			{
 				quality = value;
-				this.SetLinkQuality();
+				SetLinkQuality();
 			}
 		}
 		int minwd,
@@ -220,7 +220,7 @@ namespace Ambertation.Windows.Forms
 		{
 			get
 			{
-				if (this.DesignMode && Parent != null)
+				if (DesignMode && Parent != null)
 				{
 					return Parent.Width;
 				}
@@ -239,7 +239,7 @@ namespace Ambertation.Windows.Forms
 		{
 			get
 			{
-				if (this.DesignMode && Parent != null)
+				if (DesignMode && Parent != null)
 				{
 					return Parent.Height;
 				}
@@ -439,7 +439,7 @@ namespace Ambertation.Windows.Forms
 		{
 			foreach (GraphPanelElement gpe in Items)
 			{
-				gpe.SaveBounds = this.SaveBounds;
+				gpe.SaveBounds = SaveBounds;
 			}
 		}
 
@@ -449,7 +449,7 @@ namespace Ambertation.Windows.Forms
 			{
 				if (gpe is DragPanel)
 				{
-					((DragPanel)gpe).Movable = !this.LockItems;
+					((DragPanel)gpe).Movable = !LockItems;
 				}
 			}
 		}
@@ -469,8 +469,8 @@ namespace Ambertation.Windows.Forms
 				my = Math.Max(my, gpe.Bottom);
 			}
 
-			this.Width = Math.Max(mx, MinWidth);
-			this.Height = Math.Max(my, MinHeight);
+			Width = Math.Max(mx, MinWidth);
+			Height = Math.Max(my, MinHeight);
 		}
 
 		private void Parent_SizeChanged(object sender, EventArgs e)
@@ -502,7 +502,7 @@ namespace Ambertation.Windows.Forms
 				l.Parent = null;
 			}
 
-			this.Refresh();
+			Refresh();
 		}
 
 		/// <summary>

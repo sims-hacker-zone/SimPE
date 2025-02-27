@@ -41,8 +41,8 @@ namespace SimPe.Plugin
 
 			if (Helper.WindowsRegistry.UseBigIcons)
 			{
-				this.lblist.Font = new System.Drawing.Font(
-					this.lblist.Font.FontFamily,
+				lblist.Font = new System.Drawing.Font(
+					lblist.Font.FontFamily,
 					11F
 				);
 			}
@@ -72,206 +72,206 @@ namespace SimPe.Plugin
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(NmapForm));
-			this.wrapperPanel = new Panel();
-			this.groupBox1 = new GroupBox();
-			this.linkLabel1 = new LinkLabel();
-			this.tbfindname = new TextBox();
-			this.label3 = new Label();
-			this.btref = new Button();
-			this.gbtypes = new GroupBox();
-			this.pntypes = new Panel();
-			this.tbname = new TextBox();
-			this.label2 = new Label();
-			this.lladd = new LinkLabel();
-			this.lldelete = new LinkLabel();
-			this.tbinstance = new TextBox();
-			this.label11 = new Label();
-			this.label9 = new Label();
-			this.tbgroup = new TextBox();
-			this.llcommit = new LinkLabel();
-			this.lblist = new ListBox();
-			this.panel3 = new Panel();
-			this.sfd = new SaveFileDialog();
-			this.wrapperPanel.SuspendLayout();
-			this.groupBox1.SuspendLayout();
-			this.gbtypes.SuspendLayout();
-			this.pntypes.SuspendLayout();
-			this.SuspendLayout();
+			wrapperPanel = new Panel();
+			groupBox1 = new GroupBox();
+			linkLabel1 = new LinkLabel();
+			tbfindname = new TextBox();
+			label3 = new Label();
+			btref = new Button();
+			gbtypes = new GroupBox();
+			pntypes = new Panel();
+			tbname = new TextBox();
+			label2 = new Label();
+			lladd = new LinkLabel();
+			lldelete = new LinkLabel();
+			tbinstance = new TextBox();
+			label11 = new Label();
+			label9 = new Label();
+			tbgroup = new TextBox();
+			llcommit = new LinkLabel();
+			lblist = new ListBox();
+			panel3 = new Panel();
+			sfd = new SaveFileDialog();
+			wrapperPanel.SuspendLayout();
+			groupBox1.SuspendLayout();
+			gbtypes.SuspendLayout();
+			pntypes.SuspendLayout();
+			SuspendLayout();
 			//
 			// wrapperPanel
 			//
-			resources.ApplyResources(this.wrapperPanel, "wrapperPanel");
-			this.wrapperPanel.BackColor = System.Drawing.Color.Transparent;
-			this.wrapperPanel.Controls.Add(this.groupBox1);
-			this.wrapperPanel.Controls.Add(this.btref);
-			this.wrapperPanel.Controls.Add(this.gbtypes);
-			this.wrapperPanel.Controls.Add(this.lblist);
-			this.wrapperPanel.Controls.Add(this.panel3);
-			this.wrapperPanel.Name = "wrapperPanel";
+			resources.ApplyResources(wrapperPanel, "wrapperPanel");
+			wrapperPanel.BackColor = System.Drawing.Color.Transparent;
+			wrapperPanel.Controls.Add(groupBox1);
+			wrapperPanel.Controls.Add(btref);
+			wrapperPanel.Controls.Add(gbtypes);
+			wrapperPanel.Controls.Add(lblist);
+			wrapperPanel.Controls.Add(panel3);
+			wrapperPanel.Name = "wrapperPanel";
 			//
 			// groupBox1
 			//
-			resources.ApplyResources(this.groupBox1, "groupBox1");
-			this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-			this.groupBox1.Controls.Add(this.linkLabel1);
-			this.groupBox1.Controls.Add(this.tbfindname);
-			this.groupBox1.Controls.Add(this.label3);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.TabStop = false;
+			resources.ApplyResources(groupBox1, "groupBox1");
+			groupBox1.BackColor = System.Drawing.Color.Transparent;
+			groupBox1.Controls.Add(linkLabel1);
+			groupBox1.Controls.Add(tbfindname);
+			groupBox1.Controls.Add(label3);
+			groupBox1.Name = "groupBox1";
+			groupBox1.TabStop = false;
 			//
 			// linkLabel1
 			//
-			resources.ApplyResources(this.linkLabel1, "linkLabel1");
-			this.linkLabel1.Name = "linkLabel1";
-			this.linkLabel1.TabStop = true;
-			this.linkLabel1.UseCompatibleTextRendering = true;
-			this.linkLabel1.LinkClicked +=
+			resources.ApplyResources(linkLabel1, "linkLabel1");
+			linkLabel1.Name = "linkLabel1";
+			linkLabel1.TabStop = true;
+			linkLabel1.UseCompatibleTextRendering = true;
+			linkLabel1.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.CreateTextFile
+					CreateTextFile
 				);
 			//
 			// tbfindname
 			//
-			resources.ApplyResources(this.tbfindname, "tbfindname");
-			this.tbfindname.Name = "tbfindname";
-			this.tbfindname.TextChanged += new EventHandler(
-				this.tbfindname_TextChanged
+			resources.ApplyResources(tbfindname, "tbfindname");
+			tbfindname.Name = "tbfindname";
+			tbfindname.TextChanged += new EventHandler(
+				tbfindname_TextChanged
 			);
 			//
 			// label3
 			//
-			resources.ApplyResources(this.label3, "label3");
-			this.label3.Name = "label3";
+			resources.ApplyResources(label3, "label3");
+			label3.Name = "label3";
 			//
 			// btref
 			//
-			resources.ApplyResources(this.btref, "btref");
-			this.btref.Name = "btref";
-			this.btref.Click += new EventHandler(this.ShowPackageSelector);
+			resources.ApplyResources(btref, "btref");
+			btref.Name = "btref";
+			btref.Click += new EventHandler(ShowPackageSelector);
 			//
 			// gbtypes
 			//
-			resources.ApplyResources(this.gbtypes, "gbtypes");
-			this.gbtypes.BackColor = System.Drawing.Color.Transparent;
-			this.gbtypes.Controls.Add(this.pntypes);
-			this.gbtypes.Name = "gbtypes";
-			this.gbtypes.TabStop = false;
+			resources.ApplyResources(gbtypes, "gbtypes");
+			gbtypes.BackColor = System.Drawing.Color.Transparent;
+			gbtypes.Controls.Add(pntypes);
+			gbtypes.Name = "gbtypes";
+			gbtypes.TabStop = false;
 			//
 			// pntypes
 			//
-			resources.ApplyResources(this.pntypes, "pntypes");
-			this.pntypes.Controls.Add(this.tbname);
-			this.pntypes.Controls.Add(this.label2);
-			this.pntypes.Controls.Add(this.lladd);
-			this.pntypes.Controls.Add(this.lldelete);
-			this.pntypes.Controls.Add(this.tbinstance);
-			this.pntypes.Controls.Add(this.label11);
-			this.pntypes.Controls.Add(this.label9);
-			this.pntypes.Controls.Add(this.tbgroup);
-			this.pntypes.Controls.Add(this.llcommit);
-			this.pntypes.Name = "pntypes";
+			resources.ApplyResources(pntypes, "pntypes");
+			pntypes.Controls.Add(tbname);
+			pntypes.Controls.Add(label2);
+			pntypes.Controls.Add(lladd);
+			pntypes.Controls.Add(lldelete);
+			pntypes.Controls.Add(tbinstance);
+			pntypes.Controls.Add(label11);
+			pntypes.Controls.Add(label9);
+			pntypes.Controls.Add(tbgroup);
+			pntypes.Controls.Add(llcommit);
+			pntypes.Name = "pntypes";
 			//
 			// tbname
 			//
-			resources.ApplyResources(this.tbname, "tbname");
-			this.tbname.Name = "tbname";
-			this.tbname.TextChanged += new EventHandler(this.AutoChange);
+			resources.ApplyResources(tbname, "tbname");
+			tbname.Name = "tbname";
+			tbname.TextChanged += new EventHandler(AutoChange);
 			//
 			// label2
 			//
-			resources.ApplyResources(this.label2, "label2");
-			this.label2.Name = "label2";
+			resources.ApplyResources(label2, "label2");
+			label2.Name = "label2";
 			//
 			// lladd
 			//
-			resources.ApplyResources(this.lladd, "lladd");
-			this.lladd.Name = "lladd";
-			this.lladd.TabStop = true;
-			this.lladd.UseCompatibleTextRendering = true;
-			this.lladd.LinkClicked +=
-				new LinkLabelLinkClickedEventHandler(this.AddFile);
+			resources.ApplyResources(lladd, "lladd");
+			lladd.Name = "lladd";
+			lladd.TabStop = true;
+			lladd.UseCompatibleTextRendering = true;
+			lladd.LinkClicked +=
+				new LinkLabelLinkClickedEventHandler(AddFile);
 			//
 			// lldelete
 			//
-			resources.ApplyResources(this.lldelete, "lldelete");
-			this.lldelete.Name = "lldelete";
-			this.lldelete.TabStop = true;
-			this.lldelete.UseCompatibleTextRendering = true;
-			this.lldelete.LinkClicked +=
+			resources.ApplyResources(lldelete, "lldelete");
+			lldelete.Name = "lldelete";
+			lldelete.TabStop = true;
+			lldelete.UseCompatibleTextRendering = true;
+			lldelete.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.DeleteFile
+					DeleteFile
 				);
 			//
 			// tbinstance
 			//
-			resources.ApplyResources(this.tbinstance, "tbinstance");
-			this.tbinstance.Name = "tbinstance";
-			this.tbinstance.TextChanged += new EventHandler(this.AutoChange);
+			resources.ApplyResources(tbinstance, "tbinstance");
+			tbinstance.Name = "tbinstance";
+			tbinstance.TextChanged += new EventHandler(AutoChange);
 			//
 			// label11
 			//
-			resources.ApplyResources(this.label11, "label11");
-			this.label11.Name = "label11";
+			resources.ApplyResources(label11, "label11");
+			label11.Name = "label11";
 			//
 			// label9
 			//
-			resources.ApplyResources(this.label9, "label9");
-			this.label9.Name = "label9";
+			resources.ApplyResources(label9, "label9");
+			label9.Name = "label9";
 			//
 			// tbgroup
 			//
-			resources.ApplyResources(this.tbgroup, "tbgroup");
-			this.tbgroup.Name = "tbgroup";
-			this.tbgroup.TextChanged += new EventHandler(this.AutoChange);
+			resources.ApplyResources(tbgroup, "tbgroup");
+			tbgroup.Name = "tbgroup";
+			tbgroup.TextChanged += new EventHandler(AutoChange);
 			//
 			// llcommit
 			//
-			resources.ApplyResources(this.llcommit, "llcommit");
-			this.llcommit.Name = "llcommit";
-			this.llcommit.TabStop = true;
-			this.llcommit.LinkClicked +=
+			resources.ApplyResources(llcommit, "llcommit");
+			llcommit.Name = "llcommit";
+			llcommit.TabStop = true;
+			llcommit.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.ChangeFile
+					ChangeFile
 				);
 			//
 			// lblist
 			//
-			this.lblist.AllowDrop = true;
-			resources.ApplyResources(this.lblist, "lblist");
-			this.lblist.Name = "lblist";
-			this.lblist.SelectedIndexChanged += new EventHandler(
-				this.SelectFile
+			lblist.AllowDrop = true;
+			resources.ApplyResources(lblist, "lblist");
+			lblist.Name = "lblist";
+			lblist.SelectedIndexChanged += new EventHandler(
+				SelectFile
 			);
-			this.lblist.DragDrop += new DragEventHandler(
-				this.PackageItemDrop
+			lblist.DragDrop += new DragEventHandler(
+				PackageItemDrop
 			);
-			this.lblist.DragEnter += new DragEventHandler(
-				this.PackageItemDragEnter
+			lblist.DragEnter += new DragEventHandler(
+				PackageItemDragEnter
 			);
 			//
 			// panel3
 			//
-			resources.ApplyResources(this.panel3, "panel3");
-			this.panel3.BackColor = System.Drawing.SystemColors.AppWorkspace;
-			this.panel3.ForeColor = System.Drawing.Color.White;
-			this.panel3.Name = "panel3";
+			resources.ApplyResources(panel3, "panel3");
+			panel3.BackColor = System.Drawing.SystemColors.AppWorkspace;
+			panel3.ForeColor = System.Drawing.Color.White;
+			panel3.Name = "panel3";
 			//
 			// sfd
 			//
-			resources.ApplyResources(this.sfd, "sfd");
+			resources.ApplyResources(sfd, "sfd");
 			//
 			// NmapForm
 			//
 			resources.ApplyResources(this, "$this");
-			this.Controls.Add(this.wrapperPanel);
-			this.Name = "NmapForm";
-			this.wrapperPanel.ResumeLayout(false);
-			this.groupBox1.ResumeLayout(false);
-			this.groupBox1.PerformLayout();
-			this.gbtypes.ResumeLayout(false);
-			this.pntypes.ResumeLayout(false);
-			this.pntypes.PerformLayout();
-			this.ResumeLayout(false);
+			Controls.Add(wrapperPanel);
+			Name = "NmapForm";
+			wrapperPanel.ResumeLayout(false);
+			groupBox1.ResumeLayout(false);
+			groupBox1.PerformLayout();
+			gbtypes.ResumeLayout(false);
+			pntypes.ResumeLayout(false);
+			pntypes.PerformLayout();
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -321,9 +321,9 @@ namespace SimPe.Plugin
 				Interfaces.Files.IPackedFileDescriptor pfd =
 					(Interfaces.Files.IPackedFileDescriptor)
 						lblist.Items[lblist.SelectedIndex];
-				this.tbgroup.Text = "0x" + Helper.HexString(pfd.Group);
-				this.tbinstance.Text = "0x" + Helper.HexString(pfd.Instance);
-				this.tbname.Text = pfd.Filename;
+				tbgroup.Text = "0x" + Helper.HexString(pfd.Group);
+				tbinstance.Text = "0x" + Helper.HexString(pfd.Instance);
+				tbname.Text = pfd.Filename;
 			}
 			catch (Exception ex)
 			{
@@ -356,9 +356,9 @@ namespace SimPe.Plugin
 					pfd = new NmapItem(wrapper);
 				}
 
-				pfd.Group = Convert.ToUInt32(this.tbgroup.Text, 16);
-				pfd.Instance = Convert.ToUInt32(this.tbinstance.Text, 16);
-				pfd.Filename = this.tbname.Text;
+				pfd.Group = Convert.ToUInt32(tbgroup.Text, 16);
+				pfd.Instance = Convert.ToUInt32(tbinstance.Text, 16);
+				pfd.Filename = tbname.Text;
 
 				if (lblist.SelectedIndex >= 0)
 				{

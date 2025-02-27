@@ -196,7 +196,7 @@ namespace SimPe
 
 		public virtual string ConcatHeader(string[] props)
 		{
-			return this.Concat(props);
+			return Concat(props);
 		}
 	}
 }

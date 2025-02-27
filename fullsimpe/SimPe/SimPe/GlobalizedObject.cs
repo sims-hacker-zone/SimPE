@@ -61,7 +61,7 @@ namespace SimPe
 				// If yes, then try to get resource table name and display name id from that attribute.
 				string tableName = "";
 				string displayName = "";
-				foreach (Attribute oAttrib in this.basePropertyDescriptor.Attributes)
+				foreach (Attribute oAttrib in basePropertyDescriptor.Attributes)
 				{
 					if (oAttrib.GetType().Equals(typeof(GlobalizedPropertyAttribute)))
 					{
@@ -82,16 +82,16 @@ namespace SimPe
 				// If no display name id is specified by attribute, then construct it by using default display name (usually the property name)
 				if (displayName.Length == 0)
 				{
-					displayName = this.basePropertyDescriptor.DisplayName;
+					displayName = basePropertyDescriptor.DisplayName;
 				}
 
 				// Get the string from the resources.
 				// If this fails, then use default display name (usually the property name)
 				string s = resource.GetString("[Property:" + displayName + "]");
-				this.localizedName =
-					(s != null) ? s : this.basePropertyDescriptor.DisplayName;
+				localizedName =
+					(s != null) ? s : basePropertyDescriptor.DisplayName;
 
-				return this.localizedName;
+				return localizedName;
 			}
 		}
 		public override string Category
@@ -103,7 +103,7 @@ namespace SimPe
 				// If yes, try to get resource table name and display name id from that attribute.
 				string tableName = "";
 				string displayName = "";
-				foreach (Attribute oAttrib in this.basePropertyDescriptor.Attributes)
+				foreach (Attribute oAttrib in basePropertyDescriptor.Attributes)
 				{
 					if (oAttrib.GetType().Equals(typeof(GlobalizedPropertyAttribute)))
 					{
@@ -126,15 +126,15 @@ namespace SimPe
 				// If no display name id is specified by attribute, then construct it by using default display name (usually the property name)
 				if (displayName.Length == 0)
 				{
-					displayName = this.basePropertyDescriptor.Category;
+					displayName = basePropertyDescriptor.Category;
 				}
 
 				// Get the string from the resources.
 				// If this fails, then use default empty string indictating 'no description'
 				string s = resource.GetString("[Category:" + displayName + "]");
-				this.localizedCategory = (s != null) ? s : "";
+				localizedCategory = (s != null) ? s : "";
 
-				return this.localizedCategory;
+				return localizedCategory;
 			}
 		}
 
@@ -147,7 +147,7 @@ namespace SimPe
 				// If yes, try to get resource table name and display name id from that attribute.
 				string tableName = "";
 				string displayName = "";
-				foreach (Attribute oAttrib in this.basePropertyDescriptor.Attributes)
+				foreach (Attribute oAttrib in basePropertyDescriptor.Attributes)
 				{
 					if (oAttrib.GetType().Equals(typeof(GlobalizedPropertyAttribute)))
 					{
@@ -170,42 +170,42 @@ namespace SimPe
 				// If no display name id is specified by attribute, then construct it by using default display name (usually the property name)
 				if (displayName.Length == 0)
 				{
-					displayName = this.basePropertyDescriptor.DisplayName;
+					displayName = basePropertyDescriptor.DisplayName;
 				}
 
 				// Get the string from the resources.
 				// If this fails, then use default empty string indictating 'no description'
 				string s = resource.GetString("[Description:" + displayName + "]");
-				this.localizedDescription = (s != null) ? s : "";
+				localizedDescription = (s != null) ? s : "";
 
-				return this.localizedDescription;
+				return localizedDescription;
 			}
 		}
 
 		public override object GetValue(object component)
 		{
-			return this.basePropertyDescriptor.GetValue(component);
+			return basePropertyDescriptor.GetValue(component);
 		}
 
-		public override bool IsReadOnly => this.basePropertyDescriptor.IsReadOnly;
+		public override bool IsReadOnly => basePropertyDescriptor.IsReadOnly;
 
-		public override string Name => this.basePropertyDescriptor.Name;
+		public override string Name => basePropertyDescriptor.Name;
 
-		public override Type PropertyType => this.basePropertyDescriptor.PropertyType;
+		public override Type PropertyType => basePropertyDescriptor.PropertyType;
 
 		public override void ResetValue(object component)
 		{
-			this.basePropertyDescriptor.ResetValue(component);
+			basePropertyDescriptor.ResetValue(component);
 		}
 
 		public override bool ShouldSerializeValue(object component)
 		{
-			return this.basePropertyDescriptor.ShouldSerializeValue(component);
+			return basePropertyDescriptor.ShouldSerializeValue(component);
 		}
 
 		public override void SetValue(object component, object value)
 		{
-			this.basePropertyDescriptor.SetValue(component, value);
+			basePropertyDescriptor.SetValue(component, value);
 		}
 	}
 	#endregion

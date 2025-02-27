@@ -36,8 +36,8 @@ namespace Ambertation.Windows.Forms.Graph
 
 		public PropertyItem(string name, object val)
 		{
-			this.Name = name;
-			this.Value = val;
+			Name = name;
+			Value = val;
 		}
 	}
 }

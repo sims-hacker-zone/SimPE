@@ -138,7 +138,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				return;
 			}
 
-			this.lbEPs.Visible = this.lbEPList.Visible = false;
+			lbEPs.Visible = lbEPList.Visible = false;
 
 			SetupCategories(
 				Cache.ObjectCacheItem.GetCategory(
@@ -157,21 +157,21 @@ namespace SimPe.Plugin.Tool.Dockable
 			{
 				if (strs.Count > 0)
 				{
-					this.lbName.Text = strs[0].Title;
+					lbName.Text = strs[0].Title;
 				}
 
 				if (strs.Count > 1)
 				{
-					this.lbAbout.Text = strs[1].Title;
+					lbAbout.Text = strs[1].Title;
 				}
 			}
 			else
 			{
-				this.lbName.Text = cpf.GetSaveItem("name").StringValue;
-				this.lbAbout.Text = cpf.GetSaveItem("description").StringValue;
+				lbName.Text = cpf.GetSaveItem("name").StringValue;
+				lbAbout.Text = cpf.GetSaveItem("description").StringValue;
 			}
 
-			this.lbPrice.Text = cpf.GetSaveItem("cost").UIntegerValue.ToString() + " $";
+			lbPrice.Text = cpf.GetSaveItem("cost").UIntegerValue.ToString() + " $";
 
 			if (pb.Image == null)
 			{

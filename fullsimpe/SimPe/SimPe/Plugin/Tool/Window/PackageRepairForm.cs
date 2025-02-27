@@ -55,48 +55,48 @@ namespace SimPe.Plugin.Tool.Window
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.resources1 = new System.ComponentModel.ComponentResourceManager(
+			resources1 = new System.ComponentModel.ComponentResourceManager(
 				typeof(PreviewForm)
 			);
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(PackageRepairForm)
 				);
-			this.xpGradientPanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
-			this.tbs = new Ambertation.Windows.Forms.XPTaskBoxSimple();
-			this.llOpen = new LinkLabel();
-			this.pg = new PropertyGrid();
-			this.llRepair = new LinkLabel();
-			this.btBrowse = new Button();
-			this.tbPkg = new TextBox();
-			this.label1 = new Label();
-			this.xpGradientPanel1.SuspendLayout();
-			this.tbs.SuspendLayout();
-			this.SuspendLayout();
+			xpGradientPanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
+			tbs = new Ambertation.Windows.Forms.XPTaskBoxSimple();
+			llOpen = new LinkLabel();
+			pg = new PropertyGrid();
+			llRepair = new LinkLabel();
+			btBrowse = new Button();
+			tbPkg = new TextBox();
+			label1 = new Label();
+			xpGradientPanel1.SuspendLayout();
+			tbs.SuspendLayout();
+			SuspendLayout();
 			//
 			// xpGradientPanel1
 			//
-			this.xpGradientPanel1.BackColor = System.Drawing.Color.Transparent;
-			this.xpGradientPanel1.Controls.Add(this.tbs);
-			this.xpGradientPanel1.Controls.Add(this.btBrowse);
-			this.xpGradientPanel1.Controls.Add(this.tbPkg);
-			this.xpGradientPanel1.Controls.Add(this.label1);
-			this.xpGradientPanel1.Dock = DockStyle.Fill;
-			this.xpGradientPanel1.Font = new System.Drawing.Font(
+			xpGradientPanel1.BackColor = System.Drawing.Color.Transparent;
+			xpGradientPanel1.Controls.Add(tbs);
+			xpGradientPanel1.Controls.Add(btBrowse);
+			xpGradientPanel1.Controls.Add(tbPkg);
+			xpGradientPanel1.Controls.Add(label1);
+			xpGradientPanel1.Dock = DockStyle.Fill;
+			xpGradientPanel1.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.xpGradientPanel1.Location = new System.Drawing.Point(0, 0);
-			this.xpGradientPanel1.Name = "xpGradientPanel1";
-			this.xpGradientPanel1.Size = new System.Drawing.Size(594, 361);
-			this.xpGradientPanel1.TabIndex = 0;
+			xpGradientPanel1.Location = new System.Drawing.Point(0, 0);
+			xpGradientPanel1.Name = "xpGradientPanel1";
+			xpGradientPanel1.Size = new System.Drawing.Size(594, 361);
+			xpGradientPanel1.TabIndex = 0;
 			//
 			// tbs
 			//
-			this.tbs.Anchor = (
+			tbs.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -108,55 +108,55 @@ namespace SimPe.Plugin.Tool.Window
 					)
 				)
 			);
-			this.tbs.BackColor = System.Drawing.Color.Transparent;
-			this.tbs.BodyColor = System.Drawing.SystemColors.ControlLight;
-			this.tbs.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-			this.tbs.Controls.Add(this.llOpen);
-			this.tbs.Controls.Add(this.pg);
-			this.tbs.Controls.Add(this.llRepair);
-			this.tbs.HeaderFont = new System.Drawing.Font(
+			tbs.BackColor = System.Drawing.Color.Transparent;
+			tbs.BodyColor = System.Drawing.SystemColors.ControlLight;
+			tbs.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+			tbs.Controls.Add(llOpen);
+			tbs.Controls.Add(pg);
+			tbs.Controls.Add(llRepair);
+			tbs.HeaderFont = new System.Drawing.Font(
 				"Microsoft Sans Serif",
 				10.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.tbs.HeaderText = "";
-			this.tbs.HeaderTextColor = System.Drawing.SystemColors.ControlText;
-			this.tbs.Icon = ((System.Drawing.Image)(resources.GetObject("tbs.Icon")));
-			this.tbs.IconLocation = new System.Drawing.Point(4, 12);
-			this.tbs.IconSize = new System.Drawing.Size(32, 32);
-			this.tbs.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
-			this.tbs.Location = new System.Drawing.Point(8, 40);
-			this.tbs.Name = "tbs";
-			this.tbs.Padding = new Padding(4, 36, 4, 4);
-			this.tbs.RightHeaderColor = System.Drawing.SystemColors.ControlDark;
-			this.tbs.Size = new System.Drawing.Size(576, 313);
-			this.tbs.TabIndex = 3;
+			tbs.HeaderText = "";
+			tbs.HeaderTextColor = System.Drawing.SystemColors.ControlText;
+			tbs.Icon = ((System.Drawing.Image)(resources.GetObject("tbs.Icon")));
+			tbs.IconLocation = new System.Drawing.Point(4, 12);
+			tbs.IconSize = new System.Drawing.Size(32, 32);
+			tbs.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
+			tbs.Location = new System.Drawing.Point(8, 40);
+			tbs.Name = "tbs";
+			tbs.Padding = new Padding(4, 36, 4, 4);
+			tbs.RightHeaderColor = System.Drawing.SystemColors.ControlDark;
+			tbs.Size = new System.Drawing.Size(576, 313);
+			tbs.TabIndex = 3;
 			//
 			// llOpen
 			//
-			this.llOpen.Font = new System.Drawing.Font(
+			llOpen.Font = new System.Drawing.Font(
 				"Tahoma",
 				12F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.llOpen.LinkColor = System.Drawing.SystemColors.ControlText;
-			this.llOpen.Location = new System.Drawing.Point(500, 6);
-			this.llOpen.Name = "llOpen";
-			this.llOpen.Size = new System.Drawing.Size(61, 23);
-			this.llOpen.TabIndex = 2;
-			this.llOpen.TabStop = true;
-			this.llOpen.Text = "Open";
-			this.llOpen.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-			this.llOpen.LinkClicked +=
+			llOpen.LinkColor = System.Drawing.SystemColors.ControlText;
+			llOpen.Location = new System.Drawing.Point(500, 6);
+			llOpen.Name = "llOpen";
+			llOpen.Size = new System.Drawing.Size(61, 23);
+			llOpen.TabIndex = 2;
+			llOpen.TabStop = true;
+			llOpen.Text = "Open";
+			llOpen.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			llOpen.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.llOpen_LinkClicked
+					llOpen_LinkClicked
 				);
 			//
 			// pg
 			//
-			this.pg.Anchor = (
+			pg.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -166,97 +166,97 @@ namespace SimPe.Plugin.Tool.Window
 					)
 				)
 			);
-			this.pg.BackColor = System.Drawing.SystemColors.Control;
-			this.pg.CommandsBackColor = System.Drawing.SystemColors.InactiveCaption;
-			this.pg.HelpVisible = false;
-			this.pg.LineColor = System.Drawing.SystemColors.ScrollBar;
-			this.pg.Location = new System.Drawing.Point(8, 48);
-			this.pg.Name = "pg";
-			this.pg.PropertySort = PropertySort.Alphabetical;
-			this.pg.Size = new System.Drawing.Size(558, 256);
-			this.pg.TabIndex = 1;
-			this.pg.ToolbarVisible = false;
-			this.pg.ViewBackColor = System.Drawing.SystemColors.Control;
+			pg.BackColor = System.Drawing.SystemColors.Control;
+			pg.CommandsBackColor = System.Drawing.SystemColors.InactiveCaption;
+			pg.HelpVisible = false;
+			pg.LineColor = System.Drawing.SystemColors.ScrollBar;
+			pg.Location = new System.Drawing.Point(8, 48);
+			pg.Name = "pg";
+			pg.PropertySort = PropertySort.Alphabetical;
+			pg.Size = new System.Drawing.Size(558, 256);
+			pg.TabIndex = 1;
+			pg.ToolbarVisible = false;
+			pg.ViewBackColor = System.Drawing.SystemColors.Control;
 			//
 			// llRepair
 			//
-			this.llRepair.Font = new System.Drawing.Font(
+			llRepair.Font = new System.Drawing.Font(
 				"Tahoma",
 				12F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.llRepair.LinkColor = System.Drawing.SystemColors.ControlText;
-			this.llRepair.Location = new System.Drawing.Point(420, 6);
-			this.llRepair.Name = "llRepair";
-			this.llRepair.Size = new System.Drawing.Size(72, 23);
-			this.llRepair.TabIndex = 0;
-			this.llRepair.TabStop = true;
-			this.llRepair.Text = "Repair";
-			this.llRepair.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-			this.llRepair.LinkClicked +=
+			llRepair.LinkColor = System.Drawing.SystemColors.ControlText;
+			llRepair.Location = new System.Drawing.Point(420, 6);
+			llRepair.Name = "llRepair";
+			llRepair.Size = new System.Drawing.Size(72, 23);
+			llRepair.TabIndex = 0;
+			llRepair.TabStop = true;
+			llRepair.Text = "Repair";
+			llRepair.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			llRepair.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.llRepair_LinkClicked
+					llRepair_LinkClicked
 				);
 			//
 			// btBrowse
 			//
-			this.btBrowse.FlatStyle = FlatStyle.System;
-			this.btBrowse.Location = new System.Drawing.Point(509, 16);
-			this.btBrowse.Name = "btBrowse";
-			this.btBrowse.Size = new System.Drawing.Size(75, 23);
-			this.btBrowse.TabIndex = 2;
-			this.btBrowse.Text = "Browse...";
-			this.btBrowse.Click += new EventHandler(this.btBrowse_Click);
+			btBrowse.FlatStyle = FlatStyle.System;
+			btBrowse.Location = new System.Drawing.Point(509, 16);
+			btBrowse.Name = "btBrowse";
+			btBrowse.Size = new System.Drawing.Size(75, 23);
+			btBrowse.TabIndex = 2;
+			btBrowse.Text = "Browse...";
+			btBrowse.Click += new EventHandler(btBrowse_Click);
 			//
 			// tbPkg
 			//
-			this.tbPkg.Location = new System.Drawing.Point(80, 16);
-			this.tbPkg.Name = "tbPkg";
-			this.tbPkg.ReadOnly = true;
-			this.tbPkg.Size = new System.Drawing.Size(420, 21);
-			this.tbPkg.TabIndex = 1;
+			tbPkg.Location = new System.Drawing.Point(80, 16);
+			tbPkg.Name = "tbPkg";
+			tbPkg.ReadOnly = true;
+			tbPkg.Size = new System.Drawing.Size(420, 21);
+			tbPkg.TabIndex = 1;
 			//
 			// label1
 			//
-			this.label1.BackColor = System.Drawing.Color.Transparent;
-			this.label1.Font = new System.Drawing.Font(
+			label1.BackColor = System.Drawing.Color.Transparent;
+			label1.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label1.Location = new System.Drawing.Point(16, 16);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(64, 24);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Package:";
-			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			label1.Location = new System.Drawing.Point(16, 16);
+			label1.Name = "label1";
+			label1.Size = new System.Drawing.Size(64, 24);
+			label1.TabIndex = 0;
+			label1.Text = "Package:";
+			label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			//
 			// PackageRepairForm
 			//
-			this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
-			this.ClientSize = new System.Drawing.Size(594, 361);
-			this.Controls.Add(this.xpGradientPanel1);
-			this.Font = new System.Drawing.Font(
+			AutoScaleBaseSize = new System.Drawing.Size(5, 14);
+			ClientSize = new System.Drawing.Size(594, 361);
+			Controls.Add(xpGradientPanel1);
+			Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.FormBorderStyle = FormBorderStyle.FixedDialog;
-			this.Icon = ((System.Drawing.Icon)(resources1.GetObject("$this.Icon")));
-			this.MaximizeBox = false;
-			this.Name = "PackageRepairForm";
-			this.StartPosition = FormStartPosition.CenterScreen;
-			this.Text = "Package Repair";
-			this.xpGradientPanel1.ResumeLayout(false);
-			this.xpGradientPanel1.PerformLayout();
-			this.tbs.ResumeLayout(false);
-			this.ResumeLayout(false);
+			FormBorderStyle = FormBorderStyle.FixedDialog;
+			Icon = ((System.Drawing.Icon)(resources1.GetObject("$this.Icon")));
+			MaximizeBox = false;
+			Name = "PackageRepairForm";
+			StartPosition = FormStartPosition.CenterScreen;
+			Text = "Package Repair";
+			xpGradientPanel1.ResumeLayout(false);
+			xpGradientPanel1.PerformLayout();
+			tbs.ResumeLayout(false);
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -270,7 +270,7 @@ namespace SimPe.Plugin.Tool.Window
 				pkgname = "";
 			}
 
-			this.tbPkg.Text = pkgname;
+			tbPkg.Text = pkgname;
 			tbs.HeaderText = System.IO.Path.GetFileNameWithoutExtension(pkgname);
 
 			si = null;

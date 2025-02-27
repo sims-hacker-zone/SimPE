@@ -65,7 +65,7 @@ namespace pjse.BhavOperandWizards.WizRaw
 		}
 
 		#region iBhavOperandWizForm
-		public Panel WizPanel => this.pnWizRaw;
+		public Panel WizPanel => pnWizRaw;
 
 		public void Execute(Instruction inst)
 		{
@@ -121,31 +121,31 @@ namespace pjse.BhavOperandWizards.WizRaw
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(UI));
-			this.pnWizRaw = new Panel();
-			this.tbRaw = new TextBox();
-			this.pnWizRaw.SuspendLayout();
-			this.SuspendLayout();
+			pnWizRaw = new Panel();
+			tbRaw = new TextBox();
+			pnWizRaw.SuspendLayout();
+			SuspendLayout();
 			//
 			// pnWizRaw
 			//
-			this.pnWizRaw.Controls.Add(this.tbRaw);
-			resources.ApplyResources(this.pnWizRaw, "pnWizRaw");
-			this.pnWizRaw.Name = "pnWizRaw";
+			pnWizRaw.Controls.Add(tbRaw);
+			resources.ApplyResources(pnWizRaw, "pnWizRaw");
+			pnWizRaw.Name = "pnWizRaw";
 			//
 			// tbRaw
 			//
-			resources.ApplyResources(this.tbRaw, "tbRaw");
-			this.tbRaw.Name = "tbRaw";
+			resources.ApplyResources(tbRaw, "tbRaw");
+			tbRaw.Name = "tbRaw";
 			//
 			// UI
 			//
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = AutoScaleMode.Dpi;
-			this.Controls.Add(this.pnWizRaw);
-			this.Name = "UI";
-			this.pnWizRaw.ResumeLayout(false);
-			this.pnWizRaw.PerformLayout();
-			this.ResumeLayout(false);
+			AutoScaleMode = AutoScaleMode.Dpi;
+			Controls.Add(pnWizRaw);
+			Name = "UI";
+			pnWizRaw.ResumeLayout(false);
+			pnWizRaw.PerformLayout();
+			ResumeLayout(false);
 		}
 		#endregion
 	}

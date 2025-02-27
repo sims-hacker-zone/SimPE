@@ -95,14 +95,14 @@ namespace SimPe.Plugin
 			//hide the Identifier Tab in non Creator Mode
 			if (!UserVerification.HaveUserId)
 			{
-				this.tabControl1.TabPages.Remove(this.tbidentify);
-				this.tabControl1.TabIndex = 0;
+				tabControl1.TabPages.Remove(tbidentify);
+				tabControl1.TabIndex = 0;
 			}
 
 			//load the Group Cache
 			WrapperFactory.LoadGroupCache();
 
-			this.cbfolder.SelectedIndex = 0;
+			cbfolder.SelectedIndex = 0;
 
 			cachefile = new Cache.PackageCacheFile();
 			try
@@ -129,7 +129,7 @@ namespace SimPe.Plugin
 
 			//add the scanners to the Selection and show the Scanner Controls (if available)
 			AbstractScanner.UpdateList finishcallback =
-				new AbstractScanner.UpdateList(this.UpdateList);
+				new AbstractScanner.UpdateList(UpdateList);
 			ArrayList uids = new ArrayList();
 			foreach (IScanner i in ScannerRegistry.Global.Scanners)
 			{
@@ -163,7 +163,7 @@ namespace SimPe.Plugin
 					name = "--- " + name;
 				}
 
-				this.lbscandebug.Items.Add(name);
+				lbscandebug.Items.Add(name);
 			}
 
 			pnop.Enabled = false;
@@ -208,7 +208,7 @@ namespace SimPe.Plugin
 		/// <param name="space">should we add an additional 8 Pixels to the controltop</param>
 		void ShowControl(Control ctrl, bool indent, bool space)
 		{
-			ctrl.Parent = this.pnop;
+			ctrl.Parent = pnop;
 
 			if (indent)
 			{
@@ -251,7 +251,7 @@ namespace SimPe.Plugin
 			lb.AutoSize = true;
 			lb.Text = scanner.ToString() + ":";
 			lb.Font = new Font(Font.Name, Font.Size, FontStyle.Bold);
-			lb.ForeColor = this.gbinfo.ForeColor;
+			lb.ForeColor = gbinfo.ForeColor;
 			//this.visualStyleProvider1.SetVisualStyleSupport(lb, true);
 
 			Panel pn = new Panel();
@@ -286,13 +286,13 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			this.cbenable.Tag = true;
+			cbenable.Tag = true;
 			try
 			{
-				this.thumb.Image = si.PackageCacheItem.Thumbnail;
-				this.cbenable.Checked = si.PackageCacheItem.Enabled;
-				this.lbname.Text = si.PackageCacheItem.Name;
-				this.lbtype.Text = si.PackageCacheItem.Type.ToString();
+				thumb.Image = si.PackageCacheItem.Thumbnail;
+				cbenable.Checked = si.PackageCacheItem.Enabled;
+				lbname.Text = si.PackageCacheItem.Name;
+				lbtype.Text = si.PackageCacheItem.Type.ToString();
 
 				tbflname.Text = si.FileName;
 				if (tbflname.Text.Length > 0)
@@ -327,7 +327,7 @@ namespace SimPe.Plugin
 			}
 			finally
 			{
-				this.cbenable.Tag = null;
+				cbenable.Tag = null;
 			}
 		}
 
@@ -537,63 +537,63 @@ namespace SimPe.Plugin
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
+			components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(ScannerForm));
-			this.cbfolder = new ComboBox();
-			this.linkLabel1 = new LinkLabel();
-			this.fbd = new FolderBrowserDialog();
-			this.pb = new ExtProgressBar();
-			this.lv = new ListView();
-			this.columnHeader1 = new ColumnHeader();
-			this.columnHeader2 = new ColumnHeader();
-			this.columnHeader3 = new ColumnHeader();
-			this.ilist = new ImageList(this.components);
-			this.tabControl1 = new System.Windows.Forms.TabControl();
-			this.tbscanners = new System.Windows.Forms.TabPage();
-			this.lbscanners = new CheckedListBox();
-			this.label1 = new Label();
-			this.tboperations = new System.Windows.Forms.TabPage();
-			this.pnop = new Panel();
-			this.tbcache = new System.Windows.Forms.TabPage();
-			this.button3 = new Button();
-			this.button2 = new Button();
-			this.btclear = new Button();
-			this.tbidentify = new System.Windows.Forms.TabPage();
-			this.lbscandebug = new ListBox();
-			this.label6 = new Label();
-			this.lbid = new ListBox();
-			this.label5 = new Label();
-			this.btscan = new Button();
-			this.cbrec = new CheckBox();
-			this.gbinfo = new GroupBox();
-			this.lbprop = new ComboBox();
-			this.llSave = new LinkLabel();
-			this.tbflname = new TextBox();
-			this.cbenable = new CheckBox();
-			this.lbtype = new Label();
-			this.lbname = new Label();
-			this.llopen = new LinkLabel();
-			this.thumb = new PictureBox();
-			this.sfd = new SaveFileDialog();
-			this.toolTip1 = new ToolTip(this.components);
-			this.panel1 = new Panel();
-			this.tabControl1.SuspendLayout();
-			this.tbscanners.SuspendLayout();
-			this.tboperations.SuspendLayout();
-			this.tbcache.SuspendLayout();
-			this.tbidentify.SuspendLayout();
-			this.gbinfo.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.thumb)).BeginInit();
-			this.panel1.SuspendLayout();
-			this.SuspendLayout();
+			cbfolder = new ComboBox();
+			linkLabel1 = new LinkLabel();
+			fbd = new FolderBrowserDialog();
+			pb = new ExtProgressBar();
+			lv = new ListView();
+			columnHeader1 = new ColumnHeader();
+			columnHeader2 = new ColumnHeader();
+			columnHeader3 = new ColumnHeader();
+			ilist = new ImageList(components);
+			tabControl1 = new System.Windows.Forms.TabControl();
+			tbscanners = new System.Windows.Forms.TabPage();
+			lbscanners = new CheckedListBox();
+			label1 = new Label();
+			tboperations = new System.Windows.Forms.TabPage();
+			pnop = new Panel();
+			tbcache = new System.Windows.Forms.TabPage();
+			button3 = new Button();
+			button2 = new Button();
+			btclear = new Button();
+			tbidentify = new System.Windows.Forms.TabPage();
+			lbscandebug = new ListBox();
+			label6 = new Label();
+			lbid = new ListBox();
+			label5 = new Label();
+			btscan = new Button();
+			cbrec = new CheckBox();
+			gbinfo = new GroupBox();
+			lbprop = new ComboBox();
+			llSave = new LinkLabel();
+			tbflname = new TextBox();
+			cbenable = new CheckBox();
+			lbtype = new Label();
+			lbname = new Label();
+			llopen = new LinkLabel();
+			thumb = new PictureBox();
+			sfd = new SaveFileDialog();
+			toolTip1 = new ToolTip(components);
+			panel1 = new Panel();
+			tabControl1.SuspendLayout();
+			tbscanners.SuspendLayout();
+			tboperations.SuspendLayout();
+			tbcache.SuspendLayout();
+			tbidentify.SuspendLayout();
+			gbinfo.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(thumb)).BeginInit();
+			panel1.SuspendLayout();
+			SuspendLayout();
 			//
 			// cbfolder
 			//
-			this.cbfolder.DropDownStyle =
+			cbfolder.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbfolder.Items.AddRange(
+			cbfolder.Items.AddRange(
 				new object[]
 				{
 					"Download Folder",
@@ -603,41 +603,41 @@ namespace SimPe.Plugin
 					"Browse for Folder...",
 				}
 			);
-			this.cbfolder.Location = new Point(9, 11);
-			this.cbfolder.Name = "cbfolder";
-			this.cbfolder.Size = new Size(408, 21);
-			this.cbfolder.TabIndex = 1;
-			this.cbfolder.SelectedIndexChanged += new EventHandler(
-				this.SelectFolder
+			cbfolder.Location = new Point(9, 11);
+			cbfolder.Name = "cbfolder";
+			cbfolder.Size = new Size(408, 21);
+			cbfolder.TabIndex = 1;
+			cbfolder.SelectedIndexChanged += new EventHandler(
+				SelectFolder
 			);
 			//
 			// linkLabel1
 			//
-			this.linkLabel1.AutoSize = true;
-			this.linkLabel1.BackColor = Color.Transparent;
-			this.linkLabel1.Font = new Font(
+			linkLabel1.AutoSize = true;
+			linkLabel1.BackColor = Color.Transparent;
+			linkLabel1.Font = new Font(
 				"Microsoft Sans Serif",
 				11.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.linkLabel1.Location = new Point(423, 12);
-			this.linkLabel1.Name = "linkLabel1";
-			this.linkLabel1.Size = new Size(40, 18);
-			this.linkLabel1.TabIndex = 2;
-			this.linkLabel1.TabStop = true;
-			this.linkLabel1.Text = "scan";
-			this.linkLabel1.LinkClicked +=
-				new LinkLabelLinkClickedEventHandler(this.Scan);
+			linkLabel1.Location = new Point(423, 12);
+			linkLabel1.Name = "linkLabel1";
+			linkLabel1.Size = new Size(40, 18);
+			linkLabel1.TabIndex = 2;
+			linkLabel1.TabStop = true;
+			linkLabel1.Text = "scan";
+			linkLabel1.LinkClicked +=
+				new LinkLabelLinkClickedEventHandler(Scan);
 			//
 			// fbd
 			//
-			this.fbd.ShowNewFolderButton = false;
+			fbd.ShowNewFolderButton = false;
 			//
 			// pb
 			//
-			this.pb.Anchor = (
+			pb.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -647,23 +647,23 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.pb.BackColor = Color.Transparent;
-			this.pb.Gradient = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-			this.pb.Location = new Point(9, 583);
-			this.pb.Maximum = 1000;
-			this.pb.Minimum = 0;
-			this.pb.Name = "pb";
-			this.pb.Quality = true;
-			this.pb.Size = new Size(943, 16);
-			this.pb.TabIndex = 7;
-			this.pb.TokenCount = 2;
-			this.pb.UnselectedColor = Color.Black;
-			this.pb.UseTokenBuffer = false;
-			this.pb.Value = 0;
+			pb.BackColor = Color.Transparent;
+			pb.Gradient = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+			pb.Location = new Point(9, 583);
+			pb.Maximum = 1000;
+			pb.Minimum = 0;
+			pb.Name = "pb";
+			pb.Quality = true;
+			pb.Size = new Size(943, 16);
+			pb.TabIndex = 7;
+			pb.TokenCount = 2;
+			pb.UnselectedColor = Color.Black;
+			pb.UseTokenBuffer = false;
+			pb.Value = 0;
 			//
 			// lv
 			//
-			this.lv.Anchor = (
+			lv.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -675,52 +675,52 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.lv.Columns.AddRange(
+			lv.Columns.AddRange(
 				new ColumnHeader[]
 				{
-					this.columnHeader1,
-					this.columnHeader2,
-					this.columnHeader3,
+					columnHeader1,
+					columnHeader2,
+					columnHeader3,
 				}
 			);
-			this.lv.FullRowSelect = true;
-			this.lv.HideSelection = false;
-			this.lv.LargeImageList = this.ilist;
-			this.lv.Location = new Point(9, 38);
-			this.lv.Name = "lv";
-			this.lv.Size = new Size(948, 223);
-			this.lv.TabIndex = 3;
-			this.lv.UseCompatibleStateImageBehavior = false;
-			this.lv.View = View.Details;
-			this.lv.SelectedIndexChanged += new EventHandler(this.SelectItem);
-			this.lv.ColumnClick += new ColumnClickEventHandler(
-				this.SortList
+			lv.FullRowSelect = true;
+			lv.HideSelection = false;
+			lv.LargeImageList = ilist;
+			lv.Location = new Point(9, 38);
+			lv.Name = "lv";
+			lv.Size = new Size(948, 223);
+			lv.TabIndex = 3;
+			lv.UseCompatibleStateImageBehavior = false;
+			lv.View = View.Details;
+			lv.SelectedIndexChanged += new EventHandler(SelectItem);
+			lv.ColumnClick += new ColumnClickEventHandler(
+				SortList
 			);
 			//
 			// columnHeader1
 			//
-			this.columnHeader1.Text = "Filename";
-			this.columnHeader1.Width = 281;
+			columnHeader1.Text = "Filename";
+			columnHeader1.Width = 281;
 			//
 			// columnHeader2
 			//
-			this.columnHeader2.Text = "Enabled";
-			this.columnHeader2.Width = 57;
+			columnHeader2.Text = "Enabled";
+			columnHeader2.Width = 57;
 			//
 			// columnHeader3
 			//
-			this.columnHeader3.Text = "Type";
-			this.columnHeader3.Width = 104;
+			columnHeader3.Text = "Type";
+			columnHeader3.Width = 104;
 			//
 			// ilist
 			//
-			this.ilist.ColorDepth = ColorDepth.Depth32Bit;
-			this.ilist.ImageSize = new Size(48, 48);
-			this.ilist.TransparentColor = Color.Transparent;
+			ilist.ColorDepth = ColorDepth.Depth32Bit;
+			ilist.ImageSize = new Size(48, 48);
+			ilist.TransparentColor = Color.Transparent;
 			//
 			// tabControl1
 			//
-			this.tabControl1.Anchor = (
+			tabControl1.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -730,29 +730,29 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.tabControl1.Controls.Add(this.tbscanners);
-			this.tabControl1.Controls.Add(this.tboperations);
-			this.tabControl1.Controls.Add(this.tbcache);
-			this.tabControl1.Controls.Add(this.tbidentify);
-			this.tabControl1.Location = new Point(9, 267);
-			this.tabControl1.Name = "tabControl1";
-			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new Size(481, 310);
-			this.tabControl1.TabIndex = 4;
+			tabControl1.Controls.Add(tbscanners);
+			tabControl1.Controls.Add(tboperations);
+			tabControl1.Controls.Add(tbcache);
+			tabControl1.Controls.Add(tbidentify);
+			tabControl1.Location = new Point(9, 267);
+			tabControl1.Name = "tabControl1";
+			tabControl1.SelectedIndex = 0;
+			tabControl1.Size = new Size(481, 310);
+			tabControl1.TabIndex = 4;
 			//
 			// tbscanners
 			//
-			this.tbscanners.Controls.Add(this.lbscanners);
-			this.tbscanners.Controls.Add(this.label1);
-			this.tbscanners.Location = new Point(4, 22);
-			this.tbscanners.Name = "tbscanners";
-			this.tbscanners.Size = new Size(473, 284);
-			this.tbscanners.TabIndex = 0;
-			this.tbscanners.Text = "Scanner Settings";
+			tbscanners.Controls.Add(lbscanners);
+			tbscanners.Controls.Add(label1);
+			tbscanners.Location = new Point(4, 22);
+			tbscanners.Name = "tbscanners";
+			tbscanners.Size = new Size(473, 284);
+			tbscanners.TabIndex = 0;
+			tbscanners.Text = "Scanner Settings";
 			//
 			// lbscanners
 			//
-			this.lbscanners.Anchor = (
+			lbscanners.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -764,34 +764,34 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.lbscanners.CheckOnClick = true;
-			this.lbscanners.HorizontalScrollbar = true;
-			this.lbscanners.Location = new Point(12, 34);
-			this.lbscanners.Name = "lbscanners";
-			this.lbscanners.Size = new Size(450, 226);
-			this.lbscanners.TabIndex = 5;
+			lbscanners.CheckOnClick = true;
+			lbscanners.HorizontalScrollbar = true;
+			lbscanners.Location = new Point(12, 34);
+			lbscanners.Name = "lbscanners";
+			lbscanners.Size = new Size(450, 226);
+			lbscanners.TabIndex = 5;
 			//
 			// label1
 			//
-			this.label1.AutoSize = true;
-			this.label1.Location = new Point(9, 12);
-			this.label1.Name = "label1";
-			this.label1.Size = new Size(103, 13);
-			this.label1.TabIndex = 1;
-			this.label1.Text = "active Scanners:";
+			label1.AutoSize = true;
+			label1.Location = new Point(9, 12);
+			label1.Name = "label1";
+			label1.Size = new Size(103, 13);
+			label1.TabIndex = 1;
+			label1.Text = "active Scanners:";
 			//
 			// tboperations
 			//
-			this.tboperations.Controls.Add(this.pnop);
-			this.tboperations.Location = new Point(4, 22);
-			this.tboperations.Name = "tboperations";
-			this.tboperations.Size = new Size(433, 284);
-			this.tboperations.TabIndex = 1;
-			this.tboperations.Text = "Operations";
+			tboperations.Controls.Add(pnop);
+			tboperations.Location = new Point(4, 22);
+			tboperations.Name = "tboperations";
+			tboperations.Size = new Size(433, 284);
+			tboperations.TabIndex = 1;
+			tboperations.Text = "Operations";
 			//
 			// pnop
 			//
-			this.pnop.Anchor = (
+			pnop.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -803,85 +803,85 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.pnop.AutoScroll = true;
-			this.pnop.BackColor = SystemColors.Window;
-			this.pnop.BorderStyle = BorderStyle.Fixed3D;
-			this.pnop.Location = new Point(-1, 9);
-			this.pnop.Name = "pnop";
-			this.pnop.Size = new Size(434, 271);
-			this.pnop.TabIndex = 0;
+			pnop.AutoScroll = true;
+			pnop.BackColor = SystemColors.Window;
+			pnop.BorderStyle = BorderStyle.Fixed3D;
+			pnop.Location = new Point(-1, 9);
+			pnop.Name = "pnop";
+			pnop.Size = new Size(434, 271);
+			pnop.TabIndex = 0;
 			//
 			// tbcache
 			//
-			this.tbcache.Controls.Add(this.button3);
-			this.tbcache.Controls.Add(this.button2);
-			this.tbcache.Controls.Add(this.btclear);
-			this.tbcache.Location = new Point(4, 22);
-			this.tbcache.Name = "tbcache";
-			this.tbcache.Size = new Size(433, 284);
-			this.tbcache.TabIndex = 2;
-			this.tbcache.Text = "Cache";
+			tbcache.Controls.Add(button3);
+			tbcache.Controls.Add(button2);
+			tbcache.Controls.Add(btclear);
+			tbcache.Location = new Point(4, 22);
+			tbcache.Name = "tbcache";
+			tbcache.Size = new Size(433, 284);
+			tbcache.TabIndex = 2;
+			tbcache.Text = "Cache";
 			//
 			// button3
 			//
-			this.button3.Anchor = AnchorStyles.None;
-			this.button3.FlatStyle = FlatStyle.System;
-			this.button3.Location = new Point(147, 164);
-			this.button3.Name = "button3";
-			this.button3.Size = new Size(133, 24);
-			this.button3.TabIndex = 11;
-			this.button3.Text = "Reload FileTable";
-			this.toolTip1.SetToolTip(
-				this.button3,
+			button3.Anchor = AnchorStyles.None;
+			button3.FlatStyle = FlatStyle.System;
+			button3.Location = new Point(147, 164);
+			button3.Name = "button3";
+			button3.Size = new Size(133, 24);
+			button3.TabIndex = 11;
+			button3.Text = "Reload FileTable";
+			toolTip1.SetToolTip(
+				button3,
 				"Press this Button if you want to reload the FileTable."
 			);
-			this.button3.Click += new EventHandler(this.ReloadFileTable);
+			button3.Click += new EventHandler(ReloadFileTable);
 			//
 			// button2
 			//
-			this.button2.Anchor = AnchorStyles.None;
-			this.button2.FlatStyle = FlatStyle.System;
-			this.button2.Location = new Point(147, 134);
-			this.button2.Name = "button2";
-			this.button2.Size = new Size(133, 24);
-			this.button2.TabIndex = 10;
-			this.button2.Text = "Reload Cache";
-			this.toolTip1.SetToolTip(
-				this.button2,
+			button2.Anchor = AnchorStyles.None;
+			button2.FlatStyle = FlatStyle.System;
+			button2.Location = new Point(147, 134);
+			button2.Name = "button2";
+			button2.Size = new Size(133, 24);
+			button2.TabIndex = 10;
+			button2.Text = "Reload Cache";
+			toolTip1.SetToolTip(
+				button2,
 				"Press this Button if you want to reload the Cache from your HD."
 			);
-			this.button2.Click += new EventHandler(this.ReloadCache);
+			button2.Click += new EventHandler(ReloadCache);
 			//
 			// btclear
 			//
-			this.btclear.Anchor = AnchorStyles.None;
-			this.btclear.FlatStyle = FlatStyle.System;
-			this.btclear.Location = new Point(147, 105);
-			this.btclear.Name = "btclear";
-			this.btclear.Size = new Size(133, 24);
-			this.btclear.TabIndex = 9;
-			this.btclear.Text = "Clear Cache";
-			this.toolTip1.SetToolTip(
-				this.btclear,
+			btclear.Anchor = AnchorStyles.None;
+			btclear.FlatStyle = FlatStyle.System;
+			btclear.Location = new Point(147, 105);
+			btclear.Name = "btclear";
+			btclear.Size = new Size(133, 24);
+			btclear.TabIndex = 9;
+			btclear.Text = "Clear Cache";
+			toolTip1.SetToolTip(
+				btclear,
 				"Press this Button if you want to clear the Scanner Cache."
 			);
-			this.btclear.Click += new EventHandler(this.ClearCache);
+			btclear.Click += new EventHandler(ClearCache);
 			//
 			// tbidentify
 			//
-			this.tbidentify.Controls.Add(this.lbscandebug);
-			this.tbidentify.Controls.Add(this.label6);
-			this.tbidentify.Controls.Add(this.lbid);
-			this.tbidentify.Controls.Add(this.label5);
-			this.tbidentify.Location = new Point(4, 22);
-			this.tbidentify.Name = "tbidentify";
-			this.tbidentify.Size = new Size(433, 284);
-			this.tbidentify.TabIndex = 3;
-			this.tbidentify.Text = "Scanners";
+			tbidentify.Controls.Add(lbscandebug);
+			tbidentify.Controls.Add(label6);
+			tbidentify.Controls.Add(lbid);
+			tbidentify.Controls.Add(label5);
+			tbidentify.Location = new Point(4, 22);
+			tbidentify.Name = "tbidentify";
+			tbidentify.Size = new Size(433, 284);
+			tbidentify.TabIndex = 3;
+			tbidentify.Text = "Scanners";
 			//
 			// lbscandebug
 			//
-			this.lbscandebug.Anchor = (
+			lbscandebug.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -891,24 +891,24 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.lbscandebug.HorizontalScrollbar = true;
-			this.lbscandebug.Location = new Point(-1, 127);
-			this.lbscandebug.Name = "lbscandebug";
-			this.lbscandebug.Size = new Size(430, 134);
-			this.lbscandebug.TabIndex = 5;
+			lbscandebug.HorizontalScrollbar = true;
+			lbscandebug.Location = new Point(-1, 127);
+			lbscandebug.Name = "lbscandebug";
+			lbscandebug.Size = new Size(430, 134);
+			lbscandebug.TabIndex = 5;
 			//
 			// label6
 			//
-			this.label6.AutoSize = true;
-			this.label6.Location = new Point(-1, 110);
-			this.label6.Name = "label6";
-			this.label6.Size = new Size(107, 13);
-			this.label6.TabIndex = 4;
-			this.label6.Text = "loaded Scanners:";
+			label6.AutoSize = true;
+			label6.Location = new Point(-1, 110);
+			label6.Name = "label6";
+			label6.Size = new Size(107, 13);
+			label6.TabIndex = 4;
+			label6.Text = "loaded Scanners:";
 			//
 			// lbid
 			//
-			this.lbid.Anchor = (
+			lbid.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -918,24 +918,24 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.lbid.HorizontalScrollbar = true;
-			this.lbid.Location = new Point(2, 25);
-			this.lbid.Name = "lbid";
-			this.lbid.Size = new Size(430, 69);
-			this.lbid.TabIndex = 3;
+			lbid.HorizontalScrollbar = true;
+			lbid.Location = new Point(2, 25);
+			lbid.Name = "lbid";
+			lbid.Size = new Size(430, 69);
+			lbid.TabIndex = 3;
 			//
 			// label5
 			//
-			this.label5.AutoSize = true;
-			this.label5.Location = new Point(2, 8);
-			this.label5.Name = "label5";
-			this.label5.Size = new Size(112, 13);
-			this.label5.TabIndex = 2;
-			this.label5.Text = "loaded Identifiers:";
+			label5.AutoSize = true;
+			label5.Location = new Point(2, 8);
+			label5.Name = "label5";
+			label5.Size = new Size(112, 13);
+			label5.TabIndex = 2;
+			label5.Text = "loaded Identifiers:";
 			//
 			// btscan
 			//
-			this.btscan.Anchor = (
+			btscan.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -943,19 +943,19 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.btscan.BackColor = Color.Transparent;
-			this.btscan.FlatStyle = FlatStyle.System;
-			this.btscan.Location = new Point(506, 549);
-			this.btscan.Name = "btscan";
-			this.btscan.Size = new Size(80, 24);
-			this.btscan.TabIndex = 6;
-			this.btscan.Text = "Scan";
-			this.btscan.UseVisualStyleBackColor = false;
-			this.btscan.Click += new EventHandler(this.Scan);
+			btscan.BackColor = Color.Transparent;
+			btscan.FlatStyle = FlatStyle.System;
+			btscan.Location = new Point(506, 549);
+			btscan.Name = "btscan";
+			btscan.Size = new Size(80, 24);
+			btscan.TabIndex = 6;
+			btscan.Text = "Scan";
+			btscan.UseVisualStyleBackColor = false;
+			btscan.Click += new EventHandler(Scan);
 			//
 			// cbrec
 			//
-			this.cbrec.Anchor = (
+			cbrec.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -963,18 +963,18 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.cbrec.AutoSize = true;
-			this.cbrec.BackColor = Color.Transparent;
-			this.cbrec.Location = new Point(590, 555);
-			this.cbrec.Name = "cbrec";
-			this.cbrec.Size = new Size(82, 17);
-			this.cbrec.TabIndex = 7;
-			this.cbrec.Text = "Recursive";
-			this.cbrec.UseVisualStyleBackColor = false;
+			cbrec.AutoSize = true;
+			cbrec.BackColor = Color.Transparent;
+			cbrec.Location = new Point(590, 555);
+			cbrec.Name = "cbrec";
+			cbrec.Size = new Size(82, 17);
+			cbrec.TabIndex = 7;
+			cbrec.Text = "Recursive";
+			cbrec.UseVisualStyleBackColor = false;
 			//
 			// gbinfo
 			//
-			this.gbinfo.Anchor = (
+			gbinfo.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -982,42 +982,42 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.gbinfo.BackColor = Color.Transparent;
-			this.gbinfo.Controls.Add(this.lbprop);
-			this.gbinfo.Controls.Add(this.llSave);
-			this.gbinfo.Controls.Add(this.tbflname);
-			this.gbinfo.Controls.Add(this.cbenable);
-			this.gbinfo.Controls.Add(this.lbtype);
-			this.gbinfo.Controls.Add(this.lbname);
-			this.gbinfo.Controls.Add(this.llopen);
-			this.gbinfo.Controls.Add(this.thumb);
-			this.gbinfo.Location = new Point(506, 280);
-			this.gbinfo.Name = "gbinfo";
-			this.gbinfo.Size = new Size(451, 243);
-			this.gbinfo.TabIndex = 2;
-			this.gbinfo.TabStop = false;
-			this.gbinfo.Text = "Information";
+			gbinfo.BackColor = Color.Transparent;
+			gbinfo.Controls.Add(lbprop);
+			gbinfo.Controls.Add(llSave);
+			gbinfo.Controls.Add(tbflname);
+			gbinfo.Controls.Add(cbenable);
+			gbinfo.Controls.Add(lbtype);
+			gbinfo.Controls.Add(lbname);
+			gbinfo.Controls.Add(llopen);
+			gbinfo.Controls.Add(thumb);
+			gbinfo.Location = new Point(506, 280);
+			gbinfo.Name = "gbinfo";
+			gbinfo.Size = new Size(451, 243);
+			gbinfo.TabIndex = 2;
+			gbinfo.TabStop = false;
+			gbinfo.Text = "Information";
 			//
 			// lbprop
 			//
-			this.lbprop.DropDownStyle = ComboBoxStyle.DropDownList;
-			this.lbprop.Font = new Font(
+			lbprop.DropDownStyle = ComboBoxStyle.DropDownList;
+			lbprop.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lbprop.Location = new Point(9, 190);
-			this.lbprop.MaxDropDownItems = 100;
-			this.lbprop.Name = "lbprop";
-			this.lbprop.Size = new Size(380, 21);
-			this.lbprop.Sorted = true;
-			this.lbprop.TabIndex = 10;
+			lbprop.Location = new Point(9, 190);
+			lbprop.MaxDropDownItems = 100;
+			lbprop.Name = "lbprop";
+			lbprop.Size = new Size(380, 21);
+			lbprop.Sorted = true;
+			lbprop.TabIndex = 10;
 			//
 			// llSave
 			//
-			this.llSave.Anchor = (
+			llSave.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -1025,64 +1025,64 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.llSave.AutoSize = true;
-			this.llSave.Font = new Font(
+			llSave.AutoSize = true;
+			llSave.Font = new Font(
 				"Microsoft Sans Serif",
 				11.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.llSave.Location = new Point(398, 190);
-			this.llSave.Name = "llSave";
-			this.llSave.Size = new Size(51, 18);
-			this.llSave.TabIndex = 8;
-			this.llSave.TabStop = true;
-			this.llSave.Text = "save...";
-			this.llSave.Enabled = false;
-			this.llSave.LinkClicked +=
+			llSave.Location = new Point(398, 190);
+			llSave.Name = "llSave";
+			llSave.Size = new Size(51, 18);
+			llSave.TabIndex = 8;
+			llSave.TabStop = true;
+			llSave.Text = "save...";
+			llSave.Enabled = false;
+			llSave.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.llSave_LinkClicked
+					llSave_LinkClicked
 				);
 			//
 			// tbflname
 			//
-			this.tbflname.Location = new Point(9, 217);
-			this.tbflname.Name = "tbflname";
-			this.tbflname.ReadOnly = true;
-			this.tbflname.Size = new Size(387, 21);
-			this.tbflname.TabIndex = 9;
+			tbflname.Location = new Point(9, 217);
+			tbflname.Name = "tbflname";
+			tbflname.ReadOnly = true;
+			tbflname.Size = new Size(387, 21);
+			tbflname.TabIndex = 9;
 			//
 			// cbenable
 			//
-			this.cbenable.AutoSize = true;
-			this.cbenable.Location = new Point(146, 9);
-			this.cbenable.Name = "cbenable";
-			this.cbenable.Size = new Size(71, 17);
-			this.cbenable.TabIndex = 7;
-			this.cbenable.Text = "Enabled";
-			this.cbenable.CheckedChanged += new EventHandler(
-				this.SetEnabledState
+			cbenable.AutoSize = true;
+			cbenable.Location = new Point(146, 9);
+			cbenable.Name = "cbenable";
+			cbenable.Size = new Size(71, 17);
+			cbenable.TabIndex = 7;
+			cbenable.Text = "Enabled";
+			cbenable.CheckedChanged += new EventHandler(
+				SetEnabledState
 			);
 			//
 			// lbtype
 			//
-			this.lbtype.Font = new Font(
+			lbtype.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Italic,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lbtype.Location = new Point(143, 45);
-			this.lbtype.Name = "lbtype";
-			this.lbtype.Size = new Size(225, 20);
-			this.lbtype.TabIndex = 8;
-			this.lbtype.Text = "Type";
+			lbtype.Location = new Point(143, 45);
+			lbtype.Name = "lbtype";
+			lbtype.Size = new Size(225, 20);
+			lbtype.TabIndex = 8;
+			lbtype.Text = "Type";
 			//
 			// lbname
 			//
-			this.lbname.Font = new Font(
+			lbname.Font = new Font(
 				"Verdana",
 				8.25F,
 				(
@@ -1096,15 +1096,15 @@ namespace SimPe.Plugin
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lbname.Location = new Point(143, 65);
-			this.lbname.Name = "lbname";
-			this.lbname.Size = new Size(225, 88);
-			this.lbname.TabIndex = 7;
-			this.lbname.Text = "Caption";
+			lbname.Location = new Point(143, 65);
+			lbname.Name = "lbname";
+			lbname.Size = new Size(225, 88);
+			lbname.TabIndex = 7;
+			lbname.Text = "Caption";
 			//
 			// llopen
 			//
-			this.llopen.Anchor = (
+			llopen.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -1112,87 +1112,87 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.llopen.AutoSize = true;
-			this.llopen.Font = new Font(
+			llopen.AutoSize = true;
+			llopen.Font = new Font(
 				"Microsoft Sans Serif",
 				11.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.llopen.Location = new Point(402, 221);
-			this.llopen.Name = "llopen";
-			this.llopen.Size = new Size(41, 18);
-			this.llopen.TabIndex = 8;
-			this.llopen.TabStop = true;
-			this.llopen.Text = "open";
-			this.llopen.LinkClicked +=
+			llopen.Location = new Point(402, 221);
+			llopen.Name = "llopen";
+			llopen.Size = new Size(41, 18);
+			llopen.TabIndex = 8;
+			llopen.TabStop = true;
+			llopen.Text = "open";
+			llopen.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.OpenPackage
+					OpenPackage
 				);
 			//
 			// thumb
 			//
-			this.thumb.BackColor = Color.Transparent;
-			this.thumb.BorderStyle = BorderStyle.FixedSingle;
-			this.thumb.Location = new Point(9, 25);
-			this.thumb.Name = "thumb";
-			this.thumb.Size = new Size(128, 128);
-			this.thumb.SizeMode = PictureBoxSizeMode.Zoom;
-			this.thumb.TabIndex = 0;
-			this.thumb.TabStop = false;
+			thumb.BackColor = Color.Transparent;
+			thumb.BorderStyle = BorderStyle.FixedSingle;
+			thumb.Location = new Point(9, 25);
+			thumb.Name = "thumb";
+			thumb.Size = new Size(128, 128);
+			thumb.SizeMode = PictureBoxSizeMode.Zoom;
+			thumb.TabIndex = 0;
+			thumb.TabStop = false;
 			//
 			// sfd
 			//
-			this.sfd.Filter =
+			sfd.Filter =
 				"Comma Seperated Values (*.csv)|*.csv|All Files (*.*)|*.*";
 			//
 			// panel1
 			//
-			this.panel1.BackColor = Color.Transparent;
-			this.panel1.Controls.Add(this.btscan);
-			this.panel1.Controls.Add(this.cbrec);
-			this.panel1.Controls.Add(this.tabControl1);
-			this.panel1.Controls.Add(this.lv);
-			this.panel1.Controls.Add(this.pb);
-			this.panel1.Controls.Add(this.cbfolder);
-			this.panel1.Controls.Add(this.linkLabel1);
-			this.panel1.Controls.Add(this.gbinfo);
-			this.panel1.Dock = DockStyle.Fill;
-			this.panel1.Font = new Font(
+			panel1.BackColor = Color.Transparent;
+			panel1.Controls.Add(btscan);
+			panel1.Controls.Add(cbrec);
+			panel1.Controls.Add(tabControl1);
+			panel1.Controls.Add(lv);
+			panel1.Controls.Add(pb);
+			panel1.Controls.Add(cbfolder);
+			panel1.Controls.Add(linkLabel1);
+			panel1.Controls.Add(gbinfo);
+			panel1.Dock = DockStyle.Fill;
+			panel1.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.panel1.Location = new Point(0, 0);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new Size(964, 602);
-			this.panel1.TabIndex = 8;
+			panel1.Location = new Point(0, 0);
+			panel1.Name = "panel1";
+			panel1.Size = new Size(964, 602);
+			panel1.TabIndex = 8;
 			//
 			// ScannerForm
 			//
-			this.AutoScaleBaseSize = new Size(5, 13);
-			this.ClientSize = new Size(964, 602);
-			this.Controls.Add(this.panel1);
-			this.Icon = ((Icon)(resources.GetObject("$this.Icon")));
-			this.Name = "ScannerForm";
-			this.StartPosition = FormStartPosition.CenterParent;
-			this.Text = "Folder Scanner";
-			this.tabControl1.ResumeLayout(false);
-			this.tbscanners.ResumeLayout(false);
-			this.tbscanners.PerformLayout();
-			this.tboperations.ResumeLayout(false);
-			this.tbcache.ResumeLayout(false);
-			this.tbidentify.ResumeLayout(false);
-			this.tbidentify.PerformLayout();
-			this.gbinfo.ResumeLayout(false);
-			this.gbinfo.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.thumb)).EndInit();
-			this.panel1.ResumeLayout(false);
-			this.panel1.PerformLayout();
-			this.ResumeLayout(false);
+			AutoScaleBaseSize = new Size(5, 13);
+			ClientSize = new Size(964, 602);
+			Controls.Add(panel1);
+			Icon = ((Icon)(resources.GetObject("$this.Icon")));
+			Name = "ScannerForm";
+			StartPosition = FormStartPosition.CenterParent;
+			Text = "Folder Scanner";
+			tabControl1.ResumeLayout(false);
+			tbscanners.ResumeLayout(false);
+			tbscanners.PerformLayout();
+			tboperations.ResumeLayout(false);
+			tbcache.ResumeLayout(false);
+			tbidentify.ResumeLayout(false);
+			tbidentify.PerformLayout();
+			gbinfo.ResumeLayout(false);
+			gbinfo.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(thumb)).EndInit();
+			panel1.ResumeLayout(false);
+			panel1.PerformLayout();
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -1294,7 +1294,7 @@ namespace SimPe.Plugin
 				foreach (IScanner s in scanners)
 				{
 					WaitingScreen.Message = s.GetType().Name;
-					s.InitScan(this.lv);
+					s.InitScan(lv);
 				}
 
 				btscan.Text = "Stop";
@@ -1397,19 +1397,19 @@ namespace SimPe.Plugin
 
 				if (encount == lv.SelectedItems.Count)
 				{
-					this.cbenable.CheckState = CheckState.Checked;
+					cbenable.CheckState = CheckState.Checked;
 				}
 				else if (encount == 0)
 				{
-					this.cbenable.CheckState = CheckState.Unchecked;
+					cbenable.CheckState = CheckState.Unchecked;
 				}
 				else
 				{
-					this.cbenable.CheckState = CheckState.Indeterminate;
+					cbenable.CheckState = CheckState.Indeterminate;
 				}
 
 				//Enable the Scanner Controls
-				foreach (IScanner scanner in this.lbscanners.Items)
+				foreach (IScanner scanner in lbscanners.Items)
 				{
 					scanner.EnableControl(
 						items,
@@ -1474,12 +1474,12 @@ namespace SimPe.Plugin
 
 		private void SetEnabledState(object sender, EventArgs e)
 		{
-			if (this.cbenable.Tag != null)
+			if (cbenable.Tag != null)
 			{
 				return;
 			}
 
-			if (this.cbenable.CheckState == CheckState.Indeterminate)
+			if (cbenable.CheckState == CheckState.Indeterminate)
 			{
 				return;
 			}
@@ -1488,7 +1488,7 @@ namespace SimPe.Plugin
 			try
 			{
 				string ext = ".package";
-				if (!this.cbenable.Checked)
+				if (!cbenable.Checked)
 				{
 					ext = ".packagedisabled";
 				}
@@ -1589,7 +1589,7 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			this.FileName = SelectedScannerItem.FileName;
+			FileName = SelectedScannerItem.FileName;
 			Close();
 		}
 

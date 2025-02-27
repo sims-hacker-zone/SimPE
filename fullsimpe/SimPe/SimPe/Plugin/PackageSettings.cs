@@ -19,11 +19,11 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				return this.familyGuid;
+				return familyGuid;
 			}
 			set
 			{
-				this.familyGuid = value;
+				familyGuid = value;
 			}
 		}
 
@@ -32,11 +32,11 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				return this.description;
+				return description;
 			}
 			set
 			{
-				this.description = value;
+				description = value;
 			}
 		}
 
@@ -45,11 +45,11 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				return this.pinheadMode;
+				return pinheadMode;
 			}
 			set
 			{
-				this.pinheadMode = value;
+				pinheadMode = value;
 			}
 		}
 
@@ -58,15 +58,15 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				return this.reCompressTextures;
+				return reCompressTextures;
 			}
 			set
 			{
-				this.reCompressTextures = value;
+				reCompressTextures = value;
 			}
 		}
 
-		public virtual RecolorType PackageType => this.mode;
+		public virtual RecolorType PackageType => mode;
 
 		public PackageSettings()
 		{
@@ -76,18 +76,18 @@ namespace SimPe.Plugin
 		{
 			if (settings != null)
 			{
-				this.description = settings.description;
-				this.familyGuid = settings.familyGuid;
-				this.pinheadMode = settings.pinheadMode;
-				this.reCompressTextures = settings.reCompressTextures;
-				this.mode = settings.mode;
+				description = settings.description;
+				familyGuid = settings.familyGuid;
+				pinheadMode = settings.pinheadMode;
+				reCompressTextures = settings.reCompressTextures;
+				mode = settings.mode;
 			}
 		}
 
 		public PackageSettings(PackageSettings settings, RecolorType type)
 			: this(settings)
 		{
-			this.mode = type;
+			mode = type;
 		}
 	}
 
@@ -104,11 +104,11 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				return this.defaultProxy;
+				return defaultProxy;
 			}
 			set
 			{
-				this.defaultProxy = value;
+				defaultProxy = value;
 			}
 		}
 
@@ -129,7 +129,7 @@ namespace SimPe.Plugin
 		{
 			if (settings is HairtoneSettings)
 			{
-				this.defaultProxy = ((HairtoneSettings)settings).defaultProxy;
+				defaultProxy = ((HairtoneSettings)settings).defaultProxy;
 			}
 		}
 	}
@@ -153,7 +153,7 @@ namespace SimPe.Plugin
 		{
 			if (settings is SkintoneSettings)
 			{
-				this.GeneticWeight = ((SkintoneSettings)settings).GeneticWeight;
+				GeneticWeight = ((SkintoneSettings)settings).GeneticWeight;
 			}
 		}
 	}
@@ -222,15 +222,15 @@ namespace SimPe.Plugin
 			if (settings is ClothingSettings)
 			{
 				ClothingSettings cSettings = (ClothingSettings)settings;
-				this.Age = cSettings.Age;
-				this.Category = cSettings.Category;
-				this.OutfitCat = cSettings.OutfitCat;
-				this.Gender = cSettings.Gender;
-				this.ShoeType = cSettings.ShoeType;
-				this.OutfitType = cSettings.OutfitType;
-				this.Species = cSettings.Species;
-				this.Figure = cSettings.Figure;
-				this.Flaggery = cSettings.Flaggery;
+				Age = cSettings.Age;
+				Category = cSettings.Category;
+				OutfitCat = cSettings.OutfitCat;
+				Gender = cSettings.Gender;
+				ShoeType = cSettings.ShoeType;
+				OutfitType = cSettings.OutfitType;
+				Species = cSettings.Species;
+				Figure = cSettings.Figure;
+				Flaggery = cSettings.Flaggery;
 			}
 		}
 	}

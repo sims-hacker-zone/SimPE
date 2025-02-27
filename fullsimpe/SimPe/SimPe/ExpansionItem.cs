@@ -18,13 +18,13 @@ namespace SimPe
 			internal Flags(int val)
 				: base((ushort)val) { }
 
-			protected bool RegularExpansion => this.GetBit(0);
-			protected bool StuffPack => this.GetBit(1);
-			public bool LuaFolders => this.GetBit(2);
-			public bool LoadWantText => this.GetBit(3);
-			public bool SimStory => this.GetBit(4);
-			public bool FullObjectsPackage => !this.GetBit(5);
-			public bool HasNgbhProfiles => this.GetBit(6);
+			protected bool RegularExpansion => GetBit(0);
+			protected bool StuffPack => GetBit(1);
+			public bool LuaFolders => GetBit(2);
+			public bool LoadWantText => GetBit(3);
+			public bool SimStory => GetBit(4);
+			public bool FullObjectsPackage => !GetBit(5);
+			public bool HasNgbhProfiles => GetBit(6);
 
 			public Classes Class
 			{
@@ -339,7 +339,7 @@ namespace SimPe
 					AddFileTableFolder(folder);
 				}
 
-				System.Diagnostics.Debug.WriteLine(this.ToString());
+				System.Diagnostics.Debug.WriteLine(ToString());
 
 				NameSortNumber = (string)key.GetValue("namelistnr", "0");
 				string dname = name;
@@ -422,7 +422,7 @@ namespace SimPe
 			for (int i = 0; i < PathProvider.GROUP_COUNT; i++)
 			{
 				long grp = (long)Math.Pow(2, i);
-				if (this.ShareOneGroup(grp))
+				if (ShareOneGroup(grp))
 				{
 					mylist.Add(grp);
 				}
@@ -446,10 +446,10 @@ namespace SimPe
 				bool def
 			)
 			{
-				this.Lable = name;
-				this.Path = path;
-				this.Expansion = ei;
-				this.Default = def;
+				Lable = name;
+				Path = path;
+				Expansion = ei;
+				Default = def;
 			}
 
 			public string Lable
@@ -792,7 +792,7 @@ namespace SimPe
 					object o = rkf.GetValue(IdKey + "Path");
 					if (o == null)
 					{
-						return this.RealInstallFolder;
+						return RealInstallFolder;
 					}
 					else
 					{
@@ -800,7 +800,7 @@ namespace SimPe
 
 						if (!System.IO.Directory.Exists(fl))
 						{
-							return this.RealInstallFolder;
+							return RealInstallFolder;
 						}
 
 						return fl;
@@ -808,7 +808,7 @@ namespace SimPe
 				}
 				catch (Exception)
 				{
-					return this.RealInstallFolder;
+					return RealInstallFolder;
 				}
 			}
 			set

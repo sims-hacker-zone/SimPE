@@ -40,7 +40,7 @@ namespace SimPe.Plugin
 		public GeometryDataContainerExt(GeometryDataContainer gmdc, bool withjoints)
 		{
 			joints = withjoints;
-			this.Gmdc = gmdc;
+			Gmdc = gmdc;
 			UserTxtrMap = new Hashtable();
 			UserTxmtMap = new Hashtable();
 		}

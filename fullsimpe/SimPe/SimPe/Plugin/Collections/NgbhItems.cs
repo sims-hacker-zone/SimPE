@@ -35,7 +35,7 @@ namespace SimPe.Plugin.Collections
 
 		internal NgbhItems(NgbhSlotList parent)
 		{
-			this.Parent = parent;
+			Parent = parent;
 			if (parent != null)
 			{
 				ngbh = parent.Parent;
@@ -187,7 +187,7 @@ namespace SimPe.Plugin.Collections
 
 		public NgbhItems Clone()
 		{
-			return Clone(this.Parent);
+			return Clone(Parent);
 		}
 
 		public NgbhItems Clone(NgbhSlotList newparent)

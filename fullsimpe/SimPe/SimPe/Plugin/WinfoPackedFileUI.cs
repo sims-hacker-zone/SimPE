@@ -33,14 +33,14 @@ namespace SimPe.Plugin
 			wiversion.Text = "0x" + Helper.HexString(Wrapper.weaversion);
 			if (Wrapper.weaversion != 3)
 			{
-				this.CanCommit = false;
-				this.textBox1.ForeColor = System.Drawing.Color.DarkRed;
+				CanCommit = false;
+				textBox1.ForeColor = System.Drawing.Color.DarkRed;
 				groupBox1.Visible = false;
 			}
 			else
 			{
-				this.CanCommit = true;
-				this.textBox1.ForeColor = System.Drawing.Color.Black;
+				CanCommit = true;
+				textBox1.ForeColor = System.Drawing.Color.Black;
 				groupBox1.Visible = true;
 				WiTemperC = (Wrapper.wetemperature / 3) + 13;
 				WiTemperF = (Wrapper.wetemperature * 6) / 10 + 55;
@@ -78,7 +78,7 @@ namespace SimPe.Plugin
 
 		void IDisposable.Dispose()
 		{
-			this.TPFW.Dispose();
+			TPFW.Dispose();
 		}
 		#endregion
 

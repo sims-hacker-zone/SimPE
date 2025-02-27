@@ -30,9 +30,9 @@ namespace SimPe.Plugin
 		/// <param name="subset">initial Name of the Subset</param>
 		public WorkshopMMAT(string subset)
 		{
-			this.Subset = subset;
-			this.MMATs = new PackedFiles.Wrapper.Cpf[0];
-			this.ObjectStateIndex = new uint[0];
+			Subset = subset;
+			MMATs = new PackedFiles.Wrapper.Cpf[0];
+			ObjectStateIndex = new uint[0];
 		}
 
 		/// <summary>
@@ -63,7 +63,7 @@ namespace SimPe.Plugin
 		public bool AddMMAT(PackedFiles.Wrapper.Cpf mmat)
 		{
 			if (
-				this.AddObjectStateIndex(mmat.GetItem("objectStateIndex").UIntegerValue)
+				AddObjectStateIndex(mmat.GetItem("objectStateIndex").UIntegerValue)
 			)
 			{
 				MMATs = (PackedFiles.Wrapper.Cpf[])Helper.Add(MMATs, mmat);
@@ -106,7 +106,7 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			return Subset + " (" + this.ObjectStateIndex.Length.ToString() + ")";
+			return Subset + " (" + ObjectStateIndex.Length.ToString() + ")";
 		}
 	}
 }

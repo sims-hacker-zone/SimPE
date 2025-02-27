@@ -297,7 +297,7 @@ namespace Ambertation.Threading
 
 		public ConsumerThread(ProducerThread producer)
 		{
-			this.pt = producer;
+			pt = producer;
 		}
 
 		/// <summary>

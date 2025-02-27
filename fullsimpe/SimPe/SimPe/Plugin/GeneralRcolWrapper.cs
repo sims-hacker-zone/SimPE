@@ -56,9 +56,9 @@ namespace SimPe.Plugin
 			get
 			{
 				string str = "filename=";
-				str += this.FileName;
+				str += FileName;
 				str += ", references=";
-				Hashtable map = this.ReferenceChains;
+				Hashtable map = ReferenceChains;
 				foreach (string s in map.Keys)
 				{
 					str += s + ": ";
@@ -126,7 +126,7 @@ namespace SimPe.Plugin
 		void FindGenericReferences(Hashtable refmap)
 		{
 			ArrayList list = new ArrayList();
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in this.ReferencedFiles)
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in ReferencedFiles)
 			{
 				list.Add(pfd);
 			}
@@ -134,7 +134,7 @@ namespace SimPe.Plugin
 			refmap["Generic"] = list;
 
 			//now check each stored block if it implements IScenegraphBlock
-			foreach (IRcolBlock irb in this.Blocks)
+			foreach (IRcolBlock irb in Blocks)
 			{
 				if (
 					typeof(IScenegraphBlock)
@@ -142,7 +142,7 @@ namespace SimPe.Plugin
 				)
 				{
 					IScenegraphBlock sgb = (IScenegraphBlock)irb;
-					sgb.ReferencedItems(refmap, this.FileDescriptor.Group);
+					sgb.ReferencedItems(refmap, FileDescriptor.Group);
 				}
 			}
 		}
@@ -165,7 +165,7 @@ namespace SimPe.Plugin
 						);
 						if (pfd == null)
 						{
-							opfd.Group = this.FileDescriptor.Group;
+							opfd.Group = FileDescriptor.Group;
 							pfd = Package.FindFile(opfd);
 						}
 						if (pfd == null)

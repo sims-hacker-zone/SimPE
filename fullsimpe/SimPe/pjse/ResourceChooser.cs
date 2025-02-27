@@ -188,7 +188,7 @@ namespace pjse
 		private ListView getListView()
 		{
 			if (
-				this.tcResources.SelectedTab == this.tpPackage
+				tcResources.SelectedTab == tpPackage
 				&& lvPackage.SelectedItems != null
 			)
 			{
@@ -196,7 +196,7 @@ namespace pjse
 			}
 
 			if (
-				this.tcResources.SelectedTab == this.tpGroup
+				tcResources.SelectedTab == tpGroup
 				&& lvGroup.SelectedItems != null
 			)
 			{
@@ -204,7 +204,7 @@ namespace pjse
 			}
 
 			if (
-				this.tcResources.SelectedTab == this.tpSemiGroup
+				tcResources.SelectedTab == tpSemiGroup
 				&& lvSemi.SelectedItems != null
 			)
 			{
@@ -212,7 +212,7 @@ namespace pjse
 			}
 
 			if (
-				this.tcResources.SelectedTab == this.tpGlobalGroup
+				tcResources.SelectedTab == tpGlobalGroup
 				&& lvGlobal.SelectedItems != null
 			)
 			{
@@ -220,7 +220,7 @@ namespace pjse
 			}
 
 			if (
-				this.tcResources.SelectedTab == this.tpBuiltIn
+				tcResources.SelectedTab == tpBuiltIn
 				&& lvPrim.SelectedItems != null
 			)
 			{
@@ -268,7 +268,7 @@ namespace pjse
 			CanDoEA = canDoEA;
 
 			form.Cursor = Cursors.WaitCursor;
-			this.Cursor = Cursors.WaitCursor;
+			Cursor = Cursors.WaitCursor;
 
 			List<TabPage> ltp = new List<TabPage>(
 				new TabPage[]
@@ -283,7 +283,7 @@ namespace pjse
 
 			btnViewBHAV.Visible = resourceType == SimPe.Data.MetaData.BHAV_FILE;
 
-			this.tcResources.TabPages.Clear();
+			tcResources.TabPages.Clear();
 
 			// There doesn't appear to be a way to compare two paths and have the OS decide if they refer to the same object
 			if (
@@ -295,12 +295,12 @@ namespace pjse
 					.EndsWith("objects.package")
 			)
 			{
-				FillPackage(resourceType, this.lvPackage, this.tpPackage);
+				FillPackage(resourceType, lvPackage, tpPackage);
 			}
 
 			if (!skip_pages[1])
 			{
-				FillGroup(resourceType, group, this.lvGroup, this.tpGroup);
+				FillGroup(resourceType, group, lvGroup, tpGroup);
 			}
 
 			if (!skip_pages[2])
@@ -311,10 +311,10 @@ namespace pjse
 					FillGroup(
 						resourceType,
 						g.SemiGlobalGroup,
-						this.lvSemi,
-						this.tpSemiGroup
+						lvSemi,
+						tpSemiGroup
 					);
-					this.tpSemiGroup.Text = g.SemiGlobalName;
+					tpSemiGroup.Text = g.SemiGlobalName;
 				}
 			}
 
@@ -323,17 +323,17 @@ namespace pjse
 				FillGroup(
 					resourceType,
 					(uint)Group.Global,
-					this.lvGlobal,
-					this.tpGlobalGroup
+					lvGlobal,
+					tpGlobalGroup
 				);
 			}
 
 			if (!skip_pages[4] && resourceType == SimPe.Data.MetaData.BHAV_FILE)
 			{
-				FillBuiltIn(resourceType, this.lvPrim, this.tpBuiltIn);
+				FillBuiltIn(resourceType, lvPrim, tpBuiltIn);
 			}
 
-			if (this.tcResources.TabCount > 0)
+			if (tcResources.TabCount > 0)
 			{
 				if (tcResources.Contains(ltp[PersistentTab]))
 				{
@@ -341,13 +341,13 @@ namespace pjse
 				}
 				else
 				{
-					this.tcResources.SelectedIndex = 0;
+					tcResources.SelectedIndex = 0;
 				}
 			}
 
 			form.Cursor = Cursors.Default;
-			this.Cursor = Cursors.Default;
-			this.Size = ChooserSize;
+			Cursor = Cursors.Default;
+			Size = ChooserSize;
 
 			DialogResult dr = ShowDialog();
 			while (dr == DialogResult.Retry)
@@ -355,8 +355,8 @@ namespace pjse
 				dr = ShowDialog();
 			}
 
-			ChooserSize = this.Size;
-			PersistentTab = ltp.IndexOf(this.tcResources.SelectedTab);
+			ChooserSize = Size;
+			PersistentTab = ltp.IndexOf(tcResources.SelectedTab);
 			Close();
 
 			if (dr == DialogResult.OK)
@@ -412,7 +412,7 @@ namespace pjse
 				lvi.Tag = item;
 				list.Items.Add(lvi);
 			}
-			this.tcResources.TabPages.Add(tab);
+			tcResources.TabPages.Add(tab);
 			list.ListViewItemSorter = new ListViewItemComparer();
 			if (list.Items.Count > 0)
 			{
@@ -439,7 +439,7 @@ namespace pjse
 				i++;
 			}
 
-			this.tcResources.TabPages.Add(tab);
+			tcResources.TabPages.Add(tab);
 			list.ListViewItemSorter = new ListViewItemComparer();
 			if (list.Items.Count > 0)
 			{
@@ -460,67 +460,67 @@ namespace pjse
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(ResourceChooser)
 				);
-			this.tcResources = new TabControl();
-			this.tpPackage = new TabPage();
-			this.lvPackage = new ListView();
-			this.chValue = new ColumnHeader();
-			this.chName = new ColumnHeader();
-			this.tpGlobalGroup = new TabPage();
-			this.lvGlobal = new ListView();
-			this.columnHeader1 = new ColumnHeader();
-			this.columnHeader2 = new ColumnHeader();
-			this.tpGroup = new TabPage();
-			this.lvGroup = new ListView();
-			this.columnHeader3 = new ColumnHeader();
-			this.columnHeader4 = new ColumnHeader();
-			this.tpSemiGroup = new TabPage();
-			this.lvSemi = new ListView();
-			this.columnHeader5 = new ColumnHeader();
-			this.columnHeader6 = new ColumnHeader();
-			this.tpBuiltIn = new TabPage();
-			this.lvPrim = new ListView();
-			this.columnHeader7 = new ColumnHeader();
-			this.columnHeader8 = new ColumnHeader();
-			this.OK = new Button();
-			this.Cancel = new Button();
-			this.btnViewBHAV = new Button();
-			this.tcResources.SuspendLayout();
-			this.tpPackage.SuspendLayout();
-			this.tpGlobalGroup.SuspendLayout();
-			this.tpGroup.SuspendLayout();
-			this.tpSemiGroup.SuspendLayout();
-			this.tpBuiltIn.SuspendLayout();
-			this.SuspendLayout();
+			tcResources = new TabControl();
+			tpPackage = new TabPage();
+			lvPackage = new ListView();
+			chValue = new ColumnHeader();
+			chName = new ColumnHeader();
+			tpGlobalGroup = new TabPage();
+			lvGlobal = new ListView();
+			columnHeader1 = new ColumnHeader();
+			columnHeader2 = new ColumnHeader();
+			tpGroup = new TabPage();
+			lvGroup = new ListView();
+			columnHeader3 = new ColumnHeader();
+			columnHeader4 = new ColumnHeader();
+			tpSemiGroup = new TabPage();
+			lvSemi = new ListView();
+			columnHeader5 = new ColumnHeader();
+			columnHeader6 = new ColumnHeader();
+			tpBuiltIn = new TabPage();
+			lvPrim = new ListView();
+			columnHeader7 = new ColumnHeader();
+			columnHeader8 = new ColumnHeader();
+			OK = new Button();
+			Cancel = new Button();
+			btnViewBHAV = new Button();
+			tcResources.SuspendLayout();
+			tpPackage.SuspendLayout();
+			tpGlobalGroup.SuspendLayout();
+			tpGroup.SuspendLayout();
+			tpSemiGroup.SuspendLayout();
+			tpBuiltIn.SuspendLayout();
+			SuspendLayout();
 			//
 			// tcResources
 			//
-			resources.ApplyResources(this.tcResources, "tcResources");
-			this.tcResources.Controls.Add(this.tpPackage);
-			this.tcResources.Controls.Add(this.tpGlobalGroup);
-			this.tcResources.Controls.Add(this.tpGroup);
-			this.tcResources.Controls.Add(this.tpSemiGroup);
-			this.tcResources.Controls.Add(this.tpBuiltIn);
-			this.tcResources.Name = "tcResources";
-			this.tcResources.SelectedIndex = 0;
-			this.tcResources.SelectedIndexChanged += new EventHandler(
-				this.tcResources_SelectedIndexChanged
+			resources.ApplyResources(tcResources, "tcResources");
+			tcResources.Controls.Add(tpPackage);
+			tcResources.Controls.Add(tpGlobalGroup);
+			tcResources.Controls.Add(tpGroup);
+			tcResources.Controls.Add(tpSemiGroup);
+			tcResources.Controls.Add(tpBuiltIn);
+			tcResources.Name = "tcResources";
+			tcResources.SelectedIndex = 0;
+			tcResources.SelectedIndexChanged += new EventHandler(
+				tcResources_SelectedIndexChanged
 			);
 			//
 			// tpPackage
 			//
-			this.tpPackage.Controls.Add(this.lvPackage);
-			resources.ApplyResources(this.tpPackage, "tpPackage");
-			this.tpPackage.Name = "tpPackage";
+			tpPackage.Controls.Add(lvPackage);
+			resources.ApplyResources(tpPackage, "tpPackage");
+			tpPackage.Name = "tpPackage";
 			//
 			// lvPackage
 			//
-			this.lvPackage.Columns.AddRange(
-				new ColumnHeader[] { this.chValue, this.chName }
+			lvPackage.Columns.AddRange(
+				new ColumnHeader[] { chValue, chName }
 			);
-			resources.ApplyResources(this.lvPackage, "lvPackage");
-			this.lvPackage.FullRowSelect = true;
-			this.lvPackage.HideSelection = false;
-			this.lvPackage.Items.AddRange(
+			resources.ApplyResources(lvPackage, "lvPackage");
+			lvPackage.FullRowSelect = true;
+			lvPackage.HideSelection = false;
+			lvPackage.Items.AddRange(
 				new ListViewItem[]
 				{
 					(
@@ -530,47 +530,47 @@ namespace pjse
 					),
 				}
 			);
-			this.lvPackage.MultiSelect = false;
-			this.lvPackage.Name = "lvPackage";
-			this.lvPackage.ShowGroups = false;
-			this.lvPackage.Sorting = SortOrder.Ascending;
-			this.lvPackage.UseCompatibleStateImageBehavior = false;
-			this.lvPackage.View = View.Details;
-			this.lvPackage.DoubleClick += new EventHandler(
-				this.listView_DoubleClick
+			lvPackage.MultiSelect = false;
+			lvPackage.Name = "lvPackage";
+			lvPackage.ShowGroups = false;
+			lvPackage.Sorting = SortOrder.Ascending;
+			lvPackage.UseCompatibleStateImageBehavior = false;
+			lvPackage.View = View.Details;
+			lvPackage.DoubleClick += new EventHandler(
+				listView_DoubleClick
 			);
-			this.lvPackage.ColumnClick +=
+			lvPackage.ColumnClick +=
 				new ColumnClickEventHandler(
-					this.listView_ColumnClick
+					listView_ColumnClick
 				);
 			//
 			// chValue
 			//
-			resources.ApplyResources(this.chValue, "chValue");
+			resources.ApplyResources(chValue, "chValue");
 			//
 			// chName
 			//
-			resources.ApplyResources(this.chName, "chName");
+			resources.ApplyResources(chName, "chName");
 			//
 			// tpGlobalGroup
 			//
-			this.tpGlobalGroup.Controls.Add(this.lvGlobal);
-			resources.ApplyResources(this.tpGlobalGroup, "tpGlobalGroup");
-			this.tpGlobalGroup.Name = "tpGlobalGroup";
+			tpGlobalGroup.Controls.Add(lvGlobal);
+			resources.ApplyResources(tpGlobalGroup, "tpGlobalGroup");
+			tpGlobalGroup.Name = "tpGlobalGroup";
 			//
 			// lvGlobal
 			//
-			this.lvGlobal.Columns.AddRange(
+			lvGlobal.Columns.AddRange(
 				new ColumnHeader[]
 				{
-					this.columnHeader1,
-					this.columnHeader2,
+					columnHeader1,
+					columnHeader2,
 				}
 			);
-			resources.ApplyResources(this.lvGlobal, "lvGlobal");
-			this.lvGlobal.FullRowSelect = true;
-			this.lvGlobal.HideSelection = false;
-			this.lvGlobal.Items.AddRange(
+			resources.ApplyResources(lvGlobal, "lvGlobal");
+			lvGlobal.FullRowSelect = true;
+			lvGlobal.HideSelection = false;
+			lvGlobal.Items.AddRange(
 				new ListViewItem[]
 				{
 					(
@@ -580,47 +580,47 @@ namespace pjse
 					),
 				}
 			);
-			this.lvGlobal.MultiSelect = false;
-			this.lvGlobal.Name = "lvGlobal";
-			this.lvGlobal.ShowGroups = false;
-			this.lvGlobal.Sorting = SortOrder.Ascending;
-			this.lvGlobal.UseCompatibleStateImageBehavior = false;
-			this.lvGlobal.View = View.Details;
-			this.lvGlobal.DoubleClick += new EventHandler(
-				this.listView_DoubleClick
+			lvGlobal.MultiSelect = false;
+			lvGlobal.Name = "lvGlobal";
+			lvGlobal.ShowGroups = false;
+			lvGlobal.Sorting = SortOrder.Ascending;
+			lvGlobal.UseCompatibleStateImageBehavior = false;
+			lvGlobal.View = View.Details;
+			lvGlobal.DoubleClick += new EventHandler(
+				listView_DoubleClick
 			);
-			this.lvGlobal.ColumnClick +=
+			lvGlobal.ColumnClick +=
 				new ColumnClickEventHandler(
-					this.listView_ColumnClick
+					listView_ColumnClick
 				);
 			//
 			// columnHeader1
 			//
-			resources.ApplyResources(this.columnHeader1, "columnHeader1");
+			resources.ApplyResources(columnHeader1, "columnHeader1");
 			//
 			// columnHeader2
 			//
-			resources.ApplyResources(this.columnHeader2, "columnHeader2");
+			resources.ApplyResources(columnHeader2, "columnHeader2");
 			//
 			// tpGroup
 			//
-			this.tpGroup.Controls.Add(this.lvGroup);
-			resources.ApplyResources(this.tpGroup, "tpGroup");
-			this.tpGroup.Name = "tpGroup";
+			tpGroup.Controls.Add(lvGroup);
+			resources.ApplyResources(tpGroup, "tpGroup");
+			tpGroup.Name = "tpGroup";
 			//
 			// lvGroup
 			//
-			this.lvGroup.Columns.AddRange(
+			lvGroup.Columns.AddRange(
 				new ColumnHeader[]
 				{
-					this.columnHeader3,
-					this.columnHeader4,
+					columnHeader3,
+					columnHeader4,
 				}
 			);
-			resources.ApplyResources(this.lvGroup, "lvGroup");
-			this.lvGroup.FullRowSelect = true;
-			this.lvGroup.HideSelection = false;
-			this.lvGroup.Items.AddRange(
+			resources.ApplyResources(lvGroup, "lvGroup");
+			lvGroup.FullRowSelect = true;
+			lvGroup.HideSelection = false;
+			lvGroup.Items.AddRange(
 				new ListViewItem[]
 				{
 					(
@@ -630,47 +630,47 @@ namespace pjse
 					),
 				}
 			);
-			this.lvGroup.MultiSelect = false;
-			this.lvGroup.Name = "lvGroup";
-			this.lvGroup.ShowGroups = false;
-			this.lvGroup.Sorting = SortOrder.Ascending;
-			this.lvGroup.UseCompatibleStateImageBehavior = false;
-			this.lvGroup.View = View.Details;
-			this.lvGroup.DoubleClick += new EventHandler(
-				this.listView_DoubleClick
+			lvGroup.MultiSelect = false;
+			lvGroup.Name = "lvGroup";
+			lvGroup.ShowGroups = false;
+			lvGroup.Sorting = SortOrder.Ascending;
+			lvGroup.UseCompatibleStateImageBehavior = false;
+			lvGroup.View = View.Details;
+			lvGroup.DoubleClick += new EventHandler(
+				listView_DoubleClick
 			);
-			this.lvGroup.ColumnClick +=
+			lvGroup.ColumnClick +=
 				new ColumnClickEventHandler(
-					this.listView_ColumnClick
+					listView_ColumnClick
 				);
 			//
 			// columnHeader3
 			//
-			resources.ApplyResources(this.columnHeader3, "columnHeader3");
+			resources.ApplyResources(columnHeader3, "columnHeader3");
 			//
 			// columnHeader4
 			//
-			resources.ApplyResources(this.columnHeader4, "columnHeader4");
+			resources.ApplyResources(columnHeader4, "columnHeader4");
 			//
 			// tpSemiGroup
 			//
-			this.tpSemiGroup.Controls.Add(this.lvSemi);
-			resources.ApplyResources(this.tpSemiGroup, "tpSemiGroup");
-			this.tpSemiGroup.Name = "tpSemiGroup";
+			tpSemiGroup.Controls.Add(lvSemi);
+			resources.ApplyResources(tpSemiGroup, "tpSemiGroup");
+			tpSemiGroup.Name = "tpSemiGroup";
 			//
 			// lvSemi
 			//
-			this.lvSemi.Columns.AddRange(
+			lvSemi.Columns.AddRange(
 				new ColumnHeader[]
 				{
-					this.columnHeader5,
-					this.columnHeader6,
+					columnHeader5,
+					columnHeader6,
 				}
 			);
-			resources.ApplyResources(this.lvSemi, "lvSemi");
-			this.lvSemi.FullRowSelect = true;
-			this.lvSemi.HideSelection = false;
-			this.lvSemi.Items.AddRange(
+			resources.ApplyResources(lvSemi, "lvSemi");
+			lvSemi.FullRowSelect = true;
+			lvSemi.HideSelection = false;
+			lvSemi.Items.AddRange(
 				new ListViewItem[]
 				{
 					(
@@ -680,46 +680,46 @@ namespace pjse
 					),
 				}
 			);
-			this.lvSemi.MultiSelect = false;
-			this.lvSemi.Name = "lvSemi";
-			this.lvSemi.ShowGroups = false;
-			this.lvSemi.Sorting = SortOrder.Ascending;
-			this.lvSemi.UseCompatibleStateImageBehavior = false;
-			this.lvSemi.View = View.Details;
-			this.lvSemi.DoubleClick += new EventHandler(
-				this.listView_DoubleClick
+			lvSemi.MultiSelect = false;
+			lvSemi.Name = "lvSemi";
+			lvSemi.ShowGroups = false;
+			lvSemi.Sorting = SortOrder.Ascending;
+			lvSemi.UseCompatibleStateImageBehavior = false;
+			lvSemi.View = View.Details;
+			lvSemi.DoubleClick += new EventHandler(
+				listView_DoubleClick
 			);
-			this.lvSemi.ColumnClick += new ColumnClickEventHandler(
-				this.listView_ColumnClick
+			lvSemi.ColumnClick += new ColumnClickEventHandler(
+				listView_ColumnClick
 			);
 			//
 			// columnHeader5
 			//
-			resources.ApplyResources(this.columnHeader5, "columnHeader5");
+			resources.ApplyResources(columnHeader5, "columnHeader5");
 			//
 			// columnHeader6
 			//
-			resources.ApplyResources(this.columnHeader6, "columnHeader6");
+			resources.ApplyResources(columnHeader6, "columnHeader6");
 			//
 			// tpBuiltIn
 			//
-			this.tpBuiltIn.Controls.Add(this.lvPrim);
-			resources.ApplyResources(this.tpBuiltIn, "tpBuiltIn");
-			this.tpBuiltIn.Name = "tpBuiltIn";
+			tpBuiltIn.Controls.Add(lvPrim);
+			resources.ApplyResources(tpBuiltIn, "tpBuiltIn");
+			tpBuiltIn.Name = "tpBuiltIn";
 			//
 			// lvPrim
 			//
-			this.lvPrim.Columns.AddRange(
+			lvPrim.Columns.AddRange(
 				new ColumnHeader[]
 				{
-					this.columnHeader7,
-					this.columnHeader8,
+					columnHeader7,
+					columnHeader8,
 				}
 			);
-			resources.ApplyResources(this.lvPrim, "lvPrim");
-			this.lvPrim.FullRowSelect = true;
-			this.lvPrim.HideSelection = false;
-			this.lvPrim.Items.AddRange(
+			resources.ApplyResources(lvPrim, "lvPrim");
+			lvPrim.FullRowSelect = true;
+			lvPrim.HideSelection = false;
+			lvPrim.Items.AddRange(
 				new ListViewItem[]
 				{
 					(
@@ -729,67 +729,67 @@ namespace pjse
 					),
 				}
 			);
-			this.lvPrim.MultiSelect = false;
-			this.lvPrim.Name = "lvPrim";
-			this.lvPrim.ShowGroups = false;
-			this.lvPrim.UseCompatibleStateImageBehavior = false;
-			this.lvPrim.View = View.Details;
-			this.lvPrim.DoubleClick += new EventHandler(
-				this.listView_DoubleClick
+			lvPrim.MultiSelect = false;
+			lvPrim.Name = "lvPrim";
+			lvPrim.ShowGroups = false;
+			lvPrim.UseCompatibleStateImageBehavior = false;
+			lvPrim.View = View.Details;
+			lvPrim.DoubleClick += new EventHandler(
+				listView_DoubleClick
 			);
-			this.lvPrim.ColumnClick += new ColumnClickEventHandler(
-				this.listView_ColumnClick
+			lvPrim.ColumnClick += new ColumnClickEventHandler(
+				listView_ColumnClick
 			);
 			//
 			// columnHeader7
 			//
-			resources.ApplyResources(this.columnHeader7, "columnHeader7");
+			resources.ApplyResources(columnHeader7, "columnHeader7");
 			//
 			// columnHeader8
 			//
-			resources.ApplyResources(this.columnHeader8, "columnHeader8");
+			resources.ApplyResources(columnHeader8, "columnHeader8");
 			//
 			// OK
 			//
-			resources.ApplyResources(this.OK, "OK");
-			this.OK.DialogResult = DialogResult.OK;
-			this.OK.Name = "OK";
-			this.OK.Click += new EventHandler(this.OK_Click);
+			resources.ApplyResources(OK, "OK");
+			OK.DialogResult = DialogResult.OK;
+			OK.Name = "OK";
+			OK.Click += new EventHandler(OK_Click);
 			//
 			// Cancel
 			//
-			resources.ApplyResources(this.Cancel, "Cancel");
-			this.Cancel.DialogResult = DialogResult.Cancel;
-			this.Cancel.Name = "Cancel";
+			resources.ApplyResources(Cancel, "Cancel");
+			Cancel.DialogResult = DialogResult.Cancel;
+			Cancel.Name = "Cancel";
 			//
 			// btnViewBHAV
 			//
-			resources.ApplyResources(this.btnViewBHAV, "btnViewBHAV");
-			this.btnViewBHAV.Name = "btnViewBHAV";
-			this.btnViewBHAV.Click += new EventHandler(this.btnViewBHAV_Click);
+			resources.ApplyResources(btnViewBHAV, "btnViewBHAV");
+			btnViewBHAV.Name = "btnViewBHAV";
+			btnViewBHAV.Click += new EventHandler(btnViewBHAV_Click);
 			//
 			// ResourceChooser
 			//
-			this.AcceptButton = this.OK;
+			AcceptButton = OK;
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = AutoScaleMode.Dpi;
-			this.CancelButton = this.Cancel;
-			this.Controls.Add(this.btnViewBHAV);
-			this.Controls.Add(this.Cancel);
-			this.Controls.Add(this.OK);
-			this.Controls.Add(this.tcResources);
-			this.FormBorderStyle =
+			AutoScaleMode = AutoScaleMode.Dpi;
+			CancelButton = Cancel;
+			Controls.Add(btnViewBHAV);
+			Controls.Add(Cancel);
+			Controls.Add(OK);
+			Controls.Add(tcResources);
+			FormBorderStyle =
 				FormBorderStyle
 				.SizableToolWindow;
-			this.Name = "ResourceChooser";
-			this.ShowInTaskbar = false;
-			this.tcResources.ResumeLayout(false);
-			this.tpPackage.ResumeLayout(false);
-			this.tpGlobalGroup.ResumeLayout(false);
-			this.tpGroup.ResumeLayout(false);
-			this.tpSemiGroup.ResumeLayout(false);
-			this.tpBuiltIn.ResumeLayout(false);
-			this.ResumeLayout(false);
+			Name = "ResourceChooser";
+			ShowInTaskbar = false;
+			tcResources.ResumeLayout(false);
+			tpPackage.ResumeLayout(false);
+			tpGlobalGroup.ResumeLayout(false);
+			tpGroup.ResumeLayout(false);
+			tpSemiGroup.ResumeLayout(false);
+			tpBuiltIn.ResumeLayout(false);
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -814,13 +814,13 @@ namespace pjse
 		{
 			if (btnViewBHAV.Visible)
 			{
-				btnViewBHAV.Enabled = tcResources.SelectedTab != this.tpBuiltIn;
+				btnViewBHAV.Enabled = tcResources.SelectedTab != tpBuiltIn;
 			}
 		}
 
 		private void listView_DoubleClick(object sender, EventArgs e)
 		{
-			this.DialogResult = DialogResult.OK;
+			DialogResult = DialogResult.OK;
 			OK_Click(sender, e);
 			Hide();
 		}
@@ -866,7 +866,7 @@ namespace pjse
 							}
 							else
 							{
-								this.DialogResult = DialogResult.Retry;
+								DialogResult = DialogResult.Retry;
 							}
 
 							break;

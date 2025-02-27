@@ -83,7 +83,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0002
 		private Instruction inst = null;
 
 		#region iBhavOperandWizForm
-		public Panel WizPanel => this.pnWiz0x0002;
+		public Panel WizPanel => pnWiz0x0002;
 
 		public void Execute(Instruction inst)
 		{
@@ -132,79 +132,79 @@ namespace pjse.BhavOperandWizards.Wiz0x0002
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(UI));
-			this.pnWiz0x0002 = new Panel();
-			this.labelledDataOwner2 = new LabelledDataOwner();
-			this.labelledDataOwner1 = new LabelledDataOwner();
-			this.cbOperator = new ComboBox();
-			this.flowLayoutPanel1 = new FlowLayoutPanel();
-			this.pnWiz0x0002.SuspendLayout();
-			this.flowLayoutPanel1.SuspendLayout();
-			this.SuspendLayout();
+			pnWiz0x0002 = new Panel();
+			labelledDataOwner2 = new LabelledDataOwner();
+			labelledDataOwner1 = new LabelledDataOwner();
+			cbOperator = new ComboBox();
+			flowLayoutPanel1 = new FlowLayoutPanel();
+			pnWiz0x0002.SuspendLayout();
+			flowLayoutPanel1.SuspendLayout();
+			SuspendLayout();
 			//
 			// pnWiz0x0002
 			//
-			resources.ApplyResources(this.pnWiz0x0002, "pnWiz0x0002");
-			this.pnWiz0x0002.Controls.Add(this.flowLayoutPanel1);
-			this.pnWiz0x0002.Name = "pnWiz0x0002";
+			resources.ApplyResources(pnWiz0x0002, "pnWiz0x0002");
+			pnWiz0x0002.Controls.Add(flowLayoutPanel1);
+			pnWiz0x0002.Name = "pnWiz0x0002";
 			//
 			// labelledDataOwner2
 			//
-			resources.ApplyResources(this.labelledDataOwner2, "labelledDataOwner2");
-			this.labelledDataOwner2.DataOwner = ((byte)(255));
-			this.labelledDataOwner2.DataOwnerEnabled = true;
-			this.labelledDataOwner2.FlagsFor = this.labelledDataOwner1;
-			this.labelledDataOwner2.Instruction = null;
-			this.labelledDataOwner2.LabelSize = new System.Drawing.Size(35, 13);
-			this.labelledDataOwner2.LabelVisible = false;
-			this.labelledDataOwner2.Name = "labelledDataOwner2";
-			this.labelledDataOwner2.UseFlagNames = false;
-			this.labelledDataOwner2.Value = ((ushort)(0));
+			resources.ApplyResources(labelledDataOwner2, "labelledDataOwner2");
+			labelledDataOwner2.DataOwner = ((byte)(255));
+			labelledDataOwner2.DataOwnerEnabled = true;
+			labelledDataOwner2.FlagsFor = labelledDataOwner1;
+			labelledDataOwner2.Instruction = null;
+			labelledDataOwner2.LabelSize = new System.Drawing.Size(35, 13);
+			labelledDataOwner2.LabelVisible = false;
+			labelledDataOwner2.Name = "labelledDataOwner2";
+			labelledDataOwner2.UseFlagNames = false;
+			labelledDataOwner2.Value = ((ushort)(0));
 			//
 			// labelledDataOwner1
 			//
-			resources.ApplyResources(this.labelledDataOwner1, "labelledDataOwner1");
-			this.labelledDataOwner1.DataOwner = ((byte)(255));
-			this.labelledDataOwner1.DataOwnerEnabled = true;
-			this.labelledDataOwner1.DecimalVisible = false;
-			this.labelledDataOwner1.Instruction = null;
-			this.labelledDataOwner1.LabelSize = new System.Drawing.Size(35, 13);
-			this.labelledDataOwner1.LabelVisible = false;
-			this.labelledDataOwner1.Name = "labelledDataOwner1";
-			this.labelledDataOwner1.UseFlagNames = false;
-			this.labelledDataOwner1.UseInstancePickerVisible = false;
-			this.labelledDataOwner1.Value = ((ushort)(0));
+			resources.ApplyResources(labelledDataOwner1, "labelledDataOwner1");
+			labelledDataOwner1.DataOwner = ((byte)(255));
+			labelledDataOwner1.DataOwnerEnabled = true;
+			labelledDataOwner1.DecimalVisible = false;
+			labelledDataOwner1.Instruction = null;
+			labelledDataOwner1.LabelSize = new System.Drawing.Size(35, 13);
+			labelledDataOwner1.LabelVisible = false;
+			labelledDataOwner1.Name = "labelledDataOwner1";
+			labelledDataOwner1.UseFlagNames = false;
+			labelledDataOwner1.UseInstancePickerVisible = false;
+			labelledDataOwner1.Value = ((ushort)(0));
 			//
 			// cbOperator
 			//
-			this.cbOperator.DropDownStyle =
+			cbOperator.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			resources.ApplyResources(this.cbOperator, "cbOperator");
-			this.cbOperator.Name = "cbOperator";
-			this.cbOperator.SelectedIndexChanged += new System.EventHandler(
-				this.cbOperator_SelectedIndexChanged
+			resources.ApplyResources(cbOperator, "cbOperator");
+			cbOperator.Name = "cbOperator";
+			cbOperator.SelectedIndexChanged += new System.EventHandler(
+				cbOperator_SelectedIndexChanged
 			);
 			//
 			// flowLayoutPanel1
 			//
-			resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
-			this.flowLayoutPanel1.Controls.Add(this.labelledDataOwner1);
-			this.flowLayoutPanel1.Controls.Add(this.cbOperator);
-			this.flowLayoutPanel1.Controls.Add(this.labelledDataOwner2);
-			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+			resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
+			flowLayoutPanel1.Controls.Add(labelledDataOwner1);
+			flowLayoutPanel1.Controls.Add(cbOperator);
+			flowLayoutPanel1.Controls.Add(labelledDataOwner2);
+			flowLayoutPanel1.Name = "flowLayoutPanel1";
 			//
 			// UI
 			//
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = AutoScaleMode.Dpi;
-			this.Controls.Add(this.pnWiz0x0002);
-			this.Name = "UI";
-			this.pnWiz0x0002.ResumeLayout(false);
-			this.pnWiz0x0002.PerformLayout();
-			this.flowLayoutPanel1.ResumeLayout(false);
-			this.flowLayoutPanel1.PerformLayout();
-			this.ResumeLayout(false);
-			this.PerformLayout();
+			AutoScaleMode = AutoScaleMode.Dpi;
+			Controls.Add(pnWiz0x0002);
+			Name = "UI";
+			pnWiz0x0002.ResumeLayout(false);
+			pnWiz0x0002.PerformLayout();
+			flowLayoutPanel1.ResumeLayout(false);
+			flowLayoutPanel1.PerformLayout();
+			ResumeLayout(false);
+			PerformLayout();
 		}
 		#endregion
 

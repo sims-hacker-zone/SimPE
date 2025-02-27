@@ -96,7 +96,7 @@ namespace SimPe.Plugin
 			writer.Write(siminst);
 			writer.Write(LoadedLoyalty);
 			writer.Write(Data);
-			writer.Write(this.LoyaltyStars);
+			writer.Write(LoyaltyStars);
 		}
 
 		public override string ToString()
@@ -124,12 +124,12 @@ namespace SimPe.Plugin
 					+ " "
 					+ LoadedLoyalty.ToString()
 					+ " ("
-					+ this.LoyaltyStars.ToString()
+					+ LoyaltyStars.ToString()
 					+ ")";
 			}
 			else
 			{
-				return s + ": " + " " + this.LoyaltyStars.ToString();
+				return s + ": " + " " + LoyaltyStars.ToString();
 			}
 		}
 	}

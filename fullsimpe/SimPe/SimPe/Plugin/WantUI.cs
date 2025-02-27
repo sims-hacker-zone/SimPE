@@ -146,7 +146,7 @@ namespace SimPe.Plugin
 				form.ihist.Images.Clear();
 				form.ihist.Images.Add(
 					new System.Drawing.Bitmap(
-						this.GetType()
+						GetType()
 							.Assembly.GetManifestResourceStream("SimPe.img.nothumb.png")
 					)
 				);

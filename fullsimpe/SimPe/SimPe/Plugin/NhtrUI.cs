@@ -38,7 +38,7 @@ namespace SimPe.Plugin
 			// Required designer variable.
 			InitializeComponent();
 
-			this.CanCommit = Helper.WindowsRegistry.HiddenMode;
+			CanCommit = Helper.WindowsRegistry.HiddenMode;
 			//ThemeManager.AddControl(this.toolBar1);
 		}
 
@@ -66,84 +66,84 @@ namespace SimPe.Plugin
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(NhtrUI));
-			this.lb = new System.Windows.Forms.ListBox();
-			this.tb = new System.Windows.Forms.TextBox();
-			this.cb = new System.Windows.Forms.ComboBox();
-			this.pg = new System.Windows.Forms.PropertyGrid();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.panel2 = new System.Windows.Forms.Panel();
-			this.splitter1 = new System.Windows.Forms.Splitter();
-			this.panel1.SuspendLayout();
-			this.panel2.SuspendLayout();
-			this.SuspendLayout();
+			lb = new System.Windows.Forms.ListBox();
+			tb = new System.Windows.Forms.TextBox();
+			cb = new System.Windows.Forms.ComboBox();
+			pg = new System.Windows.Forms.PropertyGrid();
+			panel1 = new System.Windows.Forms.Panel();
+			panel2 = new System.Windows.Forms.Panel();
+			splitter1 = new System.Windows.Forms.Splitter();
+			panel1.SuspendLayout();
+			panel2.SuspendLayout();
+			SuspendLayout();
 			//
 			// lb
 			//
-			resources.ApplyResources(this.lb, "lb");
-			this.lb.Name = "lb";
-			this.lb.SelectedIndexChanged += new System.EventHandler(
-				this.lb_SelectedIndexChanged
+			resources.ApplyResources(lb, "lb");
+			lb.Name = "lb";
+			lb.SelectedIndexChanged += new System.EventHandler(
+				lb_SelectedIndexChanged
 			);
 			//
 			// tb
 			//
-			resources.ApplyResources(this.tb, "tb");
-			this.tb.Name = "tb";
-			this.tb.ReadOnly = true;
+			resources.ApplyResources(tb, "tb");
+			tb.Name = "tb";
+			tb.ReadOnly = true;
 			//
 			// cb
 			//
-			resources.ApplyResources(this.cb, "cb");
-			this.cb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cb.Name = "cb";
-			this.cb.SelectedIndexChanged += new System.EventHandler(
-				this.comboBox1_SelectedIndexChanged
+			resources.ApplyResources(cb, "cb");
+			cb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			cb.Name = "cb";
+			cb.SelectedIndexChanged += new System.EventHandler(
+				comboBox1_SelectedIndexChanged
 			);
 			//
 			// pg
 			//
-			resources.ApplyResources(this.pg, "pg");
-			this.pg.BackColor = System.Drawing.SystemColors.Control;
-			this.pg.LineColor = System.Drawing.SystemColors.ScrollBar;
-			this.pg.Name = "pg";
-			this.pg.ToolbarVisible = false;
+			resources.ApplyResources(pg, "pg");
+			pg.BackColor = System.Drawing.SystemColors.Control;
+			pg.LineColor = System.Drawing.SystemColors.ScrollBar;
+			pg.Name = "pg";
+			pg.ToolbarVisible = false;
 			//
 			// panel1
 			//
-			this.panel1.BackColor = System.Drawing.Color.Transparent;
-			this.panel1.Controls.Add(this.cb);
-			this.panel1.Controls.Add(this.lb);
-			resources.ApplyResources(this.panel1, "panel1");
-			this.panel1.Name = "panel1";
+			panel1.BackColor = System.Drawing.Color.Transparent;
+			panel1.Controls.Add(cb);
+			panel1.Controls.Add(lb);
+			resources.ApplyResources(panel1, "panel1");
+			panel1.Name = "panel1";
 			//
 			// panel2
 			//
-			this.panel2.BackColor = System.Drawing.Color.Transparent;
-			this.panel2.Controls.Add(this.tb);
-			this.panel2.Controls.Add(this.pg);
-			resources.ApplyResources(this.panel2, "panel2");
-			this.panel2.Name = "panel2";
+			panel2.BackColor = System.Drawing.Color.Transparent;
+			panel2.Controls.Add(tb);
+			panel2.Controls.Add(pg);
+			resources.ApplyResources(panel2, "panel2");
+			panel2.Name = "panel2";
 			//
 			// splitter1
 			//
-			resources.ApplyResources(this.splitter1, "splitter1");
-			this.splitter1.Name = "splitter1";
-			this.splitter1.TabStop = false;
+			resources.ApplyResources(splitter1, "splitter1");
+			splitter1.Name = "splitter1";
+			splitter1.TabStop = false;
 			//
 			// NhtrUI
 			//
-			this.Controls.Add(this.panel2);
-			this.Controls.Add(this.splitter1);
-			this.Controls.Add(this.panel1);
+			Controls.Add(panel2);
+			Controls.Add(splitter1);
+			Controls.Add(panel1);
 			resources.ApplyResources(this, "$this");
-			this.Name = "NhtrUI";
-			this.Controls.SetChildIndex(this.panel1, 0);
-			this.Controls.SetChildIndex(this.splitter1, 0);
-			this.Controls.SetChildIndex(this.panel2, 0);
-			this.panel1.ResumeLayout(false);
-			this.panel2.ResumeLayout(false);
-			this.panel2.PerformLayout();
-			this.ResumeLayout(false);
+			Name = "NhtrUI";
+			Controls.SetChildIndex(panel1, 0);
+			Controls.SetChildIndex(splitter1, 0);
+			Controls.SetChildIndex(panel2, 0);
+			panel1.ResumeLayout(false);
+			panel2.ResumeLayout(false);
+			panel2.PerformLayout();
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -182,7 +182,7 @@ namespace SimPe.Plugin
 				}
 
 				lb.Enabled = true;
-				this.Enabled = true;
+				Enabled = true;
 			}
 			else
 			{

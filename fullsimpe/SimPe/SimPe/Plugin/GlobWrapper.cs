@@ -31,7 +31,7 @@ namespace SimPe.Plugin
 	{
 		public override string ToString()
 		{
-			return this.SemiGlobalName;
+			return SemiGlobalName;
 		}
 	}
 
@@ -94,7 +94,7 @@ namespace SimPe.Plugin
 			{
 				semiglobal = Helper.ToBytes(value, 0);
 				Attributes["SemiGlobalName"] = value;
-				Attributes["SemiGlobalGroup"] = this.SemiGlobalGroup;
+				Attributes["SemiGlobalGroup"] = SemiGlobalGroup;
 			}
 		}
 
@@ -212,8 +212,8 @@ namespace SimPe.Plugin
 			semiglobal = reader.ReadBytes(len);
 			Attributes = new Hashtable
 			{
-				["SemiGlobalName"] = this.SemiGlobalName,
-				["SemiGlobalGroup"] = this.SemiGlobalGroup
+				["SemiGlobalName"] = SemiGlobalName,
+				["SemiGlobalGroup"] = SemiGlobalGroup
 			};
 		}
 
@@ -239,7 +239,7 @@ namespace SimPe.Plugin
 
 		#region IFileWrapper Member
 		public override string Description => "SemiGlobalName="
-					+ this.SemiGlobalName
+					+ SemiGlobalName
 					+ ", Group=0x"
 					+ Helper.HexString(SemiGlobalGroup);
 

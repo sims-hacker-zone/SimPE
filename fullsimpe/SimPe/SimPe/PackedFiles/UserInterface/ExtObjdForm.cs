@@ -138,136 +138,136 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			InitializeComponent();
 
-			this.cbtype.Items.Add(Data.ObjectTypes.Unknown);
-			this.cbtype.Items.Add(Data.ObjectTypes.ArchitecturalSupport);
-			this.cbtype.Items.Add(Data.ObjectTypes.Door);
-			this.cbtype.Items.Add(Data.ObjectTypes.Memory);
-			this.cbtype.Items.Add(Data.ObjectTypes.ModularStairs);
-			this.cbtype.Items.Add(Data.ObjectTypes.ModularStairsPortal);
-			this.cbtype.Items.Add(Data.ObjectTypes.Normal);
-			this.cbtype.Items.Add(Data.ObjectTypes.Outfit);
-			this.cbtype.Items.Add(Data.ObjectTypes.Person);
-			this.cbtype.Items.Add(Data.ObjectTypes.SimType);
-			this.cbtype.Items.Add(Data.ObjectTypes.Stairs);
-			this.cbtype.Items.Add(Data.ObjectTypes.Template);
-			this.cbtype.Items.Add(Data.ObjectTypes.Vehicle);
-			this.cbtype.Items.Add(Data.ObjectTypes.Window);
-			this.cbtype.Items.Add(Data.ObjectTypes.UnlinkedSim);
-			this.cbtype.Items.Add(Data.ObjectTypes.Tiles);
+			cbtype.Items.Add(Data.ObjectTypes.Unknown);
+			cbtype.Items.Add(Data.ObjectTypes.ArchitecturalSupport);
+			cbtype.Items.Add(Data.ObjectTypes.Door);
+			cbtype.Items.Add(Data.ObjectTypes.Memory);
+			cbtype.Items.Add(Data.ObjectTypes.ModularStairs);
+			cbtype.Items.Add(Data.ObjectTypes.ModularStairsPortal);
+			cbtype.Items.Add(Data.ObjectTypes.Normal);
+			cbtype.Items.Add(Data.ObjectTypes.Outfit);
+			cbtype.Items.Add(Data.ObjectTypes.Person);
+			cbtype.Items.Add(Data.ObjectTypes.SimType);
+			cbtype.Items.Add(Data.ObjectTypes.Stairs);
+			cbtype.Items.Add(Data.ObjectTypes.Template);
+			cbtype.Items.Add(Data.ObjectTypes.Vehicle);
+			cbtype.Items.Add(Data.ObjectTypes.Window);
+			cbtype.Items.Add(Data.ObjectTypes.UnlinkedSim);
+			cbtype.Items.Add(Data.ObjectTypes.Tiles);
 
-			this.cbBuildSort.Items.Add(
+			cbBuildSort.Items.Add(
 				new Data.LocalizedBuildSubSort(Data.BuildFunctionSubSort.none)
 			);
-			this.cbBuildSort.Items.Add(
+			cbBuildSort.Items.Add(
 				new Data.LocalizedBuildSubSort(
 					Data.BuildFunctionSubSort.General_Columns
 				)
 			);
-			this.cbBuildSort.Items.Add(
+			cbBuildSort.Items.Add(
 				new Data.LocalizedBuildSubSort(
 					Data.BuildFunctionSubSort.General_Stairs
 				)
 			);
-			this.cbBuildSort.Items.Add(
+			cbBuildSort.Items.Add(
 				new Data.LocalizedBuildSubSort(
 					Data.BuildFunctionSubSort.General_Pool
 				)
 			);
-			this.cbBuildSort.Items.Add(
+			cbBuildSort.Items.Add(
 				new Data.LocalizedBuildSubSort(
 					Data.BuildFunctionSubSort.General_TallColumns
 				)
 			);
-			this.cbBuildSort.Items.Add(
+			cbBuildSort.Items.Add(
 				new Data.LocalizedBuildSubSort(
 					Data.BuildFunctionSubSort.General_Arch
 				)
 			);
-			this.cbBuildSort.Items.Add(
+			cbBuildSort.Items.Add(
 				new Data.LocalizedBuildSubSort(
 					Data.BuildFunctionSubSort.General_Driveway
 				)
 			);
-			this.cbBuildSort.Items.Add(
+			cbBuildSort.Items.Add(
 				new Data.LocalizedBuildSubSort(
 					Data.BuildFunctionSubSort.General_Elevator
 				)
 			);
-			this.cbBuildSort.Items.Add(
+			cbBuildSort.Items.Add(
 				new Data.LocalizedBuildSubSort(
 					Data.BuildFunctionSubSort.General_Architectural
 				)
 			);
-			this.cbBuildSort.Items.Add(
+			cbBuildSort.Items.Add(
 				new Data.LocalizedBuildSubSort(
 					Data.BuildFunctionSubSort.Garden_Trees
 				)
 			);
-			this.cbBuildSort.Items.Add(
+			cbBuildSort.Items.Add(
 				new Data.LocalizedBuildSubSort(
 					Data.BuildFunctionSubSort.Garden_Shrubs
 				)
 			);
-			this.cbBuildSort.Items.Add(
+			cbBuildSort.Items.Add(
 				new Data.LocalizedBuildSubSort(
 					Data.BuildFunctionSubSort.Garden_Flowers
 				)
 			);
-			this.cbBuildSort.Items.Add(
+			cbBuildSort.Items.Add(
 				new Data.LocalizedBuildSubSort(
 					Data.BuildFunctionSubSort.Garden_Objects
 				)
 			);
-			this.cbBuildSort.Items.Add(
+			cbBuildSort.Items.Add(
 				new Data.LocalizedBuildSubSort(
 					Data.BuildFunctionSubSort.Openings_Door
 				)
 			);
-			this.cbBuildSort.Items.Add(
+			cbBuildSort.Items.Add(
 				new Data.LocalizedBuildSubSort(
 					Data.BuildFunctionSubSort.Openings_TallWindow
 				)
 			);
-			this.cbBuildSort.Items.Add(
+			cbBuildSort.Items.Add(
 				new Data.LocalizedBuildSubSort(
 					Data.BuildFunctionSubSort.Openings_Window
 				)
 			);
-			this.cbBuildSort.Items.Add(
+			cbBuildSort.Items.Add(
 				new Data.LocalizedBuildSubSort(
 					Data.BuildFunctionSubSort.Openings_Gate
 				)
 			);
-			this.cbBuildSort.Items.Add(
+			cbBuildSort.Items.Add(
 				new Data.LocalizedBuildSubSort(
 					Data.BuildFunctionSubSort.Openings_Arch
 				)
 			);
-			this.cbBuildSort.Items.Add(
+			cbBuildSort.Items.Add(
 				new Data.LocalizedBuildSubSort(
 					Data.BuildFunctionSubSort.Openings_TallDoor
 				)
 			);
 			if (Helper.WindowsRegistry.HiddenMode)
 			{
-				this.cbBuildSort.Items.Add(
+				cbBuildSort.Items.Add(
 					new Data.LocalizedBuildSubSort(
 						Data.BuildFunctionSubSort.unknown
 					)
 				);
 			}
 
-			this.cbsort.Enum = typeof(Data.ObjFunctionSubSort);
-			this.cbsort.ResourceManager = Localization.Manager;
+			cbsort.Enum = typeof(Data.ObjFunctionSubSort);
+			cbsort.ResourceManager = Localization.Manager;
 
 			if (Helper.ECCorNewSEfound)
 			{
-				this.cbExtras.Text = "Extra Stuff";
+				cbExtras.Text = "Extra Stuff";
 			}
 
 			if (Helper.WindowsRegistry.UseBigIcons)
 			{
-				this.pg.Font = new System.Drawing.Font(
+				pg.Font = new System.Drawing.Font(
 					"Verdana",
 					10.25F,
 					System.Drawing.FontStyle.Regular
@@ -279,12 +279,12 @@ namespace SimPe.PackedFiles.UserInterface
 				|| PathProvider.Global.EPInstalled <= 1
 			)
 			{
-				this.cbBuildSort.Visible = this.taskBox1.Visible = false;
-				this.groupBox1.Height = 176;
-				this.groupBox2.Height = 176;
-				this.tbPrice.Location = new System.Drawing.Point(140, 144);
-				this.lbprise.Location = new System.Drawing.Point(94, 148);
-				this.tc.Controls.Remove(this.tpreqeps);
+				cbBuildSort.Visible = taskBox1.Visible = false;
+				groupBox1.Height = 176;
+				groupBox2.Height = 176;
+				tbPrice.Location = new System.Drawing.Point(140, 144);
+				lbprise.Location = new System.Drawing.Point(94, 148);
+				tc.Controls.Remove(tpreqeps);
 			}
 		}
 
@@ -314,7 +314,7 @@ namespace SimPe.PackedFiles.UserInterface
 		void ShowData()
 		{
 			propchanged = false;
-			this.pg.SelectedObject = null;
+			pg.SelectedObject = null;
 
 			Hashtable ht = new Hashtable();
 			for (int i = 0; i < wrapper.Data.Length; i++)
@@ -338,7 +338,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 
 			pob = new Ambertation.PropertyObjectBuilderExt(ht);
-			this.pg.SelectedObject = pob.Instance;
+			pg.SelectedObject = pob.Instance;
 		}
 
 		void UpdateData()
@@ -529,39 +529,39 @@ namespace SimPe.PackedFiles.UserInterface
 
 		internal void SetFunctionCb(ExtObjd objd)
 		{
-			this.cbappliances.Checked = objd.FunctionSort.InAppliances;
-			this.cbdecorative.Checked = objd.FunctionSort.InDecorative;
-			this.cbelectronics.Checked = objd.FunctionSort.InElectronics;
-			this.cbgeneral.Checked = objd.FunctionSort.InGeneral;
-			this.cblightning.Checked = objd.FunctionSort.InLighting;
-			this.cbplumbing.Checked = objd.FunctionSort.InPlumbing;
-			this.cbseating.Checked = objd.FunctionSort.InSeating;
-			this.cbsurfaces.Checked = objd.FunctionSort.InSurfaces;
-			this.cbhobby.Checked = objd.FunctionSort.InHobbies;
-			this.cbaspiration.Checked = objd.FunctionSort.InAspirationRewards;
-			this.cbcareer.Checked = objd.FunctionSort.InCareerRewards;
+			cbappliances.Checked = objd.FunctionSort.InAppliances;
+			cbdecorative.Checked = objd.FunctionSort.InDecorative;
+			cbelectronics.Checked = objd.FunctionSort.InElectronics;
+			cbgeneral.Checked = objd.FunctionSort.InGeneral;
+			cblightning.Checked = objd.FunctionSort.InLighting;
+			cbplumbing.Checked = objd.FunctionSort.InPlumbing;
+			cbseating.Checked = objd.FunctionSort.InSeating;
+			cbsurfaces.Checked = objd.FunctionSort.InSurfaces;
+			cbhobby.Checked = objd.FunctionSort.InHobbies;
+			cbaspiration.Checked = objd.FunctionSort.InAspirationRewards;
+			cbcareer.Checked = objd.FunctionSort.InCareerRewards;
 		}
 
 		internal void SetExpansionsCb(ExtObjd objd)
 		{
-			this.cbBase.Checked = objd.EpRequired1.Basegame;
-			this.cbUniversity.Checked = objd.EpRequired1.University;
-			this.cbNightlife.Checked = objd.EpRequired1.Nightlife;
-			this.cbBusiness.Checked = objd.EpRequired1.Business;
-			this.cbFamilyFun.Checked = objd.EpRequired1.FamilyFun;
-			this.cbGlamour.Checked = objd.EpRequired1.GlamourLife;
-			this.cbSeasons.Checked = objd.EpRequired1.Seasons;
-			this.cbCelebrations.Checked = objd.EpRequired1.Celebration;
-			this.cbFashion.Checked = objd.EpRequired1.Fashion;
-			this.cbBonVoyage.Checked = objd.EpRequired1.BonVoyage;
-			this.cbTeenStyle.Checked = objd.EpRequired1.TeenStyle;
-			this.cbExtras.Checked = objd.EpRequired1.StoreEdition_old;
-			this.cbFreeTime.Checked = objd.EpRequired1.Freetime;
-			this.cbKitchens.Checked = objd.EpRequired1.KitchenBath;
-			this.cbIkeaHome.Checked = objd.EpRequired1.IkeaHome;
-			this.cbApartments.Checked = objd.EpRequired2.ApartmentLife;
-			this.cbMansion.Checked = objd.EpRequired2.MansionGarden;
-			this.cbStoreEd.Checked = objd.EpRequired2.StoreEdition;
+			cbBase.Checked = objd.EpRequired1.Basegame;
+			cbUniversity.Checked = objd.EpRequired1.University;
+			cbNightlife.Checked = objd.EpRequired1.Nightlife;
+			cbBusiness.Checked = objd.EpRequired1.Business;
+			cbFamilyFun.Checked = objd.EpRequired1.FamilyFun;
+			cbGlamour.Checked = objd.EpRequired1.GlamourLife;
+			cbSeasons.Checked = objd.EpRequired1.Seasons;
+			cbCelebrations.Checked = objd.EpRequired1.Celebration;
+			cbFashion.Checked = objd.EpRequired1.Fashion;
+			cbBonVoyage.Checked = objd.EpRequired1.BonVoyage;
+			cbTeenStyle.Checked = objd.EpRequired1.TeenStyle;
+			cbExtras.Checked = objd.EpRequired1.StoreEdition_old;
+			cbFreeTime.Checked = objd.EpRequired1.Freetime;
+			cbKitchens.Checked = objd.EpRequired1.KitchenBath;
+			cbIkeaHome.Checked = objd.EpRequired1.IkeaHome;
+			cbApartments.Checked = objd.EpRequired2.ApartmentLife;
+			cbMansion.Checked = objd.EpRequired2.MansionGarden;
+			cbStoreEd.Checked = objd.EpRequired2.StoreEdition;
 		}
 
 		static string subKey = "ExtObdjForm";
@@ -587,81 +587,81 @@ namespace SimPe.PackedFiles.UserInterface
 
 		#region IPackedFileUI Member
 
-		public Control GUIHandle => this.pnobjd;
+		public Control GUIHandle => pnobjd;
 
 		public void UpdateGUI(IFileWrapper wrapper)
 		{
 			ExtObjd objd = (ExtObjd)wrapper;
 			this.wrapper = objd;
-			this.initialguid = objd.Guid;
-			this.Tag = true;
+			initialguid = objd.Guid;
+			Tag = true;
 
 			try
 			{
 				if (objd.Ok != ObjdHealth.Ok)
 				{
-					this.lbIsOk.Text = "Please commit! (" + objd.Ok.ToString() + ")";
-					this.lbIsOk.Visible = true;
+					lbIsOk.Text = "Please commit! (" + objd.Ok.ToString() + ")";
+					lbIsOk.Visible = true;
 				}
 				else
 				{
-					this.lbIsOk.Text = "Please commit!";
-					this.lbIsOk.Visible = false;
+					lbIsOk.Text = "Please commit!";
+					lbIsOk.Visible = false;
 				}
-				this.pg.SelectedObject = null;
-				this.tc.SelectedIndex = InitialTab;
-				this.cbtype.SelectedIndex = 0;
-				for (int i = 0; i < this.cbtype.Items.Count; i++)
+				pg.SelectedObject = null;
+				tc.SelectedIndex = InitialTab;
+				cbtype.SelectedIndex = 0;
+				for (int i = 0; i < cbtype.Items.Count; i++)
 				{
-					Data.ObjectTypes ot = (Data.ObjectTypes)this.cbtype.Items[i];
+					Data.ObjectTypes ot = (Data.ObjectTypes)cbtype.Items[i];
 					if (ot == objd.Type)
 					{
-						this.cbtype.SelectedIndex = i;
+						cbtype.SelectedIndex = i;
 						break;
 					}
 				}
 
-				this.tbtype.Text = "0x" + Helper.HexString((ushort)(objd.Type));
-				this.tbguid.Text = "0x" + Helper.HexString(objd.Guid);
-				this.tbproxguid.Text = "0x" + Helper.HexString(objd.ProxyGuid);
-				this.tborgguid.Text = "0x" + Helper.HexString(objd.OriginalGuid);
-				this.tbdiag.Text = "0x" + Helper.HexString(objd.DiagonalGuid);
-				this.tbgrid.Text = "0x" + Helper.HexString(objd.GridAlignedGuid);
-				this.tbflname.Text = objd.FileName;
+				tbtype.Text = "0x" + Helper.HexString((ushort)(objd.Type));
+				tbguid.Text = "0x" + Helper.HexString(objd.Guid);
+				tbproxguid.Text = "0x" + Helper.HexString(objd.ProxyGuid);
+				tborgguid.Text = "0x" + Helper.HexString(objd.OriginalGuid);
+				tbdiag.Text = "0x" + Helper.HexString(objd.DiagonalGuid);
+				tbgrid.Text = "0x" + Helper.HexString(objd.GridAlignedGuid);
+				tbflname.Text = objd.FileName;
 
-				this.cbbathroom.Checked = (objd.RoomSort.InBathroom);
-				this.cbbedroom.Checked = (objd.RoomSort.InBedroom);
-				this.cbdinigroom.Checked = (objd.RoomSort.InDiningRoom);
-				this.cbkitchen.Checked = (objd.RoomSort.InKitchen);
-				this.cblivingroom.Checked = (objd.RoomSort.InLivingRoom);
-				this.cbmisc.Checked = (objd.RoomSort.InMisc);
-				this.cboutside.Checked = (objd.RoomSort.InOutside);
-				this.cbstudy.Checked = (objd.RoomSort.InStudy);
-				this.cbkids.Checked = (objd.RoomSort.InKids);
+				cbbathroom.Checked = (objd.RoomSort.InBathroom);
+				cbbedroom.Checked = (objd.RoomSort.InBedroom);
+				cbdinigroom.Checked = (objd.RoomSort.InDiningRoom);
+				cbkitchen.Checked = (objd.RoomSort.InKitchen);
+				cblivingroom.Checked = (objd.RoomSort.InLivingRoom);
+				cbmisc.Checked = (objd.RoomSort.InMisc);
+				cboutside.Checked = (objd.RoomSort.InOutside);
+				cbstudy.Checked = (objd.RoomSort.InStudy);
+				cbkids.Checked = (objd.RoomSort.InKids);
 
-				this.cbcDine.Checked = (objd.CommSort.InDining);
-				this.cbcShop.Checked = (objd.CommSort.InShopping);
-				this.cbcOuts.Checked = (objd.CommSort.InOutdoors);
-				this.cbcStreet.Checked = (objd.CommSort.InStreet);
-				this.cbcMisc.Checked = (objd.CommSort.InMiscel);
+				cbcDine.Checked = (objd.CommSort.InDining);
+				cbcShop.Checked = (objd.CommSort.InShopping);
+				cbcOuts.Checked = (objd.CommSort.InOutdoors);
+				cbcStreet.Checked = (objd.CommSort.InStreet);
+				cbcMisc.Checked = (objd.CommSort.InMiscel);
 
 				tbPrice.Text = "�" + Convert.ToString(objd.Price);
 
-				this.tbreqeps.Enabled = (objd.Version > 0x008b);
-				this.SetExpansionsCb(objd);
-				this.SetFunctionCb(objd);
-				this.cbsort.SelectedValue = objd.FunctionSubSort;
-				this.cbBuildSort.SelectedIndex = 0;
+				tbreqeps.Enabled = (objd.Version > 0x008b);
+				SetExpansionsCb(objd);
+				SetFunctionCb(objd);
+				cbsort.SelectedValue = objd.FunctionSubSort;
+				cbBuildSort.SelectedIndex = 0;
 				if (objd.BuildType.Value != 0)
 				{
 					if (Helper.WindowsRegistry.HiddenMode)
 					{
-						this.cbBuildSort.SelectedIndex = 19; // set to unknown
+						cbBuildSort.SelectedIndex = 19; // set to unknown
 					}
 
-					for (int i = 0; i < this.cbBuildSort.Items.Count; i++)
+					for (int i = 0; i < cbBuildSort.Items.Count; i++)
 					{
-						object o = this.cbBuildSort.Items[i];
+						object o = cbBuildSort.Items[i];
 						Data.BuildFunctionSubSort at;
 						if (o.GetType() == typeof(Data.Alias))
 						{
@@ -676,7 +676,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 						if (at == objd.BuildSubSort)
 						{
-							this.cbBuildSort.SelectedIndex = i;
+							cbBuildSort.SelectedIndex = i;
 							break;
 						}
 					}
@@ -689,7 +689,7 @@ namespace SimPe.PackedFiles.UserInterface
 					//this.toolTip1.SetToolTip(this.tborgguid, SimPe.Plugin.Subhoods.getgooee(objd.OriginalGuid));
 				}
 
-				this.llgetGUID.Visible = (
+				llgetGUID.Visible = (
 					UserVerification.HaveUserId
 					&& objd.Type != Data.ObjectTypes.Person
 					&& objd.Type != Data.ObjectTypes.UnlinkedSim
@@ -698,7 +698,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			finally
 			{
-				this.Tag = null;
+				Tag = null;
 			}
 		}
 
@@ -711,291 +711,291 @@ namespace SimPe.PackedFiles.UserInterface
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new Container();
-			this.pnobjd = new Panel();
-			this.lladdgooee = new LinkLabel();
-			this.tbgrid = new TextBox();
-			this.label4 = new Label();
-			this.tbdiag = new TextBox();
-			this.label3 = new Label();
-			this.btnUpdateMMAT = new Button();
-			this.label2 = new Label();
-			this.lbIsOk = new Label();
-			this.cball = new CheckBox();
-			this.tc = new TabControl();
-			this.tpcatalogsort = new TabPage();
-			this.pngradient = new Panel();
-			this.taskBox1 = new Ambertation.Windows.Forms.XPTaskBoxSimple();
-			this.cbcMisc = new CheckBox();
-			this.cbcStreet = new CheckBox();
-			this.cbcOuts = new CheckBox();
-			this.cbcShop = new CheckBox();
-			this.cbcDine = new CheckBox();
-			this.groupBox2 = new Ambertation.Windows.Forms.XPTaskBoxSimple();
-			this.cbBuildSort = new ComboBox();
-			this.cbaspiration = new CheckBox();
-			this.label5 = new Label();
-			this.cbhobby = new CheckBox();
-			this.cbappliances = new CheckBox();
-			this.cbdecorative = new CheckBox();
-			this.cbelectronics = new CheckBox();
-			this.cbgeneral = new CheckBox();
-			this.cblightning = new CheckBox();
-			this.cbplumbing = new CheckBox();
-			this.cbseating = new CheckBox();
-			this.cbsurfaces = new CheckBox();
-			this.cbcareer = new CheckBox();
-			this.cbsort = new Ambertation.Windows.Forms.EnumComboBox();
-			this.label1 = new Label();
-			this.groupBox1 = new Ambertation.Windows.Forms.XPTaskBoxSimple();
-			this.lbprise = new Label();
-			this.tbPrice = new TextBox();
-			this.cbkids = new CheckBox();
-			this.cbbathroom = new CheckBox();
-			this.cbbedroom = new CheckBox();
-			this.cbdinigroom = new CheckBox();
-			this.cbkitchen = new CheckBox();
-			this.cbmisc = new CheckBox();
-			this.cboutside = new CheckBox();
-			this.cblivingroom = new CheckBox();
-			this.cbstudy = new CheckBox();
-			this.tpreqeps = new TabPage();
-			this.pnpritty = new Panel();
-			this.tbreqeps = new Ambertation.Windows.Forms.XPTaskBoxSimple();
-			this.lbepnote = new Label();
-			this.lbgamef2 = new Label();
-			this.cbStoreEd = new CheckBox();
-			this.cbMansion = new CheckBox();
-			this.cbApartments = new CheckBox();
-			this.cbIkeaHome = new CheckBox();
-			this.cbKitchens = new CheckBox();
-			this.cbFreeTime = new CheckBox();
-			this.cbExtras = new CheckBox();
-			this.cbTeenStyle = new CheckBox();
-			this.cbBonVoyage = new CheckBox();
-			this.cbFashion = new CheckBox();
-			this.cbCelebrations = new CheckBox();
-			this.cbSeasons = new CheckBox();
-			this.cbPets = new CheckBox();
-			this.cbGlamour = new CheckBox();
-			this.cbFamilyFun = new CheckBox();
-			this.cbBusiness = new CheckBox();
-			this.cbNightlife = new CheckBox();
-			this.cbUniversity = new CheckBox();
-			this.cbBase = new CheckBox();
-			this.tpraw = new TabPage();
-			this.panel1 = new Panel();
-			this.rbhex = new RadioButton();
-			this.rbdec = new RadioButton();
-			this.rbbin = new RadioButton();
-			this.pg = new PropertyGrid();
-			this.tbtype = new TextBox();
-			this.cbtype = new ComboBox();
-			this.label63 = new Label();
-			this.tbproxguid = new TextBox();
-			this.label97 = new Label();
-			this.tborgguid = new TextBox();
-			this.llgetGUID = new LinkLabel();
-			this.label65 = new Label();
-			this.tbflname = new TextBox();
-			this.label9 = new Label();
-			this.tbguid = new TextBox();
-			this.label8 = new Label();
-			this.panel6 = new Panel();
-			this.toolTip1 = new ToolTip(this.components);
-			this.pnobjd.SuspendLayout();
-			this.tc.SuspendLayout();
-			this.tpcatalogsort.SuspendLayout();
-			this.pngradient.SuspendLayout();
-			this.taskBox1.SuspendLayout();
-			this.groupBox2.SuspendLayout();
-			this.groupBox1.SuspendLayout();
-			this.tpreqeps.SuspendLayout();
-			this.pnpritty.SuspendLayout();
-			this.tbreqeps.SuspendLayout();
-			this.tpraw.SuspendLayout();
-			this.panel1.SuspendLayout();
-			this.SuspendLayout();
+			components = new Container();
+			pnobjd = new Panel();
+			lladdgooee = new LinkLabel();
+			tbgrid = new TextBox();
+			label4 = new Label();
+			tbdiag = new TextBox();
+			label3 = new Label();
+			btnUpdateMMAT = new Button();
+			label2 = new Label();
+			lbIsOk = new Label();
+			cball = new CheckBox();
+			tc = new TabControl();
+			tpcatalogsort = new TabPage();
+			pngradient = new Panel();
+			taskBox1 = new Ambertation.Windows.Forms.XPTaskBoxSimple();
+			cbcMisc = new CheckBox();
+			cbcStreet = new CheckBox();
+			cbcOuts = new CheckBox();
+			cbcShop = new CheckBox();
+			cbcDine = new CheckBox();
+			groupBox2 = new Ambertation.Windows.Forms.XPTaskBoxSimple();
+			cbBuildSort = new ComboBox();
+			cbaspiration = new CheckBox();
+			label5 = new Label();
+			cbhobby = new CheckBox();
+			cbappliances = new CheckBox();
+			cbdecorative = new CheckBox();
+			cbelectronics = new CheckBox();
+			cbgeneral = new CheckBox();
+			cblightning = new CheckBox();
+			cbplumbing = new CheckBox();
+			cbseating = new CheckBox();
+			cbsurfaces = new CheckBox();
+			cbcareer = new CheckBox();
+			cbsort = new Ambertation.Windows.Forms.EnumComboBox();
+			label1 = new Label();
+			groupBox1 = new Ambertation.Windows.Forms.XPTaskBoxSimple();
+			lbprise = new Label();
+			tbPrice = new TextBox();
+			cbkids = new CheckBox();
+			cbbathroom = new CheckBox();
+			cbbedroom = new CheckBox();
+			cbdinigroom = new CheckBox();
+			cbkitchen = new CheckBox();
+			cbmisc = new CheckBox();
+			cboutside = new CheckBox();
+			cblivingroom = new CheckBox();
+			cbstudy = new CheckBox();
+			tpreqeps = new TabPage();
+			pnpritty = new Panel();
+			tbreqeps = new Ambertation.Windows.Forms.XPTaskBoxSimple();
+			lbepnote = new Label();
+			lbgamef2 = new Label();
+			cbStoreEd = new CheckBox();
+			cbMansion = new CheckBox();
+			cbApartments = new CheckBox();
+			cbIkeaHome = new CheckBox();
+			cbKitchens = new CheckBox();
+			cbFreeTime = new CheckBox();
+			cbExtras = new CheckBox();
+			cbTeenStyle = new CheckBox();
+			cbBonVoyage = new CheckBox();
+			cbFashion = new CheckBox();
+			cbCelebrations = new CheckBox();
+			cbSeasons = new CheckBox();
+			cbPets = new CheckBox();
+			cbGlamour = new CheckBox();
+			cbFamilyFun = new CheckBox();
+			cbBusiness = new CheckBox();
+			cbNightlife = new CheckBox();
+			cbUniversity = new CheckBox();
+			cbBase = new CheckBox();
+			tpraw = new TabPage();
+			panel1 = new Panel();
+			rbhex = new RadioButton();
+			rbdec = new RadioButton();
+			rbbin = new RadioButton();
+			pg = new PropertyGrid();
+			tbtype = new TextBox();
+			cbtype = new ComboBox();
+			label63 = new Label();
+			tbproxguid = new TextBox();
+			label97 = new Label();
+			tborgguid = new TextBox();
+			llgetGUID = new LinkLabel();
+			label65 = new Label();
+			tbflname = new TextBox();
+			label9 = new Label();
+			tbguid = new TextBox();
+			label8 = new Label();
+			panel6 = new Panel();
+			toolTip1 = new ToolTip(components);
+			pnobjd.SuspendLayout();
+			tc.SuspendLayout();
+			tpcatalogsort.SuspendLayout();
+			pngradient.SuspendLayout();
+			taskBox1.SuspendLayout();
+			groupBox2.SuspendLayout();
+			groupBox1.SuspendLayout();
+			tpreqeps.SuspendLayout();
+			pnpritty.SuspendLayout();
+			tbreqeps.SuspendLayout();
+			tpraw.SuspendLayout();
+			panel1.SuspendLayout();
+			SuspendLayout();
 			//
 			// pnobjd
 			//
-			this.pnobjd.AutoScroll = true;
-			this.pnobjd.BackColor = System.Drawing.Color.Transparent;
-			this.pnobjd.Controls.Add(this.lladdgooee);
-			this.pnobjd.Controls.Add(this.tbgrid);
-			this.pnobjd.Controls.Add(this.label4);
-			this.pnobjd.Controls.Add(this.tbdiag);
-			this.pnobjd.Controls.Add(this.label3);
-			this.pnobjd.Controls.Add(this.btnUpdateMMAT);
-			this.pnobjd.Controls.Add(this.label2);
-			this.pnobjd.Controls.Add(this.lbIsOk);
-			this.pnobjd.Controls.Add(this.cball);
-			this.pnobjd.Controls.Add(this.tc);
-			this.pnobjd.Controls.Add(this.tbtype);
-			this.pnobjd.Controls.Add(this.cbtype);
-			this.pnobjd.Controls.Add(this.label63);
-			this.pnobjd.Controls.Add(this.tbproxguid);
-			this.pnobjd.Controls.Add(this.label97);
-			this.pnobjd.Controls.Add(this.tborgguid);
-			this.pnobjd.Controls.Add(this.llgetGUID);
-			this.pnobjd.Controls.Add(this.label65);
-			this.pnobjd.Controls.Add(this.tbflname);
-			this.pnobjd.Controls.Add(this.label9);
-			this.pnobjd.Controls.Add(this.tbguid);
-			this.pnobjd.Controls.Add(this.label8);
-			this.pnobjd.Controls.Add(this.panel6);
-			this.pnobjd.Dock = DockStyle.Fill;
+			pnobjd.AutoScroll = true;
+			pnobjd.BackColor = System.Drawing.Color.Transparent;
+			pnobjd.Controls.Add(lladdgooee);
+			pnobjd.Controls.Add(tbgrid);
+			pnobjd.Controls.Add(label4);
+			pnobjd.Controls.Add(tbdiag);
+			pnobjd.Controls.Add(label3);
+			pnobjd.Controls.Add(btnUpdateMMAT);
+			pnobjd.Controls.Add(label2);
+			pnobjd.Controls.Add(lbIsOk);
+			pnobjd.Controls.Add(cball);
+			pnobjd.Controls.Add(tc);
+			pnobjd.Controls.Add(tbtype);
+			pnobjd.Controls.Add(cbtype);
+			pnobjd.Controls.Add(label63);
+			pnobjd.Controls.Add(tbproxguid);
+			pnobjd.Controls.Add(label97);
+			pnobjd.Controls.Add(tborgguid);
+			pnobjd.Controls.Add(llgetGUID);
+			pnobjd.Controls.Add(label65);
+			pnobjd.Controls.Add(tbflname);
+			pnobjd.Controls.Add(label9);
+			pnobjd.Controls.Add(tbguid);
+			pnobjd.Controls.Add(label8);
+			pnobjd.Controls.Add(panel6);
+			pnobjd.Dock = DockStyle.Fill;
 			//this.pnobjd.EndColour = System.Drawing.SystemColors.Control;
-			this.pnobjd.Font = new System.Drawing.Font(
+			pnobjd.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.pnobjd.Location = new System.Drawing.Point(0, 0);
+			pnobjd.Location = new System.Drawing.Point(0, 0);
 			//this.pnobjd.MiddleColour = System.Drawing.SystemColors.Control;
-			this.pnobjd.Name = "pnobjd";
-			this.pnobjd.Size = new System.Drawing.Size(984, 325);
+			pnobjd.Name = "pnobjd";
+			pnobjd.Size = new System.Drawing.Size(984, 325);
 			//this.pnobjd.StartColour = System.Drawing.SystemColors.Control;
-			this.pnobjd.TabIndex = 6;
+			pnobjd.TabIndex = 6;
 			//
 			// lladdgooee
 			//
-			this.lladdgooee.AutoSize = true;
-			this.lladdgooee.Font = new System.Drawing.Font(
+			lladdgooee.AutoSize = true;
+			lladdgooee.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.lladdgooee.LinkArea = new LinkArea(0, 6);
-			this.lladdgooee.Location = new System.Drawing.Point(125, 170);
-			this.lladdgooee.Name = "lladdgooee";
-			this.lladdgooee.Size = new System.Drawing.Size(153, 18);
-			this.lladdgooee.TabIndex = 37;
-			this.lladdgooee.TabStop = true;
-			this.lladdgooee.Text = "Add To pjse Guid Index";
-			this.lladdgooee.UseCompatibleTextRendering = true;
-			this.lladdgooee.LinkClicked +=
+			lladdgooee.LinkArea = new LinkArea(0, 6);
+			lladdgooee.Location = new System.Drawing.Point(125, 170);
+			lladdgooee.Name = "lladdgooee";
+			lladdgooee.Size = new System.Drawing.Size(153, 18);
+			lladdgooee.TabIndex = 37;
+			lladdgooee.TabStop = true;
+			lladdgooee.Text = "Add To pjse Guid Index";
+			lladdgooee.UseCompatibleTextRendering = true;
+			lladdgooee.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.lladdgooee_LinkClicked
+					lladdgooee_LinkClicked
 				);
 			//
 			// tbgrid
 			//
-			this.tbgrid.Location = new System.Drawing.Point(122, 285);
-			this.tbgrid.Name = "tbgrid";
-			this.tbgrid.Size = new System.Drawing.Size(96, 21);
-			this.tbgrid.TabIndex = 36;
-			this.tbgrid.Text = "0xDDDDDDDD";
-			this.tbgrid.TextChanged += new EventHandler(this.SetGuid);
+			tbgrid.Location = new System.Drawing.Point(122, 285);
+			tbgrid.Name = "tbgrid";
+			tbgrid.Size = new System.Drawing.Size(96, 21);
+			tbgrid.TabIndex = 36;
+			tbgrid.Text = "0xDDDDDDDD";
+			tbgrid.TextChanged += new EventHandler(SetGuid);
 			//
 			// label4
 			//
-			this.label4.AutoSize = true;
-			this.label4.BackColor = System.Drawing.Color.Transparent;
-			this.label4.Font = new System.Drawing.Font(
+			label4.AutoSize = true;
+			label4.BackColor = System.Drawing.Color.Transparent;
+			label4.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.label4.ImeMode = ImeMode.NoControl;
-			this.label4.Location = new System.Drawing.Point(8, 288);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(108, 13);
-			this.label4.TabIndex = 35;
-			this.label4.Text = "Grid Align GUID";
+			label4.ImeMode = ImeMode.NoControl;
+			label4.Location = new System.Drawing.Point(8, 288);
+			label4.Name = "label4";
+			label4.Size = new System.Drawing.Size(108, 13);
+			label4.TabIndex = 35;
+			label4.Text = "Grid Align GUID";
 			//
 			// tbdiag
 			//
-			this.tbdiag.Location = new System.Drawing.Point(122, 258);
-			this.tbdiag.Name = "tbdiag";
-			this.tbdiag.Size = new System.Drawing.Size(96, 21);
-			this.tbdiag.TabIndex = 34;
-			this.tbdiag.Text = "0xDDDDDDDD";
-			this.tbdiag.TextChanged += new EventHandler(this.SetGuid);
+			tbdiag.Location = new System.Drawing.Point(122, 258);
+			tbdiag.Name = "tbdiag";
+			tbdiag.Size = new System.Drawing.Size(96, 21);
+			tbdiag.TabIndex = 34;
+			tbdiag.Text = "0xDDDDDDDD";
+			tbdiag.TextChanged += new EventHandler(SetGuid);
 			//
 			// label3
 			//
-			this.label3.AutoSize = true;
-			this.label3.BackColor = System.Drawing.Color.Transparent;
-			this.label3.Font = new System.Drawing.Font(
+			label3.AutoSize = true;
+			label3.BackColor = System.Drawing.Color.Transparent;
+			label3.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.label3.ImeMode = ImeMode.NoControl;
-			this.label3.Location = new System.Drawing.Point(15, 261);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(101, 13);
-			this.label3.TabIndex = 33;
-			this.label3.Text = "Diagonal GUID";
+			label3.ImeMode = ImeMode.NoControl;
+			label3.Location = new System.Drawing.Point(15, 261);
+			label3.Name = "label3";
+			label3.Size = new System.Drawing.Size(101, 13);
+			label3.TabIndex = 33;
+			label3.Text = "Diagonal GUID";
 			//
 			// btnUpdateMMAT
 			//
-			this.btnUpdateMMAT.FlatStyle = FlatStyle.System;
-			this.btnUpdateMMAT.Font = new System.Drawing.Font(
+			btnUpdateMMAT.FlatStyle = FlatStyle.System;
+			btnUpdateMMAT.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.btnUpdateMMAT.Location = new System.Drawing.Point(50, 117);
-			this.btnUpdateMMAT.Name = "btnUpdateMMAT";
-			this.btnUpdateMMAT.Size = new System.Drawing.Size(62, 24);
-			this.btnUpdateMMAT.TabIndex = 32;
-			this.btnUpdateMMAT.Text = "Update";
-			this.btnUpdateMMAT.Visible = false;
-			this.btnUpdateMMAT.Click += new EventHandler(
-				this.btnUpdateMMAT_Click
+			btnUpdateMMAT.Location = new System.Drawing.Point(50, 117);
+			btnUpdateMMAT.Name = "btnUpdateMMAT";
+			btnUpdateMMAT.Size = new System.Drawing.Size(62, 24);
+			btnUpdateMMAT.TabIndex = 32;
+			btnUpdateMMAT.Text = "Update";
+			btnUpdateMMAT.Visible = false;
+			btnUpdateMMAT.Click += new EventHandler(
+				btnUpdateMMAT_Click
 			);
 			//
 			// label2
 			//
-			this.label2.AutoSize = true;
-			this.label2.BackColor = System.Drawing.Color.Transparent;
-			this.label2.Font = new System.Drawing.Font("Verdana", 8.25F);
-			this.label2.Location = new System.Drawing.Point(114, 124);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(115, 13);
-			this.label2.TabIndex = 31;
-			this.label2.Text = "MMATs and commit";
-			this.label2.Visible = false;
+			label2.AutoSize = true;
+			label2.BackColor = System.Drawing.Color.Transparent;
+			label2.Font = new System.Drawing.Font("Verdana", 8.25F);
+			label2.Location = new System.Drawing.Point(114, 124);
+			label2.Name = "label2";
+			label2.Size = new System.Drawing.Size(115, 13);
+			label2.TabIndex = 31;
+			label2.Text = "MMATs and commit";
+			label2.Visible = false;
 			//
 			// lbIsOk
 			//
-			this.lbIsOk.BackColor = System.Drawing.Color.Transparent;
-			this.lbIsOk.Font = new System.Drawing.Font(
+			lbIsOk.BackColor = System.Drawing.Color.Transparent;
+			lbIsOk.Font = new System.Drawing.Font(
 				"Verdana",
 				9.75F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lbIsOk.Location = new System.Drawing.Point(6, 60);
-			this.lbIsOk.Name = "lbIsOk";
-			this.lbIsOk.Size = new System.Drawing.Size(284, 23);
-			this.lbIsOk.TabIndex = 29;
-			this.lbIsOk.Text = "Please commit!";
-			this.lbIsOk.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.lbIsOk.Visible = false;
+			lbIsOk.Location = new System.Drawing.Point(6, 60);
+			lbIsOk.Name = "lbIsOk";
+			lbIsOk.Size = new System.Drawing.Size(284, 23);
+			lbIsOk.TabIndex = 29;
+			lbIsOk.Text = "Please commit!";
+			lbIsOk.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			lbIsOk.Visible = false;
 			//
 			// cball
 			//
-			this.cball.CheckAlign = System.Drawing.ContentAlignment.BottomLeft;
-			this.cball.FlatStyle = FlatStyle.System;
-			this.cball.Location = new System.Drawing.Point(98, 142);
-			this.cball.Name = "cball";
-			this.cball.Size = new System.Drawing.Size(120, 21);
-			this.cball.TabIndex = 28;
-			this.cball.Text = "update all MMATs";
-			this.cball.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-			this.cball.Visible = false;
+			cball.CheckAlign = System.Drawing.ContentAlignment.BottomLeft;
+			cball.FlatStyle = FlatStyle.System;
+			cball.Location = new System.Drawing.Point(98, 142);
+			cball.Name = "cball";
+			cball.Size = new System.Drawing.Size(120, 21);
+			cball.TabIndex = 28;
+			cball.Text = "update all MMATs";
+			cball.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+			cball.Visible = false;
 			//
 			// tc
 			//
-			this.tc.Anchor = (
+			tc.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -1007,1055 +1007,1055 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.tc.Controls.Add(this.tpcatalogsort);
-			this.tc.Controls.Add(this.tpreqeps);
-			this.tc.Controls.Add(this.tpraw);
-			this.tc.Location = new System.Drawing.Point(296, 56);
-			this.tc.Name = "tc";
-			this.tc.SelectedIndex = 0;
-			this.tc.Size = new System.Drawing.Size(688, 268);
-			this.tc.TabIndex = 26;
-			this.tc.SelectedIndexChanged += new EventHandler(this.CangedTab);
+			tc.Controls.Add(tpcatalogsort);
+			tc.Controls.Add(tpreqeps);
+			tc.Controls.Add(tpraw);
+			tc.Location = new System.Drawing.Point(296, 56);
+			tc.Name = "tc";
+			tc.SelectedIndex = 0;
+			tc.Size = new System.Drawing.Size(688, 268);
+			tc.TabIndex = 26;
+			tc.SelectedIndexChanged += new EventHandler(CangedTab);
 			//
 			// tpcatalogsort
 			//
-			this.tpcatalogsort.BackColor = System.Drawing.Color.Transparent;
-			this.tpcatalogsort.BackgroundImageLayout =
+			tpcatalogsort.BackColor = System.Drawing.Color.Transparent;
+			tpcatalogsort.BackgroundImageLayout =
 				ImageLayout
 				.Zoom;
-			this.tpcatalogsort.Controls.Add(this.pngradient);
-			this.tpcatalogsort.Location = new System.Drawing.Point(4, 22);
-			this.tpcatalogsort.Name = "tpcatalogsort";
-			this.tpcatalogsort.Size = new System.Drawing.Size(680, 242);
-			this.tpcatalogsort.TabIndex = 0;
-			this.tpcatalogsort.Text = "Catalogue Sort";
+			tpcatalogsort.Controls.Add(pngradient);
+			tpcatalogsort.Location = new System.Drawing.Point(4, 22);
+			tpcatalogsort.Name = "tpcatalogsort";
+			tpcatalogsort.Size = new System.Drawing.Size(680, 242);
+			tpcatalogsort.TabIndex = 0;
+			tpcatalogsort.Text = "Catalogue Sort";
 			//
 			// pngradient
 			//
-			this.pngradient.BackColor = System.Drawing.Color.Transparent;
+			pngradient.BackColor = System.Drawing.Color.Transparent;
 			//this.pngradient.BackgroundImageAnchor = System.Windows.Forms.Panel.ImageLayout.TopRight;
 			//this.pngradient.BackgroundImageZoomToFit = true;
-			this.pngradient.Controls.Add(this.taskBox1);
-			this.pngradient.Controls.Add(this.groupBox2);
-			this.pngradient.Controls.Add(this.groupBox1);
-			this.pngradient.Dock = DockStyle.Fill;
+			pngradient.Controls.Add(taskBox1);
+			pngradient.Controls.Add(groupBox2);
+			pngradient.Controls.Add(groupBox1);
+			pngradient.Dock = DockStyle.Fill;
 			//this.pngradient.EndColour = System.Drawing.SystemColors.Control;
-			this.pngradient.Font = new System.Drawing.Font(
+			pngradient.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.pngradient.Location = new System.Drawing.Point(0, 0);
+			pngradient.Location = new System.Drawing.Point(0, 0);
 			//this.pngradient.MiddleColour = System.Drawing.SystemColors.Control;
-			this.pngradient.Name = "pngradient";
-			this.pngradient.Size = new System.Drawing.Size(680, 242);
+			pngradient.Name = "pngradient";
+			pngradient.Size = new System.Drawing.Size(680, 242);
 			//this.pngradient.StartColour = System.Drawing.SystemColors.Control;
-			this.pngradient.TabIndex = 18;
+			pngradient.TabIndex = 18;
 			//
 			// taskBox1
 			//
-			this.taskBox1.BackColor = System.Drawing.Color.Transparent;
-			this.taskBox1.BodyColor = System.Drawing.SystemColors.ControlLight;
-			this.taskBox1.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-			this.taskBox1.Controls.Add(this.cbcMisc);
-			this.taskBox1.Controls.Add(this.cbcStreet);
-			this.taskBox1.Controls.Add(this.cbcOuts);
-			this.taskBox1.Controls.Add(this.cbcShop);
-			this.taskBox1.Controls.Add(this.cbcDine);
-			this.taskBox1.HeaderFont = new System.Drawing.Font(
+			taskBox1.BackColor = System.Drawing.Color.Transparent;
+			taskBox1.BodyColor = System.Drawing.SystemColors.ControlLight;
+			taskBox1.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+			taskBox1.Controls.Add(cbcMisc);
+			taskBox1.Controls.Add(cbcStreet);
+			taskBox1.Controls.Add(cbcOuts);
+			taskBox1.Controls.Add(cbcShop);
+			taskBox1.Controls.Add(cbcDine);
+			taskBox1.HeaderFont = new System.Drawing.Font(
 				"Microsoft Sans Serif",
 				10.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.taskBox1.HeaderText = "Community Sort";
-			this.taskBox1.HeaderTextColor = System.Drawing.SystemColors.ControlText;
-			this.taskBox1.IconLocation = new System.Drawing.Point(4, 12);
-			this.taskBox1.IconSize = new System.Drawing.Size(32, 32);
-			this.taskBox1.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
-			this.taskBox1.Location = new System.Drawing.Point(516, 8);
-			this.taskBox1.Name = "taskBox1";
-			this.taskBox1.Padding = new Padding(4, 28, 4, 4);
-			this.taskBox1.RightHeaderColor = System.Drawing.SystemColors.ControlDark;
-			this.taskBox1.Size = new System.Drawing.Size(142, 200);
-			this.taskBox1.TabIndex = 18;
+			taskBox1.HeaderText = "Community Sort";
+			taskBox1.HeaderTextColor = System.Drawing.SystemColors.ControlText;
+			taskBox1.IconLocation = new System.Drawing.Point(4, 12);
+			taskBox1.IconSize = new System.Drawing.Size(32, 32);
+			taskBox1.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
+			taskBox1.Location = new System.Drawing.Point(516, 8);
+			taskBox1.Name = "taskBox1";
+			taskBox1.Padding = new Padding(4, 28, 4, 4);
+			taskBox1.RightHeaderColor = System.Drawing.SystemColors.ControlDark;
+			taskBox1.Size = new System.Drawing.Size(142, 200);
+			taskBox1.TabIndex = 18;
 			//this.taskBox1.TopGap = 2;
 			//
 			// cbcMisc
 			//
-			this.cbcMisc.AutoSize = true;
-			this.cbcMisc.Location = new System.Drawing.Point(18, 131);
-			this.cbcMisc.Name = "cbcMisc";
-			this.cbcMisc.Size = new System.Drawing.Size(54, 17);
-			this.cbcMisc.TabIndex = 4;
-			this.cbcMisc.Text = "Misc.";
-			this.cbcMisc.UseVisualStyleBackColor = true;
-			this.cbcMisc.CheckedChanged += new EventHandler(this.SetCommFlags);
+			cbcMisc.AutoSize = true;
+			cbcMisc.Location = new System.Drawing.Point(18, 131);
+			cbcMisc.Name = "cbcMisc";
+			cbcMisc.Size = new System.Drawing.Size(54, 17);
+			cbcMisc.TabIndex = 4;
+			cbcMisc.Text = "Misc.";
+			cbcMisc.UseVisualStyleBackColor = true;
+			cbcMisc.CheckedChanged += new EventHandler(SetCommFlags);
 			//
 			// cbcStreet
 			//
-			this.cbcStreet.AutoSize = true;
-			this.cbcStreet.Location = new System.Drawing.Point(18, 106);
-			this.cbcStreet.Name = "cbcStreet";
-			this.cbcStreet.Size = new System.Drawing.Size(61, 17);
-			this.cbcStreet.TabIndex = 3;
-			this.cbcStreet.Text = "Street";
-			this.cbcStreet.UseVisualStyleBackColor = true;
-			this.cbcStreet.CheckedChanged += new EventHandler(this.SetCommFlags);
+			cbcStreet.AutoSize = true;
+			cbcStreet.Location = new System.Drawing.Point(18, 106);
+			cbcStreet.Name = "cbcStreet";
+			cbcStreet.Size = new System.Drawing.Size(61, 17);
+			cbcStreet.TabIndex = 3;
+			cbcStreet.Text = "Street";
+			cbcStreet.UseVisualStyleBackColor = true;
+			cbcStreet.CheckedChanged += new EventHandler(SetCommFlags);
 			//
 			// cbcOuts
 			//
-			this.cbcOuts.AutoSize = true;
-			this.cbcOuts.Location = new System.Drawing.Point(18, 81);
-			this.cbcOuts.Name = "cbcOuts";
-			this.cbcOuts.Size = new System.Drawing.Size(78, 17);
-			this.cbcOuts.TabIndex = 2;
-			this.cbcOuts.Text = "Outdoors";
-			this.cbcOuts.UseVisualStyleBackColor = true;
-			this.cbcOuts.CheckedChanged += new EventHandler(this.SetCommFlags);
+			cbcOuts.AutoSize = true;
+			cbcOuts.Location = new System.Drawing.Point(18, 81);
+			cbcOuts.Name = "cbcOuts";
+			cbcOuts.Size = new System.Drawing.Size(78, 17);
+			cbcOuts.TabIndex = 2;
+			cbcOuts.Text = "Outdoors";
+			cbcOuts.UseVisualStyleBackColor = true;
+			cbcOuts.CheckedChanged += new EventHandler(SetCommFlags);
 			//
 			// cbcShop
 			//
-			this.cbcShop.AutoSize = true;
-			this.cbcShop.Location = new System.Drawing.Point(18, 56);
-			this.cbcShop.Name = "cbcShop";
-			this.cbcShop.Size = new System.Drawing.Size(79, 17);
-			this.cbcShop.TabIndex = 1;
-			this.cbcShop.Text = "Shopping";
-			this.cbcShop.UseVisualStyleBackColor = true;
-			this.cbcShop.CheckedChanged += new EventHandler(this.SetCommFlags);
+			cbcShop.AutoSize = true;
+			cbcShop.Location = new System.Drawing.Point(18, 56);
+			cbcShop.Name = "cbcShop";
+			cbcShop.Size = new System.Drawing.Size(79, 17);
+			cbcShop.TabIndex = 1;
+			cbcShop.Text = "Shopping";
+			cbcShop.UseVisualStyleBackColor = true;
+			cbcShop.CheckedChanged += new EventHandler(SetCommFlags);
 			//
 			// cbcDine
 			//
-			this.cbcDine.AutoSize = true;
-			this.cbcDine.Location = new System.Drawing.Point(18, 31);
-			this.cbcDine.Name = "cbcDine";
-			this.cbcDine.Size = new System.Drawing.Size(62, 17);
-			this.cbcDine.TabIndex = 0;
-			this.cbcDine.Text = "Dining";
-			this.cbcDine.UseVisualStyleBackColor = true;
-			this.cbcDine.CheckedChanged += new EventHandler(this.SetCommFlags);
+			cbcDine.AutoSize = true;
+			cbcDine.Location = new System.Drawing.Point(18, 31);
+			cbcDine.Name = "cbcDine";
+			cbcDine.Size = new System.Drawing.Size(62, 17);
+			cbcDine.TabIndex = 0;
+			cbcDine.Text = "Dining";
+			cbcDine.UseVisualStyleBackColor = true;
+			cbcDine.CheckedChanged += new EventHandler(SetCommFlags);
 			//
 			// groupBox2
 			//
-			this.groupBox2.BackColor = System.Drawing.Color.Transparent;
-			this.groupBox2.BodyColor = System.Drawing.SystemColors.ControlLight;
-			this.groupBox2.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-			this.groupBox2.Controls.Add(this.cbBuildSort);
-			this.groupBox2.Controls.Add(this.cbaspiration);
-			this.groupBox2.Controls.Add(this.label5);
-			this.groupBox2.Controls.Add(this.cbhobby);
-			this.groupBox2.Controls.Add(this.cbappliances);
-			this.groupBox2.Controls.Add(this.cbdecorative);
-			this.groupBox2.Controls.Add(this.cbelectronics);
-			this.groupBox2.Controls.Add(this.cbgeneral);
-			this.groupBox2.Controls.Add(this.cblightning);
-			this.groupBox2.Controls.Add(this.cbplumbing);
-			this.groupBox2.Controls.Add(this.cbseating);
-			this.groupBox2.Controls.Add(this.cbsurfaces);
-			this.groupBox2.Controls.Add(this.cbcareer);
-			this.groupBox2.Controls.Add(this.cbsort);
-			this.groupBox2.Controls.Add(this.label1);
-			this.groupBox2.Font = new System.Drawing.Font(
+			groupBox2.BackColor = System.Drawing.Color.Transparent;
+			groupBox2.BodyColor = System.Drawing.SystemColors.ControlLight;
+			groupBox2.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+			groupBox2.Controls.Add(cbBuildSort);
+			groupBox2.Controls.Add(cbaspiration);
+			groupBox2.Controls.Add(label5);
+			groupBox2.Controls.Add(cbhobby);
+			groupBox2.Controls.Add(cbappliances);
+			groupBox2.Controls.Add(cbdecorative);
+			groupBox2.Controls.Add(cbelectronics);
+			groupBox2.Controls.Add(cbgeneral);
+			groupBox2.Controls.Add(cblightning);
+			groupBox2.Controls.Add(cbplumbing);
+			groupBox2.Controls.Add(cbseating);
+			groupBox2.Controls.Add(cbsurfaces);
+			groupBox2.Controls.Add(cbcareer);
+			groupBox2.Controls.Add(cbsort);
+			groupBox2.Controls.Add(label1);
+			groupBox2.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.groupBox2.HeaderFont = new System.Drawing.Font(
+			groupBox2.HeaderFont = new System.Drawing.Font(
 				"Microsoft Sans Serif",
 				10.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.groupBox2.HeaderText = "Function Sort";
-			this.groupBox2.HeaderTextColor = System.Drawing.SystemColors.ControlText;
-			this.groupBox2.IconLocation = new System.Drawing.Point(4, 12);
-			this.groupBox2.IconSize = new System.Drawing.Size(32, 32);
-			this.groupBox2.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
-			this.groupBox2.Location = new System.Drawing.Point(225, 8);
-			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Padding = new Padding(4, 28, 4, 4);
-			this.groupBox2.RightHeaderColor = System.Drawing.SystemColors.ControlDark;
-			this.groupBox2.Size = new System.Drawing.Size(285, 200);
-			this.groupBox2.TabIndex = 17;
+			groupBox2.HeaderText = "Function Sort";
+			groupBox2.HeaderTextColor = System.Drawing.SystemColors.ControlText;
+			groupBox2.IconLocation = new System.Drawing.Point(4, 12);
+			groupBox2.IconSize = new System.Drawing.Size(32, 32);
+			groupBox2.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
+			groupBox2.Location = new System.Drawing.Point(225, 8);
+			groupBox2.Name = "groupBox2";
+			groupBox2.Padding = new Padding(4, 28, 4, 4);
+			groupBox2.RightHeaderColor = System.Drawing.SystemColors.ControlDark;
+			groupBox2.Size = new System.Drawing.Size(285, 200);
+			groupBox2.TabIndex = 17;
 			//this.groupBox2.TopGap = 2;
 			//
 			// cbBuildSort
 			//
-			this.cbBuildSort.Font = new System.Drawing.Font("Verdana", 8.25F);
-			this.cbBuildSort.FormattingEnabled = true;
-			this.cbBuildSort.Location = new System.Drawing.Point(118, 169);
-			this.cbBuildSort.Name = "cbBuildSort";
-			this.cbBuildSort.Size = new System.Drawing.Size(160, 21);
-			this.cbBuildSort.TabIndex = 20;
-			this.cbBuildSort.SelectedIndexChanged += new EventHandler(
-				this.cbBuildSort_SelectedIndexChanged
+			cbBuildSort.Font = new System.Drawing.Font("Verdana", 8.25F);
+			cbBuildSort.FormattingEnabled = true;
+			cbBuildSort.Location = new System.Drawing.Point(118, 169);
+			cbBuildSort.Name = "cbBuildSort";
+			cbBuildSort.Size = new System.Drawing.Size(160, 21);
+			cbBuildSort.TabIndex = 20;
+			cbBuildSort.SelectedIndexChanged += new EventHandler(
+				cbBuildSort_SelectedIndexChanged
 			);
 			//
 			// cbaspiration
 			//
-			this.cbaspiration.AutoSize = true;
-			this.cbaspiration.FlatStyle = FlatStyle.System;
-			this.cbaspiration.Font = new System.Drawing.Font(
+			cbaspiration.AutoSize = true;
+			cbaspiration.FlatStyle = FlatStyle.System;
+			cbaspiration.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbaspiration.Location = new System.Drawing.Point(140, 104);
-			this.cbaspiration.Name = "cbaspiration";
-			this.cbaspiration.Size = new System.Drawing.Size(89, 18);
-			this.cbaspiration.TabIndex = 17;
-			this.cbaspiration.Text = "Aspiration";
-			this.cbaspiration.CheckedChanged += new EventHandler(
-				this.SetFunctionFlags
+			cbaspiration.Location = new System.Drawing.Point(140, 104);
+			cbaspiration.Name = "cbaspiration";
+			cbaspiration.Size = new System.Drawing.Size(89, 18);
+			cbaspiration.TabIndex = 17;
+			cbaspiration.Text = "Aspiration";
+			cbaspiration.CheckedChanged += new EventHandler(
+				SetFunctionFlags
 			);
 			//
 			// label5
 			//
-			this.label5.AutoSize = true;
-			this.label5.Font = new System.Drawing.Font(
+			label5.AutoSize = true;
+			label5.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.label5.Location = new System.Drawing.Point(6, 173);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(112, 13);
-			this.label5.TabIndex = 19;
-			this.label5.Text = "Build Mode Sort:";
-			this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			label5.Location = new System.Drawing.Point(6, 173);
+			label5.Name = "label5";
+			label5.Size = new System.Drawing.Size(112, 13);
+			label5.TabIndex = 19;
+			label5.Text = "Build Mode Sort:";
+			label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			//
 			// cbhobby
 			//
-			this.cbhobby.AutoSize = true;
-			this.cbhobby.FlatStyle = FlatStyle.System;
-			this.cbhobby.Font = new System.Drawing.Font(
+			cbhobby.AutoSize = true;
+			cbhobby.FlatStyle = FlatStyle.System;
+			cbhobby.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbhobby.Location = new System.Drawing.Point(140, 84);
-			this.cbhobby.Name = "cbhobby";
-			this.cbhobby.Size = new System.Drawing.Size(77, 18);
-			this.cbhobby.TabIndex = 16;
-			this.cbhobby.Text = "Hobbies";
-			this.cbhobby.CheckedChanged += new EventHandler(
-				this.SetFunctionFlags
+			cbhobby.Location = new System.Drawing.Point(140, 84);
+			cbhobby.Name = "cbhobby";
+			cbhobby.Size = new System.Drawing.Size(77, 18);
+			cbhobby.TabIndex = 16;
+			cbhobby.Text = "Hobbies";
+			cbhobby.CheckedChanged += new EventHandler(
+				SetFunctionFlags
 			);
 			//
 			// cbappliances
 			//
-			this.cbappliances.AutoSize = true;
-			this.cbappliances.FlatStyle = FlatStyle.System;
-			this.cbappliances.Font = new System.Drawing.Font(
+			cbappliances.AutoSize = true;
+			cbappliances.FlatStyle = FlatStyle.System;
+			cbappliances.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbappliances.Location = new System.Drawing.Point(18, 24);
-			this.cbappliances.Name = "cbappliances";
-			this.cbappliances.Size = new System.Drawing.Size(93, 18);
-			this.cbappliances.TabIndex = 8;
-			this.cbappliances.Text = "Appliances";
-			this.cbappliances.CheckedChanged += new EventHandler(
-				this.SetFunctionFlags
+			cbappliances.Location = new System.Drawing.Point(18, 24);
+			cbappliances.Name = "cbappliances";
+			cbappliances.Size = new System.Drawing.Size(93, 18);
+			cbappliances.TabIndex = 8;
+			cbappliances.Text = "Appliances";
+			cbappliances.CheckedChanged += new EventHandler(
+				SetFunctionFlags
 			);
 			//
 			// cbdecorative
 			//
-			this.cbdecorative.AutoSize = true;
-			this.cbdecorative.FlatStyle = FlatStyle.System;
-			this.cbdecorative.Font = new System.Drawing.Font(
+			cbdecorative.AutoSize = true;
+			cbdecorative.FlatStyle = FlatStyle.System;
+			cbdecorative.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbdecorative.Location = new System.Drawing.Point(18, 44);
-			this.cbdecorative.Name = "cbdecorative";
-			this.cbdecorative.Size = new System.Drawing.Size(94, 18);
-			this.cbdecorative.TabIndex = 9;
-			this.cbdecorative.Text = "Decorative";
-			this.cbdecorative.CheckedChanged += new EventHandler(
-				this.SetFunctionFlags
+			cbdecorative.Location = new System.Drawing.Point(18, 44);
+			cbdecorative.Name = "cbdecorative";
+			cbdecorative.Size = new System.Drawing.Size(94, 18);
+			cbdecorative.TabIndex = 9;
+			cbdecorative.Text = "Decorative";
+			cbdecorative.CheckedChanged += new EventHandler(
+				SetFunctionFlags
 			);
 			//
 			// cbelectronics
 			//
-			this.cbelectronics.AutoSize = true;
-			this.cbelectronics.FlatStyle = FlatStyle.System;
-			this.cbelectronics.Font = new System.Drawing.Font(
+			cbelectronics.AutoSize = true;
+			cbelectronics.FlatStyle = FlatStyle.System;
+			cbelectronics.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbelectronics.Location = new System.Drawing.Point(18, 64);
-			this.cbelectronics.Name = "cbelectronics";
-			this.cbelectronics.Size = new System.Drawing.Size(93, 18);
-			this.cbelectronics.TabIndex = 10;
-			this.cbelectronics.Text = "Electronics";
-			this.cbelectronics.CheckedChanged += new EventHandler(
-				this.SetFunctionFlags
+			cbelectronics.Location = new System.Drawing.Point(18, 64);
+			cbelectronics.Name = "cbelectronics";
+			cbelectronics.Size = new System.Drawing.Size(93, 18);
+			cbelectronics.TabIndex = 10;
+			cbelectronics.Text = "Electronics";
+			cbelectronics.CheckedChanged += new EventHandler(
+				SetFunctionFlags
 			);
 			//
 			// cbgeneral
 			//
-			this.cbgeneral.AutoSize = true;
-			this.cbgeneral.FlatStyle = FlatStyle.System;
-			this.cbgeneral.Font = new System.Drawing.Font(
+			cbgeneral.AutoSize = true;
+			cbgeneral.FlatStyle = FlatStyle.System;
+			cbgeneral.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbgeneral.Location = new System.Drawing.Point(18, 84);
-			this.cbgeneral.Name = "cbgeneral";
-			this.cbgeneral.Size = new System.Drawing.Size(77, 18);
-			this.cbgeneral.TabIndex = 11;
-			this.cbgeneral.Text = "General";
-			this.cbgeneral.CheckedChanged += new EventHandler(
-				this.SetFunctionFlags
+			cbgeneral.Location = new System.Drawing.Point(18, 84);
+			cbgeneral.Name = "cbgeneral";
+			cbgeneral.Size = new System.Drawing.Size(77, 18);
+			cbgeneral.TabIndex = 11;
+			cbgeneral.Text = "General";
+			cbgeneral.CheckedChanged += new EventHandler(
+				SetFunctionFlags
 			);
 			//
 			// cblightning
 			//
-			this.cblightning.AutoSize = true;
-			this.cblightning.FlatStyle = FlatStyle.System;
-			this.cblightning.Font = new System.Drawing.Font(
+			cblightning.AutoSize = true;
+			cblightning.FlatStyle = FlatStyle.System;
+			cblightning.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cblightning.Location = new System.Drawing.Point(18, 104);
-			this.cblightning.Name = "cblightning";
-			this.cblightning.Size = new System.Drawing.Size(65, 18);
-			this.cblightning.TabIndex = 12;
-			this.cblightning.Text = "Lights";
-			this.cblightning.CheckedChanged += new EventHandler(
-				this.SetFunctionFlags
+			cblightning.Location = new System.Drawing.Point(18, 104);
+			cblightning.Name = "cblightning";
+			cblightning.Size = new System.Drawing.Size(65, 18);
+			cblightning.TabIndex = 12;
+			cblightning.Text = "Lights";
+			cblightning.CheckedChanged += new EventHandler(
+				SetFunctionFlags
 			);
 			//
 			// cbplumbing
 			//
-			this.cbplumbing.AutoSize = true;
-			this.cbplumbing.FlatStyle = FlatStyle.System;
-			this.cbplumbing.Font = new System.Drawing.Font(
+			cbplumbing.AutoSize = true;
+			cbplumbing.FlatStyle = FlatStyle.System;
+			cbplumbing.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbplumbing.Location = new System.Drawing.Point(140, 24);
-			this.cbplumbing.Name = "cbplumbing";
-			this.cbplumbing.Size = new System.Drawing.Size(84, 18);
-			this.cbplumbing.TabIndex = 13;
-			this.cbplumbing.Text = "Plumbing";
-			this.cbplumbing.CheckedChanged += new EventHandler(
-				this.SetFunctionFlags
+			cbplumbing.Location = new System.Drawing.Point(140, 24);
+			cbplumbing.Name = "cbplumbing";
+			cbplumbing.Size = new System.Drawing.Size(84, 18);
+			cbplumbing.TabIndex = 13;
+			cbplumbing.Text = "Plumbing";
+			cbplumbing.CheckedChanged += new EventHandler(
+				SetFunctionFlags
 			);
 			//
 			// cbseating
 			//
-			this.cbseating.AutoSize = true;
-			this.cbseating.FlatStyle = FlatStyle.System;
-			this.cbseating.Font = new System.Drawing.Font(
+			cbseating.AutoSize = true;
+			cbseating.FlatStyle = FlatStyle.System;
+			cbseating.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbseating.Location = new System.Drawing.Point(140, 44);
-			this.cbseating.Name = "cbseating";
-			this.cbseating.Size = new System.Drawing.Size(75, 18);
-			this.cbseating.TabIndex = 14;
-			this.cbseating.Text = "Seating";
-			this.cbseating.CheckedChanged += new EventHandler(
-				this.SetFunctionFlags
+			cbseating.Location = new System.Drawing.Point(140, 44);
+			cbseating.Name = "cbseating";
+			cbseating.Size = new System.Drawing.Size(75, 18);
+			cbseating.TabIndex = 14;
+			cbseating.Text = "Seating";
+			cbseating.CheckedChanged += new EventHandler(
+				SetFunctionFlags
 			);
 			//
 			// cbsurfaces
 			//
-			this.cbsurfaces.AutoSize = true;
-			this.cbsurfaces.FlatStyle = FlatStyle.System;
-			this.cbsurfaces.Font = new System.Drawing.Font(
+			cbsurfaces.AutoSize = true;
+			cbsurfaces.FlatStyle = FlatStyle.System;
+			cbsurfaces.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbsurfaces.Location = new System.Drawing.Point(140, 64);
-			this.cbsurfaces.Name = "cbsurfaces";
-			this.cbsurfaces.Size = new System.Drawing.Size(82, 18);
-			this.cbsurfaces.TabIndex = 15;
-			this.cbsurfaces.Text = "Surfaces";
-			this.cbsurfaces.CheckedChanged += new EventHandler(
-				this.SetFunctionFlags
+			cbsurfaces.Location = new System.Drawing.Point(140, 64);
+			cbsurfaces.Name = "cbsurfaces";
+			cbsurfaces.Size = new System.Drawing.Size(82, 18);
+			cbsurfaces.TabIndex = 15;
+			cbsurfaces.Text = "Surfaces";
+			cbsurfaces.CheckedChanged += new EventHandler(
+				SetFunctionFlags
 			);
 			//
 			// cbcareer
 			//
-			this.cbcareer.AutoSize = true;
-			this.cbcareer.Font = new System.Drawing.Font("Verdana", 8.25F);
-			this.cbcareer.Location = new System.Drawing.Point(18, 124);
-			this.cbcareer.Name = "cbcareer";
-			this.cbcareer.Size = new System.Drawing.Size(113, 17);
-			this.cbcareer.TabIndex = 0;
-			this.cbcareer.Text = "Career Reward";
-			this.cbcareer.CheckedChanged += new EventHandler(
-				this.SetFunctionFlags
+			cbcareer.AutoSize = true;
+			cbcareer.Font = new System.Drawing.Font("Verdana", 8.25F);
+			cbcareer.Location = new System.Drawing.Point(18, 124);
+			cbcareer.Name = "cbcareer";
+			cbcareer.Size = new System.Drawing.Size(113, 17);
+			cbcareer.TabIndex = 0;
+			cbcareer.Text = "Career Reward";
+			cbcareer.CheckedChanged += new EventHandler(
+				SetFunctionFlags
 			);
 			//
 			// cbsort
 			//
-			this.cbsort.Enum = null;
-			this.cbsort.Font = new System.Drawing.Font(
+			cbsort.Enum = null;
+			cbsort.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbsort.Location = new System.Drawing.Point(118, 144);
-			this.cbsort.Name = "cbsort";
-			this.cbsort.ResourceManager = null;
-			this.cbsort.Size = new System.Drawing.Size(160, 21);
-			this.cbsort.TabIndex = 19;
-			this.cbsort.SelectedIndexChanged += new EventHandler(
-				this.cbsort_SelectedIndexChanged
+			cbsort.Location = new System.Drawing.Point(118, 144);
+			cbsort.Name = "cbsort";
+			cbsort.ResourceManager = null;
+			cbsort.Size = new System.Drawing.Size(160, 21);
+			cbsort.TabIndex = 19;
+			cbsort.SelectedIndexChanged += new EventHandler(
+				cbsort_SelectedIndexChanged
 			);
 			//
 			// label1
 			//
-			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font(
+			label1.AutoSize = true;
+			label1.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label1.Location = new System.Drawing.Point(29, 148);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(89, 13);
-			this.label1.TabIndex = 18;
-			this.label1.Text = "Overall Sort:";
-			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			label1.Location = new System.Drawing.Point(29, 148);
+			label1.Name = "label1";
+			label1.Size = new System.Drawing.Size(89, 13);
+			label1.TabIndex = 18;
+			label1.Text = "Overall Sort:";
+			label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			//
 			// groupBox1
 			//
-			this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-			this.groupBox1.BodyColor = System.Drawing.SystemColors.ControlLight;
-			this.groupBox1.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-			this.groupBox1.Controls.Add(this.lbprise);
-			this.groupBox1.Controls.Add(this.tbPrice);
-			this.groupBox1.Controls.Add(this.cbkids);
-			this.groupBox1.Controls.Add(this.cbbathroom);
-			this.groupBox1.Controls.Add(this.cbbedroom);
-			this.groupBox1.Controls.Add(this.cbdinigroom);
-			this.groupBox1.Controls.Add(this.cbkitchen);
-			this.groupBox1.Controls.Add(this.cbmisc);
-			this.groupBox1.Controls.Add(this.cboutside);
-			this.groupBox1.Controls.Add(this.cblivingroom);
-			this.groupBox1.Controls.Add(this.cbstudy);
-			this.groupBox1.Font = new System.Drawing.Font(
+			groupBox1.BackColor = System.Drawing.Color.Transparent;
+			groupBox1.BodyColor = System.Drawing.SystemColors.ControlLight;
+			groupBox1.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+			groupBox1.Controls.Add(lbprise);
+			groupBox1.Controls.Add(tbPrice);
+			groupBox1.Controls.Add(cbkids);
+			groupBox1.Controls.Add(cbbathroom);
+			groupBox1.Controls.Add(cbbedroom);
+			groupBox1.Controls.Add(cbdinigroom);
+			groupBox1.Controls.Add(cbkitchen);
+			groupBox1.Controls.Add(cbmisc);
+			groupBox1.Controls.Add(cboutside);
+			groupBox1.Controls.Add(cblivingroom);
+			groupBox1.Controls.Add(cbstudy);
+			groupBox1.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.groupBox1.HeaderFont = new System.Drawing.Font(
+			groupBox1.HeaderFont = new System.Drawing.Font(
 				"Microsoft Sans Serif",
 				10.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.groupBox1.HeaderText = "Room Sort";
-			this.groupBox1.HeaderTextColor = System.Drawing.SystemColors.ControlText;
-			this.groupBox1.IconLocation = new System.Drawing.Point(4, 12);
-			this.groupBox1.IconSize = new System.Drawing.Size(32, 32);
-			this.groupBox1.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
-			this.groupBox1.Location = new System.Drawing.Point(8, 8);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Padding = new Padding(4, 28, 4, 4);
-			this.groupBox1.RightHeaderColor = System.Drawing.SystemColors.ControlDark;
-			this.groupBox1.Size = new System.Drawing.Size(211, 200);
-			this.groupBox1.TabIndex = 16;
+			groupBox1.HeaderText = "Room Sort";
+			groupBox1.HeaderTextColor = System.Drawing.SystemColors.ControlText;
+			groupBox1.IconLocation = new System.Drawing.Point(4, 12);
+			groupBox1.IconSize = new System.Drawing.Size(32, 32);
+			groupBox1.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
+			groupBox1.Location = new System.Drawing.Point(8, 8);
+			groupBox1.Name = "groupBox1";
+			groupBox1.Padding = new Padding(4, 28, 4, 4);
+			groupBox1.RightHeaderColor = System.Drawing.SystemColors.ControlDark;
+			groupBox1.Size = new System.Drawing.Size(211, 200);
+			groupBox1.TabIndex = 16;
 			//this.groupBox1.TopGap = 2;
 			//
 			// lbprise
 			//
-			this.lbprise.AutoSize = true;
-			this.lbprise.BackColor = System.Drawing.Color.Transparent;
-			this.lbprise.Font = new System.Drawing.Font(
+			lbprise.AutoSize = true;
+			lbprise.BackColor = System.Drawing.Color.Transparent;
+			lbprise.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.lbprise.ImeMode = ImeMode.NoControl;
-			this.lbprise.Location = new System.Drawing.Point(94, 173);
-			this.lbprise.Name = "lbprise";
-			this.lbprise.Size = new System.Drawing.Size(44, 13);
-			this.lbprise.TabIndex = 24;
-			this.lbprise.Text = "Price:";
+			lbprise.ImeMode = ImeMode.NoControl;
+			lbprise.Location = new System.Drawing.Point(94, 173);
+			lbprise.Name = "lbprise";
+			lbprise.Size = new System.Drawing.Size(44, 13);
+			lbprise.TabIndex = 24;
+			lbprise.Text = "Price:";
 			//
 			// tbPrice
 			//
-			this.tbPrice.Font = new System.Drawing.Font(
+			tbPrice.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbPrice.Location = new System.Drawing.Point(140, 169);
-			this.tbPrice.Name = "tbPrice";
-			this.tbPrice.Size = new System.Drawing.Size(64, 21);
-			this.tbPrice.TabIndex = 23;
-			this.tbPrice.Text = "0";
-			this.tbPrice.TextChanged += new EventHandler(
-				this.tbPrice_TextChanged
+			tbPrice.Location = new System.Drawing.Point(140, 169);
+			tbPrice.Name = "tbPrice";
+			tbPrice.Size = new System.Drawing.Size(64, 21);
+			tbPrice.TabIndex = 23;
+			tbPrice.Text = "0";
+			tbPrice.TextChanged += new EventHandler(
+				tbPrice_TextChanged
 			);
 			//
 			// cbkids
 			//
-			this.cbkids.AutoSize = true;
-			this.cbkids.FlatStyle = FlatStyle.System;
-			this.cbkids.Font = new System.Drawing.Font(
+			cbkids.AutoSize = true;
+			cbkids.FlatStyle = FlatStyle.System;
+			cbkids.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbkids.Location = new System.Drawing.Point(122, 105);
-			this.cbkids.Name = "cbkids";
-			this.cbkids.Size = new System.Drawing.Size(56, 18);
-			this.cbkids.TabIndex = 8;
-			this.cbkids.Text = "Kids";
-			this.cbkids.CheckedChanged += new EventHandler(this.SetRoomFlags);
+			cbkids.Location = new System.Drawing.Point(122, 105);
+			cbkids.Name = "cbkids";
+			cbkids.Size = new System.Drawing.Size(56, 18);
+			cbkids.TabIndex = 8;
+			cbkids.Text = "Kids";
+			cbkids.CheckedChanged += new EventHandler(SetRoomFlags);
 			//
 			// cbbathroom
 			//
-			this.cbbathroom.AutoSize = true;
-			this.cbbathroom.FlatStyle = FlatStyle.System;
-			this.cbbathroom.Font = new System.Drawing.Font(
+			cbbathroom.AutoSize = true;
+			cbbathroom.FlatStyle = FlatStyle.System;
+			cbbathroom.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbbathroom.Location = new System.Drawing.Point(17, 30);
-			this.cbbathroom.Name = "cbbathroom";
-			this.cbbathroom.Size = new System.Drawing.Size(88, 18);
-			this.cbbathroom.TabIndex = 0;
-			this.cbbathroom.Text = "Bathroom";
-			this.cbbathroom.CheckedChanged += new EventHandler(
-				this.SetRoomFlags
+			cbbathroom.Location = new System.Drawing.Point(17, 30);
+			cbbathroom.Name = "cbbathroom";
+			cbbathroom.Size = new System.Drawing.Size(88, 18);
+			cbbathroom.TabIndex = 0;
+			cbbathroom.Text = "Bathroom";
+			cbbathroom.CheckedChanged += new EventHandler(
+				SetRoomFlags
 			);
 			//
 			// cbbedroom
 			//
-			this.cbbedroom.AutoSize = true;
-			this.cbbedroom.FlatStyle = FlatStyle.System;
-			this.cbbedroom.Font = new System.Drawing.Font(
+			cbbedroom.AutoSize = true;
+			cbbedroom.FlatStyle = FlatStyle.System;
+			cbbedroom.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbbedroom.Location = new System.Drawing.Point(17, 55);
-			this.cbbedroom.Name = "cbbedroom";
-			this.cbbedroom.Size = new System.Drawing.Size(84, 18);
-			this.cbbedroom.TabIndex = 1;
-			this.cbbedroom.Text = "Bedroom";
-			this.cbbedroom.CheckedChanged += new EventHandler(this.SetRoomFlags);
+			cbbedroom.Location = new System.Drawing.Point(17, 55);
+			cbbedroom.Name = "cbbedroom";
+			cbbedroom.Size = new System.Drawing.Size(84, 18);
+			cbbedroom.TabIndex = 1;
+			cbbedroom.Text = "Bedroom";
+			cbbedroom.CheckedChanged += new EventHandler(SetRoomFlags);
 			//
 			// cbdinigroom
 			//
-			this.cbdinigroom.AutoSize = true;
-			this.cbdinigroom.FlatStyle = FlatStyle.System;
-			this.cbdinigroom.Font = new System.Drawing.Font(
+			cbdinigroom.AutoSize = true;
+			cbdinigroom.FlatStyle = FlatStyle.System;
+			cbdinigroom.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbdinigroom.Location = new System.Drawing.Point(17, 80);
-			this.cbdinigroom.Name = "cbdinigroom";
-			this.cbdinigroom.Size = new System.Drawing.Size(98, 18);
-			this.cbdinigroom.TabIndex = 2;
-			this.cbdinigroom.Text = "Diningroom";
-			this.cbdinigroom.CheckedChanged += new EventHandler(
-				this.SetRoomFlags
+			cbdinigroom.Location = new System.Drawing.Point(17, 80);
+			cbdinigroom.Name = "cbdinigroom";
+			cbdinigroom.Size = new System.Drawing.Size(98, 18);
+			cbdinigroom.TabIndex = 2;
+			cbdinigroom.Text = "Diningroom";
+			cbdinigroom.CheckedChanged += new EventHandler(
+				SetRoomFlags
 			);
 			//
 			// cbkitchen
 			//
-			this.cbkitchen.AutoSize = true;
-			this.cbkitchen.FlatStyle = FlatStyle.System;
-			this.cbkitchen.Font = new System.Drawing.Font(
+			cbkitchen.AutoSize = true;
+			cbkitchen.FlatStyle = FlatStyle.System;
+			cbkitchen.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbkitchen.Location = new System.Drawing.Point(17, 105);
-			this.cbkitchen.Name = "cbkitchen";
-			this.cbkitchen.Size = new System.Drawing.Size(74, 18);
-			this.cbkitchen.TabIndex = 3;
-			this.cbkitchen.Text = "Kitchen";
-			this.cbkitchen.CheckedChanged += new EventHandler(this.SetRoomFlags);
+			cbkitchen.Location = new System.Drawing.Point(17, 105);
+			cbkitchen.Name = "cbkitchen";
+			cbkitchen.Size = new System.Drawing.Size(74, 18);
+			cbkitchen.TabIndex = 3;
+			cbkitchen.Text = "Kitchen";
+			cbkitchen.CheckedChanged += new EventHandler(SetRoomFlags);
 			//
 			// cbmisc
 			//
-			this.cbmisc.AutoSize = true;
-			this.cbmisc.FlatStyle = FlatStyle.System;
-			this.cbmisc.Font = new System.Drawing.Font(
+			cbmisc.AutoSize = true;
+			cbmisc.FlatStyle = FlatStyle.System;
+			cbmisc.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbmisc.Location = new System.Drawing.Point(122, 30);
-			this.cbmisc.Name = "cbmisc";
-			this.cbmisc.Size = new System.Drawing.Size(60, 18);
-			this.cbmisc.TabIndex = 4;
-			this.cbmisc.Text = "Misc.";
-			this.cbmisc.CheckedChanged += new EventHandler(this.SetRoomFlags);
+			cbmisc.Location = new System.Drawing.Point(122, 30);
+			cbmisc.Name = "cbmisc";
+			cbmisc.Size = new System.Drawing.Size(60, 18);
+			cbmisc.TabIndex = 4;
+			cbmisc.Text = "Misc.";
+			cbmisc.CheckedChanged += new EventHandler(SetRoomFlags);
 			//
 			// cboutside
 			//
-			this.cboutside.AutoSize = true;
-			this.cboutside.FlatStyle = FlatStyle.System;
-			this.cboutside.Font = new System.Drawing.Font(
+			cboutside.AutoSize = true;
+			cboutside.FlatStyle = FlatStyle.System;
+			cboutside.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cboutside.Location = new System.Drawing.Point(122, 55);
-			this.cboutside.Name = "cboutside";
-			this.cboutside.Size = new System.Drawing.Size(75, 18);
-			this.cboutside.TabIndex = 5;
-			this.cboutside.Text = "Outside";
-			this.cboutside.CheckedChanged += new EventHandler(this.SetRoomFlags);
+			cboutside.Location = new System.Drawing.Point(122, 55);
+			cboutside.Name = "cboutside";
+			cboutside.Size = new System.Drawing.Size(75, 18);
+			cboutside.TabIndex = 5;
+			cboutside.Text = "Outside";
+			cboutside.CheckedChanged += new EventHandler(SetRoomFlags);
 			//
 			// cblivingroom
 			//
-			this.cblivingroom.AutoSize = true;
-			this.cblivingroom.FlatStyle = FlatStyle.System;
-			this.cblivingroom.Font = new System.Drawing.Font(
+			cblivingroom.AutoSize = true;
+			cblivingroom.FlatStyle = FlatStyle.System;
+			cblivingroom.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cblivingroom.Location = new System.Drawing.Point(17, 130);
-			this.cblivingroom.Name = "cblivingroom";
-			this.cblivingroom.Size = new System.Drawing.Size(95, 18);
-			this.cblivingroom.TabIndex = 6;
-			this.cblivingroom.Text = "Livingroom";
-			this.cblivingroom.CheckedChanged += new EventHandler(
-				this.SetRoomFlags
+			cblivingroom.Location = new System.Drawing.Point(17, 130);
+			cblivingroom.Name = "cblivingroom";
+			cblivingroom.Size = new System.Drawing.Size(95, 18);
+			cblivingroom.TabIndex = 6;
+			cblivingroom.Text = "Livingroom";
+			cblivingroom.CheckedChanged += new EventHandler(
+				SetRoomFlags
 			);
 			//
 			// cbstudy
 			//
-			this.cbstudy.AutoSize = true;
-			this.cbstudy.FlatStyle = FlatStyle.System;
-			this.cbstudy.Font = new System.Drawing.Font(
+			cbstudy.AutoSize = true;
+			cbstudy.FlatStyle = FlatStyle.System;
+			cbstudy.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbstudy.Location = new System.Drawing.Point(122, 80);
-			this.cbstudy.Name = "cbstudy";
-			this.cbstudy.Size = new System.Drawing.Size(65, 18);
-			this.cbstudy.TabIndex = 7;
-			this.cbstudy.Text = "Study";
-			this.cbstudy.CheckedChanged += new EventHandler(this.SetRoomFlags);
+			cbstudy.Location = new System.Drawing.Point(122, 80);
+			cbstudy.Name = "cbstudy";
+			cbstudy.Size = new System.Drawing.Size(65, 18);
+			cbstudy.TabIndex = 7;
+			cbstudy.Text = "Study";
+			cbstudy.CheckedChanged += new EventHandler(SetRoomFlags);
 			//
 			// tpreqeps
 			//
-			this.tpreqeps.Controls.Add(this.pnpritty);
-			this.tpreqeps.Location = new System.Drawing.Point(4, 22);
-			this.tpreqeps.Name = "tpreqeps";
-			this.tpreqeps.Size = new System.Drawing.Size(680, 242);
-			this.tpreqeps.TabIndex = 2;
-			this.tpreqeps.Text = "Required Ep";
-			this.tpreqeps.UseVisualStyleBackColor = true;
+			tpreqeps.Controls.Add(pnpritty);
+			tpreqeps.Location = new System.Drawing.Point(4, 22);
+			tpreqeps.Name = "tpreqeps";
+			tpreqeps.Size = new System.Drawing.Size(680, 242);
+			tpreqeps.TabIndex = 2;
+			tpreqeps.Text = "Required Ep";
+			tpreqeps.UseVisualStyleBackColor = true;
 			//
 			// pnpritty
 			//
-			this.pnpritty.BackColor = System.Drawing.Color.Transparent;
+			pnpritty.BackColor = System.Drawing.Color.Transparent;
 			//this.pnpritty.BackgroundImageAnchor = System.Windows.Forms.Panel.ImageLayout.TopRight;
 			//this.pnpritty.BackgroundImageZoomToFit = true;
-			this.pnpritty.Controls.Add(this.tbreqeps);
-			this.pnpritty.Dock = DockStyle.Fill;
+			pnpritty.Controls.Add(tbreqeps);
+			pnpritty.Dock = DockStyle.Fill;
 			//this.pnpritty.EndColour = System.Drawing.SystemColors.Control;
-			this.pnpritty.Font = new System.Drawing.Font(
+			pnpritty.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.pnpritty.Location = new System.Drawing.Point(0, 0);
+			pnpritty.Location = new System.Drawing.Point(0, 0);
 			//this.pnpritty.MiddleColour = System.Drawing.SystemColors.Control;
-			this.pnpritty.Name = "pnpritty";
-			this.pnpritty.Size = new System.Drawing.Size(680, 242);
+			pnpritty.Name = "pnpritty";
+			pnpritty.Size = new System.Drawing.Size(680, 242);
 			//this.pnpritty.StartColour = System.Drawing.SystemColors.Control;
-			this.pnpritty.TabIndex = 0;
+			pnpritty.TabIndex = 0;
 			//
 			// tbreqeps
 			//
-			this.tbreqeps.BackColor = System.Drawing.Color.Transparent;
-			this.tbreqeps.BodyColor = System.Drawing.SystemColors.ControlLight;
-			this.tbreqeps.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-			this.tbreqeps.Controls.Add(this.lbepnote);
-			this.tbreqeps.Controls.Add(this.lbgamef2);
-			this.tbreqeps.Controls.Add(this.cbStoreEd);
-			this.tbreqeps.Controls.Add(this.cbMansion);
-			this.tbreqeps.Controls.Add(this.cbApartments);
-			this.tbreqeps.Controls.Add(this.cbIkeaHome);
-			this.tbreqeps.Controls.Add(this.cbKitchens);
-			this.tbreqeps.Controls.Add(this.cbFreeTime);
-			this.tbreqeps.Controls.Add(this.cbExtras);
-			this.tbreqeps.Controls.Add(this.cbTeenStyle);
-			this.tbreqeps.Controls.Add(this.cbBonVoyage);
-			this.tbreqeps.Controls.Add(this.cbFashion);
-			this.tbreqeps.Controls.Add(this.cbCelebrations);
-			this.tbreqeps.Controls.Add(this.cbSeasons);
-			this.tbreqeps.Controls.Add(this.cbPets);
-			this.tbreqeps.Controls.Add(this.cbGlamour);
-			this.tbreqeps.Controls.Add(this.cbFamilyFun);
-			this.tbreqeps.Controls.Add(this.cbBusiness);
-			this.tbreqeps.Controls.Add(this.cbNightlife);
-			this.tbreqeps.Controls.Add(this.cbUniversity);
-			this.tbreqeps.Controls.Add(this.cbBase);
-			this.tbreqeps.HeaderFont = new System.Drawing.Font(
+			tbreqeps.BackColor = System.Drawing.Color.Transparent;
+			tbreqeps.BodyColor = System.Drawing.SystemColors.ControlLight;
+			tbreqeps.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+			tbreqeps.Controls.Add(lbepnote);
+			tbreqeps.Controls.Add(lbgamef2);
+			tbreqeps.Controls.Add(cbStoreEd);
+			tbreqeps.Controls.Add(cbMansion);
+			tbreqeps.Controls.Add(cbApartments);
+			tbreqeps.Controls.Add(cbIkeaHome);
+			tbreqeps.Controls.Add(cbKitchens);
+			tbreqeps.Controls.Add(cbFreeTime);
+			tbreqeps.Controls.Add(cbExtras);
+			tbreqeps.Controls.Add(cbTeenStyle);
+			tbreqeps.Controls.Add(cbBonVoyage);
+			tbreqeps.Controls.Add(cbFashion);
+			tbreqeps.Controls.Add(cbCelebrations);
+			tbreqeps.Controls.Add(cbSeasons);
+			tbreqeps.Controls.Add(cbPets);
+			tbreqeps.Controls.Add(cbGlamour);
+			tbreqeps.Controls.Add(cbFamilyFun);
+			tbreqeps.Controls.Add(cbBusiness);
+			tbreqeps.Controls.Add(cbNightlife);
+			tbreqeps.Controls.Add(cbUniversity);
+			tbreqeps.Controls.Add(cbBase);
+			tbreqeps.HeaderFont = new System.Drawing.Font(
 				"Microsoft Sans Serif",
 				10.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.tbreqeps.HeaderText = "Required Ep or Sp";
-			this.tbreqeps.HeaderTextColor = System.Drawing.SystemColors.ControlText;
-			this.tbreqeps.IconLocation = new System.Drawing.Point(4, 12);
-			this.tbreqeps.IconSize = new System.Drawing.Size(32, 32);
-			this.tbreqeps.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
-			this.tbreqeps.Location = new System.Drawing.Point(8, 8);
-			this.tbreqeps.Name = "tbreqeps";
-			this.tbreqeps.Padding = new Padding(4, 28, 4, 4);
-			this.tbreqeps.RightHeaderColor = System.Drawing.SystemColors.ControlDark;
-			this.tbreqeps.Size = new System.Drawing.Size(442, 228);
-			this.tbreqeps.TabIndex = 0;
+			tbreqeps.HeaderText = "Required Ep or Sp";
+			tbreqeps.HeaderTextColor = System.Drawing.SystemColors.ControlText;
+			tbreqeps.IconLocation = new System.Drawing.Point(4, 12);
+			tbreqeps.IconSize = new System.Drawing.Size(32, 32);
+			tbreqeps.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
+			tbreqeps.Location = new System.Drawing.Point(8, 8);
+			tbreqeps.Name = "tbreqeps";
+			tbreqeps.Padding = new Padding(4, 28, 4, 4);
+			tbreqeps.RightHeaderColor = System.Drawing.SystemColors.ControlDark;
+			tbreqeps.Size = new System.Drawing.Size(442, 228);
+			tbreqeps.TabIndex = 0;
 			//this.tbreqeps.TopGap = 2;
 			//
 			// lbepnote
 			//
-			this.lbepnote.AutoSize = true;
-			this.lbepnote.Location = new System.Drawing.Point(3, 30);
-			this.lbepnote.Name = "lbepnote";
-			this.lbepnote.Size = new System.Drawing.Size(435, 13);
-			this.lbepnote.TabIndex = 40;
-			this.lbepnote.Text =
+			lbepnote.AutoSize = true;
+			lbepnote.Location = new System.Drawing.Point(3, 30);
+			lbepnote.Name = "lbepnote";
+			lbepnote.Size = new System.Drawing.Size(435, 13);
+			lbepnote.TabIndex = 40;
+			lbepnote.Text =
 				"These Flags are \'OR\' If you set two EPs then either EP is required, not both";
 			//
 			// lbgamef2
 			//
-			this.lbgamef2.AutoSize = true;
-			this.lbgamef2.Location = new System.Drawing.Point(289, 133);
-			this.lbgamef2.Name = "lbgamef2";
-			this.lbgamef2.Size = new System.Drawing.Size(127, 13);
-			this.lbgamef2.TabIndex = 39;
-			this.lbgamef2.Text = "Game Edition Flags 2";
+			lbgamef2.AutoSize = true;
+			lbgamef2.Location = new System.Drawing.Point(289, 133);
+			lbgamef2.Name = "lbgamef2";
+			lbgamef2.Size = new System.Drawing.Size(127, 13);
+			lbgamef2.TabIndex = 39;
+			lbgamef2.Text = "Game Edition Flags 2";
 			//
 			// cbStoreEd
 			//
-			this.cbStoreEd.AutoSize = true;
-			this.cbStoreEd.Location = new System.Drawing.Point(289, 200);
-			this.cbStoreEd.Name = "cbStoreEd";
-			this.cbStoreEd.Size = new System.Drawing.Size(136, 17);
-			this.cbStoreEd.TabIndex = 38;
-			this.cbStoreEd.Text = "Store Edition (new)";
-			this.cbStoreEd.UseVisualStyleBackColor = true;
-			this.cbStoreEd.CheckedChanged += new EventHandler(
-				this.SetExpansionFlags
+			cbStoreEd.AutoSize = true;
+			cbStoreEd.Location = new System.Drawing.Point(289, 200);
+			cbStoreEd.Name = "cbStoreEd";
+			cbStoreEd.Size = new System.Drawing.Size(136, 17);
+			cbStoreEd.TabIndex = 38;
+			cbStoreEd.Text = "Store Edition (new)";
+			cbStoreEd.UseVisualStyleBackColor = true;
+			cbStoreEd.CheckedChanged += new EventHandler(
+				SetExpansionFlags
 			);
 			//
 			// cbMansion
 			//
-			this.cbMansion.AutoSize = true;
-			this.cbMansion.Location = new System.Drawing.Point(289, 177);
-			this.cbMansion.Name = "cbMansion";
-			this.cbMansion.Size = new System.Drawing.Size(131, 17);
-			this.cbMansion.TabIndex = 37;
-			this.cbMansion.Text = "Mansion + Garden";
-			this.cbMansion.UseVisualStyleBackColor = true;
-			this.cbMansion.CheckedChanged += new EventHandler(
-				this.SetExpansionFlags
+			cbMansion.AutoSize = true;
+			cbMansion.Location = new System.Drawing.Point(289, 177);
+			cbMansion.Name = "cbMansion";
+			cbMansion.Size = new System.Drawing.Size(131, 17);
+			cbMansion.TabIndex = 37;
+			cbMansion.Text = "Mansion + Garden";
+			cbMansion.UseVisualStyleBackColor = true;
+			cbMansion.CheckedChanged += new EventHandler(
+				SetExpansionFlags
 			);
 			//
 			// cbApartments
 			//
-			this.cbApartments.AutoSize = true;
-			this.cbApartments.Location = new System.Drawing.Point(289, 154);
-			this.cbApartments.Name = "cbApartments";
-			this.cbApartments.Size = new System.Drawing.Size(110, 17);
-			this.cbApartments.TabIndex = 36;
-			this.cbApartments.Text = "Apartment Life";
-			this.cbApartments.UseVisualStyleBackColor = true;
-			this.cbApartments.CheckedChanged += new EventHandler(
-				this.SetExpansionFlags
+			cbApartments.AutoSize = true;
+			cbApartments.Location = new System.Drawing.Point(289, 154);
+			cbApartments.Name = "cbApartments";
+			cbApartments.Size = new System.Drawing.Size(110, 17);
+			cbApartments.TabIndex = 36;
+			cbApartments.Text = "Apartment Life";
+			cbApartments.UseVisualStyleBackColor = true;
+			cbApartments.CheckedChanged += new EventHandler(
+				SetExpansionFlags
 			);
 			//
 			// cbIkeaHome
 			//
-			this.cbIkeaHome.AutoSize = true;
-			this.cbIkeaHome.Location = new System.Drawing.Point(289, 85);
-			this.cbIkeaHome.Name = "cbIkeaHome";
-			this.cbIkeaHome.Size = new System.Drawing.Size(91, 17);
-			this.cbIkeaHome.TabIndex = 35;
-			this.cbIkeaHome.Text = "IKEA Home";
-			this.cbIkeaHome.UseVisualStyleBackColor = true;
-			this.cbIkeaHome.CheckedChanged += new EventHandler(
-				this.SetExpansionFlags
+			cbIkeaHome.AutoSize = true;
+			cbIkeaHome.Location = new System.Drawing.Point(289, 85);
+			cbIkeaHome.Name = "cbIkeaHome";
+			cbIkeaHome.Size = new System.Drawing.Size(91, 17);
+			cbIkeaHome.TabIndex = 35;
+			cbIkeaHome.Text = "IKEA Home";
+			cbIkeaHome.UseVisualStyleBackColor = true;
+			cbIkeaHome.CheckedChanged += new EventHandler(
+				SetExpansionFlags
 			);
 			//
 			// cbKitchens
 			//
-			this.cbKitchens.AutoSize = true;
-			this.cbKitchens.Location = new System.Drawing.Point(289, 62);
-			this.cbKitchens.Name = "cbKitchens";
-			this.cbKitchens.Size = new System.Drawing.Size(141, 17);
-			this.cbKitchens.TabIndex = 34;
-			this.cbKitchens.Text = "Kitchen + Bathroom";
-			this.cbKitchens.UseVisualStyleBackColor = true;
-			this.cbKitchens.CheckedChanged += new EventHandler(
-				this.SetExpansionFlags
+			cbKitchens.AutoSize = true;
+			cbKitchens.Location = new System.Drawing.Point(289, 62);
+			cbKitchens.Name = "cbKitchens";
+			cbKitchens.Size = new System.Drawing.Size(141, 17);
+			cbKitchens.TabIndex = 34;
+			cbKitchens.Text = "Kitchen + Bathroom";
+			cbKitchens.UseVisualStyleBackColor = true;
+			cbKitchens.CheckedChanged += new EventHandler(
+				SetExpansionFlags
 			);
 			//
 			// cbFreeTime
 			//
-			this.cbFreeTime.AutoSize = true;
-			this.cbFreeTime.Location = new System.Drawing.Point(152, 200);
-			this.cbFreeTime.Name = "cbFreeTime";
-			this.cbFreeTime.Size = new System.Drawing.Size(83, 17);
-			this.cbFreeTime.TabIndex = 33;
-			this.cbFreeTime.Text = "Free Time";
-			this.cbFreeTime.UseVisualStyleBackColor = true;
-			this.cbFreeTime.CheckedChanged += new EventHandler(
-				this.SetExpansionFlags
+			cbFreeTime.AutoSize = true;
+			cbFreeTime.Location = new System.Drawing.Point(152, 200);
+			cbFreeTime.Name = "cbFreeTime";
+			cbFreeTime.Size = new System.Drawing.Size(83, 17);
+			cbFreeTime.TabIndex = 33;
+			cbFreeTime.Text = "Free Time";
+			cbFreeTime.UseVisualStyleBackColor = true;
+			cbFreeTime.CheckedChanged += new EventHandler(
+				SetExpansionFlags
 			);
 			//
 			// cbExtras
 			//
-			this.cbExtras.AutoSize = true;
-			this.cbExtras.Location = new System.Drawing.Point(152, 177);
-			this.cbExtras.Name = "cbExtras";
-			this.cbExtras.Size = new System.Drawing.Size(130, 17);
-			this.cbExtras.TabIndex = 32;
-			this.cbExtras.Text = "Store Edition (old)";
-			this.cbExtras.UseVisualStyleBackColor = true;
-			this.cbExtras.CheckedChanged += new EventHandler(
-				this.SetExpansionFlags
+			cbExtras.AutoSize = true;
+			cbExtras.Location = new System.Drawing.Point(152, 177);
+			cbExtras.Name = "cbExtras";
+			cbExtras.Size = new System.Drawing.Size(130, 17);
+			cbExtras.TabIndex = 32;
+			cbExtras.Text = "Store Edition (old)";
+			cbExtras.UseVisualStyleBackColor = true;
+			cbExtras.CheckedChanged += new EventHandler(
+				SetExpansionFlags
 			);
 			//
 			// cbTeenStyle
 			//
-			this.cbTeenStyle.AutoSize = true;
-			this.cbTeenStyle.Location = new System.Drawing.Point(152, 154);
-			this.cbTeenStyle.Name = "cbTeenStyle";
-			this.cbTeenStyle.Size = new System.Drawing.Size(86, 17);
-			this.cbTeenStyle.TabIndex = 31;
-			this.cbTeenStyle.Text = "Teen Style";
-			this.cbTeenStyle.UseVisualStyleBackColor = true;
-			this.cbTeenStyle.CheckedChanged += new EventHandler(
-				this.SetExpansionFlags
+			cbTeenStyle.AutoSize = true;
+			cbTeenStyle.Location = new System.Drawing.Point(152, 154);
+			cbTeenStyle.Name = "cbTeenStyle";
+			cbTeenStyle.Size = new System.Drawing.Size(86, 17);
+			cbTeenStyle.TabIndex = 31;
+			cbTeenStyle.Text = "Teen Style";
+			cbTeenStyle.UseVisualStyleBackColor = true;
+			cbTeenStyle.CheckedChanged += new EventHandler(
+				SetExpansionFlags
 			);
 			//
 			// cbBonVoyage
 			//
-			this.cbBonVoyage.AutoSize = true;
-			this.cbBonVoyage.Location = new System.Drawing.Point(152, 131);
-			this.cbBonVoyage.Name = "cbBonVoyage";
-			this.cbBonVoyage.Size = new System.Drawing.Size(94, 17);
-			this.cbBonVoyage.TabIndex = 30;
-			this.cbBonVoyage.Text = "Bon Voyage";
-			this.cbBonVoyage.UseVisualStyleBackColor = true;
-			this.cbBonVoyage.CheckedChanged += new EventHandler(
-				this.SetExpansionFlags
+			cbBonVoyage.AutoSize = true;
+			cbBonVoyage.Location = new System.Drawing.Point(152, 131);
+			cbBonVoyage.Name = "cbBonVoyage";
+			cbBonVoyage.Size = new System.Drawing.Size(94, 17);
+			cbBonVoyage.TabIndex = 30;
+			cbBonVoyage.Text = "Bon Voyage";
+			cbBonVoyage.UseVisualStyleBackColor = true;
+			cbBonVoyage.CheckedChanged += new EventHandler(
+				SetExpansionFlags
 			);
 			//
 			// cbFashion
 			//
-			this.cbFashion.AutoSize = true;
-			this.cbFashion.Location = new System.Drawing.Point(152, 108);
-			this.cbFashion.Name = "cbFashion";
-			this.cbFashion.Size = new System.Drawing.Size(131, 17);
-			this.cbFashion.TabIndex = 29;
-			this.cbFashion.Text = "HM� Fashion Stuff";
-			this.cbFashion.UseVisualStyleBackColor = true;
-			this.cbFashion.CheckedChanged += new EventHandler(
-				this.SetExpansionFlags
+			cbFashion.AutoSize = true;
+			cbFashion.Location = new System.Drawing.Point(152, 108);
+			cbFashion.Name = "cbFashion";
+			cbFashion.Size = new System.Drawing.Size(131, 17);
+			cbFashion.TabIndex = 29;
+			cbFashion.Text = "HM� Fashion Stuff";
+			cbFashion.UseVisualStyleBackColor = true;
+			cbFashion.CheckedChanged += new EventHandler(
+				SetExpansionFlags
 			);
 			//
 			// cbCelebrations
 			//
-			this.cbCelebrations.AutoSize = true;
-			this.cbCelebrations.Location = new System.Drawing.Point(152, 85);
-			this.cbCelebrations.Name = "cbCelebrations";
-			this.cbCelebrations.Size = new System.Drawing.Size(96, 17);
-			this.cbCelebrations.TabIndex = 28;
-			this.cbCelebrations.Text = "Celebration!";
-			this.cbCelebrations.UseVisualStyleBackColor = true;
-			this.cbCelebrations.CheckedChanged += new EventHandler(
-				this.SetExpansionFlags
+			cbCelebrations.AutoSize = true;
+			cbCelebrations.Location = new System.Drawing.Point(152, 85);
+			cbCelebrations.Name = "cbCelebrations";
+			cbCelebrations.Size = new System.Drawing.Size(96, 17);
+			cbCelebrations.TabIndex = 28;
+			cbCelebrations.Text = "Celebration!";
+			cbCelebrations.UseVisualStyleBackColor = true;
+			cbCelebrations.CheckedChanged += new EventHandler(
+				SetExpansionFlags
 			);
 			//
 			// cbSeasons
 			//
-			this.cbSeasons.AutoSize = true;
-			this.cbSeasons.Location = new System.Drawing.Point(152, 62);
-			this.cbSeasons.Name = "cbSeasons";
-			this.cbSeasons.Size = new System.Drawing.Size(74, 17);
-			this.cbSeasons.TabIndex = 27;
-			this.cbSeasons.Text = "Seasons";
-			this.cbSeasons.UseVisualStyleBackColor = true;
-			this.cbSeasons.CheckedChanged += new EventHandler(
-				this.SetExpansionFlags
+			cbSeasons.AutoSize = true;
+			cbSeasons.Location = new System.Drawing.Point(152, 62);
+			cbSeasons.Name = "cbSeasons";
+			cbSeasons.Size = new System.Drawing.Size(74, 17);
+			cbSeasons.TabIndex = 27;
+			cbSeasons.Text = "Seasons";
+			cbSeasons.UseVisualStyleBackColor = true;
+			cbSeasons.CheckedChanged += new EventHandler(
+				SetExpansionFlags
 			);
 			//
 			// cbPets
 			//
-			this.cbPets.AutoSize = true;
-			this.cbPets.Location = new System.Drawing.Point(10, 200);
-			this.cbPets.Name = "cbPets";
-			this.cbPets.Size = new System.Drawing.Size(50, 17);
-			this.cbPets.TabIndex = 26;
-			this.cbPets.Text = "Pets";
-			this.cbPets.UseVisualStyleBackColor = true;
-			this.cbPets.CheckedChanged += new EventHandler(
-				this.SetExpansionFlags
+			cbPets.AutoSize = true;
+			cbPets.Location = new System.Drawing.Point(10, 200);
+			cbPets.Name = "cbPets";
+			cbPets.Size = new System.Drawing.Size(50, 17);
+			cbPets.TabIndex = 26;
+			cbPets.Text = "Pets";
+			cbPets.UseVisualStyleBackColor = true;
+			cbPets.CheckedChanged += new EventHandler(
+				SetExpansionFlags
 			);
 			//
 			// cbGlamour
 			//
-			this.cbGlamour.AutoSize = true;
-			this.cbGlamour.Location = new System.Drawing.Point(10, 177);
-			this.cbGlamour.Name = "cbGlamour";
-			this.cbGlamour.Size = new System.Drawing.Size(99, 17);
-			this.cbGlamour.TabIndex = 25;
-			this.cbGlamour.Text = "Glamour Life";
-			this.cbGlamour.UseVisualStyleBackColor = true;
-			this.cbGlamour.CheckedChanged += new EventHandler(
-				this.SetExpansionFlags
+			cbGlamour.AutoSize = true;
+			cbGlamour.Location = new System.Drawing.Point(10, 177);
+			cbGlamour.Name = "cbGlamour";
+			cbGlamour.Size = new System.Drawing.Size(99, 17);
+			cbGlamour.TabIndex = 25;
+			cbGlamour.Text = "Glamour Life";
+			cbGlamour.UseVisualStyleBackColor = true;
+			cbGlamour.CheckedChanged += new EventHandler(
+				SetExpansionFlags
 			);
 			//
 			// cbFamilyFun
 			//
-			this.cbFamilyFun.AutoSize = true;
-			this.cbFamilyFun.Location = new System.Drawing.Point(10, 154);
-			this.cbFamilyFun.Name = "cbFamilyFun";
-			this.cbFamilyFun.Size = new System.Drawing.Size(86, 17);
-			this.cbFamilyFun.TabIndex = 24;
-			this.cbFamilyFun.Text = "Family Fun";
-			this.cbFamilyFun.UseVisualStyleBackColor = true;
-			this.cbFamilyFun.CheckedChanged += new EventHandler(
-				this.SetExpansionFlags
+			cbFamilyFun.AutoSize = true;
+			cbFamilyFun.Location = new System.Drawing.Point(10, 154);
+			cbFamilyFun.Name = "cbFamilyFun";
+			cbFamilyFun.Size = new System.Drawing.Size(86, 17);
+			cbFamilyFun.TabIndex = 24;
+			cbFamilyFun.Text = "Family Fun";
+			cbFamilyFun.UseVisualStyleBackColor = true;
+			cbFamilyFun.CheckedChanged += new EventHandler(
+				SetExpansionFlags
 			);
 			//
 			// cbBusiness
 			//
-			this.cbBusiness.AutoSize = true;
-			this.cbBusiness.Location = new System.Drawing.Point(10, 131);
-			this.cbBusiness.Name = "cbBusiness";
-			this.cbBusiness.Size = new System.Drawing.Size(130, 17);
-			this.cbBusiness.TabIndex = 23;
-			this.cbBusiness.Text = "Open for Business";
-			this.cbBusiness.UseVisualStyleBackColor = true;
-			this.cbBusiness.CheckedChanged += new EventHandler(
-				this.SetExpansionFlags
+			cbBusiness.AutoSize = true;
+			cbBusiness.Location = new System.Drawing.Point(10, 131);
+			cbBusiness.Name = "cbBusiness";
+			cbBusiness.Size = new System.Drawing.Size(130, 17);
+			cbBusiness.TabIndex = 23;
+			cbBusiness.Text = "Open for Business";
+			cbBusiness.UseVisualStyleBackColor = true;
+			cbBusiness.CheckedChanged += new EventHandler(
+				SetExpansionFlags
 			);
 			//
 			// cbNightlife
 			//
-			this.cbNightlife.AutoSize = true;
-			this.cbNightlife.Location = new System.Drawing.Point(10, 108);
-			this.cbNightlife.Name = "cbNightlife";
-			this.cbNightlife.Size = new System.Drawing.Size(72, 17);
-			this.cbNightlife.TabIndex = 22;
-			this.cbNightlife.Text = "Nightlife";
-			this.cbNightlife.UseVisualStyleBackColor = true;
-			this.cbNightlife.CheckedChanged += new EventHandler(
-				this.SetExpansionFlags
+			cbNightlife.AutoSize = true;
+			cbNightlife.Location = new System.Drawing.Point(10, 108);
+			cbNightlife.Name = "cbNightlife";
+			cbNightlife.Size = new System.Drawing.Size(72, 17);
+			cbNightlife.TabIndex = 22;
+			cbNightlife.Text = "Nightlife";
+			cbNightlife.UseVisualStyleBackColor = true;
+			cbNightlife.CheckedChanged += new EventHandler(
+				SetExpansionFlags
 			);
 			//
 			// cbUniversity
 			//
-			this.cbUniversity.AutoSize = true;
-			this.cbUniversity.Location = new System.Drawing.Point(10, 85);
-			this.cbUniversity.Name = "cbUniversity";
-			this.cbUniversity.Size = new System.Drawing.Size(83, 17);
-			this.cbUniversity.TabIndex = 21;
-			this.cbUniversity.Text = "University";
-			this.cbUniversity.UseVisualStyleBackColor = true;
-			this.cbUniversity.CheckedChanged += new EventHandler(
-				this.SetExpansionFlags
+			cbUniversity.AutoSize = true;
+			cbUniversity.Location = new System.Drawing.Point(10, 85);
+			cbUniversity.Name = "cbUniversity";
+			cbUniversity.Size = new System.Drawing.Size(83, 17);
+			cbUniversity.TabIndex = 21;
+			cbUniversity.Text = "University";
+			cbUniversity.UseVisualStyleBackColor = true;
+			cbUniversity.CheckedChanged += new EventHandler(
+				SetExpansionFlags
 			);
 			//
 			// cbBase
 			//
-			this.cbBase.AutoSize = true;
-			this.cbBase.Location = new System.Drawing.Point(10, 62);
-			this.cbBase.Name = "cbBase";
-			this.cbBase.Size = new System.Drawing.Size(92, 17);
-			this.cbBase.TabIndex = 20;
-			this.cbBase.Text = "Base Game";
-			this.cbBase.UseVisualStyleBackColor = true;
-			this.cbBase.CheckedChanged += new EventHandler(
-				this.SetExpansionFlags
+			cbBase.AutoSize = true;
+			cbBase.Location = new System.Drawing.Point(10, 62);
+			cbBase.Name = "cbBase";
+			cbBase.Size = new System.Drawing.Size(92, 17);
+			cbBase.TabIndex = 20;
+			cbBase.Text = "Base Game";
+			cbBase.UseVisualStyleBackColor = true;
+			cbBase.CheckedChanged += new EventHandler(
+				SetExpansionFlags
 			);
 			//
 			// tpraw
 			//
-			this.tpraw.Controls.Add(this.panel1);
-			this.tpraw.Controls.Add(this.pg);
-			this.tpraw.Location = new System.Drawing.Point(4, 22);
-			this.tpraw.Name = "tpraw";
-			this.tpraw.Size = new System.Drawing.Size(680, 242);
-			this.tpraw.TabIndex = 1;
-			this.tpraw.Text = "RAW Data";
+			tpraw.Controls.Add(panel1);
+			tpraw.Controls.Add(pg);
+			tpraw.Location = new System.Drawing.Point(4, 22);
+			tpraw.Name = "tpraw";
+			tpraw.Size = new System.Drawing.Size(680, 242);
+			tpraw.TabIndex = 1;
+			tpraw.Text = "RAW Data";
 			//
 			// panel1
 			//
-			this.panel1.Anchor = (
+			panel1.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -2063,64 +2063,64 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.panel1.Controls.Add(this.rbhex);
-			this.panel1.Controls.Add(this.rbdec);
-			this.panel1.Controls.Add(this.rbbin);
-			this.panel1.Location = new System.Drawing.Point(420, 6);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(256, 16);
-			this.panel1.TabIndex = 4;
+			panel1.Controls.Add(rbhex);
+			panel1.Controls.Add(rbdec);
+			panel1.Controls.Add(rbbin);
+			panel1.Location = new System.Drawing.Point(420, 6);
+			panel1.Name = "panel1";
+			panel1.Size = new System.Drawing.Size(256, 16);
+			panel1.TabIndex = 4;
 			//
 			// rbhex
 			//
-			this.rbhex.BackColor = System.Drawing.Color.Transparent;
-			this.rbhex.Location = new System.Drawing.Point(152, 0);
-			this.rbhex.Name = "rbhex";
-			this.rbhex.Size = new System.Drawing.Size(104, 16);
-			this.rbhex.TabIndex = 6;
-			this.rbhex.Text = "Hexadecimal";
-			this.rbhex.UseVisualStyleBackColor = false;
-			this.rbhex.CheckedChanged += new EventHandler(this.DigitChanged);
+			rbhex.BackColor = System.Drawing.Color.Transparent;
+			rbhex.Location = new System.Drawing.Point(152, 0);
+			rbhex.Name = "rbhex";
+			rbhex.Size = new System.Drawing.Size(104, 16);
+			rbhex.TabIndex = 6;
+			rbhex.Text = "Hexadecimal";
+			rbhex.UseVisualStyleBackColor = false;
+			rbhex.CheckedChanged += new EventHandler(DigitChanged);
 			//
 			// rbdec
 			//
-			this.rbdec.BackColor = System.Drawing.Color.Transparent;
-			this.rbdec.Location = new System.Drawing.Point(72, 0);
-			this.rbdec.Name = "rbdec";
-			this.rbdec.Size = new System.Drawing.Size(72, 16);
-			this.rbdec.TabIndex = 5;
-			this.rbdec.Text = "Decimal";
-			this.rbdec.UseVisualStyleBackColor = false;
-			this.rbdec.CheckedChanged += new EventHandler(this.DigitChanged);
+			rbdec.BackColor = System.Drawing.Color.Transparent;
+			rbdec.Location = new System.Drawing.Point(72, 0);
+			rbdec.Name = "rbdec";
+			rbdec.Size = new System.Drawing.Size(72, 16);
+			rbdec.TabIndex = 5;
+			rbdec.Text = "Decimal";
+			rbdec.UseVisualStyleBackColor = false;
+			rbdec.CheckedChanged += new EventHandler(DigitChanged);
 			//
 			// rbbin
 			//
-			this.rbbin.BackColor = System.Drawing.Color.Transparent;
-			this.rbbin.Location = new System.Drawing.Point(0, 0);
-			this.rbbin.Name = "rbbin";
-			this.rbbin.Size = new System.Drawing.Size(64, 16);
-			this.rbbin.TabIndex = 4;
-			this.rbbin.Text = "Binary";
-			this.rbbin.UseVisualStyleBackColor = false;
-			this.rbbin.CheckedChanged += new EventHandler(this.DigitChanged);
+			rbbin.BackColor = System.Drawing.Color.Transparent;
+			rbbin.Location = new System.Drawing.Point(0, 0);
+			rbbin.Name = "rbbin";
+			rbbin.Size = new System.Drawing.Size(64, 16);
+			rbbin.TabIndex = 4;
+			rbbin.Text = "Binary";
+			rbbin.UseVisualStyleBackColor = false;
+			rbbin.CheckedChanged += new EventHandler(DigitChanged);
 			//
 			// pg
 			//
-			this.pg.Dock = DockStyle.Fill;
-			this.pg.HelpVisible = false;
-			this.pg.LineColor = System.Drawing.SystemColors.ScrollBar;
-			this.pg.Location = new System.Drawing.Point(0, 0);
-			this.pg.Name = "pg";
-			this.pg.Size = new System.Drawing.Size(680, 242);
-			this.pg.TabIndex = 0;
-			this.pg.PropertyValueChanged +=
+			pg.Dock = DockStyle.Fill;
+			pg.HelpVisible = false;
+			pg.LineColor = System.Drawing.SystemColors.ScrollBar;
+			pg.Location = new System.Drawing.Point(0, 0);
+			pg.Name = "pg";
+			pg.Size = new System.Drawing.Size(680, 242);
+			pg.TabIndex = 0;
+			pg.PropertyValueChanged +=
 				new PropertyValueChangedEventHandler(
-					this.PropChanged
+					PropChanged
 				);
 			//
 			// tbtype
 			//
-			this.tbtype.Anchor = (
+			tbtype.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -2128,16 +2128,16 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.tbtype.Location = new System.Drawing.Point(920, 32);
-			this.tbtype.Name = "tbtype";
-			this.tbtype.ReadOnly = true;
-			this.tbtype.Size = new System.Drawing.Size(56, 21);
-			this.tbtype.TabIndex = 25;
-			this.tbtype.Text = "0xDDDD";
+			tbtype.Location = new System.Drawing.Point(920, 32);
+			tbtype.Name = "tbtype";
+			tbtype.ReadOnly = true;
+			tbtype.Size = new System.Drawing.Size(56, 21);
+			tbtype.TabIndex = 25;
+			tbtype.Text = "0xDDDD";
 			//
 			// cbtype
 			//
-			this.cbtype.Anchor = (
+			cbtype.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -2145,89 +2145,89 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.cbtype.DropDownStyle = ComboBoxStyle.DropDownList;
-			this.cbtype.Location = new System.Drawing.Point(752, 32);
-			this.cbtype.Name = "cbtype";
-			this.cbtype.Size = new System.Drawing.Size(168, 21);
-			this.cbtype.TabIndex = 24;
-			this.cbtype.SelectedIndexChanged += new EventHandler(
-				this.ChangeType
+			cbtype.DropDownStyle = ComboBoxStyle.DropDownList;
+			cbtype.Location = new System.Drawing.Point(752, 32);
+			cbtype.Name = "cbtype";
+			cbtype.Size = new System.Drawing.Size(168, 21);
+			cbtype.TabIndex = 24;
+			cbtype.SelectedIndexChanged += new EventHandler(
+				ChangeType
 			);
 			//
 			// label63
 			//
-			this.label63.AutoSize = true;
-			this.label63.BackColor = System.Drawing.Color.Transparent;
-			this.label63.Font = new System.Drawing.Font(
+			label63.AutoSize = true;
+			label63.BackColor = System.Drawing.Color.Transparent;
+			label63.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.label63.ImeMode = ImeMode.NoControl;
-			this.label63.Location = new System.Drawing.Point(41, 207);
-			this.label63.Name = "label63";
-			this.label63.Size = new System.Drawing.Size(75, 13);
-			this.label63.TabIndex = 22;
-			this.label63.Text = "Orig. GUID";
+			label63.ImeMode = ImeMode.NoControl;
+			label63.Location = new System.Drawing.Point(41, 207);
+			label63.Name = "label63";
+			label63.Size = new System.Drawing.Size(75, 13);
+			label63.TabIndex = 22;
+			label63.Text = "Orig. GUID";
 			//
 			// tbproxguid
 			//
-			this.tbproxguid.Location = new System.Drawing.Point(122, 231);
-			this.tbproxguid.Name = "tbproxguid";
-			this.tbproxguid.Size = new System.Drawing.Size(96, 21);
-			this.tbproxguid.TabIndex = 21;
-			this.tbproxguid.Text = "0xDDDDDDDD";
-			this.tbproxguid.TextChanged += new EventHandler(this.SetGuid);
+			tbproxguid.Location = new System.Drawing.Point(122, 231);
+			tbproxguid.Name = "tbproxguid";
+			tbproxguid.Size = new System.Drawing.Size(96, 21);
+			tbproxguid.TabIndex = 21;
+			tbproxguid.Text = "0xDDDDDDDD";
+			tbproxguid.TextChanged += new EventHandler(SetGuid);
 			//
 			// label97
 			//
-			this.label97.AutoSize = true;
-			this.label97.BackColor = System.Drawing.Color.Transparent;
-			this.label97.Font = new System.Drawing.Font(
+			label97.AutoSize = true;
+			label97.BackColor = System.Drawing.Color.Transparent;
+			label97.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.label97.ImeMode = ImeMode.NoControl;
-			this.label97.Location = new System.Drawing.Point(17, 234);
-			this.label97.Name = "label97";
-			this.label97.Size = new System.Drawing.Size(99, 13);
-			this.label97.TabIndex = 20;
-			this.label97.Text = "Fallback GUID";
+			label97.ImeMode = ImeMode.NoControl;
+			label97.Location = new System.Drawing.Point(17, 234);
+			label97.Name = "label97";
+			label97.Size = new System.Drawing.Size(99, 13);
+			label97.TabIndex = 20;
+			label97.Text = "Fallback GUID";
 			//
 			// tborgguid
 			//
-			this.tborgguid.Location = new System.Drawing.Point(122, 204);
-			this.tborgguid.Name = "tborgguid";
-			this.tborgguid.Size = new System.Drawing.Size(96, 21);
-			this.tborgguid.TabIndex = 19;
-			this.tborgguid.Text = "0xDDDDDDDD";
-			this.tborgguid.TextChanged += new EventHandler(this.SetGuid);
+			tborgguid.Location = new System.Drawing.Point(122, 204);
+			tborgguid.Name = "tborgguid";
+			tborgguid.Size = new System.Drawing.Size(96, 21);
+			tborgguid.TabIndex = 19;
+			tborgguid.Text = "0xDDDDDDDD";
+			tborgguid.TextChanged += new EventHandler(SetGuid);
 			//
 			// llgetGUID
 			//
-			this.llgetGUID.AutoSize = true;
-			this.llgetGUID.Font = new System.Drawing.Font(
+			llgetGUID.AutoSize = true;
+			llgetGUID.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.llgetGUID.ImeMode = ImeMode.NoControl;
-			this.llgetGUID.LinkArea = new LinkArea(0, 9);
-			this.llgetGUID.Location = new System.Drawing.Point(213, 99);
-			this.llgetGUID.Name = "llgetGUID";
-			this.llgetGUID.Size = new System.Drawing.Size(80, 13);
-			this.llgetGUID.TabIndex = 16;
-			this.llgetGUID.TabStop = true;
-			this.llgetGUID.Text = "make GUID";
-			this.llgetGUID.LinkClicked +=
-				new LinkLabelLinkClickedEventHandler(this.GetGuid);
+			llgetGUID.ImeMode = ImeMode.NoControl;
+			llgetGUID.LinkArea = new LinkArea(0, 9);
+			llgetGUID.Location = new System.Drawing.Point(213, 99);
+			llgetGUID.Name = "llgetGUID";
+			llgetGUID.Size = new System.Drawing.Size(80, 13);
+			llgetGUID.TabIndex = 16;
+			llgetGUID.TabStop = true;
+			llgetGUID.Text = "make GUID";
+			llgetGUID.LinkClicked +=
+				new LinkLabelLinkClickedEventHandler(GetGuid);
 			//
 			// label65
 			//
-			this.label65.Anchor = (
+			label65.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -2235,72 +2235,72 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.label65.AutoSize = true;
-			this.label65.BackColor = System.Drawing.Color.Transparent;
-			this.label65.Font = new System.Drawing.Font(
+			label65.AutoSize = true;
+			label65.BackColor = System.Drawing.Color.Transparent;
+			label65.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.label65.ImeMode = ImeMode.NoControl;
-			this.label65.Location = new System.Drawing.Point(661, 35);
-			this.label65.Name = "label65";
-			this.label65.Size = new System.Drawing.Size(85, 13);
-			this.label65.TabIndex = 12;
-			this.label65.Text = "Object Type";
+			label65.ImeMode = ImeMode.NoControl;
+			label65.Location = new System.Drawing.Point(661, 35);
+			label65.Name = "label65";
+			label65.Size = new System.Drawing.Size(85, 13);
+			label65.TabIndex = 12;
+			label65.Text = "Object Type";
 			//
 			// tbflname
 			//
-			this.tbflname.Location = new System.Drawing.Point(112, 32);
-			this.tbflname.Name = "tbflname";
-			this.tbflname.Size = new System.Drawing.Size(543, 21);
-			this.tbflname.TabIndex = 11;
-			this.tbflname.TextChanged += new EventHandler(this.SetFlName);
+			tbflname.Location = new System.Drawing.Point(112, 32);
+			tbflname.Name = "tbflname";
+			tbflname.Size = new System.Drawing.Size(543, 21);
+			tbflname.TabIndex = 11;
+			tbflname.TextChanged += new EventHandler(SetFlName);
 			//
 			// label9
 			//
-			this.label9.AutoSize = true;
-			this.label9.BackColor = System.Drawing.Color.Transparent;
-			this.label9.Font = new System.Drawing.Font(
+			label9.AutoSize = true;
+			label9.BackColor = System.Drawing.Color.Transparent;
+			label9.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.label9.ImeMode = ImeMode.NoControl;
-			this.label9.Location = new System.Drawing.Point(45, 35);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(67, 13);
-			this.label9.TabIndex = 10;
-			this.label9.Text = "Filename";
+			label9.ImeMode = ImeMode.NoControl;
+			label9.Location = new System.Drawing.Point(45, 35);
+			label9.Name = "label9";
+			label9.Size = new System.Drawing.Size(67, 13);
+			label9.TabIndex = 10;
+			label9.Text = "Filename";
 			//
 			// tbguid
 			//
-			this.tbguid.Location = new System.Drawing.Point(112, 96);
-			this.tbguid.Name = "tbguid";
-			this.tbguid.Size = new System.Drawing.Size(96, 21);
-			this.tbguid.TabIndex = 9;
-			this.tbguid.Text = "0xDDDDDDDD";
-			this.tbguid.TextChanged += new EventHandler(this.SetGuide);
+			tbguid.Location = new System.Drawing.Point(112, 96);
+			tbguid.Name = "tbguid";
+			tbguid.Size = new System.Drawing.Size(96, 21);
+			tbguid.TabIndex = 9;
+			tbguid.Text = "0xDDDDDDDD";
+			tbguid.TextChanged += new EventHandler(SetGuide);
 			//
 			// label8
 			//
-			this.label8.AutoSize = true;
-			this.label8.BackColor = System.Drawing.Color.Transparent;
-			this.label8.Font = new System.Drawing.Font(
+			label8.AutoSize = true;
+			label8.BackColor = System.Drawing.Color.Transparent;
+			label8.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.label8.ImeMode = ImeMode.NoControl;
-			this.label8.Location = new System.Drawing.Point(69, 99);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(40, 13);
-			this.label8.TabIndex = 8;
-			this.label8.Text = "GUID";
+			label8.ImeMode = ImeMode.NoControl;
+			label8.Location = new System.Drawing.Point(69, 99);
+			label8.Name = "label8";
+			label8.Size = new System.Drawing.Size(40, 13);
+			label8.TabIndex = 8;
+			label8.Text = "GUID";
 			//
 			// panel6
 			//
-			this.panel6.Anchor = (
+			panel6.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -2312,63 +2312,63 @@ namespace SimPe.PackedFiles.UserInterface
 			);
 			//this.panel6.CanCommit = true;
 			//this.panel6.HeaderText = "Object Data Editor";
-			this.panel6.Location = new System.Drawing.Point(0, 0);
-			this.panel6.Margin = new Padding(0);
-			this.panel6.Name = "panel6";
-			this.panel6.Size = new System.Drawing.Size(984, 24);
-			this.panel6.TabIndex = 0;
+			panel6.Location = new System.Drawing.Point(0, 0);
+			panel6.Margin = new Padding(0);
+			panel6.Name = "panel6";
+			panel6.Size = new System.Drawing.Size(984, 24);
+			panel6.TabIndex = 0;
 			//this.panel6.OnCommit += new System.Windows.Forms.Panel.EventHandler(this.OnCommit);
 			//
 			// toolTip1
 			//
-			this.toolTip1.AutomaticDelay = 200;
-			this.toolTip1.AutoPopDelay = 6000;
-			this.toolTip1.InitialDelay = 200;
-			this.toolTip1.ReshowDelay = 40;
+			toolTip1.AutomaticDelay = 200;
+			toolTip1.AutoPopDelay = 6000;
+			toolTip1.InitialDelay = 200;
+			toolTip1.ReshowDelay = 40;
 			//
 			// ExtObjdForm
 			//
-			this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
-			this.ClientSize = new System.Drawing.Size(984, 325);
-			this.Controls.Add(this.pnobjd);
-			this.Font = new System.Drawing.Font(
+			AutoScaleBaseSize = new System.Drawing.Size(6, 14);
+			ClientSize = new System.Drawing.Size(984, 325);
+			Controls.Add(pnobjd);
+			Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.Name = "ExtObjdForm";
-			this.Text = "ExtObjdForm";
-			this.pnobjd.ResumeLayout(false);
-			this.pnobjd.PerformLayout();
-			this.tc.ResumeLayout(false);
-			this.tpcatalogsort.ResumeLayout(false);
-			this.pngradient.ResumeLayout(false);
-			this.taskBox1.ResumeLayout(false);
-			this.taskBox1.PerformLayout();
-			this.groupBox2.ResumeLayout(false);
-			this.groupBox2.PerformLayout();
-			this.groupBox1.ResumeLayout(false);
-			this.groupBox1.PerformLayout();
-			this.tpreqeps.ResumeLayout(false);
-			this.pnpritty.ResumeLayout(false);
-			this.tbreqeps.ResumeLayout(false);
-			this.tbreqeps.PerformLayout();
-			this.tpraw.ResumeLayout(false);
-			this.panel1.ResumeLayout(false);
-			this.ResumeLayout(false);
+			Name = "ExtObjdForm";
+			Text = "ExtObjdForm";
+			pnobjd.ResumeLayout(false);
+			pnobjd.PerformLayout();
+			tc.ResumeLayout(false);
+			tpcatalogsort.ResumeLayout(false);
+			pngradient.ResumeLayout(false);
+			taskBox1.ResumeLayout(false);
+			taskBox1.PerformLayout();
+			groupBox2.ResumeLayout(false);
+			groupBox2.PerformLayout();
+			groupBox1.ResumeLayout(false);
+			groupBox1.PerformLayout();
+			tpreqeps.ResumeLayout(false);
+			pnpritty.ResumeLayout(false);
+			tbreqeps.ResumeLayout(false);
+			tbreqeps.PerformLayout();
+			tpraw.ResumeLayout(false);
+			panel1.ResumeLayout(false);
+			ResumeLayout(false);
 		}
 		#endregion
 
 		private void ChangeType(object sender, EventArgs e)
 		{
-			if (this.Tag != null)
+			if (Tag != null)
 			{
 				return;
 			}
 
-			this.Tag = true;
+			Tag = true;
 
 			try
 			{
@@ -2383,29 +2383,29 @@ namespace SimPe.PackedFiles.UserInterface
 
 				wrapper.Type = ot;
 				wrapper.Changed = true;
-				this.btnUpdateMMAT.Visible =
-					this.label2.Visible =
-					this.cball.Visible =
-					this.lbIsOk.Visible =
+				btnUpdateMMAT.Visible =
+					label2.Visible =
+					cball.Visible =
+					lbIsOk.Visible =
 						false;
-				this.llgetGUID.Visible = (
+				llgetGUID.Visible = (
 					UserVerification.HaveUserId
 					&& wrapper.Type != Data.ObjectTypes.Person
 					&& wrapper.Type != Data.ObjectTypes.UnlinkedSim
 				);
 				//this.lladdgooee.Visible = (UserVerification.HaveUserId && !SimPe.Plugin.Subhoods.GuidExists(wrapper.Guid) && wrapper.Type != SimPe.Data.ObjectTypes.Person && wrapper.Type != SimPe.Data.ObjectTypes.UnlinkedSim);
-				this.Tag = null;
+				Tag = null;
 			}
 			finally
 			{
-				this.Tag = null;
+				Tag = null;
 			}
 		}
 
 		private void OnCommit(object sender, EventArgs e)
 		{
-			this.lbIsOk.Visible = false;
-			if (this.pg.SelectedObject != null)
+			lbIsOk.Visible = false;
+			if (pg.SelectedObject != null)
 			{
 				UpdateData();
 			}
@@ -2415,12 +2415,12 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void SetRoomFlags(object sender, EventArgs e)
 		{
-			if (this.Tag != null)
+			if (Tag != null)
 			{
 				return;
 			}
 
-			this.Tag = true;
+			Tag = true;
 
 			try
 			{
@@ -2438,18 +2438,18 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			finally
 			{
-				this.Tag = null;
+				Tag = null;
 			}
 		}
 
 		private void SetCommFlags(object sender, EventArgs e)
 		{
-			if (this.Tag != null)
+			if (Tag != null)
 			{
 				return;
 			}
 
-			this.Tag = true;
+			Tag = true;
 			try
 			{
 				wrapper.CommSort.InDining = cbcDine.Checked;
@@ -2462,49 +2462,49 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			finally
 			{
-				this.Tag = null;
+				Tag = null;
 			}
 		}
 
 		private void SetFunctionFlags(object sender, EventArgs e)
 		{
-			if (this.Tag != null)
+			if (Tag != null)
 			{
 				return;
 			}
 
-			this.Tag = true;
+			Tag = true;
 
 			try
 			{
-				wrapper.FunctionSort.InAppliances = this.cbappliances.Checked;
-				wrapper.FunctionSort.InDecorative = this.cbdecorative.Checked;
-				wrapper.FunctionSort.InElectronics = this.cbelectronics.Checked;
-				wrapper.FunctionSort.InGeneral = this.cbgeneral.Checked;
-				wrapper.FunctionSort.InLighting = this.cblightning.Checked;
-				wrapper.FunctionSort.InPlumbing = this.cbplumbing.Checked;
-				wrapper.FunctionSort.InSeating = this.cbseating.Checked;
-				wrapper.FunctionSort.InSurfaces = this.cbsurfaces.Checked;
-				wrapper.FunctionSort.InHobbies = this.cbhobby.Checked;
-				wrapper.FunctionSort.InAspirationRewards = this.cbaspiration.Checked;
-				wrapper.FunctionSort.InCareerRewards = this.cbcareer.Checked;
+				wrapper.FunctionSort.InAppliances = cbappliances.Checked;
+				wrapper.FunctionSort.InDecorative = cbdecorative.Checked;
+				wrapper.FunctionSort.InElectronics = cbelectronics.Checked;
+				wrapper.FunctionSort.InGeneral = cbgeneral.Checked;
+				wrapper.FunctionSort.InLighting = cblightning.Checked;
+				wrapper.FunctionSort.InPlumbing = cbplumbing.Checked;
+				wrapper.FunctionSort.InSeating = cbseating.Checked;
+				wrapper.FunctionSort.InSurfaces = cbsurfaces.Checked;
+				wrapper.FunctionSort.InHobbies = cbhobby.Checked;
+				wrapper.FunctionSort.InAspirationRewards = cbaspiration.Checked;
+				wrapper.FunctionSort.InCareerRewards = cbcareer.Checked;
 
 				wrapper.Changed = true;
 			}
 			finally
 			{
-				this.Tag = null;
+				Tag = null;
 			}
 		}
 
 		private void SetExpansionFlags(object sender, EventArgs e)
 		{
-			if (this.Tag != null)
+			if (Tag != null)
 			{
 				return;
 			}
 
-			this.Tag = true;
+			Tag = true;
 
 			try
 			{
@@ -2556,18 +2556,18 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			finally
 			{
-				this.Tag = null;
+				Tag = null;
 			}
 		}
 
 		private void SetGuide(object sender, EventArgs e)
 		{
-			if (this.Tag != null)
+			if (Tag != null)
 			{
 				return;
 			}
 
-			this.Tag = true;
+			Tag = true;
 			try
 			{
 				wrapper.Guid = Convert.ToUInt32(tbguid.Text, 16);
@@ -2581,31 +2581,31 @@ namespace SimPe.PackedFiles.UserInterface
 					&& wrapper.Type != Data.ObjectTypes.UnlinkedSim
 				)
 				{
-					this.btnUpdateMMAT.Visible =
-						this.label2.Visible =
-						this.cball.Visible =
-						this.lbIsOk.Visible =
+					btnUpdateMMAT.Visible =
+						label2.Visible =
+						cball.Visible =
+						lbIsOk.Visible =
 							true;
 					//this.lladdgooee.Visible = (UserVerification.HaveUserId && !SimPe.Plugin.Subhoods.GuidExists(wrapper.Guid));
 				}
-				this.Tag = null;
+				Tag = null;
 			}
 		}
 
 		private void SetGuid(object sender, EventArgs e)
 		{
-			if (this.Tag != null)
+			if (Tag != null)
 			{
 				return;
 			}
 
-			this.Tag = true;
+			Tag = true;
 			try
 			{
-				wrapper.ProxyGuid = Convert.ToUInt32(this.tbproxguid.Text, 16);
-				wrapper.OriginalGuid = Convert.ToUInt32(this.tborgguid.Text, 16);
-				wrapper.DiagonalGuid = Convert.ToUInt32(this.tbdiag.Text, 16);
-				wrapper.GridAlignedGuid = Convert.ToUInt32(this.tbgrid.Text, 16);
+				wrapper.ProxyGuid = Convert.ToUInt32(tbproxguid.Text, 16);
+				wrapper.OriginalGuid = Convert.ToUInt32(tborgguid.Text, 16);
+				wrapper.DiagonalGuid = Convert.ToUInt32(tbdiag.Text, 16);
+				wrapper.GridAlignedGuid = Convert.ToUInt32(tbgrid.Text, 16);
 				wrapper.Changed = true;
 				if (!Helper.WindowsRegistry.HiddenMode && UserVerification.HaveUserId)
 				{
@@ -2618,8 +2618,8 @@ namespace SimPe.PackedFiles.UserInterface
 			catch (Exception) { }
 			finally
 			{
-				this.lbIsOk.Visible = true;
-				this.Tag = null;
+				lbIsOk.Visible = true;
+				Tag = null;
 			}
 		}
 
@@ -2631,12 +2631,12 @@ namespace SimPe.PackedFiles.UserInterface
 			uint gooy = wrapper.createguid;
 			if (gooy != 0)
 			{
-				this.tbguid.Text = "0x" + Helper.HexString(gooy);
-				this.llgetGUID.LinkVisited = true;
+				tbguid.Text = "0x" + Helper.HexString(gooy);
+				llgetGUID.LinkVisited = true;
 			}
 			else
 			{
-				this.llgetGUID.Links[0].Enabled = false;
+				llgetGUID.Links[0].Enabled = false;
 			}
 		}
 
@@ -2671,7 +2671,7 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 				initialguid = wrapper.Guid;
 			}
-			this.lbIsOk.Visible = false;
+			lbIsOk.Visible = false;
 			wrapper.SynchronizeUserData();
 		}
 
@@ -2689,12 +2689,12 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			else
 			{
-				if (this.pg.SelectedObject != null)
+				if (pg.SelectedObject != null)
 				{
 					UpdateData();
 				}
 
-				this.pg.SelectedObject = null;
+				pg.SelectedObject = null;
 			}
 		}
 
@@ -2708,7 +2708,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void SetFlName(object sender, EventArgs e)
 		{
-			if (this.Tag != null)
+			if (Tag != null)
 			{
 				return;
 			}
@@ -2732,7 +2732,7 @@ namespace SimPe.PackedFiles.UserInterface
 				Ambertation.BaseChangeableNumber.DigitBase = 10;
 			}
 
-			this.pg.Refresh();
+			pg.Refresh();
 		}
 
 		private void cbsort_SelectedIndexChanged(object sender, EventArgs e)
@@ -2742,11 +2742,11 @@ namespace SimPe.PackedFiles.UserInterface
 				return;
 			}
 
-			this.Tag = true;
+			Tag = true;
 			wrapper.FunctionSubSort = (Data.ObjFunctionSubSort)cbsort.SelectedValue;
 			wrapper.Changed = true;
-			this.SetFunctionCb(wrapper);
-			this.Tag = null;
+			SetFunctionCb(wrapper);
+			Tag = null;
 		}
 
 		private void cbBuildSort_SelectedIndexChanged(object sender, EventArgs e)
@@ -2756,7 +2756,7 @@ namespace SimPe.PackedFiles.UserInterface
 				return;
 			}
 
-			this.Tag = true;
+			Tag = true;
 
 			if (cbBuildSort.SelectedIndex < 0)
 			{
@@ -2866,39 +2866,39 @@ namespace SimPe.PackedFiles.UserInterface
 
 			if (!skippy)
 			{
-				this.cbtype.SelectedIndex = 0;
-				for (int i = 0; i < this.cbtype.Items.Count; i++)
+				cbtype.SelectedIndex = 0;
+				for (int i = 0; i < cbtype.Items.Count; i++)
 				{
-					Data.ObjectTypes ot = (Data.ObjectTypes)this.cbtype.Items[i];
+					Data.ObjectTypes ot = (Data.ObjectTypes)cbtype.Items[i];
 					if (ot == wrapper.Type)
 					{
-						this.cbtype.SelectedIndex = i;
+						cbtype.SelectedIndex = i;
 						break;
 					}
 				}
 
-				this.tbtype.Text = "0x" + Helper.HexString((ushort)(wrapper.Type));
+				tbtype.Text = "0x" + Helper.HexString((ushort)(wrapper.Type));
 			}
 			else
 			{
-				this.cbtype.Select();
+				cbtype.Select();
 			}
 
-			this.Tag = null;
+			Tag = null;
 			wrapper.Changed = true;
 		}
 
 		private void tbPrice_TextChanged(object sender, EventArgs e)
 		{
-			this.tbPrice.ForeColor = System.Drawing.SystemColors.WindowText;
-			if (this.Tag != null)
+			tbPrice.ForeColor = System.Drawing.SystemColors.WindowText;
+			if (Tag != null)
 			{
 				return;
 			}
 
 			try
 			{
-				string prise = this.tbPrice.Text;
+				string prise = tbPrice.Text;
 				if (prise.StartsWith("�"))
 				{
 					prise = prise.Remove(0, 1);
@@ -2908,7 +2908,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			catch
 			{
-				this.tbPrice.ForeColor = System.Drawing.Color.OrangeRed;
+				tbPrice.ForeColor = System.Drawing.Color.OrangeRed;
 			}
 		}
 	}

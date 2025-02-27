@@ -104,292 +104,292 @@ namespace SimPe.Plugin
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
+			components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(Sims));
-			this.ilist = new ImageList(this.components);
-			this.lv = new ListView();
-			this.columnHeader1 = new ColumnHeader();
-			this.columnHeader2 = new ColumnHeader();
-			this.columnHeader3 = new ColumnHeader();
-			this.chKind = new ColumnHeader();
-			this.columnHeader10 = new ColumnHeader();
-			this.columnHeader4 = new ColumnHeader();
-			this.columnHeader5 = new ColumnHeader();
-			this.columnHeader6 = new ColumnHeader();
-			this.columnHeader9 = new ColumnHeader();
-			this.columnHeader7 = new ColumnHeader();
-			this.columnHeader8 = new ColumnHeader();
-			this.columnHeader11 = new ColumnHeader();
-			this.iListSmall = new ImageList(this.components);
-			this.button1 = new Button();
-			this.toolTip1 = new ToolTip(this.components);
-			this.lbUbi = new Label();
-			this.panel1 = new Panel();
-			this.label1 = new Label();
-			this.label2 = new Label();
-			this.panel2 = new Panel();
-			this.label3 = new Label();
-			this.panel3 = new Panel();
-			this.flowLayoutPanel1 = new FlowLayoutPanel();
-			this.ckbPlayable = new CheckBox();
-			this.cbTownie = new CheckBox();
-			this.cbNpc = new CheckBox();
-			this.ckbUnEditable = new CheckBox();
-			this.cbgals = new CheckBox();
-			this.cbmens = new CheckBox();
-			this.cbadults = new CheckBox();
-			this.cbdetail = new CheckBox();
-			this.flowLayoutPanel1.SuspendLayout();
-			this.SuspendLayout();
+			ilist = new ImageList(components);
+			lv = new ListView();
+			columnHeader1 = new ColumnHeader();
+			columnHeader2 = new ColumnHeader();
+			columnHeader3 = new ColumnHeader();
+			chKind = new ColumnHeader();
+			columnHeader10 = new ColumnHeader();
+			columnHeader4 = new ColumnHeader();
+			columnHeader5 = new ColumnHeader();
+			columnHeader6 = new ColumnHeader();
+			columnHeader9 = new ColumnHeader();
+			columnHeader7 = new ColumnHeader();
+			columnHeader8 = new ColumnHeader();
+			columnHeader11 = new ColumnHeader();
+			iListSmall = new ImageList(components);
+			button1 = new Button();
+			toolTip1 = new ToolTip(components);
+			lbUbi = new Label();
+			panel1 = new Panel();
+			label1 = new Label();
+			label2 = new Label();
+			panel2 = new Panel();
+			label3 = new Label();
+			panel3 = new Panel();
+			flowLayoutPanel1 = new FlowLayoutPanel();
+			ckbPlayable = new CheckBox();
+			cbTownie = new CheckBox();
+			cbNpc = new CheckBox();
+			ckbUnEditable = new CheckBox();
+			cbgals = new CheckBox();
+			cbmens = new CheckBox();
+			cbadults = new CheckBox();
+			cbdetail = new CheckBox();
+			flowLayoutPanel1.SuspendLayout();
+			SuspendLayout();
 			//
 			// ilist
 			//
-			this.ilist.ColorDepth = ColorDepth.Depth32Bit;
-			resources.ApplyResources(this.ilist, "ilist");
-			this.ilist.TransparentColor = Color.Transparent;
+			ilist.ColorDepth = ColorDepth.Depth32Bit;
+			resources.ApplyResources(ilist, "ilist");
+			ilist.TransparentColor = Color.Transparent;
 			//
 			// lv
 			//
-			resources.ApplyResources(this.lv, "lv");
-			this.lv.Columns.AddRange(
+			resources.ApplyResources(lv, "lv");
+			lv.Columns.AddRange(
 				new ColumnHeader[]
 				{
-					this.columnHeader1,
-					this.columnHeader2,
-					this.columnHeader3,
-					this.chKind,
-					this.columnHeader10,
-					this.columnHeader4,
-					this.columnHeader5,
-					this.columnHeader6,
-					this.columnHeader9,
-					this.columnHeader7,
-					this.columnHeader8,
-					this.columnHeader11,
+					columnHeader1,
+					columnHeader2,
+					columnHeader3,
+					chKind,
+					columnHeader10,
+					columnHeader4,
+					columnHeader5,
+					columnHeader6,
+					columnHeader9,
+					columnHeader7,
+					columnHeader8,
+					columnHeader11,
 				}
 			);
-			this.lv.FullRowSelect = true;
-			this.lv.HideSelection = false;
-			this.lv.LargeImageList = this.ilist;
-			this.lv.MultiSelect = false;
-			this.lv.Name = "lv";
-			this.lv.SmallImageList = this.iListSmall;
-			this.lv.StateImageList = this.iListSmall;
-			this.lv.UseCompatibleStateImageBehavior = false;
-			this.lv.View = View.Details;
-			this.lv.DoubleClick += new EventHandler(this.Open);
-			this.lv.ColumnClick += new ColumnClickEventHandler(
-				this.SortList
+			lv.FullRowSelect = true;
+			lv.HideSelection = false;
+			lv.LargeImageList = ilist;
+			lv.MultiSelect = false;
+			lv.Name = "lv";
+			lv.SmallImageList = iListSmall;
+			lv.StateImageList = iListSmall;
+			lv.UseCompatibleStateImageBehavior = false;
+			lv.View = View.Details;
+			lv.DoubleClick += new EventHandler(Open);
+			lv.ColumnClick += new ColumnClickEventHandler(
+				SortList
 			);
 			//
 			// columnHeader1
 			//
-			resources.ApplyResources(this.columnHeader1, "columnHeader1");
+			resources.ApplyResources(columnHeader1, "columnHeader1");
 			//
 			// columnHeader2
 			//
-			resources.ApplyResources(this.columnHeader2, "columnHeader2");
+			resources.ApplyResources(columnHeader2, "columnHeader2");
 			//
 			// columnHeader3
 			//
-			resources.ApplyResources(this.columnHeader3, "columnHeader3");
+			resources.ApplyResources(columnHeader3, "columnHeader3");
 			//
 			// chKind
 			//
-			resources.ApplyResources(this.chKind, "chKind");
+			resources.ApplyResources(chKind, "chKind");
 			//
 			// columnHeader10
 			//
-			resources.ApplyResources(this.columnHeader10, "columnHeader10");
+			resources.ApplyResources(columnHeader10, "columnHeader10");
 			//
 			// columnHeader4
 			//
-			resources.ApplyResources(this.columnHeader4, "columnHeader4");
+			resources.ApplyResources(columnHeader4, "columnHeader4");
 			//
 			// columnHeader5
 			//
-			resources.ApplyResources(this.columnHeader5, "columnHeader5");
+			resources.ApplyResources(columnHeader5, "columnHeader5");
 			//
 			// columnHeader6
 			//
-			resources.ApplyResources(this.columnHeader6, "columnHeader6");
+			resources.ApplyResources(columnHeader6, "columnHeader6");
 			//
 			// columnHeader9
 			//
-			resources.ApplyResources(this.columnHeader9, "columnHeader9");
+			resources.ApplyResources(columnHeader9, "columnHeader9");
 			//
 			// columnHeader7
 			//
-			resources.ApplyResources(this.columnHeader7, "columnHeader7");
+			resources.ApplyResources(columnHeader7, "columnHeader7");
 			//
 			// columnHeader8
 			//
-			resources.ApplyResources(this.columnHeader8, "columnHeader8");
+			resources.ApplyResources(columnHeader8, "columnHeader8");
 			//
 			// columnHeader11
 			//
-			resources.ApplyResources(this.columnHeader11, "columnHeader11");
+			resources.ApplyResources(columnHeader11, "columnHeader11");
 			//
 			// iListSmall
 			//
-			this.iListSmall.ColorDepth = ColorDepth.Depth32Bit;
-			resources.ApplyResources(this.iListSmall, "iListSmall");
-			this.iListSmall.TransparentColor = Color.Transparent;
+			iListSmall.ColorDepth = ColorDepth.Depth32Bit;
+			resources.ApplyResources(iListSmall, "iListSmall");
+			iListSmall.TransparentColor = Color.Transparent;
 			//
 			// button1
 			//
-			resources.ApplyResources(this.button1, "button1");
-			this.button1.Name = "button1";
-			this.button1.Click += new EventHandler(this.Open);
+			resources.ApplyResources(button1, "button1");
+			button1.Name = "button1";
+			button1.Click += new EventHandler(Open);
 			//
 			// lbUbi
 			//
-			this.lbUbi.BackColor = SystemColors.Window;
-			resources.ApplyResources(this.lbUbi, "lbUbi");
-			this.lbUbi.ForeColor = Color.Brown;
-			this.lbUbi.Name = "lbUbi";
+			lbUbi.BackColor = SystemColors.Window;
+			resources.ApplyResources(lbUbi, "lbUbi");
+			lbUbi.ForeColor = Color.Brown;
+			lbUbi.Name = "lbUbi";
 			//
 			// panel1
 			//
-			resources.ApplyResources(this.panel1, "panel1");
-			this.panel1.BackColor = Color.SteelBlue;
-			this.panel1.Name = "panel1";
+			resources.ApplyResources(panel1, "panel1");
+			panel1.BackColor = Color.SteelBlue;
+			panel1.Name = "panel1";
 			//
 			// label1
 			//
-			resources.ApplyResources(this.label1, "label1");
-			this.label1.Name = "label1";
+			resources.ApplyResources(label1, "label1");
+			label1.Name = "label1";
 			//
 			// label2
 			//
-			resources.ApplyResources(this.label2, "label2");
-			this.label2.Name = "label2";
+			resources.ApplyResources(label2, "label2");
+			label2.Name = "label2";
 			//
 			// panel2
 			//
-			resources.ApplyResources(this.panel2, "panel2");
-			this.panel2.BackColor = Color.LightCoral;
-			this.panel2.Name = "panel2";
+			resources.ApplyResources(panel2, "panel2");
+			panel2.BackColor = Color.LightCoral;
+			panel2.Name = "panel2";
 			//
 			// label3
 			//
-			resources.ApplyResources(this.label3, "label3");
-			this.label3.Name = "label3";
+			resources.ApplyResources(label3, "label3");
+			label3.Name = "label3";
 			//
 			// panel3
 			//
-			resources.ApplyResources(this.panel3, "panel3");
-			this.panel3.BackColor = Color.YellowGreen;
-			this.panel3.Name = "panel3";
+			resources.ApplyResources(panel3, "panel3");
+			panel3.BackColor = Color.YellowGreen;
+			panel3.Name = "panel3";
 			//
 			// flowLayoutPanel1
 			//
-			resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
-			this.flowLayoutPanel1.Controls.Add(this.ckbPlayable);
-			this.flowLayoutPanel1.Controls.Add(this.cbTownie);
-			this.flowLayoutPanel1.Controls.Add(this.cbNpc);
-			this.flowLayoutPanel1.Controls.Add(this.ckbUnEditable);
-			this.flowLayoutPanel1.Controls.Add(this.cbgals);
-			this.flowLayoutPanel1.Controls.Add(this.cbmens);
-			this.flowLayoutPanel1.Controls.Add(this.cbadults);
-			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+			resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
+			flowLayoutPanel1.Controls.Add(ckbPlayable);
+			flowLayoutPanel1.Controls.Add(cbTownie);
+			flowLayoutPanel1.Controls.Add(cbNpc);
+			flowLayoutPanel1.Controls.Add(ckbUnEditable);
+			flowLayoutPanel1.Controls.Add(cbgals);
+			flowLayoutPanel1.Controls.Add(cbmens);
+			flowLayoutPanel1.Controls.Add(cbadults);
+			flowLayoutPanel1.Name = "flowLayoutPanel1";
 			//
 			// ckbPlayable
 			//
-			resources.ApplyResources(this.ckbPlayable, "ckbPlayable");
-			this.ckbPlayable.Checked = true;
-			this.ckbPlayable.CheckState = CheckState.Checked;
-			this.ckbPlayable.Name = "ckbPlayable";
-			this.ckbPlayable.UseVisualStyleBackColor = true;
-			this.ckbPlayable.CheckedChanged += new EventHandler(
-				this.ckbFilter_CheckedChanged
+			resources.ApplyResources(ckbPlayable, "ckbPlayable");
+			ckbPlayable.Checked = true;
+			ckbPlayable.CheckState = CheckState.Checked;
+			ckbPlayable.Name = "ckbPlayable";
+			ckbPlayable.UseVisualStyleBackColor = true;
+			ckbPlayable.CheckedChanged += new EventHandler(
+				ckbFilter_CheckedChanged
 			);
 			//
 			// cbTownie
 			//
-			resources.ApplyResources(this.cbTownie, "cbTownie");
-			this.cbTownie.Name = "cbTownie";
-			this.cbTownie.CheckedChanged += new EventHandler(
-				this.ckbFilter_CheckedChanged
+			resources.ApplyResources(cbTownie, "cbTownie");
+			cbTownie.Name = "cbTownie";
+			cbTownie.CheckedChanged += new EventHandler(
+				ckbFilter_CheckedChanged
 			);
 			//
 			// cbNpc
 			//
-			resources.ApplyResources(this.cbNpc, "cbNpc");
-			this.cbNpc.Name = "cbNpc";
-			this.cbNpc.CheckedChanged += new EventHandler(
-				this.ckbFilter_CheckedChanged
+			resources.ApplyResources(cbNpc, "cbNpc");
+			cbNpc.Name = "cbNpc";
+			cbNpc.CheckedChanged += new EventHandler(
+				ckbFilter_CheckedChanged
 			);
 			//
 			// ckbUnEditable
 			//
-			resources.ApplyResources(this.ckbUnEditable, "ckbUnEditable");
-			this.ckbUnEditable.Name = "ckbUnEditable";
-			this.ckbUnEditable.UseVisualStyleBackColor = true;
-			this.ckbUnEditable.CheckedChanged += new EventHandler(
-				this.ckbFilter_CheckedChanged
+			resources.ApplyResources(ckbUnEditable, "ckbUnEditable");
+			ckbUnEditable.Name = "ckbUnEditable";
+			ckbUnEditable.UseVisualStyleBackColor = true;
+			ckbUnEditable.CheckedChanged += new EventHandler(
+				ckbFilter_CheckedChanged
 			);
 			//
 			// cbgals
 			//
-			resources.ApplyResources(this.cbgals, "cbgals");
-			this.cbgals.Name = "cbgals";
-			this.cbgals.UseVisualStyleBackColor = true;
-			this.cbgals.CheckedChanged += new EventHandler(
-				this.ckbFilter_CheckedChanged
+			resources.ApplyResources(cbgals, "cbgals");
+			cbgals.Name = "cbgals";
+			cbgals.UseVisualStyleBackColor = true;
+			cbgals.CheckedChanged += new EventHandler(
+				ckbFilter_CheckedChanged
 			);
 			//
 			// cbmens
 			//
-			resources.ApplyResources(this.cbmens, "cbmens");
-			this.cbmens.Name = "cbmens";
-			this.cbmens.UseVisualStyleBackColor = true;
-			this.cbmens.CheckedChanged += new EventHandler(
-				this.ckbFilter_CheckedChanged
+			resources.ApplyResources(cbmens, "cbmens");
+			cbmens.Name = "cbmens";
+			cbmens.UseVisualStyleBackColor = true;
+			cbmens.CheckedChanged += new EventHandler(
+				ckbFilter_CheckedChanged
 			);
 			//
 			// cbadults
 			//
-			resources.ApplyResources(this.cbadults, "cbadults");
-			this.cbadults.Name = "cbadults";
-			this.cbadults.UseVisualStyleBackColor = true;
-			this.cbadults.CheckedChanged += new EventHandler(
-				this.ckbFilter_CheckedChanged
+			resources.ApplyResources(cbadults, "cbadults");
+			cbadults.Name = "cbadults";
+			cbadults.UseVisualStyleBackColor = true;
+			cbadults.CheckedChanged += new EventHandler(
+				ckbFilter_CheckedChanged
 			);
 			//
 			// cbdetail
 			//
-			resources.ApplyResources(this.cbdetail, "cbdetail");
-			this.cbdetail.Checked = true;
-			this.cbdetail.CheckState = CheckState.Checked;
-			this.cbdetail.Name = "cbdetail";
-			this.cbdetail.CheckedChanged += new EventHandler(
-				this.checkBox1_CheckedChanged
+			resources.ApplyResources(cbdetail, "cbdetail");
+			cbdetail.Checked = true;
+			cbdetail.CheckState = CheckState.Checked;
+			cbdetail.Name = "cbdetail";
+			cbdetail.CheckedChanged += new EventHandler(
+				checkBox1_CheckedChanged
 			);
 			//
 			// Sims
 			//
 			resources.ApplyResources(this, "$this");
-			this.Controls.Add(this.cbdetail);
-			this.Controls.Add(this.flowLayoutPanel1);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.label1);
-			this.Controls.Add(this.panel3);
-			this.Controls.Add(this.panel2);
-			this.Controls.Add(this.panel1);
-			this.Controls.Add(this.lbUbi);
-			this.Controls.Add(this.button1);
-			this.Controls.Add(this.lv);
-			this.FormBorderStyle =
+			Controls.Add(cbdetail);
+			Controls.Add(flowLayoutPanel1);
+			Controls.Add(label3);
+			Controls.Add(label2);
+			Controls.Add(label1);
+			Controls.Add(panel3);
+			Controls.Add(panel2);
+			Controls.Add(panel1);
+			Controls.Add(lbUbi);
+			Controls.Add(button1);
+			Controls.Add(lv);
+			FormBorderStyle =
 				FormBorderStyle
 				.SizableToolWindow;
-			this.Name = "Sims";
-			this.flowLayoutPanel1.ResumeLayout(false);
-			this.flowLayoutPanel1.PerformLayout();
-			this.ResumeLayout(false);
-			this.PerformLayout();
+			Name = "Sims";
+			flowLayoutPanel1.ResumeLayout(false);
+			flowLayoutPanel1.PerformLayout();
+			ResumeLayout(false);
+			PerformLayout();
 		}
 		#endregion
 
@@ -400,7 +400,7 @@ namespace SimPe.Plugin
 			{
 				if (sdesc.HasImage)
 				{
-					img = ImageLoader.Preview(sdesc.Image, this.ilist.ImageSize);
+					img = ImageLoader.Preview(sdesc.Image, ilist.ImageSize);
 				}
 				else if (
 					sdesc.CharacterDescription.Gender
@@ -409,14 +409,14 @@ namespace SimPe.Plugin
 				{
 					img = ImageLoader.Preview(
 						GetImage.SheOne,
-						this.ilist.ImageSize
+						ilist.ImageSize
 					);
 				}
 				else
 				{
 					img = ImageLoader.Preview(
 						GetImage.NoOne,
-						this.ilist.ImageSize
+						ilist.ImageSize
 					);
 				}
 
@@ -463,15 +463,15 @@ namespace SimPe.Plugin
 					);
 					pos += 22;
 				}
-				this.ilist.Images.Add(img);
-				this.iListSmall.Images.Add(
+				ilist.Images.Add(img);
+				iListSmall.Images.Add(
 					ImageLoader.Preview(img, iListSmall.ImageSize)
 				);
 			}
 			else if (sdesc.HasImage) // if (sdesc.Image != null) -Chris H
 			{
-				this.ilist.Images.Add(sdesc.Image);
-				this.iListSmall.Images.Add(
+				ilist.Images.Add(sdesc.Image);
+				iListSmall.Images.Add(
 					ImageLoader.Preview(sdesc.Image, iListSmall.ImageSize)
 				);
 			}
@@ -482,8 +482,8 @@ namespace SimPe.Plugin
 					== Data.MetaData.Gender.Female
 				)
 				{
-					this.ilist.Images.Add(new Bitmap(GetImage.SheOne));
-					this.iListSmall.Images.Add(
+					ilist.Images.Add(new Bitmap(GetImage.SheOne));
+					iListSmall.Images.Add(
 						ImageLoader.Preview(
 							new Bitmap(GetImage.SheOne),
 							iListSmall.ImageSize
@@ -492,8 +492,8 @@ namespace SimPe.Plugin
 				}
 				else
 				{
-					this.ilist.Images.Add(new Bitmap(GetImage.NoOne));
-					this.iListSmall.Images.Add(
+					ilist.Images.Add(new Bitmap(GetImage.NoOne));
+					iListSmall.Images.Add(
 						ImageLoader.Preview(
 							new Bitmap(GetImage.NoOne),
 							iListSmall.ImageSize
@@ -692,10 +692,10 @@ namespace SimPe.Plugin
 
 		protected void FillList()
 		{
-			this.Cursor = Cursors.WaitCursor;
+			Cursor = Cursors.WaitCursor;
 			WaitingScreen.Wait();
 			ilist.Images.Clear();
-			this.iListSmall.Images.Clear();
+			iListSmall.Images.Clear();
 			lv.BeginUpdate();
 			lv.Items.Clear();
 			Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(
@@ -711,13 +711,13 @@ namespace SimPe.Plugin
 					sdesc.ProcessData(spfd, package);
 
 					bool doAdd = false;
-					doAdd |= (this.cbNpc.Checked && realIsNPC(sdesc));
-					doAdd |= (this.cbTownie.Checked && realIsTownie(sdesc));
-					doAdd |= (this.ckbPlayable.Checked && realIsPlayable(sdesc));
-					doAdd |= (this.ckbUnEditable.Checked && realIsUneditable(sdesc));
-					doAdd &= (!this.cbmens.Checked || !realIsWoman(sdesc));
-					doAdd &= (!this.cbgals.Checked || realIsWoman(sdesc));
-					doAdd &= (!this.cbadults.Checked || realIsAdult(sdesc));
+					doAdd |= (cbNpc.Checked && realIsNPC(sdesc));
+					doAdd |= (cbTownie.Checked && realIsTownie(sdesc));
+					doAdd |= (ckbPlayable.Checked && realIsPlayable(sdesc));
+					doAdd |= (ckbUnEditable.Checked && realIsUneditable(sdesc));
+					doAdd &= (!cbmens.Checked || !realIsWoman(sdesc));
+					doAdd &= (!cbgals.Checked || realIsWoman(sdesc));
+					doAdd &= (!cbadults.Checked || realIsAdult(sdesc));
 
 					if (doAdd)
 					{
@@ -732,7 +732,7 @@ namespace SimPe.Plugin
 			{
 				lv.EndUpdate();
 				WaitingScreen.Stop(this);
-				this.Cursor = Cursors.Default;
+				Cursor = Cursors.Default;
 			}
 		}
 
@@ -779,12 +779,12 @@ namespace SimPe.Plugin
 			this.package = package;
 
 			lv.ListViewItemSorter = sorter;
-			this.Cursor = Cursors.WaitCursor;
+			Cursor = Cursors.WaitCursor;
 
 			Idno idno = Idno.FromPackage(package);
 			if (idno != null)
 			{
-				this.lbUbi.Visible = (idno.Type != NeighborhoodType.Normal);
+				lbUbi.Visible = (idno.Type != NeighborhoodType.Normal);
 			}
 
 			this.pfd = null;
@@ -794,7 +794,7 @@ namespace SimPe.Plugin
 
 			FillList();
 
-			this.Cursor = Cursors.Default;
+			Cursor = Cursors.Default;
 
 			RemoteControl.ShowSubForm(this);
 
@@ -861,11 +861,11 @@ namespace SimPe.Plugin
 
 		private void ckbFilter_CheckedChanged(object sender, EventArgs e)
 		{
-			this.cbgals.Enabled = !this.cbmens.Checked;
-			this.cbmens.Enabled = !this.cbgals.Checked;
+			cbgals.Enabled = !cbmens.Checked;
+			cbmens.Enabled = !cbgals.Checked;
 			if (package != null)
 			{
-				this.FillList();
+				FillList();
 			}
 		}
 

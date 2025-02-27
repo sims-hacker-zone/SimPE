@@ -55,7 +55,7 @@ namespace SimPe.Plugin.UI
 		{
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
-			this.Text = "Properties";
+			Text = "Properties";
 			BuildListItems();
 			InitDropDown();
 		}
@@ -64,26 +64,26 @@ namespace SimPe.Plugin.UI
 
 		protected override void OnSettingsChanged()
 		{
-			if (this.Settings != null)
+			if (Settings != null)
 			{
-				this.SuspendLayout();
-				ClothingSettings sset = this.Settings;
-				this.fireSettingsChangedEvent = false;
-				this.SelectEnumItems(this.clbCategories, sset.OutfitCat);
-				this.SelectEnumItems(this.clbAges, sset.Age);
-				this.SelectEnumItems(this.clbGender, sset.Gender);
-				this.SelectEnumItem(this.cbOutfitType, sset.OutfitType);
-				this.SelectEnumItem(this.cbShoeType, sset.ShoeType);
-				this.SelectEnumItem(this.cbSpeciesType, sset.Species);
-				this.SelectSingleEnumItem(this.cbOverlayType, sset.OverlayType);
+				SuspendLayout();
+				ClothingSettings sset = Settings;
+				fireSettingsChangedEvent = false;
+				SelectEnumItems(clbCategories, sset.OutfitCat);
+				SelectEnumItems(clbAges, sset.Age);
+				SelectEnumItems(clbGender, sset.Gender);
+				SelectEnumItem(cbOutfitType, sset.OutfitType);
+				SelectEnumItem(cbShoeType, sset.ShoeType);
+				SelectEnumItem(cbSpeciesType, sset.Species);
+				SelectSingleEnumItem(cbOverlayType, sset.OverlayType);
 				Boolset flug = sset.Flaggery;
-				this.cbhide.Checked = flug[0];
-				this.cbhat.Checked = flug[1];
-				this.cbavail.Checked = flug[3];
-				this.cbBody.SelectedIndex = 0;
-				for (int i = 0; i < this.cbBody.Items.Count; i++)
+				cbhide.Checked = flug[0];
+				cbhat.Checked = flug[1];
+				cbavail.Checked = flug[3];
+				cbBody.SelectedIndex = 0;
+				for (int i = 0; i < cbBody.Items.Count; i++)
 				{
-					object o = this.cbBody.Items[i];
+					object o = cbBody.Items[i];
 					MetaData.Bodyshape at;
 					if (o.GetType() == typeof(Alias))
 					{
@@ -96,46 +96,46 @@ namespace SimPe.Plugin.UI
 
 					if (at == sset.Figure)
 					{
-						this.cbBody.SelectedIndex = i;
+						cbBody.SelectedIndex = i;
 						break;
 					}
 				}
 				InitDisableControls();
 			}
-			this.fireSettingsChangedEvent = true;
-			this.ResumeLayout(false);
+			fireSettingsChangedEvent = true;
+			ResumeLayout(false);
 		}
 
 		public override void OnCommitSettings()
 		{
-			if (this.Settings != null)
+			if (Settings != null)
 			{
-				this.Settings.OutfitCat = (OutfitCats)BuildListValue(
-					this.clbCategories
+				Settings.OutfitCat = (OutfitCats)BuildListValue(
+					clbCategories
 				);
-				this.Settings.Age = (Ages)BuildListValue(this.clbAges);
-				this.Settings.Gender = (SimGender)BuildListValue(this.clbGender);
-				if (this.cbOutfitType.SelectedItem != null)
+				Settings.Age = (Ages)BuildListValue(clbAges);
+				Settings.Gender = (SimGender)BuildListValue(clbGender);
+				if (cbOutfitType.SelectedItem != null)
 				{
-					this.Settings.OutfitType = (OutfitType)
-						this.cbOutfitType.SelectedItem;
+					Settings.OutfitType = (OutfitType)
+						cbOutfitType.SelectedItem;
 				}
 
-				if (this.cbShoeType.SelectedItem != null)
+				if (cbShoeType.SelectedItem != null)
 				{
-					this.Settings.ShoeType = (ShoeType)this.cbShoeType.SelectedItem;
+					Settings.ShoeType = (ShoeType)cbShoeType.SelectedItem;
 				}
 
-				if (this.cbSpeciesType.SelectedItem != null)
+				if (cbSpeciesType.SelectedItem != null)
 				{
-					this.Settings.Species = (SpeciesType)
-						this.cbSpeciesType.SelectedItem;
+					Settings.Species = (SpeciesType)
+						cbSpeciesType.SelectedItem;
 				}
 
-				if (this.cbOverlayType.SelectedItem != null)
+				if (cbOverlayType.SelectedItem != null)
 				{
-					this.Settings.OverlayType = (TextureOverlayTypes)
-						this.cbOverlayType.SelectedItem;
+					Settings.OverlayType = (TextureOverlayTypes)
+						cbOverlayType.SelectedItem;
 				}
 			}
 		}
@@ -144,38 +144,38 @@ namespace SimPe.Plugin.UI
 		{
 			if (Tipe == RecolorType.Skin)
 			{
-				this.cbShoeType.Enabled = this.cbBody.Enabled = true;
+				cbShoeType.Enabled = cbBody.Enabled = true;
 			}
 			else
 			{
-				this.cbShoeType.Enabled = this.cbBody.Enabled = false;
+				cbShoeType.Enabled = cbBody.Enabled = false;
 			}
 
 			if (Tipe == RecolorType.Hairtone)
 			{
-				this.cbhat.Enabled = true;
+				cbhat.Enabled = true;
 			}
 			else
 			{
-				this.cbhat.Enabled = false;
+				cbhat.Enabled = false;
 			}
 
 			if (Tipe == RecolorType.TextureOverlay || Tipe == RecolorType.MeshOverlay)
 			{
-				this.cbSpeciesType.Enabled = this.cbOverlayType.Enabled = true;
+				cbSpeciesType.Enabled = cbOverlayType.Enabled = true;
 			}
 			else
 			{
-				this.cbSpeciesType.Enabled = this.cbOverlayType.Enabled = false;
+				cbSpeciesType.Enabled = cbOverlayType.Enabled = false;
 			}
 
 			if (Tipe == RecolorType.Skintone)
 			{
-				this.cbavail.Enabled = this.cbhide.Enabled = false;
+				cbavail.Enabled = cbhide.Enabled = false;
 			}
 			else
 			{
-				this.cbavail.Enabled = this.cbhide.Enabled = true;
+				cbavail.Enabled = cbhide.Enabled = true;
 			}
 		}
 
@@ -187,327 +187,327 @@ namespace SimPe.Plugin.UI
 		private void InitializeComponent()
 		{
 			//this.components = new System.ComponentModel.Container();
-			this.clbCategories = new CheckedListBox();
-			this.tabControl1 = new TabControl();
-			this.tabPage1 = new System.Windows.Forms.TabPage();
-			this.tabPage2 = new System.Windows.Forms.TabPage();
-			this.clbAges = new CheckedListBox();
-			this.tabPage3 = new System.Windows.Forms.TabPage();
-			this.cbhat = new CheckBox();
-			this.cbhide = new CheckBox();
-			this.cbavail = new CheckBox();
-			this.lbBody = new Label();
-			this.cbBody = new ComboBox();
-			this.cbOverlayType = new ComboBox();
-			this.label5 = new Label();
-			this.cbSpeciesType = new ComboBox();
-			this.label4 = new Label();
-			this.label3 = new Label();
-			this.label2 = new Label();
-			this.label1 = new Label();
-			this.clbGender = new CheckedListBox();
-			this.cbShoeType = new ComboBox();
-			this.cbOutfitType = new ComboBox();
+			clbCategories = new CheckedListBox();
+			tabControl1 = new TabControl();
+			tabPage1 = new System.Windows.Forms.TabPage();
+			tabPage2 = new System.Windows.Forms.TabPage();
+			clbAges = new CheckedListBox();
+			tabPage3 = new System.Windows.Forms.TabPage();
+			cbhat = new CheckBox();
+			cbhide = new CheckBox();
+			cbavail = new CheckBox();
+			lbBody = new Label();
+			cbBody = new ComboBox();
+			cbOverlayType = new ComboBox();
+			label5 = new Label();
+			cbSpeciesType = new ComboBox();
+			label4 = new Label();
+			label3 = new Label();
+			label2 = new Label();
+			label1 = new Label();
+			clbGender = new CheckedListBox();
+			cbShoeType = new ComboBox();
+			cbOutfitType = new ComboBox();
 			//this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-			this.tabControl1.SuspendLayout();
-			this.tabPage1.SuspendLayout();
-			this.tabPage2.SuspendLayout();
-			this.tabPage3.SuspendLayout();
-			this.SuspendLayout();
+			tabControl1.SuspendLayout();
+			tabPage1.SuspendLayout();
+			tabPage2.SuspendLayout();
+			tabPage3.SuspendLayout();
+			SuspendLayout();
 			//
 			// clbCategories
 			//
-			this.clbCategories.CheckOnClick = true;
-			this.clbCategories.Dock = DockStyle.Fill;
-			this.clbCategories.Location = new System.Drawing.Point(0, 0);
-			this.clbCategories.MultiColumn = true;
-			this.clbCategories.Name = "clbCategories";
-			this.clbCategories.Size = new System.Drawing.Size(507, 154);
-			this.clbCategories.TabIndex = 0;
-			this.clbCategories.SelectedIndexChanged += new EventHandler(
-				this.Handle_SettingsControl_Changed
+			clbCategories.CheckOnClick = true;
+			clbCategories.Dock = DockStyle.Fill;
+			clbCategories.Location = new System.Drawing.Point(0, 0);
+			clbCategories.MultiColumn = true;
+			clbCategories.Name = "clbCategories";
+			clbCategories.Size = new System.Drawing.Size(507, 154);
+			clbCategories.TabIndex = 0;
+			clbCategories.SelectedIndexChanged += new EventHandler(
+				Handle_SettingsControl_Changed
 			);
 			//
 			// tabControl1
 			//
-			this.tabControl1.Controls.Add(this.tabPage1);
-			this.tabControl1.Controls.Add(this.tabPage2);
-			this.tabControl1.Controls.Add(this.tabPage3);
-			this.tabControl1.Dock = DockStyle.Fill;
-			this.tabControl1.Location = new System.Drawing.Point(0, 0);
-			this.tabControl1.Name = "tabControl1";
-			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(515, 186);
-			this.tabControl1.TabIndex = 1;
+			tabControl1.Controls.Add(tabPage1);
+			tabControl1.Controls.Add(tabPage2);
+			tabControl1.Controls.Add(tabPage3);
+			tabControl1.Dock = DockStyle.Fill;
+			tabControl1.Location = new System.Drawing.Point(0, 0);
+			tabControl1.Name = "tabControl1";
+			tabControl1.SelectedIndex = 0;
+			tabControl1.Size = new System.Drawing.Size(515, 186);
+			tabControl1.TabIndex = 1;
 			//
 			// tabPage1
 			//
-			this.tabPage1.Controls.Add(this.clbCategories);
-			this.tabPage1.Location = new System.Drawing.Point(4, 22);
-			this.tabPage1.Name = "tabPage1";
-			this.tabPage1.Size = new System.Drawing.Size(507, 160);
-			this.tabPage1.TabIndex = 0;
-			this.tabPage1.Text = "Categories";
+			tabPage1.Controls.Add(clbCategories);
+			tabPage1.Location = new System.Drawing.Point(4, 22);
+			tabPage1.Name = "tabPage1";
+			tabPage1.Size = new System.Drawing.Size(507, 160);
+			tabPage1.TabIndex = 0;
+			tabPage1.Text = "Categories";
 			//
 			// tabPage2
 			//
-			this.tabPage2.Controls.Add(this.clbAges);
-			this.tabPage2.Location = new System.Drawing.Point(4, 22);
-			this.tabPage2.Name = "tabPage2";
-			this.tabPage2.Size = new System.Drawing.Size(507, 160);
-			this.tabPage2.TabIndex = 1;
-			this.tabPage2.Text = "Ages";
+			tabPage2.Controls.Add(clbAges);
+			tabPage2.Location = new System.Drawing.Point(4, 22);
+			tabPage2.Name = "tabPage2";
+			tabPage2.Size = new System.Drawing.Size(507, 160);
+			tabPage2.TabIndex = 1;
+			tabPage2.Text = "Ages";
 			//
 			// clbAges
 			//
-			this.clbAges.CheckOnClick = true;
-			this.clbAges.Dock = DockStyle.Fill;
-			this.clbAges.Location = new System.Drawing.Point(0, 0);
-			this.clbAges.MultiColumn = true;
-			this.clbAges.Name = "clbAges";
-			this.clbAges.Size = new System.Drawing.Size(507, 154);
-			this.clbAges.TabIndex = 0;
-			this.clbAges.SelectedIndexChanged += new EventHandler(
-				this.Handle_SettingsControl_Changed
+			clbAges.CheckOnClick = true;
+			clbAges.Dock = DockStyle.Fill;
+			clbAges.Location = new System.Drawing.Point(0, 0);
+			clbAges.MultiColumn = true;
+			clbAges.Name = "clbAges";
+			clbAges.Size = new System.Drawing.Size(507, 154);
+			clbAges.TabIndex = 0;
+			clbAges.SelectedIndexChanged += new EventHandler(
+				Handle_SettingsControl_Changed
 			);
 			//
 			// tabPage3
 			//
-			this.tabPage3.AutoScroll = true;
-			this.tabPage3.Controls.Add(this.cbhat);
-			this.tabPage3.Controls.Add(this.cbhide);
-			this.tabPage3.Controls.Add(this.cbavail);
-			this.tabPage3.Controls.Add(this.lbBody);
-			this.tabPage3.Controls.Add(this.cbBody);
-			this.tabPage3.Controls.Add(this.cbOverlayType);
-			this.tabPage3.Controls.Add(this.label5);
-			this.tabPage3.Controls.Add(this.cbSpeciesType);
-			this.tabPage3.Controls.Add(this.label4);
-			this.tabPage3.Controls.Add(this.label3);
-			this.tabPage3.Controls.Add(this.label2);
-			this.tabPage3.Controls.Add(this.label1);
-			this.tabPage3.Controls.Add(this.clbGender);
-			this.tabPage3.Controls.Add(this.cbShoeType);
-			this.tabPage3.Controls.Add(this.cbOutfitType);
-			this.tabPage3.Location = new System.Drawing.Point(4, 22);
-			this.tabPage3.Name = "tabPage3";
-			this.tabPage3.Size = new System.Drawing.Size(507, 160);
-			this.tabPage3.TabIndex = 2;
-			this.tabPage3.Text = "Other";
+			tabPage3.AutoScroll = true;
+			tabPage3.Controls.Add(cbhat);
+			tabPage3.Controls.Add(cbhide);
+			tabPage3.Controls.Add(cbavail);
+			tabPage3.Controls.Add(lbBody);
+			tabPage3.Controls.Add(cbBody);
+			tabPage3.Controls.Add(cbOverlayType);
+			tabPage3.Controls.Add(label5);
+			tabPage3.Controls.Add(cbSpeciesType);
+			tabPage3.Controls.Add(label4);
+			tabPage3.Controls.Add(label3);
+			tabPage3.Controls.Add(label2);
+			tabPage3.Controls.Add(label1);
+			tabPage3.Controls.Add(clbGender);
+			tabPage3.Controls.Add(cbShoeType);
+			tabPage3.Controls.Add(cbOutfitType);
+			tabPage3.Location = new System.Drawing.Point(4, 22);
+			tabPage3.Name = "tabPage3";
+			tabPage3.Size = new System.Drawing.Size(507, 160);
+			tabPage3.TabIndex = 2;
+			tabPage3.Text = "Other";
 			//
 			// cbhat
 			//
-			this.cbhat.AutoSize = true;
-			this.cbhat.BackColor = System.Drawing.Color.Transparent;
-			this.cbhat.Location = new System.Drawing.Point(284, 101);
-			this.cbhat.Name = "cbhat";
-			this.cbhat.Size = new System.Drawing.Size(95, 17);
-			this.cbhat.TabIndex = 15;
-			this.cbhat.Text = "Includes a Hat";
-			this.cbhat.UseVisualStyleBackColor = false;
-			this.cbhat.CheckedChanged += new EventHandler(
-				this.cbflags_CheckedChanged
+			cbhat.AutoSize = true;
+			cbhat.BackColor = System.Drawing.Color.Transparent;
+			cbhat.Location = new System.Drawing.Point(284, 101);
+			cbhat.Name = "cbhat";
+			cbhat.Size = new System.Drawing.Size(95, 17);
+			cbhat.TabIndex = 15;
+			cbhat.Text = "Includes a Hat";
+			cbhat.UseVisualStyleBackColor = false;
+			cbhat.CheckedChanged += new EventHandler(
+				cbflags_CheckedChanged
 			);
 			//
 			// cbhide
 			//
-			this.cbhide.AutoSize = true;
-			this.cbhide.BackColor = System.Drawing.Color.Transparent;
-			this.cbhide.Location = new System.Drawing.Point(284, 77);
-			this.cbhide.Name = "cbhide";
-			this.cbhide.Size = new System.Drawing.Size(105, 17);
-			this.cbhide.TabIndex = 14;
-			this.cbhide.Text = "Not in Catalogue";
-			this.cbhide.UseVisualStyleBackColor = false;
-			this.cbhide.CheckedChanged += new EventHandler(
-				this.cbflags_CheckedChanged
+			cbhide.AutoSize = true;
+			cbhide.BackColor = System.Drawing.Color.Transparent;
+			cbhide.Location = new System.Drawing.Point(284, 77);
+			cbhide.Name = "cbhide";
+			cbhide.Size = new System.Drawing.Size(105, 17);
+			cbhide.TabIndex = 14;
+			cbhide.Text = "Not in Catalogue";
+			cbhide.UseVisualStyleBackColor = false;
+			cbhide.CheckedChanged += new EventHandler(
+				cbflags_CheckedChanged
 			);
 			//
 			// cbavail
 			//
-			this.cbavail.AutoSize = true;
-			this.cbavail.BackColor = System.Drawing.Color.Transparent;
-			this.cbavail.Location = new System.Drawing.Point(284, 125);
-			this.cbavail.Name = "cbavail";
-			this.cbavail.Size = new System.Drawing.Size(131, 17);
-			this.cbavail.TabIndex = 13;
-			this.cbavail.Text = "Not Available to NPCs";
-			this.toolTip1.SetToolTip(
-				this.cbavail,
+			cbavail.AutoSize = true;
+			cbavail.BackColor = System.Drawing.Color.Transparent;
+			cbavail.Location = new System.Drawing.Point(284, 125);
+			cbavail.Name = "cbavail";
+			cbavail.Size = new System.Drawing.Size(131, 17);
+			cbavail.TabIndex = 13;
+			cbavail.Text = "Not Available to NPCs";
+			toolTip1.SetToolTip(
+				cbavail,
 				"Paticularly for Outfits\r\nThe game won\'t automatically assign the outfit when this"
 					+ " flag is set\r\nNot sure how well it works for other file types"
 			);
-			this.cbavail.UseVisualStyleBackColor = false;
-			this.cbavail.CheckedChanged += new EventHandler(
-				this.cbflags_CheckedChanged
+			cbavail.UseVisualStyleBackColor = false;
+			cbavail.CheckedChanged += new EventHandler(
+				cbflags_CheckedChanged
 			);
 			//
 			// lbBody
 			//
-			this.lbBody.AutoSize = true;
-			this.lbBody.Font = new System.Drawing.Font(
+			lbBody.AutoSize = true;
+			lbBody.Font = new System.Drawing.Font(
 				"Comic Sans MS",
 				9.75F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lbBody.Location = new System.Drawing.Point(180, 109);
-			this.lbBody.Name = "lbBody";
-			this.lbBody.Size = new System.Drawing.Size(79, 18);
-			this.lbBody.TabIndex = 12;
-			this.lbBody.Text = "Body Shape";
+			lbBody.Location = new System.Drawing.Point(180, 109);
+			lbBody.Name = "lbBody";
+			lbBody.Size = new System.Drawing.Size(79, 18);
+			lbBody.TabIndex = 12;
+			lbBody.Text = "Body Shape";
 			//
 			// cbBody
 			//
-			this.cbBody.DropDownStyle = ComboBoxStyle.DropDownList;
-			this.cbBody.Location = new System.Drawing.Point(6, 106);
-			this.cbBody.Name = "cbBody";
-			this.cbBody.Size = new System.Drawing.Size(168, 21);
-			this.cbBody.TabIndex = 11;
-			this.toolTip1.SetToolTip(
-				this.cbBody,
+			cbBody.DropDownStyle = ComboBoxStyle.DropDownList;
+			cbBody.Location = new System.Drawing.Point(6, 106);
+			cbBody.Name = "cbBody";
+			cbBody.Size = new System.Drawing.Size(168, 21);
+			cbBody.TabIndex = 11;
+			toolTip1.SetToolTip(
+				cbBody,
 				"For users of the BSOK, Angels & Nurses Stuff or T&A"
 			);
-			this.cbBody.SelectedIndexChanged += new EventHandler(
-				this.cbBody_SelectedIndexChanged
+			cbBody.SelectedIndexChanged += new EventHandler(
+				cbBody_SelectedIndexChanged
 			);
 			//
 			// cbOverlayType
 			//
-			this.cbOverlayType.DropDownStyle =
+			cbOverlayType.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbOverlayType.Enabled = false;
-			this.cbOverlayType.Location = new System.Drawing.Point(140, 20);
-			this.cbOverlayType.Name = "cbOverlayType";
-			this.cbOverlayType.Size = new System.Drawing.Size(120, 21);
-			this.cbOverlayType.TabIndex = 10;
+			cbOverlayType.Enabled = false;
+			cbOverlayType.Location = new System.Drawing.Point(140, 20);
+			cbOverlayType.Name = "cbOverlayType";
+			cbOverlayType.Size = new System.Drawing.Size(120, 21);
+			cbOverlayType.TabIndex = 10;
 			//
 			// label5
 			//
-			this.label5.AutoSize = true;
-			this.label5.Font = new System.Drawing.Font(
+			label5.AutoSize = true;
+			label5.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label5.Location = new System.Drawing.Point(137, 4);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(72, 13);
-			this.label5.TabIndex = 9;
-			this.label5.Text = "Overlay Type";
+			label5.Location = new System.Drawing.Point(137, 4);
+			label5.Name = "label5";
+			label5.Size = new System.Drawing.Size(72, 13);
+			label5.TabIndex = 9;
+			label5.Text = "Overlay Type";
 			//
 			// cbSpeciesType
 			//
-			this.cbSpeciesType.DropDownStyle =
+			cbSpeciesType.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbSpeciesType.Enabled = false;
-			this.cbSpeciesType.Location = new System.Drawing.Point(140, 64);
-			this.cbSpeciesType.Name = "cbSpeciesType";
-			this.cbSpeciesType.Size = new System.Drawing.Size(120, 21);
-			this.cbSpeciesType.TabIndex = 8;
+			cbSpeciesType.Enabled = false;
+			cbSpeciesType.Location = new System.Drawing.Point(140, 64);
+			cbSpeciesType.Name = "cbSpeciesType";
+			cbSpeciesType.Size = new System.Drawing.Size(120, 21);
+			cbSpeciesType.TabIndex = 8;
 			//
 			// label4
 			//
-			this.label4.AutoSize = true;
-			this.label4.Font = new System.Drawing.Font(
+			label4.AutoSize = true;
+			label4.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label4.Location = new System.Drawing.Point(137, 47);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(43, 13);
-			this.label4.TabIndex = 7;
-			this.label4.Text = "Species";
+			label4.Location = new System.Drawing.Point(137, 47);
+			label4.Name = "label4";
+			label4.Size = new System.Drawing.Size(43, 13);
+			label4.TabIndex = 7;
+			label4.Text = "Species";
 			//
 			// label3
 			//
-			this.label3.Font = new System.Drawing.Font(
+			label3.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label3.Location = new System.Drawing.Point(268, 4);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(42, 11);
-			this.label3.TabIndex = 5;
-			this.label3.Text = "Gender";
+			label3.Location = new System.Drawing.Point(268, 4);
+			label3.Name = "label3";
+			label3.Size = new System.Drawing.Size(42, 11);
+			label3.TabIndex = 5;
+			label3.Text = "Gender";
 			//
 			// label2
 			//
-			this.label2.Font = new System.Drawing.Font(
+			label2.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label2.Location = new System.Drawing.Point(3, 47);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(59, 12);
-			this.label2.TabIndex = 4;
-			this.label2.Text = "Shoe Type";
+			label2.Location = new System.Drawing.Point(3, 47);
+			label2.Name = "label2";
+			label2.Size = new System.Drawing.Size(59, 12);
+			label2.TabIndex = 4;
+			label2.Text = "Shoe Type";
 			//
 			// label1
 			//
-			this.label1.Font = new System.Drawing.Font(
+			label1.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label1.Location = new System.Drawing.Point(4, 3);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(72, 13);
-			this.label1.TabIndex = 3;
-			this.label1.Text = "Outfit Type";
+			label1.Location = new System.Drawing.Point(4, 3);
+			label1.Name = "label1";
+			label1.Size = new System.Drawing.Size(72, 13);
+			label1.TabIndex = 3;
+			label1.Text = "Outfit Type";
 			//
 			// clbGender
 			//
-			this.clbGender.CheckOnClick = true;
-			this.clbGender.Location = new System.Drawing.Point(271, 20);
-			this.clbGender.Name = "clbGender";
-			this.clbGender.Size = new System.Drawing.Size(91, 49);
-			this.clbGender.TabIndex = 2;
-			this.clbGender.ThreeDCheckBoxes = true;
-			this.clbGender.SelectedIndexChanged += new EventHandler(
-				this.Handle_SettingsControl_Changed
+			clbGender.CheckOnClick = true;
+			clbGender.Location = new System.Drawing.Point(271, 20);
+			clbGender.Name = "clbGender";
+			clbGender.Size = new System.Drawing.Size(91, 49);
+			clbGender.TabIndex = 2;
+			clbGender.ThreeDCheckBoxes = true;
+			clbGender.SelectedIndexChanged += new EventHandler(
+				Handle_SettingsControl_Changed
 			);
 			//
 			// cbShoeType
 			//
-			this.cbShoeType.DropDownStyle =
+			cbShoeType.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbShoeType.Location = new System.Drawing.Point(7, 64);
-			this.cbShoeType.Name = "cbShoeType";
-			this.cbShoeType.Size = new System.Drawing.Size(120, 21);
-			this.cbShoeType.TabIndex = 1;
-			this.cbShoeType.SelectedIndexChanged += new EventHandler(
-				this.Handle_SettingsControl_Changed
+			cbShoeType.Location = new System.Drawing.Point(7, 64);
+			cbShoeType.Name = "cbShoeType";
+			cbShoeType.Size = new System.Drawing.Size(120, 21);
+			cbShoeType.TabIndex = 1;
+			cbShoeType.SelectedIndexChanged += new EventHandler(
+				Handle_SettingsControl_Changed
 			);
 			//
 			// cbOutfitType
 			//
-			this.cbOutfitType.DropDownStyle =
+			cbOutfitType.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbOutfitType.Location = new System.Drawing.Point(7, 20);
-			this.cbOutfitType.Name = "cbOutfitType";
-			this.cbOutfitType.Size = new System.Drawing.Size(120, 21);
-			this.cbOutfitType.TabIndex = 0;
-			this.cbOutfitType.SelectedIndexChanged += new EventHandler(
-				this.Handle_SettingsControl_Changed
+			cbOutfitType.Location = new System.Drawing.Point(7, 20);
+			cbOutfitType.Name = "cbOutfitType";
+			cbOutfitType.Size = new System.Drawing.Size(120, 21);
+			cbOutfitType.TabIndex = 0;
+			cbOutfitType.SelectedIndexChanged += new EventHandler(
+				Handle_SettingsControl_Changed
 			);
 			//
 			// toolTip1
@@ -517,25 +517,25 @@ namespace SimPe.Plugin.UI
 			//
 			// ClothingPreferences
 			//
-			this.ClientSize = new System.Drawing.Size(515, 186);
-			this.Controls.Add(this.tabControl1);
-			this.Name = "ClothingPreferences";
-			this.tabControl1.ResumeLayout(false);
-			this.tabPage1.ResumeLayout(false);
-			this.tabPage2.ResumeLayout(false);
-			this.tabPage3.ResumeLayout(false);
-			this.tabPage3.PerformLayout();
-			this.ResumeLayout(false);
+			ClientSize = new System.Drawing.Size(515, 186);
+			Controls.Add(tabControl1);
+			Name = "ClothingPreferences";
+			tabControl1.ResumeLayout(false);
+			tabPage1.ResumeLayout(false);
+			tabPage2.ResumeLayout(false);
+			tabPage3.ResumeLayout(false);
+			tabPage3.PerformLayout();
+			ResumeLayout(false);
 		}
 
 		#endregion
 
 		void InitDropDown()
 		{
-			this.cbBody.Items.Clear();
+			cbBody.Items.Clear();
 			foreach (uint i in Enum.GetValues(typeof(MetaData.Bodyshape)))
 			{
-				this.cbBody.Items.Add(
+				cbBody.Items.Add(
 					new LocalizedBodyshape((MetaData.Bodyshape)i)
 				);
 			}
@@ -547,22 +547,22 @@ namespace SimPe.Plugin.UI
 
 		private void cbBody_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (this.fireSettingsChangedEvent)
+			if (fireSettingsChangedEvent)
 			{
-				this.Settings.Figure = (LocalizedBodyshape)this.cbBody.SelectedItem;
+				Settings.Figure = (LocalizedBodyshape)cbBody.SelectedItem;
 				OnSettingsChanged(e);
 			}
 		}
 
 		private void cbflags_CheckedChanged(object sender, EventArgs e)
 		{
-			if (this.fireSettingsChangedEvent)
+			if (fireSettingsChangedEvent)
 			{
-				Boolset flug = this.Settings.Flaggery;
+				Boolset flug = Settings.Flaggery;
 				flug[0] = cbhide.Checked;
 				flug[1] = cbhat.Checked;
 				flug[3] = cbavail.Checked;
-				this.Settings.Flaggery = flug;
+				Settings.Flaggery = flug;
 				OnSettingsChanged(e);
 			}
 		}
@@ -574,7 +574,7 @@ namespace SimPe.Plugin.UI
 
 		void Handle_SettingsControl_Changed(object sender, EventArgs e)
 		{
-			if (this.fireSettingsChangedEvent)
+			if (fireSettingsChangedEvent)
 			{
 				OnCommitSettings();
 				OnSettingsChanged(e);
@@ -588,7 +588,7 @@ namespace SimPe.Plugin.UI
 
 		protected void OnSettingsChanged(EventArgs e)
 		{
-			if (this.SettingsChanged != null && this.fireSettingsChangedEvent)
+			if (SettingsChanged != null && fireSettingsChangedEvent)
 			{
 				SettingsChanged(this, e);
 			}
@@ -652,8 +652,8 @@ namespace SimPe.Plugin.UI
 			AddItems(clbAges.Items, typeof(Ages));
 			AddItems(clbCategories.Items, typeof(OutfitCats));
 			// AddItems(clbCategories.Items, typeof(SkinCategories));
-			this.clbGender.Items.Add(SimGender.Female);
-			this.clbGender.Items.Add(SimGender.Male);
+			clbGender.Items.Add(SimGender.Female);
+			clbGender.Items.Add(SimGender.Male);
 		}
 
 		static void AddItems(IList target, Type enumType)

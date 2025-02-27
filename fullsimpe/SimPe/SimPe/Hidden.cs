@@ -73,140 +73,140 @@ namespace SimPe
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(Hidden));
-			this.label1 = new Label();
-			this.tbComp = new TextBox();
-			this.tbBig = new TextBox();
-			this.label2 = new Label();
-			this.label3 = new Label();
-			this.lbMem = new Label();
-			this.button1 = new Button();
-			this.button2 = new Button();
-			this.button3 = new Button();
-			this.button4 = new Button();
-			this.SuspendLayout();
+			label1 = new Label();
+			tbComp = new TextBox();
+			tbBig = new TextBox();
+			label2 = new Label();
+			label3 = new Label();
+			lbMem = new Label();
+			button1 = new Button();
+			button2 = new Button();
+			button3 = new Button();
+			button4 = new Button();
+			SuspendLayout();
 			//
 			// label1
 			//
-			this.label1.Location = new System.Drawing.Point(16, 24);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(176, 23);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Compression Strength:";
-			this.label1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label1.Location = new System.Drawing.Point(16, 24);
+			label1.Name = "label1";
+			label1.Size = new System.Drawing.Size(176, 23);
+			label1.TabIndex = 0;
+			label1.Text = "Compression Strength:";
+			label1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// tbComp
 			//
-			this.tbComp.Location = new System.Drawing.Point(200, 24);
-			this.tbComp.Name = "tbComp";
-			this.tbComp.Size = new System.Drawing.Size(104, 21);
-			this.tbComp.TabIndex = 1;
+			tbComp.Location = new System.Drawing.Point(200, 24);
+			tbComp.Name = "tbComp";
+			tbComp.Size = new System.Drawing.Size(104, 21);
+			tbComp.TabIndex = 1;
 			//
 			// tbBig
 			//
-			this.tbBig.Location = new System.Drawing.Point(200, 48);
-			this.tbBig.Name = "tbBig";
-			this.tbBig.Size = new System.Drawing.Size(104, 21);
-			this.tbBig.TabIndex = 3;
+			tbBig.Location = new System.Drawing.Point(200, 48);
+			tbBig.Name = "tbBig";
+			tbBig.Size = new System.Drawing.Size(104, 21);
+			tbBig.TabIndex = 3;
 			//
 			// label2
 			//
-			this.label2.Location = new System.Drawing.Point(16, 48);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(176, 23);
-			this.label2.TabIndex = 2;
-			this.label2.Text = "Big Package Resource Count:";
-			this.label2.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label2.Location = new System.Drawing.Point(16, 48);
+			label2.Name = "label2";
+			label2.Size = new System.Drawing.Size(176, 23);
+			label2.TabIndex = 2;
+			label2.Text = "Big Package Resource Count:";
+			label2.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// label3
 			//
-			this.label3.Location = new System.Drawing.Point(16, 88);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(176, 23);
-			this.label3.TabIndex = 4;
-			this.label3.Text = "Used Memory:";
-			this.label3.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label3.Location = new System.Drawing.Point(16, 88);
+			label3.Name = "label3";
+			label3.Size = new System.Drawing.Size(176, 23);
+			label3.TabIndex = 4;
+			label3.Text = "Used Memory:";
+			label3.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// lbMem
 			//
-			this.lbMem.Location = new System.Drawing.Point(200, 88);
-			this.lbMem.Name = "lbMem";
-			this.lbMem.Size = new System.Drawing.Size(176, 23);
-			this.lbMem.TabIndex = 6;
-			this.lbMem.Text = "0";
-			this.lbMem.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+			lbMem.Location = new System.Drawing.Point(200, 88);
+			lbMem.Name = "lbMem";
+			lbMem.Size = new System.Drawing.Size(176, 23);
+			lbMem.TabIndex = 6;
+			lbMem.Text = "0";
+			lbMem.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
 			//
 			// button1
 			//
-			this.button1.FlatStyle = FlatStyle.System;
-			this.button1.Location = new System.Drawing.Point(200, 112);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(120, 23);
-			this.button1.TabIndex = 7;
-			this.button1.Text = "Collect Garbage";
-			this.button1.Click += new EventHandler(this.button1_Click);
+			button1.FlatStyle = FlatStyle.System;
+			button1.Location = new System.Drawing.Point(200, 112);
+			button1.Name = "button1";
+			button1.Size = new System.Drawing.Size(120, 23);
+			button1.TabIndex = 7;
+			button1.Text = "Collect Garbage";
+			button1.Click += new EventHandler(button1_Click);
 			//
 			// button2
 			//
-			this.button2.FlatStyle = FlatStyle.System;
-			this.button2.Location = new System.Drawing.Point(8, 160);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(128, 23);
-			this.button2.TabIndex = 8;
-			this.button2.Text = "StreamManager";
-			this.button2.Click += new EventHandler(this.button2_Click);
+			button2.FlatStyle = FlatStyle.System;
+			button2.Location = new System.Drawing.Point(8, 160);
+			button2.Name = "button2";
+			button2.Size = new System.Drawing.Size(128, 23);
+			button2.TabIndex = 8;
+			button2.Text = "StreamManager";
+			button2.Click += new EventHandler(button2_Click);
 			//
 			// button3
 			//
-			this.button3.FlatStyle = FlatStyle.System;
-			this.button3.Location = new System.Drawing.Point(144, 160);
-			this.button3.Name = "button3";
-			this.button3.Size = new System.Drawing.Size(128, 23);
-			this.button3.TabIndex = 9;
-			this.button3.Text = "File Table Content";
-			this.button3.Click += new EventHandler(this.button3_Click);
+			button3.FlatStyle = FlatStyle.System;
+			button3.Location = new System.Drawing.Point(144, 160);
+			button3.Name = "button3";
+			button3.Size = new System.Drawing.Size(128, 23);
+			button3.TabIndex = 9;
+			button3.Text = "File Table Content";
+			button3.Click += new EventHandler(button3_Click);
 			//
 			// button4
 			//
-			this.button4.FlatStyle = FlatStyle.System;
-			this.button4.Location = new System.Drawing.Point(318, 160);
-			this.button4.Name = "button4";
-			this.button4.Size = new System.Drawing.Size(128, 23);
-			this.button4.TabIndex = 10;
-			this.button4.Text = "Properties";
-			this.button4.Click += new EventHandler(this.button4_Click);
+			button4.FlatStyle = FlatStyle.System;
+			button4.Location = new System.Drawing.Point(318, 160);
+			button4.Name = "button4";
+			button4.Size = new System.Drawing.Size(128, 23);
+			button4.TabIndex = 10;
+			button4.Text = "Properties";
+			button4.Click += new EventHandler(button4_Click);
 			//
 			// Hidden
 			//
-			this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
-			this.ClientSize = new System.Drawing.Size(458, 192);
-			this.Controls.Add(this.button4);
-			this.Controls.Add(this.button3);
-			this.Controls.Add(this.button2);
-			this.Controls.Add(this.button1);
-			this.Controls.Add(this.lbMem);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.tbBig);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.tbComp);
-			this.Controls.Add(this.label1);
-			this.Font = new System.Drawing.Font(
+			AutoScaleBaseSize = new System.Drawing.Size(6, 14);
+			ClientSize = new System.Drawing.Size(458, 192);
+			Controls.Add(button4);
+			Controls.Add(button3);
+			Controls.Add(button2);
+			Controls.Add(button1);
+			Controls.Add(lbMem);
+			Controls.Add(label3);
+			Controls.Add(tbBig);
+			Controls.Add(label2);
+			Controls.Add(tbComp);
+			Controls.Add(label1);
+			Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.FormBorderStyle = FormBorderStyle.FixedDialog;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.MaximizeBox = false;
-			this.MinimizeBox = false;
-			this.Name = "Hidden";
-			this.Opacity = 0.8;
-			this.Text = "Hidden";
-			this.Closed += new EventHandler(this.Hidden_Closed);
-			this.Load += new EventHandler(this.Hidden_Load);
-			this.ResumeLayout(false);
-			this.PerformLayout();
+			FormBorderStyle = FormBorderStyle.FixedDialog;
+			Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			MaximizeBox = false;
+			MinimizeBox = false;
+			Name = "Hidden";
+			Opacity = 0.8;
+			Text = "Hidden";
+			Closed += new EventHandler(Hidden_Closed);
+			Load += new EventHandler(Hidden_Load);
+			ResumeLayout(false);
+			PerformLayout();
 		}
 		#endregion
 
@@ -217,10 +217,10 @@ namespace SimPe
 
 		private void UpdateDialog()
 		{
-			this.tbComp.Text = Packages.PackedFile.CompressionStrength.ToString();
+			tbComp.Text = Packages.PackedFile.CompressionStrength.ToString();
 			tbBig.Text = Helper.WindowsRegistry.BigPackageResourceCount.ToString();
 
-			this.lbMem.Text = GC.GetTotalMemory(false).ToString("N0") + " Byte";
+			lbMem.Text = GC.GetTotalMemory(false).ToString("N0") + " Byte";
 		}
 
 		private void Hidden_Closed(object sender, EventArgs e)
@@ -228,7 +228,7 @@ namespace SimPe
 			try
 			{
 				Packages.PackedFile.CompressionStrength = Convert.ToInt32(
-					this.tbComp.Text
+					tbComp.Text
 				);
 				Helper.WindowsRegistry.BigPackageResourceCount = Convert.ToInt32(
 					tbBig.Text
@@ -239,12 +239,12 @@ namespace SimPe
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			this.Cursor = Cursors.WaitCursor;
+			Cursor = Cursors.WaitCursor;
 			GC.Collect();
 			GC.WaitForPendingFinalizers();
-			this.lbMem.Text = GC.GetTotalMemory(false).ToString("N0") + " Byte";
+			lbMem.Text = GC.GetTotalMemory(false).ToString("N0") + " Byte";
 
-			this.Cursor = Cursors.Default;
+			Cursor = Cursors.Default;
 		}
 
 		private void button2_Click(object sender, EventArgs e)

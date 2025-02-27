@@ -88,7 +88,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// Required for Windows Form Designer support
 			//
 			InitializeComponent();
-			this.lvTrcnItem.Items.Clear();
+			lvTrcnItem.Items.Clear();
 
 			TextBox[] t = { tbFilename, tbLabel };
 			alText = new ArrayList(t);
@@ -100,19 +100,19 @@ namespace SimPe.PackedFiles.UserInterface
 			alHex32 = new ArrayList(dw);
 
 			pjse.FileTable.GFT.FiletableRefresh += new EventHandler(
-				this.FiletableRefresh
+				FiletableRefresh
 			);
 			if (Helper.WindowsRegistry.UseBigIcons)
 			{
-				this.lvTrcnItem.Font = new Font(
+				lvTrcnItem.Font = new Font(
 					"Microsoft Sans Serif",
 					11F
 				);
-				this.chUsed.Width = 48;
-				this.chDefValue.Width = 72;
-				this.chMinValue.Width = 72;
-				this.chMaxValue.Width = 78;
-				this.chLine.Width = 84;
+				chUsed.Width = 48;
+				chDefValue.Width = 72;
+				chMinValue.Width = 72;
+				chMaxValue.Width = 78;
+				chLine.Width = 84;
 			}
 		}
 
@@ -131,7 +131,7 @@ namespace SimPe.PackedFiles.UserInterface
 			base.Dispose(disposing);
 			if (setHandler && wrapper != null)
 			{
-				wrapper.WrapperChanged -= new EventHandler(this.WrapperChanged);
+				wrapper.WrapperChanged -= new EventHandler(WrapperChanged);
 				setHandler = false;
 			}
 			wrapper = null;
@@ -196,14 +196,14 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			trcnPanel.SuspendLayout();
 			trcnPanel.Controls.Clear();
-			trcnPanel.Controls.Add(this.pjse_banner1);
-			trcnPanel.Controls.Add(this.lbFilename);
+			trcnPanel.Controls.Add(pjse_banner1);
+			trcnPanel.Controls.Add(lbFilename);
 			tbFilename.ReadOnly = true;
 			tbFilename.Text = wrapper.FileName;
 			tbFormat.Text = Helper.HexString(wrapper.Version);
-			trcnPanel.Controls.Add(this.tbFilename);
-			trcnPanel.Controls.Add(this.lbFormat);
-			trcnPanel.Controls.Add(this.tbFormat);
+			trcnPanel.Controls.Add(tbFilename);
+			trcnPanel.Controls.Add(lbFormat);
+			trcnPanel.Controls.Add(tbFormat);
 
 			Label lb = new Label();
 			lb.AutoSize = true;
@@ -257,7 +257,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void updateSelectedItem()
 		{
-			ListViewItem lv = this.lvTrcnItem.SelectedItems[0];
+			ListViewItem lv = lvTrcnItem.SelectedItems[0];
 			if (lv == null)
 			{
 				return;
@@ -326,11 +326,11 @@ namespace SimPe.PackedFiles.UserInterface
 				wrapper == null ? null : wrapper.SiblingResource(Bcon.Bcontype)
 			);
 
-			this.lvTrcnItem.Items.Clear();
+			lvTrcnItem.Items.Clear();
 			int nItems = wrapper == null ? 0 : wrapper.Count;
 			for (int i = 0; i < nItems; i++)
 			{
-				this.lvTrcnItem.Items.Add(new ListViewItem(trcnItemToStringArray(i)));
+				lvTrcnItem.Items.Add(new ListViewItem(trcnItemToStringArray(i)));
 			}
 		}
 
@@ -339,35 +339,35 @@ namespace SimPe.PackedFiles.UserInterface
 			internalchg = true;
 			if (i >= 0)
 			{
-				this.lvTrcnItem.Items[i].Selected = true;
+				lvTrcnItem.Items[i].Selected = true;
 			}
 			else if (index >= 0)
 			{
-				this.lvTrcnItem.Items[index].Selected = false;
+				lvTrcnItem.Items[index].Selected = false;
 			}
 
 			internalchg = false;
 
-			if (this.lvTrcnItem.SelectedItems.Count > 0)
+			if (lvTrcnItem.SelectedItems.Count > 0)
 			{
-				if (this.lvTrcnItem.Focused)
+				if (lvTrcnItem.Focused)
 				{
-					this.lvTrcnItem.SelectedItems[0].Focused = true;
+					lvTrcnItem.SelectedItems[0].Focused = true;
 				}
 
-				this.lvTrcnItem.SelectedItems[0].EnsureVisible();
+				lvTrcnItem.SelectedItems[0].EnsureVisible();
 			}
 			else
 			{
 				internalchg = true;
-				this.tbLabel.Text = "";
-				this.tbID.Text = "";
-				this.cbUsed.CheckState = CheckState.Indeterminate;
-				this.tbDesc.Text = "";
-				this.tbDefValue.Text = "";
-				this.tbMinValue.Text = "";
-				this.tbMaxValue.Text = "";
-				this.btnCancel.Enabled = false;
+				tbLabel.Text = "";
+				tbID.Text = "";
+				cbUsed.CheckState = CheckState.Indeterminate;
+				tbDesc.Text = "";
+				tbDefValue.Text = "";
+				tbMinValue.Text = "";
+				tbMaxValue.Text = "";
+				btnCancel.Enabled = false;
 				internalchg = false;
 			}
 
@@ -390,57 +390,57 @@ namespace SimPe.PackedFiles.UserInterface
 				origItem = currentItem.Clone();
 
 				string[] s = trcnItemToStringArray(index);
-				this.tbLabel.Text = s[2];
-				this.tbID.Text = s[3];
-				this.cbUsed.CheckState =
+				tbLabel.Text = s[2];
+				tbID.Text = s[3];
+				cbUsed.CheckState =
 					currentItem.Used != 0
 						? CheckState.Checked
 						: CheckState.Unchecked;
-				this.tbDesc.Text = currentItem.ConstDesc;
-				this.tbDefValue.Text = s[5];
-				this.tbMinValue.Text = s[6];
-				this.tbMaxValue.Text = s[7];
+				tbDesc.Text = currentItem.ConstDesc;
+				tbDefValue.Text = s[5];
+				tbMinValue.Text = s[6];
+				tbMaxValue.Text = s[7];
 
-				this.tbID.Enabled =
-					this.tbLabel.Enabled =
-					this.tbDefValue.Enabled =
-					this.tbMinValue.Enabled =
-					this.tbMaxValue.Enabled =
-					this.btnStrDelete.Enabled =
+				tbID.Enabled =
+					tbLabel.Enabled =
+					tbDefValue.Enabled =
+					tbMinValue.Enabled =
+					tbMaxValue.Enabled =
+					btnStrDelete.Enabled =
 						true;
-				this.cbUsed.Enabled = (wrapper.Version > 0x3e);
-				this.tbDefValue.Enabled =
-					this.tbID.Enabled =
-					this.tbMinValue.Enabled =
-					this.tbMaxValue.Enabled =
+				cbUsed.Enabled = (wrapper.Version > 0x3e);
+				tbDefValue.Enabled =
+					tbID.Enabled =
+					tbMinValue.Enabled =
+					tbMaxValue.Enabled =
 						(wrapper.Version > 1);
 			}
 			else
 			{
 				origItem = null;
 
-				this.tbID.Text =
-					this.tbLabel.Text =
-					this.tbDefValue.Text =
-					this.tbMinValue.Text =
-					this.tbMaxValue.Text =
+				tbID.Text =
+					tbLabel.Text =
+					tbDefValue.Text =
+					tbMinValue.Text =
+					tbMaxValue.Text =
 						"";
-				this.cbUsed.CheckState = CheckState.Indeterminate;
+				cbUsed.CheckState = CheckState.Indeterminate;
 
-				this.tbID.Enabled =
-					this.tbLabel.Enabled =
-					this.cbUsed.Enabled =
-					this.tbDefValue.Enabled =
-					this.tbMinValue.Enabled =
-					this.tbMaxValue.Enabled =
-					this.btnStrDelete.Enabled =
+				tbID.Enabled =
+					tbLabel.Enabled =
+					cbUsed.Enabled =
+					tbDefValue.Enabled =
+					tbMinValue.Enabled =
+					tbMaxValue.Enabled =
+					btnStrDelete.Enabled =
 						false;
 			}
-			this.btnStrPrev.Enabled = (index > 0);
-			this.btnStrNext.Enabled = (index < lvTrcnItem.Items.Count - 1);
+			btnStrPrev.Enabled = (index > 0);
+			btnStrNext.Enabled = (index < lvTrcnItem.Items.Count - 1);
 			internalchg = false;
 
-			this.btnCancel.Enabled = false;
+			btnCancel.Enabled = false;
 		}
 
 		private void TrcnItemAdd()
@@ -451,7 +451,7 @@ namespace SimPe.PackedFiles.UserInterface
 			try
 			{
 				wrapper.Add(new TrcnItem(wrapper));
-				this.lvTrcnItem.Items.Add(
+				lvTrcnItem.Items.Add(
 					new ListViewItem(trcnItemToStringArray(wrapper.Count - 1))
 				);
 			}
@@ -512,7 +512,7 @@ namespace SimPe.PackedFiles.UserInterface
 			bool savedstate = internalchg;
 			internalchg = true;
 
-			this.lvTrcnItem.SelectedItems[0].SubItems[2].Text = currentItem.ConstName =
+			lvTrcnItem.SelectedItems[0].SubItems[2].Text = currentItem.ConstName =
 				origItem.ConstName;
 			currentItem.ConstId = origItem.ConstId;
 			currentItem.Used = origItem.Used;
@@ -559,7 +559,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 			if (!setHandler)
 			{
-				wrapper.WrapperChanged += new EventHandler(this.WrapperChanged);
+				wrapper.WrapperChanged += new EventHandler(WrapperChanged);
 				setHandler = true;
 			}
 		}
@@ -572,11 +572,11 @@ namespace SimPe.PackedFiles.UserInterface
 				return;
 			}
 
-			this.tbDesc.ReadOnly = (wrapper.Version <= 0x53);
-			this.btnCommit.Enabled = (wrapper.Changed || wrapper.Version == 1);
+			tbDesc.ReadOnly = (wrapper.Version <= 0x53);
+			btnCommit.Enabled = (wrapper.Changed || wrapper.Version == 1);
 			if (sender.Equals(currentItem))
 			{
-				this.btnCancel.Enabled = true;
+				btnCancel.Enabled = true;
 			}
 
 			if (internalchg)
@@ -587,8 +587,8 @@ namespace SimPe.PackedFiles.UserInterface
 			if (sender.Equals(wrapper))
 			{
 				internalchg = true;
-				this.Text = tbFilename.Text = wrapper.FileName;
-				this.tbFormat.Text = "0x" + Helper.HexString(wrapper.Version);
+				Text = tbFilename.Text = wrapper.FileName;
+				tbFormat.Text = "0x" + Helper.HexString(wrapper.Version);
 				internalchg = false;
 			}
 			else if (!sender.Equals(currentItem))
@@ -607,316 +607,316 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(TrcnForm));
-			this.btnCommit = new Button();
-			this.trcnPanel = new Panel();
-			this.panel2 = new Panel();
-			this.btnStrAdd = new Button();
-			this.lbLabel = new Label();
-			this.btnStrDelete = new Button();
-			this.tbLabel = new TextBox();
-			this.btnCancel = new Button();
-			this.btnStrPrev = new Button();
-			this.btnStrNext = new Button();
-			this.tlpUnused = new TableLayoutPanel();
-			this.label5 = new Label();
-			this.lbID = new Label();
-			this.tbID = new TextBox();
-			this.lbDesc = new Label();
-			this.tbDesc = new TextBox();
-			this.lbDefValue = new Label();
-			this.tbDefValue = new TextBox();
-			this.panel1 = new Panel();
-			this.lbMinValue = new Label();
-			this.tbMinValue = new TextBox();
-			this.lbMaxValue = new Label();
-			this.tbMaxValue = new TextBox();
-			this.cbUsed = new CheckBox();
-			this.tbFormat = new TextBox();
-			this.lbFormat = new Label();
-			this.tbFilename = new TextBox();
-			this.lbFilename = new Label();
-			this.pjse_banner1 = new pjse.pjse_banner();
-			this.lvTrcnItem = new ListView();
-			this.chLine = new ColumnHeader();
-			this.chValue = new ColumnHeader();
-			this.chConstName = new ColumnHeader();
-			this.chConstId = new ColumnHeader();
-			this.chUsed = new ColumnHeader();
-			this.chDefValue = new ColumnHeader();
-			this.chMinValue = new ColumnHeader();
-			this.chMaxValue = new ColumnHeader();
-			this.btSetAll = new Button();
-			this.trcnPanel.SuspendLayout();
-			this.panel2.SuspendLayout();
-			this.tlpUnused.SuspendLayout();
-			this.SuspendLayout();
+			btnCommit = new Button();
+			trcnPanel = new Panel();
+			panel2 = new Panel();
+			btnStrAdd = new Button();
+			lbLabel = new Label();
+			btnStrDelete = new Button();
+			tbLabel = new TextBox();
+			btnCancel = new Button();
+			btnStrPrev = new Button();
+			btnStrNext = new Button();
+			tlpUnused = new TableLayoutPanel();
+			label5 = new Label();
+			lbID = new Label();
+			tbID = new TextBox();
+			lbDesc = new Label();
+			tbDesc = new TextBox();
+			lbDefValue = new Label();
+			tbDefValue = new TextBox();
+			panel1 = new Panel();
+			lbMinValue = new Label();
+			tbMinValue = new TextBox();
+			lbMaxValue = new Label();
+			tbMaxValue = new TextBox();
+			cbUsed = new CheckBox();
+			tbFormat = new TextBox();
+			lbFormat = new Label();
+			tbFilename = new TextBox();
+			lbFilename = new Label();
+			pjse_banner1 = new pjse.pjse_banner();
+			lvTrcnItem = new ListView();
+			chLine = new ColumnHeader();
+			chValue = new ColumnHeader();
+			chConstName = new ColumnHeader();
+			chConstId = new ColumnHeader();
+			chUsed = new ColumnHeader();
+			chDefValue = new ColumnHeader();
+			chMinValue = new ColumnHeader();
+			chMaxValue = new ColumnHeader();
+			btSetAll = new Button();
+			trcnPanel.SuspendLayout();
+			panel2.SuspendLayout();
+			tlpUnused.SuspendLayout();
+			SuspendLayout();
 			//
 			// btnCommit
 			//
-			resources.ApplyResources(this.btnCommit, "btnCommit");
-			this.btnCommit.Name = "btnCommit";
-			this.btnCommit.Click += new EventHandler(this.btnCommit_Click);
+			resources.ApplyResources(btnCommit, "btnCommit");
+			btnCommit.Name = "btnCommit";
+			btnCommit.Click += new EventHandler(btnCommit_Click);
 			//
 			// trcnPanel
 			//
-			resources.ApplyResources(this.trcnPanel, "trcnPanel");
-			this.trcnPanel.Controls.Add(this.btSetAll);
-			this.trcnPanel.Controls.Add(this.panel2);
-			this.trcnPanel.Controls.Add(this.tlpUnused);
-			this.trcnPanel.Controls.Add(this.btnCommit);
-			this.trcnPanel.Controls.Add(this.tbFormat);
-			this.trcnPanel.Controls.Add(this.lbFormat);
-			this.trcnPanel.Controls.Add(this.tbFilename);
-			this.trcnPanel.Controls.Add(this.lbFilename);
-			this.trcnPanel.Controls.Add(this.pjse_banner1);
-			this.trcnPanel.Controls.Add(this.lvTrcnItem);
-			this.trcnPanel.Name = "trcnPanel";
+			resources.ApplyResources(trcnPanel, "trcnPanel");
+			trcnPanel.Controls.Add(btSetAll);
+			trcnPanel.Controls.Add(panel2);
+			trcnPanel.Controls.Add(tlpUnused);
+			trcnPanel.Controls.Add(btnCommit);
+			trcnPanel.Controls.Add(tbFormat);
+			trcnPanel.Controls.Add(lbFormat);
+			trcnPanel.Controls.Add(tbFilename);
+			trcnPanel.Controls.Add(lbFilename);
+			trcnPanel.Controls.Add(pjse_banner1);
+			trcnPanel.Controls.Add(lvTrcnItem);
+			trcnPanel.Name = "trcnPanel";
 			//
 			// panel2
 			//
-			resources.ApplyResources(this.panel2, "panel2");
-			this.panel2.Controls.Add(this.btnStrAdd);
-			this.panel2.Controls.Add(this.lbLabel);
-			this.panel2.Controls.Add(this.btnStrDelete);
-			this.panel2.Controls.Add(this.tbLabel);
-			this.panel2.Controls.Add(this.btnCancel);
-			this.panel2.Controls.Add(this.btnStrPrev);
-			this.panel2.Controls.Add(this.btnStrNext);
-			this.panel2.Name = "panel2";
+			resources.ApplyResources(panel2, "panel2");
+			panel2.Controls.Add(btnStrAdd);
+			panel2.Controls.Add(lbLabel);
+			panel2.Controls.Add(btnStrDelete);
+			panel2.Controls.Add(tbLabel);
+			panel2.Controls.Add(btnCancel);
+			panel2.Controls.Add(btnStrPrev);
+			panel2.Controls.Add(btnStrNext);
+			panel2.Name = "panel2";
 			//
 			// btnStrAdd
 			//
-			resources.ApplyResources(this.btnStrAdd, "btnStrAdd");
-			this.btnStrAdd.Name = "btnStrAdd";
-			this.btnStrAdd.Click += new EventHandler(this.btnStrAdd_Click);
+			resources.ApplyResources(btnStrAdd, "btnStrAdd");
+			btnStrAdd.Name = "btnStrAdd";
+			btnStrAdd.Click += new EventHandler(btnStrAdd_Click);
 			//
 			// lbLabel
 			//
-			resources.ApplyResources(this.lbLabel, "lbLabel");
-			this.lbLabel.Name = "lbLabel";
+			resources.ApplyResources(lbLabel, "lbLabel");
+			lbLabel.Name = "lbLabel";
 			//
 			// btnStrDelete
 			//
-			resources.ApplyResources(this.btnStrDelete, "btnStrDelete");
-			this.btnStrDelete.Name = "btnStrDelete";
-			this.btnStrDelete.Click += new EventHandler(this.btnStrDelete_Click);
+			resources.ApplyResources(btnStrDelete, "btnStrDelete");
+			btnStrDelete.Name = "btnStrDelete";
+			btnStrDelete.Click += new EventHandler(btnStrDelete_Click);
 			//
 			// tbLabel
 			//
-			resources.ApplyResources(this.tbLabel, "tbLabel");
-			this.tbLabel.Name = "tbLabel";
-			this.tbLabel.TextChanged += new EventHandler(
-				this.tbText_TextChanged
+			resources.ApplyResources(tbLabel, "tbLabel");
+			tbLabel.Name = "tbLabel";
+			tbLabel.TextChanged += new EventHandler(
+				tbText_TextChanged
 			);
-			this.tbLabel.Enter += new EventHandler(this.tbText_Enter);
+			tbLabel.Enter += new EventHandler(tbText_Enter);
 			//
 			// btnCancel
 			//
-			resources.ApplyResources(this.btnCancel, "btnCancel");
-			this.btnCancel.Name = "btnCancel";
-			this.btnCancel.Click += new EventHandler(this.btnCancel_Click);
+			resources.ApplyResources(btnCancel, "btnCancel");
+			btnCancel.Name = "btnCancel";
+			btnCancel.Click += new EventHandler(btnCancel_Click);
 			//
 			// btnStrPrev
 			//
-			resources.ApplyResources(this.btnStrPrev, "btnStrPrev");
-			this.btnStrPrev.Name = "btnStrPrev";
-			this.btnStrPrev.TabStop = false;
-			this.btnStrPrev.Click += new EventHandler(this.btnStrPrev_Click);
+			resources.ApplyResources(btnStrPrev, "btnStrPrev");
+			btnStrPrev.Name = "btnStrPrev";
+			btnStrPrev.TabStop = false;
+			btnStrPrev.Click += new EventHandler(btnStrPrev_Click);
 			//
 			// btnStrNext
 			//
-			resources.ApplyResources(this.btnStrNext, "btnStrNext");
-			this.btnStrNext.Name = "btnStrNext";
-			this.btnStrNext.TabStop = false;
-			this.btnStrNext.Click += new EventHandler(this.btnStrNext_Click);
+			resources.ApplyResources(btnStrNext, "btnStrNext");
+			btnStrNext.Name = "btnStrNext";
+			btnStrNext.TabStop = false;
+			btnStrNext.Click += new EventHandler(btnStrNext_Click);
 			//
 			// tlpUnused
 			//
-			resources.ApplyResources(this.tlpUnused, "tlpUnused");
-			this.tlpUnused.Controls.Add(this.label5, 0, 1);
-			this.tlpUnused.Controls.Add(this.lbID, 0, 2);
-			this.tlpUnused.Controls.Add(this.tbID, 1, 2);
-			this.tlpUnused.Controls.Add(this.lbDesc, 0, 4);
-			this.tlpUnused.Controls.Add(this.tbDesc, 1, 4);
-			this.tlpUnused.Controls.Add(this.lbDefValue, 0, 5);
-			this.tlpUnused.Controls.Add(this.tbDefValue, 1, 5);
-			this.tlpUnused.Controls.Add(this.panel1, 0, 0);
-			this.tlpUnused.Controls.Add(this.lbMinValue, 0, 6);
-			this.tlpUnused.Controls.Add(this.tbMinValue, 1, 6);
-			this.tlpUnused.Controls.Add(this.lbMaxValue, 0, 7);
-			this.tlpUnused.Controls.Add(this.tbMaxValue, 1, 7);
-			this.tlpUnused.Controls.Add(this.cbUsed, 0, 3);
-			this.tlpUnused.Name = "tlpUnused";
+			resources.ApplyResources(tlpUnused, "tlpUnused");
+			tlpUnused.Controls.Add(label5, 0, 1);
+			tlpUnused.Controls.Add(lbID, 0, 2);
+			tlpUnused.Controls.Add(tbID, 1, 2);
+			tlpUnused.Controls.Add(lbDesc, 0, 4);
+			tlpUnused.Controls.Add(tbDesc, 1, 4);
+			tlpUnused.Controls.Add(lbDefValue, 0, 5);
+			tlpUnused.Controls.Add(tbDefValue, 1, 5);
+			tlpUnused.Controls.Add(panel1, 0, 0);
+			tlpUnused.Controls.Add(lbMinValue, 0, 6);
+			tlpUnused.Controls.Add(tbMinValue, 1, 6);
+			tlpUnused.Controls.Add(lbMaxValue, 0, 7);
+			tlpUnused.Controls.Add(tbMaxValue, 1, 7);
+			tlpUnused.Controls.Add(cbUsed, 0, 3);
+			tlpUnused.Name = "tlpUnused";
 			//
 			// label5
 			//
-			resources.ApplyResources(this.label5, "label5");
-			this.tlpUnused.SetColumnSpan(this.label5, 2);
-			this.label5.Name = "label5";
+			resources.ApplyResources(label5, "label5");
+			tlpUnused.SetColumnSpan(label5, 2);
+			label5.Name = "label5";
 			//
 			// lbID
 			//
-			resources.ApplyResources(this.lbID, "lbID");
-			this.lbID.Name = "lbID";
+			resources.ApplyResources(lbID, "lbID");
+			lbID.Name = "lbID";
 			//
 			// tbID
 			//
-			resources.ApplyResources(this.tbID, "tbID");
-			this.tbID.Name = "tbID";
-			this.tbID.TextChanged += new EventHandler(this.hex32_TextChanged);
-			this.tbID.Validated += new EventHandler(this.hex32_Validated);
-			this.tbID.Enter += new EventHandler(this.tbText_Enter);
-			this.tbID.Validating += new System.ComponentModel.CancelEventHandler(
-				this.hex32_Validating
+			resources.ApplyResources(tbID, "tbID");
+			tbID.Name = "tbID";
+			tbID.TextChanged += new EventHandler(hex32_TextChanged);
+			tbID.Validated += new EventHandler(hex32_Validated);
+			tbID.Enter += new EventHandler(tbText_Enter);
+			tbID.Validating += new System.ComponentModel.CancelEventHandler(
+				hex32_Validating
 			);
 			//
 			// lbDesc
 			//
-			resources.ApplyResources(this.lbDesc, "lbDesc");
-			this.lbDesc.Name = "lbDesc";
+			resources.ApplyResources(lbDesc, "lbDesc");
+			lbDesc.Name = "lbDesc";
 			//
 			// tbDesc
 			//
-			resources.ApplyResources(this.tbDesc, "tbDesc");
-			this.tbDesc.Name = "tbDesc";
-			this.tbDesc.ReadOnly = true;
-			this.tbDesc.TextChanged += new EventHandler(this.tbDesc_TextChanged);
+			resources.ApplyResources(tbDesc, "tbDesc");
+			tbDesc.Name = "tbDesc";
+			tbDesc.ReadOnly = true;
+			tbDesc.TextChanged += new EventHandler(tbDesc_TextChanged);
 			//
 			// lbDefValue
 			//
-			resources.ApplyResources(this.lbDefValue, "lbDefValue");
-			this.lbDefValue.Name = "lbDefValue";
+			resources.ApplyResources(lbDefValue, "lbDefValue");
+			lbDefValue.Name = "lbDefValue";
 			//
 			// tbDefValue
 			//
-			resources.ApplyResources(this.tbDefValue, "tbDefValue");
-			this.tbDefValue.Name = "tbDefValue";
-			this.tbDefValue.TextChanged += new EventHandler(
-				this.hex16_TextChanged
+			resources.ApplyResources(tbDefValue, "tbDefValue");
+			tbDefValue.Name = "tbDefValue";
+			tbDefValue.TextChanged += new EventHandler(
+				hex16_TextChanged
 			);
-			this.tbDefValue.Validated += new EventHandler(this.hex16_Validated);
-			this.tbDefValue.Enter += new EventHandler(this.tbText_Enter);
-			this.tbDefValue.Validating += new System.ComponentModel.CancelEventHandler(
-				this.hex16_Validating
+			tbDefValue.Validated += new EventHandler(hex16_Validated);
+			tbDefValue.Enter += new EventHandler(tbText_Enter);
+			tbDefValue.Validating += new System.ComponentModel.CancelEventHandler(
+				hex16_Validating
 			);
 			//
 			// panel1
 			//
-			this.panel1.BorderStyle = BorderStyle.FixedSingle;
-			this.tlpUnused.SetColumnSpan(this.panel1, 2);
-			resources.ApplyResources(this.panel1, "panel1");
-			this.panel1.Name = "panel1";
+			panel1.BorderStyle = BorderStyle.FixedSingle;
+			tlpUnused.SetColumnSpan(panel1, 2);
+			resources.ApplyResources(panel1, "panel1");
+			panel1.Name = "panel1";
 			//
 			// lbMinValue
 			//
-			resources.ApplyResources(this.lbMinValue, "lbMinValue");
-			this.lbMinValue.Name = "lbMinValue";
+			resources.ApplyResources(lbMinValue, "lbMinValue");
+			lbMinValue.Name = "lbMinValue";
 			//
 			// tbMinValue
 			//
-			resources.ApplyResources(this.tbMinValue, "tbMinValue");
-			this.tbMinValue.Name = "tbMinValue";
-			this.tbMinValue.TextChanged += new EventHandler(
-				this.hex16_TextChanged
+			resources.ApplyResources(tbMinValue, "tbMinValue");
+			tbMinValue.Name = "tbMinValue";
+			tbMinValue.TextChanged += new EventHandler(
+				hex16_TextChanged
 			);
-			this.tbMinValue.Validated += new EventHandler(this.hex16_Validated);
-			this.tbMinValue.Enter += new EventHandler(this.tbText_Enter);
-			this.tbMinValue.Validating += new System.ComponentModel.CancelEventHandler(
-				this.hex16_Validating
+			tbMinValue.Validated += new EventHandler(hex16_Validated);
+			tbMinValue.Enter += new EventHandler(tbText_Enter);
+			tbMinValue.Validating += new System.ComponentModel.CancelEventHandler(
+				hex16_Validating
 			);
 			//
 			// lbMaxValue
 			//
-			resources.ApplyResources(this.lbMaxValue, "lbMaxValue");
-			this.lbMaxValue.Name = "lbMaxValue";
+			resources.ApplyResources(lbMaxValue, "lbMaxValue");
+			lbMaxValue.Name = "lbMaxValue";
 			//
 			// tbMaxValue
 			//
-			resources.ApplyResources(this.tbMaxValue, "tbMaxValue");
-			this.tbMaxValue.Name = "tbMaxValue";
-			this.tbMaxValue.TextChanged += new EventHandler(
-				this.hex16_TextChanged
+			resources.ApplyResources(tbMaxValue, "tbMaxValue");
+			tbMaxValue.Name = "tbMaxValue";
+			tbMaxValue.TextChanged += new EventHandler(
+				hex16_TextChanged
 			);
-			this.tbMaxValue.Validated += new EventHandler(this.hex16_Validated);
-			this.tbMaxValue.Enter += new EventHandler(this.tbText_Enter);
-			this.tbMaxValue.Validating += new System.ComponentModel.CancelEventHandler(
-				this.hex16_Validating
+			tbMaxValue.Validated += new EventHandler(hex16_Validated);
+			tbMaxValue.Enter += new EventHandler(tbText_Enter);
+			tbMaxValue.Validating += new System.ComponentModel.CancelEventHandler(
+				hex16_Validating
 			);
 			//
 			// cbUsed
 			//
-			resources.ApplyResources(this.cbUsed, "cbUsed");
-			this.tlpUnused.SetColumnSpan(this.cbUsed, 2);
-			this.cbUsed.Name = "cbUsed";
-			this.cbUsed.CheckedChanged += new EventHandler(
-				this.cbUsed_CheckedChanged
+			resources.ApplyResources(cbUsed, "cbUsed");
+			tlpUnused.SetColumnSpan(cbUsed, 2);
+			cbUsed.Name = "cbUsed";
+			cbUsed.CheckedChanged += new EventHandler(
+				cbUsed_CheckedChanged
 			);
 			//
 			// tbFormat
 			//
-			resources.ApplyResources(this.tbFormat, "tbFormat");
-			this.tbFormat.Name = "tbFormat";
-			this.tbFormat.ReadOnly = true;
-			this.tbFormat.TextChanged += new EventHandler(
-				this.hex32_TextChanged
+			resources.ApplyResources(tbFormat, "tbFormat");
+			tbFormat.Name = "tbFormat";
+			tbFormat.ReadOnly = true;
+			tbFormat.TextChanged += new EventHandler(
+				hex32_TextChanged
 			);
-			this.tbFormat.Validated += new EventHandler(this.hex32_Validated);
-			this.tbFormat.Enter += new EventHandler(this.tbText_Enter);
-			this.tbFormat.Validating += new System.ComponentModel.CancelEventHandler(
-				this.hex32_Validating
+			tbFormat.Validated += new EventHandler(hex32_Validated);
+			tbFormat.Enter += new EventHandler(tbText_Enter);
+			tbFormat.Validating += new System.ComponentModel.CancelEventHandler(
+				hex32_Validating
 			);
 			//
 			// lbFormat
 			//
-			resources.ApplyResources(this.lbFormat, "lbFormat");
-			this.lbFormat.Name = "lbFormat";
+			resources.ApplyResources(lbFormat, "lbFormat");
+			lbFormat.Name = "lbFormat";
 			//
 			// tbFilename
 			//
-			resources.ApplyResources(this.tbFilename, "tbFilename");
-			this.tbFilename.Name = "tbFilename";
-			this.tbFilename.TextChanged += new EventHandler(
-				this.tbText_TextChanged
+			resources.ApplyResources(tbFilename, "tbFilename");
+			tbFilename.Name = "tbFilename";
+			tbFilename.TextChanged += new EventHandler(
+				tbText_TextChanged
 			);
-			this.tbFilename.Enter += new EventHandler(this.tbText_Enter);
+			tbFilename.Enter += new EventHandler(tbText_Enter);
 			//
 			// lbFilename
 			//
-			resources.ApplyResources(this.lbFilename, "lbFilename");
-			this.lbFilename.Name = "lbFilename";
+			resources.ApplyResources(lbFilename, "lbFilename");
+			lbFilename.Name = "lbFilename";
 			//
 			// pjse_banner1
 			//
-			resources.ApplyResources(this.pjse_banner1, "pjse_banner1");
-			this.pjse_banner1.Name = "pjse_banner1";
-			this.pjse_banner1.SiblingVisible = true;
-			this.pjse_banner1.SiblingClick += new EventHandler(
-				this.pjse_banner1_SiblingClick
+			resources.ApplyResources(pjse_banner1, "pjse_banner1");
+			pjse_banner1.Name = "pjse_banner1";
+			pjse_banner1.SiblingVisible = true;
+			pjse_banner1.SiblingClick += new EventHandler(
+				pjse_banner1_SiblingClick
 			);
 			//
 			// lvTrcnItem
 			//
-			resources.ApplyResources(this.lvTrcnItem, "lvTrcnItem");
-			this.lvTrcnItem.Columns.AddRange(
+			resources.ApplyResources(lvTrcnItem, "lvTrcnItem");
+			lvTrcnItem.Columns.AddRange(
 				new ColumnHeader[]
 				{
-					this.chLine,
-					this.chValue,
-					this.chConstName,
-					this.chConstId,
-					this.chUsed,
-					this.chDefValue,
-					this.chMinValue,
-					this.chMaxValue,
+					chLine,
+					chValue,
+					chConstName,
+					chConstId,
+					chUsed,
+					chDefValue,
+					chMinValue,
+					chMaxValue,
 				}
 			);
-			this.lvTrcnItem.FullRowSelect = true;
-			this.lvTrcnItem.GridLines = true;
-			this.lvTrcnItem.HeaderStyle =
+			lvTrcnItem.FullRowSelect = true;
+			lvTrcnItem.GridLines = true;
+			lvTrcnItem.HeaderStyle =
 				ColumnHeaderStyle
 				.Nonclickable;
-			this.lvTrcnItem.HideSelection = false;
-			this.lvTrcnItem.Items.AddRange(
+			lvTrcnItem.HideSelection = false;
+			lvTrcnItem.Items.AddRange(
 				new ListViewItem[]
 				{
 					(
@@ -926,71 +926,71 @@ namespace SimPe.PackedFiles.UserInterface
 					),
 				}
 			);
-			this.lvTrcnItem.MultiSelect = false;
-			this.lvTrcnItem.Name = "lvTrcnItem";
-			this.lvTrcnItem.UseCompatibleStateImageBehavior = false;
-			this.lvTrcnItem.View = View.Details;
-			this.lvTrcnItem.Resize += new EventHandler(this.lvTrcnItem_Resize);
-			this.lvTrcnItem.SelectedIndexChanged += new EventHandler(
-				this.lvTrcnItem_SelectedIndexChanged
+			lvTrcnItem.MultiSelect = false;
+			lvTrcnItem.Name = "lvTrcnItem";
+			lvTrcnItem.UseCompatibleStateImageBehavior = false;
+			lvTrcnItem.View = View.Details;
+			lvTrcnItem.Resize += new EventHandler(lvTrcnItem_Resize);
+			lvTrcnItem.SelectedIndexChanged += new EventHandler(
+				lvTrcnItem_SelectedIndexChanged
 			);
 			//
 			// chLine
 			//
-			resources.ApplyResources(this.chLine, "chLine");
+			resources.ApplyResources(chLine, "chLine");
 			//
 			// chValue
 			//
-			resources.ApplyResources(this.chValue, "chValue");
+			resources.ApplyResources(chValue, "chValue");
 			//
 			// chConstName
 			//
-			resources.ApplyResources(this.chConstName, "chConstName");
+			resources.ApplyResources(chConstName, "chConstName");
 			//
 			// chConstId
 			//
-			resources.ApplyResources(this.chConstId, "chConstId");
+			resources.ApplyResources(chConstId, "chConstId");
 			//
 			// chUsed
 			//
-			resources.ApplyResources(this.chUsed, "chUsed");
+			resources.ApplyResources(chUsed, "chUsed");
 			//
 			// chDefValue
 			//
-			resources.ApplyResources(this.chDefValue, "chDefValue");
+			resources.ApplyResources(chDefValue, "chDefValue");
 			//
 			// chMinValue
 			//
-			resources.ApplyResources(this.chMinValue, "chMinValue");
+			resources.ApplyResources(chMinValue, "chMinValue");
 			//
 			// chMaxValue
 			//
-			resources.ApplyResources(this.chMaxValue, "chMaxValue");
+			resources.ApplyResources(chMaxValue, "chMaxValue");
 			//
 			// btSetAll
 			//
-			resources.ApplyResources(this.btSetAll, "btSetAll");
-			this.btSetAll.Name = "btSetAll";
-			this.btSetAll.UseVisualStyleBackColor = true;
-			this.btSetAll.Click += new EventHandler(this.btSetAll_Click);
+			resources.ApplyResources(btSetAll, "btSetAll");
+			btSetAll.Name = "btSetAll";
+			btSetAll.UseVisualStyleBackColor = true;
+			btSetAll.Click += new EventHandler(btSetAll_Click);
 			//
 			// TrcnForm
 			//
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = AutoScaleMode.Dpi;
-			this.Controls.Add(this.trcnPanel);
-			this.FormBorderStyle =
+			AutoScaleMode = AutoScaleMode.Dpi;
+			Controls.Add(trcnPanel);
+			FormBorderStyle =
 				FormBorderStyle
 				.SizableToolWindow;
-			this.Name = "TrcnForm";
-			this.WindowState = FormWindowState.Maximized;
-			this.trcnPanel.ResumeLayout(false);
-			this.trcnPanel.PerformLayout();
-			this.panel2.ResumeLayout(false);
-			this.panel2.PerformLayout();
-			this.tlpUnused.ResumeLayout(false);
-			this.tlpUnused.PerformLayout();
-			this.ResumeLayout(false);
+			Name = "TrcnForm";
+			WindowState = FormWindowState.Maximized;
+			trcnPanel.ResumeLayout(false);
+			trcnPanel.PerformLayout();
+			panel2.ResumeLayout(false);
+			panel2.PerformLayout();
+			tlpUnused.ResumeLayout(false);
+			tlpUnused.PerformLayout();
+			ResumeLayout(false);
 		}
 
 		#endregion
@@ -1015,22 +1015,22 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 
 			setIndex(
-				(this.lvTrcnItem.SelectedIndices.Count > 0)
-					? this.lvTrcnItem.SelectedIndices[0]
+				(lvTrcnItem.SelectedIndices.Count > 0)
+					? lvTrcnItem.SelectedIndices[0]
 					: -1
 			);
 		}
 
 		private void btnCommit_Click(object sender, EventArgs e)
 		{
-			this.Commit();
+			Commit();
 		}
 
 		private void btnCancel_Click(object sender, EventArgs e)
 		{
-			this.Cancel();
-			this.tbLabel.SelectAll();
-			this.tbLabel.Focus();
+			Cancel();
+			tbLabel.SelectAll();
+			tbLabel.Focus();
 		}
 
 		private void pjse_banner1_SiblingClick(object sender, EventArgs e)
@@ -1058,24 +1058,24 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void btnStrPrev_Click(object sender, EventArgs e)
 		{
-			this.setIndex(index - 1);
+			setIndex(index - 1);
 		}
 
 		private void btnStrNext_Click(object sender, EventArgs e)
 		{
-			this.setIndex(index + 1);
+			setIndex(index + 1);
 		}
 
 		private void btnStrAdd_Click(object sender, EventArgs e)
 		{
-			this.TrcnItemAdd();
-			this.tbLabel.SelectAll();
-			this.tbLabel.Focus();
+			TrcnItemAdd();
+			tbLabel.SelectAll();
+			tbLabel.Focus();
 		}
 
 		private void btnStrDelete_Click(object sender, EventArgs e)
 		{
-			this.TrcnItemDelete();
+			TrcnItemDelete();
 		}
 
 		private void tbText_Enter(object sender, EventArgs e)
@@ -1252,7 +1252,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 			if (wrapper.Version > 0x53)
 			{
-				currentItem.ConstDesc = this.tbDesc.Text;
+				currentItem.ConstDesc = tbDesc.Text;
 			}
 		}
 

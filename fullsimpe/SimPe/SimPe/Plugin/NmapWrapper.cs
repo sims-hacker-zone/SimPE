@@ -62,7 +62,7 @@ namespace SimPe.Plugin
 		public Nmap(IProviderRegistry provider)
 			: base()
 		{
-			this.Provider = provider;
+			Provider = provider;
 			Items = new Interfaces.Files.IPackedFileDescriptor[0];
 		}
 
@@ -114,7 +114,7 @@ namespace SimPe.Plugin
 				"---",
 				4,
 				System.Drawing.Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.view_tree.png")
 				)
 			);

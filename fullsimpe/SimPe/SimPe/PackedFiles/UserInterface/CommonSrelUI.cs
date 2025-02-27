@@ -144,199 +144,199 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(CommonSrel));
-			this.flowLayoutPanel2 = new FlowLayoutPanel();
-			this.flowLayoutPanel1 = new FlowLayoutPanel();
-			this.label91 = new Label();
-			this.cbfamtype = new ComboBox();
-			this.pbDay = new ExtProgressBar();
-			this.pbLife = new ExtProgressBar();
-			this.tableLayoutPanel1 = new TableLayoutPanel();
-			this.cbcrush = new CheckBox();
-			this.cbfriend = new CheckBox();
-			this.cbsteady = new CheckBox();
-			this.cblove = new CheckBox();
-			this.cbbuddie = new CheckBox();
-			this.cbfamily = new CheckBox();
-			this.cbengaged = new CheckBox();
-			this.cbbest = new CheckBox();
-			this.cbenemy = new CheckBox();
-			this.cbmarried = new CheckBox();
-			this.cbBFF = new CheckBox();
-			this.tbRel = new TextBox();
-			this.flowLayoutPanel2.SuspendLayout();
-			this.flowLayoutPanel1.SuspendLayout();
-			this.tableLayoutPanel1.SuspendLayout();
-			this.SuspendLayout();
+			flowLayoutPanel2 = new FlowLayoutPanel();
+			flowLayoutPanel1 = new FlowLayoutPanel();
+			label91 = new Label();
+			cbfamtype = new ComboBox();
+			pbDay = new ExtProgressBar();
+			pbLife = new ExtProgressBar();
+			tableLayoutPanel1 = new TableLayoutPanel();
+			cbcrush = new CheckBox();
+			cbfriend = new CheckBox();
+			cbsteady = new CheckBox();
+			cblove = new CheckBox();
+			cbbuddie = new CheckBox();
+			cbfamily = new CheckBox();
+			cbengaged = new CheckBox();
+			cbbest = new CheckBox();
+			cbenemy = new CheckBox();
+			cbmarried = new CheckBox();
+			cbBFF = new CheckBox();
+			tbRel = new TextBox();
+			flowLayoutPanel2.SuspendLayout();
+			flowLayoutPanel1.SuspendLayout();
+			tableLayoutPanel1.SuspendLayout();
+			SuspendLayout();
 			//
 			// flowLayoutPanel2
 			//
-			resources.ApplyResources(this.flowLayoutPanel2, "flowLayoutPanel2");
-			this.flowLayoutPanel2.Controls.Add(this.flowLayoutPanel1);
-			this.flowLayoutPanel2.Controls.Add(this.pbDay);
-			this.flowLayoutPanel2.Controls.Add(this.pbLife);
-			this.flowLayoutPanel2.Controls.Add(this.tableLayoutPanel1);
-			this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+			resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
+			flowLayoutPanel2.Controls.Add(flowLayoutPanel1);
+			flowLayoutPanel2.Controls.Add(pbDay);
+			flowLayoutPanel2.Controls.Add(pbLife);
+			flowLayoutPanel2.Controls.Add(tableLayoutPanel1);
+			flowLayoutPanel2.Name = "flowLayoutPanel2";
 			//
 			// flowLayoutPanel1
 			//
-			resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
-			this.flowLayoutPanel1.Controls.Add(this.label91);
-			this.flowLayoutPanel1.Controls.Add(this.cbfamtype);
-			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+			resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
+			flowLayoutPanel1.Controls.Add(label91);
+			flowLayoutPanel1.Controls.Add(cbfamtype);
+			flowLayoutPanel1.Name = "flowLayoutPanel1";
 			//
 			// label91
 			//
-			resources.ApplyResources(this.label91, "label91");
-			this.label91.Name = "label91";
+			resources.ApplyResources(label91, "label91");
+			label91.Name = "label91";
 			//
 			// cbfamtype
 			//
-			resources.ApplyResources(this.cbfamtype, "cbfamtype");
-			this.cbfamtype.DropDownStyle =
+			resources.ApplyResources(cbfamtype, "cbfamtype");
+			cbfamtype.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbfamtype.Name = "cbfamtype";
-			this.cbfamtype.SelectedIndexChanged += new EventHandler(
-				this.ChangedRelation
+			cbfamtype.Name = "cbfamtype";
+			cbfamtype.SelectedIndexChanged += new EventHandler(
+				ChangedRelation
 			);
 			//
 			// pbDay
 			//
-			resources.ApplyResources(this.pbDay, "pbDay");
-			this.pbDay.BackColor = Color.Transparent;
-			this.pbDay.Maximum = 200;
-			this.pbDay.Name = "pbDay";
-			this.pbDay.SelectedColor = Color.Lime;
-			this.pbDay.TokenCount = 30;
-			this.pbDay.UnselectedColor = Color.Black;
-			this.pbDay.Value = 90;
+			resources.ApplyResources(pbDay, "pbDay");
+			pbDay.BackColor = Color.Transparent;
+			pbDay.Maximum = 200;
+			pbDay.Name = "pbDay";
+			pbDay.SelectedColor = Color.Lime;
+			pbDay.TokenCount = 30;
+			pbDay.UnselectedColor = Color.Black;
+			pbDay.Value = 90;
 			//
 			// pbLife
 			//
-			resources.ApplyResources(this.pbLife, "pbLife");
-			this.pbLife.BackColor = Color.Transparent;
-			this.pbLife.Maximum = 200;
-			this.pbLife.Name = "pbLife";
-			this.pbLife.SelectedColor = Color.Lime;
-			this.pbLife.TokenCount = 30;
-			this.pbLife.UnselectedColor = Color.Black;
-			this.pbLife.Value = 90;
+			resources.ApplyResources(pbLife, "pbLife");
+			pbLife.BackColor = Color.Transparent;
+			pbLife.Maximum = 200;
+			pbLife.Name = "pbLife";
+			pbLife.SelectedColor = Color.Lime;
+			pbLife.TokenCount = 30;
+			pbLife.UnselectedColor = Color.Black;
+			pbLife.Value = 90;
 			//
 			// tableLayoutPanel1
 			//
-			resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-			this.tableLayoutPanel1.Controls.Add(this.cbcrush, 0, 0);
-			this.tableLayoutPanel1.Controls.Add(this.cbfriend, 0, 1);
-			this.tableLayoutPanel1.Controls.Add(this.cbsteady, 0, 2);
-			this.tableLayoutPanel1.Controls.Add(this.cblove, 1, 0);
-			this.tableLayoutPanel1.Controls.Add(this.cbbuddie, 1, 1);
-			this.tableLayoutPanel1.Controls.Add(this.cbfamily, 1, 2);
-			this.tableLayoutPanel1.Controls.Add(this.cbengaged, 2, 0);
-			this.tableLayoutPanel1.Controls.Add(this.cbbest, 2, 1);
-			this.tableLayoutPanel1.Controls.Add(this.cbenemy, 2, 2);
-			this.tableLayoutPanel1.Controls.Add(this.cbmarried, 3, 0);
-			this.tableLayoutPanel1.Controls.Add(this.cbBFF, 3, 1);
-			this.tableLayoutPanel1.Controls.Add(this.tbRel, 3, 3);
-			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+			resources.ApplyResources(tableLayoutPanel1, "tableLayoutPanel1");
+			tableLayoutPanel1.Controls.Add(cbcrush, 0, 0);
+			tableLayoutPanel1.Controls.Add(cbfriend, 0, 1);
+			tableLayoutPanel1.Controls.Add(cbsteady, 0, 2);
+			tableLayoutPanel1.Controls.Add(cblove, 1, 0);
+			tableLayoutPanel1.Controls.Add(cbbuddie, 1, 1);
+			tableLayoutPanel1.Controls.Add(cbfamily, 1, 2);
+			tableLayoutPanel1.Controls.Add(cbengaged, 2, 0);
+			tableLayoutPanel1.Controls.Add(cbbest, 2, 1);
+			tableLayoutPanel1.Controls.Add(cbenemy, 2, 2);
+			tableLayoutPanel1.Controls.Add(cbmarried, 3, 0);
+			tableLayoutPanel1.Controls.Add(cbBFF, 3, 1);
+			tableLayoutPanel1.Controls.Add(tbRel, 3, 3);
+			tableLayoutPanel1.Name = "tableLayoutPanel1";
 			//
 			// cbcrush
 			//
-			resources.ApplyResources(this.cbcrush, "cbcrush");
-			this.cbcrush.Name = "cbcrush";
-			this.cbcrush.UseVisualStyleBackColor = false;
-			this.cbcrush.CheckedChanged += new EventHandler(this.ChangedState);
+			resources.ApplyResources(cbcrush, "cbcrush");
+			cbcrush.Name = "cbcrush";
+			cbcrush.UseVisualStyleBackColor = false;
+			cbcrush.CheckedChanged += new EventHandler(ChangedState);
 			//
 			// cbfriend
 			//
-			resources.ApplyResources(this.cbfriend, "cbfriend");
-			this.cbfriend.Name = "cbfriend";
-			this.cbfriend.UseVisualStyleBackColor = false;
-			this.cbfriend.CheckedChanged += new EventHandler(this.ChangedState);
+			resources.ApplyResources(cbfriend, "cbfriend");
+			cbfriend.Name = "cbfriend";
+			cbfriend.UseVisualStyleBackColor = false;
+			cbfriend.CheckedChanged += new EventHandler(ChangedState);
 			//
 			// cbsteady
 			//
-			resources.ApplyResources(this.cbsteady, "cbsteady");
-			this.cbsteady.Name = "cbsteady";
-			this.cbsteady.UseVisualStyleBackColor = false;
-			this.cbsteady.CheckedChanged += new EventHandler(this.ChangedState);
+			resources.ApplyResources(cbsteady, "cbsteady");
+			cbsteady.Name = "cbsteady";
+			cbsteady.UseVisualStyleBackColor = false;
+			cbsteady.CheckedChanged += new EventHandler(ChangedState);
 			//
 			// cblove
 			//
-			resources.ApplyResources(this.cblove, "cblove");
-			this.cblove.Name = "cblove";
-			this.cblove.UseVisualStyleBackColor = false;
-			this.cblove.CheckedChanged += new EventHandler(this.ChangedState);
+			resources.ApplyResources(cblove, "cblove");
+			cblove.Name = "cblove";
+			cblove.UseVisualStyleBackColor = false;
+			cblove.CheckedChanged += new EventHandler(ChangedState);
 			//
 			// cbbuddie
 			//
-			resources.ApplyResources(this.cbbuddie, "cbbuddie");
-			this.cbbuddie.Name = "cbbuddie";
-			this.cbbuddie.UseVisualStyleBackColor = false;
-			this.cbbuddie.CheckedChanged += new EventHandler(this.ChangedState);
+			resources.ApplyResources(cbbuddie, "cbbuddie");
+			cbbuddie.Name = "cbbuddie";
+			cbbuddie.UseVisualStyleBackColor = false;
+			cbbuddie.CheckedChanged += new EventHandler(ChangedState);
 			//
 			// cbfamily
 			//
-			resources.ApplyResources(this.cbfamily, "cbfamily");
-			this.cbfamily.Name = "cbfamily";
-			this.cbfamily.UseVisualStyleBackColor = false;
-			this.cbfamily.CheckedChanged += new EventHandler(this.ChangedState);
+			resources.ApplyResources(cbfamily, "cbfamily");
+			cbfamily.Name = "cbfamily";
+			cbfamily.UseVisualStyleBackColor = false;
+			cbfamily.CheckedChanged += new EventHandler(ChangedState);
 			//
 			// cbengaged
 			//
-			resources.ApplyResources(this.cbengaged, "cbengaged");
-			this.cbengaged.Name = "cbengaged";
-			this.cbengaged.UseVisualStyleBackColor = false;
-			this.cbengaged.CheckedChanged += new EventHandler(this.ChangedState);
+			resources.ApplyResources(cbengaged, "cbengaged");
+			cbengaged.Name = "cbengaged";
+			cbengaged.UseVisualStyleBackColor = false;
+			cbengaged.CheckedChanged += new EventHandler(ChangedState);
 			//
 			// cbbest
 			//
-			resources.ApplyResources(this.cbbest, "cbbest");
-			this.cbbest.Name = "cbbest";
-			this.cbbest.UseVisualStyleBackColor = false;
-			this.cbbest.CheckedChanged += new EventHandler(this.ChangedState);
+			resources.ApplyResources(cbbest, "cbbest");
+			cbbest.Name = "cbbest";
+			cbbest.UseVisualStyleBackColor = false;
+			cbbest.CheckedChanged += new EventHandler(ChangedState);
 			//
 			// cbenemy
 			//
-			resources.ApplyResources(this.cbenemy, "cbenemy");
-			this.cbenemy.Name = "cbenemy";
-			this.cbenemy.UseVisualStyleBackColor = false;
-			this.cbenemy.CheckedChanged += new EventHandler(this.ChangedState);
+			resources.ApplyResources(cbenemy, "cbenemy");
+			cbenemy.Name = "cbenemy";
+			cbenemy.UseVisualStyleBackColor = false;
+			cbenemy.CheckedChanged += new EventHandler(ChangedState);
 			//
 			// cbmarried
 			//
-			resources.ApplyResources(this.cbmarried, "cbmarried");
-			this.cbmarried.Name = "cbmarried";
-			this.cbmarried.UseVisualStyleBackColor = false;
-			this.cbmarried.CheckedChanged += new EventHandler(this.ChangedState);
+			resources.ApplyResources(cbmarried, "cbmarried");
+			cbmarried.Name = "cbmarried";
+			cbmarried.UseVisualStyleBackColor = false;
+			cbmarried.CheckedChanged += new EventHandler(ChangedState);
 			//
 			// cbBFF
 			//
-			resources.ApplyResources(this.cbBFF, "cbBFF");
-			this.cbBFF.Name = "cbBFF";
-			this.cbBFF.UseVisualStyleBackColor = false;
-			this.cbBFF.CheckedChanged += new EventHandler(this.ChangedState);
+			resources.ApplyResources(cbBFF, "cbBFF");
+			cbBFF.Name = "cbBFF";
+			cbBFF.UseVisualStyleBackColor = false;
+			cbBFF.CheckedChanged += new EventHandler(ChangedState);
 			//
 			// tbRel
 			//
-			this.tbRel.BorderStyle = BorderStyle.None;
-			resources.ApplyResources(this.tbRel, "tbRel");
-			this.tbRel.Name = "tbRel";
-			this.tbRel.TextChanged += new EventHandler(this.ChangedRelationText);
+			tbRel.BorderStyle = BorderStyle.None;
+			resources.ApplyResources(tbRel, "tbRel");
+			tbRel.Name = "tbRel";
+			tbRel.TextChanged += new EventHandler(ChangedRelationText);
 			//
 			// CommonSrel
 			//
-			this.AutoScaleMode = AutoScaleMode.Inherit;
+			AutoScaleMode = AutoScaleMode.Inherit;
 			resources.ApplyResources(this, "$this");
-			this.Controls.Add(this.flowLayoutPanel2);
-			this.Name = "CommonSrel";
-			this.flowLayoutPanel2.ResumeLayout(false);
-			this.flowLayoutPanel2.PerformLayout();
-			this.flowLayoutPanel1.ResumeLayout(false);
-			this.flowLayoutPanel1.PerformLayout();
-			this.tableLayoutPanel1.ResumeLayout(false);
-			this.tableLayoutPanel1.PerformLayout();
-			this.ResumeLayout(false);
-			this.PerformLayout();
+			Controls.Add(flowLayoutPanel2);
+			Name = "CommonSrel";
+			flowLayoutPanel2.ResumeLayout(false);
+			flowLayoutPanel2.PerformLayout();
+			flowLayoutPanel1.ResumeLayout(false);
+			flowLayoutPanel1.PerformLayout();
+			tableLayoutPanel1.ResumeLayout(false);
+			tableLayoutPanel1.PerformLayout();
+			ResumeLayout(false);
+			PerformLayout();
 		}
 		#endregion
 
@@ -359,43 +359,43 @@ namespace SimPe.PackedFiles.UserInterface
 
 		protected void InitComboBox()
 		{
-			this.cbfamtype.Items.Clear();
-			this.cbfamtype.Items.Add(
+			cbfamtype.Items.Clear();
+			cbfamtype.Items.Add(
 				new LocalizedRelationshipTypes(
 					MetaData.RelationshipTypes.Unset_Unknown
 				)
 			);
-			this.cbfamtype.Items.Add(
+			cbfamtype.Items.Add(
 				new LocalizedRelationshipTypes(MetaData.RelationshipTypes.Aunt)
 			);
-			this.cbfamtype.Items.Add(
+			cbfamtype.Items.Add(
 				new LocalizedRelationshipTypes(MetaData.RelationshipTypes.Child)
 			);
-			this.cbfamtype.Items.Add(
+			cbfamtype.Items.Add(
 				new LocalizedRelationshipTypes(MetaData.RelationshipTypes.Cousin)
 			);
-			this.cbfamtype.Items.Add(
+			cbfamtype.Items.Add(
 				new LocalizedRelationshipTypes(
 					MetaData.RelationshipTypes.Grandchild
 				)
 			);
-			this.cbfamtype.Items.Add(
+			cbfamtype.Items.Add(
 				new LocalizedRelationshipTypes(
 					MetaData.RelationshipTypes.Gradparent
 				)
 			);
-			this.cbfamtype.Items.Add(
+			cbfamtype.Items.Add(
 				new LocalizedRelationshipTypes(
 					MetaData.RelationshipTypes.Nice_Nephew
 				)
 			);
-			this.cbfamtype.Items.Add(
+			cbfamtype.Items.Add(
 				new LocalizedRelationshipTypes(MetaData.RelationshipTypes.Parent)
 			);
-			this.cbfamtype.Items.Add(
+			cbfamtype.Items.Add(
 				new LocalizedRelationshipTypes(MetaData.RelationshipTypes.Sibling)
 			);
-			this.cbfamtype.Items.Add(
+			cbfamtype.Items.Add(
 				new LocalizedRelationshipTypes(MetaData.RelationshipTypes.Spouses)
 			);
 		}
@@ -408,16 +408,16 @@ namespace SimPe.PackedFiles.UserInterface
 			if (Srel == null)
 			{
 				intern = true;
-				this.pbDay.Value = this.pbLife.Value = 0;
-				this.pbDay.SelectedColor = this.pbLife.SelectedColor = Color.Lime;
-				this.cbfamtype.SelectedIndex = 0;
-				this.Enabled = false;
+				pbDay.Value = pbLife.Value = 0;
+				pbDay.SelectedColor = pbLife.SelectedColor = Color.Lime;
+				cbfamtype.SelectedIndex = 0;
+				Enabled = false;
 				return;
 			}
-			this.Enabled = true;
+			Enabled = true;
 			intern = true;
-			this.pbDay.Value = Srel.Shortterm;
-			this.pbLife.Value = Srel.Longterm;
+			pbDay.Value = Srel.Shortterm;
+			pbLife.Value = Srel.Longterm;
 			Boolset bs = Srel.RelationState.Value;
 			for (int i = 0; i < bs.Length; i++)
 			{
@@ -450,22 +450,22 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 			}
 
-			this.cbfamtype.SelectedIndex = 0;
-			for (int i = 1; i < this.cbfamtype.Items.Count; i++)
+			cbfamtype.SelectedIndex = 0;
+			for (int i = 1; i < cbfamtype.Items.Count; i++)
 			{
 				if (
-					this.cbfamtype.Items[i]
+					cbfamtype.Items[i]
 					== new LocalizedRelationshipTypes(srel.FamilyRelation)
 				)
 				{
-					this.cbfamtype.SelectedIndex = i;
+					cbfamtype.SelectedIndex = i;
 					break;
 				}
 			}
 
-			this.tbRel.Text = "0x" + Helper.HexString((uint)srel.FamilyRelation);
+			tbRel.Text = "0x" + Helper.HexString((uint)srel.FamilyRelation);
 
-			if (this.cblove.Checked)
+			if (cblove.Checked)
 			{
 				if (pbLife.Value > 90)
 				{
@@ -583,9 +583,9 @@ namespace SimPe.PackedFiles.UserInterface
 				return;
 			}
 
-			if (this.cbfamtype.SelectedIndex >= 0)
+			if (cbfamtype.SelectedIndex >= 0)
 			{
-				this.tbRel.Text =
+				tbRel.Text =
 					"0x"
 					+ Helper.HexString(
 						(uint)(
@@ -605,7 +605,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 
 			Srel.FamilyRelation = (LocalizedRelationshipTypes)
-				Helper.StringToUInt32(this.tbRel.Text, (uint)Srel.FamilyRelation, 16);
+				Helper.StringToUInt32(tbRel.Text, (uint)Srel.FamilyRelation, 16);
 			Srel.Changed = true;
 		}
 
@@ -634,7 +634,7 @@ namespace SimPe.PackedFiles.UserInterface
 				Srel.Changed = true;
 			}
 
-			if (this.cblove.Checked)
+			if (cblove.Checked)
 			{
 				if (pbLife.Value > 90)
 				{

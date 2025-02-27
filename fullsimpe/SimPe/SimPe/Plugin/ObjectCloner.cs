@@ -36,7 +36,7 @@ namespace SimPe.Plugin
 
 			public uint Type => (uint)Tag[0];
 
-			public uint Instance => this.Id;
+			public uint Instance => Id;
 
 			public string Extension => Name;
 		}
@@ -168,7 +168,7 @@ namespace SimPe.Plugin
 		/// <param name="package">The Package that should receive the Clone</param>
 		public ObjectCloner(IPackageFile package)
 		{
-			this.Package = package;
+			Package = package;
 			Setup = new CloneSettings();
 		}
 
@@ -354,7 +354,7 @@ namespace SimPe.Plugin
 			ArrayList list = new ArrayList();
 
 			IPackedFileDescriptor[] pfds =
-				this.Package.FindFiles(Data.MetaData.STRING_FILE);
+				Package.FindFiles(Data.MetaData.STRING_FILE);
 			foreach (IPackedFileDescriptor pfd in pfds)
 			{
 				if (instances.Contains(pfd.Instance))
@@ -423,7 +423,7 @@ namespace SimPe.Plugin
 				WaitingScreen.UpdateMessage("Walking Scenegraph");
 			}
 
-			Scenegraph sg = new Scenegraph(modelnames, exclude, this.Setup);
+			Scenegraph sg = new Scenegraph(modelnames, exclude, Setup);
 			if (
 				(Setup.BaseResource & CloneSettings.BaseResourceType.Ref)
 				== CloneSettings.BaseResourceType.Ref
@@ -473,7 +473,7 @@ namespace SimPe.Plugin
 					WaitingScreen.UpdateMessage("Scanning for Animations");
 				}
 
-				sg.AddAnims(this.GetAnimNames());
+				sg.AddAnims(GetAnimNames());
 			}
 			if (WaitingScreen.Running)
 			{
@@ -513,7 +513,7 @@ namespace SimPe.Plugin
 					WaitingScreen.UpdateMessage("Fixing MMAT Files");
 				}
 
-				this.UpdateMMATGuids(this.GetGuidList(), this.GetPrimaryGuid());
+				UpdateMMATGuids(GetGuidList(), GetPrimaryGuid());
 			}
 		}
 

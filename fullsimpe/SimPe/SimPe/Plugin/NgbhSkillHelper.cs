@@ -35,10 +35,10 @@ namespace SimPe.Plugin
 			try
 			{
 				tm = ThemeManager.Global.CreateChild();
-				tm.AddControl(this.xpBadges);
-				tm.AddControl(this.xpSkills);
+				tm.AddControl(xpBadges);
+				tm.AddControl(xpSkills);
 
-				this.xpBadges.Visible = (
+				xpBadges.Visible = (
 					PathProvider.Global.EPInstalled >= 3
 					|| PathProvider.Global.STInstalled >= 28
 				);
@@ -78,307 +78,307 @@ namespace SimPe.Plugin
 		{
 			System.Resources.ResourceManager resources =
 				new System.Resources.ResourceManager(typeof(NgbhSkillHelper));
-			this.badges = new NgbhSkillHelperElement();
-			this.xpBadges = new Ambertation.Windows.Forms.XPTaskBoxSimple();
-			this.xpSkills = new Ambertation.Windows.Forms.XPTaskBoxSimple();
-			this.skills = new NgbhSkillHelperElement();
-			this.xpBadges.SuspendLayout();
-			this.xpSkills.SuspendLayout();
-			this.SuspendLayout();
+			badges = new NgbhSkillHelperElement();
+			xpBadges = new Ambertation.Windows.Forms.XPTaskBoxSimple();
+			xpSkills = new Ambertation.Windows.Forms.XPTaskBoxSimple();
+			skills = new NgbhSkillHelperElement();
+			xpBadges.SuspendLayout();
+			xpSkills.SuspendLayout();
+			SuspendLayout();
 			//
 			// badges
 			//
-			this.badges.AccessibleDescription = resources.GetString(
+			badges.AccessibleDescription = resources.GetString(
 				"badges.AccessibleDescription"
 			);
-			this.badges.AccessibleName = resources.GetString("badges.AccessibleName");
-			this.badges.Anchor = (
+			badges.AccessibleName = resources.GetString("badges.AccessibleName");
+			badges.Anchor = (
 				(AnchorStyles)(
 					resources.GetObject("badges.Anchor")
 				)
 			);
-			this.badges.AutoScroll = ((bool)(resources.GetObject("badges.AutoScroll")));
-			this.badges.AutoScrollMargin = (
+			badges.AutoScroll = ((bool)(resources.GetObject("badges.AutoScroll")));
+			badges.AutoScrollMargin = (
 				(Size)(resources.GetObject("badges.AutoScrollMargin"))
 			);
-			this.badges.AutoScrollMinSize = (
+			badges.AutoScrollMinSize = (
 				(Size)(resources.GetObject("badges.AutoScrollMinSize"))
 			);
-			this.badges.BackgroundImage = (
+			badges.BackgroundImage = (
 				(Image)(resources.GetObject("badges.BackgroundImage"))
 			);
-			this.badges.Dock = (
+			badges.Dock = (
 				(DockStyle)(resources.GetObject("badges.Dock"))
 			);
-			this.badges.Enabled = ((bool)(resources.GetObject("badges.Enabled")));
-			this.badges.Font = (
+			badges.Enabled = ((bool)(resources.GetObject("badges.Enabled")));
+			badges.Font = (
 				(Font)(resources.GetObject("badges.Font"))
 			);
-			this.badges.ImeMode = (
+			badges.ImeMode = (
 				(ImeMode)(resources.GetObject("badges.ImeMode"))
 			);
-			this.badges.Location = (
+			badges.Location = (
 				(Point)(resources.GetObject("badges.Location"))
 			);
-			this.badges.Name = "badges";
-			this.badges.NgbhResource = null;
-			this.badges.RightToLeft = (
+			badges.Name = "badges";
+			badges.NgbhResource = null;
+			badges.RightToLeft = (
 				(RightToLeft)(
 					resources.GetObject("badges.RightToLeft")
 				)
 			);
-			this.badges.ShowBadges = true;
-			this.badges.ShowSkills = false;
-			this.badges.ShowToddlerSkills = false;
-			this.badges.Size = (
+			badges.ShowBadges = true;
+			badges.ShowSkills = false;
+			badges.ShowToddlerSkills = false;
+			badges.Size = (
 				(Size)(resources.GetObject("badges.Size"))
 			);
-			this.badges.Slot = null;
-			this.badges.TabIndex = ((int)(resources.GetObject("badges.TabIndex")));
-			this.badges.Visible = ((bool)(resources.GetObject("badges.Visible")));
-			this.badges.AddedNewItem += new EventHandler(
-				this.skills_AddedNewItem
+			badges.Slot = null;
+			badges.TabIndex = ((int)(resources.GetObject("badges.TabIndex")));
+			badges.Visible = ((bool)(resources.GetObject("badges.Visible")));
+			badges.AddedNewItem += new EventHandler(
+				skills_AddedNewItem
 			);
-			this.badges.ChangedItem += new EventHandler(this.skills_ChangedItem);
+			badges.ChangedItem += new EventHandler(skills_ChangedItem);
 			//
 			// xpBadges
 			//
-			this.xpBadges.AccessibleDescription = resources.GetString(
+			xpBadges.AccessibleDescription = resources.GetString(
 				"xpBadges.AccessibleDescription"
 			);
-			this.xpBadges.AccessibleName = resources.GetString(
+			xpBadges.AccessibleName = resources.GetString(
 				"xpBadges.AccessibleName"
 			);
-			this.xpBadges.Anchor = (
+			xpBadges.Anchor = (
 				(AnchorStyles)(
 					resources.GetObject("xpBadges.Anchor")
 				)
 			);
-			this.xpBadges.AutoScroll = (
+			xpBadges.AutoScroll = (
 				(bool)(resources.GetObject("xpBadges.AutoScroll"))
 			);
-			this.xpBadges.AutoScrollMargin = (
+			xpBadges.AutoScrollMargin = (
 				(Size)(resources.GetObject("xpBadges.AutoScrollMargin"))
 			);
-			this.xpBadges.AutoScrollMinSize = (
+			xpBadges.AutoScrollMinSize = (
 				(Size)(resources.GetObject("xpBadges.AutoScrollMinSize"))
 			);
-			this.xpBadges.BackColor = Color.Transparent;
-			this.xpBadges.BackgroundImage = (
+			xpBadges.BackColor = Color.Transparent;
+			xpBadges.BackgroundImage = (
 				(Image)(resources.GetObject("xpBadges.BackgroundImage"))
 			);
-			this.xpBadges.BodyColor = SystemColors.InactiveCaptionText;
-			this.xpBadges.BorderColor = SystemColors.Window;
-			this.xpBadges.Controls.Add(this.badges);
-			this.xpBadges.Dock = (
+			xpBadges.BodyColor = SystemColors.InactiveCaptionText;
+			xpBadges.BorderColor = SystemColors.Window;
+			xpBadges.Controls.Add(badges);
+			xpBadges.Dock = (
 				(DockStyle)(resources.GetObject("xpBadges.Dock"))
 			);
-			this.xpBadges.DockPadding.Bottom = 4;
-			this.xpBadges.DockPadding.Left = 4;
-			this.xpBadges.DockPadding.Right = 4;
-			this.xpBadges.DockPadding.Top = 44;
-			this.xpBadges.Enabled = ((bool)(resources.GetObject("xpBadges.Enabled")));
-			this.xpBadges.Font = (
+			xpBadges.DockPadding.Bottom = 4;
+			xpBadges.DockPadding.Left = 4;
+			xpBadges.DockPadding.Right = 4;
+			xpBadges.DockPadding.Top = 44;
+			xpBadges.Enabled = ((bool)(resources.GetObject("xpBadges.Enabled")));
+			xpBadges.Font = (
 				(Font)(resources.GetObject("xpBadges.Font"))
 			);
-			this.xpBadges.HeaderFont = new Font(
+			xpBadges.HeaderFont = new Font(
 				"Microsoft Sans Serif",
 				10.25F,
 				FontStyle.Bold
 			);
-			this.xpBadges.HeaderText = resources.GetString("xpBadges.HeaderText");
-			this.xpBadges.HeaderTextColor = SystemColors.ControlText;
-			this.xpBadges.Icon = (
+			xpBadges.HeaderText = resources.GetString("xpBadges.HeaderText");
+			xpBadges.HeaderTextColor = SystemColors.ControlText;
+			xpBadges.Icon = (
 				(Image)(resources.GetObject("xpBadges.Icon"))
 			);
-			this.xpBadges.IconLocation = new Point(4, 0);
-			this.xpBadges.IconSize = new Size(48, 48);
-			this.xpBadges.ImeMode = (
+			xpBadges.IconLocation = new Point(4, 0);
+			xpBadges.IconSize = new Size(48, 48);
+			xpBadges.ImeMode = (
 				(ImeMode)(resources.GetObject("xpBadges.ImeMode"))
 			);
-			this.xpBadges.LeftHeaderColor = SystemColors.ControlDark;
-			this.xpBadges.Location = (
+			xpBadges.LeftHeaderColor = SystemColors.ControlDark;
+			xpBadges.Location = (
 				(Point)(resources.GetObject("xpBadges.Location"))
 			);
-			this.xpBadges.Name = "xpBadges";
-			this.xpBadges.RightHeaderColor = SystemColors.ControlDark;
-			this.xpBadges.RightToLeft = (
+			xpBadges.Name = "xpBadges";
+			xpBadges.RightHeaderColor = SystemColors.ControlDark;
+			xpBadges.RightToLeft = (
 				(RightToLeft)(
 					resources.GetObject("xpBadges.RightToLeft")
 				)
 			);
-			this.xpBadges.Size = (
+			xpBadges.Size = (
 				(Size)(resources.GetObject("xpBadges.Size"))
 			);
-			this.xpBadges.TabIndex = ((int)(resources.GetObject("xpBadges.TabIndex")));
-			this.xpBadges.Text = resources.GetString("xpBadges.Text");
-			this.xpBadges.Visible = ((bool)(resources.GetObject("xpBadges.Visible")));
+			xpBadges.TabIndex = ((int)(resources.GetObject("xpBadges.TabIndex")));
+			xpBadges.Text = resources.GetString("xpBadges.Text");
+			xpBadges.Visible = ((bool)(resources.GetObject("xpBadges.Visible")));
 			//
 			// xpSkills
 			//
-			this.xpSkills.AccessibleDescription = resources.GetString(
+			xpSkills.AccessibleDescription = resources.GetString(
 				"xpSkills.AccessibleDescription"
 			);
-			this.xpSkills.AccessibleName = resources.GetString(
+			xpSkills.AccessibleName = resources.GetString(
 				"xpSkills.AccessibleName"
 			);
-			this.xpSkills.Anchor = (
+			xpSkills.Anchor = (
 				(AnchorStyles)(
 					resources.GetObject("xpSkills.Anchor")
 				)
 			);
-			this.xpSkills.AutoScroll = (
+			xpSkills.AutoScroll = (
 				(bool)(resources.GetObject("xpSkills.AutoScroll"))
 			);
-			this.xpSkills.AutoScrollMargin = (
+			xpSkills.AutoScrollMargin = (
 				(Size)(resources.GetObject("xpSkills.AutoScrollMargin"))
 			);
-			this.xpSkills.AutoScrollMinSize = (
+			xpSkills.AutoScrollMinSize = (
 				(Size)(resources.GetObject("xpSkills.AutoScrollMinSize"))
 			);
-			this.xpSkills.BackColor = Color.Transparent;
-			this.xpSkills.BackgroundImage = (
+			xpSkills.BackColor = Color.Transparent;
+			xpSkills.BackgroundImage = (
 				(Image)(resources.GetObject("xpSkills.BackgroundImage"))
 			);
-			this.xpSkills.BodyColor = SystemColors.ControlLight;
-			this.xpSkills.BorderColor = SystemColors.ControlDarkDark;
-			this.xpSkills.Controls.Add(this.skills);
-			this.xpSkills.Dock = (
+			xpSkills.BodyColor = SystemColors.ControlLight;
+			xpSkills.BorderColor = SystemColors.ControlDarkDark;
+			xpSkills.Controls.Add(skills);
+			xpSkills.Dock = (
 				(DockStyle)(resources.GetObject("xpSkills.Dock"))
 			);
-			this.xpSkills.DockPadding.Bottom = 4;
-			this.xpSkills.DockPadding.Left = 4;
-			this.xpSkills.DockPadding.Right = 4;
-			this.xpSkills.DockPadding.Top = 44;
-			this.xpSkills.Enabled = ((bool)(resources.GetObject("xpSkills.Enabled")));
-			this.xpSkills.Font = (
+			xpSkills.DockPadding.Bottom = 4;
+			xpSkills.DockPadding.Left = 4;
+			xpSkills.DockPadding.Right = 4;
+			xpSkills.DockPadding.Top = 44;
+			xpSkills.Enabled = ((bool)(resources.GetObject("xpSkills.Enabled")));
+			xpSkills.Font = (
 				(Font)(resources.GetObject("xpSkills.Font"))
 			);
-			this.xpSkills.HeaderFont = new Font(
+			xpSkills.HeaderFont = new Font(
 				"Microsoft Sans Serif",
 				10.25F,
 				FontStyle.Bold
 			);
-			this.xpSkills.HeaderText = resources.GetString("xpSkills.HeaderText");
-			this.xpSkills.HeaderTextColor = SystemColors.ControlText;
-			this.xpSkills.Icon = (
+			xpSkills.HeaderText = resources.GetString("xpSkills.HeaderText");
+			xpSkills.HeaderTextColor = SystemColors.ControlText;
+			xpSkills.Icon = (
 				(Image)(resources.GetObject("xpSkills.Icon"))
 			);
-			this.xpSkills.IconLocation = new Point(4, 0);
-			this.xpSkills.IconSize = new Size(48, 48);
-			this.xpSkills.ImeMode = (
+			xpSkills.IconLocation = new Point(4, 0);
+			xpSkills.IconSize = new Size(48, 48);
+			xpSkills.ImeMode = (
 				(ImeMode)(resources.GetObject("xpSkills.ImeMode"))
 			);
-			this.xpSkills.LeftHeaderColor = SystemColors.ControlDark;
-			this.xpSkills.Location = (
+			xpSkills.LeftHeaderColor = SystemColors.ControlDark;
+			xpSkills.Location = (
 				(Point)(resources.GetObject("xpSkills.Location"))
 			);
-			this.xpSkills.Name = "xpSkills";
-			this.xpSkills.RightHeaderColor = SystemColors.ControlDark;
-			this.xpSkills.RightToLeft = (
+			xpSkills.Name = "xpSkills";
+			xpSkills.RightHeaderColor = SystemColors.ControlDark;
+			xpSkills.RightToLeft = (
 				(RightToLeft)(
 					resources.GetObject("xpSkills.RightToLeft")
 				)
 			);
-			this.xpSkills.Size = (
+			xpSkills.Size = (
 				(Size)(resources.GetObject("xpSkills.Size"))
 			);
-			this.xpSkills.TabIndex = ((int)(resources.GetObject("xpSkills.TabIndex")));
-			this.xpSkills.Text = resources.GetString("xpSkills.Text");
-			this.xpSkills.Visible = ((bool)(resources.GetObject("xpSkills.Visible")));
+			xpSkills.TabIndex = ((int)(resources.GetObject("xpSkills.TabIndex")));
+			xpSkills.Text = resources.GetString("xpSkills.Text");
+			xpSkills.Visible = ((bool)(resources.GetObject("xpSkills.Visible")));
 			//
 			// skills
 			//
-			this.skills.AccessibleDescription = resources.GetString(
+			skills.AccessibleDescription = resources.GetString(
 				"skills.AccessibleDescription"
 			);
-			this.skills.AccessibleName = resources.GetString("skills.AccessibleName");
-			this.skills.Anchor = (
+			skills.AccessibleName = resources.GetString("skills.AccessibleName");
+			skills.Anchor = (
 				(AnchorStyles)(
 					resources.GetObject("skills.Anchor")
 				)
 			);
-			this.skills.AutoScroll = ((bool)(resources.GetObject("skills.AutoScroll")));
-			this.skills.AutoScrollMargin = (
+			skills.AutoScroll = ((bool)(resources.GetObject("skills.AutoScroll")));
+			skills.AutoScrollMargin = (
 				(Size)(resources.GetObject("skills.AutoScrollMargin"))
 			);
-			this.skills.AutoScrollMinSize = (
+			skills.AutoScrollMinSize = (
 				(Size)(resources.GetObject("skills.AutoScrollMinSize"))
 			);
-			this.skills.BackgroundImage = (
+			skills.BackgroundImage = (
 				(Image)(resources.GetObject("skills.BackgroundImage"))
 			);
-			this.skills.Dock = (
+			skills.Dock = (
 				(DockStyle)(resources.GetObject("skills.Dock"))
 			);
-			this.skills.Enabled = ((bool)(resources.GetObject("skills.Enabled")));
-			this.skills.Font = (
+			skills.Enabled = ((bool)(resources.GetObject("skills.Enabled")));
+			skills.Font = (
 				(Font)(resources.GetObject("skills.Font"))
 			);
-			this.skills.ImeMode = (
+			skills.ImeMode = (
 				(ImeMode)(resources.GetObject("skills.ImeMode"))
 			);
-			this.skills.Location = (
+			skills.Location = (
 				(Point)(resources.GetObject("skills.Location"))
 			);
-			this.skills.Name = "skills";
-			this.skills.NgbhResource = null;
-			this.skills.RightToLeft = (
+			skills.Name = "skills";
+			skills.NgbhResource = null;
+			skills.RightToLeft = (
 				(RightToLeft)(
 					resources.GetObject("skills.RightToLeft")
 				)
 			);
-			this.skills.ShowBadges = false;
-			this.skills.ShowSkills = true;
-			this.skills.ShowToddlerSkills = true;
-			this.skills.Size = (
+			skills.ShowBadges = false;
+			skills.ShowSkills = true;
+			skills.ShowToddlerSkills = true;
+			skills.Size = (
 				(Size)(resources.GetObject("skills.Size"))
 			);
-			this.skills.Slot = null;
-			this.skills.TabIndex = ((int)(resources.GetObject("skills.TabIndex")));
-			this.skills.Visible = ((bool)(resources.GetObject("skills.Visible")));
-			this.skills.AddedNewItem += new EventHandler(
-				this.skills_AddedNewItem
+			skills.Slot = null;
+			skills.TabIndex = ((int)(resources.GetObject("skills.TabIndex")));
+			skills.Visible = ((bool)(resources.GetObject("skills.Visible")));
+			skills.AddedNewItem += new EventHandler(
+				skills_AddedNewItem
 			);
-			this.skills.ChangedItem += new EventHandler(this.skills_ChangedItem);
+			skills.ChangedItem += new EventHandler(skills_ChangedItem);
 			//
 			// NgbhSkillHelper
 			//
-			this.AccessibleDescription = resources.GetString(
+			AccessibleDescription = resources.GetString(
 				"$this.AccessibleDescription"
 			);
-			this.AccessibleName = resources.GetString("$this.AccessibleName");
-			this.AutoScroll = ((bool)(resources.GetObject("$this.AutoScroll")));
-			this.AutoScrollMargin = (
+			AccessibleName = resources.GetString("$this.AccessibleName");
+			AutoScroll = ((bool)(resources.GetObject("$this.AutoScroll")));
+			AutoScrollMargin = (
 				(Size)(resources.GetObject("$this.AutoScrollMargin"))
 			);
-			this.AutoScrollMinSize = (
+			AutoScrollMinSize = (
 				(Size)(resources.GetObject("$this.AutoScrollMinSize"))
 			);
-			this.BackgroundImage = (
+			BackgroundImage = (
 				(Image)(resources.GetObject("$this.BackgroundImage"))
 			);
-			this.Controls.Add(this.xpSkills);
-			this.Controls.Add(this.xpBadges);
-			this.DockPadding.All = 8;
-			this.Enabled = ((bool)(resources.GetObject("$this.Enabled")));
-			this.Font = ((Font)(resources.GetObject("$this.Font")));
-			this.ImeMode = (
+			Controls.Add(xpSkills);
+			Controls.Add(xpBadges);
+			DockPadding.All = 8;
+			Enabled = ((bool)(resources.GetObject("$this.Enabled")));
+			Font = ((Font)(resources.GetObject("$this.Font")));
+			ImeMode = (
 				(ImeMode)(resources.GetObject("$this.ImeMode"))
 			);
-			this.Location = (
+			Location = (
 				(Point)(resources.GetObject("$this.Location"))
 			);
-			this.Name = "NgbhSkillHelper";
-			this.RightToLeft = (
+			Name = "NgbhSkillHelper";
+			RightToLeft = (
 				(RightToLeft)(
 					resources.GetObject("$this.RightToLeft")
 				)
 			);
-			this.Size = ((Size)(resources.GetObject("$this.Size")));
-			this.xpBadges.ResumeLayout(false);
-			this.xpSkills.ResumeLayout(false);
-			this.ResumeLayout(false);
+			Size = ((Size)(resources.GetObject("$this.Size")));
+			xpBadges.ResumeLayout(false);
+			xpSkills.ResumeLayout(false);
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -477,8 +477,8 @@ namespace SimPe.Plugin
 			);
 			img = Ambertation.Drawing.GraphicRoutines.ScaleImage(img, 48, 48, true);
 
-			this.xpBadges.Icon = img;
-			this.xpSkills.Icon = img;
+			xpBadges.Icon = img;
+			xpSkills.Icon = img;
 		}
 
 		private void pc_SelectedSimChanged(
@@ -491,13 +491,13 @@ namespace SimPe.Plugin
 			{
 				if (pc.SelectedSim != null)
 				{
-					this.Slot = ngbh.GetSlots(Data.NeighborhoodSlots.SimsIntern)
+					Slot = ngbh.GetSlots(Data.NeighborhoodSlots.SimsIntern)
 						.GetInstanceSlot(pc.SelectedSim.FileDescriptor.Instance);
 					SetImage(pc.SelectedSim.Image);
 				}
 				else
 				{
-					this.Slot = null;
+					Slot = null;
 				}
 			}
 		}

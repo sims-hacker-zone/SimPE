@@ -322,7 +322,7 @@ namespace SimPe.Providers
 			int step = Math.Max(2, Wait.MaxProgress / 100);
 			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
 			{
-				if (this.HaveToStop)
+				if (HaveToStop)
 				{
 					break;
 				}
@@ -371,7 +371,7 @@ namespace SimPe.Providers
 					int step = Math.Max(2, Wait.MaxProgress / 100);
 					foreach (string file in files)
 					{
-						if (this.HaveToStop)
+						if (HaveToStop)
 						{
 							breaked = true;
 							break;
@@ -453,7 +453,7 @@ namespace SimPe.Providers
 				FileTableBase.FileIndex.Load();
 			}
 
-			this.ExecuteThread(
+			ExecuteThread(
 				ThreadPriority.AboveNormal,
 				"Sim Name Provider",
 				true,

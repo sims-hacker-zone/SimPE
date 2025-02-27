@@ -179,8 +179,8 @@ namespace SimPe
 		/// </summary>
 		void InitMenuItems()
 		{
-			this.miMetaInfo.Checked = !Helper.WindowsRegistry.LoadMetaInfo;
-			this.miFileNames.Checked = Helper.WindowsRegistry.DecodeFilenamesState;
+			miMetaInfo.Checked = !Helper.WindowsRegistry.LoadMetaInfo;
+			miFileNames.Checked = Helper.WindowsRegistry.DecodeFilenamesState;
 
 			AddDockMenus();
 			UpdateMenuItems();
@@ -192,7 +192,7 @@ namespace SimPe
 
 			ArrayList exclude = new ArrayList
 			{
-				this.miNewDc
+				miNewDc
 			};
 			LoadFileWrappersExt.BuildToolBar(
 				tbWindow,
@@ -208,12 +208,12 @@ namespace SimPe
 		/// </summary>
 		void UpdateMenuItems()
 		{
-			this.miSave.Enabled = System.IO.File.Exists(package.FileName);
-			this.miSaveCopyAs.Enabled = this.miSave.Enabled;
-			this.miSaveAs.Enabled = package.Loaded;
-			this.miClose.Enabled = package.Loaded;
-			this.miShowName.Enabled = package.Loaded;
-			this.miObjects.Enabled = System.IO.File.Exists(
+			miSave.Enabled = System.IO.File.Exists(package.FileName);
+			miSaveCopyAs.Enabled = miSave.Enabled;
+			miSaveAs.Enabled = package.Loaded;
+			miClose.Enabled = package.Loaded;
+			miShowName.Enabled = package.Loaded;
+			miObjects.Enabled = System.IO.File.Exists(
 				System.IO.Path.Combine(
 					PathProvider.Global.Latest.InstallFolder,
 					PathProvider.Global.Latest.ObjectsSubFolder + "\\objects.package"
@@ -232,10 +232,10 @@ namespace SimPe
 							Localization.GetString("OpenInCaption")
 							.Replace("{where}", ei.NameShort);
 						mi.Tag = ei;
-						mi.Click += new EventHandler(this.Activate_miOpenInEp);
+						mi.Click += new EventHandler(Activate_miOpenInEp);
 						mi.Enabled = (ei.Exists || ei.InstallFolder != ""); // ei.InstallFolder is for where the user manually set the path to this EP
 
-						this.miOpenIn.DropDownItems.Insert(
+						miOpenIn.DropDownItems.Insert(
 							miOpenIn.DropDownItems.Count - 1,
 							mi
 						);

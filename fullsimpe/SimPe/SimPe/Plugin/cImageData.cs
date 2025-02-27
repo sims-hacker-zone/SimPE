@@ -61,9 +61,9 @@ namespace SimPe.Plugin
 					new System.IO.MemoryStream(data)
 				);
 				img = ImageLoader.Load(
-					this.parent.TextureSize,
+					parent.TextureSize,
 					data.Length,
-					this.parent.Format,
+					parent.Format,
 					sr,
 					index,
 					mapcount
@@ -135,7 +135,7 @@ namespace SimPe.Plugin
 		public MipMap(ImageData parent)
 		{
 			this.parent = parent;
-			this.DataType = MipMapType.SimPE_PlainData;
+			DataType = MipMapType.SimPE_PlainData;
 			data = new Byte[0];
 		}
 
@@ -270,9 +270,9 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			if (this.DataType == MipMapType.LifoReference)
+			if (DataType == MipMapType.LifoReference)
 			{
-				return this.LifoFile;
+				return LifoFile;
 			}
 
 			string name;
@@ -303,7 +303,7 @@ namespace SimPe.Plugin
 			{
 				IScenegraphFileIndex nfi =
 					FileTableBase.FileIndex.AddNewChild();
-				nfi.AddIndexFromPackage(this.parent.Parent.Package);
+				nfi.AddIndexFromPackage(parent.Parent.Package);
 				bool succ = GetReferencedLifo_NoLoad();
 				FileTableBase.FileIndex.RemoveChild(nfi);
 				nfi.Clear();
@@ -325,7 +325,7 @@ namespace SimPe.Plugin
 			{
 				IScenegraphFileIndexItem item =
 					FileTableBase.FileIndex.FindFileByName(
-						this.lifofile,
+						lifofile,
 						SimPe.Data.MetaData.LIFO,
 						SimPe.Data.MetaData.LOCAL_GROUP,
 						true
@@ -341,7 +341,7 @@ namespace SimPe.Plugin
 				{
 					Interfaces.Files.IPackageFile pkg = parent.Parent.Package;
 					Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFile(
-						this.lifofile,
+						lifofile,
 						SimPe.Data.MetaData.LIFO
 					);
 					if (pfds.Length > 0)
@@ -356,8 +356,8 @@ namespace SimPe.Plugin
 				{
 					LevelInfo li = (LevelInfo)rcol.Blocks[0];
 
-					this.img = null;
-					this.Data = li.Data;
+					img = null;
+					Data = li.Data;
 
 					return true;
 				}
@@ -374,8 +374,8 @@ namespace SimPe.Plugin
 
 		public void Dispose()
 		{
-			this.data = new byte[0];
-			if (this.img != null)
+			data = new byte[0];
+			if (img != null)
 			{
 				img.Dispose();
 			}
@@ -426,7 +426,7 @@ namespace SimPe.Plugin
 			for (int i = data.Length - 1; i >= 0; i--)
 			{
 				DDSData item = data[i];
-				MipMap mm = new MipMap(this.parent);
+				MipMap mm = new MipMap(parent);
 				mm.Texture = item.Texture;
 				mm.Data = item.Data;
 
@@ -517,7 +517,7 @@ namespace SimPe.Plugin
 			get
 			{
 				MipMap large = null;
-				foreach (MipMap mm in this.MipMaps)
+				foreach (MipMap mm in MipMaps)
 				{
 					if (mm.DataType != MipMapType.LifoReference)
 					{
@@ -547,7 +547,7 @@ namespace SimPe.Plugin
 		public MipMap GetLargestTexture(Size zs)
 		{
 			MipMap large = null;
-			foreach (MipMap mm in this.MipMaps)
+			foreach (MipMap mm in MipMaps)
 			{
 				if (mm.DataType != MipMapType.LifoReference)
 				{
@@ -579,7 +579,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public void GetReferencedLifos()
 		{
-			foreach (MipMap mm in this.MipMaps)
+			foreach (MipMap mm in MipMaps)
 			{
 				mm.GetReferencedLifo();
 			}
@@ -590,18 +590,18 @@ namespace SimPe.Plugin
 			if (MipMaps.Length == 1)
 			{
 				return "0x"
-					+ Helper.HexString(this.creator)
+					+ Helper.HexString(creator)
 					+ " - 0x"
-					+ Helper.HexString(this.unknown_1)
+					+ Helper.HexString(unknown_1)
 					+ " (1 Item)";
 			}
 
 			return "0x"
-				+ Helper.HexString(this.creator)
+				+ Helper.HexString(creator)
 				+ " - 0x"
-				+ Helper.HexString(this.unknown_1)
+				+ Helper.HexString(unknown_1)
 				+ " ("
-				+ this.MipMaps.Length
+				+ MipMaps.Length
 				+ " Items)";
 		}
 
@@ -609,7 +609,7 @@ namespace SimPe.Plugin
 
 		public void Dispose()
 		{
-			foreach (MipMap mm in this.MipMaps)
+			foreach (MipMap mm in MipMaps)
 			{
 				mm.Dispose();
 			}
@@ -669,7 +669,7 @@ namespace SimPe.Plugin
 				if (format != value)
 				{
 					//when the Format changes we need to get the Picturedta FIRST
-					foreach (MipMapBlock mmp in this.MipMapBlocks)
+					foreach (MipMapBlock mmp in MipMapBlocks)
 					{
 						foreach (MipMap mm in mmp.MipMaps)
 						{
@@ -702,7 +702,7 @@ namespace SimPe.Plugin
 			sgres = new SGResource(null);
 			BlockID = 0x1c4a276c;
 			FileNameRepeat = "";
-			this.version = 0x09;
+			version = 0x09;
 			unknown_0 = (float)1.0;
 			format = ImageLoader.TxtrFormats.ExtRaw24Bit;
 		}
@@ -818,7 +818,7 @@ namespace SimPe.Plugin
 		public void ReferencedItems(Hashtable refmap, uint parentgroup)
 		{
 			ArrayList list = new ArrayList();
-			foreach (MipMapBlock mmp in this.MipMapBlocks)
+			foreach (MipMapBlock mmp in MipMapBlocks)
 			{
 				foreach (MipMap mm in mmp.MipMaps)
 				{
@@ -846,7 +846,7 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				if (this.MipMapBlocks.Length == 0)
+				if (MipMapBlocks.Length == 0)
 				{
 					return null;
 				}
@@ -861,7 +861,7 @@ namespace SimPe.Plugin
 		/// <param name="zs">The wanted Size for the Texture</param>
 		public MipMap GetLargestTexture(Size zs)
 		{
-			if (this.MipMapBlocks.Length == 0)
+			if (MipMapBlocks.Length == 0)
 			{
 				return null;
 			}
@@ -874,7 +874,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public void GetReferencedLifos()
 		{
-			foreach (MipMapBlock mmp in this.MipMapBlocks)
+			foreach (MipMapBlock mmp in MipMapBlocks)
 			{
 				mmp.GetReferencedLifos();
 			}
@@ -884,7 +884,7 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			foreach (MipMapBlock mmb in this.MipMapBlocks)
+			foreach (MipMapBlock mmb in MipMapBlocks)
 			{
 				mmb.Dispose();
 			}

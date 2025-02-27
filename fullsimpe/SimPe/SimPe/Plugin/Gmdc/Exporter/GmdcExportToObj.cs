@@ -127,7 +127,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 			}
 
 			//Add a MeshNormal Section if available
-			if (this.NormalElement != null)
+			if (NormalElement != null)
 			{
 				nr = Link.GetElementNr(NormalElement);
 				for (int i = 0; i < Link.ReferencedSize; i++)
@@ -150,7 +150,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 			}
 
 			//now the Texture Cords //iv available
-			if (this.UVCoordinateElement != null)
+			if (UVCoordinateElement != null)
 			{
 				nr = Link.GetElementNr(UVCoordinateElement);
 				for (int i = 0; i < Link.ReferencedSize; i++)

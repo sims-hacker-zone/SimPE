@@ -170,26 +170,26 @@ namespace SimPe.Plugin
 				tGenericRcol = new TabPage.GenericRcol();
 			}
 
-			tGenericRcol.tb_ver.Text = "0x" + Helper.HexString(this.version);
+			tGenericRcol.tb_ver.Text = "0x" + Helper.HexString(version);
 			tGenericRcol.gen_pg.SelectedObject = this;
 		}
 
 		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
 		{
 			base.ExtendTabControl(tc);
-			this.vrnb.AddToTabControl(tc);
-			this.rn.AddToTabControl(tc);
-			this.bn.AddToTabControl(tc);
-			this.tn.AddToTabControl(tc);
+			vrnb.AddToTabControl(tc);
+			rn.AddToTabControl(tc);
+			bn.AddToTabControl(tc);
+			tn.AddToTabControl(tc);
 		}
 
 		#region IDisposable Member
 
 		public override void Dispose()
 		{
-			if (this.tGenericRcol != null)
+			if (tGenericRcol != null)
 			{
-				this.tGenericRcol.Dispose();
+				tGenericRcol.Dispose();
 			}
 
 			tGenericRcol = null;

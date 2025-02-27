@@ -77,7 +77,7 @@ namespace SimPe.Geometry
 		/// <param name="o">The order of the Transform</param>
 		public VectorTransformation(TransformOrder o)
 		{
-			this.Order = o;
+			Order = o;
 			Translation = new Vector3f();
 			Rotation = Quaternion.Identity;
 		}
@@ -159,7 +159,7 @@ namespace SimPe.Geometry
 		/// <returns></returns>
 		public VectorTransformation Clone()
 		{
-			VectorTransformation v = new VectorTransformation(this.Order);
+			VectorTransformation v = new VectorTransformation(Order);
 			v.Rotation = Rotation.Clone();
 			v.Translation = Translation.Clone();
 
@@ -252,7 +252,7 @@ namespace SimPe.Geometry
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length => this.Count;
+		public int Length => Count;
 
 		/// <summary>
 		/// Create a clone of this Object

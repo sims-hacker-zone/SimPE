@@ -25,10 +25,10 @@ namespace SimPe.Plugin
 			string es = Data.MetaData.GetKnownFence(0x8D0B3B3A); // to intialize the dictionary
 			foreach (KeyValuePair<uint, string> kvp in Data.MetaData.KnownFences)
 			{
-				this.cballFences.Items.Add(kvp.Value);
+				cballFences.Items.Add(kvp.Value);
 			}
 
-			this.cballFences.SelectedIndex = 0;
+			cballFences.SelectedIndex = 0;
 		}
 
 		private string simtools = Helper.SimPePath + "\\Sims2Tools.exe";
@@ -64,18 +64,18 @@ namespace SimPe.Plugin
 			int fences = 0;
 			int walls = 0;
 
-			this.cbExistFences.Items.Clear();
+			cbExistFences.Items.Clear();
 			for (int i = 0; i < Wrapper.ItemCount; i++)
 			{
 				if (Data.MetaData.KnownFences.ContainsKey(Wrapper.bwallid[i]))
 				{
 					if (
-						!this.cbExistFences.Items.Contains(
+						!cbExistFences.Items.Contains(
 							Data.MetaData.GetKnownFence(Wrapper.bwallid[i])
 						)
 					)
 					{
-						this.cbExistFences.Items.Add(
+						cbExistFences.Items.Add(
 							Data.MetaData.GetKnownFence(Wrapper.bwallid[i])
 						);
 					}
@@ -154,12 +154,12 @@ namespace SimPe.Plugin
 				else
 				{
 					if (
-						!this.cbExistFences.Items.Contains(
+						!cbExistFences.Items.Contains(
 							"0x" + Helper.HexString(Wrapper.bwallid[i])
 						)
 					)
 					{
-						this.cbExistFences.Items.Add(
+						cbExistFences.Items.Add(
 							"0x" + Helper.HexString(Wrapper.bwallid[i])
 						);
 					}
@@ -167,23 +167,23 @@ namespace SimPe.Plugin
 					fences++;
 				}
 			}
-			if (this.cbExistFences.Items.Count > 0)
+			if (cbExistFences.Items.Count > 0)
 			{
-				this.cbExistFences.SelectedIndex = 0;
+				cbExistFences.SelectedIndex = 0;
 			}
 
 			if (fences == 0)
 			{
-				this.cbClear.Visible =
-					this.lbwarning.Visible =
-					this.btchanger.Visible =
+				cbClear.Visible =
+					lbwarning.Visible =
+					btchanger.Visible =
 						false;
 			}
 			else
 			{
-				this.cbClear.Visible =
-					this.lbwarning.Visible =
-					this.btchanger.Visible =
+				cbClear.Visible =
+					lbwarning.Visible =
+					btchanger.Visible =
 						true;
 			}
 
@@ -222,7 +222,7 @@ namespace SimPe.Plugin
 
 		void IDisposable.Dispose()
 		{
-			this.TPFW.Dispose();
+			TPFW.Dispose();
 		}
 		#endregion
 
@@ -295,18 +295,18 @@ namespace SimPe.Plugin
 				}
 			}
 
-			this.cbExistFences.Items.Clear();
+			cbExistFences.Items.Clear();
 			for (int i = 0; i < Wrapper.ItemCount; i++)
 			{
 				if (Data.MetaData.KnownFences.ContainsKey(Wrapper.bwallid[i]))
 				{
 					if (
-						!this.cbExistFences.Items.Contains(
+						!cbExistFences.Items.Contains(
 							Data.MetaData.GetKnownFence(Wrapper.bwallid[i])
 						)
 					)
 					{
-						this.cbExistFences.Items.Add(
+						cbExistFences.Items.Add(
 							Data.MetaData.GetKnownFence(Wrapper.bwallid[i])
 						);
 					}
@@ -314,12 +314,12 @@ namespace SimPe.Plugin
 				else
 				{
 					if (
-						!this.cbExistFences.Items.Contains(
+						!cbExistFences.Items.Contains(
 							"0x" + Helper.HexString(Wrapper.bwallid[i])
 						) && !KnownWallID(Wrapper.bwallid[i])
 					)
 					{
-						this.cbExistFences.Items.Add(
+						cbExistFences.Items.Add(
 							"0x" + Helper.HexString(Wrapper.bwallid[i])
 						);
 					}

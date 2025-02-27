@@ -73,7 +73,7 @@ namespace SimPe.Packages
 		/// <param name="fs"></param>
 		internal void SetFileStream(FileStream fs)
 		{
-			this.FileStream = fs;
+			FileStream = fs;
 		}
 
 		/// <summary>
@@ -134,7 +134,7 @@ namespace SimPe.Packages
 
 			try
 			{
-				if (this.StreamState == StreamState.Opened)
+				if (StreamState == StreamState.Opened)
 				{
 					FileStream.Close();
 				}

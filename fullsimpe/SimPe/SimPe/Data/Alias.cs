@@ -55,7 +55,7 @@ namespace SimPe.Data
 		{
 			try
 			{
-				this.Dispose();
+				Dispose();
 			}
 			catch { }
 		}

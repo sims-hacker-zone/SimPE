@@ -16,13 +16,13 @@ namespace SimPe.Plugin.Tool.Dockable
 
 			public void DoBeginUpdate()
 			{
-				this.BeginUpdate();
+				BeginUpdate();
 				//this.Visible = false;
 			}
 
 			public void DoEndUpdate(bool vis)
 			{
-				this.EndUpdate();
+				EndUpdate();
 				//this.Visible = vis;
 			}
 		}
@@ -102,14 +102,14 @@ namespace SimPe.Plugin.Tool.Dockable
 		{
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
-			this.xpAdvanced.Visible = (UserVerification.HaveUserId);
-			this.op1 = new ObjectPreview();
-			this.op2 = new ObjectPreview();
+			xpAdvanced.Visible = (UserVerification.HaveUserId);
+			op1 = new ObjectPreview();
+			op2 = new ObjectPreview();
 			// op1.SuspendLayout(); - (prevented op1 layout, causung the title to be scrolled and the description to be cut off) Chris Hatch
 			//
 			// op1
 			//
-			this.op1.Anchor = (
+			op1.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -121,24 +121,24 @@ namespace SimPe.Plugin.Tool.Dockable
 					)
 				)
 			);
-			this.op1.BackColor = Color.Transparent;
-			this.op1.Font = new Font("Tahoma", 8.25F);
-			this.op1.LoadCustomImage = true;
-			this.op1.Location = new Point(8, 44);
-			this.op1.Name = "op1";
-			this.op1.SelectedObject = null;
-			this.op1.Size = new Size(
-				this.xpTaskBoxSimple2.Width - 16,
-				this.xpTaskBoxSimple2.Height - 56
+			op1.BackColor = Color.Transparent;
+			op1.Font = new Font("Tahoma", 8.25F);
+			op1.LoadCustomImage = true;
+			op1.Location = new Point(8, 44);
+			op1.Name = "op1";
+			op1.SelectedObject = null;
+			op1.Size = new Size(
+				xpTaskBoxSimple2.Width - 16,
+				xpTaskBoxSimple2.Height - 56
 			);
-			this.op1.TabIndex = 0;
-			this.xpTaskBoxSimple2.Controls.Add(this.op1);
-			this.xpTaskBoxSimple2.Resize += new EventHandler(xpTaskBoxSimple2_Resize);
+			op1.TabIndex = 0;
+			xpTaskBoxSimple2.Controls.Add(op1);
+			xpTaskBoxSimple2.Resize += new EventHandler(xpTaskBoxSimple2_Resize);
 			// op2.ResumeLayout(); - (op2 layout was never suspended) Chris Hatch
 			//
 			// op2
 			//
-			this.op2.Anchor = (
+			op2.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -150,25 +150,25 @@ namespace SimPe.Plugin.Tool.Dockable
 					)
 				)
 			);
-			this.op2.BackColor = Color.Transparent;
-			this.op2.Font = new Font("Tahoma", 8.25F);
-			this.op2.LoadCustomImage = true;
-			this.op2.Location = new Point(8, 44);
-			this.op2.Name = "op2";
-			this.op2.SelectedObject = null;
-			this.op2.Size = new Size(
-				this.xpTaskBoxSimple1.Width - 16,
-				this.xpTaskBoxSimple1.Height - 56
+			op2.BackColor = Color.Transparent;
+			op2.Font = new Font("Tahoma", 8.25F);
+			op2.LoadCustomImage = true;
+			op2.Location = new Point(8, 44);
+			op2.Name = "op2";
+			op2.SelectedObject = null;
+			op2.Size = new Size(
+				xpTaskBoxSimple1.Width - 16,
+				xpTaskBoxSimple1.Height - 56
 			);
-			this.op2.TabIndex = 1;
-			this.xpTaskBoxSimple1.Controls.Add(this.op2);
+			op2.TabIndex = 1;
+			xpTaskBoxSimple1.Controls.Add(op2);
 			xpTaskBoxSimple1.Resize += new EventHandler(xpTaskBoxSimple1_Resize);
 
 			//do the regular initialization Work
 			wizard1.Start();
 
 			biFinish.Visible = wizard1.FinishEnabled;
-			this.biAbort.Visible = wizard1.PrevEnabled;
+			biAbort.Visible = wizard1.PrevEnabled;
 			biNext.Enabled = wizard1.NextEnabled;
 			biPrev.Enabled = wizard1.PrevEnabled;
 			ilist.ImageSize = new Size(
@@ -216,757 +216,757 @@ namespace SimPe.Plugin.Tool.Dockable
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
+			components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(dcObjectWorkshop)
 				);
-			this.xpGradientPanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
-			this.wizard1 = new Wizards.Wizard();
-			this.wizardStepPanel1 = new Wizards.WizardStepPanel();
-			this.xpAdvanced = new Ambertation.Windows.Forms.XPTaskBoxSimple();
-			this.button6 = new Button();
-			this.tbGUID = new TextBox();
-			this.button5 = new Button();
-			this.tbCresName = new TextBox();
-			this.button4 = new Button();
-			this.tbGroup = new TextBox();
-			this.label4 = new Label();
-			this.button2 = new Button();
-			this.label1 = new Label();
-			this.button1 = new Button();
-			this.label2 = new Label();
-			this.wizardStepPanel2 = new Wizards.WizardStepPanel();
-			this.lb = new ListBox();
-			this.tv = new MyTreeView();
-			this.splitter1 = new Splitter();
-			this.panel1 = new Panel();
-			this.xpTaskBoxSimple2 = new Ambertation.Windows.Forms.XPTaskBoxSimple();
-			this.wizardStepPanel3 = new Wizards.WizardStepPanel();
-			this.xpTaskBoxSimple1 = new Ambertation.Windows.Forms.XPTaskBoxSimple();
-			this.gbRecolor = new Ambertation.Windows.Forms.XPTaskBoxSimple();
-			this.cbColorExt = new CheckBox();
-			this.gbClone = new Ambertation.Windows.Forms.XPTaskBoxSimple();
-			this.llCloneDef = new LinkLabel();
-			this.cbstrlink = new CheckBox();
-			this.cbDesc = new CheckBox();
-			this.cbOrgGmdc = new CheckBox();
-			this.cbRemTxt = new CheckBox();
-			this.cbanim = new CheckBox();
-			this.cbwallmask = new CheckBox();
-			this.cbparent = new CheckBox();
-			this.cbclean = new CheckBox();
-			this.cbfix = new CheckBox();
-			this.cbdefault = new CheckBox();
-			this.cbgid = new CheckBox();
-			this.panel2 = new Panel();
-			this.button3 = new Button();
-			this.cbTask = new ComboBox();
-			this.label3 = new Label();
-			this.wizardStepPanel5 = new Wizards.WizardStepPanel();
-			this.xpTaskBoxSimple3 = new Ambertation.Windows.Forms.XPTaskBoxSimple();
-			this.tbDesc = new RichTextBox();
-			this.tbPrice = new TextBox();
-			this.tbName = new TextBox();
-			this.label7 = new Label();
-			this.label6 = new Label();
-			this.label5 = new Label();
-			this.wizardStepPanel4 = new Wizards.WizardStepPanel();
-			this.pnWait = new Panel();
-			this.pbWait = new PictureBox();
-			this.lbfinished = new Label();
-			this.lberr = new Label();
-			this.lbfinload = new Label();
-			this.lbwait = new Label();
-			this.toolStrip1 = new ToolStrip();
-			this.biPrev = new ToolStripButton();
-			this.biNext = new ToolStripButton();
-			this.biFinish = new ToolStripButton();
-			this.biAbort = new ToolStripButton();
-			this.biCatalog = new ToolStripButton();
-			this.ilist = new ImageList(this.components);
-			this.toolTip1 = new ToolTip(this.components);
-			this.xpGradientPanel1.SuspendLayout();
-			this.wizard1.SuspendLayout();
-			this.wizardStepPanel1.SuspendLayout();
-			this.xpAdvanced.SuspendLayout();
-			this.wizardStepPanel2.SuspendLayout();
-			this.panel1.SuspendLayout();
-			this.wizardStepPanel3.SuspendLayout();
-			this.gbRecolor.SuspendLayout();
-			this.gbClone.SuspendLayout();
-			this.panel2.SuspendLayout();
-			this.wizardStepPanel5.SuspendLayout();
-			this.xpTaskBoxSimple3.SuspendLayout();
-			this.wizardStepPanel4.SuspendLayout();
-			this.pnWait.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pbWait)).BeginInit();
-			this.toolStrip1.SuspendLayout();
-			this.SuspendLayout();
+			xpGradientPanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
+			wizard1 = new Wizards.Wizard();
+			wizardStepPanel1 = new Wizards.WizardStepPanel();
+			xpAdvanced = new Ambertation.Windows.Forms.XPTaskBoxSimple();
+			button6 = new Button();
+			tbGUID = new TextBox();
+			button5 = new Button();
+			tbCresName = new TextBox();
+			button4 = new Button();
+			tbGroup = new TextBox();
+			label4 = new Label();
+			button2 = new Button();
+			label1 = new Label();
+			button1 = new Button();
+			label2 = new Label();
+			wizardStepPanel2 = new Wizards.WizardStepPanel();
+			lb = new ListBox();
+			tv = new MyTreeView();
+			splitter1 = new Splitter();
+			panel1 = new Panel();
+			xpTaskBoxSimple2 = new Ambertation.Windows.Forms.XPTaskBoxSimple();
+			wizardStepPanel3 = new Wizards.WizardStepPanel();
+			xpTaskBoxSimple1 = new Ambertation.Windows.Forms.XPTaskBoxSimple();
+			gbRecolor = new Ambertation.Windows.Forms.XPTaskBoxSimple();
+			cbColorExt = new CheckBox();
+			gbClone = new Ambertation.Windows.Forms.XPTaskBoxSimple();
+			llCloneDef = new LinkLabel();
+			cbstrlink = new CheckBox();
+			cbDesc = new CheckBox();
+			cbOrgGmdc = new CheckBox();
+			cbRemTxt = new CheckBox();
+			cbanim = new CheckBox();
+			cbwallmask = new CheckBox();
+			cbparent = new CheckBox();
+			cbclean = new CheckBox();
+			cbfix = new CheckBox();
+			cbdefault = new CheckBox();
+			cbgid = new CheckBox();
+			panel2 = new Panel();
+			button3 = new Button();
+			cbTask = new ComboBox();
+			label3 = new Label();
+			wizardStepPanel5 = new Wizards.WizardStepPanel();
+			xpTaskBoxSimple3 = new Ambertation.Windows.Forms.XPTaskBoxSimple();
+			tbDesc = new RichTextBox();
+			tbPrice = new TextBox();
+			tbName = new TextBox();
+			label7 = new Label();
+			label6 = new Label();
+			label5 = new Label();
+			wizardStepPanel4 = new Wizards.WizardStepPanel();
+			pnWait = new Panel();
+			pbWait = new PictureBox();
+			lbfinished = new Label();
+			lberr = new Label();
+			lbfinload = new Label();
+			lbwait = new Label();
+			toolStrip1 = new ToolStrip();
+			biPrev = new ToolStripButton();
+			biNext = new ToolStripButton();
+			biFinish = new ToolStripButton();
+			biAbort = new ToolStripButton();
+			biCatalog = new ToolStripButton();
+			ilist = new ImageList(components);
+			toolTip1 = new ToolTip(components);
+			xpGradientPanel1.SuspendLayout();
+			wizard1.SuspendLayout();
+			wizardStepPanel1.SuspendLayout();
+			xpAdvanced.SuspendLayout();
+			wizardStepPanel2.SuspendLayout();
+			panel1.SuspendLayout();
+			wizardStepPanel3.SuspendLayout();
+			gbRecolor.SuspendLayout();
+			gbClone.SuspendLayout();
+			panel2.SuspendLayout();
+			wizardStepPanel5.SuspendLayout();
+			xpTaskBoxSimple3.SuspendLayout();
+			wizardStepPanel4.SuspendLayout();
+			pnWait.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(pbWait)).BeginInit();
+			toolStrip1.SuspendLayout();
+			SuspendLayout();
 			//
 			// xpGradientPanel1
 			//
-			this.xpGradientPanel1.BackColor = Color.Transparent;
-			this.xpGradientPanel1.Controls.Add(this.wizard1);
-			this.xpGradientPanel1.Controls.Add(this.toolStrip1);
-			resources.ApplyResources(this.xpGradientPanel1, "xpGradientPanel1");
-			this.xpGradientPanel1.Name = "xpGradientPanel1";
+			xpGradientPanel1.BackColor = Color.Transparent;
+			xpGradientPanel1.Controls.Add(wizard1);
+			xpGradientPanel1.Controls.Add(toolStrip1);
+			resources.ApplyResources(xpGradientPanel1, "xpGradientPanel1");
+			xpGradientPanel1.Name = "xpGradientPanel1";
 			//
 			// wizard1
 			//
-			this.wizard1.BackColor = Color.Transparent;
-			this.wizard1.Controls.Add(this.wizardStepPanel1);
-			this.wizard1.Controls.Add(this.wizardStepPanel2);
-			this.wizard1.Controls.Add(this.wizardStepPanel3);
-			this.wizard1.Controls.Add(this.wizardStepPanel5);
-			this.wizard1.Controls.Add(this.wizardStepPanel4);
-			this.wizard1.CurrentStepNumber = 0;
-			resources.ApplyResources(this.wizard1, "wizard1");
-			this.wizard1.FinishEnabled = false;
-			this.wizard1.Image = null;
-			this.wizard1.Name = "wizard1";
-			this.wizard1.NextEnabled = false;
-			this.wizard1.PrevEnabled = false;
-			this.wizard1.ChangedFinishState += new Wizards.WizardHandle(
-				this.wizard1_ChangedFinishState
+			wizard1.BackColor = Color.Transparent;
+			wizard1.Controls.Add(wizardStepPanel1);
+			wizard1.Controls.Add(wizardStepPanel2);
+			wizard1.Controls.Add(wizardStepPanel3);
+			wizard1.Controls.Add(wizardStepPanel5);
+			wizard1.Controls.Add(wizardStepPanel4);
+			wizard1.CurrentStepNumber = 0;
+			resources.ApplyResources(wizard1, "wizard1");
+			wizard1.FinishEnabled = false;
+			wizard1.Image = null;
+			wizard1.Name = "wizard1";
+			wizard1.NextEnabled = false;
+			wizard1.PrevEnabled = false;
+			wizard1.ChangedFinishState += new Wizards.WizardHandle(
+				wizard1_ChangedFinishState
 			);
-			this.wizard1.ShowStep += new Wizards.WizardChangeHandle(
-				this.wizard1_ShowStep
+			wizard1.ShowStep += new Wizards.WizardChangeHandle(
+				wizard1_ShowStep
 			);
-			this.wizard1.ChangedPrevState += new Wizards.WizardHandle(
-				this.wizard1_ChangedPrevState
+			wizard1.ChangedPrevState += new Wizards.WizardHandle(
+				wizard1_ChangedPrevState
 			);
-			this.wizard1.PrepareStep += new Wizards.WizardStepChangeHandle(
-				this.wizard1_PrepareStep
+			wizard1.PrepareStep += new Wizards.WizardStepChangeHandle(
+				wizard1_PrepareStep
 			);
-			this.wizard1.ChangedNextState += new Wizards.WizardHandle(
-				this.wizard1_ChangedNextState
+			wizard1.ChangedNextState += new Wizards.WizardHandle(
+				wizard1_ChangedNextState
 			);
-			this.wizard1.ShowedStep += new Wizards.WizardShowedHandle(
-				this.wizard1_ShowedStep
+			wizard1.ShowedStep += new Wizards.WizardShowedHandle(
+				wizard1_ShowedStep
 			);
 			//
 			// wizardStepPanel1
 			//
-			this.wizardStepPanel1.BackColor = Color.Transparent;
-			this.wizardStepPanel1.Controls.Add(this.xpAdvanced);
-			this.wizardStepPanel1.Controls.Add(this.label4);
-			this.wizardStepPanel1.Controls.Add(this.button2);
-			this.wizardStepPanel1.Controls.Add(this.label1);
-			this.wizardStepPanel1.Controls.Add(this.button1);
-			this.wizardStepPanel1.Controls.Add(this.label2);
-			resources.ApplyResources(this.wizardStepPanel1, "wizardStepPanel1");
-			this.wizardStepPanel1.First = false;
-			this.wizardStepPanel1.Last = false;
-			this.wizardStepPanel1.Name = "wizardStepPanel1";
+			wizardStepPanel1.BackColor = Color.Transparent;
+			wizardStepPanel1.Controls.Add(xpAdvanced);
+			wizardStepPanel1.Controls.Add(label4);
+			wizardStepPanel1.Controls.Add(button2);
+			wizardStepPanel1.Controls.Add(label1);
+			wizardStepPanel1.Controls.Add(button1);
+			wizardStepPanel1.Controls.Add(label2);
+			resources.ApplyResources(wizardStepPanel1, "wizardStepPanel1");
+			wizardStepPanel1.First = false;
+			wizardStepPanel1.Last = false;
+			wizardStepPanel1.Name = "wizardStepPanel1";
 			//
 			// xpAdvanced
 			//
-			this.xpAdvanced.BackColor = Color.Transparent;
-			this.xpAdvanced.Controls.Add(this.button6);
-			this.xpAdvanced.Controls.Add(this.tbGUID);
-			this.xpAdvanced.Controls.Add(this.button5);
-			this.xpAdvanced.Controls.Add(this.tbCresName);
-			this.xpAdvanced.Controls.Add(this.button4);
-			this.xpAdvanced.Controls.Add(this.tbGroup);
-			this.xpAdvanced.HeaderFont = new Font(
+			xpAdvanced.BackColor = Color.Transparent;
+			xpAdvanced.Controls.Add(button6);
+			xpAdvanced.Controls.Add(tbGUID);
+			xpAdvanced.Controls.Add(button5);
+			xpAdvanced.Controls.Add(tbCresName);
+			xpAdvanced.Controls.Add(button4);
+			xpAdvanced.Controls.Add(tbGroup);
+			xpAdvanced.HeaderFont = new Font(
 				"Microsoft Sans Serif",
 				10.25F,
 				FontStyle.Bold
 			);
-			resources.ApplyResources(this.xpAdvanced, "xpAdvanced");
-			this.xpAdvanced.IconLocation = new Point(4, 12);
-			this.xpAdvanced.IconSize = new Size(32, 32);
-			this.xpAdvanced.Name = "xpAdvanced";
+			resources.ApplyResources(xpAdvanced, "xpAdvanced");
+			xpAdvanced.IconLocation = new Point(4, 12);
+			xpAdvanced.IconSize = new Size(32, 32);
+			xpAdvanced.Name = "xpAdvanced";
 			//
 			// button6
 			//
-			resources.ApplyResources(this.button6, "button6");
-			this.button6.Name = "button6";
-			this.button6.Click += new EventHandler(this.button6_Click);
+			resources.ApplyResources(button6, "button6");
+			button6.Name = "button6";
+			button6.Click += new EventHandler(button6_Click);
 			//
 			// tbGUID
 			//
-			resources.ApplyResources(this.tbGUID, "tbGUID");
-			this.tbGUID.Name = "tbGUID";
+			resources.ApplyResources(tbGUID, "tbGUID");
+			tbGUID.Name = "tbGUID";
 			//
 			// button5
 			//
-			resources.ApplyResources(this.button5, "button5");
-			this.button5.Name = "button5";
-			this.button5.Click += new EventHandler(this.button5_Click);
+			resources.ApplyResources(button5, "button5");
+			button5.Name = "button5";
+			button5.Click += new EventHandler(button5_Click);
 			//
 			// tbCresName
 			//
-			resources.ApplyResources(this.tbCresName, "tbCresName");
-			this.tbCresName.Name = "tbCresName";
+			resources.ApplyResources(tbCresName, "tbCresName");
+			tbCresName.Name = "tbCresName";
 			//
 			// button4
 			//
-			resources.ApplyResources(this.button4, "button4");
-			this.button4.Name = "button4";
-			this.button4.Click += new EventHandler(this.button4_Click);
+			resources.ApplyResources(button4, "button4");
+			button4.Name = "button4";
+			button4.Click += new EventHandler(button4_Click);
 			//
 			// tbGroup
 			//
-			resources.ApplyResources(this.tbGroup, "tbGroup");
-			this.tbGroup.Name = "tbGroup";
+			resources.ApplyResources(tbGroup, "tbGroup");
+			tbGroup.Name = "tbGroup";
 			//
 			// label4
 			//
-			resources.ApplyResources(this.label4, "label4");
-			this.label4.Name = "label4";
+			resources.ApplyResources(label4, "label4");
+			label4.Name = "label4";
 			//
 			// button2
 			//
-			resources.ApplyResources(this.button2, "button2");
-			this.button2.Name = "button2";
-			this.button2.Click += new EventHandler(this.button2_Click);
+			resources.ApplyResources(button2, "button2");
+			button2.Name = "button2";
+			button2.Click += new EventHandler(button2_Click);
 			//
 			// label1
 			//
-			resources.ApplyResources(this.label1, "label1");
-			this.label1.Name = "label1";
+			resources.ApplyResources(label1, "label1");
+			label1.Name = "label1";
 			//
 			// button1
 			//
-			resources.ApplyResources(this.button1, "button1");
-			this.button1.Name = "button1";
-			this.button1.Click += new EventHandler(this.button1_Click);
+			resources.ApplyResources(button1, "button1");
+			button1.Name = "button1";
+			button1.Click += new EventHandler(button1_Click);
 			//
 			// label2
 			//
-			resources.ApplyResources(this.label2, "label2");
-			this.label2.Name = "label2";
+			resources.ApplyResources(label2, "label2");
+			label2.Name = "label2";
 			//
 			// wizardStepPanel2
 			//
-			this.wizardStepPanel2.BackColor = Color.Transparent;
-			this.wizardStepPanel2.Controls.Add(this.lb);
-			this.wizardStepPanel2.Controls.Add(this.tv);
-			this.wizardStepPanel2.Controls.Add(this.splitter1);
-			this.wizardStepPanel2.Controls.Add(this.panel1);
-			resources.ApplyResources(this.wizardStepPanel2, "wizardStepPanel2");
-			this.wizardStepPanel2.First = false;
-			this.wizardStepPanel2.Last = false;
-			this.wizardStepPanel2.Name = "wizardStepPanel2";
-			this.wizardStepPanel2.Activate += new Wizards.WizardChangeHandle(
-				this.wizardStepPanel2_Activate
+			wizardStepPanel2.BackColor = Color.Transparent;
+			wizardStepPanel2.Controls.Add(lb);
+			wizardStepPanel2.Controls.Add(tv);
+			wizardStepPanel2.Controls.Add(splitter1);
+			wizardStepPanel2.Controls.Add(panel1);
+			resources.ApplyResources(wizardStepPanel2, "wizardStepPanel2");
+			wizardStepPanel2.First = false;
+			wizardStepPanel2.Last = false;
+			wizardStepPanel2.Name = "wizardStepPanel2";
+			wizardStepPanel2.Activate += new Wizards.WizardChangeHandle(
+				wizardStepPanel2_Activate
 			);
-			this.wizardStepPanel2.Prepare += new Wizards.WizardStepChangeHandle(
-				this.wizardStepPanel2_Prepare
+			wizardStepPanel2.Prepare += new Wizards.WizardStepChangeHandle(
+				wizardStepPanel2_Prepare
 			);
 			//
 			// lb
 			//
-			this.lb.BorderStyle = BorderStyle.None;
-			resources.ApplyResources(this.lb, "lb");
-			this.lb.Name = "lb";
-			this.lb.SelectedIndexChanged += new EventHandler(
-				this.lb_SelectedIndexChanged
+			lb.BorderStyle = BorderStyle.None;
+			resources.ApplyResources(lb, "lb");
+			lb.Name = "lb";
+			lb.SelectedIndexChanged += new EventHandler(
+				lb_SelectedIndexChanged
 			);
 			//
 			// tv
 			//
-			this.tv.BorderStyle = BorderStyle.None;
-			resources.ApplyResources(this.tv, "tv");
-			this.tv.ItemHeight = 17;
-			this.tv.Name = "tv";
-			this.tv.AfterSelect += new TreeViewEventHandler(
-				this.tv_AfterSelect
+			tv.BorderStyle = BorderStyle.None;
+			resources.ApplyResources(tv, "tv");
+			tv.ItemHeight = 17;
+			tv.Name = "tv";
+			tv.AfterSelect += new TreeViewEventHandler(
+				tv_AfterSelect
 			);
 			//
 			// splitter1
 			//
-			this.splitter1.BackColor = SystemColors.Highlight;
-			resources.ApplyResources(this.splitter1, "splitter1");
-			this.splitter1.Name = "splitter1";
-			this.splitter1.TabStop = false;
+			splitter1.BackColor = SystemColors.Highlight;
+			resources.ApplyResources(splitter1, "splitter1");
+			splitter1.Name = "splitter1";
+			splitter1.TabStop = false;
 			//
 			// panel1
 			//
-			this.panel1.Controls.Add(this.xpTaskBoxSimple2);
-			resources.ApplyResources(this.panel1, "panel1");
-			this.panel1.Name = "panel1";
+			panel1.Controls.Add(xpTaskBoxSimple2);
+			resources.ApplyResources(panel1, "panel1");
+			panel1.Name = "panel1";
 			//
 			// xpTaskBoxSimple2
 			//
-			this.xpTaskBoxSimple2.BackColor = Color.Transparent;
-			resources.ApplyResources(this.xpTaskBoxSimple2, "xpTaskBoxSimple2");
-			this.xpTaskBoxSimple2.HeaderFont = new Font(
+			xpTaskBoxSimple2.BackColor = Color.Transparent;
+			resources.ApplyResources(xpTaskBoxSimple2, "xpTaskBoxSimple2");
+			xpTaskBoxSimple2.HeaderFont = new Font(
 				"Microsoft Sans Serif",
 				10.25F,
 				FontStyle.Bold
 			);
-			this.xpTaskBoxSimple2.IconLocation = new Point(4, 12);
-			this.xpTaskBoxSimple2.IconSize = new Size(32, 32);
-			this.xpTaskBoxSimple2.Name = "xpTaskBoxSimple2";
+			xpTaskBoxSimple2.IconLocation = new Point(4, 12);
+			xpTaskBoxSimple2.IconSize = new Size(32, 32);
+			xpTaskBoxSimple2.Name = "xpTaskBoxSimple2";
 			//
 			// wizardStepPanel3
 			//
-			this.wizardStepPanel3.BackColor = Color.Transparent;
-			this.wizardStepPanel3.Controls.Add(this.xpTaskBoxSimple1);
-			this.wizardStepPanel3.Controls.Add(this.gbRecolor);
-			this.wizardStepPanel3.Controls.Add(this.gbClone);
-			this.wizardStepPanel3.Controls.Add(this.panel2);
-			resources.ApplyResources(this.wizardStepPanel3, "wizardStepPanel3");
-			this.wizardStepPanel3.First = false;
-			this.wizardStepPanel3.Last = false;
-			this.wizardStepPanel3.Name = "wizardStepPanel3";
-			this.wizardStepPanel3.Activate += new Wizards.WizardChangeHandle(
-				this.wizardStepPanel3_Activate
+			wizardStepPanel3.BackColor = Color.Transparent;
+			wizardStepPanel3.Controls.Add(xpTaskBoxSimple1);
+			wizardStepPanel3.Controls.Add(gbRecolor);
+			wizardStepPanel3.Controls.Add(gbClone);
+			wizardStepPanel3.Controls.Add(panel2);
+			resources.ApplyResources(wizardStepPanel3, "wizardStepPanel3");
+			wizardStepPanel3.First = false;
+			wizardStepPanel3.Last = false;
+			wizardStepPanel3.Name = "wizardStepPanel3";
+			wizardStepPanel3.Activate += new Wizards.WizardChangeHandle(
+				wizardStepPanel3_Activate
 			);
-			this.wizardStepPanel3.Activated += new Wizards.WizardStepHandle(
-				this.wizardStepPanel3_Activated
+			wizardStepPanel3.Activated += new Wizards.WizardStepHandle(
+				wizardStepPanel3_Activated
 			);
 			//
 			// xpTaskBoxSimple1
 			//
-			this.xpTaskBoxSimple1.BackColor = Color.Transparent;
-			resources.ApplyResources(this.xpTaskBoxSimple1, "xpTaskBoxSimple1");
-			this.xpTaskBoxSimple1.HeaderFont = new Font(
+			xpTaskBoxSimple1.BackColor = Color.Transparent;
+			resources.ApplyResources(xpTaskBoxSimple1, "xpTaskBoxSimple1");
+			xpTaskBoxSimple1.HeaderFont = new Font(
 				"Microsoft Sans Serif",
 				10.25F,
 				FontStyle.Bold
 			);
-			this.xpTaskBoxSimple1.IconLocation = new Point(4, 12);
-			this.xpTaskBoxSimple1.IconSize = new Size(32, 32);
-			this.xpTaskBoxSimple1.Name = "xpTaskBoxSimple1";
+			xpTaskBoxSimple1.IconLocation = new Point(4, 12);
+			xpTaskBoxSimple1.IconSize = new Size(32, 32);
+			xpTaskBoxSimple1.Name = "xpTaskBoxSimple1";
 			//
 			// gbRecolor
 			//
-			this.gbRecolor.BackColor = Color.Transparent;
-			this.gbRecolor.Controls.Add(this.cbColorExt);
-			resources.ApplyResources(this.gbRecolor, "gbRecolor");
-			this.gbRecolor.HeaderFont = new Font(
+			gbRecolor.BackColor = Color.Transparent;
+			gbRecolor.Controls.Add(cbColorExt);
+			resources.ApplyResources(gbRecolor, "gbRecolor");
+			gbRecolor.HeaderFont = new Font(
 				"Microsoft Sans Serif",
 				10.25F,
 				FontStyle.Bold
 			);
-			this.gbRecolor.IconLocation = new Point(4, 12);
-			this.gbRecolor.IconSize = new Size(32, 32);
-			this.gbRecolor.Name = "gbRecolor";
+			gbRecolor.IconLocation = new Point(4, 12);
+			gbRecolor.IconSize = new Size(32, 32);
+			gbRecolor.Name = "gbRecolor";
 			//
 			// cbColorExt
 			//
-			this.cbColorExt.Checked = true;
-			this.cbColorExt.CheckState = CheckState.Checked;
-			resources.ApplyResources(this.cbColorExt, "cbColorExt");
-			this.cbColorExt.Name = "cbColorExt";
-			this.cbColorExt.UseVisualStyleBackColor = false;
+			cbColorExt.Checked = true;
+			cbColorExt.CheckState = CheckState.Checked;
+			resources.ApplyResources(cbColorExt, "cbColorExt");
+			cbColorExt.Name = "cbColorExt";
+			cbColorExt.UseVisualStyleBackColor = false;
 			//
 			// gbClone
 			//
-			this.gbClone.BackColor = Color.Transparent;
-			this.gbClone.Controls.Add(this.llCloneDef);
-			this.gbClone.Controls.Add(this.cbstrlink);
-			this.gbClone.Controls.Add(this.cbDesc);
-			this.gbClone.Controls.Add(this.cbOrgGmdc);
-			this.gbClone.Controls.Add(this.cbRemTxt);
-			this.gbClone.Controls.Add(this.cbanim);
-			this.gbClone.Controls.Add(this.cbwallmask);
-			this.gbClone.Controls.Add(this.cbparent);
-			this.gbClone.Controls.Add(this.cbclean);
-			this.gbClone.Controls.Add(this.cbfix);
-			this.gbClone.Controls.Add(this.cbdefault);
-			this.gbClone.Controls.Add(this.cbgid);
-			resources.ApplyResources(this.gbClone, "gbClone");
-			this.gbClone.HeaderFont = new Font(
+			gbClone.BackColor = Color.Transparent;
+			gbClone.Controls.Add(llCloneDef);
+			gbClone.Controls.Add(cbstrlink);
+			gbClone.Controls.Add(cbDesc);
+			gbClone.Controls.Add(cbOrgGmdc);
+			gbClone.Controls.Add(cbRemTxt);
+			gbClone.Controls.Add(cbanim);
+			gbClone.Controls.Add(cbwallmask);
+			gbClone.Controls.Add(cbparent);
+			gbClone.Controls.Add(cbclean);
+			gbClone.Controls.Add(cbfix);
+			gbClone.Controls.Add(cbdefault);
+			gbClone.Controls.Add(cbgid);
+			resources.ApplyResources(gbClone, "gbClone");
+			gbClone.HeaderFont = new Font(
 				"Microsoft Sans Serif",
 				10.25F,
 				FontStyle.Bold
 			);
-			this.gbClone.IconLocation = new Point(4, 0);
-			this.gbClone.IconSize = new Size(32, 32);
-			this.gbClone.Name = "gbClone";
+			gbClone.IconLocation = new Point(4, 0);
+			gbClone.IconSize = new Size(32, 32);
+			gbClone.Name = "gbClone";
 			//
 			// llCloneDef
 			//
-			resources.ApplyResources(this.llCloneDef, "llCloneDef");
+			resources.ApplyResources(llCloneDef, "llCloneDef");
 			//this.llCloneDef.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-			this.llCloneDef.Name = "llCloneDef";
-			this.llCloneDef.TabStop = true;
-			this.llCloneDef.LinkClicked +=
+			llCloneDef.Name = "llCloneDef";
+			llCloneDef.TabStop = true;
+			llCloneDef.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.SetDefaultsForClone
+					SetDefaultsForClone
 				);
 			//
 			// cbstrlink
 			//
-			resources.ApplyResources(this.cbstrlink, "cbstrlink");
-			this.cbstrlink.Name = "cbstrlink";
-			this.toolTip1.SetToolTip(
-				this.cbstrlink,
+			resources.ApplyResources(cbstrlink, "cbstrlink");
+			cbstrlink.Name = "cbstrlink";
+			toolTip1.SetToolTip(
+				cbstrlink,
 				resources.GetString("cbstrlink.ToolTip")
 			);
-			this.cbstrlink.UseVisualStyleBackColor = false;
+			cbstrlink.UseVisualStyleBackColor = false;
 			//
 			// cbDesc
 			//
-			this.cbDesc.Checked = true;
-			this.cbDesc.CheckState = CheckState.Checked;
-			resources.ApplyResources(this.cbDesc, "cbDesc");
-			this.cbDesc.Name = "cbDesc";
-			this.toolTip1.SetToolTip(
-				this.cbDesc,
+			cbDesc.Checked = true;
+			cbDesc.CheckState = CheckState.Checked;
+			resources.ApplyResources(cbDesc, "cbDesc");
+			cbDesc.Name = "cbDesc";
+			toolTip1.SetToolTip(
+				cbDesc,
 				resources.GetString("cbDesc.ToolTip")
 			);
-			this.cbDesc.UseVisualStyleBackColor = false;
-			this.cbDesc.CheckedChanged += new EventHandler(
-				this.cbDesc_CheckedChanged
+			cbDesc.UseVisualStyleBackColor = false;
+			cbDesc.CheckedChanged += new EventHandler(
+				cbDesc_CheckedChanged
 			);
 			//
 			// cbOrgGmdc
 			//
-			resources.ApplyResources(this.cbOrgGmdc, "cbOrgGmdc");
-			this.cbOrgGmdc.Name = "cbOrgGmdc";
-			this.toolTip1.SetToolTip(
-				this.cbOrgGmdc,
+			resources.ApplyResources(cbOrgGmdc, "cbOrgGmdc");
+			cbOrgGmdc.Name = "cbOrgGmdc";
+			toolTip1.SetToolTip(
+				cbOrgGmdc,
 				resources.GetString("cbOrgGmdc.ToolTip")
 			);
-			this.cbOrgGmdc.UseVisualStyleBackColor = false;
+			cbOrgGmdc.UseVisualStyleBackColor = false;
 			//
 			// cbRemTxt
 			//
-			this.cbRemTxt.Checked = true;
-			this.cbRemTxt.CheckState = CheckState.Checked;
-			resources.ApplyResources(this.cbRemTxt, "cbRemTxt");
-			this.cbRemTxt.Name = "cbRemTxt";
-			this.toolTip1.SetToolTip(
-				this.cbRemTxt,
+			cbRemTxt.Checked = true;
+			cbRemTxt.CheckState = CheckState.Checked;
+			resources.ApplyResources(cbRemTxt, "cbRemTxt");
+			cbRemTxt.Name = "cbRemTxt";
+			toolTip1.SetToolTip(
+				cbRemTxt,
 				resources.GetString("cbRemTxt.ToolTip")
 			);
-			this.cbRemTxt.UseVisualStyleBackColor = false;
+			cbRemTxt.UseVisualStyleBackColor = false;
 			//
 			// cbanim
 			//
-			resources.ApplyResources(this.cbanim, "cbanim");
-			this.cbanim.Name = "cbanim";
-			this.toolTip1.SetToolTip(
-				this.cbanim,
+			resources.ApplyResources(cbanim, "cbanim");
+			cbanim.Name = "cbanim";
+			toolTip1.SetToolTip(
+				cbanim,
 				resources.GetString("cbanim.ToolTip")
 			);
-			this.cbanim.UseVisualStyleBackColor = false;
+			cbanim.UseVisualStyleBackColor = false;
 			//
 			// cbwallmask
 			//
-			this.cbwallmask.Checked = true;
-			this.cbwallmask.CheckState = CheckState.Checked;
-			resources.ApplyResources(this.cbwallmask, "cbwallmask");
-			this.cbwallmask.Name = "cbwallmask";
-			this.toolTip1.SetToolTip(
-				this.cbwallmask,
+			cbwallmask.Checked = true;
+			cbwallmask.CheckState = CheckState.Checked;
+			resources.ApplyResources(cbwallmask, "cbwallmask");
+			cbwallmask.Name = "cbwallmask";
+			toolTip1.SetToolTip(
+				cbwallmask,
 				resources.GetString("cbwallmask.ToolTip")
 			);
-			this.cbwallmask.UseVisualStyleBackColor = false;
+			cbwallmask.UseVisualStyleBackColor = false;
 			//
 			// cbparent
 			//
-			resources.ApplyResources(this.cbparent, "cbparent");
-			this.cbparent.Name = "cbparent";
-			this.toolTip1.SetToolTip(
-				this.cbparent,
+			resources.ApplyResources(cbparent, "cbparent");
+			cbparent.Name = "cbparent";
+			toolTip1.SetToolTip(
+				cbparent,
 				resources.GetString("cbparent.ToolTip")
 			);
-			this.cbparent.UseVisualStyleBackColor = false;
+			cbparent.UseVisualStyleBackColor = false;
 			//
 			// cbclean
 			//
-			this.cbclean.Checked = true;
-			this.cbclean.CheckState = CheckState.Checked;
-			resources.ApplyResources(this.cbclean, "cbclean");
-			this.cbclean.Name = "cbclean";
-			this.toolTip1.SetToolTip(
-				this.cbclean,
+			cbclean.Checked = true;
+			cbclean.CheckState = CheckState.Checked;
+			resources.ApplyResources(cbclean, "cbclean");
+			cbclean.Name = "cbclean";
+			toolTip1.SetToolTip(
+				cbclean,
 				resources.GetString("cbclean.ToolTip")
 			);
-			this.cbclean.UseVisualStyleBackColor = false;
+			cbclean.UseVisualStyleBackColor = false;
 			//
 			// cbfix
 			//
-			this.cbfix.Checked = true;
-			this.cbfix.CheckState = CheckState.Checked;
-			resources.ApplyResources(this.cbfix, "cbfix");
-			this.cbfix.Name = "cbfix";
-			this.toolTip1.SetToolTip(this.cbfix, resources.GetString("cbfix.ToolTip"));
-			this.cbfix.UseVisualStyleBackColor = false;
-			this.cbfix.CheckedChanged += new EventHandler(
-				this.cbfix_CheckedChanged
+			cbfix.Checked = true;
+			cbfix.CheckState = CheckState.Checked;
+			resources.ApplyResources(cbfix, "cbfix");
+			cbfix.Name = "cbfix";
+			toolTip1.SetToolTip(cbfix, resources.GetString("cbfix.ToolTip"));
+			cbfix.UseVisualStyleBackColor = false;
+			cbfix.CheckedChanged += new EventHandler(
+				cbfix_CheckedChanged
 			);
 			//
 			// cbdefault
 			//
-			this.cbdefault.Checked = true;
-			this.cbdefault.CheckState = CheckState.Checked;
-			resources.ApplyResources(this.cbdefault, "cbdefault");
-			this.cbdefault.Name = "cbdefault";
-			this.toolTip1.SetToolTip(
-				this.cbdefault,
+			cbdefault.Checked = true;
+			cbdefault.CheckState = CheckState.Checked;
+			resources.ApplyResources(cbdefault, "cbdefault");
+			cbdefault.Name = "cbdefault";
+			toolTip1.SetToolTip(
+				cbdefault,
 				resources.GetString("cbdefault.ToolTip")
 			);
-			this.cbdefault.UseVisualStyleBackColor = false;
+			cbdefault.UseVisualStyleBackColor = false;
 			//
 			// cbgid
 			//
-			this.cbgid.Checked = true;
-			this.cbgid.CheckState = CheckState.Checked;
-			resources.ApplyResources(this.cbgid, "cbgid");
-			this.cbgid.Name = "cbgid";
-			this.toolTip1.SetToolTip(this.cbgid, resources.GetString("cbgid.ToolTip"));
-			this.cbgid.UseVisualStyleBackColor = false;
+			cbgid.Checked = true;
+			cbgid.CheckState = CheckState.Checked;
+			resources.ApplyResources(cbgid, "cbgid");
+			cbgid.Name = "cbgid";
+			toolTip1.SetToolTip(cbgid, resources.GetString("cbgid.ToolTip"));
+			cbgid.UseVisualStyleBackColor = false;
 			//
 			// panel2
 			//
-			this.panel2.Controls.Add(this.button3);
-			this.panel2.Controls.Add(this.cbTask);
-			this.panel2.Controls.Add(this.label3);
-			resources.ApplyResources(this.panel2, "panel2");
-			this.panel2.Name = "panel2";
+			panel2.Controls.Add(button3);
+			panel2.Controls.Add(cbTask);
+			panel2.Controls.Add(label3);
+			resources.ApplyResources(panel2, "panel2");
+			panel2.Name = "panel2";
 			//
 			// button3
 			//
-			resources.ApplyResources(this.button3, "button3");
-			this.button3.Name = "button3";
-			this.button3.Click += new EventHandler(this.button3_Click);
+			resources.ApplyResources(button3, "button3");
+			button3.Name = "button3";
+			button3.Click += new EventHandler(button3_Click);
 			//
 			// cbTask
 			//
-			resources.ApplyResources(this.cbTask, "cbTask");
-			this.cbTask.DropDownStyle = ComboBoxStyle.DropDownList;
-			this.cbTask.ForeColor = SystemColors.ControlText;
-			this.cbTask.Items.AddRange(
+			resources.ApplyResources(cbTask, "cbTask");
+			cbTask.DropDownStyle = ComboBoxStyle.DropDownList;
+			cbTask.ForeColor = SystemColors.ControlText;
+			cbTask.Items.AddRange(
 				new object[]
 				{
 					resources.GetString("cbTask.Items"),
 					resources.GetString("cbTask.Items1"),
 				}
 			);
-			this.cbTask.Name = "cbTask";
-			this.cbTask.SelectedIndexChanged += new EventHandler(
-				this.cbTask_SelectedIndexChanged
+			cbTask.Name = "cbTask";
+			cbTask.SelectedIndexChanged += new EventHandler(
+				cbTask_SelectedIndexChanged
 			);
 			//
 			// label3
 			//
-			resources.ApplyResources(this.label3, "label3");
-			this.label3.Name = "label3";
+			resources.ApplyResources(label3, "label3");
+			label3.Name = "label3";
 			//
 			// wizardStepPanel5
 			//
-			this.wizardStepPanel5.BackColor = Color.Transparent;
-			this.wizardStepPanel5.Controls.Add(this.xpTaskBoxSimple3);
-			resources.ApplyResources(this.wizardStepPanel5, "wizardStepPanel5");
-			this.wizardStepPanel5.First = false;
-			this.wizardStepPanel5.Last = false;
-			this.wizardStepPanel5.Name = "wizardStepPanel5";
-			this.wizardStepPanel5.Activate += new Wizards.WizardChangeHandle(
-				this.wizardStepPanel5_Activate
+			wizardStepPanel5.BackColor = Color.Transparent;
+			wizardStepPanel5.Controls.Add(xpTaskBoxSimple3);
+			resources.ApplyResources(wizardStepPanel5, "wizardStepPanel5");
+			wizardStepPanel5.First = false;
+			wizardStepPanel5.Last = false;
+			wizardStepPanel5.Name = "wizardStepPanel5";
+			wizardStepPanel5.Activate += new Wizards.WizardChangeHandle(
+				wizardStepPanel5_Activate
 			);
-			this.wizardStepPanel5.Activated += new Wizards.WizardStepHandle(
-				this.wizardStepPanel5_Activated
+			wizardStepPanel5.Activated += new Wizards.WizardStepHandle(
+				wizardStepPanel5_Activated
 			);
 			//
 			// xpTaskBoxSimple3
 			//
-			this.xpTaskBoxSimple3.BackColor = Color.Transparent;
-			this.xpTaskBoxSimple3.Controls.Add(this.tbDesc);
-			this.xpTaskBoxSimple3.Controls.Add(this.tbPrice);
-			this.xpTaskBoxSimple3.Controls.Add(this.tbName);
-			this.xpTaskBoxSimple3.Controls.Add(this.label7);
-			this.xpTaskBoxSimple3.Controls.Add(this.label6);
-			this.xpTaskBoxSimple3.Controls.Add(this.label5);
-			resources.ApplyResources(this.xpTaskBoxSimple3, "xpTaskBoxSimple3");
-			this.xpTaskBoxSimple3.HeaderFont = new Font(
+			xpTaskBoxSimple3.BackColor = Color.Transparent;
+			xpTaskBoxSimple3.Controls.Add(tbDesc);
+			xpTaskBoxSimple3.Controls.Add(tbPrice);
+			xpTaskBoxSimple3.Controls.Add(tbName);
+			xpTaskBoxSimple3.Controls.Add(label7);
+			xpTaskBoxSimple3.Controls.Add(label6);
+			xpTaskBoxSimple3.Controls.Add(label5);
+			resources.ApplyResources(xpTaskBoxSimple3, "xpTaskBoxSimple3");
+			xpTaskBoxSimple3.HeaderFont = new Font(
 				"Microsoft Sans Serif",
 				10.25F,
 				FontStyle.Bold
 			);
-			this.xpTaskBoxSimple3.IconLocation = new Point(4, 12);
-			this.xpTaskBoxSimple3.IconSize = new Size(32, 32);
-			this.xpTaskBoxSimple3.Name = "xpTaskBoxSimple3";
+			xpTaskBoxSimple3.IconLocation = new Point(4, 12);
+			xpTaskBoxSimple3.IconSize = new Size(32, 32);
+			xpTaskBoxSimple3.Name = "xpTaskBoxSimple3";
 			//
 			// tbDesc
 			//
-			resources.ApplyResources(this.tbDesc, "tbDesc");
-			this.tbDesc.BorderStyle = BorderStyle.None;
-			this.tbDesc.Name = "tbDesc";
+			resources.ApplyResources(tbDesc, "tbDesc");
+			tbDesc.BorderStyle = BorderStyle.None;
+			tbDesc.Name = "tbDesc";
 			//
 			// tbPrice
 			//
-			resources.ApplyResources(this.tbPrice, "tbPrice");
-			this.tbPrice.Name = "tbPrice";
+			resources.ApplyResources(tbPrice, "tbPrice");
+			tbPrice.Name = "tbPrice";
 			//
 			// tbName
 			//
-			resources.ApplyResources(this.tbName, "tbName");
-			this.tbName.Name = "tbName";
+			resources.ApplyResources(tbName, "tbName");
+			tbName.Name = "tbName";
 			//
 			// label7
 			//
-			resources.ApplyResources(this.label7, "label7");
-			this.label7.Name = "label7";
+			resources.ApplyResources(label7, "label7");
+			label7.Name = "label7";
 			//
 			// label6
 			//
-			resources.ApplyResources(this.label6, "label6");
-			this.label6.Name = "label6";
+			resources.ApplyResources(label6, "label6");
+			label6.Name = "label6";
 			//
 			// label5
 			//
-			resources.ApplyResources(this.label5, "label5");
-			this.label5.Name = "label5";
+			resources.ApplyResources(label5, "label5");
+			label5.Name = "label5";
 			//
 			// wizardStepPanel4
 			//
-			this.wizardStepPanel4.BackColor = Color.Transparent;
-			this.wizardStepPanel4.Controls.Add(this.pnWait);
-			resources.ApplyResources(this.wizardStepPanel4, "wizardStepPanel4");
-			this.wizardStepPanel4.First = false;
-			this.wizardStepPanel4.Last = true;
-			this.wizardStepPanel4.Name = "wizardStepPanel4";
-			this.wizardStepPanel4.Activate += new Wizards.WizardChangeHandle(
-				this.wizardStepPanel4_Activate
+			wizardStepPanel4.BackColor = Color.Transparent;
+			wizardStepPanel4.Controls.Add(pnWait);
+			resources.ApplyResources(wizardStepPanel4, "wizardStepPanel4");
+			wizardStepPanel4.First = false;
+			wizardStepPanel4.Last = true;
+			wizardStepPanel4.Name = "wizardStepPanel4";
+			wizardStepPanel4.Activate += new Wizards.WizardChangeHandle(
+				wizardStepPanel4_Activate
 			);
-			this.wizardStepPanel4.Activated += new Wizards.WizardStepHandle(
-				this.wizardStepPanel4_Activated
+			wizardStepPanel4.Activated += new Wizards.WizardStepHandle(
+				wizardStepPanel4_Activated
 			);
 			//
 			// pnWait
 			//
-			this.pnWait.Controls.Add(this.pbWait);
-			this.pnWait.Controls.Add(this.lbfinished);
-			this.pnWait.Controls.Add(this.lberr);
-			this.pnWait.Controls.Add(this.lbfinload);
-			this.pnWait.Controls.Add(this.lbwait);
-			resources.ApplyResources(this.pnWait, "pnWait");
-			this.pnWait.Name = "pnWait";
+			pnWait.Controls.Add(pbWait);
+			pnWait.Controls.Add(lbfinished);
+			pnWait.Controls.Add(lberr);
+			pnWait.Controls.Add(lbfinload);
+			pnWait.Controls.Add(lbwait);
+			resources.ApplyResources(pnWait, "pnWait");
+			pnWait.Name = "pnWait";
 			//
 			// pbWait
 			//
-			resources.ApplyResources(this.pbWait, "pbWait");
-			this.pbWait.Name = "pbWait";
-			this.pbWait.TabStop = false;
+			resources.ApplyResources(pbWait, "pbWait");
+			pbWait.Name = "pbWait";
+			pbWait.TabStop = false;
 			//
 			// lbfinished
 			//
-			resources.ApplyResources(this.lbfinished, "lbfinished");
-			this.lbfinished.Name = "lbfinished";
+			resources.ApplyResources(lbfinished, "lbfinished");
+			lbfinished.Name = "lbfinished";
 			//
 			// lberr
 			//
-			resources.ApplyResources(this.lberr, "lberr");
-			this.lberr.Name = "lberr";
-			this.lberr.Click += new EventHandler(this.lberr_Click);
+			resources.ApplyResources(lberr, "lberr");
+			lberr.Name = "lberr";
+			lberr.Click += new EventHandler(lberr_Click);
 			//
 			// lbfinload
 			//
-			resources.ApplyResources(this.lbfinload, "lbfinload");
-			this.lbfinload.Name = "lbfinload";
+			resources.ApplyResources(lbfinload, "lbfinload");
+			lbfinload.Name = "lbfinload";
 			//
 			// lbwait
 			//
-			resources.ApplyResources(this.lbwait, "lbwait");
-			this.lbwait.Name = "lbwait";
+			resources.ApplyResources(lbwait, "lbwait");
+			lbwait.Name = "lbwait";
 			//
 			// toolStrip1
 			//
-			this.toolStrip1.GripStyle = ToolStripGripStyle.Hidden;
-			this.toolStrip1.Items.AddRange(
+			toolStrip1.GripStyle = ToolStripGripStyle.Hidden;
+			toolStrip1.Items.AddRange(
 				new ToolStripItem[]
 				{
-					this.biPrev,
-					this.biNext,
-					this.biFinish,
-					this.biAbort,
-					this.biCatalog,
+					biPrev,
+					biNext,
+					biFinish,
+					biAbort,
+					biCatalog,
 				}
 			);
-			this.toolStrip1.LayoutStyle =
+			toolStrip1.LayoutStyle =
 				ToolStripLayoutStyle
 				.HorizontalStackWithOverflow;
-			resources.ApplyResources(this.toolStrip1, "toolStrip1");
-			this.toolStrip1.Name = "toolStrip1";
-			this.toolStrip1.ShowItemToolTips = false;
+			resources.ApplyResources(toolStrip1, "toolStrip1");
+			toolStrip1.Name = "toolStrip1";
+			toolStrip1.ShowItemToolTips = false;
 			//
 			// biPrev
 			//
-			resources.ApplyResources(this.biPrev, "biPrev");
-			this.biPrev.Name = "biPrev";
-			this.biPrev.Click += new EventHandler(this.Activate_biPrev);
+			resources.ApplyResources(biPrev, "biPrev");
+			biPrev.Name = "biPrev";
+			biPrev.Click += new EventHandler(Activate_biPrev);
 			//
 			// biNext
 			//
-			resources.ApplyResources(this.biNext, "biNext");
-			this.biNext.Name = "biNext";
-			this.biNext.Click += new EventHandler(this.Activate_biNext);
+			resources.ApplyResources(biNext, "biNext");
+			biNext.Name = "biNext";
+			biNext.Click += new EventHandler(Activate_biNext);
 			//
 			// biFinish
 			//
-			resources.ApplyResources(this.biFinish, "biFinish");
-			this.biFinish.Name = "biFinish";
-			this.biFinish.Click += new EventHandler(this.ActivateFinish);
+			resources.ApplyResources(biFinish, "biFinish");
+			biFinish.Name = "biFinish";
+			biFinish.Click += new EventHandler(ActivateFinish);
 			//
 			// biAbort
 			//
-			resources.ApplyResources(this.biAbort, "biAbort");
-			this.biAbort.Name = "biAbort";
-			this.biAbort.Click += new EventHandler(this.biAbort_Activate);
+			resources.ApplyResources(biAbort, "biAbort");
+			biAbort.Name = "biAbort";
+			biAbort.Click += new EventHandler(biAbort_Activate);
 			//
 			// biCatalog
 			//
-			this.biCatalog.Alignment =
+			biCatalog.Alignment =
 				ToolStripItemAlignment
 				.Right;
-			this.biCatalog.Checked = true;
-			this.biCatalog.CheckOnClick = true;
-			this.biCatalog.CheckState = CheckState.Checked;
-			this.biCatalog.DisplayStyle =
+			biCatalog.Checked = true;
+			biCatalog.CheckOnClick = true;
+			biCatalog.CheckState = CheckState.Checked;
+			biCatalog.DisplayStyle =
 				ToolStripItemDisplayStyle
 				.Text;
-			resources.ApplyResources(this.biCatalog, "biCatalog");
-			this.biCatalog.Name = "biCatalog";
-			this.biCatalog.Click += new EventHandler(this.Activate_biCatalog);
+			resources.ApplyResources(biCatalog, "biCatalog");
+			biCatalog.Name = "biCatalog";
+			biCatalog.Click += new EventHandler(Activate_biCatalog);
 			//
 			// ilist
 			//
-			this.ilist.ColorDepth = ColorDepth.Depth32Bit;
-			resources.ApplyResources(this.ilist, "ilist");
-			this.ilist.TransparentColor = Color.Transparent;
+			ilist.ColorDepth = ColorDepth.Depth32Bit;
+			resources.ApplyResources(ilist, "ilist");
+			ilist.TransparentColor = Color.Transparent;
 			//
 			// dcObjectWorkshop
 			//
 			resources.ApplyResources(this, "$this");
-			this.Controls.Add(this.xpGradientPanel1);
-			this.FloatingSize = new Size(640, 480);
-			this.Image = ((Image)(resources.GetObject("$this.Image")));
-			this.MinimumSize = new Size(640, 480);
-			this.Name = "dcObjectWorkshop";
-			this.TabImage = (
+			Controls.Add(xpGradientPanel1);
+			FloatingSize = new Size(640, 480);
+			Image = ((Image)(resources.GetObject("$this.Image")));
+			MinimumSize = new Size(640, 480);
+			Name = "dcObjectWorkshop";
+			TabImage = (
 				(Image)(resources.GetObject("$this.TabImage"))
 			);
-			this.TabText = "Object Workshop";
-			this.xpGradientPanel1.ResumeLayout(false);
-			this.xpGradientPanel1.PerformLayout();
-			this.wizard1.ResumeLayout(false);
-			this.wizardStepPanel1.ResumeLayout(false);
-			this.xpAdvanced.ResumeLayout(false);
-			this.xpAdvanced.PerformLayout();
-			this.wizardStepPanel2.ResumeLayout(false);
-			this.panel1.ResumeLayout(false);
-			this.wizardStepPanel3.ResumeLayout(false);
-			this.gbRecolor.ResumeLayout(false);
-			this.gbClone.ResumeLayout(false);
-			this.gbClone.PerformLayout();
-			this.panel2.ResumeLayout(false);
-			this.wizardStepPanel5.ResumeLayout(false);
-			this.xpTaskBoxSimple3.ResumeLayout(false);
-			this.xpTaskBoxSimple3.PerformLayout();
-			this.wizardStepPanel4.ResumeLayout(false);
-			this.pnWait.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.pbWait)).EndInit();
-			this.toolStrip1.ResumeLayout(false);
-			this.toolStrip1.PerformLayout();
-			this.ResumeLayout(false);
+			TabText = "Object Workshop";
+			xpGradientPanel1.ResumeLayout(false);
+			xpGradientPanel1.PerformLayout();
+			wizard1.ResumeLayout(false);
+			wizardStepPanel1.ResumeLayout(false);
+			xpAdvanced.ResumeLayout(false);
+			xpAdvanced.PerformLayout();
+			wizardStepPanel2.ResumeLayout(false);
+			panel1.ResumeLayout(false);
+			wizardStepPanel3.ResumeLayout(false);
+			gbRecolor.ResumeLayout(false);
+			gbClone.ResumeLayout(false);
+			gbClone.PerformLayout();
+			panel2.ResumeLayout(false);
+			wizardStepPanel5.ResumeLayout(false);
+			xpTaskBoxSimple3.ResumeLayout(false);
+			xpTaskBoxSimple3.PerformLayout();
+			wizardStepPanel4.ResumeLayout(false);
+			pnWait.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(pbWait)).EndInit();
+			toolStrip1.ResumeLayout(false);
+			toolStrip1.PerformLayout();
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -983,7 +983,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		private void wizard1_ChangedPrevState(Wizards.Wizard sender)
 		{
 			biPrev.Enabled = sender.PrevEnabled;
-			this.biAbort.Visible = biPrev.Enabled;
+			biAbort.Visible = biPrev.Enabled;
 		}
 
 		private void Activate_biPrev(object sender, EventArgs e)
@@ -999,8 +999,8 @@ namespace SimPe.Plugin.Tool.Dockable
 		private void ActivateFinish(object sender, EventArgs e)
 		{
 			if (
-				wizard1.CurrentStep == this.wizardStepPanel3
-				|| wizard1.CurrentStep == this.wizardStepPanel5
+				wizard1.CurrentStep == wizardStepPanel3
+				|| wizard1.CurrentStep == wizardStepPanel5
 			)
 			{
 				Activate_biNext(sender, e);
@@ -1040,26 +1040,26 @@ namespace SimPe.Plugin.Tool.Dockable
 					tv.Enabled = false;
 					lb.Enabled = false;
 					lastselected = null;
-					this.ilist.Images.Clear();
-					this.ilist.Images.Add(
+					ilist.Images.Clear();
+					ilist.Images.Add(
 						new Bitmap(
-							this.GetType()
+							GetType()
 								.Assembly.GetManifestResourceStream(
 									"SimPe.img.subitems.png"
 								)
 						)
 					);
-					this.ilist.Images.Add(
+					ilist.Images.Add(
 						new Bitmap(
-							this.GetType()
+							GetType()
 								.Assembly.GetManifestResourceStream(
 									"SimPe.img.nothumb.png"
 								)
 						)
 					);
-					this.ilist.Images.Add(
+					ilist.Images.Add(
 						new Bitmap(
-							this.GetType()
+							GetType()
 								.Assembly.GetManifestResourceStream(
 									"SimPe.img.custom.png"
 								)
@@ -1117,7 +1117,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			string[][] cats = oci.ObjectCategory;
 			foreach (string[] ss in cats)
 			{
-				this.tv.Invoke(
+				tv.Invoke(
 					new GetParentNodeHandler(ObjectLoader.GetParentNode),
 					new object[] { RootNode.Nodes, ss, 0, oci, a, ilist }
 				);
@@ -1173,8 +1173,8 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		private void Activate_biCatalog(object sender, EventArgs e)
 		{
-			this.tv.Visible = biCatalog.Checked;
-			this.lb.Visible = !biCatalog.Checked;
+			tv.Visible = biCatalog.Checked;
+			lb.Visible = !biCatalog.Checked;
 
 			lb_SelectedIndexChanged(lb, null);
 			tv_AfterSelect(tv, null);
@@ -1185,7 +1185,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			Wizards.WizardEventArgs e
 		)
 		{
-			this.biCatalog.Visible = (e.Step.Index == wizardStepPanel2.Index);
+			biCatalog.Visible = (e.Step.Index == wizardStepPanel2.Index);
 		}
 
 		private void button2_Click(object sender, EventArgs e)
@@ -1217,7 +1217,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			TreeViewEventArgs e
 		)
 		{
-			if (wizard1.CurrentStepNumber == this.wizardStepPanel2.Index && tv.Visible)
+			if (wizard1.CurrentStepNumber == wizardStepPanel2.Index && tv.Visible)
 			{
 				if (tv.SelectedNode == null)
 				{
@@ -1243,7 +1243,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		private void lb_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (wizard1.CurrentStepNumber == this.wizardStepPanel2.Index && lb.Visible)
+			if (wizard1.CurrentStepNumber == wizardStepPanel2.Index && lb.Visible)
 			{
 				wizard1.NextEnabled = (lb.SelectedIndex >= 0);
 			}
@@ -1326,11 +1326,11 @@ namespace SimPe.Plugin.Tool.Dockable
 		)
 		{
 			e.CanFinish = false;
-			this.pbWait.Image = null;
-			this.lbwait.Visible = true;
-			this.lbfinished.Visible = false;
-			this.lbfinload.Visible = false;
-			this.lberr.Visible = false;
+			pbWait.Image = null;
+			lbwait.Visible = true;
+			lbfinished.Visible = false;
+			lbfinload.Visible = false;
+			lberr.Visible = false;
 		}
 
 		private void wizardStepPanel4_Activated(
@@ -1338,8 +1338,8 @@ namespace SimPe.Plugin.Tool.Dockable
 			Wizards.WizardStepPanel step
 		)
 		{
-			this.pbWait.Image = Image.FromStream(
-				this.GetType().Assembly.GetManifestResourceStream("SimPe.img.timer.gif")
+			pbWait.Image = Image.FromStream(
+				GetType().Assembly.GetManifestResourceStream("SimPe.img.timer.gif")
 			);
 			Packages.GeneratableFile package = null;
 			if (lastselected == null && this.package == null)
@@ -1353,7 +1353,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				uint localgroup;
 				ObjectWorkshopHelper.PrepareForClone(
 					this.package,
-					this.lastselected,
+					lastselected,
 					out a,
 					out localgroup,
 					out pfd
@@ -1362,24 +1362,24 @@ namespace SimPe.Plugin.Tool.Dockable
 				ObjectWorkshopSettings settings;
 
 				//Clone an Object
-				if (this.cbTask.SelectedIndex == 1)
+				if (cbTask.SelectedIndex == 1)
 				{
 					OWCloneSettings cs = new OWCloneSettings();
-					cs.IncludeWallmask = this.cbwallmask.Checked;
-					cs.OnlyDefaultMmats = this.cbdefault.Checked;
-					cs.IncludeAnimationResources = this.cbanim.Checked;
-					cs.CustomGroup = this.cbgid.Checked;
-					cs.FixResources = this.cbfix.Checked;
-					cs.RemoveUselessResource = this.cbclean.Checked;
-					cs.StandAloneObject = this.cbparent.Checked;
-					cs.RemoveNonDefaultTextReferences = this.cbRemTxt.Checked;
-					cs.KeepOriginalMesh = this.cbOrgGmdc.Checked;
-					cs.PullResourcesByStr = this.cbstrlink.Checked;
+					cs.IncludeWallmask = cbwallmask.Checked;
+					cs.OnlyDefaultMmats = cbdefault.Checked;
+					cs.IncludeAnimationResources = cbanim.Checked;
+					cs.CustomGroup = cbgid.Checked;
+					cs.FixResources = cbfix.Checked;
+					cs.RemoveUselessResource = cbclean.Checked;
+					cs.StandAloneObject = cbparent.Checked;
+					cs.RemoveNonDefaultTextReferences = cbRemTxt.Checked;
+					cs.KeepOriginalMesh = cbOrgGmdc.Checked;
+					cs.PullResourcesByStr = cbstrlink.Checked;
 
 					cs.ChangeObjectDescription = cbDesc.Checked;
-					cs.Title = this.tbName.Text;
-					cs.Description = this.tbDesc.Text;
-					cs.Price = Helper.StringToInt16(this.tbPrice.Text, 0, 10);
+					cs.Title = tbName.Text;
+					cs.Description = tbDesc.Text;
+					cs.Price = Helper.StringToInt16(tbPrice.Text, 0, 10);
 
 					settings = cs;
 				}
@@ -1405,19 +1405,19 @@ namespace SimPe.Plugin.Tool.Dockable
 				{
 					Helper.ExceptionMessage(ex);
 				}
-				this.pbWait.Image = null;
+				pbWait.Image = null;
 				if (package != null)
 				{
-					this.lbfinload.Visible = settings.RemoteResult;
+					lbfinload.Visible = settings.RemoteResult;
 				}
 				else
 				{
-					this.lberr.Visible = true;
+					lberr.Visible = true;
 				}
 			}
 
-			this.lbwait.Visible = false;
-			this.lbfinished.Visible = !this.lbfinload.Visible && !lberr.Visible;
+			lbwait.Visible = false;
+			lbfinished.Visible = !lbfinload.Visible && !lberr.Visible;
 		}
 
 		private void wizardStepPanel3_Activate(
@@ -1427,12 +1427,12 @@ namespace SimPe.Plugin.Tool.Dockable
 		{
 			e.CanFinish = (
 				(lastselected != null || package != null)
-				&& this.cbTask.SelectedIndex == 0
-				&& !this.cbDesc.Checked
+				&& cbTask.SelectedIndex == 0
+				&& !cbDesc.Checked
 			);
 			e.EnableNext = (
 				(lastselected != null || package != null)
-				&& !(this.cbTask.SelectedIndex == 0 && !this.cbDesc.Checked)
+				&& !(cbTask.SelectedIndex == 0 && !cbDesc.Checked)
 			);
 			UpdateObjectPreview(op2);
 			UpdateEnabledOptions();
@@ -1511,9 +1511,9 @@ namespace SimPe.Plugin.Tool.Dockable
 			e.CanFinish = true;
 			e.EnableNext = false;
 
-			this.tbName.Text = this.op2.Title;
-			this.tbDesc.Text = this.op2.Description;
-			this.tbPrice.Text = this.op2.Price.ToString();
+			tbName.Text = op2.Title;
+			tbDesc.Text = op2.Description;
+			tbPrice.Text = op2.Price.ToString();
 		}
 
 		private void wizardStepPanel5_Activated(
@@ -1534,8 +1534,8 @@ namespace SimPe.Plugin.Tool.Dockable
 		private void wizard1_ShowedStep(Wizards.Wizard sender, int source)
 		{
 			if (
-				sender.CurrentStep == this.wizardStepPanel5
-				&& (this.cbTask.SelectedIndex == 0 || this.cbDesc.Checked == false)
+				sender.CurrentStep == wizardStepPanel5
+				&& (cbTask.SelectedIndex == 0 || cbDesc.Checked == false)
 			)
 			{
 				if (source < sender.CurrentStep.Index)
@@ -1551,7 +1551,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		private void cbDesc_CheckedChanged(object sender, EventArgs e)
 		{
-			cbTask_SelectedIndexChanged(this.cbTask, null);
+			cbTask_SelectedIndexChanged(cbTask, null);
 		}
 
 		private void lberr_Click(object sender, EventArgs e)
@@ -1563,7 +1563,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		private void button4_Click(object sender, EventArgs e)
 		{
 			lastselected = null;
-			this.tv.SelectedNode = null;
+			tv.SelectedNode = null;
 			onlybase = false;
 			package = ObjectWorkshopHelper.CreatCloneByGroup(
 				Helper.StringToUInt32(tbGroup.Text, 0x7f000000, 16)
@@ -1575,9 +1575,9 @@ namespace SimPe.Plugin.Tool.Dockable
 		private void button5_Click(object sender, EventArgs e)
 		{
 			lastselected = null;
-			this.tv.SelectedNode = null;
+			tv.SelectedNode = null;
 			onlybase = false;
-			package = ObjectWorkshopHelper.CreatCloneByCres(this.tbCresName.Text);
+			package = ObjectWorkshopHelper.CreatCloneByCres(tbCresName.Text);
 
 			wizard1.JumpToStep(2);
 		}
@@ -1585,10 +1585,10 @@ namespace SimPe.Plugin.Tool.Dockable
 		private void button6_Click(object sender, EventArgs e)
 		{
 			lastselected = null;
-			this.tv.SelectedNode = null;
+			tv.SelectedNode = null;
 			onlybase = false;
 			package = ObjectWorkshopHelper.CreatCloneByGuid(
-				Helper.StringToUInt32(this.tbGUID.Text, 0x00000000, 16)
+				Helper.StringToUInt32(tbGUID.Text, 0x00000000, 16)
 			);
 
 			wizard1.JumpToStep(2);
@@ -1596,17 +1596,17 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		private void xpTaskBoxSimple1_Resize(object sender, EventArgs e)
 		{
-			this.op2.Size = new Size(
-				this.xpTaskBoxSimple1.Width - 16,
-				this.xpTaskBoxSimple1.Height - 56
+			op2.Size = new Size(
+				xpTaskBoxSimple1.Width - 16,
+				xpTaskBoxSimple1.Height - 56
 			);
 		}
 
 		private void xpTaskBoxSimple2_Resize(object sender, EventArgs e)
 		{
-			this.op1.Size = new Size(
-				this.xpTaskBoxSimple2.Width - 16,
-				this.xpTaskBoxSimple2.Height - 56
+			op1.Size = new Size(
+				xpTaskBoxSimple2.Width - 16,
+				xpTaskBoxSimple2.Height - 56
 			);
 		}
 

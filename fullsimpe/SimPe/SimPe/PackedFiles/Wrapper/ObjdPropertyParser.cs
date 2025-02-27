@@ -48,7 +48,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			if (props == null)
 			{
-				this.Load();
+				Load();
 			}
 
 			return (PropertyDescription)typemap[index];

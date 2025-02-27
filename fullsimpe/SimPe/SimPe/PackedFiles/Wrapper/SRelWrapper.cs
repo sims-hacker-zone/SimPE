@@ -369,7 +369,7 @@ namespace SimPe.PackedFiles.Wrapper
 				"This File Contians the Relationship states for two Sims.",
 				6,
 				System.Drawing.Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.srel.png")
 				)
 			);

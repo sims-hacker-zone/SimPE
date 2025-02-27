@@ -50,7 +50,7 @@ namespace SimPe.Plugin.TabPage
 			//
 			InitializeComponent();
 
-			this.UseVisualStyleBackColor = true;
+			UseVisualStyleBackColor = true;
 		}
 
 		/// <summary>
@@ -76,51 +76,51 @@ namespace SimPe.Plugin.TabPage
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.label5 = new Label();
-			this.label4 = new Label();
-			this.tbtype = new TextBox();
-			this.tbdsc = new TextBox();
-			this.groupBox10 = new GroupBox();
-			this.tb_ver = new TextBox();
-			this.label28 = new Label();
-			this.groupBox10.SuspendLayout();
-			this.SuspendLayout();
+			label5 = new Label();
+			label4 = new Label();
+			tbtype = new TextBox();
+			tbdsc = new TextBox();
+			groupBox10 = new GroupBox();
+			tb_ver = new TextBox();
+			label28 = new Label();
+			groupBox10.SuspendLayout();
+			SuspendLayout();
 			//
 			// label5
 			//
-			this.label5.AutoSize = true;
-			this.label5.Font = new System.Drawing.Font(
+			label5.AutoSize = true;
+			label5.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label5.Location = new System.Drawing.Point(48, 88);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(37, 17);
-			this.label5.TabIndex = 16;
-			this.label5.Text = "Type:";
+			label5.Location = new System.Drawing.Point(48, 88);
+			label5.Name = "label5";
+			label5.Size = new System.Drawing.Size(37, 17);
+			label5.TabIndex = 16;
+			label5.Text = "Type:";
 			//
 			// label4
 			//
-			this.label4.AutoSize = true;
-			this.label4.Font = new System.Drawing.Font(
+			label4.AutoSize = true;
+			label4.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label4.Location = new System.Drawing.Point(12, 56);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(73, 17);
-			this.label4.TabIndex = 15;
-			this.label4.Text = "Description:";
+			label4.Location = new System.Drawing.Point(12, 56);
+			label4.Name = "label4";
+			label4.Size = new System.Drawing.Size(73, 17);
+			label4.TabIndex = 15;
+			label4.Text = "Description:";
 			//
 			// tbtype
 			//
-			this.tbtype.Anchor = (
+			tbtype.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -130,23 +130,23 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.tbtype.Font = new System.Drawing.Font(
+			tbtype.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tbtype.Location = new System.Drawing.Point(88, 88);
-			this.tbtype.Name = "tbtype";
-			this.tbtype.Size = new System.Drawing.Size(624, 21);
-			this.tbtype.TabIndex = 14;
-			this.tbtype.Text = "";
-			this.tbtype.TextChanged += new EventHandler(this.FileNameChanged);
+			tbtype.Location = new System.Drawing.Point(88, 88);
+			tbtype.Name = "tbtype";
+			tbtype.Size = new System.Drawing.Size(624, 21);
+			tbtype.TabIndex = 14;
+			tbtype.Text = "";
+			tbtype.TextChanged += new EventHandler(FileNameChanged);
 			//
 			// tbdsc
 			//
-			this.tbdsc.Anchor = (
+			tbdsc.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -156,33 +156,33 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.tbdsc.Font = new System.Drawing.Font(
+			tbdsc.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tbdsc.Location = new System.Drawing.Point(88, 56);
-			this.tbdsc.Name = "tbdsc";
-			this.tbdsc.Size = new System.Drawing.Size(624, 21);
-			this.tbdsc.TabIndex = 13;
-			this.tbdsc.Text = "";
-			this.tbdsc.TextChanged += new EventHandler(this.FileNameChanged);
+			tbdsc.Location = new System.Drawing.Point(88, 56);
+			tbdsc.Name = "tbdsc";
+			tbdsc.Size = new System.Drawing.Size(624, 21);
+			tbdsc.TabIndex = 13;
+			tbdsc.Text = "";
+			tbdsc.TextChanged += new EventHandler(FileNameChanged);
 			//
 			// tabPage3
 			//
-			this.BackColor = System.Drawing.Color.White;
-			this.Controls.Add(this.groupBox10);
-			this.Location = new System.Drawing.Point(4, 22);
-			this.Name = "tabPage3";
-			this.Size = new System.Drawing.Size(744, 238);
-			this.TabIndex = 2;
-			this.Text = "cMeterialDefinition";
+			BackColor = System.Drawing.Color.White;
+			Controls.Add(groupBox10);
+			Location = new System.Drawing.Point(4, 22);
+			Name = "tabPage3";
+			Size = new System.Drawing.Size(744, 238);
+			TabIndex = 2;
+			Text = "cMeterialDefinition";
 			//
 			// groupBox10
 			//
-			this.groupBox10.Anchor = (
+			groupBox10.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -192,64 +192,64 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.groupBox10.Controls.Add(this.tb_ver);
-			this.groupBox10.Controls.Add(this.label28);
-			this.groupBox10.Controls.Add(this.label4);
-			this.groupBox10.Controls.Add(this.tbtype);
-			this.groupBox10.Controls.Add(this.tbdsc);
-			this.groupBox10.Controls.Add(this.label5);
-			this.groupBox10.FlatStyle = FlatStyle.System;
-			this.groupBox10.Font = new System.Drawing.Font(
+			groupBox10.Controls.Add(tb_ver);
+			groupBox10.Controls.Add(label28);
+			groupBox10.Controls.Add(label4);
+			groupBox10.Controls.Add(tbtype);
+			groupBox10.Controls.Add(tbdsc);
+			groupBox10.Controls.Add(label5);
+			groupBox10.FlatStyle = FlatStyle.System;
+			groupBox10.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.groupBox10.Location = new System.Drawing.Point(8, 8);
-			this.groupBox10.Name = "groupBox10";
-			this.groupBox10.Size = new System.Drawing.Size(720, 128);
-			this.groupBox10.TabIndex = 17;
-			this.groupBox10.TabStop = false;
-			this.groupBox10.Text = "Settings";
+			groupBox10.Location = new System.Drawing.Point(8, 8);
+			groupBox10.Name = "groupBox10";
+			groupBox10.Size = new System.Drawing.Size(720, 128);
+			groupBox10.TabIndex = 17;
+			groupBox10.TabStop = false;
+			groupBox10.Text = "Settings";
 			//
 			// tb_ver
 			//
-			this.tb_ver.Font = new System.Drawing.Font(
+			tb_ver.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tb_ver.Location = new System.Drawing.Point(88, 24);
-			this.tb_ver.Name = "tb_ver";
-			this.tb_ver.Size = new System.Drawing.Size(88, 21);
-			this.tb_ver.TabIndex = 24;
-			this.tb_ver.Text = "0x00000000";
-			this.tb_ver.TextChanged += new EventHandler(this.FileNameChanged);
+			tb_ver.Location = new System.Drawing.Point(88, 24);
+			tb_ver.Name = "tb_ver";
+			tb_ver.Size = new System.Drawing.Size(88, 21);
+			tb_ver.TabIndex = 24;
+			tb_ver.Text = "0x00000000";
+			tb_ver.TextChanged += new EventHandler(FileNameChanged);
 			//
 			// label28
 			//
-			this.label28.AutoSize = true;
-			this.label28.Font = new System.Drawing.Font(
+			label28.AutoSize = true;
+			label28.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label28.Location = new System.Drawing.Point(33, 24);
-			this.label28.Name = "label28";
-			this.label28.Size = new System.Drawing.Size(52, 17);
-			this.label28.TabIndex = 23;
-			this.label28.Text = "Version:";
+			label28.Location = new System.Drawing.Point(33, 24);
+			label28.Name = "label28";
+			label28.Size = new System.Drawing.Size(52, 17);
+			label28.TabIndex = 23;
+			label28.Text = "Version:";
 			//
 			// MatdForm
 			//
 
-			this.groupBox10.ResumeLayout(false);
-			this.ResumeLayout(false);
+			groupBox10.ResumeLayout(false);
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -263,7 +263,7 @@ namespace SimPe.Plugin.TabPage
 
 		private void FileNameChanged(object sender, EventArgs e)
 		{
-			if (this.Tag == null)
+			if (Tag == null)
 			{
 				return;
 			}
@@ -277,9 +277,9 @@ namespace SimPe.Plugin.TabPage
 			{
 				tbdsc.Tag = true;
 				Plugin.MaterialDefinition md = (Plugin.MaterialDefinition)
-					this.Tag;
+					Tag;
 
-				md.Version = Convert.ToUInt32(this.tb_ver.Text, 16);
+				md.Version = Convert.ToUInt32(tb_ver.Text, 16);
 				md.FileDescription = tbdsc.Text;
 				md.MatterialType = tbtype.Text;
 
@@ -303,13 +303,13 @@ namespace SimPe.Plugin.TabPage
 			LinkLabelLinkClickedEventArgs e
 		)
 		{
-			if (this.Tag == null)
+			if (Tag == null)
 			{
 				return;
 			}
 
 			Plugin.MaterialDefinition md = (Plugin.MaterialDefinition)
-				this.Tag;
+				Tag;
 			md.Sort();
 			md.Refresh();
 		}

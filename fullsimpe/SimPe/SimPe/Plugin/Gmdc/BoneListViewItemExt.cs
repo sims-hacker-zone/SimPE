@@ -16,11 +16,11 @@ namespace SimPe.Plugin.Gmdc
 		{
 			joint.Tag = -1;
 			if (
-				this.Joint == null
-				&& this.Action == GenericMeshImport.JointImportAction.Update
+				Joint == null
+				&& Action == GenericMeshImport.JointImportAction.Update
 			)
 			{
-				this.Action = GenericMeshImport.JointImportAction.Ignore;
+				Action = GenericMeshImport.JointImportAction.Ignore;
 			}
 
 			if (Action == GenericMeshImport.JointImportAction.Ignore)

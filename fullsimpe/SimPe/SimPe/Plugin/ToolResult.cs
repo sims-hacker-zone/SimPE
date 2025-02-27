@@ -26,8 +26,8 @@ namespace SimPe.Plugin
 	{
 		public ToolResult(bool pfd, bool package)
 		{
-			this.ChangedFile = pfd;
-			this.ChangedPackage = package;
+			ChangedFile = pfd;
+			ChangedPackage = package;
 		}
 
 		#region IToolResult Member

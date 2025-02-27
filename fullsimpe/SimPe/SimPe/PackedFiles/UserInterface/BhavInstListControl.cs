@@ -64,7 +64,7 @@ namespace SimPe.PackedFiles.UserInterface
 			base.Dispose(disposing);
 			if (setHandler && wrapper != null)
 			{
-				wrapper.WrapperChanged -= new EventHandler(this.WrapperChanged);
+				wrapper.WrapperChanged -= new EventHandler(WrapperChanged);
 				setHandler = false;
 			}
 			wrapper = null;
@@ -101,8 +101,8 @@ namespace SimPe.PackedFiles.UserInterface
 			wrapper = wrp;
 			csel = -1;
 			internalchg = false;
-			this.AutoScrollPosition = new Point(0, 0);
-			this.WrapperChanged(new List<Instruction>(), null);
+			AutoScrollPosition = new Point(0, 0);
+			WrapperChanged(new List<Instruction>(), null);
 			if (flowitems != null && flowitems.Length > 0)
 			{
 				flowitems[0].MakeSelected(); // but don't focus!
@@ -111,7 +111,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 			if (!setHandler)
 			{
-				wrapper.WrapperChanged += new EventHandler(this.WrapperChanged);
+				wrapper.WrapperChanged += new EventHandler(WrapperChanged);
 				setHandler = true;
 			}
 		}
@@ -343,9 +343,9 @@ namespace SimPe.PackedFiles.UserInterface
 
 			bool savedstate = internalchg;
 			internalchg = true;
-			this.Parent.Cursor = Cursors.WaitCursor;
+			Parent.Cursor = Cursors.WaitCursor;
 			wrapper.Sort();
-			this.Parent.Cursor = Cursors.Default;
+			Parent.Cursor = Cursors.Default;
 			internalchg = savedstate;
 
 			csel = -1;
@@ -371,7 +371,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 			bool savedstate = internalchg;
 			internalchg = true;
-			this.Parent.Cursor = Cursors.WaitCursor;
+			Parent.Cursor = Cursors.WaitCursor;
 			for (ushort i = 0; i < wrapper.Count - 1; i++)
 			{
 				wrapper[i].Target1 = (ushort)(i + 1);
@@ -379,7 +379,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			wrapper[wrapper.Count - 1].Target1 = 0xFFFD;
 			wrapper[wrapper.Count - 1].Target2 = 0xFFFC;
-			this.Parent.Cursor = Cursors.Default;
+			Parent.Cursor = Cursors.Default;
 			internalchg = savedstate;
 			myrepaint();
 			if (csel >= 0)
@@ -404,7 +404,7 @@ namespace SimPe.PackedFiles.UserInterface
 			bool savedstate = internalchg;
 			internalchg = true;
 
-			this.Parent.Cursor = Cursors.WaitCursor;
+			Parent.Cursor = Cursors.WaitCursor;
 			try
 			{
 				ushort offset = (ushort)wrapper.Count;
@@ -432,7 +432,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			finally
 			{
-				this.Parent.Cursor = Cursors.Default;
+				Parent.Cursor = Cursors.Default;
 			}
 
 			internalchg = savedstate;
@@ -452,14 +452,14 @@ namespace SimPe.PackedFiles.UserInterface
 
 			bool savedstate = internalchg;
 			internalchg = true;
-			this.Parent.Cursor = Cursors.WaitCursor;
+			Parent.Cursor = Cursors.WaitCursor;
 
 			while (csel < wrapper.Count && wrapper.Count > 1)
 			{
 				wrapper.RemoveAt(wrapper.Count - 1);
 			}
 
-			this.Parent.Cursor = Cursors.Default;
+			Parent.Cursor = Cursors.Default;
 			internalchg = savedstate;
 
 			csel = -1;
@@ -478,11 +478,11 @@ namespace SimPe.PackedFiles.UserInterface
 			//SimPe.Wait.Start(wrapper.Count);
 			try
 			{
-				this.SuspendLayout();
-				bool v = this.Visible;
-				this.Visible = false;
+				SuspendLayout();
+				bool v = Visible;
+				Visible = false;
 
-				this.Controls.Clear();
+				Controls.Clear();
 				if (flowitems != null)
 				{
 					for (int i = 0; i < flowitems.Length; i++)
@@ -509,10 +509,10 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 
 				pnflow.Image = DrawConnectors();
-				this.Controls.Add(pnflow);
+				Controls.Add(pnflow);
 
-				this.Visible = true;
-				this.ResumeLayout(true);
+				Visible = true;
+				ResumeLayout(true);
 			}
 			finally
 			{
@@ -545,9 +545,9 @@ namespace SimPe.PackedFiles.UserInterface
 				AnchorStyles.Top
 				| AnchorStyles.Left
 				| AnchorStyles.Right;
-			i.Left = this.AutoScrollPosition.X;
-			i.Top = ct * (i.Height + 4) + this.AutoScrollPosition.Y;
-			i.Width = this.ClientRectangle.Width - pnflow.Width;
+			i.Left = AutoScrollPosition.X;
+			i.Top = ct * (i.Height + 4) + AutoScrollPosition.Y;
+			i.Width = ClientRectangle.Width - pnflow.Width;
 			i.Index = ct;
 			i.TabIndex = ct;
 			i.TabStop = true;
@@ -559,8 +559,8 @@ namespace SimPe.PackedFiles.UserInterface
 			i.TargetClick += new LinkLabelLinkClickedEventHandler(bhavInst_TargetClick);
 			i.KeyDown += new KeyEventHandler(bhavInst_KeyDown);
 
-			this.Controls.Add(i);
-			this.Controls.SetChildIndex(i, ct);
+			Controls.Add(i);
+			Controls.SetChildIndex(i, ct);
 
 			i.Wrapper = wrapper;
 
@@ -574,7 +574,7 @@ namespace SimPe.PackedFiles.UserInterface
 				return null;
 			}
 
-			if (this.ClientRectangle.Width < pnflow.Width)
+			if (ClientRectangle.Width < pnflow.Width)
 			{
 				return null;
 			}
@@ -761,91 +761,91 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			System.Resources.ResourceManager resources =
 				new System.Resources.ResourceManager(typeof(BhavInstListControl));
-			this.pnflow = new PictureBox();
-			this.SuspendLayout();
+			pnflow = new PictureBox();
+			SuspendLayout();
 			//
 			// pnflow
 			//
-			this.pnflow.AccessibleDescription = resources.GetString(
+			pnflow.AccessibleDescription = resources.GetString(
 				"pnflow.AccessibleDescription"
 			);
-			this.pnflow.AccessibleName = resources.GetString("pnflow.AccessibleName");
-			this.pnflow.Anchor = (
+			pnflow.AccessibleName = resources.GetString("pnflow.AccessibleName");
+			pnflow.Anchor = (
 				(AnchorStyles)(
 					resources.GetObject("pnflow.Anchor")
 				)
 			);
-			this.pnflow.BackgroundImage = (
+			pnflow.BackgroundImage = (
 				(Image)(resources.GetObject("pnflow.BackgroundImage"))
 			);
-			this.pnflow.Dock = (
+			pnflow.Dock = (
 				(DockStyle)(resources.GetObject("pnflow.Dock"))
 			);
-			this.pnflow.Enabled = ((bool)(resources.GetObject("pnflow.Enabled")));
-			this.pnflow.Font = (
+			pnflow.Enabled = ((bool)(resources.GetObject("pnflow.Enabled")));
+			pnflow.Font = (
 				(Font)(resources.GetObject("pnflow.Font"))
 			);
-			this.pnflow.Image = (
+			pnflow.Image = (
 				(Image)(resources.GetObject("pnflow.Image"))
 			);
-			this.pnflow.ImeMode = (
+			pnflow.ImeMode = (
 				(ImeMode)(resources.GetObject("pnflow.ImeMode"))
 			);
-			this.pnflow.Location = (
+			pnflow.Location = (
 				(Point)(resources.GetObject("pnflow.Location"))
 			);
-			this.pnflow.Name = "pnflow";
-			this.pnflow.RightToLeft = (
+			pnflow.Name = "pnflow";
+			pnflow.RightToLeft = (
 				(RightToLeft)(
 					resources.GetObject("pnflow.RightToLeft")
 				)
 			);
-			this.pnflow.Size = (
+			pnflow.Size = (
 				(Size)(resources.GetObject("pnflow.Size"))
 			);
-			this.pnflow.SizeMode = (
+			pnflow.SizeMode = (
 				(PictureBoxSizeMode)(
 					resources.GetObject("pnflow.SizeMode")
 				)
 			);
-			this.pnflow.TabIndex = ((int)(resources.GetObject("pnflow.TabIndex")));
-			this.pnflow.TabStop = false;
-			this.pnflow.Text = resources.GetString("pnflow.Text");
-			this.pnflow.Visible = ((bool)(resources.GetObject("pnflow.Visible")));
+			pnflow.TabIndex = ((int)(resources.GetObject("pnflow.TabIndex")));
+			pnflow.TabStop = false;
+			pnflow.Text = resources.GetString("pnflow.Text");
+			pnflow.Visible = ((bool)(resources.GetObject("pnflow.Visible")));
 			//
 			// BhavInstListControl
 			//
-			this.AccessibleDescription = resources.GetString(
+			AccessibleDescription = resources.GetString(
 				"$this.AccessibleDescription"
 			);
-			this.AccessibleName = resources.GetString("$this.AccessibleName");
-			this.AutoScroll = ((bool)(resources.GetObject("$this.AutoScroll")));
-			this.AutoScrollMargin = (
+			AccessibleName = resources.GetString("$this.AccessibleName");
+			AutoScroll = ((bool)(resources.GetObject("$this.AutoScroll")));
+			AutoScrollMargin = (
 				(Size)(resources.GetObject("$this.AutoScrollMargin"))
 			);
-			this.AutoScrollMinSize = (
+			AutoScrollMinSize = (
 				(Size)(resources.GetObject("$this.AutoScrollMinSize"))
 			);
-			this.BackgroundImage = (
+			BackgroundImage = (
 				(Image)(resources.GetObject("$this.BackgroundImage"))
 			);
-			this.Controls.Add(this.pnflow);
-			this.Enabled = ((bool)(resources.GetObject("$this.Enabled")));
-			this.Font = ((Font)(resources.GetObject("$this.Font")));
-			this.ImeMode = (
+			Controls.Add(pnflow);
+			Enabled = ((bool)(resources.GetObject("$this.Enabled")));
+			Font = ((Font)(resources.GetObject("$this.Font")));
+			ImeMode = (
 				(ImeMode)(resources.GetObject("$this.ImeMode"))
 			);
-			this.Location = (
+			Location = (
 				(Point)(resources.GetObject("$this.Location"))
 			);
-			this.Name = "BhavInstListControl";
-			this.RightToLeft = (
+			Name = "BhavInstListControl";
+			RightToLeft = (
 				(RightToLeft)(
 					resources.GetObject("$this.RightToLeft")
 				)
 			);
-			this.Size = ((Size)(resources.GetObject("$this.Size")));
-			this.ResumeLayout(false);
+			Size = ((Size)(resources.GetObject("$this.Size")));
+			ResumeLayout(false);
 		}
 
 		#endregion
@@ -1063,12 +1063,12 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			if (obj.GetType() != typeof(Connector))
 			{
-				return this.GetHashCode().CompareTo(base.GetHashCode());
+				return GetHashCode().CompareTo(base.GetHashCode());
 			}
 
 			Connector c = (Connector)obj;
 			int i = c.Bottom - c.Top;
-			int j = this.Bottom - this.Top;
+			int j = Bottom - Top;
 			return j.CompareTo(i);
 		}
 

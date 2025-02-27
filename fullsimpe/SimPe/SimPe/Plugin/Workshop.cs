@@ -87,65 +87,65 @@ namespace SimPe.Plugin
 
 			btclone.Enabled = false;
 			btclone.Refresh();
-			this.tabControl1.SelectedIndex = 1;
+			tabControl1.SelectedIndex = 1;
 			lbobj.SelectionMode = SelectionMode.One;
-			this.cbColor.Visible = false;
-			this.cbColor.Checked = false;
-			this.cbColorExt.Enabled = true;
-			this.cbColorExt.Checked = true;
-			this.rbColor.Enabled = true;
+			cbColor.Visible = false;
+			cbColor.Checked = false;
+			cbColorExt.Enabled = true;
+			cbColorExt.Checked = true;
+			rbColor.Enabled = true;
 
-			this.tviapl = new TreeNode("Appliances");
+			tviapl = new TreeNode("Appliances");
 			tv.Nodes.Add(tviapl);
-			this.tvideco = new TreeNode("Decorative");
+			tvideco = new TreeNode("Decorative");
 			tv.Nodes.Add(tvideco);
-			this.tvielectro = new TreeNode("Electronics");
+			tvielectro = new TreeNode("Electronics");
 			tv.Nodes.Add(tvielectro);
-			this.tvigeneral = new TreeNode("General");
+			tvigeneral = new TreeNode("General");
 			tv.Nodes.Add(tvigeneral);
-			this.tvilight = new TreeNode("Lights");
+			tvilight = new TreeNode("Lights");
 			tv.Nodes.Add(tvilight);
-			this.tviplumb = new TreeNode("Plumbing");
+			tviplumb = new TreeNode("Plumbing");
 			tv.Nodes.Add(tviplumb);
-			this.tviseating = new TreeNode("Seating");
+			tviseating = new TreeNode("Seating");
 			tv.Nodes.Add(tviseating);
-			this.tvisurfaces = new TreeNode("Surfaces");
+			tvisurfaces = new TreeNode("Surfaces");
 			tv.Nodes.Add(tvisurfaces);
-			this.tvihobby = new TreeNode("Hobbies");
+			tvihobby = new TreeNode("Hobbies");
 			tv.Nodes.Add(tvihobby);
-			this.tviaspiration = new TreeNode("Aspiration Rewards");
+			tviaspiration = new TreeNode("Aspiration Rewards");
 			tv.Nodes.Add(tviaspiration);
-			this.tvicareer = new TreeNode("Career Rewards");
+			tvicareer = new TreeNode("Career Rewards");
 			tv.Nodes.Add(tvicareer);
-			this.tviother = new TreeNode("Others");
+			tviother = new TreeNode("Others");
 			tv.Nodes.Add(tviother);
 
-			this.tvistairs = new TreeNode("Stairs");
+			tvistairs = new TreeNode("Stairs");
 			tv.Nodes.Add(tvistairs);
-			this.tviperson = new TreeNode("Persons");
+			tviperson = new TreeNode("Persons");
 			tv.Nodes.Add(tviperson);
-			this.tviarchsup = new TreeNode("ArchitecturalSupports");
+			tviarchsup = new TreeNode("ArchitecturalSupports");
 			tv.Nodes.Add(tviarchsup);
-			this.tvisimtype = new TreeNode("SimTypes");
+			tvisimtype = new TreeNode("SimTypes");
 			tv.Nodes.Add(tvisimtype);
-			this.tvidoor = new TreeNode("Doors");
+			tvidoor = new TreeNode("Doors");
 			tv.Nodes.Add(tvidoor);
-			this.tvimodstair = new TreeNode("ModularStairs");
+			tvimodstair = new TreeNode("ModularStairs");
 			tv.Nodes.Add(tvimodstair);
-			this.tvimodstairport = new TreeNode("ModularStairPorts");
+			tvimodstairport = new TreeNode("ModularStairPorts");
 			tv.Nodes.Add(tvimodstairport);
-			this.tvivehicle = new TreeNode("Vehicles");
+			tvivehicle = new TreeNode("Vehicles");
 			tv.Nodes.Add(tvivehicle);
-			this.tvioutfit = new TreeNode("Outfits");
+			tvioutfit = new TreeNode("Outfits");
 			tv.Nodes.Add(tvioutfit);
-			this.tvimemory = new TreeNode("Memories");
+			tvimemory = new TreeNode("Memories");
 			tv.Nodes.Add(tvimemory);
-			this.tvitemplate = new TreeNode("Templates");
+			tvitemplate = new TreeNode("Templates");
 			tv.Nodes.Add(tvitemplate);
-			this.tviwindow = new TreeNode("Windows");
+			tviwindow = new TreeNode("Windows");
 			tv.Nodes.Add(tviwindow);
 
-			this.tvigarden = new TreeNode("Garden");
+			tvigarden = new TreeNode("Garden");
 			tv.Nodes.Add(tvigarden);
 		}
 
@@ -154,49 +154,49 @@ namespace SimPe.Plugin
 		/// </summary>
 		void CleanTree()
 		{
-			this.tviapl.Nodes.Clear();
-			this.tvideco.Nodes.Clear();
-			this.tvielectro.Nodes.Clear();
-			this.tvigeneral.Nodes.Clear();
-			this.tvilight.Nodes.Clear();
-			this.tviplumb.Nodes.Clear();
-			this.tviseating.Nodes.Clear();
-			this.tvisurfaces.Nodes.Clear();
-			this.tvihobby.Nodes.Clear();
-			this.tviaspiration.Nodes.Clear();
-			this.tvicareer.Nodes.Clear();
-			this.tviother.Nodes.Clear();
+			tviapl.Nodes.Clear();
+			tvideco.Nodes.Clear();
+			tvielectro.Nodes.Clear();
+			tvigeneral.Nodes.Clear();
+			tvilight.Nodes.Clear();
+			tviplumb.Nodes.Clear();
+			tviseating.Nodes.Clear();
+			tvisurfaces.Nodes.Clear();
+			tvihobby.Nodes.Clear();
+			tviaspiration.Nodes.Clear();
+			tvicareer.Nodes.Clear();
+			tviother.Nodes.Clear();
 
-			this.tvistairs.Nodes.Clear();
-			this.tviperson.Nodes.Clear();
-			this.tviarchsup.Nodes.Clear();
-			this.tvisimtype.Nodes.Clear();
-			this.tvidoor.Nodes.Clear();
-			this.tvimodstair.Nodes.Clear();
-			this.tvimodstairport.Nodes.Clear();
-			this.tvivehicle.Nodes.Clear();
-			this.tvioutfit.Nodes.Clear();
-			this.tvimemory.Nodes.Clear();
-			this.tvitemplate.Nodes.Clear();
-			this.tviwindow.Nodes.Clear();
-			this.tvigarden.Nodes.Clear();
+			tvistairs.Nodes.Clear();
+			tviperson.Nodes.Clear();
+			tviarchsup.Nodes.Clear();
+			tvisimtype.Nodes.Clear();
+			tvidoor.Nodes.Clear();
+			tvimodstair.Nodes.Clear();
+			tvimodstairport.Nodes.Clear();
+			tvivehicle.Nodes.Clear();
+			tvioutfit.Nodes.Clear();
+			tvimemory.Nodes.Clear();
+			tvitemplate.Nodes.Clear();
+			tviwindow.Nodes.Clear();
+			tvigarden.Nodes.Clear();
 
-			this.ilist.Images.Clear();
-			this.ilist.Images.Add(
+			ilist.Images.Clear();
+			ilist.Images.Add(
 				new Bitmap(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.subitems.png")
 				)
 			);
-			this.ilist.Images.Add(
+			ilist.Images.Add(
 				new Bitmap(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.nothumb.png")
 				)
 			);
-			this.ilist.Images.Add(
+			ilist.Images.Add(
 				new Bitmap(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.custom.png")
 				)
 			);
@@ -249,119 +249,119 @@ namespace SimPe.Plugin
 
 			if (type == ObjectTypes.Stairs)
 			{
-				this.tvistairs.Nodes.Add(node);
+				tvistairs.Nodes.Add(node);
 			}
 			else if (type == ObjectTypes.ArchitecturalSupport)
 			{
-				this.tviarchsup.Nodes.Add(node);
+				tviarchsup.Nodes.Add(node);
 			}
 			else if (type == ObjectTypes.Door)
 			{
-				this.tvidoor.Nodes.Add(node);
+				tvidoor.Nodes.Add(node);
 			}
 			else if (type == ObjectTypes.Memory)
 			{
-				this.tvimemory.Nodes.Add(node);
+				tvimemory.Nodes.Add(node);
 			}
 			else if (type == ObjectTypes.ModularStairs)
 			{
-				this.tvimodstair.Nodes.Add(node);
+				tvimodstair.Nodes.Add(node);
 			}
 			else if (type == ObjectTypes.ModularStairsPortal)
 			{
-				this.tvimodstairport.Nodes.Add(node);
+				tvimodstairport.Nodes.Add(node);
 			}
 			else if (type == ObjectTypes.Outfit)
 			{
-				this.tvioutfit.Nodes.Add(node);
+				tvioutfit.Nodes.Add(node);
 			}
 			else if (type == ObjectTypes.Person)
 			{
-				this.tviperson.Nodes.Add(node);
+				tviperson.Nodes.Add(node);
 			}
 			else if (type == ObjectTypes.SimType)
 			{
-				this.tvisimtype.Nodes.Add(node);
+				tvisimtype.Nodes.Add(node);
 			}
 			else if (type == ObjectTypes.Template)
 			{
-				this.tvitemplate.Nodes.Add(node);
+				tvitemplate.Nodes.Add(node);
 			}
 			else if (type == ObjectTypes.Vehicle)
 			{
-				this.tvivehicle.Nodes.Add(node);
+				tvivehicle.Nodes.Add(node);
 			}
 			else if (type == ObjectTypes.Window)
 			{
-				this.tviwindow.Nodes.Add(node);
+				tviwindow.Nodes.Add(node);
 			}
 			else
 			{
 				bool added = false;
 				if (functionsort.InAppliances)
 				{
-					this.tviapl.Nodes.Add(node);
+					tviapl.Nodes.Add(node);
 					added = true;
 				}
 				else if (functionsort.InDecorative)
 				{
-					this.tvideco.Nodes.Add(node);
+					tvideco.Nodes.Add(node);
 					added = true;
 				}
 				else if (functionsort.InElectronics)
 				{
-					this.tvielectro.Nodes.Add(node);
+					tvielectro.Nodes.Add(node);
 					added = true;
 				}
 				else if (functionsort.InGeneral)
 				{
-					this.tvigeneral.Nodes.Add(node);
+					tvigeneral.Nodes.Add(node);
 					added = true;
 				}
 				else if (functionsort.InLighting)
 				{
-					this.tvilight.Nodes.Add(node);
+					tvilight.Nodes.Add(node);
 					added = true;
 				}
 				else if (functionsort.InPlumbing)
 				{
-					this.tviplumb.Nodes.Add(node);
+					tviplumb.Nodes.Add(node);
 					added = true;
 				}
 				else if (functionsort.InSeating)
 				{
-					this.tviseating.Nodes.Add(node);
+					tviseating.Nodes.Add(node);
 					added = true;
 				}
 				else if (functionsort.InSurfaces)
 				{
-					this.tvisurfaces.Nodes.Add(node);
+					tvisurfaces.Nodes.Add(node);
 					added = true;
 				}
 				else if (functionsort.InHobbies)
 				{
-					this.tvihobby.Nodes.Add(node);
+					tvihobby.Nodes.Add(node);
 					added = true;
 				}
 				else if (functionsort.InAspirationRewards)
 				{
-					this.tviaspiration.Nodes.Add(node);
+					tviaspiration.Nodes.Add(node);
 					added = true;
 				}
 				else if (functionsort.InCareerRewards)
 				{
-					this.tvicareer.Nodes.Add(node);
+					tvicareer.Nodes.Add(node);
 					added = true;
 				}
 				else if (buildtype.InGarden)
 				{
-					this.tvigarden.Nodes.Add(node);
+					tvigarden.Nodes.Add(node);
 					added = true;
 				}
 
 				if (!added)
 				{
-					this.tviother.Nodes.Add(node);
+					tviother.Nodes.Add(node);
 				}
 			}
 		}
@@ -440,7 +440,7 @@ namespace SimPe.Plugin
 			{
 				DateTime start = DateTime.Now;
 				WaitingScreen.Wait();
-				this.ilist.ImageSize = new Size(
+				ilist.ImageSize = new Size(
 					Helper.WindowsRegistry.OWThumbSize,
 					Helper.WindowsRegistry.OWThumbSize
 				);
@@ -448,14 +448,14 @@ namespace SimPe.Plugin
 				lbobj.BeginUpdate();
 				tv.BeginUpdate();
 				lbobj.Items.Clear();
-				this.CleanTree();
+				CleanTree();
 				lbobj.Sorted = false;
 				lbobj.Enabled = false;
-				this.tv.Enabled = false;
+				tv.Enabled = false;
 				tv.Sorted = false;
 
 				Tool.Dockable.ObjectLoader ol =
-					new Tool.Dockable.ObjectLoader(this.ilist);
+					new Tool.Dockable.ObjectLoader(ilist);
 				ol.Finished += new EventHandler(ol_Finished);
 				ol.LoadedItem +=
 					new Tool.Dockable.ObjectLoader.LoadItemHandler(
@@ -489,55 +489,55 @@ namespace SimPe.Plugin
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
-			this.resources1 = new System.ComponentModel.ComponentResourceManager(
+			components = new System.ComponentModel.Container();
+			resources1 = new System.ComponentModel.ComponentResourceManager(
 				typeof(PreviewForm)
 			);
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(Workshop));
-			this.lbobj = new ListBox();
-			this.btclone = new Button();
-			this.groupBox1 = new GroupBox();
-			this.pb = new PictureBox();
-			this.rbColor = new RadioButton();
-			this.rbClone = new RadioButton();
-			this.tabControl1 = new TabControl();
-			this.tClone = new System.Windows.Forms.TabPage();
-			this.cbanim = new CheckBox();
-			this.cbwallmask = new CheckBox();
-			this.cbparent = new CheckBox();
-			this.cbclean = new CheckBox();
-			this.cbfix = new CheckBox();
-			this.cbdefault = new CheckBox();
-			this.cbgid = new CheckBox();
-			this.tColor = new System.Windows.Forms.TabPage();
-			this.cbColorExt = new CheckBox();
-			this.cbColor = new CheckBox();
-			this.sfd = new SaveFileDialog();
-			this.tbseek = new TextBox();
-			this.tabControl2 = new TabControl();
-			this.tabPage1 = new System.Windows.Forms.TabPage();
-			this.tabPage3 = new System.Windows.Forms.TabPage();
-			this.tv = new TreeView();
-			this.ilist = new ImageList(this.components);
-			this.tabPage2 = new System.Windows.Forms.TabPage();
-			this.button1 = new Button();
-			this.tbflname = new TextBox();
-			this.ofd = new OpenFileDialog();
-			this.groupBox1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
-			this.tabControl1.SuspendLayout();
-			this.tClone.SuspendLayout();
-			this.tColor.SuspendLayout();
-			this.tabControl2.SuspendLayout();
-			this.tabPage1.SuspendLayout();
-			this.tabPage3.SuspendLayout();
-			this.tabPage2.SuspendLayout();
-			this.SuspendLayout();
+			lbobj = new ListBox();
+			btclone = new Button();
+			groupBox1 = new GroupBox();
+			pb = new PictureBox();
+			rbColor = new RadioButton();
+			rbClone = new RadioButton();
+			tabControl1 = new TabControl();
+			tClone = new System.Windows.Forms.TabPage();
+			cbanim = new CheckBox();
+			cbwallmask = new CheckBox();
+			cbparent = new CheckBox();
+			cbclean = new CheckBox();
+			cbfix = new CheckBox();
+			cbdefault = new CheckBox();
+			cbgid = new CheckBox();
+			tColor = new System.Windows.Forms.TabPage();
+			cbColorExt = new CheckBox();
+			cbColor = new CheckBox();
+			sfd = new SaveFileDialog();
+			tbseek = new TextBox();
+			tabControl2 = new TabControl();
+			tabPage1 = new System.Windows.Forms.TabPage();
+			tabPage3 = new System.Windows.Forms.TabPage();
+			tv = new TreeView();
+			ilist = new ImageList(components);
+			tabPage2 = new System.Windows.Forms.TabPage();
+			button1 = new Button();
+			tbflname = new TextBox();
+			ofd = new OpenFileDialog();
+			groupBox1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(pb)).BeginInit();
+			tabControl1.SuspendLayout();
+			tClone.SuspendLayout();
+			tColor.SuspendLayout();
+			tabControl2.SuspendLayout();
+			tabPage1.SuspendLayout();
+			tabPage3.SuspendLayout();
+			tabPage2.SuspendLayout();
+			SuspendLayout();
 			//
 			// lbobj
 			//
-			this.lbobj.Anchor = (
+			lbobj.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -549,17 +549,17 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.lbobj.IntegralHeight = false;
-			this.lbobj.Location = new Point(8, 32);
-			this.lbobj.Name = "lbobj";
-			this.lbobj.SelectionMode = SelectionMode.MultiExtended;
-			this.lbobj.Size = new Size(464, 192);
-			this.lbobj.TabIndex = 0;
-			this.lbobj.SelectedIndexChanged += new EventHandler(this.Select);
+			lbobj.IntegralHeight = false;
+			lbobj.Location = new Point(8, 32);
+			lbobj.Name = "lbobj";
+			lbobj.SelectionMode = SelectionMode.MultiExtended;
+			lbobj.Size = new Size(464, 192);
+			lbobj.TabIndex = 0;
+			lbobj.SelectedIndexChanged += new EventHandler(Select);
 			//
 			// btclone
 			//
-			this.btclone.Anchor = (
+			btclone.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -567,24 +567,24 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.btclone.FlatStyle = FlatStyle.System;
-			this.btclone.Font = new Font(
+			btclone.FlatStyle = FlatStyle.System;
+			btclone.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.btclone.Location = new Point(408, 212);
-			this.btclone.Name = "btclone";
-			this.btclone.Size = new Size(75, 23);
-			this.btclone.TabIndex = 1;
-			this.btclone.Text = "Start";
-			this.btclone.Click += new EventHandler(this.Start);
+			btclone.Location = new Point(408, 212);
+			btclone.Name = "btclone";
+			btclone.Size = new Size(75, 23);
+			btclone.TabIndex = 1;
+			btclone.Text = "Start";
+			btclone.Click += new EventHandler(Start);
 			//
 			// groupBox1
 			//
-			this.groupBox1.Anchor = (
+			groupBox1.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -594,78 +594,78 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.groupBox1.Controls.Add(this.pb);
-			this.groupBox1.Controls.Add(this.rbColor);
-			this.groupBox1.Controls.Add(this.rbClone);
-			this.groupBox1.Controls.Add(this.tabControl1);
-			this.groupBox1.Controls.Add(this.btclone);
-			this.groupBox1.Font = new Font(
+			groupBox1.Controls.Add(pb);
+			groupBox1.Controls.Add(rbColor);
+			groupBox1.Controls.Add(rbClone);
+			groupBox1.Controls.Add(tabControl1);
+			groupBox1.Controls.Add(btclone);
+			groupBox1.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.groupBox1.Location = new Point(8, 272);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new Size(488, 240);
-			this.groupBox1.TabIndex = 2;
-			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "Settings";
+			groupBox1.Location = new Point(8, 272);
+			groupBox1.Name = "groupBox1";
+			groupBox1.Size = new Size(488, 240);
+			groupBox1.TabIndex = 2;
+			groupBox1.TabStop = false;
+			groupBox1.Text = "Settings";
 			//
 			// pb
 			//
-			this.pb.BorderStyle = BorderStyle.FixedSingle;
-			this.pb.Location = new Point(8, 24);
-			this.pb.Name = "pb";
-			this.pb.Size = new Size(128, 128);
-			this.pb.SizeMode = PictureBoxSizeMode.StretchImage;
-			this.pb.TabIndex = 6;
-			this.pb.TabStop = false;
+			pb.BorderStyle = BorderStyle.FixedSingle;
+			pb.Location = new Point(8, 24);
+			pb.Name = "pb";
+			pb.Size = new Size(128, 128);
+			pb.SizeMode = PictureBoxSizeMode.StretchImage;
+			pb.TabIndex = 6;
+			pb.TabStop = false;
 			//
 			// rbColor
 			//
-			this.rbColor.Checked = true;
-			this.rbColor.FlatStyle = FlatStyle.System;
-			this.rbColor.Font = new Font(
+			rbColor.Checked = true;
+			rbColor.FlatStyle = FlatStyle.System;
+			rbColor.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.rbColor.Location = new Point(16, 176);
-			this.rbColor.Name = "rbColor";
-			this.rbColor.Size = new Size(120, 24);
-			this.rbColor.TabIndex = 5;
-			this.rbColor.TabStop = true;
-			this.rbColor.Text = "Colour Options";
-			this.rbColor.CheckedChanged += new EventHandler(
-				this.rbColor_CheckedChanged
+			rbColor.Location = new Point(16, 176);
+			rbColor.Name = "rbColor";
+			rbColor.Size = new Size(120, 24);
+			rbColor.TabIndex = 5;
+			rbColor.TabStop = true;
+			rbColor.Text = "Colour Options";
+			rbColor.CheckedChanged += new EventHandler(
+				rbColor_CheckedChanged
 			);
 			//
 			// rbClone
 			//
-			this.rbClone.FlatStyle = FlatStyle.System;
-			this.rbClone.Font = new Font(
+			rbClone.FlatStyle = FlatStyle.System;
+			rbClone.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.rbClone.Location = new Point(16, 156);
-			this.rbClone.Name = "rbClone";
-			this.rbClone.Size = new Size(120, 24);
-			this.rbClone.TabIndex = 4;
-			this.rbClone.Text = "Clone";
-			this.rbClone.CheckedChanged += new EventHandler(
-				this.rbClone_CheckedChanged
+			rbClone.Location = new Point(16, 156);
+			rbClone.Name = "rbClone";
+			rbClone.Size = new Size(120, 24);
+			rbClone.TabIndex = 4;
+			rbClone.Text = "Clone";
+			rbClone.CheckedChanged += new EventHandler(
+				rbClone_CheckedChanged
 			);
 			//
 			// tabControl1
 			//
-			this.tabControl1.Anchor = (
+			tabControl1.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -673,222 +673,222 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.tabControl1.Controls.Add(this.tClone);
-			this.tabControl1.Controls.Add(this.tColor);
-			this.tabControl1.Font = new Font(
+			tabControl1.Controls.Add(tClone);
+			tabControl1.Controls.Add(tColor);
+			tabControl1.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tabControl1.Location = new Point(150, 24);
-			this.tabControl1.Name = "tabControl1";
-			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new Size(328, 184);
-			this.tabControl1.TabIndex = 3;
-			this.tabControl1.SelectedIndexChanged += new EventHandler(
-				this.TabChanged
+			tabControl1.Location = new Point(150, 24);
+			tabControl1.Name = "tabControl1";
+			tabControl1.SelectedIndex = 0;
+			tabControl1.Size = new Size(328, 184);
+			tabControl1.TabIndex = 3;
+			tabControl1.SelectedIndexChanged += new EventHandler(
+				TabChanged
 			);
 			//
 			// tClone
 			//
-			this.tClone.Controls.Add(this.cbanim);
-			this.tClone.Controls.Add(this.cbwallmask);
-			this.tClone.Controls.Add(this.cbparent);
-			this.tClone.Controls.Add(this.cbclean);
-			this.tClone.Controls.Add(this.cbfix);
-			this.tClone.Controls.Add(this.cbdefault);
-			this.tClone.Controls.Add(this.cbgid);
-			this.tClone.Location = new Point(4, 22);
-			this.tClone.Name = "tClone";
-			this.tClone.Size = new Size(320, 158);
-			this.tClone.TabIndex = 0;
-			this.tClone.Text = "Clone Settings";
+			tClone.Controls.Add(cbanim);
+			tClone.Controls.Add(cbwallmask);
+			tClone.Controls.Add(cbparent);
+			tClone.Controls.Add(cbclean);
+			tClone.Controls.Add(cbfix);
+			tClone.Controls.Add(cbdefault);
+			tClone.Controls.Add(cbgid);
+			tClone.Location = new Point(4, 22);
+			tClone.Name = "tClone";
+			tClone.Size = new Size(320, 158);
+			tClone.TabIndex = 0;
+			tClone.Text = "Clone Settings";
 			//
 			// cbanim
 			//
-			this.cbanim.FlatStyle = FlatStyle.System;
-			this.cbanim.Font = new Font(
+			cbanim.FlatStyle = FlatStyle.System;
+			cbanim.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbanim.Location = new Point(8, 128);
-			this.cbanim.Name = "cbanim";
-			this.cbanim.Size = new Size(120, 24);
-			this.cbanim.TabIndex = 9;
-			this.cbanim.Text = "Pull Animations";
+			cbanim.Location = new Point(8, 128);
+			cbanim.Name = "cbanim";
+			cbanim.Size = new Size(120, 24);
+			cbanim.TabIndex = 9;
+			cbanim.Text = "Pull Animations";
 			//
 			// cbwallmask
 			//
-			this.cbwallmask.Checked = true;
-			this.cbwallmask.CheckState = CheckState.Checked;
-			this.cbwallmask.FlatStyle = FlatStyle.System;
-			this.cbwallmask.Font = new Font(
+			cbwallmask.Checked = true;
+			cbwallmask.CheckState = CheckState.Checked;
+			cbwallmask.FlatStyle = FlatStyle.System;
+			cbwallmask.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbwallmask.Location = new Point(8, 108);
-			this.cbwallmask.Name = "cbwallmask";
-			this.cbwallmask.Size = new Size(272, 24);
-			this.cbwallmask.TabIndex = 8;
-			this.cbwallmask.Text = "Pull Wallmasks (as described by Numenor)";
+			cbwallmask.Location = new Point(8, 108);
+			cbwallmask.Name = "cbwallmask";
+			cbwallmask.Size = new Size(272, 24);
+			cbwallmask.TabIndex = 8;
+			cbwallmask.Text = "Pull Wallmasks (as described by Numenor)";
 			//
 			// cbparent
 			//
-			this.cbparent.FlatStyle = FlatStyle.System;
-			this.cbparent.Font = new Font(
+			cbparent.FlatStyle = FlatStyle.System;
+			cbparent.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbparent.Location = new Point(8, 88);
-			this.cbparent.Name = "cbparent";
-			this.cbparent.Size = new Size(192, 24);
-			this.cbparent.TabIndex = 7;
-			this.cbparent.Text = "Create a stand-alone object";
-			this.cbparent.CheckedChanged += new EventHandler(
-				this.cbfix_CheckedChanged
+			cbparent.Location = new Point(8, 88);
+			cbparent.Name = "cbparent";
+			cbparent.Size = new Size(192, 24);
+			cbparent.TabIndex = 7;
+			cbparent.Text = "Create a stand-alone object";
+			cbparent.CheckedChanged += new EventHandler(
+				cbfix_CheckedChanged
 			);
 			//
 			// cbclean
 			//
-			this.cbclean.Checked = true;
-			this.cbclean.CheckState = CheckState.Checked;
-			this.cbclean.FlatStyle = FlatStyle.System;
-			this.cbclean.Font = new Font(
+			cbclean.Checked = true;
+			cbclean.CheckState = CheckState.Checked;
+			cbclean.FlatStyle = FlatStyle.System;
+			cbclean.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbclean.Location = new Point(24, 48);
-			this.cbclean.Name = "cbclean";
-			this.cbclean.Size = new Size(272, 24);
-			this.cbclean.TabIndex = 6;
-			this.cbclean.Text = "Remove useless Files (sug. by.  Numenor)";
+			cbclean.Location = new Point(24, 48);
+			cbclean.Name = "cbclean";
+			cbclean.Size = new Size(272, 24);
+			cbclean.TabIndex = 6;
+			cbclean.Text = "Remove useless Files (sug. by.  Numenor)";
 			//
 			// cbfix
 			//
-			this.cbfix.Checked = true;
-			this.cbfix.CheckState = CheckState.Checked;
-			this.cbfix.FlatStyle = FlatStyle.System;
-			this.cbfix.Font = new Font(
+			cbfix.Checked = true;
+			cbfix.CheckState = CheckState.Checked;
+			cbfix.FlatStyle = FlatStyle.System;
+			cbfix.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbfix.Location = new Point(8, 28);
-			this.cbfix.Name = "cbfix";
-			this.cbfix.Size = new Size(224, 24);
-			this.cbfix.TabIndex = 5;
-			this.cbfix.Text = "Fix Cloned Files (sug. by.  wes_h)";
-			this.cbfix.CheckedChanged += new EventHandler(
-				this.cbfix_CheckedChanged
+			cbfix.Location = new Point(8, 28);
+			cbfix.Name = "cbfix";
+			cbfix.Size = new Size(224, 24);
+			cbfix.TabIndex = 5;
+			cbfix.Text = "Fix Cloned Files (sug. by.  wes_h)";
+			cbfix.CheckedChanged += new EventHandler(
+				cbfix_CheckedChanged
 			);
 			//
 			// cbdefault
 			//
-			this.cbdefault.Checked = true;
-			this.cbdefault.CheckState = CheckState.Checked;
-			this.cbdefault.FlatStyle = FlatStyle.System;
-			this.cbdefault.Font = new Font(
+			cbdefault.Checked = true;
+			cbdefault.CheckState = CheckState.Checked;
+			cbdefault.FlatStyle = FlatStyle.System;
+			cbdefault.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbdefault.Location = new Point(8, 68);
-			this.cbdefault.Name = "cbdefault";
-			this.cbdefault.Size = new Size(224, 24);
-			this.cbdefault.TabIndex = 3;
-			this.cbdefault.Text = "Pull only default Colour";
-			this.cbdefault.CheckedChanged += new EventHandler(
-				this.cbRCOLClone_CheckedChanged
+			cbdefault.Location = new Point(8, 68);
+			cbdefault.Name = "cbdefault";
+			cbdefault.Size = new Size(224, 24);
+			cbdefault.TabIndex = 3;
+			cbdefault.Text = "Pull only default Colour";
+			cbdefault.CheckedChanged += new EventHandler(
+				cbRCOLClone_CheckedChanged
 			);
 			//
 			// cbgid
 			//
-			this.cbgid.Checked = true;
-			this.cbgid.CheckState = CheckState.Checked;
-			this.cbgid.FlatStyle = FlatStyle.System;
-			this.cbgid.Font = new Font(
+			cbgid.Checked = true;
+			cbgid.CheckState = CheckState.Checked;
+			cbgid.FlatStyle = FlatStyle.System;
+			cbgid.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbgid.Location = new Point(8, 8);
-			this.cbgid.Name = "cbgid";
-			this.cbgid.Size = new Size(248, 24);
-			this.cbgid.TabIndex = 2;
-			this.cbgid.Text = "Set Custom Group ID (0x1c050000)";
+			cbgid.Location = new Point(8, 8);
+			cbgid.Name = "cbgid";
+			cbgid.Size = new Size(248, 24);
+			cbgid.TabIndex = 2;
+			cbgid.Text = "Set Custom Group ID (0x1c050000)";
 			//
 			// tColor
 			//
-			this.tColor.Controls.Add(this.cbColorExt);
-			this.tColor.Controls.Add(this.cbColor);
-			this.tColor.Location = new Point(4, 22);
-			this.tColor.Name = "tColor";
-			this.tColor.Size = new Size(320, 158);
-			this.tColor.TabIndex = 1;
-			this.tColor.Text = "Colour Options";
+			tColor.Controls.Add(cbColorExt);
+			tColor.Controls.Add(cbColor);
+			tColor.Location = new Point(4, 22);
+			tColor.Name = "tColor";
+			tColor.Size = new Size(320, 158);
+			tColor.TabIndex = 1;
+			tColor.Text = "Colour Options";
 			//
 			// cbColorExt
 			//
-			this.cbColorExt.Checked = true;
-			this.cbColorExt.CheckState = CheckState.Checked;
-			this.cbColorExt.FlatStyle = FlatStyle.System;
-			this.cbColorExt.Font = new Font(
+			cbColorExt.Checked = true;
+			cbColorExt.CheckState = CheckState.Checked;
+			cbColorExt.FlatStyle = FlatStyle.System;
+			cbColorExt.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbColorExt.Location = new Point(8, 8);
-			this.cbColorExt.Name = "cbColorExt";
-			this.cbColorExt.Size = new Size(224, 24);
-			this.cbColorExt.TabIndex = 4;
-			this.cbColorExt.Text = "Create Colour Extension Package";
+			cbColorExt.Location = new Point(8, 8);
+			cbColorExt.Name = "cbColorExt";
+			cbColorExt.Size = new Size(224, 24);
+			cbColorExt.TabIndex = 4;
+			cbColorExt.Text = "Create Colour Extension Package";
 			//
 			// cbColor
 			//
-			this.cbColor.FlatStyle = FlatStyle.System;
-			this.cbColor.Font = new Font(
+			cbColor.FlatStyle = FlatStyle.System;
+			cbColor.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbColor.Location = new Point(8, 28);
-			this.cbColor.Name = "cbColor";
-			this.cbColor.Size = new Size(224, 24);
-			this.cbColor.TabIndex = 3;
-			this.cbColor.Text = "Enable All Colour Options";
+			cbColor.Location = new Point(8, 28);
+			cbColor.Name = "cbColor";
+			cbColor.Size = new Size(224, 24);
+			cbColor.TabIndex = 3;
+			cbColor.Text = "Enable All Colour Options";
 			//
 			// sfd
 			//
-			this.sfd.Filter = "Package File (*.package)|*.package|All Files (*.*)|*.*";
-			this.sfd.Title = "Alternative Colour Pacakge";
+			sfd.Filter = "Package File (*.package)|*.package|All Files (*.*)|*.*";
+			sfd.Title = "Alternative Colour Pacakge";
 			//
 			// tbseek
 			//
-			this.tbseek.Anchor = (
+			tbseek.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -898,15 +898,15 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.tbseek.Location = new Point(8, 8);
-			this.tbseek.Name = "tbseek";
-			this.tbseek.Size = new Size(464, 21);
-			this.tbseek.TabIndex = 3;
-			this.tbseek.TextChanged += new EventHandler(this.SeekItem);
+			tbseek.Location = new Point(8, 8);
+			tbseek.Name = "tbseek";
+			tbseek.Size = new Size(464, 21);
+			tbseek.TabIndex = 3;
+			tbseek.TextChanged += new EventHandler(SeekItem);
 			//
 			// tabControl2
 			//
-			this.tabControl2.Anchor = (
+			tabControl2.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -918,40 +918,40 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.tabControl2.Controls.Add(this.tabPage1);
-			this.tabControl2.Controls.Add(this.tabPage3);
-			this.tabControl2.Controls.Add(this.tabPage2);
-			this.tabControl2.Location = new Point(8, 8);
-			this.tabControl2.Name = "tabControl2";
-			this.tabControl2.SelectedIndex = 1;
-			this.tabControl2.Size = new Size(488, 256);
-			this.tabControl2.TabIndex = 4;
-			this.tabControl2.SelectedIndexChanged += new EventHandler(
-				this.TabChange
+			tabControl2.Controls.Add(tabPage1);
+			tabControl2.Controls.Add(tabPage3);
+			tabControl2.Controls.Add(tabPage2);
+			tabControl2.Location = new Point(8, 8);
+			tabControl2.Name = "tabControl2";
+			tabControl2.SelectedIndex = 1;
+			tabControl2.Size = new Size(488, 256);
+			tabControl2.TabIndex = 4;
+			tabControl2.SelectedIndexChanged += new EventHandler(
+				TabChange
 			);
 			//
 			// tabPage1
 			//
-			this.tabPage1.Controls.Add(this.lbobj);
-			this.tabPage1.Controls.Add(this.tbseek);
-			this.tabPage1.Location = new Point(4, 22);
-			this.tabPage1.Name = "tabPage1";
-			this.tabPage1.Size = new Size(480, 230);
-			this.tabPage1.TabIndex = 0;
-			this.tabPage1.Text = "Object Listing";
+			tabPage1.Controls.Add(lbobj);
+			tabPage1.Controls.Add(tbseek);
+			tabPage1.Location = new Point(4, 22);
+			tabPage1.Name = "tabPage1";
+			tabPage1.Size = new Size(480, 230);
+			tabPage1.TabIndex = 0;
+			tabPage1.Text = "Object Listing";
 			//
 			// tabPage3
 			//
-			this.tabPage3.Controls.Add(this.tv);
-			this.tabPage3.Location = new Point(4, 22);
-			this.tabPage3.Name = "tabPage3";
-			this.tabPage3.Size = new Size(480, 230);
-			this.tabPage3.TabIndex = 2;
-			this.tabPage3.Text = "Grouped Objects";
+			tabPage3.Controls.Add(tv);
+			tabPage3.Location = new Point(4, 22);
+			tabPage3.Name = "tabPage3";
+			tabPage3.Size = new Size(480, 230);
+			tabPage3.TabIndex = 2;
+			tabPage3.Text = "Grouped Objects";
 			//
 			// tv
 			//
-			this.tv.Anchor = (
+			tv.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -963,47 +963,47 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.tv.HideSelection = false;
-			this.tv.ImageIndex = 0;
-			this.tv.ImageList = this.ilist;
-			this.tv.Location = new Point(8, 8);
-			this.tv.Name = "tv";
-			this.tv.SelectedImageIndex = 0;
-			this.tv.Size = new Size(464, 216);
-			this.tv.TabIndex = 0;
-			this.tv.AfterSelect += new TreeViewEventHandler(
-				this.SelectTv
+			tv.HideSelection = false;
+			tv.ImageIndex = 0;
+			tv.ImageList = ilist;
+			tv.Location = new Point(8, 8);
+			tv.Name = "tv";
+			tv.SelectedImageIndex = 0;
+			tv.Size = new Size(464, 216);
+			tv.TabIndex = 0;
+			tv.AfterSelect += new TreeViewEventHandler(
+				SelectTv
 			);
 			//
 			// ilist
 			//
-			this.ilist.ColorDepth = ColorDepth.Depth24Bit;
-			this.ilist.ImageSize = new Size(16, 16);
-			this.ilist.TransparentColor = Color.Transparent;
+			ilist.ColorDepth = ColorDepth.Depth24Bit;
+			ilist.ImageSize = new Size(16, 16);
+			ilist.TransparentColor = Color.Transparent;
 			//
 			// tabPage2
 			//
-			this.tabPage2.Controls.Add(this.button1);
-			this.tabPage2.Controls.Add(this.tbflname);
-			this.tabPage2.Location = new Point(4, 22);
-			this.tabPage2.Name = "tabPage2";
-			this.tabPage2.Size = new Size(480, 230);
-			this.tabPage2.TabIndex = 1;
-			this.tabPage2.Text = "Load Object";
+			tabPage2.Controls.Add(button1);
+			tabPage2.Controls.Add(tbflname);
+			tabPage2.Location = new Point(4, 22);
+			tabPage2.Name = "tabPage2";
+			tabPage2.Size = new Size(480, 230);
+			tabPage2.TabIndex = 1;
+			tabPage2.Text = "Load Object";
 			//
 			// button1
 			//
-			this.button1.FlatStyle = FlatStyle.System;
-			this.button1.Location = new Point(397, 32);
-			this.button1.Name = "button1";
-			this.button1.Size = new Size(75, 23);
-			this.button1.TabIndex = 1;
-			this.button1.Text = "Browse...";
-			this.button1.Click += new EventHandler(this.button1_Click);
+			button1.FlatStyle = FlatStyle.System;
+			button1.Location = new Point(397, 32);
+			button1.Name = "button1";
+			button1.Size = new Size(75, 23);
+			button1.TabIndex = 1;
+			button1.Text = "Browse...";
+			button1.Click += new EventHandler(button1_Click);
 			//
 			// tbflname
 			//
-			this.tbflname.Anchor = (
+			tbflname.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Left
@@ -1011,48 +1011,48 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.tbflname.Location = new Point(8, 12);
-			this.tbflname.Name = "tbflname";
-			this.tbflname.ReadOnly = true;
-			this.tbflname.Size = new Size(464, 21);
-			this.tbflname.TabIndex = 0;
+			tbflname.Location = new Point(8, 12);
+			tbflname.Name = "tbflname";
+			tbflname.ReadOnly = true;
+			tbflname.Size = new Size(464, 21);
+			tbflname.TabIndex = 0;
 			//
 			// ofd
 			//
-			this.ofd.Filter = "Package File (*.package)|*.package|All Files (*.*)|*.*";
+			ofd.Filter = "Package File (*.package)|*.package|All Files (*.*)|*.*";
 			//
 			// Workshop
 			//
-			this.AutoScaleBaseSize = new Size(6, 14);
-			this.ClientSize = new Size(512, 518);
-			this.Controls.Add(this.tabControl2);
-			this.Controls.Add(this.groupBox1);
-			this.Font = new Font(
+			AutoScaleBaseSize = new Size(6, 14);
+			ClientSize = new Size(512, 518);
+			Controls.Add(tabControl2);
+			Controls.Add(groupBox1);
+			Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.FormBorderStyle =
+			FormBorderStyle =
 				FormBorderStyle
 				.SizableToolWindow;
-			this.Icon = ((Icon)(resources1.GetObject("$this.Icon")));
-			this.MinimumSize = new Size(520, 320);
-			this.Name = "Workshop";
-			this.Text = "Object Workshop (biggest thanks to RGiles and Numenor)";
-			this.groupBox1.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
-			this.tabControl1.ResumeLayout(false);
-			this.tClone.ResumeLayout(false);
-			this.tColor.ResumeLayout(false);
-			this.tabControl2.ResumeLayout(false);
-			this.tabPage1.ResumeLayout(false);
-			this.tabPage1.PerformLayout();
-			this.tabPage3.ResumeLayout(false);
-			this.tabPage2.ResumeLayout(false);
-			this.tabPage2.PerformLayout();
-			this.ResumeLayout(false);
+			Icon = ((Icon)(resources1.GetObject("$this.Icon")));
+			MinimumSize = new Size(520, 320);
+			Name = "Workshop";
+			Text = "Object Workshop (biggest thanks to RGiles and Numenor)";
+			groupBox1.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(pb)).EndInit();
+			tabControl1.ResumeLayout(false);
+			tClone.ResumeLayout(false);
+			tColor.ResumeLayout(false);
+			tabControl2.ResumeLayout(false);
+			tabPage1.ResumeLayout(false);
+			tabPage1.PerformLayout();
+			tabPage3.ResumeLayout(false);
+			tabPage2.ResumeLayout(false);
+			tabPage2.PerformLayout();
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -1148,7 +1148,7 @@ namespace SimPe.Plugin
 		{
 			try
 			{
-				this.Cursor = Cursors.WaitCursor;
+				Cursor = Cursors.WaitCursor;
 				IAlias a = new Alias(0, "");
 				Interfaces.Files.IPackedFileDescriptor pfd = null;
 				uint localgroup = MetaData.LOCAL_GROUP;
@@ -1174,19 +1174,19 @@ namespace SimPe.Plugin
 					}
 				}
 
-				if (this.rbClone.Checked)
+				if (rbClone.Checked)
 				{
 					if (tabControl2.SelectedIndex < 2)
 					{
 						WaitingScreen.Wait();
 						try
 						{
-							this.RecolorClone(
+							RecolorClone(
 								pfd,
 								localgroup,
-								this.cbdefault.Checked,
-								this.cbwallmask.Checked,
-								this.cbanim.Checked
+								cbdefault.Checked,
+								cbwallmask.Checked,
+								cbanim.Checked
 							);
 						}
 						finally
@@ -1202,7 +1202,7 @@ namespace SimPe.Plugin
 					);
 					Hashtable map = null;
 
-					if (this.cbfix.Checked)
+					if (cbfix.Checked)
 					{
 						map = fo.GetNameMap(true);
 						if (map == null)
@@ -1211,7 +1211,7 @@ namespace SimPe.Plugin
 						}
 					}
 
-					if (this.cbfix.Checked)
+					if (cbfix.Checked)
 					{
 						if (sfd.ShowDialog() == DialogResult.OK)
 						{
@@ -1239,13 +1239,13 @@ namespace SimPe.Plugin
 						}
 					}
 
-					if ((this.cbgid.Checked) && (package != null))
+					if ((cbgid.Checked) && (package != null))
 					{
 						WaitingScreen.Wait();
 						try
 						{
 							fo.FixGroup();
-							if (this.cbfix.Checked)
+							if (cbfix.Checked)
 							{
 								package.Save();
 							}
@@ -1258,7 +1258,7 @@ namespace SimPe.Plugin
 				}
 				else //if Recolor
 				{
-					if (this.cbColor.Checked)
+					if (cbColor.Checked)
 					{
 						cbColorExt.Checked = false;
 					}
@@ -1293,7 +1293,7 @@ namespace SimPe.Plugin
 			finally
 			{
 				WaitingScreen.Stop(this);
-				this.Cursor = Cursors.Default;
+				Cursor = Cursors.Default;
 			}
 		}
 
@@ -1492,7 +1492,7 @@ namespace SimPe.Plugin
 			ArrayList exclude = new ArrayList();
 
 			//allways for recolors
-			if (this.rbColor.Checked)
+			if (rbColor.Checked)
 			{
 				exclude.Add("stdMatEnvCubeTextureName");
 				exclude.Add("TXTR");
@@ -1517,7 +1517,7 @@ namespace SimPe.Plugin
 			objclone.RcolModelClone(modelname, exclude);
 
 			//for clones only when cbparent is checked
-			if ((this.cbparent.Checked) && (!this.rbColor.Checked))
+			if ((cbparent.Checked) && (!rbColor.Checked))
 			{
 				string[] names = Scenegraph.LoadParentModelNames(package, true);
 				Packages.File pkg = Packages.File.LoadFromFile(null);
@@ -1532,7 +1532,7 @@ namespace SimPe.Plugin
 			}
 
 			//for clones only when cbparent is not checked
-			if ((!this.cbparent.Checked) && (!this.rbColor.Checked))
+			if ((!cbparent.Checked) && (!rbColor.Checked))
 			{
 				string[] modelnames = modelname;
 				if (!cbclean.Checked)
@@ -1560,7 +1560,7 @@ namespace SimPe.Plugin
 					(!System.IO.File.Exists(ScenegraphHelper.GMND_PACKAGE))
 					|| (!System.IO.File.Exists(ScenegraphHelper.MMAT_PACKAGE))
 				)
-				&& (!this.cbColor.Checked)
+				&& (!cbColor.Checked)
 			)
 			{
 				if (
@@ -1575,7 +1575,7 @@ namespace SimPe.Plugin
 				}
 			}
 
-			if (this.cbColorExt.Checked)
+			if (cbColorExt.Checked)
 			{
 				if (sfd.ShowDialog() != DialogResult.OK)
 				{
@@ -1597,7 +1597,7 @@ namespace SimPe.Plugin
 
 				cbgid.Checked = old;
 
-				if (this.cbColor.Checked)
+				if (cbColor.Checked)
 				{
 					ObjectRecolor or = new ObjectRecolor(package);
 					or.EnableColorOptions();
@@ -1640,7 +1640,7 @@ namespace SimPe.Plugin
 						(System.IO.BinaryReader)null
 					);
 				//Create the Templae for an additional MMAT
-				if (this.cbColorExt.Checked)
+				if (cbColorExt.Checked)
 				{
 					npackage.FileName = sfd.FileName;
 
@@ -1736,7 +1736,7 @@ namespace SimPe.Plugin
 			finally
 			{
 				tbseek.Tag = null;
-				this.Select(null, null);
+				Select(null, null);
 			}
 		}
 
@@ -1748,7 +1748,7 @@ namespace SimPe.Plugin
 			}
 
 			tabControl1.Tag = true;
-			if (this.tabControl1.SelectedIndex == 0)
+			if (tabControl1.SelectedIndex == 0)
 			{
 				rbClone.Checked = true;
 			}
@@ -1766,7 +1766,7 @@ namespace SimPe.Plugin
 			{
 				package = Packages.File.LoadFromFile(ofd.FileName);
 				tbflname.Text = ofd.FileName;
-				this.btclone.Enabled = System.IO.File.Exists(tbflname.Text);
+				btclone.Enabled = System.IO.File.Exists(tbflname.Text);
 				btclone.Refresh();
 			}
 		}
@@ -1816,16 +1816,16 @@ namespace SimPe.Plugin
 			if (tabControl2.SelectedIndex == 0)
 			{
 				BuildListing();
-				this.Select(null, null);
+				Select(null, null);
 			}
 			else if (tabControl2.SelectedIndex == 1)
 			{
 				BuildListing();
-				this.SelectTv(null, null);
+				SelectTv(null, null);
 			}
 			else
 			{
-				this.btclone.Enabled = System.IO.File.Exists(tbflname.Text);
+				btclone.Enabled = System.IO.File.Exists(tbflname.Text);
 			}
 
 			btclone.Refresh();
@@ -1840,7 +1840,7 @@ namespace SimPe.Plugin
 
 		private void ol_Finished(object sender, EventArgs e)
 		{
-			this.Invoke(
+			Invoke(
 				new InvokeTargetFinish(invoke_Finished),
 				new object[] { sender, e }
 			);
@@ -1849,7 +1849,7 @@ namespace SimPe.Plugin
 		private void invoke_Finished(object sender, EventArgs e)
 		{
 			lbobj.Enabled = true;
-			this.tv.Enabled = true;
+			tv.Enabled = true;
 
 			lbobj.Sorted = true;
 			tv.Sorted = true;
@@ -1864,7 +1864,7 @@ namespace SimPe.Plugin
 			Alias a
 		)
 		{
-			this.Invoke(
+			Invoke(
 				new InvokeTargetLoad(invoke_LoadedItem),
 				new object[] { oci, fii, a }
 			);

@@ -224,8 +224,8 @@ namespace SimPe.Plugin.Gmdc
 		void SetUsedJoints(GmdcGroup g)
 		{
 			g.UsedJoints.Clear();
-			GmdcElement be = this.BuildBoneElement();
-			GmdcElement bw = this.BuildWeightElement();
+			GmdcElement be = BuildBoneElement();
+			GmdcElement bw = BuildWeightElement();
 			AddElement(be, g, Action == GenericMeshImport.ImportAction.Update);
 			AddElement(bw, g, Action == GenericMeshImport.ImportAction.Update);
 			if (be != null && bw != null)
@@ -248,19 +248,19 @@ namespace SimPe.Plugin.Gmdc
 		public void BuildGroup()
 		{
 			if (
-				this.Group == null
-				&& this.Action == GenericMeshImport.ImportAction.Replace
+				Group == null
+				&& Action == GenericMeshImport.ImportAction.Replace
 			)
 			{
-				this.Action = GenericMeshImport.ImportAction.Add;
+				Action = GenericMeshImport.ImportAction.Add;
 			}
 
 			if (
-				this.Group == null
-				&& this.Action == GenericMeshImport.ImportAction.Update
+				Group == null
+				&& Action == GenericMeshImport.ImportAction.Update
 			)
 			{
-				this.Action = GenericMeshImport.ImportAction.Add;
+				Action = GenericMeshImport.ImportAction.Add;
 			}
 
 			if (Action == GenericMeshImport.ImportAction.Ignore)
@@ -310,23 +310,23 @@ namespace SimPe.Plugin.Gmdc
 			mesh.Tag = new object[] { this, g };
 
 			AddElement(
-				this.BuildVertexElement(),
+				BuildVertexElement(),
 				g,
 				Action == GenericMeshImport.ImportAction.Update
 			);
 			AddElement(
-				this.BuildNormalElement(),
+				BuildNormalElement(),
 				g,
 				Action == GenericMeshImport.ImportAction.Update
 			);
 			AddElement(
-				this.BuildTextureElement(),
+				BuildTextureElement(),
 				g,
 				Action == GenericMeshImport.ImportAction.Update
 			);
 
 			SetFaces(g);
-			if (this.ImportEnvelope)
+			if (ImportEnvelope)
 			{
 				SetUsedJoints(g);
 			}

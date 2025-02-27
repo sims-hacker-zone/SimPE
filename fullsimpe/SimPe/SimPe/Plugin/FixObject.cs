@@ -67,7 +67,7 @@ namespace SimPe.Plugin
 			: base(package)
 		{
 			this.ver = ver;
-			this.RemoveNonDefaultTextReferences = remndeftxt;
+			RemoveNonDefaultTextReferences = remndeftxt;
 			if (types == null)
 			{
 				types = new ArrayList
@@ -582,7 +582,7 @@ namespace SimPe.Plugin
 				package.FindFiles(Data.MetaData.XFNC).Length > 0 /*|| package.FindFiles(Data.MetaData.XNGB).Length>0*/
 			)
 			{
-				this.FixFence();
+				FixFence();
 			}
 		}
 
@@ -1377,7 +1377,7 @@ namespace SimPe.Plugin
 
 					foreach (Packages.PackedFileDescriptor rfi in fl.Items)
 					{
-						string name = this.BuildRefString(rfi);
+						string name = BuildRefString(rfi);
 						IPackedFileDescriptor npfd =
 							(IPackedFileDescriptor)refmap[name];
 						if (npfd != null)

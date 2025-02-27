@@ -30,24 +30,24 @@ namespace Ambertation.Windows.Forms.Graph
 	{
 		public GraphPanelElement()
 		{
-			this.bg = Color.Transparent;
-			this.fg = Color.Black;
+			bg = Color.Transparent;
+			fg = Color.Black;
 
 			quality = true;
 			savebound = true;
 			Updating = false;
 			SourceImage = new Bitmap(1, 1);
-			this.Width = 48;
-			this.Height = 48;
+			Width = 48;
+			Height = 48;
 		}
 
 		public virtual void Dispose()
 		{
-			this.Parent = null;
+			Parent = null;
 
-			if (this.SourceImage != null)
+			if (SourceImage != null)
 			{
-				this.SourceImage.Dispose();
+				SourceImage.Dispose();
 			}
 		}
 
@@ -108,9 +108,9 @@ namespace Ambertation.Windows.Forms.Graph
 			get; private set;
 		}
 
-		public int Right => this.BoundingRectangle.Right;
+		public int Right => BoundingRectangle.Right;
 
-		public int Bottom => this.BoundingRectangle.Bottom;
+		public int Bottom => BoundingRectangle.Bottom;
 		public Point Location
 		{
 			get
@@ -119,7 +119,7 @@ namespace Ambertation.Windows.Forms.Graph
 			}
 			set
 			{
-				this.SetBounds(value.X, value.Y, Width, Height);
+				SetBounds(value.X, value.Y, Width, Height);
 			}
 		}
 
@@ -131,7 +131,7 @@ namespace Ambertation.Windows.Forms.Graph
 			}
 			set
 			{
-				this.SetBounds(Left, Top, value.Width, value.Height);
+				SetBounds(Left, Top, value.Width, value.Height);
 			}
 		}
 
@@ -150,16 +150,16 @@ namespace Ambertation.Windows.Forms.Graph
 				{
 					if (parent != null)
 					{
-						this.RemoveFromParent();
+						RemoveFromParent();
 						Refresh();
 					}
 					parent = value;
 					if (parent != null)
 					{
-						this.AddToParent();
+						AddToParent();
 					}
 					ChangedParent();
-					this.Invalidate();
+					Invalidate();
 				}
 			}
 		}
@@ -179,7 +179,7 @@ namespace Ambertation.Windows.Forms.Graph
 				if (quality != value)
 				{
 					quality = value;
-					this.Invalidate();
+					Invalidate();
 				}
 			}
 		}
@@ -222,7 +222,7 @@ namespace Ambertation.Windows.Forms.Graph
 		internal void OnPaint(PaintEventArgs e)
 		{
 			Rectangle irect = Rectangle.Intersect(
-				this.BoundingRectangle,
+				BoundingRectangle,
 				e.ClipRectangle
 			);
 			//if (irect==null) return;
@@ -262,14 +262,14 @@ namespace Ambertation.Windows.Forms.Graph
 		{
 			if (parent != null)
 			{
-				parent.Invalidate(this.BoundingRectangle);
+				parent.Invalidate(BoundingRectangle);
 			}
 		}
 
 		public void Invalidate()
 		{
-			this.CompleteRedraw();
-			this.Refresh();
+			CompleteRedraw();
+			Refresh();
 		}
 
 		public void SetBounds(int x, int y, int wd, int hg)
@@ -277,7 +277,7 @@ namespace Ambertation.Windows.Forms.Graph
 			wd = Math.Max(1, wd);
 			hg = Math.Max(1, hg);
 			Rectangle src = new Rectangle(x, y, wd, hg);
-			Rectangle dst = this.BoundingRectangle;
+			Rectangle dst = BoundingRectangle;
 
 			Rectangle r = Rectangle.Union(src, dst);
 
@@ -286,7 +286,7 @@ namespace Ambertation.Windows.Forms.Graph
 			Width = wd;
 			Height = hg;
 
-			if (parent != null && this.SaveBounds)
+			if (parent != null && SaveBounds)
 			{
 				if (Right > parent.Width)
 				{
@@ -319,7 +319,7 @@ namespace Ambertation.Windows.Forms.Graph
 			if (src.Width != dst.Width || src.Height != dst.Height)
 			{
 				OnSizeChanged();
-				this.CompleteRedraw();
+				CompleteRedraw();
 				if (SizeChanged != null)
 				{
 					SizeChanged(this, new EventArgs());
@@ -422,7 +422,7 @@ namespace Ambertation.Windows.Forms.Graph
 		protected void CompleteRedraw(System.Drawing.Graphics g)
 		{
 			SetGraphicsMode(g, true);
-			g.FillRectangle(new SolidBrush(this.BackColor), 0, 0, Width, Height);
+			g.FillRectangle(new SolidBrush(BackColor), 0, 0, Width, Height);
 			SetGraphicsMode(g, !quality);
 			UserDraw(g);
 		}
@@ -459,8 +459,8 @@ namespace Ambertation.Windows.Forms.Graph
 		{
 			if (parent != null)
 			{
-				this.Quality = parent.Quality;
-				this.SaveBounds = parent.SaveBounds;
+				Quality = parent.Quality;
+				SaveBounds = parent.SaveBounds;
 			}
 		}
 
@@ -505,7 +505,7 @@ namespace Ambertation.Windows.Forms.Graph
 		public void EndUpdate()
 		{
 			Updating = false;
-			this.Invalidate();
+			Invalidate();
 		}
 		#endregion
 	}

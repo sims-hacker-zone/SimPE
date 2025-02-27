@@ -143,7 +143,7 @@ namespace SimPe.Geometry
 		/// <returns></returns>
 		public Vector2f Clone()
 		{
-			Vector2f v = new Vector2f(this.X, this.Y);
+			Vector2f v = new Vector2f(X, Y);
 			return v;
 		}
 
@@ -519,7 +519,7 @@ namespace SimPe.Geometry
 		/// <returns></returns>
 		public new Vector3f Clone()
 		{
-			Vector3f v = new Vector3f(this.X, this.Y, this.Z);
+			Vector3f v = new Vector3f(X, Y, Z);
 			return v;
 		}
 
@@ -531,24 +531,24 @@ namespace SimPe.Geometry
 		#region Skankyboy Extension
 		public Vector3f(string[] datarr)
 		{
-			this.X = double.Parse(datarr[0]);
-			this.Y = double.Parse(datarr[1]);
-			this.Z = double.Parse(datarr[2]);
+			X = double.Parse(datarr[0]);
+			Y = double.Parse(datarr[1]);
+			Z = double.Parse(datarr[2]);
 		}
 
 		public Vector3f(string data)
 		{
 			string[] datarr = data.Split(" ".ToCharArray());
-			this.X = double.Parse(datarr[0]);
-			this.Y = double.Parse(datarr[1]);
-			this.Z = double.Parse(datarr[2]);
+			X = double.Parse(datarr[0]);
+			Y = double.Parse(datarr[1]);
+			Z = double.Parse(datarr[2]);
 		}
 
 		public Vector3f(double[] data)
 		{
-			this.X = data[0];
-			this.Y = data[1];
-			this.Z = data[2];
+			X = data[0];
+			Y = data[1];
+			Z = data[2];
 		}
 
 		public string ToString2()
@@ -620,9 +620,9 @@ namespace SimPe.Geometry
 		/// <param name="z">Z-Coordinate</param>
 		public Vector3i(int x, int y, int z)
 		{
-			this.X = x;
-			this.Y = y;
-			this.Z = z;
+			X = x;
+			Y = y;
+			Z = z;
 		}
 
 		/// <summary>
@@ -794,7 +794,7 @@ namespace SimPe.Geometry
 		/// <returns></returns>
 		public new Vector4f Clone()
 		{
-			Vector4f v = new Vector4f(this.X, this.Y, this.Z, this.W);
+			Vector4f v = new Vector4f(X, Y, Z, W);
 			return v;
 		}
 	}
@@ -878,7 +878,7 @@ namespace SimPe.Geometry
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length => this.Count;
+		public int Length => Count;
 
 		/// <summary>
 		/// Create a clone of this Object
@@ -973,7 +973,7 @@ namespace SimPe.Geometry
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length => this.Count;
+		public int Length => Count;
 
 		/// <summary>
 		/// Create a clone of this Object
@@ -1068,7 +1068,7 @@ namespace SimPe.Geometry
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length => this.Count;
+		public int Length => Count;
 
 		/// <summary>
 		/// Create a clone of this Object
@@ -1163,7 +1163,7 @@ namespace SimPe.Geometry
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length => this.Count;
+		public int Length => Count;
 
 		/// <summary>
 		/// Create a clone of this Object

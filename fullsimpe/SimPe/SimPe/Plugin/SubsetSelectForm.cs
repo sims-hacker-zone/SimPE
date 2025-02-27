@@ -75,16 +75,16 @@ namespace SimPe.Plugin
 		{
 			System.Resources.ResourceManager resources =
 				new System.Resources.ResourceManager(typeof(SubsetSelectForm));
-			this.panel1 = new Panel();
-			this.cbauto = new CheckBox();
-			this.button1 = new Button();
-			this.pnselect = new Panel();
-			this.panel1.SuspendLayout();
-			this.SuspendLayout();
+			panel1 = new Panel();
+			cbauto = new CheckBox();
+			button1 = new Button();
+			pnselect = new Panel();
+			panel1.SuspendLayout();
+			SuspendLayout();
 			//
 			// panel1
 			//
-			this.panel1.Anchor = (
+			panel1.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -96,17 +96,17 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.panel1.Controls.Add(this.cbauto);
-			this.panel1.Controls.Add(this.button1);
-			this.panel1.Controls.Add(this.pnselect);
-			this.panel1.Location = new Point(0, 0);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new Size(536, 440);
-			this.panel1.TabIndex = 0;
+			panel1.Controls.Add(cbauto);
+			panel1.Controls.Add(button1);
+			panel1.Controls.Add(pnselect);
+			panel1.Location = new Point(0, 0);
+			panel1.Name = "panel1";
+			panel1.Size = new Size(536, 440);
+			panel1.TabIndex = 0;
 			//
 			// cbauto
 			//
-			this.cbauto.Anchor = (
+			cbauto.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -114,18 +114,18 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.cbauto.Checked = true;
-			this.cbauto.CheckState = CheckState.Checked;
-			this.cbauto.FlatStyle = FlatStyle.System;
-			this.cbauto.Location = new Point(8, 408);
-			this.cbauto.Name = "cbauto";
-			this.cbauto.Size = new Size(240, 24);
-			this.cbauto.TabIndex = 3;
-			this.cbauto.Text = "Autoselect matching Textures";
+			cbauto.Checked = true;
+			cbauto.CheckState = CheckState.Checked;
+			cbauto.FlatStyle = FlatStyle.System;
+			cbauto.Location = new Point(8, 408);
+			cbauto.Name = "cbauto";
+			cbauto.Size = new Size(240, 24);
+			cbauto.TabIndex = 3;
+			cbauto.Text = "Autoselect matching Textures";
 			//
 			// button1
 			//
-			this.button1.Anchor = (
+			button1.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -133,16 +133,16 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.button1.FlatStyle = FlatStyle.System;
-			this.button1.Location = new Point(456, 416);
-			this.button1.Name = "button1";
-			this.button1.TabIndex = 2;
-			this.button1.Text = "OK";
-			this.button1.Click += new EventHandler(this.button1_Click);
+			button1.FlatStyle = FlatStyle.System;
+			button1.Location = new Point(456, 416);
+			button1.Name = "button1";
+			button1.TabIndex = 2;
+			button1.Text = "OK";
+			button1.Click += new EventHandler(button1_Click);
 			//
 			// pnselect
 			//
-			this.pnselect.Anchor = (
+			pnselect.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -154,35 +154,35 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.pnselect.AutoScroll = true;
-			this.pnselect.Location = new Point(0, 0);
-			this.pnselect.Name = "pnselect";
-			this.pnselect.Size = new Size(536, 408);
-			this.pnselect.TabIndex = 1;
+			pnselect.AutoScroll = true;
+			pnselect.Location = new Point(0, 0);
+			pnselect.Name = "pnselect";
+			pnselect.Size = new Size(536, 408);
+			pnselect.TabIndex = 1;
 			//
 			// SubsetSelectForm
 			//
-			this.AutoScaleBaseSize = new Size(6, 14);
-			this.ClientSize = new Size(544, 446);
-			this.Controls.Add(this.panel1);
-			this.Font = new Font(
+			AutoScaleBaseSize = new Size(6, 14);
+			ClientSize = new Size(544, 446);
+			Controls.Add(panel1);
+			Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.FormBorderStyle =
+			FormBorderStyle =
 				FormBorderStyle
 				.SizableToolWindow;
-			this.Icon = ((Icon)(resources.GetObject("$this.Icon")));
-			this.Name = "SubsetSelectForm";
-			this.Text = "Subset Selection";
-			this.Closing += new System.ComponentModel.CancelEventHandler(
-				this.DoClosing
+			Icon = ((Icon)(resources.GetObject("$this.Icon")));
+			Name = "SubsetSelectForm";
+			Text = "Subset Selection";
+			Closing += new System.ComponentModel.CancelEventHandler(
+				DoClosing
 			);
-			this.panel1.ResumeLayout(false);
-			this.ResumeLayout(false);
+			panel1.ResumeLayout(false);
+			ResumeLayout(false);
 		}
 		#endregion
 

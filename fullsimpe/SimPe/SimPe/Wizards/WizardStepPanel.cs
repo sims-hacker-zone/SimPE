@@ -31,14 +31,14 @@ namespace SimPe.Wizards
 	{
 		public WizardStepPanel()
 		{
-			this.BackColor = Color.Transparent;
+			BackColor = Color.Transparent;
 		}
 
 		protected override void OnPaint(PaintEventArgs e)
 		{
 			base.OnPaint(e);
 
-			if (this.DesignMode)
+			if (DesignMode)
 			{
 				SizeF sz = e.Graphics.MeasureString(HintName, Font);
 				e.Graphics.DrawString(
@@ -64,7 +64,7 @@ namespace SimPe.Wizards
 
 		internal void SetupParent(Wizard parent)
 		{
-			this.ParentWizard = parent;
+			ParentWizard = parent;
 			Index = 0;
 			if (parent == null)
 			{

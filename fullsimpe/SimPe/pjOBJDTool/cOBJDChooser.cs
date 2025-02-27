@@ -66,8 +66,8 @@ namespace pjOBJDTool
 
 		private void lbItems_DoubleClick(object sender, EventArgs e)
 		{
-			this.DialogResult = DialogResult.OK;
-			this.Close();
+			DialogResult = DialogResult.OK;
+			Close();
 		}
 	}
 }

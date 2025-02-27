@@ -244,7 +244,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 
 			Data.MetaData.AspirationTypes[] asps = aspeditor.LoadAspirations(
-				this.parent
+				parent
 			);
 
 			if (asps == null)

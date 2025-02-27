@@ -116,11 +116,11 @@ namespace Classless.Hasher
 			bool reflectIn
 		)
 		{
-			this.Order = order;
-			this.Polynomial = polynomial;
-			this.InitialValue = initial;
-			this.FinalXORValue = finalXOR;
-			this.ReflectInput = reflectIn;
+			Order = order;
+			Polynomial = polynomial;
+			InitialValue = initial;
+			FinalXORValue = finalXOR;
+			ReflectInput = reflectIn;
 		}
 
 		/// <summary>Serves as a hash function for a particular type, suitable for use in hashing algorithms and data structures like a hash table.</summary>

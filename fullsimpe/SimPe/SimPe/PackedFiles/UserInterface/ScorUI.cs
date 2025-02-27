@@ -56,9 +56,9 @@ namespace SimPe.PackedFiles.UserInterface
 			btRem.Enabled = false;
 			UpdateTypeSelector();
 
-			this.Text = "Sim Scores";
-			this.Commited += new EventHandler(ScorUI_Commited);
-			this.CanCommit = Helper.WindowsRegistry.HiddenMode;
+			Text = "Sim Scores";
+			Commited += new EventHandler(ScorUI_Commited);
+			CanCommit = Helper.WindowsRegistry.HiddenMode;
 		}
 
 		/// <summary>
@@ -83,70 +83,70 @@ namespace SimPe.PackedFiles.UserInterface
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.label1 = new Label();
-			this.tbunk1 = new TextBox();
-			this.tbunk2 = new TextBox();
-			this.label2 = new Label();
-			this.lb = new ListBox();
-			this.pnContainer = new Panel();
-			this.cbType = new ComboBox();
-			this.btAdd = new Button();
-			this.btRem = new Button();
-			this.SuspendLayout();
+			label1 = new Label();
+			tbunk1 = new TextBox();
+			tbunk2 = new TextBox();
+			label2 = new Label();
+			lb = new ListBox();
+			pnContainer = new Panel();
+			cbType = new ComboBox();
+			btAdd = new Button();
+			btRem = new Button();
+			SuspendLayout();
 			//
 			// label1
 			//
-			this.label1.BackColor = System.Drawing.Color.Transparent;
-			this.label1.Font = new System.Drawing.Font(
+			label1.BackColor = System.Drawing.Color.Transparent;
+			label1.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label1.Location = new System.Drawing.Point(8, 40);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(80, 23);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Unknown 1:";
-			this.label1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label1.Location = new System.Drawing.Point(8, 40);
+			label1.Name = "label1";
+			label1.Size = new System.Drawing.Size(80, 23);
+			label1.TabIndex = 0;
+			label1.Text = "Unknown 1:";
+			label1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// tbunk1
 			//
-			this.tbunk1.Location = new System.Drawing.Point(96, 40);
-			this.tbunk1.Name = "tbunk1";
-			this.tbunk1.ReadOnly = true;
-			this.tbunk1.Size = new System.Drawing.Size(141, 21);
-			this.tbunk1.TabIndex = 1;
+			tbunk1.Location = new System.Drawing.Point(96, 40);
+			tbunk1.Name = "tbunk1";
+			tbunk1.ReadOnly = true;
+			tbunk1.Size = new System.Drawing.Size(141, 21);
+			tbunk1.TabIndex = 1;
 			//
 			// tbunk2
 			//
-			this.tbunk2.Location = new System.Drawing.Point(96, 64);
-			this.tbunk2.Name = "tbunk2";
-			this.tbunk2.ReadOnly = true;
-			this.tbunk2.Size = new System.Drawing.Size(141, 21);
-			this.tbunk2.TabIndex = 3;
+			tbunk2.Location = new System.Drawing.Point(96, 64);
+			tbunk2.Name = "tbunk2";
+			tbunk2.ReadOnly = true;
+			tbunk2.Size = new System.Drawing.Size(141, 21);
+			tbunk2.TabIndex = 3;
 			//
 			// label2
 			//
-			this.label2.BackColor = System.Drawing.Color.Transparent;
-			this.label2.Font = new System.Drawing.Font(
+			label2.BackColor = System.Drawing.Color.Transparent;
+			label2.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label2.Location = new System.Drawing.Point(8, 64);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(80, 23);
-			this.label2.TabIndex = 2;
-			this.label2.Text = "Unknown 2:";
-			this.label2.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label2.Location = new System.Drawing.Point(8, 64);
+			label2.Name = "label2";
+			label2.Size = new System.Drawing.Size(80, 23);
+			label2.TabIndex = 2;
+			label2.Text = "Unknown 2:";
+			label2.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// lb
 			//
-			this.lb.Anchor = (
+			lb.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -156,20 +156,20 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.lb.BorderStyle = BorderStyle.None;
-			this.lb.HorizontalScrollbar = true;
-			this.lb.IntegralHeight = false;
-			this.lb.Location = new System.Drawing.Point(8, 96);
-			this.lb.Name = "lb";
-			this.lb.Size = new System.Drawing.Size(229, 104);
-			this.lb.TabIndex = 4;
-			this.lb.SelectedIndexChanged += new EventHandler(
-				this.lb_SelectedIndexChanged
+			lb.BorderStyle = BorderStyle.None;
+			lb.HorizontalScrollbar = true;
+			lb.IntegralHeight = false;
+			lb.Location = new System.Drawing.Point(8, 96);
+			lb.Name = "lb";
+			lb.Size = new System.Drawing.Size(229, 104);
+			lb.TabIndex = 4;
+			lb.SelectedIndexChanged += new EventHandler(
+				lb_SelectedIndexChanged
 			);
 			//
 			// pnContainer
 			//
-			this.pnContainer.Anchor = (
+			pnContainer.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -181,14 +181,14 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.pnContainer.Location = new System.Drawing.Point(243, 40);
-			this.pnContainer.Name = "pnContainer";
-			this.pnContainer.Size = new System.Drawing.Size(431, 228);
-			this.pnContainer.TabIndex = 5;
+			pnContainer.Location = new System.Drawing.Point(243, 40);
+			pnContainer.Name = "pnContainer";
+			pnContainer.Size = new System.Drawing.Size(431, 228);
+			pnContainer.TabIndex = 5;
 			//
 			// cbType
 			//
-			this.cbType.Anchor = (
+			cbType.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -196,19 +196,19 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.cbType.DropDownStyle = ComboBoxStyle.DropDownList;
-			this.cbType.FormattingEnabled = true;
-			this.cbType.Location = new System.Drawing.Point(11, 217);
-			this.cbType.Name = "cbType";
-			this.cbType.Size = new System.Drawing.Size(157, 21);
-			this.cbType.TabIndex = 6;
-			this.cbType.SelectedIndexChanged += new EventHandler(
-				this.comboBox1_SelectedIndexChanged
+			cbType.DropDownStyle = ComboBoxStyle.DropDownList;
+			cbType.FormattingEnabled = true;
+			cbType.Location = new System.Drawing.Point(11, 217);
+			cbType.Name = "cbType";
+			cbType.Size = new System.Drawing.Size(157, 21);
+			cbType.TabIndex = 6;
+			cbType.SelectedIndexChanged += new EventHandler(
+				comboBox1_SelectedIndexChanged
 			);
 			//
 			// btAdd
 			//
-			this.btAdd.Anchor = (
+			btAdd.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -216,17 +216,17 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.btAdd.Location = new System.Drawing.Point(174, 216);
-			this.btAdd.Name = "btAdd";
-			this.btAdd.Size = new System.Drawing.Size(63, 23);
-			this.btAdd.TabIndex = 7;
-			this.btAdd.Text = "Add";
-			this.btAdd.UseVisualStyleBackColor = true;
-			this.btAdd.Click += new EventHandler(this.btAdd_Click);
+			btAdd.Location = new System.Drawing.Point(174, 216);
+			btAdd.Name = "btAdd";
+			btAdd.Size = new System.Drawing.Size(63, 23);
+			btAdd.TabIndex = 7;
+			btAdd.Text = "Add";
+			btAdd.UseVisualStyleBackColor = true;
+			btAdd.Click += new EventHandler(btAdd_Click);
 			//
 			// btRem
 			//
-			this.btRem.Anchor = (
+			btRem.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -234,45 +234,45 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.btRem.Location = new System.Drawing.Point(174, 245);
-			this.btRem.Name = "btRem";
-			this.btRem.Size = new System.Drawing.Size(63, 23);
-			this.btRem.TabIndex = 8;
-			this.btRem.Text = "Remove";
-			this.btRem.UseVisualStyleBackColor = true;
-			this.btRem.Click += new EventHandler(this.btRem_Click);
+			btRem.Location = new System.Drawing.Point(174, 245);
+			btRem.Name = "btRem";
+			btRem.Size = new System.Drawing.Size(63, 23);
+			btRem.TabIndex = 8;
+			btRem.Text = "Remove";
+			btRem.UseVisualStyleBackColor = true;
+			btRem.Click += new EventHandler(btRem_Click);
 			//
 			// ScorUI
 			//
-			this.Controls.Add(this.btRem);
-			this.Controls.Add(this.btAdd);
-			this.Controls.Add(this.cbType);
-			this.Controls.Add(this.lb);
-			this.Controls.Add(this.pnContainer);
-			this.Controls.Add(this.tbunk2);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.tbunk1);
-			this.Controls.Add(this.label1);
-			this.Font = new System.Drawing.Font(
+			Controls.Add(btRem);
+			Controls.Add(btAdd);
+			Controls.Add(cbType);
+			Controls.Add(lb);
+			Controls.Add(pnContainer);
+			Controls.Add(tbunk2);
+			Controls.Add(label2);
+			Controls.Add(tbunk1);
+			Controls.Add(label1);
+			Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.Name = "ScorUI";
-			this.Size = new System.Drawing.Size(678, 272);
-			this.Controls.SetChildIndex(this.label1, 0);
-			this.Controls.SetChildIndex(this.tbunk1, 0);
-			this.Controls.SetChildIndex(this.label2, 0);
-			this.Controls.SetChildIndex(this.tbunk2, 0);
-			this.Controls.SetChildIndex(this.pnContainer, 0);
-			this.Controls.SetChildIndex(this.lb, 0);
-			this.Controls.SetChildIndex(this.cbType, 0);
-			this.Controls.SetChildIndex(this.btAdd, 0);
-			this.Controls.SetChildIndex(this.btRem, 0);
-			this.ResumeLayout(false);
-			this.PerformLayout();
+			Name = "ScorUI";
+			Size = new System.Drawing.Size(678, 272);
+			Controls.SetChildIndex(label1, 0);
+			Controls.SetChildIndex(tbunk1, 0);
+			Controls.SetChildIndex(label2, 0);
+			Controls.SetChildIndex(tbunk2, 0);
+			Controls.SetChildIndex(pnContainer, 0);
+			Controls.SetChildIndex(lb, 0);
+			Controls.SetChildIndex(cbType, 0);
+			Controls.SetChildIndex(btAdd, 0);
+			Controls.SetChildIndex(btRem, 0);
+			ResumeLayout(false);
+			PerformLayout();
 		}
 		#endregion
 
@@ -324,8 +324,8 @@ namespace SimPe.PackedFiles.UserInterface
 		protected override void RefreshGUI()
 		{
 			pnContainer.Controls.Clear();
-			this.tbunk1.Text = Helper.HexString(Scor.Unknown1);
-			this.tbunk2.Text = Helper.HexString(Scor.Unknown2);
+			tbunk1.Text = Helper.HexString(Scor.Unknown1);
+			tbunk2.Text = Helper.HexString(Scor.Unknown2);
 
 			btRem.Enabled = false;
 			lb.Items.Clear();
@@ -344,7 +344,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		void UpdateTypeSelector()
 		{
-			this.cbType.Items.Clear();
+			cbType.Items.Clear();
 			//if (Scor != null)
 			{
 				foreach (string s in ScorItem.GuiElements.Keys)

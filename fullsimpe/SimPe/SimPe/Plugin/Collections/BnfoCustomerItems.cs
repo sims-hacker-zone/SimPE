@@ -88,7 +88,7 @@ namespace SimPe.Plugin.Collections
 
 		public BnfoCustomerItems Clone()
 		{
-			return Clone(this.parent);
+			return Clone(parent);
 		}
 
 		public BnfoCustomerItems Clone(Bnfo newparent)
@@ -119,7 +119,7 @@ namespace SimPe.Plugin.Collections
 
 			if (create)
 			{
-				return this.AddNew(instance);
+				return AddNew(instance);
 			}
 
 			return null;

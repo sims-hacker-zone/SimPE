@@ -44,7 +44,7 @@ namespace SimPe.Plugin
 
 		void IDisposable.Dispose()
 		{
-			this.TPFW.Dispose();
+			TPFW.Dispose();
 		}
 		#endregion
 
@@ -61,11 +61,11 @@ namespace SimPe.Plugin
 				}
 				Wrapper.Sciname = scinstance;
 				scinst.ForeColor = System.Drawing.SystemColors.WindowText;
-				this.CanCommit = true;
+				CanCommit = true;
 			}
 			catch
 			{
-				this.CanCommit = false;
+				CanCommit = false;
 				scinst.ForeColor = System.Drawing.Color.DarkRed;
 			}
 		}

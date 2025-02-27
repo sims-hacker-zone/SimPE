@@ -102,7 +102,7 @@ namespace pjse.guidtool
 				new RadioButton[] { rb1default, rb1CPOnly }
 			);
 
-			this.oldText = this.btnSearch.Text;
+			oldText = btnSearch.Text;
 
 			SearchComplete += new EventHandler(Complete);
 
@@ -651,11 +651,11 @@ namespace pjse.guidtool
 			if (maxOrValue == false)
 			{
 				SimPe.WaitingScreen.Stop();
-				this.progressBar1.Maximum = progress;
+				progressBar1.Maximum = progress;
 			}
 			else
 			{
-				this.progressBar1.Value = progress;
+				progressBar1.Value = progress;
 			}
 		}
 
@@ -669,7 +669,7 @@ namespace pjse.guidtool
 			//string report_line = "Group {0}: [{1} guid: {2}] {3} ({4})";
 			if (item.Type == SimPe.Data.MetaData.OBJD_FILE)
 			{
-				this.rtbReport.AppendText(
+				rtbReport.AppendText(
 					Localization.GetString(
 						"gt_reportOBJD",
 						SimPe.Helper.HexString(item.PFD.Group),
@@ -683,7 +683,7 @@ namespace pjse.guidtool
 			else
 			//string report_line = "Group {0}: [{1} {2}] {3} ({4})";
 			{
-				this.rtbReport.AppendText(
+				rtbReport.AppendText(
 					Localization.GetString(
 						"gt_report",
 						SimPe.Helper.HexString(item.PFD.Group),
@@ -694,7 +694,7 @@ namespace pjse.guidtool
 				);
 			}
 
-			this.rtbReport.ScrollToCaret();
+			rtbReport.ScrollToCaret();
 			matches++;
 		}
 
@@ -738,13 +738,13 @@ namespace pjse.guidtool
 			uint number = 0;
 			try
 			{
-				number = Convert.ToUInt32(this.tbNumber.Text.Trim(), 16);
+				number = Convert.ToUInt32(tbNumber.Text.Trim(), 16);
 			}
 			catch (FormatException)
 			{
 				number = 0;
 			}
-			this.tbNumber.Text = "0x" + SimPe.Helper.HexString(number);
+			tbNumber.Text = "0x" + SimPe.Helper.HexString(number);
 			if (number == 0)
 			{
 				type[0] = type[5] = false;
@@ -757,8 +757,8 @@ namespace pjse.guidtool
 			{
 				type[6] = type[10] = false;
 			} // don't search with no Group filter
-			this.tbName.Text = this.tbName.Text.Trim().ToLower();
-			if (this.tbName.Text.Length == 0)
+			tbName.Text = tbName.Text.Trim().ToLower();
+			if (tbName.Text.Length == 0)
 			{
 				type[1] =
 					type[2] =
@@ -770,8 +770,8 @@ namespace pjse.guidtool
 						false;
 			} // don't search for empty string
 			SimPe.WaitingScreen.Wait();
-			this.Cursor = Cursors.WaitCursor;
-			this.btnSearch.Cursor = Cursors.Default;
+			Cursor = Cursors.WaitCursor;
+			btnSearch.Cursor = Cursors.Default;
 			groupBox1.Enabled = false;
 			ckbObjdGUID.Enabled =
 				ckbCallsToBHAV.Enabled =
@@ -784,13 +784,13 @@ namespace pjse.guidtool
 				btnClearFilter.Enabled =
 				tbNumber.Enabled =
 				tbName.Enabled =
-				this.btnClose.Enabled =
+				btnClose.Enabled =
 					false;
-			this.btnSearch.Text = Localization.GetString("gt_Stop");
-			this.lbStatus.Visible = this.btclipb.Visible = false;
-			this.progressBar1.Value = 0;
-			this.progressBar1.Visible = true;
-			this.rtbReport.Text = "";
+			btnSearch.Text = Localization.GetString("gt_Stop");
+			lbStatus.Visible = btclipb.Visible = false;
+			progressBar1.Value = 0;
+			progressBar1.Visible = true;
+			rtbReport.Text = "";
 
 			searching = true;
 			matches = 0;
@@ -807,7 +807,7 @@ namespace pjse.guidtool
 
 			searchThread = new Thread(new ParameterizedThreadStart(Search));
 			searchThread.Start(
-				new object[] { type, s, number, this.tbName.Text, gcGroup.Value }
+				new object[] { type, s, number, tbName.Text, gcGroup.Value }
 			);
 		}
 
@@ -819,8 +819,8 @@ namespace pjse.guidtool
 			}
 			else
 			{
-				this.btnSearch.Enabled = false;
-				this.btnSearch.Cursor = Cursors.WaitCursor;
+				btnSearch.Enabled = false;
+				btnSearch.Cursor = Cursors.WaitCursor;
 				searching = false;
 			}
 		}
@@ -834,7 +834,7 @@ namespace pjse.guidtool
 			}
 
 			searchThread = null;
-			this.Cursor = this.btnSearch.Cursor = Cursors.Default;
+			Cursor = btnSearch.Cursor = Cursors.Default;
 			ckbObjdGUID.Enabled =
 				ckbCallsToBHAV.Enabled =
 				ckbFromBHAV.Enabled =
@@ -846,26 +846,26 @@ namespace pjse.guidtool
 				btnClearFilter.Enabled =
 				tbNumber.Enabled =
 				tbName.Enabled =
-				this.btnClose.Enabled =
-				this.btnSearch.Enabled =
+				btnClose.Enabled =
+				btnSearch.Enabled =
 					true;
 			groupBox1.Enabled = true;
-			this.btnSearch.Text = oldText;
-			this.progressBar1.Value = 0;
-			this.progressBar1.Visible = false;
-			this.lbStatus.Visible = true;
+			btnSearch.Text = oldText;
+			progressBar1.Value = 0;
+			progressBar1.Visible = false;
+			lbStatus.Visible = true;
 			if (matches > 0)
 			{
-				this.lbStatus.Text =
+				lbStatus.Text =
 					Localization.GetString("gt_MatchesFound")
 					+ ": "
 					+ matches.ToString();
-				this.btclipb.Visible = true;
+				btclipb.Visible = true;
 			}
 			else
 			{
-				this.lbStatus.Text = Localization.GetString("gt_NoMatchesFound");
-				this.btclipb.Visible = false;
+				lbStatus.Text = Localization.GetString("gt_NoMatchesFound");
+				btclipb.Visible = false;
 			}
 		}
 
@@ -900,359 +900,359 @@ namespace pjse.guidtool
 		{
 			ComponentResourceManager resources =
 				new ComponentResourceManager(typeof(GUIDForm));
-			this.progressBar1 = new ExtProgressBar();
-			this.lbStatus = new Label();
-			this.rtbReport = new RichTextBox();
-			this.lbNumber = new Label();
-			this.tbNumber = new TextBox();
-			this.lbName = new Label();
-			this.tbName = new TextBox();
-			this.gcGroup = new SimPe.Plugin.GUIDChooser();
-			this.ckbSGSearch = new CheckBox();
-			this.btnClearFilter = new Button();
-			this.btnSearch = new Button();
-			this.btnClose = new Button();
-			this.groupBox1 = new GroupBox();
-			this.label2 = new Label();
-			this.ckbObjdName = new CheckBox();
-			this.ckbGLOB = new CheckBox();
-			this.ckbSTR = new CheckBox();
-			this.ckbObjdGUID = new CheckBox();
-			this.ckbCallsToBHAV = new CheckBox();
-			this.ckbCTSS = new CheckBox();
-			this.ckbNrefName = new CheckBox();
-			this.label1 = new Label();
-			this.ckbTTAs = new CheckBox();
-			this.ckbFromTtab = new CheckBox();
-			this.ckbBhavName = new CheckBox();
-			this.ckbDefLang = new CheckBox();
-			this.ckbFromObjf = new CheckBox();
-			this.ckbFromBHAV = new CheckBox();
-			this.ckbBconName = new CheckBox();
-			this.groupBox2 = new GroupBox();
-			this.rb1default = new RadioButton();
-			this.rb1CPOnly = new RadioButton();
-			this.btnHelp = new Button();
-			this.pnFixer = new Panel();
-			this.btclipb = new Button();
-			this.groupBox1.SuspendLayout();
-			this.groupBox2.SuspendLayout();
-			this.pnFixer.SuspendLayout();
-			this.SuspendLayout();
+			progressBar1 = new ExtProgressBar();
+			lbStatus = new Label();
+			rtbReport = new RichTextBox();
+			lbNumber = new Label();
+			tbNumber = new TextBox();
+			lbName = new Label();
+			tbName = new TextBox();
+			gcGroup = new SimPe.Plugin.GUIDChooser();
+			ckbSGSearch = new CheckBox();
+			btnClearFilter = new Button();
+			btnSearch = new Button();
+			btnClose = new Button();
+			groupBox1 = new GroupBox();
+			label2 = new Label();
+			ckbObjdName = new CheckBox();
+			ckbGLOB = new CheckBox();
+			ckbSTR = new CheckBox();
+			ckbObjdGUID = new CheckBox();
+			ckbCallsToBHAV = new CheckBox();
+			ckbCTSS = new CheckBox();
+			ckbNrefName = new CheckBox();
+			label1 = new Label();
+			ckbTTAs = new CheckBox();
+			ckbFromTtab = new CheckBox();
+			ckbBhavName = new CheckBox();
+			ckbDefLang = new CheckBox();
+			ckbFromObjf = new CheckBox();
+			ckbFromBHAV = new CheckBox();
+			ckbBconName = new CheckBox();
+			groupBox2 = new GroupBox();
+			rb1default = new RadioButton();
+			rb1CPOnly = new RadioButton();
+			btnHelp = new Button();
+			pnFixer = new Panel();
+			btclipb = new Button();
+			groupBox1.SuspendLayout();
+			groupBox2.SuspendLayout();
+			pnFixer.SuspendLayout();
+			SuspendLayout();
 			//
 			// progressBar1
 			//
-			resources.ApplyResources(this.progressBar1, "progressBar1");
-			this.progressBar1.BackColor = System.Drawing.Color.Transparent;
-			this.progressBar1.BorderColor = System.Drawing.Color.Black;
-			this.progressBar1.Gradient = System
+			resources.ApplyResources(progressBar1, "progressBar1");
+			progressBar1.BackColor = System.Drawing.Color.Transparent;
+			progressBar1.BorderColor = System.Drawing.Color.Black;
+			progressBar1.Gradient = System
 				.Drawing
 				.Drawing2D
 				.LinearGradientMode
 				.Vertical;
-			this.progressBar1.Maximum = 100;
-			this.progressBar1.Minimum = 0;
-			this.progressBar1.Name = "progressBar1";
-			this.progressBar1.Quality = true;
-			this.progressBar1.TokenCount = 34;
-			this.progressBar1.UnselectedColor = System.Drawing.Color.Black;
-			this.progressBar1.UseTokenBuffer = false;
-			this.progressBar1.Value = 0;
-			this.progressBar1.Visible = false;
+			progressBar1.Maximum = 100;
+			progressBar1.Minimum = 0;
+			progressBar1.Name = "progressBar1";
+			progressBar1.Quality = true;
+			progressBar1.TokenCount = 34;
+			progressBar1.UnselectedColor = System.Drawing.Color.Black;
+			progressBar1.UseTokenBuffer = false;
+			progressBar1.Value = 0;
+			progressBar1.Visible = false;
 			//
 			// lbStatus
 			//
-			resources.ApplyResources(this.lbStatus, "lbStatus");
-			this.lbStatus.BackColor = System.Drawing.Color.Transparent;
-			this.lbStatus.Name = "lbStatus";
+			resources.ApplyResources(lbStatus, "lbStatus");
+			lbStatus.BackColor = System.Drawing.Color.Transparent;
+			lbStatus.Name = "lbStatus";
 			//
 			// rtbReport
 			//
-			resources.ApplyResources(this.rtbReport, "rtbReport");
-			this.rtbReport.BackColor = System.Drawing.SystemColors.Window;
-			this.rtbReport.DetectUrls = false;
-			this.rtbReport.Name = "rtbReport";
-			this.rtbReport.ReadOnly = true;
-			this.rtbReport.ShowSelectionMargin = true;
+			resources.ApplyResources(rtbReport, "rtbReport");
+			rtbReport.BackColor = System.Drawing.SystemColors.Window;
+			rtbReport.DetectUrls = false;
+			rtbReport.Name = "rtbReport";
+			rtbReport.ReadOnly = true;
+			rtbReport.ShowSelectionMargin = true;
 			//
 			// lbNumber
 			//
-			resources.ApplyResources(this.lbNumber, "lbNumber");
-			this.lbNumber.Name = "lbNumber";
+			resources.ApplyResources(lbNumber, "lbNumber");
+			lbNumber.Name = "lbNumber";
 			//
 			// tbNumber
 			//
-			resources.ApplyResources(this.tbNumber, "tbNumber");
-			this.tbNumber.Name = "tbNumber";
+			resources.ApplyResources(tbNumber, "tbNumber");
+			tbNumber.Name = "tbNumber";
 			//
 			// lbName
 			//
-			resources.ApplyResources(this.lbName, "lbName");
-			this.lbName.Name = "lbName";
+			resources.ApplyResources(lbName, "lbName");
+			lbName.Name = "lbName";
 			//
 			// tbName
 			//
-			resources.ApplyResources(this.tbName, "tbName");
-			this.tbName.Name = "tbName";
+			resources.ApplyResources(tbName, "tbName");
+			tbName.Name = "tbName";
 			//
 			// gcGroup
 			//
-			resources.ApplyResources(this.gcGroup, "gcGroup");
-			this.gcGroup.BackColor = System.Drawing.Color.Transparent;
-			this.gcGroup.ComboBoxWidth = 420;
-			this.gcGroup.DropDownHeight = 250;
-			this.gcGroup.DropDownStyle = ComboBoxStyle.DropDown;
-			this.gcGroup.DropDownWidth = 420;
-			this.gcGroup.Label = "Group Filter:";
-			this.gcGroup.MaximumSize = new System.Drawing.Size(587, 23);
-			this.gcGroup.Name = "gcGroup";
-			this.gcGroup.Value = ((uint)(0u));
+			resources.ApplyResources(gcGroup, "gcGroup");
+			gcGroup.BackColor = System.Drawing.Color.Transparent;
+			gcGroup.ComboBoxWidth = 420;
+			gcGroup.DropDownHeight = 250;
+			gcGroup.DropDownStyle = ComboBoxStyle.DropDown;
+			gcGroup.DropDownWidth = 420;
+			gcGroup.Label = "Group Filter:";
+			gcGroup.MaximumSize = new System.Drawing.Size(587, 23);
+			gcGroup.Name = "gcGroup";
+			gcGroup.Value = ((uint)(0u));
 			//
 			// ckbSGSearch
 			//
-			resources.ApplyResources(this.ckbSGSearch, "ckbSGSearch");
-			this.ckbSGSearch.BackColor = System.Drawing.Color.Transparent;
-			this.ckbSGSearch.Name = "ckbSGSearch";
-			this.ckbSGSearch.UseVisualStyleBackColor = false;
+			resources.ApplyResources(ckbSGSearch, "ckbSGSearch");
+			ckbSGSearch.BackColor = System.Drawing.Color.Transparent;
+			ckbSGSearch.Name = "ckbSGSearch";
+			ckbSGSearch.UseVisualStyleBackColor = false;
 			//
 			// btnClearFilter
 			//
-			resources.ApplyResources(this.btnClearFilter, "btnClearFilter");
-			this.btnClearFilter.BackColor = System.Drawing.Color.Transparent;
-			this.btnClearFilter.Name = "btnClearFilter";
-			this.btnClearFilter.UseVisualStyleBackColor = false;
-			this.btnClearFilter.Click += new EventHandler(
-				this.btnClearFilter_Click
+			resources.ApplyResources(btnClearFilter, "btnClearFilter");
+			btnClearFilter.BackColor = System.Drawing.Color.Transparent;
+			btnClearFilter.Name = "btnClearFilter";
+			btnClearFilter.UseVisualStyleBackColor = false;
+			btnClearFilter.Click += new EventHandler(
+				btnClearFilter_Click
 			);
 			//
 			// btnSearch
 			//
-			resources.ApplyResources(this.btnSearch, "btnSearch");
-			this.btnSearch.BackColor = System.Drawing.Color.Transparent;
-			this.btnSearch.Name = "btnSearch";
-			this.btnSearch.UseVisualStyleBackColor = false;
-			this.btnSearch.Click += new EventHandler(this.btnSearch_Click);
+			resources.ApplyResources(btnSearch, "btnSearch");
+			btnSearch.BackColor = System.Drawing.Color.Transparent;
+			btnSearch.Name = "btnSearch";
+			btnSearch.UseVisualStyleBackColor = false;
+			btnSearch.Click += new EventHandler(btnSearch_Click);
 			//
 			// btnClose
 			//
-			resources.ApplyResources(this.btnClose, "btnClose");
-			this.btnClose.BackColor = System.Drawing.Color.Transparent;
-			this.btnClose.DialogResult = DialogResult.OK;
-			this.btnClose.Name = "btnClose";
-			this.btnClose.UseVisualStyleBackColor = false;
-			this.btnClose.Click += new EventHandler(this.btnClose_Click);
+			resources.ApplyResources(btnClose, "btnClose");
+			btnClose.BackColor = System.Drawing.Color.Transparent;
+			btnClose.DialogResult = DialogResult.OK;
+			btnClose.Name = "btnClose";
+			btnClose.UseVisualStyleBackColor = false;
+			btnClose.Click += new EventHandler(btnClose_Click);
 			//
 			// groupBox1
 			//
-			resources.ApplyResources(this.groupBox1, "groupBox1");
-			this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-			this.groupBox1.Controls.Add(this.label2);
-			this.groupBox1.Controls.Add(this.ckbObjdName);
-			this.groupBox1.Controls.Add(this.ckbGLOB);
-			this.groupBox1.Controls.Add(this.ckbSTR);
-			this.groupBox1.Controls.Add(this.ckbObjdGUID);
-			this.groupBox1.Controls.Add(this.ckbCallsToBHAV);
-			this.groupBox1.Controls.Add(this.ckbCTSS);
-			this.groupBox1.Controls.Add(this.ckbNrefName);
-			this.groupBox1.Controls.Add(this.label1);
-			this.groupBox1.Controls.Add(this.ckbTTAs);
-			this.groupBox1.Controls.Add(this.ckbFromTtab);
-			this.groupBox1.Controls.Add(this.ckbBhavName);
-			this.groupBox1.Controls.Add(this.ckbDefLang);
-			this.groupBox1.Controls.Add(this.ckbFromObjf);
-			this.groupBox1.Controls.Add(this.ckbFromBHAV);
-			this.groupBox1.Controls.Add(this.ckbBconName);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.TabStop = false;
+			resources.ApplyResources(groupBox1, "groupBox1");
+			groupBox1.BackColor = System.Drawing.Color.Transparent;
+			groupBox1.Controls.Add(label2);
+			groupBox1.Controls.Add(ckbObjdName);
+			groupBox1.Controls.Add(ckbGLOB);
+			groupBox1.Controls.Add(ckbSTR);
+			groupBox1.Controls.Add(ckbObjdGUID);
+			groupBox1.Controls.Add(ckbCallsToBHAV);
+			groupBox1.Controls.Add(ckbCTSS);
+			groupBox1.Controls.Add(ckbNrefName);
+			groupBox1.Controls.Add(label1);
+			groupBox1.Controls.Add(ckbTTAs);
+			groupBox1.Controls.Add(ckbFromTtab);
+			groupBox1.Controls.Add(ckbBhavName);
+			groupBox1.Controls.Add(ckbDefLang);
+			groupBox1.Controls.Add(ckbFromObjf);
+			groupBox1.Controls.Add(ckbFromBHAV);
+			groupBox1.Controls.Add(ckbBconName);
+			groupBox1.Name = "groupBox1";
+			groupBox1.TabStop = false;
 			//
 			// label2
 			//
-			resources.ApplyResources(this.label2, "label2");
-			this.label2.Name = "label2";
+			resources.ApplyResources(label2, "label2");
+			label2.Name = "label2";
 			//
 			// ckbObjdName
 			//
-			resources.ApplyResources(this.ckbObjdName, "ckbObjdName");
-			this.ckbObjdName.Name = "ckbObjdName";
-			this.ckbObjdName.CheckedChanged += new EventHandler(
-				this.ckbSomeName_CheckedChanged
+			resources.ApplyResources(ckbObjdName, "ckbObjdName");
+			ckbObjdName.Name = "ckbObjdName";
+			ckbObjdName.CheckedChanged += new EventHandler(
+				ckbSomeName_CheckedChanged
 			);
 			//
 			// ckbGLOB
 			//
-			resources.ApplyResources(this.ckbGLOB, "ckbGLOB");
-			this.ckbGLOB.Name = "ckbGLOB";
-			this.ckbGLOB.CheckedChanged += new EventHandler(
-				this.ckbGLOB_CheckedChanged
+			resources.ApplyResources(ckbGLOB, "ckbGLOB");
+			ckbGLOB.Name = "ckbGLOB";
+			ckbGLOB.CheckedChanged += new EventHandler(
+				ckbGLOB_CheckedChanged
 			);
 			//
 			// ckbSTR
 			//
-			resources.ApplyResources(this.ckbSTR, "ckbSTR");
-			this.ckbSTR.Name = "ckbSTR";
-			this.ckbSTR.UseVisualStyleBackColor = true;
-			this.ckbSTR.CheckedChanged += new EventHandler(
-				this.ckbSomeName_CheckedChanged
+			resources.ApplyResources(ckbSTR, "ckbSTR");
+			ckbSTR.Name = "ckbSTR";
+			ckbSTR.UseVisualStyleBackColor = true;
+			ckbSTR.CheckedChanged += new EventHandler(
+				ckbSomeName_CheckedChanged
 			);
 			//
 			// ckbObjdGUID
 			//
-			resources.ApplyResources(this.ckbObjdGUID, "ckbObjdGUID");
-			this.ckbObjdGUID.Name = "ckbObjdGUID";
-			this.ckbObjdGUID.CheckedChanged += new EventHandler(
-				this.ckbObjdGUID_CheckedChanged
+			resources.ApplyResources(ckbObjdGUID, "ckbObjdGUID");
+			ckbObjdGUID.Name = "ckbObjdGUID";
+			ckbObjdGUID.CheckedChanged += new EventHandler(
+				ckbObjdGUID_CheckedChanged
 			);
 			//
 			// ckbCallsToBHAV
 			//
-			resources.ApplyResources(this.ckbCallsToBHAV, "ckbCallsToBHAV");
-			this.ckbCallsToBHAV.Name = "ckbCallsToBHAV";
-			this.ckbCallsToBHAV.UseVisualStyleBackColor = true;
-			this.ckbCallsToBHAV.CheckedChanged += new EventHandler(
-				this.ckbCallsToBHAV_CheckedChanged
+			resources.ApplyResources(ckbCallsToBHAV, "ckbCallsToBHAV");
+			ckbCallsToBHAV.Name = "ckbCallsToBHAV";
+			ckbCallsToBHAV.UseVisualStyleBackColor = true;
+			ckbCallsToBHAV.CheckedChanged += new EventHandler(
+				ckbCallsToBHAV_CheckedChanged
 			);
 			//
 			// ckbCTSS
 			//
-			resources.ApplyResources(this.ckbCTSS, "ckbCTSS");
-			this.ckbCTSS.Name = "ckbCTSS";
-			this.ckbCTSS.UseVisualStyleBackColor = true;
-			this.ckbCTSS.CheckedChanged += new EventHandler(
-				this.ckbSomeName_CheckedChanged
+			resources.ApplyResources(ckbCTSS, "ckbCTSS");
+			ckbCTSS.Name = "ckbCTSS";
+			ckbCTSS.UseVisualStyleBackColor = true;
+			ckbCTSS.CheckedChanged += new EventHandler(
+				ckbSomeName_CheckedChanged
 			);
 			//
 			// ckbNrefName
 			//
-			resources.ApplyResources(this.ckbNrefName, "ckbNrefName");
-			this.ckbNrefName.Name = "ckbNrefName";
-			this.ckbNrefName.CheckedChanged += new EventHandler(
-				this.ckbSomeName_CheckedChanged
+			resources.ApplyResources(ckbNrefName, "ckbNrefName");
+			ckbNrefName.Name = "ckbNrefName";
+			ckbNrefName.CheckedChanged += new EventHandler(
+				ckbSomeName_CheckedChanged
 			);
 			//
 			// label1
 			//
-			resources.ApplyResources(this.label1, "label1");
-			this.label1.Name = "label1";
+			resources.ApplyResources(label1, "label1");
+			label1.Name = "label1";
 			//
 			// ckbTTAs
 			//
-			resources.ApplyResources(this.ckbTTAs, "ckbTTAs");
-			this.ckbTTAs.Name = "ckbTTAs";
-			this.ckbTTAs.UseVisualStyleBackColor = true;
-			this.ckbTTAs.CheckedChanged += new EventHandler(
-				this.ckbSomeName_CheckedChanged
+			resources.ApplyResources(ckbTTAs, "ckbTTAs");
+			ckbTTAs.Name = "ckbTTAs";
+			ckbTTAs.UseVisualStyleBackColor = true;
+			ckbTTAs.CheckedChanged += new EventHandler(
+				ckbSomeName_CheckedChanged
 			);
 			//
 			// ckbFromTtab
 			//
-			resources.ApplyResources(this.ckbFromTtab, "ckbFromTtab");
-			this.ckbFromTtab.Name = "ckbFromTtab";
+			resources.ApplyResources(ckbFromTtab, "ckbFromTtab");
+			ckbFromTtab.Name = "ckbFromTtab";
 			//
 			// ckbBhavName
 			//
-			resources.ApplyResources(this.ckbBhavName, "ckbBhavName");
-			this.ckbBhavName.Name = "ckbBhavName";
-			this.ckbBhavName.CheckedChanged += new EventHandler(
-				this.ckbSomeName_CheckedChanged
+			resources.ApplyResources(ckbBhavName, "ckbBhavName");
+			ckbBhavName.Name = "ckbBhavName";
+			ckbBhavName.CheckedChanged += new EventHandler(
+				ckbSomeName_CheckedChanged
 			);
 			//
 			// ckbDefLang
 			//
-			resources.ApplyResources(this.ckbDefLang, "ckbDefLang");
-			this.ckbDefLang.Name = "ckbDefLang";
-			this.ckbDefLang.UseVisualStyleBackColor = true;
+			resources.ApplyResources(ckbDefLang, "ckbDefLang");
+			ckbDefLang.Name = "ckbDefLang";
+			ckbDefLang.UseVisualStyleBackColor = true;
 			//
 			// ckbFromObjf
 			//
-			resources.ApplyResources(this.ckbFromObjf, "ckbFromObjf");
-			this.ckbFromObjf.Name = "ckbFromObjf";
+			resources.ApplyResources(ckbFromObjf, "ckbFromObjf");
+			ckbFromObjf.Name = "ckbFromObjf";
 			//
 			// ckbFromBHAV
 			//
-			resources.ApplyResources(this.ckbFromBHAV, "ckbFromBHAV");
-			this.ckbFromBHAV.Name = "ckbFromBHAV";
+			resources.ApplyResources(ckbFromBHAV, "ckbFromBHAV");
+			ckbFromBHAV.Name = "ckbFromBHAV";
 			//
 			// ckbBconName
 			//
-			resources.ApplyResources(this.ckbBconName, "ckbBconName");
-			this.ckbBconName.Name = "ckbBconName";
-			this.ckbBconName.CheckedChanged += new EventHandler(
-				this.ckbSomeName_CheckedChanged
+			resources.ApplyResources(ckbBconName, "ckbBconName");
+			ckbBconName.Name = "ckbBconName";
+			ckbBconName.CheckedChanged += new EventHandler(
+				ckbSomeName_CheckedChanged
 			);
 			//
 			// groupBox2
 			//
-			resources.ApplyResources(this.groupBox2, "groupBox2");
-			this.groupBox2.BackColor = System.Drawing.Color.Transparent;
-			this.groupBox2.Controls.Add(this.rb1default);
-			this.groupBox2.Controls.Add(this.rb1CPOnly);
-			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.TabStop = false;
+			resources.ApplyResources(groupBox2, "groupBox2");
+			groupBox2.BackColor = System.Drawing.Color.Transparent;
+			groupBox2.Controls.Add(rb1default);
+			groupBox2.Controls.Add(rb1CPOnly);
+			groupBox2.Name = "groupBox2";
+			groupBox2.TabStop = false;
 			//
 			// rb1default
 			//
-			resources.ApplyResources(this.rb1default, "rb1default");
-			this.rb1default.Checked = true;
-			this.rb1default.Name = "rb1default";
-			this.rb1default.TabStop = true;
+			resources.ApplyResources(rb1default, "rb1default");
+			rb1default.Checked = true;
+			rb1default.Name = "rb1default";
+			rb1default.TabStop = true;
 			//
 			// rb1CPOnly
 			//
-			resources.ApplyResources(this.rb1CPOnly, "rb1CPOnly");
-			this.rb1CPOnly.Name = "rb1CPOnly";
+			resources.ApplyResources(rb1CPOnly, "rb1CPOnly");
+			rb1CPOnly.Name = "rb1CPOnly";
 			//
 			// btnHelp
 			//
-			resources.ApplyResources(this.btnHelp, "btnHelp");
-			this.btnHelp.BackColor = System.Drawing.Color.Transparent;
-			this.btnHelp.Name = "btnHelp";
-			this.btnHelp.UseVisualStyleBackColor = false;
-			this.btnHelp.Click += new EventHandler(this.btnHelp_Click);
+			resources.ApplyResources(btnHelp, "btnHelp");
+			btnHelp.BackColor = System.Drawing.Color.Transparent;
+			btnHelp.Name = "btnHelp";
+			btnHelp.UseVisualStyleBackColor = false;
+			btnHelp.Click += new EventHandler(btnHelp_Click);
 
-			this.Controls.Add(this.btclipb);
-			this.Controls.Add(this.pnFixer);
-			this.Controls.Add(this.tbName);
-			this.Controls.Add(this.lbNumber);
-			this.Controls.Add(this.lbName);
-			this.Controls.Add(this.btnClearFilter);
-			this.Controls.Add(this.ckbSGSearch);
-			this.Controls.Add(this.tbNumber);
-			this.Controls.Add(this.groupBox1);
-			this.Controls.Add(this.btnHelp);
-			this.Controls.Add(this.btnSearch);
-			this.Controls.Add(this.btnClose);
-			this.Controls.Add(this.lbStatus);
-			this.Controls.Add(this.progressBar1);
-			this.Controls.Add(this.rtbReport);
-			this.Controls.Add(this.groupBox2);
+			Controls.Add(btclipb);
+			Controls.Add(pnFixer);
+			Controls.Add(tbName);
+			Controls.Add(lbNumber);
+			Controls.Add(lbName);
+			Controls.Add(btnClearFilter);
+			Controls.Add(ckbSGSearch);
+			Controls.Add(tbNumber);
+			Controls.Add(groupBox1);
+			Controls.Add(btnHelp);
+			Controls.Add(btnSearch);
+			Controls.Add(btnClose);
+			Controls.Add(lbStatus);
+			Controls.Add(progressBar1);
+			Controls.Add(rtbReport);
+			Controls.Add(groupBox2);
 			//
 			// pnFixer
 			//
-			this.pnFixer.Controls.Add(this.gcGroup);
-			resources.ApplyResources(this.pnFixer, "pnFixer");
-			this.pnFixer.Name = "pnFixer";
+			pnFixer.Controls.Add(gcGroup);
+			resources.ApplyResources(pnFixer, "pnFixer");
+			pnFixer.Name = "pnFixer";
 			//
 			// btclipb
 			//
-			resources.ApplyResources(this.btclipb, "btclipb");
-			this.btclipb.Name = "btclipb";
-			this.btclipb.UseVisualStyleBackColor = true;
-			this.btclipb.Click += new EventHandler(this.btclipb_Click);
+			resources.ApplyResources(btclipb, "btclipb");
+			btclipb.Name = "btclipb";
+			btclipb.UseVisualStyleBackColor = true;
+			btclipb.Click += new EventHandler(btclipb_Click);
 			//
 			// GUIDForm
 			//
-			this.AcceptButton = this.btnSearch;
+			AcceptButton = btnSearch;
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = AutoScaleMode.Font;
-			this.CancelButton = this.btnClose;
-			this.Name = "GUIDForm";
-			this.groupBox1.ResumeLayout(false);
-			this.groupBox1.PerformLayout();
-			this.groupBox2.ResumeLayout(false);
-			this.groupBox2.PerformLayout();
-			this.pnFixer.ResumeLayout(false);
-			this.pnFixer.PerformLayout();
-			this.ResumeLayout(false);
+			AutoScaleMode = AutoScaleMode.Font;
+			CancelButton = btnClose;
+			Name = "GUIDForm";
+			groupBox1.ResumeLayout(false);
+			groupBox1.PerformLayout();
+			groupBox2.ResumeLayout(false);
+			groupBox2.PerformLayout();
+			pnFixer.ResumeLayout(false);
+			pnFixer.PerformLayout();
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -1462,7 +1462,7 @@ namespace pjse.guidtool
 		private void btclipb_Click(object sender, EventArgs e)
 		{
 			string text = "";
-			foreach (string clit in this.rtbReport.Lines)
+			foreach (string clit in rtbReport.Lines)
 			{
 				text += clit + "\r\n";
 			}

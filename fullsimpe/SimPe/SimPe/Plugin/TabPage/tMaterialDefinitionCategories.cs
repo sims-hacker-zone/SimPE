@@ -51,7 +51,7 @@ namespace SimPe.Plugin.TabPage
 			//
 			InitializeComponent();
 
-			this.UseVisualStyleBackColor = true;
+			UseVisualStyleBackColor = true;
 		}
 
 		/// <summary>
@@ -77,22 +77,22 @@ namespace SimPe.Plugin.TabPage
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.pg = new PropertyGrid();
-			this.SuspendLayout();
+			pg = new PropertyGrid();
+			SuspendLayout();
 			//
 			// tMaterialDefinitionCategories
 			//
-			this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-			this.Controls.Add(this.pg);
-			this.Location = new System.Drawing.Point(4, 22);
-			this.Name = "tMaterialDefinitionCategories";
-			this.Size = new System.Drawing.Size(744, 238);
-			this.TabIndex = 3;
-			this.Text = "Categorized Properties";
+			BackColor = System.Drawing.SystemColors.ControlLightLight;
+			Controls.Add(pg);
+			Location = new System.Drawing.Point(4, 22);
+			Name = "tMaterialDefinitionCategories";
+			Size = new System.Drawing.Size(744, 238);
+			TabIndex = 3;
+			Text = "Categorized Properties";
 			//
 			// pg
 			//
-			this.pg.Anchor = (
+			pg.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -104,27 +104,27 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.pg.CommandsBackColor = System.Drawing.SystemColors.ControlLightLight;
-			this.pg.CommandsVisibleIfAvailable = true;
-			this.pg.HelpVisible = false;
-			this.pg.LargeButtons = false;
-			this.pg.LineColor = System.Drawing.SystemColors.ScrollBar;
-			this.pg.Location = new System.Drawing.Point(8, 8);
-			this.pg.Name = "pg";
-			this.pg.Size = new System.Drawing.Size(728, 224);
-			this.pg.TabIndex = 0;
-			this.pg.Text = "MaterialDefinition Properties";
-			this.pg.ToolbarVisible = false;
-			this.pg.ViewBackColor = System.Drawing.SystemColors.Window;
-			this.pg.ViewForeColor = System.Drawing.SystemColors.WindowText;
-			this.pg.PropertyValueChanged +=
+			pg.CommandsBackColor = System.Drawing.SystemColors.ControlLightLight;
+			pg.CommandsVisibleIfAvailable = true;
+			pg.HelpVisible = false;
+			pg.LargeButtons = false;
+			pg.LineColor = System.Drawing.SystemColors.ScrollBar;
+			pg.Location = new System.Drawing.Point(8, 8);
+			pg.Name = "pg";
+			pg.Size = new System.Drawing.Size(728, 224);
+			pg.TabIndex = 0;
+			pg.Text = "MaterialDefinition Properties";
+			pg.ToolbarVisible = false;
+			pg.ViewBackColor = System.Drawing.SystemColors.Window;
+			pg.ViewForeColor = System.Drawing.SystemColors.WindowText;
+			pg.PropertyValueChanged +=
 				new PropertyValueChangedEventHandler(
-					this.pg_PropertyValueChanged
+					pg_PropertyValueChanged
 				);
 			//
 			// MatdForm
 			//
-			this.ResumeLayout(false);
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -238,7 +238,7 @@ namespace SimPe.Plugin.TabPage
 			PropertyValueChangedEventArgs e
 		)
 		{
-			if (this.Tag == null)
+			if (Tag == null)
 			{
 				return;
 			}
@@ -249,7 +249,7 @@ namespace SimPe.Plugin.TabPage
 			}
 
 			Plugin.MaterialDefinition md = (Plugin.MaterialDefinition)
-				this.Tag;
+				Tag;
 			object o = pob.Properties[e.ChangedItem.Label];
 			if (o is Boolean)
 			{
@@ -272,13 +272,13 @@ namespace SimPe.Plugin.TabPage
 
 		internal void TxmtChangeTab(object sender, EventArgs e)
 		{
-			if (this.Tag == null)
+			if (Tag == null)
 			{
 				return;
 			}
 
 			Plugin.MaterialDefinition md = (Plugin.MaterialDefinition)
-				this.Tag;
+				Tag;
 			if (Parent == null)
 			{
 				return;

@@ -59,9 +59,9 @@ namespace SimPe.Plugin.Anim
 			//
 			InitializeComponent();
 
-			this.cbaction.Items.Add(AnimImporterAction.Nothing);
-			this.cbaction.Items.Add(AnimImporterAction.Add);
-			this.cbaction.Items.Add(AnimImporterAction.Replace);
+			cbaction.Items.Add(AnimImporterAction.Nothing);
+			cbaction.Items.Add(AnimImporterAction.Add);
+			cbaction.Items.Add(AnimImporterAction.Replace);
 		}
 
 		/// <summary>
@@ -90,55 +90,55 @@ namespace SimPe.Plugin.Anim
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(ImportJointAnim)
 				);
-			this.Gradientpanel1 = new Panel();
-			this.gbsettings = new GroupBox();
-			this.cbCorrect = new CheckBox();
-			this.gbgroups = new GroupBox();
-			this.cbRemove = new CheckBox();
-			this.cbDiscard = new CheckBox();
-			this.cbnames = new ComboBox();
-			this.label2 = new Label();
-			this.label3 = new Label();
-			this.lbname = new Label();
-			this.cbaction = new ComboBox();
-			this.button1 = new Button();
-			this.lv = new ListView();
-			this.chName = new ColumnHeader();
-			this.chAction = new ColumnHeader();
-			this.chTarget = new ColumnHeader();
-			this.chCount = new ColumnHeader();
-			this.chDuration = new ColumnHeader();
-			this.chDiscardZero = new ColumnHeader();
-			this.label1 = new Label();
-			this.Gradientpanel1.SuspendLayout();
-			this.gbsettings.SuspendLayout();
-			this.gbgroups.SuspendLayout();
-			this.SuspendLayout();
+			Gradientpanel1 = new Panel();
+			gbsettings = new GroupBox();
+			cbCorrect = new CheckBox();
+			gbgroups = new GroupBox();
+			cbRemove = new CheckBox();
+			cbDiscard = new CheckBox();
+			cbnames = new ComboBox();
+			label2 = new Label();
+			label3 = new Label();
+			lbname = new Label();
+			cbaction = new ComboBox();
+			button1 = new Button();
+			lv = new ListView();
+			chName = new ColumnHeader();
+			chAction = new ColumnHeader();
+			chTarget = new ColumnHeader();
+			chCount = new ColumnHeader();
+			chDuration = new ColumnHeader();
+			chDiscardZero = new ColumnHeader();
+			label1 = new Label();
+			Gradientpanel1.SuspendLayout();
+			gbsettings.SuspendLayout();
+			gbgroups.SuspendLayout();
+			SuspendLayout();
 			//
 			// Gradientpanel1
 			//
-			this.Gradientpanel1.BackColor = System.Drawing.Color.Transparent;
-			this.Gradientpanel1.Controls.Add(this.gbsettings);
-			this.Gradientpanel1.Controls.Add(this.gbgroups);
-			this.Gradientpanel1.Controls.Add(this.button1);
-			this.Gradientpanel1.Controls.Add(this.lv);
-			this.Gradientpanel1.Controls.Add(this.label1);
-			this.Gradientpanel1.Dock = DockStyle.Fill;
-			this.Gradientpanel1.Font = new System.Drawing.Font(
+			Gradientpanel1.BackColor = System.Drawing.Color.Transparent;
+			Gradientpanel1.Controls.Add(gbsettings);
+			Gradientpanel1.Controls.Add(gbgroups);
+			Gradientpanel1.Controls.Add(button1);
+			Gradientpanel1.Controls.Add(lv);
+			Gradientpanel1.Controls.Add(label1);
+			Gradientpanel1.Dock = DockStyle.Fill;
+			Gradientpanel1.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.Gradientpanel1.Location = new System.Drawing.Point(0, 0);
-			this.Gradientpanel1.Name = "Gradientpanel1";
-			this.Gradientpanel1.Size = new System.Drawing.Size(824, 438);
-			this.Gradientpanel1.TabIndex = 13;
+			Gradientpanel1.Location = new System.Drawing.Point(0, 0);
+			Gradientpanel1.Name = "Gradientpanel1";
+			Gradientpanel1.Size = new System.Drawing.Size(824, 438);
+			Gradientpanel1.TabIndex = 13;
 			//
 			// gbsettings
 			//
-			this.gbsettings.Anchor = (
+			gbsettings.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -146,32 +146,32 @@ namespace SimPe.Plugin.Anim
 					)
 				)
 			);
-			this.gbsettings.BackColor = System.Drawing.Color.Transparent;
-			this.gbsettings.Controls.Add(this.cbCorrect);
-			this.gbsettings.Location = new System.Drawing.Point(536, 16);
-			this.gbsettings.Name = "gbsettings";
-			this.gbsettings.Padding = new Padding(4, 44, 4, 4);
-			this.gbsettings.Size = new System.Drawing.Size(280, 72);
-			this.gbsettings.TabIndex = 15;
+			gbsettings.BackColor = System.Drawing.Color.Transparent;
+			gbsettings.Controls.Add(cbCorrect);
+			gbsettings.Location = new System.Drawing.Point(536, 16);
+			gbsettings.Name = "gbsettings";
+			gbsettings.Padding = new Padding(4, 44, 4, 4);
+			gbsettings.Size = new System.Drawing.Size(280, 72);
+			gbsettings.TabIndex = 15;
 			//
 			// cbCorrect
 			//
-			this.cbCorrect.Font = new System.Drawing.Font(
+			cbCorrect.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Italic,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbCorrect.Location = new System.Drawing.Point(16, 40);
-			this.cbCorrect.Name = "cbCorrect";
-			this.cbCorrect.Size = new System.Drawing.Size(256, 24);
-			this.cbCorrect.TabIndex = 0;
-			this.cbCorrect.Text = "auskel Joint correction (by Pinhead)";
+			cbCorrect.Location = new System.Drawing.Point(16, 40);
+			cbCorrect.Name = "cbCorrect";
+			cbCorrect.Size = new System.Drawing.Size(256, 24);
+			cbCorrect.TabIndex = 0;
+			cbCorrect.Text = "auskel Joint correction (by Pinhead)";
 			//
 			// gbgroups
 			//
-			this.gbgroups.Anchor = (
+			gbgroups.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -179,153 +179,153 @@ namespace SimPe.Plugin.Anim
 					)
 				)
 			);
-			this.gbgroups.BackColor = System.Drawing.Color.Transparent;
-			this.gbgroups.Controls.Add(this.cbRemove);
-			this.gbgroups.Controls.Add(this.cbDiscard);
-			this.gbgroups.Controls.Add(this.cbnames);
-			this.gbgroups.Controls.Add(this.label2);
-			this.gbgroups.Controls.Add(this.label3);
-			this.gbgroups.Controls.Add(this.lbname);
-			this.gbgroups.Controls.Add(this.cbaction);
-			this.gbgroups.Enabled = false;
-			this.gbgroups.Location = new System.Drawing.Point(536, 88);
-			this.gbgroups.Name = "gbgroups";
-			this.gbgroups.Padding = new Padding(4, 44, 4, 4);
-			this.gbgroups.Size = new System.Drawing.Size(280, 168);
-			this.gbgroups.TabIndex = 14;
+			gbgroups.BackColor = System.Drawing.Color.Transparent;
+			gbgroups.Controls.Add(cbRemove);
+			gbgroups.Controls.Add(cbDiscard);
+			gbgroups.Controls.Add(cbnames);
+			gbgroups.Controls.Add(label2);
+			gbgroups.Controls.Add(label3);
+			gbgroups.Controls.Add(lbname);
+			gbgroups.Controls.Add(cbaction);
+			gbgroups.Enabled = false;
+			gbgroups.Location = new System.Drawing.Point(536, 88);
+			gbgroups.Name = "gbgroups";
+			gbgroups.Padding = new Padding(4, 44, 4, 4);
+			gbgroups.Size = new System.Drawing.Size(280, 168);
+			gbgroups.TabIndex = 14;
 			//
 			// cbRemove
 			//
-			this.cbRemove.Checked = true;
-			this.cbRemove.CheckState = CheckState.Checked;
-			this.cbRemove.Font = new System.Drawing.Font(
+			cbRemove.Checked = true;
+			cbRemove.CheckState = CheckState.Checked;
+			cbRemove.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Italic,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbRemove.Location = new System.Drawing.Point(112, 84);
-			this.cbRemove.Name = "cbRemove";
-			this.cbRemove.Size = new System.Drawing.Size(160, 24);
-			this.cbRemove.TabIndex = 7;
-			this.cbRemove.Text = "Remove unneeded Frames";
-			this.cbRemove.CheckedChanged += new System.EventHandler(
-				this.cbRemove_CheckedChanged
+			cbRemove.Location = new System.Drawing.Point(112, 84);
+			cbRemove.Name = "cbRemove";
+			cbRemove.Size = new System.Drawing.Size(160, 24);
+			cbRemove.TabIndex = 7;
+			cbRemove.Text = "Remove unneeded Frames";
+			cbRemove.CheckedChanged += new System.EventHandler(
+				cbRemove_CheckedChanged
 			);
 			//
 			// cbDiscard
 			//
-			this.cbDiscard.Checked = true;
-			this.cbDiscard.CheckState = CheckState.Checked;
-			this.cbDiscard.Font = new System.Drawing.Font(
+			cbDiscard.Checked = true;
+			cbDiscard.CheckState = CheckState.Checked;
+			cbDiscard.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Italic,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbDiscard.Location = new System.Drawing.Point(112, 64);
-			this.cbDiscard.Name = "cbDiscard";
-			this.cbDiscard.Size = new System.Drawing.Size(128, 24);
-			this.cbDiscard.TabIndex = 6;
-			this.cbDiscard.Text = "Discard Keyframe 0";
-			this.cbDiscard.CheckedChanged += new System.EventHandler(
-				this.cbDiscard_CheckedChanged
+			cbDiscard.Location = new System.Drawing.Point(112, 64);
+			cbDiscard.Name = "cbDiscard";
+			cbDiscard.Size = new System.Drawing.Size(128, 24);
+			cbDiscard.TabIndex = 6;
+			cbDiscard.Text = "Discard Keyframe 0";
+			cbDiscard.CheckedChanged += new System.EventHandler(
+				cbDiscard_CheckedChanged
 			);
 			//
 			// cbnames
 			//
-			this.cbnames.DropDownStyle =
+			cbnames.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbnames.Font = new System.Drawing.Font(
+			cbnames.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbnames.Location = new System.Drawing.Point(112, 136);
-			this.cbnames.Name = "cbnames";
-			this.cbnames.Size = new System.Drawing.Size(160, 21);
-			this.cbnames.TabIndex = 5;
-			this.cbnames.Visible = false;
-			this.cbnames.SelectedIndexChanged += new System.EventHandler(
-				this.cbnames_SelectedIndexChanged
+			cbnames.Location = new System.Drawing.Point(112, 136);
+			cbnames.Name = "cbnames";
+			cbnames.Size = new System.Drawing.Size(160, 21);
+			cbnames.TabIndex = 5;
+			cbnames.Visible = false;
+			cbnames.SelectedIndexChanged += new System.EventHandler(
+				cbnames_SelectedIndexChanged
 			);
 			//
 			// label2
 			//
-			this.label2.Font = new System.Drawing.Font(
+			label2.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Italic,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label2.Location = new System.Drawing.Point(16, 40);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(88, 23);
-			this.label2.TabIndex = 0;
-			this.label2.Text = "Joint Name:";
-			this.label2.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label2.Location = new System.Drawing.Point(16, 40);
+			label2.Name = "label2";
+			label2.Size = new System.Drawing.Size(88, 23);
+			label2.TabIndex = 0;
+			label2.Text = "Joint Name:";
+			label2.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// label3
 			//
-			this.label3.Font = new System.Drawing.Font(
+			label3.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Italic,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label3.Location = new System.Drawing.Point(16, 112);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(88, 23);
-			this.label3.TabIndex = 1;
-			this.label3.Text = "Action:";
-			this.label3.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label3.Location = new System.Drawing.Point(16, 112);
+			label3.Name = "label3";
+			label3.Size = new System.Drawing.Size(88, 23);
+			label3.TabIndex = 1;
+			label3.Text = "Action:";
+			label3.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// lbname
 			//
-			this.lbname.Font = new System.Drawing.Font(
+			lbname.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lbname.Location = new System.Drawing.Point(112, 40);
-			this.lbname.Name = "lbname";
-			this.lbname.Size = new System.Drawing.Size(160, 23);
-			this.lbname.TabIndex = 2;
-			this.lbname.Text = "---";
-			this.lbname.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+			lbname.Location = new System.Drawing.Point(112, 40);
+			lbname.Name = "lbname";
+			lbname.Size = new System.Drawing.Size(160, 23);
+			lbname.TabIndex = 2;
+			lbname.Text = "---";
+			lbname.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
 			//
 			// cbaction
 			//
-			this.cbaction.DropDownStyle =
+			cbaction.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbaction.Font = new System.Drawing.Font(
+			cbaction.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbaction.Location = new System.Drawing.Point(112, 112);
-			this.cbaction.Name = "cbaction";
-			this.cbaction.Size = new System.Drawing.Size(160, 21);
-			this.cbaction.TabIndex = 3;
-			this.cbaction.SelectedIndexChanged += new System.EventHandler(
-				this.cbaction_SelectedIndexChanged
+			cbaction.Location = new System.Drawing.Point(112, 112);
+			cbaction.Name = "cbaction";
+			cbaction.Size = new System.Drawing.Size(160, 21);
+			cbaction.TabIndex = 3;
+			cbaction.SelectedIndexChanged += new System.EventHandler(
+				cbaction_SelectedIndexChanged
 			);
 			//
 			// button1
 			//
-			this.button1.Anchor = (
+			button1.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -333,24 +333,24 @@ namespace SimPe.Plugin.Anim
 					)
 				)
 			);
-			this.button1.FlatStyle = FlatStyle.System;
-			this.button1.Font = new System.Drawing.Font(
+			button1.FlatStyle = FlatStyle.System;
+			button1.Font = new System.Drawing.Font(
 				"Verdana",
 				9.75F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.button1.Location = new System.Drawing.Point(739, 406);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(80, 27);
-			this.button1.TabIndex = 3;
-			this.button1.Text = "OK";
-			this.button1.Click += new System.EventHandler(this.button1_Click);
+			button1.Location = new System.Drawing.Point(739, 406);
+			button1.Name = "button1";
+			button1.Size = new System.Drawing.Size(80, 27);
+			button1.TabIndex = 3;
+			button1.Text = "OK";
+			button1.Click += new System.EventHandler(button1_Click);
 			//
 			// lv
 			//
-			this.lv.Anchor = (
+			lv.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -362,96 +362,96 @@ namespace SimPe.Plugin.Anim
 					)
 				)
 			);
-			this.lv.BorderStyle = BorderStyle.None;
-			this.lv.Columns.AddRange(
+			lv.BorderStyle = BorderStyle.None;
+			lv.Columns.AddRange(
 				new ColumnHeader[]
 				{
-					this.chName,
-					this.chAction,
-					this.chTarget,
-					this.chCount,
-					this.chDuration,
-					this.chDiscardZero,
+					chName,
+					chAction,
+					chTarget,
+					chCount,
+					chDuration,
+					chDiscardZero,
 				}
 			);
-			this.lv.FullRowSelect = true;
-			this.lv.HeaderStyle = ColumnHeaderStyle.Nonclickable;
-			this.lv.HideSelection = false;
-			this.lv.Location = new System.Drawing.Point(8, 32);
-			this.lv.Name = "lv";
-			this.lv.Size = new System.Drawing.Size(520, 400);
-			this.lv.TabIndex = 0;
-			this.lv.UseCompatibleStateImageBehavior = false;
-			this.lv.View = View.Details;
-			this.lv.SelectedIndexChanged += new System.EventHandler(
-				this.lv_SelectedIndexChanged
+			lv.FullRowSelect = true;
+			lv.HeaderStyle = ColumnHeaderStyle.Nonclickable;
+			lv.HideSelection = false;
+			lv.Location = new System.Drawing.Point(8, 32);
+			lv.Name = "lv";
+			lv.Size = new System.Drawing.Size(520, 400);
+			lv.TabIndex = 0;
+			lv.UseCompatibleStateImageBehavior = false;
+			lv.View = View.Details;
+			lv.SelectedIndexChanged += new System.EventHandler(
+				lv_SelectedIndexChanged
 			);
 			//
 			// chName
 			//
-			this.chName.Text = "Name";
-			this.chName.Width = 150;
+			chName.Text = "Name";
+			chName.Width = 150;
 			//
 			// chAction
 			//
-			this.chAction.Text = "Action";
-			this.chAction.Width = 69;
+			chAction.Text = "Action";
+			chAction.Width = 69;
 			//
 			// chTarget
 			//
-			this.chTarget.Text = "Target";
-			this.chTarget.Width = 118;
+			chTarget.Text = "Target";
+			chTarget.Width = 118;
 			//
 			// chCount
 			//
-			this.chCount.Text = "Frames";
-			this.chCount.TextAlign = HorizontalAlignment.Right;
+			chCount.Text = "Frames";
+			chCount.TextAlign = HorizontalAlignment.Right;
 			//
 			// chDuration
 			//
-			this.chDuration.Text = "Duration";
-			this.chDuration.Width = 66;
+			chDuration.Text = "Duration";
+			chDuration.Width = 66;
 			//
 			// chDiscardZero
 			//
-			this.chDiscardZero.Text = "Zero";
-			this.chDiscardZero.Width = 50;
+			chDiscardZero.Text = "Zero";
+			chDiscardZero.Width = 50;
 			//
 			// label1
 			//
-			this.label1.BackColor = System.Drawing.Color.Transparent;
-			this.label1.Font = new System.Drawing.Font(
+			label1.BackColor = System.Drawing.Color.Transparent;
+			label1.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label1.Location = new System.Drawing.Point(8, 16);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(176, 23);
-			this.label1.TabIndex = 1;
-			this.label1.Text = "Importable Joints:";
+			label1.Location = new System.Drawing.Point(8, 16);
+			label1.Name = "label1";
+			label1.Size = new System.Drawing.Size(176, 23);
+			label1.TabIndex = 1;
+			label1.Text = "Importable Joints:";
 			//
 			// ImportJointAnim
 			//
-			this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
-			this.ClientSize = new System.Drawing.Size(824, 438);
-			this.Controls.Add(this.Gradientpanel1);
-			this.Font = new System.Drawing.Font(
+			AutoScaleBaseSize = new System.Drawing.Size(5, 14);
+			ClientSize = new System.Drawing.Size(824, 438);
+			Controls.Add(Gradientpanel1);
+			Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.Name = "ImportJointAnim";
-			this.Text = "Import Animation";
-			this.Gradientpanel1.ResumeLayout(false);
-			this.gbsettings.ResumeLayout(false);
-			this.gbgroups.ResumeLayout(false);
-			this.ResumeLayout(false);
+			Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			Name = "ImportJointAnim";
+			Text = "Import Animation";
+			Gradientpanel1.ResumeLayout(false);
+			gbsettings.ResumeLayout(false);
+			gbgroups.ResumeLayout(false);
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -529,13 +529,13 @@ namespace SimPe.Plugin.Anim
 		void SelectJoint()
 		{
 			gbgroups.Enabled = true;
-			this.Tag = true;
+			Tag = true;
 			try
 			{
 				ImportedFrameBlock a = (ImportedFrameBlock)lv.SelectedItems[0].Tag;
 
-				this.cbDiscard.Checked = a.DiscardZeroFrame;
-				this.cbRemove.Checked = a.RemoveUnneeded;
+				cbDiscard.Checked = a.DiscardZeroFrame;
+				cbRemove.Checked = a.RemoveUnneeded;
 
 				cbaction.SelectedIndex = 0;
 				for (int i = 0; i < cbaction.Items.Count; i++)
@@ -565,7 +565,7 @@ namespace SimPe.Plugin.Anim
 			}
 			finally
 			{
-				this.Tag = null;
+				Tag = null;
 			}
 		}
 
@@ -574,7 +574,7 @@ namespace SimPe.Plugin.Anim
 			cbnames.Visible =
 				((AnimImporterAction)cbaction.SelectedItem)
 				== AnimImporterAction.Replace;
-			if (this.Tag != null)
+			if (Tag != null)
 			{
 				return;
 			}
@@ -590,7 +590,7 @@ namespace SimPe.Plugin.Anim
 
 		private void cbnames_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
-			if (this.Tag != null)
+			if (Tag != null)
 			{
 				return;
 			}
@@ -606,7 +606,7 @@ namespace SimPe.Plugin.Anim
 
 		private void cbDiscard_CheckedChanged(object sender, System.EventArgs e)
 		{
-			if (this.Tag != null)
+			if (Tag != null)
 			{
 				return;
 			}
@@ -638,7 +638,7 @@ namespace SimPe.Plugin.Anim
 
 		private void cbRemove_CheckedChanged(object sender, System.EventArgs e)
 		{
-			if (this.Tag != null)
+			if (Tag != null)
 			{
 				return;
 			}

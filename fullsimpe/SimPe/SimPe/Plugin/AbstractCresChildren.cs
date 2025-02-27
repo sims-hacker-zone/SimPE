@@ -41,7 +41,7 @@ namespace SimPe.Plugin
 		public AbstractCresChildren(Rcol parent)
 			: base(parent)
 		{
-			this.Reset();
+			Reset();
 		}
 
 		/// <summary>
@@ -61,7 +61,7 @@ namespace SimPe.Plugin
 				return null;
 			}
 
-			if (index >= this.Parent.Blocks.Length)
+			if (index >= Parent.Blocks.Length)
 			{
 				return null;
 			}
@@ -303,9 +303,9 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				if (pos < this.ChildBlocks.Count && pos >= 0)
+				if (pos < ChildBlocks.Count && pos >= 0)
 				{
-					return this.GetBlock(this.ChildBlocks[pos]);
+					return GetBlock(ChildBlocks[pos]);
 				}
 
 				return null;
@@ -315,7 +315,7 @@ namespace SimPe.Plugin
 		public bool MoveNext()
 		{
 			pos++;
-			return (pos < this.ChildBlocks.Count);
+			return (pos < ChildBlocks.Count);
 		}
 
 		#endregion

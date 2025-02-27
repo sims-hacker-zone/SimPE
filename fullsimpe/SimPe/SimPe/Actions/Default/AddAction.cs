@@ -53,7 +53,7 @@ namespace SimPe.Actions.Default
 				return;
 			}
 
-			Collections.PackedFileDescriptors pfds = this.LoadDescriptors(true);
+			Collections.PackedFileDescriptors pfds = LoadDescriptors(true);
 			es.LoadedPackage.Package.BeginUpdate();
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{

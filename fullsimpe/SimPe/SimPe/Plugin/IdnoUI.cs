@@ -258,7 +258,7 @@ namespace SimPe.Plugin
 		#region IDisposable Member
 		public virtual void Dispose()
 		{
-			this.form.Dispose();
+			form.Dispose();
 		}
 		#endregion
 	}

@@ -67,14 +67,14 @@ namespace SimPe
 		{
 			System.Resources.ResourceManager resources =
 				new System.Resources.ResourceManager(typeof(PackageSelectorForm));
-			this.label1 = new Label();
-			this.lbfile = new Label();
-			this.lbfiles = new ListBox();
-			this.SuspendLayout();
+			label1 = new Label();
+			lbfile = new Label();
+			lbfiles = new ListBox();
+			SuspendLayout();
 			//
 			// label1
 			//
-			this.label1.Anchor = (
+			label1.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -84,34 +84,34 @@ namespace SimPe
 					)
 				)
 			);
-			this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-			this.label1.Location = new System.Drawing.Point(8, 286);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(576, 32);
-			this.label1.TabIndex = 0;
-			this.label1.Text =
+			label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+			label1.Location = new System.Drawing.Point(8, 286);
+			label1.Name = "label1";
+			label1.Size = new System.Drawing.Size(576, 32);
+			label1.TabIndex = 0;
+			label1.Text =
 				"You can use this Helper to Drag && Drop the Files from the current Package to "
 				+ "a Reference List. The Item will be added to the List.";
 			//
 			// lbfile
 			//
-			this.lbfile.AutoSize = true;
-			this.lbfile.Font = new System.Drawing.Font(
+			lbfile.AutoSize = true;
+			lbfile.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.lbfile.Location = new System.Drawing.Point(16, 16);
-			this.lbfile.Name = "lbfile";
-			this.lbfile.Size = new System.Drawing.Size(67, 17);
-			this.lbfile.TabIndex = 1;
-			this.lbfile.Text = "Filename:";
+			lbfile.Location = new System.Drawing.Point(16, 16);
+			lbfile.Name = "lbfile";
+			lbfile.Size = new System.Drawing.Size(67, 17);
+			lbfile.TabIndex = 1;
+			lbfile.Text = "Filename:";
 			//
 			// lbfiles
 			//
-			this.lbfiles.Anchor = (
+			lbfiles.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -123,36 +123,36 @@ namespace SimPe
 					)
 				)
 			);
-			this.lbfiles.Location = new System.Drawing.Point(24, 32);
-			this.lbfiles.Name = "lbfiles";
-			this.lbfiles.Size = new System.Drawing.Size(552, 238);
-			this.lbfiles.TabIndex = 2;
-			this.lbfiles.MouseMove += new MouseEventHandler(
-				this.StartDrop
+			lbfiles.Location = new System.Drawing.Point(24, 32);
+			lbfiles.Name = "lbfiles";
+			lbfiles.Size = new System.Drawing.Size(552, 238);
+			lbfiles.TabIndex = 2;
+			lbfiles.MouseMove += new MouseEventHandler(
+				StartDrop
 			);
 			//
 			// PackageSelectorForm
 			//
-			this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
-			this.ClientSize = new System.Drawing.Size(592, 324);
-			this.Controls.Add(this.lbfiles);
-			this.Controls.Add(this.lbfile);
-			this.Controls.Add(this.label1);
-			this.Font = new System.Drawing.Font(
+			AutoScaleBaseSize = new System.Drawing.Size(6, 14);
+			ClientSize = new System.Drawing.Size(592, 324);
+			Controls.Add(lbfiles);
+			Controls.Add(lbfile);
+			Controls.Add(label1);
+			Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.FormBorderStyle =
+			FormBorderStyle =
 				FormBorderStyle
 				.SizableToolWindow;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.MinimumSize = new System.Drawing.Size(440, 232);
-			this.Name = "PackageSelectorForm";
-			this.Text = "PackageSelectorForm";
-			this.ResumeLayout(false);
+			Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			MinimumSize = new System.Drawing.Size(440, 232);
+			Name = "PackageSelectorForm";
+			Text = "PackageSelectorForm";
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -162,17 +162,17 @@ namespace SimPe
 		/// <param name="package">The package you want to list</param>
 		public void Execute(Interfaces.Files.IPackageFile package)
 		{
-			this.lbfiles.Sorted = false;
-			this.lbfiles.Items.Clear();
-			this.lbfile.Text = package.FileName;
+			lbfiles.Sorted = false;
+			lbfiles.Items.Clear();
+			lbfile.Text = package.FileName;
 
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in package.Index)
 			{
 				lbfiles.Items.Add(pfd);
 			}
 
-			this.lbfiles.Sorted = true;
-			this.Show();
+			lbfiles.Sorted = true;
+			Show();
 		}
 
 		private void StartDrop(object sender, MouseEventArgs e)

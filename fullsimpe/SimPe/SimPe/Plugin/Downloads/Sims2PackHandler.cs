@@ -12,7 +12,7 @@ namespace SimPe.Plugin.Downloads
 		{
 			StringArrayList ret = new StringArrayList();
 			Packages.S2CPDescriptor[] content =
-				Packages.Sims2CommunityPack.Open(this.ArchiveName);
+				Packages.Sims2CommunityPack.Open(ArchiveName);
 
 			foreach (Packages.S2CPDescriptor desc in content)
 			{

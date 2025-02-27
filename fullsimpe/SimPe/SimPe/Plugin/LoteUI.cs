@@ -18,30 +18,30 @@ namespace SimPe.Plugin
 		{
 			InitializeComponent();
 
-			this.cbtype.Items.Clear();
-			this.cbtype.Items.Add(Ltxt.LotType.Unknown);
-			this.cbtype.Items.Add(Ltxt.LotType.Residential);
-			this.cbtype.Items.Add(Ltxt.LotType.Community);
+			cbtype.Items.Clear();
+			cbtype.Items.Add(Ltxt.LotType.Unknown);
+			cbtype.Items.Add(Ltxt.LotType.Residential);
+			cbtype.Items.Add(Ltxt.LotType.Community);
 			if (PathProvider.Global.EPInstalled > 0)
 			{
-				this.cbtype.Items.Add(Ltxt.LotType.Dorm);
-				this.cbtype.Items.Add(Ltxt.LotType.GreekHouse);
-				this.cbtype.Items.Add(Ltxt.LotType.SecretSociety);
+				cbtype.Items.Add(Ltxt.LotType.Dorm);
+				cbtype.Items.Add(Ltxt.LotType.GreekHouse);
+				cbtype.Items.Add(Ltxt.LotType.SecretSociety);
 			}
 			if (PathProvider.Global.EPInstalled > 9)
 			{
-				this.cbtype.Items.Add(Ltxt.LotType.Hotel);
-				this.cbtype.Items.Add(Ltxt.LotType.SecretHoliday);
+				cbtype.Items.Add(Ltxt.LotType.Hotel);
+				cbtype.Items.Add(Ltxt.LotType.SecretHoliday);
 			}
 			if (PathProvider.Global.EPInstalled > 11)
 			{
-				this.cbtype.Items.Add(Ltxt.LotType.Hobby);
+				cbtype.Items.Add(Ltxt.LotType.Hobby);
 			}
 			if (PathProvider.Global.EPInstalled > 15)
 			{
-				this.cbtype.Items.Add(Ltxt.LotType.ApartmentBase);
-				this.cbtype.Items.Add(Ltxt.LotType.ApartmentSublot);
-				this.cbtype.Items.Add(Ltxt.LotType.Witches);
+				cbtype.Items.Add(Ltxt.LotType.ApartmentBase);
+				cbtype.Items.Add(Ltxt.LotType.ApartmentSublot);
+				cbtype.Items.Add(Ltxt.LotType.Witches);
 			}
 		}
 
@@ -50,13 +50,13 @@ namespace SimPe.Plugin
 			base.RefreshGUI();
 			reddy = false;
 
-			if (this.cbtype.Items.Contains(Wrapper.Type))
+			if (cbtype.Items.Contains(Wrapper.Type))
 			{
-				this.cbtype.SelectedIndex = this.cbtype.Items.IndexOf(Wrapper.Type);
+				cbtype.SelectedIndex = cbtype.Items.IndexOf(Wrapper.Type);
 			}
 			else
 			{
-				this.cbtype.SelectedIndex = 0;
+				cbtype.SelectedIndex = 0;
 			}
 
 			string Descrpty;
@@ -177,7 +177,7 @@ namespace SimPe.Plugin
 
 		void IDisposable.Dispose()
 		{
-			this.TPFW.Dispose();
+			TPFW.Dispose();
 		}
 		#endregion
 
@@ -188,9 +188,9 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			if (Enum.IsDefined(typeof(Ltxt.LotType), this.cbtype.SelectedItem))
+			if (Enum.IsDefined(typeof(Ltxt.LotType), cbtype.SelectedItem))
 			{
-				Wrapper.Type = (Ltxt.LotType)this.cbtype.SelectedItem;
+				Wrapper.Type = (Ltxt.LotType)cbtype.SelectedItem;
 			}
 			else
 			{

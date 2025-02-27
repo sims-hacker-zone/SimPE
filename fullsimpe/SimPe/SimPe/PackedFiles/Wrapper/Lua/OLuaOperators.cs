@@ -39,7 +39,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 		public Global(string name, object val)
 		{
 			this.name = name;
-			this.Value = val;
+			Value = val;
 		}
 
 		public object Value
@@ -163,7 +163,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 			this.globals = globals;
 			localnames = new Hashtable();
-			this.Indent = indent;
+			Indent = indent;
 		}
 
 		public void SetSReg(ushort nr, string val)
@@ -624,7 +624,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 		{
 			if (Helper.WindowsRegistry.HiddenMode)
 			{
-				return this.GetType().Name + ": " + ToAsmString();
+				return GetType().Name + ": " + ToAsmString();
 			}
 			else
 			{
@@ -640,8 +640,8 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public void Run(Context cx)
 		{
-			cx.SetReg(this.A, cx.R(this.B));
-			cx.SetSReg(this.A, cx.SR(this.B));
+			cx.SetReg(A, cx.R(B));
+			cx.SetSReg(A, cx.SR(B));
 		}
 
 		public override string ToString(Context cx)
@@ -1098,7 +1098,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 		public void Run(Context cx)
 		{
 			ObjLuaFunction fkt = cx.KProto(BX);
-			cx.SetReg(this.A, fkt);
+			cx.SetReg(A, fkt);
 
 			System.IO.StreamWriter sw = new System.IO.StreamWriter(
 				new System.IO.MemoryStream()
@@ -1142,8 +1142,8 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 		public void Run(Context cx)
 		{
 			cx.SetReg(
-				this.A,
-				Convert.ToDouble(cx.RK(this.B)) + Convert.ToDouble(cx.RK(this.C))
+				A,
+				Convert.ToDouble(cx.RK(B)) + Convert.ToDouble(cx.RK(C))
 			);
 			cx.SetSReg(A, "(" + cx.SRK(B) + " + " + cx.SRK(C) + ")");
 		}
@@ -1179,8 +1179,8 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 		public void Run(Context cx)
 		{
 			cx.SetReg(
-				this.A,
-				Convert.ToDouble(cx.RK(this.B)) - Convert.ToDouble(cx.RK(this.C))
+				A,
+				Convert.ToDouble(cx.RK(B)) - Convert.ToDouble(cx.RK(C))
 			);
 			cx.SetSReg(A, "(" + cx.SRK(B) + " - " + cx.SRK(C) + ")");
 		}
@@ -1216,8 +1216,8 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 		public void Run(Context cx)
 		{
 			cx.SetReg(
-				this.A,
-				Convert.ToDouble(cx.RK(this.B)) * Convert.ToDouble(cx.RK(this.C))
+				A,
+				Convert.ToDouble(cx.RK(B)) * Convert.ToDouble(cx.RK(C))
 			);
 			cx.SetSReg(A, "(" + cx.SRK(B) + " * " + cx.SRK(C) + ")");
 		}
@@ -1253,10 +1253,10 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 		public void Run(Context cx)
 		{
 			cx.SetReg(
-				this.A,
+				A,
 				Math.Pow(
-					Convert.ToDouble(cx.RK(this.B)),
-					Convert.ToDouble(cx.RK(this.C))
+					Convert.ToDouble(cx.RK(B)),
+					Convert.ToDouble(cx.RK(C))
 				)
 			);
 			cx.SetSReg(A, "(" + cx.SRK(B) + " ^ " + cx.SRK(C) + ")");
@@ -1293,8 +1293,8 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 		public void Run(Context cx)
 		{
 			cx.SetReg(
-				this.A,
-				Convert.ToDouble(cx.RK(this.B)) / Convert.ToDouble(cx.RK(this.C))
+				A,
+				Convert.ToDouble(cx.RK(B)) / Convert.ToDouble(cx.RK(C))
 			);
 			cx.SetSReg(A, "(" + cx.SRK(B) + " / " + cx.SRK(C) + ")");
 		}
@@ -1329,7 +1329,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public void Run(Context cx)
 		{
-			cx.SetReg(this.A, -1 * Convert.ToDouble(cx.R(this.B)));
+			cx.SetReg(A, -1 * Convert.ToDouble(cx.R(B)));
 			cx.SetSReg(A, "-" + cx.SR(B));
 		}
 
@@ -1363,7 +1363,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public void Run(Context cx)
 		{
-			cx.SetReg(this.A, !Convert.ToBoolean(cx.R(this.B)));
+			cx.SetReg(A, !Convert.ToBoolean(cx.R(B)));
 			cx.SetSReg(A, "!" + cx.SR(B));
 		}
 
@@ -1554,16 +1554,16 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public void Run(Context cx)
 		{
-			cx.SetReg((ushort)(this.A + 1), cx.R(this.B));
-			cx.SetReg(this.A, cx.LoadTable(B, cx.RK(C)));
+			cx.SetReg((ushort)(A + 1), cx.R(B));
+			cx.SetReg(A, cx.LoadTable(B, cx.RK(C)));
 
-			cx.SetSReg((ushort)(this.A + 1), cx.SR(this.B));
-			cx.SetSReg(this.A, cx.SR(B) + "[" + cx.SRK(C) + "]");
+			cx.SetSReg((ushort)(A + 1), cx.SR(B));
+			cx.SetSReg(A, cx.SR(B) + "[" + cx.SRK(C) + "]");
 		}
 
 		public override string ToString(Context cx)
 		{
-			return Assign((ushort)(this.A + 1), cx, cx.SR(B))
+			return Assign((ushort)(A + 1), cx, cx.SR(B))
 				+ "\n"
 				+ cx.Indent
 				+ AssignA(cx, cx.SR(B) + "[" + cx.SRK(C) + "]");
@@ -1571,7 +1571,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		protected override string ToAsmString()
 		{
-			return R((ushort)(this.A + 1))
+			return R((ushort)(A + 1))
 				+ " = "
 				+ R(B)
 				+ "; "
@@ -1667,7 +1667,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 				+ "; "
 				+ R(A)
 				+ "= next; PC += "
-				+ this.SBX.ToString();
+				+ SBX.ToString();
 		}
 	}
 
@@ -1851,8 +1851,8 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 				sv += cx.SR(i).ToString();
 			}
 
-			cx.SetReg(this.A, v);
-			cx.SetSReg(this.A, sv);
+			cx.SetReg(A, v);
+			cx.SetSReg(A, sv);
 		}
 
 		public override string ToString(Context cx)

@@ -84,7 +84,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			ExtSDesc sdsc =
 				FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
-					(ushort)this.FileDescriptor.Instance
+					(ushort)FileDescriptor.Instance
 				) as ExtSDesc;
 			if (sdsc == null)
 			{
@@ -193,7 +193,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			public ChangedListEventArgs(ScorItem si)
 			{
-				this.Item = si;
+				Item = si;
 			}
 
 			public ScorItem Item
@@ -210,13 +210,13 @@ namespace SimPe.PackedFiles.Wrapper
 		public void Add(string name)
 		{
 			ChangedListEventArgs e = new ChangedListEventArgs(new ScorItem(name, this));
-			this.Items.Add(e.Item);
+			Items.Add(e.Item);
 			if (AddedItem != null)
 			{
 				AddedItem(this, e);
 			}
 
-			this.Changed = true;
+			Changed = true;
 		}
 
 		public void Remove(ScorItem si)
@@ -233,7 +233,7 @@ namespace SimPe.PackedFiles.Wrapper
 				RemovedItem(this, e);
 			}
 
-			this.Changed = true;
+			Changed = true;
 		}
 
 		public ScorItem this[int index]

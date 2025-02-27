@@ -36,8 +36,8 @@ namespace SimPe.Plugin
 			InitializeComponent();
 			if (Helper.WindowsRegistry.UseBigIcons)
 			{
-				this.pbImage.Size = new Size(168, 168);
-				this.pbImage.Location = new Point(6, 28);
+				pbImage.Size = new Size(168, 168);
+				pbImage.Location = new Point(6, 28);
 			}
 		}
 
@@ -45,7 +45,7 @@ namespace SimPe.Plugin
 		{
 			base.RefreshGUI();
 
-			this.CanCommit = Wrapper.isnew;
+			CanCommit = Wrapper.isnew;
 			if (Wrapper.FamiThumb != null)
 			{
 				pbImage.Image =
@@ -67,7 +67,7 @@ namespace SimPe.Plugin
 				pbImage.Image = null;
 			}
 
-			this.HeaderText = Wrapper.Name + " Family History";
+			HeaderText = Wrapper.Name + " Family History";
 
 			filedata = Wrapper.FVal;
 			sections = Wrapper.Sections;
@@ -99,7 +99,7 @@ namespace SimPe.Plugin
 
 		void IDisposable.Dispose()
 		{
-			this.TPFW.Dispose();
+			TPFW.Dispose();
 		}
 		#endregion
 
@@ -412,7 +412,7 @@ gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 36
 			RefreshGraphs();
 			filimuptext();
 			buttonset();
-			this.CanCommit = true;
+			CanCommit = true;
 		}
 
 		private void btRawd_Click(object sender, EventArgs e)
@@ -563,7 +563,7 @@ gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 36
 					goodsections--;
 				}
 
-				this.CanCommit = true;
+				CanCommit = true;
 				RefreshGraphs();
 				filimuptext();
 			}
@@ -636,7 +636,7 @@ gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 36
 
 				Wrapper.FVal = filedata;
 				Wrapper.Sections = sections;
-				this.CanCommit = true;
+				CanCommit = true;
 				RefreshGraphs();
 				filimuptext();
 				tbEditer.Visible = false;

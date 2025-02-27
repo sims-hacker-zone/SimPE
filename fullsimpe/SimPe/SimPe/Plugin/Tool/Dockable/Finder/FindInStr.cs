@@ -55,7 +55,7 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 		protected override bool OnPrepareStart()
 		{
 			compareType = (CompareType)cbType.SelectedIndex;
-			name = this.tbMatch.Text.Trim().ToLower();
+			name = tbMatch.Text.Trim().ToLower();
 			reg = null;
 
 			if (compareType == CompareType.Unknown || name == "")
@@ -66,13 +66,13 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 			try
 			{
 				reg = new System.Text.RegularExpressions.Regex(
-					this.tbMatch.Text,
+					tbMatch.Text,
 					System.Text.RegularExpressions.RegexOptions.IgnoreCase
 				);
 			}
 			catch (Exception ex)
 			{
-				if (this.cbType.SelectedIndex == 4)
+				if (cbType.SelectedIndex == 4)
 				{
 					Helper.ExceptionMessage(ex);
 				}

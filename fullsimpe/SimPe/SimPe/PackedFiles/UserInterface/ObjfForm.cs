@@ -217,7 +217,7 @@ namespace SimPe.PackedFiles.UserInterface
 			Label[] lbaAG = { lbAction, lbGuardian };
 			LinkLabel[] llaAG = { llAction, llGuardian };
 			bool found = false;
-			this.lvObjfItem.SelectedItems[0].SubItems[1 + which].Text = lbaAG[
+			lvObjfItem.SelectedItems[0].SubItems[1 + which].Text = lbaAG[
 				which
 			].Text = pjse.BhavWiz.bhavName(wrapper, target, ref found);
 			llaAG[which].Enabled = found;
@@ -242,7 +242,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 			internalchg = true;
 
-			this.lvObjfItem.Items.Clear();
+			lvObjfItem.Items.Clear();
 			bool parm = false;
 
 			// There appears to be no clean way to handle a "new" resource being created in the wrapper
@@ -257,7 +257,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			for (ushort i = 0; i < wrapper.Count; i++)
 			{
-				this.lvObjfItem.Items.Add(
+				lvObjfItem.Items.Add(
 					new ListViewItem(
 						new string[]
 						{
@@ -279,14 +279,14 @@ namespace SimPe.PackedFiles.UserInterface
 
 			if (!setHandler)
 			{
-				wrapper.WrapperChanged += new EventHandler(this.WrapperChanged);
+				wrapper.WrapperChanged += new EventHandler(WrapperChanged);
 				setHandler = true;
 			}
 		}
 
 		private void WrapperChanged(object sender, EventArgs e)
 		{
-			this.btnCommit.Enabled = wrapper.Changed;
+			btnCommit.Enabled = wrapper.Changed;
 
 			if (internalchg)
 			{
@@ -294,7 +294,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 
 			internalchg = true;
-			this.Text = tbFilename.Text = wrapper.FileName;
+			Text = tbFilename.Text = wrapper.FileName;
 			internalchg = false;
 		}
 		#endregion
@@ -308,245 +308,245 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			ComponentResourceManager resources =
 				new ComponentResourceManager(typeof(ObjfForm));
-			this.objfPanel = new Panel();
-			this.tableLayoutPanel1 = new TableLayoutPanel();
-			this.llAction = new LinkLabel();
-			this.llGuardian = new LinkLabel();
-			this.flowLayoutPanel1 = new FlowLayoutPanel();
-			this.tbAction = new TextBox();
-			this.btnAction = new Button();
-			this.flowLayoutPanel2 = new FlowLayoutPanel();
-			this.tbGuardian = new TextBox();
-			this.btnGuardian = new Button();
-			this.lbAction = new Label();
-			this.lbGuardian = new Label();
-			this.pjse_banner1 = new pjse.pjse_banner();
-			this.lbFunction = new Label();
-			this.lvObjfItem = new ListView();
-			this.chFunction = new ColumnHeader();
-			this.chAction = new ColumnHeader();
-			this.chGuardian = new ColumnHeader();
-			this.btnCommit = new Button();
-			this.lbFilename = new Label();
-			this.tbFilename = new TextBox();
-			this.label19 = new Label();
-			this.objfPanel.SuspendLayout();
-			this.tableLayoutPanel1.SuspendLayout();
-			this.flowLayoutPanel1.SuspendLayout();
-			this.flowLayoutPanel2.SuspendLayout();
-			this.SuspendLayout();
+			objfPanel = new Panel();
+			tableLayoutPanel1 = new TableLayoutPanel();
+			llAction = new LinkLabel();
+			llGuardian = new LinkLabel();
+			flowLayoutPanel1 = new FlowLayoutPanel();
+			tbAction = new TextBox();
+			btnAction = new Button();
+			flowLayoutPanel2 = new FlowLayoutPanel();
+			tbGuardian = new TextBox();
+			btnGuardian = new Button();
+			lbAction = new Label();
+			lbGuardian = new Label();
+			pjse_banner1 = new pjse.pjse_banner();
+			lbFunction = new Label();
+			lvObjfItem = new ListView();
+			chFunction = new ColumnHeader();
+			chAction = new ColumnHeader();
+			chGuardian = new ColumnHeader();
+			btnCommit = new Button();
+			lbFilename = new Label();
+			tbFilename = new TextBox();
+			label19 = new Label();
+			objfPanel.SuspendLayout();
+			tableLayoutPanel1.SuspendLayout();
+			flowLayoutPanel1.SuspendLayout();
+			flowLayoutPanel2.SuspendLayout();
+			SuspendLayout();
 			//
 			// objfPanel
 			//
-			resources.ApplyResources(this.objfPanel, "objfPanel");
-			this.objfPanel.BackColor = System.Drawing.SystemColors.Control;
-			this.objfPanel.Controls.Add(this.tableLayoutPanel1);
-			this.objfPanel.Controls.Add(this.pjse_banner1);
-			this.objfPanel.Controls.Add(this.lbFunction);
-			this.objfPanel.Controls.Add(this.lvObjfItem);
-			this.objfPanel.Controls.Add(this.btnCommit);
-			this.objfPanel.Controls.Add(this.lbFilename);
-			this.objfPanel.Controls.Add(this.tbFilename);
-			this.objfPanel.Controls.Add(this.label19);
-			this.objfPanel.Name = "objfPanel";
+			resources.ApplyResources(objfPanel, "objfPanel");
+			objfPanel.BackColor = System.Drawing.SystemColors.Control;
+			objfPanel.Controls.Add(tableLayoutPanel1);
+			objfPanel.Controls.Add(pjse_banner1);
+			objfPanel.Controls.Add(lbFunction);
+			objfPanel.Controls.Add(lvObjfItem);
+			objfPanel.Controls.Add(btnCommit);
+			objfPanel.Controls.Add(lbFilename);
+			objfPanel.Controls.Add(tbFilename);
+			objfPanel.Controls.Add(label19);
+			objfPanel.Name = "objfPanel";
 			//
 			// tableLayoutPanel1
 			//
-			resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-			this.tableLayoutPanel1.Controls.Add(this.llAction, 0, 0);
-			this.tableLayoutPanel1.Controls.Add(this.llGuardian, 0, 3);
-			this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 1, 0);
-			this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 1, 3);
-			this.tableLayoutPanel1.Controls.Add(this.lbAction, 0, 1);
-			this.tableLayoutPanel1.Controls.Add(this.lbGuardian, 0, 4);
-			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+			resources.ApplyResources(tableLayoutPanel1, "tableLayoutPanel1");
+			tableLayoutPanel1.Controls.Add(llAction, 0, 0);
+			tableLayoutPanel1.Controls.Add(llGuardian, 0, 3);
+			tableLayoutPanel1.Controls.Add(flowLayoutPanel1, 1, 0);
+			tableLayoutPanel1.Controls.Add(flowLayoutPanel2, 1, 3);
+			tableLayoutPanel1.Controls.Add(lbAction, 0, 1);
+			tableLayoutPanel1.Controls.Add(lbGuardian, 0, 4);
+			tableLayoutPanel1.Name = "tableLayoutPanel1";
 			//
 			// llAction
 			//
-			resources.ApplyResources(this.llAction, "llAction");
-			this.llAction.Name = "llAction";
-			this.llAction.TabStop = true;
-			this.llAction.LinkClicked +=
+			resources.ApplyResources(llAction, "llAction");
+			llAction.Name = "llAction";
+			llAction.TabStop = true;
+			llAction.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.llBhav_LinkClicked
+					llBhav_LinkClicked
 				);
 			//
 			// llGuardian
 			//
-			resources.ApplyResources(this.llGuardian, "llGuardian");
-			this.llGuardian.Name = "llGuardian";
-			this.llGuardian.TabStop = true;
-			this.llGuardian.LinkClicked +=
+			resources.ApplyResources(llGuardian, "llGuardian");
+			llGuardian.Name = "llGuardian";
+			llGuardian.TabStop = true;
+			llGuardian.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.llBhav_LinkClicked
+					llBhav_LinkClicked
 				);
 			//
 			// flowLayoutPanel1
 			//
-			resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
-			this.flowLayoutPanel1.Controls.Add(this.tbAction);
-			this.flowLayoutPanel1.Controls.Add(this.btnAction);
-			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+			resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
+			flowLayoutPanel1.Controls.Add(tbAction);
+			flowLayoutPanel1.Controls.Add(btnAction);
+			flowLayoutPanel1.Name = "flowLayoutPanel1";
 			//
 			// tbAction
 			//
-			resources.ApplyResources(this.tbAction, "tbAction");
-			this.tbAction.Name = "tbAction";
-			this.tbAction.TextChanged += new EventHandler(
-				this.hex16_TextChanged
+			resources.ApplyResources(tbAction, "tbAction");
+			tbAction.Name = "tbAction";
+			tbAction.TextChanged += new EventHandler(
+				hex16_TextChanged
 			);
-			this.tbAction.Validated += new EventHandler(this.hex16_Validated);
-			this.tbAction.Validating += new CancelEventHandler(
-				this.hex16_Validating
+			tbAction.Validated += new EventHandler(hex16_Validated);
+			tbAction.Validating += new CancelEventHandler(
+				hex16_Validating
 			);
 			//
 			// btnAction
 			//
-			resources.ApplyResources(this.btnAction, "btnAction");
-			this.btnAction.Name = "btnAction";
-			this.btnAction.UseCompatibleTextRendering = true;
-			this.btnAction.Click += new EventHandler(this.GetObjfAction);
+			resources.ApplyResources(btnAction, "btnAction");
+			btnAction.Name = "btnAction";
+			btnAction.UseCompatibleTextRendering = true;
+			btnAction.Click += new EventHandler(GetObjfAction);
 			//
 			// flowLayoutPanel2
 			//
-			resources.ApplyResources(this.flowLayoutPanel2, "flowLayoutPanel2");
-			this.flowLayoutPanel2.Controls.Add(this.tbGuardian);
-			this.flowLayoutPanel2.Controls.Add(this.btnGuardian);
-			this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+			resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
+			flowLayoutPanel2.Controls.Add(tbGuardian);
+			flowLayoutPanel2.Controls.Add(btnGuardian);
+			flowLayoutPanel2.Name = "flowLayoutPanel2";
 			//
 			// tbGuardian
 			//
-			resources.ApplyResources(this.tbGuardian, "tbGuardian");
-			this.tbGuardian.Name = "tbGuardian";
-			this.tbGuardian.TextChanged += new EventHandler(
-				this.hex16_TextChanged
+			resources.ApplyResources(tbGuardian, "tbGuardian");
+			tbGuardian.Name = "tbGuardian";
+			tbGuardian.TextChanged += new EventHandler(
+				hex16_TextChanged
 			);
-			this.tbGuardian.Validated += new EventHandler(this.hex16_Validated);
-			this.tbGuardian.Validating += new CancelEventHandler(
-				this.hex16_Validating
+			tbGuardian.Validated += new EventHandler(hex16_Validated);
+			tbGuardian.Validating += new CancelEventHandler(
+				hex16_Validating
 			);
 			//
 			// btnGuardian
 			//
-			resources.ApplyResources(this.btnGuardian, "btnGuardian");
-			this.btnGuardian.Name = "btnGuardian";
-			this.btnGuardian.UseCompatibleTextRendering = true;
-			this.btnGuardian.Click += new EventHandler(this.GetObjfGuard);
+			resources.ApplyResources(btnGuardian, "btnGuardian");
+			btnGuardian.Name = "btnGuardian";
+			btnGuardian.UseCompatibleTextRendering = true;
+			btnGuardian.Click += new EventHandler(GetObjfGuard);
 			//
 			// lbAction
 			//
-			this.tableLayoutPanel1.SetColumnSpan(this.lbAction, 2);
-			resources.ApplyResources(this.lbAction, "lbAction");
-			this.lbAction.Name = "lbAction";
-			this.lbAction.UseMnemonic = false;
+			tableLayoutPanel1.SetColumnSpan(lbAction, 2);
+			resources.ApplyResources(lbAction, "lbAction");
+			lbAction.Name = "lbAction";
+			lbAction.UseMnemonic = false;
 			//
 			// lbGuardian
 			//
-			this.tableLayoutPanel1.SetColumnSpan(this.lbGuardian, 2);
-			resources.ApplyResources(this.lbGuardian, "lbGuardian");
-			this.lbGuardian.Name = "lbGuardian";
-			this.lbGuardian.UseMnemonic = false;
+			tableLayoutPanel1.SetColumnSpan(lbGuardian, 2);
+			resources.ApplyResources(lbGuardian, "lbGuardian");
+			lbGuardian.Name = "lbGuardian";
+			lbGuardian.UseMnemonic = false;
 			//
 			// pjse_banner1
 			//
-			resources.ApplyResources(this.pjse_banner1, "pjse_banner1");
-			this.pjse_banner1.Name = "pjse_banner1";
+			resources.ApplyResources(pjse_banner1, "pjse_banner1");
+			pjse_banner1.Name = "pjse_banner1";
 			//
 			// lbFunction
 			//
-			resources.ApplyResources(this.lbFunction, "lbFunction");
-			this.lbFunction.AutoEllipsis = true;
-			this.lbFunction.Name = "lbFunction";
+			resources.ApplyResources(lbFunction, "lbFunction");
+			lbFunction.AutoEllipsis = true;
+			lbFunction.Name = "lbFunction";
 			//
 			// lvObjfItem
 			//
-			resources.ApplyResources(this.lvObjfItem, "lvObjfItem");
-			this.lvObjfItem.Columns.AddRange(
+			resources.ApplyResources(lvObjfItem, "lvObjfItem");
+			lvObjfItem.Columns.AddRange(
 				new ColumnHeader[]
 				{
-					this.chFunction,
-					this.chAction,
-					this.chGuardian,
+					chFunction,
+					chAction,
+					chGuardian,
 				}
 			);
-			this.lvObjfItem.FullRowSelect = true;
-			this.lvObjfItem.GridLines = true;
-			this.lvObjfItem.HeaderStyle =
+			lvObjfItem.FullRowSelect = true;
+			lvObjfItem.GridLines = true;
+			lvObjfItem.HeaderStyle =
 				ColumnHeaderStyle
 				.Nonclickable;
-			this.lvObjfItem.HideSelection = false;
-			this.lvObjfItem.MultiSelect = false;
-			this.lvObjfItem.Name = "lvObjfItem";
-			this.lvObjfItem.UseCompatibleStateImageBehavior = false;
-			this.lvObjfItem.View = View.Details;
-			this.lvObjfItem.SelectedIndexChanged += new EventHandler(
-				this.lvObjfItem_SelectedIndexChanged
+			lvObjfItem.HideSelection = false;
+			lvObjfItem.MultiSelect = false;
+			lvObjfItem.Name = "lvObjfItem";
+			lvObjfItem.UseCompatibleStateImageBehavior = false;
+			lvObjfItem.View = View.Details;
+			lvObjfItem.SelectedIndexChanged += new EventHandler(
+				lvObjfItem_SelectedIndexChanged
 			);
 			//
 			// chFunction
 			//
-			resources.ApplyResources(this.chFunction, "chFunction");
+			resources.ApplyResources(chFunction, "chFunction");
 			//
 			// chAction
 			//
-			resources.ApplyResources(this.chAction, "chAction");
+			resources.ApplyResources(chAction, "chAction");
 			//
 			// chGuardian
 			//
-			resources.ApplyResources(this.chGuardian, "chGuardian");
+			resources.ApplyResources(chGuardian, "chGuardian");
 			//
 			// btnCommit
 			//
-			resources.ApplyResources(this.btnCommit, "btnCommit");
-			this.btnCommit.Name = "btnCommit";
-			this.btnCommit.Click += new EventHandler(this.btnCommit_Click);
+			resources.ApplyResources(btnCommit, "btnCommit");
+			btnCommit.Name = "btnCommit";
+			btnCommit.Click += new EventHandler(btnCommit_Click);
 			//
 			// lbFilename
 			//
-			resources.ApplyResources(this.lbFilename, "lbFilename");
-			this.lbFilename.Name = "lbFilename";
+			resources.ApplyResources(lbFilename, "lbFilename");
+			lbFilename.Name = "lbFilename";
 			//
 			// tbFilename
 			//
-			resources.ApplyResources(this.tbFilename, "tbFilename");
-			this.tbFilename.Name = "tbFilename";
-			this.tbFilename.TextChanged += new EventHandler(
-				this.tbFilename_TextChanged
+			resources.ApplyResources(tbFilename, "tbFilename");
+			tbFilename.Name = "tbFilename";
+			tbFilename.TextChanged += new EventHandler(
+				tbFilename_TextChanged
 			);
-			this.tbFilename.Validated += new EventHandler(
-				this.tbFilename_Validated
+			tbFilename.Validated += new EventHandler(
+				tbFilename_Validated
 			);
 			//
 			// label19
 			//
-			resources.ApplyResources(this.label19, "label19");
-			this.label19.Name = "label19";
+			resources.ApplyResources(label19, "label19");
+			label19.Name = "label19";
 			//
 			// ObjfForm
 			//
 			resources.ApplyResources(this, "$this");
-			this.Controls.Add(this.objfPanel);
-			this.FormBorderStyle =
+			Controls.Add(objfPanel);
+			FormBorderStyle =
 				FormBorderStyle
 				.SizableToolWindow;
-			this.Name = "ObjfForm";
-			this.WindowState = FormWindowState.Maximized;
-			this.objfPanel.ResumeLayout(false);
-			this.objfPanel.PerformLayout();
-			this.tableLayoutPanel1.ResumeLayout(false);
-			this.tableLayoutPanel1.PerformLayout();
-			this.flowLayoutPanel1.ResumeLayout(false);
-			this.flowLayoutPanel1.PerformLayout();
-			this.flowLayoutPanel2.ResumeLayout(false);
-			this.flowLayoutPanel2.PerformLayout();
-			this.ResumeLayout(false);
+			Name = "ObjfForm";
+			WindowState = FormWindowState.Maximized;
+			objfPanel.ResumeLayout(false);
+			objfPanel.PerformLayout();
+			tableLayoutPanel1.ResumeLayout(false);
+			tableLayoutPanel1.PerformLayout();
+			flowLayoutPanel1.ResumeLayout(false);
+			flowLayoutPanel1.PerformLayout();
+			flowLayoutPanel2.ResumeLayout(false);
+			flowLayoutPanel2.PerformLayout();
+			ResumeLayout(false);
 		}
 
 		#endregion
 
 		private void lvObjfItem_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (this.internalchg)
+			if (internalchg)
 			{
 				return;
 			}

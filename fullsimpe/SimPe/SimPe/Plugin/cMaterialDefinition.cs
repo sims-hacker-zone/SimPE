@@ -139,13 +139,13 @@ namespace SimPe.Plugin
 				}
 				else
 				{
-					this.Properties = (MaterialDefinitionProperty[])
+					Properties = (MaterialDefinitionProperty[])
 						Helper.Add(Properties, prop);
 				}
 			}
 			else
 			{
-				this.Properties = (MaterialDefinitionProperty[])
+				Properties = (MaterialDefinitionProperty[])
 					Helper.Add(Properties, prop);
 			}
 		}
@@ -288,11 +288,11 @@ namespace SimPe.Plugin
 			tMaterialDefinition.tbdsc.Tag = true;
 			try
 			{
-				tMaterialDefinition.tb_ver.Text = "0x" + Helper.HexString(this.version);
+				tMaterialDefinition.tb_ver.Text = "0x" + Helper.HexString(version);
 
 				tMaterialDefinitionProperties.lldel.Enabled = false;
 				tMaterialDefinitionProperties.lbprop.Items.Clear();
-				foreach (MaterialDefinitionProperty mdp in this.Properties)
+				foreach (MaterialDefinitionProperty mdp in Properties)
 				{
 					tMaterialDefinitionProperties.lbprop.Items.Add(mdp);
 				}
@@ -356,7 +356,7 @@ namespace SimPe.Plugin
 			}
 			refmap["TXTR"] = list;
 
-			string refname = this.GetProperty("stdMatBaseTextureName").Value;
+			string refname = GetProperty("stdMatBaseTextureName").Value;
 			if (refname.Trim() != "")
 			{
 				list = new ArrayList
@@ -370,7 +370,7 @@ namespace SimPe.Plugin
 				refmap["stdMatBaseTextureName"] = list;
 			}
 
-			refname = this.GetProperty("stdMatNormalMapTextureName").Value;
+			refname = GetProperty("stdMatNormalMapTextureName").Value;
 			if (refname.Trim() != "")
 			{
 				list = new ArrayList
@@ -384,7 +384,7 @@ namespace SimPe.Plugin
 				refmap["stdMatNormalMapTextureName"] = list;
 			}
 
-			refname = this.GetProperty("stdMatEnvCubeTextureName").Value;
+			refname = GetProperty("stdMatEnvCubeTextureName").Value;
 			if (refname.Trim() != "")
 			{
 				list = new ArrayList
@@ -402,11 +402,11 @@ namespace SimPe.Plugin
 			int count = 0;
 			try
 			{
-				string s = this.GetProperty("numTexturesToComposite").Value;
+				string s = GetProperty("numTexturesToComposite").Value;
 				if (s != "")
 				{
 					count = Convert.ToInt32(
-						this.GetProperty("numTexturesToComposite").Value
+						GetProperty("numTexturesToComposite").Value
 					);
 				}
 			}
@@ -415,7 +415,7 @@ namespace SimPe.Plugin
 			refmap["baseTexture"] = list;
 			for (int i = 0; i < count; i++)
 			{
-				refname = this.GetProperty("baseTexture" + i.ToString()).Value.Trim();
+				refname = GetProperty("baseTexture" + i.ToString()).Value.Trim();
 				if (refname != "")
 				{
 					if (!refname.EndsWith("_txtr"))
@@ -467,9 +467,9 @@ namespace SimPe.Plugin
 		/// </summary>
 		public void Sort()
 		{
-			for (int i = 0; i < this.Properties.Length - 1; i++)
+			for (int i = 0; i < Properties.Length - 1; i++)
 			{
-				for (int j = i + 1; j < this.Properties.Length; j++)
+				for (int j = i + 1; j < Properties.Length; j++)
 				{
 					if (Properties[i].Name.CompareTo(Properties[j].Name) > 0)
 					{
@@ -492,37 +492,37 @@ namespace SimPe.Plugin
 		{
 			MaterialDefinitionProperty p;
 			Ambertation.Scenes.Material mat = scn.CreateMaterial(name);
-			p = this.GetProperty("stdMatSpecCoef");
+			p = GetProperty("stdMatSpecCoef");
 			if (p != null)
 			{
 				mat.Specular = p.ToARGB();
 			}
 
-			p = this.GetProperty("stdMatDiffCoef");
+			p = GetProperty("stdMatDiffCoef");
 			if (p != null)
 			{
 				mat.Diffuse = p.ToARGB();
 			}
 
-			p = this.GetProperty("stdMatEmissiveCoef");
+			p = GetProperty("stdMatEmissiveCoef");
 			if (p != null)
 			{
 				mat.Emmissive = p.ToARGB();
 			}
 
-			p = this.GetProperty("stdMatSpecPower");
+			p = GetProperty("stdMatSpecPower");
 			if (p != null)
 			{
 				mat.SpecularPower = p.ToValue();
 			}
 
-			p = this.GetProperty("stdMatAlphaBlendMode");
+			p = GetProperty("stdMatAlphaBlendMode");
 
 			if (p != null)
 			{
 				if (p.Value == "blend")
 				{
-					MaterialDefinitionProperty p2 = this.GetProperty(
+					MaterialDefinitionProperty p2 = GetProperty(
 						"stdMatLightingEnabled"
 					);
 					if (p2 != null)
@@ -557,11 +557,11 @@ namespace SimPe.Plugin
 			try
 			{
 				xw.WriteStartElement("materialDefinition");
-				xw.WriteComment("Source: " + this.Parent.FileDescriptor.ExportFileName);
-				xw.WriteComment("Block name: " + this.BlockName);
-				xw.WriteComment("File description: " + this.FileDescription);
-				xw.WriteComment("Material Type: " + this.MatterialType);
-				foreach (MaterialDefinitionProperty p in this.Properties)
+				xw.WriteComment("Source: " + Parent.FileDescriptor.ExportFileName);
+				xw.WriteComment("Block name: " + BlockName);
+				xw.WriteComment("File description: " + FileDescription);
+				xw.WriteComment("Material Type: " + MatterialType);
+				foreach (MaterialDefinitionProperty p in Properties)
 				{
 					xw.WriteStartElement("materialDefinitionProperty");
 					xw.WriteAttributeString("name", p.Name);
@@ -620,7 +620,7 @@ namespace SimPe.Plugin
 					}
 					xr.MoveToElement();
 					p.Value = xr.ReadString();
-					this.Add(p, false);
+					Add(p, false);
 					xr.ReadEndElement();
 				}
 				xr.ReadEndElement();
@@ -636,9 +636,9 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			if (this.tMaterialDefinition != null)
+			if (tMaterialDefinition != null)
 			{
-				this.tMaterialDefinition.Dispose();
+				tMaterialDefinition.Dispose();
 			}
 
 			if (tMaterialDefinitionProperties != null)
@@ -766,7 +766,7 @@ namespace SimPe.Plugin
 
 		public System.Drawing.Color ToARGB()
 		{
-			if (this.ToFloat().Length < 4)
+			if (ToFloat().Length < 4)
 			{
 				return ToRGB();
 			}

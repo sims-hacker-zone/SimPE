@@ -48,7 +48,7 @@ namespace pjse
 
 		public virtual void OnWrapperChanged(object sender, EventArgs e)
 		{
-			this.Changed = true;
+			Changed = true;
 
 			if (internalchg)
 			{
@@ -73,7 +73,7 @@ namespace pjse
 					return 0;
 				}
 
-				return this.FileDescriptor.Group;
+				return FileDescriptor.Group;
 			}
 		}
 
@@ -89,9 +89,9 @@ namespace pjse
 					return 0;
 				}
 
-				Glob glob = BhavWiz.GlobByGroup(this.FileDescriptor.Group);
+				Glob glob = BhavWiz.GlobByGroup(FileDescriptor.Group);
 				return (
-					glob != null ? glob.SemiGlobalGroup : this.FileDescriptor.Group
+					glob != null ? glob.SemiGlobalGroup : FileDescriptor.Group
 				);
 			}
 		}
@@ -112,14 +112,14 @@ namespace pjse
 						|| this is SimPe.PackedFiles.Wrapper.Bcon
 						|| this is Trcn
 					)
-					&& this.FileDescriptor != null
+					&& FileDescriptor != null
 				)
 				{
-					if (this.FileDescriptor.Instance < 0x1000)
+					if (FileDescriptor.Instance < 0x1000)
 					{
 						return Scope.Global;
 					}
-					else if (this.FileDescriptor.Instance < 0x2000)
+					else if (FileDescriptor.Instance < 0x2000)
 					{
 						return Scope.Private;
 					}
@@ -253,7 +253,7 @@ namespace pjse
 				throw new InvalidOperationException();
 			}
 
-			this.Add(item);
+			Add(item);
 		}
 
 		protected void Insert(int index, T item, int limit)
@@ -271,8 +271,8 @@ namespace pjse
 			T item = items[from];
 			bool savedstate = internalchg;
 			internalchg = true;
-			this.RemoveAt(from);
-			this.Insert(to, item);
+			RemoveAt(from);
+			Insert(to, item);
 			internalchg = savedstate;
 			OnWrapperChanged(items, new EventArgs());
 		}

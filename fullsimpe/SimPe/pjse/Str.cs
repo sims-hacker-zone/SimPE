@@ -93,11 +93,11 @@ namespace pjse
 				throw new InvalidOperationException("type must be CTSS, STR# or TTAs");
 			}
 
-			this.Scope = scope;
-			this.Parent = parent;
-			this.Group = group;
-			this.Instance = instance;
-			this.Type = type;
+			Scope = scope;
+			Parent = parent;
+			Group = group;
+			Instance = instance;
+			Type = type;
 		}
 
 		private static myHT strHashtable = new myHT();
@@ -107,7 +107,7 @@ namespace pjse
 			public myHT()
 			{
 				FileTable.GFT.FiletableRefresh += new EventHandler(
-					this.GFT_FiletableRefresh
+					GFT_FiletableRefresh
 				);
 			}
 
@@ -167,7 +167,7 @@ namespace pjse
 							{
 								wrapper.FileDescriptor.ChangedData -=
 									new SimPe.Events.PackedFileChanged(
-										this.FileDescriptor_ChangedData
+										FileDescriptor_ChangedData
 									);
 							}
 						}
@@ -179,7 +179,7 @@ namespace pjse
 							{
 								wrapper.FileDescriptor.ChangedData +=
 									new SimPe.Events.PackedFileChanged(
-										this.FileDescriptor_ChangedData
+										FileDescriptor_ChangedData
 									);
 							}
 						}
@@ -231,7 +231,7 @@ namespace pjse
 			{
 				GFT_FiletableRefresh(null, null);
 				FileTable.GFT.FiletableRefresh -= new EventHandler(
-					this.GFT_FiletableRefresh
+					GFT_FiletableRefresh
 				);
 			}
 
@@ -246,16 +246,16 @@ namespace pjse
 				if (wrapper == null)
 				{
 					FileTable.Entry[] items = FileTable.GFT[
-						this.Type,
-						this.Group,
-						this.Instance
+						Type,
+						Group,
+						Instance
 					];
 
 					if (items != null && items.Length != 0)
 					{
 						wrapper = new StrWrapper();
 						wrapper.ProcessData(items[0].PFD, items[0].Package);
-						strHashtable[this.Group, this.Instance, this.Type] = this;
+						strHashtable[Group, Instance, Type] = this;
 					}
 				}
 				return wrapper;
@@ -273,8 +273,8 @@ namespace pjse
 						Scope.SemiGlobal,
 						null,
 						Parent.SemiGroup,
-						this.Instance,
-						this.Type
+						Instance,
+						Type
 					);
 				}
 
@@ -293,8 +293,8 @@ namespace pjse
 						Scope.Global,
 						null,
 						Parent.GlobalGroup,
-						this.Instance,
-						this.Type
+						Instance,
+						Type
 					);
 				}
 
@@ -370,7 +370,7 @@ namespace pjse
 				if (Wrapper != null)
 				{
 					fsi.strItem = Wrapper[lid, sid]; // try to find instance/lid/sid at scope
-					if (!this.rejectStrItem(fsi))
+					if (!rejectStrItem(fsi))
 					{
 						return fsi;
 					}
@@ -378,7 +378,7 @@ namespace pjse
 					if (lid != 1)
 					{
 						fsi.strItem = Wrapper[1, sid]; // try to find instance/1/sid at scope
-						if (!this.rejectStrItem(fsi))
+						if (!rejectStrItem(fsi))
 						{
 							if (fsi.fallback.Count == 0) // ignore unless this is the first / only fallback
 							{
@@ -397,7 +397,7 @@ namespace pjse
 						if (Group != Parent.SemiGroup && SemiGlobalStr != null)
 						{
 							fsi = SemiGlobalStr[lid, sid];
-							if (!this.rejectStrItem(fsi))
+							if (!rejectStrItem(fsi))
 							{
 								if (fsi.fallback.Count == 0)
 								{
@@ -415,7 +415,7 @@ namespace pjse
 						if (GlobalStr != null)
 						{
 							fsi = GlobalStr[lid, sid];
-							if (!this.rejectStrItem(fsi))
+							if (!rejectStrItem(fsi))
 							{
 								if (fsi.fallback.Count == 0)
 								{
@@ -462,10 +462,10 @@ namespace pjse
 
 		public void Dispose()
 		{
-			this.Parent = null;
-			this.wrapper = null;
-			this.semiGlobalStr = null;
-			this.globalStr = null;
+			Parent = null;
+			wrapper = null;
+			semiGlobalStr = null;
+			globalStr = null;
 		}
 
 		#endregion

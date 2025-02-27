@@ -47,7 +47,7 @@ namespace SimPe.Plugin
 			InitializeComponent();
 
 			dx = new Ambertation.Graphics.DirectXPanel();
-			dx.Parent = this.panel1;
+			dx.Parent = panel1;
 			dx.Dock = DockStyle.Fill;
 			//dx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
 
@@ -76,42 +76,42 @@ namespace SimPe.Plugin
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
+			components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(AnimPreview));
-			this.xpGradientPanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
-			this.pb = new ProgressBar();
-			this.btPlay = new Button();
-			this.tv = new TreeView();
-			this.lb = new ListBox();
-			this.panel1 = new Panel();
-			this.timer1 = new Timer(this.components);
-			this.xpGradientPanel1.SuspendLayout();
-			this.SuspendLayout();
+			xpGradientPanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
+			pb = new ProgressBar();
+			btPlay = new Button();
+			tv = new TreeView();
+			lb = new ListBox();
+			panel1 = new Panel();
+			timer1 = new Timer(components);
+			xpGradientPanel1.SuspendLayout();
+			SuspendLayout();
 			//
 			// xpGradientPanel1
 			//
-			this.xpGradientPanel1.Controls.Add(this.pb);
-			this.xpGradientPanel1.Controls.Add(this.btPlay);
-			this.xpGradientPanel1.Controls.Add(this.tv);
-			this.xpGradientPanel1.Controls.Add(this.lb);
-			this.xpGradientPanel1.Dock = DockStyle.Right;
-			this.xpGradientPanel1.Location = new Point(496, 0);
-			this.xpGradientPanel1.Name = "xpGradientPanel1";
-			this.xpGradientPanel1.Size = new Size(280, 454);
-			this.xpGradientPanel1.TabIndex = 0;
+			xpGradientPanel1.Controls.Add(pb);
+			xpGradientPanel1.Controls.Add(btPlay);
+			xpGradientPanel1.Controls.Add(tv);
+			xpGradientPanel1.Controls.Add(lb);
+			xpGradientPanel1.Dock = DockStyle.Right;
+			xpGradientPanel1.Location = new Point(496, 0);
+			xpGradientPanel1.Name = "xpGradientPanel1";
+			xpGradientPanel1.Size = new Size(280, 454);
+			xpGradientPanel1.TabIndex = 0;
 			//
 			// pb
 			//
-			this.pb.Dock = DockStyle.Bottom;
-			this.pb.Location = new Point(0, 438);
-			this.pb.Name = "pb";
-			this.pb.Size = new Size(280, 16);
-			this.pb.TabIndex = 3;
+			pb.Dock = DockStyle.Bottom;
+			pb.Location = new Point(0, 438);
+			pb.Name = "pb";
+			pb.Size = new Size(280, 16);
+			pb.TabIndex = 3;
 			//
 			// btPlay
 			//
-			this.btPlay.Anchor = (
+			btPlay.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -119,64 +119,64 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.btPlay.Location = new Point(200, 408);
-			this.btPlay.Name = "btPlay";
-			this.btPlay.Size = new Size(75, 23);
-			this.btPlay.TabIndex = 2;
-			this.btPlay.Text = "Play";
-			this.btPlay.Click += new EventHandler(this.btPlay_Click);
+			btPlay.Location = new Point(200, 408);
+			btPlay.Name = "btPlay";
+			btPlay.Size = new Size(75, 23);
+			btPlay.TabIndex = 2;
+			btPlay.Text = "Play";
+			btPlay.Click += new EventHandler(btPlay_Click);
 			//
 			// tv
 			//
-			this.tv.Location = new Point(8, 80);
-			this.tv.Name = "tv";
-			this.tv.Size = new Size(264, 322);
-			this.tv.TabIndex = 1;
-			this.tv.AfterSelect += new TreeViewEventHandler(
-				this.tv_AfterSelect
+			tv.Location = new Point(8, 80);
+			tv.Name = "tv";
+			tv.Size = new Size(264, 322);
+			tv.TabIndex = 1;
+			tv.AfterSelect += new TreeViewEventHandler(
+				tv_AfterSelect
 			);
 			//
 			// lb
 			//
-			this.lb.Location = new Point(8, 8);
-			this.lb.Name = "lb";
-			this.lb.Size = new Size(264, 69);
-			this.lb.TabIndex = 0;
-			this.lb.SelectedIndexChanged += new EventHandler(
-				this.lb_SelectedIndexChanged
+			lb.Location = new Point(8, 8);
+			lb.Name = "lb";
+			lb.Size = new Size(264, 69);
+			lb.TabIndex = 0;
+			lb.SelectedIndexChanged += new EventHandler(
+				lb_SelectedIndexChanged
 			);
 			//
 			// panel1
 			//
-			this.panel1.Dock = DockStyle.Fill;
-			this.panel1.Location = new Point(0, 0);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new Size(496, 454);
-			this.panel1.TabIndex = 1;
+			panel1.Dock = DockStyle.Fill;
+			panel1.Location = new Point(0, 0);
+			panel1.Name = "panel1";
+			panel1.Size = new Size(496, 454);
+			panel1.TabIndex = 1;
 			//
 			// timer1
 			//
-			this.timer1.Tick += new EventHandler(this.timer1_Tick);
+			timer1.Tick += new EventHandler(timer1_Tick);
 			//
 			// AnimPreview
 			//
-			this.AutoScaleBaseSize = new Size(5, 14);
-			this.ClientSize = new Size(776, 454);
-			this.Controls.Add(this.panel1);
-			this.Controls.Add(this.xpGradientPanel1);
-			this.Font = new Font(
+			AutoScaleBaseSize = new Size(5, 14);
+			ClientSize = new Size(776, 454);
+			Controls.Add(panel1);
+			Controls.Add(xpGradientPanel1);
+			Font = new Font(
 				"Tahoma",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.Icon = ((Icon)(resources.GetObject("$this.Icon")));
-			this.Name = "AnimPreview";
-			this.StartPosition = FormStartPosition.CenterScreen;
-			this.Text = "Animation Preview";
-			this.xpGradientPanel1.ResumeLayout(false);
-			this.ResumeLayout(false);
+			Icon = ((Icon)(resources.GetObject("$this.Icon")));
+			Name = "AnimPreview";
+			StartPosition = FormStartPosition.CenterScreen;
+			Text = "Animation Preview";
+			xpGradientPanel1.ResumeLayout(false);
+			ResumeLayout(false);
 		}
 		#endregion
 

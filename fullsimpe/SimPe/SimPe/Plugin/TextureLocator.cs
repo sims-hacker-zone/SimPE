@@ -220,9 +220,9 @@ namespace SimPe.Plugin
 		/// <returns>The Keys of the Hashtabel are the Subset names and the Values are the TXTR Files</returns>
 		public Hashtable FindMaterials(Rcol gmdc)
 		{
-			Rcol gmnd = this.FindReferencingGMND(gmdc, null);
-			Rcol shpe = this.FindReferencingSHPE(gmnd, null);
-			Hashtable txmts = this.FindReferencedTXMT(shpe, null);
+			Rcol gmnd = FindReferencingGMND(gmdc, null);
+			Rcol shpe = FindReferencingSHPE(gmnd, null);
+			Hashtable txmts = FindReferencedTXMT(shpe, null);
 			return txmts;
 		}
 
@@ -233,10 +233,10 @@ namespace SimPe.Plugin
 		/// <returns>The Keys of the Hashtabel are the Subset names and the Values are the TXTR Files</returns>
 		public Hashtable FindTextures(Rcol gmdc)
 		{
-			Rcol gmnd = this.FindReferencingGMND(gmdc, null);
-			Rcol shpe = this.FindReferencingSHPE(gmnd, null);
-			Hashtable txmts = this.FindReferencedTXMT(shpe, null);
-			Hashtable txtrs = this.FindReferencedTXTR(txmts, null);
+			Rcol gmnd = FindReferencingGMND(gmdc, null);
+			Rcol shpe = FindReferencingSHPE(gmnd, null);
+			Hashtable txmts = FindReferencedTXMT(shpe, null);
+			Hashtable txtrs = FindReferencedTXTR(txmts, null);
 			return txtrs;
 		}
 

@@ -181,7 +181,7 @@ namespace SimPe.PackedFiles.Wrapper
 			else
 			{
 				header[2] = 0x4f424a66; // will be fixed when commited, this allows a corrupt file to load as a blank file
-				this.Changed = true; // enable commit button for immediate commit.
+				Changed = true; // enable commit button for immediate commit.
 			}
 
 			items = new List<ObjfItem>();
@@ -277,9 +277,9 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public ObjfItem Clone()
 		{
-			ObjfItem clone = new ObjfItem(this.parent);
-			clone.action = this.action;
-			clone.guard = this.guard;
+			ObjfItem clone = new ObjfItem(parent);
+			clone.action = action;
+			clone.guard = guard;
 			return clone;
 		}
 

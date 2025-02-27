@@ -86,12 +86,12 @@ namespace SimPe.Plugin.Tool.Dockable
 			InitializeComponent();
 
 			ThemeManager tm = ThemeManager.Global.CreateChild();
-			tm.AddControl(this.xpGradientPanel1);
-			tm.AddControl(this.xpGradientPanel2);
-			tm.AddControl(this.xpGradientPanel3);
-			tm.AddControl(this.xpGradientPanel4);
+			tm.AddControl(xpGradientPanel1);
+			tm.AddControl(xpGradientPanel2);
+			tm.AddControl(xpGradientPanel3);
+			tm.AddControl(xpGradientPanel4);
 
-			this.lv.View = View.Details;
+			lv.View = View.Details;
 			foreach (Data.TypeAlias a in Helper.TGILoader.FileTypes)
 			{
 				cbtypes.Items.Add(a);
@@ -123,250 +123,250 @@ namespace SimPe.Plugin.Tool.Dockable
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
+			components = new System.ComponentModel.Container();
 			WhidbeyRenderer whidbeyRenderer2 =
 				new WhidbeyRenderer();
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(ResourceDock)
 				);
-			this.manager = new DockManager();
-			this.dockBottom = new DockContainer();
-			this.dcConvert = new DockPanel();
-			this.xpGradientPanel4 = new SteepValley.Windows.Forms.XPGradientPanel();
-			this.tbFloat = new TextBox();
-			this.tbBin = new TextBox();
-			this.tbDec = new TextBox();
-			this.tbHex = new TextBox();
-			this.dcHex = new DockPanel();
-			this.hvc = new HexViewControl();
-			this.panel1 = new Panel();
-			this.button1 = new Button();
-			this.hexEditControl1 = new HexEditControl();
-			this.dcResource = new DockPanel();
-			this.xpGradientPanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
-			this.linkLabel1 = new LinkLabel();
-			this.lbComp = new Label();
-			this.cbComp = new ComboBox();
-			this.pntypes = new Panel();
-			this.tbinstance2 = new TextBox();
-			this.tbinstance = new TextBox();
-			this.label11 = new Label();
-			this.tbtype = new TextBox();
-			this.label8 = new Label();
-			this.label9 = new Label();
-			this.label10 = new Label();
-			this.tbgroup = new TextBox();
-			this.cbtypes = new ComboBox();
-			this.dcPackage = new DockPanel();
-			this.xpGradientPanel3 = new SteepValley.Windows.Forms.XPGradientPanel();
-			this.lv = new ListView();
-			this.clOffset = new ColumnHeader();
-			this.clSize = new ColumnHeader();
-			this.label4 = new Label();
-			this.pgHead = new PropertyGrid();
-			this.dcWrapper = new DockPanel();
-			this.xpGradientPanel2 = new SteepValley.Windows.Forms.XPGradientPanel();
-			this.lbName = new Label();
-			this.pb = new PictureBox();
-			this.lbDesc = new Label();
-			this.lbVersion = new Label();
-			this.lbAuthor = new Label();
-			this.label5 = new Label();
-			this.label2 = new Label();
-			this.label1 = new Label();
-			this.label3 = new Label();
-			this.xpCueBannerExtender1 =
-				new SteepValley.Windows.Forms.XPCueBannerExtender(this.components);
-			this.manager.SuspendLayout();
-			this.dockBottom.SuspendLayout();
-			this.dcConvert.SuspendLayout();
-			this.xpGradientPanel4.SuspendLayout();
-			this.dcHex.SuspendLayout();
-			this.panel1.SuspendLayout();
-			this.dcResource.SuspendLayout();
-			this.xpGradientPanel1.SuspendLayout();
-			this.pntypes.SuspendLayout();
-			this.dcPackage.SuspendLayout();
-			this.xpGradientPanel3.SuspendLayout();
-			this.dcWrapper.SuspendLayout();
-			this.xpGradientPanel2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
-			this.SuspendLayout();
+			manager = new DockManager();
+			dockBottom = new DockContainer();
+			dcConvert = new DockPanel();
+			xpGradientPanel4 = new SteepValley.Windows.Forms.XPGradientPanel();
+			tbFloat = new TextBox();
+			tbBin = new TextBox();
+			tbDec = new TextBox();
+			tbHex = new TextBox();
+			dcHex = new DockPanel();
+			hvc = new HexViewControl();
+			panel1 = new Panel();
+			button1 = new Button();
+			hexEditControl1 = new HexEditControl();
+			dcResource = new DockPanel();
+			xpGradientPanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
+			linkLabel1 = new LinkLabel();
+			lbComp = new Label();
+			cbComp = new ComboBox();
+			pntypes = new Panel();
+			tbinstance2 = new TextBox();
+			tbinstance = new TextBox();
+			label11 = new Label();
+			tbtype = new TextBox();
+			label8 = new Label();
+			label9 = new Label();
+			label10 = new Label();
+			tbgroup = new TextBox();
+			cbtypes = new ComboBox();
+			dcPackage = new DockPanel();
+			xpGradientPanel3 = new SteepValley.Windows.Forms.XPGradientPanel();
+			lv = new ListView();
+			clOffset = new ColumnHeader();
+			clSize = new ColumnHeader();
+			label4 = new Label();
+			pgHead = new PropertyGrid();
+			dcWrapper = new DockPanel();
+			xpGradientPanel2 = new SteepValley.Windows.Forms.XPGradientPanel();
+			lbName = new Label();
+			pb = new PictureBox();
+			lbDesc = new Label();
+			lbVersion = new Label();
+			lbAuthor = new Label();
+			label5 = new Label();
+			label2 = new Label();
+			label1 = new Label();
+			label3 = new Label();
+			xpCueBannerExtender1 =
+				new SteepValley.Windows.Forms.XPCueBannerExtender(components);
+			manager.SuspendLayout();
+			dockBottom.SuspendLayout();
+			dcConvert.SuspendLayout();
+			xpGradientPanel4.SuspendLayout();
+			dcHex.SuspendLayout();
+			panel1.SuspendLayout();
+			dcResource.SuspendLayout();
+			xpGradientPanel1.SuspendLayout();
+			pntypes.SuspendLayout();
+			dcPackage.SuspendLayout();
+			xpGradientPanel3.SuspendLayout();
+			dcWrapper.SuspendLayout();
+			xpGradientPanel2.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(pb)).BeginInit();
+			SuspendLayout();
 			//
 			// sandDockManager1
 			//
-			this.manager.Controls.Add(this.dockBottom);
-			this.manager.DefaultSize = new System.Drawing.Size(100, 100);
-			resources.ApplyResources(this.manager, "sandDockManager1");
-			this.manager.DragBorder = true;
-			this.manager.Manager = this.manager;
-			this.manager.Name = "sandDockManager1";
-			this.manager.NoCleanup = false;
-			this.manager.Renderer = whidbeyRenderer2;
-			this.manager.TabImage = null;
-			this.manager.TabText = "";
+			manager.Controls.Add(dockBottom);
+			manager.DefaultSize = new System.Drawing.Size(100, 100);
+			resources.ApplyResources(manager, "sandDockManager1");
+			manager.DragBorder = true;
+			manager.Manager = manager;
+			manager.Name = "sandDockManager1";
+			manager.NoCleanup = false;
+			manager.Renderer = whidbeyRenderer2;
+			manager.TabImage = null;
+			manager.TabText = "";
 			//
 			// dockBottom
 			//
-			this.dockBottom.Controls.Add(this.dcPackage);
-			this.dockBottom.Controls.Add(this.dcResource);
-			this.dockBottom.Controls.Add(this.dcWrapper);
-			this.dockBottom.Controls.Add(this.dcHex);
-			this.dockBottom.Controls.Add(this.dcConvert);
-			resources.ApplyResources(this.dockBottom, "dockBottom");
-			this.dockBottom.DragBorder = true;
-			this.dockBottom.Manager = this.manager;
-			this.dockBottom.Name = "dockBottom";
-			this.dockBottom.NoCleanup = false;
-			this.dockBottom.TabImage = null;
-			this.dockBottom.TabText = "";
+			dockBottom.Controls.Add(dcPackage);
+			dockBottom.Controls.Add(dcResource);
+			dockBottom.Controls.Add(dcWrapper);
+			dockBottom.Controls.Add(dcHex);
+			dockBottom.Controls.Add(dcConvert);
+			resources.ApplyResources(dockBottom, "dockBottom");
+			dockBottom.DragBorder = true;
+			dockBottom.Manager = manager;
+			dockBottom.Name = "dockBottom";
+			dockBottom.NoCleanup = false;
+			dockBottom.TabImage = null;
+			dockBottom.TabText = "";
 			//
 			// dcConvert
 			//
-			this.dcConvert.AllowClose = true;
-			this.dcConvert.AllowDockBottom = true;
-			this.dcConvert.AllowDockCenter = true;
-			this.dcConvert.AllowDockLeft = true;
-			this.dcConvert.AllowDockRight = true;
-			this.dcConvert.AllowDockTop = true;
-			this.dcConvert.AllowFloat = true;
-			resources.ApplyResources(this.dcConvert, "dcConvert");
-			this.dcConvert.CanUndock = true;
-			this.dcConvert.Controls.Add(this.xpGradientPanel4);
-			this.dcConvert.DockContainer = this.dockBottom;
-			this.dcConvert.DragBorder = false;
-			this.dcConvert.FloatingSize = new System.Drawing.Size(856, 382);
-			this.dcConvert.Image = (
+			dcConvert.AllowClose = true;
+			dcConvert.AllowDockBottom = true;
+			dcConvert.AllowDockCenter = true;
+			dcConvert.AllowDockLeft = true;
+			dcConvert.AllowDockRight = true;
+			dcConvert.AllowDockTop = true;
+			dcConvert.AllowFloat = true;
+			resources.ApplyResources(dcConvert, "dcConvert");
+			dcConvert.CanUndock = true;
+			dcConvert.Controls.Add(xpGradientPanel4);
+			dcConvert.DockContainer = dockBottom;
+			dcConvert.DragBorder = false;
+			dcConvert.FloatingSize = new System.Drawing.Size(856, 382);
+			dcConvert.Image = (
 				(System.Drawing.Image)(resources.GetObject("dcConvert.Image"))
 			);
-			this.dcConvert.Manager = this.manager;
-			this.dcConvert.Name = "dcConvert";
-			this.dcConvert.ShowCloseButton = true;
-			this.dcConvert.ShowCollapseButton = true;
-			this.dcConvert.TabImage = (
+			dcConvert.Manager = manager;
+			dcConvert.Name = "dcConvert";
+			dcConvert.ShowCloseButton = true;
+			dcConvert.ShowCollapseButton = true;
+			dcConvert.TabImage = (
 				(System.Drawing.Image)(resources.GetObject("dcConvert.TabImage"))
 			);
-			this.dcConvert.TabText = "Converter";
+			dcConvert.TabText = "Converter";
 			//
 			// xpGradientPanel4
 			//
-			this.xpGradientPanel4.Controls.Add(this.tbFloat);
-			this.xpGradientPanel4.Controls.Add(this.tbBin);
-			this.xpGradientPanel4.Controls.Add(this.tbDec);
-			this.xpGradientPanel4.Controls.Add(this.tbHex);
-			resources.ApplyResources(this.xpGradientPanel4, "xpGradientPanel4");
-			this.xpGradientPanel4.Name = "xpGradientPanel4";
+			xpGradientPanel4.Controls.Add(tbFloat);
+			xpGradientPanel4.Controls.Add(tbBin);
+			xpGradientPanel4.Controls.Add(tbDec);
+			xpGradientPanel4.Controls.Add(tbHex);
+			resources.ApplyResources(xpGradientPanel4, "xpGradientPanel4");
+			xpGradientPanel4.Name = "xpGradientPanel4";
 			//
 			// tbFloat
 			//
-			this.xpCueBannerExtender1.SetCueBannerText(this.tbFloat, "Float");
-			resources.ApplyResources(this.tbFloat, "tbFloat");
-			this.tbFloat.Name = "tbFloat";
-			this.tbFloat.TextChanged += new EventHandler(this.FloatChanged);
+			xpCueBannerExtender1.SetCueBannerText(tbFloat, "Float");
+			resources.ApplyResources(tbFloat, "tbFloat");
+			tbFloat.Name = "tbFloat";
+			tbFloat.TextChanged += new EventHandler(FloatChanged);
 			//
 			// tbBin
 			//
-			this.xpCueBannerExtender1.SetCueBannerText(this.tbBin, "Binary");
-			resources.ApplyResources(this.tbBin, "tbBin");
-			this.tbBin.Name = "tbBin";
-			this.tbBin.SizeChanged += new EventHandler(this.tbBin_SizeChanged);
-			this.tbBin.TextChanged += new EventHandler(this.BinChanged);
+			xpCueBannerExtender1.SetCueBannerText(tbBin, "Binary");
+			resources.ApplyResources(tbBin, "tbBin");
+			tbBin.Name = "tbBin";
+			tbBin.SizeChanged += new EventHandler(tbBin_SizeChanged);
+			tbBin.TextChanged += new EventHandler(BinChanged);
 			//
 			// tbDec
 			//
-			this.xpCueBannerExtender1.SetCueBannerText(this.tbDec, "Decimal");
-			resources.ApplyResources(this.tbDec, "tbDec");
-			this.tbDec.Name = "tbDec";
-			this.tbDec.TextChanged += new EventHandler(this.DecChanged);
+			xpCueBannerExtender1.SetCueBannerText(tbDec, "Decimal");
+			resources.ApplyResources(tbDec, "tbDec");
+			tbDec.Name = "tbDec";
+			tbDec.TextChanged += new EventHandler(DecChanged);
 			//
 			// tbHex
 			//
-			this.xpCueBannerExtender1.SetCueBannerText(this.tbHex, "Hex.");
-			resources.ApplyResources(this.tbHex, "tbHex");
-			this.tbHex.Name = "tbHex";
-			this.tbHex.TextChanged += new EventHandler(this.HexChanged);
+			xpCueBannerExtender1.SetCueBannerText(tbHex, "Hex.");
+			resources.ApplyResources(tbHex, "tbHex");
+			tbHex.Name = "tbHex";
+			tbHex.TextChanged += new EventHandler(HexChanged);
 			//
 			// dcHex
 			//
-			this.dcHex.AllowClose = true;
-			this.dcHex.AllowDockBottom = true;
-			this.dcHex.AllowDockCenter = true;
-			this.dcHex.AllowDockLeft = true;
-			this.dcHex.AllowDockRight = true;
-			this.dcHex.AllowDockTop = true;
-			this.dcHex.AllowFloat = true;
-			resources.ApplyResources(this.dcHex, "dcHex");
-			this.dcHex.CanUndock = true;
-			this.dcHex.Controls.Add(this.hvc);
-			this.dcHex.Controls.Add(this.panel1);
-			this.dcHex.Controls.Add(this.hexEditControl1);
-			this.dcHex.DockContainer = this.dockBottom;
-			this.dcHex.DragBorder = false;
-			this.dcHex.FloatingSize = new System.Drawing.Size(856, 382);
-			this.dcHex.Image = (
+			dcHex.AllowClose = true;
+			dcHex.AllowDockBottom = true;
+			dcHex.AllowDockCenter = true;
+			dcHex.AllowDockLeft = true;
+			dcHex.AllowDockRight = true;
+			dcHex.AllowDockTop = true;
+			dcHex.AllowFloat = true;
+			resources.ApplyResources(dcHex, "dcHex");
+			dcHex.CanUndock = true;
+			dcHex.Controls.Add(hvc);
+			dcHex.Controls.Add(panel1);
+			dcHex.Controls.Add(hexEditControl1);
+			dcHex.DockContainer = dockBottom;
+			dcHex.DragBorder = false;
+			dcHex.FloatingSize = new System.Drawing.Size(856, 382);
+			dcHex.Image = (
 				(System.Drawing.Image)(resources.GetObject("dcHex.Image"))
 			);
-			this.dcHex.Manager = this.manager;
-			this.dcHex.Name = "dcHex";
-			this.dcHex.ShowCloseButton = true;
-			this.dcHex.ShowCollapseButton = true;
-			this.dcHex.TabImage = (
+			dcHex.Manager = manager;
+			dcHex.Name = "dcHex";
+			dcHex.ShowCloseButton = true;
+			dcHex.ShowCollapseButton = true;
+			dcHex.TabImage = (
 				(System.Drawing.Image)(resources.GetObject("dcHex.TabImage"))
 			);
-			this.dcHex.TabText = "Hex";
-			this.dcHex.VisibleChanged += new EventHandler(
-				this.dcHex_VisibleChanged
+			dcHex.TabText = "Hex";
+			dcHex.VisibleChanged += new EventHandler(
+				dcHex_VisibleChanged
 			);
 			//
 			// hvc
 			//
-			this.hvc.Blocks = ((byte)(2));
-			this.hvc.CharBoxWidth = 220;
-			this.hvc.CurrentRow = 0;
-			this.hvc.Data = new byte[0];
-			resources.ApplyResources(this.hvc, "hvc");
-			this.hvc.FocusedForeColor = System.Drawing.Color.FromArgb(
+			hvc.Blocks = ((byte)(2));
+			hvc.CharBoxWidth = 220;
+			hvc.CurrentRow = 0;
+			hvc.Data = new byte[0];
+			resources.ApplyResources(hvc, "hvc");
+			hvc.FocusedForeColor = System.Drawing.Color.FromArgb(
 				((int)(((byte)(96)))),
 				((int)(((byte)(0)))),
 				((int)(((byte)(0)))),
 				((int)(((byte)(0))))
 			);
-			this.hvc.GridColor = System.Drawing.Color.FromArgb(
+			hvc.GridColor = System.Drawing.Color.FromArgb(
 				((int)(((byte)(50)))),
 				((int)(((byte)(255)))),
 				((int)(((byte)(140)))),
 				((int)(((byte)(0))))
 			);
-			this.hvc.HeadColor = System.Drawing.Color.DarkOrange;
-			this.hvc.HeadForeColor = System.Drawing.Color.SeaShell;
-			this.hvc.HighlightColor = System.Drawing.Color.FromArgb(
+			hvc.HeadColor = System.Drawing.Color.DarkOrange;
+			hvc.HeadForeColor = System.Drawing.Color.SeaShell;
+			hvc.HighlightColor = System.Drawing.Color.FromArgb(
 				((int)(((byte)(190)))),
 				((int)(((byte)(255)))),
 				((int)(((byte)(140)))),
 				((int)(((byte)(0))))
 			);
-			this.hvc.HighlightForeColor = System.Drawing.SystemColors.HighlightText;
-			this.hvc.HighlightZeros = false;
-			this.hvc.Name = "hvc";
-			this.hvc.Offset = 0;
-			this.hvc.OffsetBoxWidth = 83;
-			this.hvc.SelectedByte = ((byte)(0));
-			this.hvc.SelectedChar = '\0';
-			this.hvc.SelectedDouble = 0;
-			this.hvc.SelectedFloat = 0F;
-			this.hvc.SelectedInt = 0;
-			this.hvc.SelectedLong = ((long)(0));
-			this.hvc.SelectedShort = ((short)(0));
-			this.hvc.SelectedUInt = ((uint)(0u));
-			this.hvc.SelectedULong = ((ulong)(0ul));
-			this.hvc.SelectedUShort = ((ushort)(0));
-			this.hvc.Selection = new byte[0];
-			this.hvc.SelectionColor = System.Drawing.SystemColors.Highlight;
-			this.hvc.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			this.hvc.ShowGrid = true;
-			this.hvc.View = HexViewControl.ViewState.Hex;
-			this.hvc.ZeroCellColor = System.Drawing.Color.FromArgb(
+			hvc.HighlightForeColor = System.Drawing.SystemColors.HighlightText;
+			hvc.HighlightZeros = false;
+			hvc.Name = "hvc";
+			hvc.Offset = 0;
+			hvc.OffsetBoxWidth = 83;
+			hvc.SelectedByte = ((byte)(0));
+			hvc.SelectedChar = '\0';
+			hvc.SelectedDouble = 0;
+			hvc.SelectedFloat = 0F;
+			hvc.SelectedInt = 0;
+			hvc.SelectedLong = ((long)(0));
+			hvc.SelectedShort = ((short)(0));
+			hvc.SelectedUInt = ((uint)(0u));
+			hvc.SelectedULong = ((ulong)(0ul));
+			hvc.SelectedUShort = ((ushort)(0));
+			hvc.Selection = new byte[0];
+			hvc.SelectionColor = System.Drawing.SystemColors.Highlight;
+			hvc.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			hvc.ShowGrid = true;
+			hvc.View = HexViewControl.ViewState.Hex;
+			hvc.ZeroCellColor = System.Drawing.Color.FromArgb(
 				((int)(((byte)(150)))),
 				((int)(((byte)(158)))),
 				((int)(((byte)(210)))),
@@ -375,104 +375,104 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			// panel1
 			//
-			this.panel1.BackColor = System.Drawing.SystemColors.Control;
-			this.panel1.Controls.Add(this.button1);
-			resources.ApplyResources(this.panel1, "panel1");
-			this.panel1.Name = "panel1";
+			panel1.BackColor = System.Drawing.SystemColors.Control;
+			panel1.Controls.Add(button1);
+			resources.ApplyResources(panel1, "panel1");
+			panel1.Name = "panel1";
 			//
 			// button1
 			//
-			resources.ApplyResources(this.button1, "button1");
-			this.button1.Name = "button1";
-			this.button1.Click += new EventHandler(this.button1_Click);
+			resources.ApplyResources(button1, "button1");
+			button1.Name = "button1";
+			button1.Click += new EventHandler(button1_Click);
 			//
 			// hexEditControl1
 			//
-			resources.ApplyResources(this.hexEditControl1, "hexEditControl1");
-			this.hexEditControl1.FlatStyle = FlatStyle.System;
-			this.hexEditControl1.LabelFont = new System.Drawing.Font(
+			resources.ApplyResources(hexEditControl1, "hexEditControl1");
+			hexEditControl1.FlatStyle = FlatStyle.System;
+			hexEditControl1.LabelFont = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Italic,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.hexEditControl1.Name = "hexEditControl1";
-			this.hexEditControl1.TabStop = false;
-			this.hexEditControl1.TextBoxFont = new System.Drawing.Font(
+			hexEditControl1.Name = "hexEditControl1";
+			hexEditControl1.TabStop = false;
+			hexEditControl1.TextBoxFont = new System.Drawing.Font(
 				"Courier New",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.hexEditControl1.Vertical = false;
-			this.hexEditControl1.View =
+			hexEditControl1.Vertical = false;
+			hexEditControl1.View =
 				HexViewControl
 				.ViewState
 				.Hex;
-			this.hexEditControl1.Viewer = this.hvc;
+			hexEditControl1.Viewer = hvc;
 			//
 			// dcResource
 			//
-			this.dcResource.AllowClose = true;
-			this.dcResource.AllowDockBottom = true;
-			this.dcResource.AllowDockCenter = true;
-			this.dcResource.AllowDockLeft = true;
-			this.dcResource.AllowDockRight = true;
-			this.dcResource.AllowDockTop = true;
-			this.dcResource.AllowFloat = true;
-			resources.ApplyResources(this.dcResource, "dcResource");
-			this.dcResource.CanUndock = true;
-			this.dcResource.Controls.Add(this.xpGradientPanel1);
-			this.dcResource.DockContainer = this.dockBottom;
-			this.dcResource.DragBorder = false;
-			this.dcResource.FloatingSize = new System.Drawing.Size(856, 382);
-			this.dcResource.Image = (
+			dcResource.AllowClose = true;
+			dcResource.AllowDockBottom = true;
+			dcResource.AllowDockCenter = true;
+			dcResource.AllowDockLeft = true;
+			dcResource.AllowDockRight = true;
+			dcResource.AllowDockTop = true;
+			dcResource.AllowFloat = true;
+			resources.ApplyResources(dcResource, "dcResource");
+			dcResource.CanUndock = true;
+			dcResource.Controls.Add(xpGradientPanel1);
+			dcResource.DockContainer = dockBottom;
+			dcResource.DragBorder = false;
+			dcResource.FloatingSize = new System.Drawing.Size(856, 382);
+			dcResource.Image = (
 				(System.Drawing.Image)(resources.GetObject("dcResource.Image"))
 			);
-			this.dcResource.Manager = this.manager;
-			this.dcResource.Name = "dcResource";
-			this.dcResource.ShowCloseButton = true;
-			this.dcResource.ShowCollapseButton = true;
-			this.dcResource.TabImage = (
+			dcResource.Manager = manager;
+			dcResource.Name = "dcResource";
+			dcResource.ShowCloseButton = true;
+			dcResource.ShowCollapseButton = true;
+			dcResource.TabImage = (
 				(System.Drawing.Image)(resources.GetObject("dcResource.TabImage"))
 			);
-			this.dcResource.TabText = "Resource";
+			dcResource.TabText = "Resource";
 			//
 			// xpGradientPanel1
 			//
-			this.xpGradientPanel1.Controls.Add(this.linkLabel1);
-			this.xpGradientPanel1.Controls.Add(this.lbComp);
-			this.xpGradientPanel1.Controls.Add(this.cbComp);
-			this.xpGradientPanel1.Controls.Add(this.pntypes);
-			resources.ApplyResources(this.xpGradientPanel1, "xpGradientPanel1");
-			this.xpGradientPanel1.Name = "xpGradientPanel1";
+			xpGradientPanel1.Controls.Add(linkLabel1);
+			xpGradientPanel1.Controls.Add(lbComp);
+			xpGradientPanel1.Controls.Add(cbComp);
+			xpGradientPanel1.Controls.Add(pntypes);
+			resources.ApplyResources(xpGradientPanel1, "xpGradientPanel1");
+			xpGradientPanel1.Name = "xpGradientPanel1";
 			//
 			// linkLabel1
 			//
-			this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
-			resources.ApplyResources(this.linkLabel1, "linkLabel1");
-			this.linkLabel1.Name = "linkLabel1";
-			this.linkLabel1.TabStop = true;
-			this.linkLabel1.UseCompatibleTextRendering = true;
-			this.linkLabel1.LinkClicked +=
+			linkLabel1.BackColor = System.Drawing.Color.Transparent;
+			resources.ApplyResources(linkLabel1, "linkLabel1");
+			linkLabel1.Name = "linkLabel1";
+			linkLabel1.TabStop = true;
+			linkLabel1.UseCompatibleTextRendering = true;
+			linkLabel1.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.linkLabel1_LinkClicked
+					linkLabel1_LinkClicked
 				);
 			//
 			// lbComp
 			//
-			this.lbComp.BackColor = System.Drawing.Color.Transparent;
-			resources.ApplyResources(this.lbComp, "lbComp");
-			this.lbComp.Name = "lbComp";
+			lbComp.BackColor = System.Drawing.Color.Transparent;
+			resources.ApplyResources(lbComp, "lbComp");
+			lbComp.Name = "lbComp";
 			//
 			// cbComp
 			//
-			this.xpCueBannerExtender1.SetCueBannerText(this.cbComp, "");
-			this.cbComp.DropDownStyle = ComboBoxStyle.DropDownList;
-			resources.ApplyResources(this.cbComp, "cbComp");
-			this.cbComp.Items.AddRange(
+			xpCueBannerExtender1.SetCueBannerText(cbComp, "");
+			cbComp.DropDownStyle = ComboBoxStyle.DropDownList;
+			resources.ApplyResources(cbComp, "cbComp");
+			cbComp.Items.AddRange(
 				new object[]
 				{
 					resources.GetString("cbComp.Items"),
@@ -480,297 +480,297 @@ namespace SimPe.Plugin.Tool.Dockable
 					resources.GetString("cbComp.Items2"),
 				}
 			);
-			this.cbComp.Name = "cbComp";
-			this.cbComp.SelectedIndexChanged += new EventHandler(
-				this.cbComp_SelectedIndexChanged
+			cbComp.Name = "cbComp";
+			cbComp.SelectedIndexChanged += new EventHandler(
+				cbComp_SelectedIndexChanged
 			);
 			//
 			// pntypes
 			//
-			this.pntypes.BackColor = System.Drawing.Color.Transparent;
-			this.pntypes.Controls.Add(this.tbinstance2);
-			this.pntypes.Controls.Add(this.tbinstance);
-			this.pntypes.Controls.Add(this.label11);
-			this.pntypes.Controls.Add(this.tbtype);
-			this.pntypes.Controls.Add(this.label8);
-			this.pntypes.Controls.Add(this.label9);
-			this.pntypes.Controls.Add(this.label10);
-			this.pntypes.Controls.Add(this.tbgroup);
-			this.pntypes.Controls.Add(this.cbtypes);
-			resources.ApplyResources(this.pntypes, "pntypes");
-			this.pntypes.Name = "pntypes";
+			pntypes.BackColor = System.Drawing.Color.Transparent;
+			pntypes.Controls.Add(tbinstance2);
+			pntypes.Controls.Add(tbinstance);
+			pntypes.Controls.Add(label11);
+			pntypes.Controls.Add(tbtype);
+			pntypes.Controls.Add(label8);
+			pntypes.Controls.Add(label9);
+			pntypes.Controls.Add(label10);
+			pntypes.Controls.Add(tbgroup);
+			pntypes.Controls.Add(cbtypes);
+			resources.ApplyResources(pntypes, "pntypes");
+			pntypes.Name = "pntypes";
 			//
 			// tbinstance2
 			//
-			this.xpCueBannerExtender1.SetCueBannerText(this.tbinstance2, "");
-			resources.ApplyResources(this.tbinstance2, "tbinstance2");
-			this.tbinstance2.Name = "tbinstance2";
-			this.tbinstance2.Leave += new EventHandler(
-				this.tbinstance2_TextChanged
+			xpCueBannerExtender1.SetCueBannerText(tbinstance2, "");
+			resources.ApplyResources(tbinstance2, "tbinstance2");
+			tbinstance2.Name = "tbinstance2";
+			tbinstance2.Leave += new EventHandler(
+				tbinstance2_TextChanged
 			);
-			this.tbinstance2.KeyUp += new KeyEventHandler(
-				this.tbinstance2_KeyUp
+			tbinstance2.KeyUp += new KeyEventHandler(
+				tbinstance2_KeyUp
 			);
-			this.tbinstance2.TextChanged += new EventHandler(this.TextChanged);
+			tbinstance2.TextChanged += new EventHandler(TextChanged);
 			//
 			// tbinstance
 			//
-			this.xpCueBannerExtender1.SetCueBannerText(this.tbinstance, "");
-			resources.ApplyResources(this.tbinstance, "tbinstance");
-			this.tbinstance.Name = "tbinstance";
-			this.tbinstance.Leave += new EventHandler(
-				this.tbinstance_TextChanged
+			xpCueBannerExtender1.SetCueBannerText(tbinstance, "");
+			resources.ApplyResources(tbinstance, "tbinstance");
+			tbinstance.Name = "tbinstance";
+			tbinstance.Leave += new EventHandler(
+				tbinstance_TextChanged
 			);
-			this.tbinstance.KeyUp += new KeyEventHandler(
-				this.tbinstance_KeyUp
+			tbinstance.KeyUp += new KeyEventHandler(
+				tbinstance_KeyUp
 			);
-			this.tbinstance.TextChanged += new EventHandler(this.TextChanged);
+			tbinstance.TextChanged += new EventHandler(TextChanged);
 			//
 			// label11
 			//
-			resources.ApplyResources(this.label11, "label11");
-			this.label11.Name = "label11";
+			resources.ApplyResources(label11, "label11");
+			label11.Name = "label11";
 			//
 			// tbtype
 			//
-			this.xpCueBannerExtender1.SetCueBannerText(this.tbtype, "");
-			resources.ApplyResources(this.tbtype, "tbtype");
-			this.tbtype.Name = "tbtype";
-			this.tbtype.Leave += new EventHandler(this.tbtype_TextChanged2);
-			this.tbtype.KeyUp += new KeyEventHandler(
-				this.tbtype_KeyUp
+			xpCueBannerExtender1.SetCueBannerText(tbtype, "");
+			resources.ApplyResources(tbtype, "tbtype");
+			tbtype.Name = "tbtype";
+			tbtype.Leave += new EventHandler(tbtype_TextChanged2);
+			tbtype.KeyUp += new KeyEventHandler(
+				tbtype_KeyUp
 			);
-			this.tbtype.TextChanged += new EventHandler(this.tbtype_TextChanged);
+			tbtype.TextChanged += new EventHandler(tbtype_TextChanged);
 			//
 			// label8
 			//
-			resources.ApplyResources(this.label8, "label8");
-			this.label8.Name = "label8";
+			resources.ApplyResources(label8, "label8");
+			label8.Name = "label8";
 			//
 			// label9
 			//
-			resources.ApplyResources(this.label9, "label9");
-			this.label9.Name = "label9";
+			resources.ApplyResources(label9, "label9");
+			label9.Name = "label9";
 			//
 			// label10
 			//
-			resources.ApplyResources(this.label10, "label10");
-			this.label10.Name = "label10";
+			resources.ApplyResources(label10, "label10");
+			label10.Name = "label10";
 			//
 			// tbgroup
 			//
-			this.xpCueBannerExtender1.SetCueBannerText(this.tbgroup, "");
-			resources.ApplyResources(this.tbgroup, "tbgroup");
-			this.tbgroup.Name = "tbgroup";
-			this.tbgroup.Leave += new EventHandler(this.tbgroup_TextChanged);
-			this.tbgroup.KeyUp += new KeyEventHandler(
-				this.tbgroup_KeyUp
+			xpCueBannerExtender1.SetCueBannerText(tbgroup, "");
+			resources.ApplyResources(tbgroup, "tbgroup");
+			tbgroup.Name = "tbgroup";
+			tbgroup.Leave += new EventHandler(tbgroup_TextChanged);
+			tbgroup.KeyUp += new KeyEventHandler(
+				tbgroup_KeyUp
 			);
-			this.tbgroup.TextChanged += new EventHandler(this.TextChanged);
+			tbgroup.TextChanged += new EventHandler(TextChanged);
 			//
 			// cbtypes
 			//
-			resources.ApplyResources(this.cbtypes, "cbtypes");
-			this.xpCueBannerExtender1.SetCueBannerText(this.cbtypes, "");
-			this.cbtypes.DropDownStyle =
+			resources.ApplyResources(cbtypes, "cbtypes");
+			xpCueBannerExtender1.SetCueBannerText(cbtypes, "");
+			cbtypes.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbtypes.Name = "cbtypes";
-			this.cbtypes.SelectedIndexChanged += new EventHandler(
-				this.cbtypes_SelectedIndexChanged
+			cbtypes.Name = "cbtypes";
+			cbtypes.SelectedIndexChanged += new EventHandler(
+				cbtypes_SelectedIndexChanged
 			);
 			//
 			// dcPackage
 			//
-			this.dcPackage.AllowClose = true;
-			this.dcPackage.AllowDockBottom = true;
-			this.dcPackage.AllowDockCenter = true;
-			this.dcPackage.AllowDockLeft = true;
-			this.dcPackage.AllowDockRight = true;
-			this.dcPackage.AllowDockTop = true;
-			this.dcPackage.AllowFloat = true;
-			resources.ApplyResources(this.dcPackage, "dcPackage");
-			this.dcPackage.CanUndock = true;
-			this.dcPackage.Controls.Add(this.xpGradientPanel3);
-			this.dcPackage.DockContainer = this.dockBottom;
-			this.dcPackage.DragBorder = false;
-			this.dcPackage.FloatingSize = new System.Drawing.Size(856, 382);
-			this.dcPackage.Image = (
+			dcPackage.AllowClose = true;
+			dcPackage.AllowDockBottom = true;
+			dcPackage.AllowDockCenter = true;
+			dcPackage.AllowDockLeft = true;
+			dcPackage.AllowDockRight = true;
+			dcPackage.AllowDockTop = true;
+			dcPackage.AllowFloat = true;
+			resources.ApplyResources(dcPackage, "dcPackage");
+			dcPackage.CanUndock = true;
+			dcPackage.Controls.Add(xpGradientPanel3);
+			dcPackage.DockContainer = dockBottom;
+			dcPackage.DragBorder = false;
+			dcPackage.FloatingSize = new System.Drawing.Size(856, 382);
+			dcPackage.Image = (
 				(System.Drawing.Image)(resources.GetObject("dcPackage.Image"))
 			);
-			this.dcPackage.Manager = this.manager;
-			this.dcPackage.Name = "dcPackage";
-			this.dcPackage.ShowCloseButton = true;
-			this.dcPackage.ShowCollapseButton = true;
-			this.dcPackage.TabImage = (
+			dcPackage.Manager = manager;
+			dcPackage.Name = "dcPackage";
+			dcPackage.ShowCloseButton = true;
+			dcPackage.ShowCollapseButton = true;
+			dcPackage.TabImage = (
 				(System.Drawing.Image)(resources.GetObject("dcPackage.TabImage"))
 			);
-			this.dcPackage.TabText = "Package ";
+			dcPackage.TabText = "Package ";
 			//
 			// xpGradientPanel3
 			//
-			this.xpGradientPanel3.Controls.Add(this.lv);
-			this.xpGradientPanel3.Controls.Add(this.label4);
-			this.xpGradientPanel3.Controls.Add(this.pgHead);
-			resources.ApplyResources(this.xpGradientPanel3, "xpGradientPanel3");
-			this.xpGradientPanel3.Name = "xpGradientPanel3";
+			xpGradientPanel3.Controls.Add(lv);
+			xpGradientPanel3.Controls.Add(label4);
+			xpGradientPanel3.Controls.Add(pgHead);
+			resources.ApplyResources(xpGradientPanel3, "xpGradientPanel3");
+			xpGradientPanel3.Name = "xpGradientPanel3";
 			//
 			// lv
 			//
-			resources.ApplyResources(this.lv, "lv");
-			this.lv.Columns.AddRange(
-				new ColumnHeader[] { this.clOffset, this.clSize }
+			resources.ApplyResources(lv, "lv");
+			lv.Columns.AddRange(
+				new ColumnHeader[] { clOffset, clSize }
 			);
-			this.lv.FullRowSelect = true;
-			this.lv.GridLines = true;
-			this.lv.HeaderStyle = ColumnHeaderStyle.Nonclickable;
-			this.lv.HideSelection = false;
-			this.lv.Name = "lv";
-			this.lv.UseCompatibleStateImageBehavior = false;
+			lv.FullRowSelect = true;
+			lv.GridLines = true;
+			lv.HeaderStyle = ColumnHeaderStyle.Nonclickable;
+			lv.HideSelection = false;
+			lv.Name = "lv";
+			lv.UseCompatibleStateImageBehavior = false;
 
 			//
 			// clOffset
 			//
-			resources.ApplyResources(this.clOffset, "clOffset");
+			resources.ApplyResources(clOffset, "clOffset");
 			//
 			// clSize
 			//
-			resources.ApplyResources(this.clSize, "clSize");
+			resources.ApplyResources(clSize, "clSize");
 			//
 			// label4
 			//
-			this.label4.BackColor = System.Drawing.Color.Transparent;
-			resources.ApplyResources(this.label4, "label4");
-			this.label4.Name = "label4";
+			label4.BackColor = System.Drawing.Color.Transparent;
+			resources.ApplyResources(label4, "label4");
+			label4.Name = "label4";
 			//
 			// pgHead
 			//
-			resources.ApplyResources(this.pgHead, "pgHead");
-			this.pgHead.LineColor = System.Drawing.SystemColors.ScrollBar;
-			this.pgHead.Name = "pgHead";
-			this.pgHead.PropertySort = PropertySort.Alphabetical;
-			this.pgHead.ToolbarVisible = false;
+			resources.ApplyResources(pgHead, "pgHead");
+			pgHead.LineColor = System.Drawing.SystemColors.ScrollBar;
+			pgHead.Name = "pgHead";
+			pgHead.PropertySort = PropertySort.Alphabetical;
+			pgHead.ToolbarVisible = false;
 			//
 			// dcWrapper
 			//
-			this.dcWrapper.AllowClose = true;
-			this.dcWrapper.AllowDockBottom = true;
-			this.dcWrapper.AllowDockCenter = true;
-			this.dcWrapper.AllowDockLeft = true;
-			this.dcWrapper.AllowDockRight = true;
-			this.dcWrapper.AllowDockTop = true;
-			this.dcWrapper.AllowFloat = true;
-			resources.ApplyResources(this.dcWrapper, "dcWrapper");
-			this.dcWrapper.CanUndock = true;
-			this.dcWrapper.Controls.Add(this.xpGradientPanel2);
-			this.dcWrapper.DockContainer = this.dockBottom;
-			this.dcWrapper.DragBorder = false;
-			this.dcWrapper.FloatingSize = new System.Drawing.Size(856, 382);
-			this.dcWrapper.Image = (
+			dcWrapper.AllowClose = true;
+			dcWrapper.AllowDockBottom = true;
+			dcWrapper.AllowDockCenter = true;
+			dcWrapper.AllowDockLeft = true;
+			dcWrapper.AllowDockRight = true;
+			dcWrapper.AllowDockTop = true;
+			dcWrapper.AllowFloat = true;
+			resources.ApplyResources(dcWrapper, "dcWrapper");
+			dcWrapper.CanUndock = true;
+			dcWrapper.Controls.Add(xpGradientPanel2);
+			dcWrapper.DockContainer = dockBottom;
+			dcWrapper.DragBorder = false;
+			dcWrapper.FloatingSize = new System.Drawing.Size(856, 382);
+			dcWrapper.Image = (
 				(System.Drawing.Image)(resources.GetObject("dcWrapper.Image"))
 			);
-			this.dcWrapper.Manager = this.manager;
-			this.dcWrapper.Name = "dcWrapper";
-			this.dcWrapper.ShowCloseButton = true;
-			this.dcWrapper.ShowCollapseButton = true;
-			this.dcWrapper.TabImage = (
+			dcWrapper.Manager = manager;
+			dcWrapper.Name = "dcWrapper";
+			dcWrapper.ShowCloseButton = true;
+			dcWrapper.ShowCollapseButton = true;
+			dcWrapper.TabImage = (
 				(System.Drawing.Image)(resources.GetObject("dcWrapper.TabImage"))
 			);
-			this.dcWrapper.TabText = "Wrapper";
+			dcWrapper.TabText = "Wrapper";
 			//
 			// xpGradientPanel2
 			//
-			this.xpGradientPanel2.Controls.Add(this.lbName);
-			this.xpGradientPanel2.Controls.Add(this.pb);
-			this.xpGradientPanel2.Controls.Add(this.lbDesc);
-			this.xpGradientPanel2.Controls.Add(this.lbVersion);
-			this.xpGradientPanel2.Controls.Add(this.lbAuthor);
-			this.xpGradientPanel2.Controls.Add(this.label5);
-			this.xpGradientPanel2.Controls.Add(this.label2);
-			this.xpGradientPanel2.Controls.Add(this.label1);
-			this.xpGradientPanel2.Controls.Add(this.label3);
-			resources.ApplyResources(this.xpGradientPanel2, "xpGradientPanel2");
-			this.xpGradientPanel2.Name = "xpGradientPanel2";
+			xpGradientPanel2.Controls.Add(lbName);
+			xpGradientPanel2.Controls.Add(pb);
+			xpGradientPanel2.Controls.Add(lbDesc);
+			xpGradientPanel2.Controls.Add(lbVersion);
+			xpGradientPanel2.Controls.Add(lbAuthor);
+			xpGradientPanel2.Controls.Add(label5);
+			xpGradientPanel2.Controls.Add(label2);
+			xpGradientPanel2.Controls.Add(label1);
+			xpGradientPanel2.Controls.Add(label3);
+			resources.ApplyResources(xpGradientPanel2, "xpGradientPanel2");
+			xpGradientPanel2.Name = "xpGradientPanel2";
 			//
 			// lbName
 			//
-			resources.ApplyResources(this.lbName, "lbName");
-			this.lbName.BackColor = System.Drawing.Color.Transparent;
-			this.lbName.Name = "lbName";
+			resources.ApplyResources(lbName, "lbName");
+			lbName.BackColor = System.Drawing.Color.Transparent;
+			lbName.Name = "lbName";
 			//
 			// pb
 			//
-			this.pb.BackColor = System.Drawing.Color.Transparent;
-			resources.ApplyResources(this.pb, "pb");
-			this.pb.Name = "pb";
-			this.pb.TabStop = false;
+			pb.BackColor = System.Drawing.Color.Transparent;
+			resources.ApplyResources(pb, "pb");
+			pb.Name = "pb";
+			pb.TabStop = false;
 			//
 			// lbDesc
 			//
-			resources.ApplyResources(this.lbDesc, "lbDesc");
-			this.lbDesc.BackColor = System.Drawing.Color.Transparent;
-			this.lbDesc.Name = "lbDesc";
+			resources.ApplyResources(lbDesc, "lbDesc");
+			lbDesc.BackColor = System.Drawing.Color.Transparent;
+			lbDesc.Name = "lbDesc";
 			//
 			// lbVersion
 			//
-			resources.ApplyResources(this.lbVersion, "lbVersion");
-			this.lbVersion.BackColor = System.Drawing.Color.Transparent;
-			this.lbVersion.Name = "lbVersion";
+			resources.ApplyResources(lbVersion, "lbVersion");
+			lbVersion.BackColor = System.Drawing.Color.Transparent;
+			lbVersion.Name = "lbVersion";
 			//
 			// lbAuthor
 			//
-			resources.ApplyResources(this.lbAuthor, "lbAuthor");
-			this.lbAuthor.BackColor = System.Drawing.Color.Transparent;
-			this.lbAuthor.Name = "lbAuthor";
+			resources.ApplyResources(lbAuthor, "lbAuthor");
+			lbAuthor.BackColor = System.Drawing.Color.Transparent;
+			lbAuthor.Name = "lbAuthor";
 			//
 			// label5
 			//
-			this.label5.BackColor = System.Drawing.Color.Transparent;
-			resources.ApplyResources(this.label5, "label5");
-			this.label5.Name = "label5";
+			label5.BackColor = System.Drawing.Color.Transparent;
+			resources.ApplyResources(label5, "label5");
+			label5.Name = "label5";
 			//
 			// label2
 			//
-			this.label2.BackColor = System.Drawing.Color.Transparent;
-			resources.ApplyResources(this.label2, "label2");
-			this.label2.Name = "label2";
+			label2.BackColor = System.Drawing.Color.Transparent;
+			resources.ApplyResources(label2, "label2");
+			label2.Name = "label2";
 			//
 			// label1
 			//
-			this.label1.BackColor = System.Drawing.Color.Transparent;
-			resources.ApplyResources(this.label1, "label1");
-			this.label1.Name = "label1";
+			label1.BackColor = System.Drawing.Color.Transparent;
+			resources.ApplyResources(label1, "label1");
+			label1.Name = "label1";
 			//
 			// label3
 			//
-			this.label3.BackColor = System.Drawing.Color.Transparent;
-			resources.ApplyResources(this.label3, "label3");
-			this.label3.Name = "label3";
+			label3.BackColor = System.Drawing.Color.Transparent;
+			resources.ApplyResources(label3, "label3");
+			label3.Name = "label3";
 			//
 			// ResourceDock
 			//
 			resources.ApplyResources(this, "$this");
-			this.Controls.Add(this.manager);
-			this.Name = "ResourceDock";
-			this.Load += new EventHandler(this.ResourceDock_Load);
-			this.manager.ResumeLayout(false);
-			this.dockBottom.ResumeLayout(false);
-			this.dcConvert.ResumeLayout(false);
-			this.xpGradientPanel4.ResumeLayout(false);
-			this.xpGradientPanel4.PerformLayout();
-			this.dcHex.ResumeLayout(false);
-			this.panel1.ResumeLayout(false);
-			this.dcResource.ResumeLayout(false);
-			this.xpGradientPanel1.ResumeLayout(false);
-			this.pntypes.ResumeLayout(false);
-			this.pntypes.PerformLayout();
-			this.dcPackage.ResumeLayout(false);
-			this.xpGradientPanel3.ResumeLayout(false);
-			this.dcWrapper.ResumeLayout(false);
-			this.xpGradientPanel2.ResumeLayout(false);
-			this.xpGradientPanel2.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
-			this.ResumeLayout(false);
+			Controls.Add(manager);
+			Name = "ResourceDock";
+			Load += new EventHandler(ResourceDock_Load);
+			manager.ResumeLayout(false);
+			dockBottom.ResumeLayout(false);
+			dcConvert.ResumeLayout(false);
+			xpGradientPanel4.ResumeLayout(false);
+			xpGradientPanel4.PerformLayout();
+			dcHex.ResumeLayout(false);
+			panel1.ResumeLayout(false);
+			dcResource.ResumeLayout(false);
+			xpGradientPanel1.ResumeLayout(false);
+			pntypes.ResumeLayout(false);
+			pntypes.PerformLayout();
+			dcPackage.ResumeLayout(false);
+			xpGradientPanel3.ResumeLayout(false);
+			dcWrapper.ResumeLayout(false);
+			xpGradientPanel2.ResumeLayout(false);
+			xpGradientPanel2.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(pb)).EndInit();
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -793,8 +793,8 @@ namespace SimPe.Plugin.Tool.Dockable
 				+ Helper.HexString(
 					((Data.TypeAlias)cbtypes.Items[cbtypes.SelectedIndex]).Id
 				);
-			this.tbtype.Tag = true;
-			tbtype_TextChanged2(this.tbtype, e);
+			tbtype.Tag = true;
+			tbtype_TextChanged2(tbtype, e);
 		}
 
 		private void tbtype_TextChanged(object sender, EventArgs e)
@@ -939,12 +939,12 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		private void cbComp_SelectedIndexChanged(object sender, EventArgs ea)
 		{
-			if (this.cbComp.SelectedIndex < 0)
+			if (cbComp.SelectedIndex < 0)
 			{
 				return;
 			}
 
-			if (this.cbComp.SelectedIndex > 1)
+			if (cbComp.SelectedIndex > 1)
 			{
 				return;
 			}
@@ -989,7 +989,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			if (e.KeyCode == Keys.Enter)
 			{
 				TextChanged(sender, null);
-				this.tbtype_TextChanged2(sender, null);
+				tbtype_TextChanged2(sender, null);
 			}
 		}
 
@@ -998,7 +998,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			if (e.KeyCode == Keys.Enter)
 			{
 				TextChanged(sender, null);
-				this.tbgroup_TextChanged(sender, null);
+				tbgroup_TextChanged(sender, null);
 			}
 		}
 
@@ -1010,7 +1010,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			if (e.KeyCode == Keys.Enter)
 			{
 				TextChanged(sender, null);
-				this.tbinstance_TextChanged(sender, null);
+				tbinstance_TextChanged(sender, null);
 			}
 		}
 
@@ -1022,7 +1022,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			if (e.KeyCode == Keys.Enter)
 			{
 				TextChanged(sender, null);
-				this.tbinstance2_TextChanged(sender, null);
+				tbinstance2_TextChanged(sender, null);
 			}
 		}
 
@@ -1031,23 +1031,23 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		void SetConverted(object exclude, long val)
 		{
-			if (exclude != this.tbDec)
+			if (exclude != tbDec)
 			{
-				this.tbDec.Text = val.ToString();
+				tbDec.Text = val.ToString();
 			}
 
-			if (exclude != this.tbHex)
+			if (exclude != tbHex)
 			{
-				this.tbHex.Text = Helper.HexString(val);
+				tbHex.Text = Helper.HexString(val);
 			}
 
-			if (exclude != this.tbBin)
+			if (exclude != tbBin)
 			{
-				this.tbBin.Text = Convert.ToString(val, 2);
+				tbBin.Text = Convert.ToString(val, 2);
 			};
-			if (exclude != this.tbFloat)
+			if (exclude != tbFloat)
 			{
-				this.tbFloat.Text = BitConverter
+				tbFloat.Text = BitConverter
 					.ToSingle(BitConverter.GetBytes((int)val), 0)
 					.ToString();
 			}
@@ -1055,24 +1055,24 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		void ClearConverted(object exclude)
 		{
-			if (exclude != this.tbDec)
+			if (exclude != tbDec)
 			{
-				this.tbDec.Text = "";
+				tbDec.Text = "";
 			}
 
-			if (exclude != this.tbHex)
+			if (exclude != tbHex)
 			{
-				this.tbHex.Text = "";
+				tbHex.Text = "";
 			}
 
-			if (exclude != this.tbBin)
+			if (exclude != tbBin)
 			{
-				this.tbBin.Text = "";
+				tbBin.Text = "";
 			}
 
-			if (exclude != this.tbFloat)
+			if (exclude != tbFloat)
 			{
-				this.tbFloat.Text = "";
+				tbFloat.Text = "";
 			}
 		}
 
@@ -1088,11 +1088,11 @@ namespace SimPe.Plugin.Tool.Dockable
 			{
 				float f = Convert.ToSingle(tbFloat.Text);
 				long val = BitConverter.ToInt32(BitConverter.GetBytes(f), 0);
-				SetConverted(this.tbFloat, val);
+				SetConverted(tbFloat, val);
 			}
 			catch
 			{
-				ClearConverted(this.tbFloat);
+				ClearConverted(tbFloat);
 			}
 			sysupdate = false;
 		}
@@ -1108,11 +1108,11 @@ namespace SimPe.Plugin.Tool.Dockable
 			try
 			{
 				long val = Convert.ToInt64(tbBin.Text.Replace(" ", ""), 2);
-				SetConverted(this.tbBin, val);
+				SetConverted(tbBin, val);
 			}
 			catch
 			{
-				ClearConverted(this.tbBin);
+				ClearConverted(tbBin);
 			}
 			sysupdate = false;
 		}
@@ -1128,11 +1128,11 @@ namespace SimPe.Plugin.Tool.Dockable
 			try
 			{
 				long val = Convert.ToInt64(tbHex.Text.Replace(" ", ""), 16);
-				SetConverted(this.tbHex, val);
+				SetConverted(tbHex, val);
 			}
 			catch
 			{
-				ClearConverted(this.tbHex);
+				ClearConverted(tbHex);
 			}
 			sysupdate = false;
 		}
@@ -1148,11 +1148,11 @@ namespace SimPe.Plugin.Tool.Dockable
 			try
 			{
 				long val = Convert.ToInt64(tbDec.Text);
-				SetConverted(this.tbDec, val);
+				SetConverted(tbDec, val);
 			}
 			catch (Exception)
 			{
-				ClearConverted(this.tbDec);
+				ClearConverted(tbDec);
 			}
 			sysupdate = false;
 		}
@@ -1175,7 +1175,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		private void dcHex_VisibleChanged(object sender, EventArgs e)
 		{
-			this.hvc.Visible = dcHex.Visible;
+			hvc.Visible = dcHex.Visible;
 			hvc.Refresh(true);
 		}
 

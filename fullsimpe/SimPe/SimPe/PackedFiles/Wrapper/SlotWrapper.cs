@@ -99,7 +99,7 @@ namespace SimPe.PackedFiles.Wrapper
 				"",
 				1,
 				System.Drawing.Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.slot.png")
 				)
 			);
@@ -156,9 +156,9 @@ namespace SimPe.PackedFiles.Wrapper
 
 		#region IFileWrapper Member
 		public override string Description => "FileName="
-					+ this.FileName
+					+ FileName
 					+ ", Version="
-					+ this.Version
+					+ Version
 					+ ", Items="
 					+ Items.Count.ToString();
 

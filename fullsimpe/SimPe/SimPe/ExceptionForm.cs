@@ -64,140 +64,140 @@ namespace SimPe
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(ExceptionForm)
 				);
-			this.lberr = new Label();
-			this.gbdetail = new GroupBox();
-			this.rtb = new RichTextBox();
-			this.linkLabel1 = new LinkLabel();
-			this.pictureBox1 = new PictureBox();
-			this.lldetail = new LinkLabel();
-			this.panel1 = new Panel();
-			this.panel2 = new Panel();
-			this.linkLabel2 = new LinkLabel();
-			this.panel3 = new Panel();
-			this.button1 = new Button();
-			this.tbsup = new TextBox();
-			this.gbdetail.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-			this.panel1.SuspendLayout();
-			this.panel2.SuspendLayout();
-			this.SuspendLayout();
+			lberr = new Label();
+			gbdetail = new GroupBox();
+			rtb = new RichTextBox();
+			linkLabel1 = new LinkLabel();
+			pictureBox1 = new PictureBox();
+			lldetail = new LinkLabel();
+			panel1 = new Panel();
+			panel2 = new Panel();
+			linkLabel2 = new LinkLabel();
+			panel3 = new Panel();
+			button1 = new Button();
+			tbsup = new TextBox();
+			gbdetail.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(pictureBox1)).BeginInit();
+			panel1.SuspendLayout();
+			panel2.SuspendLayout();
+			SuspendLayout();
 			//
 			// lberr
 			//
-			resources.ApplyResources(this.lberr, "lberr");
-			this.lberr.BackColor = System.Drawing.Color.Transparent;
-			this.lberr.ForeColor = System.Drawing.Color.Black;
-			this.lberr.Name = "lberr";
+			resources.ApplyResources(lberr, "lberr");
+			lberr.BackColor = System.Drawing.Color.Transparent;
+			lberr.ForeColor = System.Drawing.Color.Black;
+			lberr.Name = "lberr";
 			//
 			// gbdetail
 			//
-			resources.ApplyResources(this.gbdetail, "gbdetail");
-			this.gbdetail.Controls.Add(this.rtb);
-			this.gbdetail.Controls.Add(this.linkLabel1);
-			this.gbdetail.FlatStyle = FlatStyle.System;
-			this.gbdetail.Name = "gbdetail";
-			this.gbdetail.TabStop = false;
+			resources.ApplyResources(gbdetail, "gbdetail");
+			gbdetail.Controls.Add(rtb);
+			gbdetail.Controls.Add(linkLabel1);
+			gbdetail.FlatStyle = FlatStyle.System;
+			gbdetail.Name = "gbdetail";
+			gbdetail.TabStop = false;
 			//
 			// rtb
 			//
-			resources.ApplyResources(this.rtb, "rtb");
-			this.rtb.BackColor = System.Drawing.SystemColors.ControlLightLight;
-			this.rtb.BorderStyle = BorderStyle.None;
-			this.rtb.ForeColor = System.Drawing.Color.FromArgb(
+			resources.ApplyResources(rtb, "rtb");
+			rtb.BackColor = System.Drawing.SystemColors.ControlLightLight;
+			rtb.BorderStyle = BorderStyle.None;
+			rtb.ForeColor = System.Drawing.Color.FromArgb(
 				((int)(((byte)(64)))),
 				((int)(((byte)(64)))),
 				((int)(((byte)(64))))
 			);
-			this.rtb.Name = "rtb";
-			this.rtb.ReadOnly = true;
+			rtb.Name = "rtb";
+			rtb.ReadOnly = true;
 			//
 			// linkLabel1
 			//
-			resources.ApplyResources(this.linkLabel1, "linkLabel1");
-			this.linkLabel1.Name = "linkLabel1";
-			this.linkLabel1.TabStop = true;
-			this.linkLabel1.LinkClicked +=
+			resources.ApplyResources(linkLabel1, "linkLabel1");
+			linkLabel1.Name = "linkLabel1";
+			linkLabel1.TabStop = true;
+			linkLabel1.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.CopyToClipboard
+					CopyToClipboard
 				);
 			//
 			// pictureBox1
 			//
-			resources.ApplyResources(this.pictureBox1, "pictureBox1");
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.TabStop = false;
+			resources.ApplyResources(pictureBox1, "pictureBox1");
+			pictureBox1.Name = "pictureBox1";
+			pictureBox1.TabStop = false;
 			//
 			// lldetail
 			//
-			resources.ApplyResources(this.lldetail, "lldetail");
-			this.lldetail.Name = "lldetail";
-			this.lldetail.TabStop = true;
-			this.lldetail.LinkClicked +=
+			resources.ApplyResources(lldetail, "lldetail");
+			lldetail.Name = "lldetail";
+			lldetail.TabStop = true;
+			lldetail.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.ShowDetail
+					ShowDetail
 				);
 			//
 			// panel1
 			//
-			this.panel1.Controls.Add(this.pictureBox1);
-			this.panel1.Controls.Add(this.lberr);
-			this.panel1.Controls.Add(this.lldetail);
-			resources.ApplyResources(this.panel1, "panel1");
-			this.panel1.Name = "panel1";
+			panel1.Controls.Add(pictureBox1);
+			panel1.Controls.Add(lberr);
+			panel1.Controls.Add(lldetail);
+			resources.ApplyResources(panel1, "panel1");
+			panel1.Name = "panel1";
 			//
 			// panel2
 			//
-			this.panel2.Controls.Add(this.linkLabel2);
-			this.panel2.Controls.Add(this.panel3);
-			this.panel2.Controls.Add(this.button1);
-			this.panel2.Controls.Add(this.tbsup);
-			resources.ApplyResources(this.panel2, "panel2");
-			this.panel2.Name = "panel2";
+			panel2.Controls.Add(linkLabel2);
+			panel2.Controls.Add(panel3);
+			panel2.Controls.Add(button1);
+			panel2.Controls.Add(tbsup);
+			resources.ApplyResources(panel2, "panel2");
+			panel2.Name = "panel2";
 			//
 			// linkLabel2
 			//
-			resources.ApplyResources(this.linkLabel2, "linkLabel2");
-			this.linkLabel2.Name = "linkLabel2";
-			this.linkLabel2.TabStop = true;
-			this.linkLabel2.UseCompatibleTextRendering = true;
-			this.linkLabel2.LinkClicked +=
-				new LinkLabelLinkClickedEventHandler(this.Support);
+			resources.ApplyResources(linkLabel2, "linkLabel2");
+			linkLabel2.Name = "linkLabel2";
+			linkLabel2.TabStop = true;
+			linkLabel2.UseCompatibleTextRendering = true;
+			linkLabel2.LinkClicked +=
+				new LinkLabelLinkClickedEventHandler(Support);
 			//
 			// panel3
 			//
-			this.panel3.BackColor = System.Drawing.SystemColors.Control;
-			resources.ApplyResources(this.panel3, "panel3");
-			this.panel3.Name = "panel3";
+			panel3.BackColor = System.Drawing.SystemColors.Control;
+			resources.ApplyResources(panel3, "panel3");
+			panel3.Name = "panel3";
 			//
 			// button1
 			//
-			resources.ApplyResources(this.button1, "button1");
-			this.button1.Name = "button1";
-			this.button1.Click += new EventHandler(this.button1_Click);
+			resources.ApplyResources(button1, "button1");
+			button1.Name = "button1";
+			button1.Click += new EventHandler(button1_Click);
 			//
 			// tbsup
 			//
-			resources.ApplyResources(this.tbsup, "tbsup");
-			this.tbsup.Name = "tbsup";
+			resources.ApplyResources(tbsup, "tbsup");
+			tbsup.Name = "tbsup";
 			//
 			// ExceptionForm
 			//
 			resources.ApplyResources(this, "$this");
-			this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-			this.Controls.Add(this.panel2);
-			this.Controls.Add(this.panel1);
-			this.Controls.Add(this.gbdetail);
-			this.FormBorderStyle =
+			BackColor = System.Drawing.SystemColors.ControlLightLight;
+			Controls.Add(panel2);
+			Controls.Add(panel1);
+			Controls.Add(gbdetail);
+			FormBorderStyle =
 				FormBorderStyle
 				.SizableToolWindow;
-			this.Name = "ExceptionForm";
-			this.gbdetail.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-			this.panel1.ResumeLayout(false);
-			this.panel1.PerformLayout();
-			this.panel2.ResumeLayout(false);
-			this.panel2.PerformLayout();
-			this.ResumeLayout(false);
+			Name = "ExceptionForm";
+			gbdetail.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(pictureBox1)).EndInit();
+			panel1.ResumeLayout(false);
+			panel1.PerformLayout();
+			panel2.ResumeLayout(false);
+			panel2.PerformLayout();
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -217,7 +217,7 @@ namespace SimPe
 		{
 			try
 			{
-				Help.ShowHelp(this, this.tbsup.Text);
+				Help.ShowHelp(this, tbsup.Text);
 			}
 			catch (Exception ex)
 			{
@@ -253,12 +253,12 @@ namespace SimPe
 		{
 			lldetail.Visible = false;
 			gbdetail.Visible = true;
-			this.Location = new System.Drawing.Point(
-				this.Location.X - 168,
-				this.Location.Y - 186
+			Location = new System.Drawing.Point(
+				Location.X - 168,
+				Location.Y - 186
 			);
-			this.Size = new System.Drawing.Size(800, 600);
-			this.Refresh();
+			Size = new System.Drawing.Size(800, 600);
+			Refresh();
 		}
 
 		/// <summary>

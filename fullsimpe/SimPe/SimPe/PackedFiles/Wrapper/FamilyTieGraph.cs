@@ -34,9 +34,9 @@ namespace SimPe.PackedFiles.Wrapper
 	{
 		public FamilyTieGraph()
 		{
-			this.AutoSize = true;
-			this.SaveBounds = true;
-			this.LockItems = false;
+			AutoSize = true;
+			SaveBounds = true;
+			LockItems = false;
 
 			ImagePanel eip = new ImagePanel();
 			isz = new Size(120, eip.BestSize(48, 48).Height);
@@ -53,24 +53,24 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public void UpdateGraph(SDesc sdsc, ExtFamilyTies famt)
 		{
-			this.BeginUpdate();
+			BeginUpdate();
 			if (Parent != null)
 			{
-				this.Width = this.Parent.Width;
-				this.Height = this.Parent.Height - 24;
+				Width = Parent.Width;
+				Height = Parent.Height - 24;
 			}
 			bool run = WaitingScreen.Running;
 			WaitingScreen.Wait();
 			try
 			{
-				this.SaveBounds = false;
-				this.AutoSize = true;
-				this.Clear();
+				SaveBounds = false;
+				AutoSize = true;
+				Clear();
 				MainSimElement = null;
 
 				if (famt == null || sdsc == null)
 				{
-					this.EndUpdate();
+					EndUpdate();
 					if (!run)
 					{
 						WaitingScreen.Stop();
@@ -87,7 +87,7 @@ namespace SimPe.PackedFiles.Wrapper
 				int maxct = parents.Length + siblings.Length + childs.Length;
 				if (maxct < 4)
 				{
-					this.LinearUpdateGraph(sdsc, famt);
+					LinearUpdateGraph(sdsc, famt);
 					if (!run)
 					{
 						WaitingScreen.Stop();
@@ -97,13 +97,13 @@ namespace SimPe.PackedFiles.Wrapper
 				}
 
 				double r = GetPinCircleRadius(
-					this.ItemSize,
-					this.ItemSize,
+					ItemSize,
+					ItemSize,
 					maxct
 				);
 				Point center = new Point(
-					Math.Max(this.Width / 2, (int)r + 16 + ItemSize.Width / 2),
-					Math.Max(this.Height / 2, (int)r + ItemSize.Height / 2)
+					Math.Max(Width / 2, (int)r + 16 + ItemSize.Width / 2),
+					Math.Max(Height / 2, (int)r + ItemSize.Height / 2)
 				);
 				MainSimElement = CreateItem(sdsc, 0, 0);
 				MainSimElement.Location = GetCenterLocationOnPinCircle(
@@ -112,7 +112,7 @@ namespace SimPe.PackedFiles.Wrapper
 					ItemSize
 				);
 				MainSimElement.Parent = this;
-				this.SelectedElement = MainSimElement;
+				SelectedElement = MainSimElement;
 				MainSimElement.PanelColor = Color.Black;
 				MainSimElement.ForeColor = Color.White;
 				MainSimElement.EndUpdate();
@@ -179,7 +179,7 @@ namespace SimPe.PackedFiles.Wrapper
 					}
 				}
 
-				this.EndUpdate();
+				EndUpdate();
 			}
 			finally
 			{
@@ -192,14 +192,14 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public void LinearUpdateGraph(SDesc sdsc, ExtFamilyTies famt)
 		{
-			this.BeginUpdate();
+			BeginUpdate();
 
-			this.Clear();
+			Clear();
 			MainSimElement = null;
 
 			if (famt == null || sdsc == null)
 			{
-				this.EndUpdate();
+				EndUpdate();
 				return;
 			}
 
@@ -227,7 +227,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 			MainSimElement = CreateItem(sdsc, left, top);
 			MainSimElement.Parent = this;
-			this.SelectedElement = MainSimElement;
+			SelectedElement = MainSimElement;
 			MainSimElement.PanelColor = Color.Black;
 			MainSimElement.ForeColor = Color.White;
 			MainSimElement.EndUpdate();
@@ -294,7 +294,7 @@ namespace SimPe.PackedFiles.Wrapper
 				}
 			}
 
-			this.EndUpdate();
+			EndUpdate();
 		}
 
 		public ImagePanel AddTieToGraph(
@@ -340,7 +340,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			ImagePanel eip = new ImagePanel();
 			eip.BeginUpdate();
-			eip.SetBounds(left, top + 24, this.ItemSize.Width, this.ItemSize.Height); // add 24 to the top for the panelheader
+			eip.SetBounds(left, top + 24, ItemSize.Width, ItemSize.Height); // add 24 to the top for the panelheader
 			SimPoolControl.CreateItem(eip, sdesc);
 
 			eip.GotFocus += new EventHandler(eip_GotFocus);
@@ -415,7 +415,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <returns></returns>
 		public ImagePanel FindItem(SDesc sdsc)
 		{
-			foreach (GraphPanelElement gpe in this.Items)
+			foreach (GraphPanelElement gpe in Items)
 			{
 				if (gpe is ImagePanel)
 				{

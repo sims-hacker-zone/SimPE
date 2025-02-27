@@ -14,16 +14,16 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				if (this.textures == null)
+				if (textures == null)
 				{
-					this.textures = new RcolTable();
+					textures = new RcolTable();
 				}
 
-				return this.textures;
+				return textures;
 			}
 			set
 			{
-				this.textures = value;
+				textures = value;
 			}
 		}
 
@@ -31,14 +31,14 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				if (this.mmatd == null)
+				if (mmatd == null)
 				{
-					if (!Utility.IsNullOrEmpty(this.Blocks))
+					if (!Utility.IsNullOrEmpty(Blocks))
 					{
-						this.mmatd = this.Blocks[0] as MaterialDefinition;
+						mmatd = Blocks[0] as MaterialDefinition;
 					}
 				}
-				return this.mmatd;
+				return mmatd;
 			}
 		}
 
@@ -51,18 +51,18 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				if (this.MaterialDefinition != null)
+				if (MaterialDefinition != null)
 				{
-					return this.mmatd.GetProperty("stdMatBaseTextureName").Value;
+					return mmatd.GetProperty("stdMatBaseTextureName").Value;
 				}
 
 				return String.Empty;
 			}
 			set
 			{
-				if (this.MaterialDefinition != null)
+				if (MaterialDefinition != null)
 				{
-					this.mmatd.GetProperty("stdMatBaseTextureName").Value = value;
+					mmatd.GetProperty("stdMatBaseTextureName").Value = value;
 				}
 			}
 		}
@@ -71,7 +71,7 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				if (this.MaterialDefinition != null)
+				if (MaterialDefinition != null)
 				{
 					return mmatd.GetProperty("stdMatNormalMapTextureName").Value;
 				}
@@ -80,7 +80,7 @@ namespace SimPe.Plugin
 			}
 			set
 			{
-				if (this.MaterialDefinition != null)
+				if (MaterialDefinition != null)
 				{
 					mmatd.GetProperty("stdMatNormalMapTextureName").Value = value;
 				}
@@ -95,10 +95,10 @@ namespace SimPe.Plugin
 		{
 			Hashtable ret = new Hashtable();
 
-			if (this.ReferenceChains.ContainsKey("stdMatBaseTextureName"))
+			if (ReferenceChains.ContainsKey("stdMatBaseTextureName"))
 			{
 				ArrayList list =
-					this.ReferenceChains["stdMatBaseTextureName"] as ArrayList;
+					ReferenceChains["stdMatBaseTextureName"] as ArrayList;
 				if (!Utility.IsNullOrEmpty(list))
 				{
 					IPackedFileDescriptor pfd = list[0] as IPackedFileDescriptor;
@@ -109,10 +109,10 @@ namespace SimPe.Plugin
 				}
 			}
 
-			if (this.ReferenceChains.ContainsKey("stdMatNormalMapTextureName"))
+			if (ReferenceChains.ContainsKey("stdMatNormalMapTextureName"))
 			{
 				ArrayList list =
-					this.ReferenceChains["stdMatNormalMapTextureName"] as ArrayList;
+					ReferenceChains["stdMatNormalMapTextureName"] as ArrayList;
 				if (!Utility.IsNullOrEmpty(list))
 				{
 					IPackedFileDescriptor pfd = list[0] as IPackedFileDescriptor;
@@ -130,7 +130,7 @@ namespace SimPe.Plugin
 		{
 			Hashtable ret = new Hashtable();
 
-			if (this.MaterialDefinition != null)
+			if (MaterialDefinition != null)
 			{
 				foreach (MaterialDefinitionProperty mmatp in mmatd.Properties)
 				{
@@ -153,7 +153,7 @@ namespace SimPe.Plugin
 
 		public void SetTextureDescriptorNames(Hashtable txtrRef)
 		{
-			if (this.MaterialDefinition != null)
+			if (MaterialDefinition != null)
 			{
 				foreach (DictionaryEntry de in txtrRef)
 				{

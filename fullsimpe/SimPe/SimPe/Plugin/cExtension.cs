@@ -278,7 +278,7 @@ namespace SimPe.Plugin
 
 		public override string ToString()
 		{
-			string name = this.varname + " = (" + Typecode.ToString() + ") ";
+			string name = varname + " = (" + Typecode.ToString() + ") ";
 			switch (Typecode)
 			{
 				case ItemTypes.Value:
@@ -303,7 +303,7 @@ namespace SimPe.Plugin
 				}
 				case ItemTypes.Array:
 				{
-					name += this.Items.Length.ToString() + " items";
+					name += Items.Length.ToString() + " items";
 					break;
 				}
 				case ItemTypes.Rotation:
@@ -540,7 +540,7 @@ namespace SimPe.Plugin
 
 			form.tb_ver.Text = "0x" + Helper.HexString(version);
 			form.tb_type.Text = "0x" + Helper.HexString(TypeCode);
-			form.tb_name.Text = this.varname;
+			form.tb_name.Text = varname;
 
 			form.lb_items.Items.Clear();
 			foreach (ExtensionItem ei in Items)
@@ -548,16 +548,16 @@ namespace SimPe.Plugin
 				form.lb_items.Items.Add(ei);
 			}
 
-			form.gbIems.Tag = this.Items;
+			form.gbIems.Tag = Items;
 		}
 
 		#region IDisposable Member
 
 		public override void Dispose()
 		{
-			if (this.form != null)
+			if (form != null)
 			{
-				this.form.Dispose();
+				form.Dispose();
 			}
 
 			form = null;

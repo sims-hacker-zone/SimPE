@@ -207,7 +207,7 @@ namespace SimPe.Plugin
 				"This File contains the Memories and Inventories of all Sims and Lots that Live in this Neighborhood.",
 				2,
 				System.Drawing.Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.ngbh.png")
 				)
 			);

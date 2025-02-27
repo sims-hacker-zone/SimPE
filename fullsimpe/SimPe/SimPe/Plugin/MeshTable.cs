@@ -32,8 +32,8 @@ namespace SimPe.Plugin
 
 		public MeshTable()
 		{
-			this.loadedMeshes = new Hashtable();
-			this.loadedReferences = new Hashtable();
+			loadedMeshes = new Hashtable();
+			loadedReferences = new Hashtable();
 		}
 
 		public MeshTable(System.ComponentModel.IContainer container)
@@ -48,19 +48,19 @@ namespace SimPe.Plugin
 		public IPackageFile LoadMesh(string filePath)
 		{
 			IPackageFile file = null;
-			if (!this.loadedMeshes.ContainsKey(filePath))
+			if (!loadedMeshes.ContainsKey(filePath))
 			{
 				file = File.LoadFromFile(filePath);
-				MeshInfo[] meshes = this.GetMeshReferences(file);
+				MeshInfo[] meshes = GetMeshReferences(file);
 				if (meshes.Length > 0)
 				{
-					this.loadedMeshes[filePath] = file;
-					this.loadedReferences[filePath] = meshes;
+					loadedMeshes[filePath] = file;
+					loadedReferences[filePath] = meshes;
 				}
 			}
 			else
 			{
-				file = this.FindPackage(filePath);
+				file = FindPackage(filePath);
 			}
 
 			return file;
@@ -68,17 +68,17 @@ namespace SimPe.Plugin
 
 		public bool ValidatePackage(IPackageFile meshPackage)
 		{
-			return this.GetMeshReferences(meshPackage).Length > 0;
+			return GetMeshReferences(meshPackage).Length > 0;
 		}
 
 		public bool IsLoaded(string filePath)
 		{
-			return this.loadedMeshes.ContainsKey(filePath);
+			return loadedMeshes.ContainsKey(filePath);
 		}
 
 		public bool IsLoaded(IPackageFile meshPackage)
 		{
-			return this.loadedMeshes.ContainsValue(meshPackage);
+			return loadedMeshes.ContainsValue(meshPackage);
 		}
 
 		public void ApplyMesh(RecolorItem item, MeshInfo mesh)
@@ -99,7 +99,7 @@ namespace SimPe.Plugin
 			//MeshInfo nodes = this.GetMeshReferences(meshPackage);
 			if (mesh != null)
 			{
-				IPackedFileDescriptor pfd = this.Get3IDRResource(item);
+				IPackedFileDescriptor pfd = Get3IDRResource(item);
 				if (pfd != null)
 				{
 					RefFile refFile = new RefFile();
@@ -118,15 +118,15 @@ namespace SimPe.Plugin
 
 		public void Clear()
 		{
-			this.loadedMeshes.Clear();
-			this.loadedReferences.Clear();
+			loadedMeshes.Clear();
+			loadedReferences.Clear();
 		}
 
 		public IPackageFile FindPackage(string filePathOrName)
 		{
-			if (!this.loadedMeshes.ContainsKey(filePathOrName))
+			if (!loadedMeshes.ContainsKey(filePathOrName))
 			{
-				foreach (DictionaryEntry de in this.loadedMeshes)
+				foreach (DictionaryEntry de in loadedMeshes)
 				{
 					if (
 						String.Compare(
@@ -142,16 +142,16 @@ namespace SimPe.Plugin
 			}
 			else
 			{
-				return (IPackageFile)this.loadedMeshes[filePathOrName];
+				return (IPackageFile)loadedMeshes[filePathOrName];
 			}
 			return null;
 		}
 
 		public MeshInfo[] FindMeshes(string filePathOrName)
 		{
-			if (!this.loadedReferences.ContainsKey(filePathOrName))
+			if (!loadedReferences.ContainsKey(filePathOrName))
 			{
-				foreach (DictionaryEntry de in this.loadedReferences)
+				foreach (DictionaryEntry de in loadedReferences)
 				{
 					if (
 						String.Compare(
@@ -167,14 +167,14 @@ namespace SimPe.Plugin
 			}
 			else
 			{
-				return (MeshInfo[])this.loadedReferences[filePathOrName];
+				return (MeshInfo[])loadedReferences[filePathOrName];
 			}
 			return null;
 		}
 
 		public MeshInfo FindMeshByName(string name)
 		{
-			foreach (MeshInfo[] meshes in this.loadedReferences.Values)
+			foreach (MeshInfo[] meshes in loadedReferences.Values)
 			{
 				foreach (MeshInfo mesh in meshes)
 				{
@@ -225,7 +225,7 @@ namespace SimPe.Plugin
 					continue;
 				}
 
-				IPackedFileDescriptor idr = this.Get3IDRResource(item);
+				IPackedFileDescriptor idr = Get3IDRResource(item);
 				if (idr != null)
 				{
 					RefFile refFile = new RefFile();
@@ -247,7 +247,7 @@ namespace SimPe.Plugin
 							mi.ResourceNode
 						).ToString();
 
-						IScenegraphFileIndexItem idx = this.FindFileByReference(
+						IScenegraphFileIndexItem idx = FindFileByReference(
 							mi.ResourceNode
 						);
 						if (idx != null)
@@ -354,12 +354,12 @@ namespace SimPe.Plugin
 			if (disposing)
 			{
 				// dispose loaded package files
-				foreach (IDisposable file in this.loadedMeshes.Values)
+				foreach (IDisposable file in loadedMeshes.Values)
 				{
 					file.Dispose();
 				}
 
-				this.Clear();
+				Clear();
 			}
 			base.Dispose(disposing);
 		}

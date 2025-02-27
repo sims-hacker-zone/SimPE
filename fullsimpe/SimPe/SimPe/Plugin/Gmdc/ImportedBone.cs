@@ -158,9 +158,9 @@ namespace SimPe.Plugin.Gmdc
 			int ct = 0;
 			foreach (GmdcJoint j in joints)
 			{
-				if (j.Name == this.ImportedName)
+				if (j.Name == ImportedName)
 				{
-					this.TargetIndex = ct;
+					TargetIndex = ct;
 					return;
 				}
 				ct++;
@@ -246,7 +246,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length => this.Count;
+		public int Length => Count;
 
 		/// <summary>
 		/// Create a clone of this Object

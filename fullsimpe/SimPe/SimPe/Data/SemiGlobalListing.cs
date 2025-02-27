@@ -58,7 +58,7 @@ namespace SimPe.Data
 
 			if (name != "" && group != 0)
 			{
-				this.Add(new SemiGlobalAlias(known, group, name));
+				Add(new SemiGlobalAlias(known, group, name));
 			}
 		}
 	}

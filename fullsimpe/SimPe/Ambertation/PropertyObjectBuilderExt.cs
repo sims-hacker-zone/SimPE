@@ -221,8 +221,8 @@ else if (value.GetType()==typeof(ushort))
 			Description = description;
 			Category = category;
 			prop = property;
-			this.ReadOnly = ro;
-			this.Type = type;
+			ReadOnly = ro;
+			Type = type;
 		}
 
 		/// <summary>

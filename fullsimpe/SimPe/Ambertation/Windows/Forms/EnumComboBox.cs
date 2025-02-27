@@ -41,7 +41,7 @@ namespace Ambertation.Windows.Forms
 			System.Resources.ResourceManager rm
 		)
 		{
-			this.Name = obj.ToString();
+			Name = obj.ToString();
 			if (rm != null)
 			{
 				string nname = rm.GetString(
@@ -52,7 +52,7 @@ namespace Ambertation.Windows.Forms
 					Name = nname;
 				}
 			}
-			this.Content = obj;
+			Content = obj;
 		}
 
 		public override string ToString()
@@ -131,7 +131,7 @@ namespace Ambertation.Windows.Forms
 		{
 			get
 			{
-				if (this.SelectedIndex < 0)
+				if (SelectedIndex < 0)
 				{
 					return null;
 				}
@@ -187,14 +187,14 @@ namespace Ambertation.Windows.Forms
 			//
 			// EnumComboBox
 			//
-			this.Name = "EnumComboBox";
+			Name = "EnumComboBox";
 		}
 		#endregion
 
 		public void UpdateContent(bool keepselection)
 		{
-			this.Items.Clear();
-			int last = this.SelectedIndex;
+			Items.Clear();
+			int last = SelectedIndex;
 			if (myenum != null)
 			{
 				Array ls = System.Enum.GetValues(myenum);
@@ -207,13 +207,13 @@ namespace Ambertation.Windows.Forms
 
 			if (keepselection)
 			{
-				if (last < this.Items.Count)
+				if (last < Items.Count)
 				{
-					this.SelectedIndex = last;
+					SelectedIndex = last;
 				}
 				else
 				{
-					this.SelectedIndex = Items.Count - 1;
+					SelectedIndex = Items.Count - 1;
 				}
 			}
 		}

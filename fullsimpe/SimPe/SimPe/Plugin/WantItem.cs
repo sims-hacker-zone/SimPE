@@ -118,7 +118,7 @@ namespace SimPe.Plugin
 		public WantItem(Interfaces.IProviderRegistry provider)
 		{
 			Version = 8;
-			this.Provider = provider;
+			Provider = provider;
 		}
 
 		/// <summary>
@@ -222,11 +222,11 @@ namespace SimPe.Plugin
 		public override string ToString()
 		{
 			string n = Information.Name;
-			n = n.Replace("$Value", this.Property.ToString());
-			n = n.Replace("$Money", this.Property.ToString());
-			string c = WantLoader.WantNameLoader.FindName(Type, this.Value);
+			n = n.Replace("$Value", Property.ToString());
+			n = n.Replace("$Money", Property.ToString());
+			string c = WantLoader.WantNameLoader.FindName(Type, Value);
 
-			if (this.Type == WantType.Career)
+			if (Type == WantType.Career)
 			{
 				if (c != null)
 				{
@@ -238,28 +238,28 @@ namespace SimPe.Plugin
 					n = n.Replace("$CareerTrack", c);
 				}
 			}
-			else if (this.Type == WantType.Skill)
+			else if (Type == WantType.Skill)
 			{
 				if (c != null)
 				{
 					n = n.Replace("$Skill", c);
 				}
 			}
-			else if (this.Type == WantType.Category)
+			else if (Type == WantType.Category)
 			{
 				if (c != null)
 				{
 					n = n.Replace("$ObjectType", c);
 				}
 			}
-			else if (this.Type == WantType.Object)
+			else if (Type == WantType.Object)
 			{
 				if (c != null)
 				{
 					n = n.Replace("$Object", c);
 				}
 			}
-			else if (this.Type == WantType.Sim)
+			else if (Type == WantType.Sim)
 			{
 				if (c != null)
 				{

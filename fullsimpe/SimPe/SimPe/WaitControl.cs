@@ -54,17 +54,17 @@ namespace SimPe
 				}
 				else if (m.Msg == WM_USER_CHANGED_MESSAGE)
 				{
-					this.tbInfo.Text = Message;
+					tbInfo.Text = Message;
 					//this.statusStrip1.Invalidate();
 				}
 				else if (m.Msg == WM_USER_CHANGED_MAXPROGRESS)
 				{
-					this.pb.Value = this.pb.Minimum;
-					this.pb.Maximum = Math.Max(
+					pb.Value = pb.Minimum;
+					pb.Maximum = Math.Max(
 						Math.Max(1, pb.Minimum),
 						m.WParam.ToInt32()
 					);
-					DoShowProgress(this.pb.Maximum > 1);
+					DoShowProgress(pb.Maximum > 1);
 				}
 				else if (m.Msg == WM_USER_CHANGED_PROGRESS)
 				{
@@ -179,7 +179,7 @@ namespace SimPe
 		private void SetProgress(int value)
 		{
 			val = Math.Min(pb.Maximum, value);
-			this.pb.Value = val;
+			pb.Value = val;
 
 			//float perc = (((float)val / (float)pb.Maximum) * 100);
 
@@ -192,7 +192,7 @@ namespace SimPe
 
 			if (diff >= 10)
 			{
-				this.statusStrip1.Refresh();
+				statusStrip1.Refresh();
 				nowp = perc;
 			}
 		}
@@ -226,18 +226,18 @@ namespace SimPe
 			wait = value;
 			if (wait)
 			{
-				this.Visible = true;
+				Visible = true;
 			}
 			else
 			{
-				if (!this.DesignMode && !Helper.WindowsRegistry.ShowWaitBarPermanent)
+				if (!DesignMode && !Helper.WindowsRegistry.ShowWaitBarPermanent)
 				{
-					this.Visible = false;
+					Visible = false;
 				}
 
-				this.Message = "";
-				this.Progress = 0;
-				this.ShowProgress = false;
+				Message = "";
+				Progress = 0;
+				ShowProgress = false;
 			}
 		}
 
@@ -330,7 +330,7 @@ namespace SimPe
 		private void DoShowText(bool value)
 		{
 			stxt = value;
-			this.tbInfo.Visible = stxt;
+			tbInfo.Visible = stxt;
 		}
 
 		#region IWaitingBarControl Member

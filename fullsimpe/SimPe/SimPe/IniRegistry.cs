@@ -47,7 +47,7 @@ namespace SimPe
 		public IniRegistry(String inifile)
 			: this(new StreamReader(inifile))
 		{
-			this.IniFile = inifile;
+			IniFile = inifile;
 		}
 
 		public IniRegistry(StreamReader sr)

@@ -43,7 +43,7 @@ namespace SimPe.Cache
 		/// <param name="goal">The Goal File</param>
 		public void AddItem(GoalInformation goal)
 		{
-			CacheContainer mycc = this.UseConatiner(
+			CacheContainer mycc = UseConatiner(
 				ContainerType.Goal,
 				goal.XGoal.Package.FileName
 			);

@@ -98,7 +98,7 @@ namespace SimPe.Plugin
 				tLightT = new TabPage.LightT();
 			}
 
-			tLightT.tb_lt_ver.Text = "0x" + Helper.HexString(this.version);
+			tLightT.tb_lt_ver.Text = "0x" + Helper.HexString(version);
 			tLightT.tb_lt_name.Text = sgres.FileName;
 		}
 

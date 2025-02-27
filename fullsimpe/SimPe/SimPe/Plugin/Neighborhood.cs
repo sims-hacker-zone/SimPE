@@ -50,7 +50,7 @@ namespace SimPe.Plugin
 
 			if (UserVerification.HaveUserId)
 			{
-				this.lv.ShowItemToolTips = true;
+				lv.ShowItemToolTips = true;
 			}
 		}
 
@@ -76,151 +76,151 @@ namespace SimPe.Plugin
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
+			components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(NeighborhoodForm)
 				);
-			this.lv = new ListView();
-			this.ilist = new ImageList(this.components);
-			this.btnOpen = new Button();
-			this.button2 = new Button();
-			this.button3 = new Button();
-			this.pnBackup = new Ambertation.Windows.Forms.XPTaskBoxSimple();
-			this.pnOptions = new Ambertation.Windows.Forms.XPTaskBoxSimple();
-			this.cbtypes = new ComboBox();
-			this.label1 = new Label();
-			this.btnClose = new Button();
-			this.pnBoPeep = new Panel();
-			this.pbox = new PictureBox();
-			this.pnBackup.SuspendLayout();
-			this.pnOptions.SuspendLayout();
-			this.pnBoPeep.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pbox)).BeginInit();
-			this.SuspendLayout();
+			lv = new ListView();
+			ilist = new ImageList(components);
+			btnOpen = new Button();
+			button2 = new Button();
+			button3 = new Button();
+			pnBackup = new Ambertation.Windows.Forms.XPTaskBoxSimple();
+			pnOptions = new Ambertation.Windows.Forms.XPTaskBoxSimple();
+			cbtypes = new ComboBox();
+			label1 = new Label();
+			btnClose = new Button();
+			pnBoPeep = new Panel();
+			pbox = new PictureBox();
+			pnBackup.SuspendLayout();
+			pnOptions.SuspendLayout();
+			pnBoPeep.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(pbox)).BeginInit();
+			SuspendLayout();
 			//
 			// lv
 			//
-			resources.ApplyResources(this.lv, "lv");
-			this.lv.HideSelection = false;
-			this.lv.LargeImageList = this.ilist;
-			this.lv.MultiSelect = false;
-			this.lv.Name = "lv";
-			this.lv.UseCompatibleStateImageBehavior = false;
-			this.lv.SelectedIndexChanged += new EventHandler(this.NgbSelect);
-			this.lv.DoubleClick += new EventHandler(this.NgbOpen);
+			resources.ApplyResources(lv, "lv");
+			lv.HideSelection = false;
+			lv.LargeImageList = ilist;
+			lv.MultiSelect = false;
+			lv.Name = "lv";
+			lv.UseCompatibleStateImageBehavior = false;
+			lv.SelectedIndexChanged += new EventHandler(NgbSelect);
+			lv.DoubleClick += new EventHandler(NgbOpen);
 			//
 			// ilist
 			//
-			this.ilist.ColorDepth = ColorDepth.Depth32Bit;
-			resources.ApplyResources(this.ilist, "ilist");
-			this.ilist.TransparentColor = Color.Transparent;
+			ilist.ColorDepth = ColorDepth.Depth32Bit;
+			resources.ApplyResources(ilist, "ilist");
+			ilist.TransparentColor = Color.Transparent;
 			//
 			// btnOpen
 			//
-			resources.ApplyResources(this.btnOpen, "btnOpen");
-			this.btnOpen.DialogResult = DialogResult.OK;
-			this.btnOpen.Name = "btnOpen";
-			this.btnOpen.Click += new EventHandler(this.NgbOpen);
+			resources.ApplyResources(btnOpen, "btnOpen");
+			btnOpen.DialogResult = DialogResult.OK;
+			btnOpen.Name = "btnOpen";
+			btnOpen.Click += new EventHandler(NgbOpen);
 			//
 			// button2
 			//
-			resources.ApplyResources(this.button2, "button2");
-			this.button2.Name = "button2";
-			this.button2.Click += new EventHandler(this.NgbBackup);
+			resources.ApplyResources(button2, "button2");
+			button2.Name = "button2";
+			button2.Click += new EventHandler(NgbBackup);
 			//
 			// button3
 			//
-			resources.ApplyResources(this.button3, "button3");
-			this.button3.Name = "button3";
-			this.button3.Click += new EventHandler(this.NgbRestoreBackup);
+			resources.ApplyResources(button3, "button3");
+			button3.Name = "button3";
+			button3.Click += new EventHandler(NgbRestoreBackup);
 			//
 			// pnBackup
 			//
-			resources.ApplyResources(this.pnBackup, "pnBackup");
-			this.pnBackup.BackColor = Color.Transparent;
-			this.pnBackup.Controls.Add(this.pbox);
-			this.pnBackup.Controls.Add(this.button3);
-			this.pnBackup.Controls.Add(this.button2);
-			this.pnBackup.HeaderFont = new Font(
+			resources.ApplyResources(pnBackup, "pnBackup");
+			pnBackup.BackColor = Color.Transparent;
+			pnBackup.Controls.Add(pbox);
+			pnBackup.Controls.Add(button3);
+			pnBackup.Controls.Add(button2);
+			pnBackup.HeaderFont = new Font(
 				"Microsoft Sans Serif",
 				10.25F,
 				FontStyle.Bold
 			);
-			this.pnBackup.IconLocation = new Point(4, 12);
-			this.pnBackup.IconSize = new Size(32, 32);
-			this.pnBackup.Name = "pnBackup";
+			pnBackup.IconLocation = new Point(4, 12);
+			pnBackup.IconSize = new Size(32, 32);
+			pnBackup.Name = "pnBackup";
 			//
 			// pnOptions
 			//
-			resources.ApplyResources(this.pnOptions, "pnOptions");
-			this.pnOptions.BackColor = Color.Transparent;
-			this.pnOptions.Controls.Add(this.cbtypes);
-			this.pnOptions.Controls.Add(this.label1);
-			this.pnOptions.HeaderFont = new Font(
+			resources.ApplyResources(pnOptions, "pnOptions");
+			pnOptions.BackColor = Color.Transparent;
+			pnOptions.Controls.Add(cbtypes);
+			pnOptions.Controls.Add(label1);
+			pnOptions.HeaderFont = new Font(
 				"Microsoft Sans Serif",
 				10.25F,
 				FontStyle.Bold
 			);
-			this.pnOptions.IconLocation = new Point(4, 12);
-			this.pnOptions.IconSize = new Size(32, 32);
-			this.pnOptions.Name = "pnOptions";
+			pnOptions.IconLocation = new Point(4, 12);
+			pnOptions.IconSize = new Size(32, 32);
+			pnOptions.Name = "pnOptions";
 			//
 			// cbtypes
 			//
-			this.cbtypes.FormattingEnabled = true;
-			resources.ApplyResources(this.cbtypes, "cbtypes");
-			this.cbtypes.Name = "cbtypes";
-			this.cbtypes.SelectedIndexChanged += new EventHandler(
-				this.cbtypes_SelectedIndexChanged
+			cbtypes.FormattingEnabled = true;
+			resources.ApplyResources(cbtypes, "cbtypes");
+			cbtypes.Name = "cbtypes";
+			cbtypes.SelectedIndexChanged += new EventHandler(
+				cbtypes_SelectedIndexChanged
 			);
 			//
 			// label1
 			//
-			resources.ApplyResources(this.label1, "label1");
-			this.label1.Name = "label1";
+			resources.ApplyResources(label1, "label1");
+			label1.Name = "label1";
 			//
 			// btnClose
 			//
-			resources.ApplyResources(this.btnClose, "btnClose");
-			this.btnClose.DialogResult = DialogResult.Cancel;
-			this.btnClose.Name = "btnClose";
+			resources.ApplyResources(btnClose, "btnClose");
+			btnClose.DialogResult = DialogResult.Cancel;
+			btnClose.Name = "btnClose";
 			//
 			// pnBoPeep
 			//
-			this.pnBoPeep.BackColor = Color.Transparent;
-			this.pnBoPeep.Controls.Add(this.pnOptions);
-			this.pnBoPeep.Controls.Add(this.btnClose);
-			this.pnBoPeep.Controls.Add(this.btnOpen);
-			this.pnBoPeep.Controls.Add(this.lv);
-			this.pnBoPeep.Controls.Add(this.pnBackup);
-			resources.ApplyResources(this.pnBoPeep, "pnBoPeep");
-			this.pnBoPeep.Name = "pnBoPeep";
+			pnBoPeep.BackColor = Color.Transparent;
+			pnBoPeep.Controls.Add(pnOptions);
+			pnBoPeep.Controls.Add(btnClose);
+			pnBoPeep.Controls.Add(btnOpen);
+			pnBoPeep.Controls.Add(lv);
+			pnBoPeep.Controls.Add(pnBackup);
+			resources.ApplyResources(pnBoPeep, "pnBoPeep");
+			pnBoPeep.Name = "pnBoPeep";
 			//
 			// pbox
 			//
-			resources.ApplyResources(this.pbox, "pbox");
-			this.pbox.Name = "pbox";
-			this.pbox.TabStop = false;
+			resources.ApplyResources(pbox, "pbox");
+			pbox.Name = "pbox";
+			pbox.TabStop = false;
 			//
 			// NeighborhoodForm
 			//
-			this.AcceptButton = this.btnOpen;
+			AcceptButton = btnOpen;
 			resources.ApplyResources(this, "$this");
-			this.CancelButton = this.btnClose;
-			this.Controls.Add(this.pnBoPeep);
-			this.FormBorderStyle =
+			CancelButton = btnClose;
+			Controls.Add(pnBoPeep);
+			FormBorderStyle =
 				FormBorderStyle
 				.SizableToolWindow;
-			this.MaximizeBox = false;
-			this.MinimizeBox = false;
-			this.Name = "NeighborhoodForm";
-			this.pnBackup.ResumeLayout(false);
-			this.pnOptions.ResumeLayout(false);
-			this.pnOptions.PerformLayout();
-			this.pnBoPeep.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.pbox)).EndInit();
-			this.ResumeLayout(false);
+			MaximizeBox = false;
+			MinimizeBox = false;
+			Name = "NeighborhoodForm";
+			pnBackup.ResumeLayout(false);
+			pnOptions.ResumeLayout(false);
+			pnOptions.PerformLayout();
+			pnBoPeep.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(pbox)).EndInit();
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -262,12 +262,12 @@ namespace SimPe.Plugin
 						);
 					}
 
-					this.ilist.Images.Add(img);
+					ilist.Images.Add(img);
 					return;
 				}
 				catch (ArgumentException) { }
 			}
-			this.ilist.Images.Add(new Bitmap(GetImage.Network));
+			ilist.Images.Add(new Bitmap(GetImage.Network));
 		}
 
 		protected void AddNeighborhood(ExpansionItem.NeighborhoodPath np, string path)
@@ -508,13 +508,13 @@ namespace SimPe.Plugin
 			Interfaces.IProviderRegistry prov
 		)
 		{
-			this.Cursor = Cursors.WaitCursor;
+			Cursor = Cursors.WaitCursor;
 			this.package = null;
 			this.prov = prov;
 			source_package = (Packages.File)package;
 			changed = false;
 			UpdateList();
-			this.Cursor = Cursors.Default;
+			Cursor = Cursors.Default;
 			pnBackup.Visible = ShowBackupManager;
 			pnOptions.Visible = ShowSubHoods;
 			RemoteControl.ShowSubForm(this);
@@ -540,7 +540,7 @@ namespace SimPe.Plugin
 			{
 				this.name = name;
 				this.type = type;
-				this.FileName = file;
+				FileName = file;
 			}
 
 			public override string ToString()
@@ -603,7 +603,7 @@ namespace SimPe.Plugin
 					);
 				}
 
-				this.DialogResult = DialogResult.OK;
+				DialogResult = DialogResult.OK;
 				Close();
 			}
 		}
@@ -742,17 +742,17 @@ namespace SimPe.Plugin
 							st.Close();
 							st.Dispose();
 							st = null;
-							this.pnBoPeep.BackgroundImage = img;
+							pnBoPeep.BackgroundImage = img;
 							return;
 						}
 						catch { }
 					}
-					this.pnBoPeep.BackgroundImage = null;
+					pnBoPeep.BackgroundImage = null;
 				}
 			}
 			else if (ShowSubHoods)
 			{
-				this.pnBoPeep.BackgroundImage = null;
+				pnBoPeep.BackgroundImage = null;
 			}
 		}
 

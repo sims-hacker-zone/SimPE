@@ -199,8 +199,8 @@ namespace SimPe.Plugin.Gmdc
 		{
 			AnimationOnly = animationonly;
 
-			this.Input = new System.IO.StreamReader(input);
-			this.Gmdc = gmdc;
+			Input = new System.IO.StreamReader(input);
+			Gmdc = gmdc;
 			SetUpAnimationData();
 
 			if (gmdc == null || input == null)
@@ -219,7 +219,7 @@ namespace SimPe.Plugin.Gmdc
 				}
 			}
 
-			this.ChangeAnim();
+			ChangeAnim();
 
 			return true;
 		}
@@ -312,7 +312,7 @@ namespace SimPe.Plugin.Gmdc
 		protected virtual void ChangeGmdc(ImportedGroups grps, ImportedBones bns)
 		{
 			//remove all existing Groups and Elements
-			if (this.Options.CleanGroups)
+			if (Options.CleanGroups)
 			{
 				for (int i = Gmdc.Groups.Length - 1; i >= 0; i--)
 				{
@@ -475,16 +475,16 @@ namespace SimPe.Plugin.Gmdc
 				}
 			}
 
-			if (this.Options.CleanBones)
+			if (Options.CleanBones)
 			{
 				Gmdc.CleanupBones();
 			}
 
-			if (this.Options.UpdateCres)
+			if (Options.UpdateCres)
 			{
 				if (!IsLocalCres())
 				{
-					this.error +=
+					error +=
 						"\n\nThe referenced CRES and this GMDC are not in the same Package File. For security reasons, SimPe did not Update the Bone Hirarchy and locations!";
 				}
 				else
@@ -842,11 +842,11 @@ namespace SimPe.Plugin.Gmdc
 				ifb.FindTarget(Gmdc.LinkedAnimation);
 			}
 
-			if (ImportJointAnim.Execute(this.AnimationBlocks, Gmdc))
+			if (ImportJointAnim.Execute(AnimationBlocks, Gmdc))
 			{
 				//correct some transformation in special Joints, don't know yet
 				//why they work diffrent
-				if (this.AnimationBlocks.AuskelCorrection)
+				if (AnimationBlocks.AuskelCorrection)
 				{
 					foreach (ImportedFrameBlock ifb in AnimationBlocks)
 					{

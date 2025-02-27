@@ -17,7 +17,7 @@ namespace SimPe.Windows.Forms
 
 		~ResourceViewManager()
 		{
-			this.CancelThreads();
+			CancelThreads();
 		}
 
 		ResourceListViewExt lv;

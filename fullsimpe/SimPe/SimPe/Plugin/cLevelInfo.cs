@@ -58,7 +58,7 @@ namespace SimPe.Plugin
 						new System.IO.MemoryStream(data)
 					);
 					img = ImageLoader.Load(
-						this.TextureSize,
+						TextureSize,
 						data.Length,
 						Format,
 						sr,

@@ -307,8 +307,8 @@ else
 			Graph.Clear();
 			Graph.SaveBounds = false;
 			Graph.AutoSize = true;
-			this.coords.Clear();
-			this.names.Clear();
+			coords.Clear();
+			names.Clear();
 			if (Helper.WindowsRegistry.CresPrioritize)
 			{
 				if (WaitingScreen.Running)

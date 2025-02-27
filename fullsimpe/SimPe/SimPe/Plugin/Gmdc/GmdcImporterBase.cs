@@ -583,9 +583,9 @@ namespace SimPe.Plugin.Gmdc
 				{
 					Exception nex = new Exception(
 						"Error while creating Group List",
-						new Exception(this.ErrorMessage, ex)
+						new Exception(ErrorMessage, ex)
 					);
-					this.error = "";
+					error = "";
 					throw nex;
 				}
 			}

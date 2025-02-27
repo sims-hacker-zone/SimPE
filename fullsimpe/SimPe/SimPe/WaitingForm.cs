@@ -113,12 +113,12 @@ namespace SimPe
 			);
 			lock (lockObj)
 			{
-				if (this.Message == message)
+				if (Message == message)
 				{
 					return;
 				}
 
-				this.Message = message;
+				Message = message;
 				Ambertation.Windows.Forms.APIHelp.SendMessage(
 					myhandle,
 					WM_CHANGE_MESSAGE,
@@ -158,12 +158,12 @@ namespace SimPe
 					);
 					if (i == 1)
 					{
-						this.Show();
-						this.Focus();
+						Show();
+						Focus();
 					}
 					else
 					{
-						this.Hide();
+						Hide();
 					}
 				}
 			}
@@ -191,79 +191,79 @@ namespace SimPe
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(WaitingForm));
-			this.panel1 = new Panel();
-			this.lbmsg = new Label();
-			this.lbwait = new Label();
-			this.pb = new PictureBox();
-			this.pbsimpe = new PictureBox();
-			this.panel1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pbsimpe)).BeginInit();
-			this.SuspendLayout();
+			panel1 = new Panel();
+			lbmsg = new Label();
+			lbwait = new Label();
+			pb = new PictureBox();
+			pbsimpe = new PictureBox();
+			panel1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(pb)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(pbsimpe)).BeginInit();
+			SuspendLayout();
 			//
 			// panel1
 			//
-			this.panel1.AccessibleRole = AccessibleRole.None;
-			this.panel1.BackColor = System.Drawing.Color.Transparent;
-			this.panel1.Controls.Add(this.lbmsg);
-			this.panel1.Controls.Add(this.lbwait);
-			this.panel1.Controls.Add(this.pb);
-			this.panel1.Controls.Add(this.pbsimpe);
-			resources.ApplyResources(this.panel1, "panel1");
-			this.panel1.Name = "panel1";
+			panel1.AccessibleRole = AccessibleRole.None;
+			panel1.BackColor = System.Drawing.Color.Transparent;
+			panel1.Controls.Add(lbmsg);
+			panel1.Controls.Add(lbwait);
+			panel1.Controls.Add(pb);
+			panel1.Controls.Add(pbsimpe);
+			resources.ApplyResources(panel1, "panel1");
+			panel1.Name = "panel1";
 			//
 			// lbmsg
 			//
-			this.lbmsg.AccessibleRole = AccessibleRole.Text;
-			this.lbmsg.ForeColor = System.Drawing.Color.FromArgb(
+			lbmsg.AccessibleRole = AccessibleRole.Text;
+			lbmsg.ForeColor = System.Drawing.Color.FromArgb(
 				((int)(((byte)(204)))),
 				((int)(((byte)(211)))),
 				((int)(((byte)(213))))
 			);
-			resources.ApplyResources(this.lbmsg, "lbmsg");
-			this.lbmsg.Name = "lbmsg";
+			resources.ApplyResources(lbmsg, "lbmsg");
+			lbmsg.Name = "lbmsg";
 			//
 			// lbwait
 			//
-			this.lbwait.AccessibleRole = AccessibleRole.StaticText;
-			resources.ApplyResources(this.lbwait, "lbwait");
-			this.lbwait.ForeColor = System.Drawing.Color.Gray;
-			this.lbwait.Name = "lbwait";
+			lbwait.AccessibleRole = AccessibleRole.StaticText;
+			resources.ApplyResources(lbwait, "lbwait");
+			lbwait.ForeColor = System.Drawing.Color.Gray;
+			lbwait.Name = "lbwait";
 			//
 			// pb
 			//
-			this.pb.AccessibleRole = AccessibleRole.Graphic;
-			resources.ApplyResources(this.pb, "pb");
-			this.pb.Name = "pb";
-			this.pb.TabStop = false;
+			pb.AccessibleRole = AccessibleRole.Graphic;
+			resources.ApplyResources(pb, "pb");
+			pb.Name = "pb";
+			pb.TabStop = false;
 			//
 			// pbsimpe
 			//
-			this.pbsimpe.AccessibleRole = AccessibleRole.Graphic;
-			resources.ApplyResources(this.pbsimpe, "pbsimpe");
-			this.pbsimpe.Name = "pbsimpe";
-			this.pbsimpe.TabStop = false;
+			pbsimpe.AccessibleRole = AccessibleRole.Graphic;
+			resources.ApplyResources(pbsimpe, "pbsimpe");
+			pbsimpe.Name = "pbsimpe";
+			pbsimpe.TabStop = false;
 			//
 			// WaitingForm
 			//
-			this.AccessibleRole = AccessibleRole.None;
+			AccessibleRole = AccessibleRole.None;
 			resources.ApplyResources(this, "$this");
-			this.BackColor = System.Drawing.Color.FromArgb(
+			BackColor = System.Drawing.Color.FromArgb(
 				((int)(((byte)(102)))),
 				((int)(((byte)(102)))),
 				((int)(((byte)(153))))
 			);
-			this.CausesValidation = false;
-			this.Controls.Add(this.panel1);
-			this.FormBorderStyle = FormBorderStyle.None;
-			this.Name = "WaitingForm";
-			this.ShowInTaskbar = false;
-			this.TransparencyKey = System.Drawing.Color.Fuchsia;
-			this.panel1.ResumeLayout(false);
-			this.panel1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pbsimpe)).EndInit();
-			this.ResumeLayout(false);
+			CausesValidation = false;
+			Controls.Add(panel1);
+			FormBorderStyle = FormBorderStyle.None;
+			Name = "WaitingForm";
+			ShowInTaskbar = false;
+			TransparencyKey = System.Drawing.Color.Fuchsia;
+			panel1.ResumeLayout(false);
+			panel1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(pb)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(pbsimpe)).EndInit();
+			ResumeLayout(false);
 		}
 		#endregion
 	}

@@ -105,13 +105,13 @@ namespace Ambertation.Viewer
 
 			public void Read(System.IO.BinaryReader br)
 			{
-				this.IdLength = br.ReadByte();
-				this.ColorMapType = br.ReadByte();
-				this.ImageType = br.ReadByte();
-				this.ColorMap = new tgaColorMap();
-				this.ImageSpec = new tgaImageSpec();
-				this.ColorMap.Read(br);
-				this.ImageSpec.Read(br);
+				IdLength = br.ReadByte();
+				ColorMapType = br.ReadByte();
+				ImageType = br.ReadByte();
+				ColorMap = new tgaColorMap();
+				ImageSpec = new tgaImageSpec();
+				ColorMap.Read(br);
+				ImageSpec.Read(br);
 			}
 
 			public bool RleEncoded => ImageType >= 9;

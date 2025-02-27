@@ -29,34 +29,34 @@ namespace SimPe.Plugin
 			intern = true;
 			if (Helper.WindowsRegistry.UseBigIcons)
 			{
-				this.rtbContent.Size = new System.Drawing.Size(
+				rtbContent.Size = new System.Drawing.Size(
 					530,
-					this.rtbContent.Size.Height
+					rtbContent.Size.Height
 				);
-				this.rtbContent.Font = new System.Drawing.Font(
-					this.rtbContent.Font.FontFamily,
+				rtbContent.Font = new System.Drawing.Font(
+					rtbContent.Font.FontFamily,
 					12F
 				);
 			}
 
-			this.rtbContent.Text = "";
-			this.tbGuid.Text = Wrapper.GooiVal;
-			this.tbCrc.Text = Wrapper.CRCVal;
-			this.tbVer.Text = Wrapper.VersVal;
+			rtbContent.Text = "";
+			tbGuid.Text = Wrapper.GooiVal;
+			tbCrc.Text = Wrapper.CRCVal;
+			tbVer.Text = Wrapper.VersVal;
 
 			if (Wrapper.Vesion == 1)
 			{
-				this.CanCommit = false;
-				this.rtbContent.Visible = true;
+				CanCommit = false;
+				rtbContent.Visible = true;
 				for (int i = 0; i < Wrapper.Qunty; i++)
 				{
-					this.rtbContent.Text += Wrapper.Conent[i] + "\r\n";
+					rtbContent.Text += Wrapper.Conent[i] + "\r\n";
 				}
 			}
 			else
 			{
-				this.CanCommit = true;
-				this.rtbContent.Visible = false;
+				CanCommit = true;
+				rtbContent.Visible = false;
 			}
 			intern = false;
 		}
@@ -76,7 +76,7 @@ namespace SimPe.Plugin
 
 		void IDisposable.Dispose()
 		{
-			this.TPFW.Dispose();
+			TPFW.Dispose();
 		}
 		#endregion
 
@@ -84,7 +84,7 @@ namespace SimPe.Plugin
 		{
 			if (!intern)
 			{
-				Wrapper.VersVal = this.tbVer.Text;
+				Wrapper.VersVal = tbVer.Text;
 			}
 		}
 	}

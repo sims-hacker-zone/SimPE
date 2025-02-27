@@ -45,7 +45,7 @@ namespace SimPe.PackedFiles.Wrapper
 				"Contains all Familyties that are stored in a Neighborhood.",
 				2,
 				System.Drawing.Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.familyties.png")
 				)
 			);
@@ -67,7 +67,7 @@ namespace SimPe.PackedFiles.Wrapper
 		public SDesc[] ParentSims(SDesc sdsc)
 		{
 			ArrayList list = new ArrayList();
-			Supporting.FamilyTieSim fts = this.FindTies(sdsc);
+			Supporting.FamilyTieSim fts = FindTies(sdsc);
 			if (fts != null)
 			{
 				foreach (
@@ -102,7 +102,7 @@ namespace SimPe.PackedFiles.Wrapper
 		public SDesc[] SiblingSims(SDesc sdsc)
 		{
 			ArrayList list = new ArrayList();
-			Supporting.FamilyTieSim fts = this.FindTies(sdsc);
+			Supporting.FamilyTieSim fts = FindTies(sdsc);
 
 			if (fts != null)
 			{
@@ -138,7 +138,7 @@ namespace SimPe.PackedFiles.Wrapper
 		public SDesc[] ChildSims(SDesc sdsc)
 		{
 			ArrayList list = new ArrayList();
-			Supporting.FamilyTieSim fts = this.FindTies(sdsc);
+			Supporting.FamilyTieSim fts = FindTies(sdsc);
 
 			if (fts != null)
 			{
@@ -171,7 +171,7 @@ namespace SimPe.PackedFiles.Wrapper
 		public SDesc[] SpouseSims(SDesc sdsc)
 		{
 			ArrayList list = new ArrayList();
-			Supporting.FamilyTieSim fts = this.FindTies(sdsc);
+			Supporting.FamilyTieSim fts = FindTies(sdsc);
 
 			if (fts != null)
 			{

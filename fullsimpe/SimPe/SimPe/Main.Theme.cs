@@ -26,11 +26,11 @@ namespace SimPe
 	{
 		void InitTheme()
 		{
-			this.dcResourceList.Visible = true;
-			this.dcResource.Visible = true;
+			dcResourceList.Visible = true;
+			dcResource.Visible = true;
 			//setup the Theme Manager
 
-			this.manager.Renderer = new Ambertation.Windows.Forms.GlossyRenderer();
+			manager.Renderer = new Ambertation.Windows.Forms.GlossyRenderer();
 		}
 
 		private void StoreLayout()
@@ -84,7 +84,7 @@ namespace SimPe
 			tbAction.Visible = true;
 			toolBar1.Visible = true;
 			tbWindow.Visible = false;
-			this.dcResourceList.Visible = true;
+			dcResourceList.Visible = true;
 		}
 
 		/// <summary>
@@ -92,7 +92,7 @@ namespace SimPe
 		/// </summary>
 		void ReloadLayout()
 		{
-			this.SuspendLayout();
+			SuspendLayout();
 			//store defaults
 			if (defaultlayout == null)
 			{
@@ -139,7 +139,7 @@ namespace SimPe
 					tsmi.Checked = dp.IsOpen;
 				}
 			}
-			this.ResumeLayout();
+			ResumeLayout();
 		}
 
 		private void FixCheckedState(ToolStrip ts)

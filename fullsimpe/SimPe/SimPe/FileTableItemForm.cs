@@ -38,7 +38,7 @@ namespace SimPe
 				}
 			);
 
-			this.cbEpVer.Items.Clear();
+			cbEpVer.Items.Clear();
 			cbEpVer.Items.Add(Localization.GetString("All"));
 			foreach (ExpansionItem ei in PathProvider.Global.Expansions)
 			{
@@ -73,109 +73,109 @@ namespace SimPe
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(FileTableItemForm)
 				);
-			this.xpGradientPanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
-			this.button3 = new Button();
-			this.button2 = new Button();
-			this.button1 = new Button();
-			this.cbEpVer = new ComboBox();
-			this.tbRoot = new TextBox();
-			this.tbName = new TextBox();
-			this.cbRec = new CheckBox();
-			this.label3 = new Label();
-			this.label2 = new Label();
-			this.label1 = new Label();
-			this.fbd = new FolderBrowserDialog();
-			this.ofd = new OpenFileDialog();
-			this.xpGradientPanel1.SuspendLayout();
-			this.SuspendLayout();
+			xpGradientPanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
+			button3 = new Button();
+			button2 = new Button();
+			button1 = new Button();
+			cbEpVer = new ComboBox();
+			tbRoot = new TextBox();
+			tbName = new TextBox();
+			cbRec = new CheckBox();
+			label3 = new Label();
+			label2 = new Label();
+			label1 = new Label();
+			fbd = new FolderBrowserDialog();
+			ofd = new OpenFileDialog();
+			xpGradientPanel1.SuspendLayout();
+			SuspendLayout();
 			//
 			// xpGradientPanel1
 			//
-			this.xpGradientPanel1.BackColor = System.Drawing.Color.Transparent;
-			this.xpGradientPanel1.Controls.Add(this.button3);
-			this.xpGradientPanel1.Controls.Add(this.button2);
-			this.xpGradientPanel1.Controls.Add(this.button1);
-			this.xpGradientPanel1.Controls.Add(this.cbEpVer);
-			this.xpGradientPanel1.Controls.Add(this.tbRoot);
-			this.xpGradientPanel1.Controls.Add(this.tbName);
-			this.xpGradientPanel1.Controls.Add(this.cbRec);
-			this.xpGradientPanel1.Controls.Add(this.label3);
-			this.xpGradientPanel1.Controls.Add(this.label2);
-			this.xpGradientPanel1.Controls.Add(this.label1);
-			resources.ApplyResources(this.xpGradientPanel1, "xpGradientPanel1");
-			this.xpGradientPanel1.Name = "xpGradientPanel1";
+			xpGradientPanel1.BackColor = System.Drawing.Color.Transparent;
+			xpGradientPanel1.Controls.Add(button3);
+			xpGradientPanel1.Controls.Add(button2);
+			xpGradientPanel1.Controls.Add(button1);
+			xpGradientPanel1.Controls.Add(cbEpVer);
+			xpGradientPanel1.Controls.Add(tbRoot);
+			xpGradientPanel1.Controls.Add(tbName);
+			xpGradientPanel1.Controls.Add(cbRec);
+			xpGradientPanel1.Controls.Add(label3);
+			xpGradientPanel1.Controls.Add(label2);
+			xpGradientPanel1.Controls.Add(label1);
+			resources.ApplyResources(xpGradientPanel1, "xpGradientPanel1");
+			xpGradientPanel1.Name = "xpGradientPanel1";
 			//
 			// button3
 			//
-			resources.ApplyResources(this.button3, "button3");
-			this.button3.Name = "button3";
-			this.button3.Click += new System.EventHandler(this.button3_Click);
+			resources.ApplyResources(button3, "button3");
+			button3.Name = "button3";
+			button3.Click += new System.EventHandler(button3_Click);
 			//
 			// button2
 			//
-			resources.ApplyResources(this.button2, "button2");
-			this.button2.Name = "button2";
-			this.button2.Click += new System.EventHandler(this.button2_Click);
+			resources.ApplyResources(button2, "button2");
+			button2.Name = "button2";
+			button2.Click += new System.EventHandler(button2_Click);
 			//
 			// button1
 			//
-			resources.ApplyResources(this.button1, "button1");
-			this.button1.Name = "button1";
-			this.button1.Click += new System.EventHandler(this.button1_Click);
+			resources.ApplyResources(button1, "button1");
+			button1.Name = "button1";
+			button1.Click += new System.EventHandler(button1_Click);
 			//
 			// cbEpVer
 			//
-			this.cbEpVer.DropDownStyle =
+			cbEpVer.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			resources.ApplyResources(this.cbEpVer, "cbEpVer");
-			this.cbEpVer.Name = "cbEpVer";
+			resources.ApplyResources(cbEpVer, "cbEpVer");
+			cbEpVer.Name = "cbEpVer";
 			//
 			// tbRoot
 			//
-			resources.ApplyResources(this.tbRoot, "tbRoot");
-			this.tbRoot.Name = "tbRoot";
-			this.tbRoot.ReadOnly = true;
+			resources.ApplyResources(tbRoot, "tbRoot");
+			tbRoot.Name = "tbRoot";
+			tbRoot.ReadOnly = true;
 			//
 			// tbName
 			//
-			resources.ApplyResources(this.tbName, "tbName");
-			this.tbName.Name = "tbName";
-			this.tbName.TextChanged += new System.EventHandler(this.tbName_TextChanged);
+			resources.ApplyResources(tbName, "tbName");
+			tbName.Name = "tbName";
+			tbName.TextChanged += new System.EventHandler(tbName_TextChanged);
 			//
 			// cbRec
 			//
-			resources.ApplyResources(this.cbRec, "cbRec");
-			this.cbRec.Name = "cbRec";
-			this.cbRec.UseVisualStyleBackColor = false;
+			resources.ApplyResources(cbRec, "cbRec");
+			cbRec.Name = "cbRec";
+			cbRec.UseVisualStyleBackColor = false;
 			//
 			// label3
 			//
-			this.label3.BackColor = System.Drawing.Color.Transparent;
-			resources.ApplyResources(this.label3, "label3");
-			this.label3.Name = "label3";
+			label3.BackColor = System.Drawing.Color.Transparent;
+			resources.ApplyResources(label3, "label3");
+			label3.Name = "label3";
 			//
 			// label2
 			//
-			this.label2.BackColor = System.Drawing.Color.Transparent;
-			resources.ApplyResources(this.label2, "label2");
-			this.label2.Name = "label2";
+			label2.BackColor = System.Drawing.Color.Transparent;
+			resources.ApplyResources(label2, "label2");
+			label2.Name = "label2";
 			//
 			// label1
 			//
-			this.label1.BackColor = System.Drawing.Color.Transparent;
-			resources.ApplyResources(this.label1, "label1");
-			this.label1.Name = "label1";
+			label1.BackColor = System.Drawing.Color.Transparent;
+			resources.ApplyResources(label1, "label1");
+			label1.Name = "label1";
 			//
 			// FileTableItemForm
 			//
 			resources.ApplyResources(this, "$this");
-			this.Controls.Add(this.xpGradientPanel1);
-			this.FormBorderStyle = FormBorderStyle.FixedDialog;
-			this.Name = "FileTableItemForm";
-			this.xpGradientPanel1.ResumeLayout(false);
-			this.xpGradientPanel1.PerformLayout();
-			this.ResumeLayout(false);
+			Controls.Add(xpGradientPanel1);
+			FormBorderStyle = FormBorderStyle.FixedDialog;
+			Name = "FileTableItemForm";
+			xpGradientPanel1.ResumeLayout(false);
+			xpGradientPanel1.PerformLayout();
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -257,12 +257,12 @@ namespace SimPe
 			FileTableItem fti = new FileTableItem(tbName.Text, false, file);
 			fti.Name = tbName.Text;
 
-			this.tbRoot.Text = fti.Type.ToString();
+			tbRoot.Text = fti.Type.ToString();
 		}
 
 		void UpdateRec()
 		{
-			this.cbRec.Enabled = !file;
+			cbRec.Enabled = !file;
 		}
 
 		private void button1_Click(object sender, System.EventArgs e)

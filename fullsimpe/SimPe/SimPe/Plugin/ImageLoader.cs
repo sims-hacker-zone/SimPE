@@ -43,9 +43,9 @@ namespace SimPe.Plugin
 			int count
 		)
 		{
-			this.Format = format;
-			this.size = sz;
-			this.Data = data;
+			Format = format;
+			size = sz;
+			Data = data;
 			img = null;
 			this.level = level;
 			this.count = count;

@@ -2192,27 +2192,27 @@ namespace SimPe.PackedFiles.Wrapper
 		internal void Unserialize(BinaryReader reader, SDescVersions ver)
 		{
 			reader.BaseStream.Seek(0x172, SeekOrigin.Begin);
-			this.RouteStartSlotOwnerID = reader.ReadUInt16();
+			RouteStartSlotOwnerID = reader.ReadUInt16();
 
-			this.AttractionTraits1 = reader.ReadUInt16();
-			this.AttractionTraits2 = reader.ReadUInt16();
+			AttractionTraits1 = reader.ReadUInt16();
+			AttractionTraits2 = reader.ReadUInt16();
 
-			this.AttractionTurnOns1 = reader.ReadUInt16();
-			this.AttractionTurnOns2 = reader.ReadUInt16();
+			AttractionTurnOns1 = reader.ReadUInt16();
+			AttractionTurnOns2 = reader.ReadUInt16();
 
-			this.AttractionTurnOffs1 = reader.ReadUInt16();
-			this.AttractionTurnOffs2 = reader.ReadUInt16();
+			AttractionTurnOffs1 = reader.ReadUInt16();
+			AttractionTurnOffs2 = reader.ReadUInt16();
 
-			this.Species = (SpeciesType)reader.ReadUInt16();
-			this.Countdown = reader.ReadUInt16();
-			this.PerfumeDuration = reader.ReadUInt16();
+			Species = (SpeciesType)reader.ReadUInt16();
+			Countdown = reader.ReadUInt16();
+			PerfumeDuration = reader.ReadUInt16();
 
-			this.DateTimer = reader.ReadUInt16();
-			this.DateScore = reader.ReadUInt16();
-			this.DateUnlockCounter = reader.ReadUInt16();
+			DateTimer = reader.ReadUInt16();
+			DateScore = reader.ReadUInt16();
+			DateUnlockCounter = reader.ReadUInt16();
 
-			this.LovePotionDuration = reader.ReadUInt16();
-			this.AspirationScoreLock = reader.ReadUInt16();
+			LovePotionDuration = reader.ReadUInt16();
+			AspirationScoreLock = reader.ReadUInt16();
 
 			if ((int)ver >= (int)SDescVersions.Voyage)
 			{
@@ -2227,27 +2227,27 @@ namespace SimPe.PackedFiles.Wrapper
 		internal void Serialize(BinaryWriter writer, SDescVersions ver)
 		{
 			writer.BaseStream.Seek(0x172, SeekOrigin.Begin);
-			writer.Write((ushort)this.RouteStartSlotOwnerID);
+			writer.Write((ushort)RouteStartSlotOwnerID);
 
-			writer.Write((ushort)this.AttractionTraits1);
-			writer.Write((ushort)this.AttractionTraits2);
+			writer.Write((ushort)AttractionTraits1);
+			writer.Write((ushort)AttractionTraits2);
 
-			writer.Write((ushort)this.AttractionTurnOns1);
-			writer.Write((ushort)this.AttractionTurnOns2);
+			writer.Write((ushort)AttractionTurnOns1);
+			writer.Write((ushort)AttractionTurnOns2);
 
-			writer.Write((ushort)this.AttractionTurnOffs1);
-			writer.Write((ushort)this.AttractionTurnOffs2);
+			writer.Write((ushort)AttractionTurnOffs1);
+			writer.Write((ushort)AttractionTurnOffs2);
 
-			writer.Write((ushort)this.Species);
-			writer.Write((ushort)this.Countdown);
-			writer.Write((ushort)this.PerfumeDuration);
+			writer.Write((ushort)Species);
+			writer.Write((ushort)Countdown);
+			writer.Write((ushort)PerfumeDuration);
 
-			writer.Write((ushort)this.DateTimer);
-			writer.Write((ushort)this.DateScore);
-			writer.Write((ushort)this.DateUnlockCounter);
+			writer.Write((ushort)DateTimer);
+			writer.Write((ushort)DateScore);
+			writer.Write((ushort)DateUnlockCounter);
 
-			writer.Write((ushort)this.LovePotionDuration);
-			writer.Write((ushort)this.AspirationScoreLock);
+			writer.Write((ushort)LovePotionDuration);
+			writer.Write((ushort)AspirationScoreLock);
 
 			if ((int)ver >= (int)SDescVersions.Voyage)
 			{
@@ -2302,19 +2302,19 @@ namespace SimPe.PackedFiles.Wrapper
 		internal void Unserialize(BinaryReader reader)
 		{
 			reader.BaseStream.Seek(0x192, SeekOrigin.Begin);
-			this.LotID = reader.ReadUInt16();
-			this.Salary = reader.ReadUInt16();
-			this.Flags = reader.ReadUInt16();
-			this.assignment = reader.ReadUInt16();
+			LotID = reader.ReadUInt16();
+			Salary = reader.ReadUInt16();
+			Flags = reader.ReadUInt16();
+			assignment = reader.ReadUInt16();
 		}
 
 		internal void Serialize(BinaryWriter writer)
 		{
 			writer.BaseStream.Seek(0x192, SeekOrigin.Begin);
-			writer.Write((ushort)this.LotID);
-			writer.Write((ushort)this.Salary);
-			writer.Write((ushort)this.Flags);
-			writer.Write((ushort)this.assignment);
+			writer.Write((ushort)LotID);
+			writer.Write((ushort)Salary);
+			writer.Write((ushort)Flags);
+			writer.Write((ushort)assignment);
 		}
 	}
 	#endregion
@@ -2338,13 +2338,13 @@ namespace SimPe.PackedFiles.Wrapper
 		internal void Unserialize(BinaryReader reader)
 		{
 			reader.BaseStream.Seek(0x19A, SeekOrigin.Begin);
-			this.PetTraits.Value = reader.ReadUInt16();
+			PetTraits.Value = reader.ReadUInt16();
 		}
 
 		internal void Serialize(BinaryWriter writer)
 		{
 			writer.BaseStream.Seek(0x19A, SeekOrigin.Begin);
-			writer.Write((ushort)this.PetTraits.Value);
+			writer.Write((ushort)PetTraits.Value);
 		}
 	}
 	#endregion
@@ -2374,13 +2374,13 @@ namespace SimPe.PackedFiles.Wrapper
 		internal void Unserialize(BinaryReader reader)
 		{
 			reader.BaseStream.Seek(0x19C, SeekOrigin.Begin);
-			this.DaysLeft = reader.ReadUInt16();
+			DaysLeft = reader.ReadUInt16();
 		}
 
 		internal void Serialize(BinaryWriter writer)
 		{
 			writer.BaseStream.Seek(0x19C, SeekOrigin.Begin);
-			writer.Write((ushort)this.DaysLeft);
+			writer.Write((ushort)DaysLeft);
 		}
 
 		internal void UnserializeMem(BinaryReader reader)
@@ -2418,13 +2418,13 @@ namespace SimPe.PackedFiles.Wrapper
 		internal void Unserialize(BinaryReader reader)
 		{
 			reader.BaseStream.Seek(0x19C, SeekOrigin.Begin);
-			this.Subspecies = reader.ReadUInt16();
+			Subspecies = reader.ReadUInt16();
 		}
 
 		internal void Serialize(BinaryWriter writer)
 		{
 			writer.BaseStream.Seek(0x19C, SeekOrigin.Begin);
-			writer.Write((ushort)this.Subspecies);
+			writer.Write((ushort)Subspecies);
 		}
 	}
 	#endregion
@@ -2762,7 +2762,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public virtual bool ChangeNames(string name, string familyname)
 		{
-			if (!File.Exists(this.CharacterFileName))
+			if (!File.Exists(CharacterFileName))
 			{
 				return false;
 			}
@@ -2955,7 +2955,7 @@ namespace SimPe.PackedFiles.Wrapper
 				"This File contains Settings (like interests, friendships, money, age, gender...) for one Sim.",
 				17,
 				System.Drawing.Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.sdsc.png")
 				)
 			);
@@ -2963,12 +2963,12 @@ namespace SimPe.PackedFiles.Wrapper
 
 		protected override string GetResourceName(TypeAlias ta)
 		{
-			if (!this.Processed)
+			if (!Processed)
 			{
 				ProcessData(FileDescriptor, Package);
 			}
 
-			return this.SimName + " " + this.SimFamilyName;
+			return SimName + " " + SimFamilyName;
 		}
 		#endregion
 
@@ -3264,7 +3264,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 			//available Relationships
 			reader.BaseStream.Seek(
-				startpos + this.RelationPosition,
+				startpos + RelationPosition,
 				SeekOrigin.Begin
 			);
 			Relations.SimInstances = new ushort[reader.ReadUInt32()];
@@ -3406,7 +3406,7 @@ namespace SimPe.PackedFiles.Wrapper
 			//writer.Write(simid);
 			byte[] res03 = Helper.SetLength(
 				backupdata,
-				(int)(this.RelationPosition - writer.BaseStream.Position)
+				(int)(RelationPosition - writer.BaseStream.Position)
 			);
 			writer.Write(res03);
 			while (writer.BaseStream.Length < 0x16D)
@@ -3531,7 +3531,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 			//available Relationships
 			writer.BaseStream.Seek(
-				startpos + this.RelationPosition,
+				startpos + RelationPosition,
 				SeekOrigin.Begin
 			);
 			writer.Write((uint)Relations.SimInstances.Length);
@@ -3648,24 +3648,24 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				string s =
 					"GUID=0x"
-					+ Helper.HexString(this.SimId)
+					+ Helper.HexString(SimId)
 					+ ", Filename="
-					+ this.CharacterFileName
+					+ CharacterFileName
 					+ ", Name="
-					+ this.SimName
+					+ SimName
 					+ " "
-					+ this.SimFamilyName
+					+ SimFamilyName
 					+ ", Age="
-					+ this.CharacterDescription.LifeSection.ToString()
+					+ CharacterDescription.LifeSection.ToString()
 					+ ", Job="
-					+ this.CharacterDescription.Career.ToString()
+					+ CharacterDescription.Career.ToString()
 					+ ", Zodiac="
-					+ this.CharacterDescription.ZodiacSign.ToString()
+					+ CharacterDescription.ZodiacSign.ToString()
 					+ ", Major="
-					+ this.University.Major
+					+ University.Major
 					+ ", Grade="
-					+ this.CharacterDescription.Grade.ToString();
-				if ((int)this.Version >= (int)SDescVersions.Nightlife)
+					+ CharacterDescription.Grade.ToString();
+				if ((int)Version >= (int)SDescVersions.Nightlife)
 				{
 					s += ", Species=" + Nightlife.Species.ToString();
 				}
@@ -3855,19 +3855,19 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public override int GetHashCode()
 		{
-			if (this.FileDescriptor == null || this.Package == null)
+			if (FileDescriptor == null || Package == null)
 			{
 				return base.GetHashCode();
 			}
 			else
 			{
-				return (int)this.SimId;
+				return (int)SimId;
 			}
 		}
 
 		public override bool Equals(object obj)
 		{
-			if (this.FileDescriptor == null || this.Package == null)
+			if (FileDescriptor == null || Package == null)
 			{
 				return base.Equals(obj);
 			}

@@ -239,7 +239,7 @@ namespace SimPe.Plugin
 			}
 
 			form.ResetPreview();
-			form.tb_ver.Text = "0x" + Helper.HexString(this.version);
+			form.tb_ver.Text = "0x" + Helper.HexString(version);
 
 			if (UserVerification.HaveUserId)
 			{
@@ -276,9 +276,9 @@ namespace SimPe.Plugin
 			{
 				form.lb_models.Text =
 					"Models (Faces="
-					+ this.TotalFaceCount.ToString()
+					+ TotalFaceCount.ToString()
 					+ ", Vertices="
-					+ this.TotalUsedVertices.ToString()
+					+ TotalUsedVertices.ToString()
 					+ "):";
 				form.lb_itemsc2.Items.Clear();
 				form.lb_itemsc3.Items.Clear();
@@ -292,7 +292,7 @@ namespace SimPe.Plugin
 
 				form.lb_itemsa2.Items.Clear();
 				form.lb_itemsa.Items.Clear();
-				foreach (GmdcElement i in this.Elements)
+				foreach (GmdcElement i in Elements)
 				{
 					CountedListItem.Add(form.lb_itemsa, i);
 				}
@@ -302,7 +302,7 @@ namespace SimPe.Plugin
 				form.lb_itemsb4.Items.Clear();
 				form.lb_itemsb5.Items.Clear();
 				form.lb_itemsb.Items.Clear();
-				foreach (GmdcLink i in this.Links)
+				foreach (GmdcLink i in Links)
 				{
 					CountedListItem.Add(form.lb_itemsb, i);
 				}
@@ -311,32 +311,32 @@ namespace SimPe.Plugin
 				form.lb_sub_faces.Items.Clear();
 				form.lb_sub_items.Items.Clear();
 				form.cbGroupJoint.Items.Clear();
-				foreach (GmdcJoint i in this.Joints)
+				foreach (GmdcJoint i in Joints)
 				{
 					CountedListItem.Add(form.lb_subsets, i);
 					CountedListItem.Add(form.cbGroupJoint, i);
 				}
 
 				form.lb_model_faces.Items.Clear();
-				foreach (Vector3f i in this.Model.BoundingMesh.Vertices)
+				foreach (Vector3f i in Model.BoundingMesh.Vertices)
 				{
 					CountedListItem.Add(form.lb_model_faces, i);
 				}
 
 				form.lb_model_items.Items.Clear();
-				foreach (int i in this.Model.BoundingMesh.Items)
+				foreach (int i in Model.BoundingMesh.Items)
 				{
 					CountedListItem.Add(form.lb_model_items, i);
 				}
 
 				form.lb_model_names.Items.Clear();
-				foreach (GmdcNamePair i in this.Model.BlendGroupDefinition)
+				foreach (GmdcNamePair i in Model.BlendGroupDefinition)
 				{
 					CountedListItem.Add(form.lb_model_names, i);
 				}
 
 				form.lb_model_trans.Items.Clear();
-				foreach (VectorTransformation i in this.Model.Transformations)
+				foreach (VectorTransformation i in Model.Transformations)
 				{
 					CountedListItem.Add(form.lb_model_trans, i);
 				}
@@ -707,7 +707,7 @@ namespace SimPe.Plugin
 			{
 				Interfaces.Scenegraph.IScenegraphFileIndex nfi =
 					FileTableBase.FileIndex.AddNewChild();
-				nfi.AddIndexFromPackage(this.Parent.Package);
+				nfi.AddIndexFromPackage(Parent.Package);
 				Rcol cres = FindReferencingCRES_Int();
 				FileTableBase.FileIndex.RemoveChild(nfi);
 				nfi.Clear();
@@ -804,7 +804,7 @@ namespace SimPe.Plugin
 		public virtual Hashtable LoadJointRelationMap()
 		{
 			//Get the Cres for the Bone Hirarchy
-			ResourceNode rn = this.ParentResourceNode;
+			ResourceNode rn = ParentResourceNode;
 
 			Hashtable parentmap = new Hashtable();
 			if (rn == null)
@@ -931,7 +931,7 @@ namespace SimPe.Plugin
 		/// <returns></returns>
 		public IntArrayList SortJoints()
 		{
-			return SortJoints(this.Joints, this.LoadJointRelationMap());
+			return SortJoints(Joints, LoadJointRelationMap());
 		}
 
 		/// <summary>
@@ -941,7 +941,7 @@ namespace SimPe.Plugin
 		/// <returns></returns>
 		public IntArrayList SortJoints(Hashtable relmap)
 		{
-			return SortJoints(this.Joints, relmap);
+			return SortJoints(Joints, relmap);
 		}
 		#endregion
 
@@ -954,9 +954,9 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			if (this.form != null)
+			if (form != null)
 			{
-				this.form.Dispose();
+				form.Dispose();
 			}
 		}
 

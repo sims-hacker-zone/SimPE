@@ -283,7 +283,7 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				RefFile reffile = this.ReferenceFile;
+				RefFile reffile = ReferenceFile;
 				System.Collections.ArrayList list = new System.Collections.ArrayList();
 				if (reffile != null)
 				{
@@ -316,11 +316,11 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				GenericRcol[] txmts = this.TXMTs;
+				GenericRcol[] txmts = TXMTs;
 				System.Collections.ArrayList list = new System.Collections.ArrayList();
 				foreach (GenericRcol txmt in txmts)
 				{
-					GenericRcol rcol = this.LoadTXTR(txmt);
+					GenericRcol rcol = LoadTXTR(txmt);
 					if (rcol != null)
 					{
 						list.Add(rcol);
@@ -337,7 +337,7 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				RefFile reffile = this.ReferenceFile;
+				RefFile reffile = ReferenceFile;
 				if (reffile != null && cpf != null)
 				{
 					if (cpf.GetItem("override0resourcekeyidx") != null)
@@ -390,7 +390,7 @@ namespace SimPe.Plugin
 			get
 			{
 				string scat = "";
-				uint cat = this.Category;
+				uint cat = Category;
 				Array a = Enum.GetValues(typeof(Data.SkinCategories));
 				foreach (Data.SkinCategories k in a)
 				{
@@ -414,7 +414,7 @@ namespace SimPe.Plugin
 			get
 			{
 				string spart = "";
-				uint part = this.OutfitPart;
+				uint part = OutfitPart;
 				Array a = Enum.GetValues(typeof(Data.SkinParts));
 				foreach (Data.SkinParts k in a)
 				{
@@ -438,7 +438,7 @@ namespace SimPe.Plugin
 			get
 			{
 				string sage = "";
-				uint age = this.Age;
+				uint age = Age;
 				Array a = Enum.GetValues(typeof(Data.Ages));
 				foreach (Data.Ages k in a)
 				{
@@ -462,7 +462,7 @@ namespace SimPe.Plugin
 			get
 			{
 				string ssex = "";
-				uint sex = this.Gender;
+				uint sex = Gender;
 				Array a = Enum.GetValues(typeof(Data.Sex));
 				foreach (Data.Sex k in a)
 				{
@@ -502,10 +502,10 @@ namespace SimPe.Plugin
 		public RefFileItem(Interfaces.Files.IPackedFileDescriptor pfd, RefFile parent)
 		{
 			this.parent = parent;
-			this.Group = pfd.Group;
-			this.Type = pfd.Type;
-			this.SubType = pfd.SubType;
-			this.Instance = pfd.Instance;
+			Group = pfd.Group;
+			Type = pfd.Type;
+			SubType = pfd.SubType;
+			Instance = pfd.Instance;
 		}
 
 		SkinChain skin;
@@ -516,9 +516,9 @@ namespace SimPe.Plugin
 				if (
 					(skin == null)
 					&& (
-						this.Type == Data.MetaData.GZPS
-						|| this.Type == Data.MetaData.AGED
-						|| this.Type == Data.MetaData.XSTN
+						Type == Data.MetaData.GZPS
+						|| Type == Data.MetaData.AGED
+						|| Type == Data.MetaData.XSTN
 					)
 					&& (parent != null)
 				)

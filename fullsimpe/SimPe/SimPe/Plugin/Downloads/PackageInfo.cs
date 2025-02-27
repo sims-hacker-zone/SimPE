@@ -253,7 +253,7 @@ namespace SimPe.Plugin.Downloads
 
 		public void AddGuid(uint guid)
 		{
-			this.Guids = Helper.Add(this.Guids, guid) as uint[];
+			Guids = Helper.Add(Guids, guid) as uint[];
 		}
 
 		public Cache.PackageType Type
@@ -265,13 +265,13 @@ namespace SimPe.Plugin.Downloads
 		{
 			RenderData = null;
 			PostponedRenderer = null;
-			this.Description = "";
-			this.Name = "";
-			this.Price = 0;
-			this.Category = "";
-			this.VertexCount = 0;
-			this.FaceCount = 0;
-			this.Image = null;
+			Description = "";
+			Name = "";
+			Price = 0;
+			Category = "";
+			VertexCount = 0;
+			FaceCount = 0;
+			Image = null;
 			Type = Cache.PackageType.Undefined;
 			FirstExpansion = Expansions.None;
 			ClearGuidList();

@@ -201,7 +201,7 @@ namespace SimPe.Plugin.Tool
 		public System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.CtrlD;
 
 		public System.Drawing.Image Icon => System.Drawing.Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.selected.png")
 				);
 

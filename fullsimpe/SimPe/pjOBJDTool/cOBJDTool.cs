@@ -461,7 +461,7 @@ namespace pjOBJDTool
 				if (wrapper != null)
 				{
 					wrapper.WrapperChanged -= new EventHandler(
-						this.WrapperChanged
+						WrapperChanged
 					);
 				}
 
@@ -555,7 +555,7 @@ namespace pjOBJDTool
 			}
 			else
 			{
-				wrapper.WrapperChanged += new EventHandler(this.WrapperChanged);
+				wrapper.WrapperChanged += new EventHandler(WrapperChanged);
 				cbOBJDvsn.Enabled =
 					tbCTSSInstance.Enabled =
 					gbValue.Enabled =
@@ -636,7 +636,7 @@ namespace pjOBJDTool
 
 		private void WrapperChanged(object sender, EventArgs e)
 		{
-			this.btnCommit.Enabled = wrapper.Changed;
+			btnCommit.Enabled = wrapper.Changed;
 		}
 
 		private List<pfOBJD> availableOBJDs = null;
@@ -708,7 +708,7 @@ namespace pjOBJDTool
 			if (wrapper != null)
 			{
 				btnCommit.Enabled = wrapper.Changed;
-				this.ShowDialog();
+				ShowDialog();
 			}
 
 			return new SimPe.Plugin.ToolResult(changed, false);

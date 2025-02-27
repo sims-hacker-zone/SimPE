@@ -160,7 +160,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		internal ScorItem(Scor parent)
 		{
-			this.Parent = parent;
+			Parent = parent;
 			SetGui("", new byte[0]);
 		}
 

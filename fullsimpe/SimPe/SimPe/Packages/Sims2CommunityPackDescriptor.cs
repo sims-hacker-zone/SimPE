@@ -215,7 +215,7 @@ namespace SimPe.Packages
 				string d = "-";
 				string gg = "-";
 				string g = GetGlobalGuid(
-					this.package,
+					package,
 					ref n,
 					ref t,
 					ref a,
@@ -387,13 +387,13 @@ namespace SimPe.Packages
 			Type = "Object";
 			GameVersion = "2141707388.153.1";
 			this.description = description;
-			this.Compressed = compressed;
+			Compressed = compressed;
 			objectversion = "1.0";
 			Crc = "0";
 			this.author = author;
 			this.contact = contact;
 			this.title = title;
-			gameguid = this.GameGuid;
+			gameguid = GameGuid;
 
 			if (dependency == null)
 			{
@@ -594,14 +594,14 @@ namespace SimPe.Packages
 		public void Update()
 		{
 			UpdateGlobalGuid(
-				this.Package,
-				this.guid,
-				this.name,
-				this.author,
-				this.contact,
-				this.gameguid
+				Package,
+				guid,
+				name,
+				author,
+				contact,
+				gameguid
 			);
-			UpdateGlobalGuid(this.Package, this.title, this.description);
+			UpdateGlobalGuid(Package, title, description);
 		}
 
 		/// <summary>
@@ -711,7 +711,7 @@ namespace SimPe.Packages
 				string d = "-";
 				string gg = "-";
 				string g = GetGlobalGuid(
-					this.package,
+					package,
 					ref n,
 					ref t,
 					ref a,

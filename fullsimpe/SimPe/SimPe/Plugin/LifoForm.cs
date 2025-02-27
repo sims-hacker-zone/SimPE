@@ -71,245 +71,245 @@ namespace SimPe.Plugin
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(LifoForm));
-			this.LifoPanel = new Panel();
-			this.linkLabel2 = new LinkLabel();
-			this.linkLabel1 = new LinkLabel();
-			this.label1 = new Label();
-			this.tbz = new TextBox();
-			this.label5 = new Label();
-			this.tbheight = new TextBox();
-			this.tbwidth = new TextBox();
-			this.label4 = new Label();
-			this.label3 = new Label();
-			this.cbformats = new ComboBox();
-			this.tbflname = new TextBox();
-			this.label2 = new Label();
-			this.cbitem = new ComboBox();
-			this.panel1 = new Panel();
-			this.pb = new PictureBox();
-			this.contextMenu1 = new ContextMenu();
-			this.menuItem1 = new MenuItem();
-			this.menuItem4 = new MenuItem();
-			this.menuItem2 = new MenuItem();
-			this.menuItem5 = new MenuItem();
-			this.panel2 = new Panel();
-			this.btex = new Button();
-			this.btim = new Button();
-			this.label27 = new Label();
-			this.btcommit = new Button();
-			this.sfd = new SaveFileDialog();
-			this.ofd = new OpenFileDialog();
-			this.menuItem3 = new MenuItem();
-			this.menuItem6 = new MenuItem();
-			this.menuItem7 = new MenuItem();
-			this.LifoPanel.SuspendLayout();
-			this.panel1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
-			this.panel2.SuspendLayout();
-			this.SuspendLayout();
+			LifoPanel = new Panel();
+			linkLabel2 = new LinkLabel();
+			linkLabel1 = new LinkLabel();
+			label1 = new Label();
+			tbz = new TextBox();
+			label5 = new Label();
+			tbheight = new TextBox();
+			tbwidth = new TextBox();
+			label4 = new Label();
+			label3 = new Label();
+			cbformats = new ComboBox();
+			tbflname = new TextBox();
+			label2 = new Label();
+			cbitem = new ComboBox();
+			panel1 = new Panel();
+			pb = new PictureBox();
+			contextMenu1 = new ContextMenu();
+			menuItem1 = new MenuItem();
+			menuItem4 = new MenuItem();
+			menuItem2 = new MenuItem();
+			menuItem5 = new MenuItem();
+			panel2 = new Panel();
+			btex = new Button();
+			btim = new Button();
+			label27 = new Label();
+			btcommit = new Button();
+			sfd = new SaveFileDialog();
+			ofd = new OpenFileDialog();
+			menuItem3 = new MenuItem();
+			menuItem6 = new MenuItem();
+			menuItem7 = new MenuItem();
+			LifoPanel.SuspendLayout();
+			panel1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(pb)).BeginInit();
+			panel2.SuspendLayout();
+			SuspendLayout();
 			//
 			// LifoPanel
 			//
-			this.LifoPanel.Controls.Add(this.linkLabel2);
-			this.LifoPanel.Controls.Add(this.linkLabel1);
-			this.LifoPanel.Controls.Add(this.label1);
-			this.LifoPanel.Controls.Add(this.tbz);
-			this.LifoPanel.Controls.Add(this.label5);
-			this.LifoPanel.Controls.Add(this.tbheight);
-			this.LifoPanel.Controls.Add(this.tbwidth);
-			this.LifoPanel.Controls.Add(this.label4);
-			this.LifoPanel.Controls.Add(this.label3);
-			this.LifoPanel.Controls.Add(this.cbformats);
-			this.LifoPanel.Controls.Add(this.tbflname);
-			this.LifoPanel.Controls.Add(this.label2);
-			this.LifoPanel.Controls.Add(this.cbitem);
-			this.LifoPanel.Controls.Add(this.panel1);
-			this.LifoPanel.Controls.Add(this.panel2);
-			this.LifoPanel.Location = new Point(8, 8);
-			this.LifoPanel.Name = "LifoPanel";
-			this.LifoPanel.Size = new Size(768, 288);
-			this.LifoPanel.TabIndex = 19;
+			LifoPanel.Controls.Add(linkLabel2);
+			LifoPanel.Controls.Add(linkLabel1);
+			LifoPanel.Controls.Add(label1);
+			LifoPanel.Controls.Add(tbz);
+			LifoPanel.Controls.Add(label5);
+			LifoPanel.Controls.Add(tbheight);
+			LifoPanel.Controls.Add(tbwidth);
+			LifoPanel.Controls.Add(label4);
+			LifoPanel.Controls.Add(label3);
+			LifoPanel.Controls.Add(cbformats);
+			LifoPanel.Controls.Add(tbflname);
+			LifoPanel.Controls.Add(label2);
+			LifoPanel.Controls.Add(cbitem);
+			LifoPanel.Controls.Add(panel1);
+			LifoPanel.Controls.Add(panel2);
+			LifoPanel.Location = new Point(8, 8);
+			LifoPanel.Name = "LifoPanel";
+			LifoPanel.Size = new Size(768, 288);
+			LifoPanel.TabIndex = 19;
 			//
 			// linkLabel2
 			//
-			this.linkLabel2.AutoSize = true;
-			this.linkLabel2.Font = new Font(
+			linkLabel2.AutoSize = true;
+			linkLabel2.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.linkLabel2.Location = new Point(288, 80);
-			this.linkLabel2.Name = "linkLabel2";
-			this.linkLabel2.Size = new Size(51, 13);
-			this.linkLabel2.TabIndex = 19;
-			this.linkLabel2.TabStop = true;
-			this.linkLabel2.Text = "fix TGI";
-			this.linkLabel2.LinkClicked +=
-				new LinkLabelLinkClickedEventHandler(this.FixTGI);
+			linkLabel2.Location = new Point(288, 80);
+			linkLabel2.Name = "linkLabel2";
+			linkLabel2.Size = new Size(51, 13);
+			linkLabel2.TabIndex = 19;
+			linkLabel2.TabStop = true;
+			linkLabel2.Text = "fix TGI";
+			linkLabel2.LinkClicked +=
+				new LinkLabelLinkClickedEventHandler(FixTGI);
 			//
 			// linkLabel1
 			//
-			this.linkLabel1.AutoSize = true;
-			this.linkLabel1.Font = new Font(
+			linkLabel1.AutoSize = true;
+			linkLabel1.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.linkLabel1.Location = new Point(343, 80);
-			this.linkLabel1.Name = "linkLabel1";
-			this.linkLabel1.Size = new Size(85, 13);
-			this.linkLabel1.TabIndex = 18;
-			this.linkLabel1.TabStop = true;
-			this.linkLabel1.Text = "assign Hash";
-			this.linkLabel1.Visible = false;
-			this.linkLabel1.LinkClicked +=
+			linkLabel1.Location = new Point(343, 80);
+			linkLabel1.Name = "linkLabel1";
+			linkLabel1.Size = new Size(85, 13);
+			linkLabel1.TabIndex = 18;
+			linkLabel1.TabStop = true;
+			linkLabel1.Text = "assign Hash";
+			linkLabel1.Visible = false;
+			linkLabel1.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.BuildFilename
+					BuildFilename
 				);
 			//
 			// label1
 			//
-			this.label1.AutoSize = true;
-			this.label1.Font = new Font(
+			label1.AutoSize = true;
+			label1.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label1.Location = new Point(248, 136);
-			this.label1.Name = "label1";
-			this.label1.Size = new Size(60, 13);
-			this.label1.TabIndex = 17;
-			this.label1.Text = "Z-Level:";
+			label1.Location = new Point(248, 136);
+			label1.Name = "label1";
+			label1.Size = new Size(60, 13);
+			label1.TabIndex = 17;
+			label1.Text = "Z-Level:";
 			//
 			// tbz
 			//
-			this.tbz.Location = new Point(304, 128);
-			this.tbz.Name = "tbz";
-			this.tbz.Size = new Size(56, 21);
-			this.tbz.TabIndex = 16;
-			this.tbz.TextChanged += new EventHandler(this.ChangeZLevel);
+			tbz.Location = new Point(304, 128);
+			tbz.Name = "tbz";
+			tbz.Size = new Size(56, 21);
+			tbz.TabIndex = 16;
+			tbz.TextChanged += new EventHandler(ChangeZLevel);
 			//
 			// label5
 			//
-			this.label5.AutoSize = true;
-			this.label5.Font = new Font(
+			label5.AutoSize = true;
+			label5.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label5.Location = new Point(141, 136);
-			this.label5.Name = "label5";
-			this.label5.Size = new Size(15, 13);
-			this.label5.TabIndex = 15;
-			this.label5.Text = "x";
+			label5.Location = new Point(141, 136);
+			label5.Name = "label5";
+			label5.Size = new Size(15, 13);
+			label5.TabIndex = 15;
+			label5.Text = "x";
 			//
 			// tbheight
 			//
-			this.tbheight.Location = new Point(160, 128);
-			this.tbheight.Name = "tbheight";
-			this.tbheight.ReadOnly = true;
-			this.tbheight.Size = new Size(56, 21);
-			this.tbheight.TabIndex = 14;
+			tbheight.Location = new Point(160, 128);
+			tbheight.Name = "tbheight";
+			tbheight.ReadOnly = true;
+			tbheight.Size = new Size(56, 21);
+			tbheight.TabIndex = 14;
 			//
 			// tbwidth
 			//
-			this.tbwidth.Location = new Point(80, 128);
-			this.tbwidth.Name = "tbwidth";
-			this.tbwidth.ReadOnly = true;
-			this.tbwidth.Size = new Size(56, 21);
-			this.tbwidth.TabIndex = 13;
+			tbwidth.Location = new Point(80, 128);
+			tbwidth.Name = "tbwidth";
+			tbwidth.ReadOnly = true;
+			tbwidth.Size = new Size(56, 21);
+			tbwidth.TabIndex = 13;
 			//
 			// label4
 			//
-			this.label4.AutoSize = true;
-			this.label4.Font = new Font(
+			label4.AutoSize = true;
+			label4.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label4.Location = new Point(43, 136);
-			this.label4.Name = "label4";
-			this.label4.Size = new Size(38, 13);
-			this.label4.TabIndex = 12;
-			this.label4.Text = "Size:";
+			label4.Location = new Point(43, 136);
+			label4.Name = "label4";
+			label4.Size = new Size(38, 13);
+			label4.TabIndex = 12;
+			label4.Text = "Size:";
 			//
 			// label3
 			//
-			this.label3.AutoSize = true;
-			this.label3.Font = new Font(
+			label3.AutoSize = true;
+			label3.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label3.Location = new Point(24, 112);
-			this.label3.Name = "label3";
-			this.label3.Size = new Size(58, 13);
-			this.label3.TabIndex = 11;
-			this.label3.Text = "Format:";
+			label3.Location = new Point(24, 112);
+			label3.Name = "label3";
+			label3.Size = new Size(58, 13);
+			label3.TabIndex = 11;
+			label3.Text = "Format:";
 			//
 			// cbformats
 			//
-			this.cbformats.DropDownStyle =
+			cbformats.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbformats.Location = new Point(80, 104);
-			this.cbformats.Name = "cbformats";
-			this.cbformats.Size = new Size(344, 21);
-			this.cbformats.TabIndex = 10;
-			this.cbformats.SelectedIndexChanged += new EventHandler(
-				this.ChangeFormat
+			cbformats.Location = new Point(80, 104);
+			cbformats.Name = "cbformats";
+			cbformats.Size = new Size(344, 21);
+			cbformats.TabIndex = 10;
+			cbformats.SelectedIndexChanged += new EventHandler(
+				ChangeFormat
 			);
 			//
 			// tbflname
 			//
-			this.tbflname.Location = new Point(80, 56);
-			this.tbflname.Name = "tbflname";
-			this.tbflname.Size = new Size(344, 21);
-			this.tbflname.TabIndex = 9;
-			this.tbflname.TextChanged += new EventHandler(this.FileNameChanged);
+			tbflname.Location = new Point(80, 56);
+			tbflname.Name = "tbflname";
+			tbflname.Size = new Size(344, 21);
+			tbflname.TabIndex = 9;
+			tbflname.TextChanged += new EventHandler(FileNameChanged);
 			//
 			// label2
 			//
-			this.label2.AutoSize = true;
-			this.label2.Font = new Font(
+			label2.AutoSize = true;
+			label2.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label2.Location = new Point(11, 40);
-			this.label2.Name = "label2";
-			this.label2.Size = new Size(71, 13);
-			this.label2.TabIndex = 8;
-			this.label2.Text = "Filename:";
+			label2.Location = new Point(11, 40);
+			label2.Name = "label2";
+			label2.Size = new Size(71, 13);
+			label2.TabIndex = 8;
+			label2.Text = "Filename:";
 			//
 			// cbitem
 			//
-			this.cbitem.DropDownStyle = ComboBoxStyle.DropDownList;
-			this.cbitem.Location = new Point(80, 32);
-			this.cbitem.Name = "cbitem";
-			this.cbitem.Size = new Size(344, 21);
-			this.cbitem.TabIndex = 7;
-			this.cbitem.SelectedIndexChanged += new EventHandler(
-				this.SelectItem
+			cbitem.DropDownStyle = ComboBoxStyle.DropDownList;
+			cbitem.Location = new Point(80, 32);
+			cbitem.Name = "cbitem";
+			cbitem.Size = new Size(344, 21);
+			cbitem.TabIndex = 7;
+			cbitem.SelectedIndexChanged += new EventHandler(
+				SelectItem
 			);
 			//
 			// panel1
 			//
-			this.panel1.Anchor = (
+			panel1.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -321,69 +321,69 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.panel1.AutoScroll = true;
-			this.panel1.Controls.Add(this.pb);
-			this.panel1.Location = new Point(432, 32);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new Size(328, 248);
-			this.panel1.TabIndex = 4;
+			panel1.AutoScroll = true;
+			panel1.Controls.Add(pb);
+			panel1.Location = new Point(432, 32);
+			panel1.Name = "panel1";
+			panel1.Size = new Size(328, 248);
+			panel1.TabIndex = 4;
 			//
 			// pb
 			//
-			this.pb.BackColor = SystemColors.Control;
-			this.pb.BackgroundImage = (
+			pb.BackColor = SystemColors.Control;
+			pb.BackgroundImage = (
 				(Image)(resources.GetObject("pb.BackgroundImage"))
 			);
-			this.pb.ContextMenu = this.contextMenu1;
-			this.pb.Location = new Point(0, 0);
-			this.pb.Name = "pb";
-			this.pb.Size = new Size(100, 50);
-			this.pb.SizeMode = PictureBoxSizeMode.AutoSize;
-			this.pb.TabIndex = 5;
-			this.pb.TabStop = false;
+			pb.ContextMenu = contextMenu1;
+			pb.Location = new Point(0, 0);
+			pb.Name = "pb";
+			pb.Size = new Size(100, 50);
+			pb.SizeMode = PictureBoxSizeMode.AutoSize;
+			pb.TabIndex = 5;
+			pb.TabStop = false;
 			//
 			// contextMenu1
 			//
-			this.contextMenu1.MenuItems.AddRange(
+			contextMenu1.MenuItems.AddRange(
 				new MenuItem[]
 				{
-					this.menuItem1,
-					this.menuItem4,
-					this.menuItem3,
-					this.menuItem6,
-					this.menuItem7,
-					this.menuItem2,
-					this.menuItem5,
+					menuItem1,
+					menuItem4,
+					menuItem3,
+					menuItem6,
+					menuItem7,
+					menuItem2,
+					menuItem5,
 				}
 			);
 			//
 			// menuItem1
 			//
-			this.menuItem1.Index = 0;
-			this.menuItem1.Text = "&Import...";
-			this.menuItem1.Click += new EventHandler(this.btim_Click);
+			menuItem1.Index = 0;
+			menuItem1.Text = "&Import...";
+			menuItem1.Click += new EventHandler(btim_Click);
 			//
 			// menuItem4
 			//
-			this.menuItem4.Index = 1;
-			this.menuItem4.Text = "Import &Alpha Channel...";
-			this.menuItem4.Click += new EventHandler(this.ImportAlpha);
+			menuItem4.Index = 1;
+			menuItem4.Text = "Import &Alpha Channel...";
+			menuItem4.Click += new EventHandler(ImportAlpha);
 			//
 			// menuItem2
 			//
-			this.menuItem2.Index = 5;
-			this.menuItem2.Text = "&Export...";
-			this.menuItem2.Click += new EventHandler(this.btex_Click);
+			menuItem2.Index = 5;
+			menuItem2.Text = "&Export...";
+			menuItem2.Click += new EventHandler(btex_Click);
 			//
 			// menuItem5
 			//
-			this.menuItem5.Index = 6;
-			this.menuItem5.Text = "Export Alpha &Channel...";
-			this.menuItem5.Click += new EventHandler(this.ExportAlpha);
+			menuItem5.Index = 6;
+			menuItem5.Text = "Export Alpha &Channel...";
+			menuItem5.Click += new EventHandler(ExportAlpha);
 			//
 			// panel2
 			//
-			this.panel2.Anchor = (
+			panel2.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -393,25 +393,25 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.panel2.BackColor = SystemColors.AppWorkspace;
-			this.panel2.Controls.Add(this.btex);
-			this.panel2.Controls.Add(this.btim);
-			this.panel2.Controls.Add(this.label27);
-			this.panel2.Controls.Add(this.btcommit);
-			this.panel2.Font = new Font(
+			panel2.BackColor = SystemColors.AppWorkspace;
+			panel2.Controls.Add(btex);
+			panel2.Controls.Add(btim);
+			panel2.Controls.Add(label27);
+			panel2.Controls.Add(btcommit);
+			panel2.Font = new Font(
 				"Verdana",
 				9.75F,
 				FontStyle.Bold
 			);
-			this.panel2.ForeColor = SystemColors.ActiveCaptionText;
-			this.panel2.Location = new Point(0, 0);
-			this.panel2.Name = "panel2";
-			this.panel2.Size = new Size(768, 24);
-			this.panel2.TabIndex = 0;
+			panel2.ForeColor = SystemColors.ActiveCaptionText;
+			panel2.Location = new Point(0, 0);
+			panel2.Name = "panel2";
+			panel2.Size = new Size(768, 24);
+			panel2.TabIndex = 0;
 			//
 			// btex
 			//
-			this.btex.Anchor = (
+			btex.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -419,24 +419,24 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.btex.FlatStyle = FlatStyle.System;
-			this.btex.Font = new Font(
+			btex.FlatStyle = FlatStyle.System;
+			btex.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.btex.Location = new Point(584, 0);
-			this.btex.Name = "btex";
-			this.btex.Size = new Size(80, 23);
-			this.btex.TabIndex = 8;
-			this.btex.Text = "Export...";
-			this.btex.Click += new EventHandler(this.btex_Click);
+			btex.Location = new Point(584, 0);
+			btex.Name = "btex";
+			btex.Size = new Size(80, 23);
+			btex.TabIndex = 8;
+			btex.Text = "Export...";
+			btex.Click += new EventHandler(btex_Click);
 			//
 			// btim
 			//
-			this.btim.Anchor = (
+			btim.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -444,34 +444,34 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.btim.FlatStyle = FlatStyle.System;
-			this.btim.Font = new Font(
+			btim.FlatStyle = FlatStyle.System;
+			btim.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.btim.Location = new Point(504, 0);
-			this.btim.Name = "btim";
-			this.btim.Size = new Size(75, 23);
-			this.btim.TabIndex = 7;
-			this.btim.Text = "Import...";
-			this.btim.Click += new EventHandler(this.btim_Click);
+			btim.Location = new Point(504, 0);
+			btim.Name = "btim";
+			btim.Size = new Size(75, 23);
+			btim.TabIndex = 7;
+			btim.Text = "Import...";
+			btim.Click += new EventHandler(btim_Click);
 			//
 			// label27
 			//
-			this.label27.AutoSize = true;
-			this.label27.ImeMode = ImeMode.NoControl;
-			this.label27.Location = new Point(0, 4);
-			this.label27.Name = "label27";
-			this.label27.Size = new Size(81, 16);
-			this.label27.TabIndex = 0;
-			this.label27.Text = "Lifo Editor";
+			label27.AutoSize = true;
+			label27.ImeMode = ImeMode.NoControl;
+			label27.Location = new Point(0, 4);
+			label27.Name = "label27";
+			label27.Size = new Size(81, 16);
+			label27.TabIndex = 0;
+			label27.Text = "Lifo Editor";
 			//
 			// btcommit
 			//
-			this.btcommit.Anchor = (
+			btcommit.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -479,58 +479,58 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.btcommit.FlatStyle = FlatStyle.System;
-			this.btcommit.Font = new Font(
+			btcommit.FlatStyle = FlatStyle.System;
+			btcommit.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.btcommit.Location = new Point(688, 0);
-			this.btcommit.Name = "btcommit";
-			this.btcommit.Size = new Size(75, 23);
-			this.btcommit.TabIndex = 6;
-			this.btcommit.Text = "Save";
-			this.btcommit.Click += new EventHandler(this.btcommit_Click);
+			btcommit.Location = new Point(688, 0);
+			btcommit.Name = "btcommit";
+			btcommit.Size = new Size(75, 23);
+			btcommit.TabIndex = 6;
+			btcommit.Text = "Save";
+			btcommit.Click += new EventHandler(btcommit_Click);
 			//
 			// sfd
 			//
-			this.sfd.Filter =
+			sfd.Filter =
 				"Png (*.png)|*.png|Bitmap (*.bmp)|*.bmp|Gif (*.gif)|*.gif|JPEG File (*.jpg)|*.jpg|"
 				+ "All Files (*.*)|*.*";
-			this.sfd.Title = "Export Image";
+			sfd.Title = "Export Image";
 			//
 			// ofd
 			//
-			this.ofd.Filter =
+			ofd.Filter =
 				"All Image Files (*.jpg;*.bmp;*.gif;*.png)|*.jpg;*.bmp;*.gif;*.png|Bitmap (*.bmp)|"
 				+ "*.bmp|Gif (*.gif)|*.gif|JPEG File (*.jpg)|*.jpg|Png (*.png)|*.png|All Files (*.*"
 				+ ")|*.*";
-			this.ofd.FilterIndex = 5;
+			ofd.FilterIndex = 5;
 			//
 			// LifoForm
 			//
-			this.AutoScaleBaseSize = new Size(6, 14);
-			this.ClientSize = new Size(792, 310);
-			this.Controls.Add(this.LifoPanel);
-			this.Font = new Font(
+			AutoScaleBaseSize = new Size(6, 14);
+			ClientSize = new Size(792, 310);
+			Controls.Add(LifoPanel);
+			Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.Name = "LifoForm";
-			this.Text = "LifoForm";
-			this.LifoPanel.ResumeLayout(false);
-			this.LifoPanel.PerformLayout();
-			this.panel1.ResumeLayout(false);
-			this.panel1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
-			this.panel2.ResumeLayout(false);
-			this.panel2.PerformLayout();
-			this.ResumeLayout(false);
+			Name = "LifoForm";
+			Text = "LifoForm";
+			LifoPanel.ResumeLayout(false);
+			LifoPanel.PerformLayout();
+			panel1.ResumeLayout(false);
+			panel1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(pb)).EndInit();
+			panel2.ResumeLayout(false);
+			panel2.PerformLayout();
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -593,11 +593,11 @@ namespace SimPe.Plugin
 			}
 
 			sfd.FileName =
-				this.tbflname.Text
+				tbflname.Text
 				+ "_"
-				+ this.tbwidth.Text
+				+ tbwidth.Text
 				+ "x"
-				+ this.tbheight.Text
+				+ tbheight.Text
 				+ ".png";
 			if (sfd.ShowDialog() == DialogResult.OK)
 			{
@@ -623,7 +623,7 @@ namespace SimPe.Plugin
 				{
 					LevelInfo id = (LevelInfo)cbitem.Items[cbitem.SelectedIndex];
 					Image img = Image.FromFile(ofd.FileName);
-					img = this.CropImage(id, img);
+					img = CropImage(id, img);
 					if (img == null)
 					{
 						return;
@@ -659,12 +659,12 @@ namespace SimPe.Plugin
 				cbitem.Tag = true;
 				LevelInfo selecteditem = (LevelInfo)cbitem.Items[cbitem.SelectedIndex];
 
-				this.tbflname.Text = selecteditem.NameResource.FileName;
-				this.tbwidth.Text = selecteditem.TextureSize.Width.ToString();
-				this.tbheight.Text = selecteditem.TextureSize.Height.ToString();
-				this.tbz.Text = selecteditem.ZLevel.ToString();
+				tbflname.Text = selecteditem.NameResource.FileName;
+				tbwidth.Text = selecteditem.TextureSize.Width.ToString();
+				tbheight.Text = selecteditem.TextureSize.Height.ToString();
+				tbz.Text = selecteditem.ZLevel.ToString();
 
-				this.cbformats.SelectedIndex = 0;
+				cbformats.SelectedIndex = 0;
 				for (int i = 0; i < cbformats.Items.Count; i++)
 				{
 					ImageLoader.TxtrFormats f = (ImageLoader.TxtrFormats)
@@ -790,8 +790,8 @@ namespace SimPe.Plugin
 		{
 			try
 			{
-				LevelInfo li = this.SelectedLevelInfo();
-				li.ZLevel = Convert.ToInt32(this.tbz.Text);
+				LevelInfo li = SelectedLevelInfo();
+				li.ZLevel = Convert.ToInt32(tbz.Text);
 			}
 			catch (Exception ex)
 			{
@@ -892,7 +892,7 @@ namespace SimPe.Plugin
 			}
 
 			sfd.FileName =
-				this.tbflname.Text
+				tbflname.Text
 				+ "_alpha_"
 				+ pb.Image.Size.Width.ToString()
 				+ "x"
@@ -923,13 +923,13 @@ namespace SimPe.Plugin
 				{
 					LevelInfo id = (LevelInfo)cbitem.Items[cbitem.SelectedIndex];
 					Image img = Image.FromFile(ofd.FileName);
-					img = this.CropImage(id, img);
+					img = CropImage(id, img);
 					if (img == null)
 					{
 						return;
 					}
 
-					id.Texture = this.ChangeAlpha(id.Texture, img);
+					id.Texture = ChangeAlpha(id.Texture, img);
 					;
 					pb.Image = id.Texture;
 				}
@@ -948,8 +948,8 @@ namespace SimPe.Plugin
 			LinkLabelLinkClickedEventArgs e
 		)
 		{
-			string fl = Hashes.StripHashFromName(this.tbflname.Text);
-			this.tbflname.Text = Hashes.AssembleHashedFileName(
+			string fl = Hashes.StripHashFromName(tbflname.Text);
+			tbflname.Text = Hashes.AssembleHashedFileName(
 				wrapper.Package.FileGroupHash,
 				fl
 			);
@@ -960,7 +960,7 @@ namespace SimPe.Plugin
 			LinkLabelLinkClickedEventArgs e
 		)
 		{
-			string fl = Hashes.StripHashFromName(this.tbflname.Text);
+			string fl = Hashes.StripHashFromName(tbflname.Text);
 			wrapper.FileDescriptor.Instance = Hashes.InstanceHash(fl);
 			wrapper.FileDescriptor.SubType = Hashes.SubTypeHash(fl);
 		}
@@ -1019,7 +1019,7 @@ namespace SimPe.Plugin
 					tbwidth.Text = id.TextureSize.Width.ToString();
 					tbheight.Text = id.TextureSize.Height.ToString();
 
-					this.cbformats.SelectedIndex = 0;
+					cbformats.SelectedIndex = 0;
 					for (int i = 0; i < cbformats.Items.Count; i++)
 					{
 						if ((ImageLoader.TxtrFormats)cbformats.Items[i] == id.Format)

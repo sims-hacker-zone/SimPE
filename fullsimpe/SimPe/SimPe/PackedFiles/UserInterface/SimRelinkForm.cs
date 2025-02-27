@@ -47,38 +47,38 @@ namespace SimPe.PackedFiles.UserInterface
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
+			components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(SimRelinkForm)
 				);
-			this.label1 = new Label();
-			this.lv = new ListView();
-			this.ilist = new ImageList(this.components);
-			this.label2 = new Label();
-			this.cbfile = new CheckBox();
-			this.btlink = new Button();
-			this.SuspendLayout();
+			label1 = new Label();
+			lv = new ListView();
+			ilist = new ImageList(components);
+			label2 = new Label();
+			cbfile = new CheckBox();
+			btlink = new Button();
+			SuspendLayout();
 			//
 			// label1
 			//
-			this.label1.Font = new Font(
+			label1.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label1.Location = new Point(8, 76);
-			this.label1.Name = "label1";
-			this.label1.Size = new Size(110, 19);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Character File:";
-			this.label1.TextAlign = ContentAlignment.BottomLeft;
+			label1.Location = new Point(8, 76);
+			label1.Name = "label1";
+			label1.Size = new Size(110, 19);
+			label1.TabIndex = 0;
+			label1.Text = "Character File:";
+			label1.TextAlign = ContentAlignment.BottomLeft;
 			//
 			// lv
 			//
-			this.lv.Anchor = (
+			lv.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -90,28 +90,28 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.lv.HideSelection = false;
-			this.lv.LargeImageList = this.ilist;
-			this.lv.Location = new Point(32, 96);
-			this.lv.MultiSelect = false;
-			this.lv.Name = "lv";
-			this.lv.Size = new Size(556, 306);
-			this.lv.Sorting = SortOrder.Ascending;
-			this.lv.TabIndex = 1;
-			this.lv.UseCompatibleStateImageBehavior = false;
-			this.lv.SelectedIndexChanged += new System.EventHandler(
-				this.lv_SelectedIndexChanged
+			lv.HideSelection = false;
+			lv.LargeImageList = ilist;
+			lv.Location = new Point(32, 96);
+			lv.MultiSelect = false;
+			lv.Name = "lv";
+			lv.Size = new Size(556, 306);
+			lv.Sorting = SortOrder.Ascending;
+			lv.TabIndex = 1;
+			lv.UseCompatibleStateImageBehavior = false;
+			lv.SelectedIndexChanged += new System.EventHandler(
+				lv_SelectedIndexChanged
 			);
 			//
 			// ilist
 			//
-			this.ilist.ColorDepth = ColorDepth.Depth8Bit;
-			this.ilist.ImageSize = new Size(64, 64);
-			this.ilist.TransparentColor = Color.Transparent;
+			ilist.ColorDepth = ColorDepth.Depth8Bit;
+			ilist.ImageSize = new Size(64, 64);
+			ilist.TransparentColor = Color.Transparent;
 			//
 			// label2
 			//
-			this.label2.Anchor = (
+			label2.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -121,24 +121,24 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.label2.Font = new Font(
+			label2.Font = new Font(
 				"Georgia",
 				9.75F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label2.ForeColor = Color.Red;
-			this.label2.Location = new Point(8, 8);
-			this.label2.Name = "label2";
-			this.label2.Size = new Size(604, 64);
-			this.label2.TabIndex = 2;
-			this.label2.Text = resources.GetString("label2.Text");
-			this.label2.TextAlign = ContentAlignment.MiddleCenter;
+			label2.ForeColor = Color.Red;
+			label2.Location = new Point(8, 8);
+			label2.Name = "label2";
+			label2.Size = new Size(604, 64);
+			label2.TabIndex = 2;
+			label2.Text = resources.GetString("label2.Text");
+			label2.TextAlign = ContentAlignment.MiddleCenter;
 			//
 			// cbfile
 			//
-			this.cbfile.Anchor = (
+			cbfile.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -146,16 +146,16 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.cbfile.FlatStyle = FlatStyle.System;
-			this.cbfile.Location = new Point(12, 407);
-			this.cbfile.Name = "cbfile";
-			this.cbfile.Size = new Size(235, 24);
-			this.cbfile.TabIndex = 3;
-			this.cbfile.Text = "Change GUID in Character File";
+			cbfile.FlatStyle = FlatStyle.System;
+			cbfile.Location = new Point(12, 407);
+			cbfile.Name = "cbfile";
+			cbfile.Size = new Size(235, 24);
+			cbfile.TabIndex = 3;
+			cbfile.Text = "Change GUID in Character File";
 			//
 			// btlink
 			//
-			this.btlink.Anchor = (
+			btlink.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -163,35 +163,35 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.btlink.FlatStyle = FlatStyle.System;
-			this.btlink.Location = new Point(537, 408);
-			this.btlink.Name = "btlink";
-			this.btlink.Size = new Size(75, 23);
-			this.btlink.TabIndex = 4;
-			this.btlink.Text = "Re-Map";
-			this.btlink.Click += new System.EventHandler(this.btlink_Click);
+			btlink.FlatStyle = FlatStyle.System;
+			btlink.Location = new Point(537, 408);
+			btlink.Name = "btlink";
+			btlink.Size = new Size(75, 23);
+			btlink.TabIndex = 4;
+			btlink.Text = "Re-Map";
+			btlink.Click += new System.EventHandler(btlink_Click);
 			//
 			// SimRelinkForm
 			//
-			this.AutoScaleBaseSize = new Size(6, 14);
-			this.ClientSize = new Size(624, 442);
-			this.Controls.Add(this.btlink);
-			this.Controls.Add(this.cbfile);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.lv);
-			this.Controls.Add(this.label1);
-			this.Font = new Font(
+			AutoScaleBaseSize = new Size(6, 14);
+			ClientSize = new Size(624, 442);
+			Controls.Add(btlink);
+			Controls.Add(cbfile);
+			Controls.Add(label2);
+			Controls.Add(lv);
+			Controls.Add(label1);
+			Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.Icon = ((Icon)(resources.GetObject("$this.Icon")));
-			this.Name = "SimRelinkForm";
-			this.StartPosition = FormStartPosition.CenterScreen;
-			this.Text = "SimReMapForm";
-			this.ResumeLayout(false);
+			Icon = ((Icon)(resources.GetObject("$this.Icon")));
+			Name = "SimRelinkForm";
+			StartPosition = FormStartPosition.CenterScreen;
+			Text = "SimReMapForm";
+			ResumeLayout(false);
 		}
 		#endregion
 

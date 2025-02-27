@@ -42,7 +42,7 @@ namespace SimPe.PackedFiles.Wrapper
 			cb.Sorted = true;
 			try
 			{
-				if (!this.DesignMode)
+				if (!DesignMode)
 				{
 
 					FileTableBase
@@ -87,34 +87,34 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.cb = new System.Windows.Forms.ComboBox();
-			this.SuspendLayout();
+			cb = new System.Windows.Forms.ComboBox();
+			SuspendLayout();
 			//
 			// cb
 			//
-			this.cb.Dock = System.Windows.Forms.DockStyle.Top;
-			this.cb.Font = new System.Drawing.Font(
+			cb.Dock = System.Windows.Forms.DockStyle.Top;
+			cb.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cb.Location = new System.Drawing.Point(0, 0);
-			this.cb.Name = "cb";
-			this.cb.Size = new System.Drawing.Size(150, 21);
-			this.cb.TabIndex = 0;
-			this.cb.SelectedIndexChanged += new EventHandler(
-				this.cb_SelectedIndexChanged
+			cb.Location = new System.Drawing.Point(0, 0);
+			cb.Name = "cb";
+			cb.Size = new System.Drawing.Size(150, 21);
+			cb.TabIndex = 0;
+			cb.SelectedIndexChanged += new EventHandler(
+				cb_SelectedIndexChanged
 			);
-			this.cb.TextChanged += new EventHandler(this.cb_TextChanged);
+			cb.TextChanged += new EventHandler(cb_TextChanged);
 			//
 			// SimComboBox
 			//
-			this.Controls.Add(this.cb);
-			this.Name = "SimComboBox";
-			this.Size = new System.Drawing.Size(150, 24);
-			this.ResumeLayout(false);
+			Controls.Add(cb);
+			Name = "SimComboBox";
+			Size = new System.Drawing.Size(150, 24);
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -261,7 +261,7 @@ namespace SimPe.PackedFiles.Wrapper
 		private void SimDescriptionProvider_ChangedPackage(object sender, EventArgs e)
 		{
 			needreload = true;
-			if (this.Visible)
+			if (Visible)
 			{
 				Reload();
 			}

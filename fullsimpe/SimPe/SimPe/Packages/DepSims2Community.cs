@@ -68,18 +68,18 @@ namespace SimPe.Packages
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.btadd = new Button();
-			this.lblist = new ListBox();
-			this.ofd = new OpenFileDialog();
-			this.btdelete = new Button();
-			this.button2 = new Button();
-			this.panel1 = new Panel();
-			this.panel1.SuspendLayout();
-			this.SuspendLayout();
+			btadd = new Button();
+			lblist = new ListBox();
+			ofd = new OpenFileDialog();
+			btdelete = new Button();
+			button2 = new Button();
+			panel1 = new Panel();
+			panel1.SuspendLayout();
+			SuspendLayout();
 			//
 			// btadd
 			//
-			this.btadd.Anchor = (
+			btadd.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -87,19 +87,19 @@ namespace SimPe.Packages
 					)
 				)
 			);
-			this.btadd.BackColor = System.Drawing.Color.Transparent;
-			this.btadd.FlatStyle = FlatStyle.System;
-			this.btadd.Location = new System.Drawing.Point(288, 189);
-			this.btadd.Name = "btadd";
-			this.btadd.Size = new System.Drawing.Size(75, 23);
-			this.btadd.TabIndex = 4;
-			this.btadd.Text = "Add...";
-			this.btadd.UseVisualStyleBackColor = false;
-			this.btadd.Click += new System.EventHandler(this.AddPackage);
+			btadd.BackColor = System.Drawing.Color.Transparent;
+			btadd.FlatStyle = FlatStyle.System;
+			btadd.Location = new System.Drawing.Point(288, 189);
+			btadd.Name = "btadd";
+			btadd.Size = new System.Drawing.Size(75, 23);
+			btadd.TabIndex = 4;
+			btadd.Text = "Add...";
+			btadd.UseVisualStyleBackColor = false;
+			btadd.Click += new System.EventHandler(AddPackage);
 			//
 			// lblist
 			//
-			this.lblist.Anchor = (
+			lblist.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -111,16 +111,16 @@ namespace SimPe.Packages
 					)
 				)
 			);
-			this.lblist.IntegralHeight = false;
-			this.lblist.Location = new System.Drawing.Point(8, 8);
-			this.lblist.Name = "lblist";
-			this.lblist.Size = new System.Drawing.Size(448, 179);
-			this.lblist.TabIndex = 3;
-			this.lblist.SelectedIndexChanged += new System.EventHandler(this.Select);
+			lblist.IntegralHeight = false;
+			lblist.Location = new System.Drawing.Point(8, 8);
+			lblist.Name = "lblist";
+			lblist.Size = new System.Drawing.Size(448, 179);
+			lblist.TabIndex = 3;
+			lblist.SelectedIndexChanged += new System.EventHandler(Select);
 			//
 			// btdelete
 			//
-			this.btdelete.Anchor = (
+			btdelete.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -128,19 +128,19 @@ namespace SimPe.Packages
 					)
 				)
 			);
-			this.btdelete.BackColor = System.Drawing.Color.Transparent;
-			this.btdelete.FlatStyle = FlatStyle.System;
-			this.btdelete.Location = new System.Drawing.Point(198, 189);
-			this.btdelete.Name = "btdelete";
-			this.btdelete.Size = new System.Drawing.Size(75, 23);
-			this.btdelete.TabIndex = 5;
-			this.btdelete.Text = "Delete...";
-			this.btdelete.UseVisualStyleBackColor = false;
-			this.btdelete.Click += new System.EventHandler(this.DeletePackage);
+			btdelete.BackColor = System.Drawing.Color.Transparent;
+			btdelete.FlatStyle = FlatStyle.System;
+			btdelete.Location = new System.Drawing.Point(198, 189);
+			btdelete.Name = "btdelete";
+			btdelete.Size = new System.Drawing.Size(75, 23);
+			btdelete.TabIndex = 5;
+			btdelete.Text = "Delete...";
+			btdelete.UseVisualStyleBackColor = false;
+			btdelete.Click += new System.EventHandler(DeletePackage);
 			//
 			// button2
 			//
-			this.button2.Anchor = (
+			button2.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -148,19 +148,19 @@ namespace SimPe.Packages
 					)
 				)
 			);
-			this.button2.BackColor = System.Drawing.Color.Transparent;
-			this.button2.FlatStyle = FlatStyle.System;
-			this.button2.Location = new System.Drawing.Point(384, 189);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(75, 23);
-			this.button2.TabIndex = 6;
-			this.button2.Text = "OK";
-			this.button2.UseVisualStyleBackColor = false;
-			this.button2.Click += new System.EventHandler(this.button2_Click);
+			button2.BackColor = System.Drawing.Color.Transparent;
+			button2.FlatStyle = FlatStyle.System;
+			button2.Location = new System.Drawing.Point(384, 189);
+			button2.Name = "button2";
+			button2.Size = new System.Drawing.Size(75, 23);
+			button2.TabIndex = 6;
+			button2.Text = "OK";
+			button2.UseVisualStyleBackColor = false;
+			button2.Click += new System.EventHandler(button2_Click);
 			//
 			// panel1
 			//
-			this.panel1.Anchor = (
+			panel1.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -172,35 +172,35 @@ namespace SimPe.Packages
 					)
 				)
 			);
-			this.panel1.Controls.Add(this.btdelete);
-			this.panel1.Controls.Add(this.button2);
-			this.panel1.Controls.Add(this.btadd);
-			this.panel1.Controls.Add(this.lblist);
-			this.panel1.Location = new System.Drawing.Point(0, 0);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(465, 219);
-			this.panel1.TabIndex = 7;
+			panel1.Controls.Add(btdelete);
+			panel1.Controls.Add(button2);
+			panel1.Controls.Add(btadd);
+			panel1.Controls.Add(lblist);
+			panel1.Location = new System.Drawing.Point(0, 0);
+			panel1.Name = "panel1";
+			panel1.Size = new System.Drawing.Size(465, 219);
+			panel1.TabIndex = 7;
 			//
 			// DepSims2Community
 			//
-			this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
-			this.ClientSize = new System.Drawing.Size(464, 218);
-			this.Controls.Add(this.panel1);
-			this.Font = new System.Drawing.Font(
+			AutoScaleBaseSize = new System.Drawing.Size(6, 14);
+			ClientSize = new System.Drawing.Size(464, 218);
+			Controls.Add(panel1);
+			Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.FormBorderStyle =
+			FormBorderStyle =
 				FormBorderStyle
 				.SizableToolWindow;
-			this.Name = "DepSims2Community";
-			this.StartPosition = FormStartPosition.CenterScreen;
-			this.Text = "Dependencies";
-			this.panel1.ResumeLayout(false);
-			this.ResumeLayout(false);
+			Name = "DepSims2Community";
+			StartPosition = FormStartPosition.CenterScreen;
+			Text = "Dependencies";
+			panel1.ResumeLayout(false);
+			ResumeLayout(false);
 		}
 		#endregion
 		bool ok;
@@ -209,8 +209,8 @@ namespace SimPe.Packages
 		{
 			lblist.Items.Clear();
 
-			this.btdelete.Visible = !ronly;
-			this.btadd.Visible = !ronly;
+			btdelete.Visible = !ronly;
+			btadd.Visible = !ronly;
 
 			foreach (S2CPDescriptorBase s2cpb in s2cp.Dependency)
 			{
@@ -224,7 +224,7 @@ namespace SimPe.Packages
 
 			btdelete.Enabled = (lblist.SelectedIndex >= 0);
 
-			this.ShowDialog();
+			ShowDialog();
 
 			if (ok)
 			{

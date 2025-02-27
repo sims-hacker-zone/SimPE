@@ -173,7 +173,7 @@ namespace SimPe.Plugin.Tool.Dockable
 					groups.Add(nrefitem.FileDescriptor.Instance);
 
 					oci.Tag = nrefitem;
-					this.AddToBuffer(oci);
+					AddToBuffer(oci);
 				}
 				else
 				{
@@ -186,7 +186,7 @@ namespace SimPe.Plugin.Tool.Dockable
 					cachechg = true;
 					cachefile.AddItem(oci, nrefitem.Package.FileName);
 
-					this.AddToBuffer(oci);
+					AddToBuffer(oci);
 				}
 			}
 		}
@@ -293,7 +293,7 @@ namespace SimPe.Plugin.Tool.Dockable
 					groups.Add(nrefitem.LocalGroup);
 
 					oci.Tag = nrefitem;
-					this.AddToBuffer(oci);
+					AddToBuffer(oci);
 				}
 				else
 				{
@@ -306,7 +306,7 @@ namespace SimPe.Plugin.Tool.Dockable
 					cachechg = true;
 					cachefile.AddItem(oci, nrefitem.Package.FileName);
 
-					this.AddToBuffer(oci);
+					AddToBuffer(oci);
 				}
 			}
 
@@ -324,7 +324,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		protected override void OnFinish()
 		{
 			base.OnFinish();
-			this.SaveCacheIndex();
+			SaveCacheIndex();
 		}
 	}
 
@@ -338,13 +338,13 @@ namespace SimPe.Plugin.Tool.Dockable
 		{
 			deflang = Helper.WindowsRegistry.LanguageCode;
 
-			this.pict = new ArrayList();
+			pict = new ArrayList();
 			PackedFiles.Wrapper.Picture pw =
 				new PackedFiles.Wrapper.Picture();
 			uint[] picts = pw.AssignableTypes;
 			foreach (uint p in picts)
 			{
-				this.pict.Add(p);
+				pict.Add(p);
 			}
 		}
 

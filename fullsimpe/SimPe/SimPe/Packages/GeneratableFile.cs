@@ -53,7 +53,7 @@ namespace SimPe.Packages
 		protected override IPackageFile NewCloneBase()
 		{
 			GeneratableFile fl = new GeneratableFile((BinaryReader)null);
-			fl.header = this.header;
+			fl.header = header;
 
 			return fl;
 		}
@@ -118,7 +118,7 @@ namespace SimPe.Packages
 				}
 			}
 
-			this.BeginUpdate();
+			BeginUpdate();
 			bool wasinfileindex = PackageMaintainer.Maintainer.FileIndex.Contains(
 				flname
 			);
@@ -126,25 +126,25 @@ namespace SimPe.Packages
 			try
 			{
 				//this.IncrementalBuild();
-				MemoryStream ms = this.Build();
+				MemoryStream ms = Build();
 				if (Reader != null)
 				{
-					this.Reader.Close();
+					Reader.Close();
 				}
 
-				this.Save(ms, flname);
+				Save(ms, flname);
 
 				//this.reader =  new System.IO.BinaryReader(System.IO.File.OpenRead(flname));
-				this.FileName = flname;
+				FileName = flname;
 				type = PackageBaseType.Filename;
 
-				this.OpenReader();
-				this.CloseReader();
+				OpenReader();
+				CloseReader();
 			}
 			finally
 			{
-				this.ForgetUpdate();
-				this.EndUpdate();
+				ForgetUpdate();
+				EndUpdate();
 
 				if (wasinfileindex)
 				{
@@ -271,7 +271,7 @@ namespace SimPe.Packages
 			}
 
 			filelistfile = new PackedFiles.Wrapper.CompressedFileList(
-				this.Header.IndexType
+				Header.IndexType
 			);
 			filelist = new PackedFileDescriptor();
 			filelist.Type = Data.MetaData.DIRECTORY_FILE;
@@ -280,7 +280,7 @@ namespace SimPe.Packages
 
 			filelistfile.FileDescriptor = filelist;
 			filelistfile.SynchronizeUserData();
-			this.Add(filelist);
+			Add(filelist);
 		}
 
 		/// <summary>
@@ -289,7 +289,7 @@ namespace SimPe.Packages
 		/// <returns>The MemoryStream representing the new Package File</returns>
 		public MemoryStream Build()
 		{
-			this.LockStream();
+			LockStream();
 			OpenReader();
 			MemoryStream ms = new MemoryStream(16384); // Fuck
 													   // was MemoryStream(10000) : 10000 is odd , assuming bigger is faster is now 16kb
@@ -305,9 +305,9 @@ namespace SimPe.Packages
 			}
 
 			int oldcount = 0;
-			if (this.Index != null)
+			if (Index != null)
 			{
-				oldcount = this.Index.Length;
+				oldcount = Index.Length;
 			}
 
 			//now save the stuff
@@ -316,19 +316,19 @@ namespace SimPe.Packages
 			//now save the files
 			PackedFileDescriptors tmpindex = new PackedFileDescriptors();
 			ArrayList tmpcmp = new ArrayList();
-			if (this.fileindex == null)
+			if (fileindex == null)
 			{
 				fileindex = new IPackedFileDescriptor[0];
 			}
 
 			PrepareCompression();
 
-			foreach (PackedFileDescriptor pfd in this.fileindex)
+			foreach (PackedFileDescriptor pfd in fileindex)
 			{
 				pfd.Changed = false;
 
 				//we write the filelist as last File
-				if (pfd == this.filelist)
+				if (pfd == filelist)
 				{
 					continue;
 				}
@@ -358,7 +358,7 @@ namespace SimPe.Packages
 						}
 						else
 						{
-							byte[] data = ((PackedFile)this.Read(pfd)).UncompressedData;
+							byte[] data = ((PackedFile)Read(pfd)).UncompressedData;
 							pf = new PackedFile(PackedFile.Compress(data));
 							pf.uncsize = (uint)data.Length;
 						}
@@ -374,7 +374,7 @@ namespace SimPe.Packages
 					}
 					catch (Exception ex)
 					{
-						pf = (PackedFile)this.Read(pfd);
+						pf = (PackedFile)Read(pfd);
 						newpfd.size = pf.data.Length;
 						newpfd.SetUserData(pfd.UserData, false);
 
@@ -386,7 +386,7 @@ namespace SimPe.Packages
 				}
 				else
 				{
-					pf = (PackedFile)this.Read(pfd);
+					pf = (PackedFile)Read(pfd);
 					newpfd.size = pf.data.Length;
 					newpfd.SetUserData(pfd.UserData, false);
 				}
@@ -428,17 +428,17 @@ namespace SimPe.Packages
 			header.Save(writer);
 
 			ms.Seek(0, SeekOrigin.Begin);
-			this.UnLockStream();
+			UnLockStream();
 			CloseReader();
 
 			FireIndexEvent();
 			if (Index.Length < oldcount)
 			{
-				this.FireRemoveEvent();
+				FireRemoveEvent();
 			}
 			else if (Index.Length > oldcount)
 			{
-				this.FireAddEvent();
+				FireAddEvent();
 			}
 
 			return ms;
@@ -458,7 +458,7 @@ namespace SimPe.Packages
 			ArrayList tmpcmp
 		)
 		{
-			if (this.filelist == null)
+			if (filelist == null)
 			{
 				filelist = new PackedFileDescriptor();
 				filelist.instance = 0x286B1F03;
@@ -469,7 +469,7 @@ namespace SimPe.Packages
 			//we use the fact, taht packed files that were altered by SimPe will not be compressed,
 			//so we only need to delete entries in the Filelist that do not exist any longer. The Size
 			//won't change!
-			byte[] b = this.Read(filelist).UncompressedData;
+			byte[] b = Read(filelist).UncompressedData;
 			PackedFiles.Wrapper.CompressedFileList fl =
 				new PackedFiles.Wrapper.CompressedFileList(filelist, this);
 			if (filelist.MarkForDelete)
@@ -478,7 +478,7 @@ namespace SimPe.Packages
 			}
 
 			PackedFiles.Wrapper.CompressedFileList newfl =
-				new PackedFiles.Wrapper.CompressedFileList(this.Header.IndexType);
+				new PackedFiles.Wrapper.CompressedFileList(Header.IndexType);
 			newfl.FileDescriptor = filelist;
 
 			for (int i = 0; i < tmpcmp.Count; i++)
@@ -521,7 +521,7 @@ namespace SimPe.Packages
 				filelist.Changed = false;
 			}
 
-			this.filelistfile = newfl;
+			filelistfile = newfl;
 		}
 
 		/// <summary>

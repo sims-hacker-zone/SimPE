@@ -73,21 +73,21 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			set
 			{
-				if (this.item != value)
+				if (item != value)
 				{
 					if (item != null)
 					{
 						item.Wrapper.WrapperChanged -= new EventHandler(
-							this.WrapperChanged
+							WrapperChanged
 						);
 					}
 
-					this.item = value;
+					item = value;
 					setText();
 					if (item != null)
 					{
 						item.Wrapper.WrapperChanged += new EventHandler(
-							this.WrapperChanged
+							WrapperChanged
 						);
 					}
 				}
@@ -106,7 +106,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void setText()
 		{
-			this.tbValue.Text =
+			tbValue.Text =
 				"0x"
 				+ (
 					(item.Count < 0x100) ? Helper.HexString((byte)item.Count)
@@ -115,7 +115,7 @@ namespace SimPe.PackedFiles.UserInterface
 				);
 			for (int i = 0; i < item.Count; i++)
 			{
-				this.tbValue.Text +=
+				tbValue.Text +=
 					"; "
 					+ Helper.HexString(item[i].Min)
 					+ " "
@@ -146,32 +146,32 @@ namespace SimPe.PackedFiles.UserInterface
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(TtabAnimalMotiveUI)
 				);
-			this.tbValue = new TextBox();
-			this.btnPopup = new Button();
-			this.SuspendLayout();
+			tbValue = new TextBox();
+			btnPopup = new Button();
+			SuspendLayout();
 			//
 			// tbValue
 			//
-			resources.ApplyResources(this.tbValue, "tbValue");
-			this.tbValue.Name = "tbValue";
-			this.tbValue.ReadOnly = true;
+			resources.ApplyResources(tbValue, "tbValue");
+			tbValue.Name = "tbValue";
+			tbValue.ReadOnly = true;
 			//
 			// btnPopup
 			//
-			this.btnPopup.BackColor = System.Drawing.Color.Transparent;
-			resources.ApplyResources(this.btnPopup, "btnPopup");
-			this.btnPopup.Name = "btnPopup";
-			this.btnPopup.UseVisualStyleBackColor = false;
-			this.btnPopup.Click += new EventHandler(this.btnPopup_Click);
+			btnPopup.BackColor = System.Drawing.Color.Transparent;
+			resources.ApplyResources(btnPopup, "btnPopup");
+			btnPopup.Name = "btnPopup";
+			btnPopup.UseVisualStyleBackColor = false;
+			btnPopup.Click += new EventHandler(btnPopup_Click);
 			//
 			// TtabAnimalMotiveUI
 			//
-			this.Controls.Add(this.btnPopup);
-			this.Controls.Add(this.tbValue);
-			this.Name = "TtabAnimalMotiveUI";
+			Controls.Add(btnPopup);
+			Controls.Add(tbValue);
+			Name = "TtabAnimalMotiveUI";
 			resources.ApplyResources(this, "$this");
-			this.ResumeLayout(false);
-			this.PerformLayout();
+			ResumeLayout(false);
+			PerformLayout();
 		}
 		#endregion
 

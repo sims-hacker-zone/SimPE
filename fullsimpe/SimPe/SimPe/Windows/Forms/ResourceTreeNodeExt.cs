@@ -15,11 +15,11 @@ namespace SimPe.Windows.Forms
 			: base()
 		{
 			this.id = id;
-			this.Resources = list;
+			Resources = list;
 
-			this.ImageIndex = 0;
-			this.Text = text + " (" + list.Count + ")";
-			this.SelectedImageIndex = this.ImageIndex;
+			ImageIndex = 0;
+			Text = text + " (" + list.Count + ")";
+			SelectedImageIndex = ImageIndex;
 		}
 
 		public ResourceViewManager.ResourceNameList Resources
@@ -33,7 +33,7 @@ namespace SimPe.Windows.Forms
 
 		public int CompareTo(ResourceTreeNodeExt other)
 		{
-			return this.Text.CompareTo(other.Text);
+			return Text.CompareTo(other.Text);
 		}
 
 		#endregion

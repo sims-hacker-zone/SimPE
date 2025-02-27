@@ -211,7 +211,7 @@ namespace SimPe.Plugin
 
 			Unknown1 = reader.ReadInt16();
 			Unknown2 = reader.ReadInt32();
-			this.Name = reader.ReadString();
+			Name = reader.ReadString();
 			Unknown3 = reader.ReadInt32();
 			Unknown4 = reader.ReadByte();
 
@@ -343,41 +343,41 @@ namespace SimPe.Plugin
 			}
 
 			tShapeRefNode.lb_srn_a.Items.Clear();
-			for (int i = 0; i < this.ItemsA.Length; i++)
+			for (int i = 0; i < ItemsA.Length; i++)
 			{
 				tShapeRefNode.lb_srn_a.Items.Add(ItemsA[i]);
 			}
 
 			tShapeRefNode.lb_srn_b.Items.Clear();
-			for (int i = 0; i < this.ItemsB.Length; i++)
+			for (int i = 0; i < ItemsB.Length; i++)
 			{
 				tShapeRefNode.lb_srn_b.Items.Add(ItemsB[i]);
 			}
 
 			tShapeRefNode.tb_srn_uk1.Text =
-				"0x" + Helper.HexString((ushort)this.Unknown1);
+				"0x" + Helper.HexString((ushort)Unknown1);
 			tShapeRefNode.tb_srn_uk2.Text =
-				"0x" + Helper.HexString((uint)this.Unknown2);
+				"0x" + Helper.HexString((uint)Unknown2);
 			tShapeRefNode.tb_srn_uk3.Text =
-				"0x" + Helper.HexString((uint)this.Unknown3);
-			tShapeRefNode.tb_srn_uk4.Text = "0x" + Helper.HexString(this.Unknown4);
+				"0x" + Helper.HexString((uint)Unknown3);
+			tShapeRefNode.tb_srn_uk4.Text = "0x" + Helper.HexString(Unknown4);
 			tShapeRefNode.tb_srn_uk5.Text =
-				"0x" + Helper.HexString((uint)this.Unknown5);
+				"0x" + Helper.HexString((uint)Unknown5);
 			tShapeRefNode.tb_srn_uk6.Text =
-				"0x" + Helper.HexString((uint)this.Unknown6);
+				"0x" + Helper.HexString((uint)Unknown6);
 
-			tShapeRefNode.tb_srn_kind.Text = this.Name;
-			tShapeRefNode.tb_srn_data.Text = Helper.BytesToHexList(this.Data);
+			tShapeRefNode.tb_srn_kind.Text = Name;
+			tShapeRefNode.tb_srn_data.Text = Helper.BytesToHexList(Data);
 
-			tShapeRefNode.tb_srn_ver.Text = "0x" + Helper.HexString(this.version);
+			tShapeRefNode.tb_srn_ver.Text = "0x" + Helper.HexString(version);
 		}
 
 		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
 		{
 			base.ExtendTabControl(tc);
-			this.rn.AddToTabControl(tc);
-			this.bn.AddToTabControl(tc);
-			this.tn.AddToTabControl(tc);
+			rn.AddToTabControl(tc);
+			bn.AddToTabControl(tc);
+			tn.AddToTabControl(tc);
 		}
 
 		public override string ToString()
@@ -394,9 +394,9 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			if (this.tShapeRefNode != null)
+			if (tShapeRefNode != null)
 			{
-				this.tShapeRefNode.Dispose();
+				tShapeRefNode.Dispose();
 			}
 
 			tShapeRefNode = null;

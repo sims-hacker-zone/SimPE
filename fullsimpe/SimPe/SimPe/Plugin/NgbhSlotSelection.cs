@@ -64,41 +64,41 @@ namespace SimPe.Plugin
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(NgbhSlotSelection)
 				);
-			this.lv = new NgbhSlotListView();
-			this.cb = new Ambertation.Windows.Forms.EnumComboBox();
-			this.SuspendLayout();
+			lv = new NgbhSlotListView();
+			cb = new Ambertation.Windows.Forms.EnumComboBox();
+			SuspendLayout();
 			//
 			// lv
 			//
-			resources.ApplyResources(this.lv, "lv");
-			this.lv.Name = "lv";
-			this.lv.NgbhResource = null;
-			this.lv.Slot = null;
-			this.lv.Slots = null;
-			this.lv.SlotType = Data.NeighborhoodSlots.LotsIntern;
-			this.lv.SelectedSlotChanged += new EventHandler(
-				this.lv_SelectedSlotChanged
+			resources.ApplyResources(lv, "lv");
+			lv.Name = "lv";
+			lv.NgbhResource = null;
+			lv.Slot = null;
+			lv.Slots = null;
+			lv.SlotType = Data.NeighborhoodSlots.LotsIntern;
+			lv.SelectedSlotChanged += new EventHandler(
+				lv_SelectedSlotChanged
 			);
 			//
 			// cb
 			//
-			resources.ApplyResources(this.cb, "cb");
-			this.cb.DropDownStyle = ComboBoxStyle.DropDownList;
-			this.cb.Enum = null;
-			this.cb.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.cb.Name = "cb";
-			this.cb.ResourceManager = null;
-			this.cb.SelectedIndexChanged += new EventHandler(
-				this.cb_SelectedIndexChanged
+			resources.ApplyResources(cb, "cb");
+			cb.DropDownStyle = ComboBoxStyle.DropDownList;
+			cb.Enum = null;
+			cb.ForeColor = System.Drawing.SystemColors.ControlText;
+			cb.Name = "cb";
+			cb.ResourceManager = null;
+			cb.SelectedIndexChanged += new EventHandler(
+				cb_SelectedIndexChanged
 			);
 			//
 			// NgbhSlotSelection
 			//
-			this.Controls.Add(this.cb);
-			this.Controls.Add(this.lv);
+			Controls.Add(cb);
+			Controls.Add(lv);
 			resources.ApplyResources(this, "$this");
-			this.Name = "NgbhSlotSelection";
-			this.ResumeLayout(false);
+			Name = "NgbhSlotSelection";
+			ResumeLayout(false);
 		}
 		#endregion
 

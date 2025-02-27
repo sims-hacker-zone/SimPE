@@ -42,8 +42,8 @@ namespace SimPe.Plugin.Gmdc
 		)
 		{
 			Component = component;
-			this.Scene = scn;
-			this.Gmdc = gmdc;
+			Scene = scn;
+			Gmdc = gmdc;
 			ClearGroupsOnImport = false;
 		}
 
@@ -75,7 +75,7 @@ namespace SimPe.Plugin.Gmdc
 				return false;
 			}
 
-			if (this.ClearGroupsOnImport)
+			if (ClearGroupsOnImport)
 			{
 				for (int i = Gmdc.Groups.Length - 1; i >= 0; i--)
 				{

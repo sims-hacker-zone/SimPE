@@ -122,7 +122,7 @@ namespace SimPe.Plugin.Anim
 		{
 			DiscardZeroFrame = false;
 			RemoveUnneeded = true;
-			this.FrameBlock = afb;
+			FrameBlock = afb;
 			Action = AnimImporterAction.Nothing;
 		}
 
@@ -164,7 +164,7 @@ namespace SimPe.Plugin.Anim
 			Target.TransformationType = FrameBlock.TransformationType;
 			foreach (AnimationFrame af in FrameBlock.Frames)
 			{
-				if (!this.DiscardZeroFrame || af.TimeCode != 0)
+				if (!DiscardZeroFrame || af.TimeCode != 0)
 				{
 					Target.AddFrame(af.TimeCode, af.X, af.Y, af.Z, af.Linear);
 				}
@@ -282,7 +282,7 @@ namespace SimPe.Plugin.Anim
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length => this.Count;
+		public int Length => Count;
 
 		/// <summary>
 		/// Create a clone of this Object

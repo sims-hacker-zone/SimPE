@@ -112,11 +112,11 @@ namespace SimPe.PackedFiles.Wrapper
 
 		protected void UpdateContent()
 		{
-			ExtSDesc selectedSim = this.SelectedSim;
+			ExtSDesc selectedSim = SelectedSim;
 			string house = selectedSim == null ? "" : selectedSim.HouseholdName;
 
-			this.cbhousehold.Items.Clear();
-			this.cbhousehold.Items.Add(
+			cbhousehold.Items.Clear();
+			cbhousehold.Items.Add(
 				Localization.GetString("[All Households]")
 			);
 
@@ -135,7 +135,7 @@ namespace SimPe.PackedFiles.Wrapper
 						)
 						.ToArray(typeof(String))
 			);
-			this.cbhousehold.Items.AddRange(names.ToArray());
+			cbhousehold.Items.AddRange(names.ToArray());
 
 			int index = names.IndexOf(house);
 			if (index < 0)
@@ -144,7 +144,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 
 			cbhousehold.SelectedIndex = index + 1;
-			this.SelectedSim = selectedSim;
+			SelectedSim = selectedSim;
 		}
 
 		bool details;
@@ -159,7 +159,7 @@ namespace SimPe.PackedFiles.Wrapper
 				if (details != value)
 				{
 					details = value;
-					this.SetViewMode();
+					SetViewMode();
 				}
 			}
 		}
@@ -203,11 +203,11 @@ namespace SimPe.PackedFiles.Wrapper
 				int groupindex
 			)
 			{
-				this.SimDescription = sdsc;
-				this.Name = name;
-				this.Image = img;
-				this.Household = household;
-				this.GroupIndex = groupindex;
+				SimDescription = sdsc;
+				Name = name;
+				Image = img;
+				Household = household;
+				GroupIndex = groupindex;
 
 				Cancel = false;
 			}
@@ -257,7 +257,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		void UpdateSimList(string household)
 		{
-			ExtSDesc selectedSim = this.SelectedSim;
+			ExtSDesc selectedSim = SelectedSim;
 			if (
 				household != null
 				&& selectedSim != null
@@ -598,7 +598,7 @@ namespace SimPe.PackedFiles.Wrapper
 		#region Designer
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
+			components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(SimPoolControl)
@@ -607,92 +607,92 @@ namespace SimPe.PackedFiles.Wrapper
 				new SteepValley.Windows.Forms.XPListViewGroup("Unrelated", 0);
 			SteepValley.Windows.Forms.XPListViewGroup xpListViewGroup2 =
 				new SteepValley.Windows.Forms.XPListViewGroup("Related", 1);
-			this.cbhousehold = new System.Windows.Forms.ComboBox();
-			this.gp = new SimListView();
-			this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
-			this.chHouse = new System.Windows.Forms.ColumnHeader();
-			this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
-			this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
-			this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
-			this.SuspendLayout();
+			cbhousehold = new System.Windows.Forms.ComboBox();
+			gp = new SimListView();
+			columnHeader1 = new System.Windows.Forms.ColumnHeader();
+			chHouse = new System.Windows.Forms.ColumnHeader();
+			columnHeader2 = new System.Windows.Forms.ColumnHeader();
+			columnHeader3 = new System.Windows.Forms.ColumnHeader();
+			columnHeader4 = new System.Windows.Forms.ColumnHeader();
+			SuspendLayout();
 			//
 			// cbhousehold
 			//
-			resources.ApplyResources(this.cbhousehold, "cbhousehold");
-			this.cbhousehold.DropDownStyle = System
+			resources.ApplyResources(cbhousehold, "cbhousehold");
+			cbhousehold.DropDownStyle = System
 				.Windows
 				.Forms
 				.ComboBoxStyle
 				.DropDownList;
-			this.cbhousehold.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.cbhousehold.Name = "cbhousehold";
-			this.cbhousehold.SelectedIndexChanged += new EventHandler(
-				this.cbhousehold_SelectedIndexChanged
+			cbhousehold.ForeColor = System.Drawing.SystemColors.ControlText;
+			cbhousehold.Name = "cbhousehold";
+			cbhousehold.SelectedIndexChanged += new EventHandler(
+				cbhousehold_SelectedIndexChanged
 			);
 			//
 			// gp
 			//
-			this.gp.BackColor = System.Drawing.SystemColors.Info;
-			this.gp.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.gp.Columns.AddRange(
+			gp.BackColor = System.Drawing.SystemColors.Info;
+			gp.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			gp.Columns.AddRange(
 				new System.Windows.Forms.ColumnHeader[]
 				{
-					this.columnHeader1,
-					this.chHouse,
-					this.columnHeader2,
-					this.columnHeader3,
-					this.columnHeader4,
+					columnHeader1,
+					chHouse,
+					columnHeader2,
+					columnHeader3,
+					columnHeader4,
 				}
 			);
-			resources.ApplyResources(this.gp, "gp");
-			this.gp.FullRowSelect = true;
+			resources.ApplyResources(gp, "gp");
+			gp.FullRowSelect = true;
 			xpListViewGroup1.GroupIndex = 0;
 			xpListViewGroup1.GroupText = "Unrelated";
 			xpListViewGroup2.GroupIndex = 1;
 			xpListViewGroup2.GroupText = "Related";
-			this.gp.Groups.Add(xpListViewGroup1);
-			this.gp.Groups.Add(xpListViewGroup2);
-			this.gp.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-			this.gp.HideSelection = false;
-			this.gp.MultiSelect = false;
-			this.gp.Name = "gp";
-			this.gp.TileColumns = new int[] { 1 };
-			this.gp.UseCompatibleStateImageBehavior = false;
-			this.gp.SelectedIndexChanged += new EventHandler(
-				this.gp_SelectedIndexChanged
+			gp.Groups.Add(xpListViewGroup1);
+			gp.Groups.Add(xpListViewGroup2);
+			gp.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+			gp.HideSelection = false;
+			gp.MultiSelect = false;
+			gp.Name = "gp";
+			gp.TileColumns = new int[] { 1 };
+			gp.UseCompatibleStateImageBehavior = false;
+			gp.SelectedIndexChanged += new EventHandler(
+				gp_SelectedIndexChanged
 			);
-			this.gp.DoubleClick += new EventHandler(this.gp_DoubleClick);
-			this.gp.MouseDown += new System.Windows.Forms.MouseEventHandler(
-				this.gp_MouseDown
+			gp.DoubleClick += new EventHandler(gp_DoubleClick);
+			gp.MouseDown += new System.Windows.Forms.MouseEventHandler(
+				gp_MouseDown
 			);
 			//
 			// columnHeader1
 			//
-			resources.ApplyResources(this.columnHeader1, "columnHeader1");
+			resources.ApplyResources(columnHeader1, "columnHeader1");
 			//
 			// chHouse
 			//
-			resources.ApplyResources(this.chHouse, "chHouse");
+			resources.ApplyResources(chHouse, "chHouse");
 			//
 			// columnHeader2
 			//
-			resources.ApplyResources(this.columnHeader2, "columnHeader2");
+			resources.ApplyResources(columnHeader2, "columnHeader2");
 			//
 			// columnHeader3
 			//
-			resources.ApplyResources(this.columnHeader3, "columnHeader3");
+			resources.ApplyResources(columnHeader3, "columnHeader3");
 			//
 			// columnHeader4
 			//
-			resources.ApplyResources(this.columnHeader4, "columnHeader4");
+			resources.ApplyResources(columnHeader4, "columnHeader4");
 			//
 			// SimPoolControl
 			//
-			this.Controls.Add(this.gp);
-			this.Controls.Add(this.cbhousehold);
+			Controls.Add(gp);
+			Controls.Add(cbhousehold);
 			resources.ApplyResources(this, "$this");
-			this.Name = "SimPoolControl";
-			this.ResumeLayout(false);
+			Name = "SimPoolControl";
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -736,13 +736,13 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public void UpdateSimList()
 		{
-			if (this.cbhousehold.SelectedIndex > 0)
+			if (cbhousehold.SelectedIndex > 0)
 			{
-				this.UpdateSimList(this.cbhousehold.Text);
+				UpdateSimList(cbhousehold.Text);
 			}
 			else
 			{
-				this.UpdateSimList(null);
+				UpdateSimList(null);
 			}
 		}
 
@@ -754,15 +754,15 @@ namespace SimPe.PackedFiles.Wrapper
 		public void SelectHousehold(string name)
 		{
 			int index = 0;
-			for (int i = 1; i < this.cbhousehold.Items.Count; i++)
+			for (int i = 1; i < cbhousehold.Items.Count; i++)
 			{
-				if (this.cbhousehold.Items[i].ToString() == name)
+				if (cbhousehold.Items[i].ToString() == name)
 				{
 					index = i;
 					break;
 				}
 			}
-			this.cbhousehold.SelectedIndex = index;
+			cbhousehold.SelectedIndex = index;
 		}
 
 		public new void Refresh()
@@ -774,13 +774,13 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			if (full)
 			{
-				this.UpdateContent();
+				UpdateContent();
 			}
 
 			base.Refresh();
 		}
 
-		internal SteepValley.Windows.Forms.XPListViewItemCollection Items => this.gp.Items;
+		internal SteepValley.Windows.Forms.XPListViewItemCollection Items => gp.Items;
 
 		internal System.Windows.Forms.ListView.SelectedIndexCollection SelectedIndices => gp.SelectedIndices;
 

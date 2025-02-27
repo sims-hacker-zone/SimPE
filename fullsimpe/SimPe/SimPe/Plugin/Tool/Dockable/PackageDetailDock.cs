@@ -46,64 +46,64 @@ namespace SimPe.Plugin.Tool.Dockable
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(dcPackageDetails)
 				);
-			this.xpGradientPanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
-			this.np = new NeighborhoodPreview();
-			this.op = new ObjectPreview();
-			this.xpGradientPanel1.SuspendLayout();
-			this.SuspendLayout();
+			xpGradientPanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
+			np = new NeighborhoodPreview();
+			op = new ObjectPreview();
+			xpGradientPanel1.SuspendLayout();
+			SuspendLayout();
 			//
 			// xpGradientPanel1
 			//
-			this.xpGradientPanel1.BackColor = System.Drawing.Color.Transparent;
-			resources.ApplyResources(this.xpGradientPanel1, "xpGradientPanel1");
-			this.xpGradientPanel1.Controls.Add(this.np);
-			this.xpGradientPanel1.Controls.Add(this.op);
-			this.xpGradientPanel1.Name = "xpGradientPanel1";
+			xpGradientPanel1.BackColor = System.Drawing.Color.Transparent;
+			resources.ApplyResources(xpGradientPanel1, "xpGradientPanel1");
+			xpGradientPanel1.Controls.Add(np);
+			xpGradientPanel1.Controls.Add(op);
+			xpGradientPanel1.Name = "xpGradientPanel1";
 			//
 			// np
 			//
-			this.np.BackColor = System.Drawing.Color.Transparent;
-			resources.ApplyResources(this.np, "np");
-			this.np.Name = "np";
+			np.BackColor = System.Drawing.Color.Transparent;
+			resources.ApplyResources(np, "np");
+			np.Name = "np";
 			//
 			// op
 			//
-			resources.ApplyResources(this.op, "op");
-			this.op.BackColor = System.Drawing.Color.Transparent;
-			this.op.LoadCustomImage = true;
-			this.op.Name = "op";
-			this.op.SelectedObject = null;
-			this.op.SelectedXObject = null;
+			resources.ApplyResources(op, "op");
+			op.BackColor = System.Drawing.Color.Transparent;
+			op.LoadCustomImage = true;
+			op.Name = "op";
+			op.SelectedObject = null;
+			op.SelectedXObject = null;
 			//
 			// dcPackageDetails
 			//
 			resources.ApplyResources(this, "$this");
-			this.Controls.Add(this.xpGradientPanel1);
-			this.FloatingSize = new System.Drawing.Size(592, 376);
-			this.Image = ((System.Drawing.Image)(resources.GetObject("$this.Image")));
-			this.Name = "dcPackageDetails";
-			this.TabImage = (
+			Controls.Add(xpGradientPanel1);
+			FloatingSize = new System.Drawing.Size(592, 376);
+			Image = ((System.Drawing.Image)(resources.GetObject("$this.Image")));
+			Name = "dcPackageDetails";
+			TabImage = (
 				(System.Drawing.Image)(resources.GetObject("$this.TabImage"))
 			);
-			this.TabText = "Details";
-			this.VisibleChanged += new System.EventHandler(
-				this.dcPackageDetails_VisibleChanged
+			TabText = "Details";
+			VisibleChanged += new System.EventHandler(
+				dcPackageDetails_VisibleChanged
 			);
-			this.xpGradientPanel1.ResumeLayout(false);
-			this.xpGradientPanel1.PerformLayout();
-			this.ResumeLayout(false);
+			xpGradientPanel1.ResumeLayout(false);
+			xpGradientPanel1.PerformLayout();
+			ResumeLayout(false);
 		}
 		#endregion
 
 		private void dcPackageDetails_VisibleChanged(object sender, System.EventArgs e)
 		{
-			this.op.LoadCustomImage = this.Visible;
+			op.LoadCustomImage = Visible;
 		}
 
 		internal void SetPackage(Interfaces.Files.IPackageFile pkg) // CJH
 		{
-			this.op.SetFromPackage(pkg);
-			this.np.SetFromPackage(pkg);
+			op.SetFromPackage(pkg);
+			np.SetFromPackage(pkg);
 			op.Visible = op.Loaded;
 			np.Visible = np.Loaded;
 		}

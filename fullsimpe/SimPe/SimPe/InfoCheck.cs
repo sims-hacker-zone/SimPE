@@ -22,40 +22,40 @@ namespace SimPe
 
 			if (ProductVirsion != null)
 			{
-				this.lbQaVer.Text = ProductVirsion;
-				this.button2.Visible = System.IO.File.Exists(
+				lbQaVer.Text = ProductVirsion;
+				button2.Visible = System.IO.File.Exists(
 					System.IO.Path.Combine(Helper.SimPeDataPath, "release.nfo")
 				);
-				this.button1.Visible = !this.button2.Visible;
-				if (this.button1.Visible)
+				button1.Visible = !button2.Visible;
+				if (button1.Visible)
 				{
-					this.lbRelease.Text =
+					lbRelease.Text =
 						"\r\n\r\nFile Info doesn\'t exist, Update Info to generate one";
 				}
 			}
 			else
 			{
-				this.pictureBox1.Image = GetIcon.Fail;
-				this.button1.Visible =
-					this.button2.Visible =
-					this.lbRelease.Visible =
+				pictureBox1.Image = GetIcon.Fail;
+				button1.Visible =
+					button2.Visible =
+					lbRelease.Visible =
 						false;
-				this.lbVedict.ForeColor = Color.Maroon;
-				this.lbVedict.Text = "Can't Find SimPe at All!";
-				this.lbVedict.Visible = true;
+				lbVedict.ForeColor = Color.Maroon;
+				lbVedict.Text = "Can't Find SimPe at All!";
+				lbVedict.Visible = true;
 			}
 		}
 
 		private void button2_Click(object sender, EventArgs e)
 		{
-			this.lbRelease.Font = new Font("Tahoma", 10F);
-			this.lbRelease.TextAlign = ContentAlignment.TopLeft;
-			this.lbRelease.Text = ReleaseDir;
+			lbRelease.Font = new Font("Tahoma", 10F);
+			lbRelease.TextAlign = ContentAlignment.TopLeft;
+			lbRelease.Text = ReleaseDir;
 			allgoody = allsame = true;
-			this.lv2.Visible = this.label5.Visible = this.lbVedict.Visible = true;
-			this.label1.Visible = this.label3.Visible = this.lbQaVer.Visible = true;
-			this.button2.Visible = false;
-			this.lv2.Items.Clear();
+			lv2.Visible = label5.Visible = lbVedict.Visible = true;
+			label1.Visible = label3.Visible = lbQaVer.Visible = true;
+			button2.Visible = false;
+			lv2.Items.Clear();
 
 			XmlDocument xmlfile = new XmlDocument();
 			xmlfile.Load(System.IO.Path.Combine(Helper.SimPeDataPath, "release.nfo"));
@@ -69,77 +69,77 @@ namespace SimPe
 			confirmothers();
 			if (allexist == false)
 			{
-				this.pictureBox1.Image = GetIcon.Fail;
-				this.button1.Visible = false;
-				this.lbVedict.ForeColor = Color.Maroon;
-				this.lbVedict.Text =
+				pictureBox1.Image = GetIcon.Fail;
+				button1.Visible = false;
+				lbVedict.ForeColor = Color.Maroon;
+				lbVedict.Text =
 					"Critical Files Missing!\n SimPe needs to be re-installed under the current user profile";
 			}
 			else if (allgoody == false)
 			{
-				this.pictureBox1.Image = GetIcon.Fail;
-				this.button1.Visible = true;
-				this.lbVedict.ForeColor = Color.Maroon;
-				this.lbVedict.Text = "File(s) Missing or Wrong Version!\n";
+				pictureBox1.Image = GetIcon.Fail;
+				button1.Visible = true;
+				lbVedict.ForeColor = Color.Maroon;
+				lbVedict.Text = "File(s) Missing or Wrong Version!\n";
 				if (allthere == false)
 				{
-					this.lbVedict.Text += "+ Unknown File(s) found! ";
+					lbVedict.Text += "+ Unknown File(s) found! ";
 				}
 
 				if (allsame == false)
 				{
-					this.lbVedict.Text += "+ File(s) Have changed Size! ";
+					lbVedict.Text += "+ File(s) Have changed Size! ";
 				}
 			}
 			else if (allsame == false)
 			{
-				this.pictureBox1.Image = GetIcon.Warn;
-				this.button1.Visible = true;
-				this.lbVedict.ForeColor = Color.Indigo;
-				this.lbVedict.Text = "File(s) Have changed Size!";
+				pictureBox1.Image = GetIcon.Warn;
+				button1.Visible = true;
+				lbVedict.ForeColor = Color.Indigo;
+				lbVedict.Text = "File(s) Have changed Size!";
 				if (allthere == false)
 				{
-					this.lbVedict.Text += "\nUnknown File(s) found!";
+					lbVedict.Text += "\nUnknown File(s) found!";
 				}
 			}
 			else if (allthere == false)
 			{
-				this.pictureBox1.Image = GetIcon.Warn;
-				this.button1.Visible = true;
-				this.lbVedict.ForeColor = Color.MediumVioletRed;
-				this.lbVedict.Text = "Unknown File(s) found!";
+				pictureBox1.Image = GetIcon.Warn;
+				button1.Visible = true;
+				lbVedict.ForeColor = Color.MediumVioletRed;
+				lbVedict.Text = "Unknown File(s) found!";
 			}
 			else
 			{
-				this.pictureBox1.Image = GetIcon.OK;
-				this.lbVedict.ForeColor = Color.Black;
-				this.lbVedict.Text = "Everything appears normal";
+				pictureBox1.Image = GetIcon.OK;
+				lbVedict.ForeColor = Color.Black;
+				lbVedict.Text = "Everything appears normal";
 			}
 		}
 
 		private void button1_Click(object sender, EventArgs e)
 		{
 			removecrap();
-			this.lbRelease.Font = new Font("Tahoma", 10F);
-			this.lbRelease.TextAlign = ContentAlignment.TopLeft;
-			this.lbRelease.Text = ReleaseDir;
-			this.label1.Visible =
-				this.label3.Visible =
-				this.lbQaVer.Visible =
-				this.label5.Visible =
-				this.lv.Visible =
+			lbRelease.Font = new Font("Tahoma", 10F);
+			lbRelease.TextAlign = ContentAlignment.TopLeft;
+			lbRelease.Text = ReleaseDir;
+			label1.Visible =
+				label3.Visible =
+				lbQaVer.Visible =
+				label5.Visible =
+				lv.Visible =
 					true;
-			this.button1.Visible =
-				this.lbVedict.Visible =
-				this.button2.Visible =
-				this.lv2.Visible =
+			button1.Visible =
+				lbVedict.Visible =
+				button2.Visible =
+				lv2.Visible =
 					false;
 			System.Diagnostics.FileVersionInfo cver;
 			cver = null;
 			long csize = 0;
 			listing = new ArrayList();
 			listing.Clear();
-			this.lv.Items.Clear();
+			lv.Items.Clear();
 			string[] files = System.IO.Directory.GetFiles(ReleaseDir, "*.dll");
 			foreach (string file in files)
 			{
@@ -207,7 +207,7 @@ namespace SimPe
 			}
 			finally
 			{
-				this.pictureBox1.Image = GetIcon.OK;
+				pictureBox1.Image = GetIcon.OK;
 				sw.Close();
 			}
 		}
@@ -513,7 +513,7 @@ namespace SimPe
 
 			foreach (FileDescriptor f in listing)
 			{
-				if (this.lv2.FindItemWithText(f.FileName) == null)
+				if (lv2.FindItemWithText(f.FileName) == null)
 				{
 					ListViewItem lvi = new ListViewItem();
 					lvi.Text = f.FileName;
@@ -523,7 +523,7 @@ namespace SimPe
 					lvi.SubItems.Add(f.Size.ToString());
 					lvi.ForeColor = Color.MediumVioletRed;
 					allthere = false;
-					this.lv2.Items.Add(lvi);
+					lv2.Items.Add(lvi);
 					i++;
 					if (i < 50)
 					{
@@ -617,8 +617,8 @@ namespace SimPe
 
 		public FileDescriptor(string basepath, string filename)
 		{
-			this.flname = filename.Trim();
-			this.bp = basepath.Trim();
+			flname = filename.Trim();
+			bp = basepath.Trim();
 			if (!bp.EndsWith(@"\"))
 			{
 				bp += @"\";

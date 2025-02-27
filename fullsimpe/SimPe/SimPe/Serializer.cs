@@ -108,12 +108,12 @@ namespace SimPe
 
 		public override string ToString()
 		{
-			return ToString(this.GetType().Name);
+			return ToString(GetType().Name);
 		}
 
 		public string ToString(string name)
 		{
-			return SubProperty(name, this.GetPropertyDescription());
+			return SubProperty(name, GetPropertyDescription());
 		}
 
 		static string SaveStr(string val)

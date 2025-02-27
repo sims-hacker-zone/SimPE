@@ -172,7 +172,7 @@ namespace SimPe
 			SPInstalled = GetMaxVersion(ExpansionItem.Classes.StuffPack);
 			EPInstalled = GetMaxVersion(ExpansionItem.Classes.ExpansionPack);
 			STInstalled = GetMaxVersion(ExpansionItem.Classes.Story);
-			Latest = this.GetLatestExpansion();
+			Latest = GetLatestExpansion();
 
 			Expansions.Sort();
 

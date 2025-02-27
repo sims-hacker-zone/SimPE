@@ -42,7 +42,7 @@ namespace SimPe.Plugin.Gmdc
 			InitializeComponent();
 
 			ComboBox cb = new ComboBox();
-			this.imageList1.ImageSize = new Size(1, cb.Height + 2);
+			imageList1.ImageSize = new Size(1, cb.Height + 2);
 			cb.Dispose();
 		}
 
@@ -68,58 +68,58 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
+			components = new System.ComponentModel.Container();
 			System.Resources.ResourceManager resources =
 				new System.Resources.ResourceManager(typeof(GenericImportForm));
-			this.Gradientpanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
-			this.panel1 = new Panel();
-			this.cbClear = new CheckBox();
-			this.button1 = new Button();
-			this.label3 = new Label();
-			this.xpLine3 = new SteepValley.Windows.Forms.XPLine();
-			this.lvbones = new ListViewEx();
-			this.clBoneName = new ColumnHeader();
-			this.clBoneAction = new ColumnHeader();
-			this.clImportBone = new ColumnHeader();
-			this.clAssignedVertices = new ColumnHeader();
-			this.imageList1 = new ImageList(this.components);
-			this.label2 = new Label();
-			this.xpLine2 = new SteepValley.Windows.Forms.XPLine();
-			this.label1 = new Label();
-			this.xpLine1 = new SteepValley.Windows.Forms.XPLine();
-			this.lvmesh = new ListViewEx();
-			this.chMeshName = new ColumnHeader();
-			this.chMeshAction = new ColumnHeader();
-			this.chMeshTarget = new ColumnHeader();
-			this.chFaces = new ColumnHeader();
-			this.chVertices = new ColumnHeader();
-			this.chImportEnvelope = new ColumnHeader();
-			this.chJointCount = new ColumnHeader();
-			this.Gradientpanel1.SuspendLayout();
-			this.panel1.SuspendLayout();
-			this.SuspendLayout();
+			Gradientpanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
+			panel1 = new Panel();
+			cbClear = new CheckBox();
+			button1 = new Button();
+			label3 = new Label();
+			xpLine3 = new SteepValley.Windows.Forms.XPLine();
+			lvbones = new ListViewEx();
+			clBoneName = new ColumnHeader();
+			clBoneAction = new ColumnHeader();
+			clImportBone = new ColumnHeader();
+			clAssignedVertices = new ColumnHeader();
+			imageList1 = new ImageList(components);
+			label2 = new Label();
+			xpLine2 = new SteepValley.Windows.Forms.XPLine();
+			label1 = new Label();
+			xpLine1 = new SteepValley.Windows.Forms.XPLine();
+			lvmesh = new ListViewEx();
+			chMeshName = new ColumnHeader();
+			chMeshAction = new ColumnHeader();
+			chMeshTarget = new ColumnHeader();
+			chFaces = new ColumnHeader();
+			chVertices = new ColumnHeader();
+			chImportEnvelope = new ColumnHeader();
+			chJointCount = new ColumnHeader();
+			Gradientpanel1.SuspendLayout();
+			panel1.SuspendLayout();
+			SuspendLayout();
 			//
 			// Gradientpanel1
 			//
-			this.Gradientpanel1.BackColor = Color.Transparent;
-			this.Gradientpanel1.Controls.Add(this.panel1);
-			this.Gradientpanel1.Controls.Add(this.label3);
-			this.Gradientpanel1.Controls.Add(this.xpLine3);
-			this.Gradientpanel1.Controls.Add(this.lvbones);
-			this.Gradientpanel1.Controls.Add(this.label2);
-			this.Gradientpanel1.Controls.Add(this.xpLine2);
-			this.Gradientpanel1.Controls.Add(this.label1);
-			this.Gradientpanel1.Controls.Add(this.xpLine1);
-			this.Gradientpanel1.Controls.Add(this.lvmesh);
-			this.Gradientpanel1.Dock = DockStyle.Fill;
-			this.Gradientpanel1.Location = new Point(0, 0);
-			this.Gradientpanel1.Name = "Gradientpanel1";
-			this.Gradientpanel1.Size = new Size(752, 486);
-			this.Gradientpanel1.TabIndex = 0;
+			Gradientpanel1.BackColor = Color.Transparent;
+			Gradientpanel1.Controls.Add(panel1);
+			Gradientpanel1.Controls.Add(label3);
+			Gradientpanel1.Controls.Add(xpLine3);
+			Gradientpanel1.Controls.Add(lvbones);
+			Gradientpanel1.Controls.Add(label2);
+			Gradientpanel1.Controls.Add(xpLine2);
+			Gradientpanel1.Controls.Add(label1);
+			Gradientpanel1.Controls.Add(xpLine1);
+			Gradientpanel1.Controls.Add(lvmesh);
+			Gradientpanel1.Dock = DockStyle.Fill;
+			Gradientpanel1.Location = new Point(0, 0);
+			Gradientpanel1.Name = "Gradientpanel1";
+			Gradientpanel1.Size = new Size(752, 486);
+			Gradientpanel1.TabIndex = 0;
 			//
 			// panel1
 			//
-			this.panel1.Anchor = (
+			panel1.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -129,34 +129,34 @@ namespace SimPe.Plugin.Gmdc
 					)
 				)
 			);
-			this.panel1.BackColor = Color.Transparent;
-			this.panel1.Controls.Add(this.cbClear);
-			this.panel1.Controls.Add(this.button1);
-			this.panel1.Location = new Point(0, 384);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new Size(752, 100);
-			this.panel1.TabIndex = 10;
+			panel1.BackColor = Color.Transparent;
+			panel1.Controls.Add(cbClear);
+			panel1.Controls.Add(button1);
+			panel1.Location = new Point(0, 384);
+			panel1.Name = "panel1";
+			panel1.Size = new Size(752, 100);
+			panel1.TabIndex = 10;
 			//
 			// cbClear
 			//
-			this.cbClear.Location = new Point(8, 8);
-			this.cbClear.Name = "cbClear";
-			this.cbClear.Size = new Size(192, 24);
-			this.cbClear.TabIndex = 1;
-			this.cbClear.Text = "Clear Meshgroups before Import";
+			cbClear.Location = new Point(8, 8);
+			cbClear.Name = "cbClear";
+			cbClear.Size = new Size(192, 24);
+			cbClear.TabIndex = 1;
+			cbClear.Text = "Clear Meshgroups before Import";
 			//
 			// button1
 			//
-			this.button1.FlatStyle = FlatStyle.System;
-			this.button1.Location = new Point(672, 72);
-			this.button1.Name = "button1";
-			this.button1.TabIndex = 0;
-			this.button1.Text = "Import";
-			this.button1.Click += new System.EventHandler(this.button1_Click);
+			button1.FlatStyle = FlatStyle.System;
+			button1.Location = new Point(672, 72);
+			button1.Name = "button1";
+			button1.TabIndex = 0;
+			button1.Text = "Import";
+			button1.Click += new System.EventHandler(button1_Click);
 			//
 			// label3
 			//
-			this.label3.Anchor = (
+			label3.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -164,28 +164,28 @@ namespace SimPe.Plugin.Gmdc
 					)
 				)
 			);
-			this.label3.BackColor = Color.Transparent;
-			this.label3.Font = new Font(
+			label3.BackColor = Color.Transparent;
+			label3.Font = new Font(
 				"Tahoma",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label3.ForeColor = Color.FromArgb(
+			label3.ForeColor = Color.FromArgb(
 				((System.Byte)(64)),
 				((System.Byte)(64)),
 				((System.Byte)(64))
 			);
-			this.label3.Location = new Point(648, 352);
-			this.label3.Name = "label3";
-			this.label3.TabIndex = 9;
-			this.label3.Text = "Options";
-			this.label3.TextAlign = ContentAlignment.BottomRight;
+			label3.Location = new Point(648, 352);
+			label3.Name = "label3";
+			label3.TabIndex = 9;
+			label3.Text = "Options";
+			label3.TextAlign = ContentAlignment.BottomRight;
 			//
 			// xpLine3
 			//
-			this.xpLine3.Anchor = (
+			xpLine3.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -195,15 +195,15 @@ namespace SimPe.Plugin.Gmdc
 					)
 				)
 			);
-			this.xpLine3.BackColor = Color.Transparent;
-			this.xpLine3.Location = new Point(9, 376);
-			this.xpLine3.Name = "xpLine3";
-			this.xpLine3.Size = new Size(740, 4);
-			this.xpLine3.TabIndex = 8;
+			xpLine3.BackColor = Color.Transparent;
+			xpLine3.Location = new Point(9, 376);
+			xpLine3.Name = "xpLine3";
+			xpLine3.Size = new Size(740, 4);
+			xpLine3.TabIndex = 8;
 			//
 			// lvbones
 			//
-			this.lvbones.Anchor = (
+			lvbones.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -215,56 +215,56 @@ namespace SimPe.Plugin.Gmdc
 					)
 				)
 			);
-			this.lvbones.BorderStyle = BorderStyle.None;
-			this.lvbones.Columns.AddRange(
+			lvbones.BorderStyle = BorderStyle.None;
+			lvbones.Columns.AddRange(
 				new ColumnHeader[]
 				{
-					this.clBoneName,
-					this.clBoneAction,
-					this.clImportBone,
-					this.clAssignedVertices,
+					clBoneName,
+					clBoneAction,
+					clImportBone,
+					clAssignedVertices,
 				}
 			);
-			this.lvbones.FullRowSelect = true;
-			this.lvbones.HeaderStyle =
+			lvbones.FullRowSelect = true;
+			lvbones.HeaderStyle =
 				ColumnHeaderStyle
 				.Nonclickable;
-			this.lvbones.HideSelection = false;
-			this.lvbones.Location = new Point(8, 216);
-			this.lvbones.Name = "lvbones";
-			this.lvbones.Size = new Size(736, 128);
-			this.lvbones.SmallImageList = this.imageList1;
-			this.lvbones.TabIndex = 7;
-			this.lvbones.View = View.Details;
+			lvbones.HideSelection = false;
+			lvbones.Location = new Point(8, 216);
+			lvbones.Name = "lvbones";
+			lvbones.Size = new Size(736, 128);
+			lvbones.SmallImageList = imageList1;
+			lvbones.TabIndex = 7;
+			lvbones.View = View.Details;
 			//
 			// clBoneName
 			//
-			this.clBoneName.Text = "Name";
-			this.clBoneName.Width = 106;
+			clBoneName.Text = "Name";
+			clBoneName.Width = 106;
 			//
 			// clBoneAction
 			//
-			this.clBoneAction.Text = "";
-			this.clBoneAction.Width = 102;
+			clBoneAction.Text = "";
+			clBoneAction.Width = 102;
 			//
 			// clImportBone
 			//
-			this.clImportBone.Text = "Import as";
-			this.clImportBone.Width = 277;
+			clImportBone.Text = "Import as";
+			clImportBone.Width = 277;
 			//
 			// clAssignedVertices
 			//
-			this.clAssignedVertices.Text = "Vertices";
-			this.clAssignedVertices.Width = 67;
+			clAssignedVertices.Text = "Vertices";
+			clAssignedVertices.Width = 67;
 			//
 			// imageList1
 			//
-			this.imageList1.ImageSize = new Size(1, 16);
-			this.imageList1.TransparentColor = Color.Transparent;
+			imageList1.ImageSize = new Size(1, 16);
+			imageList1.TransparentColor = Color.Transparent;
 			//
 			// label2
 			//
-			this.label2.Anchor = (
+			label2.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -272,28 +272,28 @@ namespace SimPe.Plugin.Gmdc
 					)
 				)
 			);
-			this.label2.BackColor = Color.Transparent;
-			this.label2.Font = new Font(
+			label2.BackColor = Color.Transparent;
+			label2.Font = new Font(
 				"Tahoma",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label2.ForeColor = Color.FromArgb(
+			label2.ForeColor = Color.FromArgb(
 				((System.Byte)(64)),
 				((System.Byte)(64)),
 				((System.Byte)(64))
 			);
-			this.label2.Location = new Point(648, 184);
-			this.label2.Name = "label2";
-			this.label2.TabIndex = 6;
-			this.label2.Text = "Skeleton";
-			this.label2.TextAlign = ContentAlignment.BottomRight;
+			label2.Location = new Point(648, 184);
+			label2.Name = "label2";
+			label2.TabIndex = 6;
+			label2.Text = "Skeleton";
+			label2.TextAlign = ContentAlignment.BottomRight;
 			//
 			// xpLine2
 			//
-			this.xpLine2.Anchor = (
+			xpLine2.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -303,15 +303,15 @@ namespace SimPe.Plugin.Gmdc
 					)
 				)
 			);
-			this.xpLine2.BackColor = Color.Transparent;
-			this.xpLine2.Location = new Point(9, 208);
-			this.xpLine2.Name = "xpLine2";
-			this.xpLine2.Size = new Size(740, 4);
-			this.xpLine2.TabIndex = 5;
+			xpLine2.BackColor = Color.Transparent;
+			xpLine2.Location = new Point(9, 208);
+			xpLine2.Name = "xpLine2";
+			xpLine2.Size = new Size(740, 4);
+			xpLine2.TabIndex = 5;
 			//
 			// label1
 			//
-			this.label1.Anchor = (
+			label1.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -319,28 +319,28 @@ namespace SimPe.Plugin.Gmdc
 					)
 				)
 			);
-			this.label1.BackColor = Color.Transparent;
-			this.label1.Font = new Font(
+			label1.BackColor = Color.Transparent;
+			label1.Font = new Font(
 				"Tahoma",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label1.ForeColor = Color.FromArgb(
+			label1.ForeColor = Color.FromArgb(
 				((System.Byte)(64)),
 				((System.Byte)(64)),
 				((System.Byte)(64))
 			);
-			this.label1.Location = new Point(648, 8);
-			this.label1.Name = "label1";
-			this.label1.TabIndex = 4;
-			this.label1.Text = "Mesh Groups";
-			this.label1.TextAlign = ContentAlignment.BottomRight;
+			label1.Location = new Point(648, 8);
+			label1.Name = "label1";
+			label1.TabIndex = 4;
+			label1.Text = "Mesh Groups";
+			label1.TextAlign = ContentAlignment.BottomRight;
 			//
 			// xpLine1
 			//
-			this.xpLine1.Anchor = (
+			xpLine1.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -350,15 +350,15 @@ namespace SimPe.Plugin.Gmdc
 					)
 				)
 			);
-			this.xpLine1.BackColor = Color.Transparent;
-			this.xpLine1.Location = new Point(9, 32);
-			this.xpLine1.Name = "xpLine1";
-			this.xpLine1.Size = new Size(740, 4);
-			this.xpLine1.TabIndex = 3;
+			xpLine1.BackColor = Color.Transparent;
+			xpLine1.Location = new Point(9, 32);
+			xpLine1.Name = "xpLine1";
+			xpLine1.Size = new Size(740, 4);
+			xpLine1.TabIndex = 3;
 			//
 			// lvmesh
 			//
-			this.lvmesh.Anchor = (
+			lvmesh.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -368,88 +368,88 @@ namespace SimPe.Plugin.Gmdc
 					)
 				)
 			);
-			this.lvmesh.BorderStyle = BorderStyle.None;
-			this.lvmesh.Columns.AddRange(
+			lvmesh.BorderStyle = BorderStyle.None;
+			lvmesh.Columns.AddRange(
 				new ColumnHeader[]
 				{
-					this.chMeshName,
-					this.chMeshAction,
-					this.chMeshTarget,
-					this.chFaces,
-					this.chVertices,
-					this.chImportEnvelope,
-					this.chJointCount,
+					chMeshName,
+					chMeshAction,
+					chMeshTarget,
+					chFaces,
+					chVertices,
+					chImportEnvelope,
+					chJointCount,
 				}
 			);
-			this.lvmesh.FullRowSelect = true;
-			this.lvmesh.HeaderStyle =
+			lvmesh.FullRowSelect = true;
+			lvmesh.HeaderStyle =
 				ColumnHeaderStyle
 				.Nonclickable;
-			this.lvmesh.HideSelection = false;
-			this.lvmesh.Location = new Point(8, 40);
-			this.lvmesh.Name = "lvmesh";
-			this.lvmesh.Size = new Size(736, 136);
-			this.lvmesh.SmallImageList = this.imageList1;
-			this.lvmesh.TabIndex = 2;
-			this.lvmesh.View = View.Details;
+			lvmesh.HideSelection = false;
+			lvmesh.Location = new Point(8, 40);
+			lvmesh.Name = "lvmesh";
+			lvmesh.Size = new Size(736, 136);
+			lvmesh.SmallImageList = imageList1;
+			lvmesh.TabIndex = 2;
+			lvmesh.View = View.Details;
 			//
 			// chMeshName
 			//
-			this.chMeshName.Text = "Name";
-			this.chMeshName.Width = 106;
+			chMeshName.Text = "Name";
+			chMeshName.Width = 106;
 			//
 			// chMeshAction
 			//
-			this.chMeshAction.Text = "";
-			this.chMeshAction.Width = 102;
+			chMeshAction.Text = "";
+			chMeshAction.Width = 102;
 			//
 			// chMeshTarget
 			//
-			this.chMeshTarget.Text = "Import as";
-			this.chMeshTarget.Width = 277;
+			chMeshTarget.Text = "Import as";
+			chMeshTarget.Width = 277;
 			//
 			// chFaces
 			//
-			this.chFaces.Text = "Faces";
-			this.chFaces.Width = 67;
+			chFaces.Text = "Faces";
+			chFaces.Width = 67;
 			//
 			// chVertices
 			//
-			this.chVertices.Text = "Vertices";
-			this.chVertices.Width = 67;
+			chVertices.Text = "Vertices";
+			chVertices.Width = 67;
 			//
 			// chImportEnvelope
 			//
-			this.chImportEnvelope.Text = "Boneweight Import";
-			this.chImportEnvelope.Width = 20;
+			chImportEnvelope.Text = "Boneweight Import";
+			chImportEnvelope.Width = 20;
 			//
 			// chJointCount
 			//
-			this.chJointCount.Text = "Joint Count";
-			this.chJointCount.Width = 79;
+			chJointCount.Text = "Joint Count";
+			chJointCount.Width = 79;
 			//
 			// GenericImportForm
 			//
-			this.AutoScaleBaseSize = new Size(5, 14);
-			this.ClientSize = new Size(752, 486);
-			this.Controls.Add(this.Gradientpanel1);
-			this.Font = new Font(
+			AutoScaleBaseSize = new Size(5, 14);
+			ClientSize = new Size(752, 486);
+			Controls.Add(Gradientpanel1);
+			Font = new Font(
 				"Tahoma",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.FormBorderStyle = FormBorderStyle.FixedDialog;
-			this.Icon = ((Icon)(resources.GetObject("$this.Icon")));
-			this.MaximizeBox = false;
-			this.MinimizeBox = false;
-			this.Name = "GenericImportForm";
-			this.ShowInTaskbar = false;
-			this.Text = "Mesh Import";
-			this.Gradientpanel1.ResumeLayout(false);
-			this.panel1.ResumeLayout(false);
-			this.ResumeLayout(false);
+			FormBorderStyle = FormBorderStyle.FixedDialog;
+			Icon = ((Icon)(resources.GetObject("$this.Icon")));
+			MaximizeBox = false;
+			MinimizeBox = false;
+			Name = "GenericImportForm";
+			ShowInTaskbar = false;
+			Text = "Mesh Import";
+			Gradientpanel1.ResumeLayout(false);
+			panel1.ResumeLayout(false);
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -471,7 +471,7 @@ namespace SimPe.Plugin.Gmdc
 
 		void Setup()
 		{
-			this.cbClear.Checked = gmi.ClearGroupsOnImport;
+			cbClear.Checked = gmi.ClearGroupsOnImport;
 			if (chg == null)
 			{
 				chg = new MeshListViewItem.ActionChangedEvent(ActionChangedEvent);
@@ -491,7 +491,7 @@ namespace SimPe.Plugin.Gmdc
 
 			foreach (Ambertation.Scenes.Joint j in gmi.Scene.JointCollection)
 			{
-				new BoneListViewItemExt(this.lvbones, j, gmi, bonechg);
+				new BoneListViewItemExt(lvbones, j, gmi, bonechg);
 			}
 		}
 
@@ -547,7 +547,7 @@ namespace SimPe.Plugin.Gmdc
 			lvbones.Items.CopyTo(bones, 0);
 			gmi.SetBoneList(bones);
 
-			gmi.ClearGroupsOnImport = this.cbClear.Checked;
+			gmi.ClearGroupsOnImport = cbClear.Checked;
 
 			Close();
 		}

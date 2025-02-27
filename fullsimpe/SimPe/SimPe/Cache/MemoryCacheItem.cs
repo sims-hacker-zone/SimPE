@@ -150,34 +150,34 @@ namespace SimPe.Cache
 							|| ObjdName.Trim().ToLower().StartsWith("cs - token")
 						)
 						&& (
-							this.ObjectType == Data.ObjectTypes.Normal
-							|| this.ObjectType == Data.ObjectTypes.Memory
+							ObjectType == Data.ObjectTypes.Normal
+							|| ObjectType == Data.ObjectTypes.Memory
 						)
 					);
 
 		public bool IsJobData => ObjdName.Trim().ToLower().StartsWith("jobdata")
-					&& this.ObjectType == Data.ObjectTypes.Normal;
+					&& ObjectType == Data.ObjectTypes.Normal;
 
-		public bool IsMemory => IsToken || this.ObjectType == Data.ObjectTypes.Memory;
+		public bool IsMemory => IsToken || ObjectType == Data.ObjectTypes.Memory;
 
 		public bool IsBadge => (
 						ObjdName.ToLower().Trim().StartsWith("token - badge")
 						|| ObjdName.ToLower().Trim().StartsWith("cs - token - badge")
 					)
-					&& this.ObjectType == Data.ObjectTypes.Normal;
+					&& ObjectType == Data.ObjectTypes.Normal;
 
 		public bool IsSkill => (ObjdName.ToLower().Trim().IndexOf("skill") >= 0)
-					&& this.ObjectType == Data.ObjectTypes.Normal
+					&& ObjectType == Data.ObjectTypes.Normal
 					&& IsToken;
 
 		public bool IsAspiration => ObjdName.Trim().ToLower().StartsWith("aspiration")
-					&& this.ObjectType == Data.ObjectTypes.Normal;
+					&& ObjectType == Data.ObjectTypes.Normal;
 
 		public bool IsInventory => !IsAspiration
 					&& !IsToken
 					&& !IsJobData
 					&& !IsMemory
-					&& this.ObjectType == Data.ObjectTypes.Normal;
+					&& ObjectType == Data.ObjectTypes.Normal;
 
 		public CacheContainer ParentCacheContainer
 		{

@@ -117,7 +117,7 @@ namespace SimPe.Plugin
 
 			internal SubLot(System.IO.BinaryReader reader)
 			{
-				this.Unserialize(reader);
+				Unserialize(reader);
 			}
 
 			private void Unserialize(System.IO.BinaryReader reader)
@@ -343,7 +343,7 @@ namespace SimPe.Plugin
 		#endregion
 
 		public Interfaces.Providers.ILotItem LotDescription => FileTableBase.ProviderRegistry.LotProvider.FindLot(
-					this.LotInstance
+					LotInstance
 				);
 
 		public Interfaces.IProviderRegistry Provider
@@ -360,13 +360,13 @@ namespace SimPe.Plugin
 		public Ltxt(Interfaces.IProviderRegistry provider)
 			: base()
 		{
-			this.Provider = provider;
+			Provider = provider;
 
 			Unknown1 = new List<float>();
 			sz = new Size(1, 1);
 			LotElevation = 0x439D;
 
-			this.Followup = new byte[0];
+			Followup = new byte[0];
 		}
 
 		#region IWrapper member
@@ -394,7 +394,7 @@ namespace SimPe.Plugin
 				"This File contains the Description for a Lot.",
 				9,
 				Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.ltxt.png")
 				)
 			);
@@ -423,7 +423,7 @@ namespace SimPe.Plugin
 			int len = reader.ReadInt32();
 			for (int i = 0; i < len; i++)
 			{
-				this.Unknown1.Add(reader.ReadSingle());
+				Unknown1.Add(reader.ReadSingle());
 			}
 
 			if (subver >= (UInt16)LtxtSubVersion.Voyage)
@@ -529,7 +529,7 @@ namespace SimPe.Plugin
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
 			writer.Write(ver);
-			writer.Write(this.subver);
+			writer.Write(subver);
 			writer.Write(sz.Width);
 			writer.Write(sz.Height);
 			writer.Write((byte)Type);
@@ -630,7 +630,7 @@ namespace SimPe.Plugin
 
 		protected override string GetResourceName(Data.TypeAlias ta)
 		{
-			if (!this.Processed)
+			if (!Processed)
 			{
 				ProcessData(FileDescriptor, Package);
 			}

@@ -64,7 +64,7 @@ namespace Ambertation.Windows.Forms.Graph
 			{
 				if (docks == null)
 				{
-					this.SetupDocks();
+					SetupDocks();
 				}
 
 				return docks;
@@ -86,7 +86,7 @@ namespace Ambertation.Windows.Forms.Graph
 			set
 			{
 				lm = value;
-				this.SetLinkLineMode();
+				SetLinkLineMode();
 			}
 		}
 
@@ -99,7 +99,7 @@ namespace Ambertation.Windows.Forms.Graph
 			set
 			{
 				base.Quality = value;
-				this.SetLinkQuality();
+				SetLinkQuality();
 			}
 		}
 		Color lcol;
@@ -180,7 +180,7 @@ namespace Ambertation.Windows.Forms.Graph
 		#region Event Override
 		internal override void OnGotFocus(System.EventArgs e)
 		{
-			if (this.AutoBringToFront)
+			if (AutoBringToFront)
 			{
 				SendAllParentLinksToFront();
 				SendAllParentsToFront();
@@ -189,14 +189,14 @@ namespace Ambertation.Windows.Forms.Graph
 			}
 
 			base.OnGotFocus(e);
-			SetLinkColors(this.ActiveOutgoingLinkColor);
-			SetParentLinkColors(this.ActiveIncomingLinkColor);
+			SetLinkColors(ActiveOutgoingLinkColor);
+			SetParentLinkColors(ActiveIncomingLinkColor);
 		}
 
 		internal override void OnLostFocus(System.EventArgs e)
 		{
 			base.OnLostFocus(e);
-			SetLinkColors(this.LinkColor);
+			SetLinkColors(LinkColor);
 			SetParentLinkColors(LinkColor);
 		}
 		#endregion
@@ -218,7 +218,7 @@ namespace Ambertation.Windows.Forms.Graph
 		{
 			foreach (LinkGraphic lc in lcmap.Values)
 			{
-				lc.Quality = this.Quality;
+				lc.Quality = Quality;
 			}
 		}
 
@@ -242,7 +242,7 @@ namespace Ambertation.Windows.Forms.Graph
 
 		void SendAllParentLinksToFront()
 		{
-			foreach (GraphItemBase gi in this.ParentItems)
+			foreach (GraphItemBase gi in ParentItems)
 			{
 				gi.SendAllChildLinksToFront(this);
 			}
@@ -250,7 +250,7 @@ namespace Ambertation.Windows.Forms.Graph
 
 		protected void SendAllChildLinksToFront(GraphItemBase sender)
 		{
-			foreach (GraphItemBase lg in this.ChildItems)
+			foreach (GraphItemBase lg in ChildItems)
 			{
 				if (lg == sender)
 				{
@@ -265,7 +265,7 @@ namespace Ambertation.Windows.Forms.Graph
 
 		void SendAllChildsToFront()
 		{
-			foreach (GraphItemBase gi in this.ChildItems)
+			foreach (GraphItemBase gi in ChildItems)
 			{
 				gi.SendToFront();
 			}
@@ -273,7 +273,7 @@ namespace Ambertation.Windows.Forms.Graph
 
 		void SendAllParentsToFront()
 		{
-			foreach (GraphItemBase gi in this.ParentItems)
+			foreach (GraphItemBase gi in ParentItems)
 			{
 				gi.SendToFront();
 			}
@@ -281,7 +281,7 @@ namespace Ambertation.Windows.Forms.Graph
 
 		protected void SetChildLinkColor(GraphItemBase sender, Color cl)
 		{
-			foreach (GraphItemBase lg in this.ChildItems)
+			foreach (GraphItemBase lg in ChildItems)
 			{
 				if (lg == sender)
 				{
@@ -296,7 +296,7 @@ namespace Ambertation.Windows.Forms.Graph
 
 		protected void SetParentLinkColors(Color cl)
 		{
-			foreach (GraphItemBase lg in this.ParentItems)
+			foreach (GraphItemBase lg in ParentItems)
 			{
 				lg.SetChildLinkColor(this, cl);
 			}
@@ -308,10 +308,10 @@ namespace Ambertation.Windows.Forms.Graph
 			{
 				if (Focused)
 				{
-					return this.ActiveOutgoingLinkColor;
+					return ActiveOutgoingLinkColor;
 				}
 
-				return this.LinkColor;
+				return LinkColor;
 			}
 		}
 		#endregion
@@ -374,14 +374,14 @@ namespace Ambertation.Windows.Forms.Graph
 			{
 				LinkGraphic lc = new LinkGraphic();
 				lc.Text = e.Text;
-				lc.ForeColor = this.CurrentLinkColor;
+				lc.ForeColor = CurrentLinkColor;
 				lc.Parent = (GraphPanel)Parent;
 				lc.StartElement = this;
 				lc.EndElement = e.GraphItem;
 				lc.StartAnchorSnap = LinkControlSnapAnchor.OnlyCenter;
 				lc.EndAnchorSnap = LinkControlSnapAnchor.OnlyCenter;
-				lc.LineMode = this.LineMode;
-				lc.Quality = this.Quality;
+				lc.LineMode = LineMode;
+				lc.Quality = Quality;
 
 				lc.SendToBack();
 				lcmap.Add(e.GraphItem, lc);
@@ -454,7 +454,7 @@ namespace Ambertation.Windows.Forms.Graph
 
 			foreach (LinkGraphic lc in lcmap.Values)
 			{
-				lc.Parent = this.Parent;
+				lc.Parent = Parent;
 			}
 		}
 
@@ -540,7 +540,7 @@ namespace Ambertation.Windows.Forms.Graph
 			LinkGraphic[] lgs = GetChildLinks();
 			foreach (LinkGraphic lg in lgs)
 			{
-				this.Parent.LinkItems.Add(lg);
+				Parent.LinkItems.Add(lg);
 			}
 
 			base.AddToParent();

@@ -53,13 +53,13 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 
 		internal AScorItem(ScorItem si)
 		{
-			this.ParentItem = si;
+			ParentItem = si;
 			InitializeComponent();
 		}
 
 		internal void SetData(string name, System.IO.BinaryReader reader)
 		{
-			this.TokenName = name;
+			TokenName = name;
 			if (reader != null)
 			{
 				DoSetData(name, reader);

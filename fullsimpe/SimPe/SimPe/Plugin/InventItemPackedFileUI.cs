@@ -24,7 +24,7 @@ namespace SimPe.Plugin
 		protected override void RefreshGUI()
 		{
 			base.RefreshGUI();
-			this.lbdisp.Text = Wrapper.DispLabel;
+			lbdisp.Text = Wrapper.DispLabel;
 		}
 
 		public override void OnCommit()
@@ -42,7 +42,7 @@ namespace SimPe.Plugin
 
 		void IDisposable.Dispose()
 		{
-			this.TPFW.Dispose();
+			TPFW.Dispose();
 		}
 		#endregion
 	}

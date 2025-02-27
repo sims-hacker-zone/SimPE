@@ -107,26 +107,26 @@ namespace SimPe
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
+			components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(ImportSemi));
-			this.btimport = new Button();
-			this.cbsemi = new ComboBox();
-			this.label1 = new Label();
-			this.llscan = new LinkLabel();
-			this.lbfiles = new CheckedListBox();
-			this.label2 = new Label();
-			this.linkLabel1 = new LinkLabel();
-			this.cbfix = new CheckBox();
-			this.toolTip1 = new ToolTip(this.components);
-			this.cbname = new CheckBox();
-			this.panel1 = new Panel();
-			this.panel1.SuspendLayout();
-			this.SuspendLayout();
+			btimport = new Button();
+			cbsemi = new ComboBox();
+			label1 = new Label();
+			llscan = new LinkLabel();
+			lbfiles = new CheckedListBox();
+			label2 = new Label();
+			linkLabel1 = new LinkLabel();
+			cbfix = new CheckBox();
+			toolTip1 = new ToolTip(components);
+			cbname = new CheckBox();
+			panel1 = new Panel();
+			panel1.SuspendLayout();
+			SuspendLayout();
 			//
 			// btimport
 			//
-			this.btimport.Anchor = (
+			btimport.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -134,17 +134,17 @@ namespace SimPe
 					)
 				)
 			);
-			this.btimport.FlatStyle = FlatStyle.System;
-			this.btimport.Location = new System.Drawing.Point(698, 471);
-			this.btimport.Name = "btimport";
-			this.btimport.Size = new System.Drawing.Size(75, 23);
-			this.btimport.TabIndex = 1;
-			this.btimport.Text = "Import";
-			this.btimport.Click += new EventHandler(this.ImportFiles);
+			btimport.FlatStyle = FlatStyle.System;
+			btimport.Location = new System.Drawing.Point(698, 471);
+			btimport.Name = "btimport";
+			btimport.Size = new System.Drawing.Size(75, 23);
+			btimport.TabIndex = 1;
+			btimport.Text = "Import";
+			btimport.Click += new EventHandler(ImportFiles);
 			//
 			// cbsemi
 			//
-			this.cbsemi.Anchor = (
+			cbsemi.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -154,32 +154,32 @@ namespace SimPe
 					)
 				)
 			);
-			this.cbsemi.DropDownStyle = ComboBoxStyle.DropDownList;
-			this.cbsemi.Location = new System.Drawing.Point(16, 32);
-			this.cbsemi.Name = "cbsemi";
-			this.cbsemi.Size = new System.Drawing.Size(758, 24);
-			this.cbsemi.TabIndex = 2;
+			cbsemi.DropDownStyle = ComboBoxStyle.DropDownList;
+			cbsemi.Location = new System.Drawing.Point(16, 32);
+			cbsemi.Name = "cbsemi";
+			cbsemi.Size = new System.Drawing.Size(758, 24);
+			cbsemi.TabIndex = 2;
 			//
 			// label1
 			//
-			this.label1.BackColor = System.Drawing.Color.Transparent;
-			this.label1.Font = new System.Drawing.Font(
+			label1.BackColor = System.Drawing.Color.Transparent;
+			label1.Font = new System.Drawing.Font(
 				"Verdana",
 				9.75F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label1.Location = new System.Drawing.Point(16, 6);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(100, 23);
-			this.label1.TabIndex = 3;
-			this.label1.Text = "Semi Global:";
-			this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+			label1.Location = new System.Drawing.Point(16, 6);
+			label1.Name = "label1";
+			label1.Size = new System.Drawing.Size(100, 23);
+			label1.TabIndex = 3;
+			label1.Text = "Semi Global:";
+			label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
 			//
 			// llscan
 			//
-			this.llscan.Anchor = (
+			llscan.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -187,29 +187,29 @@ namespace SimPe
 					)
 				)
 			);
-			this.llscan.AutoSize = true;
-			this.llscan.BackColor = System.Drawing.Color.Transparent;
-			this.llscan.Font = new System.Drawing.Font(
+			llscan.AutoSize = true;
+			llscan.BackColor = System.Drawing.Color.Transparent;
+			llscan.Font = new System.Drawing.Font(
 				"Verdana",
 				9.75F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.llscan.Location = new System.Drawing.Point(730, 59);
-			this.llscan.Name = "llscan";
-			this.llscan.Size = new System.Drawing.Size(42, 16);
-			this.llscan.TabIndex = 4;
-			this.llscan.TabStop = true;
-			this.llscan.Text = "scan";
-			this.llscan.LinkClicked +=
+			llscan.Location = new System.Drawing.Point(730, 59);
+			llscan.Name = "llscan";
+			llscan.Size = new System.Drawing.Size(42, 16);
+			llscan.TabIndex = 4;
+			llscan.TabStop = true;
+			llscan.Text = "scan";
+			llscan.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.ScanSemiGlobals
+					ScanSemiGlobals
 				);
 			//
 			// lbfiles
 			//
-			this.lbfiles.Anchor = (
+			lbfiles.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -221,34 +221,34 @@ namespace SimPe
 					)
 				)
 			);
-			this.lbfiles.CheckOnClick = true;
-			this.lbfiles.HorizontalScrollbar = true;
-			this.lbfiles.IntegralHeight = false;
-			this.lbfiles.Location = new System.Drawing.Point(16, 96);
-			this.lbfiles.Name = "lbfiles";
-			this.lbfiles.Size = new System.Drawing.Size(758, 365);
-			this.lbfiles.TabIndex = 5;
+			lbfiles.CheckOnClick = true;
+			lbfiles.HorizontalScrollbar = true;
+			lbfiles.IntegralHeight = false;
+			lbfiles.Location = new System.Drawing.Point(16, 96);
+			lbfiles.Name = "lbfiles";
+			lbfiles.Size = new System.Drawing.Size(758, 365);
+			lbfiles.TabIndex = 5;
 			//
 			// label2
 			//
-			this.label2.BackColor = System.Drawing.Color.Transparent;
-			this.label2.Font = new System.Drawing.Font(
+			label2.BackColor = System.Drawing.Color.Transparent;
+			label2.Font = new System.Drawing.Font(
 				"Verdana",
 				9.75F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label2.Location = new System.Drawing.Point(16, 70);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(100, 23);
-			this.label2.TabIndex = 6;
-			this.label2.Text = "Files:";
-			this.label2.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+			label2.Location = new System.Drawing.Point(16, 70);
+			label2.Name = "label2";
+			label2.Size = new System.Drawing.Size(100, 23);
+			label2.TabIndex = 6;
+			label2.Text = "Files:";
+			label2.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
 			//
 			// linkLabel1
 			//
-			this.linkLabel1.Anchor = (
+			linkLabel1.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -256,29 +256,29 @@ namespace SimPe
 					)
 				)
 			);
-			this.linkLabel1.AutoSize = true;
-			this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
-			this.linkLabel1.Font = new System.Drawing.Font(
+			linkLabel1.AutoSize = true;
+			linkLabel1.BackColor = System.Drawing.Color.Transparent;
+			linkLabel1.Font = new System.Drawing.Font(
 				"Verdana",
 				9.75F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.linkLabel1.Location = new System.Drawing.Point(16, 471);
-			this.linkLabel1.Name = "linkLabel1";
-			this.linkLabel1.Size = new System.Drawing.Size(89, 16);
-			this.linkLabel1.TabIndex = 7;
-			this.linkLabel1.TabStop = true;
-			this.linkLabel1.Text = "uncheck all";
-			this.linkLabel1.LinkClicked +=
+			linkLabel1.Location = new System.Drawing.Point(16, 471);
+			linkLabel1.Name = "linkLabel1";
+			linkLabel1.Size = new System.Drawing.Size(89, 16);
+			linkLabel1.TabIndex = 7;
+			linkLabel1.TabStop = true;
+			linkLabel1.Text = "uncheck all";
+			linkLabel1.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.linkLabel1_LinkClicked
+					linkLabel1_LinkClicked
 				);
 			//
 			// cbfix
 			//
-			this.cbfix.Anchor = (
+			cbfix.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -286,21 +286,21 @@ namespace SimPe
 					)
 				)
 			);
-			this.cbfix.FlatStyle = FlatStyle.System;
-			this.cbfix.Location = new System.Drawing.Point(506, 470);
-			this.cbfix.Name = "cbfix";
-			this.cbfix.Size = new System.Drawing.Size(176, 24);
-			this.cbfix.TabIndex = 8;
-			this.cbfix.Text = "Fix Package References";
-			this.toolTip1.SetToolTip(
-				this.cbfix,
+			cbfix.FlatStyle = FlatStyle.System;
+			cbfix.Location = new System.Drawing.Point(506, 470);
+			cbfix.Name = "cbfix";
+			cbfix.Size = new System.Drawing.Size(176, 24);
+			cbfix.TabIndex = 8;
+			cbfix.Text = "Fix Package References";
+			toolTip1.SetToolTip(
+				cbfix,
 				"Check this Option if you want to Fix references form TTABs and BHAVs in this pack"
 					+ "age to the imported SemiGLobals."
 			);
 			//
 			// cbname
 			//
-			this.cbname.Anchor = (
+			cbname.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -308,21 +308,21 @@ namespace SimPe
 					)
 				)
 			);
-			this.cbname.FlatStyle = FlatStyle.System;
-			this.cbname.Location = new System.Drawing.Point(362, 470);
-			this.cbname.Name = "cbname";
-			this.cbname.Size = new System.Drawing.Size(128, 24);
-			this.cbname.TabIndex = 9;
-			this.cbname.Text = "Add name Prefix";
-			this.toolTip1.SetToolTip(
-				this.cbname,
+			cbname.FlatStyle = FlatStyle.System;
+			cbname.Location = new System.Drawing.Point(362, 470);
+			cbname.Name = "cbname";
+			cbname.Size = new System.Drawing.Size(128, 24);
+			cbname.TabIndex = 9;
+			cbname.Text = "Add name Prefix";
+			toolTip1.SetToolTip(
+				cbname,
 				"Check this Option if you want to Fix references form TTABs and BHAVs in this pack"
 					+ "age to the imported SemiGLobals."
 			);
 			//
 			// panel1
 			//
-			this.panel1.Anchor = (
+			panel1.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -334,49 +334,49 @@ namespace SimPe
 					)
 				)
 			);
-			this.panel1.BackColor = System.Drawing.Color.Transparent;
-			this.panel1.Controls.Add(this.lbfiles);
-			this.panel1.Controls.Add(this.label2);
-			this.panel1.Controls.Add(this.cbname);
-			this.panel1.Controls.Add(this.cbfix);
-			this.panel1.Controls.Add(this.llscan);
-			this.panel1.Controls.Add(this.linkLabel1);
-			this.panel1.Controls.Add(this.cbsemi);
-			this.panel1.Controls.Add(this.btimport);
-			this.panel1.Controls.Add(this.label1);
-			this.panel1.Font = new System.Drawing.Font(
+			panel1.BackColor = System.Drawing.Color.Transparent;
+			panel1.Controls.Add(lbfiles);
+			panel1.Controls.Add(label2);
+			panel1.Controls.Add(cbname);
+			panel1.Controls.Add(cbfix);
+			panel1.Controls.Add(llscan);
+			panel1.Controls.Add(linkLabel1);
+			panel1.Controls.Add(cbsemi);
+			panel1.Controls.Add(btimport);
+			panel1.Controls.Add(label1);
+			panel1.Font = new System.Drawing.Font(
 				"Verdana",
 				9.75F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.panel1.Location = new System.Drawing.Point(0, 0);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(787, 503);
-			this.panel1.TabIndex = 10;
+			panel1.Location = new System.Drawing.Point(0, 0);
+			panel1.Name = "panel1";
+			panel1.Size = new System.Drawing.Size(787, 503);
+			panel1.TabIndex = 10;
 			//
 			// ImportSemi
 			//
-			this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
-			this.ClientSize = new System.Drawing.Size(784, 501);
-			this.Controls.Add(this.panel1);
-			this.Font = new System.Drawing.Font(
+			AutoScaleBaseSize = new System.Drawing.Size(6, 14);
+			ClientSize = new System.Drawing.Size(784, 501);
+			Controls.Add(panel1);
+			Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.FormBorderStyle =
+			FormBorderStyle =
 				FormBorderStyle
 				.SizableToolWindow;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.Name = "ImportSemi";
-			this.Text = "Import SemiGlobals";
-			this.panel1.ResumeLayout(false);
-			this.panel1.PerformLayout();
-			this.ResumeLayout(false);
+			Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			Name = "ImportSemi";
+			Text = "Import SemiGlobals";
+			panel1.ResumeLayout(false);
+			panel1.PerformLayout();
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -396,7 +396,7 @@ namespace SimPe
 
 			btimport.Enabled = false;
 			lbfiles.Items.Clear();
-			this.ShowDialog();
+			ShowDialog();
 		}
 
 		private void ScanSemiGlobals(
@@ -404,9 +404,9 @@ namespace SimPe
 			LinkLabelLinkClickedEventArgs e
 		)
 		{
-			this.Cursor = Cursors.WaitCursor;
+			Cursor = Cursors.WaitCursor;
 			lbfiles.Items.Clear();
-			this.btimport.Enabled = false;
+			btimport.Enabled = false;
 
 			if (cbsemi.SelectedIndex < 0)
 			{
@@ -480,16 +480,16 @@ namespace SimPe
 					}
 				}
 				lbfiles.Sorted = true;
-				this.btimport.Enabled = (lbfiles.Items.Count > 0);
+				btimport.Enabled = (lbfiles.Items.Count > 0);
 			}
 			catch (Exception) { }
 
-			this.Cursor = Cursors.Default;
+			Cursor = Cursors.Default;
 		}
 
 		private void ImportFiles(object sender, EventArgs e)
 		{
-			this.Cursor = Cursors.WaitCursor;
+			Cursor = Cursors.WaitCursor;
 
 			//first find the highest Instance of a BHAV, BCON in the package
 			Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(
@@ -653,7 +653,7 @@ namespace SimPe
 			{
 				package.EndUpdate();
 			}
-			this.Cursor = Cursors.Default;
+			Cursor = Cursors.Default;
 			Close();
 		}
 

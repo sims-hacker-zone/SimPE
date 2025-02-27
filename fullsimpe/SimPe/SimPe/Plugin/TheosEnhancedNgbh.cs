@@ -51,7 +51,7 @@ namespace SimPe.Plugin
 				"This File contains the Memories and Inventories of all Sims and Lots that Live in this Neighbourhood.",
 				2,
 				System.Drawing.Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.ngbh.png")
 				)
 			);
@@ -69,12 +69,12 @@ namespace SimPe.Plugin
 
 			public void Append(string str)
 			{
-				this.msg.Append(str);
+				msg.Append(str);
 			}
 
 			public void AppendFormat(string format, params object[] args)
 			{
-				this.msg.AppendFormat(format, args);
+				msg.AppendFormat(format, args);
 			}
 		}
 
@@ -86,26 +86,26 @@ namespace SimPe.Plugin
 
 			public int Add(IAlias alias)
 			{
-				return this.List.Add(alias);
+				return List.Add(alias);
 			}
 
 			public bool Contains(IAlias alias)
 			{
-				return this.List.Contains(alias);
+				return List.Contains(alias);
 			}
 
 			public bool Contains(uint id)
 			{
-				return (this.FindById(id) != null);
+				return (FindById(id) != null);
 			}
 
 			public IAlias FindById(uint id)
 			{
 				IAlias ret = null;
 				int i = -1;
-				while (++i < this.List.Count)
+				while (++i < List.Count)
 				{
-					IAlias alias = (IAlias)this.List[i];
+					IAlias alias = (IAlias)List[i];
 					if (alias.Id == id)
 					{
 						ret = alias;
@@ -124,7 +124,7 @@ namespace SimPe.Plugin
 			ExceptionBuilder trace = new ExceptionBuilder();
 			trace.Append("Invalid memories found:" + Helper.lbr);
 
-			Collections.NgbhSlots slots = this.GetSlots(Data.NeighborhoodSlots.Sims);
+			Collections.NgbhSlots slots = GetSlots(Data.NeighborhoodSlots.Sims);
 
 			foreach (NgbhSlot slot in slots)
 			{
@@ -257,7 +257,7 @@ namespace SimPe.Plugin
 			ExceptionBuilder trace = new ExceptionBuilder();
 			trace.Append("Memories found:" + Helper.lbr);
 
-			Collections.NgbhSlots slots = this.GetSlots(Data.NeighborhoodSlots.Sims);
+			Collections.NgbhSlots slots = GetSlots(Data.NeighborhoodSlots.Sims);
 			foreach (NgbhSlot slot in slots)
 			{
 				// skip my own memories?

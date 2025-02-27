@@ -175,7 +175,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 			writer.WriteLine();
 
 			//Add a MeshNormal Section if available
-			if (this.NormalElement != null)
+			if (NormalElement != null)
 			{
 				vertexcount = 0;
 				writer.WriteLine("MeshNormals {");
@@ -242,7 +242,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 			writer.WriteLine("0.300000;");
 			writer.WriteLine("1.000000;1.000000;1.000000;;");
 			writer.WriteLine("0.100000;0.100000;0.100000;;");
-			if ((txtrname != null) && (this.UVCoordinateElement != null))
+			if ((txtrname != null) && (UVCoordinateElement != null))
 			{
 				//
 				//TODO: Remove the following Line if you found out how to texture two subsets with te same name
@@ -256,7 +256,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 			writer.WriteLine("}");
 
 			//now the Texture Cords //iv available
-			if (this.UVCoordinateElement != null)
+			if (UVCoordinateElement != null)
 			{
 				writer.WriteLine("MeshTextureCoords {");
 				writer.WriteLine(Link.ReferencedSize.ToString() + "; //Vertex Count");

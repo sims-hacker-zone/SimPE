@@ -183,11 +183,11 @@ namespace Ambertation.Windows.Forms
 		{
 			get
 			{
-				return pb.Value + this.NumberOffset;
+				return pb.Value + NumberOffset;
 			}
 			set
 			{
-				pb.Value = value - this.NumberOffset;
+				pb.Value = value - NumberOffset;
 				Update();
 			}
 		}
@@ -322,127 +322,127 @@ namespace Ambertation.Windows.Forms
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.pn = new Panel();
-			this.pb = new SubExtProgressBar();
-			this.lb = new Label();
-			this.pntb = new Panel();
-			this.tb = new TextBox();
-			this.pnlb = new Panel();
-			this.pn.SuspendLayout();
-			this.pntb.SuspendLayout();
-			this.pnlb.SuspendLayout();
-			this.SuspendLayout();
+			pn = new Panel();
+			pb = new SubExtProgressBar();
+			lb = new Label();
+			pntb = new Panel();
+			tb = new TextBox();
+			pnlb = new Panel();
+			pn.SuspendLayout();
+			pntb.SuspendLayout();
+			pnlb.SuspendLayout();
+			SuspendLayout();
 			//
 			// pn
 			//
-			this.pn.Controls.Add(this.pb);
-			this.pn.Dock = DockStyle.Fill;
-			this.pn.DockPadding.Left = 8;
-			this.pn.DockPadding.Right = 4;
-			this.pn.Location = new Point(80, 0);
-			this.pn.Name = "pn";
-			this.pn.Size = new Size(280, 15);
-			this.pn.TabIndex = 0;
+			pn.Controls.Add(pb);
+			pn.Dock = DockStyle.Fill;
+			pn.DockPadding.Left = 8;
+			pn.DockPadding.Right = 4;
+			pn.Location = new Point(80, 0);
+			pn.Name = "pn";
+			pn.Size = new Size(280, 15);
+			pn.TabIndex = 0;
 			//
 			// pb
 			//
-			this.pb.BackColor = Color.Transparent;
-			this.pb.BorderColor = Color.FromArgb(
+			pb.BackColor = Color.Transparent;
+			pb.BorderColor = Color.FromArgb(
 				((System.Byte)(100)),
 				((System.Byte)(0)),
 				((System.Byte)(0)),
 				((System.Byte)(0))
 			);
-			this.pb.Dock = DockStyle.Fill;
-			this.pb.Gradient = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-			this.pb.GradientEndColor = Color.White;
-			this.pb.GradientStartColor = Color.White;
-			this.pb.Location = new Point(8, 0);
-			this.pb.Maximum = 100;
-			this.pb.Minimum = 0;
-			this.pb.Name = "pb";
-			this.pb.ProgressBackColor = SystemColors.Window;
-			this.pb.Quality = true;
-			this.pb.SelectedColor = Color.YellowGreen;
-			this.pb.Size = new Size(268, 15);
-			this.pb.Style = ProgresBarStyle.Flat;
-			this.pb.TabIndex = 0;
-			this.pb.UnselectedColor = Color.Black;
-			this.pb.Value = 0;
-			this.pb.MouseUp += new MouseEventHandler(
-				this.pb_MouseUp
+			pb.Dock = DockStyle.Fill;
+			pb.Gradient = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+			pb.GradientEndColor = Color.White;
+			pb.GradientStartColor = Color.White;
+			pb.Location = new Point(8, 0);
+			pb.Maximum = 100;
+			pb.Minimum = 0;
+			pb.Name = "pb";
+			pb.ProgressBackColor = SystemColors.Window;
+			pb.Quality = true;
+			pb.SelectedColor = Color.YellowGreen;
+			pb.Size = new Size(268, 15);
+			pb.Style = ProgresBarStyle.Flat;
+			pb.TabIndex = 0;
+			pb.UnselectedColor = Color.Black;
+			pb.Value = 0;
+			pb.MouseUp += new MouseEventHandler(
+				pb_MouseUp
 			);
-			this.pb.MouseMove += new MouseEventHandler(
-				this.pb_MouseMove
+			pb.MouseMove += new MouseEventHandler(
+				pb_MouseMove
 			);
-			this.pb.MouseDown += new MouseEventHandler(
-				this.pb_MouseDown
+			pb.MouseDown += new MouseEventHandler(
+				pb_MouseDown
 			);
 			//
 			// lb
 			//
-			this.lb.Dock = DockStyle.Bottom;
-			this.lb.Font = new Font(
+			lb.Dock = DockStyle.Bottom;
+			lb.Font = new Font(
 				"Tahoma",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.lb.Location = new Point(0, -8);
-			this.lb.Name = "lb";
-			this.lb.Size = new Size(80, 23);
-			this.lb.TabIndex = 0;
-			this.lb.TextAlign = ContentAlignment.BottomRight;
+			lb.Location = new Point(0, -8);
+			lb.Name = "lb";
+			lb.Size = new Size(80, 23);
+			lb.TabIndex = 0;
+			lb.TextAlign = ContentAlignment.BottomRight;
 			//
 			// pntb
 			//
-			this.pntb.Controls.Add(this.tb);
-			this.pntb.Dock = DockStyle.Right;
-			this.pntb.Location = new Point(360, 0);
-			this.pntb.Name = "pntb";
-			this.pntb.Size = new Size(40, 15);
-			this.pntb.TabIndex = 1;
+			pntb.Controls.Add(tb);
+			pntb.Dock = DockStyle.Right;
+			pntb.Location = new Point(360, 0);
+			pntb.Name = "pntb";
+			pntb.Size = new Size(40, 15);
+			pntb.TabIndex = 1;
 			//
 			// tb
 			//
-			this.tb.BorderStyle = BorderStyle.None;
-			this.tb.Dock = DockStyle.Bottom;
-			this.tb.Location = new Point(0, 1);
-			this.tb.Name = "tb";
-			this.tb.Size = new Size(40, 14);
-			this.tb.TabIndex = 0;
-			this.tb.Text = "";
-			this.tb.TextChanged += new EventHandler(this.tb_TextChanged);
+			tb.BorderStyle = BorderStyle.None;
+			tb.Dock = DockStyle.Bottom;
+			tb.Location = new Point(0, 1);
+			tb.Name = "tb";
+			tb.Size = new Size(40, 14);
+			tb.TabIndex = 0;
+			tb.Text = "";
+			tb.TextChanged += new EventHandler(tb_TextChanged);
 			//
 			// pnlb
 			//
-			this.pnlb.Controls.Add(this.lb);
-			this.pnlb.Dock = DockStyle.Left;
-			this.pnlb.Location = new Point(0, 0);
-			this.pnlb.Name = "pnlb";
-			this.pnlb.Size = new Size(80, 15);
-			this.pnlb.TabIndex = 2;
+			pnlb.Controls.Add(lb);
+			pnlb.Dock = DockStyle.Left;
+			pnlb.Location = new Point(0, 0);
+			pnlb.Name = "pnlb";
+			pnlb.Size = new Size(80, 15);
+			pnlb.TabIndex = 2;
 			//
 			// LabeledProgressBar
 			//
-			this.Controls.Add(this.pn);
-			this.Controls.Add(this.pnlb);
-			this.Controls.Add(this.pntb);
-			this.DockPadding.Bottom = 5;
-			this.Font = new Font(
+			Controls.Add(pn);
+			Controls.Add(pnlb);
+			Controls.Add(pntb);
+			DockPadding.Bottom = 5;
+			Font = new Font(
 				"Tahoma",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.Name = "LabeledProgressBar";
-			this.Size = new Size(400, 20);
-			this.pn.ResumeLayout(false);
-			this.pntb.ResumeLayout(false);
-			this.pnlb.ResumeLayout(false);
-			this.ResumeLayout(false);
+			Name = "LabeledProgressBar";
+			Size = new Size(400, 20);
+			pn.ResumeLayout(false);
+			pntb.ResumeLayout(false);
+			pnlb.ResumeLayout(false);
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -471,7 +471,7 @@ namespace Ambertation.Windows.Forms
 		protected override void OnVisibleChanged(EventArgs e)
 		{
 			base.OnVisibleChanged(e);
-			pb.Visible = this.Visible;
+			pb.Visible = Visible;
 		}
 
 		private void tb_TextChanged(object sender, EventArgs e)

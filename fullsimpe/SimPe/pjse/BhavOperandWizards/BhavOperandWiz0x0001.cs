@@ -69,16 +69,16 @@ namespace pjse.BhavOperandWizards.Wiz0x0001
 		}
 
 		#region iBhavOperandWizForm
-		public Panel WizPanel => this.pnWiz0x0001;
+		public Panel WizPanel => pnWiz0x0001;
 
 		public void Execute(Instruction inst)
 		{
 			byte operand0 = inst.Operands[0];
 
-			this.cbGenericSimsCall.Items.Clear();
+			cbGenericSimsCall.Items.Clear();
 			for (byte i = 0; i < BhavWiz.readStr(GS.BhavStr.Generics).Count; i++)
 			{
-				this.cbGenericSimsCall.Items.Add(
+				cbGenericSimsCall.Items.Add(
 					"0x"
 						+ SimPe.Helper.HexString(i)
 						+ ": "
@@ -86,7 +86,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0001
 				);
 			}
 
-			this.lbGenericSimsCallparms.Text = "Should never see this";
+			lbGenericSimsCallparms.Text = "Should never see this";
 
 			lbGenericSimsCallparms.Text = genericSimsCallparamText(operand0);
 			cbGenericSimsCall.SelectedIndex =
@@ -95,9 +95,9 @@ namespace pjse.BhavOperandWizards.Wiz0x0001
 
 		public Instruction Write(Instruction inst)
 		{
-			if (this.cbGenericSimsCall.SelectedIndex >= 0)
+			if (cbGenericSimsCall.SelectedIndex >= 0)
 			{
-				inst.Operands[0] = (byte)this.cbGenericSimsCall.SelectedIndex;
+				inst.Operands[0] = (byte)cbGenericSimsCall.SelectedIndex;
 			}
 
 			return inst;
@@ -114,47 +114,47 @@ namespace pjse.BhavOperandWizards.Wiz0x0001
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(UI));
-			this.pnWiz0x0001 = new Panel();
-			this.lbGenericSimsCallparms = new Label();
-			this.cbGenericSimsCall = new ComboBox();
-			this.pnWiz0x0001.SuspendLayout();
-			this.SuspendLayout();
+			pnWiz0x0001 = new Panel();
+			lbGenericSimsCallparms = new Label();
+			cbGenericSimsCall = new ComboBox();
+			pnWiz0x0001.SuspendLayout();
+			SuspendLayout();
 			//
 			// pnWiz0x0001
 			//
-			this.pnWiz0x0001.Controls.Add(this.lbGenericSimsCallparms);
-			this.pnWiz0x0001.Controls.Add(this.cbGenericSimsCall);
-			resources.ApplyResources(this.pnWiz0x0001, "pnWiz0x0001");
-			this.pnWiz0x0001.Name = "pnWiz0x0001";
+			pnWiz0x0001.Controls.Add(lbGenericSimsCallparms);
+			pnWiz0x0001.Controls.Add(cbGenericSimsCall);
+			resources.ApplyResources(pnWiz0x0001, "pnWiz0x0001");
+			pnWiz0x0001.Name = "pnWiz0x0001";
 			//
 			// lbGenericSimsCallparms
 			//
 			resources.ApplyResources(
-				this.lbGenericSimsCallparms,
+				lbGenericSimsCallparms,
 				"lbGenericSimsCallparms"
 			);
-			this.lbGenericSimsCallparms.Name = "lbGenericSimsCallparms";
+			lbGenericSimsCallparms.Name = "lbGenericSimsCallparms";
 			//
 			// cbGenericSimsCall
 			//
-			this.cbGenericSimsCall.DropDownStyle =
+			cbGenericSimsCall.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbGenericSimsCall.DropDownWidth = 352;
-			resources.ApplyResources(this.cbGenericSimsCall, "cbGenericSimsCall");
-			this.cbGenericSimsCall.Name = "cbGenericSimsCall";
-			this.cbGenericSimsCall.SelectedIndexChanged += new System.EventHandler(
-				this.cbGenericSimsCall_Changed
+			cbGenericSimsCall.DropDownWidth = 352;
+			resources.ApplyResources(cbGenericSimsCall, "cbGenericSimsCall");
+			cbGenericSimsCall.Name = "cbGenericSimsCall";
+			cbGenericSimsCall.SelectedIndexChanged += new System.EventHandler(
+				cbGenericSimsCall_Changed
 			);
 			//
 			// UI
 			//
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = AutoScaleMode.Dpi;
-			this.Controls.Add(this.pnWiz0x0001);
-			this.Name = "UI";
-			this.pnWiz0x0001.ResumeLayout(false);
-			this.ResumeLayout(false);
+			AutoScaleMode = AutoScaleMode.Dpi;
+			Controls.Add(pnWiz0x0001);
+			Name = "UI";
+			pnWiz0x0001.ResumeLayout(false);
+			ResumeLayout(false);
 		}
 		#endregion
 

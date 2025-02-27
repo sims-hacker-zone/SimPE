@@ -43,16 +43,16 @@ namespace SimPe.PackedFiles.Wrapper.Factory
 						new Picture(),
 						new Xml(),
 						new Fami(
-							this.LinkedProvider.SimNameProvider
+							LinkedProvider.SimNameProvider
 						),
 						new SRel(),
 						new Cpf(),
 						new FamilyTies(
-							this.LinkedProvider.SimNameProvider
+							LinkedProvider.SimNameProvider
 						),
 						new Nref(),
 						new Objd(
-							this.LinkedProvider.OpcodeProvider
+							LinkedProvider.OpcodeProvider
 						),
 						new Plugin.Glob(),
 						new ObjLua(),
@@ -68,7 +68,7 @@ namespace SimPe.PackedFiles.Wrapper.Factory
 						new Picture(),
 						new Xml(),
 						new Fami(
-							this.LinkedProvider.SimNameProvider
+							LinkedProvider.SimNameProvider
 						),
 						new Cpf(),
 						new Nref(),

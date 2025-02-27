@@ -146,23 +146,23 @@ namespace SimPe.PackedFiles.UserInterface
 			InitializeComponent();
 			if (Helper.WindowsRegistry.UseBigIcons)
 			{
-				this.tbname.Font = new System.Drawing.Font(
-					this.tbname.Font.FontFamily,
+				tbname.Font = new System.Drawing.Font(
+					tbname.Font.FontFamily,
 					12F
 				);
-				this.cbsims.Font = new System.Drawing.Font(
-					this.cbsims.Font.FontFamily,
+				cbsims.Font = new System.Drawing.Font(
+					cbsims.Font.FontFamily,
 					12F
 				);
-				this.lbmembers.Font = new System.Drawing.Font("Verdana", 12F);
-				this.lbmembers.Location = new System.Drawing.Point(16, 200);
-				this.lbmembers.Size = new System.Drawing.Size(
+				lbmembers.Font = new System.Drawing.Font("Verdana", 12F);
+				lbmembers.Location = new System.Drawing.Point(16, 200);
+				lbmembers.Size = new System.Drawing.Size(
 					356,
-					this.lbmembers.Size.Height
+					lbmembers.Size.Height
 				);
-				this.pbImage.Size = new System.Drawing.Size(168, 168);
-				this.pbImage.Location = new System.Drawing.Point(2, 26);
-				this.rtb.Font = new System.Drawing.Font("Verdana", 12F);
+				pbImage.Size = new System.Drawing.Size(168, 168);
+				pbImage.Location = new System.Drawing.Point(2, 26);
+				rtb.Font = new System.Drawing.Font("Verdana", 12F);
 			}
 		}
 
@@ -188,907 +188,907 @@ namespace SimPe.PackedFiles.UserInterface
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
+			components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(Elements));
-			this.JpegPanel = new Panel();
-			this.panel2 = new Panel();
-			this.btPicExport = new Button();
-			this.pb = new PictureBox();
-			this.xmlPanel = new Panel();
-			this.rtb = new RichTextBox();
-			this.panel3 = new Panel();
-			this.objdPanel = new Panel();
-			this.cbupdate = new CheckBox();
-			this.label63 = new Label();
-			this.tbproxguid = new TextBox();
-			this.label97 = new Label();
-			this.tborgguid = new TextBox();
-			this.lbtypename = new Label();
-			this.gbelements = new GroupBox();
-			this.pnelements = new Panel();
-			this.tblottype = new TextBox();
-			this.label65 = new Label();
-			this.tbsimname = new TextBox();
-			this.label9 = new Label();
-			this.tbsimid = new TextBox();
-			this.label8 = new Label();
-			this.panel6 = new Panel();
-			this.tabControl1 = new TabControl();
-			this.tabPage4 = new TabPage();
-			this.familytiePanel = new Panel();
-			this.gbties = new GroupBox();
-			this.btnewtie = new Button();
-			this.cballtieablesims = new ComboBox();
-			this.cbtietype = new ComboBox();
-			this.lbties = new ListBox();
-			this.btdeletetie = new Button();
-			this.btaddtie = new Button();
-			this.llcommitties = new LinkLabel();
-			this.cbtiesims = new ComboBox();
-			this.label64 = new Label();
-			this.panel8 = new Panel();
-			this.tabPage1 = new TabPage();
-			this.famiPanel = new Panel();
-			this.tbbmoney = new TextBox();
-			this.label16 = new Label();
-			this.tbblot = new TextBox();
-			this.label14 = new Label();
-			this.gbCastaway = new GroupBox();
-			this.tbcaunk = new TextBox();
-			this.label13 = new Label();
-			this.tbcares = new TextBox();
-			this.label11 = new Label();
-			this.tbcafood1 = new TextBox();
-			this.label10 = new Label();
-			this.tbvac = new TextBox();
-			this.label7 = new Label();
-			this.tbsubhood = new TextBox();
-			this.label89 = new Label();
-			this.groupBox4 = new GroupBox();
-			this.cbcomputer = new CheckBox();
-			this.cblot = new CheckBox();
-			this.cbbaby = new CheckBox();
-			this.cbphone = new CheckBox();
-			this.tbflag = new TextBox();
-			this.tbalbum = new TextBox();
-			this.label93 = new Label();
-			this.tblotinst = new TextBox();
-			this.llFamiDeleteSim = new Button();
-			this.llFamiAddSim = new Button();
-			this.btOpenHistory = new Button();
-			this.pbImage = new PictureBox();
-			this.cbsims = new ComboBox();
-			this.lbmembers = new ListBox();
-			this.tbname = new TextBox();
-			this.label6 = new Label();
-			this.tbfamily = new TextBox();
-			this.tbmoney = new TextBox();
-			this.label5 = new Label();
-			this.lbnotiss = new Label();
-			this.label4 = new Label();
-			this.label3 = new Label();
-			this.panel4 = new Panel();
-			this.label15 = new Label();
-			this.tabPage3 = new TabPage();
-			this.realPanel = new Panel();
-			this.label91 = new Label();
-			this.cbfamtype = new ComboBox();
-			this.gbrelation = new GroupBox();
-			this.cbBFF = new CheckBox();
-			this.cbsecret = new CheckBox();
-			this.cbplatonic = new CheckBox();
-			this.cbbest = new CheckBox();
-			this.cbfamily = new CheckBox();
-			this.cbmarried = new CheckBox();
-			this.cbengaged = new CheckBox();
-			this.cbsteady = new CheckBox();
-			this.cblove = new CheckBox();
-			this.cbcrush = new CheckBox();
-			this.cbbuddie = new CheckBox();
-			this.cbfriend = new CheckBox();
-			this.cbenemy = new CheckBox();
-			this.tblongterm = new TextBox();
-			this.tbshortterm = new TextBox();
-			this.label57 = new Label();
-			this.label58 = new Label();
-			this.panel7 = new Panel();
-			this.toolTip1 = new ToolTip(this.components);
-			this.JpegPanel.SuspendLayout();
-			this.panel2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
-			this.xmlPanel.SuspendLayout();
-			this.objdPanel.SuspendLayout();
-			this.gbelements.SuspendLayout();
-			this.tabControl1.SuspendLayout();
-			this.tabPage4.SuspendLayout();
-			this.familytiePanel.SuspendLayout();
-			this.gbties.SuspendLayout();
-			this.tabPage1.SuspendLayout();
-			this.famiPanel.SuspendLayout();
-			this.gbCastaway.SuspendLayout();
-			this.groupBox4.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
-			this.tabPage3.SuspendLayout();
-			this.realPanel.SuspendLayout();
-			this.gbrelation.SuspendLayout();
-			this.SuspendLayout();
+			JpegPanel = new Panel();
+			panel2 = new Panel();
+			btPicExport = new Button();
+			pb = new PictureBox();
+			xmlPanel = new Panel();
+			rtb = new RichTextBox();
+			panel3 = new Panel();
+			objdPanel = new Panel();
+			cbupdate = new CheckBox();
+			label63 = new Label();
+			tbproxguid = new TextBox();
+			label97 = new Label();
+			tborgguid = new TextBox();
+			lbtypename = new Label();
+			gbelements = new GroupBox();
+			pnelements = new Panel();
+			tblottype = new TextBox();
+			label65 = new Label();
+			tbsimname = new TextBox();
+			label9 = new Label();
+			tbsimid = new TextBox();
+			label8 = new Label();
+			panel6 = new Panel();
+			tabControl1 = new TabControl();
+			tabPage4 = new TabPage();
+			familytiePanel = new Panel();
+			gbties = new GroupBox();
+			btnewtie = new Button();
+			cballtieablesims = new ComboBox();
+			cbtietype = new ComboBox();
+			lbties = new ListBox();
+			btdeletetie = new Button();
+			btaddtie = new Button();
+			llcommitties = new LinkLabel();
+			cbtiesims = new ComboBox();
+			label64 = new Label();
+			panel8 = new Panel();
+			tabPage1 = new TabPage();
+			famiPanel = new Panel();
+			tbbmoney = new TextBox();
+			label16 = new Label();
+			tbblot = new TextBox();
+			label14 = new Label();
+			gbCastaway = new GroupBox();
+			tbcaunk = new TextBox();
+			label13 = new Label();
+			tbcares = new TextBox();
+			label11 = new Label();
+			tbcafood1 = new TextBox();
+			label10 = new Label();
+			tbvac = new TextBox();
+			label7 = new Label();
+			tbsubhood = new TextBox();
+			label89 = new Label();
+			groupBox4 = new GroupBox();
+			cbcomputer = new CheckBox();
+			cblot = new CheckBox();
+			cbbaby = new CheckBox();
+			cbphone = new CheckBox();
+			tbflag = new TextBox();
+			tbalbum = new TextBox();
+			label93 = new Label();
+			tblotinst = new TextBox();
+			llFamiDeleteSim = new Button();
+			llFamiAddSim = new Button();
+			btOpenHistory = new Button();
+			pbImage = new PictureBox();
+			cbsims = new ComboBox();
+			lbmembers = new ListBox();
+			tbname = new TextBox();
+			label6 = new Label();
+			tbfamily = new TextBox();
+			tbmoney = new TextBox();
+			label5 = new Label();
+			lbnotiss = new Label();
+			label4 = new Label();
+			label3 = new Label();
+			panel4 = new Panel();
+			label15 = new Label();
+			tabPage3 = new TabPage();
+			realPanel = new Panel();
+			label91 = new Label();
+			cbfamtype = new ComboBox();
+			gbrelation = new GroupBox();
+			cbBFF = new CheckBox();
+			cbsecret = new CheckBox();
+			cbplatonic = new CheckBox();
+			cbbest = new CheckBox();
+			cbfamily = new CheckBox();
+			cbmarried = new CheckBox();
+			cbengaged = new CheckBox();
+			cbsteady = new CheckBox();
+			cblove = new CheckBox();
+			cbcrush = new CheckBox();
+			cbbuddie = new CheckBox();
+			cbfriend = new CheckBox();
+			cbenemy = new CheckBox();
+			tblongterm = new TextBox();
+			tbshortterm = new TextBox();
+			label57 = new Label();
+			label58 = new Label();
+			panel7 = new Panel();
+			toolTip1 = new ToolTip(components);
+			JpegPanel.SuspendLayout();
+			panel2.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(pb)).BeginInit();
+			xmlPanel.SuspendLayout();
+			objdPanel.SuspendLayout();
+			gbelements.SuspendLayout();
+			tabControl1.SuspendLayout();
+			tabPage4.SuspendLayout();
+			familytiePanel.SuspendLayout();
+			gbties.SuspendLayout();
+			tabPage1.SuspendLayout();
+			famiPanel.SuspendLayout();
+			gbCastaway.SuspendLayout();
+			groupBox4.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(pbImage)).BeginInit();
+			tabPage3.SuspendLayout();
+			realPanel.SuspendLayout();
+			gbrelation.SuspendLayout();
+			SuspendLayout();
 			//
 			// JpegPanel
 			//
-			this.JpegPanel.BackColor = System.Drawing.Color.Transparent;
-			this.JpegPanel.Controls.Add(this.panel2);
-			this.JpegPanel.Controls.Add(this.pb);
+			JpegPanel.BackColor = System.Drawing.Color.Transparent;
+			JpegPanel.Controls.Add(panel2);
+			JpegPanel.Controls.Add(pb);
 			//this.JpegPanel.EndColour = System.Drawing.SystemColors.Control;
-			resources.ApplyResources(this.JpegPanel, "JpegPanel");
+			resources.ApplyResources(JpegPanel, "JpegPanel");
 			//this.JpegPanel.MiddleColour = System.Drawing.SystemColors.Control;
-			this.JpegPanel.Name = "JpegPanel";
+			JpegPanel.Name = "JpegPanel";
 			//this.JpegPanel.StartColour = System.Drawing.SystemColors.Control;
 			//
 			// panel2
 			//
-			resources.ApplyResources(this.panel2, "panel2");
-			this.panel2.Controls.Add(this.btPicExport);
-			this.panel2.Name = "panel2";
+			resources.ApplyResources(panel2, "panel2");
+			panel2.Controls.Add(btPicExport);
+			panel2.Name = "panel2";
 			//
 			// btPicExport
 			//
-			resources.ApplyResources(this.btPicExport, "btPicExport");
-			this.btPicExport.BackColor = System.Drawing.SystemColors.Control;
-			this.btPicExport.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.btPicExport.Name = "btPicExport";
-			this.btPicExport.UseVisualStyleBackColor = false;
-			this.btPicExport.Click += new EventHandler(this.btPicExport_Click);
+			resources.ApplyResources(btPicExport, "btPicExport");
+			btPicExport.BackColor = System.Drawing.SystemColors.Control;
+			btPicExport.ForeColor = System.Drawing.SystemColors.ControlText;
+			btPicExport.Name = "btPicExport";
+			btPicExport.UseVisualStyleBackColor = false;
+			btPicExport.Click += new EventHandler(btPicExport_Click);
 			//
 			// pb
 			//
-			resources.ApplyResources(this.pb, "pb");
-			this.pb.BackColor = System.Drawing.Color.Transparent;
-			this.pb.Name = "pb";
-			this.pb.TabStop = false;
+			resources.ApplyResources(pb, "pb");
+			pb.BackColor = System.Drawing.Color.Transparent;
+			pb.Name = "pb";
+			pb.TabStop = false;
 			//
 			// xmlPanel
 			//
-			this.xmlPanel.Controls.Add(this.rtb);
-			this.xmlPanel.Controls.Add(this.panel3);
-			resources.ApplyResources(this.xmlPanel, "xmlPanel");
-			this.xmlPanel.Name = "xmlPanel";
+			xmlPanel.Controls.Add(rtb);
+			xmlPanel.Controls.Add(panel3);
+			resources.ApplyResources(xmlPanel, "xmlPanel");
+			xmlPanel.Name = "xmlPanel";
 			//
 			// rtb
 			//
-			resources.ApplyResources(this.rtb, "rtb");
-			this.rtb.Name = "rtb";
+			resources.ApplyResources(rtb, "rtb");
+			rtb.Name = "rtb";
 			//
 			// panel3
 			//
-			resources.ApplyResources(this.panel3, "panel3");
+			resources.ApplyResources(panel3, "panel3");
 			//this.panel3.CanCommit = true;
-			this.panel3.Name = "panel3";
+			panel3.Name = "panel3";
 			//this.panel3.OnCommit += new System.Windows.Forms.Panel.EventHandler(this.CommitXmlClick);
 			//
 			// objdPanel
 			//
-			this.objdPanel.Controls.Add(this.cbupdate);
-			this.objdPanel.Controls.Add(this.label63);
-			this.objdPanel.Controls.Add(this.tbproxguid);
-			this.objdPanel.Controls.Add(this.label97);
-			this.objdPanel.Controls.Add(this.tborgguid);
-			this.objdPanel.Controls.Add(this.lbtypename);
-			this.objdPanel.Controls.Add(this.gbelements);
-			this.objdPanel.Controls.Add(this.tblottype);
-			this.objdPanel.Controls.Add(this.label65);
-			this.objdPanel.Controls.Add(this.tbsimname);
-			this.objdPanel.Controls.Add(this.label9);
-			this.objdPanel.Controls.Add(this.tbsimid);
-			this.objdPanel.Controls.Add(this.label8);
-			this.objdPanel.Controls.Add(this.panel6);
-			resources.ApplyResources(this.objdPanel, "objdPanel");
-			this.objdPanel.Name = "objdPanel";
+			objdPanel.Controls.Add(cbupdate);
+			objdPanel.Controls.Add(label63);
+			objdPanel.Controls.Add(tbproxguid);
+			objdPanel.Controls.Add(label97);
+			objdPanel.Controls.Add(tborgguid);
+			objdPanel.Controls.Add(lbtypename);
+			objdPanel.Controls.Add(gbelements);
+			objdPanel.Controls.Add(tblottype);
+			objdPanel.Controls.Add(label65);
+			objdPanel.Controls.Add(tbsimname);
+			objdPanel.Controls.Add(label9);
+			objdPanel.Controls.Add(tbsimid);
+			objdPanel.Controls.Add(label8);
+			objdPanel.Controls.Add(panel6);
+			resources.ApplyResources(objdPanel, "objdPanel");
+			objdPanel.Name = "objdPanel";
 			//
 			// cbupdate
 			//
-			this.cbupdate.BackColor = System.Drawing.Color.Transparent;
-			this.cbupdate.Checked = true;
-			this.cbupdate.CheckState = CheckState.Checked;
-			resources.ApplyResources(this.cbupdate, "cbupdate");
-			this.cbupdate.Name = "cbupdate";
-			this.cbupdate.UseVisualStyleBackColor = false;
+			cbupdate.BackColor = System.Drawing.Color.Transparent;
+			cbupdate.Checked = true;
+			cbupdate.CheckState = CheckState.Checked;
+			resources.ApplyResources(cbupdate, "cbupdate");
+			cbupdate.Name = "cbupdate";
+			cbupdate.UseVisualStyleBackColor = false;
 			//
 			// label63
 			//
-			resources.ApplyResources(this.label63, "label63");
-			this.label63.BackColor = System.Drawing.Color.Transparent;
-			this.label63.Name = "label63";
+			resources.ApplyResources(label63, "label63");
+			label63.BackColor = System.Drawing.Color.Transparent;
+			label63.Name = "label63";
 			//
 			// tbproxguid
 			//
-			resources.ApplyResources(this.tbproxguid, "tbproxguid");
-			this.tbproxguid.Name = "tbproxguid";
-			this.toolTip1.SetToolTip(
-				this.tbproxguid,
+			resources.ApplyResources(tbproxguid, "tbproxguid");
+			tbproxguid.Name = "tbproxguid";
+			toolTip1.SetToolTip(
+				tbproxguid,
 				resources.GetString("tbproxguid.ToolTip")
 			);
 			//
 			// label97
 			//
-			resources.ApplyResources(this.label97, "label97");
-			this.label97.BackColor = System.Drawing.Color.Transparent;
-			this.label97.Name = "label97";
+			resources.ApplyResources(label97, "label97");
+			label97.BackColor = System.Drawing.Color.Transparent;
+			label97.Name = "label97";
 			//
 			// tborgguid
 			//
-			resources.ApplyResources(this.tborgguid, "tborgguid");
-			this.tborgguid.Name = "tborgguid";
-			this.toolTip1.SetToolTip(
-				this.tborgguid,
+			resources.ApplyResources(tborgguid, "tborgguid");
+			tborgguid.Name = "tborgguid";
+			toolTip1.SetToolTip(
+				tborgguid,
 				resources.GetString("tborgguid.ToolTip")
 			);
 			//
 			// lbtypename
 			//
-			resources.ApplyResources(this.lbtypename, "lbtypename");
-			this.lbtypename.BackColor = System.Drawing.Color.Transparent;
-			this.lbtypename.Name = "lbtypename";
+			resources.ApplyResources(lbtypename, "lbtypename");
+			lbtypename.BackColor = System.Drawing.Color.Transparent;
+			lbtypename.Name = "lbtypename";
 			//
 			// gbelements
 			//
-			resources.ApplyResources(this.gbelements, "gbelements");
-			this.gbelements.BackColor = System.Drawing.Color.Transparent;
-			this.gbelements.Controls.Add(this.pnelements);
-			this.gbelements.Name = "gbelements";
-			this.gbelements.TabStop = false;
+			resources.ApplyResources(gbelements, "gbelements");
+			gbelements.BackColor = System.Drawing.Color.Transparent;
+			gbelements.Controls.Add(pnelements);
+			gbelements.Name = "gbelements";
+			gbelements.TabStop = false;
 			//
 			// pnelements
 			//
-			resources.ApplyResources(this.pnelements, "pnelements");
-			this.pnelements.Name = "pnelements";
+			resources.ApplyResources(pnelements, "pnelements");
+			pnelements.Name = "pnelements";
 			//
 			// tblottype
 			//
-			resources.ApplyResources(this.tblottype, "tblottype");
-			this.tblottype.Name = "tblottype";
+			resources.ApplyResources(tblottype, "tblottype");
+			tblottype.Name = "tblottype";
 			//
 			// label65
 			//
-			resources.ApplyResources(this.label65, "label65");
-			this.label65.BackColor = System.Drawing.Color.Transparent;
-			this.label65.Name = "label65";
+			resources.ApplyResources(label65, "label65");
+			label65.BackColor = System.Drawing.Color.Transparent;
+			label65.Name = "label65";
 			//
 			// tbsimname
 			//
-			resources.ApplyResources(this.tbsimname, "tbsimname");
-			this.tbsimname.Name = "tbsimname";
+			resources.ApplyResources(tbsimname, "tbsimname");
+			tbsimname.Name = "tbsimname";
 			//
 			// label9
 			//
-			resources.ApplyResources(this.label9, "label9");
-			this.label9.BackColor = System.Drawing.Color.Transparent;
-			this.label9.Name = "label9";
+			resources.ApplyResources(label9, "label9");
+			label9.BackColor = System.Drawing.Color.Transparent;
+			label9.Name = "label9";
 			//
 			// tbsimid
 			//
-			resources.ApplyResources(this.tbsimid, "tbsimid");
-			this.tbsimid.Name = "tbsimid";
-			this.toolTip1.SetToolTip(
-				this.tbsimid,
+			resources.ApplyResources(tbsimid, "tbsimid");
+			tbsimid.Name = "tbsimid";
+			toolTip1.SetToolTip(
+				tbsimid,
 				resources.GetString("tbsimid.ToolTip")
 			);
 			//
 			// label8
 			//
-			resources.ApplyResources(this.label8, "label8");
-			this.label8.BackColor = System.Drawing.Color.Transparent;
-			this.label8.Name = "label8";
+			resources.ApplyResources(label8, "label8");
+			label8.BackColor = System.Drawing.Color.Transparent;
+			label8.Name = "label8";
 			//
 			// panel6
 			//
-			resources.ApplyResources(this.panel6, "panel6");
+			resources.ApplyResources(panel6, "panel6");
 			//this.panel6.CanCommit = true;
-			this.panel6.Name = "panel6";
+			panel6.Name = "panel6";
 			//this.panel6.OnCommit += new System.Windows.Forms.Panel.EventHandler(this.CommitObjdClicked);
 			//
 			// tabControl1
 			//
-			this.tabControl1.Controls.Add(this.tabPage4);
-			this.tabControl1.Controls.Add(this.tabPage1);
-			this.tabControl1.Controls.Add(this.tabPage3);
-			resources.ApplyResources(this.tabControl1, "tabControl1");
-			this.tabControl1.Name = "tabControl1";
-			this.tabControl1.SelectedIndex = 0;
+			tabControl1.Controls.Add(tabPage4);
+			tabControl1.Controls.Add(tabPage1);
+			tabControl1.Controls.Add(tabPage3);
+			resources.ApplyResources(tabControl1, "tabControl1");
+			tabControl1.Name = "tabControl1";
+			tabControl1.SelectedIndex = 0;
 			//
 			// tabPage4
 			//
-			this.tabPage4.Controls.Add(this.familytiePanel);
-			resources.ApplyResources(this.tabPage4, "tabPage4");
-			this.tabPage4.Name = "tabPage4";
+			tabPage4.Controls.Add(familytiePanel);
+			resources.ApplyResources(tabPage4, "tabPage4");
+			tabPage4.Name = "tabPage4";
 			//
 			// familytiePanel
 			//
-			resources.ApplyResources(this.familytiePanel, "familytiePanel");
-			this.familytiePanel.Controls.Add(this.gbties);
-			this.familytiePanel.Controls.Add(this.cbtiesims);
-			this.familytiePanel.Controls.Add(this.label64);
-			this.familytiePanel.Controls.Add(this.panel8);
-			this.familytiePanel.Name = "familytiePanel";
+			resources.ApplyResources(familytiePanel, "familytiePanel");
+			familytiePanel.Controls.Add(gbties);
+			familytiePanel.Controls.Add(cbtiesims);
+			familytiePanel.Controls.Add(label64);
+			familytiePanel.Controls.Add(panel8);
+			familytiePanel.Name = "familytiePanel";
 			//
 			// gbties
 			//
-			resources.ApplyResources(this.gbties, "gbties");
-			this.gbties.Controls.Add(this.btnewtie);
-			this.gbties.Controls.Add(this.cballtieablesims);
-			this.gbties.Controls.Add(this.cbtietype);
-			this.gbties.Controls.Add(this.lbties);
-			this.gbties.Controls.Add(this.btdeletetie);
-			this.gbties.Controls.Add(this.btaddtie);
-			this.gbties.Controls.Add(this.llcommitties);
-			this.gbties.FlatStyle = FlatStyle.System;
-			this.gbties.Name = "gbties";
-			this.gbties.TabStop = false;
+			resources.ApplyResources(gbties, "gbties");
+			gbties.Controls.Add(btnewtie);
+			gbties.Controls.Add(cballtieablesims);
+			gbties.Controls.Add(cbtietype);
+			gbties.Controls.Add(lbties);
+			gbties.Controls.Add(btdeletetie);
+			gbties.Controls.Add(btaddtie);
+			gbties.Controls.Add(llcommitties);
+			gbties.FlatStyle = FlatStyle.System;
+			gbties.Name = "gbties";
+			gbties.TabStop = false;
 			//
 			// btnewtie
 			//
-			resources.ApplyResources(this.btnewtie, "btnewtie");
-			this.btnewtie.Name = "btnewtie";
-			this.btnewtie.Click += new EventHandler(this.AddSimToTiesClick);
+			resources.ApplyResources(btnewtie, "btnewtie");
+			btnewtie.Name = "btnewtie";
+			btnewtie.Click += new EventHandler(AddSimToTiesClick);
 			//
 			// cballtieablesims
 			//
-			resources.ApplyResources(this.cballtieablesims, "cballtieablesims");
-			this.cballtieablesims.DropDownStyle =
+			resources.ApplyResources(cballtieablesims, "cballtieablesims");
+			cballtieablesims.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cballtieablesims.Name = "cballtieablesims";
-			this.cballtieablesims.SelectedIndexChanged += new EventHandler(
-				this.AllTieableSimsIndexChanged
+			cballtieablesims.Name = "cballtieablesims";
+			cballtieablesims.SelectedIndexChanged += new EventHandler(
+				AllTieableSimsIndexChanged
 			);
 			//
 			// cbtietype
 			//
-			this.cbtietype.DropDownStyle =
+			cbtietype.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			resources.ApplyResources(this.cbtietype, "cbtietype");
-			this.cbtietype.Name = "cbtietype";
+			resources.ApplyResources(cbtietype, "cbtietype");
+			cbtietype.Name = "cbtietype";
 			//
 			// lbties
 			//
-			resources.ApplyResources(this.lbties, "lbties");
-			this.lbties.Name = "lbties";
-			this.lbties.SelectedIndexChanged += new EventHandler(
-				this.TieIndexChanged
+			resources.ApplyResources(lbties, "lbties");
+			lbties.Name = "lbties";
+			lbties.SelectedIndexChanged += new EventHandler(
+				TieIndexChanged
 			);
 			//
 			// btdeletetie
 			//
-			resources.ApplyResources(this.btdeletetie, "btdeletetie");
-			this.btdeletetie.Name = "btdeletetie";
-			this.btdeletetie.Click += new EventHandler(this.DeleteTieClick);
+			resources.ApplyResources(btdeletetie, "btdeletetie");
+			btdeletetie.Name = "btdeletetie";
+			btdeletetie.Click += new EventHandler(DeleteTieClick);
 			//
 			// btaddtie
 			//
-			resources.ApplyResources(this.btaddtie, "btaddtie");
-			this.btaddtie.Name = "btaddtie";
-			this.btaddtie.Click += new EventHandler(this.AddTieClick);
+			resources.ApplyResources(btaddtie, "btaddtie");
+			btaddtie.Name = "btaddtie";
+			btaddtie.Click += new EventHandler(AddTieClick);
 			//
 			// llcommitties
 			//
-			resources.ApplyResources(this.llcommitties, "llcommitties");
-			this.llcommitties.Name = "llcommitties";
-			this.llcommitties.TabStop = true;
-			this.llcommitties.UseCompatibleTextRendering = true;
-			this.llcommitties.LinkClicked +=
+			resources.ApplyResources(llcommitties, "llcommitties");
+			llcommitties.Name = "llcommitties";
+			llcommitties.TabStop = true;
+			llcommitties.UseCompatibleTextRendering = true;
+			llcommitties.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.CommitSimTieClicked
+					CommitSimTieClicked
 				);
 			//
 			// cbtiesims
 			//
-			resources.ApplyResources(this.cbtiesims, "cbtiesims");
-			this.cbtiesims.DropDownStyle =
+			resources.ApplyResources(cbtiesims, "cbtiesims");
+			cbtiesims.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbtiesims.Name = "cbtiesims";
-			this.cbtiesims.SelectedIndexChanged += new EventHandler(
-				this.FamilyTieSimIndexChanged
+			cbtiesims.Name = "cbtiesims";
+			cbtiesims.SelectedIndexChanged += new EventHandler(
+				FamilyTieSimIndexChanged
 			);
 			//
 			// label64
 			//
-			resources.ApplyResources(this.label64, "label64");
-			this.label64.Name = "label64";
+			resources.ApplyResources(label64, "label64");
+			label64.Name = "label64";
 			//
 			// panel8
 			//
-			resources.ApplyResources(this.panel8, "panel8");
+			resources.ApplyResources(panel8, "panel8");
 			//this.panel8.CanCommit = true;
-			this.panel8.Name = "panel8";
+			panel8.Name = "panel8";
 			//this.panel8.OnCommit += new System.Windows.Forms.Panel.EventHandler(this.CommitTieClick);
 			//
 			// tabPage1
 			//
-			this.tabPage1.Controls.Add(this.famiPanel);
-			resources.ApplyResources(this.tabPage1, "tabPage1");
-			this.tabPage1.Name = "tabPage1";
+			tabPage1.Controls.Add(famiPanel);
+			resources.ApplyResources(tabPage1, "tabPage1");
+			tabPage1.Name = "tabPage1";
 			//
 			// famiPanel
 			//
-			resources.ApplyResources(this.famiPanel, "famiPanel");
-			this.famiPanel.BackColor = System.Drawing.Color.Transparent;
+			resources.ApplyResources(famiPanel, "famiPanel");
+			famiPanel.BackColor = System.Drawing.Color.Transparent;
 			//this.famiPanel.BackgroundImageLocation = new System.Drawing.Point(744, 24);
 			//this.famiPanel.BackgroundImageZoomToFit = true;
-			this.famiPanel.Controls.Add(this.tbbmoney);
-			this.famiPanel.Controls.Add(this.label16);
-			this.famiPanel.Controls.Add(this.tbblot);
-			this.famiPanel.Controls.Add(this.label14);
-			this.famiPanel.Controls.Add(this.gbCastaway);
-			this.famiPanel.Controls.Add(this.tbvac);
-			this.famiPanel.Controls.Add(this.label7);
-			this.famiPanel.Controls.Add(this.tbsubhood);
-			this.famiPanel.Controls.Add(this.label89);
-			this.famiPanel.Controls.Add(this.groupBox4);
-			this.famiPanel.Controls.Add(this.tbalbum);
-			this.famiPanel.Controls.Add(this.label93);
-			this.famiPanel.Controls.Add(this.tblotinst);
-			this.famiPanel.Controls.Add(this.llFamiDeleteSim);
-			this.famiPanel.Controls.Add(this.llFamiAddSim);
-			this.famiPanel.Controls.Add(this.btOpenHistory);
-			this.famiPanel.Controls.Add(this.pbImage);
-			this.famiPanel.Controls.Add(this.cbsims);
-			this.famiPanel.Controls.Add(this.lbmembers);
-			this.famiPanel.Controls.Add(this.tbname);
-			this.famiPanel.Controls.Add(this.label6);
-			this.famiPanel.Controls.Add(this.tbfamily);
-			this.famiPanel.Controls.Add(this.tbmoney);
-			this.famiPanel.Controls.Add(this.lbnotiss);
-			this.famiPanel.Controls.Add(this.label5);
-			this.famiPanel.Controls.Add(this.label4);
-			this.famiPanel.Controls.Add(this.label3);
-			this.famiPanel.Controls.Add(this.panel4);
-			this.famiPanel.Controls.Add(this.label15);
+			famiPanel.Controls.Add(tbbmoney);
+			famiPanel.Controls.Add(label16);
+			famiPanel.Controls.Add(tbblot);
+			famiPanel.Controls.Add(label14);
+			famiPanel.Controls.Add(gbCastaway);
+			famiPanel.Controls.Add(tbvac);
+			famiPanel.Controls.Add(label7);
+			famiPanel.Controls.Add(tbsubhood);
+			famiPanel.Controls.Add(label89);
+			famiPanel.Controls.Add(groupBox4);
+			famiPanel.Controls.Add(tbalbum);
+			famiPanel.Controls.Add(label93);
+			famiPanel.Controls.Add(tblotinst);
+			famiPanel.Controls.Add(llFamiDeleteSim);
+			famiPanel.Controls.Add(llFamiAddSim);
+			famiPanel.Controls.Add(btOpenHistory);
+			famiPanel.Controls.Add(pbImage);
+			famiPanel.Controls.Add(cbsims);
+			famiPanel.Controls.Add(lbmembers);
+			famiPanel.Controls.Add(tbname);
+			famiPanel.Controls.Add(label6);
+			famiPanel.Controls.Add(tbfamily);
+			famiPanel.Controls.Add(tbmoney);
+			famiPanel.Controls.Add(lbnotiss);
+			famiPanel.Controls.Add(label5);
+			famiPanel.Controls.Add(label4);
+			famiPanel.Controls.Add(label3);
+			famiPanel.Controls.Add(panel4);
+			famiPanel.Controls.Add(label15);
 			//this.famiPanel.EndColour = System.Drawing.SystemColors.Control;
 			//this.famiPanel.MiddleColour = System.Drawing.SystemColors.Control;
-			this.famiPanel.Name = "famiPanel";
+			famiPanel.Name = "famiPanel";
 			//this.famiPanel.StartColour = System.Drawing.SystemColors.Control;
 			//
 			// tbbmoney
 			//
-			resources.ApplyResources(this.tbbmoney, "tbbmoney");
-			this.tbbmoney.Name = "tbbmoney";
-			this.tbbmoney.TextChanged += new EventHandler(this.ChangedBMoney);
+			resources.ApplyResources(tbbmoney, "tbbmoney");
+			tbbmoney.Name = "tbbmoney";
+			tbbmoney.TextChanged += new EventHandler(ChangedBMoney);
 			//
 			// label16
 			//
-			resources.ApplyResources(this.label16, "label16");
-			this.label16.BackColor = System.Drawing.Color.Transparent;
-			this.label16.Name = "label16";
+			resources.ApplyResources(label16, "label16");
+			label16.BackColor = System.Drawing.Color.Transparent;
+			label16.Name = "label16";
 			//
 			// tbblot
 			//
-			resources.ApplyResources(this.tbblot, "tbblot");
-			this.tbblot.Name = "tbblot";
+			resources.ApplyResources(tbblot, "tbblot");
+			tbblot.Name = "tbblot";
 			//
 			// label14
 			//
-			resources.ApplyResources(this.label14, "label14");
-			this.label14.BackColor = System.Drawing.Color.Transparent;
-			this.label14.Name = "label14";
+			resources.ApplyResources(label14, "label14");
+			label14.BackColor = System.Drawing.Color.Transparent;
+			label14.Name = "label14";
 			//
 			// gbCastaway
 			//
-			resources.ApplyResources(this.gbCastaway, "gbCastaway");
-			this.gbCastaway.BackColor = System.Drawing.Color.Transparent;
-			this.gbCastaway.Controls.Add(this.tbcaunk);
-			this.gbCastaway.Controls.Add(this.label13);
-			this.gbCastaway.Controls.Add(this.tbcares);
-			this.gbCastaway.Controls.Add(this.label11);
-			this.gbCastaway.Controls.Add(this.tbcafood1);
-			this.gbCastaway.Controls.Add(this.label10);
-			this.gbCastaway.Name = "gbCastaway";
-			this.gbCastaway.TabStop = false;
+			resources.ApplyResources(gbCastaway, "gbCastaway");
+			gbCastaway.BackColor = System.Drawing.Color.Transparent;
+			gbCastaway.Controls.Add(tbcaunk);
+			gbCastaway.Controls.Add(label13);
+			gbCastaway.Controls.Add(tbcares);
+			gbCastaway.Controls.Add(label11);
+			gbCastaway.Controls.Add(tbcafood1);
+			gbCastaway.Controls.Add(label10);
+			gbCastaway.Name = "gbCastaway";
+			gbCastaway.TabStop = false;
 			//
 			// tbcaunk
 			//
-			resources.ApplyResources(this.tbcaunk, "tbcaunk");
-			this.tbcaunk.Name = "tbcaunk";
-			this.tbcaunk.TextChanged += new EventHandler(this.ChangedBMoney);
+			resources.ApplyResources(tbcaunk, "tbcaunk");
+			tbcaunk.Name = "tbcaunk";
+			tbcaunk.TextChanged += new EventHandler(ChangedBMoney);
 			//
 			// label13
 			//
-			resources.ApplyResources(this.label13, "label13");
-			this.label13.Name = "label13";
+			resources.ApplyResources(label13, "label13");
+			label13.Name = "label13";
 			//
 			// tbcares
 			//
-			resources.ApplyResources(this.tbcares, "tbcares");
-			this.tbcares.Name = "tbcares";
+			resources.ApplyResources(tbcares, "tbcares");
+			tbcares.Name = "tbcares";
 			//
 			// label11
 			//
-			resources.ApplyResources(this.label11, "label11");
-			this.label11.Name = "label11";
+			resources.ApplyResources(label11, "label11");
+			label11.Name = "label11";
 			//
 			// tbcafood1
 			//
-			resources.ApplyResources(this.tbcafood1, "tbcafood1");
-			this.tbcafood1.Name = "tbcafood1";
-			this.tbcafood1.TextChanged += new EventHandler(this.ChangedMoney);
+			resources.ApplyResources(tbcafood1, "tbcafood1");
+			tbcafood1.Name = "tbcafood1";
+			tbcafood1.TextChanged += new EventHandler(ChangedMoney);
 			//
 			// label10
 			//
-			resources.ApplyResources(this.label10, "label10");
-			this.label10.Name = "label10";
+			resources.ApplyResources(label10, "label10");
+			label10.Name = "label10";
 			//
 			// tbvac
 			//
-			resources.ApplyResources(this.tbvac, "tbvac");
-			this.tbvac.Name = "tbvac";
+			resources.ApplyResources(tbvac, "tbvac");
+			tbvac.Name = "tbvac";
 			//
 			// label7
 			//
-			resources.ApplyResources(this.label7, "label7");
-			this.label7.BackColor = System.Drawing.Color.Transparent;
-			this.label7.Name = "label7";
+			resources.ApplyResources(label7, "label7");
+			label7.BackColor = System.Drawing.Color.Transparent;
+			label7.Name = "label7";
 			//
 			// tbsubhood
 			//
-			resources.ApplyResources(this.tbsubhood, "tbsubhood");
-			this.tbsubhood.Name = "tbsubhood";
+			resources.ApplyResources(tbsubhood, "tbsubhood");
+			tbsubhood.Name = "tbsubhood";
 			//
 			// label89
 			//
-			resources.ApplyResources(this.label89, "label89");
-			this.label89.BackColor = System.Drawing.Color.Transparent;
-			this.label89.Name = "label89";
+			resources.ApplyResources(label89, "label89");
+			label89.BackColor = System.Drawing.Color.Transparent;
+			label89.Name = "label89";
 			//
 			// groupBox4
 			//
-			resources.ApplyResources(this.groupBox4, "groupBox4");
-			this.groupBox4.BackColor = System.Drawing.Color.Transparent;
-			this.groupBox4.Controls.Add(this.cbcomputer);
-			this.groupBox4.Controls.Add(this.cblot);
-			this.groupBox4.Controls.Add(this.cbbaby);
-			this.groupBox4.Controls.Add(this.cbphone);
-			this.groupBox4.Controls.Add(this.tbflag);
-			this.groupBox4.Name = "groupBox4";
-			this.groupBox4.TabStop = false;
+			resources.ApplyResources(groupBox4, "groupBox4");
+			groupBox4.BackColor = System.Drawing.Color.Transparent;
+			groupBox4.Controls.Add(cbcomputer);
+			groupBox4.Controls.Add(cblot);
+			groupBox4.Controls.Add(cbbaby);
+			groupBox4.Controls.Add(cbphone);
+			groupBox4.Controls.Add(tbflag);
+			groupBox4.Name = "groupBox4";
+			groupBox4.TabStop = false;
 			//
 			// cbcomputer
 			//
-			resources.ApplyResources(this.cbcomputer, "cbcomputer");
-			this.cbcomputer.Name = "cbcomputer";
-			this.cbcomputer.CheckedChanged += new EventHandler(this.ChangeFlags);
+			resources.ApplyResources(cbcomputer, "cbcomputer");
+			cbcomputer.Name = "cbcomputer";
+			cbcomputer.CheckedChanged += new EventHandler(ChangeFlags);
 			//
 			// cblot
 			//
-			resources.ApplyResources(this.cblot, "cblot");
-			this.cblot.Name = "cblot";
-			this.cblot.CheckedChanged += new EventHandler(this.ChangeFlags);
+			resources.ApplyResources(cblot, "cblot");
+			cblot.Name = "cblot";
+			cblot.CheckedChanged += new EventHandler(ChangeFlags);
 			//
 			// cbbaby
 			//
-			resources.ApplyResources(this.cbbaby, "cbbaby");
-			this.cbbaby.Name = "cbbaby";
-			this.cbbaby.CheckedChanged += new EventHandler(this.ChangeFlags);
+			resources.ApplyResources(cbbaby, "cbbaby");
+			cbbaby.Name = "cbbaby";
+			cbbaby.CheckedChanged += new EventHandler(ChangeFlags);
 			//
 			// cbphone
 			//
-			resources.ApplyResources(this.cbphone, "cbphone");
-			this.cbphone.Name = "cbphone";
-			this.cbphone.CheckedChanged += new EventHandler(this.ChangeFlags);
+			resources.ApplyResources(cbphone, "cbphone");
+			cbphone.Name = "cbphone";
+			cbphone.CheckedChanged += new EventHandler(ChangeFlags);
 			//
 			// tbflag
 			//
-			resources.ApplyResources(this.tbflag, "tbflag");
-			this.tbflag.Name = "tbflag";
-			this.tbflag.TextChanged += new EventHandler(this.FlagChanged);
+			resources.ApplyResources(tbflag, "tbflag");
+			tbflag.Name = "tbflag";
+			tbflag.TextChanged += new EventHandler(FlagChanged);
 			//
 			// tbalbum
 			//
-			resources.ApplyResources(this.tbalbum, "tbalbum");
-			this.tbalbum.Name = "tbalbum";
+			resources.ApplyResources(tbalbum, "tbalbum");
+			tbalbum.Name = "tbalbum";
 			//
 			// label93
 			//
-			resources.ApplyResources(this.label93, "label93");
-			this.label93.BackColor = System.Drawing.Color.Transparent;
-			this.label93.Name = "label93";
+			resources.ApplyResources(label93, "label93");
+			label93.BackColor = System.Drawing.Color.Transparent;
+			label93.Name = "label93";
 			//
 			// tblotinst
 			//
-			resources.ApplyResources(this.tblotinst, "tblotinst");
-			this.tblotinst.Name = "tblotinst";
+			resources.ApplyResources(tblotinst, "tblotinst");
+			tblotinst.Name = "tblotinst";
 			//
 			// llFamiDeleteSim
 			//
-			resources.ApplyResources(this.llFamiDeleteSim, "llFamiDeleteSim");
-			this.llFamiDeleteSim.Name = "llFamiDeleteSim";
-			this.llFamiDeleteSim.Click += new EventHandler(
-				this.FamiDeleteSimClick
+			resources.ApplyResources(llFamiDeleteSim, "llFamiDeleteSim");
+			llFamiDeleteSim.Name = "llFamiDeleteSim";
+			llFamiDeleteSim.Click += new EventHandler(
+				FamiDeleteSimClick
 			);
 			//
 			// llFamiAddSim
 			//
-			resources.ApplyResources(this.llFamiAddSim, "llFamiAddSim");
-			this.llFamiAddSim.Name = "llFamiAddSim";
-			this.llFamiAddSim.Click += new EventHandler(this.FamiSimAddClick);
+			resources.ApplyResources(llFamiAddSim, "llFamiAddSim");
+			llFamiAddSim.Name = "llFamiAddSim";
+			llFamiAddSim.Click += new EventHandler(FamiSimAddClick);
 			//
 			// btOpenHistory
 			//
-			resources.ApplyResources(this.btOpenHistory, "btOpenHistory");
-			this.btOpenHistory.Name = "btOpenHistory";
-			this.btOpenHistory.Click += new EventHandler(this.FamiOpenHistory);
+			resources.ApplyResources(btOpenHistory, "btOpenHistory");
+			btOpenHistory.Name = "btOpenHistory";
+			btOpenHistory.Click += new EventHandler(FamiOpenHistory);
 			//
 			// pbImage
 			//
-			this.pbImage.BackColor = System.Drawing.Color.Transparent;
-			resources.ApplyResources(this.pbImage, "pbImage");
-			this.pbImage.Name = "pbImage";
-			this.pbImage.TabStop = false;
+			pbImage.BackColor = System.Drawing.Color.Transparent;
+			resources.ApplyResources(pbImage, "pbImage");
+			pbImage.Name = "pbImage";
+			pbImage.TabStop = false;
 			//
 			// cbsims
 			//
-			this.cbsims.DropDownStyle = ComboBoxStyle.DropDownList;
-			resources.ApplyResources(this.cbsims, "cbsims");
-			this.cbsims.Name = "cbsims";
-			this.cbsims.SelectedIndexChanged += new EventHandler(
-				this.SimSelectionChange
+			cbsims.DropDownStyle = ComboBoxStyle.DropDownList;
+			resources.ApplyResources(cbsims, "cbsims");
+			cbsims.Name = "cbsims";
+			cbsims.SelectedIndexChanged += new EventHandler(
+				SimSelectionChange
 			);
 			//
 			// lbmembers
 			//
-			resources.ApplyResources(this.lbmembers, "lbmembers");
-			this.lbmembers.Name = "lbmembers";
-			this.lbmembers.SelectedIndexChanged += new EventHandler(
-				this.FamiMemberSelectionClick
+			resources.ApplyResources(lbmembers, "lbmembers");
+			lbmembers.Name = "lbmembers";
+			lbmembers.SelectedIndexChanged += new EventHandler(
+				FamiMemberSelectionClick
 			);
-			this.lbmembers.DoubleClick += new EventHandler(
-				this.lbmembers_DoubleClick
+			lbmembers.DoubleClick += new EventHandler(
+				lbmembers_DoubleClick
 			);
 			//
 			// tbname
 			//
-			resources.ApplyResources(this.tbname, "tbname");
-			this.tbname.Name = "tbname";
+			resources.ApplyResources(tbname, "tbname");
+			tbname.Name = "tbname";
 			//
 			// label6
 			//
-			resources.ApplyResources(this.label6, "label6");
-			this.label6.BackColor = System.Drawing.Color.Transparent;
-			this.label6.Name = "label6";
+			resources.ApplyResources(label6, "label6");
+			label6.BackColor = System.Drawing.Color.Transparent;
+			label6.Name = "label6";
 			//
 			// tbfamily
 			//
-			resources.ApplyResources(this.tbfamily, "tbfamily");
-			this.tbfamily.Name = "tbfamily";
+			resources.ApplyResources(tbfamily, "tbfamily");
+			tbfamily.Name = "tbfamily";
 			//
 			// tbmoney
 			//
-			resources.ApplyResources(this.tbmoney, "tbmoney");
-			this.tbmoney.Name = "tbmoney";
-			this.tbmoney.TextChanged += new EventHandler(this.ChangedMoney);
+			resources.ApplyResources(tbmoney, "tbmoney");
+			tbmoney.Name = "tbmoney";
+			tbmoney.TextChanged += new EventHandler(ChangedMoney);
 			//
 			// label5
 			//
-			resources.ApplyResources(this.label5, "label5");
-			this.label5.BackColor = System.Drawing.Color.Transparent;
-			this.label5.Name = "label5";
+			resources.ApplyResources(label5, "label5");
+			label5.BackColor = System.Drawing.Color.Transparent;
+			label5.Name = "label5";
 			//
 			// lbnotiss
 			//
-			resources.ApplyResources(this.lbnotiss, "lbnotiss");
-			this.lbnotiss.BackColor = System.Drawing.Color.Transparent;
-			this.lbnotiss.Name = "lbnotiss";
-			this.lbnotiss.ForeColor = System.Drawing.Color.Gray;
+			resources.ApplyResources(lbnotiss, "lbnotiss");
+			lbnotiss.BackColor = System.Drawing.Color.Transparent;
+			lbnotiss.Name = "lbnotiss";
+			lbnotiss.ForeColor = System.Drawing.Color.Gray;
 			//
 			// label4
 			//
-			resources.ApplyResources(this.label4, "label4");
-			this.label4.BackColor = System.Drawing.Color.Transparent;
-			this.label4.Name = "label4";
+			resources.ApplyResources(label4, "label4");
+			label4.BackColor = System.Drawing.Color.Transparent;
+			label4.Name = "label4";
 			//
 			// label3
 			//
-			resources.ApplyResources(this.label3, "label3");
-			this.label3.BackColor = System.Drawing.Color.Transparent;
-			this.label3.Name = "label3";
+			resources.ApplyResources(label3, "label3");
+			label3.BackColor = System.Drawing.Color.Transparent;
+			label3.Name = "label3";
 			//
 			// panel4
 			//
-			resources.ApplyResources(this.panel4, "panel4");
+			resources.ApplyResources(panel4, "panel4");
 			//this.panel4.CanCommit = true;
-			this.panel4.Name = "panel4";
+			panel4.Name = "panel4";
 			//this.panel4.OnCommit += new System.Windows.Forms.Panel.EventHandler(this.CommitFamiClick);
 			//
 			// label15
 			//
-			resources.ApplyResources(this.label15, "label15");
-			this.label15.BackColor = System.Drawing.Color.Transparent;
-			this.label15.Name = "label15";
-			this.label15.Click += new EventHandler(this.label15_Click);
+			resources.ApplyResources(label15, "label15");
+			label15.BackColor = System.Drawing.Color.Transparent;
+			label15.Name = "label15";
+			label15.Click += new EventHandler(label15_Click);
 			//
 			// tabPage3
 			//
-			this.tabPage3.Controls.Add(this.objdPanel);
-			this.tabPage3.Controls.Add(this.realPanel);
-			this.tabPage3.Controls.Add(this.JpegPanel);
-			this.tabPage3.Controls.Add(this.xmlPanel);
-			resources.ApplyResources(this.tabPage3, "tabPage3");
-			this.tabPage3.Name = "tabPage3";
+			tabPage3.Controls.Add(objdPanel);
+			tabPage3.Controls.Add(realPanel);
+			tabPage3.Controls.Add(JpegPanel);
+			tabPage3.Controls.Add(xmlPanel);
+			resources.ApplyResources(tabPage3, "tabPage3");
+			tabPage3.Name = "tabPage3";
 			//
 			// realPanel
 			//
-			this.realPanel.Controls.Add(this.label91);
-			this.realPanel.Controls.Add(this.cbfamtype);
-			this.realPanel.Controls.Add(this.gbrelation);
-			this.realPanel.Controls.Add(this.tblongterm);
-			this.realPanel.Controls.Add(this.tbshortterm);
-			this.realPanel.Controls.Add(this.label57);
-			this.realPanel.Controls.Add(this.label58);
-			this.realPanel.Controls.Add(this.panel7);
-			resources.ApplyResources(this.realPanel, "realPanel");
-			this.realPanel.Name = "realPanel";
+			realPanel.Controls.Add(label91);
+			realPanel.Controls.Add(cbfamtype);
+			realPanel.Controls.Add(gbrelation);
+			realPanel.Controls.Add(tblongterm);
+			realPanel.Controls.Add(tbshortterm);
+			realPanel.Controls.Add(label57);
+			realPanel.Controls.Add(label58);
+			realPanel.Controls.Add(panel7);
+			resources.ApplyResources(realPanel, "realPanel");
+			realPanel.Name = "realPanel";
 			//
 			// label91
 			//
-			resources.ApplyResources(this.label91, "label91");
-			this.label91.BackColor = System.Drawing.Color.Transparent;
-			this.label91.Name = "label91";
+			resources.ApplyResources(label91, "label91");
+			label91.BackColor = System.Drawing.Color.Transparent;
+			label91.Name = "label91";
 			//
 			// cbfamtype
 			//
-			this.cbfamtype.DropDownStyle =
+			cbfamtype.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			resources.ApplyResources(this.cbfamtype, "cbfamtype");
-			this.cbfamtype.Name = "cbfamtype";
+			resources.ApplyResources(cbfamtype, "cbfamtype");
+			cbfamtype.Name = "cbfamtype";
 			//
 			// gbrelation
 			//
-			this.gbrelation.BackColor = System.Drawing.Color.Transparent;
-			this.gbrelation.Controls.Add(this.cbBFF);
-			this.gbrelation.Controls.Add(this.cbsecret);
-			this.gbrelation.Controls.Add(this.cbplatonic);
-			this.gbrelation.Controls.Add(this.cbbest);
-			this.gbrelation.Controls.Add(this.cbfamily);
-			this.gbrelation.Controls.Add(this.cbmarried);
-			this.gbrelation.Controls.Add(this.cbengaged);
-			this.gbrelation.Controls.Add(this.cbsteady);
-			this.gbrelation.Controls.Add(this.cblove);
-			this.gbrelation.Controls.Add(this.cbcrush);
-			this.gbrelation.Controls.Add(this.cbbuddie);
-			this.gbrelation.Controls.Add(this.cbfriend);
-			this.gbrelation.Controls.Add(this.cbenemy);
-			resources.ApplyResources(this.gbrelation, "gbrelation");
-			this.gbrelation.Name = "gbrelation";
-			this.gbrelation.TabStop = false;
+			gbrelation.BackColor = System.Drawing.Color.Transparent;
+			gbrelation.Controls.Add(cbBFF);
+			gbrelation.Controls.Add(cbsecret);
+			gbrelation.Controls.Add(cbplatonic);
+			gbrelation.Controls.Add(cbbest);
+			gbrelation.Controls.Add(cbfamily);
+			gbrelation.Controls.Add(cbmarried);
+			gbrelation.Controls.Add(cbengaged);
+			gbrelation.Controls.Add(cbsteady);
+			gbrelation.Controls.Add(cblove);
+			gbrelation.Controls.Add(cbcrush);
+			gbrelation.Controls.Add(cbbuddie);
+			gbrelation.Controls.Add(cbfriend);
+			gbrelation.Controls.Add(cbenemy);
+			resources.ApplyResources(gbrelation, "gbrelation");
+			gbrelation.Name = "gbrelation";
+			gbrelation.TabStop = false;
 			//
 			// cbBFF
 			//
-			resources.ApplyResources(this.cbBFF, "cbBFF");
-			this.cbBFF.Name = "cbBFF";
+			resources.ApplyResources(cbBFF, "cbBFF");
+			cbBFF.Name = "cbBFF";
 			//
 			// cbsecret
 			//
-			resources.ApplyResources(this.cbsecret, "cbsecret");
-			this.cbsecret.Name = "cbsecret";
+			resources.ApplyResources(cbsecret, "cbsecret");
+			cbsecret.Name = "cbsecret";
 			//
 			// cbplatonic
 			//
-			resources.ApplyResources(this.cbplatonic, "cbplatonic");
-			this.cbplatonic.Name = "cbplatonic";
+			resources.ApplyResources(cbplatonic, "cbplatonic");
+			cbplatonic.Name = "cbplatonic";
 			//
 			// cbbest
 			//
-			resources.ApplyResources(this.cbbest, "cbbest");
-			this.cbbest.Name = "cbbest";
+			resources.ApplyResources(cbbest, "cbbest");
+			cbbest.Name = "cbbest";
 			//
 			// cbfamily
 			//
-			resources.ApplyResources(this.cbfamily, "cbfamily");
-			this.cbfamily.Name = "cbfamily";
+			resources.ApplyResources(cbfamily, "cbfamily");
+			cbfamily.Name = "cbfamily";
 			//
 			// cbmarried
 			//
-			resources.ApplyResources(this.cbmarried, "cbmarried");
-			this.cbmarried.Name = "cbmarried";
+			resources.ApplyResources(cbmarried, "cbmarried");
+			cbmarried.Name = "cbmarried";
 			//
 			// cbengaged
 			//
-			resources.ApplyResources(this.cbengaged, "cbengaged");
-			this.cbengaged.Name = "cbengaged";
+			resources.ApplyResources(cbengaged, "cbengaged");
+			cbengaged.Name = "cbengaged";
 			//
 			// cbsteady
 			//
-			resources.ApplyResources(this.cbsteady, "cbsteady");
-			this.cbsteady.Name = "cbsteady";
+			resources.ApplyResources(cbsteady, "cbsteady");
+			cbsteady.Name = "cbsteady";
 			//
 			// cblove
 			//
-			resources.ApplyResources(this.cblove, "cblove");
-			this.cblove.Name = "cblove";
+			resources.ApplyResources(cblove, "cblove");
+			cblove.Name = "cblove";
 			//
 			// cbcrush
 			//
-			resources.ApplyResources(this.cbcrush, "cbcrush");
-			this.cbcrush.Name = "cbcrush";
+			resources.ApplyResources(cbcrush, "cbcrush");
+			cbcrush.Name = "cbcrush";
 			//
 			// cbbuddie
 			//
-			resources.ApplyResources(this.cbbuddie, "cbbuddie");
-			this.cbbuddie.Name = "cbbuddie";
+			resources.ApplyResources(cbbuddie, "cbbuddie");
+			cbbuddie.Name = "cbbuddie";
 			//
 			// cbfriend
 			//
-			resources.ApplyResources(this.cbfriend, "cbfriend");
-			this.cbfriend.Name = "cbfriend";
+			resources.ApplyResources(cbfriend, "cbfriend");
+			cbfriend.Name = "cbfriend";
 			//
 			// cbenemy
 			//
-			resources.ApplyResources(this.cbenemy, "cbenemy");
-			this.cbenemy.Name = "cbenemy";
+			resources.ApplyResources(cbenemy, "cbenemy");
+			cbenemy.Name = "cbenemy";
 			//
 			// tblongterm
 			//
-			resources.ApplyResources(this.tblongterm, "tblongterm");
-			this.tblongterm.Name = "tblongterm";
+			resources.ApplyResources(tblongterm, "tblongterm");
+			tblongterm.Name = "tblongterm";
 			//
 			// tbshortterm
 			//
-			resources.ApplyResources(this.tbshortterm, "tbshortterm");
-			this.tbshortterm.Name = "tbshortterm";
+			resources.ApplyResources(tbshortterm, "tbshortterm");
+			tbshortterm.Name = "tbshortterm";
 			//
 			// label57
 			//
-			resources.ApplyResources(this.label57, "label57");
-			this.label57.BackColor = System.Drawing.Color.Transparent;
-			this.label57.Name = "label57";
+			resources.ApplyResources(label57, "label57");
+			label57.BackColor = System.Drawing.Color.Transparent;
+			label57.Name = "label57";
 			//
 			// label58
 			//
-			resources.ApplyResources(this.label58, "label58");
-			this.label58.BackColor = System.Drawing.Color.Transparent;
-			this.label58.Name = "label58";
+			resources.ApplyResources(label58, "label58");
+			label58.BackColor = System.Drawing.Color.Transparent;
+			label58.Name = "label58";
 			//
 			// panel7
 			//
-			resources.ApplyResources(this.panel7, "panel7");
+			resources.ApplyResources(panel7, "panel7");
 			//this.panel7.CanCommit = true;
-			this.panel7.Name = "panel7";
+			panel7.Name = "panel7";
 			//this.panel7.OnCommit += new System.Windows.Forms.Panel.EventHandler(this.RelationshipFileCommit);
 			//
 			// Elements
 			//
 			resources.ApplyResources(this, "$this");
-			this.Controls.Add(this.tabControl1);
-			this.Name = "Elements";
-			this.JpegPanel.ResumeLayout(false);
-			this.JpegPanel.PerformLayout();
-			this.panel2.ResumeLayout(false);
-			this.panel2.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
-			this.xmlPanel.ResumeLayout(false);
-			this.objdPanel.ResumeLayout(false);
-			this.objdPanel.PerformLayout();
-			this.gbelements.ResumeLayout(false);
-			this.tabControl1.ResumeLayout(false);
-			this.tabPage4.ResumeLayout(false);
-			this.familytiePanel.ResumeLayout(false);
-			this.familytiePanel.PerformLayout();
-			this.gbties.ResumeLayout(false);
-			this.gbties.PerformLayout();
-			this.tabPage1.ResumeLayout(false);
-			this.famiPanel.ResumeLayout(false);
-			this.famiPanel.PerformLayout();
-			this.gbCastaway.ResumeLayout(false);
-			this.gbCastaway.PerformLayout();
-			this.groupBox4.ResumeLayout(false);
-			this.groupBox4.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
-			this.tabPage3.ResumeLayout(false);
-			this.realPanel.ResumeLayout(false);
-			this.realPanel.PerformLayout();
-			this.gbrelation.ResumeLayout(false);
-			this.ResumeLayout(false);
+			Controls.Add(tabControl1);
+			Name = "Elements";
+			JpegPanel.ResumeLayout(false);
+			JpegPanel.PerformLayout();
+			panel2.ResumeLayout(false);
+			panel2.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(pb)).EndInit();
+			xmlPanel.ResumeLayout(false);
+			objdPanel.ResumeLayout(false);
+			objdPanel.PerformLayout();
+			gbelements.ResumeLayout(false);
+			tabControl1.ResumeLayout(false);
+			tabPage4.ResumeLayout(false);
+			familytiePanel.ResumeLayout(false);
+			familytiePanel.PerformLayout();
+			gbties.ResumeLayout(false);
+			gbties.PerformLayout();
+			tabPage1.ResumeLayout(false);
+			famiPanel.ResumeLayout(false);
+			famiPanel.PerformLayout();
+			gbCastaway.ResumeLayout(false);
+			gbCastaway.PerformLayout();
+			groupBox4.ResumeLayout(false);
+			groupBox4.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(pbImage)).EndInit();
+			tabPage3.ResumeLayout(false);
+			realPanel.ResumeLayout(false);
+			realPanel.PerformLayout();
+			gbrelation.ResumeLayout(false);
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -1098,7 +1098,7 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				try
 				{
-					this.Cursor = Cursors.WaitCursor;
+					Cursor = Cursors.WaitCursor;
 					Wrapper.Fami fami = (Wrapper.Fami)wrapper;
 					fami.Money = Convert.ToInt32(tbmoney.Text);
 					fami.Friends = Convert.ToUInt32(tbfamily.Text);
@@ -1116,13 +1116,13 @@ namespace SimPe.PackedFiles.UserInterface
 						16
 					);
 					fami.BusinessMoney = Helper.StringToInt32(
-						this.tbbmoney.Text,
+						tbbmoney.Text,
 						fami.BusinessMoney,
 						10
 					);
 
 					fami.CastAwayFood = Helper.StringToInt32(
-						this.tbcafood1.Text,
+						tbcafood1.Text,
 						fami.CastAwayFood,
 						10
 					);
@@ -1148,9 +1148,9 @@ namespace SimPe.PackedFiles.UserInterface
 						sdesc.SynchronizeUserData();
 					}
 					fami.Members = members;
-					if (this.tblotinst.Text != "Sim Bin")
+					if (tblotinst.Text != "Sim Bin")
 					{
-						fami.LotInstance = Convert.ToUInt32(this.tblotinst.Text, 16);
+						fami.LotInstance = Convert.ToUInt32(tblotinst.Text, 16);
 					}
 					else
 					{
@@ -1174,7 +1174,7 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 				finally
 				{
-					this.Cursor = Cursors.Default;
+					Cursor = Cursors.Default;
 				}
 			}
 		}
@@ -1245,16 +1245,16 @@ namespace SimPe.PackedFiles.UserInterface
 						return;
 					}
 				}
-				if (!this.lbmembers.Items.Contains(cbsims.Items[cbsims.SelectedIndex]))
+				if (!lbmembers.Items.Contains(cbsims.Items[cbsims.SelectedIndex]))
 				{
-					this.lbmembers.Items.Add(cbsims.Items[cbsims.SelectedIndex]);
+					lbmembers.Items.Add(cbsims.Items[cbsims.SelectedIndex]);
 				}
 			}
 		}
 
 		private void SimSelectionChange(object sender, EventArgs e)
 		{
-			this.llFamiAddSim.Enabled = (
+			llFamiAddSim.Enabled = (
 				(((ComboBox)sender).SelectedIndex >= 0)
 				&& (((ComboBox)sender).Items.Count > 0)
 			);
@@ -1262,9 +1262,9 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void FamiMemberSelectionClick(object sender, EventArgs e)
 		{
-			this.llFamiDeleteSim.Enabled = (((ListBox)sender).SelectedIndex >= 0);
-			this.llFamiDeleteSim.Invalidate();
-			this.llFamiDeleteSim.Update();
+			llFamiDeleteSim.Enabled = (((ListBox)sender).SelectedIndex >= 0);
+			llFamiDeleteSim.Invalidate();
+			llFamiDeleteSim.Update();
 		}
 
 		private void FamiDeleteSimClick(object sender, EventArgs e)
@@ -1423,15 +1423,15 @@ namespace SimPe.PackedFiles.UserInterface
 		#region Family Ties
 		private void FamilyTieSimIndexChanged(object sender, EventArgs e)
 		{
-			this.btdeletetie.Enabled = false;
-			if (this.cbtiesims.SelectedIndex < 0)
+			btdeletetie.Enabled = false;
+			if (cbtiesims.SelectedIndex < 0)
 			{
 				return;
 			}
 
 			FamilyTieSim sim = (FamilyTieSim)cbtiesims.Items[cbtiesims.SelectedIndex];
 
-			this.lbties.Items.Clear();
+			lbties.Items.Clear();
 			foreach (FamilyTieItem tie in sim.Ties)
 			{
 				lbties.Items.Add(tie);
@@ -1440,26 +1440,26 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void AllTieableSimsIndexChanged(object sender, EventArgs e)
 		{
-			this.btaddtie.Enabled = false;
-			this.btnewtie.Enabled = false;
-			if (this.cballtieablesims.SelectedIndex < 0)
+			btaddtie.Enabled = false;
+			btnewtie.Enabled = false;
+			if (cballtieablesims.SelectedIndex < 0)
 			{
 				return;
 			}
 
-			this.btnewtie.Enabled = true;
-			if (this.cbtiesims.SelectedIndex < 0)
+			btnewtie.Enabled = true;
+			if (cbtiesims.SelectedIndex < 0)
 			{
 				return;
 			}
 
-			this.btaddtie.Enabled = true;
+			btaddtie.Enabled = true;
 		}
 
 		private void DeleteTieClick(object sender, EventArgs e)
 		{
-			this.btaddtie.Enabled = false;
-			if (this.lbties.SelectedIndex < 0)
+			btaddtie.Enabled = false;
+			if (lbties.SelectedIndex < 0)
 			{
 				return;
 			}
@@ -1469,12 +1469,12 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void AddTieClick(object sender, EventArgs e)
 		{
-			if (this.cballtieablesims.SelectedIndex < 0)
+			if (cballtieablesims.SelectedIndex < 0)
 			{
 				return;
 			}
 
-			if (this.cbtietype.SelectedIndex < 0)
+			if (cbtietype.SelectedIndex < 0)
 			{
 				return;
 			}
@@ -1483,11 +1483,11 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				Wrapper.FamilyTies famt = (Wrapper.FamilyTies)wrapper;
 				Data.MetaData.FamilyTieTypes ftt = (Data.LocalizedFamilyTieTypes)
-					this.cbtietype.Items[cbtietype.SelectedIndex];
+					cbtietype.Items[cbtietype.SelectedIndex];
 				FamilyTieSim fts = (FamilyTieSim)
-					this.cballtieablesims.Items[cballtieablesims.SelectedIndex];
+					cballtieablesims.Items[cballtieablesims.SelectedIndex];
 				FamilyTieItem tie = new FamilyTieItem(ftt, fts.Instance, famt);
-				this.lbties.Items.Add(tie);
+				lbties.Items.Add(tie);
 			}
 			catch (Exception ex)
 			{
@@ -1503,7 +1503,7 @@ namespace SimPe.PackedFiles.UserInterface
 			LinkLabelLinkClickedEventArgs e
 		)
 		{
-			if (this.cbtiesims.SelectedIndex < 0)
+			if (cbtiesims.SelectedIndex < 0)
 			{
 				return;
 			}
@@ -1536,13 +1536,13 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void TieIndexChanged(object sender, EventArgs e)
 		{
-			this.btdeletetie.Enabled = false;
-			if (this.lbties.SelectedIndex < 0)
+			btdeletetie.Enabled = false;
+			if (lbties.SelectedIndex < 0)
 			{
 				return;
 			}
 
-			this.btdeletetie.Enabled = true;
+			btdeletetie.Enabled = true;
 		}
 
 		private void CommitTieClick(object sender, EventArgs e)
@@ -1576,13 +1576,13 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void AddSimToTiesClick(object sender, EventArgs e)
 		{
-			if (this.cballtieablesims.SelectedIndex < 0)
+			if (cballtieablesims.SelectedIndex < 0)
 			{
 				return;
 			}
 
 			FamilyTieSim sim = (FamilyTieSim)
-				this.cballtieablesims.Items[cballtieablesims.SelectedIndex];
+				cballtieablesims.Items[cballtieablesims.SelectedIndex];
 			sim.Ties = new FamilyTieItem[0];
 
 			//check if the tie exists
@@ -1700,7 +1700,7 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				try
 				{
-					this.Cursor = Cursors.WaitCursor;
+					Cursor = Cursors.WaitCursor;
 					Wrapper.Objd objd = (Wrapper.Objd)wrapper;
 
 					foreach (Control c in pnelements.Controls)
@@ -1723,8 +1723,8 @@ namespace SimPe.PackedFiles.UserInterface
 					objd.Guid = (uint)Helper.HexStringToUInt(tbsimid.Text);
 					objd.FileName = tbsimname.Text;
 					objd.OriginalGuid = (uint)
-						Helper.HexStringToUInt(this.tborgguid.Text);
-					objd.ProxyGuid = (uint)Helper.HexStringToUInt(this.tbproxguid.Text);
+						Helper.HexStringToUInt(tborgguid.Text);
+					objd.ProxyGuid = (uint)Helper.HexStringToUInt(tbproxguid.Text);
 
 					objd.SynchronizeUserData();
 					MessageBox.Show(Localization.Manager.GetString("commited"));
@@ -1760,10 +1760,10 @@ namespace SimPe.PackedFiles.UserInterface
 				Wrapper.FamiFlags flags =
 					new Wrapper.FamiFlags((ushort)flag);
 
-				this.cbphone.Checked = flags.HasPhone;
-				this.cbcomputer.Checked = flags.HasComputer;
-				this.cbbaby.Checked = flags.HasBaby;
-				this.cblot.Checked = flags.NewLot;
+				cbphone.Checked = flags.HasPhone;
+				cbcomputer.Checked = flags.HasComputer;
+				cbbaby.Checked = flags.HasBaby;
+				cblot.Checked = flags.NewLot;
 			}
 			catch (Exception) { }
 			finally
@@ -1787,10 +1787,10 @@ namespace SimPe.PackedFiles.UserInterface
 				Wrapper.FamiFlags flags =
 					new Wrapper.FamiFlags(0);
 
-				flags.HasPhone = this.cbphone.Checked;
-				flags.HasComputer = this.cbcomputer.Checked;
-				flags.HasBaby = this.cbbaby.Checked;
-				flags.NewLot = this.cblot.Checked;
+				flags.HasPhone = cbphone.Checked;
+				flags.HasComputer = cbcomputer.Checked;
+				flags.HasBaby = cbbaby.Checked;
+				flags.NewLot = cblot.Checked;
 
 				flag = flag | flags.Value;
 				tbflag.Text = "0x" + Helper.HexString(flag);

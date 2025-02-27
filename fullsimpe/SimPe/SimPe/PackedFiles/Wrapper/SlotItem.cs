@@ -157,7 +157,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public SlotItem(Slot parent)
 		{
-			this.Parent = parent;
+			Parent = parent;
 		}
 
 		/// <summary>
@@ -235,7 +235,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </remarks>
 		internal void Serialize(System.IO.BinaryWriter writer, Slot parent)
 		{
-			this.Parent = parent;
+			Parent = parent;
 			writer.Write((ushort)Type);
 
 			writer.Write(UnknownFloat1);
@@ -350,7 +350,7 @@ namespace SimPe.PackedFiles.Wrapper
 			return base.Contains(item);
 		}
 
-		public int Length => this.Count;
+		public int Length => Count;
 
 		public override object Clone()
 		{

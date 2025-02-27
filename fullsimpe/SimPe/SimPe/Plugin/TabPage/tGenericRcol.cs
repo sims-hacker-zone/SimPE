@@ -54,7 +54,7 @@ namespace SimPe.Plugin.TabPage
 			//
 			InitializeComponent();
 
-			this.UseVisualStyleBackColor = true;
+			UseVisualStyleBackColor = true;
 		}
 
 		/// <summary>
@@ -80,26 +80,26 @@ namespace SimPe.Plugin.TabPage
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.groupBox10 = new GroupBox();
-			this.gen_pg = new PropertyGrid();
-			this.tb_ver = new TextBox();
-			this.label28 = new Label();
-			this.groupBox10.SuspendLayout();
-			this.SuspendLayout();
+			groupBox10 = new GroupBox();
+			gen_pg = new PropertyGrid();
+			tb_ver = new TextBox();
+			label28 = new Label();
+			groupBox10.SuspendLayout();
+			SuspendLayout();
 			//
 			// tGenericRcol
 			//
-			this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-			this.Controls.Add(this.groupBox10);
-			this.Location = new System.Drawing.Point(4, 22);
-			this.Name = "tGenericRcol";
-			this.Size = new System.Drawing.Size(792, 262);
-			this.TabIndex = 4;
-			this.Text = "GenericRcol";
+			BackColor = System.Drawing.SystemColors.ControlLightLight;
+			Controls.Add(groupBox10);
+			Location = new System.Drawing.Point(4, 22);
+			Name = "tGenericRcol";
+			Size = new System.Drawing.Size(792, 262);
+			TabIndex = 4;
+			Text = "GenericRcol";
 			//
 			// groupBox10
 			//
-			this.groupBox10.Anchor = (
+			groupBox10.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -111,27 +111,27 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.groupBox10.Controls.Add(this.gen_pg);
-			this.groupBox10.Controls.Add(this.tb_ver);
-			this.groupBox10.Controls.Add(this.label28);
-			this.groupBox10.FlatStyle = FlatStyle.System;
-			this.groupBox10.Font = new System.Drawing.Font(
+			groupBox10.Controls.Add(gen_pg);
+			groupBox10.Controls.Add(tb_ver);
+			groupBox10.Controls.Add(label28);
+			groupBox10.FlatStyle = FlatStyle.System;
+			groupBox10.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.groupBox10.Location = new System.Drawing.Point(8, 8);
-			this.groupBox10.Name = "groupBox10";
-			this.groupBox10.Size = new System.Drawing.Size(776, 250);
-			this.groupBox10.TabIndex = 11;
-			this.groupBox10.TabStop = false;
-			this.groupBox10.Text = "Settings";
+			groupBox10.Location = new System.Drawing.Point(8, 8);
+			groupBox10.Name = "groupBox10";
+			groupBox10.Size = new System.Drawing.Size(776, 250);
+			groupBox10.TabIndex = 11;
+			groupBox10.TabStop = false;
+			groupBox10.Text = "Settings";
 			//
 			// gen_pg
 			//
-			this.gen_pg.Anchor = (
+			gen_pg.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -143,65 +143,65 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.gen_pg.CommandsBackColor = System
+			gen_pg.CommandsBackColor = System
 				.Drawing
 				.SystemColors
 				.ControlLightLight;
-			this.gen_pg.CommandsVisibleIfAvailable = true;
-			this.gen_pg.HelpVisible = false;
-			this.gen_pg.LargeButtons = false;
-			this.gen_pg.LineColor = System.Drawing.SystemColors.ScrollBar;
-			this.gen_pg.Location = new System.Drawing.Point(112, 24);
-			this.gen_pg.Name = "gen_pg";
-			this.gen_pg.Size = new System.Drawing.Size(656, 218);
-			this.gen_pg.TabIndex = 25;
-			this.gen_pg.Text = "Generic Properties";
-			this.gen_pg.ToolbarVisible = false;
-			this.gen_pg.ViewBackColor = System.Drawing.SystemColors.Window;
-			this.gen_pg.ViewForeColor = System.Drawing.SystemColors.WindowText;
+			gen_pg.CommandsVisibleIfAvailable = true;
+			gen_pg.HelpVisible = false;
+			gen_pg.LargeButtons = false;
+			gen_pg.LineColor = System.Drawing.SystemColors.ScrollBar;
+			gen_pg.Location = new System.Drawing.Point(112, 24);
+			gen_pg.Name = "gen_pg";
+			gen_pg.Size = new System.Drawing.Size(656, 218);
+			gen_pg.TabIndex = 25;
+			gen_pg.Text = "Generic Properties";
+			gen_pg.ToolbarVisible = false;
+			gen_pg.ViewBackColor = System.Drawing.SystemColors.Window;
+			gen_pg.ViewForeColor = System.Drawing.SystemColors.WindowText;
 			//
 			// tb_ver
 			//
-			this.tb_ver.Font = new System.Drawing.Font(
+			tb_ver.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tb_ver.Location = new System.Drawing.Point(16, 40);
-			this.tb_ver.Name = "tb_ver";
-			this.tb_ver.Size = new System.Drawing.Size(88, 21);
-			this.tb_ver.TabIndex = 24;
-			this.tb_ver.Text = "0x00000000";
-			this.tb_ver.TextChanged += new EventHandler(this.GNSettingsChange);
+			tb_ver.Location = new System.Drawing.Point(16, 40);
+			tb_ver.Name = "tb_ver";
+			tb_ver.Size = new System.Drawing.Size(88, 21);
+			tb_ver.TabIndex = 24;
+			tb_ver.Text = "0x00000000";
+			tb_ver.TextChanged += new EventHandler(GNSettingsChange);
 			//
 			// label28
 			//
-			this.label28.AutoSize = true;
-			this.label28.Font = new System.Drawing.Font(
+			label28.AutoSize = true;
+			label28.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label28.Location = new System.Drawing.Point(8, 24);
-			this.label28.Name = "label28";
-			this.label28.Size = new System.Drawing.Size(52, 17);
-			this.label28.TabIndex = 23;
-			this.label28.Text = "Version:";
+			label28.Location = new System.Drawing.Point(8, 24);
+			label28.Name = "label28";
+			label28.Size = new System.Drawing.Size(52, 17);
+			label28.TabIndex = 23;
+			label28.Text = "Version:";
 			//
 			// GenericRcol
 			//
-			this.groupBox10.ResumeLayout(false);
-			this.ResumeLayout(false);
+			groupBox10.ResumeLayout(false);
+			ResumeLayout(false);
 		}
 		#endregion
 
 		private void GNSettingsChange(object sender, EventArgs e)
 		{
-			if (this.Tag == null)
+			if (Tag == null)
 			{
 				return;
 			}

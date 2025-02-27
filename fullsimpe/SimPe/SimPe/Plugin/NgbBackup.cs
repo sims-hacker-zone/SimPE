@@ -69,51 +69,51 @@ namespace SimPe.Plugin
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(NgbBackup));
-			this.lbdirs = new ListBox();
-			this.button1 = new Button();
-			this.button2 = new Button();
-			this.pnNice = new Panel();
-			this.pnNice.SuspendLayout();
-			this.SuspendLayout();
+			lbdirs = new ListBox();
+			button1 = new Button();
+			button2 = new Button();
+			pnNice = new Panel();
+			pnNice.SuspendLayout();
+			SuspendLayout();
 			//
 			// lbdirs
 			//
-			resources.ApplyResources(this.lbdirs, "lbdirs");
-			this.lbdirs.Name = "lbdirs";
-			this.lbdirs.SelectedIndexChanged += new EventHandler(
-				this.SelectBackup
+			resources.ApplyResources(lbdirs, "lbdirs");
+			lbdirs.Name = "lbdirs";
+			lbdirs.SelectedIndexChanged += new EventHandler(
+				SelectBackup
 			);
 			//
 			// button1
 			//
-			resources.ApplyResources(this.button1, "button1");
-			this.button1.Name = "button1";
-			this.button1.Click += new EventHandler(this.Restore);
+			resources.ApplyResources(button1, "button1");
+			button1.Name = "button1";
+			button1.Click += new EventHandler(Restore);
 			//
 			// button2
 			//
-			resources.ApplyResources(this.button2, "button2");
-			this.button2.Name = "button2";
-			this.button2.Click += new EventHandler(this.Delete);
+			resources.ApplyResources(button2, "button2");
+			button2.Name = "button2";
+			button2.Click += new EventHandler(Delete);
 			//
 			// pnNice
 			//
-			this.pnNice.BackColor = System.Drawing.Color.Transparent;
-			this.pnNice.Controls.Add(this.button2);
-			this.pnNice.Controls.Add(this.button1);
-			this.pnNice.Controls.Add(this.lbdirs);
-			resources.ApplyResources(this.pnNice, "pnNice");
-			this.pnNice.Name = "pnNice";
+			pnNice.BackColor = System.Drawing.Color.Transparent;
+			pnNice.Controls.Add(button2);
+			pnNice.Controls.Add(button1);
+			pnNice.Controls.Add(lbdirs);
+			resources.ApplyResources(pnNice, "pnNice");
+			pnNice.Name = "pnNice";
 			//
 			// NgbBackup
 			//
 			resources.ApplyResources(this, "$this");
-			this.Controls.Add(this.pnNice);
-			this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
-			this.Name = "NgbBackup";
-			this.ShowInTaskbar = false;
-			this.pnNice.ResumeLayout(false);
-			this.ResumeLayout(false);
+			Controls.Add(pnNice);
+			FormBorderStyle = FormBorderStyle.FixedToolWindow;
+			Name = "NgbBackup";
+			ShowInTaskbar = false;
+			pnNice.ResumeLayout(false);
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -190,7 +190,7 @@ namespace SimPe.Plugin
 			if (dr != DialogResult.Cancel)
 			{
 				Packages.StreamFactory.CloseAll();
-				this.Cursor = Cursors.WaitCursor;
+				Cursor = Cursors.WaitCursor;
 				WaitingScreen.Wait();
 
 				try
@@ -245,7 +245,7 @@ namespace SimPe.Plugin
 				finally
 				{
 					WaitingScreen.Stop();
-					this.Cursor = Cursors.Default;
+					Cursor = Cursors.Default;
 				}
 			}
 		}
@@ -271,7 +271,7 @@ namespace SimPe.Plugin
 				) == DialogResult.Yes
 			)
 			{
-				this.Cursor = Cursors.WaitCursor;
+				Cursor = Cursors.WaitCursor;
 
 				if (System.IO.Directory.Exists(source))
 				{
@@ -279,7 +279,7 @@ namespace SimPe.Plugin
 				}
 
 				UpdateList();
-				this.Cursor = Cursors.Default;
+				Cursor = Cursors.Default;
 			}
 		}
 	}

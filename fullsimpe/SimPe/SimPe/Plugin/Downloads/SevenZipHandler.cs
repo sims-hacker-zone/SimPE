@@ -12,7 +12,7 @@ namespace SimPe.Plugin.Downloads
 		{
 			StringArrayList ret = new StringArrayList();
 			Ambertation.SevenZip.IO.CommandlineArchive a =
-				new Ambertation.SevenZip.IO.CommandlineArchive(this.ArchiveName);
+				new Ambertation.SevenZip.IO.CommandlineArchive(ArchiveName);
 			Ambertation.SevenZip.IO.ArchiveFile[] content = a.ListContent();
 			a.Extract(Helper.SimPeTeleportPath, false);
 

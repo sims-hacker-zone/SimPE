@@ -65,43 +65,43 @@ namespace SimPe.Plugin
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(BnfoCustomerItemUI)
 				);
-			this.tb = new TextBox();
-			this.pb = new Ambertation.Windows.Forms.LabeledProgressBar();
-			this.SuspendLayout();
+			tb = new TextBox();
+			pb = new Ambertation.Windows.Forms.LabeledProgressBar();
+			SuspendLayout();
 			//
 			// tb
 			//
-			resources.ApplyResources(this.tb, "tb");
-			this.tb.HideSelection = false;
-			this.tb.Name = "tb";
-			this.tb.ReadOnly = true;
-			this.tb.TextChanged += new EventHandler(this.tb_TextChanged);
+			resources.ApplyResources(tb, "tb");
+			tb.HideSelection = false;
+			tb.Name = "tb";
+			tb.ReadOnly = true;
+			tb.TextChanged += new EventHandler(tb_TextChanged);
 			//
 			// pb
 			//
-			this.pb.BackColor = Color.Transparent;
-			this.pb.DisplayOffset = 0;
-			resources.ApplyResources(this.pb, "pb");
-			this.pb.Maximum = 2000;
-			this.pb.Name = "pb";
-			this.pb.NumberFormat = "N0";
-			this.pb.NumberOffset = -1000;
-			this.pb.NumberScale = 0.005;
-			this.pb.SelectedColor = Color.Gold;
-			this.pb.Style = Ambertation.Windows.Forms.ProgresBarStyle.Balance;
-			this.pb.TokenCount = 11;
-			this.pb.UnselectedColor = Color.Black;
-			this.pb.Value = 1000;
-			this.pb.ChangedValue += new EventHandler(this.pb_Changed);
+			pb.BackColor = Color.Transparent;
+			pb.DisplayOffset = 0;
+			resources.ApplyResources(pb, "pb");
+			pb.Maximum = 2000;
+			pb.Name = "pb";
+			pb.NumberFormat = "N0";
+			pb.NumberOffset = -1000;
+			pb.NumberScale = 0.005;
+			pb.SelectedColor = Color.Gold;
+			pb.Style = Ambertation.Windows.Forms.ProgresBarStyle.Balance;
+			pb.TokenCount = 11;
+			pb.UnselectedColor = Color.Black;
+			pb.Value = 1000;
+			pb.ChangedValue += new EventHandler(pb_Changed);
 			//
 			// BnfoCustomerItemUI
 			//
-			this.Controls.Add(this.pb);
-			this.Controls.Add(this.tb);
+			Controls.Add(pb);
+			Controls.Add(tb);
 			resources.ApplyResources(this, "$this");
-			this.Name = "BnfoCustomerItemUI";
-			this.ResumeLayout(false);
-			this.PerformLayout();
+			Name = "BnfoCustomerItemUI";
+			ResumeLayout(false);
+			PerformLayout();
 		}
 		#endregion
 

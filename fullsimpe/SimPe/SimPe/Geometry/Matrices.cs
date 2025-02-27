@@ -200,7 +200,7 @@ namespace SimPe.Geometry
 				{
 					throw new GeometryException(
 						"Unable to get Trace for a non Square Matrix ("
-							+ this.ToString()
+							+ ToString()
 							+ ")"
 					);
 				}
@@ -493,14 +493,14 @@ namespace SimPe.Geometry
 			}
 
 			Matrixd m1 = (Matrixd)obj;
-			if (this.Rows != m1.Rows || this.Columns != m1.Columns)
+			if (Rows != m1.Rows || Columns != m1.Columns)
 			{
 				return false;
 			}
 
-			for (int i = 0; i < this.Rows; i++)
+			for (int i = 0; i < Rows; i++)
 			{
-				for (int j = 0; j < this.Columns; j++)
+				for (int j = 0; j < Columns; j++)
 				{
 					if (this[i, j] != m1[i, j])
 					{
@@ -570,7 +570,7 @@ namespace SimPe.Geometry
 		/// <remarks>Based on code by Rajitha Wimalasooriya (http://www.thecodeproject.com/csharp/rtwmatrix.asp)</remarks>
 		public double Determinant()
 		{
-			if (this.Rows != this.Columns)
+			if (Rows != Columns)
 			{
 				throw new GeometryException(
 					"You can only compute the Determinant of a Square Matrix. ("
@@ -582,14 +582,14 @@ namespace SimPe.Geometry
 			double d = 0;
 
 			//get the determinent of a 2x2 matrix
-			if (this.Rows == 2 && this.Columns == 2)
+			if (Rows == 2 && Columns == 2)
 			{
 				d = (this[0, 0] * this[1, 1]) - (this[0, 1] * this[1, 0]);
 				return d;
 			}
 
 			//get the determinent of a 3x3 matrix
-			if (this.Rows == 3 && this.Columns == 3)
+			if (Rows == 3 && Columns == 3)
 			{
 				d =
 					(this[0, 0] * this[1, 1] * this[2, 2])
@@ -601,12 +601,12 @@ namespace SimPe.Geometry
 				return d;
 			}
 
-			Matrixd tempMtx = new Matrixd(this.Rows - 1, this.Columns - 1);
+			Matrixd tempMtx = new Matrixd(Rows - 1, Columns - 1);
 
 			//find the determinent with respect to the first row
-			for (int j = 0; j < this.Columns; j++)
+			for (int j = 0; j < Columns; j++)
 			{
-				tempMtx = this.Minor(0, j);
+				tempMtx = Minor(0, j);
 
 				//recursively add the determinents
 				d += (int)Math.Pow(-1, j) * this[0, j] * tempMtx.Determinant();
@@ -623,21 +623,21 @@ namespace SimPe.Geometry
 		/// <remarks>Based on code by Rajitha Wimalasooriya (http://www.thecodeproject.com/csharp/rtwmatrix.asp)</remarks>
 		public Matrixd Adjoint()
 		{
-			if (this.Rows < 2 || this.Columns < 2)
+			if (Rows < 2 || Columns < 2)
 			{
 				throw new GeometryException(
 					"Adjoint matrix is not available. (" + ToString() + ")"
 				);
 			}
 
-			Matrixd tempMtx = new Matrixd(this.Rows - 1, this.Columns - 1);
-			Matrixd adjMtx = new Matrixd(this.Columns, this.Rows);
+			Matrixd tempMtx = new Matrixd(Rows - 1, Columns - 1);
+			Matrixd adjMtx = new Matrixd(Columns, Rows);
 
-			for (int i = 0; i < this.Rows; i++)
+			for (int i = 0; i < Rows; i++)
 			{
-				for (int j = 0; j < this.Columns; j++)
+				for (int j = 0; j < Columns; j++)
 				{
-					tempMtx = this.Minor(i, j);
+					tempMtx = Minor(i, j);
 
 					//put the determinent of the minor in the transposed position
 					adjMtx[j, i] = (int)Math.Pow(-1, i + j) * tempMtx.Determinant();
@@ -657,7 +657,7 @@ namespace SimPe.Geometry
 		/// <remarks>Based on code by Rajitha Wimalasooriya (http://www.thecodeproject.com/csharp/rtwmatrix.asp)</remarks>
 		public Matrixd Minor(int row, int column)
 		{
-			if (this.Rows < 2 || this.Columns < 2)
+			if (Rows < 2 || Columns < 2)
 			{
 				throw new GeometryException(
 					"Minor not available. (" + ToString() + ")"
@@ -667,7 +667,7 @@ namespace SimPe.Geometry
 			int i,
 				j = 0;
 
-			Matrixd minom2 = new Matrixd(this.Rows - 1, this.Columns - 1);
+			Matrixd minom2 = new Matrixd(Rows - 1, Columns - 1);
 
 			//find the minor with respect to the first element
 			for (int k = 0; k < minom2.Rows; k++)
@@ -740,7 +740,7 @@ namespace SimPe.Geometry
 		/// <summary>
 		/// True if this Matrix is invertibale
 		/// </summary>
-		public bool Invertable => (this.Determinant() != 0);
+		public bool Invertable => (Determinant() != 0);
 
 		/// <summary>
 		/// True if the Matrix is Orthogonal
@@ -754,13 +754,13 @@ namespace SimPe.Geometry
 					return false;
 				}
 
-				Matrixd t = this * this.GetTranspose();
+				Matrixd t = this * GetTranspose();
 				if (!t.Identity)
 				{
 					return false;
 				}
 
-				t = this.GetTranspose() * this;
+				t = GetTranspose() * this;
 				if (!t.Identity)
 				{
 					return false;
@@ -923,7 +923,7 @@ namespace SimPe.Geometry
 		{
 			if (!full)
 			{
-				return this.ToString();
+				return ToString();
 			}
 
 			string s = "";
@@ -943,9 +943,9 @@ namespace SimPe.Geometry
 		{
 			Matrixd m = GetIdentity(3, 3);
 
-			for (int r = 0; r < Math.Min(3, this.Rows); r++)
+			for (int r = 0; r < Math.Min(3, Rows); r++)
 			{
-				for (int c = 0; c < Math.Min(3, this.Columns); c++)
+				for (int c = 0; c < Math.Min(3, Columns); c++)
 				{
 					m[r, c] = this[r, c];
 				}

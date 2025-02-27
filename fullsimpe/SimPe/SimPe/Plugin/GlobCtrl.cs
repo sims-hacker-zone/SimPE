@@ -42,7 +42,7 @@ namespace SimPe.Plugin
 			try
 			{
 				Glob wrp = (Glob)wrapper;
-				wrp.SemiGlobalName = this.cbseminame.Text;
+				wrp.SemiGlobalName = cbseminame.Text;
 				wrp.FileName = tbfilenm.Text;
 				lbBloat.Visible = lbBug.Visible = false;
 				wrapper.SynchronizeUserData();
@@ -67,7 +67,7 @@ namespace SimPe.Plugin
 				try
 				{
 					Glob wrp = (Glob)wrapper;
-					wrp.SemiGlobalName = this.cbseminame.Text;
+					wrp.SemiGlobalName = cbseminame.Text;
 					wrapper.Changed = true;
 				}
 				catch (Exception ex)

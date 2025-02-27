@@ -161,13 +161,13 @@ namespace SimPe.Plugin
 			InitializeComponent();
 
 			wrapper = null;
-			this.cborient.ResourceManager = Localization.Manager;
-			this.cborient.Enum = typeof(LotOrientation);
+			cborient.ResourceManager = Localization.Manager;
+			cborient.Enum = typeof(LotOrientation);
 
 			if (!Helper.WindowsRegistry.UseBigIcons)
 			{
-				this.pb.Size = new Size(124, 108);
-				this.pb.Location = new Point(25, 56);
+				pb.Size = new Size(124, 108);
+				pb.Location = new Point(25, 56);
 			}
 		}
 
@@ -195,281 +195,281 @@ namespace SimPe.Plugin
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(LtxtForm));
-			this.ltxtPanel = new Panel();
-			this.lbPlayim = new Label();
-			this.gbApart = new GroupBox();
-			this.label22 = new Label();
-			this.gbApartment = new GroupBox();
-			this.llFamily = new LinkLabel();
-			this.tbApartment = new TextBox();
-			this.tbSAu2 = new TextBox();
-			this.llSubLot = new LinkLabel();
-			this.label31 = new Label();
-			this.tbSAu3 = new TextBox();
-			this.label30 = new Label();
-			this.tbSAFamily = new TextBox();
-			this.lbApts = new ListBox();
-			this.tbApBase = new TextBox();
-			this.llAptBase = new LinkLabel();
-			this.btnDelApt = new Button();
-			this.btnAddApt = new Button();
-			this.tbdesc = new TextBox();
-			this.gbtravel = new GroupBox();
-			this.cbtrjflag5 = new CheckBox();
-			this.cbtrjflag4 = new CheckBox();
-			this.cbtrjflag3 = new CheckBox();
-			this.cbtrjflag2 = new CheckBox();
-			this.cbtrjflag1 = new CheckBox();
-			this.cbtrjungle = new CheckBox();
-			this.cbtrhidec = new CheckBox();
-			this.cbtrpool = new CheckBox();
-			this.cbtrmale = new CheckBox();
-			this.cbtrfem = new CheckBox();
-			this.cbtrbeach = new CheckBox();
-			this.cbtrformal = new CheckBox();
-			this.cbtrteen = new CheckBox();
-			this.cbtrnude = new CheckBox();
-			this.cbtrpern = new CheckBox();
-			this.cgtrwhite = new CheckBox();
-			this.cbtrblue = new CheckBox();
-			this.cbtrredred = new CheckBox();
-			this.cbtradult = new CheckBox();
-			this.cbtrclub = new CheckBox();
-			this.label5 = new Label();
-			this.tblotname = new TextBox();
-			this.gbhobby = new GroupBox();
-			this.cbhbmusic = new CheckBox();
-			this.cbhbsport = new CheckBox();
-			this.cbhbscience = new CheckBox();
-			this.cbhbfitness = new CheckBox();
-			this.cbhbtinker = new CheckBox();
-			this.cbhbnature = new CheckBox();
-			this.cbhbgames = new CheckBox();
-			this.cbhbfilm = new CheckBox();
-			this.cbhbart = new CheckBox();
-			this.cbhbcook = new CheckBox();
-			this.label4 = new Label();
-			this.llunknone = new LinkLabel();
-			this.gbFlagg = new GroupBox();
-			this.tbu0 = new TextBox();
-			this.label21 = new Label();
-			this.cbBeachy = new CheckBox();
-			this.cbhidim = new CheckBox();
-			this.gbunown = new GroupBox();
-			this.tbu2 = new TextBox();
-			this.label18 = new Label();
-			this.label32 = new Label();
-			this.label19 = new Label();
-			this.lbu7 = new ListBox();
-			this.tbu3 = new TextBox();
-			this.label16 = new Label();
-			this.tbData = new TextBox();
-			this.tbu7 = new TextBox();
-			this.tbu5 = new TextBox();
-			this.label24 = new Label();
-			this.tbu6 = new TextBox();
-			this.label23 = new Label();
-			this.gbclarse = new GroupBox();
-			this.label11 = new Label();
-			this.cbLotClas = new ComboBox();
-			this.tbcset = new TextBox();
-			this.tblotclass = new TextBox();
-			this.label17 = new Label();
-			this.label7 = new Label();
-			this.lb = new ListBox();
-			this.tbElevationAt = new TextBox();
-			this.label25 = new Label();
-			this.tbowner = new TextBox();
-			this.label15 = new Label();
-			this.label8 = new Label();
-			this.bthbytrvl = new Button();
-			this.tbinst = new TextBox();
-			this.label14 = new Label();
-			this.tbu4 = new TextBox();
-			this.cborient = new Ambertation.Windows.Forms.EnumComboBox();
-			this.tbTexture = new TextBox();
-			this.label2 = new Label();
-			this.label6 = new Label();
-			this.label3 = new Label();
-			this.tbwd = new TextBox();
-			this.tbrotation = new TextBox();
-			this.label9 = new Label();
-			this.label10 = new Label();
-			this.tbhg = new TextBox();
-			this.tbRoads = new TextBox();
-			this.label12 = new Label();
-			this.tbver = new TextBox();
-			this.tbtop = new TextBox();
-			this.label13 = new Label();
-			this.tbsubver = new TextBox();
-			this.tbleft = new TextBox();
-			this.label20 = new Label();
-			this.label1 = new Label();
-			this.tbz = new TextBox();
-			this.cbtype = new ComboBox();
-			this.tbtype = new TextBox();
-			this.panel2 = new Panel();
-			this.pb = new PictureBox();
-			this.ltxtPanel.SuspendLayout();
-			this.gbApart.SuspendLayout();
-			this.gbApartment.SuspendLayout();
-			this.gbtravel.SuspendLayout();
-			this.gbhobby.SuspendLayout();
-			this.gbFlagg.SuspendLayout();
-			this.gbunown.SuspendLayout();
-			this.gbclarse.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
-			this.SuspendLayout();
+			ltxtPanel = new Panel();
+			lbPlayim = new Label();
+			gbApart = new GroupBox();
+			label22 = new Label();
+			gbApartment = new GroupBox();
+			llFamily = new LinkLabel();
+			tbApartment = new TextBox();
+			tbSAu2 = new TextBox();
+			llSubLot = new LinkLabel();
+			label31 = new Label();
+			tbSAu3 = new TextBox();
+			label30 = new Label();
+			tbSAFamily = new TextBox();
+			lbApts = new ListBox();
+			tbApBase = new TextBox();
+			llAptBase = new LinkLabel();
+			btnDelApt = new Button();
+			btnAddApt = new Button();
+			tbdesc = new TextBox();
+			gbtravel = new GroupBox();
+			cbtrjflag5 = new CheckBox();
+			cbtrjflag4 = new CheckBox();
+			cbtrjflag3 = new CheckBox();
+			cbtrjflag2 = new CheckBox();
+			cbtrjflag1 = new CheckBox();
+			cbtrjungle = new CheckBox();
+			cbtrhidec = new CheckBox();
+			cbtrpool = new CheckBox();
+			cbtrmale = new CheckBox();
+			cbtrfem = new CheckBox();
+			cbtrbeach = new CheckBox();
+			cbtrformal = new CheckBox();
+			cbtrteen = new CheckBox();
+			cbtrnude = new CheckBox();
+			cbtrpern = new CheckBox();
+			cgtrwhite = new CheckBox();
+			cbtrblue = new CheckBox();
+			cbtrredred = new CheckBox();
+			cbtradult = new CheckBox();
+			cbtrclub = new CheckBox();
+			label5 = new Label();
+			tblotname = new TextBox();
+			gbhobby = new GroupBox();
+			cbhbmusic = new CheckBox();
+			cbhbsport = new CheckBox();
+			cbhbscience = new CheckBox();
+			cbhbfitness = new CheckBox();
+			cbhbtinker = new CheckBox();
+			cbhbnature = new CheckBox();
+			cbhbgames = new CheckBox();
+			cbhbfilm = new CheckBox();
+			cbhbart = new CheckBox();
+			cbhbcook = new CheckBox();
+			label4 = new Label();
+			llunknone = new LinkLabel();
+			gbFlagg = new GroupBox();
+			tbu0 = new TextBox();
+			label21 = new Label();
+			cbBeachy = new CheckBox();
+			cbhidim = new CheckBox();
+			gbunown = new GroupBox();
+			tbu2 = new TextBox();
+			label18 = new Label();
+			label32 = new Label();
+			label19 = new Label();
+			lbu7 = new ListBox();
+			tbu3 = new TextBox();
+			label16 = new Label();
+			tbData = new TextBox();
+			tbu7 = new TextBox();
+			tbu5 = new TextBox();
+			label24 = new Label();
+			tbu6 = new TextBox();
+			label23 = new Label();
+			gbclarse = new GroupBox();
+			label11 = new Label();
+			cbLotClas = new ComboBox();
+			tbcset = new TextBox();
+			tblotclass = new TextBox();
+			label17 = new Label();
+			label7 = new Label();
+			lb = new ListBox();
+			tbElevationAt = new TextBox();
+			label25 = new Label();
+			tbowner = new TextBox();
+			label15 = new Label();
+			label8 = new Label();
+			bthbytrvl = new Button();
+			tbinst = new TextBox();
+			label14 = new Label();
+			tbu4 = new TextBox();
+			cborient = new Ambertation.Windows.Forms.EnumComboBox();
+			tbTexture = new TextBox();
+			label2 = new Label();
+			label6 = new Label();
+			label3 = new Label();
+			tbwd = new TextBox();
+			tbrotation = new TextBox();
+			label9 = new Label();
+			label10 = new Label();
+			tbhg = new TextBox();
+			tbRoads = new TextBox();
+			label12 = new Label();
+			tbver = new TextBox();
+			tbtop = new TextBox();
+			label13 = new Label();
+			tbsubver = new TextBox();
+			tbleft = new TextBox();
+			label20 = new Label();
+			label1 = new Label();
+			tbz = new TextBox();
+			cbtype = new ComboBox();
+			tbtype = new TextBox();
+			panel2 = new Panel();
+			pb = new PictureBox();
+			ltxtPanel.SuspendLayout();
+			gbApart.SuspendLayout();
+			gbApartment.SuspendLayout();
+			gbtravel.SuspendLayout();
+			gbhobby.SuspendLayout();
+			gbFlagg.SuspendLayout();
+			gbunown.SuspendLayout();
+			gbclarse.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(pb)).BeginInit();
+			SuspendLayout();
 			//
 			// ltxtPanel
 			//
-			resources.ApplyResources(this.ltxtPanel, "ltxtPanel");
-			this.ltxtPanel.BackColor = Color.Transparent;
-			this.ltxtPanel.Controls.Add(this.lbPlayim);
-			this.ltxtPanel.Controls.Add(this.gbApart);
-			this.ltxtPanel.Controls.Add(this.tbdesc);
-			this.ltxtPanel.Controls.Add(this.gbtravel);
-			this.ltxtPanel.Controls.Add(this.label5);
-			this.ltxtPanel.Controls.Add(this.tblotname);
-			this.ltxtPanel.Controls.Add(this.gbhobby);
-			this.ltxtPanel.Controls.Add(this.label4);
-			this.ltxtPanel.Controls.Add(this.llunknone);
-			this.ltxtPanel.Controls.Add(this.gbFlagg);
-			this.ltxtPanel.Controls.Add(this.gbunown);
-			this.ltxtPanel.Controls.Add(this.gbclarse);
-			this.ltxtPanel.Controls.Add(this.label7);
-			this.ltxtPanel.Controls.Add(this.lb);
-			this.ltxtPanel.Controls.Add(this.tbElevationAt);
-			this.ltxtPanel.Controls.Add(this.label25);
-			this.ltxtPanel.Controls.Add(this.tbowner);
-			this.ltxtPanel.Controls.Add(this.label15);
-			this.ltxtPanel.Controls.Add(this.label8);
-			this.ltxtPanel.Controls.Add(this.bthbytrvl);
-			this.ltxtPanel.Controls.Add(this.tbinst);
-			this.ltxtPanel.Controls.Add(this.label14);
-			this.ltxtPanel.Controls.Add(this.tbu4);
-			this.ltxtPanel.Controls.Add(this.cborient);
-			this.ltxtPanel.Controls.Add(this.tbTexture);
-			this.ltxtPanel.Controls.Add(this.label2);
-			this.ltxtPanel.Controls.Add(this.label6);
-			this.ltxtPanel.Controls.Add(this.label3);
-			this.ltxtPanel.Controls.Add(this.tbwd);
-			this.ltxtPanel.Controls.Add(this.tbrotation);
-			this.ltxtPanel.Controls.Add(this.label9);
-			this.ltxtPanel.Controls.Add(this.label10);
-			this.ltxtPanel.Controls.Add(this.tbhg);
-			this.ltxtPanel.Controls.Add(this.tbRoads);
-			this.ltxtPanel.Controls.Add(this.label12);
-			this.ltxtPanel.Controls.Add(this.tbver);
-			this.ltxtPanel.Controls.Add(this.tbtop);
-			this.ltxtPanel.Controls.Add(this.label13);
-			this.ltxtPanel.Controls.Add(this.tbsubver);
-			this.ltxtPanel.Controls.Add(this.tbleft);
-			this.ltxtPanel.Controls.Add(this.label20);
-			this.ltxtPanel.Controls.Add(this.label1);
-			this.ltxtPanel.Controls.Add(this.tbz);
-			this.ltxtPanel.Controls.Add(this.cbtype);
-			this.ltxtPanel.Controls.Add(this.tbtype);
-			this.ltxtPanel.Controls.Add(this.panel2);
-			this.ltxtPanel.Controls.Add(this.pb);
-			this.ltxtPanel.Name = "ltxtPanel";
+			resources.ApplyResources(ltxtPanel, "ltxtPanel");
+			ltxtPanel.BackColor = Color.Transparent;
+			ltxtPanel.Controls.Add(lbPlayim);
+			ltxtPanel.Controls.Add(gbApart);
+			ltxtPanel.Controls.Add(tbdesc);
+			ltxtPanel.Controls.Add(gbtravel);
+			ltxtPanel.Controls.Add(label5);
+			ltxtPanel.Controls.Add(tblotname);
+			ltxtPanel.Controls.Add(gbhobby);
+			ltxtPanel.Controls.Add(label4);
+			ltxtPanel.Controls.Add(llunknone);
+			ltxtPanel.Controls.Add(gbFlagg);
+			ltxtPanel.Controls.Add(gbunown);
+			ltxtPanel.Controls.Add(gbclarse);
+			ltxtPanel.Controls.Add(label7);
+			ltxtPanel.Controls.Add(lb);
+			ltxtPanel.Controls.Add(tbElevationAt);
+			ltxtPanel.Controls.Add(label25);
+			ltxtPanel.Controls.Add(tbowner);
+			ltxtPanel.Controls.Add(label15);
+			ltxtPanel.Controls.Add(label8);
+			ltxtPanel.Controls.Add(bthbytrvl);
+			ltxtPanel.Controls.Add(tbinst);
+			ltxtPanel.Controls.Add(label14);
+			ltxtPanel.Controls.Add(tbu4);
+			ltxtPanel.Controls.Add(cborient);
+			ltxtPanel.Controls.Add(tbTexture);
+			ltxtPanel.Controls.Add(label2);
+			ltxtPanel.Controls.Add(label6);
+			ltxtPanel.Controls.Add(label3);
+			ltxtPanel.Controls.Add(tbwd);
+			ltxtPanel.Controls.Add(tbrotation);
+			ltxtPanel.Controls.Add(label9);
+			ltxtPanel.Controls.Add(label10);
+			ltxtPanel.Controls.Add(tbhg);
+			ltxtPanel.Controls.Add(tbRoads);
+			ltxtPanel.Controls.Add(label12);
+			ltxtPanel.Controls.Add(tbver);
+			ltxtPanel.Controls.Add(tbtop);
+			ltxtPanel.Controls.Add(label13);
+			ltxtPanel.Controls.Add(tbsubver);
+			ltxtPanel.Controls.Add(tbleft);
+			ltxtPanel.Controls.Add(label20);
+			ltxtPanel.Controls.Add(label1);
+			ltxtPanel.Controls.Add(tbz);
+			ltxtPanel.Controls.Add(cbtype);
+			ltxtPanel.Controls.Add(tbtype);
+			ltxtPanel.Controls.Add(panel2);
+			ltxtPanel.Controls.Add(pb);
+			ltxtPanel.Name = "ltxtPanel";
 			//
 			// lbPlayim
 			//
-			resources.ApplyResources(this.lbPlayim, "lbPlayim");
-			this.lbPlayim.ForeColor = Color.Blue;
-			this.lbPlayim.Name = "lbPlayim";
+			resources.ApplyResources(lbPlayim, "lbPlayim");
+			lbPlayim.ForeColor = Color.Blue;
+			lbPlayim.Name = "lbPlayim";
 			//
 			// gbApart
 			//
-			this.gbApart.Controls.Add(this.label22);
-			this.gbApart.Controls.Add(this.gbApartment);
-			this.gbApart.Controls.Add(this.lbApts);
-			this.gbApart.Controls.Add(this.tbApBase);
-			this.gbApart.Controls.Add(this.llAptBase);
-			this.gbApart.Controls.Add(this.btnDelApt);
-			this.gbApart.Controls.Add(this.btnAddApt);
-			resources.ApplyResources(this.gbApart, "gbApart");
-			this.gbApart.Name = "gbApart";
-			this.gbApart.TabStop = false;
+			gbApart.Controls.Add(label22);
+			gbApart.Controls.Add(gbApartment);
+			gbApart.Controls.Add(lbApts);
+			gbApart.Controls.Add(tbApBase);
+			gbApart.Controls.Add(llAptBase);
+			gbApart.Controls.Add(btnDelApt);
+			gbApart.Controls.Add(btnAddApt);
+			resources.ApplyResources(gbApart, "gbApart");
+			gbApart.Name = "gbApart";
+			gbApart.TabStop = false;
 			//
 			// label22
 			//
-			resources.ApplyResources(this.label22, "label22");
-			this.label22.Name = "label22";
+			resources.ApplyResources(label22, "label22");
+			label22.Name = "label22";
 			//
 			// gbApartment
 			//
-			resources.ApplyResources(this.gbApartment, "gbApartment");
-			this.gbApartment.Controls.Add(this.llFamily);
-			this.gbApartment.Controls.Add(this.tbApartment);
-			this.gbApartment.Controls.Add(this.tbSAu2);
-			this.gbApartment.Controls.Add(this.llSubLot);
-			this.gbApartment.Controls.Add(this.label31);
-			this.gbApartment.Controls.Add(this.tbSAu3);
-			this.gbApartment.Controls.Add(this.label30);
-			this.gbApartment.Controls.Add(this.tbSAFamily);
-			this.gbApartment.Name = "gbApartment";
-			this.gbApartment.TabStop = false;
+			resources.ApplyResources(gbApartment, "gbApartment");
+			gbApartment.Controls.Add(llFamily);
+			gbApartment.Controls.Add(tbApartment);
+			gbApartment.Controls.Add(tbSAu2);
+			gbApartment.Controls.Add(llSubLot);
+			gbApartment.Controls.Add(label31);
+			gbApartment.Controls.Add(tbSAu3);
+			gbApartment.Controls.Add(label30);
+			gbApartment.Controls.Add(tbSAFamily);
+			gbApartment.Name = "gbApartment";
+			gbApartment.TabStop = false;
 			//
 			// llFamily
 			//
-			resources.ApplyResources(this.llFamily, "llFamily");
-			this.llFamily.Name = "llFamily";
-			this.llFamily.TabStop = true;
-			this.llFamily.LinkClicked +=
+			resources.ApplyResources(llFamily, "llFamily");
+			llFamily.Name = "llFamily";
+			llFamily.TabStop = true;
+			llFamily.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.ll_Click
+					ll_Click
 				);
 			//
 			// tbApartment
 			//
-			resources.ApplyResources(this.tbApartment, "tbApartment");
-			this.tbApartment.Name = "tbApartment";
-			this.tbApartment.TextChanged += new EventHandler(this.SAChange);
+			resources.ApplyResources(tbApartment, "tbApartment");
+			tbApartment.Name = "tbApartment";
+			tbApartment.TextChanged += new EventHandler(SAChange);
 			//
 			// tbSAu2
 			//
-			resources.ApplyResources(this.tbSAu2, "tbSAu2");
-			this.tbSAu2.Name = "tbSAu2";
-			this.tbSAu2.TextChanged += new EventHandler(this.SAChange);
+			resources.ApplyResources(tbSAu2, "tbSAu2");
+			tbSAu2.Name = "tbSAu2";
+			tbSAu2.TextChanged += new EventHandler(SAChange);
 			//
 			// llSubLot
 			//
-			resources.ApplyResources(this.llSubLot, "llSubLot");
-			this.llSubLot.Name = "llSubLot";
-			this.llSubLot.TabStop = true;
-			this.llSubLot.LinkClicked +=
+			resources.ApplyResources(llSubLot, "llSubLot");
+			llSubLot.Name = "llSubLot";
+			llSubLot.TabStop = true;
+			llSubLot.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.ll_Click
+					ll_Click
 				);
 			//
 			// label31
 			//
-			resources.ApplyResources(this.label31, "label31");
-			this.label31.Name = "label31";
+			resources.ApplyResources(label31, "label31");
+			label31.Name = "label31";
 			//
 			// tbSAu3
 			//
-			resources.ApplyResources(this.tbSAu3, "tbSAu3");
-			this.tbSAu3.Name = "tbSAu3";
-			this.tbSAu3.TextChanged += new EventHandler(this.SAChange);
+			resources.ApplyResources(tbSAu3, "tbSAu3");
+			tbSAu3.Name = "tbSAu3";
+			tbSAu3.TextChanged += new EventHandler(SAChange);
 			//
 			// label30
 			//
-			resources.ApplyResources(this.label30, "label30");
-			this.label30.Name = "label30";
+			resources.ApplyResources(label30, "label30");
+			label30.Name = "label30";
 			//
 			// tbSAFamily
 			//
-			resources.ApplyResources(this.tbSAFamily, "tbSAFamily");
-			this.tbSAFamily.Name = "tbSAFamily";
-			this.tbSAFamily.TextChanged += new EventHandler(this.SAChange);
+			resources.ApplyResources(tbSAFamily, "tbSAFamily");
+			tbSAFamily.Name = "tbSAFamily";
+			tbSAFamily.TextChanged += new EventHandler(SAChange);
 			//
 			// lbApts
 			//
-			resources.ApplyResources(this.lbApts, "lbApts");
-			this.lbApts.Items.AddRange(
+			resources.ApplyResources(lbApts, "lbApts");
+			lbApts.Items.AddRange(
 				new object[]
 				{
 					resources.GetString("lbApts.Items"),
@@ -478,474 +478,474 @@ namespace SimPe.Plugin
 					resources.GetString("lbApts.Items3"),
 				}
 			);
-			this.lbApts.MinimumSize = new Size(0, 44);
-			this.lbApts.MultiColumn = true;
-			this.lbApts.Name = "lbApts";
-			this.lbApts.SelectedIndexChanged += new EventHandler(
-				this.lbApts_SelectedIndexChanged
+			lbApts.MinimumSize = new Size(0, 44);
+			lbApts.MultiColumn = true;
+			lbApts.Name = "lbApts";
+			lbApts.SelectedIndexChanged += new EventHandler(
+				lbApts_SelectedIndexChanged
 			);
 			//
 			// tbApBase
 			//
-			resources.ApplyResources(this.tbApBase, "tbApBase");
-			this.tbApBase.Name = "tbApBase";
-			this.tbApBase.TextChanged += new EventHandler(
-				this.tbApBase_TextChanged
+			resources.ApplyResources(tbApBase, "tbApBase");
+			tbApBase.Name = "tbApBase";
+			tbApBase.TextChanged += new EventHandler(
+				tbApBase_TextChanged
 			);
 			//
 			// llAptBase
 			//
-			resources.ApplyResources(this.llAptBase, "llAptBase");
-			this.llAptBase.Name = "llAptBase";
-			this.llAptBase.TabStop = true;
-			this.llAptBase.LinkClicked +=
+			resources.ApplyResources(llAptBase, "llAptBase");
+			llAptBase.Name = "llAptBase";
+			llAptBase.TabStop = true;
+			llAptBase.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.ll_Click
+					ll_Click
 				);
 			//
 			// btnDelApt
 			//
-			resources.ApplyResources(this.btnDelApt, "btnDelApt");
-			this.btnDelApt.Name = "btnDelApt";
-			this.btnDelApt.UseVisualStyleBackColor = true;
-			this.btnDelApt.Click += new EventHandler(this.btnDelApt_Click);
+			resources.ApplyResources(btnDelApt, "btnDelApt");
+			btnDelApt.Name = "btnDelApt";
+			btnDelApt.UseVisualStyleBackColor = true;
+			btnDelApt.Click += new EventHandler(btnDelApt_Click);
 			//
 			// btnAddApt
 			//
-			resources.ApplyResources(this.btnAddApt, "btnAddApt");
-			this.btnAddApt.Name = "btnAddApt";
-			this.btnAddApt.UseVisualStyleBackColor = true;
-			this.btnAddApt.Click += new EventHandler(this.btnAddApt_Click);
+			resources.ApplyResources(btnAddApt, "btnAddApt");
+			btnAddApt.Name = "btnAddApt";
+			btnAddApt.UseVisualStyleBackColor = true;
+			btnAddApt.Click += new EventHandler(btnAddApt_Click);
 			//
 			// tbdesc
 			//
-			resources.ApplyResources(this.tbdesc, "tbdesc");
-			this.tbdesc.Name = "tbdesc";
-			this.tbdesc.TextChanged += new EventHandler(this.CommonChange);
+			resources.ApplyResources(tbdesc, "tbdesc");
+			tbdesc.Name = "tbdesc";
+			tbdesc.TextChanged += new EventHandler(CommonChange);
 			//
 			// gbtravel
 			//
-			this.gbtravel.BackColor = Color.Transparent;
-			this.gbtravel.Controls.Add(this.cbtrjflag5);
-			this.gbtravel.Controls.Add(this.cbtrjflag4);
-			this.gbtravel.Controls.Add(this.cbtrjflag3);
-			this.gbtravel.Controls.Add(this.cbtrjflag2);
-			this.gbtravel.Controls.Add(this.cbtrjflag1);
-			this.gbtravel.Controls.Add(this.cbtrjungle);
-			this.gbtravel.Controls.Add(this.cbtrhidec);
-			this.gbtravel.Controls.Add(this.cbtrpool);
-			this.gbtravel.Controls.Add(this.cbtrmale);
-			this.gbtravel.Controls.Add(this.cbtrfem);
-			this.gbtravel.Controls.Add(this.cbtrbeach);
-			this.gbtravel.Controls.Add(this.cbtrformal);
-			this.gbtravel.Controls.Add(this.cbtrteen);
-			this.gbtravel.Controls.Add(this.cbtrnude);
-			this.gbtravel.Controls.Add(this.cbtrpern);
-			this.gbtravel.Controls.Add(this.cgtrwhite);
-			this.gbtravel.Controls.Add(this.cbtrblue);
-			this.gbtravel.Controls.Add(this.cbtrredred);
-			this.gbtravel.Controls.Add(this.cbtradult);
-			this.gbtravel.Controls.Add(this.cbtrclub);
-			resources.ApplyResources(this.gbtravel, "gbtravel");
-			this.gbtravel.Name = "gbtravel";
-			this.gbtravel.TabStop = false;
+			gbtravel.BackColor = Color.Transparent;
+			gbtravel.Controls.Add(cbtrjflag5);
+			gbtravel.Controls.Add(cbtrjflag4);
+			gbtravel.Controls.Add(cbtrjflag3);
+			gbtravel.Controls.Add(cbtrjflag2);
+			gbtravel.Controls.Add(cbtrjflag1);
+			gbtravel.Controls.Add(cbtrjungle);
+			gbtravel.Controls.Add(cbtrhidec);
+			gbtravel.Controls.Add(cbtrpool);
+			gbtravel.Controls.Add(cbtrmale);
+			gbtravel.Controls.Add(cbtrfem);
+			gbtravel.Controls.Add(cbtrbeach);
+			gbtravel.Controls.Add(cbtrformal);
+			gbtravel.Controls.Add(cbtrteen);
+			gbtravel.Controls.Add(cbtrnude);
+			gbtravel.Controls.Add(cbtrpern);
+			gbtravel.Controls.Add(cgtrwhite);
+			gbtravel.Controls.Add(cbtrblue);
+			gbtravel.Controls.Add(cbtrredred);
+			gbtravel.Controls.Add(cbtradult);
+			gbtravel.Controls.Add(cbtrclub);
+			resources.ApplyResources(gbtravel, "gbtravel");
+			gbtravel.Name = "gbtravel";
+			gbtravel.TabStop = false;
 			//
 			// cbtrjflag5
 			//
-			resources.ApplyResources(this.cbtrjflag5, "cbtrjflag5");
-			this.cbtrjflag5.Name = "cbtrjflag5";
-			this.cbtrjflag5.UseVisualStyleBackColor = true;
-			this.cbtrjflag5.CheckedChanged += new EventHandler(
-				this.hobbytravel_CheckedChanged
+			resources.ApplyResources(cbtrjflag5, "cbtrjflag5");
+			cbtrjflag5.Name = "cbtrjflag5";
+			cbtrjflag5.UseVisualStyleBackColor = true;
+			cbtrjflag5.CheckedChanged += new EventHandler(
+				hobbytravel_CheckedChanged
 			);
 			//
 			// cbtrjflag4
 			//
-			resources.ApplyResources(this.cbtrjflag4, "cbtrjflag4");
-			this.cbtrjflag4.Name = "cbtrjflag4";
-			this.cbtrjflag4.UseVisualStyleBackColor = true;
-			this.cbtrjflag4.CheckedChanged += new EventHandler(
-				this.hobbytravel_CheckedChanged
+			resources.ApplyResources(cbtrjflag4, "cbtrjflag4");
+			cbtrjflag4.Name = "cbtrjflag4";
+			cbtrjflag4.UseVisualStyleBackColor = true;
+			cbtrjflag4.CheckedChanged += new EventHandler(
+				hobbytravel_CheckedChanged
 			);
 			//
 			// cbtrjflag3
 			//
-			resources.ApplyResources(this.cbtrjflag3, "cbtrjflag3");
-			this.cbtrjflag3.Name = "cbtrjflag3";
-			this.cbtrjflag3.UseVisualStyleBackColor = true;
-			this.cbtrjflag3.CheckedChanged += new EventHandler(
-				this.hobbytravel_CheckedChanged
+			resources.ApplyResources(cbtrjflag3, "cbtrjflag3");
+			cbtrjflag3.Name = "cbtrjflag3";
+			cbtrjflag3.UseVisualStyleBackColor = true;
+			cbtrjflag3.CheckedChanged += new EventHandler(
+				hobbytravel_CheckedChanged
 			);
 			//
 			// cbtrjflag2
 			//
-			resources.ApplyResources(this.cbtrjflag2, "cbtrjflag2");
-			this.cbtrjflag2.Name = "cbtrjflag2";
-			this.cbtrjflag2.UseVisualStyleBackColor = true;
-			this.cbtrjflag2.CheckedChanged += new EventHandler(
-				this.hobbytravel_CheckedChanged
+			resources.ApplyResources(cbtrjflag2, "cbtrjflag2");
+			cbtrjflag2.Name = "cbtrjflag2";
+			cbtrjflag2.UseVisualStyleBackColor = true;
+			cbtrjflag2.CheckedChanged += new EventHandler(
+				hobbytravel_CheckedChanged
 			);
 			//
 			// cbtrjflag1
 			//
-			resources.ApplyResources(this.cbtrjflag1, "cbtrjflag1");
-			this.cbtrjflag1.Name = "cbtrjflag1";
-			this.cbtrjflag1.UseVisualStyleBackColor = true;
-			this.cbtrjflag1.CheckedChanged += new EventHandler(
-				this.hobbytravel_CheckedChanged
+			resources.ApplyResources(cbtrjflag1, "cbtrjflag1");
+			cbtrjflag1.Name = "cbtrjflag1";
+			cbtrjflag1.UseVisualStyleBackColor = true;
+			cbtrjflag1.CheckedChanged += new EventHandler(
+				hobbytravel_CheckedChanged
 			);
 			//
 			// cbtrjungle
 			//
-			resources.ApplyResources(this.cbtrjungle, "cbtrjungle");
-			this.cbtrjungle.Name = "cbtrjungle";
-			this.cbtrjungle.UseVisualStyleBackColor = true;
-			this.cbtrjungle.CheckedChanged += new EventHandler(
-				this.hobbytravel_CheckedChanged
+			resources.ApplyResources(cbtrjungle, "cbtrjungle");
+			cbtrjungle.Name = "cbtrjungle";
+			cbtrjungle.UseVisualStyleBackColor = true;
+			cbtrjungle.CheckedChanged += new EventHandler(
+				hobbytravel_CheckedChanged
 			);
 			//
 			// cbtrhidec
 			//
-			resources.ApplyResources(this.cbtrhidec, "cbtrhidec");
-			this.cbtrhidec.Name = "cbtrhidec";
-			this.cbtrhidec.UseVisualStyleBackColor = true;
-			this.cbtrhidec.CheckedChanged += new EventHandler(
-				this.hobbytravel_CheckedChanged
+			resources.ApplyResources(cbtrhidec, "cbtrhidec");
+			cbtrhidec.Name = "cbtrhidec";
+			cbtrhidec.UseVisualStyleBackColor = true;
+			cbtrhidec.CheckedChanged += new EventHandler(
+				hobbytravel_CheckedChanged
 			);
 			//
 			// cbtrpool
 			//
-			resources.ApplyResources(this.cbtrpool, "cbtrpool");
-			this.cbtrpool.Name = "cbtrpool";
-			this.cbtrpool.UseVisualStyleBackColor = true;
-			this.cbtrpool.CheckedChanged += new EventHandler(
-				this.hobbytravel_CheckedChanged
+			resources.ApplyResources(cbtrpool, "cbtrpool");
+			cbtrpool.Name = "cbtrpool";
+			cbtrpool.UseVisualStyleBackColor = true;
+			cbtrpool.CheckedChanged += new EventHandler(
+				hobbytravel_CheckedChanged
 			);
 			//
 			// cbtrmale
 			//
-			resources.ApplyResources(this.cbtrmale, "cbtrmale");
-			this.cbtrmale.Name = "cbtrmale";
-			this.cbtrmale.UseVisualStyleBackColor = true;
-			this.cbtrmale.CheckedChanged += new EventHandler(
-				this.hobbytravel_CheckedChanged
+			resources.ApplyResources(cbtrmale, "cbtrmale");
+			cbtrmale.Name = "cbtrmale";
+			cbtrmale.UseVisualStyleBackColor = true;
+			cbtrmale.CheckedChanged += new EventHandler(
+				hobbytravel_CheckedChanged
 			);
 			//
 			// cbtrfem
 			//
-			resources.ApplyResources(this.cbtrfem, "cbtrfem");
-			this.cbtrfem.Name = "cbtrfem";
-			this.cbtrfem.UseVisualStyleBackColor = true;
-			this.cbtrfem.CheckedChanged += new EventHandler(
-				this.hobbytravel_CheckedChanged
+			resources.ApplyResources(cbtrfem, "cbtrfem");
+			cbtrfem.Name = "cbtrfem";
+			cbtrfem.UseVisualStyleBackColor = true;
+			cbtrfem.CheckedChanged += new EventHandler(
+				hobbytravel_CheckedChanged
 			);
 			//
 			// cbtrbeach
 			//
-			resources.ApplyResources(this.cbtrbeach, "cbtrbeach");
-			this.cbtrbeach.Name = "cbtrbeach";
-			this.cbtrbeach.UseVisualStyleBackColor = true;
-			this.cbtrbeach.CheckedChanged += new EventHandler(
-				this.hobbytravel_CheckedChanged
+			resources.ApplyResources(cbtrbeach, "cbtrbeach");
+			cbtrbeach.Name = "cbtrbeach";
+			cbtrbeach.UseVisualStyleBackColor = true;
+			cbtrbeach.CheckedChanged += new EventHandler(
+				hobbytravel_CheckedChanged
 			);
 			//
 			// cbtrformal
 			//
-			resources.ApplyResources(this.cbtrformal, "cbtrformal");
-			this.cbtrformal.Name = "cbtrformal";
-			this.cbtrformal.UseVisualStyleBackColor = true;
-			this.cbtrformal.CheckedChanged += new EventHandler(
-				this.hobbytravel_CheckedChanged
+			resources.ApplyResources(cbtrformal, "cbtrformal");
+			cbtrformal.Name = "cbtrformal";
+			cbtrformal.UseVisualStyleBackColor = true;
+			cbtrformal.CheckedChanged += new EventHandler(
+				hobbytravel_CheckedChanged
 			);
 			//
 			// cbtrteen
 			//
-			resources.ApplyResources(this.cbtrteen, "cbtrteen");
-			this.cbtrteen.Name = "cbtrteen";
-			this.cbtrteen.UseVisualStyleBackColor = true;
-			this.cbtrteen.CheckedChanged += new EventHandler(
-				this.hobbytravel_CheckedChanged
+			resources.ApplyResources(cbtrteen, "cbtrteen");
+			cbtrteen.Name = "cbtrteen";
+			cbtrteen.UseVisualStyleBackColor = true;
+			cbtrteen.CheckedChanged += new EventHandler(
+				hobbytravel_CheckedChanged
 			);
 			//
 			// cbtrnude
 			//
-			resources.ApplyResources(this.cbtrnude, "cbtrnude");
-			this.cbtrnude.Name = "cbtrnude";
-			this.cbtrnude.UseVisualStyleBackColor = true;
-			this.cbtrnude.CheckedChanged += new EventHandler(
-				this.hobbytravel_CheckedChanged
+			resources.ApplyResources(cbtrnude, "cbtrnude");
+			cbtrnude.Name = "cbtrnude";
+			cbtrnude.UseVisualStyleBackColor = true;
+			cbtrnude.CheckedChanged += new EventHandler(
+				hobbytravel_CheckedChanged
 			);
 			//
 			// cbtrpern
 			//
-			resources.ApplyResources(this.cbtrpern, "cbtrpern");
-			this.cbtrpern.Name = "cbtrpern";
-			this.cbtrpern.UseVisualStyleBackColor = true;
-			this.cbtrpern.CheckedChanged += new EventHandler(
-				this.hobbytravel_CheckedChanged
+			resources.ApplyResources(cbtrpern, "cbtrpern");
+			cbtrpern.Name = "cbtrpern";
+			cbtrpern.UseVisualStyleBackColor = true;
+			cbtrpern.CheckedChanged += new EventHandler(
+				hobbytravel_CheckedChanged
 			);
 			//
 			// cgtrwhite
 			//
-			resources.ApplyResources(this.cgtrwhite, "cgtrwhite");
-			this.cgtrwhite.Name = "cgtrwhite";
-			this.cgtrwhite.UseVisualStyleBackColor = true;
-			this.cgtrwhite.CheckedChanged += new EventHandler(
-				this.hobbytravel_CheckedChanged
+			resources.ApplyResources(cgtrwhite, "cgtrwhite");
+			cgtrwhite.Name = "cgtrwhite";
+			cgtrwhite.UseVisualStyleBackColor = true;
+			cgtrwhite.CheckedChanged += new EventHandler(
+				hobbytravel_CheckedChanged
 			);
 			//
 			// cbtrblue
 			//
-			resources.ApplyResources(this.cbtrblue, "cbtrblue");
-			this.cbtrblue.Name = "cbtrblue";
-			this.cbtrblue.UseVisualStyleBackColor = true;
-			this.cbtrblue.CheckedChanged += new EventHandler(
-				this.hobbytravel_CheckedChanged
+			resources.ApplyResources(cbtrblue, "cbtrblue");
+			cbtrblue.Name = "cbtrblue";
+			cbtrblue.UseVisualStyleBackColor = true;
+			cbtrblue.CheckedChanged += new EventHandler(
+				hobbytravel_CheckedChanged
 			);
 			//
 			// cbtrredred
 			//
-			resources.ApplyResources(this.cbtrredred, "cbtrredred");
-			this.cbtrredred.Name = "cbtrredred";
-			this.cbtrredred.UseVisualStyleBackColor = true;
-			this.cbtrredred.CheckedChanged += new EventHandler(
-				this.hobbytravel_CheckedChanged
+			resources.ApplyResources(cbtrredred, "cbtrredred");
+			cbtrredred.Name = "cbtrredred";
+			cbtrredred.UseVisualStyleBackColor = true;
+			cbtrredred.CheckedChanged += new EventHandler(
+				hobbytravel_CheckedChanged
 			);
 			//
 			// cbtradult
 			//
-			resources.ApplyResources(this.cbtradult, "cbtradult");
-			this.cbtradult.Name = "cbtradult";
-			this.cbtradult.UseVisualStyleBackColor = true;
-			this.cbtradult.CheckedChanged += new EventHandler(
-				this.hobbytravel_CheckedChanged
+			resources.ApplyResources(cbtradult, "cbtradult");
+			cbtradult.Name = "cbtradult";
+			cbtradult.UseVisualStyleBackColor = true;
+			cbtradult.CheckedChanged += new EventHandler(
+				hobbytravel_CheckedChanged
 			);
 			//
 			// cbtrclub
 			//
-			resources.ApplyResources(this.cbtrclub, "cbtrclub");
-			this.cbtrclub.Name = "cbtrclub";
-			this.cbtrclub.UseVisualStyleBackColor = true;
-			this.cbtrclub.CheckedChanged += new EventHandler(
-				this.hobbytravel_CheckedChanged
+			resources.ApplyResources(cbtrclub, "cbtrclub");
+			cbtrclub.Name = "cbtrclub";
+			cbtrclub.UseVisualStyleBackColor = true;
+			cbtrclub.CheckedChanged += new EventHandler(
+				hobbytravel_CheckedChanged
 			);
 			//
 			// label5
 			//
-			resources.ApplyResources(this.label5, "label5");
-			this.label5.Name = "label5";
+			resources.ApplyResources(label5, "label5");
+			label5.Name = "label5";
 			//
 			// tblotname
 			//
-			resources.ApplyResources(this.tblotname, "tblotname");
-			this.tblotname.Name = "tblotname";
-			this.tblotname.TextChanged += new EventHandler(this.CommonChange);
+			resources.ApplyResources(tblotname, "tblotname");
+			tblotname.Name = "tblotname";
+			tblotname.TextChanged += new EventHandler(CommonChange);
 			//
 			// gbhobby
 			//
-			this.gbhobby.BackColor = Color.Transparent;
-			this.gbhobby.Controls.Add(this.cbhbmusic);
-			this.gbhobby.Controls.Add(this.cbhbsport);
-			this.gbhobby.Controls.Add(this.cbhbscience);
-			this.gbhobby.Controls.Add(this.cbhbfitness);
-			this.gbhobby.Controls.Add(this.cbhbtinker);
-			this.gbhobby.Controls.Add(this.cbhbnature);
-			this.gbhobby.Controls.Add(this.cbhbgames);
-			this.gbhobby.Controls.Add(this.cbhbfilm);
-			this.gbhobby.Controls.Add(this.cbhbart);
-			this.gbhobby.Controls.Add(this.cbhbcook);
-			resources.ApplyResources(this.gbhobby, "gbhobby");
-			this.gbhobby.Name = "gbhobby";
-			this.gbhobby.TabStop = false;
+			gbhobby.BackColor = Color.Transparent;
+			gbhobby.Controls.Add(cbhbmusic);
+			gbhobby.Controls.Add(cbhbsport);
+			gbhobby.Controls.Add(cbhbscience);
+			gbhobby.Controls.Add(cbhbfitness);
+			gbhobby.Controls.Add(cbhbtinker);
+			gbhobby.Controls.Add(cbhbnature);
+			gbhobby.Controls.Add(cbhbgames);
+			gbhobby.Controls.Add(cbhbfilm);
+			gbhobby.Controls.Add(cbhbart);
+			gbhobby.Controls.Add(cbhbcook);
+			resources.ApplyResources(gbhobby, "gbhobby");
+			gbhobby.Name = "gbhobby";
+			gbhobby.TabStop = false;
 			//
 			// cbhbmusic
 			//
-			resources.ApplyResources(this.cbhbmusic, "cbhbmusic");
-			this.cbhbmusic.Name = "cbhbmusic";
-			this.cbhbmusic.UseVisualStyleBackColor = true;
-			this.cbhbmusic.CheckedChanged += new EventHandler(
-				this.hobbytravel_CheckedChanged
+			resources.ApplyResources(cbhbmusic, "cbhbmusic");
+			cbhbmusic.Name = "cbhbmusic";
+			cbhbmusic.UseVisualStyleBackColor = true;
+			cbhbmusic.CheckedChanged += new EventHandler(
+				hobbytravel_CheckedChanged
 			);
 			//
 			// cbhbsport
 			//
-			resources.ApplyResources(this.cbhbsport, "cbhbsport");
-			this.cbhbsport.Name = "cbhbsport";
-			this.cbhbsport.UseVisualStyleBackColor = true;
-			this.cbhbsport.CheckedChanged += new EventHandler(
-				this.hobbytravel_CheckedChanged
+			resources.ApplyResources(cbhbsport, "cbhbsport");
+			cbhbsport.Name = "cbhbsport";
+			cbhbsport.UseVisualStyleBackColor = true;
+			cbhbsport.CheckedChanged += new EventHandler(
+				hobbytravel_CheckedChanged
 			);
 			//
 			// cbhbscience
 			//
-			resources.ApplyResources(this.cbhbscience, "cbhbscience");
-			this.cbhbscience.Name = "cbhbscience";
-			this.cbhbscience.UseVisualStyleBackColor = true;
-			this.cbhbscience.CheckedChanged += new EventHandler(
-				this.hobbytravel_CheckedChanged
+			resources.ApplyResources(cbhbscience, "cbhbscience");
+			cbhbscience.Name = "cbhbscience";
+			cbhbscience.UseVisualStyleBackColor = true;
+			cbhbscience.CheckedChanged += new EventHandler(
+				hobbytravel_CheckedChanged
 			);
 			//
 			// cbhbfitness
 			//
-			resources.ApplyResources(this.cbhbfitness, "cbhbfitness");
-			this.cbhbfitness.Name = "cbhbfitness";
-			this.cbhbfitness.UseVisualStyleBackColor = true;
-			this.cbhbfitness.CheckedChanged += new EventHandler(
-				this.hobbytravel_CheckedChanged
+			resources.ApplyResources(cbhbfitness, "cbhbfitness");
+			cbhbfitness.Name = "cbhbfitness";
+			cbhbfitness.UseVisualStyleBackColor = true;
+			cbhbfitness.CheckedChanged += new EventHandler(
+				hobbytravel_CheckedChanged
 			);
 			//
 			// cbhbtinker
 			//
-			resources.ApplyResources(this.cbhbtinker, "cbhbtinker");
-			this.cbhbtinker.Name = "cbhbtinker";
-			this.cbhbtinker.UseVisualStyleBackColor = true;
-			this.cbhbtinker.CheckedChanged += new EventHandler(
-				this.hobbytravel_CheckedChanged
+			resources.ApplyResources(cbhbtinker, "cbhbtinker");
+			cbhbtinker.Name = "cbhbtinker";
+			cbhbtinker.UseVisualStyleBackColor = true;
+			cbhbtinker.CheckedChanged += new EventHandler(
+				hobbytravel_CheckedChanged
 			);
 			//
 			// cbhbnature
 			//
-			resources.ApplyResources(this.cbhbnature, "cbhbnature");
-			this.cbhbnature.Name = "cbhbnature";
-			this.cbhbnature.UseVisualStyleBackColor = true;
-			this.cbhbnature.CheckedChanged += new EventHandler(
-				this.hobbytravel_CheckedChanged
+			resources.ApplyResources(cbhbnature, "cbhbnature");
+			cbhbnature.Name = "cbhbnature";
+			cbhbnature.UseVisualStyleBackColor = true;
+			cbhbnature.CheckedChanged += new EventHandler(
+				hobbytravel_CheckedChanged
 			);
 			//
 			// cbhbgames
 			//
-			resources.ApplyResources(this.cbhbgames, "cbhbgames");
-			this.cbhbgames.Name = "cbhbgames";
-			this.cbhbgames.UseVisualStyleBackColor = true;
-			this.cbhbgames.CheckedChanged += new EventHandler(
-				this.hobbytravel_CheckedChanged
+			resources.ApplyResources(cbhbgames, "cbhbgames");
+			cbhbgames.Name = "cbhbgames";
+			cbhbgames.UseVisualStyleBackColor = true;
+			cbhbgames.CheckedChanged += new EventHandler(
+				hobbytravel_CheckedChanged
 			);
 			//
 			// cbhbfilm
 			//
-			resources.ApplyResources(this.cbhbfilm, "cbhbfilm");
-			this.cbhbfilm.Name = "cbhbfilm";
-			this.cbhbfilm.UseVisualStyleBackColor = true;
-			this.cbhbfilm.CheckedChanged += new EventHandler(
-				this.hobbytravel_CheckedChanged
+			resources.ApplyResources(cbhbfilm, "cbhbfilm");
+			cbhbfilm.Name = "cbhbfilm";
+			cbhbfilm.UseVisualStyleBackColor = true;
+			cbhbfilm.CheckedChanged += new EventHandler(
+				hobbytravel_CheckedChanged
 			);
 			//
 			// cbhbart
 			//
-			resources.ApplyResources(this.cbhbart, "cbhbart");
-			this.cbhbart.Name = "cbhbart";
-			this.cbhbart.UseVisualStyleBackColor = true;
-			this.cbhbart.CheckedChanged += new EventHandler(
-				this.hobbytravel_CheckedChanged
+			resources.ApplyResources(cbhbart, "cbhbart");
+			cbhbart.Name = "cbhbart";
+			cbhbart.UseVisualStyleBackColor = true;
+			cbhbart.CheckedChanged += new EventHandler(
+				hobbytravel_CheckedChanged
 			);
 			//
 			// cbhbcook
 			//
-			resources.ApplyResources(this.cbhbcook, "cbhbcook");
-			this.cbhbcook.Name = "cbhbcook";
-			this.cbhbcook.UseVisualStyleBackColor = true;
-			this.cbhbcook.CheckedChanged += new EventHandler(
-				this.hobbytravel_CheckedChanged
+			resources.ApplyResources(cbhbcook, "cbhbcook");
+			cbhbcook.Name = "cbhbcook";
+			cbhbcook.UseVisualStyleBackColor = true;
+			cbhbcook.CheckedChanged += new EventHandler(
+				hobbytravel_CheckedChanged
 			);
 			//
 			// label4
 			//
-			resources.ApplyResources(this.label4, "label4");
-			this.label4.Name = "label4";
+			resources.ApplyResources(label4, "label4");
+			label4.Name = "label4";
 			//
 			// llunknone
 			//
-			resources.ApplyResources(this.llunknone, "llunknone");
-			this.llunknone.Name = "llunknone";
-			this.llunknone.TabStop = true;
-			this.llunknone.LinkClicked +=
+			resources.ApplyResources(llunknone, "llunknone");
+			llunknone.Name = "llunknone";
+			llunknone.TabStop = true;
+			llunknone.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.llunknone_LinkClicked
+					llunknone_LinkClicked
 				);
 			//
 			// gbFlagg
 			//
-			this.gbFlagg.Controls.Add(this.tbu0);
-			this.gbFlagg.Controls.Add(this.label21);
-			this.gbFlagg.Controls.Add(this.cbBeachy);
-			this.gbFlagg.Controls.Add(this.cbhidim);
-			resources.ApplyResources(this.gbFlagg, "gbFlagg");
-			this.gbFlagg.Name = "gbFlagg";
-			this.gbFlagg.TabStop = false;
+			gbFlagg.Controls.Add(tbu0);
+			gbFlagg.Controls.Add(label21);
+			gbFlagg.Controls.Add(cbBeachy);
+			gbFlagg.Controls.Add(cbhidim);
+			resources.ApplyResources(gbFlagg, "gbFlagg");
+			gbFlagg.Name = "gbFlagg";
+			gbFlagg.TabStop = false;
 			//
 			// tbu0
 			//
-			resources.ApplyResources(this.tbu0, "tbu0");
-			this.tbu0.Name = "tbu0";
-			this.tbu0.TextChanged += new EventHandler(this.CommonChange);
+			resources.ApplyResources(tbu0, "tbu0");
+			tbu0.Name = "tbu0";
+			tbu0.TextChanged += new EventHandler(CommonChange);
 			//
 			// label21
 			//
-			resources.ApplyResources(this.label21, "label21");
-			this.label21.Name = "label21";
+			resources.ApplyResources(label21, "label21");
+			label21.Name = "label21";
 			//
 			// cbBeachy
 			//
-			resources.ApplyResources(this.cbBeachy, "cbBeachy");
-			this.cbBeachy.Name = "cbBeachy";
-			this.cbBeachy.UseVisualStyleBackColor = true;
-			this.cbBeachy.CheckedChanged += new EventHandler(
-				this.cbhidim_CheckedChanged
+			resources.ApplyResources(cbBeachy, "cbBeachy");
+			cbBeachy.Name = "cbBeachy";
+			cbBeachy.UseVisualStyleBackColor = true;
+			cbBeachy.CheckedChanged += new EventHandler(
+				cbhidim_CheckedChanged
 			);
 			//
 			// cbhidim
 			//
-			resources.ApplyResources(this.cbhidim, "cbhidim");
-			this.cbhidim.Name = "cbhidim";
-			this.cbhidim.UseVisualStyleBackColor = true;
-			this.cbhidim.CheckedChanged += new EventHandler(
-				this.cbhidim_CheckedChanged
+			resources.ApplyResources(cbhidim, "cbhidim");
+			cbhidim.Name = "cbhidim";
+			cbhidim.UseVisualStyleBackColor = true;
+			cbhidim.CheckedChanged += new EventHandler(
+				cbhidim_CheckedChanged
 			);
 			//
 			// gbunown
 			//
-			resources.ApplyResources(this.gbunown, "gbunown");
-			this.gbunown.Controls.Add(this.tbu2);
-			this.gbunown.Controls.Add(this.label18);
-			this.gbunown.Controls.Add(this.label32);
-			this.gbunown.Controls.Add(this.label19);
-			this.gbunown.Controls.Add(this.lbu7);
-			this.gbunown.Controls.Add(this.tbu3);
-			this.gbunown.Controls.Add(this.label16);
-			this.gbunown.Controls.Add(this.tbData);
-			this.gbunown.Controls.Add(this.tbu7);
-			this.gbunown.Controls.Add(this.tbu5);
-			this.gbunown.Controls.Add(this.label24);
-			this.gbunown.Controls.Add(this.tbu6);
-			this.gbunown.Controls.Add(this.label23);
-			this.gbunown.Name = "gbunown";
-			this.gbunown.TabStop = false;
+			resources.ApplyResources(gbunown, "gbunown");
+			gbunown.Controls.Add(tbu2);
+			gbunown.Controls.Add(label18);
+			gbunown.Controls.Add(label32);
+			gbunown.Controls.Add(label19);
+			gbunown.Controls.Add(lbu7);
+			gbunown.Controls.Add(tbu3);
+			gbunown.Controls.Add(label16);
+			gbunown.Controls.Add(tbData);
+			gbunown.Controls.Add(tbu7);
+			gbunown.Controls.Add(tbu5);
+			gbunown.Controls.Add(label24);
+			gbunown.Controls.Add(tbu6);
+			gbunown.Controls.Add(label23);
+			gbunown.Name = "gbunown";
+			gbunown.TabStop = false;
 			//
 			// tbu2
 			//
-			resources.ApplyResources(this.tbu2, "tbu2");
-			this.tbu2.Name = "tbu2";
-			this.tbu2.TextChanged += new EventHandler(this.CommonChange);
+			resources.ApplyResources(tbu2, "tbu2");
+			tbu2.Name = "tbu2";
+			tbu2.TextChanged += new EventHandler(CommonChange);
 			//
 			// label18
 			//
-			resources.ApplyResources(this.label18, "label18");
-			this.label18.Name = "label18";
+			resources.ApplyResources(label18, "label18");
+			label18.Name = "label18";
 			//
 			// label32
 			//
-			resources.ApplyResources(this.label32, "label32");
-			this.label32.Name = "label32";
+			resources.ApplyResources(label32, "label32");
+			label32.Name = "label32";
 			//
 			// label19
 			//
-			resources.ApplyResources(this.label19, "label19");
-			this.label19.Name = "label19";
+			resources.ApplyResources(label19, "label19");
+			label19.Name = "label19";
 			//
 			// lbu7
 			//
-			resources.ApplyResources(this.lbu7, "lbu7");
-			this.lbu7.Items.AddRange(
+			resources.ApplyResources(lbu7, "lbu7");
+			lbu7.Items.AddRange(
 				new object[]
 				{
 					resources.GetString("lbu7.Items"),
@@ -958,79 +958,79 @@ namespace SimPe.Plugin
 					resources.GetString("lbu7.Items7"),
 				}
 			);
-			this.lbu7.MinimumSize = new Size(0, 44);
-			this.lbu7.MultiColumn = true;
-			this.lbu7.Name = "lbu7";
-			this.lbu7.SelectedIndexChanged += new EventHandler(
-				this.lbu7_SelectedIndexChanged
+			lbu7.MinimumSize = new Size(0, 44);
+			lbu7.MultiColumn = true;
+			lbu7.Name = "lbu7";
+			lbu7.SelectedIndexChanged += new EventHandler(
+				lbu7_SelectedIndexChanged
 			);
 			//
 			// tbu3
 			//
-			resources.ApplyResources(this.tbu3, "tbu3");
-			this.tbu3.Name = "tbu3";
-			this.tbu3.TextChanged += new EventHandler(this.CommonChange);
+			resources.ApplyResources(tbu3, "tbu3");
+			tbu3.Name = "tbu3";
+			tbu3.TextChanged += new EventHandler(CommonChange);
 			//
 			// label16
 			//
-			resources.ApplyResources(this.label16, "label16");
-			this.label16.Name = "label16";
+			resources.ApplyResources(label16, "label16");
+			label16.Name = "label16";
 			//
 			// tbData
 			//
-			resources.ApplyResources(this.tbData, "tbData");
-			this.tbData.Name = "tbData";
-			this.tbData.TextChanged += new EventHandler(this.ChangeData);
+			resources.ApplyResources(tbData, "tbData");
+			tbData.Name = "tbData";
+			tbData.TextChanged += new EventHandler(ChangeData);
 			//
 			// tbu7
 			//
-			resources.ApplyResources(this.tbu7, "tbu7");
-			this.tbu7.Name = "tbu7";
-			this.tbu7.TextChanged += new EventHandler(this.tbu7_TextChanged);
+			resources.ApplyResources(tbu7, "tbu7");
+			tbu7.Name = "tbu7";
+			tbu7.TextChanged += new EventHandler(tbu7_TextChanged);
 			//
 			// tbu5
 			//
-			resources.ApplyResources(this.tbu5, "tbu5");
-			this.tbu5.Name = "tbu5";
-			this.tbu5.TextChanged += new EventHandler(this.ChangeData);
+			resources.ApplyResources(tbu5, "tbu5");
+			tbu5.Name = "tbu5";
+			tbu5.TextChanged += new EventHandler(ChangeData);
 			//
 			// label24
 			//
-			resources.ApplyResources(this.label24, "label24");
-			this.label24.Name = "label24";
+			resources.ApplyResources(label24, "label24");
+			label24.Name = "label24";
 			//
 			// tbu6
 			//
-			resources.ApplyResources(this.tbu6, "tbu6");
-			this.tbu6.Name = "tbu6";
-			this.tbu6.TextChanged += new EventHandler(this.ChangeData);
+			resources.ApplyResources(tbu6, "tbu6");
+			tbu6.Name = "tbu6";
+			tbu6.TextChanged += new EventHandler(ChangeData);
 			//
 			// label23
 			//
-			resources.ApplyResources(this.label23, "label23");
-			this.label23.Name = "label23";
+			resources.ApplyResources(label23, "label23");
+			label23.Name = "label23";
 			//
 			// gbclarse
 			//
-			this.gbclarse.Controls.Add(this.label11);
-			this.gbclarse.Controls.Add(this.cbLotClas);
-			this.gbclarse.Controls.Add(this.tbcset);
-			this.gbclarse.Controls.Add(this.tblotclass);
-			this.gbclarse.Controls.Add(this.label17);
-			resources.ApplyResources(this.gbclarse, "gbclarse");
-			this.gbclarse.Name = "gbclarse";
-			this.gbclarse.TabStop = false;
+			gbclarse.Controls.Add(label11);
+			gbclarse.Controls.Add(cbLotClas);
+			gbclarse.Controls.Add(tbcset);
+			gbclarse.Controls.Add(tblotclass);
+			gbclarse.Controls.Add(label17);
+			resources.ApplyResources(gbclarse, "gbclarse");
+			gbclarse.Name = "gbclarse";
+			gbclarse.TabStop = false;
 			//
 			// label11
 			//
-			resources.ApplyResources(this.label11, "label11");
-			this.label11.Name = "label11";
+			resources.ApplyResources(label11, "label11");
+			label11.Name = "label11";
 			//
 			// cbLotClas
 			//
-			resources.ApplyResources(this.cbLotClas, "cbLotClas");
-			this.cbLotClas.FormattingEnabled = true;
-			this.cbLotClas.Items.AddRange(
+			resources.ApplyResources(cbLotClas, "cbLotClas");
+			cbLotClas.FormattingEnabled = true;
+			cbLotClas.Items.AddRange(
 				new object[]
 				{
 					resources.GetString("cbLotClas.Items"),
@@ -1039,35 +1039,35 @@ namespace SimPe.Plugin
 					resources.GetString("cbLotClas.Items3"),
 				}
 			);
-			this.cbLotClas.Name = "cbLotClas";
-			this.cbLotClas.SelectedIndexChanged += new EventHandler(
-				this.cbhidim_CheckedChanged
+			cbLotClas.Name = "cbLotClas";
+			cbLotClas.SelectedIndexChanged += new EventHandler(
+				cbhidim_CheckedChanged
 			);
 			//
 			// tbcset
 			//
-			resources.ApplyResources(this.tbcset, "tbcset");
-			this.tbcset.Name = "tbcset";
+			resources.ApplyResources(tbcset, "tbcset");
+			tbcset.Name = "tbcset";
 			//
 			// tblotclass
 			//
-			resources.ApplyResources(this.tblotclass, "tblotclass");
-			this.tblotclass.Name = "tblotclass";
+			resources.ApplyResources(tblotclass, "tblotclass");
+			tblotclass.Name = "tblotclass";
 			//
 			// label17
 			//
-			resources.ApplyResources(this.label17, "label17");
-			this.label17.Name = "label17";
+			resources.ApplyResources(label17, "label17");
+			label17.Name = "label17";
 			//
 			// label7
 			//
-			resources.ApplyResources(this.label7, "label7");
-			this.label7.Name = "label7";
+			resources.ApplyResources(label7, "label7");
+			label7.Name = "label7";
 			//
 			// lb
 			//
-			resources.ApplyResources(this.lb, "lb");
-			this.lb.Items.AddRange(
+			resources.ApplyResources(lb, "lb");
+			lb.Items.AddRange(
 				new object[]
 				{
 					resources.GetString("lb.Items"),
@@ -1117,232 +1117,232 @@ namespace SimPe.Plugin
 					resources.GetString("lb.Items44"),
 				}
 			);
-			this.lb.MultiColumn = true;
-			this.lb.Name = "lb";
-			this.lb.SelectedIndexChanged += new EventHandler(
-				this.lb_SelectedIndexChanged
+			lb.MultiColumn = true;
+			lb.Name = "lb";
+			lb.SelectedIndexChanged += new EventHandler(
+				lb_SelectedIndexChanged
 			);
 			//
 			// tbElevationAt
 			//
-			resources.ApplyResources(this.tbElevationAt, "tbElevationAt");
-			this.tbElevationAt.Name = "tbElevationAt";
-			this.tbElevationAt.TextChanged += new EventHandler(
-				this.tbElevationAt_TextChanged
+			resources.ApplyResources(tbElevationAt, "tbElevationAt");
+			tbElevationAt.Name = "tbElevationAt";
+			tbElevationAt.TextChanged += new EventHandler(
+				tbElevationAt_TextChanged
 			);
 			//
 			// label25
 			//
-			resources.ApplyResources(this.label25, "label25");
-			this.label25.Name = "label25";
-			this.label25.DoubleClick += new EventHandler(this.label25_Click);
+			resources.ApplyResources(label25, "label25");
+			label25.Name = "label25";
+			label25.DoubleClick += new EventHandler(label25_Click);
 			//
 			// tbowner
 			//
-			resources.ApplyResources(this.tbowner, "tbowner");
-			this.tbowner.Name = "tbowner";
-			this.tbowner.TextChanged += new EventHandler(this.CommonChange);
+			resources.ApplyResources(tbowner, "tbowner");
+			tbowner.Name = "tbowner";
+			tbowner.TextChanged += new EventHandler(CommonChange);
 			//
 			// label15
 			//
-			resources.ApplyResources(this.label15, "label15");
-			this.label15.Name = "label15";
+			resources.ApplyResources(label15, "label15");
+			label15.Name = "label15";
 			//
 			// label8
 			//
-			resources.ApplyResources(this.label8, "label8");
-			this.label8.Name = "label8";
+			resources.ApplyResources(label8, "label8");
+			label8.Name = "label8";
 			//
 			// bthbytrvl
 			//
-			resources.ApplyResources(this.bthbytrvl, "bthbytrvl");
-			this.bthbytrvl.Name = "bthbytrvl";
-			this.bthbytrvl.UseVisualStyleBackColor = true;
-			this.bthbytrvl.Click += new EventHandler(this.Openpntravel);
+			resources.ApplyResources(bthbytrvl, "bthbytrvl");
+			bthbytrvl.Name = "bthbytrvl";
+			bthbytrvl.UseVisualStyleBackColor = true;
+			bthbytrvl.Click += new EventHandler(Openpntravel);
 			//
 			// tbinst
 			//
-			resources.ApplyResources(this.tbinst, "tbinst");
-			this.tbinst.Name = "tbinst";
-			this.tbinst.TextChanged += new EventHandler(this.CommonChange);
+			resources.ApplyResources(tbinst, "tbinst");
+			tbinst.Name = "tbinst";
+			tbinst.TextChanged += new EventHandler(CommonChange);
 			//
 			// label14
 			//
-			resources.ApplyResources(this.label14, "label14");
-			this.label14.Name = "label14";
+			resources.ApplyResources(label14, "label14");
+			label14.Name = "label14";
 			//
 			// tbu4
 			//
-			resources.ApplyResources(this.tbu4, "tbu4");
-			this.tbu4.Name = "tbu4";
-			this.tbu4.TextChanged += new EventHandler(this.CommonChange);
+			resources.ApplyResources(tbu4, "tbu4");
+			tbu4.Name = "tbu4";
+			tbu4.TextChanged += new EventHandler(CommonChange);
 			//
 			// cborient
 			//
-			this.cborient.Enum = null;
-			resources.ApplyResources(this.cborient, "cborient");
-			this.cborient.Name = "cborient";
-			this.cborient.ResourceManager = null;
-			this.cborient.SelectedIndexChanged += new EventHandler(
-				this.CommonChange
+			cborient.Enum = null;
+			resources.ApplyResources(cborient, "cborient");
+			cborient.Name = "cborient";
+			cborient.ResourceManager = null;
+			cborient.SelectedIndexChanged += new EventHandler(
+				CommonChange
 			);
 			//
 			// tbTexture
 			//
-			resources.ApplyResources(this.tbTexture, "tbTexture");
-			this.tbTexture.Name = "tbTexture";
-			this.tbTexture.TextChanged += new EventHandler(this.CommonChange);
+			resources.ApplyResources(tbTexture, "tbTexture");
+			tbTexture.Name = "tbTexture";
+			tbTexture.TextChanged += new EventHandler(CommonChange);
 			//
 			// label2
 			//
-			resources.ApplyResources(this.label2, "label2");
-			this.label2.Name = "label2";
+			resources.ApplyResources(label2, "label2");
+			label2.Name = "label2";
 			//
 			// label6
 			//
-			resources.ApplyResources(this.label6, "label6");
-			this.label6.Name = "label6";
+			resources.ApplyResources(label6, "label6");
+			label6.Name = "label6";
 			//
 			// label3
 			//
-			resources.ApplyResources(this.label3, "label3");
-			this.label3.Name = "label3";
+			resources.ApplyResources(label3, "label3");
+			label3.Name = "label3";
 			//
 			// tbwd
 			//
-			resources.ApplyResources(this.tbwd, "tbwd");
-			this.tbwd.Name = "tbwd";
-			this.tbwd.TextChanged += new EventHandler(this.CommonChange);
+			resources.ApplyResources(tbwd, "tbwd");
+			tbwd.Name = "tbwd";
+			tbwd.TextChanged += new EventHandler(CommonChange);
 			//
 			// tbrotation
 			//
-			resources.ApplyResources(this.tbrotation, "tbrotation");
-			this.tbrotation.Name = "tbrotation";
-			this.tbrotation.TextChanged += new EventHandler(this.CommonChange);
+			resources.ApplyResources(tbrotation, "tbrotation");
+			tbrotation.Name = "tbrotation";
+			tbrotation.TextChanged += new EventHandler(CommonChange);
 			//
 			// label9
 			//
-			resources.ApplyResources(this.label9, "label9");
-			this.label9.Name = "label9";
+			resources.ApplyResources(label9, "label9");
+			label9.Name = "label9";
 			//
 			// label10
 			//
-			resources.ApplyResources(this.label10, "label10");
-			this.label10.Name = "label10";
+			resources.ApplyResources(label10, "label10");
+			label10.Name = "label10";
 			//
 			// tbhg
 			//
-			resources.ApplyResources(this.tbhg, "tbhg");
-			this.tbhg.Name = "tbhg";
-			this.tbhg.TextChanged += new EventHandler(this.CommonChange);
+			resources.ApplyResources(tbhg, "tbhg");
+			tbhg.Name = "tbhg";
+			tbhg.TextChanged += new EventHandler(CommonChange);
 			//
 			// tbRoads
 			//
-			resources.ApplyResources(this.tbRoads, "tbRoads");
-			this.tbRoads.Name = "tbRoads";
-			this.tbRoads.TextChanged += new EventHandler(this.CommonChange);
+			resources.ApplyResources(tbRoads, "tbRoads");
+			tbRoads.Name = "tbRoads";
+			tbRoads.TextChanged += new EventHandler(CommonChange);
 			//
 			// label12
 			//
-			resources.ApplyResources(this.label12, "label12");
-			this.label12.Name = "label12";
+			resources.ApplyResources(label12, "label12");
+			label12.Name = "label12";
 			//
 			// tbver
 			//
-			this.tbver.BackColor = SystemColors.Window;
-			resources.ApplyResources(this.tbver, "tbver");
-			this.tbver.Name = "tbver";
-			this.tbver.ReadOnly = true;
+			tbver.BackColor = SystemColors.Window;
+			resources.ApplyResources(tbver, "tbver");
+			tbver.Name = "tbver";
+			tbver.ReadOnly = true;
 			//
 			// tbtop
 			//
-			resources.ApplyResources(this.tbtop, "tbtop");
-			this.tbtop.Name = "tbtop";
-			this.tbtop.TextChanged += new EventHandler(this.CommonChange);
+			resources.ApplyResources(tbtop, "tbtop");
+			tbtop.Name = "tbtop";
+			tbtop.TextChanged += new EventHandler(CommonChange);
 			//
 			// label13
 			//
-			resources.ApplyResources(this.label13, "label13");
-			this.label13.Name = "label13";
+			resources.ApplyResources(label13, "label13");
+			label13.Name = "label13";
 			//
 			// tbsubver
 			//
-			this.tbsubver.BackColor = SystemColors.Window;
-			resources.ApplyResources(this.tbsubver, "tbsubver");
-			this.tbsubver.Name = "tbsubver";
-			this.tbsubver.ReadOnly = true;
+			tbsubver.BackColor = SystemColors.Window;
+			resources.ApplyResources(tbsubver, "tbsubver");
+			tbsubver.Name = "tbsubver";
+			tbsubver.ReadOnly = true;
 			//
 			// tbleft
 			//
-			resources.ApplyResources(this.tbleft, "tbleft");
-			this.tbleft.Name = "tbleft";
-			this.tbleft.TextChanged += new EventHandler(this.CommonChange);
+			resources.ApplyResources(tbleft, "tbleft");
+			tbleft.Name = "tbleft";
+			tbleft.TextChanged += new EventHandler(CommonChange);
 			//
 			// label20
 			//
-			resources.ApplyResources(this.label20, "label20");
-			this.label20.Name = "label20";
+			resources.ApplyResources(label20, "label20");
+			label20.Name = "label20";
 			//
 			// label1
 			//
-			resources.ApplyResources(this.label1, "label1");
-			this.label1.Name = "label1";
+			resources.ApplyResources(label1, "label1");
+			label1.Name = "label1";
 			//
 			// tbz
 			//
-			resources.ApplyResources(this.tbz, "tbz");
-			this.tbz.Name = "tbz";
-			this.tbz.TextChanged += new EventHandler(this.CommonChange);
+			resources.ApplyResources(tbz, "tbz");
+			tbz.Name = "tbz";
+			tbz.TextChanged += new EventHandler(CommonChange);
 			//
 			// cbtype
 			//
-			resources.ApplyResources(this.cbtype, "cbtype");
-			this.cbtype.Name = "cbtype";
-			this.cbtype.SelectedIndexChanged += new EventHandler(
-				this.SelectType
+			resources.ApplyResources(cbtype, "cbtype");
+			cbtype.Name = "cbtype";
+			cbtype.SelectedIndexChanged += new EventHandler(
+				SelectType
 			);
 			//
 			// tbtype
 			//
-			this.tbtype.BackColor = SystemColors.Window;
-			resources.ApplyResources(this.tbtype, "tbtype");
-			this.tbtype.Name = "tbtype";
-			this.tbtype.ReadOnly = true;
+			tbtype.BackColor = SystemColors.Window;
+			resources.ApplyResources(tbtype, "tbtype");
+			tbtype.Name = "tbtype";
+			tbtype.ReadOnly = true;
 			//
 			// panel2
 			//
-			resources.ApplyResources(this.panel2, "panel2");
-			this.panel2.Name = "panel2";
+			resources.ApplyResources(panel2, "panel2");
+			panel2.Name = "panel2";
 			//
 			// pb
 			//
-			resources.ApplyResources(this.pb, "pb");
-			this.pb.Name = "pb";
-			this.pb.TabStop = false;
+			resources.ApplyResources(pb, "pb");
+			pb.Name = "pb";
+			pb.TabStop = false;
 			//
 			// LtxtForm
 			//
 			resources.ApplyResources(this, "$this");
-			this.Controls.Add(this.ltxtPanel);
-			this.Name = "LtxtForm";
-			this.ltxtPanel.ResumeLayout(false);
-			this.ltxtPanel.PerformLayout();
-			this.gbApart.ResumeLayout(false);
-			this.gbApart.PerformLayout();
-			this.gbApartment.ResumeLayout(false);
-			this.gbApartment.PerformLayout();
-			this.gbtravel.ResumeLayout(false);
-			this.gbtravel.PerformLayout();
-			this.gbhobby.ResumeLayout(false);
-			this.gbhobby.PerformLayout();
-			this.gbFlagg.ResumeLayout(false);
-			this.gbFlagg.PerformLayout();
-			this.gbunown.ResumeLayout(false);
-			this.gbunown.PerformLayout();
-			this.gbclarse.ResumeLayout(false);
-			this.gbclarse.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
-			this.ResumeLayout(false);
+			Controls.Add(ltxtPanel);
+			Name = "LtxtForm";
+			ltxtPanel.ResumeLayout(false);
+			ltxtPanel.PerformLayout();
+			gbApart.ResumeLayout(false);
+			gbApart.PerformLayout();
+			gbApartment.ResumeLayout(false);
+			gbApartment.PerformLayout();
+			gbtravel.ResumeLayout(false);
+			gbtravel.PerformLayout();
+			gbhobby.ResumeLayout(false);
+			gbhobby.PerformLayout();
+			gbFlagg.ResumeLayout(false);
+			gbFlagg.PerformLayout();
+			gbunown.ResumeLayout(false);
+			gbunown.PerformLayout();
+			gbclarse.ResumeLayout(false);
+			gbclarse.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(pb)).EndInit();
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -1430,7 +1430,7 @@ namespace SimPe.Plugin
 
 			try
 			{
-				wrapper.LotRoads = Convert.ToByte(this.tbRoads.Text, 16);
+				wrapper.LotRoads = Convert.ToByte(tbRoads.Text, 16);
 
 				wrapper.LotSize = new Size(
 					Helper.StringToInt32(tbwd.Text, wrapper.LotSize.Width, 10),
@@ -1446,42 +1446,42 @@ namespace SimPe.Plugin
 				);
 
 				wrapper.Orientation = (LotOrientation)cborient.SelectedValue;
-				wrapper.LotRotation = Convert.ToByte(this.tbrotation.Text, 16);
+				wrapper.LotRotation = Convert.ToByte(tbrotation.Text, 16);
 				wrapper.Unknown0 = Helper.StringToUInt32(
 					tbu0.Text,
 					wrapper.Unknown0,
 					16
 				);
 				Boolset bby = wrapper.Unknown0;
-				this.cbhidim.Checked = bby[4];
-				this.cbBeachy.Checked = bby[7];
+				cbhidim.Checked = bby[4];
+				cbBeachy.Checked = bby[7];
 				if (
 					wrapper.Version >= LtxtVersion.Apartment
 					|| wrapper.SubVersion >= LtxtSubVersion.Apartment
 				)
 				{
-					this.cbLotClas.Enabled = true;
+					cbLotClas.Enabled = true;
 					if (bby[12])
 					{
-						this.cbLotClas.SelectedIndex = 1;
+						cbLotClas.SelectedIndex = 1;
 					}
 					else if (bby[13])
 					{
-						this.cbLotClas.SelectedIndex = 2;
+						cbLotClas.SelectedIndex = 2;
 					}
 					else if (bby[14])
 					{
-						this.cbLotClas.SelectedIndex = 3;
+						cbLotClas.SelectedIndex = 3;
 					}
 					else
 					{
-						this.cbLotClas.SelectedIndex = 0;
+						cbLotClas.SelectedIndex = 0;
 					}
 				}
 				else
 				{
-					this.cbLotClas.SelectedIndex = 0;
-					this.cbLotClas.Enabled = false;
+					cbLotClas.SelectedIndex = 0;
+					cbLotClas.Enabled = false;
 				}
 
 				wrapper.LotName = tblotname.Text;
@@ -1506,36 +1506,36 @@ namespace SimPe.Plugin
 				);
 				Boolset tty = wrapper.Unknown4;
 
-				this.cbtrjflag5.Checked = tty[30];
-				this.cbtrjflag4.Checked = tty[28];
-				this.cbtrjflag3.Checked = tty[27];
-				this.cbtrjflag2.Checked = tty[26];
-				this.cbtrjflag1.Checked = tty[25];
-				this.cbtrjungle.Checked = tty[24];
-				this.cbtrhidec.Checked = tty[23];
-				this.cbtrpool.Checked = tty[22];
-				this.cbtrmale.Checked = tty[21];
-				this.cbtrfem.Checked = tty[20];
-				this.cbtrbeach.Checked = tty[19];
-				this.cbtrformal.Checked = tty[18];
-				this.cbtrteen.Checked = tty[17];
-				this.cbtrnude.Checked = tty[16];
-				this.cbtrpern.Checked = tty[15];
-				this.cgtrwhite.Checked = tty[14];
-				this.cbtrblue.Checked = tty[13];
-				this.cbtrredred.Checked = tty[12];
-				this.cbtradult.Checked = tty[11];
-				this.cbtrclub.Checked = tty[10];
-				this.cbhbmusic.Checked = tty[9];
-				this.cbhbscience.Checked = tty[8];
-				this.cbhbfitness.Checked = tty[7];
-				this.cbhbtinker.Checked = tty[6];
-				this.cbhbnature.Checked = tty[5];
-				this.cbhbgames.Checked = tty[4];
-				this.cbhbsport.Checked = tty[3];
-				this.cbhbfilm.Checked = tty[2];
-				this.cbhbart.Checked = tty[1];
-				this.cbhbcook.Checked = tty[0];
+				cbtrjflag5.Checked = tty[30];
+				cbtrjflag4.Checked = tty[28];
+				cbtrjflag3.Checked = tty[27];
+				cbtrjflag2.Checked = tty[26];
+				cbtrjflag1.Checked = tty[25];
+				cbtrjungle.Checked = tty[24];
+				cbtrhidec.Checked = tty[23];
+				cbtrpool.Checked = tty[22];
+				cbtrmale.Checked = tty[21];
+				cbtrfem.Checked = tty[20];
+				cbtrbeach.Checked = tty[19];
+				cbtrformal.Checked = tty[18];
+				cbtrteen.Checked = tty[17];
+				cbtrnude.Checked = tty[16];
+				cbtrpern.Checked = tty[15];
+				cgtrwhite.Checked = tty[14];
+				cbtrblue.Checked = tty[13];
+				cbtrredred.Checked = tty[12];
+				cbtradult.Checked = tty[11];
+				cbtrclub.Checked = tty[10];
+				cbhbmusic.Checked = tty[9];
+				cbhbscience.Checked = tty[8];
+				cbhbfitness.Checked = tty[7];
+				cbhbtinker.Checked = tty[6];
+				cbhbnature.Checked = tty[5];
+				cbhbgames.Checked = tty[4];
+				cbhbsport.Checked = tty[3];
+				cbhbfilm.Checked = tty[2];
+				cbhbart.Checked = tty[1];
+				cbhbcook.Checked = tty[0];
 
 				wrapper.Unknown2 = (byte)
 					Helper.StringToUInt16(tbu2.Text, wrapper.Unknown2, 16);
@@ -1563,19 +1563,19 @@ namespace SimPe.Plugin
 			try
 			{
 				Boolset bby = wrapper.Unknown0;
-				bby[4] = this.cbhidim.Checked;
-				bby[7] = this.cbBeachy.Checked;
+				bby[4] = cbhidim.Checked;
+				bby[7] = cbBeachy.Checked;
 				if (
 					wrapper.Version >= LtxtVersion.Apartment
 					|| wrapper.SubVersion >= LtxtSubVersion.Apartment
 				)
 				{
-					bby[12] = (this.cbLotClas.SelectedIndex == 1);
-					bby[13] = (this.cbLotClas.SelectedIndex == 2);
-					bby[14] = (this.cbLotClas.SelectedIndex == 3);
+					bby[12] = (cbLotClas.SelectedIndex == 1);
+					bby[13] = (cbLotClas.SelectedIndex == 2);
+					bby[14] = (cbLotClas.SelectedIndex == 3);
 				}
 				wrapper.Unknown0 = bby;
-				this.tbu0.Text = "0x" + Helper.HexString(wrapper.Unknown0);
+				tbu0.Text = "0x" + Helper.HexString(wrapper.Unknown0);
 				wrapper.Changed = true;
 			}
 			catch (Exception ex)
@@ -1594,160 +1594,160 @@ namespace SimPe.Plugin
 			try
 			{
 				uint tty = 0;
-				if (this.cbhbcook.Checked)
+				if (cbhbcook.Checked)
 				{
 					tty += 1;
 				}
 
-				if (this.cbhbart.Checked)
+				if (cbhbart.Checked)
 				{
 					tty += 2;
 				}
 
-				if (this.cbhbfilm.Checked)
+				if (cbhbfilm.Checked)
 				{
 					tty += 4;
 				}
 
-				if (this.cbhbsport.Checked)
+				if (cbhbsport.Checked)
 				{
 					tty += 8;
 				}
 
-				if (this.cbhbgames.Checked)
+				if (cbhbgames.Checked)
 				{
 					tty += 16;
 				}
 
-				if (this.cbhbnature.Checked)
+				if (cbhbnature.Checked)
 				{
 					tty += 32;
 				}
 
-				if (this.cbhbtinker.Checked)
+				if (cbhbtinker.Checked)
 				{
 					tty += 64;
 				}
 
-				if (this.cbhbfitness.Checked)
+				if (cbhbfitness.Checked)
 				{
 					tty += 128;
 				}
 
-				if (this.cbhbscience.Checked)
+				if (cbhbscience.Checked)
 				{
 					tty += 256;
 				}
 
-				if (this.cbhbmusic.Checked)
+				if (cbhbmusic.Checked)
 				{
 					tty += 512;
 				}
 
-				if (this.cbtrclub.Checked)
+				if (cbtrclub.Checked)
 				{
 					tty += 1024;
 				}
 
-				if (this.cbtradult.Checked)
+				if (cbtradult.Checked)
 				{
 					tty += 2048;
 				}
 
-				if (this.cbtrredred.Checked)
+				if (cbtrredred.Checked)
 				{
 					tty += 4096;
 				}
 
-				if (this.cbtrblue.Checked)
+				if (cbtrblue.Checked)
 				{
 					tty += 8192;
 				}
 
-				if (this.cgtrwhite.Checked)
+				if (cgtrwhite.Checked)
 				{
 					tty += 16384;
 				}
 
-				if (this.cbtrpern.Checked)
+				if (cbtrpern.Checked)
 				{
 					tty += 32768;
 				}
 
-				if (this.cbtrnude.Checked)
+				if (cbtrnude.Checked)
 				{
 					tty += 65536;
 				}
 
-				if (this.cbtrteen.Checked)
+				if (cbtrteen.Checked)
 				{
 					tty += 131072;
 				}
 
-				if (this.cbtrformal.Checked)
+				if (cbtrformal.Checked)
 				{
 					tty += 262144;
 				}
 
-				if (this.cbtrbeach.Checked)
+				if (cbtrbeach.Checked)
 				{
 					tty += 524288;
 				}
 
-				if (this.cbtrfem.Checked)
+				if (cbtrfem.Checked)
 				{
 					tty += 1048576;
 				}
 
-				if (this.cbtrmale.Checked)
+				if (cbtrmale.Checked)
 				{
 					tty += 2097152;
 				}
 
-				if (this.cbtrpool.Checked)
+				if (cbtrpool.Checked)
 				{
 					tty += 4194304;
 				}
 
-				if (this.cbtrhidec.Checked)
+				if (cbtrhidec.Checked)
 				{
 					tty += 8388608;
 				}
 
-				if (this.cbtrjungle.Checked)
+				if (cbtrjungle.Checked)
 				{
 					tty += 16777216;
 				}
 
-				if (this.cbtrjflag1.Checked)
+				if (cbtrjflag1.Checked)
 				{
 					tty += 33554432;
 				}
 
-				if (this.cbtrjflag2.Checked)
+				if (cbtrjflag2.Checked)
 				{
 					tty += 67108864;
 				}
 
-				if (this.cbtrjflag3.Checked)
+				if (cbtrjflag3.Checked)
 				{
 					tty += 134217728;
 				}
 
-				if (this.cbtrjflag4.Checked)
+				if (cbtrjflag4.Checked)
 				{
 					tty += 268435456;
 				}
 
-				if (this.cbtrjflag5.Checked)
+				if (cbtrjflag5.Checked)
 				{
 					tty += 536870912;
 				}
 
-				this.cbtrmale.Enabled = !this.cbtrfem.Checked;
-				this.cbtrfem.Enabled = !this.cbtrmale.Checked;
+				cbtrmale.Enabled = !cbtrfem.Checked;
+				cbtrfem.Enabled = !cbtrmale.Checked;
 				wrapper.Unknown4 = tty;
-				this.tbu4.Text = "0x" + Helper.HexString(wrapper.Unknown4);
+				tbu4.Text = "0x" + Helper.HexString(wrapper.Unknown4);
 
 				wrapper.Changed = true;
 			}
@@ -1766,9 +1766,9 @@ namespace SimPe.Plugin
 
 			try
 			{
-				this.gbunown.Visible = false;
-				this.gbhobby.Visible = !this.gbhobby.Visible;
-				this.gbtravel.Visible = this.gbhobby.Visible;
+				gbunown.Visible = false;
+				gbhobby.Visible = !gbhobby.Visible;
+				gbtravel.Visible = gbhobby.Visible;
 				//this.bthbytrvl.Enabled = false;
 				wrapper.Changed = true;
 			}
@@ -1788,15 +1788,15 @@ namespace SimPe.Plugin
 			try
 			{
 				wrapper.Unknown5 = Helper.SetLength(
-					Helper.HexListToBytes(this.tbu5.Text),
+					Helper.HexListToBytes(tbu5.Text),
 					9
 				);
 				wrapper.Unknown6 = Helper.SetLength(
-					Helper.HexListToBytes(this.tbu6.Text),
+					Helper.HexListToBytes(tbu6.Text),
 					9
 				);
 				wrapper.Followup = Helper.SetLength(
-					Helper.HexListToBytes(this.tbData.Text),
+					Helper.HexListToBytes(tbData.Text),
 					0
 				);
 
@@ -2124,7 +2124,7 @@ namespace SimPe.Plugin
 			LinkLabelLinkClickedEventArgs e
 		)
 		{
-			this.gbunown.Visible = !this.gbunown.Visible;
+			gbunown.Visible = !gbunown.Visible;
 		}
 	}
 }

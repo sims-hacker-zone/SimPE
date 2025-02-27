@@ -83,29 +83,29 @@ namespace SimPe.Packages
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(SaveSims2Pack)
 				);
-			this.lblist = new ListBox();
-			this.gbsettings = new GroupBox();
-			this.tbname = new TextBox();
-			this.tbdesc = new TextBox();
-			this.label5 = new Label();
-			this.label9 = new Label();
-			this.btadd = new Button();
-			this.ofd = new OpenFileDialog();
-			this.label6 = new Label();
-			this.tbflname = new TextBox();
-			this.btbrowse = new Button();
-			this.sfd = new SaveFileDialog();
-			this.btdelete = new Button();
-			this.btsave = new Button();
-			this.button4 = new Button();
-			this.panel1 = new Panel();
-			this.gbsettings.SuspendLayout();
-			this.panel1.SuspendLayout();
-			this.SuspendLayout();
+			lblist = new ListBox();
+			gbsettings = new GroupBox();
+			tbname = new TextBox();
+			tbdesc = new TextBox();
+			label5 = new Label();
+			label9 = new Label();
+			btadd = new Button();
+			ofd = new OpenFileDialog();
+			label6 = new Label();
+			tbflname = new TextBox();
+			btbrowse = new Button();
+			sfd = new SaveFileDialog();
+			btdelete = new Button();
+			btsave = new Button();
+			button4 = new Button();
+			panel1 = new Panel();
+			gbsettings.SuspendLayout();
+			panel1.SuspendLayout();
+			SuspendLayout();
 			//
 			// lblist
 			//
-			this.lblist.Anchor = (
+			lblist.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -115,16 +115,16 @@ namespace SimPe.Packages
 					)
 				)
 			);
-			this.lblist.IntegralHeight = false;
-			this.lblist.Location = new System.Drawing.Point(8, 40);
-			this.lblist.Name = "lblist";
-			this.lblist.Size = new System.Drawing.Size(560, 180);
-			this.lblist.TabIndex = 2;
-			this.lblist.SelectedIndexChanged += new EventHandler(this.Select);
+			lblist.IntegralHeight = false;
+			lblist.Location = new System.Drawing.Point(8, 40);
+			lblist.Name = "lblist";
+			lblist.Size = new System.Drawing.Size(560, 180);
+			lblist.TabIndex = 2;
+			lblist.SelectedIndexChanged += new EventHandler(Select);
 			//
 			// gbsettings
 			//
-			this.gbsettings.Anchor = (
+			gbsettings.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -134,29 +134,29 @@ namespace SimPe.Packages
 					)
 				)
 			);
-			this.gbsettings.BackColor = System.Drawing.Color.Transparent;
-			this.gbsettings.Controls.Add(this.tbname);
-			this.gbsettings.Controls.Add(this.tbdesc);
-			this.gbsettings.Controls.Add(this.label5);
-			this.gbsettings.Controls.Add(this.label9);
-			this.gbsettings.Enabled = false;
-			this.gbsettings.Font = new System.Drawing.Font(
+			gbsettings.BackColor = System.Drawing.Color.Transparent;
+			gbsettings.Controls.Add(tbname);
+			gbsettings.Controls.Add(tbdesc);
+			gbsettings.Controls.Add(label5);
+			gbsettings.Controls.Add(label9);
+			gbsettings.Enabled = false;
+			gbsettings.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.gbsettings.Location = new System.Drawing.Point(8, 244);
-			this.gbsettings.Name = "gbsettings";
-			this.gbsettings.Size = new System.Drawing.Size(560, 176);
-			this.gbsettings.TabIndex = 1;
-			this.gbsettings.TabStop = false;
-			this.gbsettings.Text = "Settings";
+			gbsettings.Location = new System.Drawing.Point(8, 244);
+			gbsettings.Name = "gbsettings";
+			gbsettings.Size = new System.Drawing.Size(560, 176);
+			gbsettings.TabIndex = 1;
+			gbsettings.TabStop = false;
+			gbsettings.Text = "Settings";
 			//
 			// tbname
 			//
-			this.tbname.Anchor = (
+			tbname.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -166,22 +166,22 @@ namespace SimPe.Packages
 					)
 				)
 			);
-			this.tbname.Font = new System.Drawing.Font(
+			tbname.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbname.Location = new System.Drawing.Point(16, 144);
-			this.tbname.Name = "tbname";
-			this.tbname.ReadOnly = true;
-			this.tbname.Size = new System.Drawing.Size(528, 21);
-			this.tbname.TabIndex = 11;
+			tbname.Location = new System.Drawing.Point(16, 144);
+			tbname.Name = "tbname";
+			tbname.ReadOnly = true;
+			tbname.Size = new System.Drawing.Size(528, 21);
+			tbname.TabIndex = 11;
 			//
 			// tbdesc
 			//
-			this.tbdesc.Anchor = (
+			tbdesc.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -191,89 +191,89 @@ namespace SimPe.Packages
 					)
 				)
 			);
-			this.tbdesc.Font = new System.Drawing.Font(
+			tbdesc.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbdesc.Location = new System.Drawing.Point(16, 40);
-			this.tbdesc.Multiline = true;
-			this.tbdesc.Name = "tbdesc";
-			this.tbdesc.Size = new System.Drawing.Size(528, 78);
-			this.tbdesc.TabIndex = 14;
-			this.tbdesc.TextChanged += new EventHandler(this.ChangeText);
+			tbdesc.Location = new System.Drawing.Point(16, 40);
+			tbdesc.Multiline = true;
+			tbdesc.Name = "tbdesc";
+			tbdesc.Size = new System.Drawing.Size(528, 78);
+			tbdesc.TabIndex = 14;
+			tbdesc.TextChanged += new EventHandler(ChangeText);
 			//
 			// label5
 			//
-			this.label5.AutoSize = true;
-			this.label5.Font = new System.Drawing.Font(
+			label5.AutoSize = true;
+			label5.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label5.Location = new System.Drawing.Point(8, 24);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(76, 13);
-			this.label5.TabIndex = 4;
-			this.label5.Text = "Description:";
+			label5.Location = new System.Drawing.Point(8, 24);
+			label5.Name = "label5";
+			label5.Size = new System.Drawing.Size(76, 13);
+			label5.TabIndex = 4;
+			label5.Text = "Description:";
 			//
 			// label9
 			//
-			this.label9.AutoSize = true;
-			this.label9.Font = new System.Drawing.Font(
+			label9.AutoSize = true;
+			label9.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label9.Location = new System.Drawing.Point(8, 128);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(63, 13);
-			this.label9.TabIndex = 15;
-			this.label9.Text = "File Name";
+			label9.Location = new System.Drawing.Point(8, 128);
+			label9.Name = "label9";
+			label9.Size = new System.Drawing.Size(63, 13);
+			label9.TabIndex = 15;
+			label9.Text = "File Name";
 			//
 			// btadd
 			//
-			this.btadd.BackColor = System.Drawing.Color.Transparent;
-			this.btadd.FlatStyle = FlatStyle.System;
-			this.btadd.Location = new System.Drawing.Point(415, 222);
-			this.btadd.Name = "btadd";
-			this.btadd.Size = new System.Drawing.Size(72, 23);
-			this.btadd.TabIndex = 4;
-			this.btadd.Text = "Add...";
-			this.btadd.UseVisualStyleBackColor = false;
-			this.btadd.Click += new EventHandler(this.AddPackage);
+			btadd.BackColor = System.Drawing.Color.Transparent;
+			btadd.FlatStyle = FlatStyle.System;
+			btadd.Location = new System.Drawing.Point(415, 222);
+			btadd.Name = "btadd";
+			btadd.Size = new System.Drawing.Size(72, 23);
+			btadd.TabIndex = 4;
+			btadd.Text = "Add...";
+			btadd.UseVisualStyleBackColor = false;
+			btadd.Click += new EventHandler(AddPackage);
 			//
 			// ofd
 			//
-			this.ofd.Filter =
+			ofd.Filter =
 				"Sims 2 Package (*.package)|*.package|All Files (*.*)|*.*";
 			//
 			// label6
 			//
-			this.label6.AutoSize = true;
-			this.label6.BackColor = System.Drawing.Color.Transparent;
-			this.label6.Font = new System.Drawing.Font(
+			label6.AutoSize = true;
+			label6.BackColor = System.Drawing.Color.Transparent;
+			label6.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label6.Location = new System.Drawing.Point(8, 16);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(72, 13);
-			this.label6.TabIndex = 3;
-			this.label6.Text = "FileName:";
+			label6.Location = new System.Drawing.Point(8, 16);
+			label6.Name = "label6";
+			label6.Size = new System.Drawing.Size(72, 13);
+			label6.TabIndex = 3;
+			label6.Text = "FileName:";
 			//
 			// tbflname
 			//
-			this.tbflname.Anchor = (
+			tbflname.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -283,33 +283,33 @@ namespace SimPe.Packages
 					)
 				)
 			);
-			this.tbflname.Font = new System.Drawing.Font(
+			tbflname.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbflname.Location = new System.Drawing.Point(80, 8);
-			this.tbflname.Name = "tbflname";
-			this.tbflname.Size = new System.Drawing.Size(407, 21);
-			this.tbflname.TabIndex = 0;
+			tbflname.Location = new System.Drawing.Point(80, 8);
+			tbflname.Name = "tbflname";
+			tbflname.Size = new System.Drawing.Size(407, 21);
+			tbflname.TabIndex = 0;
 			//
 			// btbrowse
 			//
-			this.btbrowse.BackColor = System.Drawing.Color.Transparent;
-			this.btbrowse.FlatStyle = FlatStyle.System;
-			this.btbrowse.Location = new System.Drawing.Point(493, 8);
-			this.btbrowse.Name = "btbrowse";
-			this.btbrowse.Size = new System.Drawing.Size(75, 23);
-			this.btbrowse.TabIndex = 1;
-			this.btbrowse.Text = "Browse...";
-			this.btbrowse.UseVisualStyleBackColor = false;
-			this.btbrowse.Click += new EventHandler(this.S2CPFilename);
+			btbrowse.BackColor = System.Drawing.Color.Transparent;
+			btbrowse.FlatStyle = FlatStyle.System;
+			btbrowse.Location = new System.Drawing.Point(493, 8);
+			btbrowse.Name = "btbrowse";
+			btbrowse.Size = new System.Drawing.Size(75, 23);
+			btbrowse.TabIndex = 1;
+			btbrowse.Text = "Browse...";
+			btbrowse.UseVisualStyleBackColor = false;
+			btbrowse.Click += new EventHandler(S2CPFilename);
 			//
 			// btdelete
 			//
-			this.btdelete.Anchor = (
+			btdelete.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -317,19 +317,19 @@ namespace SimPe.Packages
 					)
 				)
 			);
-			this.btdelete.BackColor = System.Drawing.Color.Transparent;
-			this.btdelete.FlatStyle = FlatStyle.System;
-			this.btdelete.Location = new System.Drawing.Point(493, 222);
-			this.btdelete.Name = "btdelete";
-			this.btdelete.Size = new System.Drawing.Size(75, 23);
-			this.btdelete.TabIndex = 3;
-			this.btdelete.Text = "Remove...";
-			this.btdelete.UseVisualStyleBackColor = false;
-			this.btdelete.Click += new EventHandler(this.DeletePackage);
+			btdelete.BackColor = System.Drawing.Color.Transparent;
+			btdelete.FlatStyle = FlatStyle.System;
+			btdelete.Location = new System.Drawing.Point(493, 222);
+			btdelete.Name = "btdelete";
+			btdelete.Size = new System.Drawing.Size(75, 23);
+			btdelete.TabIndex = 3;
+			btdelete.Text = "Remove...";
+			btdelete.UseVisualStyleBackColor = false;
+			btdelete.Click += new EventHandler(DeletePackage);
 			//
 			// btsave
 			//
-			this.btsave.Anchor = (
+			btsave.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -337,17 +337,17 @@ namespace SimPe.Packages
 					)
 				)
 			);
-			this.btsave.FlatStyle = FlatStyle.System;
-			this.btsave.Location = new System.Drawing.Point(493, 434);
-			this.btsave.Name = "btsave";
-			this.btsave.Size = new System.Drawing.Size(75, 23);
-			this.btsave.TabIndex = 16;
-			this.btsave.Text = "Save";
-			this.btsave.Click += new EventHandler(this.button3_Click);
+			btsave.FlatStyle = FlatStyle.System;
+			btsave.Location = new System.Drawing.Point(493, 434);
+			btsave.Name = "btsave";
+			btsave.Size = new System.Drawing.Size(75, 23);
+			btsave.TabIndex = 16;
+			btsave.Text = "Save";
+			btsave.Click += new EventHandler(button3_Click);
 			//
 			// button4
 			//
-			this.button4.Anchor = (
+			button4.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -355,17 +355,17 @@ namespace SimPe.Packages
 					)
 				)
 			);
-			this.button4.FlatStyle = FlatStyle.System;
-			this.button4.Location = new System.Drawing.Point(412, 434);
-			this.button4.Name = "button4";
-			this.button4.Size = new System.Drawing.Size(75, 23);
-			this.button4.TabIndex = 17;
-			this.button4.Text = "Cancel";
-			this.button4.Click += new EventHandler(this.button4_Click);
+			button4.FlatStyle = FlatStyle.System;
+			button4.Location = new System.Drawing.Point(412, 434);
+			button4.Name = "button4";
+			button4.Size = new System.Drawing.Size(75, 23);
+			button4.TabIndex = 17;
+			button4.Text = "Cancel";
+			button4.Click += new EventHandler(button4_Click);
 			//
 			// panel1
 			//
-			this.panel1.Anchor = (
+			panel1.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -377,48 +377,48 @@ namespace SimPe.Packages
 					)
 				)
 			);
-			this.panel1.Controls.Add(this.button4);
-			this.panel1.Controls.Add(this.btsave);
-			this.panel1.Controls.Add(this.btdelete);
-			this.panel1.Controls.Add(this.btbrowse);
-			this.panel1.Controls.Add(this.tbflname);
-			this.panel1.Controls.Add(this.label6);
-			this.panel1.Controls.Add(this.btadd);
-			this.panel1.Controls.Add(this.gbsettings);
-			this.panel1.Controls.Add(this.lblist);
-			this.panel1.Location = new System.Drawing.Point(0, 0);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(578, 460);
-			this.panel1.TabIndex = 18;
+			panel1.Controls.Add(button4);
+			panel1.Controls.Add(btsave);
+			panel1.Controls.Add(btdelete);
+			panel1.Controls.Add(btbrowse);
+			panel1.Controls.Add(tbflname);
+			panel1.Controls.Add(label6);
+			panel1.Controls.Add(btadd);
+			panel1.Controls.Add(gbsettings);
+			panel1.Controls.Add(lblist);
+			panel1.Location = new System.Drawing.Point(0, 0);
+			panel1.Name = "panel1";
+			panel1.Size = new System.Drawing.Size(578, 460);
+			panel1.TabIndex = 18;
 			//
 			// SaveSims2Pack
 			//
-			this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
-			this.ClientSize = new System.Drawing.Size(576, 460);
-			this.Controls.Add(this.panel1);
-			this.Font = new System.Drawing.Font(
+			AutoScaleBaseSize = new System.Drawing.Size(6, 14);
+			ClientSize = new System.Drawing.Size(576, 460);
+			Controls.Add(panel1);
+			Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.FormBorderStyle = FormBorderStyle.FixedDialog;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.MaximizeBox = false;
-			this.MinimizeBox = false;
-			this.Name = "SaveSims2Pack";
-			this.ShowInTaskbar = false;
-			this.Text = "Sims 2 Pack File Browser";
-			this.Load += new EventHandler(this.SaveSims2CommunityPack_Load);
-			this.Closing += new System.ComponentModel.CancelEventHandler(
-				this.AllowClose
+			FormBorderStyle = FormBorderStyle.FixedDialog;
+			Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			MaximizeBox = false;
+			MinimizeBox = false;
+			Name = "SaveSims2Pack";
+			ShowInTaskbar = false;
+			Text = "Sims 2 Pack File Browser";
+			Load += new EventHandler(SaveSims2CommunityPack_Load);
+			Closing += new System.ComponentModel.CancelEventHandler(
+				AllowClose
 			);
-			this.gbsettings.ResumeLayout(false);
-			this.gbsettings.PerformLayout();
-			this.panel1.ResumeLayout(false);
-			this.panel1.PerformLayout();
-			this.ResumeLayout(false);
+			gbsettings.ResumeLayout(false);
+			gbsettings.PerformLayout();
+			panel1.ResumeLayout(false);
+			panel1.PerformLayout();
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -468,7 +468,7 @@ namespace SimPe.Packages
 			btbrowse.Enabled = true;
 			btsave.Text = "Save";
 
-			this.lblist.SelectionMode = SelectionMode.One;
+			lblist.SelectionMode = SelectionMode.One;
 
 			if (lblist.Items.Count > 0)
 			{
@@ -477,7 +477,7 @@ namespace SimPe.Packages
 
 			btdelete.Enabled = (lblist.SelectedIndex >= 0);
 
-			this.ShowDialog();
+			ShowDialog();
 
 			extension = false;
 			if (ok)
@@ -503,7 +503,7 @@ namespace SimPe.Packages
 		/// <returns>All the Packages the user has selected</returns>
 		public S2CPDescriptor[] Execute(S2CPDescriptor[] files, SelectionMode selmode)
 		{
-			this.extension = false;
+			extension = false;
 			ok = false;
 
 			for (int i = 0; i < files.Length; i++)
@@ -511,14 +511,14 @@ namespace SimPe.Packages
 				lblist.Items.Add(files[i]);
 			}
 
-			this.tbflname.ReadOnly = true;
-			this.tbdesc.ReadOnly = true;
+			tbflname.ReadOnly = true;
+			tbdesc.ReadOnly = true;
 			btadd.Visible = false;
 			btdelete.Visible = false;
 			btbrowse.Enabled = false;
 			btsave.Text = "Open";
 
-			this.lblist.SelectionMode = selmode;
+			lblist.SelectionMode = selmode;
 
 			if (lblist.Items.Count > 0)
 			{
@@ -527,7 +527,7 @@ namespace SimPe.Packages
 
 			btdelete.Enabled = (lblist.SelectedIndex >= 0);
 
-			this.ShowDialog();
+			ShowDialog();
 
 			if (ok)
 			{
@@ -676,7 +676,7 @@ namespace SimPe.Packages
 					MessageBox.Show(
 						"You have to specify a Filename for the Sims2Community Pack File."
 					);
-					this.tbflname.Select();
+					tbflname.Select();
 					e.Cancel = true;
 				}
 

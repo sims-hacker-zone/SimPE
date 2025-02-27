@@ -59,7 +59,7 @@ namespace pjOBJDTool
 			{
 				IToolPlugin[] tools =
 				{
-					new tOBJDTool(this.LinkedRegistry, this.LinkedProvider),
+					new tOBJDTool(LinkedRegistry, LinkedProvider),
 				};
 				return tools;
 			}

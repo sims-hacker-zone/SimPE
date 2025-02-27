@@ -110,14 +110,14 @@ namespace SimPe.Plugin
 				tGenericRcol = new TabPage.GenericRcol();
 			}
 
-			tGenericRcol.tb_ver.Text = "0x" + Helper.HexString(this.version);
+			tGenericRcol.tb_ver.Text = "0x" + Helper.HexString(version);
 			tGenericRcol.gen_pg.SelectedObject = this;
 		}
 
 		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
 		{
 			base.ExtendTabControl(tc);
-			this.Extension.AddToTabControl(tc);
+			Extension.AddToTabControl(tc);
 			tc.SelectedIndex = tc.TabPages.Count - 1;
 		}
 
@@ -130,9 +130,9 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			if (this.tGenericRcol != null)
+			if (tGenericRcol != null)
 			{
-				this.tGenericRcol.Dispose();
+				tGenericRcol.Dispose();
 			}
 
 			tGenericRcol = null;

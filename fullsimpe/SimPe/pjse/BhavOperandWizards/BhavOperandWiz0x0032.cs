@@ -110,7 +110,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 			get
 			{
 				Scope scope = Scope.Private;
-				switch (this.cbScope.SelectedIndex)
+				switch (cbScope.SelectedIndex)
 				{
 					case 1:
 						scope = Scope.SemiGlobal;
@@ -127,7 +127,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 		{
 			FileTable.Entry[] items = FileTable.GFT[
 				(uint)SimPe.Data.MetaData.STRING_FILE,
-				inst.Parent.GroupForScope(this.Scope),
+				inst.Parent.GroupForScope(Scope),
 				(uint)GS.GlobalStr.MakeAction
 			];
 
@@ -136,7 +136,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 				MessageBox.Show(
 					Localization.GetString("bow_noStrings")
 						+ " ("
-						+ Localization.GetString(this.Scope.ToString())
+						+ Localization.GetString(Scope.ToString())
 						+ ")"
 				);
 				return; // eek!
@@ -148,9 +148,9 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 			int i = (new StrChooser(true)).Strnum(str);
 			if (i >= 0)
 			{
-				this.tbStrIndex.Text = "0x" + SimPe.Helper.HexString((byte)(i + 1));
-				this.lbActionString.Text = ((BhavWiz)inst).readStr(
-					this.Scope,
+				tbStrIndex.Text = "0x" + SimPe.Helper.HexString((byte)(i + 1));
+				lbActionString.Text = ((BhavWiz)inst).readStr(
+					Scope,
 					GS.GlobalStr.MakeAction,
 					(ushort)i,
 					-1,
@@ -199,7 +199,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 		}
 
 		#region iBhavOperandWizForm
-		public Panel WizPanel => this.pnWiz0x0032;
+		public Panel WizPanel => pnWiz0x0032;
 
 		public void Execute(Instruction inst)
 		{
@@ -210,67 +210,67 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 
 			internalchg = true;
 
-			this.lbDisabled.Enabled = this.cbDisabled.Enabled = inst.NodeVersion != 0;
-			this.tfSubQ.Enabled = inst.NodeVersion > 2;
+			lbDisabled.Enabled = cbDisabled.Enabled = inst.NodeVersion != 0;
+			tfSubQ.Enabled = inst.NodeVersion > 2;
 
-			this.cbScope.SelectedIndex = -1;
+			cbScope.SelectedIndex = -1;
 			switch (ops1[0x02] & 0x0c)
 			{
 				case 0x00:
-					this.cbScope.SelectedIndex = 0;
+					cbScope.SelectedIndex = 0;
 					break; // Private
 				case 0x04:
-					this.cbScope.SelectedIndex = 2;
+					cbScope.SelectedIndex = 2;
 					break; // Global
 				case 0x08:
-					this.cbScope.SelectedIndex = 1;
+					cbScope.SelectedIndex = 1;
 					break; // SemiGlobal
 			}
 
-			this.tfActionTemp.Checked = (ops1[0x02] & 0x10) != 0;
-			this.pnStrIndex.Enabled = !this.tfActionTemp.Checked;
+			tfActionTemp.Checked = (ops1[0x02] & 0x10) != 0;
+			pnStrIndex.Enabled = !tfActionTemp.Checked;
 
-			this.pnThumbnail.Enabled = this.rbIconSourceTN.Checked = (
+			pnThumbnail.Enabled = rbIconSourceTN.Checked = (
 				(ops1[0x02] & 0x20) != 0
 			);
-			this.pnObject.Enabled = this.rbIconSourceObj.Checked =
-				!this.rbIconSourceTN.Checked;
+			pnObject.Enabled = rbIconSourceObj.Checked =
+				!rbIconSourceTN.Checked;
 
-			this.tfGUIDTemp.Checked = ((ops1[0x02] & 0x40) != 0);
-			this.pnGUID.Enabled = !this.tfGUIDTemp.Checked;
+			tfGUIDTemp.Checked = ((ops1[0x02] & 0x40) != 0);
+			pnGUID.Enabled = !tfGUIDTemp.Checked;
 
-			this.tfIconTemp.Checked = (ops1[0x02] & 0x80) != 0;
-			this.pnIconIndex.Enabled = !this.tfIconTemp.Checked;
+			tfIconTemp.Checked = (ops1[0x02] & 0x80) != 0;
+			pnIconIndex.Enabled = !tfIconTemp.Checked;
 
-			this.cbDisabled.SelectedIndex = -1;
+			cbDisabled.SelectedIndex = -1;
 			switch (ops1[0x03] & 0x03)
 			{
 				case 0x00:
-					this.cbDisabled.SelectedIndex = 2;
+					cbDisabled.SelectedIndex = 2;
 					break;
 				case 0x01:
-					this.cbDisabled.SelectedIndex = 0;
+					cbDisabled.SelectedIndex = 0;
 					break;
 				case 0x02:
-					this.cbDisabled.SelectedIndex = 1;
+					cbDisabled.SelectedIndex = 1;
 					break;
 			}
-			this.tfSubQ.Checked = (ops1[0x03] & 0x10) != 0;
+			tfSubQ.Checked = (ops1[0x03] & 0x10) != 0;
 
 			int val =
 				inst.NodeVersion < 2
 					? ops1[0x04]
 					: BhavWiz.ToShort(ops2[0x06], ops2[0x07]);
-			this.tbStrIndex.Text = "0x" + SimPe.Helper.HexString((ushort)val);
-			this.lbActionString.Text = ((BhavWiz)inst).readStr(
-				this.Scope,
+			tbStrIndex.Text = "0x" + SimPe.Helper.HexString((ushort)val);
+			lbActionString.Text = ((BhavWiz)inst).readStr(
+				Scope,
 				GS.GlobalStr.MakeAction,
 				(ushort)(val - 1),
 				-1,
 				Detail.ErrorNames
 			);
 
-			this.tbGUID.Text =
+			tbGUID.Text =
 				"0x"
 				+ SimPe.Helper.HexString(
 					ops1[0x05]
@@ -279,18 +279,18 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 						| (ops2[0x00] << 24)
 				);
 
-			this.pnAction.Enabled = this.rbModeAction.Checked = ops2[0x01] == 0;
-			this.pnIcon.Enabled = this.rbModeIcon.Checked = !this.rbModeAction.Checked;
+			pnAction.Enabled = rbModeAction.Checked = ops2[0x01] == 0;
+			pnIcon.Enabled = rbModeIcon.Checked = !rbModeAction.Checked;
 
-			this.tbIconIndex.Text = "0x" + SimPe.Helper.HexString(ops2[0x03]);
+			tbIconIndex.Text = "0x" + SimPe.Helper.HexString(ops2[0x03]);
 
 			doid1 = new DataOwnerControl(
 				inst,
-				this.cbDataOwner1,
-				this.cbPicker1,
-				this.tbVal1,
-				this.cbDecimal,
-				this.cbAttrPicker,
+				cbDataOwner1,
+				cbPicker1,
+				tbVal1,
+				cbDecimal,
+				cbAttrPicker,
 				null,
 				ops2[0x03],
 				BhavWiz.ToShort(ops2[0x04], ops2[0x05])
@@ -306,32 +306,32 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 				wrappedByteArray ops1 = inst.Operands;
 				wrappedByteArray ops2 = inst.Reserved1;
 
-				if (this.rbModeAction.Checked)
+				if (rbModeAction.Checked)
 				{
 					ops2[0x01] = 0;
 
-					if (this.cbScope.SelectedIndex >= 0)
+					if (cbScope.SelectedIndex >= 0)
 					{
 						ops1[0x02] &= 0xf3;
-						if (this.cbScope.SelectedIndex == 2)
+						if (cbScope.SelectedIndex == 2)
 						{
 							ops1[0x02] |= 0x04;
 						}
 
-						if (this.cbScope.SelectedIndex == 1)
+						if (cbScope.SelectedIndex == 1)
 						{
 							ops1[0x02] |= 0x08;
 						}
 					}
 
 					ops1[0x02] &= 0xef;
-					if (this.tfActionTemp.Checked)
+					if (tfActionTemp.Checked)
 					{
 						ops1[0x02] |= 0x10;
 					}
 					else
 					{
-						ushort val = Convert.ToUInt16(this.tbStrIndex.Text, 16);
+						ushort val = Convert.ToUInt16(tbStrIndex.Text, 16);
 						if (inst.NodeVersion < 2)
 						{
 							ops1[0x04] = (byte)(val & 0xff);
@@ -342,14 +342,14 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 						}
 					}
 
-					if (inst.NodeVersion != 0 && this.cbDisabled.SelectedIndex != -1)
+					if (inst.NodeVersion != 0 && cbDisabled.SelectedIndex != -1)
 					{
 						ops1[0x03] &= 0xfc;
-						if (this.cbDisabled.SelectedIndex == 0)
+						if (cbDisabled.SelectedIndex == 0)
 						{
 							ops1[0x03] |= 0x01;
 						}
-						else if (this.cbDisabled.SelectedIndex == 1)
+						else if (cbDisabled.SelectedIndex == 1)
 						{
 							ops1[0x03] |= 0x02;
 						}
@@ -357,7 +357,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 					if (inst.NodeVersion > 2)
 					{
 						ops1[0x03] &= 0xef;
-						if (this.tfSubQ.Checked)
+						if (tfSubQ.Checked)
 						{
 							ops1[0x03] |= 0x10;
 						}
@@ -371,28 +371,28 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 					}
 
 					ops1[0x02] &= 0x7f;
-					if (this.tfIconTemp.Checked)
+					if (tfIconTemp.Checked)
 					{
 						ops1[0x02] |= 0x80;
 					}
 					else
 					{
-						ops2[0x03] = Convert.ToByte(this.tbIconIndex.Text, 16);
+						ops2[0x03] = Convert.ToByte(tbIconIndex.Text, 16);
 					}
 
 					ops1[0x02] &= 0xdf;
-					if (this.pnThumbnail.Enabled)
+					if (pnThumbnail.Enabled)
 					{
 						ops1[0x02] |= 0x20;
 
 						ops1[0x02] &= 0xbf;
-						if (this.tfGUIDTemp.Checked)
+						if (tfGUIDTemp.Checked)
 						{
 							ops1[0x02] |= 0x40;
 						}
 						else
 						{
-							uint val = Convert.ToUInt32(this.tbGUID.Text, 16);
+							uint val = Convert.ToUInt32(tbGUID.Text, 16);
 							ops1[0x05] = (byte)(val & 0xff);
 							ops1[0x06] = (byte)((val >> 8) & 0xff);
 							ops1[0x07] = (byte)((val >> 16) & 0xff);
@@ -420,157 +420,157 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(UI));
-			this.pnWiz0x0032 = new Panel();
-			this.rbModeIcon = new RadioButton();
-			this.rbModeAction = new RadioButton();
-			this.pnAction = new Panel();
-			this.tfSubQ = new CheckBox();
-			this.pnStrIndex = new Panel();
-			this.label5 = new Label();
-			this.btnActionString = new Button();
-			this.tbStrIndex = new TextBox();
-			this.lbActionString = new Label();
-			this.tfActionTemp = new CheckBox();
-			this.cbDisabled = new ComboBox();
-			this.cbScope = new ComboBox();
-			this.label3 = new Label();
-			this.lbDisabled = new Label();
-			this.label1 = new Label();
-			this.pnIcon = new Panel();
-			this.pnObject = new Panel();
-			this.cbAttrPicker = new CheckBox();
-			this.cbDecimal = new CheckBox();
-			this.cbPicker1 = new ComboBox();
-			this.tbVal1 = new TextBox();
-			this.cbDataOwner1 = new ComboBox();
-			this.label9 = new Label();
-			this.pnThumbnail = new Panel();
-			this.tfGUIDTemp = new CheckBox();
-			this.pnGUID = new Panel();
-			this.label8 = new Label();
-			this.tbGUID = new TextBox();
-			this.label7 = new Label();
-			this.rbIconSourceObj = new RadioButton();
-			this.rbIconSourceTN = new RadioButton();
-			this.tfIconTemp = new CheckBox();
-			this.pnIconIndex = new Panel();
-			this.label6 = new Label();
-			this.tbIconIndex = new TextBox();
-			this.label10 = new Label();
-			this.label4 = new Label();
-			this.pnWiz0x0032.SuspendLayout();
-			this.pnAction.SuspendLayout();
-			this.pnStrIndex.SuspendLayout();
-			this.pnIcon.SuspendLayout();
-			this.pnObject.SuspendLayout();
-			this.pnThumbnail.SuspendLayout();
-			this.pnGUID.SuspendLayout();
-			this.pnIconIndex.SuspendLayout();
-			this.SuspendLayout();
+			pnWiz0x0032 = new Panel();
+			rbModeIcon = new RadioButton();
+			rbModeAction = new RadioButton();
+			pnAction = new Panel();
+			tfSubQ = new CheckBox();
+			pnStrIndex = new Panel();
+			label5 = new Label();
+			btnActionString = new Button();
+			tbStrIndex = new TextBox();
+			lbActionString = new Label();
+			tfActionTemp = new CheckBox();
+			cbDisabled = new ComboBox();
+			cbScope = new ComboBox();
+			label3 = new Label();
+			lbDisabled = new Label();
+			label1 = new Label();
+			pnIcon = new Panel();
+			pnObject = new Panel();
+			cbAttrPicker = new CheckBox();
+			cbDecimal = new CheckBox();
+			cbPicker1 = new ComboBox();
+			tbVal1 = new TextBox();
+			cbDataOwner1 = new ComboBox();
+			label9 = new Label();
+			pnThumbnail = new Panel();
+			tfGUIDTemp = new CheckBox();
+			pnGUID = new Panel();
+			label8 = new Label();
+			tbGUID = new TextBox();
+			label7 = new Label();
+			rbIconSourceObj = new RadioButton();
+			rbIconSourceTN = new RadioButton();
+			tfIconTemp = new CheckBox();
+			pnIconIndex = new Panel();
+			label6 = new Label();
+			tbIconIndex = new TextBox();
+			label10 = new Label();
+			label4 = new Label();
+			pnWiz0x0032.SuspendLayout();
+			pnAction.SuspendLayout();
+			pnStrIndex.SuspendLayout();
+			pnIcon.SuspendLayout();
+			pnObject.SuspendLayout();
+			pnThumbnail.SuspendLayout();
+			pnGUID.SuspendLayout();
+			pnIconIndex.SuspendLayout();
+			SuspendLayout();
 			//
 			// pnWiz0x0032
 			//
-			this.pnWiz0x0032.Controls.Add(this.rbModeIcon);
-			this.pnWiz0x0032.Controls.Add(this.rbModeAction);
-			this.pnWiz0x0032.Controls.Add(this.pnAction);
-			this.pnWiz0x0032.Controls.Add(this.pnIcon);
-			resources.ApplyResources(this.pnWiz0x0032, "pnWiz0x0032");
-			this.pnWiz0x0032.Name = "pnWiz0x0032";
+			pnWiz0x0032.Controls.Add(rbModeIcon);
+			pnWiz0x0032.Controls.Add(rbModeAction);
+			pnWiz0x0032.Controls.Add(pnAction);
+			pnWiz0x0032.Controls.Add(pnIcon);
+			resources.ApplyResources(pnWiz0x0032, "pnWiz0x0032");
+			pnWiz0x0032.Name = "pnWiz0x0032";
 			//
 			// rbModeIcon
 			//
-			resources.ApplyResources(this.rbModeIcon, "rbModeIcon");
-			this.rbModeIcon.Name = "rbModeIcon";
-			this.rbModeIcon.TabStop = true;
-			this.rbModeIcon.UseVisualStyleBackColor = true;
-			this.rbModeIcon.CheckedChanged += new EventHandler(
-				this.rbModeIcon_CheckedChanged
+			resources.ApplyResources(rbModeIcon, "rbModeIcon");
+			rbModeIcon.Name = "rbModeIcon";
+			rbModeIcon.TabStop = true;
+			rbModeIcon.UseVisualStyleBackColor = true;
+			rbModeIcon.CheckedChanged += new EventHandler(
+				rbModeIcon_CheckedChanged
 			);
 			//
 			// rbModeAction
 			//
-			resources.ApplyResources(this.rbModeAction, "rbModeAction");
-			this.rbModeAction.Name = "rbModeAction";
-			this.rbModeAction.TabStop = true;
-			this.rbModeAction.UseVisualStyleBackColor = true;
-			this.rbModeAction.CheckedChanged += new EventHandler(
-				this.rbModeAction_CheckedChanged
+			resources.ApplyResources(rbModeAction, "rbModeAction");
+			rbModeAction.Name = "rbModeAction";
+			rbModeAction.TabStop = true;
+			rbModeAction.UseVisualStyleBackColor = true;
+			rbModeAction.CheckedChanged += new EventHandler(
+				rbModeAction_CheckedChanged
 			);
 			//
 			// pnAction
 			//
-			this.pnAction.Controls.Add(this.tfSubQ);
-			this.pnAction.Controls.Add(this.pnStrIndex);
-			this.pnAction.Controls.Add(this.tfActionTemp);
-			this.pnAction.Controls.Add(this.cbDisabled);
-			this.pnAction.Controls.Add(this.cbScope);
-			this.pnAction.Controls.Add(this.label3);
-			this.pnAction.Controls.Add(this.lbDisabled);
-			this.pnAction.Controls.Add(this.label1);
-			resources.ApplyResources(this.pnAction, "pnAction");
-			this.pnAction.Name = "pnAction";
+			pnAction.Controls.Add(tfSubQ);
+			pnAction.Controls.Add(pnStrIndex);
+			pnAction.Controls.Add(tfActionTemp);
+			pnAction.Controls.Add(cbDisabled);
+			pnAction.Controls.Add(cbScope);
+			pnAction.Controls.Add(label3);
+			pnAction.Controls.Add(lbDisabled);
+			pnAction.Controls.Add(label1);
+			resources.ApplyResources(pnAction, "pnAction");
+			pnAction.Name = "pnAction";
 			//
 			// tfSubQ
 			//
-			resources.ApplyResources(this.tfSubQ, "tfSubQ");
-			this.tfSubQ.Name = "tfSubQ";
-			this.tfSubQ.UseVisualStyleBackColor = true;
+			resources.ApplyResources(tfSubQ, "tfSubQ");
+			tfSubQ.Name = "tfSubQ";
+			tfSubQ.UseVisualStyleBackColor = true;
 			//
 			// pnStrIndex
 			//
-			resources.ApplyResources(this.pnStrIndex, "pnStrIndex");
-			this.pnStrIndex.Controls.Add(this.label5);
-			this.pnStrIndex.Controls.Add(this.btnActionString);
-			this.pnStrIndex.Controls.Add(this.tbStrIndex);
-			this.pnStrIndex.Controls.Add(this.lbActionString);
-			this.pnStrIndex.Name = "pnStrIndex";
+			resources.ApplyResources(pnStrIndex, "pnStrIndex");
+			pnStrIndex.Controls.Add(label5);
+			pnStrIndex.Controls.Add(btnActionString);
+			pnStrIndex.Controls.Add(tbStrIndex);
+			pnStrIndex.Controls.Add(lbActionString);
+			pnStrIndex.Name = "pnStrIndex";
 			//
 			// label5
 			//
-			resources.ApplyResources(this.label5, "label5");
-			this.label5.Name = "label5";
+			resources.ApplyResources(label5, "label5");
+			label5.Name = "label5";
 			//
 			// btnActionString
 			//
-			resources.ApplyResources(this.btnActionString, "btnActionString");
-			this.btnActionString.Name = "btnActionString";
-			this.btnActionString.Click += new EventHandler(
-				this.btnActionString_Click
+			resources.ApplyResources(btnActionString, "btnActionString");
+			btnActionString.Name = "btnActionString";
+			btnActionString.Click += new EventHandler(
+				btnActionString_Click
 			);
 			//
 			// tbStrIndex
 			//
-			resources.ApplyResources(this.tbStrIndex, "tbStrIndex");
-			this.tbStrIndex.Name = "tbStrIndex";
-			this.tbStrIndex.TextChanged += new EventHandler(
-				this.hex16_TextChanged
+			resources.ApplyResources(tbStrIndex, "tbStrIndex");
+			tbStrIndex.Name = "tbStrIndex";
+			tbStrIndex.TextChanged += new EventHandler(
+				hex16_TextChanged
 			);
-			this.tbStrIndex.Validated += new EventHandler(this.hex16_Validated);
-			this.tbStrIndex.Validating += new System.ComponentModel.CancelEventHandler(
-				this.hex16_Validating
+			tbStrIndex.Validated += new EventHandler(hex16_Validated);
+			tbStrIndex.Validating += new System.ComponentModel.CancelEventHandler(
+				hex16_Validating
 			);
 			//
 			// lbActionString
 			//
-			resources.ApplyResources(this.lbActionString, "lbActionString");
-			this.lbActionString.Name = "lbActionString";
+			resources.ApplyResources(lbActionString, "lbActionString");
+			lbActionString.Name = "lbActionString";
 			//
 			// tfActionTemp
 			//
-			resources.ApplyResources(this.tfActionTemp, "tfActionTemp");
-			this.tfActionTemp.Name = "tfActionTemp";
-			this.tfActionTemp.UseVisualStyleBackColor = true;
-			this.tfActionTemp.CheckedChanged += new EventHandler(
-				this.tfActionTemp_CheckedChanged
+			resources.ApplyResources(tfActionTemp, "tfActionTemp");
+			tfActionTemp.Name = "tfActionTemp";
+			tfActionTemp.UseVisualStyleBackColor = true;
+			tfActionTemp.CheckedChanged += new EventHandler(
+				tfActionTemp_CheckedChanged
 			);
 			//
 			// cbDisabled
 			//
-			this.cbDisabled.DropDownStyle =
+			cbDisabled.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbDisabled.FormattingEnabled = true;
-			this.cbDisabled.Items.AddRange(
+			cbDisabled.FormattingEnabled = true;
+			cbDisabled.Items.AddRange(
 				new object[]
 				{
 					resources.GetString("cbDisabled.Items"),
@@ -578,16 +578,16 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 					resources.GetString("cbDisabled.Items2"),
 				}
 			);
-			resources.ApplyResources(this.cbDisabled, "cbDisabled");
-			this.cbDisabled.Name = "cbDisabled";
+			resources.ApplyResources(cbDisabled, "cbDisabled");
+			cbDisabled.Name = "cbDisabled";
 			//
 			// cbScope
 			//
-			this.cbScope.DropDownStyle =
+			cbScope.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbScope.FormattingEnabled = true;
-			this.cbScope.Items.AddRange(
+			cbScope.FormattingEnabled = true;
+			cbScope.Items.AddRange(
 				new object[]
 				{
 					resources.GetString("cbScope.Items"),
@@ -595,215 +595,215 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 					resources.GetString("cbScope.Items2"),
 				}
 			);
-			resources.ApplyResources(this.cbScope, "cbScope");
-			this.cbScope.Name = "cbScope";
-			this.cbScope.SelectedIndexChanged += new EventHandler(
-				this.cbScope_SelectedIndexChanged
+			resources.ApplyResources(cbScope, "cbScope");
+			cbScope.Name = "cbScope";
+			cbScope.SelectedIndexChanged += new EventHandler(
+				cbScope_SelectedIndexChanged
 			);
 			//
 			// label3
 			//
-			resources.ApplyResources(this.label3, "label3");
-			this.label3.Name = "label3";
+			resources.ApplyResources(label3, "label3");
+			label3.Name = "label3";
 			//
 			// lbDisabled
 			//
-			resources.ApplyResources(this.lbDisabled, "lbDisabled");
-			this.lbDisabled.Name = "lbDisabled";
+			resources.ApplyResources(lbDisabled, "lbDisabled");
+			lbDisabled.Name = "lbDisabled";
 			//
 			// label1
 			//
-			resources.ApplyResources(this.label1, "label1");
-			this.label1.Name = "label1";
+			resources.ApplyResources(label1, "label1");
+			label1.Name = "label1";
 			//
 			// pnIcon
 			//
-			this.pnIcon.Controls.Add(this.pnObject);
-			this.pnIcon.Controls.Add(this.pnThumbnail);
-			this.pnIcon.Controls.Add(this.rbIconSourceObj);
-			this.pnIcon.Controls.Add(this.rbIconSourceTN);
-			this.pnIcon.Controls.Add(this.tfIconTemp);
-			this.pnIcon.Controls.Add(this.pnIconIndex);
-			this.pnIcon.Controls.Add(this.label10);
-			this.pnIcon.Controls.Add(this.label4);
-			resources.ApplyResources(this.pnIcon, "pnIcon");
-			this.pnIcon.Name = "pnIcon";
+			pnIcon.Controls.Add(pnObject);
+			pnIcon.Controls.Add(pnThumbnail);
+			pnIcon.Controls.Add(rbIconSourceObj);
+			pnIcon.Controls.Add(rbIconSourceTN);
+			pnIcon.Controls.Add(tfIconTemp);
+			pnIcon.Controls.Add(pnIconIndex);
+			pnIcon.Controls.Add(label10);
+			pnIcon.Controls.Add(label4);
+			resources.ApplyResources(pnIcon, "pnIcon");
+			pnIcon.Name = "pnIcon";
 			//
 			// pnObject
 			//
-			this.pnObject.Controls.Add(this.cbAttrPicker);
-			this.pnObject.Controls.Add(this.cbDecimal);
-			this.pnObject.Controls.Add(this.cbPicker1);
-			this.pnObject.Controls.Add(this.tbVal1);
-			this.pnObject.Controls.Add(this.cbDataOwner1);
-			this.pnObject.Controls.Add(this.label9);
-			resources.ApplyResources(this.pnObject, "pnObject");
-			this.pnObject.Name = "pnObject";
+			pnObject.Controls.Add(cbAttrPicker);
+			pnObject.Controls.Add(cbDecimal);
+			pnObject.Controls.Add(cbPicker1);
+			pnObject.Controls.Add(tbVal1);
+			pnObject.Controls.Add(cbDataOwner1);
+			pnObject.Controls.Add(label9);
+			resources.ApplyResources(pnObject, "pnObject");
+			pnObject.Name = "pnObject";
 			//
 			// cbAttrPicker
 			//
-			resources.ApplyResources(this.cbAttrPicker, "cbAttrPicker");
-			this.cbAttrPicker.Name = "cbAttrPicker";
+			resources.ApplyResources(cbAttrPicker, "cbAttrPicker");
+			cbAttrPicker.Name = "cbAttrPicker";
 			//
 			// cbDecimal
 			//
-			resources.ApplyResources(this.cbDecimal, "cbDecimal");
-			this.cbDecimal.Name = "cbDecimal";
+			resources.ApplyResources(cbDecimal, "cbDecimal");
+			cbDecimal.Name = "cbDecimal";
 			//
 			// cbPicker1
 			//
-			this.cbPicker1.DropDownStyle =
+			cbPicker1.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbPicker1.DropDownWidth = 384;
-			resources.ApplyResources(this.cbPicker1, "cbPicker1");
-			this.cbPicker1.Name = "cbPicker1";
+			cbPicker1.DropDownWidth = 384;
+			resources.ApplyResources(cbPicker1, "cbPicker1");
+			cbPicker1.Name = "cbPicker1";
 			//
 			// tbVal1
 			//
-			resources.ApplyResources(this.tbVal1, "tbVal1");
-			this.tbVal1.Name = "tbVal1";
+			resources.ApplyResources(tbVal1, "tbVal1");
+			tbVal1.Name = "tbVal1";
 			//
 			// cbDataOwner1
 			//
-			this.cbDataOwner1.DropDownStyle =
+			cbDataOwner1.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbDataOwner1.DropDownWidth = 384;
-			resources.ApplyResources(this.cbDataOwner1, "cbDataOwner1");
-			this.cbDataOwner1.Name = "cbDataOwner1";
+			cbDataOwner1.DropDownWidth = 384;
+			resources.ApplyResources(cbDataOwner1, "cbDataOwner1");
+			cbDataOwner1.Name = "cbDataOwner1";
 			//
 			// label9
 			//
-			resources.ApplyResources(this.label9, "label9");
-			this.label9.Name = "label9";
+			resources.ApplyResources(label9, "label9");
+			label9.Name = "label9";
 			//
 			// pnThumbnail
 			//
-			this.pnThumbnail.Controls.Add(this.tfGUIDTemp);
-			this.pnThumbnail.Controls.Add(this.pnGUID);
-			this.pnThumbnail.Controls.Add(this.label7);
-			resources.ApplyResources(this.pnThumbnail, "pnThumbnail");
-			this.pnThumbnail.Name = "pnThumbnail";
+			pnThumbnail.Controls.Add(tfGUIDTemp);
+			pnThumbnail.Controls.Add(pnGUID);
+			pnThumbnail.Controls.Add(label7);
+			resources.ApplyResources(pnThumbnail, "pnThumbnail");
+			pnThumbnail.Name = "pnThumbnail";
 			//
 			// tfGUIDTemp
 			//
-			resources.ApplyResources(this.tfGUIDTemp, "tfGUIDTemp");
-			this.tfGUIDTemp.Name = "tfGUIDTemp";
-			this.tfGUIDTemp.UseVisualStyleBackColor = true;
-			this.tfGUIDTemp.CheckedChanged += new EventHandler(
-				this.tfGUIDTemp_CheckedChanged
+			resources.ApplyResources(tfGUIDTemp, "tfGUIDTemp");
+			tfGUIDTemp.Name = "tfGUIDTemp";
+			tfGUIDTemp.UseVisualStyleBackColor = true;
+			tfGUIDTemp.CheckedChanged += new EventHandler(
+				tfGUIDTemp_CheckedChanged
 			);
 			//
 			// pnGUID
 			//
-			this.pnGUID.Controls.Add(this.label8);
-			this.pnGUID.Controls.Add(this.tbGUID);
-			resources.ApplyResources(this.pnGUID, "pnGUID");
-			this.pnGUID.Name = "pnGUID";
+			pnGUID.Controls.Add(label8);
+			pnGUID.Controls.Add(tbGUID);
+			resources.ApplyResources(pnGUID, "pnGUID");
+			pnGUID.Name = "pnGUID";
 			//
 			// label8
 			//
-			resources.ApplyResources(this.label8, "label8");
-			this.label8.Name = "label8";
+			resources.ApplyResources(label8, "label8");
+			label8.Name = "label8";
 			//
 			// tbGUID
 			//
-			resources.ApplyResources(this.tbGUID, "tbGUID");
-			this.tbGUID.Name = "tbGUID";
-			this.tbGUID.Validated += new EventHandler(this.hex32_Validated);
-			this.tbGUID.Validating += new System.ComponentModel.CancelEventHandler(
-				this.hex32_Validating
+			resources.ApplyResources(tbGUID, "tbGUID");
+			tbGUID.Name = "tbGUID";
+			tbGUID.Validated += new EventHandler(hex32_Validated);
+			tbGUID.Validating += new System.ComponentModel.CancelEventHandler(
+				hex32_Validating
 			);
 			//
 			// label7
 			//
-			resources.ApplyResources(this.label7, "label7");
-			this.label7.Name = "label7";
+			resources.ApplyResources(label7, "label7");
+			label7.Name = "label7";
 			//
 			// rbIconSourceObj
 			//
-			resources.ApplyResources(this.rbIconSourceObj, "rbIconSourceObj");
-			this.rbIconSourceObj.Name = "rbIconSourceObj";
-			this.rbIconSourceObj.TabStop = true;
-			this.rbIconSourceObj.UseVisualStyleBackColor = true;
-			this.rbIconSourceObj.CheckedChanged += new EventHandler(
-				this.rbIconSourceObj_CheckedChanged
+			resources.ApplyResources(rbIconSourceObj, "rbIconSourceObj");
+			rbIconSourceObj.Name = "rbIconSourceObj";
+			rbIconSourceObj.TabStop = true;
+			rbIconSourceObj.UseVisualStyleBackColor = true;
+			rbIconSourceObj.CheckedChanged += new EventHandler(
+				rbIconSourceObj_CheckedChanged
 			);
 			//
 			// rbIconSourceTN
 			//
-			resources.ApplyResources(this.rbIconSourceTN, "rbIconSourceTN");
-			this.rbIconSourceTN.Name = "rbIconSourceTN";
-			this.rbIconSourceTN.TabStop = true;
-			this.rbIconSourceTN.UseVisualStyleBackColor = true;
-			this.rbIconSourceTN.CheckedChanged += new EventHandler(
-				this.rbIconSourceTN_CheckedChanged
+			resources.ApplyResources(rbIconSourceTN, "rbIconSourceTN");
+			rbIconSourceTN.Name = "rbIconSourceTN";
+			rbIconSourceTN.TabStop = true;
+			rbIconSourceTN.UseVisualStyleBackColor = true;
+			rbIconSourceTN.CheckedChanged += new EventHandler(
+				rbIconSourceTN_CheckedChanged
 			);
 			//
 			// tfIconTemp
 			//
-			resources.ApplyResources(this.tfIconTemp, "tfIconTemp");
-			this.tfIconTemp.Name = "tfIconTemp";
-			this.tfIconTemp.UseVisualStyleBackColor = true;
-			this.tfIconTemp.CheckedChanged += new EventHandler(
-				this.tfIconTemp_CheckedChanged
+			resources.ApplyResources(tfIconTemp, "tfIconTemp");
+			tfIconTemp.Name = "tfIconTemp";
+			tfIconTemp.UseVisualStyleBackColor = true;
+			tfIconTemp.CheckedChanged += new EventHandler(
+				tfIconTemp_CheckedChanged
 			);
 			//
 			// pnIconIndex
 			//
-			this.pnIconIndex.Controls.Add(this.label6);
-			this.pnIconIndex.Controls.Add(this.tbIconIndex);
-			resources.ApplyResources(this.pnIconIndex, "pnIconIndex");
-			this.pnIconIndex.Name = "pnIconIndex";
+			pnIconIndex.Controls.Add(label6);
+			pnIconIndex.Controls.Add(tbIconIndex);
+			resources.ApplyResources(pnIconIndex, "pnIconIndex");
+			pnIconIndex.Name = "pnIconIndex";
 			//
 			// label6
 			//
-			resources.ApplyResources(this.label6, "label6");
-			this.label6.Name = "label6";
+			resources.ApplyResources(label6, "label6");
+			label6.Name = "label6";
 			//
 			// tbIconIndex
 			//
-			resources.ApplyResources(this.tbIconIndex, "tbIconIndex");
-			this.tbIconIndex.Name = "tbIconIndex";
-			this.tbIconIndex.Validated += new EventHandler(this.hex8_Validated);
-			this.tbIconIndex.Validating += new System.ComponentModel.CancelEventHandler(
-				this.hex8_Validating
+			resources.ApplyResources(tbIconIndex, "tbIconIndex");
+			tbIconIndex.Name = "tbIconIndex";
+			tbIconIndex.Validated += new EventHandler(hex8_Validated);
+			tbIconIndex.Validating += new System.ComponentModel.CancelEventHandler(
+				hex8_Validating
 			);
 			//
 			// label10
 			//
-			resources.ApplyResources(this.label10, "label10");
-			this.label10.Name = "label10";
+			resources.ApplyResources(label10, "label10");
+			label10.Name = "label10";
 			//
 			// label4
 			//
-			resources.ApplyResources(this.label4, "label4");
-			this.label4.Name = "label4";
+			resources.ApplyResources(label4, "label4");
+			label4.Name = "label4";
 			//
 			// UI
 			//
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = AutoScaleMode.Dpi;
-			this.Controls.Add(this.pnWiz0x0032);
-			this.Name = "UI";
-			this.pnWiz0x0032.ResumeLayout(false);
-			this.pnWiz0x0032.PerformLayout();
-			this.pnAction.ResumeLayout(false);
-			this.pnAction.PerformLayout();
-			this.pnStrIndex.ResumeLayout(false);
-			this.pnStrIndex.PerformLayout();
-			this.pnIcon.ResumeLayout(false);
-			this.pnIcon.PerformLayout();
-			this.pnObject.ResumeLayout(false);
-			this.pnObject.PerformLayout();
-			this.pnThumbnail.ResumeLayout(false);
-			this.pnThumbnail.PerformLayout();
-			this.pnGUID.ResumeLayout(false);
-			this.pnGUID.PerformLayout();
-			this.pnIconIndex.ResumeLayout(false);
-			this.pnIconIndex.PerformLayout();
-			this.ResumeLayout(false);
+			AutoScaleMode = AutoScaleMode.Dpi;
+			Controls.Add(pnWiz0x0032);
+			Name = "UI";
+			pnWiz0x0032.ResumeLayout(false);
+			pnWiz0x0032.PerformLayout();
+			pnAction.ResumeLayout(false);
+			pnAction.PerformLayout();
+			pnStrIndex.ResumeLayout(false);
+			pnStrIndex.PerformLayout();
+			pnIcon.ResumeLayout(false);
+			pnIcon.PerformLayout();
+			pnObject.ResumeLayout(false);
+			pnObject.PerformLayout();
+			pnThumbnail.ResumeLayout(false);
+			pnThumbnail.PerformLayout();
+			pnGUID.ResumeLayout(false);
+			pnGUID.PerformLayout();
+			pnIconIndex.ResumeLayout(false);
+			pnIconIndex.PerformLayout();
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -855,8 +855,8 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 			}
 
 			ushort val = Convert.ToUInt16(((TextBox)sender).Text, 16);
-			this.lbActionString.Text = ((BhavWiz)inst).readStr(
-				this.Scope,
+			lbActionString.Text = ((BhavWiz)inst).readStr(
+				Scope,
 				GS.GlobalStr.MakeAction,
 				(ushort)(val - 1),
 				-1,
@@ -886,8 +886,8 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 				inst.NodeVersion < 2
 					? inst.Operands[0x04]
 					: BhavWiz.ToShort(inst.Reserved1[0x06], inst.Reserved1[0x07]);
-			this.lbActionString.Text = ((BhavWiz)inst).readStr(
-				this.Scope,
+			lbActionString.Text = ((BhavWiz)inst).readStr(
+				Scope,
 				GS.GlobalStr.MakeAction,
 				(ushort)(val - 1),
 				-1,
@@ -953,10 +953,10 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 				return;
 			}
 
-			this.lbActionString.Text = ((BhavWiz)inst).readStr(
-				this.Scope,
+			lbActionString.Text = ((BhavWiz)inst).readStr(
+				Scope,
 				GS.GlobalStr.MakeAction,
-				(ushort)(Convert.ToByte(this.tbStrIndex.Text, 16) - 1),
+				(ushort)(Convert.ToByte(tbStrIndex.Text, 16) - 1),
 				-1,
 				Detail.ErrorNames
 			);
@@ -964,37 +964,37 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 
 		private void tfActionTemp_CheckedChanged(object sender, EventArgs e)
 		{
-			this.pnStrIndex.Enabled = !((CheckBox)sender).Checked;
+			pnStrIndex.Enabled = !((CheckBox)sender).Checked;
 		}
 
 		private void tfIconTemp_CheckedChanged(object sender, EventArgs e)
 		{
-			this.pnIconIndex.Enabled = !((CheckBox)sender).Checked;
+			pnIconIndex.Enabled = !((CheckBox)sender).Checked;
 		}
 
 		private void rbModeAction_CheckedChanged(object sender, EventArgs e)
 		{
-			this.pnAction.Enabled = ((RadioButton)sender).Checked;
+			pnAction.Enabled = ((RadioButton)sender).Checked;
 		}
 
 		private void rbModeIcon_CheckedChanged(object sender, EventArgs e)
 		{
-			this.pnIcon.Enabled = ((RadioButton)sender).Checked;
+			pnIcon.Enabled = ((RadioButton)sender).Checked;
 		}
 
 		private void rbIconSourceTN_CheckedChanged(object sender, EventArgs e)
 		{
-			this.pnThumbnail.Enabled = ((RadioButton)sender).Checked;
+			pnThumbnail.Enabled = ((RadioButton)sender).Checked;
 		}
 
 		private void rbIconSourceObj_CheckedChanged(object sender, EventArgs e)
 		{
-			this.pnObject.Enabled = ((RadioButton)sender).Checked;
+			pnObject.Enabled = ((RadioButton)sender).Checked;
 		}
 
 		private void tfGUIDTemp_CheckedChanged(object sender, EventArgs e)
 		{
-			this.pnGUID.Enabled = !((CheckBox)sender).Checked;
+			pnGUID.Enabled = !((CheckBox)sender).Checked;
 		}
 
 		private void btnActionString_Click(object sender, EventArgs e)

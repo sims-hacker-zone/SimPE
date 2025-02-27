@@ -95,7 +95,7 @@ namespace SimPe.Plugin
 			itemnum = -1; // Set as Unknown version
 			Badges = 0;
 			Hoodtexture = "";
-			if (this.FileDescriptor.Type == 0x4B58975B) // Lot Texture
+			if (FileDescriptor.Type == 0x4B58975B) // Lot Texture
 			{
 				filename = reader.ReadBytes(64);
 				tipe = reader.ReadUInt32();
@@ -114,7 +114,7 @@ namespace SimPe.Plugin
 					}
 				}
 			}
-			else if (this.FileDescriptor.Type == 0xCDB8BDC4) //Sim Memory
+			else if (FileDescriptor.Type == 0xCDB8BDC4) //Sim Memory
 			{
 				virsion = reader.ReadInt32();
 				if (virsion == 0x000000CB)
@@ -182,7 +182,7 @@ namespace SimPe.Plugin
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in files)
 				{
 					sdesc.ProcessData(pfd, package);
-					if (sdesc.Instance == this.FileDescriptor.Instance)
+					if (sdesc.Instance == FileDescriptor.Instance)
 					{
 						Hoodtexture = sdesc.SimName;
 						dided = true;
@@ -193,7 +193,7 @@ namespace SimPe.Plugin
 					Hoodtexture = Localization.GetString("Unknown");
 				}
 			}
-			else if (this.FileDescriptor.Type == 0x2DB5C0F4) // Nid Map
+			else if (FileDescriptor.Type == 0x2DB5C0F4) // Nid Map
 			{
 				virsion = reader.ReadInt32(); // version
 				dataqnt = reader.ReadInt32(); // number of family sims
@@ -252,7 +252,7 @@ namespace SimPe.Plugin
 		/// </remarks>
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
-			if (this.FileDescriptor.Type == 0x4B58975B) // Lot Texture
+			if (FileDescriptor.Type == 0x4B58975B) // Lot Texture
 			{
 				writer.Write(filename);
 				writer.Write(tipe);
@@ -304,11 +304,11 @@ namespace SimPe.Plugin
 
 		protected override string GetResourceName(Data.TypeAlias ta)
 		{
-			if (this.FileDescriptor.Type == 0xCDB8BDC4)
+			if (FileDescriptor.Type == 0xCDB8BDC4)
 			{
 				PackedFiles.Wrapper.ExtSDesc sdsc =
 					FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
-						(ushort)this.FileDescriptor.Instance
+						(ushort)FileDescriptor.Instance
 					) as PackedFiles.Wrapper.ExtSDesc;
 				if (sdsc == null)
 				{

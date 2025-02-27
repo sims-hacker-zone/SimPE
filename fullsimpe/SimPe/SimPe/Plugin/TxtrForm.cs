@@ -70,93 +70,93 @@ namespace SimPe.Plugin
 		{
 			System.Resources.ResourceManager resources =
 				new System.Resources.ResourceManager(typeof(TxtrForm));
-			this.txtrPanel = new Panel();
-			this.linkLabel4 = new LinkLabel();
-			this.linkLabel3 = new LinkLabel();
-			this.linkLabel1 = new LinkLabel();
-			this.tblevel = new TextBox();
-			this.label8 = new Label();
-			this.linkLabel2 = new LinkLabel();
-			this.lldel = new LinkLabel();
-			this.tblifo = new TextBox();
-			this.label6 = new Label();
-			this.label5 = new Label();
-			this.tbheight = new TextBox();
-			this.tbwidth = new TextBox();
-			this.label4 = new Label();
-			this.label3 = new Label();
-			this.cbformats = new ComboBox();
-			this.tbflname = new TextBox();
-			this.label2 = new Label();
-			this.cbitem = new ComboBox();
-			this.cbmipmaps = new ComboBox();
-			this.panel1 = new Panel();
-			this.label7 = new Label();
-			this.pb = new PictureBox();
-			this.contextMenu1 = new ContextMenu();
-			this.menuItem1 = new MenuItem();
-			this.milifo = new MenuItem();
-			this.menuItem4 = new MenuItem();
-			this.menuItem6 = new MenuItem();
-			this.menuItem7 = new MenuItem();
-			this.mibuild = new MenuItem();
-			this.menuItem3 = new MenuItem();
-			this.menuItem2 = new MenuItem();
-			this.menuItem5 = new MenuItem();
-			this.lbimg = new ListBox();
-			this.panel2 = new Panel();
-			this.btex = new Button();
-			this.btim = new Button();
-			this.label1 = new Label();
-			this.sfd = new SaveFileDialog();
-			this.ofd = new OpenFileDialog();
-			this.txtrPanel.SuspendLayout();
-			this.panel1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
-			this.panel2.SuspendLayout();
-			this.SuspendLayout();
+			txtrPanel = new Panel();
+			linkLabel4 = new LinkLabel();
+			linkLabel3 = new LinkLabel();
+			linkLabel1 = new LinkLabel();
+			tblevel = new TextBox();
+			label8 = new Label();
+			linkLabel2 = new LinkLabel();
+			lldel = new LinkLabel();
+			tblifo = new TextBox();
+			label6 = new Label();
+			label5 = new Label();
+			tbheight = new TextBox();
+			tbwidth = new TextBox();
+			label4 = new Label();
+			label3 = new Label();
+			cbformats = new ComboBox();
+			tbflname = new TextBox();
+			label2 = new Label();
+			cbitem = new ComboBox();
+			cbmipmaps = new ComboBox();
+			panel1 = new Panel();
+			label7 = new Label();
+			pb = new PictureBox();
+			contextMenu1 = new ContextMenu();
+			menuItem1 = new MenuItem();
+			milifo = new MenuItem();
+			menuItem4 = new MenuItem();
+			menuItem6 = new MenuItem();
+			menuItem7 = new MenuItem();
+			mibuild = new MenuItem();
+			menuItem3 = new MenuItem();
+			menuItem2 = new MenuItem();
+			menuItem5 = new MenuItem();
+			lbimg = new ListBox();
+			panel2 = new Panel();
+			btex = new Button();
+			btim = new Button();
+			label1 = new Label();
+			sfd = new SaveFileDialog();
+			ofd = new OpenFileDialog();
+			txtrPanel.SuspendLayout();
+			panel1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(pb)).BeginInit();
+			panel2.SuspendLayout();
+			SuspendLayout();
 			//
 			// txtrPanel
 			//
-			this.txtrPanel.BackColor = Color.Transparent;
-			this.txtrPanel.Controls.Add(this.linkLabel4);
-			this.txtrPanel.Controls.Add(this.linkLabel3);
-			this.txtrPanel.Controls.Add(this.linkLabel1);
-			this.txtrPanel.Controls.Add(this.tblevel);
-			this.txtrPanel.Controls.Add(this.label8);
-			this.txtrPanel.Controls.Add(this.linkLabel2);
-			this.txtrPanel.Controls.Add(this.lldel);
-			this.txtrPanel.Controls.Add(this.tblifo);
-			this.txtrPanel.Controls.Add(this.label6);
-			this.txtrPanel.Controls.Add(this.label5);
-			this.txtrPanel.Controls.Add(this.tbheight);
-			this.txtrPanel.Controls.Add(this.tbwidth);
-			this.txtrPanel.Controls.Add(this.label4);
-			this.txtrPanel.Controls.Add(this.label3);
-			this.txtrPanel.Controls.Add(this.cbformats);
-			this.txtrPanel.Controls.Add(this.tbflname);
-			this.txtrPanel.Controls.Add(this.label2);
-			this.txtrPanel.Controls.Add(this.cbitem);
-			this.txtrPanel.Controls.Add(this.cbmipmaps);
-			this.txtrPanel.Controls.Add(this.panel1);
-			this.txtrPanel.Controls.Add(this.lbimg);
-			this.txtrPanel.Controls.Add(this.panel2);
-			this.txtrPanel.Controls.Add(this.label1);
-			this.txtrPanel.Font = new Font(
+			txtrPanel.BackColor = Color.Transparent;
+			txtrPanel.Controls.Add(linkLabel4);
+			txtrPanel.Controls.Add(linkLabel3);
+			txtrPanel.Controls.Add(linkLabel1);
+			txtrPanel.Controls.Add(tblevel);
+			txtrPanel.Controls.Add(label8);
+			txtrPanel.Controls.Add(linkLabel2);
+			txtrPanel.Controls.Add(lldel);
+			txtrPanel.Controls.Add(tblifo);
+			txtrPanel.Controls.Add(label6);
+			txtrPanel.Controls.Add(label5);
+			txtrPanel.Controls.Add(tbheight);
+			txtrPanel.Controls.Add(tbwidth);
+			txtrPanel.Controls.Add(label4);
+			txtrPanel.Controls.Add(label3);
+			txtrPanel.Controls.Add(cbformats);
+			txtrPanel.Controls.Add(tbflname);
+			txtrPanel.Controls.Add(label2);
+			txtrPanel.Controls.Add(cbitem);
+			txtrPanel.Controls.Add(cbmipmaps);
+			txtrPanel.Controls.Add(panel1);
+			txtrPanel.Controls.Add(lbimg);
+			txtrPanel.Controls.Add(panel2);
+			txtrPanel.Controls.Add(label1);
+			txtrPanel.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.txtrPanel.Location = new Point(8, 8);
-			this.txtrPanel.Name = "txtrPanel";
-			this.txtrPanel.Size = new Size(768, 288);
-			this.txtrPanel.TabIndex = 19;
+			txtrPanel.Location = new Point(8, 8);
+			txtrPanel.Name = "txtrPanel";
+			txtrPanel.Size = new Size(768, 288);
+			txtrPanel.TabIndex = 19;
 			//
 			// linkLabel4
 			//
-			this.linkLabel4.Anchor = (
+			linkLabel4.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -164,99 +164,99 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.linkLabel4.AutoSize = true;
-			this.linkLabel4.BackColor = Color.Transparent;
-			this.linkLabel4.Font = new Font(
+			linkLabel4.AutoSize = true;
+			linkLabel4.BackColor = Color.Transparent;
+			linkLabel4.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.linkLabel4.LinkArea = new LinkArea(0, 5);
-			this.linkLabel4.Location = new Point(200, 264);
-			this.linkLabel4.Name = "linkLabel4";
-			this.linkLabel4.Size = new Size(137, 18);
-			this.linkLabel4.TabIndex = 24;
-			this.linkLabel4.TabStop = true;
-			this.linkLabel4.Text = "build default MipMap";
-			this.linkLabel4.UseCompatibleTextRendering = true;
-			this.linkLabel4.LinkClicked +=
+			linkLabel4.LinkArea = new LinkArea(0, 5);
+			linkLabel4.Location = new Point(200, 264);
+			linkLabel4.Name = "linkLabel4";
+			linkLabel4.Size = new Size(137, 18);
+			linkLabel4.TabIndex = 24;
+			linkLabel4.TabStop = true;
+			linkLabel4.Text = "build default MipMap";
+			linkLabel4.UseCompatibleTextRendering = true;
+			linkLabel4.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.BuildMipMap
+					BuildMipMap
 				);
 			//
 			// linkLabel3
 			//
-			this.linkLabel3.AutoSize = true;
-			this.linkLabel3.BackColor = Color.Transparent;
-			this.linkLabel3.Font = new Font(
+			linkLabel3.AutoSize = true;
+			linkLabel3.BackColor = Color.Transparent;
+			linkLabel3.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.linkLabel3.Location = new Point(288, 88);
-			this.linkLabel3.Name = "linkLabel3";
-			this.linkLabel3.Size = new Size(51, 13);
-			this.linkLabel3.TabIndex = 23;
-			this.linkLabel3.TabStop = true;
-			this.linkLabel3.Text = "fix TGI";
-			this.linkLabel3.LinkClicked +=
-				new LinkLabelLinkClickedEventHandler(this.FixTGI);
+			linkLabel3.Location = new Point(288, 88);
+			linkLabel3.Name = "linkLabel3";
+			linkLabel3.Size = new Size(51, 13);
+			linkLabel3.TabIndex = 23;
+			linkLabel3.TabStop = true;
+			linkLabel3.Text = "fix TGI";
+			linkLabel3.LinkClicked +=
+				new LinkLabelLinkClickedEventHandler(FixTGI);
 			//
 			// linkLabel1
 			//
-			this.linkLabel1.AutoSize = true;
-			this.linkLabel1.BackColor = Color.Transparent;
-			this.linkLabel1.Font = new Font(
+			linkLabel1.AutoSize = true;
+			linkLabel1.BackColor = Color.Transparent;
+			linkLabel1.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.linkLabel1.Location = new Point(344, 88);
-			this.linkLabel1.Name = "linkLabel1";
-			this.linkLabel1.Size = new Size(85, 13);
-			this.linkLabel1.TabIndex = 22;
-			this.linkLabel1.TabStop = true;
-			this.linkLabel1.Text = "assign Hash";
-			this.linkLabel1.Visible = false;
-			this.linkLabel1.LinkClicked +=
+			linkLabel1.Location = new Point(344, 88);
+			linkLabel1.Name = "linkLabel1";
+			linkLabel1.Size = new Size(85, 13);
+			linkLabel1.TabIndex = 22;
+			linkLabel1.TabStop = true;
+			linkLabel1.Text = "assign Hash";
+			linkLabel1.Visible = false;
+			linkLabel1.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.BuildFilename
+					BuildFilename
 				);
 			//
 			// tblevel
 			//
-			this.tblevel.Location = new Point(336, 134);
-			this.tblevel.Name = "tblevel";
-			this.tblevel.Size = new Size(88, 21);
-			this.tblevel.TabIndex = 21;
-			this.tblevel.TextChanged += new EventHandler(this.Changedlevel);
+			tblevel.Location = new Point(336, 134);
+			tblevel.Name = "tblevel";
+			tblevel.Size = new Size(88, 21);
+			tblevel.TabIndex = 21;
+			tblevel.TextChanged += new EventHandler(Changedlevel);
 			//
 			// label8
 			//
-			this.label8.AutoSize = true;
-			this.label8.BackColor = Color.Transparent;
-			this.label8.Font = new Font(
+			label8.AutoSize = true;
+			label8.BackColor = Color.Transparent;
+			label8.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label8.Location = new Point(240, 136);
-			this.label8.Name = "label8";
-			this.label8.Size = new Size(98, 13);
-			this.label8.TabIndex = 20;
-			this.label8.Text = "MipMap Level:";
+			label8.Location = new Point(240, 136);
+			label8.Name = "label8";
+			label8.Size = new Size(98, 13);
+			label8.TabIndex = 20;
+			label8.Text = "MipMap Level:";
 			//
 			// linkLabel2
 			//
-			this.linkLabel2.Anchor = (
+			linkLabel2.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -264,27 +264,27 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.linkLabel2.AutoSize = true;
-			this.linkLabel2.BackColor = Color.Transparent;
-			this.linkLabel2.Font = new Font(
+			linkLabel2.AutoSize = true;
+			linkLabel2.BackColor = Color.Transparent;
+			linkLabel2.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.linkLabel2.Location = new Point(344, 264);
-			this.linkLabel2.Name = "linkLabel2";
-			this.linkLabel2.Size = new Size(31, 13);
-			this.linkLabel2.TabIndex = 19;
-			this.linkLabel2.TabStop = true;
-			this.linkLabel2.Text = "add";
-			this.linkLabel2.LinkClicked +=
-				new LinkLabelLinkClickedEventHandler(this.Add);
+			linkLabel2.Location = new Point(344, 264);
+			linkLabel2.Name = "linkLabel2";
+			linkLabel2.Size = new Size(31, 13);
+			linkLabel2.TabIndex = 19;
+			linkLabel2.TabStop = true;
+			linkLabel2.Text = "add";
+			linkLabel2.LinkClicked +=
+				new LinkLabelLinkClickedEventHandler(Add);
 			//
 			// lldel
 			//
-			this.lldel.Anchor = (
+			lldel.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -292,27 +292,27 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.lldel.AutoSize = true;
-			this.lldel.BackColor = Color.Transparent;
-			this.lldel.Font = new Font(
+			lldel.AutoSize = true;
+			lldel.BackColor = Color.Transparent;
+			lldel.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lldel.Location = new Point(380, 264);
-			this.lldel.Name = "lldel";
-			this.lldel.Size = new Size(48, 13);
-			this.lldel.TabIndex = 18;
-			this.lldel.TabStop = true;
-			this.lldel.Text = "delete";
-			this.lldel.LinkClicked +=
-				new LinkLabelLinkClickedEventHandler(this.Delete);
+			lldel.Location = new Point(380, 264);
+			lldel.Name = "lldel";
+			lldel.Size = new Size(48, 13);
+			lldel.TabIndex = 18;
+			lldel.TabStop = true;
+			lldel.Text = "delete";
+			lldel.LinkClicked +=
+				new LinkLabelLinkClickedEventHandler(Delete);
 			//
 			// tblifo
 			//
-			this.tblifo.Anchor = (
+			tblifo.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -322,15 +322,15 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.tblifo.Location = new Point(440, 252);
-			this.tblifo.Name = "tblifo";
-			this.tblifo.Size = new Size(320, 21);
-			this.tblifo.TabIndex = 16;
-			this.tblifo.TextChanged += new EventHandler(this.SetLifo);
+			tblifo.Location = new Point(440, 252);
+			tblifo.Name = "tblifo";
+			tblifo.Size = new Size(320, 21);
+			tblifo.TabIndex = 16;
+			tblifo.TextChanged += new EventHandler(SetLifo);
 			//
 			// label6
 			//
-			this.label6.Anchor = (
+			label6.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -338,153 +338,153 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.label6.AutoSize = true;
-			this.label6.BackColor = Color.Transparent;
-			this.label6.Font = new Font(
+			label6.AutoSize = true;
+			label6.BackColor = Color.Transparent;
+			label6.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label6.Location = new Point(432, 236);
-			this.label6.Name = "label6";
-			this.label6.Size = new Size(111, 13);
-			this.label6.TabIndex = 17;
-			this.label6.Text = "LIFO Reference:";
+			label6.Location = new Point(432, 236);
+			label6.Name = "label6";
+			label6.Size = new Size(111, 13);
+			label6.TabIndex = 17;
+			label6.Text = "LIFO Reference:";
 			//
 			// label5
 			//
-			this.label5.AutoSize = true;
-			this.label5.BackColor = Color.Transparent;
-			this.label5.Font = new Font(
+			label5.AutoSize = true;
+			label5.BackColor = Color.Transparent;
+			label5.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label5.Location = new Point(141, 136);
-			this.label5.Name = "label5";
-			this.label5.Size = new Size(15, 13);
-			this.label5.TabIndex = 15;
-			this.label5.Text = "x";
+			label5.Location = new Point(141, 136);
+			label5.Name = "label5";
+			label5.Size = new Size(15, 13);
+			label5.TabIndex = 15;
+			label5.Text = "x";
 			//
 			// tbheight
 			//
-			this.tbheight.Location = new Point(160, 134);
-			this.tbheight.Name = "tbheight";
-			this.tbheight.Size = new Size(56, 21);
-			this.tbheight.TabIndex = 14;
-			this.tbheight.TextChanged += new EventHandler(this.ChangedSize);
+			tbheight.Location = new Point(160, 134);
+			tbheight.Name = "tbheight";
+			tbheight.Size = new Size(56, 21);
+			tbheight.TabIndex = 14;
+			tbheight.TextChanged += new EventHandler(ChangedSize);
 			//
 			// tbwidth
 			//
-			this.tbwidth.Location = new Point(80, 134);
-			this.tbwidth.Name = "tbwidth";
-			this.tbwidth.Size = new Size(56, 21);
-			this.tbwidth.TabIndex = 13;
-			this.tbwidth.TextChanged += new EventHandler(this.ChangedSize);
+			tbwidth.Location = new Point(80, 134);
+			tbwidth.Name = "tbwidth";
+			tbwidth.Size = new Size(56, 21);
+			tbwidth.TabIndex = 13;
+			tbwidth.TextChanged += new EventHandler(ChangedSize);
 			//
 			// label4
 			//
-			this.label4.AutoSize = true;
-			this.label4.BackColor = Color.Transparent;
-			this.label4.Font = new Font(
+			label4.AutoSize = true;
+			label4.BackColor = Color.Transparent;
+			label4.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label4.Location = new Point(43, 136);
-			this.label4.Name = "label4";
-			this.label4.Size = new Size(38, 13);
-			this.label4.TabIndex = 12;
-			this.label4.Text = "Size:";
+			label4.Location = new Point(43, 136);
+			label4.Name = "label4";
+			label4.Size = new Size(38, 13);
+			label4.TabIndex = 12;
+			label4.Text = "Size:";
 			//
 			// label3
 			//
-			this.label3.AutoSize = true;
-			this.label3.BackColor = Color.Transparent;
-			this.label3.Font = new Font(
+			label3.AutoSize = true;
+			label3.BackColor = Color.Transparent;
+			label3.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label3.Location = new Point(24, 112);
-			this.label3.Name = "label3";
-			this.label3.Size = new Size(58, 13);
-			this.label3.TabIndex = 11;
-			this.label3.Text = "Format:";
+			label3.Location = new Point(24, 112);
+			label3.Name = "label3";
+			label3.Size = new Size(58, 13);
+			label3.TabIndex = 11;
+			label3.Text = "Format:";
 			//
 			// cbformats
 			//
-			this.cbformats.DropDownStyle =
+			cbformats.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbformats.Location = new Point(80, 108);
-			this.cbformats.Name = "cbformats";
-			this.cbformats.Size = new Size(344, 21);
-			this.cbformats.TabIndex = 10;
-			this.cbformats.SelectedIndexChanged += new EventHandler(
-				this.ChangeFormat
+			cbformats.Location = new Point(80, 108);
+			cbformats.Name = "cbformats";
+			cbformats.Size = new Size(344, 21);
+			cbformats.TabIndex = 10;
+			cbformats.SelectedIndexChanged += new EventHandler(
+				ChangeFormat
 			);
 			//
 			// tbflname
 			//
-			this.tbflname.Location = new Point(80, 56);
-			this.tbflname.Name = "tbflname";
-			this.tbflname.Size = new Size(344, 21);
-			this.tbflname.TabIndex = 9;
-			this.tbflname.TextChanged += new EventHandler(this.FileNameChanged);
+			tbflname.Location = new Point(80, 56);
+			tbflname.Name = "tbflname";
+			tbflname.Size = new Size(344, 21);
+			tbflname.TabIndex = 9;
+			tbflname.TextChanged += new EventHandler(FileNameChanged);
 			//
 			// label2
 			//
-			this.label2.AutoSize = true;
-			this.label2.BackColor = Color.Transparent;
-			this.label2.Font = new Font(
+			label2.AutoSize = true;
+			label2.BackColor = Color.Transparent;
+			label2.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label2.Location = new Point(8, 36);
-			this.label2.Name = "label2";
-			this.label2.Size = new Size(71, 13);
-			this.label2.TabIndex = 8;
-			this.label2.Text = "Filename:";
+			label2.Location = new Point(8, 36);
+			label2.Name = "label2";
+			label2.Size = new Size(71, 13);
+			label2.TabIndex = 8;
+			label2.Text = "Filename:";
 			//
 			// cbitem
 			//
-			this.cbitem.DropDownStyle = ComboBoxStyle.DropDownList;
-			this.cbitem.Location = new Point(80, 32);
-			this.cbitem.Name = "cbitem";
-			this.cbitem.Size = new Size(344, 21);
-			this.cbitem.TabIndex = 7;
-			this.cbitem.SelectedIndexChanged += new EventHandler(
-				this.SelectItem
+			cbitem.DropDownStyle = ComboBoxStyle.DropDownList;
+			cbitem.Location = new Point(80, 32);
+			cbitem.Name = "cbitem";
+			cbitem.Size = new Size(344, 21);
+			cbitem.TabIndex = 7;
+			cbitem.SelectedIndexChanged += new EventHandler(
+				SelectItem
 			);
 			//
 			// cbmipmaps
 			//
-			this.cbmipmaps.DropDownStyle =
+			cbmipmaps.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbmipmaps.Location = new Point(80, 160);
-			this.cbmipmaps.Name = "cbmipmaps";
-			this.cbmipmaps.Size = new Size(344, 21);
-			this.cbmipmaps.TabIndex = 5;
-			this.cbmipmaps.SelectedIndexChanged += new EventHandler(
-				this.SelectMipMapBlock
+			cbmipmaps.Location = new Point(80, 160);
+			cbmipmaps.Name = "cbmipmaps";
+			cbmipmaps.Size = new Size(344, 21);
+			cbmipmaps.TabIndex = 5;
+			cbmipmaps.SelectedIndexChanged += new EventHandler(
+				SelectMipMapBlock
 			);
 			//
 			// panel1
 			//
-			this.panel1.Anchor = (
+			panel1.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -496,19 +496,19 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.panel1.AutoScroll = true;
-			this.panel1.AutoScrollMinSize = new Size(24, 24);
-			this.panel1.BackColor = Color.Transparent;
-			this.panel1.Controls.Add(this.label7);
-			this.panel1.Controls.Add(this.pb);
-			this.panel1.Location = new Point(432, 32);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new Size(328, 200);
-			this.panel1.TabIndex = 4;
+			panel1.AutoScroll = true;
+			panel1.AutoScrollMinSize = new Size(24, 24);
+			panel1.BackColor = Color.Transparent;
+			panel1.Controls.Add(label7);
+			panel1.Controls.Add(pb);
+			panel1.Location = new Point(432, 32);
+			panel1.Name = "panel1";
+			panel1.Size = new Size(328, 200);
+			panel1.TabIndex = 4;
 			//
 			// label7
 			//
-			this.label7.Anchor = (
+			label7.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -516,105 +516,105 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.label7.AutoSize = true;
-			this.label7.Font = new Font("Verdana", 8.25F);
-			this.label7.ForeColor = SystemColors.ActiveCaptionText;
-			this.label7.ImeMode = ImeMode.NoControl;
-			this.label7.Location = new Point(8, 176);
-			this.label7.Name = "label7";
-			this.label7.Size = new Size(293, 13);
-			this.label7.TabIndex = 6;
-			this.label7.Text = "Right click on the Image to get more Interactions.";
+			label7.AutoSize = true;
+			label7.Font = new Font("Verdana", 8.25F);
+			label7.ForeColor = SystemColors.ActiveCaptionText;
+			label7.ImeMode = ImeMode.NoControl;
+			label7.Location = new Point(8, 176);
+			label7.Name = "label7";
+			label7.Size = new Size(293, 13);
+			label7.TabIndex = 6;
+			label7.Text = "Right click on the Image to get more Interactions.";
 			//
 			// pb
 			//
-			this.pb.BackColor = SystemColors.Control;
-			this.pb.BackgroundImage = (
+			pb.BackColor = SystemColors.Control;
+			pb.BackgroundImage = (
 				(Image)(resources.GetObject("pb.BackgroundImage"))
 			);
-			this.pb.ContextMenu = this.contextMenu1;
-			this.pb.Location = new Point(0, 0);
-			this.pb.Name = "pb";
-			this.pb.Size = new Size(100, 50);
-			this.pb.SizeMode = PictureBoxSizeMode.AutoSize;
-			this.pb.TabIndex = 5;
-			this.pb.TabStop = false;
+			pb.ContextMenu = contextMenu1;
+			pb.Location = new Point(0, 0);
+			pb.Name = "pb";
+			pb.Size = new Size(100, 50);
+			pb.SizeMode = PictureBoxSizeMode.AutoSize;
+			pb.TabIndex = 5;
+			pb.TabStop = false;
 			//
 			// contextMenu1
 			//
-			this.contextMenu1.MenuItems.AddRange(
+			contextMenu1.MenuItems.AddRange(
 				new MenuItem[]
 				{
-					this.menuItem1,
-					this.milifo,
-					this.menuItem4,
-					this.menuItem6,
-					this.menuItem7,
-					this.mibuild,
-					this.menuItem3,
-					this.menuItem2,
-					this.menuItem5,
+					menuItem1,
+					milifo,
+					menuItem4,
+					menuItem6,
+					menuItem7,
+					mibuild,
+					menuItem3,
+					menuItem2,
+					menuItem5,
 				}
 			);
-			this.contextMenu1.Popup += new EventHandler(this.ContextPopUp);
+			contextMenu1.Popup += new EventHandler(ContextPopUp);
 			//
 			// menuItem1
 			//
-			this.menuItem1.Index = 0;
-			this.menuItem1.Text = "&Import...";
-			this.menuItem1.Click += new EventHandler(this.btim_Click);
+			menuItem1.Index = 0;
+			menuItem1.Text = "&Import...";
+			menuItem1.Click += new EventHandler(btim_Click);
 			//
 			// milifo
 			//
-			this.milifo.Enabled = false;
-			this.milifo.Index = 1;
-			this.milifo.Text = "Import local  LIFO";
-			this.milifo.Click += new EventHandler(this.ImportLifo);
+			milifo.Enabled = false;
+			milifo.Index = 1;
+			milifo.Text = "Import local  LIFO";
+			milifo.Click += new EventHandler(ImportLifo);
 			//
 			// menuItem4
 			//
-			this.menuItem4.Index = 2;
-			this.menuItem4.Text = "Import &Alpha Channel...";
-			this.menuItem4.Click += new EventHandler(this.ImportAlpha);
+			menuItem4.Index = 2;
+			menuItem4.Text = "Import &Alpha Channel...";
+			menuItem4.Click += new EventHandler(ImportAlpha);
 			//
 			// menuItem6
 			//
-			this.menuItem6.Index = 3;
-			this.menuItem6.Text = "&Update all Sizes";
-			this.menuItem6.Click += new EventHandler(this.UpdateAllSizes);
+			menuItem6.Index = 3;
+			menuItem6.Text = "&Update all Sizes";
+			menuItem6.Click += new EventHandler(UpdateAllSizes);
 			//
 			// menuItem7
 			//
-			this.menuItem7.Index = 4;
-			this.menuItem7.Text = "Import &DDS...";
-			this.menuItem7.Click += new EventHandler(this.ImportDDS);
+			menuItem7.Index = 4;
+			menuItem7.Text = "Import &DDS...";
+			menuItem7.Click += new EventHandler(ImportDDS);
 			//
 			// mibuild
 			//
-			this.mibuild.Index = 5;
-			this.mibuild.Text = "Build DXT...";
-			this.mibuild.Click += new EventHandler(this.BuildDXT);
+			mibuild.Index = 5;
+			mibuild.Text = "Build DXT...";
+			mibuild.Click += new EventHandler(BuildDXT);
 			//
 			// menuItem3
 			//
-			this.menuItem3.Index = 6;
-			this.menuItem3.Text = "-";
+			menuItem3.Index = 6;
+			menuItem3.Text = "-";
 			//
 			// menuItem2
 			//
-			this.menuItem2.Index = 7;
-			this.menuItem2.Text = "&Export...";
-			this.menuItem2.Click += new EventHandler(this.btex_Click);
+			menuItem2.Index = 7;
+			menuItem2.Text = "&Export...";
+			menuItem2.Click += new EventHandler(btex_Click);
 			//
 			// menuItem5
 			//
-			this.menuItem5.Index = 8;
-			this.menuItem5.Text = "Export Alpha &Channel...";
-			this.menuItem5.Click += new EventHandler(this.ExportAlpha);
+			menuItem5.Index = 8;
+			menuItem5.Text = "Export Alpha &Channel...";
+			menuItem5.Click += new EventHandler(ExportAlpha);
 			//
 			// lbimg
 			//
-			this.lbimg.Anchor = (
+			lbimg.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -624,18 +624,18 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.lbimg.IntegralHeight = false;
-			this.lbimg.Location = new Point(8, 184);
-			this.lbimg.Name = "lbimg";
-			this.lbimg.Size = new Size(416, 80);
-			this.lbimg.TabIndex = 3;
-			this.lbimg.SelectedIndexChanged += new EventHandler(
-				this.PictureSelect
+			lbimg.IntegralHeight = false;
+			lbimg.Location = new Point(8, 184);
+			lbimg.Name = "lbimg";
+			lbimg.Size = new Size(416, 80);
+			lbimg.TabIndex = 3;
+			lbimg.SelectedIndexChanged += new EventHandler(
+				PictureSelect
 			);
 			//
 			// panel2
 			//
-			this.panel2.Anchor = (
+			panel2.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -645,25 +645,25 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.panel2.Controls.Add(this.btex);
-			this.panel2.Controls.Add(this.btim);
-			this.panel2.Controls.Add(this.label27);
-			this.panel2.Controls.Add(this.btcommit);
-			this.panel2.Font = new Font(
+			panel2.Controls.Add(btex);
+			panel2.Controls.Add(btim);
+			panel2.Controls.Add(label27);
+			panel2.Controls.Add(btcommit);
+			panel2.Font = new Font(
 				"Verdana",
 				9.75F,
 				FontStyle.Bold
 			);
-			this.panel2.ForeColor = SystemColors.ActiveCaptionText;
-			this.panel2.Location = new Point(0, 0);
-			this.panel2.Margin = new Padding(0);
-			this.panel2.Name = "panel2";
-			this.panel2.Size = new Size(768, 24);
-			this.panel2.TabIndex = 0;
+			panel2.ForeColor = SystemColors.ActiveCaptionText;
+			panel2.Location = new Point(0, 0);
+			panel2.Margin = new Padding(0);
+			panel2.Name = "panel2";
+			panel2.Size = new Size(768, 24);
+			panel2.TabIndex = 0;
 			//
 			// btex
 			//
-			this.btex.Anchor = (
+			btex.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -671,25 +671,25 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.btex.FlatStyle = FlatStyle.System;
-			this.btex.Font = new Font(
+			btex.FlatStyle = FlatStyle.System;
+			btex.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.btex.ForeColor = SystemColors.ControlText;
-			this.btex.Location = new Point(584, 0);
-			this.btex.Name = "btex";
-			this.btex.Size = new Size(80, 23);
-			this.btex.TabIndex = 8;
-			this.btex.Text = "Export...";
-			this.btex.Click += new EventHandler(this.btex_Click);
+			btex.ForeColor = SystemColors.ControlText;
+			btex.Location = new Point(584, 0);
+			btex.Name = "btex";
+			btex.Size = new Size(80, 23);
+			btex.TabIndex = 8;
+			btex.Text = "Export...";
+			btex.Click += new EventHandler(btex_Click);
 			//
 			// btim
 			//
-			this.btim.Anchor = (
+			btim.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -697,35 +697,35 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.btim.FlatStyle = FlatStyle.System;
-			this.btim.Font = new Font(
+			btim.FlatStyle = FlatStyle.System;
+			btim.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.btim.ForeColor = SystemColors.ControlText;
-			this.btim.Location = new Point(504, 0);
-			this.btim.Name = "btim";
-			this.btim.Size = new Size(75, 23);
-			this.btim.TabIndex = 7;
-			this.btim.Text = "Import...";
-			this.btim.Click += new EventHandler(this.btim_Click);
+			btim.ForeColor = SystemColors.ControlText;
+			btim.Location = new Point(504, 0);
+			btim.Name = "btim";
+			btim.Size = new Size(75, 23);
+			btim.TabIndex = 7;
+			btim.Text = "Import...";
+			btim.Click += new EventHandler(btim_Click);
 			//
 			// label27
 			//
-			this.label27.AutoSize = true;
-			this.label27.ImeMode = ImeMode.NoControl;
-			this.label27.Location = new Point(0, 4);
-			this.label27.Name = "label27";
-			this.label27.Size = new Size(93, 19);
-			this.label27.TabIndex = 0;
-			this.label27.Text = "TXTR Editor";
+			label27.AutoSize = true;
+			label27.ImeMode = ImeMode.NoControl;
+			label27.Location = new Point(0, 4);
+			label27.Name = "label27";
+			label27.Size = new Size(93, 19);
+			label27.TabIndex = 0;
+			label27.Text = "TXTR Editor";
 			//
 			// btcommit
 			//
-			this.btcommit.Anchor = (
+			btcommit.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -733,68 +733,68 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.btcommit.FlatStyle = FlatStyle.System;
-			this.btcommit.Font = new Font(
+			btcommit.FlatStyle = FlatStyle.System;
+			btcommit.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.btcommit.Location = new Point(688, 0);
-			this.btcommit.Name = "btcommit";
-			this.btcommit.TabIndex = 6;
-			this.btcommit.Text = "Commit";
-			this.btcommit.Click += new EventHandler(this.btcommit_Click);
+			btcommit.Location = new Point(688, 0);
+			btcommit.Name = "btcommit";
+			btcommit.TabIndex = 6;
+			btcommit.Text = "Commit";
+			btcommit.Click += new EventHandler(btcommit_Click);
 			//
 			// label1
 			//
-			this.label1.AutoSize = true;
-			this.label1.BackColor = Color.Transparent;
-			this.label1.Font = new Font(
+			label1.AutoSize = true;
+			label1.BackColor = Color.Transparent;
+			label1.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label1.Location = new Point(28, 168);
-			this.label1.Name = "label1";
-			this.label1.Size = new Size(53, 13);
-			this.label1.TabIndex = 6;
-			this.label1.Text = "Blocks:";
+			label1.Location = new Point(28, 168);
+			label1.Name = "label1";
+			label1.Size = new Size(53, 13);
+			label1.TabIndex = 6;
+			label1.Text = "Blocks:";
 			//
 			// sfd
 			//
-			this.sfd.Filter = resources.GetString("sfd.Filter");
-			this.sfd.Title = "Export Image";
+			sfd.Filter = resources.GetString("sfd.Filter");
+			sfd.Title = "Export Image";
 			//
 			// ofd
 			//
-			this.ofd.FilterIndex = 4;
+			ofd.FilterIndex = 4;
 			//
 			// TxtrForm
 			//
-			this.AutoScaleBaseSize = new Size(6, 14);
-			this.ClientSize = new Size(792, 310);
-			this.Controls.Add(this.txtrPanel);
-			this.Font = new Font(
+			AutoScaleBaseSize = new Size(6, 14);
+			ClientSize = new Size(792, 310);
+			Controls.Add(txtrPanel);
+			Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.Name = "TxtrForm";
-			this.Text = "TxtrForm";
-			this.txtrPanel.ResumeLayout(false);
-			this.txtrPanel.PerformLayout();
-			this.panel1.ResumeLayout(false);
-			this.panel1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
-			this.panel2.ResumeLayout(false);
-			this.panel2.PerformLayout();
-			this.ResumeLayout(false);
+			Name = "TxtrForm";
+			Text = "TxtrForm";
+			txtrPanel.ResumeLayout(false);
+			txtrPanel.PerformLayout();
+			panel1.ResumeLayout(false);
+			panel1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(pb)).EndInit();
+			panel2.ResumeLayout(false);
+			panel2.PerformLayout();
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -897,7 +897,7 @@ namespace SimPe.Plugin
 			}
 
 			sfd.FileName =
-				this.tbflname.Text
+				tbflname.Text
 				+ "_"
 				+ pb.Image.Size.Width.ToString()
 				+ "x"
@@ -943,7 +943,7 @@ namespace SimPe.Plugin
 					s.Dispose();
 					s = null;
 
-					img = this.CropImage(id, img);
+					img = CropImage(id, img);
 					if (img == null)
 					{
 						return;
@@ -979,8 +979,8 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			this.cbmipmaps.Items.Clear();
-			this.lbimg.Items.Clear();
+			cbmipmaps.Items.Clear();
+			lbimg.Items.Clear();
 			if (cbitem.SelectedIndex < 0)
 			{
 				return;
@@ -992,7 +992,7 @@ namespace SimPe.Plugin
 				ImageData selecteditem = (ImageData)cbitem.Items[cbitem.SelectedIndex];
 				foreach (MipMapBlock mmp in selecteditem.MipMapBlocks)
 				{
-					this.cbmipmaps.Items.Add(mmp);
+					cbmipmaps.Items.Add(mmp);
 				}
 
 				if (cbmipmaps.Items.Count > 0)
@@ -1000,12 +1000,12 @@ namespace SimPe.Plugin
 					cbmipmaps.SelectedIndex = 0;
 				}
 
-				this.tbflname.Text = selecteditem.NameResource.FileName;
-				this.tbwidth.Text = selecteditem.TextureSize.Width.ToString();
-				this.tbheight.Text = selecteditem.TextureSize.Height.ToString();
-				this.tblevel.Text = selecteditem.MipMapLevels.ToString();
+				tbflname.Text = selecteditem.NameResource.FileName;
+				tbwidth.Text = selecteditem.TextureSize.Width.ToString();
+				tbheight.Text = selecteditem.TextureSize.Height.ToString();
+				tblevel.Text = selecteditem.MipMapLevels.ToString();
 
-				this.cbformats.SelectedIndex = 0;
+				cbformats.SelectedIndex = 0;
 				for (int i = 0; i < cbformats.Items.Count; i++)
 				{
 					ImageLoader.TxtrFormats f = (ImageLoader.TxtrFormats)
@@ -1078,7 +1078,7 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			this.lbimg.Items.Clear();
+			lbimg.Items.Clear();
 			if (cbmipmaps.SelectedIndex < 0)
 			{
 				return;
@@ -1093,7 +1093,7 @@ namespace SimPe.Plugin
 				{
 					MipMap mm = mmp.MipMaps[i];
 					mm.ReloadTexture();
-					this.lbimg.Items.Add(mm);
+					lbimg.Items.Add(mm);
 					if (mm.Texture != null)
 					{
 						minindex = i;
@@ -1239,7 +1239,7 @@ namespace SimPe.Plugin
 		protected MipMapBlock SelectedMipMapBlock(ImageData id)
 		{
 			//add a MipMapBlock if it doesnt already exist
-			if (this.cbmipmaps.SelectedIndex < 0)
+			if (cbmipmaps.SelectedIndex < 0)
 			{
 				MipMapBlock[] mmp = new MipMapBlock[id.MipMapBlocks.Length + 1];
 				id.MipMapBlocks.CopyTo(mmp, 0);
@@ -1454,7 +1454,7 @@ namespace SimPe.Plugin
 			}
 
 			sfd.FileName =
-				this.tbflname.Text
+				tbflname.Text
 				+ "_alpha_"
 				+ pb.Image.Size.Width.ToString()
 				+ "x"
@@ -1498,7 +1498,7 @@ namespace SimPe.Plugin
 					s.Dispose();
 					s = null;
 
-					img = this.CropImage(id, img);
+					img = CropImage(id, img);
 					if (img == null)
 					{
 						return;
@@ -1507,7 +1507,7 @@ namespace SimPe.Plugin
 					lbimg.Tag = true;
 					MipMap mm = (MipMap)lbimg.Items[lbimg.SelectedIndex];
 					mm.LifoFile = "";
-					mm.Texture = this.ChangeAlpha(mm.Texture, img);
+					mm.Texture = ChangeAlpha(mm.Texture, img);
 					pb.Image = mm.Texture;
 					lbimg.Items[lbimg.SelectedIndex] = mm;
 				}
@@ -1563,8 +1563,8 @@ namespace SimPe.Plugin
 			LinkLabelLinkClickedEventArgs e
 		)
 		{
-			string fl = Hashes.StripHashFromName(this.tbflname.Text);
-			this.tbflname.Text = Hashes.AssembleHashedFileName(
+			string fl = Hashes.StripHashFromName(tbflname.Text);
+			tbflname.Text = Hashes.AssembleHashedFileName(
 				wrapper.Package.FileGroupHash,
 				fl
 			);
@@ -1575,7 +1575,7 @@ namespace SimPe.Plugin
 			LinkLabelLinkClickedEventArgs e
 		)
 		{
-			string fl = Hashes.StripHashFromName(this.tbflname.Text);
+			string fl = Hashes.StripHashFromName(tbflname.Text);
 			wrapper.FileDescriptor.Instance = Hashes.InstanceHash(fl);
 			wrapper.FileDescriptor.SubType = Hashes.SubTypeHash(fl);
 		}
@@ -1602,7 +1602,7 @@ namespace SimPe.Plugin
 		private void ContextPopUp(object sender, EventArgs e)
 		{
 			milifo.Enabled = false;
-			this.mibuild.Enabled = System.IO.File.Exists(
+			mibuild.Enabled = System.IO.File.Exists(
 				PathProvider.Global.NvidiaDDSTool
 			);
 			if (lbimg.SelectedIndex < 0)
@@ -1749,7 +1749,7 @@ namespace SimPe.Plugin
 					id.Format = data[0].Format;
 					id.MipMapLevels = (uint)data.Length;
 
-					this.lbimg.Items.Clear();
+					lbimg.Items.Clear();
 					for (int i = data.Length - 1; i >= 0; i--)
 					{
 						DDSData item = data[i];
@@ -1763,7 +1763,7 @@ namespace SimPe.Plugin
 					tbwidth.Text = id.TextureSize.Width.ToString();
 					tbheight.Text = id.TextureSize.Height.ToString();
 
-					this.cbformats.SelectedIndex = 0;
+					cbformats.SelectedIndex = 0;
 					for (int i = 0; i < cbformats.Items.Count; i++)
 					{
 						if ((ImageLoader.TxtrFormats)cbformats.Items[i] == id.Format)
@@ -1850,7 +1850,7 @@ namespace SimPe.Plugin
 			ImageData id = SelectedImageData();
 			LoadDDS(
 				dds.Execute(
-					Convert.ToInt32(this.tblevel.Text),
+					Convert.ToInt32(tblevel.Text),
 					id.TextureSize,
 					id.Format
 				)

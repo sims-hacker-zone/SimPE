@@ -28,8 +28,8 @@ namespace SimPe.Plugin.Gmdc
 
 		public GroupDescriptor(string name, int index)
 		{
-			this.Name = name;
-			this.Index = index;
+			Name = name;
+			Index = index;
 		}
 
 		public string Name
@@ -173,7 +173,7 @@ namespace SimPe.Plugin.Gmdc
 		/// Returns the Number of stored Faces
 		/// </summary>
 		/// <returns></returns>
-		public int FaceCount => this.Group.Faces.Length / 3;
+		public int FaceCount => Group.Faces.Length / 3;
 
 		/// <summary>
 		/// True, if this MEshGroup sould be added to the BoundingMesh
@@ -312,7 +312,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length => this.Count;
+		public int Length => Count;
 
 		/// <summary>
 		/// Create a clone of this Object

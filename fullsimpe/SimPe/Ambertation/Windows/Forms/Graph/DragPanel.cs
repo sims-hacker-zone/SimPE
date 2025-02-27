@@ -72,7 +72,7 @@ namespace Ambertation.Windows.Forms.Graph
 				if (lk != value)
 				{
 					lk = value;
-					this.Invalidate();
+					Invalidate();
 				}
 			}
 		}
@@ -89,7 +89,7 @@ namespace Ambertation.Windows.Forms.Graph
 				if (fnt != value)
 				{
 					fnt = value;
-					this.Invalidate();
+					Invalidate();
 				}
 			}
 		}
@@ -117,16 +117,16 @@ namespace Ambertation.Windows.Forms.Graph
 
 		internal bool OnMouseDown(MouseEventArgs e)
 		{
-			if (!this.BoundingRectangle.Contains(e.X, e.Y))
+			if (!BoundingRectangle.Contains(e.X, e.Y))
 			{
 				return false;
 			}
 
-			if (e.Clicks == 1 && this.Click != null)
+			if (e.Clicks == 1 && Click != null)
 			{
 				Click(this, new EventArgs());
 			}
-			else if (e.Clicks == 2 && this.DoubleClick != null)
+			else if (e.Clicks == 2 && DoubleClick != null)
 			{
 				DoubleClick(this, new EventArgs());
 				return true;
@@ -154,7 +154,7 @@ namespace Ambertation.Windows.Forms.Graph
 
 		internal bool OnMouseUp(MouseEventArgs e)
 		{
-			if (!this.BoundingRectangle.Contains(e.X, e.Y) && !Down)
+			if (!BoundingRectangle.Contains(e.X, e.Y) && !Down)
 			{
 				return false;
 			}
@@ -172,7 +172,7 @@ namespace Ambertation.Windows.Forms.Graph
 
 		internal bool OnMouseMove(MouseEventArgs e)
 		{
-			if (!this.BoundingRectangle.Contains(e.X, e.Y) && !Down)
+			if (!BoundingRectangle.Contains(e.X, e.Y) && !Down)
 			{
 				return false;
 			}
@@ -196,7 +196,7 @@ namespace Ambertation.Windows.Forms.Graph
 
 			Point delta = new Point(Left + e.X - lastpos.X, Top + e.Y - lastpos.Y);
 
-			this.SetBounds(delta.X, delta.Y, Width, Height);
+			SetBounds(delta.X, delta.Y, Width, Height);
 			return true;
 		}
 
@@ -209,7 +209,7 @@ namespace Ambertation.Windows.Forms.Graph
 		internal override void OnGotFocus(EventArgs e)
 		{
 			base.OnGotFocus(e);
-			this.SendToFront();
+			SendToFront();
 		}
 
 		#endregion
@@ -226,14 +226,14 @@ namespace Ambertation.Windows.Forms.Graph
 		{
 			if (Focused != val)
 			{
-				this.Focused = val;
+				Focused = val;
 				if (Focused)
 				{
-					this.OnGotFocus(new EventArgs());
+					OnGotFocus(new EventArgs());
 				}
 				else
 				{
-					this.OnLostFocus(new EventArgs());
+					OnLostFocus(new EventArgs());
 				}
 			}
 		}
@@ -243,7 +243,7 @@ namespace Ambertation.Windows.Forms.Graph
 			base.ChangedParent();
 			if (Parent != null)
 			{
-				this.Movable = !Parent.LockItems;
+				Movable = !Parent.LockItems;
 			}
 		}
 	}

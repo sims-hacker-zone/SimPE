@@ -80,45 +80,45 @@ namespace SimPe.Plugin
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.label1 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
-			this.lb = new System.Windows.Forms.ListBox();
-			this.tbFlname = new System.Windows.Forms.TextBox();
-			this.tbUk1 = new System.Windows.Forms.TextBox();
-			this.tbUk2 = new System.Windows.Forms.TextBox();
-			this.tbUk3 = new System.Windows.Forms.TextBox();
-			this.tbId = new System.Windows.Forms.TextBox();
-			this.label5 = new System.Windows.Forms.Label();
-			this.xpTaskBoxSimple1 = new Ambertation.Windows.Forms.XPTaskBoxSimple();
-			this.tbTxmt = new System.Windows.Forms.TextBox();
-			this.label6 = new System.Windows.Forms.Label();
-			this.label7 = new System.Windows.Forms.Label();
-			this.cbType = new Ambertation.Windows.Forms.EnumComboBox();
-			this.xpTaskBoxSimple1.SuspendLayout();
-			this.SuspendLayout();
+			label1 = new System.Windows.Forms.Label();
+			label2 = new System.Windows.Forms.Label();
+			label3 = new System.Windows.Forms.Label();
+			label4 = new System.Windows.Forms.Label();
+			lb = new System.Windows.Forms.ListBox();
+			tbFlname = new System.Windows.Forms.TextBox();
+			tbUk1 = new System.Windows.Forms.TextBox();
+			tbUk2 = new System.Windows.Forms.TextBox();
+			tbUk3 = new System.Windows.Forms.TextBox();
+			tbId = new System.Windows.Forms.TextBox();
+			label5 = new System.Windows.Forms.Label();
+			xpTaskBoxSimple1 = new Ambertation.Windows.Forms.XPTaskBoxSimple();
+			tbTxmt = new System.Windows.Forms.TextBox();
+			label6 = new System.Windows.Forms.Label();
+			label7 = new System.Windows.Forms.Label();
+			cbType = new Ambertation.Windows.Forms.EnumComboBox();
+			xpTaskBoxSimple1.SuspendLayout();
+			SuspendLayout();
 			//
 			// label1
 			//
-			this.label1.BackColor = System.Drawing.Color.Transparent;
-			this.label1.Font = new System.Drawing.Font(
+			label1.BackColor = System.Drawing.Color.Transparent;
+			label1.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label1.Location = new System.Drawing.Point(8, 64);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(100, 23);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Resource ID:";
-			this.label1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label1.Location = new System.Drawing.Point(8, 64);
+			label1.Name = "label1";
+			label1.Size = new System.Drawing.Size(100, 23);
+			label1.TabIndex = 0;
+			label1.Text = "Resource ID:";
+			label1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// label2
 			//
-			this.label2.Anchor = (
+			label2.Anchor = (
 				(System.Windows.Forms.AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
@@ -126,24 +126,24 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.label2.BackColor = System.Drawing.Color.Transparent;
-			this.label2.Font = new System.Drawing.Font(
+			label2.BackColor = System.Drawing.Color.Transparent;
+			label2.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label2.Location = new System.Drawing.Point(368, 64);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(72, 23);
-			this.label2.TabIndex = 1;
-			this.label2.Text = "Unknown2:";
-			this.label2.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label2.Location = new System.Drawing.Point(368, 64);
+			label2.Name = "label2";
+			label2.Size = new System.Drawing.Size(72, 23);
+			label2.TabIndex = 1;
+			label2.Text = "Unknown2:";
+			label2.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// label3
 			//
-			this.label3.Anchor = (
+			label3.Anchor = (
 				(System.Windows.Forms.AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
@@ -151,41 +151,41 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.label3.BackColor = System.Drawing.Color.Transparent;
-			this.label3.Font = new System.Drawing.Font(
+			label3.BackColor = System.Drawing.Color.Transparent;
+			label3.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label3.Location = new System.Drawing.Point(528, 64);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(72, 23);
-			this.label3.TabIndex = 2;
-			this.label3.Text = "Unknown3:";
-			this.label3.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label3.Location = new System.Drawing.Point(528, 64);
+			label3.Name = "label3";
+			label3.Size = new System.Drawing.Size(72, 23);
+			label3.TabIndex = 2;
+			label3.Text = "Unknown3:";
+			label3.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// label4
 			//
-			this.label4.BackColor = System.Drawing.Color.Transparent;
-			this.label4.Font = new System.Drawing.Font(
+			label4.BackColor = System.Drawing.Color.Transparent;
+			label4.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label4.Location = new System.Drawing.Point(8, 32);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(100, 23);
-			this.label4.TabIndex = 3;
-			this.label4.Text = "Resourcename:";
-			this.label4.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label4.Location = new System.Drawing.Point(8, 32);
+			label4.Name = "label4";
+			label4.Size = new System.Drawing.Size(100, 23);
+			label4.TabIndex = 3;
+			label4.Text = "Resourcename:";
+			label4.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// lb
 			//
-			this.lb.Anchor = (
+			lb.Anchor = (
 				(System.Windows.Forms.AnchorStyles)(
 					(
 						(
@@ -197,19 +197,19 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.lb.HorizontalScrollbar = true;
-			this.lb.IntegralHeight = false;
-			this.lb.Location = new System.Drawing.Point(8, 96);
-			this.lb.Name = "lb";
-			this.lb.Size = new System.Drawing.Size(376, 192);
-			this.lb.TabIndex = 4;
-			this.lb.SelectedIndexChanged += new System.EventHandler(
-				this.lb_SelectedIndexChanged
+			lb.HorizontalScrollbar = true;
+			lb.IntegralHeight = false;
+			lb.Location = new System.Drawing.Point(8, 96);
+			lb.Name = "lb";
+			lb.Size = new System.Drawing.Size(376, 192);
+			lb.TabIndex = 4;
+			lb.SelectedIndexChanged += new System.EventHandler(
+				lb_SelectedIndexChanged
 			);
 			//
 			// tbFlname
 			//
-			this.tbFlname.Anchor = (
+			tbFlname.Anchor = (
 				(System.Windows.Forms.AnchorStyles)(
 					(
 						(
@@ -219,24 +219,24 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.tbFlname.Location = new System.Drawing.Point(120, 32);
-			this.tbFlname.Name = "tbFlname";
-			this.tbFlname.Size = new System.Drawing.Size(560, 21);
-			this.tbFlname.TabIndex = 5;
-			this.tbFlname.Text = "textBox1";
+			tbFlname.Location = new System.Drawing.Point(120, 32);
+			tbFlname.Name = "tbFlname";
+			tbFlname.Size = new System.Drawing.Size(560, 21);
+			tbFlname.TabIndex = 5;
+			tbFlname.Text = "textBox1";
 			//
 			// tbUk1
 			//
-			this.tbUk1.Location = new System.Drawing.Point(120, 64);
-			this.tbUk1.Name = "tbUk1";
-			this.tbUk1.ReadOnly = true;
-			this.tbUk1.Size = new System.Drawing.Size(72, 21);
-			this.tbUk1.TabIndex = 6;
-			this.tbUk1.Text = "0x00000000";
+			tbUk1.Location = new System.Drawing.Point(120, 64);
+			tbUk1.Name = "tbUk1";
+			tbUk1.ReadOnly = true;
+			tbUk1.Size = new System.Drawing.Size(72, 21);
+			tbUk1.TabIndex = 6;
+			tbUk1.Text = "0x00000000";
 			//
 			// tbUk2
 			//
-			this.tbUk2.Anchor = (
+			tbUk2.Anchor = (
 				(System.Windows.Forms.AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
@@ -244,15 +244,15 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.tbUk2.Location = new System.Drawing.Point(448, 64);
-			this.tbUk2.Name = "tbUk2";
-			this.tbUk2.Size = new System.Drawing.Size(72, 21);
-			this.tbUk2.TabIndex = 7;
-			this.tbUk2.Text = "0x00000000";
+			tbUk2.Location = new System.Drawing.Point(448, 64);
+			tbUk2.Name = "tbUk2";
+			tbUk2.Size = new System.Drawing.Size(72, 21);
+			tbUk2.TabIndex = 7;
+			tbUk2.Text = "0x00000000";
 			//
 			// tbUk3
 			//
-			this.tbUk3.Anchor = (
+			tbUk3.Anchor = (
 				(System.Windows.Forms.AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
@@ -260,38 +260,38 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.tbUk3.Location = new System.Drawing.Point(608, 64);
-			this.tbUk3.Name = "tbUk3";
-			this.tbUk3.Size = new System.Drawing.Size(72, 21);
-			this.tbUk3.TabIndex = 8;
-			this.tbUk3.Text = "0x00000000";
+			tbUk3.Location = new System.Drawing.Point(608, 64);
+			tbUk3.Name = "tbUk3";
+			tbUk3.Size = new System.Drawing.Size(72, 21);
+			tbUk3.TabIndex = 8;
+			tbUk3.Text = "0x00000000";
 			//
 			// tbId
 			//
-			this.tbId.Location = new System.Drawing.Point(64, 48);
-			this.tbId.Name = "tbId";
-			this.tbId.Size = new System.Drawing.Size(192, 21);
-			this.tbId.TabIndex = 10;
+			tbId.Location = new System.Drawing.Point(64, 48);
+			tbId.Name = "tbId";
+			tbId.Size = new System.Drawing.Size(192, 21);
+			tbId.TabIndex = 10;
 			//
 			// label5
 			//
-			this.label5.Font = new System.Drawing.Font(
+			label5.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label5.Location = new System.Drawing.Point(8, 48);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(48, 23);
-			this.label5.TabIndex = 9;
-			this.label5.Text = "ID:";
-			this.label5.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label5.Location = new System.Drawing.Point(8, 48);
+			label5.Name = "label5";
+			label5.Size = new System.Drawing.Size(48, 23);
+			label5.TabIndex = 9;
+			label5.Text = "ID:";
+			label5.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// xpTaskBoxSimple1
 			//
-			this.xpTaskBoxSimple1.Anchor = (
+			xpTaskBoxSimple1.Anchor = (
 				(System.Windows.Forms.AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Top
@@ -299,144 +299,144 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.xpTaskBoxSimple1.BackColor = System.Drawing.Color.Transparent;
-			this.xpTaskBoxSimple1.Controls.Add(this.tbTxmt);
-			this.xpTaskBoxSimple1.Controls.Add(this.label6);
-			this.xpTaskBoxSimple1.Controls.Add(this.tbId);
-			this.xpTaskBoxSimple1.Controls.Add(this.label5);
-			this.xpTaskBoxSimple1.HeaderFont = new System.Drawing.Font(
+			xpTaskBoxSimple1.BackColor = System.Drawing.Color.Transparent;
+			xpTaskBoxSimple1.Controls.Add(tbTxmt);
+			xpTaskBoxSimple1.Controls.Add(label6);
+			xpTaskBoxSimple1.Controls.Add(tbId);
+			xpTaskBoxSimple1.Controls.Add(label5);
+			xpTaskBoxSimple1.HeaderFont = new System.Drawing.Font(
 				"Microsoft Sans Serif",
 				10.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.xpTaskBoxSimple1.HeaderText = "Properties";
-			this.xpTaskBoxSimple1.IconLocation = new System.Drawing.Point(4, 12);
-			this.xpTaskBoxSimple1.IconSize = new System.Drawing.Size(32, 32);
-			this.xpTaskBoxSimple1.Location = new System.Drawing.Point(392, 88);
-			this.xpTaskBoxSimple1.Name = "xpTaskBoxSimple1";
-			this.xpTaskBoxSimple1.Padding = new System.Windows.Forms.Padding(
+			xpTaskBoxSimple1.HeaderText = "Properties";
+			xpTaskBoxSimple1.IconLocation = new System.Drawing.Point(4, 12);
+			xpTaskBoxSimple1.IconSize = new System.Drawing.Size(32, 32);
+			xpTaskBoxSimple1.Location = new System.Drawing.Point(392, 88);
+			xpTaskBoxSimple1.Name = "xpTaskBoxSimple1";
+			xpTaskBoxSimple1.Padding = new System.Windows.Forms.Padding(
 				4,
 				44,
 				4,
 				4
 			);
-			this.xpTaskBoxSimple1.Size = new System.Drawing.Size(288, 100);
-			this.xpTaskBoxSimple1.TabIndex = 11;
+			xpTaskBoxSimple1.Size = new System.Drawing.Size(288, 100);
+			xpTaskBoxSimple1.TabIndex = 11;
 			//
 			// tbTxmt
 			//
-			this.tbTxmt.Location = new System.Drawing.Point(64, 72);
-			this.tbTxmt.Name = "tbTxmt";
-			this.tbTxmt.Size = new System.Drawing.Size(192, 21);
-			this.tbTxmt.TabIndex = 12;
+			tbTxmt.Location = new System.Drawing.Point(64, 72);
+			tbTxmt.Name = "tbTxmt";
+			tbTxmt.Size = new System.Drawing.Size(192, 21);
+			tbTxmt.TabIndex = 12;
 			//
 			// label6
 			//
-			this.label6.Font = new System.Drawing.Font(
+			label6.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label6.Location = new System.Drawing.Point(8, 72);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(48, 23);
-			this.label6.TabIndex = 11;
-			this.label6.Text = "Name:";
-			this.label6.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label6.Location = new System.Drawing.Point(8, 72);
+			label6.Name = "label6";
+			label6.Size = new System.Drawing.Size(48, 23);
+			label6.TabIndex = 11;
+			label6.Text = "Name:";
+			label6.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// label7
 			//
-			this.label7.BackColor = System.Drawing.Color.Transparent;
-			this.label7.Font = new System.Drawing.Font(
+			label7.BackColor = System.Drawing.Color.Transparent;
+			label7.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label7.Location = new System.Drawing.Point(200, 64);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(40, 23);
-			this.label7.TabIndex = 12;
-			this.label7.Text = "Type:";
-			this.label7.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label7.Location = new System.Drawing.Point(200, 64);
+			label7.Name = "label7";
+			label7.Size = new System.Drawing.Size(40, 23);
+			label7.TabIndex = 12;
+			label7.Text = "Type:";
+			label7.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// cbType
 			//
-			this.cbType.Enabled = false;
-			this.cbType.Enum = null;
-			this.cbType.Location = new System.Drawing.Point(240, 64);
-			this.cbType.Name = "cbType";
-			this.cbType.ResourceManager = null;
-			this.cbType.Size = new System.Drawing.Size(120, 21);
-			this.cbType.TabIndex = 13;
-			this.cbType.Text = "enumComboBox1";
+			cbType.Enabled = false;
+			cbType.Enum = null;
+			cbType.Location = new System.Drawing.Point(240, 64);
+			cbType.Name = "cbType";
+			cbType.ResourceManager = null;
+			cbType.Size = new System.Drawing.Size(120, 21);
+			cbType.TabIndex = 13;
+			cbType.Text = "enumComboBox1";
 			//
 			// RoadTextureControl
 			//
-			this.CanCommit = false;
-			this.Controls.Add(this.cbType);
-			this.Controls.Add(this.label7);
-			this.Controls.Add(this.xpTaskBoxSimple1);
-			this.Controls.Add(this.tbUk3);
-			this.Controls.Add(this.tbUk2);
-			this.Controls.Add(this.tbUk1);
-			this.Controls.Add(this.tbFlname);
-			this.Controls.Add(this.lb);
-			this.Controls.Add(this.label4);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.label1);
-			this.Font = new System.Drawing.Font(
+			CanCommit = false;
+			Controls.Add(cbType);
+			Controls.Add(label7);
+			Controls.Add(xpTaskBoxSimple1);
+			Controls.Add(tbUk3);
+			Controls.Add(tbUk2);
+			Controls.Add(tbUk1);
+			Controls.Add(tbFlname);
+			Controls.Add(lb);
+			Controls.Add(label4);
+			Controls.Add(label3);
+			Controls.Add(label2);
+			Controls.Add(label1);
+			Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.HeaderText = "Road Texture";
-			this.Name = "RoadTextureControl";
-			this.Size = new System.Drawing.Size(688, 296);
-			this.Controls.SetChildIndex(this.label1, 0);
-			this.Controls.SetChildIndex(this.label2, 0);
-			this.Controls.SetChildIndex(this.label3, 0);
-			this.Controls.SetChildIndex(this.label4, 0);
-			this.Controls.SetChildIndex(this.lb, 0);
-			this.Controls.SetChildIndex(this.tbFlname, 0);
-			this.Controls.SetChildIndex(this.tbUk1, 0);
-			this.Controls.SetChildIndex(this.tbUk2, 0);
-			this.Controls.SetChildIndex(this.tbUk3, 0);
-			this.Controls.SetChildIndex(this.xpTaskBoxSimple1, 0);
-			this.Controls.SetChildIndex(this.label7, 0);
-			this.Controls.SetChildIndex(this.cbType, 0);
-			this.xpTaskBoxSimple1.ResumeLayout(false);
-			this.xpTaskBoxSimple1.PerformLayout();
-			this.ResumeLayout(false);
-			this.PerformLayout();
+			HeaderText = "Road Texture";
+			Name = "RoadTextureControl";
+			Size = new System.Drawing.Size(688, 296);
+			Controls.SetChildIndex(label1, 0);
+			Controls.SetChildIndex(label2, 0);
+			Controls.SetChildIndex(label3, 0);
+			Controls.SetChildIndex(label4, 0);
+			Controls.SetChildIndex(lb, 0);
+			Controls.SetChildIndex(tbFlname, 0);
+			Controls.SetChildIndex(tbUk1, 0);
+			Controls.SetChildIndex(tbUk2, 0);
+			Controls.SetChildIndex(tbUk3, 0);
+			Controls.SetChildIndex(xpTaskBoxSimple1, 0);
+			Controls.SetChildIndex(label7, 0);
+			Controls.SetChildIndex(cbType, 0);
+			xpTaskBoxSimple1.ResumeLayout(false);
+			xpTaskBoxSimple1.PerformLayout();
+			ResumeLayout(false);
+			PerformLayout();
 		}
 		#endregion
 
 		#region IPackedFileUI Member
 
-		public RoadTexture RoadTextureWrapper => (RoadTexture)this.Wrapper;
+		public RoadTexture RoadTextureWrapper => (RoadTexture)Wrapper;
 
 		protected override void RefreshGUI()
 		{
 			base.RefreshGUI();
 
-			this.tbId.Text = "";
-			this.tbTxmt.Text = "";
+			tbId.Text = "";
+			tbTxmt.Text = "";
 
-			this.tbFlname.Text = RoadTextureWrapper.FileName;
-			this.tbUk1.Text = "0x" + Helper.HexString(RoadTextureWrapper.Id);
-			this.tbUk2.Text = "0x" + Helper.HexString(RoadTextureWrapper.Unknown2);
-			this.tbUk3.Text = "0x" + Helper.HexString(RoadTextureWrapper.Unknown3);
+			tbFlname.Text = RoadTextureWrapper.FileName;
+			tbUk1.Text = "0x" + Helper.HexString(RoadTextureWrapper.Id);
+			tbUk2.Text = "0x" + Helper.HexString(RoadTextureWrapper.Unknown2);
+			tbUk3.Text = "0x" + Helper.HexString(RoadTextureWrapper.Unknown3);
 
 			cbType.SelectedValue = RoadTextureWrapper.Type;
 
-			this.lb.Items.Clear();
+			lb.Items.Clear();
 			foreach (object o in RoadTextureWrapper)
 			{
 				lb.Items.Add(o);
@@ -464,14 +464,14 @@ namespace SimPe.Plugin
 
 			if (lb.SelectedItem is uint)
 			{
-				this.tbId.Text = "0x" + Helper.HexString((uint)lb.SelectedItem);
-				this.tbTxmt.Text =
+				tbId.Text = "0x" + Helper.HexString((uint)lb.SelectedItem);
+				tbTxmt.Text =
 					"0x" + Helper.HexString((uint)RoadTextureWrapper[lb.SelectedItem]);
 			}
 			else
 			{
-				this.tbId.Text = lb.SelectedItem.ToString();
-				this.tbTxmt.Text = RoadTextureWrapper[lb.SelectedItem].ToString();
+				tbId.Text = lb.SelectedItem.ToString();
+				tbTxmt.Text = RoadTextureWrapper[lb.SelectedItem].ToString();
 			}
 		}
 	}

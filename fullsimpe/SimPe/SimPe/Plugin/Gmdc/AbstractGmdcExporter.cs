@@ -128,7 +128,7 @@ namespace SimPe.Plugin.Gmdc
 		public AbstractGmdcExporter(GeometryDataContainer gmdc, GmdcGroups groups)
 			: this()
 		{
-			this.Gmdc = gmdc;
+			Gmdc = gmdc;
 			LoadGroups(groups);
 		}
 
@@ -144,9 +144,9 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public AbstractGmdcExporter()
 		{
-			this.Gmdc = null;
-			this.Component = new ElementOrder(ElementSorting.XZY);
-			this.CorrectJointSetup = false;
+			Gmdc = null;
+			Component = new ElementOrder(ElementSorting.XZY);
+			CorrectJointSetup = false;
 		}
 
 		/// <summary>
@@ -167,10 +167,10 @@ namespace SimPe.Plugin.Gmdc
 		/// <returns>The created Stream</returns>
 		public Stream Process(GeometryDataContainer gmdc, GmdcGroups groups)
 		{
-			this.Gmdc = gmdc;
+			Gmdc = gmdc;
 			LoadGroups(groups);
 
-			return this.FileContent.BaseStream;
+			return FileContent.BaseStream;
 		}
 
 		/// <summary>
@@ -180,7 +180,7 @@ namespace SimPe.Plugin.Gmdc
 		void LoadGroups(GmdcGroups groups)
 		{
 			writer = new StreamWriter(new MemoryStream());
-			this.Groups = groups;
+			Groups = groups;
 			LoadSpecialElements(null);
 			InitFile();
 
@@ -209,7 +209,7 @@ namespace SimPe.Plugin.Gmdc
 			NormalElement = null;
 			UVCoordinateElement = null;
 			Link = null;
-			this.Group = group;
+			Group = group;
 
 			if (group == null)
 			{

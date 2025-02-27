@@ -61,76 +61,76 @@ namespace pj
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(GetMeshName));
-			this.label1 = new Label();
-			this.tbMeshName = new TextBox();
-			this.label2 = new Label();
-			this.btnOK = new Button();
-			this.btnBrowse = new Button();
-			this.btnCancel = new Button();
-			this.label3 = new Label();
-			this.cbusecres = new CheckBox();
-			this.SuspendLayout();
+			label1 = new Label();
+			tbMeshName = new TextBox();
+			label2 = new Label();
+			btnOK = new Button();
+			btnBrowse = new Button();
+			btnCancel = new Button();
+			label3 = new Label();
+			cbusecres = new CheckBox();
+			SuspendLayout();
 			//
 			// label1
 			//
-			resources.ApplyResources(this.label1, "label1");
-			this.label1.Name = "label1";
+			resources.ApplyResources(label1, "label1");
+			label1.Name = "label1";
 			//
 			// tbMeshName
 			//
-			resources.ApplyResources(this.tbMeshName, "tbMeshName");
-			this.tbMeshName.Name = "tbMeshName";
+			resources.ApplyResources(tbMeshName, "tbMeshName");
+			tbMeshName.Name = "tbMeshName";
 			//
 			// label2
 			//
-			resources.ApplyResources(this.label2, "label2");
-			this.label2.Name = "label2";
+			resources.ApplyResources(label2, "label2");
+			label2.Name = "label2";
 			//
 			// btnOK
 			//
-			resources.ApplyResources(this.btnOK, "btnOK");
-			this.btnOK.DialogResult = DialogResult.OK;
-			this.btnOK.Name = "btnOK";
-			this.btnOK.UseVisualStyleBackColor = true;
+			resources.ApplyResources(btnOK, "btnOK");
+			btnOK.DialogResult = DialogResult.OK;
+			btnOK.Name = "btnOK";
+			btnOK.UseVisualStyleBackColor = true;
 			//
 			// btnBrowse
 			//
-			resources.ApplyResources(this.btnBrowse, "btnBrowse");
-			this.btnBrowse.DialogResult = DialogResult.Retry;
-			this.btnBrowse.Name = "btnBrowse";
-			this.btnBrowse.UseVisualStyleBackColor = true;
+			resources.ApplyResources(btnBrowse, "btnBrowse");
+			btnBrowse.DialogResult = DialogResult.Retry;
+			btnBrowse.Name = "btnBrowse";
+			btnBrowse.UseVisualStyleBackColor = true;
 			//
 			// btnCancel
 			//
-			resources.ApplyResources(this.btnCancel, "btnCancel");
-			this.btnCancel.DialogResult = DialogResult.Cancel;
-			this.btnCancel.Name = "btnCancel";
-			this.btnCancel.UseVisualStyleBackColor = true;
+			resources.ApplyResources(btnCancel, "btnCancel");
+			btnCancel.DialogResult = DialogResult.Cancel;
+			btnCancel.Name = "btnCancel";
+			btnCancel.UseVisualStyleBackColor = true;
 			//
 			// label3
 			//
-			resources.ApplyResources(this.label3, "label3");
-			this.label3.Name = "label3";
+			resources.ApplyResources(label3, "label3");
+			label3.Name = "label3";
 			//
 			// GetMeshName
 			//
-			this.AcceptButton = this.btnOK;
+			AcceptButton = btnOK;
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = AutoScaleMode.Font;
-			this.CancelButton = this.btnCancel;
-			this.ControlBox = false;
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.btnOK);
-			this.Controls.Add(this.btnBrowse);
-			this.Controls.Add(this.btnCancel);
-			this.Controls.Add(this.tbMeshName);
-			this.Controls.Add(this.label1);
-			this.Controls.Add(this.cbusecres);
-			this.FormBorderStyle = FormBorderStyle.FixedDialog;
-			this.Name = "GetMeshName";
-			this.ShowInTaskbar = false;
-			this.ResumeLayout(false);
+			AutoScaleMode = AutoScaleMode.Font;
+			CancelButton = btnCancel;
+			ControlBox = false;
+			Controls.Add(label3);
+			Controls.Add(label2);
+			Controls.Add(btnOK);
+			Controls.Add(btnBrowse);
+			Controls.Add(btnCancel);
+			Controls.Add(tbMeshName);
+			Controls.Add(label1);
+			Controls.Add(cbusecres);
+			FormBorderStyle = FormBorderStyle.FixedDialog;
+			Name = "GetMeshName";
+			ShowInTaskbar = false;
+			ResumeLayout(false);
 		}
 
 		#endregion
@@ -139,14 +139,14 @@ namespace pj
 		{
 			InitializeComponent();
 
-			this.cbusecres.Checked = Settings.BodyMeshExtractUseCres;
+			cbusecres.Checked = Settings.BodyMeshExtractUseCres;
 		}
 
 		public String MeshName => tbMeshName.Text;
 
 		private void cbusecres_CheckedChanged(object sender, EventArgs e)
 		{
-			Settings.BodyMeshExtractUseCres = this.cbusecres.Checked;
+			Settings.BodyMeshExtractUseCres = cbusecres.Checked;
 		}
 	}
 }

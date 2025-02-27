@@ -111,9 +111,9 @@ namespace pjse
 		void pn_Resize(object sender, EventArgs e)
 		{
 			Panel pn = (Panel)sender;
-			int footHeight = this.Height - this.panel1.Bottom + 8;
-			this.Width = pn.Width + 8;
-			this.Height = pn.Height + footHeight;
+			int footHeight = Height - panel1.Bottom + 8;
+			Width = pn.Width + 8;
+			Height = pn.Height + footHeight;
 		}
 
 		#region Vom Windows Form-Designer generierter Code
@@ -127,41 +127,41 @@ namespace pjse
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(BhavOperandWiz)
 				);
-			this.panel1 = new Panel();
-			this.OK = new Button();
-			this.Cancel = new Button();
-			this.SuspendLayout();
+			panel1 = new Panel();
+			OK = new Button();
+			Cancel = new Button();
+			SuspendLayout();
 			//
 			// panel1
 			//
-			resources.ApplyResources(this.panel1, "panel1");
-			this.panel1.BorderStyle = BorderStyle.FixedSingle;
-			this.panel1.Name = "panel1";
+			resources.ApplyResources(panel1, "panel1");
+			panel1.BorderStyle = BorderStyle.FixedSingle;
+			panel1.Name = "panel1";
 			//
 			// OK
 			//
-			resources.ApplyResources(this.OK, "OK");
-			this.OK.DialogResult = DialogResult.OK;
-			this.OK.Name = "OK";
+			resources.ApplyResources(OK, "OK");
+			OK.DialogResult = DialogResult.OK;
+			OK.Name = "OK";
 			//
 			// Cancel
 			//
-			resources.ApplyResources(this.Cancel, "Cancel");
-			this.Cancel.DialogResult = DialogResult.Cancel;
-			this.Cancel.Name = "Cancel";
+			resources.ApplyResources(Cancel, "Cancel");
+			Cancel.DialogResult = DialogResult.Cancel;
+			Cancel.Name = "Cancel";
 			//
 			// BhavOperandWiz
 			//
-			this.AcceptButton = this.OK;
+			AcceptButton = OK;
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = AutoScaleMode.Dpi;
-			this.CancelButton = this.Cancel;
-			this.Controls.Add(this.OK);
-			this.Controls.Add(this.panel1);
-			this.Controls.Add(this.Cancel);
-			this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
-			this.Name = "BhavOperandWiz";
-			this.ResumeLayout(false);
+			AutoScaleMode = AutoScaleMode.Dpi;
+			CancelButton = Cancel;
+			Controls.Add(OK);
+			Controls.Add(panel1);
+			Controls.Add(Cancel);
+			FormBorderStyle = FormBorderStyle.FixedToolWindow;
+			Name = "BhavOperandWiz";
+			ResumeLayout(false);
 		}
 		#endregion
 	}
@@ -297,18 +297,18 @@ namespace pjse.BhavOperandWizards
 
 		private void ckbDecimal_CheckedChanged(object sender, EventArgs e)
 		{
-			if (this.ckbDecimal.Visible)
+			if (ckbDecimal.Visible)
 			{
-				Settings.PJSE.DecimalDOValue = this.ckbDecimal.Checked;
+				Settings.PJSE.DecimalDOValue = ckbDecimal.Checked;
 			}
 		}
 
 		private void ckbUseAttrPicker_CheckedChanged(object sender, EventArgs e)
 		{
-			if (this.ckbUseInstancePicker.Visible)
+			if (ckbUseInstancePicker.Visible)
 			{
 				Settings.PJSE.InstancePickerAsText =
-					this.ckbUseInstancePicker.Checked;
+					ckbUseInstancePicker.Checked;
 			}
 		}
 
@@ -436,7 +436,7 @@ namespace pjse.BhavOperandWizards
 			ushort instance
 		)
 		{
-			this.Dispose();
+			Dispose();
 			this.inst = inst;
 			this.cbDataOwner = cbDataOwner;
 			this.cbPicker = cbPicker;
@@ -444,10 +444,10 @@ namespace pjse.BhavOperandWizards
 			this.ckbDecimal = ckbDecimal;
 			this.ckbUseInstancePicker = ckbUseInstancePicker;
 			this.lbInstance = lbInstance;
-			this.DataOwner = dataOwner;
-			this.Value = instance;
+			DataOwner = dataOwner;
+			Value = instance;
 
-			this.flagsFor = null;
+			flagsFor = null;
 
 			internalchg = true;
 			if (this.cbDataOwner != null)
@@ -462,30 +462,30 @@ namespace pjse.BhavOperandWizards
 				}
 
 				this.cbDataOwner.SelectedIndexChanged += new EventHandler(
-					this.cbDataOwner_SelectedIndexChanged
+					cbDataOwner_SelectedIndexChanged
 				);
 			}
 
 			if (this.cbPicker != null)
 			{
 				this.cbPicker.SelectedIndexChanged += new EventHandler(
-					this.cbPicker_SelectedIndexChanged
+					cbPicker_SelectedIndexChanged
 				);
 			}
 
 			if (this.tbValue != null)
 			{
-				this.tbValue.Text = this.tbValueConverter(instance);
+				this.tbValue.Text = tbValueConverter(instance);
 				this.tbValue.Validating += new System.ComponentModel.CancelEventHandler(
-					this.tbValue_Validating
+					tbValue_Validating
 				);
 				this.tbValue.Validated += new EventHandler(
-					this.tbValue_Validated
+					tbValue_Validated
 				);
 				this.tbValue.TextChanged += new EventHandler(
-					this.tbValue_TextChanged
+					tbValue_TextChanged
 				);
-				this.tbValue.Enter += new EventHandler(this.tbValue_Enter);
+				this.tbValue.Enter += new EventHandler(tbValue_Enter);
 			}
 
 			Settings.PJSE.DecimalDOValueChanged += new EventHandler(
@@ -496,7 +496,7 @@ namespace pjse.BhavOperandWizards
 			{
 				this.ckbDecimal.Checked = Decimal;
 				this.ckbDecimal.CheckedChanged += new EventHandler(
-					this.ckbDecimal_CheckedChanged
+					ckbDecimal_CheckedChanged
 				);
 			}
 
@@ -508,7 +508,7 @@ namespace pjse.BhavOperandWizards
 			{
 				this.ckbUseInstancePicker.Checked = UseInstancePicker;
 				this.ckbUseInstancePicker.CheckedChanged += new EventHandler(
-					this.ckbUseAttrPicker_CheckedChanged
+					ckbUseAttrPicker_CheckedChanged
 				);
 			}
 
@@ -523,9 +523,9 @@ namespace pjse.BhavOperandWizards
 		void PJSE_DecimalDOValueChanged(object sender, EventArgs e)
 		{
 			Decimal = Settings.PJSE.DecimalDOValue;
-			if (ckbDecimal != null && this.ckbDecimal.Checked != Decimal)
+			if (ckbDecimal != null && ckbDecimal.Checked != Decimal)
 			{
-				this.ckbDecimal.Checked = Decimal;
+				ckbDecimal.Checked = Decimal;
 			}
 		}
 
@@ -534,10 +534,10 @@ namespace pjse.BhavOperandWizards
 			UseInstancePicker = Settings.PJSE.InstancePickerAsText;
 			if (
 				ckbUseInstancePicker != null
-				&& this.ckbUseInstancePicker.Checked != UseInstancePicker
+				&& ckbUseInstancePicker.Checked != UseInstancePicker
 			)
 			{
-				this.ckbUseInstancePicker.Checked = UseInstancePicker;
+				ckbUseInstancePicker.Checked = UseInstancePicker;
 			}
 		}
 
@@ -545,49 +545,49 @@ namespace pjse.BhavOperandWizards
 
 		public void Dispose()
 		{
-			if (this.cbDataOwner != null)
+			if (cbDataOwner != null)
 			{
-				this.cbDataOwner.SelectedIndexChanged -= new EventHandler(
-					this.cbDataOwner_SelectedIndexChanged
+				cbDataOwner.SelectedIndexChanged -= new EventHandler(
+					cbDataOwner_SelectedIndexChanged
 				);
 			}
 
-			if (this.cbPicker != null)
+			if (cbPicker != null)
 			{
-				this.cbPicker.SelectedIndexChanged -= new EventHandler(
-					this.cbPicker_SelectedIndexChanged
+				cbPicker.SelectedIndexChanged -= new EventHandler(
+					cbPicker_SelectedIndexChanged
 				);
 			}
 
-			if (this.tbValue != null)
+			if (tbValue != null)
 			{
-				this.tbValue.TextChanged -= new EventHandler(
-					this.tbValue_TextChanged
+				tbValue.TextChanged -= new EventHandler(
+					tbValue_TextChanged
 				);
 			}
 
-			if (this.ckbDecimal != null)
+			if (ckbDecimal != null)
 			{
-				this.ckbDecimal.CheckedChanged -= new EventHandler(
-					this.ckbDecimal_CheckedChanged
+				ckbDecimal.CheckedChanged -= new EventHandler(
+					ckbDecimal_CheckedChanged
 				);
 			}
 
-			if (this.ckbUseInstancePicker != null)
+			if (ckbUseInstancePicker != null)
 			{
-				this.ckbUseInstancePicker.CheckedChanged -= new EventHandler(
-					this.ckbUseAttrPicker_CheckedChanged
+				ckbUseInstancePicker.CheckedChanged -= new EventHandler(
+					ckbUseAttrPicker_CheckedChanged
 				);
 			}
 
-			this.inst = null;
-			this.cbDataOwner = null;
-			this.cbPicker = null;
-			this.tbValue = null;
-			this.ckbDecimal = null;
-			this.ckbUseInstancePicker = null;
-			this.lbInstance = null;
-			this.flagsFor = null;
+			inst = null;
+			cbDataOwner = null;
+			cbPicker = null;
+			tbValue = null;
+			ckbDecimal = null;
+			ckbUseInstancePicker = null;
+			lbInstance = null;
+			flagsFor = null;
 		}
 
 		#endregion
@@ -810,11 +810,11 @@ namespace pjse.BhavOperandWizards
 
 		private void setTextBoxLength()
 		{
-			if (this.tbValue != null)
+			if (tbValue != null)
 			{
 				tbValue.MaxLength = Convert.ToInt32(
-					(this.DataOwner == 0x1a) ? 13
-					: (this.DataOwner == 0x2f) ? 15
+					(DataOwner == 0x1a) ? 13
+					: (DataOwner == 0x2f) ? 15
 					: isDecimal ? 1 + decBitToDigits[bitsInValue - 1]
 					: (use0xPrefix ? 2 : 0) + ((bitsInValue - 1) / 4) + 1
 				);
@@ -825,13 +825,13 @@ namespace pjse.BhavOperandWizards
 		{
 			get
 			{
-				return this.inst;
+				return inst;
 			}
 			set
 			{
-				if (this.inst != value)
+				if (inst != value)
 				{
-					this.inst = value;
+					inst = value;
 					SetDataOwner();
 				}
 			}
@@ -903,7 +903,7 @@ namespace pjse.BhavOperandWizards
 		{
 			get
 			{
-				return this.isDecimal;
+				return isDecimal;
 			}
 			set
 			{
@@ -927,7 +927,7 @@ namespace pjse.BhavOperandWizards
 		{
 			get
 			{
-				return this.useInstancePicker;
+				return useInstancePicker;
 			}
 			set
 			{
@@ -944,7 +944,7 @@ namespace pjse.BhavOperandWizards
 		{
 			get
 			{
-				return this.useFlagNames;
+				return useFlagNames;
 			}
 			set
 			{

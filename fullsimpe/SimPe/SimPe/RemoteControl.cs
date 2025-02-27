@@ -45,7 +45,7 @@ namespace SimPe
 
 				this.data = data;
 
-				this.TargetType = target;
+				TargetType = target;
 			}
 
 			public uint TargetType

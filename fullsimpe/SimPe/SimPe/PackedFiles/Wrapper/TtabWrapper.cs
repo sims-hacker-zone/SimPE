@@ -625,28 +625,28 @@ namespace SimPe.PackedFiles.Wrapper
 
 		private void CopyTo(TtabItem target)
 		{
-			target.action = this.action;
-			target.guard = this.guard;
-			target.flags = this.flags;
-			target.flags2 = this.flags2;
-			target.strindex = this.strindex;
-			target.attenuationcode = this.attenuationcode;
-			target.attenuationvalue = this.attenuationvalue;
-			target.autonomy = this.autonomy;
-			target.joinindex = this.joinindex;
-			target.uidisplaytype = this.uidisplaytype;
-			target.facialanimation = this.facialanimation;
-			target.memoryitermult = this.memoryitermult;
-			target.objecttype = this.objecttype;
-			target.modeltableid = this.modeltableid;
+			target.action = action;
+			target.guard = guard;
+			target.flags = flags;
+			target.flags2 = flags2;
+			target.strindex = strindex;
+			target.attenuationcode = attenuationcode;
+			target.attenuationvalue = attenuationvalue;
+			target.autonomy = autonomy;
+			target.joinindex = joinindex;
+			target.uidisplaytype = uidisplaytype;
+			target.facialanimation = facialanimation;
+			target.memoryitermult = memoryitermult;
+			target.objecttype = objecttype;
+			target.modeltableid = modeltableid;
 			if (humanGroups != null)
 			{
-				this.humanGroups.CopyTo(target.humanGroups);
+				humanGroups.CopyTo(target.humanGroups);
 			}
 
 			if (animalGroups != null)
 			{
-				this.animalGroups.CopyTo(target.animalGroups);
+				animalGroups.CopyTo(target.animalGroups);
 			}
 		}
 
@@ -654,7 +654,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			TtabItem clone = new TtabItem(this.parent);
 			clone.parent = parent;
-			this.CopyTo(clone);
+			CopyTo(clone);
 			return clone;
 		}
 
@@ -829,7 +829,7 @@ namespace SimPe.PackedFiles.Wrapper
 			TtabItemMotiveTableType type
 		)
 		{
-			this.Parent = parent;
+			Parent = parent;
 			this.counts = counts;
 			this.type = type;
 
@@ -872,21 +872,21 @@ namespace SimPe.PackedFiles.Wrapper
 				return;
 			}
 
-			for (int i = 0; i < target.items.Count && i < this.items.Count; i++)
+			for (int i = 0; i < target.items.Count && i < items.Count; i++)
 			{
-				target.items[i] = this.items[i].Clone();
+				target.items[i] = items[i].Clone();
 			}
 
-			for (int i = this.items.Count; i < target.items.Count; i++)
+			for (int i = items.Count; i < target.items.Count; i++)
 			{
-				target.items[i] = this.items[0].Clone();
+				target.items[i] = items[0].Clone();
 			}
 		}
 
 		private TtabItemMotiveTable Clone(TtabItem parent)
 		{
 			TtabItemMotiveTable clone = new TtabItemMotiveTable(parent, counts, type);
-			this.CopyTo(clone);
+			CopyTo(clone);
 			return clone;
 		}
 
@@ -983,7 +983,7 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				get
 				{
-					for (int i = this.Count; i > 0; i--)
+					for (int i = Count; i > 0; i--)
 					{
 						if (this[i - 1].InUse)
 						{
@@ -1024,7 +1024,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public void Remove(TtabItemMotiveGroup item)
 		{
-			this.RemoveAt(items.IndexOf(item));
+			RemoveAt(items.IndexOf(item));
 		}
 
 		public void RemoveAt(int index)
@@ -1118,7 +1118,7 @@ namespace SimPe.PackedFiles.Wrapper
 			TtabItemMotiveTableType type
 		)
 		{
-			this.Parent = parent;
+			Parent = parent;
 			this.count = count;
 			this.type = type;
 
@@ -1162,7 +1162,7 @@ namespace SimPe.PackedFiles.Wrapper
 		public TtabItemMotiveGroup Clone(TtabItemMotiveTable parent)
 		{
 			TtabItemMotiveGroup clone = new TtabItemMotiveGroup(parent, count, type);
-			this.CopyTo(clone);
+			CopyTo(clone);
 			return clone;
 		}
 
@@ -1279,7 +1279,7 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				get
 				{
-					for (int i = this.Count; i > 0; i--)
+					for (int i = Count; i > 0; i--)
 					{
 						if (this[i - 1].InUse)
 						{
@@ -1326,7 +1326,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public void Remove(TtabItemMotiveItem item)
 		{
-			this.RemoveAt(items.IndexOf(item));
+			RemoveAt(items.IndexOf(item));
 		}
 
 		public void RemoveAt(int index)
@@ -1491,7 +1491,7 @@ namespace SimPe.PackedFiles.Wrapper
 		public override TtabItemMotiveItem Clone(TtabItemMotiveGroup parent)
 		{
 			TtabItemAnimalMotiveItem clone = new TtabItemAnimalMotiveItem(parent);
-			this.CopyTo(clone, false);
+			CopyTo(clone, false);
 			return clone;
 		}
 
@@ -1503,7 +1503,7 @@ namespace SimPe.PackedFiles.Wrapper
 			);
 			for (int i = 0; i < count; i++)
 			{
-				items[i] = new TtabItemSingleMotiveItem(this.parent, reader);
+				items[i] = new TtabItemSingleMotiveItem(parent, reader);
 			}
 		}
 
@@ -1582,7 +1582,7 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				get
 				{
-					for (int i = this.Count; i > 0; i--)
+					for (int i = Count; i > 0; i--)
 					{
 						if (this[i - 1].InUse)
 						{
@@ -1598,7 +1598,7 @@ namespace SimPe.PackedFiles.Wrapper
 		#region ICollection Members
 		public int Add(TtabItemSingleMotiveItem item)
 		{
-			item.Parent = this.parent;
+			item.Parent = parent;
 			int result = items.Add(item);
 			if (result >= 0 && Wrapper != null)
 			{
@@ -1623,7 +1623,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public void Remove(TtabItemSingleMotiveItem item)
 		{
-			this.RemoveAt(items.IndexOf(item));
+			RemoveAt(items.IndexOf(item));
 		}
 
 		public void RemoveAt(int index)
@@ -1653,7 +1653,7 @@ namespace SimPe.PackedFiles.Wrapper
 					items[index] = value;
 					if (items[index] != null)
 					{
-						items[index].Parent = this.parent;
+						items[index].Parent = parent;
 					}
 
 					if (Wrapper != null)
@@ -1763,7 +1763,7 @@ namespace SimPe.PackedFiles.Wrapper
 		public override TtabItemMotiveItem Clone(TtabItemMotiveGroup parent)
 		{
 			TtabItemSingleMotiveItem clone = new TtabItemSingleMotiveItem(parent);
-			this.CopyTo(clone, false);
+			CopyTo(clone, false);
 			return clone;
 		}
 

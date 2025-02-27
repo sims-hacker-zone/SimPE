@@ -85,7 +85,7 @@ namespace SimPe.Windows.Forms
 		{
 			BeginUpdate();
 
-			ResourceViewManager.ResourceNameList oldsel = this.SelectedItems;
+			ResourceViewManager.ResourceNameList oldsel = SelectedItems;
 
 			lv.SelectedIndices.Clear();
 			names.SortByColumn(sc, asc);

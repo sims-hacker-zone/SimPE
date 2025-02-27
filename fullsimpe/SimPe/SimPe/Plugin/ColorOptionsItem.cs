@@ -30,8 +30,8 @@ namespace SimPe.Plugin
 	{
 		public SubsetItem(string name, bool slave)
 		{
-			this.Name = name;
-			this.Slave = slave;
+			Name = name;
+			Slave = slave;
 		}
 
 		public string Name;
@@ -45,7 +45,7 @@ namespace SimPe.Plugin
 	{
 		public ColorOptionsItem(PackedFiles.Wrapper.Cpf mmat)
 		{
-			this.MMAT = mmat;
+			MMAT = mmat;
 
 			Subset = mmat.GetSaveItem("subsetName").StringValue.Trim().ToLower();
 			Family = mmat.GetSaveItem("family").StringValue.Trim().ToLower();

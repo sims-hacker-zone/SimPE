@@ -281,7 +281,7 @@ namespace SimPe.Providers
 		{
 			if (sets == null)
 			{
-				this.LoadSkins();
+				LoadSkins();
 			}
 
 			if (sets == null)
@@ -386,7 +386,7 @@ namespace SimPe.Providers
 		{
 			if (matds == null)
 			{
-				this.LoadSkinImages();
+				LoadSkinImages();
 			}
 
 			if (matds == null)
@@ -481,7 +481,7 @@ namespace SimPe.Providers
 		{
 			if (txtrs == null)
 			{
-				this.LoadSkinImages();
+				LoadSkinImages();
 			}
 
 			if (txtrs == null)
@@ -528,12 +528,12 @@ namespace SimPe.Providers
 			get
 			{
 				LoadPackage();
-				if (this.sets == null)
+				if (sets == null)
 				{
 					LoadSkins();
 				}
 
-				return this.sets;
+				return sets;
 			}
 		}
 

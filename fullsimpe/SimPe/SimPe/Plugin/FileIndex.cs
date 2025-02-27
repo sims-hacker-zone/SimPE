@@ -49,7 +49,7 @@ namespace SimPe.Plugin
 		{
 			Interfaces.Files.IPackedFileDescriptor p =
 				FileDescriptor.Clone() as Interfaces.Files.IPackedFileDescriptor;
-			p.Group = this.LocalGroup;
+			p.Group = LocalGroup;
 			return p;
 		}
 
@@ -101,8 +101,8 @@ namespace SimPe.Plugin
 				);
 			}
 
-			this.FileDescriptor = pfd;
-			this.Package = package;
+			FileDescriptor = pfd;
+			Package = package;
 
 			localgr = FileIndex.GetLocalGroup(package);
 		}
@@ -121,7 +121,7 @@ namespace SimPe.Plugin
 
 		public override int GetHashCode()
 		{
-			return this.FileDescriptor.GetHashCode();
+			return FileDescriptor.GetHashCode();
 		}
 
 		public override bool Equals(object obj)
@@ -136,7 +136,7 @@ namespace SimPe.Plugin
 				FileIndexItem fii = (FileIndexItem)obj;
 				if (fii.FileDescriptor == null)
 				{
-					return this.FileDescriptor == null;
+					return FileDescriptor == null;
 				}
 
 				if (fii.LocalGroup != LocalGroup)
@@ -144,7 +144,7 @@ namespace SimPe.Plugin
 					return false;
 				}
 
-				bool res = fii.FileDescriptor.Equals(this.FileDescriptor);
+				bool res = fii.FileDescriptor.Equals(FileDescriptor);
 
 				//null Values for Packages
 				if (fii.Package == null)
@@ -170,7 +170,7 @@ namespace SimPe.Plugin
 					else return true;
 				} else if (Package.FileName==null) return false;*/
 
-				return (res && fii.Package.Equals(this.Package));
+				return (res && fii.Package.Equals(Package));
 			}
 			else
 			{
@@ -184,13 +184,13 @@ namespace SimPe.Plugin
 		/// <returns></returns>
 		public string GetLongHashCode()
 		{
-			string flname = this.Package.FileName;
+			string flname = Package.FileName;
 			if (flname == null)
 			{
 				flname = "";
 			}
 
-			return this.FileDescriptor.ToString() + "-" + flname;
+			return FileDescriptor.ToString() + "-" + flname;
 		}
 
 		#region IComparer Member
@@ -216,8 +216,8 @@ namespace SimPe.Plugin
 
 		public void Dispose()
 		{
-			this.FileDescriptor = null;
-			this.Package = null;
+			FileDescriptor = null;
+			Package = null;
 		}
 	}
 
@@ -278,7 +278,7 @@ namespace SimPe.Plugin
 			return false;
 		}
 
-		public int Length => this.Count;
+		public int Length => Count;
 
 		public override void Sort()
 		{
@@ -374,11 +374,11 @@ namespace SimPe.Plugin
 		public IScenegraphFileIndex Clone()
 		{
 			FileIndex ret = new FileIndex(new ArrayList());
-			ret.index = (Hashtable)this.index.Clone();
-			ret.BaseFolders = (ArrayList)this.BaseFolders.Clone();
-			ret.addedfilenames = (ArrayList)this.addedfilenames.Clone();
-			ret.Duplicates = this.Duplicates;
-			ret.Loaded = this.Loaded;
+			ret.index = (Hashtable)index.Clone();
+			ret.BaseFolders = (ArrayList)BaseFolders.Clone();
+			ret.addedfilenames = (ArrayList)addedfilenames.Clone();
+			ret.Duplicates = Duplicates;
+			ret.Loaded = Loaded;
 
 			return ret;
 		}
@@ -395,8 +395,8 @@ namespace SimPe.Plugin
 		/// </summary>
 		public void StoreCurrentState()
 		{
-			oldnames = (ArrayList)this.addedfilenames.Clone();
-			oldindex = (Hashtable)this.index.Clone();
+			oldnames = (ArrayList)addedfilenames.Clone();
+			oldindex = (Hashtable)index.Clone();
 			olddup = Duplicates;
 		}
 
@@ -419,7 +419,7 @@ namespace SimPe.Plugin
 			oldnames = null;
 			oldindex = null;
 
-			this.PrepareAllForAdd();
+			PrepareAllForAdd();
 		}
 
 		#endregion
@@ -490,7 +490,7 @@ namespace SimPe.Plugin
 				folders = FileTableBase.DefaultFolders;
 			}
 
-			this.BaseFolders = folders;
+			BaseFolders = folders;
 		}
 
 		/// <summary>
@@ -591,8 +591,8 @@ namespace SimPe.Plugin
 			Wait.Message = Localization.GetString("Loading") + " Group Cache";
 			WrapperFactory.LoadGroupCache();
 
-			this.Clear();
-			this.LoadIgnoredFiles();
+			Clear();
+			LoadIgnoredFiles();
 
 			int ct = 0;
 			foreach (FileTableItem fti in BaseFolders)
@@ -728,7 +728,7 @@ namespace SimPe.Plugin
 		/// <remarks>Updates the WaitingScreen Message</remarks>
 		public void AddIndexFromPackage(string file)
 		{
-			if (this.ignoredfl.Contains(file.Trim().ToLower()))
+			if (ignoredfl.Contains(file.Trim().ToLower()))
 			{
 				return;
 			}
@@ -777,7 +777,7 @@ namespace SimPe.Plugin
 			package.Persistent = true;
 			if (package.FileName != null)
 			{
-				if ((this.Contains(package.FileName.Trim().ToLower())) && !overwrite)
+				if ((Contains(package.FileName.Trim().ToLower())) && !overwrite)
 				{
 					return;
 				}
@@ -815,7 +815,7 @@ namespace SimPe.Plugin
 			package.Persistent = true;
 			if (package.FileName != null)
 			{
-				if ((this.Contains(package.FileName.Trim().ToLower())) && !overwrite)
+				if ((Contains(package.FileName.Trim().ToLower())) && !overwrite)
 				{
 					return;
 				}
@@ -873,8 +873,8 @@ namespace SimPe.Plugin
 		/// </summary>
 		public void Clear()
 		{
-			this.paths.Clear();
-			this.addedfilenames.Clear();
+			paths.Clear();
+			addedfilenames.Clear();
 			/*if (parent!=null)
 			{
 				foreach (string s in parent.addedfilenames)
@@ -1596,7 +1596,7 @@ namespace SimPe.Plugin
 		)
 		{
 			IScenegraphFileIndexItem[] list;
-			list = this.FindFile(pfd, pkg);
+			list = FindFile(pfd, pkg);
 
 			//something is wrong with the Link, try to be tolerant
 			if (list.Length == 0)
@@ -1605,7 +1605,7 @@ namespace SimPe.Plugin
 				for (int i = 0; i < alternaiveGroups.Count; i++)
 				{
 					pfd.Group = (uint)alternaiveGroups[i];
-					list = this.FindFile(pfd, pkg);
+					list = FindFile(pfd, pkg);
 					if (list.Length > 0)
 					{
 						break;
@@ -1615,7 +1615,7 @@ namespace SimPe.Plugin
 				//ignor Group andd look for any Files with that Instance
 				if (list.Length == 0)
 				{
-					list = this.FindFileDiscardingGroup(pfd);
+					list = FindFileDiscardingGroup(pfd);
 				}
 			}
 
@@ -1744,7 +1744,7 @@ namespace SimPe.Plugin
 				bool close = true;
 				if (childs != null)
 				{
-					foreach (FileIndex fi in this.childs)
+					foreach (FileIndex fi in childs)
 					{
 						if (fi.addedfilenames.Contains(file))
 						{
@@ -1759,13 +1759,13 @@ namespace SimPe.Plugin
 				}
 			}
 
-			this.Clear();
+			Clear();
 		}
 
 		#region Handle FileTableChains
 		public bool Contains(Interfaces.Files.IPackageFile pkg)
 		{
-			return this.Contains(pkg.SaveFileName);
+			return Contains(pkg.SaveFileName);
 		}
 
 		public bool Contains(string flname)
@@ -1841,10 +1841,10 @@ namespace SimPe.Plugin
 			}
 			catch { }
 
-			this.index = null;
-			this.oldindex = null;
-			this.addedfilenames = null;
-			this.oldnames = null;
+			index = null;
+			oldindex = null;
+			addedfilenames = null;
+			oldnames = null;
 
 			base.Dispose();
 		}

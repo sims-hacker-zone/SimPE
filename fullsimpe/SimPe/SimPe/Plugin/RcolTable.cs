@@ -13,11 +13,11 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				return this.List[index] as Rcol;
+				return List[index] as Rcol;
 			}
 			set
 			{
-				this.List[index] = value;
+				List[index] = value;
 			}
 		}
 
@@ -27,12 +27,12 @@ namespace SimPe.Plugin
 
 		public int Add(Rcol rcol)
 		{
-			return this.List.Add(rcol);
+			return List.Add(rcol);
 		}
 
 		public void AddRange(Rcol[] rcols)
 		{
-			this.InnerList.AddRange(rcols);
+			InnerList.AddRange(rcols);
 		}
 
 		public Rcol FindByReference(string reference)
@@ -43,7 +43,7 @@ namespace SimPe.Plugin
 
 		public Rcol FindByReference(ResourceReference reference)
 		{
-			foreach (Rcol rcol in this.List)
+			foreach (Rcol rcol in List)
 			{
 				if (rcol.FileDescriptor != null)
 				{
@@ -62,7 +62,7 @@ namespace SimPe.Plugin
 
 		public Rcol FindByInstance(uint instance)
 		{
-			foreach (Rcol rcol in this.List)
+			foreach (Rcol rcol in List)
 			{
 				if (rcol.FileDescriptor != null)
 				{
@@ -80,7 +80,7 @@ namespace SimPe.Plugin
 		{
 			ArrayList ret = new ArrayList();
 
-			foreach (Rcol rcol in this.List)
+			foreach (Rcol rcol in List)
 			{
 				ret.Add(rcol.FileDescriptor);
 			}
@@ -90,7 +90,7 @@ namespace SimPe.Plugin
 
 		public void SynchronizeAll()
 		{
-			foreach (Rcol rcol in this.List)
+			foreach (Rcol rcol in List)
 			{
 				rcol.SynchronizeUserData();
 			}

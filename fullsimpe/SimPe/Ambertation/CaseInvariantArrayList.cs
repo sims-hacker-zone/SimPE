@@ -65,7 +65,7 @@ namespace Ambertation
 			{
 				string s = (string)obj;
 				s = s.ToLower();
-				for (int k = 0; k < this.Count; k++)
+				for (int k = 0; k < Count; k++)
 				{
 					object i = this[k];
 					if (i == null)

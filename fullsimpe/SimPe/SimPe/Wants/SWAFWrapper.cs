@@ -391,7 +391,7 @@ namespace SimPe.Wants
 		{
 			ExtSDesc sdsc =
 				FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
-					(ushort)this.FileDescriptor.Instance
+					(ushort)FileDescriptor.Instance
 				) as ExtSDesc;
 			if (sdsc == null)
 			{
@@ -462,7 +462,7 @@ namespace SimPe.Wants
 		public void Add(uint key, List<SWAFItem> value)
 		{
 			history.Add(key, value);
-			this.OnWrapperChanged(this, new EventArgs());
+			OnWrapperChanged(this, new EventArgs());
 		}
 
 		public bool ContainsKey(uint key)
@@ -475,7 +475,7 @@ namespace SimPe.Wants
 		public bool Remove(uint key)
 		{
 			bool res = history.Remove(key);
-			this.OnWrapperChanged(this, new EventArgs());
+			OnWrapperChanged(this, new EventArgs());
 			return res;
 		}
 
@@ -938,7 +938,7 @@ namespace SimPe.Wants
 				throw new ArgumentOutOfRangeException("type");
 			}
 
-			this.ItemType = type;
+			ItemType = type;
 		}
 
 		internal SWAFItem(
@@ -953,7 +953,7 @@ namespace SimPe.Wants
 				throw new ArgumentOutOfRangeException("type");
 			}
 
-			this.ItemType = type;
+			ItemType = type;
 			Unserialize(reader);
 		}
 

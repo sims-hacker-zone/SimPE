@@ -67,14 +67,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.lb = new System.Windows.Forms.ListBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-			this.SuspendLayout();
+			lb = new System.Windows.Forms.ListBox();
+			label1 = new System.Windows.Forms.Label();
+			linkLabel1 = new System.Windows.Forms.LinkLabel();
+			SuspendLayout();
 			//
 			// lb
 			//
-			this.lb.Anchor = (
+			lb.Anchor = (
 				(System.Windows.Forms.AnchorStyles)(
 					(
 						(
@@ -86,18 +86,18 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.lb.HorizontalScrollbar = true;
-			this.lb.IntegralHeight = false;
-			this.lb.Location = new System.Drawing.Point(8, 40);
-			this.lb.Name = "lb";
-			this.lb.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-			this.lb.Size = new System.Drawing.Size(232, 200);
-			this.lb.Sorted = true;
-			this.lb.TabIndex = 0;
+			lb.HorizontalScrollbar = true;
+			lb.IntegralHeight = false;
+			lb.Location = new System.Drawing.Point(8, 40);
+			lb.Name = "lb";
+			lb.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+			lb.Size = new System.Drawing.Size(232, 200);
+			lb.Sorted = true;
+			lb.TabIndex = 0;
 			//
 			// label1
 			//
-			this.label1.Anchor = (
+			label1.Anchor = (
 				(System.Windows.Forms.AnchorStyles)(
 					(
 						(
@@ -107,17 +107,17 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-			this.label1.Location = new System.Drawing.Point(8, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(224, 32);
-			this.label1.TabIndex = 1;
-			this.label1.Text =
+			label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+			label1.Location = new System.Drawing.Point(8, 8);
+			label1.Name = "label1";
+			label1.Size = new System.Drawing.Size(224, 32);
+			label1.TabIndex = 1;
+			label1.Text =
 				"Select the SubSet you want to create a new Colour Option for.";
 			//
 			// linkLabel1
 			//
-			this.linkLabel1.Anchor = (
+			linkLabel1.Anchor = (
 				(System.Windows.Forms.AnchorStyles)(
 					(
 						System.Windows.Forms.AnchorStyles.Bottom
@@ -125,48 +125,48 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.linkLabel1.AutoSize = true;
-			this.linkLabel1.Font = new System.Drawing.Font(
+			linkLabel1.AutoSize = true;
+			linkLabel1.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.linkLabel1.Location = new System.Drawing.Point(197, 240);
-			this.linkLabel1.Name = "linkLabel1";
-			this.linkLabel1.Size = new System.Drawing.Size(43, 17);
-			this.linkLabel1.TabIndex = 2;
-			this.linkLabel1.TabStop = true;
-			this.linkLabel1.Text = "Select";
-			this.linkLabel1.LinkClicked +=
+			linkLabel1.Location = new System.Drawing.Point(197, 240);
+			linkLabel1.Name = "linkLabel1";
+			linkLabel1.Size = new System.Drawing.Size(43, 17);
+			linkLabel1.TabIndex = 2;
+			linkLabel1.TabStop = true;
+			linkLabel1.Text = "Select";
+			linkLabel1.LinkClicked +=
 				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
-					this.linkLabel1_LinkClicked
+					linkLabel1_LinkClicked
 				);
 			//
 			// Listing
 			//
-			this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
-			this.ClientSize = new System.Drawing.Size(248, 270);
-			this.Controls.Add(this.linkLabel1);
-			this.Controls.Add(this.label1);
-			this.Controls.Add(this.lb);
-			this.Font = new System.Drawing.Font(
+			AutoScaleBaseSize = new System.Drawing.Size(6, 14);
+			ClientSize = new System.Drawing.Size(248, 270);
+			Controls.Add(linkLabel1);
+			Controls.Add(label1);
+			Controls.Add(lb);
+			Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.FormBorderStyle = System
+			FormBorderStyle = System
 				.Windows
 				.Forms
 				.FormBorderStyle
 				.SizableToolWindow;
-			this.Name = "Listing";
-			this.ShowInTaskbar = false;
-			this.Text = "Listing";
-			this.ResumeLayout(false);
+			Name = "Listing";
+			ShowInTaskbar = false;
+			Text = "Listing";
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -182,7 +182,7 @@ namespace SimPe.Plugin
 				lb.SelectedIndex = 0;
 			}
 
-			this.ShowDialog();
+			ShowDialog();
 
 			WorkshopMMAT[] str;
 			if (lb.SelectedItems.Count > 0)
@@ -212,7 +212,7 @@ namespace SimPe.Plugin
 				lb.SelectedIndex = 0;
 			}
 
-			this.ShowDialog();
+			ShowDialog();
 
 			string[] str;
 			if (lb.SelectedItems.Count > 0)

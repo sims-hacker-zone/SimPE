@@ -62,8 +62,8 @@ namespace pjse
 			)
 				: base()
 			{
-				this.Item = item;
-				this.ExpansionItem = exp;
+				Item = item;
+				ExpansionItem = exp;
 			}
 		}
 
@@ -94,7 +94,7 @@ namespace pjse
 		{
 			if (wrapper != null)
 			{
-				this.cmenuCompare.Show((Control)sender, new Point(3, 3));
+				cmenuCompare.Show((Control)sender, new Point(3, 3));
 			}
 		}
 
@@ -142,7 +142,7 @@ namespace pjse
 				{
 					MessageBox.Show(
 						Localization.GetString("cmpNFCurrent", WrapperName),
-						this.Text,
+						Text,
 						MessageBoxButtons.OK,
 						MessageBoxIcon.Stop
 					);
@@ -176,7 +176,7 @@ namespace pjse
 				{
 					MessageBox.Show(
 						Localization.GetString("cmpNFExp", WrapperName, exp.Name),
-						this.Text,
+						Text,
 						MessageBoxButtons.OK,
 						MessageBoxIcon.Stop
 					);

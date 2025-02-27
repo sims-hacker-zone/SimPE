@@ -318,7 +318,7 @@ namespace pjse.BhavOperandWizards.WizBhav
 		}
 
 		#region iBhavOperandWizForm
-		public Panel WizPanel => this.pnWizBhav;
+		public Panel WizPanel => pnWizBhav;
 
 		public void Execute(Instruction inst)
 		{
@@ -346,22 +346,22 @@ namespace pjse.BhavOperandWizards.WizBhav
 				tprp = (TPRP)wrapper.SiblingResource(TPRP.TPRPtype);
 				nrArgs = wrapper.Header.ArgumentCount;
 
-				this.lbBhavName.Text =
+				lbBhavName.Text =
 					"0x"
 					+ SimPe.Helper.HexString(inst.OpCode)
 					+ ": "
 					+ wrapper.FileName;
-				this.lbArgC.Text = "0x" + SimPe.Helper.HexString(nrArgs);
+				lbArgC.Text = "0x" + SimPe.Helper.HexString(nrArgs);
 			}
 			else
 			{
-				this.lbBhavName.Text =
+				lbBhavName.Text =
 					"0x"
 					+ SimPe.Helper.HexString(inst.OpCode)
 					+ ": ["
 					+ Localization.GetString("bhavnotfound")
 					+ "]";
-				this.lbArgC.Text = "(???)";
+				lbArgC.Text = "(???)";
 			}
 
 			operands = new byte[16];

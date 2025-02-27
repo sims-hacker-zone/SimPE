@@ -55,7 +55,7 @@ namespace SimPe.Plugin.Tool.Action
 					Localization.GetString(
 						"This is not an appropriate context in which to use this tool"
 					),
-					Localization.GetString(this.ToString())
+					Localization.GetString(ToString())
 				);
 				return;
 			}

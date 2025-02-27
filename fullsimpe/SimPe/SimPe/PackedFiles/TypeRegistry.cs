@@ -125,13 +125,13 @@ namespace SimPe.PackedFiles
 
 			WrapperImageList.Images.Add(
 				System.Drawing.Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.empty.png")
 				)
 			);
 			WrapperImageList.Images.Add(
 				System.Drawing.Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.binary.png")
 				)
 			);
@@ -303,7 +303,7 @@ namespace SimPe.PackedFiles
 		/// <returns>The assigned Handler or null if none was found</returns>
 		public IPackedFileWrapper FindHandler(uint type)
 		{
-			IWrapper[] wrappers = this.Wrappers;
+			IWrapper[] wrappers = Wrappers;
 			foreach (IFileWrapper h in wrappers)
 			{
 				foreach (uint atype in h.AssignableTypes)
@@ -329,7 +329,7 @@ namespace SimPe.PackedFiles
 		/// </remarks>
 		public IFileWrapper FindHandler(Byte[] data)
 		{
-			IWrapper[] wrappers = this.Wrappers;
+			IWrapper[] wrappers = Wrappers;
 			foreach (IFileWrapper h in wrappers)
 			{
 				if (h.FileSignature == null)
@@ -578,7 +578,7 @@ namespace SimPe.PackedFiles
 		{
 			if (topic != null && !helptopics.Contains(topic))
 			{
-				this.helptopics.Add(topic);
+				helptopics.Add(topic);
 			}
 		}
 

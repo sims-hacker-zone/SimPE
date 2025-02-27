@@ -83,7 +83,7 @@ namespace SimPe.Interfaces.Plugin
 			}
 		}
 
-		public string FileName => this.GetType().Assembly.FullName;
+		public string FileName => GetType().Assembly.FullName;
 
 		#endregion
 	}

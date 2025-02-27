@@ -91,34 +91,34 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.cb = new System.Windows.Forms.ComboBox();
-			this.SuspendLayout();
+			cb = new System.Windows.Forms.ComboBox();
+			SuspendLayout();
 			//
 			// cb
 			//
-			this.cb.Dock = System.Windows.Forms.DockStyle.Top;
-			this.cb.Font = new System.Drawing.Font(
+			cb.Dock = System.Windows.Forms.DockStyle.Top;
+			cb.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cb.Location = new System.Drawing.Point(0, 0);
-			this.cb.Name = "cb";
-			this.cb.Size = new System.Drawing.Size(150, 21);
-			this.cb.TabIndex = 0;
-			this.cb.TextChanged += new EventHandler(this.cb_TextChanged);
-			this.cb.SelectedIndexChanged += new EventHandler(
-				this.cb_SelectedIndexChanged
+			cb.Location = new System.Drawing.Point(0, 0);
+			cb.Name = "cb";
+			cb.Size = new System.Drawing.Size(150, 21);
+			cb.TabIndex = 0;
+			cb.TextChanged += new EventHandler(cb_TextChanged);
+			cb.SelectedIndexChanged += new EventHandler(
+				cb_SelectedIndexChanged
 			);
 			//
 			// ObjectComboBox
 			//
-			this.Controls.Add(this.cb);
-			this.Name = "ObjectComboBox";
-			this.Size = new System.Drawing.Size(150, 24);
-			this.ResumeLayout(false);
+			Controls.Add(cb);
+			Name = "ObjectComboBox";
+			Size = new System.Drawing.Size(150, 24);
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -132,7 +132,7 @@ namespace SimPe.PackedFiles.Wrapper
 					return;
 				}
 
-				if (this.DesignMode)
+				if (DesignMode)
 				{
 					return;
 				}
@@ -143,7 +143,7 @@ namespace SimPe.PackedFiles.Wrapper
 				{
 					bool use = false;
 					if (
-						this.ShowInventory
+						ShowInventory
 						&& mci.IsInventory
 						&& !mci.IsToken
 						&& !mci.IsMemory
@@ -153,32 +153,32 @@ namespace SimPe.PackedFiles.Wrapper
 						use = true;
 					}
 
-					if (this.ShowTokens && mci.IsToken)
+					if (ShowTokens && mci.IsToken)
 					{
 						use = true;
 					}
 
-					if (this.ShowMemories && !mci.IsToken && mci.IsMemory)
+					if (ShowMemories && !mci.IsToken && mci.IsMemory)
 					{
 						use = true;
 					}
 
-					if (this.ShowJobData && mci.IsJobData)
+					if (ShowJobData && mci.IsJobData)
 					{
 						use = true;
 					}
 
-					if (this.ShowAspiration && mci.IsAspiration)
+					if (ShowAspiration && mci.IsAspiration)
 					{
 						use = true;
 					}
 
-					if (this.ShowBadge && mci.IsBadge)
+					if (ShowBadge && mci.IsBadge)
 					{
 						use = true;
 					}
 
-					if (this.ShowSkill && mci.IsSkill)
+					if (ShowSkill && mci.IsSkill)
 					{
 						use = true;
 					}

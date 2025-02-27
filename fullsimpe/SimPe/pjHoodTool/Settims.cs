@@ -74,7 +74,7 @@ namespace pjHoodTool
 			}
 
 			Settings = dun; // Save settings
-			this.Close();
+			Close();
 		}
 
 		internal bool Settings

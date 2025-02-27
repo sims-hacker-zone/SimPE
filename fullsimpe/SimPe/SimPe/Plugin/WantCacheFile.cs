@@ -43,7 +43,7 @@ namespace SimPe.Cache
 		/// <param name="want">The Want File</param>
 		public void AddItem(WantInformation want)
 		{
-			CacheContainer mycc = this.UseConatiner(
+			CacheContainer mycc = UseConatiner(
 				ContainerType.Want,
 				want.XWant.Package.FileName
 			);

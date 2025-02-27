@@ -511,12 +511,12 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			string ret = Name + " (" + Datatype.ToString() + ") = ";
 
-			switch (this.Datatype)
+			switch (Datatype)
 			{
 				case MetaData.DataTypes.dtUInteger:
 				case MetaData.DataTypes.dtInteger:
 				{
-					ret += "0x" + Helper.HexString(this.UIntegerValue);
+					ret += "0x" + Helper.HexString(UIntegerValue);
 					break;
 				}
 				default:
@@ -535,10 +535,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public void Dispose()
 		{
-			this.Value = new byte[0];
-			this.Value = null;
-			this.PlainName = new byte[0];
-			this.PlainName = null;
+			Value = new byte[0];
+			Value = null;
+			PlainName = new byte[0];
+			PlainName = null;
 		}
 	}
 }

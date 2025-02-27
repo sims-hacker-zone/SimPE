@@ -76,7 +76,7 @@ namespace SimPe.Geometry
 			}
 			else if (p == QuaternionParameterType.UnitAxisAngle)
 			{
-				this.SetFromAxisAngle(new Vector3f(x, y, z), w);
+				SetFromAxisAngle(new Vector3f(x, y, z), w);
 			}
 		}
 
@@ -98,7 +98,7 @@ namespace SimPe.Geometry
 			}
 			else if (p == QuaternionParameterType.UnitAxisAngle)
 			{
-				this.SetFromAxisAngle(v, a);
+				SetFromAxisAngle(v, a);
 			}
 		}
 
@@ -130,15 +130,15 @@ namespace SimPe.Geometry
 		/// </summary>
 		public Quaternion Conjugate => new Quaternion(
 					QuaternionParameterType.ImaginaryReal,
-					-1 * this.Imaginary,
-					this.W
+					-1 * Imaginary,
+					W
 				);
 
 #if DEBUG
 		/// <summary>
 		/// returns the Euler Angles
 		/// </summary>
-		public Vector3f Euler => this.GetEulerAngles();
+		public Vector3f Euler => GetEulerAngles();
 
 		public bool IsComplex(double z)
 		{
@@ -206,7 +206,7 @@ namespace SimPe.Geometry
 		/// <returns>Inverted Quaternion</returns>
 		public new Quaternion GetInverse()
 		{
-			return Conjugate * (double)(1.0 / this.Norm);
+			return Conjugate * (double)(1.0 / Norm);
 		}
 
 		/// <summary>
@@ -427,7 +427,7 @@ namespace SimPe.Geometry
 			get
 			{
 				MakeRobust();
-				this.MakeUnitQuaternion();
+				MakeUnitQuaternion();
 				//if (W==0) return 0;
 				return (double)(Math.Acos(W) * 2.0);
 			}
@@ -441,7 +441,7 @@ namespace SimPe.Geometry
 			get
 			{
 				MakeRobust();
-				this.MakeUnitQuaternion();
+				MakeUnitQuaternion();
 				//if (W==0) return new Vector3f(0, 0, 1);
 				double sina = Math.Sqrt(1 - Math.Pow(W, 2)); //(double)Math.Sin(Angle/2.0);
 
@@ -470,12 +470,12 @@ namespace SimPe.Geometry
 
 			W = (double)Math.Cos(a / 2.0);
 			MakeRobust();
-			this.MakeUnitQuaternion();
+			MakeUnitQuaternion();
 		}
 
 		public Vector3f GetEulerAngles()
 		{
-			Quaternion q = this.Clone();
+			Quaternion q = Clone();
 			q.DoMakeRobust();
 			Vector3f v = q.GetEulerAnglesZYX();
 
@@ -510,7 +510,7 @@ namespace SimPe.Geometry
 		/// </remarks>
 		public Vector3f GetEulerAnglesYXZ()
 		{
-			Matrixd m = this.Matrix;
+			Matrixd m = Matrix;
 			Vector3f v = new Vector3f(0, 0, 0);
 
 			v.X = Math.Asin(-Clip1(m[1, 2]));
@@ -544,7 +544,7 @@ namespace SimPe.Geometry
 		/// </remarks>
 		public Vector3f GetEulerAnglesZXY()
 		{
-			Matrixd m = this.Matrix;
+			Matrixd m = Matrix;
 			Vector3f v = new Vector3f(0, 0, 0);
 
 			v.X = Math.Asin(m[2, 1]);
@@ -578,7 +578,7 @@ namespace SimPe.Geometry
 		/// </remarks>
 		public Vector3f GetEulerAnglesZYX()
 		{
-			Matrixd m = this.Matrix;
+			Matrixd m = Matrix;
 			Vector3f v = new Vector3f(0, 0, 0);
 
 			v.Y = Math.Asin(-m[2, 0]);
@@ -807,7 +807,7 @@ namespace SimPe.Geometry
 				v.Z,
 				0
 			);
-			vq = this * vq * this.Conjugate;
+			vq = this * vq * Conjugate;
 			return new Vector3f(vq.X, vq.Y, vq.Z);
 
 			//SimPe.Geometry.Vector4f v4 = new SimPe.Geometry.Vector4f(v.X, v.Y, v.Z, 0);
@@ -823,10 +823,10 @@ namespace SimPe.Geometry
 		{
 			Quaternion q = new Quaternion(
 				QuaternionParameterType.ImaginaryReal,
-				this.X,
-				this.Y,
-				this.Z,
-				this.W
+				X,
+				Y,
+				Z,
+				W
 			);
 			return q;
 		}
@@ -842,7 +842,7 @@ namespace SimPe.Geometry
 			get
 			{
 				MakeRobust();
-				this.MakeUnitQuaternion();
+				MakeUnitQuaternion();
 
 				Matrixd m = new Matrixd(4, 4);
 				double sx = Math.Pow(X, 2);
@@ -983,7 +983,7 @@ namespace SimPe.Geometry
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length => this.Count;
+		public int Length => Count;
 
 		/// <summary>
 		/// Create a clone of this Object

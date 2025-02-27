@@ -61,10 +61,10 @@ namespace SimPe.Plugin
 			biDebug.Visible = Helper.WindowsRegistry.HiddenMode;
 			if (!Helper.WindowsRegistry.HiddenMode)
 			{
-				this.menu.Items.Remove(this.miFix);
+				menu.Items.Remove(miFix);
 			}
 
-			this.SelectButton(biSim);
+			SelectButton(biSim);
 
 			biBadge.Enabled = (
 				PathProvider.Global.EPInstalled >= 3
@@ -90,11 +90,11 @@ namespace SimPe.Plugin
 
 				if (st == Data.NeighborhoodSlots.SimsIntern && biBadge.Enabled)
 				{
-					this.ChoosePage(biBadge, null);
+					ChoosePage(biBadge, null);
 				}
 				else
 				{
-					this.ChoosePage(biSim, null);
+					ChoosePage(biSim, null);
 				}
 
 				PackedFiles.Wrapper.ExtSDesc sdesc =
@@ -150,111 +150,111 @@ namespace SimPe.Plugin
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new Container();
+			components = new Container();
 			ComponentResourceManager resources =
 				new ComponentResourceManager(typeof(ExtNgbhUI));
-			this.pnSims = new Panel();
-			this.menuBar1 = new MenuStrip();
-			this.spc = new PackedFiles.Wrapper.SimPoolControl();
-			this.menu = new ContextMenuStrip(this.components);
-			this.miNuke = new ToolStripMenuItem();
-			this.miFix = new ToolStripMenuItem();
-			this.simslot = new NgbhSlotUI();
-			this.pnDebug = new Panel();
-			this.nsui = new NgbhSlotUI();
-			this.nssel = new NgbhSlotSelection();
-			this.pnBadge = new Panel();
-			this.shelper = new NgbhSkillHelper();
-			this.toolBar1 = new ToolStrip();
-			this.biSim = new ToolStripButton();
-			this.biBadge = new ToolStripButton();
-			this.biDebug = new ToolStripButton();
-			this.pnSims.SuspendLayout();
-			this.menu.SuspendLayout();
-			this.pnDebug.SuspendLayout();
-			this.pnBadge.SuspendLayout();
-			this.toolBar1.SuspendLayout();
-			this.SuspendLayout();
+			pnSims = new Panel();
+			menuBar1 = new MenuStrip();
+			spc = new PackedFiles.Wrapper.SimPoolControl();
+			menu = new ContextMenuStrip(components);
+			miNuke = new ToolStripMenuItem();
+			miFix = new ToolStripMenuItem();
+			simslot = new NgbhSlotUI();
+			pnDebug = new Panel();
+			nsui = new NgbhSlotUI();
+			nssel = new NgbhSlotSelection();
+			pnBadge = new Panel();
+			shelper = new NgbhSkillHelper();
+			toolBar1 = new ToolStrip();
+			biSim = new ToolStripButton();
+			biBadge = new ToolStripButton();
+			biDebug = new ToolStripButton();
+			pnSims.SuspendLayout();
+			menu.SuspendLayout();
+			pnDebug.SuspendLayout();
+			pnBadge.SuspendLayout();
+			toolBar1.SuspendLayout();
+			SuspendLayout();
 			//
 			// pnSims
 			//
-			this.pnSims.BackColor = System.Drawing.Color.Transparent;
-			this.pnSims.Controls.Add(this.menuBar1);
-			this.pnSims.Controls.Add(this.spc);
-			this.pnSims.Controls.Add(this.simslot);
-			this.pnSims.Dock = DockStyle.Fill;
-			this.pnSims.Location = new System.Drawing.Point(0, 76);
-			this.pnSims.Name = "pnSims";
-			this.pnSims.Size = new System.Drawing.Size(680, 292);
-			this.pnSims.TabIndex = 1;
-			this.pnSims.Visible = false;
+			pnSims.BackColor = System.Drawing.Color.Transparent;
+			pnSims.Controls.Add(menuBar1);
+			pnSims.Controls.Add(spc);
+			pnSims.Controls.Add(simslot);
+			pnSims.Dock = DockStyle.Fill;
+			pnSims.Location = new System.Drawing.Point(0, 76);
+			pnSims.Name = "pnSims";
+			pnSims.Size = new System.Drawing.Size(680, 292);
+			pnSims.TabIndex = 1;
+			pnSims.Visible = false;
 			//
 			// menuBar1
 			//
-			this.menuBar1.Location = new System.Drawing.Point(264, 0);
-			this.menuBar1.Name = "menuBar1";
-			this.menuBar1.Size = new System.Drawing.Size(416, 21);
-			this.menuBar1.TabIndex = 5;
-			this.menuBar1.Text = "menuBar1";
-			this.menuBar1.Visible = false;
+			menuBar1.Location = new System.Drawing.Point(264, 0);
+			menuBar1.Name = "menuBar1";
+			menuBar1.Size = new System.Drawing.Size(416, 21);
+			menuBar1.TabIndex = 5;
+			menuBar1.Text = "menuBar1";
+			menuBar1.Visible = false;
 			//
 			// spc
 			//
-			this.spc.BackColor = System.Drawing.Color.White;
-			this.spc.ContextMenuStrip = this.menu;
-			this.spc.Dock = DockStyle.Left;
-			this.spc.Font = new System.Drawing.Font("Tahoma", 8.25F);
-			this.spc.Location = new System.Drawing.Point(0, 0);
-			this.spc.Name = "spc";
-			this.spc.Package = null;
-			this.spc.Padding = new Padding(1);
-			this.spc.RightClickSelect = false;
-			this.spc.SelectedElement = null;
-			this.spc.SelectedSim = null;
-			this.spc.SimDetails = false;
-			this.spc.Size = new System.Drawing.Size(264, 292);
-			this.spc.TabIndex = 0;
-			this.spc.TileColumns = new int[] { 1 };
-			this.spc.SelectedSimChanged +=
+			spc.BackColor = System.Drawing.Color.White;
+			spc.ContextMenuStrip = menu;
+			spc.Dock = DockStyle.Left;
+			spc.Font = new System.Drawing.Font("Tahoma", 8.25F);
+			spc.Location = new System.Drawing.Point(0, 0);
+			spc.Name = "spc";
+			spc.Package = null;
+			spc.Padding = new Padding(1);
+			spc.RightClickSelect = false;
+			spc.SelectedElement = null;
+			spc.SelectedSim = null;
+			spc.SimDetails = false;
+			spc.Size = new System.Drawing.Size(264, 292);
+			spc.TabIndex = 0;
+			spc.TileColumns = new int[] { 1 };
+			spc.SelectedSimChanged +=
 				new PackedFiles.Wrapper.SimPoolControl.SelectedSimHandler(
-					this.spc_SelectedSimChanged
+					spc_SelectedSimChanged
 				);
 			//
 			// menu
 			//
-			this.menu.Items.AddRange(
-				new ToolStripItem[] { this.miNuke, this.miFix }
+			menu.Items.AddRange(
+				new ToolStripItem[] { miNuke, miFix }
 			);
-			this.menu.Name = "menu";
-			this.menu.Size = new System.Drawing.Size(158, 48);
-			this.menu.Text = "(context menu)";
-			this.menu.VisibleChanged += new EventHandler(
-				this.menu_VisibleChanged
+			menu.Name = "menu";
+			menu.Size = new System.Drawing.Size(158, 48);
+			menu.Text = "(context menu)";
+			menu.VisibleChanged += new EventHandler(
+				menu_VisibleChanged
 			);
 			//
 			// miNuke
 			//
-			this.miNuke.Image = (
+			miNuke.Image = (
 				(System.Drawing.Image)(resources.GetObject("miNuke.Image"))
 			);
-			this.miNuke.Name = "miNuke";
-			this.miNuke.Size = new System.Drawing.Size(157, 22);
-			this.miNuke.Text = "Nuke Memories";
-			this.miNuke.Click += new EventHandler(this.miNuke_Activate);
+			miNuke.Name = "miNuke";
+			miNuke.Size = new System.Drawing.Size(157, 22);
+			miNuke.Text = "Nuke Memories";
+			miNuke.Click += new EventHandler(miNuke_Activate);
 			//
 			// miFix
 			//
-			this.miFix.Image = (
+			miFix.Image = (
 				(System.Drawing.Image)(resources.GetObject("miFix.Image"))
 			);
-			this.miFix.Name = "miFix";
-			this.miFix.Size = new System.Drawing.Size(157, 22);
-			this.miFix.Text = "Fix Memories";
-			this.miFix.Click += new EventHandler(this.miFix_Activate);
+			miFix.Name = "miFix";
+			miFix.Size = new System.Drawing.Size(157, 22);
+			miFix.Text = "Fix Memories";
+			miFix.Click += new EventHandler(miFix_Activate);
 			//
 			// simslot
 			//
-			this.simslot.Anchor = (
+			simslot.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -266,30 +266,30 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.simslot.Font = new System.Drawing.Font("Tahoma", 8.25F);
-			this.simslot.Location = new System.Drawing.Point(264, 0);
-			this.simslot.Name = "simslot";
-			this.simslot.NgbhResource = null;
-			this.simslot.SimPoolControl = this.spc;
-			this.simslot.Size = new System.Drawing.Size(416, 290);
-			this.simslot.Slot = null;
-			this.simslot.SlotType = Data.NeighborhoodSlots.Sims;
-			this.simslot.TabIndex = 2;
+			simslot.Font = new System.Drawing.Font("Tahoma", 8.25F);
+			simslot.Location = new System.Drawing.Point(264, 0);
+			simslot.Name = "simslot";
+			simslot.NgbhResource = null;
+			simslot.SimPoolControl = spc;
+			simslot.Size = new System.Drawing.Size(416, 290);
+			simslot.Slot = null;
+			simslot.SlotType = Data.NeighborhoodSlots.Sims;
+			simslot.TabIndex = 2;
 			//
 			// pnDebug
 			//
-			this.pnDebug.Controls.Add(this.nsui);
-			this.pnDebug.Controls.Add(this.nssel);
-			this.pnDebug.Dock = DockStyle.Fill;
-			this.pnDebug.Location = new System.Drawing.Point(0, 76);
-			this.pnDebug.Name = "pnDebug";
-			this.pnDebug.Size = new System.Drawing.Size(680, 292);
-			this.pnDebug.TabIndex = 3;
-			this.pnDebug.Visible = false;
+			pnDebug.Controls.Add(nsui);
+			pnDebug.Controls.Add(nssel);
+			pnDebug.Dock = DockStyle.Fill;
+			pnDebug.Location = new System.Drawing.Point(0, 76);
+			pnDebug.Name = "pnDebug";
+			pnDebug.Size = new System.Drawing.Size(680, 292);
+			pnDebug.TabIndex = 3;
+			pnDebug.Visible = false;
 			//
 			// nsui
 			//
-			this.nsui.Anchor = (
+			nsui.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -301,21 +301,21 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.nsui.BackColor = System.Drawing.Color.Transparent;
-			this.nsui.Font = new System.Drawing.Font("Tahoma", 8.25F);
-			this.nsui.Location = new System.Drawing.Point(280, 8);
-			this.nsui.Name = "nsui";
-			this.nsui.NgbhResource = null;
-			this.nsui.SimPoolControl = null;
-			this.nsui.tabPage3.Enabled = false;
-			this.nsui.Size = new System.Drawing.Size(392, 276);
-			this.nsui.Slot = null;
-			this.nsui.SlotType = Data.NeighborhoodSlots.Sims;
-			this.nsui.TabIndex = 1;
+			nsui.BackColor = System.Drawing.Color.Transparent;
+			nsui.Font = new System.Drawing.Font("Tahoma", 8.25F);
+			nsui.Location = new System.Drawing.Point(280, 8);
+			nsui.Name = "nsui";
+			nsui.NgbhResource = null;
+			nsui.SimPoolControl = null;
+			nsui.tabPage3.Enabled = false;
+			nsui.Size = new System.Drawing.Size(392, 276);
+			nsui.Slot = null;
+			nsui.SlotType = Data.NeighborhoodSlots.Sims;
+			nsui.TabIndex = 1;
 			//
 			// nssel
 			//
-			this.nssel.Anchor = (
+			nssel.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -325,137 +325,137 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.nssel.Font = new System.Drawing.Font("Tahoma", 8.25F);
-			this.nssel.Location = new System.Drawing.Point(8, 8);
-			this.nssel.Name = "nssel";
-			this.nssel.NgbhResource = null;
-			this.nssel.Size = new System.Drawing.Size(264, 276);
-			this.nssel.TabIndex = 0;
-			this.nssel.SelectedSlotChanged += new EventHandler(
-				this.nssel_SelectedSlotChanged
+			nssel.Font = new System.Drawing.Font("Tahoma", 8.25F);
+			nssel.Location = new System.Drawing.Point(8, 8);
+			nssel.Name = "nssel";
+			nssel.NgbhResource = null;
+			nssel.Size = new System.Drawing.Size(264, 276);
+			nssel.TabIndex = 0;
+			nssel.SelectedSlotChanged += new EventHandler(
+				nssel_SelectedSlotChanged
 			);
 			//
 			// pnBadge
 			//
-			this.pnBadge.Controls.Add(this.shelper);
-			this.pnBadge.Dock = DockStyle.Fill;
-			this.pnBadge.Location = new System.Drawing.Point(0, 76);
-			this.pnBadge.Name = "pnBadge";
-			this.pnBadge.Size = new System.Drawing.Size(680, 292);
-			this.pnBadge.TabIndex = 1;
-			this.pnBadge.VisibleChanged += new EventHandler(
-				this.pnBadge_VisibleChanged
+			pnBadge.Controls.Add(shelper);
+			pnBadge.Dock = DockStyle.Fill;
+			pnBadge.Location = new System.Drawing.Point(0, 76);
+			pnBadge.Name = "pnBadge";
+			pnBadge.Size = new System.Drawing.Size(680, 292);
+			pnBadge.TabIndex = 1;
+			pnBadge.VisibleChanged += new EventHandler(
+				pnBadge_VisibleChanged
 			);
 			//
 			// shelper
 			//
-			this.shelper.BackColor = System.Drawing.Color.Transparent;
-			this.shelper.Dock = DockStyle.Fill;
-			this.shelper.Font = new System.Drawing.Font("Tahoma", 8.25F);
-			this.shelper.Location = new System.Drawing.Point(0, 0);
-			this.shelper.Name = "shelper";
-			this.shelper.NgbhResource = null;
-			this.shelper.Padding = new Padding(8);
-			this.shelper.SimPoolControl = this.spc;
-			this.shelper.Size = new System.Drawing.Size(680, 292);
-			this.shelper.Slot = null;
-			this.shelper.TabIndex = 0;
-			this.shelper.ChangedItem += new EventHandler(
-				this.shelper_ChangedItem
+			shelper.BackColor = System.Drawing.Color.Transparent;
+			shelper.Dock = DockStyle.Fill;
+			shelper.Font = new System.Drawing.Font("Tahoma", 8.25F);
+			shelper.Location = new System.Drawing.Point(0, 0);
+			shelper.Name = "shelper";
+			shelper.NgbhResource = null;
+			shelper.Padding = new Padding(8);
+			shelper.SimPoolControl = spc;
+			shelper.Size = new System.Drawing.Size(680, 292);
+			shelper.Slot = null;
+			shelper.TabIndex = 0;
+			shelper.ChangedItem += new EventHandler(
+				shelper_ChangedItem
 			);
-			this.shelper.AddedNewItem += new EventHandler(
-				this.shelper_AddedNewItem
+			shelper.AddedNewItem += new EventHandler(
+				shelper_AddedNewItem
 			);
 			//
 			// toolBar1
 			//
-			this.toolBar1.Font = new System.Drawing.Font("Tahoma", 8.25F);
-			this.toolBar1.GripStyle = ToolStripGripStyle.Hidden;
-			this.toolBar1.Items.AddRange(
+			toolBar1.Font = new System.Drawing.Font("Tahoma", 8.25F);
+			toolBar1.GripStyle = ToolStripGripStyle.Hidden;
+			toolBar1.Items.AddRange(
 				new ToolStripItem[]
 				{
-					this.biSim,
-					this.biBadge,
-					this.biDebug,
+					biSim,
+					biBadge,
+					biDebug,
 				}
 			);
-			this.toolBar1.Location = new System.Drawing.Point(0, 24);
-			this.toolBar1.Name = "toolBar1";
-			this.toolBar1.Size = new System.Drawing.Size(680, 52);
-			this.toolBar1.TabIndex = 4;
-			this.toolBar1.Text = "toolBar1";
+			toolBar1.Location = new System.Drawing.Point(0, 24);
+			toolBar1.Name = "toolBar1";
+			toolBar1.Size = new System.Drawing.Size(680, 52);
+			toolBar1.TabIndex = 4;
+			toolBar1.Text = "toolBar1";
 			//
 			// biSim
 			//
-			this.biSim.Image = (
+			biSim.Image = (
 				(System.Drawing.Image)(resources.GetObject("biSim.Image"))
 			);
-			this.biSim.ImageScaling =
+			biSim.ImageScaling =
 				ToolStripItemImageScaling
 				.None;
-			this.biSim.Name = "biSim";
-			this.biSim.Size = new System.Drawing.Size(56, 49);
-			this.biSim.Text = "Memories";
-			this.biSim.TextImageRelation =
+			biSim.Name = "biSim";
+			biSim.Size = new System.Drawing.Size(56, 49);
+			biSim.Text = "Memories";
+			biSim.TextImageRelation =
 				TextImageRelation
 				.ImageAboveText;
-			this.biSim.Click += new EventHandler(this.ChoosePage);
+			biSim.Click += new EventHandler(ChoosePage);
 			//
 			// biBadge
 			//
-			this.biBadge.Image = (
+			biBadge.Image = (
 				(System.Drawing.Image)(resources.GetObject("biBadge.Image"))
 			);
-			this.biBadge.ImageScaling =
+			biBadge.ImageScaling =
 				ToolStripItemImageScaling
 				.None;
-			this.biBadge.Name = "biBadge";
-			this.biBadge.Size = new System.Drawing.Size(46, 49);
-			this.biBadge.Text = "Badges";
-			this.biBadge.TextImageRelation =
+			biBadge.Name = "biBadge";
+			biBadge.Size = new System.Drawing.Size(46, 49);
+			biBadge.Text = "Badges";
+			biBadge.TextImageRelation =
 				TextImageRelation
 				.ImageAboveText;
-			this.biBadge.Click += new EventHandler(this.ChoosePage);
+			biBadge.Click += new EventHandler(ChoosePage);
 			//
 			// biDebug
 			//
-			this.biDebug.Image = (
+			biDebug.Image = (
 				(System.Drawing.Image)(resources.GetObject("biDebug.Image"))
 			);
-			this.biDebug.ImageScaling =
+			biDebug.ImageScaling =
 				ToolStripItemImageScaling
 				.None;
-			this.biDebug.Name = "biDebug";
-			this.biDebug.Size = new System.Drawing.Size(42, 49);
-			this.biDebug.Text = "Debug";
-			this.biDebug.TextImageRelation =
+			biDebug.Name = "biDebug";
+			biDebug.Size = new System.Drawing.Size(42, 49);
+			biDebug.Text = "Debug";
+			biDebug.TextImageRelation =
 				TextImageRelation
 				.ImageAboveText;
-			this.biDebug.Click += new EventHandler(this.ChoosePage);
+			biDebug.Click += new EventHandler(ChoosePage);
 			//
 			// ExtNgbhUI
 			//
-			this.Controls.Add(this.pnSims);
-			this.Controls.Add(this.pnBadge);
-			this.Controls.Add(this.pnDebug);
-			this.Controls.Add(this.toolBar1);
-			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-			this.HeaderText = "Sim Memory Editor";
-			this.Name = "ExtNgbhUI";
-			this.Size = new System.Drawing.Size(680, 368);
-			this.Controls.SetChildIndex(this.toolBar1, 0);
-			this.Controls.SetChildIndex(this.pnDebug, 0);
-			this.Controls.SetChildIndex(this.pnBadge, 0);
-			this.Controls.SetChildIndex(this.pnSims, 0);
-			this.pnSims.ResumeLayout(false);
-			this.pnSims.PerformLayout();
-			this.menu.ResumeLayout(false);
-			this.pnDebug.ResumeLayout(false);
-			this.pnBadge.ResumeLayout(false);
-			this.toolBar1.ResumeLayout(false);
-			this.toolBar1.PerformLayout();
-			this.ResumeLayout(false);
-			this.PerformLayout();
+			Controls.Add(pnSims);
+			Controls.Add(pnBadge);
+			Controls.Add(pnDebug);
+			Controls.Add(toolBar1);
+			Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+			HeaderText = "Sim Memory Editor";
+			Name = "ExtNgbhUI";
+			Size = new System.Drawing.Size(680, 368);
+			Controls.SetChildIndex(toolBar1, 0);
+			Controls.SetChildIndex(pnDebug, 0);
+			Controls.SetChildIndex(pnBadge, 0);
+			Controls.SetChildIndex(pnSims, 0);
+			pnSims.ResumeLayout(false);
+			pnSims.PerformLayout();
+			menu.ResumeLayout(false);
+			pnDebug.ResumeLayout(false);
+			pnBadge.ResumeLayout(false);
+			toolBar1.ResumeLayout(false);
+			toolBar1.PerformLayout();
+			ResumeLayout(false);
+			PerformLayout();
 		}
 		#endregion
 
@@ -466,8 +466,8 @@ namespace SimPe.Plugin
 			simslot.NgbhResource = Ngbh;
 			spc_SelectedSimChanged(spc, null, null);
 			spc.Package = Ngbh.Package;
-			this.nssel.NgbhResource = Ngbh;
-			this.shelper.NgbhResource = Ngbh;
+			nssel.NgbhResource = Ngbh;
+			shelper.NgbhResource = Ngbh;
 		}
 
 		public override void OnCommit()
@@ -477,7 +477,7 @@ namespace SimPe.Plugin
 
 		public void SelectButton(ToolStripButton b)
 		{
-			for (int i = 0; i < this.toolBar1.Items.Count; i++)
+			for (int i = 0; i < toolBar1.Items.Count; i++)
 			{
 				if (toolBar1.Items[i] is ToolStripButton)
 				{
@@ -505,11 +505,11 @@ namespace SimPe.Plugin
 
 			if (pnSims.Visible)
 			{
-				pnSims.Controls.Add(this.spc);
+				pnSims.Controls.Add(spc);
 			}
 			else if (pnBadge.Visible)
 			{
-				pnBadge.Controls.Add(this.spc);
+				pnBadge.Controls.Add(spc);
 			}
 		}
 
@@ -521,7 +521,7 @@ namespace SimPe.Plugin
 		{
 			if (spc.SelectedSim != null)
 			{
-				Collections.NgbhSlots slots = this.Ngbh.GetSlots(
+				Collections.NgbhSlots slots = Ngbh.GetSlots(
 					Data.NeighborhoodSlots.Sims
 				);
 				if (slots != null)
@@ -573,7 +573,7 @@ namespace SimPe.Plugin
 		#region Extensions by Theo
 		void menu_VisibleChanged(object sender, EventArgs e)
 		{
-			miFix.Enabled = (this.Ngbh != null) && Helper.WindowsRegistry.HiddenMode;
+			miFix.Enabled = (Ngbh != null) && Helper.WindowsRegistry.HiddenMode;
 			miNuke.Enabled = (spc.SelectedSim != null);
 		}
 
@@ -581,7 +581,7 @@ namespace SimPe.Plugin
 		{
 			if (spc.SelectedSim != null)
 			{
-				Collections.NgbhSlots slots = this.Ngbh.GetSlots(
+				Collections.NgbhSlots slots = Ngbh.GetSlots(
 					Data.NeighborhoodSlots.Sims
 				);
 				if (slots != null)
@@ -612,11 +612,11 @@ namespace SimPe.Plugin
 
 		private void miFix_Activate(object sender, EventArgs e)
 		{
-			EnhancedNgbh ngbh = this.Ngbh as EnhancedNgbh;
+			EnhancedNgbh ngbh = Ngbh as EnhancedNgbh;
 			if (ngbh != null)
 			{
 				ngbh.FixNeighborhoodMemories();
-				this.RefreshGUI();
+				RefreshGUI();
 			}
 		}
 		#endregion

@@ -44,7 +44,7 @@ namespace SimPe.Plugin
 		public WantItemContainer(Interfaces.IProviderRegistry provider)
 		{
 			Items = new WantItem[0];
-			this.Provider = provider;
+			Provider = provider;
 		}
 
 		/// <summary>

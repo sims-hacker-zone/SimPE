@@ -462,9 +462,9 @@ namespace SimPe.PackedFiles.Wrapper
 		public TPRPItem Clone()
 		{
 			TPRPItem clone = (TPRPItem)MemberwiseClone();
-			clone.label = (string)this.label.Clone();
-			clone.pORl = this.pORl;
-			clone.parent = this.parent;
+			clone.label = (string)label.Clone();
+			clone.pORl = pORl;
+			clone.parent = parent;
 			return clone;
 		}
 

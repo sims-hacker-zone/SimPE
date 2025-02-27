@@ -75,12 +75,12 @@ namespace Ambertation.Windows.Forms
 			bcol = Color.FromArgb(100, Color.Black);
 			col = Color.Black;
 			selcol = Color.YellowGreen;
-			this.Gradient = LinearGradientMode.Vertical;
+			Gradient = LinearGradientMode.Vertical;
 
 			// Dieser Aufruf ist für den Windows Form-Designer erforderlich.
 			InitializeComponent();
 
-			this.OnResize(null);
+			OnResize(null);
 			CompleteRedraw();
 		}
 
@@ -219,7 +219,7 @@ namespace Ambertation.Windows.Forms
 				if (value != col)
 				{
 					col = value;
-					this.Invalidate();
+					Invalidate();
 				}
 			}
 		}
@@ -234,7 +234,7 @@ namespace Ambertation.Windows.Forms
 				if (value != selcol)
 				{
 					selcol = value;
-					this.Invalidate();
+					Invalidate();
 				}
 			}
 		}
@@ -250,7 +250,7 @@ namespace Ambertation.Windows.Forms
 				if (value != bcol)
 				{
 					bcol = value;
-					this.Invalidate();
+					Invalidate();
 				}
 			}
 		}
@@ -270,7 +270,7 @@ namespace Ambertation.Windows.Forms
 				if (value != bgcol)
 				{
 					bgcol = value;
-					this.Invalidate();
+					Invalidate();
 				}
 			}
 		}
@@ -286,7 +286,7 @@ namespace Ambertation.Windows.Forms
 				if (value != startgradcol)
 				{
 					startgradcol = value;
-					this.Invalidate();
+					Invalidate();
 				}
 			}
 		}
@@ -302,7 +302,7 @@ namespace Ambertation.Windows.Forms
 				if (value != endgradcol)
 				{
 					endgradcol = value;
-					this.Invalidate();
+					Invalidate();
 				}
 			}
 		}
@@ -349,7 +349,7 @@ namespace Ambertation.Windows.Forms
 
 		protected override void OnSizeChanged(EventArgs e)
 		{
-			SetTokenCount(this.TokenCount, true);
+			SetTokenCount(TokenCount, true);
 			CompleteRedraw();
 			base.OnSizeChanged(e);
 		}
@@ -360,8 +360,8 @@ namespace Ambertation.Windows.Forms
 				"Painting " + Size + ", " + TokenWidth + ", " + tc + ", " + style
 			);
 			double p =
-				(float)(this.Value - this.Minimum) / (this.Maximum - this.Minimum);
-			int wd = (int)((this.SensitiveWidth) * p) + 1;
+				(float)(Value - Minimum) / (Maximum - Minimum);
+			int wd = (int)((SensitiveWidth) * p) + 1;
 			if (p == 0)
 			{
 				wd = 0;
@@ -387,8 +387,8 @@ namespace Ambertation.Windows.Forms
 			//
 			// ExtProgressBar
 			//
-			this.Name = "ExtProgressBar";
-			this.Size = new Size(150, 16);
+			Name = "ExtProgressBar";
+			Size = new Size(150, 16);
 		}
 		#endregion
 
@@ -631,7 +631,7 @@ namespace Ambertation.Windows.Forms
 
 			Drawing.GraphicRoutines.FillRoundRect(
 				g,
-				new SolidBrush(this.UnselectedColor),
+				new SolidBrush(UnselectedColor),
 				left,
 				top,
 				width,
@@ -640,7 +640,7 @@ namespace Ambertation.Windows.Forms
 			);
 			Drawing.GraphicRoutines.FillRoundRect(
 				gsel,
-				new SolidBrush(this.SelectedColor),
+				new SolidBrush(SelectedColor),
 				left,
 				top,
 				width,
@@ -654,8 +654,8 @@ namespace Ambertation.Windows.Forms
 				SetGraphicsMode(gsel, true);
 				LinearGradientBrush b = new LinearGradientBrush(
 					new Rectangle(left, top, width, height),
-					Color.FromArgb(80, this.GradientStartColor),
-					Color.FromArgb(50, this.GradientEndColor),
+					Color.FromArgb(80, GradientStartColor),
+					Color.FromArgb(50, GradientEndColor),
 					LinearGradientMode.ForwardDiagonal
 				);
 
@@ -678,7 +678,7 @@ namespace Ambertation.Windows.Forms
 
 			Drawing.GraphicRoutines.DrawRoundRect(
 				g,
-				new Pen(this.BorderColor),
+				new Pen(BorderColor),
 				left,
 				top,
 				width,
@@ -687,7 +687,7 @@ namespace Ambertation.Windows.Forms
 			);
 			Drawing.GraphicRoutines.DrawRoundRect(
 				gsel,
-				new Pen(this.BorderColor),
+				new Pen(BorderColor),
 				left,
 				top,
 				width,
@@ -708,7 +708,7 @@ namespace Ambertation.Windows.Forms
 			int rad = 2;
 			Drawing.GraphicRoutines.FillRoundRect(
 				gsel,
-				new SolidBrush(this.SelectedColor),
+				new SolidBrush(SelectedColor),
 				left + 1,
 				top + 1,
 				width - 1,
@@ -729,9 +729,9 @@ namespace Ambertation.Windows.Forms
 		{
 			LinearGradientBrush b = new LinearGradientBrush(
 				new Rectangle(left, top, width, height),
-				this.GradientStartColor,
+				GradientStartColor,
 				Color.Transparent,
-				this.Gradient
+				Gradient
 			);
 
 			float[] relativeIntensities = { 0.2f, 0.7f, 1f, 1f };
@@ -757,9 +757,9 @@ namespace Ambertation.Windows.Forms
 
 			b = new LinearGradientBrush(
 				new Rectangle(left, top, width, height),
-				this.GradientEndColor,
+				GradientEndColor,
 				Color.Transparent,
-				this.Gradient
+				Gradient
 			);
 
 			relativeIntensities = new float[] { 1f, 1f, 0.7f, 0.5f };
@@ -791,7 +791,7 @@ namespace Ambertation.Windows.Forms
 		{
 			Drawing.GraphicRoutines.FillRoundRect(
 				gsel,
-				new SolidBrush(this.ProgressBackColor),
+				new SolidBrush(ProgressBackColor),
 				0,
 				0,
 				Width - 2,
@@ -800,7 +800,7 @@ namespace Ambertation.Windows.Forms
 			);
 			Drawing.GraphicRoutines.FillRoundRect(
 				gsel,
-				new SolidBrush(Color.FromArgb(150, this.BorderColor)),
+				new SolidBrush(Color.FromArgb(150, BorderColor)),
 				0,
 				0,
 				Width - 2,
@@ -809,7 +809,7 @@ namespace Ambertation.Windows.Forms
 			);
 			Drawing.GraphicRoutines.FillRoundRect(
 				gsel,
-				new SolidBrush(this.ProgressBackColor),
+				new SolidBrush(ProgressBackColor),
 				1,
 				1,
 				Width - 3,
@@ -819,7 +819,7 @@ namespace Ambertation.Windows.Forms
 
 			Drawing.GraphicRoutines.DrawRoundRect(
 				gsel,
-				new Pen(Color.FromArgb(200, this.BorderColor)),
+				new Pen(Color.FromArgb(200, BorderColor)),
 				0,
 				0,
 				Width - 2,
@@ -827,7 +827,7 @@ namespace Ambertation.Windows.Forms
 				3
 			);
 
-			g.DrawImageUnscaled(this.cachedimgsel, 0, 0);
+			g.DrawImageUnscaled(cachedimgsel, 0, 0);
 		}
 		#endregion
 
@@ -848,9 +848,9 @@ namespace Ambertation.Windows.Forms
 			System.Drawing.Graphics gsel
 		)
 		{
-			for (int i = 0; i < this.TokenCount; i++)
+			for (int i = 0; i < TokenCount; i++)
 			{
-				int left = this.TokenOffset(i);
+				int left = TokenOffset(i);
 
 				DrawTokens(g, gsel, left, 0, TokenWidth, Height - 1);
 			}
@@ -862,10 +862,10 @@ namespace Ambertation.Windows.Forms
 		)
 		{
 			double minhg = (Height - 1) / 4.0;
-			double step = ((Height - 1) - minhg) / (this.TokenCount - 1);
-			for (int i = 0; i < this.TokenCount; i++)
+			double step = ((Height - 1) - minhg) / (TokenCount - 1);
+			for (int i = 0; i < TokenCount; i++)
 			{
-				int left = this.TokenOffset(i);
+				int left = TokenOffset(i);
 				int height = (int)Math.Floor(minhg + i * step);
 				int top = (Height - 1) - height;
 
@@ -879,11 +879,11 @@ namespace Ambertation.Windows.Forms
 		)
 		{
 			double minhg = (Height - 1) / 4.0;
-			double step = ((Height - 1) - minhg) / (this.TokenCount - 1);
-			for (int i = 0; i < this.TokenCount; i++)
+			double step = ((Height - 1) - minhg) / (TokenCount - 1);
+			for (int i = 0; i < TokenCount; i++)
 			{
-				int left = this.TokenOffset(i);
-				int height = (int)Math.Floor(minhg + (this.TokenCount - 1 - i) * step);
+				int left = TokenOffset(i);
+				int height = (int)Math.Floor(minhg + (TokenCount - 1 - i) * step);
 				int top = (Height - 1) - height;
 
 				DrawTokens(g, gsel, left, top, TokenWidth, height);
@@ -896,11 +896,11 @@ namespace Ambertation.Windows.Forms
 		)
 		{
 			double minhg = (Height - 1) / 4.0;
-			int mid = ((this.TokenCount - 1) / 2);
+			int mid = ((TokenCount - 1) / 2);
 			double step = ((Height - 1) - minhg) / mid;
-			for (int i = 0; i < this.TokenCount; i++)
+			for (int i = 0; i < TokenCount; i++)
 			{
-				int left = this.TokenOffset(i);
+				int left = TokenOffset(i);
 				int height = 0;
 				if (i > mid)
 				{
@@ -929,7 +929,7 @@ namespace Ambertation.Windows.Forms
 					return Width;
 				}
 
-				return TokenOffset(this.TokenCount - 1) + TokenWidth;
+				return TokenOffset(TokenCount - 1) + TokenWidth;
 			}
 		}
 

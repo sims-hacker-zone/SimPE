@@ -141,7 +141,7 @@ namespace SimPe.Plugin
 				"Lot package lot descriptor.",
 				1,
 				Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.ltxt.png")
 				)
 			);
@@ -170,7 +170,7 @@ namespace SimPe.Plugin
 			int len = reader.ReadInt32();
 			for (int i = 0; i < len; i++)
 			{
-				this.Unknown1.Add(reader.ReadUInt32());
+				Unknown1.Add(reader.ReadUInt32());
 			}
 
 			if (subver >= (UInt16)LtxtSubVersion.Voyage)
@@ -255,7 +255,7 @@ namespace SimPe.Plugin
 
 		protected override string GetResourceName(Data.TypeAlias ta)
 		{
-			if (!this.Processed)
+			if (!Processed)
 			{
 				ProcessData(FileDescriptor, Package);
 			}

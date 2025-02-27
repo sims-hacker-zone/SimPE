@@ -106,7 +106,7 @@ namespace SimPe.Plugin
 			: base(parent)
 		{
 			Items = new ObjectGraphNodeItem[0];
-			FileName = this.BlockName;
+			FileName = BlockName;
 			version = 4;
 		}
 
@@ -187,13 +187,13 @@ namespace SimPe.Plugin
 			}
 
 			tObjectGraphNode.lb_ogn.Items.Clear();
-			for (int i = 0; i < this.Items.Length; i++)
+			for (int i = 0; i < Items.Length; i++)
 			{
 				tObjectGraphNode.lb_ogn.Items.Add(Items[i]);
 			}
 
-			tObjectGraphNode.tb_ogn_file.Text = this.FileName;
-			tObjectGraphNode.tb_ogn_ver.Text = "0x" + Helper.HexString(this.version);
+			tObjectGraphNode.tb_ogn_file.Text = FileName;
+			tObjectGraphNode.tb_ogn_ver.Text = "0x" + Helper.HexString(version);
 		}
 
 		public override string ToString()
@@ -205,9 +205,9 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			if (this.tObjectGraphNode != null)
+			if (tObjectGraphNode != null)
 			{
-				this.tObjectGraphNode.Dispose();
+				tObjectGraphNode.Dispose();
 			}
 
 			tObjectGraphNode = null;

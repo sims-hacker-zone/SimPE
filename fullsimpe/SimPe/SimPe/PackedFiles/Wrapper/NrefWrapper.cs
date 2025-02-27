@@ -50,7 +50,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		public uint Group => Hashes.GroupHash(this.FileName);
+		public uint Group => Hashes.GroupHash(FileName);
 
 		#region IWrapper Member
 		protected override IWrapperInfo CreateWrapperInfo()
@@ -94,7 +94,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		#region IFileWrapper Member
 
-		public override string Description => "Name=" + this.FileName + ", Group=0x" + Helper.HexString(Group);
+		public override string Description => "Name=" + FileName + ", Group=0x" + Helper.HexString(Group);
 
 		/// <summary>
 		/// Returns the Signature that can be used to identify Files processable with this Plugin

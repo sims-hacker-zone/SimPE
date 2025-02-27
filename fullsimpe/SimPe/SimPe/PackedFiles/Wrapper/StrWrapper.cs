@@ -312,12 +312,12 @@ namespace SimPe.PackedFiles.Wrapper
 		#region pjse.ExtendedWrapper<StrItem> Members
 		public new void Add(StrItem item)
 		{
-			if ((this.format == 0x0000 || this.format == 0xFFFE) && items.Count >= 0xFF)
+			if ((format == 0x0000 || format == 0xFFFE) && items.Count >= 0xFF)
 			{
 				return;
 			}
 
-			if (this.format == 0x0000)
+			if (format == 0x0000)
 			{
 				item.Parent = null; // prevent anyone getting told about the change...
 				item.LanguageID = 1;
@@ -498,7 +498,7 @@ namespace SimPe.PackedFiles.Wrapper
 						}
 						else
 						{
-							this.Add(lid, "", "");
+							Add(lid, "", "");
 						}
 					}
 					else if (isString && line.Equals("<-Desc->"))
@@ -601,7 +601,7 @@ namespace SimPe.PackedFiles.Wrapper
 		public StrItem(StrWrapper parent, BinaryReader reader)
 		{
 			this.parent = parent;
-			this.Unserialize(reader);
+			Unserialize(reader);
 		}
 
 		public StrItem(StrWrapper parent, byte lid, string title, string desc)
@@ -614,7 +614,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public override string ToString()
 		{
-			return this.Title;
+			return Title;
 		}
 
 		public static implicit operator String(StrItem si)

@@ -8,16 +8,16 @@ namespace SimPe.PackedFiles.Wrapper
 		public SimInfo(ExtSDesc Sim, Image img)
 		{
 			InitializeComponent();
-			this.pbImage.Image = img;
+			pbImage.Image = img;
 			//this.pnheader.HeaderText = Sim.SimName + "\'s Profile";
-			this.lbshead.Text = Sim.SimName + " " + Sim.SimFamilyName + ",";
-			this.lbshead.Text += "\r\n  From the " + Sim.HouseholdName + " family";
+			lbshead.Text = Sim.SimName + " " + Sim.SimFamilyName + ",";
+			lbshead.Text += "\r\n  From the " + Sim.HouseholdName + " family";
 			if (
 				Sim.CharacterDescription.ServiceTypes
 				!= Data.MetaData.ServiceTypes.Normal
 			)
 			{
-				this.lbshead.Text +=
+				lbshead.Text +=
 					",\r\n  A "
 					+ Localization.GetString(
 						Sim.CharacterDescription.ServiceTypes.ToString()
@@ -28,7 +28,7 @@ namespace SimPe.PackedFiles.Wrapper
 				!= Data.MetaData.Careers.Unemployed
 			)
 			{
-				this.lbshead.Text +=
+				lbshead.Text +=
 					",\r\n  Works in the "
 					+ (Data.LocalizedCareers)Sim.CharacterDescription.Career
 					+ " career";
@@ -39,7 +39,7 @@ namespace SimPe.PackedFiles.Wrapper
 				&& Sim.CharacterDescription.Realage > 19
 			)
 			{
-				this.lbshead.Text +=
+				lbshead.Text +=
 					",\r\n  Retired from the "
 					+ (Data.LocalizedCareers)Sim.CharacterDescription.Retired
 					+ " career";
@@ -49,7 +49,7 @@ namespace SimPe.PackedFiles.Wrapper
 				&& Sim.University.Major != Data.Majors.Unset
 			)
 			{
-				this.lbshead.Text +=
+				lbshead.Text +=
 					",\r\n  Studying " + (Data.Majors)Sim.University.Major;
 			}
 			else if (
@@ -60,23 +60,23 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				if (Sim.CharacterDescription.Realage < 3)
 				{
-					this.lbshead.Text +=
+					lbshead.Text +=
 						",\r\n  Will attend "
 						+ (Data.LocalizedSchoolType)Sim.CharacterDescription.SchoolType;
 				}
 				else
 				{
-					this.lbshead.Text +=
+					lbshead.Text +=
 						",\r\n  Attends "
 						+ (Data.LocalizedSchoolType)Sim.CharacterDescription.SchoolType;
 				}
 
-				if (!this.lbshead.Text.EndsWith("School"))
+				if (!lbshead.Text.EndsWith("School"))
 				{
-					this.lbshead.Text += " School";
+					lbshead.Text += " School";
 				}
 			}
-			this.lbInform.Text = UserInterface.SimOriGuid.AboutSim(
+			lbInform.Text = UserInterface.SimOriGuid.AboutSim(
 				Sim
 			);
 		}

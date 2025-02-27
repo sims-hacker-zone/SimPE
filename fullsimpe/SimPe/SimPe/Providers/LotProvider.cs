@@ -40,12 +40,12 @@ namespace SimPe.Providers
 				Interfaces.Scenegraph.IScenegraphFileIndexItem fii
 			)
 			{
-				this.Name = name;
-				this.Image = img;
-				this.Instance = inst;
+				Name = name;
+				Image = img;
+				Instance = inst;
 				Owner = 0;
 				Tags = new ArrayList();
-				this.LtxtFileIndexItem = fii;
+				LtxtFileIndexItem = fii;
 			}
 
 			public object FindTag(Type tp)
@@ -120,7 +120,7 @@ namespace SimPe.Providers
 							0x104F6A6E,
 							0,
 							Data.MetaData.LOCAL_GROUP,
-							this.Instance
+							Instance
 						);
 					if (pfd == null)
 					{
@@ -148,7 +148,7 @@ namespace SimPe.Providers
 							Data.MetaData.STRING_FILE,
 							0,
 							Data.MetaData.LOCAL_GROUP,
-							this.Instance | 0x8000
+							Instance | 0x8000
 						);
 					if (pfd == null)
 					{
@@ -185,7 +185,7 @@ namespace SimPe.Providers
 						}
 						str.Dispose();
 					}
-					else if (this.Instance == 0)
+					else if (Instance == 0)
 					{
 						return "Family Bin";
 					}
@@ -303,7 +303,7 @@ namespace SimPe.Providers
 					Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
 				)
 				{
-					if (this.HaveToStop)
+					if (HaveToStop)
 					{
 						break;
 					}
@@ -441,7 +441,7 @@ namespace SimPe.Providers
 			AddHoodsToFileIndex();
 			Wait.SubStop();
 
-			this.ExecuteThread(ThreadPriority.AboveNormal, "Lot Provider", true, true);
+			ExecuteThread(ThreadPriority.AboveNormal, "Lot Provider", true, true);
 		}
 
 		public Interfaces.Providers.ILotItem FindLot(uint inst)
@@ -464,7 +464,7 @@ namespace SimPe.Providers
 		{
 			ArrayList list = new ArrayList();
 
-			Hashtable ht = this.StoredData;
+			Hashtable ht = StoredData;
 			foreach (Interfaces.Providers.ILotItem item in ht.Values)
 			{
 				if (item.Owner == siminst)

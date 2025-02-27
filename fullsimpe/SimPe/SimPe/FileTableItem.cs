@@ -24,10 +24,10 @@ namespace SimPe
 			}
 
 			this.path = path;
-			this.relpath = path;
-			this.EpVersion = -1;
-			this.Type = FileTablePaths.Absolute;
-			this.Ignore = false;
+			relpath = path;
+			EpVersion = -1;
+			Type = FileTablePaths.Absolute;
+			Ignore = false;
 		}
 
 		public bool Ignore
@@ -53,22 +53,22 @@ namespace SimPe
 			bool ign
 		)
 		{
-			this.IsRecursive = rec;
-			this.IsFile = fl;
-			this.EpVersion = ver;
-			this.Type = type;
-			this.SetName(relpath);
-			this.Ignore = ign;
+			IsRecursive = rec;
+			IsFile = fl;
+			EpVersion = ver;
+			Type = type;
+			SetName(relpath);
+			Ignore = ign;
 		}
 
 		internal void SetRecursive(bool state)
 		{
-			this.IsRecursive = state;
+			IsRecursive = state;
 		}
 
 		internal void SetFile(bool state)
 		{
-			this.IsFile = state;
+			IsFile = state;
 		}
 
 		public static string GetRoot(FileTableItemType type)
@@ -133,16 +133,16 @@ namespace SimPe
 
 			if (ename.StartsWith(root))
 			{
-				this.path = name.Substring(root.Length); //ename.Replace(root, "");
-				if (!this.IsFile)
+				path = name.Substring(root.Length); //ename.Replace(root, "");
+				if (!IsFile)
 				{
-					if (this.path.StartsWith(Helper.PATH_SEP))
+					if (path.StartsWith(Helper.PATH_SEP))
 					{
 						path = path.Substring(1);
 					}
 				}
 
-				this.Type = type;
+				Type = type;
 				return true;
 			}
 
@@ -182,7 +182,7 @@ namespace SimPe
 			}
 
 			//if (Helper.IsAbsolutePath(name)) name = Helper.CompareableFileName(Helper.ToLongPathName(name));
-			this.path = name;
+			path = name;
 		}
 
 		public FileTableItemType Type
@@ -244,7 +244,7 @@ namespace SimPe
 		{
 			get
 			{
-				string r = GetRoot(this.Type);
+				string r = GetRoot(Type);
 
 				if (r == null)
 				{
@@ -259,7 +259,7 @@ namespace SimPe
 
 				string ret = System.IO.Path.Combine(r, p);
 
-				if (this.IsFile)
+				if (IsFile)
 				{
 					if (ret.EndsWith(Helper.PATH_SEP))
 					{
@@ -279,7 +279,7 @@ namespace SimPe
 		{
 			get
 			{
-				if (this.IsFile)
+				if (IsFile)
 				{
 					if (path.EndsWith(Helper.PATH_SEP))
 					{
@@ -302,11 +302,11 @@ namespace SimPe
 			else if (IsFile)
 			{
 				files = new string[1];
-				files[0] = this.Name;
+				files[0] = Name;
 			}
 			else
 			{
-				string n = this.Name;
+				string n = Name;
 				if (System.IO.Directory.Exists(n))
 				{
 					files = System.IO.Directory.GetFiles(n, "*.package");

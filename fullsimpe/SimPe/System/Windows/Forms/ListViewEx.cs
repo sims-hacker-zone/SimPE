@@ -114,7 +114,7 @@ namespace System.Windows.Forms
 			int i;
 			for (i = 0; i < order.Length; i++)
 			{
-				col = this.Columns[order[i]];
+				col = Columns[order[i]];
 				if (col.Index == SubItem)
 				{
 					break;
@@ -126,7 +126,7 @@ namespace System.Windows.Forms
 			subItemRect = new Rectangle(
 				subItemX + 1,
 				lviBounds.Top + 1,
-				this.Columns[order[i]].Width - 2,
+				Columns[order[i]].Width - 2,
 				lviBounds.Height - 1
 			);
 
@@ -175,7 +175,7 @@ namespace System.Windows.Forms
 			// Add a Click event handler to select the ListView row when an embedded control is clicked
 			c.Click += new EventHandler(_embeddedControl_Click);
 
-			this.Controls.Add(c);
+			Controls.Add(c);
 		}
 
 		/// <summary>
@@ -195,7 +195,7 @@ namespace System.Windows.Forms
 				if (ec.Control == c)
 				{
 					c.Click -= new EventHandler(_embeddedControl_Click);
-					this.Controls.Remove(c);
+					Controls.Remove(c);
 					_embeddedControls.RemoveAt(i);
 					return;
 				}
@@ -254,11 +254,11 @@ namespace System.Windows.Forms
 					// Calculate the position of all embedded controls
 					foreach (EmbeddedControl ec in _embeddedControls)
 					{
-						Rectangle rc = this.GetSubItemBounds(ec.Item, ec.Column);
+						Rectangle rc = GetSubItemBounds(ec.Item, ec.Column);
 
 						if (
-							(this.HeaderStyle != ColumnHeaderStyle.None)
-							&& (rc.Top < this.Font.Height)
+							(HeaderStyle != ColumnHeaderStyle.None)
+							&& (rc.Top < Font.Height)
 						) // Control overlaps ColumnHeader
 						{
 							ec.Control.Visible = false;
@@ -307,9 +307,9 @@ namespace System.Windows.Forms
 			{
 				if (ec.Control == (Control)sender)
 				{
-					if (this.SelectedItems.Count <= 1)
+					if (SelectedItems.Count <= 1)
 					{
-						this.SelectedItems.Clear();
+						SelectedItems.Clear();
 						ec.Item.Selected = true;
 					}
 				}

@@ -34,9 +34,9 @@ namespace SimPe.Packages
 		public PackedFileDescriptorSimple(uint type, uint grp, uint ihi, uint ilo)
 		{
 			this.type = type;
-			this.group = grp;
-			this.subtype = ihi;
-			this.instance = ilo;
+			group = grp;
+			subtype = ihi;
+			instance = ilo;
 		}
 
 		/// <summary>
@@ -170,10 +170,10 @@ namespace SimPe.Packages
 			pfd.subtype = subtype;
 			pfd.type = type;
 			pfd.changed = changed;
-			pfd.wascomp = this.wascomp;
+			pfd.wascomp = wascomp;
 
-			pfd.markcompress = this.markcompress;
-			pfd.markdeleted = this.markdeleted;
+			pfd.markcompress = markcompress;
+			pfd.markdeleted = markdeleted;
 
 			return (IPackedFileDescriptor)pfd;
 		}
@@ -303,7 +303,7 @@ namespace SimPe.Packages
 			}
 		}
 
-		public string ExportFileName => Helper.HexString(Type) + "-" + this.Filename;
+		public string ExportFileName => Helper.HexString(Type) + "-" + Filename;
 
 		/// <summary>
 		/// The proposed FilePath
@@ -325,7 +325,7 @@ namespace SimPe.Packages
 					path +=
 						" - "
 						+ Helper.RemoveUnlistedCharacters(
-							this.TypeName.Name,
+							TypeName.Name,
 							Helper.PATH_CHARACTERS
 						);
 				}
@@ -367,7 +367,7 @@ namespace SimPe.Packages
 				+ Helper.tab
 				+ Helper.tab
 				+ "<number>"
-				+ this.Type.ToString()
+				+ Type.ToString()
 				+ "</number>"
 				+ Helper.lbr;
 			xml += Helper.tab + Helper.tab + "</type>" + Helper.lbr;
@@ -375,21 +375,21 @@ namespace SimPe.Packages
 				Helper.tab
 				+ Helper.tab
 				+ "<classid>"
-				+ this.SubType.ToString()
+				+ SubType.ToString()
 				+ "</classid>"
 				+ Helper.lbr;
 			xml +=
 				Helper.tab
 				+ Helper.tab
 				+ "<group>"
-				+ this.Group.ToString()
+				+ Group.ToString()
 				+ "</group>"
 				+ Helper.lbr;
 			xml +=
 				Helper.tab
 				+ Helper.tab
 				+ "<instance>"
-				+ this.Instance.ToString()
+				+ Instance.ToString()
 				+ "</instance>"
 				+ Helper.lbr;
 			xml += Helper.tab + "</packedfile>" + Helper.lbr;
@@ -399,15 +399,15 @@ namespace SimPe.Packages
 		public override string ToString()
 		{
 			string name =
-				this.TypeName
+				TypeName
 				+ ": "
-				+ Helper.HexString(this.Type)
+				+ Helper.HexString(Type)
 				+ " - "
-				+ Helper.HexString(this.SubType)
+				+ Helper.HexString(SubType)
 				+ " - "
-				+ Helper.HexString(this.Group)
+				+ Helper.HexString(Group)
 				+ " - "
-				+ Helper.HexString(this.Instance);
+				+ Helper.HexString(Instance);
 
 			//if ((this.Size==0) && (this.Offset==0)) name += " [UserFile]";
 			return name;
@@ -420,13 +420,13 @@ namespace SimPe.Packages
 				== Registry.ResourceListUnnamedFormats.FullTGI
 			)
 			{
-				return Helper.HexString(this.Type)
+				return Helper.HexString(Type)
 					+ " - "
-					+ Helper.HexString(this.SubType)
+					+ Helper.HexString(SubType)
 					+ " - "
-					+ Helper.HexString(this.Group)
+					+ Helper.HexString(Group)
 					+ " - "
-					+ Helper.HexString(this.Instance);
+					+ Helper.HexString(Instance);
 			}
 
 			if (
@@ -434,16 +434,16 @@ namespace SimPe.Packages
 				== Registry.ResourceListUnnamedFormats.Instance
 			)
 			{
-				return Helper.HexString(this.SubType)
+				return Helper.HexString(SubType)
 					+ " - "
-					+ Helper.HexString(this.Instance);
+					+ Helper.HexString(Instance);
 			}
 
-			return Helper.HexString(this.SubType)
+			return Helper.HexString(SubType)
 				+ " - "
-				+ Helper.HexString(this.Group)
+				+ Helper.HexString(Group)
 				+ " - "
-				+ Helper.HexString(this.Instance);
+				+ Helper.HexString(Instance);
 		}
 
 		public string ToResListString()
@@ -453,7 +453,7 @@ namespace SimPe.Packages
 				== Registry.ResourceListFormats.ShortTypeNames
 			)
 			{
-				return this.TypeName.shortname + ": " + GetResDescString();
+				return TypeName.shortname + ": " + GetResDescString();
 			}
 
 			if (
@@ -461,7 +461,7 @@ namespace SimPe.Packages
 				== Registry.ResourceListFormats.JustNames
 			)
 			{
-				return this.TypeName.ToString();
+				return TypeName.ToString();
 			}
 
 			if (
@@ -469,11 +469,11 @@ namespace SimPe.Packages
 				== Registry.ResourceListFormats.JustLongType
 			)
 			{
-				return this.TypeName.ToString();
+				return TypeName.ToString();
 			}
 
 			//if ((this.Size==0) && (this.Offset==0)) name += " [UserFile]";
-			return this.TypeName + ": " + GetResDescString();
+			return TypeName + ": " + GetResDescString();
 		}
 
 		#region Compare Methods
@@ -891,31 +891,31 @@ namespace SimPe.Packages
 			System.IO.BinaryReader reader
 		)
 		{
-			this.type = reader.ReadUInt32();
-			this.group = reader.ReadUInt32();
-			this.instance = reader.ReadUInt32();
+			type = reader.ReadUInt32();
+			group = reader.ReadUInt32();
+			instance = reader.ReadUInt32();
 			if ((header.IsVersion0101) && (header.Index.ItemSize >= 24))
 			{
-				this.subtype = reader.ReadUInt32();
+				subtype = reader.ReadUInt32();
 			}
 
-			this.offset = reader.ReadUInt32();
-			this.size = reader.ReadInt32();
+			offset = reader.ReadUInt32();
+			size = reader.ReadInt32();
 		}
 
 		#region IDisposable Member
 
 		public void Dispose()
 		{
-			this.userdata = null;
-			this.filename = null;
-			this.path = null;
+			userdata = null;
+			filename = null;
+			path = null;
 
-			this.ChangedData = null;
-			this.ChangedUserData = null;
-			this.Closed = null;
-			this.Deleted = null;
-			this.DescriptionChanged = null;
+			ChangedData = null;
+			ChangedUserData = null;
+			Closed = null;
+			Deleted = null;
+			DescriptionChanged = null;
 		}
 
 		#endregion

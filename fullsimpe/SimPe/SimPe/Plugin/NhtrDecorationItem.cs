@@ -55,8 +55,8 @@ namespace SimPe.Plugin
 			string s = "";
 			s += "Marker: " + Helper.HexString(marker) + Helper.lbr;
 			s += "Marker 2: " + Helper.HexString(marker2) + Helper.lbr;
-			s += "GUID: " + Helper.HexString(this.guid) + Helper.lbr;
-			s += "Rotation: " + this.rot + Helper.lbr;
+			s += "GUID: " + Helper.HexString(guid) + Helper.lbr;
+			s += "Rotation: " + rot + Helper.lbr;
 			s += "Position: " + pos.ToString() + Helper.lbr;
 			s += "BoundingBox: " + min.ToString() + " / " + max.ToString() + Helper.lbr;
 			return s;
@@ -67,7 +67,7 @@ namespace SimPe.Plugin
 			string s = Helper.HexString(marker) + "   ";
 			s += Helper.HexString(marker2) + "   ";
 			s += Helper.HexString(GUID) + "   ";
-			s += this.rot + "   ";
+			s += rot + "   ";
 			s += pos.ToString() + "   ";
 			s += min.ToString() + "   ";
 			s += max.ToString() + "   ";

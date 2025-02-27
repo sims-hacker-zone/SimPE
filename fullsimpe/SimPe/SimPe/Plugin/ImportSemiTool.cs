@@ -72,7 +72,7 @@ namespace SimPe.Plugin
 				isg = new ImportSemi();
 			}
 
-			isg.Execute(package, this.reg, this.prov);
+			isg.Execute(package, reg, prov);
 			return new ToolResult(false, true);
 		}
 

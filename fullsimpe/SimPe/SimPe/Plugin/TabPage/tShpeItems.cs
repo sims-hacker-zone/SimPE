@@ -64,7 +64,7 @@ namespace SimPe.Plugin.TabPage
 			//
 			InitializeComponent();
 
-			this.UseVisualStyleBackColor = true;
+			UseVisualStyleBackColor = true;
 		}
 
 		/// <summary>
@@ -90,40 +90,40 @@ namespace SimPe.Plugin.TabPage
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.linkLabel5 = new LinkLabel();
-			this.linkLabel6 = new LinkLabel();
-			this.tbitemunk4 = new TextBox();
-			this.tbitemunk3 = new TextBox();
-			this.tbitemunk2 = new TextBox();
-			this.tbitemunk1 = new TextBox();
-			this.label4 = new Label();
-			this.tbitemflname = new TextBox();
-			this.label3 = new Label();
-			this.lbitem = new ListBox();
+			linkLabel5 = new LinkLabel();
+			linkLabel6 = new LinkLabel();
+			tbitemunk4 = new TextBox();
+			tbitemunk3 = new TextBox();
+			tbitemunk2 = new TextBox();
+			tbitemunk1 = new TextBox();
+			label4 = new Label();
+			tbitemflname = new TextBox();
+			label3 = new Label();
+			lbitem = new ListBox();
 
-			this.SuspendLayout();
+			SuspendLayout();
 			//
 			// tabPage2
 			//
-			this.Controls.Add(this.linkLabel5);
-			this.Controls.Add(this.linkLabel6);
-			this.Controls.Add(this.tbitemunk4);
-			this.Controls.Add(this.tbitemunk3);
-			this.Controls.Add(this.tbitemunk2);
-			this.Controls.Add(this.tbitemunk1);
-			this.Controls.Add(this.label4);
-			this.Controls.Add(this.tbitemflname);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.lbitem);
-			this.Location = new System.Drawing.Point(4, 22);
-			this.Name = "tabPage2";
-			this.Size = new System.Drawing.Size(536, 254);
-			this.TabIndex = 1;
-			this.Text = "Items";
+			Controls.Add(linkLabel5);
+			Controls.Add(linkLabel6);
+			Controls.Add(tbitemunk4);
+			Controls.Add(tbitemunk3);
+			Controls.Add(tbitemunk2);
+			Controls.Add(tbitemunk1);
+			Controls.Add(label4);
+			Controls.Add(tbitemflname);
+			Controls.Add(label3);
+			Controls.Add(lbitem);
+			Location = new System.Drawing.Point(4, 22);
+			Name = "tabPage2";
+			Size = new System.Drawing.Size(536, 254);
+			TabIndex = 1;
+			Text = "Items";
 			//
 			// linkLabel5
 			//
-			this.linkLabel5.Anchor = (
+			linkLabel5.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -131,28 +131,28 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.linkLabel5.AutoSize = true;
-			this.linkLabel5.Font = new System.Drawing.Font(
+			linkLabel5.AutoSize = true;
+			linkLabel5.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.linkLabel5.Location = new System.Drawing.Point(484, 120);
-			this.linkLabel5.Name = "linkLabel5";
-			this.linkLabel5.Size = new System.Drawing.Size(44, 17);
-			this.linkLabel5.TabIndex = 19;
-			this.linkLabel5.TabStop = true;
-			this.linkLabel5.Text = "delete";
-			this.linkLabel5.LinkClicked +=
+			linkLabel5.Location = new System.Drawing.Point(484, 120);
+			linkLabel5.Name = "linkLabel5";
+			linkLabel5.Size = new System.Drawing.Size(44, 17);
+			linkLabel5.TabIndex = 19;
+			linkLabel5.TabStop = true;
+			linkLabel5.Text = "delete";
+			linkLabel5.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.linkLabel5_LinkClicked
+					linkLabel5_LinkClicked
 				);
 			//
 			// linkLabel6
 			//
-			this.linkLabel6.Anchor = (
+			linkLabel6.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -160,116 +160,116 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.linkLabel6.AutoSize = true;
-			this.linkLabel6.Font = new System.Drawing.Font(
+			linkLabel6.AutoSize = true;
+			linkLabel6.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.linkLabel6.Location = new System.Drawing.Point(456, 120);
-			this.linkLabel6.Name = "linkLabel6";
-			this.linkLabel6.Size = new System.Drawing.Size(28, 17);
-			this.linkLabel6.TabIndex = 18;
-			this.linkLabel6.TabStop = true;
-			this.linkLabel6.Text = "add";
-			this.linkLabel6.LinkClicked +=
+			linkLabel6.Location = new System.Drawing.Point(456, 120);
+			linkLabel6.Name = "linkLabel6";
+			linkLabel6.Size = new System.Drawing.Size(28, 17);
+			linkLabel6.TabIndex = 18;
+			linkLabel6.TabStop = true;
+			linkLabel6.Text = "add";
+			linkLabel6.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.linkLabel6_LinkClicked
+					linkLabel6_LinkClicked
 				);
 			//
 			// tbitemunk4
 			//
-			this.tbitemunk4.Font = new System.Drawing.Font(
+			tbitemunk4.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tbitemunk4.Location = new System.Drawing.Point(264, 192);
-			this.tbitemunk4.Name = "tbitemunk4";
-			this.tbitemunk4.Size = new System.Drawing.Size(48, 21);
-			this.tbitemunk4.TabIndex = 17;
-			this.tbitemunk4.Text = "0x00";
-			this.tbitemunk4.TextChanged += new EventHandler(
-				this.ChangeItemUnknown
+			tbitemunk4.Location = new System.Drawing.Point(264, 192);
+			tbitemunk4.Name = "tbitemunk4";
+			tbitemunk4.Size = new System.Drawing.Size(48, 21);
+			tbitemunk4.TabIndex = 17;
+			tbitemunk4.Text = "0x00";
+			tbitemunk4.TextChanged += new EventHandler(
+				ChangeItemUnknown
 			);
 			//
 			// tbitemunk3
 			//
-			this.tbitemunk3.Font = new System.Drawing.Font(
+			tbitemunk3.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tbitemunk3.Location = new System.Drawing.Point(168, 192);
-			this.tbitemunk3.Name = "tbitemunk3";
-			this.tbitemunk3.Size = new System.Drawing.Size(88, 21);
-			this.tbitemunk3.TabIndex = 16;
-			this.tbitemunk3.Text = "0x00000000";
-			this.tbitemunk3.TextChanged += new EventHandler(
-				this.ChangeItemUnknown
+			tbitemunk3.Location = new System.Drawing.Point(168, 192);
+			tbitemunk3.Name = "tbitemunk3";
+			tbitemunk3.Size = new System.Drawing.Size(88, 21);
+			tbitemunk3.TabIndex = 16;
+			tbitemunk3.Text = "0x00000000";
+			tbitemunk3.TextChanged += new EventHandler(
+				ChangeItemUnknown
 			);
 			//
 			// tbitemunk2
 			//
-			this.tbitemunk2.Font = new System.Drawing.Font(
+			tbitemunk2.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tbitemunk2.Location = new System.Drawing.Point(112, 192);
-			this.tbitemunk2.Name = "tbitemunk2";
-			this.tbitemunk2.Size = new System.Drawing.Size(48, 21);
-			this.tbitemunk2.TabIndex = 15;
-			this.tbitemunk2.Text = "0x00";
-			this.tbitemunk2.TextChanged += new EventHandler(
-				this.ChangeItemUnknown
+			tbitemunk2.Location = new System.Drawing.Point(112, 192);
+			tbitemunk2.Name = "tbitemunk2";
+			tbitemunk2.Size = new System.Drawing.Size(48, 21);
+			tbitemunk2.TabIndex = 15;
+			tbitemunk2.Text = "0x00";
+			tbitemunk2.TextChanged += new EventHandler(
+				ChangeItemUnknown
 			);
 			//
 			// tbitemunk1
 			//
-			this.tbitemunk1.Font = new System.Drawing.Font(
+			tbitemunk1.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tbitemunk1.Location = new System.Drawing.Point(16, 192);
-			this.tbitemunk1.Name = "tbitemunk1";
-			this.tbitemunk1.Size = new System.Drawing.Size(88, 21);
-			this.tbitemunk1.TabIndex = 14;
-			this.tbitemunk1.Text = "0x00000000";
-			this.tbitemunk1.TextChanged += new EventHandler(
-				this.ChangeItemUnknown
+			tbitemunk1.Location = new System.Drawing.Point(16, 192);
+			tbitemunk1.Name = "tbitemunk1";
+			tbitemunk1.Size = new System.Drawing.Size(88, 21);
+			tbitemunk1.TabIndex = 14;
+			tbitemunk1.Text = "0x00000000";
+			tbitemunk1.TextChanged += new EventHandler(
+				ChangeItemUnknown
 			);
 			//
 			// label4
 			//
-			this.label4.AutoSize = true;
-			this.label4.Font = new System.Drawing.Font(
+			label4.AutoSize = true;
+			label4.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label4.Location = new System.Drawing.Point(8, 176);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(69, 17);
-			this.label4.TabIndex = 13;
-			this.label4.Text = "Unknown:";
+			label4.Location = new System.Drawing.Point(8, 176);
+			label4.Name = "label4";
+			label4.Size = new System.Drawing.Size(69, 17);
+			label4.TabIndex = 13;
+			label4.Text = "Unknown:";
 			//
 			// tbitemflname
 			//
-			this.tbitemflname.Anchor = (
+			tbitemflname.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -279,41 +279,41 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.tbitemflname.Font = new System.Drawing.Font(
+			tbitemflname.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tbitemflname.Location = new System.Drawing.Point(16, 144);
-			this.tbitemflname.Name = "tbitemflname";
-			this.tbitemflname.Size = new System.Drawing.Size(512, 21);
-			this.tbitemflname.TabIndex = 11;
-			this.tbitemflname.Text = "";
-			this.tbitemflname.TextChanged += new EventHandler(
-				this.ChangedItemFilename
+			tbitemflname.Location = new System.Drawing.Point(16, 144);
+			tbitemflname.Name = "tbitemflname";
+			tbitemflname.Size = new System.Drawing.Size(512, 21);
+			tbitemflname.TabIndex = 11;
+			tbitemflname.Text = "";
+			tbitemflname.TextChanged += new EventHandler(
+				ChangedItemFilename
 			);
 			//
 			// label3
 			//
-			this.label3.AutoSize = true;
-			this.label3.Font = new System.Drawing.Font(
+			label3.AutoSize = true;
+			label3.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label3.Location = new System.Drawing.Point(8, 128);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(67, 17);
-			this.label3.TabIndex = 12;
-			this.label3.Text = "Filename:";
+			label3.Location = new System.Drawing.Point(8, 128);
+			label3.Name = "label3";
+			label3.Size = new System.Drawing.Size(67, 17);
+			label3.TabIndex = 12;
+			label3.Text = "Filename:";
 			//
 			// lbitem
 			//
-			this.lbitem.Anchor = (
+			lbitem.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -323,27 +323,27 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.lbitem.Font = new System.Drawing.Font(
+			lbitem.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.lbitem.HorizontalScrollbar = true;
-			this.lbitem.IntegralHeight = false;
-			this.lbitem.Location = new System.Drawing.Point(8, 8);
-			this.lbitem.Name = "lbitem";
-			this.lbitem.Size = new System.Drawing.Size(520, 112);
-			this.lbitem.TabIndex = 10;
-			this.lbitem.SelectedIndexChanged += new EventHandler(
-				this.SelectItems
+			lbitem.HorizontalScrollbar = true;
+			lbitem.IntegralHeight = false;
+			lbitem.Location = new System.Drawing.Point(8, 8);
+			lbitem.Name = "lbitem";
+			lbitem.Size = new System.Drawing.Size(520, 112);
+			lbitem.TabIndex = 10;
+			lbitem.SelectedIndexChanged += new EventHandler(
+				SelectItems
 			);
 			//
 			// ShpeForm
 			//
 
-			this.ResumeLayout(false);
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -351,7 +351,7 @@ namespace SimPe.Plugin.TabPage
 		{
 			try
 			{
-				Shape shape = (Shape)this.Tag;
+				Shape shape = (Shape)Tag;
 
 				ShapeItem[] items = new ShapeItem[lbitem.Items.Count];
 				for (int i = 0; i < items.Length; i++)
@@ -372,7 +372,7 @@ namespace SimPe.Plugin.TabPage
 			try
 			{
 				//Shpe wrp = (Shpe)wrapper;
-				Shape shape = (Shape)this.Tag;
+				Shape shape = (Shape)Tag;
 
 				ShapeItem val = new ShapeItem(shape);
 				val.FileName = tbitemflname.Text;

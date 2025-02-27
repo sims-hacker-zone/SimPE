@@ -54,7 +54,7 @@ namespace SimPe.Plugin.TabPage
 			//
 			InitializeComponent();
 
-			this.UseVisualStyleBackColor = true;
+			UseVisualStyleBackColor = true;
 		}
 
 		/// <summary>
@@ -80,27 +80,27 @@ namespace SimPe.Plugin.TabPage
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.groupBox14 = new GroupBox();
-			this.tb_lt_name = new TextBox();
-			this.label48 = new Label();
-			this.tb_lt_ver = new TextBox();
-			this.label47 = new Label();
-			this.groupBox14.SuspendLayout();
-			this.SuspendLayout();
+			groupBox14 = new GroupBox();
+			tb_lt_name = new TextBox();
+			label48 = new Label();
+			tb_lt_ver = new TextBox();
+			label47 = new Label();
+			groupBox14.SuspendLayout();
+			SuspendLayout();
 			//
 			// tLightT
 			//
-			this.BackColor = System.Drawing.Color.White;
-			this.Controls.Add(this.groupBox14);
-			this.Location = new System.Drawing.Point(4, 22);
-			this.Name = "tLightT";
-			this.Size = new System.Drawing.Size(792, 262);
-			this.TabIndex = 8;
-			this.Text = "LightT";
+			BackColor = System.Drawing.Color.White;
+			Controls.Add(groupBox14);
+			Location = new System.Drawing.Point(4, 22);
+			Name = "tLightT";
+			Size = new System.Drawing.Size(792, 262);
+			TabIndex = 8;
+			Text = "LightT";
 			//
 			// groupBox14
 			//
-			this.groupBox14.Anchor = (
+			groupBox14.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -110,28 +110,28 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.groupBox14.Controls.Add(this.tb_lt_name);
-			this.groupBox14.Controls.Add(this.label48);
-			this.groupBox14.Controls.Add(this.tb_lt_ver);
-			this.groupBox14.Controls.Add(this.label47);
-			this.groupBox14.FlatStyle = FlatStyle.System;
-			this.groupBox14.Font = new System.Drawing.Font(
+			groupBox14.Controls.Add(tb_lt_name);
+			groupBox14.Controls.Add(label48);
+			groupBox14.Controls.Add(tb_lt_ver);
+			groupBox14.Controls.Add(label47);
+			groupBox14.FlatStyle = FlatStyle.System;
+			groupBox14.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.groupBox14.Location = new System.Drawing.Point(8, 8);
-			this.groupBox14.Name = "groupBox14";
-			this.groupBox14.Size = new System.Drawing.Size(776, 128);
-			this.groupBox14.TabIndex = 12;
-			this.groupBox14.TabStop = false;
-			this.groupBox14.Text = "Settings";
+			groupBox14.Location = new System.Drawing.Point(8, 8);
+			groupBox14.Name = "groupBox14";
+			groupBox14.Size = new System.Drawing.Size(776, 128);
+			groupBox14.TabIndex = 12;
+			groupBox14.TabStop = false;
+			groupBox14.Text = "Settings";
 			//
 			// tb_lt_name
 			//
-			this.tb_lt_name.Anchor = (
+			tb_lt_name.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -141,83 +141,83 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.tb_lt_name.Font = new System.Drawing.Font(
+			tb_lt_name.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tb_lt_name.Location = new System.Drawing.Point(16, 88);
-			this.tb_lt_name.Name = "tb_lt_name";
-			this.tb_lt_name.Size = new System.Drawing.Size(752, 21);
-			this.tb_lt_name.TabIndex = 26;
-			this.tb_lt_name.Text = "";
-			this.tb_lt_name.TextChanged += new EventHandler(
-				this.LTSettingsChanged
+			tb_lt_name.Location = new System.Drawing.Point(16, 88);
+			tb_lt_name.Name = "tb_lt_name";
+			tb_lt_name.Size = new System.Drawing.Size(752, 21);
+			tb_lt_name.TabIndex = 26;
+			tb_lt_name.Text = "";
+			tb_lt_name.TextChanged += new EventHandler(
+				LTSettingsChanged
 			);
 			//
 			// label48
 			//
-			this.label48.AutoSize = true;
-			this.label48.Font = new System.Drawing.Font(
+			label48.AutoSize = true;
+			label48.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label48.Location = new System.Drawing.Point(8, 72);
-			this.label48.Name = "label48";
-			this.label48.Size = new System.Drawing.Size(42, 17);
-			this.label48.TabIndex = 25;
-			this.label48.Text = "Name:";
+			label48.Location = new System.Drawing.Point(8, 72);
+			label48.Name = "label48";
+			label48.Size = new System.Drawing.Size(42, 17);
+			label48.TabIndex = 25;
+			label48.Text = "Name:";
 			//
 			// tb_lt_ver
 			//
-			this.tb_lt_ver.Font = new System.Drawing.Font(
+			tb_lt_ver.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tb_lt_ver.Location = new System.Drawing.Point(16, 40);
-			this.tb_lt_ver.Name = "tb_lt_ver";
-			this.tb_lt_ver.Size = new System.Drawing.Size(88, 21);
-			this.tb_lt_ver.TabIndex = 24;
-			this.tb_lt_ver.Text = "0x00000000";
-			this.tb_lt_ver.TextChanged += new EventHandler(
-				this.LTSettingsChanged
+			tb_lt_ver.Location = new System.Drawing.Point(16, 40);
+			tb_lt_ver.Name = "tb_lt_ver";
+			tb_lt_ver.Size = new System.Drawing.Size(88, 21);
+			tb_lt_ver.TabIndex = 24;
+			tb_lt_ver.Text = "0x00000000";
+			tb_lt_ver.TextChanged += new EventHandler(
+				LTSettingsChanged
 			);
 			//
 			// label47
 			//
-			this.label47.AutoSize = true;
-			this.label47.Font = new System.Drawing.Font(
+			label47.AutoSize = true;
+			label47.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label47.Location = new System.Drawing.Point(8, 24);
-			this.label47.Name = "label47";
-			this.label47.Size = new System.Drawing.Size(52, 17);
-			this.label47.TabIndex = 23;
-			this.label47.Text = "Version:";
+			label47.Location = new System.Drawing.Point(8, 24);
+			label47.Name = "label47";
+			label47.Size = new System.Drawing.Size(52, 17);
+			label47.TabIndex = 23;
+			label47.Text = "Version:";
 			//
 			// fShapeRefNode
 			//
-			this.groupBox14.ResumeLayout(false);
-			this.ResumeLayout(false);
+			groupBox14.ResumeLayout(false);
+			ResumeLayout(false);
 		}
 		#endregion
 
 
 		private void LTSettingsChanged(object sender, EventArgs e)
 		{
-			if (this.Tag == null)
+			if (Tag == null)
 			{
 				return;
 			}

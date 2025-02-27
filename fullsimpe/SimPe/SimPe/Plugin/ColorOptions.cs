@@ -47,7 +47,7 @@ namespace SimPe.Plugin
 		/// <param name="package">the source package</param>
 		public ColorOptions(IPackageFile package)
 		{
-			this.Package = package;
+			Package = package;
 		}
 
 		/// <summary>
@@ -360,7 +360,7 @@ namespace SimPe.Plugin
 
 						GenericRcol txmt = mmat.TXMT;
 						GenericRcol txtr = mmat.TXTR;
-						this.AddTxmt(newpkg, mmat, txmt, txtr, unique, slaves);
+						AddTxmt(newpkg, mmat, txmt, txtr, unique, slaves);
 
 						mmat.SynchronizeUserData();
 						newpkg.Add(mmat.FileDescriptor);
@@ -439,7 +439,7 @@ namespace SimPe.Plugin
 								{
 									foreach (string subset in slaves)
 									{
-										ArrayList slavemmat = this.FindTxtrMatchingMmat(
+										ArrayList slavemmat = FindTxtrMatchingMmat(
 											mmat,
 											fullmap,
 											subset

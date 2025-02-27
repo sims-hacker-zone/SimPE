@@ -9,15 +9,15 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 		public LearnedBahaviourComboBox()
 		{
 			InitializeComponent();
-			this.DropDownStyle = ComboBoxStyle.DropDownList;
+			DropDownStyle = ComboBoxStyle.DropDownList;
 
-			if (!this.DesignMode)
+			if (!DesignMode)
 			{
 				try
 				{
 					foreach (ExtObjd objd in BehaviourObjds)
 					{
-						this.Items.Add(new ContainerItem(objd));
+						Items.Add(new ContainerItem(objd));
 					}
 				}
 				catch { } //this is needed for the stupid Designer >:|
@@ -131,12 +131,12 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 					ContainerItem ci = Items[i] as ContainerItem;
 					if (ci.Guid == value)
 					{
-						this.SelectedIndex = i;
+						SelectedIndex = i;
 						return;
 					}
 				}
 
-				this.Items.Add(new ContainerItem(value));
+				Items.Add(new ContainerItem(value));
 			}
 		}
 	}

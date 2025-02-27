@@ -122,28 +122,28 @@ namespace SimPe
 			refitem = item;
 			if (item != null)
 			{
-				this.Image = item.Image;
-				this.Visible = (item.Image != null);
-				if (this.Image == null)
+				Image = item.Image;
+				Visible = (item.Image != null);
+				if (Image == null)
 				{
-					this.Text = item.Text;
+					Text = item.Text;
 				}
 
-				this.ToolTipText = item.Text.Replace("&", "");
-				this.Enabled = item.Enabled;
-				this.Click += new EventHandler(MyButtonItem_Activate);
+				ToolTipText = item.Text.Replace("&", "");
+				Enabled = item.Enabled;
+				Click += new EventHandler(MyButtonItem_Activate);
 				item.CheckedChanged += new EventHandler(item_CheckedChanged);
 				item.EnabledChanged += new EventHandler(item_EnabledChanged);
 
-				this.ToolTipText = item.Text;
-				this.Enabled = item.Enabled;
-				this.Checked = item.Checked;
+				ToolTipText = item.Text;
+				Enabled = item.Enabled;
+				Checked = item.Checked;
 
 				HaveDock = false;
 				ToolMenuItemExt tmie = item as ToolMenuItemExt;
 				if (tmie != null)
 				{
-					this.Name = tmie.Name;
+					Name = tmie.Name;
 				}
 				else
 				{
@@ -152,30 +152,30 @@ namespace SimPe
 
 					if (dw != null)
 					{
-						this.Name = dw.Name;
+						Name = dw.Name;
 						HaveDock = true;
 					}
 					else
 					{
-						this.Name = "Button_" + (counter++);
+						Name = "Button_" + (counter++);
 					}
 				}
 			}
 			else
 			{
 				HaveDock = false;
-				this.Name = name;
+				Name = name;
 			}
 		}
 
 		void item_EnabledChanged(object sender, EventArgs e)
 		{
-			this.Enabled = ((ToolStripMenuItem)sender).Enabled;
+			Enabled = ((ToolStripMenuItem)sender).Enabled;
 		}
 
 		void item_CheckedChanged(object sender, EventArgs e)
 		{
-			this.Checked = ((ToolStripMenuItem)sender).Checked;
+			Checked = ((ToolStripMenuItem)sender).Checked;
 		}
 
 		void MyButtonItem_Activate(object sender, EventArgs e)

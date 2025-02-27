@@ -56,399 +56,399 @@ namespace SimPe.Plugin
 		{
 			System.Resources.ResourceManager resources =
 				new System.Resources.ResourceManager(typeof(NgbhValueDescriptorUI));
-			this.panel1 = new Panel();
-			this.pb = new Ambertation.Windows.Forms.LabeledProgressBar();
-			this.panel2 = new Panel();
-			this.cb = new CheckBox();
-			this.panel3 = new Panel();
-			this.lb = new Label();
-			this.ll = new LinkLabel();
-			this.panel1.SuspendLayout();
-			this.panel2.SuspendLayout();
-			this.panel3.SuspendLayout();
-			this.SuspendLayout();
+			panel1 = new Panel();
+			pb = new Ambertation.Windows.Forms.LabeledProgressBar();
+			panel2 = new Panel();
+			cb = new CheckBox();
+			panel3 = new Panel();
+			lb = new Label();
+			ll = new LinkLabel();
+			panel1.SuspendLayout();
+			panel2.SuspendLayout();
+			panel3.SuspendLayout();
+			SuspendLayout();
 			//
 			// panel1
 			//
-			this.panel1.AccessibleDescription = resources.GetString(
+			panel1.AccessibleDescription = resources.GetString(
 				"panel1.AccessibleDescription"
 			);
-			this.panel1.AccessibleName = resources.GetString("panel1.AccessibleName");
-			this.panel1.Anchor = (
+			panel1.AccessibleName = resources.GetString("panel1.AccessibleName");
+			panel1.Anchor = (
 				(AnchorStyles)(
 					resources.GetObject("panel1.Anchor")
 				)
 			);
-			this.panel1.AutoScroll = ((bool)(resources.GetObject("panel1.AutoScroll")));
-			this.panel1.AutoScrollMargin = (
+			panel1.AutoScroll = ((bool)(resources.GetObject("panel1.AutoScroll")));
+			panel1.AutoScrollMargin = (
 				(System.Drawing.Size)(resources.GetObject("panel1.AutoScrollMargin"))
 			);
-			this.panel1.AutoScrollMinSize = (
+			panel1.AutoScrollMinSize = (
 				(System.Drawing.Size)(resources.GetObject("panel1.AutoScrollMinSize"))
 			);
-			this.panel1.BackgroundImage = (
+			panel1.BackgroundImage = (
 				(System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage"))
 			);
-			this.panel1.Controls.Add(this.pb);
-			this.panel1.Dock = (
+			panel1.Controls.Add(pb);
+			panel1.Dock = (
 				(DockStyle)(resources.GetObject("panel1.Dock"))
 			);
-			this.panel1.Enabled = ((bool)(resources.GetObject("panel1.Enabled")));
-			this.panel1.Font = (
+			panel1.Enabled = ((bool)(resources.GetObject("panel1.Enabled")));
+			panel1.Font = (
 				(System.Drawing.Font)(resources.GetObject("panel1.Font"))
 			);
-			this.panel1.ImeMode = (
+			panel1.ImeMode = (
 				(ImeMode)(resources.GetObject("panel1.ImeMode"))
 			);
-			this.panel1.Location = (
+			panel1.Location = (
 				(System.Drawing.Point)(resources.GetObject("panel1.Location"))
 			);
-			this.panel1.Name = "panel1";
-			this.panel1.RightToLeft = (
+			panel1.Name = "panel1";
+			panel1.RightToLeft = (
 				(RightToLeft)(
 					resources.GetObject("panel1.RightToLeft")
 				)
 			);
-			this.panel1.Size = (
+			panel1.Size = (
 				(System.Drawing.Size)(resources.GetObject("panel1.Size"))
 			);
-			this.panel1.TabIndex = ((int)(resources.GetObject("panel1.TabIndex")));
-			this.panel1.Text = resources.GetString("panel1.Text");
-			this.panel1.Visible = ((bool)(resources.GetObject("panel1.Visible")));
+			panel1.TabIndex = ((int)(resources.GetObject("panel1.TabIndex")));
+			panel1.Text = resources.GetString("panel1.Text");
+			panel1.Visible = ((bool)(resources.GetObject("panel1.Visible")));
 			//
 			// pb
 			//
-			this.pb.AccessibleDescription = resources.GetString(
+			pb.AccessibleDescription = resources.GetString(
 				"pb.AccessibleDescription"
 			);
-			this.pb.AccessibleName = resources.GetString("pb.AccessibleName");
-			this.pb.Anchor = (
+			pb.AccessibleName = resources.GetString("pb.AccessibleName");
+			pb.Anchor = (
 				(AnchorStyles)(resources.GetObject("pb.Anchor"))
 			);
-			this.pb.AutoScroll = ((bool)(resources.GetObject("pb.AutoScroll")));
-			this.pb.AutoScrollMargin = (
+			pb.AutoScroll = ((bool)(resources.GetObject("pb.AutoScroll")));
+			pb.AutoScrollMargin = (
 				(System.Drawing.Size)(resources.GetObject("pb.AutoScrollMargin"))
 			);
-			this.pb.AutoScrollMinSize = (
+			pb.AutoScrollMinSize = (
 				(System.Drawing.Size)(resources.GetObject("pb.AutoScrollMinSize"))
 			);
-			this.pb.BackColor = System.Drawing.Color.Transparent;
-			this.pb.BackgroundImage = (
+			pb.BackColor = System.Drawing.Color.Transparent;
+			pb.BackgroundImage = (
 				(System.Drawing.Image)(resources.GetObject("pb.BackgroundImage"))
 			);
-			this.pb.DisplayOffset = 0;
-			this.pb.Dock = (
+			pb.DisplayOffset = 0;
+			pb.Dock = (
 				(DockStyle)(resources.GetObject("pb.Dock"))
 			);
-			this.pb.DockPadding.Bottom = 5;
-			this.pb.Enabled = ((bool)(resources.GetObject("pb.Enabled")));
-			this.pb.Font = ((System.Drawing.Font)(resources.GetObject("pb.Font")));
-			this.pb.ImeMode = (
+			pb.DockPadding.Bottom = 5;
+			pb.Enabled = ((bool)(resources.GetObject("pb.Enabled")));
+			pb.Font = ((System.Drawing.Font)(resources.GetObject("pb.Font")));
+			pb.ImeMode = (
 				(ImeMode)(resources.GetObject("pb.ImeMode"))
 			);
-			this.pb.LabelText = resources.GetString("pb.LabelText");
-			this.pb.LabelWidth = ((int)(resources.GetObject("pb.LabelWidth")));
-			this.pb.Location = (
+			pb.LabelText = resources.GetString("pb.LabelText");
+			pb.LabelWidth = ((int)(resources.GetObject("pb.LabelWidth")));
+			pb.Location = (
 				(System.Drawing.Point)(resources.GetObject("pb.Location"))
 			);
-			this.pb.Maximum = 100;
-			this.pb.Name = "pb";
-			this.pb.NumberFormat = "N0";
-			this.pb.NumberOffset = 0;
-			this.pb.NumberScale = 1;
-			this.pb.RightToLeft = (
+			pb.Maximum = 100;
+			pb.Name = "pb";
+			pb.NumberFormat = "N0";
+			pb.NumberOffset = 0;
+			pb.NumberScale = 1;
+			pb.RightToLeft = (
 				(RightToLeft)(
 					resources.GetObject("pb.RightToLeft")
 				)
 			);
-			this.pb.SelectedColor = System.Drawing.Color.YellowGreen;
-			this.pb.Size = ((System.Drawing.Size)(resources.GetObject("pb.Size")));
-			this.pb.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
-			this.pb.TabIndex = ((int)(resources.GetObject("pb.TabIndex")));
-			this.pb.TextboxWidth = ((int)(resources.GetObject("pb.TextboxWidth")));
-			this.pb.TokenCount = 10;
-			this.pb.UnselectedColor = System.Drawing.Color.Black;
-			this.pb.Value = 0;
-			this.pb.Visible = ((bool)(resources.GetObject("pb.Visible")));
-			this.pb.Changed += new EventHandler(this.pb_Changed);
-			this.pb.Resize += new EventHandler(this.pb_Resize);
-			this.pb.Load += new EventHandler(this.pb_Load);
+			pb.SelectedColor = System.Drawing.Color.YellowGreen;
+			pb.Size = ((System.Drawing.Size)(resources.GetObject("pb.Size")));
+			pb.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
+			pb.TabIndex = ((int)(resources.GetObject("pb.TabIndex")));
+			pb.TextboxWidth = ((int)(resources.GetObject("pb.TextboxWidth")));
+			pb.TokenCount = 10;
+			pb.UnselectedColor = System.Drawing.Color.Black;
+			pb.Value = 0;
+			pb.Visible = ((bool)(resources.GetObject("pb.Visible")));
+			pb.Changed += new EventHandler(pb_Changed);
+			pb.Resize += new EventHandler(pb_Resize);
+			pb.Load += new EventHandler(pb_Load);
 			//
 			// panel2
 			//
-			this.panel2.AccessibleDescription = resources.GetString(
+			panel2.AccessibleDescription = resources.GetString(
 				"panel2.AccessibleDescription"
 			);
-			this.panel2.AccessibleName = resources.GetString("panel2.AccessibleName");
-			this.panel2.Anchor = (
+			panel2.AccessibleName = resources.GetString("panel2.AccessibleName");
+			panel2.Anchor = (
 				(AnchorStyles)(
 					resources.GetObject("panel2.Anchor")
 				)
 			);
-			this.panel2.AutoScroll = ((bool)(resources.GetObject("panel2.AutoScroll")));
-			this.panel2.AutoScrollMargin = (
+			panel2.AutoScroll = ((bool)(resources.GetObject("panel2.AutoScroll")));
+			panel2.AutoScrollMargin = (
 				(System.Drawing.Size)(resources.GetObject("panel2.AutoScrollMargin"))
 			);
-			this.panel2.AutoScrollMinSize = (
+			panel2.AutoScrollMinSize = (
 				(System.Drawing.Size)(resources.GetObject("panel2.AutoScrollMinSize"))
 			);
-			this.panel2.BackgroundImage = (
+			panel2.BackgroundImage = (
 				(System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage"))
 			);
-			this.panel2.Controls.Add(this.cb);
-			this.panel2.Dock = (
+			panel2.Controls.Add(cb);
+			panel2.Dock = (
 				(DockStyle)(resources.GetObject("panel2.Dock"))
 			);
-			this.panel2.Enabled = ((bool)(resources.GetObject("panel2.Enabled")));
-			this.panel2.Font = (
+			panel2.Enabled = ((bool)(resources.GetObject("panel2.Enabled")));
+			panel2.Font = (
 				(System.Drawing.Font)(resources.GetObject("panel2.Font"))
 			);
-			this.panel2.ImeMode = (
+			panel2.ImeMode = (
 				(ImeMode)(resources.GetObject("panel2.ImeMode"))
 			);
-			this.panel2.Location = (
+			panel2.Location = (
 				(System.Drawing.Point)(resources.GetObject("panel2.Location"))
 			);
-			this.panel2.Name = "panel2";
-			this.panel2.RightToLeft = (
+			panel2.Name = "panel2";
+			panel2.RightToLeft = (
 				(RightToLeft)(
 					resources.GetObject("panel2.RightToLeft")
 				)
 			);
-			this.panel2.Size = (
+			panel2.Size = (
 				(System.Drawing.Size)(resources.GetObject("panel2.Size"))
 			);
-			this.panel2.TabIndex = ((int)(resources.GetObject("panel2.TabIndex")));
-			this.panel2.Text = resources.GetString("panel2.Text");
-			this.panel2.Visible = ((bool)(resources.GetObject("panel2.Visible")));
+			panel2.TabIndex = ((int)(resources.GetObject("panel2.TabIndex")));
+			panel2.Text = resources.GetString("panel2.Text");
+			panel2.Visible = ((bool)(resources.GetObject("panel2.Visible")));
 			//
 			// cb
 			//
-			this.cb.AccessibleDescription = resources.GetString(
+			cb.AccessibleDescription = resources.GetString(
 				"cb.AccessibleDescription"
 			);
-			this.cb.AccessibleName = resources.GetString("cb.AccessibleName");
-			this.cb.Anchor = (
+			cb.AccessibleName = resources.GetString("cb.AccessibleName");
+			cb.Anchor = (
 				(AnchorStyles)(resources.GetObject("cb.Anchor"))
 			);
-			this.cb.Appearance = (
+			cb.Appearance = (
 				(Appearance)(resources.GetObject("cb.Appearance"))
 			);
-			this.cb.BackgroundImage = (
+			cb.BackgroundImage = (
 				(System.Drawing.Image)(resources.GetObject("cb.BackgroundImage"))
 			);
-			this.cb.CheckAlign = (
+			cb.CheckAlign = (
 				(System.Drawing.ContentAlignment)(resources.GetObject("cb.CheckAlign"))
 			);
-			this.cb.Dock = (
+			cb.Dock = (
 				(DockStyle)(resources.GetObject("cb.Dock"))
 			);
-			this.cb.Enabled = ((bool)(resources.GetObject("cb.Enabled")));
-			this.cb.FlatStyle = (
+			cb.Enabled = ((bool)(resources.GetObject("cb.Enabled")));
+			cb.FlatStyle = (
 				(FlatStyle)(resources.GetObject("cb.FlatStyle"))
 			);
-			this.cb.Font = ((System.Drawing.Font)(resources.GetObject("cb.Font")));
-			this.cb.Image = ((System.Drawing.Image)(resources.GetObject("cb.Image")));
-			this.cb.ImageAlign = (
+			cb.Font = ((System.Drawing.Font)(resources.GetObject("cb.Font")));
+			cb.Image = ((System.Drawing.Image)(resources.GetObject("cb.Image")));
+			cb.ImageAlign = (
 				(System.Drawing.ContentAlignment)(resources.GetObject("cb.ImageAlign"))
 			);
-			this.cb.ImageIndex = ((int)(resources.GetObject("cb.ImageIndex")));
-			this.cb.ImeMode = (
+			cb.ImageIndex = ((int)(resources.GetObject("cb.ImageIndex")));
+			cb.ImeMode = (
 				(ImeMode)(resources.GetObject("cb.ImeMode"))
 			);
-			this.cb.Location = (
+			cb.Location = (
 				(System.Drawing.Point)(resources.GetObject("cb.Location"))
 			);
-			this.cb.Name = "cb";
-			this.cb.RightToLeft = (
+			cb.Name = "cb";
+			cb.RightToLeft = (
 				(RightToLeft)(
 					resources.GetObject("cb.RightToLeft")
 				)
 			);
-			this.cb.Size = ((System.Drawing.Size)(resources.GetObject("cb.Size")));
-			this.cb.TabIndex = ((int)(resources.GetObject("cb.TabIndex")));
-			this.cb.Text = resources.GetString("cb.Text");
-			this.cb.TextAlign = (
+			cb.Size = ((System.Drawing.Size)(resources.GetObject("cb.Size")));
+			cb.TabIndex = ((int)(resources.GetObject("cb.TabIndex")));
+			cb.Text = resources.GetString("cb.Text");
+			cb.TextAlign = (
 				(System.Drawing.ContentAlignment)(resources.GetObject("cb.TextAlign"))
 			);
-			this.cb.Visible = ((bool)(resources.GetObject("cb.Visible")));
-			this.cb.CheckedChanged += new EventHandler(this.cb_CheckedChanged);
+			cb.Visible = ((bool)(resources.GetObject("cb.Visible")));
+			cb.CheckedChanged += new EventHandler(cb_CheckedChanged);
 			//
 			// panel3
 			//
-			this.panel3.AccessibleDescription = resources.GetString(
+			panel3.AccessibleDescription = resources.GetString(
 				"panel3.AccessibleDescription"
 			);
-			this.panel3.AccessibleName = resources.GetString("panel3.AccessibleName");
-			this.panel3.Anchor = (
+			panel3.AccessibleName = resources.GetString("panel3.AccessibleName");
+			panel3.Anchor = (
 				(AnchorStyles)(
 					resources.GetObject("panel3.Anchor")
 				)
 			);
-			this.panel3.AutoScroll = ((bool)(resources.GetObject("panel3.AutoScroll")));
-			this.panel3.AutoScrollMargin = (
+			panel3.AutoScroll = ((bool)(resources.GetObject("panel3.AutoScroll")));
+			panel3.AutoScrollMargin = (
 				(System.Drawing.Size)(resources.GetObject("panel3.AutoScrollMargin"))
 			);
-			this.panel3.AutoScrollMinSize = (
+			panel3.AutoScrollMinSize = (
 				(System.Drawing.Size)(resources.GetObject("panel3.AutoScrollMinSize"))
 			);
-			this.panel3.BackgroundImage = (
+			panel3.BackgroundImage = (
 				(System.Drawing.Image)(resources.GetObject("panel3.BackgroundImage"))
 			);
-			this.panel3.Controls.Add(this.lb);
-			this.panel3.Controls.Add(this.ll);
-			this.panel3.Dock = (
+			panel3.Controls.Add(lb);
+			panel3.Controls.Add(ll);
+			panel3.Dock = (
 				(DockStyle)(resources.GetObject("panel3.Dock"))
 			);
-			this.panel3.Enabled = ((bool)(resources.GetObject("panel3.Enabled")));
-			this.panel3.Font = (
+			panel3.Enabled = ((bool)(resources.GetObject("panel3.Enabled")));
+			panel3.Font = (
 				(System.Drawing.Font)(resources.GetObject("panel3.Font"))
 			);
-			this.panel3.ImeMode = (
+			panel3.ImeMode = (
 				(ImeMode)(resources.GetObject("panel3.ImeMode"))
 			);
-			this.panel3.Location = (
+			panel3.Location = (
 				(System.Drawing.Point)(resources.GetObject("panel3.Location"))
 			);
-			this.panel3.Name = "panel3";
-			this.panel3.RightToLeft = (
+			panel3.Name = "panel3";
+			panel3.RightToLeft = (
 				(RightToLeft)(
 					resources.GetObject("panel3.RightToLeft")
 				)
 			);
-			this.panel3.Size = (
+			panel3.Size = (
 				(System.Drawing.Size)(resources.GetObject("panel3.Size"))
 			);
-			this.panel3.TabIndex = ((int)(resources.GetObject("panel3.TabIndex")));
-			this.panel3.Text = resources.GetString("panel3.Text");
-			this.panel3.Visible = ((bool)(resources.GetObject("panel3.Visible")));
+			panel3.TabIndex = ((int)(resources.GetObject("panel3.TabIndex")));
+			panel3.Text = resources.GetString("panel3.Text");
+			panel3.Visible = ((bool)(resources.GetObject("panel3.Visible")));
 			//
 			// lb
 			//
-			this.lb.AccessibleDescription = resources.GetString(
+			lb.AccessibleDescription = resources.GetString(
 				"lb.AccessibleDescription"
 			);
-			this.lb.AccessibleName = resources.GetString("lb.AccessibleName");
-			this.lb.Anchor = (
+			lb.AccessibleName = resources.GetString("lb.AccessibleName");
+			lb.Anchor = (
 				(AnchorStyles)(resources.GetObject("lb.Anchor"))
 			);
-			this.lb.AutoSize = ((bool)(resources.GetObject("lb.AutoSize")));
-			this.lb.Dock = (
+			lb.AutoSize = ((bool)(resources.GetObject("lb.AutoSize")));
+			lb.Dock = (
 				(DockStyle)(resources.GetObject("lb.Dock"))
 			);
-			this.lb.Enabled = ((bool)(resources.GetObject("lb.Enabled")));
-			this.lb.Font = ((System.Drawing.Font)(resources.GetObject("lb.Font")));
-			this.lb.Image = ((System.Drawing.Image)(resources.GetObject("lb.Image")));
-			this.lb.ImageAlign = (
+			lb.Enabled = ((bool)(resources.GetObject("lb.Enabled")));
+			lb.Font = ((System.Drawing.Font)(resources.GetObject("lb.Font")));
+			lb.Image = ((System.Drawing.Image)(resources.GetObject("lb.Image")));
+			lb.ImageAlign = (
 				(System.Drawing.ContentAlignment)(resources.GetObject("lb.ImageAlign"))
 			);
-			this.lb.ImageIndex = ((int)(resources.GetObject("lb.ImageIndex")));
-			this.lb.ImeMode = (
+			lb.ImageIndex = ((int)(resources.GetObject("lb.ImageIndex")));
+			lb.ImeMode = (
 				(ImeMode)(resources.GetObject("lb.ImeMode"))
 			);
-			this.lb.Location = (
+			lb.Location = (
 				(System.Drawing.Point)(resources.GetObject("lb.Location"))
 			);
-			this.lb.Name = "lb";
-			this.lb.RightToLeft = (
+			lb.Name = "lb";
+			lb.RightToLeft = (
 				(RightToLeft)(
 					resources.GetObject("lb.RightToLeft")
 				)
 			);
-			this.lb.Size = ((System.Drawing.Size)(resources.GetObject("lb.Size")));
-			this.lb.TabIndex = ((int)(resources.GetObject("lb.TabIndex")));
-			this.lb.Text = resources.GetString("lb.Text");
-			this.lb.TextAlign = (
+			lb.Size = ((System.Drawing.Size)(resources.GetObject("lb.Size")));
+			lb.TabIndex = ((int)(resources.GetObject("lb.TabIndex")));
+			lb.Text = resources.GetString("lb.Text");
+			lb.TextAlign = (
 				(System.Drawing.ContentAlignment)(resources.GetObject("lb.TextAlign"))
 			);
-			this.lb.Visible = ((bool)(resources.GetObject("lb.Visible")));
+			lb.Visible = ((bool)(resources.GetObject("lb.Visible")));
 			//
 			// ll
 			//
-			this.ll.AccessibleDescription = resources.GetString(
+			ll.AccessibleDescription = resources.GetString(
 				"ll.AccessibleDescription"
 			);
-			this.ll.AccessibleName = resources.GetString("ll.AccessibleName");
-			this.ll.Anchor = (
+			ll.AccessibleName = resources.GetString("ll.AccessibleName");
+			ll.Anchor = (
 				(AnchorStyles)(resources.GetObject("ll.Anchor"))
 			);
-			this.ll.AutoSize = ((bool)(resources.GetObject("ll.AutoSize")));
-			this.ll.Dock = (
+			ll.AutoSize = ((bool)(resources.GetObject("ll.AutoSize")));
+			ll.Dock = (
 				(DockStyle)(resources.GetObject("ll.Dock"))
 			);
-			this.ll.Enabled = ((bool)(resources.GetObject("ll.Enabled")));
-			this.ll.Font = ((System.Drawing.Font)(resources.GetObject("ll.Font")));
-			this.ll.Image = ((System.Drawing.Image)(resources.GetObject("ll.Image")));
-			this.ll.ImageAlign = (
+			ll.Enabled = ((bool)(resources.GetObject("ll.Enabled")));
+			ll.Font = ((System.Drawing.Font)(resources.GetObject("ll.Font")));
+			ll.Image = ((System.Drawing.Image)(resources.GetObject("ll.Image")));
+			ll.ImageAlign = (
 				(System.Drawing.ContentAlignment)(resources.GetObject("ll.ImageAlign"))
 			);
-			this.ll.ImageIndex = ((int)(resources.GetObject("ll.ImageIndex")));
-			this.ll.ImeMode = (
+			ll.ImageIndex = ((int)(resources.GetObject("ll.ImageIndex")));
+			ll.ImeMode = (
 				(ImeMode)(resources.GetObject("ll.ImeMode"))
 			);
-			this.ll.LinkArea = (
+			ll.LinkArea = (
 				(LinkArea)(resources.GetObject("ll.LinkArea"))
 			);
-			this.ll.Location = (
+			ll.Location = (
 				(System.Drawing.Point)(resources.GetObject("ll.Location"))
 			);
-			this.ll.Name = "ll";
-			this.ll.RightToLeft = (
+			ll.Name = "ll";
+			ll.RightToLeft = (
 				(RightToLeft)(
 					resources.GetObject("ll.RightToLeft")
 				)
 			);
-			this.ll.Size = ((System.Drawing.Size)(resources.GetObject("ll.Size")));
-			this.ll.TabIndex = ((int)(resources.GetObject("ll.TabIndex")));
-			this.ll.TabStop = true;
-			this.ll.Text = resources.GetString("ll.Text");
-			this.ll.TextAlign = (
+			ll.Size = ((System.Drawing.Size)(resources.GetObject("ll.Size")));
+			ll.TabIndex = ((int)(resources.GetObject("ll.TabIndex")));
+			ll.TabStop = true;
+			ll.Text = resources.GetString("ll.Text");
+			ll.TextAlign = (
 				(System.Drawing.ContentAlignment)(resources.GetObject("ll.TextAlign"))
 			);
-			this.ll.Visible = ((bool)(resources.GetObject("ll.Visible")));
-			this.ll.LinkClicked +=
+			ll.Visible = ((bool)(resources.GetObject("ll.Visible")));
+			ll.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.ll_LinkClicked
+					ll_LinkClicked
 				);
 			//
 			// NgbhValueDescriptorUI
 			//
-			this.AccessibleDescription = resources.GetString(
+			AccessibleDescription = resources.GetString(
 				"$this.AccessibleDescription"
 			);
-			this.AccessibleName = resources.GetString("$this.AccessibleName");
-			this.AutoScroll = ((bool)(resources.GetObject("$this.AutoScroll")));
-			this.AutoScrollMargin = (
+			AccessibleName = resources.GetString("$this.AccessibleName");
+			AutoScroll = ((bool)(resources.GetObject("$this.AutoScroll")));
+			AutoScrollMargin = (
 				(System.Drawing.Size)(resources.GetObject("$this.AutoScrollMargin"))
 			);
-			this.AutoScrollMinSize = (
+			AutoScrollMinSize = (
 				(System.Drawing.Size)(resources.GetObject("$this.AutoScrollMinSize"))
 			);
-			this.BackgroundImage = (
+			BackgroundImage = (
 				(System.Drawing.Image)(resources.GetObject("$this.BackgroundImage"))
 			);
-			this.Controls.Add(this.panel3);
-			this.Controls.Add(this.panel2);
-			this.Controls.Add(this.panel1);
-			this.Enabled = ((bool)(resources.GetObject("$this.Enabled")));
-			this.Font = ((System.Drawing.Font)(resources.GetObject("$this.Font")));
-			this.ImeMode = (
+			Controls.Add(panel3);
+			Controls.Add(panel2);
+			Controls.Add(panel1);
+			Enabled = ((bool)(resources.GetObject("$this.Enabled")));
+			Font = ((System.Drawing.Font)(resources.GetObject("$this.Font")));
+			ImeMode = (
 				(ImeMode)(resources.GetObject("$this.ImeMode"))
 			);
-			this.Location = (
+			Location = (
 				(System.Drawing.Point)(resources.GetObject("$this.Location"))
 			);
-			this.Name = "NgbhValueDescriptorUI";
-			this.RightToLeft = (
+			Name = "NgbhValueDescriptorUI";
+			RightToLeft = (
 				(RightToLeft)(
 					resources.GetObject("$this.RightToLeft")
 				)
 			);
-			this.Size = ((System.Drawing.Size)(resources.GetObject("$this.Size")));
-			this.panel1.ResumeLayout(false);
-			this.panel2.ResumeLayout(false);
-			this.panel3.ResumeLayout(false);
-			this.ResumeLayout(false);
+			Size = ((System.Drawing.Size)(resources.GetObject("$this.Size")));
+			panel1.ResumeLayout(false);
+			panel2.ResumeLayout(false);
+			panel3.ResumeLayout(false);
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -562,11 +562,11 @@ namespace SimPe.Plugin
 					lb.Text = des.ToString();
 				}
 
-				this.Enabled = true;
+				Enabled = true;
 			}
 			else
 			{
-				this.Enabled = false;
+				Enabled = false;
 			}
 
 			SetVisible();
@@ -575,7 +575,7 @@ namespace SimPe.Plugin
 
 		private void vds_SelectedDescriptorChanged(object sender, EventArgs e)
 		{
-			this.NgbhValueDescriptor = vds.SelectedDescriptor;
+			NgbhValueDescriptor = vds.SelectedDescriptor;
 		}
 
 		private void pb_Resize(object sender, EventArgs e)

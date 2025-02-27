@@ -43,7 +43,7 @@ namespace SimPe
 			tbContainer.Visible = false;
 			createdmenus = false;
 
-			Wait.Bar = this.waitControl1;
+			Wait.Bar = waitControl1;
 
 			if (Helper.WindowsRegistry.UseBigIcons)
 			{
@@ -94,7 +94,7 @@ namespace SimPe
 				tbPlugAction,
 				tbAction,
 				dockBottom,
-				this.mbiTopics,
+				mbiTopics,
 				lv
 			);
 			plugger.ClosedToolPlugin += new ToolMenuItemExt.ExternalToolNotify(
@@ -104,11 +104,11 @@ namespace SimPe
 
 			remote.LoadedResource += new ChangedResourceEvent(rh_LoadedResource);
 
-			package.UpdateRecentFileMenu(this.miRecent);
+			package.UpdateRecentFileMenu(miRecent);
 
 			InitTheme();
-			dockBottom.Height = ((this.Height * 3) / 4);
-			this.Text =
+			dockBottom.Height = ((Height * 3) / 4);
+			Text =
 				"SimPe (Version "
 				+ Helper.SimPeVersion.ProductVersion
 				+ ") "
@@ -118,17 +118,17 @@ namespace SimPe
 			sdm2.OwnerForm = this;
 			sdm2.Renderer = new TD.SandDock.Rendering.WhidbeyRenderer();
 
-			this.dc.Manager = sdm2;
+			dc.Manager = sdm2;
 
 			InitMenuItems();
-			this.dcPlugin.Open();
+			dcPlugin.Open();
 			Ambertation.Windows.Forms.ToolStripRuntimeDesigner.Add(tbContainer);
 			Ambertation.Windows.Forms.ToolStripRuntimeDesigner.LineUpToolBars(
 				tbContainer
 			);
 			if (Helper.StartedGui == Executable.Default)
 			{
-				this.menuBar1.ContextMenuStrip = tbContainer
+				menuBar1.ContextMenuStrip = tbContainer
 					.TopToolStripPanel
 					.ContextMenuStrip;
 			}
@@ -163,7 +163,7 @@ namespace SimPe
 				Localization.GetString("Starting Main Form")
 			);
 
-			this.SuspendLayout();
+			SuspendLayout();
 
 			dcFilter.Collapse(false);
 
@@ -178,7 +178,7 @@ namespace SimPe
 			{
 				if (sga.Known)
 				{
-					this.cbsemig.Items.Add(sga);
+					cbsemig.Items.Add(sga);
 				}
 			}
 
@@ -217,13 +217,13 @@ namespace SimPe
 			//Life Stories and Base game = No Icon
 			//if (GetImage.GetExpansionIcon((byte)eep) == null || Helper.StartedGui == Executable.Classic) this.miRunSims.Image = global::SimPe.Properties.Resources.Sims2;
 			//else
-			this.miRunSims.Image = GetImage.GetExpansionIcon((byte)eep);
-			this.miRunSims.Text = "Run " + PathProvider.Global.Latest.NameShorter;
+			miRunSims.Image = GetImage.GetExpansionIcon((byte)eep);
+			miRunSims.Text = "Run " + PathProvider.Global.Latest.NameShorter;
 
 			manager.Visible = true;
 			tbContainer.Visible = true;
 
-			this.ResumeLayout();
+			ResumeLayout();
 
 			Splash.Screen.Stop();
 

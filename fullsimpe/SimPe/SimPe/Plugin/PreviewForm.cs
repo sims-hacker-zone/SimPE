@@ -50,45 +50,45 @@ namespace SimPe.Plugin
 		{
 			System.Resources.ResourceManager resources =
 				new System.Resources.ResourceManager(typeof(PreviewForm));
-			this.dx = new Ambertation.Graphics.DirectXPanel();
-			this.SuspendLayout();
+			dx = new Ambertation.Graphics.DirectXPanel();
+			SuspendLayout();
 			//
 			// dx
 			//
-			this.dx.BackColor = System.Drawing.Color.FromArgb(
+			dx.BackColor = System.Drawing.Color.FromArgb(
 				((System.Byte)(128)),
 				((System.Byte)(128)),
 				((System.Byte)(255))
 			);
-			this.dx.Dock = DockStyle.Fill;
-			this.dx.Effect = null;
-			this.dx.Location = new System.Drawing.Point(0, 0);
-			this.dx.Name = "dx";
-			this.dx.Size = new System.Drawing.Size(494, 476);
-			this.dx.TabIndex = 0;
-			this.dx.WorldMatrix = (
+			dx.Dock = DockStyle.Fill;
+			dx.Effect = null;
+			dx.Location = new System.Drawing.Point(0, 0);
+			dx.Name = "dx";
+			dx.Size = new System.Drawing.Size(494, 476);
+			dx.TabIndex = 0;
+			dx.WorldMatrix = (
 				(Microsoft.DirectX.Matrix)(resources.GetObject("dx.WorldMatrix"))
 			);
 			//
 			// PreviewForm
 			//
-			this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
-			this.BackColor = System.Drawing.Color.FromArgb(
+			AutoScaleBaseSize = new System.Drawing.Size(5, 14);
+			BackColor = System.Drawing.Color.FromArgb(
 				((System.Byte)(128)),
 				((System.Byte)(128)),
 				((System.Byte)(255))
 			);
-			this.ClientSize = new System.Drawing.Size(494, 476);
-			this.Controls.Add(this.dx);
-			this.Font = new System.Drawing.Font("Tahoma", 8.25F);
-			this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.MaximizeBox = false;
-			this.MinimizeBox = false;
-			this.Name = "PreviewForm";
-			this.StartPosition = FormStartPosition.CenterScreen;
-			this.Text = "Recolour Preview";
-			this.ResumeLayout(false);
+			ClientSize = new System.Drawing.Size(494, 476);
+			Controls.Add(dx);
+			Font = new System.Drawing.Font("Tahoma", 8.25F);
+			FormBorderStyle = FormBorderStyle.FixedToolWindow;
+			Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			MaximizeBox = false;
+			MinimizeBox = false;
+			Name = "PreviewForm";
+			StartPosition = FormStartPosition.CenterScreen;
+			Text = "Recolour Preview";
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -336,7 +336,7 @@ namespace SimPe.Plugin
 		private void dx_ResetDevice(object sender, EventArgs e)
 		{
 			dx.Meshes.Clear();
-			dx.AddScene(this.scene);
+			dx.AddScene(scene);
 		}
 	}
 }

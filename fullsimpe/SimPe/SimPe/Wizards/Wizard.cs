@@ -36,12 +36,12 @@ namespace SimPe.Wizards
 
 		public Wizard()
 		{
-			this.BackColor = Color.Transparent;
-			this.DockPadding.All = 8;
+			BackColor = Color.Transparent;
+			DockPadding.All = 8;
 
 			img = null;
-			this.ControlAdded += new ControlEventHandler(Wizard_ControlAdded);
-			this.ControlRemoved += new ControlEventHandler(Wizard_ControlRemoved);
+			ControlAdded += new ControlEventHandler(Wizard_ControlAdded);
+			ControlRemoved += new ControlEventHandler(Wizard_ControlRemoved);
 		}
 
 		internal bool Contains(WizardStepPanel iws)
@@ -79,7 +79,7 @@ namespace SimPe.Wizards
 			{
 				if (value == cur)
 				{
-					this.JumpToStep(value);
+					JumpToStep(value);
 				}
 			}
 		}
@@ -165,11 +165,11 @@ namespace SimPe.Wizards
 				return false;
 			}
 
-			if (this.DesignMode)
+			if (DesignMode)
 			{
-				this.CurrentStep.Client.Visible = false;
-				this.cur = nr;
-				this.CurrentStep.Client.Visible = true;
+				CurrentStep.Client.Visible = false;
+				cur = nr;
+				CurrentStep.Client.Visible = true;
 				return false;
 			}
 			int lastnr = cur;
@@ -229,12 +229,12 @@ namespace SimPe.Wizards
 				c.Visible = false;
 			}
 
-			this.CurrentStep.Client.Visible = false;
-			this.cur = nr;
-			this.CurrentStep.Client.Visible = true;
-			this.NextEnabled = e.EnableNext;
-			this.PrevEnabled = e.EnablePrev;
-			this.FinishEnabled = e.CanFinish;
+			CurrentStep.Client.Visible = false;
+			cur = nr;
+			CurrentStep.Client.Visible = true;
+			NextEnabled = e.EnableNext;
+			PrevEnabled = e.EnablePrev;
+			FinishEnabled = e.CanFinish;
 
 			((WizardStepPanel)Controls[nr]).OnShowed(this);
 			if (ShowedStep != null)
@@ -252,18 +252,18 @@ namespace SimPe.Wizards
 				Loaded(this);
 			}
 
-			this.cur = 0;
-			this.JumpToStep(0);
+			cur = 0;
+			JumpToStep(0);
 		}
 
 		public bool GoNext()
 		{
-			return this.JumpToStep(this.CurrentStepNumber + 1);
+			return JumpToStep(CurrentStepNumber + 1);
 		}
 
 		public bool GoPrev()
 		{
-			return this.JumpToStep(this.CurrentStepNumber - 1);
+			return JumpToStep(CurrentStepNumber - 1);
 		}
 
 		public void Finish()
@@ -310,7 +310,7 @@ namespace SimPe.Wizards
 		{
 			base.OnPaint(e);
 
-			if (this.DesignMode)
+			if (DesignMode)
 			{
 				e.Graphics.DrawRectangle(
 					new Pen(Color.FromArgb(90, Color.DarkRed), 1),
@@ -362,13 +362,13 @@ namespace SimPe.Wizards
 				return;
 			}
 
-			if (!this.DesignMode)
+			if (!DesignMode)
 			{
 				iws.Client.Visible = false;
 			}
 
 			iws.SetupParent(this);
-			iws.Client.Parent = this.WizardContainer;
+			iws.Client.Parent = WizardContainer;
 			iws.Dock = DockStyle.Fill;
 			iws.Last = true;
 			iws.First = (Controls.Count == 0);

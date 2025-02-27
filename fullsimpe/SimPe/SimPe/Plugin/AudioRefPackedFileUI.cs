@@ -22,7 +22,7 @@ namespace SimPe.Plugin
 		{
 			base.RefreshGUI();
 
-			this.TBsting.Text = Wrapper.Strung;
+			TBsting.Text = Wrapper.Strung;
 		}
 
 		public override void OnCommit()
@@ -40,7 +40,7 @@ namespace SimPe.Plugin
 
 		void IDisposable.Dispose()
 		{
-			this.TPFW.Dispose();
+			TPFW.Dispose();
 		}
 		#endregion
 

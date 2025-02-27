@@ -58,20 +58,20 @@ namespace SimPe.Plugin
 		{
 			System.Resources.ResourceManager resources =
 				new System.Resources.ResourceManager(typeof(RenameForm));
-			this.lv = new ListView();
-			this.columnHeader1 = new ColumnHeader();
-			this.columnHeader2 = new ColumnHeader();
-			this.columnHeader3 = new ColumnHeader();
-			this.label1 = new Label();
-			this.tbname = new TextBox();
-			this.llname = new LinkLabel();
-			this.button1 = new Button();
-			this.cbv2 = new CheckBox();
-			this.SuspendLayout();
+			lv = new ListView();
+			columnHeader1 = new ColumnHeader();
+			columnHeader2 = new ColumnHeader();
+			columnHeader3 = new ColumnHeader();
+			label1 = new Label();
+			tbname = new TextBox();
+			llname = new LinkLabel();
+			button1 = new Button();
+			cbv2 = new CheckBox();
+			SuspendLayout();
 			//
 			// lv
 			//
-			this.lv.Anchor = (
+			lv.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -83,58 +83,58 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.lv.Columns.AddRange(
+			lv.Columns.AddRange(
 				new ColumnHeader[]
 				{
-					this.columnHeader1,
-					this.columnHeader2,
-					this.columnHeader3,
+					columnHeader1,
+					columnHeader2,
+					columnHeader3,
 				}
 			);
-			this.lv.FullRowSelect = true;
-			this.lv.HeaderStyle = ColumnHeaderStyle.Nonclickable;
-			this.lv.HideSelection = false;
-			this.lv.LabelEdit = true;
-			this.lv.Location = new System.Drawing.Point(16, 88);
-			this.lv.MultiSelect = false;
-			this.lv.Name = "lv";
-			this.lv.Size = new System.Drawing.Size(682, 208);
-			this.lv.TabIndex = 0;
-			this.lv.View = View.Details;
+			lv.FullRowSelect = true;
+			lv.HeaderStyle = ColumnHeaderStyle.Nonclickable;
+			lv.HideSelection = false;
+			lv.LabelEdit = true;
+			lv.Location = new System.Drawing.Point(16, 88);
+			lv.MultiSelect = false;
+			lv.Name = "lv";
+			lv.Size = new System.Drawing.Size(682, 208);
+			lv.TabIndex = 0;
+			lv.View = View.Details;
 			//
 			// columnHeader1
 			//
-			this.columnHeader1.Text = "Name";
-			this.columnHeader1.Width = 336;
+			columnHeader1.Text = "Name";
+			columnHeader1.Width = 336;
 			//
 			// columnHeader2
 			//
-			this.columnHeader2.Text = "Type";
+			columnHeader2.Text = "Type";
 			//
 			// columnHeader3
 			//
-			this.columnHeader3.Text = "original Name";
-			this.columnHeader3.Width = 256;
+			columnHeader3.Text = "original Name";
+			columnHeader3.Width = 256;
 			//
 			// label1
 			//
-			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font(
+			label1.AutoSize = true;
+			label1.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label1.Location = new System.Drawing.Point(16, 16);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(83, 17);
-			this.label1.TabIndex = 1;
-			this.label1.Text = "ModelName:";
+			label1.Location = new System.Drawing.Point(16, 16);
+			label1.Name = "label1";
+			label1.Size = new System.Drawing.Size(83, 17);
+			label1.TabIndex = 1;
+			label1.Text = "ModelName:";
 			//
 			// tbname
 			//
-			this.tbname.Anchor = (
+			tbname.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -144,15 +144,15 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.tbname.Location = new System.Drawing.Point(24, 32);
-			this.tbname.Name = "tbname";
-			this.tbname.Size = new System.Drawing.Size(674, 21);
-			this.tbname.TabIndex = 2;
-			this.tbname.Text = "";
+			tbname.Location = new System.Drawing.Point(24, 32);
+			tbname.Name = "tbname";
+			tbname.Size = new System.Drawing.Size(674, 21);
+			tbname.TabIndex = 2;
+			tbname.Text = "";
 			//
 			// llname
 			//
-			this.llname.Anchor = (
+			llname.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -160,28 +160,28 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.llname.AutoSize = true;
-			this.llname.Font = new System.Drawing.Font(
+			llname.AutoSize = true;
+			llname.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.llname.Location = new System.Drawing.Point(647, 56);
-			this.llname.Name = "llname";
-			this.llname.Size = new System.Drawing.Size(49, 17);
-			this.llname.TabIndex = 4;
-			this.llname.TabStop = true;
-			this.llname.Text = "Update";
-			this.llname.LinkClicked +=
+			llname.Location = new System.Drawing.Point(647, 56);
+			llname.Name = "llname";
+			llname.Size = new System.Drawing.Size(49, 17);
+			llname.TabIndex = 4;
+			llname.TabStop = true;
+			llname.Text = "Update";
+			llname.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.UpdateNames
+					UpdateNames
 				);
 			//
 			// button1
 			//
-			this.button1.Anchor = (
+			button1.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -189,16 +189,16 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.button1.FlatStyle = FlatStyle.System;
-			this.button1.Location = new System.Drawing.Point(623, 304);
-			this.button1.Name = "button1";
-			this.button1.TabIndex = 5;
-			this.button1.Text = "OK";
-			this.button1.Click += new EventHandler(this.button1_Click);
+			button1.FlatStyle = FlatStyle.System;
+			button1.Location = new System.Drawing.Point(623, 304);
+			button1.Name = "button1";
+			button1.TabIndex = 5;
+			button1.Text = "OK";
+			button1.Click += new EventHandler(button1_Click);
 			//
 			// cbv2
 			//
-			this.cbv2.Anchor = (
+			cbv2.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -206,44 +206,44 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.cbv2.FlatStyle = FlatStyle.System;
-			this.cbv2.Font = new System.Drawing.Font(
+			cbv2.FlatStyle = FlatStyle.System;
+			cbv2.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.cbv2.Location = new System.Drawing.Point(16, 304);
-			this.cbv2.Name = "cbv2";
-			this.cbv2.Size = new System.Drawing.Size(280, 24);
-			this.cbv2.TabIndex = 6;
-			this.cbv2.Text = "University Ready v2 (sug. by Numenor)";
+			cbv2.Location = new System.Drawing.Point(16, 304);
+			cbv2.Name = "cbv2";
+			cbv2.Size = new System.Drawing.Size(280, 24);
+			cbv2.TabIndex = 6;
+			cbv2.Text = "University Ready v2 (sug. by Numenor)";
 			//
 			// RenameForm
 			//
-			this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
-			this.ClientSize = new System.Drawing.Size(712, 332);
-			this.Controls.Add(this.cbv2);
-			this.Controls.Add(this.button1);
-			this.Controls.Add(this.llname);
-			this.Controls.Add(this.tbname);
-			this.Controls.Add(this.label1);
-			this.Controls.Add(this.lv);
-			this.Font = new System.Drawing.Font(
+			AutoScaleBaseSize = new System.Drawing.Size(6, 14);
+			ClientSize = new System.Drawing.Size(712, 332);
+			Controls.Add(cbv2);
+			Controls.Add(button1);
+			Controls.Add(llname);
+			Controls.Add(tbname);
+			Controls.Add(label1);
+			Controls.Add(lv);
+			Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.FormBorderStyle =
+			FormBorderStyle =
 				FormBorderStyle
 				.SizableToolWindow;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.Name = "RenameForm";
-			this.Text = "Scenegraph rename Wizard";
-			this.ResumeLayout(false);
+			Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			Name = "RenameForm";
+			Text = "Scenegraph rename Wizard";
+			ResumeLayout(false);
 		}
 		#endregion
 

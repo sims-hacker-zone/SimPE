@@ -48,14 +48,14 @@ namespace SimPe.Plugin
 		{
 			if (parent != null)
 			{
-				this.Version = parent.Version;
+				Version = parent.Version;
 			}
 			else
 			{
-				this.Version = NgbhVersion.University;
+				Version = NgbhVersion.University;
 			}
 
-			this.Parent = parent;
+			Parent = parent;
 			itemsa = new Collections.NgbhItems(this);
 			itemsb = new Collections.NgbhItems(this);
 		}
@@ -254,7 +254,7 @@ namespace SimPe.Plugin
 		internal NgbhSlot(Ngbh parent, Data.NeighborhoodSlots type)
 			: base(parent)
 		{
-			this.Type = type;
+			Type = type;
 		}
 
 		/// <summary>
@@ -263,7 +263,7 @@ namespace SimPe.Plugin
 		/// <param name="reader">The Stream that contains the FileData</param>
 		internal override void Unserialize(System.IO.BinaryReader reader)
 		{
-			this.SlotID = reader.ReadUInt32();
+			SlotID = reader.ReadUInt32();
 
 			base.Unserialize(reader);
 		}
@@ -278,7 +278,7 @@ namespace SimPe.Plugin
 		/// </remarks>
 		internal override void Serialize(System.IO.BinaryWriter writer)
 		{
-			writer.Write(this.SlotID);
+			writer.Write(SlotID);
 
 			base.Serialize(writer);
 		}
@@ -288,9 +288,9 @@ namespace SimPe.Plugin
 			return "0x"
 				+ Helper.HexString(SlotID)
 				+ ": "
-				+ this.ItemsA.Count
+				+ ItemsA.Count
 				+ ", "
-				+ this.ItemsB.Count;
+				+ ItemsB.Count;
 		}
 
 		#region extension by Theo
@@ -315,10 +315,10 @@ namespace SimPe.Plugin
 						simMemory.IsMemory
 						&& (
 							//1,
-							simMemory.SimInstance == this.SlotID
+							simMemory.SimInstance == SlotID
 							||
 							//2.
-							simMemory.OwnerInstance == this.SlotID
+							simMemory.OwnerInstance == SlotID
 						)
 					)
 					{
@@ -338,8 +338,8 @@ namespace SimPe.Plugin
 
 		public void RemoveMyMemories()
 		{
-			this.ItemsA.Clear();
-			this.ItemsB.Clear();
+			ItemsA.Clear();
+			ItemsB.Clear();
 		}
 		#endregion
 	}

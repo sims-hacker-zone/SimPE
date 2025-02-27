@@ -27,18 +27,18 @@ namespace SimPe.Plugin
 		protected override void RefreshGUI()
 		{
 			base.RefreshGUI();
-			this.rtLotTex.ReadOnly = true;
-			this.CanCommit = false;
+			rtLotTex.ReadOnly = true;
+			CanCommit = false;
 			memorees = Wrapper.Itemnumber;
 			if (memorees == -1)
 			{
-				this.rtLotTex.Text = "Unknown Version!";
+				rtLotTex.Text = "Unknown Version!";
 			}
 			else
 			{
 				if (Wrapper.FileDescriptor.Type == 0x4B58975B)
 				{
-					this.HeaderText = "Lot Texture Reader";
+					HeaderText = "Lot Texture Reader";
 					hoodtype = Wrapper.Hoodtexture;
 					if (Wrapper.Hoodtexture == "lottexture-test-01")
 					{
@@ -85,29 +85,29 @@ namespace SimPe.Plugin
 				}
 				else if (Wrapper.FileDescriptor.Type == 0xCDB8BDC4)
 				{
-					this.HeaderText = "Single Sim Memories";
-					this.rtLotTex.Text =
+					HeaderText = "Single Sim Memories";
+					rtLotTex.Text =
 						Wrapper.Hoodtexture
 						+ " Memories ("
 						+ Convert.ToString(memorees)
 						+ ")";
 					if (Wrapper.Badges > 0)
 					{
-						this.rtLotTex.Text += "\n -- Skills --";
+						rtLotTex.Text += "\n -- Skills --";
 						for (int j = 0; j < Wrapper.Badges; j++)
 						{
-							this.rtLotTex.Text +=
+							rtLotTex.Text +=
 								"\n("
 								+ Helper.HexString(Wrapper.badgesid[j])
 								+ ") "
 								+ pjse.GUIDIndex.TheGUIDIndex[Wrapper.badgesid[j]];
 							;
 						}
-						this.rtLotTex.Text += "\n\n -- Memories --";
+						rtLotTex.Text += "\n\n -- Memories --";
 					}
 					for (int i = 0; i < memorees; i++)
 					{
-						this.rtLotTex.Text +=
+						rtLotTex.Text +=
 							"\n("
 							+ Helper.HexString(Wrapper.remeberid[i])
 							+ ") "
@@ -117,14 +117,14 @@ namespace SimPe.Plugin
 				}
 				else
 				{
-					this.HeaderText = "Neighour Id Mapping";
-					this.rtLotTex.Text =
+					HeaderText = "Neighour Id Mapping";
+					rtLotTex.Text =
 						" Nid Mapping ("
 						+ Convert.ToString(memorees - Wrapper.visitnum)
 						+ " Family Sims)";
 					for (int i = Wrapper.visitnum; i < memorees; i++)
 					{
-						this.rtLotTex.Text +=
+						rtLotTex.Text +=
 							"\n"
 							+ Wrapper.texchure[i]
 							+ " - GUID(0x"
@@ -135,13 +135,13 @@ namespace SimPe.Plugin
 					}
 					if (Wrapper.visitnum > 0)
 					{
-						this.rtLotTex.Text +=
+						rtLotTex.Text +=
 							" \n\n "
 							+ Convert.ToString(Wrapper.visitnum)
 							+ " Other Sims";
 						for (int j = 0; j < Wrapper.visitnum; j++)
 						{
-							this.rtLotTex.Text +=
+							rtLotTex.Text +=
 								"\n"
 								+ Wrapper.texchure[j]
 								+ " - GUID(0x"
@@ -203,7 +203,7 @@ namespace SimPe.Plugin
 
 		void IDisposable.Dispose()
 		{
-			this.TPFW.Dispose();
+			TPFW.Dispose();
 		}
 		#endregion
 	}

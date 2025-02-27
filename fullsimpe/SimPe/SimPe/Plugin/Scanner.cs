@@ -70,8 +70,8 @@ namespace SimPe.Plugin
 		{
 			ListView.SmallImageList = ListView.LargeImageList;
 			ids.Clear();
-			AddColumn(this.ListView, "Neighbourhood Type", 140);
-			AddColumn(this.ListView, "Neighbourhood UID", 80);
+			AddColumn(ListView, "Neighbourhood Type", 140);
+			AddColumn(ListView, "Neighbourhood UID", 80);
 		}
 
 		public void ScanPackage(
@@ -80,7 +80,7 @@ namespace SimPe.Plugin
 			System.Windows.Forms.ListViewItem lvi
 		)
 		{
-			this.LoadThumbnail(si, ps);
+			LoadThumbnail(si, ps);
 			if (si.PackageCacheItem.Type == PackageType.Neighbourhood)
 			{
 				Interfaces.Files.IPackedFileDescriptor[] pfds = si.Package.FindFiles(
@@ -126,12 +126,12 @@ namespace SimPe.Plugin
 			System.Windows.Forms.ListViewItem lvi
 		)
 		{
-			SetSubItem(lvi, this.StartColum + 1, "");
+			SetSubItem(lvi, StartColum + 1, "");
 			if (si.PackageCacheItem.Type == PackageType.Neighbourhood)
 			{
 				if (si.PackageCacheItem.Thumbnail == null)
 				{
-					this.LoadThumbnail(si, ps);
+					LoadThumbnail(si, ps);
 				}
 
 				//Add the Thumbnail if available
@@ -146,12 +146,12 @@ namespace SimPe.Plugin
 					ids.Add(ps.Data[1]);
 					SetSubItem(
 						lvi,
-						this.StartColum,
+						StartColum,
 						((NeighborhoodType)ps.Data[0]).ToString().Replace("_", " ")
 					);
 					SetSubItem(
 						lvi,
-						this.StartColum + 1,
+						StartColum + 1,
 						"0x" + Helper.HexString(ps.Data[1]),
 						ps
 					);
@@ -204,7 +204,7 @@ namespace SimPe.Plugin
 			selection = items;
 			if (!active)
 			{
-				this.OperationControl.Enabled = false;
+				OperationControl.Enabled = false;
 				return;
 			}
 
@@ -247,7 +247,7 @@ namespace SimPe.Plugin
 					WaitingScreen.UpdateMessage(si.FileName);
 
 					PackageState ps = si.PackageCacheItem.FindState(
-						this.Uid,
+						Uid,
 						true
 					);
 					if (si.PackageCacheItem.Type == PackageType.Neighbourhood)
@@ -278,9 +278,9 @@ namespace SimPe.Plugin
 					}
 				}
 
-				if (chg && this.CallbackFinish != null)
+				if (chg && CallbackFinish != null)
 				{
-					this.CallbackFinish(false, false);
+					CallbackFinish(false, false);
 				}
 			}
 #if !DEBUG

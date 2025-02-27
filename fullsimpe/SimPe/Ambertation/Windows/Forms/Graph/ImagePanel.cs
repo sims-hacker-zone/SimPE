@@ -48,7 +48,7 @@ namespace Ambertation.Windows.Forms.Graph
 				if (bg != value)
 				{
 					bg = value;
-					this.Invalidate();
+					Invalidate();
 				}
 			}
 		}
@@ -62,7 +62,7 @@ namespace Ambertation.Windows.Forms.Graph
 			set
 			{
 				thumb = value;
-				this.Invalidate();
+				Invalidate();
 			}
 		}
 
@@ -76,7 +76,7 @@ namespace Ambertation.Windows.Forms.Graph
 			set
 			{
 				txt = value;
-				this.Invalidate();
+				Invalidate();
 			}
 		}
 
@@ -90,7 +90,7 @@ namespace Ambertation.Windows.Forms.Graph
 			set
 			{
 				tborder = value;
-				this.Invalidate();
+				Invalidate();
 			}
 		}
 		#endregion
@@ -131,9 +131,9 @@ namespace Ambertation.Windows.Forms.Graph
 				thumb,
 				BorderColor,
 				ImagePanelColor,
-				this.GradientColor,
-				this.FadeColor,
-				this.Focused,
+				GradientColor,
+				FadeColor,
+				Focused,
 				tborder,
 				tborder
 			);
@@ -284,7 +284,7 @@ namespace Ambertation.Windows.Forms.Graph
 			gr.DrawString(
 				tx,
 				f,
-				new Pen(this.ForeColor).Brush,
+				new Pen(ForeColor).Brush,
 				new RectangleF(
 					new PointF(r.Left + 4 + lshift, r.Top + shift + 1),
 					new SizeF(
@@ -298,12 +298,12 @@ namespace Ambertation.Windows.Forms.Graph
 
 		protected override void UserDraw(System.Drawing.Graphics gr)
 		{
-			Rectangle trec = this.ThumbnailRectangle;
+			Rectangle trec = ThumbnailRectangle;
 			int rad = Math.Min(Math.Min(8, trec.Height / 2), trec.Width / 2);
 
 			DrawThumbnail(gr, trec, rad);
 
-			DrawNiceRoundRect(gr, 0, Height - 16, Width, 16, 8, this.PanelColor);
+			DrawNiceRoundRect(gr, 0, Height - 16, Width, 16, 8, PanelColor);
 			DrawCaption(gr, new Rectangle(0, Height - 16, Width, 16), Font, true);
 		}
 
@@ -317,8 +317,8 @@ namespace Ambertation.Windows.Forms.Graph
 		public Size BestSize(int imgwidth, int imgheight)
 		{
 			return new Size(
-				imgwidth + 2 * this.tborder + 5,
-				imgheight + 2 * this.tborder + 5 + 19
+				imgwidth + 2 * tborder + 5,
+				imgheight + 2 * tborder + 5 + 19
 			);
 		}
 

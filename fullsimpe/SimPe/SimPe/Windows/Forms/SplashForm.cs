@@ -39,11 +39,11 @@ namespace SimPe.Windows.Forms
 		{
 			msg = "";
 			InitializeComponent();
-			this.MinimumSize = new Size(461, 212);
-			this.MaximumSize = new Size(461, 212);
+			MinimumSize = new Size(461, 212);
+			MaximumSize = new Size(461, 212);
 			myhandle = Handle;
-			this.StartPosition = FormStartPosition.CenterScreen;
-			this.FormBorderStyle = FormBorderStyle.None;
+			StartPosition = FormStartPosition.CenterScreen;
+			FormBorderStyle = FormBorderStyle.None;
 			lbtxt.Text = msg;
 			lbver.Text = Helper.VersionToString(Helper.SimPeVersion);
 			if (Helper.WindowsRegistry.HiddenMode && Helper.QARelease)
@@ -118,16 +118,16 @@ namespace SimPe.Windows.Forms
 			{
 				if (m.Msg == WM_CHANGE_MESSAGE)
 				{
-					this.lbtxt.Text = Message;
+					lbtxt.Text = Message;
 				}
 				else if (m.Msg == WM_SHOW_HIDE)
 				{
 					int i = m.WParam.ToInt32();
 					if (i == 1)
 					{
-						if (!this.Visible)
+						if (!Visible)
 						{
-							this.ShowDialog();
+							ShowDialog();
 						}
 						else
 						{
@@ -136,7 +136,7 @@ namespace SimPe.Windows.Forms
 					}
 					else
 					{
-						this.Close();
+						Close();
 					}
 				}
 			}

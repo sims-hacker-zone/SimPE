@@ -130,21 +130,21 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			set
 			{
-				if (this.item != value)
+				if (item != value)
 				{
 					if (item != null && item.Wrapper != null)
 					{
 						item.Wrapper.WrapperChanged -= new System.EventHandler(
-							this.WrapperChanged
+							WrapperChanged
 						);
 					}
 
-					this.item = value;
+					item = value;
 					setData();
 					if (item != null)
 					{
 						item.Wrapper.WrapperChanged += new System.EventHandler(
-							this.WrapperChanged
+							WrapperChanged
 						);
 					}
 				}
@@ -164,12 +164,12 @@ namespace SimPe.PackedFiles.UserInterface
 		private void setData()
 		{
 			cbShowAll.Enabled = false;
-			this.pnAllGroups.Controls.Clear();
+			pnAllGroups.Controls.Clear();
 
 			if (item != null && item.Count > 0)
 			{
-				this.lbNrGroups.Text =
-					this.lbNrGroups.Text.Split(new char[] { ':' })[0] + ": " + item.Count.ToString();
+				lbNrGroups.Text =
+					lbNrGroups.Text.Split(new char[] { ':' })[0] + ": " + item.Count.ToString();
 
 				TtabMotiveGroupUI c = new TtabMotiveGroupUI();
 				c.MotiveGroup = item[0];
@@ -191,7 +191,7 @@ namespace SimPe.PackedFiles.UserInterface
 					for (int i = 1; i < item.Count; i++)
 					{
 						c = new TtabMotiveGroupUI();
-						this.pnAllGroups.Controls.Add(c);
+						pnAllGroups.Controls.Add(c);
 						c.MotiveGroup = item[i];
 						if (item.Type == TtabItemMotiveTableType.Human)
 						{
@@ -212,7 +212,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			else
 			{
-				this.lbNrGroups.Text = (this.lbNrGroups.Text.Split(new char[] { ':' })[0]) + ": 0";
+				lbNrGroups.Text = (lbNrGroups.Text.Split(new char[] { ':' })[0]) + ": 0";
 			}
 
 			cbShowAll_CheckedChanged(null, null);
@@ -281,19 +281,19 @@ namespace SimPe.PackedFiles.UserInterface
 				lbMotive15,
 			};
 
-			this.Controls.Clear();
-			this.Controls.Add(this.cbShowAll);
-			this.Controls.Add(this.lbNrGroups);
-			this.Controls.Add(this.pnAllGroups);
-			this.Controls.Add(this.pnCopyButtons);
-			this.Controls.Add(c);
+			Controls.Clear();
+			Controls.Add(cbShowAll);
+			Controls.Add(lbNrGroups);
+			Controls.Add(pnAllGroups);
+			Controls.Add(pnCopyButtons);
+			Controls.Add(c);
 
-			maxWidth = this.lbNrGroups.Width;
+			maxWidth = lbNrGroups.Width;
 
 			int cbW = 0;
 			for (ushort m = 0; m < aMotiveLabels.Length; m++)
 			{
-				this.Controls.Add(aMotiveLabels[m]);
+				Controls.Add(aMotiveLabels[m]);
 				aMotiveLabels[m].Text = pjse.BhavWiz.readStr(
 					pjse.GS.BhavStr.Motives,
 					m
@@ -316,27 +316,27 @@ namespace SimPe.PackedFiles.UserInterface
 				lbCBM[m].Location = new Point(cbW + 2, c.Tops[m] + 2);
 			}
 
-			this.cbShowAll.Location = new Point(maxWidth - this.cbShowAll.Width, 2);
+			cbShowAll.Location = new Point(maxWidth - cbShowAll.Width, 2);
 
 			c.Location = new Point(maxWidth + 2, 0);
-			this.Height = c.Height + 24;
+			Height = c.Height + 24;
 
-			this.btnCopyAll.Location = new Point(0, c.Tops[15] + c.Tops[1] - c.Tops[0]);
-			this.lbNrGroups.Location = new Point(4, this.btnCopyAll.Top + 2);
+			btnCopyAll.Location = new Point(0, c.Tops[15] + c.Tops[1] - c.Tops[0]);
+			lbNrGroups.Location = new Point(4, btnCopyAll.Top + 2);
 
-			this.pnCopyButtons.Anchor = AnchorStyles.None;
-			this.pnCopyButtons.Location = new Point(c.Right + 2, 0);
-			this.pnCopyButtons.Size = new Size(lbCBM0.Right + 4, this.Height);
-			this.pnCopyButtons.Anchor =
+			pnCopyButtons.Anchor = AnchorStyles.None;
+			pnCopyButtons.Location = new Point(c.Right + 2, 0);
+			pnCopyButtons.Size = new Size(lbCBM0.Right + 4, Height);
+			pnCopyButtons.Anchor =
 				AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom;
 
-			this.pnAllGroups.Anchor = AnchorStyles.None;
-			this.pnAllGroups.Location = new Point(c.Right + 2, 0);
-			this.pnAllGroups.Size = new Size(
-				this.Width - this.pnAllGroups.Left,
+			pnAllGroups.Anchor = AnchorStyles.None;
+			pnAllGroups.Location = new Point(c.Right + 2, 0);
+			pnAllGroups.Size = new Size(
+				Width - pnAllGroups.Left,
 				c.Bottom + 24
 			);
-			this.pnAllGroups.Anchor =
+			pnAllGroups.Anchor =
 				AnchorStyles.Left
 				| AnchorStyles.Right
 				| AnchorStyles.Top
@@ -364,479 +364,479 @@ namespace SimPe.PackedFiles.UserInterface
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(TtabItemMotiveTableUI)
 				);
-			this.lbMotive0 = new Label();
-			this.lbMotive1 = new Label();
-			this.lbMotive2 = new Label();
-			this.lbMotive3 = new Label();
-			this.lbMotive4 = new Label();
-			this.lbMotive5 = new Label();
-			this.lbMotive6 = new Label();
-			this.lbMotive7 = new Label();
-			this.lbMotive9 = new Label();
-			this.lbMotive11 = new Label();
-			this.lbMotive8 = new Label();
-			this.lbMotive10 = new Label();
-			this.lbMotive14 = new Label();
-			this.lbMotive15 = new Label();
-			this.lbMotive13 = new Label();
-			this.lbMotive12 = new Label();
-			this.pnAllGroups = new Panel();
-			this.cbShowAll = new CheckBox();
-			this.pnCopyButtons = new Panel();
-			this.btnCopyAll = new Button();
-			this.lbCBM0 = new Label();
-			this.btnCpyM0 = new Button();
-			this.btnCpyM1 = new Button();
-			this.btnCpyM2 = new Button();
-			this.btnCpyM3 = new Button();
-			this.btnCpyM4 = new Button();
-			this.btnCpyM5 = new Button();
-			this.btnCpyM7 = new Button();
-			this.btnCpyM6 = new Button();
-			this.btnCpyM9 = new Button();
-			this.btnCpyM12 = new Button();
-			this.btnCpyM11 = new Button();
-			this.btnCpyM10 = new Button();
-			this.btnCpyM15 = new Button();
-			this.btnCpyM14 = new Button();
-			this.btnCpyM13 = new Button();
-			this.btnCpyM8 = new Button();
-			this.lbCBM1 = new Label();
-			this.lbCBM2 = new Label();
-			this.lbCBM3 = new Label();
-			this.lbCBM4 = new Label();
-			this.lbCBM5 = new Label();
-			this.lbCBM6 = new Label();
-			this.lbCBM7 = new Label();
-			this.lbCBM15 = new Label();
-			this.lbCBM11 = new Label();
-			this.lbCBM14 = new Label();
-			this.lbCBM8 = new Label();
-			this.lbCBM9 = new Label();
-			this.lbCBM13 = new Label();
-			this.lbCBM10 = new Label();
-			this.lbCBM12 = new Label();
-			this.lbNrGroups = new Label();
-			this.pnCopyButtons.SuspendLayout();
-			this.SuspendLayout();
+			lbMotive0 = new Label();
+			lbMotive1 = new Label();
+			lbMotive2 = new Label();
+			lbMotive3 = new Label();
+			lbMotive4 = new Label();
+			lbMotive5 = new Label();
+			lbMotive6 = new Label();
+			lbMotive7 = new Label();
+			lbMotive9 = new Label();
+			lbMotive11 = new Label();
+			lbMotive8 = new Label();
+			lbMotive10 = new Label();
+			lbMotive14 = new Label();
+			lbMotive15 = new Label();
+			lbMotive13 = new Label();
+			lbMotive12 = new Label();
+			pnAllGroups = new Panel();
+			cbShowAll = new CheckBox();
+			pnCopyButtons = new Panel();
+			btnCopyAll = new Button();
+			lbCBM0 = new Label();
+			btnCpyM0 = new Button();
+			btnCpyM1 = new Button();
+			btnCpyM2 = new Button();
+			btnCpyM3 = new Button();
+			btnCpyM4 = new Button();
+			btnCpyM5 = new Button();
+			btnCpyM7 = new Button();
+			btnCpyM6 = new Button();
+			btnCpyM9 = new Button();
+			btnCpyM12 = new Button();
+			btnCpyM11 = new Button();
+			btnCpyM10 = new Button();
+			btnCpyM15 = new Button();
+			btnCpyM14 = new Button();
+			btnCpyM13 = new Button();
+			btnCpyM8 = new Button();
+			lbCBM1 = new Label();
+			lbCBM2 = new Label();
+			lbCBM3 = new Label();
+			lbCBM4 = new Label();
+			lbCBM5 = new Label();
+			lbCBM6 = new Label();
+			lbCBM7 = new Label();
+			lbCBM15 = new Label();
+			lbCBM11 = new Label();
+			lbCBM14 = new Label();
+			lbCBM8 = new Label();
+			lbCBM9 = new Label();
+			lbCBM13 = new Label();
+			lbCBM10 = new Label();
+			lbCBM12 = new Label();
+			lbNrGroups = new Label();
+			pnCopyButtons.SuspendLayout();
+			SuspendLayout();
 			//
 			// lbMotive0
 			//
-			resources.ApplyResources(this.lbMotive0, "lbMotive0");
-			this.lbMotive0.BackColor = Color.Transparent;
-			this.lbMotive0.Name = "lbMotive0";
+			resources.ApplyResources(lbMotive0, "lbMotive0");
+			lbMotive0.BackColor = Color.Transparent;
+			lbMotive0.Name = "lbMotive0";
 			//
 			// lbMotive1
 			//
-			resources.ApplyResources(this.lbMotive1, "lbMotive1");
-			this.lbMotive1.BackColor = Color.Transparent;
-			this.lbMotive1.Name = "lbMotive1";
+			resources.ApplyResources(lbMotive1, "lbMotive1");
+			lbMotive1.BackColor = Color.Transparent;
+			lbMotive1.Name = "lbMotive1";
 			//
 			// lbMotive2
 			//
-			resources.ApplyResources(this.lbMotive2, "lbMotive2");
-			this.lbMotive2.BackColor = Color.Transparent;
-			this.lbMotive2.Name = "lbMotive2";
+			resources.ApplyResources(lbMotive2, "lbMotive2");
+			lbMotive2.BackColor = Color.Transparent;
+			lbMotive2.Name = "lbMotive2";
 			//
 			// lbMotive3
 			//
-			resources.ApplyResources(this.lbMotive3, "lbMotive3");
-			this.lbMotive3.BackColor = Color.Transparent;
-			this.lbMotive3.Name = "lbMotive3";
+			resources.ApplyResources(lbMotive3, "lbMotive3");
+			lbMotive3.BackColor = Color.Transparent;
+			lbMotive3.Name = "lbMotive3";
 			//
 			// lbMotive4
 			//
-			resources.ApplyResources(this.lbMotive4, "lbMotive4");
-			this.lbMotive4.BackColor = Color.Transparent;
-			this.lbMotive4.Name = "lbMotive4";
+			resources.ApplyResources(lbMotive4, "lbMotive4");
+			lbMotive4.BackColor = Color.Transparent;
+			lbMotive4.Name = "lbMotive4";
 			//
 			// lbMotive5
 			//
-			resources.ApplyResources(this.lbMotive5, "lbMotive5");
-			this.lbMotive5.BackColor = Color.Transparent;
-			this.lbMotive5.Name = "lbMotive5";
+			resources.ApplyResources(lbMotive5, "lbMotive5");
+			lbMotive5.BackColor = Color.Transparent;
+			lbMotive5.Name = "lbMotive5";
 			//
 			// lbMotive6
 			//
-			resources.ApplyResources(this.lbMotive6, "lbMotive6");
-			this.lbMotive6.BackColor = Color.Transparent;
-			this.lbMotive6.Name = "lbMotive6";
+			resources.ApplyResources(lbMotive6, "lbMotive6");
+			lbMotive6.BackColor = Color.Transparent;
+			lbMotive6.Name = "lbMotive6";
 			//
 			// lbMotive7
 			//
-			resources.ApplyResources(this.lbMotive7, "lbMotive7");
-			this.lbMotive7.BackColor = Color.Transparent;
-			this.lbMotive7.Name = "lbMotive7";
+			resources.ApplyResources(lbMotive7, "lbMotive7");
+			lbMotive7.BackColor = Color.Transparent;
+			lbMotive7.Name = "lbMotive7";
 			//
 			// lbMotive9
 			//
-			resources.ApplyResources(this.lbMotive9, "lbMotive9");
-			this.lbMotive9.BackColor = Color.Transparent;
-			this.lbMotive9.Name = "lbMotive9";
+			resources.ApplyResources(lbMotive9, "lbMotive9");
+			lbMotive9.BackColor = Color.Transparent;
+			lbMotive9.Name = "lbMotive9";
 			//
 			// lbMotive11
 			//
-			resources.ApplyResources(this.lbMotive11, "lbMotive11");
-			this.lbMotive11.BackColor = Color.Transparent;
-			this.lbMotive11.Name = "lbMotive11";
+			resources.ApplyResources(lbMotive11, "lbMotive11");
+			lbMotive11.BackColor = Color.Transparent;
+			lbMotive11.Name = "lbMotive11";
 			//
 			// lbMotive8
 			//
-			resources.ApplyResources(this.lbMotive8, "lbMotive8");
-			this.lbMotive8.BackColor = Color.Transparent;
-			this.lbMotive8.Name = "lbMotive8";
+			resources.ApplyResources(lbMotive8, "lbMotive8");
+			lbMotive8.BackColor = Color.Transparent;
+			lbMotive8.Name = "lbMotive8";
 			//
 			// lbMotive10
 			//
-			resources.ApplyResources(this.lbMotive10, "lbMotive10");
-			this.lbMotive10.BackColor = Color.Transparent;
-			this.lbMotive10.Name = "lbMotive10";
+			resources.ApplyResources(lbMotive10, "lbMotive10");
+			lbMotive10.BackColor = Color.Transparent;
+			lbMotive10.Name = "lbMotive10";
 			//
 			// lbMotive14
 			//
-			resources.ApplyResources(this.lbMotive14, "lbMotive14");
-			this.lbMotive14.BackColor = Color.Transparent;
-			this.lbMotive14.Name = "lbMotive14";
+			resources.ApplyResources(lbMotive14, "lbMotive14");
+			lbMotive14.BackColor = Color.Transparent;
+			lbMotive14.Name = "lbMotive14";
 			//
 			// lbMotive15
 			//
-			resources.ApplyResources(this.lbMotive15, "lbMotive15");
-			this.lbMotive15.BackColor = Color.Transparent;
-			this.lbMotive15.Name = "lbMotive15";
+			resources.ApplyResources(lbMotive15, "lbMotive15");
+			lbMotive15.BackColor = Color.Transparent;
+			lbMotive15.Name = "lbMotive15";
 			//
 			// lbMotive13
 			//
-			resources.ApplyResources(this.lbMotive13, "lbMotive13");
-			this.lbMotive13.BackColor = Color.Transparent;
-			this.lbMotive13.Name = "lbMotive13";
+			resources.ApplyResources(lbMotive13, "lbMotive13");
+			lbMotive13.BackColor = Color.Transparent;
+			lbMotive13.Name = "lbMotive13";
 			//
 			// lbMotive12
 			//
-			resources.ApplyResources(this.lbMotive12, "lbMotive12");
-			this.lbMotive12.BackColor = Color.Transparent;
-			this.lbMotive12.Name = "lbMotive12";
+			resources.ApplyResources(lbMotive12, "lbMotive12");
+			lbMotive12.BackColor = Color.Transparent;
+			lbMotive12.Name = "lbMotive12";
 			//
 			// pnAllGroups
 			//
-			resources.ApplyResources(this.pnAllGroups, "pnAllGroups");
-			this.pnAllGroups.BackColor = Color.Transparent;
-			this.pnAllGroups.Name = "pnAllGroups";
+			resources.ApplyResources(pnAllGroups, "pnAllGroups");
+			pnAllGroups.BackColor = Color.Transparent;
+			pnAllGroups.Name = "pnAllGroups";
 			//
 			// cbShowAll
 			//
-			resources.ApplyResources(this.cbShowAll, "cbShowAll");
-			this.cbShowAll.BackColor = Color.Transparent;
-			this.cbShowAll.Name = "cbShowAll";
-			this.cbShowAll.UseVisualStyleBackColor = false;
-			this.cbShowAll.CheckedChanged += new System.EventHandler(
-				this.cbShowAll_CheckedChanged
+			resources.ApplyResources(cbShowAll, "cbShowAll");
+			cbShowAll.BackColor = Color.Transparent;
+			cbShowAll.Name = "cbShowAll";
+			cbShowAll.UseVisualStyleBackColor = false;
+			cbShowAll.CheckedChanged += new System.EventHandler(
+				cbShowAll_CheckedChanged
 			);
 			//
 			// pnCopyButtons
 			//
-			this.pnCopyButtons.BackColor = Color.Transparent;
-			this.pnCopyButtons.Controls.Add(this.btnCopyAll);
-			this.pnCopyButtons.Controls.Add(this.lbCBM0);
-			this.pnCopyButtons.Controls.Add(this.btnCpyM0);
-			this.pnCopyButtons.Controls.Add(this.btnCpyM1);
-			this.pnCopyButtons.Controls.Add(this.btnCpyM2);
-			this.pnCopyButtons.Controls.Add(this.btnCpyM3);
-			this.pnCopyButtons.Controls.Add(this.btnCpyM4);
-			this.pnCopyButtons.Controls.Add(this.btnCpyM5);
-			this.pnCopyButtons.Controls.Add(this.btnCpyM7);
-			this.pnCopyButtons.Controls.Add(this.btnCpyM6);
-			this.pnCopyButtons.Controls.Add(this.btnCpyM9);
-			this.pnCopyButtons.Controls.Add(this.btnCpyM12);
-			this.pnCopyButtons.Controls.Add(this.btnCpyM11);
-			this.pnCopyButtons.Controls.Add(this.btnCpyM10);
-			this.pnCopyButtons.Controls.Add(this.btnCpyM15);
-			this.pnCopyButtons.Controls.Add(this.btnCpyM14);
-			this.pnCopyButtons.Controls.Add(this.btnCpyM13);
-			this.pnCopyButtons.Controls.Add(this.btnCpyM8);
-			this.pnCopyButtons.Controls.Add(this.lbCBM1);
-			this.pnCopyButtons.Controls.Add(this.lbCBM2);
-			this.pnCopyButtons.Controls.Add(this.lbCBM3);
-			this.pnCopyButtons.Controls.Add(this.lbCBM4);
-			this.pnCopyButtons.Controls.Add(this.lbCBM5);
-			this.pnCopyButtons.Controls.Add(this.lbCBM6);
-			this.pnCopyButtons.Controls.Add(this.lbCBM7);
-			this.pnCopyButtons.Controls.Add(this.lbCBM15);
-			this.pnCopyButtons.Controls.Add(this.lbCBM11);
-			this.pnCopyButtons.Controls.Add(this.lbCBM14);
-			this.pnCopyButtons.Controls.Add(this.lbCBM8);
-			this.pnCopyButtons.Controls.Add(this.lbCBM9);
-			this.pnCopyButtons.Controls.Add(this.lbCBM13);
-			this.pnCopyButtons.Controls.Add(this.lbCBM10);
-			this.pnCopyButtons.Controls.Add(this.lbCBM12);
-			resources.ApplyResources(this.pnCopyButtons, "pnCopyButtons");
-			this.pnCopyButtons.Name = "pnCopyButtons";
+			pnCopyButtons.BackColor = Color.Transparent;
+			pnCopyButtons.Controls.Add(btnCopyAll);
+			pnCopyButtons.Controls.Add(lbCBM0);
+			pnCopyButtons.Controls.Add(btnCpyM0);
+			pnCopyButtons.Controls.Add(btnCpyM1);
+			pnCopyButtons.Controls.Add(btnCpyM2);
+			pnCopyButtons.Controls.Add(btnCpyM3);
+			pnCopyButtons.Controls.Add(btnCpyM4);
+			pnCopyButtons.Controls.Add(btnCpyM5);
+			pnCopyButtons.Controls.Add(btnCpyM7);
+			pnCopyButtons.Controls.Add(btnCpyM6);
+			pnCopyButtons.Controls.Add(btnCpyM9);
+			pnCopyButtons.Controls.Add(btnCpyM12);
+			pnCopyButtons.Controls.Add(btnCpyM11);
+			pnCopyButtons.Controls.Add(btnCpyM10);
+			pnCopyButtons.Controls.Add(btnCpyM15);
+			pnCopyButtons.Controls.Add(btnCpyM14);
+			pnCopyButtons.Controls.Add(btnCpyM13);
+			pnCopyButtons.Controls.Add(btnCpyM8);
+			pnCopyButtons.Controls.Add(lbCBM1);
+			pnCopyButtons.Controls.Add(lbCBM2);
+			pnCopyButtons.Controls.Add(lbCBM3);
+			pnCopyButtons.Controls.Add(lbCBM4);
+			pnCopyButtons.Controls.Add(lbCBM5);
+			pnCopyButtons.Controls.Add(lbCBM6);
+			pnCopyButtons.Controls.Add(lbCBM7);
+			pnCopyButtons.Controls.Add(lbCBM15);
+			pnCopyButtons.Controls.Add(lbCBM11);
+			pnCopyButtons.Controls.Add(lbCBM14);
+			pnCopyButtons.Controls.Add(lbCBM8);
+			pnCopyButtons.Controls.Add(lbCBM9);
+			pnCopyButtons.Controls.Add(lbCBM13);
+			pnCopyButtons.Controls.Add(lbCBM10);
+			pnCopyButtons.Controls.Add(lbCBM12);
+			resources.ApplyResources(pnCopyButtons, "pnCopyButtons");
+			pnCopyButtons.Name = "pnCopyButtons";
 			//
 			// btnCopyAll
 			//
-			this.btnCopyAll.BackColor = Color.Transparent;
-			resources.ApplyResources(this.btnCopyAll, "btnCopyAll");
-			this.btnCopyAll.Name = "btnCopyAll";
-			this.btnCopyAll.UseVisualStyleBackColor = false;
-			this.btnCopyAll.Click += new System.EventHandler(this.copy_Click);
+			btnCopyAll.BackColor = Color.Transparent;
+			resources.ApplyResources(btnCopyAll, "btnCopyAll");
+			btnCopyAll.Name = "btnCopyAll";
+			btnCopyAll.UseVisualStyleBackColor = false;
+			btnCopyAll.Click += new System.EventHandler(copy_Click);
 			//
 			// lbCBM0
 			//
-			resources.ApplyResources(this.lbCBM0, "lbCBM0");
-			this.lbCBM0.BackColor = Color.Transparent;
-			this.lbCBM0.Name = "lbCBM0";
+			resources.ApplyResources(lbCBM0, "lbCBM0");
+			lbCBM0.BackColor = Color.Transparent;
+			lbCBM0.Name = "lbCBM0";
 			//
 			// btnCpyM0
 			//
-			this.btnCpyM0.BackColor = Color.Transparent;
-			resources.ApplyResources(this.btnCpyM0, "btnCpyM0");
-			this.btnCpyM0.Name = "btnCpyM0";
-			this.btnCpyM0.UseVisualStyleBackColor = false;
-			this.btnCpyM0.Click += new System.EventHandler(this.copy_Click);
+			btnCpyM0.BackColor = Color.Transparent;
+			resources.ApplyResources(btnCpyM0, "btnCpyM0");
+			btnCpyM0.Name = "btnCpyM0";
+			btnCpyM0.UseVisualStyleBackColor = false;
+			btnCpyM0.Click += new System.EventHandler(copy_Click);
 			//
 			// btnCpyM1
 			//
-			this.btnCpyM1.BackColor = Color.Transparent;
-			resources.ApplyResources(this.btnCpyM1, "btnCpyM1");
-			this.btnCpyM1.Name = "btnCpyM1";
-			this.btnCpyM1.UseVisualStyleBackColor = false;
-			this.btnCpyM1.Click += new System.EventHandler(this.copy_Click);
+			btnCpyM1.BackColor = Color.Transparent;
+			resources.ApplyResources(btnCpyM1, "btnCpyM1");
+			btnCpyM1.Name = "btnCpyM1";
+			btnCpyM1.UseVisualStyleBackColor = false;
+			btnCpyM1.Click += new System.EventHandler(copy_Click);
 			//
 			// btnCpyM2
 			//
-			this.btnCpyM2.BackColor = Color.Transparent;
-			resources.ApplyResources(this.btnCpyM2, "btnCpyM2");
-			this.btnCpyM2.Name = "btnCpyM2";
-			this.btnCpyM2.UseVisualStyleBackColor = false;
-			this.btnCpyM2.Click += new System.EventHandler(this.copy_Click);
+			btnCpyM2.BackColor = Color.Transparent;
+			resources.ApplyResources(btnCpyM2, "btnCpyM2");
+			btnCpyM2.Name = "btnCpyM2";
+			btnCpyM2.UseVisualStyleBackColor = false;
+			btnCpyM2.Click += new System.EventHandler(copy_Click);
 			//
 			// btnCpyM3
 			//
-			this.btnCpyM3.BackColor = Color.Transparent;
-			resources.ApplyResources(this.btnCpyM3, "btnCpyM3");
-			this.btnCpyM3.Name = "btnCpyM3";
-			this.btnCpyM3.UseVisualStyleBackColor = false;
-			this.btnCpyM3.Click += new System.EventHandler(this.copy_Click);
+			btnCpyM3.BackColor = Color.Transparent;
+			resources.ApplyResources(btnCpyM3, "btnCpyM3");
+			btnCpyM3.Name = "btnCpyM3";
+			btnCpyM3.UseVisualStyleBackColor = false;
+			btnCpyM3.Click += new System.EventHandler(copy_Click);
 			//
 			// btnCpyM4
 			//
-			this.btnCpyM4.BackColor = Color.Transparent;
-			resources.ApplyResources(this.btnCpyM4, "btnCpyM4");
-			this.btnCpyM4.Name = "btnCpyM4";
-			this.btnCpyM4.UseVisualStyleBackColor = false;
-			this.btnCpyM4.Click += new System.EventHandler(this.copy_Click);
+			btnCpyM4.BackColor = Color.Transparent;
+			resources.ApplyResources(btnCpyM4, "btnCpyM4");
+			btnCpyM4.Name = "btnCpyM4";
+			btnCpyM4.UseVisualStyleBackColor = false;
+			btnCpyM4.Click += new System.EventHandler(copy_Click);
 			//
 			// btnCpyM5
 			//
-			this.btnCpyM5.BackColor = Color.Transparent;
-			resources.ApplyResources(this.btnCpyM5, "btnCpyM5");
-			this.btnCpyM5.Name = "btnCpyM5";
-			this.btnCpyM5.UseVisualStyleBackColor = false;
-			this.btnCpyM5.Click += new System.EventHandler(this.copy_Click);
+			btnCpyM5.BackColor = Color.Transparent;
+			resources.ApplyResources(btnCpyM5, "btnCpyM5");
+			btnCpyM5.Name = "btnCpyM5";
+			btnCpyM5.UseVisualStyleBackColor = false;
+			btnCpyM5.Click += new System.EventHandler(copy_Click);
 			//
 			// btnCpyM7
 			//
-			this.btnCpyM7.BackColor = Color.Transparent;
-			resources.ApplyResources(this.btnCpyM7, "btnCpyM7");
-			this.btnCpyM7.Name = "btnCpyM7";
-			this.btnCpyM7.UseVisualStyleBackColor = false;
-			this.btnCpyM7.Click += new System.EventHandler(this.copy_Click);
+			btnCpyM7.BackColor = Color.Transparent;
+			resources.ApplyResources(btnCpyM7, "btnCpyM7");
+			btnCpyM7.Name = "btnCpyM7";
+			btnCpyM7.UseVisualStyleBackColor = false;
+			btnCpyM7.Click += new System.EventHandler(copy_Click);
 			//
 			// btnCpyM6
 			//
-			this.btnCpyM6.BackColor = Color.Transparent;
-			resources.ApplyResources(this.btnCpyM6, "btnCpyM6");
-			this.btnCpyM6.Name = "btnCpyM6";
-			this.btnCpyM6.UseVisualStyleBackColor = false;
-			this.btnCpyM6.Click += new System.EventHandler(this.copy_Click);
+			btnCpyM6.BackColor = Color.Transparent;
+			resources.ApplyResources(btnCpyM6, "btnCpyM6");
+			btnCpyM6.Name = "btnCpyM6";
+			btnCpyM6.UseVisualStyleBackColor = false;
+			btnCpyM6.Click += new System.EventHandler(copy_Click);
 			//
 			// btnCpyM9
 			//
-			this.btnCpyM9.BackColor = Color.Transparent;
-			resources.ApplyResources(this.btnCpyM9, "btnCpyM9");
-			this.btnCpyM9.Name = "btnCpyM9";
-			this.btnCpyM9.UseVisualStyleBackColor = false;
-			this.btnCpyM9.Click += new System.EventHandler(this.copy_Click);
+			btnCpyM9.BackColor = Color.Transparent;
+			resources.ApplyResources(btnCpyM9, "btnCpyM9");
+			btnCpyM9.Name = "btnCpyM9";
+			btnCpyM9.UseVisualStyleBackColor = false;
+			btnCpyM9.Click += new System.EventHandler(copy_Click);
 			//
 			// btnCpyM12
 			//
-			this.btnCpyM12.BackColor = Color.Transparent;
-			resources.ApplyResources(this.btnCpyM12, "btnCpyM12");
-			this.btnCpyM12.Name = "btnCpyM12";
-			this.btnCpyM12.UseVisualStyleBackColor = false;
-			this.btnCpyM12.Click += new System.EventHandler(this.copy_Click);
+			btnCpyM12.BackColor = Color.Transparent;
+			resources.ApplyResources(btnCpyM12, "btnCpyM12");
+			btnCpyM12.Name = "btnCpyM12";
+			btnCpyM12.UseVisualStyleBackColor = false;
+			btnCpyM12.Click += new System.EventHandler(copy_Click);
 			//
 			// btnCpyM11
 			//
-			this.btnCpyM11.BackColor = Color.Transparent;
-			resources.ApplyResources(this.btnCpyM11, "btnCpyM11");
-			this.btnCpyM11.Name = "btnCpyM11";
-			this.btnCpyM11.UseVisualStyleBackColor = false;
-			this.btnCpyM11.Click += new System.EventHandler(this.copy_Click);
+			btnCpyM11.BackColor = Color.Transparent;
+			resources.ApplyResources(btnCpyM11, "btnCpyM11");
+			btnCpyM11.Name = "btnCpyM11";
+			btnCpyM11.UseVisualStyleBackColor = false;
+			btnCpyM11.Click += new System.EventHandler(copy_Click);
 			//
 			// btnCpyM10
 			//
-			this.btnCpyM10.BackColor = Color.Transparent;
-			resources.ApplyResources(this.btnCpyM10, "btnCpyM10");
-			this.btnCpyM10.Name = "btnCpyM10";
-			this.btnCpyM10.UseVisualStyleBackColor = false;
-			this.btnCpyM10.Click += new System.EventHandler(this.copy_Click);
+			btnCpyM10.BackColor = Color.Transparent;
+			resources.ApplyResources(btnCpyM10, "btnCpyM10");
+			btnCpyM10.Name = "btnCpyM10";
+			btnCpyM10.UseVisualStyleBackColor = false;
+			btnCpyM10.Click += new System.EventHandler(copy_Click);
 			//
 			// btnCpyM15
 			//
-			this.btnCpyM15.BackColor = Color.Transparent;
-			resources.ApplyResources(this.btnCpyM15, "btnCpyM15");
-			this.btnCpyM15.Name = "btnCpyM15";
-			this.btnCpyM15.UseVisualStyleBackColor = false;
-			this.btnCpyM15.Click += new System.EventHandler(this.copy_Click);
+			btnCpyM15.BackColor = Color.Transparent;
+			resources.ApplyResources(btnCpyM15, "btnCpyM15");
+			btnCpyM15.Name = "btnCpyM15";
+			btnCpyM15.UseVisualStyleBackColor = false;
+			btnCpyM15.Click += new System.EventHandler(copy_Click);
 			//
 			// btnCpyM14
 			//
-			this.btnCpyM14.BackColor = Color.Transparent;
-			resources.ApplyResources(this.btnCpyM14, "btnCpyM14");
-			this.btnCpyM14.Name = "btnCpyM14";
-			this.btnCpyM14.UseVisualStyleBackColor = false;
-			this.btnCpyM14.Click += new System.EventHandler(this.copy_Click);
+			btnCpyM14.BackColor = Color.Transparent;
+			resources.ApplyResources(btnCpyM14, "btnCpyM14");
+			btnCpyM14.Name = "btnCpyM14";
+			btnCpyM14.UseVisualStyleBackColor = false;
+			btnCpyM14.Click += new System.EventHandler(copy_Click);
 			//
 			// btnCpyM13
 			//
-			this.btnCpyM13.BackColor = Color.Transparent;
-			resources.ApplyResources(this.btnCpyM13, "btnCpyM13");
-			this.btnCpyM13.Name = "btnCpyM13";
-			this.btnCpyM13.UseVisualStyleBackColor = false;
-			this.btnCpyM13.Click += new System.EventHandler(this.copy_Click);
+			btnCpyM13.BackColor = Color.Transparent;
+			resources.ApplyResources(btnCpyM13, "btnCpyM13");
+			btnCpyM13.Name = "btnCpyM13";
+			btnCpyM13.UseVisualStyleBackColor = false;
+			btnCpyM13.Click += new System.EventHandler(copy_Click);
 			//
 			// btnCpyM8
 			//
-			this.btnCpyM8.BackColor = Color.Transparent;
-			resources.ApplyResources(this.btnCpyM8, "btnCpyM8");
-			this.btnCpyM8.Name = "btnCpyM8";
-			this.btnCpyM8.UseVisualStyleBackColor = false;
-			this.btnCpyM8.Click += new System.EventHandler(this.copy_Click);
+			btnCpyM8.BackColor = Color.Transparent;
+			resources.ApplyResources(btnCpyM8, "btnCpyM8");
+			btnCpyM8.Name = "btnCpyM8";
+			btnCpyM8.UseVisualStyleBackColor = false;
+			btnCpyM8.Click += new System.EventHandler(copy_Click);
 			//
 			// lbCBM1
 			//
-			resources.ApplyResources(this.lbCBM1, "lbCBM1");
-			this.lbCBM1.BackColor = Color.Transparent;
-			this.lbCBM1.Name = "lbCBM1";
+			resources.ApplyResources(lbCBM1, "lbCBM1");
+			lbCBM1.BackColor = Color.Transparent;
+			lbCBM1.Name = "lbCBM1";
 			//
 			// lbCBM2
 			//
-			resources.ApplyResources(this.lbCBM2, "lbCBM2");
-			this.lbCBM2.BackColor = Color.Transparent;
-			this.lbCBM2.Name = "lbCBM2";
+			resources.ApplyResources(lbCBM2, "lbCBM2");
+			lbCBM2.BackColor = Color.Transparent;
+			lbCBM2.Name = "lbCBM2";
 			//
 			// lbCBM3
 			//
-			resources.ApplyResources(this.lbCBM3, "lbCBM3");
-			this.lbCBM3.BackColor = Color.Transparent;
-			this.lbCBM3.Name = "lbCBM3";
+			resources.ApplyResources(lbCBM3, "lbCBM3");
+			lbCBM3.BackColor = Color.Transparent;
+			lbCBM3.Name = "lbCBM3";
 			//
 			// lbCBM4
 			//
-			resources.ApplyResources(this.lbCBM4, "lbCBM4");
-			this.lbCBM4.BackColor = Color.Transparent;
-			this.lbCBM4.Name = "lbCBM4";
+			resources.ApplyResources(lbCBM4, "lbCBM4");
+			lbCBM4.BackColor = Color.Transparent;
+			lbCBM4.Name = "lbCBM4";
 			//
 			// lbCBM5
 			//
-			resources.ApplyResources(this.lbCBM5, "lbCBM5");
-			this.lbCBM5.BackColor = Color.Transparent;
-			this.lbCBM5.Name = "lbCBM5";
+			resources.ApplyResources(lbCBM5, "lbCBM5");
+			lbCBM5.BackColor = Color.Transparent;
+			lbCBM5.Name = "lbCBM5";
 			//
 			// lbCBM6
 			//
-			resources.ApplyResources(this.lbCBM6, "lbCBM6");
-			this.lbCBM6.BackColor = Color.Transparent;
-			this.lbCBM6.Name = "lbCBM6";
+			resources.ApplyResources(lbCBM6, "lbCBM6");
+			lbCBM6.BackColor = Color.Transparent;
+			lbCBM6.Name = "lbCBM6";
 			//
 			// lbCBM7
 			//
-			resources.ApplyResources(this.lbCBM7, "lbCBM7");
-			this.lbCBM7.BackColor = Color.Transparent;
-			this.lbCBM7.Name = "lbCBM7";
+			resources.ApplyResources(lbCBM7, "lbCBM7");
+			lbCBM7.BackColor = Color.Transparent;
+			lbCBM7.Name = "lbCBM7";
 			//
 			// lbCBM15
 			//
-			resources.ApplyResources(this.lbCBM15, "lbCBM15");
-			this.lbCBM15.BackColor = Color.Transparent;
-			this.lbCBM15.Name = "lbCBM15";
+			resources.ApplyResources(lbCBM15, "lbCBM15");
+			lbCBM15.BackColor = Color.Transparent;
+			lbCBM15.Name = "lbCBM15";
 			//
 			// lbCBM11
 			//
-			resources.ApplyResources(this.lbCBM11, "lbCBM11");
-			this.lbCBM11.BackColor = Color.Transparent;
-			this.lbCBM11.Name = "lbCBM11";
+			resources.ApplyResources(lbCBM11, "lbCBM11");
+			lbCBM11.BackColor = Color.Transparent;
+			lbCBM11.Name = "lbCBM11";
 			//
 			// lbCBM14
 			//
-			resources.ApplyResources(this.lbCBM14, "lbCBM14");
-			this.lbCBM14.BackColor = Color.Transparent;
-			this.lbCBM14.Name = "lbCBM14";
+			resources.ApplyResources(lbCBM14, "lbCBM14");
+			lbCBM14.BackColor = Color.Transparent;
+			lbCBM14.Name = "lbCBM14";
 			//
 			// lbCBM8
 			//
-			resources.ApplyResources(this.lbCBM8, "lbCBM8");
-			this.lbCBM8.BackColor = Color.Transparent;
-			this.lbCBM8.Name = "lbCBM8";
+			resources.ApplyResources(lbCBM8, "lbCBM8");
+			lbCBM8.BackColor = Color.Transparent;
+			lbCBM8.Name = "lbCBM8";
 			//
 			// lbCBM9
 			//
-			resources.ApplyResources(this.lbCBM9, "lbCBM9");
-			this.lbCBM9.BackColor = Color.Transparent;
-			this.lbCBM9.Name = "lbCBM9";
+			resources.ApplyResources(lbCBM9, "lbCBM9");
+			lbCBM9.BackColor = Color.Transparent;
+			lbCBM9.Name = "lbCBM9";
 			//
 			// lbCBM13
 			//
-			resources.ApplyResources(this.lbCBM13, "lbCBM13");
-			this.lbCBM13.BackColor = Color.Transparent;
-			this.lbCBM13.Name = "lbCBM13";
+			resources.ApplyResources(lbCBM13, "lbCBM13");
+			lbCBM13.BackColor = Color.Transparent;
+			lbCBM13.Name = "lbCBM13";
 			//
 			// lbCBM10
 			//
-			resources.ApplyResources(this.lbCBM10, "lbCBM10");
-			this.lbCBM10.BackColor = Color.Transparent;
-			this.lbCBM10.Name = "lbCBM10";
+			resources.ApplyResources(lbCBM10, "lbCBM10");
+			lbCBM10.BackColor = Color.Transparent;
+			lbCBM10.Name = "lbCBM10";
 			//
 			// lbCBM12
 			//
-			resources.ApplyResources(this.lbCBM12, "lbCBM12");
-			this.lbCBM12.BackColor = Color.Transparent;
-			this.lbCBM12.Name = "lbCBM12";
+			resources.ApplyResources(lbCBM12, "lbCBM12");
+			lbCBM12.BackColor = Color.Transparent;
+			lbCBM12.Name = "lbCBM12";
 			//
 			// lbNrGroups
 			//
-			resources.ApplyResources(this.lbNrGroups, "lbNrGroups");
-			this.lbNrGroups.BackColor = Color.Transparent;
-			this.lbNrGroups.Name = "lbNrGroups";
+			resources.ApplyResources(lbNrGroups, "lbNrGroups");
+			lbNrGroups.BackColor = Color.Transparent;
+			lbNrGroups.Name = "lbNrGroups";
 			//
 			// TtabItemMotiveTableUI
 			//
-			this.Controls.Add(this.lbNrGroups);
-			this.Controls.Add(this.pnCopyButtons);
-			this.Controls.Add(this.cbShowAll);
-			this.Controls.Add(this.pnAllGroups);
-			this.Controls.Add(this.lbMotive0);
-			this.Controls.Add(this.lbMotive1);
-			this.Controls.Add(this.lbMotive2);
-			this.Controls.Add(this.lbMotive3);
-			this.Controls.Add(this.lbMotive4);
-			this.Controls.Add(this.lbMotive5);
-			this.Controls.Add(this.lbMotive6);
-			this.Controls.Add(this.lbMotive7);
-			this.Controls.Add(this.lbMotive9);
-			this.Controls.Add(this.lbMotive11);
-			this.Controls.Add(this.lbMotive8);
-			this.Controls.Add(this.lbMotive10);
-			this.Controls.Add(this.lbMotive14);
-			this.Controls.Add(this.lbMotive15);
-			this.Controls.Add(this.lbMotive13);
-			this.Controls.Add(this.lbMotive12);
-			this.Name = "TtabItemMotiveTableUI";
+			Controls.Add(lbNrGroups);
+			Controls.Add(pnCopyButtons);
+			Controls.Add(cbShowAll);
+			Controls.Add(pnAllGroups);
+			Controls.Add(lbMotive0);
+			Controls.Add(lbMotive1);
+			Controls.Add(lbMotive2);
+			Controls.Add(lbMotive3);
+			Controls.Add(lbMotive4);
+			Controls.Add(lbMotive5);
+			Controls.Add(lbMotive6);
+			Controls.Add(lbMotive7);
+			Controls.Add(lbMotive9);
+			Controls.Add(lbMotive11);
+			Controls.Add(lbMotive8);
+			Controls.Add(lbMotive10);
+			Controls.Add(lbMotive14);
+			Controls.Add(lbMotive15);
+			Controls.Add(lbMotive13);
+			Controls.Add(lbMotive12);
+			Name = "TtabItemMotiveTableUI";
 			resources.ApplyResources(this, "$this");
-			this.pnCopyButtons.ResumeLayout(false);
-			this.pnCopyButtons.PerformLayout();
-			this.ResumeLayout(false);
-			this.PerformLayout();
+			pnCopyButtons.ResumeLayout(false);
+			pnCopyButtons.PerformLayout();
+			ResumeLayout(false);
+			PerformLayout();
 		}
 		#endregion
 

@@ -54,7 +54,7 @@ namespace SimPe.Plugin
 				"This File is part of the Scenegraph. It contains a large image for a Texture.",
 				5,
 				System.Drawing.Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.lifo.png")
 				)
 			);

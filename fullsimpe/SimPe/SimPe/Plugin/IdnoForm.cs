@@ -40,40 +40,40 @@ namespace SimPe.Plugin
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.pnidno = new Panel();
-			this.cbquadd = new ComboBox();
-			this.cbquadc = new ComboBox();
-			this.cbquadb = new ComboBox();
-			this.cbquada = new ComboBox();
-			this.label9 = new Label();
-			this.tbidflags = new TextBox();
-			this.label8 = new Label();
-			this.tbsubep = new TextBox();
-			this.cbsubtp = new ComboBox();
-			this.label7 = new Label();
-			this.tbreqep = new TextBox();
-			this.cbreqtp = new ComboBox();
-			this.label6 = new Label();
-			this.lbVer = new Label();
-			this.llunique = new LinkLabel();
-			this.label5 = new Label();
-			this.tbversion = new TextBox();
-			this.tbsubname = new TextBox();
-			this.tbname = new TextBox();
-			this.tbid = new TextBox();
-			this.label4 = new Label();
-			this.label3 = new Label();
-			this.label2 = new Label();
-			this.tbtype = new TextBox();
-			this.cbtype = new ComboBox();
-			this.label1 = new Label();
-			this.panel2 = new Panel();
-			this.pnidno.SuspendLayout();
-			this.SuspendLayout();
+			pnidno = new Panel();
+			cbquadd = new ComboBox();
+			cbquadc = new ComboBox();
+			cbquadb = new ComboBox();
+			cbquada = new ComboBox();
+			label9 = new Label();
+			tbidflags = new TextBox();
+			label8 = new Label();
+			tbsubep = new TextBox();
+			cbsubtp = new ComboBox();
+			label7 = new Label();
+			tbreqep = new TextBox();
+			cbreqtp = new ComboBox();
+			label6 = new Label();
+			lbVer = new Label();
+			llunique = new LinkLabel();
+			label5 = new Label();
+			tbversion = new TextBox();
+			tbsubname = new TextBox();
+			tbname = new TextBox();
+			tbid = new TextBox();
+			label4 = new Label();
+			label3 = new Label();
+			label2 = new Label();
+			tbtype = new TextBox();
+			cbtype = new ComboBox();
+			label1 = new Label();
+			panel2 = new Panel();
+			pnidno.SuspendLayout();
+			SuspendLayout();
 			//
 			// pnidno
 			//
-			this.pnidno.Anchor = (
+			pnidno.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -85,393 +85,393 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.pnidno.AutoScroll = true;
-			this.pnidno.BackColor = System.Drawing.Color.Transparent;
-			this.pnidno.Controls.Add(this.cbquadd);
-			this.pnidno.Controls.Add(this.cbquadc);
-			this.pnidno.Controls.Add(this.cbquadb);
-			this.pnidno.Controls.Add(this.cbquada);
-			this.pnidno.Controls.Add(this.label9);
-			this.pnidno.Controls.Add(this.tbidflags);
-			this.pnidno.Controls.Add(this.label8);
-			this.pnidno.Controls.Add(this.tbsubep);
-			this.pnidno.Controls.Add(this.cbsubtp);
-			this.pnidno.Controls.Add(this.label7);
-			this.pnidno.Controls.Add(this.tbreqep);
-			this.pnidno.Controls.Add(this.cbreqtp);
-			this.pnidno.Controls.Add(this.label6);
-			this.pnidno.Controls.Add(this.lbVer);
-			this.pnidno.Controls.Add(this.llunique);
-			this.pnidno.Controls.Add(this.label5);
-			this.pnidno.Controls.Add(this.tbversion);
-			this.pnidno.Controls.Add(this.tbsubname);
-			this.pnidno.Controls.Add(this.tbname);
-			this.pnidno.Controls.Add(this.tbid);
-			this.pnidno.Controls.Add(this.label4);
-			this.pnidno.Controls.Add(this.label3);
-			this.pnidno.Controls.Add(this.label2);
-			this.pnidno.Controls.Add(this.tbtype);
-			this.pnidno.Controls.Add(this.cbtype);
-			this.pnidno.Controls.Add(this.label1);
-			this.pnidno.Controls.Add(this.panel2);
-			this.pnidno.Font = new System.Drawing.Font(
+			pnidno.AutoScroll = true;
+			pnidno.BackColor = System.Drawing.Color.Transparent;
+			pnidno.Controls.Add(cbquadd);
+			pnidno.Controls.Add(cbquadc);
+			pnidno.Controls.Add(cbquadb);
+			pnidno.Controls.Add(cbquada);
+			pnidno.Controls.Add(label9);
+			pnidno.Controls.Add(tbidflags);
+			pnidno.Controls.Add(label8);
+			pnidno.Controls.Add(tbsubep);
+			pnidno.Controls.Add(cbsubtp);
+			pnidno.Controls.Add(label7);
+			pnidno.Controls.Add(tbreqep);
+			pnidno.Controls.Add(cbreqtp);
+			pnidno.Controls.Add(label6);
+			pnidno.Controls.Add(lbVer);
+			pnidno.Controls.Add(llunique);
+			pnidno.Controls.Add(label5);
+			pnidno.Controls.Add(tbversion);
+			pnidno.Controls.Add(tbsubname);
+			pnidno.Controls.Add(tbname);
+			pnidno.Controls.Add(tbid);
+			pnidno.Controls.Add(label4);
+			pnidno.Controls.Add(label3);
+			pnidno.Controls.Add(label2);
+			pnidno.Controls.Add(tbtype);
+			pnidno.Controls.Add(cbtype);
+			pnidno.Controls.Add(label1);
+			pnidno.Controls.Add(panel2);
+			pnidno.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.pnidno.Location = new System.Drawing.Point(6, 20);
-			this.pnidno.Name = "pnidno";
-			this.pnidno.Size = new System.Drawing.Size(877, 304);
-			this.pnidno.TabIndex = 21;
+			pnidno.Location = new System.Drawing.Point(6, 20);
+			pnidno.Name = "pnidno";
+			pnidno.Size = new System.Drawing.Size(877, 304);
+			pnidno.TabIndex = 21;
 			//
 			// cbquadd
 			//
-			this.cbquadd.DropDownStyle =
+			cbquadd.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbquadd.Location = new System.Drawing.Point(384, 241);
-			this.cbquadd.Name = "cbquadd";
-			this.cbquadd.Size = new System.Drawing.Size(68, 21);
-			this.cbquadd.TabIndex = 42;
-			this.cbquadd.SelectedIndexChanged += new EventHandler(
-				this.ChangSeasod
+			cbquadd.Location = new System.Drawing.Point(384, 241);
+			cbquadd.Name = "cbquadd";
+			cbquadd.Size = new System.Drawing.Size(68, 21);
+			cbquadd.TabIndex = 42;
+			cbquadd.SelectedIndexChanged += new EventHandler(
+				ChangSeasod
 			);
 			//
 			// cbquadc
 			//
-			this.cbquadc.DropDownStyle =
+			cbquadc.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbquadc.Location = new System.Drawing.Point(312, 241);
-			this.cbquadc.Name = "cbquadc";
-			this.cbquadc.Size = new System.Drawing.Size(68, 21);
-			this.cbquadc.TabIndex = 41;
-			this.cbquadc.SelectedIndexChanged += new EventHandler(
-				this.ChangSeasoc
+			cbquadc.Location = new System.Drawing.Point(312, 241);
+			cbquadc.Name = "cbquadc";
+			cbquadc.Size = new System.Drawing.Size(68, 21);
+			cbquadc.TabIndex = 41;
+			cbquadc.SelectedIndexChanged += new EventHandler(
+				ChangSeasoc
 			);
 			//
 			// cbquadb
 			//
-			this.cbquadb.DropDownStyle =
+			cbquadb.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbquadb.Location = new System.Drawing.Point(240, 241);
-			this.cbquadb.Name = "cbquadb";
-			this.cbquadb.Size = new System.Drawing.Size(68, 21);
-			this.cbquadb.TabIndex = 40;
-			this.cbquadb.SelectedIndexChanged += new EventHandler(
-				this.ChangSeasob
+			cbquadb.Location = new System.Drawing.Point(240, 241);
+			cbquadb.Name = "cbquadb";
+			cbquadb.Size = new System.Drawing.Size(68, 21);
+			cbquadb.TabIndex = 40;
+			cbquadb.SelectedIndexChanged += new EventHandler(
+				ChangSeasob
 			);
 			//
 			// cbquada
 			//
-			this.cbquada.DropDownStyle =
+			cbquada.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbquada.Location = new System.Drawing.Point(168, 241);
-			this.cbquada.Name = "cbquada";
-			this.cbquada.Size = new System.Drawing.Size(68, 21);
-			this.cbquada.TabIndex = 39;
-			this.cbquada.SelectedIndexChanged += new EventHandler(
-				this.ChangSeasoa
+			cbquada.Location = new System.Drawing.Point(168, 241);
+			cbquada.Name = "cbquada";
+			cbquada.Size = new System.Drawing.Size(68, 21);
+			cbquada.TabIndex = 39;
+			cbquada.SelectedIndexChanged += new EventHandler(
+				ChangSeasoa
 			);
 			//
 			// label9
 			//
-			this.label9.BackColor = System.Drawing.Color.Transparent;
-			this.label9.Font = new System.Drawing.Font(
+			label9.BackColor = System.Drawing.Color.Transparent;
+			label9.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label9.Location = new System.Drawing.Point(6, 241);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(156, 21);
-			this.label9.TabIndex = 38;
-			this.label9.Text = "Season Quadrants :";
-			this.label9.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			label9.Location = new System.Drawing.Point(6, 241);
+			label9.Name = "label9";
+			label9.Size = new System.Drawing.Size(156, 21);
+			label9.TabIndex = 38;
+			label9.Text = "Season Quadrants :";
+			label9.TextAlign = System.Drawing.ContentAlignment.TopRight;
 			//
 			// tbidflags
 			//
-			this.tbidflags.Location = new System.Drawing.Point(368, 77);
-			this.tbidflags.Name = "tbidflags";
-			this.tbidflags.Size = new System.Drawing.Size(84, 21);
-			this.tbidflags.TabIndex = 37;
-			this.tbidflags.TextChanged += new EventHandler(this.Change);
+			tbidflags.Location = new System.Drawing.Point(368, 77);
+			tbidflags.Name = "tbidflags";
+			tbidflags.Size = new System.Drawing.Size(84, 21);
+			tbidflags.TabIndex = 37;
+			tbidflags.TextChanged += new EventHandler(Change);
 			//
 			// label8
 			//
-			this.label8.BackColor = System.Drawing.Color.Transparent;
-			this.label8.Font = new System.Drawing.Font(
+			label8.BackColor = System.Drawing.Color.Transparent;
+			label8.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label8.Location = new System.Drawing.Point(316, 79);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(46, 17);
-			this.label8.TabIndex = 36;
-			this.label8.Text = "Flags:";
-			this.label8.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			label8.Location = new System.Drawing.Point(316, 79);
+			label8.Name = "label8";
+			label8.Size = new System.Drawing.Size(46, 17);
+			label8.TabIndex = 36;
+			label8.Text = "Flags:";
+			label8.TextAlign = System.Drawing.ContentAlignment.TopRight;
 			//
 			// tbsubep
 			//
-			this.tbsubep.Location = new System.Drawing.Point(368, 207);
-			this.tbsubep.Name = "tbsubep";
-			this.tbsubep.ReadOnly = true;
-			this.tbsubep.Size = new System.Drawing.Size(84, 21);
-			this.tbsubep.TabIndex = 35;
-			this.tbsubep.Text = "0x00000000";
+			tbsubep.Location = new System.Drawing.Point(368, 207);
+			tbsubep.Name = "tbsubep";
+			tbsubep.ReadOnly = true;
+			tbsubep.Size = new System.Drawing.Size(84, 21);
+			tbsubep.TabIndex = 35;
+			tbsubep.Text = "0x00000000";
 			//
 			// cbsubtp
 			//
-			this.cbsubtp.DropDownStyle =
+			cbsubtp.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbsubtp.Location = new System.Drawing.Point(168, 207);
-			this.cbsubtp.Name = "cbsubtp";
-			this.cbsubtp.Size = new System.Drawing.Size(190, 21);
-			this.cbsubtp.TabIndex = 44;
-			this.cbsubtp.SelectedIndexChanged += new EventHandler(
-				this.SelectAtp
+			cbsubtp.Location = new System.Drawing.Point(168, 207);
+			cbsubtp.Name = "cbsubtp";
+			cbsubtp.Size = new System.Drawing.Size(190, 21);
+			cbsubtp.TabIndex = 44;
+			cbsubtp.SelectedIndexChanged += new EventHandler(
+				SelectAtp
 			);
 			//
 			// label7
 			//
-			this.label7.BackColor = System.Drawing.Color.Transparent;
-			this.label7.Font = new System.Drawing.Font(
+			label7.BackColor = System.Drawing.Color.Transparent;
+			label7.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label7.Location = new System.Drawing.Point(6, 207);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(156, 21);
-			this.label7.TabIndex = 33;
-			this.label7.Text = "Affiliated EP:";
-			this.label7.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			label7.Location = new System.Drawing.Point(6, 207);
+			label7.Name = "label7";
+			label7.Size = new System.Drawing.Size(156, 21);
+			label7.TabIndex = 33;
+			label7.Text = "Affiliated EP:";
+			label7.TextAlign = System.Drawing.ContentAlignment.TopRight;
 			//
 			// tbreqep
 			//
-			this.tbreqep.Location = new System.Drawing.Point(368, 173);
-			this.tbreqep.Name = "tbreqep";
-			this.tbreqep.ReadOnly = true;
-			this.tbreqep.Size = new System.Drawing.Size(84, 21);
-			this.tbreqep.TabIndex = 32;
-			this.tbreqep.Text = "0x00000000";
+			tbreqep.Location = new System.Drawing.Point(368, 173);
+			tbreqep.Name = "tbreqep";
+			tbreqep.ReadOnly = true;
+			tbreqep.Size = new System.Drawing.Size(84, 21);
+			tbreqep.TabIndex = 32;
+			tbreqep.Text = "0x00000000";
 			//
 			// cbreqtp
 			//
-			this.cbreqtp.DropDownStyle =
+			cbreqtp.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbreqtp.Location = new System.Drawing.Point(168, 173);
-			this.cbreqtp.Name = "cbreqtp";
-			this.cbreqtp.Size = new System.Drawing.Size(190, 21);
-			this.cbreqtp.TabIndex = 45;
-			this.cbreqtp.SelectedIndexChanged += new EventHandler(
-				this.SelectRtp
+			cbreqtp.Location = new System.Drawing.Point(168, 173);
+			cbreqtp.Name = "cbreqtp";
+			cbreqtp.Size = new System.Drawing.Size(190, 21);
+			cbreqtp.TabIndex = 45;
+			cbreqtp.SelectedIndexChanged += new EventHandler(
+				SelectRtp
 			);
 			//
 			// label6
 			//
-			this.label6.BackColor = System.Drawing.Color.Transparent;
-			this.label6.Font = new System.Drawing.Font(
+			label6.BackColor = System.Drawing.Color.Transparent;
+			label6.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label6.Location = new System.Drawing.Point(6, 173);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(156, 21);
-			this.label6.TabIndex = 30;
-			this.label6.Text = "Required EP:";
-			this.label6.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			label6.Location = new System.Drawing.Point(6, 173);
+			label6.Name = "label6";
+			label6.Size = new System.Drawing.Size(156, 21);
+			label6.TabIndex = 30;
+			label6.Text = "Required EP:";
+			label6.TextAlign = System.Drawing.ContentAlignment.TopRight;
 			//
 			// lbVer
 			//
-			this.lbVer.BackColor = System.Drawing.Color.Transparent;
-			this.lbVer.Location = new System.Drawing.Point(256, 46);
-			this.lbVer.Name = "lbVer";
-			this.lbVer.Size = new System.Drawing.Size(176, 23);
-			this.lbVer.TabIndex = 29;
-			this.lbVer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			lbVer.BackColor = System.Drawing.Color.Transparent;
+			lbVer.Location = new System.Drawing.Point(256, 46);
+			lbVer.Name = "lbVer";
+			lbVer.Size = new System.Drawing.Size(176, 23);
+			lbVer.TabIndex = 29;
+			lbVer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			//
 			// llunique
 			//
-			this.llunique.BackColor = System.Drawing.Color.Transparent;
-			this.llunique.Font = new System.Drawing.Font(
+			llunique.BackColor = System.Drawing.Color.Transparent;
+			llunique.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.llunique.Location = new System.Drawing.Point(215, 77);
-			this.llunique.Name = "llunique";
-			this.llunique.Size = new System.Drawing.Size(93, 21);
-			this.llunique.TabIndex = 28;
-			this.llunique.TabStop = true;
-			this.llunique.Text = "make unique";
-			this.llunique.LinkClicked +=
+			llunique.Location = new System.Drawing.Point(215, 77);
+			llunique.Name = "llunique";
+			llunique.Size = new System.Drawing.Size(93, 21);
+			llunique.TabIndex = 28;
+			llunique.TabStop = true;
+			llunique.Text = "make unique";
+			llunique.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.MakeUnique
+					MakeUnique
 				);
 			//
 			// label5
 			//
-			this.label5.BackColor = System.Drawing.Color.Transparent;
-			this.label5.Font = new System.Drawing.Font(
+			label5.BackColor = System.Drawing.Color.Transparent;
+			label5.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label5.Location = new System.Drawing.Point(29, 109);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(133, 17);
-			this.label5.TabIndex = 27;
-			this.label5.Text = "(parent) Name:";
-			this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			label5.Location = new System.Drawing.Point(29, 109);
+			label5.Name = "label5";
+			label5.Size = new System.Drawing.Size(133, 17);
+			label5.TabIndex = 27;
+			label5.Text = "(parent) Name:";
+			label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
 			//
 			// tbversion
 			//
-			this.tbversion.Location = new System.Drawing.Point(168, 47);
-			this.tbversion.Name = "tbversion";
-			this.tbversion.ReadOnly = true;
-			this.tbversion.Size = new System.Drawing.Size(88, 21);
-			this.tbversion.TabIndex = 26;
-			this.tbversion.Text = "0x00000000";
+			tbversion.Location = new System.Drawing.Point(168, 47);
+			tbversion.Name = "tbversion";
+			tbversion.ReadOnly = true;
+			tbversion.Size = new System.Drawing.Size(88, 21);
+			tbversion.TabIndex = 26;
+			tbversion.Text = "0x00000000";
 			//
 			// tbsubname
 			//
-			this.tbsubname.Location = new System.Drawing.Point(368, 107);
-			this.tbsubname.Name = "tbsubname";
-			this.tbsubname.Size = new System.Drawing.Size(84, 21);
-			this.tbsubname.TabIndex = 25;
-			this.tbsubname.Text = "U000";
-			this.tbsubname.TextChanged += new EventHandler(this.Change);
+			tbsubname.Location = new System.Drawing.Point(368, 107);
+			tbsubname.Name = "tbsubname";
+			tbsubname.Size = new System.Drawing.Size(84, 21);
+			tbsubname.TabIndex = 25;
+			tbsubname.Text = "U000";
+			tbsubname.TextChanged += new EventHandler(Change);
 			//
 			// tbname
 			//
-			this.tbname.Location = new System.Drawing.Point(168, 107);
-			this.tbname.Name = "tbname";
-			this.tbname.Size = new System.Drawing.Size(88, 21);
-			this.tbname.TabIndex = 23;
-			this.tbname.Text = "N000";
-			this.tbname.TextChanged += new EventHandler(this.Change);
+			tbname.Location = new System.Drawing.Point(168, 107);
+			tbname.Name = "tbname";
+			tbname.Size = new System.Drawing.Size(88, 21);
+			tbname.TabIndex = 23;
+			tbname.Text = "N000";
+			tbname.TextChanged += new EventHandler(Change);
 			//
 			// tbid
 			//
-			this.tbid.Location = new System.Drawing.Point(168, 77);
-			this.tbid.Name = "tbid";
-			this.tbid.Size = new System.Drawing.Size(40, 21);
-			this.tbid.TabIndex = 22;
-			this.tbid.Text = "0";
-			this.tbid.TextChanged += new EventHandler(this.Change);
+			tbid.Location = new System.Drawing.Point(168, 77);
+			tbid.Name = "tbid";
+			tbid.Size = new System.Drawing.Size(40, 21);
+			tbid.TabIndex = 22;
+			tbid.Text = "0";
+			tbid.TextChanged += new EventHandler(Change);
 			//
 			// label4
 			//
-			this.label4.BackColor = System.Drawing.Color.Transparent;
-			this.label4.Font = new System.Drawing.Font(
+			label4.BackColor = System.Drawing.Color.Transparent;
+			label4.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label4.Location = new System.Drawing.Point(274, 109);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(88, 17);
-			this.label4.TabIndex = 21;
-			this.label4.Text = "Subname:";
-			this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			label4.Location = new System.Drawing.Point(274, 109);
+			label4.Name = "label4";
+			label4.Size = new System.Drawing.Size(88, 17);
+			label4.TabIndex = 21;
+			label4.Text = "Subname:";
+			label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
 			//
 			// label3
 			//
-			this.label3.BackColor = System.Drawing.Color.Transparent;
-			this.label3.Font = new System.Drawing.Font(
+			label3.BackColor = System.Drawing.Color.Transparent;
+			label3.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label3.Location = new System.Drawing.Point(29, 79);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(133, 17);
-			this.label3.TabIndex = 20;
-			this.label3.Text = "UID:";
-			this.label3.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			label3.Location = new System.Drawing.Point(29, 79);
+			label3.Name = "label3";
+			label3.Size = new System.Drawing.Size(133, 17);
+			label3.TabIndex = 20;
+			label3.Text = "UID:";
+			label3.TextAlign = System.Drawing.ContentAlignment.TopRight;
 			//
 			// label2
 			//
-			this.label2.BackColor = System.Drawing.Color.Transparent;
-			this.label2.Font = new System.Drawing.Font(
+			label2.BackColor = System.Drawing.Color.Transparent;
+			label2.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label2.Location = new System.Drawing.Point(29, 49);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(133, 17);
-			this.label2.TabIndex = 19;
-			this.label2.Text = "Version:";
-			this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			label2.Location = new System.Drawing.Point(29, 49);
+			label2.Name = "label2";
+			label2.Size = new System.Drawing.Size(133, 17);
+			label2.TabIndex = 19;
+			label2.Text = "Version:";
+			label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
 			//
 			// tbtype
 			//
-			this.tbtype.Location = new System.Drawing.Point(368, 139);
-			this.tbtype.Name = "tbtype";
-			this.tbtype.ReadOnly = true;
-			this.tbtype.Size = new System.Drawing.Size(84, 21);
-			this.tbtype.TabIndex = 18;
-			this.tbtype.Text = "0x00000000";
+			tbtype.Location = new System.Drawing.Point(368, 139);
+			tbtype.Name = "tbtype";
+			tbtype.ReadOnly = true;
+			tbtype.Size = new System.Drawing.Size(84, 21);
+			tbtype.TabIndex = 18;
+			tbtype.Text = "0x00000000";
 			//
 			// cbtype
 			//
-			this.cbtype.DropDownStyle = ComboBoxStyle.DropDownList;
-			this.cbtype.Location = new System.Drawing.Point(168, 139);
-			this.cbtype.Name = "cbtype";
-			this.cbtype.Size = new System.Drawing.Size(190, 21);
-			this.cbtype.TabIndex = 17;
-			this.cbtype.SelectedIndexChanged += new EventHandler(
-				this.SelectType
+			cbtype.DropDownStyle = ComboBoxStyle.DropDownList;
+			cbtype.Location = new System.Drawing.Point(168, 139);
+			cbtype.Name = "cbtype";
+			cbtype.Size = new System.Drawing.Size(190, 21);
+			cbtype.TabIndex = 17;
+			cbtype.SelectedIndexChanged += new EventHandler(
+				SelectType
 			);
 			//
 			// label1
 			//
-			this.label1.BackColor = System.Drawing.Color.Transparent;
-			this.label1.Font = new System.Drawing.Font(
+			label1.BackColor = System.Drawing.Color.Transparent;
+			label1.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label1.Location = new System.Drawing.Point(6, 139);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(156, 21);
-			this.label1.TabIndex = 4;
-			this.label1.Text = "Neighbourhood Type:";
-			this.label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			label1.Location = new System.Drawing.Point(6, 139);
+			label1.Name = "label1";
+			label1.Size = new System.Drawing.Size(156, 21);
+			label1.TabIndex = 4;
+			label1.Text = "Neighbourhood Type:";
+			label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
 			//
 			// panel2
 			//
-			this.panel2.Anchor = (
+			panel2.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -481,29 +481,29 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.panel2.Location = new System.Drawing.Point(0, 0);
-			this.panel2.Margin = new Padding(0);
-			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(877, 24);
-			this.panel2.TabIndex = 0;
+			panel2.Location = new System.Drawing.Point(0, 0);
+			panel2.Margin = new Padding(0);
+			panel2.Name = "panel2";
+			panel2.Size = new System.Drawing.Size(877, 24);
+			panel2.TabIndex = 0;
 			//
 			// IdnoForm
 			//
-			this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
-			this.ClientSize = new System.Drawing.Size(889, 333);
-			this.Controls.Add(this.pnidno);
-			this.Font = new System.Drawing.Font(
+			AutoScaleBaseSize = new System.Drawing.Size(6, 14);
+			ClientSize = new System.Drawing.Size(889, 333);
+			Controls.Add(pnidno);
+			Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.Name = "IdnoForm";
-			this.Text = "IdnoForm";
-			this.pnidno.ResumeLayout(false);
-			this.pnidno.PerformLayout();
-			this.ResumeLayout(false);
+			Name = "IdnoForm";
+			Text = "IdnoForm";
+			pnidno.ResumeLayout(false);
+			pnidno.PerformLayout();
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -548,12 +548,12 @@ namespace SimPe.Plugin
 			NeighborhoodType nt = (NeighborhoodType)cbtype.Items[cbtype.SelectedIndex];
 			if (nt != NeighborhoodType.Unknown)
 			{
-				this.tbtype.Text = "0x" + Helper.HexString((uint)nt);
+				tbtype.Text = "0x" + Helper.HexString((uint)nt);
 			}
 
 			tbsubname.Enabled = (nt == NeighborhoodType.University);
 
-			if (this.Tag != null)
+			if (Tag != null)
 			{
 				return;
 			}
@@ -571,9 +571,9 @@ namespace SimPe.Plugin
 
 			Data.MetaData.NeighbourhoodEP nr = (Data.LocalizedNeighbourhoodEP)
 				cbreqtp.Items[cbreqtp.SelectedIndex];
-			this.tbreqep.Text = "0x" + Helper.HexString((uint)nr);
+			tbreqep.Text = "0x" + Helper.HexString((uint)nr);
 
-			if (this.Tag != null)
+			if (Tag != null)
 			{
 				return;
 			}
@@ -592,9 +592,9 @@ namespace SimPe.Plugin
 
 			Data.MetaData.NeighbourhoodEP ns = (Data.LocalizedNeighbourhoodEP)
 				cbsubtp.Items[cbsubtp.SelectedIndex];
-			this.tbsubep.Text = "0x" + Helper.HexString((uint)ns);
+			tbsubep.Text = "0x" + Helper.HexString((uint)ns);
 
-			if (this.Tag != null)
+			if (Tag != null)
 			{
 				return;
 			}
@@ -611,7 +611,7 @@ namespace SimPe.Plugin
 			}
 
 			NhSeasons sa = (NhSeasons)cbquada.Items[cbquada.SelectedIndex];
-			if (this.Tag != null)
+			if (Tag != null)
 			{
 				return;
 			}
@@ -628,7 +628,7 @@ namespace SimPe.Plugin
 			}
 
 			NhSeasons sb = (NhSeasons)cbquadb.Items[cbquadb.SelectedIndex];
-			if (this.Tag != null)
+			if (Tag != null)
 			{
 				return;
 			}
@@ -645,7 +645,7 @@ namespace SimPe.Plugin
 			}
 
 			NhSeasons sc = (NhSeasons)cbquadc.Items[cbquadc.SelectedIndex];
-			if (this.Tag != null)
+			if (Tag != null)
 			{
 				return;
 			}
@@ -662,7 +662,7 @@ namespace SimPe.Plugin
 			}
 
 			NhSeasons sd = (NhSeasons)cbquadd.Items[cbquadd.SelectedIndex];
-			if (this.Tag != null)
+			if (Tag != null)
 			{
 				return;
 			}
@@ -679,7 +679,7 @@ namespace SimPe.Plugin
 			try
 			{
 				wrapper.MakeUnique();
-				this.tbid.Text = wrapper.Uid.ToString();
+				tbid.Text = wrapper.Uid.ToString();
 			}
 			catch (Exception ex)
 			{
@@ -689,7 +689,7 @@ namespace SimPe.Plugin
 
 		private void Change(object sender, EventArgs e)
 		{
-			if (this.Tag != null)
+			if (Tag != null)
 			{
 				return;
 			}

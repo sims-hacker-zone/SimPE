@@ -49,7 +49,7 @@ namespace SimPe.Plugin
 						true;
 				btBhave.Visible = Wrapper.SiblingResource(0x42484156) != null;
 				Comment2.Width = listLast.Width - 105;
-				this.CanCommit = true;
+				CanCommit = true;
 			}
 			else
 			{
@@ -65,7 +65,7 @@ namespace SimPe.Plugin
 					Comment.Width = listList.Width - 680;
 				}
 
-				this.CanCommit = Wrapper.Count < 64;
+				CanCommit = Wrapper.Count < 64;
 				tbheader.Text = "0x" + Helper.HexString(Wrapper.Header);
 				tbunk0.Text = Helper.HexString(Wrapper.Unk0);
 				tbunk1.Text = Helper.HexString(Wrapper.Unk1);
@@ -93,7 +93,7 @@ namespace SimPe.Plugin
 
 		void IDisposable.Dispose()
 		{
-			this.TPFW.Dispose();
+			TPFW.Dispose();
 		}
 		#endregion
 

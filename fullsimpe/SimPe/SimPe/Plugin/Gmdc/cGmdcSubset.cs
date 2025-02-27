@@ -86,7 +86,7 @@ namespace SimPe.Plugin.Gmdc
 					Items.Clear();
 					for (int i = 0; i < count; i++)
 					{
-						Items.Add(this.ReadValue(reader));
+						Items.Add(ReadValue(reader));
 					}
 				}
 				catch (Exception ex)
@@ -118,7 +118,7 @@ namespace SimPe.Plugin.Gmdc
 
 				for (int i = 0; i < Items.Length; i++)
 				{
-					this.WriteValue(writer, Items[i]);
+					WriteValue(writer, Items[i]);
 				}
 			}
 		}
@@ -255,8 +255,8 @@ namespace SimPe.Plugin.Gmdc
 			//first get my Number in the Parent
 			int index = Index;
 
-			this.Vertices.Clear();
-			this.Items.Clear();
+			Vertices.Clear();
+			Items.Clear();
 
 			if (index == -1)
 			{
@@ -294,8 +294,8 @@ namespace SimPe.Plugin.Gmdc
 							//All vertices either are within the empty or indices map
 							if (voi.Bytes[0] == (byte)i)
 							{
-								indices.Add(k, this.Vertices.Count);
-								this.Vertices.Add(
+								indices.Add(k, Vertices.Count);
+								Vertices.Add(
 									Transform(
 										index,
 										new Vector3f(
@@ -308,8 +308,8 @@ namespace SimPe.Plugin.Gmdc
 							}
 							else //all unassigned Vertices get 0
 							{
-								empty.Add(k, this.Vertices.Count);
-								this.Vertices.Add(new Vector3f(0, 0, 0));
+								empty.Add(k, Vertices.Count);
+								Vertices.Add(new Vector3f(0, 0, 0));
 							}
 						}
 
@@ -345,7 +345,7 @@ namespace SimPe.Plugin.Gmdc
 										}
 
 										indices.Add(nr, face_index);
-										this.Vertices[face_index] = Transform(
+										Vertices[face_index] = Transform(
 											index,
 											new Vector3f(
 												vertices.Values[nr].Data[0],
@@ -356,7 +356,7 @@ namespace SimPe.Plugin.Gmdc
 									}
 
 									face_index = (int)indices[nr];
-									this.Items.Add(face_index);
+									Items.Add(face_index);
 								}
 							}
 						}
@@ -374,10 +374,10 @@ namespace SimPe.Plugin.Gmdc
 			string s = "";
 			if (Helper.WindowsRegistry.ShowJointNames)
 			{
-				s += this.Name + ": ";
+				s += Name + ": ";
 			}
 
-			s += this.Vertices.Count.ToString() + ", " + this.Items.Count.ToString();
+			s += Vertices.Count.ToString() + ", " + Items.Count.ToString();
 
 			return s;
 		}
@@ -480,7 +480,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length => this.Count;
+		public int Length => Count;
 
 		/// <summary>
 		/// Create a clone of this Object

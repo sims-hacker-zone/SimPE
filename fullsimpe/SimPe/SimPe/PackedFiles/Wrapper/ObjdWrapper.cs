@@ -470,8 +470,8 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				writer.Write(reserved_01);
 				//writer.Write(simid);
-				writer.Write(this.GetAttributeShort("guid_1 - Read Only"));
-				writer.Write(this.GetAttributeShort("guid_2 - Read Only"));
+				writer.Write(GetAttributeShort("guid_1 - Read Only"));
+				writer.Write(GetAttributeShort("guid_2 - Read Only"));
 				writer.Write(reserved_02);
 			}
 			else
@@ -493,9 +493,9 @@ namespace SimPe.PackedFiles.Wrapper
 						break;
 					}
 
-					writer.Write(this.GetAttributeShort(sname));
+					writer.Write(GetAttributeShort(sname));
 				}
-				CTSSId = this.GetAttributeShort("catalog strings id");
+				CTSSId = GetAttributeShort("catalog strings id");
 			}
 
 			writer.BaseStream.Seek(0x52, System.IO.SeekOrigin.Begin);

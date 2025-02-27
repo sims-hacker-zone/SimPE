@@ -26,14 +26,14 @@ namespace SimPe.Plugin.UI
 
 		public MainForm()
 		{
-			this.Text = String.Format(
+			Text = String.Format(
 				"Colour Binning Tool {0}",
 				System.Reflection.Assembly.GetExecutingAssembly().GetName().Version
 			);
 			InitializeTabControl();
 			SetupViewContextMenu();
 			ResetSession();
-			this.tcMain_Selected(null, null);
+			tcMain_Selected(null, null);
 		}
 
 		#region Initial Setup
@@ -41,7 +41,7 @@ namespace SimPe.Plugin.UI
 		void InitializeTabControl()
 		{
 			Array values = Enum.GetValues(typeof(HairColor));
-			this.SuspendLayout();
+			SuspendLayout();
 			int i = -1;
 			while (++i < values.Length)
 			{
@@ -50,13 +50,13 @@ namespace SimPe.Plugin.UI
 				tp.Text = key.ToString();
 				tp.Tag = key;
 				tp.ImageIndex = i;
-				this.tcMain.TabPages.Add(tp);
-				ListView lv = this.CreateListView();
-				lv.ContextMenu = this.cmListActions;
+				tcMain.TabPages.Add(tp);
+				ListView lv = CreateListView();
+				lv.ContextMenu = cmListActions;
 				lv.Dock = DockStyle.Fill;
 				tp.Controls.Add(lv);
 			}
-			this.ResumeLayout();
+			ResumeLayout();
 		}
 
 		ListView CreateListView()
@@ -94,7 +94,7 @@ namespace SimPe.Plugin.UI
 				item.Index = i;
 				item.Text = key.ToString();
 				item.Click += new EventHandler(MovePackage_Command);
-				this.miMoveTo.MenuItems.Add(item);
+				miMoveTo.MenuItems.Add(item);
 			}
 		}
 
@@ -104,57 +104,57 @@ namespace SimPe.Plugin.UI
 			if (this.box.Settings != null)
 				this.SaveOutputPreferences(this.box.Settings);
 			*/
-			if (!this.box.IsEmpty)
+			if (!box.IsEmpty)
 			{
-				foreach (System.Windows.Forms.TabPage tp in this.tcMain.TabPages)
+				foreach (System.Windows.Forms.TabPage tp in tcMain.TabPages)
 				{
 					((ListView)tp.Controls[0]).Items.Clear();
 					tp.Enabled = true;
 				}
 			}
 
-			this.lvTxmt.Items.Clear();
-			this.lvCresShpe.Items.Clear();
-			this.box.Clear();
-			this.txtrRef.Clear();
-			this.tbFamGuid.Text = "";
-			this.tbDescription.Text = "";
-			this.pbTexturePreview.Image = DefaultPreviewImage;
-			this.numericUpDown1.Value = 0;
+			lvTxmt.Items.Clear();
+			lvCresShpe.Items.Clear();
+			box.Clear();
+			txtrRef.Clear();
+			tbFamGuid.Text = "";
+			tbDescription.Text = "";
+			pbTexturePreview.Image = DefaultPreviewImage;
+			numericUpDown1.Value = 0;
 			UpdateMainListContextMenu();
-			this.tpClothing.Enabled =
-				this.llGuid.Enabled =
-				this.numericUpDown1.Enabled =
+			tpClothing.Enabled =
+				llGuid.Enabled =
+				numericUpDown1.Enabled =
 					false;
 		}
 
 		void UpdateMainListContextMenu()
 		{
-			bool hasPackage = this.box.Contains(this.CurrentKey);
-			this.miMoveTo.Enabled = hasPackage;
-			this.miClear.Enabled = hasPackage;
-			this.miOpenPackage.Enabled = !hasPackage;
-			this.saveToolStripMenuItem.Enabled = this.saveAsToolStripMenuItem.Enabled =
-				!this.box.IsEmpty;
-			if (this.CurrentView != null)
+			bool hasPackage = box.Contains(CurrentKey);
+			miMoveTo.Enabled = hasPackage;
+			miClear.Enabled = hasPackage;
+			miOpenPackage.Enabled = !hasPackage;
+			saveToolStripMenuItem.Enabled = saveAsToolStripMenuItem.Enabled =
+				!box.IsEmpty;
+			if (CurrentView != null)
 			{
-				this.miLoadMesh.Enabled = true;
-				this.miApplyMesh.Enabled = (CurrentView.SelectedItems.Count > 0);
+				miLoadMesh.Enabled = true;
+				miApplyMesh.Enabled = (CurrentView.SelectedItems.Count > 0);
 				UpdateMoveToList();
 			}
 		}
 
 		void UpdateMoveToList()
 		{
-			if (this.box.Contains(this.CurrentKey))
+			if (box.Contains(CurrentKey))
 			{
 				Array values = Enum.GetValues(typeof(HairColor));
 				int i = -1;
 				while (++i < values.Length)
 				{
-					MenuItem item = this.miMoveTo.MenuItems[i];
+					MenuItem item = miMoveTo.MenuItems[i];
 					HairColor key = (HairColor)values.GetValue(i);
-					if (key == this.CurrentKey || this.box.Contains(key))
+					if (key == CurrentKey || box.Contains(key))
 					{
 						item.Visible = false;
 					}
@@ -177,14 +177,14 @@ namespace SimPe.Plugin.UI
 
 		void miCresAddToMeshList_Click(object sender, EventArgs e)
 		{
-			if (this.lvCresShpe.SelectedItems.Count > 0)
+			if (lvCresShpe.SelectedItems.Count > 0)
 			{
-				foreach (ListViewItem item in this.lvCresShpe.SelectedItems)
+				foreach (ListViewItem item in lvCresShpe.SelectedItems)
 				{
 					MeshTable.MeshInfo mesh = item.Tag as MeshTable.MeshInfo;
 					MenuItem mi = new MenuItem(mesh.Description);
-					this.miApplyMesh.MenuItems.Add(mi);
-					this.miApplyMesh.Visible = true;
+					miApplyMesh.MenuItems.Add(mi);
+					miApplyMesh.Visible = true;
 					mi.Click += new EventHandler(Handle_ApplyMeshItem_Click);
 				}
 			}
@@ -192,23 +192,23 @@ namespace SimPe.Plugin.UI
 
 		private void miLoadMesh_Click(object sender, EventArgs e)
 		{
-			this.fileType = OpenFileType.Mesh;
-			this.dlgOpenPackageFile.ShowDialog();
+			fileType = OpenFileType.Mesh;
+			dlgOpenPackageFile.ShowDialog();
 		}
 
 		private void miMatCopyTxtrRef_Click(object sender, EventArgs e)
 		{
-			if (this.lvTxmt.SelectedItems.Count == 1)
+			if (lvTxmt.SelectedItems.Count == 1)
 			{
-				ListViewItem li = this.lvTxmt.SelectedItems[0];
+				ListViewItem li = lvTxmt.SelectedItems[0];
 				MaterialDefinitionRcol rcol = li.Tag as MaterialDefinitionRcol;
 				Hashtable txtr = rcol.GetTextureDescriptorNames();
 				if (txtr != null)
 				{
 					txtrRef.Remove(ClipboardKey);
 					txtrRef.Add(ClipboardKey, txtr);
-					this.miMatUseTxtrRef.Enabled = true;
-					this.miMatUseTxtrRef.Text = String.Format(
+					miMatUseTxtrRef.Enabled = true;
+					miMatUseTxtrRef.Text = String.Format(
 						"Use {0}",
 						txtr[TextureType.Base]
 					);
@@ -218,14 +218,14 @@ namespace SimPe.Plugin.UI
 
 		private void miMatUseTxtrRef_Click(object sender, EventArgs e)
 		{
-			if (this.txtrRef.ContainsKey(ClipboardKey))
+			if (txtrRef.ContainsKey(ClipboardKey))
 			{
-				Hashtable txtr = this.txtrRef[ClipboardKey] as Hashtable;
-				foreach (ListViewItem li in this.lvTxmt.SelectedItems)
+				Hashtable txtr = txtrRef[ClipboardKey] as Hashtable;
+				foreach (ListViewItem li in lvTxmt.SelectedItems)
 				{
 					MaterialDefinitionRcol rcol = li.Tag as MaterialDefinitionRcol;
 					rcol.SetTextureDescriptorNames(txtr);
-					this.box.ReloadTextureDescriptor(rcol);
+					box.ReloadTextureDescriptor(rcol);
 					UpdateMaterialItem(li, rcol);
 					OnSelectMaterialItem();
 				}
@@ -234,69 +234,69 @@ namespace SimPe.Plugin.UI
 
 		private void miMatUseBaseTxtr_Click(object sender, EventArgs e)
 		{
-			if (this.lvTxmt.SelectedItems.Count > 0)
+			if (lvTxmt.SelectedItems.Count > 0)
 			{
 				RcolTable materials = new RcolTable();
 				foreach (ListViewItem item in lvTxmt.SelectedItems)
 				{
 					materials.Add((Rcol)item.Tag);
 				}
-				this.box.RevertToBaseTextures(materials);
-				UpdateMaterialsList(this.CurrentView);
+				box.RevertToBaseTextures(materials);
+				UpdateMaterialsList(CurrentView);
 			}
 		}
 
 		private void lvTxmt_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			this.OnSelectMaterialItem();
+			OnSelectMaterialItem();
 		}
 
 		void OnSelectMaterialItem()
 		{
-			if (this.lvTxmt.SelectedItems.Count == 0)
+			if (lvTxmt.SelectedItems.Count == 0)
 			{
-				this.lvTxmt.ContextMenu = null;
+				lvTxmt.ContextMenu = null;
 			}
 			else
 			{
-				this.lvTxmt.ContextMenu = this.cmTxmtListActions;
-				if (this.lvTxmt.SelectedItems.Count == 1)
+				lvTxmt.ContextMenu = cmTxmtListActions;
+				if (lvTxmt.SelectedItems.Count == 1)
 				{
-					this.Cursor = Cursors.WaitCursor;
-					ListViewItem item = this.lvTxmt.SelectedItems[0];
+					Cursor = Cursors.WaitCursor;
+					ListViewItem item = lvTxmt.SelectedItems[0];
 					GenericRcol rcolInfo = item.Tag as GenericRcol;
-					if (this.cbEnablePreview.Checked)
+					if (cbEnablePreview.Checked)
 					{
-						Image img = this.box.GetImage(
+						Image img = box.GetImage(
 							rcolInfo,
-							this.pbTexturePreview.Size
+							pbTexturePreview.Size
 						);
 						if (img != null)
 						{
-							this.pbTexturePreview.Image = img;
+							pbTexturePreview.Image = img;
 						}
 						else
 						{
-							this.pbTexturePreview.Image = DefaultPreviewImage;
+							pbTexturePreview.Image = DefaultPreviewImage;
 						}
 					}
-					this.miMatCopyTxtrRef.Enabled = true;
-					this.Cursor = Cursors.Default;
+					miMatCopyTxtrRef.Enabled = true;
+					Cursor = Cursors.Default;
 				}
 				else
 				{
-					this.pbTexturePreview.Image = DefaultPreviewImage;
-					this.miMatCopyTxtrRef.Enabled = false;
+					pbTexturePreview.Image = DefaultPreviewImage;
+					miMatCopyTxtrRef.Enabled = false;
 				}
 			}
 		}
 
 		private void Handle_ClearPackage_Command(object sender, EventArgs e)
 		{
-			this.box.Clear(this.CurrentKey);
+			box.Clear(CurrentKey);
 			CurrentView.Items.Clear();
 			UpdateMainListContextMenu();
-			UpdateMaterialsList(this.CurrentView);
+			UpdateMaterialsList(CurrentView);
 			UpdateFormTitle();
 		}
 
@@ -308,7 +308,7 @@ namespace SimPe.Plugin.UI
 
 		private void Handle_OpenPackage_Command(object sender, EventArgs e)
 		{
-			this.dlgOpenPackageFile.ShowDialog();
+			dlgOpenPackageFile.ShowDialog();
 		}
 
 		private void dlgOpenPackageFile_FileOk(
@@ -318,30 +318,30 @@ namespace SimPe.Plugin.UI
 		{
 			if (!e.Cancel)
 			{
-				switch (this.fileType)
+				switch (fileType)
 				{
 					case OpenFileType.Recolor:
-						this.OpenPackageFile(
+						OpenPackageFile(
 							dlgOpenPackageFile.FileName,
-							this.CurrentKey
+							CurrentKey
 						);
 						break;
 					case OpenFileType.Mesh:
-						this.OpenMeshPackage(dlgOpenPackageFile.FileName);
+						OpenMeshPackage(dlgOpenPackageFile.FileName);
 						break;
 				}
-				this.fileType = OpenFileType.Recolor;
+				fileType = OpenFileType.Recolor;
 			}
 		}
 
 		private void cbEnablePreview_CheckedChanged(object sender, EventArgs e)
 		{
-			if (!this.cbEnablePreview.Checked)
+			if (!cbEnablePreview.Checked)
 			{
-				this.pbTexturePreview.Image = DefaultPreviewImage;
+				pbTexturePreview.Image = DefaultPreviewImage;
 			}
 
-			this.UpdateMaterialsList(this.CurrentView);
+			UpdateMaterialsList(CurrentView);
 		}
 
 		private void newToolStripMenuItem_Click(object sender, EventArgs e)
@@ -352,12 +352,12 @@ namespace SimPe.Plugin.UI
 
 		private void openToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			this.dlgOpenPackageFile.ShowDialog();
+			dlgOpenPackageFile.ShowDialog();
 		}
 
 		private void saveToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			SavePackageFiles(this.dlgSavePackageFile.FileName, false);
+			SavePackageFiles(dlgSavePackageFile.FileName, false);
 			ResetSession();
 		}
 
@@ -365,7 +365,7 @@ namespace SimPe.Plugin.UI
 		{
 			if (dlgSavePackageFile.ShowDialog() == DialogResult.OK)
 			{
-				SavePackageFiles(this.dlgSavePackageFile.FileName, true);
+				SavePackageFiles(dlgSavePackageFile.FileName, true);
 				ResetSession();
 			}
 		}
@@ -377,19 +377,19 @@ namespace SimPe.Plugin.UI
 
 		private void llGuid_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
-			if (this.box.Settings != null)
+			if (box.Settings != null)
 			{
-				this.box.Settings.FamilyGuid = Guid.NewGuid();
-				this.tbFamGuid.Text = this.box.Settings.FamilyGuid.ToString();
+				box.Settings.FamilyGuid = Guid.NewGuid();
+				tbFamGuid.Text = box.Settings.FamilyGuid.ToString();
 			}
 		}
 
 		private void numericUpDown1_ValueChanged(object sender, EventArgs e)
 		{
-			if (this.box.Settings.PackageType == RecolorType.Skintone)
+			if (box.Settings.PackageType == RecolorType.Skintone)
 			{
-				((SkintoneSettings)this.box.Settings).GeneticWeight = Convert.ToSingle(
-					this.numericUpDown1.Value
+				((SkintoneSettings)box.Settings).GeneticWeight = Convert.ToSingle(
+					numericUpDown1.Value
 				);
 			}
 		}
@@ -409,18 +409,18 @@ namespace SimPe.Plugin.UI
 			if (item != null)
 			{
 				HairColor newKey = (HairColor)Enum.Parse(typeof(HairColor), item.Text);
-				if (!this.IsTabEnabled(newKey))
+				if (!IsTabEnabled(newKey))
 				{
 					return;
 				}
 
-				if (this.box.MovePackage(this.CurrentKey, newKey))
+				if (box.MovePackage(CurrentKey, newKey))
 				{
 					CurrentView.Items.Clear();
 					LoadItems(newKey);
 					UpdateMainListContextMenu();
-					UpdateMaterialsList(this.CurrentView);
-					UpdateMeshList(this.CurrentView);
+					UpdateMaterialsList(CurrentView);
+					UpdateMeshList(CurrentView);
 					UpdateFormTitle();
 				}
 			}
@@ -428,7 +428,7 @@ namespace SimPe.Plugin.UI
 
 		void tcMain_Selected(object sender, EventArgs e)
 		{
-			this.miMatUseTxtrRef.Enabled = this.txtrRef.ContainsKey(ClipboardKey);
+			miMatUseTxtrRef.Enabled = txtrRef.ContainsKey(ClipboardKey);
 			UpdateMaterialsList(CurrentView);
 			UpdateMeshList(CurrentView);
 			UpdatePropertiesPanel(CurrentView);
@@ -445,14 +445,14 @@ namespace SimPe.Plugin.UI
 
 		void Handle_PropertiesTab_SettingsChanged(object sender, EventArgs e)
 		{
-			ListView lv = this.CurrentView;
+			ListView lv = CurrentView;
 			if (lv != null)
 			{
 				if (lv.SelectedItems.Count > 0)
 				{
 					ListViewItem li = lv.SelectedItems[0];
 					RecolorItem item = (RecolorItem)li.Tag;
-					ClothingSettings cset = this.tpClothing.Settings;
+					ClothingSettings cset = tpClothing.Settings;
 					li.SubItems[1].Text = cset.Gender.ToString();
 					li.SubItems[2].Text = cset.Age.ToString();
 					item.Age = cset.Age;
@@ -490,10 +490,10 @@ namespace SimPe.Plugin.UI
 			ListView lv = sender as ListView;
 			if (lv != null)
 			{
-				this.miApplyMesh.Enabled = (lv.SelectedItems.Count > 0);
-				this.UpdateMaterialsList(lv);
-				this.UpdateMeshList(lv);
-				this.UpdatePropertiesPanel(lv);
+				miApplyMesh.Enabled = (lv.SelectedItems.Count > 0);
+				UpdateMaterialsList(lv);
+				UpdateMeshList(lv);
+				UpdatePropertiesPanel(lv);
 			}
 		}
 
@@ -543,7 +543,7 @@ namespace SimPe.Plugin.UI
 
 		ListView GetView(HairColor key)
 		{
-			foreach (System.Windows.Forms.TabPage tp in this.tcMain.TabPages)
+			foreach (System.Windows.Forms.TabPage tp in tcMain.TabPages)
 			{
 				if (tp.Tag.Equals(key))
 				{
@@ -574,7 +574,7 @@ namespace SimPe.Plugin.UI
 
 		bool IsTabEnabled(HairColor key)
 		{
-			foreach (System.Windows.Forms.TabPage tp in this.tcMain.TabPages)
+			foreach (System.Windows.Forms.TabPage tp in tcMain.TabPages)
 			{
 				HairColor color = (HairColor)tp.Tag;
 				if (key == color)
@@ -587,10 +587,10 @@ namespace SimPe.Plugin.UI
 
 		void LoadItems(HairColor key)
 		{
-			RecolorItem[] rcolItems = this.box.GetRecolorItems(key);
+			RecolorItem[] rcolItems = box.GetRecolorItems(key);
 			if (!Utility.IsNullOrEmpty(rcolItems))
 			{
-				ListView lv = this.GetView(key);
+				ListView lv = GetView(key);
 				foreach (RecolorItem item in rcolItems)
 				{
 					lv.Items.Add(CreateListItem(item));
@@ -605,7 +605,7 @@ namespace SimPe.Plugin.UI
 				"Colour Binning Tool {0}",
 				System.Reflection.Assembly.GetExecutingAssembly().GetName().Version
 			);
-			PackageInfo pnfo = this.box.GetPackageInfo(this.CurrentKey);
+			PackageInfo pnfo = box.GetPackageInfo(CurrentKey);
 			if (pnfo != null)
 			{
 				title.AppendFormat(
@@ -614,28 +614,28 @@ namespace SimPe.Plugin.UI
 				);
 			}
 
-			this.Text = title.ToString();
+			Text = title.ToString();
 		}
 
 		public void OpenPackageFile(string fileName, HairColor key)
 		{
-			ListView lv = this.CurrentView;
+			ListView lv = CurrentView;
 			if (lv != null)
 			{
 				Wait.Start();
 				Wait.Message = "Loading...";
-				if (this.box.Settings == null)
+				if (box.Settings == null)
 				{
-					this.box.Settings = new PackageSettings();
+					box.Settings = new PackageSettings();
 				}
-				if (this.box.AddPackage(key, fileName))
+				if (box.AddPackage(key, fileName))
 				{
-					RecolorItem[] rcolItems = this.box.GetRecolorItems(key);
+					RecolorItem[] rcolItems = box.GetRecolorItems(key);
 					foreach (RecolorItem item in rcolItems)
 					{
-						if (this.box.Settings.FamilyGuid == Guid.Empty)
+						if (box.Settings.FamilyGuid == Guid.Empty)
 						{
-							this.box.Settings.FamilyGuid = item.Family;
+							box.Settings.FamilyGuid = item.Family;
 						}
 
 						ListViewItem li = CreateListItem(item);
@@ -645,7 +645,7 @@ namespace SimPe.Plugin.UI
 							li.ForeColor = Color.Gray;
 						}
 
-						switch (this.box.Settings.PackageType)
+						switch (box.Settings.PackageType)
 						{
 							case RecolorType.Hairtone:
 							case RecolorType.TextureOverlay:
@@ -664,26 +664,26 @@ namespace SimPe.Plugin.UI
 				Wait.Stop();
 				UpdateMainListContextMenu();
 				UpdateFormTitle();
-				this.tbFamGuid.Text = this.box.Settings.FamilyGuid.ToString();
-				this.tbDescription.Text = this.box.Settings.Description;
-				this.tpClothing.Tipe = this.box.Settings.PackageType;
+				tbFamGuid.Text = box.Settings.FamilyGuid.ToString();
+				tbDescription.Text = box.Settings.Description;
+				tpClothing.Tipe = box.Settings.PackageType;
 				InitDisableControls();
 			}
 		}
 
 		public void OpenMeshPackage(string fileName)
 		{
-			bool newItem = !this.meshTable.IsLoaded(fileName);
-			if (this.meshTable.LoadMesh(fileName) != null)
+			bool newItem = !meshTable.IsLoaded(fileName);
+			if (meshTable.LoadMesh(fileName) != null)
 			{
 				if (newItem)
 				{
-					MeshTable.MeshInfo[] meshes = this.meshTable.FindMeshes(fileName);
+					MeshTable.MeshInfo[] meshes = meshTable.FindMeshes(fileName);
 					foreach (MeshTable.MeshInfo mesh in meshes)
 					{
 						MenuItem mi = new MenuItem(mesh.Description);
-						this.miApplyMesh.MenuItems.Add(mi);
-						this.miApplyMesh.Visible = true;
+						miApplyMesh.MenuItems.Add(mi);
+						miApplyMesh.Visible = true;
 						mi.Click += new EventHandler(Handle_ApplyMeshItem_Click);
 					}
 				}
@@ -692,16 +692,16 @@ namespace SimPe.Plugin.UI
 
 		bool ApplyMesh(string fileName)
 		{
-			ListView view = this.CurrentView;
+			ListView view = CurrentView;
 			if (view != null && view.SelectedItems.Count > 0)
 			{
-				MeshTable.MeshInfo mesh = this.meshTable.FindMeshByName(fileName);
+				MeshTable.MeshInfo mesh = meshTable.FindMeshByName(fileName);
 				if (mesh != null)
 				{
 					foreach (ListViewItem li in view.SelectedItems)
 					{
 						RecolorItem item = li.Tag as RecolorItem;
-						this.meshTable.ApplyMesh(item, mesh);
+						meshTable.ApplyMesh(item, mesh);
 						item.HasChanges = true;
 						li.Font = new Font(li.Font, FontStyle.Italic);
 					}
@@ -714,16 +714,16 @@ namespace SimPe.Plugin.UI
 
 		public void SavePackageFiles(string fileName, bool namechange)
 		{
-			if (!this.box.IsEmpty)
+			if (!box.IsEmpty)
 			{
-				if (this.box.Settings != null)
+				if (box.Settings != null)
 				{
-					this.box.Settings.CompressTextures = this.cbCompress.Checked;
-					this.box.Settings.KeepDisabledItems = !this.cbDeleter.Checked;
+					box.Settings.CompressTextures = cbCompress.Checked;
+					box.Settings.KeepDisabledItems = !cbDeleter.Checked;
 				}
-				this.Cursor = Cursors.WaitCursor;
-				this.box.ProcessPackages(fileName, namechange);
-				this.Cursor = Cursors.Default;
+				Cursor = Cursors.WaitCursor;
+				box.ProcessPackages(fileName, namechange);
+				Cursor = Cursors.Default;
 			}
 		}
 
@@ -731,7 +731,7 @@ namespace SimPe.Plugin.UI
 		{
 			get
 			{
-				System.Windows.Forms.TabPage tp = this.tcMain.SelectedTab;
+				System.Windows.Forms.TabPage tp = tcMain.SelectedTab;
 				if (tp != null)
 				{
 					return (HairColor)tp.Tag;
@@ -745,7 +745,7 @@ namespace SimPe.Plugin.UI
 		{
 			get
 			{
-				System.Windows.Forms.TabPage tp = this.tcMain.SelectedTab;
+				System.Windows.Forms.TabPage tp = tcMain.SelectedTab;
 				return tp.Controls[0] as ListView;
 			}
 		}
@@ -754,24 +754,24 @@ namespace SimPe.Plugin.UI
 		{
 			if (owner != null)
 			{
-				this.lvCresShpe.SuspendLayout();
-				this.lvCresShpe.Items.Clear();
+				lvCresShpe.SuspendLayout();
+				lvCresShpe.Items.Clear();
 				ArrayList items = new ArrayList();
 				foreach (ListViewItem item in owner.SelectedItems)
 				{
 					items.Add(item.Tag);
 				}
 
-				MeshTable.MeshInfo[] meshes = this.meshTable.GetMeshReferences(
+				MeshTable.MeshInfo[] meshes = meshTable.GetMeshReferences(
 					(RecolorItem[])items.ToArray(typeof(RecolorItem))
 				);
 				foreach (MeshTable.MeshInfo mesh in meshes)
 				{
 					ListViewItem li = new ListViewItem();
 					UpdateMeshItem(li, mesh);
-					this.lvCresShpe.Items.Add(li);
+					lvCresShpe.Items.Add(li);
 				}
-				this.lvCresShpe.ResumeLayout();
+				lvCresShpe.ResumeLayout();
 			}
 		}
 
@@ -790,38 +790,38 @@ namespace SimPe.Plugin.UI
 		{
 			if (owner != null)
 			{
-				ArrayList selectedIndices = new ArrayList(this.lvTxmt.SelectedIndices);
-				int count = this.lvTxmt.Items.Count;
-				this.lvTxmt.SuspendLayout();
-				this.lvTxmt.Items.Clear();
+				ArrayList selectedIndices = new ArrayList(lvTxmt.SelectedIndices);
+				int count = lvTxmt.Items.Count;
+				lvTxmt.SuspendLayout();
+				lvTxmt.Items.Clear();
 				foreach (ListViewItem item in owner.SelectedItems)
 				{
 					RecolorItem rcolInfo = item.Tag as RecolorItem;
 					foreach (Rcol rcol in rcolInfo.Materials)
 					{
 						ListViewItem li = new ListViewItem();
-						this.UpdateMaterialItem(li, rcol);
-						this.lvTxmt.Items.Add(li);
+						UpdateMaterialItem(li, rcol);
+						lvTxmt.Items.Add(li);
 					}
 				}
-				if (count == this.lvTxmt.Items.Count)
+				if (count == lvTxmt.Items.Count)
 				{
 					foreach (int index in selectedIndices)
 					{
-						this.lvTxmt.Items[index].Selected = true;
+						lvTxmt.Items[index].Selected = true;
 					}
 				}
 
-				if (this.lvTxmt.Items.Count == 0)
+				if (lvTxmt.Items.Count == 0)
 				{
-					this.pbTexturePreview.Image = DefaultPreviewImage;
+					pbTexturePreview.Image = DefaultPreviewImage;
 				}
-				else if (this.lvTxmt.SelectedIndices.Count == 0)
+				else if (lvTxmt.SelectedIndices.Count == 0)
 				{
-					this.lvTxmt.Items[0].Selected = true;
+					lvTxmt.Items[0].Selected = true;
 				}
 
-				this.lvTxmt.ResumeLayout();
+				lvTxmt.ResumeLayout();
 			}
 		}
 
@@ -832,7 +832,7 @@ namespace SimPe.Plugin.UI
 			li.ImageIndex = 0;
 			li.Tag = rcol;
 			string txtrID = "<not found in FileTable>";
-			IPackedFileDescriptor[] pfd = this.box.GetTextureDescriptor(rcol);
+			IPackedFileDescriptor[] pfd = box.GetTextureDescriptor(rcol);
 			if (!Utility.IsNullOrEmpty(pfd))
 			{
 				txtrID = String.Format(
@@ -867,40 +867,40 @@ namespace SimPe.Plugin.UI
 				cset.OverlayType = item.TextureOverlayType;
 				cset.Figure = item.Figure;
 				cset.Flaggery = item.Flaggery;
-				this.tpClothing.Enabled = true;
-				this.tpClothing.Settings = cset;
+				tpClothing.Enabled = true;
+				tpClothing.Settings = cset;
 			}
 			else
 			{
-				this.tpClothing.Enabled = false;
+				tpClothing.Enabled = false;
 			}
 		}
 
 		void OnSelectMeshItem()
 		{
-			if (this.lvCresShpe.SelectedItems.Count == 0)
+			if (lvCresShpe.SelectedItems.Count == 0)
 			{
-				this.lvCresShpe.ContextMenu = null;
+				lvCresShpe.ContextMenu = null;
 			}
 			else
 			{
-				this.lvCresShpe.ContextMenu = this.cmMeshListActions;
+				lvCresShpe.ContextMenu = cmMeshListActions;
 			}
 		}
 
 		void InitDisableControls()
 		{
-			this.llGuid.Enabled = (this.box.Settings.PackageType != RecolorType.Skin);
-			if (this.box.Settings.PackageType == RecolorType.Skintone)
+			llGuid.Enabled = (box.Settings.PackageType != RecolorType.Skin);
+			if (box.Settings.PackageType == RecolorType.Skintone)
 			{
-				this.numericUpDown1.Value = Convert.ToDecimal(
-					((SkintoneSettings)this.box.Settings).GeneticWeight
+				numericUpDown1.Value = Convert.ToDecimal(
+					((SkintoneSettings)box.Settings).GeneticWeight
 				);
-				this.numericUpDown1.Enabled = true;
+				numericUpDown1.Enabled = true;
 			}
 			else
 			{
-				this.numericUpDown1.Enabled = false;
+				numericUpDown1.Enabled = false;
 			}
 		}
 

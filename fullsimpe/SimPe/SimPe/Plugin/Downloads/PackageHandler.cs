@@ -14,7 +14,7 @@ namespace SimPe.Plugin.Downloads
 
 		public PackageHandler(Interfaces.Files.IPackageFile pkg)
 		{
-			this.flname = pkg.SaveFileName;
+			flname = pkg.SaveFileName;
 			type = Cache.PackageType.Undefined;
 			DeterminType(pkg);
 			Reset();
@@ -87,7 +87,7 @@ namespace SimPe.Plugin.Downloads
 		#region IPackageHandler Member
 		public void FreeResources()
 		{
-			Packages.StreamFactory.CloseStream(this.flname);
+			Packages.StreamFactory.CloseStream(flname);
 		}
 
 		public IPackageInfo[] Objects => hnd.Objects;

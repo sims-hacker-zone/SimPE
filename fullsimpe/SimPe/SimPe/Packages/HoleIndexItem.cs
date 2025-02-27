@@ -40,8 +40,8 @@ namespace SimPe.Packages
 		/// </summary>
 		internal HoleIndexItem()
 		{
-			this.offset = 0;
-			this.size = 0;
+			offset = 0;
+			size = 0;
 		}
 
 		/// <summary>

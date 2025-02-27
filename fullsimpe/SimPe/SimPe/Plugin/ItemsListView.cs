@@ -41,7 +41,7 @@ namespace SimPe.Plugin
 		)
 			: base()
 		{
-			this.Item = item;
+			Item = item;
 			this.parent = parent;
 			//mci = NgbhUI.ObjectCache.FindItem(item.Guid);
 
@@ -56,29 +56,29 @@ namespace SimPe.Plugin
 
 		internal void Update()
 		{
-			this.Text = Item.ToString();
+			Text = Item.ToString();
 			if (!Item.Flags.IsVisible)
 			{
-				this.ForeColor = Color.SteelBlue;
+				ForeColor = Color.SteelBlue;
 			}
 
 			if (Item.Flags.IsControler)
 			{
-				this.ForeColor = Color.Gray;
+				ForeColor = Color.Gray;
 			}
 
 			if (Item.IsInventory)
 			{
-				this.ForeColor = Color.MediumSeaGreen;
+				ForeColor = Color.MediumSeaGreen;
 			}
 
 			if (Item.IsGossip)
 			{
-				this.Font = new Font(
-					this.Font.FontFamily,
-					this.Font.Size,
+				Font = new Font(
+					Font.FontFamily,
+					Font.Size,
 					FontStyle.Italic,
-					this.Font.Unit
+					Font.Unit
 				);
 			}
 
@@ -87,14 +87,14 @@ namespace SimPe.Plugin
 				Image i = Item.Icon;
 				if (i != null)
 				{
-					if (this.ImageIndex >= 0)
+					if (ImageIndex >= 0)
 					{
-						parent.SmallImageList.Images[this.ImageIndex] = i;
+						parent.SmallImageList.Images[ImageIndex] = i;
 					}
 					else
 					{
 						parent.SmallImageList.Images.Add(i);
-						this.ImageIndex = parent.SmallImageList.Images.Count - 1;
+						ImageIndex = parent.SmallImageList.Images.Count - 1;
 					}
 				}
 			}

@@ -160,7 +160,7 @@ namespace Ambertation.Windows.Forms.Graph
 		internal override void OnLostFocus(EventArgs e)
 		{
 			base.OnLostFocus(e);
-			this.CompleteRedraw();
+			CompleteRedraw();
 			Refresh();
 		}
 
@@ -168,7 +168,7 @@ namespace Ambertation.Windows.Forms.Graph
 		{
 			//this.SendToFront();
 			base.OnGotFocus(e);
-			this.CompleteRedraw();
+			CompleteRedraw();
 			Refresh();
 		}
 
@@ -233,7 +233,7 @@ namespace Ambertation.Windows.Forms.Graph
 				FadeColor,
 				Focused
 			);
-			this.DrawText(gr);
+			DrawText(gr);
 			DrawNiceRoundRectEnd(
 				gr,
 				left,

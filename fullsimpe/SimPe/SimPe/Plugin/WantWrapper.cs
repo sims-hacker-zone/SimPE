@@ -80,7 +80,7 @@ namespace SimPe.Plugin
 					Interfaces.Files.IPackedFileDescriptor[] pfds = Package.FindFile(
 						Data.MetaData.SIM_DESCRIPTION_FILE,
 						0,
-						this.FileDescriptor.Instance
+						FileDescriptor.Instance
 					);
 					if (pfds.Length > 0)
 					{
@@ -113,7 +113,7 @@ namespace SimPe.Plugin
 		public Want(Interfaces.IProviderRegistry provider)
 			: base()
 		{
-			this.Provider = provider;
+			Provider = provider;
 
 			Version = 1;
 			unknown1 = 2;
@@ -157,7 +157,7 @@ namespace SimPe.Plugin
 				"---",
 				4,
 				System.Drawing.Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.kweather.png")
 				)
 			);

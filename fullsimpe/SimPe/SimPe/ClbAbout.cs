@@ -20,7 +20,7 @@ namespace SimPe
 		{
 			InitializeComponent();
 			button2.BackColor = SystemColors.Control;
-			this.FormBorderStyle = FormBorderStyle.None;
+			FormBorderStyle = FormBorderStyle.None;
 			wb.Navigating += new WebBrowserNavigatingEventHandler(wb_Navigating);
 			wb.Navigated += new WebBrowserNavigatedEventHandler(wb_Navigated);
 			wb.AllowNavigation = true;
@@ -69,27 +69,27 @@ namespace SimPe
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(ClbAbout));
-			this.button2 = new Button();
-			this.wb = new WebBrowser();
-			this.SuspendLayout();
+			button2 = new Button();
+			wb = new WebBrowser();
+			SuspendLayout();
 			//
 			// button2
 			//
-			this.button2.Image = (
+			button2.Image = (
 				(Image)(resources.GetObject("button2.Image"))
 			);
-			this.button2.Location = new Point(938, 12);
-			this.button2.Name = "button2";
-			this.button2.Size = new Size(64, 23);
-			this.button2.TabIndex = 4;
-			this.button2.UseVisualStyleBackColor = false;
-			this.button2.Click += new EventHandler(this.button2_Click);
+			button2.Location = new Point(938, 12);
+			button2.Name = "button2";
+			button2.Size = new Size(64, 23);
+			button2.TabIndex = 4;
+			button2.UseVisualStyleBackColor = false;
+			button2.Click += new EventHandler(button2_Click);
 			//
 			// wb
 			//
-			this.wb.AllowNavigation = false;
-			this.wb.AllowWebBrowserDrop = false;
-			this.wb.Anchor = (
+			wb.AllowNavigation = false;
+			wb.AllowWebBrowserDrop = false;
+			wb.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -101,32 +101,32 @@ namespace SimPe
 					)
 				)
 			);
-			this.wb.IsWebBrowserContextMenuEnabled = false;
-			this.wb.Location = new Point(30, 130);
-			this.wb.MinimumSize = new Size(20, 20);
-			this.wb.Name = "wb";
-			this.wb.Size = new Size(975, 484);
-			this.wb.TabIndex = 5;
-			this.wb.WebBrowserShortcutsEnabled = false;
+			wb.IsWebBrowserContextMenuEnabled = false;
+			wb.Location = new Point(30, 130);
+			wb.MinimumSize = new Size(20, 20);
+			wb.Name = "wb";
+			wb.Size = new Size(975, 484);
+			wb.TabIndex = 5;
+			wb.WebBrowserShortcutsEnabled = false;
 			//
 			// ClbAbout
 			//
-			this.ClientSize = new Size(1024, 661);
-			this.Controls.Add(this.wb);
-			this.Controls.Add(this.button2);
-			this.MaximizeBox = false;
-			this.MinimizeBox = false;
-			this.Name = "ClbAbout";
-			this.ShowIcon = false;
-			this.StartPosition = FormStartPosition.CenterScreen;
-			this.Text = "About";
-			this.ResumeLayout(false);
+			ClientSize = new Size(1024, 661);
+			Controls.Add(wb);
+			Controls.Add(button2);
+			MaximizeBox = false;
+			MinimizeBox = false;
+			Name = "ClbAbout";
+			ShowIcon = false;
+			StartPosition = FormStartPosition.CenterScreen;
+			Text = "About";
+			ResumeLayout(false);
 		}
 		#endregion
 
 		void LoadHtmResource(string flname)
 		{
-			System.IO.Stream s = this.GetType()
+			System.IO.Stream s = GetType()
 				.Assembly.GetManifestResourceStream("SimPe.Plugin." + flname + ".htm");
 			if (s != null)
 			{

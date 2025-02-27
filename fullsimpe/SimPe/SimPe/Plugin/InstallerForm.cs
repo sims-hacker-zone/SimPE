@@ -50,42 +50,42 @@ namespace SimPe.Plugin
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(InstallerForm)
 				);
-			this.installerControl1 = new InstallerControl();
-			this.SuspendLayout();
+			installerControl1 = new InstallerControl();
+			SuspendLayout();
 			//
 			// installerControl1
 			//
-			this.installerControl1.BackgroundImage = (
+			installerControl1.BackgroundImage = (
 				(System.Drawing.Image)(
 					resources.GetObject("installerControl1.BackgroundImage")
 				)
 			);
-			this.installerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.installerControl1.Font = new System.Drawing.Font("Tahoma", 8.25F);
-			this.installerControl1.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.installerControl1.Location = new System.Drawing.Point(0, 0);
-			this.installerControl1.Name = "installerControl1";
-			this.installerControl1.Size = new System.Drawing.Size(624, 334);
-			this.installerControl1.TabIndex = 0;
+			installerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+			installerControl1.Font = new System.Drawing.Font("Tahoma", 8.25F);
+			installerControl1.ForeColor = System.Drawing.SystemColors.ControlText;
+			installerControl1.Location = new System.Drawing.Point(0, 0);
+			installerControl1.Name = "installerControl1";
+			installerControl1.Size = new System.Drawing.Size(624, 334);
+			installerControl1.TabIndex = 0;
 			//
 			// InstallerForm
 			//
-			this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
-			this.ClientSize = new System.Drawing.Size(624, 334);
-			this.Controls.Add(this.installerControl1);
-			this.Font = new System.Drawing.Font(
+			AutoScaleBaseSize = new System.Drawing.Size(5, 14);
+			ClientSize = new System.Drawing.Size(624, 334);
+			Controls.Add(installerControl1);
+			Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.Name = "InstallerForm";
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "Content Preview";
-			this.ResumeLayout(false);
+			FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+			Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			Name = "InstallerForm";
+			StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			Text = "Content Preview";
+			ResumeLayout(false);
 		}
 		#endregion
 	}

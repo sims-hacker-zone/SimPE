@@ -255,18 +255,18 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public void UpdateFlags()
 		{
-			this.CatalogueUse = new ObjCatalogueUse(Data[0x11]);
+			CatalogueUse = new ObjCatalogueUse(Data[0x11]);
 			if (Data.Length > 0x45)
 			{
-				this.RoomSort = new ObjRoomSort(Data[0x27]);
-				this.FunctionSort = new ObjFunctionSort(Data[0x28]);
-				this.BuildType = new ObjBuildType(Data[0x45]);
-				this.EpRequired1 = new Epsreq1(Data[0x40]);
-				this.EpRequired2 = new Epsreq2(Data[0x41]);
+				RoomSort = new ObjRoomSort(Data[0x27]);
+				FunctionSort = new ObjFunctionSort(Data[0x28]);
+				BuildType = new ObjBuildType(Data[0x45]);
+				EpRequired1 = new Epsreq1(Data[0x40]);
+				EpRequired2 = new Epsreq2(Data[0x41]);
 			}
 			if (Data.Length > 0x64)
 			{
-				this.CommSort = new ComRoomSort(Data[0x64]);
+				CommSort = new ComRoomSort(Data[0x64]);
 			}
 		}
 
@@ -375,7 +375,7 @@ namespace SimPe.PackedFiles.Wrapper
 					+ "It also contains the unique ID for the Object (or part of the Object).",
 				7,
 				System.Drawing.Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.objd.png")
 				)
 			);
@@ -384,20 +384,20 @@ namespace SimPe.PackedFiles.Wrapper
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
 			const int MAX_VALUES = 0x6c;
-			Data[0x11] = (short)this.CatalogueUse.Value;
+			Data[0x11] = (short)CatalogueUse.Value;
 			if (Data.Length > 0x27)
 			{
-				Data[0x27] = (short)this.RoomSort.Value;
-				Data[0x28] = (short)this.FunctionSort.Value;
+				Data[0x27] = (short)RoomSort.Value;
+				Data[0x28] = (short)FunctionSort.Value;
 			}
 			if (Data.Length > 0x41)
 			{
-				Data[0x40] = (short)this.EpRequired1.Value;
-				Data[0x41] = (short)this.EpRequired2.Value;
+				Data[0x40] = (short)EpRequired1.Value;
+				Data[0x41] = (short)EpRequired2.Value;
 			}
 			if (Data.Length > 0x64)
 			{
-				Data[0x64] = (short)this.CommSort.Value;
+				Data[0x64] = (short)CommSort.Value;
 			}
 
 			writer.Write(filename);
@@ -417,7 +417,7 @@ namespace SimPe.PackedFiles.Wrapper
 				writer.Write((short)0);
 			}
 
-			string flname = this.FileName;
+			string flname = FileName;
 			byte[] name = Helper.ToBytes(flname, 0);
 			writer.Write((uint)name.Length);
 			writer.Write(name);
@@ -507,7 +507,7 @@ namespace SimPe.PackedFiles.Wrapper
 			int sz = reader.ReadInt32();
 			filename2 = reader.ReadBytes(sz);
 
-			if (Helper.ToString(filename2) != this.FileName)
+			if (Helper.ToString(filename2) != FileName)
 			{
 				Ok = ObjdHealth.FilenameMismatch;
 			}
@@ -561,11 +561,11 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 		public override string Description => "FileName="
-					+ this.FileName
+					+ FileName
 					+ ",GUID=0x"
-					+ Helper.HexString(this.Guid)
+					+ Helper.HexString(Guid)
 					+ ",Type="
-					+ this.Type.ToString();
+					+ Type.ToString();
 
 		#endregion
 

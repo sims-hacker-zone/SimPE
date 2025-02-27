@@ -45,7 +45,7 @@ namespace SimPe
 		{
 			InitializeComponent();
 			button2.BackColor = SystemColors.Control;
-			this.FormBorderStyle = FormBorderStyle.None;
+			FormBorderStyle = FormBorderStyle.None;
 
 			wb.Navigating += new WebBrowserNavigatingEventHandler(wb_Navigating);
 			wb.Navigated += new WebBrowserNavigatedEventHandler(wb_Navigated);
@@ -100,15 +100,15 @@ namespace SimPe
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(About));
-			this.rtb = new RichTextBox();
-			this.button1 = new Button();
-			this.button2 = new Button();
-			this.wb = new WebBrowser();
-			this.SuspendLayout();
+			rtb = new RichTextBox();
+			button1 = new Button();
+			button2 = new Button();
+			wb = new WebBrowser();
+			SuspendLayout();
 			//
 			// rtb
 			//
-			this.rtb.Anchor = (
+			rtb.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -120,53 +120,53 @@ namespace SimPe
 					)
 				)
 			);
-			this.rtb.BackColor = Color.White;
-			this.rtb.BorderStyle = BorderStyle.None;
-			this.rtb.Cursor = Cursors.Arrow;
-			this.rtb.Font = new Font(
+			rtb.BackColor = Color.White;
+			rtb.BorderStyle = BorderStyle.None;
+			rtb.Cursor = Cursors.Arrow;
+			rtb.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.rtb.Location = new Point(30, 130);
-			this.rtb.Name = "rtb";
-			this.rtb.ReadOnly = true;
-			this.rtb.ScrollBars = RichTextBoxScrollBars.Vertical;
-			this.rtb.Size = new Size(975, 484);
-			this.rtb.TabIndex = 2;
-			this.rtb.Text = "";
-			this.rtb.LinkClicked += new LinkClickedEventHandler(
-				this.rtb_LinkClicked
+			rtb.Location = new Point(30, 130);
+			rtb.Name = "rtb";
+			rtb.ReadOnly = true;
+			rtb.ScrollBars = RichTextBoxScrollBars.Vertical;
+			rtb.Size = new Size(975, 484);
+			rtb.TabIndex = 2;
+			rtb.Text = "";
+			rtb.LinkClicked += new LinkClickedEventHandler(
+				rtb_LinkClicked
 			);
-			this.rtb.Enter += new EventHandler(this.rtb_Enter);
+			rtb.Enter += new EventHandler(rtb_Enter);
 			//
 			// button1
 			//
-			this.button1.Location = new Point(342, 170);
-			this.button1.Name = "button1";
-			this.button1.Size = new Size(75, 23);
-			this.button1.TabIndex = 3;
-			this.button1.Text = "button1";
+			button1.Location = new Point(342, 170);
+			button1.Name = "button1";
+			button1.Size = new Size(75, 23);
+			button1.TabIndex = 3;
+			button1.Text = "button1";
 			//
 			// button2
 			//
-			this.button2.Image = (
+			button2.Image = (
 				(Image)(resources.GetObject("button2.Image"))
 			);
-			this.button2.Location = new Point(938, 12);
-			this.button2.Name = "button2";
-			this.button2.Size = new Size(64, 23);
-			this.button2.TabIndex = 4;
-			this.button2.UseVisualStyleBackColor = false;
-			this.button2.Click += new EventHandler(this.button2_Click);
+			button2.Location = new Point(938, 12);
+			button2.Name = "button2";
+			button2.Size = new Size(64, 23);
+			button2.TabIndex = 4;
+			button2.UseVisualStyleBackColor = false;
+			button2.Click += new EventHandler(button2_Click);
 			//
 			// wb
 			//
-			this.wb.AllowNavigation = false;
-			this.wb.AllowWebBrowserDrop = false;
-			this.wb.Anchor = (
+			wb.AllowNavigation = false;
+			wb.AllowWebBrowserDrop = false;
+			wb.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -178,29 +178,29 @@ namespace SimPe
 					)
 				)
 			);
-			this.wb.IsWebBrowserContextMenuEnabled = false;
-			this.wb.Location = new Point(30, 130);
-			this.wb.MinimumSize = new Size(20, 20);
-			this.wb.Name = "wb";
-			this.wb.Size = new Size(975, 484);
-			this.wb.TabIndex = 5;
-			this.wb.WebBrowserShortcutsEnabled = false;
+			wb.IsWebBrowserContextMenuEnabled = false;
+			wb.Location = new Point(30, 130);
+			wb.MinimumSize = new Size(20, 20);
+			wb.Name = "wb";
+			wb.Size = new Size(975, 484);
+			wb.TabIndex = 5;
+			wb.WebBrowserShortcutsEnabled = false;
 			//
 			// About
 			//
-			this.AutoScaleDimensions = new SizeF(6F, 13F);
-			this.ClientSize = new Size(1024, 661);
-			this.Controls.Add(this.wb);
-			this.Controls.Add(this.button2);
-			this.Controls.Add(this.rtb);
-			this.Controls.Add(this.button1);
-			this.Icon = ((Icon)(resources.GetObject("$this.Icon")));
-			this.MaximizeBox = false;
-			this.MinimizeBox = false;
-			this.Name = "About";
-			this.StartPosition = FormStartPosition.CenterScreen;
-			this.Text = "About";
-			this.ResumeLayout(false);
+			AutoScaleDimensions = new SizeF(6F, 13F);
+			ClientSize = new Size(1024, 661);
+			Controls.Add(wb);
+			Controls.Add(button2);
+			Controls.Add(rtb);
+			Controls.Add(button1);
+			Icon = ((Icon)(resources.GetObject("$this.Icon")));
+			MaximizeBox = false;
+			MinimizeBox = false;
+			Name = "About";
+			StartPosition = FormStartPosition.CenterScreen;
+			Text = "About";
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -208,7 +208,7 @@ namespace SimPe
 		{
 			rtb.Visible = true;
 			System.Diagnostics.FileVersionInfo v = Helper.SimPeVersion;
-			System.IO.Stream s = this.GetType()
+			System.IO.Stream s = GetType()
 				.Assembly.GetManifestResourceStream(
 					"SimPe.docs."
 						+ flname
@@ -222,7 +222,7 @@ namespace SimPe
 				);
 			if (s == null)
 			{
-				s = this.GetType()
+				s = GetType()
 					.Assembly.GetManifestResourceStream(
 						"SimPe.docs." + flname + "-en.rtf"
 					);
@@ -264,7 +264,7 @@ namespace SimPe
 		{
 			rtb.Visible = false;
 			wb.Visible = true;
-			System.IO.Stream s = this.GetType()
+			System.IO.Stream s = GetType()
 				.Assembly.GetManifestResourceStream("SimPe.docs." + flname + ".htm");
 			if (s != null)
 			{

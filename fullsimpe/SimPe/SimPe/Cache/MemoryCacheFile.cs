@@ -87,14 +87,14 @@ namespace SimPe.Cache
 			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
 			{
 				Interfaces.Scenegraph.IScenegraphFileIndexItem[] citems =
-					this.FileIndex.FindFile(item.GetLocalFileDescriptor(), null);
+					FileIndex.FindFile(item.GetLocalFileDescriptor(), null);
 				if (citems.Length == 0)
 				{
 					PackedFiles.Wrapper.ExtObjd objd =
 						new PackedFiles.Wrapper.ExtObjd();
 					objd.ProcessData(item);
 
-					this.AddItem(objd);
+					AddItem(objd);
 					added = true;
 				}
 				Wait.Progress = ct++;
@@ -102,15 +102,15 @@ namespace SimPe.Cache
 
 			if (added)
 			{
-				this.map = null;
+				map = null;
 				Wait.Message = "Saving Chache";
 				if (save)
 				{
-					this.Save(this.FileName);
+					Save(FileName);
 				}
 
-				this.LoadMemTable();
-				this.LoadMemList();
+				LoadMemTable();
+				LoadMemList();
 			}
 		}
 
@@ -129,7 +129,7 @@ namespace SimPe.Cache
 		/// <param name="objd">The Object Data File</param>
 		public MemoryCacheItem AddItem(PackedFiles.Wrapper.ExtObjd objd)
 		{
-			CacheContainer mycc = this.UseConatiner(
+			CacheContainer mycc = UseConatiner(
 				ContainerType.Memory,
 				objd.Package.FileName
 			);

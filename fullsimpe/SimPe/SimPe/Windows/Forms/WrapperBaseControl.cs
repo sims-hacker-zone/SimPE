@@ -77,18 +77,18 @@ namespace SimPe.Windows.Forms
 				headforecol = Color.White;
 				Font = new Font(
 					"tahoma",
-					this.Font.Size,
-					this.Font.Style,
-					this.Font.Unit
+					Font.Size,
+					Font.Style,
+					Font.Unit
 				);
 				headfont = new Font(
-					this.Font.FontFamily,
+					Font.FontFamily,
 					9.75f,
 					FontStyle.Bold,
-					this.Font.Unit
+					Font.Unit
 				);
 
-				this.Gradient = LinearGradientMode.ForwardDiagonal;
+				Gradient = LinearGradientMode.ForwardDiagonal;
 				BackColor = Color.FromArgb(240, 236, 255);
 				midcol = Color.FromArgb(192, 192, 255);
 				gradcol = Color.FromArgb(252, 248, 255);
@@ -157,7 +157,7 @@ namespace SimPe.Windows.Forms
 				if (txt != value)
 				{
 					txt = value;
-					this.Refresh();
+					Refresh();
 				}
 			}
 		}
@@ -223,7 +223,7 @@ namespace SimPe.Windows.Forms
 				if (value != headforecol)
 				{
 					headforecol = value;
-					this.Invalidate();
+					Invalidate();
 				}
 			}
 		}
@@ -267,7 +267,7 @@ namespace SimPe.Windows.Forms
 				if (value != gradcol)
 				{
 					gradcol = value;
-					this.Invalidate();
+					Invalidate();
 				}
 			}
 		}
@@ -283,7 +283,7 @@ namespace SimPe.Windows.Forms
 				if (value != midcol)
 				{
 					midcol = value;
-					this.Invalidate();
+					Invalidate();
 				}
 			}
 		}
@@ -297,7 +297,7 @@ namespace SimPe.Windows.Forms
 			set
 			{
 				mCentre = value;
-				this.Invalidate();
+				Invalidate();
 			}
 		}
 
@@ -316,7 +316,7 @@ namespace SimPe.Windows.Forms
 			set
 			{
 				cc = value;
-				this.btCommit.Visible = cc;
+				btCommit.Visible = cc;
 			}
 		}
 
@@ -329,7 +329,7 @@ namespace SimPe.Windows.Forms
 			set
 			{
 				mPicFit = value;
-				this.Invalidate();
+				Invalidate();
 			}
 		}
 		public float BackgroundImageScale
@@ -343,7 +343,7 @@ namespace SimPe.Windows.Forms
 				if (!mPicFit)
 				{
 					mPicZoom = value;
-					this.Invalidate();
+					Invalidate();
 				}
 			}
 		}
@@ -358,7 +358,7 @@ namespace SimPe.Windows.Forms
 				if (bklayout != ImageLayout.Centered)
 				{
 					mPicloc = value;
-					this.Invalidate();
+					Invalidate();
 				}
 			}
 		}
@@ -371,7 +371,7 @@ namespace SimPe.Windows.Forms
 			set
 			{
 				bklayout = value;
-				this.Invalidate();
+				Invalidate();
 			}
 		}
 		public float BackgroundImageOpacity
@@ -383,7 +383,7 @@ namespace SimPe.Windows.Forms
 			set
 			{
 				mPicOpacity = value;
-				this.Invalidate();
+				Invalidate();
 			}
 		}
 
@@ -408,8 +408,8 @@ namespace SimPe.Windows.Forms
 				Interfaces.Plugin.IFileWrapper nwrp
 			)
 			{
-				this.OldWrapper = owrp;
-				this.NewWrapper = nwrp;
+				OldWrapper = owrp;
+				NewWrapper = nwrp;
 			}
 
 			public Interfaces.Plugin.IFileWrapper OldWrapper
@@ -449,107 +449,107 @@ namespace SimPe.Windows.Forms
 		{
 			System.Resources.ResourceManager resources =
 				new System.Resources.ResourceManager(typeof(WrapperBaseControl));
-			this.btCommit = new Button();
-			this.SuspendLayout();
+			btCommit = new Button();
+			SuspendLayout();
 			//
 			// btCommit
 			//
-			this.btCommit.AccessibleDescription = resources.GetString(
+			btCommit.AccessibleDescription = resources.GetString(
 				"btCommit.AccessibleDescription"
 			);
-			this.btCommit.AccessibleName = resources.GetString(
+			btCommit.AccessibleName = resources.GetString(
 				"btCommit.AccessibleName"
 			);
-			this.btCommit.Anchor = (
+			btCommit.Anchor = (
 				(AnchorStyles)(
 					resources.GetObject("btCommit.Anchor")
 				)
 			);
-			this.btCommit.BackgroundImage = (
+			btCommit.BackgroundImage = (
 				(Image)(resources.GetObject("btCommit.BackgroundImage"))
 			);
-			this.btCommit.Dock = (
+			btCommit.Dock = (
 				(DockStyle)(resources.GetObject("btCommit.Dock"))
 			);
-			this.btCommit.Enabled = ((bool)(resources.GetObject("btCommit.Enabled")));
-			this.btCommit.FlatStyle = (
+			btCommit.Enabled = ((bool)(resources.GetObject("btCommit.Enabled")));
+			btCommit.FlatStyle = (
 				(FlatStyle)(
 					resources.GetObject("btCommit.FlatStyle")
 				)
 			);
-			this.btCommit.Font = (
+			btCommit.Font = (
 				(Font)(resources.GetObject("btCommit.Font"))
 			);
-			this.btCommit.Image = (
+			btCommit.Image = (
 				(Image)(resources.GetObject("btCommit.Image"))
 			);
-			this.btCommit.ImageAlign = (
+			btCommit.ImageAlign = (
 				(ContentAlignment)(
 					resources.GetObject("btCommit.ImageAlign")
 				)
 			);
-			this.btCommit.ImageIndex = (
+			btCommit.ImageIndex = (
 				(int)(resources.GetObject("btCommit.ImageIndex"))
 			);
-			this.btCommit.ImeMode = (
+			btCommit.ImeMode = (
 				(ImeMode)(resources.GetObject("btCommit.ImeMode"))
 			);
-			this.btCommit.Location = (
+			btCommit.Location = (
 				(Point)(resources.GetObject("btCommit.Location"))
 			);
-			this.btCommit.Name = "btCommit";
-			this.btCommit.RightToLeft = (
+			btCommit.Name = "btCommit";
+			btCommit.RightToLeft = (
 				(RightToLeft)(
 					resources.GetObject("btCommit.RightToLeft")
 				)
 			);
-			this.btCommit.Size = (
+			btCommit.Size = (
 				(Size)(resources.GetObject("btCommit.Size"))
 			);
-			this.btCommit.TabIndex = ((int)(resources.GetObject("btCommit.TabIndex")));
-			this.btCommit.Text = resources.GetString("btCommit.Text");
-			this.btCommit.TextAlign = (
+			btCommit.TabIndex = ((int)(resources.GetObject("btCommit.TabIndex")));
+			btCommit.Text = resources.GetString("btCommit.Text");
+			btCommit.TextAlign = (
 				(ContentAlignment)(
 					resources.GetObject("btCommit.TextAlign")
 				)
 			);
-			this.btCommit.Visible = ((bool)(resources.GetObject("btCommit.Visible")));
-			this.btCommit.Click += new EventHandler(this.btCommit_Click);
+			btCommit.Visible = ((bool)(resources.GetObject("btCommit.Visible")));
+			btCommit.Click += new EventHandler(btCommit_Click);
 			//
 			// WrapperBaseControl
 			//
-			this.AccessibleDescription = resources.GetString(
+			AccessibleDescription = resources.GetString(
 				"$this.AccessibleDescription"
 			);
-			this.AccessibleName = resources.GetString("$this.AccessibleName");
-			this.AutoScroll = ((bool)(resources.GetObject("$this.AutoScroll")));
-			this.AutoScrollMargin = (
+			AccessibleName = resources.GetString("$this.AccessibleName");
+			AutoScroll = ((bool)(resources.GetObject("$this.AutoScroll")));
+			AutoScrollMargin = (
 				(Size)(resources.GetObject("$this.AutoScrollMargin"))
 			);
-			this.AutoScrollMinSize = (
+			AutoScrollMinSize = (
 				(Size)(resources.GetObject("$this.AutoScrollMinSize"))
 			);
-			this.BackgroundImage = (
+			BackgroundImage = (
 				(Image)(resources.GetObject("$this.BackgroundImage"))
 			);
-			this.Controls.Add(this.btCommit);
-			this.DockPadding.Top = 24;
-			this.Enabled = ((bool)(resources.GetObject("$this.Enabled")));
-			this.Font = ((Font)(resources.GetObject("$this.Font")));
-			this.ImeMode = (
+			Controls.Add(btCommit);
+			DockPadding.Top = 24;
+			Enabled = ((bool)(resources.GetObject("$this.Enabled")));
+			Font = ((Font)(resources.GetObject("$this.Font")));
+			ImeMode = (
 				(ImeMode)(resources.GetObject("$this.ImeMode"))
 			);
-			this.Location = (
+			Location = (
 				(Point)(resources.GetObject("$this.Location"))
 			);
-			this.Name = "WrapperBaseControl";
-			this.RightToLeft = (
+			Name = "WrapperBaseControl";
+			RightToLeft = (
 				(RightToLeft)(
 					resources.GetObject("$this.RightToLeft")
 				)
 			);
-			this.Size = ((Size)(resources.GetObject("$this.Size")));
-			this.ResumeLayout(false);
+			Size = ((Size)(resources.GetObject("$this.Size")));
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -562,47 +562,47 @@ namespace SimPe.Windows.Forms
 		{
 			base.OnPaint(e);
 
-			if ((this.Width > 0) && (this.Height > 0))
+			if ((Width > 0) && (Height > 0))
 			{
-				if (this.Height - this.HeaderHeight > 0)
+				if (Height - HeaderHeight > 0)
 				{
-					if (this.GradCentre < 0.02F)
+					if (GradCentre < 0.02F)
 					{
-						this.GradCentre = this.mCentre = 0.02F;
+						GradCentre = mCentre = 0.02F;
 					}
 
-					if (this.GradCentre > 0.98F)
+					if (GradCentre > 0.98F)
 					{
-						this.GradCentre = this.mCentre = 0.98F;
+						GradCentre = mCentre = 0.98F;
 					}
 
 					Rectangle rec = new Rectangle(
 						0,
-						this.HeaderHeight,
-						this.Width,
-						this.Height - this.HeaderHeight
+						HeaderHeight,
+						Width,
+						Height - HeaderHeight
 					);
 					LinearGradientBrush b = new LinearGradientBrush(
 						rec,
-						this.BackColor,
-						this.MiddleColor,
-						this.Gradient
+						BackColor,
+						MiddleColor,
+						Gradient
 					);
 					ColorBlend cb = new ColorBlend(3);
 					cb.Colors = new Color[]
 					{
-						this.BackColor,
-						this.MiddleColor,
-						this.GradientColor,
+						BackColor,
+						MiddleColor,
+						GradientColor,
 					};
-					cb.Positions = new float[] { 0F, this.GradCentre, 1F };
+					cb.Positions = new float[] { 0F, GradCentre, 1F };
 					b.InterpolationColors = cb;
 					e.Graphics.FillRectangle(b, rec);
 					b.Dispose();
-					if (this.BackgroundImage != null && mPicOpacity > 0)
+					if (BackgroundImage != null && mPicOpacity > 0)
 					{
-						int hyte = this.Height - this.HeaderHeight;
-						int adjx = this.Width - mPicloc.X;
+						int hyte = Height - HeaderHeight;
+						int adjx = Width - mPicloc.X;
 						int adjy = hyte - mPicloc.Y;
 						if ((adjx > 5) && (adjy > 5))
 						{
@@ -611,68 +611,68 @@ namespace SimPe.Windows.Forms
 								if (
 									(
 										adjy
-										/ this.BackgroundImage.PhysicalDimension.Height
+										/ BackgroundImage.PhysicalDimension.Height
 									)
 									< (
 										adjx
-										/ this.BackgroundImage.PhysicalDimension.Width
+										/ BackgroundImage.PhysicalDimension.Width
 									)
 								)
 								{
 									mPicZoom =
 										adjy
-										/ this.BackgroundImage.PhysicalDimension.Height;
+										/ BackgroundImage.PhysicalDimension.Height;
 								}
 								else
 								{
 									mPicZoom =
 										adjx
-										/ this.BackgroundImage.PhysicalDimension.Width;
+										/ BackgroundImage.PhysicalDimension.Width;
 								}
 							}
 							Int32 Widf = Convert.ToInt32(
-								this.BackgroundImage.Width * mPicZoom
+								BackgroundImage.Width * mPicZoom
 							);
 							Int32 Hite = Convert.ToInt32(
-								this.BackgroundImage.Height * mPicZoom
+								BackgroundImage.Height * mPicZoom
 							);
 							int pyintX = mPicloc.X;
-							int pyintY = mPicloc.Y + this.HeaderHeight;
+							int pyintY = mPicloc.Y + HeaderHeight;
 							if (bklayout == ImageLayout.TopRight)
 							{
-								pyintX = (this.Width - Widf) - mPicloc.X;
+								pyintX = (Width - Widf) - mPicloc.X;
 							}
 							else if (bklayout == ImageLayout.BottomRight)
 							{
-								pyintX = (this.Width - Widf) - mPicloc.X;
-								pyintY = (this.Height - Hite) - mPicloc.Y;
+								pyintX = (Width - Widf) - mPicloc.X;
+								pyintY = (Height - Hite) - mPicloc.Y;
 							}
 							else if (bklayout == ImageLayout.BottomLeft)
 							{
-								pyintY = (this.Height - Hite) - mPicloc.Y;
+								pyintY = (Height - Hite) - mPicloc.Y;
 							}
 							else if (bklayout == ImageLayout.Centered)
 							{
-								pyintX = (this.Width - Widf) / 2;
-								pyintY = (this.Height - Hite + this.HeaderHeight) / 2;
+								pyintX = (Width - Widf) / 2;
+								pyintY = (Height - Hite + HeaderHeight) / 2;
 							}
 							else if (bklayout == ImageLayout.CenterLeft)
 							{
-								pyintY = (this.Height - Hite + this.HeaderHeight) / 2;
+								pyintY = (Height - Hite + HeaderHeight) / 2;
 							}
 							else if (bklayout == ImageLayout.CenterTop)
 							{
-								pyintX = (this.Width - Widf) / 2;
+								pyintX = (Width - Widf) / 2;
 							}
 							else if (bklayout == ImageLayout.CenterRight)
 							{
-								pyintY = (this.Height - Hite + this.HeaderHeight) / 2;
-								pyintX = (this.Width - Widf) - mPicloc.X;
+								pyintY = (Height - Hite + HeaderHeight) / 2;
+								pyintX = (Width - Widf) - mPicloc.X;
 							}
 							else if (bklayout == ImageLayout.CenterBottom)
 							{
-								pyintX = (this.Width - Widf) / 2;
-								pyintY = (this.Height - Hite) - mPicloc.Y;
+								pyintX = (Width - Widf) / 2;
+								pyintY = (Height - Hite) - mPicloc.Y;
 							}
 
 							// Draw the Background Image
@@ -684,7 +684,7 @@ namespace SimPe.Windows.Forms
 							);
 							if (mPicOpacity >= 1)
 							{
-								e.Graphics.DrawImage(this.BackgroundImage, picrect);
+								e.Graphics.DrawImage(BackgroundImage, picrect);
 							}
 							else
 							{
@@ -706,12 +706,12 @@ namespace SimPe.Windows.Forms
 									System.Drawing.Imaging.ColorAdjustType.Bitmap
 								);
 								e.Graphics.DrawImage(
-									this.BackgroundImage,
+									BackgroundImage,
 									picrect,
 									0,
 									0,
-									this.BackgroundImage.Width,
-									this.BackgroundImage.Height,
+									BackgroundImage.Width,
+									BackgroundImage.Height,
 									GraphicsUnit.Pixel,
 									imgAttributes
 								);
@@ -722,22 +722,22 @@ namespace SimPe.Windows.Forms
 				}
 
 				//Draw the HeadLine HeadEndColor
-				Rectangle hrec = new Rectangle(0, 0, this.Width, this.HeaderHeight);
+				Rectangle hrec = new Rectangle(0, 0, Width, HeaderHeight);
 				LinearGradientBrush bg = new LinearGradientBrush(
 					hrec,
 					HeadBackColor,
 					HeadEndColor,
 					LinearGradientMode.Horizontal
 				);
-				SolidBrush fb = new SolidBrush(this.HeadForeColor);
+				SolidBrush fb = new SolidBrush(HeadForeColor);
 				ColorBlend hcb = new ColorBlend(2);
 				hcb.Colors = new Color[] { HeadBackColor, HeadEndColor };
 				hcb.Positions = new float[] { 0F, 1F };
 				bg.InterpolationColors = hcb;
 				e.Graphics.FillRectangle(bg, hrec);
-				SizeF sz = e.Graphics.MeasureString(HeaderText, this.HeadFont);
+				SizeF sz = e.Graphics.MeasureString(HeaderText, HeadFont);
 				int dist = (int)((HeaderHeight - sz.Height) / 2);
-				e.Graphics.DrawString(HeaderText, this.HeadFont, fb, dist, dist);
+				e.Graphics.DrawString(HeaderText, HeadFont, fb, dist, dist);
 				bg.Dispose();
 				fb.Dispose();
 			}
@@ -783,8 +783,8 @@ namespace SimPe.Windows.Forms
 
 		private void SetWrapper(Interfaces.Plugin.IFileWrapper wrp)
 		{
-			Interfaces.Plugin.IFileWrapper old = this.Wrapper;
-			this.Wrapper = wrp;
+			Interfaces.Plugin.IFileWrapper old = Wrapper;
+			Wrapper = wrp;
 
 			WrapperChangedEventArgs e = new WrapperChangedEventArgs(old, wrp);
 			OnWrapperChanged(e);
@@ -805,7 +805,7 @@ namespace SimPe.Windows.Forms
 		protected override void OnResize(EventArgs e)
 		{
 			base.OnResize(e);
-			this.btCommit.Left = this.Width - 4 - btCommit.Width;
+			btCommit.Left = Width - 4 - btCommit.Width;
 		}
 	}
 }

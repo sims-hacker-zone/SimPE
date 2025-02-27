@@ -136,7 +136,7 @@ namespace SimPe
 		{
 			try
 			{
-				this.Dispose();
+				Dispose();
 			}
 			catch { }
 		}
@@ -147,7 +147,7 @@ namespace SimPe
 		/// <returns></returns>
 		public ThemeManager CreateChild()
 		{
-			ThemeManager tm = new ThemeManager(this.ctheme);
+			ThemeManager tm = new ThemeManager(ctheme);
 			tm.Parent = this;
 			return tm;
 		}
@@ -366,9 +366,9 @@ namespace SimPe
 
 		void SetTheme(Ambertation.Windows.Forms.XPTaskBoxSimple sdm)
 		{
-			sdm.LeftHeaderColor = this.ThemeColor;
-			sdm.RightHeaderColor = this.ThemeColorDark;
-			sdm.BodyColor = this.ThemeColorLight;
+			sdm.LeftHeaderColor = ThemeColor;
+			sdm.RightHeaderColor = ThemeColorDark;
+			sdm.BodyColor = ThemeColorLight;
 		}
 
 		void SetTheme(System.Windows.Forms.Splitter tb)
@@ -555,7 +555,7 @@ namespace SimPe
 		/// <param name="t"></param>
 		void ThemeWasChanged(GuiTheme t)
 		{
-			this.CurrentTheme = t;
+			CurrentTheme = t;
 		}
 
 		ThemeManager parent;
@@ -614,8 +614,8 @@ namespace SimPe
 
 		public void Dispose()
 		{
-			this.Parent = null;
-			this.Clear();
+			Parent = null;
+			Clear();
 		}
 
 		#endregion

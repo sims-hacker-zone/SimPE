@@ -89,7 +89,7 @@ namespace SimPe.Plugin
 				tGenericRcol = new TabPage.GenericRcol();
 			}
 
-			tGenericRcol.tb_ver.Text = "0x" + Helper.HexString(this.version);
+			tGenericRcol.tb_ver.Text = "0x" + Helper.HexString(version);
 			tGenericRcol.gen_pg.SelectedObject = this;
 		}
 
@@ -97,9 +97,9 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			if (this.tGenericRcol != null)
+			if (tGenericRcol != null)
 			{
-				this.tGenericRcol.Dispose();
+				tGenericRcol.Dispose();
 			}
 
 			tGenericRcol = null;

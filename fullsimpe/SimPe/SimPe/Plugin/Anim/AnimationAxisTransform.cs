@@ -142,11 +142,11 @@ namespace SimPe.Plugin.Anim
 		{
 			get
 			{
-				return this.GetCompressedFloat(Parameter);
+				return GetCompressedFloat(Parameter);
 			}
 			set
 			{
-				Parameter = this.FromCompressedFloat(value);
+				Parameter = FromCompressedFloat(value);
 			}
 		}
 
@@ -185,18 +185,18 @@ namespace SimPe.Plugin.Anim
 		public AnimationAxisTransform CloneBase()
 		{
 			AnimationAxisTransform aat = new AnimationAxisTransform(null, -1);
-			aat.Linear = this.Linear;
-			aat.TimeCode = this.TimeCode;
-			aat.Parameter = this.Parameter;
-			aat.Unknown1 = this.Unknown1;
-			aat.Unknown2 = this.Unknown2;
+			aat.Linear = Linear;
+			aat.TimeCode = TimeCode;
+			aat.Parameter = Parameter;
+			aat.Unknown1 = Unknown1;
+			aat.Unknown2 = Unknown2;
 
 			return aat;
 		}
 
 		internal void SetIndex(int index)
 		{
-			this.Index = index;
+			Index = index;
 		}
 
 		internal void SetParent(AnimationAxisTransformBlock parent)
@@ -295,7 +295,7 @@ namespace SimPe.Plugin.Anim
 
 		public object Clone()
 		{
-			return this.CloneBase();
+			return CloneBase();
 		}
 
 		#endregion
@@ -347,7 +347,7 @@ namespace SimPe.Plugin.Anim
 			}
 
 			AnimationAxisTransform aat = (AnimationAxisTransform)obj;
-			return this.TimeCode.CompareTo(aat.TimeCode);
+			return TimeCode.CompareTo(aat.TimeCode);
 		}
 
 		#endregion

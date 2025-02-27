@@ -70,10 +70,10 @@ namespace SimPe.Plugin
 			InitializeComponent();
 
 			LoadArchetyp();
-			this.cbTownie.Checked = ShowTownies;
-			this.cbNpc.Checked = ShowNPCs;
-			this.cbadults.Checked = AdultsOnly;
-			this.cbgals.Checked = JustGals;
+			cbTownie.Checked = ShowTownies;
+			cbNpc.Checked = ShowNPCs;
+			cbadults.Checked = AdultsOnly;
+			cbgals.Checked = JustGals;
 		}
 
 		/// <summary>
@@ -98,362 +98,362 @@ namespace SimPe.Plugin
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new Container();
+			components = new Container();
 			ComponentResourceManager resources =
 				new ComponentResourceManager(typeof(Surgery));
-			this.ilist = new ImageList(this.components);
-			this.lv = new ListView();
-			this.button1 = new Button();
-			this.label1 = new Label();
-			this.lbUbi = new Label();
-			this.groupBox1 = new GroupBox();
-			this.pgPatientDetails = new PropertyGrid();
-			this.cbeye = new CheckBox();
-			this.cbmakeup = new CheckBox();
-			this.llexport = new LinkLabel();
-			this.pbpatient = new PictureBox();
-			this.llusepatient = new LinkLabel();
-			this.cbface = new CheckBox();
-			this.groupBox2 = new GroupBox();
-			this.pgArchetypeDetails = new PropertyGrid();
-			this.ctlLoadPackage = new LinkLabel();
-			this.llusearche = new LinkLabel();
-			this.pbarche = new PictureBox();
-			this.sfd = new SaveFileDialog();
-			this.toolTip1 = new ToolTip(this.components);
-			this.cbskin = new CheckBox();
-			this.groupBox3 = new GroupBox();
-			this.lvskin = new ListView();
-			this.iskin = new ImageList(this.components);
-			this.opd = new OpenFileDialog();
-			this.cbgals = new CheckBox();
-			this.cbmens = new CheckBox();
-			this.cbadults = new CheckBox();
-			this.cbTownie = new CheckBox();
-			this.cbNpc = new CheckBox();
-			this.groupBox1.SuspendLayout();
-			((ISupportInitialize)(this.pbpatient)).BeginInit();
-			this.groupBox2.SuspendLayout();
-			((ISupportInitialize)(this.pbarche)).BeginInit();
-			this.groupBox3.SuspendLayout();
-			this.SuspendLayout();
+			ilist = new ImageList(components);
+			lv = new ListView();
+			button1 = new Button();
+			label1 = new Label();
+			lbUbi = new Label();
+			groupBox1 = new GroupBox();
+			pgPatientDetails = new PropertyGrid();
+			cbeye = new CheckBox();
+			cbmakeup = new CheckBox();
+			llexport = new LinkLabel();
+			pbpatient = new PictureBox();
+			llusepatient = new LinkLabel();
+			cbface = new CheckBox();
+			groupBox2 = new GroupBox();
+			pgArchetypeDetails = new PropertyGrid();
+			ctlLoadPackage = new LinkLabel();
+			llusearche = new LinkLabel();
+			pbarche = new PictureBox();
+			sfd = new SaveFileDialog();
+			toolTip1 = new ToolTip(components);
+			cbskin = new CheckBox();
+			groupBox3 = new GroupBox();
+			lvskin = new ListView();
+			iskin = new ImageList(components);
+			opd = new OpenFileDialog();
+			cbgals = new CheckBox();
+			cbmens = new CheckBox();
+			cbadults = new CheckBox();
+			cbTownie = new CheckBox();
+			cbNpc = new CheckBox();
+			groupBox1.SuspendLayout();
+			((ISupportInitialize)(pbpatient)).BeginInit();
+			groupBox2.SuspendLayout();
+			((ISupportInitialize)(pbarche)).BeginInit();
+			groupBox3.SuspendLayout();
+			SuspendLayout();
 			//
 			// ilist
 			//
-			this.ilist.ColorDepth = ColorDepth.Depth32Bit;
-			resources.ApplyResources(this.ilist, "ilist");
-			this.ilist.TransparentColor = Color.Transparent;
+			ilist.ColorDepth = ColorDepth.Depth32Bit;
+			resources.ApplyResources(ilist, "ilist");
+			ilist.TransparentColor = Color.Transparent;
 			//
 			// lv
 			//
-			resources.ApplyResources(this.lv, "lv");
-			this.lv.BorderStyle = BorderStyle.None;
-			this.lv.HideSelection = false;
-			this.lv.LargeImageList = this.ilist;
-			this.lv.MultiSelect = false;
-			this.lv.Name = "lv";
-			this.lv.SmallImageList = this.ilist;
-			this.lv.Sorting = SortOrder.Ascending;
-			this.lv.StateImageList = this.ilist;
-			this.toolTip1.SetToolTip(this.lv, resources.GetString("lv.ToolTip"));
-			this.lv.UseCompatibleStateImageBehavior = false;
-			this.lv.SelectedIndexChanged += new EventHandler(this.SelectSim);
-			this.lv.DoubleClick += new EventHandler(this.Open);
+			resources.ApplyResources(lv, "lv");
+			lv.BorderStyle = BorderStyle.None;
+			lv.HideSelection = false;
+			lv.LargeImageList = ilist;
+			lv.MultiSelect = false;
+			lv.Name = "lv";
+			lv.SmallImageList = ilist;
+			lv.Sorting = SortOrder.Ascending;
+			lv.StateImageList = ilist;
+			toolTip1.SetToolTip(lv, resources.GetString("lv.ToolTip"));
+			lv.UseCompatibleStateImageBehavior = false;
+			lv.SelectedIndexChanged += new EventHandler(SelectSim);
+			lv.DoubleClick += new EventHandler(Open);
 			//
 			// button1
 			//
-			resources.ApplyResources(this.button1, "button1");
-			this.button1.Name = "button1";
-			this.toolTip1.SetToolTip(
-				this.button1,
+			resources.ApplyResources(button1, "button1");
+			button1.Name = "button1";
+			toolTip1.SetToolTip(
+				button1,
 				resources.GetString("button1.ToolTip")
 			);
-			this.button1.Click += new EventHandler(this.Open);
+			button1.Click += new EventHandler(Open);
 			//
 			// label1
 			//
-			resources.ApplyResources(this.label1, "label1");
-			this.label1.Name = "label1";
+			resources.ApplyResources(label1, "label1");
+			label1.Name = "label1";
 			//
 			// lbUbi
 			//
-			this.lbUbi.BackColor = SystemColors.Window;
-			resources.ApplyResources(this.lbUbi, "lbUbi");
-			this.lbUbi.ForeColor = Color.Brown;
-			this.lbUbi.Name = "lbUbi";
+			lbUbi.BackColor = SystemColors.Window;
+			resources.ApplyResources(lbUbi, "lbUbi");
+			lbUbi.ForeColor = Color.Brown;
+			lbUbi.Name = "lbUbi";
 			//
 			// groupBox1
 			//
-			resources.ApplyResources(this.groupBox1, "groupBox1");
-			this.groupBox1.BackColor = Color.Transparent;
-			this.groupBox1.Controls.Add(this.pgPatientDetails);
-			this.groupBox1.Controls.Add(this.cbeye);
-			this.groupBox1.Controls.Add(this.cbmakeup);
-			this.groupBox1.Controls.Add(this.llexport);
-			this.groupBox1.Controls.Add(this.pbpatient);
-			this.groupBox1.Controls.Add(this.llusepatient);
-			this.groupBox1.Controls.Add(this.cbface);
-			this.groupBox1.Name = "groupBox1";
+			resources.ApplyResources(groupBox1, "groupBox1");
+			groupBox1.BackColor = Color.Transparent;
+			groupBox1.Controls.Add(pgPatientDetails);
+			groupBox1.Controls.Add(cbeye);
+			groupBox1.Controls.Add(cbmakeup);
+			groupBox1.Controls.Add(llexport);
+			groupBox1.Controls.Add(pbpatient);
+			groupBox1.Controls.Add(llusepatient);
+			groupBox1.Controls.Add(cbface);
+			groupBox1.Name = "groupBox1";
 			//
 			// pgPatientDetails
 			//
-			resources.ApplyResources(this.pgPatientDetails, "pgPatientDetails");
-			this.pgPatientDetails.Name = "pgPatientDetails";
-			this.pgPatientDetails.PropertySort =
+			resources.ApplyResources(pgPatientDetails, "pgPatientDetails");
+			pgPatientDetails.Name = "pgPatientDetails";
+			pgPatientDetails.PropertySort =
 				PropertySort
 				.Categorized;
-			this.pgPatientDetails.ToolbarVisible = false;
+			pgPatientDetails.ToolbarVisible = false;
 			//
 			// cbeye
 			//
-			resources.ApplyResources(this.cbeye, "cbeye");
-			this.cbeye.Name = "cbeye";
-			this.toolTip1.SetToolTip(this.cbeye, resources.GetString("cbeye.ToolTip"));
-			this.cbeye.CheckedChanged += new EventHandler(
-				this.cbskin_CheckedChanged
+			resources.ApplyResources(cbeye, "cbeye");
+			cbeye.Name = "cbeye";
+			toolTip1.SetToolTip(cbeye, resources.GetString("cbeye.ToolTip"));
+			cbeye.CheckedChanged += new EventHandler(
+				cbskin_CheckedChanged
 			);
 			//
 			// cbmakeup
 			//
-			resources.ApplyResources(this.cbmakeup, "cbmakeup");
-			this.cbmakeup.Name = "cbmakeup";
-			this.toolTip1.SetToolTip(
-				this.cbmakeup,
+			resources.ApplyResources(cbmakeup, "cbmakeup");
+			cbmakeup.Name = "cbmakeup";
+			toolTip1.SetToolTip(
+				cbmakeup,
 				resources.GetString("cbmakeup.ToolTip")
 			);
-			this.cbmakeup.CheckedChanged += new EventHandler(
-				this.cbskin_CheckedChanged
+			cbmakeup.CheckedChanged += new EventHandler(
+				cbskin_CheckedChanged
 			);
 			//
 			// llexport
 			//
-			resources.ApplyResources(this.llexport, "llexport");
-			this.llexport.Name = "llexport";
-			this.llexport.TabStop = true;
-			this.toolTip1.SetToolTip(
-				this.llexport,
+			resources.ApplyResources(llexport, "llexport");
+			llexport.Name = "llexport";
+			llexport.TabStop = true;
+			toolTip1.SetToolTip(
+				llexport,
 				resources.GetString("llexport.ToolTip")
 			);
-			this.llexport.LinkClicked +=
-				new LinkLabelLinkClickedEventHandler(this.Export);
+			llexport.LinkClicked +=
+				new LinkLabelLinkClickedEventHandler(Export);
 			//
 			// pbpatient
 			//
-			this.pbpatient.BorderStyle = BorderStyle.FixedSingle;
-			resources.ApplyResources(this.pbpatient, "pbpatient");
-			this.pbpatient.Name = "pbpatient";
-			this.pbpatient.TabStop = false;
+			pbpatient.BorderStyle = BorderStyle.FixedSingle;
+			resources.ApplyResources(pbpatient, "pbpatient");
+			pbpatient.Name = "pbpatient";
+			pbpatient.TabStop = false;
 			//
 			// llusepatient
 			//
-			resources.ApplyResources(this.llusepatient, "llusepatient");
-			this.llusepatient.Name = "llusepatient";
-			this.llusepatient.TabStop = true;
-			this.toolTip1.SetToolTip(
-				this.llusepatient,
+			resources.ApplyResources(llusepatient, "llusepatient");
+			llusepatient.Name = "llusepatient";
+			llusepatient.TabStop = true;
+			toolTip1.SetToolTip(
+				llusepatient,
 				resources.GetString("llusepatient.ToolTip")
 			);
-			this.llusepatient.LinkClicked +=
+			llusepatient.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.UsePatient
+					UsePatient
 				);
 			//
 			// cbface
 			//
-			resources.ApplyResources(this.cbface, "cbface");
-			this.cbface.ForeColor = SystemColors.ControlText;
-			this.cbface.Name = "cbface";
-			this.toolTip1.SetToolTip(
-				this.cbface,
+			resources.ApplyResources(cbface, "cbface");
+			cbface.ForeColor = SystemColors.ControlText;
+			cbface.Name = "cbface";
+			toolTip1.SetToolTip(
+				cbface,
 				resources.GetString("cbface.ToolTip")
 			);
-			this.cbface.CheckedChanged += new EventHandler(
-				this.cbskin_CheckedChanged
+			cbface.CheckedChanged += new EventHandler(
+				cbskin_CheckedChanged
 			);
 			//
 			// groupBox2
 			//
-			resources.ApplyResources(this.groupBox2, "groupBox2");
-			this.groupBox2.BackColor = Color.Transparent;
-			this.groupBox2.Controls.Add(this.pgArchetypeDetails);
-			this.groupBox2.Controls.Add(this.ctlLoadPackage);
-			this.groupBox2.Controls.Add(this.llusearche);
-			this.groupBox2.Controls.Add(this.pbarche);
-			this.groupBox2.Name = "groupBox2";
+			resources.ApplyResources(groupBox2, "groupBox2");
+			groupBox2.BackColor = Color.Transparent;
+			groupBox2.Controls.Add(pgArchetypeDetails);
+			groupBox2.Controls.Add(ctlLoadPackage);
+			groupBox2.Controls.Add(llusearche);
+			groupBox2.Controls.Add(pbarche);
+			groupBox2.Name = "groupBox2";
 			//
 			// pgArchetypeDetails
 			//
-			resources.ApplyResources(this.pgArchetypeDetails, "pgArchetypeDetails");
-			this.pgArchetypeDetails.Name = "pgArchetypeDetails";
-			this.pgArchetypeDetails.PropertySort =
+			resources.ApplyResources(pgArchetypeDetails, "pgArchetypeDetails");
+			pgArchetypeDetails.Name = "pgArchetypeDetails";
+			pgArchetypeDetails.PropertySort =
 				PropertySort
 				.Categorized;
-			this.pgArchetypeDetails.ToolbarVisible = false;
+			pgArchetypeDetails.ToolbarVisible = false;
 			//
 			// ctlLoadPackage
 			//
-			resources.ApplyResources(this.ctlLoadPackage, "ctlLoadPackage");
-			this.ctlLoadPackage.Name = "ctlLoadPackage";
-			this.ctlLoadPackage.TabStop = true;
-			this.toolTip1.SetToolTip(
-				this.ctlLoadPackage,
+			resources.ApplyResources(ctlLoadPackage, "ctlLoadPackage");
+			ctlLoadPackage.Name = "ctlLoadPackage";
+			ctlLoadPackage.TabStop = true;
+			toolTip1.SetToolTip(
+				ctlLoadPackage,
 				resources.GetString("ctlLoadPackage.ToolTip")
 			);
-			this.ctlLoadPackage.LinkClicked +=
+			ctlLoadPackage.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.ctlLoadPackage_LinkClicked
+					ctlLoadPackage_LinkClicked
 				);
 			//
 			// llusearche
 			//
-			resources.ApplyResources(this.llusearche, "llusearche");
-			this.llusearche.Name = "llusearche";
-			this.llusearche.TabStop = true;
-			this.toolTip1.SetToolTip(
-				this.llusearche,
+			resources.ApplyResources(llusearche, "llusearche");
+			llusearche.Name = "llusearche";
+			llusearche.TabStop = true;
+			toolTip1.SetToolTip(
+				llusearche,
 				resources.GetString("llusearche.ToolTip")
 			);
-			this.llusearche.LinkClicked +=
+			llusearche.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.UseArchetype
+					UseArchetype
 				);
 			//
 			// pbarche
 			//
-			resources.ApplyResources(this.pbarche, "pbarche");
-			this.pbarche.BorderStyle = BorderStyle.FixedSingle;
-			this.pbarche.Name = "pbarche";
-			this.pbarche.TabStop = false;
+			resources.ApplyResources(pbarche, "pbarche");
+			pbarche.BorderStyle = BorderStyle.FixedSingle;
+			pbarche.Name = "pbarche";
+			pbarche.TabStop = false;
 			//
 			// sfd
 			//
-			resources.ApplyResources(this.sfd, "sfd");
+			resources.ApplyResources(sfd, "sfd");
 			//
 			// toolTip1
 			//
-			this.toolTip1.AutoPopDelay = 30000;
-			this.toolTip1.InitialDelay = 500;
-			this.toolTip1.ReshowDelay = 100;
+			toolTip1.AutoPopDelay = 30000;
+			toolTip1.InitialDelay = 500;
+			toolTip1.ReshowDelay = 100;
 			//
 			// cbskin
 			//
-			resources.ApplyResources(this.cbskin, "cbskin");
-			this.cbskin.Name = "cbskin";
-			this.toolTip1.SetToolTip(
-				this.cbskin,
+			resources.ApplyResources(cbskin, "cbskin");
+			cbskin.Name = "cbskin";
+			toolTip1.SetToolTip(
+				cbskin,
 				resources.GetString("cbskin.ToolTip")
 			);
-			this.cbskin.CheckedChanged += new EventHandler(
-				this.cbskin_CheckedChanged
+			cbskin.CheckedChanged += new EventHandler(
+				cbskin_CheckedChanged
 			);
 			//
 			// groupBox3
 			//
-			resources.ApplyResources(this.groupBox3, "groupBox3");
-			this.groupBox3.BackColor = Color.Transparent;
-			this.groupBox3.Controls.Add(this.cbskin);
-			this.groupBox3.Controls.Add(this.lvskin);
-			this.groupBox3.Name = "groupBox3";
+			resources.ApplyResources(groupBox3, "groupBox3");
+			groupBox3.BackColor = Color.Transparent;
+			groupBox3.Controls.Add(cbskin);
+			groupBox3.Controls.Add(lvskin);
+			groupBox3.Name = "groupBox3";
 			//
 			// lvskin
 			//
-			resources.ApplyResources(this.lvskin, "lvskin");
-			this.lvskin.BorderStyle = BorderStyle.None;
-			this.lvskin.HideSelection = false;
-			this.lvskin.LargeImageList = this.iskin;
-			this.lvskin.MultiSelect = false;
-			this.lvskin.Name = "lvskin";
-			this.lvskin.UseCompatibleStateImageBehavior = false;
-			this.lvskin.SelectedIndexChanged += new EventHandler(
-				this.lvskin_SelectedIndexChanged
+			resources.ApplyResources(lvskin, "lvskin");
+			lvskin.BorderStyle = BorderStyle.None;
+			lvskin.HideSelection = false;
+			lvskin.LargeImageList = iskin;
+			lvskin.MultiSelect = false;
+			lvskin.Name = "lvskin";
+			lvskin.UseCompatibleStateImageBehavior = false;
+			lvskin.SelectedIndexChanged += new EventHandler(
+				lvskin_SelectedIndexChanged
 			);
 			//
 			// iskin
 			//
-			this.iskin.ColorDepth = ColorDepth.Depth32Bit;
-			resources.ApplyResources(this.iskin, "iskin");
-			this.iskin.TransparentColor = Color.Transparent;
+			iskin.ColorDepth = ColorDepth.Depth32Bit;
+			resources.ApplyResources(iskin, "iskin");
+			iskin.TransparentColor = Color.Transparent;
 			//
 			// opd
 			//
-			this.opd.DefaultExt = "package";
-			this.opd.FileOk += new CancelEventHandler(
-				this.opd_FileOk
+			opd.DefaultExt = "package";
+			opd.FileOk += new CancelEventHandler(
+				opd_FileOk
 			);
 			//
 			// cbgals
 			//
-			resources.ApplyResources(this.cbgals, "cbgals");
-			this.cbgals.Name = "cbgals";
-			this.cbgals.UseVisualStyleBackColor = true;
-			this.cbgals.CheckedChanged += new EventHandler(
-				this.genderFilter_CheckedChanged
+			resources.ApplyResources(cbgals, "cbgals");
+			cbgals.Name = "cbgals";
+			cbgals.UseVisualStyleBackColor = true;
+			cbgals.CheckedChanged += new EventHandler(
+				genderFilter_CheckedChanged
 			);
 			//
 			// cbmens
 			//
-			resources.ApplyResources(this.cbmens, "cbmens");
-			this.cbmens.Name = "cbmens";
-			this.cbmens.UseVisualStyleBackColor = true;
-			this.cbmens.CheckedChanged += new EventHandler(
-				this.genderFilter_CheckedChanged
+			resources.ApplyResources(cbmens, "cbmens");
+			cbmens.Name = "cbmens";
+			cbmens.UseVisualStyleBackColor = true;
+			cbmens.CheckedChanged += new EventHandler(
+				genderFilter_CheckedChanged
 			);
 			//
 			// cbadults
 			//
-			resources.ApplyResources(this.cbadults, "cbadults");
-			this.cbadults.Name = "cbadults";
-			this.cbadults.UseVisualStyleBackColor = true;
-			this.cbadults.CheckedChanged += new EventHandler(
-				this.genderFilter_CheckedChanged
+			resources.ApplyResources(cbadults, "cbadults");
+			cbadults.Name = "cbadults";
+			cbadults.UseVisualStyleBackColor = true;
+			cbadults.CheckedChanged += new EventHandler(
+				genderFilter_CheckedChanged
 			);
 			//
 			// cbTownie
 			//
-			resources.ApplyResources(this.cbTownie, "cbTownie");
-			this.cbTownie.Name = "cbTownie";
-			this.cbTownie.CheckedChanged += new EventHandler(
-				this.genderFilter_CheckedChanged
+			resources.ApplyResources(cbTownie, "cbTownie");
+			cbTownie.Name = "cbTownie";
+			cbTownie.CheckedChanged += new EventHandler(
+				genderFilter_CheckedChanged
 			);
 			//
 			// cbNpc
 			//
-			resources.ApplyResources(this.cbNpc, "cbNpc");
-			this.cbNpc.Name = "cbNpc";
-			this.cbNpc.CheckedChanged += new EventHandler(
-				this.genderFilter_CheckedChanged
+			resources.ApplyResources(cbNpc, "cbNpc");
+			cbNpc.Name = "cbNpc";
+			cbNpc.CheckedChanged += new EventHandler(
+				genderFilter_CheckedChanged
 			);
 			//
 			// Surgery
 			//
 			resources.ApplyResources(this, "$this");
-			this.Controls.Add(this.lbUbi);
-			this.Controls.Add(this.cbTownie);
-			this.Controls.Add(this.cbNpc);
-			this.Controls.Add(this.cbgals);
-			this.Controls.Add(this.cbmens);
-			this.Controls.Add(this.cbadults);
-			this.Controls.Add(this.groupBox2);
-			this.Controls.Add(this.groupBox1);
-			this.Controls.Add(this.lv);
-			this.Controls.Add(this.label1);
-			this.Controls.Add(this.button1);
-			this.Controls.Add(this.groupBox3);
-			this.FormBorderStyle =
+			Controls.Add(lbUbi);
+			Controls.Add(cbTownie);
+			Controls.Add(cbNpc);
+			Controls.Add(cbgals);
+			Controls.Add(cbmens);
+			Controls.Add(cbadults);
+			Controls.Add(groupBox2);
+			Controls.Add(groupBox1);
+			Controls.Add(lv);
+			Controls.Add(label1);
+			Controls.Add(button1);
+			Controls.Add(groupBox3);
+			FormBorderStyle =
 				FormBorderStyle
 				.SizableToolWindow;
-			this.Name = "Surgery";
-			this.SizeGripStyle = SizeGripStyle.Show;
-			this.groupBox1.ResumeLayout(false);
-			this.groupBox1.PerformLayout();
-			((ISupportInitialize)(this.pbpatient)).EndInit();
-			this.groupBox2.ResumeLayout(false);
-			this.groupBox2.PerformLayout();
-			((ISupportInitialize)(this.pbarche)).EndInit();
-			this.groupBox3.ResumeLayout(false);
-			this.groupBox3.PerformLayout();
-			this.ResumeLayout(false);
-			this.PerformLayout();
+			Name = "Surgery";
+			SizeGripStyle = SizeGripStyle.Show;
+			groupBox1.ResumeLayout(false);
+			groupBox1.PerformLayout();
+			((ISupportInitialize)(pbpatient)).EndInit();
+			groupBox2.ResumeLayout(false);
+			groupBox2.PerformLayout();
+			((ISupportInitialize)(pbarche)).EndInit();
+			groupBox3.ResumeLayout(false);
+			groupBox3.PerformLayout();
+			ResumeLayout(false);
+			PerformLayout();
 		}
 		#endregion
 
@@ -461,11 +461,11 @@ namespace SimPe.Plugin
 		{
 			if (sdesc.HasImage) // if (sdesc.Image != null) -Chris H
 			{
-				this.ilist.Images.Add(sdesc.Image);
+				ilist.Images.Add(sdesc.Image);
 			}
 			else
 			{
-				this.ilist.Images.Add(new Bitmap(GetImage.NoOne));
+				ilist.Images.Add(new Bitmap(GetImage.NoOne));
 			}
 		}
 
@@ -513,18 +513,18 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			if (!this.cbNpc.Checked && realIsNPC(sdesc))
+			if (!cbNpc.Checked && realIsNPC(sdesc))
 			{
 				return;
 			}
 
-			if (!this.cbTownie.Checked && realIsTownie(sdesc))
+			if (!cbTownie.Checked && realIsTownie(sdesc))
 			{
 				return;
 			}
 
 			if (
-				this.cbadults.Checked
+				cbadults.Checked
 				&& sdesc.CharacterDescription.LifeSection
 					!= Data.MetaData.LifeSections.Adult
 			)
@@ -533,7 +533,7 @@ namespace SimPe.Plugin
 			}
 
 			if (
-				this.cbmens.Checked
+				cbmens.Checked
 				&& sdesc.CharacterDescription.Gender == Data.MetaData.Gender.Female
 			)
 			{
@@ -541,7 +541,7 @@ namespace SimPe.Plugin
 			}
 
 			if (
-				this.cbgals.Checked
+				cbgals.Checked
 				&& sdesc.CharacterDescription.Gender == Data.MetaData.Gender.Male
 			)
 			{
@@ -567,7 +567,7 @@ namespace SimPe.Plugin
 			);
 			ListViewItem lvia = new ListViewItem("From Archetype");
 			lvia.ImageIndex = 0;
-			this.lvskin.Items.Add(lvia);
+			lvskin.Items.Add(lvia);
 			lvia.Selected = true;
 		}
 
@@ -744,24 +744,24 @@ namespace SimPe.Plugin
 			Interfaces.IProviderRegistry prov
 		)
 		{
-			this.Cursor = Cursors.WaitCursor;
+			Cursor = Cursors.WaitCursor;
 
 			Idno idno = Idno.FromPackage(package);
 			if (idno != null)
 			{
-				this.lbUbi.Visible = (idno.Type != NeighborhoodType.Normal);
+				lbUbi.Visible = (idno.Type != NeighborhoodType.Normal);
 			}
 
 			this.pfd = null;
 			this.prov = prov;
-			this.ngbh = package;
+			ngbh = package;
 
-			this.pbarche.Image = null;
-			this.pbpatient.Image = null;
+			pbarche.Image = null;
+			pbpatient.Image = null;
 
-			this.spatient = null;
-			this.sarche = null;
-			this.tarcheFile = null;
+			spatient = null;
+			sarche = null;
+			tarcheFile = null;
 
 			button1.Enabled = false;
 
@@ -782,10 +782,10 @@ namespace SimPe.Plugin
 					AddSim(sdesc);
 				}
 
-				this.Cursor = Cursors.Default;
-				this.llusearche.Enabled = false;
-				this.llusepatient.Enabled = false;
-				this.llexport.Enabled = false;
+				Cursor = Cursors.Default;
+				llusearche.Enabled = false;
+				llusepatient.Enabled = false;
+				llexport.Enabled = false;
 				if (lv.Items.Count > 0)
 				{
 					lv.Items[0].Selected = true;
@@ -820,10 +820,10 @@ namespace SimPe.Plugin
 			{
 				archetype = Packages.File.LoadFromFile(sarche.CharacterFileName);
 			}
-			else if (this.tarcheFile != null)
+			else if (tarcheFile != null)
 			{
-				archetype = Packages.File.LoadFromFile(this.tarcheFile);
-				if (!this.CheckArchetypeFile(archetype))
+				archetype = Packages.File.LoadFromFile(tarcheFile);
+				if (!CheckArchetypeFile(archetype))
 				{
 					Helper.ExceptionMessage(
 						"The selected template file is not valid.",
@@ -847,16 +847,16 @@ namespace SimPe.Plugin
 			);
 
 			if (
-				!this.cbskin.Checked
-				&& !this.cbface.Checked
-				&& !this.cbmakeup.Checked
-				&& !this.cbeye.Checked
+				!cbskin.Checked
+				&& !cbface.Checked
+				&& !cbmakeup.Checked
+				&& !cbeye.Checked
 			)
 			{
 				newpackage = ps.CloneSim();
 			}
 
-			if (this.cbskin.Checked)
+			if (cbskin.Checked)
 			{
 				if (lvskin.SelectedItems.Count == 0)
 				{
@@ -874,9 +874,9 @@ namespace SimPe.Plugin
 				}
 			}
 
-			if (this.cbface.Checked)
+			if (cbface.Checked)
 			{
-				if (this.cbskin.Checked)
+				if (cbskin.Checked)
 				{
 					ps = new PlasticSurgery(
 						ngbh,
@@ -890,9 +890,9 @@ namespace SimPe.Plugin
 				newpackage = ps.CloneFace();
 			}
 
-			if (this.cbmakeup.Checked)
+			if (cbmakeup.Checked)
 			{
-				if ((this.cbskin.Checked) || (this.cbface.Checked))
+				if ((cbskin.Checked) || (cbface.Checked))
 				{
 					ps = new PlasticSurgery(
 						ngbh,
@@ -906,12 +906,12 @@ namespace SimPe.Plugin
 				newpackage = ps.CloneMakeup(false, true);
 			}
 
-			if (this.cbeye.Checked)
+			if (cbeye.Checked)
 			{
 				if (
-					(this.cbskin.Checked)
-					|| (this.cbface.Checked)
-					|| (this.cbmakeup.Checked)
+					(cbskin.Checked)
+					|| (cbface.Checked)
+					|| (cbmakeup.Checked)
 				)
 				{
 					ps = new PlasticSurgery(
@@ -936,15 +936,15 @@ namespace SimPe.Plugin
 
 		private void SelectSim(object sender, EventArgs e)
 		{
-			this.llusearche.Enabled = false;
-			this.llusepatient.Enabled = false;
+			llusearche.Enabled = false;
+			llusepatient.Enabled = false;
 			if (lv.SelectedItems.Count == 0)
 			{
 				return;
 			}
 
-			this.llusearche.Enabled = true;
-			this.llusepatient.Enabled = !(
+			llusearche.Enabled = true;
+			llusepatient.Enabled = !(
 				(PackedFiles.Wrapper.ExtSDesc)lv.SelectedItems[0].Tag
 			).IsNPC;
 		}
@@ -957,7 +957,7 @@ namespace SimPe.Plugin
 			LinkLabelLinkClickedEventArgs e
 		)
 		{
-			this.llexport.Enabled = (spatient != null);
+			llexport.Enabled = (spatient != null);
 			if (lv.SelectedItems.Count == 0)
 			{
 				return;
@@ -972,9 +972,9 @@ namespace SimPe.Plugin
 
 			button1.Enabled =
 				(pbpatient.Image != null)
-				&& (sarche != null || this.tarcheFile != null);
+				&& (sarche != null || tarcheFile != null);
 			pfd = (Interfaces.Files.IPackedFileDescriptor)spatient.FileDescriptor;
-			this.llexport.Enabled = (spatient != null);
+			llexport.Enabled = (spatient != null);
 			ShowSimDetails(spatient, pgPatientDetails);
 		}
 
@@ -990,7 +990,7 @@ namespace SimPe.Plugin
 
 			if (lv.SelectedItems[0].ImageIndex >= 0)
 			{
-				this.pbarche.Image = ilist.Images[lv.SelectedItems[0].ImageIndex];
+				pbarche.Image = ilist.Images[lv.SelectedItems[0].ImageIndex];
 			}
 
 			iskin.Images[0] = ImageLoader.Preview(pbarche.Image, iskin.ImageSize);
@@ -1016,12 +1016,12 @@ namespace SimPe.Plugin
 						sarche.CharacterFileName
 					);
 				}
-				else if (this.tarcheFile != null)
+				else if (tarcheFile != null)
 				{
-					archetype = Packages.File.LoadFromFile(this.tarcheFile);
+					archetype = Packages.File.LoadFromFile(tarcheFile);
 				}
 
-				if (!this.CheckArchetypeFile(archetype))
+				if (!CheckArchetypeFile(archetype))
 				{
 					Helper.ExceptionMessage(
 						"The selected template file is not valid.",
@@ -1092,11 +1092,11 @@ namespace SimPe.Plugin
 				};
 
 				System.IO.BinaryReader br1 = new System.IO.BinaryReader(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.data.3d.simpe")
 				);
 				System.IO.BinaryReader br2 = new System.IO.BinaryReader(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.data.bin.simpe")
 				);
 
@@ -1236,7 +1236,7 @@ namespace SimPe.Plugin
 				LoadSkins();
 			}
 
-			lvskin.Enabled = this.cbskin.Checked;
+			lvskin.Enabled = cbskin.Checked;
 			button1.Enabled = CanDo();
 			skload = true;
 		}
@@ -1251,25 +1251,25 @@ namespace SimPe.Plugin
 			LinkLabelLinkClickedEventArgs e
 		)
 		{
-			this.opd.InitialDirectory = System.IO.Path.Combine(
+			opd.InitialDirectory = System.IO.Path.Combine(
 				PathProvider.SimSavegameFolder,
 				"SavedSims"
 			);
-			this.opd.ShowDialog();
+			opd.ShowDialog();
 		}
 
 		private void opd_FileOk(object sender, CancelEventArgs e)
 		{
 			if (!e.Cancel)
 			{
-				this.tarcheFile = this.opd.FileName;
+				tarcheFile = opd.FileName;
 				if (
-					this.CheckArchetypeFile(
+					CheckArchetypeFile(
 						Packages.File.LoadFromFile(tarcheFile)
 					)
 				)
 				{
-					button1.Enabled = (this.spatient != null);
+					button1.Enabled = (spatient != null);
 					pbarche.Image = GetImage.NoOne;
 					ShowSimDetails(
 						Packages.File.LoadFromFile(tarcheFile),
@@ -1346,23 +1346,23 @@ namespace SimPe.Plugin
 
 		protected void FillList()
 		{
-			this.Cursor = Cursors.WaitCursor;
+			Cursor = Cursors.WaitCursor;
 
-			this.pbarche.Image = null;
-			this.pbpatient.Image = null;
-			this.pgPatientDetails.SelectedObject = null;
-			this.pgArchetypeDetails.SelectedObject = null;
+			pbarche.Image = null;
+			pbpatient.Image = null;
+			pgPatientDetails.SelectedObject = null;
+			pgArchetypeDetails.SelectedObject = null;
 
-			if (this.cbmens.Checked)
+			if (cbmens.Checked)
 			{
-				this.iskin.Images[0] = ImageLoader.Preview(
+				iskin.Images[0] = ImageLoader.Preview(
 					GetImage.NoOne,
 					iskin.ImageSize
 				);
 			}
 			else
 			{
-				this.iskin.Images[0] = ImageLoader.Preview(
+				iskin.Images[0] = ImageLoader.Preview(
 					GetImage.SheOne,
 					iskin.ImageSize
 				);
@@ -1370,9 +1370,9 @@ namespace SimPe.Plugin
 
 			lvskin.Refresh();
 
-			this.spatient = null;
-			this.sarche = null;
-			this.tarcheFile = null;
+			spatient = null;
+			sarche = null;
+			tarcheFile = null;
 
 			button1.Enabled = false;
 			ilist.Images.Clear();
@@ -1392,10 +1392,10 @@ namespace SimPe.Plugin
 					AddSim(sdesc);
 				}
 
-				this.Cursor = Cursors.Default;
-				this.llusearche.Enabled = false;
-				this.llusepatient.Enabled = false;
-				this.llexport.Enabled = false;
+				Cursor = Cursors.Default;
+				llusearche.Enabled = false;
+				llusepatient.Enabled = false;
+				llexport.Enabled = false;
 				if (lv.Items.Count > 0)
 				{
 					lv.Items[0].Selected = true;
@@ -1409,11 +1409,11 @@ namespace SimPe.Plugin
 
 		private void genderFilter_CheckedChanged(object sender, EventArgs e)
 		{
-			this.cbgals.Enabled = !this.cbmens.Checked;
-			this.cbmens.Enabled = !this.cbgals.Checked;
+			cbgals.Enabled = !cbmens.Checked;
+			cbmens.Enabled = !cbgals.Checked;
 			if (ngbh != null)
 			{
-				this.FillList();
+				FillList();
 			}
 		}
 
@@ -1573,9 +1573,9 @@ namespace SimPe.Plugin
 				throw new ArgumentNullException();
 			}
 
-			this.ageData = aged;
-			this.Filename = filename;
-			this.Name = name;
+			ageData = aged;
+			Filename = filename;
+			Name = name;
 		}
 	}
 }

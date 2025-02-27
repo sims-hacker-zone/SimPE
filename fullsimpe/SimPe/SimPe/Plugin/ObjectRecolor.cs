@@ -49,7 +49,7 @@ namespace SimPe.Plugin
 		/// <param name="package">The Object you want to Recolor</param>
 		public ObjectRecolor(IPackageFile package)
 		{
-			this.Package = package;
+			Package = package;
 
 			if (System.IO.File.Exists(ScenegraphHelper.GMND_PACKAGE))
 			{
@@ -127,7 +127,7 @@ namespace SimPe.Plugin
 		protected Rcol[] GetGeometryNodes()
 		{
 			ArrayList list = new ArrayList();
-			IPackedFileDescriptor[] pfds = this.Package.FindFiles(
+			IPackedFileDescriptor[] pfds = Package.FindFiles(
 				0x7BA3838C
 			);
 
@@ -166,7 +166,7 @@ namespace SimPe.Plugin
 		protected Rcol[] GetReferingShape(Rcol gmnd)
 		{
 			ArrayList list = new ArrayList();
-			IPackedFileDescriptor[] pfds = this.Package.FindFiles(
+			IPackedFileDescriptor[] pfds = Package.FindFiles(
 				0xFC6EB1F7
 			);
 
@@ -388,7 +388,7 @@ namespace SimPe.Plugin
 		{
 			//now add the default MMAT
 			System.IO.BinaryReader br = new System.IO.BinaryReader(
-				this.GetType()
+				GetType()
 					.Assembly.GetManifestResourceStream("SimPe.data.mmat.simpe")
 			);
 			Packages.PackedFileDescriptor pfd1 =
@@ -475,13 +475,13 @@ namespace SimPe.Plugin
 		/// </summary>
 		public void EnableColorOptions()
 		{
-			Rcol[] gmnds = this.GetGeometryNodes();
+			Rcol[] gmnds = GetGeometryNodes();
 
 			ArrayList subsets = new ArrayList();
 			foreach (Rcol gmnd in gmnds)
 			{
-				Rcol[] shpes = this.GetReferingShape(gmnd);
-				this.GetSubsets(shpes, gmnd, subsets);
+				Rcol[] shpes = GetReferingShape(gmnd);
+				GetSubsets(shpes, gmnd, subsets);
 			}
 
 			dn_pkg.Save();
@@ -556,7 +556,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public void LoadReferencedMATDs()
 		{
-			this.LoadReferencedMATDs(Package.FindFiles(0x4C697E5A));
+			LoadReferencedMATDs(Package.FindFiles(0x4C697E5A));
 		}
 	}
 }

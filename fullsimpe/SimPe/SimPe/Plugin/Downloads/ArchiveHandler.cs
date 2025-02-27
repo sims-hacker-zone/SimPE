@@ -23,7 +23,7 @@ namespace SimPe.Plugin.Downloads
 		protected void DoInit(string filename)
 		{
 			Nfos = new PackageInfoCollection();
-			this.ArchiveName = filename;
+			ArchiveName = filename;
 			Reset();
 			LoadContent();
 		}

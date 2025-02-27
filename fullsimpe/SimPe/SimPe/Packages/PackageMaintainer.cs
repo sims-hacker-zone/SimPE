@@ -142,10 +142,10 @@ namespace SimPe.Packages
 
 		internal void SyncFileIndex(GeneratableFile pkg)
 		{
-			this.FileIndex.Clear();
+			FileIndex.Clear();
 			if (pkg.Index.Length <= Helper.WindowsRegistry.BigPackageResourceCount)
 			{
-				this.FileIndex.AddIndexFromPackage(pkg);
+				FileIndex.AddIndexFromPackage(pkg);
 			}
 		}
 
@@ -202,7 +202,7 @@ namespace SimPe.Packages
 
 			if (sync)
 			{
-				this.SyncFileIndex(ret);
+				SyncFileIndex(ret);
 			}
 
 			return ret;

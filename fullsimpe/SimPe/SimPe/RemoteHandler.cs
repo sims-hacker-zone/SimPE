@@ -41,7 +41,7 @@ namespace SimPe
 			this.lp = lp;
 			this.rl = rl;
 			docs = docmenu;
-			this.plugger = null;
+			plugger = null;
 
 			RemoteControl.OpenPackageFkt = new RemoteControl.OpenPackageDelegate(
 				OpenPackage

@@ -117,36 +117,36 @@ namespace pjse.BhavOperandWizards.WizDefault
 		private ArrayList alDec16;
 
 		#region iBhavOperandWizForm
-		public Panel WizPanel => this.pnWizDefault;
+		public Panel WizPanel => pnWizDefault;
 
 		public void Execute(Instruction inst)
 		{
 			this.inst = inst;
 
-			this.tbInst_Op01_dec.Text = (
+			tbInst_Op01_dec.Text = (
 				inst.Operands[0] + (inst.Operands[1] << 8)
 			).ToString();
-			this.tbInst_Op23_dec.Text = (
+			tbInst_Op23_dec.Text = (
 				inst.Operands[2] + (inst.Operands[3] << 8)
 			).ToString();
 
-			this.tbInst_Op0.Text = SimPe.Helper.HexString(inst.Operands[0]);
-			this.tbInst_Op1.Text = SimPe.Helper.HexString(inst.Operands[1]);
-			this.tbInst_Op2.Text = SimPe.Helper.HexString(inst.Operands[2]);
-			this.tbInst_Op3.Text = SimPe.Helper.HexString(inst.Operands[3]);
-			this.tbInst_Op4.Text = SimPe.Helper.HexString(inst.Operands[4]);
-			this.tbInst_Op5.Text = SimPe.Helper.HexString(inst.Operands[5]);
-			this.tbInst_Op6.Text = SimPe.Helper.HexString(inst.Operands[6]);
-			this.tbInst_Op7.Text = SimPe.Helper.HexString(inst.Operands[7]);
+			tbInst_Op0.Text = SimPe.Helper.HexString(inst.Operands[0]);
+			tbInst_Op1.Text = SimPe.Helper.HexString(inst.Operands[1]);
+			tbInst_Op2.Text = SimPe.Helper.HexString(inst.Operands[2]);
+			tbInst_Op3.Text = SimPe.Helper.HexString(inst.Operands[3]);
+			tbInst_Op4.Text = SimPe.Helper.HexString(inst.Operands[4]);
+			tbInst_Op5.Text = SimPe.Helper.HexString(inst.Operands[5]);
+			tbInst_Op6.Text = SimPe.Helper.HexString(inst.Operands[6]);
+			tbInst_Op7.Text = SimPe.Helper.HexString(inst.Operands[7]);
 
-			this.tbInst_Unk0.Text = SimPe.Helper.HexString(inst.Reserved1[0]);
-			this.tbInst_Unk1.Text = SimPe.Helper.HexString(inst.Reserved1[1]);
-			this.tbInst_Unk2.Text = SimPe.Helper.HexString(inst.Reserved1[2]);
-			this.tbInst_Unk3.Text = SimPe.Helper.HexString(inst.Reserved1[3]);
-			this.tbInst_Unk4.Text = SimPe.Helper.HexString(inst.Reserved1[4]);
-			this.tbInst_Unk5.Text = SimPe.Helper.HexString(inst.Reserved1[5]);
-			this.tbInst_Unk6.Text = SimPe.Helper.HexString(inst.Reserved1[6]);
-			this.tbInst_Unk7.Text = SimPe.Helper.HexString(inst.Reserved1[7]);
+			tbInst_Unk0.Text = SimPe.Helper.HexString(inst.Reserved1[0]);
+			tbInst_Unk1.Text = SimPe.Helper.HexString(inst.Reserved1[1]);
+			tbInst_Unk2.Text = SimPe.Helper.HexString(inst.Reserved1[2]);
+			tbInst_Unk3.Text = SimPe.Helper.HexString(inst.Reserved1[3]);
+			tbInst_Unk4.Text = SimPe.Helper.HexString(inst.Reserved1[4]);
+			tbInst_Unk5.Text = SimPe.Helper.HexString(inst.Reserved1[5]);
+			tbInst_Unk6.Text = SimPe.Helper.HexString(inst.Reserved1[6]);
+			tbInst_Unk7.Text = SimPe.Helper.HexString(inst.Reserved1[7]);
 		}
 
 		public Instruction Write(Instruction inst)
@@ -165,237 +165,237 @@ namespace pjse.BhavOperandWizards.WizDefault
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(UI));
-			this.pnWizDefault = new Panel();
-			this.tbInst_Op01_dec = new TextBox();
-			this.label13 = new Label();
-			this.tbInst_Unk7 = new TextBox();
-			this.tbInst_Unk6 = new TextBox();
-			this.tbInst_Unk5 = new TextBox();
-			this.tbInst_Unk4 = new TextBox();
-			this.tbInst_Unk3 = new TextBox();
-			this.tbInst_Unk2 = new TextBox();
-			this.tbInst_Unk1 = new TextBox();
-			this.tbInst_Unk0 = new TextBox();
-			this.tbInst_Op7 = new TextBox();
-			this.tbInst_Op6 = new TextBox();
-			this.tbInst_Op5 = new TextBox();
-			this.tbInst_Op4 = new TextBox();
-			this.tbInst_Op3 = new TextBox();
-			this.tbInst_Op2 = new TextBox();
-			this.tbInst_Op1 = new TextBox();
-			this.tbInst_Op0 = new TextBox();
-			this.tbInst_Op23_dec = new TextBox();
-			this.label2 = new Label();
-			this.pnWizDefault.SuspendLayout();
-			this.SuspendLayout();
+			pnWizDefault = new Panel();
+			tbInst_Op01_dec = new TextBox();
+			label13 = new Label();
+			tbInst_Unk7 = new TextBox();
+			tbInst_Unk6 = new TextBox();
+			tbInst_Unk5 = new TextBox();
+			tbInst_Unk4 = new TextBox();
+			tbInst_Unk3 = new TextBox();
+			tbInst_Unk2 = new TextBox();
+			tbInst_Unk1 = new TextBox();
+			tbInst_Unk0 = new TextBox();
+			tbInst_Op7 = new TextBox();
+			tbInst_Op6 = new TextBox();
+			tbInst_Op5 = new TextBox();
+			tbInst_Op4 = new TextBox();
+			tbInst_Op3 = new TextBox();
+			tbInst_Op2 = new TextBox();
+			tbInst_Op1 = new TextBox();
+			tbInst_Op0 = new TextBox();
+			tbInst_Op23_dec = new TextBox();
+			label2 = new Label();
+			pnWizDefault.SuspendLayout();
+			SuspendLayout();
 			//
 			// pnWizDefault
 			//
-			this.pnWizDefault.Controls.Add(this.tbInst_Op01_dec);
-			this.pnWizDefault.Controls.Add(this.label13);
-			this.pnWizDefault.Controls.Add(this.tbInst_Unk7);
-			this.pnWizDefault.Controls.Add(this.tbInst_Unk6);
-			this.pnWizDefault.Controls.Add(this.tbInst_Unk5);
-			this.pnWizDefault.Controls.Add(this.tbInst_Unk4);
-			this.pnWizDefault.Controls.Add(this.tbInst_Unk3);
-			this.pnWizDefault.Controls.Add(this.tbInst_Unk2);
-			this.pnWizDefault.Controls.Add(this.tbInst_Unk1);
-			this.pnWizDefault.Controls.Add(this.tbInst_Unk0);
-			this.pnWizDefault.Controls.Add(this.tbInst_Op7);
-			this.pnWizDefault.Controls.Add(this.tbInst_Op6);
-			this.pnWizDefault.Controls.Add(this.tbInst_Op5);
-			this.pnWizDefault.Controls.Add(this.tbInst_Op4);
-			this.pnWizDefault.Controls.Add(this.tbInst_Op3);
-			this.pnWizDefault.Controls.Add(this.tbInst_Op2);
-			this.pnWizDefault.Controls.Add(this.tbInst_Op1);
-			this.pnWizDefault.Controls.Add(this.tbInst_Op0);
-			this.pnWizDefault.Controls.Add(this.tbInst_Op23_dec);
-			this.pnWizDefault.Controls.Add(this.label2);
-			resources.ApplyResources(this.pnWizDefault, "pnWizDefault");
-			this.pnWizDefault.Name = "pnWizDefault";
+			pnWizDefault.Controls.Add(tbInst_Op01_dec);
+			pnWizDefault.Controls.Add(label13);
+			pnWizDefault.Controls.Add(tbInst_Unk7);
+			pnWizDefault.Controls.Add(tbInst_Unk6);
+			pnWizDefault.Controls.Add(tbInst_Unk5);
+			pnWizDefault.Controls.Add(tbInst_Unk4);
+			pnWizDefault.Controls.Add(tbInst_Unk3);
+			pnWizDefault.Controls.Add(tbInst_Unk2);
+			pnWizDefault.Controls.Add(tbInst_Unk1);
+			pnWizDefault.Controls.Add(tbInst_Unk0);
+			pnWizDefault.Controls.Add(tbInst_Op7);
+			pnWizDefault.Controls.Add(tbInst_Op6);
+			pnWizDefault.Controls.Add(tbInst_Op5);
+			pnWizDefault.Controls.Add(tbInst_Op4);
+			pnWizDefault.Controls.Add(tbInst_Op3);
+			pnWizDefault.Controls.Add(tbInst_Op2);
+			pnWizDefault.Controls.Add(tbInst_Op1);
+			pnWizDefault.Controls.Add(tbInst_Op0);
+			pnWizDefault.Controls.Add(tbInst_Op23_dec);
+			pnWizDefault.Controls.Add(label2);
+			resources.ApplyResources(pnWizDefault, "pnWizDefault");
+			pnWizDefault.Name = "pnWizDefault";
 			//
 			// tbInst_Op01_dec
 			//
-			resources.ApplyResources(this.tbInst_Op01_dec, "tbInst_Op01_dec");
-			this.tbInst_Op01_dec.Name = "tbInst_Op01_dec";
-			this.tbInst_Op01_dec.Validated += new EventHandler(
-				this.dec16_Validated
+			resources.ApplyResources(tbInst_Op01_dec, "tbInst_Op01_dec");
+			tbInst_Op01_dec.Name = "tbInst_Op01_dec";
+			tbInst_Op01_dec.Validated += new EventHandler(
+				dec16_Validated
 			);
-			this.tbInst_Op01_dec.Validating +=
-				new System.ComponentModel.CancelEventHandler(this.dec16_Validating);
+			tbInst_Op01_dec.Validating +=
+				new System.ComponentModel.CancelEventHandler(dec16_Validating);
 			//
 			// label13
 			//
-			resources.ApplyResources(this.label13, "label13");
-			this.label13.Name = "label13";
+			resources.ApplyResources(label13, "label13");
+			label13.Name = "label13";
 			//
 			// tbInst_Unk7
 			//
-			resources.ApplyResources(this.tbInst_Unk7, "tbInst_Unk7");
-			this.tbInst_Unk7.Name = "tbInst_Unk7";
-			this.tbInst_Unk7.Validated += new EventHandler(this.hex8_Validated);
-			this.tbInst_Unk7.Validating += new System.ComponentModel.CancelEventHandler(
-				this.hex8_Validating
+			resources.ApplyResources(tbInst_Unk7, "tbInst_Unk7");
+			tbInst_Unk7.Name = "tbInst_Unk7";
+			tbInst_Unk7.Validated += new EventHandler(hex8_Validated);
+			tbInst_Unk7.Validating += new System.ComponentModel.CancelEventHandler(
+				hex8_Validating
 			);
 			//
 			// tbInst_Unk6
 			//
-			resources.ApplyResources(this.tbInst_Unk6, "tbInst_Unk6");
-			this.tbInst_Unk6.Name = "tbInst_Unk6";
-			this.tbInst_Unk6.Validated += new EventHandler(this.hex8_Validated);
-			this.tbInst_Unk6.Validating += new System.ComponentModel.CancelEventHandler(
-				this.hex8_Validating
+			resources.ApplyResources(tbInst_Unk6, "tbInst_Unk6");
+			tbInst_Unk6.Name = "tbInst_Unk6";
+			tbInst_Unk6.Validated += new EventHandler(hex8_Validated);
+			tbInst_Unk6.Validating += new System.ComponentModel.CancelEventHandler(
+				hex8_Validating
 			);
 			//
 			// tbInst_Unk5
 			//
-			resources.ApplyResources(this.tbInst_Unk5, "tbInst_Unk5");
-			this.tbInst_Unk5.Name = "tbInst_Unk5";
-			this.tbInst_Unk5.Validated += new EventHandler(this.hex8_Validated);
-			this.tbInst_Unk5.Validating += new System.ComponentModel.CancelEventHandler(
-				this.hex8_Validating
+			resources.ApplyResources(tbInst_Unk5, "tbInst_Unk5");
+			tbInst_Unk5.Name = "tbInst_Unk5";
+			tbInst_Unk5.Validated += new EventHandler(hex8_Validated);
+			tbInst_Unk5.Validating += new System.ComponentModel.CancelEventHandler(
+				hex8_Validating
 			);
 			//
 			// tbInst_Unk4
 			//
-			resources.ApplyResources(this.tbInst_Unk4, "tbInst_Unk4");
-			this.tbInst_Unk4.Name = "tbInst_Unk4";
-			this.tbInst_Unk4.Validated += new EventHandler(this.hex8_Validated);
-			this.tbInst_Unk4.Validating += new System.ComponentModel.CancelEventHandler(
-				this.hex8_Validating
+			resources.ApplyResources(tbInst_Unk4, "tbInst_Unk4");
+			tbInst_Unk4.Name = "tbInst_Unk4";
+			tbInst_Unk4.Validated += new EventHandler(hex8_Validated);
+			tbInst_Unk4.Validating += new System.ComponentModel.CancelEventHandler(
+				hex8_Validating
 			);
 			//
 			// tbInst_Unk3
 			//
-			resources.ApplyResources(this.tbInst_Unk3, "tbInst_Unk3");
-			this.tbInst_Unk3.Name = "tbInst_Unk3";
-			this.tbInst_Unk3.Validated += new EventHandler(this.hex8_Validated);
-			this.tbInst_Unk3.Validating += new System.ComponentModel.CancelEventHandler(
-				this.hex8_Validating
+			resources.ApplyResources(tbInst_Unk3, "tbInst_Unk3");
+			tbInst_Unk3.Name = "tbInst_Unk3";
+			tbInst_Unk3.Validated += new EventHandler(hex8_Validated);
+			tbInst_Unk3.Validating += new System.ComponentModel.CancelEventHandler(
+				hex8_Validating
 			);
 			//
 			// tbInst_Unk2
 			//
-			resources.ApplyResources(this.tbInst_Unk2, "tbInst_Unk2");
-			this.tbInst_Unk2.Name = "tbInst_Unk2";
-			this.tbInst_Unk2.Validated += new EventHandler(this.hex8_Validated);
-			this.tbInst_Unk2.Validating += new System.ComponentModel.CancelEventHandler(
-				this.hex8_Validating
+			resources.ApplyResources(tbInst_Unk2, "tbInst_Unk2");
+			tbInst_Unk2.Name = "tbInst_Unk2";
+			tbInst_Unk2.Validated += new EventHandler(hex8_Validated);
+			tbInst_Unk2.Validating += new System.ComponentModel.CancelEventHandler(
+				hex8_Validating
 			);
 			//
 			// tbInst_Unk1
 			//
-			resources.ApplyResources(this.tbInst_Unk1, "tbInst_Unk1");
-			this.tbInst_Unk1.Name = "tbInst_Unk1";
-			this.tbInst_Unk1.Validated += new EventHandler(this.hex8_Validated);
-			this.tbInst_Unk1.Validating += new System.ComponentModel.CancelEventHandler(
-				this.hex8_Validating
+			resources.ApplyResources(tbInst_Unk1, "tbInst_Unk1");
+			tbInst_Unk1.Name = "tbInst_Unk1";
+			tbInst_Unk1.Validated += new EventHandler(hex8_Validated);
+			tbInst_Unk1.Validating += new System.ComponentModel.CancelEventHandler(
+				hex8_Validating
 			);
 			//
 			// tbInst_Unk0
 			//
-			resources.ApplyResources(this.tbInst_Unk0, "tbInst_Unk0");
-			this.tbInst_Unk0.Name = "tbInst_Unk0";
-			this.tbInst_Unk0.Validated += new EventHandler(this.hex8_Validated);
-			this.tbInst_Unk0.Validating += new System.ComponentModel.CancelEventHandler(
-				this.hex8_Validating
+			resources.ApplyResources(tbInst_Unk0, "tbInst_Unk0");
+			tbInst_Unk0.Name = "tbInst_Unk0";
+			tbInst_Unk0.Validated += new EventHandler(hex8_Validated);
+			tbInst_Unk0.Validating += new System.ComponentModel.CancelEventHandler(
+				hex8_Validating
 			);
 			//
 			// tbInst_Op7
 			//
-			resources.ApplyResources(this.tbInst_Op7, "tbInst_Op7");
-			this.tbInst_Op7.Name = "tbInst_Op7";
-			this.tbInst_Op7.Validated += new EventHandler(this.hex8_Validated);
-			this.tbInst_Op7.Validating += new System.ComponentModel.CancelEventHandler(
-				this.hex8_Validating
+			resources.ApplyResources(tbInst_Op7, "tbInst_Op7");
+			tbInst_Op7.Name = "tbInst_Op7";
+			tbInst_Op7.Validated += new EventHandler(hex8_Validated);
+			tbInst_Op7.Validating += new System.ComponentModel.CancelEventHandler(
+				hex8_Validating
 			);
 			//
 			// tbInst_Op6
 			//
-			resources.ApplyResources(this.tbInst_Op6, "tbInst_Op6");
-			this.tbInst_Op6.Name = "tbInst_Op6";
-			this.tbInst_Op6.Validated += new EventHandler(this.hex8_Validated);
-			this.tbInst_Op6.Validating += new System.ComponentModel.CancelEventHandler(
-				this.hex8_Validating
+			resources.ApplyResources(tbInst_Op6, "tbInst_Op6");
+			tbInst_Op6.Name = "tbInst_Op6";
+			tbInst_Op6.Validated += new EventHandler(hex8_Validated);
+			tbInst_Op6.Validating += new System.ComponentModel.CancelEventHandler(
+				hex8_Validating
 			);
 			//
 			// tbInst_Op5
 			//
-			resources.ApplyResources(this.tbInst_Op5, "tbInst_Op5");
-			this.tbInst_Op5.Name = "tbInst_Op5";
-			this.tbInst_Op5.Validated += new EventHandler(this.hex8_Validated);
-			this.tbInst_Op5.Validating += new System.ComponentModel.CancelEventHandler(
-				this.hex8_Validating
+			resources.ApplyResources(tbInst_Op5, "tbInst_Op5");
+			tbInst_Op5.Name = "tbInst_Op5";
+			tbInst_Op5.Validated += new EventHandler(hex8_Validated);
+			tbInst_Op5.Validating += new System.ComponentModel.CancelEventHandler(
+				hex8_Validating
 			);
 			//
 			// tbInst_Op4
 			//
-			resources.ApplyResources(this.tbInst_Op4, "tbInst_Op4");
-			this.tbInst_Op4.Name = "tbInst_Op4";
-			this.tbInst_Op4.Validated += new EventHandler(this.hex8_Validated);
-			this.tbInst_Op4.Validating += new System.ComponentModel.CancelEventHandler(
-				this.hex8_Validating
+			resources.ApplyResources(tbInst_Op4, "tbInst_Op4");
+			tbInst_Op4.Name = "tbInst_Op4";
+			tbInst_Op4.Validated += new EventHandler(hex8_Validated);
+			tbInst_Op4.Validating += new System.ComponentModel.CancelEventHandler(
+				hex8_Validating
 			);
 			//
 			// tbInst_Op3
 			//
-			resources.ApplyResources(this.tbInst_Op3, "tbInst_Op3");
-			this.tbInst_Op3.Name = "tbInst_Op3";
-			this.tbInst_Op3.Validated += new EventHandler(this.hex8_Validated);
-			this.tbInst_Op3.Validating += new System.ComponentModel.CancelEventHandler(
-				this.hex8_Validating
+			resources.ApplyResources(tbInst_Op3, "tbInst_Op3");
+			tbInst_Op3.Name = "tbInst_Op3";
+			tbInst_Op3.Validated += new EventHandler(hex8_Validated);
+			tbInst_Op3.Validating += new System.ComponentModel.CancelEventHandler(
+				hex8_Validating
 			);
 			//
 			// tbInst_Op2
 			//
-			resources.ApplyResources(this.tbInst_Op2, "tbInst_Op2");
-			this.tbInst_Op2.Name = "tbInst_Op2";
-			this.tbInst_Op2.Validated += new EventHandler(this.hex8_Validated);
-			this.tbInst_Op2.Validating += new System.ComponentModel.CancelEventHandler(
-				this.hex8_Validating
+			resources.ApplyResources(tbInst_Op2, "tbInst_Op2");
+			tbInst_Op2.Name = "tbInst_Op2";
+			tbInst_Op2.Validated += new EventHandler(hex8_Validated);
+			tbInst_Op2.Validating += new System.ComponentModel.CancelEventHandler(
+				hex8_Validating
 			);
 			//
 			// tbInst_Op1
 			//
-			resources.ApplyResources(this.tbInst_Op1, "tbInst_Op1");
-			this.tbInst_Op1.Name = "tbInst_Op1";
-			this.tbInst_Op1.Validated += new EventHandler(this.hex8_Validated);
-			this.tbInst_Op1.Validating += new System.ComponentModel.CancelEventHandler(
-				this.hex8_Validating
+			resources.ApplyResources(tbInst_Op1, "tbInst_Op1");
+			tbInst_Op1.Name = "tbInst_Op1";
+			tbInst_Op1.Validated += new EventHandler(hex8_Validated);
+			tbInst_Op1.Validating += new System.ComponentModel.CancelEventHandler(
+				hex8_Validating
 			);
 			//
 			// tbInst_Op0
 			//
-			resources.ApplyResources(this.tbInst_Op0, "tbInst_Op0");
-			this.tbInst_Op0.Name = "tbInst_Op0";
-			this.tbInst_Op0.Validated += new EventHandler(this.hex8_Validated);
-			this.tbInst_Op0.Validating += new System.ComponentModel.CancelEventHandler(
-				this.hex8_Validating
+			resources.ApplyResources(tbInst_Op0, "tbInst_Op0");
+			tbInst_Op0.Name = "tbInst_Op0";
+			tbInst_Op0.Validated += new EventHandler(hex8_Validated);
+			tbInst_Op0.Validating += new System.ComponentModel.CancelEventHandler(
+				hex8_Validating
 			);
 			//
 			// tbInst_Op23_dec
 			//
-			resources.ApplyResources(this.tbInst_Op23_dec, "tbInst_Op23_dec");
-			this.tbInst_Op23_dec.Name = "tbInst_Op23_dec";
-			this.tbInst_Op23_dec.Validated += new EventHandler(
-				this.dec16_Validated
+			resources.ApplyResources(tbInst_Op23_dec, "tbInst_Op23_dec");
+			tbInst_Op23_dec.Name = "tbInst_Op23_dec";
+			tbInst_Op23_dec.Validated += new EventHandler(
+				dec16_Validated
 			);
-			this.tbInst_Op23_dec.Validating +=
-				new System.ComponentModel.CancelEventHandler(this.dec16_Validating);
+			tbInst_Op23_dec.Validating +=
+				new System.ComponentModel.CancelEventHandler(dec16_Validating);
 			//
 			// label2
 			//
-			resources.ApplyResources(this.label2, "label2");
-			this.label2.Name = "label2";
+			resources.ApplyResources(label2, "label2");
+			label2.Name = "label2";
 			//
 			// UI
 			//
 			resources.ApplyResources(this, "$this");
-			this.Controls.Add(this.pnWizDefault);
-			this.Name = "UI";
-			this.pnWizDefault.ResumeLayout(false);
-			this.pnWizDefault.PerformLayout();
-			this.ResumeLayout(false);
+			Controls.Add(pnWizDefault);
+			Name = "UI";
+			pnWizDefault.ResumeLayout(false);
+			pnWizDefault.PerformLayout();
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -426,10 +426,10 @@ namespace pjse.BhavOperandWizards.WizDefault
 				{
 					inst.Operands[i] = val;
 				}
-				this.tbInst_Op01_dec.Text = (
+				tbInst_Op01_dec.Text = (
 					inst.Operands[0] + (inst.Operands[1] << 8)
 				).ToString();
-				this.tbInst_Op23_dec.Text = (
+				tbInst_Op23_dec.Text = (
 					inst.Operands[2] + (inst.Operands[3] << 8)
 				).ToString();
 			}
@@ -485,11 +485,11 @@ namespace pjse.BhavOperandWizards.WizDefault
 			if (cv != val)
 			{
 				inst.Operands[i] = (byte)(val & 0xFF);
-				((TextBox)this.alHex8[i]).Text = SimPe.Helper.HexString(
+				((TextBox)alHex8[i]).Text = SimPe.Helper.HexString(
 					inst.Operands[i]
 				);
 				inst.Operands[i + 1] = (byte)((val >> 8) & 0xFF);
-				((TextBox)this.alHex8[i + 1]).Text = SimPe.Helper.HexString(
+				((TextBox)alHex8[i + 1]).Text = SimPe.Helper.HexString(
 					inst.Operands[i + 1]
 				);
 			}

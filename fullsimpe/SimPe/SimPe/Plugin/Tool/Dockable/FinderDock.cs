@@ -45,10 +45,10 @@ namespace SimPe.Plugin.Tool.Dockable
 			InitializeComponent();
 
 			tm = ThemeManager.Global.CreateChild();
-			tm.AddControl(this.xpGradientPanel1);
+			tm.AddControl(xpGradientPanel1);
 
-			tm.AddControl(this.tbResult);
-			tm.AddControl(this.toolBar1);
+			tm.AddControl(tbResult);
+			tm.AddControl(toolBar1);
 
 			sorter = new ColumnSorter();
 			sorter.CurrentColumn = 0;
@@ -70,11 +70,11 @@ namespace SimPe.Plugin.Tool.Dockable
 				)
 			)
 			{
-				this.cbTask.Items.Add(tl);
+				cbTask.Items.Add(tl);
 			}
 			if (cbTask.Items.Count > 0)
 			{
-				this.cbTask.SelectedIndex = 0;
+				cbTask.SelectedIndex = 0;
 			}
 		}
 
@@ -109,7 +109,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		public override string ToString()
 		{
-			return this.Text;
+			return Text;
 		}
 
 		#endregion
@@ -250,9 +250,9 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		public Shortcut Shortcut => Shortcut.None;
 
-		public System.Drawing.Image Icon => this.TabImage;
+		public System.Drawing.Image Icon => TabImage;
 
-		public new bool Visible => this.IsDocked || this.IsFloating;
+		public new bool Visible => IsDocked || IsFloating;
 
 		#endregion
 
@@ -294,9 +294,9 @@ namespace SimPe.Plugin.Tool.Dockable
 			Interfaces.Files.IPackedFileDescriptor pfd
 		)
 		{
-			if (this.InvokeRequired)
+			if (InvokeRequired)
 			{
-				this.BeginInvoke(
+				BeginInvoke(
 					new InvokeAddResult(InvokedAddResult),
 					new object[] { group, pkg, pfd }
 				);
@@ -328,7 +328,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				}
 				else
 				{
-					sri.GroupIndex = this.AddResultGroup(group);
+					sri.GroupIndex = AddResultGroup(group);
 				}
 
 				lv.Items.Add(sri);
@@ -500,9 +500,9 @@ namespace SimPe.Plugin.Tool.Dockable
 				);
 				if (runningthreads == 0)
 				{
-					if (this.InvokeRequired)
+					if (InvokeRequired)
 					{
-						this.BeginInvoke(new InvokeDoneSearching(DoneSearching));
+						BeginInvoke(new InvokeDoneSearching(DoneSearching));
 					}
 					else
 					{

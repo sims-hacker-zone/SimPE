@@ -65,10 +65,10 @@ namespace Ambertation.Windows.Forms.Graph
 			{
 				int tw = 48;
 				int th = 48;
-				if (this.Image != null)
+				if (Image != null)
 				{
-					tw = this.Image.Width;
-					th = this.Image.Height;
+					tw = Image.Width;
+					th = Image.Height;
 				}
 
 				Rectangle trec = new Rectangle(
@@ -90,7 +90,7 @@ namespace Ambertation.Windows.Forms.Graph
 
 		protected override void UserDraw(System.Drawing.Graphics gr)
 		{
-			Rectangle prec = this.PanelRectangle;
+			Rectangle prec = PanelRectangle;
 			int rad = Math.Min(Math.Min(8, prec.Height / 2), prec.Width / 2);
 			DrawNiceRoundRect(
 				gr,
@@ -99,9 +99,9 @@ namespace Ambertation.Windows.Forms.Graph
 				prec.Width,
 				prec.Height,
 				rad,
-				this.PanelColor
+				PanelColor
 			);
-			Rectangle trec = this.ThumbnailRectangle;
+			Rectangle trec = ThumbnailRectangle;
 			rad = Math.Min(Math.Min(8, trec.Height / 2), trec.Width / 2);
 
 			DrawText(gr, prec, trec);
@@ -114,7 +114,7 @@ namespace Ambertation.Windows.Forms.Graph
 			Rectangle trec
 		)
 		{
-			if (this.properties == null)
+			if (properties == null)
 			{
 				return;
 			}
@@ -122,12 +122,12 @@ namespace Ambertation.Windows.Forms.Graph
 			SetGraphicsMode(gr, !Quality);
 
 			Font ftb = new Font(Font.FontFamily, Font.Size, FontStyle.Bold, Font.Unit);
-			this.DrawCaption(
+			DrawCaption(
 				gr,
 				new Rectangle(
 					trec.Right + 2,
 					prec.Top,
-					prec.Width - (trec.Right - prec.Left) - 4 - this.ImageBorderWidth,
+					prec.Width - (trec.Right - prec.Left) - 4 - ImageBorderWidth,
 					16
 				),
 				ftb,
@@ -146,7 +146,7 @@ namespace Ambertation.Windows.Forms.Graph
 			int top = prec.Top + 24;
 			Size indent = new Size(
 				trec.Right + 6,
-				trec.Bottom - prec.Top + 7 + 2 * this.ImageBorderWidth
+				trec.Bottom - prec.Top + 7 + 2 * ImageBorderWidth
 			);
 
 			//Hashtable ht = new Hashtable();
@@ -179,7 +179,7 @@ namespace Ambertation.Windows.Forms.Graph
 					gr.DrawString(
 						k + ":",
 						ft,
-						new Pen(Color.FromArgb(160, this.ForeColor)).Brush,
+						new Pen(Color.FromArgb(160, ForeColor)).Brush,
 						new RectangleF(
 							new PointF(indentx, top),
 							new SizeF(prec.Width - indentx, top + 16)
@@ -191,7 +191,7 @@ namespace Ambertation.Windows.Forms.Graph
 					gr.DrawString(
 						val,
 						Font,
-						new Pen(Color.FromArgb(140, this.ForeColor)).Brush,
+						new Pen(Color.FromArgb(140, ForeColor)).Brush,
 						new RectangleF(
 							new PointF(indentx + sz.Width, top),
 							new SizeF(prec.Width - indentx - sz.Width, top + 16)
@@ -241,13 +241,13 @@ namespace Ambertation.Windows.Forms.Graph
 
 			Rectangle trec = ThumbnailRectangle;
 			trec = new Rectangle(
-				trec.Left - this.ImageBorderWidth - 2,
+				trec.Left - ImageBorderWidth - 2,
 				trec.Top - ImageBorderWidth - 2,
 				trec.Width + 2 * ImageBorderWidth + 4,
 				trec.Height + 2 * ImageBorderWidth + 4
 			);
 			;
-			Rectangle prec = this.PanelRectangle;
+			Rectangle prec = PanelRectangle;
 
 			docks[0].X = Left + trec.Left;
 			docks[0].Y = Top + trec.Bottom;

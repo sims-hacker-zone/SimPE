@@ -42,7 +42,7 @@ namespace SimPe.Plugin
 		#endregion
 
 		public override System.Drawing.Image Icon => System.Drawing.Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream(
 							"SimPe.img.ColorBinningTool.png"
 						)

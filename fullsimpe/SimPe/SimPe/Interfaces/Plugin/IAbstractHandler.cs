@@ -104,7 +104,7 @@ namespace SimPe.Interfaces.Plugin
 		{
 			processed = false;
 			changed = false;
-			this.ui = null;
+			ui = null;
 		}
 
 		private string ExceptionMessage(string msg)
@@ -115,9 +115,9 @@ namespace SimPe.Interfaces.Plugin
 			}
 
 			msg += "\n\nPackage: ";
-			if (this.Package != null)
+			if (Package != null)
 			{
-				msg += this.Package.FileName;
+				msg += Package.FileName;
 			}
 			else
 			{
@@ -125,9 +125,9 @@ namespace SimPe.Interfaces.Plugin
 			}
 
 			msg += "\nFile: ";
-			if (this.FileDescriptor != null)
+			if (FileDescriptor != null)
 			{
-				msg += this.FileDescriptor.ExceptionString;
+				msg += FileDescriptor.ExceptionString;
 			}
 			else
 			{
@@ -161,7 +161,7 @@ namespace SimPe.Interfaces.Plugin
 			{
 				if (wrapperinfo == null)
 				{
-					wrapperinfo = this.CreateWrapperInfo();
+					wrapperinfo = CreateWrapperInfo();
 				}
 
 				return wrapperinfo;
@@ -180,7 +180,7 @@ namespace SimPe.Interfaces.Plugin
 				+ ", FileName="
 				+ WrapperFileName
 				+ ", Type="
-				+ this.GetType()
+				+ GetType()
 				+ ")";
 		}
 
@@ -188,7 +188,7 @@ namespace SimPe.Interfaces.Plugin
 		{
 			get
 			{
-				string i = this.GetType().Assembly.FullName;
+				string i = GetType().Assembly.FullName;
 				string[] p = i.Split(",".ToCharArray(), 2);
 
 				if (p.Length > 0)
@@ -540,7 +540,7 @@ namespace SimPe.Interfaces.Plugin
 
 		public void Refresh()
 		{
-			this.ProcessData(this.FileDescriptor, this.Package);
+			ProcessData(FileDescriptor, Package);
 			RefreshUI();
 		}
 
@@ -694,7 +694,7 @@ namespace SimPe.Interfaces.Plugin
 		/// <summary>
 		/// Returns the default Extension for this File
 		/// </summary>
-		public virtual string FileExtension => Data.MetaData.FindTypeAlias(this.FileDescriptor.Type).Extension;
+		public virtual string FileExtension => Data.MetaData.FindTypeAlias(FileDescriptor.Type).Extension;
 		#endregion
 
 		IFileWrapper guiwrapper;
@@ -720,11 +720,11 @@ namespace SimPe.Interfaces.Plugin
 		/// <returns>the new Instance</returns>
 		public virtual IFileWrapper Activate()
 		{
-			if (!this.AllowMultipleInstances)
+			if (!AllowMultipleInstances)
 			{
 				if (guiwrapper == null)
 				{
-					guiwrapper = (IFileWrapper)Activator.CreateInstance(this.GetType());
+					guiwrapper = (IFileWrapper)Activator.CreateInstance(GetType());
 				}
 
 				return guiwrapper;
@@ -735,7 +735,7 @@ namespace SimPe.Interfaces.Plugin
 					(IMultiplePackedFileWrapper)this;
 				return (IFileWrapper)
 					Activator.CreateInstance(
-						this.GetType(),
+						GetType(),
 						me.GetConstructorArguments()
 					);
 			}

@@ -131,10 +131,10 @@ namespace SimPe.Plugin.Scanner
 
 			if (Helper.WindowsRegistry.Username.Trim() != "")
 			{
-				this.tbname.Text = Helper.WindowsRegistry.Username + "-";
+				tbname.Text = Helper.WindowsRegistry.Username + "-";
 			}
 
-			this.cbskins.SelectedIndex = 0;
+			cbskins.SelectedIndex = 0;
 			sfd.InitialDirectory = PathProvider.SimSavegameFolder;
 
 			cbshelve.Enum = typeof(PackedFiles.Wrapper.ShelveDimension);
@@ -177,112 +177,112 @@ namespace SimPe.Plugin.Scanner
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.tabControl1 = new TabControl();
-			this.tabPage2 = new System.Windows.Forms.TabPage();
-			this.pnep = new Panel();
-			this.tbname = new TextBox();
-			this.label3 = new Label();
-			this.visualStyleLinkLabel1 = new LinkLabel();
-			this.tabPage1 = new System.Windows.Forms.TabPage();
-			this.pncloth = new Panel();
-			this.label6 = new Label();
-			this.cbmale = new CheckBox();
-			this.cbfemale = new CheckBox();
-			this.llsetsex = new LinkLabel();
-			this.cbout = new CheckBox();
-			this.llsetcat = new LinkLabel();
-			this.llsetage = new LinkLabel();
-			this.cbswim = new CheckBox();
-			this.cbact = new CheckBox();
-			this.cbskin = new CheckBox();
-			this.cbformal = new CheckBox();
-			this.cbpreg = new CheckBox();
-			this.cbundies = new CheckBox();
-			this.cbpj = new CheckBox();
-			this.cbevery = new CheckBox();
-			this.cbelder = new CheckBox();
-			this.cbadult = new CheckBox();
-			this.cbyoung = new CheckBox();
-			this.cbteen = new CheckBox();
-			this.cbchild = new CheckBox();
-			this.cbtoddler = new CheckBox();
-			this.cbbaby = new CheckBox();
-			this.label2 = new Label();
-			this.label1 = new Label();
-			this.tabPage4 = new System.Windows.Forms.TabPage();
-			this.pnShelve = new Panel();
-			this.cbshelve = new Ambertation.Windows.Forms.EnumComboBox();
-			this.label5 = new Label();
-			this.llShelve = new LinkLabel();
-			this.tabPage3 = new System.Windows.Forms.TabPage();
-			this.pnskin = new Panel();
-			this.cbtxtr = new CheckBox();
-			this.cbtxmt = new CheckBox();
-			this.cbskins = new ComboBox();
-			this.label4 = new Label();
-			this.visualStyleLinkLabel2 = new LinkLabel();
-			this.cbref = new CheckBox();
-			this.sfd = new SaveFileDialog();
-			this.tabControl1.SuspendLayout();
-			this.tabPage2.SuspendLayout();
-			this.pnep.SuspendLayout();
-			this.tabPage1.SuspendLayout();
-			this.pncloth.SuspendLayout();
-			this.tabPage4.SuspendLayout();
-			this.pnShelve.SuspendLayout();
-			this.tabPage3.SuspendLayout();
-			this.pnskin.SuspendLayout();
-			this.SuspendLayout();
+			tabControl1 = new TabControl();
+			tabPage2 = new System.Windows.Forms.TabPage();
+			pnep = new Panel();
+			tbname = new TextBox();
+			label3 = new Label();
+			visualStyleLinkLabel1 = new LinkLabel();
+			tabPage1 = new System.Windows.Forms.TabPage();
+			pncloth = new Panel();
+			label6 = new Label();
+			cbmale = new CheckBox();
+			cbfemale = new CheckBox();
+			llsetsex = new LinkLabel();
+			cbout = new CheckBox();
+			llsetcat = new LinkLabel();
+			llsetage = new LinkLabel();
+			cbswim = new CheckBox();
+			cbact = new CheckBox();
+			cbskin = new CheckBox();
+			cbformal = new CheckBox();
+			cbpreg = new CheckBox();
+			cbundies = new CheckBox();
+			cbpj = new CheckBox();
+			cbevery = new CheckBox();
+			cbelder = new CheckBox();
+			cbadult = new CheckBox();
+			cbyoung = new CheckBox();
+			cbteen = new CheckBox();
+			cbchild = new CheckBox();
+			cbtoddler = new CheckBox();
+			cbbaby = new CheckBox();
+			label2 = new Label();
+			label1 = new Label();
+			tabPage4 = new System.Windows.Forms.TabPage();
+			pnShelve = new Panel();
+			cbshelve = new Ambertation.Windows.Forms.EnumComboBox();
+			label5 = new Label();
+			llShelve = new LinkLabel();
+			tabPage3 = new System.Windows.Forms.TabPage();
+			pnskin = new Panel();
+			cbtxtr = new CheckBox();
+			cbtxmt = new CheckBox();
+			cbskins = new ComboBox();
+			label4 = new Label();
+			visualStyleLinkLabel2 = new LinkLabel();
+			cbref = new CheckBox();
+			sfd = new SaveFileDialog();
+			tabControl1.SuspendLayout();
+			tabPage2.SuspendLayout();
+			pnep.SuspendLayout();
+			tabPage1.SuspendLayout();
+			pncloth.SuspendLayout();
+			tabPage4.SuspendLayout();
+			pnShelve.SuspendLayout();
+			tabPage3.SuspendLayout();
+			pnskin.SuspendLayout();
+			SuspendLayout();
 			//
 			// tabControl1
 			//
-			this.tabControl1.Controls.Add(this.tabPage2);
-			this.tabControl1.Controls.Add(this.tabPage1);
-			this.tabControl1.Controls.Add(this.tabPage4);
-			this.tabControl1.Controls.Add(this.tabPage3);
-			this.tabControl1.Location = new System.Drawing.Point(8, 8);
-			this.tabControl1.Name = "tabControl1";
-			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(432, 284);
-			this.tabControl1.TabIndex = 0;
+			tabControl1.Controls.Add(tabPage2);
+			tabControl1.Controls.Add(tabPage1);
+			tabControl1.Controls.Add(tabPage4);
+			tabControl1.Controls.Add(tabPage3);
+			tabControl1.Location = new System.Drawing.Point(8, 8);
+			tabControl1.Name = "tabControl1";
+			tabControl1.SelectedIndex = 0;
+			tabControl1.Size = new System.Drawing.Size(432, 284);
+			tabControl1.TabIndex = 0;
 			//
 			// tabPage2
 			//
-			this.tabPage2.Controls.Add(this.pnep);
-			this.tabPage2.Location = new System.Drawing.Point(4, 22);
-			this.tabPage2.Name = "tabPage2";
-			this.tabPage2.Size = new System.Drawing.Size(424, 258);
-			this.tabPage2.TabIndex = 1;
-			this.tabPage2.Text = "EP-Ready?";
+			tabPage2.Controls.Add(pnep);
+			tabPage2.Location = new System.Drawing.Point(4, 22);
+			tabPage2.Name = "tabPage2";
+			tabPage2.Size = new System.Drawing.Size(424, 258);
+			tabPage2.TabIndex = 1;
+			tabPage2.Text = "EP-Ready?";
 			//
 			// pnep
 			//
-			this.pnep.Controls.Add(this.tbname);
-			this.pnep.Controls.Add(this.label3);
-			this.pnep.Controls.Add(this.visualStyleLinkLabel1);
-			this.pnep.Location = new System.Drawing.Point(24, 8);
-			this.pnep.Name = "pnep";
-			this.pnep.Size = new System.Drawing.Size(289, 72);
-			this.pnep.TabIndex = 0;
+			pnep.Controls.Add(tbname);
+			pnep.Controls.Add(label3);
+			pnep.Controls.Add(visualStyleLinkLabel1);
+			pnep.Location = new System.Drawing.Point(24, 8);
+			pnep.Name = "pnep";
+			pnep.Size = new System.Drawing.Size(289, 72);
+			pnep.TabIndex = 0;
 			//
 			// tbname
 			//
-			this.tbname.Font = new System.Drawing.Font(
+			tbname.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbname.Location = new System.Drawing.Point(23, 24);
-			this.tbname.Name = "tbname";
-			this.tbname.Size = new System.Drawing.Size(190, 21);
-			this.tbname.TabIndex = 40;
-			this.tbname.Text = "SimPe-";
+			tbname.Location = new System.Drawing.Point(23, 24);
+			tbname.Name = "tbname";
+			tbname.Size = new System.Drawing.Size(190, 21);
+			tbname.TabIndex = 40;
+			tbname.Text = "SimPe-";
 			//
 			// label3
 			//
-			this.label3.Font = new System.Drawing.Font(
+			label3.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				(
@@ -296,45 +296,45 @@ namespace SimPe.Plugin.Scanner
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label3.Location = new System.Drawing.Point(7, 8);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(128, 16);
-			this.label3.TabIndex = 39;
-			this.label3.Text = "Name Prefix:";
+			label3.Location = new System.Drawing.Point(7, 8);
+			label3.Name = "label3";
+			label3.Size = new System.Drawing.Size(128, 16);
+			label3.TabIndex = 39;
+			label3.Text = "Name Prefix:";
 			//
 			// visualStyleLinkLabel1
 			//
-			this.visualStyleLinkLabel1.AutoSize = true;
-			this.visualStyleLinkLabel1.Font = new System.Drawing.Font(
+			visualStyleLinkLabel1.AutoSize = true;
+			visualStyleLinkLabel1.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.visualStyleLinkLabel1.Location = new System.Drawing.Point(0, 56);
-			this.visualStyleLinkLabel1.Name = "visualStyleLinkLabel1";
-			this.visualStyleLinkLabel1.Size = new System.Drawing.Size(160, 13);
-			this.visualStyleLinkLabel1.TabIndex = 38;
-			this.visualStyleLinkLabel1.TabStop = true;
-			this.visualStyleLinkLabel1.Text = "make University-Ready";
-			this.visualStyleLinkLabel1.LinkClicked +=
+			visualStyleLinkLabel1.Location = new System.Drawing.Point(0, 56);
+			visualStyleLinkLabel1.Name = "visualStyleLinkLabel1";
+			visualStyleLinkLabel1.Size = new System.Drawing.Size(160, 13);
+			visualStyleLinkLabel1.TabIndex = 38;
+			visualStyleLinkLabel1.TabStop = true;
+			visualStyleLinkLabel1.Text = "make University-Ready";
+			visualStyleLinkLabel1.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.MakeEPReady
+					MakeEPReady
 				);
 			//
 			// tabPage1
 			//
-			this.tabPage1.Controls.Add(this.pncloth);
-			this.tabPage1.Location = new System.Drawing.Point(4, 22);
-			this.tabPage1.Name = "tabPage1";
-			this.tabPage1.Size = new System.Drawing.Size(424, 258);
-			this.tabPage1.TabIndex = 0;
-			this.tabPage1.Text = "Clothes";
+			tabPage1.Controls.Add(pncloth);
+			tabPage1.Location = new System.Drawing.Point(4, 22);
+			tabPage1.Name = "tabPage1";
+			tabPage1.Size = new System.Drawing.Size(424, 258);
+			tabPage1.TabIndex = 0;
+			tabPage1.Text = "Clothes";
 			//
 			// pncloth
 			//
-			this.pncloth.Anchor = (
+			pncloth.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -344,39 +344,39 @@ namespace SimPe.Plugin.Scanner
 					)
 				)
 			);
-			this.pncloth.Controls.Add(this.label6);
-			this.pncloth.Controls.Add(this.cbmale);
-			this.pncloth.Controls.Add(this.cbfemale);
-			this.pncloth.Controls.Add(this.llsetsex);
-			this.pncloth.Controls.Add(this.cbout);
-			this.pncloth.Controls.Add(this.llsetcat);
-			this.pncloth.Controls.Add(this.llsetage);
-			this.pncloth.Controls.Add(this.cbswim);
-			this.pncloth.Controls.Add(this.cbact);
-			this.pncloth.Controls.Add(this.cbskin);
-			this.pncloth.Controls.Add(this.cbformal);
-			this.pncloth.Controls.Add(this.cbpreg);
-			this.pncloth.Controls.Add(this.cbundies);
-			this.pncloth.Controls.Add(this.cbpj);
-			this.pncloth.Controls.Add(this.cbevery);
-			this.pncloth.Controls.Add(this.cbelder);
-			this.pncloth.Controls.Add(this.cbadult);
-			this.pncloth.Controls.Add(this.cbyoung);
-			this.pncloth.Controls.Add(this.cbteen);
-			this.pncloth.Controls.Add(this.cbchild);
-			this.pncloth.Controls.Add(this.cbtoddler);
-			this.pncloth.Controls.Add(this.cbbaby);
-			this.pncloth.Controls.Add(this.label2);
-			this.pncloth.Controls.Add(this.label1);
-			this.pncloth.Location = new System.Drawing.Point(24, 8);
-			this.pncloth.Name = "pncloth";
-			this.pncloth.Size = new System.Drawing.Size(386, 184);
-			this.pncloth.TabIndex = 0;
+			pncloth.Controls.Add(label6);
+			pncloth.Controls.Add(cbmale);
+			pncloth.Controls.Add(cbfemale);
+			pncloth.Controls.Add(llsetsex);
+			pncloth.Controls.Add(cbout);
+			pncloth.Controls.Add(llsetcat);
+			pncloth.Controls.Add(llsetage);
+			pncloth.Controls.Add(cbswim);
+			pncloth.Controls.Add(cbact);
+			pncloth.Controls.Add(cbskin);
+			pncloth.Controls.Add(cbformal);
+			pncloth.Controls.Add(cbpreg);
+			pncloth.Controls.Add(cbundies);
+			pncloth.Controls.Add(cbpj);
+			pncloth.Controls.Add(cbevery);
+			pncloth.Controls.Add(cbelder);
+			pncloth.Controls.Add(cbadult);
+			pncloth.Controls.Add(cbyoung);
+			pncloth.Controls.Add(cbteen);
+			pncloth.Controls.Add(cbchild);
+			pncloth.Controls.Add(cbtoddler);
+			pncloth.Controls.Add(cbbaby);
+			pncloth.Controls.Add(label2);
+			pncloth.Controls.Add(label1);
+			pncloth.Location = new System.Drawing.Point(24, 8);
+			pncloth.Name = "pncloth";
+			pncloth.Size = new System.Drawing.Size(386, 184);
+			pncloth.TabIndex = 0;
 			//
 			// label6
 			//
-			this.label6.AutoSize = true;
-			this.label6.Font = new System.Drawing.Font(
+			label6.AutoSize = true;
+			label6.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				(
@@ -390,364 +390,364 @@ namespace SimPe.Plugin.Scanner
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label6.Location = new System.Drawing.Point(24, 139);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(58, 13);
-			this.label6.TabIndex = 43;
-			this.label6.Text = "Gender:";
+			label6.Location = new System.Drawing.Point(24, 139);
+			label6.Name = "label6";
+			label6.Size = new System.Drawing.Size(58, 13);
+			label6.TabIndex = 43;
+			label6.Text = "Gender:";
 			//
 			// cbmale
 			//
-			this.cbmale.FlatStyle = FlatStyle.System;
-			this.cbmale.Font = new System.Drawing.Font(
+			cbmale.FlatStyle = FlatStyle.System;
+			cbmale.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbmale.Location = new System.Drawing.Point(104, 155);
-			this.cbmale.Name = "cbmale";
-			this.cbmale.Size = new System.Drawing.Size(80, 24);
-			this.cbmale.TabIndex = 42;
-			this.cbmale.Text = "Male";
+			cbmale.Location = new System.Drawing.Point(104, 155);
+			cbmale.Name = "cbmale";
+			cbmale.Size = new System.Drawing.Size(80, 24);
+			cbmale.TabIndex = 42;
+			cbmale.Text = "Male";
 			//
 			// cbfemale
 			//
-			this.cbfemale.FlatStyle = FlatStyle.System;
-			this.cbfemale.Font = new System.Drawing.Font(
+			cbfemale.FlatStyle = FlatStyle.System;
+			cbfemale.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbfemale.Location = new System.Drawing.Point(16, 155);
-			this.cbfemale.Name = "cbfemale";
-			this.cbfemale.Size = new System.Drawing.Size(80, 24);
-			this.cbfemale.TabIndex = 41;
-			this.cbfemale.Text = "Female";
+			cbfemale.Location = new System.Drawing.Point(16, 155);
+			cbfemale.Name = "cbfemale";
+			cbfemale.Size = new System.Drawing.Size(80, 24);
+			cbfemale.TabIndex = 41;
+			cbfemale.Text = "Female";
 			//
 			// llsetsex
 			//
-			this.llsetsex.AutoSize = true;
-			this.llsetsex.Font = new System.Drawing.Font(
+			llsetsex.AutoSize = true;
+			llsetsex.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.llsetsex.Location = new System.Drawing.Point(0, 139);
-			this.llsetsex.Name = "llsetsex";
-			this.llsetsex.Size = new System.Drawing.Size(27, 13);
-			this.llsetsex.TabIndex = 40;
-			this.llsetsex.TabStop = true;
-			this.llsetsex.Text = "set";
-			this.llsetsex.LinkClicked +=
-				new LinkLabelLinkClickedEventHandler(this.setSex);
+			llsetsex.Location = new System.Drawing.Point(0, 139);
+			llsetsex.Name = "llsetsex";
+			llsetsex.Size = new System.Drawing.Size(27, 13);
+			llsetsex.TabIndex = 40;
+			llsetsex.TabStop = true;
+			llsetsex.Text = "set";
+			llsetsex.LinkClicked +=
+				new LinkLabelLinkClickedEventHandler(setSex);
 			//
 			// cbout
 			//
-			this.cbout.FlatStyle = FlatStyle.System;
-			this.cbout.Font = new System.Drawing.Font(
+			cbout.FlatStyle = FlatStyle.System;
+			cbout.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbout.Location = new System.Drawing.Point(256, 112);
-			this.cbout.Name = "cbout";
-			this.cbout.Size = new System.Drawing.Size(101, 24);
-			this.cbout.TabIndex = 39;
-			this.cbout.Text = "Winter Wear";
+			cbout.Location = new System.Drawing.Point(256, 112);
+			cbout.Name = "cbout";
+			cbout.Size = new System.Drawing.Size(101, 24);
+			cbout.TabIndex = 39;
+			cbout.Text = "Winter Wear";
 			//
 			// llsetcat
 			//
-			this.llsetcat.AutoSize = true;
-			this.llsetcat.Font = new System.Drawing.Font(
+			llsetcat.AutoSize = true;
+			llsetcat.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.llsetcat.Location = new System.Drawing.Point(0, 72);
-			this.llsetcat.Name = "llsetcat";
-			this.llsetcat.Size = new System.Drawing.Size(27, 13);
-			this.llsetcat.TabIndex = 38;
-			this.llsetcat.TabStop = true;
-			this.llsetcat.Text = "set";
-			this.llsetcat.LinkClicked +=
-				new LinkLabelLinkClickedEventHandler(this.SetCat);
+			llsetcat.Location = new System.Drawing.Point(0, 72);
+			llsetcat.Name = "llsetcat";
+			llsetcat.Size = new System.Drawing.Size(27, 13);
+			llsetcat.TabIndex = 38;
+			llsetcat.TabStop = true;
+			llsetcat.Text = "set";
+			llsetcat.LinkClicked +=
+				new LinkLabelLinkClickedEventHandler(SetCat);
 			//
 			// llsetage
 			//
-			this.llsetage.AutoSize = true;
-			this.llsetage.Font = new System.Drawing.Font(
+			llsetage.AutoSize = true;
+			llsetage.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.llsetage.Location = new System.Drawing.Point(0, 8);
-			this.llsetage.Name = "llsetage";
-			this.llsetage.Size = new System.Drawing.Size(27, 13);
-			this.llsetage.TabIndex = 37;
-			this.llsetage.TabStop = true;
-			this.llsetage.Text = "set";
-			this.llsetage.LinkClicked +=
-				new LinkLabelLinkClickedEventHandler(this.setAge);
+			llsetage.Location = new System.Drawing.Point(0, 8);
+			llsetage.Name = "llsetage";
+			llsetage.Size = new System.Drawing.Size(27, 13);
+			llsetage.TabIndex = 37;
+			llsetage.TabStop = true;
+			llsetage.Text = "set";
+			llsetage.LinkClicked +=
+				new LinkLabelLinkClickedEventHandler(setAge);
 			//
 			// cbswim
 			//
-			this.cbswim.FlatStyle = FlatStyle.System;
-			this.cbswim.Font = new System.Drawing.Font(
+			cbswim.FlatStyle = FlatStyle.System;
+			cbswim.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbswim.Location = new System.Drawing.Point(16, 112);
-			this.cbswim.Name = "cbswim";
-			this.cbswim.Size = new System.Drawing.Size(80, 24);
-			this.cbswim.TabIndex = 36;
-			this.cbswim.Text = "Swim Suit";
+			cbswim.Location = new System.Drawing.Point(16, 112);
+			cbswim.Name = "cbswim";
+			cbswim.Size = new System.Drawing.Size(80, 24);
+			cbswim.TabIndex = 36;
+			cbswim.Text = "Swim Suit";
 			//
 			// cbact
 			//
-			this.cbact.FlatStyle = FlatStyle.System;
-			this.cbact.Font = new System.Drawing.Font(
+			cbact.FlatStyle = FlatStyle.System;
+			cbact.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbact.Location = new System.Drawing.Point(192, 112);
-			this.cbact.Name = "cbact";
-			this.cbact.Size = new System.Drawing.Size(50, 24);
-			this.cbact.TabIndex = 35;
-			this.cbact.Text = "Gym";
-			this.cbact.CheckedChanged += new EventHandler(
-				this.cbact_CheckedChanged
+			cbact.Location = new System.Drawing.Point(192, 112);
+			cbact.Name = "cbact";
+			cbact.Size = new System.Drawing.Size(50, 24);
+			cbact.TabIndex = 35;
+			cbact.Text = "Gym";
+			cbact.CheckedChanged += new EventHandler(
+				cbact_CheckedChanged
 			);
 			//
 			// cbskin
 			//
-			this.cbskin.FlatStyle = FlatStyle.System;
-			this.cbskin.Font = new System.Drawing.Font(
+			cbskin.FlatStyle = FlatStyle.System;
+			cbskin.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbskin.Location = new System.Drawing.Point(256, 136);
-			this.cbskin.Name = "cbskin";
-			this.cbskin.Size = new System.Drawing.Size(56, 24);
-			this.cbskin.TabIndex = 34;
-			this.cbskin.Text = "Skin";
+			cbskin.Location = new System.Drawing.Point(256, 136);
+			cbskin.Name = "cbskin";
+			cbskin.Size = new System.Drawing.Size(56, 24);
+			cbskin.TabIndex = 34;
+			cbskin.Text = "Skin";
 			//
 			// cbformal
 			//
-			this.cbformal.FlatStyle = FlatStyle.System;
-			this.cbformal.Font = new System.Drawing.Font(
+			cbformal.FlatStyle = FlatStyle.System;
+			cbformal.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbformal.Location = new System.Drawing.Point(182, 88);
-			this.cbformal.Name = "cbformal";
-			this.cbformal.Size = new System.Drawing.Size(64, 24);
-			this.cbformal.TabIndex = 33;
-			this.cbformal.Text = "Formal";
+			cbformal.Location = new System.Drawing.Point(182, 88);
+			cbformal.Name = "cbformal";
+			cbformal.Size = new System.Drawing.Size(64, 24);
+			cbformal.TabIndex = 33;
+			cbformal.Text = "Formal";
 			//
 			// cbpreg
 			//
-			this.cbpreg.FlatStyle = FlatStyle.System;
-			this.cbpreg.Font = new System.Drawing.Font(
+			cbpreg.FlatStyle = FlatStyle.System;
+			cbpreg.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbpreg.Location = new System.Drawing.Point(256, 88);
-			this.cbpreg.Name = "cbpreg";
-			this.cbpreg.Size = new System.Drawing.Size(75, 24);
-			this.cbpreg.TabIndex = 32;
-			this.cbpreg.Text = "Maternity";
+			cbpreg.Location = new System.Drawing.Point(256, 88);
+			cbpreg.Name = "cbpreg";
+			cbpreg.Size = new System.Drawing.Size(75, 24);
+			cbpreg.TabIndex = 32;
+			cbpreg.Text = "Maternity";
 			//
 			// cbundies
 			//
-			this.cbundies.FlatStyle = FlatStyle.System;
-			this.cbundies.Font = new System.Drawing.Font(
+			cbundies.FlatStyle = FlatStyle.System;
+			cbundies.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbundies.Location = new System.Drawing.Point(104, 112);
-			this.cbundies.Name = "cbundies";
-			this.cbundies.Size = new System.Drawing.Size(82, 24);
-			this.cbundies.TabIndex = 31;
-			this.cbundies.Text = "Underwear";
+			cbundies.Location = new System.Drawing.Point(104, 112);
+			cbundies.Name = "cbundies";
+			cbundies.Size = new System.Drawing.Size(82, 24);
+			cbundies.TabIndex = 31;
+			cbundies.Text = "Underwear";
 			//
 			// cbpj
 			//
-			this.cbpj.FlatStyle = FlatStyle.System;
-			this.cbpj.Font = new System.Drawing.Font(
+			cbpj.FlatStyle = FlatStyle.System;
+			cbpj.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbpj.Location = new System.Drawing.Point(104, 88);
-			this.cbpj.Name = "cbpj";
-			this.cbpj.Size = new System.Drawing.Size(72, 24);
-			this.cbpj.TabIndex = 30;
-			this.cbpj.Text = "Pyjamas";
+			cbpj.Location = new System.Drawing.Point(104, 88);
+			cbpj.Name = "cbpj";
+			cbpj.Size = new System.Drawing.Size(72, 24);
+			cbpj.TabIndex = 30;
+			cbpj.Text = "Pyjamas";
 			//
 			// cbevery
 			//
-			this.cbevery.FlatStyle = FlatStyle.System;
-			this.cbevery.Font = new System.Drawing.Font(
+			cbevery.FlatStyle = FlatStyle.System;
+			cbevery.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbevery.Location = new System.Drawing.Point(16, 88);
-			this.cbevery.Name = "cbevery";
-			this.cbevery.Size = new System.Drawing.Size(80, 24);
-			this.cbevery.TabIndex = 29;
-			this.cbevery.Text = "Everyday";
+			cbevery.Location = new System.Drawing.Point(16, 88);
+			cbevery.Name = "cbevery";
+			cbevery.Size = new System.Drawing.Size(80, 24);
+			cbevery.TabIndex = 29;
+			cbevery.Text = "Everyday";
 			//
 			// cbelder
 			//
-			this.cbelder.FlatStyle = FlatStyle.System;
-			this.cbelder.Font = new System.Drawing.Font(
+			cbelder.FlatStyle = FlatStyle.System;
+			cbelder.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbelder.Location = new System.Drawing.Point(182, 48);
-			this.cbelder.Name = "cbelder";
-			this.cbelder.Size = new System.Drawing.Size(64, 24);
-			this.cbelder.TabIndex = 28;
-			this.cbelder.Text = "Elder";
+			cbelder.Location = new System.Drawing.Point(182, 48);
+			cbelder.Name = "cbelder";
+			cbelder.Size = new System.Drawing.Size(64, 24);
+			cbelder.TabIndex = 28;
+			cbelder.Text = "Elder";
 			//
 			// cbadult
 			//
-			this.cbadult.FlatStyle = FlatStyle.System;
-			this.cbadult.Font = new System.Drawing.Font(
+			cbadult.FlatStyle = FlatStyle.System;
+			cbadult.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbadult.Location = new System.Drawing.Point(112, 48);
-			this.cbadult.Name = "cbadult";
-			this.cbadult.Size = new System.Drawing.Size(64, 24);
-			this.cbadult.TabIndex = 27;
-			this.cbadult.Text = "Adult";
+			cbadult.Location = new System.Drawing.Point(112, 48);
+			cbadult.Name = "cbadult";
+			cbadult.Size = new System.Drawing.Size(64, 24);
+			cbadult.TabIndex = 27;
+			cbadult.Text = "Adult";
 			//
 			// cbyoung
 			//
-			this.cbyoung.FlatStyle = FlatStyle.System;
-			this.cbyoung.Font = new System.Drawing.Font(
+			cbyoung.FlatStyle = FlatStyle.System;
+			cbyoung.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbyoung.Location = new System.Drawing.Point(16, 48);
-			this.cbyoung.Name = "cbyoung";
-			this.cbyoung.Size = new System.Drawing.Size(88, 24);
-			this.cbyoung.TabIndex = 26;
-			this.cbyoung.Text = "young Adult";
+			cbyoung.Location = new System.Drawing.Point(16, 48);
+			cbyoung.Name = "cbyoung";
+			cbyoung.Size = new System.Drawing.Size(88, 24);
+			cbyoung.TabIndex = 26;
+			cbyoung.Text = "young Adult";
 			//
 			// cbteen
 			//
-			this.cbteen.FlatStyle = FlatStyle.System;
-			this.cbteen.Font = new System.Drawing.Font(
+			cbteen.FlatStyle = FlatStyle.System;
+			cbteen.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbteen.Location = new System.Drawing.Point(256, 24);
-			this.cbteen.Name = "cbteen";
-			this.cbteen.Size = new System.Drawing.Size(80, 24);
-			this.cbteen.TabIndex = 25;
-			this.cbteen.Text = "Teenager";
+			cbteen.Location = new System.Drawing.Point(256, 24);
+			cbteen.Name = "cbteen";
+			cbteen.Size = new System.Drawing.Size(80, 24);
+			cbteen.TabIndex = 25;
+			cbteen.Text = "Teenager";
 			//
 			// cbchild
 			//
-			this.cbchild.FlatStyle = FlatStyle.System;
-			this.cbchild.Font = new System.Drawing.Font(
+			cbchild.FlatStyle = FlatStyle.System;
+			cbchild.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbchild.Location = new System.Drawing.Point(182, 24);
-			this.cbchild.Name = "cbchild";
-			this.cbchild.Size = new System.Drawing.Size(64, 24);
-			this.cbchild.TabIndex = 24;
-			this.cbchild.Text = "Child";
+			cbchild.Location = new System.Drawing.Point(182, 24);
+			cbchild.Name = "cbchild";
+			cbchild.Size = new System.Drawing.Size(64, 24);
+			cbchild.TabIndex = 24;
+			cbchild.Text = "Child";
 			//
 			// cbtoddler
 			//
-			this.cbtoddler.FlatStyle = FlatStyle.System;
-			this.cbtoddler.Font = new System.Drawing.Font(
+			cbtoddler.FlatStyle = FlatStyle.System;
+			cbtoddler.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbtoddler.Location = new System.Drawing.Point(104, 24);
-			this.cbtoddler.Name = "cbtoddler";
-			this.cbtoddler.Size = new System.Drawing.Size(64, 24);
-			this.cbtoddler.TabIndex = 23;
-			this.cbtoddler.Text = "Toddler";
+			cbtoddler.Location = new System.Drawing.Point(104, 24);
+			cbtoddler.Name = "cbtoddler";
+			cbtoddler.Size = new System.Drawing.Size(64, 24);
+			cbtoddler.TabIndex = 23;
+			cbtoddler.Text = "Toddler";
 			//
 			// cbbaby
 			//
-			this.cbbaby.FlatStyle = FlatStyle.System;
-			this.cbbaby.Font = new System.Drawing.Font(
+			cbbaby.FlatStyle = FlatStyle.System;
+			cbbaby.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbbaby.Location = new System.Drawing.Point(16, 24);
-			this.cbbaby.Name = "cbbaby";
-			this.cbbaby.Size = new System.Drawing.Size(64, 24);
-			this.cbbaby.TabIndex = 22;
-			this.cbbaby.Text = "Baby";
+			cbbaby.Location = new System.Drawing.Point(16, 24);
+			cbbaby.Name = "cbbaby";
+			cbbaby.Size = new System.Drawing.Size(64, 24);
+			cbbaby.TabIndex = 22;
+			cbbaby.Text = "Baby";
 			//
 			// label2
 			//
-			this.label2.AutoSize = true;
-			this.label2.Font = new System.Drawing.Font(
+			label2.AutoSize = true;
+			label2.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				(
@@ -761,16 +761,16 @@ namespace SimPe.Plugin.Scanner
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label2.Location = new System.Drawing.Point(24, 72);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(80, 13);
-			this.label2.TabIndex = 1;
-			this.label2.Text = "Categories:";
+			label2.Location = new System.Drawing.Point(24, 72);
+			label2.Name = "label2";
+			label2.Size = new System.Drawing.Size(80, 13);
+			label2.TabIndex = 1;
+			label2.Text = "Categories:";
 			//
 			// label1
 			//
-			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font(
+			label1.AutoSize = true;
+			label1.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				(
@@ -784,34 +784,34 @@ namespace SimPe.Plugin.Scanner
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label1.Location = new System.Drawing.Point(24, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(42, 13);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Ages:";
+			label1.Location = new System.Drawing.Point(24, 8);
+			label1.Name = "label1";
+			label1.Size = new System.Drawing.Size(42, 13);
+			label1.TabIndex = 0;
+			label1.Text = "Ages:";
 			//
 			// tabPage4
 			//
-			this.tabPage4.Controls.Add(this.pnShelve);
-			this.tabPage4.Location = new System.Drawing.Point(4, 22);
-			this.tabPage4.Name = "tabPage4";
-			this.tabPage4.Size = new System.Drawing.Size(424, 258);
-			this.tabPage4.TabIndex = 3;
-			this.tabPage4.Text = "SheleveReady?";
+			tabPage4.Controls.Add(pnShelve);
+			tabPage4.Location = new System.Drawing.Point(4, 22);
+			tabPage4.Name = "tabPage4";
+			tabPage4.Size = new System.Drawing.Size(424, 258);
+			tabPage4.TabIndex = 3;
+			tabPage4.Text = "SheleveReady?";
 			//
 			// pnShelve
 			//
-			this.pnShelve.Controls.Add(this.cbshelve);
-			this.pnShelve.Controls.Add(this.label5);
-			this.pnShelve.Controls.Add(this.llShelve);
-			this.pnShelve.Location = new System.Drawing.Point(8, 8);
-			this.pnShelve.Name = "pnShelve";
-			this.pnShelve.Size = new System.Drawing.Size(361, 72);
-			this.pnShelve.TabIndex = 1;
+			pnShelve.Controls.Add(cbshelve);
+			pnShelve.Controls.Add(label5);
+			pnShelve.Controls.Add(llShelve);
+			pnShelve.Location = new System.Drawing.Point(8, 8);
+			pnShelve.Name = "pnShelve";
+			pnShelve.Size = new System.Drawing.Size(361, 72);
+			pnShelve.TabIndex = 1;
 			//
 			// cbshelve
 			//
-			this.cbshelve.Anchor = (
+			cbshelve.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -821,22 +821,22 @@ namespace SimPe.Plugin.Scanner
 					)
 				)
 			);
-			this.cbshelve.DropDownStyle =
+			cbshelve.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbshelve.Enum = null;
-			this.cbshelve.Location = new System.Drawing.Point(16, 24);
-			this.cbshelve.Name = "cbshelve";
-			this.cbshelve.ResourceManager = null;
-			this.cbshelve.Size = new System.Drawing.Size(329, 21);
-			this.cbshelve.TabIndex = 40;
-			this.cbshelve.SelectedIndexChanged += new EventHandler(
-				this.cbshelve_SelectedIndexChanged
+			cbshelve.Enum = null;
+			cbshelve.Location = new System.Drawing.Point(16, 24);
+			cbshelve.Name = "cbshelve";
+			cbshelve.ResourceManager = null;
+			cbshelve.Size = new System.Drawing.Size(329, 21);
+			cbshelve.TabIndex = 40;
+			cbshelve.SelectedIndexChanged += new EventHandler(
+				cbshelve_SelectedIndexChanged
 			);
 			//
 			// label5
 			//
-			this.label5.Font = new System.Drawing.Font(
+			label5.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				(
@@ -850,83 +850,83 @@ namespace SimPe.Plugin.Scanner
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label5.Location = new System.Drawing.Point(0, 8);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(128, 16);
-			this.label5.TabIndex = 39;
-			this.label5.Text = "Dimension:";
+			label5.Location = new System.Drawing.Point(0, 8);
+			label5.Name = "label5";
+			label5.Size = new System.Drawing.Size(128, 16);
+			label5.TabIndex = 39;
+			label5.Text = "Dimension:";
 			//
 			// llShelve
 			//
-			this.llShelve.AutoSize = true;
-			this.llShelve.Font = new System.Drawing.Font(
+			llShelve.AutoSize = true;
+			llShelve.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.llShelve.Location = new System.Drawing.Point(0, 56);
-			this.llShelve.Name = "llShelve";
-			this.llShelve.Size = new System.Drawing.Size(147, 13);
-			this.llShelve.TabIndex = 38;
-			this.llShelve.TabStop = true;
-			this.llShelve.Text = "set Shelve Dimension";
-			this.llShelve.LinkClicked +=
+			llShelve.Location = new System.Drawing.Point(0, 56);
+			llShelve.Name = "llShelve";
+			llShelve.Size = new System.Drawing.Size(147, 13);
+			llShelve.TabIndex = 38;
+			llShelve.TabStop = true;
+			llShelve.Text = "set Shelve Dimension";
+			llShelve.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.visualStyleLinkLabel3_LinkClicked
+					visualStyleLinkLabel3_LinkClicked
 				);
 			//
 			// tabPage3
 			//
-			this.tabPage3.Controls.Add(this.pnskin);
-			this.tabPage3.Location = new System.Drawing.Point(4, 22);
-			this.tabPage3.Name = "tabPage3";
-			this.tabPage3.Size = new System.Drawing.Size(424, 258);
-			this.tabPage3.TabIndex = 2;
-			this.tabPage3.Text = "Skin";
+			tabPage3.Controls.Add(pnskin);
+			tabPage3.Location = new System.Drawing.Point(4, 22);
+			tabPage3.Name = "tabPage3";
+			tabPage3.Size = new System.Drawing.Size(424, 258);
+			tabPage3.TabIndex = 2;
+			tabPage3.Text = "Skin";
 			//
 			// pnskin
 			//
-			this.pnskin.Controls.Add(this.cbtxtr);
-			this.pnskin.Controls.Add(this.cbtxmt);
-			this.pnskin.Controls.Add(this.cbskins);
-			this.pnskin.Controls.Add(this.label4);
-			this.pnskin.Controls.Add(this.visualStyleLinkLabel2);
-			this.pnskin.Controls.Add(this.cbref);
-			this.pnskin.Location = new System.Drawing.Point(24, 8);
-			this.pnskin.Name = "pnskin";
-			this.pnskin.Size = new System.Drawing.Size(343, 120);
-			this.pnskin.TabIndex = 1;
+			pnskin.Controls.Add(cbtxtr);
+			pnskin.Controls.Add(cbtxmt);
+			pnskin.Controls.Add(cbskins);
+			pnskin.Controls.Add(label4);
+			pnskin.Controls.Add(visualStyleLinkLabel2);
+			pnskin.Controls.Add(cbref);
+			pnskin.Location = new System.Drawing.Point(24, 8);
+			pnskin.Name = "pnskin";
+			pnskin.Size = new System.Drawing.Size(343, 120);
+			pnskin.TabIndex = 1;
 			//
 			// cbtxtr
 			//
-			this.cbtxtr.Checked = true;
-			this.cbtxtr.CheckState = CheckState.Checked;
-			this.cbtxtr.FlatStyle = FlatStyle.System;
-			this.cbtxtr.Location = new System.Drawing.Point(136, 48);
-			this.cbtxtr.Name = "cbtxtr";
-			this.cbtxtr.Size = new System.Drawing.Size(104, 24);
-			this.cbtxtr.TabIndex = 42;
-			this.cbtxtr.Text = "override TXTR";
+			cbtxtr.Checked = true;
+			cbtxtr.CheckState = CheckState.Checked;
+			cbtxtr.FlatStyle = FlatStyle.System;
+			cbtxtr.Location = new System.Drawing.Point(136, 48);
+			cbtxtr.Name = "cbtxtr";
+			cbtxtr.Size = new System.Drawing.Size(104, 24);
+			cbtxtr.TabIndex = 42;
+			cbtxtr.Text = "override TXTR";
 			//
 			// cbtxmt
 			//
-			this.cbtxmt.Checked = true;
-			this.cbtxmt.CheckState = CheckState.Checked;
-			this.cbtxmt.FlatStyle = FlatStyle.System;
-			this.cbtxmt.Location = new System.Drawing.Point(16, 48);
-			this.cbtxmt.Name = "cbtxmt";
-			this.cbtxmt.Size = new System.Drawing.Size(112, 24);
-			this.cbtxmt.TabIndex = 41;
-			this.cbtxmt.Text = "override TXMT";
+			cbtxmt.Checked = true;
+			cbtxmt.CheckState = CheckState.Checked;
+			cbtxmt.FlatStyle = FlatStyle.System;
+			cbtxmt.Location = new System.Drawing.Point(16, 48);
+			cbtxmt.Name = "cbtxmt";
+			cbtxmt.Size = new System.Drawing.Size(112, 24);
+			cbtxmt.TabIndex = 41;
+			cbtxmt.Text = "override TXMT";
 			//
 			// cbskins
 			//
-			this.cbskins.DropDownStyle =
+			cbskins.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbskins.Items.AddRange(
+			cbskins.Items.AddRange(
 				new object[]
 				{
 					"Light",
@@ -940,14 +940,14 @@ namespace SimPe.Plugin.Scanner
 					"Vampire",
 				}
 			);
-			this.cbskins.Location = new System.Drawing.Point(16, 24);
-			this.cbskins.Name = "cbskins";
-			this.cbskins.Size = new System.Drawing.Size(256, 21);
-			this.cbskins.TabIndex = 40;
+			cbskins.Location = new System.Drawing.Point(16, 24);
+			cbskins.Name = "cbskins";
+			cbskins.Size = new System.Drawing.Size(256, 21);
+			cbskins.TabIndex = 40;
 			//
 			// label4
 			//
-			this.label4.Font = new System.Drawing.Font(
+			label4.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				(
@@ -961,75 +961,75 @@ namespace SimPe.Plugin.Scanner
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label4.Location = new System.Drawing.Point(0, 8);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(128, 16);
-			this.label4.TabIndex = 39;
-			this.label4.Text = "Base Skin:";
+			label4.Location = new System.Drawing.Point(0, 8);
+			label4.Name = "label4";
+			label4.Size = new System.Drawing.Size(128, 16);
+			label4.TabIndex = 39;
+			label4.Text = "Base Skin:";
 			//
 			// visualStyleLinkLabel2
 			//
-			this.visualStyleLinkLabel2.AutoSize = true;
-			this.visualStyleLinkLabel2.Font = new System.Drawing.Font(
+			visualStyleLinkLabel2.AutoSize = true;
+			visualStyleLinkLabel2.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.visualStyleLinkLabel2.Location = new System.Drawing.Point(0, 96);
-			this.visualStyleLinkLabel2.Name = "visualStyleLinkLabel2";
-			this.visualStyleLinkLabel2.Size = new System.Drawing.Size(191, 13);
-			this.visualStyleLinkLabel2.TabIndex = 38;
-			this.visualStyleLinkLabel2.TabStop = true;
-			this.visualStyleLinkLabel2.Text = "create default Skin override";
-			this.visualStyleLinkLabel2.LinkClicked +=
+			visualStyleLinkLabel2.Location = new System.Drawing.Point(0, 96);
+			visualStyleLinkLabel2.Name = "visualStyleLinkLabel2";
+			visualStyleLinkLabel2.Size = new System.Drawing.Size(191, 13);
+			visualStyleLinkLabel2.TabIndex = 38;
+			visualStyleLinkLabel2.TabStop = true;
+			visualStyleLinkLabel2.Text = "create default Skin override";
+			visualStyleLinkLabel2.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.CreateSkinOverride
+					CreateSkinOverride
 				);
 			//
 			// cbref
 			//
-			this.cbref.FlatStyle = FlatStyle.System;
-			this.cbref.Location = new System.Drawing.Point(16, 68);
-			this.cbref.Name = "cbref";
-			this.cbref.Size = new System.Drawing.Size(136, 24);
-			this.cbref.TabIndex = 43;
-			this.cbref.Text = "override Reference";
+			cbref.FlatStyle = FlatStyle.System;
+			cbref.Location = new System.Drawing.Point(16, 68);
+			cbref.Name = "cbref";
+			cbref.Size = new System.Drawing.Size(136, 24);
+			cbref.TabIndex = 43;
+			cbref.Text = "override Reference";
 			//
 			// sfd
 			//
-			this.sfd.Filter = "Package File (*.package)|*.package|All Files (*.*)|*.*";
-			this.sfd.Title = "Skin Override";
+			sfd.Filter = "Package File (*.package)|*.package|All Files (*.*)|*.*";
+			sfd.Title = "Skin Override";
 			//
 			// ScannerPanelForm
 			//
-			this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
-			this.ClientSize = new System.Drawing.Size(736, 357);
-			this.Controls.Add(this.tabControl1);
-			this.Font = new System.Drawing.Font(
+			AutoScaleBaseSize = new System.Drawing.Size(6, 14);
+			ClientSize = new System.Drawing.Size(736, 357);
+			Controls.Add(tabControl1);
+			Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.Name = "ScannerPanelForm";
-			this.Text = "ScannerPanelForm";
-			this.tabControl1.ResumeLayout(false);
-			this.tabPage2.ResumeLayout(false);
-			this.pnep.ResumeLayout(false);
-			this.pnep.PerformLayout();
-			this.tabPage1.ResumeLayout(false);
-			this.pncloth.ResumeLayout(false);
-			this.pncloth.PerformLayout();
-			this.tabPage4.ResumeLayout(false);
-			this.pnShelve.ResumeLayout(false);
-			this.pnShelve.PerformLayout();
-			this.tabPage3.ResumeLayout(false);
-			this.pnskin.ResumeLayout(false);
-			this.pnskin.PerformLayout();
-			this.ResumeLayout(false);
+			Name = "ScannerPanelForm";
+			Text = "ScannerPanelForm";
+			tabControl1.ResumeLayout(false);
+			tabPage2.ResumeLayout(false);
+			pnep.ResumeLayout(false);
+			pnep.PerformLayout();
+			tabPage1.ResumeLayout(false);
+			pncloth.ResumeLayout(false);
+			pncloth.PerformLayout();
+			tabPage4.ResumeLayout(false);
+			pnShelve.ResumeLayout(false);
+			pnShelve.PerformLayout();
+			tabPage3.ResumeLayout(false);
+			pnskin.ResumeLayout(false);
+			pnskin.PerformLayout();
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -1065,7 +1065,7 @@ namespace SimPe.Plugin.Scanner
 		)
 		{
 			EPReadyScanner cs = (EPReadyScanner)pnep.Tag;
-			cs.Fix(this.tbname.Text);
+			cs.Fix(tbname.Text);
 		}
 
 		private void CreateSkinOverride(
@@ -1155,7 +1155,7 @@ namespace SimPe.Plugin.Scanner
 		{
 			PackedFiles.Wrapper.ShelveDimension sd =
 				(PackedFiles.Wrapper.ShelveDimension)cbshelve.SelectedValue;
-			ShelveScanner cs = (ShelveScanner)this.pnShelve.Tag;
+			ShelveScanner cs = (ShelveScanner)pnShelve.Tag;
 			cs.Set(sd);
 		}
 

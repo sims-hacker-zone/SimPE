@@ -27,7 +27,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			InitializeComponent();
 
 			tm = ThemeManager.Global.CreateChild();
-			tm.AddControl(this.xpGradientPanel1);
+			tm.AddControl(xpGradientPanel1);
 		}
 
 		/// <summary>
@@ -37,7 +37,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		{
 			if (disposing)
 			{
-				tm.RemoveControl(this.xpGradientPanel1);
+				tm.RemoveControl(xpGradientPanel1);
 				tm = null;
 				if (components != null)
 				{
@@ -56,29 +56,29 @@ namespace SimPe.Plugin.Tool.Dockable
 		{
 			System.Resources.ResourceManager resources =
 				new System.Resources.ResourceManager(typeof(DebugDock));
-			this.xpGradientPanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
-			this.lbft = new System.Windows.Forms.ListBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.lbMem = new System.Windows.Forms.Label();
-			this.label1 = new System.Windows.Forms.Label();
-			this.xpGradientPanel1.SuspendLayout();
-			this.SuspendLayout();
+			xpGradientPanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
+			lbft = new System.Windows.Forms.ListBox();
+			label2 = new System.Windows.Forms.Label();
+			lbMem = new System.Windows.Forms.Label();
+			label1 = new System.Windows.Forms.Label();
+			xpGradientPanel1.SuspendLayout();
+			SuspendLayout();
 			//
 			// xpGradientPanel1
 			//
-			this.xpGradientPanel1.Controls.Add(this.lbft);
-			this.xpGradientPanel1.Controls.Add(this.label2);
-			this.xpGradientPanel1.Controls.Add(this.lbMem);
-			this.xpGradientPanel1.Controls.Add(this.label1);
-			this.xpGradientPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.xpGradientPanel1.Location = new System.Drawing.Point(0, 0);
-			this.xpGradientPanel1.Name = "xpGradientPanel1";
-			this.xpGradientPanel1.Size = new System.Drawing.Size(250, 400);
-			this.xpGradientPanel1.TabIndex = 0;
+			xpGradientPanel1.Controls.Add(lbft);
+			xpGradientPanel1.Controls.Add(label2);
+			xpGradientPanel1.Controls.Add(lbMem);
+			xpGradientPanel1.Controls.Add(label1);
+			xpGradientPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+			xpGradientPanel1.Location = new System.Drawing.Point(0, 0);
+			xpGradientPanel1.Name = "xpGradientPanel1";
+			xpGradientPanel1.Size = new System.Drawing.Size(250, 400);
+			xpGradientPanel1.TabIndex = 0;
 			//
 			// lbft
 			//
-			this.lbft.Anchor = (
+			lbft.Anchor = (
 				(System.Windows.Forms.AnchorStyles)(
 					(
 						(
@@ -90,31 +90,31 @@ namespace SimPe.Plugin.Tool.Dockable
 					)
 				)
 			);
-			this.lbft.Location = new System.Drawing.Point(16, 72);
-			this.lbft.Name = "lbft";
-			this.lbft.Size = new System.Drawing.Size(224, 316);
-			this.lbft.TabIndex = 3;
+			lbft.Location = new System.Drawing.Point(16, 72);
+			lbft.Name = "lbft";
+			lbft.Size = new System.Drawing.Size(224, 316);
+			lbft.TabIndex = 3;
 			//
 			// label2
 			//
-			this.label2.BackColor = System.Drawing.Color.Transparent;
-			this.label2.Font = new System.Drawing.Font(
+			label2.BackColor = System.Drawing.Color.Transparent;
+			label2.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label2.Location = new System.Drawing.Point(8, 56);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(128, 23);
-			this.label2.TabIndex = 2;
-			this.label2.Text = "FileTable Content:";
-			this.label2.Click += new EventHandler(this.label2_Click);
+			label2.Location = new System.Drawing.Point(8, 56);
+			label2.Name = "label2";
+			label2.Size = new System.Drawing.Size(128, 23);
+			label2.TabIndex = 2;
+			label2.Text = "FileTable Content:";
+			label2.Click += new EventHandler(label2_Click);
 			//
 			// lbMem
 			//
-			this.lbMem.Anchor = (
+			lbMem.Anchor = (
 				(System.Windows.Forms.AnchorStyles)(
 					(
 						(
@@ -124,55 +124,55 @@ namespace SimPe.Plugin.Tool.Dockable
 					)
 				)
 			);
-			this.lbMem.BackColor = System.Drawing.Color.Transparent;
-			this.lbMem.Font = new System.Drawing.Font(
+			lbMem.BackColor = System.Drawing.Color.Transparent;
+			lbMem.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.lbMem.Location = new System.Drawing.Point(16, 24);
-			this.lbMem.Name = "lbMem";
-			this.lbMem.Size = new System.Drawing.Size(224, 23);
-			this.lbMem.TabIndex = 1;
-			this.lbMem.Text = "0";
-			this.lbMem.Click += new EventHandler(this.lbMem_Click);
+			lbMem.Location = new System.Drawing.Point(16, 24);
+			lbMem.Name = "lbMem";
+			lbMem.Size = new System.Drawing.Size(224, 23);
+			lbMem.TabIndex = 1;
+			lbMem.Text = "0";
+			lbMem.Click += new EventHandler(lbMem_Click);
 			//
 			// label1
 			//
-			this.label1.BackColor = System.Drawing.Color.Transparent;
-			this.label1.Font = new System.Drawing.Font(
+			label1.BackColor = System.Drawing.Color.Transparent;
+			label1.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label1.Location = new System.Drawing.Point(8, 8);
-			this.label1.Name = "label1";
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Memory Usage:";
-			this.label1.Click += new EventHandler(this.label1_Click);
+			label1.Location = new System.Drawing.Point(8, 8);
+			label1.Name = "label1";
+			label1.TabIndex = 0;
+			label1.Text = "Memory Usage:";
+			label1.Click += new EventHandler(label1_Click);
 			//
 			// DebugDock
 			//
-			this.Controls.Add(this.xpGradientPanel1);
-			this.Font = new System.Drawing.Font(
+			Controls.Add(xpGradientPanel1);
+			Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.Name = "DebugDock";
-			this.TabImage = (
+			Name = "DebugDock";
+			TabImage = (
 				(System.Drawing.Image)(resources.GetObject("$this.TabImage"))
 			);
-			this.TabText = "Debug";
-			this.Text = "Debug Dock";
-			this.xpGradientPanel1.ResumeLayout(false);
-			this.ResumeLayout(false);
+			TabText = "Debug";
+			Text = "Debug Dock";
+			xpGradientPanel1.ResumeLayout(false);
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -192,7 +192,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		public override string ToString()
 		{
-			return this.Text;
+			return Text;
 		}
 
 		#endregion
@@ -269,9 +269,9 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		public System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.None;
 
-		public System.Drawing.Image Icon => this.TabImage;
+		public System.Drawing.Image Icon => TabImage;
 
-		public new virtual bool Visible => this.IsDocked || this.IsFloating;
+		public new virtual bool Visible => IsDocked || IsFloating;
 
 		#endregion
 	}

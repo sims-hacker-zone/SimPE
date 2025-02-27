@@ -162,10 +162,10 @@ namespace pjse.BhavNameWizards
 			switch (opFormat(instruction.NodeVersion, o))
 			{
 				case dataFormat.useTemps:
-					s += this.doTemps(thisArgc, lng, tprp);
+					s += doTemps(thisArgc, lng, tprp);
 					break;
 				case dataFormat.oldFormat:
-					s += this.do8Cx(
+					s += do8Cx(
 						thisArgc,
 						lng,
 						tprp,
@@ -176,22 +176,22 @@ namespace pjse.BhavNameWizards
 				case dataFormat.newFormat:
 					if (thisArgc < 9)
 					{
-						s += this.do4OI(thisArgc, lng, tprp, o);
+						s += do4OI(thisArgc, lng, tprp, o);
 					}
 					else
 					{
-						s += this.doZero(thisArgc, lng, tprp);
+						s += doZero(thisArgc, lng, tprp);
 					}
 
 					break;
 				case dataFormat.useParams:
 					if (thisArgc < 9)
 					{
-						s += this.doParams(thisArgc, myArgc, lng, tprp);
+						s += doParams(thisArgc, myArgc, lng, tprp);
 					}
 					else
 					{
-						s += this.doZero(thisArgc, lng, tprp);
+						s += doZero(thisArgc, lng, tprp);
 					}
 
 					break;
@@ -364,7 +364,7 @@ namespace pjse.BhavNameWizards
 
 		private string doZero(int thisArgc, bool lng, TPRP tprp)
 		{
-			return this.doZero(thisArgc, lng, tprp, 0);
+			return doZero(thisArgc, lng, tprp, 0);
 		}
 
 		private string doZero(int thisArgc, bool lng, TPRP tprp, int start)
@@ -401,7 +401,7 @@ namespace pjse.BhavNameWizards
 
 		private string doUnknown(int thisArgc, bool lng, TPRP tprp)
 		{
-			return this.doUnknown(thisArgc, lng, tprp, 0);
+			return doUnknown(thisArgc, lng, tprp, 0);
 		}
 
 		private string doUnknown(int thisArgc, bool lng, TPRP tprp, int start)

@@ -56,39 +56,39 @@ namespace SimPe.Plugin
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.lv = new ListView();
-			this.SuspendLayout();
+			lv = new ListView();
+			SuspendLayout();
 			//
 			// lv
 			//
-			this.lv.BorderStyle = BorderStyle.None;
-			this.lv.Dock = DockStyle.Fill;
-			this.lv.HeaderStyle = ColumnHeaderStyle.Nonclickable;
-			this.lv.HideSelection = false;
-			this.lv.Location = new System.Drawing.Point(1, 1);
-			this.lv.MultiSelect = false;
-			this.lv.Name = "lv";
-			this.lv.Size = new System.Drawing.Size(270, 166);
-			this.lv.TabIndex = 1;
-			this.lv.View = View.List;
-			this.lv.SelectedIndexChanged += new EventHandler(
-				this.lv_SelectedIndexChanged
+			lv.BorderStyle = BorderStyle.None;
+			lv.Dock = DockStyle.Fill;
+			lv.HeaderStyle = ColumnHeaderStyle.Nonclickable;
+			lv.HideSelection = false;
+			lv.Location = new System.Drawing.Point(1, 1);
+			lv.MultiSelect = false;
+			lv.Name = "lv";
+			lv.Size = new System.Drawing.Size(270, 166);
+			lv.TabIndex = 1;
+			lv.View = View.List;
+			lv.SelectedIndexChanged += new EventHandler(
+				lv_SelectedIndexChanged
 			);
 			//
 			// NgbhSlotListView
 			//
-			this.Controls.Add(this.lv);
-			this.DockPadding.All = 1;
-			this.Font = new System.Drawing.Font(
+			Controls.Add(lv);
+			DockPadding.All = 1;
+			Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.Name = "NgbhSlotListView";
-			this.Size = new System.Drawing.Size(272, 168);
-			this.ResumeLayout(false);
+			Name = "NgbhSlotListView";
+			Size = new System.Drawing.Size(272, 168);
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -162,8 +162,8 @@ namespace SimPe.Plugin
 
 		void SetContent()
 		{
-			this.lv.BeginUpdate();
-			this.lv.Items.Clear();
+			lv.BeginUpdate();
+			lv.Items.Clear();
 			if (slots != null)
 			{
 				foreach (NgbhSlot s in slots)
@@ -175,7 +175,7 @@ namespace SimPe.Plugin
 					lv.Items.Add(lvi);
 				}
 			}
-			this.lv.EndUpdate();
+			lv.EndUpdate();
 		}
 
 		private void lv_SelectedIndexChanged(object sender, EventArgs e)

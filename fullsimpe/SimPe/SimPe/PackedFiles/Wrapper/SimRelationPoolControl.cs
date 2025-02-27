@@ -14,7 +14,7 @@ namespace SimPe.PackedFiles.Wrapper
 			if (RelatedImage == null)
 			{
 				RelatedImage = Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.related.png")
 				);
 			}
@@ -27,14 +27,14 @@ namespace SimPe.PackedFiles.Wrapper
 			cbNoRelation.Checked = shownorel;
 			intern = false;
 
-			this.panel1.SendToBack();
+			panel1.SendToBack();
 			cbhousehold.SendToBack();
-			this.RightClickSelect = true;
+			RightClickSelect = true;
 		}
 
 		public void UpdateIcon()
 		{
-			Image img = UpdateIcon(this.SelectedSim);
+			Image img = UpdateIcon(SelectedSim);
 			if (img != null && gp.SelectedItems.Count > 0)
 			{
 				gp.SelectedItems[0].ImageList.Images[gp.SelectedItems[0].ImageIndex] =
@@ -124,9 +124,9 @@ namespace SimPe.PackedFiles.Wrapper
 				if (value != showrel)
 				{
 					showrel = value;
-					this.UpdateSimList();
+					UpdateSimList();
 					intern = true;
-					this.cbRelation.Checked = value;
+					cbRelation.Checked = value;
 					intern = false;
 				}
 			}
@@ -143,9 +143,9 @@ namespace SimPe.PackedFiles.Wrapper
 				if (value != shownorel)
 				{
 					shownorel = value;
-					this.UpdateSimList();
+					UpdateSimList();
 					intern = true;
-					this.cbNoRelation.Checked = value;
+					cbNoRelation.Checked = value;
 					intern = false;
 				}
 			}
@@ -171,9 +171,9 @@ namespace SimPe.PackedFiles.Wrapper
 					sim = value;
 				}
 				// So we do this anyway...
-				if (FilteredBySim && this.Package != null)
+				if (FilteredBySim && Package != null)
 				{
-					this.UpdateSimList();
+					UpdateSimList();
 				}
 			}
 		}

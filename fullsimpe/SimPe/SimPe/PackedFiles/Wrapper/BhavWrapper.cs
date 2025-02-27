@@ -140,12 +140,12 @@ namespace SimPe.PackedFiles.Wrapper
 
 			while (from < to)
 			{
-				this.SortSwap(from, ++from);
+				SortSwap(from, ++from);
 			}
 
 			while (from > to)
 			{
-				this.SortSwap(from, --from);
+				SortSwap(from, --from);
 			}
 
 			OnWrapperChanged(items, new EventArgs());
@@ -154,27 +154,27 @@ namespace SimPe.PackedFiles.Wrapper
 		// only allow 32K or 128 lines
 		public new void Add(Instruction item)
 		{
-			Add(item, this.Header.Format < 0x8007 ? 0x80 : 0x8000);
+			Add(item, Header.Format < 0x8007 ? 0x80 : 0x8000);
 		}
 
 		public new void Insert(int index, Instruction item)
 		{
 			bool savedstate = internalchg;
 			internalchg = true;
-			this.Add(item);
+			Add(item);
 			internalchg = savedstate;
-			this.Move(this.Count - 1, index);
+			Move(Count - 1, index);
 		}
 
 		public new bool Remove(Instruction item)
 		{
-			this.Move(IndexOf(item), this.Count - 1);
+			Move(IndexOf(item), Count - 1);
 			return base.Remove(item);
 		}
 
 		public new void RemoveAt(int index)
 		{
-			this.Remove(this[index]);
+			Remove(this[index]);
 		}
 
 		public new void Sort()
@@ -298,7 +298,7 @@ namespace SimPe.PackedFiles.Wrapper
 			Header.Unserialize(reader);
 
 			items = new List<Instruction>();
-			while (items.Count < this.Header.InstructionCount)
+			while (items.Count < Header.InstructionCount)
 			{
 				items.Add(new Instruction(this, reader));
 			}
@@ -639,8 +639,8 @@ namespace SimPe.PackedFiles.Wrapper
 		public Instruction(Bhav parent)
 		{
 			this.parent = parent;
-			this.Operands = new wrappedByteArray(this, (byte[])nooperands.Clone());
-			this.Reserved1 = new wrappedByteArray(this, new byte[8]);
+			Operands = new wrappedByteArray(this, (byte[])nooperands.Clone());
+			Reserved1 = new wrappedByteArray(this, new byte[8]);
 		}
 
 #if UNUSED
@@ -689,11 +689,11 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public Instruction Clone()
 		{
-			Instruction clone = new Instruction(this.parent);
-			clone.opcode = this.opcode;
-			clone.addr1 = this.addr1;
-			clone.addr2 = this.addr2;
-			clone.nodeversion = this.nodeversion;
+			Instruction clone = new Instruction(parent);
+			clone.opcode = opcode;
+			clone.addr1 = addr1;
+			clone.addr2 = addr2;
+			clone.nodeversion = nodeversion;
 			clone.Operands = Operands.Clone();
 			clone.Operands.Parent = clone;
 			clone.Reserved1 = Reserved1.Clone();
@@ -832,7 +832,7 @@ namespace SimPe.PackedFiles.Wrapper
 		public wrappedByteArray(Instruction parent, System.IO.BinaryReader reader)
 		{
 			this.parent = parent;
-			this.array = new byte[8];
+			array = new byte[8];
 			Unserialize(reader);
 		}
 

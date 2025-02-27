@@ -12,7 +12,7 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				return this.propertySet;
+				return propertySet;
 			}
 			set
 			{
@@ -24,7 +24,7 @@ namespace SimPe.Plugin
 					);
 				}
 
-				this.propertySet = value;
+				propertySet = value;
 			}
 		}
 
@@ -53,7 +53,7 @@ namespace SimPe.Plugin
 			get
 			{
 				RecolorType ret = RecolorType.Unsupported;
-				if (this.propertySet != null)
+				if (propertySet != null)
 				{
 					try
 					{
@@ -74,7 +74,7 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				if (this.propertySet != null)
+				if (propertySet != null)
 				{
 					return ParseGuidValue(CpfItem("family"));
 				}
@@ -83,7 +83,7 @@ namespace SimPe.Plugin
 			}
 			set
 			{
-				this.SetValue("family", value.ToString());
+				SetValue("family", value.ToString());
 			}
 		}
 
@@ -91,7 +91,7 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				if (this.propertySet != null)
+				if (propertySet != null)
 				{
 					return CpfItem("name").StringValue;
 				}
@@ -100,7 +100,7 @@ namespace SimPe.Plugin
 			}
 			set
 			{
-				this.SetValue("name", value);
+				SetValue("name", value);
 			}
 		}
 
@@ -108,82 +108,82 @@ namespace SimPe.Plugin
 
 		protected AbstractCpfInfo()
 		{
-			this.Enabled = true;
+			Enabled = true;
 		}
 
 		public AbstractCpfInfo(Cpf propertySet)
 			: this()
 		{
-			this.PropertySet = propertySet;
+			PropertySet = propertySet;
 		}
 
 		public bool ContainsItem(string name)
 		{
-			return (this.propertySet.GetItem(name) != null);
+			return (propertySet.GetItem(name) != null);
 		}
 
 		public CpfItem GetProperty(string name)
 		{
-			if (this.propertySet == null)
+			if (propertySet == null)
 			{
 				return null;
 			}
 
-			return this.propertySet.GetSaveItem(name);
+			return propertySet.GetSaveItem(name);
 		}
 
 		protected CpfItem CpfItem(string name)
 		{
-			if (this.propertySet == null)
+			if (propertySet == null)
 			{
 				return null;
 			}
 
-			CpfItem ret = this.propertySet.GetItem(name);
+			CpfItem ret = propertySet.GetItem(name);
 			if (ret == null)
 			{
 				ret = new CpfItem();
 				ret.Name = name;
-				this.propertySet.AddItem(ret);
+				propertySet.AddItem(ret);
 			}
 			return ret;
 		}
 
 		public void SetValue(string propertyName, string value)
 		{
-			if (this.propertySet != null)
+			if (propertySet != null)
 			{
-				CpfItem item = this.CpfItem(propertyName);
+				CpfItem item = CpfItem(propertyName);
 				if (item.StringValue != value)
 				{
 					item.StringValue = value;
-					this.HasChanges = true;
+					HasChanges = true;
 				}
 			}
 		}
 
 		public void SetValue(string propertyName, uint value)
 		{
-			if (this.propertySet != null)
+			if (propertySet != null)
 			{
-				CpfItem item = this.CpfItem(propertyName);
+				CpfItem item = CpfItem(propertyName);
 				if (item.UIntegerValue != value)
 				{
 					item.UIntegerValue = value;
-					this.HasChanges = true;
+					HasChanges = true;
 				}
 			}
 		}
 
 		public void SetValue(string propertyName, float value)
 		{
-			if (this.propertySet != null)
+			if (propertySet != null)
 			{
-				CpfItem item = this.CpfItem(propertyName);
+				CpfItem item = CpfItem(propertyName);
 				if (item.SingleValue != value)
 				{
 					item.SingleValue = value;
-					this.HasChanges = true;
+					HasChanges = true;
 				}
 			}
 		}
@@ -208,21 +208,21 @@ namespace SimPe.Plugin
 
 		public virtual void CommitChanges()
 		{
-			if (this.propertySet != null)
+			if (propertySet != null)
 			{
-				if (this.Enabled)
+				if (Enabled)
 				{
-					this.propertySet.SynchronizeUserData();
+					propertySet.SynchronizeUserData();
 				}
 				else
 				{
-					if (!this.Pinned)
+					if (!Pinned)
 					{
-						this.propertySet.FileDescriptor.MarkForDelete = true;
+						propertySet.FileDescriptor.MarkForDelete = true;
 					}
 					else
 					{
-						this.propertySet.SynchronizeUserData();
+						propertySet.SynchronizeUserData();
 					}
 				}
 			}

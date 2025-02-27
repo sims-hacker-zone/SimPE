@@ -93,87 +93,87 @@ namespace SimPe
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.label1 = new Label();
-			this.label2 = new Label();
-			this.label3 = new Label();
-			this.label4 = new Label();
-			this.button1 = new Button();
-			this.tbname = new TextBox();
-			this.tbfile = new TextBox();
-			this.tbattr = new TextBox();
-			this.button2 = new Button();
-			this.ofd = new OpenFileDialog();
-			this.tbtype = new TextBox();
-			this.cbtypes = new ComboBox();
-			this.SuspendLayout();
+			label1 = new Label();
+			label2 = new Label();
+			label3 = new Label();
+			label4 = new Label();
+			button1 = new Button();
+			tbname = new TextBox();
+			tbfile = new TextBox();
+			tbattr = new TextBox();
+			button2 = new Button();
+			ofd = new OpenFileDialog();
+			tbtype = new TextBox();
+			cbtypes = new ComboBox();
+			SuspendLayout();
 			//
 			// label1
 			//
-			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font(
+			label1.AutoSize = true;
+			label1.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label1.Location = new System.Drawing.Point(61, 16);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(45, 17);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Name:";
+			label1.Location = new System.Drawing.Point(61, 16);
+			label1.Name = "label1";
+			label1.Size = new System.Drawing.Size(45, 17);
+			label1.TabIndex = 0;
+			label1.Text = "Name:";
 			//
 			// label2
 			//
-			this.label2.AutoSize = true;
-			this.label2.Font = new System.Drawing.Font(
+			label2.AutoSize = true;
+			label2.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label2.Location = new System.Drawing.Point(67, 40);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(39, 17);
-			this.label2.TabIndex = 1;
-			this.label2.Text = "Type:";
+			label2.Location = new System.Drawing.Point(67, 40);
+			label2.Name = "label2";
+			label2.Size = new System.Drawing.Size(39, 17);
+			label2.TabIndex = 1;
+			label2.Text = "Type:";
 			//
 			// label3
 			//
-			this.label3.AutoSize = true;
-			this.label3.Font = new System.Drawing.Font(
+			label3.AutoSize = true;
+			label3.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label3.Location = new System.Drawing.Point(38, 64);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(68, 17);
-			this.label3.TabIndex = 2;
-			this.label3.Text = "FileName:";
+			label3.Location = new System.Drawing.Point(38, 64);
+			label3.Name = "label3";
+			label3.Size = new System.Drawing.Size(68, 17);
+			label3.TabIndex = 2;
+			label3.Text = "FileName:";
 			//
 			// label4
 			//
-			this.label4.AutoSize = true;
-			this.label4.Font = new System.Drawing.Font(
+			label4.AutoSize = true;
+			label4.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label4.Location = new System.Drawing.Point(24, 88);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(82, 17);
-			this.label4.TabIndex = 3;
-			this.label4.Text = "Parameters:";
+			label4.Location = new System.Drawing.Point(24, 88);
+			label4.Name = "label4";
+			label4.Size = new System.Drawing.Size(82, 17);
+			label4.TabIndex = 3;
+			label4.Text = "Parameters:";
 			//
 			// button1
 			//
-			this.button1.Anchor = (
+			button1.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -181,16 +181,16 @@ namespace SimPe
 					)
 				)
 			);
-			this.button1.FlatStyle = FlatStyle.System;
-			this.button1.Location = new System.Drawing.Point(472, 112);
-			this.button1.Name = "button1";
-			this.button1.TabIndex = 4;
-			this.button1.Text = "OK";
-			this.button1.Click += new EventHandler(this.button1_Click);
+			button1.FlatStyle = FlatStyle.System;
+			button1.Location = new System.Drawing.Point(472, 112);
+			button1.Name = "button1";
+			button1.TabIndex = 4;
+			button1.Text = "OK";
+			button1.Click += new EventHandler(button1_Click);
 			//
 			// tbname
 			//
-			this.tbname.Anchor = (
+			tbname.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -200,15 +200,15 @@ namespace SimPe
 					)
 				)
 			);
-			this.tbname.Location = new System.Drawing.Point(112, 8);
-			this.tbname.Name = "tbname";
-			this.tbname.Size = new System.Drawing.Size(432, 21);
-			this.tbname.TabIndex = 5;
-			this.tbname.Text = "";
+			tbname.Location = new System.Drawing.Point(112, 8);
+			tbname.Name = "tbname";
+			tbname.Size = new System.Drawing.Size(432, 21);
+			tbname.TabIndex = 5;
+			tbname.Text = "";
 			//
 			// tbfile
 			//
-			this.tbfile.Anchor = (
+			tbfile.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -218,15 +218,15 @@ namespace SimPe
 					)
 				)
 			);
-			this.tbfile.Location = new System.Drawing.Point(112, 56);
-			this.tbfile.Name = "tbfile";
-			this.tbfile.Size = new System.Drawing.Size(352, 21);
-			this.tbfile.TabIndex = 6;
-			this.tbfile.Text = "";
+			tbfile.Location = new System.Drawing.Point(112, 56);
+			tbfile.Name = "tbfile";
+			tbfile.Size = new System.Drawing.Size(352, 21);
+			tbfile.TabIndex = 6;
+			tbfile.Text = "";
 			//
 			// tbattr
 			//
-			this.tbattr.Anchor = (
+			tbattr.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -236,15 +236,15 @@ namespace SimPe
 					)
 				)
 			);
-			this.tbattr.Location = new System.Drawing.Point(112, 80);
-			this.tbattr.Name = "tbattr";
-			this.tbattr.Size = new System.Drawing.Size(432, 21);
-			this.tbattr.TabIndex = 7;
-			this.tbattr.Text = "";
+			tbattr.Location = new System.Drawing.Point(112, 80);
+			tbattr.Name = "tbattr";
+			tbattr.Size = new System.Drawing.Size(432, 21);
+			tbattr.TabIndex = 7;
+			tbattr.Text = "";
 			//
 			// button2
 			//
-			this.button2.Anchor = (
+			button2.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -252,33 +252,33 @@ namespace SimPe
 					)
 				)
 			);
-			this.button2.FlatStyle = FlatStyle.System;
-			this.button2.Location = new System.Drawing.Point(472, 56);
-			this.button2.Name = "button2";
-			this.button2.TabIndex = 8;
-			this.button2.Text = "Browse...";
-			this.button2.Click += new EventHandler(this.button2_Click);
+			button2.FlatStyle = FlatStyle.System;
+			button2.Location = new System.Drawing.Point(472, 56);
+			button2.Name = "button2";
+			button2.TabIndex = 8;
+			button2.Text = "Browse...";
+			button2.Click += new EventHandler(button2_Click);
 			//
 			// ofd
 			//
-			this.ofd.Filter =
+			ofd.Filter =
 				"Application (*.exe;*.bat;*.com;*.cmd)|*.exe;*.bat;*.com;*.cmd|All Files (*.*)|*.*"
 				+ "";
 			//
 			// tbtype
 			//
-			this.tbtype.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-			this.tbtype.Location = new System.Drawing.Point(112, 32);
-			this.tbtype.Name = "tbtype";
-			this.tbtype.TabIndex = 17;
-			this.tbtype.Text = "";
-			this.tbtype.TextChanged += new EventHandler(
-				this.SelectTypeByNameClick
+			tbtype.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+			tbtype.Location = new System.Drawing.Point(112, 32);
+			tbtype.Name = "tbtype";
+			tbtype.TabIndex = 17;
+			tbtype.Text = "";
+			tbtype.TextChanged += new EventHandler(
+				SelectTypeByNameClick
 			);
 			//
 			// cbtypes
 			//
-			this.cbtypes.Anchor = (
+			cbtypes.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -288,46 +288,46 @@ namespace SimPe
 					)
 				)
 			);
-			this.cbtypes.DropDownStyle =
+			cbtypes.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbtypes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-			this.cbtypes.ItemHeight = 13;
-			this.cbtypes.Location = new System.Drawing.Point(216, 32);
-			this.cbtypes.Name = "cbtypes";
-			this.cbtypes.Size = new System.Drawing.Size(248, 21);
-			this.cbtypes.TabIndex = 18;
-			this.cbtypes.SelectedIndexChanged += new EventHandler(
-				this.TypeSelectClick
+			cbtypes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+			cbtypes.ItemHeight = 13;
+			cbtypes.Location = new System.Drawing.Point(216, 32);
+			cbtypes.Name = "cbtypes";
+			cbtypes.Size = new System.Drawing.Size(248, 21);
+			cbtypes.TabIndex = 18;
+			cbtypes.SelectedIndexChanged += new EventHandler(
+				TypeSelectClick
 			);
 			//
 			// AddExtTool
 			//
-			this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
-			this.ClientSize = new System.Drawing.Size(554, 142);
-			this.Controls.Add(this.tbtype);
-			this.Controls.Add(this.cbtypes);
-			this.Controls.Add(this.button2);
-			this.Controls.Add(this.tbattr);
-			this.Controls.Add(this.tbfile);
-			this.Controls.Add(this.tbname);
-			this.Controls.Add(this.button1);
-			this.Controls.Add(this.label4);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.label1);
-			this.Font = new System.Drawing.Font(
+			AutoScaleBaseSize = new System.Drawing.Size(6, 14);
+			ClientSize = new System.Drawing.Size(554, 142);
+			Controls.Add(tbtype);
+			Controls.Add(cbtypes);
+			Controls.Add(button2);
+			Controls.Add(tbattr);
+			Controls.Add(tbfile);
+			Controls.Add(tbname);
+			Controls.Add(button1);
+			Controls.Add(label4);
+			Controls.Add(label3);
+			Controls.Add(label2);
+			Controls.Add(label1);
+			Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
-			this.Name = "AddExtTool";
-			this.ShowInTaskbar = false;
-			this.Text = "Add External Tool";
-			this.ResumeLayout(false);
+			FormBorderStyle = FormBorderStyle.FixedToolWindow;
+			Name = "AddExtTool";
+			ShowInTaskbar = false;
+			Text = "Add External Tool";
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -337,10 +337,10 @@ namespace SimPe
 		{
 			tli = null;
 
-			this.tbname.Text = Localization.Manager.GetString("Unknown");
-			this.tbtype.Text = "0xffffffff";
-			this.tbattr.Text = "{tempfile}";
-			this.tbfile.Text = "";
+			tbname.Text = Localization.Manager.GetString("Unknown");
+			tbtype.Text = "0xffffffff";
+			tbattr.Text = "{tempfile}";
+			tbfile.Text = "";
 
 			ShowDialog();
 			return tli;

@@ -21,14 +21,14 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				return this.colorBin;
+				return colorBin;
 			}
 			set
 			{
-				this.colorBin = value;
-				if (!Utility.IsNullOrEmpty(this.Materials))
+				colorBin = value;
+				if (!Utility.IsNullOrEmpty(Materials))
 				{
-					foreach (MaterialDefinitionRcol mmat in this.Materials)
+					foreach (MaterialDefinitionRcol mmat in Materials)
 					{
 						mmat.ColorBin = value;
 					}
@@ -46,10 +46,10 @@ namespace SimPe.Plugin
 			}
 			set
 			{
-				this.SetValue("product", Convert.ToUInt32(value));
+				SetValue("product", Convert.ToUInt32(value));
 				if (Convert.ToUInt32(value) > 0)
 				{
-					this.SetValue("creator", "00000000-0000-0000-0000-000000000000");
+					SetValue("creator", "00000000-0000-0000-0000-000000000000");
 				}
 			}
 		}
@@ -58,11 +58,11 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				return this.CpfItem("flags").UIntegerValue;
+				return CpfItem("flags").UIntegerValue;
 			}
 			set
 			{
-				this.CpfItem("flags").UIntegerValue = value;
+				CpfItem("flags").UIntegerValue = value;
 			}
 		}
 
@@ -74,7 +74,7 @@ namespace SimPe.Plugin
 			}
 			set
 			{
-				this.SetValue("hairtone", value.ToString());
+				SetValue("hairtone", value.ToString());
 			}
 		}
 
@@ -86,7 +86,7 @@ namespace SimPe.Plugin
 			}
 			set
 			{
-				this.SetValue("age", Convert.ToUInt32(value));
+				SetValue("age", Convert.ToUInt32(value));
 			}
 		}
 
@@ -98,7 +98,7 @@ namespace SimPe.Plugin
 			}
 			set
 			{
-				this.SetValue("gender", Convert.ToUInt32(value));
+				SetValue("gender", Convert.ToUInt32(value));
 			}
 		}
 
@@ -106,7 +106,7 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				if (this.ContainsItem("subtype"))
+				if (ContainsItem("subtype"))
 				{
 					return (TextureOverlayTypes)CpfItem("subtype").UIntegerValue;
 				}
@@ -115,7 +115,7 @@ namespace SimPe.Plugin
 			}
 			set
 			{
-				this.SetValue("subtype", Convert.ToUInt32(value));
+				SetValue("subtype", Convert.ToUInt32(value));
 			}
 		}
 
@@ -123,11 +123,11 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				if (this.ContainsItem("outfit"))
+				if (ContainsItem("outfit"))
 				{
 					return (OutfitType)CpfItem("outfit").UIntegerValue;
 				}
-				else if (this.ContainsItem("parts"))
+				else if (ContainsItem("parts"))
 				{
 					return (OutfitType)CpfItem("parts").UIntegerValue;
 				}
@@ -136,10 +136,10 @@ namespace SimPe.Plugin
 			}
 			set
 			{
-				this.SetValue("outfit", Convert.ToUInt32(value));
-				if (this.Version >= 4) // Pests?
+				SetValue("outfit", Convert.ToUInt32(value));
+				if (Version >= 4) // Pests?
 				{
-					this.SetValue("parts", Convert.ToUInt32(value));
+					SetValue("parts", Convert.ToUInt32(value));
 				}
 			}
 		}
@@ -151,11 +151,11 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				return this.CpfItem("version").UIntegerValue;
+				return CpfItem("version").UIntegerValue;
 			}
 			set
 			{
-				this.CpfItem("version").UIntegerValue = value;
+				CpfItem("version").UIntegerValue = value;
 			}
 		}
 
@@ -165,26 +165,26 @@ namespace SimPe.Plugin
 		public RecolorItem(Cpf propertySet)
 			: base(propertySet)
 		{
-			this.Materials = new RcolTable();
-			this.colorBin = (HairColor)0;
+			Materials = new RcolTable();
+			colorBin = (HairColor)0;
 		}
 
 		public RecolorItem(Cpf propertySet, RcolTable txmt)
 			: base(propertySet)
 		{
-			this.Materials = txmt;
+			Materials = txmt;
 		}
 
 		public override void CommitChanges()
 		{
 			base.CommitChanges();
-			if (this.Materials != null)
+			if (Materials != null)
 			{
-				if (!this.Enabled)
+				if (!Enabled)
 				{
-					if (!this.Pinned)
+					if (!Pinned)
 					{
-						foreach (Rcol rcol in this.Materials)
+						foreach (Rcol rcol in Materials)
 						{
 							rcol.FileDescriptor.MarkForDelete = true;
 						}
@@ -193,7 +193,7 @@ namespace SimPe.Plugin
 					}
 				}
 
-				this.Materials.SynchronizeAll();
+				Materials.SynchronizeAll();
 			}
 		}
 	}

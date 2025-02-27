@@ -38,7 +38,7 @@ namespace SimPe.Plugin.Collections
 		{
 			list = new ArrayList();
 			this.parent = parent;
-			this.Type = type;
+			Type = type;
 		}
 
 		public NgbhSlot AddNew(uint inst)
@@ -114,7 +114,7 @@ namespace SimPe.Plugin.Collections
 
 		public NgbhSlots Clone()
 		{
-			return Clone(this.parent);
+			return Clone(parent);
 		}
 
 		public NgbhSlots Clone(Ngbh newparent)
@@ -157,7 +157,7 @@ namespace SimPe.Plugin.Collections
 
 			if (create)
 			{
-				return this.AddNew(instance);
+				return AddNew(instance);
 			}
 
 			return null;

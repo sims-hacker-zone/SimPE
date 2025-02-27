@@ -46,7 +46,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 			if (Helper.WindowsRegistry.UseBigIcons)
 			{
-				this.lbsims.Font = new Font("Tahoma", 12);
+				lbsims.Font = new Font("Tahoma", 12);
 			}
 		}
 
@@ -74,56 +74,56 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(ExtSrel));
-			this.label1 = new System.Windows.Forms.Label();
-			this.lbsims = new System.Windows.Forms.Label();
-			this.sc = new CommonSrel();
-			this.pb = new System.Windows.Forms.PictureBox();
-			((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
-			this.SuspendLayout();
+			label1 = new System.Windows.Forms.Label();
+			lbsims = new System.Windows.Forms.Label();
+			sc = new CommonSrel();
+			pb = new System.Windows.Forms.PictureBox();
+			((System.ComponentModel.ISupportInitialize)(pb)).BeginInit();
+			SuspendLayout();
 			//
 			// label1
 			//
-			this.label1.AutoEllipsis = true;
-			this.label1.BackColor = Color.Transparent;
-			resources.ApplyResources(this.label1, "label1");
-			this.label1.Name = "label1";
+			label1.AutoEllipsis = true;
+			label1.BackColor = Color.Transparent;
+			resources.ApplyResources(label1, "label1");
+			label1.Name = "label1";
 			//
 			// lbsims
 			//
-			resources.ApplyResources(this.lbsims, "lbsims");
-			this.lbsims.BackColor = Color.Transparent;
-			this.lbsims.Name = "lbsims";
+			resources.ApplyResources(lbsims, "lbsims");
+			lbsims.BackColor = Color.Transparent;
+			lbsims.Name = "lbsims";
 			//
 			// sc
 			//
-			resources.ApplyResources(this.sc, "sc");
-			this.sc.BackColor = Color.Transparent;
-			this.sc.Name = "sc";
-			this.sc.Srel = null;
+			resources.ApplyResources(sc, "sc");
+			sc.BackColor = Color.Transparent;
+			sc.Name = "sc";
+			sc.Srel = null;
 			//
 			// pb
 			//
-			this.pb.BackColor = Color.Transparent;
-			resources.ApplyResources(this.pb, "pb");
-			this.pb.Name = "pb";
-			this.pb.TabStop = false;
+			pb.BackColor = Color.Transparent;
+			resources.ApplyResources(pb, "pb");
+			pb.Name = "pb";
+			pb.TabStop = false;
 			//
 			// ExtSrel
 			//
-			this.Controls.Add(this.pb);
-			this.Controls.Add(this.label1);
-			this.Controls.Add(this.sc);
-			this.Controls.Add(this.lbsims);
+			Controls.Add(pb);
+			Controls.Add(label1);
+			Controls.Add(sc);
+			Controls.Add(lbsims);
 			resources.ApplyResources(this, "$this");
-			this.Name = "ExtSrel";
-			this.Commited += new System.EventHandler(this.ExtSrel_Commited);
-			this.Controls.SetChildIndex(this.lbsims, 0);
-			this.Controls.SetChildIndex(this.sc, 0);
-			this.Controls.SetChildIndex(this.label1, 0);
-			this.Controls.SetChildIndex(this.pb, 0);
-			((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
-			this.ResumeLayout(false);
-			this.PerformLayout();
+			Name = "ExtSrel";
+			Commited += new System.EventHandler(ExtSrel_Commited);
+			Controls.SetChildIndex(lbsims, 0);
+			Controls.SetChildIndex(sc, 0);
+			Controls.SetChildIndex(label1, 0);
+			Controls.SetChildIndex(pb, 0);
+			((System.ComponentModel.ISupportInitialize)(pb)).EndInit();
+			ResumeLayout(false);
+			PerformLayout();
 		}
 		#endregion
 
@@ -132,15 +132,15 @@ namespace SimPe.PackedFiles.UserInterface
 		protected override void RefreshGUI()
 		{
 			base.RefreshGUI();
-			sc.Srel = this.Srel;
+			sc.Srel = Srel;
 
-			this.lbsims.Text =
+			lbsims.Text =
 				sc.SourceSimName
 				+ " "
 				+ Localization.GetString("towards")
 				+ " "
 				+ sc.TargetSimName;
-			this.pb.Image = Ambertation.Drawing.GraphicRoutines.ScaleImage(
+			pb.Image = Ambertation.Drawing.GraphicRoutines.ScaleImage(
 				sc.Image,
 				pb.Size,
 				true

@@ -16,46 +16,46 @@ namespace SimPe.Plugin.UI
 		{
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
-			this.BuildProxyItemList();
-			this.Text = "Hair";
+			BuildProxyItemList();
+			Text = "Hair";
 		}
 
 		void BuildProxyItemList()
 		{
 			Array values = Enum.GetValues(typeof(HairColor));
-			this.SuspendLayout();
+			SuspendLayout();
 			int i = -1;
-			this.cbDefaultProxy.Items.Add("<unchanged>");
+			cbDefaultProxy.Items.Add("<unchanged>");
 			while (++i < values.Length - 2)
 			{
 				HairColor key = (HairColor)values.GetValue(i);
-				this.cbDefaultProxy.Items.Add(key);
+				cbDefaultProxy.Items.Add(key);
 			}
-			this.cbDefaultProxy.SelectedIndex = 0;
-			this.ResumeLayout();
+			cbDefaultProxy.SelectedIndex = 0;
+			ResumeLayout();
 		}
 
 		protected override void OnSettingsChanged()
 		{
-			if (this.Settings is HairtoneSettings)
+			if (Settings is HairtoneSettings)
 			{
-				HairtoneSettings hset = (HairtoneSettings)this.Settings;
-				this.SetProxyGuid(hset.DefaultProxy);
+				HairtoneSettings hset = (HairtoneSettings)Settings;
+				SetProxyGuid(hset.DefaultProxy);
 			}
 		}
 
 		public override void OnCommitSettings()
 		{
-			if (this.Settings is HairtoneSettings)
+			if (Settings is HairtoneSettings)
 			{
-				HairtoneSettings hset = (HairtoneSettings)this.Settings;
-				if (this.cbDefaultProxy.SelectedIndex == 0)
+				HairtoneSettings hset = (HairtoneSettings)Settings;
+				if (cbDefaultProxy.SelectedIndex == 0)
 				{
 					hset.DefaultProxy = Guid.Empty;
 				}
 				else
 				{
-					object key = this.cbDefaultProxy.SelectedItem;
+					object key = cbDefaultProxy.SelectedItem;
 					hset.DefaultProxy = new Guid(
 						Convert.ToUInt32(key),
 						0,
@@ -78,14 +78,14 @@ namespace SimPe.Plugin.UI
 			if (id != Guid.Empty)
 			{
 				uint index = BitConverter.ToUInt32(id.ToByteArray(), 0); // dirty trick
-				if (index < this.cbDefaultProxy.Items.Count)
+				if (index < cbDefaultProxy.Items.Count)
 				{
-					this.cbDefaultProxy.SelectedIndex = (int)index;
+					cbDefaultProxy.SelectedIndex = (int)index;
 				}
 			}
 			else
 			{
-				this.cbDefaultProxy.SelectedIndex = 0;
+				cbDefaultProxy.SelectedIndex = 0;
 			}
 		}
 
@@ -96,50 +96,50 @@ namespace SimPe.Plugin.UI
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.cbDefaultProxy = new ComboBox();
-			this.label1 = new Label();
-			this.pnackground = new Panel();
-			this.pnackground.SuspendLayout();
-			this.SuspendLayout();
+			cbDefaultProxy = new ComboBox();
+			label1 = new Label();
+			pnackground = new Panel();
+			pnackground.SuspendLayout();
+			SuspendLayout();
 			//
 			// cbDefaultProxy
 			//
-			this.cbDefaultProxy.DropDownStyle =
+			cbDefaultProxy.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbDefaultProxy.Location = new System.Drawing.Point(40, 58);
-			this.cbDefaultProxy.Name = "cbDefaultProxy";
-			this.cbDefaultProxy.Size = new System.Drawing.Size(146, 21);
-			this.cbDefaultProxy.TabIndex = 13;
+			cbDefaultProxy.Location = new System.Drawing.Point(40, 58);
+			cbDefaultProxy.Name = "cbDefaultProxy";
+			cbDefaultProxy.Size = new System.Drawing.Size(146, 21);
+			cbDefaultProxy.TabIndex = 13;
 			//
 			// label1
 			//
-			this.label1.AutoSize = true;
-			this.label1.BackColor = System.Drawing.Color.Transparent;
-			this.label1.Location = new System.Drawing.Point(37, 28);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(134, 13);
-			this.label1.TabIndex = 12;
-			this.label1.Text = "Proxy for Unbinned colours";
+			label1.AutoSize = true;
+			label1.BackColor = System.Drawing.Color.Transparent;
+			label1.Location = new System.Drawing.Point(37, 28);
+			label1.Name = "label1";
+			label1.Size = new System.Drawing.Size(134, 13);
+			label1.TabIndex = 12;
+			label1.Text = "Proxy for Unbinned colours";
 			//
 			// pnackground
 			//
-			this.pnackground.Controls.Add(this.cbDefaultProxy);
-			this.pnackground.Controls.Add(this.label1);
-			this.pnackground.Dock = DockStyle.Fill;
-			this.pnackground.Location = new System.Drawing.Point(0, 0);
-			this.pnackground.Name = "pnackground";
-			this.pnackground.Size = new System.Drawing.Size(515, 186);
-			this.pnackground.TabIndex = 14;
+			pnackground.Controls.Add(cbDefaultProxy);
+			pnackground.Controls.Add(label1);
+			pnackground.Dock = DockStyle.Fill;
+			pnackground.Location = new System.Drawing.Point(0, 0);
+			pnackground.Name = "pnackground";
+			pnackground.Size = new System.Drawing.Size(515, 186);
+			pnackground.TabIndex = 14;
 			//
 			// HairtonePreferences
 			//
-			this.ClientSize = new System.Drawing.Size(515, 186);
-			this.Controls.Add(this.pnackground);
-			this.Name = "HairtonePreferences";
-			this.pnackground.ResumeLayout(false);
-			this.pnackground.PerformLayout();
-			this.ResumeLayout(false);
+			ClientSize = new System.Drawing.Size(515, 186);
+			Controls.Add(pnackground);
+			Name = "HairtonePreferences";
+			pnackground.ResumeLayout(false);
+			pnackground.PerformLayout();
+			ResumeLayout(false);
 		}
 		#endregion
 	}

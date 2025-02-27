@@ -37,23 +37,23 @@ namespace Ambertation.Windows.Forms
 		public XPTaskBoxSimple()
 		{
 			headerh = 22;
-			this.mstrHeaderText = "";
-			this.InitializeComponent();
-			this.SetStyle(ControlStyles.ResizeRedraw, true);
-			this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
-			this.SetStyle(ControlStyles.UserPaint, true);
-			this.SetStyle(ControlStyles.DoubleBuffer, true);
-			this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
-			this.SetStyle(ControlStyles.ContainerControl, true);
+			mstrHeaderText = "";
+			InitializeComponent();
+			SetStyle(ControlStyles.ResizeRedraw, true);
+			SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+			SetStyle(ControlStyles.UserPaint, true);
+			SetStyle(ControlStyles.DoubleBuffer, true);
+			SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+			SetStyle(ControlStyles.ContainerControl, true);
 			base.BackColor = Color.Transparent;
 
-			this.bc = SystemColors.Window;
-			this.lhc = SystemColors.InactiveCaption;
-			this.rhc = SystemColors.Highlight;
-			this.bodc = SystemColors.InactiveCaptionText;
-			this.htc = SystemColors.ActiveCaptionText;
+			bc = SystemColors.Window;
+			lhc = SystemColors.InactiveCaption;
+			rhc = SystemColors.Highlight;
+			bodc = SystemColors.InactiveCaptionText;
+			htc = SystemColors.ActiveCaptionText;
 
-			this.font = new Font(
+			font = new Font(
 				base.Font.Name,
 				base.Font.Size + 2,
 				FontStyle.Bold,
@@ -80,7 +80,7 @@ namespace Ambertation.Windows.Forms
 				if (lhc != value)
 				{
 					lhc = value;
-					this.Invalidate();
+					Invalidate();
 				}
 			}
 		}
@@ -96,7 +96,7 @@ namespace Ambertation.Windows.Forms
 				if (rhc != value)
 				{
 					rhc = value;
-					this.Invalidate();
+					Invalidate();
 				}
 			}
 		}
@@ -112,7 +112,7 @@ namespace Ambertation.Windows.Forms
 				if (bc != value)
 				{
 					bc = value;
-					this.Invalidate();
+					Invalidate();
 				}
 			}
 		}
@@ -128,7 +128,7 @@ namespace Ambertation.Windows.Forms
 				if (htc != value)
 				{
 					htc = value;
-					this.Invalidate();
+					Invalidate();
 				}
 			}
 		}
@@ -144,7 +144,7 @@ namespace Ambertation.Windows.Forms
 				if (bodc != value)
 				{
 					bodc = value;
-					this.Invalidate();
+					Invalidate();
 				}
 			}
 		}
@@ -161,14 +161,14 @@ namespace Ambertation.Windows.Forms
 				if (font != value)
 				{
 					font = value;
-					this.Invalidate();
+					Invalidate();
 				}
 			}
 		}
 
 		protected override void Dispose(bool disposing)
 		{
-			if (disposing && (this.components != null))
+			if (disposing && (components != null))
 			{
 				if (canvas != null)
 				{
@@ -176,7 +176,7 @@ namespace Ambertation.Windows.Forms
 				}
 
 				canvas = null;
-				this.components.Dispose();
+				components.Dispose();
 			}
 			base.Dispose(disposing);
 		}
@@ -184,15 +184,15 @@ namespace Ambertation.Windows.Forms
 		[DebuggerStepThrough]
 		private void InitializeComponent()
 		{
-			this.components = new Container();
+			components = new Container();
 
 			Size size1 = new Size(0x10, 0x10);
 
-			this.DockPadding.Bottom = 4;
-			this.DockPadding.Left = 4;
-			this.DockPadding.Right = 4;
-			this.DockPadding.Top = 0x2c;
-			this.Name = "XPTaskBoxSimple";
+			DockPadding.Bottom = 4;
+			DockPadding.Left = 4;
+			DockPadding.Right = 4;
+			DockPadding.Top = 0x2c;
+			Name = "XPTaskBoxSimple";
 		}
 
 		private void mThemeFormat_PropertyChanged(
@@ -200,7 +200,7 @@ namespace Ambertation.Windows.Forms
 			PropertyChangedEventArgs e
 		)
 		{
-			this.Invalidate();
+			Invalidate();
 		}
 
 		Size icsz;
@@ -246,29 +246,29 @@ namespace Ambertation.Windows.Forms
 				canvas.Dispose();
 			}
 
-			if (this.Width <= 7 || this.Height <= headerh + 21)
+			if (Width <= 7 || Height <= headerh + 21)
 			{
 				canvas = null;
 				return;
 			}
-			canvas = new Bitmap(this.Width, this.Height);
+			canvas = new Bitmap(Width, Height);
 			System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(canvas);
 			Rectangle ef4;
 			g.SmoothingMode = SmoothingMode.HighQuality;
-			Rectangle ef3 = new Rectangle(0, 16, this.Width - 1, headerh);
+			Rectangle ef3 = new Rectangle(0, 16, Width - 1, headerh);
 			Rectangle ef3b = new Rectangle(
 				3,
 				ef3.Bottom,
-				this.Width - 7,
-				this.Height - ef3.Bottom - 4
+				Width - 7,
+				Height - ef3.Bottom - 4
 			);
 			Rectangle ef2 = new Rectangle(
 				0,
 				16 + headerh + 2,
-				this.Width - 1,
-				(this.Height - 16 + headerh + 3)
+				Width - 1,
+				(Height - 16 + headerh + 3)
 			);
-			Rectangle ef1 = new Rectangle(0, 16, this.Width - 1, (this.Height - 0x11));
+			Rectangle ef1 = new Rectangle(0, 16, Width - 1, (Height - 0x11));
 			GraphicsPath path = new GraphicsPath();
 			LinearGradientBrush brush1 = new LinearGradientBrush(
 				ef3,
@@ -292,7 +292,7 @@ namespace Ambertation.Windows.Forms
 
 			path = Drawing.GraphicRoutines.GethRoundRectPath(ef1, 7);
 			g.DrawPath(borderpen, path);
-			if (this.mIcon != null)
+			if (mIcon != null)
 			{
 				Size size1 = mIcon.Size;
 				Rectangle rectangle1 = new Rectangle(IconLocation, size1);
@@ -306,18 +306,18 @@ namespace Ambertation.Windows.Forms
 				ef4 = new Rectangle(
 					8 + size1.Width + IconLocation.X,
 					16,
-					(this.Width - (size1.Width + IconLocation.X)),
+					(Width - (size1.Width + IconLocation.X)),
 					headerh
 				);
 			}
 			else
 			{
-				ef4 = new Rectangle(8, 16, (this.Width - 0x18), headerh);
+				ef4 = new Rectangle(8, 16, (Width - 0x18), headerh);
 			}
 			g.DrawString(
-				this.mstrHeaderText,
-				this.HeaderFont,
-				new SolidBrush(this.HeaderTextColor),
+				mstrHeaderText,
+				HeaderFont,
+				new SolidBrush(HeaderTextColor),
 				ef4,
 				format1
 			);
@@ -373,12 +373,12 @@ namespace Ambertation.Windows.Forms
 		{
 			get
 			{
-				return this.mstrHeaderText;
+				return mstrHeaderText;
 			}
 			set
 			{
-				this.mstrHeaderText = value;
-				this.Invalidate();
+				mstrHeaderText = value;
+				Invalidate();
 			}
 		}
 
@@ -392,12 +392,12 @@ namespace Ambertation.Windows.Forms
 		{
 			get
 			{
-				return this.mIcon;
+				return mIcon;
 			}
 			set
 			{
-				this.mIcon = value;
-				this.Invalidate();
+				mIcon = value;
+				Invalidate();
 			}
 		}
 
@@ -418,12 +418,12 @@ namespace Ambertation.Windows.Forms
 			set
 			{
 				headerh = value;
-				this.Invalidate();
+				Invalidate();
 			}
 		}
 
 		[Browsable(false), Description("returns the usable region as Rectangle")]
-		internal Rectangle WorkspaceRect => new Rectangle(3, 0x29, this.Width - 7, (this.Height - 40) - 4);
+		internal Rectangle WorkspaceRect => new Rectangle(3, 0x29, Width - 7, (Height - 40) - 4);
 
 		// Fields
 		private IContainer components;

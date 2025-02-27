@@ -45,7 +45,7 @@ namespace SimPe.Cache
 		/// <param name="filename">The Name of the File</param>
 		public ScannerItem LoadItem(string filename)
 		{
-			CacheContainer mycc = this.UseConatiner(ContainerType.Package, filename);
+			CacheContainer mycc = UseConatiner(ContainerType.Package, filename);
 
 			if (mycc.Items.Count == 0)
 			{

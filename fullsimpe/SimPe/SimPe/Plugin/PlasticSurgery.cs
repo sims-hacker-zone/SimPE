@@ -41,7 +41,7 @@ namespace SimPe.Plugin
 
 			this.spatient = spatient;
 			this.sarchetype = sarchetype;
-			this.fromTemplate = (this.sarchetype == null);
+			fromTemplate = (this.sarchetype == null);
 		}
 
 		/// <summary>
@@ -87,7 +87,7 @@ namespace SimPe.Plugin
 			};
 			list.AddRange(MetaData.RcolList);
 
-			uint hashgroup = this.GetPatientHash();
+			uint hashgroup = GetPatientHash();
 
 			foreach (IPackedFileDescriptor pfd in archetype.Index)
 			{
@@ -138,7 +138,7 @@ namespace SimPe.Plugin
 			}
 
 			list.Add((uint)0xE86B1EEF); //make sure the compressed Directory won't be copied!
-			if (this.fromTemplate)
+			if (fromTemplate)
 			{
 				list.Remove(0x534C4F54u); //SLOT file must remain
 				list.Remove(0x856DDBACu); // same with IMG
@@ -174,7 +174,7 @@ namespace SimPe.Plugin
 			*
 			*/
 			IPackedFileDescriptor dna = null;
-			if (!this.fromTemplate)
+			if (!fromTemplate)
 			{
 				dna = ngbh.FindFile(
 					0xEBFEE33F,
@@ -185,18 +185,18 @@ namespace SimPe.Plugin
 			}
 			else
 			{
-				string skintone = this.GetCpfProperty(
-					this.archetype,
+				string skintone = GetCpfProperty(
+					archetype,
 					MetaData.GZPS,
 					"skintone"
 				);
-				string hairtone = this.GetCpfProperty(
-					this.archetype,
+				string hairtone = GetCpfProperty(
+					archetype,
 					MetaData.GZPS,
 					"hairtone"
 				);
-				string eyecolor = this.GetCpfProperty(
-					this.archetype,
+				string eyecolor = GetCpfProperty(
+					archetype,
 					0xAC598EAC,
 					"eyecolor"
 				);
@@ -211,16 +211,16 @@ namespace SimPe.Plugin
 				Cpf cpf = new Cpf();
 				cpf.ProcessData(dna, ngbh);
 
-				this.AddCpfItem(cpf, "2", skintone);
-				this.AddCpfItem(cpf, "6", skintone);
-				this.AddCpfItem(cpf, "268435462", skintone);
-				this.AddCpfItem(cpf, "268435458", skintone);
+				AddCpfItem(cpf, "2", skintone);
+				AddCpfItem(cpf, "6", skintone);
+				AddCpfItem(cpf, "268435462", skintone);
+				AddCpfItem(cpf, "268435458", skintone);
 
-				this.AddCpfItem(cpf, "1", hairtone);
-				this.AddCpfItem(cpf, "268435457", hairtone);
+				AddCpfItem(cpf, "1", hairtone);
+				AddCpfItem(cpf, "268435457", hairtone);
 
-				this.AddCpfItem(cpf, "3", eyecolor);
-				this.AddCpfItem(cpf, "268435459", eyecolor);
+				AddCpfItem(cpf, "3", eyecolor);
+				AddCpfItem(cpf, "268435459", eyecolor);
 
 				cpf.SynchronizeUserData();
 			}
@@ -274,7 +274,7 @@ namespace SimPe.Plugin
 
 			if (arcTargetRef != null && patSourceRef != null)
 			{
-				RefFileItem[] pcItems = this.GetClothingItems(patSourceRef, patient);
+				RefFileItem[] pcItems = GetClothingItems(patSourceRef, patient);
 				if (pcItems == null || pcItems.Length == 0)
 				{
 					// cascade fatal error
@@ -684,7 +684,7 @@ namespace SimPe.Plugin
 											name += "_txtr";
 										}
 
-										name = this.FindTxtrName(name);
+										name = FindTxtrName(name);
 
 										if (i != 0)
 										{
@@ -714,7 +714,7 @@ namespace SimPe.Plugin
 		/// <returns>the new Package for the patient Sim</returns>
 		public Packages.GeneratableFile CloneSkinTone(Hashtable skinfiles)
 		{
-			string askin = GetSkintone(this.archetype);
+			string askin = GetSkintone(archetype);
 			return CloneSkinTone(askin, skinfiles);
 		}
 
@@ -731,7 +731,7 @@ namespace SimPe.Plugin
 		{
 			Packages.GeneratableFile ret =
 				Packages.File.LoadFromFile((string)null);
-			string pskin = GetSkintone(this.patient);
+			string pskin = GetSkintone(patient);
 
 			ArrayList list = new ArrayList
 			{
@@ -824,7 +824,7 @@ namespace SimPe.Plugin
 				rcol.ProcessData(pfd, ret);
 
 				MaterialDefinition md = (MaterialDefinition)rcol.Blocks[0];
-				this.UpdateSkintone(md, skin, skinfiles);
+				UpdateSkintone(md, skin, skinfiles);
 
 				rcol.SynchronizeUserData();
 			}
@@ -849,7 +849,7 @@ namespace SimPe.Plugin
 				(uint)0xCCCEF852 //LxNR, Face
 			};
 
-			uint hashgroup = this.GetPatientHash();
+			uint hashgroup = GetPatientHash();
 
 			foreach (IPackedFileDescriptor pfd in archetype.Index)
 			{
@@ -941,7 +941,7 @@ namespace SimPe.Plugin
 			string gender = md.FindProperty("paramGender").Value;
 
 			//find a matching Package in the arechtype
-			IPackedFileDescriptor[] pfds = this.archetype.FindFiles(
+			IPackedFileDescriptor[] pfds = archetype.FindFiles(
 				MetaData.TXMT
 			);
 			Rcol atxmt = new GenericRcol(null, false);
@@ -949,7 +949,7 @@ namespace SimPe.Plugin
 
 			foreach (IPackedFileDescriptor pfd in pfds)
 			{
-				atxmt.ProcessData(pfd, this.archetype);
+				atxmt.ProcessData(pfd, archetype);
 
 				amd = (MaterialDefinition)atxmt.Blocks[0];
 				if (
@@ -1002,7 +1002,7 @@ namespace SimPe.Plugin
 						name += "_txtr";
 					}
 
-					name = this.FindTxtrName(name);
+					name = FindTxtrName(name);
 
 					if (i != 0)
 					{
@@ -1082,7 +1082,7 @@ namespace SimPe.Plugin
 				rcol.ProcessData(pfd, ret);
 
 				MaterialDefinition md = (MaterialDefinition)rcol.Blocks[0];
-				this.UpdateMakeup(md, eyecolor, makeups);
+				UpdateMakeup(md, eyecolor, makeups);
 
 				rcol.SynchronizeUserData();
 			}
@@ -1091,7 +1091,7 @@ namespace SimPe.Plugin
 			{
 				string eyecolorGuid1 = null;
 				string eyecolorGuid2 = null;
-				if (!this.fromTemplate)
+				if (!fromTemplate)
 				{
 					IPackedFileDescriptor adna = ngbh.FindFile(
 						0xEBFEE33F,
@@ -1108,8 +1108,8 @@ namespace SimPe.Plugin
 				}
 				else
 				{
-					eyecolorGuid1 = this.GetCpfProperty(
-						this.archetype,
+					eyecolorGuid1 = GetCpfProperty(
+						archetype,
 						0xAC598EAC,
 						"eyecolor"
 					);

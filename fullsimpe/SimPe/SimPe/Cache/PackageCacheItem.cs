@@ -156,15 +156,15 @@ namespace SimPe.Cache
 
 		public PackageState(uint uid, TriState state, string info)
 		{
-			this.Uid = uid;
-			this.State = state;
-			this.Info = info;
-			this.data = new uint[0];
+			Uid = uid;
+			State = state;
+			Info = info;
+			data = new uint[0];
 		}
 
 		internal PackageState()
 		{
-			this.State = TriState.Null;
+			State = TriState.Null;
 			Info = "";
 		}
 
@@ -284,7 +284,7 @@ namespace SimPe.Cache
 			return base.Contains(item);
 		}
 
-		public int Length => this.Count;
+		public int Length => Count;
 
 		public override object Clone()
 		{

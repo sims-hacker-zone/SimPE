@@ -51,7 +51,7 @@ namespace SimPe.Plugin.TabPage
 			//
 			InitializeComponent();
 
-			this.UseVisualStyleBackColor = true;
+			UseVisualStyleBackColor = true;
 		}
 
 		/// <summary>
@@ -77,30 +77,30 @@ namespace SimPe.Plugin.TabPage
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.linkLabel4 = new LinkLabel();
-			this.linkLabel3 = new LinkLabel();
-			this.tblistfile = new TextBox();
-			this.label6 = new Label();
-			this.lbfl = new ListBox();
-			this.SuspendLayout();
+			linkLabel4 = new LinkLabel();
+			linkLabel3 = new LinkLabel();
+			tblistfile = new TextBox();
+			label6 = new Label();
+			lbfl = new ListBox();
+			SuspendLayout();
 			//
 			// tMaterialDefinitionFiles
 			//
-			this.BackColor = System.Drawing.Color.White;
-			this.Controls.Add(this.linkLabel4);
-			this.Controls.Add(this.linkLabel3);
-			this.Controls.Add(this.tblistfile);
-			this.Controls.Add(this.label6);
-			this.Controls.Add(this.lbfl);
-			this.Location = new System.Drawing.Point(4, 22);
-			this.Name = "tMaterialDefinitionFiles";
-			this.Size = new System.Drawing.Size(744, 238);
-			this.TabIndex = 1;
-			this.Text = "File List";
+			BackColor = System.Drawing.Color.White;
+			Controls.Add(linkLabel4);
+			Controls.Add(linkLabel3);
+			Controls.Add(tblistfile);
+			Controls.Add(label6);
+			Controls.Add(lbfl);
+			Location = new System.Drawing.Point(4, 22);
+			Name = "tMaterialDefinitionFiles";
+			Size = new System.Drawing.Size(744, 238);
+			TabIndex = 1;
+			Text = "File List";
 			//
 			// linkLabel4
 			//
-			this.linkLabel4.Anchor = (
+			linkLabel4.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -108,26 +108,26 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.linkLabel4.AutoSize = true;
-			this.linkLabel4.Font = new System.Drawing.Font(
+			linkLabel4.AutoSize = true;
+			linkLabel4.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.linkLabel4.Location = new System.Drawing.Point(656, 56);
-			this.linkLabel4.Name = "linkLabel4";
-			this.linkLabel4.Size = new System.Drawing.Size(28, 17);
-			this.linkLabel4.TabIndex = 8;
-			this.linkLabel4.TabStop = true;
-			this.linkLabel4.Text = "add";
-			this.linkLabel4.LinkClicked +=
-				new LinkLabelLinkClickedEventHandler(this.Add);
+			linkLabel4.Location = new System.Drawing.Point(656, 56);
+			linkLabel4.Name = "linkLabel4";
+			linkLabel4.Size = new System.Drawing.Size(28, 17);
+			linkLabel4.TabIndex = 8;
+			linkLabel4.TabStop = true;
+			linkLabel4.Text = "add";
+			linkLabel4.LinkClicked +=
+				new LinkLabelLinkClickedEventHandler(Add);
 			//
 			// linkLabel3
 			//
-			this.linkLabel3.Anchor = (
+			linkLabel3.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -135,26 +135,26 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.linkLabel3.AutoSize = true;
-			this.linkLabel3.Font = new System.Drawing.Font(
+			linkLabel3.AutoSize = true;
+			linkLabel3.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.linkLabel3.Location = new System.Drawing.Point(692, 56);
-			this.linkLabel3.Name = "linkLabel3";
-			this.linkLabel3.Size = new System.Drawing.Size(44, 17);
-			this.linkLabel3.TabIndex = 7;
-			this.linkLabel3.TabStop = true;
-			this.linkLabel3.Text = "delete";
-			this.linkLabel3.LinkClicked +=
-				new LinkLabelLinkClickedEventHandler(this.Delete);
+			linkLabel3.Location = new System.Drawing.Point(692, 56);
+			linkLabel3.Name = "linkLabel3";
+			linkLabel3.Size = new System.Drawing.Size(44, 17);
+			linkLabel3.TabIndex = 7;
+			linkLabel3.TabStop = true;
+			linkLabel3.Text = "delete";
+			linkLabel3.LinkClicked +=
+				new LinkLabelLinkClickedEventHandler(Delete);
 			//
 			// tblistfile
 			//
-			this.tblistfile.Anchor = (
+			tblistfile.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -164,39 +164,39 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.tblistfile.Font = new System.Drawing.Font(
+			tblistfile.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tblistfile.Location = new System.Drawing.Point(440, 24);
-			this.tblistfile.Name = "tblistfile";
-			this.tblistfile.Size = new System.Drawing.Size(296, 21);
-			this.tblistfile.TabIndex = 6;
-			this.tblistfile.Text = "";
-			this.tblistfile.TextChanged += new EventHandler(this.ChangeListFile);
+			tblistfile.Location = new System.Drawing.Point(440, 24);
+			tblistfile.Name = "tblistfile";
+			tblistfile.Size = new System.Drawing.Size(296, 21);
+			tblistfile.TabIndex = 6;
+			tblistfile.Text = "";
+			tblistfile.TextChanged += new EventHandler(ChangeListFile);
 			//
 			// label6
 			//
-			this.label6.AutoSize = true;
-			this.label6.Font = new System.Drawing.Font(
+			label6.AutoSize = true;
+			label6.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label6.Location = new System.Drawing.Point(432, 8);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(67, 17);
-			this.label6.TabIndex = 5;
-			this.label6.Text = "Filename:";
+			label6.Location = new System.Drawing.Point(432, 8);
+			label6.Name = "label6";
+			label6.Size = new System.Drawing.Size(67, 17);
+			label6.TabIndex = 5;
+			label6.Text = "Filename:";
 			//
 			// lbfl
 			//
-			this.lbfl.Anchor = (
+			lbfl.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -206,19 +206,19 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.lbfl.HorizontalScrollbar = true;
-			this.lbfl.IntegralHeight = false;
-			this.lbfl.Location = new System.Drawing.Point(8, 8);
-			this.lbfl.Name = "lbfl";
-			this.lbfl.Size = new System.Drawing.Size(416, 224);
-			this.lbfl.TabIndex = 4;
-			this.lbfl.SelectedIndexChanged += new EventHandler(
-				this.SelectListFile
+			lbfl.HorizontalScrollbar = true;
+			lbfl.IntegralHeight = false;
+			lbfl.Location = new System.Drawing.Point(8, 8);
+			lbfl.Name = "lbfl";
+			lbfl.Size = new System.Drawing.Size(416, 224);
+			lbfl.TabIndex = 4;
+			lbfl.SelectedIndexChanged += new EventHandler(
+				SelectListFile
 			);
 			//
 			// MatdForm
 			//
-			this.ResumeLayout(false);
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -254,7 +254,7 @@ namespace SimPe.Plugin.TabPage
 
 		private void ChangeListFile(object sender, EventArgs e)
 		{
-			if (this.Tag == null)
+			if (Tag == null)
 			{
 				return;
 			}
@@ -275,7 +275,7 @@ namespace SimPe.Plugin.TabPage
 				lbfl.Items[lbfl.SelectedIndex] = tblistfile.Text;
 
 				Plugin.MaterialDefinition md = (Plugin.MaterialDefinition)
-					this.Tag;
+					Tag;
 				md.Listing[lbfl.SelectedIndex] = tblistfile.Text;
 
 				md.Changed = true;
@@ -292,7 +292,7 @@ namespace SimPe.Plugin.TabPage
 			LinkLabelLinkClickedEventArgs e
 		)
 		{
-			if (this.Tag == null)
+			if (Tag == null)
 			{
 				return;
 			}
@@ -303,7 +303,7 @@ namespace SimPe.Plugin.TabPage
 			}
 
 			Plugin.MaterialDefinition md = (Plugin.MaterialDefinition)
-				this.Tag;
+				Tag;
 			md.Listing = (string[])
 				Helper.Delete(md.Listing, lbfl.Items[lbfl.SelectedIndex]);
 
@@ -317,7 +317,7 @@ namespace SimPe.Plugin.TabPage
 			LinkLabelLinkClickedEventArgs e
 		)
 		{
-			if (this.Tag == null)
+			if (Tag == null)
 			{
 				return;
 			}
@@ -326,7 +326,7 @@ namespace SimPe.Plugin.TabPage
 			lbfl.SelectedIndex = lbfl.Items.Count - 1;
 
 			Plugin.MaterialDefinition md = (Plugin.MaterialDefinition)
-				this.Tag;
+				Tag;
 			md.Listing = (string[])Helper.Add(md.Listing, tblistfile.Text);
 
 			md.Changed = true;

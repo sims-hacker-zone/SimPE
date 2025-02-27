@@ -161,7 +161,7 @@ namespace SimPe.Plugin.Anim
 			get
 			{
 				short tc = short.MaxValue;
-				for (int i = 0; i < this.Count; i++)
+				for (int i = 0; i < Count; i++)
 				{
 					tc = Math.Min(tc, GetTimeCode(i));
 				}
@@ -184,7 +184,7 @@ namespace SimPe.Plugin.Anim
 			get
 			{
 				short tc = 0;
-				for (int i = 0; i < this.Count; i++)
+				for (int i = 0; i < Count; i++)
 				{
 					tc = Math.Max(tc, GetTimeCode(i));
 				}
@@ -251,13 +251,13 @@ namespace SimPe.Plugin.Anim
 		public AnimationAxisTransformBlock CloneBase()
 		{
 			AnimationAxisTransformBlock ab = new AnimationAxisTransformBlock(null);
-			ab.datai = (uint[])this.datai.Clone();
+			ab.datai = (uint[])datai.Clone();
 			foreach (AnimationAxisTransform aat in items)
 			{
 				ab.Add(aat.CloneBase());
 			}
 
-			ab.type = this.type;
+			ab.type = type;
 
 			return ab;
 		}
@@ -266,10 +266,10 @@ namespace SimPe.Plugin.Anim
 		{
 			items = new ArrayList();
 			datai = new uint[2];
-			this.Parent = parent;
+			Parent = parent;
 
-			this.Type = AnimationTokenType.SixByte;
-			this.Unknown1Bits = 0;
+			Type = AnimationTokenType.SixByte;
+			Unknown1Bits = 0;
 		}
 
 		/// <summary>
@@ -288,7 +288,7 @@ namespace SimPe.Plugin.Anim
 		/// <param name="writer">The Stream that receives the Data</param>
 		internal void SerializeData(System.IO.BinaryWriter writer)
 		{
-			SetCount(items.Count * this.TokenSize);
+			SetCount(items.Count * TokenSize);
 			writer.Write(datai[0]);
 			writer.Write(datai[1]);
 		}
@@ -299,7 +299,7 @@ namespace SimPe.Plugin.Anim
 		/// <param name="reader">The Stream that contains the FileData</param>
 		internal void UnserializeAddonData(System.IO.BinaryReader reader)
 		{
-			int ct = GetCount() / this.TokenSize;
+			int ct = GetCount() / TokenSize;
 
 			for (int i = 0; i < ct; i++)
 			{
@@ -316,7 +316,7 @@ namespace SimPe.Plugin.Anim
 		internal void SerializeAddonData(System.IO.BinaryWriter writer)
 		{
 			//this.Sort();
-			for (int i = 0; i < this.Count; i++)
+			for (int i = 0; i < Count; i++)
 			{
 				((AnimationAxisTransform)items[i]).SerializeData(writer);
 			}
@@ -324,7 +324,7 @@ namespace SimPe.Plugin.Anim
 
 		public override string ToString()
 		{
-			string n = this.Type.ToString();
+			string n = Type.ToString();
 			if (n.Length > 4)
 			{
 				n = n.Substring(0, n.Length - 4);
@@ -332,9 +332,9 @@ namespace SimPe.Plugin.Anim
 
 			string s = n + ": ";
 
-			s += this.TokenSize.ToString() + " " + this.Unknown1Bits.ToString();
+			s += TokenSize.ToString() + " " + Unknown1Bits.ToString();
 			s += " (" + Count.ToString();
-			if (this.Locked)
+			if (Locked)
 			{
 				s += ", locked";
 			}
@@ -610,7 +610,7 @@ namespace SimPe.Plugin.Anim
 		{
 			if (clearlinear && clearnonlinear)
 			{
-				this.Clear();
+				Clear();
 			}
 			else
 			{

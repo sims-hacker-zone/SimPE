@@ -101,7 +101,7 @@ namespace SimPe.Plugin.TabPage
 			cbtype.Items.Add(ExtensionItem.ItemTypes.Value);
 			cbtype.SelectedIndex = 0;
 
-			this.UseVisualStyleBackColor = true;
+			UseVisualStyleBackColor = true;
 		}
 
 		/// <summary>
@@ -127,57 +127,57 @@ namespace SimPe.Plugin.TabPage
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.gbIems = new GroupBox();
-			this.gbfloat = new GroupBox();
-			this.tbfloat = new TextBox();
-			this.gbval = new GroupBox();
-			this.tbval = new TextBox();
-			this.tb_itemname = new TextBox();
-			this.label3 = new Label();
-			this.lldel = new LinkLabel();
-			this.linkLabel1 = new LinkLabel();
-			this.cbtype = new ComboBox();
-			this.gbar = new GroupBox();
-			this.btedit = new Button();
-			this.gfootprintbar = new GroupBox();
-			this.btfootprintedit = new Button();
-			this.gbstr = new GroupBox();
-			this.tbstr = new TextBox();
-			this.gbbin = new GroupBox();
-			this.tbbin = new TextBox();
-			this.gbrot = new GroupBox();
-			this.tbrot4 = new TextBox();
-			this.tbrot1 = new TextBox();
-			this.tbrot3 = new TextBox();
-			this.tbrot2 = new TextBox();
-			this.gbtrans = new GroupBox();
-			this.tbtrans1 = new TextBox();
-			this.tbtrans3 = new TextBox();
-			this.tbtrans2 = new TextBox();
-			this.lb_items = new ListBox();
-			this.tbFootprint = new TextBox();
-			this.groupBox10 = new GroupBox();
-			this.tb_name = new TextBox();
-			this.label2 = new Label();
-			this.tb_type = new TextBox();
-			this.label1 = new Label();
-			this.tb_ver = new TextBox();
-			this.label28 = new Label();
-			this.gbIems.SuspendLayout();
-			this.gbfloat.SuspendLayout();
-			this.gbval.SuspendLayout();
-			this.gbar.SuspendLayout();
-			this.gfootprintbar.SuspendLayout();
-			this.gbstr.SuspendLayout();
-			this.gbbin.SuspendLayout();
-			this.gbrot.SuspendLayout();
-			this.gbtrans.SuspendLayout();
-			this.groupBox10.SuspendLayout();
-			this.SuspendLayout();
+			gbIems = new GroupBox();
+			gbfloat = new GroupBox();
+			tbfloat = new TextBox();
+			gbval = new GroupBox();
+			tbval = new TextBox();
+			tb_itemname = new TextBox();
+			label3 = new Label();
+			lldel = new LinkLabel();
+			linkLabel1 = new LinkLabel();
+			cbtype = new ComboBox();
+			gbar = new GroupBox();
+			btedit = new Button();
+			gfootprintbar = new GroupBox();
+			btfootprintedit = new Button();
+			gbstr = new GroupBox();
+			tbstr = new TextBox();
+			gbbin = new GroupBox();
+			tbbin = new TextBox();
+			gbrot = new GroupBox();
+			tbrot4 = new TextBox();
+			tbrot1 = new TextBox();
+			tbrot3 = new TextBox();
+			tbrot2 = new TextBox();
+			gbtrans = new GroupBox();
+			tbtrans1 = new TextBox();
+			tbtrans3 = new TextBox();
+			tbtrans2 = new TextBox();
+			lb_items = new ListBox();
+			tbFootprint = new TextBox();
+			groupBox10 = new GroupBox();
+			tb_name = new TextBox();
+			label2 = new Label();
+			tb_type = new TextBox();
+			label1 = new Label();
+			tb_ver = new TextBox();
+			label28 = new Label();
+			gbIems.SuspendLayout();
+			gbfloat.SuspendLayout();
+			gbval.SuspendLayout();
+			gbar.SuspendLayout();
+			gfootprintbar.SuspendLayout();
+			gbstr.SuspendLayout();
+			gbbin.SuspendLayout();
+			gbrot.SuspendLayout();
+			gbtrans.SuspendLayout();
+			groupBox10.SuspendLayout();
+			SuspendLayout();
 			//
 			// gbIems
 			//
-			this.gbIems.Anchor = (
+			gbIems.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -189,38 +189,38 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.gbIems.Controls.Add(this.gbfloat);
-			this.gbIems.Controls.Add(this.gbval);
-			this.gbIems.Controls.Add(this.tb_itemname);
-			this.gbIems.Controls.Add(this.label3);
-			this.gbIems.Controls.Add(this.lldel);
-			this.gbIems.Controls.Add(this.linkLabel1);
-			this.gbIems.Controls.Add(this.cbtype);
-			this.gbIems.Controls.Add(this.gbar);
-			this.gbIems.Controls.Add(this.gfootprintbar);
-			this.gbIems.Controls.Add(this.gbstr);
-			this.gbIems.Controls.Add(this.gbbin);
-			this.gbIems.Controls.Add(this.gbrot);
-			this.gbIems.Controls.Add(this.gbtrans);
-			this.gbIems.Controls.Add(this.lb_items);
-			this.gbIems.FlatStyle = FlatStyle.System;
-			this.gbIems.Font = new Font(
+			gbIems.Controls.Add(gbfloat);
+			gbIems.Controls.Add(gbval);
+			gbIems.Controls.Add(tb_itemname);
+			gbIems.Controls.Add(label3);
+			gbIems.Controls.Add(lldel);
+			gbIems.Controls.Add(linkLabel1);
+			gbIems.Controls.Add(cbtype);
+			gbIems.Controls.Add(gbar);
+			gbIems.Controls.Add(gfootprintbar);
+			gbIems.Controls.Add(gbstr);
+			gbIems.Controls.Add(gbbin);
+			gbIems.Controls.Add(gbrot);
+			gbIems.Controls.Add(gbtrans);
+			gbIems.Controls.Add(lb_items);
+			gbIems.FlatStyle = FlatStyle.System;
+			gbIems.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.gbIems.Location = new Point(248, 8);
-			this.gbIems.Name = "gbIems";
-			this.gbIems.Size = new Size(536, 288);
-			this.gbIems.TabIndex = 13;
-			this.gbIems.TabStop = false;
-			this.gbIems.Text = "Items";
+			gbIems.Location = new Point(248, 8);
+			gbIems.Name = "gbIems";
+			gbIems.Size = new Size(536, 288);
+			gbIems.TabIndex = 13;
+			gbIems.TabStop = false;
+			gbIems.Text = "Items";
 			//
 			// gbfloat
 			//
-			this.gbfloat.Anchor = (
+			gbfloat.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -228,34 +228,34 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.gbfloat.Controls.Add(this.tbfloat);
-			this.gbfloat.FlatStyle = FlatStyle.System;
-			this.gbfloat.Location = new Point(416, 128);
-			this.gbfloat.Name = "gbfloat";
-			this.gbfloat.Size = new Size(120, 56);
-			this.gbfloat.TabIndex = 2;
-			this.gbfloat.TabStop = false;
-			this.gbfloat.Text = "Float Value";
+			gbfloat.Controls.Add(tbfloat);
+			gbfloat.FlatStyle = FlatStyle.System;
+			gbfloat.Location = new Point(416, 128);
+			gbfloat.Name = "gbfloat";
+			gbfloat.Size = new Size(120, 56);
+			gbfloat.TabIndex = 2;
+			gbfloat.TabStop = false;
+			gbfloat.Text = "Float Value";
 			//
 			// tbfloat
 			//
-			this.tbfloat.Font = new Font(
+			tbfloat.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbfloat.Location = new Point(16, 24);
-			this.tbfloat.Name = "tbfloat";
-			this.tbfloat.Size = new Size(88, 21);
-			this.tbfloat.TabIndex = 0;
-			this.tbfloat.Text = "0";
-			this.tbfloat.TextChanged += new EventHandler(this.FloatChange);
+			tbfloat.Location = new Point(16, 24);
+			tbfloat.Name = "tbfloat";
+			tbfloat.Size = new Size(88, 21);
+			tbfloat.TabIndex = 0;
+			tbfloat.Text = "0";
+			tbfloat.TextChanged += new EventHandler(FloatChange);
 			//
 			// gbval
 			//
-			this.gbval.Anchor = (
+			gbval.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -263,34 +263,34 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.gbval.Controls.Add(this.tbval);
-			this.gbval.FlatStyle = FlatStyle.System;
-			this.gbval.Location = new Point(160, 216);
-			this.gbval.Name = "gbval";
-			this.gbval.Size = new Size(120, 56);
-			this.gbval.TabIndex = 1;
-			this.gbval.TabStop = false;
-			this.gbval.Text = "Value";
+			gbval.Controls.Add(tbval);
+			gbval.FlatStyle = FlatStyle.System;
+			gbval.Location = new Point(160, 216);
+			gbval.Name = "gbval";
+			gbval.Size = new Size(120, 56);
+			gbval.TabIndex = 1;
+			gbval.TabStop = false;
+			gbval.Text = "Value";
 			//
 			// tbval
 			//
-			this.tbval.Font = new Font(
+			tbval.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbval.Location = new Point(16, 24);
-			this.tbval.Name = "tbval";
-			this.tbval.Size = new Size(88, 21);
-			this.tbval.TabIndex = 0;
-			this.tbval.Text = "0x00000000";
-			this.tbval.TextChanged += new EventHandler(this.ValChange);
+			tbval.Location = new Point(16, 24);
+			tbval.Name = "tbval";
+			tbval.Size = new Size(88, 21);
+			tbval.TabIndex = 0;
+			tbval.Text = "0x00000000";
+			tbval.TextChanged += new EventHandler(ValChange);
 			//
 			// tb_itemname
 			//
-			this.tb_itemname.Anchor = (
+			tb_itemname.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -298,22 +298,22 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.tb_itemname.Font = new Font(
+			tb_itemname.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tb_itemname.Location = new Point(288, 40);
-			this.tb_itemname.Name = "tb_itemname";
-			this.tb_itemname.Size = new Size(240, 21);
-			this.tb_itemname.TabIndex = 11;
-			this.tb_itemname.TextChanged += new EventHandler(this.ChangeName);
+			tb_itemname.Location = new Point(288, 40);
+			tb_itemname.Name = "tb_itemname";
+			tb_itemname.Size = new Size(240, 21);
+			tb_itemname.TabIndex = 11;
+			tb_itemname.TextChanged += new EventHandler(ChangeName);
 			//
 			// label3
 			//
-			this.label3.Anchor = (
+			label3.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -321,23 +321,23 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.label3.AutoSize = true;
-			this.label3.Font = new Font(
+			label3.AutoSize = true;
+			label3.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label3.Location = new Point(280, 24);
-			this.label3.Name = "label3";
-			this.label3.Size = new Size(48, 13);
-			this.label3.TabIndex = 10;
-			this.label3.Text = "Name:";
+			label3.Location = new Point(280, 24);
+			label3.Name = "label3";
+			label3.Size = new Size(48, 13);
+			label3.TabIndex = 10;
+			label3.Text = "Name:";
 			//
 			// lldel
 			//
-			this.lldel.Anchor = (
+			lldel.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -345,21 +345,21 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.lldel.AutoSize = true;
-			this.lldel.Location = new Point(488, 264);
-			this.lldel.Name = "lldel";
-			this.lldel.Size = new Size(48, 13);
-			this.lldel.TabIndex = 9;
-			this.lldel.TabStop = true;
-			this.lldel.Text = "delete";
-			this.lldel.LinkClicked +=
+			lldel.AutoSize = true;
+			lldel.Location = new Point(488, 264);
+			lldel.Name = "lldel";
+			lldel.Size = new Size(48, 13);
+			lldel.TabIndex = 9;
+			lldel.TabStop = true;
+			lldel.Text = "delete";
+			lldel.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.DeleteItem
+					DeleteItem
 				);
 			//
 			// linkLabel1
 			//
-			this.linkLabel1.Anchor = (
+			linkLabel1.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -367,19 +367,19 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.linkLabel1.AutoSize = true;
-			this.linkLabel1.Location = new Point(456, 264);
-			this.linkLabel1.Name = "linkLabel1";
-			this.linkLabel1.Size = new Size(31, 13);
-			this.linkLabel1.TabIndex = 8;
-			this.linkLabel1.TabStop = true;
-			this.linkLabel1.Text = "add";
-			this.linkLabel1.LinkClicked +=
-				new LinkLabelLinkClickedEventHandler(this.AddItem);
+			linkLabel1.AutoSize = true;
+			linkLabel1.Location = new Point(456, 264);
+			linkLabel1.Name = "linkLabel1";
+			linkLabel1.Size = new Size(31, 13);
+			linkLabel1.TabIndex = 8;
+			linkLabel1.TabStop = true;
+			linkLabel1.Text = "add";
+			linkLabel1.LinkClicked +=
+				new LinkLabelLinkClickedEventHandler(AddItem);
 			//
 			// cbtype
 			//
-			this.cbtype.Anchor = (
+			cbtype.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -387,22 +387,22 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.cbtype.DropDownStyle = ComboBoxStyle.DropDownList;
-			this.cbtype.Font = new Font(
+			cbtype.DropDownStyle = ComboBoxStyle.DropDownList;
+			cbtype.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbtype.Location = new Point(280, 240);
-			this.cbtype.Name = "cbtype";
-			this.cbtype.Size = new Size(248, 21);
-			this.cbtype.TabIndex = 7;
+			cbtype.Location = new Point(280, 240);
+			cbtype.Name = "cbtype";
+			cbtype.Size = new Size(248, 21);
+			cbtype.TabIndex = 7;
 			//
 			// gbar
 			//
-			this.gbar.Anchor = (
+			gbar.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -410,34 +410,34 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.gbar.FlatStyle = FlatStyle.System;
-			this.gbar.Location = new Point(16, 216);
-			this.gbar.Name = "gbar";
-			this.gbar.Size = new Size(136, 56);
-			this.gbar.TabIndex = 6;
-			this.gbar.TabStop = false;
-			this.gbar.Text = "Array";
+			gbar.FlatStyle = FlatStyle.System;
+			gbar.Location = new Point(16, 216);
+			gbar.Name = "gbar";
+			gbar.Size = new Size(136, 56);
+			gbar.TabIndex = 6;
+			gbar.TabStop = false;
+			gbar.Text = "Array";
 			//
 			// btedit
 			//
-			this.btedit.FlatStyle = FlatStyle.System;
-			this.btedit.Font = new Font(
+			btedit.FlatStyle = FlatStyle.System;
+			btedit.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.btedit.Location = new Point(16, 24);
-			this.btedit.Name = "btedit";
-			this.btedit.Size = new Size(104, 23);
-			this.btedit.TabIndex = 0;
-			this.btedit.Text = "Edit";
-			this.btedit.Click += new EventHandler(this.OpenArrayEditor);
+			btedit.Location = new Point(16, 24);
+			btedit.Name = "btedit";
+			btedit.Size = new Size(104, 23);
+			btedit.TabIndex = 0;
+			btedit.Text = "Edit";
+			btedit.Click += new EventHandler(OpenArrayEditor);
 			//
 			// gfootprintbar
 			//
-			this.gfootprintbar.Anchor = (
+			gfootprintbar.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -445,36 +445,36 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.gfootprintbar.FlatStyle = FlatStyle.System;
-			this.gfootprintbar.Location = new Point(16, 216);
-			this.gfootprintbar.Name = "gfootprintbar";
-			this.gfootprintbar.Size = new Size(136, 90);
-			this.gfootprintbar.TabIndex = 6;
-			this.gfootprintbar.TabStop = false;
-			this.gfootprintbar.Text = "Footprint";
+			gfootprintbar.FlatStyle = FlatStyle.System;
+			gfootprintbar.Location = new Point(16, 216);
+			gfootprintbar.Name = "gfootprintbar";
+			gfootprintbar.Size = new Size(136, 90);
+			gfootprintbar.TabIndex = 6;
+			gfootprintbar.TabStop = false;
+			gfootprintbar.Text = "Footprint";
 			//
 			// btfootprintedit
 			//
-			this.btfootprintedit.FlatStyle = FlatStyle.System;
-			this.btfootprintedit.Font = new Font(
+			btfootprintedit.FlatStyle = FlatStyle.System;
+			btfootprintedit.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.btfootprintedit.Location = new Point(16, 55);
-			this.btfootprintedit.Name = "btfootprintedit";
-			this.btfootprintedit.Size = new Size(104, 23);
-			this.btfootprintedit.TabIndex = 0;
-			this.btfootprintedit.Text = "Draw";
-			this.btfootprintedit.Click += new EventHandler(
-				this.OpenFootprintEditor
+			btfootprintedit.Location = new Point(16, 55);
+			btfootprintedit.Name = "btfootprintedit";
+			btfootprintedit.Size = new Size(104, 23);
+			btfootprintedit.TabIndex = 0;
+			btfootprintedit.Text = "Draw";
+			btfootprintedit.Click += new EventHandler(
+				OpenFootprintEditor
 			);
 			//
 			// gbstr
 			//
-			this.gbstr.Anchor = (
+			gbstr.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -482,18 +482,18 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.gbstr.Controls.Add(this.tbstr);
-			this.gbstr.FlatStyle = FlatStyle.System;
-			this.gbstr.Location = new Point(280, 64);
-			this.gbstr.Name = "gbstr";
-			this.gbstr.Size = new Size(240, 56);
-			this.gbstr.TabIndex = 5;
-			this.gbstr.TabStop = false;
-			this.gbstr.Text = "String";
+			gbstr.Controls.Add(tbstr);
+			gbstr.FlatStyle = FlatStyle.System;
+			gbstr.Location = new Point(280, 64);
+			gbstr.Name = "gbstr";
+			gbstr.Size = new Size(240, 56);
+			gbstr.TabIndex = 5;
+			gbstr.TabStop = false;
+			gbstr.Text = "String";
 			//
 			// tbstr
 			//
-			this.tbstr.Anchor = (
+			tbstr.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -503,22 +503,22 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.tbstr.Font = new Font(
+			tbstr.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbstr.Location = new Point(16, 24);
-			this.tbstr.Name = "tbstr";
-			this.tbstr.Size = new Size(216, 21);
-			this.tbstr.TabIndex = 1;
-			this.tbstr.TextChanged += new EventHandler(this.StrChange);
+			tbstr.Location = new Point(16, 24);
+			tbstr.Name = "tbstr";
+			tbstr.Size = new Size(216, 21);
+			tbstr.TabIndex = 1;
+			tbstr.TextChanged += new EventHandler(StrChange);
 			//
 			// gbbin
 			//
-			this.gbbin.Anchor = (
+			gbbin.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -526,18 +526,18 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.gbbin.Controls.Add(this.tbbin);
-			this.gbbin.FlatStyle = FlatStyle.System;
-			this.gbbin.Location = new Point(16, 40);
-			this.gbbin.Name = "gbbin";
-			this.gbbin.Size = new Size(248, 80);
-			this.gbbin.TabIndex = 4;
-			this.gbbin.TabStop = false;
-			this.gbbin.Text = "Binary";
+			gbbin.Controls.Add(tbbin);
+			gbbin.FlatStyle = FlatStyle.System;
+			gbbin.Location = new Point(16, 40);
+			gbbin.Name = "gbbin";
+			gbbin.Size = new Size(248, 80);
+			gbbin.TabIndex = 4;
+			gbbin.TabStop = false;
+			gbbin.Text = "Binary";
 			//
 			// tbbin
 			//
-			this.tbbin.Anchor = (
+			tbbin.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -547,24 +547,24 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.tbbin.Font = new Font(
+			tbbin.Font = new Font(
 				"Courier New",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbbin.Location = new Point(16, 26);
-			this.tbbin.Multiline = true;
-			this.tbbin.Name = "tbbin";
-			this.tbbin.ScrollBars = ScrollBars.Vertical;
-			this.tbbin.Size = new Size(216, 40);
-			this.tbbin.TabIndex = 2;
-			this.tbbin.TextChanged += new EventHandler(this.BinChange);
+			tbbin.Location = new Point(16, 26);
+			tbbin.Multiline = true;
+			tbbin.Name = "tbbin";
+			tbbin.ScrollBars = ScrollBars.Vertical;
+			tbbin.Size = new Size(216, 40);
+			tbbin.TabIndex = 2;
+			tbbin.TextChanged += new EventHandler(BinChange);
 			//
 			// gbrot
 			//
-			this.gbrot.Anchor = (
+			gbrot.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -572,85 +572,85 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.gbrot.Controls.Add(this.tbrot4);
-			this.gbrot.Controls.Add(this.tbrot1);
-			this.gbrot.Controls.Add(this.tbrot3);
-			this.gbrot.Controls.Add(this.tbrot2);
-			this.gbrot.FlatStyle = FlatStyle.System;
-			this.gbrot.Location = new Point(280, 136);
-			this.gbrot.Name = "gbrot";
-			this.gbrot.Size = new Size(224, 80);
-			this.gbrot.TabIndex = 3;
-			this.gbrot.TabStop = false;
-			this.gbrot.Text = "Rotation";
+			gbrot.Controls.Add(tbrot4);
+			gbrot.Controls.Add(tbrot1);
+			gbrot.Controls.Add(tbrot3);
+			gbrot.Controls.Add(tbrot2);
+			gbrot.FlatStyle = FlatStyle.System;
+			gbrot.Location = new Point(280, 136);
+			gbrot.Name = "gbrot";
+			gbrot.Size = new Size(224, 80);
+			gbrot.TabIndex = 3;
+			gbrot.TabStop = false;
+			gbrot.Text = "Rotation";
 			//
 			// tbrot4
 			//
-			this.tbrot4.Font = new Font(
+			tbrot4.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbrot4.Location = new Point(120, 48);
-			this.tbrot4.Name = "tbrot4";
-			this.tbrot4.Size = new Size(88, 21);
-			this.tbrot4.TabIndex = 7;
-			this.tbrot4.Text = "0x00000000";
-			this.tbrot4.TextChanged += new EventHandler(this.RotChange);
+			tbrot4.Location = new Point(120, 48);
+			tbrot4.Name = "tbrot4";
+			tbrot4.Size = new Size(88, 21);
+			tbrot4.TabIndex = 7;
+			tbrot4.Text = "0x00000000";
+			tbrot4.TextChanged += new EventHandler(RotChange);
 			//
 			// tbrot1
 			//
-			this.tbrot1.Font = new Font(
+			tbrot1.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbrot1.Location = new Point(16, 24);
-			this.tbrot1.Name = "tbrot1";
-			this.tbrot1.Size = new Size(88, 21);
-			this.tbrot1.TabIndex = 6;
-			this.tbrot1.Text = "0x00000000";
-			this.tbrot1.TextChanged += new EventHandler(this.RotChange);
+			tbrot1.Location = new Point(16, 24);
+			tbrot1.Name = "tbrot1";
+			tbrot1.Size = new Size(88, 21);
+			tbrot1.TabIndex = 6;
+			tbrot1.Text = "0x00000000";
+			tbrot1.TextChanged += new EventHandler(RotChange);
 			//
 			// tbrot3
 			//
-			this.tbrot3.Font = new Font(
+			tbrot3.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbrot3.Location = new Point(16, 48);
-			this.tbrot3.Name = "tbrot3";
-			this.tbrot3.Size = new Size(88, 21);
-			this.tbrot3.TabIndex = 5;
-			this.tbrot3.Text = "0x00000000";
-			this.tbrot3.TextChanged += new EventHandler(this.RotChange);
+			tbrot3.Location = new Point(16, 48);
+			tbrot3.Name = "tbrot3";
+			tbrot3.Size = new Size(88, 21);
+			tbrot3.TabIndex = 5;
+			tbrot3.Text = "0x00000000";
+			tbrot3.TextChanged += new EventHandler(RotChange);
 			//
 			// tbrot2
 			//
-			this.tbrot2.Font = new Font(
+			tbrot2.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbrot2.Location = new Point(120, 24);
-			this.tbrot2.Name = "tbrot2";
-			this.tbrot2.Size = new Size(88, 21);
-			this.tbrot2.TabIndex = 4;
-			this.tbrot2.Text = "0x00000000";
-			this.tbrot2.TextChanged += new EventHandler(this.RotChange);
+			tbrot2.Location = new Point(120, 24);
+			tbrot2.Name = "tbrot2";
+			tbrot2.Size = new Size(88, 21);
+			tbrot2.TabIndex = 4;
+			tbrot2.Text = "0x00000000";
+			tbrot2.TextChanged += new EventHandler(RotChange);
 			//
 			// gbtrans
 			//
-			this.gbtrans.Anchor = (
+			gbtrans.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -658,68 +658,68 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.gbtrans.Controls.Add(this.tbtrans1);
-			this.gbtrans.Controls.Add(this.tbtrans3);
-			this.gbtrans.Controls.Add(this.tbtrans2);
-			this.gbtrans.FlatStyle = FlatStyle.System;
-			this.gbtrans.Location = new Point(16, 120);
-			this.gbtrans.Name = "gbtrans";
-			this.gbtrans.Size = new Size(224, 80);
-			this.gbtrans.TabIndex = 2;
-			this.gbtrans.TabStop = false;
-			this.gbtrans.Text = "Translation";
+			gbtrans.Controls.Add(tbtrans1);
+			gbtrans.Controls.Add(tbtrans3);
+			gbtrans.Controls.Add(tbtrans2);
+			gbtrans.FlatStyle = FlatStyle.System;
+			gbtrans.Location = new Point(16, 120);
+			gbtrans.Name = "gbtrans";
+			gbtrans.Size = new Size(224, 80);
+			gbtrans.TabIndex = 2;
+			gbtrans.TabStop = false;
+			gbtrans.Text = "Translation";
 			//
 			// tbtrans1
 			//
-			this.tbtrans1.Font = new Font(
+			tbtrans1.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbtrans1.Location = new Point(16, 24);
-			this.tbtrans1.Name = "tbtrans1";
-			this.tbtrans1.Size = new Size(88, 21);
-			this.tbtrans1.TabIndex = 3;
-			this.tbtrans1.Text = "0x00000000";
-			this.tbtrans1.TextChanged += new EventHandler(this.TransChange);
+			tbtrans1.Location = new Point(16, 24);
+			tbtrans1.Name = "tbtrans1";
+			tbtrans1.Size = new Size(88, 21);
+			tbtrans1.TabIndex = 3;
+			tbtrans1.Text = "0x00000000";
+			tbtrans1.TextChanged += new EventHandler(TransChange);
 			//
 			// tbtrans3
 			//
-			this.tbtrans3.Font = new Font(
+			tbtrans3.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbtrans3.Location = new Point(16, 48);
-			this.tbtrans3.Name = "tbtrans3";
-			this.tbtrans3.Size = new Size(88, 21);
-			this.tbtrans3.TabIndex = 2;
-			this.tbtrans3.Text = "0x00000000";
-			this.tbtrans3.TextChanged += new EventHandler(this.TransChange);
+			tbtrans3.Location = new Point(16, 48);
+			tbtrans3.Name = "tbtrans3";
+			tbtrans3.Size = new Size(88, 21);
+			tbtrans3.TabIndex = 2;
+			tbtrans3.Text = "0x00000000";
+			tbtrans3.TextChanged += new EventHandler(TransChange);
 			//
 			// tbtrans2
 			//
-			this.tbtrans2.Font = new Font(
+			tbtrans2.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbtrans2.Location = new Point(120, 24);
-			this.tbtrans2.Name = "tbtrans2";
-			this.tbtrans2.Size = new Size(88, 21);
-			this.tbtrans2.TabIndex = 1;
-			this.tbtrans2.Text = "0x00000000";
-			this.tbtrans2.TextChanged += new EventHandler(this.TransChange);
+			tbtrans2.Location = new Point(120, 24);
+			tbtrans2.Name = "tbtrans2";
+			tbtrans2.Size = new Size(88, 21);
+			tbtrans2.TabIndex = 1;
+			tbtrans2.Text = "0x00000000";
+			tbtrans2.TextChanged += new EventHandler(TransChange);
 			//
 			// lb_items
 			//
-			this.lb_items.Anchor = (
+			lb_items.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -731,184 +731,184 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.lb_items.Font = new Font(
+			lb_items.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lb_items.HorizontalScrollbar = true;
-			this.lb_items.IntegralHeight = false;
-			this.lb_items.Location = new Point(8, 24);
-			this.lb_items.Name = "lb_items";
-			this.lb_items.Size = new Size(264, 256); // if I take 200 off there's very little left
-			this.lb_items.TabIndex = 0;
-			this.lb_items.SelectedIndexChanged += new EventHandler(
-				this.SelectItem
+			lb_items.HorizontalScrollbar = true;
+			lb_items.IntegralHeight = false;
+			lb_items.Location = new Point(8, 24);
+			lb_items.Name = "lb_items";
+			lb_items.Size = new Size(264, 256); // if I take 200 off there's very little left
+			lb_items.TabIndex = 0;
+			lb_items.SelectedIndexChanged += new EventHandler(
+				SelectItem
 			);
 			//
 			// tbFootprint
 			//
-			this.tbFootprint.Font = new Font(
+			tbFootprint.Font = new Font(
 				"Courier New",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbFootprint.Location = new Point(0, 0);
-			this.tbFootprint.Name = "tbFootprint";
-			this.tbFootprint.Size = new Size(100, 20);
-			this.tbFootprint.TabIndex = 0;
+			tbFootprint.Location = new Point(0, 0);
+			tbFootprint.Name = "tbFootprint";
+			tbFootprint.Size = new Size(100, 20);
+			tbFootprint.TabIndex = 0;
 			//
 			// groupBox10
 			//
-			this.groupBox10.Controls.Add(this.tb_name);
-			this.groupBox10.Controls.Add(this.label2);
-			this.groupBox10.Controls.Add(this.tb_type);
-			this.groupBox10.Controls.Add(this.label1);
-			this.groupBox10.Controls.Add(this.tb_ver);
-			this.groupBox10.Controls.Add(this.label28);
-			this.groupBox10.FlatStyle = FlatStyle.System;
-			this.groupBox10.Font = new Font(
+			groupBox10.Controls.Add(tb_name);
+			groupBox10.Controls.Add(label2);
+			groupBox10.Controls.Add(tb_type);
+			groupBox10.Controls.Add(label1);
+			groupBox10.Controls.Add(tb_ver);
+			groupBox10.Controls.Add(label28);
+			groupBox10.FlatStyle = FlatStyle.System;
+			groupBox10.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.groupBox10.Location = new Point(8, 8);
-			this.groupBox10.Name = "groupBox10";
-			this.groupBox10.Size = new Size(232, 112);
-			this.groupBox10.TabIndex = 12;
-			this.groupBox10.TabStop = false;
-			this.groupBox10.Text = "Settings";
+			groupBox10.Location = new Point(8, 8);
+			groupBox10.Name = "groupBox10";
+			groupBox10.Size = new Size(232, 112);
+			groupBox10.TabIndex = 12;
+			groupBox10.TabStop = false;
+			groupBox10.Text = "Settings";
 			//
 			// tb_name
 			//
-			this.tb_name.Font = new Font(
+			tb_name.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tb_name.Location = new Point(16, 80);
-			this.tb_name.Name = "tb_name";
-			this.tb_name.Size = new Size(200, 21);
-			this.tb_name.TabIndex = 28;
-			this.tb_name.Text = "0x00";
-			this.tb_name.TextChanged += new EventHandler(this.GNSettingsChange);
+			tb_name.Location = new Point(16, 80);
+			tb_name.Name = "tb_name";
+			tb_name.Size = new Size(200, 21);
+			tb_name.TabIndex = 28;
+			tb_name.Text = "0x00";
+			tb_name.TextChanged += new EventHandler(GNSettingsChange);
 			//
 			// label2
 			//
-			this.label2.AutoSize = true;
-			this.label2.Font = new Font(
+			label2.AutoSize = true;
+			label2.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label2.Location = new Point(8, 64);
-			this.label2.Name = "label2";
-			this.label2.Size = new Size(40, 13);
-			this.label2.TabIndex = 27;
-			this.label2.Text = "Name";
+			label2.Location = new Point(8, 64);
+			label2.Name = "label2";
+			label2.Size = new Size(40, 13);
+			label2.TabIndex = 27;
+			label2.Text = "Name";
 			//
 			// tb_type
 			//
-			this.tb_type.Font = new Font(
+			tb_type.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tb_type.Location = new Point(128, 40);
-			this.tb_type.Name = "tb_type";
-			this.tb_type.Size = new Size(88, 21);
-			this.tb_type.TabIndex = 26;
-			this.tb_type.Text = "0x00";
-			this.tb_type.TextChanged += new EventHandler(this.GNSettingsChange);
+			tb_type.Location = new Point(128, 40);
+			tb_type.Name = "tb_type";
+			tb_type.Size = new Size(88, 21);
+			tb_type.TabIndex = 26;
+			tb_type.Text = "0x00";
+			tb_type.TextChanged += new EventHandler(GNSettingsChange);
 			//
 			// label1
 			//
-			this.label1.AutoSize = true;
-			this.label1.Font = new Font(
+			label1.AutoSize = true;
+			label1.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label1.Location = new Point(120, 24);
-			this.label1.Name = "label1";
-			this.label1.Size = new Size(67, 13);
-			this.label1.TabIndex = 25;
-			this.label1.Text = "Typecode:";
+			label1.Location = new Point(120, 24);
+			label1.Name = "label1";
+			label1.Size = new Size(67, 13);
+			label1.TabIndex = 25;
+			label1.Text = "Typecode:";
 			//
 			// tb_ver
 			//
-			this.tb_ver.Font = new Font(
+			tb_ver.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tb_ver.Location = new Point(16, 40);
-			this.tb_ver.Name = "tb_ver";
-			this.tb_ver.Size = new Size(88, 21);
-			this.tb_ver.TabIndex = 24;
-			this.tb_ver.Text = "0x00000000";
-			this.tb_ver.TextChanged += new EventHandler(this.GNSettingsChange);
+			tb_ver.Location = new Point(16, 40);
+			tb_ver.Name = "tb_ver";
+			tb_ver.Size = new Size(88, 21);
+			tb_ver.TabIndex = 24;
+			tb_ver.Text = "0x00000000";
+			tb_ver.TextChanged += new EventHandler(GNSettingsChange);
 			//
 			// label28
 			//
-			this.label28.AutoSize = true;
-			this.label28.Font = new Font(
+			label28.AutoSize = true;
+			label28.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label28.Location = new Point(8, 24);
-			this.label28.Name = "label28";
-			this.label28.Size = new Size(55, 13);
-			this.label28.TabIndex = 23;
-			this.label28.Text = "Version:";
+			label28.Location = new Point(8, 24);
+			label28.Name = "label28";
+			label28.Size = new Size(55, 13);
+			label28.TabIndex = 23;
+			label28.Text = "Version:";
 			//
 			// Extension
 			//
-			this.BackColor = SystemColors.ControlLightLight;
-			this.Controls.Add(this.gbIems);
-			this.Controls.Add(this.groupBox10);
-			this.Location = new Point(4, 22);
-			this.Name = "tExtension";
-			this.Size = new Size(792, 302);
-			this.Text = "Extension";
-			this.gbIems.ResumeLayout(false);
-			this.gbIems.PerformLayout();
-			this.gbfloat.ResumeLayout(false);
-			this.gbfloat.PerformLayout();
-			this.gbval.ResumeLayout(false);
-			this.gbval.PerformLayout();
-			this.gbar.ResumeLayout(false);
-			this.gfootprintbar.ResumeLayout(false);
-			this.gbstr.ResumeLayout(false);
-			this.gbstr.PerformLayout();
-			this.gbbin.ResumeLayout(false);
-			this.gbbin.PerformLayout();
-			this.gbrot.ResumeLayout(false);
-			this.gbrot.PerformLayout();
-			this.gbtrans.ResumeLayout(false);
-			this.gbtrans.PerformLayout();
-			this.groupBox10.ResumeLayout(false);
-			this.groupBox10.PerformLayout();
-			this.ResumeLayout(false);
+			BackColor = SystemColors.ControlLightLight;
+			Controls.Add(gbIems);
+			Controls.Add(groupBox10);
+			Location = new Point(4, 22);
+			Name = "tExtension";
+			Size = new Size(792, 302);
+			Text = "Extension";
+			gbIems.ResumeLayout(false);
+			gbIems.PerformLayout();
+			gbfloat.ResumeLayout(false);
+			gbfloat.PerformLayout();
+			gbval.ResumeLayout(false);
+			gbval.PerformLayout();
+			gbar.ResumeLayout(false);
+			gfootprintbar.ResumeLayout(false);
+			gbstr.ResumeLayout(false);
+			gbstr.PerformLayout();
+			gbbin.ResumeLayout(false);
+			gbbin.PerformLayout();
+			gbrot.ResumeLayout(false);
+			gbrot.PerformLayout();
+			gbtrans.ResumeLayout(false);
+			gbtrans.PerformLayout();
+			groupBox10.ResumeLayout(false);
+			groupBox10.PerformLayout();
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -937,20 +937,20 @@ namespace SimPe.Plugin.TabPage
 
 		internal void HideAll()
 		{
-			this.gbval.Visible = false;
-			this.gbar.Visible = false;
-			this.gfootprintbar.Visible = false;
-			this.gbfloat.Visible = false;
-			this.gbbin.Visible = false;
-			this.gbrot.Visible = false;
-			this.gbstr.Visible = false;
-			this.gbtrans.Visible = false;
+			gbval.Visible = false;
+			gbar.Visible = false;
+			gfootprintbar.Visible = false;
+			gbfloat.Visible = false;
+			gbbin.Visible = false;
+			gbrot.Visible = false;
+			gbstr.Visible = false;
+			gbtrans.Visible = false;
 		}
 
 		internal void ShowGroup(GroupBox gb)
 		{
-			gb.Left = this.lb_items.Left + this.lb_items.Width + 8;
-			gb.Top = this.tb_itemname.Top + tb_itemname.Height + 4;
+			gb.Left = lb_items.Left + lb_items.Width + 8;
+			gb.Top = tb_itemname.Top + tb_itemname.Height + 4;
 			gb.Visible = true;
 		}
 
@@ -980,14 +980,14 @@ namespace SimPe.Plugin.TabPage
 					case ExtensionItem.ItemTypes.Value:
 					{
 						tbval.Text = "0x" + Helper.HexString((uint)ei.Value);
-						ShowGroup(this.gbval);
+						ShowGroup(gbval);
 						break;
 					}
 					case ExtensionItem.ItemTypes.Float:
 					{
 						tbfloat.Text = ei.Single.ToString();
 						;
-						ShowGroup(this.gbfloat);
+						ShowGroup(gbfloat);
 						break;
 					}
 					case ExtensionItem.ItemTypes.Translation:
@@ -995,13 +995,13 @@ namespace SimPe.Plugin.TabPage
 						tbtrans1.Text = ei.Translation.X.ToString("N6");
 						tbtrans2.Text = ei.Translation.Y.ToString("N6");
 						tbtrans3.Text = ei.Translation.Z.ToString("N6");
-						ShowGroup(this.gbtrans);
+						ShowGroup(gbtrans);
 						break;
 					}
 					case ExtensionItem.ItemTypes.String:
 					{
 						tbstr.Text = ei.String;
-						ShowGroup(this.gbstr);
+						ShowGroup(gbstr);
 						break;
 					}
 					case ExtensionItem.ItemTypes.Rotation:
@@ -1010,13 +1010,13 @@ namespace SimPe.Plugin.TabPage
 						tbrot2.Text = ei.Rotation.Y.ToString("N6");
 						tbrot3.Text = ei.Rotation.Z.ToString("N6");
 						tbrot4.Text = ei.Rotation.W.ToString("N6");
-						ShowGroup(this.gbrot);
+						ShowGroup(gbrot);
 						break;
 					}
 					case ExtensionItem.ItemTypes.Binary:
 					{
 						tbbin.Text = Helper.BytesToHexList(ei.Data);
-						ShowGroup(this.gbbin);
+						ShowGroup(gbbin);
 						break;
 					}
 					case ExtensionItem.ItemTypes.Array:
@@ -1025,14 +1025,14 @@ namespace SimPe.Plugin.TabPage
 
 						if (ext.VarName.Equals("footprint"))
 						{
-							this.gfootprintbar.Controls.Add(this.btfootprintedit);
-							this.gfootprintbar.Controls.Add(this.btedit);
-							ShowGroup(this.gfootprintbar);
+							gfootprintbar.Controls.Add(btfootprintedit);
+							gfootprintbar.Controls.Add(btedit);
+							ShowGroup(gfootprintbar);
 						}
 						else
 						{
-							this.gbar.Controls.Add(this.btedit);
-							ShowGroup(this.gbar);
+							gbar.Controls.Add(btedit);
+							ShowGroup(gbar);
 						}
 						break;
 					}

@@ -58,7 +58,7 @@ namespace SimPe
 				return;
 			}
 
-			if (this.DialogResult != DialogResult.OK)
+			if (DialogResult != DialogResult.OK)
 			{
 				return;
 			}

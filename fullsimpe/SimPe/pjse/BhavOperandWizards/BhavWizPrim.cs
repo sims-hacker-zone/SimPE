@@ -576,7 +576,7 @@ namespace pjse.BhavNameWizards
 					", "
 					+ Localization.GetString("bwp03_inroom")
 					+ " "
-					+ this.dataOwner(0x08, 0) // Temp
+					+ dataOwner(0x08, 0) // Temp
 					+ ": "
 					+ ((o[3] & 0x02) != 0).ToString();
 				s +=

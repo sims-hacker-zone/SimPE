@@ -23,7 +23,7 @@ namespace SimPe.Plugin
 		)
 		{
 			ArrayList list = new ArrayList();
-			string name = this.GetSaveItem("modelName").StringValue.Trim();
+			string name = GetSaveItem("modelName").StringValue.Trim();
 			if (!name.ToLower().EndsWith("_cres"))
 			{
 				name += "_cres";
@@ -39,7 +39,7 @@ namespace SimPe.Plugin
 			refmap["CRES"] = list;
 
 			list = new ArrayList();
-			name = this.GetSaveItem("name").StringValue.Trim();
+			name = GetSaveItem("name").StringValue.Trim();
 			if (!name.ToLower().EndsWith("_txmt"))
 			{
 				name += "_txmt";
@@ -83,7 +83,7 @@ namespace SimPe.Plugin
 				"This File describes a ColorOption for a Mesh Group / Subset. It is needed to provide an additional Colour for Objects.",
 				4,
 				System.Drawing.Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.mmat.png")
 				)
 			);
@@ -116,7 +116,7 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				Hashtable refs = this.ReferenceChains;
+				Hashtable refs = ReferenceChains;
 				ArrayList cress = (ArrayList)refs["CRES"];
 				if (cress != null)
 				{
@@ -182,7 +182,7 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				Hashtable refs = this.ReferenceChains;
+				Hashtable refs = ReferenceChains;
 				ArrayList txmts = (ArrayList)refs["TXMT"];
 				if (txmts != null)
 				{
@@ -311,7 +311,7 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				GenericRcol txmt = this.TXMT;
+				GenericRcol txmt = TXMT;
 				return GetTxtr(txmt);
 			}
 		}
@@ -412,11 +412,11 @@ namespace SimPe.Plugin
 			{
 				string str =
 					"objectGUID=0x"
-					+ Helper.HexString(this.ObjectGUID)
+					+ Helper.HexString(ObjectGUID)
 					+ "; subset="
-					+ this.SubsetName
+					+ SubsetName
 					+ "; references=";
-				Hashtable map = this.ReferenceChains;
+				Hashtable map = ReferenceChains;
 				foreach (string s in map.Keys)
 				{
 					str += s + ":";
@@ -449,7 +449,7 @@ namespace SimPe.Plugin
 			get
 			{
 				Hashtable refmap = new Hashtable();
-				this.ReferencedItems(refmap, this.FileDescriptor.Group);
+				ReferencedItems(refmap, FileDescriptor.Group);
 				return refmap;
 			}
 		}
@@ -461,11 +461,11 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				return this.GetSaveItem("creator").StringValue;
+				return GetSaveItem("creator").StringValue;
 			}
 			set
 			{
-				this.GetSaveItem("creator").StringValue = value;
+				GetSaveItem("creator").StringValue = value;
 			}
 		}
 
@@ -473,11 +473,11 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				return this.GetSaveItem("defaultMaterial").BooleanValue;
+				return GetSaveItem("defaultMaterial").BooleanValue;
 			}
 			set
 			{
-				this.GetSaveItem("defaultMaterial").BooleanValue = value;
+				GetSaveItem("defaultMaterial").BooleanValue = value;
 			}
 		}
 
@@ -485,11 +485,11 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				return this.GetSaveItem("family").StringValue;
+				return GetSaveItem("family").StringValue;
 			}
 			set
 			{
-				this.GetSaveItem("family").StringValue = value;
+				GetSaveItem("family").StringValue = value;
 			}
 		}
 
@@ -497,11 +497,11 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				return this.GetSaveItem("flags").UIntegerValue;
+				return GetSaveItem("flags").UIntegerValue;
 			}
 			set
 			{
-				this.GetSaveItem("flags").UIntegerValue = value;
+				GetSaveItem("flags").UIntegerValue = value;
 			}
 		}
 
@@ -509,11 +509,11 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				return this.GetSaveItem("materialStateFlags").UIntegerValue;
+				return GetSaveItem("materialStateFlags").UIntegerValue;
 			}
 			set
 			{
-				this.GetSaveItem("materialStateFlags").UIntegerValue = value;
+				GetSaveItem("materialStateFlags").UIntegerValue = value;
 			}
 		}
 
@@ -521,11 +521,11 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				return this.GetSaveItem("modelName").StringValue;
+				return GetSaveItem("modelName").StringValue;
 			}
 			set
 			{
-				this.GetSaveItem("modelName").StringValue = value;
+				GetSaveItem("modelName").StringValue = value;
 			}
 		}
 
@@ -533,11 +533,11 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				return this.GetSaveItem("name").StringValue;
+				return GetSaveItem("name").StringValue;
 			}
 			set
 			{
-				this.GetSaveItem("name").StringValue = value;
+				GetSaveItem("name").StringValue = value;
 			}
 		}
 
@@ -545,11 +545,11 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				return this.GetSaveItem("objectGUID").UIntegerValue;
+				return GetSaveItem("objectGUID").UIntegerValue;
 			}
 			set
 			{
-				this.GetSaveItem("objectGUID").UIntegerValue = value;
+				GetSaveItem("objectGUID").UIntegerValue = value;
 			}
 		}
 
@@ -557,11 +557,11 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				return this.GetSaveItem("objectStateIndex").IntegerValue;
+				return GetSaveItem("objectStateIndex").IntegerValue;
 			}
 			set
 			{
-				this.GetSaveItem("objectStateIndex").IntegerValue = value;
+				GetSaveItem("objectStateIndex").IntegerValue = value;
 			}
 		}
 
@@ -569,11 +569,11 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				return this.GetSaveItem("subsetName").StringValue;
+				return GetSaveItem("subsetName").StringValue;
 			}
 			set
 			{
-				this.GetSaveItem("subsetName").StringValue = value;
+				GetSaveItem("subsetName").StringValue = value;
 			}
 		}
 		#endregion

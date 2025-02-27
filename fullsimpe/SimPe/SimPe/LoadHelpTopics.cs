@@ -13,10 +13,10 @@ namespace SimPe
 			: base()
 		{
 			this.topic = topic;
-			this.Text = GetName();
-			this.Image = topic.Icon;
+			Text = GetName();
+			Image = topic.Icon;
 
-			this.Click += new EventHandler(HelpTopicMenuItem_Activate);
+			Click += new EventHandler(HelpTopicMenuItem_Activate);
 		}
 
 		public string GetName()

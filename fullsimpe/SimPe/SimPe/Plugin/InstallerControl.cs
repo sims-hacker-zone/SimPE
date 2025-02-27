@@ -67,198 +67,198 @@ namespace SimPe.Plugin
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(InstallerControl)
 				);
-			this.pndrop = new Panel();
-			this.pb = new PictureBox();
-			this.tbs = new Ambertation.Windows.Forms.XPTaskBoxSimple();
-			this.lbType = new Label();
-			this.label6 = new Label();
-			this.lbGuid = new Label();
-			this.label4 = new Label();
-			this.lbVert = new Label();
-			this.label5 = new Label();
-			this.lbCat = new Label();
-			this.label1 = new Label();
-			this.rtb = new RichTextBox();
-			this.cb = new ComboBox();
-			this.lbPrice = new Label();
-			this.label3 = new Label();
-			this.lbFace = new Label();
-			this.label7 = new Label();
-			this.llOptions = new LinkLabel();
-			this.pndrop.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
-			this.tbs.SuspendLayout();
-			this.SuspendLayout();
+			pndrop = new Panel();
+			pb = new PictureBox();
+			tbs = new Ambertation.Windows.Forms.XPTaskBoxSimple();
+			lbType = new Label();
+			label6 = new Label();
+			lbGuid = new Label();
+			label4 = new Label();
+			lbVert = new Label();
+			label5 = new Label();
+			lbCat = new Label();
+			label1 = new Label();
+			rtb = new RichTextBox();
+			cb = new ComboBox();
+			lbPrice = new Label();
+			label3 = new Label();
+			lbFace = new Label();
+			label7 = new Label();
+			llOptions = new LinkLabel();
+			pndrop.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(pb)).BeginInit();
+			tbs.SuspendLayout();
+			SuspendLayout();
 			//
 			// pndrop
 			//
-			this.pndrop.AllowDrop = true;
-			this.pndrop.BackColor = Color.Transparent;
-			this.pndrop.Controls.Add(this.pb);
-			resources.ApplyResources(this.pndrop, "pndrop");
-			this.pndrop.Name = "pndrop";
-			this.pndrop.DragDrop += new DragEventHandler(
-				this.DragDropFile
+			pndrop.AllowDrop = true;
+			pndrop.BackColor = Color.Transparent;
+			pndrop.Controls.Add(pb);
+			resources.ApplyResources(pndrop, "pndrop");
+			pndrop.Name = "pndrop";
+			pndrop.DragDrop += new DragEventHandler(
+				DragDropFile
 			);
-			this.pndrop.DragEnter += new DragEventHandler(
-				this.DragEnterFile
+			pndrop.DragEnter += new DragEventHandler(
+				DragEnterFile
 			);
 			//
 			// pb
 			//
-			resources.ApplyResources(this.pb, "pb");
-			this.pb.Name = "pb";
-			this.pb.TabStop = false;
+			resources.ApplyResources(pb, "pb");
+			pb.Name = "pb";
+			pb.TabStop = false;
 			//
 			// tbs
 			//
-			resources.ApplyResources(this.tbs, "tbs");
-			this.tbs.BackColor = Color.Transparent;
-			this.tbs.BodyColor = SystemColors.Window;
-			this.tbs.BorderColor = SystemColors.Window;
-			this.tbs.Controls.Add(this.lbType);
-			this.tbs.Controls.Add(this.label6);
-			this.tbs.Controls.Add(this.lbGuid);
-			this.tbs.Controls.Add(this.label4);
-			this.tbs.Controls.Add(this.lbVert);
-			this.tbs.Controls.Add(this.label5);
-			this.tbs.Controls.Add(this.lbCat);
-			this.tbs.Controls.Add(this.label1);
-			this.tbs.Controls.Add(this.rtb);
-			this.tbs.Controls.Add(this.cb);
-			this.tbs.Controls.Add(this.lbPrice);
-			this.tbs.Controls.Add(this.label3);
-			this.tbs.Controls.Add(this.lbFace);
-			this.tbs.Controls.Add(this.label7);
-			this.tbs.HeaderFont = new Font(
+			resources.ApplyResources(tbs, "tbs");
+			tbs.BackColor = Color.Transparent;
+			tbs.BodyColor = SystemColors.Window;
+			tbs.BorderColor = SystemColors.Window;
+			tbs.Controls.Add(lbType);
+			tbs.Controls.Add(label6);
+			tbs.Controls.Add(lbGuid);
+			tbs.Controls.Add(label4);
+			tbs.Controls.Add(lbVert);
+			tbs.Controls.Add(label5);
+			tbs.Controls.Add(lbCat);
+			tbs.Controls.Add(label1);
+			tbs.Controls.Add(rtb);
+			tbs.Controls.Add(cb);
+			tbs.Controls.Add(lbPrice);
+			tbs.Controls.Add(label3);
+			tbs.Controls.Add(lbFace);
+			tbs.Controls.Add(label7);
+			tbs.HeaderFont = new Font(
 				"Microsoft Sans Serif",
 				10.25F,
 				FontStyle.Bold
 			);
-			this.tbs.HeaderTextColor = SystemColors.ActiveCaptionText;
-			this.tbs.IconLocation = new Point(4, 12);
-			this.tbs.IconSize = new Size(32, 32);
-			this.tbs.LeftHeaderColor = Color.Transparent;
-			this.tbs.Name = "tbs";
-			this.tbs.RightHeaderColor = Color.Transparent;
+			tbs.HeaderTextColor = SystemColors.ActiveCaptionText;
+			tbs.IconLocation = new Point(4, 12);
+			tbs.IconSize = new Size(32, 32);
+			tbs.LeftHeaderColor = Color.Transparent;
+			tbs.Name = "tbs";
+			tbs.RightHeaderColor = Color.Transparent;
 			//
 			// lbType
 			//
-			this.lbType.BackColor = Color.Transparent;
-			resources.ApplyResources(this.lbType, "lbType");
-			this.lbType.Name = "lbType";
+			lbType.BackColor = Color.Transparent;
+			resources.ApplyResources(lbType, "lbType");
+			lbType.Name = "lbType";
 			//
 			// label6
 			//
-			this.label6.BackColor = Color.Transparent;
-			resources.ApplyResources(this.label6, "label6");
-			this.label6.Name = "label6";
+			label6.BackColor = Color.Transparent;
+			resources.ApplyResources(label6, "label6");
+			label6.Name = "label6";
 			//
 			// lbGuid
 			//
-			this.lbGuid.BackColor = Color.Transparent;
-			resources.ApplyResources(this.lbGuid, "lbGuid");
-			this.lbGuid.Name = "lbGuid";
+			lbGuid.BackColor = Color.Transparent;
+			resources.ApplyResources(lbGuid, "lbGuid");
+			lbGuid.Name = "lbGuid";
 			//
 			// label4
 			//
-			this.label4.BackColor = Color.Transparent;
-			resources.ApplyResources(this.label4, "label4");
-			this.label4.Name = "label4";
+			label4.BackColor = Color.Transparent;
+			resources.ApplyResources(label4, "label4");
+			label4.Name = "label4";
 			//
 			// lbVert
 			//
-			this.lbVert.BackColor = Color.Transparent;
-			resources.ApplyResources(this.lbVert, "lbVert");
-			this.lbVert.Name = "lbVert";
+			lbVert.BackColor = Color.Transparent;
+			resources.ApplyResources(lbVert, "lbVert");
+			lbVert.Name = "lbVert";
 			//
 			// label5
 			//
-			this.label5.BackColor = Color.Transparent;
-			resources.ApplyResources(this.label5, "label5");
-			this.label5.Name = "label5";
+			label5.BackColor = Color.Transparent;
+			resources.ApplyResources(label5, "label5");
+			label5.Name = "label5";
 			//
 			// lbCat
 			//
-			this.lbCat.BackColor = Color.Transparent;
-			resources.ApplyResources(this.lbCat, "lbCat");
-			this.lbCat.Name = "lbCat";
+			lbCat.BackColor = Color.Transparent;
+			resources.ApplyResources(lbCat, "lbCat");
+			lbCat.Name = "lbCat";
 			//
 			// label1
 			//
-			this.label1.BackColor = Color.Transparent;
-			resources.ApplyResources(this.label1, "label1");
-			this.label1.Name = "label1";
+			label1.BackColor = Color.Transparent;
+			resources.ApplyResources(label1, "label1");
+			label1.Name = "label1";
 			//
 			// rtb
 			//
-			resources.ApplyResources(this.rtb, "rtb");
-			this.rtb.BackColor = SystemColors.Window;
-			this.rtb.BorderStyle = BorderStyle.None;
-			this.rtb.Name = "rtb";
-			this.rtb.ReadOnly = true;
+			resources.ApplyResources(rtb, "rtb");
+			rtb.BackColor = SystemColors.Window;
+			rtb.BorderStyle = BorderStyle.None;
+			rtb.Name = "rtb";
+			rtb.ReadOnly = true;
 			//
 			// cb
 			//
-			resources.ApplyResources(this.cb, "cb");
-			this.cb.DropDownStyle = ComboBoxStyle.DropDownList;
-			this.cb.Name = "cb";
-			this.cb.SelectedIndexChanged += new EventHandler(this.SelectedInfo);
+			resources.ApplyResources(cb, "cb");
+			cb.DropDownStyle = ComboBoxStyle.DropDownList;
+			cb.Name = "cb";
+			cb.SelectedIndexChanged += new EventHandler(SelectedInfo);
 			//
 			// lbPrice
 			//
-			this.lbPrice.BackColor = Color.Transparent;
-			resources.ApplyResources(this.lbPrice, "lbPrice");
-			this.lbPrice.Name = "lbPrice";
+			lbPrice.BackColor = Color.Transparent;
+			resources.ApplyResources(lbPrice, "lbPrice");
+			lbPrice.Name = "lbPrice";
 			//
 			// label3
 			//
-			this.label3.BackColor = Color.Transparent;
-			resources.ApplyResources(this.label3, "label3");
-			this.label3.Name = "label3";
+			label3.BackColor = Color.Transparent;
+			resources.ApplyResources(label3, "label3");
+			label3.Name = "label3";
 			//
 			// lbFace
 			//
-			this.lbFace.BackColor = Color.Transparent;
-			resources.ApplyResources(this.lbFace, "lbFace");
-			this.lbFace.Name = "lbFace";
+			lbFace.BackColor = Color.Transparent;
+			resources.ApplyResources(lbFace, "lbFace");
+			lbFace.Name = "lbFace";
 			//
 			// label7
 			//
-			this.label7.BackColor = Color.Transparent;
-			resources.ApplyResources(this.label7, "label7");
-			this.label7.Name = "label7";
+			label7.BackColor = Color.Transparent;
+			resources.ApplyResources(label7, "label7");
+			label7.Name = "label7";
 			//
 			// llOptions
 			//
-			this.llOptions.ActiveLinkColor = Color.LightCoral;
-			resources.ApplyResources(this.llOptions, "llOptions");
-			this.llOptions.BackColor = Color.Transparent;
-			this.llOptions.LinkColor = Color.FromArgb(
+			llOptions.ActiveLinkColor = Color.LightCoral;
+			resources.ApplyResources(llOptions, "llOptions");
+			llOptions.BackColor = Color.Transparent;
+			llOptions.LinkColor = Color.FromArgb(
 				((int)(((byte)(224)))),
 				((int)(((byte)(224)))),
 				((int)(((byte)(224))))
 			);
-			this.llOptions.Name = "llOptions";
-			this.llOptions.TabStop = true;
-			this.llOptions.VisitedLinkColor = Color.Silver;
-			this.llOptions.LinkClicked +=
+			llOptions.Name = "llOptions";
+			llOptions.TabStop = true;
+			llOptions.VisitedLinkColor = Color.Silver;
+			llOptions.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.ShowOptions
+					ShowOptions
 				);
 			//
 			// InstallerControl
 			//
 			resources.ApplyResources(this, "$this");
-			this.Controls.Add(this.llOptions);
-			this.Controls.Add(this.pndrop);
-			this.Controls.Add(this.tbs);
-			this.ForeColor = SystemColors.ControlText;
-			this.Name = "InstallerControl";
-			this.pndrop.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
-			this.tbs.ResumeLayout(false);
-			this.ResumeLayout(false);
+			Controls.Add(llOptions);
+			Controls.Add(pndrop);
+			Controls.Add(tbs);
+			ForeColor = SystemColors.ControlText;
+			Name = "InstallerControl";
+			pndrop.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(pb)).EndInit();
+			tbs.ResumeLayout(false);
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -276,7 +276,7 @@ namespace SimPe.Plugin
 				nfo.Dispose();
 			}
 
-			this.cb.Items.Clear();
+			cb.Items.Clear();
 			Cleanup();
 
 			int ct = 0;
@@ -388,8 +388,8 @@ namespace SimPe.Plugin
 		protected void Clear()
 		{
 			pb.Image = null;
-			this.tbs.HeaderText = "";
-			this.rtb.Text = "";
+			tbs.HeaderText = "";
+			rtb.Text = "";
 			lbCat.Text = "";
 			lbPrice.Text = "";
 			lbVert.Text = "0";

@@ -31,10 +31,10 @@ namespace SimPe.Interfaces
 		protected AFinderTool(IFinderResultGui rgui)
 			: base()
 		{
-			this.ResultGui = rgui;
+			ResultGui = rgui;
 			InitializeComponent();
 			ThemeManager = ThemeManager.Global.CreateChild();
-			ThemeManager.AddControl(this.grp);
+			ThemeManager.AddControl(grp);
 
 			btStart.Enabled = rgui != null;
 		}

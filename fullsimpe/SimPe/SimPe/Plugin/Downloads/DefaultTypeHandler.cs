@@ -62,7 +62,7 @@ namespace SimPe.Plugin.Downloads
 		internal DefaultTypeHandler()
 		{
 			rendergmdc = true;
-			this.countvert = true;
+			countvert = true;
 		}
 
 		public void LoadContent(
@@ -70,12 +70,12 @@ namespace SimPe.Plugin.Downloads
 			Interfaces.Files.IPackageFile pkg
 		)
 		{
-			this.flname = pkg.SaveFileName;
+			flname = pkg.SaveFileName;
 			nfo = new PackageInfo(pkg);
 			nfo.Type = type;
 			OnLoadContent();
 
-			this.SetFromPackage(pkg);
+			SetFromPackage(pkg);
 		}
 
 		protected virtual void OnLoadContent()
@@ -371,7 +371,7 @@ namespace SimPe.Plugin.Downloads
 		{
 			int fct = 0;
 			int vct = 0;
-			if (this.countvert)
+			if (countvert)
 			{
 				Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
 					Data.MetaData.GMDC

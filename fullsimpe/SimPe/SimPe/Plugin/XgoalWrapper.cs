@@ -44,11 +44,11 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				return this.GetSaveItem("stringSet").UIntegerValue;
+				return GetSaveItem("stringSet").UIntegerValue;
 			}
 			set
 			{
-				this.GetSaveItem("stringSet").UIntegerValue = value;
+				GetSaveItem("stringSet").UIntegerValue = value;
 			}
 		}
 
@@ -56,11 +56,11 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				return this.GetSaveItem("id").UIntegerValue;
+				return GetSaveItem("id").UIntegerValue;
 			}
 			set
 			{
-				this.GetSaveItem("id").UIntegerValue = value;
+				GetSaveItem("id").UIntegerValue = value;
 			}
 		}
 
@@ -68,11 +68,11 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				return this.GetSaveItem("primaryIcon").UIntegerValue;
+				return GetSaveItem("primaryIcon").UIntegerValue;
 			}
 			set
 			{
-				this.GetSaveItem("primaryIcon").UIntegerValue = value;
+				GetSaveItem("primaryIcon").UIntegerValue = value;
 			}
 		}
 
@@ -80,11 +80,11 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				return this.GetSaveItem("secondaryIcon").UIntegerValue;
+				return GetSaveItem("secondaryIcon").UIntegerValue;
 			}
 			set
 			{
-				this.GetSaveItem("secondaryIcon").UIntegerValue = value;
+				GetSaveItem("secondaryIcon").UIntegerValue = value;
 			}
 		}
 
@@ -92,11 +92,11 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				return this.GetSaveItem("score").IntegerValue;
+				return GetSaveItem("score").IntegerValue;
 			}
 			set
 			{
-				this.GetSaveItem("score").IntegerValue = value;
+				GetSaveItem("score").IntegerValue = value;
 			}
 		}
 
@@ -104,22 +104,22 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				return this.GetSaveItem("influence").IntegerValue;
+				return GetSaveItem("influence").IntegerValue;
 			}
 			set
 			{
-				this.GetSaveItem("influence").IntegerValue = value;
+				GetSaveItem("influence").IntegerValue = value;
 			}
 		}
 		public string NodeText
 		{
 			get
 			{
-				return this.GetSaveItem("nodeText").StringValue;
+				return GetSaveItem("nodeText").StringValue;
 			}
 			set
 			{
-				this.GetSaveItem("nodeText").StringValue = value;
+				GetSaveItem("nodeText").StringValue = value;
 			}
 		}
 
@@ -143,16 +143,16 @@ namespace SimPe.Plugin
 		}
 		#endregion
 
-		public override string Description => "GUID=0x" + Helper.HexString(this.FileDescriptor.Instance);
+		public override string Description => "GUID=0x" + Helper.HexString(FileDescriptor.Instance);
 
 		protected override string GetResourceName(Data.TypeAlias ta)
 		{
-			if (!this.Processed)
+			if (!Processed)
 			{
 				ProcessData(FileDescriptor, Package);
 			}
 
-			return this.NodeText;
+			return NodeText;
 		}
 	}
 }

@@ -96,7 +96,7 @@ namespace pjse
 
 		private void fill(StrWrapper wrapper)
 		{
-			this.lbItemList.Items.Clear();
+			lbItemList.Items.Clear();
 
 			for (int i = 0; wrapper[1, i] != null; i++)
 			{
@@ -119,63 +119,63 @@ namespace pjse
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(StrChooser));
-			this.panel1 = new Panel();
-			this.OK = new Button();
-			this.Cancel = new Button();
-			this.panel2 = new Panel();
-			this.lbItemList = new ListBox();
-			this.panel1.SuspendLayout();
-			this.SuspendLayout();
+			panel1 = new Panel();
+			OK = new Button();
+			Cancel = new Button();
+			panel2 = new Panel();
+			lbItemList = new ListBox();
+			panel1.SuspendLayout();
+			SuspendLayout();
 			//
 			// panel1
 			//
-			this.panel1.Controls.Add(this.OK);
-			this.panel1.Controls.Add(this.Cancel);
-			this.panel1.Controls.Add(this.panel2);
-			resources.ApplyResources(this.panel1, "panel1");
-			this.panel1.Name = "panel1";
+			panel1.Controls.Add(OK);
+			panel1.Controls.Add(Cancel);
+			panel1.Controls.Add(panel2);
+			resources.ApplyResources(panel1, "panel1");
+			panel1.Name = "panel1";
 			//
 			// OK
 			//
-			resources.ApplyResources(this.OK, "OK");
-			this.OK.DialogResult = DialogResult.OK;
-			this.OK.Name = "OK";
+			resources.ApplyResources(OK, "OK");
+			OK.DialogResult = DialogResult.OK;
+			OK.Name = "OK";
 			//
 			// Cancel
 			//
-			resources.ApplyResources(this.Cancel, "Cancel");
-			this.Cancel.DialogResult = DialogResult.Cancel;
-			this.Cancel.Name = "Cancel";
+			resources.ApplyResources(Cancel, "Cancel");
+			Cancel.DialogResult = DialogResult.Cancel;
+			Cancel.Name = "Cancel";
 			//
 			// panel2
 			//
-			this.panel2.BorderStyle = BorderStyle.FixedSingle;
-			resources.ApplyResources(this.panel2, "panel2");
-			this.panel2.Name = "panel2";
+			panel2.BorderStyle = BorderStyle.FixedSingle;
+			resources.ApplyResources(panel2, "panel2");
+			panel2.Name = "panel2";
 			//
 			// lbItemList
 			//
-			resources.ApplyResources(this.lbItemList, "lbItemList");
-			this.lbItemList.Name = "lbItemList";
-			this.lbItemList.DoubleClick += new System.EventHandler(
-				this.lbItemList_DoubleClick
+			resources.ApplyResources(lbItemList, "lbItemList");
+			lbItemList.Name = "lbItemList";
+			lbItemList.DoubleClick += new System.EventHandler(
+				lbItemList_DoubleClick
 			);
 			//
 			// StrChooser
 			//
-			this.AcceptButton = this.OK;
+			AcceptButton = OK;
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = AutoScaleMode.Dpi;
-			this.CancelButton = this.Cancel;
-			this.Controls.Add(this.lbItemList);
-			this.Controls.Add(this.panel1);
-			this.FormBorderStyle =
+			AutoScaleMode = AutoScaleMode.Dpi;
+			CancelButton = Cancel;
+			Controls.Add(lbItemList);
+			Controls.Add(panel1);
+			FormBorderStyle =
 				FormBorderStyle
 				.SizableToolWindow;
-			this.Name = "StrChooser";
-			this.ShowInTaskbar = false;
-			this.panel1.ResumeLayout(false);
-			this.ResumeLayout(false);
+			Name = "StrChooser";
+			ShowInTaskbar = false;
+			panel1.ResumeLayout(false);
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -183,8 +183,8 @@ namespace pjse
 		{
 			if (lbItemList.SelectedIndex >= 0)
 			{
-				this.DialogResult = DialogResult.OK;
-				this.Close();
+				DialogResult = DialogResult.OK;
+				Close();
 			}
 		}
 	}

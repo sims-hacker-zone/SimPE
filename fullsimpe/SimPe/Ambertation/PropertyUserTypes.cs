@@ -36,7 +36,7 @@ namespace Ambertation
 
 		FloatColor(Color cl)
 		{
-			this.Color = cl;
+			Color = cl;
 		}
 
 		FloatColor(string s)

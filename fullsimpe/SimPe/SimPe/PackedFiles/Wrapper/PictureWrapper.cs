@@ -51,7 +51,7 @@ namespace SimPe.PackedFiles.Wrapper
 				"---",
 				2,
 				Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.pic.png")
 				)
 			);
@@ -126,7 +126,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
-			if (!this.DoLoad(reader, false))
+			if (!DoLoad(reader, false))
 			{
 				System.IO.BinaryReader br = new System.IO.BinaryReader(
 					new System.IO.MemoryStream()
@@ -181,9 +181,9 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public override void Dispose()
 		{
-			if (this.image != null)
+			if (image != null)
 			{
-				this.image.Dispose();
+				image.Dispose();
 			}
 
 			image = null;

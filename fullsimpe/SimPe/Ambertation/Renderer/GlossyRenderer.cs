@@ -42,12 +42,12 @@ namespace Ambertation.Renderer
 		public GlossyRenderer()
 			: base(GlossyColorTable.Global)
 		{
-			this.RoundedEdges = false;
+			RoundedEdges = false;
 
 			if (menupattern == null)
 			{
 				menupattern = Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.pattern.gif")
 				);
 			}
@@ -56,13 +56,13 @@ namespace Ambertation.Renderer
 		static Image menupattern;
 		protected static Image MenuPattern => menupattern;
 
-		protected GlossyColorTable Colors => this.ColorTable as GlossyColorTable;
+		protected GlossyColorTable Colors => ColorTable as GlossyColorTable;
 
 		public bool RenderRoundedEdges
 		{
 			get
 			{
-				return this.RoundedEdges;
+				return RoundedEdges;
 			}
 			set
 			{

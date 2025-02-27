@@ -206,7 +206,7 @@ namespace Ambertation.Windows.Forms
 			lb.Text = text;
 			lb.Left = left;
 			lb.Top = top;
-			lb.Font = this.LabelFont;
+			lb.Font = LabelFont;
 
 			lb.TextAlign = ContentAlignment.BottomRight;
 
@@ -230,7 +230,7 @@ namespace Ambertation.Windows.Forms
 			lb.Text = text;
 			lb.Left = left;
 			lb.Top = top;
-			lb.Font = this.LabelFont;
+			lb.Font = LabelFont;
 			lb.LinkArea = new LinkArea(0, text.Length - 1);
 
 			lb.TextAlign = ContentAlignment.BottomRight;
@@ -255,7 +255,7 @@ namespace Ambertation.Windows.Forms
 			lb.Text = text;
 			lb.Left = left;
 			lb.Top = bottom - lb.Height;
-			lb.Font = this.TextBoxFont;
+			lb.Font = TextBoxFont;
 
 			return lb;
 		}
@@ -274,7 +274,7 @@ namespace Ambertation.Windows.Forms
 			lb.Text = text;
 			lb.Left = left;
 			lb.Top = top;
-			lb.Font = this.LabelFont;
+			lb.Font = LabelFont;
 			lb.FlatStyle = FlatStyle.System;
 			lb.Anchor = AnchorStyles.Top | AnchorStyles.Right;
 
@@ -296,7 +296,7 @@ namespace Ambertation.Windows.Forms
 			lb.Text = text;
 			lb.Left = left;
 			lb.Top = top;
-			lb.Font = this.LabelFont;
+			lb.Font = LabelFont;
 			lb.FlatStyle = FlatStyle.System;
 			lb.Anchor = AnchorStyles.Top | AnchorStyles.Right;
 			lb.LocationChanged += new EventHandler(lb_LocationChanged);
@@ -312,7 +312,7 @@ namespace Ambertation.Windows.Forms
 				c.Dispose();
 			}
 
-			this.Controls.Clear();
+			Controls.Clear();
 		}
 
 		CheckBox cbzero,
@@ -332,7 +332,7 @@ namespace Ambertation.Windows.Forms
 
 			Panel gb = new Panel();
 			gb.Parent = this;
-			gb.Width = this.Width;
+			gb.Width = Width;
 			gb.Dock = DockStyle.Fill;
 			gb.AutoScroll = true;
 
@@ -528,7 +528,7 @@ namespace Ambertation.Windows.Forms
 			cbgrid.Anchor = AnchorStyles.Top | AnchorStyles.Right;
 			if (hvc != null)
 			{
-				cbgrid.Checked = this.hvc.ShowGrid;
+				cbgrid.Checked = hvc.ShowGrid;
 			}
 
 			cbgrid.CheckedChanged += new EventHandler(cbgrid_CheckedChanged);

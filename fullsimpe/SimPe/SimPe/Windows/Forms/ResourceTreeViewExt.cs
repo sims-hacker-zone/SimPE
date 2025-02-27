@@ -83,7 +83,7 @@ namespace SimPe.Windows.Forms
 				SaveLastSelection();
 			}
 
-			this.Clear();
+			Clear();
 			firstnode = builder.BuildNodes(maps);
 			tv.Nodes.Add(firstnode);
 			firstnode.Expand();
@@ -181,7 +181,7 @@ namespace SimPe.Windows.Forms
 			ResourceTreeNodeExt node = e.Node as ResourceTreeNodeExt;
 			if (node != null)
 			{
-				if (this.manager != null)
+				if (manager != null)
 				{
 					if (manager.ListView != null)
 					{

@@ -194,7 +194,7 @@ namespace SimPe.Plugin.Anim
 			datas = new short[4];
 			Part2 = new AnimationFrameBlock[0];
 			Part4 = new AnimBlock4[0];
-			this.Parent = parent;
+			Parent = parent;
 		}
 
 		/// <summary>
@@ -222,8 +222,8 @@ namespace SimPe.Plugin.Anim
 		/// <param name="writer">The Stream that receives the Data</param>
 		internal void SerializeData(System.IO.BinaryWriter writer)
 		{
-			this.SetPart2Count(this.Part2Count);
-			this.SetPart4Count(this.Part4Count);
+			SetPart2Count(Part2Count);
+			SetPart4Count(Part4Count);
 
 			writer.Write(datai[0]);
 			writer.Write(datai[1]);
@@ -455,7 +455,7 @@ namespace SimPe.Plugin.Anim
 					{
 						if (
 							icc.StoredTransformNode.ObjectGraphNode.FileName
-							== this.Name
+							== Name
 						)
 						{
 							return rcol;
@@ -480,11 +480,11 @@ namespace SimPe.Plugin.Anim
 			}
 
 			if (
-				this.Name == "auskel"
-				|| this.Name == "tuskel"
-				|| this.Name == "cuskel"
-				|| this.Name == "puskel"
-				|| this.Name == "buskel"
+				Name == "auskel"
+				|| Name == "tuskel"
+				|| Name == "cuskel"
+				|| Name == "puskel"
+				|| Name == "buskel"
 			)
 			{
 				FileTableBase.FileIndex.Load();
@@ -535,28 +535,28 @@ namespace SimPe.Plugin.Anim
 			}
 			// the 'skel cres used by all sim animations don't have meshes so we point to the default naked body meshes instaed
 			if (
-				this.Name == "auskel"
-				|| this.Name == "tuskel"
-				|| this.Name == "cuskel"
-				|| this.Name == "puskel"
-				|| this.Name == "buskel"
+				Name == "auskel"
+				|| Name == "tuskel"
+				|| Name == "cuskel"
+				|| Name == "puskel"
+				|| Name == "buskel"
 			)
 			{
 				FileTableBase.FileIndex.Load();
 				ulong instns = 0xCCBC1AF8FFE2EDE9; //auskel
-				if (this.Name == "tuskel")
+				if (Name == "tuskel")
 				{
 					instns = 0x9C1686E9FF68B810;
 				}
-				else if (this.Name == "cuskel")
+				else if (Name == "cuskel")
 				{
 					instns = 0xB7C67187FF38EF7F;
 				}
-				else if (this.Name == "puskel")
+				else if (Name == "puskel")
 				{
 					instns = 0xFF5F4C89AE871D44;
 				}
-				else if (this.Name == "buskel")
+				else if (Name == "buskel")
 				{
 					instns = 0x57D5D2CDFF545BA9;
 				}
@@ -591,7 +591,7 @@ namespace SimPe.Plugin.Anim
 		/// <returns>null or the matching Block</returns>
 		public AnimationFrameBlock GetJointTransformation(string name, FrameType type)
 		{
-			foreach (AnimationFrameBlock ab in this.Part2)
+			foreach (AnimationFrameBlock ab in Part2)
 			{
 				if (
 					ab.Name == name

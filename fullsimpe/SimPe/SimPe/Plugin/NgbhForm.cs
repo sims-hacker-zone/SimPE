@@ -36,7 +36,7 @@ namespace SimPe.Plugin
 		{
 			InitializeComponent();
 
-			this.cbtype.SelectedIndex = cbtype.Items.Count - 1;
+			cbtype.SelectedIndex = cbtype.Items.Count - 1;
 
 #if DEBUG
 #else
@@ -62,9 +62,9 @@ namespace SimPe.Plugin
 			object[] os = e.Items as object[];
 			if (os != null)
 			{
-				this.cbtype.SelectedIndex = (int)((Data.NeighborhoodSlots)os[1]);
+				cbtype.SelectedIndex = (int)((Data.NeighborhoodSlots)os[1]);
 				uint inst = (uint)os[0];
-				foreach (ListViewItem lvi in this.lv.Items)
+				foreach (ListViewItem lvi in lv.Items)
 				{
 					PackedFiles.Wrapper.SDesc sdesc =
 						lvi.Tag as PackedFiles.Wrapper.SDesc;
@@ -109,67 +109,67 @@ namespace SimPe.Plugin
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
+			components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(NgbhForm));
-			this.ngbhPanel = new Panel();
-			this.cbtype = new ComboBox();
-			this.lbname = new Label();
-			this.button1 = new Button();
-			this.gbmem = new GroupBox();
-			this.cbown = new ComboBox();
-			this.tbval = new TextBox();
-			this.label6 = new Label();
-			this.tbUnk = new TextBox();
-			this.label5 = new Label();
-			this.btdown = new Button();
-			this.btup = new Button();
-			this.linkLabel2 = new LinkLabel();
-			this.lbmem = new ListView();
-			this.memilist = new ImageList(this.components);
-			this.tbown = new TextBox();
-			this.label4 = new Label();
-			this.lladd = new LinkLabel();
-			this.linkLabel1 = new LinkLabel();
-			this.tbsubid = new TextBox();
-			this.cbsub = new ComboBox();
-			this.tbsub = new TextBox();
-			this.label3 = new Label();
-			this.cbguid = new ComboBox();
-			this.tbguid = new TextBox();
-			this.label2 = new Label();
-			this.cbaction = new CheckBox();
-			this.cbvis = new CheckBox();
-			this.tbFlag = new TextBox();
-			this.label1 = new Label();
-			this.pb = new PictureBox();
-			this.lbdata = new TextBox();
-			this.lv = new ListView();
-			this.ilist = new ImageList(this.components);
-			this.panel2 = new Panel();
-			this.label27 = new Label();
-			this.ngbhPanel.SuspendLayout();
-			this.gbmem.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
-			this.panel2.SuspendLayout();
-			this.SuspendLayout();
+			ngbhPanel = new Panel();
+			cbtype = new ComboBox();
+			lbname = new Label();
+			button1 = new Button();
+			gbmem = new GroupBox();
+			cbown = new ComboBox();
+			tbval = new TextBox();
+			label6 = new Label();
+			tbUnk = new TextBox();
+			label5 = new Label();
+			btdown = new Button();
+			btup = new Button();
+			linkLabel2 = new LinkLabel();
+			lbmem = new ListView();
+			memilist = new ImageList(components);
+			tbown = new TextBox();
+			label4 = new Label();
+			lladd = new LinkLabel();
+			linkLabel1 = new LinkLabel();
+			tbsubid = new TextBox();
+			cbsub = new ComboBox();
+			tbsub = new TextBox();
+			label3 = new Label();
+			cbguid = new ComboBox();
+			tbguid = new TextBox();
+			label2 = new Label();
+			cbaction = new CheckBox();
+			cbvis = new CheckBox();
+			tbFlag = new TextBox();
+			label1 = new Label();
+			pb = new PictureBox();
+			lbdata = new TextBox();
+			lv = new ListView();
+			ilist = new ImageList(components);
+			panel2 = new Panel();
+			label27 = new Label();
+			ngbhPanel.SuspendLayout();
+			gbmem.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(pb)).BeginInit();
+			panel2.SuspendLayout();
+			SuspendLayout();
 			//
 			// ngbhPanel
 			//
-			resources.ApplyResources(this.ngbhPanel, "ngbhPanel");
-			this.ngbhPanel.Controls.Add(this.cbtype);
-			this.ngbhPanel.Controls.Add(this.lbname);
-			this.ngbhPanel.Controls.Add(this.button1);
-			this.ngbhPanel.Controls.Add(this.gbmem);
-			this.ngbhPanel.Controls.Add(this.lv);
-			this.ngbhPanel.Controls.Add(this.panel2);
-			this.ngbhPanel.Name = "ngbhPanel";
+			resources.ApplyResources(ngbhPanel, "ngbhPanel");
+			ngbhPanel.Controls.Add(cbtype);
+			ngbhPanel.Controls.Add(lbname);
+			ngbhPanel.Controls.Add(button1);
+			ngbhPanel.Controls.Add(gbmem);
+			ngbhPanel.Controls.Add(lv);
+			ngbhPanel.Controls.Add(panel2);
+			ngbhPanel.Name = "ngbhPanel";
 			//
 			// cbtype
 			//
-			this.cbtype.DropDownStyle = ComboBoxStyle.DropDownList;
-			resources.ApplyResources(this.cbtype, "cbtype");
-			this.cbtype.Items.AddRange(
+			cbtype.DropDownStyle = ComboBoxStyle.DropDownList;
+			resources.ApplyResources(cbtype, "cbtype");
+			cbtype.Items.AddRange(
 				new object[]
 				{
 					resources.GetString("cbtype.Items"),
@@ -180,277 +180,277 @@ namespace SimPe.Plugin
 					resources.GetString("cbtype.Items5"),
 				}
 			);
-			this.cbtype.Name = "cbtype";
-			this.cbtype.SelectedIndexChanged += new EventHandler(this.SelectSim);
+			cbtype.Name = "cbtype";
+			cbtype.SelectedIndexChanged += new EventHandler(SelectSim);
 			//
 			// lbname
 			//
-			resources.ApplyResources(this.lbname, "lbname");
-			this.lbname.Name = "lbname";
+			resources.ApplyResources(lbname, "lbname");
+			lbname.Name = "lbname";
 			//
 			// button1
 			//
-			resources.ApplyResources(this.button1, "button1");
-			this.button1.Name = "button1";
-			this.button1.Click += new EventHandler(this.Commit);
+			resources.ApplyResources(button1, "button1");
+			button1.Name = "button1";
+			button1.Click += new EventHandler(Commit);
 			//
 			// gbmem
 			//
-			resources.ApplyResources(this.gbmem, "gbmem");
-			this.gbmem.Controls.Add(this.cbown);
-			this.gbmem.Controls.Add(this.tbval);
-			this.gbmem.Controls.Add(this.label6);
-			this.gbmem.Controls.Add(this.tbUnk);
-			this.gbmem.Controls.Add(this.label5);
-			this.gbmem.Controls.Add(this.btdown);
-			this.gbmem.Controls.Add(this.btup);
-			this.gbmem.Controls.Add(this.linkLabel2);
-			this.gbmem.Controls.Add(this.lbmem);
-			this.gbmem.Controls.Add(this.tbown);
-			this.gbmem.Controls.Add(this.label4);
-			this.gbmem.Controls.Add(this.lladd);
-			this.gbmem.Controls.Add(this.linkLabel1);
-			this.gbmem.Controls.Add(this.tbsubid);
-			this.gbmem.Controls.Add(this.cbsub);
-			this.gbmem.Controls.Add(this.tbsub);
-			this.gbmem.Controls.Add(this.label3);
-			this.gbmem.Controls.Add(this.cbguid);
-			this.gbmem.Controls.Add(this.tbguid);
-			this.gbmem.Controls.Add(this.label2);
-			this.gbmem.Controls.Add(this.cbaction);
-			this.gbmem.Controls.Add(this.cbvis);
-			this.gbmem.Controls.Add(this.tbFlag);
-			this.gbmem.Controls.Add(this.label1);
-			this.gbmem.Controls.Add(this.pb);
-			this.gbmem.Controls.Add(this.lbdata);
-			this.gbmem.FlatStyle = FlatStyle.System;
-			this.gbmem.Name = "gbmem";
-			this.gbmem.TabStop = false;
+			resources.ApplyResources(gbmem, "gbmem");
+			gbmem.Controls.Add(cbown);
+			gbmem.Controls.Add(tbval);
+			gbmem.Controls.Add(label6);
+			gbmem.Controls.Add(tbUnk);
+			gbmem.Controls.Add(label5);
+			gbmem.Controls.Add(btdown);
+			gbmem.Controls.Add(btup);
+			gbmem.Controls.Add(linkLabel2);
+			gbmem.Controls.Add(lbmem);
+			gbmem.Controls.Add(tbown);
+			gbmem.Controls.Add(label4);
+			gbmem.Controls.Add(lladd);
+			gbmem.Controls.Add(linkLabel1);
+			gbmem.Controls.Add(tbsubid);
+			gbmem.Controls.Add(cbsub);
+			gbmem.Controls.Add(tbsub);
+			gbmem.Controls.Add(label3);
+			gbmem.Controls.Add(cbguid);
+			gbmem.Controls.Add(tbguid);
+			gbmem.Controls.Add(label2);
+			gbmem.Controls.Add(cbaction);
+			gbmem.Controls.Add(cbvis);
+			gbmem.Controls.Add(tbFlag);
+			gbmem.Controls.Add(label1);
+			gbmem.Controls.Add(pb);
+			gbmem.Controls.Add(lbdata);
+			gbmem.FlatStyle = FlatStyle.System;
+			gbmem.Name = "gbmem";
+			gbmem.TabStop = false;
 			//
 			// cbown
 			//
-			resources.ApplyResources(this.cbown, "cbown");
-			this.cbown.DropDownStyle = ComboBoxStyle.DropDownList;
-			this.cbown.Name = "cbown";
-			this.cbown.SelectedIndexChanged += new EventHandler(
-				this.ChgOwnerItem
+			resources.ApplyResources(cbown, "cbown");
+			cbown.DropDownStyle = ComboBoxStyle.DropDownList;
+			cbown.Name = "cbown";
+			cbown.SelectedIndexChanged += new EventHandler(
+				ChgOwnerItem
 			);
 			//
 			// tbval
 			//
-			resources.ApplyResources(this.tbval, "tbval");
-			this.tbval.Name = "tbval";
-			this.tbval.TextChanged += new EventHandler(this.tbval_TextChanged);
+			resources.ApplyResources(tbval, "tbval");
+			tbval.Name = "tbval";
+			tbval.TextChanged += new EventHandler(tbval_TextChanged);
 			//
 			// label6
 			//
-			resources.ApplyResources(this.label6, "label6");
-			this.label6.Name = "label6";
+			resources.ApplyResources(label6, "label6");
+			label6.Name = "label6";
 			//
 			// tbUnk
 			//
-			resources.ApplyResources(this.tbUnk, "tbUnk");
-			this.tbUnk.Name = "tbUnk";
-			this.tbUnk.TextChanged += new EventHandler(this.tbUnk_TextChanged);
+			resources.ApplyResources(tbUnk, "tbUnk");
+			tbUnk.Name = "tbUnk";
+			tbUnk.TextChanged += new EventHandler(tbUnk_TextChanged);
 			//
 			// label5
 			//
-			resources.ApplyResources(this.label5, "label5");
-			this.label5.Name = "label5";
+			resources.ApplyResources(label5, "label5");
+			label5.Name = "label5";
 			//
 			// btdown
 			//
-			resources.ApplyResources(this.btdown, "btdown");
-			this.btdown.Name = "btdown";
-			this.btdown.Click += new EventHandler(this.ItemDown);
+			resources.ApplyResources(btdown, "btdown");
+			btdown.Name = "btdown";
+			btdown.Click += new EventHandler(ItemDown);
 			//
 			// btup
 			//
-			resources.ApplyResources(this.btup, "btup");
-			this.btup.Name = "btup";
-			this.btup.Click += new EventHandler(this.ItemUp);
+			resources.ApplyResources(btup, "btup");
+			btup.Name = "btup";
+			btup.Click += new EventHandler(ItemUp);
 			//
 			// linkLabel2
 			//
-			resources.ApplyResources(this.linkLabel2, "linkLabel2");
-			this.linkLabel2.Name = "linkLabel2";
-			this.linkLabel2.TabStop = true;
-			this.linkLabel2.LinkClicked +=
-				new LinkLabelLinkClickedEventHandler(this.IOwn);
+			resources.ApplyResources(linkLabel2, "linkLabel2");
+			linkLabel2.Name = "linkLabel2";
+			linkLabel2.TabStop = true;
+			linkLabel2.LinkClicked +=
+				new LinkLabelLinkClickedEventHandler(IOwn);
 			//
 			// lbmem
 			//
-			resources.ApplyResources(this.lbmem, "lbmem");
-			this.lbmem.HideSelection = false;
-			this.lbmem.LargeImageList = this.memilist;
-			this.lbmem.MultiSelect = false;
-			this.lbmem.Name = "lbmem";
-			this.lbmem.SmallImageList = this.memilist;
-			this.lbmem.StateImageList = this.memilist;
-			this.lbmem.UseCompatibleStateImageBehavior = false;
-			this.lbmem.View = View.List;
-			this.lbmem.SelectedIndexChanged += new EventHandler(
-				this.SelectMemory
+			resources.ApplyResources(lbmem, "lbmem");
+			lbmem.HideSelection = false;
+			lbmem.LargeImageList = memilist;
+			lbmem.MultiSelect = false;
+			lbmem.Name = "lbmem";
+			lbmem.SmallImageList = memilist;
+			lbmem.StateImageList = memilist;
+			lbmem.UseCompatibleStateImageBehavior = false;
+			lbmem.View = View.List;
+			lbmem.SelectedIndexChanged += new EventHandler(
+				SelectMemory
 			);
 			//
 			// memilist
 			//
-			this.memilist.ColorDepth = ColorDepth.Depth32Bit;
-			resources.ApplyResources(this.memilist, "memilist");
-			this.memilist.TransparentColor = Color.Transparent;
+			memilist.ColorDepth = ColorDepth.Depth32Bit;
+			resources.ApplyResources(memilist, "memilist");
+			memilist.TransparentColor = Color.Transparent;
 			//
 			// tbown
 			//
-			resources.ApplyResources(this.tbown, "tbown");
-			this.tbown.Name = "tbown";
-			this.tbown.TextChanged += new EventHandler(this.ChgOwner);
+			resources.ApplyResources(tbown, "tbown");
+			tbown.Name = "tbown";
+			tbown.TextChanged += new EventHandler(ChgOwner);
 			//
 			// label4
 			//
-			resources.ApplyResources(this.label4, "label4");
-			this.label4.Name = "label4";
+			resources.ApplyResources(label4, "label4");
+			label4.Name = "label4";
 			//
 			// lladd
 			//
-			resources.ApplyResources(this.lladd, "lladd");
-			this.lladd.Name = "lladd";
-			this.lladd.TabStop = true;
-			this.lladd.LinkClicked +=
-				new LinkLabelLinkClickedEventHandler(this.AddItem);
+			resources.ApplyResources(lladd, "lladd");
+			lladd.Name = "lladd";
+			lladd.TabStop = true;
+			lladd.LinkClicked +=
+				new LinkLabelLinkClickedEventHandler(AddItem);
 			//
 			// linkLabel1
 			//
-			resources.ApplyResources(this.linkLabel1, "linkLabel1");
-			this.linkLabel1.Name = "linkLabel1";
-			this.linkLabel1.TabStop = true;
-			this.linkLabel1.LinkClicked +=
+			resources.ApplyResources(linkLabel1, "linkLabel1");
+			linkLabel1.Name = "linkLabel1";
+			linkLabel1.TabStop = true;
+			linkLabel1.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.DeleteItem
+					DeleteItem
 				);
 			//
 			// tbsubid
 			//
-			resources.ApplyResources(this.tbsubid, "tbsubid");
-			this.tbsubid.Name = "tbsubid";
-			this.tbsubid.TextChanged += new EventHandler(this.ChgSubjectID);
+			resources.ApplyResources(tbsubid, "tbsubid");
+			tbsubid.Name = "tbsubid";
+			tbsubid.TextChanged += new EventHandler(ChgSubjectID);
 			//
 			// cbsub
 			//
-			resources.ApplyResources(this.cbsub, "cbsub");
-			this.cbsub.DropDownStyle = ComboBoxStyle.DropDownList;
-			this.cbsub.Name = "cbsub";
-			this.cbsub.SelectedIndexChanged += new EventHandler(
-				this.ChgSubjectItem
+			resources.ApplyResources(cbsub, "cbsub");
+			cbsub.DropDownStyle = ComboBoxStyle.DropDownList;
+			cbsub.Name = "cbsub";
+			cbsub.SelectedIndexChanged += new EventHandler(
+				ChgSubjectItem
 			);
 			//
 			// tbsub
 			//
-			resources.ApplyResources(this.tbsub, "tbsub");
-			this.tbsub.Name = "tbsub";
-			this.tbsub.TextChanged += new EventHandler(this.ChgSubject);
+			resources.ApplyResources(tbsub, "tbsub");
+			tbsub.Name = "tbsub";
+			tbsub.TextChanged += new EventHandler(ChgSubject);
 			//
 			// label3
 			//
-			resources.ApplyResources(this.label3, "label3");
-			this.label3.Name = "label3";
+			resources.ApplyResources(label3, "label3");
+			label3.Name = "label3";
 			//
 			// cbguid
 			//
-			resources.ApplyResources(this.cbguid, "cbguid");
-			this.cbguid.DropDownStyle = ComboBoxStyle.DropDownList;
-			this.cbguid.Name = "cbguid";
-			this.cbguid.SelectedIndexChanged += new EventHandler(
-				this.ChgGuidItem
+			resources.ApplyResources(cbguid, "cbguid");
+			cbguid.DropDownStyle = ComboBoxStyle.DropDownList;
+			cbguid.Name = "cbguid";
+			cbguid.SelectedIndexChanged += new EventHandler(
+				ChgGuidItem
 			);
 			//
 			// tbguid
 			//
-			resources.ApplyResources(this.tbguid, "tbguid");
-			this.tbguid.Name = "tbguid";
-			this.tbguid.TextChanged += new EventHandler(this.ChgGuid);
+			resources.ApplyResources(tbguid, "tbguid");
+			tbguid.Name = "tbguid";
+			tbguid.TextChanged += new EventHandler(ChgGuid);
 			//
 			// label2
 			//
-			resources.ApplyResources(this.label2, "label2");
-			this.label2.Name = "label2";
+			resources.ApplyResources(label2, "label2");
+			label2.Name = "label2";
 			//
 			// cbaction
 			//
-			resources.ApplyResources(this.cbaction, "cbaction");
-			this.cbaction.Name = "cbaction";
-			this.cbaction.CheckedChanged += new EventHandler(this.ChgFlags);
+			resources.ApplyResources(cbaction, "cbaction");
+			cbaction.Name = "cbaction";
+			cbaction.CheckedChanged += new EventHandler(ChgFlags);
 			//
 			// cbvis
 			//
-			resources.ApplyResources(this.cbvis, "cbvis");
-			this.cbvis.Name = "cbvis";
-			this.cbvis.CheckedChanged += new EventHandler(this.ChgFlags);
+			resources.ApplyResources(cbvis, "cbvis");
+			cbvis.Name = "cbvis";
+			cbvis.CheckedChanged += new EventHandler(ChgFlags);
 			//
 			// tbFlag
 			//
-			resources.ApplyResources(this.tbFlag, "tbFlag");
-			this.tbFlag.Name = "tbFlag";
-			this.tbFlag.TextChanged += new EventHandler(this.ChgFlag);
+			resources.ApplyResources(tbFlag, "tbFlag");
+			tbFlag.Name = "tbFlag";
+			tbFlag.TextChanged += new EventHandler(ChgFlag);
 			//
 			// label1
 			//
-			resources.ApplyResources(this.label1, "label1");
-			this.label1.Name = "label1";
+			resources.ApplyResources(label1, "label1");
+			label1.Name = "label1";
 			//
 			// pb
 			//
-			resources.ApplyResources(this.pb, "pb");
-			this.pb.Name = "pb";
-			this.pb.TabStop = false;
+			resources.ApplyResources(pb, "pb");
+			pb.Name = "pb";
+			pb.TabStop = false;
 			//
 			// lbdata
 			//
-			resources.ApplyResources(this.lbdata, "lbdata");
-			this.lbdata.Name = "lbdata";
-			this.lbdata.TextChanged += new EventHandler(this.ChgData);
+			resources.ApplyResources(lbdata, "lbdata");
+			lbdata.Name = "lbdata";
+			lbdata.TextChanged += new EventHandler(ChgData);
 			//
 			// lv
 			//
-			resources.ApplyResources(this.lv, "lv");
-			this.lv.BorderStyle = BorderStyle.None;
-			this.lv.HideSelection = false;
-			this.lv.LargeImageList = this.ilist;
-			this.lv.Name = "lv";
-			this.lv.UseCompatibleStateImageBehavior = false;
-			this.lv.SelectedIndexChanged += new EventHandler(this.SelectSim);
+			resources.ApplyResources(lv, "lv");
+			lv.BorderStyle = BorderStyle.None;
+			lv.HideSelection = false;
+			lv.LargeImageList = ilist;
+			lv.Name = "lv";
+			lv.UseCompatibleStateImageBehavior = false;
+			lv.SelectedIndexChanged += new EventHandler(SelectSim);
 			//
 			// ilist
 			//
-			this.ilist.ColorDepth = ColorDepth.Depth32Bit;
-			resources.ApplyResources(this.ilist, "ilist");
-			this.ilist.TransparentColor = Color.Transparent;
+			ilist.ColorDepth = ColorDepth.Depth32Bit;
+			resources.ApplyResources(ilist, "ilist");
+			ilist.TransparentColor = Color.Transparent;
 			//
 			// panel2
 			//
-			resources.ApplyResources(this.panel2, "panel2");
-			this.panel2.BackColor = SystemColors.AppWorkspace;
-			this.panel2.Controls.Add(this.label27);
-			this.panel2.ForeColor = SystemColors.ActiveCaptionText;
-			this.panel2.Name = "panel2";
+			resources.ApplyResources(panel2, "panel2");
+			panel2.BackColor = SystemColors.AppWorkspace;
+			panel2.Controls.Add(label27);
+			panel2.ForeColor = SystemColors.ActiveCaptionText;
+			panel2.Name = "panel2";
 			//
 			// label27
 			//
-			resources.ApplyResources(this.label27, "label27");
-			this.label27.Name = "label27";
+			resources.ApplyResources(label27, "label27");
+			label27.Name = "label27";
 			//
 			// NgbhForm
 			//
 			resources.ApplyResources(this, "$this");
-			this.Controls.Add(this.ngbhPanel);
-			this.Name = "NgbhForm";
-			this.ngbhPanel.ResumeLayout(false);
-			this.ngbhPanel.PerformLayout();
-			this.gbmem.ResumeLayout(false);
-			this.gbmem.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
-			this.panel2.ResumeLayout(false);
-			this.panel2.PerformLayout();
-			this.ResumeLayout(false);
+			Controls.Add(ngbhPanel);
+			Name = "NgbhForm";
+			ngbhPanel.ResumeLayout(false);
+			ngbhPanel.PerformLayout();
+			gbmem.ResumeLayout(false);
+			gbmem.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(pb)).EndInit();
+			panel2.ResumeLayout(false);
+			panel2.PerformLayout();
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -743,7 +743,7 @@ namespace SimPe.Plugin
 
 			gbmem.Enabled = true;
 
-			this.Cursor = Cursors.WaitCursor;
+			Cursor = Cursors.WaitCursor;
 			try
 			{
 				lbname.Text = lv.SelectedItems[0].Text;
@@ -761,7 +761,7 @@ namespace SimPe.Plugin
 				{
 					foreach (NgbhItem item in items)
 					{
-						this.AddItem(item);
+						AddItem(item);
 					}
 				}
 
@@ -772,23 +772,23 @@ namespace SimPe.Plugin
 			}
 			catch (Exception ex)
 			{
-				this.Cursor = Cursors.Default;
+				Cursor = Cursors.Default;
 				Helper.ExceptionMessage(
 					Localization.Manager.GetString("errconvert"),
 					ex
 				);
 			}
-			this.Cursor = Cursors.Default;
+			Cursor = Cursors.Default;
 		}
 
 		protected NgbhItem GetSelectedItem()
 		{
-			if (this.lbmem.SelectedItems.Count == 0)
+			if (lbmem.SelectedItems.Count == 0)
 			{
 				return new NgbhItem(
 					new NgbhSlot(
 						(Ngbh)wrapper,
-						(Data.NeighborhoodSlots)this.cbtype.SelectedValue
+						(Data.NeighborhoodSlots)cbtype.SelectedValue
 					)
 				);
 			}
@@ -799,22 +799,22 @@ namespace SimPe.Plugin
 		private void SelectMemory(object sender, EventArgs e)
 		{
 			tbFlag.Tag = true;
-			this.cbvis.Checked = GetSelectedItem().Flags.IsVisible;
-			this.cbaction.Checked = GetSelectedItem().Flags.IsControler;
-			this.tbFlag.Text = "0x" + Helper.HexString(GetSelectedItem().Flags.Value);
+			cbvis.Checked = GetSelectedItem().Flags.IsVisible;
+			cbaction.Checked = GetSelectedItem().Flags.IsControler;
+			tbFlag.Text = "0x" + Helper.HexString(GetSelectedItem().Flags.Value);
 
-			this.tbUnk.Enabled =
+			tbUnk.Enabled =
 				(uint)GetSelectedItem().ParentSlot.Version
 				>= (uint)NgbhVersion.Nightlife;
-			this.tbUnk.Text =
+			tbUnk.Text =
 				"0x" + Helper.HexString(GetSelectedItem().InventoryNumber);
 			if (Helper.WindowsRegistry.HiddenMode)
 			{
-				this.tbval.Text = "0x" + Helper.HexString(GetSelectedItem().Value);
+				tbval.Text = "0x" + Helper.HexString(GetSelectedItem().Value);
 			}
 			else
 			{
-				this.tbval.Text = GetSelectedItem().Value.ToString();
+				tbval.Text = GetSelectedItem().Value.ToString();
 			}
 
 			tbFlag.Tag = null;
@@ -888,10 +888,10 @@ namespace SimPe.Plugin
 			}
 
 			tbFlag.Tag = true;
-			GetSelectedItem().Flags.IsVisible = this.cbvis.Checked;
-			GetSelectedItem().Flags.IsControler = this.cbaction.Checked;
-			this.tbFlag.Text = "0x" + Helper.HexString(GetSelectedItem().Flags.Value);
-			this.UpdateMemItem(GetSelectedItem());
+			GetSelectedItem().Flags.IsVisible = cbvis.Checked;
+			GetSelectedItem().Flags.IsControler = cbaction.Checked;
+			tbFlag.Text = "0x" + Helper.HexString(GetSelectedItem().Flags.Value);
+			UpdateMemItem(GetSelectedItem());
 			tbFlag.Tag = null;
 		}
 
@@ -941,7 +941,7 @@ namespace SimPe.Plugin
 			try
 			{
 				GetSelectedItem().Guid = Convert.ToUInt32(tbguid.Text, 16);
-				this.UpdateMemItem(GetSelectedItem());
+				UpdateMemItem(GetSelectedItem());
 			}
 			catch (Exception ex)
 			{
@@ -986,7 +986,7 @@ namespace SimPe.Plugin
 			try
 			{
 				GetSelectedItem().SimInstance = Convert.ToUInt16(tbsub.Text, 16);
-				this.UpdateMemItem(GetSelectedItem());
+				UpdateMemItem(GetSelectedItem());
 			}
 			catch (Exception ex)
 			{
@@ -1007,7 +1007,7 @@ namespace SimPe.Plugin
 			try
 			{
 				GetSelectedItem().SimID = Convert.ToUInt32(tbsubid.Text, 16);
-				this.UpdateMemItem(GetSelectedItem());
+				UpdateMemItem(GetSelectedItem());
 			}
 			catch (Exception ex)
 			{
@@ -1051,7 +1051,7 @@ namespace SimPe.Plugin
 			try
 			{
 				GetSelectedItem().OwnerInstance = Convert.ToUInt16(tbown.Text, 16);
-				this.UpdateMemItem(GetSelectedItem());
+				UpdateMemItem(GetSelectedItem());
 			}
 			catch (Exception ex)
 			{
@@ -1086,7 +1086,7 @@ namespace SimPe.Plugin
 					}
 				}
 
-				this.GetSelectedItem().Data = data;
+				GetSelectedItem().Data = data;
 			}
 			catch (Exception ex)
 			{
@@ -1146,7 +1146,7 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			this.Cursor = Cursors.WaitCursor;
+			Cursor = Cursors.WaitCursor;
 			try
 			{
 				PackedFiles.Wrapper.SDesc sdesc = (PackedFiles.Wrapper.SDesc)
@@ -1169,19 +1169,19 @@ namespace SimPe.Plugin
 					item.PutValue(0x0B, 0);
 					item.Flags.IsVisible = true;
 					item.Flags.IsControler = false;
-					this.AddItem(item);
+					AddItem(item);
 					lbmem.Items[lbmem.Items.Count - 1].Selected = true;
 				}
 			}
 			catch (Exception ex)
 			{
-				this.Cursor = Cursors.Default;
+				Cursor = Cursors.Default;
 				Helper.ExceptionMessage(
 					Localization.Manager.GetString("errconvert"),
 					ex
 				);
 			}
-			this.Cursor = Cursors.Default;
+			Cursor = Cursors.Default;
 		}
 	}
 }

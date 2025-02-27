@@ -41,7 +41,7 @@ namespace SimPe.Cache
 			)
 		{
 			this.filename = filename;
-			this.ver = version;
+			ver = version;
 		}
 	}
 }

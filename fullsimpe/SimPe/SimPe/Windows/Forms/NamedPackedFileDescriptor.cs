@@ -10,9 +10,9 @@ namespace SimPe.Windows.Forms
 			Interfaces.Files.IPackageFile pkg
 		)
 		{
-			this.Descriptor = pfd;
+			Descriptor = pfd;
 			this.pkg = pkg;
-			this.Resource = new Plugin.FileIndexItem(pfd, pkg);
+			Resource = new Plugin.FileIndexItem(pfd, pkg);
 			realname = null;
 		}
 

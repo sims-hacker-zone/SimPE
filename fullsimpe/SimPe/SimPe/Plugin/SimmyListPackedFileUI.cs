@@ -22,8 +22,8 @@ namespace SimPe.Plugin
 		{
 			base.RefreshGUI();
 
-			this.checkBox1.Checked = false;
-			this.TBsting.Text = Wrapper.Strung;
+			checkBox1.Checked = false;
+			TBsting.Text = Wrapper.Strung;
 		}
 
 		public override void OnCommit()
@@ -39,7 +39,7 @@ namespace SimPe.Plugin
 
 		void IDisposable.Dispose()
 		{
-			this.TPFW.Dispose();
+			TPFW.Dispose();
 		}
 		#endregion
 
@@ -47,14 +47,14 @@ namespace SimPe.Plugin
 		{
 			if (checkBox1.Checked == true)
 			{
-				this.TBsting.Text = Wrapper.Twine;
+				TBsting.Text = Wrapper.Twine;
 			}
 			else
 			{
-				this.TBsting.Text = Wrapper.Strung;
+				TBsting.Text = Wrapper.Strung;
 			}
 
-			this.TBsting.Refresh();
+			TBsting.Refresh();
 		}
 	}
 }

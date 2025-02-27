@@ -86,17 +86,17 @@ namespace SimPe.PackedFiles.Wrapper
 		#endregion
 
 		#region Code Properties
-		internal uint OpcodeMaks => (uint)Math.Pow(2, this.OpcodeBits) - 1;
+		internal uint OpcodeMaks => (uint)Math.Pow(2, OpcodeBits) - 1;
 		internal byte OpcodeShift => 0;
 
-		internal uint AMaks => (uint)Math.Pow(2, this.ABits) - 1;
-		internal byte AShift => (byte)(this.BShift + this.BBits);
+		internal uint AMaks => (uint)Math.Pow(2, ABits) - 1;
+		internal byte AShift => (byte)(BShift + BBits);
 
-		internal uint BMaks => (uint)Math.Pow(2, this.BBits) - 1;
-		internal byte BShift => (byte)(this.CShift + this.CBits);
+		internal uint BMaks => (uint)Math.Pow(2, BBits) - 1;
+		internal byte BShift => (byte)(CShift + CBits);
 
-		internal uint CMaks => (uint)Math.Pow(2, this.CBits) - 1;
-		internal byte CShift => (byte)(this.OpcodeShift + this.OpcodeBits);
+		internal uint CMaks => (uint)Math.Pow(2, CBits) - 1;
+		internal byte CShift => (byte)(OpcodeShift + OpcodeBits);
 
 		internal int Bias => ((int)Math.Pow(2, BBits + CBits) - 1) / 2;
 		#endregion
@@ -338,7 +338,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		protected override string GetResourceName(Data.TypeAlias ta)
 		{
-			if (!this.Processed)
+			if (!Processed)
 			{
 				ProcessData(FileDescriptor, Package);
 			}
@@ -405,7 +405,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public ObjLuaFunction(ObjLua parent)
 		{
-			this.Parent = parent;
+			Parent = parent;
 			name = "";
 
 			Constants = new ArrayList();
@@ -547,7 +547,7 @@ namespace SimPe.PackedFiles.Wrapper
 						);
 						oline.A = (ushort)Math.Abs(oline.A - 1);
 
-						this.BackIndent(ref pindent);
+						BackIndent(ref pindent);
 						PrintLine(sw, cx, new Lua.TextLine(0, this, "end"), pindent);
 
 						continue;
@@ -687,7 +687,7 @@ namespace SimPe.PackedFiles.Wrapper
 			uint fncsz = reader.ReadUInt32();
 			for (uint i = 0; i < fncsz; i++)
 			{
-				ObjLuaFunction item = new ObjLuaFunction(this.Parent);
+				ObjLuaFunction item = new ObjLuaFunction(Parent);
 				item.Unserialize(reader);
 
 				Functions.Add(item);
@@ -768,9 +768,9 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			return name
 				+ ": "
-				+ this.ArgumentCount.ToString()
+				+ ArgumentCount.ToString()
 				+ " Arguments, Stacksize "
-				+ this.StackSize.ToString()
+				+ StackSize.ToString()
 				+ ", "
 				+ Constants.Count.ToString()
 				+ " Constants, "
@@ -828,7 +828,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public ObjLuaConstant(ObjLuaFunction parent)
 		{
-			this.Parent = parent;
+			Parent = parent;
 			String = "";
 
 			bdata = new uint[0];
@@ -1241,7 +1241,7 @@ namespace SimPe.PackedFiles.Wrapper
 			);
 		}
 
-		public byte Opcode => GetOpCode(Value, this.Parent);
+		public byte Opcode => GetOpCode(Value, Parent);
 
 		public ushort A
 		{
@@ -1545,8 +1545,8 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public ObjLuaCode(uint val, ObjLuaFunction parent)
 		{
-			this.Parent = parent;
-			this.Value = val;
+			Parent = parent;
+			Value = val;
 		}
 
 		internal static ObjLuaCode Unserialize(
@@ -1575,7 +1575,7 @@ namespace SimPe.PackedFiles.Wrapper
 		public override string ToString()
 		{
 			return /*"0x"+Helper.HexString(val)+": "+*/
-			TranslateOpcode(this.Opcode, this.A, this.B, this.C);
+			TranslateOpcode(Opcode, A, B, C);
 		}
 	}
 }

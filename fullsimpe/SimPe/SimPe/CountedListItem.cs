@@ -40,7 +40,7 @@ namespace SimPe
 
 		internal CountedListItem(int index, object obj, bool hex)
 		{
-			this.Object = obj;
+			Object = obj;
 			this.index = index;
 			this.hex = hex;
 		}
@@ -106,7 +106,7 @@ namespace SimPe
 
 		public void Dispose()
 		{
-			this.Object = null;
+			Object = null;
 		}
 
 		#endregion

@@ -16,7 +16,7 @@ namespace SimPe.Windows.Forms
 		)
 			: base()
 		{
-			this.vis = visible;
+			vis = visible;
 			if (regular == null)
 			{
 				regular = new System.Drawing.Font(
@@ -66,14 +66,14 @@ namespace SimPe.Windows.Forms
 			subitems[5] = "0x" + Helper.HexString(pfd.Descriptor.Offset);
 			subitems[6] = "0x" + Helper.HexString(pfd.Descriptor.Size);
 
-			this.SubItems.Clear();
-			this.Text = (string)subitems[0];
+			SubItems.Clear();
+			Text = (string)subitems[0];
 			for (int i = 1; i < subitems.Length; i++)
 			{
 				SubItems.Add(subitems[i]);
 			}
 
-			this.ImageIndex = ResourceViewManager.GetIndexForResourceType(
+			ImageIndex = ResourceViewManager.GetIndexForResourceType(
 				pfd.Descriptor.Type
 			);
 
@@ -169,32 +169,32 @@ namespace SimPe.Windows.Forms
 				pfd.ResetRealName();
 				if (Visible)
 				{
-					this.Text = pfd.GetRealName();
+					Text = pfd.GetRealName();
 				}
 				else
 				{
-					this.Text = pfd.Descriptor.ToResListString();
+					Text = pfd.Descriptor.ToResListString();
 				}
 
 				if (Helper.WindowsRegistry.ResourceListShowExtensions)
 				{
-					this.SubItems[1].Text = GetExtText();
+					SubItems[1].Text = GetExtText();
 				}
 
-				this.SubItems[2].Text = "0x" + Helper.HexString(pfd.Descriptor.Group);
-				this.SubItems[3].Text = "0x" + Helper.HexString(pfd.Descriptor.SubType);
+				SubItems[2].Text = "0x" + Helper.HexString(pfd.Descriptor.Group);
+				SubItems[3].Text = "0x" + Helper.HexString(pfd.Descriptor.SubType);
 				if (Helper.WindowsRegistry.ResourceListInstanceFormatHexOnly)
 				{
-					this.SubItems[4].Text =
+					SubItems[4].Text =
 						"0x" + Helper.HexString(pfd.Descriptor.Instance);
 				}
 				else if (Helper.WindowsRegistry.ResourceListInstanceFormatDecOnly)
 				{
-					this.SubItems[4].Text = ((int)pfd.Descriptor.Instance).ToString();
+					SubItems[4].Text = ((int)pfd.Descriptor.Instance).ToString();
 				}
 				else
 				{
-					this.SubItems[4].Text =
+					SubItems[4].Text =
 						"0x"
 						+ Helper.HexString(pfd.Descriptor.Instance)
 						+ " ("
@@ -202,8 +202,8 @@ namespace SimPe.Windows.Forms
 						+ ")";
 				}
 
-				this.SubItems[5].Text = "0x" + Helper.HexString(pfd.Descriptor.Offset);
-				this.SubItems[6].Text = "0x" + Helper.HexString(pfd.Descriptor.Size);
+				SubItems[5].Text = "0x" + Helper.HexString(pfd.Descriptor.Offset);
+				SubItems[6].Text = "0x" + Helper.HexString(pfd.Descriptor.Size);
 			}
 
 			System.Drawing.Color fg = System.Drawing.SystemColors.WindowText;
@@ -243,8 +243,8 @@ namespace SimPe.Windows.Forms
 				);
 			}
 
-			this.Font = font;
-			this.ForeColor = fg;
+			Font = font;
+			ForeColor = fg;
 		}
 	}
 }

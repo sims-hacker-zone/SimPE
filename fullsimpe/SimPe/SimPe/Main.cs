@@ -41,7 +41,7 @@ namespace SimPe
 
 		private void ClosingForm(object sender, System.ComponentModel.CancelEventArgs e)
 		{
-			e.Cancel = !this.ClosePackage();
+			e.Cancel = !ClosePackage();
 			if (!e.Cancel)
 			{
 				resourceViewManager1.CancelThreads();
@@ -144,7 +144,7 @@ namespace SimPe
 				new ResourceEventArgs(package)
 			);
 			resourceViewManager1.Package = package.Package;
-			package.UpdateRecentFileMenu(this.miRecent);
+			package.UpdateRecentFileMenu(miRecent);
 
 			UpdateFileInfo();
 		}
@@ -349,10 +349,10 @@ namespace SimPe
 
 		private void Activate_miNew(object sender, EventArgs e)
 		{
-			if (this.ClosePackage())
+			if (ClosePackage())
 			{
 				package.LoadFromPackage(Packages.File.CreateNew());
-				this.Text =
+				Text =
 					"SimPe (Version "
 					+ Helper.SimPeVersion.ProductVersion
 					+ ") "
@@ -418,7 +418,7 @@ namespace SimPe
 			}
 
 			of.Execute(icon);
-			package.UpdateRecentFileMenu(this.miRecent);
+			package.UpdateRecentFileMenu(miRecent);
 		}
 
 		private void ClosedToolPlugin(object sender, PackageArg pk)
@@ -548,7 +548,7 @@ namespace SimPe
 			if (sfd.ShowDialog() == DialogResult.OK)
 			{
 				package.Save(sfd.FileName, false);
-				package.UpdateRecentFileMenu(this.miRecent);
+				package.UpdateRecentFileMenu(miRecent);
 			}
 		}
 
@@ -557,10 +557,10 @@ namespace SimPe
 			if (ClosePackage())
 			{
 				Packages.StreamFactory.CloseAll(false);
-				this.ShowNewFile(true);
+				ShowNewFile(true);
 				if (!package.Loaded)
 				{
-					this.Text =
+					Text =
 						"SimPe (Version "
 						+ Helper.SimPeVersion.ProductVersion
 						+ ") "
@@ -593,7 +593,7 @@ namespace SimPe
 						@"TSData\Res"
 					);
 					ofd.FileName = "";
-					this.Activate_miOpen(sender, e);
+					Activate_miOpen(sender, e);
 				}
 			}
 		}
@@ -605,7 +605,7 @@ namespace SimPe
 				@"TSData\Res"
 			);
 			ofd.FileName = "";
-			this.Activate_miOpen(sender, e);
+			Activate_miOpen(sender, e);
 		}
 
 		private void Activate_miOpenDownloads(object sender, EventArgs e)
@@ -634,7 +634,7 @@ namespace SimPe
 			}
 
 			ofd.FileName = "";
-			this.Activate_miOpen(sender, e);
+			Activate_miOpen(sender, e);
 		}
 
 		private void SetRcolNameFilter(object sender, EventArgs e)
@@ -660,10 +660,10 @@ namespace SimPe
 			filter.FilterInstance = false;
 			try
 			{
-				if (this.cbsemig.SelectedItem is Data.SemiGlobalAlias)
+				if (cbsemig.SelectedItem is Data.SemiGlobalAlias)
 				{
 					Data.SemiGlobalAlias sga = (Data.SemiGlobalAlias)
-						this.cbsemig.SelectedItem;
+						cbsemig.SelectedItem;
 					if (sga != null)
 					{
 						string name = Hashes.StripHashFromName(tbRcolName.Text);
@@ -744,7 +744,7 @@ namespace SimPe
 		void MakeFloatable(bool fl)
 		{
 			manager.SuspendLayout();
-			foreach (object o in this.miWindow.DropDownItems)
+			foreach (object o in miWindow.DropDownItems)
 			{
 				ToolStripMenuItem mi = o as ToolStripMenuItem;
 				if (mi == null)
@@ -762,11 +762,11 @@ namespace SimPe
 				MakeFloatable(dw, fl);
 			}
 
-			MakeFloatable(this.dcFilter, fl);
-			MakeFloatable(this.dcResource, fl);
-			MakeFloatable(this.dcPlugin, fl);
+			MakeFloatable(dcFilter, fl);
+			MakeFloatable(dcResource, fl);
+			MakeFloatable(dcPlugin, fl);
 
-			this.dcPlugin.AllowClose = false;
+			dcPlugin.AllowClose = false;
 			manager.ResumeLayout();
 		}
 
@@ -787,7 +787,7 @@ namespace SimPe
 
 		void menuBarItem5_VisibleChanged(object sender, EventArgs e)
 		{
-			this.mbiTopics.Visible = mbiTopics.DropDownItems.Count > 0;
+			mbiTopics.Visible = mbiTopics.DropDownItems.Count > 0;
 		}
 
 		void tbDebug_Click(object sender, EventArgs e)
@@ -909,7 +909,7 @@ namespace SimPe
 			Wait.Stop();
 			WaitingScreen.Stop();
 			Splash.Screen.Stop();
-			this.Cursor = Cursors.Default;
+			Cursor = Cursors.Default;
 		}
 	}
 }

@@ -194,7 +194,7 @@ namespace SimPe.Plugin.Scanner
 			if (ps.State != TriState.Null)
 			{
 				HealthState cs = (HealthState)ps.Data[0];
-				SetSubItem(lvi, this.StartColum, cs.ToString(), ps);
+				SetSubItem(lvi, StartColum, cs.ToString(), ps);
 
 				//if (ps.Data.Length>1) AbstractScanner.SetSubItem(lvi, this.StartColum+1, ps.Data[1].ToString(), ps);
 			}
@@ -220,7 +220,7 @@ namespace SimPe.Plugin.Scanner
 			foreach (ScannerItem item in items)
 			{
 				PackageState ps = item.PackageCacheItem.FindState(
-					this.Uid,
+					Uid,
 					true
 				);
 				if ((ps.State != TriState.Null) && (ps.Data.Length > 0))
@@ -283,7 +283,7 @@ namespace SimPe.Plugin.Scanner
 					WaitingScreen.UpdateMessage(si.FileName);
 
 					PackageState ps = si.PackageCacheItem.FindState(
-						this.Uid,
+						Uid,
 						true
 					);
 					if ((ps.State != TriState.Null) && (ps.Data.Length > 0))
@@ -339,14 +339,14 @@ namespace SimPe.Plugin.Scanner
 							si.Package.Save();
 							chg = true;
 							si.ListViewItem.ForeColor = System.Drawing.Color.Black;
-							this.ScanPackage(si, ps, si.ListViewItem);
+							ScanPackage(si, ps, si.ListViewItem);
 						}
 					}
 				}
 
-				if (chg && this.CallbackFinish != null)
+				if (chg && CallbackFinish != null)
 				{
-					this.CallbackFinish(false, false);
+					CallbackFinish(false, false);
 				}
 			}
 			catch (Exception ex)

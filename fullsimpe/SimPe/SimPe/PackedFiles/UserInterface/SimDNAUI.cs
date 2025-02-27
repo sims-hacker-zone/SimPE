@@ -48,8 +48,8 @@ namespace SimPe.PackedFiles.UserInterface
 			// Required designer variable.
 			InitializeComponent();
 
-			this.Text = "Sim DNA";
-			this.Commited += new EventHandler(SimDNAUI_Commited);
+			Text = "Sim DNA";
+			Commited += new EventHandler(SimDNAUI_Commited);
 		}
 
 		/// <summary>
@@ -74,17 +74,17 @@ namespace SimPe.PackedFiles.UserInterface
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.pbDom = new PropertyGrid();
-			this.label1 = new Label();
-			this.label2 = new Label();
-			this.pbRec = new PropertyGrid();
-			this.lbbody = new Label();
-			this.lbcpf = new ListBox();
-			this.SuspendLayout();
+			pbDom = new PropertyGrid();
+			label1 = new Label();
+			label2 = new Label();
+			pbRec = new PropertyGrid();
+			lbbody = new Label();
+			lbcpf = new ListBox();
+			SuspendLayout();
 			//
 			// pbDom
 			//
-			this.pbDom.Anchor = (
+			pbDom.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -94,50 +94,50 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.pbDom.HelpVisible = false;
-			this.pbDom.LineColor = System.Drawing.SystemColors.ScrollBar;
-			this.pbDom.Location = new System.Drawing.Point(16, 50);
-			this.pbDom.Name = "pbDom";
-			this.pbDom.PropertySort = PropertySort.Alphabetical;
-			this.pbDom.Size = new System.Drawing.Size(648, 96);
-			this.pbDom.TabIndex = 0;
-			this.pbDom.ToolbarVisible = false;
+			pbDom.HelpVisible = false;
+			pbDom.LineColor = System.Drawing.SystemColors.ScrollBar;
+			pbDom.Location = new System.Drawing.Point(16, 50);
+			pbDom.Name = "pbDom";
+			pbDom.PropertySort = PropertySort.Alphabetical;
+			pbDom.Size = new System.Drawing.Size(648, 96);
+			pbDom.TabIndex = 0;
+			pbDom.ToolbarVisible = false;
 			//
 			// label1
 			//
-			this.label1.BackColor = System.Drawing.Color.Transparent;
-			this.label1.Font = new System.Drawing.Font(
+			label1.BackColor = System.Drawing.Color.Transparent;
+			label1.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label1.Location = new System.Drawing.Point(8, 34);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(100, 16);
-			this.label1.TabIndex = 1;
-			this.label1.Text = "Dominant Gene:";
+			label1.Location = new System.Drawing.Point(8, 34);
+			label1.Name = "label1";
+			label1.Size = new System.Drawing.Size(100, 16);
+			label1.TabIndex = 1;
+			label1.Text = "Dominant Gene:";
 			//
 			// label2
 			//
-			this.label2.BackColor = System.Drawing.Color.Transparent;
-			this.label2.Font = new System.Drawing.Font(
+			label2.BackColor = System.Drawing.Color.Transparent;
+			label2.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label2.Location = new System.Drawing.Point(8, 154);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(100, 16);
-			this.label2.TabIndex = 3;
-			this.label2.Text = "Recessive Gene:";
+			label2.Location = new System.Drawing.Point(8, 154);
+			label2.Name = "label2";
+			label2.Size = new System.Drawing.Size(100, 16);
+			label2.TabIndex = 3;
+			label2.Text = "Recessive Gene:";
 			//
 			// pbRec
 			//
-			this.pbRec.Anchor = (
+			pbRec.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -147,18 +147,18 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.pbRec.HelpVisible = false;
-			this.pbRec.LineColor = System.Drawing.SystemColors.ScrollBar;
-			this.pbRec.Location = new System.Drawing.Point(16, 170);
-			this.pbRec.Name = "pbRec";
-			this.pbRec.PropertySort = PropertySort.Alphabetical;
-			this.pbRec.Size = new System.Drawing.Size(648, 96);
-			this.pbRec.TabIndex = 2;
-			this.pbRec.ToolbarVisible = false;
+			pbRec.HelpVisible = false;
+			pbRec.LineColor = System.Drawing.SystemColors.ScrollBar;
+			pbRec.Location = new System.Drawing.Point(16, 170);
+			pbRec.Name = "pbRec";
+			pbRec.PropertySort = PropertySort.Alphabetical;
+			pbRec.Size = new System.Drawing.Size(648, 96);
+			pbRec.TabIndex = 2;
+			pbRec.ToolbarVisible = false;
 			//
 			// lbbody
 			//
-			this.lbbody.Anchor = (
+			lbbody.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -166,26 +166,26 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.lbbody.AutoSize = true;
-			this.lbbody.BackColor = System.Drawing.Color.Transparent;
-			this.lbbody.Font = new System.Drawing.Font(
+			lbbody.AutoSize = true;
+			lbbody.BackColor = System.Drawing.Color.Transparent;
+			lbbody.Font = new System.Drawing.Font(
 				"Tahoma",
 				9.75F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.lbbody.Location = new System.Drawing.Point(282, 28);
-			this.lbbody.Name = "lbbody";
-			this.lbbody.Size = new System.Drawing.Size(66, 16);
-			this.lbbody.TabIndex = 4;
-			this.lbbody.Text = "Unknown";
-			this.lbbody.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.lbbody.Visible = false;
+			lbbody.Location = new System.Drawing.Point(282, 28);
+			lbbody.Name = "lbbody";
+			lbbody.Size = new System.Drawing.Size(66, 16);
+			lbbody.TabIndex = 4;
+			lbbody.Text = "Unknown";
+			lbbody.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			lbbody.Visible = false;
 			//
 			// lbcpf
 			//
-			this.lbcpf.Anchor = (
+			lbcpf.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -197,37 +197,37 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.lbcpf.Location = new System.Drawing.Point(8, 40);
-			this.lbcpf.Name = "lbcpf";
-			this.lbcpf.Size = new System.Drawing.Size(260, 225);
-			this.lbcpf.TabIndex = 3;
-			this.lbcpf.Visible = false;
+			lbcpf.Location = new System.Drawing.Point(8, 40);
+			lbcpf.Name = "lbcpf";
+			lbcpf.Size = new System.Drawing.Size(260, 225);
+			lbcpf.TabIndex = 3;
+			lbcpf.Visible = false;
 			//
 			// SimDNAUI
 			//
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.pbRec);
-			this.Controls.Add(this.lbbody);
-			this.Controls.Add(this.label1);
-			this.Controls.Add(this.pbDom);
-			this.Controls.Add(this.lbcpf);
-			this.Font = new System.Drawing.Font(
+			Controls.Add(label2);
+			Controls.Add(pbRec);
+			Controls.Add(lbbody);
+			Controls.Add(label1);
+			Controls.Add(pbDom);
+			Controls.Add(lbcpf);
+			Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.Name = "SimDNAUI";
-			this.Size = new System.Drawing.Size(672, 272);
-			this.Controls.SetChildIndex(this.lbcpf, 0);
-			this.Controls.SetChildIndex(this.pbDom, 0);
-			this.Controls.SetChildIndex(this.label1, 0);
-			this.Controls.SetChildIndex(this.lbbody, 0);
-			this.Controls.SetChildIndex(this.pbRec, 0);
-			this.Controls.SetChildIndex(this.label2, 0);
-			this.ResumeLayout(false);
-			this.PerformLayout();
+			Name = "SimDNAUI";
+			Size = new System.Drawing.Size(672, 272);
+			Controls.SetChildIndex(lbcpf, 0);
+			Controls.SetChildIndex(pbDom, 0);
+			Controls.SetChildIndex(label1, 0);
+			Controls.SetChildIndex(lbbody, 0);
+			Controls.SetChildIndex(pbRec, 0);
+			Controls.SetChildIndex(label2, 0);
+			ResumeLayout(false);
+			PerformLayout();
 		}
 		#endregion
 
@@ -244,24 +244,24 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				label2.Visible = pbRec.Visible = label1.Visible = pbDom.Visible = true;
 				lbcpf.Visible = false;
-				this.pbDom.SelectedObject = Sdna.Dominant;
-				this.pbRec.SelectedObject = Sdna.Recessive;
+				pbDom.SelectedObject = Sdna.Dominant;
+				pbRec.SelectedObject = Sdna.Recessive;
 
-				this.lbbody.Text =
+				lbbody.Text =
 					"Bodyshape = "
 					+ Data.MetaData.GetBodyName(
 						Data.MetaData.GetBodyShapeid(Sdna.Dominant.Skintone)
 					);
 				if (
-					this.lbbody.Text == "Bodyshape = Unknown"
-					|| this.lbbody.Text == "Bodyshape =  Maxis : Default"
+					lbbody.Text == "Bodyshape = Unknown"
+					|| lbbody.Text == "Bodyshape =  Maxis : Default"
 				)
 				{
-					this.lbbody.Visible = false;
+					lbbody.Visible = false;
 				}
 				else
 				{
-					this.lbbody.Visible = true;
+					lbbody.Visible = true;
 				}
 
 				Wrapper.SDesc sdsc =
@@ -270,19 +270,19 @@ namespace SimPe.PackedFiles.UserInterface
 					) as Wrapper.SDesc;
 				if (sdsc == null)
 				{
-					this.CanCommit = true;
-					this.HeaderText = "Sim DNA";
+					CanCommit = true;
+					HeaderText = "Sim DNA";
 				}
 				else
 				{
-					this.HeaderText =
+					HeaderText =
 						"Sim DNA (" + sdsc.SimName + " " + sdsc.SimFamilyName + ")";
-					this.CanCommit = sdsc.Nightlife.IsHuman;
+					CanCommit = sdsc.Nightlife.IsHuman;
 				}
 			}
 			else
 			{
-				this.CanCommit = false;
+				CanCommit = false;
 				label2.Visible =
 					pbRec.Visible =
 					lbbody.Visible =
@@ -297,11 +297,11 @@ namespace SimPe.PackedFiles.UserInterface
 					) as Wrapper.SDesc;
 				if (sdsc == null)
 				{
-					this.HeaderText = "CPF Viewer";
+					HeaderText = "CPF Viewer";
 				}
 				else
 				{
-					this.HeaderText =
+					HeaderText =
 						"CPF Viewer ("
 						+ sdsc.SimName
 						+ " "

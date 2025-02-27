@@ -23,17 +23,17 @@ namespace SimPe.PackedFiles.Wrapper
 			// Required designer variable.
 			InitializeComponent();
 
-			this.HideSelection = false;
-			this.FullRowSelect = true;
-			this.MultiSelect = false;
+			HideSelection = false;
+			FullRowSelect = true;
+			MultiSelect = false;
 
-			this.LargeImageList = new ImageList();
+			LargeImageList = new ImageList();
 
 			LargeImageList.ColorDepth = ColorDepth.Depth32Bit;
 			LargeImageList.ImageSize = ICON_SIZE;
 
 			s = new ColumnsSorter(new int[] { 1, 0 });
-			this.ListViewItemSorter = s;
+			ListViewItemSorter = s;
 		}
 
 		/// <summary>
@@ -67,7 +67,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			Items.Clear();
 			LargeImageList.Images.Clear();
-			this.ListViewItemSorter = s;
+			ListViewItemSorter = s;
 		}
 
 		public SteepValley.Windows.Forms.XPListViewItem Add(
@@ -103,7 +103,7 @@ namespace SimPe.PackedFiles.Wrapper
 				new SteepValley.Windows.Forms.XPListViewItem();
 			try
 			{
-				this.LargeImageList.Images.Add(imgbig);
+				LargeImageList.Images.Add(imgbig);
 				lvi.ImageIndex = LargeImageList.Images.Count - 1;
 			}
 			catch (Exception ex)
@@ -112,19 +112,19 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 
 			lvi.Text = " " + sdesc.SimName + " " + sdesc.SimFamilyName;
-			if (this.Columns.Count > 1)
+			if (Columns.Count > 1)
 			{
 				lvi.SubItems.Add("    " + Columns[1].Text + ": " + sdesc.HouseholdName);
 			}
 
-			if (this.Columns.Count > 2)
+			if (Columns.Count > 2)
 			{
 				lvi.SubItems.Add(
 					"    " + Columns[2].Text + ": 0x" + Helper.HexString(sdesc.SimId)
 				);
 			}
 
-			if (this.Columns.Count > 3)
+			if (Columns.Count > 3)
 			{
 				lvi.SubItems.Add(
 					"    "
@@ -134,7 +134,7 @@ namespace SimPe.PackedFiles.Wrapper
 				);
 			}
 
-			if (this.Columns.Count > 4)
+			if (Columns.Count > 4)
 			{
 				if (sdesc.University.OnCampus == 0x1)
 				{
@@ -158,7 +158,7 @@ namespace SimPe.PackedFiles.Wrapper
 				}
 			}
 
-			this.Items.Add(lvi);
+			Items.Add(lvi);
 			return lvi;
 		}
 

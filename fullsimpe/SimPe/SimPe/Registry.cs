@@ -74,13 +74,13 @@ namespace SimPe
 			rk = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(
 				"Software\\Ambertation\\SimPe"
 			);
-			PreviousVersion = this.GetPreviousVersion();
+			PreviousVersion = GetPreviousVersion();
 			// pep = -1;
 			// pepct = this.GetPreviousEpCount();
 			Reload();
 			if (Helper.QARelease)
 			{
-				this.WasQAUser = true;
+				WasQAUser = true;
 			}
 		}
 

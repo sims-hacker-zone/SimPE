@@ -63,7 +63,7 @@ namespace SimPe.Plugin.Downloads
 			fii.CloseAssignedPackages();
 			DownloadsToolFactory.TeleportFileIndex.RemoveChild(fii);
 
-			this.DisposeTmpPkg();
+			DisposeTmpPkg();
 			Wait.SubStop();
 		}
 

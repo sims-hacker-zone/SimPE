@@ -66,15 +66,15 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 			//
 			InitializeComponent();
 
-			this.tbGUID.Visible = false;
-			this.tbGUID.Left = this.cbToNext.Left + this.cbToNext.Width + 3;
-			this.tbLocalVar.Visible = false;
-			this.tbLocalVar.Left = this.cbToNext.Left + this.cbToNext.Width + 3;
+			tbGUID.Visible = false;
+			tbGUID.Left = cbToNext.Left + cbToNext.Width + 3;
+			tbLocalVar.Visible = false;
+			tbLocalVar.Left = cbToNext.Left + cbToNext.Width + 3;
 
-			this.cbToNext.Items.AddRange(
+			cbToNext.Items.AddRange(
 				BhavWiz.readStr(GS.BhavStr.NextObject).ToArray()
 			);
-			this.cbWhere.Items.AddRange(
+			cbWhere.Items.AddRange(
 				BhavWiz.readStr(GS.BhavStr.DataLabels).ToArray()
 			);
 		}
@@ -154,8 +154,8 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 					local = true;
 					break;
 			}
-			this.lbGUIDText.Visible = this.tbGUID.Visible = guid;
-			this.tbLocalVar.Visible = local;
+			lbGUIDText.Visible = tbGUID.Visible = guid;
+			tbLocalVar.Visible = local;
 			if (val == cbToNext.SelectedIndex)
 			{
 				return;
@@ -176,14 +176,14 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 		{
 			if (setTB)
 			{
-				this.tbGUID.Text = "0x" + SimPe.Helper.HexString(guid);
+				tbGUID.Text = "0x" + SimPe.Helper.HexString(guid);
 			}
 
-			this.lbGUIDText.Text = BhavWiz.FormatGUID(true, guid);
+			lbGUIDText.Text = BhavWiz.FormatGUID(true, guid);
 		}
 
 		#region iBhavOperandWizForm
-		public Panel WizPanel => this.pnWiz0x001f;
+		public Panel WizPanel => pnWiz0x001f;
 
 		public void Execute(Instruction inst)
 		{
@@ -196,38 +196,38 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 
 			setGUID(ops1, 0);
 
-			this.cbToNext.SelectedIndex = -1;
+			cbToNext.SelectedIndex = -1;
 			setToNext((byte)(ops1[4] & 0x7f));
 
-			this.ckbStackObj.Checked = (ops1[4] & 0x80) == 0;
-			this.pnObject.Enabled = !this.ckbStackObj.Checked;
+			ckbStackObj.Checked = (ops1[4] & 0x80) == 0;
+			pnObject.Enabled = !ckbStackObj.Checked;
 
 			doid1 = new DataOwnerControl(
 				inst,
-				this.cbDataOwner1,
-				this.cbPicker1,
-				this.tbVal1,
-				this.cbDecimal,
-				this.cbAttrPicker,
+				cbDataOwner1,
+				cbPicker1,
+				tbVal1,
+				cbDecimal,
+				cbAttrPicker,
 				null,
 				ops1[0x05],
 				ops1[0x07]
 			);
 
-			this.tbLocalVar.Text = "0x" + SimPe.Helper.HexString(ops1[0x06]);
+			tbLocalVar.Text = "0x" + SimPe.Helper.HexString(ops1[0x06]);
 
-			this.pnNodeVersion.Enabled = (inst.NodeVersion != 0);
-			this.ckbDisabled.Checked = (ops2[0x00] & 0x01) != 0;
-			this.pnWhere.Enabled = this.ckbWhere.Checked = (ops2[0x00] & 0x02) != 0;
+			pnNodeVersion.Enabled = (inst.NodeVersion != 0);
+			ckbDisabled.Checked = (ops2[0x00] & 0x01) != 0;
+			pnWhere.Enabled = ckbWhere.Checked = (ops2[0x00] & 0x02) != 0;
 
 			ushort where = BhavWiz.ToShort(ops2[0x01], ops2[0x02]);
-			this.cbWhere.SelectedIndex = -1;
-			if (this.cbWhere.Items.Count > where)
+			cbWhere.SelectedIndex = -1;
+			if (cbWhere.Items.Count > where)
 			{
-				this.cbWhere.SelectedIndex = where;
+				cbWhere.SelectedIndex = where;
 			}
 
-			this.tbWhereVal.Text =
+			tbWhereVal.Text =
 				"0x" + SimPe.Helper.HexString(BhavWiz.ToShort(ops2[0x03], ops2[0x04]));
 
 			internalchg = false;
@@ -240,33 +240,33 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 				wrappedByteArray ops1 = inst.Operands;
 				wrappedByteArray ops2 = inst.Reserved1;
 
-				UInt32 val = Convert.ToUInt32(this.tbGUID.Text, 16);
+				UInt32 val = Convert.ToUInt32(tbGUID.Text, 16);
 				ops1[0x00] = (byte)(val & 0xff);
 				ops1[0x01] = (byte)(val >> 8 & 0xff);
 				ops1[0x02] = (byte)(val >> 16 & 0xff);
 				ops1[0x03] = (byte)(val >> 24 & 0xff);
-				if (this.cbToNext.SelectedIndex >= 0)
+				if (cbToNext.SelectedIndex >= 0)
 				{
-					ops1[0x04] = (byte)(this.cbToNext.SelectedIndex & 0x7f);
+					ops1[0x04] = (byte)(cbToNext.SelectedIndex & 0x7f);
 				}
 
-				ops1[0x04] |= (byte)(!this.ckbStackObj.Checked ? 0x80 : 0x00);
+				ops1[0x04] |= (byte)(!ckbStackObj.Checked ? 0x80 : 0x00);
 				ops1[0x05] = doid1.DataOwner;
-				ops1[0x06] = Convert.ToByte(this.tbLocalVar.Text, 16);
+				ops1[0x06] = Convert.ToByte(tbLocalVar.Text, 16);
 				ops1[0x07] = (byte)(doid1.Value & 0xff);
 
 				ops2[0x00] &= 0xfc;
-				ops2[0x00] |= (byte)(this.ckbDisabled.Checked ? 0x01 : 0x00);
-				ops2[0x00] |= (byte)(this.ckbWhere.Checked ? 0x02 : 0x00);
-				if (this.cbWhere.SelectedIndex >= 0)
+				ops2[0x00] |= (byte)(ckbDisabled.Checked ? 0x01 : 0x00);
+				ops2[0x00] |= (byte)(ckbWhere.Checked ? 0x02 : 0x00);
+				if (cbWhere.SelectedIndex >= 0)
 				{
-					BhavWiz.FromShort(ref ops2, 1, (ushort)this.cbWhere.SelectedIndex);
+					BhavWiz.FromShort(ref ops2, 1, (ushort)cbWhere.SelectedIndex);
 				}
 
 				BhavWiz.FromShort(
 					ref ops2,
 					3,
-					(ushort)Convert.ToUInt32(this.tbWhereVal.Text, 16)
+					(ushort)Convert.ToUInt32(tbWhereVal.Text, 16)
 				);
 			}
 			return inst;
@@ -283,217 +283,217 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(UI));
-			this.pnWiz0x001f = new Panel();
-			this.cbToNext = new ComboBox();
-			this.tbLocalVar = new TextBox();
-			this.tbGUID = new TextBox();
-			this.lbGUIDText = new Label();
-			this.label2 = new Label();
-			this.pnNodeVersion = new Panel();
-			this.pnWhere = new Panel();
-			this.cbWhere = new ComboBox();
-			this.tbWhereVal = new TextBox();
-			this.label4 = new Label();
-			this.ckbWhere = new CheckBox();
-			this.ckbDisabled = new CheckBox();
-			this.label1 = new Label();
-			this.pnObject = new Panel();
-			this.cbAttrPicker = new CheckBox();
-			this.cbDecimal = new CheckBox();
-			this.cbPicker1 = new ComboBox();
-			this.tbVal1 = new TextBox();
-			this.cbDataOwner1 = new ComboBox();
-			this.ckbStackObj = new CheckBox();
-			this.pnWiz0x001f.SuspendLayout();
-			this.pnNodeVersion.SuspendLayout();
-			this.pnWhere.SuspendLayout();
-			this.pnObject.SuspendLayout();
-			this.SuspendLayout();
+			pnWiz0x001f = new Panel();
+			cbToNext = new ComboBox();
+			tbLocalVar = new TextBox();
+			tbGUID = new TextBox();
+			lbGUIDText = new Label();
+			label2 = new Label();
+			pnNodeVersion = new Panel();
+			pnWhere = new Panel();
+			cbWhere = new ComboBox();
+			tbWhereVal = new TextBox();
+			label4 = new Label();
+			ckbWhere = new CheckBox();
+			ckbDisabled = new CheckBox();
+			label1 = new Label();
+			pnObject = new Panel();
+			cbAttrPicker = new CheckBox();
+			cbDecimal = new CheckBox();
+			cbPicker1 = new ComboBox();
+			tbVal1 = new TextBox();
+			cbDataOwner1 = new ComboBox();
+			ckbStackObj = new CheckBox();
+			pnWiz0x001f.SuspendLayout();
+			pnNodeVersion.SuspendLayout();
+			pnWhere.SuspendLayout();
+			pnObject.SuspendLayout();
+			SuspendLayout();
 			//
 			// pnWiz0x001f
 			//
-			this.pnWiz0x001f.Controls.Add(this.cbToNext);
-			this.pnWiz0x001f.Controls.Add(this.tbLocalVar);
-			this.pnWiz0x001f.Controls.Add(this.tbGUID);
-			this.pnWiz0x001f.Controls.Add(this.lbGUIDText);
-			this.pnWiz0x001f.Controls.Add(this.label2);
-			this.pnWiz0x001f.Controls.Add(this.pnNodeVersion);
-			this.pnWiz0x001f.Controls.Add(this.label1);
-			this.pnWiz0x001f.Controls.Add(this.pnObject);
-			this.pnWiz0x001f.Controls.Add(this.ckbStackObj);
-			resources.ApplyResources(this.pnWiz0x001f, "pnWiz0x001f");
-			this.pnWiz0x001f.Name = "pnWiz0x001f";
+			pnWiz0x001f.Controls.Add(cbToNext);
+			pnWiz0x001f.Controls.Add(tbLocalVar);
+			pnWiz0x001f.Controls.Add(tbGUID);
+			pnWiz0x001f.Controls.Add(lbGUIDText);
+			pnWiz0x001f.Controls.Add(label2);
+			pnWiz0x001f.Controls.Add(pnNodeVersion);
+			pnWiz0x001f.Controls.Add(label1);
+			pnWiz0x001f.Controls.Add(pnObject);
+			pnWiz0x001f.Controls.Add(ckbStackObj);
+			resources.ApplyResources(pnWiz0x001f, "pnWiz0x001f");
+			pnWiz0x001f.Name = "pnWiz0x001f";
 			//
 			// cbToNext
 			//
-			this.cbToNext.DropDownStyle =
+			cbToNext.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbToNext.DropDownWidth = 450;
-			this.cbToNext.FormattingEnabled = true;
-			resources.ApplyResources(this.cbToNext, "cbToNext");
-			this.cbToNext.Name = "cbToNext";
-			this.cbToNext.SelectedIndexChanged += new EventHandler(
-				this.cbToNext_SelectedIndexChanged
+			cbToNext.DropDownWidth = 450;
+			cbToNext.FormattingEnabled = true;
+			resources.ApplyResources(cbToNext, "cbToNext");
+			cbToNext.Name = "cbToNext";
+			cbToNext.SelectedIndexChanged += new EventHandler(
+				cbToNext_SelectedIndexChanged
 			);
 			//
 			// tbLocalVar
 			//
-			resources.ApplyResources(this.tbLocalVar, "tbLocalVar");
-			this.tbLocalVar.Name = "tbLocalVar";
-			this.tbLocalVar.Validated += new EventHandler(this.hex8_Validated);
-			this.tbLocalVar.Validating += new System.ComponentModel.CancelEventHandler(
-				this.hex8_Validating
+			resources.ApplyResources(tbLocalVar, "tbLocalVar");
+			tbLocalVar.Name = "tbLocalVar";
+			tbLocalVar.Validated += new EventHandler(hex8_Validated);
+			tbLocalVar.Validating += new System.ComponentModel.CancelEventHandler(
+				hex8_Validating
 			);
 			//
 			// tbGUID
 			//
-			resources.ApplyResources(this.tbGUID, "tbGUID");
-			this.tbGUID.Name = "tbGUID";
-			this.tbGUID.Validated += new EventHandler(this.hex32_Validated);
-			this.tbGUID.Validating += new System.ComponentModel.CancelEventHandler(
-				this.hex32_Validating
+			resources.ApplyResources(tbGUID, "tbGUID");
+			tbGUID.Name = "tbGUID";
+			tbGUID.Validated += new EventHandler(hex32_Validated);
+			tbGUID.Validating += new System.ComponentModel.CancelEventHandler(
+				hex32_Validating
 			);
-			this.tbGUID.TextChanged += new EventHandler(this.tbGUID_TextChanged);
+			tbGUID.TextChanged += new EventHandler(tbGUID_TextChanged);
 			//
 			// lbGUIDText
 			//
-			resources.ApplyResources(this.lbGUIDText, "lbGUIDText");
-			this.lbGUIDText.Name = "lbGUIDText";
+			resources.ApplyResources(lbGUIDText, "lbGUIDText");
+			lbGUIDText.Name = "lbGUIDText";
 			//
 			// label2
 			//
-			resources.ApplyResources(this.label2, "label2");
-			this.label2.Name = "label2";
+			resources.ApplyResources(label2, "label2");
+			label2.Name = "label2";
 			//
 			// pnNodeVersion
 			//
-			this.pnNodeVersion.Controls.Add(this.pnWhere);
-			this.pnNodeVersion.Controls.Add(this.ckbWhere);
-			this.pnNodeVersion.Controls.Add(this.ckbDisabled);
-			resources.ApplyResources(this.pnNodeVersion, "pnNodeVersion");
-			this.pnNodeVersion.Name = "pnNodeVersion";
+			pnNodeVersion.Controls.Add(pnWhere);
+			pnNodeVersion.Controls.Add(ckbWhere);
+			pnNodeVersion.Controls.Add(ckbDisabled);
+			resources.ApplyResources(pnNodeVersion, "pnNodeVersion");
+			pnNodeVersion.Name = "pnNodeVersion";
 			//
 			// pnWhere
 			//
-			this.pnWhere.Controls.Add(this.cbWhere);
-			this.pnWhere.Controls.Add(this.tbWhereVal);
-			this.pnWhere.Controls.Add(this.label4);
-			resources.ApplyResources(this.pnWhere, "pnWhere");
-			this.pnWhere.Name = "pnWhere";
+			pnWhere.Controls.Add(cbWhere);
+			pnWhere.Controls.Add(tbWhereVal);
+			pnWhere.Controls.Add(label4);
+			resources.ApplyResources(pnWhere, "pnWhere");
+			pnWhere.Name = "pnWhere";
 			//
 			// cbWhere
 			//
-			this.cbWhere.DropDownStyle =
+			cbWhere.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbWhere.DropDownWidth = 280;
-			this.cbWhere.FormattingEnabled = true;
-			resources.ApplyResources(this.cbWhere, "cbWhere");
-			this.cbWhere.Name = "cbWhere";
+			cbWhere.DropDownWidth = 280;
+			cbWhere.FormattingEnabled = true;
+			resources.ApplyResources(cbWhere, "cbWhere");
+			cbWhere.Name = "cbWhere";
 			//
 			// tbWhereVal
 			//
-			resources.ApplyResources(this.tbWhereVal, "tbWhereVal");
-			this.tbWhereVal.Name = "tbWhereVal";
-			this.tbWhereVal.Validated += new EventHandler(this.hex16_Validated);
-			this.tbWhereVal.Validating += new System.ComponentModel.CancelEventHandler(
-				this.hex16_Validating
+			resources.ApplyResources(tbWhereVal, "tbWhereVal");
+			tbWhereVal.Name = "tbWhereVal";
+			tbWhereVal.Validated += new EventHandler(hex16_Validated);
+			tbWhereVal.Validating += new System.ComponentModel.CancelEventHandler(
+				hex16_Validating
 			);
 			//
 			// label4
 			//
-			resources.ApplyResources(this.label4, "label4");
-			this.label4.Name = "label4";
+			resources.ApplyResources(label4, "label4");
+			label4.Name = "label4";
 			//
 			// ckbWhere
 			//
-			resources.ApplyResources(this.ckbWhere, "ckbWhere");
-			this.ckbWhere.Name = "ckbWhere";
-			this.ckbWhere.UseVisualStyleBackColor = true;
-			this.ckbWhere.CheckedChanged += new EventHandler(
-				this.ckbWhere_CheckedChanged
+			resources.ApplyResources(ckbWhere, "ckbWhere");
+			ckbWhere.Name = "ckbWhere";
+			ckbWhere.UseVisualStyleBackColor = true;
+			ckbWhere.CheckedChanged += new EventHandler(
+				ckbWhere_CheckedChanged
 			);
 			//
 			// ckbDisabled
 			//
-			resources.ApplyResources(this.ckbDisabled, "ckbDisabled");
-			this.ckbDisabled.Name = "ckbDisabled";
-			this.ckbDisabled.UseVisualStyleBackColor = true;
+			resources.ApplyResources(ckbDisabled, "ckbDisabled");
+			ckbDisabled.Name = "ckbDisabled";
+			ckbDisabled.UseVisualStyleBackColor = true;
 			//
 			// label1
 			//
-			resources.ApplyResources(this.label1, "label1");
-			this.label1.Name = "label1";
+			resources.ApplyResources(label1, "label1");
+			label1.Name = "label1";
 			//
 			// pnObject
 			//
-			this.pnObject.BorderStyle = BorderStyle.FixedSingle;
-			this.pnObject.Controls.Add(this.cbAttrPicker);
-			this.pnObject.Controls.Add(this.cbDecimal);
-			this.pnObject.Controls.Add(this.cbPicker1);
-			this.pnObject.Controls.Add(this.tbVal1);
-			this.pnObject.Controls.Add(this.cbDataOwner1);
-			resources.ApplyResources(this.pnObject, "pnObject");
-			this.pnObject.Name = "pnObject";
+			pnObject.BorderStyle = BorderStyle.FixedSingle;
+			pnObject.Controls.Add(cbAttrPicker);
+			pnObject.Controls.Add(cbDecimal);
+			pnObject.Controls.Add(cbPicker1);
+			pnObject.Controls.Add(tbVal1);
+			pnObject.Controls.Add(cbDataOwner1);
+			resources.ApplyResources(pnObject, "pnObject");
+			pnObject.Name = "pnObject";
 			//
 			// cbAttrPicker
 			//
-			resources.ApplyResources(this.cbAttrPicker, "cbAttrPicker");
-			this.cbAttrPicker.Name = "cbAttrPicker";
+			resources.ApplyResources(cbAttrPicker, "cbAttrPicker");
+			cbAttrPicker.Name = "cbAttrPicker";
 			//
 			// cbDecimal
 			//
-			resources.ApplyResources(this.cbDecimal, "cbDecimal");
-			this.cbDecimal.Name = "cbDecimal";
+			resources.ApplyResources(cbDecimal, "cbDecimal");
+			cbDecimal.Name = "cbDecimal";
 			//
 			// cbPicker1
 			//
-			this.cbPicker1.DropDownStyle =
+			cbPicker1.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbPicker1.DropDownWidth = 384;
-			resources.ApplyResources(this.cbPicker1, "cbPicker1");
-			this.cbPicker1.Name = "cbPicker1";
+			cbPicker1.DropDownWidth = 384;
+			resources.ApplyResources(cbPicker1, "cbPicker1");
+			cbPicker1.Name = "cbPicker1";
 			//
 			// tbVal1
 			//
-			resources.ApplyResources(this.tbVal1, "tbVal1");
-			this.tbVal1.Name = "tbVal1";
+			resources.ApplyResources(tbVal1, "tbVal1");
+			tbVal1.Name = "tbVal1";
 			//
 			// cbDataOwner1
 			//
-			this.cbDataOwner1.DropDownStyle =
+			cbDataOwner1.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbDataOwner1.DropDownWidth = 384;
-			resources.ApplyResources(this.cbDataOwner1, "cbDataOwner1");
-			this.cbDataOwner1.Name = "cbDataOwner1";
+			cbDataOwner1.DropDownWidth = 384;
+			resources.ApplyResources(cbDataOwner1, "cbDataOwner1");
+			cbDataOwner1.Name = "cbDataOwner1";
 			//
 			// ckbStackObj
 			//
-			resources.ApplyResources(this.ckbStackObj, "ckbStackObj");
-			this.ckbStackObj.Name = "ckbStackObj";
-			this.ckbStackObj.UseVisualStyleBackColor = true;
-			this.ckbStackObj.CheckedChanged += new EventHandler(
-				this.ckbStackObj_CheckedChanged
+			resources.ApplyResources(ckbStackObj, "ckbStackObj");
+			ckbStackObj.Name = "ckbStackObj";
+			ckbStackObj.UseVisualStyleBackColor = true;
+			ckbStackObj.CheckedChanged += new EventHandler(
+				ckbStackObj_CheckedChanged
 			);
 			//
 			// UI
 			//
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = AutoScaleMode.Dpi;
-			this.Controls.Add(this.pnWiz0x001f);
-			this.Name = "UI";
-			this.pnWiz0x001f.ResumeLayout(false);
-			this.pnWiz0x001f.PerformLayout();
-			this.pnNodeVersion.ResumeLayout(false);
-			this.pnNodeVersion.PerformLayout();
-			this.pnWhere.ResumeLayout(false);
-			this.pnWhere.PerformLayout();
-			this.pnObject.ResumeLayout(false);
-			this.pnObject.PerformLayout();
-			this.ResumeLayout(false);
+			AutoScaleMode = AutoScaleMode.Dpi;
+			Controls.Add(pnWiz0x001f);
+			Name = "UI";
+			pnWiz0x001f.ResumeLayout(false);
+			pnWiz0x001f.PerformLayout();
+			pnNodeVersion.ResumeLayout(false);
+			pnNodeVersion.PerformLayout();
+			pnWhere.ResumeLayout(false);
+			pnWhere.PerformLayout();
+			pnObject.ResumeLayout(false);
+			pnObject.PerformLayout();
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -619,12 +619,12 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 
 		private void ckbStackObj_CheckedChanged(object sender, EventArgs e)
 		{
-			this.pnObject.Enabled = !this.ckbStackObj.Checked;
+			pnObject.Enabled = !ckbStackObj.Checked;
 		}
 
 		private void ckbWhere_CheckedChanged(object sender, EventArgs e)
 		{
-			this.pnWhere.Enabled = this.ckbWhere.Checked;
+			pnWhere.Enabled = ckbWhere.Checked;
 		}
 	}
 }

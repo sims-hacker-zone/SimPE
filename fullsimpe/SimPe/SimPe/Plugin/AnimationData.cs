@@ -21,7 +21,7 @@ namespace SimPe.Plugin
 			//Console.WriteLine(mb.ToString());
 			this.afb = afb;
 			this.mb = mb;
-			this.fct = framecount;
+			fct = framecount;
 			frames = new Geometry.Vectors3f();
 
 			AnimationFrame[] iframes = afb.Frames;
@@ -169,7 +169,7 @@ namespace SimPe.Plugin
 
 		public void SetFrame(int timecode)
 		{
-			Geometry.Vector3f v = this.frames[timecode];
+			Geometry.Vector3f v = frames[timecode];
 			Ambertation.Scenes.Transformation trans =
 				new Ambertation.Scenes.Transformation();
 			if (afb.TransformationType == FrameType.Translation)

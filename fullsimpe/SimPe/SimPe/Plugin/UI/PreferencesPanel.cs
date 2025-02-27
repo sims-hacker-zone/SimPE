@@ -16,23 +16,23 @@ namespace SimPe.Plugin.UI
 		{
 			get
 			{
-				return this.settings;
+				return settings;
 			}
 			set
 			{
-				this.settings = value;
-				this.OnSettingsChanged();
+				settings = value;
+				OnSettingsChanged();
 			}
 		}
 
-		protected ToolTip ToolTipControl => this.toolTip1;
+		protected ToolTip ToolTipControl => toolTip1;
 
 		public PreferencesPanel()
 		{
-			this.components = new System.ComponentModel.Container();
-			this.toolTip1 = new ToolTip(this.components);
-			this.toolTip1.IsBalloon = true;
-			this.toolTip1.ToolTipIcon = ToolTipIcon.Info;
+			components = new System.ComponentModel.Container();
+			toolTip1 = new ToolTip(components);
+			toolTip1.IsBalloon = true;
+			toolTip1.ToolTipIcon = ToolTipIcon.Info;
 		}
 
 		protected virtual void OnSettingsChanged()

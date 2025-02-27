@@ -63,7 +63,7 @@ namespace SimPe.Plugin.TabPage
 			//
 			InitializeComponent();
 
-			this.UseVisualStyleBackColor = true;
+			UseVisualStyleBackColor = true;
 		}
 
 		/// <summary>
@@ -89,37 +89,37 @@ namespace SimPe.Plugin.TabPage
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.linkLabel7 = new LinkLabel();
-			this.linkLabel8 = new LinkLabel();
-			this.tbpartdata = new TextBox();
-			this.label7 = new Label();
-			this.tbpartdsc = new TextBox();
-			this.label6 = new Label();
-			this.tbparttype = new TextBox();
-			this.label5 = new Label();
-			this.lbpart = new ListBox();
-			this.SuspendLayout();
+			linkLabel7 = new LinkLabel();
+			linkLabel8 = new LinkLabel();
+			tbpartdata = new TextBox();
+			label7 = new Label();
+			tbpartdsc = new TextBox();
+			label6 = new Label();
+			tbparttype = new TextBox();
+			label5 = new Label();
+			lbpart = new ListBox();
+			SuspendLayout();
 			//
 			// tabPage3
 			//
-			this.Controls.Add(this.linkLabel7);
-			this.Controls.Add(this.linkLabel8);
-			this.Controls.Add(this.tbpartdata);
-			this.Controls.Add(this.label7);
-			this.Controls.Add(this.tbpartdsc);
-			this.Controls.Add(this.label6);
-			this.Controls.Add(this.tbparttype);
-			this.Controls.Add(this.label5);
-			this.Controls.Add(this.lbpart);
-			this.Location = new System.Drawing.Point(4, 22);
-			this.Name = "tabPage3";
-			this.Size = new System.Drawing.Size(536, 254);
-			this.TabIndex = 2;
-			this.Text = "Parts";
+			Controls.Add(linkLabel7);
+			Controls.Add(linkLabel8);
+			Controls.Add(tbpartdata);
+			Controls.Add(label7);
+			Controls.Add(tbpartdsc);
+			Controls.Add(label6);
+			Controls.Add(tbparttype);
+			Controls.Add(label5);
+			Controls.Add(lbpart);
+			Location = new System.Drawing.Point(4, 22);
+			Name = "tabPage3";
+			Size = new System.Drawing.Size(536, 254);
+			TabIndex = 2;
+			Text = "Parts";
 			//
 			// linkLabel7
 			//
-			this.linkLabel7.Anchor = (
+			linkLabel7.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -127,28 +127,28 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.linkLabel7.AutoSize = true;
-			this.linkLabel7.Font = new System.Drawing.Font(
+			linkLabel7.AutoSize = true;
+			linkLabel7.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.linkLabel7.Location = new System.Drawing.Point(484, 120);
-			this.linkLabel7.Name = "linkLabel7";
-			this.linkLabel7.Size = new System.Drawing.Size(44, 17);
-			this.linkLabel7.TabIndex = 21;
-			this.linkLabel7.TabStop = true;
-			this.linkLabel7.Text = "delete";
-			this.linkLabel7.LinkClicked +=
+			linkLabel7.Location = new System.Drawing.Point(484, 120);
+			linkLabel7.Name = "linkLabel7";
+			linkLabel7.Size = new System.Drawing.Size(44, 17);
+			linkLabel7.TabIndex = 21;
+			linkLabel7.TabStop = true;
+			linkLabel7.Text = "delete";
+			linkLabel7.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.linkLabel7_LinkClicked
+					linkLabel7_LinkClicked
 				);
 			//
 			// linkLabel8
 			//
-			this.linkLabel8.Anchor = (
+			linkLabel8.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -156,28 +156,28 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.linkLabel8.AutoSize = true;
-			this.linkLabel8.Font = new System.Drawing.Font(
+			linkLabel8.AutoSize = true;
+			linkLabel8.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.linkLabel8.Location = new System.Drawing.Point(456, 120);
-			this.linkLabel8.Name = "linkLabel8";
-			this.linkLabel8.Size = new System.Drawing.Size(28, 17);
-			this.linkLabel8.TabIndex = 20;
-			this.linkLabel8.TabStop = true;
-			this.linkLabel8.Text = "add";
-			this.linkLabel8.LinkClicked +=
+			linkLabel8.Location = new System.Drawing.Point(456, 120);
+			linkLabel8.Name = "linkLabel8";
+			linkLabel8.Size = new System.Drawing.Size(28, 17);
+			linkLabel8.TabIndex = 20;
+			linkLabel8.TabStop = true;
+			linkLabel8.Text = "add";
+			linkLabel8.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.linkLabel8_LinkClicked
+					linkLabel8_LinkClicked
 				);
 			//
 			// tbpartdata
 			//
-			this.tbpartdata.Anchor = (
+			tbpartdata.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -187,39 +187,39 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.tbpartdata.Font = new System.Drawing.Font(
+			tbpartdata.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tbpartdata.Location = new System.Drawing.Point(16, 224);
-			this.tbpartdata.Name = "tbpartdata";
-			this.tbpartdata.Size = new System.Drawing.Size(512, 21);
-			this.tbpartdata.TabIndex = 18;
-			this.tbpartdata.Text = "";
-			this.tbpartdata.TextChanged += new EventHandler(this.ChangedPart);
+			tbpartdata.Location = new System.Drawing.Point(16, 224);
+			tbpartdata.Name = "tbpartdata";
+			tbpartdata.Size = new System.Drawing.Size(512, 21);
+			tbpartdata.TabIndex = 18;
+			tbpartdata.Text = "";
+			tbpartdata.TextChanged += new EventHandler(ChangedPart);
 			//
 			// label7
 			//
-			this.label7.AutoSize = true;
-			this.label7.Font = new System.Drawing.Font(
+			label7.AutoSize = true;
+			label7.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label7.Location = new System.Drawing.Point(8, 208);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(38, 17);
-			this.label7.TabIndex = 19;
-			this.label7.Text = "Data:";
+			label7.Location = new System.Drawing.Point(8, 208);
+			label7.Name = "label7";
+			label7.Size = new System.Drawing.Size(38, 17);
+			label7.TabIndex = 19;
+			label7.Text = "Data:";
 			//
 			// tbpartdsc
 			//
-			this.tbpartdsc.Anchor = (
+			tbpartdsc.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -229,39 +229,39 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.tbpartdsc.Font = new System.Drawing.Font(
+			tbpartdsc.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tbpartdsc.Location = new System.Drawing.Point(16, 184);
-			this.tbpartdsc.Name = "tbpartdsc";
-			this.tbpartdsc.Size = new System.Drawing.Size(512, 21);
-			this.tbpartdsc.TabIndex = 16;
-			this.tbpartdsc.Text = "";
-			this.tbpartdsc.TextChanged += new EventHandler(this.ChangedPart);
+			tbpartdsc.Location = new System.Drawing.Point(16, 184);
+			tbpartdsc.Name = "tbpartdsc";
+			tbpartdsc.Size = new System.Drawing.Size(512, 21);
+			tbpartdsc.TabIndex = 16;
+			tbpartdsc.Text = "";
+			tbpartdsc.TextChanged += new EventHandler(ChangedPart);
 			//
 			// label6
 			//
-			this.label6.AutoSize = true;
-			this.label6.Font = new System.Drawing.Font(
+			label6.AutoSize = true;
+			label6.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label6.Location = new System.Drawing.Point(8, 168);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(153, 17);
-			this.label6.TabIndex = 17;
-			this.label6.Text = "Material Definition File:";
+			label6.Location = new System.Drawing.Point(8, 168);
+			label6.Name = "label6";
+			label6.Size = new System.Drawing.Size(153, 17);
+			label6.TabIndex = 17;
+			label6.Text = "Material Definition File:";
 			//
 			// tbparttype
 			//
-			this.tbparttype.Anchor = (
+			tbparttype.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -271,39 +271,39 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.tbparttype.Font = new System.Drawing.Font(
+			tbparttype.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tbparttype.Location = new System.Drawing.Point(16, 144);
-			this.tbparttype.Name = "tbparttype";
-			this.tbparttype.Size = new System.Drawing.Size(512, 21);
-			this.tbparttype.TabIndex = 14;
-			this.tbparttype.Text = "";
-			this.tbparttype.TextChanged += new EventHandler(this.ChangedPart);
+			tbparttype.Location = new System.Drawing.Point(16, 144);
+			tbparttype.Name = "tbparttype";
+			tbparttype.Size = new System.Drawing.Size(512, 21);
+			tbparttype.TabIndex = 14;
+			tbparttype.Text = "";
+			tbparttype.TextChanged += new EventHandler(ChangedPart);
 			//
 			// label5
 			//
-			this.label5.AutoSize = true;
-			this.label5.Font = new System.Drawing.Font(
+			label5.AutoSize = true;
+			label5.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label5.Location = new System.Drawing.Point(8, 128);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(93, 17);
-			this.label5.TabIndex = 15;
-			this.label5.Text = "Subset Name:";
+			label5.Location = new System.Drawing.Point(8, 128);
+			label5.Name = "label5";
+			label5.Size = new System.Drawing.Size(93, 17);
+			label5.TabIndex = 15;
+			label5.Text = "Subset Name:";
 			//
 			// lbpart
 			//
-			this.lbpart.Anchor = (
+			lbpart.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -313,26 +313,26 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.lbpart.Font = new System.Drawing.Font(
+			lbpart.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.lbpart.HorizontalScrollbar = true;
-			this.lbpart.IntegralHeight = false;
-			this.lbpart.Location = new System.Drawing.Point(8, 8);
-			this.lbpart.Name = "lbpart";
-			this.lbpart.Size = new System.Drawing.Size(520, 112);
-			this.lbpart.TabIndex = 13;
-			this.lbpart.SelectedIndexChanged += new EventHandler(
-				this.SelectPart
+			lbpart.HorizontalScrollbar = true;
+			lbpart.IntegralHeight = false;
+			lbpart.Location = new System.Drawing.Point(8, 8);
+			lbpart.Name = "lbpart";
+			lbpart.Size = new System.Drawing.Size(520, 112);
+			lbpart.TabIndex = 13;
+			lbpart.SelectedIndexChanged += new EventHandler(
+				SelectPart
 			);
 			//
 			// ShpeParts
 			//
-			this.ResumeLayout(false);
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -413,7 +413,7 @@ namespace SimPe.Plugin.TabPage
 		{
 			try
 			{
-				Shape shape = (Shape)this.Tag;
+				Shape shape = (Shape)Tag;
 
 				ShapePart[] parts = new ShapePart[lbpart.Items.Count];
 				for (int i = 0; i < parts.Length; i++)
@@ -434,7 +434,7 @@ namespace SimPe.Plugin.TabPage
 			try
 			{
 				//Shpe wrp = (Shpe)wrapper;
-				Shape shape = (Shape)this.Tag;
+				Shape shape = (Shape)Tag;
 
 				ShapePart val = new ShapePart();
 				val.Subset = tbparttype.Text;

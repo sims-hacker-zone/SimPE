@@ -200,7 +200,7 @@ namespace SimPe.Plugin
 				tDirectionalLight = new TabPage.DirectionalLight();
 			}
 
-			tDirectionalLight.tb_l_ver.Text = "0x" + Helper.HexString(this.version);
+			tDirectionalLight.tb_l_ver.Text = "0x" + Helper.HexString(version);
 			tDirectionalLight.tb_l_name.Text = Name;
 
 			tDirectionalLight.tb_l_1.Text = Val1.ToString();
@@ -223,19 +223,19 @@ namespace SimPe.Plugin
 		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
 		{
 			base.ExtendTabControl(tc);
-			this.StandardLightBase.AddToTabControl(tc);
-			this.LightT.AddToTabControl(tc);
-			this.ReferentNode.AddToTabControl(tc);
-			this.ObjectGraphNode.AddToTabControl(tc);
+			StandardLightBase.AddToTabControl(tc);
+			LightT.AddToTabControl(tc);
+			ReferentNode.AddToTabControl(tc);
+			ObjectGraphNode.AddToTabControl(tc);
 		}
 
 		#region IDisposable Member
 
 		public override void Dispose()
 		{
-			if (this.tDirectionalLight != null)
+			if (tDirectionalLight != null)
 			{
-				this.tDirectionalLight.Dispose();
+				tDirectionalLight.Dispose();
 			}
 
 			tDirectionalLight = null;

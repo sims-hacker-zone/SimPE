@@ -36,7 +36,7 @@ namespace SimPe.Windows.Forms
 			InitializeComponent();
 			if (Helper.WindowsRegistry.UseBigIcons)
 			{
-				lv.Font = new System.Drawing.Font("Tahoma", this.Font.Size + 3F); // was 1F
+				lv.Font = new System.Drawing.Font("Tahoma", Font.Size + 3F); // was 1F
 			}
 
 			names = new ResourceViewManager.ResourceNameList();
@@ -182,13 +182,13 @@ namespace SimPe.Windows.Forms
 
 		internal void SetResources(ResourceViewManager.ResourceNameList resources)
 		{
-			ResourceViewManager.ResourceNameList rnl = this.SelectedItems;
-			this.Clear();
+			ResourceViewManager.ResourceNameList rnl = SelectedItems;
+			Clear();
 			seltimer.Change(
 				System.Threading.Timeout.Infinite,
 				System.Threading.Timeout.Infinite
 			);
-			this.CancelThreads();
+			CancelThreads();
 			lock (names)
 			{
 				foreach (NamedPackedFileDescriptor pfd in names)
@@ -211,7 +211,7 @@ namespace SimPe.Windows.Forms
 				}
 				//if (resources != this.resources)
 				{
-					this.Clear();
+					Clear();
 
 					foreach (NamedPackedFileDescriptor pfd in resources)
 					{
@@ -281,7 +281,7 @@ namespace SimPe.Windows.Forms
 		{
 			//System.Diagnostics.Debug.WriteLine("ChangedData: " + sender.ToString());
 			UpdateResourceItem(sender);
-			this.Refresh();
+			Refresh();
 		}
 
 		void Descriptor_ChangedUserData(
@@ -290,7 +290,7 @@ namespace SimPe.Windows.Forms
 		{
 			//System.Diagnostics.Debug.WriteLine("ChangedUserData: " + sender.ToString());
 			UpdateResourceItem(sender);
-			this.Refresh();
+			Refresh();
 		}
 
 		void Descriptor_DescriptionChanged(object sender, EventArgs e)
@@ -307,7 +307,7 @@ namespace SimPe.Windows.Forms
 					manager.UpdateTree();
 				}
 			}
-			this.Refresh();
+			Refresh();
 		}
 
 		private bool UpdateResourceItem(object sender)

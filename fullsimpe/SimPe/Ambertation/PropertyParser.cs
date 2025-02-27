@@ -169,7 +169,7 @@ namespace Ambertation
 				else
 				{
 					parts = typename.Split(",".ToCharArray(), 2);
-					Assembly a = this.GetType().Assembly;
+					Assembly a = GetType().Assembly;
 					if (parts.Length > 1)
 					{
 						a = Assembly.LoadFrom(parts[0]);
@@ -202,7 +202,7 @@ namespace Ambertation
 				typename = parts[1];
 
 				parts = typename.Split(",".ToCharArray(), 2);
-				Assembly a = this.GetType().Assembly;
+				Assembly a = GetType().Assembly;
 				if (parts.Length > 1)
 				{
 					a = Assembly.LoadFrom(parts[0]);

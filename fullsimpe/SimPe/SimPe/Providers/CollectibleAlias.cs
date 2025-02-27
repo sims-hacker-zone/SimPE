@@ -43,14 +43,14 @@ namespace SimPe.Providers
 
 		public CollectibleAlias(ulong id, int nr, string name, System.Drawing.Image img)
 		{
-			this.Id = id;
-			this.Nr = nr;
-			this.Name = name;
+			Id = id;
+			Nr = nr;
+			Name = name;
 			if (img == null)
 			{
 				img = new System.Drawing.Bitmap(32, 32);
 			}
-			this.Image = img;
+			Image = img;
 		}
 
 		public override string ToString()

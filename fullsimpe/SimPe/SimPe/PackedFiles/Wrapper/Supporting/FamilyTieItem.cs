@@ -166,7 +166,7 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		)
 			: base(siminstance, famt)
 		{
-			this.Ties = ties;
+			Ties = ties;
 			BlockDelimiter = 0x00000001;
 		}
 
@@ -219,7 +219,7 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 			FamilyTieItem s = FindTie(sdsc);
 			if (s == null)
 			{
-				s = new FamilyTieItem(type, sdsc.Instance, this.famt);
+				s = new FamilyTieItem(type, sdsc.Instance, famt);
 				Ties = (FamilyTieItem[])Helper.Add(Ties, s);
 			}
 			s.Type = type;
@@ -258,7 +258,7 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		)
 			: base(siminstance, famt)
 		{
-			this.Type = type;
+			Type = type;
 		}
 
 		/// <summary>

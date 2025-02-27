@@ -71,7 +71,7 @@ namespace SimPe.PackedFiles.UserInterface
 		#region IDisposable Member
 		public virtual void Dispose()
 		{
-			this.form.Dispose();
+			form.Dispose();
 		}
 		#endregion
 	}

@@ -110,174 +110,174 @@ namespace SimPe.Plugin
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new Container();
+			components = new Container();
 			ComponentResourceManager resources =
 				new ComponentResourceManager(
 					typeof(NgbhItemsListView)
 				);
-			this.lv = new ListView();
-			this.menu = new ContextMenuStrip(this.components);
-			this.miCopy = new ToolStripMenuItem();
-			this.miPaste = new ToolStripMenuItem();
-			this.miPasteGossip = new ToolStripMenuItem();
-			this.toolStripMenuItem2 = new ToolStripSeparator();
-			this.miClone = new ToolStripMenuItem();
-			this.miDelCascade = new ToolStripMenuItem();
-			this.panel1 = new Panel();
-			this.cbnogoss = new CheckBox();
-			this.lladd = new LinkLabel();
-			this.cbadd = new ComboBox();
-			this.lldel = new LinkLabel();
-			this.btUp = new Button();
-			this.btDown = new Button();
-			this.menu.SuspendLayout();
-			this.panel1.SuspendLayout();
-			this.SuspendLayout();
+			lv = new ListView();
+			menu = new ContextMenuStrip(components);
+			miCopy = new ToolStripMenuItem();
+			miPaste = new ToolStripMenuItem();
+			miPasteGossip = new ToolStripMenuItem();
+			toolStripMenuItem2 = new ToolStripSeparator();
+			miClone = new ToolStripMenuItem();
+			miDelCascade = new ToolStripMenuItem();
+			panel1 = new Panel();
+			cbnogoss = new CheckBox();
+			lladd = new LinkLabel();
+			cbadd = new ComboBox();
+			lldel = new LinkLabel();
+			btUp = new Button();
+			btDown = new Button();
+			menu.SuspendLayout();
+			panel1.SuspendLayout();
+			SuspendLayout();
 			//
 			// lv
 			//
-			this.lv.BorderStyle = BorderStyle.FixedSingle;
-			this.lv.ContextMenuStrip = this.menu;
-			resources.ApplyResources(this.lv, "lv");
-			this.lv.HeaderStyle = ColumnHeaderStyle.Nonclickable;
-			this.lv.HideSelection = false;
-			this.lv.Name = "lv";
-			this.lv.UseCompatibleStateImageBehavior = false;
-			this.lv.View = View.List;
-			this.lv.SelectedIndexChanged += new EventHandler(
-				this.lv_SelectedIndexChanged_1
+			lv.BorderStyle = BorderStyle.FixedSingle;
+			lv.ContextMenuStrip = menu;
+			resources.ApplyResources(lv, "lv");
+			lv.HeaderStyle = ColumnHeaderStyle.Nonclickable;
+			lv.HideSelection = false;
+			lv.Name = "lv";
+			lv.UseCompatibleStateImageBehavior = false;
+			lv.View = View.List;
+			lv.SelectedIndexChanged += new EventHandler(
+				lv_SelectedIndexChanged_1
 			);
 			//
 			// menu
 			//
-			this.menu.Items.AddRange(
+			menu.Items.AddRange(
 				new ToolStripItem[]
 				{
-					this.miCopy,
-					this.miPaste,
-					this.miPasteGossip,
-					this.toolStripMenuItem2,
-					this.miClone,
-					this.miDelCascade,
+					miCopy,
+					miPaste,
+					miPasteGossip,
+					toolStripMenuItem2,
+					miClone,
+					miDelCascade,
 				}
 			);
-			this.menu.Name = "menu";
-			resources.ApplyResources(this.menu, "menu");
-			this.menu.VisibleChanged += new EventHandler(
-				this.menu_VisibleChanged
+			menu.Name = "menu";
+			resources.ApplyResources(menu, "menu");
+			menu.VisibleChanged += new EventHandler(
+				menu_VisibleChanged
 			);
 			//
 			// miCopy
 			//
-			resources.ApplyResources(this.miCopy, "miCopy");
-			this.miCopy.Name = "miCopy";
-			this.miCopy.Click += new EventHandler(this.CopyItems);
+			resources.ApplyResources(miCopy, "miCopy");
+			miCopy.Name = "miCopy";
+			miCopy.Click += new EventHandler(CopyItems);
 			//
 			// miPaste
 			//
-			resources.ApplyResources(this.miPaste, "miPaste");
-			this.miPaste.Name = "miPaste";
-			this.miPaste.Click += new EventHandler(this.PasteItems);
+			resources.ApplyResources(miPaste, "miPaste");
+			miPaste.Name = "miPaste";
+			miPaste.Click += new EventHandler(PasteItems);
 			//
 			// miPasteGossip
 			//
-			this.miPasteGossip.Name = "miPasteGossip";
-			resources.ApplyResources(this.miPasteGossip, "miPasteGossip");
-			this.miPasteGossip.Click += new EventHandler(
-				this.PasteItemsAsGossip
+			miPasteGossip.Name = "miPasteGossip";
+			resources.ApplyResources(miPasteGossip, "miPasteGossip");
+			miPasteGossip.Click += new EventHandler(
+				PasteItemsAsGossip
 			);
 			//
 			// toolStripMenuItem2
 			//
-			this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-			resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
+			toolStripMenuItem2.Name = "toolStripMenuItem2";
+			resources.ApplyResources(toolStripMenuItem2, "toolStripMenuItem2");
 			//
 			// miClone
 			//
-			this.miClone.Name = "miClone";
-			resources.ApplyResources(this.miClone, "miClone");
-			this.miClone.Click += new EventHandler(this.CloneItem);
+			miClone.Name = "miClone";
+			resources.ApplyResources(miClone, "miClone");
+			miClone.Click += new EventHandler(CloneItem);
 			//
 			// miDelCascade
 			//
-			resources.ApplyResources(this.miDelCascade, "miDelCascade");
-			this.miDelCascade.Name = "miDelCascade";
-			this.miDelCascade.Click += new EventHandler(this.DeleteCascadeItems);
+			resources.ApplyResources(miDelCascade, "miDelCascade");
+			miDelCascade.Name = "miDelCascade";
+			miDelCascade.Click += new EventHandler(DeleteCascadeItems);
 			//
 			// panel1
 			//
-			resources.ApplyResources(this.panel1, "panel1");
-			this.panel1.BackColor = Color.Transparent;
-			this.panel1.Controls.Add(this.cbnogoss);
-			this.panel1.Controls.Add(this.lladd);
-			this.panel1.Controls.Add(this.cbadd);
-			this.panel1.Controls.Add(this.lldel);
-			this.panel1.Controls.Add(this.btUp);
-			this.panel1.Controls.Add(this.btDown);
-			this.panel1.Name = "panel1";
+			resources.ApplyResources(panel1, "panel1");
+			panel1.BackColor = Color.Transparent;
+			panel1.Controls.Add(cbnogoss);
+			panel1.Controls.Add(lladd);
+			panel1.Controls.Add(cbadd);
+			panel1.Controls.Add(lldel);
+			panel1.Controls.Add(btUp);
+			panel1.Controls.Add(btDown);
+			panel1.Name = "panel1";
 			//
 			// cbnogoss
 			//
-			resources.ApplyResources(this.cbnogoss, "cbnogoss");
-			this.cbnogoss.Name = "cbnogoss";
-			this.cbnogoss.UseVisualStyleBackColor = true;
-			this.cbnogoss.CheckedChanged += new EventHandler(
-				this.cbnogoss_CheckedChanged
+			resources.ApplyResources(cbnogoss, "cbnogoss");
+			cbnogoss.Name = "cbnogoss";
+			cbnogoss.UseVisualStyleBackColor = true;
+			cbnogoss.CheckedChanged += new EventHandler(
+				cbnogoss_CheckedChanged
 			);
 			//
 			// lladd
 			//
-			resources.ApplyResources(this.lladd, "lladd");
-			this.lladd.Name = "lladd";
-			this.lladd.TabStop = true;
-			this.lladd.UseCompatibleTextRendering = true;
-			this.lladd.LinkClicked +=
+			resources.ApplyResources(lladd, "lladd");
+			lladd.Name = "lladd";
+			lladd.TabStop = true;
+			lladd.UseCompatibleTextRendering = true;
+			lladd.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.lladd_LinkClicked
+					lladd_LinkClicked
 				);
 			//
 			// cbadd
 			//
-			resources.ApplyResources(this.cbadd, "cbadd");
-			this.cbadd.DropDownStyle = ComboBoxStyle.DropDownList;
-			this.cbadd.ForeColor = SystemColors.ControlText;
-			this.cbadd.Name = "cbadd";
-			this.cbadd.SelectedIndexChanged += new EventHandler(
-				this.cbadd_SelectedIndexChanged
+			resources.ApplyResources(cbadd, "cbadd");
+			cbadd.DropDownStyle = ComboBoxStyle.DropDownList;
+			cbadd.ForeColor = SystemColors.ControlText;
+			cbadd.Name = "cbadd";
+			cbadd.SelectedIndexChanged += new EventHandler(
+				cbadd_SelectedIndexChanged
 			);
 			//
 			// lldel
 			//
-			resources.ApplyResources(this.lldel, "lldel");
-			this.lldel.Name = "lldel";
-			this.lldel.TabStop = true;
-			this.lldel.LinkClicked +=
+			resources.ApplyResources(lldel, "lldel");
+			lldel.Name = "lldel";
+			lldel.TabStop = true;
+			lldel.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.lldel_LinkClicked
+					lldel_LinkClicked
 				);
 			//
 			// btUp
 			//
-			resources.ApplyResources(this.btUp, "btUp");
-			this.btUp.Name = "btUp";
-			this.btUp.Click += new EventHandler(this.btUp_Click);
+			resources.ApplyResources(btUp, "btUp");
+			btUp.Name = "btUp";
+			btUp.Click += new EventHandler(btUp_Click);
 			//
 			// btDown
 			//
-			resources.ApplyResources(this.btDown, "btDown");
-			this.btDown.Name = "btDown";
-			this.btDown.Click += new EventHandler(this.btDown_Click);
+			resources.ApplyResources(btDown, "btDown");
+			btDown.Name = "btDown";
+			btDown.Click += new EventHandler(btDown_Click);
 			//
 			// NgbhItemsListView
 			//
-			this.Controls.Add(this.lv);
-			this.Controls.Add(this.panel1);
+			Controls.Add(lv);
+			Controls.Add(panel1);
 			resources.ApplyResources(this, "$this");
-			this.Name = "NgbhItemsListView";
-			this.menu.ResumeLayout(false);
-			this.panel1.ResumeLayout(false);
-			this.panel1.PerformLayout();
-			this.ResumeLayout(false);
+			Name = "NgbhItemsListView";
+			menu.ResumeLayout(false);
+			panel1.ResumeLayout(false);
+			panel1.PerformLayout();
+			ResumeLayout(false);
 		}
 
 		#endregion
@@ -313,7 +313,7 @@ namespace SimPe.Plugin
 			set
 			{
 				cc = value;
-				this.cbnogoss.Visible = cc;
+				cbnogoss.Visible = cc;
 			}
 		}
 
@@ -334,7 +334,7 @@ namespace SimPe.Plugin
 			{
 				if (value != null)
 				{
-					NgbhItems = value.GetItems(this.SlotType);
+					NgbhItems = value.GetItems(SlotType);
 				}
 				else
 				{
@@ -361,8 +361,8 @@ namespace SimPe.Plugin
 
 		void SetContent()
 		{
-			this.Clear();
-			this.cbadd.Items.Clear();
+			Clear();
+			cbadd.Items.Clear();
 
 			if (items != null)
 			{
@@ -530,7 +530,7 @@ namespace SimPe.Plugin
 			}
 
 			SelectedItem.Update();
-			this.Refresh(false);
+			Refresh(false);
 		}
 
 		public ListView.ListViewItemCollection Items => lv.Items;
@@ -593,7 +593,7 @@ namespace SimPe.Plugin
 			Data.Alias a = cbadd.SelectedItem as Data.Alias;
 			SimMemoryType smt = (SimMemoryType)a.Id;
 
-			int index = this.NextItemIndex(true);
+			int index = NextItemIndex(true);
 			NgbhItem item = items.InsertNew(index, smt);
 			item.SetInitialGuid(smt);
 			InsertItemToList(index, item);
@@ -612,7 +612,7 @@ namespace SimPe.Plugin
 				return;
 			}
 			//NgbhItemsListViewItem item = this.SelectedItem;
-			Collections.NgbhItems nitems = this.SelectedNgbhItems;
+			Collections.NgbhItems nitems = SelectedNgbhItems;
 			items.Remove(nitems);
 
 			for (int i = lv.SelectedItems.Count; i > 0; i--)
@@ -686,7 +686,7 @@ namespace SimPe.Plugin
 			Collections.NgbhItems selitems = SelectedNgbhItems;
 			if (selitems.Count > 0)
 			{
-				this.Cursor = Cursors.WaitCursor;
+				Cursor = Cursors.WaitCursor;
 				try
 				{
 					clipboard.Clear();
@@ -697,13 +697,13 @@ namespace SimPe.Plugin
 				}
 				catch (Exception exception1)
 				{
-					this.Cursor = Cursors.Default;
+					Cursor = Cursors.Default;
 					Helper.ExceptionMessage(
 						Localization.Manager.GetString("errconvert"),
 						exception1
 					);
 				}
-				this.Cursor = Cursors.Default;
+				Cursor = Cursors.Default;
 			}
 		}
 
@@ -719,8 +719,8 @@ namespace SimPe.Plugin
 
 		void PasteItems(bool asgossip)
 		{
-			int itemIndex = this.NextItemIndex(false);
-			this.Cursor = Cursors.WaitCursor;
+			int itemIndex = NextItemIndex(false);
+			Cursor = Cursors.WaitCursor;
 			Queue newq = new Queue();
 			try
 			{
@@ -731,7 +731,7 @@ namespace SimPe.Plugin
 
 					if (item != null)
 					{
-						item = item.Clone(this.Slot);
+						item = item.Clone(Slot);
 
 						if (item.IsMemory && item.OwnerInstance > 0 && !asgossip)
 						{
@@ -749,7 +749,7 @@ namespace SimPe.Plugin
 			}
 			catch (Exception exception1)
 			{
-				this.Cursor = Cursors.Default;
+				Cursor = Cursors.Default;
 				Helper.ExceptionMessage(
 					Localization.Manager.GetString("errconvert"),
 					exception1
@@ -758,43 +758,43 @@ namespace SimPe.Plugin
 
 			clipboard.Clear();
 			clipboard = newq;
-			this.Cursor = Cursors.Default;
+			Cursor = Cursors.Default;
 		}
 
 		void AddItemAfterSelected(NgbhItem item)
 		{
 			//if (this.lv.SelectedItems.Count > 0)
 			{
-				this.Cursor = Cursors.WaitCursor;
+				Cursor = Cursors.WaitCursor;
 				try
 				{
-					int selectedIndex = this.NextItemIndex(true);
+					int selectedIndex = NextItemIndex(true);
 
 					NgbhItems.Insert(selectedIndex, item);
-					this.AddItemAt(item, selectedIndex);
-					this.lv.Items[selectedIndex].Selected = true;
-					this.lv.Items[selectedIndex].EnsureVisible();
+					AddItemAt(item, selectedIndex);
+					lv.Items[selectedIndex].Selected = true;
+					lv.Items[selectedIndex].EnsureVisible();
 				}
 				catch (Exception exception1)
 				{
-					this.Cursor = Cursors.Default;
+					Cursor = Cursors.Default;
 					Helper.ExceptionMessage(
 						Localization.Manager.GetString("errconvert"),
 						exception1
 					);
 				}
 
-				this.Cursor = Cursors.Default;
+				Cursor = Cursors.Default;
 			}
 		}
 
 		private void AddItemAt(NgbhItem item, int index)
 		{
-			this.InsertItemToList(index, item);
-			this.lv.SelectedItems.Clear();
-			this.lv.Items[index].Selected = true;
-			this.lv.Items[index].EnsureVisible();
-			if (this.SelectedIndexChanged != null)
+			InsertItemToList(index, item);
+			lv.SelectedItems.Clear();
+			lv.Items[index].Selected = true;
+			lv.Items[index].EnsureVisible();
+			if (SelectedIndexChanged != null)
 			{
 				SelectedIndexChanged(this, new EventArgs());
 			}
@@ -802,24 +802,24 @@ namespace SimPe.Plugin
 
 		int NextItemIndex(bool clearSelection)
 		{
-			int selectedIndex = this.lv.Items.Count - 1;
+			int selectedIndex = lv.Items.Count - 1;
 
 			// get index of the last selected item (if any)
-			if (this.lv.SelectedIndices.Count > 0)
+			if (lv.SelectedIndices.Count > 0)
 			{
-				selectedIndex = this.lv.SelectedIndices[
-					this.lv.SelectedIndices.Count - 1
+				selectedIndex = lv.SelectedIndices[
+					lv.SelectedIndices.Count - 1
 				];
 			}
 
 			// deselect previous (if applicable)
 			if (clearSelection)
 			{
-				this.lv.SelectedItems.Clear();
+				lv.SelectedItems.Clear();
 			}
 
 			// should not exceed the number of items (?)
-			selectedIndex = Math.Min(++selectedIndex, this.lv.Items.Count);
+			selectedIndex = Math.Min(++selectedIndex, lv.Items.Count);
 
 			return selectedIndex;
 		}
@@ -831,40 +831,40 @@ namespace SimPe.Plugin
 
 		void CloneItem()
 		{
-			if (this.lv.SelectedItems.Count > 0)
+			if (lv.SelectedItems.Count > 0)
 			{
-				this.Cursor = Cursors.WaitCursor;
+				Cursor = Cursors.WaitCursor;
 				try
 				{
 					// this command operates on a single item only;
 					// to avoid ambiguity, use the focused item
-					NgbhItem item = this.GetFocusedItem();
+					NgbhItem item = GetFocusedItem();
 					if (item != null)
 					{
-						int itemIndex = this.lv.FocusedItem.Index + 1;
+						int itemIndex = lv.FocusedItem.Index + 1;
 						NgbhItem item1 = item.Clone();
 
 						items.Insert(itemIndex, item1);
-						this.AddItemAt(item1, itemIndex);
+						AddItemAt(item1, itemIndex);
 
-						this.lv.FocusedItem.Focused = false;
+						lv.FocusedItem.Focused = false;
 					}
 				}
 				catch (Exception exception1)
 				{
-					this.Cursor = Cursors.Default;
+					Cursor = Cursors.Default;
 					Helper.ExceptionMessage(
 						Localization.Manager.GetString("errconvert"),
 						exception1
 					);
 				}
-				this.Cursor = Cursors.Default;
+				Cursor = Cursors.Default;
 			}
 		}
 
 		NgbhItem GetFocusedItem()
 		{
-			NgbhItemsListViewItem li = this.SelectedItem;
+			NgbhItemsListViewItem li = SelectedItem;
 			if (li == null)
 			{
 				return null;
@@ -877,7 +877,7 @@ namespace SimPe.Plugin
 		{
 			if (items.Length > 0)
 			{
-				this.lv.Enabled = false;
+				lv.Enabled = false;
 
 				ArrayList guidList = new ArrayList();
 				foreach (NgbhItem item in items)
@@ -888,7 +888,7 @@ namespace SimPe.Plugin
 					}
 				}
 
-				foreach (ListViewItem li in this.lv.Items)
+				foreach (ListViewItem li in lv.Items)
 				{
 					NgbhItem item = li.Tag as NgbhItem;
 					if (guidList.Contains(item.Guid))
@@ -897,25 +897,25 @@ namespace SimPe.Plugin
 					}
 				}
 
-				this.lv.Enabled = true;
+				lv.Enabled = true;
 			}
 		}
 
 		void DeleteItems(object sender, EventArgs e)
 		{
-			this.DeleteItems(false);
+			DeleteItems(false);
 		}
 
 		void DeleteCascadeItems(object sender, EventArgs e)
 		{
-			this.DeleteItems(true);
+			DeleteItems(true);
 		}
 
 		void DeleteItems(bool cascade)
 		{
 			if (lv.SelectedItems.Count != 0)
 			{
-				this.Cursor = Cursors.WaitCursor;
+				Cursor = Cursors.WaitCursor;
 				try
 				{
 					ArrayList items = new ArrayList();
@@ -924,7 +924,7 @@ namespace SimPe.Plugin
 						items.Add(li);
 					}
 
-					Collections.NgbhItems memoryItems = this.SelectedNgbhItems;
+					Collections.NgbhItems memoryItems = SelectedNgbhItems;
 
 					if (cascade)
 					{
@@ -945,13 +945,13 @@ namespace SimPe.Plugin
 				}
 				catch (Exception exception1)
 				{
-					this.Cursor = Cursors.Default;
+					Cursor = Cursors.Default;
 					Helper.ExceptionMessage(
 						Localization.Manager.GetString("errconvert"),
 						exception1
 					);
 				}
-				this.Cursor = Cursors.Default;
+				Cursor = Cursors.Default;
 			}
 		}
 

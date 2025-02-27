@@ -115,9 +115,9 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public override string ToString()
 		{
-			string n = this.FileName;
+			string n = FileName;
 			n += " => 0x";
-			n += Helper.HexString(unknown1) + ":0x" + Helper.HexString(this.LocalGroup);
+			n += Helper.HexString(unknown1) + ":0x" + Helper.HexString(LocalGroup);
 			n += " (";
 			for (int i = 0; i < unknown2.Length; i++)
 			{
@@ -182,7 +182,7 @@ namespace SimPe.PackedFiles.Wrapper
 			return base.Contains(item);
 		}
 
-		public int Length => this.Count;
+		public int Length => Count;
 
 		public override object Clone()
 		{

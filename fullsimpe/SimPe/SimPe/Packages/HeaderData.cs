@@ -311,9 +311,9 @@ namespace SimPe.Packages
 		internal void Load(BinaryReader reader)
 		{
 			//this.id = new char[4];
-			for (uint i = 0; i < this.id.Length; i++)
+			for (uint i = 0; i < id.Length; i++)
 			{
-				this.id[i] = reader.ReadChar();
+				id[i] = reader.ReadChar();
 			}
 
 			if (!Helper.AnyPackage && Identifier != "DBPF")
@@ -323,31 +323,31 @@ namespace SimPe.Packages
 				);
 			}
 
-			this.majorversion = reader.ReadInt32();
-			if (!Helper.AnyPackage && this.majorversion > 1)
+			majorversion = reader.ReadInt32();
+			if (!Helper.AnyPackage && majorversion > 1)
 			{
 				throw new InvalidOperationException(
 					"SimPe does not support this version of DBPF file." + spore
 				);
 			}
 
-			this.minorversion = reader.ReadInt32();
+			minorversion = reader.ReadInt32();
 
 			//this.reserved_00 = new Int32[3];
-			for (uint i = 0; i < this.reserved_00.Length; i++)
+			for (uint i = 0; i < reserved_00.Length; i++)
 			{
-				this.reserved_00[i] = reader.ReadInt32();
+				reserved_00[i] = reader.ReadInt32();
 			}
 
-			this.created = reader.ReadUInt32();
-			this.modified = reader.ReadInt32();
+			created = reader.ReadUInt32();
+			modified = reader.ReadInt32();
 
-			this.index.type = reader.ReadInt32();
+			index.type = reader.ReadInt32();
 			if (!LockIndexDuringLoad)
 			{
-				this.index.count = reader.ReadInt32();
-				this.index.offset = reader.ReadUInt32();
-				this.index.size = reader.ReadInt32();
+				index.count = reader.ReadInt32();
+				index.offset = reader.ReadUInt32();
+				index.size = reader.ReadInt32();
 			}
 			else
 			{
@@ -356,22 +356,22 @@ namespace SimPe.Packages
 				reader.ReadInt32(); //count, offset, size
 			}
 
-			this.hole.count = reader.ReadInt32();
-			this.hole.offset = reader.ReadUInt32();
-			this.hole.size = reader.ReadInt32();
+			hole.count = reader.ReadInt32();
+			hole.offset = reader.ReadUInt32();
+			hole.size = reader.ReadInt32();
 
 			if (IsVersion0101)
 			{
-				this.indextype = (Data.MetaData.IndexTypes)reader.ReadUInt32();
+				indextype = (Data.MetaData.IndexTypes)reader.ReadUInt32();
 			}
 
-			this.epicon = reader.ReadInt16();
-			this.showicon = reader.ReadInt16();
+			epicon = reader.ReadInt16();
+			showicon = reader.ReadInt16();
 
 			//this.reserved_02 = new Int32[8];
-			for (uint i = 0; i < this.reserved_02.Length; i++)
+			for (uint i = 0; i < reserved_02.Length; i++)
 			{
-				this.reserved_02[i] = reader.ReadInt32();
+				reserved_02[i] = reader.ReadInt32();
 			}
 		}
 
@@ -382,42 +382,42 @@ namespace SimPe.Packages
 		/// <remarks>Writer must be on the correct Position since no Positioning is performed</remarks>
 		internal void Save(BinaryWriter writer)
 		{
-			for (uint i = 0; i < this.id.Length; i++)
+			for (uint i = 0; i < id.Length; i++)
 			{
-				writer.Write(this.id[i]);
+				writer.Write(id[i]);
 			}
 
-			writer.Write(this.majorversion);
-			writer.Write(this.minorversion);
+			writer.Write(majorversion);
+			writer.Write(minorversion);
 
-			for (uint i = 0; i < this.reserved_00.Length; i++)
+			for (uint i = 0; i < reserved_00.Length; i++)
 			{
-				writer.Write(this.reserved_00[i]);
+				writer.Write(reserved_00[i]);
 			}
 
-			writer.Write(this.created);
-			writer.Write(this.modified);
+			writer.Write(created);
+			writer.Write(modified);
 
-			writer.Write(this.index.type);
-			writer.Write(this.index.count);
-			writer.Write(this.index.offset);
-			writer.Write(this.index.size);
+			writer.Write(index.type);
+			writer.Write(index.count);
+			writer.Write(index.offset);
+			writer.Write(index.size);
 
-			writer.Write(this.hole.count);
-			writer.Write(this.hole.offset);
-			writer.Write(this.hole.size);
+			writer.Write(hole.count);
+			writer.Write(hole.offset);
+			writer.Write(hole.size);
 
 			if (IsVersion0101)
 			{
-				writer.Write((uint)this.IndexType);
+				writer.Write((uint)IndexType);
 			}
 
-			writer.Write(this.epicon);
-			writer.Write(this.showicon);
+			writer.Write(epicon);
+			writer.Write(showicon);
 
-			for (uint i = 0; i < this.reserved_02.Length; i++)
+			for (uint i = 0; i < reserved_02.Length; i++)
 			{
-				writer.Write(this.reserved_02[i]);
+				writer.Write(reserved_02[i]);
 			}
 		}
 		#endregion
@@ -426,11 +426,11 @@ namespace SimPe.Packages
 
 		public void Dispose()
 		{
-			this.hole = null;
-			this.index = null;
-			this.reserved_00 = null;
-			this.reserved_02 = null;
-			this.id = null;
+			hole = null;
+			index = null;
+			reserved_00 = null;
+			reserved_02 = null;
+			id = null;
 		}
 
 		#endregion
@@ -438,18 +438,18 @@ namespace SimPe.Packages
 		public object Clone()
 		{
 			HeaderData iph = new HeaderData();
-			iph.created = this.created;
-			iph.id = this.id;
-			iph.indextype = this.indextype;
-			iph.majorversion = this.majorversion;
-			iph.minorversion = this.minorversion;
-			iph.modified = this.modified;
+			iph.created = created;
+			iph.id = id;
+			iph.indextype = indextype;
+			iph.majorversion = majorversion;
+			iph.minorversion = minorversion;
+			iph.modified = modified;
 
-			iph.reserved_00 = this.reserved_00;
-			iph.reserved_02 = this.reserved_02;
+			iph.reserved_00 = reserved_00;
+			iph.reserved_02 = reserved_02;
 
-			iph.epicon = this.epicon;
-			iph.showicon = this.showicon;
+			iph.epicon = epicon;
+			iph.showicon = showicon;
 			return (Interfaces.Files.IPackageHeader)iph;
 		}
 	}

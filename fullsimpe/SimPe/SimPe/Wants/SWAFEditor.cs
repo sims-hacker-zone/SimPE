@@ -436,7 +436,7 @@ namespace SimPe.Wants
 			if (setHandler && wrapper != null)
 			{
 				//wrapper.FileDescriptor.DescriptionChanged -= new EventHandler(FileDescriptor_DescriptionChanged);
-				wrapper.WrapperChanged -= new EventHandler(this.WrapperChanged);
+				wrapper.WrapperChanged -= new EventHandler(WrapperChanged);
 				setHandler = false;
 			}
 			wrapper = null;
@@ -901,14 +901,14 @@ namespace SimPe.Wants
 
 			if (!setHandler)
 			{
-				wrapper.WrapperChanged += new EventHandler(this.WrapperChanged);
+				wrapper.WrapperChanged += new EventHandler(WrapperChanged);
 				setHandler = true;
 			}
 		}
 
 		private void WrapperChanged(object sender, EventArgs e)
 		{
-			this.btnCommit.Enabled = wrapper.Changed;
+			btnCommit.Enabled = wrapper.Changed;
 
 			if (internalchg)
 			{

@@ -521,7 +521,7 @@ namespace SimPe.Plugin.Gmdc
 				Values.Add(dummy);
 			}
 
-			this.ReadBlock(reader, Items);
+			ReadBlock(reader, Items);
 		}
 
 		/// <summary>
@@ -538,7 +538,7 @@ namespace SimPe.Plugin.Gmdc
 			if (Items.Length == 0)
 			{
 				Number = Values.Length;
-				foreach (int i in this.Items)
+				foreach (int i in Items)
 				{
 					if (i > Number)
 					{
@@ -566,7 +566,7 @@ namespace SimPe.Plugin.Gmdc
 				Values[i].Serialize(writer);
 			}
 
-			this.WriteBlock(writer, Items);
+			WriteBlock(writer, Items);
 		}
 
 		/// <summary>
@@ -575,13 +575,13 @@ namespace SimPe.Plugin.Gmdc
 		/// <returns>A String Describing the Data</returns>
 		public override string ToString()
 		{
-			return this.Identity.ToString()
+			return Identity.ToString()
 				+ ", "
-				+ this.SetFormat.ToString()
+				+ SetFormat.ToString()
 				+ ", "
-				+ this.BlockFormat.ToString()
+				+ BlockFormat.ToString()
 				+ " ("
-				+ this.Values.Count.ToString()
+				+ Values.Count.ToString()
 				+ ")";
 		}
 	}
@@ -664,7 +664,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length => this.Count;
+		public int Length => Count;
 
 		/// <summary>
 		/// Create a clone of this Object
@@ -759,7 +759,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Number of stored Elements
 		/// </summary>
-		public int Length => this.Count;
+		public int Length => Count;
 
 		/// <summary>
 		/// Create a clone of this Object

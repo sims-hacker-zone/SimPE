@@ -216,7 +216,7 @@ namespace SimPe.Windows.Forms
 			internal SelectResourceEventArgs(bool ctrldn)
 				: base()
 			{
-				this.CtrlDown = ctrldn;
+				CtrlDown = ctrldn;
 			}
 		}
 

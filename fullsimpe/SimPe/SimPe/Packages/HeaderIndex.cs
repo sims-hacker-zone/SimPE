@@ -31,7 +31,7 @@ namespace SimPe.Packages
 	{
 		internal HeaderIndex(Interfaces.Files.IPackageHeader hd)
 		{
-			this.Parent = hd;
+			Parent = hd;
 		}
 
 		/// <summary>

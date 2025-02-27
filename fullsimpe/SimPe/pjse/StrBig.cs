@@ -65,7 +65,7 @@ namespace pjse
 		#region StrBig
 		public string doBig(string init)
 		{
-			this.DialogResult = DialogResult.Cancel;
+			DialogResult = DialogResult.Cancel;
 			richTextBox1.Text = init;
 
 			DialogResult dr = ShowDialog();
@@ -91,61 +91,61 @@ namespace pjse
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(StrBig));
-			this.panel1 = new Panel();
-			this.OK = new Button();
-			this.Cancel = new Button();
-			this.panel2 = new Panel();
-			this.richTextBox1 = new RichTextBox();
-			this.panel1.SuspendLayout();
-			this.SuspendLayout();
+			panel1 = new Panel();
+			OK = new Button();
+			Cancel = new Button();
+			panel2 = new Panel();
+			richTextBox1 = new RichTextBox();
+			panel1.SuspendLayout();
+			SuspendLayout();
 			//
 			// panel1
 			//
-			this.panel1.BackColor = System.Drawing.Color.Transparent;
-			this.panel1.Controls.Add(this.OK);
-			this.panel1.Controls.Add(this.Cancel);
-			this.panel1.Controls.Add(this.panel2);
-			resources.ApplyResources(this.panel1, "panel1");
-			this.panel1.Name = "panel1";
+			panel1.BackColor = System.Drawing.Color.Transparent;
+			panel1.Controls.Add(OK);
+			panel1.Controls.Add(Cancel);
+			panel1.Controls.Add(panel2);
+			resources.ApplyResources(panel1, "panel1");
+			panel1.Name = "panel1";
 			//
 			// OK
 			//
-			resources.ApplyResources(this.OK, "OK");
-			this.OK.DialogResult = DialogResult.OK;
-			this.OK.Name = "OK";
+			resources.ApplyResources(OK, "OK");
+			OK.DialogResult = DialogResult.OK;
+			OK.Name = "OK";
 			//
 			// Cancel
 			//
-			resources.ApplyResources(this.Cancel, "Cancel");
-			this.Cancel.DialogResult = DialogResult.Ignore;
-			this.Cancel.Name = "Cancel";
+			resources.ApplyResources(Cancel, "Cancel");
+			Cancel.DialogResult = DialogResult.Ignore;
+			Cancel.Name = "Cancel";
 			//
 			// panel2
 			//
-			resources.ApplyResources(this.panel2, "panel2");
-			this.panel2.BorderStyle = BorderStyle.FixedSingle;
-			this.panel2.Name = "panel2";
+			resources.ApplyResources(panel2, "panel2");
+			panel2.BorderStyle = BorderStyle.FixedSingle;
+			panel2.Name = "panel2";
 			//
 			// richTextBox1
 			//
-			this.richTextBox1.AcceptsTab = true;
-			this.richTextBox1.DetectUrls = false;
-			resources.ApplyResources(this.richTextBox1, "richTextBox1");
-			this.richTextBox1.Name = "richTextBox1";
+			richTextBox1.AcceptsTab = true;
+			richTextBox1.DetectUrls = false;
+			resources.ApplyResources(richTextBox1, "richTextBox1");
+			richTextBox1.Name = "richTextBox1";
 			//
 			// StrBig
 			//
-			this.AcceptButton = this.OK;
+			AcceptButton = OK;
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = AutoScaleMode.Dpi;
-			this.CancelButton = this.Cancel;
-			this.Controls.Add(this.richTextBox1);
-			this.Controls.Add(this.panel1);
-			this.MinimizeBox = false;
-			this.Name = "StrBig";
-			this.ShowInTaskbar = false;
-			this.panel1.ResumeLayout(false);
-			this.ResumeLayout(false);
+			AutoScaleMode = AutoScaleMode.Dpi;
+			CancelButton = Cancel;
+			Controls.Add(richTextBox1);
+			Controls.Add(panel1);
+			MinimizeBox = false;
+			Name = "StrBig";
+			ShowInTaskbar = false;
+			panel1.ResumeLayout(false);
+			ResumeLayout(false);
 		}
 		#endregion
 	}

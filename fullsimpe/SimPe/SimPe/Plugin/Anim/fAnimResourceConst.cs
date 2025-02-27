@@ -58,24 +58,24 @@ namespace SimPe.Plugin.Anim
 			//
 			// ambc
 			//
-			this.ambc = new AnimMeshBlockControl();
-			this.ambc.BackColor = System.Drawing.Color.Transparent;
-			this.ambc.Dock = DockStyle.Fill;
-			this.ambc.Font = new System.Drawing.Font(
+			ambc = new AnimMeshBlockControl();
+			ambc.BackColor = System.Drawing.Color.Transparent;
+			ambc.Dock = DockStyle.Fill;
+			ambc.Font = new System.Drawing.Font(
 				"Tahoma",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.ambc.Location = new System.Drawing.Point(8, 8);
-			this.ambc.MeshBlock = null;
-			this.ambc.MeshBlocks = null;
-			this.ambc.Name = "ambc";
-			this.ambc.Size = new System.Drawing.Size(776, 246);
-			this.ambc.TabIndex = 1;
-			this.ambc.Changed += new EventHandler(this.ambc_Changed);
-			this.tMesh.Controls.Add(this.ambc);
+			ambc.Location = new System.Drawing.Point(8, 8);
+			ambc.MeshBlock = null;
+			ambc.MeshBlocks = null;
+			ambc.Name = "ambc";
+			ambc.Size = new System.Drawing.Size(776, 246);
+			ambc.TabIndex = 1;
+			ambc.Changed += new EventHandler(ambc_Changed);
+			tMesh.Controls.Add(ambc);
 		}
 
 		/// <summary>
@@ -104,62 +104,62 @@ namespace SimPe.Plugin.Anim
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(fAnimResourceConst)
 				);
-			this.tabControl1 = new TabControl();
-			this.tAnimResourceConst = new System.Windows.Forms.TabPage();
-			this.groupBox2 = new GroupBox();
-			this.cbshnote = new CheckBox();
-			this.rtbnotes = new RichTextBox();
-			this.llTxt = new LinkLabel();
-			this.llInTxt = new LinkLabel();
-			this.llClear = new LinkLabel();
-			this.checkBox1 = new CheckBox();
-			this.tv = new TreeView();
-			this.llAdd = new LinkLabel();
-			this.pg = new PropertyGrid();
-			this.tMisc = new System.Windows.Forms.TabPage();
-			this.groupBox12 = new GroupBox();
-			this.tb_arc_ver = new TextBox();
-			this.label30 = new Label();
-			this.tMesh = new System.Windows.Forms.TabPage();
-			this.gradpanel = new Panel();
-			this.tabControl1.SuspendLayout();
-			this.tAnimResourceConst.SuspendLayout();
-			this.groupBox2.SuspendLayout();
-			this.tMisc.SuspendLayout();
-			this.groupBox12.SuspendLayout();
-			this.gradpanel.SuspendLayout();
-			this.SuspendLayout();
+			tabControl1 = new TabControl();
+			tAnimResourceConst = new System.Windows.Forms.TabPage();
+			groupBox2 = new GroupBox();
+			cbshnote = new CheckBox();
+			rtbnotes = new RichTextBox();
+			llTxt = new LinkLabel();
+			llInTxt = new LinkLabel();
+			llClear = new LinkLabel();
+			checkBox1 = new CheckBox();
+			tv = new TreeView();
+			llAdd = new LinkLabel();
+			pg = new PropertyGrid();
+			tMisc = new System.Windows.Forms.TabPage();
+			groupBox12 = new GroupBox();
+			tb_arc_ver = new TextBox();
+			label30 = new Label();
+			tMesh = new System.Windows.Forms.TabPage();
+			gradpanel = new Panel();
+			tabControl1.SuspendLayout();
+			tAnimResourceConst.SuspendLayout();
+			groupBox2.SuspendLayout();
+			tMisc.SuspendLayout();
+			groupBox12.SuspendLayout();
+			gradpanel.SuspendLayout();
+			SuspendLayout();
 			//
 			// tabControl1
 			//
-			this.tabControl1.Controls.Add(this.tAnimResourceConst);
-			this.tabControl1.Controls.Add(this.tMisc);
-			this.tabControl1.Controls.Add(this.tMesh);
-			this.tabControl1.Location = new System.Drawing.Point(8, 8);
-			this.tabControl1.Multiline = true;
-			this.tabControl1.Name = "tabControl1";
-			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(920, 288);
-			this.tabControl1.TabIndex = 2;
+			tabControl1.Controls.Add(tAnimResourceConst);
+			tabControl1.Controls.Add(tMisc);
+			tabControl1.Controls.Add(tMesh);
+			tabControl1.Location = new System.Drawing.Point(8, 8);
+			tabControl1.Multiline = true;
+			tabControl1.Name = "tabControl1";
+			tabControl1.SelectedIndex = 0;
+			tabControl1.Size = new System.Drawing.Size(920, 288);
+			tabControl1.TabIndex = 2;
 			//
 			// tAnimResourceConst
 			//
-			this.tAnimResourceConst.BackColor = System
+			tAnimResourceConst.BackColor = System
 				.Drawing
 				.SystemColors
 				.ControlLightLight;
-			this.tAnimResourceConst.Controls.Add(this.groupBox2);
-			this.tAnimResourceConst.Location = new System.Drawing.Point(4, 22);
-			this.tAnimResourceConst.Name = "tAnimResourceConst";
-			this.tAnimResourceConst.Size = new System.Drawing.Size(912, 262);
-			this.tAnimResourceConst.TabIndex = 6;
-			this.tAnimResourceConst.Text = "Raw View";
-			this.tAnimResourceConst.UseVisualStyleBackColor = true;
-			this.tAnimResourceConst.Visible = false;
+			tAnimResourceConst.Controls.Add(groupBox2);
+			tAnimResourceConst.Location = new System.Drawing.Point(4, 22);
+			tAnimResourceConst.Name = "tAnimResourceConst";
+			tAnimResourceConst.Size = new System.Drawing.Size(912, 262);
+			tAnimResourceConst.TabIndex = 6;
+			tAnimResourceConst.Text = "Raw View";
+			tAnimResourceConst.UseVisualStyleBackColor = true;
+			tAnimResourceConst.Visible = false;
 			//
 			// groupBox2
 			//
-			this.groupBox2.Anchor = (
+			groupBox2.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -171,33 +171,33 @@ namespace SimPe.Plugin.Anim
 					)
 				)
 			);
-			this.groupBox2.Controls.Add(this.cbshnote);
-			this.groupBox2.Controls.Add(this.rtbnotes);
-			this.groupBox2.Controls.Add(this.llTxt);
-			this.groupBox2.Controls.Add(this.llInTxt);
-			this.groupBox2.Controls.Add(this.llClear);
-			this.groupBox2.Controls.Add(this.checkBox1);
-			this.groupBox2.Controls.Add(this.tv);
-			this.groupBox2.Controls.Add(this.llAdd);
-			this.groupBox2.Controls.Add(this.pg);
-			this.groupBox2.FlatStyle = FlatStyle.System;
-			this.groupBox2.Font = new System.Drawing.Font(
+			groupBox2.Controls.Add(cbshnote);
+			groupBox2.Controls.Add(rtbnotes);
+			groupBox2.Controls.Add(llTxt);
+			groupBox2.Controls.Add(llInTxt);
+			groupBox2.Controls.Add(llClear);
+			groupBox2.Controls.Add(checkBox1);
+			groupBox2.Controls.Add(tv);
+			groupBox2.Controls.Add(llAdd);
+			groupBox2.Controls.Add(pg);
+			groupBox2.FlatStyle = FlatStyle.System;
+			groupBox2.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.groupBox2.Location = new System.Drawing.Point(8, 8);
-			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(896, 248);
-			this.groupBox2.TabIndex = 39;
-			this.groupBox2.TabStop = false;
-			this.groupBox2.Text = "Content";
+			groupBox2.Location = new System.Drawing.Point(8, 8);
+			groupBox2.Name = "groupBox2";
+			groupBox2.Size = new System.Drawing.Size(896, 248);
+			groupBox2.TabIndex = 39;
+			groupBox2.TabStop = false;
+			groupBox2.Text = "Content";
 			//
 			// cbshnote
 			//
-			this.cbshnote.Anchor = (
+			cbshnote.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -205,28 +205,28 @@ namespace SimPe.Plugin.Anim
 					)
 				)
 			);
-			this.cbshnote.AutoSize = true;
-			this.cbshnote.Font = new System.Drawing.Font(
+			cbshnote.AutoSize = true;
+			cbshnote.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.cbshnote.Location = new System.Drawing.Point(758, 0);
-			this.cbshnote.Name = "cbshnote";
-			this.cbshnote.Size = new System.Drawing.Size(125, 17);
-			this.cbshnote.TabIndex = 46;
-			this.cbshnote.Text = "\'From Text\' Notes";
-			this.cbshnote.UseVisualStyleBackColor = true;
-			this.cbshnote.Visible = false;
-			this.cbshnote.CheckedChanged += new EventHandler(
-				this.cbshnote_CheckedChanged
+			cbshnote.Location = new System.Drawing.Point(758, 0);
+			cbshnote.Name = "cbshnote";
+			cbshnote.Size = new System.Drawing.Size(125, 17);
+			cbshnote.TabIndex = 46;
+			cbshnote.Text = "\'From Text\' Notes";
+			cbshnote.UseVisualStyleBackColor = true;
+			cbshnote.Visible = false;
+			cbshnote.CheckedChanged += new EventHandler(
+				cbshnote_CheckedChanged
 			);
 			//
 			// rtbnotes
 			//
-			this.rtbnotes.Anchor = (
+			rtbnotes.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -238,69 +238,69 @@ namespace SimPe.Plugin.Anim
 					)
 				)
 			);
-			this.rtbnotes.BorderStyle = BorderStyle.FixedSingle;
-			this.rtbnotes.Font = new System.Drawing.Font(
+			rtbnotes.BorderStyle = BorderStyle.FixedSingle;
+			rtbnotes.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.rtbnotes.Location = new System.Drawing.Point(412, 24);
-			this.rtbnotes.Name = "rtbnotes";
-			this.rtbnotes.Size = new System.Drawing.Size(476, 216);
-			this.rtbnotes.TabIndex = 45;
-			this.rtbnotes.Text = resources.GetString("rtbnotes.Text");
-			this.rtbnotes.Visible = false;
+			rtbnotes.Location = new System.Drawing.Point(412, 24);
+			rtbnotes.Name = "rtbnotes";
+			rtbnotes.Size = new System.Drawing.Size(476, 216);
+			rtbnotes.TabIndex = 45;
+			rtbnotes.Text = resources.GetString("rtbnotes.Text");
+			rtbnotes.Visible = false;
 			//
 			// llTxt
 			//
-			this.llTxt.AutoSize = true;
-			this.llTxt.Enabled = false;
-			this.llTxt.Location = new System.Drawing.Point(684, 30);
-			this.llTxt.Name = "llTxt";
-			this.llTxt.Size = new System.Drawing.Size(56, 13);
-			this.llTxt.TabIndex = 44;
-			this.llTxt.TabStop = true;
-			this.llTxt.Text = "To Text";
-			this.llTxt.LinkClicked +=
+			llTxt.AutoSize = true;
+			llTxt.Enabled = false;
+			llTxt.Location = new System.Drawing.Point(684, 30);
+			llTxt.Name = "llTxt";
+			llTxt.Size = new System.Drawing.Size(56, 13);
+			llTxt.TabIndex = 44;
+			llTxt.TabStop = true;
+			llTxt.Text = "To Text";
+			llTxt.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.llTxt_LinkClicked
+					llTxt_LinkClicked
 				);
 			//
 			// llInTxt
 			//
-			this.llInTxt.AutoSize = true;
-			this.llInTxt.Enabled = false;
-			this.llInTxt.Location = new System.Drawing.Point(746, 30);
-			this.llInTxt.Name = "llInTxt";
-			this.llInTxt.Size = new System.Drawing.Size(74, 13);
-			this.llInTxt.TabIndex = 44;
-			this.llInTxt.TabStop = true;
-			this.llInTxt.Text = "From Text";
-			this.llInTxt.LinkClicked +=
+			llInTxt.AutoSize = true;
+			llInTxt.Enabled = false;
+			llInTxt.Location = new System.Drawing.Point(746, 30);
+			llInTxt.Name = "llInTxt";
+			llInTxt.Size = new System.Drawing.Size(74, 13);
+			llInTxt.TabIndex = 44;
+			llInTxt.TabStop = true;
+			llInTxt.Text = "From Text";
+			llInTxt.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.llInTxt_LinkClicked
+					llInTxt_LinkClicked
 				);
 			//
 			// llClear
 			//
-			this.llClear.AutoSize = true;
-			this.llClear.Enabled = false;
-			this.llClear.Location = new System.Drawing.Point(584, 30);
-			this.llClear.Name = "llClear";
-			this.llClear.Size = new System.Drawing.Size(94, 13);
-			this.llClear.TabIndex = 43;
-			this.llClear.TabStop = true;
-			this.llClear.Text = "Clear Frames";
-			this.llClear.LinkClicked +=
+			llClear.AutoSize = true;
+			llClear.Enabled = false;
+			llClear.Location = new System.Drawing.Point(584, 30);
+			llClear.Name = "llClear";
+			llClear.Size = new System.Drawing.Size(94, 13);
+			llClear.TabIndex = 43;
+			llClear.TabStop = true;
+			llClear.Text = "Clear Frames";
+			llClear.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.llClear_LinkClicked
+					llClear_LinkClicked
 				);
 			//
 			// checkBox1
 			//
-			this.checkBox1.Anchor = (
+			checkBox1.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -308,20 +308,20 @@ namespace SimPe.Plugin.Anim
 					)
 				)
 			);
-			this.checkBox1.AutoSize = true;
-			this.checkBox1.Location = new System.Drawing.Point(828, 30);
-			this.checkBox1.Name = "checkBox1";
-			this.checkBox1.Size = new System.Drawing.Size(55, 17);
-			this.checkBox1.TabIndex = 42;
-			this.checkBox1.Text = "Help";
-			this.checkBox1.UseVisualStyleBackColor = false;
-			this.checkBox1.CheckedChanged += new EventHandler(
-				this.checkBox1_CheckedChanged
+			checkBox1.AutoSize = true;
+			checkBox1.Location = new System.Drawing.Point(828, 30);
+			checkBox1.Name = "checkBox1";
+			checkBox1.Size = new System.Drawing.Size(55, 17);
+			checkBox1.TabIndex = 42;
+			checkBox1.Text = "Help";
+			checkBox1.UseVisualStyleBackColor = false;
+			checkBox1.CheckedChanged += new EventHandler(
+				checkBox1_CheckedChanged
 			);
 			//
 			// tv
 			//
-			this.tv.Anchor = (
+			tv.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -331,41 +331,41 @@ namespace SimPe.Plugin.Anim
 					)
 				)
 			);
-			this.tv.Font = new System.Drawing.Font(
+			tv.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tv.FullRowSelect = true;
-			this.tv.HideSelection = false;
-			this.tv.Location = new System.Drawing.Point(8, 24);
-			this.tv.Name = "tv";
-			this.tv.Size = new System.Drawing.Size(396, 216);
-			this.tv.TabIndex = 0;
-			this.tv.AfterSelect += new TreeViewEventHandler(
-				this.tv_AfterSelect
+			tv.FullRowSelect = true;
+			tv.HideSelection = false;
+			tv.Location = new System.Drawing.Point(8, 24);
+			tv.Name = "tv";
+			tv.Size = new System.Drawing.Size(396, 216);
+			tv.TabIndex = 0;
+			tv.AfterSelect += new TreeViewEventHandler(
+				tv_AfterSelect
 			);
 			//
 			// llAdd
 			//
-			this.llAdd.AutoSize = true;
-			this.llAdd.Enabled = false;
-			this.llAdd.Location = new System.Drawing.Point(500, 30);
-			this.llAdd.Name = "llAdd";
-			this.llAdd.Size = new System.Drawing.Size(78, 13);
-			this.llAdd.TabIndex = 2;
-			this.llAdd.TabStop = true;
-			this.llAdd.Text = "Add Frame";
-			this.llAdd.LinkClicked +=
+			llAdd.AutoSize = true;
+			llAdd.Enabled = false;
+			llAdd.Location = new System.Drawing.Point(500, 30);
+			llAdd.Name = "llAdd";
+			llAdd.Size = new System.Drawing.Size(78, 13);
+			llAdd.TabIndex = 2;
+			llAdd.TabStop = true;
+			llAdd.Text = "Add Frame";
+			llAdd.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.llAdd_LinkClicked
+					llAdd_LinkClicked
 				);
 			//
 			// pg
 			//
-			this.pg.Anchor = (
+			pg.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -377,127 +377,127 @@ namespace SimPe.Plugin.Anim
 					)
 				)
 			);
-			this.pg.CommandsBackColor = System.Drawing.SystemColors.ControlLightLight;
-			this.pg.Font = new System.Drawing.Font(
+			pg.CommandsBackColor = System.Drawing.SystemColors.ControlLightLight;
+			pg.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.pg.HelpVisible = false;
-			this.pg.LineColor = System.Drawing.SystemColors.ScrollBar;
-			this.pg.Location = new System.Drawing.Point(412, 24);
-			this.pg.Name = "pg";
-			this.pg.Size = new System.Drawing.Size(476, 216);
-			this.pg.TabIndex = 1;
+			pg.HelpVisible = false;
+			pg.LineColor = System.Drawing.SystemColors.ScrollBar;
+			pg.Location = new System.Drawing.Point(412, 24);
+			pg.Name = "pg";
+			pg.Size = new System.Drawing.Size(476, 216);
+			pg.TabIndex = 1;
 			//
 			// tMisc
 			//
-			this.tMisc.BackColor = System.Drawing.SystemColors.ControlLightLight;
-			this.tMisc.Controls.Add(this.gradpanel);
-			this.tMisc.Location = new System.Drawing.Point(4, 22);
-			this.tMisc.Name = "tMisc";
-			this.tMisc.Size = new System.Drawing.Size(912, 262);
-			this.tMisc.TabIndex = 7;
-			this.tMisc.Text = "Misc.";
-			this.tMisc.UseVisualStyleBackColor = true;
+			tMisc.BackColor = System.Drawing.SystemColors.ControlLightLight;
+			tMisc.Controls.Add(gradpanel);
+			tMisc.Location = new System.Drawing.Point(4, 22);
+			tMisc.Name = "tMisc";
+			tMisc.Size = new System.Drawing.Size(912, 262);
+			tMisc.TabIndex = 7;
+			tMisc.Text = "Misc.";
+			tMisc.UseVisualStyleBackColor = true;
 			//
 			// groupBox12
 			//
-			this.groupBox12.Controls.Add(this.tb_arc_ver);
-			this.groupBox12.Controls.Add(this.label30);
-			this.groupBox12.Font = new System.Drawing.Font(
+			groupBox12.Controls.Add(tb_arc_ver);
+			groupBox12.Controls.Add(label30);
+			groupBox12.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.groupBox12.Location = new System.Drawing.Point(8, 8);
-			this.groupBox12.Name = "groupBox12";
-			this.groupBox12.Size = new System.Drawing.Size(120, 72);
-			this.groupBox12.TabIndex = 12;
-			this.groupBox12.TabStop = false;
-			this.groupBox12.Text = "Settings";
+			groupBox12.Location = new System.Drawing.Point(8, 8);
+			groupBox12.Name = "groupBox12";
+			groupBox12.Size = new System.Drawing.Size(120, 72);
+			groupBox12.TabIndex = 12;
+			groupBox12.TabStop = false;
+			groupBox12.Text = "Settings";
 			//
 			// tb_arc_ver
 			//
-			this.tb_arc_ver.Font = new System.Drawing.Font(
+			tb_arc_ver.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tb_arc_ver.Location = new System.Drawing.Point(16, 40);
-			this.tb_arc_ver.Name = "tb_arc_ver";
-			this.tb_arc_ver.Size = new System.Drawing.Size(88, 21);
-			this.tb_arc_ver.TabIndex = 24;
-			this.tb_arc_ver.Text = "0x00000000";
-			this.tb_arc_ver.TextChanged += new EventHandler(
-				this.tb_arc_ver_TextChanged
+			tb_arc_ver.Location = new System.Drawing.Point(16, 40);
+			tb_arc_ver.Name = "tb_arc_ver";
+			tb_arc_ver.Size = new System.Drawing.Size(88, 21);
+			tb_arc_ver.TabIndex = 24;
+			tb_arc_ver.Text = "0x00000000";
+			tb_arc_ver.TextChanged += new EventHandler(
+				tb_arc_ver_TextChanged
 			);
 			//
 			// label30
 			//
-			this.label30.AutoSize = true;
-			this.label30.Font = new System.Drawing.Font(
+			label30.AutoSize = true;
+			label30.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label30.Location = new System.Drawing.Point(8, 24);
-			this.label30.Name = "label30";
-			this.label30.Size = new System.Drawing.Size(54, 13);
-			this.label30.TabIndex = 23;
-			this.label30.Text = "Version:";
+			label30.Location = new System.Drawing.Point(8, 24);
+			label30.Name = "label30";
+			label30.Size = new System.Drawing.Size(54, 13);
+			label30.TabIndex = 23;
+			label30.Text = "Version:";
 			//
 			// tMesh
 			//
-			this.tMesh.BackColor = System.Drawing.SystemColors.ControlLightLight;
-			this.tMesh.Location = new System.Drawing.Point(4, 22);
-			this.tMesh.Name = "tMesh";
-			this.tMesh.Size = new System.Drawing.Size(912, 262);
-			this.tMesh.TabIndex = 8;
-			this.tMesh.Text = "Mesh Animations";
-			this.tMesh.UseVisualStyleBackColor = true;
+			tMesh.BackColor = System.Drawing.SystemColors.ControlLightLight;
+			tMesh.Location = new System.Drawing.Point(4, 22);
+			tMesh.Name = "tMesh";
+			tMesh.Size = new System.Drawing.Size(912, 262);
+			tMesh.TabIndex = 8;
+			tMesh.Text = "Mesh Animations";
+			tMesh.UseVisualStyleBackColor = true;
 			//
 			// gradpanel
 			//
-			this.gradpanel.BackColor = System.Drawing.Color.Transparent;
-			this.gradpanel.Controls.Add(this.groupBox12);
-			this.gradpanel.Dock = DockStyle.Fill;
-			this.gradpanel.Font = new System.Drawing.Font(
+			gradpanel.BackColor = System.Drawing.Color.Transparent;
+			gradpanel.Controls.Add(groupBox12);
+			gradpanel.Dock = DockStyle.Fill;
+			gradpanel.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.gradpanel.Location = new System.Drawing.Point(0, 0);
-			this.gradpanel.Name = "gradpanel";
-			this.gradpanel.Size = new System.Drawing.Size(912, 262);
-			this.gradpanel.TabIndex = 13;
+			gradpanel.Location = new System.Drawing.Point(0, 0);
+			gradpanel.Name = "gradpanel";
+			gradpanel.Size = new System.Drawing.Size(912, 262);
+			gradpanel.TabIndex = 13;
 			//
 			// fAnimResourceConst
 			//
-			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-			this.ClientSize = new System.Drawing.Size(936, 350);
-			this.Controls.Add(this.tabControl1);
-			this.Name = "fAnimResourceConst";
-			this.Text = "fAnimResourceConst";
-			this.tabControl1.ResumeLayout(false);
-			this.tAnimResourceConst.ResumeLayout(false);
-			this.groupBox2.ResumeLayout(false);
-			this.groupBox2.PerformLayout();
-			this.tMisc.ResumeLayout(false);
-			this.groupBox12.ResumeLayout(false);
-			this.groupBox12.PerformLayout();
-			this.gradpanel.ResumeLayout(false);
-			this.ResumeLayout(false);
+			AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+			ClientSize = new System.Drawing.Size(936, 350);
+			Controls.Add(tabControl1);
+			Name = "fAnimResourceConst";
+			Text = "fAnimResourceConst";
+			tabControl1.ResumeLayout(false);
+			tAnimResourceConst.ResumeLayout(false);
+			groupBox2.ResumeLayout(false);
+			groupBox2.PerformLayout();
+			tMisc.ResumeLayout(false);
+			groupBox12.ResumeLayout(false);
+			groupBox12.PerformLayout();
+			gradpanel.ResumeLayout(false);
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -546,14 +546,14 @@ namespace SimPe.Plugin.Anim
 
 		private void tb_arc_ver_TextChanged(object sender, EventArgs e)
 		{
-			if (this.tb_arc_ver.Tag == null)
+			if (tb_arc_ver.Tag == null)
 			{
 				return;
 			}
 
 			try
 			{
-				AbstractRcolBlock arb = (AbstractRcolBlock)this.tAnimResourceConst.Tag;
+				AbstractRcolBlock arb = (AbstractRcolBlock)tAnimResourceConst.Tag;
 
 				arb.Version = Convert.ToUInt32(tb_arc_ver.Text, 16);
 				arb.Changed = true;
@@ -845,7 +845,7 @@ namespace SimPe.Plugin.Anim
 
 		private void cbshnote_CheckedChanged(object sender, EventArgs e)
 		{
-			this.rtbnotes.Visible = cbshnote.Checked;
+			rtbnotes.Visible = cbshnote.Checked;
 		}
 	}
 }

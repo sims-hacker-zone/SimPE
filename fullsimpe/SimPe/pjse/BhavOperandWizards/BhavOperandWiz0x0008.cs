@@ -82,7 +82,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0008
 		private DataOwnerControl doid2 = null;
 
 		#region iBhavOperandWizForm
-		public Panel WizPanel => this.pnWiz0x0008;
+		public Panel WizPanel => pnWiz0x0008;
 
 		public void Execute(Instruction inst)
 		{
@@ -92,23 +92,23 @@ namespace pjse.BhavOperandWizards.Wiz0x0008
 
 			doid1 = new DataOwnerControl(
 				inst,
-				this.cbDataOwner1,
-				this.cbPicker1,
-				this.tbval1,
-				this.cbDecimal,
-				this.cbAttrPicker,
-				this.lbConst1,
+				cbDataOwner1,
+				cbPicker1,
+				tbval1,
+				cbDecimal,
+				cbAttrPicker,
+				lbConst1,
 				ops[0x02],
 				(ushort)((ops[0x01] << 8) | ops[0x00])
 			);
 			doid2 = new DataOwnerControl(
 				inst,
-				this.cbDataOwner2,
-				this.cbPicker2,
-				this.tbval2,
-				this.cbDecimal,
-				this.cbAttrPicker,
-				this.lbConst2,
+				cbDataOwner2,
+				cbPicker2,
+				tbval2,
+				cbDecimal,
+				cbAttrPicker,
+				lbConst2,
 				ops[0x06],
 				(ushort)((ops[0x05] << 8) | ops[0x04])
 			);
@@ -140,124 +140,124 @@ namespace pjse.BhavOperandWizards.Wiz0x0008
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(UI));
-			this.pnWiz0x0008 = new Panel();
-			this.label2 = new Label();
-			this.label1 = new Label();
-			this.lbConst2 = new Label();
-			this.lbConst1 = new Label();
-			this.cbAttrPicker = new CheckBox();
-			this.cbDecimal = new CheckBox();
-			this.cbPicker2 = new ComboBox();
-			this.cbPicker1 = new ComboBox();
-			this.tbval2 = new TextBox();
-			this.cbDataOwner2 = new ComboBox();
-			this.tbval1 = new TextBox();
-			this.cbDataOwner1 = new ComboBox();
-			this.pnWiz0x0008.SuspendLayout();
-			this.SuspendLayout();
+			pnWiz0x0008 = new Panel();
+			label2 = new Label();
+			label1 = new Label();
+			lbConst2 = new Label();
+			lbConst1 = new Label();
+			cbAttrPicker = new CheckBox();
+			cbDecimal = new CheckBox();
+			cbPicker2 = new ComboBox();
+			cbPicker1 = new ComboBox();
+			tbval2 = new TextBox();
+			cbDataOwner2 = new ComboBox();
+			tbval1 = new TextBox();
+			cbDataOwner1 = new ComboBox();
+			pnWiz0x0008.SuspendLayout();
+			SuspendLayout();
 			//
 			// pnWiz0x0008
 			//
-			this.pnWiz0x0008.Controls.Add(this.label2);
-			this.pnWiz0x0008.Controls.Add(this.label1);
-			this.pnWiz0x0008.Controls.Add(this.lbConst2);
-			this.pnWiz0x0008.Controls.Add(this.lbConst1);
-			this.pnWiz0x0008.Controls.Add(this.cbAttrPicker);
-			this.pnWiz0x0008.Controls.Add(this.cbDecimal);
-			this.pnWiz0x0008.Controls.Add(this.cbPicker2);
-			this.pnWiz0x0008.Controls.Add(this.cbPicker1);
-			this.pnWiz0x0008.Controls.Add(this.tbval2);
-			this.pnWiz0x0008.Controls.Add(this.cbDataOwner2);
-			this.pnWiz0x0008.Controls.Add(this.tbval1);
-			this.pnWiz0x0008.Controls.Add(this.cbDataOwner1);
-			resources.ApplyResources(this.pnWiz0x0008, "pnWiz0x0008");
-			this.pnWiz0x0008.Name = "pnWiz0x0008";
+			pnWiz0x0008.Controls.Add(label2);
+			pnWiz0x0008.Controls.Add(label1);
+			pnWiz0x0008.Controls.Add(lbConst2);
+			pnWiz0x0008.Controls.Add(lbConst1);
+			pnWiz0x0008.Controls.Add(cbAttrPicker);
+			pnWiz0x0008.Controls.Add(cbDecimal);
+			pnWiz0x0008.Controls.Add(cbPicker2);
+			pnWiz0x0008.Controls.Add(cbPicker1);
+			pnWiz0x0008.Controls.Add(tbval2);
+			pnWiz0x0008.Controls.Add(cbDataOwner2);
+			pnWiz0x0008.Controls.Add(tbval1);
+			pnWiz0x0008.Controls.Add(cbDataOwner1);
+			resources.ApplyResources(pnWiz0x0008, "pnWiz0x0008");
+			pnWiz0x0008.Name = "pnWiz0x0008";
 			//
 			// label2
 			//
-			resources.ApplyResources(this.label2, "label2");
-			this.label2.Name = "label2";
+			resources.ApplyResources(label2, "label2");
+			label2.Name = "label2";
 			//
 			// label1
 			//
-			resources.ApplyResources(this.label1, "label1");
-			this.label1.Name = "label1";
+			resources.ApplyResources(label1, "label1");
+			label1.Name = "label1";
 			//
 			// lbConst2
 			//
-			resources.ApplyResources(this.lbConst2, "lbConst2");
-			this.lbConst2.Name = "lbConst2";
+			resources.ApplyResources(lbConst2, "lbConst2");
+			lbConst2.Name = "lbConst2";
 			//
 			// lbConst1
 			//
-			resources.ApplyResources(this.lbConst1, "lbConst1");
-			this.lbConst1.Name = "lbConst1";
+			resources.ApplyResources(lbConst1, "lbConst1");
+			lbConst1.Name = "lbConst1";
 			//
 			// cbAttrPicker
 			//
-			resources.ApplyResources(this.cbAttrPicker, "cbAttrPicker");
-			this.cbAttrPicker.Name = "cbAttrPicker";
+			resources.ApplyResources(cbAttrPicker, "cbAttrPicker");
+			cbAttrPicker.Name = "cbAttrPicker";
 			//
 			// cbDecimal
 			//
-			resources.ApplyResources(this.cbDecimal, "cbDecimal");
-			this.cbDecimal.Name = "cbDecimal";
+			resources.ApplyResources(cbDecimal, "cbDecimal");
+			cbDecimal.Name = "cbDecimal";
 			//
 			// cbPicker2
 			//
-			resources.ApplyResources(this.cbPicker2, "cbPicker2");
-			this.cbPicker2.DropDownStyle =
+			resources.ApplyResources(cbPicker2, "cbPicker2");
+			cbPicker2.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbPicker2.DropDownWidth = 384;
-			this.cbPicker2.Name = "cbPicker2";
+			cbPicker2.DropDownWidth = 384;
+			cbPicker2.Name = "cbPicker2";
 			//
 			// cbPicker1
 			//
-			resources.ApplyResources(this.cbPicker1, "cbPicker1");
-			this.cbPicker1.DropDownStyle =
+			resources.ApplyResources(cbPicker1, "cbPicker1");
+			cbPicker1.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbPicker1.DropDownWidth = 384;
-			this.cbPicker1.Name = "cbPicker1";
+			cbPicker1.DropDownWidth = 384;
+			cbPicker1.Name = "cbPicker1";
 			//
 			// tbval2
 			//
-			resources.ApplyResources(this.tbval2, "tbval2");
-			this.tbval2.Name = "tbval2";
+			resources.ApplyResources(tbval2, "tbval2");
+			tbval2.Name = "tbval2";
 			//
 			// cbDataOwner2
 			//
-			resources.ApplyResources(this.cbDataOwner2, "cbDataOwner2");
-			this.cbDataOwner2.DropDownStyle =
+			resources.ApplyResources(cbDataOwner2, "cbDataOwner2");
+			cbDataOwner2.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbDataOwner2.DropDownWidth = 384;
-			this.cbDataOwner2.Name = "cbDataOwner2";
+			cbDataOwner2.DropDownWidth = 384;
+			cbDataOwner2.Name = "cbDataOwner2";
 			//
 			// tbval1
 			//
-			resources.ApplyResources(this.tbval1, "tbval1");
-			this.tbval1.Name = "tbval1";
+			resources.ApplyResources(tbval1, "tbval1");
+			tbval1.Name = "tbval1";
 			//
 			// cbDataOwner1
 			//
-			resources.ApplyResources(this.cbDataOwner1, "cbDataOwner1");
-			this.cbDataOwner1.DropDownStyle =
+			resources.ApplyResources(cbDataOwner1, "cbDataOwner1");
+			cbDataOwner1.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbDataOwner1.DropDownWidth = 384;
-			this.cbDataOwner1.Name = "cbDataOwner1";
+			cbDataOwner1.DropDownWidth = 384;
+			cbDataOwner1.Name = "cbDataOwner1";
 			//
 			// UI
 			//
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = AutoScaleMode.Font;
-			this.Controls.Add(this.pnWiz0x0008);
-			this.Name = "UI";
-			this.pnWiz0x0008.ResumeLayout(false);
-			this.pnWiz0x0008.PerformLayout();
-			this.ResumeLayout(false);
+			AutoScaleMode = AutoScaleMode.Font;
+			Controls.Add(pnWiz0x0008);
+			Name = "UI";
+			pnWiz0x0008.ResumeLayout(false);
+			pnWiz0x0008.PerformLayout();
+			ResumeLayout(false);
 		}
 		#endregion
 	}

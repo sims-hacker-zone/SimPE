@@ -90,61 +90,61 @@ namespace SimPe.Plugin
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.wrapperPanel = new Panel();
-			this.pb = new PictureBox();
-			this.button2 = new Button();
-			this.button4 = new Button();
-			this.btdown = new Button();
-			this.btup = new Button();
-			this.button1 = new Button();
-			this.gbtypes = new GroupBox();
-			this.pntypes = new Panel();
-			this.lladd = new LinkLabel();
-			this.lldelete = new LinkLabel();
-			this.tbsubtype = new TextBox();
-			this.tbinstance = new TextBox();
-			this.label11 = new Label();
-			this.tbtype = new TextBox();
-			this.label8 = new Label();
-			this.label9 = new Label();
-			this.label10 = new Label();
-			this.tbgroup = new TextBox();
-			this.cbtypes = new ComboBox();
-			this.llcommit = new LinkLabel();
-			this.lblist = new ListBox();
-			this.contextMenu1 = new ContextMenu();
-			this.miAdd = new MenuItem();
-			this.miRem = new MenuItem();
-			this.panel3 = new Panel();
-			this.label1 = new Label();
-			this.wrapperPanel.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
-			this.gbtypes.SuspendLayout();
-			this.pntypes.SuspendLayout();
-			this.panel3.SuspendLayout();
-			this.SuspendLayout();
+			wrapperPanel = new Panel();
+			pb = new PictureBox();
+			button2 = new Button();
+			button4 = new Button();
+			btdown = new Button();
+			btup = new Button();
+			button1 = new Button();
+			gbtypes = new GroupBox();
+			pntypes = new Panel();
+			lladd = new LinkLabel();
+			lldelete = new LinkLabel();
+			tbsubtype = new TextBox();
+			tbinstance = new TextBox();
+			label11 = new Label();
+			tbtype = new TextBox();
+			label8 = new Label();
+			label9 = new Label();
+			label10 = new Label();
+			tbgroup = new TextBox();
+			cbtypes = new ComboBox();
+			llcommit = new LinkLabel();
+			lblist = new ListBox();
+			contextMenu1 = new ContextMenu();
+			miAdd = new MenuItem();
+			miRem = new MenuItem();
+			panel3 = new Panel();
+			label1 = new Label();
+			wrapperPanel.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(pb)).BeginInit();
+			gbtypes.SuspendLayout();
+			pntypes.SuspendLayout();
+			panel3.SuspendLayout();
+			SuspendLayout();
 			//
 			// wrapperPanel
 			//
-			this.wrapperPanel.AutoScroll = true;
-			this.wrapperPanel.BackColor = System.Drawing.Color.Transparent;
-			this.wrapperPanel.Controls.Add(this.pb);
-			this.wrapperPanel.Controls.Add(this.button2);
-			this.wrapperPanel.Controls.Add(this.button4);
-			this.wrapperPanel.Controls.Add(this.btdown);
-			this.wrapperPanel.Controls.Add(this.btup);
-			this.wrapperPanel.Controls.Add(this.button1);
-			this.wrapperPanel.Controls.Add(this.gbtypes);
-			this.wrapperPanel.Controls.Add(this.lblist);
-			this.wrapperPanel.Controls.Add(this.panel3);
-			this.wrapperPanel.Location = new System.Drawing.Point(8, 8);
-			this.wrapperPanel.Name = "wrapperPanel";
-			this.wrapperPanel.Size = new System.Drawing.Size(664, 328);
-			this.wrapperPanel.TabIndex = 3;
+			wrapperPanel.AutoScroll = true;
+			wrapperPanel.BackColor = System.Drawing.Color.Transparent;
+			wrapperPanel.Controls.Add(pb);
+			wrapperPanel.Controls.Add(button2);
+			wrapperPanel.Controls.Add(button4);
+			wrapperPanel.Controls.Add(btdown);
+			wrapperPanel.Controls.Add(btup);
+			wrapperPanel.Controls.Add(button1);
+			wrapperPanel.Controls.Add(gbtypes);
+			wrapperPanel.Controls.Add(lblist);
+			wrapperPanel.Controls.Add(panel3);
+			wrapperPanel.Location = new System.Drawing.Point(8, 8);
+			wrapperPanel.Name = "wrapperPanel";
+			wrapperPanel.Size = new System.Drawing.Size(664, 328);
+			wrapperPanel.TabIndex = 3;
 			//
 			// pb
 			//
-			this.pb.Anchor = (
+			pb.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -154,19 +154,19 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.pb.BorderStyle = BorderStyle.FixedSingle;
-			this.pb.ImeMode = ImeMode.NoControl;
-			this.pb.Location = new System.Drawing.Point(240, 168);
-			this.pb.Name = "pb";
-			this.pb.Size = new System.Drawing.Size(152, 152);
-			this.pb.SizeMode = PictureBoxSizeMode.Zoom;
-			this.pb.TabIndex = 43;
-			this.pb.TabStop = false;
-			this.pb.SizeChanged += new EventHandler(this.pb_SizeChanged);
+			pb.BorderStyle = BorderStyle.FixedSingle;
+			pb.ImeMode = ImeMode.NoControl;
+			pb.Location = new System.Drawing.Point(240, 168);
+			pb.Name = "pb";
+			pb.Size = new System.Drawing.Size(152, 152);
+			pb.SizeMode = PictureBoxSizeMode.Zoom;
+			pb.TabIndex = 43;
+			pb.TabStop = false;
+			pb.SizeChanged += new EventHandler(pb_SizeChanged);
 			//
 			// button2
 			//
-			this.button2.Anchor = (
+			button2.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -174,23 +174,23 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.button2.FlatStyle = FlatStyle.Popup;
-			this.button2.Font = new System.Drawing.Font(
+			button2.FlatStyle = FlatStyle.Popup;
+			button2.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.button2.ImeMode = ImeMode.NoControl;
-			this.button2.Location = new System.Drawing.Point(320, 28);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(72, 21);
-			this.button2.TabIndex = 42;
-			this.button2.Text = "Package";
-			this.button2.Click += new EventHandler(this.ShowPackageSelector);
+			button2.ImeMode = ImeMode.NoControl;
+			button2.Location = new System.Drawing.Point(320, 28);
+			button2.Name = "button2";
+			button2.Size = new System.Drawing.Size(72, 21);
+			button2.TabIndex = 42;
+			button2.Text = "Package";
+			button2.Click += new EventHandler(ShowPackageSelector);
 			//
 			// button4
 			//
-			this.button4.Anchor = (
+			button4.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -198,23 +198,23 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.button4.FlatStyle = FlatStyle.Popup;
-			this.button4.Font = new System.Drawing.Font(
+			button4.FlatStyle = FlatStyle.Popup;
+			button4.Font = new System.Drawing.Font(
 				"Microsoft Sans Serif",
 				8.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.button4.ImeMode = ImeMode.NoControl;
-			this.button4.Location = new System.Drawing.Point(288, 28);
-			this.button4.Name = "button4";
-			this.button4.Size = new System.Drawing.Size(21, 21);
-			this.button4.TabIndex = 41;
-			this.button4.Text = "u";
-			this.button4.Click += new EventHandler(this.ChooseFile);
+			button4.ImeMode = ImeMode.NoControl;
+			button4.Location = new System.Drawing.Point(288, 28);
+			button4.Name = "button4";
+			button4.Size = new System.Drawing.Size(21, 21);
+			button4.TabIndex = 41;
+			button4.Text = "u";
+			button4.Click += new EventHandler(ChooseFile);
 			//
 			// btdown
 			//
-			this.btdown.Anchor = (
+			btdown.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -222,18 +222,18 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.btdown.FlatStyle = FlatStyle.System;
-			this.btdown.ImeMode = ImeMode.NoControl;
-			this.btdown.Location = new System.Drawing.Point(176, 192);
-			this.btdown.Name = "btdown";
-			this.btdown.Size = new System.Drawing.Size(48, 23);
-			this.btdown.TabIndex = 22;
-			this.btdown.Text = "down";
-			this.btdown.Click += new EventHandler(this.MoveDown);
+			btdown.FlatStyle = FlatStyle.System;
+			btdown.ImeMode = ImeMode.NoControl;
+			btdown.Location = new System.Drawing.Point(176, 192);
+			btdown.Name = "btdown";
+			btdown.Size = new System.Drawing.Size(48, 23);
+			btdown.TabIndex = 22;
+			btdown.Text = "down";
+			btdown.Click += new EventHandler(MoveDown);
 			//
 			// btup
 			//
-			this.btup.Anchor = (
+			btup.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -241,18 +241,18 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.btup.FlatStyle = FlatStyle.System;
-			this.btup.ImeMode = ImeMode.NoControl;
-			this.btup.Location = new System.Drawing.Point(176, 168);
-			this.btup.Name = "btup";
-			this.btup.Size = new System.Drawing.Size(48, 23);
-			this.btup.TabIndex = 21;
-			this.btup.Text = "up";
-			this.btup.Click += new EventHandler(this.MoveUp);
+			btup.FlatStyle = FlatStyle.System;
+			btup.ImeMode = ImeMode.NoControl;
+			btup.Location = new System.Drawing.Point(176, 168);
+			btup.Name = "btup";
+			btup.Size = new System.Drawing.Size(48, 23);
+			btup.TabIndex = 21;
+			btup.Text = "up";
+			btup.Click += new EventHandler(MoveUp);
 			//
 			// button1
 			//
-			this.button1.Anchor = (
+			button1.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -260,18 +260,18 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.button1.FlatStyle = FlatStyle.System;
-			this.button1.ImeMode = ImeMode.NoControl;
-			this.button1.Location = new System.Drawing.Point(176, 224);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(56, 23);
-			this.button1.TabIndex = 20;
-			this.button1.Text = "Commit";
-			this.button1.Click += new EventHandler(this.CommitAll);
+			button1.FlatStyle = FlatStyle.System;
+			button1.ImeMode = ImeMode.NoControl;
+			button1.Location = new System.Drawing.Point(176, 224);
+			button1.Name = "button1";
+			button1.Size = new System.Drawing.Size(56, 23);
+			button1.TabIndex = 20;
+			button1.Text = "Commit";
+			button1.Click += new EventHandler(CommitAll);
 			//
 			// gbtypes
 			//
-			this.gbtypes.Anchor = (
+			gbtypes.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -279,208 +279,208 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.gbtypes.Controls.Add(this.pntypes);
-			this.gbtypes.FlatStyle = FlatStyle.System;
-			this.gbtypes.Font = new System.Drawing.Font(
+			gbtypes.Controls.Add(pntypes);
+			gbtypes.FlatStyle = FlatStyle.System;
+			gbtypes.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.gbtypes.Location = new System.Drawing.Point(176, 32);
-			this.gbtypes.Name = "gbtypes";
-			this.gbtypes.Size = new System.Drawing.Size(480, 128);
-			this.gbtypes.TabIndex = 19;
-			this.gbtypes.TabStop = false;
-			this.gbtypes.Text = "File Properties";
+			gbtypes.Location = new System.Drawing.Point(176, 32);
+			gbtypes.Name = "gbtypes";
+			gbtypes.Size = new System.Drawing.Size(480, 128);
+			gbtypes.TabIndex = 19;
+			gbtypes.TabStop = false;
+			gbtypes.Text = "File Properties";
 			//
 			// pntypes
 			//
-			this.pntypes.Controls.Add(this.lladd);
-			this.pntypes.Controls.Add(this.lldelete);
-			this.pntypes.Controls.Add(this.tbsubtype);
-			this.pntypes.Controls.Add(this.tbinstance);
-			this.pntypes.Controls.Add(this.label11);
-			this.pntypes.Controls.Add(this.tbtype);
-			this.pntypes.Controls.Add(this.label8);
-			this.pntypes.Controls.Add(this.label9);
-			this.pntypes.Controls.Add(this.label10);
-			this.pntypes.Controls.Add(this.tbgroup);
-			this.pntypes.Controls.Add(this.cbtypes);
-			this.pntypes.Controls.Add(this.llcommit);
-			this.pntypes.Location = new System.Drawing.Point(8, 24);
-			this.pntypes.Name = "pntypes";
-			this.pntypes.Size = new System.Drawing.Size(464, 96);
-			this.pntypes.TabIndex = 19;
+			pntypes.Controls.Add(lladd);
+			pntypes.Controls.Add(lldelete);
+			pntypes.Controls.Add(tbsubtype);
+			pntypes.Controls.Add(tbinstance);
+			pntypes.Controls.Add(label11);
+			pntypes.Controls.Add(tbtype);
+			pntypes.Controls.Add(label8);
+			pntypes.Controls.Add(label9);
+			pntypes.Controls.Add(label10);
+			pntypes.Controls.Add(tbgroup);
+			pntypes.Controls.Add(cbtypes);
+			pntypes.Controls.Add(llcommit);
+			pntypes.Location = new System.Drawing.Point(8, 24);
+			pntypes.Name = "pntypes";
+			pntypes.Size = new System.Drawing.Size(464, 96);
+			pntypes.TabIndex = 19;
 			//
 			// lladd
 			//
-			this.lladd.AutoSize = true;
-			this.lladd.Font = new System.Drawing.Font(
+			lladd.AutoSize = true;
+			lladd.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.lladd.ImeMode = ImeMode.NoControl;
-			this.lladd.LinkArea = new LinkArea(0, 6);
-			this.lladd.Location = new System.Drawing.Point(384, 80);
-			this.lladd.Name = "lladd";
-			this.lladd.Size = new System.Drawing.Size(28, 18);
-			this.lladd.TabIndex = 19;
-			this.lladd.TabStop = true;
-			this.lladd.Text = "add";
-			this.lladd.UseCompatibleTextRendering = true;
-			this.lladd.LinkClicked +=
-				new LinkLabelLinkClickedEventHandler(this.AddFile);
+			lladd.ImeMode = ImeMode.NoControl;
+			lladd.LinkArea = new LinkArea(0, 6);
+			lladd.Location = new System.Drawing.Point(384, 80);
+			lladd.Name = "lladd";
+			lladd.Size = new System.Drawing.Size(28, 18);
+			lladd.TabIndex = 19;
+			lladd.TabStop = true;
+			lladd.Text = "add";
+			lladd.UseCompatibleTextRendering = true;
+			lladd.LinkClicked +=
+				new LinkLabelLinkClickedEventHandler(AddFile);
 			//
 			// lldelete
 			//
-			this.lldelete.AutoSize = true;
-			this.lldelete.Font = new System.Drawing.Font(
+			lldelete.AutoSize = true;
+			lldelete.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.lldelete.ImeMode = ImeMode.NoControl;
-			this.lldelete.LinkArea = new LinkArea(0, 6);
-			this.lldelete.Location = new System.Drawing.Point(416, 80);
-			this.lldelete.Name = "lldelete";
-			this.lldelete.Size = new System.Drawing.Size(48, 13);
-			this.lldelete.TabIndex = 18;
-			this.lldelete.TabStop = true;
-			this.lldelete.Text = "delete";
-			this.lldelete.LinkClicked +=
+			lldelete.ImeMode = ImeMode.NoControl;
+			lldelete.LinkArea = new LinkArea(0, 6);
+			lldelete.Location = new System.Drawing.Point(416, 80);
+			lldelete.Name = "lldelete";
+			lldelete.Size = new System.Drawing.Size(48, 13);
+			lldelete.TabIndex = 18;
+			lldelete.TabStop = true;
+			lldelete.Text = "delete";
+			lldelete.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.DeleteFile
+					DeleteFile
 				);
 			//
 			// tbsubtype
 			//
-			this.tbsubtype.Font = new System.Drawing.Font(
+			tbsubtype.Font = new System.Drawing.Font(
 				"Microsoft Sans Serif",
 				8.25F
 			);
-			this.tbsubtype.Location = new System.Drawing.Point(120, 24);
-			this.tbsubtype.Name = "tbsubtype";
-			this.tbsubtype.Size = new System.Drawing.Size(100, 20);
-			this.tbsubtype.TabIndex = 12;
-			this.tbsubtype.TextChanged += new EventHandler(this.AutoChange);
+			tbsubtype.Location = new System.Drawing.Point(120, 24);
+			tbsubtype.Name = "tbsubtype";
+			tbsubtype.Size = new System.Drawing.Size(100, 20);
+			tbsubtype.TabIndex = 12;
+			tbsubtype.TextChanged += new EventHandler(AutoChange);
 			//
 			// tbinstance
 			//
-			this.tbinstance.Font = new System.Drawing.Font(
+			tbinstance.Font = new System.Drawing.Font(
 				"Microsoft Sans Serif",
 				8.25F
 			);
-			this.tbinstance.Location = new System.Drawing.Point(120, 72);
-			this.tbinstance.Name = "tbinstance";
-			this.tbinstance.Size = new System.Drawing.Size(100, 20);
-			this.tbinstance.TabIndex = 14;
-			this.tbinstance.TextChanged += new EventHandler(this.AutoChange);
+			tbinstance.Location = new System.Drawing.Point(120, 72);
+			tbinstance.Name = "tbinstance";
+			tbinstance.Size = new System.Drawing.Size(100, 20);
+			tbinstance.TabIndex = 14;
+			tbinstance.TextChanged += new EventHandler(AutoChange);
 			//
 			// label11
 			//
-			this.label11.Font = new System.Drawing.Font("Verdana", 8.25F);
-			this.label11.ImeMode = ImeMode.NoControl;
-			this.label11.Location = new System.Drawing.Point(0, 72);
-			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(112, 17);
-			this.label11.TabIndex = 10;
-			this.label11.Text = "Instance:";
-			this.label11.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label11.Font = new System.Drawing.Font("Verdana", 8.25F);
+			label11.ImeMode = ImeMode.NoControl;
+			label11.Location = new System.Drawing.Point(0, 72);
+			label11.Name = "label11";
+			label11.Size = new System.Drawing.Size(112, 17);
+			label11.TabIndex = 10;
+			label11.Text = "Instance:";
+			label11.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// tbtype
 			//
-			this.tbtype.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-			this.tbtype.Location = new System.Drawing.Point(120, 0);
-			this.tbtype.Name = "tbtype";
-			this.tbtype.Size = new System.Drawing.Size(100, 20);
-			this.tbtype.TabIndex = 11;
-			this.tbtype.TextChanged += new EventHandler(this.tbtype_TextChanged);
+			tbtype.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+			tbtype.Location = new System.Drawing.Point(120, 0);
+			tbtype.Name = "tbtype";
+			tbtype.Size = new System.Drawing.Size(100, 20);
+			tbtype.TabIndex = 11;
+			tbtype.TextChanged += new EventHandler(tbtype_TextChanged);
 			//
 			// label8
 			//
-			this.label8.Font = new System.Drawing.Font("Verdana", 8.25F);
-			this.label8.ImeMode = ImeMode.NoControl;
-			this.label8.Location = new System.Drawing.Point(0, 0);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(112, 17);
-			this.label8.TabIndex = 7;
-			this.label8.Text = "File Type:";
-			this.label8.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label8.Font = new System.Drawing.Font("Verdana", 8.25F);
+			label8.ImeMode = ImeMode.NoControl;
+			label8.Location = new System.Drawing.Point(0, 0);
+			label8.Name = "label8";
+			label8.Size = new System.Drawing.Size(112, 17);
+			label8.TabIndex = 7;
+			label8.Text = "File Type:";
+			label8.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// label9
 			//
-			this.label9.Font = new System.Drawing.Font("Verdana", 8.25F);
-			this.label9.ImeMode = ImeMode.NoControl;
-			this.label9.Location = new System.Drawing.Point(0, 24);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(112, 17);
-			this.label9.TabIndex = 8;
-			this.label9.Text = "SubType/Class ID:";
-			this.label9.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label9.Font = new System.Drawing.Font("Verdana", 8.25F);
+			label9.ImeMode = ImeMode.NoControl;
+			label9.Location = new System.Drawing.Point(0, 24);
+			label9.Name = "label9";
+			label9.Size = new System.Drawing.Size(112, 17);
+			label9.TabIndex = 8;
+			label9.Text = "SubType/Class ID:";
+			label9.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// label10
 			//
-			this.label10.Font = new System.Drawing.Font("Verdana", 8.25F);
-			this.label10.ImeMode = ImeMode.NoControl;
-			this.label10.Location = new System.Drawing.Point(0, 48);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(112, 17);
-			this.label10.TabIndex = 9;
-			this.label10.Text = "Group:";
-			this.label10.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label10.Font = new System.Drawing.Font("Verdana", 8.25F);
+			label10.ImeMode = ImeMode.NoControl;
+			label10.Location = new System.Drawing.Point(0, 48);
+			label10.Name = "label10";
+			label10.Size = new System.Drawing.Size(112, 17);
+			label10.TabIndex = 9;
+			label10.Text = "Group:";
+			label10.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// tbgroup
 			//
-			this.tbgroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-			this.tbgroup.Location = new System.Drawing.Point(120, 48);
-			this.tbgroup.Name = "tbgroup";
-			this.tbgroup.Size = new System.Drawing.Size(100, 20);
-			this.tbgroup.TabIndex = 13;
-			this.tbgroup.TextChanged += new EventHandler(this.AutoChange);
+			tbgroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+			tbgroup.Location = new System.Drawing.Point(120, 48);
+			tbgroup.Name = "tbgroup";
+			tbgroup.Size = new System.Drawing.Size(100, 20);
+			tbgroup.TabIndex = 13;
+			tbgroup.TextChanged += new EventHandler(AutoChange);
 			//
 			// cbtypes
 			//
-			this.cbtypes.DropDownStyle =
+			cbtypes.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbtypes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-			this.cbtypes.ItemHeight = 13;
-			this.cbtypes.Location = new System.Drawing.Point(224, 0);
-			this.cbtypes.Name = "cbtypes";
-			this.cbtypes.Size = new System.Drawing.Size(240, 21);
-			this.cbtypes.Sorted = true;
-			this.cbtypes.TabIndex = 16;
-			this.cbtypes.SelectedIndexChanged += new EventHandler(
-				this.SelectType
+			cbtypes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+			cbtypes.ItemHeight = 13;
+			cbtypes.Location = new System.Drawing.Point(224, 0);
+			cbtypes.Name = "cbtypes";
+			cbtypes.Size = new System.Drawing.Size(240, 21);
+			cbtypes.Sorted = true;
+			cbtypes.TabIndex = 16;
+			cbtypes.SelectedIndexChanged += new EventHandler(
+				SelectType
 			);
 			//
 			// llcommit
 			//
-			this.llcommit.AutoSize = true;
-			this.llcommit.Font = new System.Drawing.Font(
+			llcommit.AutoSize = true;
+			llcommit.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.llcommit.ImeMode = ImeMode.NoControl;
-			this.llcommit.LinkArea = new LinkArea(0, 6);
-			this.llcommit.Location = new System.Drawing.Point(328, 80);
-			this.llcommit.Name = "llcommit";
-			this.llcommit.Size = new System.Drawing.Size(54, 13);
-			this.llcommit.TabIndex = 17;
-			this.llcommit.TabStop = true;
-			this.llcommit.Text = "change";
-			this.llcommit.Visible = false;
-			this.llcommit.LinkClicked +=
+			llcommit.ImeMode = ImeMode.NoControl;
+			llcommit.LinkArea = new LinkArea(0, 6);
+			llcommit.Location = new System.Drawing.Point(328, 80);
+			llcommit.Name = "llcommit";
+			llcommit.Size = new System.Drawing.Size(54, 13);
+			llcommit.TabIndex = 17;
+			llcommit.TabStop = true;
+			llcommit.Text = "change";
+			llcommit.Visible = false;
+			llcommit.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.ChangeFile
+					ChangeFile
 				);
 			//
 			// lblist
 			//
-			this.lblist.AllowDrop = true;
-			this.lblist.Anchor = (
+			lblist.AllowDrop = true;
+			lblist.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -492,44 +492,44 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.lblist.ContextMenu = this.contextMenu1;
-			this.lblist.HorizontalScrollbar = true;
-			this.lblist.IntegralHeight = false;
-			this.lblist.Location = new System.Drawing.Point(8, 32);
-			this.lblist.Name = "lblist";
-			this.lblist.Size = new System.Drawing.Size(160, 288);
-			this.lblist.TabIndex = 1;
-			this.lblist.DragDrop += new DragEventHandler(
-				this.PackageItemDrop
+			lblist.ContextMenu = contextMenu1;
+			lblist.HorizontalScrollbar = true;
+			lblist.IntegralHeight = false;
+			lblist.Location = new System.Drawing.Point(8, 32);
+			lblist.Name = "lblist";
+			lblist.Size = new System.Drawing.Size(160, 288);
+			lblist.TabIndex = 1;
+			lblist.DragDrop += new DragEventHandler(
+				PackageItemDrop
 			);
-			this.lblist.DragEnter += new DragEventHandler(
-				this.PackageItemDragEnter
+			lblist.DragEnter += new DragEventHandler(
+				PackageItemDragEnter
 			);
-			this.lblist.SelectedIndexChanged += new EventHandler(
-				this.SelectFile
+			lblist.SelectedIndexChanged += new EventHandler(
+				SelectFile
 			);
 			//
 			// contextMenu1
 			//
-			this.contextMenu1.MenuItems.AddRange(
-				new MenuItem[] { this.miAdd, this.miRem }
+			contextMenu1.MenuItems.AddRange(
+				new MenuItem[] { miAdd, miRem }
 			);
 			//
 			// miAdd
 			//
-			this.miAdd.Index = 0;
-			this.miAdd.Text = "&Add";
-			this.miAdd.Click += new EventHandler(this.miAdd_Click);
+			miAdd.Index = 0;
+			miAdd.Text = "&Add";
+			miAdd.Click += new EventHandler(miAdd_Click);
 			//
 			// miRem
 			//
-			this.miRem.Index = 1;
-			this.miRem.Text = "&Delete";
-			this.miRem.Click += new EventHandler(this.menuItem1_Click);
+			miRem.Index = 1;
+			miRem.Text = "&Delete";
+			miRem.Click += new EventHandler(menuItem1_Click);
 			//
 			// panel3
 			//
-			this.panel3.Anchor = (
+			panel3.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -539,48 +539,48 @@ namespace SimPe.Plugin
 					)
 				)
 			);
-			this.panel3.BackColor = System.Drawing.SystemColors.AppWorkspace;
-			this.panel3.Controls.Add(this.label1);
-			this.panel3.Font = new System.Drawing.Font(
+			panel3.BackColor = System.Drawing.SystemColors.AppWorkspace;
+			panel3.Controls.Add(label1);
+			panel3.Font = new System.Drawing.Font(
 				"Verdana",
 				9.75F,
 				System.Drawing.FontStyle.Bold
 			);
-			this.panel3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-			this.panel3.Location = new System.Drawing.Point(0, 0);
-			this.panel3.Margin = new Padding(0);
-			this.panel3.Name = "panel3";
-			this.panel3.Size = new System.Drawing.Size(664, 24);
-			this.panel3.TabIndex = 0;
+			panel3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+			panel3.Location = new System.Drawing.Point(0, 0);
+			panel3.Margin = new Padding(0);
+			panel3.Name = "panel3";
+			panel3.Size = new System.Drawing.Size(664, 24);
+			panel3.TabIndex = 0;
 			//
 			// label1
 			//
-			this.label1.AutoSize = true;
-			this.label1.ImeMode = ImeMode.NoControl;
-			this.label1.Location = new System.Drawing.Point(0, 4);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(201, 19);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "3D Referencing File Editor";
+			label1.AutoSize = true;
+			label1.ImeMode = ImeMode.NoControl;
+			label1.Location = new System.Drawing.Point(0, 4);
+			label1.Name = "label1";
+			label1.Size = new System.Drawing.Size(201, 19);
+			label1.TabIndex = 0;
+			label1.Text = "3D Referencing File Editor";
 			//
 			// RefFileForm
 			//
-			this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
-			this.ClientSize = new System.Drawing.Size(856, 350);
-			this.Controls.Add(this.wrapperPanel);
-			this.Font = new System.Drawing.Font("Verdana", 8.25F);
-			this.FormBorderStyle =
+			AutoScaleBaseSize = new System.Drawing.Size(6, 14);
+			ClientSize = new System.Drawing.Size(856, 350);
+			Controls.Add(wrapperPanel);
+			Font = new System.Drawing.Font("Verdana", 8.25F);
+			FormBorderStyle =
 				FormBorderStyle
 				.SizableToolWindow;
-			this.Name = "RefFileForm";
-			this.Text = "MyPackedFileForm";
-			this.WindowState = FormWindowState.Maximized;
-			this.wrapperPanel.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
-			this.gbtypes.ResumeLayout(false);
-			this.pntypes.ResumeLayout(false);
-			this.panel3.ResumeLayout(false);
-			this.ResumeLayout(false);
+			Name = "RefFileForm";
+			Text = "MyPackedFileForm";
+			WindowState = FormWindowState.Maximized;
+			wrapperPanel.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(pb)).EndInit();
+			gbtypes.ResumeLayout(false);
+			pntypes.ResumeLayout(false);
+			panel3.ResumeLayout(false);
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -611,7 +611,7 @@ namespace SimPe.Plugin
 				Helper.HexStringToUInt(tbtype.Text)
 			);
 
-			this.AutoChange(sender, e);
+			AutoChange(sender, e);
 			int ct = 0;
 			foreach (Data.TypeAlias i in cbtypes.Items)
 			{
@@ -660,10 +660,10 @@ namespace SimPe.Plugin
 				Interfaces.Files.IPackedFileDescriptor pfd =
 					(Interfaces.Files.IPackedFileDescriptor)
 						lblist.Items[lblist.SelectedIndex];
-				this.tbgroup.Text = "0x" + Helper.HexString(pfd.Group);
-				this.tbinstance.Text = "0x" + Helper.HexString(pfd.Instance);
-				this.tbsubtype.Text = "0x" + Helper.HexString(pfd.SubType);
-				this.tbtype.Text = "0x" + Helper.HexString(pfd.Type);
+				tbgroup.Text = "0x" + Helper.HexString(pfd.Group);
+				tbinstance.Text = "0x" + Helper.HexString(pfd.Instance);
+				tbsubtype.Text = "0x" + Helper.HexString(pfd.SubType);
+				tbtype.Text = "0x" + Helper.HexString(pfd.Type);
 
 				//get Texture
 				if (pfd.GetType() == typeof(RefFileItem))
@@ -732,10 +732,10 @@ namespace SimPe.Plugin
 					pfd = new Packages.PackedFileDescriptor();
 				}
 
-				pfd.Group = Convert.ToUInt32(this.tbgroup.Text, 16);
-				pfd.Instance = Convert.ToUInt32(this.tbinstance.Text, 16);
-				pfd.SubType = Convert.ToUInt32(this.tbsubtype.Text, 16);
-				pfd.Type = Convert.ToUInt32(this.tbtype.Text, 16);
+				pfd.Group = Convert.ToUInt32(tbgroup.Text, 16);
+				pfd.Instance = Convert.ToUInt32(tbinstance.Text, 16);
+				pfd.SubType = Convert.ToUInt32(tbsubtype.Text, 16);
+				pfd.Type = Convert.ToUInt32(tbtype.Text, 16);
 
 				if (lblist.SelectedIndex >= 0)
 				{
@@ -881,12 +881,12 @@ namespace SimPe.Plugin
 				if (pfd != null)
 				{
 					tbtype.Tag = true;
-					this.tbgroup.Text = "0x" + Helper.HexString(pfd.Group);
-					this.tbinstance.Text = "0x" + Helper.HexString(pfd.Instance);
-					this.tbsubtype.Text = "0x" + Helper.HexString(pfd.SubType);
-					this.tbtype.Text = "0x" + Helper.HexString(pfd.Type);
+					tbgroup.Text = "0x" + Helper.HexString(pfd.Group);
+					tbinstance.Text = "0x" + Helper.HexString(pfd.Instance);
+					tbsubtype.Text = "0x" + Helper.HexString(pfd.SubType);
+					tbtype.Text = "0x" + Helper.HexString(pfd.Type);
 					tbtype.Tag = null;
-					this.AutoChange(sender, e);
+					AutoChange(sender, e);
 				}
 			}
 			catch (Exception) { }

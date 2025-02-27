@@ -180,7 +180,7 @@ namespace SimPe.PackedFiles.Wrapper
 				Lines = new Hashtable();
 				foreach (StrToken i in value)
 				{
-					this.Add(i);
+					Add(i);
 				}
 			}
 		}
@@ -223,7 +223,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <returns>List of Strings</returns>
 		public StrToken FallbackedLanguageItem(Data.MetaData.Languages l, int index)
 		{
-			StrItemList list = this.LanguageItems(l);
+			StrItemList list = LanguageItems(l);
 			StrToken name;
 			if (list.Length > index)
 			{
@@ -236,7 +236,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 			if (name.Title.Trim() == "")
 			{
-				list = this.LanguageItems(1);
+				list = LanguageItems(1);
 				if (list.Length > index)
 				{
 					name = list[index];
@@ -256,16 +256,16 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			if (l == Data.MetaData.Languages.English)
 			{
-				return this.LanguageItems(l);
+				return LanguageItems(l);
 			}
 
 			StrItemList real = (StrItemList)LanguageItems(l).Clone();
 			StrItemList fallback = null;
-			if (this.Languages.Contains(Data.MetaData.Languages.English))
+			if (Languages.Contains(Data.MetaData.Languages.English))
 			{
 				fallback = LanguageItems(Data.MetaData.Languages.English);
 			}
-			else if (this.Languages.Count == 1)
+			else if (Languages.Count == 1)
 			{
 				fallback = LanguageItems(Languages[0]);
 			}
@@ -312,7 +312,7 @@ namespace SimPe.PackedFiles.Wrapper
 			filename = new byte[64];
 			Format = Data.MetaData.FormatCode.normal;
 			Lines = new Hashtable();
-			this.limit = 0;
+			limit = 0;
 		}
 
 		/// <summary>
@@ -320,12 +320,12 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public void ClearNonDefault()
 		{
-			StrItemList sil = this.Items;
+			StrItemList sil = Items;
 			foreach (StrToken si in sil)
 			{
 				if (si.Language.Id != 1)
 				{
-					this.Remove(si);
+					Remove(si);
 				}
 			}
 		}
@@ -335,8 +335,8 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public void CopyFromDefaultToAll()
 		{
-			StrItemList sil = this.Items;
-			StrItemList def = this.LanguageItems(new StrLanguage(1));
+			StrItemList sil = Items;
+			StrItemList def = LanguageItems(new StrLanguage(1));
 			foreach (StrToken si in sil)
 			{
 				if (si.Language.Id != 1)
@@ -375,7 +375,7 @@ namespace SimPe.PackedFiles.Wrapper
 				"This Wrapper is overridden by 'PJSE STR#/TTAs/CTSS Wrapper' if it's enabled",
 				9,
 				System.Drawing.Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.txt.png")
 				)
 			);
@@ -431,7 +431,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			writer.Write(filename);
 			writer.Write((ushort)Format);
-			ArrayList lngs = this.Languages;
+			ArrayList lngs = Languages;
 
 			ArrayList items = new ArrayList();
 			foreach (StrLanguage k in lngs)
@@ -459,13 +459,13 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				string n =
 					"filename="
-					+ this.FileName
+					+ FileName
 					+ ", languages="
-					+ this.Languages.Length.ToString()
+					+ Languages.Length.ToString()
 					+ ", lines="
-					+ this.Items.Length.ToString();
+					+ Items.Length.ToString();
 				foreach (
-					StrToken i in this.FallbackedLanguageItems(
+					StrToken i in FallbackedLanguageItems(
 						Helper.WindowsRegistry.LanguageCode
 					)
 				)

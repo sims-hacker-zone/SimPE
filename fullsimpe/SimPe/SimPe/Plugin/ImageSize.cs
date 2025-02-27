@@ -52,91 +52,91 @@ namespace SimPe.Plugin
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.label5 = new System.Windows.Forms.Label();
-			this.tbheight = new System.Windows.Forms.TextBox();
-			this.tbwidth = new System.Windows.Forms.TextBox();
-			this.label4 = new System.Windows.Forms.Label();
-			this.button1 = new System.Windows.Forms.Button();
-			this.SuspendLayout();
+			label5 = new System.Windows.Forms.Label();
+			tbheight = new System.Windows.Forms.TextBox();
+			tbwidth = new System.Windows.Forms.TextBox();
+			label4 = new System.Windows.Forms.Label();
+			button1 = new System.Windows.Forms.Button();
+			SuspendLayout();
 			//
 			// label5
 			//
-			this.label5.AutoSize = true;
-			this.label5.Font = new Font(
+			label5.AutoSize = true;
+			label5.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label5.Location = new Point(104, 16);
-			this.label5.Name = "label5";
-			this.label5.Size = new Size(12, 17);
-			this.label5.TabIndex = 19;
-			this.label5.Text = "x";
+			label5.Location = new Point(104, 16);
+			label5.Name = "label5";
+			label5.Size = new Size(12, 17);
+			label5.TabIndex = 19;
+			label5.Text = "x";
 			//
 			// tbheight
 			//
-			this.tbheight.Location = new Point(128, 8);
-			this.tbheight.Name = "tbheight";
-			this.tbheight.Size = new Size(56, 21);
-			this.tbheight.TabIndex = 18;
-			this.tbheight.Text = "";
+			tbheight.Location = new Point(128, 8);
+			tbheight.Name = "tbheight";
+			tbheight.Size = new Size(56, 21);
+			tbheight.TabIndex = 18;
+			tbheight.Text = "";
 			//
 			// tbwidth
 			//
-			this.tbwidth.Location = new Point(48, 8);
-			this.tbwidth.Name = "tbwidth";
-			this.tbwidth.Size = new Size(56, 21);
-			this.tbwidth.TabIndex = 17;
-			this.tbwidth.Text = "";
+			tbwidth.Location = new Point(48, 8);
+			tbwidth.Name = "tbwidth";
+			tbwidth.Size = new Size(56, 21);
+			tbwidth.TabIndex = 17;
+			tbwidth.Text = "";
 			//
 			// label4
 			//
-			this.label4.AutoSize = true;
-			this.label4.Font = new Font(
+			label4.AutoSize = true;
+			label4.Font = new Font(
 				"Verdana",
 				8.25F,
 				FontStyle.Bold,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label4.Location = new Point(8, 16);
-			this.label4.Name = "label4";
-			this.label4.Size = new Size(35, 17);
-			this.label4.TabIndex = 16;
-			this.label4.Text = "Size:";
+			label4.Location = new Point(8, 16);
+			label4.Name = "label4";
+			label4.Size = new Size(35, 17);
+			label4.TabIndex = 16;
+			label4.Text = "Size:";
 			//
 			// button1
 			//
-			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.button1.Location = new Point(112, 40);
-			this.button1.Name = "button1";
-			this.button1.TabIndex = 20;
-			this.button1.Text = "OK";
-			this.button1.Click += new System.EventHandler(this.button1_Click);
+			button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			button1.Location = new Point(112, 40);
+			button1.Name = "button1";
+			button1.TabIndex = 20;
+			button1.Text = "OK";
+			button1.Click += new System.EventHandler(button1_Click);
 			//
 			// ImageSize
 			//
-			this.AutoScaleBaseSize = new Size(5, 14);
-			this.ClientSize = new Size(194, 72);
-			this.ControlBox = false;
-			this.Controls.Add(this.button1);
-			this.Controls.Add(this.label5);
-			this.Controls.Add(this.tbheight);
-			this.Controls.Add(this.tbwidth);
-			this.Controls.Add(this.label4);
-			this.Font = new Font(
+			AutoScaleBaseSize = new Size(5, 14);
+			ClientSize = new Size(194, 72);
+			ControlBox = false;
+			Controls.Add(button1);
+			Controls.Add(label5);
+			Controls.Add(tbheight);
+			Controls.Add(tbwidth);
+			Controls.Add(label4);
+			Font = new Font(
 				"Tahoma",
 				8.25F,
 				FontStyle.Regular,
 				GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-			this.Name = "ImageSize";
-			this.Text = "Image Size";
-			this.ResumeLayout(false);
+			FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+			Name = "ImageSize";
+			Text = "Image Size";
+			ResumeLayout(false);
 		}
 		#endregion
 

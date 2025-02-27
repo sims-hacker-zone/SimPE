@@ -44,7 +44,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		public FinderResultItem(string text)
 			: base()
 		{
-			this.Text = text;
+			Text = text;
 		}
 
 		public virtual bool OpenResource()
@@ -73,19 +73,19 @@ namespace SimPe.Plugin.Tool.Dockable
 				((Interfaces.Plugin.AbstractWrapper)wrp).Package = fii.Package;
 				((Interfaces.Plugin.AbstractWrapper)wrp).FileDescriptor =
 					fii.FileDescriptor;
-				this.Text = wrp.ResourceName;
+				Text = wrp.ResourceName;
 			}
 			else
 			{
-				this.Text = fii.FileDescriptor.ToString();
+				Text = fii.FileDescriptor.ToString();
 			}
 
-			this.SubItems.Add("0x" + Helper.HexString(fii.FileDescriptor.Type));
-			this.SubItems.Add("0x" + Helper.HexString(fii.FileDescriptor.Group));
-			this.SubItems.Add("0x" + Helper.HexString(fii.FileDescriptor.LongInstance));
-			this.SubItems.Add("0x" + Helper.HexString(fii.FileDescriptor.Offset));
-			this.SubItems.Add("0x" + Helper.HexString(fii.FileDescriptor.Size));
-			this.SubItems.Add(fii.Package.SaveFileName);
+			SubItems.Add("0x" + Helper.HexString(fii.FileDescriptor.Type));
+			SubItems.Add("0x" + Helper.HexString(fii.FileDescriptor.Group));
+			SubItems.Add("0x" + Helper.HexString(fii.FileDescriptor.LongInstance));
+			SubItems.Add("0x" + Helper.HexString(fii.FileDescriptor.Offset));
+			SubItems.Add("0x" + Helper.HexString(fii.FileDescriptor.Size));
+			SubItems.Add(fii.Package.SaveFileName);
 			/*this.SubItems.Add("    Type: 0x"+Helper.HexString(fii.FileDescriptor.Type));
 			this.SubItems.Add("    Group: 0x"+Helper.HexString(fii.FileDescriptor.Group));
 			this.SubItems.Add("    Instance: 0x"+Helper.HexString(fii.FileDescriptor.LongInstance));
@@ -102,7 +102,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		public override bool OpenResource()
 		{
-			return RemoteControl.OpenPackedFileFkt(this.fii);
+			return RemoteControl.OpenPackedFileFkt(fii);
 		}
 	}
 }

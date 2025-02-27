@@ -79,7 +79,7 @@ namespace pjse.BhavOperandWizards.Wiz0x002d
 		//private bool internalchg = false;
 
 		#region iBhavOperandWizForm
-		public Panel WizPanel => this.pnWiz0x002d;
+		public Panel WizPanel => pnWiz0x002d;
 
 		public void Execute(Instruction inst)
 		{
@@ -95,8 +95,8 @@ namespace pjse.BhavOperandWizards.Wiz0x002d
 				inst,
 				null,
 				null,
-				this.tbVal1,
-				this.ckbDecimal,
+				tbVal1,
+				ckbDecimal,
 				null,
 				null,
 				0x07,
@@ -158,59 +158,59 @@ namespace pjse.BhavOperandWizards.Wiz0x002d
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(UI));
-			this.pnWiz0x002d = new Panel();
-			this.flowLayoutPanel1 = new FlowLayoutPanel();
-			this.gbRoutingSlot = new GroupBox();
-			this.pnObject = new Panel();
-			this.cbSlotType = new ComboBox();
-			this.ckbDecimal = new CheckBox();
-			this.tbVal1 = new TextBox();
-			this.ckbNFailTrees = new CheckBox();
-			this.ckbIgnDstFootprint = new CheckBox();
-			this.ckbDiffAlts = new CheckBox();
-			this.pnWiz0x002d.SuspendLayout();
-			this.flowLayoutPanel1.SuspendLayout();
-			this.gbRoutingSlot.SuspendLayout();
-			this.pnObject.SuspendLayout();
-			this.SuspendLayout();
+			pnWiz0x002d = new Panel();
+			flowLayoutPanel1 = new FlowLayoutPanel();
+			gbRoutingSlot = new GroupBox();
+			pnObject = new Panel();
+			cbSlotType = new ComboBox();
+			ckbDecimal = new CheckBox();
+			tbVal1 = new TextBox();
+			ckbNFailTrees = new CheckBox();
+			ckbIgnDstFootprint = new CheckBox();
+			ckbDiffAlts = new CheckBox();
+			pnWiz0x002d.SuspendLayout();
+			flowLayoutPanel1.SuspendLayout();
+			gbRoutingSlot.SuspendLayout();
+			pnObject.SuspendLayout();
+			SuspendLayout();
 			//
 			// pnWiz0x002d
 			//
-			resources.ApplyResources(this.pnWiz0x002d, "pnWiz0x002d");
-			this.pnWiz0x002d.Controls.Add(this.flowLayoutPanel1);
-			this.pnWiz0x002d.Name = "pnWiz0x002d";
+			resources.ApplyResources(pnWiz0x002d, "pnWiz0x002d");
+			pnWiz0x002d.Controls.Add(flowLayoutPanel1);
+			pnWiz0x002d.Name = "pnWiz0x002d";
 			//
 			// flowLayoutPanel1
 			//
-			resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
-			this.flowLayoutPanel1.Controls.Add(this.gbRoutingSlot);
-			this.flowLayoutPanel1.Controls.Add(this.ckbNFailTrees);
-			this.flowLayoutPanel1.Controls.Add(this.ckbIgnDstFootprint);
-			this.flowLayoutPanel1.Controls.Add(this.ckbDiffAlts);
-			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+			resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
+			flowLayoutPanel1.Controls.Add(gbRoutingSlot);
+			flowLayoutPanel1.Controls.Add(ckbNFailTrees);
+			flowLayoutPanel1.Controls.Add(ckbIgnDstFootprint);
+			flowLayoutPanel1.Controls.Add(ckbDiffAlts);
+			flowLayoutPanel1.Name = "flowLayoutPanel1";
 			//
 			// gbRoutingSlot
 			//
-			resources.ApplyResources(this.gbRoutingSlot, "gbRoutingSlot");
-			this.gbRoutingSlot.Controls.Add(this.pnObject);
-			this.gbRoutingSlot.Name = "gbRoutingSlot";
-			this.gbRoutingSlot.TabStop = false;
+			resources.ApplyResources(gbRoutingSlot, "gbRoutingSlot");
+			gbRoutingSlot.Controls.Add(pnObject);
+			gbRoutingSlot.Name = "gbRoutingSlot";
+			gbRoutingSlot.TabStop = false;
 			//
 			// pnObject
 			//
-			resources.ApplyResources(this.pnObject, "pnObject");
-			this.pnObject.Controls.Add(this.cbSlotType);
-			this.pnObject.Controls.Add(this.ckbDecimal);
-			this.pnObject.Controls.Add(this.tbVal1);
-			this.pnObject.Name = "pnObject";
+			resources.ApplyResources(pnObject, "pnObject");
+			pnObject.Controls.Add(cbSlotType);
+			pnObject.Controls.Add(ckbDecimal);
+			pnObject.Controls.Add(tbVal1);
+			pnObject.Name = "pnObject";
 			//
 			// cbSlotType
 			//
-			this.cbSlotType.DropDownStyle =
+			cbSlotType.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbSlotType.FormattingEnabled = true;
-			this.cbSlotType.Items.AddRange(
+			cbSlotType.FormattingEnabled = true;
+			cbSlotType.Items.AddRange(
 				new object[]
 				{
 					resources.GetString("cbSlotType.Items"),
@@ -220,53 +220,53 @@ namespace pjse.BhavOperandWizards.Wiz0x002d
 					resources.GetString("cbSlotType.Items4"),
 				}
 			);
-			resources.ApplyResources(this.cbSlotType, "cbSlotType");
-			this.cbSlotType.Name = "cbSlotType";
+			resources.ApplyResources(cbSlotType, "cbSlotType");
+			cbSlotType.Name = "cbSlotType";
 			//
 			// ckbDecimal
 			//
-			resources.ApplyResources(this.ckbDecimal, "ckbDecimal");
-			this.ckbDecimal.Name = "ckbDecimal";
+			resources.ApplyResources(ckbDecimal, "ckbDecimal");
+			ckbDecimal.Name = "ckbDecimal";
 			//
 			// tbVal1
 			//
-			resources.ApplyResources(this.tbVal1, "tbVal1");
-			this.tbVal1.Name = "tbVal1";
+			resources.ApplyResources(tbVal1, "tbVal1");
+			tbVal1.Name = "tbVal1";
 			//
 			// ckbNFailTrees
 			//
-			resources.ApplyResources(this.ckbNFailTrees, "ckbNFailTrees");
-			this.ckbNFailTrees.Name = "ckbNFailTrees";
-			this.ckbNFailTrees.UseVisualStyleBackColor = true;
+			resources.ApplyResources(ckbNFailTrees, "ckbNFailTrees");
+			ckbNFailTrees.Name = "ckbNFailTrees";
+			ckbNFailTrees.UseVisualStyleBackColor = true;
 			//
 			// ckbIgnDstFootprint
 			//
-			resources.ApplyResources(this.ckbIgnDstFootprint, "ckbIgnDstFootprint");
-			this.ckbIgnDstFootprint.Name = "ckbIgnDstFootprint";
-			this.ckbIgnDstFootprint.UseVisualStyleBackColor = true;
+			resources.ApplyResources(ckbIgnDstFootprint, "ckbIgnDstFootprint");
+			ckbIgnDstFootprint.Name = "ckbIgnDstFootprint";
+			ckbIgnDstFootprint.UseVisualStyleBackColor = true;
 			//
 			// ckbDiffAlts
 			//
-			resources.ApplyResources(this.ckbDiffAlts, "ckbDiffAlts");
-			this.ckbDiffAlts.Name = "ckbDiffAlts";
-			this.ckbDiffAlts.UseVisualStyleBackColor = true;
+			resources.ApplyResources(ckbDiffAlts, "ckbDiffAlts");
+			ckbDiffAlts.Name = "ckbDiffAlts";
+			ckbDiffAlts.UseVisualStyleBackColor = true;
 			//
 			// UI
 			//
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = AutoScaleMode.Dpi;
-			this.Controls.Add(this.pnWiz0x002d);
-			this.Name = "UI";
-			this.pnWiz0x002d.ResumeLayout(false);
-			this.pnWiz0x002d.PerformLayout();
-			this.flowLayoutPanel1.ResumeLayout(false);
-			this.flowLayoutPanel1.PerformLayout();
-			this.gbRoutingSlot.ResumeLayout(false);
-			this.gbRoutingSlot.PerformLayout();
-			this.pnObject.ResumeLayout(false);
-			this.pnObject.PerformLayout();
-			this.ResumeLayout(false);
-			this.PerformLayout();
+			AutoScaleMode = AutoScaleMode.Dpi;
+			Controls.Add(pnWiz0x002d);
+			Name = "UI";
+			pnWiz0x002d.ResumeLayout(false);
+			pnWiz0x002d.PerformLayout();
+			flowLayoutPanel1.ResumeLayout(false);
+			flowLayoutPanel1.PerformLayout();
+			gbRoutingSlot.ResumeLayout(false);
+			gbRoutingSlot.PerformLayout();
+			pnObject.ResumeLayout(false);
+			pnObject.PerformLayout();
+			ResumeLayout(false);
+			PerformLayout();
 		}
 		#endregion
 	}

@@ -134,121 +134,121 @@ namespace SimPe.PackedFiles.UserInterface
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.pnslot = new Panel();
-			this.visualStyleLinkLabel3 = new LinkLabel();
-			this.visualStyleLinkLabel2 = new LinkLabel();
-			this.visualStyleLinkLabel1 = new LinkLabel();
-			this.lv = new ListView();
-			this.groupBox1 = new GroupBox();
-			this.tbname = new TextBox();
-			this.label24 = new Label();
-			this.label23 = new Label();
-			this.tbver = new TextBox();
-			this.tabControl1 = new TabControl();
-			this.tabPage1 = new TabPage();
-			this.label14 = new Label();
-			this.tbi6 = new TextBox();
-			this.label10 = new Label();
-			this.tbf6 = new TextBox();
-			this.label11 = new Label();
-			this.tbf5 = new TextBox();
-			this.label13 = new Label();
-			this.tbf4 = new TextBox();
-			this.tabPage2 = new TabPage();
-			this.label15 = new Label();
-			this.tbs2 = new TextBox();
-			this.label16 = new Label();
-			this.tbs1 = new TextBox();
-			this.tabPage3 = new TabPage();
-			this.label17 = new Label();
-			this.tbf7 = new TextBox();
-			this.tabPage4 = new TabPage();
-			this.label19 = new Label();
-			this.tbi7 = new TextBox();
-			this.tabPage5 = new TabPage();
-			this.tabPageA = new TabPage();
-			this.label20 = new Label();
-			this.label0A = new Label();
-			this.tbi8 = new TextBox();
-			this.tbs3 = new TextBox();
-			this.tabPage6 = new TabPage();
-			this.label18 = new Label();
-			this.tbf8 = new TextBox();
-			this.tabPage7 = new TabPage();
-			this.label21 = new Label();
-			this.tbi10 = new TextBox();
-			this.label22 = new Label();
-			this.tbi9 = new TextBox();
-			this.cbtype = new ComboBox();
-			this.label9 = new Label();
-			this.label8 = new Label();
-			this.tbi5 = new TextBox();
-			this.label7 = new Label();
-			this.tbi4 = new TextBox();
-			this.label6 = new Label();
-			this.tbi3 = new TextBox();
-			this.label5 = new Label();
-			this.tbi2 = new TextBox();
-			this.label4 = new Label();
-			this.tbi1 = new TextBox();
-			this.label3 = new Label();
-			this.tbf3 = new TextBox();
-			this.label2 = new Label();
-			this.tbf2 = new TextBox();
-			this.label1 = new Label();
-			this.tbf1 = new TextBox();
-			this.panel4 = new Panel();
-			this.label12 = new Label();
-			this.pnslot.SuspendLayout();
-			this.groupBox1.SuspendLayout();
-			this.tabControl1.SuspendLayout();
-			this.tabPage1.SuspendLayout();
-			this.tabPage2.SuspendLayout();
-			this.tabPage3.SuspendLayout();
-			this.tabPage4.SuspendLayout();
-			this.tabPage5.SuspendLayout();
-			this.tabPageA.SuspendLayout();
-			this.tabPage6.SuspendLayout();
-			this.tabPage7.SuspendLayout();
-			this.SuspendLayout();
+			pnslot = new Panel();
+			visualStyleLinkLabel3 = new LinkLabel();
+			visualStyleLinkLabel2 = new LinkLabel();
+			visualStyleLinkLabel1 = new LinkLabel();
+			lv = new ListView();
+			groupBox1 = new GroupBox();
+			tbname = new TextBox();
+			label24 = new Label();
+			label23 = new Label();
+			tbver = new TextBox();
+			tabControl1 = new TabControl();
+			tabPage1 = new TabPage();
+			label14 = new Label();
+			tbi6 = new TextBox();
+			label10 = new Label();
+			tbf6 = new TextBox();
+			label11 = new Label();
+			tbf5 = new TextBox();
+			label13 = new Label();
+			tbf4 = new TextBox();
+			tabPage2 = new TabPage();
+			label15 = new Label();
+			tbs2 = new TextBox();
+			label16 = new Label();
+			tbs1 = new TextBox();
+			tabPage3 = new TabPage();
+			label17 = new Label();
+			tbf7 = new TextBox();
+			tabPage4 = new TabPage();
+			label19 = new Label();
+			tbi7 = new TextBox();
+			tabPage5 = new TabPage();
+			tabPageA = new TabPage();
+			label20 = new Label();
+			label0A = new Label();
+			tbi8 = new TextBox();
+			tbs3 = new TextBox();
+			tabPage6 = new TabPage();
+			label18 = new Label();
+			tbf8 = new TextBox();
+			tabPage7 = new TabPage();
+			label21 = new Label();
+			tbi10 = new TextBox();
+			label22 = new Label();
+			tbi9 = new TextBox();
+			cbtype = new ComboBox();
+			label9 = new Label();
+			label8 = new Label();
+			tbi5 = new TextBox();
+			label7 = new Label();
+			tbi4 = new TextBox();
+			label6 = new Label();
+			tbi3 = new TextBox();
+			label5 = new Label();
+			tbi2 = new TextBox();
+			label4 = new Label();
+			tbi1 = new TextBox();
+			label3 = new Label();
+			tbf3 = new TextBox();
+			label2 = new Label();
+			tbf2 = new TextBox();
+			label1 = new Label();
+			tbf1 = new TextBox();
+			panel4 = new Panel();
+			label12 = new Label();
+			pnslot.SuspendLayout();
+			groupBox1.SuspendLayout();
+			tabControl1.SuspendLayout();
+			tabPage1.SuspendLayout();
+			tabPage2.SuspendLayout();
+			tabPage3.SuspendLayout();
+			tabPage4.SuspendLayout();
+			tabPage5.SuspendLayout();
+			tabPageA.SuspendLayout();
+			tabPage6.SuspendLayout();
+			tabPage7.SuspendLayout();
+			SuspendLayout();
 			//
 			// pnslot
 			//
-			this.pnslot.BackColor = System.Drawing.Color.Transparent;
-			this.pnslot.Controls.Add(this.visualStyleLinkLabel3);
-			this.pnslot.Controls.Add(this.visualStyleLinkLabel2);
-			this.pnslot.Controls.Add(this.visualStyleLinkLabel1);
-			this.pnslot.Controls.Add(this.lv);
-			this.pnslot.Controls.Add(this.groupBox1);
-			this.pnslot.Controls.Add(this.tabControl1);
-			this.pnslot.Controls.Add(this.cbtype);
-			this.pnslot.Controls.Add(this.label9);
-			this.pnslot.Controls.Add(this.label8);
-			this.pnslot.Controls.Add(this.tbi5);
-			this.pnslot.Controls.Add(this.label7);
-			this.pnslot.Controls.Add(this.tbi4);
-			this.pnslot.Controls.Add(this.label6);
-			this.pnslot.Controls.Add(this.tbi3);
-			this.pnslot.Controls.Add(this.label5);
-			this.pnslot.Controls.Add(this.tbi2);
-			this.pnslot.Controls.Add(this.label4);
-			this.pnslot.Controls.Add(this.tbi1);
-			this.pnslot.Controls.Add(this.label3);
-			this.pnslot.Controls.Add(this.tbf3);
-			this.pnslot.Controls.Add(this.label2);
-			this.pnslot.Controls.Add(this.tbf2);
-			this.pnslot.Controls.Add(this.label1);
-			this.pnslot.Controls.Add(this.tbf1);
-			this.pnslot.Controls.Add(this.panel4);
-			this.pnslot.Font = new System.Drawing.Font("Verdana", 8.25F);
-			this.pnslot.Location = new System.Drawing.Point(14, 29);
-			this.pnslot.Name = "pnslot";
-			this.pnslot.Size = new System.Drawing.Size(730, 332);
-			this.pnslot.TabIndex = 9;
+			pnslot.BackColor = System.Drawing.Color.Transparent;
+			pnslot.Controls.Add(visualStyleLinkLabel3);
+			pnslot.Controls.Add(visualStyleLinkLabel2);
+			pnslot.Controls.Add(visualStyleLinkLabel1);
+			pnslot.Controls.Add(lv);
+			pnslot.Controls.Add(groupBox1);
+			pnslot.Controls.Add(tabControl1);
+			pnslot.Controls.Add(cbtype);
+			pnslot.Controls.Add(label9);
+			pnslot.Controls.Add(label8);
+			pnslot.Controls.Add(tbi5);
+			pnslot.Controls.Add(label7);
+			pnslot.Controls.Add(tbi4);
+			pnslot.Controls.Add(label6);
+			pnslot.Controls.Add(tbi3);
+			pnslot.Controls.Add(label5);
+			pnslot.Controls.Add(tbi2);
+			pnslot.Controls.Add(label4);
+			pnslot.Controls.Add(tbi1);
+			pnslot.Controls.Add(label3);
+			pnslot.Controls.Add(tbf3);
+			pnslot.Controls.Add(label2);
+			pnslot.Controls.Add(tbf2);
+			pnslot.Controls.Add(label1);
+			pnslot.Controls.Add(tbf1);
+			pnslot.Controls.Add(panel4);
+			pnslot.Font = new System.Drawing.Font("Verdana", 8.25F);
+			pnslot.Location = new System.Drawing.Point(14, 29);
+			pnslot.Name = "pnslot";
+			pnslot.Size = new System.Drawing.Size(730, 332);
+			pnslot.TabIndex = 9;
 			//
 			// visualStyleLinkLabel3
 			//
-			this.visualStyleLinkLabel3.Anchor = (
+			visualStyleLinkLabel3.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -256,30 +256,30 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.visualStyleLinkLabel3.BackColor = System.Drawing.Color.Transparent;
-			this.visualStyleLinkLabel3.Font = new System.Drawing.Font(
+			visualStyleLinkLabel3.BackColor = System.Drawing.Color.Transparent;
+			visualStyleLinkLabel3.Font = new System.Drawing.Font(
 				"Verdana",
 				11.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.visualStyleLinkLabel3.Location = new System.Drawing.Point(100, 305);
-			this.visualStyleLinkLabel3.Name = "visualStyleLinkLabel3";
-			this.visualStyleLinkLabel3.Size = new System.Drawing.Size(54, 23);
-			this.visualStyleLinkLabel3.TabIndex = 28;
-			this.visualStyleLinkLabel3.TabStop = true;
-			this.visualStyleLinkLabel3.Text = "Clone";
-			this.visualStyleLinkLabel3.TextAlign = System
+			visualStyleLinkLabel3.Location = new System.Drawing.Point(100, 305);
+			visualStyleLinkLabel3.Name = "visualStyleLinkLabel3";
+			visualStyleLinkLabel3.Size = new System.Drawing.Size(54, 23);
+			visualStyleLinkLabel3.TabIndex = 28;
+			visualStyleLinkLabel3.TabStop = true;
+			visualStyleLinkLabel3.Text = "Clone";
+			visualStyleLinkLabel3.TextAlign = System
 				.Drawing
 				.ContentAlignment
 				.MiddleRight;
-			this.visualStyleLinkLabel3.LinkClicked +=
-				new LinkLabelLinkClickedEventHandler(this.Clone);
+			visualStyleLinkLabel3.LinkClicked +=
+				new LinkLabelLinkClickedEventHandler(Clone);
 			//
 			// visualStyleLinkLabel2
 			//
-			this.visualStyleLinkLabel2.Anchor = (
+			visualStyleLinkLabel2.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -287,30 +287,30 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.visualStyleLinkLabel2.BackColor = System.Drawing.Color.Transparent;
-			this.visualStyleLinkLabel2.Font = new System.Drawing.Font(
+			visualStyleLinkLabel2.BackColor = System.Drawing.Color.Transparent;
+			visualStyleLinkLabel2.Font = new System.Drawing.Font(
 				"Verdana",
 				11.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.visualStyleLinkLabel2.Location = new System.Drawing.Point(178, 305);
-			this.visualStyleLinkLabel2.Name = "visualStyleLinkLabel2";
-			this.visualStyleLinkLabel2.Size = new System.Drawing.Size(64, 23);
-			this.visualStyleLinkLabel2.TabIndex = 27;
-			this.visualStyleLinkLabel2.TabStop = true;
-			this.visualStyleLinkLabel2.Text = "Delete";
-			this.visualStyleLinkLabel2.TextAlign = System
+			visualStyleLinkLabel2.Location = new System.Drawing.Point(178, 305);
+			visualStyleLinkLabel2.Name = "visualStyleLinkLabel2";
+			visualStyleLinkLabel2.Size = new System.Drawing.Size(64, 23);
+			visualStyleLinkLabel2.TabIndex = 27;
+			visualStyleLinkLabel2.TabStop = true;
+			visualStyleLinkLabel2.Text = "Delete";
+			visualStyleLinkLabel2.TextAlign = System
 				.Drawing
 				.ContentAlignment
 				.MiddleRight;
-			this.visualStyleLinkLabel2.LinkClicked +=
-				new LinkLabelLinkClickedEventHandler(this.Delete);
+			visualStyleLinkLabel2.LinkClicked +=
+				new LinkLabelLinkClickedEventHandler(Delete);
 			//
 			// visualStyleLinkLabel1
 			//
-			this.visualStyleLinkLabel1.Anchor = (
+			visualStyleLinkLabel1.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -318,30 +318,30 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.visualStyleLinkLabel1.BackColor = System.Drawing.Color.Transparent;
-			this.visualStyleLinkLabel1.Font = new System.Drawing.Font(
+			visualStyleLinkLabel1.BackColor = System.Drawing.Color.Transparent;
+			visualStyleLinkLabel1.Font = new System.Drawing.Font(
 				"Verdana",
 				11.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.visualStyleLinkLabel1.Location = new System.Drawing.Point(266, 305);
-			this.visualStyleLinkLabel1.Name = "visualStyleLinkLabel1";
-			this.visualStyleLinkLabel1.Size = new System.Drawing.Size(46, 23);
-			this.visualStyleLinkLabel1.TabIndex = 26;
-			this.visualStyleLinkLabel1.TabStop = true;
-			this.visualStyleLinkLabel1.Text = "Add";
-			this.visualStyleLinkLabel1.TextAlign = System
+			visualStyleLinkLabel1.Location = new System.Drawing.Point(266, 305);
+			visualStyleLinkLabel1.Name = "visualStyleLinkLabel1";
+			visualStyleLinkLabel1.Size = new System.Drawing.Size(46, 23);
+			visualStyleLinkLabel1.TabIndex = 26;
+			visualStyleLinkLabel1.TabStop = true;
+			visualStyleLinkLabel1.Text = "Add";
+			visualStyleLinkLabel1.TextAlign = System
 				.Drawing
 				.ContentAlignment
 				.MiddleRight;
-			this.visualStyleLinkLabel1.LinkClicked +=
-				new LinkLabelLinkClickedEventHandler(this.Add);
+			visualStyleLinkLabel1.LinkClicked +=
+				new LinkLabelLinkClickedEventHandler(Add);
 			//
 			// lv
 			//
-			this.lv.Anchor = (
+			lv.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -353,21 +353,21 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.lv.FullRowSelect = true;
-			this.lv.GridLines = true;
-			this.lv.HideSelection = false;
-			this.lv.Location = new System.Drawing.Point(8, 120);
-			this.lv.MultiSelect = false;
-			this.lv.Name = "lv";
-			this.lv.Size = new System.Drawing.Size(304, 182);
-			this.lv.TabIndex = 24;
-			this.lv.UseCompatibleStateImageBehavior = false;
-			this.lv.View = View.Details;
-			this.lv.SelectedIndexChanged += new EventHandler(this.Select);
+			lv.FullRowSelect = true;
+			lv.GridLines = true;
+			lv.HideSelection = false;
+			lv.Location = new System.Drawing.Point(8, 120);
+			lv.MultiSelect = false;
+			lv.Name = "lv";
+			lv.Size = new System.Drawing.Size(304, 182);
+			lv.TabIndex = 24;
+			lv.UseCompatibleStateImageBehavior = false;
+			lv.View = View.Details;
+			lv.SelectedIndexChanged += new EventHandler(Select);
 			//
 			// groupBox1
 			//
-			this.groupBox1.Anchor = (
+			groupBox1.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -377,27 +377,27 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.groupBox1.Controls.Add(this.tbname);
-			this.groupBox1.Controls.Add(this.label24);
-			this.groupBox1.Controls.Add(this.label23);
-			this.groupBox1.Controls.Add(this.tbver);
-			this.groupBox1.Font = new System.Drawing.Font(
+			groupBox1.Controls.Add(tbname);
+			groupBox1.Controls.Add(label24);
+			groupBox1.Controls.Add(label23);
+			groupBox1.Controls.Add(tbver);
+			groupBox1.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.groupBox1.Location = new System.Drawing.Point(8, 32);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(304, 80);
-			this.groupBox1.TabIndex = 23;
-			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "File Settings:";
+			groupBox1.Location = new System.Drawing.Point(8, 32);
+			groupBox1.Name = "groupBox1";
+			groupBox1.Size = new System.Drawing.Size(304, 80);
+			groupBox1.TabIndex = 23;
+			groupBox1.TabStop = false;
+			groupBox1.Text = "File Settings:";
 			//
 			// tbname
 			//
-			this.tbname.Anchor = (
+			tbname.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -407,70 +407,70 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.tbname.Font = new System.Drawing.Font(
+			tbname.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbname.Location = new System.Drawing.Point(72, 48);
-			this.tbname.Name = "tbname";
-			this.tbname.Size = new System.Drawing.Size(224, 21);
-			this.tbname.TabIndex = 9;
-			this.tbname.TextChanged += new EventHandler(this.ChangeWrp);
+			tbname.Location = new System.Drawing.Point(72, 48);
+			tbname.Name = "tbname";
+			tbname.Size = new System.Drawing.Size(224, 21);
+			tbname.TabIndex = 9;
+			tbname.TextChanged += new EventHandler(ChangeWrp);
 			//
 			// label24
 			//
-			this.label24.Font = new System.Drawing.Font(
+			label24.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label24.Location = new System.Drawing.Point(8, 48);
-			this.label24.Name = "label24";
-			this.label24.Size = new System.Drawing.Size(56, 23);
-			this.label24.TabIndex = 8;
-			this.label24.Text = "Name:";
-			this.label24.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label24.Location = new System.Drawing.Point(8, 48);
+			label24.Name = "label24";
+			label24.Size = new System.Drawing.Size(56, 23);
+			label24.TabIndex = 8;
+			label24.Text = "Name:";
+			label24.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// label23
 			//
-			this.label23.Font = new System.Drawing.Font(
+			label23.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label23.Location = new System.Drawing.Point(8, 24);
-			this.label23.Name = "label23";
-			this.label23.Size = new System.Drawing.Size(56, 23);
-			this.label23.TabIndex = 7;
-			this.label23.Text = "Version:";
-			this.label23.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label23.Location = new System.Drawing.Point(8, 24);
+			label23.Name = "label23";
+			label23.Size = new System.Drawing.Size(56, 23);
+			label23.TabIndex = 7;
+			label23.Text = "Version:";
+			label23.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// tbver
 			//
-			this.tbver.Font = new System.Drawing.Font(
+			tbver.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.tbver.Location = new System.Drawing.Point(72, 24);
-			this.tbver.Name = "tbver";
-			this.tbver.Size = new System.Drawing.Size(88, 21);
-			this.tbver.TabIndex = 6;
-			this.tbver.Text = "0";
-			this.tbver.TextChanged += new EventHandler(this.ChangeWrp);
+			tbver.Location = new System.Drawing.Point(72, 24);
+			tbver.Name = "tbver";
+			tbver.Size = new System.Drawing.Size(88, 21);
+			tbver.TabIndex = 6;
+			tbver.Text = "0";
+			tbver.TextChanged += new EventHandler(ChangeWrp);
 			//
 			// tabControl1
 			//
-			this.tabControl1.Anchor = (
+			tabControl1.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -478,39 +478,39 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.tabControl1.Controls.Add(this.tabPage1);
-			this.tabControl1.Controls.Add(this.tabPage2);
-			this.tabControl1.Controls.Add(this.tabPage3);
-			this.tabControl1.Controls.Add(this.tabPage4);
-			this.tabControl1.Controls.Add(this.tabPage5);
-			this.tabControl1.Controls.Add(this.tabPageA);
-			this.tabControl1.Controls.Add(this.tabPage6);
-			this.tabControl1.Controls.Add(this.tabPage7);
-			this.tabControl1.Location = new System.Drawing.Point(320, 144);
-			this.tabControl1.Name = "tabControl1";
-			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(400, 114);
-			this.tabControl1.TabIndex = 22;
+			tabControl1.Controls.Add(tabPage1);
+			tabControl1.Controls.Add(tabPage2);
+			tabControl1.Controls.Add(tabPage3);
+			tabControl1.Controls.Add(tabPage4);
+			tabControl1.Controls.Add(tabPage5);
+			tabControl1.Controls.Add(tabPageA);
+			tabControl1.Controls.Add(tabPage6);
+			tabControl1.Controls.Add(tabPage7);
+			tabControl1.Location = new System.Drawing.Point(320, 144);
+			tabControl1.Name = "tabControl1";
+			tabControl1.SelectedIndex = 0;
+			tabControl1.Size = new System.Drawing.Size(400, 114);
+			tabControl1.TabIndex = 22;
 			//
 			// tabPage1
 			//
-			this.tabPage1.Controls.Add(this.label14);
-			this.tabPage1.Controls.Add(this.tbi6);
-			this.tabPage1.Controls.Add(this.label10);
-			this.tabPage1.Controls.Add(this.tbf6);
-			this.tabPage1.Controls.Add(this.label11);
-			this.tabPage1.Controls.Add(this.tbf5);
-			this.tabPage1.Controls.Add(this.label13);
-			this.tabPage1.Controls.Add(this.tbf4);
-			this.tabPage1.Location = new System.Drawing.Point(4, 22);
-			this.tabPage1.Name = "tabPage1";
-			this.tabPage1.Size = new System.Drawing.Size(392, 88);
-			this.tabPage1.TabIndex = 0;
-			this.tabPage1.Text = "Version 0x05+";
+			tabPage1.Controls.Add(label14);
+			tabPage1.Controls.Add(tbi6);
+			tabPage1.Controls.Add(label10);
+			tabPage1.Controls.Add(tbf6);
+			tabPage1.Controls.Add(label11);
+			tabPage1.Controls.Add(tbf5);
+			tabPage1.Controls.Add(label13);
+			tabPage1.Controls.Add(tbf4);
+			tabPage1.Location = new System.Drawing.Point(4, 22);
+			tabPage1.Name = "tabPage1";
+			tabPage1.Size = new System.Drawing.Size(392, 88);
+			tabPage1.TabIndex = 0;
+			tabPage1.Text = "Version 0x05+";
 			//
 			// label14
 			//
-			this.label14.Anchor = (
+			label14.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -518,16 +518,16 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.label14.Location = new System.Drawing.Point(136, 8);
-			this.label14.Name = "label14";
-			this.label14.Size = new System.Drawing.Size(56, 23);
-			this.label14.TabIndex = 17;
-			this.label14.Text = "Int 6:";
-			this.label14.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label14.Location = new System.Drawing.Point(136, 8);
+			label14.Name = "label14";
+			label14.Size = new System.Drawing.Size(56, 23);
+			label14.TabIndex = 17;
+			label14.Text = "Int 6:";
+			label14.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// tbi6
 			//
-			this.tbi6.Anchor = (
+			tbi6.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -535,16 +535,16 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.tbi6.Location = new System.Drawing.Point(200, 8);
-			this.tbi6.Name = "tbi6";
-			this.tbi6.Size = new System.Drawing.Size(64, 21);
-			this.tbi6.TabIndex = 16;
-			this.tbi6.Text = "0";
-			this.tbi6.TextChanged += new EventHandler(this.Changed);
+			tbi6.Location = new System.Drawing.Point(200, 8);
+			tbi6.Name = "tbi6";
+			tbi6.Size = new System.Drawing.Size(64, 21);
+			tbi6.TabIndex = 16;
+			tbi6.Text = "0";
+			tbi6.TextChanged += new EventHandler(Changed);
 			//
 			// label10
 			//
-			this.label10.Anchor = (
+			label10.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -552,16 +552,16 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.label10.Location = new System.Drawing.Point(8, 56);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(56, 23);
-			this.label10.TabIndex = 15;
-			this.label10.Text = "Float 6:";
-			this.label10.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label10.Location = new System.Drawing.Point(8, 56);
+			label10.Name = "label10";
+			label10.Size = new System.Drawing.Size(56, 23);
+			label10.TabIndex = 15;
+			label10.Text = "Float 6:";
+			label10.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// tbf6
 			//
-			this.tbf6.Anchor = (
+			tbf6.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -569,16 +569,16 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.tbf6.Location = new System.Drawing.Point(72, 56);
-			this.tbf6.Name = "tbf6";
-			this.tbf6.Size = new System.Drawing.Size(64, 21);
-			this.tbf6.TabIndex = 14;
-			this.tbf6.Text = "0";
-			this.tbf6.TextChanged += new EventHandler(this.Changed);
+			tbf6.Location = new System.Drawing.Point(72, 56);
+			tbf6.Name = "tbf6";
+			tbf6.Size = new System.Drawing.Size(64, 21);
+			tbf6.TabIndex = 14;
+			tbf6.Text = "0";
+			tbf6.TextChanged += new EventHandler(Changed);
 			//
 			// label11
 			//
-			this.label11.Anchor = (
+			label11.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -586,16 +586,16 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.label11.Location = new System.Drawing.Point(8, 32);
-			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(56, 23);
-			this.label11.TabIndex = 13;
-			this.label11.Text = "Float 5:";
-			this.label11.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label11.Location = new System.Drawing.Point(8, 32);
+			label11.Name = "label11";
+			label11.Size = new System.Drawing.Size(56, 23);
+			label11.TabIndex = 13;
+			label11.Text = "Float 5:";
+			label11.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// tbf5
 			//
-			this.tbf5.Anchor = (
+			tbf5.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -603,16 +603,16 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.tbf5.Location = new System.Drawing.Point(72, 32);
-			this.tbf5.Name = "tbf5";
-			this.tbf5.Size = new System.Drawing.Size(64, 21);
-			this.tbf5.TabIndex = 12;
-			this.tbf5.Text = "0";
-			this.tbf5.TextChanged += new EventHandler(this.Changed);
+			tbf5.Location = new System.Drawing.Point(72, 32);
+			tbf5.Name = "tbf5";
+			tbf5.Size = new System.Drawing.Size(64, 21);
+			tbf5.TabIndex = 12;
+			tbf5.Text = "0";
+			tbf5.TextChanged += new EventHandler(Changed);
 			//
 			// label13
 			//
-			this.label13.Anchor = (
+			label13.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -620,16 +620,16 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.label13.Location = new System.Drawing.Point(8, 8);
-			this.label13.Name = "label13";
-			this.label13.Size = new System.Drawing.Size(56, 23);
-			this.label13.TabIndex = 11;
-			this.label13.Text = "Float 4:";
-			this.label13.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label13.Location = new System.Drawing.Point(8, 8);
+			label13.Name = "label13";
+			label13.Size = new System.Drawing.Size(56, 23);
+			label13.TabIndex = 11;
+			label13.Text = "Float 4:";
+			label13.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// tbf4
 			//
-			this.tbf4.Anchor = (
+			tbf4.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -637,28 +637,28 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.tbf4.Location = new System.Drawing.Point(72, 8);
-			this.tbf4.Name = "tbf4";
-			this.tbf4.Size = new System.Drawing.Size(64, 21);
-			this.tbf4.TabIndex = 10;
-			this.tbf4.Text = "0";
-			this.tbf4.TextChanged += new EventHandler(this.Changed);
+			tbf4.Location = new System.Drawing.Point(72, 8);
+			tbf4.Name = "tbf4";
+			tbf4.Size = new System.Drawing.Size(64, 21);
+			tbf4.TabIndex = 10;
+			tbf4.Text = "0";
+			tbf4.TextChanged += new EventHandler(Changed);
 			//
 			// tabPage2
 			//
-			this.tabPage2.Controls.Add(this.label15);
-			this.tabPage2.Controls.Add(this.tbs2);
-			this.tabPage2.Controls.Add(this.label16);
-			this.tabPage2.Controls.Add(this.tbs1);
-			this.tabPage2.Location = new System.Drawing.Point(4, 22);
-			this.tabPage2.Name = "tabPage2";
-			this.tabPage2.Size = new System.Drawing.Size(392, 88);
-			this.tabPage2.TabIndex = 1;
-			this.tabPage2.Text = "0x06+";
+			tabPage2.Controls.Add(label15);
+			tabPage2.Controls.Add(tbs2);
+			tabPage2.Controls.Add(label16);
+			tabPage2.Controls.Add(tbs1);
+			tabPage2.Location = new System.Drawing.Point(4, 22);
+			tabPage2.Name = "tabPage2";
+			tabPage2.Size = new System.Drawing.Size(392, 88);
+			tabPage2.TabIndex = 1;
+			tabPage2.Text = "0x06+";
 			//
 			// label15
 			//
-			this.label15.Anchor = (
+			label15.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -666,16 +666,16 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.label15.Location = new System.Drawing.Point(8, 32);
-			this.label15.Name = "label15";
-			this.label15.Size = new System.Drawing.Size(56, 23);
-			this.label15.TabIndex = 17;
-			this.label15.Text = "Short 2:";
-			this.label15.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label15.Location = new System.Drawing.Point(8, 32);
+			label15.Name = "label15";
+			label15.Size = new System.Drawing.Size(56, 23);
+			label15.TabIndex = 17;
+			label15.Text = "Short 2:";
+			label15.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// tbs2
 			//
-			this.tbs2.Anchor = (
+			tbs2.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -683,16 +683,16 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.tbs2.Location = new System.Drawing.Point(72, 32);
-			this.tbs2.Name = "tbs2";
-			this.tbs2.Size = new System.Drawing.Size(64, 21);
-			this.tbs2.TabIndex = 16;
-			this.tbs2.Text = "0";
-			this.tbs2.TextChanged += new EventHandler(this.Changed);
+			tbs2.Location = new System.Drawing.Point(72, 32);
+			tbs2.Name = "tbs2";
+			tbs2.Size = new System.Drawing.Size(64, 21);
+			tbs2.TabIndex = 16;
+			tbs2.Text = "0";
+			tbs2.TextChanged += new EventHandler(Changed);
 			//
 			// label16
 			//
-			this.label16.Anchor = (
+			label16.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -700,16 +700,16 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.label16.Location = new System.Drawing.Point(8, 8);
-			this.label16.Name = "label16";
-			this.label16.Size = new System.Drawing.Size(56, 23);
-			this.label16.TabIndex = 15;
-			this.label16.Text = "Short 1:";
-			this.label16.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label16.Location = new System.Drawing.Point(8, 8);
+			label16.Name = "label16";
+			label16.Size = new System.Drawing.Size(56, 23);
+			label16.TabIndex = 15;
+			label16.Text = "Short 1:";
+			label16.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// tbs1
 			//
-			this.tbs1.Anchor = (
+			tbs1.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -717,26 +717,26 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.tbs1.Location = new System.Drawing.Point(72, 8);
-			this.tbs1.Name = "tbs1";
-			this.tbs1.Size = new System.Drawing.Size(64, 21);
-			this.tbs1.TabIndex = 14;
-			this.tbs1.Text = "0";
-			this.tbs1.TextChanged += new EventHandler(this.Changed);
+			tbs1.Location = new System.Drawing.Point(72, 8);
+			tbs1.Name = "tbs1";
+			tbs1.Size = new System.Drawing.Size(64, 21);
+			tbs1.TabIndex = 14;
+			tbs1.Text = "0";
+			tbs1.TextChanged += new EventHandler(Changed);
 			//
 			// tabPage3
 			//
-			this.tabPage3.Controls.Add(this.label17);
-			this.tabPage3.Controls.Add(this.tbf7);
-			this.tabPage3.Location = new System.Drawing.Point(4, 22);
-			this.tabPage3.Name = "tabPage3";
-			this.tabPage3.Size = new System.Drawing.Size(392, 88);
-			this.tabPage3.TabIndex = 2;
-			this.tabPage3.Text = "0x07+";
+			tabPage3.Controls.Add(label17);
+			tabPage3.Controls.Add(tbf7);
+			tabPage3.Location = new System.Drawing.Point(4, 22);
+			tabPage3.Name = "tabPage3";
+			tabPage3.Size = new System.Drawing.Size(392, 88);
+			tabPage3.TabIndex = 2;
+			tabPage3.Text = "0x07+";
 			//
 			// label17
 			//
-			this.label17.Anchor = (
+			label17.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -744,16 +744,16 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.label17.Location = new System.Drawing.Point(8, 8);
-			this.label17.Name = "label17";
-			this.label17.Size = new System.Drawing.Size(56, 23);
-			this.label17.TabIndex = 7;
-			this.label17.Text = "Float 7:";
-			this.label17.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label17.Location = new System.Drawing.Point(8, 8);
+			label17.Name = "label17";
+			label17.Size = new System.Drawing.Size(56, 23);
+			label17.TabIndex = 7;
+			label17.Text = "Float 7:";
+			label17.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// tbf7
 			//
-			this.tbf7.Anchor = (
+			tbf7.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -761,26 +761,26 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.tbf7.Location = new System.Drawing.Point(72, 8);
-			this.tbf7.Name = "tbf7";
-			this.tbf7.Size = new System.Drawing.Size(64, 21);
-			this.tbf7.TabIndex = 6;
-			this.tbf7.Text = "0";
-			this.tbf7.TextChanged += new EventHandler(this.Changed);
+			tbf7.Location = new System.Drawing.Point(72, 8);
+			tbf7.Name = "tbf7";
+			tbf7.Size = new System.Drawing.Size(64, 21);
+			tbf7.TabIndex = 6;
+			tbf7.Text = "0";
+			tbf7.TextChanged += new EventHandler(Changed);
 			//
 			// tabPage4
 			//
-			this.tabPage4.Controls.Add(this.label19);
-			this.tabPage4.Controls.Add(this.tbi7);
-			this.tabPage4.Location = new System.Drawing.Point(4, 22);
-			this.tabPage4.Name = "tabPage4";
-			this.tabPage4.Size = new System.Drawing.Size(392, 88);
-			this.tabPage4.TabIndex = 3;
-			this.tabPage4.Text = "0x08+";
+			tabPage4.Controls.Add(label19);
+			tabPage4.Controls.Add(tbi7);
+			tabPage4.Location = new System.Drawing.Point(4, 22);
+			tabPage4.Name = "tabPage4";
+			tabPage4.Size = new System.Drawing.Size(392, 88);
+			tabPage4.TabIndex = 3;
+			tabPage4.Text = "0x08+";
 			//
 			// label19
 			//
-			this.label19.Anchor = (
+			label19.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -788,16 +788,16 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.label19.Location = new System.Drawing.Point(8, 8);
-			this.label19.Name = "label19";
-			this.label19.Size = new System.Drawing.Size(56, 23);
-			this.label19.TabIndex = 13;
-			this.label19.Text = "Int 7:";
-			this.label19.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label19.Location = new System.Drawing.Point(8, 8);
+			label19.Name = "label19";
+			label19.Size = new System.Drawing.Size(56, 23);
+			label19.TabIndex = 13;
+			label19.Text = "Int 7:";
+			label19.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// tbi7
 			//
-			this.tbi7.Anchor = (
+			tbi7.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -805,26 +805,26 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.tbi7.Location = new System.Drawing.Point(72, 8);
-			this.tbi7.Name = "tbi7";
-			this.tbi7.Size = new System.Drawing.Size(64, 21);
-			this.tbi7.TabIndex = 12;
-			this.tbi7.Text = "0";
-			this.tbi7.TextChanged += new EventHandler(this.Changed);
+			tbi7.Location = new System.Drawing.Point(72, 8);
+			tbi7.Name = "tbi7";
+			tbi7.Size = new System.Drawing.Size(64, 21);
+			tbi7.TabIndex = 12;
+			tbi7.Text = "0";
+			tbi7.TextChanged += new EventHandler(Changed);
 			//
 			// tabPageA
 			//
-			this.tabPageA.Controls.Add(this.label0A);
-			this.tabPageA.Controls.Add(this.tbs3);
-			this.tabPageA.Location = new System.Drawing.Point(4, 22);
-			this.tabPageA.Name = "tabPageA";
-			this.tabPageA.Size = new System.Drawing.Size(392, 88);
-			this.tabPageA.TabIndex = 7;
-			this.tabPageA.Text = "0x0A";
+			tabPageA.Controls.Add(label0A);
+			tabPageA.Controls.Add(tbs3);
+			tabPageA.Location = new System.Drawing.Point(4, 22);
+			tabPageA.Name = "tabPageA";
+			tabPageA.Size = new System.Drawing.Size(392, 88);
+			tabPageA.TabIndex = 7;
+			tabPageA.Text = "0x0A";
 			//
 			// label0A
 			//
-			this.label0A.Anchor = (
+			label0A.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -832,16 +832,16 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.label0A.Location = new System.Drawing.Point(8, 8);
-			this.label0A.Name = "label0A";
-			this.label0A.Size = new System.Drawing.Size(56, 23);
-			this.label0A.TabIndex = 13;
-			this.label0A.Text = "Short 3:";
-			this.label0A.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label0A.Location = new System.Drawing.Point(8, 8);
+			label0A.Name = "label0A";
+			label0A.Size = new System.Drawing.Size(56, 23);
+			label0A.TabIndex = 13;
+			label0A.Text = "Short 3:";
+			label0A.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// tbs3
 			//
-			this.tbs3.Anchor = (
+			tbs3.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -849,26 +849,26 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.tbs3.Location = new System.Drawing.Point(72, 8);
-			this.tbs3.Name = "tbs3";
-			this.tbs3.Size = new System.Drawing.Size(64, 21);
-			this.tbs3.TabIndex = 12;
-			this.tbs3.Text = "0";
-			this.tbs3.TextChanged += new EventHandler(this.Changed);
+			tbs3.Location = new System.Drawing.Point(72, 8);
+			tbs3.Name = "tbs3";
+			tbs3.Size = new System.Drawing.Size(64, 21);
+			tbs3.TabIndex = 12;
+			tbs3.Text = "0";
+			tbs3.TextChanged += new EventHandler(Changed);
 			//
 			// tabPage5
 			//
-			this.tabPage5.Controls.Add(this.label20);
-			this.tabPage5.Controls.Add(this.tbi8);
-			this.tabPage5.Location = new System.Drawing.Point(4, 22);
-			this.tabPage5.Name = "tabPage5";
-			this.tabPage5.Size = new System.Drawing.Size(392, 88);
-			this.tabPage5.TabIndex = 4;
-			this.tabPage5.Text = "0x09+";
+			tabPage5.Controls.Add(label20);
+			tabPage5.Controls.Add(tbi8);
+			tabPage5.Location = new System.Drawing.Point(4, 22);
+			tabPage5.Name = "tabPage5";
+			tabPage5.Size = new System.Drawing.Size(392, 88);
+			tabPage5.TabIndex = 4;
+			tabPage5.Text = "0x09+";
 			//
 			// label20
 			//
-			this.label20.Anchor = (
+			label20.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -876,16 +876,16 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.label20.Location = new System.Drawing.Point(8, 8);
-			this.label20.Name = "label20";
-			this.label20.Size = new System.Drawing.Size(56, 23);
-			this.label20.TabIndex = 13;
-			this.label20.Text = "Int 8:";
-			this.label20.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label20.Location = new System.Drawing.Point(8, 8);
+			label20.Name = "label20";
+			label20.Size = new System.Drawing.Size(56, 23);
+			label20.TabIndex = 13;
+			label20.Text = "Int 8:";
+			label20.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// tbi8
 			//
-			this.tbi8.Anchor = (
+			tbi8.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -893,26 +893,26 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.tbi8.Location = new System.Drawing.Point(72, 8);
-			this.tbi8.Name = "tbi8";
-			this.tbi8.Size = new System.Drawing.Size(64, 21);
-			this.tbi8.TabIndex = 12;
-			this.tbi8.Text = "0";
-			this.tbi8.TextChanged += new EventHandler(this.Changed);
+			tbi8.Location = new System.Drawing.Point(72, 8);
+			tbi8.Name = "tbi8";
+			tbi8.Size = new System.Drawing.Size(64, 21);
+			tbi8.TabIndex = 12;
+			tbi8.Text = "0";
+			tbi8.TextChanged += new EventHandler(Changed);
 			//
 			// tabPage6
 			//
-			this.tabPage6.Controls.Add(this.label18);
-			this.tabPage6.Controls.Add(this.tbf8);
-			this.tabPage6.Location = new System.Drawing.Point(4, 22);
-			this.tabPage6.Name = "tabPage6";
-			this.tabPage6.Size = new System.Drawing.Size(392, 88);
-			this.tabPage6.TabIndex = 5;
-			this.tabPage6.Text = "0x10+";
+			tabPage6.Controls.Add(label18);
+			tabPage6.Controls.Add(tbf8);
+			tabPage6.Location = new System.Drawing.Point(4, 22);
+			tabPage6.Name = "tabPage6";
+			tabPage6.Size = new System.Drawing.Size(392, 88);
+			tabPage6.TabIndex = 5;
+			tabPage6.Text = "0x10+";
 			//
 			// label18
 			//
-			this.label18.Anchor = (
+			label18.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -920,16 +920,16 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.label18.Location = new System.Drawing.Point(8, 8);
-			this.label18.Name = "label18";
-			this.label18.Size = new System.Drawing.Size(56, 23);
-			this.label18.TabIndex = 7;
-			this.label18.Text = "Float 8:";
-			this.label18.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label18.Location = new System.Drawing.Point(8, 8);
+			label18.Name = "label18";
+			label18.Size = new System.Drawing.Size(56, 23);
+			label18.TabIndex = 7;
+			label18.Text = "Float 8:";
+			label18.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// tbf8
 			//
-			this.tbf8.Anchor = (
+			tbf8.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -937,28 +937,28 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.tbf8.Location = new System.Drawing.Point(72, 8);
-			this.tbf8.Name = "tbf8";
-			this.tbf8.Size = new System.Drawing.Size(64, 21);
-			this.tbf8.TabIndex = 6;
-			this.tbf8.Text = "0";
-			this.tbf8.TextChanged += new EventHandler(this.Changed);
+			tbf8.Location = new System.Drawing.Point(72, 8);
+			tbf8.Name = "tbf8";
+			tbf8.Size = new System.Drawing.Size(64, 21);
+			tbf8.TabIndex = 6;
+			tbf8.Text = "0";
+			tbf8.TextChanged += new EventHandler(Changed);
 			//
 			// tabPage7
 			//
-			this.tabPage7.Controls.Add(this.label21);
-			this.tabPage7.Controls.Add(this.tbi10);
-			this.tabPage7.Controls.Add(this.label22);
-			this.tabPage7.Controls.Add(this.tbi9);
-			this.tabPage7.Location = new System.Drawing.Point(4, 22);
-			this.tabPage7.Name = "tabPage7";
-			this.tabPage7.Size = new System.Drawing.Size(392, 88);
-			this.tabPage7.TabIndex = 6;
-			this.tabPage7.Text = "0x40+";
+			tabPage7.Controls.Add(label21);
+			tabPage7.Controls.Add(tbi10);
+			tabPage7.Controls.Add(label22);
+			tabPage7.Controls.Add(tbi9);
+			tabPage7.Location = new System.Drawing.Point(4, 22);
+			tabPage7.Name = "tabPage7";
+			tabPage7.Size = new System.Drawing.Size(392, 88);
+			tabPage7.TabIndex = 6;
+			tabPage7.Text = "0x40+";
 			//
 			// label21
 			//
-			this.label21.Anchor = (
+			label21.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -966,16 +966,16 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.label21.Location = new System.Drawing.Point(8, 32);
-			this.label21.Name = "label21";
-			this.label21.Size = new System.Drawing.Size(56, 23);
-			this.label21.TabIndex = 23;
-			this.label21.Text = "Int 10:";
-			this.label21.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label21.Location = new System.Drawing.Point(8, 32);
+			label21.Name = "label21";
+			label21.Size = new System.Drawing.Size(56, 23);
+			label21.TabIndex = 23;
+			label21.Text = "Int 10:";
+			label21.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// tbi10
 			//
-			this.tbi10.Anchor = (
+			tbi10.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -983,16 +983,16 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.tbi10.Location = new System.Drawing.Point(72, 32);
-			this.tbi10.Name = "tbi10";
-			this.tbi10.Size = new System.Drawing.Size(64, 21);
-			this.tbi10.TabIndex = 22;
-			this.tbi10.Text = "0";
-			this.tbi10.TextChanged += new EventHandler(this.Changed);
+			tbi10.Location = new System.Drawing.Point(72, 32);
+			tbi10.Name = "tbi10";
+			tbi10.Size = new System.Drawing.Size(64, 21);
+			tbi10.TabIndex = 22;
+			tbi10.Text = "0";
+			tbi10.TextChanged += new EventHandler(Changed);
 			//
 			// label22
 			//
-			this.label22.Anchor = (
+			label22.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -1000,16 +1000,16 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.label22.Location = new System.Drawing.Point(8, 8);
-			this.label22.Name = "label22";
-			this.label22.Size = new System.Drawing.Size(56, 23);
-			this.label22.TabIndex = 21;
-			this.label22.Text = "Int 9:";
-			this.label22.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label22.Location = new System.Drawing.Point(8, 8);
+			label22.Name = "label22";
+			label22.Size = new System.Drawing.Size(56, 23);
+			label22.TabIndex = 21;
+			label22.Text = "Int 9:";
+			label22.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// tbi9
 			//
-			this.tbi9.Anchor = (
+			tbi9.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -1017,16 +1017,16 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.tbi9.Location = new System.Drawing.Point(72, 8);
-			this.tbi9.Name = "tbi9";
-			this.tbi9.Size = new System.Drawing.Size(64, 21);
-			this.tbi9.TabIndex = 20;
-			this.tbi9.Text = "0";
-			this.tbi9.TextChanged += new EventHandler(this.Changed);
+			tbi9.Location = new System.Drawing.Point(72, 8);
+			tbi9.Name = "tbi9";
+			tbi9.Size = new System.Drawing.Size(64, 21);
+			tbi9.TabIndex = 20;
+			tbi9.Text = "0";
+			tbi9.TextChanged += new EventHandler(Changed);
 			//
 			// cbtype
 			//
-			this.cbtype.Anchor = (
+			cbtype.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -1034,16 +1034,16 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.cbtype.DropDownStyle = ComboBoxStyle.DropDownList;
-			this.cbtype.Location = new System.Drawing.Point(392, 32);
-			this.cbtype.Name = "cbtype";
-			this.cbtype.Size = new System.Drawing.Size(136, 21);
-			this.cbtype.TabIndex = 21;
-			this.cbtype.SelectedIndexChanged += new EventHandler(this.Changed);
+			cbtype.DropDownStyle = ComboBoxStyle.DropDownList;
+			cbtype.Location = new System.Drawing.Point(392, 32);
+			cbtype.Name = "cbtype";
+			cbtype.Size = new System.Drawing.Size(136, 21);
+			cbtype.TabIndex = 21;
+			cbtype.SelectedIndexChanged += new EventHandler(Changed);
 			//
 			// label9
 			//
-			this.label9.Anchor = (
+			label9.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -1051,17 +1051,17 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.label9.BackColor = System.Drawing.Color.Transparent;
-			this.label9.Location = new System.Drawing.Point(328, 32);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(56, 23);
-			this.label9.TabIndex = 20;
-			this.label9.Text = "Type:";
-			this.label9.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label9.BackColor = System.Drawing.Color.Transparent;
+			label9.Location = new System.Drawing.Point(328, 32);
+			label9.Name = "label9";
+			label9.Size = new System.Drawing.Size(56, 23);
+			label9.TabIndex = 20;
+			label9.Text = "Type:";
+			label9.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// label8
 			//
-			this.label8.Anchor = (
+			label8.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -1069,17 +1069,17 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.label8.BackColor = System.Drawing.Color.Transparent;
-			this.label8.Location = new System.Drawing.Point(584, 88);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(56, 23);
-			this.label8.TabIndex = 19;
-			this.label8.Text = "Int 5:";
-			this.label8.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label8.BackColor = System.Drawing.Color.Transparent;
+			label8.Location = new System.Drawing.Point(584, 88);
+			label8.Name = "label8";
+			label8.Size = new System.Drawing.Size(56, 23);
+			label8.TabIndex = 19;
+			label8.Text = "Int 5:";
+			label8.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// tbi5
 			//
-			this.tbi5.Anchor = (
+			tbi5.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -1087,16 +1087,16 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.tbi5.Location = new System.Drawing.Point(648, 88);
-			this.tbi5.Name = "tbi5";
-			this.tbi5.Size = new System.Drawing.Size(64, 21);
-			this.tbi5.TabIndex = 18;
-			this.tbi5.Text = "0";
-			this.tbi5.TextChanged += new EventHandler(this.Changed);
+			tbi5.Location = new System.Drawing.Point(648, 88);
+			tbi5.Name = "tbi5";
+			tbi5.Size = new System.Drawing.Size(64, 21);
+			tbi5.TabIndex = 18;
+			tbi5.Text = "0";
+			tbi5.TextChanged += new EventHandler(Changed);
 			//
 			// label7
 			//
-			this.label7.Anchor = (
+			label7.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -1104,17 +1104,17 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.label7.BackColor = System.Drawing.Color.Transparent;
-			this.label7.Location = new System.Drawing.Point(584, 64);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(56, 23);
-			this.label7.TabIndex = 17;
-			this.label7.Text = "Int 4:";
-			this.label7.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label7.BackColor = System.Drawing.Color.Transparent;
+			label7.Location = new System.Drawing.Point(584, 64);
+			label7.Name = "label7";
+			label7.Size = new System.Drawing.Size(56, 23);
+			label7.TabIndex = 17;
+			label7.Text = "Int 4:";
+			label7.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// tbi4
 			//
-			this.tbi4.Anchor = (
+			tbi4.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -1122,16 +1122,16 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.tbi4.Location = new System.Drawing.Point(648, 64);
-			this.tbi4.Name = "tbi4";
-			this.tbi4.Size = new System.Drawing.Size(64, 21);
-			this.tbi4.TabIndex = 16;
-			this.tbi4.Text = "0";
-			this.tbi4.TextChanged += new EventHandler(this.Changed);
+			tbi4.Location = new System.Drawing.Point(648, 64);
+			tbi4.Name = "tbi4";
+			tbi4.Size = new System.Drawing.Size(64, 21);
+			tbi4.TabIndex = 16;
+			tbi4.Text = "0";
+			tbi4.TextChanged += new EventHandler(Changed);
 			//
 			// label6
 			//
-			this.label6.Anchor = (
+			label6.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -1139,17 +1139,17 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.label6.BackColor = System.Drawing.Color.Transparent;
-			this.label6.Location = new System.Drawing.Point(456, 112);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(56, 23);
-			this.label6.TabIndex = 15;
-			this.label6.Text = "Int 3:";
-			this.label6.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label6.BackColor = System.Drawing.Color.Transparent;
+			label6.Location = new System.Drawing.Point(456, 112);
+			label6.Name = "label6";
+			label6.Size = new System.Drawing.Size(56, 23);
+			label6.TabIndex = 15;
+			label6.Text = "Int 3:";
+			label6.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// tbi3
 			//
-			this.tbi3.Anchor = (
+			tbi3.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -1157,16 +1157,16 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.tbi3.Location = new System.Drawing.Point(520, 112);
-			this.tbi3.Name = "tbi3";
-			this.tbi3.Size = new System.Drawing.Size(64, 21);
-			this.tbi3.TabIndex = 14;
-			this.tbi3.Text = "0";
-			this.tbi3.TextChanged += new EventHandler(this.Changed);
+			tbi3.Location = new System.Drawing.Point(520, 112);
+			tbi3.Name = "tbi3";
+			tbi3.Size = new System.Drawing.Size(64, 21);
+			tbi3.TabIndex = 14;
+			tbi3.Text = "0";
+			tbi3.TextChanged += new EventHandler(Changed);
 			//
 			// label5
 			//
-			this.label5.Anchor = (
+			label5.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -1174,17 +1174,17 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.label5.BackColor = System.Drawing.Color.Transparent;
-			this.label5.Location = new System.Drawing.Point(456, 88);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(56, 23);
-			this.label5.TabIndex = 13;
-			this.label5.Text = "Int 2:";
-			this.label5.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label5.BackColor = System.Drawing.Color.Transparent;
+			label5.Location = new System.Drawing.Point(456, 88);
+			label5.Name = "label5";
+			label5.Size = new System.Drawing.Size(56, 23);
+			label5.TabIndex = 13;
+			label5.Text = "Int 2:";
+			label5.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// tbi2
 			//
-			this.tbi2.Anchor = (
+			tbi2.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -1192,16 +1192,16 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.tbi2.Location = new System.Drawing.Point(520, 88);
-			this.tbi2.Name = "tbi2";
-			this.tbi2.Size = new System.Drawing.Size(64, 21);
-			this.tbi2.TabIndex = 12;
-			this.tbi2.Text = "0";
-			this.tbi2.TextChanged += new EventHandler(this.Changed);
+			tbi2.Location = new System.Drawing.Point(520, 88);
+			tbi2.Name = "tbi2";
+			tbi2.Size = new System.Drawing.Size(64, 21);
+			tbi2.TabIndex = 12;
+			tbi2.Text = "0";
+			tbi2.TextChanged += new EventHandler(Changed);
 			//
 			// label4
 			//
-			this.label4.Anchor = (
+			label4.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -1209,17 +1209,17 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.label4.BackColor = System.Drawing.Color.Transparent;
-			this.label4.Location = new System.Drawing.Point(456, 64);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(56, 23);
-			this.label4.TabIndex = 11;
-			this.label4.Text = "Int 1:";
-			this.label4.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label4.BackColor = System.Drawing.Color.Transparent;
+			label4.Location = new System.Drawing.Point(456, 64);
+			label4.Name = "label4";
+			label4.Size = new System.Drawing.Size(56, 23);
+			label4.TabIndex = 11;
+			label4.Text = "Int 1:";
+			label4.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// tbi1
 			//
-			this.tbi1.Anchor = (
+			tbi1.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -1227,16 +1227,16 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.tbi1.Location = new System.Drawing.Point(520, 64);
-			this.tbi1.Name = "tbi1";
-			this.tbi1.Size = new System.Drawing.Size(64, 21);
-			this.tbi1.TabIndex = 10;
-			this.tbi1.Text = "0";
-			this.tbi1.TextChanged += new EventHandler(this.Changed);
+			tbi1.Location = new System.Drawing.Point(520, 64);
+			tbi1.Name = "tbi1";
+			tbi1.Size = new System.Drawing.Size(64, 21);
+			tbi1.TabIndex = 10;
+			tbi1.Text = "0";
+			tbi1.TextChanged += new EventHandler(Changed);
 			//
 			// label3
 			//
-			this.label3.Anchor = (
+			label3.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -1244,17 +1244,17 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.label3.BackColor = System.Drawing.Color.Transparent;
-			this.label3.Location = new System.Drawing.Point(328, 112);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(56, 23);
-			this.label3.TabIndex = 9;
-			this.label3.Text = "Float 3:";
-			this.label3.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label3.BackColor = System.Drawing.Color.Transparent;
+			label3.Location = new System.Drawing.Point(328, 112);
+			label3.Name = "label3";
+			label3.Size = new System.Drawing.Size(56, 23);
+			label3.TabIndex = 9;
+			label3.Text = "Float 3:";
+			label3.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// tbf3
 			//
-			this.tbf3.Anchor = (
+			tbf3.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -1262,16 +1262,16 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.tbf3.Location = new System.Drawing.Point(392, 112);
-			this.tbf3.Name = "tbf3";
-			this.tbf3.Size = new System.Drawing.Size(64, 21);
-			this.tbf3.TabIndex = 8;
-			this.tbf3.Text = "0";
-			this.tbf3.TextChanged += new EventHandler(this.Changed);
+			tbf3.Location = new System.Drawing.Point(392, 112);
+			tbf3.Name = "tbf3";
+			tbf3.Size = new System.Drawing.Size(64, 21);
+			tbf3.TabIndex = 8;
+			tbf3.Text = "0";
+			tbf3.TextChanged += new EventHandler(Changed);
 			//
 			// label2
 			//
-			this.label2.Anchor = (
+			label2.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -1279,17 +1279,17 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.label2.BackColor = System.Drawing.Color.Transparent;
-			this.label2.Location = new System.Drawing.Point(328, 88);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(56, 23);
-			this.label2.TabIndex = 7;
-			this.label2.Text = "Float 2:";
-			this.label2.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label2.BackColor = System.Drawing.Color.Transparent;
+			label2.Location = new System.Drawing.Point(328, 88);
+			label2.Name = "label2";
+			label2.Size = new System.Drawing.Size(56, 23);
+			label2.TabIndex = 7;
+			label2.Text = "Float 2:";
+			label2.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// tbf2
 			//
-			this.tbf2.Anchor = (
+			tbf2.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -1297,16 +1297,16 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.tbf2.Location = new System.Drawing.Point(392, 88);
-			this.tbf2.Name = "tbf2";
-			this.tbf2.Size = new System.Drawing.Size(64, 21);
-			this.tbf2.TabIndex = 6;
-			this.tbf2.Text = "0";
-			this.tbf2.TextChanged += new EventHandler(this.Changed);
+			tbf2.Location = new System.Drawing.Point(392, 88);
+			tbf2.Name = "tbf2";
+			tbf2.Size = new System.Drawing.Size(64, 21);
+			tbf2.TabIndex = 6;
+			tbf2.Text = "0";
+			tbf2.TextChanged += new EventHandler(Changed);
 			//
 			// label1
 			//
-			this.label1.Anchor = (
+			label1.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -1314,17 +1314,17 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.label1.BackColor = System.Drawing.Color.Transparent;
-			this.label1.Location = new System.Drawing.Point(328, 64);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(56, 23);
-			this.label1.TabIndex = 5;
-			this.label1.Text = "Float 1:";
-			this.label1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			label1.BackColor = System.Drawing.Color.Transparent;
+			label1.Location = new System.Drawing.Point(328, 64);
+			label1.Name = "label1";
+			label1.Size = new System.Drawing.Size(56, 23);
+			label1.TabIndex = 5;
+			label1.Text = "Float 1:";
+			label1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// tbf1
 			//
-			this.tbf1.Anchor = (
+			tbf1.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -1332,16 +1332,16 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.tbf1.Location = new System.Drawing.Point(392, 64);
-			this.tbf1.Name = "tbf1";
-			this.tbf1.Size = new System.Drawing.Size(64, 21);
-			this.tbf1.TabIndex = 4;
-			this.tbf1.Text = "0";
-			this.tbf1.TextChanged += new EventHandler(this.Changed);
+			tbf1.Location = new System.Drawing.Point(392, 64);
+			tbf1.Name = "tbf1";
+			tbf1.Size = new System.Drawing.Size(64, 21);
+			tbf1.TabIndex = 4;
+			tbf1.Text = "0";
+			tbf1.TextChanged += new EventHandler(Changed);
 			//
 			// panel4
 			//
-			this.panel4.Anchor = (
+			panel4.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -1351,53 +1351,53 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.panel4.Location = new System.Drawing.Point(0, 0);
-			this.panel4.Margin = new Padding(0);
-			this.panel4.Name = "panel4";
-			this.panel4.Size = new System.Drawing.Size(730, 24);
-			this.panel4.TabIndex = 0;
+			panel4.Location = new System.Drawing.Point(0, 0);
+			panel4.Margin = new Padding(0);
+			panel4.Name = "panel4";
+			panel4.Size = new System.Drawing.Size(730, 24);
+			panel4.TabIndex = 0;
 			//
 			// label12
 			//
-			this.label12.AutoSize = true;
-			this.label12.ImeMode = ImeMode.NoControl;
-			this.label12.Location = new System.Drawing.Point(0, 4);
-			this.label12.Name = "label12";
-			this.label12.Size = new System.Drawing.Size(83, 16);
-			this.label12.TabIndex = 0;
-			this.label12.Text = "Slot Editor";
+			label12.AutoSize = true;
+			label12.ImeMode = ImeMode.NoControl;
+			label12.Location = new System.Drawing.Point(0, 4);
+			label12.Name = "label12";
+			label12.Size = new System.Drawing.Size(83, 16);
+			label12.TabIndex = 0;
+			label12.Text = "Slot Editor";
 			//
 			// SlotForm
 			//
-			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-			this.ClientSize = new System.Drawing.Size(920, 406);
-			this.Controls.Add(this.pnslot);
-			this.Name = "SlotForm";
-			this.Text = "SlotForm";
-			this.pnslot.ResumeLayout(false);
-			this.pnslot.PerformLayout();
-			this.groupBox1.ResumeLayout(false);
-			this.groupBox1.PerformLayout();
-			this.tabControl1.ResumeLayout(false);
-			this.tabPage1.ResumeLayout(false);
-			this.tabPage1.PerformLayout();
-			this.tabPage2.ResumeLayout(false);
-			this.tabPage2.PerformLayout();
-			this.tabPage3.ResumeLayout(false);
-			this.tabPage3.PerformLayout();
-			this.tabPage4.ResumeLayout(false);
-			this.tabPage4.PerformLayout();
-			this.tabPage5.ResumeLayout(false);
-			this.tabPage5.PerformLayout();
-			this.tabPageA.ResumeLayout(false);
-			this.tabPageA.PerformLayout();
-			this.tabPage6.ResumeLayout(false);
-			this.tabPage6.PerformLayout();
-			this.tabPage7.ResumeLayout(false);
-			this.tabPage7.PerformLayout();
-			this.panel4.ResumeLayout(false);
-			this.panel4.PerformLayout();
-			this.ResumeLayout(false);
+			AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+			ClientSize = new System.Drawing.Size(920, 406);
+			Controls.Add(pnslot);
+			Name = "SlotForm";
+			Text = "SlotForm";
+			pnslot.ResumeLayout(false);
+			pnslot.PerformLayout();
+			groupBox1.ResumeLayout(false);
+			groupBox1.PerformLayout();
+			tabControl1.ResumeLayout(false);
+			tabPage1.ResumeLayout(false);
+			tabPage1.PerformLayout();
+			tabPage2.ResumeLayout(false);
+			tabPage2.PerformLayout();
+			tabPage3.ResumeLayout(false);
+			tabPage3.PerformLayout();
+			tabPage4.ResumeLayout(false);
+			tabPage4.PerformLayout();
+			tabPage5.ResumeLayout(false);
+			tabPage5.PerformLayout();
+			tabPageA.ResumeLayout(false);
+			tabPageA.PerformLayout();
+			tabPage6.ResumeLayout(false);
+			tabPage6.PerformLayout();
+			tabPage7.ResumeLayout(false);
+			tabPage7.PerformLayout();
+			panel4.ResumeLayout(false);
+			panel4.PerformLayout();
+			ResumeLayout(false);
 		}
 		#endregion
 
@@ -1482,7 +1482,7 @@ namespace SimPe.PackedFiles.UserInterface
 				return;
 			}
 
-			this.Tag = true;
+			Tag = true;
 			try
 			{
 				SlotItem si =
@@ -1525,7 +1525,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			finally
 			{
-				this.Tag = null;
+				Tag = null;
 			}
 		}
 

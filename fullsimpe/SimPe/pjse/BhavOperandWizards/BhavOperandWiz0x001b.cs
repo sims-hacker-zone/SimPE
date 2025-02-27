@@ -83,7 +83,7 @@ namespace pjse.BhavOperandWizards.Wiz0x001b
 		//private bool internalchg = false;
 
 		#region iBhavOperandWizForm
-		public Panel WizPanel => this.pnWiz0x001b;
+		public Panel WizPanel => pnWiz0x001b;
 
 		public void Execute(Instruction inst)
 		{
@@ -146,96 +146,96 @@ namespace pjse.BhavOperandWizards.Wiz0x001b
 		{
 			System.ComponentModel.ComponentResourceManager resources =
 				new System.ComponentModel.ComponentResourceManager(typeof(UI));
-			this.pnWiz0x001b = new Panel();
-			this.flowLayoutPanel1 = new FlowLayoutPanel();
-			this.gbLocation = new GroupBox();
-			this.cbLocation = new ComboBox();
-			this.gbDirection = new GroupBox();
-			this.cbDirection = new ComboBox();
-			this.ckbNoFailureTrees = new CheckBox();
-			this.ckbDifferentAltitudes = new CheckBox();
-			this.pnWiz0x001b.SuspendLayout();
-			this.flowLayoutPanel1.SuspendLayout();
-			this.gbLocation.SuspendLayout();
-			this.gbDirection.SuspendLayout();
-			this.SuspendLayout();
+			pnWiz0x001b = new Panel();
+			flowLayoutPanel1 = new FlowLayoutPanel();
+			gbLocation = new GroupBox();
+			cbLocation = new ComboBox();
+			gbDirection = new GroupBox();
+			cbDirection = new ComboBox();
+			ckbNoFailureTrees = new CheckBox();
+			ckbDifferentAltitudes = new CheckBox();
+			pnWiz0x001b.SuspendLayout();
+			flowLayoutPanel1.SuspendLayout();
+			gbLocation.SuspendLayout();
+			gbDirection.SuspendLayout();
+			SuspendLayout();
 			//
 			// pnWiz0x001b
 			//
-			resources.ApplyResources(this.pnWiz0x001b, "pnWiz0x001b");
-			this.pnWiz0x001b.Controls.Add(this.flowLayoutPanel1);
-			this.pnWiz0x001b.Name = "pnWiz0x001b";
+			resources.ApplyResources(pnWiz0x001b, "pnWiz0x001b");
+			pnWiz0x001b.Controls.Add(flowLayoutPanel1);
+			pnWiz0x001b.Name = "pnWiz0x001b";
 			//
 			// flowLayoutPanel1
 			//
-			resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
-			this.flowLayoutPanel1.Controls.Add(this.gbLocation);
-			this.flowLayoutPanel1.Controls.Add(this.gbDirection);
-			this.flowLayoutPanel1.Controls.Add(this.ckbNoFailureTrees);
-			this.flowLayoutPanel1.Controls.Add(this.ckbDifferentAltitudes);
-			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+			resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
+			flowLayoutPanel1.Controls.Add(gbLocation);
+			flowLayoutPanel1.Controls.Add(gbDirection);
+			flowLayoutPanel1.Controls.Add(ckbNoFailureTrees);
+			flowLayoutPanel1.Controls.Add(ckbDifferentAltitudes);
+			flowLayoutPanel1.Name = "flowLayoutPanel1";
 			//
 			// gbLocation
 			//
-			resources.ApplyResources(this.gbLocation, "gbLocation");
-			this.gbLocation.Controls.Add(this.cbLocation);
-			this.gbLocation.Name = "gbLocation";
-			this.gbLocation.TabStop = false;
+			resources.ApplyResources(gbLocation, "gbLocation");
+			gbLocation.Controls.Add(cbLocation);
+			gbLocation.Name = "gbLocation";
+			gbLocation.TabStop = false;
 			//
 			// cbLocation
 			//
-			this.cbLocation.DropDownStyle =
+			cbLocation.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbLocation.FormattingEnabled = true;
-			resources.ApplyResources(this.cbLocation, "cbLocation");
-			this.cbLocation.Name = "cbLocation";
+			cbLocation.FormattingEnabled = true;
+			resources.ApplyResources(cbLocation, "cbLocation");
+			cbLocation.Name = "cbLocation";
 			//
 			// gbDirection
 			//
-			resources.ApplyResources(this.gbDirection, "gbDirection");
-			this.gbDirection.Controls.Add(this.cbDirection);
-			this.gbDirection.Name = "gbDirection";
-			this.gbDirection.TabStop = false;
+			resources.ApplyResources(gbDirection, "gbDirection");
+			gbDirection.Controls.Add(cbDirection);
+			gbDirection.Name = "gbDirection";
+			gbDirection.TabStop = false;
 			//
 			// cbDirection
 			//
-			this.cbDirection.DropDownStyle =
+			cbDirection.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
-			this.cbDirection.FormattingEnabled = true;
-			resources.ApplyResources(this.cbDirection, "cbDirection");
-			this.cbDirection.Name = "cbDirection";
+			cbDirection.FormattingEnabled = true;
+			resources.ApplyResources(cbDirection, "cbDirection");
+			cbDirection.Name = "cbDirection";
 			//
 			// ckbNoFailureTrees
 			//
-			resources.ApplyResources(this.ckbNoFailureTrees, "ckbNoFailureTrees");
-			this.ckbNoFailureTrees.Name = "ckbNoFailureTrees";
-			this.ckbNoFailureTrees.UseVisualStyleBackColor = true;
+			resources.ApplyResources(ckbNoFailureTrees, "ckbNoFailureTrees");
+			ckbNoFailureTrees.Name = "ckbNoFailureTrees";
+			ckbNoFailureTrees.UseVisualStyleBackColor = true;
 			//
 			// ckbDifferentAltitudes
 			//
 			resources.ApplyResources(
-				this.ckbDifferentAltitudes,
+				ckbDifferentAltitudes,
 				"ckbDifferentAltitudes"
 			);
-			this.ckbDifferentAltitudes.Name = "ckbDifferentAltitudes";
-			this.ckbDifferentAltitudes.UseVisualStyleBackColor = true;
+			ckbDifferentAltitudes.Name = "ckbDifferentAltitudes";
+			ckbDifferentAltitudes.UseVisualStyleBackColor = true;
 			//
 			// UI
 			//
 			resources.ApplyResources(this, "$this");
-			this.AutoScaleMode = AutoScaleMode.Dpi;
-			this.Controls.Add(this.pnWiz0x001b);
-			this.Name = "UI";
-			this.pnWiz0x001b.ResumeLayout(false);
-			this.pnWiz0x001b.PerformLayout();
-			this.flowLayoutPanel1.ResumeLayout(false);
-			this.flowLayoutPanel1.PerformLayout();
-			this.gbLocation.ResumeLayout(false);
-			this.gbDirection.ResumeLayout(false);
-			this.ResumeLayout(false);
-			this.PerformLayout();
+			AutoScaleMode = AutoScaleMode.Dpi;
+			Controls.Add(pnWiz0x001b);
+			Name = "UI";
+			pnWiz0x001b.ResumeLayout(false);
+			pnWiz0x001b.PerformLayout();
+			flowLayoutPanel1.ResumeLayout(false);
+			flowLayoutPanel1.PerformLayout();
+			gbLocation.ResumeLayout(false);
+			gbDirection.ResumeLayout(false);
+			ResumeLayout(false);
+			PerformLayout();
 		}
 		#endregion
 	}

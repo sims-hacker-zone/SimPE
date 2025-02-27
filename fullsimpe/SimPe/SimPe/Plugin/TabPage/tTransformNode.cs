@@ -96,7 +96,7 @@ namespace SimPe.Plugin.TabPage
 			//
 			InitializeComponent();
 
-			this.UseVisualStyleBackColor = true;
+			UseVisualStyleBackColor = true;
 		}
 
 		/// <summary>
@@ -122,166 +122,166 @@ namespace SimPe.Plugin.TabPage
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.groupBox7 = new GroupBox();
-			this.tb_tn_ukn = new TextBox();
-			this.label19 = new Label();
-			this.tb_tn_ver = new TextBox();
-			this.label26 = new Label();
-			this.groupBox6 = new GroupBox();
-			this.ll_tn_add = new LinkLabel();
-			this.tb_tn_2 = new TextBox();
-			this.label16 = new Label();
-			this.tb_tn_1 = new TextBox();
-			this.label17 = new Label();
-			this.lb_tn = new ListBox();
-			this.ll_tn_delete = new LinkLabel();
-			this.groupBox15 = new GroupBox();
-			this.tb_tn_tz = new TextBox();
-			this.label51 = new Label();
-			this.tb_tn_ty = new TextBox();
-			this.label50 = new Label();
-			this.tb_tn_tx = new TextBox();
-			this.label49 = new Label();
-			this.groupBox16 = new GroupBox();
-			this.tb_tn_rw = new TextBox();
-			this.label55 = new Label();
-			this.tb_tn_rz = new TextBox();
-			this.label52 = new Label();
-			this.tb_tn_ry = new TextBox();
-			this.label53 = new Label();
-			this.tb_tn_rx = new TextBox();
-			this.label54 = new Label();
-			this.groupBox12 = new GroupBox();
-			this.tb_tn_a = new TextBox();
-			this.label30 = new Label();
-			this.tb_tn_az = new TextBox();
-			this.label31 = new Label();
-			this.tb_tn_ay = new TextBox();
-			this.label56 = new Label();
-			this.tb_tn_ax = new TextBox();
-			this.label57 = new Label();
-			this.groupBox18 = new GroupBox();
-			this.tb_tn_er = new TextBox();
-			this.label60 = new Label();
-			this.tb_tn_ep = new TextBox();
-			this.label61 = new Label();
-			this.tb_tn_ey = new TextBox();
-			this.label62 = new Label();
-			this.groupBox7.SuspendLayout();
-			this.groupBox6.SuspendLayout();
-			this.groupBox15.SuspendLayout();
-			this.groupBox16.SuspendLayout();
-			this.groupBox12.SuspendLayout();
-			this.groupBox18.SuspendLayout();
-			this.SuspendLayout();
+			groupBox7 = new GroupBox();
+			tb_tn_ukn = new TextBox();
+			label19 = new Label();
+			tb_tn_ver = new TextBox();
+			label26 = new Label();
+			groupBox6 = new GroupBox();
+			ll_tn_add = new LinkLabel();
+			tb_tn_2 = new TextBox();
+			label16 = new Label();
+			tb_tn_1 = new TextBox();
+			label17 = new Label();
+			lb_tn = new ListBox();
+			ll_tn_delete = new LinkLabel();
+			groupBox15 = new GroupBox();
+			tb_tn_tz = new TextBox();
+			label51 = new Label();
+			tb_tn_ty = new TextBox();
+			label50 = new Label();
+			tb_tn_tx = new TextBox();
+			label49 = new Label();
+			groupBox16 = new GroupBox();
+			tb_tn_rw = new TextBox();
+			label55 = new Label();
+			tb_tn_rz = new TextBox();
+			label52 = new Label();
+			tb_tn_ry = new TextBox();
+			label53 = new Label();
+			tb_tn_rx = new TextBox();
+			label54 = new Label();
+			groupBox12 = new GroupBox();
+			tb_tn_a = new TextBox();
+			label30 = new Label();
+			tb_tn_az = new TextBox();
+			label31 = new Label();
+			tb_tn_ay = new TextBox();
+			label56 = new Label();
+			tb_tn_ax = new TextBox();
+			label57 = new Label();
+			groupBox18 = new GroupBox();
+			tb_tn_er = new TextBox();
+			label60 = new Label();
+			tb_tn_ep = new TextBox();
+			label61 = new Label();
+			tb_tn_ey = new TextBox();
+			label62 = new Label();
+			groupBox7.SuspendLayout();
+			groupBox6.SuspendLayout();
+			groupBox15.SuspendLayout();
+			groupBox16.SuspendLayout();
+			groupBox12.SuspendLayout();
+			groupBox18.SuspendLayout();
+			SuspendLayout();
 			//
 			// tTransformNode
 			//
-			this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-			this.Controls.Add(this.groupBox7);
-			this.Controls.Add(this.groupBox6);
-			this.Controls.Add(this.groupBox15);
-			this.Controls.Add(this.groupBox16);
-			this.Controls.Add(this.groupBox12);
-			this.Controls.Add(this.groupBox18);
-			this.Location = new System.Drawing.Point(4, 22);
-			this.Name = "tTransformNode";
-			this.Size = new System.Drawing.Size(792, 262);
-			this.TabIndex = 2;
-			this.Text = "TransformNode";
+			BackColor = System.Drawing.SystemColors.ControlLightLight;
+			Controls.Add(groupBox7);
+			Controls.Add(groupBox6);
+			Controls.Add(groupBox15);
+			Controls.Add(groupBox16);
+			Controls.Add(groupBox12);
+			Controls.Add(groupBox18);
+			Location = new System.Drawing.Point(4, 22);
+			Name = "tTransformNode";
+			Size = new System.Drawing.Size(792, 262);
+			TabIndex = 2;
+			Text = "TransformNode";
 			//
 			// groupBox7
 			//
-			this.groupBox7.Controls.Add(this.tb_tn_ukn);
-			this.groupBox7.Controls.Add(this.label19);
-			this.groupBox7.Controls.Add(this.tb_tn_ver);
-			this.groupBox7.Controls.Add(this.label26);
-			this.groupBox7.FlatStyle = FlatStyle.System;
-			this.groupBox7.Font = new System.Drawing.Font(
+			groupBox7.Controls.Add(tb_tn_ukn);
+			groupBox7.Controls.Add(label19);
+			groupBox7.Controls.Add(tb_tn_ver);
+			groupBox7.Controls.Add(label26);
+			groupBox7.FlatStyle = FlatStyle.System;
+			groupBox7.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.groupBox7.Location = new System.Drawing.Point(8, 7);
-			this.groupBox7.Name = "groupBox7";
-			this.groupBox7.Size = new System.Drawing.Size(296, 73);
-			this.groupBox7.TabIndex = 8;
-			this.groupBox7.TabStop = false;
-			this.groupBox7.Text = "Settings";
+			groupBox7.Location = new System.Drawing.Point(8, 7);
+			groupBox7.Name = "groupBox7";
+			groupBox7.Size = new System.Drawing.Size(296, 73);
+			groupBox7.TabIndex = 8;
+			groupBox7.TabStop = false;
+			groupBox7.Text = "Settings";
 			//
 			// tb_tn_ukn
 			//
-			this.tb_tn_ukn.Font = new System.Drawing.Font(
+			tb_tn_ukn.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tb_tn_ukn.Location = new System.Drawing.Point(136, 40);
-			this.tb_tn_ukn.Name = "tb_tn_ukn";
-			this.tb_tn_ukn.Size = new System.Drawing.Size(88, 21);
-			this.tb_tn_ukn.TabIndex = 26;
-			this.tb_tn_ukn.Text = "0x00000000";
-			this.tb_tn_ukn.TextChanged += new EventHandler(
-				this.TNChangeSettings
+			tb_tn_ukn.Location = new System.Drawing.Point(136, 40);
+			tb_tn_ukn.Name = "tb_tn_ukn";
+			tb_tn_ukn.Size = new System.Drawing.Size(88, 21);
+			tb_tn_ukn.TabIndex = 26;
+			tb_tn_ukn.Text = "0x00000000";
+			tb_tn_ukn.TextChanged += new EventHandler(
+				TNChangeSettings
 			);
 			//
 			// label19
 			//
-			this.label19.AutoSize = true;
-			this.label19.Font = new System.Drawing.Font(
+			label19.AutoSize = true;
+			label19.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label19.Location = new System.Drawing.Point(128, 24);
-			this.label19.Name = "label19";
-			this.label19.Size = new System.Drawing.Size(109, 17);
-			this.label19.TabIndex = 25;
-			this.label19.Text = "GMDC joint index:";
+			label19.Location = new System.Drawing.Point(128, 24);
+			label19.Name = "label19";
+			label19.Size = new System.Drawing.Size(109, 17);
+			label19.TabIndex = 25;
+			label19.Text = "GMDC joint index:";
 			//
 			// tb_tn_ver
 			//
-			this.tb_tn_ver.Font = new System.Drawing.Font(
+			tb_tn_ver.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tb_tn_ver.Location = new System.Drawing.Point(16, 40);
-			this.tb_tn_ver.Name = "tb_tn_ver";
-			this.tb_tn_ver.Size = new System.Drawing.Size(88, 21);
-			this.tb_tn_ver.TabIndex = 24;
-			this.tb_tn_ver.Text = "0x00000000";
-			this.tb_tn_ver.TextChanged += new EventHandler(
-				this.TNChangeSettings
+			tb_tn_ver.Location = new System.Drawing.Point(16, 40);
+			tb_tn_ver.Name = "tb_tn_ver";
+			tb_tn_ver.Size = new System.Drawing.Size(88, 21);
+			tb_tn_ver.TabIndex = 24;
+			tb_tn_ver.Text = "0x00000000";
+			tb_tn_ver.TextChanged += new EventHandler(
+				TNChangeSettings
 			);
 			//
 			// label26
 			//
-			this.label26.AutoSize = true;
-			this.label26.Font = new System.Drawing.Font(
+			label26.AutoSize = true;
+			label26.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label26.Location = new System.Drawing.Point(8, 24);
-			this.label26.Name = "label26";
-			this.label26.Size = new System.Drawing.Size(52, 17);
-			this.label26.TabIndex = 23;
-			this.label26.Text = "Version:";
+			label26.Location = new System.Drawing.Point(8, 24);
+			label26.Name = "label26";
+			label26.Size = new System.Drawing.Size(52, 17);
+			label26.TabIndex = 23;
+			label26.Text = "Version:";
 			//
 			// groupBox6
 			//
-			this.groupBox6.Anchor = (
+			groupBox6.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -291,31 +291,31 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.groupBox6.Controls.Add(this.ll_tn_add);
-			this.groupBox6.Controls.Add(this.tb_tn_2);
-			this.groupBox6.Controls.Add(this.label16);
-			this.groupBox6.Controls.Add(this.tb_tn_1);
-			this.groupBox6.Controls.Add(this.label17);
-			this.groupBox6.Controls.Add(this.lb_tn);
-			this.groupBox6.Controls.Add(this.ll_tn_delete);
-			this.groupBox6.FlatStyle = FlatStyle.System;
-			this.groupBox6.Font = new System.Drawing.Font(
+			groupBox6.Controls.Add(ll_tn_add);
+			groupBox6.Controls.Add(tb_tn_2);
+			groupBox6.Controls.Add(label16);
+			groupBox6.Controls.Add(tb_tn_1);
+			groupBox6.Controls.Add(label17);
+			groupBox6.Controls.Add(lb_tn);
+			groupBox6.Controls.Add(ll_tn_delete);
+			groupBox6.FlatStyle = FlatStyle.System;
+			groupBox6.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.groupBox6.Location = new System.Drawing.Point(504, 8);
-			this.groupBox6.Name = "groupBox6";
-			this.groupBox6.Size = new System.Drawing.Size(256, 248);
-			this.groupBox6.TabIndex = 6;
-			this.groupBox6.TabStop = false;
-			this.groupBox6.Text = "Child Nodes:";
+			groupBox6.Location = new System.Drawing.Point(504, 8);
+			groupBox6.Name = "groupBox6";
+			groupBox6.Size = new System.Drawing.Size(256, 248);
+			groupBox6.TabIndex = 6;
+			groupBox6.TabStop = false;
+			groupBox6.Text = "Child Nodes:";
 			//
 			// ll_tn_add
 			//
-			this.ll_tn_add.Anchor = (
+			ll_tn_add.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -323,85 +323,85 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.ll_tn_add.AutoSize = true;
-			this.ll_tn_add.Location = new System.Drawing.Point(176, 96);
-			this.ll_tn_add.Name = "ll_tn_add";
-			this.ll_tn_add.Size = new System.Drawing.Size(28, 17);
-			this.ll_tn_add.TabIndex = 6;
-			this.ll_tn_add.TabStop = true;
-			this.ll_tn_add.Text = "add";
-			this.ll_tn_add.LinkClicked +=
+			ll_tn_add.AutoSize = true;
+			ll_tn_add.Location = new System.Drawing.Point(176, 96);
+			ll_tn_add.Name = "ll_tn_add";
+			ll_tn_add.Size = new System.Drawing.Size(28, 17);
+			ll_tn_add.TabIndex = 6;
+			ll_tn_add.TabStop = true;
+			ll_tn_add.Text = "add";
+			ll_tn_add.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.TNItemsAdd
+					TNItemsAdd
 				);
 			//
 			// tb_tn_2
 			//
-			this.tb_tn_2.Font = new System.Drawing.Font(
+			tb_tn_2.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tb_tn_2.Location = new System.Drawing.Point(160, 72);
-			this.tb_tn_2.Name = "tb_tn_2";
-			this.tb_tn_2.Size = new System.Drawing.Size(88, 21);
-			this.tb_tn_2.TabIndex = 4;
-			this.tb_tn_2.Text = "0x00000000";
-			this.tb_tn_2.TextChanged += new EventHandler(this.TNChangedItems);
+			tb_tn_2.Location = new System.Drawing.Point(160, 72);
+			tb_tn_2.Name = "tb_tn_2";
+			tb_tn_2.Size = new System.Drawing.Size(88, 21);
+			tb_tn_2.TabIndex = 4;
+			tb_tn_2.Text = "0x00000000";
+			tb_tn_2.TextChanged += new EventHandler(TNChangedItems);
 			//
 			// label16
 			//
-			this.label16.AutoSize = true;
-			this.label16.Font = new System.Drawing.Font(
+			label16.AutoSize = true;
+			label16.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label16.Location = new System.Drawing.Point(152, 56);
-			this.label16.Name = "label16";
-			this.label16.Size = new System.Drawing.Size(74, 17);
-			this.label16.TabIndex = 3;
-			this.label16.Text = "Child Index:";
+			label16.Location = new System.Drawing.Point(152, 56);
+			label16.Name = "label16";
+			label16.Size = new System.Drawing.Size(74, 17);
+			label16.TabIndex = 3;
+			label16.Text = "Child Index:";
 			//
 			// tb_tn_1
 			//
-			this.tb_tn_1.Font = new System.Drawing.Font(
+			tb_tn_1.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tb_tn_1.Location = new System.Drawing.Point(160, 32);
-			this.tb_tn_1.Name = "tb_tn_1";
-			this.tb_tn_1.Size = new System.Drawing.Size(88, 21);
-			this.tb_tn_1.TabIndex = 2;
-			this.tb_tn_1.Text = "0x0000";
-			this.tb_tn_1.TextChanged += new EventHandler(this.TNChangedItems);
+			tb_tn_1.Location = new System.Drawing.Point(160, 32);
+			tb_tn_1.Name = "tb_tn_1";
+			tb_tn_1.Size = new System.Drawing.Size(88, 21);
+			tb_tn_1.TabIndex = 2;
+			tb_tn_1.Text = "0x0000";
+			tb_tn_1.TextChanged += new EventHandler(TNChangedItems);
 			//
 			// label17
 			//
-			this.label17.AutoSize = true;
-			this.label17.Font = new System.Drawing.Font(
+			label17.AutoSize = true;
+			label17.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label17.Location = new System.Drawing.Point(152, 16);
-			this.label17.Name = "label17";
-			this.label17.Size = new System.Drawing.Size(73, 17);
-			this.label17.TabIndex = 1;
-			this.label17.Text = "Unknown 1:";
+			label17.Location = new System.Drawing.Point(152, 16);
+			label17.Name = "label17";
+			label17.Size = new System.Drawing.Size(73, 17);
+			label17.TabIndex = 1;
+			label17.Text = "Unknown 1:";
 			//
 			// lb_tn
 			//
-			this.lb_tn.Anchor = (
+			lb_tn.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -411,23 +411,23 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.lb_tn.Font = new System.Drawing.Font(
+			lb_tn.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.lb_tn.IntegralHeight = false;
-			this.lb_tn.Location = new System.Drawing.Point(8, 24);
-			this.lb_tn.Name = "lb_tn";
-			this.lb_tn.Size = new System.Drawing.Size(136, 216);
-			this.lb_tn.TabIndex = 0;
-			this.lb_tn.SelectedIndexChanged += new EventHandler(this.TNSelect);
+			lb_tn.IntegralHeight = false;
+			lb_tn.Location = new System.Drawing.Point(8, 24);
+			lb_tn.Name = "lb_tn";
+			lb_tn.Size = new System.Drawing.Size(136, 216);
+			lb_tn.TabIndex = 0;
+			lb_tn.SelectedIndexChanged += new EventHandler(TNSelect);
 			//
 			// ll_tn_delete
 			//
-			this.ll_tn_delete.Anchor = (
+			ll_tn_delete.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Top
@@ -435,592 +435,592 @@ namespace SimPe.Plugin.TabPage
 					)
 				)
 			);
-			this.ll_tn_delete.AutoSize = true;
-			this.ll_tn_delete.Location = new System.Drawing.Point(204, 96);
-			this.ll_tn_delete.Name = "ll_tn_delete";
-			this.ll_tn_delete.Size = new System.Drawing.Size(44, 17);
-			this.ll_tn_delete.TabIndex = 5;
-			this.ll_tn_delete.TabStop = true;
-			this.ll_tn_delete.Text = "delete";
-			this.ll_tn_delete.LinkClicked +=
+			ll_tn_delete.AutoSize = true;
+			ll_tn_delete.Location = new System.Drawing.Point(204, 96);
+			ll_tn_delete.Name = "ll_tn_delete";
+			ll_tn_delete.Size = new System.Drawing.Size(44, 17);
+			ll_tn_delete.TabIndex = 5;
+			ll_tn_delete.TabStop = true;
+			ll_tn_delete.Text = "delete";
+			ll_tn_delete.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
-					this.TNItemsDelete
+					TNItemsDelete
 				);
 			//
 			// groupBox15
 			//
-			this.groupBox15.Controls.Add(this.tb_tn_tz);
-			this.groupBox15.Controls.Add(this.label51);
-			this.groupBox15.Controls.Add(this.tb_tn_ty);
-			this.groupBox15.Controls.Add(this.label50);
-			this.groupBox15.Controls.Add(this.tb_tn_tx);
-			this.groupBox15.Controls.Add(this.label49);
-			this.groupBox15.FlatStyle = FlatStyle.System;
-			this.groupBox15.Font = new System.Drawing.Font(
+			groupBox15.Controls.Add(tb_tn_tz);
+			groupBox15.Controls.Add(label51);
+			groupBox15.Controls.Add(tb_tn_ty);
+			groupBox15.Controls.Add(label50);
+			groupBox15.Controls.Add(tb_tn_tx);
+			groupBox15.Controls.Add(label49);
+			groupBox15.FlatStyle = FlatStyle.System;
+			groupBox15.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.groupBox15.Location = new System.Drawing.Point(8, 128);
-			this.groupBox15.Name = "groupBox15";
-			this.groupBox15.Size = new System.Drawing.Size(120, 104);
-			this.groupBox15.TabIndex = 25;
-			this.groupBox15.TabStop = false;
-			this.groupBox15.Text = "Translation:";
+			groupBox15.Location = new System.Drawing.Point(8, 128);
+			groupBox15.Name = "groupBox15";
+			groupBox15.Size = new System.Drawing.Size(120, 104);
+			groupBox15.TabIndex = 25;
+			groupBox15.TabStop = false;
+			groupBox15.Text = "Translation:";
 			//
 			// tb_tn_tz
 			//
-			this.tb_tn_tz.Font = new System.Drawing.Font(
+			tb_tn_tz.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tb_tn_tz.Location = new System.Drawing.Point(40, 72);
-			this.tb_tn_tz.Name = "tb_tn_tz";
-			this.tb_tn_tz.Size = new System.Drawing.Size(72, 21);
-			this.tb_tn_tz.TabIndex = 32;
-			this.tb_tn_tz.Text = "0x00000000";
-			this.tb_tn_tz.TextChanged += new EventHandler(this.TNChangeSettings);
+			tb_tn_tz.Location = new System.Drawing.Point(40, 72);
+			tb_tn_tz.Name = "tb_tn_tz";
+			tb_tn_tz.Size = new System.Drawing.Size(72, 21);
+			tb_tn_tz.TabIndex = 32;
+			tb_tn_tz.Text = "0x00000000";
+			tb_tn_tz.TextChanged += new EventHandler(TNChangeSettings);
 			//
 			// label51
 			//
-			this.label51.AutoSize = true;
-			this.label51.Font = new System.Drawing.Font(
+			label51.AutoSize = true;
+			label51.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label51.Location = new System.Drawing.Point(16, 80);
-			this.label51.Name = "label51";
-			this.label51.Size = new System.Drawing.Size(17, 17);
-			this.label51.TabIndex = 31;
-			this.label51.Text = "Z:";
+			label51.Location = new System.Drawing.Point(16, 80);
+			label51.Name = "label51";
+			label51.Size = new System.Drawing.Size(17, 17);
+			label51.TabIndex = 31;
+			label51.Text = "Z:";
 			//
 			// tb_tn_ty
 			//
-			this.tb_tn_ty.Font = new System.Drawing.Font(
+			tb_tn_ty.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tb_tn_ty.Location = new System.Drawing.Point(40, 48);
-			this.tb_tn_ty.Name = "tb_tn_ty";
-			this.tb_tn_ty.Size = new System.Drawing.Size(72, 21);
-			this.tb_tn_ty.TabIndex = 30;
-			this.tb_tn_ty.Text = "0x00000000";
-			this.tb_tn_ty.TextChanged += new EventHandler(this.TNChangeSettings);
+			tb_tn_ty.Location = new System.Drawing.Point(40, 48);
+			tb_tn_ty.Name = "tb_tn_ty";
+			tb_tn_ty.Size = new System.Drawing.Size(72, 21);
+			tb_tn_ty.TabIndex = 30;
+			tb_tn_ty.Text = "0x00000000";
+			tb_tn_ty.TextChanged += new EventHandler(TNChangeSettings);
 			//
 			// label50
 			//
-			this.label50.AutoSize = true;
-			this.label50.Font = new System.Drawing.Font(
+			label50.AutoSize = true;
+			label50.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label50.Location = new System.Drawing.Point(16, 56);
-			this.label50.Name = "label50";
-			this.label50.Size = new System.Drawing.Size(16, 17);
-			this.label50.TabIndex = 29;
-			this.label50.Text = "Y:";
+			label50.Location = new System.Drawing.Point(16, 56);
+			label50.Name = "label50";
+			label50.Size = new System.Drawing.Size(16, 17);
+			label50.TabIndex = 29;
+			label50.Text = "Y:";
 			//
 			// tb_tn_tx
 			//
-			this.tb_tn_tx.Font = new System.Drawing.Font(
+			tb_tn_tx.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tb_tn_tx.Location = new System.Drawing.Point(40, 24);
-			this.tb_tn_tx.Name = "tb_tn_tx";
-			this.tb_tn_tx.Size = new System.Drawing.Size(72, 21);
-			this.tb_tn_tx.TabIndex = 28;
-			this.tb_tn_tx.Text = "0x00000000";
-			this.tb_tn_tx.TextChanged += new EventHandler(this.TNChangeSettings);
+			tb_tn_tx.Location = new System.Drawing.Point(40, 24);
+			tb_tn_tx.Name = "tb_tn_tx";
+			tb_tn_tx.Size = new System.Drawing.Size(72, 21);
+			tb_tn_tx.TabIndex = 28;
+			tb_tn_tx.Text = "0x00000000";
+			tb_tn_tx.TextChanged += new EventHandler(TNChangeSettings);
 			//
 			// label49
 			//
-			this.label49.AutoSize = true;
-			this.label49.Font = new System.Drawing.Font(
+			label49.AutoSize = true;
+			label49.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label49.Location = new System.Drawing.Point(16, 32);
-			this.label49.Name = "label49";
-			this.label49.Size = new System.Drawing.Size(17, 17);
-			this.label49.TabIndex = 27;
-			this.label49.Text = "X:";
+			label49.Location = new System.Drawing.Point(16, 32);
+			label49.Name = "label49";
+			label49.Size = new System.Drawing.Size(17, 17);
+			label49.TabIndex = 27;
+			label49.Text = "X:";
 			//
 			// groupBox16
 			//
-			this.groupBox16.Controls.Add(this.tb_tn_rw);
-			this.groupBox16.Controls.Add(this.label55);
-			this.groupBox16.Controls.Add(this.tb_tn_rz);
-			this.groupBox16.Controls.Add(this.label52);
-			this.groupBox16.Controls.Add(this.tb_tn_ry);
-			this.groupBox16.Controls.Add(this.label53);
-			this.groupBox16.Controls.Add(this.tb_tn_rx);
-			this.groupBox16.Controls.Add(this.label54);
-			this.groupBox16.FlatStyle = FlatStyle.System;
-			this.groupBox16.Font = new System.Drawing.Font(
+			groupBox16.Controls.Add(tb_tn_rw);
+			groupBox16.Controls.Add(label55);
+			groupBox16.Controls.Add(tb_tn_rz);
+			groupBox16.Controls.Add(label52);
+			groupBox16.Controls.Add(tb_tn_ry);
+			groupBox16.Controls.Add(label53);
+			groupBox16.Controls.Add(tb_tn_rx);
+			groupBox16.Controls.Add(label54);
+			groupBox16.FlatStyle = FlatStyle.System;
+			groupBox16.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.groupBox16.Location = new System.Drawing.Point(136, 104);
-			this.groupBox16.Name = "groupBox16";
-			this.groupBox16.Size = new System.Drawing.Size(120, 128);
-			this.groupBox16.TabIndex = 26;
-			this.groupBox16.TabStop = false;
-			this.groupBox16.Text = "Quaternion:";
+			groupBox16.Location = new System.Drawing.Point(136, 104);
+			groupBox16.Name = "groupBox16";
+			groupBox16.Size = new System.Drawing.Size(120, 128);
+			groupBox16.TabIndex = 26;
+			groupBox16.TabStop = false;
+			groupBox16.Text = "Quaternion:";
 			//
 			// tb_tn_rw
 			//
-			this.tb_tn_rw.Font = new System.Drawing.Font(
+			tb_tn_rw.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tb_tn_rw.Location = new System.Drawing.Point(40, 96);
-			this.tb_tn_rw.Name = "tb_tn_rw";
-			this.tb_tn_rw.Size = new System.Drawing.Size(72, 21);
-			this.tb_tn_rw.TabIndex = 40;
-			this.tb_tn_rw.Text = "0x00000000";
-			this.tb_tn_rw.TextChanged += new EventHandler(this.TNChangeSettings);
+			tb_tn_rw.Location = new System.Drawing.Point(40, 96);
+			tb_tn_rw.Name = "tb_tn_rw";
+			tb_tn_rw.Size = new System.Drawing.Size(72, 21);
+			tb_tn_rw.TabIndex = 40;
+			tb_tn_rw.Text = "0x00000000";
+			tb_tn_rw.TextChanged += new EventHandler(TNChangeSettings);
 			//
 			// label55
 			//
-			this.label55.AutoSize = true;
-			this.label55.Font = new System.Drawing.Font(
+			label55.AutoSize = true;
+			label55.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label55.Location = new System.Drawing.Point(16, 104);
-			this.label55.Name = "label55";
-			this.label55.Size = new System.Drawing.Size(21, 17);
-			this.label55.TabIndex = 39;
-			this.label55.Text = "W:";
+			label55.Location = new System.Drawing.Point(16, 104);
+			label55.Name = "label55";
+			label55.Size = new System.Drawing.Size(21, 17);
+			label55.TabIndex = 39;
+			label55.Text = "W:";
 			//
 			// tb_tn_rz
 			//
-			this.tb_tn_rz.Font = new System.Drawing.Font(
+			tb_tn_rz.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tb_tn_rz.Location = new System.Drawing.Point(40, 72);
-			this.tb_tn_rz.Name = "tb_tn_rz";
-			this.tb_tn_rz.Size = new System.Drawing.Size(72, 21);
-			this.tb_tn_rz.TabIndex = 38;
-			this.tb_tn_rz.Text = "0x00000000";
-			this.tb_tn_rz.TextChanged += new EventHandler(this.TNChangeSettings);
+			tb_tn_rz.Location = new System.Drawing.Point(40, 72);
+			tb_tn_rz.Name = "tb_tn_rz";
+			tb_tn_rz.Size = new System.Drawing.Size(72, 21);
+			tb_tn_rz.TabIndex = 38;
+			tb_tn_rz.Text = "0x00000000";
+			tb_tn_rz.TextChanged += new EventHandler(TNChangeSettings);
 			//
 			// label52
 			//
-			this.label52.AutoSize = true;
-			this.label52.Font = new System.Drawing.Font(
+			label52.AutoSize = true;
+			label52.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label52.Location = new System.Drawing.Point(16, 80);
-			this.label52.Name = "label52";
-			this.label52.Size = new System.Drawing.Size(17, 17);
-			this.label52.TabIndex = 37;
-			this.label52.Text = "Z:";
+			label52.Location = new System.Drawing.Point(16, 80);
+			label52.Name = "label52";
+			label52.Size = new System.Drawing.Size(17, 17);
+			label52.TabIndex = 37;
+			label52.Text = "Z:";
 			//
 			// tb_tn_ry
 			//
-			this.tb_tn_ry.Font = new System.Drawing.Font(
+			tb_tn_ry.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tb_tn_ry.Location = new System.Drawing.Point(40, 48);
-			this.tb_tn_ry.Name = "tb_tn_ry";
-			this.tb_tn_ry.Size = new System.Drawing.Size(72, 21);
-			this.tb_tn_ry.TabIndex = 36;
-			this.tb_tn_ry.Text = "0x00000000";
-			this.tb_tn_ry.TextChanged += new EventHandler(this.TNChangeSettings);
+			tb_tn_ry.Location = new System.Drawing.Point(40, 48);
+			tb_tn_ry.Name = "tb_tn_ry";
+			tb_tn_ry.Size = new System.Drawing.Size(72, 21);
+			tb_tn_ry.TabIndex = 36;
+			tb_tn_ry.Text = "0x00000000";
+			tb_tn_ry.TextChanged += new EventHandler(TNChangeSettings);
 			//
 			// label53
 			//
-			this.label53.AutoSize = true;
-			this.label53.Font = new System.Drawing.Font(
+			label53.AutoSize = true;
+			label53.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label53.Location = new System.Drawing.Point(16, 56);
-			this.label53.Name = "label53";
-			this.label53.Size = new System.Drawing.Size(16, 17);
-			this.label53.TabIndex = 35;
-			this.label53.Text = "Y:";
+			label53.Location = new System.Drawing.Point(16, 56);
+			label53.Name = "label53";
+			label53.Size = new System.Drawing.Size(16, 17);
+			label53.TabIndex = 35;
+			label53.Text = "Y:";
 			//
 			// tb_tn_rx
 			//
-			this.tb_tn_rx.Font = new System.Drawing.Font(
+			tb_tn_rx.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tb_tn_rx.Location = new System.Drawing.Point(40, 24);
-			this.tb_tn_rx.Name = "tb_tn_rx";
-			this.tb_tn_rx.Size = new System.Drawing.Size(72, 21);
-			this.tb_tn_rx.TabIndex = 34;
-			this.tb_tn_rx.Text = "0x00000000";
-			this.tb_tn_rx.TextChanged += new EventHandler(this.TNChangeSettings);
+			tb_tn_rx.Location = new System.Drawing.Point(40, 24);
+			tb_tn_rx.Name = "tb_tn_rx";
+			tb_tn_rx.Size = new System.Drawing.Size(72, 21);
+			tb_tn_rx.TabIndex = 34;
+			tb_tn_rx.Text = "0x00000000";
+			tb_tn_rx.TextChanged += new EventHandler(TNChangeSettings);
 			//
 			// label54
 			//
-			this.label54.AutoSize = true;
-			this.label54.Font = new System.Drawing.Font(
+			label54.AutoSize = true;
+			label54.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label54.Location = new System.Drawing.Point(16, 32);
-			this.label54.Name = "label54";
-			this.label54.Size = new System.Drawing.Size(17, 17);
-			this.label54.TabIndex = 33;
-			this.label54.Text = "X:";
+			label54.Location = new System.Drawing.Point(16, 32);
+			label54.Name = "label54";
+			label54.Size = new System.Drawing.Size(17, 17);
+			label54.TabIndex = 33;
+			label54.Text = "X:";
 			//
 			// groupBox12
 			//
-			this.groupBox12.Controls.Add(this.tb_tn_a);
-			this.groupBox12.Controls.Add(this.label30);
-			this.groupBox12.Controls.Add(this.tb_tn_az);
-			this.groupBox12.Controls.Add(this.label31);
-			this.groupBox12.Controls.Add(this.tb_tn_ay);
-			this.groupBox12.Controls.Add(this.label56);
-			this.groupBox12.Controls.Add(this.tb_tn_ax);
-			this.groupBox12.Controls.Add(this.label57);
-			this.groupBox12.FlatStyle = FlatStyle.System;
-			this.groupBox12.Font = new System.Drawing.Font(
+			groupBox12.Controls.Add(tb_tn_a);
+			groupBox12.Controls.Add(label30);
+			groupBox12.Controls.Add(tb_tn_az);
+			groupBox12.Controls.Add(label31);
+			groupBox12.Controls.Add(tb_tn_ay);
+			groupBox12.Controls.Add(label56);
+			groupBox12.Controls.Add(tb_tn_ax);
+			groupBox12.Controls.Add(label57);
+			groupBox12.FlatStyle = FlatStyle.System;
+			groupBox12.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.groupBox12.Location = new System.Drawing.Point(264, 104);
-			this.groupBox12.Name = "groupBox12";
-			this.groupBox12.Size = new System.Drawing.Size(112, 128);
-			this.groupBox12.TabIndex = 41;
-			this.groupBox12.TabStop = false;
-			this.groupBox12.Text = "Rotation:";
+			groupBox12.Location = new System.Drawing.Point(264, 104);
+			groupBox12.Name = "groupBox12";
+			groupBox12.Size = new System.Drawing.Size(112, 128);
+			groupBox12.TabIndex = 41;
+			groupBox12.TabStop = false;
+			groupBox12.Text = "Rotation:";
 			//
 			// tb_tn_a
 			//
-			this.tb_tn_a.Font = new System.Drawing.Font(
+			tb_tn_a.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tb_tn_a.Location = new System.Drawing.Point(64, 96);
-			this.tb_tn_a.Name = "tb_tn_a";
-			this.tb_tn_a.Size = new System.Drawing.Size(40, 21);
-			this.tb_tn_a.TabIndex = 40;
-			this.tb_tn_a.Text = "0";
-			this.tb_tn_a.TextChanged += new EventHandler(
-				this.TNChangedQuaternion
+			tb_tn_a.Location = new System.Drawing.Point(64, 96);
+			tb_tn_a.Name = "tb_tn_a";
+			tb_tn_a.Size = new System.Drawing.Size(40, 21);
+			tb_tn_a.TabIndex = 40;
+			tb_tn_a.Text = "0";
+			tb_tn_a.TextChanged += new EventHandler(
+				TNChangedQuaternion
 			);
 			//
 			// label30
 			//
-			this.label30.AutoSize = true;
-			this.label30.Font = new System.Drawing.Font(
+			label30.AutoSize = true;
+			label30.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label30.Location = new System.Drawing.Point(16, 104);
-			this.label30.Name = "label30";
-			this.label30.Size = new System.Drawing.Size(41, 17);
-			this.label30.TabIndex = 39;
-			this.label30.Text = "Angle:";
+			label30.Location = new System.Drawing.Point(16, 104);
+			label30.Name = "label30";
+			label30.Size = new System.Drawing.Size(41, 17);
+			label30.TabIndex = 39;
+			label30.Text = "Angle:";
 			//
 			// tb_tn_az
 			//
-			this.tb_tn_az.Font = new System.Drawing.Font(
+			tb_tn_az.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tb_tn_az.Location = new System.Drawing.Point(40, 72);
-			this.tb_tn_az.Name = "tb_tn_az";
-			this.tb_tn_az.Size = new System.Drawing.Size(64, 21);
-			this.tb_tn_az.TabIndex = 38;
-			this.tb_tn_az.Text = "0";
-			this.tb_tn_az.TextChanged += new EventHandler(
-				this.TNChangedQuaternion
+			tb_tn_az.Location = new System.Drawing.Point(40, 72);
+			tb_tn_az.Name = "tb_tn_az";
+			tb_tn_az.Size = new System.Drawing.Size(64, 21);
+			tb_tn_az.TabIndex = 38;
+			tb_tn_az.Text = "0";
+			tb_tn_az.TextChanged += new EventHandler(
+				TNChangedQuaternion
 			);
 			//
 			// label31
 			//
-			this.label31.AutoSize = true;
-			this.label31.Font = new System.Drawing.Font(
+			label31.AutoSize = true;
+			label31.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label31.Location = new System.Drawing.Point(16, 80);
-			this.label31.Name = "label31";
-			this.label31.Size = new System.Drawing.Size(17, 17);
-			this.label31.TabIndex = 37;
-			this.label31.Text = "Z:";
+			label31.Location = new System.Drawing.Point(16, 80);
+			label31.Name = "label31";
+			label31.Size = new System.Drawing.Size(17, 17);
+			label31.TabIndex = 37;
+			label31.Text = "Z:";
 			//
 			// tb_tn_ay
 			//
-			this.tb_tn_ay.Font = new System.Drawing.Font(
+			tb_tn_ay.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tb_tn_ay.Location = new System.Drawing.Point(40, 48);
-			this.tb_tn_ay.Name = "tb_tn_ay";
-			this.tb_tn_ay.Size = new System.Drawing.Size(64, 21);
-			this.tb_tn_ay.TabIndex = 36;
-			this.tb_tn_ay.Text = "0";
-			this.tb_tn_ay.TextChanged += new EventHandler(
-				this.TNChangedQuaternion
+			tb_tn_ay.Location = new System.Drawing.Point(40, 48);
+			tb_tn_ay.Name = "tb_tn_ay";
+			tb_tn_ay.Size = new System.Drawing.Size(64, 21);
+			tb_tn_ay.TabIndex = 36;
+			tb_tn_ay.Text = "0";
+			tb_tn_ay.TextChanged += new EventHandler(
+				TNChangedQuaternion
 			);
 			//
 			// label56
 			//
-			this.label56.AutoSize = true;
-			this.label56.Font = new System.Drawing.Font(
+			label56.AutoSize = true;
+			label56.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label56.Location = new System.Drawing.Point(16, 56);
-			this.label56.Name = "label56";
-			this.label56.Size = new System.Drawing.Size(16, 17);
-			this.label56.TabIndex = 35;
-			this.label56.Text = "Y:";
+			label56.Location = new System.Drawing.Point(16, 56);
+			label56.Name = "label56";
+			label56.Size = new System.Drawing.Size(16, 17);
+			label56.TabIndex = 35;
+			label56.Text = "Y:";
 			//
 			// tb_tn_ax
 			//
-			this.tb_tn_ax.Font = new System.Drawing.Font(
+			tb_tn_ax.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tb_tn_ax.Location = new System.Drawing.Point(40, 24);
-			this.tb_tn_ax.Name = "tb_tn_ax";
-			this.tb_tn_ax.Size = new System.Drawing.Size(64, 21);
-			this.tb_tn_ax.TabIndex = 34;
-			this.tb_tn_ax.Text = "0";
-			this.tb_tn_ax.TextChanged += new EventHandler(
-				this.TNChangedQuaternion
+			tb_tn_ax.Location = new System.Drawing.Point(40, 24);
+			tb_tn_ax.Name = "tb_tn_ax";
+			tb_tn_ax.Size = new System.Drawing.Size(64, 21);
+			tb_tn_ax.TabIndex = 34;
+			tb_tn_ax.Text = "0";
+			tb_tn_ax.TextChanged += new EventHandler(
+				TNChangedQuaternion
 			);
 			//
 			// label57
 			//
-			this.label57.AutoSize = true;
-			this.label57.Font = new System.Drawing.Font(
+			label57.AutoSize = true;
+			label57.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label57.Location = new System.Drawing.Point(16, 32);
-			this.label57.Name = "label57";
-			this.label57.Size = new System.Drawing.Size(17, 17);
-			this.label57.TabIndex = 33;
-			this.label57.Text = "X:";
+			label57.Location = new System.Drawing.Point(16, 32);
+			label57.Name = "label57";
+			label57.Size = new System.Drawing.Size(17, 17);
+			label57.TabIndex = 33;
+			label57.Text = "X:";
 			//
 			// groupBox18
 			//
-			this.groupBox18.Controls.Add(this.tb_tn_er);
-			this.groupBox18.Controls.Add(this.label60);
-			this.groupBox18.Controls.Add(this.tb_tn_ep);
-			this.groupBox18.Controls.Add(this.label61);
-			this.groupBox18.Controls.Add(this.tb_tn_ey);
-			this.groupBox18.Controls.Add(this.label62);
-			this.groupBox18.FlatStyle = FlatStyle.System;
-			this.groupBox18.Font = new System.Drawing.Font(
+			groupBox18.Controls.Add(tb_tn_er);
+			groupBox18.Controls.Add(label60);
+			groupBox18.Controls.Add(tb_tn_ep);
+			groupBox18.Controls.Add(label61);
+			groupBox18.Controls.Add(tb_tn_ey);
+			groupBox18.Controls.Add(label62);
+			groupBox18.FlatStyle = FlatStyle.System;
+			groupBox18.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.groupBox18.Location = new System.Drawing.Point(384, 128);
-			this.groupBox18.Name = "groupBox18";
-			this.groupBox18.Size = new System.Drawing.Size(112, 104);
-			this.groupBox18.TabIndex = 42;
-			this.groupBox18.TabStop = false;
-			this.groupBox18.Text = "Euler Rotation:";
+			groupBox18.Location = new System.Drawing.Point(384, 128);
+			groupBox18.Name = "groupBox18";
+			groupBox18.Size = new System.Drawing.Size(112, 104);
+			groupBox18.TabIndex = 42;
+			groupBox18.TabStop = false;
+			groupBox18.Text = "Euler Rotation:";
 			//
 			// tb_tn_er
 			//
-			this.tb_tn_er.Font = new System.Drawing.Font(
+			tb_tn_er.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tb_tn_er.Location = new System.Drawing.Point(40, 72);
-			this.tb_tn_er.Name = "tb_tn_er";
-			this.tb_tn_er.Size = new System.Drawing.Size(64, 21);
-			this.tb_tn_er.TabIndex = 38;
-			this.tb_tn_er.Text = "0";
-			this.tb_tn_er.TextChanged += new EventHandler(
-				this.TNChangedEulerQuaternion
+			tb_tn_er.Location = new System.Drawing.Point(40, 72);
+			tb_tn_er.Name = "tb_tn_er";
+			tb_tn_er.Size = new System.Drawing.Size(64, 21);
+			tb_tn_er.TabIndex = 38;
+			tb_tn_er.Text = "0";
+			tb_tn_er.TextChanged += new EventHandler(
+				TNChangedEulerQuaternion
 			);
 			//
 			// label60
 			//
-			this.label60.AutoSize = true;
-			this.label60.Font = new System.Drawing.Font(
+			label60.AutoSize = true;
+			label60.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label60.Location = new System.Drawing.Point(16, 80);
-			this.label60.Name = "label60";
-			this.label60.Size = new System.Drawing.Size(17, 17);
-			this.label60.TabIndex = 37;
-			this.label60.Text = "R:";
+			label60.Location = new System.Drawing.Point(16, 80);
+			label60.Name = "label60";
+			label60.Size = new System.Drawing.Size(17, 17);
+			label60.TabIndex = 37;
+			label60.Text = "R:";
 			//
 			// tb_tn_ep
 			//
-			this.tb_tn_ep.Font = new System.Drawing.Font(
+			tb_tn_ep.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tb_tn_ep.Location = new System.Drawing.Point(40, 48);
-			this.tb_tn_ep.Name = "tb_tn_ep";
-			this.tb_tn_ep.Size = new System.Drawing.Size(64, 21);
-			this.tb_tn_ep.TabIndex = 36;
-			this.tb_tn_ep.Text = "0";
-			this.tb_tn_ep.TextChanged += new EventHandler(
-				this.TNChangedEulerQuaternion
+			tb_tn_ep.Location = new System.Drawing.Point(40, 48);
+			tb_tn_ep.Name = "tb_tn_ep";
+			tb_tn_ep.Size = new System.Drawing.Size(64, 21);
+			tb_tn_ep.TabIndex = 36;
+			tb_tn_ep.Text = "0";
+			tb_tn_ep.TextChanged += new EventHandler(
+				TNChangedEulerQuaternion
 			);
 			//
 			// label61
 			//
-			this.label61.AutoSize = true;
-			this.label61.Font = new System.Drawing.Font(
+			label61.AutoSize = true;
+			label61.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label61.Location = new System.Drawing.Point(16, 56);
-			this.label61.Name = "label61";
-			this.label61.Size = new System.Drawing.Size(16, 17);
-			this.label61.TabIndex = 35;
-			this.label61.Text = "P:";
+			label61.Location = new System.Drawing.Point(16, 56);
+			label61.Name = "label61";
+			label61.Size = new System.Drawing.Size(16, 17);
+			label61.TabIndex = 35;
+			label61.Text = "P:";
 			//
 			// tb_tn_ey
 			//
-			this.tb_tn_ey.Font = new System.Drawing.Font(
+			tb_tn_ey.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.tb_tn_ey.Location = new System.Drawing.Point(40, 24);
-			this.tb_tn_ey.Name = "tb_tn_ey";
-			this.tb_tn_ey.Size = new System.Drawing.Size(64, 21);
-			this.tb_tn_ey.TabIndex = 34;
-			this.tb_tn_ey.Text = "0";
-			this.tb_tn_ey.TextChanged += new EventHandler(
-				this.TNChangedEulerQuaternion
+			tb_tn_ey.Location = new System.Drawing.Point(40, 24);
+			tb_tn_ey.Name = "tb_tn_ey";
+			tb_tn_ey.Size = new System.Drawing.Size(64, 21);
+			tb_tn_ey.TabIndex = 34;
+			tb_tn_ey.Text = "0";
+			tb_tn_ey.TextChanged += new EventHandler(
+				TNChangedEulerQuaternion
 			);
 			//
 			// label62
 			//
-			this.label62.AutoSize = true;
-			this.label62.Font = new System.Drawing.Font(
+			label62.AutoSize = true;
+			label62.Font = new System.Drawing.Font(
 				"Verdana",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((System.Byte)(0))
 			);
-			this.label62.Location = new System.Drawing.Point(16, 32);
-			this.label62.Name = "label62";
-			this.label62.Size = new System.Drawing.Size(16, 17);
-			this.label62.TabIndex = 33;
-			this.label62.Text = "Y:";
+			label62.Location = new System.Drawing.Point(16, 32);
+			label62.Name = "label62";
+			label62.Size = new System.Drawing.Size(16, 17);
+			label62.TabIndex = 33;
+			label62.Text = "Y:";
 			//
 			// fShapeRefNode
 			//
-			this.groupBox7.ResumeLayout(false);
-			this.groupBox6.ResumeLayout(false);
-			this.groupBox15.ResumeLayout(false);
-			this.groupBox16.ResumeLayout(false);
-			this.groupBox12.ResumeLayout(false);
-			this.groupBox18.ResumeLayout(false);
-			this.ResumeLayout(false);
+			groupBox7.ResumeLayout(false);
+			groupBox6.ResumeLayout(false);
+			groupBox15.ResumeLayout(false);
+			groupBox16.ResumeLayout(false);
+			groupBox12.ResumeLayout(false);
+			groupBox18.ResumeLayout(false);
+			ResumeLayout(false);
 		}
 		#endregion
 
 
 		private void TNChangeSettings(object sender, EventArgs e)
 		{
-			if (this.tb_tn_a.Tag != null)
+			if (tb_tn_a.Tag != null)
 			{
 				return;
 			}
@@ -1062,7 +1062,7 @@ namespace SimPe.Plugin.TabPage
 
 		private void TNChangedQuaternion(object sender, EventArgs e)
 		{
-			if (this.tb_tn_a.Tag != null)
+			if (tb_tn_a.Tag != null)
 			{
 				return;
 			}
@@ -1091,7 +1091,7 @@ namespace SimPe.Plugin.TabPage
 			catch { }
 			finally
 			{
-				this.tb_tn_a.Tag = null;
+				tb_tn_a.Tag = null;
 			}
 		}
 
@@ -1105,21 +1105,21 @@ namespace SimPe.Plugin.TabPage
 			//set Angles
 			try
 			{
-				this.tb_tn_a.Tag = true;
+				tb_tn_a.Tag = true;
 				if (quat)
 				{
-					this.tb_tn_rx.Text = q.X.ToString("N6");
-					this.tb_tn_ry.Text = q.Y.ToString("N6");
-					this.tb_tn_rz.Text = q.Z.ToString("N6");
-					this.tb_tn_rw.Text = q.W.ToString("N6");
+					tb_tn_rx.Text = q.X.ToString("N6");
+					tb_tn_ry.Text = q.Y.ToString("N6");
+					tb_tn_rz.Text = q.Z.ToString("N6");
+					tb_tn_rw.Text = q.W.ToString("N6");
 				}
 
 				if (axis)
 				{
-					this.tb_tn_ax.Text = q.Axis.X.ToString("N6");
-					this.tb_tn_ay.Text = q.Axis.Y.ToString("N6");
-					this.tb_tn_az.Text = q.Axis.Z.ToString("N6");
-					this.tb_tn_a.Text =
+					tb_tn_ax.Text = q.Axis.X.ToString("N6");
+					tb_tn_ay.Text = q.Axis.Y.ToString("N6");
+					tb_tn_az.Text = q.Axis.Z.ToString("N6");
+					tb_tn_a.Text =
 						Geometry.Quaternion.RadToDeg(q.Angle)
 						.ToString("N6");
 				}
@@ -1127,26 +1127,26 @@ namespace SimPe.Plugin.TabPage
 				if (euler)
 				{
 					Geometry.Vector3f ea = q.GetEulerAngles();
-					this.tb_tn_ey.Text =
+					tb_tn_ey.Text =
 						Geometry.Quaternion.RadToDeg(ea.Y)
 						.ToString("N6");
-					this.tb_tn_ep.Text =
+					tb_tn_ep.Text =
 						Geometry.Quaternion.RadToDeg(ea.X)
 						.ToString("N6");
-					this.tb_tn_er.Text =
+					tb_tn_er.Text =
 						Geometry.Quaternion.RadToDeg(ea.Z)
 						.ToString("N6");
 				}
 			}
 			finally
 			{
-				this.tb_tn_a.Tag = null;
+				tb_tn_a.Tag = null;
 			}
 		}
 
 		private void TNChangedEulerQuaternion(object sender, EventArgs e)
 		{
-			if (this.tb_tn_a.Tag != null)
+			if (tb_tn_a.Tag != null)
 			{
 				return;
 			}
@@ -1171,7 +1171,7 @@ namespace SimPe.Plugin.TabPage
 			catch { }
 			finally
 			{
-				this.tb_tn_a.Tag = null;
+				tb_tn_a.Tag = null;
 			}
 		}
 
@@ -1183,7 +1183,7 @@ namespace SimPe.Plugin.TabPage
 				return;
 			}
 
-			if (this.lb_tn.SelectedIndex < 0)
+			if (lb_tn.SelectedIndex < 0)
 			{
 				return;
 			}
@@ -1216,7 +1216,7 @@ namespace SimPe.Plugin.TabPage
 				return;
 			}
 
-			if (this.lb_tn.SelectedIndex < 0)
+			if (lb_tn.SelectedIndex < 0)
 			{
 				return;
 			}

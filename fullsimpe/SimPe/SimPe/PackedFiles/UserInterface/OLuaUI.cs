@@ -48,10 +48,10 @@ namespace SimPe.PackedFiles.UserInterface
 			// Required designer variable.
 			InitializeComponent();
 
-			this.button2.Enabled = Helper.QARelease;
+			button2.Enabled = Helper.QARelease;
 			if (Helper.WindowsRegistry.UseBigIcons)
 			{
-				this.tv.Font = new System.Drawing.Font("Tahoma", 12F);
+				tv.Font = new System.Drawing.Font("Tahoma", 12F);
 			}
 		}
 
@@ -77,18 +77,18 @@ namespace SimPe.PackedFiles.UserInterface
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.tv = new TreeView();
-			this.btSave = new Button();
-			this.btLoad = new Button();
-			this.label1 = new Label();
-			this.tbName = new TextBox();
-			this.button1 = new Button();
-			this.button2 = new Button();
-			this.SuspendLayout();
+			tv = new TreeView();
+			btSave = new Button();
+			btLoad = new Button();
+			label1 = new Label();
+			tbName = new TextBox();
+			button1 = new Button();
+			button2 = new Button();
+			SuspendLayout();
 			//
 			// tv
 			//
-			this.tv.Anchor = (
+			tv.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -100,15 +100,15 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.tv.BorderStyle = BorderStyle.None;
-			this.tv.Location = new System.Drawing.Point(8, 40);
-			this.tv.Name = "tv";
-			this.tv.Size = new System.Drawing.Size(552, 320);
-			this.tv.TabIndex = 0;
+			tv.BorderStyle = BorderStyle.None;
+			tv.Location = new System.Drawing.Point(8, 40);
+			tv.Name = "tv";
+			tv.Size = new System.Drawing.Size(552, 320);
+			tv.TabIndex = 0;
 			//
 			// btSave
 			//
-			this.btSave.Anchor = (
+			btSave.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -116,17 +116,17 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.btSave.FlatStyle = FlatStyle.System;
-			this.btSave.Location = new System.Drawing.Point(96, 368);
-			this.btSave.Name = "btSave";
-			this.btSave.Size = new System.Drawing.Size(75, 25);
-			this.btSave.TabIndex = 1;
-			this.btSave.Text = "Export...";
-			this.btSave.Click += new System.EventHandler(this.btSave_Click);
+			btSave.FlatStyle = FlatStyle.System;
+			btSave.Location = new System.Drawing.Point(96, 368);
+			btSave.Name = "btSave";
+			btSave.Size = new System.Drawing.Size(75, 25);
+			btSave.TabIndex = 1;
+			btSave.Text = "Export...";
+			btSave.Click += new System.EventHandler(btSave_Click);
 			//
 			// btLoad
 			//
-			this.btLoad.Anchor = (
+			btLoad.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -134,34 +134,34 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.btLoad.FlatStyle = FlatStyle.System;
-			this.btLoad.Location = new System.Drawing.Point(8, 368);
-			this.btLoad.Name = "btLoad";
-			this.btLoad.Size = new System.Drawing.Size(75, 25);
-			this.btLoad.TabIndex = 2;
-			this.btLoad.Text = "Import...";
-			this.btLoad.Click += new System.EventHandler(this.btLoad_Click);
+			btLoad.FlatStyle = FlatStyle.System;
+			btLoad.Location = new System.Drawing.Point(8, 368);
+			btLoad.Name = "btLoad";
+			btLoad.Size = new System.Drawing.Size(75, 25);
+			btLoad.TabIndex = 2;
+			btLoad.Text = "Import...";
+			btLoad.Click += new System.EventHandler(btLoad_Click);
 			//
 			// label1
 			//
-			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font(
+			label1.AutoSize = true;
+			label1.Font = new System.Drawing.Font(
 				"Tahoma",
 				9.75F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.label1.Location = new System.Drawing.Point(8, 11);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(48, 16);
-			this.label1.TabIndex = 3;
-			this.label1.Text = "Name:";
-			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			label1.Location = new System.Drawing.Point(8, 11);
+			label1.Name = "label1";
+			label1.Size = new System.Drawing.Size(48, 16);
+			label1.TabIndex = 3;
+			label1.Text = "Name:";
+			label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			//
 			// tbName
 			//
-			this.tbName.Anchor = (
+			tbName.Anchor = (
 				(AnchorStyles)(
 					(
 						(
@@ -171,15 +171,15 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.tbName.Location = new System.Drawing.Point(62, 8);
-			this.tbName.Name = "tbName";
-			this.tbName.Size = new System.Drawing.Size(498, 23);
-			this.tbName.TabIndex = 4;
-			this.tbName.TextChanged += new System.EventHandler(this.tbName_TextChanged);
+			tbName.Location = new System.Drawing.Point(62, 8);
+			tbName.Name = "tbName";
+			tbName.Size = new System.Drawing.Size(498, 23);
+			tbName.TabIndex = 4;
+			tbName.TextChanged += new System.EventHandler(tbName_TextChanged);
 			//
 			// button1
 			//
-			this.button1.Anchor = (
+			button1.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -187,17 +187,17 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.button1.FlatStyle = FlatStyle.System;
-			this.button1.Location = new System.Drawing.Point(485, 368);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(75, 25);
-			this.button1.TabIndex = 5;
-			this.button1.Text = "Commit";
-			this.button1.Click += new System.EventHandler(this.button1_Click);
+			button1.FlatStyle = FlatStyle.System;
+			button1.Location = new System.Drawing.Point(485, 368);
+			button1.Name = "button1";
+			button1.Size = new System.Drawing.Size(75, 25);
+			button1.TabIndex = 5;
+			button1.Text = "Commit";
+			button1.Click += new System.EventHandler(button1_Click);
 			//
 			// button2
 			//
-			this.button2.Anchor = (
+			button2.Anchor = (
 				(AnchorStyles)(
 					(
 						AnchorStyles.Bottom
@@ -205,34 +205,34 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 				)
 			);
-			this.button2.FlatStyle = FlatStyle.System;
-			this.button2.Location = new System.Drawing.Point(176, 368);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(120, 25);
-			this.button2.TabIndex = 6;
-			this.button2.Text = "Export to Source...";
-			this.button2.Click += new System.EventHandler(this.button2_Click);
+			button2.FlatStyle = FlatStyle.System;
+			button2.Location = new System.Drawing.Point(176, 368);
+			button2.Name = "button2";
+			button2.Size = new System.Drawing.Size(120, 25);
+			button2.TabIndex = 6;
+			button2.Text = "Export to Source...";
+			button2.Click += new System.EventHandler(button2_Click);
 			//
 			// ObjLua
 			//
-			this.Controls.Add(this.button2);
-			this.Controls.Add(this.button1);
-			this.Controls.Add(this.tbName);
-			this.Controls.Add(this.label1);
-			this.Controls.Add(this.btLoad);
-			this.Controls.Add(this.btSave);
-			this.Controls.Add(this.tv);
-			this.Font = new System.Drawing.Font(
+			Controls.Add(button2);
+			Controls.Add(button1);
+			Controls.Add(tbName);
+			Controls.Add(label1);
+			Controls.Add(btLoad);
+			Controls.Add(btSave);
+			Controls.Add(tv);
+			Font = new System.Drawing.Font(
 				"Tahoma",
 				9.75F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
 				((byte)(0))
 			);
-			this.Name = "ObjLua";
-			this.Size = new System.Drawing.Size(568, 400);
-			this.ResumeLayout(false);
-			this.PerformLayout();
+			Name = "ObjLua";
+			Size = new System.Drawing.Size(568, 400);
+			ResumeLayout(false);
+			PerformLayout();
 		}
 		#endregion
 
@@ -341,7 +341,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		void System.IDisposable.Dispose()
 		{
-			this.Dispose(true);
+			Dispose(true);
 		}
 
 		#endregion

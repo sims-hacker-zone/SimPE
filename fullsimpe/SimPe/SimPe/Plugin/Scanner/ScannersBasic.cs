@@ -240,18 +240,18 @@ namespace SimPe.Plugin.Scanner
 
 		protected AbstractScanner()
 		{
-			byte[] b = Helper.ToBytes(this.UniqueName);
-			this.Uid = BitConverter.ToUInt32(
+			byte[] b = Helper.ToBytes(UniqueName);
+			Uid = BitConverter.ToUInt32(
 				Hashes.Crc32.ComputeHash(b, 0, b.Length),
 				0
 			);
-			this.StartColum = 0;
+			StartColum = 0;
 		}
 
 		public void InitScan(System.Windows.Forms.ListView lv)
 		{
-			this.ListView = lv;
-			this.StartColum = lv.Columns.Count;
+			ListView = lv;
+			StartColum = lv.Columns.Count;
 			DoInitScan();
 		}
 
@@ -434,7 +434,7 @@ namespace SimPe.Plugin.Scanner
 			System.Windows.Forms.ListViewItem lvi
 		)
 		{
-			SetSubItem(lvi, this.StartColum, si.PackageCacheItem.Name);
+			SetSubItem(lvi, StartColum, si.PackageCacheItem.Name);
 		}
 
 		public void FinishScan()
@@ -863,9 +863,9 @@ namespace SimPe.Plugin.Scanner
 				text = "yes";
 			}
 
-			SetSubItem(lvi, this.StartColum, guids);
-			SetSubItem(lvi, this.StartColum + 1, text, ps);
-			SetSubItem(lvi, this.StartColum + 2, ff);
+			SetSubItem(lvi, StartColum, guids);
+			SetSubItem(lvi, StartColum + 1, text, ps);
+			SetSubItem(lvi, StartColum + 2, ff);
 		}
 
 		public void FinishScan()
@@ -980,7 +980,7 @@ namespace SimPe.Plugin.Scanner
 				text = "no";
 			}
 
-			SetSubItem(lvi, this.StartColum, text, ps);
+			SetSubItem(lvi, StartColum, text, ps);
 		}
 
 		public void FinishScan()
@@ -1062,8 +1062,8 @@ namespace SimPe.Plugin.Scanner
 		{
 			uint fct = ps.Data[1];
 			uint vct = ps.Data[0];
-			SetSubItem(lvi, this.StartColum, vct.ToString(), ps);
-			SetSubItem(lvi, this.StartColum + 1, fct.ToString(), ps);
+			SetSubItem(lvi, StartColum, vct.ToString(), ps);
+			SetSubItem(lvi, StartColum + 1, fct.ToString(), ps);
 		}
 
 		public void FinishScan()

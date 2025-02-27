@@ -122,7 +122,7 @@ namespace SimPe.Plugin.Scanner
 			ListViewItem lvi
 		)
 		{
-			SetSubItem(lvi, this.StartColum + 2, "");
+			SetSubItem(lvi, StartColum + 2, "");
 
 			System.Drawing.Color cl = lvi.ForeColor;
 			if (ps.State == TriState.True)
@@ -157,7 +157,7 @@ namespace SimPe.Plugin.Scanner
 					cl = System.Drawing.Color.Red;
 				}
 
-				SetSubItem(lvi, this.StartColum, age, cl);
+				SetSubItem(lvi, StartColum, age, cl);
 
 				string sex = "";
 				Data.Sex[] sexs = (Data.Sex[])Enum.GetValues(typeof(Data.Sex));
@@ -182,7 +182,7 @@ namespace SimPe.Plugin.Scanner
 					cl = lvi.ForeColor;
 				}
 
-				SetSubItem(lvi, this.StartColum + 2, sex, cl);
+				SetSubItem(lvi, StartColum + 2, sex, cl);
 
 				if (si.PackageCacheItem.Type != PackageType.Skin)
 				{
@@ -210,7 +210,7 @@ namespace SimPe.Plugin.Scanner
 						cl = lvi.ForeColor;
 					}
 
-					SetSubItem(lvi, this.StartColum + 1, category, cl);
+					SetSubItem(lvi, StartColum + 1, category, cl);
 				}
 			}
 		}
@@ -228,7 +228,7 @@ namespace SimPe.Plugin.Scanner
 			selection = items;
 			if (!active)
 			{
-				this.OperationControl.Enabled = false;
+				OperationControl.Enabled = false;
 				return;
 			}
 
@@ -256,7 +256,7 @@ namespace SimPe.Plugin.Scanner
 			foreach (ScannerItem si in items)
 			{
 				PackageState ps = si.PackageCacheItem.FindState(
-					this.Uid,
+					Uid,
 					true
 				);
 				for (int ct = 0; ct < ps.Data.Length - 2; ct += 3)
@@ -371,7 +371,7 @@ namespace SimPe.Plugin.Scanner
 				}
 			}
 
-			this.OperationControl.Enabled = en;
+			OperationControl.Enabled = en;
 		}
 
 		protected override Control CreateOperationControl()
@@ -440,7 +440,7 @@ namespace SimPe.Plugin.Scanner
 
 						//make sure, the file is rescanned on the next Cache Update
 						PackageState ps = si.PackageCacheItem.FindState(
-							this.Uid,
+							Uid,
 							true
 						);
 						ps.State = TriState.Null;
@@ -510,9 +510,9 @@ namespace SimPe.Plugin.Scanner
 						si.Package.Save();
 					}
 				} //foreach
-				if (chg && this.CallbackFinish != null)
+				if (chg && CallbackFinish != null)
 				{
-					this.CallbackFinish(false, false);
+					CallbackFinish(false, false);
 				}
 			}
 			catch (Exception ex)

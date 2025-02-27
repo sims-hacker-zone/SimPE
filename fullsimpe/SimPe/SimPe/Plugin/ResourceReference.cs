@@ -22,11 +22,11 @@ namespace SimPe.Plugin
 
 		public ResourceReference(IPackedFileDescriptor file)
 		{
-			this.Type = file.Type;
-			this.Group = file.Group;
-			this.Instance = file.Instance;
-			this.SubType = file.SubType;
-			this.FileDescriptor = file;
+			Type = file.Type;
+			Group = file.Group;
+			Instance = file.Instance;
+			SubType = file.SubType;
+			FileDescriptor = file;
 		}
 
 		public override bool Equals(object obj)
@@ -34,7 +34,7 @@ namespace SimPe.Plugin
 			if (obj is ResourceReference)
 			{
 				ResourceReference sr = (ResourceReference)obj;
-				return this.GetHashCode() == sr.GetHashCode();
+				return GetHashCode() == sr.GetHashCode();
 			}
 			return false;
 		}
@@ -43,7 +43,7 @@ namespace SimPe.Plugin
 		{
 			return BitConverter.ToInt32(
 				BitConverter.GetBytes(
-					this.Type ^ this.Group ^ this.SubType ^ this.Instance
+					Type ^ Group ^ SubType ^ Instance
 				),
 				0
 			);
@@ -53,10 +53,10 @@ namespace SimPe.Plugin
 		{
 			return String.Format(
 				"{0:X8}-{1:X8}-{2:X8}-{3:X8}",
-				this.Type,
-				this.Group,
-				this.SubType,
-				this.Instance
+				Type,
+				Group,
+				SubType,
+				Instance
 			);
 		}
 

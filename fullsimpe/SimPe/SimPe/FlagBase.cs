@@ -33,15 +33,15 @@ namespace SimPe
 	{
 		public FlagBase(ushort flags)
 		{
-			this.Value = flags;
+			Value = flags;
 		}
 
 		public FlagBase(object flags)
 		{
-			this.Value = 0;
+			Value = 0;
 			try
 			{
-				this.Value = Convert.ToUInt16(flags);
+				Value = Convert.ToUInt16(flags);
 			}
 			catch { }
 		}

@@ -39,32 +39,32 @@ namespace SimPe.Plugin.Downloads
 				new Ambertation.SevenZip.IO.CommandlineArchive("");
 			foreach (string ext in a.SupportedForUnpack)
 			{
-				this.AddFileHandler(ext, typeof(SevenZipHandler));
+				AddFileHandler(ext, typeof(SevenZipHandler));
 			}
 
-			this.AddTypeHandler(Cache.PackageType.Lot, typeof(LotTypeHandler));
-			this.AddTypeHandler(
+			AddTypeHandler(Cache.PackageType.Lot, typeof(LotTypeHandler));
+			AddTypeHandler(
 				Cache.PackageType.Wallpaper,
 				typeof(WallpaperTypeHandler)
 			);
-			this.AddTypeHandler(
+			AddTypeHandler(
 				Cache.PackageType.Floor,
 				typeof(WallpaperTypeHandler)
 			);
-			this.AddTypeHandler(
+			AddTypeHandler(
 				Cache.PackageType.Roof,
 				typeof(WallpaperTypeHandler)
 			);
-			this.AddTypeHandler(
+			AddTypeHandler(
 				Cache.PackageType.Terrain,
 				typeof(WallpaperTypeHandler)
 			);
-			this.AddTypeHandler(Cache.PackageType.Sim, typeof(SimTypeHandler));
-			this.AddTypeHandler(
+			AddTypeHandler(Cache.PackageType.Sim, typeof(SimTypeHandler));
+			AddTypeHandler(
 				Cache.PackageType.Neighbourhood,
 				typeof(NeighborhoodTypeHandler)
 			);
-			this.AddTypeHandler(
+			AddTypeHandler(
 				Cache.PackageType.Recolour,
 				typeof(RecolorTypeHandler)
 			);

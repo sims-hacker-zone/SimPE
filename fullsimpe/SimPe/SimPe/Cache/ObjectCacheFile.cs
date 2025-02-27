@@ -44,7 +44,7 @@ namespace SimPe.Cache
 		/// <param name="filename">name of the package File where the Object was in</param>
 		public void AddItem(ObjectCacheItem oci, string filename)
 		{
-			CacheContainer mycc = this.UseConatiner(ContainerType.Object, filename);
+			CacheContainer mycc = UseConatiner(ContainerType.Object, filename);
 			mycc.Items.Add(oci);
 		}
 

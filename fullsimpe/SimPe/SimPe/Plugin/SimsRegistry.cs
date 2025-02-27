@@ -15,34 +15,34 @@ namespace SimPe.Plugin
 			this.form = form;
 			xrk = Helper.WindowsRegistry.PluginRegistryKey;
 
-			form.ckbPlayable.Checked = this.ShowPlayable;
+			form.ckbPlayable.Checked = ShowPlayable;
 			form.ckbPlayable.CheckedChanged += new EventHandler(
 				ckbPlayable_CheckedChanged
 			);
 
-			form.cbTownie.Checked = this.ShowTownies;
+			form.cbTownie.Checked = ShowTownies;
 			form.cbTownie.CheckedChanged += new EventHandler(cbTownie_CheckedChanged);
 
-			form.cbNpc.Checked = this.ShowNPCs;
+			form.cbNpc.Checked = ShowNPCs;
 			form.cbNpc.CheckedChanged += new EventHandler(cbNpc_CheckedChanged);
 
-			form.ckbUnEditable.Checked = this.ShowUnEditable;
+			form.ckbUnEditable.Checked = ShowUnEditable;
 			form.ckbUnEditable.CheckedChanged += new EventHandler(
 				ckbUnEditable_CheckedChanged
 			);
 
-			form.cbdetail.Checked = this.ShowDetails;
+			form.cbdetail.Checked = ShowDetails;
 			form.cbdetail.CheckedChanged += new EventHandler(cbdetail_CheckedChanged);
 
-			form.cbgals.Checked = this.JustGals;
+			form.cbgals.Checked = JustGals;
 			form.cbgals.CheckedChanged += new EventHandler(cbgals_CheckedChanged);
 			form.cbmens.Enabled = !form.cbgals.Checked;
 
-			form.cbadults.Checked = this.AdultsOnly;
+			form.cbadults.Checked = AdultsOnly;
 			form.cbadults.CheckedChanged += new EventHandler(cbadults_CheckedChanged);
 
-			form.sorter.CurrentColumn = this.SortedColumn;
-			form.sorter.Sorting = this.SortOrder;
+			form.sorter.CurrentColumn = SortedColumn;
+			form.sorter.Sorting = SortOrder;
 			form.sorter.Changed += new EventHandler(sorter_Changed);
 		}
 
@@ -201,50 +201,50 @@ namespace SimPe.Plugin
 		private void ckbPlayable_CheckedChanged(object sender, EventArgs e)
 		{
 			System.Windows.Forms.CheckBox cb = sender as System.Windows.Forms.CheckBox;
-			this.ShowPlayable = cb.Checked;
+			ShowPlayable = cb.Checked;
 		}
 
 		private void cbTownie_CheckedChanged(object sender, EventArgs e)
 		{
 			System.Windows.Forms.CheckBox cb = sender as System.Windows.Forms.CheckBox;
-			this.ShowTownies = cb.Checked;
+			ShowTownies = cb.Checked;
 		}
 
 		private void cbNpc_CheckedChanged(object sender, EventArgs e)
 		{
 			System.Windows.Forms.CheckBox cb = sender as System.Windows.Forms.CheckBox;
-			this.ShowNPCs = cb.Checked;
+			ShowNPCs = cb.Checked;
 		}
 
 		private void ckbUnEditable_CheckedChanged(object sender, EventArgs e)
 		{
 			System.Windows.Forms.CheckBox cb = sender as System.Windows.Forms.CheckBox;
-			this.ShowUnEditable = cb.Checked;
+			ShowUnEditable = cb.Checked;
 		}
 
 		private void cbdetail_CheckedChanged(object sender, EventArgs e)
 		{
 			System.Windows.Forms.CheckBox cb = sender as System.Windows.Forms.CheckBox;
-			this.ShowDetails = cb.Checked;
+			ShowDetails = cb.Checked;
 		}
 
 		private void cbgals_CheckedChanged(object sender, EventArgs e)
 		{
 			System.Windows.Forms.CheckBox cb = sender as System.Windows.Forms.CheckBox;
-			this.JustGals = cb.Checked;
+			JustGals = cb.Checked;
 		}
 
 		private void cbadults_CheckedChanged(object sender, EventArgs e)
 		{
 			System.Windows.Forms.CheckBox cb = sender as System.Windows.Forms.CheckBox;
-			this.AdultsOnly = cb.Checked;
+			AdultsOnly = cb.Checked;
 		}
 
 		private void sorter_Changed(object sender, EventArgs e)
 		{
 			ColumnSorter cs = sender as ColumnSorter;
-			this.SortedColumn = cs.CurrentColumn;
-			this.SortOrder = cs.Sorting;
+			SortedColumn = cs.CurrentColumn;
+			SortOrder = cs.Sorting;
 		}
 	}
 }

@@ -512,7 +512,7 @@ namespace SimPe.Providers
 				LoadPackage();
 				if (motives == null)
 				{
-					this.LoadMotives();
+					LoadMotives();
 				}
 
 				return motives;
@@ -529,7 +529,7 @@ namespace SimPe.Providers
 				LoadPackage();
 				if (names == null)
 				{
-					this.LoadOpcodes();
+					LoadOpcodes();
 				}
 
 				return names;

@@ -34,10 +34,10 @@ namespace SimPe.Data
 			: base(val, name)
 		{
 			this.shortname = shortname;
-			this.extension = null;
+			extension = null;
 			Known = true;
-			this.containsfilename = containsflname;
-			this.IgnoreDuringCacheBuild = false;
+			containsfilename = containsflname;
+			IgnoreDuringCacheBuild = false;
 		}
 
 		/// <summary>
@@ -81,9 +81,9 @@ namespace SimPe.Data
 		{
 			this.shortname = shortname;
 			this.extension = extension;
-			this.Known = known;
-			this.containsfilename = containsflname;
-			this.IgnoreDuringCacheBuild = nodecompforcache;
+			Known = known;
+			containsfilename = containsflname;
+			IgnoreDuringCacheBuild = nodecompforcache;
 		}
 
 		/// <summary>
@@ -105,10 +105,10 @@ namespace SimPe.Data
 			: base(val, name)
 		{
 			this.shortname = shortname;
-			this.extension = "";
+			extension = "";
 			Known = known;
-			this.containsfilename = containsflname;
-			this.IgnoreDuringCacheBuild = nodecompforcache;
+			containsfilename = containsflname;
+			IgnoreDuringCacheBuild = nodecompforcache;
 		}
 
 		/*

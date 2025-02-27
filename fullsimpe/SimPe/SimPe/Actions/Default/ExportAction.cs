@@ -50,7 +50,7 @@ namespace SimPe.Actions.Default
 						ExtensionType.AllFiles,
 					}
 				);
-				sfd.Title = Localization.GetString(this.ToString());
+				sfd.Title = Localization.GetString(ToString());
 				if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
 				{
 					return sfd.FileName;

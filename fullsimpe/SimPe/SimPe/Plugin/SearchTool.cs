@@ -89,7 +89,7 @@ namespace SimPe.Plugin
 					Localization.GetString(
 						"This is not an appropriate context in which to use this tool"
 					),
-					this.ToString()
+					ToString()
 				);
 				return new ToolResult(false, false);
 			}
@@ -119,7 +119,7 @@ namespace SimPe.Plugin
 		#endregion
 		#region IToolExt Member
 		public override System.Drawing.Image Icon => System.Drawing.Image.FromStream(
-					this.GetType()
+					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.search.png")
 				);
 		#endregion

@@ -49,7 +49,7 @@ namespace SimPe.PackedFiles.UserInterface
 			// TODO: Add any initialization after the InitializeComponent call
 			TextBox[] tb = { Min, Delta, Type };
 			alHex16 = new ArrayList(tb);
-			this.Enabled = false;
+			Enabled = false;
 		}
 
 		/// <summary>
@@ -81,21 +81,21 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			set
 			{
-				if (this.item != value)
+				if (item != value)
 				{
 					if (item != null && item.Wrapper != null)
 					{
 						item.Wrapper.WrapperChanged -= new EventHandler(
-							this.WrapperChanged
+							WrapperChanged
 						);
 					}
 
-					this.item = value;
+					item = value;
 					setText();
 					if (item != null && item.Wrapper != null)
 					{
 						item.Wrapper.WrapperChanged += new EventHandler(
-							this.WrapperChanged
+							WrapperChanged
 						);
 					}
 				}
@@ -120,7 +120,7 @@ namespace SimPe.PackedFiles.UserInterface
 			Delta.Text = item == null ? "" : Helper.HexString(item.Delta);
 			Type.Text = item == null ? "" : Helper.HexString(item.Type);
 			internalchg = prev;
-			this.Enabled = (item != null);
+			Enabled = (item != null);
 		}
 
 		public void Clear()
@@ -164,50 +164,50 @@ namespace SimPe.PackedFiles.UserInterface
 				new System.ComponentModel.ComponentResourceManager(
 					typeof(TtabSingleMotiveUI)
 				);
-			this.Min = new TextBox();
-			this.Delta = new TextBox();
-			this.Type = new TextBox();
-			this.SuspendLayout();
+			Min = new TextBox();
+			Delta = new TextBox();
+			Type = new TextBox();
+			SuspendLayout();
 			//
 			// Min
 			//
-			resources.ApplyResources(this.Min, "Min");
-			this.Min.Name = "Min";
-			this.Min.Validated += new EventHandler(this.hex16_Validated);
-			this.Min.Validating += new System.ComponentModel.CancelEventHandler(
-				this.hex16_Validating
+			resources.ApplyResources(Min, "Min");
+			Min.Name = "Min";
+			Min.Validated += new EventHandler(hex16_Validated);
+			Min.Validating += new System.ComponentModel.CancelEventHandler(
+				hex16_Validating
 			);
-			this.Min.TextChanged += new EventHandler(this.hex16_TextChanged);
+			Min.TextChanged += new EventHandler(hex16_TextChanged);
 			//
 			// Delta
 			//
-			resources.ApplyResources(this.Delta, "Delta");
-			this.Delta.Name = "Delta";
-			this.Delta.Validated += new EventHandler(this.hex16_Validated);
-			this.Delta.Validating += new System.ComponentModel.CancelEventHandler(
-				this.hex16_Validating
+			resources.ApplyResources(Delta, "Delta");
+			Delta.Name = "Delta";
+			Delta.Validated += new EventHandler(hex16_Validated);
+			Delta.Validating += new System.ComponentModel.CancelEventHandler(
+				hex16_Validating
 			);
-			this.Delta.TextChanged += new EventHandler(this.hex16_TextChanged);
+			Delta.TextChanged += new EventHandler(hex16_TextChanged);
 			//
 			// Type
 			//
-			resources.ApplyResources(this.Type, "Type");
-			this.Type.Name = "Type";
-			this.Type.Validated += new EventHandler(this.hex16_Validated);
-			this.Type.Validating += new System.ComponentModel.CancelEventHandler(
-				this.hex16_Validating
+			resources.ApplyResources(Type, "Type");
+			Type.Name = "Type";
+			Type.Validated += new EventHandler(hex16_Validated);
+			Type.Validating += new System.ComponentModel.CancelEventHandler(
+				hex16_Validating
 			);
-			this.Type.TextChanged += new EventHandler(this.hex16_TextChanged);
+			Type.TextChanged += new EventHandler(hex16_TextChanged);
 			//
 			// TtabSingleMotiveUI
 			//
-			this.Controls.Add(this.Min);
-			this.Controls.Add(this.Delta);
-			this.Controls.Add(this.Type);
-			this.Name = "TtabSingleMotiveUI";
+			Controls.Add(Min);
+			Controls.Add(Delta);
+			Controls.Add(Type);
+			Name = "TtabSingleMotiveUI";
 			resources.ApplyResources(this, "$this");
-			this.ResumeLayout(false);
-			this.PerformLayout();
+			ResumeLayout(false);
+			PerformLayout();
 		}
 		#endregion
 
