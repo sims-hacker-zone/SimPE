@@ -281,8 +281,7 @@ namespace pjse
 
 		public bool TryGetValue(uint key, out string value)
 		{
-			IndexItem ii;
-			if (!guidIndex.TryGetValue(key, out ii))
+			if (!guidIndex.TryGetValue(key, out IndexItem ii))
 			{
 				value = null;
 				return false;

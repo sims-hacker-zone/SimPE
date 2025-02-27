@@ -319,8 +319,7 @@ namespace SimPe.Plugin
 				try
 				{
 					Packages.File pk = Packages.File.LoadFromFile(name);
-					NeighborhoodType t;
-					name = LoadLabel(pk, out t);
+					name = LoadLabel(pk, out NeighborhoodType t);
 				}
 				catch (Exception) { }
 			}
@@ -568,8 +567,7 @@ namespace SimPe.Plugin
 				foreach (string file in files)
 				{
 					Packages.File pk = Packages.File.LoadFromFile(file);
-					NeighborhoodType type;
-					string name = LoadLabel(pk, out type);
+					string name = LoadLabel(pk, out NeighborhoodType type);
 					NgbhType nt = new NgbhType(file, name, type);
 
 					cbtypes.Items.Add(nt);

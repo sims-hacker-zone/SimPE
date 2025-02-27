@@ -1350,15 +1350,12 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 			else
 			{
-				Interfaces.IAlias a;
-				Interfaces.Files.IPackedFileDescriptor pfd;
-				uint localgroup;
 				ObjectWorkshopHelper.PrepareForClone(
 					this.package,
 					lastselected,
-					out a,
-					out localgroup,
-					out pfd
+					out Interfaces.IAlias a,
+					out uint localgroup,
+					out Interfaces.Files.IPackedFileDescriptor pfd
 				);
 
 				ObjectWorkshopSettings settings;

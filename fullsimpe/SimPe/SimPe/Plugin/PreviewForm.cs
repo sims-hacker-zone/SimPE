@@ -105,8 +105,7 @@ namespace SimPe.Plugin
 			Interfaces.Files.IPackageFile package
 		)
 		{
-			Interfaces.Scenegraph.IScenegraphFileIndex fii;
-			Ambertation.Scenes.Scene scn = BuildScene(out fii, mmat, package);
+			Ambertation.Scenes.Scene scn = BuildScene(out Interfaces.Scenegraph.IScenegraphFileIndex fii, mmat, package);
 			fii.Clear();
 			return scn;
 		}
@@ -117,8 +116,7 @@ namespace SimPe.Plugin
 			Interfaces.Files.IPackageFile package
 		)
 		{
-			Interfaces.Files.IPackageFile npkg;
-			Ambertation.Scenes.Scene scn = BuildScene(out fii, mmat, package, out npkg);
+			Ambertation.Scenes.Scene scn = BuildScene(out fii, mmat, package, out Interfaces.Files.IPackageFile npkg);
 
 			if (npkg != null)
 			{
@@ -139,8 +137,7 @@ namespace SimPe.Plugin
 			Interfaces.Files.IPackageFile package
 		)
 		{
-			Interfaces.Files.IPackageFile npkg;
-			Ambertation.Scenes.Scene scn = BuildScene(fii, mmat, package, out npkg);
+			Ambertation.Scenes.Scene scn = BuildScene(fii, mmat, package, out Interfaces.Files.IPackageFile npkg);
 
 			if (npkg != null)
 			{
@@ -302,8 +299,7 @@ namespace SimPe.Plugin
 			try
 			{
 				PreviewForm f = new PreviewForm();
-				Interfaces.Scenegraph.IScenegraphFileIndex fii;
-				f.scene = BuildScene(out fii, mmat, package);
+				f.scene = BuildScene(out Interfaces.Scenegraph.IScenegraphFileIndex fii, mmat, package);
 				fii.Clear();
 				if (f.scene == null)
 				{

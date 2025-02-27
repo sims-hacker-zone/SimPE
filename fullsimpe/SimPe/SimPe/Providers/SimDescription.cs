@@ -174,8 +174,7 @@ namespace SimPe.Providers
 
 		public ArrayList GetHouseholdNames()
 		{
-			string fc;
-			return GetHouseholdNames(out fc);
+			return GetHouseholdNames(out string fc);
 		}
 
 		public ArrayList GetHouseholdNames(out string firstcustum)

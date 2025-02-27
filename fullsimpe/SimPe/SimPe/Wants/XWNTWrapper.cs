@@ -640,8 +640,7 @@ namespace SimPe.Wants
 
 		public static string StypeForKey(string key)
 		{
-			string stype;
-			if (KeyType.TryGetValue(key, out stype))
+			if (KeyType.TryGetValue(key, out string stype))
 			{
 				return stype;
 			}

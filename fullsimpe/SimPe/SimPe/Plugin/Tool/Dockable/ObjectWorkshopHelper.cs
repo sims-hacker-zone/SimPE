@@ -208,16 +208,12 @@ namespace SimPe.Plugin.Tool.Dockable
 		{
 			Packages.GeneratableFile package =
 				Packages.File.CreateNew();
-			Interfaces.IAlias a;
-			Interfaces.Files.IPackedFileDescriptor pfd;
-			uint localgroup;
-			OWCloneSettings cs;
 			PrepareForClone(
 				package,
-				out a,
-				out localgroup,
-				out pfd,
-				out cs
+				out Interfaces.IAlias a,
+				out uint localgroup,
+				out Interfaces.Files.IPackedFileDescriptor pfd,
+				out OWCloneSettings cs
 			);
 
 			BaseClone(gid, package, false);
@@ -241,16 +237,12 @@ namespace SimPe.Plugin.Tool.Dockable
 		{
 			Packages.GeneratableFile package =
 				Packages.File.CreateNew();
-			Interfaces.IAlias a;
-			Interfaces.Files.IPackedFileDescriptor pfd;
-			uint localgroup;
-			OWCloneSettings cs;
 			PrepareForClone(
 				package,
-				out a,
-				out localgroup,
-				out pfd,
-				out cs
+				out Interfaces.IAlias a,
+				out uint localgroup,
+				out Interfaces.Files.IPackedFileDescriptor pfd,
+				out OWCloneSettings cs
 			);
 			Interfaces.Scenegraph.IScenegraphFileIndex fii =
 				FileTableBase.FileIndex.AddNewChild();
@@ -306,16 +298,12 @@ namespace SimPe.Plugin.Tool.Dockable
 		{
 			Packages.GeneratableFile package =
 				Packages.File.CreateNew();
-			Interfaces.IAlias a;
-			Interfaces.Files.IPackedFileDescriptor pfd;
-			uint localgroup;
-			OWCloneSettings cs;
 			PrepareForClone(
 				package,
-				out a,
-				out localgroup,
-				out pfd,
-				out cs
+				out Interfaces.IAlias a,
+				out uint localgroup,
+				out Interfaces.Files.IPackedFileDescriptor pfd,
+				out OWCloneSettings cs
 			);
 
 			PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str

@@ -126,12 +126,11 @@ namespace SimPe.PackedFiles.Wrapper
 				return;
 			}
 
-			string chouse;
 			List<string> names = new List<string>(
 				(string[])
 					FileTableBase
 						.ProviderRegistry.SimDescriptionProvider.GetHouseholdNames(
-							out chouse
+							out string chouse
 						)
 						.ToArray(typeof(String))
 			);

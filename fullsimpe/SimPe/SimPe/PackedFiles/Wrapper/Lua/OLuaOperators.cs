@@ -1103,8 +1103,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 			System.IO.StreamWriter sw = new System.IO.StreamWriter(
 				new System.IO.MemoryStream()
 			);
-			string paramlist;
-			Context scx = cx.CreateSubContext(fkt, out paramlist);
+			Context scx = cx.CreateSubContext(fkt, out string paramlist);
 			sw.WriteLine();
 			sw.WriteLine(cx.Indent + "function {{name}}(" + paramlist + ")");
 			fkt.ToSource(sw, scx);
