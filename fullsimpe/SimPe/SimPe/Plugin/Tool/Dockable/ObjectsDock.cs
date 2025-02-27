@@ -102,7 +102,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		{
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
-			xpAdvanced.Visible = (UserVerification.HaveUserId);
+			xpAdvanced.Visible = UserVerification.HaveUserId;
 			op1 = new ObjectPreview();
 			op2 = new ObjectPreview();
 			// op1.SuspendLayout(); - (prevented op1 layout, causung the title to be scrolled and the description to be cut off) Chris Hatch
@@ -111,14 +111,14 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			op1.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			op1.BackColor = Color.Transparent;
@@ -140,14 +140,14 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			op2.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			op2.BackColor = Color.Transparent;
@@ -294,7 +294,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			xpTaskBoxSimple3.SuspendLayout();
 			wizardStepPanel4.SuspendLayout();
 			pnWait.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(pbWait)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)pbWait).BeginInit();
 			toolStrip1.SuspendLayout();
 			SuspendLayout();
 			//
@@ -932,12 +932,12 @@ namespace SimPe.Plugin.Tool.Dockable
 			resources.ApplyResources(this, "$this");
 			Controls.Add(xpGradientPanel1);
 			FloatingSize = new Size(640, 480);
-			Image = ((Image)(resources.GetObject("$this.Image")));
+			Image = (Image)resources.GetObject("$this.Image");
 			MinimumSize = new Size(640, 480);
 			Name = "dcObjectWorkshop";
-			TabImage = (
-				(Image)(resources.GetObject("$this.TabImage"))
-			);
+			TabImage =
+				(Image)resources.GetObject("$this.TabImage")
+			;
 			TabText = "Object Workshop";
 			xpGradientPanel1.ResumeLayout(false);
 			xpGradientPanel1.PerformLayout();
@@ -957,7 +957,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			xpTaskBoxSimple3.PerformLayout();
 			wizardStepPanel4.ResumeLayout(false);
 			pnWait.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(pbWait)).EndInit();
+			((System.ComponentModel.ISupportInitialize)pbWait).EndInit();
 			toolStrip1.ResumeLayout(false);
 			toolStrip1.PerformLayout();
 			ResumeLayout(false);
@@ -1179,7 +1179,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			Wizards.WizardEventArgs e
 		)
 		{
-			biCatalog.Visible = (e.Step.Index == wizardStepPanel2.Index);
+			biCatalog.Visible = e.Step.Index == wizardStepPanel2.Index;
 		}
 
 		private void button2_Click(object sender, EventArgs e)
@@ -1227,7 +1227,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		{
 			if (wizard1.CurrentStepNumber == wizardStepPanel2.Index && lb.Visible)
 			{
-				wizard1.NextEnabled = (lb.SelectedIndex >= 0);
+				wizard1.NextEnabled = lb.SelectedIndex >= 0;
 			}
 
 			lastselected = wizard1.NextEnabled ? (Data.Alias)lb.SelectedItem : null;
@@ -1251,11 +1251,11 @@ namespace SimPe.Plugin.Tool.Dockable
 			if (cbTask.SelectedIndex == 1 && cbDesc.Checked)
 			{
 				wizard1.FinishEnabled = false;
-				wizard1.NextEnabled = (lastselected != null || package != null);
+				wizard1.NextEnabled = lastselected != null || package != null;
 			}
 			else
 			{
-				wizard1.FinishEnabled = (lastselected != null || package != null);
+				wizard1.FinishEnabled = lastselected != null || package != null;
 				wizard1.NextEnabled = false;
 			}
 		}
@@ -1383,15 +1383,15 @@ namespace SimPe.Plugin.Tool.Dockable
 			Wizards.WizardEventArgs e
 		)
 		{
-			e.CanFinish = (
+			e.CanFinish =
 				(lastselected != null || package != null)
 				&& cbTask.SelectedIndex == 0
 				&& !cbDesc.Checked
-			);
-			e.EnableNext = (
+			;
+			e.EnableNext =
 				(lastselected != null || package != null)
 				&& !(cbTask.SelectedIndex == 0 && !cbDesc.Checked)
-			);
+			;
 			UpdateObjectPreview(op2);
 			UpdateEnabledOptions();
 		}

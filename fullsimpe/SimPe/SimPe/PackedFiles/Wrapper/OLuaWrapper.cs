@@ -1206,15 +1206,15 @@ namespace SimPe.PackedFiles.Wrapper
 
 		protected void SetOpcode(byte oc)
 		{
-			Value = (
+			Value =
 
-					Value
+					(Value
 					& (
 						0xFFFFFFFF
 						- (Parent.Parent.OpcodeMaks << Parent.Parent.OpcodeShift)
-					)
-				 | (oc & Parent.Parent.OpcodeMaks) << Parent.Parent.OpcodeShift
-			);
+					))
+				 | ((oc & Parent.Parent.OpcodeMaks) << Parent.Parent.OpcodeShift)
+			;
 		}
 
 		public byte Opcode => GetOpCode(Value, Parent);
@@ -1225,12 +1225,12 @@ namespace SimPe.PackedFiles.Wrapper
 					(Value & (Parent.Parent.AMaks << Parent.Parent.AShift))
 					>> Parent.Parent.AShift
 				);
-			set => Value = (
+			set => Value =
 
-						Value
-						& (0xFFFFFFFF - (Parent.Parent.AMaks << Parent.Parent.AShift))
-					 | (value & Parent.Parent.AMaks) << Parent.Parent.AShift
-				);
+						(Value
+						& (0xFFFFFFFF - (Parent.Parent.AMaks << Parent.Parent.AShift)))
+					 | ((value & Parent.Parent.AMaks) << Parent.Parent.AShift)
+				;
 		}
 
 		public ushort B
@@ -1239,12 +1239,12 @@ namespace SimPe.PackedFiles.Wrapper
 					(Value & (Parent.Parent.BMaks << Parent.Parent.BShift))
 					>> Parent.Parent.BShift
 				);
-			set => Value = (
+			set => Value =
 
-						Value
-						& (0xFFFFFFFF - (Parent.Parent.BMaks << Parent.Parent.BShift))
-					 | (value & Parent.Parent.BMaks) << Parent.Parent.BShift
-				);
+						(Value
+						& (0xFFFFFFFF - (Parent.Parent.BMaks << Parent.Parent.BShift)))
+					 | ((value & Parent.Parent.BMaks) << Parent.Parent.BShift)
+				;
 		}
 
 		public ushort C
@@ -1253,12 +1253,12 @@ namespace SimPe.PackedFiles.Wrapper
 					(Value & (Parent.Parent.CMaks << Parent.Parent.CShift))
 					>> Parent.Parent.CShift
 				);
-			set => Value = (
+			set => Value =
 
-						Value
-						& (0xFFFFFFFF - (Parent.Parent.CMaks << Parent.Parent.CShift))
-					 | (value & Parent.Parent.CMaks) << Parent.Parent.CShift
-				);
+						(Value
+						& (0xFFFFFFFF - (Parent.Parent.CMaks << Parent.Parent.CShift)))
+					 | ((value & Parent.Parent.CMaks) << Parent.Parent.CShift)
+				;
 		}
 
 		public uint BX => ((B & Parent.Parent.BMaks) << Parent.Parent.CBits)

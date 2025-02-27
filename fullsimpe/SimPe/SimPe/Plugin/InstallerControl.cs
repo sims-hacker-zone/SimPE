@@ -83,7 +83,7 @@ namespace SimPe.Plugin
 			label7 = new Label();
 			llOptions = new LinkLabel();
 			pndrop.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(pb)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)pb).BeginInit();
 			tbs.SuspendLayout();
 			SuspendLayout();
 			//
@@ -232,9 +232,9 @@ namespace SimPe.Plugin
 			resources.ApplyResources(llOptions, "llOptions");
 			llOptions.BackColor = Color.Transparent;
 			llOptions.LinkColor = Color.FromArgb(
-				((byte)(224)),
-				((byte)(224)),
-				((byte)(224))
+				(byte)224,
+				(byte)224,
+				(byte)224
 			);
 			llOptions.Name = "llOptions";
 			llOptions.TabStop = true;
@@ -253,7 +253,7 @@ namespace SimPe.Plugin
 			ForeColor = SystemColors.ControlText;
 			Name = "InstallerControl";
 			pndrop.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(pb)).EndInit();
+			((System.ComponentModel.ISupportInitialize)pb).EndInit();
 			tbs.ResumeLayout(false);
 			ResumeLayout(false);
 		}

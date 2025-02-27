@@ -65,14 +65,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			lbgroup.Anchor =
 
-					(
-						(
-							(
+
+
+
 								System.Windows.Forms.AnchorStyles.Top
 								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
-					)
+							 | System.Windows.Forms.AnchorStyles.Left
+						 | System.Windows.Forms.AnchorStyles.Right
+
 
 			;
 			lbgroup.HorizontalScrollbar = true;
@@ -86,12 +86,12 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			panel4.Anchor =
 
-					(
-						(
+
+
 							System.Windows.Forms.AnchorStyles.Top
 							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
-					)
+						 | System.Windows.Forms.AnchorStyles.Right
+
 
 			;
 			panel4.BackColor = System.Drawing.SystemColors.AppWorkspace;

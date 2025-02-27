@@ -111,7 +111,7 @@ namespace SimPe.PackedFiles.Wrapper
 			if (obj is ClstItem)
 			{
 				ClstItem ci = (ClstItem)obj;
-				return (
+				return
 					ci.Group == Group
 					&& ci.Instance == Instance
 					&& ci.Type == Type
@@ -120,7 +120,7 @@ namespace SimPe.PackedFiles.Wrapper
 						|| ci.format == Data.MetaData.IndexTypes.ptShortFileIndex
 						|| format == Data.MetaData.IndexTypes.ptShortFileIndex
 					)
-				);
+				;
 			}
 			else
 			{

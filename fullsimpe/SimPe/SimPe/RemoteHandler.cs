@@ -142,7 +142,7 @@ namespace SimPe
 		/// <param name="doc">The Doc you want to show/hide</param>
 		public void ShowDock(Ambertation.Windows.Forms.DockPanel doc, bool hide)
 		{
-			if (hide && (doc.IsOpen))
+			if (hide && doc.IsOpen)
 			{
 				doc.Close();
 			}
@@ -160,7 +160,7 @@ namespace SimPe
 				}
 
 				doc.EnsureVisible();
-				if (!(doc.IsOpen))
+				if (!doc.IsOpen)
 				{
 					plugger.ChangedGuiResourceEventHandler();
 				}

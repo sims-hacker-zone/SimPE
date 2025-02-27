@@ -117,10 +117,10 @@ namespace SimPe.Plugin
 			//
 			label2.Anchor =
 
-					(
+
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
-					)
+
 
 			;
 			label2.BackColor = System.Drawing.Color.Transparent;
@@ -142,10 +142,10 @@ namespace SimPe.Plugin
 			//
 			label3.Anchor =
 
-					(
+
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
-					)
+
 
 			;
 			label3.BackColor = System.Drawing.Color.Transparent;
@@ -184,14 +184,14 @@ namespace SimPe.Plugin
 			//
 			lb.Anchor =
 
-					(
-						(
-							(
+
+
+
 								System.Windows.Forms.AnchorStyles.Top
 								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
-					)
+							 | System.Windows.Forms.AnchorStyles.Left
+						 | System.Windows.Forms.AnchorStyles.Right
+
 
 			;
 			lb.HorizontalScrollbar = true;
@@ -208,12 +208,12 @@ namespace SimPe.Plugin
 			//
 			tbFlname.Anchor =
 
-					(
-						(
+
+
 							System.Windows.Forms.AnchorStyles.Top
 							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
-					)
+						 | System.Windows.Forms.AnchorStyles.Right
+
 
 			;
 			tbFlname.Location = new System.Drawing.Point(120, 32);
@@ -235,10 +235,10 @@ namespace SimPe.Plugin
 			//
 			tbUk2.Anchor =
 
-					(
+
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
-					)
+
 
 			;
 			tbUk2.Location = new System.Drawing.Point(448, 64);
@@ -251,10 +251,10 @@ namespace SimPe.Plugin
 			//
 			tbUk3.Anchor =
 
-					(
+
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
-					)
+
 
 			;
 			tbUk3.Location = new System.Drawing.Point(608, 64);
@@ -290,10 +290,10 @@ namespace SimPe.Plugin
 			//
 			xpTaskBoxSimple1.Anchor =
 
-					(
+
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
-					)
+
 
 			;
 			xpTaskBoxSimple1.BackColor = System.Drawing.Color.Transparent;

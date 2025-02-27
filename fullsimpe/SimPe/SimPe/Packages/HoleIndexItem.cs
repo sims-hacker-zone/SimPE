@@ -79,7 +79,7 @@ namespace SimPe.Packages
 		/// <returns>true if it follows the current Hole</returns>
 		public bool IsMyFollowup(HoleIndexItem hii)
 		{
-			return ((offset + size) == hii.Offset);
+			return (offset + size) == hii.Offset;
 		}
 	}
 }

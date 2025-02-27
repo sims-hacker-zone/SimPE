@@ -397,12 +397,12 @@ namespace SimPe.PackedFiles.UserInterface
 					tbMaxValue.Enabled =
 					btnStrDelete.Enabled =
 						true;
-				cbUsed.Enabled = (wrapper.Version > 0x3e);
+				cbUsed.Enabled = wrapper.Version > 0x3e;
 				tbDefValue.Enabled =
 					tbID.Enabled =
 					tbMinValue.Enabled =
 					tbMaxValue.Enabled =
-						(wrapper.Version > 1);
+						wrapper.Version > 1;
 			}
 			else
 			{
@@ -425,8 +425,8 @@ namespace SimPe.PackedFiles.UserInterface
 					btnStrDelete.Enabled =
 						false;
 			}
-			btnStrPrev.Enabled = (index > 0);
-			btnStrNext.Enabled = (index < lvTrcnItem.Items.Count - 1);
+			btnStrPrev.Enabled = index > 0;
+			btnStrNext.Enabled = index < lvTrcnItem.Items.Count - 1;
 			internalchg = false;
 
 			btnCancel.Enabled = false;
@@ -561,8 +561,8 @@ namespace SimPe.PackedFiles.UserInterface
 				return;
 			}
 
-			tbDesc.ReadOnly = (wrapper.Version <= 0x53);
-			btnCommit.Enabled = (wrapper.Changed || wrapper.Version == 1);
+			tbDesc.ReadOnly = wrapper.Version <= 0x53;
+			btnCommit.Enabled = wrapper.Changed || wrapper.Version == 1;
 			if (sender.Equals(currentItem))
 			{
 				btnCancel.Enabled = true;
@@ -908,11 +908,11 @@ namespace SimPe.PackedFiles.UserInterface
 			lvTrcnItem.Items.AddRange(
 				new ListViewItem[]
 				{
-					(
-						(ListViewItem)(
+
+						(ListViewItem)
 							resources.GetObject("lvTrcnItem.Items")
-						)
-					),
+
+					,
 				}
 			);
 			lvTrcnItem.MultiSelect = false;

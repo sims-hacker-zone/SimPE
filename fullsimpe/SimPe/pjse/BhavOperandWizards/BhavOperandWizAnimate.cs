@@ -319,7 +319,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 			StrWrapper str = new StrWrapper();
 			str.ProcessData(items[0].PFD, items[0].Package);
 
-			int i = (new StrChooser(true)).Strnum(str);
+			int i = new StrChooser(true).Strnum(str);
 			if (i >= 0)
 			{
 				bool savedState = internalchg;

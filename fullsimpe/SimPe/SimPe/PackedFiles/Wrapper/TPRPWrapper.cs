@@ -115,7 +115,7 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 		private bool duff = false;
-		public bool TextOnly => (duff);
+		public bool TextOnly => duff;
 
 		public int ParamCount => duff ? 0 : paramCount;
 
@@ -426,9 +426,9 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		public bool IsParamLabel => (pORl == false);
+		public bool IsParamLabel => pORl == false;
 
-		public bool IsLocalLabel => (pORl == true);
+		public bool IsLocalLabel => pORl == true;
 		#endregion
 
 		public TPRPItem(TPRP parent, bool pORl)

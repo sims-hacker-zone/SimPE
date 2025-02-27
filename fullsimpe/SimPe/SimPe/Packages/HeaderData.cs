@@ -262,7 +262,7 @@ namespace SimPe.Packages
 		/// true if the version is greater or equal than 1.1
 		/// </summary>
 		[Browsable(false)]
-		public bool IsVersion0101 => (Version >= 0x100000001); //((majorversion>1) || ((majorversion==1) && (minorversion>=1)));
+		public bool IsVersion0101 => Version >= 0x100000001; //((majorversion>1) || ((majorversion==1) && (minorversion>=1)));
 
 		internal bool LockIndexDuringLoad
 		{

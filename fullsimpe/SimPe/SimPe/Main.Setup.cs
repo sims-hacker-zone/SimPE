@@ -109,7 +109,7 @@ namespace SimPe
 			package.UpdateRecentFileMenu(miRecent);
 
 			InitTheme();
-			dockBottom.Height = ((Height * 3) / 4);
+			dockBottom.Height = Height * 3 / 4;
 			Text =
 				"SimPe (Version "
 				+ Helper.SimPeVersion.ProductVersion

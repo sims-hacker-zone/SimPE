@@ -200,7 +200,7 @@ namespace SimPe.Plugin
 
 		public TattItem this[int index]
 		{
-			get => ((TattItem)items[index]);
+			get => (TattItem)items[index];
 			set => items[index] = value;
 		}
 

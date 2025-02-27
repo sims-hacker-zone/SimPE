@@ -264,12 +264,12 @@ namespace SimPe.Plugin.Gmdc.Exporter
 				for (int i = 0; i < Link.ReferencedSize; i++)
 				{
 					writer.WriteLine(
-						(Link.GetValue(nr, i).Data[0]).ToString(
+						Link.GetValue(nr, i).Data[0].ToString(
 							"N6",
 							DefaultCulture
 						)
 							+ ";"
-							+ (Link.GetValue(nr, i).Data[1]).ToString(
+							+ Link.GetValue(nr, i).Data[1].ToString(
 								"N6",
 								DefaultCulture
 							)

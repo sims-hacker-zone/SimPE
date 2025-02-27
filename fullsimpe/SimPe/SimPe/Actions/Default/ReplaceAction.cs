@@ -78,7 +78,7 @@ namespace SimPe.Actions.Default
 		)
 		{
 			bool res = base.ChangeEnabledStateEventHandler(sender, es);
-			return (res && es.Count == 1);
+			return res && es.Count == 1;
 		}
 
 		public override void ExecuteEventHandler(

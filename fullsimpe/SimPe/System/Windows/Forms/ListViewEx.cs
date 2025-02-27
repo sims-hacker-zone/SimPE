@@ -22,7 +22,7 @@ namespace System.Windows.Forms
 
 		// ListView messages
 		private const int LVM_FIRST = 0x1000;
-		private const int LVM_GETCOLUMNORDERARRAY = (LVM_FIRST + 59);
+		private const int LVM_GETCOLUMNORDERARRAY = LVM_FIRST + 59;
 
 		// Windows Messages
 		private const int WM_PAINT = 0x000F;
@@ -226,7 +226,7 @@ namespace System.Windows.Forms
 				// Embedded controls are rendered only when we're in Details mode
 				foreach (EmbeddedControl ec in _embeddedControls)
 				{
-					ec.Control.Visible = (value == View.Details);
+					ec.Control.Visible = value == View.Details;
 				}
 
 				base.View = value;

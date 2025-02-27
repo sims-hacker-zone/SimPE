@@ -91,76 +91,76 @@ namespace SimPe.Plugin.Tool
 			xpGradientPanel1.AccessibleName = resources.GetString(
 				"xpGradientPanel1.AccessibleName"
 			);
-			xpGradientPanel1.Anchor = (
-				(AnchorStyles)(
+			xpGradientPanel1.Anchor =
+				(AnchorStyles)
 					resources.GetObject("xpGradientPanel1.Anchor")
-				)
-			);
-			xpGradientPanel1.AutoScroll = (
-				(bool)(resources.GetObject("xpGradientPanel1.AutoScroll"))
-			);
-			xpGradientPanel1.AutoScrollMargin = (
-				(System.Drawing.Size)(
+
+			;
+			xpGradientPanel1.AutoScroll =
+				(bool)resources.GetObject("xpGradientPanel1.AutoScroll")
+			;
+			xpGradientPanel1.AutoScrollMargin =
+				(System.Drawing.Size)
 					resources.GetObject("xpGradientPanel1.AutoScrollMargin")
-				)
-			);
-			xpGradientPanel1.AutoScrollMinSize = (
-				(System.Drawing.Size)(
+
+			;
+			xpGradientPanel1.AutoScrollMinSize =
+				(System.Drawing.Size)
 					resources.GetObject("xpGradientPanel1.AutoScrollMinSize")
-				)
-			);
-			xpGradientPanel1.BackgroundImage = (
-				(System.Drawing.Image)(
+
+			;
+			xpGradientPanel1.BackgroundImage =
+				(System.Drawing.Image)
 					resources.GetObject("xpGradientPanel1.BackgroundImage")
-				)
-			);
+
+			;
 			xpGradientPanel1.Controls.Add(linkLabel1);
 			xpGradientPanel1.Controls.Add(rtb);
-			xpGradientPanel1.Dock = (
-				(DockStyle)(
+			xpGradientPanel1.Dock =
+				(DockStyle)
 					resources.GetObject("xpGradientPanel1.Dock")
-				)
-			);
-			xpGradientPanel1.Enabled = (
-				(bool)(resources.GetObject("xpGradientPanel1.Enabled"))
-			);
-			xpGradientPanel1.Font = (
-				(System.Drawing.Font)(resources.GetObject("xpGradientPanel1.Font"))
-			);
-			xpGradientPanel1.ImeMode = (
-				(ImeMode)(
+
+			;
+			xpGradientPanel1.Enabled =
+				(bool)resources.GetObject("xpGradientPanel1.Enabled")
+			;
+			xpGradientPanel1.Font =
+				(System.Drawing.Font)resources.GetObject("xpGradientPanel1.Font")
+			;
+			xpGradientPanel1.ImeMode =
+				(ImeMode)
 					resources.GetObject("xpGradientPanel1.ImeMode")
-				)
-			);
-			xpGradientPanel1.Location = (
-				(System.Drawing.Point)(resources.GetObject("xpGradientPanel1.Location"))
-			);
+
+			;
+			xpGradientPanel1.Location =
+				(System.Drawing.Point)resources.GetObject("xpGradientPanel1.Location")
+			;
 			xpGradientPanel1.Name = "xpGradientPanel1";
-			xpGradientPanel1.RightToLeft = (
-				(RightToLeft)(
+			xpGradientPanel1.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("xpGradientPanel1.RightToLeft")
-				)
-			);
-			xpGradientPanel1.Size = (
-				(System.Drawing.Size)(resources.GetObject("xpGradientPanel1.Size"))
-			);
-			xpGradientPanel1.TabIndex = (
-				(int)(resources.GetObject("xpGradientPanel1.TabIndex"))
-			);
+
+			;
+			xpGradientPanel1.Size =
+				(System.Drawing.Size)resources.GetObject("xpGradientPanel1.Size")
+			;
+			xpGradientPanel1.TabIndex =
+				(int)resources.GetObject("xpGradientPanel1.TabIndex")
+			;
 			xpGradientPanel1.Text = resources.GetString("xpGradientPanel1.Text");
-			xpGradientPanel1.Visible = (
-				(bool)(resources.GetObject("xpGradientPanel1.Visible"))
-			);
-			xpGradientPanel1.Watermark = (
-				(System.Drawing.Image)(
+			xpGradientPanel1.Visible =
+				(bool)resources.GetObject("xpGradientPanel1.Visible")
+			;
+			xpGradientPanel1.Watermark =
+				(System.Drawing.Image)
 					resources.GetObject("xpGradientPanel1.Watermark")
-				)
-			);
-			xpGradientPanel1.WatermarkSize = (
-				(System.Drawing.Size)(
+
+			;
+			xpGradientPanel1.WatermarkSize =
+				(System.Drawing.Size)
 					resources.GetObject("xpGradientPanel1.WatermarkSize")
-				)
-			);
+
+			;
 			//
 			// linkLabel1
 			//
@@ -170,70 +170,70 @@ namespace SimPe.Plugin.Tool
 			linkLabel1.AccessibleName = resources.GetString(
 				"linkLabel1.AccessibleName"
 			);
-			linkLabel1.Anchor = (
-				(AnchorStyles)(
+			linkLabel1.Anchor =
+				(AnchorStyles)
 					resources.GetObject("linkLabel1.Anchor")
-				)
-			);
-			linkLabel1.AutoSize = (
-				(bool)(resources.GetObject("linkLabel1.AutoSize"))
-			);
+
+			;
+			linkLabel1.AutoSize =
+				(bool)resources.GetObject("linkLabel1.AutoSize")
+			;
 			linkLabel1.BackColor = System.Drawing.Color.Transparent;
-			linkLabel1.Dock = (
-				(DockStyle)(resources.GetObject("linkLabel1.Dock"))
-			);
-			linkLabel1.Enabled = (
-				(bool)(resources.GetObject("linkLabel1.Enabled"))
-			);
-			linkLabel1.Font = (
-				(System.Drawing.Font)(resources.GetObject("linkLabel1.Font"))
-			);
-			linkLabel1.Image = (
-				(System.Drawing.Image)(resources.GetObject("linkLabel1.Image"))
-			);
-			linkLabel1.ImageAlign = (
-				(System.Drawing.ContentAlignment)(
+			linkLabel1.Dock =
+				(DockStyle)resources.GetObject("linkLabel1.Dock")
+			;
+			linkLabel1.Enabled =
+				(bool)resources.GetObject("linkLabel1.Enabled")
+			;
+			linkLabel1.Font =
+				(System.Drawing.Font)resources.GetObject("linkLabel1.Font")
+			;
+			linkLabel1.Image =
+				(System.Drawing.Image)resources.GetObject("linkLabel1.Image")
+			;
+			linkLabel1.ImageAlign =
+				(System.Drawing.ContentAlignment)
 					resources.GetObject("linkLabel1.ImageAlign")
-				)
-			);
-			linkLabel1.ImageIndex = (
-				(int)(resources.GetObject("linkLabel1.ImageIndex"))
-			);
-			linkLabel1.ImeMode = (
-				(ImeMode)(
+
+			;
+			linkLabel1.ImageIndex =
+				(int)resources.GetObject("linkLabel1.ImageIndex")
+			;
+			linkLabel1.ImeMode =
+				(ImeMode)
 					resources.GetObject("linkLabel1.ImeMode")
-				)
-			);
-			linkLabel1.LinkArea = (
-				(LinkArea)(
+
+			;
+			linkLabel1.LinkArea =
+				(LinkArea)
 					resources.GetObject("linkLabel1.LinkArea")
-				)
-			);
-			linkLabel1.Location = (
-				(System.Drawing.Point)(resources.GetObject("linkLabel1.Location"))
-			);
+
+			;
+			linkLabel1.Location =
+				(System.Drawing.Point)resources.GetObject("linkLabel1.Location")
+			;
 			linkLabel1.Name = "linkLabel1";
-			linkLabel1.RightToLeft = (
-				(RightToLeft)(
+			linkLabel1.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("linkLabel1.RightToLeft")
-				)
-			);
-			linkLabel1.Size = (
-				(System.Drawing.Size)(resources.GetObject("linkLabel1.Size"))
-			);
-			linkLabel1.TabIndex = (
-				(int)(resources.GetObject("linkLabel1.TabIndex"))
-			);
+
+			;
+			linkLabel1.Size =
+				(System.Drawing.Size)resources.GetObject("linkLabel1.Size")
+			;
+			linkLabel1.TabIndex =
+				(int)resources.GetObject("linkLabel1.TabIndex")
+			;
 			linkLabel1.TabStop = true;
 			linkLabel1.Text = resources.GetString("linkLabel1.Text");
-			linkLabel1.TextAlign = (
-				(System.Drawing.ContentAlignment)(
+			linkLabel1.TextAlign =
+				(System.Drawing.ContentAlignment)
 					resources.GetObject("linkLabel1.TextAlign")
-				)
-			);
-			linkLabel1.Visible = (
-				(bool)(resources.GetObject("linkLabel1.Visible"))
-			);
+
+			;
+			linkLabel1.Visible =
+				(bool)resources.GetObject("linkLabel1.Visible")
+			;
 			linkLabel1.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
 					linkLabel1_LinkClicked
@@ -245,50 +245,50 @@ namespace SimPe.Plugin.Tool
 				"rtb.AccessibleDescription"
 			);
 			rtb.AccessibleName = resources.GetString("rtb.AccessibleName");
-			rtb.Anchor = (
-				(AnchorStyles)(resources.GetObject("rtb.Anchor"))
-			);
-			rtb.AutoSize = ((bool)(resources.GetObject("rtb.AutoSize")));
-			rtb.BackgroundImage = (
-				(System.Drawing.Image)(resources.GetObject("rtb.BackgroundImage"))
-			);
+			rtb.Anchor =
+				(AnchorStyles)resources.GetObject("rtb.Anchor")
+			;
+			rtb.AutoSize = (bool)resources.GetObject("rtb.AutoSize");
+			rtb.BackgroundImage =
+				(System.Drawing.Image)resources.GetObject("rtb.BackgroundImage")
+			;
 			rtb.BorderStyle = BorderStyle.None;
-			rtb.BulletIndent = ((int)(resources.GetObject("rtb.BulletIndent")));
-			rtb.Dock = (
-				(DockStyle)(resources.GetObject("rtb.Dock"))
-			);
-			rtb.Enabled = ((bool)(resources.GetObject("rtb.Enabled")));
-			rtb.Font = ((System.Drawing.Font)(resources.GetObject("rtb.Font")));
-			rtb.ImeMode = (
-				(ImeMode)(resources.GetObject("rtb.ImeMode"))
-			);
-			rtb.Location = (
-				(System.Drawing.Point)(resources.GetObject("rtb.Location"))
-			);
-			rtb.MaxLength = ((int)(resources.GetObject("rtb.MaxLength")));
-			rtb.Multiline = ((bool)(resources.GetObject("rtb.Multiline")));
+			rtb.BulletIndent = (int)resources.GetObject("rtb.BulletIndent");
+			rtb.Dock =
+				(DockStyle)resources.GetObject("rtb.Dock")
+			;
+			rtb.Enabled = (bool)resources.GetObject("rtb.Enabled");
+			rtb.Font = (System.Drawing.Font)resources.GetObject("rtb.Font");
+			rtb.ImeMode =
+				(ImeMode)resources.GetObject("rtb.ImeMode")
+			;
+			rtb.Location =
+				(System.Drawing.Point)resources.GetObject("rtb.Location")
+			;
+			rtb.MaxLength = (int)resources.GetObject("rtb.MaxLength");
+			rtb.Multiline = (bool)resources.GetObject("rtb.Multiline");
 			rtb.Name = "rtb";
 			rtb.ReadOnly = true;
-			rtb.RightMargin = ((int)(resources.GetObject("rtb.RightMargin")));
-			rtb.RightToLeft = (
-				(RightToLeft)(
+			rtb.RightMargin = (int)resources.GetObject("rtb.RightMargin");
+			rtb.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("rtb.RightToLeft")
-				)
-			);
-			rtb.ScrollBars = (
-				(RichTextBoxScrollBars)(
+
+			;
+			rtb.ScrollBars =
+				(RichTextBoxScrollBars)
 					resources.GetObject("rtb.ScrollBars")
-				)
-			);
+
+			;
 			rtb.ShowSelectionMargin = true;
-			rtb.Size = ((System.Drawing.Size)(resources.GetObject("rtb.Size")));
-			rtb.TabIndex = ((int)(resources.GetObject("rtb.TabIndex")));
+			rtb.Size = (System.Drawing.Size)resources.GetObject("rtb.Size");
+			rtb.TabIndex = (int)resources.GetObject("rtb.TabIndex");
 			rtb.Text = resources.GetString("rtb.Text");
-			rtb.Visible = ((bool)(resources.GetObject("rtb.Visible")));
-			rtb.WordWrap = ((bool)(resources.GetObject("rtb.WordWrap")));
-			rtb.ZoomFactor = (
-				(System.Single)(resources.GetObject("rtb.ZoomFactor"))
-			);
+			rtb.Visible = (bool)resources.GetObject("rtb.Visible");
+			rtb.WordWrap = (bool)resources.GetObject("rtb.WordWrap");
+			rtb.ZoomFactor =
+				(System.Single)resources.GetObject("rtb.ZoomFactor")
+			;
 			//
 			// sfd
 			//
@@ -301,52 +301,52 @@ namespace SimPe.Plugin.Tool
 				"$this.AccessibleDescription"
 			);
 			AccessibleName = resources.GetString("$this.AccessibleName");
-			AutoScaleBaseSize = (
-				(System.Drawing.Size)(resources.GetObject("$this.AutoScaleBaseSize"))
-			);
-			AutoScroll = ((bool)(resources.GetObject("$this.AutoScroll")));
-			AutoScrollMargin = (
-				(System.Drawing.Size)(resources.GetObject("$this.AutoScrollMargin"))
-			);
-			AutoScrollMinSize = (
-				(System.Drawing.Size)(resources.GetObject("$this.AutoScrollMinSize"))
-			);
-			BackgroundImage = (
-				(System.Drawing.Image)(resources.GetObject("$this.BackgroundImage"))
-			);
-			ClientSize = (
-				(System.Drawing.Size)(resources.GetObject("$this.ClientSize"))
-			);
+			AutoScaleBaseSize =
+				(System.Drawing.Size)resources.GetObject("$this.AutoScaleBaseSize")
+			;
+			AutoScroll = (bool)resources.GetObject("$this.AutoScroll");
+			AutoScrollMargin =
+				(System.Drawing.Size)resources.GetObject("$this.AutoScrollMargin")
+			;
+			AutoScrollMinSize =
+				(System.Drawing.Size)resources.GetObject("$this.AutoScrollMinSize")
+			;
+			BackgroundImage =
+				(System.Drawing.Image)resources.GetObject("$this.BackgroundImage")
+			;
+			ClientSize =
+				(System.Drawing.Size)resources.GetObject("$this.ClientSize")
+			;
 			Controls.Add(xpGradientPanel1);
-			Enabled = ((bool)(resources.GetObject("$this.Enabled")));
-			Font = ((System.Drawing.Font)(resources.GetObject("$this.Font")));
+			Enabled = (bool)resources.GetObject("$this.Enabled");
+			Font = (System.Drawing.Font)resources.GetObject("$this.Font");
 			FormBorderStyle =
 				FormBorderStyle
 				.SizableToolWindow;
-			Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			ImeMode = (
-				(ImeMode)(resources.GetObject("$this.ImeMode"))
-			);
-			Location = (
-				(System.Drawing.Point)(resources.GetObject("$this.Location"))
-			);
-			MaximumSize = (
-				(System.Drawing.Size)(resources.GetObject("$this.MaximumSize"))
-			);
-			MinimumSize = (
-				(System.Drawing.Size)(resources.GetObject("$this.MinimumSize"))
-			);
+			Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+			ImeMode =
+				(ImeMode)resources.GetObject("$this.ImeMode")
+			;
+			Location =
+				(System.Drawing.Point)resources.GetObject("$this.Location")
+			;
+			MaximumSize =
+				(System.Drawing.Size)resources.GetObject("$this.MaximumSize")
+			;
+			MinimumSize =
+				(System.Drawing.Size)resources.GetObject("$this.MinimumSize")
+			;
 			Name = "Report";
-			RightToLeft = (
-				(RightToLeft)(
+			RightToLeft =
+				(RightToLeft)
 					resources.GetObject("$this.RightToLeft")
-				)
-			);
-			StartPosition = (
-				(FormStartPosition)(
+
+			;
+			StartPosition =
+				(FormStartPosition)
 					resources.GetObject("$this.StartPosition")
-				)
-			);
+
+			;
 			Text = resources.GetString("$this.Text");
 			xpGradientPanel1.ResumeLayout(false);
 			ResumeLayout(false);

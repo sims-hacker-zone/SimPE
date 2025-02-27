@@ -24,7 +24,7 @@ namespace Ambertation.Renderer
 
 		static byte Interpolate(byte b1, byte b2, float p)
 		{
-			return (byte)(b1 * (1 - p) + b2 * (p));
+			return (byte)((b1 * (1 - p)) + (b2 * p));
 		}
 
 		public static Color InterpolateColors(Color c1, Color c2, float p)

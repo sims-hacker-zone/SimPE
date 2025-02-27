@@ -119,12 +119,12 @@ namespace SimPe.Plugin
 			//
 			Progress.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Bottom
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			Progress.BackColor = System.Drawing.Color.Transparent;
@@ -197,7 +197,7 @@ namespace SimPe.Plugin
 			AutoScroll = true;
 			ClientSize = new System.Drawing.Size(624, 441);
 			Controls.Add(pntheme);
-			Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			MinimumSize = new System.Drawing.Size(640, 480);
 			Name = "LanguageExtrator";
 			StartPosition = FormStartPosition.CenterParent;

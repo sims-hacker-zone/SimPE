@@ -154,7 +154,7 @@ namespace pjse.BhavOperandWizards.Wiz0x001c
 			StrWrapper str = new StrWrapper();
 			str.ProcessData(items[0].PFD, items[0].Package);
 
-			int i = (new StrChooser(true)).Strnum(str);
+			int i = new StrChooser(true).Strnum(str);
 			if (i >= 0)
 			{
 				tbTree.Text = "0x" + SimPe.Helper.HexString((ushort)(i + 1));
@@ -240,8 +240,8 @@ namespace pjse.BhavOperandWizards.Wiz0x001c
 
 				Boolset options = (Boolset)(ops1[0x02] & 0xbf);
 				int scope = cbScope.SelectedIndex;
-				options[0] = (scope == 2);
-				options[1] = (scope == 1);
+				options[0] = scope == 2;
+				options[1] = scope == 1;
 				options[2] = !tfGlobal.Checked;
 				options[3] = !tfSemiGlobal.Checked;
 				options[4] = tfArgs.Checked;

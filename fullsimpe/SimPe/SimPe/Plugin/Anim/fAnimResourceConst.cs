@@ -40,7 +40,7 @@ namespace SimPe.Plugin.Anim
 			//
 			InitializeComponent();
 
-			llInTxt.Visible = llTxt.Visible = (UserVerification.HaveUserId);
+			llInTxt.Visible = llTxt.Visible = UserVerification.HaveUserId;
 
 			if (Helper.WindowsRegistry.UseBigIcons)
 			{
@@ -160,14 +160,14 @@ namespace SimPe.Plugin.Anim
 			//
 			groupBox2.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			groupBox2.Controls.Add(cbshnote);
@@ -198,10 +198,10 @@ namespace SimPe.Plugin.Anim
 			//
 			cbshnote.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			cbshnote.AutoSize = true;
@@ -227,14 +227,14 @@ namespace SimPe.Plugin.Anim
 			//
 			rtbnotes.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			rtbnotes.BorderStyle = BorderStyle.FixedSingle;
@@ -301,10 +301,10 @@ namespace SimPe.Plugin.Anim
 			//
 			checkBox1.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			checkBox1.AutoSize = true;
@@ -322,12 +322,12 @@ namespace SimPe.Plugin.Anim
 			//
 			tv.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
-						) | AnchorStyles.Left
-					)
+						 | AnchorStyles.Left
+
 
 			;
 			tv.Font = new System.Drawing.Font(
@@ -366,14 +366,14 @@ namespace SimPe.Plugin.Anim
 			//
 			pg.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			pg.CommandsBackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -539,8 +539,8 @@ namespace SimPe.Plugin.Anim
 				llAdd.Enabled = true;
 				llClear.Enabled = true;
 			}
-			cbshnote.Visible = (llInTxt.Enabled && (UserVerification.HaveUserId));
-			rtbnotes.Visible = (llInTxt.Enabled && cbshnote.Checked);
+			cbshnote.Visible = llInTxt.Enabled && UserVerification.HaveUserId;
+			rtbnotes.Visible = llInTxt.Enabled && cbshnote.Checked;
 		}
 
 		private void tb_arc_ver_TextChanged(object sender, EventArgs e)

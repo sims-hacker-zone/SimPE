@@ -145,12 +145,12 @@ namespace SimPe.Packages
 			//
 			lblist.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			lblist.IntegralHeight = false;
@@ -164,14 +164,14 @@ namespace SimPe.Packages
 			//
 			gbsettings.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			gbsettings.BackColor = System.Drawing.Color.Transparent;
@@ -213,12 +213,12 @@ namespace SimPe.Packages
 			//
 			tbtitle.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tbtitle.Font = new System.Drawing.Font(
@@ -254,12 +254,12 @@ namespace SimPe.Packages
 			//
 			tbgameguid.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tbgameguid.Font = new System.Drawing.Font(
@@ -310,10 +310,10 @@ namespace SimPe.Packages
 			//
 			cbcompress.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			cbcompress.DropDownStyle =
@@ -338,14 +338,14 @@ namespace SimPe.Packages
 			//
 			tbdesc.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			tbdesc.Font = new System.Drawing.Font(
@@ -381,12 +381,12 @@ namespace SimPe.Packages
 			//
 			tbguid.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tbguid.Font = new System.Drawing.Font(
@@ -406,12 +406,12 @@ namespace SimPe.Packages
 			//
 			tbauthor.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tbauthor.Font = new System.Drawing.Font(
@@ -431,12 +431,12 @@ namespace SimPe.Packages
 			//
 			tbname.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tbname.Font = new System.Drawing.Font(
@@ -536,10 +536,10 @@ namespace SimPe.Packages
 			//
 			lldep.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			lldep.AutoSize = true;
@@ -560,10 +560,10 @@ namespace SimPe.Packages
 			//
 			label7.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			label7.AutoSize = true;
@@ -610,10 +610,10 @@ namespace SimPe.Packages
 			//
 			btadd.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			btadd.BackColor = System.Drawing.Color.Transparent;
@@ -652,12 +652,12 @@ namespace SimPe.Packages
 			//
 			tbflname.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tbflname.Font = new System.Drawing.Font(
@@ -676,10 +676,10 @@ namespace SimPe.Packages
 			//
 			btbrowse.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			btbrowse.BackColor = System.Drawing.Color.Transparent;
@@ -696,10 +696,10 @@ namespace SimPe.Packages
 			//
 			btdelete.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			btdelete.BackColor = System.Drawing.Color.Transparent;
@@ -716,10 +716,10 @@ namespace SimPe.Packages
 			//
 			btsave.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			btsave.BackColor = System.Drawing.Color.Transparent;
@@ -736,10 +736,10 @@ namespace SimPe.Packages
 			//
 			button4.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			button4.BackColor = System.Drawing.Color.Transparent;
@@ -756,14 +756,14 @@ namespace SimPe.Packages
 			//
 			panel1.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			panel1.Controls.Add(label6);
@@ -794,7 +794,7 @@ namespace SimPe.Packages
 				0
 			);
 			FormBorderStyle = FormBorderStyle.FixedDialog;
-			Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			MaximizeBox = false;
 			MinimizeBox = false;
 			Name = "SaveSims2CommunityPack";
@@ -876,7 +876,7 @@ namespace SimPe.Packages
 				lblist.SelectedIndex = 0;
 			}
 
-			btdelete.Enabled = (lblist.SelectedIndex >= 0);
+			btdelete.Enabled = lblist.SelectedIndex >= 0;
 
 			Checks2cp(cb2cp, null);
 			ShowDialog();
@@ -941,7 +941,7 @@ namespace SimPe.Packages
 				lblist.SelectedIndex = 0;
 			}
 
-			btdelete.Enabled = (lblist.SelectedIndex >= 0);
+			btdelete.Enabled = lblist.SelectedIndex >= 0;
 
 			Checks2cp(cb2cp, null);
 			ShowDialog();
@@ -1119,7 +1119,7 @@ namespace SimPe.Packages
 		{
 			if (tbflname.ReadOnly)
 			{
-				if ((lblist.SelectedItems.Count == 0) && (ok))
+				if ((lblist.SelectedItems.Count == 0) && ok)
 				{
 					MessageBox.Show("You have to select at Least one Package");
 					btadd.Select();
@@ -1128,7 +1128,7 @@ namespace SimPe.Packages
 			}
 			else
 			{
-				if ((tbflname.Text.Trim() == "") && (ok))
+				if ((tbflname.Text.Trim() == "") && ok)
 				{
 					MessageBox.Show(
 						"You have to specify a Filename for the Sims2Community Pack File."
@@ -1137,7 +1137,7 @@ namespace SimPe.Packages
 					e.Cancel = true;
 				}
 
-				if ((lblist.Items.Count == 0) && (ok))
+				if ((lblist.Items.Count == 0) && ok)
 				{
 					MessageBox.Show("You have to add at least one Package.");
 					btadd.Select();

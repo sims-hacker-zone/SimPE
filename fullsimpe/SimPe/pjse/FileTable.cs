@@ -90,7 +90,7 @@ namespace pjse
 		{
 			string SplashScreenSetMessage = ""; //can't get old message
 			string SimPeWaitingScreenMessage =
-				(SimPe.WaitingScreen.Running) ? SimPe.WaitingScreen.Message : "";
+				SimPe.WaitingScreen.Running ? SimPe.WaitingScreen.Message : "";
 			SimPe.Wait.SubStart();
 
 			try
@@ -302,7 +302,7 @@ namespace pjse
 				Refresh();
 			}
 
-			return (package != null && maxisPackages.Contains(package));
+			return package != null && maxisPackages.Contains(package);
 		}
 
 		private bool IsFixed(IPackageFile package)
@@ -312,7 +312,7 @@ namespace pjse
 				Refresh();
 			}
 
-			return (package != null && fixedPackages.Contains(package));
+			return package != null && fixedPackages.Contains(package);
 		}
 
 		private void Add(string v, bool recurse, SimPe.Expansions ep, bool isFixed)

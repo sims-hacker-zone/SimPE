@@ -58,9 +58,9 @@ namespace SimPe.PackedFiles.UserInterface
 				muiH = c.Height;
 			}
 
-			lbMin.Left = muiW / 6 - lbMin.Width / 2;
-			lbDelta.Left = muiW / 2 - lbDelta.Width / 2;
-			lbType.Left = (5 * muiW) / 6 - lbType.Width / 2;
+			lbMin.Left = (muiW / 6) - (lbMin.Width / 2);
+			lbDelta.Left = (muiW / 2) - (lbDelta.Width / 2);
+			lbType.Left = (5 * muiW / 6) - (lbType.Width / 2);
 		}
 
 		/// <summary>

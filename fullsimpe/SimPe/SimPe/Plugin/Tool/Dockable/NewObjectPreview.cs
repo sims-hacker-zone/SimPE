@@ -471,11 +471,11 @@ namespace SimPe.Plugin.Tool.Dockable
 				{
 					lbEPList.Text +=
 						(lbEPList.Text.Length == 0 ? "" : "; ")
-						+ (
+						+
 							new Data.LocalizedNeighbourhoodEP(
 								(Data.MetaData.NeighbourhoodEP)i
 							)
-						);
+						;
 				}
 			}
 
@@ -494,11 +494,11 @@ namespace SimPe.Plugin.Tool.Dockable
 					{
 						lbEPList.Text +=
 							(lbEPList.Text.Length == 0 ? "" : "; ")
-							+ (
+							+
 								new Data.LocalizedNeighbourhoodEP(
 									(Data.MetaData.NeighbourhoodEP)i + 16
 								)
-							);
+							;
 					}
 				}
 			}

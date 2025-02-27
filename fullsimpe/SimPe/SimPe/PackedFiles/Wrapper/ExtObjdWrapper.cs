@@ -254,7 +254,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns the Length of the File
 		/// </summary>
-		protected int Length => Data.Length * 2 + 0x40;
+		protected int Length => (Data.Length * 2) + 0x40;
 
 		public ObjdHealth Ok
 		{

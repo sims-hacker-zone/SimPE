@@ -326,7 +326,7 @@ namespace SimPe.Plugin
 			ImageData id = new ImageData(null);
 
 			if (
-				(System.IO.File.Exists(PathProvider.Global.NvidiaDDSTool))
+				System.IO.File.Exists(PathProvider.Global.NvidiaDDSTool)
 				&& (
 					(format == ImageLoader.TxtrFormats.DXT1Format)
 					|| (format == ImageLoader.TxtrFormats.DXT3Format)

@@ -268,7 +268,7 @@ namespace SimPe.Events
 			get; set;
 		}
 
-		public bool ChangedAny => (ChangedPackage || ChangedFile);
+		public bool ChangedAny => ChangedPackage || ChangedFile;
 
 		#endregion
 
@@ -293,14 +293,14 @@ namespace SimPe.Events
 
 			if (e.Resource == null)
 			{
-				return (Resource == null);
+				return Resource == null;
 			}
 			else if (Resource == null)
 			{
 				return false;
 			}
 
-			return (e.Resource.Equals(Resource));
+			return e.Resource.Equals(Resource);
 		}
 
 		/// <summary>
@@ -344,7 +344,7 @@ namespace SimPe.Events
 		/// </summary>
 		public new ResourceContainer this[int index]
 		{
-			get => ((ResourceContainer)base[index]);
+			get => (ResourceContainer)base[index];
 			set => base[index] = value;
 		}
 
@@ -353,7 +353,7 @@ namespace SimPe.Events
 		/// </summary>
 		public ResourceContainer this[uint index]
 		{
-			get => ((ResourceContainer)base[(int)index]);
+			get => (ResourceContainer)base[(int)index];
 			set => base[(int)index] = value;
 		}
 

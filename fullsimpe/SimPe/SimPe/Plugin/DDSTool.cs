@@ -103,7 +103,7 @@ namespace SimPe.Plugin
 			label2 = new Label();
 			label1 = new Label();
 			button1 = new Button();
-			((System.ComponentModel.ISupportInitialize)(pb)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)pb).BeginInit();
 			groupBox1.SuspendLayout();
 			SuspendLayout();
 			//
@@ -435,10 +435,10 @@ namespace SimPe.Plugin
 			//
 			button1.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			button1.FlatStyle = FlatStyle.System;
@@ -465,12 +465,12 @@ namespace SimPe.Plugin
 				0
 			);
 			FormBorderStyle = FormBorderStyle.FixedDialog;
-			Icon = ((Icon)(resources.GetObject("$this.Icon")));
+			Icon = (Icon)resources.GetObject("$this.Icon");
 			MaximizeBox = false;
 			MinimizeBox = false;
 			Name = "DDSTool";
 			Text = "DDS Builder";
-			((System.ComponentModel.ISupportInitialize)(pb)).EndInit();
+			((System.ComponentModel.ISupportInitialize)pb).EndInit();
 			groupBox1.ResumeLayout(false);
 			groupBox1.PerformLayout();
 			ResumeLayout(false);
@@ -527,7 +527,7 @@ namespace SimPe.Plugin
 
 				tbwidth.Text = img.Width.ToString();
 				tbheight.Text = img.Height.ToString();
-				button1.Enabled = (img != null);
+				button1.Enabled = img != null;
 			}
 		}
 

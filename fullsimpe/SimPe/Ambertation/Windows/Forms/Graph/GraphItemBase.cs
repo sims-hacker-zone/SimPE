@@ -312,16 +312,16 @@ namespace Ambertation.Windows.Forms.Graph
 			}
 
 			docks[0].X = Left;
-			docks[0].Y = Top + Height / 2;
+			docks[0].Y = Top + (Height / 2);
 			docks[1].X = Left + Width;
-			docks[1].Y = Top + Height / 2;
-			docks[2].X = Left + Width / 2;
+			docks[1].Y = Top + (Height / 2);
+			docks[2].X = Left + (Width / 2);
 			docks[2].Y = Top;
 			docks[3].X = Left;
 			docks[3].Y = Top;
 			docks[4].X = Left + Width;
 			docks[4].Y = Top;
-			docks[5].X = Left + Width / 2;
+			docks[5].X = Left + (Width / 2);
 			docks[5].Y = Top + Height;
 			docks[6].X = Left;
 			docks[6].Y = Top + Height;

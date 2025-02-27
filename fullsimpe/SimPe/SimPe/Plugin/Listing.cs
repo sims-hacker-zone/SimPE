@@ -73,14 +73,14 @@ namespace SimPe.Plugin
 			//
 			lb.Anchor =
 
-					(
-						(
-							(
+
+
+
 								System.Windows.Forms.AnchorStyles.Top
 								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
-					)
+							 | System.Windows.Forms.AnchorStyles.Left
+						 | System.Windows.Forms.AnchorStyles.Right
+
 
 			;
 			lb.HorizontalScrollbar = true;
@@ -96,12 +96,12 @@ namespace SimPe.Plugin
 			//
 			label1.Anchor =
 
-					(
-						(
+
+
 							System.Windows.Forms.AnchorStyles.Top
 							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
-					)
+						 | System.Windows.Forms.AnchorStyles.Right
+
 
 			;
 			label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -116,10 +116,10 @@ namespace SimPe.Plugin
 			//
 			linkLabel1.Anchor =
 
-					(
+
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
-					)
+
 
 			;
 			linkLabel1.AutoSize = true;

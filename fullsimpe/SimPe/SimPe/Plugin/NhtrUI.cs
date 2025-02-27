@@ -205,9 +205,9 @@ namespace SimPe.Plugin
 				tb.Text = (
 					(lb.SelectedItem as CountedListItem).Object as NhtrItem
 				).ToLongString();
-				pg.SelectedObject = (
+				pg.SelectedObject =
 					(lb.SelectedItem as CountedListItem).Object as NhtrItem
-				);
+				;
 			}
 		}
 

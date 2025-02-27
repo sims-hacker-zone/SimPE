@@ -319,14 +319,14 @@ namespace SimPe.Plugin.TabPage
 			//
 			groupBox17.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			groupBox17.Controls.Add(tc_gn);
@@ -350,14 +350,14 @@ namespace SimPe.Plugin.TabPage
 			//
 			tc_gn.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			tc_gn.Font = new System.Drawing.Font(
@@ -377,12 +377,12 @@ namespace SimPe.Plugin.TabPage
 			//
 			cb_gn_list.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			cb_gn_list.DropDownStyle =

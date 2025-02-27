@@ -301,12 +301,12 @@ namespace SimPe.Plugin.Scanner
 								Interfaces.Files.IPackedFile file =
 									si.Package.Read(pfd);
 								pfd.UserData = file.UncompressedData;
-								pfd.MarkForReCompress = (
+								pfd.MarkForReCompress =
 									file.IsCompressed
 									|| Data.MetaData.CompressionCandidates.Contains(
 										pfd.Type
 									)
-								);
+								;
 
 								if (pfd.Type == Data.MetaData.OBJD_FILE)
 								{

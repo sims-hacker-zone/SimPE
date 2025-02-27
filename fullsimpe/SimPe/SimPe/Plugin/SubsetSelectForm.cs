@@ -83,14 +83,14 @@ namespace SimPe.Plugin
 			//
 			panel1.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			panel1.Controls.Add(cbauto);
@@ -105,10 +105,10 @@ namespace SimPe.Plugin
 			//
 			cbauto.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			cbauto.Checked = true;
@@ -124,10 +124,10 @@ namespace SimPe.Plugin
 			//
 			button1.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			button1.FlatStyle = FlatStyle.System;
@@ -141,14 +141,14 @@ namespace SimPe.Plugin
 			//
 			pnselect.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			pnselect.AutoScroll = true;
@@ -172,7 +172,7 @@ namespace SimPe.Plugin
 			FormBorderStyle =
 				FormBorderStyle
 				.SizableToolWindow;
-			Icon = ((Icon)(resources.GetObject("$this.Icon")));
+			Icon = (Icon)resources.GetObject("$this.Icon");
 			Name = "SubsetSelectForm";
 			Text = "Subset Selection";
 			Closing += new System.ComponentModel.CancelEventHandler(
@@ -365,7 +365,7 @@ namespace SimPe.Plugin
 					mmats.Count.ToString(),
 					ft,
 					new Pen(Color.White).Brush,
-					new RectangleF((ImageSize.Width - 24) / 2 + 2, 6, 20, 20)
+					new RectangleF(((ImageSize.Width - 24) / 2) + 2, 6, 20, 20)
 				);
 
 				lvi.ImageIndex = il.Images.Count;
@@ -574,7 +574,7 @@ namespace SimPe.Plugin
 				ListView lv = (ListView)sender;
 
 				//autoselect matching Textures
-				if ((cbauto.Checked) && (lv.SelectedItems.Count > 0))
+				if (cbauto.Checked && (lv.SelectedItems.Count > 0))
 				{
 					string name = lv.SelectedItems[0].Text;
 					foreach (ListView lv2 in ListViews)

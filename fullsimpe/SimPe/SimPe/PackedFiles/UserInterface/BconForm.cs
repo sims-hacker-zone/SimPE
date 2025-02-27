@@ -232,8 +232,8 @@ namespace SimPe.PackedFiles.UserInterface
 				tbValueHex.Text = tbValueDec.Text = "";
 				tbValueHex.Enabled = tbValueDec.Enabled = false;
 			}
-			btnStrPrev.Enabled = (index > 0);
-			btnStrNext.Enabled = (index < lvConstants.Items.Count - 1);
+			btnStrPrev.Enabled = index > 0;
+			btnStrNext.Enabled = index < lvConstants.Items.Count - 1;
 			internalchg = false;
 
 			btnCancel.Enabled = false;
@@ -241,10 +241,10 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private bool isPopup => Tag == null
 					? false
-					: ((string)(Tag)).StartsWith("Popup");
+					: ((string)Tag).StartsWith("Popup");
 		private bool isNoOverride => Tag == null
 					? false
-					: ((string)(Tag)).Contains(";noOverride");
+					: ((string)Tag).Contains(";noOverride");
 		private string expName
 		{
 			get
@@ -897,11 +897,11 @@ namespace SimPe.PackedFiles.UserInterface
 			lvConstants.Items.AddRange(
 				new ListViewItem[]
 				{
-					(
-						(ListViewItem)(
+
+						(ListViewItem)
 							resources.GetObject("lvConstants.Items")
-						)
-					),
+
+					,
 				}
 			);
 			lvConstants.MultiSelect = false;

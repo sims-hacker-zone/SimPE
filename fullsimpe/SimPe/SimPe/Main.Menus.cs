@@ -225,7 +225,7 @@ namespace SimPe
 							Tag = ei
 						};
 						mi.Click += new EventHandler(Activate_miOpenInEp);
-						mi.Enabled = (ei.Exists || ei.InstallFolder != ""); // ei.InstallFolder is for where the user manually set the path to this EP
+						mi.Enabled = ei.Exists || ei.InstallFolder != ""; // ei.InstallFolder is for where the user manually set the path to this EP
 
 						miOpenIn.DropDownItems.Insert(
 							miOpenIn.DropDownItems.Count - 1,

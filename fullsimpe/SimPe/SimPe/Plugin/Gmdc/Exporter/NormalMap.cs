@@ -203,7 +203,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 				uv2 = uv3;
 
 				//Calculate Face Tangent "Factor"
-				double r = 1f / (uv1.X * uv2.Y - uv2.X * uv1.Y);
+				double r = 1f / ((uv1.X * uv2.Y) - (uv2.X * uv1.Y));
 
 				//correct extrem values of "Factor"
 				if (r > 10000000000000000)
@@ -217,7 +217,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 				}
 
 				//Calculate Face Tangent
-				Vector3f tangent = uv2.Y * v1 - uv1.Y * v2;
+				Vector3f tangent = (uv2.Y * v1) - (uv1.Y * v2);
 				tangent = tangent * r;
 				facetangent[facenumber] = tangent;
 
@@ -283,7 +283,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 
 				//Finalize tangent calculation
 				tangent = tangent.UnitVector;
-				tangent = tangent - vertnormalgmdc * (tangent * vertnormalgmdc);
+				tangent = tangent - (vertnormalgmdc * (tangent * vertnormalgmdc));
 				tangent = tangent.UnitVector;
 
 				verttangent[i] = tangent;

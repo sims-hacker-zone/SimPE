@@ -188,7 +188,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			xpGradientPanel3.SuspendLayout();
 			dcWrapper.SuspendLayout();
 			xpGradientPanel2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(pb)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)pb).BeginInit();
 			SuspendLayout();
 			//
 			// sandDockManager1
@@ -234,16 +234,16 @@ namespace SimPe.Plugin.Tool.Dockable
 			dcConvert.DockContainer = dockBottom;
 			dcConvert.DragBorder = false;
 			dcConvert.FloatingSize = new System.Drawing.Size(856, 382);
-			dcConvert.Image = (
-				(System.Drawing.Image)(resources.GetObject("dcConvert.Image"))
-			);
+			dcConvert.Image =
+				(System.Drawing.Image)resources.GetObject("dcConvert.Image")
+			;
 			dcConvert.Manager = manager;
 			dcConvert.Name = "dcConvert";
 			dcConvert.ShowCloseButton = true;
 			dcConvert.ShowCollapseButton = true;
-			dcConvert.TabImage = (
-				(System.Drawing.Image)(resources.GetObject("dcConvert.TabImage"))
-			);
+			dcConvert.TabImage =
+				(System.Drawing.Image)resources.GetObject("dcConvert.TabImage")
+			;
 			dcConvert.TabText = "Converter";
 			//
 			// xpGradientPanel4
@@ -301,16 +301,16 @@ namespace SimPe.Plugin.Tool.Dockable
 			dcHex.DockContainer = dockBottom;
 			dcHex.DragBorder = false;
 			dcHex.FloatingSize = new System.Drawing.Size(856, 382);
-			dcHex.Image = (
-				(System.Drawing.Image)(resources.GetObject("dcHex.Image"))
-			);
+			dcHex.Image =
+				(System.Drawing.Image)resources.GetObject("dcHex.Image")
+			;
 			dcHex.Manager = manager;
 			dcHex.Name = "dcHex";
 			dcHex.ShowCloseButton = true;
 			dcHex.ShowCollapseButton = true;
-			dcHex.TabImage = (
-				(System.Drawing.Image)(resources.GetObject("dcHex.TabImage"))
-			);
+			dcHex.TabImage =
+				(System.Drawing.Image)resources.GetObject("dcHex.TabImage")
+			;
 			dcHex.TabText = "Hex";
 			dcHex.VisibleChanged += new EventHandler(
 				dcHex_VisibleChanged
@@ -324,24 +324,24 @@ namespace SimPe.Plugin.Tool.Dockable
 			hvc.Data = new byte[0];
 			resources.ApplyResources(hvc, "hvc");
 			hvc.FocusedForeColor = System.Drawing.Color.FromArgb(
-				((byte)(96)),
-				((byte)(0)),
-				((byte)(0)),
-				((byte)(0))
+				(byte)96,
+				(byte)0,
+				(byte)0,
+				(byte)0
 			);
 			hvc.GridColor = System.Drawing.Color.FromArgb(
-				((byte)(50)),
-				((byte)(255)),
-				((byte)(140)),
-				((byte)(0))
+				(byte)50,
+				(byte)255,
+				(byte)140,
+				(byte)0
 			);
 			hvc.HeadColor = System.Drawing.Color.DarkOrange;
 			hvc.HeadForeColor = System.Drawing.Color.SeaShell;
 			hvc.HighlightColor = System.Drawing.Color.FromArgb(
-				((byte)(190)),
-				((byte)(255)),
-				((byte)(140)),
-				((byte)(0))
+				(byte)190,
+				(byte)255,
+				(byte)140,
+				(byte)0
 			);
 			hvc.HighlightForeColor = System.Drawing.SystemColors.HighlightText;
 			hvc.HighlightZeros = false;
@@ -364,10 +364,10 @@ namespace SimPe.Plugin.Tool.Dockable
 			hvc.ShowGrid = true;
 			hvc.View = HexViewControl.ViewState.Hex;
 			hvc.ZeroCellColor = System.Drawing.Color.FromArgb(
-				((byte)(150)),
-				((byte)(158)),
-				((byte)(210)),
-				((byte)(49))
+				(byte)150,
+				(byte)158,
+				(byte)210,
+				(byte)49
 			);
 			//
 			// panel1
@@ -425,16 +425,16 @@ namespace SimPe.Plugin.Tool.Dockable
 			dcResource.DockContainer = dockBottom;
 			dcResource.DragBorder = false;
 			dcResource.FloatingSize = new System.Drawing.Size(856, 382);
-			dcResource.Image = (
-				(System.Drawing.Image)(resources.GetObject("dcResource.Image"))
-			);
+			dcResource.Image =
+				(System.Drawing.Image)resources.GetObject("dcResource.Image")
+			;
 			dcResource.Manager = manager;
 			dcResource.Name = "dcResource";
 			dcResource.ShowCloseButton = true;
 			dcResource.ShowCollapseButton = true;
-			dcResource.TabImage = (
-				(System.Drawing.Image)(resources.GetObject("dcResource.TabImage"))
-			);
+			dcResource.TabImage =
+				(System.Drawing.Image)resources.GetObject("dcResource.TabImage")
+			;
 			dcResource.TabText = "Resource";
 			//
 			// xpGradientPanel1
@@ -592,16 +592,16 @@ namespace SimPe.Plugin.Tool.Dockable
 			dcPackage.DockContainer = dockBottom;
 			dcPackage.DragBorder = false;
 			dcPackage.FloatingSize = new System.Drawing.Size(856, 382);
-			dcPackage.Image = (
-				(System.Drawing.Image)(resources.GetObject("dcPackage.Image"))
-			);
+			dcPackage.Image =
+				(System.Drawing.Image)resources.GetObject("dcPackage.Image")
+			;
 			dcPackage.Manager = manager;
 			dcPackage.Name = "dcPackage";
 			dcPackage.ShowCloseButton = true;
 			dcPackage.ShowCollapseButton = true;
-			dcPackage.TabImage = (
-				(System.Drawing.Image)(resources.GetObject("dcPackage.TabImage"))
-			);
+			dcPackage.TabImage =
+				(System.Drawing.Image)resources.GetObject("dcPackage.TabImage")
+			;
 			dcPackage.TabText = "Package ";
 			//
 			// xpGradientPanel3
@@ -663,16 +663,16 @@ namespace SimPe.Plugin.Tool.Dockable
 			dcWrapper.DockContainer = dockBottom;
 			dcWrapper.DragBorder = false;
 			dcWrapper.FloatingSize = new System.Drawing.Size(856, 382);
-			dcWrapper.Image = (
-				(System.Drawing.Image)(resources.GetObject("dcWrapper.Image"))
-			);
+			dcWrapper.Image =
+				(System.Drawing.Image)resources.GetObject("dcWrapper.Image")
+			;
 			dcWrapper.Manager = manager;
 			dcWrapper.Name = "dcWrapper";
 			dcWrapper.ShowCloseButton = true;
 			dcWrapper.ShowCollapseButton = true;
-			dcWrapper.TabImage = (
-				(System.Drawing.Image)(resources.GetObject("dcWrapper.TabImage"))
-			);
+			dcWrapper.TabImage =
+				(System.Drawing.Image)resources.GetObject("dcWrapper.TabImage")
+			;
 			dcWrapper.TabText = "Wrapper";
 			//
 			// xpGradientPanel2
@@ -766,7 +766,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			dcWrapper.ResumeLayout(false);
 			xpGradientPanel2.ResumeLayout(false);
 			xpGradientPanel2.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(pb)).EndInit();
+			((System.ComponentModel.ISupportInitialize)pb).EndInit();
 			ResumeLayout(false);
 		}
 		#endregion
@@ -961,9 +961,9 @@ namespace SimPe.Plugin.Tool.Dockable
 
 				try
 				{
-					e.Resource.FileDescriptor.MarkForReCompress = (
+					e.Resource.FileDescriptor.MarkForReCompress =
 						cbComp.SelectedIndex == 1
-					);
+					;
 					if (
 						!e.Resource.FileDescriptor.MarkForReCompress
 						&& e.Resource.FileDescriptor.WasCompressed
@@ -1209,10 +1209,10 @@ namespace SimPe.Plugin.Tool.Dockable
 						tbinstance2.Text,
 						16
 					);
-					e.Resource.FileDescriptor.MarkForReCompress = (
+					e.Resource.FileDescriptor.MarkForReCompress =
 						cbComp.SelectedIndex == 1
 						&& !e.Resource.FileDescriptor.WasCompressed
-					);
+					;
 
 					e.Resource.FileDescriptor.Changed = true;
 				}

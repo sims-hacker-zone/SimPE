@@ -77,14 +77,14 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			lbft.Anchor =
 
-					(
-						(
-							(
+
+
+
 								System.Windows.Forms.AnchorStyles.Top
 								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
-					)
+							 | System.Windows.Forms.AnchorStyles.Left
+						 | System.Windows.Forms.AnchorStyles.Right
+
 
 			;
 			lbft.Location = new System.Drawing.Point(16, 72);
@@ -113,12 +113,12 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			lbMem.Anchor =
 
-					(
-						(
+
+
 							System.Windows.Forms.AnchorStyles.Top
 							| System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
-					)
+						 | System.Windows.Forms.AnchorStyles.Right
+
 
 			;
 			lbMem.BackColor = System.Drawing.Color.Transparent;
@@ -163,9 +163,9 @@ namespace SimPe.Plugin.Tool.Dockable
 				0
 			);
 			Name = "DebugDock";
-			TabImage = (
-				(System.Drawing.Image)(resources.GetObject("$this.TabImage"))
-			);
+			TabImage =
+				(System.Drawing.Image)resources.GetObject("$this.TabImage")
+			;
 			TabText = "Debug";
 			Text = "Debug Dock";
 			xpGradientPanel1.ResumeLayout(false);
@@ -232,7 +232,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				bool copy = false;
 				if ((items.Length - 1) < 4)
 				{
-					ct[(items.Length - 1)]++;
+					ct[items.Length - 1]++;
 				}
 
 				foreach (

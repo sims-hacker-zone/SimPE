@@ -284,23 +284,23 @@ namespace SimPe.Plugin
 				&& Helper.WindowsRegistry.LoadOnlySimsStory != 28
 			)
 			{
-				string gly = (
+				string gly =
 					System.IO.Path.Combine(
 						PathProvider
 							.Global.GetExpansion(Expansions.IslandStories)
 							.InstallFolder,
 						"TSData\\Res\\Wants\\Goals.package"
 					)
-				);
+				;
 				FileTableBase.FileIndex.AddIndexFromPackage(gly);
-				gly = (
+				gly =
 					System.IO.Path.Combine(
 						PathProvider
 							.Global.GetExpansion(Expansions.IslandStories)
 							.InstallFolder,
 						"TSData\\Res\\UI\\ui.package"
 					)
-				);
+				;
 				FileTableBase.FileIndex.AddIndexFromPackage(gly);
 			}
 			goals = new Hashtable();

@@ -491,21 +491,21 @@ namespace SimPe.Interfaces.Plugin
 			}
 		}
 
-		public virtual bool AllowMultipleInstances => (
+		public virtual bool AllowMultipleInstances =>
 					GetType()
 						.GetInterface(
 							"SimPe.Interfaces.Plugin.IMultiplePackedFileWrapper",
 							false
 						) == typeof(IMultiplePackedFileWrapper)
-				);
+				;
 
-		public virtual bool ReferencesResources => (
+		public virtual bool ReferencesResources =>
 					GetType()
 						.GetInterface(
 							"SimPe.Interfaces.Plugin.IWrapperReferencedResources",
 							false
 						) == typeof(IWrapperReferencedResources)
-				);
+				;
 
 		public void RefreshUI()
 		{

@@ -95,14 +95,14 @@ namespace SimPe.Plugin.Tool.Window
 			//
 			tbs.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			tbs.BackColor = System.Drawing.Color.Transparent;
@@ -118,7 +118,7 @@ namespace SimPe.Plugin.Tool.Window
 			);
 			tbs.HeaderText = "";
 			tbs.HeaderTextColor = System.Drawing.SystemColors.ControlText;
-			tbs.Icon = ((System.Drawing.Image)(resources.GetObject("tbs.Icon")));
+			tbs.Icon = (System.Drawing.Image)resources.GetObject("tbs.Icon");
 			tbs.IconLocation = new System.Drawing.Point(4, 12);
 			tbs.IconSize = new System.Drawing.Size(32, 32);
 			tbs.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
@@ -155,12 +155,12 @@ namespace SimPe.Plugin.Tool.Window
 			//
 			pg.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
-						) | AnchorStyles.Left
-					)
+						 | AnchorStyles.Left
+
 
 			;
 			pg.BackColor = System.Drawing.SystemColors.Control;
@@ -245,7 +245,7 @@ namespace SimPe.Plugin.Tool.Window
 				0
 			);
 			FormBorderStyle = FormBorderStyle.FixedDialog;
-			Icon = ((System.Drawing.Icon)(resources1.GetObject("$this.Icon")));
+			Icon = (System.Drawing.Icon)resources1.GetObject("$this.Icon");
 			MaximizeBox = false;
 			Name = "PackageRepairForm";
 			StartPosition = FormStartPosition.CenterScreen;
@@ -297,12 +297,12 @@ namespace SimPe.Plugin.Tool.Window
 					);
 
 					pg.SelectedObject = pr.IndexDetailsAdvanced;
-					llOpen.Enabled = (pr.Package != null);
+					llOpen.Enabled = pr.Package != null;
 				}
 			}
 			catch { }
 
-			llRepair.Enabled = (si != null);
+			llRepair.Enabled = si != null;
 		}
 
 		private void btBrowse_Click(object sender, EventArgs e)

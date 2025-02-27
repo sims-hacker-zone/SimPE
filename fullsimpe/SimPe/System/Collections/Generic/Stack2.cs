@@ -312,7 +312,7 @@ namespace System.Collections.Generic
 				if (_index == -2)
 				{  // First call to enumerator.
 					_index = _stack._size - 1;
-					retval = (_index >= 0);
+					retval = _index >= 0;
 					if (retval)
 					{
 						_currentElement = _stack._array[_index];
@@ -325,7 +325,7 @@ namespace System.Collections.Generic
 					return false;
 				}
 
-				retval = (--_index >= 0);
+				retval = --_index >= 0;
 				_currentElement = retval ? _stack._array[_index] : default;
 
 				return retval;

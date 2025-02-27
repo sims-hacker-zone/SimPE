@@ -367,14 +367,14 @@ namespace Ambertation.Windows.Forms
 					gb
 				);
 				boxes[8] = CreateTextBox(
-					left + lb.Width + 4 + (4 + boxes[6].Width) * 2,
+					left + lb.Width + 4 + ((4 + boxes[6].Width) * 2),
 					lb.Bottom,
 					boxes[6].Width,
 					"",
 					gb
 				);
 				boxes[9] = CreateTextBox(
-					left + lb.Width + 4 + (4 + boxes[6].Width) * 3,
+					left + lb.Width + 4 + ((4 + boxes[6].Width) * 3),
 					lb.Bottom,
 					boxes[6].Width,
 					"",
@@ -432,14 +432,14 @@ namespace Ambertation.Windows.Forms
 					gb
 				);
 				boxes[8] = CreateTextBox(
-					left + lb.Width + 4 + (4 + boxes[6].Width) * 2,
+					left + lb.Width + 4 + ((4 + boxes[6].Width) * 2),
 					lb.Bottom,
 					boxes[6].Width,
 					"",
 					gb
 				);
 				boxes[9] = CreateTextBox(
-					left + lb.Width + 4 + (4 + boxes[6].Width) * 3,
+					left + lb.Width + 4 + ((4 + boxes[6].Width) * 3),
 					lb.Bottom,
 					boxes[6].Width,
 					"",

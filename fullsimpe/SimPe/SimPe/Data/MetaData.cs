@@ -1714,7 +1714,7 @@ namespace SimPe.Data
 				KnownFences.Add(0x752C6D51, "Werknothom Half Wall in White");
 			}
 			if (
-				(PathProvider.Global.GetExpansion(Expansions.Mansions).Exists)
+				PathProvider.Global.GetExpansion(Expansions.Mansions).Exists
 				&& Helper.WindowsRegistry.LoadOnlySimsStory == 0
 			)
 			{

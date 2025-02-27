@@ -38,7 +38,7 @@ namespace SimPe.Plugin
 			Interfaces.Files.IPackageFile package
 		)
 		{
-			return (PathProvider.Global.EPInstalled >= 0x2);
+			return PathProvider.Global.EPInstalled >= 0x2;
 		}
 
 		public Interfaces.Plugin.IToolResult ShowDialog(

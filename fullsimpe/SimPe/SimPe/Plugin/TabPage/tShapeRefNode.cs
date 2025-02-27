@@ -165,12 +165,12 @@ namespace SimPe.Plugin.TabPage
 			//
 			groupBox3.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
-						) | AnchorStyles.Left
-					)
+						 | AnchorStyles.Left
+
 
 			;
 			groupBox3.Controls.Add(tb_srn_ver);
@@ -244,14 +244,14 @@ namespace SimPe.Plugin.TabPage
 			//
 			tb_srn_data.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			tb_srn_data.Font = new System.Drawing.Font(
@@ -292,12 +292,12 @@ namespace SimPe.Plugin.TabPage
 			//
 			tb_srn_kind.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tb_srn_kind.Font = new System.Drawing.Font(
@@ -540,14 +540,14 @@ namespace SimPe.Plugin.TabPage
 			//
 			groupBox2.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			groupBox2.Controls.Add(linkLabel4);
@@ -576,10 +576,10 @@ namespace SimPe.Plugin.TabPage
 			//
 			linkLabel4.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			linkLabel4.AutoSize = true;
@@ -598,14 +598,14 @@ namespace SimPe.Plugin.TabPage
 			//
 			tb_srn_b_name.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			tb_srn_b_name.Font = new System.Drawing.Font(
@@ -674,12 +674,12 @@ namespace SimPe.Plugin.TabPage
 			//
 			lb_srn_b.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
-						) | AnchorStyles.Left
-					)
+						 | AnchorStyles.Left
+
 
 			;
 			lb_srn_b.Font = new System.Drawing.Font(
@@ -699,10 +699,10 @@ namespace SimPe.Plugin.TabPage
 			//
 			ll_srn_delb.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			ll_srn_delb.AutoSize = true;
@@ -745,10 +745,10 @@ namespace SimPe.Plugin.TabPage
 			//
 			linkLabel3.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			linkLabel3.AutoSize = true;
@@ -835,12 +835,12 @@ namespace SimPe.Plugin.TabPage
 			//
 			lb_srn_a.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
-						) | AnchorStyles.Left
-					)
+						 | AnchorStyles.Left
+
 
 			;
 			lb_srn_a.Font = new System.Drawing.Font(
@@ -863,10 +863,10 @@ namespace SimPe.Plugin.TabPage
 			//
 			ll_srn_dela.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			ll_srn_dela.AutoSize = true;

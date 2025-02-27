@@ -92,7 +92,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			label6 = new Label();
 			label7 = new Label();
 			lbholi = new Label();
-			((ISupportInitialize)(pb)).BeginInit();
+			((ISupportInitialize)pb).BeginInit();
 			SuspendLayout();
 			//
 			// pb
@@ -194,7 +194,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			Controls.Add(label3);
 			DoubleBuffered = true;
 			Name = "NeighborhoodPreview";
-			((ISupportInitialize)(pb)).EndInit();
+			((ISupportInitialize)pb).EndInit();
 			ResumeLayout(false);
 		}
 		#endregion

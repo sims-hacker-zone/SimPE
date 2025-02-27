@@ -68,14 +68,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			pg.Anchor =
 
-					(
-						(
-							(
+
+
+
 								System.Windows.Forms.AnchorStyles.Top
 								| System.Windows.Forms.AnchorStyles.Bottom
-							) | System.Windows.Forms.AnchorStyles.Left
-						) | System.Windows.Forms.AnchorStyles.Right
-					)
+							 | System.Windows.Forms.AnchorStyles.Left
+						 | System.Windows.Forms.AnchorStyles.Right
+
 
 			;
 			pg.HelpVisible = false;
@@ -114,10 +114,10 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			rbhex.Anchor =
 
-					(
+
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
-					)
+
 
 			;
 			rbhex.AutoSize = true;
@@ -142,10 +142,10 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			rbdec.Anchor =
 
-					(
+
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
-					)
+
 
 			;
 			rbdec.AutoSize = true;
@@ -170,10 +170,10 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			rbbin.Anchor =
 
-					(
+
 						System.Windows.Forms.AnchorStyles.Top
 						| System.Windows.Forms.AnchorStyles.Right
-					)
+
 
 			;
 			rbbin.AutoSize = true;
@@ -198,10 +198,10 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			button1.Anchor =
 
-					(
+
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
-					)
+
 
 			;
 			button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
@@ -216,10 +216,10 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			button2.Anchor =
 
-					(
+
 						System.Windows.Forms.AnchorStyles.Bottom
 						| System.Windows.Forms.AnchorStyles.Right
-					)
+
 
 			;
 			button2.FlatStyle = System.Windows.Forms.FlatStyle.System;
@@ -245,7 +245,7 @@ namespace SimPe.PackedFiles.UserInterface
 				System.Drawing.GraphicsUnit.Point,
 				0
 			);
-			Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			Name = "SdscExtendedForm";
 			Padding = new System.Windows.Forms.Padding(8);
 			Text = "Extended Sdsc Browser";
@@ -264,14 +264,14 @@ namespace SimPe.PackedFiles.UserInterface
 		string GetName(int i)
 		{
 			//string name = Helper.MinStrLength(i.ToString(), 4) + ": ";
-			string name = Helper.HexString(0x0a + 2 * i);
+			string name = Helper.HexString(0x0a + (2 * i));
 			if (i > 0)
 			{
-				name += "; 0x" + (Helper.HexString((ushort)(i - 1)));
+				name += "; 0x" + Helper.HexString((ushort)(i - 1));
 			}
 
 			name += ": ";
-			name += ((string)names[i]);
+			name += (string)names[i];
 
 			return name;
 		}
@@ -333,7 +333,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		void ShowData(byte[] data)
 		{
-			shortdata = new short[(data.Length - 0xA) / 2 + 1];
+			shortdata = new short[((data.Length - 0xA) / 2) + 1];
 			int j = 0;
 			for (int i = 0xa; i < data.Length - 1; i += 2)
 			{
@@ -446,9 +446,9 @@ namespace SimPe.PackedFiles.UserInterface
 			f.LoadWantTable(wrp.Version);
 			byte[] data = wrp.CurrentStateData.ToArray();
 
-			f.rbhex.Checked = (Ambertation.BaseChangeShort.DigitBase == 16);
-			f.rbbin.Checked = (Ambertation.BaseChangeShort.DigitBase == 2);
-			f.rbdec.Checked = (!f.rbhex.Checked && !f.rbbin.Checked);
+			f.rbhex.Checked = Ambertation.BaseChangeShort.DigitBase == 16;
+			f.rbbin.Checked = Ambertation.BaseChangeShort.DigitBase == 2;
+			f.rbdec.Checked = !f.rbhex.Checked && !f.rbbin.Checked;
 			f.propchanged = false;
 
 			f.ShowData(data);

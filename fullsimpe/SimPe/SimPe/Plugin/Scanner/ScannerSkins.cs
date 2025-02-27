@@ -178,7 +178,7 @@ namespace SimPe.Plugin.Scanner
 			FileTableBase.FileIndex.StoreCurrentState();
 			FileTableBase.FileIndex.AddIndexFromPackage(src);
 
-			bool usefam = (skintone == "00000000-0000-0000-0000-000000000000");
+			bool usefam = skintone == "00000000-0000-0000-0000-000000000000";
 			try
 			{
 				//find al description Files that belong to the Skintone that should be replaced

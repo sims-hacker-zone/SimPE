@@ -187,7 +187,7 @@ namespace SimPe.Geometry
 		/// </summary>
 		public new VectorTransformation this[int index]
 		{
-			get => ((VectorTransformation)base[index]);
+			get => (VectorTransformation)base[index];
 			set => base[index] = value;
 		}
 
@@ -196,7 +196,7 @@ namespace SimPe.Geometry
 		/// </summary>
 		public VectorTransformation this[uint index]
 		{
-			get => ((VectorTransformation)base[(int)index]);
+			get => (VectorTransformation)base[(int)index];
 			set => base[(int)index] = value;
 		}
 

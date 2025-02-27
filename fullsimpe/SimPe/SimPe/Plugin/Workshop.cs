@@ -524,7 +524,7 @@ namespace SimPe.Plugin
 			tbflname = new TextBox();
 			ofd = new OpenFileDialog();
 			groupBox1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(pb)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)pb).BeginInit();
 			tabControl1.SuspendLayout();
 			tClone.SuspendLayout();
 			tColor.SuspendLayout();
@@ -538,14 +538,14 @@ namespace SimPe.Plugin
 			//
 			lbobj.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lbobj.IntegralHeight = false;
@@ -560,10 +560,10 @@ namespace SimPe.Plugin
 			//
 			btclone.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			btclone.FlatStyle = FlatStyle.System;
@@ -585,12 +585,12 @@ namespace SimPe.Plugin
 			//
 			groupBox1.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Bottom
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			groupBox1.Controls.Add(pb);
@@ -666,10 +666,10 @@ namespace SimPe.Plugin
 			//
 			tabControl1.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			tabControl1.Controls.Add(tClone);
@@ -889,12 +889,12 @@ namespace SimPe.Plugin
 			//
 			tbseek.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tbseek.Location = new Point(8, 8);
@@ -907,14 +907,14 @@ namespace SimPe.Plugin
 			//
 			tabControl2.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			tabControl2.Controls.Add(tabPage1);
@@ -952,14 +952,14 @@ namespace SimPe.Plugin
 			//
 			tv.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			tv.HideSelection = false;
@@ -1004,10 +1004,10 @@ namespace SimPe.Plugin
 			//
 			tbflname.Anchor =
 
-					(
+
 						AnchorStyles.Left
 						| AnchorStyles.Right
-					)
+
 
 			;
 			tbflname.Location = new Point(8, 12);
@@ -1036,12 +1036,12 @@ namespace SimPe.Plugin
 			FormBorderStyle =
 				FormBorderStyle
 				.SizableToolWindow;
-			Icon = ((Icon)(resources1.GetObject("$this.Icon")));
+			Icon = (Icon)resources1.GetObject("$this.Icon");
 			MinimumSize = new Size(520, 320);
 			Name = "Workshop";
 			Text = "Object Workshop (biggest thanks to RGiles and Numenor)";
 			groupBox1.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(pb)).EndInit();
+			((System.ComponentModel.ISupportInitialize)pb).EndInit();
 			tabControl1.ResumeLayout(false);
 			tClone.ResumeLayout(false);
 			tColor.ResumeLayout(false);
@@ -1231,7 +1231,7 @@ namespace SimPe.Plugin
 						}
 					}
 
-					if ((cbgid.Checked) && (package != null))
+					if (cbgid.Checked && (package != null))
 					{
 						WaitingScreen.Wait();
 						try
@@ -1510,7 +1510,7 @@ namespace SimPe.Plugin
 			objclone.RcolModelClone(modelname, exclude);
 
 			//for clones only when cbparent is checked
-			if ((cbparent.Checked) && (!rbColor.Checked))
+			if (cbparent.Checked && (!rbColor.Checked))
 			{
 				string[] names = Scenegraph.LoadParentModelNames(package, true);
 				Packages.File pkg = Packages.File.LoadFromFile(null);
@@ -1759,7 +1759,7 @@ namespace SimPe.Plugin
 
 		private void cbfix_CheckedChanged(object sender, EventArgs e)
 		{
-			cbclean.Enabled = (cbfix.Checked || cbparent.Checked);
+			cbclean.Enabled = cbfix.Checked || cbparent.Checked;
 			cbclean.Refresh();
 		}
 

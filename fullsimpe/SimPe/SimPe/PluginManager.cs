@@ -381,7 +381,7 @@ namespace SimPe
 
 				if (mi != null)
 				{
-					bool beggrp = (mfirst && mi.Items.Count != 0);
+					bool beggrp = mfirst && mi.Items.Count != 0;
 					if (beggrp)
 					{
 						mi.Items.Add("-");

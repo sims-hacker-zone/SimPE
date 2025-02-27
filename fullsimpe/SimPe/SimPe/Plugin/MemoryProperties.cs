@@ -125,7 +125,7 @@ namespace SimPe.Plugin
 			pnInventory.SuspendLayout();
 			pnOwner.SuspendLayout();
 			pnSelection.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(pb)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)pb).BeginInit();
 			pnListing.SuspendLayout();
 			pnFlags.SuspendLayout();
 			panel3.SuspendLayout();
@@ -597,7 +597,7 @@ namespace SimPe.Plugin
 			pnInventory.PerformLayout();
 			pnOwner.ResumeLayout(false);
 			pnSelection.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(pb)).EndInit();
+			((System.ComponentModel.ISupportInitialize)pb).EndInit();
 			pnListing.ResumeLayout(false);
 			pnFlags.ResumeLayout(false);
 			pnFlags.PerformLayout();
@@ -780,9 +780,9 @@ namespace SimPe.Plugin
 
 		void UpdateSelectedItem()
 		{
-			bool use = (
+			bool use =
 				!item.MemoryCacheItem.IsToken && !item.MemoryCacheItem.IsInventory
-			);
+			;
 			cbMems.Visible = use;
 			rbMems.Checked = use;
 			if (use)
@@ -798,7 +798,7 @@ namespace SimPe.Plugin
 				SelectNgbhItem(cbToks, item);
 			}
 
-			use = (!item.MemoryCacheItem.IsToken && item.MemoryCacheItem.IsInventory);
+			use = !item.MemoryCacheItem.IsToken && item.MemoryCacheItem.IsInventory;
 			cbObjs.Visible = use;
 			rbObjs.Checked = use;
 			if (use)
@@ -916,32 +916,32 @@ namespace SimPe.Plugin
 		{
 			SimMemoryType smt = (SimMemoryType)cbtype.SelectedValue;
 
-			pnOwner.Visible = (
+			pnOwner.Visible =
 				smt == SimMemoryType.Memory
 				|| smt == SimMemoryType.Gossip
 				|| smt == SimMemoryType.GossipInventory
-			);
-			pnSub1.Visible = (
+			;
+			pnSub1.Visible =
 				smt == SimMemoryType.Memory || smt == SimMemoryType.Gossip
-			);
+			;
 			pnSub2.Visible = pnSub1.Visible;
-			pnSubject.Visible = (
+			pnSubject.Visible =
 				smt == SimMemoryType.Memory || smt == SimMemoryType.Gossip
-			);
-			pnObjectGuid.Visible = (
+			;
+			pnObjectGuid.Visible =
 				smt == SimMemoryType.Memory
 				|| smt == SimMemoryType.Gossip
 				|| smt == SimMemoryType.Object
-			);
+			;
 
-			pnInventory.Visible = (
+			pnInventory.Visible =
 				smt == SimMemoryType.Inventory || smt == SimMemoryType.GossipInventory
-			);
-			pnValue.Visible = (
+			;
+			pnValue.Visible =
 				smt == SimMemoryType.Skill
 				|| smt == SimMemoryType.Badge
 				|| smt == SimMemoryType.ValueToken
-			);
+			;
 			pnFlags.Visible = true;
 
 			pnListing.Visible = Helper.WindowsRegistry.HiddenMode;

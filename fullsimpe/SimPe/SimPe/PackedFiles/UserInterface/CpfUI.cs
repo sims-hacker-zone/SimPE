@@ -83,7 +83,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 
 			form.llcpfchange.Enabled = false;
-			form.btprev.Visible = (fkt != null);
+			form.btprev.Visible = fkt != null;
 
 			form.fkt = fkt;
 		}

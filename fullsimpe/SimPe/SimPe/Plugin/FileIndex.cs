@@ -143,7 +143,7 @@ namespace SimPe.Plugin
 					else return true;
 				} else if (Package.FileName==null) return false;*/
 
-				return (res && fii.Package.Equals(Package));
+				return res && fii.Package.Equals(Package);
 			}
 			else
 			{
@@ -201,13 +201,13 @@ namespace SimPe.Plugin
 	{
 		public new FileIndexItem this[int index]
 		{
-			get => ((FileIndexItem)base[index]);
+			get => (FileIndexItem)base[index];
 			set => base[index] = value;
 		}
 
 		public FileIndexItem this[uint index]
 		{
-			get => ((FileIndexItem)base[(int)index]);
+			get => (FileIndexItem)base[(int)index];
 			set => base[(int)index] = value;
 		}
 
@@ -740,7 +740,7 @@ namespace SimPe.Plugin
 			package.Persistent = true;
 			if (package.FileName != null)
 			{
-				if ((Contains(package.FileName.Trim().ToLower())) && !overwrite)
+				if (Contains(package.FileName.Trim().ToLower()) && !overwrite)
 				{
 					return;
 				}
@@ -778,7 +778,7 @@ namespace SimPe.Plugin
 			package.Persistent = true;
 			if (package.FileName != null)
 			{
-				if ((Contains(package.FileName.Trim().ToLower())) && !overwrite)
+				if (Contains(package.FileName.Trim().ToLower()) && !overwrite)
 				{
 					return;
 				}
@@ -1241,7 +1241,7 @@ namespace SimPe.Plugin
 				Hashtable groups = (Hashtable)index[type];
 				foreach (uint group in groups.Keys)
 				{
-					if ((nolocal) && (group == Data.MetaData.LOCAL_GROUP))
+					if (nolocal && (group == Data.MetaData.LOCAL_GROUP))
 					{
 						continue;
 					}

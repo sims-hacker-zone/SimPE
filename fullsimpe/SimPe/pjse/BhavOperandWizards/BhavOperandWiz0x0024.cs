@@ -402,8 +402,8 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 						: -1;
 			}
 
-			tbIconID.Enabled = (iconType == 3);
-			btnStrIcon.Enabled = (iconType == 4);
+			tbIconID.Enabled = iconType == 3;
+			btnStrIcon.Enabled = iconType == 4;
 
 			internalchg = false;
 		}
@@ -532,7 +532,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 					((Button)alStrBtn[which]).Enabled =
 					((TextBox)alTextBox[which]).Enabled =
 						true;
-				((Button)alDefBtn[which]).Enabled = (strnum != 0);
+				((Button)alDefBtn[which]).Enabled = strnum != 0;
 			}
 		}
 
@@ -612,7 +612,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 			StrWrapper str = new StrWrapper();
 			str.ProcessData(items[0].PFD, items[0].Package);
 
-			int i = (new StrChooser()).Strnum(str);
+			int i = new StrChooser().Strnum(str);
 			if (i >= 0)
 			{
 				if (messages.Length > which)

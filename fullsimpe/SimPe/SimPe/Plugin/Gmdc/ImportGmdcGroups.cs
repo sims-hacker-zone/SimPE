@@ -140,14 +140,14 @@ namespace SimPe.Plugin.Gmdc
 			//
 			lv.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lv.BorderStyle = BorderStyle.None;
@@ -412,10 +412,10 @@ namespace SimPe.Plugin.Gmdc
 			//
 			button1.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			button1.FlatStyle = FlatStyle.System;
@@ -595,10 +595,10 @@ namespace SimPe.Plugin.Gmdc
 			//
 			gbbones.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			gbbones.BackColor = System.Drawing.Color.Transparent;
@@ -617,10 +617,10 @@ namespace SimPe.Plugin.Gmdc
 			//
 			gbgroups.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			gbgroups.BackColor = System.Drawing.Color.Transparent;
@@ -699,10 +699,10 @@ namespace SimPe.Plugin.Gmdc
 			//
 			gbsettings.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			gbsettings.BackColor = System.Drawing.Color.Transparent;
@@ -727,7 +727,7 @@ namespace SimPe.Plugin.Gmdc
 				System.Drawing.GraphicsUnit.Point,
 				0
 			);
-			Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			Name = "ImportGmdcGroupsForm";
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Mesh Group Importer";
@@ -883,7 +883,7 @@ namespace SimPe.Plugin.Gmdc
 			}
 
 			bool toobig = false;
-			f.cbBMesh.Enabled = (joints.Count == 0);
+			f.cbBMesh.Enabled = joints.Count == 0;
 			foreach (ImportedGroup a in actions)
 			{
 				if (a.Group.Name.ToLower().Trim().IndexOf("shadow") > -1)

@@ -250,7 +250,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 		{
 			setGUID(
 				true,
-				(UInt32)(o[sub] | o[sub + 1] << 8 | o[sub + 2] << 16 | o[sub + 3] << 24)
+				(UInt32)(o[sub] | (o[sub + 1] << 8) | (o[sub + 2] << 16) | (o[sub + 3] << 24))
 			);
 		}
 
@@ -290,10 +290,10 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 				cbInventory.Enabled = true;
 			}
 
-			int i = (o5678[1] & 0x07);
+			int i = o5678[1] & 0x07;
 			cbInventory.SelectedIndex = (i < cbInventory.Items.Count) ? i : -1;
 			lbDoid3.Text =
-				(pnDoid3.Enabled = (i >= 1 && i <= 3))
+				(pnDoid3.Enabled = i >= 1 && i <= 3)
 					? cbInventory.SelectedItem.ToString()
 					: "";
 		}
@@ -343,15 +343,15 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 			if (operation < aNames[0].Length)
 			{
 				lbDoid1.Text =
-					(pnDoid1.Enabled = (aNames[1][operation] > 0))
+					(pnDoid1.Enabled = aNames[1][operation] > 0)
 						? Localization.GetString(names[aNames[1][operation]])
 						: "";
 				lbDoid2.Text =
-					(pnDoid2.Enabled = (aNames[2][operation] > 0))
+					(pnDoid2.Enabled = aNames[2][operation] > 0)
 						? Localization.GetString(names[aNames[2][operation]])
 						: "";
 				lbDoid3.Text =
-					(pnDoid3.Enabled = (aNames[3][operation] > 0))
+					(pnDoid3.Enabled = aNames[3][operation] > 0)
 						? Localization.GetString(names[aNames[3][operation]])
 						: "";
 			}
@@ -462,9 +462,9 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 			}
 			ckbReversed.Checked = option1[7];
 
-			pnDoid0.Enabled = (
+			pnDoid0.Enabled =
 				cbTargetInv.SelectedIndex >= 1 && cbTargetInv.SelectedIndex <= 3
-			);
+			;
 			lbDoid0.Text = pnDoid0.Enabled ? cbTargetInv.SelectedItem.ToString() : "";
 			rb1Singular.Checked = !rb1Counted.Checked;
 
@@ -500,7 +500,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 			ckbTTVisible.Enabled =
 				ckbTTMemory.Enabled =
 				ckbTTShopping.Enabled =
-					(inst.NodeVersion >= 2);
+					inst.NodeVersion >= 2;
 			if (inst.NodeVersion >= 2)
 			{
 				Boolset option2 = ops2[1];
@@ -1256,9 +1256,9 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 
 		private void cbTargetInv_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			pnDoid0.Enabled = (
+			pnDoid0.Enabled =
 				cbTargetInv.SelectedIndex >= 1 && cbTargetInv.SelectedIndex <= 3
-			);
+			;
 			lbDoid0.Text = pnDoid0.Enabled ? cbTargetInv.SelectedItem.ToString() : "";
 		}
 
@@ -1274,9 +1274,9 @@ namespace pjse.BhavOperandWizards.Wiz0x0033
 
 			refreshDoid1();
 
-			pnDoid3.Enabled = (
+			pnDoid3.Enabled =
 				cbInventory.SelectedIndex >= 1 && cbInventory.SelectedIndex <= 3
-			);
+			;
 			lbDoid3.Text = pnDoid3.Enabled ? cbInventory.SelectedItem.ToString() : "";
 
 			internalchg = origstate;

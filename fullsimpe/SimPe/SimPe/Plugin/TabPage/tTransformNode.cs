@@ -283,12 +283,12 @@ namespace SimPe.Plugin.TabPage
 			//
 			groupBox6.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
-						) | AnchorStyles.Left
-					)
+						 | AnchorStyles.Left
+
 
 			;
 			groupBox6.Controls.Add(ll_tn_add);
@@ -317,10 +317,10 @@ namespace SimPe.Plugin.TabPage
 			//
 			ll_tn_add.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			ll_tn_add.AutoSize = true;
@@ -403,12 +403,12 @@ namespace SimPe.Plugin.TabPage
 			//
 			lb_tn.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
-						) | AnchorStyles.Left
-					)
+						 | AnchorStyles.Left
+
 
 			;
 			lb_tn.Font = new System.Drawing.Font(
@@ -429,10 +429,10 @@ namespace SimPe.Plugin.TabPage
 			//
 			ll_tn_delete.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			ll_tn_delete.AutoSize = true;

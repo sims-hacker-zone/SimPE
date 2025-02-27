@@ -410,7 +410,7 @@ namespace pjOBJDTool
 
 			int j = acbFuncBuild[i].SelectedIndex - 1;
 			wrapper[afFuncBuild[i]] = (ushort)(1 << j);
-			l = pjse.BhavWiz.readStr((pjse.GS.BhavStr)(0x110 + 16 * i + j));
+			l = pjse.BhavWiz.readStr((pjse.GS.BhavStr)(0x110 + (16 * i) + j));
 			while (l.Count < 16)
 			{
 				//l.Add((l.Count + 1).ToString());

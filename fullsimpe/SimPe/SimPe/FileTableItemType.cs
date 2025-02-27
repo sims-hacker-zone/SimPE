@@ -102,17 +102,17 @@ namespace SimPe
 		{
 			if (obj is Expansions)
 			{
-				return AsUint.CompareTo((uint)((Expansions)obj));
+				return AsUint.CompareTo((uint)(Expansions)obj);
 			}
 
 			if (obj is FileTablePaths)
 			{
-				return AsUint.CompareTo((uint)((FileTablePaths)obj));
+				return AsUint.CompareTo((uint)(FileTablePaths)obj);
 			}
 
 			if (obj is int)
 			{
-				return AsUint.CompareTo((uint)((int)obj));
+				return AsUint.CompareTo((uint)(int)obj);
 			}
 
 			if (obj is uint)
@@ -133,7 +133,7 @@ namespace SimPe
 		public override bool Equals(object obj)
 		{
 			int res = CompareTo(obj);
-			return (res == 0);
+			return res == 0;
 			//return base.Equals(obj);
 		}
 

@@ -106,7 +106,7 @@ namespace SimPe.Plugin.Gmdc
 				VectorTransformation.TransformOrder.TranslateRotate
 			);
 
-			Scale = (float)(1.0);
+			Scale = (float)1.0;
 		}
 
 		/// <summary>
@@ -168,7 +168,7 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public new ImportedBone this[int index]
 		{
-			get => ((ImportedBone)base[index]);
+			get => (ImportedBone)base[index];
 			set => base[index] = value;
 		}
 
@@ -177,7 +177,7 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public ImportedBone this[uint index]
 		{
-			get => ((ImportedBone)base[(int)index]);
+			get => (ImportedBone)base[(int)index];
 			set => base[(int)index] = value;
 		}
 

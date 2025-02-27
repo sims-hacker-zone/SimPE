@@ -160,67 +160,67 @@ namespace SimPe
 			chkSimFolder.AccessibleName = resources.GetString(
 				"chkSimFolder.AccessibleName"
 			);
-			chkSimFolder.Anchor = (
-				(AnchorStyles)(
+			chkSimFolder.Anchor =
+				(AnchorStyles)
 					resources.GetObject("chkSimFolder.Anchor")
-				)
-			);
-			chkSimFolder.AutoScroll = (
-				(bool)(resources.GetObject("chkSimFolder.AutoScroll"))
-			);
-			chkSimFolder.AutoScrollMargin = (
-				(Size)(
+
+			;
+			chkSimFolder.AutoScroll =
+				(bool)resources.GetObject("chkSimFolder.AutoScroll")
+			;
+			chkSimFolder.AutoScrollMargin =
+				(Size)
 					resources.GetObject("chkSimFolder.AutoScrollMargin")
-				)
-			);
-			chkSimFolder.AutoScrollMinSize = (
-				(Size)(
+
+			;
+			chkSimFolder.AutoScrollMinSize =
+				(Size)
 					resources.GetObject("chkSimFolder.AutoScrollMinSize")
-				)
-			);
-			chkSimFolder.BackgroundImage = (
-				(Image)(
+
+			;
+			chkSimFolder.BackgroundImage =
+				(Image)
 					resources.GetObject("chkSimFolder.BackgroundImage")
-				)
-			);
+
+			;
 			chkSimFolder.CanFix = true;
 			chkSimFolder.Caption = resources.GetString("chkSimFolder.Caption");
 			chkSimFolder.CheckState = CheckItemState.Unknown;
 			chkSimFolder.Details = "";
-			chkSimFolder.Dock = (
-				(DockStyle)(
+			chkSimFolder.Dock =
+				(DockStyle)
 					resources.GetObject("chkSimFolder.Dock")
-				)
-			);
-			chkSimFolder.Enabled = (
-				(bool)(resources.GetObject("chkSimFolder.Enabled"))
-			);
-			chkSimFolder.Font = (
-				(Font)(resources.GetObject("chkSimFolder.Font"))
-			);
-			chkSimFolder.ImeMode = (
-				(ImeMode)(
+
+			;
+			chkSimFolder.Enabled =
+				(bool)resources.GetObject("chkSimFolder.Enabled")
+			;
+			chkSimFolder.Font =
+				(Font)resources.GetObject("chkSimFolder.Font")
+			;
+			chkSimFolder.ImeMode =
+				(ImeMode)
 					resources.GetObject("chkSimFolder.ImeMode")
-				)
-			);
-			chkSimFolder.Location = (
-				(Point)(resources.GetObject("chkSimFolder.Location"))
-			);
+
+			;
+			chkSimFolder.Location =
+				(Point)resources.GetObject("chkSimFolder.Location")
+			;
 			chkSimFolder.Name = "chkSimFolder";
-			chkSimFolder.RightToLeft = (
-				(RightToLeft)(
+			chkSimFolder.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("chkSimFolder.RightToLeft")
-				)
-			);
-			chkSimFolder.Size = (
-				(Size)(resources.GetObject("chkSimFolder.Size"))
-			);
-			chkSimFolder.TabIndex = (
-				(int)(resources.GetObject("chkSimFolder.TabIndex"))
-			);
-			chkSimFolder.Visible = (
-				(bool)(resources.GetObject("chkSimFolder.Visible"))
-			);
+
+			;
+			chkSimFolder.Size =
+				(Size)resources.GetObject("chkSimFolder.Size")
+			;
+			chkSimFolder.TabIndex =
+				(int)resources.GetObject("chkSimFolder.TabIndex")
+			;
+			chkSimFolder.Visible =
+				(bool)resources.GetObject("chkSimFolder.Visible")
+			;
 			chkSimFolder.CalledCheck += new CheckItem.FixEventHandler(
 				chkSimFolder_CalledCheck
 			);
@@ -236,51 +236,51 @@ namespace SimPe
 			chkCache.AccessibleName = resources.GetString(
 				"chkCache.AccessibleName"
 			);
-			chkCache.Anchor = (
-				(AnchorStyles)(
+			chkCache.Anchor =
+				(AnchorStyles)
 					resources.GetObject("chkCache.Anchor")
-				)
-			);
-			chkCache.AutoScroll = (
-				(bool)(resources.GetObject("chkCache.AutoScroll"))
-			);
-			chkCache.AutoScrollMargin = (
-				(Size)(resources.GetObject("chkCache.AutoScrollMargin"))
-			);
-			chkCache.AutoScrollMinSize = (
-				(Size)(resources.GetObject("chkCache.AutoScrollMinSize"))
-			);
-			chkCache.BackgroundImage = (
-				(Image)(resources.GetObject("chkCache.BackgroundImage"))
-			);
+
+			;
+			chkCache.AutoScroll =
+				(bool)resources.GetObject("chkCache.AutoScroll")
+			;
+			chkCache.AutoScrollMargin =
+				(Size)resources.GetObject("chkCache.AutoScrollMargin")
+			;
+			chkCache.AutoScrollMinSize =
+				(Size)resources.GetObject("chkCache.AutoScrollMinSize")
+			;
+			chkCache.BackgroundImage =
+				(Image)resources.GetObject("chkCache.BackgroundImage")
+			;
 			chkCache.CanFix = true;
 			chkCache.Caption = resources.GetString("chkCache.Caption");
 			chkCache.CheckState = CheckItemState.Unknown;
 			chkCache.Details = "";
-			chkCache.Dock = (
-				(DockStyle)(resources.GetObject("chkCache.Dock"))
-			);
-			chkCache.Enabled = ((bool)(resources.GetObject("chkCache.Enabled")));
-			chkCache.Font = (
-				(Font)(resources.GetObject("chkCache.Font"))
-			);
-			chkCache.ImeMode = (
-				(ImeMode)(resources.GetObject("chkCache.ImeMode"))
-			);
-			chkCache.Location = (
-				(Point)(resources.GetObject("chkCache.Location"))
-			);
+			chkCache.Dock =
+				(DockStyle)resources.GetObject("chkCache.Dock")
+			;
+			chkCache.Enabled = (bool)resources.GetObject("chkCache.Enabled");
+			chkCache.Font =
+				(Font)resources.GetObject("chkCache.Font")
+			;
+			chkCache.ImeMode =
+				(ImeMode)resources.GetObject("chkCache.ImeMode")
+			;
+			chkCache.Location =
+				(Point)resources.GetObject("chkCache.Location")
+			;
 			chkCache.Name = "chkCache";
-			chkCache.RightToLeft = (
-				(RightToLeft)(
+			chkCache.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("chkCache.RightToLeft")
-				)
-			);
-			chkCache.Size = (
-				(Size)(resources.GetObject("chkCache.Size"))
-			);
-			chkCache.TabIndex = ((int)(resources.GetObject("chkCache.TabIndex")));
-			chkCache.Visible = ((bool)(resources.GetObject("chkCache.Visible")));
+
+			;
+			chkCache.Size =
+				(Size)resources.GetObject("chkCache.Size")
+			;
+			chkCache.TabIndex = (int)resources.GetObject("chkCache.TabIndex");
+			chkCache.Visible = (bool)resources.GetObject("chkCache.Visible");
 			chkCache.CalledCheck += new CheckItem.FixEventHandler(
 				chkCache_CalledCheck
 			);
@@ -296,67 +296,67 @@ namespace SimPe
 			chkFileTable.AccessibleName = resources.GetString(
 				"chkFileTable.AccessibleName"
 			);
-			chkFileTable.Anchor = (
-				(AnchorStyles)(
+			chkFileTable.Anchor =
+				(AnchorStyles)
 					resources.GetObject("chkFileTable.Anchor")
-				)
-			);
-			chkFileTable.AutoScroll = (
-				(bool)(resources.GetObject("chkFileTable.AutoScroll"))
-			);
-			chkFileTable.AutoScrollMargin = (
-				(Size)(
+
+			;
+			chkFileTable.AutoScroll =
+				(bool)resources.GetObject("chkFileTable.AutoScroll")
+			;
+			chkFileTable.AutoScrollMargin =
+				(Size)
 					resources.GetObject("chkFileTable.AutoScrollMargin")
-				)
-			);
-			chkFileTable.AutoScrollMinSize = (
-				(Size)(
+
+			;
+			chkFileTable.AutoScrollMinSize =
+				(Size)
 					resources.GetObject("chkFileTable.AutoScrollMinSize")
-				)
-			);
-			chkFileTable.BackgroundImage = (
-				(Image)(
+
+			;
+			chkFileTable.BackgroundImage =
+				(Image)
 					resources.GetObject("chkFileTable.BackgroundImage")
-				)
-			);
+
+			;
 			chkFileTable.CanFix = true;
 			chkFileTable.Caption = resources.GetString("chkFileTable.Caption");
 			chkFileTable.CheckState = CheckItemState.Unknown;
 			chkFileTable.Details = "";
-			chkFileTable.Dock = (
-				(DockStyle)(
+			chkFileTable.Dock =
+				(DockStyle)
 					resources.GetObject("chkFileTable.Dock")
-				)
-			);
-			chkFileTable.Enabled = (
-				(bool)(resources.GetObject("chkFileTable.Enabled"))
-			);
-			chkFileTable.Font = (
-				(Font)(resources.GetObject("chkFileTable.Font"))
-			);
-			chkFileTable.ImeMode = (
-				(ImeMode)(
+
+			;
+			chkFileTable.Enabled =
+				(bool)resources.GetObject("chkFileTable.Enabled")
+			;
+			chkFileTable.Font =
+				(Font)resources.GetObject("chkFileTable.Font")
+			;
+			chkFileTable.ImeMode =
+				(ImeMode)
 					resources.GetObject("chkFileTable.ImeMode")
-				)
-			);
-			chkFileTable.Location = (
-				(Point)(resources.GetObject("chkFileTable.Location"))
-			);
+
+			;
+			chkFileTable.Location =
+				(Point)resources.GetObject("chkFileTable.Location")
+			;
 			chkFileTable.Name = "chkFileTable";
-			chkFileTable.RightToLeft = (
-				(RightToLeft)(
+			chkFileTable.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("chkFileTable.RightToLeft")
-				)
-			);
-			chkFileTable.Size = (
-				(Size)(resources.GetObject("chkFileTable.Size"))
-			);
-			chkFileTable.TabIndex = (
-				(int)(resources.GetObject("chkFileTable.TabIndex"))
-			);
-			chkFileTable.Visible = (
-				(bool)(resources.GetObject("chkFileTable.Visible"))
-			);
+
+			;
+			chkFileTable.Size =
+				(Size)resources.GetObject("chkFileTable.Size")
+			;
+			chkFileTable.TabIndex =
+				(int)resources.GetObject("chkFileTable.TabIndex")
+			;
+			chkFileTable.Visible =
+				(bool)resources.GetObject("chkFileTable.Visible")
+			;
 			chkFileTable.CalledCheck += new CheckItem.FixEventHandler(
 				chkFileTable_CalledCheck
 			);
@@ -370,47 +370,47 @@ namespace SimPe
 				"panel1.AccessibleDescription"
 			);
 			panel1.AccessibleName = resources.GetString("panel1.AccessibleName");
-			panel1.Anchor = (
-				(AnchorStyles)(
+			panel1.Anchor =
+				(AnchorStyles)
 					resources.GetObject("panel1.Anchor")
-				)
-			);
-			panel1.AutoScroll = ((bool)(resources.GetObject("panel1.AutoScroll")));
-			panel1.AutoScrollMargin = (
-				(Size)(resources.GetObject("panel1.AutoScrollMargin"))
-			);
-			panel1.AutoScrollMinSize = (
-				(Size)(resources.GetObject("panel1.AutoScrollMinSize"))
-			);
-			panel1.BackgroundImage = (
-				(Image)(resources.GetObject("panel1.BackgroundImage"))
-			);
+
+			;
+			panel1.AutoScroll = (bool)resources.GetObject("panel1.AutoScroll");
+			panel1.AutoScrollMargin =
+				(Size)resources.GetObject("panel1.AutoScrollMargin")
+			;
+			panel1.AutoScrollMinSize =
+				(Size)resources.GetObject("panel1.AutoScrollMinSize")
+			;
+			panel1.BackgroundImage =
+				(Image)resources.GetObject("panel1.BackgroundImage")
+			;
 			panel1.Controls.Add(button1);
-			panel1.Dock = (
-				(DockStyle)(resources.GetObject("panel1.Dock"))
-			);
-			panel1.Enabled = ((bool)(resources.GetObject("panel1.Enabled")));
-			panel1.Font = (
-				(Font)(resources.GetObject("panel1.Font"))
-			);
-			panel1.ImeMode = (
-				(ImeMode)(resources.GetObject("panel1.ImeMode"))
-			);
-			panel1.Location = (
-				(Point)(resources.GetObject("panel1.Location"))
-			);
+			panel1.Dock =
+				(DockStyle)resources.GetObject("panel1.Dock")
+			;
+			panel1.Enabled = (bool)resources.GetObject("panel1.Enabled");
+			panel1.Font =
+				(Font)resources.GetObject("panel1.Font")
+			;
+			panel1.ImeMode =
+				(ImeMode)resources.GetObject("panel1.ImeMode")
+			;
+			panel1.Location =
+				(Point)resources.GetObject("panel1.Location")
+			;
 			panel1.Name = "panel1";
-			panel1.RightToLeft = (
-				(RightToLeft)(
+			panel1.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("panel1.RightToLeft")
-				)
-			);
-			panel1.Size = (
-				(Size)(resources.GetObject("panel1.Size"))
-			);
-			panel1.TabIndex = ((int)(resources.GetObject("panel1.TabIndex")));
+
+			;
+			panel1.Size =
+				(Size)resources.GetObject("panel1.Size")
+			;
+			panel1.TabIndex = (int)resources.GetObject("panel1.TabIndex");
 			panel1.Text = resources.GetString("panel1.Text");
-			panel1.Visible = ((bool)(resources.GetObject("panel1.Visible")));
+			panel1.Visible = (bool)resources.GetObject("panel1.Visible");
 			//
 			// button1
 			//
@@ -418,60 +418,60 @@ namespace SimPe
 				"button1.AccessibleDescription"
 			);
 			button1.AccessibleName = resources.GetString("button1.AccessibleName");
-			button1.Anchor = (
-				(AnchorStyles)(
+			button1.Anchor =
+				(AnchorStyles)
 					resources.GetObject("button1.Anchor")
-				)
-			);
-			button1.BackgroundImage = (
-				(Image)(resources.GetObject("button1.BackgroundImage"))
-			);
-			button1.Dock = (
-				(DockStyle)(resources.GetObject("button1.Dock"))
-			);
-			button1.Enabled = ((bool)(resources.GetObject("button1.Enabled")));
-			button1.FlatStyle = (
-				(FlatStyle)(
+
+			;
+			button1.BackgroundImage =
+				(Image)resources.GetObject("button1.BackgroundImage")
+			;
+			button1.Dock =
+				(DockStyle)resources.GetObject("button1.Dock")
+			;
+			button1.Enabled = (bool)resources.GetObject("button1.Enabled");
+			button1.FlatStyle =
+				(FlatStyle)
 					resources.GetObject("button1.FlatStyle")
-				)
-			);
-			button1.Font = (
-				(Font)(resources.GetObject("button1.Font"))
-			);
-			button1.Image = (
-				(Image)(resources.GetObject("button1.Image"))
-			);
-			button1.ImageAlign = (
-				(ContentAlignment)(
+
+			;
+			button1.Font =
+				(Font)resources.GetObject("button1.Font")
+			;
+			button1.Image =
+				(Image)resources.GetObject("button1.Image")
+			;
+			button1.ImageAlign =
+				(ContentAlignment)
 					resources.GetObject("button1.ImageAlign")
-				)
-			);
-			button1.ImageIndex = (
-				(int)(resources.GetObject("button1.ImageIndex"))
-			);
-			button1.ImeMode = (
-				(ImeMode)(resources.GetObject("button1.ImeMode"))
-			);
-			button1.Location = (
-				(Point)(resources.GetObject("button1.Location"))
-			);
+
+			;
+			button1.ImageIndex =
+				(int)resources.GetObject("button1.ImageIndex")
+			;
+			button1.ImeMode =
+				(ImeMode)resources.GetObject("button1.ImeMode")
+			;
+			button1.Location =
+				(Point)resources.GetObject("button1.Location")
+			;
 			button1.Name = "button1";
-			button1.RightToLeft = (
-				(RightToLeft)(
+			button1.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("button1.RightToLeft")
-				)
-			);
-			button1.Size = (
-				(Size)(resources.GetObject("button1.Size"))
-			);
-			button1.TabIndex = ((int)(resources.GetObject("button1.TabIndex")));
+
+			;
+			button1.Size =
+				(Size)resources.GetObject("button1.Size")
+			;
+			button1.TabIndex = (int)resources.GetObject("button1.TabIndex");
 			button1.Text = resources.GetString("button1.Text");
-			button1.TextAlign = (
-				(ContentAlignment)(
+			button1.TextAlign =
+				(ContentAlignment)
 					resources.GetObject("button1.TextAlign")
-				)
-			);
-			button1.Visible = ((bool)(resources.GetObject("button1.Visible")));
+
+			;
+			button1.Visible = (bool)resources.GetObject("button1.Visible");
 			button1.Click += new EventHandler(button1_Click);
 			//
 			// panel2
@@ -480,47 +480,47 @@ namespace SimPe
 				"panel2.AccessibleDescription"
 			);
 			panel2.AccessibleName = resources.GetString("panel2.AccessibleName");
-			panel2.Anchor = (
-				(AnchorStyles)(
+			panel2.Anchor =
+				(AnchorStyles)
 					resources.GetObject("panel2.Anchor")
-				)
-			);
-			panel2.AutoScroll = ((bool)(resources.GetObject("panel2.AutoScroll")));
-			panel2.AutoScrollMargin = (
-				(Size)(resources.GetObject("panel2.AutoScrollMargin"))
-			);
-			panel2.AutoScrollMinSize = (
-				(Size)(resources.GetObject("panel2.AutoScrollMinSize"))
-			);
+
+			;
+			panel2.AutoScroll = (bool)resources.GetObject("panel2.AutoScroll");
+			panel2.AutoScrollMargin =
+				(Size)resources.GetObject("panel2.AutoScrollMargin")
+			;
+			panel2.AutoScrollMinSize =
+				(Size)resources.GetObject("panel2.AutoScrollMinSize")
+			;
 			panel2.BackColor = SystemColors.AppWorkspace;
-			panel2.BackgroundImage = (
-				(Image)(resources.GetObject("panel2.BackgroundImage"))
-			);
-			panel2.Dock = (
-				(DockStyle)(resources.GetObject("panel2.Dock"))
-			);
-			panel2.Enabled = ((bool)(resources.GetObject("panel2.Enabled")));
-			panel2.Font = (
-				(Font)(resources.GetObject("panel2.Font"))
-			);
-			panel2.ImeMode = (
-				(ImeMode)(resources.GetObject("panel2.ImeMode"))
-			);
-			panel2.Location = (
-				(Point)(resources.GetObject("panel2.Location"))
-			);
+			panel2.BackgroundImage =
+				(Image)resources.GetObject("panel2.BackgroundImage")
+			;
+			panel2.Dock =
+				(DockStyle)resources.GetObject("panel2.Dock")
+			;
+			panel2.Enabled = (bool)resources.GetObject("panel2.Enabled");
+			panel2.Font =
+				(Font)resources.GetObject("panel2.Font")
+			;
+			panel2.ImeMode =
+				(ImeMode)resources.GetObject("panel2.ImeMode")
+			;
+			panel2.Location =
+				(Point)resources.GetObject("panel2.Location")
+			;
 			panel2.Name = "panel2";
-			panel2.RightToLeft = (
-				(RightToLeft)(
+			panel2.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("panel2.RightToLeft")
-				)
-			);
-			panel2.Size = (
-				(Size)(resources.GetObject("panel2.Size"))
-			);
-			panel2.TabIndex = ((int)(resources.GetObject("panel2.TabIndex")));
+
+			;
+			panel2.Size =
+				(Size)resources.GetObject("panel2.Size")
+			;
+			panel2.TabIndex = (int)resources.GetObject("panel2.TabIndex");
 			panel2.Text = resources.GetString("panel2.Text");
-			panel2.Visible = ((bool)(resources.GetObject("panel2.Visible")));
+			panel2.Visible = (bool)resources.GetObject("panel2.Visible");
 			//
 			// panel3
 			//
@@ -528,47 +528,47 @@ namespace SimPe
 				"panel3.AccessibleDescription"
 			);
 			panel3.AccessibleName = resources.GetString("panel3.AccessibleName");
-			panel3.Anchor = (
-				(AnchorStyles)(
+			panel3.Anchor =
+				(AnchorStyles)
 					resources.GetObject("panel3.Anchor")
-				)
-			);
-			panel3.AutoScroll = ((bool)(resources.GetObject("panel3.AutoScroll")));
-			panel3.AutoScrollMargin = (
-				(Size)(resources.GetObject("panel3.AutoScrollMargin"))
-			);
-			panel3.AutoScrollMinSize = (
-				(Size)(resources.GetObject("panel3.AutoScrollMinSize"))
-			);
+
+			;
+			panel3.AutoScroll = (bool)resources.GetObject("panel3.AutoScroll");
+			panel3.AutoScrollMargin =
+				(Size)resources.GetObject("panel3.AutoScrollMargin")
+			;
+			panel3.AutoScrollMinSize =
+				(Size)resources.GetObject("panel3.AutoScrollMinSize")
+			;
 			panel3.BackColor = SystemColors.AppWorkspace;
-			panel3.BackgroundImage = (
-				(Image)(resources.GetObject("panel3.BackgroundImage"))
-			);
-			panel3.Dock = (
-				(DockStyle)(resources.GetObject("panel3.Dock"))
-			);
-			panel3.Enabled = ((bool)(resources.GetObject("panel3.Enabled")));
-			panel3.Font = (
-				(Font)(resources.GetObject("panel3.Font"))
-			);
-			panel3.ImeMode = (
-				(ImeMode)(resources.GetObject("panel3.ImeMode"))
-			);
-			panel3.Location = (
-				(Point)(resources.GetObject("panel3.Location"))
-			);
+			panel3.BackgroundImage =
+				(Image)resources.GetObject("panel3.BackgroundImage")
+			;
+			panel3.Dock =
+				(DockStyle)resources.GetObject("panel3.Dock")
+			;
+			panel3.Enabled = (bool)resources.GetObject("panel3.Enabled");
+			panel3.Font =
+				(Font)resources.GetObject("panel3.Font")
+			;
+			panel3.ImeMode =
+				(ImeMode)resources.GetObject("panel3.ImeMode")
+			;
+			panel3.Location =
+				(Point)resources.GetObject("panel3.Location")
+			;
 			panel3.Name = "panel3";
-			panel3.RightToLeft = (
-				(RightToLeft)(
+			panel3.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("panel3.RightToLeft")
-				)
-			);
-			panel3.Size = (
-				(Size)(resources.GetObject("panel3.Size"))
-			);
-			panel3.TabIndex = ((int)(resources.GetObject("panel3.TabIndex")));
+
+			;
+			panel3.Size =
+				(Size)resources.GetObject("panel3.Size")
+			;
+			panel3.TabIndex = (int)resources.GetObject("panel3.TabIndex");
 			panel3.Text = resources.GetString("panel3.Text");
-			panel3.Visible = ((bool)(resources.GetObject("panel3.Visible")));
+			panel3.Visible = (bool)resources.GetObject("panel3.Visible");
 			//
 			// panel4
 			//
@@ -576,47 +576,47 @@ namespace SimPe
 				"panel4.AccessibleDescription"
 			);
 			panel4.AccessibleName = resources.GetString("panel4.AccessibleName");
-			panel4.Anchor = (
-				(AnchorStyles)(
+			panel4.Anchor =
+				(AnchorStyles)
 					resources.GetObject("panel4.Anchor")
-				)
-			);
-			panel4.AutoScroll = ((bool)(resources.GetObject("panel4.AutoScroll")));
-			panel4.AutoScrollMargin = (
-				(Size)(resources.GetObject("panel4.AutoScrollMargin"))
-			);
-			panel4.AutoScrollMinSize = (
-				(Size)(resources.GetObject("panel4.AutoScrollMinSize"))
-			);
+
+			;
+			panel4.AutoScroll = (bool)resources.GetObject("panel4.AutoScroll");
+			panel4.AutoScrollMargin =
+				(Size)resources.GetObject("panel4.AutoScrollMargin")
+			;
+			panel4.AutoScrollMinSize =
+				(Size)resources.GetObject("panel4.AutoScrollMinSize")
+			;
 			panel4.BackColor = SystemColors.AppWorkspace;
-			panel4.BackgroundImage = (
-				(Image)(resources.GetObject("panel4.BackgroundImage"))
-			);
-			panel4.Dock = (
-				(DockStyle)(resources.GetObject("panel4.Dock"))
-			);
-			panel4.Enabled = ((bool)(resources.GetObject("panel4.Enabled")));
-			panel4.Font = (
-				(Font)(resources.GetObject("panel4.Font"))
-			);
-			panel4.ImeMode = (
-				(ImeMode)(resources.GetObject("panel4.ImeMode"))
-			);
-			panel4.Location = (
-				(Point)(resources.GetObject("panel4.Location"))
-			);
+			panel4.BackgroundImage =
+				(Image)resources.GetObject("panel4.BackgroundImage")
+			;
+			panel4.Dock =
+				(DockStyle)resources.GetObject("panel4.Dock")
+			;
+			panel4.Enabled = (bool)resources.GetObject("panel4.Enabled");
+			panel4.Font =
+				(Font)resources.GetObject("panel4.Font")
+			;
+			panel4.ImeMode =
+				(ImeMode)resources.GetObject("panel4.ImeMode")
+			;
+			panel4.Location =
+				(Point)resources.GetObject("panel4.Location")
+			;
 			panel4.Name = "panel4";
-			panel4.RightToLeft = (
-				(RightToLeft)(
+			panel4.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("panel4.RightToLeft")
-				)
-			);
-			panel4.Size = (
-				(Size)(resources.GetObject("panel4.Size"))
-			);
-			panel4.TabIndex = ((int)(resources.GetObject("panel4.TabIndex")));
+
+			;
+			panel4.Size =
+				(Size)resources.GetObject("panel4.Size")
+			;
+			panel4.TabIndex = (int)resources.GetObject("panel4.TabIndex");
 			panel4.Text = resources.GetString("panel4.Text");
-			panel4.Visible = ((bool)(resources.GetObject("panel4.Visible")));
+			panel4.Visible = (bool)resources.GetObject("panel4.Visible");
 			//
 			// CheckControl
 			//
@@ -624,16 +624,16 @@ namespace SimPe
 				"$this.AccessibleDescription"
 			);
 			AccessibleName = resources.GetString("$this.AccessibleName");
-			AutoScroll = ((bool)(resources.GetObject("$this.AutoScroll")));
-			AutoScrollMargin = (
-				(Size)(resources.GetObject("$this.AutoScrollMargin"))
-			);
-			AutoScrollMinSize = (
-				(Size)(resources.GetObject("$this.AutoScrollMinSize"))
-			);
-			BackgroundImage = (
-				(Image)(resources.GetObject("$this.BackgroundImage"))
-			);
+			AutoScroll = (bool)resources.GetObject("$this.AutoScroll");
+			AutoScrollMargin =
+				(Size)resources.GetObject("$this.AutoScrollMargin")
+			;
+			AutoScrollMinSize =
+				(Size)resources.GetObject("$this.AutoScrollMinSize")
+			;
+			BackgroundImage =
+				(Image)resources.GetObject("$this.BackgroundImage")
+			;
 			Controls.Add(panel1);
 			Controls.Add(panel4);
 			Controls.Add(chkFileTable);
@@ -641,21 +641,21 @@ namespace SimPe
 			Controls.Add(chkCache);
 			Controls.Add(panel2);
 			Controls.Add(chkSimFolder);
-			Enabled = ((bool)(resources.GetObject("$this.Enabled")));
-			Font = ((Font)(resources.GetObject("$this.Font")));
-			ImeMode = (
-				(ImeMode)(resources.GetObject("$this.ImeMode"))
-			);
-			Location = (
-				(Point)(resources.GetObject("$this.Location"))
-			);
+			Enabled = (bool)resources.GetObject("$this.Enabled");
+			Font = (Font)resources.GetObject("$this.Font");
+			ImeMode =
+				(ImeMode)resources.GetObject("$this.ImeMode")
+			;
+			Location =
+				(Point)resources.GetObject("$this.Location")
+			;
 			Name = "CheckControl";
-			RightToLeft = (
-				(RightToLeft)(
+			RightToLeft =
+				(RightToLeft)
 					resources.GetObject("$this.RightToLeft")
-				)
-			);
-			Size = ((Size)(resources.GetObject("$this.Size")));
+
+			;
+			Size = (Size)resources.GetObject("$this.Size");
 			panel1.ResumeLayout(false);
 			ResumeLayout(false);
 		}

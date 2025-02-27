@@ -102,12 +102,12 @@ namespace SimPe.Plugin.TabPage
 			//
 			groupBox14.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			groupBox14.Controls.Add(tb_lt_name);
@@ -133,12 +133,12 @@ namespace SimPe.Plugin.TabPage
 			//
 			tb_lt_name.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tb_lt_name.Font = new System.Drawing.Font(

@@ -582,11 +582,11 @@ namespace SimPe.PackedFiles.UserInterface
 				tbRel.Text =
 					"0x"
 					+ Helper.HexString(
-						(uint)(
-							(MetaData.RelationshipTypes)(
+						(uint)
+							(MetaData.RelationshipTypes)
 								(LocalizedRelationshipTypes)cbfamtype.SelectedItem
-							)
-						)
+
+
 					);
 			}
 		}

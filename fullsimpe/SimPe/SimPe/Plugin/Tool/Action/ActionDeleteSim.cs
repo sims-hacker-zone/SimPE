@@ -87,13 +87,13 @@ namespace SimPe.Plugin.Tool.Action
 				return;
 			}
 
-			deleteInvalidDna = (
+			deleteInvalidDna =
 				Message.Show(
 					"Delete all orphan DNA, Scores and Wants records as well?",
 					"Clean Up",
 					System.Windows.Forms.MessageBoxButtons.YesNo
 				) == System.Windows.Forms.DialogResult.Yes
-			);
+			;
 			int c = 0;
 			if (e.Items.Count > 0)
 			{
@@ -208,7 +208,7 @@ namespace SimPe.Plugin.Tool.Action
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
 				uint up = (pfd.Instance & 0xFFFF0000u) >> 16;
-				uint low = (pfd.Instance & 0x0000FFFFFu);
+				uint low = pfd.Instance & 0x0000FFFFFu;
 
 				if (up == inst || low == inst)
 				{

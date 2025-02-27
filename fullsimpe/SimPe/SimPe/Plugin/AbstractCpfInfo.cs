@@ -86,7 +86,7 @@ namespace SimPe.Plugin
 
 		public bool ContainsItem(string name)
 		{
-			return (propertySet.GetItem(name) != null);
+			return propertySet.GetItem(name) != null;
 		}
 
 		public CpfItem GetProperty(string name)

@@ -62,10 +62,10 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Returns true if the PackedFile is compressed
 		/// </summary>
-		public bool IsCompressed => (
+		public bool IsCompressed =>
 					(headersize != 0)
 					&& (Signature == SimPe.Data.MetaData.COMPRESS_SIGNATURE)
-				);
+				;
 
 		/// <summary>
 		/// Size of the compressed File
@@ -347,7 +347,7 @@ namespace SimPe.Packages
 					if ((cc & 0x80) == 0)
 					{
 						cc1 = data[index++];
-						plaincount = (cc & 0x03);
+						plaincount = cc & 0x03;
 						copycount = ((cc & 0x1C) >> 2) + 3;
 						copyoffset = ((cc & 0x60) << 3) + cc1 + 1;
 					}
@@ -364,7 +364,7 @@ namespace SimPe.Packages
 						cc1 = data[index++];
 						cc2 = data[index++];
 						cc3 = data[index++];
-						plaincount = (cc & 0x03);
+						plaincount = cc & 0x03;
 						copycount = ((cc & 0x0C) << 6) + cc3 + 5;
 						copyoffset = ((cc & 0x10) << 12) + (cc1 << 8) + cc2 + 1;
 					}
@@ -395,7 +395,7 @@ namespace SimPe.Packages
 
 			if (index < data.Length)
 			{
-				plaincount = (data[index++] & 0x03);
+				plaincount = data[index++] & 0x03;
 				for (int i = 0; i < plaincount; i++)
 				{
 					if (uncindex >= uncdata.Length)
@@ -447,9 +447,9 @@ namespace SimPe.Packages
 					{
 						if ((*datapt & 0x80) == 0)
 						{
-							plaincount = (*datapt & 0x03);
+							plaincount = *datapt & 0x03;
 							copycount = ((*datapt & 0x1C) >> 2) + 3;
-							copyoffset = ((*datapt & 0x60) << 3);
+							copyoffset = (*datapt & 0x60) << 3;
 							datapt++;
 							copyoffset += *datapt + 1;
 						}
@@ -458,17 +458,17 @@ namespace SimPe.Packages
 							copycount = (*datapt & 0x3F) + 4;
 							datapt++;
 							plaincount = (*datapt & 0xC0) >> 6;
-							copyoffset = ((*datapt & 0x3F) << 8);
+							copyoffset = (*datapt & 0x3F) << 8;
 							datapt++;
 							copyoffset += *datapt + 1;
 						}
 						else if ((*datapt & 0x20) == 0)
 						{
-							plaincount = (*datapt & 0x03);
-							copycount = ((*datapt & 0x0C) << 6);
-							copyoffset = ((*datapt & 0x10) << 12);
+							plaincount = *datapt & 0x03;
+							copycount = (*datapt & 0x0C) << 6;
+							copyoffset = (*datapt & 0x10) << 12;
 							datapt++;
-							copyoffset += (*datapt << 8);
+							copyoffset += *datapt << 8;
 							datapt++;
 							copyoffset += *datapt + 1;
 							datapt++;
@@ -508,7 +508,7 @@ namespace SimPe.Packages
 
 				if (datapt < dataarrayend)
 				{
-					plaincount = (*datapt & 0x03);
+					plaincount = *datapt & 0x03;
 					datapt++;
 					for (int i = 0; i < plaincount; i++)
 					{
@@ -566,7 +566,7 @@ namespace SimPe.Packages
 					if ((cc & 0x80) == 0)
 					{
 						cc1 = data[index++];
-						plaincount = (cc & 0x03);
+						plaincount = cc & 0x03;
 						copycount = ((cc & 0x1C) >> 2) + 3;
 						copyoffset = ((cc & 0x60) << 3) + cc1 + 1;
 					}
@@ -583,7 +583,7 @@ namespace SimPe.Packages
 						cc1 = data[index++];
 						cc2 = data[index++];
 						cc3 = data[index++];
-						plaincount = (cc & 0x03);
+						plaincount = cc & 0x03;
 						copycount = ((cc & 0x0C) << 6) + cc3 + 5;
 						copyoffset = ((cc & 0x10) << 12) + (cc1 << 8) + cc2 + 1;
 					}
@@ -628,7 +628,7 @@ namespace SimPe.Packages
 
 			if (index < data.Length)
 			{
-				plaincount = (data[index++] & 0x03);
+				plaincount = data[index++] & 0x03;
 				for (int i = 0; i < plaincount; i++)
 				{
 					if (uncindex >= uncdata.Length)
@@ -679,7 +679,7 @@ namespace SimPe.Packages
 
 			try
 			{
-				while ((s.Position < end))
+				while (s.Position < end)
 				{
 					cc = (byte)s.ReadByte();
 					if (cc >= 0xfc)
@@ -691,7 +691,7 @@ namespace SimPe.Packages
 					if ((cc & 0x80) == 0)
 					{
 						cc1 = (byte)s.ReadByte();
-						plaincount = (cc & 0x03);
+						plaincount = cc & 0x03;
 						copycount = ((cc & 0x1C) >> 2) + 3;
 						copyoffset = ((cc & 0x60) << 3) + cc1 + 1;
 					}
@@ -708,7 +708,7 @@ namespace SimPe.Packages
 						cc1 = (byte)s.ReadByte();
 						cc2 = (byte)s.ReadByte();
 						cc3 = (byte)s.ReadByte();
-						plaincount = (cc & 0x03);
+						plaincount = cc & 0x03;
 						copycount = ((cc & 0x0C) << 6) + cc3 + 5;
 						copyoffset = ((cc & 0x10) << 12) + (cc1 << 8) + cc2 + 1;
 					}
@@ -739,7 +739,7 @@ namespace SimPe.Packages
 
 			if (s.Position < end)
 			{
-				plaincount = (s.ReadByte() & 0x03);
+				plaincount = s.ReadByte() & 0x03;
 				for (int i = 0; i < plaincount; i++)
 				{
 					if (uncindex >= uncdata.Length)
@@ -837,7 +837,7 @@ namespace SimPe.Packages
 						)
 						{
 							int foundindex = (int)
-								indexlist[(indexlist.Count - 1) - loopcount];
+								indexlist[indexlist.Count - 1 - loopcount];
 							if ((index - foundindex) >= MAX_OFFSET)
 							{
 								break;
@@ -888,14 +888,14 @@ namespace SimPe.Packages
 							//plaincopy
 							while ((index - lastreadindex) > 3)
 							{
-								copycount = (index - lastreadindex);
+								copycount = index - lastreadindex;
 								while (copycount > 0x71)
 								{
 									copycount -= 0x71;
 								}
 
 								copycount = copycount & 0xfc;
-								int realcopycount = (copycount >> 2);
+								int realcopycount = copycount >> 2;
 
 								cdata[writeindex++] = (byte)(0xdf + realcopycount);
 								for (int i = 0; i < copycount; i++)
@@ -910,10 +910,10 @@ namespace SimPe.Packages
 							if ((offsetcopycount <= 0xa) && (copyoffset < 0x400))
 							{
 								cdata[writeindex++] = (byte)(
-									(
+
 										((copyoffset >> 3) & 0x60)
 										| ((offsetcopycount - 3) << 2)
-									) | copycount
+									 | copycount
 								);
 								cdata[writeindex++] = (byte)(copyoffset & 0xff);
 							}
@@ -966,14 +966,14 @@ namespace SimPe.Packages
 					lastreadindex = Math.Min(index, lastreadindex);
 					while ((index - lastreadindex) > 3)
 					{
-						copycount = (index - lastreadindex);
+						copycount = index - lastreadindex;
 						while (copycount > 0x71)
 						{
 							copycount -= 0x71;
 						}
 
 						copycount = copycount & 0xfc;
-						int realcopycount = (copycount >> 2);
+						int realcopycount = copycount >> 2;
 
 						cdata[writeindex++] = (byte)(0xdf + realcopycount);
 						for (int i = 0; i < copycount; i++)
@@ -994,7 +994,7 @@ namespace SimPe.Packages
 					//make a resulting Array of the apropriate size
 					retdata = new byte[writeindex + 9];
 
-					byte[] sz = BitConverter.GetBytes((uint)(retdata.Length));
+					byte[] sz = BitConverter.GetBytes((uint)retdata.Length);
 					for (int i = 0; i < 4; i++)
 					{
 						retdata[i] = sz[i];

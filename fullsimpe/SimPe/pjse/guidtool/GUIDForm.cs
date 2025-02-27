@@ -206,7 +206,7 @@ namespace pjse.guidtool
 						);
 						foreach (FileTable.Entry fte in globs)
 						{
-							SimPe.Plugin.Glob glob = ((SimPe.Plugin.Glob)fte.Wrapper);
+							SimPe.Plugin.Glob glob = (SimPe.Plugin.Glob)fte.Wrapper;
 							if (glob == null)
 							{
 								continue;
@@ -285,7 +285,7 @@ namespace pjse.guidtool
 						);
 						foreach (FileTable.Entry fte in globs)
 						{
-							SimPe.Plugin.Glob glob = ((SimPe.Plugin.Glob)fte.Wrapper);
+							SimPe.Plugin.Glob glob = (SimPe.Plugin.Glob)fte.Wrapper;
 							if (glob == null)
 							{
 								continue;
@@ -575,11 +575,11 @@ namespace pjse.guidtool
 							}
 						}
 						else if (
-							(
+
 								(type[11] && item.Type == StrWrapper.Strtype)
 								|| (type[12] && item.Type == StrWrapper.CTSStype)
 								|| (type[13] && item.Type == StrWrapper.TTAstype)
-							)
+
 						)
 						{
 							if (type[14])
@@ -1352,7 +1352,7 @@ namespace pjse.guidtool
 						ckbBconName,
 					}
 				);
-				return (lcb.Find(isChecked) != null);
+				return lcb.Find(isChecked) != null;
 			}
 		}
 		private bool isCkbSomeStringChecked
@@ -1362,7 +1362,7 @@ namespace pjse.guidtool
 				List<CheckBox> lcb = new List<CheckBox>(
 					new CheckBox[] { ckbSTR, ckbCTSS, ckbTTAs }
 				);
-				return (lcb.Find(isChecked) != null);
+				return lcb.Find(isChecked) != null;
 			}
 		}
 

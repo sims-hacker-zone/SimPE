@@ -172,10 +172,10 @@ namespace SimPe
 			//
 			button1.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			button1.FlatStyle = FlatStyle.System;
@@ -189,12 +189,12 @@ namespace SimPe
 			//
 			tbname.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tbname.Location = new System.Drawing.Point(112, 8);
@@ -207,12 +207,12 @@ namespace SimPe
 			//
 			tbfile.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tbfile.Location = new System.Drawing.Point(112, 56);
@@ -225,12 +225,12 @@ namespace SimPe
 			//
 			tbattr.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tbattr.Location = new System.Drawing.Point(112, 80);
@@ -243,10 +243,10 @@ namespace SimPe
 			//
 			button2.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			button2.FlatStyle = FlatStyle.System;
@@ -277,12 +277,12 @@ namespace SimPe
 			//
 			cbtypes.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			cbtypes.DropDownStyle =

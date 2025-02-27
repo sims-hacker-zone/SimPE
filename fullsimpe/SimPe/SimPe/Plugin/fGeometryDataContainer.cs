@@ -452,10 +452,10 @@ namespace SimPe.Plugin
 			//
 			groupBox1.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			groupBox1.Controls.Add(tb_itemsa2);
@@ -480,10 +480,10 @@ namespace SimPe.Plugin
 			//
 			tb_itemsa2.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			tb_itemsa2.Font = new System.Drawing.Font(
@@ -504,10 +504,10 @@ namespace SimPe.Plugin
 			//
 			label1.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			label1.AutoSize = true;
@@ -528,14 +528,14 @@ namespace SimPe.Plugin
 			//
 			lb_itemsa2.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lb_itemsa2.Font = new System.Drawing.Font(
@@ -559,14 +559,14 @@ namespace SimPe.Plugin
 			//
 			groupBox3.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			groupBox3.Controls.Add(cbid);
@@ -602,10 +602,10 @@ namespace SimPe.Plugin
 			//
 			cbid.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			cbid.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -626,10 +626,10 @@ namespace SimPe.Plugin
 			//
 			cbset.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			cbset.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -650,10 +650,10 @@ namespace SimPe.Plugin
 			//
 			cbblock.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			cbblock.DropDownStyle =
@@ -676,14 +676,14 @@ namespace SimPe.Plugin
 			//
 			lb_itemsa.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lb_itemsa.Font = new System.Drawing.Font(
@@ -707,10 +707,10 @@ namespace SimPe.Plugin
 			//
 			tb_uk5.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			tb_uk5.Font = new System.Drawing.Font(
@@ -731,10 +731,10 @@ namespace SimPe.Plugin
 			//
 			label10.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			label10.AutoSize = true;
@@ -755,10 +755,10 @@ namespace SimPe.Plugin
 			//
 			tb_mod2.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			tb_mod2.Font = new System.Drawing.Font(
@@ -779,10 +779,10 @@ namespace SimPe.Plugin
 			//
 			label7.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			label7.AutoSize = true;
@@ -803,10 +803,10 @@ namespace SimPe.Plugin
 			//
 			tb_mod1.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			tb_mod1.Font = new System.Drawing.Font(
@@ -827,10 +827,10 @@ namespace SimPe.Plugin
 			//
 			label8.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			label8.AutoSize = true;
@@ -851,10 +851,10 @@ namespace SimPe.Plugin
 			//
 			tb_id.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			tb_id.Font = new System.Drawing.Font(
@@ -875,10 +875,10 @@ namespace SimPe.Plugin
 			//
 			label5.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			label5.AutoSize = true;
@@ -899,10 +899,10 @@ namespace SimPe.Plugin
 			//
 			tb_uk1.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			tb_uk1.Font = new System.Drawing.Font(
@@ -923,10 +923,10 @@ namespace SimPe.Plugin
 			//
 			label6.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			label6.AutoSize = true;
@@ -998,12 +998,12 @@ namespace SimPe.Plugin
 			//
 			groupBox12.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			groupBox12.Controls.Add(lb_itemsa1);
@@ -1026,14 +1026,14 @@ namespace SimPe.Plugin
 			//
 			lb_itemsa1.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lb_itemsa1.Font = new System.Drawing.Font(
@@ -1106,12 +1106,12 @@ namespace SimPe.Plugin
 			//
 			list_groups.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
-						) | AnchorStyles.Left
-					)
+						 | AnchorStyles.Left
+
 
 			;
 			list_groups.Location = new System.Drawing.Point(16, 224);
@@ -1173,14 +1173,14 @@ namespace SimPe.Plugin
 			//
 			pg.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			pg.CommandsBackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -1212,10 +1212,10 @@ namespace SimPe.Plugin
 			//
 			groupBox4.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			groupBox4.Controls.Add(tb_itemsc2);
@@ -1240,10 +1240,10 @@ namespace SimPe.Plugin
 			//
 			tb_itemsc2.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			tb_itemsc2.Font = new System.Drawing.Font(
@@ -1264,10 +1264,10 @@ namespace SimPe.Plugin
 			//
 			label4.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			label4.AutoSize = true;
@@ -1288,14 +1288,14 @@ namespace SimPe.Plugin
 			//
 			lb_itemsc2.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lb_itemsc2.Font = new System.Drawing.Font(
@@ -1319,14 +1319,14 @@ namespace SimPe.Plugin
 			//
 			groupBox2.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			groupBox2.Controls.Add(llAddBB);
@@ -1362,10 +1362,10 @@ namespace SimPe.Plugin
 			//
 			llAddBB.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			llAddBB.LinkArea = new LinkArea(0, 20);
@@ -1385,10 +1385,10 @@ namespace SimPe.Plugin
 			//
 			llAssign.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			llAssign.LinkArea = new LinkArea(0, 6);
@@ -1409,10 +1409,10 @@ namespace SimPe.Plugin
 			//
 			cbGroupJoint.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			cbGroupJoint.DropDownStyle =
@@ -1434,10 +1434,10 @@ namespace SimPe.Plugin
 			//
 			label21.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			label21.AutoSize = true;
@@ -1458,10 +1458,10 @@ namespace SimPe.Plugin
 			//
 			linkLabel2.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			linkLabel2.Location = new System.Drawing.Point(268, 112);
@@ -1479,10 +1479,10 @@ namespace SimPe.Plugin
 			//
 			tb_opacity.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			tb_opacity.Font = new System.Drawing.Font(
@@ -1503,10 +1503,10 @@ namespace SimPe.Plugin
 			//
 			tb_uk2.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			tb_uk2.Font = new System.Drawing.Font(
@@ -1527,10 +1527,10 @@ namespace SimPe.Plugin
 			//
 			label3.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			label3.AutoSize = true;
@@ -1551,10 +1551,10 @@ namespace SimPe.Plugin
 			//
 			tb_uk3.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			tb_uk3.Font = new System.Drawing.Font(
@@ -1575,10 +1575,10 @@ namespace SimPe.Plugin
 			//
 			label2.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			label2.AutoSize = true;
@@ -1599,14 +1599,14 @@ namespace SimPe.Plugin
 			//
 			lb_itemsc.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lb_itemsc.Font = new System.Drawing.Font(
@@ -1630,10 +1630,10 @@ namespace SimPe.Plugin
 			//
 			tb_itemsc_name.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			tb_itemsc_name.Font = new System.Drawing.Font(
@@ -1655,10 +1655,10 @@ namespace SimPe.Plugin
 			//
 			label11.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			label11.AutoSize = true;
@@ -1679,10 +1679,10 @@ namespace SimPe.Plugin
 			//
 			label13.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			label13.AutoSize = true;
@@ -1703,12 +1703,12 @@ namespace SimPe.Plugin
 			//
 			groupBox5.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			groupBox5.Controls.Add(tb_itemsc3);
@@ -1733,10 +1733,10 @@ namespace SimPe.Plugin
 			//
 			tb_itemsc3.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			tb_itemsc3.Font = new System.Drawing.Font(
@@ -1757,10 +1757,10 @@ namespace SimPe.Plugin
 			//
 			label9.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			label9.AutoSize = true;
@@ -1781,14 +1781,14 @@ namespace SimPe.Plugin
 			//
 			lb_itemsc3.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lb_itemsc3.Font = new System.Drawing.Font(
@@ -1834,10 +1834,10 @@ namespace SimPe.Plugin
 			//
 			cbCorrect.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			cbCorrect.Location = new System.Drawing.Point(272, 264);
@@ -1852,28 +1852,28 @@ namespace SimPe.Plugin
 			// dxprev
 			//
 			dxprev.BackColor = System.Drawing.Color.FromArgb(
-				((byte)(128)),
-				((byte)(128)),
-				((byte)(255))
+				(byte)128,
+				(byte)128,
+				(byte)255
 			);
 			dxprev.Effect = null;
 			dxprev.Location = new System.Drawing.Point(376, 8);
 			dxprev.Name = "dxprev";
 			dxprev.Size = new System.Drawing.Size(304, 288);
 			dxprev.TabIndex = 31;
-			dxprev.WorldMatrix = (
-				(Microsoft.DirectX.Matrix)(resources.GetObject("dxprev.WorldMatrix"))
-			);
+			dxprev.WorldMatrix =
+				(Microsoft.DirectX.Matrix)resources.GetObject("dxprev.WorldMatrix")
+			;
 			dxprev.ResetDevice += new EventHandler(dxprev_ResetDevice);
 			//
 			// cbaxis
 			//
 			cbaxis.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			cbaxis.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -1889,10 +1889,10 @@ namespace SimPe.Plugin
 			//
 			label12.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			label12.Font = new System.Drawing.Font(
@@ -1913,10 +1913,10 @@ namespace SimPe.Plugin
 			//
 			button1.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			button1.FlatStyle = FlatStyle.System;
@@ -1931,10 +1931,10 @@ namespace SimPe.Plugin
 			//
 			button5.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			button5.FlatStyle = FlatStyle.System;
@@ -1949,12 +1949,12 @@ namespace SimPe.Plugin
 			//
 			scenesel.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			scenesel.DirectXPanel = dxprev;
@@ -1976,12 +1976,12 @@ namespace SimPe.Plugin
 			//
 			lbmodel.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
-						) | AnchorStyles.Left
-					)
+						 | AnchorStyles.Left
+
 
 			;
 			lbmodel.CheckOnClick = true;
@@ -2011,10 +2011,10 @@ namespace SimPe.Plugin
 			//
 			button3.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			button3.FlatStyle = FlatStyle.System;
@@ -2029,10 +2029,10 @@ namespace SimPe.Plugin
 			//
 			button4.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			button4.FlatStyle = FlatStyle.System;
@@ -2061,10 +2061,10 @@ namespace SimPe.Plugin
 			//
 			groupBox19.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			groupBox19.Controls.Add(lb_model_items);
@@ -2087,14 +2087,14 @@ namespace SimPe.Plugin
 			//
 			lb_model_items.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lb_model_items.Font = new System.Drawing.Font(
@@ -2115,14 +2115,14 @@ namespace SimPe.Plugin
 			//
 			groupBox18.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			groupBox18.Controls.Add(llClearBB);
@@ -2146,10 +2146,10 @@ namespace SimPe.Plugin
 			//
 			llClearBB.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			llClearBB.AutoSize = true;
@@ -2168,14 +2168,14 @@ namespace SimPe.Plugin
 			//
 			lb_model_faces.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lb_model_faces.Font = new System.Drawing.Font(
@@ -2196,12 +2196,12 @@ namespace SimPe.Plugin
 			//
 			groupBox17.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Bottom
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			groupBox17.Controls.Add(lb_model_names);
@@ -2224,14 +2224,14 @@ namespace SimPe.Plugin
 			//
 			lb_model_names.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lb_model_names.Font = new System.Drawing.Font(
@@ -2252,12 +2252,12 @@ namespace SimPe.Plugin
 			//
 			groupBox16.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
-						) | AnchorStyles.Left
-					)
+						 | AnchorStyles.Left
+
 
 			;
 			groupBox16.Controls.Add(linkLabel6);
@@ -2295,12 +2295,12 @@ namespace SimPe.Plugin
 			//
 			lb_model_trans.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
-						) | AnchorStyles.Left
-					)
+						 | AnchorStyles.Left
+
 
 			;
 			lb_model_trans.Font = new System.Drawing.Font(
@@ -2339,10 +2339,10 @@ namespace SimPe.Plugin
 			//
 			groupBox9.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			groupBox9.Controls.Add(tb_itemsb4);
@@ -2367,10 +2367,10 @@ namespace SimPe.Plugin
 			//
 			tb_itemsb4.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			tb_itemsb4.Font = new System.Drawing.Font(
@@ -2391,10 +2391,10 @@ namespace SimPe.Plugin
 			//
 			label15.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			label15.AutoSize = true;
@@ -2415,14 +2415,14 @@ namespace SimPe.Plugin
 			//
 			lb_itemsb4.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lb_itemsb4.Font = new System.Drawing.Font(
@@ -2446,12 +2446,12 @@ namespace SimPe.Plugin
 			//
 			groupBox11.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			groupBox11.Controls.Add(tb_itemsb5);
@@ -2476,10 +2476,10 @@ namespace SimPe.Plugin
 			//
 			tb_itemsb5.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			tb_itemsb5.Font = new System.Drawing.Font(
@@ -2500,10 +2500,10 @@ namespace SimPe.Plugin
 			//
 			label17.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			label17.AutoSize = true;
@@ -2524,14 +2524,14 @@ namespace SimPe.Plugin
 			//
 			lb_itemsb5.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lb_itemsb5.Font = new System.Drawing.Font(
@@ -2555,10 +2555,10 @@ namespace SimPe.Plugin
 			//
 			groupBox6.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			groupBox6.Controls.Add(tb_itemsb2);
@@ -2583,10 +2583,10 @@ namespace SimPe.Plugin
 			//
 			tb_itemsb2.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			tb_itemsb2.Font = new System.Drawing.Font(
@@ -2607,10 +2607,10 @@ namespace SimPe.Plugin
 			//
 			label14.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			label14.AutoSize = true;
@@ -2631,14 +2631,14 @@ namespace SimPe.Plugin
 			//
 			lb_itemsb2.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lb_itemsb2.Font = new System.Drawing.Font(
@@ -2662,14 +2662,14 @@ namespace SimPe.Plugin
 			//
 			groupBox7.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			groupBox7.Controls.Add(linkLabel7);
@@ -2697,10 +2697,10 @@ namespace SimPe.Plugin
 			//
 			linkLabel7.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			linkLabel7.Location = new System.Drawing.Point(272, 120);
@@ -2718,10 +2718,10 @@ namespace SimPe.Plugin
 			//
 			tb_uk4.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			tb_uk4.Font = new System.Drawing.Font(
@@ -2742,10 +2742,10 @@ namespace SimPe.Plugin
 			//
 			tb_uk6.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			tb_uk6.Font = new System.Drawing.Font(
@@ -2766,10 +2766,10 @@ namespace SimPe.Plugin
 			//
 			label16.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			label16.AutoSize = true;
@@ -2790,14 +2790,14 @@ namespace SimPe.Plugin
 			//
 			lb_itemsb.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lb_itemsb.Font = new System.Drawing.Font(
@@ -2821,10 +2821,10 @@ namespace SimPe.Plugin
 			//
 			label18.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			label18.AutoSize = true;
@@ -2845,12 +2845,12 @@ namespace SimPe.Plugin
 			//
 			groupBox8.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			groupBox8.Controls.Add(tb_itemsb3);
@@ -2875,10 +2875,10 @@ namespace SimPe.Plugin
 			//
 			tb_itemsb3.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			tb_itemsb3.Font = new System.Drawing.Font(
@@ -2899,10 +2899,10 @@ namespace SimPe.Plugin
 			//
 			label19.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			label19.AutoSize = true;
@@ -2923,14 +2923,14 @@ namespace SimPe.Plugin
 			//
 			lb_itemsb3.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lb_itemsb3.Font = new System.Drawing.Font(
@@ -2967,10 +2967,10 @@ namespace SimPe.Plugin
 			//
 			groupBox13.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			groupBox13.Controls.Add(lb_sub_items);
@@ -2993,14 +2993,14 @@ namespace SimPe.Plugin
 			//
 			lb_sub_items.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lb_sub_items.Font = new System.Drawing.Font(
@@ -3024,12 +3024,12 @@ namespace SimPe.Plugin
 			//
 			groupBox14.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			groupBox14.Controls.Add(lb_sub_faces);
@@ -3052,14 +3052,14 @@ namespace SimPe.Plugin
 			//
 			lb_sub_faces.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lb_sub_faces.Font = new System.Drawing.Font(
@@ -3080,14 +3080,14 @@ namespace SimPe.Plugin
 			//
 			groupBox15.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			groupBox15.Controls.Add(linkLabel5);
@@ -3112,10 +3112,10 @@ namespace SimPe.Plugin
 			//
 			linkLabel5.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			linkLabel5.Location = new System.Drawing.Point(528, 208);
@@ -3134,10 +3134,10 @@ namespace SimPe.Plugin
 			//
 			linkLabel4.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			linkLabel4.Location = new System.Drawing.Point(528, 256);
@@ -3156,14 +3156,14 @@ namespace SimPe.Plugin
 			//
 			lb_subsets.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lb_subsets.Font = new System.Drawing.Font(
@@ -3190,9 +3190,9 @@ namespace SimPe.Plugin
 			// cd
 			//
 			cd.Color = System.Drawing.Color.FromArgb(
-				((byte)(128)),
-				((byte)(128)),
-				((byte)(255))
+				(byte)128,
+				(byte)128,
+				(byte)255
 			);
 			//
 			// ofd

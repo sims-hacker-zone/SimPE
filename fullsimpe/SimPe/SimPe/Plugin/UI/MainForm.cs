@@ -145,7 +145,7 @@ namespace SimPe.Plugin.UI
 			if (CurrentView != null)
 			{
 				miLoadMesh.Enabled = true;
-				miApplyMesh.Enabled = (CurrentView.SelectedItems.Count > 0);
+				miApplyMesh.Enabled = CurrentView.SelectedItems.Count > 0;
 				UpdateMoveToList();
 			}
 		}
@@ -472,7 +472,7 @@ namespace SimPe.Plugin.UI
 		{
 			if (sender is ListView lv)
 			{
-				miApplyMesh.Enabled = (lv.SelectedItems.Count > 0);
+				miApplyMesh.Enabled = lv.SelectedItems.Count > 0;
 				UpdateMaterialsList(lv);
 				UpdateMeshList(lv);
 				UpdatePropertiesPanel(lv);
@@ -495,7 +495,7 @@ namespace SimPe.Plugin.UI
 					cmp.Sorting = SortOrder.Descending; // reset order on column change
 				}
 
-				cmp.Sorting ^= (SortOrder.Ascending | SortOrder.Descending); // toggle me
+				cmp.Sorting ^= SortOrder.Ascending | SortOrder.Descending; // toggle me
 
 				lv.Sort();
 			}
@@ -863,7 +863,7 @@ namespace SimPe.Plugin.UI
 
 		void InitDisableControls()
 		{
-			llGuid.Enabled = (box.Settings.PackageType != RecolorType.Skin);
+			llGuid.Enabled = box.Settings.PackageType != RecolorType.Skin;
 			if (box.Settings.PackageType == RecolorType.Skintone)
 			{
 				numericUpDown1.Value = Convert.ToDecimal(

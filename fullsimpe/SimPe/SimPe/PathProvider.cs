@@ -643,7 +643,7 @@ namespace SimPe
 								&& (tokens[1] == "censorgridsize")
 							)
 							{
-								return (Convert.ToInt32(tokens[2]) != 0);
+								return Convert.ToInt32(tokens[2]) != 0;
 							}
 						}
 					}

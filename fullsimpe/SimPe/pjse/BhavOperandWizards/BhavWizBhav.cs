@@ -290,7 +290,7 @@ namespace pjse.BhavNameWizards
 					+ ((pn != null && pn != "") ? pn + "=" : "")
 					+ "0x"
 					+ SimPe.Helper.HexString(
-						ToShort((z12 && i == 6) ? (byte)0 : o[(i * 2)], o[(i * 2) + 1])
+						ToShort((z12 && i == 6) ? (byte)0 : o[i * 2], o[(i * 2) + 1])
 					);
 			}
 			if (thisArgc > 0)
@@ -369,7 +369,7 @@ namespace pjse.BhavNameWizards
 
 			if (!lng)
 			{
-				return (start > 0 ? "," : Localization.GetString("allZeros"));
+				return start > 0 ? "," : Localization.GetString("allZeros");
 			}
 
 			string s = "";

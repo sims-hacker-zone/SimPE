@@ -97,7 +97,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0020
 		{
 			setGUID(
 				true,
-				(UInt32)(o[sub] | o[sub + 1] << 8 | o[sub + 2] << 16 | o[sub + 3] << 24)
+				(UInt32)(o[sub] | (o[sub + 1] << 8) | (o[sub + 2] << 16) | (o[sub + 3] << 24))
 			);
 		}
 
@@ -154,13 +154,13 @@ namespace pjse.BhavOperandWizards.Wiz0x0020
 
 				UInt32 val = Convert.ToUInt32(tbGUID.Text, 16);
 				ops1[0x00] = (byte)(val & 0xff);
-				ops1[0x01] = (byte)(val >> 8 & 0xff);
-				ops1[0x02] = (byte)(val >> 16 & 0xff);
-				ops1[0x03] = (byte)(val >> 24 & 0xff);
+				ops1[0x01] = (byte)((val >> 8) & 0xff);
+				ops1[0x02] = (byte)((val >> 16) & 0xff);
+				ops1[0x03] = (byte)((val >> 24) & 0xff);
 
 				ops1[0x06] = doid1.DataOwner;
 				ops1[0x04] = (byte)(doid1.Value & 0xff);
-				ops1[0x05] = (byte)(doid1.Value >> 8 & 0xff);
+				ops1[0x05] = (byte)((doid1.Value >> 8) & 0xff);
 
 				Boolset ops1_7 = ops1[0x07];
 				ops1_7[0] = ckbOrigGUID.Checked;

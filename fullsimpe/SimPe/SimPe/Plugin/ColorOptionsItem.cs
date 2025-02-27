@@ -165,7 +165,7 @@ namespace SimPe.Plugin
 			subset = Hashes.StripHashFromName(subset).Trim().ToLower();
 			foreach (SubsetItem i in subsets)
 			{
-				if ((i.Slave) && (i.Name.Trim().ToLower() == subset))
+				if (i.Slave && (i.Name.Trim().ToLower() == subset))
 				{
 					return true;
 				}

@@ -99,10 +99,10 @@ namespace SimPe.Plugin.TabPage
 			//
 			linkLabel4.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			linkLabel4.AutoSize = true;
@@ -126,10 +126,10 @@ namespace SimPe.Plugin.TabPage
 			//
 			linkLabel3.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			linkLabel3.AutoSize = true;
@@ -153,12 +153,12 @@ namespace SimPe.Plugin.TabPage
 			//
 			tblistfile.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tblistfile.Font = new System.Drawing.Font(
@@ -195,12 +195,12 @@ namespace SimPe.Plugin.TabPage
 			//
 			lbfl.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
-						) | AnchorStyles.Left
-					)
+						 | AnchorStyles.Left
+
 
 			;
 			lbfl.HorizontalScrollbar = true;

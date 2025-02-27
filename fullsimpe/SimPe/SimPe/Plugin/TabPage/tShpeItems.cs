@@ -122,10 +122,10 @@ namespace SimPe.Plugin.TabPage
 			//
 			linkLabel5.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			linkLabel5.AutoSize = true;
@@ -151,10 +151,10 @@ namespace SimPe.Plugin.TabPage
 			//
 			linkLabel6.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			linkLabel6.AutoSize = true;
@@ -268,12 +268,12 @@ namespace SimPe.Plugin.TabPage
 			//
 			tbitemflname.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tbitemflname.Font = new System.Drawing.Font(
@@ -312,12 +312,12 @@ namespace SimPe.Plugin.TabPage
 			//
 			lbitem.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			lbitem.Font = new System.Drawing.Font(

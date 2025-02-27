@@ -41,7 +41,7 @@ namespace SimPe.Plugin
 			get;
 		}
 
-		public bool ChangedAny => (ChangedPackage || ChangedFile);
+		public bool ChangedAny => ChangedPackage || ChangedFile;
 		#endregion
 	}
 }

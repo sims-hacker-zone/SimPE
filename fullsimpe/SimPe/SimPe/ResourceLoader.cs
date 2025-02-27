@@ -628,7 +628,7 @@ namespace SimPe
 				loaded.Clear();
 			}
 
-			return (loaded.Count == 0);
+			return loaded.Count == 0;
 		}
 
 		/// <summary>
@@ -742,7 +742,7 @@ namespace SimPe
 			{
 				Interfaces.Plugin.Internal.IPackedFileSaveExtension wrp =
 					(Interfaces.Plugin.Internal.IPackedFileSaveExtension)wrapper;
-				if ((wrp.Changed))
+				if (wrp.Changed)
 				{
 					MessageBoxButtons mbb = MessageBoxButtons.YesNoCancel;
 					//Deleted wrappers are Ignored!!!

@@ -165,7 +165,7 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 		{
 			setGUID(
 				true,
-				(UInt32)(o[sub] | o[sub + 1] << 8 | o[sub + 2] << 16 | o[sub + 3] << 24)
+				(UInt32)(o[sub] | (o[sub + 1] << 8) | (o[sub + 2] << 16) | (o[sub + 3] << 24))
 			);
 		}
 
@@ -213,7 +213,7 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 
 			tbLocalVar.Text = "0x" + SimPe.Helper.HexString(ops1[0x06]);
 
-			pnNodeVersion.Enabled = (inst.NodeVersion != 0);
+			pnNodeVersion.Enabled = inst.NodeVersion != 0;
 			ckbDisabled.Checked = (ops2[0x00] & 0x01) != 0;
 			pnWhere.Enabled = ckbWhere.Checked = (ops2[0x00] & 0x02) != 0;
 
@@ -239,9 +239,9 @@ namespace pjse.BhavOperandWizards.Wiz0x001f
 
 				UInt32 val = Convert.ToUInt32(tbGUID.Text, 16);
 				ops1[0x00] = (byte)(val & 0xff);
-				ops1[0x01] = (byte)(val >> 8 & 0xff);
-				ops1[0x02] = (byte)(val >> 16 & 0xff);
-				ops1[0x03] = (byte)(val >> 24 & 0xff);
+				ops1[0x01] = (byte)((val >> 8) & 0xff);
+				ops1[0x02] = (byte)((val >> 16) & 0xff);
+				ops1[0x03] = (byte)((val >> 24) & 0xff);
 				if (cbToNext.SelectedIndex >= 0)
 				{
 					ops1[0x04] = (byte)(cbToNext.SelectedIndex & 0x7f);

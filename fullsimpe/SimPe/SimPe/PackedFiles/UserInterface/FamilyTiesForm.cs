@@ -152,10 +152,10 @@ namespace SimPe.PackedFiles.UserInterface
 			panel4.AccessibleName = null;
 			resources.ApplyResources(panel4, "panel4");
 			panel4.BackColor = Color.FromArgb(
-				((byte)(120)),
-				((byte)(0)),
-				((byte)(0)),
-				((byte)(0))
+				(byte)120,
+				(byte)0,
+				(byte)0,
+				(byte)0
 			);
 			panel4.BackgroundImage = null;
 			panel4.Controls.Add(cbLock);
@@ -215,10 +215,10 @@ namespace SimPe.PackedFiles.UserInterface
 			xpLine1.Font = null;
 			xpLine1.ForeColor = Color.Transparent;
 			xpLine1.LineColor = Color.FromArgb(
-				((byte)(125)),
-				((byte)(0)),
-				((byte)(0)),
-				((byte)(0))
+				(byte)125,
+				(byte)0,
+				(byte)0,
+				(byte)0
 			);
 			xpLine1.Name = "xpLine1";
 			xpLine1.Orientation = System
@@ -416,10 +416,10 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void miAddTie_BeforePopup(object sender, EventArgs e)
 		{
-			miAddTie.Enabled = (
+			miAddTie.Enabled =
 				lastsdsc != null && currentsdsc != null && currentsdsc != lastsdsc
-			);
-			miOpenSdesc.Enabled = (lastsdsc != null);
+			;
+			miOpenSdesc.Enabled = lastsdsc != null;
 			miAddTie.Image = thumb;
 			//this.miOpenSdesc.Image = thumb;
 			if (thumb != null)
@@ -511,7 +511,7 @@ namespace SimPe.PackedFiles.UserInterface
 				cbrel.Tag = null;
 				lbname.Text = sdesc.SimName + " " + sdesc.SimFamilyName;
 				labelidd.Text = "0x" + Helper.HexString(sdesc.Instance);
-				cbrel.Enabled = (sdesc != currentsdsc);
+				cbrel.Enabled = sdesc != currentsdsc;
 				if (cbrel.Enabled)
 				{
 					Wrapper.Supporting.FamilyTieSim fts =
@@ -524,7 +524,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			else
 			{
-				cbrel.Enabled = (ties.SelectedElement != null);
+				cbrel.Enabled = ties.SelectedElement != null;
 				if (!cbrel.Enabled)
 				{
 					lbname.Text = "";

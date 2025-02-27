@@ -208,19 +208,19 @@ namespace SimPe.Plugin
 			panel2.SuspendLayout();
 			Panel3.SuspendLayout();
 			Panel4.SuspendLayout();
-			((ISupportInitialize)(pbox)).BeginInit();
+			((ISupportInitialize)pbox).BeginInit();
 			SuspendLayout();
 			//
 			// lv
 			//
 			lv.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
-						) | AnchorStyles.Left
-					)
+						 | AnchorStyles.Left
+
 
 			;
 			lv.Font = new Font("Tahoma", 8.25F);
@@ -234,12 +234,12 @@ namespace SimPe.Plugin
 			//
 			bnfoCustomerItemUI1.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
-						) | AnchorStyles.Left
-					)
+						 | AnchorStyles.Left
+
 
 			;
 			bnfoCustomerItemUI1.BackColor = Color.Transparent;
@@ -307,9 +307,9 @@ namespace SimPe.Plugin
 			//
 			// biMax
 			//
-			biMax.Image = (
-				(Image)(resources.GetObject("biMax.Image"))
-			);
+			biMax.Image =
+				(Image)resources.GetObject("biMax.Image")
+			;
 			biMax.ImageScaling =
 				ToolStripItemImageScaling
 				.None;
@@ -323,9 +323,9 @@ namespace SimPe.Plugin
 			//
 			// biReward
 			//
-			biReward.Image = (
-				(Image)(resources.GetObject("biReward.Image"))
-			);
+			biReward.Image =
+				(Image)resources.GetObject("biReward.Image")
+			;
 			biReward.ImageScaling =
 				ToolStripItemImageScaling
 				.None;
@@ -339,9 +339,9 @@ namespace SimPe.Plugin
 			//
 			// biWorkers
 			//
-			biWorkers.Image = (
-				(Image)(resources.GetObject("biWorkers.Image"))
-			);
+			biWorkers.Image =
+				(Image)resources.GetObject("biWorkers.Image")
+			;
 			biWorkers.ImageScaling =
 				ToolStripItemImageScaling
 				.None;
@@ -381,10 +381,10 @@ namespace SimPe.Plugin
 			//
 			lbcashf.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			lbcashf.AutoSize = true;
@@ -403,10 +403,10 @@ namespace SimPe.Plugin
 			//
 			gpexpen.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			gpexpen.BackColor = Color.Transparent;
@@ -420,10 +420,10 @@ namespace SimPe.Plugin
 			//
 			gpreven.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			gpreven.BackColor = Color.Transparent;
@@ -436,10 +436,10 @@ namespace SimPe.Plugin
 			//
 			btClearim.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			btClearim.Location = new Point(261, 270);
@@ -458,10 +458,10 @@ namespace SimPe.Plugin
 			//
 			tbMax.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			tbMax.Location = new Point(120, 293);
@@ -474,10 +474,10 @@ namespace SimPe.Plugin
 			//
 			tbCur.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			tbCur.Location = new Point(120, 269);
@@ -490,10 +490,10 @@ namespace SimPe.Plugin
 			//
 			label3.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			label3.BackColor = Color.Transparent;
@@ -514,10 +514,10 @@ namespace SimPe.Plugin
 			//
 			label2.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			label2.BackColor = Color.Transparent;
@@ -573,10 +573,10 @@ namespace SimPe.Plugin
 			//
 			btaddim.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			btaddim.Location = new Point(710, 291);
@@ -826,10 +826,10 @@ namespace SimPe.Plugin
 			//
 			btdelety.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			btdelety.Location = new Point(625, 291);
@@ -1120,12 +1120,12 @@ namespace SimPe.Plugin
 			//
 			lvEmployees.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
-						) | AnchorStyles.Left
-					)
+						 | AnchorStyles.Left
+
 
 			;
 			lvEmployees.BorderStyle = BorderStyle.None;
@@ -1164,10 +1164,10 @@ namespace SimPe.Plugin
 			//
 			btchngeOwn.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			btchngeOwn.Location = new Point(625, 291);
@@ -1207,7 +1207,7 @@ namespace SimPe.Plugin
 			Panel3.PerformLayout();
 			Panel4.ResumeLayout(false);
 			Panel4.PerformLayout();
-			((ISupportInitialize)(pbox)).EndInit();
+			((ISupportInitialize)pbox).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -1393,8 +1393,8 @@ namespace SimPe.Plugin
 			if (historycount > homeb)
 			{
 				int cflo =
-					(Bnfo.Revenue[historycount - 1])
-					- (Bnfo.Expences[historycount - 1]);
+					Bnfo.Revenue[historycount - 1]
+					- Bnfo.Expences[historycount - 1];
 				Array.Resize(ref rdatas, historycount - homeb);
 				Array.Resize(ref edatas, historycount - homeb);
 				// set both graphs to same max value so a direct comparison between the bar heights is possible
@@ -1540,7 +1540,7 @@ namespace SimPe.Plugin
 				panel2.Visible = false;
 				panel1.Visible = true;
 				biWorkers.Text = "Employees";
-				biMax.Enabled = biReward.Enabled = (Bnfo != null);
+				biMax.Enabled = biReward.Enabled = Bnfo != null;
 				CanCommit = true;
 				employees = false;
 			}

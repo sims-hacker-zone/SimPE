@@ -152,12 +152,12 @@ namespace SimPe.Plugin
 			//
 			tabControl1.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tabControl1.Controls.Add(tabPage1);
@@ -222,10 +222,10 @@ namespace SimPe.Plugin
 			//
 			llsearch.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			llsearch.AutoSize = true;
@@ -297,10 +297,10 @@ namespace SimPe.Plugin
 			//
 			linkLabel1.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			linkLabel1.AutoSize = true;
@@ -327,12 +327,12 @@ namespace SimPe.Plugin
 			//
 			tbflname.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tbflname.Location = new System.Drawing.Point(90, 8);
@@ -382,10 +382,10 @@ namespace SimPe.Plugin
 			//
 			linkLabel2.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			linkLabel2.AutoSize = true;
@@ -410,12 +410,12 @@ namespace SimPe.Plugin
 			//
 			tbsimname.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tbsimname.Location = new System.Drawing.Point(95, 8);
@@ -460,12 +460,12 @@ namespace SimPe.Plugin
 			//
 			tbpropval.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tbpropval.Location = new System.Drawing.Point(454, 8);
@@ -531,10 +531,10 @@ namespace SimPe.Plugin
 			//
 			linkLabel3.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			linkLabel3.AutoSize = true;
@@ -596,10 +596,10 @@ namespace SimPe.Plugin
 			//
 			linkLabel4.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			linkLabel4.AutoSize = true;
@@ -626,12 +626,12 @@ namespace SimPe.Plugin
 			//
 			tbguid.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tbguid.Location = new System.Drawing.Point(87, 7);
@@ -660,14 +660,14 @@ namespace SimPe.Plugin
 			//
 			lblist.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lblist.HorizontalScrollbar = true;
@@ -684,10 +684,10 @@ namespace SimPe.Plugin
 			//
 			btopen.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			btopen.FlatStyle = FlatStyle.System;
@@ -702,12 +702,12 @@ namespace SimPe.Plugin
 			//
 			pb.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Bottom
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			pb.Location = new System.Drawing.Point(8, 481);
@@ -717,10 +717,10 @@ namespace SimPe.Plugin
 			pb.TabIndex = 3;
 			pb.BackColor = System.Drawing.Color.Transparent;
 			pb.BorderColor = System.Drawing.Color.FromArgb(
-				((byte)(100)),
-				((byte)(0)),
-				((byte)(0)),
-				((byte)(0))
+				(byte)100,
+				(byte)0,
+				(byte)0,
+				(byte)0
 			);
 			pb.Gradient = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
 			pb.Quality = true;
@@ -732,14 +732,14 @@ namespace SimPe.Plugin
 			//
 			panel1.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			panel1.BackColor = System.Drawing.Color.Transparent;
@@ -820,7 +820,7 @@ namespace SimPe.Plugin
 				int count = 0;
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
-					pb.Value = (count++ * pb.Maximum) / pfds.Length;
+					pb.Value = count++ * pb.Maximum / pfds.Length;
 					SearchItem si = fkt(pfd, package, prov);
 					if (si != null)
 					{
@@ -1045,22 +1045,22 @@ namespace SimPe.Plugin
 				string s2 = tbpropval.Text.Trim().ToLower();
 				if (rbfull.Checked)
 				{
-					check = (s1 == s2);
+					check = s1 == s2;
 				}
 
 				if (rbstart.Checked)
 				{
-					check = (s1.StartsWith(s2));
+					check = s1.StartsWith(s2);
 				}
 
 				if (rbend.Checked)
 				{
-					check = (s1.EndsWith(s2));
+					check = s1.EndsWith(s2);
 				}
 
 				if (rbcont.Checked)
 				{
-					check = (s1.IndexOf(s2) != -1);
+					check = s1.IndexOf(s2) != -1;
 				}
 
 				if (check)
@@ -1165,7 +1165,7 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			btopen.Enabled = (btopen.Tag == null);
+			btopen.Enabled = btopen.Tag == null;
 		}
 
 		private void GzpsSearch(

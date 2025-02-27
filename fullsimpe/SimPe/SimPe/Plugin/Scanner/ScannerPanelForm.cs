@@ -284,10 +284,10 @@ namespace SimPe.Plugin.Scanner
 				8.25F,
 
 
-						(
+
 							System.Drawing.FontStyle.Bold
 							| System.Drawing.FontStyle.Italic
-						)
+
 
 				,
 				System.Drawing.GraphicsUnit.Point,
@@ -333,12 +333,12 @@ namespace SimPe.Plugin.Scanner
 			//
 			pncloth.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			pncloth.Controls.Add(label6);
@@ -378,10 +378,10 @@ namespace SimPe.Plugin.Scanner
 				8.25F,
 
 
-						(
+
 							System.Drawing.FontStyle.Bold
 							| System.Drawing.FontStyle.Italic
-						)
+
 
 				,
 				System.Drawing.GraphicsUnit.Point,
@@ -749,10 +749,10 @@ namespace SimPe.Plugin.Scanner
 				8.25F,
 
 
-						(
+
 							System.Drawing.FontStyle.Bold
 							| System.Drawing.FontStyle.Italic
-						)
+
 
 				,
 				System.Drawing.GraphicsUnit.Point,
@@ -772,10 +772,10 @@ namespace SimPe.Plugin.Scanner
 				8.25F,
 
 
-						(
+
 							System.Drawing.FontStyle.Bold
 							| System.Drawing.FontStyle.Italic
-						)
+
 
 				,
 				System.Drawing.GraphicsUnit.Point,
@@ -810,12 +810,12 @@ namespace SimPe.Plugin.Scanner
 			//
 			cbshelve.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			cbshelve.DropDownStyle =
@@ -838,10 +838,10 @@ namespace SimPe.Plugin.Scanner
 				8.25F,
 
 
-						(
+
 							System.Drawing.FontStyle.Bold
 							| System.Drawing.FontStyle.Italic
-						)
+
 
 				,
 				System.Drawing.GraphicsUnit.Point,
@@ -949,10 +949,10 @@ namespace SimPe.Plugin.Scanner
 				8.25F,
 
 
-						(
+
 							System.Drawing.FontStyle.Bold
 							| System.Drawing.FontStyle.Italic
-						)
+
 
 				,
 				System.Drawing.GraphicsUnit.Point,
@@ -1160,12 +1160,12 @@ namespace SimPe.Plugin.Scanner
 		{
 			PackedFiles.Wrapper.ShelveDimension sd =
 				(PackedFiles.Wrapper.ShelveDimension)cbshelve.SelectedValue;
-			llShelve.Enabled = (
+			llShelve.Enabled =
 				sd != PackedFiles.Wrapper.ShelveDimension.Indetermined
 				&& sd != PackedFiles.Wrapper.ShelveDimension.Multitile
 				&& sd != PackedFiles.Wrapper.ShelveDimension.Unknown1
 				&& sd != PackedFiles.Wrapper.ShelveDimension.Unknown2
-			);
+			;
 		}
 
 		private void cbact_CheckedChanged(object sender, EventArgs e)

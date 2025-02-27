@@ -78,7 +78,7 @@ namespace SimPe.Plugin.Anim
 		[Description("Use this KeyFrame as a Linear Pole."), Category("Information")]
 		public bool Linear
 		{
-			get => ((tc & 0x8000) == 0x8000);
+			get => (tc & 0x8000) == 0x8000;
 			set
 			{
 				tc = (ushort)(tc & 0x7fff);

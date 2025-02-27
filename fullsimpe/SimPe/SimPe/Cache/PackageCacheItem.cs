@@ -239,13 +239,13 @@ namespace SimPe.Cache
 	{
 		public new PackageState this[int index]
 		{
-			get => ((PackageState)base[index]);
+			get => (PackageState)base[index];
 			set => base[index] = value;
 		}
 
 		public PackageState this[uint index]
 		{
-			get => ((PackageState)base[(int)index]);
+			get => (PackageState)base[(int)index];
 			set => base[(int)index] = value;
 		}
 

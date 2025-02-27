@@ -72,7 +72,7 @@ namespace SimPe.Wizards
 			}
 
 			Index = parent.Controls.Count - 1;
-			First = (Index == 0);
+			First = Index == 0;
 
 			parent.Aborted += new WizardHandle(OnAborted);
 			parent.Finished += new WizardHandle(OnFinished);

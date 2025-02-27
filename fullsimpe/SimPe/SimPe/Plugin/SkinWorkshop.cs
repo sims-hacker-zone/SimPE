@@ -299,7 +299,7 @@ namespace SimPe.Plugin
 			panel1 = new Panel();
 			taskBox2 = new GroupBox();
 			taskBox1 = new GroupBox();
-			((System.ComponentModel.ISupportInitialize)(pb)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)pb).BeginInit();
 			panel1.SuspendLayout();
 			taskBox2.SuspendLayout();
 			taskBox1.SuspendLayout();
@@ -309,14 +309,14 @@ namespace SimPe.Plugin
 			//
 			lbobj.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lbobj.IntegralHeight = false;
@@ -332,10 +332,10 @@ namespace SimPe.Plugin
 			//
 			btclone.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			btclone.FlatStyle = FlatStyle.System;
@@ -405,12 +405,12 @@ namespace SimPe.Plugin
 			//
 			tbseek.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tbseek.Location = new Point(6, 44);
@@ -445,10 +445,10 @@ namespace SimPe.Plugin
 			//
 			taskBox2.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			taskBox2.BackColor = Color.Transparent;
@@ -466,14 +466,14 @@ namespace SimPe.Plugin
 			//
 			taskBox1.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			taskBox1.BackColor = Color.Transparent;
@@ -500,13 +500,13 @@ namespace SimPe.Plugin
 			FormBorderStyle =
 				FormBorderStyle
 				.SizableToolWindow;
-			Icon = ((Icon)(resources.GetObject("$this.Icon")));
+			Icon = (Icon)resources.GetObject("$this.Icon");
 			MinimumSize = new Size(520, 320);
 			Name = "SkinWorkshop";
 			Opacity = 0.96;
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Skin Workshop (biggest thanks to RGiles and Numenor)";
-			((System.ComponentModel.ISupportInitialize)(pb)).EndInit();
+			((System.ComponentModel.ISupportInitialize)pb).EndInit();
 			panel1.ResumeLayout(false);
 			taskBox2.ResumeLayout(false);
 			taskBox1.ResumeLayout(false);
@@ -621,7 +621,7 @@ namespace SimPe.Plugin
 					}
 				}
 
-				if ((cbgid.Checked) && (package != null))
+				if (cbgid.Checked && (package != null))
 				{
 					WaitingScreen.Wait();
 					try

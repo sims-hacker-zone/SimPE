@@ -393,7 +393,7 @@ namespace SimPe.Plugin
 		///  </param>
 		static void FindUids(string folder, Hashtable ids, bool scanall)
 		{
-			Wait.Message = (folder);
+			Wait.Message = folder;
 
 			ArrayList names = new ArrayList();
 			if (!scanall)

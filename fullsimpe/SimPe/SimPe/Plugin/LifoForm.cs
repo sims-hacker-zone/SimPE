@@ -101,7 +101,7 @@ namespace SimPe.Plugin
 			menuItem7 = new MenuItem();
 			LifoPanel.SuspendLayout();
 			panel1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(pb)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)pb).BeginInit();
 			panel2.SuspendLayout();
 			SuspendLayout();
 			//
@@ -308,14 +308,14 @@ namespace SimPe.Plugin
 			//
 			panel1.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			panel1.AutoScroll = true;
@@ -328,9 +328,9 @@ namespace SimPe.Plugin
 			// pb
 			//
 			pb.BackColor = SystemColors.Control;
-			pb.BackgroundImage = (
-				(Image)(resources.GetObject("pb.BackgroundImage"))
-			);
+			pb.BackgroundImage =
+				(Image)resources.GetObject("pb.BackgroundImage")
+			;
 			pb.ContextMenu = contextMenu1;
 			pb.Location = new Point(0, 0);
 			pb.Name = "pb";
@@ -382,12 +382,12 @@ namespace SimPe.Plugin
 			//
 			panel2.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			panel2.BackColor = SystemColors.AppWorkspace;
@@ -410,10 +410,10 @@ namespace SimPe.Plugin
 			//
 			btex.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			btex.FlatStyle = FlatStyle.System;
@@ -435,10 +435,10 @@ namespace SimPe.Plugin
 			//
 			btim.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			btim.FlatStyle = FlatStyle.System;
@@ -470,10 +470,10 @@ namespace SimPe.Plugin
 			//
 			btcommit.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			btcommit.FlatStyle = FlatStyle.System;
@@ -524,7 +524,7 @@ namespace SimPe.Plugin
 			LifoPanel.PerformLayout();
 			panel1.ResumeLayout(false);
 			panel1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(pb)).EndInit();
+			((System.ComponentModel.ISupportInitialize)pb).EndInit();
 			panel2.ResumeLayout(false);
 			panel2.PerformLayout();
 			ResumeLayout(false);

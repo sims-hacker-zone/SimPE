@@ -290,59 +290,59 @@ namespace SimPe.PackedFiles.UserInterface
 			instrText.AccessibleName = resources.GetString(
 				"instrText.AccessibleName"
 			);
-			instrText.Anchor = (
-				(AnchorStyles)(
+			instrText.Anchor =
+				(AnchorStyles)
 					resources.GetObject("instrText.Anchor")
-				)
-			);
-			instrText.AutoSize = (
-				(bool)(resources.GetObject("instrText.AutoSize"))
-			);
+
+			;
+			instrText.AutoSize =
+				(bool)resources.GetObject("instrText.AutoSize")
+			;
 			instrText.BorderStyle = BorderStyle.FixedSingle;
-			instrText.Dock = (
-				(DockStyle)(resources.GetObject("instrText.Dock"))
-			);
-			instrText.Enabled = ((bool)(resources.GetObject("instrText.Enabled")));
-			instrText.Font = (
-				(System.Drawing.Font)(resources.GetObject("instrText.Font"))
-			);
-			instrText.Image = (
-				(System.Drawing.Image)(resources.GetObject("instrText.Image"))
-			);
-			instrText.ImageAlign = (
-				(System.Drawing.ContentAlignment)(
+			instrText.Dock =
+				(DockStyle)resources.GetObject("instrText.Dock")
+			;
+			instrText.Enabled = (bool)resources.GetObject("instrText.Enabled");
+			instrText.Font =
+				(System.Drawing.Font)resources.GetObject("instrText.Font")
+			;
+			instrText.Image =
+				(System.Drawing.Image)resources.GetObject("instrText.Image")
+			;
+			instrText.ImageAlign =
+				(System.Drawing.ContentAlignment)
 					resources.GetObject("instrText.ImageAlign")
-				)
-			);
-			instrText.ImageIndex = (
-				(int)(resources.GetObject("instrText.ImageIndex"))
-			);
-			instrText.ImeMode = (
-				(ImeMode)(resources.GetObject("instrText.ImeMode"))
-			);
-			instrText.Location = (
-				(System.Drawing.Point)(resources.GetObject("instrText.Location"))
-			);
+
+			;
+			instrText.ImageIndex =
+				(int)resources.GetObject("instrText.ImageIndex")
+			;
+			instrText.ImeMode =
+				(ImeMode)resources.GetObject("instrText.ImeMode")
+			;
+			instrText.Location =
+				(System.Drawing.Point)resources.GetObject("instrText.Location")
+			;
 			instrText.Name = "instrText";
-			instrText.RightToLeft = (
-				(RightToLeft)(
+			instrText.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("instrText.RightToLeft")
-				)
-			);
-			instrText.Size = (
-				(System.Drawing.Size)(resources.GetObject("instrText.Size"))
-			);
-			instrText.TabIndex = (
-				(int)(resources.GetObject("instrText.TabIndex"))
-			);
+
+			;
+			instrText.Size =
+				(System.Drawing.Size)resources.GetObject("instrText.Size")
+			;
+			instrText.TabIndex =
+				(int)resources.GetObject("instrText.TabIndex")
+			;
 			instrText.Text = resources.GetString("instrText.Text");
-			instrText.TextAlign = (
-				(System.Drawing.ContentAlignment)(
+			instrText.TextAlign =
+				(System.Drawing.ContentAlignment)
 					resources.GetObject("instrText.TextAlign")
-				)
-			);
+
+			;
 			instrText.UseMnemonic = false;
-			instrText.Visible = ((bool)(resources.GetObject("instrText.Visible")));
+			instrText.Visible = (bool)resources.GetObject("instrText.Visible");
 			instrText.Click += new EventHandler(Control_Click);
 			//
 			// trueTarget
@@ -353,68 +353,68 @@ namespace SimPe.PackedFiles.UserInterface
 			trueTarget.AccessibleName = resources.GetString(
 				"trueTarget.AccessibleName"
 			);
-			trueTarget.Anchor = (
-				(AnchorStyles)(
+			trueTarget.Anchor =
+				(AnchorStyles)
 					resources.GetObject("trueTarget.Anchor")
-				)
-			);
-			trueTarget.AutoSize = (
-				(bool)(resources.GetObject("trueTarget.AutoSize"))
-			);
-			trueTarget.Dock = (
-				(DockStyle)(resources.GetObject("trueTarget.Dock"))
-			);
-			trueTarget.Enabled = (
-				(bool)(resources.GetObject("trueTarget.Enabled"))
-			);
-			trueTarget.Font = (
-				(System.Drawing.Font)(resources.GetObject("trueTarget.Font"))
-			);
-			trueTarget.Image = (
-				(System.Drawing.Image)(resources.GetObject("trueTarget.Image"))
-			);
-			trueTarget.ImageAlign = (
-				(System.Drawing.ContentAlignment)(
+
+			;
+			trueTarget.AutoSize =
+				(bool)resources.GetObject("trueTarget.AutoSize")
+			;
+			trueTarget.Dock =
+				(DockStyle)resources.GetObject("trueTarget.Dock")
+			;
+			trueTarget.Enabled =
+				(bool)resources.GetObject("trueTarget.Enabled")
+			;
+			trueTarget.Font =
+				(System.Drawing.Font)resources.GetObject("trueTarget.Font")
+			;
+			trueTarget.Image =
+				(System.Drawing.Image)resources.GetObject("trueTarget.Image")
+			;
+			trueTarget.ImageAlign =
+				(System.Drawing.ContentAlignment)
 					resources.GetObject("trueTarget.ImageAlign")
-				)
-			);
-			trueTarget.ImageIndex = (
-				(int)(resources.GetObject("trueTarget.ImageIndex"))
-			);
-			trueTarget.ImeMode = (
-				(ImeMode)(
+
+			;
+			trueTarget.ImageIndex =
+				(int)resources.GetObject("trueTarget.ImageIndex")
+			;
+			trueTarget.ImeMode =
+				(ImeMode)
 					resources.GetObject("trueTarget.ImeMode")
-				)
-			);
-			trueTarget.LinkArea = (
-				(LinkArea)(
+
+			;
+			trueTarget.LinkArea =
+				(LinkArea)
 					resources.GetObject("trueTarget.LinkArea")
-				)
-			);
-			trueTarget.Location = (
-				(System.Drawing.Point)(resources.GetObject("trueTarget.Location"))
-			);
+
+			;
+			trueTarget.Location =
+				(System.Drawing.Point)resources.GetObject("trueTarget.Location")
+			;
 			trueTarget.Name = "trueTarget";
-			trueTarget.RightToLeft = (
-				(RightToLeft)(
+			trueTarget.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("trueTarget.RightToLeft")
-				)
-			);
-			trueTarget.Size = (
-				(System.Drawing.Size)(resources.GetObject("trueTarget.Size"))
-			);
-			trueTarget.TabIndex = (
-				(int)(resources.GetObject("trueTarget.TabIndex"))
-			);
+
+			;
+			trueTarget.Size =
+				(System.Drawing.Size)resources.GetObject("trueTarget.Size")
+			;
+			trueTarget.TabIndex =
+				(int)resources.GetObject("trueTarget.TabIndex")
+			;
 			trueTarget.Text = resources.GetString("trueTarget.Text");
-			trueTarget.TextAlign = (
-				(System.Drawing.ContentAlignment)(
+			trueTarget.TextAlign =
+				(System.Drawing.ContentAlignment)
 					resources.GetObject("trueTarget.TextAlign")
-				)
-			);
-			trueTarget.Visible = (
-				(bool)(resources.GetObject("trueTarget.Visible"))
-			);
+
+			;
+			trueTarget.Visible =
+				(bool)resources.GetObject("trueTarget.Visible")
+			;
 			trueTarget.Click += new EventHandler(Control_Click);
 			trueTarget.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
@@ -429,70 +429,70 @@ namespace SimPe.PackedFiles.UserInterface
 			falseTarget.AccessibleName = resources.GetString(
 				"falseTarget.AccessibleName"
 			);
-			falseTarget.Anchor = (
-				(AnchorStyles)(
+			falseTarget.Anchor =
+				(AnchorStyles)
 					resources.GetObject("falseTarget.Anchor")
-				)
-			);
-			falseTarget.AutoSize = (
-				(bool)(resources.GetObject("falseTarget.AutoSize"))
-			);
-			falseTarget.Dock = (
-				(DockStyle)(
+
+			;
+			falseTarget.AutoSize =
+				(bool)resources.GetObject("falseTarget.AutoSize")
+			;
+			falseTarget.Dock =
+				(DockStyle)
 					resources.GetObject("falseTarget.Dock")
-				)
-			);
-			falseTarget.Enabled = (
-				(bool)(resources.GetObject("falseTarget.Enabled"))
-			);
-			falseTarget.Font = (
-				(System.Drawing.Font)(resources.GetObject("falseTarget.Font"))
-			);
-			falseTarget.Image = (
-				(System.Drawing.Image)(resources.GetObject("falseTarget.Image"))
-			);
-			falseTarget.ImageAlign = (
-				(System.Drawing.ContentAlignment)(
+
+			;
+			falseTarget.Enabled =
+				(bool)resources.GetObject("falseTarget.Enabled")
+			;
+			falseTarget.Font =
+				(System.Drawing.Font)resources.GetObject("falseTarget.Font")
+			;
+			falseTarget.Image =
+				(System.Drawing.Image)resources.GetObject("falseTarget.Image")
+			;
+			falseTarget.ImageAlign =
+				(System.Drawing.ContentAlignment)
 					resources.GetObject("falseTarget.ImageAlign")
-				)
-			);
-			falseTarget.ImageIndex = (
-				(int)(resources.GetObject("falseTarget.ImageIndex"))
-			);
-			falseTarget.ImeMode = (
-				(ImeMode)(
+
+			;
+			falseTarget.ImageIndex =
+				(int)resources.GetObject("falseTarget.ImageIndex")
+			;
+			falseTarget.ImeMode =
+				(ImeMode)
 					resources.GetObject("falseTarget.ImeMode")
-				)
-			);
-			falseTarget.LinkArea = (
-				(LinkArea)(
+
+			;
+			falseTarget.LinkArea =
+				(LinkArea)
 					resources.GetObject("falseTarget.LinkArea")
-				)
-			);
-			falseTarget.Location = (
-				(System.Drawing.Point)(resources.GetObject("falseTarget.Location"))
-			);
+
+			;
+			falseTarget.Location =
+				(System.Drawing.Point)resources.GetObject("falseTarget.Location")
+			;
 			falseTarget.Name = "falseTarget";
-			falseTarget.RightToLeft = (
-				(RightToLeft)(
+			falseTarget.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("falseTarget.RightToLeft")
-				)
-			);
-			falseTarget.Size = (
-				(System.Drawing.Size)(resources.GetObject("falseTarget.Size"))
-			);
-			falseTarget.TabIndex = (
-				(int)(resources.GetObject("falseTarget.TabIndex"))
-			);
+
+			;
+			falseTarget.Size =
+				(System.Drawing.Size)resources.GetObject("falseTarget.Size")
+			;
+			falseTarget.TabIndex =
+				(int)resources.GetObject("falseTarget.TabIndex")
+			;
 			falseTarget.Text = resources.GetString("falseTarget.Text");
-			falseTarget.TextAlign = (
-				(System.Drawing.ContentAlignment)(
+			falseTarget.TextAlign =
+				(System.Drawing.ContentAlignment)
 					resources.GetObject("falseTarget.TextAlign")
-				)
-			);
-			falseTarget.Visible = (
-				(bool)(resources.GetObject("falseTarget.Visible"))
-			);
+
+			;
+			falseTarget.Visible =
+				(bool)resources.GetObject("falseTarget.Visible")
+			;
 			falseTarget.Click += new EventHandler(Control_Click);
 			falseTarget.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
@@ -507,82 +507,82 @@ namespace SimPe.PackedFiles.UserInterface
 			bhavInstListItem.AccessibleName = resources.GetString(
 				"bhavInstListItem.AccessibleName"
 			);
-			bhavInstListItem.Anchor = (
-				(AnchorStyles)(
+			bhavInstListItem.Anchor =
+				(AnchorStyles)
 					resources.GetObject("bhavInstListItem.Anchor")
-				)
-			);
-			bhavInstListItem.AutoSize = (
-				(bool)(resources.GetObject("bhavInstListItem.AutoSize"))
-			);
+
+			;
+			bhavInstListItem.AutoSize =
+				(bool)resources.GetObject("bhavInstListItem.AutoSize")
+			;
 			bhavInstListItem.BackColor = System.Drawing.Color.White;
-			bhavInstListItem.BackgroundImage = (
-				(System.Drawing.Image)(
+			bhavInstListItem.BackgroundImage =
+				(System.Drawing.Image)
 					resources.GetObject("bhavInstListItem.BackgroundImage")
-				)
-			);
+
+			;
 			bhavInstListItem.BorderStyle = BorderStyle.None;
 			bhavInstListItem.Controls.Add(falseTarget);
 			bhavInstListItem.Controls.Add(trueTarget);
 			bhavInstListItem.Controls.Add(instrText);
 			bhavInstListItem.Cursor = Cursors.Default;
-			bhavInstListItem.Dock = (
-				(DockStyle)(
+			bhavInstListItem.Dock =
+				(DockStyle)
 					resources.GetObject("bhavInstListItem.Dock")
-				)
-			);
-			bhavInstListItem.Enabled = (
-				(bool)(resources.GetObject("bhavInstListItem.Enabled"))
-			);
-			bhavInstListItem.Font = (
-				(System.Drawing.Font)(resources.GetObject("bhavInstListItem.Font"))
-			);
-			bhavInstListItem.ImeMode = (
-				(ImeMode)(
+
+			;
+			bhavInstListItem.Enabled =
+				(bool)resources.GetObject("bhavInstListItem.Enabled")
+			;
+			bhavInstListItem.Font =
+				(System.Drawing.Font)resources.GetObject("bhavInstListItem.Font")
+			;
+			bhavInstListItem.ImeMode =
+				(ImeMode)
 					resources.GetObject("bhavInstListItem.ImeMode")
-				)
-			);
-			bhavInstListItem.Location = (
-				(System.Drawing.Point)(resources.GetObject("bhavInstListItem.Location"))
-			);
-			bhavInstListItem.MaxLength = (
-				(int)(resources.GetObject("bhavInstListItem.MaxLength"))
-			);
-			bhavInstListItem.Multiline = (
-				(bool)(resources.GetObject("bhavInstListItem.Multiline"))
-			);
+
+			;
+			bhavInstListItem.Location =
+				(System.Drawing.Point)resources.GetObject("bhavInstListItem.Location")
+			;
+			bhavInstListItem.MaxLength =
+				(int)resources.GetObject("bhavInstListItem.MaxLength")
+			;
+			bhavInstListItem.Multiline =
+				(bool)resources.GetObject("bhavInstListItem.Multiline")
+			;
 			bhavInstListItem.Name = "bhavInstListItem";
-			bhavInstListItem.PasswordChar = (
-				(char)(resources.GetObject("bhavInstListItem.PasswordChar"))
-			);
-			bhavInstListItem.RightToLeft = (
-				(RightToLeft)(
+			bhavInstListItem.PasswordChar =
+				(char)resources.GetObject("bhavInstListItem.PasswordChar")
+			;
+			bhavInstListItem.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("bhavInstListItem.RightToLeft")
-				)
-			);
-			bhavInstListItem.ScrollBars = (
-				(ScrollBars)(
+
+			;
+			bhavInstListItem.ScrollBars =
+				(ScrollBars)
 					resources.GetObject("bhavInstListItem.ScrollBars")
-				)
-			);
-			bhavInstListItem.Size = (
-				(System.Drawing.Size)(resources.GetObject("bhavInstListItem.Size"))
-			);
-			bhavInstListItem.TabIndex = (
-				(int)(resources.GetObject("bhavInstListItem.TabIndex"))
-			);
+
+			;
+			bhavInstListItem.Size =
+				(System.Drawing.Size)resources.GetObject("bhavInstListItem.Size")
+			;
+			bhavInstListItem.TabIndex =
+				(int)resources.GetObject("bhavInstListItem.TabIndex")
+			;
 			bhavInstListItem.Text = resources.GetString("bhavInstListItem.Text");
-			bhavInstListItem.TextAlign = (
-				(HorizontalAlignment)(
+			bhavInstListItem.TextAlign =
+				(HorizontalAlignment)
 					resources.GetObject("bhavInstListItem.TextAlign")
-				)
-			);
-			bhavInstListItem.Visible = (
-				(bool)(resources.GetObject("bhavInstListItem.Visible"))
-			);
-			bhavInstListItem.WordWrap = (
-				(bool)(resources.GetObject("bhavInstListItem.WordWrap"))
-			);
+
+			;
+			bhavInstListItem.Visible =
+				(bool)resources.GetObject("bhavInstListItem.Visible")
+			;
+			bhavInstListItem.WordWrap =
+				(bool)resources.GetObject("bhavInstListItem.WordWrap")
+			;
 			bhavInstListItem.KeyDown += new KeyEventHandler(
 				bhavInstListItem_KeyDown
 			);
@@ -593,33 +593,33 @@ namespace SimPe.PackedFiles.UserInterface
 				"$this.AccessibleDescription"
 			);
 			AccessibleName = resources.GetString("$this.AccessibleName");
-			AutoScroll = ((bool)(resources.GetObject("$this.AutoScroll")));
-			AutoScrollMargin = (
-				(System.Drawing.Size)(resources.GetObject("$this.AutoScrollMargin"))
-			);
-			AutoScrollMinSize = (
-				(System.Drawing.Size)(resources.GetObject("$this.AutoScrollMinSize"))
-			);
+			AutoScroll = (bool)resources.GetObject("$this.AutoScroll");
+			AutoScrollMargin =
+				(System.Drawing.Size)resources.GetObject("$this.AutoScrollMargin")
+			;
+			AutoScrollMinSize =
+				(System.Drawing.Size)resources.GetObject("$this.AutoScrollMinSize")
+			;
 			BackColor = System.Drawing.SystemColors.Control;
-			BackgroundImage = (
-				(System.Drawing.Image)(resources.GetObject("$this.BackgroundImage"))
-			);
+			BackgroundImage =
+				(System.Drawing.Image)resources.GetObject("$this.BackgroundImage")
+			;
 			Controls.Add(bhavInstListItem);
-			Enabled = ((bool)(resources.GetObject("$this.Enabled")));
-			Font = ((System.Drawing.Font)(resources.GetObject("$this.Font")));
-			ImeMode = (
-				(ImeMode)(resources.GetObject("$this.ImeMode"))
-			);
-			Location = (
-				(System.Drawing.Point)(resources.GetObject("$this.Location"))
-			);
+			Enabled = (bool)resources.GetObject("$this.Enabled");
+			Font = (System.Drawing.Font)resources.GetObject("$this.Font");
+			ImeMode =
+				(ImeMode)resources.GetObject("$this.ImeMode")
+			;
+			Location =
+				(System.Drawing.Point)resources.GetObject("$this.Location")
+			;
 			Name = "BhavInstListItemUI";
-			RightToLeft = (
-				(RightToLeft)(
+			RightToLeft =
+				(RightToLeft)
 					resources.GetObject("$this.RightToLeft")
-				)
-			);
-			Size = ((System.Drawing.Size)(resources.GetObject("$this.Size")));
+
+			;
+			Size = (System.Drawing.Size)resources.GetObject("$this.Size");
 			Enter += new EventHandler(bhavInstListItemUI_Enter);
 			Leave += new EventHandler(bhavInstListItemUI_Leave);
 			bhavInstListItem.ResumeLayout(false);

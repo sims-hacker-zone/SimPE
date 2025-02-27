@@ -73,12 +73,12 @@ namespace SimPe
 			//
 			label1.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Bottom
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -110,14 +110,14 @@ namespace SimPe
 			//
 			lbfiles.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lbfiles.Location = new System.Drawing.Point(24, 32);
@@ -145,7 +145,7 @@ namespace SimPe
 			FormBorderStyle =
 				FormBorderStyle
 				.SizableToolWindow;
-			Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			MinimumSize = new System.Drawing.Size(440, 232);
 			Name = "PackageSelectorForm";
 			Text = "PackageSelectorForm";

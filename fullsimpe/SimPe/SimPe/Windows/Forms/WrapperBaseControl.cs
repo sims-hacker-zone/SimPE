@@ -412,60 +412,60 @@ namespace SimPe.Windows.Forms
 			btCommit.AccessibleName = resources.GetString(
 				"btCommit.AccessibleName"
 			);
-			btCommit.Anchor = (
-				(AnchorStyles)(
+			btCommit.Anchor =
+				(AnchorStyles)
 					resources.GetObject("btCommit.Anchor")
-				)
-			);
-			btCommit.BackgroundImage = (
-				(Image)(resources.GetObject("btCommit.BackgroundImage"))
-			);
-			btCommit.Dock = (
-				(DockStyle)(resources.GetObject("btCommit.Dock"))
-			);
-			btCommit.Enabled = ((bool)(resources.GetObject("btCommit.Enabled")));
-			btCommit.FlatStyle = (
-				(FlatStyle)(
+
+			;
+			btCommit.BackgroundImage =
+				(Image)resources.GetObject("btCommit.BackgroundImage")
+			;
+			btCommit.Dock =
+				(DockStyle)resources.GetObject("btCommit.Dock")
+			;
+			btCommit.Enabled = (bool)resources.GetObject("btCommit.Enabled");
+			btCommit.FlatStyle =
+				(FlatStyle)
 					resources.GetObject("btCommit.FlatStyle")
-				)
-			);
-			btCommit.Font = (
-				(Font)(resources.GetObject("btCommit.Font"))
-			);
-			btCommit.Image = (
-				(Image)(resources.GetObject("btCommit.Image"))
-			);
-			btCommit.ImageAlign = (
-				(ContentAlignment)(
+
+			;
+			btCommit.Font =
+				(Font)resources.GetObject("btCommit.Font")
+			;
+			btCommit.Image =
+				(Image)resources.GetObject("btCommit.Image")
+			;
+			btCommit.ImageAlign =
+				(ContentAlignment)
 					resources.GetObject("btCommit.ImageAlign")
-				)
-			);
-			btCommit.ImageIndex = (
-				(int)(resources.GetObject("btCommit.ImageIndex"))
-			);
-			btCommit.ImeMode = (
-				(ImeMode)(resources.GetObject("btCommit.ImeMode"))
-			);
-			btCommit.Location = (
-				(Point)(resources.GetObject("btCommit.Location"))
-			);
+
+			;
+			btCommit.ImageIndex =
+				(int)resources.GetObject("btCommit.ImageIndex")
+			;
+			btCommit.ImeMode =
+				(ImeMode)resources.GetObject("btCommit.ImeMode")
+			;
+			btCommit.Location =
+				(Point)resources.GetObject("btCommit.Location")
+			;
 			btCommit.Name = "btCommit";
-			btCommit.RightToLeft = (
-				(RightToLeft)(
+			btCommit.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("btCommit.RightToLeft")
-				)
-			);
-			btCommit.Size = (
-				(Size)(resources.GetObject("btCommit.Size"))
-			);
-			btCommit.TabIndex = ((int)(resources.GetObject("btCommit.TabIndex")));
+
+			;
+			btCommit.Size =
+				(Size)resources.GetObject("btCommit.Size")
+			;
+			btCommit.TabIndex = (int)resources.GetObject("btCommit.TabIndex");
 			btCommit.Text = resources.GetString("btCommit.Text");
-			btCommit.TextAlign = (
-				(ContentAlignment)(
+			btCommit.TextAlign =
+				(ContentAlignment)
 					resources.GetObject("btCommit.TextAlign")
-				)
-			);
-			btCommit.Visible = ((bool)(resources.GetObject("btCommit.Visible")));
+
+			;
+			btCommit.Visible = (bool)resources.GetObject("btCommit.Visible");
 			btCommit.Click += new EventHandler(btCommit_Click);
 			//
 			// WrapperBaseControl
@@ -474,33 +474,33 @@ namespace SimPe.Windows.Forms
 				"$this.AccessibleDescription"
 			);
 			AccessibleName = resources.GetString("$this.AccessibleName");
-			AutoScroll = ((bool)(resources.GetObject("$this.AutoScroll")));
-			AutoScrollMargin = (
-				(Size)(resources.GetObject("$this.AutoScrollMargin"))
-			);
-			AutoScrollMinSize = (
-				(Size)(resources.GetObject("$this.AutoScrollMinSize"))
-			);
-			BackgroundImage = (
-				(Image)(resources.GetObject("$this.BackgroundImage"))
-			);
+			AutoScroll = (bool)resources.GetObject("$this.AutoScroll");
+			AutoScrollMargin =
+				(Size)resources.GetObject("$this.AutoScrollMargin")
+			;
+			AutoScrollMinSize =
+				(Size)resources.GetObject("$this.AutoScrollMinSize")
+			;
+			BackgroundImage =
+				(Image)resources.GetObject("$this.BackgroundImage")
+			;
 			Controls.Add(btCommit);
 			DockPadding.Top = 24;
-			Enabled = ((bool)(resources.GetObject("$this.Enabled")));
-			Font = ((Font)(resources.GetObject("$this.Font")));
-			ImeMode = (
-				(ImeMode)(resources.GetObject("$this.ImeMode"))
-			);
-			Location = (
-				(Point)(resources.GetObject("$this.Location"))
-			);
+			Enabled = (bool)resources.GetObject("$this.Enabled");
+			Font = (Font)resources.GetObject("$this.Font");
+			ImeMode =
+				(ImeMode)resources.GetObject("$this.ImeMode")
+			;
+			Location =
+				(Point)resources.GetObject("$this.Location")
+			;
 			Name = "WrapperBaseControl";
-			RightToLeft = (
-				(RightToLeft)(
+			RightToLeft =
+				(RightToLeft)
 					resources.GetObject("$this.RightToLeft")
-				)
-			);
-			Size = ((Size)(resources.GetObject("$this.Size")));
+
+			;
+			Size = (Size)resources.GetObject("$this.Size");
 			ResumeLayout(false);
 		}
 		#endregion
@@ -585,16 +585,16 @@ namespace SimPe.Windows.Forms
 							int pyintY = mPicloc.Y + HeaderHeight;
 							if (bklayout == ImageLayout.TopRight)
 							{
-								pyintX = (Width - Widf) - mPicloc.X;
+								pyintX = Width - Widf - mPicloc.X;
 							}
 							else if (bklayout == ImageLayout.BottomRight)
 							{
-								pyintX = (Width - Widf) - mPicloc.X;
-								pyintY = (Height - Hite) - mPicloc.Y;
+								pyintX = Width - Widf - mPicloc.X;
+								pyintY = Height - Hite - mPicloc.Y;
 							}
 							else if (bklayout == ImageLayout.BottomLeft)
 							{
-								pyintY = (Height - Hite) - mPicloc.Y;
+								pyintY = Height - Hite - mPicloc.Y;
 							}
 							else if (bklayout == ImageLayout.Centered)
 							{
@@ -612,12 +612,12 @@ namespace SimPe.Windows.Forms
 							else if (bklayout == ImageLayout.CenterRight)
 							{
 								pyintY = (Height - Hite + HeaderHeight) / 2;
-								pyintX = (Width - Widf) - mPicloc.X;
+								pyintX = Width - Widf - mPicloc.X;
 							}
 							else if (bklayout == ImageLayout.CenterBottom)
 							{
 								pyintX = (Width - Widf) / 2;
-								pyintY = (Height - Hite) - mPicloc.Y;
+								pyintY = Height - Hite - mPicloc.Y;
 							}
 
 							// Draw the Background Image

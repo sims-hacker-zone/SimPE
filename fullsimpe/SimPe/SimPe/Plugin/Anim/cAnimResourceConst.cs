@@ -161,7 +161,7 @@ namespace SimPe.Plugin.Anim
 			int add = 0;
 			if (ct % 2 == 0) //even
 			{
-				add = (ct % 4);
+				add = ct % 4;
 			}
 			else //uneven
 			{
@@ -505,7 +505,7 @@ namespace SimPe.Plugin.Anim
 						}
 
 						//Add a FrameList
-						if (ab2.FrameCount > 0 && (UserVerification.HaveUserId))
+						if (ab2.FrameCount > 0 && UserVerification.HaveUserId)
 						{
 							System.Windows.Forms.TreeNode frames =
 								new System.Windows.Forms.TreeNode(

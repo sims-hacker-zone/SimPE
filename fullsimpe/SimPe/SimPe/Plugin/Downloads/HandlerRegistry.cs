@@ -122,7 +122,7 @@ namespace SimPe.Plugin.Downloads
 			string ext = System.IO.Path.GetExtension(filename).Trim().ToLower();
 			;
 			object o = reg[ext];
-			return (o != null);
+			return o != null;
 		}
 
 		public IPackageHandler LoadFileHandler(string filename)

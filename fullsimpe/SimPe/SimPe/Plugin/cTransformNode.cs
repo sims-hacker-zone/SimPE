@@ -437,7 +437,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public new TransformNodeItem this[int index]
 		{
-			get => ((TransformNodeItem)base[index]);
+			get => (TransformNodeItem)base[index];
 			set => base[index] = value;
 		}
 
@@ -446,7 +446,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public TransformNodeItem this[uint index]
 		{
-			get => ((TransformNodeItem)base[(int)index]);
+			get => (TransformNodeItem)base[(int)index];
 			set => base[(int)index] = value;
 		}
 

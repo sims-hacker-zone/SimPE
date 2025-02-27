@@ -52,7 +52,7 @@ namespace SimPe.Windows.Forms
 			}
 		}
 
-		public bool Available => (tv != null && lv != null);
+		public bool Available => tv != null && lv != null;
 
 		Interfaces.Files.IPackageFile pkg;
 

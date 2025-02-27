@@ -145,7 +145,7 @@ namespace Ambertation.Windows.Forms.Graph
 			int top = prec.Top + 24;
 			Size indent = new Size(
 				trec.Right + 6,
-				trec.Bottom - prec.Top + 7 + 2 * ImageBorderWidth
+				trec.Bottom - prec.Top + 7 + (2 * ImageBorderWidth)
 			);
 
 			//Hashtable ht = new Hashtable();
@@ -242,8 +242,8 @@ namespace Ambertation.Windows.Forms.Graph
 			trec = new Rectangle(
 				trec.Left - ImageBorderWidth - 2,
 				trec.Top - ImageBorderWidth - 2,
-				trec.Width + 2 * ImageBorderWidth + 4,
-				trec.Height + 2 * ImageBorderWidth + 4
+				trec.Width + (2 * ImageBorderWidth) + 4,
+				trec.Height + (2 * ImageBorderWidth) + 4
 			);
 			;
 			Rectangle prec = PanelRectangle;
@@ -251,7 +251,7 @@ namespace Ambertation.Windows.Forms.Graph
 			docks[0].X = Left + trec.Left;
 			docks[0].Y = Top + trec.Bottom;
 			docks[1].X = Left + prec.Right;
-			docks[1].Y = Top + prec.Top + prec.Height / 2;
+			docks[1].Y = Top + prec.Top + (prec.Height / 2);
 
 			docks[2].X = Left + trec.Right;
 			docks[2].Y = Top + trec.Top;
@@ -260,7 +260,7 @@ namespace Ambertation.Windows.Forms.Graph
 			docks[4].X = Left + prec.Right;
 			docks[4].Y = Top + prec.Top;
 
-			docks[5].X = Left + prec.Left + prec.Width / 2;
+			docks[5].X = Left + prec.Left + (prec.Width / 2);
 			docks[5].Y = Top + prec.Bottom;
 			docks[6].X = Left + prec.Left;
 			docks[6].Y = Top + prec.Bottom;

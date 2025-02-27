@@ -1234,7 +1234,7 @@ namespace pjse
 				SimPe.Data.MetaData.BHAV_FILE,
 				instance
 			);
-			found = (ftEntry != null);
+			found = ftEntry != null;
 			return s
 				+ (
 					found
@@ -1397,7 +1397,7 @@ namespace pjse
 		{
 			return FormatGUID(
 				lng,
-				(UInt32)(o[op] | o[op + 1] << 8 | o[op + 2] << 16 | o[op + 3] << 24)
+				(UInt32)(o[op] | (o[op + 1] << 8) | (o[op + 2] << 16) | (o[op + 3] << 24))
 			);
 		}
 
@@ -1523,12 +1523,12 @@ namespace pjse
 			if (!temp)
 			{
 				output = (b & 0x0040) << 9;
-				b -= (b & 0x0040);
+				b -= b & 0x0040;
 			} // b....... ........
 			else
 			{
 				output = (b & 0x0400) << 5;
-				b -= (b & 0x0400);
+				b -= b & 0x0400;
 			} // b....... ........
 
 			int a;
@@ -1551,7 +1551,7 @@ namespace pjse
 			{
 				a = 3;
 			} // do nothing
-			output |= (a << 13); // .aa..... ........
+			output |= a << 13; // .aa..... ........
 
 			if (!temp)
 			{

@@ -719,9 +719,9 @@ namespace pjse.BhavNameWizards
 
 			s += dataOwner(lng, 0x08, o[0], o[1]); // temp
 			s += " := ";
-			s += (
+			s +=
 				(o[2] & 0x01) != 0 ? dataOwner(lng, o[3], o[4], o[5]) : dnMe() // Me
-			);
+			;
 			s += " .. " + dnStkOb(); // Stack Object
 			if (lng)
 			{
@@ -766,9 +766,9 @@ namespace pjse.BhavNameWizards
 
 			s += dataOwner(lng, o[2], o[0], o[1]);
 			s += " := ";
-			s += (
+			s +=
 				(o[4] & 0x01) != 0 ? dataOwner(lng, o[5], o[6], o[7]) : dnMe() // Me
-			);
+			;
 			s += " .. " + dnStkOb(); // Stack Object
 			if (lng)
 			{
@@ -1290,7 +1290,7 @@ namespace pjse.BhavNameWizards
 
 			string s = "";
 
-			s += (o[0] == 0 ? dnMe() : dnStkOb()); // Me | Stack Object
+			s += o[0] == 0 ? dnMe() : dnStkOb(); // Me | Stack Object
 			if (lng)
 			{
 				s +=
@@ -1552,11 +1552,11 @@ namespace pjse.BhavNameWizards
 
 			string s = "";
 
-			s += (
+			s +=
 				(o[4] & 0x40) != 0
 					? Localization.GetString("Stop")
 					: Localization.GetString("Play")
-			);
+			;
 
 			int instance = ToShort(o[0], o[1]);
 			Scope scope = Scope.Private;
@@ -1573,7 +1573,7 @@ namespace pjse.BhavNameWizards
 			string temp = readStr(
 				scope,
 				GS.GlobalStr.Sound,
-				(ushort)(instance),
+				(ushort)instance,
 				lng ? -1 : 60,
 				lng ? Detail.Normal : Detail.ErrorNames
 			);
@@ -2038,7 +2038,7 @@ namespace pjse.BhavNameWizards
 						s +=
 							(i == 0 ? "" : ", ")
 							+ dataOwner(
-								o[6 + i * 3],
+								o[6 + (i * 3)],
 								o[6 + (i * 3) + 1],
 								o[6 + (i * 3) + 2]
 							);
@@ -2111,7 +2111,7 @@ namespace pjse.BhavNameWizards
 
 			string s = "";
 
-			s += (
+			s +=
 				(o[3] & 0x01) != 0
 					? Localization.GetString("bwp1d_clearAll")
 					: dataOwner(lng, 0x0E, o[2]) // My Motives
@@ -2128,7 +2128,7 @@ namespace pjse.BhavNameWizards
 						)
 						+ " "
 						+ dataOwner(lng, o[1], o[6], o[7])
-			);
+			;
 
 			if (lng)
 			{
@@ -3431,7 +3431,7 @@ namespace pjse.BhavNameWizards
 			((byte[])instruction.Operands).CopyTo(o, 0);
 			((byte[])instruction.Reserved1).CopyTo(o, 8);
 
-			return (ToShort(o[0], o[1]) == 0 ? dnMe() : dnStkOb());
+			return ToShort(o[0], o[1]) == 0 ? dnMe() : dnStkOb();
 #if DISASIM
 			// case 0x30:  // Stop ALL Sounds (false = error)
 			//     w1 = *(UINT16 *) (&b[x]);
@@ -5124,7 +5124,7 @@ namespace pjse.BhavNameWizards
 					}
 				}
 
-				s += (
+				s +=
 					(o[2] & 0x04) != 0
 						? instance.ToString()
 							+ ":["
@@ -5144,7 +5144,7 @@ namespace pjse.BhavNameWizards
 							lng ? -1 : 60,
 							lng ? Detail.Full : Detail.ErrorNames
 						) // variable instance
-				);
+				;
 			}
 			else
 			{
@@ -5374,11 +5374,11 @@ namespace pjse.BhavNameWizards
 				+ (lng ? Localization.GetString("bwp6d_materialFrom") + ": " : "");
 			if ((o[13] & 0x02) == 0)
 			{
-				s += (
+				s +=
 					(o[2] & 0x08) != 0
 						? Localization.GetString("bwp_source")
 						: dnMe()
-				);
+				;
 				s +=
 					" ("
 					+ (
@@ -6265,7 +6265,7 @@ namespace pjse.BhavNameWizards
 					{
 						s +=
 							(i == 0 ? "" : ", ")
-							+ dataOwner(o[i * 3], o[i * 3 + 1], o[i * 3 + 2]);
+							+ dataOwner(o[i * 3], o[(i * 3) + 1], o[(i * 3) + 2]);
 					}
 
 					s += ")";
@@ -7224,7 +7224,7 @@ namespace pjse.BhavNameWizards
 						{
 							s +=
 								(i == 0 ? "" : ", ")
-								+ dataOwner(o[3 * i + 6], o[3 * i + 7], o[3 * i + 8]);
+								+ dataOwner(o[(3 * i) + 6], o[(3 * i) + 7], o[(3 * i) + 8]);
 						}
 					}
 
@@ -7428,7 +7428,7 @@ namespace pjse.BhavNameWizards
 				(lng ? Localization.GetString("Target") + ": " : "")
 				+ dataOwner(lng, o[7], o[8], o[9]);
 			// Mmm, wants don't appear to use OBJDs, so GUID lookups don't work...
-			uint want = (uint)(o[3] | o[4] << 8 | o[5] << 16 | o[6] << 24);
+			uint want = (uint)(o[3] | (o[4] << 8) | (o[5] << 16) | (o[6] << 24));
 			s +=
 				", "
 				+ Localization.GetString("bwp7c_want")
@@ -7589,7 +7589,7 @@ namespace pjse.BhavNameWizards
 					{
 						s +=
 							(i != 0 ? ", " : "")
-							+ dataOwner(lng, o[6 + 3 * i], o[7 + 3 * i], o[8 + 3 * i]);
+							+ dataOwner(lng, o[6 + (3 * i)], o[7 + (3 * i)], o[8 + (3 * i)]);
 					}
 				}
 

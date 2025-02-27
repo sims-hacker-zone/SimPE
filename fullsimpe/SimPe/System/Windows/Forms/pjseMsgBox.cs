@@ -129,7 +129,7 @@ namespace System.Windows.Forms
 		/// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
 		public static DialogResult Show(string text)
 		{
-			return (new pjseMsgBox(text, "", "001", null, null, null)).ShowDialog();
+			return new pjseMsgBox(text, "", "001", null, null, null).ShowDialog();
 		}
 
 		/// <summary>
@@ -140,7 +140,7 @@ namespace System.Windows.Forms
 		/// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
 		public static DialogResult Show(IWin32Window owner, string text)
 		{
-			return (new pjseMsgBox(text, "", "001", null, null, null)).ShowDialog(
+			return new pjseMsgBox(text, "", "001", null, null, null).ShowDialog(
 				owner
 			);
 		}
@@ -153,9 +153,9 @@ namespace System.Windows.Forms
 		/// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
 		public static DialogResult Show(string text, string caption)
 		{
-			return (
+			return
 				new pjseMsgBox(text, caption, "001", null, null, null)
-			).ShowDialog();
+			.ShowDialog();
 		}
 
 		/// <summary>
@@ -167,7 +167,7 @@ namespace System.Windows.Forms
 		/// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
 		public static DialogResult Show(IWin32Window owner, string text, string caption)
 		{
-			return (new pjseMsgBox(text, caption, "001", null, null, null)).ShowDialog(
+			return new pjseMsgBox(text, caption, "001", null, null, null).ShowDialog(
 				owner
 			);
 		}
@@ -186,9 +186,9 @@ namespace System.Windows.Forms
 			Boolset buttonsVisible
 		)
 		{
-			return (
+			return
 				new pjseMsgBox(text, caption, buttonsVisible, null, null, null)
-			).ShowDialog();
+			.ShowDialog();
 		}
 
 		/// <summary>
@@ -207,9 +207,9 @@ namespace System.Windows.Forms
 			Boolset buttonsVisible
 		)
 		{
-			return (
+			return
 				new pjseMsgBox(text, caption, buttonsVisible, null, null, null)
-			).ShowDialog(owner);
+			.ShowDialog(owner);
 		}
 
 		/// <summary>
@@ -230,7 +230,7 @@ namespace System.Windows.Forms
 			string[] buttons
 		)
 		{
-			return (
+			return
 				new pjseMsgBox(
 					text,
 					caption,
@@ -239,7 +239,7 @@ namespace System.Windows.Forms
 					buttons,
 					null
 				)
-			).ShowDialog();
+			.ShowDialog();
 		}
 
 		/// <summary>
@@ -262,7 +262,7 @@ namespace System.Windows.Forms
 			string[] buttons
 		)
 		{
-			return (
+			return
 				new pjseMsgBox(
 					text,
 					caption,
@@ -271,7 +271,7 @@ namespace System.Windows.Forms
 					buttons,
 					null
 				)
-			).ShowDialog(owner);
+			.ShowDialog(owner);
 		}
 
 		/// <summary>
@@ -294,7 +294,7 @@ namespace System.Windows.Forms
 			DialogResult[] resultSet
 		)
 		{
-			return (
+			return
 				new pjseMsgBox(
 					text,
 					caption,
@@ -303,7 +303,7 @@ namespace System.Windows.Forms
 					buttons,
 					resultSet
 				)
-			).ShowDialog();
+			.ShowDialog();
 		}
 
 		/// <summary>
@@ -328,7 +328,7 @@ namespace System.Windows.Forms
 			DialogResult[] resultSet
 		)
 		{
-			return (
+			return
 				new pjseMsgBox(
 					text,
 					caption,
@@ -337,7 +337,7 @@ namespace System.Windows.Forms
 					buttons,
 					resultSet
 				)
-			).ShowDialog(owner);
+			.ShowDialog(owner);
 		}
 	}
 }

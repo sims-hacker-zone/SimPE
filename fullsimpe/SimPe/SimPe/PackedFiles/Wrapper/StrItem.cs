@@ -147,7 +147,7 @@ namespace SimPe.PackedFiles.Wrapper
 	{
 		public new StrLanguage this[int index]
 		{
-			get => ((StrLanguage)base[index]);
+			get => (StrLanguage)base[index];
 			set => base[index] = value;
 		}
 
@@ -327,13 +327,13 @@ namespace SimPe.PackedFiles.Wrapper
 	{
 		public new StrToken this[int index]
 		{
-			get => ((StrToken)base[index]);
+			get => (StrToken)base[index];
 			set => base[index] = value;
 		}
 
 		public StrToken this[uint index]
 		{
-			get => ((StrToken)base[(int)index]);
+			get => (StrToken)base[(int)index];
 			set => base[(int)index] = value;
 		}
 

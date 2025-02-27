@@ -113,7 +113,7 @@ namespace SimPe.Plugin.Downloads
 		{
 			Interfaces.Scenegraph.IScenegraphFileIndexItem[] fiis =
 				FileTableBase.FileIndex.FindFile(pfd, null);
-			uint min = (uint)(Expansions.None);
+			uint min = (uint)Expansions.None;
 			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem fii in fiis)
 			{
 				try
@@ -139,7 +139,7 @@ namespace SimPe.Plugin.Downloads
 			{
 				if (flname.StartsWith(Helper.CompareableFileName(ei.InstallFolder)))
 				{
-					return (ei.Expansion);
+					return ei.Expansion;
 				}
 			}
 			return flname.StartsWith(
@@ -213,13 +213,13 @@ namespace SimPe.Plugin.Downloads
 		{
 			get; set;
 		}
-		public bool HighVertexCount => (VertexCount > 8000);
+		public bool HighVertexCount => VertexCount > 8000;
 
 		public int FaceCount
 		{
 			get; set;
 		}
-		public bool HighFaceCount => (FaceCount > 8000);
+		public bool HighFaceCount => FaceCount > 8000;
 
 		public int Price
 		{

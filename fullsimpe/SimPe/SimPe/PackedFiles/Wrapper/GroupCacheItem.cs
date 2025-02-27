@@ -134,13 +134,13 @@ namespace SimPe.PackedFiles.Wrapper
 	{
 		public new GroupCacheItem this[int index]
 		{
-			get => ((GroupCacheItem)base[index]);
+			get => (GroupCacheItem)base[index];
 			set => base[index] = value;
 		}
 
 		public GroupCacheItem this[uint index]
 		{
-			get => ((GroupCacheItem)base[(int)index]);
+			get => (GroupCacheItem)base[(int)index];
 			set => base[(int)index] = value;
 		}
 

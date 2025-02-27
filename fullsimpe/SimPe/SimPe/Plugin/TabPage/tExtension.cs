@@ -176,14 +176,14 @@ namespace SimPe.Plugin.TabPage
 			//
 			gbIems.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			gbIems.Controls.Add(gbfloat);
@@ -219,10 +219,10 @@ namespace SimPe.Plugin.TabPage
 			//
 			gbfloat.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			gbfloat.Controls.Add(tbfloat);
@@ -254,10 +254,10 @@ namespace SimPe.Plugin.TabPage
 			//
 			gbval.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			gbval.Controls.Add(tbval);
@@ -289,10 +289,10 @@ namespace SimPe.Plugin.TabPage
 			//
 			tb_itemname.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			tb_itemname.Font = new Font(
@@ -312,10 +312,10 @@ namespace SimPe.Plugin.TabPage
 			//
 			label3.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			label3.AutoSize = true;
@@ -336,10 +336,10 @@ namespace SimPe.Plugin.TabPage
 			//
 			lldel.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			lldel.AutoSize = true;
@@ -358,10 +358,10 @@ namespace SimPe.Plugin.TabPage
 			//
 			linkLabel1.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			linkLabel1.AutoSize = true;
@@ -378,10 +378,10 @@ namespace SimPe.Plugin.TabPage
 			//
 			cbtype.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			cbtype.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -401,10 +401,10 @@ namespace SimPe.Plugin.TabPage
 			//
 			gbar.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			gbar.FlatStyle = FlatStyle.System;
@@ -436,10 +436,10 @@ namespace SimPe.Plugin.TabPage
 			//
 			gfootprintbar.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			gfootprintbar.FlatStyle = FlatStyle.System;
@@ -473,10 +473,10 @@ namespace SimPe.Plugin.TabPage
 			//
 			gbstr.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			gbstr.Controls.Add(tbstr);
@@ -492,12 +492,12 @@ namespace SimPe.Plugin.TabPage
 			//
 			tbstr.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tbstr.Font = new Font(
@@ -517,10 +517,10 @@ namespace SimPe.Plugin.TabPage
 			//
 			gbbin.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			gbbin.Controls.Add(tbbin);
@@ -536,12 +536,12 @@ namespace SimPe.Plugin.TabPage
 			//
 			tbbin.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tbbin.Font = new Font(
@@ -563,10 +563,10 @@ namespace SimPe.Plugin.TabPage
 			//
 			gbrot.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			gbrot.Controls.Add(tbrot4);
@@ -649,10 +649,10 @@ namespace SimPe.Plugin.TabPage
 			//
 			gbtrans.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			gbtrans.Controls.Add(tbtrans1);
@@ -718,14 +718,14 @@ namespace SimPe.Plugin.TabPage
 			//
 			lb_items.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lb_items.Font = new Font(
@@ -1113,7 +1113,7 @@ namespace SimPe.Plugin.TabPage
 
 				if (maxx - minx <= 3)
 				{
-					windowWidth = boxsize * (maxx - minx + 1) + 6;
+					windowWidth = (boxsize * (maxx - minx + 1)) + 6;
 				}
 				else
 				{
@@ -1122,7 +1122,7 @@ namespace SimPe.Plugin.TabPage
 				}
 				if (maxy - miny <= 3)
 				{
-					windowHeight += boxsize * (maxy - miny + 1) + 23;
+					windowHeight += (boxsize * (maxy - miny + 1)) + 23;
 				}
 				else
 				{
@@ -1197,7 +1197,7 @@ namespace SimPe.Plugin.TabPage
 					cb.Left = k * cb.Width;
 					cb.Top = j * 7;
 					cb.Name = "cb." + j + "." + k + ".2";
-					int isSet = (part2 & 1);
+					int isSet = part2 & 1;
 					cb.Checked = isSet == 1;
 					gb.Controls.Add(cb);
 					part2 = part2 >> 1;
@@ -1209,10 +1209,10 @@ namespace SimPe.Plugin.TabPage
 						Width = 14,
 						Height = 14
 					};
-					cb.Left = 8 * cb.Width + k * cb.Width;
+					cb.Left = (8 * cb.Width) + (k * cb.Width);
 					cb.Top = j * 7;
 					cb.Name = "cb." + j + "." + k + ".1";
-					int isSet = (part1 & 1);
+					int isSet = part1 & 1;
 					cb.Checked = isSet == 1;
 					gb.Controls.Add(cb);
 					part1 = part1 >> 1;

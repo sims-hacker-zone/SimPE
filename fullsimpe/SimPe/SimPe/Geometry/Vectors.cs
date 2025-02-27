@@ -83,8 +83,8 @@ namespace SimPe.Geometry
 		/// <param name="reader">The Stream that contains the FileData</param>
 		public virtual void Unserialize(System.IO.BinaryReader reader)
 		{
-			x = (reader.ReadSingle());
-			y = (reader.ReadSingle());
+			x = reader.ReadSingle();
+			y = reader.ReadSingle();
 		}
 
 		/// <summary>
@@ -170,7 +170,7 @@ namespace SimPe.Geometry
 		public override void Unserialize(System.IO.BinaryReader reader)
 		{
 			base.Unserialize(reader);
-			z = (reader.ReadSingle());
+			z = reader.ReadSingle();
 		}
 
 		/// <summary>
@@ -260,7 +260,7 @@ namespace SimPe.Geometry
 		/// <returns>The inverted Vector</returns>
 		public static Vector3f operator !(Vector3f v)
 		{
-			return v * (double)(-1.0);
+			return v * (double)-1.0;
 		}
 
 		/// <summary>
@@ -293,7 +293,7 @@ namespace SimPe.Geometry
 		/// <returns>The resulting Vector</returns>
 		public static double operator *(Vector3f v1, Vector3f v2)
 		{
-			return v1.X * v2.X + v1.Y * v2.Y + v1.Z * v2.Z;
+			return (v1.X * v2.X) + (v1.Y * v2.Y) + (v1.Z * v2.Z);
 		}
 
 		/// <summary>
@@ -360,9 +360,9 @@ namespace SimPe.Geometry
 		public static Vector3f operator |(Vector3f v1, Vector3f v2)
 		{
 			return new Vector3f(
-				v1.Y * v2.Z - v1.Z * v2.Y,
-				v1.Z * v2.X - v1.X * v2.Z,
-				v1.X * v2.Y - v1.Y * v2.X
+				(v1.Y * v2.Z) - (v1.Z * v2.Y),
+				(v1.Z * v2.X) - (v1.X * v2.Z),
+				(v1.X * v2.Y) - (v1.Y * v2.X)
 			);
 		}
 
@@ -670,7 +670,7 @@ namespace SimPe.Geometry
 		public override void Unserialize(System.IO.BinaryReader reader)
 		{
 			base.Unserialize(reader);
-			w = (reader.ReadSingle());
+			w = reader.ReadSingle();
 		}
 
 		/// <summary>
@@ -743,7 +743,7 @@ namespace SimPe.Geometry
 		/// </summary>
 		public new Vector3i this[int index]
 		{
-			get => ((Vector3i)base[index]);
+			get => (Vector3i)base[index];
 			set => base[index] = value;
 		}
 
@@ -752,7 +752,7 @@ namespace SimPe.Geometry
 		/// </summary>
 		public Vector3i this[uint index]
 		{
-			get => ((Vector3i)base[(int)index]);
+			get => (Vector3i)base[(int)index];
 			set => base[(int)index] = value;
 		}
 
@@ -826,7 +826,7 @@ namespace SimPe.Geometry
 		/// </summary>
 		public new Vector3f this[int index]
 		{
-			get => ((Vector3f)base[index]);
+			get => (Vector3f)base[index];
 			set => base[index] = value;
 		}
 
@@ -835,7 +835,7 @@ namespace SimPe.Geometry
 		/// </summary>
 		public Vector3f this[uint index]
 		{
-			get => ((Vector3f)base[(int)index]);
+			get => (Vector3f)base[(int)index];
 			set => base[(int)index] = value;
 		}
 
@@ -909,7 +909,7 @@ namespace SimPe.Geometry
 		/// </summary>
 		public new Vector2f this[int index]
 		{
-			get => ((Vector2f)base[index]);
+			get => (Vector2f)base[index];
 			set => base[index] = value;
 		}
 
@@ -918,7 +918,7 @@ namespace SimPe.Geometry
 		/// </summary>
 		public Vector2f this[uint index]
 		{
-			get => ((Vector2f)base[(int)index]);
+			get => (Vector2f)base[(int)index];
 			set => base[(int)index] = value;
 		}
 
@@ -992,7 +992,7 @@ namespace SimPe.Geometry
 		/// </summary>
 		public new Vector4f this[int index]
 		{
-			get => ((Vector4f)base[index]);
+			get => (Vector4f)base[index];
 			set => base[index] = value;
 		}
 
@@ -1001,7 +1001,7 @@ namespace SimPe.Geometry
 		/// </summary>
 		public Vector4f this[uint index]
 		{
-			get => ((Vector4f)base[(int)index]);
+			get => (Vector4f)base[(int)index];
 			set => base[(int)index] = value;
 		}
 

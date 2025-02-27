@@ -74,7 +74,7 @@ namespace SimPe
 			button1 = new Button();
 			tbsup = new TextBox();
 			gbdetail.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(pictureBox1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
 			panel1.SuspendLayout();
 			panel2.SuspendLayout();
 			SuspendLayout();
@@ -101,9 +101,9 @@ namespace SimPe
 			rtb.BackColor = System.Drawing.SystemColors.ControlLightLight;
 			rtb.BorderStyle = BorderStyle.None;
 			rtb.ForeColor = System.Drawing.Color.FromArgb(
-				((byte)(64)),
-				((byte)(64)),
-				((byte)(64))
+				(byte)64,
+				(byte)64,
+				(byte)64
 			);
 			rtb.Name = "rtb";
 			rtb.ReadOnly = true;
@@ -189,7 +189,7 @@ namespace SimPe
 				.SizableToolWindow;
 			Name = "ExceptionForm";
 			gbdetail.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(pictureBox1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
 			panel1.ResumeLayout(false);
 			panel1.PerformLayout();
 			panel2.ResumeLayout(false);

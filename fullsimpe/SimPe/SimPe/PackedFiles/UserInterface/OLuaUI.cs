@@ -87,14 +87,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			tv.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			tv.BorderStyle = BorderStyle.None;
@@ -107,10 +107,10 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			btSave.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			btSave.FlatStyle = FlatStyle.System;
@@ -125,10 +125,10 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			btLoad.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			btLoad.FlatStyle = FlatStyle.System;
@@ -160,12 +160,12 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			tbName.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tbName.Location = new System.Drawing.Point(62, 8);
@@ -178,10 +178,10 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			button1.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			button1.FlatStyle = FlatStyle.System;
@@ -196,10 +196,10 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			button2.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			button2.FlatStyle = FlatStyle.System;

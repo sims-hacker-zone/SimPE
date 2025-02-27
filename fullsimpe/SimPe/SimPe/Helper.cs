@@ -181,7 +181,7 @@ namespace SimPe
 		/// <returns>value as HexString (allways 8 Chars long)</returns>
 		public static string HexString(ulong input)
 		{
-			return (MinStrLength(input.ToString("X"), 16));
+			return MinStrLength(input.ToString("X"), 16);
 		}
 
 		/// <summary>
@@ -201,7 +201,7 @@ namespace SimPe
 		/// <returns>value as HexString (allways 8 Chars long)</returns>
 		public static string HexString(uint input)
 		{
-			return (MinStrLength(input.ToString("X"), 8));
+			return MinStrLength(input.ToString("X"), 8);
 		}
 
 		/// <summary>
@@ -221,7 +221,7 @@ namespace SimPe
 		/// <returns>value as HexString (allways 4 Chars long)</returns>
 		public static string HexString(ushort input)
 		{
-			return (MinStrLength(input.ToString("X"), 4));
+			return MinStrLength(input.ToString("X"), 4);
 		}
 
 		/// <summary>
@@ -231,7 +231,7 @@ namespace SimPe
 		/// <returns>value as HexString (allways 4 Chars long)</returns>
 		public static string HexString(byte input)
 		{
-			return (MinStrLength(input.ToString("X"), 2));
+			return MinStrLength(input.ToString("X"), 2);
 		}
 
 		/// <summary>
@@ -741,7 +741,7 @@ namespace SimPe
 		/// <returns>true if okay to load, else false</returns>
 		public static bool CanLoadPlugin(string flname)
 		{
-			return (!NoPlugins); /*
+			return !NoPlugins; /*
 			if (!NoPlugins) return true;
 			// flname = flname.Trim().ToLower();
 			// if (flname.Contains("\\pj")) return true;
@@ -859,7 +859,7 @@ namespace SimPe
 		/// <summary>
 		/// true if this is a QA Release
 		/// </summary>
-		public static bool QARelease => ((SimPeVersion.ProductMinorPart % 2) == 1);
+		public static bool QARelease => (SimPeVersion.ProductMinorPart % 2) == 1;
 
 		/// <summary>
 		/// true if Extra Stuff or New Store Editon enabled

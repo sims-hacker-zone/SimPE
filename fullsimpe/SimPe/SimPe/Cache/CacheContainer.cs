@@ -108,7 +108,7 @@ namespace SimPe.Cache
 		/// <summary>
 		/// True if this Container is still valid
 		/// </summary>
-		public bool Valid => (ValidState == ContainerValid.Yes);
+		public bool Valid => ValidState == ContainerValid.Yes;
 
 		public ContainerValid ValidState
 		{

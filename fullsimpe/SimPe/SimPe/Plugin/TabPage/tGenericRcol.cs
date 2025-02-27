@@ -101,14 +101,14 @@ namespace SimPe.Plugin.TabPage
 			//
 			groupBox10.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			groupBox10.Controls.Add(gen_pg);
@@ -133,14 +133,14 @@ namespace SimPe.Plugin.TabPage
 			//
 			gen_pg.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			gen_pg.CommandsBackColor = System

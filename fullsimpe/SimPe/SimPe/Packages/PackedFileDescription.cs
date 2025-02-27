@@ -232,7 +232,7 @@ namespace SimPe.Packages
 			{
 				uint ninstance = (uint)(value & 0xffffffff);
 				uint nsubtype = (uint)((value >> 32) & 0xffffffff);
-				if ((ninstance != instance || nsubtype != subtype))
+				if (ninstance != instance || nsubtype != subtype)
 				{
 					instance = ninstance;
 					subtype = nsubtype;
@@ -461,12 +461,12 @@ namespace SimPe.Packages
 			{
 				// Check for null values and compare run-time types.
 				if (
-					(
+
 						(
 							typeof(IPackedFileDescriptor)
 							!= obj.GetType().GetInterface("IPackedFileDescriptor")
 						) && (GetType() != obj.GetType())
-					)
+
 				)
 				{
 					return false;
@@ -474,12 +474,12 @@ namespace SimPe.Packages
 			}
 
 			IPackedFileDescriptor pfd = (IPackedFileDescriptor)obj;
-			return (
+			return
 				(Type == pfd.Type)
 				&& (LongInstance == pfd.LongInstance)
 				&& (Group == pfd.Group)
 				&& (Offset == pfd.Offset)
-			);
+			;
 		}
 
 		/// <summary>
@@ -507,12 +507,12 @@ namespace SimPe.Packages
 			{
 				// Check for null values and compare run-time types.
 				if (
-					(
+
 						(
 							typeof(IPackedFileDescriptor)
 							!= obj.GetType().GetInterface("IPackedFileDescriptor")
 						) && (GetType() != obj.GetType())
-					)
+
 				)
 				{
 					return false;
@@ -520,11 +520,11 @@ namespace SimPe.Packages
 			}
 
 			IPackedFileDescriptor pfd = (IPackedFileDescriptor)obj;
-			return (
+			return
 				(Type == pfd.Type)
 				&& (LongInstance == pfd.LongInstance)
 				&& (Group == pfd.Group)
-			);
+			;
 		}
 
 		public override int GetHashCode()
@@ -626,7 +626,7 @@ namespace SimPe.Packages
 		/// Returns true, if Userdate is available
 		/// </summary>
 		/// <remarks>This happens when a user assigns new Data</remarks>
-		public bool HasUserdata => (userdata != null);
+		public bool HasUserdata => userdata != null;
 
 		/// <summary>
 		/// contains alternative Userdata
@@ -835,7 +835,7 @@ namespace SimPe.Packages
 			type = reader.ReadUInt32();
 			group = reader.ReadUInt32();
 			instance = reader.ReadUInt32();
-			if ((header.IsVersion0101) && (header.Index.ItemSize >= 24))
+			if (header.IsVersion0101 && (header.Index.ItemSize >= 24))
 			{
 				subtype = reader.ReadUInt32();
 			}

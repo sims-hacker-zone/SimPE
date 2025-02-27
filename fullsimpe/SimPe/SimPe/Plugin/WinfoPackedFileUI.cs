@@ -43,7 +43,7 @@ namespace SimPe.Plugin
 				textBox1.ForeColor = System.Drawing.Color.Black;
 				groupBox1.Visible = true;
 				WiTemperC = (Wrapper.wetemperature / 3) + 13;
-				WiTemperF = (Wrapper.wetemperature * 6) / 10 + 55;
+				WiTemperF = (Wrapper.wetemperature * 6 / 10) + 55;
 				witemperatelbl.Text =
 					"Temperature ("
 					+ Convert.ToString(WiTemperC)
@@ -206,7 +206,7 @@ namespace SimPe.Plugin
 		{
 			Wrapper.wetemperature = Convert.ToInt32(witemperate.Text, 16);
 			WiTemperC = (Wrapper.wetemperature / 3) + 13;
-			WiTemperF = (Wrapper.wetemperature * 6) / 10 + 55;
+			WiTemperF = (Wrapper.wetemperature * 6 / 10) + 55;
 			witemperatelbl.Text =
 				"Temperature ("
 				+ Convert.ToString(WiTemperC)

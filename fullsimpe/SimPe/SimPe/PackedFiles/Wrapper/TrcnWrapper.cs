@@ -90,7 +90,7 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 		private bool duff = false;
-		public bool TextOnly => (duff || (header[1] != 0x1 && header[1] < 0x3f));
+		public bool TextOnly => duff || (header[1] != 0x1 && header[1] < 0x3f);
 		#endregion
 
 		/// <summary>

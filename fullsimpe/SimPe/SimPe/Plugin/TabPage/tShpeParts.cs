@@ -118,10 +118,10 @@ namespace SimPe.Plugin.TabPage
 			//
 			linkLabel7.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			linkLabel7.AutoSize = true;
@@ -147,10 +147,10 @@ namespace SimPe.Plugin.TabPage
 			//
 			linkLabel8.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			linkLabel8.AutoSize = true;
@@ -176,12 +176,12 @@ namespace SimPe.Plugin.TabPage
 			//
 			tbpartdata.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tbpartdata.Font = new System.Drawing.Font(
@@ -218,12 +218,12 @@ namespace SimPe.Plugin.TabPage
 			//
 			tbpartdsc.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tbpartdsc.Font = new System.Drawing.Font(
@@ -260,12 +260,12 @@ namespace SimPe.Plugin.TabPage
 			//
 			tbparttype.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tbparttype.Font = new System.Drawing.Font(
@@ -302,12 +302,12 @@ namespace SimPe.Plugin.TabPage
 			//
 			lbpart.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			lbpart.Font = new System.Drawing.Font(

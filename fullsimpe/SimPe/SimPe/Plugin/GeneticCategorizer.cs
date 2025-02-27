@@ -765,12 +765,12 @@ namespace SimPe.Plugin
 									item.Type == RecolorType.TextureOverlay
 									|| item.Type == RecolorType.MeshOverlay
 								)
-								&& (
+								&&
 									item.TextureOverlayType
 										!= TextureOverlayTypes.EyeBrow
 									&& item.TextureOverlayType
 										!= TextureOverlayTypes.Beard
-								)
+
 							)
 							{
 								goto default;

@@ -150,7 +150,7 @@ namespace SimPe.Plugin
 			label27 = new Label();
 			wantsPanel.SuspendLayout();
 			gbprop.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(pb)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)pb).BeginInit();
 			tabControl1.SuspendLayout();
 			tbwant.SuspendLayout();
 			tbfear.SuspendLayout();
@@ -182,10 +182,10 @@ namespace SimPe.Plugin
 			//
 			linkLabel1.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			linkLabel1.AutoSize = true;
@@ -209,14 +209,14 @@ namespace SimPe.Plugin
 			//
 			gbprop.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			gbprop.BackColor = System.Drawing.Color.Transparent;
@@ -263,12 +263,12 @@ namespace SimPe.Plugin
 			//
 			cbsel.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Bottom
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			cbsel.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -291,10 +291,10 @@ namespace SimPe.Plugin
 			//
 			cblock.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			cblock.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -316,14 +316,14 @@ namespace SimPe.Plugin
 			//
 			tv.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			tv.Font = new System.Drawing.Font(
@@ -355,10 +355,10 @@ namespace SimPe.Plugin
 			//
 			cbtype.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			cbtype.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -382,10 +382,10 @@ namespace SimPe.Plugin
 			//
 			tbpoints.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			tbpoints.Font = new System.Drawing.Font(
@@ -406,10 +406,10 @@ namespace SimPe.Plugin
 			//
 			tbunknown2.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			tbunknown2.Font = new System.Drawing.Font(
@@ -430,10 +430,10 @@ namespace SimPe.Plugin
 			//
 			tbunknown1.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			tbunknown1.Font = new System.Drawing.Font(
@@ -454,10 +454,10 @@ namespace SimPe.Plugin
 			//
 			tbindex.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			tbindex.Font = new System.Drawing.Font(
@@ -478,10 +478,10 @@ namespace SimPe.Plugin
 			//
 			tbsiminst.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			tbsiminst.Font = new System.Drawing.Font(
@@ -502,10 +502,10 @@ namespace SimPe.Plugin
 			//
 			tbprop.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			tbprop.Font = new System.Drawing.Font(
@@ -526,10 +526,10 @@ namespace SimPe.Plugin
 			//
 			tbval.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			tbval.Font = new System.Drawing.Font(
@@ -566,10 +566,10 @@ namespace SimPe.Plugin
 			//
 			tbversion.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			tbversion.Font = new System.Drawing.Font(
@@ -590,10 +590,10 @@ namespace SimPe.Plugin
 			//
 			label10.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			label10.Font = new System.Drawing.Font(
@@ -614,10 +614,10 @@ namespace SimPe.Plugin
 			//
 			label9.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			label9.Font = new System.Drawing.Font(
@@ -638,10 +638,10 @@ namespace SimPe.Plugin
 			//
 			label8.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			label8.Font = new System.Drawing.Font(
@@ -662,10 +662,10 @@ namespace SimPe.Plugin
 			//
 			label7.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			label7.Font = new System.Drawing.Font(
@@ -686,10 +686,10 @@ namespace SimPe.Plugin
 			//
 			label6.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			label6.Font = new System.Drawing.Font(
@@ -710,10 +710,10 @@ namespace SimPe.Plugin
 			//
 			label4.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			label4.Font = new System.Drawing.Font(
@@ -750,10 +750,10 @@ namespace SimPe.Plugin
 			//
 			label2.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			label2.Font = new System.Drawing.Font(
@@ -774,10 +774,10 @@ namespace SimPe.Plugin
 			//
 			label1.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			label1.Font = new System.Drawing.Font(
@@ -807,10 +807,10 @@ namespace SimPe.Plugin
 			//
 			label5.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			label5.Font = new System.Drawing.Font(
@@ -831,12 +831,12 @@ namespace SimPe.Plugin
 			//
 			tabControl1.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
-						) | AnchorStyles.Left
-					)
+						 | AnchorStyles.Left
+
 
 			;
 			tabControl1.Controls.Add(tbwant);
@@ -865,14 +865,14 @@ namespace SimPe.Plugin
 			//
 			lvwant.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lvwant.HideSelection = false;
@@ -906,14 +906,14 @@ namespace SimPe.Plugin
 			//
 			lvfear.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lvfear.HideSelection = false;
@@ -947,14 +947,14 @@ namespace SimPe.Plugin
 			//
 			tvhist.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			tvhist.HideSelection = false;
@@ -988,14 +988,14 @@ namespace SimPe.Plugin
 			//
 			lvlife.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lvlife.HideSelection = false;
@@ -1020,12 +1020,12 @@ namespace SimPe.Plugin
 			//
 			panel2.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			panel2.Controls.Add(lbsimname);
@@ -1089,7 +1089,7 @@ namespace SimPe.Plugin
 			wantsPanel.ResumeLayout(false);
 			gbprop.ResumeLayout(false);
 			gbprop.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(pb)).EndInit();
+			((System.ComponentModel.ISupportInitialize)pb).EndInit();
 			tabControl1.ResumeLayout(false);
 			tbwant.ResumeLayout(false);
 			tbfear.ResumeLayout(false);

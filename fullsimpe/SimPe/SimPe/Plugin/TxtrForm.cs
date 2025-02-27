@@ -109,7 +109,7 @@ namespace SimPe.Plugin
 			ofd = new OpenFileDialog();
 			txtrPanel.SuspendLayout();
 			panel1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(pb)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)pb).BeginInit();
 			panel2.SuspendLayout();
 			SuspendLayout();
 			//
@@ -155,10 +155,10 @@ namespace SimPe.Plugin
 			//
 			linkLabel4.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			linkLabel4.AutoSize = true;
@@ -255,10 +255,10 @@ namespace SimPe.Plugin
 			//
 			linkLabel2.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			linkLabel2.AutoSize = true;
@@ -283,10 +283,10 @@ namespace SimPe.Plugin
 			//
 			lldel.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			lldel.AutoSize = true;
@@ -311,12 +311,12 @@ namespace SimPe.Plugin
 			//
 			tblifo.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Bottom
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tblifo.Location = new Point(440, 252);
@@ -329,10 +329,10 @@ namespace SimPe.Plugin
 			//
 			label6.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			label6.AutoSize = true;
@@ -483,14 +483,14 @@ namespace SimPe.Plugin
 			//
 			panel1.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			panel1.AutoScroll = true;
@@ -507,10 +507,10 @@ namespace SimPe.Plugin
 			//
 			label7.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			label7.AutoSize = true;
@@ -526,9 +526,9 @@ namespace SimPe.Plugin
 			// pb
 			//
 			pb.BackColor = SystemColors.Control;
-			pb.BackgroundImage = (
-				(Image)(resources.GetObject("pb.BackgroundImage"))
-			);
+			pb.BackgroundImage =
+				(Image)resources.GetObject("pb.BackgroundImage")
+			;
 			pb.ContextMenu = contextMenu1;
 			pb.Location = new Point(0, 0);
 			pb.Name = "pb";
@@ -613,12 +613,12 @@ namespace SimPe.Plugin
 			//
 			lbimg.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
-						) | AnchorStyles.Left
-					)
+						 | AnchorStyles.Left
+
 
 			;
 			lbimg.IntegralHeight = false;
@@ -634,12 +634,12 @@ namespace SimPe.Plugin
 			//
 			panel2.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			panel2.Controls.Add(btex);
@@ -662,10 +662,10 @@ namespace SimPe.Plugin
 			//
 			btex.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			btex.FlatStyle = FlatStyle.System;
@@ -688,10 +688,10 @@ namespace SimPe.Plugin
 			//
 			btim.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			btim.FlatStyle = FlatStyle.System;
@@ -724,10 +724,10 @@ namespace SimPe.Plugin
 			//
 			btcommit.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			btcommit.FlatStyle = FlatStyle.System;
@@ -788,7 +788,7 @@ namespace SimPe.Plugin
 			txtrPanel.PerformLayout();
 			panel1.ResumeLayout(false);
 			panel1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(pb)).EndInit();
+			((System.ComponentModel.ISupportInitialize)pb).EndInit();
 			panel2.ResumeLayout(false);
 			panel2.PerformLayout();
 			ResumeLayout(false);
@@ -852,7 +852,7 @@ namespace SimPe.Plugin
 				pb.Image = mm.Texture;
 				tblifo.Text = mm.Texture == null ? mm.LifoFile : "";
 
-				btex.Enabled = (pb.Image != null);
+				btex.Enabled = pb.Image != null;
 				lldel.Enabled = true;
 			}
 			catch (Exception) { }
@@ -1608,15 +1608,15 @@ namespace SimPe.Plugin
 				{
 					MipMap mm = (MipMap)lbimg.Items[lbimg.SelectedIndex];
 					Interfaces.Files.IPackedFileDescriptor pfd = GetLocalLifo(mm);
-					milifo.Enabled = (pfd != null);
+					milifo.Enabled = pfd != null;
 				}
 				else
 				{
 					milifo.Enabled = false;
 				}
-				mibuild.Enabled = (
+				mibuild.Enabled =
 					System.IO.File.Exists(PathProvider.Global.NvidiaDDSTool)
-				);
+				;
 			}
 			catch (Exception ex)
 			{
@@ -1689,8 +1689,8 @@ namespace SimPe.Plugin
 
 					if ((wd == hg) && (wd == 1))
 					{
-						wd = Math.Max(1, (sz.Width / Math.Max(1, sz.Height)));
-						hg = Math.Max(1, (sz.Height / Math.Max(1, sz.Width)));
+						wd = Math.Max(1, sz.Width / Math.Max(1, sz.Height));
+						hg = Math.Max(1, sz.Height / Math.Max(1, sz.Width));
 
 						if ((wd == hg) && (wd == 1))
 						{

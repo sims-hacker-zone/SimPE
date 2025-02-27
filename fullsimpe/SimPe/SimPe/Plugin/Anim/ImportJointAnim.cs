@@ -137,10 +137,10 @@ namespace SimPe.Plugin.Anim
 			//
 			gbsettings.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			gbsettings.BackColor = System.Drawing.Color.Transparent;
@@ -170,10 +170,10 @@ namespace SimPe.Plugin.Anim
 			//
 			gbgroups.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			gbgroups.BackColor = System.Drawing.Color.Transparent;
@@ -324,10 +324,10 @@ namespace SimPe.Plugin.Anim
 			//
 			button1.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			button1.FlatStyle = FlatStyle.System;
@@ -349,14 +349,14 @@ namespace SimPe.Plugin.Anim
 			//
 			lv.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lv.BorderStyle = BorderStyle.None;
@@ -442,7 +442,7 @@ namespace SimPe.Plugin.Anim
 				System.Drawing.GraphicsUnit.Point,
 				0
 			);
-			Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			Name = "ImportJointAnim";
 			Text = "Import Animation";
 			Gradientpanel1.ResumeLayout(false);

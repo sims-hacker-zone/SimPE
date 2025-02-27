@@ -102,8 +102,8 @@ namespace SimPe.PackedFiles.Wrapper
 					maxct
 				);
 				Point center = new Point(
-					Math.Max(Width / 2, (int)r + 16 + ItemSize.Width / 2),
-					Math.Max(Height / 2, (int)r + ItemSize.Height / 2)
+					Math.Max(Width / 2, (int)r + 16 + (ItemSize.Width / 2)),
+					Math.Max(Height / 2, (int)r + (ItemSize.Height / 2))
 				);
 				MainSimElement = CreateItem(sdsc, 0, 0);
 				MainSimElement.Location = GetCenterLocationOnPinCircle(
@@ -214,16 +214,16 @@ namespace SimPe.PackedFiles.Wrapper
 				ItemSize.Height + 60
 			);
 			Size srect = new Size(
-				siblings.Length * (ItemSize.Width + 24) + 140,
-				ItemSize.Height + 60 + ((siblings.Length / 2) - 1) * 4 + 24
+				(siblings.Length * (ItemSize.Width + 24)) + 140,
+				ItemSize.Height + 60 + (((siblings.Length / 2) - 1) * 4) + 24
 			);
 			Size crect = new Size(
 				(childs.Length - 1) * (ItemSize.Width + 8),
 				ItemSize.Height
 			);
 			int maxw = Math.Max(Math.Max(prect.Width, srect.Width), crect.Width);
-			int top = prect.Height + (srect.Height - ItemSize.Height) / 2;
-			int left = (maxw - ItemSize.Width) / 2 + 32;
+			int top = prect.Height + ((srect.Height - ItemSize.Height) / 2);
+			int left = ((maxw - ItemSize.Width) / 2) + 32;
 
 			MainSimElement = CreateItem(sdsc, left, top);
 			MainSimElement.Parent = this;
@@ -234,7 +234,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 			if (tie != null)
 			{
-				left = (maxw - prect.Width) / 2 + 16;
+				left = ((maxw - prect.Width) / 2) + 16;
 				top = 0;
 				foreach (SDesc s in parents)
 				{
@@ -248,7 +248,7 @@ namespace SimPe.PackedFiles.Wrapper
 					left += ip.Width + 8;
 				}
 
-				left = (maxw - srect.Width) / 2 + 16;
+				left = ((maxw - srect.Width) / 2) + 16;
 				int ct = 0;
 				top = prect.Height;
 				foreach (SDesc s in siblings)
@@ -279,7 +279,7 @@ namespace SimPe.PackedFiles.Wrapper
 					}
 				}
 
-				left = (maxw - crect.Width) / 2 + 16;
+				left = ((maxw - crect.Width) / 2) + 16;
 				top = prect.Height + srect.Height;
 				foreach (SDesc s in childs)
 				{

@@ -28,13 +28,13 @@ namespace SimPe.Cache
 	{
 		public new ICacheItem this[int index]
 		{
-			get => ((ICacheItem)base[index]);
+			get => (ICacheItem)base[index];
 			set => base[index] = value;
 		}
 
 		public ICacheItem this[uint index]
 		{
-			get => ((ICacheItem)base[(int)index]);
+			get => (ICacheItem)base[(int)index];
 			set => base[(int)index] = value;
 		}
 
@@ -79,13 +79,13 @@ namespace SimPe.Cache
 	{
 		public new CacheContainer this[int index]
 		{
-			get => ((CacheContainer)base[index]);
+			get => (CacheContainer)base[index];
 			set => base[index] = value;
 		}
 
 		public CacheContainer this[uint index]
 		{
-			get => ((CacheContainer)base[(int)index]);
+			get => (CacheContainer)base[(int)index];
 			set => base[(int)index] = value;
 		}
 

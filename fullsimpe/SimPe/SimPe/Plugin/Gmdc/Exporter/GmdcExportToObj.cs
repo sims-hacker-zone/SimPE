@@ -173,7 +173,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 			if (modelnr > 0)
 			{
 				writer.WriteLine(
-					"# vertsSoFar: " + ((vertexoffset + vertexcount) - 2).ToString()
+					"# vertsSoFar: " + (vertexoffset + vertexcount - 2).ToString()
 				);
 			}
 			else

@@ -170,12 +170,12 @@ namespace SimPe.Plugin
 			//
 			comboBox1.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			//this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -192,14 +192,14 @@ namespace SimPe.Plugin
 			//
 			lbdir.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lbdir.Controls.Add(llcomp);
@@ -228,10 +228,10 @@ namespace SimPe.Plugin
 			//
 			llcomp.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			llcomp.AutoSize = true;
@@ -258,12 +258,12 @@ namespace SimPe.Plugin
 			//
 			pbprev.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			pbprev.BorderStyle = BorderStyle.FixedSingle;
@@ -277,10 +277,10 @@ namespace SimPe.Plugin
 			//
 			gbskin.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			gbskin.Controls.Add(cbswim);
@@ -552,10 +552,10 @@ namespace SimPe.Plugin
 			//
 			llskin.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			llskin.AutoSize = true;
@@ -575,10 +575,10 @@ namespace SimPe.Plugin
 			//
 			groupBox2.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			groupBox2.Controls.Add(llfix);
@@ -595,10 +595,10 @@ namespace SimPe.Plugin
 			//
 			llfix.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			llfix.AutoSize = true;
@@ -616,10 +616,10 @@ namespace SimPe.Plugin
 			//
 			tbname.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			tbname.Font = new Font(
@@ -639,10 +639,10 @@ namespace SimPe.Plugin
 			//
 			label1.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			label1.Font = new Font(
@@ -662,10 +662,10 @@ namespace SimPe.Plugin
 			//
 			lldis.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			lldis.AutoSize = true;
@@ -683,10 +683,10 @@ namespace SimPe.Plugin
 			//
 			llopen.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			llopen.AutoSize = true;
@@ -706,10 +706,10 @@ namespace SimPe.Plugin
 			//
 			tbfilename.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			tbfilename.Font = new Font(
@@ -730,14 +730,14 @@ namespace SimPe.Plugin
 			//
 			lv.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lv.Columns.AddRange(
@@ -797,10 +797,10 @@ namespace SimPe.Plugin
 			//
 			linkLabel1.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			linkLabel1.AutoSize = true;
@@ -824,12 +824,12 @@ namespace SimPe.Plugin
 			//
 			pb.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Bottom
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			pb.Location = new Point(0, 556);
@@ -1004,7 +1004,7 @@ namespace SimPe.Plugin
 					nr = package.FileListFile.FindFile(pfd);
 				}
 
-				bool inlist = (nr != -1);
+				bool inlist = nr != -1;
 
 				if (inlist)
 				{
@@ -1053,7 +1053,7 @@ namespace SimPe.Plugin
 		{
 			ArrayList guids = new ArrayList();
 			ArrayList aguids = new ArrayList();
-			if ((cbguid.Checked) && (prov != null))
+			if (cbguid.Checked && (prov != null))
 			{
 				foreach (uint g in prov.OpcodeProvider.StoredMemories.Keys)
 				{
@@ -1070,7 +1070,7 @@ namespace SimPe.Plugin
 
 			foreach (string file in files)
 			{
-				int val = (offset++ * pb.Maximum) / count;
+				int val = offset++ * pb.Maximum / count;
 				if (val > pb.Value)
 				{
 					pb.PerformStep();
@@ -1194,7 +1194,7 @@ namespace SimPe.Plugin
 						//if (ret==-3) state = "Corrupted Compressed Dir";
 					}
 
-					if ((cbready.Checked) && (!isskin))
+					if (cbready.Checked && (!isskin))
 					{
 						if (
 							(
@@ -1502,7 +1502,7 @@ namespace SimPe.Plugin
 				llfix.Enabled = true;
 			}
 
-			bool oner = (lv.SelectedItems.Count == 1);
+			bool oner = lv.SelectedItems.Count == 1;
 			foreach (ListViewItem lvi in lv.SelectedItems)
 			{
 				if (lvi.SubItems[1].Text.StartsWith("[skin]"))
@@ -1513,8 +1513,8 @@ namespace SimPe.Plugin
 				}
 
 				if (
-					(lvi.SubItems[1].Text.StartsWith("[skin]"))
-					|| (lvi.SubItems[1].Text.StartsWith("[recolor]"))
+					lvi.SubItems[1].Text.StartsWith("[skin]")
+					|| lvi.SubItems[1].Text.StartsWith("[recolor]")
 				)
 				{
 					if (oner)
@@ -1658,7 +1658,7 @@ namespace SimPe.Plugin
 						lbdir.Text,
 						lvi.Text + ".package"
 					);
-					pb.Value = (pos++ * pb.Maximum) / count;
+					pb.Value = pos++ * pb.Maximum / count;
 					Application.DoEvents();
 
 					try
@@ -1740,12 +1740,12 @@ namespace SimPe.Plugin
 							Interfaces.Files.IPackedFile file = pkg.Read(pfd);
 							pfd.UserData = file.UncompressedData;
 
-							pfd.MarkForReCompress = (
+							pfd.MarkForReCompress =
 								file.IsCompressed
 								|| Data.MetaData.CompressionCandidates.Contains(
 									pfd.Type
 								)
-							);
+							;
 						}
 
 						pkg.Save();
@@ -1801,7 +1801,7 @@ namespace SimPe.Plugin
 				int pos = 0;
 				foreach (ListViewItem lvi in lv.SelectedItems)
 				{
-					pb.Value = (pos++ * pb.Maximum) / count;
+					pb.Value = pos++ * pb.Maximum / count;
 					Application.DoEvents();
 
 					if (lvi.SubItems[1].Text.StartsWith("[skin]"))

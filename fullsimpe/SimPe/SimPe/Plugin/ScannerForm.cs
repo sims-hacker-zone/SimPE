@@ -396,7 +396,7 @@ namespace SimPe.Plugin
 			foreach (string file in files)
 			{
 				pb.Value = Math.Max(
-					Math.Min(((ct++) * pb.Maximum) / count, pb.Maximum),
+					Math.Min(ct++ * pb.Maximum / count, pb.Maximum),
 					pb.Minimum
 				);
 				Application.DoEvents();
@@ -578,7 +578,7 @@ namespace SimPe.Plugin
 			tbcache.SuspendLayout();
 			tbidentify.SuspendLayout();
 			gbinfo.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(thumb)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)thumb).BeginInit();
 			panel1.SuspendLayout();
 			SuspendLayout();
 			//
@@ -633,12 +633,12 @@ namespace SimPe.Plugin
 			//
 			pb.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Bottom
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			pb.BackColor = Color.Transparent;
@@ -659,14 +659,14 @@ namespace SimPe.Plugin
 			//
 			lv.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lv.Columns.AddRange(
@@ -716,12 +716,12 @@ namespace SimPe.Plugin
 			//
 			tabControl1.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Bottom
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tabControl1.Controls.Add(tbscanners);
@@ -748,14 +748,14 @@ namespace SimPe.Plugin
 			//
 			lbscanners.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lbscanners.CheckOnClick = true;
@@ -787,14 +787,14 @@ namespace SimPe.Plugin
 			//
 			pnop.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			pnop.AutoScroll = true;
@@ -877,12 +877,12 @@ namespace SimPe.Plugin
 			//
 			lbscandebug.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			lbscandebug.HorizontalScrollbar = true;
@@ -904,12 +904,12 @@ namespace SimPe.Plugin
 			//
 			lbid.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			lbid.HorizontalScrollbar = true;
@@ -931,10 +931,10 @@ namespace SimPe.Plugin
 			//
 			btscan.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			btscan.BackColor = Color.Transparent;
@@ -951,10 +951,10 @@ namespace SimPe.Plugin
 			//
 			cbrec.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			cbrec.AutoSize = true;
@@ -970,10 +970,10 @@ namespace SimPe.Plugin
 			//
 			gbinfo.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			gbinfo.BackColor = Color.Transparent;
@@ -1013,10 +1013,10 @@ namespace SimPe.Plugin
 			//
 			llSave.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			llSave.AutoSize = true;
@@ -1081,10 +1081,10 @@ namespace SimPe.Plugin
 				8.25F,
 
 
-						(
+
 							FontStyle.Bold
 							| FontStyle.Italic
-						)
+
 
 				,
 				GraphicsUnit.Point,
@@ -1100,10 +1100,10 @@ namespace SimPe.Plugin
 			//
 			llopen.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			llopen.AutoSize = true;
@@ -1170,7 +1170,7 @@ namespace SimPe.Plugin
 			AutoScaleBaseSize = new Size(5, 13);
 			ClientSize = new Size(964, 602);
 			Controls.Add(panel1);
-			Icon = ((Icon)(resources.GetObject("$this.Icon")));
+			Icon = (Icon)resources.GetObject("$this.Icon");
 			Name = "ScannerForm";
 			StartPosition = FormStartPosition.CenterParent;
 			Text = "Folder Scanner";
@@ -1183,7 +1183,7 @@ namespace SimPe.Plugin
 			tbidentify.PerformLayout();
 			gbinfo.ResumeLayout(false);
 			gbinfo.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(thumb)).EndInit();
+			((System.ComponentModel.ISupportInitialize)thumb).EndInit();
 			panel1.ResumeLayout(false);
 			panel1.PerformLayout();
 			ResumeLayout(false);
@@ -1362,8 +1362,8 @@ namespace SimPe.Plugin
 			try
 			{
 				SelectedScannerItem = null;
-				gbinfo.Enabled = (lv.SelectedItems.Count != 0);
-				pnop.Enabled = (lv.SelectedItems.Count != 0);
+				gbinfo.Enabled = lv.SelectedItems.Count != 0;
+				pnop.Enabled = lv.SelectedItems.Count != 0;
 
 				if (lv.SelectedItems.Count == 0)
 				{
@@ -1473,7 +1473,7 @@ namespace SimPe.Plugin
 				int ct = 0;
 				foreach (ListViewItem lvi in lv.SelectedItems)
 				{
-					pb.Value = ((ct++) * pb.Maximum) / lv.SelectedItems.Count;
+					pb.Value = ct++ * pb.Maximum / lv.SelectedItems.Count;
 					ScannerItem si = (ScannerItem)lvi.Tag;
 
 					string newname = System.IO.Path.Combine(

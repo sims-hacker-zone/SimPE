@@ -79,9 +79,9 @@ namespace pjse
 				}
 
 				Glob glob = BhavWiz.GlobByGroup(FileDescriptor.Group);
-				return (
+				return
 					glob != null ? glob.SemiGlobalGroup : FileDescriptor.Group
-				);
+				;
 			}
 		}
 

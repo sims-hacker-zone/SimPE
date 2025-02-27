@@ -481,7 +481,7 @@ namespace Ambertation.Windows.Forms
 			);
 			double l = Math.Max(itemsize.Width, itemsize.Height) * Math.Sqrt(2);
 			double minl =
-				Math.Max(centersize.Width, centersize.Height) * Math.Sqrt(0.5) + l / 2;
+				(Math.Max(centersize.Width, centersize.Height) * Math.Sqrt(0.5)) + (l / 2);
 
 			return Math.Max(l / (2 * Math.Sin(alpha)), minl);
 		}
@@ -503,11 +503,11 @@ namespace Ambertation.Windows.Forms
 			Size itemsize
 		)
 		{
-			double alpha = (2 * Math.PI / itemcount) * nr;
+			double alpha = 2 * Math.PI / itemcount * nr;
 
 			return new Point(
-				center.X + (int)(Math.Cos(alpha) * r) - itemsize.Width / 2,
-				center.Y + (int)(Math.Sin(alpha) * r) - itemsize.Height / 2
+				center.X + (int)(Math.Cos(alpha) * r) - (itemsize.Width / 2),
+				center.Y + (int)(Math.Sin(alpha) * r) - (itemsize.Height / 2)
 			);
 		}
 
@@ -518,8 +518,8 @@ namespace Ambertation.Windows.Forms
 		)
 		{
 			return new Point(
-				center.X - itemsize.Width / 2,
-				center.Y - itemsize.Height / 2
+				center.X - (itemsize.Width / 2),
+				center.Y - (itemsize.Height / 2)
 			);
 		}
 	}

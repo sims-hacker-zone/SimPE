@@ -1567,7 +1567,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		public override bool InUse => (items[0] != 0 || items[1] != 0 || items[2] != 0);
+		public override bool InUse => items[0] != 0 || items[1] != 0 || items[2] != 0;
 
 		private short this[int index]
 		{

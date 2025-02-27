@@ -421,10 +421,10 @@ namespace SimPe.Plugin.Tool.Dockable
 				//do the recolor
 				objclone.Setup = settings;
 				objclone.Setup.BaseResource = br;
-				objclone.Setup.OnlyDefaultMmats = (
+				objclone.Setup.OnlyDefaultMmats =
 					settings.OnlyDefaultMmats
 					&& br != CloneSettings.BaseResourceType.Xml
-				);
+				;
 				objclone.Setup.UpdateMmatGuids = objclone.Setup.OnlyDefaultMmats;
 				/*objclone.Setup.IncludeWallmask = settings.IncludeWallmask;
 				objclone.Setup.IncludeAnimationResources = settings.IncludeAnimationResources;
@@ -453,10 +453,10 @@ namespace SimPe.Plugin.Tool.Dockable
 							Setup = settings
 						};
 						pobj.Setup.BaseResource = br;
-						pobj.Setup.OnlyDefaultMmats = (
+						pobj.Setup.OnlyDefaultMmats =
 							settings.OnlyDefaultMmats
 							&& br != CloneSettings.BaseResourceType.Xml
-						);
+						;
 						pobj.Setup.UpdateMmatGuids = pobj.Setup.OnlyDefaultMmats;
 						/*pobj.Setup.IncludeWallmask = settings.IncludeWallmask;
 						pobj.Setup.IncludeAnimationResources = settings.IncludeAnimationResources;
@@ -844,7 +844,7 @@ namespace SimPe.Plugin.Tool.Dockable
 					}
 				}
 
-				if ((cs.CustomGroup) && (package != null))
+				if (cs.CustomGroup && (package != null))
 				{
 					WaitingScreen.Wait();
 					try

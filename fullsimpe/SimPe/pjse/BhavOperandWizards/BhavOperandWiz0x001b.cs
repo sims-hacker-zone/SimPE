@@ -117,12 +117,12 @@ namespace pjse.BhavOperandWizards.Wiz0x001b
 
 				if (cbLocation.SelectedIndex >= 0)
 				{
-					ops1[2] = ((byte)(cbLocation.SelectedIndex - 2));
+					ops1[2] = (byte)(cbLocation.SelectedIndex - 2);
 				}
 
 				if (cbDirection.SelectedIndex >= 0)
 				{
-					ops1[3] = ((byte)(cbDirection.SelectedIndex - 2));
+					ops1[3] = (byte)(cbDirection.SelectedIndex - 2);
 				}
 
 				ops16[1] = ckbNoFailureTrees.Checked;

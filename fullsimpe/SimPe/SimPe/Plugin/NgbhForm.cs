@@ -61,7 +61,7 @@ namespace SimPe.Plugin
 		{
 			if (e.Items is object[] os)
 			{
-				cbtype.SelectedIndex = (int)((Data.NeighborhoodSlots)os[1]);
+				cbtype.SelectedIndex = (int)(Data.NeighborhoodSlots)os[1];
 				uint inst = (uint)os[0];
 				foreach (ListViewItem lvi in lv.Items)
 				{
@@ -146,7 +146,7 @@ namespace SimPe.Plugin
 			label27 = new Label();
 			ngbhPanel.SuspendLayout();
 			gbmem.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(pb)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)pb).BeginInit();
 			panel2.SuspendLayout();
 			SuspendLayout();
 			//
@@ -443,7 +443,7 @@ namespace SimPe.Plugin
 			ngbhPanel.PerformLayout();
 			gbmem.ResumeLayout(false);
 			gbmem.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(pb)).EndInit();
+			((System.ComponentModel.ISupportInitialize)pb).EndInit();
 			panel2.ResumeLayout(false);
 			panel2.PerformLayout();
 			ResumeLayout(false);

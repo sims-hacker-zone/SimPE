@@ -223,13 +223,13 @@ namespace SimPe.Plugin.Gmdc
 			return Faces.Count < 0x2000 || UserVerification.HaveUserId
 				? Name
 					+ " (FaceCount="
-					+ (FaceCount).ToString()
+					+ FaceCount.ToString()
 					+ ", VertexCount="
 					+ UsedVertexCount.ToString()
 					+ ")"
 				: Name
 					+ " (FaceCount="
-					+ (FaceCount).ToString()
+					+ FaceCount.ToString()
 					+ ", VertexCount=too many Faces)";
 		}
 
@@ -408,7 +408,7 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public new GmdcGroup this[int index]
 		{
-			get => ((GmdcGroup)base[index]);
+			get => (GmdcGroup)base[index];
 			set => base[index] = value;
 		}
 
@@ -417,7 +417,7 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public GmdcGroup this[uint index]
 		{
-			get => ((GmdcGroup)base[(int)index]);
+			get => (GmdcGroup)base[(int)index];
 			set => base[(int)index] = value;
 		}
 

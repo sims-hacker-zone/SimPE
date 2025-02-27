@@ -161,7 +161,7 @@ namespace SimPe.Plugin
 					);
 			}
 
-			return (f + (pos * (l - f)));
+			return f + (pos * (l - f));
 		}
 
 		public void SetFrame(int timecode)

@@ -379,7 +379,7 @@ else
 			{
 				if (
 					(pfd.Type == Data.MetaData.MMAT)
-					|| (Data.MetaData.RcolList.Contains(pfd.Type))
+					|| Data.MetaData.RcolList.Contains(pfd.Type)
 				)
 				{
 					GraphItem gi = new GraphItem(

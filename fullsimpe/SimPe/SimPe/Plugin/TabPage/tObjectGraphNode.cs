@@ -125,12 +125,12 @@ namespace SimPe.Plugin.TabPage
 			//
 			groupBox8.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			groupBox8.Controls.Add(tb_ogn_ver);
@@ -190,12 +190,12 @@ namespace SimPe.Plugin.TabPage
 			//
 			tb_ogn_file.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tb_ogn_file.Font = new System.Drawing.Font(
@@ -234,12 +234,12 @@ namespace SimPe.Plugin.TabPage
 			//
 			groupBox9.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			groupBox9.Controls.Add(tb_ogn_3);
@@ -306,10 +306,10 @@ namespace SimPe.Plugin.TabPage
 			//
 			ll_ogn_add.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			ll_ogn_add.AutoSize = true;
@@ -398,12 +398,12 @@ namespace SimPe.Plugin.TabPage
 			//
 			lb_ogn.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
-						) | AnchorStyles.Left
-					)
+						 | AnchorStyles.Left
+
 
 			;
 			lb_ogn.Font = new System.Drawing.Font(
@@ -424,10 +424,10 @@ namespace SimPe.Plugin.TabPage
 			//
 			ll_ogn_delete.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			ll_ogn_delete.AutoSize = true;

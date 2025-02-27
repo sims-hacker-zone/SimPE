@@ -75,7 +75,7 @@ namespace Classless.Hasher
 
 				BuildLookup(param);
 				lookup = (long[])lookupTables[param];
-				registerMask = (long)(Math.Pow(2, (param.Order - 8)) - 1);
+				registerMask = (long)(Math.Pow(2, param.Order - 8) - 1);
 
 				Initialize();
 			}
@@ -191,7 +191,7 @@ namespace Classless.Hasher
 					numBytes++;
 				}
 				temp = new byte[numBytes];
-				for (i = (numBytes - 1), shift = 0; i >= 0; i--, shift += 8)
+				for (i = numBytes - 1, shift = 0; i >= 0; i--, shift += 8)
 				{
 					temp[i] = (byte)((checksum >> shift) & 0xFF);
 				}
@@ -210,7 +210,7 @@ namespace Classless.Hasher
 
 			for (int i = 0; i < numBits; i++)
 			{
-				long bitMask = (long)1 << ((numBits - 1) - i);
+				long bitMask = (long)1 << (numBits - 1 - i);
 
 				if ((temp & 1) != 0)
 				{

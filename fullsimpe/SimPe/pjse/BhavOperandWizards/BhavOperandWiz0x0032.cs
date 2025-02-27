@@ -142,7 +142,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 			StrWrapper str = new StrWrapper();
 			str.ProcessData(items[0].PFD, items[0].Package);
 
-			int i = (new StrChooser(true)).Strnum(str);
+			int i = new StrChooser(true).Strnum(str);
 			if (i >= 0)
 			{
 				tbStrIndex.Text = "0x" + SimPe.Helper.HexString((byte)(i + 1));
@@ -227,13 +227,13 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 			tfActionTemp.Checked = (ops1[0x02] & 0x10) != 0;
 			pnStrIndex.Enabled = !tfActionTemp.Checked;
 
-			pnThumbnail.Enabled = rbIconSourceTN.Checked = (
+			pnThumbnail.Enabled = rbIconSourceTN.Checked =
 				(ops1[0x02] & 0x20) != 0
-			);
+			;
 			pnObject.Enabled = rbIconSourceObj.Checked =
 				!rbIconSourceTN.Checked;
 
-			tfGUIDTemp.Checked = ((ops1[0x02] & 0x40) != 0);
+			tfGUIDTemp.Checked = (ops1[0x02] & 0x40) != 0;
 			pnGUID.Enabled = !tfGUIDTemp.Checked;
 
 			tfIconTemp.Checked = (ops1[0x02] & 0x80) != 0;

@@ -135,7 +135,7 @@ namespace SimPe.Plugin.Tool
 					{
 						error += ProcessItem(sw, e, first);
 						WaitingScreen.UpdateMessage(
-							(ct++).ToString() + " / " + max.ToString()
+							ct++.ToString() + " / " + max.ToString()
 						);
 						first = false;
 					}
@@ -172,7 +172,7 @@ namespace SimPe.Plugin.Tool
 
 		public bool ChangeEnabledStateEventHandler(object sender, ResourceEventArgs e)
 		{
-			return (e.Loaded && e.HasFileDescriptor);
+			return e.Loaded && e.HasFileDescriptor;
 		}
 
 		public void Execute(object sender, ResourceEventArgs es)

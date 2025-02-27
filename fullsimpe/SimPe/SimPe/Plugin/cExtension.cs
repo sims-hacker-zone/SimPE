@@ -381,7 +381,7 @@ namespace SimPe.Plugin
 			version = reader.ReadUInt32();
 			TypeCode = reader.ReadByte();
 
-			if ((TypeCode < 0x07))
+			if (TypeCode < 0x07)
 			{
 				int sz = 16;
 				if ((TypeCode != 0x03) || (ver == 4))

@@ -34,7 +34,7 @@ namespace SimPe.Plugin.Tool
 
 		public bool ChangeEnabledStateEventHandler(object sender, ResourceEventArgs e)
 		{
-			return (e.Loaded);
+			return e.Loaded;
 		}
 
 		public void Execute(object sender, ResourceEventArgs es)

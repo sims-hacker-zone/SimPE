@@ -91,7 +91,7 @@ namespace SimPe.PackedFiles.UserInterface
 			form.cbBFF.Visible =
 				form.cbplatonic.Visible =
 				form.cbsecret.Visible =
-					(srel.RelationState2 != null);
+					srel.RelationState2 != null;
 
 			List<CheckBox> ltcb = new List<CheckBox>(
 				new CheckBox[]

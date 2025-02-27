@@ -311,7 +311,7 @@ namespace SimPe.Plugin.Anim
 			type = (byte)(dum & 3);
 			int size = TokenSize;
 
-			return (count * size);
+			return count * size;
 		}
 
 		/// <summary>
@@ -619,7 +619,7 @@ namespace SimPe.Plugin.Anim
 		/// </summary>
 		public AnimationAxisTransform this[int index]
 		{
-			get => ((AnimationAxisTransform)items[index]);
+			get => (AnimationAxisTransform)items[index];
 			set => items[index] = value;
 		}
 
@@ -628,7 +628,7 @@ namespace SimPe.Plugin.Anim
 		/// </summary>
 		public AnimationAxisTransform this[uint index]
 		{
-			get => ((AnimationAxisTransform)items[(int)index]);
+			get => (AnimationAxisTransform)items[(int)index];
 			set => items[(int)index] = value;
 		}
 
@@ -718,11 +718,11 @@ namespace SimPe.Plugin.Anim
 
 		#region statics
 		public const float SCALE = 1.0f / 1000f;
-		public const float SCALEROT = (float)(((1f / 180f) * Math.PI) / 64f);
+		public const float SCALEROT = (float)(1f / 180f * Math.PI / 64f);
 
 		public static float GetCompressedFloat(short v, float scale)
 		{
-			return (v * scale);
+			return v * scale;
 		}
 
 		public static short FromCompressedFloat(float v, float scale)

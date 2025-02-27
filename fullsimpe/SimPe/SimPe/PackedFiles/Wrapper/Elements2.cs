@@ -94,7 +94,7 @@ namespace SimPe.PackedFiles.Wrapper
 			linkLabel1 = new LinkLabel();
 			NrefPanel.SuspendLayout();
 			CpfPanel.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(pbicon)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)pbicon).BeginInit();
 			SuspendLayout();
 			//
 			// btprev
@@ -275,7 +275,7 @@ namespace SimPe.PackedFiles.Wrapper
 			NrefPanel.PerformLayout();
 			CpfPanel.ResumeLayout(false);
 			CpfPanel.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(pbicon)).EndInit();
+			((System.ComponentModel.ISupportInitialize)pbicon).EndInit();
 			ResumeLayout(false);
 		}
 		#endregion
@@ -439,7 +439,7 @@ namespace SimPe.PackedFiles.Wrapper
 				{
 					try
 					{
-						item.BooleanValue = (Convert.ToByte(rtbcpf.Text) != 0);
+						item.BooleanValue = Convert.ToByte(rtbcpf.Text) != 0;
 					}
 					catch (Exception)
 					{

@@ -136,7 +136,7 @@ namespace pjse.BhavOperandWizards.Wiz0x002d
 				}
 
 				ops14[0] = ckbNFailTrees.Checked;
-				ops14[1] = (cbSlotType.SelectedIndex == 0);
+				ops14[1] = cbSlotType.SelectedIndex == 0;
 				ops14[2] = ckbIgnDstFootprint.Checked;
 				ops14[3] = ckbDiffAlts.Checked;
 				ops1[4] = ops14;

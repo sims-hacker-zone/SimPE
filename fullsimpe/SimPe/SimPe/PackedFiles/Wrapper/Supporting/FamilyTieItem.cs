@@ -232,7 +232,7 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		{
 			int len = Ties.Length;
 			Ties = (FamilyTieItem[])Helper.Delete(Ties, fti);
-			return (Ties.Length < len);
+			return Ties.Length < len;
 		}
 	}
 

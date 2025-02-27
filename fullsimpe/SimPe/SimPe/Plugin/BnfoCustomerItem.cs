@@ -27,7 +27,7 @@ namespace SimPe.Plugin
 		public int LoyaltyStars
 		{
 			get => (int)Math.Ceiling(LoyaltyScore / 200.0);
-			set => LoyaltyScore = (value * 200);
+			set => LoyaltyScore = value * 200;
 		}
 
 		int lloyalty;

@@ -166,14 +166,14 @@ namespace SimPe.Plugin
 			//
 			tbResource.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			tbResource.Controls.Add(tabPage1);
@@ -226,12 +226,12 @@ namespace SimPe.Plugin
 			//
 			tbflname.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tbflname.Location = new System.Drawing.Point(72, 32);
@@ -244,14 +244,14 @@ namespace SimPe.Plugin
 			//
 			childtc.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			childtc.Location = new System.Drawing.Point(8, 64);
@@ -285,10 +285,10 @@ namespace SimPe.Plugin
 			//
 			llhash.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			llhash.AutoSize = true;
@@ -316,10 +316,10 @@ namespace SimPe.Plugin
 			//
 			llfix.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			llfix.AutoSize = true;
@@ -344,12 +344,12 @@ namespace SimPe.Plugin
 			//
 			cbitem.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			cbitem.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -377,14 +377,14 @@ namespace SimPe.Plugin
 			lbref.AllowDrop = true;
 			lbref.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lbref.BorderStyle = BorderStyle.None;
@@ -407,10 +407,10 @@ namespace SimPe.Plugin
 			//
 			xpTaskBoxSimple2.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			xpTaskBoxSimple2.BackColor = System.Drawing.Color.Transparent;
@@ -678,10 +678,10 @@ namespace SimPe.Plugin
 			//
 			btref.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			btref.FlatStyle = FlatStyle.Popup;
@@ -753,12 +753,12 @@ namespace SimPe.Plugin
 			//
 			cbblocks.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			cbblocks.DropDownStyle =
@@ -817,10 +817,10 @@ namespace SimPe.Plugin
 			//
 			xpTaskBoxSimple1.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			xpTaskBoxSimple1.BackColor = System.Drawing.Color.Transparent;
@@ -1038,7 +1038,7 @@ namespace SimPe.Plugin
 				CountedListItem cli = (CountedListItem)
 					cbitem.Items[cbitem.SelectedIndex];
 				AbstractRcolBlock rb = (AbstractRcolBlock)cli.Object;
-				tbflname.Enabled = (rb.NameResource != null);
+				tbflname.Enabled = rb.NameResource != null;
 				llhash.Enabled = tbflname.Enabled;
 				llfix.Enabled = tbflname.Enabled;
 
@@ -1525,7 +1525,7 @@ namespace SimPe.Plugin
 			{
 				CountedListItem cli = (CountedListItem)
 					lbblocks.Items[lbblocks.SelectedIndex];
-				IRcolBlock irb = ((IRcolBlock)cli.Object);
+				IRcolBlock irb = (IRcolBlock)cli.Object;
 				lbblocks.Items.Remove(cli);
 				wrapper.Blocks = (IRcolBlock[])
 					Helper.Delete(wrapper.Blocks, irb, typeof(IRcolBlock));

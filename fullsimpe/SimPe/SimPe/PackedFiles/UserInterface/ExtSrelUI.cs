@@ -75,7 +75,7 @@ namespace SimPe.PackedFiles.UserInterface
 			lbsims = new System.Windows.Forms.Label();
 			sc = new CommonSrel();
 			pb = new System.Windows.Forms.PictureBox();
-			((System.ComponentModel.ISupportInitialize)(pb)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)pb).BeginInit();
 			SuspendLayout();
 			//
 			// label1
@@ -118,7 +118,7 @@ namespace SimPe.PackedFiles.UserInterface
 			Controls.SetChildIndex(sc, 0);
 			Controls.SetChildIndex(label1, 0);
 			Controls.SetChildIndex(pb, 0);
-			((System.ComponentModel.ISupportInitialize)(pb)).EndInit();
+			((System.ComponentModel.ISupportInitialize)pb).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}

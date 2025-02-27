@@ -78,10 +78,10 @@ namespace SimPe.Packages
 			//
 			btadd.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			btadd.BackColor = System.Drawing.Color.Transparent;
@@ -98,14 +98,14 @@ namespace SimPe.Packages
 			//
 			lblist.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lblist.IntegralHeight = false;
@@ -119,10 +119,10 @@ namespace SimPe.Packages
 			//
 			btdelete.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			btdelete.BackColor = System.Drawing.Color.Transparent;
@@ -139,10 +139,10 @@ namespace SimPe.Packages
 			//
 			button2.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			button2.BackColor = System.Drawing.Color.Transparent;
@@ -159,14 +159,14 @@ namespace SimPe.Packages
 			//
 			panel1.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			panel1.Controls.Add(btdelete);
@@ -219,7 +219,7 @@ namespace SimPe.Packages
 				lblist.SelectedIndex = 0;
 			}
 
-			btdelete.Enabled = (lblist.SelectedIndex >= 0);
+			btdelete.Enabled = lblist.SelectedIndex >= 0;
 
 			ShowDialog();
 

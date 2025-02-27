@@ -44,10 +44,10 @@ namespace SimPe.Plugin
 			Interfaces.Files.IPackageFile package
 		)
 		{
-			return (
+			return
 				Helper.IsNeighborhoodFile(package?.FileName)
 				|| Helper.IsLotCatalogFile(package?.FileName)
-			);
+			;
 		}
 
 		private bool IsReallyEnabled(

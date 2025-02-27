@@ -92,12 +92,12 @@ namespace SimPe.Plugin.TabPage
 			//
 			tbfjoint.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tbfjoint.Location = new System.Drawing.Point(88, 8);
@@ -129,14 +129,14 @@ namespace SimPe.Plugin.TabPage
 			//
 			cres_tv.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			cres_tv.FullRowSelect = true;
@@ -157,11 +157,11 @@ namespace SimPe.Plugin.TabPage
 			//
 			iCres.ColorDepth = ColorDepth.Depth32Bit;
 			iCres.ImageSize = new System.Drawing.Size(16, 16);
-			iCres.ImageStream = (
-				(ImageListStreamer)(
+			iCres.ImageStream =
+				(ImageListStreamer)
 					resources.GetObject("iCres.ImageStream")
-				)
-			);
+
+			;
 			iCres.TransparentColor = System.Drawing.Color.Transparent;
 			//
 			// Cres
@@ -262,7 +262,7 @@ namespace SimPe.Plugin.TabPage
 				return;
 			}
 
-			ComboBox cb = (ComboBox)(((TabControl)Parent).Tag);
+			ComboBox cb = (ComboBox)((TabControl)Parent).Tag;
 			cb.SelectedIndex = index;
 			((TabControl)Parent).SelectedIndex = 0;
 		}
@@ -273,7 +273,7 @@ namespace SimPe.Plugin.TabPage
 			{
 				if (tn.Tag != null)
 				{
-					ComboBox cb = (ComboBox)(((TabControl)Parent).Tag);
+					ComboBox cb = (ComboBox)((TabControl)Parent).Tag;
 
 					object o = (cb.Items[(int)tn.Tag] as CountedListItem).Object;
 					if (o is AbstractCresChildren)

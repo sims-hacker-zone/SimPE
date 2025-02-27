@@ -132,7 +132,7 @@ namespace SimPe.Plugin
 		private uint GetPackageHash()
 		{
 			Random rn = new Random();
-			uint ret = ((uint)rn.Next(0xffffff) | 0xff000000u);
+			uint ret = (uint)rn.Next(0xffffff) | 0xff000000u;
 			foreach (IPackedFileDescriptor pfd in package.Index)
 			{
 				///This is a scenegraph Resource so get the Hash from there!

@@ -47,7 +47,7 @@ namespace pjHoodTool
 			cbshowpets.Checked = cHoodTool.incpet;
 			cbshowbusi.Checked = cHoodTool.incbus;
 			cbExcludeLots.Checked = !cHoodTool.inclot;
-			rbcsv.Checked = (cHoodTool.outptype == ".csv");
+			rbcsv.Checked = cHoodTool.outptype == ".csv";
 		}
 
 		private void btdoned_Click(object sender, EventArgs e)

@@ -93,7 +93,7 @@ namespace SimPe.Plugin
 			pnBackup.SuspendLayout();
 			pnOptions.SuspendLayout();
 			pnBoPeep.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(pbox)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)pbox).BeginInit();
 			SuspendLayout();
 			//
 			// lv
@@ -216,7 +216,7 @@ namespace SimPe.Plugin
 			pnOptions.ResumeLayout(false);
 			pnOptions.PerformLayout();
 			pnBoPeep.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(pbox)).EndInit();
+			((System.ComponentModel.ISupportInitialize)pbox).EndInit();
 			ResumeLayout(false);
 		}
 		#endregion
@@ -521,7 +521,7 @@ namespace SimPe.Plugin
 				package = this.package;
 			}
 
-			return new ToolResult(false, ((this.package != null) || (changed)));
+			return new ToolResult(false, (this.package != null) || changed);
 		}
 
 		class NgbhType
@@ -550,7 +550,7 @@ namespace SimPe.Plugin
 		private void NgbSelect(object sender, EventArgs e)
 		{
 			//button1.Enabled = (lv.SelectedItems.Count>0);
-			button2.Enabled = (lv.SelectedItems.Count > 0);
+			button2.Enabled = lv.SelectedItems.Count > 0;
 			button3.Enabled = button2.Enabled;
 
 			cbtypes.Items.Clear();

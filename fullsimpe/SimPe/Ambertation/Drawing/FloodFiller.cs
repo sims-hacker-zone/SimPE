@@ -65,7 +65,7 @@ namespace Ambertation.Drawing
 				//get the starting color
 				//[loc += Y offset + X offset]
 				int loc = CoordsToIndex(pt.X, pt.Y, bmpData.Stride); //((bmpData.Stride*(pt.Y-1))+(pt.X*4));
-				int color = *((int*)(scan0 + loc));
+				int color = *(int*)(scan0 + loc);
 
 				//create the array of bools that indicates whether each pixel
 				//has been checked.  (Should be bitfield, but C# doesn't support bitfields.)
@@ -154,7 +154,7 @@ namespace Ambertation.Drawing
 		)
 		{
 			//offset the pointer to the point passed in
-			int* p = (int*)(scan0 + (CoordsToIndex(x, y, stride)));
+			int* p = (int*)(scan0 + CoordsToIndex(x, y, stride));
 
 			//FIND LEFT EDGE OF COLOR AREA
 			int LFillLoc = x; //the location to check/fill on the left
@@ -168,7 +168,7 @@ namespace Ambertation.Drawing
 				if (
 					LFillLoc <= 0
 					|| !CheckPixel((byte*)ptr, startcolor)
-					|| (PixelsChecked[LFillLoc, y])
+					|| PixelsChecked[LFillLoc, y]
 				)
 				{
 					break; //exit loop if we're at edge of bitmap or color area
@@ -188,7 +188,7 @@ namespace Ambertation.Drawing
 				if (
 					RFillLoc >= bmpsize.Width
 					|| !CheckPixel((byte*)ptr, startcolor)
-					|| (PixelsChecked[RFillLoc, y])
+					|| PixelsChecked[RFillLoc, y]
 				)
 				{
 					break; //exit loop if we're at edge of bitmap or color area
@@ -208,7 +208,7 @@ namespace Ambertation.Drawing
 						scan0 + CoordsToIndex(i, y - 1, stride),
 						startcolor
 					)
-					&& (!(PixelsChecked[i, y - 1]))
+					&& (!PixelsChecked[i, y - 1])
 				)
 				{
 					LinearFloodFill4(scan0, i, y - 1, bmpsize, stride, startcolor);
@@ -220,7 +220,7 @@ namespace Ambertation.Drawing
 						scan0 + CoordsToIndex(i, y + 1, stride),
 						startcolor
 					)
-					&& (!(PixelsChecked[i, y + 1]))
+					&& (!PixelsChecked[i, y + 1])
 				)
 				{
 					LinearFloodFill4(scan0, i, y + 1, bmpsize, stride, startcolor);
@@ -240,7 +240,7 @@ namespace Ambertation.Drawing
 		)
 		{
 			//offset the pointer to the point passed in
-			int* p = (int*)(scan0 + (CoordsToIndex(x, y, stride)));
+			int* p = (int*)(scan0 + CoordsToIndex(x, y, stride));
 
 			//FIND LEFT EDGE OF COLOR AREA
 			int LFillLoc = x; //the location to check/fill on the left
@@ -254,7 +254,7 @@ namespace Ambertation.Drawing
 				if (
 					LFillLoc <= 0
 					|| !CheckPixel((byte*)ptr, startcolor)
-					|| (PixelsChecked[LFillLoc, y])
+					|| PixelsChecked[LFillLoc, y]
 				)
 				{
 					break; //exit loop if we're at edge of bitmap or color area
@@ -274,7 +274,7 @@ namespace Ambertation.Drawing
 				if (
 					RFillLoc >= bmpsize.Width
 					|| !CheckPixel((byte*)ptr, startcolor)
-					|| (PixelsChecked[RFillLoc, y])
+					|| PixelsChecked[RFillLoc, y]
 				)
 				{
 					break; //exit loop if we're at edge of bitmap or color area
@@ -296,7 +296,7 @@ namespace Ambertation.Drawing
 						CheckPixel(
 							scan0 + CoordsToIndex(i, y - 1, stride),
 							startcolor
-						) && (!(PixelsChecked[i, y - 1]))
+						) && (!PixelsChecked[i, y - 1])
 					)
 					{
 						LinearFloodFill8(scan0, i, y - 1, bmpsize, stride, startcolor);
@@ -308,7 +308,7 @@ namespace Ambertation.Drawing
 							scan0 + CoordsToIndex(i - 1, y - 1, stride),
 							startcolor
 						)
-						&& (!(PixelsChecked[i - 1, y - 1]))
+						&& (!PixelsChecked[i - 1, y - 1])
 					)
 					{
 						LinearFloodFill8(
@@ -327,7 +327,7 @@ namespace Ambertation.Drawing
 							scan0 + CoordsToIndex(i + 1, y - 1, stride),
 							startcolor
 						)
-						&& (!(PixelsChecked[i + 1, y - 1]))
+						&& (!PixelsChecked[i + 1, y - 1])
 					)
 					{
 						LinearFloodFill8(
@@ -348,7 +348,7 @@ namespace Ambertation.Drawing
 						CheckPixel(
 							scan0 + CoordsToIndex(i, y + 1, stride),
 							startcolor
-						) && (!(PixelsChecked[i, y + 1]))
+						) && (!PixelsChecked[i, y + 1])
 					)
 					{
 						LinearFloodFill8(scan0, i, y + 1, bmpsize, stride, startcolor);
@@ -360,7 +360,7 @@ namespace Ambertation.Drawing
 							scan0 + CoordsToIndex(i - 1, y + 1, stride),
 							startcolor
 						)
-						&& (!(PixelsChecked[i - 1, y + 1]))
+						&& (!PixelsChecked[i - 1, y + 1])
 					)
 					{
 						LinearFloodFill8(
@@ -379,7 +379,7 @@ namespace Ambertation.Drawing
 							scan0 + CoordsToIndex(i + 1, y + 1, stride),
 							startcolor
 						)
-						&& (!(PixelsChecked[i + 1, y + 1]))
+						&& (!PixelsChecked[i + 1, y + 1])
 					)
 					{
 						LinearFloodFill8(
@@ -421,8 +421,8 @@ namespace Ambertation.Drawing
 				return;
 			}
 
-			int* p = (int*)(scan0 + (CoordsToIndex(x, y, stride)));
-			if (!(PixelsChecked[x, y]) && CheckPixel((byte*)p, startcolor))
+			int* p = (int*)(scan0 + CoordsToIndex(x, y, stride));
+			if (!PixelsChecked[x, y] && CheckPixel((byte*)p, startcolor))
 			{
 				p[0] = m_fillcolor; //fill with the color
 				PixelsChecked[x, y] = true;
@@ -460,10 +460,10 @@ namespace Ambertation.Drawing
 			}
 
 			//calculate pointer offset
-			int* p = (int*)(scan0 + (CoordsToIndex(x, y, stride)));
+			int* p = (int*)(scan0 + CoordsToIndex(x, y, stride));
 
 			//if the pixel is within the color tolerance, fill it and branch out
-			if (!(PixelsChecked[x, y]) && CheckPixel((byte*)p, startcolor))
+			if (!PixelsChecked[x, y] && CheckPixel((byte*)p, startcolor))
 			{
 				p[0] = m_fillcolor; //fill with the color
 				PixelsChecked[x, y] = true;
@@ -534,8 +534,8 @@ namespace Ambertation.Drawing
 				return;
 			}
 
-			int* p = (int*)(scan0 + (CoordsToIndex(x, y, stride)));
-			if (!(PixelsChecked[x, y]) && CheckPixel((byte*)p, startcolor))
+			int* p = (int*)(scan0 + CoordsToIndex(x, y, stride));
+			if (!PixelsChecked[x, y] && CheckPixel((byte*)p, startcolor))
 			{
 				p[0] = m_fillcolor; //fill with the color
 				PixelsChecked[x, y] = true;
@@ -573,10 +573,10 @@ namespace Ambertation.Drawing
 			}
 
 			//calculate pointer offset
-			int* p = (int*)(scan0 + (CoordsToIndex(x, y, stride)));
+			int* p = (int*)(scan0 + CoordsToIndex(x, y, stride));
 
 			//if the pixel is within the color tolerance, fill it and branch out
-			if (!(PixelsChecked[x, y]) && CheckPixel((byte*)p, startcolor))
+			if (!PixelsChecked[x, y] && CheckPixel((byte*)p, startcolor))
 			{
 				p[0] = m_fillcolor; //fill with the color
 				PixelsChecked[x, y] = true;

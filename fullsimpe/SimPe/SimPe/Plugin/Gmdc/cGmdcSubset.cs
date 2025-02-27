@@ -376,7 +376,7 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public new GmdcJoint this[int index]
 		{
-			get => ((GmdcJoint)base[index]);
+			get => (GmdcJoint)base[index];
 			set => base[index] = value;
 		}
 
@@ -385,7 +385,7 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public GmdcJoint this[uint index]
 		{
-			get => ((GmdcJoint)base[(int)index]);
+			get => (GmdcJoint)base[(int)index];
 			set => base[(int)index] = value;
 		}
 

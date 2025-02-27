@@ -2070,7 +2070,7 @@ namespace SimPe.PackedFiles.UserInterface
 		private void btnAppend_Click(object sender, EventArgs e)
 		{
 			Append(
-				(new ResourceChooser()).Execute(
+				new ResourceChooser().Execute(
 					wrapper.FileDescriptor.Type,
 					wrapper.FileDescriptor.Group,
 					ttabPanel,
@@ -2097,12 +2097,12 @@ namespace SimPe.PackedFiles.UserInterface
 			ttabPanel.SuspendLayout();
 			ttabPanel.Cursor = Cursors.AppStarting;
 
-			btnMoveUp.Enabled = btnStrPrev.Enabled = (
+			btnMoveUp.Enabled = btnStrPrev.Enabled =
 				lbttab.SelectedIndex > 0
-			);
-			btnMoveDown.Enabled = btnStrNext.Enabled = (
+			;
+			btnMoveDown.Enabled = btnStrNext.Enabled =
 				lbttab.SelectedIndex < lbttab.Items.Count - 1
-			);
+			;
 
 			if (lbttab.SelectedIndex >= 0)
 			{

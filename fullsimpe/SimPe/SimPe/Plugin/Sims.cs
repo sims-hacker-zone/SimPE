@@ -698,13 +698,13 @@ namespace SimPe.Plugin
 					sdesc.ProcessData(spfd, package);
 
 					bool doAdd = false;
-					doAdd |= (cbNpc.Checked && realIsNPC(sdesc));
-					doAdd |= (cbTownie.Checked && realIsTownie(sdesc));
-					doAdd |= (ckbPlayable.Checked && realIsPlayable(sdesc));
-					doAdd |= (ckbUnEditable.Checked && realIsUneditable(sdesc));
-					doAdd &= (!cbmens.Checked || !realIsWoman(sdesc));
-					doAdd &= (!cbgals.Checked || realIsWoman(sdesc));
-					doAdd &= (!cbadults.Checked || realIsAdult(sdesc));
+					doAdd |= cbNpc.Checked && realIsNPC(sdesc);
+					doAdd |= cbTownie.Checked && realIsTownie(sdesc);
+					doAdd |= ckbPlayable.Checked && realIsPlayable(sdesc);
+					doAdd |= ckbUnEditable.Checked && realIsUneditable(sdesc);
+					doAdd &= !cbmens.Checked || !realIsWoman(sdesc);
+					doAdd &= !cbgals.Checked || realIsWoman(sdesc);
+					doAdd &= !cbadults.Checked || realIsAdult(sdesc);
 
 					if (doAdd)
 					{
@@ -771,7 +771,7 @@ namespace SimPe.Plugin
 			Idno idno = Idno.FromPackage(package);
 			if (idno != null)
 			{
-				lbUbi.Visible = (idno.Type != NeighborhoodType.Normal);
+				lbUbi.Visible = idno.Type != NeighborhoodType.Normal;
 			}
 
 			this.pfd = null;
@@ -792,7 +792,7 @@ namespace SimPe.Plugin
 				pfd = this.pfd;
 			}
 
-			return new ToolResult((this.pfd != null), false);
+			return new ToolResult(this.pfd != null, false);
 		}
 
 		private void Open(object sender, EventArgs e)

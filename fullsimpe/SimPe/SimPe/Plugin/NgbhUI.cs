@@ -62,7 +62,7 @@ namespace SimPe.Plugin
 					)
 				);
 
-				Wait.Message = ("Load Memories from Cache");
+				Wait.Message = "Load Memories from Cache";
 				foreach (MemoryCacheItem mci in ObjectCache.List)
 				{
 					Data.Alias a = new Data.Alias(mci.Guid, mci.Name);

@@ -106,7 +106,7 @@ namespace SimPe
 			Controls.Add(panel1);
 			Controls.Add(panel2);
 			FormBorderStyle = FormBorderStyle.FixedDialog;
-			Icon = ((Icon)(resources.GetObject("$this.Icon")));
+			Icon = (Icon)resources.GetObject("$this.Icon");
 			MaximizeBox = false;
 			MinimizeBox = false;
 			Name = "Message";
@@ -254,7 +254,7 @@ namespace SimPe
 			int pos = (int)panel1.Tag;
 			panel1.Tag = pos + 1;
 
-			bn.Left = panel1.Width - (bn.Width + 8) * pos;
+			bn.Left = panel1.Width - ((bn.Width + 8) * pos);
 			bn.Top = 8;
 			bn.FlatStyle = FlatStyle.System;
 

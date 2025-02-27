@@ -350,7 +350,7 @@ namespace SimPe.Plugin.Anim
 		/// <returns>Number of Items</returns>
 		int GetPart2Count()
 		{
-			return (datas[1]);
+			return datas[1];
 		}
 
 		/// <summary>
@@ -368,7 +368,7 @@ namespace SimPe.Plugin.Anim
 		/// <returns>Number of Items</returns>
 		int GetPart4Count()
 		{
-			return (datas[2] & 0x3f);
+			return datas[2] & 0x3f;
 		}
 
 		/// <summary>

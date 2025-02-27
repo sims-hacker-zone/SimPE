@@ -175,7 +175,7 @@ namespace SimPe.Plugin
 						d,
 						sz,
 						format,
-						(maps.Length - (i + 1)),
+						maps.Length - (i + 1),
 						maps.Length
 					);
 
@@ -237,8 +237,8 @@ namespace SimPe.Plugin
 			hg = Math.Max(1, hg);
 
 			datasize = format == TxtrFormats.DXT1Format
-				? (wd * hg) / 2
-				: format == TxtrFormats.Raw24Bit ? (wd * hg) * 3 : format == TxtrFormats.Raw32Bit ? (wd * hg) * 4 : wd * hg;
+				? wd * hg / 2
+				: format == TxtrFormats.Raw24Bit ? wd * hg * 3 : format == TxtrFormats.Raw32Bit ? wd * hg * 4 : wd * hg;
 
 			if (
 				(format == TxtrFormats.DXT1Format)
@@ -320,7 +320,7 @@ namespace SimPe.Plugin
 			int h
 		)
 		{
-			double scale = (parentsize.Width / (double)parentsize.Height);
+			double scale = parentsize.Width / (double)parentsize.Height;
 
 			/*int w = 0;
 			int h = 0;
@@ -368,7 +368,7 @@ namespace SimPe.Plugin
 						g = reader.ReadByte();
 						r = reader.ReadByte();
 
-						if ((format == TxtrFormats.Raw32Bit))
+						if (format == TxtrFormats.Raw32Bit)
 						{
 							a = reader.ReadByte();
 						}
@@ -411,7 +411,7 @@ namespace SimPe.Plugin
 					{
 						writer.Write(c.G);
 						writer.Write(c.R);
-						if ((format == TxtrFormats.Raw32Bit))
+						if (format == TxtrFormats.Raw32Bit)
 						{
 							writer.Write(c.A);
 						}
@@ -507,19 +507,19 @@ namespace SimPe.Plugin
 							alphas[1] = alpha2;
 							if (alpha1 > alpha2)
 							{
-								alphas[2] = (6 * alpha1 + alpha2) / 7;
-								alphas[3] = (5 * alpha1 + 2 * alpha2) / 7;
-								alphas[4] = (4 * alpha1 + 3 * alpha2) / 7;
-								alphas[5] = (3 * alpha1 + 4 * alpha2) / 7;
-								alphas[6] = (2 * alpha1 + 5 * alpha2) / 7;
-								alphas[7] = (alpha1 + 6 * alpha2) / 7;
+								alphas[2] = ((6 * alpha1) + alpha2) / 7;
+								alphas[3] = ((5 * alpha1) + (2 * alpha2)) / 7;
+								alphas[4] = ((4 * alpha1) + (3 * alpha2)) / 7;
+								alphas[5] = ((3 * alpha1) + (4 * alpha2)) / 7;
+								alphas[6] = ((2 * alpha1) + (5 * alpha2)) / 7;
+								alphas[7] = (alpha1 + (6 * alpha2)) / 7;
 							}
 							else
 							{
-								alphas[2] = (4 * alpha1 + alpha2) / 5;
-								alphas[3] = (3 * alpha1 + 2 * alpha2) / 5;
-								alphas[4] = (2 * alpha1 + 3 * alpha2) / 5;
-								alphas[5] = (1 * alpha1 + 4 * alpha2) / 5;
+								alphas[2] = ((4 * alpha1) + alpha2) / 5;
+								alphas[3] = ((3 * alpha1) + (2 * alpha2)) / 5;
+								alphas[4] = ((2 * alpha1) + (3 * alpha2)) / 5;
+								alphas[5] = ((1 * alpha1) + (4 * alpha2)) / 5;
 								alphas[6] = 0;
 								alphas[7] = 0xff;
 							}
@@ -662,7 +662,7 @@ namespace SimPe.Plugin
 			ushort col = 0;
 			for (int i = alphas.Length - 1; i >= 0; i--)
 			{
-				byte a = (byte)((alphas[i].A * 0xf) / 0xff);
+				byte a = (byte)(alphas[i].A * 0xf / 0xff);
 				col = (ushort)(col << 4);
 				col = (ushort)(col | (byte)(a & 0x0f));
 			}
@@ -694,12 +694,12 @@ namespace SimPe.Plugin
 			}
 
 			//calculate interpolated Alphas
-			table[2] = (byte)((6 * table[0] + table[1]) / 7);
-			table[3] = (byte)((5 * table[0] + 2 * table[1]) / 7);
-			table[4] = (byte)((4 * table[0] + 3 * table[1]) / 7);
-			table[5] = (byte)((3 * table[0] + 4 * table[1]) / 7);
-			table[6] = (byte)((2 * table[0] + 5 * table[1]) / 7);
-			table[7] = (byte)((table[0] + 6 * table[1]) / 7);
+			table[2] = (byte)(((6 * table[0]) + table[1]) / 7);
+			table[3] = (byte)(((5 * table[0]) + (2 * table[1])) / 7);
+			table[4] = (byte)(((4 * table[0]) + (3 * table[1])) / 7);
+			table[5] = (byte)(((3 * table[0]) + (4 * table[1])) / 7);
+			table[6] = (byte)(((2 * table[0]) + (5 * table[1])) / 7);
+			table[7] = (byte)((table[0] + (6 * table[1])) / 7);
 
 			long abits = 0;
 			for (int k = alphas.Length - 1; k >= 0; k--)
@@ -796,9 +796,9 @@ if (test.B>table.B) table = Color.FromArgb(table.A, table.R, table.G, test.B);*/
 
 		protected static Color DXT3MixColors(Color c1, Color c2, double f1, double f2)
 		{
-			byte r = Convert.ToByte(c1.R * f1 + c2.R * f2);
-			byte g = Convert.ToByte(c1.G * f1 + c2.G * f2);
-			byte b = Convert.ToByte(c1.B * f1 + c2.B * f2);
+			byte r = Convert.ToByte((c1.R * f1) + (c2.R * f2));
+			byte g = Convert.ToByte((c1.G * f1) + (c2.G * f2));
+			byte b = Convert.ToByte((c1.B * f1) + (c2.B * f2));
 
 			return Color.FromArgb(0xff, r, g, b);
 		}
@@ -807,13 +807,13 @@ if (test.B>table.B) table = Color.FromArgb(table.A, table.R, table.G, test.B);*/
 		{
 			int res = 0;
 
-			res = ((col.R * 0x1f) / 0xff) & 0x1f;
+			res = (col.R * 0x1f / 0xff) & 0x1f;
 
 			res = res << 6;
-			res |= ((col.G * 0x3f) / 0xff) & 0x3f;
+			res |= (col.G * 0x3f / 0xff) & 0x3f;
 
 			res = res << 5;
-			res |= ((col.B * 0x1f) / 0xff) & 0x1f;
+			res |= (col.B * 0x1f / 0xff) & 0x1f;
 
 			return (short)res;
 		}
@@ -842,7 +842,7 @@ if (test.B>table.B) table = Color.FromArgb(table.A, table.R, table.G, test.B);*/
 
 			//invert the Color Order
 			//if ((format==TxtrFormats.DXT1Format) && (table[0].ToArgb()<=table[1].ToArgb()) )
-			if ((table[0].ToArgb() <= table[1].ToArgb()))
+			if (table[0].ToArgb() <= table[1].ToArgb())
 			{
 				table[2] = DXT3MixColors(table[0], table[1], 1.0 / 2, 1.0 / 2);
 				table[3] = Color.Black;
@@ -913,7 +913,7 @@ if (test.B>table.B) table = Color.FromArgb(table.A, table.R, table.G, test.B);*/
 						{
 							for (int bx = 0; bx < 4; ++bx)
 							{
-								alphas[by * 4 + bx] = (x + bx < bmp.Width) && (y + by < bmp.Height) ? bmp.GetPixel(x + bx, y + by) : Color.Black;
+								alphas[(by * 4) + bx] = (x + bx < bmp.Width) && (y + by < bmp.Height) ? bmp.GetPixel(x + bx, y + by) : Color.Black;
 							}
 						}
 						DXT5WriteTransparencyBlock(writer, alphas);

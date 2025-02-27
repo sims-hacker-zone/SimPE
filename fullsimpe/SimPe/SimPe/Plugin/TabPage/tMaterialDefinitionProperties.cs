@@ -116,14 +116,14 @@ namespace SimPe.Plugin.TabPage
 			//
 			lbprop.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lbprop.IntegralHeight = false;
@@ -139,10 +139,10 @@ namespace SimPe.Plugin.TabPage
 			//
 			gbprop.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			gbprop.Controls.Add(lldel);
@@ -170,10 +170,10 @@ namespace SimPe.Plugin.TabPage
 			//
 			btnExport.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			btnExport.AutoSize = true;
@@ -188,10 +188,10 @@ namespace SimPe.Plugin.TabPage
 			//
 			btnImport.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			btnImport.AutoSize = true;
@@ -206,10 +206,10 @@ namespace SimPe.Plugin.TabPage
 			//
 			btnMerge.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			btnMerge.AutoSize = true;
@@ -224,10 +224,10 @@ namespace SimPe.Plugin.TabPage
 			//
 			lldel.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			lldel.AutoSize = true;
@@ -246,10 +246,10 @@ namespace SimPe.Plugin.TabPage
 			//
 			lladd.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			lladd.AutoSize = true;
@@ -266,12 +266,12 @@ namespace SimPe.Plugin.TabPage
 			//
 			tbval.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tbval.Font = new System.Drawing.Font(
@@ -291,12 +291,12 @@ namespace SimPe.Plugin.TabPage
 			//
 			tbname.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tbname.Font = new System.Drawing.Font(
@@ -348,10 +348,10 @@ namespace SimPe.Plugin.TabPage
 			//
 			linkLabel1.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			linkLabel1.AutoSize = true;

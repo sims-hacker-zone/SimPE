@@ -207,9 +207,9 @@ namespace pjse.BhavOperandWizards.Wiz0x0002
 
 		private void cbOperator_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
-			labelledDataOwner2.UseFlagNames = (
+			labelledDataOwner2.UseFlagNames =
 				cbOperator.SelectedIndex >= 8 && cbOperator.SelectedIndex <= 10
-			);
+			;
 		}
 	}
 }

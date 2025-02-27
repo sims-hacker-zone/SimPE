@@ -112,10 +112,10 @@ namespace SimPe.Plugin
 			//
 			btPlay.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			btPlay.Location = new Point(200, 408);
@@ -170,7 +170,7 @@ namespace SimPe.Plugin
 				GraphicsUnit.Point,
 				0
 			);
-			Icon = ((Icon)(resources.GetObject("$this.Icon")));
+			Icon = (Icon)resources.GetObject("$this.Icon");
 			Name = "AnimPreview";
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Animation Preview";

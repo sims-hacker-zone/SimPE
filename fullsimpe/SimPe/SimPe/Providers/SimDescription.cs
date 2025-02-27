@@ -344,8 +344,8 @@ namespace SimPe.Providers
 		public ulong BuildTurnOnIndex(ushort val1, ushort val2, ushort val3)
 		{
 			ulong res = val1;
-			res |= ((ulong)val2 << 16);
-			res |= ((ulong)val3 << 32); // BonVoyage
+			res |= (ulong)val2 << 16;
+			res |= (ulong)val3 << 32; // BonVoyage
 
 			return res;
 		}
@@ -518,7 +518,7 @@ namespace SimPe.Providers
 			index--;
 			string image = GetUIListAttribute(line, "image");
 			string id = GetUIAttribute(line, "id");
-			int nr = Helper.StringToInt32(id, 0, 16) / 2 - 1;
+			int nr = (Helper.StringToInt32(id, 0, 16) / 2) - 1;
 			string[] stgi = image.Split(new char[] { ',' });
 			UInt32 g = Helper.StringToUInt32(stgi[0], 0, 16);
 			UInt32 i = Helper.StringToUInt32(stgi[1], 0, 16);
@@ -667,7 +667,7 @@ namespace SimPe.Providers
 			ret[3] = (ushort)((index >> 48) & 0xFFFF);
 			ret[2] = (ushort)((index >> 32) & 0xFFFF);
 			ret[1] = (ushort)((index >> 16) & 0xFFFF);
-			ret[0] = (ushort)((index & 0xFFFF));
+			ret[0] = (ushort)(index & 0xFFFF);
 
 			return ret;
 		}

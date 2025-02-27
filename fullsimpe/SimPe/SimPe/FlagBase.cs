@@ -55,7 +55,7 @@ namespace SimPe
 		protected bool GetBit(byte nr)
 		{
 			ushort mask = (ushort)(1 << nr);
-			return ((Value & mask) != 0);
+			return (Value & mask) != 0;
 		}
 
 		protected void SetBit(byte nr, bool val)

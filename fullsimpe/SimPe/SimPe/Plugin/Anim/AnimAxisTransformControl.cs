@@ -124,51 +124,51 @@ namespace SimPe.Plugin.Anim
 				"label1.AccessibleDescription"
 			);
 			label1.AccessibleName = resources.GetString("label1.AccessibleName");
-			label1.Anchor = (
-				(AnchorStyles)(
+			label1.Anchor =
+				(AnchorStyles)
 					resources.GetObject("label1.Anchor")
-				)
-			);
-			label1.AutoSize = ((bool)(resources.GetObject("label1.AutoSize")));
-			label1.Dock = (
-				(DockStyle)(resources.GetObject("label1.Dock"))
-			);
-			label1.Enabled = ((bool)(resources.GetObject("label1.Enabled")));
-			label1.Font = (
-				(System.Drawing.Font)(resources.GetObject("label1.Font"))
-			);
-			label1.Image = (
-				(System.Drawing.Image)(resources.GetObject("label1.Image"))
-			);
-			label1.ImageAlign = (
-				(System.Drawing.ContentAlignment)(
+
+			;
+			label1.AutoSize = (bool)resources.GetObject("label1.AutoSize");
+			label1.Dock =
+				(DockStyle)resources.GetObject("label1.Dock")
+			;
+			label1.Enabled = (bool)resources.GetObject("label1.Enabled");
+			label1.Font =
+				(System.Drawing.Font)resources.GetObject("label1.Font")
+			;
+			label1.Image =
+				(System.Drawing.Image)resources.GetObject("label1.Image")
+			;
+			label1.ImageAlign =
+				(System.Drawing.ContentAlignment)
 					resources.GetObject("label1.ImageAlign")
-				)
-			);
-			label1.ImageIndex = ((int)(resources.GetObject("label1.ImageIndex")));
-			label1.ImeMode = (
-				(ImeMode)(resources.GetObject("label1.ImeMode"))
-			);
-			label1.Location = (
-				(System.Drawing.Point)(resources.GetObject("label1.Location"))
-			);
+
+			;
+			label1.ImageIndex = (int)resources.GetObject("label1.ImageIndex");
+			label1.ImeMode =
+				(ImeMode)resources.GetObject("label1.ImeMode")
+			;
+			label1.Location =
+				(System.Drawing.Point)resources.GetObject("label1.Location")
+			;
 			label1.Name = "label1";
-			label1.RightToLeft = (
-				(RightToLeft)(
+			label1.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("label1.RightToLeft")
-				)
-			);
-			label1.Size = (
-				(System.Drawing.Size)(resources.GetObject("label1.Size"))
-			);
-			label1.TabIndex = ((int)(resources.GetObject("label1.TabIndex")));
+
+			;
+			label1.Size =
+				(System.Drawing.Size)resources.GetObject("label1.Size")
+			;
+			label1.TabIndex = (int)resources.GetObject("label1.TabIndex");
 			label1.Text = resources.GetString("label1.Text");
-			label1.TextAlign = (
-				(System.Drawing.ContentAlignment)(
+			label1.TextAlign =
+				(System.Drawing.ContentAlignment)
 					resources.GetObject("label1.TextAlign")
-				)
-			);
-			label1.Visible = ((bool)(resources.GetObject("label1.Visible")));
+
+			;
+			label1.Visible = (bool)resources.GetObject("label1.Visible");
 			//
 			// label2
 			//
@@ -176,51 +176,51 @@ namespace SimPe.Plugin.Anim
 				"label2.AccessibleDescription"
 			);
 			label2.AccessibleName = resources.GetString("label2.AccessibleName");
-			label2.Anchor = (
-				(AnchorStyles)(
+			label2.Anchor =
+				(AnchorStyles)
 					resources.GetObject("label2.Anchor")
-				)
-			);
-			label2.AutoSize = ((bool)(resources.GetObject("label2.AutoSize")));
-			label2.Dock = (
-				(DockStyle)(resources.GetObject("label2.Dock"))
-			);
-			label2.Enabled = ((bool)(resources.GetObject("label2.Enabled")));
-			label2.Font = (
-				(System.Drawing.Font)(resources.GetObject("label2.Font"))
-			);
-			label2.Image = (
-				(System.Drawing.Image)(resources.GetObject("label2.Image"))
-			);
-			label2.ImageAlign = (
-				(System.Drawing.ContentAlignment)(
+
+			;
+			label2.AutoSize = (bool)resources.GetObject("label2.AutoSize");
+			label2.Dock =
+				(DockStyle)resources.GetObject("label2.Dock")
+			;
+			label2.Enabled = (bool)resources.GetObject("label2.Enabled");
+			label2.Font =
+				(System.Drawing.Font)resources.GetObject("label2.Font")
+			;
+			label2.Image =
+				(System.Drawing.Image)resources.GetObject("label2.Image")
+			;
+			label2.ImageAlign =
+				(System.Drawing.ContentAlignment)
 					resources.GetObject("label2.ImageAlign")
-				)
-			);
-			label2.ImageIndex = ((int)(resources.GetObject("label2.ImageIndex")));
-			label2.ImeMode = (
-				(ImeMode)(resources.GetObject("label2.ImeMode"))
-			);
-			label2.Location = (
-				(System.Drawing.Point)(resources.GetObject("label2.Location"))
-			);
+
+			;
+			label2.ImageIndex = (int)resources.GetObject("label2.ImageIndex");
+			label2.ImeMode =
+				(ImeMode)resources.GetObject("label2.ImeMode")
+			;
+			label2.Location =
+				(System.Drawing.Point)resources.GetObject("label2.Location")
+			;
 			label2.Name = "label2";
-			label2.RightToLeft = (
-				(RightToLeft)(
+			label2.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("label2.RightToLeft")
-				)
-			);
-			label2.Size = (
-				(System.Drawing.Size)(resources.GetObject("label2.Size"))
-			);
-			label2.TabIndex = ((int)(resources.GetObject("label2.TabIndex")));
+
+			;
+			label2.Size =
+				(System.Drawing.Size)resources.GetObject("label2.Size")
+			;
+			label2.TabIndex = (int)resources.GetObject("label2.TabIndex");
 			label2.Text = resources.GetString("label2.Text");
-			label2.TextAlign = (
-				(System.Drawing.ContentAlignment)(
+			label2.TextAlign =
+				(System.Drawing.ContentAlignment)
 					resources.GetObject("label2.TextAlign")
-				)
-			);
-			label2.Visible = ((bool)(resources.GetObject("label2.Visible")));
+
+			;
+			label2.Visible = (bool)resources.GetObject("label2.Visible");
 			//
 			// label3
 			//
@@ -228,51 +228,51 @@ namespace SimPe.Plugin.Anim
 				"label3.AccessibleDescription"
 			);
 			label3.AccessibleName = resources.GetString("label3.AccessibleName");
-			label3.Anchor = (
-				(AnchorStyles)(
+			label3.Anchor =
+				(AnchorStyles)
 					resources.GetObject("label3.Anchor")
-				)
-			);
-			label3.AutoSize = ((bool)(resources.GetObject("label3.AutoSize")));
-			label3.Dock = (
-				(DockStyle)(resources.GetObject("label3.Dock"))
-			);
-			label3.Enabled = ((bool)(resources.GetObject("label3.Enabled")));
-			label3.Font = (
-				(System.Drawing.Font)(resources.GetObject("label3.Font"))
-			);
-			label3.Image = (
-				(System.Drawing.Image)(resources.GetObject("label3.Image"))
-			);
-			label3.ImageAlign = (
-				(System.Drawing.ContentAlignment)(
+
+			;
+			label3.AutoSize = (bool)resources.GetObject("label3.AutoSize");
+			label3.Dock =
+				(DockStyle)resources.GetObject("label3.Dock")
+			;
+			label3.Enabled = (bool)resources.GetObject("label3.Enabled");
+			label3.Font =
+				(System.Drawing.Font)resources.GetObject("label3.Font")
+			;
+			label3.Image =
+				(System.Drawing.Image)resources.GetObject("label3.Image")
+			;
+			label3.ImageAlign =
+				(System.Drawing.ContentAlignment)
 					resources.GetObject("label3.ImageAlign")
-				)
-			);
-			label3.ImageIndex = ((int)(resources.GetObject("label3.ImageIndex")));
-			label3.ImeMode = (
-				(ImeMode)(resources.GetObject("label3.ImeMode"))
-			);
-			label3.Location = (
-				(System.Drawing.Point)(resources.GetObject("label3.Location"))
-			);
+
+			;
+			label3.ImageIndex = (int)resources.GetObject("label3.ImageIndex");
+			label3.ImeMode =
+				(ImeMode)resources.GetObject("label3.ImeMode")
+			;
+			label3.Location =
+				(System.Drawing.Point)resources.GetObject("label3.Location")
+			;
 			label3.Name = "label3";
-			label3.RightToLeft = (
-				(RightToLeft)(
+			label3.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("label3.RightToLeft")
-				)
-			);
-			label3.Size = (
-				(System.Drawing.Size)(resources.GetObject("label3.Size"))
-			);
-			label3.TabIndex = ((int)(resources.GetObject("label3.TabIndex")));
+
+			;
+			label3.Size =
+				(System.Drawing.Size)resources.GetObject("label3.Size")
+			;
+			label3.TabIndex = (int)resources.GetObject("label3.TabIndex");
 			label3.Text = resources.GetString("label3.Text");
-			label3.TextAlign = (
-				(System.Drawing.ContentAlignment)(
+			label3.TextAlign =
+				(System.Drawing.ContentAlignment)
 					resources.GetObject("label3.TextAlign")
-				)
-			);
-			label3.Visible = ((bool)(resources.GetObject("label3.Visible")));
+
+			;
+			label3.Visible = (bool)resources.GetObject("label3.Visible");
 			//
 			// label4
 			//
@@ -280,51 +280,51 @@ namespace SimPe.Plugin.Anim
 				"label4.AccessibleDescription"
 			);
 			label4.AccessibleName = resources.GetString("label4.AccessibleName");
-			label4.Anchor = (
-				(AnchorStyles)(
+			label4.Anchor =
+				(AnchorStyles)
 					resources.GetObject("label4.Anchor")
-				)
-			);
-			label4.AutoSize = ((bool)(resources.GetObject("label4.AutoSize")));
-			label4.Dock = (
-				(DockStyle)(resources.GetObject("label4.Dock"))
-			);
-			label4.Enabled = ((bool)(resources.GetObject("label4.Enabled")));
-			label4.Font = (
-				(System.Drawing.Font)(resources.GetObject("label4.Font"))
-			);
-			label4.Image = (
-				(System.Drawing.Image)(resources.GetObject("label4.Image"))
-			);
-			label4.ImageAlign = (
-				(System.Drawing.ContentAlignment)(
+
+			;
+			label4.AutoSize = (bool)resources.GetObject("label4.AutoSize");
+			label4.Dock =
+				(DockStyle)resources.GetObject("label4.Dock")
+			;
+			label4.Enabled = (bool)resources.GetObject("label4.Enabled");
+			label4.Font =
+				(System.Drawing.Font)resources.GetObject("label4.Font")
+			;
+			label4.Image =
+				(System.Drawing.Image)resources.GetObject("label4.Image")
+			;
+			label4.ImageAlign =
+				(System.Drawing.ContentAlignment)
 					resources.GetObject("label4.ImageAlign")
-				)
-			);
-			label4.ImageIndex = ((int)(resources.GetObject("label4.ImageIndex")));
-			label4.ImeMode = (
-				(ImeMode)(resources.GetObject("label4.ImeMode"))
-			);
-			label4.Location = (
-				(System.Drawing.Point)(resources.GetObject("label4.Location"))
-			);
+
+			;
+			label4.ImageIndex = (int)resources.GetObject("label4.ImageIndex");
+			label4.ImeMode =
+				(ImeMode)resources.GetObject("label4.ImeMode")
+			;
+			label4.Location =
+				(System.Drawing.Point)resources.GetObject("label4.Location")
+			;
 			label4.Name = "label4";
-			label4.RightToLeft = (
-				(RightToLeft)(
+			label4.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("label4.RightToLeft")
-				)
-			);
-			label4.Size = (
-				(System.Drawing.Size)(resources.GetObject("label4.Size"))
-			);
-			label4.TabIndex = ((int)(resources.GetObject("label4.TabIndex")));
+
+			;
+			label4.Size =
+				(System.Drawing.Size)resources.GetObject("label4.Size")
+			;
+			label4.TabIndex = (int)resources.GetObject("label4.TabIndex");
 			label4.Text = resources.GetString("label4.Text");
-			label4.TextAlign = (
-				(System.Drawing.ContentAlignment)(
+			label4.TextAlign =
+				(System.Drawing.ContentAlignment)
 					resources.GetObject("label4.TextAlign")
-				)
-			);
-			label4.Visible = ((bool)(resources.GetObject("label4.Visible")));
+
+			;
+			label4.Visible = (bool)resources.GetObject("label4.Visible");
 			//
 			// cbEvent
 			//
@@ -332,70 +332,70 @@ namespace SimPe.Plugin.Anim
 				"cbEvent.AccessibleDescription"
 			);
 			cbEvent.AccessibleName = resources.GetString("cbEvent.AccessibleName");
-			cbEvent.Anchor = (
-				(AnchorStyles)(
+			cbEvent.Anchor =
+				(AnchorStyles)
 					resources.GetObject("cbEvent.Anchor")
-				)
-			);
-			cbEvent.Appearance = (
-				(Appearance)(
+
+			;
+			cbEvent.Appearance =
+				(Appearance)
 					resources.GetObject("cbEvent.Appearance")
-				)
-			);
-			cbEvent.BackgroundImage = (
-				(System.Drawing.Image)(resources.GetObject("cbEvent.BackgroundImage"))
-			);
-			cbEvent.CheckAlign = (
-				(System.Drawing.ContentAlignment)(
+
+			;
+			cbEvent.BackgroundImage =
+				(System.Drawing.Image)resources.GetObject("cbEvent.BackgroundImage")
+			;
+			cbEvent.CheckAlign =
+				(System.Drawing.ContentAlignment)
 					resources.GetObject("cbEvent.CheckAlign")
-				)
-			);
-			cbEvent.Dock = (
-				(DockStyle)(resources.GetObject("cbEvent.Dock"))
-			);
-			cbEvent.Enabled = ((bool)(resources.GetObject("cbEvent.Enabled")));
-			cbEvent.FlatStyle = (
-				(FlatStyle)(
+
+			;
+			cbEvent.Dock =
+				(DockStyle)resources.GetObject("cbEvent.Dock")
+			;
+			cbEvent.Enabled = (bool)resources.GetObject("cbEvent.Enabled");
+			cbEvent.FlatStyle =
+				(FlatStyle)
 					resources.GetObject("cbEvent.FlatStyle")
-				)
-			);
-			cbEvent.Font = (
-				(System.Drawing.Font)(resources.GetObject("cbEvent.Font"))
-			);
-			cbEvent.Image = (
-				(System.Drawing.Image)(resources.GetObject("cbEvent.Image"))
-			);
-			cbEvent.ImageAlign = (
-				(System.Drawing.ContentAlignment)(
+
+			;
+			cbEvent.Font =
+				(System.Drawing.Font)resources.GetObject("cbEvent.Font")
+			;
+			cbEvent.Image =
+				(System.Drawing.Image)resources.GetObject("cbEvent.Image")
+			;
+			cbEvent.ImageAlign =
+				(System.Drawing.ContentAlignment)
 					resources.GetObject("cbEvent.ImageAlign")
-				)
-			);
-			cbEvent.ImageIndex = (
-				(int)(resources.GetObject("cbEvent.ImageIndex"))
-			);
-			cbEvent.ImeMode = (
-				(ImeMode)(resources.GetObject("cbEvent.ImeMode"))
-			);
-			cbEvent.Location = (
-				(System.Drawing.Point)(resources.GetObject("cbEvent.Location"))
-			);
+
+			;
+			cbEvent.ImageIndex =
+				(int)resources.GetObject("cbEvent.ImageIndex")
+			;
+			cbEvent.ImeMode =
+				(ImeMode)resources.GetObject("cbEvent.ImeMode")
+			;
+			cbEvent.Location =
+				(System.Drawing.Point)resources.GetObject("cbEvent.Location")
+			;
 			cbEvent.Name = "cbEvent";
-			cbEvent.RightToLeft = (
-				(RightToLeft)(
+			cbEvent.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("cbEvent.RightToLeft")
-				)
-			);
-			cbEvent.Size = (
-				(System.Drawing.Size)(resources.GetObject("cbEvent.Size"))
-			);
-			cbEvent.TabIndex = ((int)(resources.GetObject("cbEvent.TabIndex")));
+
+			;
+			cbEvent.Size =
+				(System.Drawing.Size)resources.GetObject("cbEvent.Size")
+			;
+			cbEvent.TabIndex = (int)resources.GetObject("cbEvent.TabIndex");
 			cbEvent.Text = resources.GetString("cbEvent.Text");
-			cbEvent.TextAlign = (
-				(System.Drawing.ContentAlignment)(
+			cbEvent.TextAlign =
+				(System.Drawing.ContentAlignment)
 					resources.GetObject("cbEvent.TextAlign")
-				)
-			);
-			cbEvent.Visible = ((bool)(resources.GetObject("cbEvent.Visible")));
+
+			;
+			cbEvent.Visible = (bool)resources.GetObject("cbEvent.Visible");
 			cbEvent.CheckedChanged += new EventHandler(
 				cbEvent_CheckedChanged
 			);
@@ -408,74 +408,74 @@ namespace SimPe.Plugin.Anim
 			tbTimeCode.AccessibleName = resources.GetString(
 				"tbTimeCode.AccessibleName"
 			);
-			tbTimeCode.Anchor = (
-				(AnchorStyles)(
+			tbTimeCode.Anchor =
+				(AnchorStyles)
 					resources.GetObject("tbTimeCode.Anchor")
-				)
-			);
-			tbTimeCode.AutoSize = (
-				(bool)(resources.GetObject("tbTimeCode.AutoSize"))
-			);
-			tbTimeCode.BackgroundImage = (
-				(System.Drawing.Image)(
+
+			;
+			tbTimeCode.AutoSize =
+				(bool)resources.GetObject("tbTimeCode.AutoSize")
+			;
+			tbTimeCode.BackgroundImage =
+				(System.Drawing.Image)
 					resources.GetObject("tbTimeCode.BackgroundImage")
-				)
-			);
-			tbTimeCode.Dock = (
-				(DockStyle)(resources.GetObject("tbTimeCode.Dock"))
-			);
-			tbTimeCode.Enabled = (
-				(bool)(resources.GetObject("tbTimeCode.Enabled"))
-			);
-			tbTimeCode.Font = (
-				(System.Drawing.Font)(resources.GetObject("tbTimeCode.Font"))
-			);
-			tbTimeCode.ImeMode = (
-				(ImeMode)(
+
+			;
+			tbTimeCode.Dock =
+				(DockStyle)resources.GetObject("tbTimeCode.Dock")
+			;
+			tbTimeCode.Enabled =
+				(bool)resources.GetObject("tbTimeCode.Enabled")
+			;
+			tbTimeCode.Font =
+				(System.Drawing.Font)resources.GetObject("tbTimeCode.Font")
+			;
+			tbTimeCode.ImeMode =
+				(ImeMode)
 					resources.GetObject("tbTimeCode.ImeMode")
-				)
-			);
-			tbTimeCode.Location = (
-				(System.Drawing.Point)(resources.GetObject("tbTimeCode.Location"))
-			);
-			tbTimeCode.MaxLength = (
-				(int)(resources.GetObject("tbTimeCode.MaxLength"))
-			);
-			tbTimeCode.Multiline = (
-				(bool)(resources.GetObject("tbTimeCode.Multiline"))
-			);
+
+			;
+			tbTimeCode.Location =
+				(System.Drawing.Point)resources.GetObject("tbTimeCode.Location")
+			;
+			tbTimeCode.MaxLength =
+				(int)resources.GetObject("tbTimeCode.MaxLength")
+			;
+			tbTimeCode.Multiline =
+				(bool)resources.GetObject("tbTimeCode.Multiline")
+			;
 			tbTimeCode.Name = "tbTimeCode";
-			tbTimeCode.PasswordChar = (
-				(char)(resources.GetObject("tbTimeCode.PasswordChar"))
-			);
-			tbTimeCode.RightToLeft = (
-				(RightToLeft)(
+			tbTimeCode.PasswordChar =
+				(char)resources.GetObject("tbTimeCode.PasswordChar")
+			;
+			tbTimeCode.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("tbTimeCode.RightToLeft")
-				)
-			);
-			tbTimeCode.ScrollBars = (
-				(ScrollBars)(
+
+			;
+			tbTimeCode.ScrollBars =
+				(ScrollBars)
 					resources.GetObject("tbTimeCode.ScrollBars")
-				)
-			);
-			tbTimeCode.Size = (
-				(System.Drawing.Size)(resources.GetObject("tbTimeCode.Size"))
-			);
-			tbTimeCode.TabIndex = (
-				(int)(resources.GetObject("tbTimeCode.TabIndex"))
-			);
+
+			;
+			tbTimeCode.Size =
+				(System.Drawing.Size)resources.GetObject("tbTimeCode.Size")
+			;
+			tbTimeCode.TabIndex =
+				(int)resources.GetObject("tbTimeCode.TabIndex")
+			;
 			tbTimeCode.Text = resources.GetString("tbTimeCode.Text");
-			tbTimeCode.TextAlign = (
-				(HorizontalAlignment)(
+			tbTimeCode.TextAlign =
+				(HorizontalAlignment)
 					resources.GetObject("tbTimeCode.TextAlign")
-				)
-			);
-			tbTimeCode.Visible = (
-				(bool)(resources.GetObject("tbTimeCode.Visible"))
-			);
-			tbTimeCode.WordWrap = (
-				(bool)(resources.GetObject("tbTimeCode.WordWrap"))
-			);
+
+			;
+			tbTimeCode.Visible =
+				(bool)resources.GetObject("tbTimeCode.Visible")
+			;
+			tbTimeCode.WordWrap =
+				(bool)resources.GetObject("tbTimeCode.WordWrap")
+			;
 			tbTimeCode.TextChanged += new EventHandler(
 				tbTimeCode_TextChanged
 			);
@@ -488,76 +488,76 @@ namespace SimPe.Plugin.Anim
 			tbParameter.AccessibleName = resources.GetString(
 				"tbParameter.AccessibleName"
 			);
-			tbParameter.Anchor = (
-				(AnchorStyles)(
+			tbParameter.Anchor =
+				(AnchorStyles)
 					resources.GetObject("tbParameter.Anchor")
-				)
-			);
-			tbParameter.AutoSize = (
-				(bool)(resources.GetObject("tbParameter.AutoSize"))
-			);
-			tbParameter.BackgroundImage = (
-				(System.Drawing.Image)(
+
+			;
+			tbParameter.AutoSize =
+				(bool)resources.GetObject("tbParameter.AutoSize")
+			;
+			tbParameter.BackgroundImage =
+				(System.Drawing.Image)
 					resources.GetObject("tbParameter.BackgroundImage")
-				)
-			);
-			tbParameter.Dock = (
-				(DockStyle)(
+
+			;
+			tbParameter.Dock =
+				(DockStyle)
 					resources.GetObject("tbParameter.Dock")
-				)
-			);
-			tbParameter.Enabled = (
-				(bool)(resources.GetObject("tbParameter.Enabled"))
-			);
-			tbParameter.Font = (
-				(System.Drawing.Font)(resources.GetObject("tbParameter.Font"))
-			);
-			tbParameter.ImeMode = (
-				(ImeMode)(
+
+			;
+			tbParameter.Enabled =
+				(bool)resources.GetObject("tbParameter.Enabled")
+			;
+			tbParameter.Font =
+				(System.Drawing.Font)resources.GetObject("tbParameter.Font")
+			;
+			tbParameter.ImeMode =
+				(ImeMode)
 					resources.GetObject("tbParameter.ImeMode")
-				)
-			);
-			tbParameter.Location = (
-				(System.Drawing.Point)(resources.GetObject("tbParameter.Location"))
-			);
-			tbParameter.MaxLength = (
-				(int)(resources.GetObject("tbParameter.MaxLength"))
-			);
-			tbParameter.Multiline = (
-				(bool)(resources.GetObject("tbParameter.Multiline"))
-			);
+
+			;
+			tbParameter.Location =
+				(System.Drawing.Point)resources.GetObject("tbParameter.Location")
+			;
+			tbParameter.MaxLength =
+				(int)resources.GetObject("tbParameter.MaxLength")
+			;
+			tbParameter.Multiline =
+				(bool)resources.GetObject("tbParameter.Multiline")
+			;
 			tbParameter.Name = "tbParameter";
-			tbParameter.PasswordChar = (
-				(char)(resources.GetObject("tbParameter.PasswordChar"))
-			);
-			tbParameter.RightToLeft = (
-				(RightToLeft)(
+			tbParameter.PasswordChar =
+				(char)resources.GetObject("tbParameter.PasswordChar")
+			;
+			tbParameter.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("tbParameter.RightToLeft")
-				)
-			);
-			tbParameter.ScrollBars = (
-				(ScrollBars)(
+
+			;
+			tbParameter.ScrollBars =
+				(ScrollBars)
 					resources.GetObject("tbParameter.ScrollBars")
-				)
-			);
-			tbParameter.Size = (
-				(System.Drawing.Size)(resources.GetObject("tbParameter.Size"))
-			);
-			tbParameter.TabIndex = (
-				(int)(resources.GetObject("tbParameter.TabIndex"))
-			);
+
+			;
+			tbParameter.Size =
+				(System.Drawing.Size)resources.GetObject("tbParameter.Size")
+			;
+			tbParameter.TabIndex =
+				(int)resources.GetObject("tbParameter.TabIndex")
+			;
 			tbParameter.Text = resources.GetString("tbParameter.Text");
-			tbParameter.TextAlign = (
-				(HorizontalAlignment)(
+			tbParameter.TextAlign =
+				(HorizontalAlignment)
 					resources.GetObject("tbParameter.TextAlign")
-				)
-			);
-			tbParameter.Visible = (
-				(bool)(resources.GetObject("tbParameter.Visible"))
-			);
-			tbParameter.WordWrap = (
-				(bool)(resources.GetObject("tbParameter.WordWrap"))
-			);
+
+			;
+			tbParameter.Visible =
+				(bool)resources.GetObject("tbParameter.Visible")
+			;
+			tbParameter.WordWrap =
+				(bool)resources.GetObject("tbParameter.WordWrap")
+			;
 			tbParameter.TextChanged += new EventHandler(
 				tbParameter_TextChanged
 			);
@@ -568,48 +568,48 @@ namespace SimPe.Plugin.Anim
 				"tbU1.AccessibleDescription"
 			);
 			tbU1.AccessibleName = resources.GetString("tbU1.AccessibleName");
-			tbU1.Anchor = (
-				(AnchorStyles)(resources.GetObject("tbU1.Anchor"))
-			);
-			tbU1.AutoSize = ((bool)(resources.GetObject("tbU1.AutoSize")));
-			tbU1.BackgroundImage = (
-				(System.Drawing.Image)(resources.GetObject("tbU1.BackgroundImage"))
-			);
-			tbU1.Dock = (
-				(DockStyle)(resources.GetObject("tbU1.Dock"))
-			);
-			tbU1.Enabled = ((bool)(resources.GetObject("tbU1.Enabled")));
-			tbU1.Font = ((System.Drawing.Font)(resources.GetObject("tbU1.Font")));
-			tbU1.ImeMode = (
-				(ImeMode)(resources.GetObject("tbU1.ImeMode"))
-			);
-			tbU1.Location = (
-				(System.Drawing.Point)(resources.GetObject("tbU1.Location"))
-			);
-			tbU1.MaxLength = ((int)(resources.GetObject("tbU1.MaxLength")));
-			tbU1.Multiline = ((bool)(resources.GetObject("tbU1.Multiline")));
+			tbU1.Anchor =
+				(AnchorStyles)resources.GetObject("tbU1.Anchor")
+			;
+			tbU1.AutoSize = (bool)resources.GetObject("tbU1.AutoSize");
+			tbU1.BackgroundImage =
+				(System.Drawing.Image)resources.GetObject("tbU1.BackgroundImage")
+			;
+			tbU1.Dock =
+				(DockStyle)resources.GetObject("tbU1.Dock")
+			;
+			tbU1.Enabled = (bool)resources.GetObject("tbU1.Enabled");
+			tbU1.Font = (System.Drawing.Font)resources.GetObject("tbU1.Font");
+			tbU1.ImeMode =
+				(ImeMode)resources.GetObject("tbU1.ImeMode")
+			;
+			tbU1.Location =
+				(System.Drawing.Point)resources.GetObject("tbU1.Location")
+			;
+			tbU1.MaxLength = (int)resources.GetObject("tbU1.MaxLength");
+			tbU1.Multiline = (bool)resources.GetObject("tbU1.Multiline");
 			tbU1.Name = "tbU1";
-			tbU1.PasswordChar = ((char)(resources.GetObject("tbU1.PasswordChar")));
-			tbU1.RightToLeft = (
-				(RightToLeft)(
+			tbU1.PasswordChar = (char)resources.GetObject("tbU1.PasswordChar");
+			tbU1.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("tbU1.RightToLeft")
-				)
-			);
-			tbU1.ScrollBars = (
-				(ScrollBars)(
+
+			;
+			tbU1.ScrollBars =
+				(ScrollBars)
 					resources.GetObject("tbU1.ScrollBars")
-				)
-			);
-			tbU1.Size = ((System.Drawing.Size)(resources.GetObject("tbU1.Size")));
-			tbU1.TabIndex = ((int)(resources.GetObject("tbU1.TabIndex")));
+
+			;
+			tbU1.Size = (System.Drawing.Size)resources.GetObject("tbU1.Size");
+			tbU1.TabIndex = (int)resources.GetObject("tbU1.TabIndex");
 			tbU1.Text = resources.GetString("tbU1.Text");
-			tbU1.TextAlign = (
-				(HorizontalAlignment)(
+			tbU1.TextAlign =
+				(HorizontalAlignment)
 					resources.GetObject("tbU1.TextAlign")
-				)
-			);
-			tbU1.Visible = ((bool)(resources.GetObject("tbU1.Visible")));
-			tbU1.WordWrap = ((bool)(resources.GetObject("tbU1.WordWrap")));
+
+			;
+			tbU1.Visible = (bool)resources.GetObject("tbU1.Visible");
+			tbU1.WordWrap = (bool)resources.GetObject("tbU1.WordWrap");
 			tbU1.TextChanged += new EventHandler(tbU1_TextChanged);
 			//
 			// tbU2
@@ -618,48 +618,48 @@ namespace SimPe.Plugin.Anim
 				"tbU2.AccessibleDescription"
 			);
 			tbU2.AccessibleName = resources.GetString("tbU2.AccessibleName");
-			tbU2.Anchor = (
-				(AnchorStyles)(resources.GetObject("tbU2.Anchor"))
-			);
-			tbU2.AutoSize = ((bool)(resources.GetObject("tbU2.AutoSize")));
-			tbU2.BackgroundImage = (
-				(System.Drawing.Image)(resources.GetObject("tbU2.BackgroundImage"))
-			);
-			tbU2.Dock = (
-				(DockStyle)(resources.GetObject("tbU2.Dock"))
-			);
-			tbU2.Enabled = ((bool)(resources.GetObject("tbU2.Enabled")));
-			tbU2.Font = ((System.Drawing.Font)(resources.GetObject("tbU2.Font")));
-			tbU2.ImeMode = (
-				(ImeMode)(resources.GetObject("tbU2.ImeMode"))
-			);
-			tbU2.Location = (
-				(System.Drawing.Point)(resources.GetObject("tbU2.Location"))
-			);
-			tbU2.MaxLength = ((int)(resources.GetObject("tbU2.MaxLength")));
-			tbU2.Multiline = ((bool)(resources.GetObject("tbU2.Multiline")));
+			tbU2.Anchor =
+				(AnchorStyles)resources.GetObject("tbU2.Anchor")
+			;
+			tbU2.AutoSize = (bool)resources.GetObject("tbU2.AutoSize");
+			tbU2.BackgroundImage =
+				(System.Drawing.Image)resources.GetObject("tbU2.BackgroundImage")
+			;
+			tbU2.Dock =
+				(DockStyle)resources.GetObject("tbU2.Dock")
+			;
+			tbU2.Enabled = (bool)resources.GetObject("tbU2.Enabled");
+			tbU2.Font = (System.Drawing.Font)resources.GetObject("tbU2.Font");
+			tbU2.ImeMode =
+				(ImeMode)resources.GetObject("tbU2.ImeMode")
+			;
+			tbU2.Location =
+				(System.Drawing.Point)resources.GetObject("tbU2.Location")
+			;
+			tbU2.MaxLength = (int)resources.GetObject("tbU2.MaxLength");
+			tbU2.Multiline = (bool)resources.GetObject("tbU2.Multiline");
 			tbU2.Name = "tbU2";
-			tbU2.PasswordChar = ((char)(resources.GetObject("tbU2.PasswordChar")));
-			tbU2.RightToLeft = (
-				(RightToLeft)(
+			tbU2.PasswordChar = (char)resources.GetObject("tbU2.PasswordChar");
+			tbU2.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("tbU2.RightToLeft")
-				)
-			);
-			tbU2.ScrollBars = (
-				(ScrollBars)(
+
+			;
+			tbU2.ScrollBars =
+				(ScrollBars)
 					resources.GetObject("tbU2.ScrollBars")
-				)
-			);
-			tbU2.Size = ((System.Drawing.Size)(resources.GetObject("tbU2.Size")));
-			tbU2.TabIndex = ((int)(resources.GetObject("tbU2.TabIndex")));
+
+			;
+			tbU2.Size = (System.Drawing.Size)resources.GetObject("tbU2.Size");
+			tbU2.TabIndex = (int)resources.GetObject("tbU2.TabIndex");
 			tbU2.Text = resources.GetString("tbU2.Text");
-			tbU2.TextAlign = (
-				(HorizontalAlignment)(
+			tbU2.TextAlign =
+				(HorizontalAlignment)
 					resources.GetObject("tbU2.TextAlign")
-				)
-			);
-			tbU2.Visible = ((bool)(resources.GetObject("tbU2.Visible")));
-			tbU2.WordWrap = ((bool)(resources.GetObject("tbU2.WordWrap")));
+
+			;
+			tbU2.Visible = (bool)resources.GetObject("tbU2.Visible");
+			tbU2.WordWrap = (bool)resources.GetObject("tbU2.WordWrap");
 			tbU2.TextChanged += new EventHandler(tbU2_TextChanged);
 			//
 			// tbU2Float
@@ -670,66 +670,66 @@ namespace SimPe.Plugin.Anim
 			tbU2Float.AccessibleName = resources.GetString(
 				"tbU2Float.AccessibleName"
 			);
-			tbU2Float.Anchor = (
-				(AnchorStyles)(
+			tbU2Float.Anchor =
+				(AnchorStyles)
 					resources.GetObject("tbU2Float.Anchor")
-				)
-			);
-			tbU2Float.AutoSize = (
-				(bool)(resources.GetObject("tbU2Float.AutoSize"))
-			);
-			tbU2Float.BackgroundImage = (
-				(System.Drawing.Image)(resources.GetObject("tbU2Float.BackgroundImage"))
-			);
-			tbU2Float.Dock = (
-				(DockStyle)(resources.GetObject("tbU2Float.Dock"))
-			);
-			tbU2Float.Enabled = ((bool)(resources.GetObject("tbU2Float.Enabled")));
-			tbU2Float.Font = (
-				(System.Drawing.Font)(resources.GetObject("tbU2Float.Font"))
-			);
-			tbU2Float.ImeMode = (
-				(ImeMode)(resources.GetObject("tbU2Float.ImeMode"))
-			);
-			tbU2Float.Location = (
-				(System.Drawing.Point)(resources.GetObject("tbU2Float.Location"))
-			);
-			tbU2Float.MaxLength = (
-				(int)(resources.GetObject("tbU2Float.MaxLength"))
-			);
-			tbU2Float.Multiline = (
-				(bool)(resources.GetObject("tbU2Float.Multiline"))
-			);
+
+			;
+			tbU2Float.AutoSize =
+				(bool)resources.GetObject("tbU2Float.AutoSize")
+			;
+			tbU2Float.BackgroundImage =
+				(System.Drawing.Image)resources.GetObject("tbU2Float.BackgroundImage")
+			;
+			tbU2Float.Dock =
+				(DockStyle)resources.GetObject("tbU2Float.Dock")
+			;
+			tbU2Float.Enabled = (bool)resources.GetObject("tbU2Float.Enabled");
+			tbU2Float.Font =
+				(System.Drawing.Font)resources.GetObject("tbU2Float.Font")
+			;
+			tbU2Float.ImeMode =
+				(ImeMode)resources.GetObject("tbU2Float.ImeMode")
+			;
+			tbU2Float.Location =
+				(System.Drawing.Point)resources.GetObject("tbU2Float.Location")
+			;
+			tbU2Float.MaxLength =
+				(int)resources.GetObject("tbU2Float.MaxLength")
+			;
+			tbU2Float.Multiline =
+				(bool)resources.GetObject("tbU2Float.Multiline")
+			;
 			tbU2Float.Name = "tbU2Float";
-			tbU2Float.PasswordChar = (
-				(char)(resources.GetObject("tbU2Float.PasswordChar"))
-			);
-			tbU2Float.RightToLeft = (
-				(RightToLeft)(
+			tbU2Float.PasswordChar =
+				(char)resources.GetObject("tbU2Float.PasswordChar")
+			;
+			tbU2Float.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("tbU2Float.RightToLeft")
-				)
-			);
-			tbU2Float.ScrollBars = (
-				(ScrollBars)(
+
+			;
+			tbU2Float.ScrollBars =
+				(ScrollBars)
 					resources.GetObject("tbU2Float.ScrollBars")
-				)
-			);
-			tbU2Float.Size = (
-				(System.Drawing.Size)(resources.GetObject("tbU2Float.Size"))
-			);
-			tbU2Float.TabIndex = (
-				(int)(resources.GetObject("tbU2Float.TabIndex"))
-			);
+
+			;
+			tbU2Float.Size =
+				(System.Drawing.Size)resources.GetObject("tbU2Float.Size")
+			;
+			tbU2Float.TabIndex =
+				(int)resources.GetObject("tbU2Float.TabIndex")
+			;
 			tbU2Float.Text = resources.GetString("tbU2Float.Text");
-			tbU2Float.TextAlign = (
-				(HorizontalAlignment)(
+			tbU2Float.TextAlign =
+				(HorizontalAlignment)
 					resources.GetObject("tbU2Float.TextAlign")
-				)
-			);
-			tbU2Float.Visible = ((bool)(resources.GetObject("tbU2Float.Visible")));
-			tbU2Float.WordWrap = (
-				(bool)(resources.GetObject("tbU2Float.WordWrap"))
-			);
+
+			;
+			tbU2Float.Visible = (bool)resources.GetObject("tbU2Float.Visible");
+			tbU2Float.WordWrap =
+				(bool)resources.GetObject("tbU2Float.WordWrap")
+			;
 			tbU2Float.TextChanged += new EventHandler(
 				tbU2Float_TextChanged
 			);
@@ -742,66 +742,66 @@ namespace SimPe.Plugin.Anim
 			tbU1Float.AccessibleName = resources.GetString(
 				"tbU1Float.AccessibleName"
 			);
-			tbU1Float.Anchor = (
-				(AnchorStyles)(
+			tbU1Float.Anchor =
+				(AnchorStyles)
 					resources.GetObject("tbU1Float.Anchor")
-				)
-			);
-			tbU1Float.AutoSize = (
-				(bool)(resources.GetObject("tbU1Float.AutoSize"))
-			);
-			tbU1Float.BackgroundImage = (
-				(System.Drawing.Image)(resources.GetObject("tbU1Float.BackgroundImage"))
-			);
-			tbU1Float.Dock = (
-				(DockStyle)(resources.GetObject("tbU1Float.Dock"))
-			);
-			tbU1Float.Enabled = ((bool)(resources.GetObject("tbU1Float.Enabled")));
-			tbU1Float.Font = (
-				(System.Drawing.Font)(resources.GetObject("tbU1Float.Font"))
-			);
-			tbU1Float.ImeMode = (
-				(ImeMode)(resources.GetObject("tbU1Float.ImeMode"))
-			);
-			tbU1Float.Location = (
-				(System.Drawing.Point)(resources.GetObject("tbU1Float.Location"))
-			);
-			tbU1Float.MaxLength = (
-				(int)(resources.GetObject("tbU1Float.MaxLength"))
-			);
-			tbU1Float.Multiline = (
-				(bool)(resources.GetObject("tbU1Float.Multiline"))
-			);
+
+			;
+			tbU1Float.AutoSize =
+				(bool)resources.GetObject("tbU1Float.AutoSize")
+			;
+			tbU1Float.BackgroundImage =
+				(System.Drawing.Image)resources.GetObject("tbU1Float.BackgroundImage")
+			;
+			tbU1Float.Dock =
+				(DockStyle)resources.GetObject("tbU1Float.Dock")
+			;
+			tbU1Float.Enabled = (bool)resources.GetObject("tbU1Float.Enabled");
+			tbU1Float.Font =
+				(System.Drawing.Font)resources.GetObject("tbU1Float.Font")
+			;
+			tbU1Float.ImeMode =
+				(ImeMode)resources.GetObject("tbU1Float.ImeMode")
+			;
+			tbU1Float.Location =
+				(System.Drawing.Point)resources.GetObject("tbU1Float.Location")
+			;
+			tbU1Float.MaxLength =
+				(int)resources.GetObject("tbU1Float.MaxLength")
+			;
+			tbU1Float.Multiline =
+				(bool)resources.GetObject("tbU1Float.Multiline")
+			;
 			tbU1Float.Name = "tbU1Float";
-			tbU1Float.PasswordChar = (
-				(char)(resources.GetObject("tbU1Float.PasswordChar"))
-			);
-			tbU1Float.RightToLeft = (
-				(RightToLeft)(
+			tbU1Float.PasswordChar =
+				(char)resources.GetObject("tbU1Float.PasswordChar")
+			;
+			tbU1Float.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("tbU1Float.RightToLeft")
-				)
-			);
-			tbU1Float.ScrollBars = (
-				(ScrollBars)(
+
+			;
+			tbU1Float.ScrollBars =
+				(ScrollBars)
 					resources.GetObject("tbU1Float.ScrollBars")
-				)
-			);
-			tbU1Float.Size = (
-				(System.Drawing.Size)(resources.GetObject("tbU1Float.Size"))
-			);
-			tbU1Float.TabIndex = (
-				(int)(resources.GetObject("tbU1Float.TabIndex"))
-			);
+
+			;
+			tbU1Float.Size =
+				(System.Drawing.Size)resources.GetObject("tbU1Float.Size")
+			;
+			tbU1Float.TabIndex =
+				(int)resources.GetObject("tbU1Float.TabIndex")
+			;
 			tbU1Float.Text = resources.GetString("tbU1Float.Text");
-			tbU1Float.TextAlign = (
-				(HorizontalAlignment)(
+			tbU1Float.TextAlign =
+				(HorizontalAlignment)
 					resources.GetObject("tbU1Float.TextAlign")
-				)
-			);
-			tbU1Float.Visible = ((bool)(resources.GetObject("tbU1Float.Visible")));
-			tbU1Float.WordWrap = (
-				(bool)(resources.GetObject("tbU1Float.WordWrap"))
-			);
+
+			;
+			tbU1Float.Visible = (bool)resources.GetObject("tbU1Float.Visible");
+			tbU1Float.WordWrap =
+				(bool)resources.GetObject("tbU1Float.WordWrap")
+			;
 			tbU1Float.TextChanged += new EventHandler(
 				tbU1Float_TextChanged
 			);
@@ -814,76 +814,76 @@ namespace SimPe.Plugin.Anim
 			tbParameterFloat.AccessibleName = resources.GetString(
 				"tbParameterFloat.AccessibleName"
 			);
-			tbParameterFloat.Anchor = (
-				(AnchorStyles)(
+			tbParameterFloat.Anchor =
+				(AnchorStyles)
 					resources.GetObject("tbParameterFloat.Anchor")
-				)
-			);
-			tbParameterFloat.AutoSize = (
-				(bool)(resources.GetObject("tbParameterFloat.AutoSize"))
-			);
-			tbParameterFloat.BackgroundImage = (
-				(System.Drawing.Image)(
+
+			;
+			tbParameterFloat.AutoSize =
+				(bool)resources.GetObject("tbParameterFloat.AutoSize")
+			;
+			tbParameterFloat.BackgroundImage =
+				(System.Drawing.Image)
 					resources.GetObject("tbParameterFloat.BackgroundImage")
-				)
-			);
-			tbParameterFloat.Dock = (
-				(DockStyle)(
+
+			;
+			tbParameterFloat.Dock =
+				(DockStyle)
 					resources.GetObject("tbParameterFloat.Dock")
-				)
-			);
-			tbParameterFloat.Enabled = (
-				(bool)(resources.GetObject("tbParameterFloat.Enabled"))
-			);
-			tbParameterFloat.Font = (
-				(System.Drawing.Font)(resources.GetObject("tbParameterFloat.Font"))
-			);
-			tbParameterFloat.ImeMode = (
-				(ImeMode)(
+
+			;
+			tbParameterFloat.Enabled =
+				(bool)resources.GetObject("tbParameterFloat.Enabled")
+			;
+			tbParameterFloat.Font =
+				(System.Drawing.Font)resources.GetObject("tbParameterFloat.Font")
+			;
+			tbParameterFloat.ImeMode =
+				(ImeMode)
 					resources.GetObject("tbParameterFloat.ImeMode")
-				)
-			);
-			tbParameterFloat.Location = (
-				(System.Drawing.Point)(resources.GetObject("tbParameterFloat.Location"))
-			);
-			tbParameterFloat.MaxLength = (
-				(int)(resources.GetObject("tbParameterFloat.MaxLength"))
-			);
-			tbParameterFloat.Multiline = (
-				(bool)(resources.GetObject("tbParameterFloat.Multiline"))
-			);
+
+			;
+			tbParameterFloat.Location =
+				(System.Drawing.Point)resources.GetObject("tbParameterFloat.Location")
+			;
+			tbParameterFloat.MaxLength =
+				(int)resources.GetObject("tbParameterFloat.MaxLength")
+			;
+			tbParameterFloat.Multiline =
+				(bool)resources.GetObject("tbParameterFloat.Multiline")
+			;
 			tbParameterFloat.Name = "tbParameterFloat";
-			tbParameterFloat.PasswordChar = (
-				(char)(resources.GetObject("tbParameterFloat.PasswordChar"))
-			);
-			tbParameterFloat.RightToLeft = (
-				(RightToLeft)(
+			tbParameterFloat.PasswordChar =
+				(char)resources.GetObject("tbParameterFloat.PasswordChar")
+			;
+			tbParameterFloat.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("tbParameterFloat.RightToLeft")
-				)
-			);
-			tbParameterFloat.ScrollBars = (
-				(ScrollBars)(
+
+			;
+			tbParameterFloat.ScrollBars =
+				(ScrollBars)
 					resources.GetObject("tbParameterFloat.ScrollBars")
-				)
-			);
-			tbParameterFloat.Size = (
-				(System.Drawing.Size)(resources.GetObject("tbParameterFloat.Size"))
-			);
-			tbParameterFloat.TabIndex = (
-				(int)(resources.GetObject("tbParameterFloat.TabIndex"))
-			);
+
+			;
+			tbParameterFloat.Size =
+				(System.Drawing.Size)resources.GetObject("tbParameterFloat.Size")
+			;
+			tbParameterFloat.TabIndex =
+				(int)resources.GetObject("tbParameterFloat.TabIndex")
+			;
 			tbParameterFloat.Text = resources.GetString("tbParameterFloat.Text");
-			tbParameterFloat.TextAlign = (
-				(HorizontalAlignment)(
+			tbParameterFloat.TextAlign =
+				(HorizontalAlignment)
 					resources.GetObject("tbParameterFloat.TextAlign")
-				)
-			);
-			tbParameterFloat.Visible = (
-				(bool)(resources.GetObject("tbParameterFloat.Visible"))
-			);
-			tbParameterFloat.WordWrap = (
-				(bool)(resources.GetObject("tbParameterFloat.WordWrap"))
-			);
+
+			;
+			tbParameterFloat.Visible =
+				(bool)resources.GetObject("tbParameterFloat.Visible")
+			;
+			tbParameterFloat.WordWrap =
+				(bool)resources.GetObject("tbParameterFloat.WordWrap")
+			;
 			tbParameterFloat.TextChanged += new EventHandler(
 				tbParameterFloat_TextChanged
 			);
@@ -894,56 +894,56 @@ namespace SimPe.Plugin.Anim
 				"tbU2Hex.AccessibleDescription"
 			);
 			tbU2Hex.AccessibleName = resources.GetString("tbU2Hex.AccessibleName");
-			tbU2Hex.Anchor = (
-				(AnchorStyles)(
+			tbU2Hex.Anchor =
+				(AnchorStyles)
 					resources.GetObject("tbU2Hex.Anchor")
-				)
-			);
-			tbU2Hex.AutoSize = ((bool)(resources.GetObject("tbU2Hex.AutoSize")));
-			tbU2Hex.BackgroundImage = (
-				(System.Drawing.Image)(resources.GetObject("tbU2Hex.BackgroundImage"))
-			);
-			tbU2Hex.Dock = (
-				(DockStyle)(resources.GetObject("tbU2Hex.Dock"))
-			);
-			tbU2Hex.Enabled = ((bool)(resources.GetObject("tbU2Hex.Enabled")));
-			tbU2Hex.Font = (
-				(System.Drawing.Font)(resources.GetObject("tbU2Hex.Font"))
-			);
-			tbU2Hex.ImeMode = (
-				(ImeMode)(resources.GetObject("tbU2Hex.ImeMode"))
-			);
-			tbU2Hex.Location = (
-				(System.Drawing.Point)(resources.GetObject("tbU2Hex.Location"))
-			);
-			tbU2Hex.MaxLength = ((int)(resources.GetObject("tbU2Hex.MaxLength")));
-			tbU2Hex.Multiline = ((bool)(resources.GetObject("tbU2Hex.Multiline")));
+
+			;
+			tbU2Hex.AutoSize = (bool)resources.GetObject("tbU2Hex.AutoSize");
+			tbU2Hex.BackgroundImage =
+				(System.Drawing.Image)resources.GetObject("tbU2Hex.BackgroundImage")
+			;
+			tbU2Hex.Dock =
+				(DockStyle)resources.GetObject("tbU2Hex.Dock")
+			;
+			tbU2Hex.Enabled = (bool)resources.GetObject("tbU2Hex.Enabled");
+			tbU2Hex.Font =
+				(System.Drawing.Font)resources.GetObject("tbU2Hex.Font")
+			;
+			tbU2Hex.ImeMode =
+				(ImeMode)resources.GetObject("tbU2Hex.ImeMode")
+			;
+			tbU2Hex.Location =
+				(System.Drawing.Point)resources.GetObject("tbU2Hex.Location")
+			;
+			tbU2Hex.MaxLength = (int)resources.GetObject("tbU2Hex.MaxLength");
+			tbU2Hex.Multiline = (bool)resources.GetObject("tbU2Hex.Multiline");
 			tbU2Hex.Name = "tbU2Hex";
-			tbU2Hex.PasswordChar = (
-				(char)(resources.GetObject("tbU2Hex.PasswordChar"))
-			);
-			tbU2Hex.RightToLeft = (
-				(RightToLeft)(
+			tbU2Hex.PasswordChar =
+				(char)resources.GetObject("tbU2Hex.PasswordChar")
+			;
+			tbU2Hex.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("tbU2Hex.RightToLeft")
-				)
-			);
-			tbU2Hex.ScrollBars = (
-				(ScrollBars)(
+
+			;
+			tbU2Hex.ScrollBars =
+				(ScrollBars)
 					resources.GetObject("tbU2Hex.ScrollBars")
-				)
-			);
-			tbU2Hex.Size = (
-				(System.Drawing.Size)(resources.GetObject("tbU2Hex.Size"))
-			);
-			tbU2Hex.TabIndex = ((int)(resources.GetObject("tbU2Hex.TabIndex")));
+
+			;
+			tbU2Hex.Size =
+				(System.Drawing.Size)resources.GetObject("tbU2Hex.Size")
+			;
+			tbU2Hex.TabIndex = (int)resources.GetObject("tbU2Hex.TabIndex");
 			tbU2Hex.Text = resources.GetString("tbU2Hex.Text");
-			tbU2Hex.TextAlign = (
-				(HorizontalAlignment)(
+			tbU2Hex.TextAlign =
+				(HorizontalAlignment)
 					resources.GetObject("tbU2Hex.TextAlign")
-				)
-			);
-			tbU2Hex.Visible = ((bool)(resources.GetObject("tbU2Hex.Visible")));
-			tbU2Hex.WordWrap = ((bool)(resources.GetObject("tbU2Hex.WordWrap")));
+
+			;
+			tbU2Hex.Visible = (bool)resources.GetObject("tbU2Hex.Visible");
+			tbU2Hex.WordWrap = (bool)resources.GetObject("tbU2Hex.WordWrap");
 			tbU2Hex.TextChanged += new EventHandler(
 				tbU2Hex_TextChanged
 			);
@@ -954,56 +954,56 @@ namespace SimPe.Plugin.Anim
 				"tbU1Hex.AccessibleDescription"
 			);
 			tbU1Hex.AccessibleName = resources.GetString("tbU1Hex.AccessibleName");
-			tbU1Hex.Anchor = (
-				(AnchorStyles)(
+			tbU1Hex.Anchor =
+				(AnchorStyles)
 					resources.GetObject("tbU1Hex.Anchor")
-				)
-			);
-			tbU1Hex.AutoSize = ((bool)(resources.GetObject("tbU1Hex.AutoSize")));
-			tbU1Hex.BackgroundImage = (
-				(System.Drawing.Image)(resources.GetObject("tbU1Hex.BackgroundImage"))
-			);
-			tbU1Hex.Dock = (
-				(DockStyle)(resources.GetObject("tbU1Hex.Dock"))
-			);
-			tbU1Hex.Enabled = ((bool)(resources.GetObject("tbU1Hex.Enabled")));
-			tbU1Hex.Font = (
-				(System.Drawing.Font)(resources.GetObject("tbU1Hex.Font"))
-			);
-			tbU1Hex.ImeMode = (
-				(ImeMode)(resources.GetObject("tbU1Hex.ImeMode"))
-			);
-			tbU1Hex.Location = (
-				(System.Drawing.Point)(resources.GetObject("tbU1Hex.Location"))
-			);
-			tbU1Hex.MaxLength = ((int)(resources.GetObject("tbU1Hex.MaxLength")));
-			tbU1Hex.Multiline = ((bool)(resources.GetObject("tbU1Hex.Multiline")));
+
+			;
+			tbU1Hex.AutoSize = (bool)resources.GetObject("tbU1Hex.AutoSize");
+			tbU1Hex.BackgroundImage =
+				(System.Drawing.Image)resources.GetObject("tbU1Hex.BackgroundImage")
+			;
+			tbU1Hex.Dock =
+				(DockStyle)resources.GetObject("tbU1Hex.Dock")
+			;
+			tbU1Hex.Enabled = (bool)resources.GetObject("tbU1Hex.Enabled");
+			tbU1Hex.Font =
+				(System.Drawing.Font)resources.GetObject("tbU1Hex.Font")
+			;
+			tbU1Hex.ImeMode =
+				(ImeMode)resources.GetObject("tbU1Hex.ImeMode")
+			;
+			tbU1Hex.Location =
+				(System.Drawing.Point)resources.GetObject("tbU1Hex.Location")
+			;
+			tbU1Hex.MaxLength = (int)resources.GetObject("tbU1Hex.MaxLength");
+			tbU1Hex.Multiline = (bool)resources.GetObject("tbU1Hex.Multiline");
 			tbU1Hex.Name = "tbU1Hex";
-			tbU1Hex.PasswordChar = (
-				(char)(resources.GetObject("tbU1Hex.PasswordChar"))
-			);
-			tbU1Hex.RightToLeft = (
-				(RightToLeft)(
+			tbU1Hex.PasswordChar =
+				(char)resources.GetObject("tbU1Hex.PasswordChar")
+			;
+			tbU1Hex.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("tbU1Hex.RightToLeft")
-				)
-			);
-			tbU1Hex.ScrollBars = (
-				(ScrollBars)(
+
+			;
+			tbU1Hex.ScrollBars =
+				(ScrollBars)
 					resources.GetObject("tbU1Hex.ScrollBars")
-				)
-			);
-			tbU1Hex.Size = (
-				(System.Drawing.Size)(resources.GetObject("tbU1Hex.Size"))
-			);
-			tbU1Hex.TabIndex = ((int)(resources.GetObject("tbU1Hex.TabIndex")));
+
+			;
+			tbU1Hex.Size =
+				(System.Drawing.Size)resources.GetObject("tbU1Hex.Size")
+			;
+			tbU1Hex.TabIndex = (int)resources.GetObject("tbU1Hex.TabIndex");
 			tbU1Hex.Text = resources.GetString("tbU1Hex.Text");
-			tbU1Hex.TextAlign = (
-				(HorizontalAlignment)(
+			tbU1Hex.TextAlign =
+				(HorizontalAlignment)
 					resources.GetObject("tbU1Hex.TextAlign")
-				)
-			);
-			tbU1Hex.Visible = ((bool)(resources.GetObject("tbU1Hex.Visible")));
-			tbU1Hex.WordWrap = ((bool)(resources.GetObject("tbU1Hex.WordWrap")));
+
+			;
+			tbU1Hex.Visible = (bool)resources.GetObject("tbU1Hex.Visible");
+			tbU1Hex.WordWrap = (bool)resources.GetObject("tbU1Hex.WordWrap");
 			tbU1Hex.TextChanged += new EventHandler(
 				tbU1Hex_TextChanged
 			);
@@ -1016,76 +1016,76 @@ namespace SimPe.Plugin.Anim
 			tbParameterHex.AccessibleName = resources.GetString(
 				"tbParameterHex.AccessibleName"
 			);
-			tbParameterHex.Anchor = (
-				(AnchorStyles)(
+			tbParameterHex.Anchor =
+				(AnchorStyles)
 					resources.GetObject("tbParameterHex.Anchor")
-				)
-			);
-			tbParameterHex.AutoSize = (
-				(bool)(resources.GetObject("tbParameterHex.AutoSize"))
-			);
-			tbParameterHex.BackgroundImage = (
-				(System.Drawing.Image)(
+
+			;
+			tbParameterHex.AutoSize =
+				(bool)resources.GetObject("tbParameterHex.AutoSize")
+			;
+			tbParameterHex.BackgroundImage =
+				(System.Drawing.Image)
 					resources.GetObject("tbParameterHex.BackgroundImage")
-				)
-			);
-			tbParameterHex.Dock = (
-				(DockStyle)(
+
+			;
+			tbParameterHex.Dock =
+				(DockStyle)
 					resources.GetObject("tbParameterHex.Dock")
-				)
-			);
-			tbParameterHex.Enabled = (
-				(bool)(resources.GetObject("tbParameterHex.Enabled"))
-			);
-			tbParameterHex.Font = (
-				(System.Drawing.Font)(resources.GetObject("tbParameterHex.Font"))
-			);
-			tbParameterHex.ImeMode = (
-				(ImeMode)(
+
+			;
+			tbParameterHex.Enabled =
+				(bool)resources.GetObject("tbParameterHex.Enabled")
+			;
+			tbParameterHex.Font =
+				(System.Drawing.Font)resources.GetObject("tbParameterHex.Font")
+			;
+			tbParameterHex.ImeMode =
+				(ImeMode)
 					resources.GetObject("tbParameterHex.ImeMode")
-				)
-			);
-			tbParameterHex.Location = (
-				(System.Drawing.Point)(resources.GetObject("tbParameterHex.Location"))
-			);
-			tbParameterHex.MaxLength = (
-				(int)(resources.GetObject("tbParameterHex.MaxLength"))
-			);
-			tbParameterHex.Multiline = (
-				(bool)(resources.GetObject("tbParameterHex.Multiline"))
-			);
+
+			;
+			tbParameterHex.Location =
+				(System.Drawing.Point)resources.GetObject("tbParameterHex.Location")
+			;
+			tbParameterHex.MaxLength =
+				(int)resources.GetObject("tbParameterHex.MaxLength")
+			;
+			tbParameterHex.Multiline =
+				(bool)resources.GetObject("tbParameterHex.Multiline")
+			;
 			tbParameterHex.Name = "tbParameterHex";
-			tbParameterHex.PasswordChar = (
-				(char)(resources.GetObject("tbParameterHex.PasswordChar"))
-			);
-			tbParameterHex.RightToLeft = (
-				(RightToLeft)(
+			tbParameterHex.PasswordChar =
+				(char)resources.GetObject("tbParameterHex.PasswordChar")
+			;
+			tbParameterHex.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("tbParameterHex.RightToLeft")
-				)
-			);
-			tbParameterHex.ScrollBars = (
-				(ScrollBars)(
+
+			;
+			tbParameterHex.ScrollBars =
+				(ScrollBars)
 					resources.GetObject("tbParameterHex.ScrollBars")
-				)
-			);
-			tbParameterHex.Size = (
-				(System.Drawing.Size)(resources.GetObject("tbParameterHex.Size"))
-			);
-			tbParameterHex.TabIndex = (
-				(int)(resources.GetObject("tbParameterHex.TabIndex"))
-			);
+
+			;
+			tbParameterHex.Size =
+				(System.Drawing.Size)resources.GetObject("tbParameterHex.Size")
+			;
+			tbParameterHex.TabIndex =
+				(int)resources.GetObject("tbParameterHex.TabIndex")
+			;
 			tbParameterHex.Text = resources.GetString("tbParameterHex.Text");
-			tbParameterHex.TextAlign = (
-				(HorizontalAlignment)(
+			tbParameterHex.TextAlign =
+				(HorizontalAlignment)
 					resources.GetObject("tbParameterHex.TextAlign")
-				)
-			);
-			tbParameterHex.Visible = (
-				(bool)(resources.GetObject("tbParameterHex.Visible"))
-			);
-			tbParameterHex.WordWrap = (
-				(bool)(resources.GetObject("tbParameterHex.WordWrap"))
-			);
+
+			;
+			tbParameterHex.Visible =
+				(bool)resources.GetObject("tbParameterHex.Visible")
+			;
+			tbParameterHex.WordWrap =
+				(bool)resources.GetObject("tbParameterHex.WordWrap")
+			;
 			tbParameterHex.TextChanged += new EventHandler(
 				tbParameterHex_TextChanged
 			);
@@ -1096,56 +1096,56 @@ namespace SimPe.Plugin.Anim
 				"tbU2Bin.AccessibleDescription"
 			);
 			tbU2Bin.AccessibleName = resources.GetString("tbU2Bin.AccessibleName");
-			tbU2Bin.Anchor = (
-				(AnchorStyles)(
+			tbU2Bin.Anchor =
+				(AnchorStyles)
 					resources.GetObject("tbU2Bin.Anchor")
-				)
-			);
-			tbU2Bin.AutoSize = ((bool)(resources.GetObject("tbU2Bin.AutoSize")));
-			tbU2Bin.BackgroundImage = (
-				(System.Drawing.Image)(resources.GetObject("tbU2Bin.BackgroundImage"))
-			);
-			tbU2Bin.Dock = (
-				(DockStyle)(resources.GetObject("tbU2Bin.Dock"))
-			);
-			tbU2Bin.Enabled = ((bool)(resources.GetObject("tbU2Bin.Enabled")));
-			tbU2Bin.Font = (
-				(System.Drawing.Font)(resources.GetObject("tbU2Bin.Font"))
-			);
-			tbU2Bin.ImeMode = (
-				(ImeMode)(resources.GetObject("tbU2Bin.ImeMode"))
-			);
-			tbU2Bin.Location = (
-				(System.Drawing.Point)(resources.GetObject("tbU2Bin.Location"))
-			);
-			tbU2Bin.MaxLength = ((int)(resources.GetObject("tbU2Bin.MaxLength")));
-			tbU2Bin.Multiline = ((bool)(resources.GetObject("tbU2Bin.Multiline")));
+
+			;
+			tbU2Bin.AutoSize = (bool)resources.GetObject("tbU2Bin.AutoSize");
+			tbU2Bin.BackgroundImage =
+				(System.Drawing.Image)resources.GetObject("tbU2Bin.BackgroundImage")
+			;
+			tbU2Bin.Dock =
+				(DockStyle)resources.GetObject("tbU2Bin.Dock")
+			;
+			tbU2Bin.Enabled = (bool)resources.GetObject("tbU2Bin.Enabled");
+			tbU2Bin.Font =
+				(System.Drawing.Font)resources.GetObject("tbU2Bin.Font")
+			;
+			tbU2Bin.ImeMode =
+				(ImeMode)resources.GetObject("tbU2Bin.ImeMode")
+			;
+			tbU2Bin.Location =
+				(System.Drawing.Point)resources.GetObject("tbU2Bin.Location")
+			;
+			tbU2Bin.MaxLength = (int)resources.GetObject("tbU2Bin.MaxLength");
+			tbU2Bin.Multiline = (bool)resources.GetObject("tbU2Bin.Multiline");
 			tbU2Bin.Name = "tbU2Bin";
-			tbU2Bin.PasswordChar = (
-				(char)(resources.GetObject("tbU2Bin.PasswordChar"))
-			);
-			tbU2Bin.RightToLeft = (
-				(RightToLeft)(
+			tbU2Bin.PasswordChar =
+				(char)resources.GetObject("tbU2Bin.PasswordChar")
+			;
+			tbU2Bin.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("tbU2Bin.RightToLeft")
-				)
-			);
-			tbU2Bin.ScrollBars = (
-				(ScrollBars)(
+
+			;
+			tbU2Bin.ScrollBars =
+				(ScrollBars)
 					resources.GetObject("tbU2Bin.ScrollBars")
-				)
-			);
-			tbU2Bin.Size = (
-				(System.Drawing.Size)(resources.GetObject("tbU2Bin.Size"))
-			);
-			tbU2Bin.TabIndex = ((int)(resources.GetObject("tbU2Bin.TabIndex")));
+
+			;
+			tbU2Bin.Size =
+				(System.Drawing.Size)resources.GetObject("tbU2Bin.Size")
+			;
+			tbU2Bin.TabIndex = (int)resources.GetObject("tbU2Bin.TabIndex");
 			tbU2Bin.Text = resources.GetString("tbU2Bin.Text");
-			tbU2Bin.TextAlign = (
-				(HorizontalAlignment)(
+			tbU2Bin.TextAlign =
+				(HorizontalAlignment)
 					resources.GetObject("tbU2Bin.TextAlign")
-				)
-			);
-			tbU2Bin.Visible = ((bool)(resources.GetObject("tbU2Bin.Visible")));
-			tbU2Bin.WordWrap = ((bool)(resources.GetObject("tbU2Bin.WordWrap")));
+
+			;
+			tbU2Bin.Visible = (bool)resources.GetObject("tbU2Bin.Visible");
+			tbU2Bin.WordWrap = (bool)resources.GetObject("tbU2Bin.WordWrap");
 			//
 			// tbU1Bin
 			//
@@ -1153,56 +1153,56 @@ namespace SimPe.Plugin.Anim
 				"tbU1Bin.AccessibleDescription"
 			);
 			tbU1Bin.AccessibleName = resources.GetString("tbU1Bin.AccessibleName");
-			tbU1Bin.Anchor = (
-				(AnchorStyles)(
+			tbU1Bin.Anchor =
+				(AnchorStyles)
 					resources.GetObject("tbU1Bin.Anchor")
-				)
-			);
-			tbU1Bin.AutoSize = ((bool)(resources.GetObject("tbU1Bin.AutoSize")));
-			tbU1Bin.BackgroundImage = (
-				(System.Drawing.Image)(resources.GetObject("tbU1Bin.BackgroundImage"))
-			);
-			tbU1Bin.Dock = (
-				(DockStyle)(resources.GetObject("tbU1Bin.Dock"))
-			);
-			tbU1Bin.Enabled = ((bool)(resources.GetObject("tbU1Bin.Enabled")));
-			tbU1Bin.Font = (
-				(System.Drawing.Font)(resources.GetObject("tbU1Bin.Font"))
-			);
-			tbU1Bin.ImeMode = (
-				(ImeMode)(resources.GetObject("tbU1Bin.ImeMode"))
-			);
-			tbU1Bin.Location = (
-				(System.Drawing.Point)(resources.GetObject("tbU1Bin.Location"))
-			);
-			tbU1Bin.MaxLength = ((int)(resources.GetObject("tbU1Bin.MaxLength")));
-			tbU1Bin.Multiline = ((bool)(resources.GetObject("tbU1Bin.Multiline")));
+
+			;
+			tbU1Bin.AutoSize = (bool)resources.GetObject("tbU1Bin.AutoSize");
+			tbU1Bin.BackgroundImage =
+				(System.Drawing.Image)resources.GetObject("tbU1Bin.BackgroundImage")
+			;
+			tbU1Bin.Dock =
+				(DockStyle)resources.GetObject("tbU1Bin.Dock")
+			;
+			tbU1Bin.Enabled = (bool)resources.GetObject("tbU1Bin.Enabled");
+			tbU1Bin.Font =
+				(System.Drawing.Font)resources.GetObject("tbU1Bin.Font")
+			;
+			tbU1Bin.ImeMode =
+				(ImeMode)resources.GetObject("tbU1Bin.ImeMode")
+			;
+			tbU1Bin.Location =
+				(System.Drawing.Point)resources.GetObject("tbU1Bin.Location")
+			;
+			tbU1Bin.MaxLength = (int)resources.GetObject("tbU1Bin.MaxLength");
+			tbU1Bin.Multiline = (bool)resources.GetObject("tbU1Bin.Multiline");
 			tbU1Bin.Name = "tbU1Bin";
-			tbU1Bin.PasswordChar = (
-				(char)(resources.GetObject("tbU1Bin.PasswordChar"))
-			);
-			tbU1Bin.RightToLeft = (
-				(RightToLeft)(
+			tbU1Bin.PasswordChar =
+				(char)resources.GetObject("tbU1Bin.PasswordChar")
+			;
+			tbU1Bin.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("tbU1Bin.RightToLeft")
-				)
-			);
-			tbU1Bin.ScrollBars = (
-				(ScrollBars)(
+
+			;
+			tbU1Bin.ScrollBars =
+				(ScrollBars)
 					resources.GetObject("tbU1Bin.ScrollBars")
-				)
-			);
-			tbU1Bin.Size = (
-				(System.Drawing.Size)(resources.GetObject("tbU1Bin.Size"))
-			);
-			tbU1Bin.TabIndex = ((int)(resources.GetObject("tbU1Bin.TabIndex")));
+
+			;
+			tbU1Bin.Size =
+				(System.Drawing.Size)resources.GetObject("tbU1Bin.Size")
+			;
+			tbU1Bin.TabIndex = (int)resources.GetObject("tbU1Bin.TabIndex");
 			tbU1Bin.Text = resources.GetString("tbU1Bin.Text");
-			tbU1Bin.TextAlign = (
-				(HorizontalAlignment)(
+			tbU1Bin.TextAlign =
+				(HorizontalAlignment)
 					resources.GetObject("tbU1Bin.TextAlign")
-				)
-			);
-			tbU1Bin.Visible = ((bool)(resources.GetObject("tbU1Bin.Visible")));
-			tbU1Bin.WordWrap = ((bool)(resources.GetObject("tbU1Bin.WordWrap")));
+
+			;
+			tbU1Bin.Visible = (bool)resources.GetObject("tbU1Bin.Visible");
+			tbU1Bin.WordWrap = (bool)resources.GetObject("tbU1Bin.WordWrap");
 			//
 			// tbParameterBin
 			//
@@ -1212,76 +1212,76 @@ namespace SimPe.Plugin.Anim
 			tbParameterBin.AccessibleName = resources.GetString(
 				"tbParameterBin.AccessibleName"
 			);
-			tbParameterBin.Anchor = (
-				(AnchorStyles)(
+			tbParameterBin.Anchor =
+				(AnchorStyles)
 					resources.GetObject("tbParameterBin.Anchor")
-				)
-			);
-			tbParameterBin.AutoSize = (
-				(bool)(resources.GetObject("tbParameterBin.AutoSize"))
-			);
-			tbParameterBin.BackgroundImage = (
-				(System.Drawing.Image)(
+
+			;
+			tbParameterBin.AutoSize =
+				(bool)resources.GetObject("tbParameterBin.AutoSize")
+			;
+			tbParameterBin.BackgroundImage =
+				(System.Drawing.Image)
 					resources.GetObject("tbParameterBin.BackgroundImage")
-				)
-			);
-			tbParameterBin.Dock = (
-				(DockStyle)(
+
+			;
+			tbParameterBin.Dock =
+				(DockStyle)
 					resources.GetObject("tbParameterBin.Dock")
-				)
-			);
-			tbParameterBin.Enabled = (
-				(bool)(resources.GetObject("tbParameterBin.Enabled"))
-			);
-			tbParameterBin.Font = (
-				(System.Drawing.Font)(resources.GetObject("tbParameterBin.Font"))
-			);
-			tbParameterBin.ImeMode = (
-				(ImeMode)(
+
+			;
+			tbParameterBin.Enabled =
+				(bool)resources.GetObject("tbParameterBin.Enabled")
+			;
+			tbParameterBin.Font =
+				(System.Drawing.Font)resources.GetObject("tbParameterBin.Font")
+			;
+			tbParameterBin.ImeMode =
+				(ImeMode)
 					resources.GetObject("tbParameterBin.ImeMode")
-				)
-			);
-			tbParameterBin.Location = (
-				(System.Drawing.Point)(resources.GetObject("tbParameterBin.Location"))
-			);
-			tbParameterBin.MaxLength = (
-				(int)(resources.GetObject("tbParameterBin.MaxLength"))
-			);
-			tbParameterBin.Multiline = (
-				(bool)(resources.GetObject("tbParameterBin.Multiline"))
-			);
+
+			;
+			tbParameterBin.Location =
+				(System.Drawing.Point)resources.GetObject("tbParameterBin.Location")
+			;
+			tbParameterBin.MaxLength =
+				(int)resources.GetObject("tbParameterBin.MaxLength")
+			;
+			tbParameterBin.Multiline =
+				(bool)resources.GetObject("tbParameterBin.Multiline")
+			;
 			tbParameterBin.Name = "tbParameterBin";
-			tbParameterBin.PasswordChar = (
-				(char)(resources.GetObject("tbParameterBin.PasswordChar"))
-			);
-			tbParameterBin.RightToLeft = (
-				(RightToLeft)(
+			tbParameterBin.PasswordChar =
+				(char)resources.GetObject("tbParameterBin.PasswordChar")
+			;
+			tbParameterBin.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("tbParameterBin.RightToLeft")
-				)
-			);
-			tbParameterBin.ScrollBars = (
-				(ScrollBars)(
+
+			;
+			tbParameterBin.ScrollBars =
+				(ScrollBars)
 					resources.GetObject("tbParameterBin.ScrollBars")
-				)
-			);
-			tbParameterBin.Size = (
-				(System.Drawing.Size)(resources.GetObject("tbParameterBin.Size"))
-			);
-			tbParameterBin.TabIndex = (
-				(int)(resources.GetObject("tbParameterBin.TabIndex"))
-			);
+
+			;
+			tbParameterBin.Size =
+				(System.Drawing.Size)resources.GetObject("tbParameterBin.Size")
+			;
+			tbParameterBin.TabIndex =
+				(int)resources.GetObject("tbParameterBin.TabIndex")
+			;
 			tbParameterBin.Text = resources.GetString("tbParameterBin.Text");
-			tbParameterBin.TextAlign = (
-				(HorizontalAlignment)(
+			tbParameterBin.TextAlign =
+				(HorizontalAlignment)
 					resources.GetObject("tbParameterBin.TextAlign")
-				)
-			);
-			tbParameterBin.Visible = (
-				(bool)(resources.GetObject("tbParameterBin.Visible"))
-			);
-			tbParameterBin.WordWrap = (
-				(bool)(resources.GetObject("tbParameterBin.WordWrap"))
-			);
+
+			;
+			tbParameterBin.Visible =
+				(bool)resources.GetObject("tbParameterBin.Visible")
+			;
+			tbParameterBin.WordWrap =
+				(bool)resources.GetObject("tbParameterBin.WordWrap")
+			;
 			tbParameterBin.TextChanged += new EventHandler(
 				tbParameterBin_TextChanged
 			);
@@ -1294,59 +1294,59 @@ namespace SimPe.Plugin.Anim
 			llDelete.AccessibleName = resources.GetString(
 				"llDelete.AccessibleName"
 			);
-			llDelete.Anchor = (
-				(AnchorStyles)(
+			llDelete.Anchor =
+				(AnchorStyles)
 					resources.GetObject("llDelete.Anchor")
-				)
-			);
-			llDelete.AutoSize = ((bool)(resources.GetObject("llDelete.AutoSize")));
-			llDelete.Dock = (
-				(DockStyle)(resources.GetObject("llDelete.Dock"))
-			);
-			llDelete.Enabled = ((bool)(resources.GetObject("llDelete.Enabled")));
-			llDelete.Font = (
-				(System.Drawing.Font)(resources.GetObject("llDelete.Font"))
-			);
-			llDelete.Image = (
-				(System.Drawing.Image)(resources.GetObject("llDelete.Image"))
-			);
-			llDelete.ImageAlign = (
-				(System.Drawing.ContentAlignment)(
+
+			;
+			llDelete.AutoSize = (bool)resources.GetObject("llDelete.AutoSize");
+			llDelete.Dock =
+				(DockStyle)resources.GetObject("llDelete.Dock")
+			;
+			llDelete.Enabled = (bool)resources.GetObject("llDelete.Enabled");
+			llDelete.Font =
+				(System.Drawing.Font)resources.GetObject("llDelete.Font")
+			;
+			llDelete.Image =
+				(System.Drawing.Image)resources.GetObject("llDelete.Image")
+			;
+			llDelete.ImageAlign =
+				(System.Drawing.ContentAlignment)
 					resources.GetObject("llDelete.ImageAlign")
-				)
-			);
-			llDelete.ImageIndex = (
-				(int)(resources.GetObject("llDelete.ImageIndex"))
-			);
-			llDelete.ImeMode = (
-				(ImeMode)(resources.GetObject("llDelete.ImeMode"))
-			);
-			llDelete.LinkArea = (
-				(LinkArea)(
+
+			;
+			llDelete.ImageIndex =
+				(int)resources.GetObject("llDelete.ImageIndex")
+			;
+			llDelete.ImeMode =
+				(ImeMode)resources.GetObject("llDelete.ImeMode")
+			;
+			llDelete.LinkArea =
+				(LinkArea)
 					resources.GetObject("llDelete.LinkArea")
-				)
-			);
-			llDelete.Location = (
-				(System.Drawing.Point)(resources.GetObject("llDelete.Location"))
-			);
+
+			;
+			llDelete.Location =
+				(System.Drawing.Point)resources.GetObject("llDelete.Location")
+			;
 			llDelete.Name = "llDelete";
-			llDelete.RightToLeft = (
-				(RightToLeft)(
+			llDelete.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("llDelete.RightToLeft")
-				)
-			);
-			llDelete.Size = (
-				(System.Drawing.Size)(resources.GetObject("llDelete.Size"))
-			);
-			llDelete.TabIndex = ((int)(resources.GetObject("llDelete.TabIndex")));
+
+			;
+			llDelete.Size =
+				(System.Drawing.Size)resources.GetObject("llDelete.Size")
+			;
+			llDelete.TabIndex = (int)resources.GetObject("llDelete.TabIndex");
 			llDelete.TabStop = true;
 			llDelete.Text = resources.GetString("llDelete.Text");
-			llDelete.TextAlign = (
-				(System.Drawing.ContentAlignment)(
+			llDelete.TextAlign =
+				(System.Drawing.ContentAlignment)
 					resources.GetObject("llDelete.TextAlign")
-				)
-			);
-			llDelete.Visible = ((bool)(resources.GetObject("llDelete.Visible")));
+
+			;
+			llDelete.Visible = (bool)resources.GetObject("llDelete.Visible");
 			llDelete.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
 					llDelete_LinkClicked
@@ -1358,53 +1358,53 @@ namespace SimPe.Plugin.Anim
 				"llAdd.AccessibleDescription"
 			);
 			llAdd.AccessibleName = resources.GetString("llAdd.AccessibleName");
-			llAdd.Anchor = (
-				(AnchorStyles)(resources.GetObject("llAdd.Anchor"))
-			);
-			llAdd.AutoSize = ((bool)(resources.GetObject("llAdd.AutoSize")));
-			llAdd.Dock = (
-				(DockStyle)(resources.GetObject("llAdd.Dock"))
-			);
-			llAdd.Enabled = ((bool)(resources.GetObject("llAdd.Enabled")));
-			llAdd.Font = (
-				(System.Drawing.Font)(resources.GetObject("llAdd.Font"))
-			);
-			llAdd.Image = (
-				(System.Drawing.Image)(resources.GetObject("llAdd.Image"))
-			);
-			llAdd.ImageAlign = (
-				(System.Drawing.ContentAlignment)(
+			llAdd.Anchor =
+				(AnchorStyles)resources.GetObject("llAdd.Anchor")
+			;
+			llAdd.AutoSize = (bool)resources.GetObject("llAdd.AutoSize");
+			llAdd.Dock =
+				(DockStyle)resources.GetObject("llAdd.Dock")
+			;
+			llAdd.Enabled = (bool)resources.GetObject("llAdd.Enabled");
+			llAdd.Font =
+				(System.Drawing.Font)resources.GetObject("llAdd.Font")
+			;
+			llAdd.Image =
+				(System.Drawing.Image)resources.GetObject("llAdd.Image")
+			;
+			llAdd.ImageAlign =
+				(System.Drawing.ContentAlignment)
 					resources.GetObject("llAdd.ImageAlign")
-				)
-			);
-			llAdd.ImageIndex = ((int)(resources.GetObject("llAdd.ImageIndex")));
-			llAdd.ImeMode = (
-				(ImeMode)(resources.GetObject("llAdd.ImeMode"))
-			);
-			llAdd.LinkArea = (
-				(LinkArea)(resources.GetObject("llAdd.LinkArea"))
-			);
-			llAdd.Location = (
-				(System.Drawing.Point)(resources.GetObject("llAdd.Location"))
-			);
+
+			;
+			llAdd.ImageIndex = (int)resources.GetObject("llAdd.ImageIndex");
+			llAdd.ImeMode =
+				(ImeMode)resources.GetObject("llAdd.ImeMode")
+			;
+			llAdd.LinkArea =
+				(LinkArea)resources.GetObject("llAdd.LinkArea")
+			;
+			llAdd.Location =
+				(System.Drawing.Point)resources.GetObject("llAdd.Location")
+			;
 			llAdd.Name = "llAdd";
-			llAdd.RightToLeft = (
-				(RightToLeft)(
+			llAdd.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("llAdd.RightToLeft")
-				)
-			);
-			llAdd.Size = (
-				(System.Drawing.Size)(resources.GetObject("llAdd.Size"))
-			);
-			llAdd.TabIndex = ((int)(resources.GetObject("llAdd.TabIndex")));
+
+			;
+			llAdd.Size =
+				(System.Drawing.Size)resources.GetObject("llAdd.Size")
+			;
+			llAdd.TabIndex = (int)resources.GetObject("llAdd.TabIndex");
 			llAdd.TabStop = true;
 			llAdd.Text = resources.GetString("llAdd.Text");
-			llAdd.TextAlign = (
-				(System.Drawing.ContentAlignment)(
+			llAdd.TextAlign =
+				(System.Drawing.ContentAlignment)
 					resources.GetObject("llAdd.TextAlign")
-				)
-			);
-			llAdd.Visible = ((bool)(resources.GetObject("llAdd.Visible")));
+
+			;
+			llAdd.Visible = (bool)resources.GetObject("llAdd.Visible");
 			llAdd.LinkClicked +=
 				new LinkLabelLinkClickedEventHandler(
 					llAdd_LinkClicked
@@ -1418,82 +1418,82 @@ namespace SimPe.Plugin.Anim
 			cbParentLock.AccessibleName = resources.GetString(
 				"cbParentLock.AccessibleName"
 			);
-			cbParentLock.Anchor = (
-				(AnchorStyles)(
+			cbParentLock.Anchor =
+				(AnchorStyles)
 					resources.GetObject("cbParentLock.Anchor")
-				)
-			);
-			cbParentLock.Appearance = (
-				(Appearance)(
+
+			;
+			cbParentLock.Appearance =
+				(Appearance)
 					resources.GetObject("cbParentLock.Appearance")
-				)
-			);
-			cbParentLock.BackgroundImage = (
-				(System.Drawing.Image)(
+
+			;
+			cbParentLock.BackgroundImage =
+				(System.Drawing.Image)
 					resources.GetObject("cbParentLock.BackgroundImage")
-				)
-			);
-			cbParentLock.CheckAlign = (
-				(System.Drawing.ContentAlignment)(
+
+			;
+			cbParentLock.CheckAlign =
+				(System.Drawing.ContentAlignment)
 					resources.GetObject("cbParentLock.CheckAlign")
-				)
-			);
-			cbParentLock.Dock = (
-				(DockStyle)(
+
+			;
+			cbParentLock.Dock =
+				(DockStyle)
 					resources.GetObject("cbParentLock.Dock")
-				)
-			);
-			cbParentLock.Enabled = (
-				(bool)(resources.GetObject("cbParentLock.Enabled"))
-			);
-			cbParentLock.FlatStyle = (
-				(FlatStyle)(
+
+			;
+			cbParentLock.Enabled =
+				(bool)resources.GetObject("cbParentLock.Enabled")
+			;
+			cbParentLock.FlatStyle =
+				(FlatStyle)
 					resources.GetObject("cbParentLock.FlatStyle")
-				)
-			);
-			cbParentLock.Font = (
-				(System.Drawing.Font)(resources.GetObject("cbParentLock.Font"))
-			);
-			cbParentLock.Image = (
-				(System.Drawing.Image)(resources.GetObject("cbParentLock.Image"))
-			);
-			cbParentLock.ImageAlign = (
-				(System.Drawing.ContentAlignment)(
+
+			;
+			cbParentLock.Font =
+				(System.Drawing.Font)resources.GetObject("cbParentLock.Font")
+			;
+			cbParentLock.Image =
+				(System.Drawing.Image)resources.GetObject("cbParentLock.Image")
+			;
+			cbParentLock.ImageAlign =
+				(System.Drawing.ContentAlignment)
 					resources.GetObject("cbParentLock.ImageAlign")
-				)
-			);
-			cbParentLock.ImageIndex = (
-				(int)(resources.GetObject("cbParentLock.ImageIndex"))
-			);
-			cbParentLock.ImeMode = (
-				(ImeMode)(
+
+			;
+			cbParentLock.ImageIndex =
+				(int)resources.GetObject("cbParentLock.ImageIndex")
+			;
+			cbParentLock.ImeMode =
+				(ImeMode)
 					resources.GetObject("cbParentLock.ImeMode")
-				)
-			);
-			cbParentLock.Location = (
-				(System.Drawing.Point)(resources.GetObject("cbParentLock.Location"))
-			);
+
+			;
+			cbParentLock.Location =
+				(System.Drawing.Point)resources.GetObject("cbParentLock.Location")
+			;
 			cbParentLock.Name = "cbParentLock";
-			cbParentLock.RightToLeft = (
-				(RightToLeft)(
+			cbParentLock.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("cbParentLock.RightToLeft")
-				)
-			);
-			cbParentLock.Size = (
-				(System.Drawing.Size)(resources.GetObject("cbParentLock.Size"))
-			);
-			cbParentLock.TabIndex = (
-				(int)(resources.GetObject("cbParentLock.TabIndex"))
-			);
+
+			;
+			cbParentLock.Size =
+				(System.Drawing.Size)resources.GetObject("cbParentLock.Size")
+			;
+			cbParentLock.TabIndex =
+				(int)resources.GetObject("cbParentLock.TabIndex")
+			;
 			cbParentLock.Text = resources.GetString("cbParentLock.Text");
-			cbParentLock.TextAlign = (
-				(System.Drawing.ContentAlignment)(
+			cbParentLock.TextAlign =
+				(System.Drawing.ContentAlignment)
 					resources.GetObject("cbParentLock.TextAlign")
-				)
-			);
-			cbParentLock.Visible = (
-				(bool)(resources.GetObject("cbParentLock.Visible"))
-			);
+
+			;
+			cbParentLock.Visible =
+				(bool)resources.GetObject("cbParentLock.Visible")
+			;
 			cbParentLock.CheckedChanged += new EventHandler(
 				cbParentLock_CheckedChanged
 			);
@@ -1504,16 +1504,16 @@ namespace SimPe.Plugin.Anim
 				"$this.AccessibleDescription"
 			);
 			AccessibleName = resources.GetString("$this.AccessibleName");
-			AutoScroll = ((bool)(resources.GetObject("$this.AutoScroll")));
-			AutoScrollMargin = (
-				(System.Drawing.Size)(resources.GetObject("$this.AutoScrollMargin"))
-			);
-			AutoScrollMinSize = (
-				(System.Drawing.Size)(resources.GetObject("$this.AutoScrollMinSize"))
-			);
-			BackgroundImage = (
-				(System.Drawing.Image)(resources.GetObject("$this.BackgroundImage"))
-			);
+			AutoScroll = (bool)resources.GetObject("$this.AutoScroll");
+			AutoScrollMargin =
+				(System.Drawing.Size)resources.GetObject("$this.AutoScrollMargin")
+			;
+			AutoScrollMinSize =
+				(System.Drawing.Size)resources.GetObject("$this.AutoScrollMinSize")
+			;
+			BackgroundImage =
+				(System.Drawing.Image)resources.GetObject("$this.BackgroundImage")
+			;
 			Controls.Add(cbParentLock);
 			Controls.Add(llAdd);
 			Controls.Add(llDelete);
@@ -1535,21 +1535,21 @@ namespace SimPe.Plugin.Anim
 			Controls.Add(label3);
 			Controls.Add(label2);
 			Controls.Add(label1);
-			Enabled = ((bool)(resources.GetObject("$this.Enabled")));
-			Font = ((System.Drawing.Font)(resources.GetObject("$this.Font")));
-			ImeMode = (
-				(ImeMode)(resources.GetObject("$this.ImeMode"))
-			);
-			Location = (
-				(System.Drawing.Point)(resources.GetObject("$this.Location"))
-			);
+			Enabled = (bool)resources.GetObject("$this.Enabled");
+			Font = (System.Drawing.Font)resources.GetObject("$this.Font");
+			ImeMode =
+				(ImeMode)resources.GetObject("$this.ImeMode")
+			;
+			Location =
+				(System.Drawing.Point)resources.GetObject("$this.Location")
+			;
 			Name = "AnimAxisTransformControl";
-			RightToLeft = (
-				(RightToLeft)(
+			RightToLeft =
+				(RightToLeft)
 					resources.GetObject("$this.RightToLeft")
-				)
-			);
-			Size = ((System.Drawing.Size)(resources.GetObject("$this.Size")));
+
+			;
+			Size = (System.Drawing.Size)resources.GetObject("$this.Size");
 			ResumeLayout(false);
 		}
 		#endregion

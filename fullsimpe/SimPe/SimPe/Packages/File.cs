@@ -526,7 +526,7 @@ namespace SimPe.Packages
 				new IPackedFileDescriptor[list.Count];
 			list.CopyTo(pfds);
 
-			bool changed = (fileindex.Length != fileindex.Length);
+			bool changed = fileindex.Length != fileindex.Length;
 			fileindex = pfds;
 			header.index.count = fileindex.Length;
 
@@ -987,7 +987,7 @@ namespace SimPe.Packages
 					(dummy[0] << 0x10) | (dummy[1] << 0x08) | +dummy[2]
 				);
 				if ( /*(pf.Size == pfd.Size) &&*/
-					(pf.Signature == MetaData.COMPRESS_SIGNATURE)
+					pf.Signature == MetaData.COMPRESS_SIGNATURE
 				)
 				{
 					pf.headersize = 9;

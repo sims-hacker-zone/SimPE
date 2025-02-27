@@ -353,7 +353,7 @@ namespace SimPe.Wizards
 			iws.Client.Parent = WizardContainer;
 			iws.Dock = DockStyle.Fill;
 			iws.Last = true;
-			iws.First = (Controls.Count == 0);
+			iws.First = Controls.Count == 0;
 			iws.Visible = true;
 		}
 

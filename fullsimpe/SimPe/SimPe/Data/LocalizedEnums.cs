@@ -99,7 +99,7 @@ namespace SimPe.Data
 			bool ret = base.Equals(obj);
 			if (ret)
 			{
-				ret = (((LocalizedRelationshipTypes)obj).data == data);
+				ret = ((LocalizedRelationshipTypes)obj).data == data;
 			}
 
 			return ret;
@@ -110,7 +110,7 @@ namespace SimPe.Data
 			LocalizedRelationshipTypes op2
 		)
 		{
-			return (op1 == op2.data);
+			return op1 == op2.data;
 		}
 
 		public static bool operator !=(
@@ -118,7 +118,7 @@ namespace SimPe.Data
 			LocalizedRelationshipTypes op2
 		)
 		{
-			return (op1 != op2.data);
+			return op1 != op2.data;
 		}
 
 		public static bool operator ==(
@@ -126,7 +126,7 @@ namespace SimPe.Data
 			MetaData.RelationshipTypes op2
 		)
 		{
-			return (op1.data == op2);
+			return op1.data == op2;
 		}
 
 		public static bool operator !=(
@@ -134,7 +134,7 @@ namespace SimPe.Data
 			MetaData.RelationshipTypes op2
 		)
 		{
-			return (op1.data != op2);
+			return op1.data != op2;
 		}
 
 		public static bool operator ==(
@@ -142,7 +142,7 @@ namespace SimPe.Data
 			LocalizedRelationshipTypes op2
 		)
 		{
-			return (op1.data == op2.data);
+			return op1.data == op2.data;
 		}
 
 		public static bool operator !=(
@@ -150,7 +150,7 @@ namespace SimPe.Data
 			LocalizedRelationshipTypes op2
 		)
 		{
-			return (op1.data != op2.data);
+			return op1.data != op2.data;
 		}
 
 		public static bool operator ==(object op1, LocalizedRelationshipTypes op2)
@@ -161,7 +161,7 @@ namespace SimPe.Data
 			}
 
 			LocalizedRelationshipTypes op = (LocalizedRelationshipTypes)op1;
-			return (op.data == op2.data);
+			return op.data == op2.data;
 		}
 
 		public static bool operator !=(object op1, LocalizedRelationshipTypes op2)
@@ -172,7 +172,7 @@ namespace SimPe.Data
 			}
 
 			LocalizedRelationshipTypes op = (LocalizedRelationshipTypes)op1;
-			return (op.data != op2.data);
+			return op.data != op2.data;
 		}
 
 		public static bool operator ==(LocalizedRelationshipTypes op2, object op1)
@@ -183,7 +183,7 @@ namespace SimPe.Data
 			}
 
 			LocalizedRelationshipTypes op = (LocalizedRelationshipTypes)op1;
-			return (op.data == op2.data);
+			return op.data == op2.data;
 		}
 
 		public static bool operator !=(LocalizedRelationshipTypes op2, object op1)
@@ -194,7 +194,7 @@ namespace SimPe.Data
 			}
 
 			LocalizedRelationshipTypes op = (LocalizedRelationshipTypes)op1;
-			return (op.data != op2.data);
+			return op.data != op2.data;
 		}
 
 		public override int GetHashCode()

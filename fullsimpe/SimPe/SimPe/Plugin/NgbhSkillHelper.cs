@@ -38,10 +38,10 @@ namespace SimPe.Plugin
 				tm.AddControl(xpBadges);
 				tm.AddControl(xpSkills);
 
-				xpBadges.Visible = (
+				xpBadges.Visible =
 					PathProvider.Global.EPInstalled >= 3
 					|| PathProvider.Global.STInstalled >= 28
-				);
+				;
 				SetContent();
 			}
 			catch { }
@@ -89,50 +89,50 @@ namespace SimPe.Plugin
 				"badges.AccessibleDescription"
 			);
 			badges.AccessibleName = resources.GetString("badges.AccessibleName");
-			badges.Anchor = (
-				(AnchorStyles)(
+			badges.Anchor =
+				(AnchorStyles)
 					resources.GetObject("badges.Anchor")
-				)
-			);
-			badges.AutoScroll = ((bool)(resources.GetObject("badges.AutoScroll")));
-			badges.AutoScrollMargin = (
-				(Size)(resources.GetObject("badges.AutoScrollMargin"))
-			);
-			badges.AutoScrollMinSize = (
-				(Size)(resources.GetObject("badges.AutoScrollMinSize"))
-			);
-			badges.BackgroundImage = (
-				(Image)(resources.GetObject("badges.BackgroundImage"))
-			);
-			badges.Dock = (
-				(DockStyle)(resources.GetObject("badges.Dock"))
-			);
-			badges.Enabled = ((bool)(resources.GetObject("badges.Enabled")));
-			badges.Font = (
-				(Font)(resources.GetObject("badges.Font"))
-			);
-			badges.ImeMode = (
-				(ImeMode)(resources.GetObject("badges.ImeMode"))
-			);
-			badges.Location = (
-				(Point)(resources.GetObject("badges.Location"))
-			);
+
+			;
+			badges.AutoScroll = (bool)resources.GetObject("badges.AutoScroll");
+			badges.AutoScrollMargin =
+				(Size)resources.GetObject("badges.AutoScrollMargin")
+			;
+			badges.AutoScrollMinSize =
+				(Size)resources.GetObject("badges.AutoScrollMinSize")
+			;
+			badges.BackgroundImage =
+				(Image)resources.GetObject("badges.BackgroundImage")
+			;
+			badges.Dock =
+				(DockStyle)resources.GetObject("badges.Dock")
+			;
+			badges.Enabled = (bool)resources.GetObject("badges.Enabled");
+			badges.Font =
+				(Font)resources.GetObject("badges.Font")
+			;
+			badges.ImeMode =
+				(ImeMode)resources.GetObject("badges.ImeMode")
+			;
+			badges.Location =
+				(Point)resources.GetObject("badges.Location")
+			;
 			badges.Name = "badges";
 			badges.NgbhResource = null;
-			badges.RightToLeft = (
-				(RightToLeft)(
+			badges.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("badges.RightToLeft")
-				)
-			);
+
+			;
 			badges.ShowBadges = true;
 			badges.ShowSkills = false;
 			badges.ShowToddlerSkills = false;
-			badges.Size = (
-				(Size)(resources.GetObject("badges.Size"))
-			);
+			badges.Size =
+				(Size)resources.GetObject("badges.Size")
+			;
 			badges.Slot = null;
-			badges.TabIndex = ((int)(resources.GetObject("badges.TabIndex")));
-			badges.Visible = ((bool)(resources.GetObject("badges.Visible")));
+			badges.TabIndex = (int)resources.GetObject("badges.TabIndex");
+			badges.Visible = (bool)resources.GetObject("badges.Visible");
 			badges.AddedNewItem += new EventHandler(
 				skills_AddedNewItem
 			);
@@ -146,38 +146,38 @@ namespace SimPe.Plugin
 			xpBadges.AccessibleName = resources.GetString(
 				"xpBadges.AccessibleName"
 			);
-			xpBadges.Anchor = (
-				(AnchorStyles)(
+			xpBadges.Anchor =
+				(AnchorStyles)
 					resources.GetObject("xpBadges.Anchor")
-				)
-			);
-			xpBadges.AutoScroll = (
-				(bool)(resources.GetObject("xpBadges.AutoScroll"))
-			);
-			xpBadges.AutoScrollMargin = (
-				(Size)(resources.GetObject("xpBadges.AutoScrollMargin"))
-			);
-			xpBadges.AutoScrollMinSize = (
-				(Size)(resources.GetObject("xpBadges.AutoScrollMinSize"))
-			);
+
+			;
+			xpBadges.AutoScroll =
+				(bool)resources.GetObject("xpBadges.AutoScroll")
+			;
+			xpBadges.AutoScrollMargin =
+				(Size)resources.GetObject("xpBadges.AutoScrollMargin")
+			;
+			xpBadges.AutoScrollMinSize =
+				(Size)resources.GetObject("xpBadges.AutoScrollMinSize")
+			;
 			xpBadges.BackColor = Color.Transparent;
-			xpBadges.BackgroundImage = (
-				(Image)(resources.GetObject("xpBadges.BackgroundImage"))
-			);
+			xpBadges.BackgroundImage =
+				(Image)resources.GetObject("xpBadges.BackgroundImage")
+			;
 			xpBadges.BodyColor = SystemColors.InactiveCaptionText;
 			xpBadges.BorderColor = SystemColors.Window;
 			xpBadges.Controls.Add(badges);
-			xpBadges.Dock = (
-				(DockStyle)(resources.GetObject("xpBadges.Dock"))
-			);
+			xpBadges.Dock =
+				(DockStyle)resources.GetObject("xpBadges.Dock")
+			;
 			xpBadges.DockPadding.Bottom = 4;
 			xpBadges.DockPadding.Left = 4;
 			xpBadges.DockPadding.Right = 4;
 			xpBadges.DockPadding.Top = 44;
-			xpBadges.Enabled = ((bool)(resources.GetObject("xpBadges.Enabled")));
-			xpBadges.Font = (
-				(Font)(resources.GetObject("xpBadges.Font"))
-			);
+			xpBadges.Enabled = (bool)resources.GetObject("xpBadges.Enabled");
+			xpBadges.Font =
+				(Font)resources.GetObject("xpBadges.Font")
+			;
 			xpBadges.HeaderFont = new Font(
 				"Microsoft Sans Serif",
 				10.25F,
@@ -185,31 +185,31 @@ namespace SimPe.Plugin
 			);
 			xpBadges.HeaderText = resources.GetString("xpBadges.HeaderText");
 			xpBadges.HeaderTextColor = SystemColors.ControlText;
-			xpBadges.Icon = (
-				(Image)(resources.GetObject("xpBadges.Icon"))
-			);
+			xpBadges.Icon =
+				(Image)resources.GetObject("xpBadges.Icon")
+			;
 			xpBadges.IconLocation = new Point(4, 0);
 			xpBadges.IconSize = new Size(48, 48);
-			xpBadges.ImeMode = (
-				(ImeMode)(resources.GetObject("xpBadges.ImeMode"))
-			);
+			xpBadges.ImeMode =
+				(ImeMode)resources.GetObject("xpBadges.ImeMode")
+			;
 			xpBadges.LeftHeaderColor = SystemColors.ControlDark;
-			xpBadges.Location = (
-				(Point)(resources.GetObject("xpBadges.Location"))
-			);
+			xpBadges.Location =
+				(Point)resources.GetObject("xpBadges.Location")
+			;
 			xpBadges.Name = "xpBadges";
 			xpBadges.RightHeaderColor = SystemColors.ControlDark;
-			xpBadges.RightToLeft = (
-				(RightToLeft)(
+			xpBadges.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("xpBadges.RightToLeft")
-				)
-			);
-			xpBadges.Size = (
-				(Size)(resources.GetObject("xpBadges.Size"))
-			);
-			xpBadges.TabIndex = ((int)(resources.GetObject("xpBadges.TabIndex")));
+
+			;
+			xpBadges.Size =
+				(Size)resources.GetObject("xpBadges.Size")
+			;
+			xpBadges.TabIndex = (int)resources.GetObject("xpBadges.TabIndex");
 			xpBadges.Text = resources.GetString("xpBadges.Text");
-			xpBadges.Visible = ((bool)(resources.GetObject("xpBadges.Visible")));
+			xpBadges.Visible = (bool)resources.GetObject("xpBadges.Visible");
 			//
 			// xpSkills
 			//
@@ -219,38 +219,38 @@ namespace SimPe.Plugin
 			xpSkills.AccessibleName = resources.GetString(
 				"xpSkills.AccessibleName"
 			);
-			xpSkills.Anchor = (
-				(AnchorStyles)(
+			xpSkills.Anchor =
+				(AnchorStyles)
 					resources.GetObject("xpSkills.Anchor")
-				)
-			);
-			xpSkills.AutoScroll = (
-				(bool)(resources.GetObject("xpSkills.AutoScroll"))
-			);
-			xpSkills.AutoScrollMargin = (
-				(Size)(resources.GetObject("xpSkills.AutoScrollMargin"))
-			);
-			xpSkills.AutoScrollMinSize = (
-				(Size)(resources.GetObject("xpSkills.AutoScrollMinSize"))
-			);
+
+			;
+			xpSkills.AutoScroll =
+				(bool)resources.GetObject("xpSkills.AutoScroll")
+			;
+			xpSkills.AutoScrollMargin =
+				(Size)resources.GetObject("xpSkills.AutoScrollMargin")
+			;
+			xpSkills.AutoScrollMinSize =
+				(Size)resources.GetObject("xpSkills.AutoScrollMinSize")
+			;
 			xpSkills.BackColor = Color.Transparent;
-			xpSkills.BackgroundImage = (
-				(Image)(resources.GetObject("xpSkills.BackgroundImage"))
-			);
+			xpSkills.BackgroundImage =
+				(Image)resources.GetObject("xpSkills.BackgroundImage")
+			;
 			xpSkills.BodyColor = SystemColors.ControlLight;
 			xpSkills.BorderColor = SystemColors.ControlDarkDark;
 			xpSkills.Controls.Add(skills);
-			xpSkills.Dock = (
-				(DockStyle)(resources.GetObject("xpSkills.Dock"))
-			);
+			xpSkills.Dock =
+				(DockStyle)resources.GetObject("xpSkills.Dock")
+			;
 			xpSkills.DockPadding.Bottom = 4;
 			xpSkills.DockPadding.Left = 4;
 			xpSkills.DockPadding.Right = 4;
 			xpSkills.DockPadding.Top = 44;
-			xpSkills.Enabled = ((bool)(resources.GetObject("xpSkills.Enabled")));
-			xpSkills.Font = (
-				(Font)(resources.GetObject("xpSkills.Font"))
-			);
+			xpSkills.Enabled = (bool)resources.GetObject("xpSkills.Enabled");
+			xpSkills.Font =
+				(Font)resources.GetObject("xpSkills.Font")
+			;
 			xpSkills.HeaderFont = new Font(
 				"Microsoft Sans Serif",
 				10.25F,
@@ -258,31 +258,31 @@ namespace SimPe.Plugin
 			);
 			xpSkills.HeaderText = resources.GetString("xpSkills.HeaderText");
 			xpSkills.HeaderTextColor = SystemColors.ControlText;
-			xpSkills.Icon = (
-				(Image)(resources.GetObject("xpSkills.Icon"))
-			);
+			xpSkills.Icon =
+				(Image)resources.GetObject("xpSkills.Icon")
+			;
 			xpSkills.IconLocation = new Point(4, 0);
 			xpSkills.IconSize = new Size(48, 48);
-			xpSkills.ImeMode = (
-				(ImeMode)(resources.GetObject("xpSkills.ImeMode"))
-			);
+			xpSkills.ImeMode =
+				(ImeMode)resources.GetObject("xpSkills.ImeMode")
+			;
 			xpSkills.LeftHeaderColor = SystemColors.ControlDark;
-			xpSkills.Location = (
-				(Point)(resources.GetObject("xpSkills.Location"))
-			);
+			xpSkills.Location =
+				(Point)resources.GetObject("xpSkills.Location")
+			;
 			xpSkills.Name = "xpSkills";
 			xpSkills.RightHeaderColor = SystemColors.ControlDark;
-			xpSkills.RightToLeft = (
-				(RightToLeft)(
+			xpSkills.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("xpSkills.RightToLeft")
-				)
-			);
-			xpSkills.Size = (
-				(Size)(resources.GetObject("xpSkills.Size"))
-			);
-			xpSkills.TabIndex = ((int)(resources.GetObject("xpSkills.TabIndex")));
+
+			;
+			xpSkills.Size =
+				(Size)resources.GetObject("xpSkills.Size")
+			;
+			xpSkills.TabIndex = (int)resources.GetObject("xpSkills.TabIndex");
 			xpSkills.Text = resources.GetString("xpSkills.Text");
-			xpSkills.Visible = ((bool)(resources.GetObject("xpSkills.Visible")));
+			xpSkills.Visible = (bool)resources.GetObject("xpSkills.Visible");
 			//
 			// skills
 			//
@@ -290,50 +290,50 @@ namespace SimPe.Plugin
 				"skills.AccessibleDescription"
 			);
 			skills.AccessibleName = resources.GetString("skills.AccessibleName");
-			skills.Anchor = (
-				(AnchorStyles)(
+			skills.Anchor =
+				(AnchorStyles)
 					resources.GetObject("skills.Anchor")
-				)
-			);
-			skills.AutoScroll = ((bool)(resources.GetObject("skills.AutoScroll")));
-			skills.AutoScrollMargin = (
-				(Size)(resources.GetObject("skills.AutoScrollMargin"))
-			);
-			skills.AutoScrollMinSize = (
-				(Size)(resources.GetObject("skills.AutoScrollMinSize"))
-			);
-			skills.BackgroundImage = (
-				(Image)(resources.GetObject("skills.BackgroundImage"))
-			);
-			skills.Dock = (
-				(DockStyle)(resources.GetObject("skills.Dock"))
-			);
-			skills.Enabled = ((bool)(resources.GetObject("skills.Enabled")));
-			skills.Font = (
-				(Font)(resources.GetObject("skills.Font"))
-			);
-			skills.ImeMode = (
-				(ImeMode)(resources.GetObject("skills.ImeMode"))
-			);
-			skills.Location = (
-				(Point)(resources.GetObject("skills.Location"))
-			);
+
+			;
+			skills.AutoScroll = (bool)resources.GetObject("skills.AutoScroll");
+			skills.AutoScrollMargin =
+				(Size)resources.GetObject("skills.AutoScrollMargin")
+			;
+			skills.AutoScrollMinSize =
+				(Size)resources.GetObject("skills.AutoScrollMinSize")
+			;
+			skills.BackgroundImage =
+				(Image)resources.GetObject("skills.BackgroundImage")
+			;
+			skills.Dock =
+				(DockStyle)resources.GetObject("skills.Dock")
+			;
+			skills.Enabled = (bool)resources.GetObject("skills.Enabled");
+			skills.Font =
+				(Font)resources.GetObject("skills.Font")
+			;
+			skills.ImeMode =
+				(ImeMode)resources.GetObject("skills.ImeMode")
+			;
+			skills.Location =
+				(Point)resources.GetObject("skills.Location")
+			;
 			skills.Name = "skills";
 			skills.NgbhResource = null;
-			skills.RightToLeft = (
-				(RightToLeft)(
+			skills.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("skills.RightToLeft")
-				)
-			);
+
+			;
 			skills.ShowBadges = false;
 			skills.ShowSkills = true;
 			skills.ShowToddlerSkills = true;
-			skills.Size = (
-				(Size)(resources.GetObject("skills.Size"))
-			);
+			skills.Size =
+				(Size)resources.GetObject("skills.Size")
+			;
 			skills.Slot = null;
-			skills.TabIndex = ((int)(resources.GetObject("skills.TabIndex")));
-			skills.Visible = ((bool)(resources.GetObject("skills.Visible")));
+			skills.TabIndex = (int)resources.GetObject("skills.TabIndex");
+			skills.Visible = (bool)resources.GetObject("skills.Visible");
 			skills.AddedNewItem += new EventHandler(
 				skills_AddedNewItem
 			);
@@ -345,34 +345,34 @@ namespace SimPe.Plugin
 				"$this.AccessibleDescription"
 			);
 			AccessibleName = resources.GetString("$this.AccessibleName");
-			AutoScroll = ((bool)(resources.GetObject("$this.AutoScroll")));
-			AutoScrollMargin = (
-				(Size)(resources.GetObject("$this.AutoScrollMargin"))
-			);
-			AutoScrollMinSize = (
-				(Size)(resources.GetObject("$this.AutoScrollMinSize"))
-			);
-			BackgroundImage = (
-				(Image)(resources.GetObject("$this.BackgroundImage"))
-			);
+			AutoScroll = (bool)resources.GetObject("$this.AutoScroll");
+			AutoScrollMargin =
+				(Size)resources.GetObject("$this.AutoScrollMargin")
+			;
+			AutoScrollMinSize =
+				(Size)resources.GetObject("$this.AutoScrollMinSize")
+			;
+			BackgroundImage =
+				(Image)resources.GetObject("$this.BackgroundImage")
+			;
 			Controls.Add(xpSkills);
 			Controls.Add(xpBadges);
 			DockPadding.All = 8;
-			Enabled = ((bool)(resources.GetObject("$this.Enabled")));
-			Font = ((Font)(resources.GetObject("$this.Font")));
-			ImeMode = (
-				(ImeMode)(resources.GetObject("$this.ImeMode"))
-			);
-			Location = (
-				(Point)(resources.GetObject("$this.Location"))
-			);
+			Enabled = (bool)resources.GetObject("$this.Enabled");
+			Font = (Font)resources.GetObject("$this.Font");
+			ImeMode =
+				(ImeMode)resources.GetObject("$this.ImeMode")
+			;
+			Location =
+				(Point)resources.GetObject("$this.Location")
+			;
 			Name = "NgbhSkillHelper";
-			RightToLeft = (
-				(RightToLeft)(
+			RightToLeft =
+				(RightToLeft)
 					resources.GetObject("$this.RightToLeft")
-				)
-			);
-			Size = ((Size)(resources.GetObject("$this.Size")));
+
+			;
+			Size = (Size)resources.GetObject("$this.Size");
 			xpBadges.ResumeLayout(false);
 			xpSkills.ResumeLayout(false);
 			ResumeLayout(false);

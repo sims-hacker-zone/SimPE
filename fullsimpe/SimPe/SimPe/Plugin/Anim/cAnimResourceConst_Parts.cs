@@ -265,7 +265,7 @@ namespace SimPe.Plugin.Anim
 		/// <returns>Number of Items</returns>
 		int GetPart5Count()
 		{
-			return (AddonData[2]);
+			return AddonData[2];
 		}
 
 		/// <summary>

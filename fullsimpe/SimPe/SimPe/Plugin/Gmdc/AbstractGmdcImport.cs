@@ -616,7 +616,7 @@ namespace SimPe.Plugin.Gmdc
 			//Create a TransformNode for the New Bone
 			if (Options.UpdateCres)
 			{
-				if ((Gmdc.ParentResourceNode != null) && (IsLocalCres()))
+				if ((Gmdc.ParentResourceNode != null) && IsLocalCres())
 				{
 					TransformNode tn = new TransformNode(
 						Gmdc.ParentResourceNode.Parent

@@ -340,7 +340,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 		public static int TblFbp(ushort v)
 		{
 			int m = (v & 0x00F8) >> 3;
-			int b = (v & 0x0007);
+			int b = v & 0x0007;
 
 			double d = b * Math.Pow(2, m);
 			return (int)Math.Round(d);
@@ -348,12 +348,12 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public static int TblSz(ushort v)
 		{
-			return ((int)(Math.Log(5, 2) + 1));
+			return (int)(Math.Log(5, 2) + 1);
 		}
 
 		public bool HasUpValue(ushort v)
 		{
-			return (v >= 0 && v < parent.UpValues.Count);
+			return v >= 0 && v < parent.UpValues.Count;
 		}
 
 		public double UpValue(ushort v)

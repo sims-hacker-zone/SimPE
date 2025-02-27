@@ -66,10 +66,10 @@ namespace SimPe.Plugin
 
 			SelectButton(biSim);
 
-			biBadge.Enabled = (
+			biBadge.Enabled =
 				PathProvider.Global.EPInstalled >= 3
 				|| PathProvider.Global.STInstalled >= 28
-			);
+			;
 
 			RemoteControl.HookToMessageQueue(
 				0x4E474248,
@@ -230,9 +230,9 @@ namespace SimPe.Plugin
 			//
 			// miNuke
 			//
-			miNuke.Image = (
-				(System.Drawing.Image)(resources.GetObject("miNuke.Image"))
-			);
+			miNuke.Image =
+				(System.Drawing.Image)resources.GetObject("miNuke.Image")
+			;
 			miNuke.Name = "miNuke";
 			miNuke.Size = new System.Drawing.Size(157, 22);
 			miNuke.Text = "Nuke Memories";
@@ -240,9 +240,9 @@ namespace SimPe.Plugin
 			//
 			// miFix
 			//
-			miFix.Image = (
-				(System.Drawing.Image)(resources.GetObject("miFix.Image"))
-			);
+			miFix.Image =
+				(System.Drawing.Image)resources.GetObject("miFix.Image")
+			;
 			miFix.Name = "miFix";
 			miFix.Size = new System.Drawing.Size(157, 22);
 			miFix.Text = "Fix Memories";
@@ -252,14 +252,14 @@ namespace SimPe.Plugin
 			//
 			simslot.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			simslot.Font = new System.Drawing.Font("Tahoma", 8.25F);
@@ -287,14 +287,14 @@ namespace SimPe.Plugin
 			//
 			nsui.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			nsui.BackColor = System.Drawing.Color.Transparent;
@@ -313,12 +313,12 @@ namespace SimPe.Plugin
 			//
 			nssel.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
-						) | AnchorStyles.Left
-					)
+						 | AnchorStyles.Left
+
 
 			;
 			nssel.Font = new System.Drawing.Font("Tahoma", 8.25F);
@@ -383,9 +383,9 @@ namespace SimPe.Plugin
 			//
 			// biSim
 			//
-			biSim.Image = (
-				(System.Drawing.Image)(resources.GetObject("biSim.Image"))
-			);
+			biSim.Image =
+				(System.Drawing.Image)resources.GetObject("biSim.Image")
+			;
 			biSim.ImageScaling =
 				ToolStripItemImageScaling
 				.None;
@@ -399,9 +399,9 @@ namespace SimPe.Plugin
 			//
 			// biBadge
 			//
-			biBadge.Image = (
-				(System.Drawing.Image)(resources.GetObject("biBadge.Image"))
-			);
+			biBadge.Image =
+				(System.Drawing.Image)resources.GetObject("biBadge.Image")
+			;
 			biBadge.ImageScaling =
 				ToolStripItemImageScaling
 				.None;
@@ -415,9 +415,9 @@ namespace SimPe.Plugin
 			//
 			// biDebug
 			//
-			biDebug.Image = (
-				(System.Drawing.Image)(resources.GetObject("biDebug.Image"))
-			);
+			biDebug.Image =
+				(System.Drawing.Image)resources.GetObject("biDebug.Image")
+			;
 			biDebug.ImageScaling =
 				ToolStripItemImageScaling
 				.None;
@@ -477,7 +477,7 @@ namespace SimPe.Plugin
 			{
 				if (toolBar1.Items[i] is ToolStripButton item)
 				{
-					item.Checked = (item == b);
+					item.Checked = item == b;
 
 					if (item.Tag != null)
 					{
@@ -569,7 +569,7 @@ namespace SimPe.Plugin
 		void menu_VisibleChanged(object sender, EventArgs e)
 		{
 			miFix.Enabled = (Ngbh != null) && Helper.WindowsRegistry.HiddenMode;
-			miNuke.Enabled = (spc.SelectedSim != null);
+			miNuke.Enabled = spc.SelectedSim != null;
 		}
 
 		private void miNuke_Activate(object sender, EventArgs e)

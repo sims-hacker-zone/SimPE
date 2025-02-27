@@ -96,7 +96,7 @@ namespace SimPe.Plugin
 
 			public bool Contains(uint id)
 			{
-				return (FindById(id) != null);
+				return FindById(id) != null;
 			}
 
 			public IAlias FindById(uint id)

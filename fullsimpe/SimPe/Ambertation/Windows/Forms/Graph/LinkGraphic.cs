@@ -59,7 +59,7 @@ namespace Ambertation.Windows.Forms.Graph
 			get
 			{
 				int yl = ((byte)Type >> 2) & 0x3;
-				return (yl == 0x2);
+				return yl == 0x2;
 			}
 		}
 
@@ -69,7 +69,7 @@ namespace Ambertation.Windows.Forms.Graph
 			{
 				int xl = (byte)Type & 0x3;
 				int yl = ((byte)Type >> 2) & 0x3;
-				return (yl == 0x2 || xl == 0x2);
+				return yl == 0x2 || xl == 0x2;
 			}
 		}
 	}
@@ -564,28 +564,28 @@ namespace Ambertation.Windows.Forms.Graph
 			bool eside
 		)
 		{
-			Point ctrl1 = new Point(pstart.X, pstart.Y + Height / 2);
-			Point ctrl2 = new Point(pend.X, pend.Y - Height / 2);
+			Point ctrl1 = new Point(pstart.X, pstart.Y + (Height / 2));
+			Point ctrl2 = new Point(pend.X, pend.Y - (Height / 2));
 			if (sside)
 			{
-				ctrl1 = pend.X < pstart.X ? new Point(pstart.X - Width / 2, pstart.Y) : new Point(pstart.X + Width / 2, pstart.Y);
+				ctrl1 = pend.X < pstart.X ? new Point(pstart.X - (Width / 2), pstart.Y) : new Point(pstart.X + (Width / 2), pstart.Y);
 			}
 			else
 			{
 				if (pend.Y < pstart.Y)
 				{
-					ctrl1 = new Point(pstart.X, pstart.Y - Height / 2);
+					ctrl1 = new Point(pstart.X, pstart.Y - (Height / 2));
 				}
 			}
 			if (EndElement.Docks[EndAnchor].IsSideDock)
 			{
-				ctrl2 = pend.X < pstart.X ? new Point(pend.X + Width / 2, pend.Y) : new Point(pend.X - Width / 2, pend.Y);
+				ctrl2 = pend.X < pstart.X ? new Point(pend.X + (Width / 2), pend.Y) : new Point(pend.X - (Width / 2), pend.Y);
 			}
 			else
 			{
 				if (pend.Y < pstart.Y)
 				{
-					ctrl2 = new Point(pend.X, pend.Y + Height / 2);
+					ctrl2 = new Point(pend.X, pend.Y + (Height / 2));
 				}
 			}
 

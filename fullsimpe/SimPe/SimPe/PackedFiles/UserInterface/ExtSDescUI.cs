@@ -65,7 +65,7 @@ namespace SimPe.PackedFiles.UserInterface
 			biMisc.Tag = pnMisc;
 
 			tbsim.ReadOnly = !UserVerification.HaveUserId;
-			miRelink.Enabled = (UserVerification.HaveUserId);
+			miRelink.Enabled = UserVerification.HaveUserId;
 			tbBugColl.ReadOnly = !UserVerification.HaveUserId;
 
 			if (Helper.StartedGui == Executable.Classic)
@@ -190,7 +190,7 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				if (toolBar1.Items[i] is ToolStripButton item)
 				{
-					item.Checked = (item == b);
+					item.Checked = item == b;
 
 					if (item.Tag != null)
 					{
@@ -391,7 +391,7 @@ namespace SimPe.PackedFiles.UserInterface
 				);
 				if (
 					PathProvider.Global.GetExpansion(Expansions.University).Exists
-					|| (Helper.WindowsRegistry.HiddenMode)
+					|| Helper.WindowsRegistry.HiddenMode
 				)
 				{
 					cbcareer.Items.Add(
@@ -425,7 +425,7 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 				if (
 					PathProvider.Global.GetExpansion(Expansions.Seasons).Exists
-					|| (Helper.WindowsRegistry.HiddenMode)
+					|| Helper.WindowsRegistry.HiddenMode
 				)
 				{
 					cbcareer.Items.Add(
@@ -449,7 +449,7 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 				if (
 					PathProvider.Global.GetExpansion(Expansions.FreeTime).Exists
-					|| (Helper.WindowsRegistry.HiddenMode)
+					|| Helper.WindowsRegistry.HiddenMode
 				)
 				{
 					cbcareer.Items.Add(
@@ -483,7 +483,7 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 				if (
 					PathProvider.Global.GetExpansion(Expansions.Business).Exists
-					|| (Helper.WindowsRegistry.HiddenMode)
+					|| Helper.WindowsRegistry.HiddenMode
 				)
 				{
 					cbcareer.Items.Add(
@@ -528,7 +528,7 @@ namespace SimPe.PackedFiles.UserInterface
 				);
 				if (
 					PathProvider.Global.GetExpansion(Expansions.Seasons).Exists
-					|| (Helper.WindowsRegistry.HiddenMode)
+					|| Helper.WindowsRegistry.HiddenMode
 				)
 				{
 					cbcareer.Items.Add(
@@ -568,7 +568,7 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 				if (
 					PathProvider.Global.GetExpansion(Expansions.FreeTime).Exists
-					|| (Helper.WindowsRegistry.HiddenMode)
+					|| Helper.WindowsRegistry.HiddenMode
 				)
 				{
 					cbcareer.Items.Add(
@@ -595,7 +595,7 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 				if (
 					PathProvider.Global.GetExpansion(Expansions.Business).Exists
-					|| (Helper.WindowsRegistry.HiddenMode)
+					|| Helper.WindowsRegistry.HiddenMode
 				)
 				{
 					cbcareer.Items.Add(
@@ -607,7 +607,7 @@ namespace SimPe.PackedFiles.UserInterface
 					|| PathProvider
 						.Global.GetExpansion(Expansions.PetStories)
 						.Exists
-					|| (Helper.WindowsRegistry.HiddenMode)
+					|| Helper.WindowsRegistry.HiddenMode
 				)
 				{
 					cbcareer.Items.Add(
@@ -838,10 +838,10 @@ namespace SimPe.PackedFiles.UserInterface
 				new LocalizedServiceTypes(MetaData.ServiceTypes.Vampyre)
 			);
 			if (
-				(
+
 					PathProvider.Global.GetExpansion(Expansions.Business).Exists
 					|| PathProvider.Global.STInstalled >= 28
-				) || Helper.WindowsRegistry.HiddenMode
+				 || Helper.WindowsRegistry.HiddenMode
 			)
 			{
 				cbservice.Items.Add(
@@ -855,10 +855,10 @@ namespace SimPe.PackedFiles.UserInterface
 				);
 			}
 			if (
-				(
+
 					PathProvider.Global.GetExpansion(Expansions.Pets).Exists
 					|| PathProvider.Global.STInstalled >= 28
-				) || Helper.WindowsRegistry.HiddenMode
+				 || Helper.WindowsRegistry.HiddenMode
 			)
 			{
 				cbservice.Items.Add(
@@ -878,7 +878,7 @@ namespace SimPe.PackedFiles.UserInterface
 				);
 			}
 			if (
-				(
+
 					PathProvider.Global.GetExpansion(Expansions.Voyage).Exists
 					|| PathProvider
 						.Global.GetExpansion(Expansions.IslandStories)
@@ -886,7 +886,7 @@ namespace SimPe.PackedFiles.UserInterface
 					|| PathProvider
 						.Global.GetExpansion(Expansions.PetStories)
 						.Exists
-				) || Helper.WindowsRegistry.HiddenMode
+				 || Helper.WindowsRegistry.HiddenMode
 			)
 			{
 				cbservice.Items.Add(
@@ -895,12 +895,12 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 
 			if (
-				(
+
 					PathProvider.Global.GetExpansion(Expansions.Voyage).Exists
 					|| PathProvider
 						.Global.GetExpansion(Expansions.IslandStories)
 						.Exists
-				) || Helper.WindowsRegistry.HiddenMode
+				 || Helper.WindowsRegistry.HiddenMode
 			)
 			{
 				cbservice.Items.Add(
@@ -945,7 +945,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			if (
 				PathProvider.Global.GetExpansion(Expansions.FreeTime).Exists
-				|| (Helper.WindowsRegistry.HiddenMode)
+				|| Helper.WindowsRegistry.HiddenMode
 			)
 			{
 				cbservice.Items.Add(
@@ -963,7 +963,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			if (
 				PathProvider.Global.GetExpansion(Expansions.Apartments).Exists
-				|| (Helper.WindowsRegistry.HiddenMode)
+				|| Helper.WindowsRegistry.HiddenMode
 			)
 			{
 				cbservice.Items.Add(
@@ -1047,14 +1047,14 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				base.RefreshGUI();
 
-				miOpenChar.Enabled = (
+				miOpenChar.Enabled =
 					System.IO.File.Exists(Sdesc.CharacterFileName) && !Sdesc.IsNPC
-				);
-				miRelink.Enabled = (
-					(UserVerification.HaveUserId)
+				;
+				miRelink.Enabled =
+					UserVerification.HaveUserId
 					&& !Sdesc.IsNPC
 					&& Helper.IsNeighborhoodFile(Sdesc.Package.FileName)
-				);
+				;
 				miOpenDNA.Enabled = miOpenCloth.Enabled = !Sdesc.IsNPC;
 				tbsimdescname.ReadOnly = tbsimdescfamname.ReadOnly =
 					Sdesc.IsNPC;
@@ -1099,45 +1099,45 @@ namespace SimPe.PackedFiles.UserInterface
 				RefreshMisc(Sdesc);
 
 				biRel.Enabled = Helper.IsNeighborhoodFile(Sdesc.Package.FileName);
-				biEP1.Enabled = (
+				biEP1.Enabled =
 					(int)Sdesc.Version
 						>= (int)PackedFiles.Wrapper.SDescVersions.University
 					&& Sdesc.Nightlife.Species == 0
 					&& (int)Sdesc.Version
 						!= (int)PackedFiles.Wrapper.SDescVersions.Castaway
-				);
-				biEP2.Enabled = (
+				;
+				biEP2.Enabled =
 					(int)Sdesc.Version
 						>= (int)PackedFiles.Wrapper.SDescVersions.Nightlife
 					&& Sdesc.Nightlife.Species == 0
-				);
-				biEP3.Enabled = (
+				;
+				biEP3.Enabled =
 					(int)Sdesc.Version
 						>= (int)PackedFiles.Wrapper.SDescVersions.Business
 					&& Sdesc.Nightlife.Species == 0
 					&& (int)Sdesc.Version
 						!= (int)PackedFiles.Wrapper.SDescVersions.Castaway
-				);
-				biEP6.Enabled = (
+				;
+				biEP6.Enabled =
 					(int)Sdesc.Version
 						>= (int)PackedFiles.Wrapper.SDescVersions.Voyage
 					&& Sdesc.Nightlife.Species == 0
 					&& PathProvider.Global.EPInstalled > 9
-				);
-				biEP7.Enabled = (
+				;
+				biEP7.Enabled =
 					(int)Sdesc.Version
 						>= (int)PackedFiles.Wrapper.SDescVersions.Freetime
 					&& Sdesc.Nightlife.Species == 0
-				);
-				biEP9.Enabled = (
+				;
+				biEP9.Enabled =
 					(int)Sdesc.Version
 						>= (int)PackedFiles.Wrapper.SDescVersions.Apartment
 					&& Sdesc.Nightlife.Species == 0
-				);
-				cbSpecies.Enabled = (
+				;
+				cbSpecies.Enabled =
 					(int)Sdesc.Version
 					>= (int)PackedFiles.Wrapper.SDescVersions.Pets
-				);
+				;
 				if (pnRel.Visible && !biRel.Enabled)
 				{
 					SelectButton(biId);
@@ -1242,7 +1242,7 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 			}
 
-			cboncampus.Checked = (sdesc.University.OnCampus == 0x1);
+			cboncampus.Checked = sdesc.University.OnCampus == 0x1;
 			pbEffort.Value = sdesc.University.Effort;
 			pbLastGrade.Value = sdesc.University.Grade;
 
@@ -1406,12 +1406,12 @@ namespace SimPe.PackedFiles.UserInterface
 
 		void RefreshMisc(Wrapper.ExtSDesc sdesc)
 		{
-			tbdecScratc.Visible = lbdecScratc.Visible = (
+			tbdecScratc.Visible = lbdecScratc.Visible =
 				sdesc.Nightlife.Species > 0
-			);
-			tbdecShop.Visible = lbdecShop.Visible = (
+			;
+			tbdecShop.Visible = lbdecShop.Visible =
 				sdesc.Nightlife.Species == 0
-			);
+			;
 
 			//ghostflags
 			cbisghost.Checked = sdesc.CharacterDescription.GhostFlag.IsGhost;
@@ -1474,18 +1474,18 @@ namespace SimPe.PackedFiles.UserInterface
 					cbpflyact.Visible =
 					cbpfrunaw.Visible =
 					cbpfPlant.Visible =
-						(
+
 							(int)sdesc.Version
 							>= (int)PackedFiles.Wrapper.SDescVersions.Pets
-						);
-				cbpfBigf.Visible = (
+						;
+				cbpfBigf.Visible =
 					(int)sdesc.Version
 					>= (int)PackedFiles.Wrapper.SDescVersions.Voyage
-				);
-				cbpfwitch.Visible = cbpfroomy.Visible = (
+				;
+				cbpfwitch.Visible = cbpfroomy.Visible =
 					(int)sdesc.Version
 					>= (int)PackedFiles.Wrapper.SDescVersions.Apartment
-				);
+				;
 				cbpfZomb.Checked = sdesc
 					.CharacterDescription
 					.PersonFlags1
@@ -1554,9 +1554,9 @@ namespace SimPe.PackedFiles.UserInterface
 			tbfaminst.Text = "0x" + Helper.HexString(sdesc.FamilyInstance);
 			tbsinstance.Text = "0x" + Helper.HexString(sdesc.Instance);
 			lbHousname.Text = "(" + sdesc.HouseholdName + ")";
-			btOriGuid.Enabled = (
+			btOriGuid.Enabled =
 				!sdesc.IsNPC && System.IO.File.Exists(sdesc.CharacterFileName)
-			); // may need to disable more
+			; // may need to disable more
 
 			Image img = null;
 
@@ -1604,12 +1604,12 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 			}
 
-			rbfemale.Checked = (
+			rbfemale.Checked =
 				sdesc.CharacterDescription.Gender == MetaData.Gender.Female
-			);
-			rbmale.Checked = (
+			;
+			rbmale.Checked =
 				sdesc.CharacterDescription.Gender == MetaData.Gender.Male
-			);
+			;
 
 			//NPC Type
 			cbservice.SelectedIndex = 0;
@@ -1787,9 +1787,9 @@ namespace SimPe.PackedFiles.UserInterface
 
 		void RefreshCharcter(Wrapper.ExtSDesc sdesc)
 		{
-			cbzodiac.SelectedIndex = (
+			cbzodiac.SelectedIndex =
 				(ushort)sdesc.CharacterDescription.ZodiacSign - 1
-			);
+			;
 
 			//Character
 			pbNeat.Value = sdesc.Character.Neat;
@@ -3753,11 +3753,11 @@ if (System.IO.File.Exists(Sdesc.CharacterFileName))
 				return;
 			}
 
-			int which = (
+			int which =
 				new List<CheckedListBox>(
 					new CheckedListBox[] { lbTraits, lbTurnOn, lbTurnOff }
 				)
-			).IndexOf((CheckedListBox)sender);
+			.IndexOf((CheckedListBox)sender);
 
 			ushort[] v =
 				FileTableBase.ProviderRegistry.SimDescriptionProvider.GetFromTurnOnIndex(
@@ -3927,7 +3927,7 @@ if (System.IO.File.Exists(Sdesc.CharacterFileName))
 
 			cbEp3Asgn.SelectedValue = sdesc.Business.Assignment;
 			sblb.SimDescription = sdesc;
-			llep3openinfo.Links[0].Enabled = (sblb.SelectedBusiness != null);
+			llep3openinfo.Links[0].Enabled = sblb.SelectedBusiness != null;
 			pnEP3.BackgroundImage = pnimage;
 		}
 
@@ -3969,7 +3969,7 @@ if (System.IO.File.Exists(Sdesc.CharacterFileName))
 
 		private void sblb_SelectedBusinessChanged(object sender, EventArgs e)
 		{
-			llep3openinfo.Links[0].Enabled = (sblb.SelectedBusiness != null);
+			llep3openinfo.Links[0].Enabled = sblb.SelectedBusiness != null;
 			if (sblb.SelectedBusiness != null)
 			{
 				if (sblb.SelectedBusiness.BnfoFileIndexItem == null)
@@ -4033,7 +4033,7 @@ if (System.IO.File.Exists(Sdesc.CharacterFileName))
 		{
 			bool showsim = IsHumanoid();
 			pnSimInt.Visible = pnHumanChar.Visible = showsim;
-			btProfile.Visible = (showsim && !Helper.WindowsRegistry.HiddenMode);
+			btProfile.Visible = showsim && !Helper.WindowsRegistry.HiddenMode;
 			pnPetChar.Visible = pnPetInt.Visible = !showsim;
 			if (!InternalChange && btOriGuid.Enabled)
 			{
@@ -4060,7 +4060,7 @@ if (System.IO.File.Exists(Sdesc.CharacterFileName))
 					? Sdesc.Nightlife.IsHuman
 					: true;
 			pnSimInt.Visible = pnHumanChar.Visible = showsim;
-			btProfile.Visible = (showsim && !Helper.WindowsRegistry.HiddenMode);
+			btProfile.Visible = showsim && !Helper.WindowsRegistry.HiddenMode;
 			pnPetChar.Visible = pnPetInt.Visible = !showsim;
 		}
 
@@ -4068,7 +4068,7 @@ if (System.IO.File.Exists(Sdesc.CharacterFileName))
 		{
 			bool showsim = IsHumanoid();
 			pnSimInt.Visible = pnHumanChar.Visible = showsim;
-			btProfile.Visible = (showsim && !Helper.WindowsRegistry.HiddenMode);
+			btProfile.Visible = showsim && !Helper.WindowsRegistry.HiddenMode;
 			pnPetChar.Visible = pnPetInt.Visible = !showsim;
 		}
 

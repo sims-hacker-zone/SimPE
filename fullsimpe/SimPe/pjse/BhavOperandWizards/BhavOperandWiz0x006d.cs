@@ -158,7 +158,7 @@ namespace pjse.BhavOperandWizards.Wiz0x006d
 			StrWrapper str = new StrWrapper();
 			str.ProcessData(items[0].PFD, items[0].Package);
 
-			int i = (new StrChooser(true)).Strnum(str);
+			int i = new StrChooser(true).Strnum(str);
 			if (i >= 0)
 			{
 				bool savedState = internalchg;
@@ -231,7 +231,7 @@ namespace pjse.BhavOperandWizards.Wiz0x006d
 				BhavWiz.ToShort(ops1[0x00], ops1[0x01])
 			);
 
-			rb3Object.Checked = ((ops1[0x02] & 0x01) != 0);
+			rb3Object.Checked = (ops1[0x02] & 0x01) != 0;
 			btnMesh.Visible =
 				tbMesh.Visible =
 				rb3Me.Checked =
@@ -251,15 +251,15 @@ namespace pjse.BhavOperandWizards.Wiz0x006d
 					break; // SemiGlobal
 			}
 
-			rb1ScrShot.Checked = ((ops2[0x05] & 0x02) != 0);
+			rb1ScrShot.Checked = (ops2[0x05] & 0x02) != 0;
 			rb1Me.Checked = !rb1ScrShot.Checked && ((ops1[0x02] & 0x08) == 0);
 			rb1Object.Checked = !rb1ScrShot.Checked && !rb1Me.Checked;
 
-			rb2MovingTexture.Checked = ((ops2[0x05] & 0x01) != 0);
+			rb2MovingTexture.Checked = (ops2[0x05] & 0x01) != 0;
 			rb2Material.Checked = !rb2MovingTexture.Checked;
 
-			ckbMaterialTemp.Checked = ((ops1[0x02] & 0x10) != 0);
-			ckbMeshTemp.Checked = ((ops1[0x02] & 0x20) != 0);
+			ckbMaterialTemp.Checked = (ops1[0x02] & 0x10) != 0;
+			ckbMeshTemp.Checked = (ops1[0x02] & 0x20) != 0;
 
 			cbMeshScope.SelectedIndex = -1;
 			switch (ops1[0x02] & 0xc0)

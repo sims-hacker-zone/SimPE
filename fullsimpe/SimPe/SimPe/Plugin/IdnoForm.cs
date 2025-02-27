@@ -72,14 +72,14 @@ namespace SimPe.Plugin
 			//
 			pnidno.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			pnidno.AutoScroll = true;
@@ -470,12 +470,12 @@ namespace SimPe.Plugin
 			//
 			panel2.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			panel2.Location = new System.Drawing.Point(0, 0);
@@ -548,7 +548,7 @@ namespace SimPe.Plugin
 				tbtype.Text = "0x" + Helper.HexString((uint)nt);
 			}
 
-			tbsubname.Enabled = (nt == NeighborhoodType.University);
+			tbsubname.Enabled = nt == NeighborhoodType.University;
 
 			if (Tag != null)
 			{

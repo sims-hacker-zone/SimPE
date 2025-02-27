@@ -163,7 +163,7 @@ namespace Ambertation.Viewer
 			if (cd.NeedNoConvert)
 			{
 				// fast copy
-				uint* linep = (uint*)((byte*)b.Scan0.ToPointer() + line * b.Stride);
+				uint* linep = (uint*)((byte*)b.Scan0.ToPointer() + (line * b.Stride));
 				fixed (byte* ptr = data)
 				{
 					uint* sptr = (uint*)ptr;
@@ -175,7 +175,7 @@ namespace Ambertation.Viewer
 			}
 			else
 			{
-				byte* linep = (byte*)b.Scan0.ToPointer() + line * b.Stride;
+				byte* linep = (byte*)b.Scan0.ToPointer() + (line * b.Stride);
 
 				uint* up = (uint*)linep;
 

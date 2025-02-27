@@ -162,7 +162,7 @@ namespace SimPe.Plugin
 				tbValue.Text = "1";
 				buttonset();
 			}
-			lbTota.Visible = (sections - goodsections > 0);
+			lbTota.Visible = sections - goodsections > 0;
 		}
 
 		private void btprev_Click(object sender, EventArgs e)
@@ -221,7 +221,7 @@ namespace SimPe.Plugin
 				return;
 			}
 			int currentsectionindex = currentsection - 1;
-			btDelete.Visible = (sections > 1); // keep at least one, if we want to delete the last block then it is better to just delete the resource
+			btDelete.Visible = sections > 1; // keep at least one, if we want to delete the last block then it is better to just delete the resource
 			if (shwraw)
 			{
 				gtname.Text = TestIsValid(currentsectionindex)
@@ -361,7 +361,7 @@ gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 36
 			int l = 0;
 			int n = 0;
 			int currentsectionindex = currentsection - 1;
-			if (filedata[(currentsectionindex * 42)] > 0)
+			if (filedata[currentsectionindex * 42] > 0)
 			{
 				goodsections--;
 			}
@@ -452,7 +452,7 @@ gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 36
 					(filedata[(currentsectionindex * 42) + 34] << 16)
 					+ filedata[(currentsectionindex * 42) + 33];
 				tbLotNo.Text =
-					"0x" + Helper.HexString(filedata[(currentsectionindex * 42)]);
+					"0x" + Helper.HexString(filedata[currentsectionindex * 42]);
 				tbMenNo.Text = Convert.ToString(
 					filedata[(currentsectionindex * 42) + 2]
 				);
@@ -485,7 +485,7 @@ gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 36
 		{
 			int currentsectionindex = currentsection - 1;
 			bool wasgood = false;
-			if (filedata[(currentsectionindex * 42)] > 0)
+			if (filedata[currentsectionindex * 42] > 0)
 			{
 				wasgood = true;
 			}
@@ -520,18 +520,18 @@ gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 36
 					+ filedata[(currentsectionindex * 42) + 4]
 					+ filedata[(currentsectionindex * 42) + 5]
 				);
-				filedata[(currentsectionindex * 42)] = Convert.ToUInt16(
+				filedata[currentsectionindex * 42] = Convert.ToUInt16(
 					tbLotNo.Text,
 					16
 				);
 				filedata[(currentsectionindex * 42) + 35] = Convert.ToUInt16(
 					tbFriends.Text
 				);
-				if (filedata[(currentsectionindex * 42)] > 0 && !wasgood)
+				if (filedata[currentsectionindex * 42] > 0 && !wasgood)
 				{
 					goodsections++;
 				}
-				else if (filedata[(currentsectionindex * 42)] == 0 && wasgood)
+				else if (filedata[currentsectionindex * 42] == 0 && wasgood)
 				{
 					goodsections--;
 				}
@@ -576,7 +576,7 @@ gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 36
 
 				sections++;
 				Array.Resize(ref filedata, sections * 42);
-				filedata[(currentsectionindex * 42)] = lotno;
+				filedata[currentsectionindex * 42] = lotno;
 				filedata[(currentsectionindex * 42) + 2] = meno;
 				filedata[(currentsectionindex * 42) + 3] = ladyno;
 				filedata[(currentsectionindex * 42) + 4] = boyno;
@@ -602,7 +602,7 @@ gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 36
 				);
 				filedata[(currentsectionindex * 42) + 35] = friendno;
 				filedata[(currentsectionindex * 42) + 38] = 257; // oef marker
-				if (filedata[(currentsectionindex * 42)] > 0)
+				if (filedata[currentsectionindex * 42] > 0)
 				{
 					goodsections++;
 				}

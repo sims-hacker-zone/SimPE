@@ -175,9 +175,9 @@ namespace SimPe
 				btcreateid.Visible = true;
 			}
 
-			cbblur.Visible = (PathProvider.Global.EPInstalled < 18);
-			cbIncCep.Enabled = (PathProvider.Global.GameVersion < 18);
-			cbIncCep.Visible = (PathProvider.Global.GameVersion < 18);
+			cbblur.Visible = PathProvider.Global.EPInstalled < 18;
+			cbIncCep.Enabled = PathProvider.Global.GameVersion < 18;
+			cbIncCep.Visible = PathProvider.Global.GameVersion < 18;
 
 			toolTip1.SetToolTip(panel1, "");
 
@@ -391,7 +391,7 @@ namespace SimPe
 		private void DDSChanged(object sender, EventArgs e)
 		{
 			string name = System.IO.Path.Combine(tbdds.Text, "nvdxt.exe");
-			lldds.Visible = (!System.IO.File.Exists(name));
+			lldds.Visible = !System.IO.File.Exists(name);
 			lldds2.Visible = lldds.Visible;
 		}
 
@@ -529,7 +529,7 @@ namespace SimPe
 			wrapper.Priority = wrapper.Priority >= 0 ? index + 1 : -1 * (index + 1);
 
 			const int imgwidth = 22;
-			int top = 4 + index * (height + 4);
+			int top = 4 + (index * (height + 4));
 			TD.Eyefinder.HeaderControl pn = new TD.Eyefinder.HeaderControl
 			{
 				Parent = cnt,
@@ -540,7 +540,7 @@ namespace SimPe
 				cnt.Width
 				- SystemInformation.VerticalScrollBarWidth
 				- 2
-				- 2 * pn.Left;
+				- (2 * pn.Left);
 			pn.Height = height;
 			pn.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right;
 			pn.HeaderStyle = TD.Eyefinder.HeaderStyle.SubHeading;
@@ -763,7 +763,7 @@ namespace SimPe
 					Width = imgwidth,
 					Height = imgwidth
 				};
-				pb.Left = pn.Width - 2 * pb.Width - 16;
+				pb.Left = pn.Width - (2 * pb.Width) - 16;
 				pb.Top = pn.DisplayRectangle.Top + 4; //pn.DisplayRectangle.Top + 4 + pb.Height + 4; //pn.Height - 2*pb.Height -16;
 				pb.Anchor = AnchorStyles.Top | AnchorStyles.Right;
 				pb.Image = Image.FromStream(
@@ -783,7 +783,7 @@ namespace SimPe
 					SizeMode = PictureBoxSizeMode.CenterImage
 				};
 				pb.Top = (pn.DisplayRectangle.Top + 1 - pb.Height) / 2;
-				pb.Left = pn.Width - 3 * pb.Width - pb.Top;
+				pb.Left = pn.Width - (3 * pb.Width) - pb.Top;
 				pb.Anchor = AnchorStyles.Top | AnchorStyles.Right;
 				pb.Image = Image.FromStream(
 					GetType()
@@ -806,7 +806,7 @@ namespace SimPe
 					SizeMode = PictureBoxSizeMode.CenterImage
 				};
 				pb.Top = (pn.DisplayRectangle.Top + 1 - pb.Height) / 2;
-				pb.Left = wrapper.AllowMultipleInstances ? pn.Width - 4 * pb.Width - pb.Top : pn.Width - 3 * pb.Width - pb.Top;
+				pb.Left = wrapper.AllowMultipleInstances ? pn.Width - (4 * pb.Width) - pb.Top : pn.Width - (3 * pb.Width) - pb.Top;
 
 				pb.Anchor = AnchorStyles.Top | AnchorStyles.Right;
 				pb.Image = Image.FromStream(
@@ -893,7 +893,7 @@ namespace SimPe
 				SizeMode = PictureBoxSizeMode.CenterImage
 			};
 			pb.Top = (pn.DisplayRectangle.Top + 1 - pb.Height) / 2;
-			pb.Left = pn.Width - 2 * pb.Width - pb.Top;
+			pb.Left = pn.Width - (2 * pb.Width) - pb.Top;
 			pb.Anchor = AnchorStyles.Top | AnchorStyles.Right;
 			pb.Image = GetImage(wrapper)
 				.GetThumbnailImage(
@@ -1254,7 +1254,7 @@ namespace SimPe
 			{
 				lcb = new Dictionary<string, CheckBox>();
 
-				int cwd = cbIncCep.Parent.Width - 2 * cbIncCep.Left + 4;
+				int cwd = cbIncCep.Parent.Width - (2 * cbIncCep.Left) + 4;
 				cbIncCep.Width = (cwd / 4) - 4;
 				int left = cbIncCep.Right + 4;
 				if (PathProvider.Global.GameVersion >= 18)
@@ -1572,7 +1572,7 @@ namespace SimPe
 					fti.Exists
 					&& !fti.Ignore
 					&& fullobj
-					&& (Helper.CompareableFileName(fti.Name).EndsWith("\\objects"))
+					&& Helper.CompareableFileName(fti.Name).EndsWith("\\objects")
 				)
 				{
 					if (firstobjpkg)
@@ -1979,7 +1979,7 @@ namespace SimPe
 			{
 				if (toolBar1.Items[i] is ToolStripButton item)
 				{
-					item.Checked = (item == b);
+					item.Checked = item == b;
 					if (item.Tag != null)
 					{
 						Panel pn = (Panel)item.Tag;

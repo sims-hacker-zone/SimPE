@@ -292,7 +292,7 @@ namespace SimPe
 			try
 			{
 				filter.Instance = Convert.ToUInt32(tbInst.Text, 16);
-				filter.FilterInstance = (tbInst.Text.Trim() != "");
+				filter.FilterInstance = tbInst.Text.Trim() != "";
 			}
 			catch
 			{
@@ -302,7 +302,7 @@ namespace SimPe
 			try
 			{
 				filter.Group = Convert.ToUInt32(tbGrp.Text, 16);
-				filter.FilterGroup = (tbGrp.Text.Trim() != "");
+				filter.FilterGroup = tbGrp.Text.Trim() != "";
 			}
 			catch
 			{
@@ -630,7 +630,7 @@ namespace SimPe
 				string name = Hashes.StripHashFromName(tbRcolName.Text);
 				filter.Instance = Hashes.InstanceHash(name);
 				//filter.Group = Hashes.GroupHash(this.tbRcolName.Text);
-				filter.FilterInstance = (name.Trim() != "");
+				filter.FilterInstance = name.Trim() != "";
 				//filter.FilterGroup = filter.FilterInstance;
 			}
 			catch
@@ -651,7 +651,7 @@ namespace SimPe
 					{
 						string name = Hashes.StripHashFromName(tbRcolName.Text);
 						filter.Group = sga.Id;
-						filter.FilterGroup = (cbsemig.Text.Trim() != "");
+						filter.FilterGroup = cbsemig.Text.Trim() != "";
 					}
 				}
 				else

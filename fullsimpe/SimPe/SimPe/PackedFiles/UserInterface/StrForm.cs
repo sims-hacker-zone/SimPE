@@ -233,23 +233,23 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 			}
 
-			btnStrPrev.Enabled = (index > 0);
-			btnStrNext.Enabled = (index < count - 1);
+			btnStrPrev.Enabled = index > 0;
+			btnStrNext.Enabled = index < count - 1;
 
 			btnClearAll.Enabled = !empty; // "Default lang only"
 			btnLngClear.Enabled = (lid != 1) && !isEmpty[lid]; // "Clear this lang"
 
-			btnStrAdd.Enabled = (lid == 1);
+			btnStrAdd.Enabled = lid == 1;
 			btnStrDelete.Enabled = (lid == 1) && (index >= 0);
 			btnStrDefault.Enabled = (lid != 1) && !isEmpty[lid] && (index >= 0); // "Make default"
 			btnStrClear.Enabled =
 				(wrapper.Format != 0x0000) && !empty && (index >= 0); // "Default string only"
 			btnStrCopy.Enabled =
 				(wrapper.Format != 0x0000) && !isEmpty[lid] && (index >= 0);
-			btnReplace.Enabled = (lid == 1);
-			BtnClean.Enabled = (
+			btnReplace.Enabled = lid == 1;
+			BtnClean.Enabled =
 				wrapper.Format != 0x0000 && wrapper.Format != 0xFFFE
-			);
+			;
 		}
 
 		private void updateLists()
@@ -327,8 +327,8 @@ namespace SimPe.PackedFiles.UserInterface
 							"0x" + Helper.HexString((ushort)i) + " (" + i + ")",
 							"",
 							"",
-							((si == null) ? "" : si.Title),
-							((si == null) ? "" : si.Description),
+							(si == null) ? "" : si.Title,
+							(si == null) ? "" : si.Description,
 						}
 					)
 				);
@@ -365,9 +365,9 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 
 			internalchg = false;
-			btnLngFirst.Enabled = btnLngPrev.Enabled = (
+			btnLngFirst.Enabled = btnLngPrev.Enabled =
 				cbLngSelect.SelectedIndex > 0
-			);
+			;
 			btnLngNext.Enabled =
 				(wrapper.Format != 0x0000)
 				&& (cbLngSelect.Items.Count > 0)
@@ -443,9 +443,9 @@ namespace SimPe.PackedFiles.UserInterface
 				btnBigString.Enabled = rtbTitle.Enabled = true;
 				rtbDescription.Text = s.Description;
 				rtbDescription.SelectAll();
-				btnBigDesc.Enabled = rtbDescription.Enabled = (
+				btnBigDesc.Enabled = rtbDescription.Enabled =
 					wrapper.Format != 0x0000 && wrapper.Format != 0xFFFE
-				);
+				;
 			}
 			else
 			{
@@ -637,7 +637,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void StrReplace()
 		{
-			pjse.FileTable.Entry e = (new pjse.ResourceChooser()).Execute(
+			pjse.FileTable.Entry e = new pjse.ResourceChooser().Execute(
 				wrapper.FileDescriptor.Type,
 				wrapper.FileDescriptor.Group,
 				strPanel,
@@ -649,7 +649,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 
 			StrWrapper b = (StrWrapper)e.Wrapper;
-			int strnum = (new pjse.StrChooser()).Strnum(b);
+			int strnum = new pjse.StrChooser().Strnum(b);
 			if (strnum < 0)
 			{
 				return;
@@ -951,9 +951,9 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			internalchg = false;
 
-			ckbDefault.Enabled = cbLngSelect.Enabled = (
+			ckbDefault.Enabled = cbLngSelect.Enabled =
 				wrapper.Format != 0x0000
-			);
+			;
 		}
 
 		#endregion
@@ -1129,11 +1129,11 @@ namespace SimPe.PackedFiles.UserInterface
 			lvStrItems.Items.AddRange(
 				new ListViewItem[]
 				{
-					(
-						(ListViewItem)(
+
+						(ListViewItem)
 							resources.GetObject("lvStrItems.Items")
-						)
-					),
+
+					,
 				}
 			);
 			lvStrItems.MultiSelect = false;
@@ -1501,10 +1501,10 @@ namespace SimPe.PackedFiles.UserInterface
 
 			int w1 =
 				lvStrItems.ClientRectangle.Width
-				- (int)(resources.GetObject("chString.Width"))
+				- (int)resources.GetObject("chString.Width")
 				- 18;
 			int w2 = ckbDescription.Checked
-				? (int)(resources.GetObject("chLangDesc.Width"))
+				? (int)resources.GetObject("chLangDesc.Width")
 				: 0;
 
 			if (ckbDefault.Checked)
@@ -1535,7 +1535,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 
 			RichTextBox[] rtb = { rtbTitle, rtbDescription };
-			string result = (new pjse.StrBig()).doBig(rtb[index].Text);
+			string result = new pjse.StrBig().doBig(rtb[index].Text);
 			if (result != null)
 			{
 				rtb[index].Text = result;
@@ -1606,7 +1606,7 @@ namespace SimPe.PackedFiles.UserInterface
 		private void btnAppend_Click(object sender, EventArgs e)
 		{
 			Append(
-				(new pjse.ResourceChooser()).Execute(
+				new pjse.ResourceChooser().Execute(
 					wrapper.FileDescriptor.Type,
 					wrapper.FileDescriptor.Group,
 					strPanel,

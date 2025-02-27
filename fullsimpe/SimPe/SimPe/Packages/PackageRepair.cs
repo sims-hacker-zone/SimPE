@@ -143,7 +143,7 @@ namespace SimPe.Packages
 
 			for (int i = 0; i < 4; i++)
 			{
-				br.BaseStream.Seek(pos + i * step, SeekOrigin.Begin);
+				br.BaseStream.Seek(pos + (i * step), SeekOrigin.Begin);
 				PackedFileDescriptor pfd = new PackedFileDescriptor();
 				pfd.LoadFromStream(pkg.Header, br);
 
@@ -199,7 +199,7 @@ namespace SimPe.Packages
 				step = 0x14;
 			}
 
-			long pos = br.BaseStream.Length - (4 * step + 1);
+			long pos = br.BaseStream.Length - ((4 * step) + 1);
 
 			long lastitem = -1;
 			long firstitem = -1;

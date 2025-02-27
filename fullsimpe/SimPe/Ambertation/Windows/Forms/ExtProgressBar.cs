@@ -316,14 +316,14 @@ namespace Ambertation.Windows.Forms
 			);
 			double p =
 				(float)(Value - Minimum) / (Maximum - Minimum);
-			int wd = (int)((SensitiveWidth) * p) + 1;
+			int wd = (int)(SensitiveWidth * p) + 1;
 			if (p == 0)
 			{
 				wd = 0;
 			}
 
 			Rectangle selrect = new Rectangle(0, 0, wd, Height);
-			Rectangle rect = new Rectangle(wd, 0, (Width) - wd, Height);
+			Rectangle rect = new Rectangle(wd, 0, Width - wd, Height);
 
 			SetGraphicsMode(e.Graphics, true);
 			e.Graphics.DrawImage(cachedimg, rect, rect, GraphicsUnit.Pixel);
@@ -795,12 +795,12 @@ namespace Ambertation.Windows.Forms
 		)
 		{
 			double minhg = (Height - 1) / 4.0;
-			double step = ((Height - 1) - minhg) / (TokenCount - 1);
+			double step = (Height - 1 - minhg) / (TokenCount - 1);
 			for (int i = 0; i < TokenCount; i++)
 			{
 				int left = TokenOffset(i);
-				int height = (int)Math.Floor(minhg + i * step);
-				int top = (Height - 1) - height;
+				int height = (int)Math.Floor(minhg + (i * step));
+				int top = Height - 1 - height;
 
 				DrawTokens(g, gsel, left, top, TokenWidth, height);
 			}
@@ -812,12 +812,12 @@ namespace Ambertation.Windows.Forms
 		)
 		{
 			double minhg = (Height - 1) / 4.0;
-			double step = ((Height - 1) - minhg) / (TokenCount - 1);
+			double step = (Height - 1 - minhg) / (TokenCount - 1);
 			for (int i = 0; i < TokenCount; i++)
 			{
 				int left = TokenOffset(i);
-				int height = (int)Math.Floor(minhg + (TokenCount - 1 - i) * step);
-				int top = (Height - 1) - height;
+				int height = (int)Math.Floor(minhg + ((TokenCount - 1 - i) * step));
+				int top = Height - 1 - height;
 
 				DrawTokens(g, gsel, left, top, TokenWidth, height);
 			}
@@ -829,14 +829,14 @@ namespace Ambertation.Windows.Forms
 		)
 		{
 			double minhg = (Height - 1) / 4.0;
-			int mid = ((TokenCount - 1) / 2);
-			double step = ((Height - 1) - minhg) / mid;
+			int mid = (TokenCount - 1) / 2;
+			double step = (Height - 1 - minhg) / mid;
 			for (int i = 0; i < TokenCount; i++)
 			{
 				int left = TokenOffset(i);
-				int height = i > mid ? (int)Math.Floor(minhg + (i - mid) * step) : (int)Math.Floor(minhg + (mid - i) * step);
+				int height = i > mid ? (int)Math.Floor(minhg + ((i - mid) * step)) : (int)Math.Floor(minhg + ((mid - i) * step));
 
-				int top = (Height - 1) - height;
+				int top = Height - 1 - height;
 
 				DrawTokens(g, gsel, left, top, TokenWidth, height);
 			}
@@ -893,7 +893,7 @@ namespace Ambertation.Windows.Forms
 			set => SetTokenCount(value, false);
 		}
 
-		public double TokenMinSpacing => ((Width - 1) - (TokenCount * TokenWidth))
+		public double TokenMinSpacing => (Width - 1 - (TokenCount * TokenWidth))
 					/ ((float)TokenCount - 1);
 		#endregion
 	}

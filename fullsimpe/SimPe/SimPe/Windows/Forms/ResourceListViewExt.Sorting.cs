@@ -106,9 +106,9 @@ namespace SimPe.Windows.Forms
 
 		private void lv_ColumnClick(object sender, ColumnClickEventArgs e)
 		{
-			ResourceViewManager.SortColumn tmp = (
+			ResourceViewManager.SortColumn tmp =
 				ResourceViewManager.SortColumn.Offset
-			);
+			;
 			if (lv.Columns[e.Column] == clTName)
 			{
 				tmp = ResourceViewManager.SortColumn.Name;

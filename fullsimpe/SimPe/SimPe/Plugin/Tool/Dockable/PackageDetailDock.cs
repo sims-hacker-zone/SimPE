@@ -77,11 +77,11 @@ namespace SimPe.Plugin.Tool.Dockable
 			resources.ApplyResources(this, "$this");
 			Controls.Add(xpGradientPanel1);
 			FloatingSize = new System.Drawing.Size(592, 376);
-			Image = ((System.Drawing.Image)(resources.GetObject("$this.Image")));
+			Image = (System.Drawing.Image)resources.GetObject("$this.Image");
 			Name = "dcPackageDetails";
-			TabImage = (
-				(System.Drawing.Image)(resources.GetObject("$this.TabImage"))
-			);
+			TabImage =
+				(System.Drawing.Image)resources.GetObject("$this.TabImage")
+			;
 			TabText = "Details";
 			VisibleChanged += new System.EventHandler(
 				dcPackageDetails_VisibleChanged

@@ -168,10 +168,10 @@ namespace pjse.BhavOperandWizards.WizBhav
 			for (int i = 0; i < aldoc.Length; i++)
 			{
 				aldoc[i].Enabled =
-					(
+
 						format != BhavWizBhav.dataFormat.useTemps
 						&& format != BhavWizBhav.dataFormat.useParams
-					) && !(format == BhavWizBhav.dataFormat.newFormat && i >= 4);
+					 && !(format == BhavWizBhav.dataFormat.newFormat && i >= 4);
 				aldoc[i].DataOwnerEnabled = format == BhavWizBhav.dataFormat.newFormat;
 				switch (format)
 				{
@@ -184,7 +184,7 @@ namespace pjse.BhavOperandWizards.WizBhav
 						aldoc[i].DataOwner = 0x09;
 						break;
 					case BhavWizBhav.dataFormat.oldFormat:
-						aldoc[i].Value = BhavWiz.ToShort(o[i * 2], o[i * 2 + 1]);
+						aldoc[i].Value = BhavWiz.ToShort(o[i * 2], o[(i * 2) + 1]);
 						aldoc[i].DataOwner = 0x07;
 						break;
 					case BhavWizBhav.dataFormat.newFormat:
@@ -280,7 +280,7 @@ namespace pjse.BhavOperandWizards.WizBhav
 				case BhavWizBhav.dataFormat.newFormat:
 					for (int i = 0; i < 4; i++)
 					{
-						BhavWiz.FromShort(ref operands, i * 3 + 1, aldoc[i].Value);
+						BhavWiz.FromShort(ref operands, (i * 3) + 1, aldoc[i].Value);
 						operands[i * 3] = aldoc[i].DataOwner;
 					}
 					if (nodeVersion > 0)

@@ -72,9 +72,9 @@ namespace SimPe
 			//
 			// button2
 			//
-			button2.Image = (
-				(Image)(resources.GetObject("button2.Image"))
-			);
+			button2.Image =
+				(Image)resources.GetObject("button2.Image")
+			;
 			button2.Location = new Point(938, 12);
 			button2.Name = "button2";
 			button2.Size = new Size(64, 23);
@@ -88,14 +88,14 @@ namespace SimPe
 			wb.AllowWebBrowserDrop = false;
 			wb.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			wb.IsWebBrowserContextMenuEnabled = false;

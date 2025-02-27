@@ -1419,7 +1419,7 @@ namespace SimPe.Wants
 						tbSIArg2.Visible =
 						lbTimes.Visible =
 						lbXWNTIntMult.Visible =
-							(i.Arg2 != 0);
+							i.Arg2 != 0;
 					tbSISimID.Text = "0x" + Helper.HexString(i.SimID);
 					sdsc =
 						FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
@@ -1467,9 +1467,9 @@ namespace SimPe.Wants
 					Plugin.WantInformation wantim =
 						Plugin.WantInformation.LoadWant(i.WantId);
 					tbSIArg2.Text = "0x" + Helper.HexString(i.Arg2);
-					cbSIArgType.SelectedIndex = (
+					cbSIArgType.SelectedIndex =
 						new List<string>(Enum.GetNames(typeof(SWAFItem.ArgTypes)))
-					).IndexOf("" + i.ArgType);
+					.IndexOf("" + i.ArgType);
 					SIArg(i);
 					tbSICounter.Text = "0x" + Helper.HexString(i.Counter);
 					tbSIScore.Text = "" + i.Score;

@@ -194,7 +194,7 @@ namespace SimPe
 				0
 			);
 			FormBorderStyle = FormBorderStyle.FixedDialog;
-			Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			MaximizeBox = false;
 			MinimizeBox = false;
 			Name = "Hidden";

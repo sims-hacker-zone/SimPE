@@ -414,10 +414,10 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// True if this Item can be processed as a Memory
 		/// </summary>
-		public bool IsMemory => (
+		public bool IsMemory =>
 					ObjectDataFile.Type
 					== SimPe.Data.ObjectTypes.Memory
-				);
+				;
 
 		/// <summary>
 		/// Extension by Theo. Returns true, if this Memory is a Spam Token

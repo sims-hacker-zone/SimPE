@@ -257,7 +257,7 @@ namespace SimPe.Plugin.Anim
 			{
 				uint i = Unknown5 & 0x01F00000;
 				i = i >> 20;
-				return (FrameType)((byte)i);
+				return (FrameType)(byte)i;
 			}
 			set
 			{

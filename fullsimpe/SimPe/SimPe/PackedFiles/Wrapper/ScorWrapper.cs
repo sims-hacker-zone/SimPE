@@ -152,7 +152,7 @@ namespace SimPe.PackedFiles.Wrapper
 			for (int i = 0; i < Items.Count; i++)
 			{
 				ScorItem si = Items[i];
-				si.Serialize(writer, (i == Items.Count - 1));
+				si.Serialize(writer, i == Items.Count - 1);
 			}
 		}
 		#endregion

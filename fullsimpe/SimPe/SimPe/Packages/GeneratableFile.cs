@@ -76,7 +76,7 @@ namespace SimPe.Packages
 				flname,
 				FileAccess.ReadWrite
 			);
-			bool res = (si.StreamState == StreamState.Opened);
+			bool res = si.StreamState == StreamState.Opened;
 
 			if (close && res)
 			{
@@ -547,7 +547,7 @@ namespace SimPe.Packages
 				writer.Write(item.Group);
 				writer.Write(item.Instance);
 				if (
-					(Header.IsVersion0101)
+					Header.IsVersion0101
 					&& (Header.IndexType == Data.MetaData.IndexTypes.ptLongFileIndex)
 				)
 				{

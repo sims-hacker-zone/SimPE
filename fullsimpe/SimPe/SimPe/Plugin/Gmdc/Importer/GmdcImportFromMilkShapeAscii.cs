@@ -640,7 +640,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 					linetoks[0],
 					DefaultCulture
 				);
-				bool isscaled = (t == -1);
+				bool isscaled = t == -1;
 				t = Math.Max(0, t - 1);
 				Vector3f trans = new Vector3f(
 					ToDouble(linetoks[1]),
@@ -694,7 +694,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 					linetoks[0],
 					DefaultCulture
 				);
-				bool isscaled = (t == -1);
+				bool isscaled = t == -1;
 				t = Math.Max(0, t - 1);
 				Vector3f rot = new Vector3f(
 					ToDouble(linetoks[1]),
@@ -826,7 +826,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 				int vt = g.Link.AliasValues[2][i];
 
 				ulong hash =
-					((((uint)v & 0x3FFFFF) << 21) | ((uint)vn & 0x3FFFFF) << 21)
+					(((uint)v & 0x3FFFFF) << 21) | (((uint)vn & 0x3FFFFF) << 21)
 					| ((uint)vt & 0x3FFFFF);
 
 				ArrayList list = null;

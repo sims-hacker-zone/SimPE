@@ -125,10 +125,10 @@ namespace SimPe
 			//
 			btimport.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			btimport.FlatStyle = FlatStyle.System;
@@ -143,12 +143,12 @@ namespace SimPe
 			//
 			cbsemi.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			cbsemi.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -178,10 +178,10 @@ namespace SimPe
 			//
 			llscan.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			llscan.AutoSize = true;
@@ -208,14 +208,14 @@ namespace SimPe
 			//
 			lbfiles.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lbfiles.CheckOnClick = true;
@@ -247,10 +247,10 @@ namespace SimPe
 			//
 			linkLabel1.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			linkLabel1.AutoSize = true;
@@ -277,10 +277,10 @@ namespace SimPe
 			//
 			cbfix.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			cbfix.FlatStyle = FlatStyle.System;
@@ -299,10 +299,10 @@ namespace SimPe
 			//
 			cbname.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			cbname.FlatStyle = FlatStyle.System;
@@ -321,14 +321,14 @@ namespace SimPe
 			//
 			panel1.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			panel1.BackColor = System.Drawing.Color.Transparent;
@@ -368,7 +368,7 @@ namespace SimPe
 			FormBorderStyle =
 				FormBorderStyle
 				.SizableToolWindow;
-			Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			Name = "ImportSemi";
 			Text = "Import SemiGlobals";
 			panel1.ResumeLayout(false);
@@ -468,16 +468,16 @@ namespace SimPe
 					{
 						lbfiles.Items.Add(
 							item,
-							(
+
 								(item.FileDescriptor.Type == Data.MetaData.BHAV_FILE)
 								|| (item.FileDescriptor.Type == 0x42434F4E)
-							)
+
 						);
 						loaded.Add(item.FileDescriptor);
 					}
 				}
 				lbfiles.Sorted = true;
-				btimport.Enabled = (lbfiles.Items.Count > 0);
+				btimport.Enabled = lbfiles.Items.Count > 0;
 			}
 			catch (Exception) { }
 

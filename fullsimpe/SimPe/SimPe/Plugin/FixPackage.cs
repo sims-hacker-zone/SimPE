@@ -101,7 +101,7 @@ namespace SimPe.Plugin
 					Packages.File.LoadFromFile(package);
 
 				System.Collections.Hashtable map = RenameForm.GetNames(
-					(modelname.Trim() != ""),
+					modelname.Trim() != "",
 					pkg,
 					null,
 					modelname

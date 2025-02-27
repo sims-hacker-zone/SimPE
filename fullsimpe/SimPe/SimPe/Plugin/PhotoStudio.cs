@@ -171,10 +171,10 @@ namespace SimPe.Plugin
 			ofd = new OpenFileDialog();
 			sfd = new SaveFileDialog();
 			panel1 = new Panel();
-			((System.ComponentModel.ISupportInitialize)(pbpreview)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)pbpreview).BeginInit();
 			tabControl1.SuspendLayout();
 			tabPage1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(pb)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)pb).BeginInit();
 			tabPage2.SuspendLayout();
 			panel1.SuspendLayout();
 			SuspendLayout();
@@ -384,11 +384,11 @@ namespace SimPe.Plugin
 			MaximizeBox = false;
 			Name = "PhotoStudio";
 			ShowInTaskbar = false;
-			((System.ComponentModel.ISupportInitialize)(pbpreview)).EndInit();
+			((System.ComponentModel.ISupportInitialize)pbpreview).EndInit();
 			tabControl1.ResumeLayout(false);
 			tabPage1.ResumeLayout(false);
 			tabPage1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(pb)).EndInit();
+			((System.ComponentModel.ISupportInitialize)pb).EndInit();
 			tabPage2.ResumeLayout(false);
 			panel1.ResumeLayout(false);
 			panel1.PerformLayout();
@@ -494,7 +494,7 @@ namespace SimPe.Plugin
 				package = this.package;
 			}
 
-			return new ToolResult((this.pfd != null), (this.package != null));
+			return new ToolResult(this.pfd != null, this.package != null);
 		}
 
 		/// <summary>
@@ -797,8 +797,8 @@ namespace SimPe.Plugin
 					);
 
 					if (
-						(System.IO.File.Exists(PathProvider.Global.NvidiaDDSTool))
-						&& (ddstool)
+						System.IO.File.Exists(PathProvider.Global.NvidiaDDSTool)
+						&& ddstool
 						&& (
 							(format == ImageLoader.TxtrFormats.DXT1Format)
 							|| (format == ImageLoader.TxtrFormats.DXT3Format)
@@ -915,7 +915,7 @@ namespace SimPe.Plugin
 						img,
 						(PhotoStudioTemplate)lvbase.SelectedItems[0].Tag,
 						SelectedFormat(),
-						(cbquality.SelectedIndex == 2),
+						cbquality.SelectedIndex == 2,
 						true,
 						cbflip.Checked
 					);

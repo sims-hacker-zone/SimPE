@@ -114,7 +114,7 @@ namespace SimPe.PackedFiles.UserInterface
 			Delta.Text = item == null ? "" : Helper.HexString(item.Delta);
 			Type.Text = item == null ? "" : Helper.HexString(item.Type);
 			internalchg = prev;
-			Enabled = (item != null);
+			Enabled = item != null;
 		}
 
 		public void Clear()

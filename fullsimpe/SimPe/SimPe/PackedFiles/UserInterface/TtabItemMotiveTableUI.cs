@@ -196,7 +196,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			else
 			{
-				lbNrGroups.Text = (lbNrGroups.Text.Split(new char[] { ':' })[0]) + ": 0";
+				lbNrGroups.Text = lbNrGroups.Text.Split(new char[] { ':' })[0] + ": 0";
 			}
 
 			cbShowAll_CheckedChanged(null, null);

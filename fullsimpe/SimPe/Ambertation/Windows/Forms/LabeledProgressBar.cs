@@ -389,7 +389,7 @@ namespace Ambertation.Windows.Forms
 			internalupdate = true;
 			try
 			{
-				double disp = Value * ns + dno;
+				double disp = (Value * ns) + dno;
 				tb.Text = npre + disp.ToString(nf) + nsu;
 			}
 			catch { }
@@ -415,7 +415,7 @@ namespace Ambertation.Windows.Forms
 			internalupdate = true;
 			try
 			{
-				int val = (int)((((Convert.ToDouble(tb.Text) - dno) / ns)));
+				int val = (int)((Convert.ToDouble(tb.Text) - dno) / ns);
 				Value = Math.Max(pb.Minimum, Math.Min(pb.Maximum, val));
 			}
 			catch { }
@@ -436,7 +436,7 @@ namespace Ambertation.Windows.Forms
 						pb.Maximum,
 						Convert.ToInt32(
 							Math.Round(
-								(e.X / (double)pb.SensitiveWidth) * pb.Maximum
+								e.X / (double)pb.SensitiveWidth * pb.Maximum
 							)
 						)
 					)

@@ -611,7 +611,7 @@ namespace SimPe.PackedFiles.UserInterface
 					}
 				}
 
-				tbtype.Text = "0x" + Helper.HexString((ushort)(objd.Type));
+				tbtype.Text = "0x" + Helper.HexString((ushort)objd.Type);
 				tbguid.Text = "0x" + Helper.HexString(objd.Guid);
 				tbproxguid.Text = "0x" + Helper.HexString(objd.ProxyGuid);
 				tborgguid.Text = "0x" + Helper.HexString(objd.OriginalGuid);
@@ -619,25 +619,25 @@ namespace SimPe.PackedFiles.UserInterface
 				tbgrid.Text = "0x" + Helper.HexString(objd.GridAlignedGuid);
 				tbflname.Text = objd.FileName;
 
-				cbbathroom.Checked = (objd.RoomSort.InBathroom);
-				cbbedroom.Checked = (objd.RoomSort.InBedroom);
-				cbdinigroom.Checked = (objd.RoomSort.InDiningRoom);
-				cbkitchen.Checked = (objd.RoomSort.InKitchen);
-				cblivingroom.Checked = (objd.RoomSort.InLivingRoom);
-				cbmisc.Checked = (objd.RoomSort.InMisc);
-				cboutside.Checked = (objd.RoomSort.InOutside);
-				cbstudy.Checked = (objd.RoomSort.InStudy);
-				cbkids.Checked = (objd.RoomSort.InKids);
+				cbbathroom.Checked = objd.RoomSort.InBathroom;
+				cbbedroom.Checked = objd.RoomSort.InBedroom;
+				cbdinigroom.Checked = objd.RoomSort.InDiningRoom;
+				cbkitchen.Checked = objd.RoomSort.InKitchen;
+				cblivingroom.Checked = objd.RoomSort.InLivingRoom;
+				cbmisc.Checked = objd.RoomSort.InMisc;
+				cboutside.Checked = objd.RoomSort.InOutside;
+				cbstudy.Checked = objd.RoomSort.InStudy;
+				cbkids.Checked = objd.RoomSort.InKids;
 
-				cbcDine.Checked = (objd.CommSort.InDining);
-				cbcShop.Checked = (objd.CommSort.InShopping);
-				cbcOuts.Checked = (objd.CommSort.InOutdoors);
-				cbcStreet.Checked = (objd.CommSort.InStreet);
-				cbcMisc.Checked = (objd.CommSort.InMiscel);
+				cbcDine.Checked = objd.CommSort.InDining;
+				cbcShop.Checked = objd.CommSort.InShopping;
+				cbcOuts.Checked = objd.CommSort.InOutdoors;
+				cbcStreet.Checked = objd.CommSort.InStreet;
+				cbcMisc.Checked = objd.CommSort.InMiscel;
 
 				tbPrice.Text = "�" + Convert.ToString(objd.Price);
 
-				tbreqeps.Enabled = (objd.Version > 0x008b);
+				tbreqeps.Enabled = objd.Version > 0x008b;
 				SetExpansionsCb(objd);
 				SetFunctionCb(objd);
 				cbsort.SelectedValue = objd.FunctionSubSort;
@@ -672,11 +672,11 @@ namespace SimPe.PackedFiles.UserInterface
 					//this.toolTip1.SetToolTip(this.tborgguid, SimPe.Plugin.Subhoods.getgooee(objd.OriginalGuid));
 				}
 
-				llgetGUID.Visible = (
+				llgetGUID.Visible =
 					UserVerification.HaveUserId
 					&& objd.Type != Data.ObjectTypes.Person
 					&& objd.Type != Data.ObjectTypes.UnlinkedSim
-				);
+				;
 				//this.lladdgooee.Visible = (UserVerification.HaveUserId && !SimPe.Plugin.Subhoods.GuidExists(objd.Guid) && objd.Type != SimPe.Data.ObjectTypes.Person && objd.Type != SimPe.Data.ObjectTypes.UnlinkedSim);
 			}
 			finally
@@ -980,14 +980,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			tc.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			tc.Controls.Add(tpcatalogsort);
@@ -2040,10 +2040,10 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			panel1.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			panel1.Controls.Add(rbhex);
@@ -2105,10 +2105,10 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			tbtype.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			tbtype.Location = new System.Drawing.Point(920, 32);
@@ -2122,10 +2122,10 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			cbtype.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			cbtype.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -2212,10 +2212,10 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			label65.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			label65.AutoSize = true;
@@ -2285,12 +2285,12 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			panel6.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			//this.panel6.CanCommit = true;
@@ -2371,11 +2371,11 @@ namespace SimPe.PackedFiles.UserInterface
 					cball.Visible =
 					lbIsOk.Visible =
 						false;
-				llgetGUID.Visible = (
+				llgetGUID.Visible =
 					UserVerification.HaveUserId
 					&& wrapper.Type != Data.ObjectTypes.Person
 					&& wrapper.Type != Data.ObjectTypes.UnlinkedSim
-				);
+				;
 				//this.lladdgooee.Visible = (UserVerification.HaveUserId && !SimPe.Plugin.Subhoods.GuidExists(wrapper.Guid) && wrapper.Type != SimPe.Data.ObjectTypes.Person && wrapper.Type != SimPe.Data.ObjectTypes.UnlinkedSim);
 				Tag = null;
 			}
@@ -2635,7 +2635,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void btnUpdateMMAT_Click(object sender, EventArgs e)
 		{
-			if ((wrapper.Guid != initialguid) || (cball.Checked))
+			if ((wrapper.Guid != initialguid) || cball.Checked)
 			{
 				Plugin.FixGuid fg = new Plugin.FixGuid(wrapper.Package);
 				if (cball.Checked)
@@ -2665,9 +2665,9 @@ namespace SimPe.PackedFiles.UserInterface
 			InitialTab = tc.SelectedIndex;
 			if (tc.SelectedTab == tpraw)
 			{
-				rbhex.Checked = (Ambertation.BaseChangeableNumber.DigitBase == 16);
-				rbbin.Checked = (Ambertation.BaseChangeableNumber.DigitBase == 2);
-				rbdec.Checked = (!rbhex.Checked && !rbbin.Checked);
+				rbhex.Checked = Ambertation.BaseChangeableNumber.DigitBase == 16;
+				rbbin.Checked = Ambertation.BaseChangeableNumber.DigitBase == 2;
+				rbdec.Checked = !rbhex.Checked && !rbbin.Checked;
 
 				//if (this.pg.SelectedObject==null)
 				ShowData();
@@ -2851,7 +2851,7 @@ namespace SimPe.PackedFiles.UserInterface
 					}
 				}
 
-				tbtype.Text = "0x" + Helper.HexString((ushort)(wrapper.Type));
+				tbtype.Text = "0x" + Helper.HexString((ushort)wrapper.Type);
 			}
 			else
 			{

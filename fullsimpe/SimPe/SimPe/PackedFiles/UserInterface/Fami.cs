@@ -88,21 +88,21 @@ namespace SimPe.PackedFiles.UserInterface
 			form.label3.Visible = form.tbmoney.Visible =
 				(int)fami.Version
 				< (int)Wrapper.FamiVersions.Castaway;
-			form.label16.Visible = form.tbbmoney.Visible = (
+			form.label16.Visible = form.tbbmoney.Visible =
 				(int)fami.Version
 					>= (int)Wrapper.FamiVersions.Business
 				&& (int)fami.Version
 					< (int)Wrapper.FamiVersions.Castaway
-			);
+			;
 			//form.panel4.HeaderText = Data.MetaData.NPCFamily(fami.FileDescriptor.Instance);
-			form.btOpenHistory.Visible = (
+			form.btOpenHistory.Visible =
 				fami.Package.FindFile(
 					0x46414D68,
 					fami.FileDescriptor.SubType,
 					fami.FileDescriptor.Group,
 					fami.FileDescriptor.Instance
 				) != null
-			);
+			;
 			form.label15.ForeColor = fami.LotInstance == 0
 				|| fami.Package.FindFile(0x0BF999E7, 0, 0xFFFFFFFF, fami.LotInstance)
 					== null

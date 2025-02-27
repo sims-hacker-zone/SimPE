@@ -52,11 +52,11 @@ namespace SimPe.Plugin
 			//
 			// installerControl1
 			//
-			installerControl1.BackgroundImage = (
-				(System.Drawing.Image)(
+			installerControl1.BackgroundImage =
+				(System.Drawing.Image)
 					resources.GetObject("installerControl1.BackgroundImage")
-				)
-			);
+
+			;
 			installerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
 			installerControl1.Font = new System.Drawing.Font("Tahoma", 8.25F);
 			installerControl1.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -78,7 +78,7 @@ namespace SimPe.Plugin
 				0
 			);
 			FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-			Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			Name = "InstallerForm";
 			StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			Text = "Content Preview";

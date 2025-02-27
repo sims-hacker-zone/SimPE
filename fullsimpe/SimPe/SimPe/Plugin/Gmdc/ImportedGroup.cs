@@ -42,7 +42,7 @@ namespace SimPe.Plugin.Gmdc
 			get; set;
 		}
 
-		public bool HasIndex => (Index >= 0);
+		public bool HasIndex => Index >= 0;
 	}
 
 	/// <summary>
@@ -114,7 +114,7 @@ namespace SimPe.Plugin.Gmdc
 		public GmdcGroupImporterAction()
 		{
 			Action = GmdcImporterAction.Add;
-			Scale = (float)(1.0);
+			Scale = (float)1.0;
 
 			Target = new GroupDescriptor("");
 		}
@@ -228,7 +228,7 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public new ImportedGroup this[int index]
 		{
-			get => ((ImportedGroup)base[index]);
+			get => (ImportedGroup)base[index];
 			set => base[index] = value;
 		}
 
@@ -237,7 +237,7 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public ImportedGroup this[uint index]
 		{
-			get => ((ImportedGroup)base[(int)index]);
+			get => (ImportedGroup)base[(int)index];
 			set => base[(int)index] = value;
 		}
 

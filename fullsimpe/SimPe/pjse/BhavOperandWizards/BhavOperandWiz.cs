@@ -317,7 +317,7 @@ namespace pjse.BhavOperandWizards
 			try
 			{
 				ushort v = tbValueConverter(tb);
-				return (v < 1 << bitsInValue);
+				return v < 1 << bitsInValue;
 			}
 			catch
 			{
@@ -664,7 +664,7 @@ namespace pjse.BhavOperandWizards
 				else if (
 					inst != null
 					&& useInstancePicker
-					&& (DataOwner >= 0x29 && DataOwner <= 0x2F)
+					&& DataOwner >= 0x29 && DataOwner <= 0x2F
 				)
 				{
 					pickerNames = inst.GetArrayNames();
@@ -830,7 +830,7 @@ namespace pjse.BhavOperandWizards
 			get => bitsInValue == 8;
 			set
 			{
-				if ((bitsInValue == 8) != value)
+				if (bitsInValue == 8 != value)
 				{
 					bitsInValue = value ? 8 : 16;
 					setTextBoxLength();

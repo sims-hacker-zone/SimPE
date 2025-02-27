@@ -107,14 +107,14 @@ namespace SimPe
 			//
 			rtb.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			rtb.BackColor = Color.White;
@@ -149,9 +149,9 @@ namespace SimPe
 			//
 			// button2
 			//
-			button2.Image = (
-				(Image)(resources.GetObject("button2.Image"))
-			);
+			button2.Image =
+				(Image)resources.GetObject("button2.Image")
+			;
 			button2.Location = new Point(938, 12);
 			button2.Name = "button2";
 			button2.Size = new Size(64, 23);
@@ -165,14 +165,14 @@ namespace SimPe
 			wb.AllowWebBrowserDrop = false;
 			wb.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			wb.IsWebBrowserContextMenuEnabled = false;
@@ -191,7 +191,7 @@ namespace SimPe
 			Controls.Add(button2);
 			Controls.Add(rtb);
 			Controls.Add(button1);
-			Icon = ((Icon)(resources.GetObject("$this.Icon")));
+			Icon = (Icon)resources.GetObject("$this.Icon");
 			MaximizeBox = false;
 			MinimizeBox = false;
 			Name = "About";

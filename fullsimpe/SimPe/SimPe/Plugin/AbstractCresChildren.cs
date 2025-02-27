@@ -236,8 +236,8 @@ namespace SimPe.Plugin
 
 					v.Rotation = v.Rotation * t.Rotation;
 					v.Translation =
-						t.Rotation.Rotate((v.Translation))
-						- t.Rotation.Rotate((t.Translation));
+						t.Rotation.Rotate(v.Translation)
+						- t.Rotation.Rotate(t.Translation);
 					//v.Rotation.MakeUnitQuaternion();
 
 
@@ -284,7 +284,7 @@ namespace SimPe.Plugin
 		public bool MoveNext()
 		{
 			pos++;
-			return (pos < ChildBlocks.Count);
+			return pos < ChildBlocks.Count;
 		}
 
 		#endregion

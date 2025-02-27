@@ -44,7 +44,7 @@ namespace SimPe
 		{
 			if (s.Length > 0)
 			{
-				writer.Write((uint)(s.Length));
+				writer.Write((uint)s.Length);
 				writer.Write(Helper.ToBytes(s, s.Length));
 			}
 			else

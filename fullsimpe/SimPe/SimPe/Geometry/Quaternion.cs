@@ -142,7 +142,7 @@ namespace SimPe.Geometry
 
 		public bool IsComplex(double z)
 		{
-			return ((Math.Pow(X + Y + Z + W, 2) - 4.0 * (Norm - z)) < 0.0);
+			return (Math.Pow(X + Y + Z + W, 2) - (4.0 * (Norm - z))) < 0.0;
 		}
 
 		public double GetMovePlus(double z)
@@ -150,12 +150,12 @@ namespace SimPe.Geometry
 			double d1 =
 				(
 					(-2.0 * (X + Y + Z + W))
-					+ (2 * Math.Sqrt(Math.Pow(X + Y + Z + W, 2) - 4.0 * (Norm - z)))
+					+ (2 * Math.Sqrt(Math.Pow(X + Y + Z + W, 2) - (4.0 * (Norm - z))))
 				) / 8.0;
 			double d2 =
 				(
 					(-2.0 * (X + Y + Z + W))
-					- (2 * Math.Sqrt(Math.Pow(X + Y + Z + W, 2) - 4.0 * (Norm - z)))
+					- (2 * Math.Sqrt(Math.Pow(X + Y + Z + W, 2) - (4.0 * (Norm - z))))
 				) / 8.0;
 			return d1 < d2 ? d2 : d1;
 		}
@@ -165,12 +165,12 @@ namespace SimPe.Geometry
 			double d1 =
 				(
 					(-2.0 * (X + Y + Z + W))
-					+ (2 * Math.Sqrt(Math.Pow(X + Y + Z + W, 2) - 4.0 * (Norm - z)))
+					+ (2 * Math.Sqrt(Math.Pow(X + Y + Z + W, 2) - (4.0 * (Norm - z))))
 				) / 8.0;
 			double d2 =
 				(
 					(-2.0 * (X + Y + Z + W))
-					- (2 * Math.Sqrt(Math.Pow(X + Y + Z + W, 2) - 4.0 * (Norm - z)))
+					- (2 * Math.Sqrt(Math.Pow(X + Y + Z + W, 2) - (4.0 * (Norm - z))))
 				) / 8.0;
 			return d1 > d2 ? d2 : d1;
 		}
@@ -208,7 +208,7 @@ namespace SimPe.Geometry
 				(q1.Imaginary | q2.Imaginary)
 					+ (q2.W * q1.Imaginary)
 					+ (q1.W * q2.Imaginary),
-				q1.W * q2.W - (q1.Imaginary & q2.Imaginary)
+				(q1.W * q2.W) - (q1.Imaginary & q2.Imaginary)
 			);
 		}
 
@@ -220,7 +220,7 @@ namespace SimPe.Geometry
 		/// <returns>The resulting Quaternion</returns>
 		public static double operator &(Quaternion q1, Quaternion q2)
 		{
-			return q1.W * q2.W + (q1.Imaginary & q2.Imaginary);
+			return (q1.W * q2.W) + (q1.Imaginary & q2.Imaginary);
 		}
 
 		/// <summary>
@@ -313,7 +313,7 @@ namespace SimPe.Geometry
 		/// <returns>Angle in Degree</returns>
 		public static double RadToDeg(double rad)
 		{
-			return (double)((rad * 180.0) / Math.PI);
+			return (double)(rad * 180.0 / Math.PI);
 		}
 
 		/// <summary>
@@ -323,7 +323,7 @@ namespace SimPe.Geometry
 		/// <returns>Angle in Radiants</returns>
 		public static double DegToRad(double deg)
 		{
-			return (double)((deg * Math.PI) / 180.0);
+			return (double)(deg * Math.PI / 180.0);
 		}
 
 		/// <summary>
@@ -343,7 +343,7 @@ namespace SimPe.Geometry
 
 		bool IsNear(double val, double near, double delta)
 		{
-			return (Math.Abs(Math.Abs(val) - near) < delta);
+			return Math.Abs(Math.Abs(val) - near) < delta;
 		}
 
 		protected double MakeRobustAngle(double rad)
@@ -823,17 +823,17 @@ namespace SimPe.Geometry
 				double sy = Math.Pow(Y, 2);
 				double sz = Math.Pow(Z, 2);
 				double sw = Math.Pow(W, 2);
-				m[0, 0] = 1 - 2 * (sy + sz);
-				m[0, 1] = 2 * (X * Y - W * Z);
-				m[0, 2] = 2 * (X * Z + W * Y);
+				m[0, 0] = 1 - (2 * (sy + sz));
+				m[0, 1] = 2 * ((X * Y) - (W * Z));
+				m[0, 2] = 2 * ((X * Z) + (W * Y));
 				m[0, 3] = 0;
-				m[1, 0] = 2 * (X * Y + W * Z);
-				m[1, 1] = 1 - 2 * (sx + sz);
-				m[1, 2] = 2 * (Y * Z - W * X);
+				m[1, 0] = 2 * ((X * Y) + (W * Z));
+				m[1, 1] = 1 - (2 * (sx + sz));
+				m[1, 2] = 2 * ((Y * Z) - (W * X));
 				m[1, 3] = 0;
-				m[2, 0] = 2 * (X * Z - W * Y);
-				m[2, 1] = 2 * (Y * Z + W * X);
-				m[2, 2] = 1 - 2 * (sx + sy);
+				m[2, 0] = 2 * ((X * Z) - (W * Y));
+				m[2, 1] = 2 * ((Y * Z) + (W * X));
+				m[2, 2] = 1 - (2 * (sx + sy));
 				m[2, 3] = 0;
 				m[3, 0] = 0;
 				m[3, 1] = 0;
@@ -890,7 +890,7 @@ namespace SimPe.Geometry
 		/// </summary>
 		public new Quaternion this[int index]
 		{
-			get => ((Quaternion)base[index]);
+			get => (Quaternion)base[index];
 			set => base[index] = value;
 		}
 
@@ -899,7 +899,7 @@ namespace SimPe.Geometry
 		/// </summary>
 		public Quaternion this[uint index]
 		{
-			get => ((Quaternion)base[(int)index]);
+			get => (Quaternion)base[(int)index];
 			set => base[(int)index] = value;
 		}
 

@@ -119,7 +119,7 @@ namespace SimPe
 			if (item != null)
 			{
 				Image = item.Image;
-				Visible = (item.Image != null);
+				Visible = item.Image != null;
 				if (Image == null)
 				{
 					Text = item.Text;
@@ -152,7 +152,7 @@ namespace SimPe
 					}
 					else
 					{
-						Name = "Button_" + (counter++);
+						Name = "Button_" + counter++;
 					}
 				}
 			}

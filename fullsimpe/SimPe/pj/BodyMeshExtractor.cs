@@ -532,7 +532,7 @@ namespace pj
 
 		public bool IsEnabled(IPackedFileDescriptor pfd, IPackageFile package)
 		{
-			return (package != null);
+			return package != null;
 		}
 
 		public SimPe.Interfaces.Plugin.IToolResult ShowDialog(

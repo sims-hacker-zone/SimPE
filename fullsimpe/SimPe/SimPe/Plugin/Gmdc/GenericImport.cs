@@ -118,12 +118,12 @@ namespace SimPe.Plugin.Gmdc
 			//
 			panel1.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Bottom
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			panel1.BackColor = Color.Transparent;
@@ -155,10 +155,10 @@ namespace SimPe.Plugin.Gmdc
 			//
 			label3.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			label3.BackColor = Color.Transparent;
@@ -184,12 +184,12 @@ namespace SimPe.Plugin.Gmdc
 			//
 			xpLine3.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Bottom
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			xpLine3.BackColor = Color.Transparent;
@@ -202,14 +202,14 @@ namespace SimPe.Plugin.Gmdc
 			//
 			lvbones.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lvbones.BorderStyle = BorderStyle.None;
@@ -263,10 +263,10 @@ namespace SimPe.Plugin.Gmdc
 			//
 			label2.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			label2.BackColor = Color.Transparent;
@@ -292,12 +292,12 @@ namespace SimPe.Plugin.Gmdc
 			//
 			xpLine2.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			xpLine2.BackColor = Color.Transparent;
@@ -310,10 +310,10 @@ namespace SimPe.Plugin.Gmdc
 			//
 			label1.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			label1.BackColor = Color.Transparent;
@@ -339,12 +339,12 @@ namespace SimPe.Plugin.Gmdc
 			//
 			xpLine1.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			xpLine1.BackColor = Color.Transparent;
@@ -357,12 +357,12 @@ namespace SimPe.Plugin.Gmdc
 			//
 			lvmesh.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			lvmesh.BorderStyle = BorderStyle.None;
@@ -438,7 +438,7 @@ namespace SimPe.Plugin.Gmdc
 				0
 			);
 			FormBorderStyle = FormBorderStyle.FixedDialog;
-			Icon = ((Icon)(resources.GetObject("$this.Icon")));
+			Icon = (Icon)resources.GetObject("$this.Icon");
 			MaximizeBox = false;
 			MinimizeBox = false;
 			Name = "GenericImportForm";

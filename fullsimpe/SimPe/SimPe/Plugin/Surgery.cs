@@ -129,9 +129,9 @@ namespace SimPe.Plugin
 			cbTownie = new CheckBox();
 			cbNpc = new CheckBox();
 			groupBox1.SuspendLayout();
-			((ISupportInitialize)(pbpatient)).BeginInit();
+			((ISupportInitialize)pbpatient).BeginInit();
 			groupBox2.SuspendLayout();
-			((ISupportInitialize)(pbarche)).BeginInit();
+			((ISupportInitialize)pbarche).BeginInit();
 			groupBox3.SuspendLayout();
 			SuspendLayout();
 			//
@@ -443,10 +443,10 @@ namespace SimPe.Plugin
 			SizeGripStyle = SizeGripStyle.Show;
 			groupBox1.ResumeLayout(false);
 			groupBox1.PerformLayout();
-			((ISupportInitialize)(pbpatient)).EndInit();
+			((ISupportInitialize)pbpatient).EndInit();
 			groupBox2.ResumeLayout(false);
 			groupBox2.PerformLayout();
-			((ISupportInitialize)(pbarche)).EndInit();
+			((ISupportInitialize)pbarche).EndInit();
 			groupBox3.ResumeLayout(false);
 			groupBox3.PerformLayout();
 			ResumeLayout(false);
@@ -750,7 +750,7 @@ namespace SimPe.Plugin
 			Idno idno = Idno.FromPackage(package);
 			if (idno != null)
 			{
-				lbUbi.Visible = (idno.Type != NeighborhoodType.Normal);
+				lbUbi.Visible = idno.Type != NeighborhoodType.Normal;
 			}
 
 			this.pfd = null;
@@ -803,7 +803,7 @@ namespace SimPe.Plugin
 				pfd = this.pfd;
 			}
 
-			return new ToolResult((this.pfd != null), false);
+			return new ToolResult(this.pfd != null, false);
 		}
 
 		private void Open(object sender, EventArgs e)
@@ -886,7 +886,7 @@ namespace SimPe.Plugin
 
 			if (cbmakeup.Checked)
 			{
-				if ((cbskin.Checked) || (cbface.Checked))
+				if (cbskin.Checked || cbface.Checked)
 				{
 					ps = new PlasticSurgery(
 						ngbh,
@@ -903,9 +903,9 @@ namespace SimPe.Plugin
 			if (cbeye.Checked)
 			{
 				if (
-					(cbskin.Checked)
-					|| (cbface.Checked)
-					|| (cbmakeup.Checked)
+					cbskin.Checked
+					|| cbface.Checked
+					|| cbmakeup.Checked
 				)
 				{
 					ps = new PlasticSurgery(
@@ -951,7 +951,7 @@ namespace SimPe.Plugin
 			LinkLabelLinkClickedEventArgs e
 		)
 		{
-			llexport.Enabled = (spatient != null);
+			llexport.Enabled = spatient != null;
 			if (lv.SelectedItems.Count == 0)
 			{
 				return;
@@ -968,7 +968,7 @@ namespace SimPe.Plugin
 				(pbpatient.Image != null)
 				&& (sarche != null || tarcheFile != null);
 			pfd = spatient.FileDescriptor;
-			llexport.Enabled = (spatient != null);
+			llexport.Enabled = spatient != null;
 			ShowSimDetails(spatient, pgPatientDetails);
 		}
 
@@ -1201,12 +1201,12 @@ namespace SimPe.Plugin
 			bool ret = true;
 			if (cbskin.Checked)
 			{
-				ret = (lvskin.SelectedItems.Count == 1);
+				ret = lvskin.SelectedItems.Count == 1;
 				if (ret)
 				{
 					if (
 						lvskin.Items[0].Selected
-						&& (sarche == null && tarcheFile == null)
+						&& sarche == null && tarcheFile == null
 					)
 					{
 						ret = false;
@@ -1264,7 +1264,7 @@ namespace SimPe.Plugin
 					)
 				)
 				{
-					button1.Enabled = (spatient != null);
+					button1.Enabled = spatient != null;
 					pbarche.Image = GetImage.NoOne;
 					ShowSimDetails(
 						Packages.File.LoadFromFile(tarcheFile),

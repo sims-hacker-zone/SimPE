@@ -77,14 +77,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			lv.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lv.HideSelection = false;
@@ -110,12 +110,12 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			label2.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			label2.Font = new Font(
@@ -137,10 +137,10 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			cbfile.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			cbfile.FlatStyle = FlatStyle.System;
@@ -154,10 +154,10 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			btlink.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			btlink.FlatStyle = FlatStyle.System;
@@ -184,7 +184,7 @@ namespace SimPe.PackedFiles.UserInterface
 				GraphicsUnit.Point,
 				0
 			);
-			Icon = ((Icon)(resources.GetObject("$this.Icon")));
+			Icon = (Icon)resources.GetObject("$this.Icon");
 			Name = "SimRelinkForm";
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "SimReMapForm";
@@ -289,7 +289,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void lv_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
-			btlink.Enabled = (lv.SelectedItems.Count == 1);
+			btlink.Enabled = lv.SelectedItems.Count == 1;
 		}
 
 		private void btlink_Click(object sender, System.EventArgs e)

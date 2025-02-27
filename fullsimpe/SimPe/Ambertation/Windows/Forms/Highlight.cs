@@ -94,7 +94,7 @@ namespace Ambertation.Windows.Forms
 		/// <returns></returns>
 		public bool Contains(int offset)
 		{
-			return (offset >= Start && offset <= End);
+			return offset >= Start && offset <= End;
 		}
 	}
 }
@@ -111,7 +111,7 @@ namespace Ambertation.Collections
 		/// </summary>
 		public new Windows.Forms.Highlight this[int index]
 		{
-			get => ((Windows.Forms.Highlight)base[index]);
+			get => (Windows.Forms.Highlight)base[index];
 			set => base[index] = value;
 		}
 
@@ -120,7 +120,7 @@ namespace Ambertation.Collections
 		/// </summary>
 		public Windows.Forms.Highlight this[uint index]
 		{
-			get => ((Windows.Forms.Highlight)base[(int)index]);
+			get => (Windows.Forms.Highlight)base[(int)index];
 			set => base[(int)index] = value;
 		}
 

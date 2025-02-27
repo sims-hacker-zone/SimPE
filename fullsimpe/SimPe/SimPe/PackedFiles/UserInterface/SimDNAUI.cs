@@ -83,12 +83,12 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			pbDom.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			pbDom.HelpVisible = false;
@@ -136,12 +136,12 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			pbRec.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			pbRec.HelpVisible = false;
@@ -157,10 +157,10 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			lbbody.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			lbbody.AutoSize = true;
@@ -184,14 +184,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			lbcpf.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lbcpf.Location = new System.Drawing.Point(8, 40);

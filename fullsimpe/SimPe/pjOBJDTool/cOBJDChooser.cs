@@ -53,7 +53,7 @@ namespace pjOBJDTool
 
 		bool IsLead(pfOBJD item)
 		{
-			return (item[0x0a] == 0 || (item[0x0a] > 0 && (short)item[0x0b] < 0));
+			return item[0x0a] == 0 || (item[0x0a] > 0 && (short)item[0x0b] < 0);
 		}
 
 		private void lbItems_SelectedIndexChanged(object sender, EventArgs e)

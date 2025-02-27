@@ -88,8 +88,8 @@ namespace Ambertation.Windows.Forms.Graph
 		{
 			get
 			{
-				int tw = Width - 4 - 2 * tborder;
-				int th = Height - 24 - 2 * tborder;
+				int tw = Width - 4 - (2 * tborder);
+				int th = Height - 24 - (2 * tborder);
 				if (thumb != null)
 				{
 					tw = thumb.Width;
@@ -144,8 +144,8 @@ namespace Ambertation.Windows.Forms.Graph
 			Rectangle srect = new Rectangle(
 				trec.Left - tborderx,
 				trec.Top - tbordery,
-				trec.Width + 2 * tborderx,
-				trec.Height + 2 * tbordery
+				trec.Width + (2 * tborderx),
+				trec.Height + (2 * tbordery)
 			);
 			;
 			DrawNiceRoundRectStart(
@@ -211,7 +211,7 @@ namespace Ambertation.Windows.Forms.Graph
 			Bitmap b = new Bitmap(sz.Width, sz.Height);
 			Rectangle trec = new Rectangle(
 				new Point(tborderx + 2, tbordery + 2),
-				new Size(sz.Width - 2 * tborderx - 4, sz.Height - 2 * tbordery - 4)
+				new Size(sz.Width - (2 * tborderx) - 4, sz.Height - (2 * tbordery) - 4)
 			);
 			img = Drawing.GraphicRoutines.ScaleImage(
 				img,
@@ -278,8 +278,8 @@ namespace Ambertation.Windows.Forms.Graph
 				new RectangleF(
 					new PointF(r.Left + 4 + lshift, r.Top + shift + 1),
 					new SizeF(
-						Math.Min(r.Width - 8, r.Width - 8 - 2 * lshift),
-						Math.Min(r.Height, r.Height - 2 * shift)
+						Math.Min(r.Width - 8, r.Width - 8 - (2 * lshift)),
+						Math.Min(r.Height, r.Height - (2 * shift))
 					)
 				),
 				sf
@@ -307,8 +307,8 @@ namespace Ambertation.Windows.Forms.Graph
 		public Size BestSize(int imgwidth, int imgheight)
 		{
 			return new Size(
-				imgwidth + 2 * tborder + 5,
-				imgheight + 2 * tborder + 5 + 19
+				imgwidth + (2 * tborder) + 5,
+				imgheight + (2 * tborder) + 5 + 19
 			);
 		}
 
@@ -345,25 +345,25 @@ namespace Ambertation.Windows.Forms.Graph
 			trec = new Rectangle(
 				trec.Left - tborder - 2,
 				trec.Top - tborder - 2,
-				trec.Width + 2 * tborder + 4,
-				trec.Height + 2 * tborder + 4
+				trec.Width + (2 * tborder) + 4,
+				trec.Height + (2 * tborder) + 4
 			);
 			;
 			Rectangle prec = new Rectangle(0, Height - 16, Width, 16);
 
 			docks[0].X = Left + prec.Left;
-			docks[0].Y = Top + prec.Top + prec.Height / 2;
+			docks[0].Y = Top + prec.Top + (prec.Height / 2);
 			docks[1].X = Left + prec.Left + prec.Width;
-			docks[1].Y = Top + prec.Top + prec.Height / 2;
+			docks[1].Y = Top + prec.Top + (prec.Height / 2);
 
-			docks[2].X = Left + trec.Left + trec.Width / 2;
+			docks[2].X = Left + trec.Left + (trec.Width / 2);
 			docks[2].Y = Top + trec.Top;
 			docks[3].X = Left + trec.Left;
 			docks[3].Y = Top + trec.Top;
 			docks[4].X = Left + trec.Left + trec.Width;
 			docks[4].Y = Top + trec.Top;
 
-			docks[5].X = Left + prec.Left + prec.Width / 2;
+			docks[5].X = Left + prec.Left + (prec.Width / 2);
 			docks[5].Y = Top + prec.Bottom;
 			docks[6].X = Left + prec.Left;
 			docks[6].Y = Top + prec.Bottom;
@@ -371,9 +371,9 @@ namespace Ambertation.Windows.Forms.Graph
 			docks[7].Y = Top + prec.Bottom;
 
 			docks[8].X = Left + trec.Left;
-			docks[8].Y = Top + trec.Top + trec.Height / 2;
+			docks[8].Y = Top + trec.Top + (trec.Height / 2);
 			docks[9].X = Left + trec.Left + trec.Width;
-			docks[9].Y = Top + trec.Top + trec.Height / 2;
+			docks[9].Y = Top + trec.Top + (trec.Height / 2);
 		}
 	}
 }

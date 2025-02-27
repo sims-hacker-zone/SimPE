@@ -193,7 +193,7 @@ namespace SimPe
 
 				Version = (int)key.GetValue("Version", 0);
 				PreferedRuntimeVersion = (int)key.GetValue("PreferedRuntimeVersion", Version);
-				Expansion = (Expansions)(Math.Pow(2, Version));
+				Expansion = (Expansions)Math.Pow(2, Version);
 				Flag = new Flags((int)key.GetValue("Flag", 0));
 
 				ExeName = (string)key.GetValue("ExeName", "Sims2.exe");
@@ -582,7 +582,7 @@ namespace SimPe
 			get;
 		}
 
-		public bool Exists => (tk != null && isfound == true);
+		public bool Exists => tk != null && isfound == true;
 
 		public int Version
 		{

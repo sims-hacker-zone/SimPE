@@ -157,12 +157,12 @@ namespace SimPe.Plugin.Gmdc.Exporter
 				if (nnr != -1)
 				{
 					writer.Write(
-						(Link.GetValue(nnr, i).Data[0]).ToString(
+						Link.GetValue(nnr, i).Data[0].ToString(
 							"N6",
 							DefaultCulture
 						)
 							+ " "
-							+ (Link.GetValue(nnr, i).Data[1]).ToString(
+							+ Link.GetValue(nnr, i).Data[1].ToString(
 								"N6",
 								DefaultCulture
 							)

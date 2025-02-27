@@ -397,7 +397,7 @@ namespace SimPe.Packages
 		public static bool IsStreamAvailable(string name)
 		{
 			StreamItem si = GetStreamItem(name, false);
-			return (si != null);
+			return si != null;
 		}
 
 		/// <summary>
@@ -483,7 +483,7 @@ namespace SimPe.Packages
 					PackageMaintainer.Maintainer.RemovePackage(filename);
 				}
 
-				return (si.StreamState != StreamState.Opened);
+				return si.StreamState != StreamState.Opened;
 			}
 			return false;
 		}

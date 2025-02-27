@@ -84,7 +84,7 @@ namespace SimPe.Plugin
 			form.tbgroup.Text =
 				"0x" + Helper.HexString(Hashes.GroupHash(wrp.SemiGlobalName));
 			form.lbBug.Visible = wrp.faulty;
-			form.lbBloat.Visible = (wrp.bloaty && !wrp.faulty);
+			form.lbBloat.Visible = wrp.bloaty && !wrp.faulty;
 			for (int i = 0; i < form.cbseminame.Items.Count; i++)
 			{
 				Data.SemiGlobalAlias a =

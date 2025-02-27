@@ -516,7 +516,7 @@ namespace SimPe.Plugin
 
 		private void lv_SelectedIndexChanged_1(object sender, EventArgs e)
 		{
-			lldel.Enabled = (lv.SelectedItems.Count > 0 && items != null);
+			lldel.Enabled = lv.SelectedItems.Count > 0 && items != null;
 			if (lv.Items.Count == 0 || lv.SelectedItems.Count != 1 || items == null)
 			{
 				btUp.Enabled = false;

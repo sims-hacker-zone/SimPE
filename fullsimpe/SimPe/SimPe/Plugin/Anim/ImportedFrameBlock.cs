@@ -201,7 +201,7 @@ namespace SimPe.Plugin.Anim
 		/// </summary>
 		public new ImportedFrameBlock this[int index]
 		{
-			get => ((ImportedFrameBlock)base[index]);
+			get => (ImportedFrameBlock)base[index];
 			set => base[index] = value;
 		}
 
@@ -210,7 +210,7 @@ namespace SimPe.Plugin.Anim
 		/// </summary>
 		public ImportedFrameBlock this[uint index]
 		{
-			get => ((ImportedFrameBlock)base[(int)index]);
+			get => (ImportedFrameBlock)base[(int)index];
 			set => base[(int)index] = value;
 		}
 

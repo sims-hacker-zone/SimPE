@@ -88,7 +88,7 @@ namespace SimPe
 					}
 				}
 			}
-			return (crc & 0x00ffffff);
+			return crc & 0x00ffffff;
 		}
 
 		public static ulong ToLong(byte[] input)
@@ -282,18 +282,18 @@ namespace SimPe
 
 			if ((id & 1) == 0)
 			{
-				return (id == hash);
+				return id == hash;
 			}
 
 			uint guid = GetUserGuid(id);
 			id = id & 0x000000FE;
 			hash = hash & 0x000000FE;
-			return (id == hash);
+			return id == hash;
 		}
 
 		public static uint GetUserGuid(uint id)
 		{
-			uint guid = (id >> 8);
+			uint guid = id >> 8;
 			return guid;
 		}
 

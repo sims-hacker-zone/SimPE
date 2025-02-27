@@ -45,7 +45,7 @@ namespace SimPe.Plugin
 			Interfaces.Files.IPackageFile package
 		)
 		{
-			return (package != null);
+			return package != null;
 		}
 
 		public Interfaces.Plugin.IToolResult ShowDialog(

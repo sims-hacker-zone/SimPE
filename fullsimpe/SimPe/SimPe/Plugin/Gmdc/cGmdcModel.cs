@@ -253,7 +253,7 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public new GmdcModel this[int index]
 		{
-			get => ((GmdcModel)base[index]);
+			get => (GmdcModel)base[index];
 			set => base[index] = value;
 		}
 
@@ -262,7 +262,7 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public GmdcModel this[uint index]
 		{
-			get => ((GmdcModel)base[(int)index]);
+			get => (GmdcModel)base[(int)index];
 			set => base[(int)index] = value;
 		}
 
@@ -336,7 +336,7 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public new GmdcNamePair this[int index]
 		{
-			get => ((GmdcNamePair)base[index]);
+			get => (GmdcNamePair)base[index];
 			set => base[index] = value;
 		}
 
@@ -345,7 +345,7 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		public GmdcNamePair this[uint index]
 		{
-			get => ((GmdcNamePair)base[(int)index]);
+			get => (GmdcNamePair)base[(int)index];
 			set => base[(int)index] = value;
 		}
 

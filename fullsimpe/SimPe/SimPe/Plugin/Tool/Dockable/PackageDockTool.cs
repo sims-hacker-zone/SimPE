@@ -48,7 +48,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			{
 				if (es.LoadedPackage.Loaded)
 				{
-					bool newpkg = (pkg == null);
+					bool newpkg = pkg == null;
 					if (!newpkg)
 					{
 						newpkg = !es.LoadedPackage.Package.Equals(pkg);

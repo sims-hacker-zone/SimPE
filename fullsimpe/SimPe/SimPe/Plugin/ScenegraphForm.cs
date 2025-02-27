@@ -146,10 +146,10 @@ namespace SimPe.Plugin
 			//
 			groupBox2.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			groupBox2.BackColor = System.Drawing.Color.Transparent;
@@ -245,12 +245,12 @@ namespace SimPe.Plugin
 			//
 			groupBox1.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			groupBox1.BackColor = System.Drawing.Color.Transparent;
@@ -289,12 +289,12 @@ namespace SimPe.Plugin
 			//
 			cbrefnames.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			cbrefnames.Font = new System.Drawing.Font(
@@ -313,12 +313,12 @@ namespace SimPe.Plugin
 			//
 			tbflname.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tbflname.Font = new System.Drawing.Font(
@@ -389,7 +389,7 @@ namespace SimPe.Plugin
 				System.Drawing.GraphicsUnit.Point,
 				0
 			);
-			Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			Name = "ScenegraphForm";
 			Text = "Scenegrapher";
 			panel2.ResumeLayout(false);
@@ -441,7 +441,7 @@ namespace SimPe.Plugin
 				}
 			}
 
-			llopen.Enabled = (selpfd != null);
+			llopen.Enabled = selpfd != null;
 
 			if (ht != null)
 			{

@@ -345,7 +345,7 @@ namespace SimPe.Plugin.Downloads
 			Wait.SubStart();
 			Wait.Message = "Building Preview";
 			GeometryDataContainerExt ext =
-				((sender as PackageInfo).RenderData)
+				(sender as PackageInfo).RenderData
 				as GeometryDataContainerExt;
 			Ambertation.Scenes.Scene scn = ext.GetScene(
 				new Gmdc.ElementOrder(

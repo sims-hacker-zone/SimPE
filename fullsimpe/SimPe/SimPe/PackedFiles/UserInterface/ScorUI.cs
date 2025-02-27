@@ -145,12 +145,12 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			lb.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
-						) | AnchorStyles.Left
-					)
+						 | AnchorStyles.Left
+
 
 			;
 			lb.BorderStyle = BorderStyle.None;
@@ -168,14 +168,14 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			pnContainer.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			pnContainer.Location = new System.Drawing.Point(243, 40);
@@ -187,10 +187,10 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			cbType.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			cbType.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -207,10 +207,10 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			btAdd.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			btAdd.Location = new System.Drawing.Point(174, 216);
@@ -225,10 +225,10 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			btRem.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			btRem.Location = new System.Drawing.Point(174, 245);

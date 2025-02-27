@@ -70,14 +70,14 @@ namespace SimPe.Plugin
 			//
 			lv.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lv.Columns.AddRange(
@@ -133,12 +133,12 @@ namespace SimPe.Plugin
 			//
 			tbname.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tbname.Location = new System.Drawing.Point(24, 32);
@@ -151,10 +151,10 @@ namespace SimPe.Plugin
 			//
 			llname.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			llname.AutoSize = true;
@@ -180,10 +180,10 @@ namespace SimPe.Plugin
 			//
 			button1.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			button1.FlatStyle = FlatStyle.System;
@@ -197,10 +197,10 @@ namespace SimPe.Plugin
 			//
 			cbv2.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Left
-					)
+
 
 			;
 			cbv2.FlatStyle = FlatStyle.System;
@@ -237,7 +237,7 @@ namespace SimPe.Plugin
 			FormBorderStyle =
 				FormBorderStyle
 				.SizableToolWindow;
-			Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			Name = "RenameForm";
 			Text = "Scenegraph rename Wizard";
 			ResumeLayout(false);
@@ -544,7 +544,7 @@ namespace SimPe.Plugin
 				ok = false,
 				package = package
 			};
-			rf.cbv2.Checked = (ver == FixVersion.UniversityReady2);
+			rf.cbv2.Checked = ver == FixVersion.UniversityReady2;
 
 			string old = Hashes.StripHashFromName(
 				FindMainOldName(package).ToLower().Trim()

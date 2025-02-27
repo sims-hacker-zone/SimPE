@@ -91,14 +91,14 @@ namespace SimPe.Plugin.TabPage
 			//
 			pg.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			pg.CommandsBackColor = System.Drawing.SystemColors.ControlLightLight;

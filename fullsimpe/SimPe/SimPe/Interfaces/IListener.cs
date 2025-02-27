@@ -60,7 +60,7 @@ namespace SimPe.Collections
 		/// </summary>
 		public Interfaces.IListener this[int index]
 		{
-			get => ((Interfaces.IListener)list[index]);
+			get => (Interfaces.IListener)list[index];
 			set => list[index] = value;
 		}
 
@@ -69,7 +69,7 @@ namespace SimPe.Collections
 		/// </summary>
 		public Interfaces.IListener this[uint index]
 		{
-			get => ((Interfaces.IListener)list[(int)index]);
+			get => (Interfaces.IListener)list[(int)index];
 			set => list[(int)index] = value;
 		}
 

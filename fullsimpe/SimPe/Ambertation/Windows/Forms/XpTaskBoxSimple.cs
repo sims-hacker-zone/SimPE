@@ -236,9 +236,9 @@ namespace Ambertation.Windows.Forms
 				0,
 				16 + headerh + 2,
 				Width - 1,
-				(Height - 16 + headerh + 3)
+				Height - 16 + headerh + 3
 			);
-			Rectangle ef1 = new Rectangle(0, 16, Width - 1, (Height - 0x11));
+			Rectangle ef1 = new Rectangle(0, 16, Width - 1, Height - 0x11);
 			GraphicsPath path = new GraphicsPath();
 			LinearGradientBrush brush1 = new LinearGradientBrush(
 				ef3,
@@ -278,13 +278,13 @@ namespace Ambertation.Windows.Forms
 				ef4 = new Rectangle(
 					8 + size1.Width + IconLocation.X,
 					16,
-					(Width - (size1.Width + IconLocation.X)),
+					Width - (size1.Width + IconLocation.X),
 					headerh
 				);
 			}
 			else
 			{
-				ef4 = new Rectangle(8, 16, (Width - 0x18), headerh);
+				ef4 = new Rectangle(8, 16, Width - 0x18, headerh);
 			}
 			g.DrawString(
 				mstrHeaderText,
@@ -386,7 +386,7 @@ namespace Ambertation.Windows.Forms
 		}
 
 		[Browsable(false), Description("returns the usable region as Rectangle")]
-		internal Rectangle WorkspaceRect => new Rectangle(3, 0x29, Width - 7, (Height - 40) - 4);
+		internal Rectangle WorkspaceRect => new Rectangle(3, 0x29, Width - 7, Height - 40 - 4);
 
 		// Fields
 		private IContainer components;

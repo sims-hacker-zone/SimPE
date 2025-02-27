@@ -136,10 +136,10 @@ namespace SimPe.Plugin.Anim
 			//
 			cbCorrect.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			cbCorrect.Location = new System.Drawing.Point(584, 0);
@@ -155,10 +155,10 @@ namespace SimPe.Plugin.Anim
 			//
 			llExport.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			llExport.Enabled = false;
@@ -178,10 +178,10 @@ namespace SimPe.Plugin.Anim
 			//
 			llImport.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			llImport.Enabled = false;
@@ -211,12 +211,12 @@ namespace SimPe.Plugin.Anim
 			//
 			cbJoint.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			cbJoint.ContextMenu = cmJoint;
@@ -255,12 +255,12 @@ namespace SimPe.Plugin.Anim
 			//
 			cbSubMesh.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			cbSubMesh.DropDownStyle =
@@ -324,7 +324,7 @@ namespace SimPe.Plugin.Anim
 			{
 				ambs = value;
 				RefreshData();
-				pnSubMesh.Visible = (ambs != null);
+				pnSubMesh.Visible = ambs != null;
 			}
 		}
 
@@ -400,8 +400,8 @@ namespace SimPe.Plugin.Anim
 			llImport.Enabled = cbSubMesh.SelectedItem != null;
 			llExport.Enabled = llImport.Enabled;
 
-			miAdd.Enabled = (cbJoint.Items.Count > 0);
-			miRem.Enabled = (cbJoint.Items.Count > 0);
+			miAdd.Enabled = cbJoint.Items.Count > 0;
+			miRem.Enabled = cbJoint.Items.Count > 0;
 		}
 
 		#region Events

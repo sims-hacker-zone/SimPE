@@ -384,7 +384,7 @@ namespace SimPe.Plugin
 		{
 			ArrayList ret = null;
 
-			if ((fullmap.ContainsKey(subset)) && mmat.TXTR != null)
+			if (fullmap.ContainsKey(subset) && mmat.TXTR != null)
 			{
 				Hashtable ht = (Hashtable)fullmap[subset];
 				foreach (ArrayList list in ht.Values)

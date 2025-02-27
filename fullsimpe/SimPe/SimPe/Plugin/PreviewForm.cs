@@ -63,9 +63,9 @@ namespace SimPe.Plugin
 			dx.Name = "dx";
 			dx.Size = new System.Drawing.Size(494, 476);
 			dx.TabIndex = 0;
-			dx.WorldMatrix = (
-				(Microsoft.DirectX.Matrix)(resources.GetObject("dx.WorldMatrix"))
-			);
+			dx.WorldMatrix =
+				(Microsoft.DirectX.Matrix)resources.GetObject("dx.WorldMatrix")
+			;
 			//
 			// PreviewForm
 			//
@@ -79,7 +79,7 @@ namespace SimPe.Plugin
 			Controls.Add(dx);
 			Font = new System.Drawing.Font("Tahoma", 8.25F);
 			FormBorderStyle = FormBorderStyle.FixedToolWindow;
-			Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			MaximizeBox = false;
 			MinimizeBox = false;
 			Name = "PreviewForm";

@@ -293,7 +293,7 @@ namespace SimPe.PackedFiles.UserInterface
 			toolTip1 = new ToolTip(components);
 			JpegPanel.SuspendLayout();
 			panel2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(pb)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)pb).BeginInit();
 			xmlPanel.SuspendLayout();
 			objdPanel.SuspendLayout();
 			gbelements.SuspendLayout();
@@ -305,7 +305,7 @@ namespace SimPe.PackedFiles.UserInterface
 			famiPanel.SuspendLayout();
 			gbCastaway.SuspendLayout();
 			groupBox4.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(pbImage)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)pbImage).BeginInit();
 			tabPage3.SuspendLayout();
 			realPanel.SuspendLayout();
 			gbrelation.SuspendLayout();
@@ -1062,7 +1062,7 @@ namespace SimPe.PackedFiles.UserInterface
 			JpegPanel.PerformLayout();
 			panel2.ResumeLayout(false);
 			panel2.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(pb)).EndInit();
+			((System.ComponentModel.ISupportInitialize)pb).EndInit();
 			xmlPanel.ResumeLayout(false);
 			objdPanel.ResumeLayout(false);
 			objdPanel.PerformLayout();
@@ -1080,7 +1080,7 @@ namespace SimPe.PackedFiles.UserInterface
 			gbCastaway.PerformLayout();
 			groupBox4.ResumeLayout(false);
 			groupBox4.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(pbImage)).EndInit();
+			((System.ComponentModel.ISupportInitialize)pbImage).EndInit();
 			tabPage3.ResumeLayout(false);
 			realPanel.ResumeLayout(false);
 			realPanel.PerformLayout();
@@ -1244,15 +1244,15 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void SimSelectionChange(object sender, EventArgs e)
 		{
-			llFamiAddSim.Enabled = (
+			llFamiAddSim.Enabled =
 				(((ComboBox)sender).SelectedIndex >= 0)
 				&& (((ComboBox)sender).Items.Count > 0)
-			);
+			;
 		}
 
 		private void FamiMemberSelectionClick(object sender, EventArgs e)
 		{
-			llFamiDeleteSim.Enabled = (((ListBox)sender).SelectedIndex >= 0);
+			llFamiDeleteSim.Enabled = ((ListBox)sender).SelectedIndex >= 0;
 			llFamiDeleteSim.Invalidate();
 			llFamiDeleteSim.Update();
 		}

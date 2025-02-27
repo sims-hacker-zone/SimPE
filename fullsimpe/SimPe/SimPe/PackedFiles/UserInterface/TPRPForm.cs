@@ -329,8 +329,8 @@ namespace SimPe.PackedFiles.UserInterface
 				tbLabel.Text = "";
 				btnStrDelete.Enabled = tbLabel.Enabled = false;
 			}
-			btnStrPrev.Enabled = (index > 0);
-			btnStrNext.Enabled = (index < lvCurrent.Items.Count - 1);
+			btnStrPrev.Enabled = index > 0;
+			btnStrNext.Enabled = index < lvCurrent.Items.Count - 1;
 			btnTabPrev.Enabled = tab > 0;
 			btnTabNext.Enabled = tab < tabControl1.TabCount - 1;
 
@@ -618,11 +618,11 @@ namespace SimPe.PackedFiles.UserInterface
 			lvParams.Items.AddRange(
 				new ListViewItem[]
 				{
-					(
-						(ListViewItem)(
+
+						(ListViewItem)
 							resources.GetObject("lvParams.Items")
-						)
-					),
+
+					,
 				}
 			);
 			lvParams.MultiSelect = false;

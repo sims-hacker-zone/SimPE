@@ -144,8 +144,8 @@ namespace SimPe
 						"SimPe.WaitingForm.WndProc() - WM_CHANGE_IMAGE"
 					);
 					pb.Image = image;
-					pb.Visible = (image != null);
-					pbsimpe.Visible = (image == null);
+					pb.Visible = image != null;
+					pbsimpe.Visible = image == null;
 				}
 				else if (m.Msg == WM_SHOW_HIDE)
 				{
@@ -194,8 +194,8 @@ namespace SimPe
 			pb = new PictureBox();
 			pbsimpe = new PictureBox();
 			panel1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(pb)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(pbsimpe)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)pb).BeginInit();
+			((System.ComponentModel.ISupportInitialize)pbsimpe).BeginInit();
 			SuspendLayout();
 			//
 			// panel1
@@ -213,9 +213,9 @@ namespace SimPe
 			//
 			lbmsg.AccessibleRole = AccessibleRole.Text;
 			lbmsg.ForeColor = System.Drawing.Color.FromArgb(
-				((byte)(204)),
-				((byte)(211)),
-				((byte)(213))
+				(byte)204,
+				(byte)211,
+				(byte)213
 			);
 			resources.ApplyResources(lbmsg, "lbmsg");
 			lbmsg.Name = "lbmsg";
@@ -246,9 +246,9 @@ namespace SimPe
 			AccessibleRole = AccessibleRole.None;
 			resources.ApplyResources(this, "$this");
 			BackColor = System.Drawing.Color.FromArgb(
-				((byte)(102)),
-				((byte)(102)),
-				((byte)(153))
+				(byte)102,
+				(byte)102,
+				(byte)153
 			);
 			CausesValidation = false;
 			Controls.Add(panel1);
@@ -258,8 +258,8 @@ namespace SimPe
 			TransparencyKey = System.Drawing.Color.Fuchsia;
 			panel1.ResumeLayout(false);
 			panel1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(pb)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(pbsimpe)).EndInit();
+			((System.ComponentModel.ISupportInitialize)pb).EndInit();
+			((System.ComponentModel.ISupportInitialize)pbsimpe).EndInit();
 			ResumeLayout(false);
 		}
 		#endregion

@@ -127,12 +127,12 @@ namespace SimPe.Plugin
 			//
 			tbtext.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tbtext.Location = new System.Drawing.Point(92, 15);
@@ -277,7 +277,7 @@ namespace SimPe.Plugin
 				0
 			);
 			FormBorderStyle = FormBorderStyle.FixedToolWindow;
-			Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			Name = "Hash";
 			Text = "Hash Generator";
 			panel1.ResumeLayout(false);

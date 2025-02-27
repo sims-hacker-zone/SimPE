@@ -116,7 +116,7 @@ namespace SimPe
 			MyButtonItem.GetLayoutInformations(this);
 
 			FixCheckedState(tbTools);
-			FixCheckedState((tbAction));
+			FixCheckedState(tbAction);
 			FixCheckedState(toolBar1);
 
 			foreach (ToolStripItem tsi in miWindow.DropDownItems)

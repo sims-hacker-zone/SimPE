@@ -19,12 +19,12 @@ namespace SimPe.Plugin
 
 		public static bool IsNullOrEmpty(ICollection @value)
 		{
-			return (@value == null || @value.Count == 0);
+			return @value == null || @value.Count == 0;
 		}
 
 		public static bool IsNullOrEmpty(string @value)
 		{
-			return (@value == null || @value.Length == 0);
+			return @value == null || @value.Length == 0;
 		}
 
 		public static bool EnumTest(Enum compositeValue, Enum discreteValue)

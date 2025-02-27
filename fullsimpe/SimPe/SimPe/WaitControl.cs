@@ -177,7 +177,7 @@ namespace SimPe
 
 			//float perc = (((float)val / (float)pb.Maximum) * 100);
 
-			int perc = (val * 100) / pb.Maximum;
+			int perc = val * 100 / pb.Maximum;
 			int diff = Math.Abs(nowp - perc);
 			if (diff > 0)
 			{

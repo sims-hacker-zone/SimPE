@@ -394,11 +394,11 @@ namespace SimPe.PackedFiles.UserInterface
 				ai,
 				delegate (pjse.FileTable.Entry i, IPackedFileDescriptor pfd)
 				{
-					return (
+					return
 						i.Group != pfd.Group
 						|| i.Instance < 0x1000
 						|| i.Instance >= 0x2000
-					);
+					;
 				},
 				new matchItem[]
 				{
@@ -560,10 +560,10 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private bool isPopup => (Tag == null || Tag as string == null)
 					? false
-					: ((string)(Tag)).StartsWith("Popup");
+					: ((string)Tag).StartsWith("Popup");
 		private bool isNoOverride => (Tag == null || Tag as string == null)
 					? false
-					: ((string)(Tag)).Contains(";noOverride");
+					: ((string)Tag).Contains(";noOverride");
 		private string callerID => getValueFromTag("callerID");
 		private string expName
 		{
@@ -733,12 +733,12 @@ namespace SimPe.PackedFiles.UserInterface
 			currentInst = null;
 			try
 			{
-				changed = (
-					(new BhavOperandWiz()).Execute(
+				changed =
+					new BhavOperandWiz().Execute(
 						btnCommit.Visible ? inst : inst.Clone(),
 						type
 					) != null
-				);
+				;
 			}
 			finally
 			{
@@ -916,7 +916,7 @@ namespace SimPe.PackedFiles.UserInterface
 					operands += Helper.HexString(inst.Reserved1[j]);
 				}
 
-				listing += (
+				listing +=
 					"     "
 					+ Helper.HexString(i)
 					+ " : "
@@ -932,7 +932,7 @@ namespace SimPe.PackedFiles.UserInterface
 					+ "\r\n"
 					+ w.LongName
 					+ "\r\n\r\n"
-				);
+				;
 			}
 
 			Clipboard.SetDataObject(listing, true);
@@ -982,7 +982,7 @@ namespace SimPe.PackedFiles.UserInterface
 					for (int j = 0; j < 8; j++)
 					{
 						inst.Reserved1[j] = Convert.ToByte(
-							args[5].Trim().Substring(16 + j * 2, 2),
+							args[5].Trim().Substring(16 + (j * 2), 2),
 							16
 						);
 					}
@@ -1360,10 +1360,10 @@ namespace SimPe.PackedFiles.UserInterface
 				btnClose.Visible = true;
 				gbSpecial.Visible = true;
 				cbSpecial.Enabled = false;
-				btnCopyBHAV.Visible = (currentPackage != wrapper.Package);
+				btnCopyBHAV.Visible = currentPackage != wrapper.Package;
 				btnImportBHAV.Visible =
 					(currentPackage != wrapper.Package)
-					&& (callerID != null && callerID.IndexOf("-FFFFFFFF-") == 17); //42484156-00000000-FFFFFFFF-00001003
+					&& callerID != null && callerID.IndexOf("-FFFFFFFF-") == 17; //42484156-00000000-FFFFFFFF-00001003
 				btnCopyBHAV.Enabled = currentPackage != null;
 				btnImportBHAV.Enabled =
 					(currentPackage != null)
@@ -1446,7 +1446,7 @@ namespace SimPe.PackedFiles.UserInterface
 				tbTreeVersion.Text =
 					"0x" + Helper.HexString(wrapper.Header.TreeVersion);
 				tbCacheFlags.Text = "0x" + Helper.HexString(wrapper.Header.CacheFlags);
-				tbCacheFlags.Enabled = (wrapper.Header.Format > 0x8008);
+				tbCacheFlags.Enabled = wrapper.Header.Format > 0x8008;
 				cmpBHAV.Wrapper = wrapper;
 				cmpBHAV.WrapperName = wrapper.FileName;
 				internalchg = false;
@@ -2626,7 +2626,7 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			int sel = 0;
 			sel = (int)e.Data.GetData(sel.GetType());
-			ComboBox cb = ((ComboBox)sender);
+			ComboBox cb = (ComboBox)sender;
 			cb.SelectedIndex = -1;
 			cb.Text = "0x" + Helper.HexString((ushort)sel);
 		}
@@ -3488,13 +3488,13 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void cmenuGUIDIndex_Opening(object sender, CancelEventArgs e)
 		{
-			createCurrentPackageToolStripMenuItem.Enabled = (
+			createCurrentPackageToolStripMenuItem.Enabled =
 				pjse.FileTable.GFT.CurrentPackage != null
 				&& pjse.FileTable.GFT.CurrentPackage.FileName != null
 				&& !pjse
 					.FileTable.GFT.CurrentPackage.FileName.ToLower()
 					.EndsWith("objects.package")
-			);
+			;
 		}
 
 		private void createToolStripMenuItem_Click(object sender, EventArgs e)

@@ -677,7 +677,7 @@ namespace SimPe.PackedFiles.Wrapper
 						SelectedSimChanged(
 							this,
 							((SDesc)gpe.Tag).Image,
-							((SDesc)gpe.Tag)
+							(SDesc)gpe.Tag
 						);
 					}
 					else

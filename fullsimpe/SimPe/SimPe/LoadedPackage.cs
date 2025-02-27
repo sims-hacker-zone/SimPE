@@ -352,7 +352,7 @@ namespace SimPe
 		{
 			if (
 				Helper.IsNeighborhoodFile(FileName)
-				&& (Helper.WindowsRegistry.LoadMetaInfo)
+				&& Helper.WindowsRegistry.LoadMetaInfo
 			)
 			{
 				Interfaces.Files.IPackageFile pkg = Package;
@@ -382,7 +382,7 @@ namespace SimPe
 			{
 				if (
 					Helper.IsLotCatalogFile(FileName)
-					&& (Helper.WindowsRegistry.LoadMetaInfo)
+					&& Helper.WindowsRegistry.LoadMetaInfo
 				)
 				{
 					FileTableBase.ProviderRegistry.SimFamilynameProvider.BasePackage = Package;

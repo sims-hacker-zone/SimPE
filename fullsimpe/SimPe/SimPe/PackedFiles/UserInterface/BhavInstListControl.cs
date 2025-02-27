@@ -541,7 +541,7 @@ namespace SimPe.PackedFiles.UserInterface
 				| AnchorStyles.Right,
 				Left = AutoScrollPosition.X
 			};
-			i.Top = ct * (i.Height + 4) + AutoScrollPosition.Y;
+			i.Top = (ct * (i.Height + 4)) + AutoScrollPosition.Y;
 			i.Width = ClientRectangle.Width - pnflow.Width;
 			i.Index = ct;
 			i.TabIndex = ct;
@@ -623,7 +623,7 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 
 				int yPosStart =
-					(BhavInstListItemUI.rowHeight + 4) * c.start
+					((BhavInstListItemUI.rowHeight + 4) * c.start)
 					+ (yUnit * 4)
 					+ (yUnit * (c.truerule ? 3 : 1));
 				int xPosLeft = 0;
@@ -635,7 +635,7 @@ namespace SimPe.PackedFiles.UserInterface
 					xPosRight = 7 + (c.lane * laneWidth);
 
 					int yPosStop =
-						(BhavInstListItemUI.rowHeight + 4) * c.stop
+						((BhavInstListItemUI.rowHeight + 4) * c.stop)
 						+ (yUnit * (c.truerule ? 1 : 3));
 
 					gr.DrawLine(pen, xPosLeft, yPosStart, xPosRight, yPosStart);
@@ -699,7 +699,7 @@ namespace SimPe.PackedFiles.UserInterface
 				int xPosLeft = 0;
 				int xPosRight = pnflow.Width - 1;
 				int yPos =
-					(BhavInstListItemUI.rowHeight + 4) * ct
+					((BhavInstListItemUI.rowHeight + 4) * ct)
 					+ (BhavInstListItemUI.rowHeight / 4);
 
 				gr.DrawLine((ct == csel) ? penc : pen, xPosLeft, yPos, xPosRight, yPos);
@@ -744,48 +744,48 @@ namespace SimPe.PackedFiles.UserInterface
 				"pnflow.AccessibleDescription"
 			);
 			pnflow.AccessibleName = resources.GetString("pnflow.AccessibleName");
-			pnflow.Anchor = (
-				(AnchorStyles)(
+			pnflow.Anchor =
+				(AnchorStyles)
 					resources.GetObject("pnflow.Anchor")
-				)
-			);
-			pnflow.BackgroundImage = (
-				(Image)(resources.GetObject("pnflow.BackgroundImage"))
-			);
-			pnflow.Dock = (
-				(DockStyle)(resources.GetObject("pnflow.Dock"))
-			);
-			pnflow.Enabled = ((bool)(resources.GetObject("pnflow.Enabled")));
-			pnflow.Font = (
-				(Font)(resources.GetObject("pnflow.Font"))
-			);
-			pnflow.Image = (
-				(Image)(resources.GetObject("pnflow.Image"))
-			);
-			pnflow.ImeMode = (
-				(ImeMode)(resources.GetObject("pnflow.ImeMode"))
-			);
-			pnflow.Location = (
-				(Point)(resources.GetObject("pnflow.Location"))
-			);
+
+			;
+			pnflow.BackgroundImage =
+				(Image)resources.GetObject("pnflow.BackgroundImage")
+			;
+			pnflow.Dock =
+				(DockStyle)resources.GetObject("pnflow.Dock")
+			;
+			pnflow.Enabled = (bool)resources.GetObject("pnflow.Enabled");
+			pnflow.Font =
+				(Font)resources.GetObject("pnflow.Font")
+			;
+			pnflow.Image =
+				(Image)resources.GetObject("pnflow.Image")
+			;
+			pnflow.ImeMode =
+				(ImeMode)resources.GetObject("pnflow.ImeMode")
+			;
+			pnflow.Location =
+				(Point)resources.GetObject("pnflow.Location")
+			;
 			pnflow.Name = "pnflow";
-			pnflow.RightToLeft = (
-				(RightToLeft)(
+			pnflow.RightToLeft =
+				(RightToLeft)
 					resources.GetObject("pnflow.RightToLeft")
-				)
-			);
-			pnflow.Size = (
-				(Size)(resources.GetObject("pnflow.Size"))
-			);
-			pnflow.SizeMode = (
-				(PictureBoxSizeMode)(
+
+			;
+			pnflow.Size =
+				(Size)resources.GetObject("pnflow.Size")
+			;
+			pnflow.SizeMode =
+				(PictureBoxSizeMode)
 					resources.GetObject("pnflow.SizeMode")
-				)
-			);
-			pnflow.TabIndex = ((int)(resources.GetObject("pnflow.TabIndex")));
+
+			;
+			pnflow.TabIndex = (int)resources.GetObject("pnflow.TabIndex");
 			pnflow.TabStop = false;
 			pnflow.Text = resources.GetString("pnflow.Text");
-			pnflow.Visible = ((bool)(resources.GetObject("pnflow.Visible")));
+			pnflow.Visible = (bool)resources.GetObject("pnflow.Visible");
 			//
 			// BhavInstListControl
 			//
@@ -793,32 +793,32 @@ namespace SimPe.PackedFiles.UserInterface
 				"$this.AccessibleDescription"
 			);
 			AccessibleName = resources.GetString("$this.AccessibleName");
-			AutoScroll = ((bool)(resources.GetObject("$this.AutoScroll")));
-			AutoScrollMargin = (
-				(Size)(resources.GetObject("$this.AutoScrollMargin"))
-			);
-			AutoScrollMinSize = (
-				(Size)(resources.GetObject("$this.AutoScrollMinSize"))
-			);
-			BackgroundImage = (
-				(Image)(resources.GetObject("$this.BackgroundImage"))
-			);
+			AutoScroll = (bool)resources.GetObject("$this.AutoScroll");
+			AutoScrollMargin =
+				(Size)resources.GetObject("$this.AutoScrollMargin")
+			;
+			AutoScrollMinSize =
+				(Size)resources.GetObject("$this.AutoScrollMinSize")
+			;
+			BackgroundImage =
+				(Image)resources.GetObject("$this.BackgroundImage")
+			;
 			Controls.Add(pnflow);
-			Enabled = ((bool)(resources.GetObject("$this.Enabled")));
-			Font = ((Font)(resources.GetObject("$this.Font")));
-			ImeMode = (
-				(ImeMode)(resources.GetObject("$this.ImeMode"))
-			);
-			Location = (
-				(Point)(resources.GetObject("$this.Location"))
-			);
+			Enabled = (bool)resources.GetObject("$this.Enabled");
+			Font = (Font)resources.GetObject("$this.Font");
+			ImeMode =
+				(ImeMode)resources.GetObject("$this.ImeMode")
+			;
+			Location =
+				(Point)resources.GetObject("$this.Location")
+			;
 			Name = "BhavInstListControl";
-			RightToLeft = (
-				(RightToLeft)(
+			RightToLeft =
+				(RightToLeft)
 					resources.GetObject("$this.RightToLeft")
-				)
-			);
-			Size = ((Size)(resources.GetObject("$this.Size")));
+
+			;
+			Size = (Size)resources.GetObject("$this.Size");
 			ResumeLayout(false);
 		}
 
@@ -841,7 +841,7 @@ namespace SimPe.PackedFiles.UserInterface
 				return;
 			}
 
-			SelectedIndex = (new ArrayList(flowitems)).IndexOf(sender);
+			SelectedIndex = new ArrayList(flowitems).IndexOf(sender);
 		}
 
 		private void bhavInst_Unselected(
@@ -950,7 +950,7 @@ namespace SimPe.PackedFiles.UserInterface
 			for (int i = 0; i < bhav.Count; i++)
 			{
 				cs[i * 2] = new Connector(i, bhav[i].Target1, true);
-				cs[i * 2 + 1] = new Connector(i, bhav[i].Target2, false);
+				cs[(i * 2) + 1] = new Connector(i, bhav[i].Target2, false);
 			}
 
 			ResolveCollisions(cs);
@@ -971,12 +971,12 @@ namespace SimPe.PackedFiles.UserInterface
 		/// <summary>
 		/// Which of 'start' and 'stop' is the earlier instruction
 		/// </summary>
-		private int Top => Math.Min(start * 4 + OutOffset, stop * 4 + InOffset);
+		private int Top => Math.Min((start * 4) + OutOffset, (stop * 4) + InOffset);
 
 		/// <summary>
 		/// Which of 'start' and 'stop' is the later instruction
 		/// </summary>
-		private int Bottom => Math.Max(start * 4 + OutOffset, stop * 4 + InOffset);
+		private int Bottom => Math.Max((start * 4) + OutOffset, (stop * 4) + InOffset);
 
 		/// <summary>
 		/// Resolves all lane Collisions

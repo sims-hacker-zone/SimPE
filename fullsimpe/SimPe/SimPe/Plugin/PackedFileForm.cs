@@ -115,7 +115,7 @@ namespace SimPe.Plugin
 			panel3 = new Panel();
 			label1 = new Label();
 			wrapperPanel.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(pb)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)pb).BeginInit();
 			gbtypes.SuspendLayout();
 			pntypes.SuspendLayout();
 			panel3.SuspendLayout();
@@ -143,12 +143,12 @@ namespace SimPe.Plugin
 			//
 			pb.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			pb.BorderStyle = BorderStyle.FixedSingle;
@@ -165,10 +165,10 @@ namespace SimPe.Plugin
 			//
 			button2.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			button2.FlatStyle = FlatStyle.Popup;
@@ -189,10 +189,10 @@ namespace SimPe.Plugin
 			//
 			button4.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			button4.FlatStyle = FlatStyle.Popup;
@@ -213,10 +213,10 @@ namespace SimPe.Plugin
 			//
 			btdown.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			btdown.FlatStyle = FlatStyle.System;
@@ -232,10 +232,10 @@ namespace SimPe.Plugin
 			//
 			btup.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			btup.FlatStyle = FlatStyle.System;
@@ -251,10 +251,10 @@ namespace SimPe.Plugin
 			//
 			button1.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			button1.FlatStyle = FlatStyle.System;
@@ -270,10 +270,10 @@ namespace SimPe.Plugin
 			//
 			gbtypes.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			gbtypes.Controls.Add(pntypes);
@@ -479,14 +479,14 @@ namespace SimPe.Plugin
 			lblist.AllowDrop = true;
 			lblist.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			lblist.ContextMenu = contextMenu1;
@@ -528,12 +528,12 @@ namespace SimPe.Plugin
 			//
 			panel3.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			panel3.BackColor = System.Drawing.SystemColors.AppWorkspace;
@@ -573,7 +573,7 @@ namespace SimPe.Plugin
 			Text = "MyPackedFileForm";
 			WindowState = FormWindowState.Maximized;
 			wrapperPanel.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(pb)).EndInit();
+			((System.ComponentModel.ISupportInitialize)pb).EndInit();
 			gbtypes.ResumeLayout(false);
 			pntypes.ResumeLayout(false);
 			panel3.ResumeLayout(false);

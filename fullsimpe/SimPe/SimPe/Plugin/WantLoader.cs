@@ -308,23 +308,23 @@ namespace SimPe.Plugin
 				)
 			);
 
-			string img = (
+			string img =
 				System.IO.Path.Combine(
 					PathProvider.Global[Expansions.BaseGame].InstallFolder,
 					"TSData\\Res\\UI\\ui.package"
 				)
-			);
+			;
 			FileTableBase.FileIndex.AddIndexFromPackage(img);
 			foreach (ExpansionItem ei in PathProvider.Global.Expansions)
 			{
 				if (ei.Exists)
 				{
-					img = (
+					img =
 						System.IO.Path.Combine(
 							ei.InstallFolder,
 							"TSData\\Res\\UI\\ui.package"
 						)
-					);
+					;
 					FileTableBase.FileIndex.AddIndexFromPackage(img);
 				}
 			}

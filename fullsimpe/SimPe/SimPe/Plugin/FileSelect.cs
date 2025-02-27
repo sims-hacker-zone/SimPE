@@ -210,17 +210,17 @@ namespace SimPe.Plugin
 			tc.SuspendLayout();
 			tabPage1.SuspendLayout();
 			tabPage2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(pb)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)pb).BeginInit();
 			SuspendLayout();
 			//
 			// button1
 			//
 			button1.Anchor =
 
-					(
+
 						AnchorStyles.Bottom
 						| AnchorStyles.Right
-					)
+
 
 			;
 			button1.FlatStyle = FlatStyle.System;
@@ -235,14 +235,14 @@ namespace SimPe.Plugin
 			//
 			tc.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			tc.Controls.Add(tabPage1);
@@ -266,20 +266,20 @@ namespace SimPe.Plugin
 			//
 			tvfemale.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			tvfemale.BackColor = System.Drawing.Color.FromArgb(
-				((byte)(255)),
-				((byte)(248)),
-				((byte)(254))
+				(byte)255,
+				(byte)248,
+				(byte)254
 			);
 			tvfemale.Font = new System.Drawing.Font(
 				"Verdana",
@@ -310,20 +310,20 @@ namespace SimPe.Plugin
 			//
 			tvmale.Anchor =
 
-					(
-						(
-							(
+
+
+
 								AnchorStyles.Top
 								| AnchorStyles.Bottom
-							) | AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+							 | AnchorStyles.Left
+						 | AnchorStyles.Right
+
 
 			;
 			tvmale.BackColor = System.Drawing.Color.FromArgb(
-				((byte)(248)),
-				((byte)(252)),
-				((byte)(255))
+				(byte)248,
+				(byte)252,
+				(byte)255
 			);
 			tvmale.Font = new System.Drawing.Font(
 				"Verdana",
@@ -345,10 +345,10 @@ namespace SimPe.Plugin
 			//
 			pb.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			pb.BorderStyle = BorderStyle.FixedSingle;
@@ -363,12 +363,12 @@ namespace SimPe.Plugin
 			//
 			lbname.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Bottom
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			lbname.Font = new System.Drawing.Font(
@@ -402,14 +402,14 @@ namespace SimPe.Plugin
 			FormBorderStyle =
 				FormBorderStyle
 				.SizableToolWindow;
-			Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			Name = "FileSelect";
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Skin Select";
 			tc.ResumeLayout(false);
 			tabPage1.ResumeLayout(false);
 			tabPage2.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(pb)).EndInit();
+			((System.ComponentModel.ISupportInitialize)pb).EndInit();
 			ResumeLayout(false);
 		}
 		#endregion
@@ -438,7 +438,7 @@ namespace SimPe.Plugin
 			button1.Enabled = false;
 			ShowDialog();
 
-			if ((ok) && (last != null))
+			if (ok && (last != null))
 			{
 				PackedFiles.Wrapper.Cpf cpf = (PackedFiles.Wrapper.Cpf)
 					last.Tag;

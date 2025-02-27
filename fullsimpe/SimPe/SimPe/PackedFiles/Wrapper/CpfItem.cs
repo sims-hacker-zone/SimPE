@@ -259,19 +259,19 @@ namespace SimPe.PackedFiles.Wrapper
 				{
 					case MetaData.DataTypes.dtSingle:
 					{
-						return (AsSingle() != 0.0);
+						return AsSingle() != 0.0;
 					}
 					case MetaData.DataTypes.dtInteger:
 					case MetaData.DataTypes.dtUInteger:
 					{
-						return (AsInteger() != 0);
+						return AsInteger() != 0;
 					}
 					case MetaData.DataTypes.dtString:
 					{
 						bool ret = false;
 						try
 						{
-							ret = (byte.Parse(AsString()) != 0);
+							ret = byte.Parse(AsString()) != 0;
 						}
 						catch (Exception) { }
 						return ret;
@@ -444,12 +444,12 @@ namespace SimPe.PackedFiles.Wrapper
 			int valuelength;
 			switch (Datatype)
 			{
-				case (MetaData.DataTypes.dtString):
+				case MetaData.DataTypes.dtString:
 				{
 					valuelength = reader.ReadInt32();
 					break;
 				}
-				case (MetaData.DataTypes.dtBoolean):
+				case MetaData.DataTypes.dtBoolean:
 				{
 					valuelength = 1;
 					break;
@@ -479,7 +479,7 @@ namespace SimPe.PackedFiles.Wrapper
 			//Store the Value
 			switch (Datatype)
 			{
-				case (MetaData.DataTypes.dtString):
+				case MetaData.DataTypes.dtString:
 				{
 					writer.Write((uint)Value.Length);
 					writer.Write(Value);

@@ -315,7 +315,7 @@ namespace SimPe.Plugin
 			gbFlagg.SuspendLayout();
 			gbunown.SuspendLayout();
 			gbclarse.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(pb)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)pb).BeginInit();
 			SuspendLayout();
 			//
 			// ltxtPanel
@@ -1338,7 +1338,7 @@ namespace SimPe.Plugin
 			gbunown.PerformLayout();
 			gbclarse.ResumeLayout(false);
 			gbclarse.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(pb)).EndInit();
+			((System.ComponentModel.ISupportInitialize)pb).EndInit();
 			ResumeLayout(false);
 		}
 		#endregion
@@ -1355,16 +1355,16 @@ namespace SimPe.Plugin
 			wrapper.Type = Enum.IsDefined(typeof(Ltxt.LotType), cbtype.SelectedItem) ? (Ltxt.LotType)cbtype.SelectedItem : Ltxt.LotType.Unknown;
 
 			tbtype.Text = "0x" + Helper.HexString((byte)wrapper.Type);
-			btnAddApt.Enabled = btnDelApt.Enabled = (
+			btnAddApt.Enabled = btnDelApt.Enabled =
 				wrapper.Type == Ltxt.LotType.ApartmentBase
-			);
+			;
 			cbtrclub.Enabled =
 				cbtrhidec.Enabled =
 				gbhobby.Enabled =
-					(wrapper.Type == Ltxt.LotType.Hobby);
+					wrapper.Type == Ltxt.LotType.Hobby;
 			if (wrapper.SubVersion >= LtxtSubVersion.Freetime)
 			{
-				bthbytrvl.Enabled = (wrapper.Type == Ltxt.LotType.Hobby);
+				bthbytrvl.Enabled = wrapper.Type == Ltxt.LotType.Hobby;
 			}
 
 			if (
@@ -1545,9 +1545,9 @@ namespace SimPe.Plugin
 					|| wrapper.SubVersion >= LtxtSubVersion.Apartment
 				)
 				{
-					bby[12] = (cbLotClas.SelectedIndex == 1);
-					bby[13] = (cbLotClas.SelectedIndex == 2);
-					bby[14] = (cbLotClas.SelectedIndex == 3);
+					bby[12] = cbLotClas.SelectedIndex == 1;
+					bby[13] = cbLotClas.SelectedIndex == 2;
+					bby[14] = cbLotClas.SelectedIndex == 3;
 				}
 				wrapper.Unknown0 = bby;
 				tbu0.Text = "0x" + Helper.HexString(wrapper.Unknown0);
@@ -1822,7 +1822,7 @@ namespace SimPe.Plugin
 				int x,
 					y;
 				y = Convert.ToInt32(lb.SelectedIndex / wrp.LotSize.Height);
-				x = lb.SelectedIndex - y * wrp.LotSize.Height;
+				x = lb.SelectedIndex - (y * wrp.LotSize.Height);
 				lb.Items[lb.SelectedIndex] =
 					"(" + x + "," + y + ") " + wrp.Unknown1[lb.SelectedIndex];
 
@@ -2052,7 +2052,7 @@ namespace SimPe.Plugin
 				wrapper.ApartmentBase,
 				16
 			);
-			llAptBase.Enabled = (wrapper.ApartmentBase != 0);
+			llAptBase.Enabled = wrapper.ApartmentBase != 0;
 		}
 
 		private void label25_Click(object sender, EventArgs e)

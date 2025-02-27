@@ -41,7 +41,7 @@ namespace SimPe.Plugin
 
 			this.spatient = spatient;
 			this.sarchetype = sarchetype;
-			fromTemplate = (this.sarchetype == null);
+			fromTemplate = this.sarchetype == null;
 		}
 
 		/// <summary>
@@ -461,12 +461,12 @@ namespace SimPe.Plugin
 				foreach (Cpf newcpf in (ArrayList)skinfiles[skin])
 				{
 					if (
-						(
+
 							(
 								skinfile.GetSaveItem("age").UIntegerValue
 								& newcpf.GetSaveItem("age").UIntegerValue
 							) != 0
-						)
+
 					)
 					{
 						bool use = true;

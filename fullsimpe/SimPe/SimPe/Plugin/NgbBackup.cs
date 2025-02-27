@@ -165,7 +165,7 @@ namespace SimPe.Plugin
 
 		private void SelectBackup(object sender, EventArgs e)
 		{
-			button1.Enabled = (lbdirs.SelectedIndex >= 0);
+			button1.Enabled = lbdirs.SelectedIndex >= 0;
 			button2.Enabled = button1.Enabled;
 		}
 

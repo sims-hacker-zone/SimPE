@@ -195,7 +195,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <returns></returns>
 		public Geometry.Vector3f TransformScaled(Geometry.Vector3f v)
 		{
-			return (TransformMatrix * ScaleMatrix) * v;
+			return TransformMatrix * ScaleMatrix * v;
 		}
 
 		/// <summary>

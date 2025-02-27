@@ -102,9 +102,9 @@ namespace SimPe.Plugin
 
 			form.tbtype.Text = "0x" + Helper.HexString((byte)wrp.Type);
 
-			form.btnAddApt.Enabled = form.btnDelApt.Enabled = (
+			form.btnAddApt.Enabled = form.btnDelApt.Enabled =
 				wrp.Type == Ltxt.LotType.ApartmentBase
-			);
+			;
 			form.tbRoads.Text = "0x" + Helper.HexString(wrp.LotRoads);
 			form.tbwd.Text = wrp.LotSize.Width.ToString();
 			form.tbhg.Text = wrp.LotSize.Height.ToString();
@@ -205,10 +205,10 @@ namespace SimPe.Plugin
 
 				form.cbtrmale.Enabled = !form.cbtrfem.Checked;
 				form.cbtrfem.Enabled = !form.cbtrmale.Checked;
-				form.cbtrclub.Enabled = (wrp.Type == Ltxt.LotType.Hobby);
-				form.cbtrhidec.Enabled = (wrp.Type == Ltxt.LotType.Hobby);
-				form.gbhobby.Enabled = (wrp.Type == Ltxt.LotType.Hobby);
-				form.bthbytrvl.Enabled = (wrp.Type == Ltxt.LotType.Hobby);
+				form.cbtrclub.Enabled = wrp.Type == Ltxt.LotType.Hobby;
+				form.cbtrhidec.Enabled = wrp.Type == Ltxt.LotType.Hobby;
+				form.gbhobby.Enabled = wrp.Type == Ltxt.LotType.Hobby;
+				form.bthbytrvl.Enabled = wrp.Type == Ltxt.LotType.Hobby;
 			}
 			else
 			{
@@ -217,7 +217,7 @@ namespace SimPe.Plugin
 				form.gbtravel.Visible = false;
 			}
 
-			form.cbBeachy.Enabled = (wrp.SubVersion >= LtxtSubVersion.Voyage);
+			form.cbBeachy.Enabled = wrp.SubVersion >= LtxtSubVersion.Voyage;
 			form.bthbytrvl.Text = "Hobby Flags:";
 			form.tbu5.Text = Helper.BytesToHexList(wrp.Unknown5);
 			//form.tblotclass.Text = "0x" + Helper.HexString(wrp.LotClass);
@@ -275,25 +275,25 @@ namespace SimPe.Plugin
 			form.lbApts.Enabled =
 				form.gbApartment.Enabled =
 				form.lbu7.Enabled =
-					(
+
 						wrp.Version >= LtxtVersion.Apartment
 						|| wrp.SubVersion >= LtxtSubVersion.Apartment
-					);
+					;
 			form.tbu5.ReadOnly =
 				form.tbApBase.ReadOnly =
 				form.tbu6.ReadOnly =
 				form.tbu7.ReadOnly =
 					!form.lbApts.Enabled;
 
-			form.llAptBase.Enabled = (wrp.ApartmentBase != 0);
+			form.llAptBase.Enabled = wrp.ApartmentBase != 0;
 			form.btnAddApt.Visible = form.btnDelApt.Visible =
 				(
 					wrp.Version >= LtxtVersion.Apartment
 					|| wrp.SubVersion >= LtxtSubVersion.Apartment
 				) && Helper.WindowsRegistry.HiddenMode;
-			form.btnAddApt.Enabled = form.btnDelApt.Enabled = (
+			form.btnAddApt.Enabled = form.btnDelApt.Enabled =
 				wrp.Type == Ltxt.LotType.ApartmentBase
-			);
+			;
 			form.btnDelApt.Enabled =
 				form.llFamily.Enabled =
 				form.llSubLot.Enabled =

@@ -156,7 +156,7 @@ namespace pj
 
 		public bool IsEnabled(IPackedFileDescriptor pfd, IPackageFile package)
 		{
-			return (package != null);
+			return package != null;
 		}
 
 		private bool IsReallyEnabled(IPackedFileDescriptor pfd, IPackageFile package)

@@ -195,9 +195,9 @@ namespace SimPe.Plugin
 				Convert.ToString(ofbnormal) + " abnormal walls (OFB only)";
 			lbscreenwood.Text =
 				Convert.ToString(screenwood) + " screen wood (OFB or later)";
-			lbunlevel.Visible = (unlevel > 0);
-			lbunlpool.Visible = (unlpool > 0);
-			lbofbnormal.Visible = (ofbnormal > 0);
+			lbunlevel.Visible = unlevel > 0;
+			lbunlpool.Visible = unlpool > 0;
+			lbofbnormal.Visible = ofbnormal > 0;
 		}
 
 		public override void OnCommit()
@@ -238,20 +238,20 @@ namespace SimPe.Plugin
 
 		private void cbExistFences_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			btchanger.Enabled = (
+			btchanger.Enabled =
 				cbExistFences.SelectedIndex != -1
 				&& cballFences.SelectedIndex != -1
 				&& cbExistFences.SelectedItem != cballFences.SelectedItem
-			);
+			;
 		}
 
 		private void cballFences_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			btchanger.Enabled = (
+			btchanger.Enabled =
 				cbExistFences.SelectedIndex != -1
 				&& cballFences.SelectedIndex != -1
 				&& cbExistFences.SelectedItem != cballFences.SelectedItem
-			);
+			;
 		}
 
 		private void btchanger_Click(object sender, EventArgs e)

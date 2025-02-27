@@ -689,7 +689,7 @@ namespace SimPe.Geometry
 		/// <summary>
 		/// True if this Matrix is invertibale
 		/// </summary>
-		public bool Invertable => (Determinant() != 0);
+		public bool Invertable => Determinant() != 0;
 
 		/// <summary>
 		/// True if the Matrix is Orthogonal

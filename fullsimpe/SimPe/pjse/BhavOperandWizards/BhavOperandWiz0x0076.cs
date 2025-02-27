@@ -170,10 +170,10 @@ namespace pjse.BhavOperandWizards.Wiz0x0076
 		{
 			cbOperation.SelectedIndex = (val < cbOperation.Items.Count) ? val : -1;
 
-			pnOp1.Enabled = (val < d1enable.Length && d1enable[val]);
+			pnOp1.Enabled = val < d1enable.Length && d1enable[val];
 			lbOp1.Text = pnOp1.Enabled ? (d1IndexValue[val] ? sIndex : sValue) : "";
 
-			pnOp2.Enabled = (val < d2enable.Length && d2enable[val]);
+			pnOp2.Enabled = val < d2enable.Length && d2enable[val];
 			lbOp2.Text = pnOp2.Enabled ? (d2IndexValue[val] ? sIndex : sValue) : "";
 		}
 
@@ -191,7 +191,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0076
 			setOperation(o[0x01]);
 			// See discussion around whether this is a bit vs boolean:
 			// http://simlogical.com/SMF/index.php?topic=917.msg6641#msg6641
-			rb1StackObj.Checked = !(rb1My.Checked = (o[0x2] == 0));
+			rb1StackObj.Checked = !(rb1My.Checked = o[0x2] == 0);
 
 			doidArray = new DataOwnerControl(
 				inst,

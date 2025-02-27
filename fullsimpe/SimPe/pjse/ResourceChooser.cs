@@ -501,11 +501,11 @@ namespace pjse
 			lvPackage.Items.AddRange(
 				new ListViewItem[]
 				{
-					(
-						(ListViewItem)(
+
+						(ListViewItem)
 							resources.GetObject("lvPackage.Items")
-						)
-					),
+
+					,
 				}
 			);
 			lvPackage.MultiSelect = false;
@@ -551,11 +551,11 @@ namespace pjse
 			lvGlobal.Items.AddRange(
 				new ListViewItem[]
 				{
-					(
-						(ListViewItem)(
+
+						(ListViewItem)
 							resources.GetObject("lvGlobal.Items")
-						)
-					),
+
+					,
 				}
 			);
 			lvGlobal.MultiSelect = false;
@@ -601,11 +601,11 @@ namespace pjse
 			lvGroup.Items.AddRange(
 				new ListViewItem[]
 				{
-					(
-						(ListViewItem)(
+
+						(ListViewItem)
 							resources.GetObject("lvGroup.Items")
-						)
-					),
+
+					,
 				}
 			);
 			lvGroup.MultiSelect = false;
@@ -651,11 +651,11 @@ namespace pjse
 			lvSemi.Items.AddRange(
 				new ListViewItem[]
 				{
-					(
-						(ListViewItem)(
+
+						(ListViewItem)
 							resources.GetObject("lvSemi.Items")
-						)
-					),
+
+					,
 				}
 			);
 			lvSemi.MultiSelect = false;
@@ -700,11 +700,11 @@ namespace pjse
 			lvPrim.Items.AddRange(
 				new ListViewItem[]
 				{
-					(
-						(ListViewItem)(
+
+						(ListViewItem)
 							resources.GetObject("lvPrim.Items")
-						)
-					),
+
+					,
 				}
 			);
 			lvPrim.MultiSelect = false;

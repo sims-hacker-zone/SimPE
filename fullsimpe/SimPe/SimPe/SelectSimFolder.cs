@@ -125,10 +125,10 @@ namespace SimPe
 			//
 			btOK.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			btOK.FlatStyle = FlatStyle.System;
@@ -143,10 +143,10 @@ namespace SimPe
 			//
 			btCancel.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			btCancel.DialogResult = DialogResult.Cancel;
@@ -162,12 +162,12 @@ namespace SimPe
 			//
 			xpLine1.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			xpLine1.BackColor = System.Drawing.Color.Transparent;
@@ -183,12 +183,12 @@ namespace SimPe
 			//
 			tbFolder.Anchor =
 
-					(
-						(
+
+
 							AnchorStyles.Top
 							| AnchorStyles.Left
-						) | AnchorStyles.Right
-					)
+						 | AnchorStyles.Right
+
 
 			;
 			tbFolder.Location = new System.Drawing.Point(64, 8);
@@ -200,10 +200,10 @@ namespace SimPe
 			//
 			button1.Anchor =
 
-					(
+
 						AnchorStyles.Top
 						| AnchorStyles.Right
-					)
+
 
 			;
 			button1.FlatStyle = FlatStyle.System;

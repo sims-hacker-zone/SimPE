@@ -217,7 +217,7 @@ namespace SimPe.PackedFiles
 				== typeof(IHelpFactory)
 			)
 			{
-				Register((factory as IHelpFactory));
+				Register(factory as IHelpFactory);
 			}
 
 			if (
@@ -227,7 +227,7 @@ namespace SimPe.PackedFiles
 				== typeof(ISettingsFactory)
 			)
 			{
-				Register((factory as ISettingsFactory));
+				Register(factory as ISettingsFactory);
 			}
 
 			if (
@@ -237,7 +237,7 @@ namespace SimPe.PackedFiles
 				== typeof(ICommandLineFactory)
 			)
 			{
-				Register((factory as ICommandLineFactory));
+				Register(factory as ICommandLineFactory);
 			}
 		}
 

@@ -793,15 +793,15 @@ namespace SimPe.PackedFiles.Wrapper
 		private short lifeline;
 		public short LifelinePoints
 		{
-			get => (short)Math.Min(600, (int)(lifeline));
-			set => lifeline = (short)Math.Min(600, (int)(value));
+			get => (short)Math.Min(600, (int)lifeline);
+			set => lifeline = (short)Math.Min(600, (int)value);
 		}
 
 		private ushort lifelinescore;
 		public uint LifelineScore
 		{
 			get => (uint)(lifelinescore * 10);
-			set => lifelinescore = (ushort)(Math.Min(short.MaxValue, value / 10));
+			set => lifelinescore = (ushort)Math.Min(short.MaxValue, value / 10);
 		}
 	}
 	#endregion
@@ -2362,7 +2362,7 @@ namespace SimPe.PackedFiles.Wrapper
 			//instancenumber = reader.ReadUInt16();
 			//simid = reader.ReadUInt32();
 			backupdata = reader.ReadBytes(
-				(int)(reader.BaseStream.Length - (reader.BaseStream.Position))
+				(int)(reader.BaseStream.Length - reader.BaseStream.Position)
 			);
 			long endpos = reader.BaseStream.Position;
 

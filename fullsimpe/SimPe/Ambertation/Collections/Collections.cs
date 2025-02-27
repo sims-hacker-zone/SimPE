@@ -78,7 +78,7 @@ namespace Ambertation.Collections
 		/// </summary>
 		public new GraphItemBase this[int index]
 		{
-			get => ((GraphItemBase)base[index]);
+			get => (GraphItemBase)base[index];
 			set => base[index] = value;
 		}
 
@@ -87,7 +87,7 @@ namespace Ambertation.Collections
 		/// </summary>
 		public GraphItemBase this[uint index]
 		{
-			get => ((GraphItemBase)base[(int)index]);
+			get => (GraphItemBase)base[(int)index];
 			set => base[(int)index] = value;
 		}
 
@@ -238,7 +238,7 @@ namespace Ambertation.Collections
 		/// </summary>
 		public new GraphPanelElement this[int index]
 		{
-			get => ((GraphPanelElement)base[index]);
+			get => (GraphPanelElement)base[index];
 			set => base[index] = value;
 		}
 
@@ -247,7 +247,7 @@ namespace Ambertation.Collections
 		/// </summary>
 		public GraphPanelElement this[uint index]
 		{
-			get => ((GraphPanelElement)base[(int)index]);
+			get => (GraphPanelElement)base[(int)index];
 			set => base[(int)index] = value;
 		}
 
@@ -355,7 +355,7 @@ namespace Ambertation.Collections
 		/// </summary>
 		public new PropertyItem this[int index]
 		{
-			get => ((PropertyItem)base[index]);
+			get => (PropertyItem)base[index];
 			set => base[index] = value;
 		}
 
@@ -364,7 +364,7 @@ namespace Ambertation.Collections
 		/// </summary>
 		public PropertyItem this[uint index]
 		{
-			get => ((PropertyItem)base[(int)index]);
+			get => (PropertyItem)base[(int)index];
 			set => base[(int)index] = value;
 		}
 
@@ -473,7 +473,7 @@ namespace Ambertation.Collections
 
 		public bool Contains(string name)
 		{
-			return (GetIndexOf(name) >= 0);
+			return GetIndexOf(name) >= 0;
 		}
 
 		/// <summary>
@@ -537,7 +537,7 @@ namespace Ambertation.Collections
 		/// </summary>
 		public new Image this[int index]
 		{
-			get => ((Image)base[index]);
+			get => (Image)base[index];
 			set => base[index] = value;
 		}
 
@@ -546,7 +546,7 @@ namespace Ambertation.Collections
 		/// </summary>
 		public Image this[uint index]
 		{
-			get => ((Image)base[(int)index]);
+			get => (Image)base[(int)index];
 			set => base[(int)index] = value;
 		}
 
