@@ -19,10 +19,6 @@
  ***************************************************************************/
 using System;
 using System.Collections;
-using System.IO;
-using System.Xml;
-
-using Microsoft.Win32;
 
 namespace SimPe
 {

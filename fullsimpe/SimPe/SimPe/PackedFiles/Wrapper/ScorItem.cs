@@ -21,11 +21,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using SimPe.Data;
-using SimPe.Interfaces;
-using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Wrapper.SCOR;
-using SimPe.PackedFiles.Wrapper.Supporting;
 
 namespace SimPe.PackedFiles.Wrapper
 {

@@ -1,5 +1,3 @@
-using System;
-
 using Ambertation.Scenes;
 
 namespace SimPe.Plugin.Gmdc

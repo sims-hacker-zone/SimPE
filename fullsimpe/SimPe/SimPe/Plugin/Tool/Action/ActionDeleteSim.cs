@@ -19,8 +19,6 @@
  ***************************************************************************/
 using System;
 using System.Collections;
-using System.Reflection;
-using System.Runtime.CompilerServices;
 
 namespace SimPe.Plugin.Tool.Action
 {

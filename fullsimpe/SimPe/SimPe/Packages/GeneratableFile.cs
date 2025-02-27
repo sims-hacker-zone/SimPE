@@ -22,10 +22,7 @@ using System.Collections;
 using System.IO;
 
 using SimPe.Collections.IO;
-using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
-using SimPe.Interfaces.Plugin;
-using SimPe.Interfaces.Plugin.Internal;
 
 namespace SimPe.Packages
 {

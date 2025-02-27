@@ -20,7 +20,6 @@
 using System;
 using System.Collections;
 using System.Globalization;
-using System.IO;
 
 using SimPe.Geometry;
 using SimPe.Plugin.Anim;

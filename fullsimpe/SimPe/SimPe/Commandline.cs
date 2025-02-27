@@ -25,7 +25,6 @@ using System.IO;
 
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
-using SimPe.Plugin;
 
 namespace SimPe
 {

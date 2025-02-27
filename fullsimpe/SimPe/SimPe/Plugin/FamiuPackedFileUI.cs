@@ -1,8 +1,5 @@
 using System;
 using System.Drawing;
-using System.Globalization;
-using System.Threading;
-using System.Windows.Forms;
 
 using SimPe.Interfaces.Plugin;
 

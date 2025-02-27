@@ -21,13 +21,9 @@ using System;
 using System.Collections;
 using System.IO;
 
-using SimPe.Collections.IO;
 using SimPe.Data;
 using SimPe.Events;
-using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
-using SimPe.Interfaces.Plugin;
-using SimPe.Interfaces.Plugin.Internal;
 using SimPe.PackedFiles.Wrapper;
 
 namespace SimPe.Packages

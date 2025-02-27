@@ -1,12 +1,7 @@
 using System;
-using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Reflection;
-using System.Xml;
-using System.Xml.Serialization;
 
 using SimPe.Data;
-using SimPe.PackedFiles.Wrapper;
 
 namespace SimPe.Plugin
 {

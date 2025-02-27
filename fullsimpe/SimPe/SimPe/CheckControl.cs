@@ -1,9 +1,5 @@
 using System;
-using System.Collections;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Media;
 using System.Windows.Forms;
 
 namespace SimPe

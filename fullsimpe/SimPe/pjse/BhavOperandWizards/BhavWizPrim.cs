@@ -32,7 +32,6 @@
  */
 
 using System;
-using System.Collections;
 
 using SimPe.PackedFiles.Wrapper;
 

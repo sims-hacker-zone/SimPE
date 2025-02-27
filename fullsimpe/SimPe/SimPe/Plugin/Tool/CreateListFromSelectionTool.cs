@@ -20,7 +20,6 @@
 using System;
 
 using SimPe.Events;
-using SimPe.Interfaces;
 
 namespace SimPe.Plugin.Tool
 {

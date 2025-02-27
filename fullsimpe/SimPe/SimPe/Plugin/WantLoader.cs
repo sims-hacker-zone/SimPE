@@ -19,10 +19,8 @@
  ***************************************************************************/
 using System;
 using System.Collections;
-using System.Windows.Forms;
 
 using SimPe.Cache;
-using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
 {

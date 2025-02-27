@@ -18,14 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Collections;
-using System.IO;
-using System.Reflection;
 using System.Windows.Forms;
 
-using SimPe.Events;
 using SimPe.Interfaces;
-using SimPe.Interfaces.Plugin;
 
 namespace SimPe
 {

@@ -19,11 +19,9 @@
  ***************************************************************************/
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Windows.Forms;
 
 using SimPe.Data;
-using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.UserInterface

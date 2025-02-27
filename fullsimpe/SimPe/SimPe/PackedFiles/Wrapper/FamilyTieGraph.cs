@@ -18,11 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Collections;
 using System.Drawing;
 
-using Ambertation.Collections;
-using Ambertation.Drawing;
 using Ambertation.Windows.Forms;
 using Ambertation.Windows.Forms.Graph;
 

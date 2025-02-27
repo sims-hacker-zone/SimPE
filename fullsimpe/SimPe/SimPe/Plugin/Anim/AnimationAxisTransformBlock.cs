@@ -21,8 +21,6 @@ using System;
 using System.Collections;
 using System.ComponentModel;
 
-using SimPe.Geometry;
-
 namespace SimPe.Plugin.Anim
 {
 	/// <summary>

@@ -21,10 +21,7 @@ using System;
 using System.Collections;
 
 using SimPe.Data;
-using SimPe.Interfaces;
-using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
-using SimPe.Interfaces.Plugin.Internal;
 using SimPe.PackedFiles.Wrapper.Supporting;
 
 namespace SimPe.PackedFiles.Wrapper

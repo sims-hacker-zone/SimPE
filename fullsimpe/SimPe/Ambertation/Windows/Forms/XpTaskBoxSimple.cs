@@ -18,14 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Collections;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Globalization;
-using System.Resources;
-using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
 namespace Ambertation.Windows.Forms

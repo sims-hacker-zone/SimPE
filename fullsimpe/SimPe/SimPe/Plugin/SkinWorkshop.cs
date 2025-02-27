@@ -19,11 +19,9 @@
  ***************************************************************************/
 using System;
 using System.Collections;
-using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-using SimPe;
 using SimPe.Data;
 using SimPe.Interfaces;
 

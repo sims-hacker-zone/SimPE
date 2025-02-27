@@ -10,20 +10,12 @@
 //     * You give proper credit to me if you re-publish
 //       this code.
 //**********************************************
-using System;
 using System.Collections;
-using System.Diagnostics;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
-using System.Runtime.InteropServices;
-using System.Threading;
-using System.Windows.Forms;
 
 namespace Ambertation.Drawing
 {
-	using System;
-
 	/// <summary>
 	/// TODO - Add class summary
 	/// </summary>

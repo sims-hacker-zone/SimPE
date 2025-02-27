@@ -17,11 +17,7 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-using System;
-
-using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
-using SimPe.Interfaces.Providers;
 
 namespace SimPe.Plugin
 {

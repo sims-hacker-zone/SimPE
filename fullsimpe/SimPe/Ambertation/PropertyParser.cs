@@ -19,14 +19,10 @@
  ***************************************************************************/
 using System;
 using System.Collections;
-using System.ComponentModel;
-using System.Globalization;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Threading;
 using System.Xml;
-
-using Ambertation;
 
 namespace Ambertation
 {

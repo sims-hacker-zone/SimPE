@@ -19,10 +19,7 @@
  ***************************************************************************/
 using System;
 using System.Collections;
-using System.Windows.Forms;
 using System.Xml;
-
-using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
 {

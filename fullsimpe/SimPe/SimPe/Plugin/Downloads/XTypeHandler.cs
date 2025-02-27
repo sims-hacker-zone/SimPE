@@ -1,6 +1,4 @@
-using System;
 using System.Drawing;
-using System.Text;
 
 namespace SimPe.Plugin.Downloads
 {

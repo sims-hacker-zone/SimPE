@@ -21,7 +21,6 @@ using System;
 using System.Collections;
 using System.ComponentModel;
 using System.Drawing;
-using System.Reflection;
 using System.Windows.Forms;
 
 namespace SimPe.Plugin

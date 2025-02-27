@@ -19,7 +19,6 @@
  ***************************************************************************/
 using System;
 using System.Collections;
-using System.Xml;
 
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Providers;

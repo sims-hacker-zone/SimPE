@@ -1,15 +1,10 @@
 using System;
 using System.Collections;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
 using SimPe.Data;
 using SimPe.Interfaces.Files;
-using SimPe.Packages;
-using SimPe.PackedFiles.Wrapper;
-using SimPe.Plugin;
 
 namespace SimPe.Plugin.UI
 {

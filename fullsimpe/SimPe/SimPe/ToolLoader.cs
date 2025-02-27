@@ -20,11 +20,6 @@
 using System;
 using System.Collections;
 using System.Diagnostics;
-using System.Threading;
-
-using Microsoft.Win32;
-
-using SimPe.Packages;
 
 namespace SimPe
 {

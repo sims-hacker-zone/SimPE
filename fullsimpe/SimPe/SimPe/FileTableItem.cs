@@ -1,9 +1,3 @@
-using System;
-using System.Collections;
-using System.Xml;
-
-using SimPe.Interfaces.Wrapper;
-
 namespace SimPe
 {
 	/// <summary>

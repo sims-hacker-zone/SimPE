@@ -19,14 +19,8 @@
  ***************************************************************************/
 using System;
 using System.Collections;
-using System.Globalization;
-using System.IO;
-using System.Text;
-using System.Windows.Forms;
 
 using SimPe.Geometry;
-using SimPe.Plugin.Anim;
-using SimPe.Plugin.Gmdc;
 
 namespace SimPe.Plugin.Gmdc.Exporter
 {

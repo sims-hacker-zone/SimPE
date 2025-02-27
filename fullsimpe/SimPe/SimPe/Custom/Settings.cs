@@ -18,10 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Collections.Generic;
-using System.Globalization;
 using System.Resources;
-using System.Text;
 
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;

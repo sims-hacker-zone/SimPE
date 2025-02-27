@@ -1,5 +1,3 @@
-using System;
-
 using SimPe.Plugin.Anim;
 
 namespace SimPe.Plugin

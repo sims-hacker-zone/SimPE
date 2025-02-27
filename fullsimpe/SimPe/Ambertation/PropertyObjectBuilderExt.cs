@@ -21,10 +21,8 @@ using System;
 using System.Collections;
 using System.ComponentModel;
 using System.Drawing;
-using System.Globalization;
 using System.Reflection;
 using System.Reflection.Emit;
-using System.Resources;
 using System.Threading;
 
 namespace Ambertation

@@ -19,15 +19,10 @@
  ***************************************************************************/
 using System;
 using System.Collections;
-using System.Globalization;
-using System.IO;
 
-using Ambertation.Collections;
 using Ambertation.Scenes;
-using Ambertation.Scenes.Collections;
 
 using SimPe.Geometry;
-using SimPe.Plugin.Anim;
 using SimPe.Plugin.Gmdc;
 
 namespace SimPe.Plugin

@@ -26,7 +26,6 @@ using System.Windows.Forms;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
-using SimPe.Interfaces.Scenegraph;
 
 namespace pj
 {

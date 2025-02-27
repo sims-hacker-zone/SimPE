@@ -45,8 +45,6 @@
  * ***** END LICENSE BLOCK ***** */
 #endregion
 
-using System;
-
 namespace Classless.Hasher
 {
 	/// <summary>Predefined standards for CRC algorithms.</summary>

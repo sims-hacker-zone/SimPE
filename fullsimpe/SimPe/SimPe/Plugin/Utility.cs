@@ -1,11 +1,7 @@
 using System;
 using System.Collections;
 
-using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
-using SimPe.Interfaces.Scenegraph;
-using SimPe.Packages;
-using SimPe.PackedFiles.Wrapper;
 
 namespace SimPe.Plugin
 {

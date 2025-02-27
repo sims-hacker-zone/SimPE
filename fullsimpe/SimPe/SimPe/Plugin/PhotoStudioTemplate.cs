@@ -20,8 +20,6 @@
 using System;
 using System.Drawing;
 
-using SimPe.Interfaces;
-
 namespace SimPe.Plugin
 {
 	/// <summary>

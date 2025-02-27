@@ -1,12 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Specialized;
-using System.Text;
 
 using SimPe.Data;
-using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
-using SimPe.Packages;
 using SimPe.PackedFiles.Wrapper;
 
 namespace SimPe.Plugin

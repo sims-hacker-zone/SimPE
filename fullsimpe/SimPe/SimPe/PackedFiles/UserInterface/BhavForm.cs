@@ -27,10 +27,8 @@ using System.Windows.Forms;
 
 using pjse;
 
-using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
-using SimPe.Interfaces.Scenegraph;
 using SimPe.PackedFiles.Wrapper;
 
 namespace SimPe.PackedFiles.UserInterface

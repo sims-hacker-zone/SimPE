@@ -19,8 +19,6 @@
  ***************************************************************************/
 using System;
 
-using SimPe;
-
 namespace SimPe.Cache
 {
 	/// <summary>

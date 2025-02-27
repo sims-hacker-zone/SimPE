@@ -19,8 +19,6 @@
  ***************************************************************************/
 using System;
 
-using SimPe.Data;
-
 namespace SimPe.Data
 {
 	/// <summary>

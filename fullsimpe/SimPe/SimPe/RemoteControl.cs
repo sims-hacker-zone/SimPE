@@ -19,8 +19,6 @@
  ***************************************************************************/
 using System;
 
-using SimPe.Interfaces;
-
 namespace SimPe
 {
 	/// <summary>

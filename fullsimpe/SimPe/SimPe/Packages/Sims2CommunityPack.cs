@@ -22,11 +22,6 @@ using System.Collections;
 using System.IO;
 using System.Xml;
 
-using SimPe.Interfaces;
-using SimPe.Interfaces.Files;
-using SimPe.Interfaces.Plugin;
-using SimPe.Interfaces.Plugin.Internal;
-
 namespace SimPe.Packages
 {
 	/// <summary>

@@ -1,5 +1,3 @@
-using System;
-
 namespace SimPe.Plugin
 {
 	public enum NgbhValueDescriptorType : byte

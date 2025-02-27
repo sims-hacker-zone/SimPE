@@ -24,7 +24,6 @@ using System.Drawing;
 using SimPe.Cache;
 using SimPe.Interfaces.Plugin.Scanner;
 using SimPe.PackedFiles.Wrapper;
-using SimPe.Plugin;
 
 namespace SimPe.Plugin.Scanner
 {

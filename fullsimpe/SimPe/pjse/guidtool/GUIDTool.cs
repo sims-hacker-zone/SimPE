@@ -17,18 +17,7 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Threading;
-using System.Windows.Forms;
-
 using SimPe.Interfaces;
-using SimPe.Interfaces.Plugin;
-using SimPe.Interfaces.Scenegraph;
-using SimPe.PackedFiles.Wrapper;
 
 namespace pjse.guidtool
 {

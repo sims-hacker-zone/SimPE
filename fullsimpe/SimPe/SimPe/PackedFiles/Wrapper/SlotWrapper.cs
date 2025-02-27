@@ -18,11 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Collections;
 
-using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
-using SimPe.Interfaces.Wrapper;
 
 namespace SimPe.PackedFiles.Wrapper
 {

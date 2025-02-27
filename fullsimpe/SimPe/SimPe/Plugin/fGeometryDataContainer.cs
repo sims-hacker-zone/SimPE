@@ -19,9 +19,6 @@
  ***************************************************************************/
 using System;
 using System.Collections;
-using System.ComponentModel;
-using System.Drawing;
-using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
 

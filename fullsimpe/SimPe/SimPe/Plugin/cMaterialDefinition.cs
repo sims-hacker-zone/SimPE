@@ -20,7 +20,6 @@
 using System;
 using System.Collections;
 
-using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Scenegraph;
 
 namespace SimPe.Plugin

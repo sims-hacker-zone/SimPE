@@ -19,13 +19,11 @@
  ***************************************************************************/
 using System;
 using System.Collections;
-using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Wrapper;
-using SimPe.Plugin;
 
 using Bhav = SimPe.PackedFiles.Wrapper.Bhav;
 

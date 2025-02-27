@@ -1,5 +1,3 @@
-using System;
-
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin

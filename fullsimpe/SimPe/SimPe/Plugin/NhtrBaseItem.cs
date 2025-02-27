@@ -1,5 +1,3 @@
-using System;
-
 using SimPe.Geometry;
 
 namespace SimPe.Plugin

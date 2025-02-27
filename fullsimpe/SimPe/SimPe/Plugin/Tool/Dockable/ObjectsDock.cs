@@ -1,13 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.Windows.Forms;
-
-using Ambertation.Windows.Forms;
 
 namespace SimPe.Plugin.Tool.Dockable
 {

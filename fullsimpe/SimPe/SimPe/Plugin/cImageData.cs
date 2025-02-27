@@ -21,7 +21,6 @@ using System;
 using System.Collections;
 using System.Drawing;
 
-using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Scenegraph;
 
 namespace SimPe.Plugin

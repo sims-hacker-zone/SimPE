@@ -21,9 +21,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using Ambertation.Collections;
-using Ambertation.Drawing;
-using Ambertation.Windows.Forms;
 using Ambertation.Windows.Forms.Graph;
 
 namespace SimPe.PackedFiles.Wrapper

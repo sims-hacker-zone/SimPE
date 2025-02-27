@@ -1,8 +1,5 @@
-using System;
 using System.Drawing;
 using System.IO;
-
-using SimPe;
 
 namespace SimPe.Cache
 {

@@ -20,9 +20,7 @@
 using System;
 
 using SimPe.Events;
-using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
-using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Plugin.Internal;
 
 namespace SimPe.Packages

@@ -20,12 +20,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.ComponentModel;
-using System.Diagnostics;
 
 using SimPe.Data;
-using SimPe.Events;
-using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Scenegraph;
 using SimPe.Packages;

@@ -20,7 +20,6 @@
 using System;
 using System.Collections;
 
-using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Wrapper;
 

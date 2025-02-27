@@ -18,9 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  1c111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Collections;
-using System.ComponentModel;
-using System.Drawing;
 using System.Windows.Forms;
 
 using SimPe.PackedFiles.Wrapper;

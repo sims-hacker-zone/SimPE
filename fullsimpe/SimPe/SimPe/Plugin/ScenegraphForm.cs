@@ -19,11 +19,8 @@
  ***************************************************************************/
 using System;
 using System.Collections;
-using System.ComponentModel;
-using System.Drawing;
 using System.Windows.Forms;
 
-using Ambertation.Windows.Forms;
 using Ambertation.Windows.Forms.Graph;
 
 using SimPe.Interfaces;

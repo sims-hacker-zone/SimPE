@@ -24,8 +24,6 @@ using System.Drawing;
 using Ambertation.Windows.Forms;
 using Ambertation.Windows.Forms.Graph;
 
-using SimPe.Interfaces;
-
 namespace SimPe.Plugin
 {
 	/// <summary>

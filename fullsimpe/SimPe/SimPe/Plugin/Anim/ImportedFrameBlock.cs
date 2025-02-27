@@ -20,8 +20,6 @@
 using System;
 using System.Collections;
 
-using SimPe.Geometry;
-
 namespace SimPe.Plugin.Anim
 {
 	/// <summary>

@@ -19,9 +19,6 @@
  ***************************************************************************/
 using System;
 
-using SimPe.Interfaces.Files;
-using SimPe.Interfaces.Plugin;
-using SimPe.Interfaces.Scenegraph;
 using SimPe.PackedFiles.Wrapper;
 
 namespace pjse.BhavNameWizards

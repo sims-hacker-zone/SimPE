@@ -18,14 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Windows.Forms;
-
-using SimPe.Events;
 
 //using Ambertation.Windows.Forms;
 

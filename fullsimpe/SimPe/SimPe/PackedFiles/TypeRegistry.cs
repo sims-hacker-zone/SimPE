@@ -21,10 +21,8 @@
  ***************************************************************************/
 using System;
 using System.Collections;
-using System.Collections.Generic;
 
 using SimPe.Interfaces;
-using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Plugin.Internal;
 

@@ -20,14 +20,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
-using SimPe.Interfaces.Plugin;
-using SimPe.PackedFiles.Wrapper;
 using SimPe.Plugin;
 
 using Bhav = SimPe.PackedFiles.Wrapper.Bhav;
