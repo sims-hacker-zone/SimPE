@@ -263,9 +263,7 @@ namespace SimPe.PackedFiles.Wrapper
 					else if (subnode.LocalName.Trim().ToLower() == "anyboolean")
 					{
 						item.Datatype = Data.MetaData.DataTypes.dtBoolean;
-						item.BooleanValue = subnode.InnerText.Trim().ToLower() == "true"
-							? true
-							: subnode.InnerText.Trim().ToLower() == "false" ? false : Convert.ToInt32(subnode.InnerText) != 0;
+						item.BooleanValue = subnode.InnerText.Trim().ToLower() == "true" || (subnode.InnerText.Trim().ToLower() != "false" && Convert.ToInt32(subnode.InnerText) != 0);
 					}
 					else if (subnode.LocalName.Trim().ToLower() == "#comment")
 					{

@@ -278,7 +278,7 @@ namespace SimPe
 				(Data.MetaData.Languages)cblang.SelectedIndex + 1;
 			Helper.WindowsRegistry.GameDebug = cbdebug.Checked;
 			Helper.WindowsRegistry.AutoBackup = cbautobak.Checked;
-			Helper.WindowsRegistry.BlurNudity = PathProvider.Global.EPInstalled < 18 ? cbblur.Checked : true;
+			Helper.WindowsRegistry.BlurNudity = PathProvider.Global.EPInstalled >= 18 || cbblur.Checked;
 
 			Helper.WindowsRegistry.EnableSound = cbsound.Checked;
 			Helper.WindowsRegistry.WaitingScreen = cbwait.Checked;

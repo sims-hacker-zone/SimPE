@@ -1744,11 +1744,8 @@ namespace SimPe.PackedFiles.UserInterface
 				sdesc.CharacterDescription.LifelineScore.ToString();
 			pnCareer.BackgroundImage = pnimage;
 			cbaspiration.Enabled = (int)sdesc.Version
-					>= (int)PackedFiles.Wrapper.SDescVersions.Freetime
-				&& !Helper.WindowsRegistry.AllowChangeOfSecondaryAspiration
-				? sdesc.Freetime.SecondaryAspiration
-					== MetaData.AspirationTypes.Nothing
-				: true;
+					< (int)PackedFiles.Wrapper.SDescVersions.Freetime
+				|| Helper.WindowsRegistry.AllowChangeOfSecondaryAspiration || sdesc.Freetime.SecondaryAspiration == MetaData.AspirationTypes.Nothing;
 		}
 
 		void RefreshInterests(Wrapper.ExtSDesc sdesc)
@@ -4053,12 +4050,7 @@ if (System.IO.File.Exists(Sdesc.CharacterFileName))
 
 		private void SetCharacterAttributesVisibility()
 		{
-			bool showsim = Sdesc == null
-				? true
-				: (int)Sdesc.Version
-					>= (int)PackedFiles.Wrapper.SDescVersions.Pets
-					? Sdesc.Nightlife.IsHuman
-					: true;
+			bool showsim = Sdesc == null || (int)Sdesc.Version < (int)PackedFiles.Wrapper.SDescVersions.Pets || Sdesc.Nightlife.IsHuman;
 			pnSimInt.Visible = pnHumanChar.Visible = showsim;
 			btProfile.Visible = showsim && !Helper.WindowsRegistry.HiddenMode;
 			pnPetChar.Visible = pnPetInt.Visible = !showsim;

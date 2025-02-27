@@ -496,7 +496,7 @@ namespace SimPe.Wants
 
 		public bool Remove(KeyValuePair<uint, List<SWAFItem>> item)
 		{
-			return Contains(item) ? history.Remove(item.Key) : false;
+			return Contains(item) && history.Remove(item.Key);
 		}
 		#endregion
 

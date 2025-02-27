@@ -239,12 +239,8 @@ namespace SimPe.PackedFiles.UserInterface
 			btnCancel.Enabled = false;
 		}
 
-		private bool isPopup => Tag == null
-					? false
-					: ((string)Tag).StartsWith("Popup");
-		private bool isNoOverride => Tag == null
-					? false
-					: ((string)Tag).Contains(";noOverride");
+		private bool isPopup => Tag != null && ((string)Tag).StartsWith("Popup");
+		private bool isNoOverride => Tag != null && ((string)Tag).Contains(";noOverride");
 		private string expName
 		{
 			get

@@ -508,7 +508,7 @@ namespace SimPe.Plugin
 		void SetVisible()
 		{
 			panel1.Visible = item != null;
-			panel2.Visible = des != null ? des.HasComplededFlag && item != null : false;
+			panel2.Visible = des != null && des.HasComplededFlag && item != null;
 
 			panel3.Visible = des != null && item == null;
 		}

@@ -1409,7 +1409,7 @@ namespace pjse
 
 		public string readBcon(uint instance, int bid, bool temp, bool useDecimal)
 		{
-			bool inDecimal = useDecimal ? Settings.PJSE.DecimalDOValue : false;
+			bool inDecimal = useDecimal && Settings.PJSE.DecimalDOValue;
 
 			if (
 				instruction == null

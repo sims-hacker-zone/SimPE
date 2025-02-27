@@ -437,7 +437,7 @@ namespace SimPe
 		/// </summary>
 		internal bool BlurNudity
 		{
-			get => Global.EPInstalled < 18 ? Latest.CensorFile == "" ? BlurNudityPreEP2 : BlurNudityPostEP2 : true;
+			get => Global.EPInstalled >= 18 || (Latest.CensorFile == "" ? BlurNudityPreEP2 : BlurNudityPostEP2);
 			set
 			{
 				if (Global.EPInstalled < 18)

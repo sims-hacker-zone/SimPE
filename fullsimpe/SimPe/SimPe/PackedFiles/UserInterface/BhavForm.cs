@@ -558,12 +558,8 @@ namespace SimPe.PackedFiles.UserInterface
 			return (i >= 0) ? s.Substring(0, i) : null;
 		}
 
-		private bool isPopup => (Tag == null || Tag as string == null)
-					? false
-					: ((string)Tag).StartsWith("Popup");
-		private bool isNoOverride => (Tag == null || Tag as string == null)
-					? false
-					: ((string)Tag).Contains(";noOverride");
+		private bool isPopup => Tag != null && Tag as string != null && ((string)Tag).StartsWith("Popup");
+		private bool isNoOverride => Tag != null && Tag as string != null && ((string)Tag).Contains(";noOverride");
 		private string callerID => getValueFromTag("callerID");
 		private string expName
 		{

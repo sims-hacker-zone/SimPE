@@ -1215,7 +1215,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		{
 			if (wizard1.CurrentStepNumber == wizardStepPanel2.Index && tv.Visible)
 			{
-				wizard1.NextEnabled = tv.SelectedNode == null ? false : tv.SelectedNode.Tag != null;
+				wizard1.NextEnabled = tv.SelectedNode != null && tv.SelectedNode.Tag != null;
 			}
 
 			lastselected = wizard1.NextEnabled ? (Data.Alias)tv.SelectedNode.Tag : null;
@@ -1271,7 +1271,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		)
 		{
 			package = null;
-			e.EnableNext = tv.Visible ? tv.SelectedNode == null ? false : tv.SelectedNode.Tag != null : lb.SelectedIndex >= 0;
+			e.EnableNext = tv.Visible ? tv.SelectedNode != null && tv.SelectedNode.Tag != null : lb.SelectedIndex >= 0;
 
 			tv.SelectedNode = null;
 			lb.SelectedIndex = -1;
