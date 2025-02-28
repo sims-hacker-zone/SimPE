@@ -28,8 +28,6 @@ namespace pj
 
 		public IToolPlugin[] KnownTools => new IToolPlugin[]
 				{
-					new BodyMeshExtractor(),
-					new BodyMeshLinker(),
 				};
 
 		#endregion

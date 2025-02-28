@@ -26,7 +26,7 @@ namespace pj
 	{
 		#region IToolFactory Members
 
-		public IToolPlugin[] KnownTools => new IToolPlugin[] { new cObjKeyTool() };
+		public IToolPlugin[] KnownTools => new IToolPlugin[] { };
 
 		#endregion
 

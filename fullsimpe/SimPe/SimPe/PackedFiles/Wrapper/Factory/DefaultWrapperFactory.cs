@@ -65,16 +65,7 @@ namespace SimPe.PackedFiles.Wrapper.Factory
 				{
 					IWrapper[] wrappers =
 					{
-						new Picture(),
-						new Xml(),
-						new Fami(
-							LinkedProvider.SimNameProvider
-						),
-						new Cpf(),
-						new Nref(),
-						new ExtObjd(),
-						new Plugin.Glob(),
-						new ObjLua(),
+
 					};
 					return wrappers;
 				}

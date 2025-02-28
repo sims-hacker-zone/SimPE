@@ -163,7 +163,7 @@ namespace SimPe
 		)
 		{
 			lp = e.LoadedPackage;
-			LinkLabel.Links[0].Enabled = tool.ChangeEnabledStateEventHandler(sender, e);
+			LinkLabel.Enabled = tool.ChangeEnabledStateEventHandler(sender, e);
 			MenuButton.Enabled = tool.ChangeEnabledStateEventHandler(sender, e);
 
 			lasteventarg = e;

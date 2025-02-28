@@ -1243,9 +1243,6 @@
     <Compile Include="SimPe\Plugin\Tool\Dockable\DebugDock.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SimPe\Plugin\Tool\Dockable\Factory.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="SimPe\Plugin\Tool\Dockable\FinderDock.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1415,9 +1412,6 @@
       <DependentUpon>FamiuPackedFileUI.cs</DependentUpon>
     </Compile>
     <Compile Include="SimPe\Plugin\FamiuPackedFileWrapper.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SimPe\Plugin\FamiuWrapperFactory.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="SimPe\Plugin\Gmdc\Exporter\GmdcExportToMilkShapeAscii.cs">
@@ -2073,7 +2067,6 @@
       <DependentUpon>SWAFEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="SimPe\Wants\SWAFWrapper.cs" />
-    <Compile Include="SimPe\Wants\WrapperFactory.cs" />
     <Compile Include="SimPe\Wants\XWNTEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -4695,5 +4688,6 @@
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies.net471" Version="1.0.3" />
     <PackageReference Include="SharpZipLib" Version="1.4.2" />
     <PackageReference Include="System.Resources.Extensions" Version="9.0.0" />
+    <PackageReference Include="System.Text.Json" Version="9.0.2" />
   </ItemGroup>
 </Project>

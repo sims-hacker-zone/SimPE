@@ -39,31 +39,13 @@ namespace pjOBJDTool
 		/// Returns a List of all available Plugins in this Package
 		/// </summary>
 		/// <returns>A List of all provided Plugins (=FileType Wrappers)</returns>
-		public override IWrapper[] KnownWrappers
-		{
-			get
-			{
-				// TODO:  You can add more Wrappers here
-				IWrapper[] wrappers = { };
-				return wrappers;
-			}
-		}
+		public override IWrapper[] KnownWrappers => new IWrapper[] { };
 
 		#endregion
 
 		#region IToolFactory Member
 
-		public IToolPlugin[] KnownTools
-		{
-			get
-			{
-				IToolPlugin[] tools =
-				{
-					new tOBJDTool(LinkedRegistry, LinkedProvider),
-				};
-				return tools;
-			}
-		}
+		public IToolPlugin[] KnownTools => new IToolPlugin[] { };
 		#endregion
 
 		#region IHelpFactory Members

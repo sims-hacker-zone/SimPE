@@ -48,99 +48,15 @@ namespace SimPe.Plugin
 		/// Returns a List of all available Plugins in this Package
 		/// </summary>
 		/// <returns>A List of all provided Plugins (=FileType Wrappers)</returns>
-		public override IWrapper[] KnownWrappers
-		{
-			get
-			{
+		public override IWrapper[] KnownWrappers =>
 				// TODO:  You can add more Wrappers here
-				IWrapper[] wrappers = { };
-				return wrappers;
-			}
-		}
+				new IWrapper[] { };
 
 		#endregion
 
 		#region IToolFactory Member
 
-		delegate void LoadDocksHandler(System.Collections.ArrayList docks);
-
-		void InvokeLoadDocks(System.Collections.ArrayList docks)
-		{
-			if (Helper.StartedGui == Executable.Classic)
-			{
-				docks.Add(new WorkshopTool(LinkedRegistry, LinkedProvider));
-			}
-			else
-			{
-				docks.Add(new Tool.Dockable.ObectWorkshopDockTool());
-			}
-
-			docks.Add(new Tool.Dockable.PackageDetailDockTool());
-			if (Helper.WindowsRegistry.HiddenMode)
-			{
-				docks.Add(new Tool.Window.PackageRepairTool());
-			}
-		}
-
-		public IToolPlugin[] KnownTools
-		{
-			get
-			{
-				if (Last != null)
-				{
-					return Last;
-				}
-
-				System.Collections.ArrayList list = new System.Collections.ArrayList();
-				InvokeLoadDocks(list);
-
-				Last = new IToolPlugin[list.Count];
-				list.CopyTo(Last);
-				return Last;
-
-#if UNREACHABLE
-				if (Helper.StartedGui == Executable.Classic)
-				{
-					if (Helper.WindowsRegistry.HiddenMode)
-					{
-						Last = new IToolPlugin[]
-						{
-							new SimPe.Plugin.Tool.Dockable.PackageDetailDockTool(),
-							new SimPe.Plugin.Tool.Window.PackageRepairTool(),
-						};
-					}
-					else
-					{
-						Last = new IToolPlugin[]
-						{
-							new SimPe.Plugin.Tool.Dockable.PackageDetailDockTool(),
-						};
-					}
-				}
-				else
-				{
-					if (Helper.WindowsRegistry.HiddenMode)
-					{
-						Last = new IToolPlugin[]
-						{
-							new SimPe.Plugin.Tool.Dockable.ObectWorkshopDockTool(),
-							new SimPe.Plugin.Tool.Dockable.PackageDetailDockTool(),
-							new SimPe.Plugin.Tool.Window.PackageRepairTool(),
-						};
-					}
-					else
-					{
-						Last = new IToolPlugin[]
-						{
-							new SimPe.Plugin.Tool.Dockable.ObectWorkshopDockTool(),
-							new SimPe.Plugin.Tool.Dockable.PackageDetailDockTool(),
-						};
-					}
-				}
-				return Last;
-#endif
-			}
-		}
+		public IToolPlugin[] KnownTools => new IToolPlugin[] { };
 		#endregion
 
 		#region IHelpFactory Members

@@ -19,10 +19,21 @@
  ***************************************************************************/
 using System;
 
+using pj;
+
+using pjHoodTool;
+
+using pjOBJDTool;
+
+using pjse;
+
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Wrapper;
+using SimPe.Plugin.Tool;
 using SimPe.Plugin.Tool.Action;
+using SimPe.Plugin.Tool.Dockable;
+using SimPe.Wants;
 
 namespace SimPe.Plugin
 {
@@ -39,6 +50,8 @@ namespace SimPe.Plugin
 			IToolFactory
 	{
 		static bool inited = false;
+
+		ResourceDock rd = new ResourceDock();
 
 		/// <summary>
 		/// Add all other default RCol Extensions
@@ -151,6 +164,15 @@ namespace SimPe.Plugin
 						);
 					IWrapper[] wrappers =
 					{
+						new Picture(),
+						new Xml(),
+						new Fami(LinkedProvider.SimNameProvider),
+						new Cpf(),
+						new Nref(),
+						new ExtObjd(),
+						new Glob(),
+						new ObjLua(),
+						new CompressedFileList(),
 						new RefFile(),
 						new Txtr(LinkedProvider, false),
 						new Lifo(LinkedProvider, false),
@@ -179,6 +201,31 @@ namespace SimPe.Plugin
 						new Trcn(),
 						new Ttab(),
 						new TreesPackedFileWrapper(),
+						new FamiuPackedFileWrapper(),
+						new ExtFamilyTies(),
+						new LinkedSDesc(),
+						new ExtSrel(),
+						new SimDNA(),
+						new Scor(),
+						new GametipPackedFileWrapper(),
+						new LastEPusePackedFileWrapper(),
+						new GWInvPackedFileWrapper(),
+						new XGoal(),
+						new SimindexPackedFileWrapper(),
+						new FunctionPackedFileWrapper(),
+						new SimpleTextPackedFileWrapper(),
+						new SimmyListPackedFileWrapper(),
+						new HugBugPackedFileWrapper(),
+						new AudioRefPackedFileWrapper(),
+						new InvenIndexPackedFileWrapper(),
+						new InventItemPackedFileWrapper(),
+						new WinfoPackedFileWrapper(),
+						new LotexturePackedFileWrapper(),
+						new CregPackedFileWrapper(),
+						new WallLayerPackedFileWrapper(),
+						new StringMapPackedFileWrapper(),
+						new SWAFWrapper(),
+						new XWNTWrapper(),
 					};
 					return wrappers;
 				}
@@ -208,6 +255,35 @@ namespace SimPe.Plugin
 					new GeneticCategorizerTool(),
 					new pjse.guidtool.GUIDTool(),
 					new CareerTool(LinkedRegistry, LinkedProvider),
+					new tOBJDTool(LinkedRegistry, LinkedProvider),
+					new cHoodTool(),
+					new PackageDockTool(rd),
+					new ResourceDockTool(rd),
+					new WrapperDockTool(rd),
+					new HexDecConverterTool(rd),
+					new ActionReloadFiletable(),
+					new ActionUniqueInstance(),
+					new CreateListFromPackageTool(),
+					new CreateListFromSelectionTool(),
+					new HexDockTool(rd),
+					new FinderDock(),
+					new Tool.Window.InstallerTool(),
+					new SaveSims2PackTool(),
+					new LoadSims2PackTool(),
+					new ObectWorkshopDockTool(),
+					new PackageDetailDockTool(),
+					new Tool.Window.PackageRepairTool(),
+					new AnimTool(),
+					new FileTableTool(),
+					new cHoodTool(),
+					new cObjKeyTool(),
+					new BodyMeshExtractor(),
+					new BodyMeshLinker(),
+#if DEBUG
+					new ActionCheckFiletable(),
+					new ActionBuildPhpGuidList(),
+					new DebugDock(),
+#endif
 				};
 
 		#endregion
@@ -215,7 +291,7 @@ namespace SimPe.Plugin
 
 		#region ICommandLineFactory Members
 
-		public ICommandLine[] KnownCommandLines => new ICommandLine[] { new BuildTxtr(), new FixPackage() };
+		public ICommandLine[] KnownCommandLines => new ICommandLine[] { new BuildTxtr(), new FixPackage(), new cHoodTool() };
 
 		#endregion
 

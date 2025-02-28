@@ -990,7 +990,7 @@ namespace pjse
 	{
 		#region IToolFactory Members
 
-		public IToolPlugin[] KnownTools => new IToolPlugin[] { new FileTableTool() };
+		public IToolPlugin[] KnownTools => new IToolPlugin[] { };
 
 		#endregion
 

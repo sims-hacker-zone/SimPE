@@ -29,7 +29,7 @@ namespace pjHoodTool
 			ICommandLineFactory
 	{
 		#region IToolFactory Members
-		public IToolPlugin[] KnownTools => new IToolPlugin[] { new cHoodTool() };
+		public IToolPlugin[] KnownTools => new IToolPlugin[] { };
 		#endregion
 
 		#region IHelpFactory Members

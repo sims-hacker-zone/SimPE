@@ -149,11 +149,7 @@ namespace SimPe
 			}
 			catch (Exception ex)
 			{
-				Exception e = new Exception(
-					"Unable to load PJSE Coder",
-					new Exception("Invalid Interface in pjse.coder.dll", ex)
-				);
-				Helper.ExceptionMessage(e);
+				throw ex;
 			}
 
 			string folder = Helper.SimPePluginPath;

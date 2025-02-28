@@ -28,27 +28,7 @@ namespace SimPe.PackedFiles.Wrapper.Factory
 	public class SimFactory : AbstractWrapperFactory
 	{
 		#region AbstractWrapperFactory Member
-		public override IWrapper[] KnownWrappers
-		{
-			get
-			{
-				if (Helper.NoPlugins)
-				{
-					return new IWrapper[0];
-				}
-				else
-				{
-					return new IWrapper[]
-					{
-						new ExtFamilyTies(),
-						new LinkedSDesc(),
-						new ExtSrel(),
-						new SimDNA(),
-						new Scor(),
-					};
-				}
-			}
-		}
+		public override IWrapper[] KnownWrappers => new IWrapper[0];
 
 		#endregion
 	}

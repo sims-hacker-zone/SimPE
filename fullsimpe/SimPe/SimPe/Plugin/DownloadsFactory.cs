@@ -75,35 +75,15 @@ namespace SimPe.Plugin
 		/// Returns a List of all available Plugins in this Package
 		/// </summary>
 		/// <returns>A List of all provided Plugins (=FileType Wrappers)</returns>
-		public override IWrapper[] KnownWrappers
-		{
-			get
-			{
+		public override IWrapper[] KnownWrappers =>
 				// TODO:  You can add more Wrappers here
-				IWrapper[] wrappers = { };
-				return wrappers;
-			}
-		}
+				new IWrapper[] { };
 
 		#endregion
 
 		#region IToolFactory Member
 
-		public IToolPlugin[] KnownTools
-		{
-			get
-			{
-				{
-					IToolPlugin[] tools =
-					{
-						new Tool.Window.InstallerTool(),
-						new Tool.SaveSims2PackTool(),
-						new Tool.LoadSims2PackTool(),
-					};
-					return tools;
-				}
-			}
-		}
+		public IToolPlugin[] KnownTools => new IToolPlugin[] { };
 		#endregion
 
 		#region ISettingsFactory Member

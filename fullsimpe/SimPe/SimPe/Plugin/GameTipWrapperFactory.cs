@@ -7,31 +7,11 @@ namespace SimPe.Plugin
 			Interfaces.Plugin.IHelpFactory
 	{
 		#region AbstractWrapperFactory Member
-		public override IWrapper[] KnownWrappers
-		{
-			get
-			{
-				if (Helper.SimPeVersionLong < 330717003793) // requires updated simpe.workspace and GDF
-				{
-					return new IWrapper[0];
-				}
-				else if (Helper.StartedGui == Executable.Classic)
-				{
-					IWrapper[] wrappers = { new XGoal() };
-					return wrappers;
-				}
-				else
-				{
-					IWrapper[] wrappers =
-					{
-						new GametipPackedFileWrapper(),
-						new LastEPusePackedFileWrapper(),
-						new GWInvPackedFileWrapper(),
-					};
-					return wrappers;
-				}
-			}
-		}
+		public override IWrapper[] KnownWrappers => Helper.SimPeVersionLong < 330717003793
+					? (new IWrapper[0])
+					: Helper.StartedGui == Executable.Classic
+						? (new IWrapper[] { })
+						: (new IWrapper[] { });
 		#endregion
 
 		#region IHelpFactory Members
