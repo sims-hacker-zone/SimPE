@@ -34,7 +34,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <ItemGroup />
   <ItemGroup>
     <Compile Include="SimPe\Actions\Default\AbstractActionDefault.cs">
       <SubType>Code</SubType>
@@ -4689,5 +4688,10 @@
     <PackageReference Include="SharpZipLib" Version="1.4.2" />
     <PackageReference Include="System.Resources.Extensions" Version="9.0.0" />
     <PackageReference Include="System.Text.Json" Version="9.0.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Plugins\pjse.coder.plugin\GlobalStrings.package">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
