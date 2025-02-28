@@ -3,6 +3,7 @@
     "editor.defaultFormatter": "ms-dotnettools.csharp"
   },
   "editor.formatOnSave": true,
+  "editor.formatOnType": true,
   "dotnet.server.useOmnisharp": true,
   "omnisharp.useModernNet": false,
   "omnisharp.enableEditorConfigSupport": true,
