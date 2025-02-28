@@ -17,22 +17,13 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-using System;
-using System.Collections;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
 using System.Windows.Forms;
-using SimPe.Interfaces.Plugin;
-using SimPe.Interfaces;
-using SimPe.PackedFiles.Wrapper.Supporting;
-using SimPe.Data;
+
 using Ambertation.Windows.Forms;
-using SimPe.Windows.Forms;
 
 namespace SimPe.PackedFiles.UserInterface
 {
-    partial class ExtSDesc
+	partial class ExtSDesc
     {
 
         /// <summary> 
@@ -82,10 +73,8 @@ namespace SimPe.PackedFiles.UserInterface
             this.biEP3 = new System.Windows.Forms.ToolStripButton();
             this.biEP6 = new System.Windows.Forms.ToolStripButton();
             this.biEP7 = new System.Windows.Forms.ToolStripButton();
-            this.biEP9 = new System.Windows.Forms.ToolStripButton();
             this.biMore = new System.Windows.Forms.ToolStripButton();
             this.biMax = new System.Windows.Forms.ToolStripButton();
-            this.biLezby = new System.Windows.Forms.ToolStripButton();
             this.mbiMax = new System.Windows.Forms.ToolStripMenuItem();
             this.pnId = new System.Windows.Forms.Panel();
             this.btOriGuid = new System.Windows.Forms.Button();
@@ -112,11 +101,18 @@ namespace SimPe.PackedFiles.UserInterface
             this.tbage = new System.Windows.Forms.TextBox();
             this.label48 = new System.Windows.Forms.Label();
             this.cblifesection = new System.Windows.Forms.ComboBox();
-			this.cbservice = new System.Windows.Forms.ComboBox();
-			this.lbservice = new System.Windows.Forms.Label();
-			this.pnSkill = new System.Windows.Forms.Panel();
+            this.lbservice = new System.Windows.Forms.Label();
+            this.cbservice = new System.Windows.Forms.ComboBox();
+            this.pnSkill = new System.Windows.Forms.Panel();
+            this.pbArty = new Ambertation.Windows.Forms.LabeledProgressBar();
+            this.pbMusic = new Ambertation.Windows.Forms.LabeledProgressBar();
+            this.pbPupbody = new Ambertation.Windows.Forms.LabeledProgressBar();
+            this.pbPupClean = new Ambertation.Windows.Forms.LabeledProgressBar();
+            this.pbPupCreative = new Ambertation.Windows.Forms.LabeledProgressBar();
+            this.pbPupCharisma = new Ambertation.Windows.Forms.LabeledProgressBar();
+            this.pbPupMech = new Ambertation.Windows.Forms.LabeledProgressBar();
+            this.pbPupLogic = new Ambertation.Windows.Forms.LabeledProgressBar();
             this.pbBody = new Ambertation.Windows.Forms.LabeledProgressBar();
-            this.pbRomance = new Ambertation.Windows.Forms.LabeledProgressBar();
             this.pbFat = new Ambertation.Windows.Forms.LabeledProgressBar();
             this.pbClean = new Ambertation.Windows.Forms.LabeledProgressBar();
             this.pbCreative = new Ambertation.Windows.Forms.LabeledProgressBar();
@@ -124,16 +120,10 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbMech = new Ambertation.Windows.Forms.LabeledProgressBar();
             this.pbLogic = new Ambertation.Windows.Forms.LabeledProgressBar();
             this.pbCooking = new Ambertation.Windows.Forms.LabeledProgressBar();
-			this.pbArty = new Ambertation.Windows.Forms.LabeledProgressBar();
-			this.pbMusic = new Ambertation.Windows.Forms.LabeledProgressBar();
-			this.pbPupbody = new Ambertation.Windows.Forms.LabeledProgressBar();
-			this.pbPupClean = new Ambertation.Windows.Forms.LabeledProgressBar();
-			this.pbPupCreative = new Ambertation.Windows.Forms.LabeledProgressBar();
-			this.pbPupCharisma = new Ambertation.Windows.Forms.LabeledProgressBar();
-			this.pbPupMech = new Ambertation.Windows.Forms.LabeledProgressBar();
-			this.pbPupLogic = new Ambertation.Windows.Forms.LabeledProgressBar();
-			this.pbReputate = new Ambertation.Windows.Forms.LabeledProgressBar();
-			this.pnChar = new System.Windows.Forms.Panel();
+            this.pbReputate = new Ambertation.Windows.Forms.LabeledProgressBar();
+            this.pbRomance = new Ambertation.Windows.Forms.LabeledProgressBar();
+            this.pnChar = new System.Windows.Forms.Panel();
+            this.btProfile = new System.Windows.Forms.Button();
             this.pnPetChar = new System.Windows.Forms.Panel();
             this.label26 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
@@ -384,9 +374,7 @@ namespace SimPe.PackedFiles.UserInterface
             this.tbhdaysleft = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.labelcol = new System.Windows.Forms.Label();
-            this.pnEP9 = new System.Windows.Forms.Panel();
             this.lbfaithinfo = new System.Windows.Forms.Label();
-            this.tbfemdik = new Ambertation.Windows.Forms.XPTaskBoxSimple();
             this.lbFemcolour = new System.Windows.Forms.Label();
             this.cbfembaldy = new System.Windows.Forms.CheckBox();
             this.cbfemsmall = new System.Windows.Forms.CheckBox();
@@ -396,65 +384,14 @@ namespace SimPe.PackedFiles.UserInterface
             this.Various = new Ambertation.Windows.Forms.XPTaskBoxSimple();
             this.lbVBFriend = new System.Windows.Forms.Label();
             this.cbVBFriend = new System.Windows.Forms.ComboBox();
-            this.cbisslave = new System.Windows.Forms.CheckBox();
-            this.cbstaynude = new System.Windows.Forms.CheckBox();
-            this.lbReligion = new System.Windows.Forms.Label();
             this.lbpostTitle = new System.Windows.Forms.Label();
             this.cbpostTitle = new System.Windows.Forms.ComboBox();
             this.cbSuburbs = new System.Windows.Forms.ComboBox();
-            this.cbFaiths = new System.Windows.Forms.ComboBox();
             this.lbalcsub = new System.Windows.Forms.Label();
-            this.cbhospital = new System.Windows.Forms.CheckBox();
             this.pbicon = new System.Windows.Forms.PictureBox();
             this.cbonpill = new System.Windows.Forms.CheckBox();
             this.cbmarker = new System.Windows.Forms.CheckBox();
-            this.lbBodee = new System.Windows.Forms.Label();
             this.cbBody = new System.Windows.Forms.ComboBox();
-            this.Nipples = new Ambertation.Windows.Forms.XPTaskBoxSimple();
-            this.labelnipple = new System.Windows.Forms.Label();
-            this.cbnipsit = new System.Windows.Forms.CheckBox();
-            this.cbnipssi = new System.Windows.Forms.CheckBox();
-            this.cbnipsma = new System.Windows.Forms.CheckBox();
-            this.cbnipswi = new System.Windows.Forms.CheckBox();
-            this.cbnipsfo = new System.Windows.Forms.CheckBox();
-            this.cbnipsgy = new System.Windows.Forms.CheckBox();
-            this.cbnipsun = new System.Windows.Forms.CheckBox();
-            this.cbnipspy = new System.Windows.Forms.CheckBox();
-            this.cbnipssw = new System.Windows.Forms.CheckBox();
-            this.cbnipsca = new System.Windows.Forms.CheckBox();
-            this.cbnipsna = new System.Windows.Forms.CheckBox();
-            this.Pubes = new Ambertation.Windows.Forms.XPTaskBoxSimple();
-            this.pnPenis = new System.Windows.Forms.Panel();
-            this.cbdickless = new System.Windows.Forms.CheckBox();
-            this.labelpenis = new System.Windows.Forms.Label();
-            this.lbBallsize = new System.Windows.Forms.Label();
-            this.cbDiklength = new System.Windows.Forms.ComboBox();
-            this.lbDikgirth = new System.Windows.Forms.Label();
-            this.cbDikgirth = new System.Windows.Forms.ComboBox();
-            this.lbDikcolour = new System.Windows.Forms.Label();
-            this.cbBallsize = new System.Windows.Forms.ComboBox();
-            this.lbDikstate = new System.Windows.Forms.Label();
-            this.cbDikstate = new System.Windows.Forms.ComboBox();
-            this.lbDiklength = new System.Windows.Forms.Label();
-            this.cbDikcolour = new System.Windows.Forms.ComboBox();
-            this.pnMuffy = new System.Windows.Forms.Panel();
-            this.btpubedic = new System.Windows.Forms.Button();
-            this.labelpubes = new System.Windows.Forms.Label();
-            this.cbpubesh = new System.Windows.Forms.CheckBox();
-            this.cbpubetr = new System.Windows.Forms.CheckBox();
-            this.cbpubetf = new System.Windows.Forms.CheckBox();
-            this.cbpubebk = new System.Windows.Forms.CheckBox();
-            this.cbpubebn = new System.Windows.Forms.CheckBox();
-            this.cbpubebd = new System.Windows.Forms.CheckBox();
-            this.cbpuberd = new System.Windows.Forms.CheckBox();
-            this.labelgenital = new System.Windows.Forms.Label();
-            this.cbpubeal = new System.Windows.Forms.CheckBox();
-            this.cbpubegy = new System.Windows.Forms.CheckBox();
-            this.cbpubeun = new System.Windows.Forms.CheckBox();
-            this.cbpubepy = new System.Windows.Forms.CheckBox();
-            this.cbpubesw = new System.Windows.Forms.CheckBox();
-            this.cbpubeca = new System.Windows.Forms.CheckBox();
-            this.btProfile = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pnPetInt.SuspendLayout();
             this.toolBar1.SuspendLayout();
@@ -485,14 +422,8 @@ namespace SimPe.PackedFiles.UserInterface
             ((System.ComponentModel.ISupportInitialize)(this.pbtraits)).BeginInit();
             this.pnEP3.SuspendLayout();
             this.pnVoyage.SuspendLayout();
-            this.pnEP9.SuspendLayout();
-            this.tbfemdik.SuspendLayout();
             this.Various.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbicon)).BeginInit();
-            this.Nipples.SuspendLayout();
-            this.Pubes.SuspendLayout();
-            this.pnPenis.SuspendLayout();
-            this.pnMuffy.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnPetInt
@@ -520,7 +451,7 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbPetEating.Name = "pbPetEating";
             this.pbPetEating.NumberFormat = "N1";
             this.pbPetEating.NumberOffset = 0;
-            this.pbPetEating.NumberScale = 0.01;
+            this.pbPetEating.NumberScale = 0.01D;
             this.pbPetEating.SelectedColor = System.Drawing.Color.Lime;
             this.pbPetEating.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbPetEating.TokenCount = 10;
@@ -536,7 +467,7 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbPetOutside.Name = "pbPetOutside";
             this.pbPetOutside.NumberFormat = "N1";
             this.pbPetOutside.NumberOffset = 0;
-            this.pbPetOutside.NumberScale = 0.01;
+            this.pbPetOutside.NumberScale = 0.01D;
             this.pbPetOutside.SelectedColor = System.Drawing.Color.Lime;
             this.pbPetOutside.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbPetOutside.TokenCount = 10;
@@ -552,7 +483,7 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbPetPlaying.Name = "pbPetPlaying";
             this.pbPetPlaying.NumberFormat = "N1";
             this.pbPetPlaying.NumberOffset = 0;
-            this.pbPetPlaying.NumberScale = 0.01;
+            this.pbPetPlaying.NumberScale = 0.01D;
             this.pbPetPlaying.SelectedColor = System.Drawing.Color.Lime;
             this.pbPetPlaying.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbPetPlaying.TokenCount = 10;
@@ -568,7 +499,7 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbPetSpooky.Name = "pbPetSpooky";
             this.pbPetSpooky.NumberFormat = "N1";
             this.pbPetSpooky.NumberOffset = 0;
-            this.pbPetSpooky.NumberScale = 0.01;
+            this.pbPetSpooky.NumberScale = 0.01D;
             this.pbPetSpooky.SelectedColor = System.Drawing.Color.Lime;
             this.pbPetSpooky.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbPetSpooky.TokenCount = 10;
@@ -584,7 +515,7 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbPetSleep.Name = "pbPetSleep";
             this.pbPetSleep.NumberFormat = "N1";
             this.pbPetSleep.NumberOffset = 0;
-            this.pbPetSleep.NumberScale = 0.01;
+            this.pbPetSleep.NumberScale = 0.01D;
             this.pbPetSleep.SelectedColor = System.Drawing.Color.Lime;
             this.pbPetSleep.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbPetSleep.TokenCount = 10;
@@ -600,7 +531,7 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbPetToy.Name = "pbPetToy";
             this.pbPetToy.NumberFormat = "N1";
             this.pbPetToy.NumberOffset = 0;
-            this.pbPetToy.NumberScale = 0.01;
+            this.pbPetToy.NumberScale = 0.01D;
             this.pbPetToy.SelectedColor = System.Drawing.Color.Lime;
             this.pbPetToy.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbPetToy.TokenCount = 10;
@@ -616,7 +547,7 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbPetWeather.Name = "pbPetWeather";
             this.pbPetWeather.NumberFormat = "N1";
             this.pbPetWeather.NumberOffset = 0;
-            this.pbPetWeather.NumberScale = 0.01;
+            this.pbPetWeather.NumberScale = 0.01D;
             this.pbPetWeather.SelectedColor = System.Drawing.Color.Lime;
             this.pbPetWeather.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbPetWeather.TokenCount = 10;
@@ -632,7 +563,7 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbPetPets.Name = "pbPetPets";
             this.pbPetPets.NumberFormat = "N1";
             this.pbPetPets.NumberOffset = 0;
-            this.pbPetPets.NumberScale = 0.01;
+            this.pbPetPets.NumberScale = 0.01D;
             this.pbPetPets.SelectedColor = System.Drawing.Color.Lime;
             this.pbPetPets.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbPetPets.TokenCount = 10;
@@ -648,7 +579,7 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbPetAnimals.Name = "pbPetAnimals";
             this.pbPetAnimals.NumberFormat = "N1";
             this.pbPetAnimals.NumberOffset = 0;
-            this.pbPetAnimals.NumberScale = 0.01;
+            this.pbPetAnimals.NumberScale = 0.01D;
             this.pbPetAnimals.SelectedColor = System.Drawing.Color.Lime;
             this.pbPetAnimals.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbPetAnimals.TokenCount = 10;
@@ -673,10 +604,8 @@ namespace SimPe.PackedFiles.UserInterface
             this.biEP3,
             this.biEP6,
             this.biEP7,
-            this.biEP9,
             this.biMore,
-            this.biMax,
-            this.biLezby});
+            this.biMax});
             this.toolBar1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.toolBar1.Name = "toolBar1";
             // 
@@ -752,12 +681,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.biEP7.Name = "biEP7";
             this.biEP7.Click += new System.EventHandler(this.ChoosePage);
             // 
-            // biEP9
-            // 
-            resources.ApplyResources(this.biEP9, "biEP9");
-            this.biEP9.Name = "biEP9";
-            this.biEP9.Click += new System.EventHandler(this.ChoosePage);
-            // 
             // biMore
             // 
             resources.ApplyResources(this.biMore, "biMore");
@@ -770,12 +693,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.biMax.Margin = new System.Windows.Forms.Padding(48, 1, 0, 2);
             this.biMax.Name = "biMax";
             this.biMax.Click += new System.EventHandler(this.Activate_biMax);
-            // 
-            // biLezby
-            // 
-            resources.ApplyResources(this.biLezby, "biLezby");
-            this.biLezby.Name = "biLezby";
-            this.biLezby.Click += new System.EventHandler(this.Activate_biLezby);
             // 
             // mbiMax
             // 
@@ -868,8 +785,8 @@ namespace SimPe.PackedFiles.UserInterface
             resources.ApplyResources(this.cbSpecies, "cbSpecies");
             this.cbSpecies.Name = "cbSpecies";
             this.cbSpecies.ResourceManager = null;
-            this.cbSpecies.SelectionChangeCommitted += new System.EventHandler(this.ChangedEP2);
             this.cbSpecies.SelectedIndexChanged += new System.EventHandler(this.cbSpecies_SelectedIndexChanged);
+            this.cbSpecies.SelectionChangeCommitted += new System.EventHandler(this.ChangedEP2);
             // 
             // label2
             // 
@@ -884,8 +801,6 @@ namespace SimPe.PackedFiles.UserInterface
             // tbsimdescfamname
             // 
             resources.ApplyResources(this.tbsimdescfamname, "tbsimdescfamname");
-            this.tbsimdescfamname.MaximumSize = new System.Drawing.Size(416, 21);
-            this.tbsimdescfamname.MinimumSize = new System.Drawing.Size(200, 21);
             this.tbsimdescfamname.Name = "tbsimdescfamname";
             this.tbsimdescfamname.TextChanged += new System.EventHandler(this.ChangedId);
             // 
@@ -1003,8 +918,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbArty.Name = "pbArty";
             this.pbArty.NumberFormat = "N2";
             this.pbArty.NumberOffset = 0;
-            this.pbArty.NumberScale = 0.01;
+            this.pbArty.NumberScale = 0.01D;
             this.pbArty.SelectedColor = System.Drawing.Color.Lime;
+            this.pbArty.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbArty.TokenCount = 21;
             this.pbArty.UnselectedColor = System.Drawing.Color.Black;
             this.pbArty.Value = 500;
@@ -1019,8 +935,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbMusic.Name = "pbMusic";
             this.pbMusic.NumberFormat = "N2";
             this.pbMusic.NumberOffset = 0;
-            this.pbMusic.NumberScale = 0.01;
+            this.pbMusic.NumberScale = 0.01D;
             this.pbMusic.SelectedColor = System.Drawing.Color.Lime;
+            this.pbMusic.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbMusic.TokenCount = 21;
             this.pbMusic.UnselectedColor = System.Drawing.Color.Black;
             this.pbMusic.Value = 500;
@@ -1035,8 +952,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbPupbody.Name = "pbPupbody";
             this.pbPupbody.NumberFormat = "N2";
             this.pbPupbody.NumberOffset = 0;
-            this.pbPupbody.NumberScale = 0.01;
+            this.pbPupbody.NumberScale = 0.01D;
             this.pbPupbody.SelectedColor = System.Drawing.Color.Lime;
+            this.pbPupbody.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbPupbody.TokenCount = 21;
             this.toolTip1.SetToolTip(this.pbPupbody, resources.GetString("pbPupbody.ToolTip"));
             this.pbPupbody.UnselectedColor = System.Drawing.Color.Black;
@@ -1052,8 +970,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbPupClean.Name = "pbPupClean";
             this.pbPupClean.NumberFormat = "N2";
             this.pbPupClean.NumberOffset = 0;
-            this.pbPupClean.NumberScale = 0.01;
+            this.pbPupClean.NumberScale = 0.01D;
             this.pbPupClean.SelectedColor = System.Drawing.Color.Lime;
+            this.pbPupClean.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbPupClean.TokenCount = 21;
             this.toolTip1.SetToolTip(this.pbPupClean, resources.GetString("pbPupClean.ToolTip"));
             this.pbPupClean.UnselectedColor = System.Drawing.Color.Black;
@@ -1069,8 +988,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbPupCreative.Name = "pbPupCreative";
             this.pbPupCreative.NumberFormat = "N2";
             this.pbPupCreative.NumberOffset = 0;
-            this.pbPupCreative.NumberScale = 0.01;
+            this.pbPupCreative.NumberScale = 0.01D;
             this.pbPupCreative.SelectedColor = System.Drawing.Color.Lime;
+            this.pbPupCreative.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbPupCreative.TokenCount = 21;
             this.toolTip1.SetToolTip(this.pbPupCreative, resources.GetString("pbPupCreative.ToolTip"));
             this.pbPupCreative.UnselectedColor = System.Drawing.Color.Black;
@@ -1086,8 +1006,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbPupCharisma.Name = "pbPupCharisma";
             this.pbPupCharisma.NumberFormat = "N2";
             this.pbPupCharisma.NumberOffset = 0;
-            this.pbPupCharisma.NumberScale = 0.01;
+            this.pbPupCharisma.NumberScale = 0.01D;
             this.pbPupCharisma.SelectedColor = System.Drawing.Color.Lime;
+            this.pbPupCharisma.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbPupCharisma.TokenCount = 21;
             this.toolTip1.SetToolTip(this.pbPupCharisma, resources.GetString("pbPupCharisma.ToolTip"));
             this.pbPupCharisma.UnselectedColor = System.Drawing.Color.Black;
@@ -1103,8 +1024,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbPupMech.Name = "pbPupMech";
             this.pbPupMech.NumberFormat = "N2";
             this.pbPupMech.NumberOffset = 0;
-            this.pbPupMech.NumberScale = 0.01;
+            this.pbPupMech.NumberScale = 0.01D;
             this.pbPupMech.SelectedColor = System.Drawing.Color.Lime;
+            this.pbPupMech.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbPupMech.TokenCount = 21;
             this.toolTip1.SetToolTip(this.pbPupMech, resources.GetString("pbPupMech.ToolTip"));
             this.pbPupMech.UnselectedColor = System.Drawing.Color.Black;
@@ -1120,8 +1042,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbPupLogic.Name = "pbPupLogic";
             this.pbPupLogic.NumberFormat = "N2";
             this.pbPupLogic.NumberOffset = 0;
-            this.pbPupLogic.NumberScale = 0.01;
+            this.pbPupLogic.NumberScale = 0.01D;
             this.pbPupLogic.SelectedColor = System.Drawing.Color.Lime;
+            this.pbPupLogic.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbPupLogic.TokenCount = 21;
             this.toolTip1.SetToolTip(this.pbPupLogic, resources.GetString("pbPupLogic.ToolTip"));
             this.pbPupLogic.UnselectedColor = System.Drawing.Color.Black;
@@ -1137,9 +1060,10 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbBody.Name = "pbBody";
             this.pbBody.NumberFormat = "N2";
             this.pbBody.NumberOffset = 0;
-            this.pbBody.NumberScale = 0.01;
+            this.pbBody.NumberScale = 0.01D;
             this.pbBody.SelectedColor = System.Drawing.Color.Lime;
             this.pbBody.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
+            this.pbBody.TokenCount = 10;
             this.pbBody.UnselectedColor = System.Drawing.Color.Black;
             this.pbBody.Value = 500;
             this.pbBody.Changed += new System.EventHandler(this.ChangedSkill);
@@ -1153,7 +1077,7 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbFat.Name = "pbFat";
             this.pbFat.NumberFormat = "N1";
             this.pbFat.NumberOffset = 0;
-            this.pbFat.NumberScale = 0.01;
+            this.pbFat.NumberScale = 0.01D;
             this.pbFat.SelectedColor = System.Drawing.Color.Orange;
             this.pbFat.Style = Ambertation.Windows.Forms.ProgresBarStyle.Increase;
             this.pbFat.TokenCount = 10;
@@ -1170,8 +1094,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbClean.Name = "pbClean";
             this.pbClean.NumberFormat = "N2";
             this.pbClean.NumberOffset = 0;
-            this.pbClean.NumberScale = 0.01;
+            this.pbClean.NumberScale = 0.01D;
             this.pbClean.SelectedColor = System.Drawing.Color.Lime;
+            this.pbClean.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbClean.TokenCount = 21;
             this.pbClean.UnselectedColor = System.Drawing.Color.Black;
             this.pbClean.Value = 500;
@@ -1186,7 +1111,7 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbCreative.Name = "pbCreative";
             this.pbCreative.NumberFormat = "N2";
             this.pbCreative.NumberOffset = 0;
-            this.pbCreative.NumberScale = 0.01;
+            this.pbCreative.NumberScale = 0.01D;
             this.pbCreative.SelectedColor = System.Drawing.Color.Lime;
             this.pbCreative.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbCreative.TokenCount = 21;
@@ -1203,8 +1128,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbCharisma.Name = "pbCharisma";
             this.pbCharisma.NumberFormat = "N2";
             this.pbCharisma.NumberOffset = 0;
-            this.pbCharisma.NumberScale = 0.01;
+            this.pbCharisma.NumberScale = 0.01D;
             this.pbCharisma.SelectedColor = System.Drawing.Color.Lime;
+            this.pbCharisma.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbCharisma.TokenCount = 21;
             this.pbCharisma.UnselectedColor = System.Drawing.Color.Black;
             this.pbCharisma.Value = 500;
@@ -1219,8 +1145,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbMech.Name = "pbMech";
             this.pbMech.NumberFormat = "N2";
             this.pbMech.NumberOffset = 0;
-            this.pbMech.NumberScale = 0.01;
+            this.pbMech.NumberScale = 0.01D;
             this.pbMech.SelectedColor = System.Drawing.Color.Lime;
+            this.pbMech.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbMech.TokenCount = 21;
             this.pbMech.UnselectedColor = System.Drawing.Color.Black;
             this.pbMech.Value = 500;
@@ -1235,8 +1162,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbLogic.Name = "pbLogic";
             this.pbLogic.NumberFormat = "N2";
             this.pbLogic.NumberOffset = 0;
-            this.pbLogic.NumberScale = 0.01;
+            this.pbLogic.NumberScale = 0.01D;
             this.pbLogic.SelectedColor = System.Drawing.Color.Lime;
+            this.pbLogic.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbLogic.TokenCount = 21;
             this.pbLogic.UnselectedColor = System.Drawing.Color.Black;
             this.pbLogic.Value = 500;
@@ -1251,8 +1179,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbCooking.Name = "pbCooking";
             this.pbCooking.NumberFormat = "N2";
             this.pbCooking.NumberOffset = 0;
-            this.pbCooking.NumberScale = 0.01;
+            this.pbCooking.NumberScale = 0.01D;
             this.pbCooking.SelectedColor = System.Drawing.Color.Lime;
+            this.pbCooking.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbCooking.TokenCount = 21;
             this.pbCooking.UnselectedColor = System.Drawing.Color.Black;
             this.pbCooking.Value = 500;
@@ -1267,8 +1196,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbReputate.Name = "pbReputate";
             this.pbReputate.NumberFormat = "N0";
             this.pbReputate.NumberOffset = -100;
-            this.pbReputate.NumberScale = 1;
+            this.pbReputate.NumberScale = 1D;
             this.pbReputate.SelectedColor = System.Drawing.Color.Gold;
+            this.pbReputate.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbReputate.TokenCount = 19;
             this.pbReputate.UnselectedColor = System.Drawing.Color.Black;
             this.pbReputate.Value = 0;
@@ -1283,8 +1213,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbRomance.Name = "pbRomance";
             this.pbRomance.NumberFormat = "N2";
             this.pbRomance.NumberOffset = 0;
-            this.pbRomance.NumberScale = 0.01;
+            this.pbRomance.NumberScale = 0.01D;
             this.pbRomance.SelectedColor = System.Drawing.Color.HotPink;
+            this.pbRomance.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbRomance.TokenCount = 21;
             this.pbRomance.UnselectedColor = System.Drawing.Color.Black;
             this.pbRomance.Value = 500;
@@ -1307,6 +1238,12 @@ namespace SimPe.PackedFiles.UserInterface
             this.pnChar.Name = "pnChar";
             this.pnChar.VisibleChanged += new System.EventHandler(this.pnInt_VisibleChanged);
             // 
+            // btProfile
+            // 
+            resources.ApplyResources(this.btProfile, "btProfile");
+            this.btProfile.Name = "btProfile";
+            this.btProfile.UseVisualStyleBackColor = true;
+            // 
             // pnPetChar
             // 
             resources.ApplyResources(this.pnPetChar, "pnPetChar");
@@ -1327,12 +1264,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.pnPetChar.Controls.Add(this.label18);
             this.pnPetChar.Controls.Add(this.label17);
             this.pnPetChar.Name = "pnPetChar";
-            // 
-            // btProfile
-            // 
-            resources.ApplyResources(this.btProfile, "btProfile");
-            this.btProfile.Name = "btProfile";
-            this.btProfile.UseVisualStyleBackColor = true;
             // 
             // label26
             // 
@@ -1443,8 +1374,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbNeat.Name = "pbNeat";
             this.pbNeat.NumberFormat = "N1";
             this.pbNeat.NumberOffset = 0;
-            this.pbNeat.NumberScale = 0.01;
+            this.pbNeat.NumberScale = 0.01D;
             this.pbNeat.SelectedColor = System.Drawing.Color.Lime;
+            this.pbNeat.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbNeat.TokenCount = 10;
             this.pbNeat.UnselectedColor = System.Drawing.Color.Black;
             this.pbNeat.Value = 50;
@@ -1459,8 +1391,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbOutgoing.Name = "pbOutgoing";
             this.pbOutgoing.NumberFormat = "N1";
             this.pbOutgoing.NumberOffset = 0;
-            this.pbOutgoing.NumberScale = 0.01;
+            this.pbOutgoing.NumberScale = 0.01D;
             this.pbOutgoing.SelectedColor = System.Drawing.Color.Lime;
+            this.pbOutgoing.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbOutgoing.TokenCount = 10;
             this.pbOutgoing.UnselectedColor = System.Drawing.Color.Black;
             this.pbOutgoing.Value = 50;
@@ -1475,8 +1408,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbActive.Name = "pbActive";
             this.pbActive.NumberFormat = "N1";
             this.pbActive.NumberOffset = 0;
-            this.pbActive.NumberScale = 0.01;
+            this.pbActive.NumberScale = 0.01D;
             this.pbActive.SelectedColor = System.Drawing.Color.Lime;
+            this.pbActive.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbActive.TokenCount = 10;
             this.pbActive.UnselectedColor = System.Drawing.Color.Black;
             this.pbActive.Value = 50;
@@ -1491,8 +1425,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbPlayful.Name = "pbPlayful";
             this.pbPlayful.NumberFormat = "N1";
             this.pbPlayful.NumberOffset = 0;
-            this.pbPlayful.NumberScale = 0.01;
+            this.pbPlayful.NumberScale = 0.01D;
             this.pbPlayful.SelectedColor = System.Drawing.Color.Lime;
+            this.pbPlayful.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbPlayful.TokenCount = 10;
             this.pbPlayful.UnselectedColor = System.Drawing.Color.Black;
             this.pbPlayful.Value = 50;
@@ -1507,8 +1442,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbGNice.Name = "pbGNice";
             this.pbGNice.NumberFormat = "N1";
             this.pbGNice.NumberOffset = 0;
-            this.pbGNice.NumberScale = 0.01;
+            this.pbGNice.NumberScale = 0.01D;
             this.pbGNice.SelectedColor = System.Drawing.Color.Lime;
+            this.pbGNice.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbGNice.TokenCount = 10;
             this.pbGNice.UnselectedColor = System.Drawing.Color.Black;
             this.pbGNice.Value = 50;
@@ -1523,8 +1459,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbNice.Name = "pbNice";
             this.pbNice.NumberFormat = "N1";
             this.pbNice.NumberOffset = 0;
-            this.pbNice.NumberScale = 0.01;
+            this.pbNice.NumberScale = 0.01D;
             this.pbNice.SelectedColor = System.Drawing.Color.Lime;
+            this.pbNice.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbNice.TokenCount = 10;
             this.pbNice.UnselectedColor = System.Drawing.Color.Black;
             this.pbNice.Value = 50;
@@ -1539,8 +1476,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbGPlayful.Name = "pbGPlayful";
             this.pbGPlayful.NumberFormat = "N1";
             this.pbGPlayful.NumberOffset = 0;
-            this.pbGPlayful.NumberScale = 0.01;
+            this.pbGPlayful.NumberScale = 0.01D;
             this.pbGPlayful.SelectedColor = System.Drawing.Color.Lime;
+            this.pbGPlayful.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbGPlayful.TokenCount = 10;
             this.pbGPlayful.UnselectedColor = System.Drawing.Color.Black;
             this.pbGPlayful.Value = 50;
@@ -1555,8 +1493,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbGNeat.Name = "pbGNeat";
             this.pbGNeat.NumberFormat = "N1";
             this.pbGNeat.NumberOffset = 0;
-            this.pbGNeat.NumberScale = 0.01;
+            this.pbGNeat.NumberScale = 0.01D;
             this.pbGNeat.SelectedColor = System.Drawing.Color.Lime;
+            this.pbGNeat.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbGNeat.TokenCount = 10;
             this.pbGNeat.UnselectedColor = System.Drawing.Color.Black;
             this.pbGNeat.Value = 50;
@@ -1571,8 +1510,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbGActive.Name = "pbGActive";
             this.pbGActive.NumberFormat = "N1";
             this.pbGActive.NumberOffset = 0;
-            this.pbGActive.NumberScale = 0.01;
+            this.pbGActive.NumberScale = 0.01D;
             this.pbGActive.SelectedColor = System.Drawing.Color.Lime;
+            this.pbGActive.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbGActive.TokenCount = 10;
             this.pbGActive.UnselectedColor = System.Drawing.Color.Black;
             this.pbGActive.Value = 50;
@@ -1587,8 +1527,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbGOutgoing.Name = "pbGOutgoing";
             this.pbGOutgoing.NumberFormat = "N1";
             this.pbGOutgoing.NumberOffset = 0;
-            this.pbGOutgoing.NumberScale = 0.01;
+            this.pbGOutgoing.NumberScale = 0.01D;
             this.pbGOutgoing.SelectedColor = System.Drawing.Color.Lime;
+            this.pbGOutgoing.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbGOutgoing.TokenCount = 10;
             this.pbGOutgoing.UnselectedColor = System.Drawing.Color.Black;
             this.pbGOutgoing.Value = 50;
@@ -1603,8 +1544,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbMan.Name = "pbMan";
             this.pbMan.NumberFormat = "N1";
             this.pbMan.NumberOffset = -1000;
-            this.pbMan.NumberScale = 0.01;
+            this.pbMan.NumberScale = 0.01D;
             this.pbMan.SelectedColor = System.Drawing.Color.OrangeRed;
+            this.pbMan.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbMan.TokenCount = 19;
             this.pbMan.UnselectedColor = System.Drawing.Color.Black;
             this.pbMan.Value = 0;
@@ -1619,8 +1561,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbWoman.Name = "pbWoman";
             this.pbWoman.NumberFormat = "N1";
             this.pbWoman.NumberOffset = -1000;
-            this.pbWoman.NumberScale = 0.01;
+            this.pbWoman.NumberScale = 0.01D;
             this.pbWoman.SelectedColor = System.Drawing.Color.OrangeRed;
+            this.pbWoman.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbWoman.TokenCount = 19;
             this.pbWoman.UnselectedColor = System.Drawing.Color.Black;
             this.pbWoman.Value = 0;
@@ -1842,8 +1785,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.lpRetirement.Name = "lpRetirement";
             this.lpRetirement.NumberFormat = "N0";
             this.lpRetirement.NumberOffset = 0;
-            this.lpRetirement.NumberScale = 1;
+            this.lpRetirement.NumberScale = 1D;
             this.lpRetirement.SelectedColor = System.Drawing.Color.YellowGreen;
+            this.lpRetirement.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.lpRetirement.TokenCount = 10;
             this.lpRetirement.UnselectedColor = System.Drawing.Color.Black;
             this.lpRetirement.Value = 10;
@@ -1888,8 +1832,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbAspBliz.Name = "pbAspBliz";
             this.pbAspBliz.NumberFormat = "N0";
             this.pbAspBliz.NumberOffset = 0;
-            this.pbAspBliz.NumberScale = 1;
+            this.pbAspBliz.NumberScale = 1D;
             this.pbAspBliz.SelectedColor = System.Drawing.Color.YellowGreen;
+            this.pbAspBliz.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbAspBliz.TokenCount = 21;
             this.pbAspBliz.UnselectedColor = System.Drawing.Color.Black;
             this.pbAspBliz.Value = 10;
@@ -1915,8 +1860,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbAspCur.Name = "pbAspCur";
             this.pbAspCur.NumberFormat = "N0";
             this.pbAspCur.NumberOffset = -600;
-            this.pbAspCur.NumberScale = 1;
+            this.pbAspCur.NumberScale = 1D;
             this.pbAspCur.SelectedColor = System.Drawing.Color.YellowGreen;
+            this.pbAspCur.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbAspCur.TokenCount = 21;
             this.pbAspCur.UnselectedColor = System.Drawing.Color.Black;
             this.pbAspCur.Value = 0;
@@ -1943,8 +1889,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbCareerPerformance.Name = "pbCareerPerformance";
             this.pbCareerPerformance.NumberFormat = "N0";
             this.pbCareerPerformance.NumberOffset = 0;
-            this.pbCareerPerformance.NumberScale = 1;
+            this.pbCareerPerformance.NumberScale = 1D;
             this.pbCareerPerformance.SelectedColor = System.Drawing.Color.YellowGreen;
+            this.pbCareerPerformance.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbCareerPerformance.TokenCount = 20;
             this.pbCareerPerformance.UnselectedColor = System.Drawing.Color.Black;
             this.pbCareerPerformance.Value = 10;
@@ -1959,8 +1906,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbCareerLevel.Name = "pbCareerLevel";
             this.pbCareerLevel.NumberFormat = "N0";
             this.pbCareerLevel.NumberOffset = 0;
-            this.pbCareerLevel.NumberScale = 1;
+            this.pbCareerLevel.NumberScale = 1D;
             this.pbCareerLevel.SelectedColor = System.Drawing.Color.YellowGreen;
+            this.pbCareerLevel.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbCareerLevel.TokenCount = 10;
             this.pbCareerLevel.UnselectedColor = System.Drawing.Color.Black;
             this.pbCareerLevel.Value = 10;
@@ -2056,8 +2004,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbSciFi.Name = "pbSciFi";
             this.pbSciFi.NumberFormat = "N1";
             this.pbSciFi.NumberOffset = 0;
-            this.pbSciFi.NumberScale = 0.01;
+            this.pbSciFi.NumberScale = 0.01D;
             this.pbSciFi.SelectedColor = System.Drawing.Color.Lime;
+            this.pbSciFi.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbSciFi.TokenCount = 10;
             this.pbSciFi.UnselectedColor = System.Drawing.Color.Black;
             this.pbSciFi.Value = 500;
@@ -2072,8 +2021,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbTravel.Name = "pbTravel";
             this.pbTravel.NumberFormat = "N1";
             this.pbTravel.NumberOffset = 0;
-            this.pbTravel.NumberScale = 0.01;
+            this.pbTravel.NumberScale = 0.01D;
             this.pbTravel.SelectedColor = System.Drawing.Color.Lime;
+            this.pbTravel.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbTravel.TokenCount = 10;
             this.pbTravel.UnselectedColor = System.Drawing.Color.Black;
             this.pbTravel.Value = 500;
@@ -2088,8 +2038,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbToys.Name = "pbToys";
             this.pbToys.NumberFormat = "N1";
             this.pbToys.NumberOffset = 0;
-            this.pbToys.NumberScale = 0.01;
+            this.pbToys.NumberScale = 0.01D;
             this.pbToys.SelectedColor = System.Drawing.Color.Lime;
+            this.pbToys.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbToys.TokenCount = 10;
             this.pbToys.UnselectedColor = System.Drawing.Color.Black;
             this.pbToys.Value = 500;
@@ -2104,8 +2055,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbEnvironment.Name = "pbEnvironment";
             this.pbEnvironment.NumberFormat = "N1";
             this.pbEnvironment.NumberOffset = 0;
-            this.pbEnvironment.NumberScale = 0.01;
+            this.pbEnvironment.NumberScale = 0.01D;
             this.pbEnvironment.SelectedColor = System.Drawing.Color.Lime;
+            this.pbEnvironment.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbEnvironment.TokenCount = 10;
             this.pbEnvironment.UnselectedColor = System.Drawing.Color.Black;
             this.pbEnvironment.Value = 500;
@@ -2120,8 +2072,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbSchool.Name = "pbSchool";
             this.pbSchool.NumberFormat = "N1";
             this.pbSchool.NumberOffset = 0;
-            this.pbSchool.NumberScale = 0.01;
+            this.pbSchool.NumberScale = 0.01D;
             this.pbSchool.SelectedColor = System.Drawing.Color.Lime;
+            this.pbSchool.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbSchool.TokenCount = 10;
             this.pbSchool.UnselectedColor = System.Drawing.Color.Black;
             this.pbSchool.Value = 500;
@@ -2136,8 +2089,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbParanormal.Name = "pbParanormal";
             this.pbParanormal.NumberFormat = "N1";
             this.pbParanormal.NumberOffset = 0;
-            this.pbParanormal.NumberScale = 0.01;
+            this.pbParanormal.NumberScale = 0.01D;
             this.pbParanormal.SelectedColor = System.Drawing.Color.Lime;
+            this.pbParanormal.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbParanormal.TokenCount = 10;
             this.pbParanormal.UnselectedColor = System.Drawing.Color.Black;
             this.pbParanormal.Value = 500;
@@ -2152,8 +2106,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbAnimals.Name = "pbAnimals";
             this.pbAnimals.NumberFormat = "N1";
             this.pbAnimals.NumberOffset = 0;
-            this.pbAnimals.NumberScale = 0.01;
+            this.pbAnimals.NumberScale = 0.01D;
             this.pbAnimals.SelectedColor = System.Drawing.Color.Lime;
+            this.pbAnimals.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbAnimals.TokenCount = 10;
             this.pbAnimals.UnselectedColor = System.Drawing.Color.Black;
             this.pbAnimals.Value = 500;
@@ -2168,8 +2123,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbEntertainment.Name = "pbEntertainment";
             this.pbEntertainment.NumberFormat = "N1";
             this.pbEntertainment.NumberOffset = 0;
-            this.pbEntertainment.NumberScale = 0.01;
+            this.pbEntertainment.NumberScale = 0.01D;
             this.pbEntertainment.SelectedColor = System.Drawing.Color.Lime;
+            this.pbEntertainment.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbEntertainment.TokenCount = 10;
             this.pbEntertainment.UnselectedColor = System.Drawing.Color.Black;
             this.pbEntertainment.Value = 500;
@@ -2184,8 +2140,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbWeather.Name = "pbWeather";
             this.pbWeather.NumberFormat = "N1";
             this.pbWeather.NumberOffset = 0;
-            this.pbWeather.NumberScale = 0.01;
+            this.pbWeather.NumberScale = 0.01D;
             this.pbWeather.SelectedColor = System.Drawing.Color.Lime;
+            this.pbWeather.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbWeather.TokenCount = 10;
             this.pbWeather.UnselectedColor = System.Drawing.Color.Black;
             this.pbWeather.Value = 500;
@@ -2200,8 +2157,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbCulture.Name = "pbCulture";
             this.pbCulture.NumberFormat = "N1";
             this.pbCulture.NumberOffset = 0;
-            this.pbCulture.NumberScale = 0.01;
+            this.pbCulture.NumberScale = 0.01D;
             this.pbCulture.SelectedColor = System.Drawing.Color.Lime;
+            this.pbCulture.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbCulture.TokenCount = 10;
             this.pbCulture.UnselectedColor = System.Drawing.Color.Black;
             this.pbCulture.Value = 500;
@@ -2216,8 +2174,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbWork.Name = "pbWork";
             this.pbWork.NumberFormat = "N1";
             this.pbWork.NumberOffset = 0;
-            this.pbWork.NumberScale = 0.01;
+            this.pbWork.NumberScale = 0.01D;
             this.pbWork.SelectedColor = System.Drawing.Color.Lime;
+            this.pbWork.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbWork.TokenCount = 10;
             this.pbWork.UnselectedColor = System.Drawing.Color.Black;
             this.pbWork.Value = 500;
@@ -2232,8 +2191,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbMoney.Name = "pbMoney";
             this.pbMoney.NumberFormat = "N1";
             this.pbMoney.NumberOffset = 0;
-            this.pbMoney.NumberScale = 0.01;
+            this.pbMoney.NumberScale = 0.01D;
             this.pbMoney.SelectedColor = System.Drawing.Color.Lime;
+            this.pbMoney.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbMoney.TokenCount = 10;
             this.pbMoney.UnselectedColor = System.Drawing.Color.Black;
             this.pbMoney.Value = 500;
@@ -2248,8 +2208,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbPolitics.Name = "pbPolitics";
             this.pbPolitics.NumberFormat = "N1";
             this.pbPolitics.NumberOffset = 0;
-            this.pbPolitics.NumberScale = 0.01;
+            this.pbPolitics.NumberScale = 0.01D;
             this.pbPolitics.SelectedColor = System.Drawing.Color.Lime;
+            this.pbPolitics.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbPolitics.TokenCount = 10;
             this.pbPolitics.UnselectedColor = System.Drawing.Color.Black;
             this.pbPolitics.Value = 500;
@@ -2264,8 +2225,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbCrime.Name = "pbCrime";
             this.pbCrime.NumberFormat = "N1";
             this.pbCrime.NumberOffset = 0;
-            this.pbCrime.NumberScale = 0.01;
+            this.pbCrime.NumberScale = 0.01D;
             this.pbCrime.SelectedColor = System.Drawing.Color.Lime;
+            this.pbCrime.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbCrime.TokenCount = 10;
             this.pbCrime.UnselectedColor = System.Drawing.Color.Black;
             this.pbCrime.Value = 500;
@@ -2280,8 +2242,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbFood.Name = "pbFood";
             this.pbFood.NumberFormat = "N1";
             this.pbFood.NumberOffset = 0;
-            this.pbFood.NumberScale = 0.01;
+            this.pbFood.NumberScale = 0.01D;
             this.pbFood.SelectedColor = System.Drawing.Color.Lime;
+            this.pbFood.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbFood.TokenCount = 10;
             this.pbFood.UnselectedColor = System.Drawing.Color.Black;
             this.pbFood.Value = 500;
@@ -2296,8 +2259,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbSports.Name = "pbSports";
             this.pbSports.NumberFormat = "N1";
             this.pbSports.NumberOffset = 0;
-            this.pbSports.NumberScale = 0.01;
+            this.pbSports.NumberScale = 0.01D;
             this.pbSports.SelectedColor = System.Drawing.Color.Lime;
+            this.pbSports.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbSports.TokenCount = 10;
             this.pbSports.UnselectedColor = System.Drawing.Color.Black;
             this.pbSports.Value = 500;
@@ -2312,8 +2276,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbHealth.Name = "pbHealth";
             this.pbHealth.NumberFormat = "N1";
             this.pbHealth.NumberOffset = 0;
-            this.pbHealth.NumberScale = 0.01;
+            this.pbHealth.NumberScale = 0.01D;
             this.pbHealth.SelectedColor = System.Drawing.Color.Lime;
+            this.pbHealth.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbHealth.TokenCount = 10;
             this.pbHealth.UnselectedColor = System.Drawing.Color.Black;
             this.pbHealth.Value = 500;
@@ -2328,8 +2293,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbFashion.Name = "pbFashion";
             this.pbFashion.NumberFormat = "N1";
             this.pbFashion.NumberOffset = 0;
-            this.pbFashion.NumberScale = 0.01;
+            this.pbFashion.NumberScale = 0.01D;
             this.pbFashion.SelectedColor = System.Drawing.Color.Lime;
+            this.pbFashion.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbFashion.TokenCount = 10;
             this.pbFashion.UnselectedColor = System.Drawing.Color.Black;
             this.pbFashion.Value = 500;
@@ -2374,6 +2340,8 @@ namespace SimPe.PackedFiles.UserInterface
             this.srcTb.BackColor = System.Drawing.Color.Transparent;
             this.srcTb.BodyColor = System.Drawing.SystemColors.ControlLight;
             this.srcTb.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.srcTb.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
+            this.srcTb.HeaderTextColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.srcTb.IconLocation = new System.Drawing.Point(4, 6);
             this.srcTb.IconSize = new System.Drawing.Size(48, 32);
             this.srcTb.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
@@ -2386,6 +2354,8 @@ namespace SimPe.PackedFiles.UserInterface
             this.dstTb.BackColor = System.Drawing.Color.Transparent;
             this.dstTb.BodyColor = System.Drawing.SystemColors.ControlLight;
             this.dstTb.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.dstTb.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
+            this.dstTb.HeaderTextColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dstTb.IconLocation = new System.Drawing.Point(4, 6);
             this.dstTb.IconSize = new System.Drawing.Size(48, 32);
             this.dstTb.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
@@ -2428,7 +2398,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.tbMotiveDec.Controls.Add(this.lbdecComfort);
             this.tbMotiveDec.Controls.Add(this.tbdecHunger);
             this.tbMotiveDec.Controls.Add(this.lbdecHunger);
+            this.tbMotiveDec.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
             resources.ApplyResources(this.tbMotiveDec, "tbMotiveDec");
+            this.tbMotiveDec.HeaderTextColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.tbMotiveDec.IconLocation = new System.Drawing.Point(4, 0);
             this.tbMotiveDec.IconSize = new System.Drawing.Size(32, 32);
             this.tbMotiveDec.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
@@ -2572,7 +2544,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.tbpersonflags.Controls.Add(this.cbpfvamp);
             this.tbpersonflags.Controls.Add(this.cbpfperma);
             this.tbpersonflags.Controls.Add(this.cbpfZomb);
+            this.tbpersonflags.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
             resources.ApplyResources(this.tbpersonflags, "tbpersonflags");
+            this.tbpersonflags.HeaderTextColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.tbpersonflags.IconLocation = new System.Drawing.Point(4, 0);
             this.tbpersonflags.IconSize = new System.Drawing.Size(32, 32);
             this.tbpersonflags.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
@@ -2683,7 +2657,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.bTaskBox3.Controls.Add(this.label87);
             this.bTaskBox3.Controls.Add(this.tbautonomy);
             this.bTaskBox3.Controls.Add(this.label86);
+            this.bTaskBox3.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
             resources.ApplyResources(this.bTaskBox3, "bTaskBox3");
+            this.bTaskBox3.HeaderTextColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.bTaskBox3.IconLocation = new System.Drawing.Point(4, 0);
             this.bTaskBox3.IconSize = new System.Drawing.Size(32, 32);
             this.bTaskBox3.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
@@ -2784,7 +2760,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.bTaskBox2.Controls.Add(this.cbpreghalf);
             this.bTaskBox2.Controls.Add(this.cbpregfull);
             this.bTaskBox2.Controls.Add(this.cbfat);
+            this.bTaskBox2.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
             resources.ApplyResources(this.bTaskBox2, "bTaskBox2");
+            this.bTaskBox2.HeaderTextColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.bTaskBox2.IconLocation = new System.Drawing.Point(4, 0);
             this.bTaskBox2.IconSize = new System.Drawing.Size(32, 32);
             this.bTaskBox2.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
@@ -2836,7 +2814,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.bTaskBox1.Controls.Add(this.cbpasspeople);
             this.bTaskBox1.Controls.Add(this.cbpasswalls);
             this.bTaskBox1.Controls.Add(this.cbpassobject);
+            this.bTaskBox1.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
             resources.ApplyResources(this.bTaskBox1, "bTaskBox1");
+            this.bTaskBox1.HeaderTextColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.bTaskBox1.IconLocation = new System.Drawing.Point(4, 0);
             this.bTaskBox1.IconSize = new System.Drawing.Size(32, 32);
             this.bTaskBox1.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
@@ -2911,7 +2891,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.tbSeminfo.Controls.Add(this.cbJunior);
             this.tbSeminfo.Controls.Add(this.cbSopho);
             this.tbSeminfo.Controls.Add(this.cbfreshman);
+            this.tbSeminfo.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
             resources.ApplyResources(this.tbSeminfo, "tbSeminfo");
+            this.tbSeminfo.HeaderTextColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.tbSeminfo.IconLocation = new System.Drawing.Point(4, 12);
             this.tbSeminfo.IconSize = new System.Drawing.Size(32, 32);
             this.tbSeminfo.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
@@ -2997,8 +2979,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbLastGrade.Name = "pbLastGrade";
             this.pbLastGrade.NumberFormat = "N1";
             this.pbLastGrade.NumberOffset = 0;
-            this.pbLastGrade.NumberScale = 0.004;
+            this.pbLastGrade.NumberScale = 0.004D;
             this.pbLastGrade.SelectedColor = System.Drawing.Color.OrangeRed;
+            this.pbLastGrade.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbLastGrade.TokenCount = 4;
             this.pbLastGrade.UnselectedColor = System.Drawing.Color.Black;
             this.pbLastGrade.Value = 0;
@@ -3013,8 +2996,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbUniTime.Name = "pbUniTime";
             this.pbUniTime.NumberFormat = "N0";
             this.pbUniTime.NumberOffset = 0;
-            this.pbUniTime.NumberScale = 1;
+            this.pbUniTime.NumberScale = 1D;
             this.pbUniTime.SelectedColor = System.Drawing.Color.Lime;
+            this.pbUniTime.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbUniTime.TokenCount = 18;
             this.pbUniTime.UnselectedColor = System.Drawing.Color.Black;
             this.pbUniTime.Value = 0;
@@ -3029,8 +3013,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbEffort.Name = "pbEffort";
             this.pbEffort.NumberFormat = "N2";
             this.pbEffort.NumberOffset = 0;
-            this.pbEffort.NumberScale = 0.01;
+            this.pbEffort.NumberScale = 0.01D;
             this.pbEffort.SelectedColor = System.Drawing.Color.Lime;
+            this.pbEffort.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbEffort.TokenCount = 10;
             this.pbEffort.UnselectedColor = System.Drawing.Color.Black;
             this.pbEffort.Value = 0;
@@ -3114,8 +3099,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pbhbenth.Name = "pbhbenth";
             this.pbhbenth.NumberFormat = "N0";
             this.pbhbenth.NumberOffset = 0;
-            this.pbhbenth.NumberScale = 1;
+            this.pbhbenth.NumberScale = 1D;
             this.pbhbenth.SelectedColor = System.Drawing.Color.YellowGreen;
+            this.pbhbenth.Style = Ambertation.Windows.Forms.ProgresBarStyle.Flat;
             this.pbhbenth.TokenCount = 14;
             this.pbhbenth.UnselectedColor = System.Drawing.Color.Black;
             this.pbhbenth.Value = 500;
@@ -3165,7 +3151,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.bTaskBox4.Controls.Add(this.label38);
             this.bTaskBox4.Controls.Add(this.tb7hunger);
             this.bTaskBox4.Controls.Add(this.label39);
+            this.bTaskBox4.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
             resources.ApplyResources(this.bTaskBox4, "bTaskBox4");
+            this.bTaskBox4.HeaderTextColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.bTaskBox4.IconLocation = new System.Drawing.Point(4, 12);
             this.bTaskBox4.IconSize = new System.Drawing.Size(32, 32);
             this.bTaskBox4.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
@@ -3375,8 +3363,8 @@ namespace SimPe.PackedFiles.UserInterface
             resources.ApplyResources(this.lbTurnOff, "lbTurnOff");
             this.lbTurnOff.CheckOnClick = true;
             this.lbTurnOff.Name = "lbTurnOff";
-            this.lbTurnOff.SelectedIndexChanged += new System.EventHandler(this.lbTurnOff_SelectedIndexChanged);
             this.lbTurnOff.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.cklb_ItemCheck);
+            this.lbTurnOff.SelectedIndexChanged += new System.EventHandler(this.lbTurnOff_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -3388,8 +3376,8 @@ namespace SimPe.PackedFiles.UserInterface
             resources.ApplyResources(this.lbTurnOn, "lbTurnOn");
             this.lbTurnOn.CheckOnClick = true;
             this.lbTurnOn.Name = "lbTurnOn";
-            this.lbTurnOn.SelectedIndexChanged += new System.EventHandler(this.lbTurnOn_SelectedIndexChanged);
             this.lbTurnOn.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.cklb_ItemCheck);
+            this.lbTurnOn.SelectedIndexChanged += new System.EventHandler(this.lbTurnOn_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -3401,8 +3389,8 @@ namespace SimPe.PackedFiles.UserInterface
             resources.ApplyResources(this.lbTraits, "lbTraits");
             this.lbTraits.CheckOnClick = true;
             this.lbTraits.Name = "lbTraits";
-            this.lbTraits.SelectedIndexChanged += new System.EventHandler(this.lbTraits_SelectedIndexChanged);
             this.lbTraits.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.cklb_ItemCheck);
+            this.lbTraits.SelectedIndexChanged += new System.EventHandler(this.lbTraits_SelectedIndexChanged);
             // 
             // pbtraits
             // 
@@ -3546,44 +3534,40 @@ namespace SimPe.PackedFiles.UserInterface
             resources.ApplyResources(this.labelcol, "labelcol");
             this.labelcol.Name = "labelcol";
             // 
-            // pnEP9
-            // 
-            resources.ApplyResources(this.pnEP9, "pnEP9");
-            this.pnEP9.BackColor = System.Drawing.Color.Transparent;
-            this.pnEP9.Controls.Add(this.lbfaithinfo);
-            this.pnEP9.Controls.Add(this.tbfemdik);
-            this.pnEP9.Controls.Add(this.Various);
-            this.pnEP9.Controls.Add(this.Nipples);
-            this.pnEP9.Controls.Add(this.Pubes);
-            this.pnEP9.Name = "pnEP9";
-            // 
             // lbfaithinfo
             // 
             resources.ApplyResources(this.lbfaithinfo, "lbfaithinfo");
             this.lbfaithinfo.Name = "lbfaithinfo";
             // 
-            // tbfemdik
-            // 
-            this.tbfemdik.BackColor = System.Drawing.Color.Transparent;
-            this.tbfemdik.BodyColor = System.Drawing.SystemColors.ControlLight;
-            this.tbfemdik.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.tbfemdik.Controls.Add(this.lbFemcolour);
-            this.tbfemdik.Controls.Add(this.cbfembaldy);
-            this.tbfemdik.Controls.Add(this.cbfemsmall);
-            this.tbfemdik.Controls.Add(this.cbfembig);
-            this.tbfemdik.Controls.Add(this.cbfemcirc);
-            this.tbfemdik.Controls.Add(this.cbFemColour);
-            resources.ApplyResources(this.tbfemdik, "tbfemdik");
-            this.tbfemdik.IconLocation = new System.Drawing.Point(4, 0);
-            this.tbfemdik.IconSize = new System.Drawing.Size(32, 32);
-            this.tbfemdik.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
-            this.tbfemdik.Name = "tbfemdik";
-            this.tbfemdik.RightHeaderColor = System.Drawing.SystemColors.ControlDark;
-            // 
             // lbFemcolour
             // 
             resources.ApplyResources(this.lbFemcolour, "lbFemcolour");
             this.lbFemcolour.Name = "lbFemcolour";
+            // 
+            // cbfembaldy
+            // 
+            resources.ApplyResources(this.cbfembaldy, "cbfembaldy");
+            this.cbfembaldy.Name = "cbfembaldy";
+            // 
+            // cbfemsmall
+            // 
+            resources.ApplyResources(this.cbfemsmall, "cbfemsmall");
+            this.cbfemsmall.Name = "cbfemsmall";
+            // 
+            // cbfembig
+            // 
+            resources.ApplyResources(this.cbfembig, "cbfembig");
+            this.cbfembig.Name = "cbfembig";
+            // 
+            // cbfemcirc
+            // 
+            resources.ApplyResources(this.cbfemcirc, "cbfemcirc");
+            this.cbfemcirc.Name = "cbfemcirc";
+            // 
+            // cbFemColour
+            // 
+            resources.ApplyResources(this.cbFemColour, "cbFemColour");
+            this.cbFemColour.Name = "cbFemColour";
             // 
             // Various
             // 
@@ -3592,22 +3576,18 @@ namespace SimPe.PackedFiles.UserInterface
             this.Various.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
             this.Various.Controls.Add(this.lbVBFriend);
             this.Various.Controls.Add(this.cbVBFriend);
-            this.Various.Controls.Add(this.cbisslave);
-            this.Various.Controls.Add(this.cbstaynude);
-            this.Various.Controls.Add(this.lbReligion);
             this.Various.Controls.Add(this.lbpostTitle);
             this.Various.Controls.Add(this.cbpostTitle);
             this.Various.Controls.Add(this.cbSuburbs);
             this.Various.Controls.Add(this.pbRomance);
-            this.Various.Controls.Add(this.cbFaiths);
             this.Various.Controls.Add(this.lbalcsub);
-            this.Various.Controls.Add(this.cbhospital);
             this.Various.Controls.Add(this.pbicon);
             this.Various.Controls.Add(this.cbonpill);
             this.Various.Controls.Add(this.cbmarker);
-            this.Various.Controls.Add(this.lbBodee);
             this.Various.Controls.Add(this.cbBody);
+            this.Various.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
             resources.ApplyResources(this.Various, "Various");
+            this.Various.HeaderTextColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Various.IconLocation = new System.Drawing.Point(4, 0);
             this.Various.IconSize = new System.Drawing.Size(32, 32);
             this.Various.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
@@ -3624,23 +3604,6 @@ namespace SimPe.PackedFiles.UserInterface
             resources.ApplyResources(this.cbVBFriend, "cbVBFriend");
             this.cbVBFriend.FormattingEnabled = true;
             this.cbVBFriend.Name = "cbVBFriend";
-            // 
-            // cbisslave
-            // 
-            resources.ApplyResources(this.cbisslave, "cbisslave");
-            this.cbisslave.Name = "cbisslave";
-            this.cbisslave.UseVisualStyleBackColor = true;
-            // 
-            // cbstaynude
-            // 
-            resources.ApplyResources(this.cbstaynude, "cbstaynude");
-            this.cbstaynude.Name = "cbstaynude";
-            this.cbstaynude.UseVisualStyleBackColor = true;
-            // 
-            // lbReligion
-            // 
-            resources.ApplyResources(this.lbReligion, "lbReligion");
-            this.lbReligion.Name = "lbReligion";
             // 
             // lbpostTitle
             // 
@@ -3659,22 +3622,10 @@ namespace SimPe.PackedFiles.UserInterface
             resources.ApplyResources(this.cbSuburbs, "cbSuburbs");
             this.cbSuburbs.Name = "cbSuburbs";
             // 
-            // cbFaiths
-            // 
-            resources.ApplyResources(this.cbFaiths, "cbFaiths");
-            this.cbFaiths.FormattingEnabled = true;
-            this.cbFaiths.Name = "cbFaiths";
-            // 
             // lbalcsub
             // 
             resources.ApplyResources(this.lbalcsub, "lbalcsub");
             this.lbalcsub.Name = "lbalcsub";
-            // 
-            // cbhospital
-            // 
-            resources.ApplyResources(this.cbhospital, "cbhospital");
-            this.cbhospital.Name = "cbhospital";
-            this.cbhospital.UseVisualStyleBackColor = true;
             // 
             // pbicon
             // 
@@ -3694,324 +3645,11 @@ namespace SimPe.PackedFiles.UserInterface
             this.cbmarker.Name = "cbmarker";
             this.cbmarker.UseVisualStyleBackColor = true;
             // 
-            // lbBodee
-            // 
-            resources.ApplyResources(this.lbBodee, "lbBodee");
-            this.lbBodee.Name = "lbBodee";
-            // 
             // cbBody
             // 
             resources.ApplyResources(this.cbBody, "cbBody");
             this.cbBody.FormattingEnabled = true;
             this.cbBody.Name = "cbBody";
-            // 
-            // Nipples
-            // 
-            this.Nipples.BackColor = System.Drawing.Color.Transparent;
-            this.Nipples.BodyColor = System.Drawing.SystemColors.ControlLight;
-            this.Nipples.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.Nipples.Controls.Add(this.labelnipple);
-            this.Nipples.Controls.Add(this.cbnipsit);
-            this.Nipples.Controls.Add(this.cbnipssi);
-            this.Nipples.Controls.Add(this.cbnipsma);
-            this.Nipples.Controls.Add(this.cbnipswi);
-            this.Nipples.Controls.Add(this.cbnipsfo);
-            this.Nipples.Controls.Add(this.cbnipsgy);
-            this.Nipples.Controls.Add(this.cbnipsun);
-            this.Nipples.Controls.Add(this.cbnipspy);
-            this.Nipples.Controls.Add(this.cbnipssw);
-            this.Nipples.Controls.Add(this.cbnipsca);
-            this.Nipples.Controls.Add(this.cbnipsna);
-            resources.ApplyResources(this.Nipples, "Nipples");
-            this.Nipples.IconLocation = new System.Drawing.Point(4, 0);
-            this.Nipples.IconSize = new System.Drawing.Size(32, 32);
-            this.Nipples.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
-            this.Nipples.Name = "Nipples";
-            this.Nipples.RightHeaderColor = System.Drawing.SystemColors.ControlDark;
-            // 
-            // labelnipple
-            // 
-            resources.ApplyResources(this.labelnipple, "labelnipple");
-            this.labelnipple.Name = "labelnipple";
-            // 
-            // cbnipsit
-            // 
-            resources.ApplyResources(this.cbnipsit, "cbnipsit");
-            this.cbnipsit.Name = "cbnipsit";
-            this.cbnipsit.UseVisualStyleBackColor = true;
-            // 
-            // cbnipssi
-            // 
-            resources.ApplyResources(this.cbnipssi, "cbnipssi");
-            this.cbnipssi.Name = "cbnipssi";
-            this.cbnipssi.UseVisualStyleBackColor = true;
-            // 
-            // cbnipsma
-            // 
-            resources.ApplyResources(this.cbnipsma, "cbnipsma");
-            this.cbnipsma.Name = "cbnipsma";
-            this.cbnipsma.UseVisualStyleBackColor = true;
-            // 
-            // cbnipswi
-            // 
-            resources.ApplyResources(this.cbnipswi, "cbnipswi");
-            this.cbnipswi.Name = "cbnipswi";
-            this.cbnipswi.UseVisualStyleBackColor = true;
-            // 
-            // cbnipsfo
-            // 
-            resources.ApplyResources(this.cbnipsfo, "cbnipsfo");
-            this.cbnipsfo.Name = "cbnipsfo";
-            this.cbnipsfo.UseVisualStyleBackColor = true;
-            // 
-            // cbnipsgy
-            // 
-            resources.ApplyResources(this.cbnipsgy, "cbnipsgy");
-            this.cbnipsgy.Name = "cbnipsgy";
-            this.cbnipsgy.UseVisualStyleBackColor = true;
-            // 
-            // cbnipsun
-            // 
-            resources.ApplyResources(this.cbnipsun, "cbnipsun");
-            this.cbnipsun.Name = "cbnipsun";
-            this.cbnipsun.UseVisualStyleBackColor = true;
-            // 
-            // cbnipspy
-            // 
-            resources.ApplyResources(this.cbnipspy, "cbnipspy");
-            this.cbnipspy.Name = "cbnipspy";
-            this.cbnipspy.UseVisualStyleBackColor = true;
-            // 
-            // cbnipssw
-            // 
-            resources.ApplyResources(this.cbnipssw, "cbnipssw");
-            this.cbnipssw.Name = "cbnipssw";
-            this.cbnipssw.UseVisualStyleBackColor = true;
-            // 
-            // cbnipsca
-            // 
-            resources.ApplyResources(this.cbnipsca, "cbnipsca");
-            this.cbnipsca.Name = "cbnipsca";
-            this.cbnipsca.UseVisualStyleBackColor = true;
-            // 
-            // cbnipsna
-            // 
-            resources.ApplyResources(this.cbnipsna, "cbnipsna");
-            this.cbnipsna.Name = "cbnipsna";
-            this.cbnipsna.UseVisualStyleBackColor = true;
-            // 
-            // Pubes
-            // 
-            this.Pubes.BackColor = System.Drawing.Color.Transparent;
-            this.Pubes.BodyColor = System.Drawing.SystemColors.ControlLight;
-            this.Pubes.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.Pubes.Controls.Add(this.pnPenis);
-            this.Pubes.Controls.Add(this.pnMuffy);
-            this.Pubes.Controls.Add(this.labelgenital);
-            this.Pubes.Controls.Add(this.cbpubeal);
-            this.Pubes.Controls.Add(this.cbpubegy);
-            this.Pubes.Controls.Add(this.cbpubeun);
-            this.Pubes.Controls.Add(this.cbpubepy);
-            this.Pubes.Controls.Add(this.cbpubesw);
-            this.Pubes.Controls.Add(this.cbpubeca);
-            resources.ApplyResources(this.Pubes, "Pubes");
-            this.Pubes.IconLocation = new System.Drawing.Point(4, 0);
-            this.Pubes.IconSize = new System.Drawing.Size(32, 32);
-            this.Pubes.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
-            this.Pubes.Name = "Pubes";
-            this.Pubes.RightHeaderColor = System.Drawing.SystemColors.ControlDark;
-            // 
-            // pnPenis
-            // 
-            this.pnPenis.Controls.Add(this.cbdickless);
-            this.pnPenis.Controls.Add(this.labelpenis);
-            this.pnPenis.Controls.Add(this.lbBallsize);
-            this.pnPenis.Controls.Add(this.cbDiklength);
-            this.pnPenis.Controls.Add(this.lbDikgirth);
-            this.pnPenis.Controls.Add(this.cbDikgirth);
-            this.pnPenis.Controls.Add(this.lbDikcolour);
-            this.pnPenis.Controls.Add(this.cbBallsize);
-            this.pnPenis.Controls.Add(this.lbDikstate);
-            this.pnPenis.Controls.Add(this.cbDikstate);
-            this.pnPenis.Controls.Add(this.lbDiklength);
-            this.pnPenis.Controls.Add(this.cbDikcolour);
-            resources.ApplyResources(this.pnPenis, "pnPenis");
-            this.pnPenis.Name = "pnPenis";
-            // 
-            // cbdickless
-            // 
-            resources.ApplyResources(this.cbdickless, "cbdickless");
-            this.cbdickless.Name = "cbdickless";
-            this.cbdickless.UseVisualStyleBackColor = true;
-            // 
-            // labelpenis
-            // 
-            resources.ApplyResources(this.labelpenis, "labelpenis");
-            this.labelpenis.Name = "labelpenis";
-            // 
-            // lbBallsize
-            // 
-            resources.ApplyResources(this.lbBallsize, "lbBallsize");
-            this.lbBallsize.Name = "lbBallsize";
-            // 
-            // cbDiklength
-            // 
-            resources.ApplyResources(this.cbDiklength, "cbDiklength");
-            this.cbDiklength.FormattingEnabled = true;
-            this.cbDiklength.Name = "cbDiklength";
-            // 
-            // lbDikgirth
-            // 
-            resources.ApplyResources(this.lbDikgirth, "lbDikgirth");
-            this.lbDikgirth.Name = "lbDikgirth";
-            // 
-            // cbDikgirth
-            // 
-            resources.ApplyResources(this.cbDikgirth, "cbDikgirth");
-            this.cbDikgirth.FormattingEnabled = true;
-            this.cbDikgirth.Name = "cbDikgirth";
-            // 
-            // lbDikcolour
-            // 
-            resources.ApplyResources(this.lbDikcolour, "lbDikcolour");
-            this.lbDikcolour.Name = "lbDikcolour";
-            // 
-            // cbBallsize
-            // 
-            resources.ApplyResources(this.cbBallsize, "cbBallsize");
-            this.cbBallsize.FormattingEnabled = true;
-            this.cbBallsize.Name = "cbBallsize";
-            // 
-            // lbDikstate
-            // 
-            resources.ApplyResources(this.lbDikstate, "lbDikstate");
-            this.lbDikstate.Name = "lbDikstate";
-            // 
-            // cbDikstate
-            // 
-            resources.ApplyResources(this.cbDikstate, "cbDikstate");
-            this.cbDikstate.FormattingEnabled = true;
-            this.cbDikstate.Name = "cbDikstate";
-            // 
-            // lbDiklength
-            // 
-            resources.ApplyResources(this.lbDiklength, "lbDiklength");
-            this.lbDiklength.Name = "lbDiklength";
-            // 
-            // cbDikcolour
-            // 
-            resources.ApplyResources(this.cbDikcolour, "cbDikcolour");
-            this.cbDikcolour.FormattingEnabled = true;
-            this.cbDikcolour.Name = "cbDikcolour";
-            // 
-            // pnMuffy
-            // 
-            this.pnMuffy.Controls.Add(this.btpubedic);
-            this.pnMuffy.Controls.Add(this.labelpubes);
-            this.pnMuffy.Controls.Add(this.cbpubesh);
-            this.pnMuffy.Controls.Add(this.cbpubetr);
-            this.pnMuffy.Controls.Add(this.cbpubetf);
-            this.pnMuffy.Controls.Add(this.cbpubebk);
-            this.pnMuffy.Controls.Add(this.cbpubebn);
-            this.pnMuffy.Controls.Add(this.cbpubebd);
-            this.pnMuffy.Controls.Add(this.cbpuberd);
-            resources.ApplyResources(this.pnMuffy, "pnMuffy");
-            this.pnMuffy.Name = "pnMuffy";
-            this.toolTip1.SetToolTip(this.pnMuffy, resources.GetString("pnMuffy.ToolTip"));
-            // 
-            // btpubedic
-            // 
-            resources.ApplyResources(this.btpubedic, "btpubedic");
-            this.btpubedic.Name = "btpubedic";
-            this.btpubedic.UseVisualStyleBackColor = true;
-            // 
-            // labelpubes
-            // 
-            resources.ApplyResources(this.labelpubes, "labelpubes");
-            this.labelpubes.Name = "labelpubes";
-            // 
-            // cbpubesh
-            // 
-            resources.ApplyResources(this.cbpubesh, "cbpubesh");
-            this.cbpubesh.Name = "cbpubesh";
-            this.cbpubesh.UseVisualStyleBackColor = true;
-            // 
-            // cbpubetr
-            // 
-            resources.ApplyResources(this.cbpubetr, "cbpubetr");
-            this.cbpubetr.Name = "cbpubetr";
-            this.cbpubetr.UseVisualStyleBackColor = true;
-            // 
-            // cbpubetf
-            // 
-            resources.ApplyResources(this.cbpubetf, "cbpubetf");
-            this.cbpubetf.Name = "cbpubetf";
-            this.cbpubetf.UseVisualStyleBackColor = true;
-            // 
-            // cbpubebk
-            // 
-            resources.ApplyResources(this.cbpubebk, "cbpubebk");
-            this.cbpubebk.Name = "cbpubebk";
-            this.cbpubebk.UseVisualStyleBackColor = true;
-            // 
-            // cbpubebn
-            // 
-            resources.ApplyResources(this.cbpubebn, "cbpubebn");
-            this.cbpubebn.Name = "cbpubebn";
-            this.cbpubebn.UseVisualStyleBackColor = true;
-            // 
-            // cbpubebd
-            // 
-            resources.ApplyResources(this.cbpubebd, "cbpubebd");
-            this.cbpubebd.Name = "cbpubebd";
-            this.cbpubebd.UseVisualStyleBackColor = true;
-            // 
-            // cbpuberd
-            // 
-            resources.ApplyResources(this.cbpuberd, "cbpuberd");
-            this.cbpuberd.Name = "cbpuberd";
-            this.cbpuberd.UseVisualStyleBackColor = true;
-            // 
-            // labelgenital
-            // 
-            resources.ApplyResources(this.labelgenital, "labelgenital");
-            this.labelgenital.Name = "labelgenital";
-            // 
-            // cbpubeal
-            // 
-            resources.ApplyResources(this.cbpubeal, "cbpubeal");
-            this.cbpubeal.Name = "cbpubeal";
-            this.cbpubeal.UseVisualStyleBackColor = true;
-            // 
-            // cbpubegy
-            // 
-            resources.ApplyResources(this.cbpubegy, "cbpubegy");
-            this.cbpubegy.Name = "cbpubegy";
-            this.cbpubegy.UseVisualStyleBackColor = true;
-            // 
-            // cbpubeun
-            // 
-            resources.ApplyResources(this.cbpubeun, "cbpubeun");
-            this.cbpubeun.Name = "cbpubeun";
-            this.cbpubeun.UseVisualStyleBackColor = true;
-            // 
-            // cbpubepy
-            // 
-            resources.ApplyResources(this.cbpubepy, "cbpubepy");
-            this.cbpubepy.Name = "cbpubepy";
-            this.cbpubepy.UseVisualStyleBackColor = true;
-            // 
-            // cbpubesw
-            // 
-            resources.ApplyResources(this.cbpubesw, "cbpubesw");
-            this.cbpubesw.Name = "cbpubesw";
-            this.cbpubesw.UseVisualStyleBackColor = true;
-            // 
-            // cbpubeca
-            // 
-            resources.ApplyResources(this.cbpubeca, "cbpubeca");
-            this.cbpubeca.Name = "cbpubeca";
-            this.cbpubeca.UseVisualStyleBackColor = true;
             // 
             // toolTip1
             // 
@@ -4036,11 +3674,8 @@ namespace SimPe.PackedFiles.UserInterface
             this.Controls.Add(this.pnEP3);
             this.Controls.Add(this.pnVoyage);
             this.Controls.Add(this.pnEP7);
-            this.Controls.Add(this.pnEP9);
             resources.ApplyResources(this, "$this");
-            this.HeaderText = null;
             this.Name = "ExtSDesc";
-            this.Controls.SetChildIndex(this.pnEP9, 0);
             this.Controls.SetChildIndex(this.pnEP7, 0);
             this.Controls.SetChildIndex(this.pnVoyage, 0);
             this.Controls.SetChildIndex(this.pnEP3, 0);
@@ -4098,21 +3733,9 @@ namespace SimPe.PackedFiles.UserInterface
             this.pnEP3.PerformLayout();
             this.pnVoyage.ResumeLayout(false);
             this.pnVoyage.PerformLayout();
-            this.pnEP9.ResumeLayout(false);
-            this.pnEP9.PerformLayout();
-            this.tbfemdik.ResumeLayout(false);
-            this.tbfemdik.PerformLayout();
             this.Various.ResumeLayout(false);
             this.Various.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbicon)).EndInit();
-            this.Nipples.ResumeLayout(false);
-            this.Nipples.PerformLayout();
-            this.Pubes.ResumeLayout(false);
-            this.Pubes.PerformLayout();
-            this.pnPenis.ResumeLayout(false);
-            this.pnPenis.PerformLayout();
-            this.pnMuffy.ResumeLayout(false);
-            this.pnMuffy.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4131,9 +3754,7 @@ namespace SimPe.PackedFiles.UserInterface
         private ToolStripButton biEP3;
         private ToolStripButton biEP6;
         private ToolStripButton biEP7;
-        private ToolStripButton biEP9;
         private ToolStripButton biMax;
-        private ToolStripButton biLezby;
         private ToolStripButton biCareer;
         private ToolStripButton biMore;
         private System.Windows.Forms.Panel pnId;
@@ -4148,7 +3769,6 @@ namespace SimPe.PackedFiles.UserInterface
         private System.Windows.Forms.Panel pnEP3;
         private System.Windows.Forms.Panel pnVoyage;
         private System.Windows.Forms.Panel pnEP7;
-        private System.Windows.Forms.Panel pnEP9;
         private Ambertation.Windows.Forms.LabeledProgressBar pbRomance;
         private Ambertation.Windows.Forms.LabeledProgressBar pbFat;
         private Ambertation.Windows.Forms.LabeledProgressBar pbClean;
@@ -4221,9 +3841,6 @@ namespace SimPe.PackedFiles.UserInterface
         private Ambertation.Windows.Forms.XPTaskBoxSimple bTaskBox4;
         private Ambertation.Windows.Forms.XPTaskBoxSimple srcTb;
         private Ambertation.Windows.Forms.XPTaskBoxSimple dstTb;
-        private Ambertation.Windows.Forms.XPTaskBoxSimple Pubes;
-        private Ambertation.Windows.Forms.XPTaskBoxSimple Nipples;
-        private Ambertation.Windows.Forms.XPTaskBoxSimple tbfemdik;
         private Ambertation.Windows.Forms.XPTaskBoxSimple Various;
         private Ambertation.Windows.Forms.XPTaskBoxSimple tbpersonflags;
         private Ambertation.Windows.Forms.XPTaskBoxSimple tbSeminfo;
@@ -4257,8 +3874,6 @@ namespace SimPe.PackedFiles.UserInterface
         private Panel pnPetChar;
         private Panel pnSimInt;
         private Panel pnPetInt;
-        private Panel pnPenis;
-        private Panel pnMuffy;
         private TextBox tbNTPerfume;
         private TextBox tbNTLove;
         private TextBox tbEp3Flag;
@@ -4411,49 +4026,8 @@ namespace SimPe.PackedFiles.UserInterface
         private Label label41;
         internal ComboBox cbaspiration2;
         private ComboBox cbBody;
-        private ComboBox cbFaiths;
-        private ComboBox cbDikcolour;
-        private ComboBox cbDikstate;
-        private ComboBox cbBallsize;
-        private ComboBox cbDikgirth;
-        private ComboBox cbDiklength;
-        private Label lbDiklength;
-        private Label lbBallsize;
-        private Label lbDikgirth;
-        private Label lbDikcolour;
-        private Label lbDikstate;
-        private Label lbBodee;
-        private Label labelpubes;
-        private Label labelgenital;
-        private CheckBox cbpubetr;
-        private CheckBox cbpuberd;
-        private CheckBox cbpubebd;
-        private CheckBox cbpubebn;
-        private CheckBox cbpubebk;
-        private CheckBox cbpubesh;
-        private CheckBox cbpubeun;
-        private CheckBox cbpubepy;
-        private CheckBox cbpubesw;
-        private CheckBox cbpubeca;
-        private CheckBox cbpubeal;
-        private CheckBox cbpubegy;
-        private CheckBox cbpubetf;
-        private CheckBox cbnipsgy;
-        private CheckBox cbnipsun;
-        private CheckBox cbnipspy;
-        private CheckBox cbnipssw;
-        private CheckBox cbnipsca;
-        private CheckBox cbnipsna;
-        private CheckBox cbnipssi;
-        private CheckBox cbnipsma;
-        private CheckBox cbnipswi;
-        private CheckBox cbnipsfo;
-        private CheckBox cbnipsit;
-        private Label labelnipple;
-        private Button btpubedic;
         private Button btProfile;
         private ToolTip toolTip1;
-        private CheckBox cbhospital;
         private CheckBox cbonpill;
         private CheckBox cbmarker;
         private ComboBox cbSuburbs;
@@ -4468,7 +4042,6 @@ namespace SimPe.PackedFiles.UserInterface
         private Label lbHousname;
         private PictureBox pbicon;
         private Label lbpostTitle;
-        private Label lbReligion;
         private ComboBox cbpostTitle;
         private Label lbRetcareer;
         internal ComboBox cbRetirement;
@@ -4486,12 +4059,8 @@ namespace SimPe.PackedFiles.UserInterface
         private CheckBox cbpflycar;
         private CheckBox cbpfwitch;
         private CheckBox cbpfroomy;
-        private CheckBox cbstaynude;
-        private CheckBox cbisslave;
         private Label lbVBFriend;
         private ComboBox cbVBFriend;
-        private Label labelpenis;
-        private CheckBox cbdickless;
         private CheckBox cbSenior;
         private CheckBox cbJunior;
         private CheckBox cbSopho;
