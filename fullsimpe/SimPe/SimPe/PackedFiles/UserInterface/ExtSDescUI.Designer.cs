@@ -374,16 +374,7 @@ namespace SimPe.PackedFiles.UserInterface
             this.tbhdaysleft = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.labelcol = new System.Windows.Forms.Label();
-            this.lbfaithinfo = new System.Windows.Forms.Label();
-            this.lbFemcolour = new System.Windows.Forms.Label();
-            this.cbfembaldy = new System.Windows.Forms.CheckBox();
-            this.cbfemsmall = new System.Windows.Forms.CheckBox();
-            this.cbfembig = new System.Windows.Forms.CheckBox();
-            this.cbfemcirc = new System.Windows.Forms.CheckBox();
-            this.cbFemColour = new System.Windows.Forms.ComboBox();
             this.Various = new Ambertation.Windows.Forms.XPTaskBoxSimple();
-            this.lbVBFriend = new System.Windows.Forms.Label();
-            this.cbVBFriend = new System.Windows.Forms.ComboBox();
             this.lbpostTitle = new System.Windows.Forms.Label();
             this.cbpostTitle = new System.Windows.Forms.ComboBox();
             this.cbSuburbs = new System.Windows.Forms.ComboBox();
@@ -3534,48 +3525,11 @@ namespace SimPe.PackedFiles.UserInterface
             resources.ApplyResources(this.labelcol, "labelcol");
             this.labelcol.Name = "labelcol";
             // 
-            // lbfaithinfo
-            // 
-            resources.ApplyResources(this.lbfaithinfo, "lbfaithinfo");
-            this.lbfaithinfo.Name = "lbfaithinfo";
-            // 
-            // lbFemcolour
-            // 
-            resources.ApplyResources(this.lbFemcolour, "lbFemcolour");
-            this.lbFemcolour.Name = "lbFemcolour";
-            // 
-            // cbfembaldy
-            // 
-            resources.ApplyResources(this.cbfembaldy, "cbfembaldy");
-            this.cbfembaldy.Name = "cbfembaldy";
-            // 
-            // cbfemsmall
-            // 
-            resources.ApplyResources(this.cbfemsmall, "cbfemsmall");
-            this.cbfemsmall.Name = "cbfemsmall";
-            // 
-            // cbfembig
-            // 
-            resources.ApplyResources(this.cbfembig, "cbfembig");
-            this.cbfembig.Name = "cbfembig";
-            // 
-            // cbfemcirc
-            // 
-            resources.ApplyResources(this.cbfemcirc, "cbfemcirc");
-            this.cbfemcirc.Name = "cbfemcirc";
-            // 
-            // cbFemColour
-            // 
-            resources.ApplyResources(this.cbFemColour, "cbFemColour");
-            this.cbFemColour.Name = "cbFemColour";
-            // 
             // Various
             // 
             this.Various.BackColor = System.Drawing.Color.Transparent;
             this.Various.BodyColor = System.Drawing.SystemColors.ControlLight;
             this.Various.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.Various.Controls.Add(this.lbVBFriend);
-            this.Various.Controls.Add(this.cbVBFriend);
             this.Various.Controls.Add(this.lbpostTitle);
             this.Various.Controls.Add(this.cbpostTitle);
             this.Various.Controls.Add(this.cbSuburbs);
@@ -3593,17 +3547,6 @@ namespace SimPe.PackedFiles.UserInterface
             this.Various.LeftHeaderColor = System.Drawing.SystemColors.ControlDark;
             this.Various.Name = "Various";
             this.Various.RightHeaderColor = System.Drawing.SystemColors.ControlDark;
-            // 
-            // lbVBFriend
-            // 
-            resources.ApplyResources(this.lbVBFriend, "lbVBFriend");
-            this.lbVBFriend.Name = "lbVBFriend";
-            // 
-            // cbVBFriend
-            // 
-            resources.ApplyResources(this.cbVBFriend, "cbVBFriend");
-            this.cbVBFriend.FormattingEnabled = true;
-            this.cbVBFriend.Name = "cbVBFriend";
             // 
             // lbpostTitle
             // 
@@ -4059,8 +4002,6 @@ namespace SimPe.PackedFiles.UserInterface
         private CheckBox cbpflycar;
         private CheckBox cbpfwitch;
         private CheckBox cbpfroomy;
-        private Label lbVBFriend;
-        private ComboBox cbVBFriend;
         private CheckBox cbSenior;
         private CheckBox cbJunior;
         private CheckBox cbSopho;
@@ -4071,13 +4012,6 @@ namespace SimPe.PackedFiles.UserInterface
         private CheckBox cbgraduate;
         private CheckBox cbprobation;
         private CheckBox cbGoodsem;
-        private Label lbFemcolour;
-        private CheckBox cbfembaldy;
-        private CheckBox cbfemsmall;
-        private CheckBox cbfembig;
-        private CheckBox cbfemcirc;
-        private ComboBox cbFemColour;
-        private Label lbfaithinfo;
         private Label lbdecScratc;
         private Label lbdecAmor;
         private Label lbdecFun;
