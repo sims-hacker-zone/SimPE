@@ -173,7 +173,7 @@ namespace SimPe.Plugin
 						new Idno(),
 						new RoadTexture(),
 						new Tatt(),
-						new Bnfo(),
+						new Bnfo.Bnfo(),
 						new Nhtr(),
 						new Lot(),
 						new Bcon(),

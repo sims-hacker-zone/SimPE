@@ -1,6 +1,6 @@
 using System;
 
-namespace SimPe.Plugin
+namespace SimPe.Plugin.Bnfo
 {
 	/// <summary>
 	/// Summary description for BnfoCustomerItemsUI.
@@ -11,7 +11,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		private System.ComponentModel.Container components = null;
+		private readonly System.ComponentModel.Container components = null;
 
 		public BnfoCustomerItemsUI()
 		{
@@ -113,10 +113,7 @@ namespace SimPe.Plugin
 
 		private void lb_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (SelectedItemChanged != null)
-			{
-				SelectedItemChanged(this, new EventArgs());
-			}
+			SelectedItemChanged?.Invoke(this, new EventArgs());
 		}
 	}
 }

@@ -10,7 +10,7 @@ using Ambertation.Windows.Forms;
 using SimPe.Data;
 using SimPe.PackedFiles.Wrapper;
 
-namespace SimPe.Plugin
+namespace SimPe.Plugin.Bnfo
 {
 	/// <summary>
 	/// Summary description for ExtNgbhUI.
@@ -1345,7 +1345,7 @@ namespace SimPe.Plugin
 					};
 					lvi.SubItems.Add(Convert.ToString(Bnfo.PayRate[i]));
 					lvi.SubItems.Add(Convert.ToString(i));
-					lvi.SubItems.Add(Convert.ToString(Bnfo.A[i]));
+					lvi.SubItems.Add(Convert.ToString(Bnfo.FairPay[i]));
 					lvEmployees.Items.Add(lvi);
 				}
 				else
@@ -1359,7 +1359,7 @@ namespace SimPe.Plugin
 					};
 					lvi.SubItems.Add(Convert.ToString(Bnfo.PayRate[i]));
 					lvi.SubItems.Add(Convert.ToString(i));
-					lvi.SubItems.Add(Convert.ToString(Bnfo.A[i]));
+					lvi.SubItems.Add(Convert.ToString(Bnfo.FairPay[i]));
 					lvEmployees.Items.Add(lvi);
 				}
 			}
@@ -1377,7 +1377,7 @@ namespace SimPe.Plugin
 			{
 				int cflo =
 					Bnfo.Revenue[historycount - 1]
-					- Bnfo.Expences[historycount - 1];
+					- Bnfo.Expenses[historycount - 1];
 				Array.Resize(ref rdatas, historycount - homeb);
 				Array.Resize(ref edatas, historycount - homeb);
 				// set both graphs to same max value so a direct comparison between the bar heights is possible
@@ -1390,11 +1390,11 @@ namespace SimPe.Plugin
 					 * negative values get cut off to zero at the graph as it can't display them
 					 * therefore I add (subtract because they are negative) to revenue
 					*/
-					edatas[n] = Bnfo.Expences[i];
+					edatas[n] = Bnfo.Expenses[i];
 					rdatas[n] = Bnfo.Revenue[i];
-					if (Bnfo.Expences[i] < 0)
+					if (Bnfo.Expenses[i] < 0)
 					{
-						rdatas[n] -= Bnfo.Expences[i];
+						rdatas[n] -= Bnfo.Expenses[i];
 					}
 
 					if (edatas[n] > mMax)
@@ -1784,9 +1784,9 @@ namespace SimPe.Plugin
 						fp = fp.Substring(1);
 					}
 
-					Bnfo.A[indects] = Convert.ToUInt32(fp);
+					Bnfo.FairPay[indects] = Convert.ToUInt32(fp);
 					lvEmployees.SelectedItems[0].SubItems[3].Text = Convert.ToString(
-						Bnfo.A[indects]
+						Bnfo.FairPay[indects]
 					);
 					CanCommit = true;
 				}
@@ -1959,7 +1959,7 @@ namespace SimPe.Plugin
 						{
 							empls[j] = Bnfo.Employees[i];
 							pr[j] = Bnfo.PayRate[i];
-							a[j] = Bnfo.A[i];
+							a[j] = Bnfo.FairPay[i];
 							j++;
 						}
 					}
@@ -1970,7 +1970,7 @@ namespace SimPe.Plugin
 					{
 						Bnfo.Employees[i] = empls[i];
 						Bnfo.PayRate[i] = pr[i];
-						Bnfo.A[i] = a[i];
+						Bnfo.FairPay[i] = a[i];
 					}
 				}
 				catch { }
@@ -2042,9 +2042,6 @@ namespace SimPe.Plugin
 				cbsimselect.SelectedItem as Interfaces.IAlias;
 			if (a.Tag[0] is ExtSDesc s)
 			{
-				ushort[] empls = new ushort[Bnfo.EmployeeCount + 1];
-				int[] pr = new int[Bnfo.EmployeeCount + 1];
-				uint[] tit = new uint[Bnfo.EmployeeCount + 1];
 				int bpy = 15;
 				bpy += s.Skills.Body / 100;
 				bpy += s.Skills.Charisma / 100;
@@ -2055,18 +2052,11 @@ namespace SimPe.Plugin
 				bpy += s.Skills.Mechanical / 100;
 				bpy += s.Skills.Art / 100;
 				bpy += s.Skills.Music / 100;
-				for (int i = 0; i < Bnfo.EmployeeCount; i++)
-				{
-					empls[i] = Bnfo.Employees[i];
-					pr[i] = Bnfo.PayRate[i];
-				}
-				empls[Bnfo.EmployeeCount] = s.Instance;
-				pr[Bnfo.EmployeeCount] = 3;
-				tit[Bnfo.EmployeeCount] = (uint)bpy;
 
 				Bnfo.EmployeeCount++;
-				Bnfo.Employees = empls;
-				Bnfo.PayRate = pr;
+				Bnfo.Employees.Add(s.Instance);
+				Bnfo.PayRate.Add(3);
+				Bnfo.FairPay.Add((uint)bpy);
 
 				if (Bnfo.Package == s.Package)
 				{

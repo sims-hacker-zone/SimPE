@@ -1,21 +1,16 @@
 using System;
 
-namespace SimPe.Plugin
+namespace SimPe.Plugin.Bnfo
 {
 	/// <summary>
 	/// Summary description for BnfoCustomerItem.
 	/// </summary>
 	public class BnfoCustomerItem
 	{
-		ushort siminst;
 		public ushort SimInstance
 		{
-			get => siminst;
-			set
-			{
-				siminst = value;
-				sdsc = null;
-			}
+			get;
+			set;
 		}
 
 		public int LoyaltyScore
@@ -30,7 +25,6 @@ namespace SimPe.Plugin
 			set => LoyaltyScore = value * 200;
 		}
 
-		int lloyalty;
 		public int LoadedLoyalty
 		{
 			get; set;
@@ -39,30 +33,20 @@ namespace SimPe.Plugin
 		internal byte[] Data
 		{
 			get; private set;
-		}
+		} = new byte[0x60];
 
 		Bnfo parent;
-		PackedFiles.Wrapper.ExtSDesc sdsc;
 		public PackedFiles.Wrapper.ExtSDesc SimDescription
 		{
 			get
 			{
-				if (sdsc == null)
-				{
-					sdsc =
-						FileTableBase.ProviderRegistry.SimDescriptionProvider.SimInstance[
-							SimInstance
-						] as PackedFiles.Wrapper.ExtSDesc;
-				}
-
-				return sdsc;
+				return FileTableBase.ProviderRegistry.SimDescriptionProvider.SimInstance[SimInstance] as PackedFiles.Wrapper.ExtSDesc;
 			}
 		}
 
 		internal BnfoCustomerItem(Bnfo parent)
 		{
 			this.parent = parent;
-			Data = new byte[0x60];
 		}
 
 		long endpos;
@@ -72,13 +56,13 @@ namespace SimPe.Plugin
 			SimInstance = reader.ReadUInt16();
 			LoadedLoyalty = reader.ReadInt32();
 			Data = reader.ReadBytes(Data.Length);
-			lloyalty = reader.ReadInt32();
+			LoadedLoyalty = reader.ReadInt32();
 			endpos = reader.BaseStream.Position;
 		}
 
 		internal void Serialize(System.IO.BinaryWriter writer)
 		{
-			writer.Write(siminst);
+			writer.Write(SimInstance);
 			writer.Write(LoadedLoyalty);
 			writer.Write(Data);
 			writer.Write(LoyaltyStars);
