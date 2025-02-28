@@ -1,22 +1,5 @@
-/***************************************************************************
- *   Copyright (C) 2005 by Ambertation                                     *
- *   quaxi@ambertation.de                                                  *
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- *   This program is distributed in the hope that it will be useful,       *
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
- *   GNU General Public License for more details.                          *
- *                                                                         *
- *   You should have received a copy of the GNU General Public License     *
- *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc.,                                       *
- *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
- ***************************************************************************/
+// SPDX-FileCopyrightText: © SimPE contributors
+// SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
 using System.Xml;
@@ -136,13 +119,13 @@ namespace SimPe.Plugin
 			/*
 			map = new Hashtable();
 			Interfaces.Scenegraph.IScenegraphFileIndexItem[] items = FileTable.FileIndex.FindFile(0x00000000, 0xCDA53B6F, 0x2D7EE26B, null);
-			
+
 			System.Collections.Generic.Dictionary<SimPe.PackedFiles.Wrapper.SDescVersions,string> vmap = new System.Collections.Generic.Dictionary<SimPe.PackedFiles.Wrapper.SDescVersions,string>();
 
 			vmap[version] = PathProvider.Global.Latest.InstallFolder.Trim().ToLower();
 			foreach (ExpansionItem ei in PathProvider.Global.Expansions) {
 				if (ei.Flag.Class == ExpansionItem.Classes.ExpansionPack) {
-					
+
 					SimPe.PackedFiles.Wrapper.SDescVersions ver = SimPe.PackedFiles.Wrapper.SDesc.GetMinVersion(ei.Expansion);
 
 					vmap [ver] = ei.InstallFolder.Trim().ToLower();
@@ -158,7 +141,7 @@ namespace SimPe.Plugin
 				if (s!=null && s!="") {
 					if (!item.Package.SaveFileName.Trim().ToLower().StartsWith(s)) continue;
 				}
-				
+
 				SimPe.PackedFiles.Wrapper.Xml xml = new SimPe.PackedFiles.Wrapper.Xml();
 				xml.ProcessData(item);
 

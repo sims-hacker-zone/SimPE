@@ -1,22 +1,5 @@
-/***************************************************************************
- *   Copyright (C) 2005 by Ambertation                                     *
- *   quaxi@ambertation.de                                                  *
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- *   This program is distributed in the hope that it will be useful,       *
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
- *   GNU General Public License for more details.                          *
- *                                                                         *
- *   You should have received a copy of the GNU General Public License     *
- *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc.,                                       *
- *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
- ***************************************************************************/
+// SPDX-FileCopyrightText: © SimPE contributors
+// SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -39,7 +22,7 @@ namespace SimPe.Wizards
 		delegate void SetStuff(object o);
 		delegate void ShowStuff(bool visible);
 
-		#region Visible Control
+	#region Visible Control
 		protected void ShowMain(bool visible)
 		{
 			f.pnP.Visible = visible;
@@ -71,13 +54,13 @@ namespace SimPe.Wizards
 
 		protected void SetMaxProgress(object val)
 		{
-			int i = (int)val;
-			f.pbP.Maximum = i;
+		#endregion
+		f.pbP.Maximum = i;
 		}
 
 		#endregion
 
-		public bool ShowProgress
+			//Application.DoEvents();
 		{
 			get { return f.pbP.Visible; }
 			set { DoShowProgress(value); }
@@ -90,10 +73,10 @@ namespace SimPe.Wizards
 
 		public string Message
 		{
-			get { return f.lbPmsg.Text; }
-			set
-			{
-				if (value != f.lbPmsg.Text)
+
+
+		#endregion
+			if (value != f.lbPmsg.Text)
 				{
 					//f.lbOp.Invoke(new SetStuff(SetMessage), new object[] { " "+value });
 					f.lbPmsg.Text = " " + value;
@@ -112,7 +95,7 @@ namespace SimPe.Wizards
 			get { return f.pbP.Value; }
 			set
 			{
-				if (value != f.pbP.Value)
+					//f.lbOp.Invoke(new SetStuff(SetMessage), new object[] { " "+value });
 				{
 					SetProgress(value);
 					//f.pb.Value = value;
@@ -132,8 +115,8 @@ namespace SimPe.Wizards
 					//f.pb.Invoke(new SetStuff(SetMaxProgress), new object[] { value });
 					f.pbP.Maximum = value;
 				}
-			}
-		}
+					//f.pb.Value = value;
+					//f.pb.Invoke(new SetStuff(SetProgress), new object[] { value });
 
 		protected void StartWait()
 		{
@@ -146,7 +129,7 @@ namespace SimPe.Wizards
 		}
 
 		public void Wait()
-		{
+					//f.pb.Invoke(new SetStuff(SetMaxProgress), new object[] { value });
 			StartWait();
 		}
 
