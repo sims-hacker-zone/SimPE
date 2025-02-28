@@ -9,7 +9,7 @@
     <TargetFramework>net471</TargetFramework>
     <ApplicationIcon>img\Simpe2.ico</ApplicationIcon>
     <StartupObject>SimPe.MainForm</StartupObject>
-    <RuntimeIdentifier>win</RuntimeIdentifier>
+    <RuntimeIdentifier>win-x86</RuntimeIdentifier>
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
     <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
     <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
