@@ -141,16 +141,16 @@ namespace SimPe
 		void LoadDynamicWrappers()
 		{
 			Splash.Screen.SetMessage("Loading Dynamic Wrappers");
-			try
-			{
-				Plugin.WrapperFactory factory = new Plugin.WrapperFactory();
-				FileTableBase.WrapperRegistry.Register(factory); //moved here to max priority, when a StaticWrapper Clst was higher
-				FileTable.ToolRegistry.Register(factory);
-			}
-			catch (Exception ex)
-			{
-				throw ex;
-			}
+			// try
+			// {
+			Plugin.WrapperFactory factory = new Plugin.WrapperFactory();
+			FileTableBase.WrapperRegistry.Register(factory); //moved here to max priority, when a StaticWrapper Clst was higher
+			FileTable.ToolRegistry.Register(factory);
+			// }
+			// catch (Exception ex)
+			// {
+			// 	throw ex;
+			// }
 
 			string folder = Helper.SimPePluginPath;
 			if (!System.IO.Directory.Exists(folder))
