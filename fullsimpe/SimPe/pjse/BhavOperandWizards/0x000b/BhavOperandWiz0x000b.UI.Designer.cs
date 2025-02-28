@@ -95,7 +95,7 @@ namespace whse.PrimitiveWizards.Wiz0x000b
             // iconPnM
             // 
             this.iconPnM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            // TODO - WH - this.iconPnM.Image = global::whse.PrimitiveWizards.Properties.Resources.MinionWithNotebook;
+            this.iconPnM.Image = SimPe.Properties.Resources.MinionWithNotebook;
             this.iconPnM.Location = new System.Drawing.Point(405, 115);
             this.iconPnM.Name = "iconPnM";
             this.iconPnM.Size = new System.Drawing.Size(32, 32);
