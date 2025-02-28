@@ -13,6 +13,7 @@
     <EnableDefaultCompileItems>true</EnableDefaultCompileItems>
     <EnableDefaultEmbeddedResourceItems>true</EnableDefaultEmbeddedResourceItems>
     <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
+    <EmbeddedResourceUseDependentUponConvention>true</EmbeddedResourceUseDependentUponConvention>
     <Version>0.77.9999.1</Version>
     <AssemblyVersion>0.77.9999.1</AssemblyVersion>
     <Title>SimPE</Title>
