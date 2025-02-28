@@ -477,7 +477,7 @@ namespace SimPe.Plugin
 			{
 				return;
 			}
-			if (Helper.WindowsRegistry.UseCache)
+			if (Helper.WindowsRegistry.Config.UseCache)
 			{
 				cachefile = Cache.Cache.GlobalCache;
 			}
@@ -485,7 +485,7 @@ namespace SimPe.Plugin
 
 		static void SaveCache()
 		{
-			if (Helper.WindowsRegistry.UseCache)
+			if (Helper.WindowsRegistry.Config.UseCache)
 			{
 				cachefile.Save();
 			}

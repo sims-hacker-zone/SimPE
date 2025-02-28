@@ -1330,8 +1330,8 @@ namespace pjHoodTool
 			string group = "";
 			int groupno = 0;
 			bool dun = getim.Settings;
-			bool previ = Helper.WindowsRegistry.LoadTableAtStartup;
-			Helper.WindowsRegistry.LoadTableAtStartup = false;
+			bool previ = Helper.WindowsRegistry.Config.LoadTableAtStartup;
+			Helper.WindowsRegistry.Config.LoadTableAtStartup = false;
 			while (argv.Count > i)
 			{
 				if (ArgParser.Parse(argv, i, "-out", ref outpath))
@@ -1398,7 +1398,7 @@ namespace pjHoodTool
 			};
 			Rufio(outpath, hood, groupno);
 			splash("");
-			Helper.WindowsRegistry.LoadTableAtStartup = previ;
+			Helper.WindowsRegistry.Config.LoadTableAtStartup = previ;
 			return true;
 		}
 

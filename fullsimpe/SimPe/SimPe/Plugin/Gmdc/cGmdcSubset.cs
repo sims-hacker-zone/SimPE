@@ -338,7 +338,7 @@ namespace SimPe.Plugin.Gmdc
 		public override string ToString()
 		{
 			string s = "";
-			if (Helper.WindowsRegistry.ShowJointNames)
+			if (Helper.WindowsRegistry.Config.ShowJointNames)
 			{
 				s += Name + ": ";
 			}

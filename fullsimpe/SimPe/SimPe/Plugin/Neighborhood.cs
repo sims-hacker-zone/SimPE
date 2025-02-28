@@ -402,7 +402,7 @@ namespace SimPe.Plugin
 						}
 					}
 				}
-				if (Helper.WindowsRegistry.LoadAllNeighbourhoods && LoadNgbh)
+				if (Helper.WindowsRegistry.Config.LoadAllHoods && LoadNgbh)
 				{
 					if (
 						PathProvider

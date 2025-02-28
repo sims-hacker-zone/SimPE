@@ -75,7 +75,7 @@ namespace SimPe
 			if (
 				(
 					!File.Exists(Helper.DataFolder.ExpansionsXREG)
-					|| Helper.WindowsRegistry.GetPreviousVersion()
+					|| Helper.WindowsRegistry.PreviousVersion
 						!= Helper.SimPeVersionLong
 				)
 				&& Helper.Profile.Length == 0
@@ -228,7 +228,7 @@ namespace SimPe
 					|| ArgParser.Parse(argv, "-splash") >= 0
 				)
 				{
-					Helper.WindowsRegistry.ShowStartupSplash = true;
+					Helper.WindowsRegistry.Config.ShowStartupSplash = true;
 				}
 
 				return false;
@@ -251,7 +251,7 @@ namespace SimPe
 					|| ArgParser.Parse(argv, "-nosplash") >= 0
 				)
 				{
-					Helper.WindowsRegistry.ShowStartupSplash = false;
+					Helper.WindowsRegistry.Config.ShowStartupSplash = false;
 				}
 
 				return false;
@@ -465,10 +465,10 @@ namespace SimPe
 			Helper.WindowsRegistry.SimpleResourceSelect = true;
 			Helper.WindowsRegistry.MultipleFiles = true;
 			Helper.WindowsRegistry.FirefoxTabbing = true;
-			Helper.WindowsRegistry.ShowStartupSplash = true;
+			Helper.WindowsRegistry.Config.ShowStartupSplash = true;
 			Helper.WindowsRegistry.Layout.IsClassicPreset = false;
 			Helper.WindowsRegistry.LockDocks = false;
-			Helper.WindowsRegistry.ShowWaitBarPermanent = true;
+			Helper.WindowsRegistry.Config.ShowWaitBarPermanent = true;
 			Helper.WindowsRegistry.UseBigIcons = false;
 			Helper.WindowsRegistry.LoadOnlySimsStory = 0;
 			Helper.WindowsRegistry.Flush();
@@ -487,12 +487,12 @@ namespace SimPe
 			Helper.WindowsRegistry.DeepSimTemplateScan = false;
 			Helper.WindowsRegistry.HiddenMode = false;
 			Helper.WindowsRegistry.LoadOWFast = false;
-			Helper.WindowsRegistry.ShowStartupSplash = true;
+			Helper.WindowsRegistry.Config.ShowStartupSplash = true;
 			Helper.WindowsRegistry.SimpleResourceSelect = true;
 			Helper.WindowsRegistry.MultipleFiles = true;
 			Helper.WindowsRegistry.FirefoxTabbing = true;
 			Helper.WindowsRegistry.LockDocks = false;
-			Helper.WindowsRegistry.ShowWaitBarPermanent = true;
+			Helper.WindowsRegistry.Config.ShowWaitBarPermanent = true;
 			Helper.WindowsRegistry.WaitingScreen = true;
 			Helper.WindowsRegistry.UseBigIcons = false;
 			Helper.WindowsRegistry.LoadOnlySimsStory = 0;
@@ -594,9 +594,9 @@ namespace SimPe
 				Helper.WindowsRegistry.SimpleResourceSelect = true;
 				Helper.WindowsRegistry.MultipleFiles = false;
 				Helper.WindowsRegistry.FirefoxTabbing = false;
-				Helper.WindowsRegistry.ShowWaitBarPermanent = false;
+				Helper.WindowsRegistry.Config.ShowWaitBarPermanent = false;
 				Helper.WindowsRegistry.Layout.IsClassicPreset = true;
-				Helper.WindowsRegistry.ShowStartupSplash = true;
+				Helper.WindowsRegistry.Config.ShowStartupSplash = true;
 				Helper.WindowsRegistry.WaitingScreen = true;
 				Helper.WindowsRegistry.LockDocks = true;
 				Helper.WindowsRegistry.UseBigIcons = false;

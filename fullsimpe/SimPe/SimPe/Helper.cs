@@ -755,35 +755,38 @@ namespace SimPe
 		{
 			get
 			{
-				Microsoft.Win32.RegistryKey tk =
-					Microsoft.Win32.Registry.LocalMachine.OpenSubKey(
-						"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\Sims2ECC.exe",
-						false
-					);
-				if (tk != null)
+				if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
 				{
-					return true;
-				}
-
-				tk = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(
-					"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\Sims2SC.exe",
-					false
-				);
-				if (tk == null)
-				{
-					return false;
-				}
-
-				object gr = tk.GetValue("Game Registry", "");
-				Microsoft.Win32.RegistryKey rk =
-					Microsoft.Win32.Registry.LocalMachine.OpenSubKey((string)gr, false);
-				if (rk != null)
-				{
-					object o = rk.GetValue("Suppression Exe", "");
-					string s = o.ToString();
-					if (s.Contains("Sims2EP8.exe"))
+					Microsoft.Win32.RegistryKey tk =
+						Microsoft.Win32.Registry.LocalMachine.OpenSubKey(
+							"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\Sims2ECC.exe",
+							false
+						);
+					if (tk != null)
 					{
 						return true;
+					}
+
+					tk = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(
+						"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\Sims2SC.exe",
+						false
+					);
+					if (tk == null)
+					{
+						return false;
+					}
+
+					object gr = tk.GetValue("Game Registry", "");
+					Microsoft.Win32.RegistryKey rk =
+						Microsoft.Win32.Registry.LocalMachine.OpenSubKey((string)gr, false);
+					if (rk != null)
+					{
+						object o = rk.GetValue("Suppression Exe", "");
+						string s = o.ToString();
+						if (s.Contains("Sims2EP8.exe"))
+						{
+							return true;
+						}
 					}
 				}
 				return false;

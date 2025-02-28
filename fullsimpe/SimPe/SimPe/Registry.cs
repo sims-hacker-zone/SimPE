@@ -1,6 +1,10 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.IO;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Text.Json;
 
 using Microsoft.Win32;
 
@@ -13,14 +17,52 @@ namespace SimPe
 	/// <see cref="Helper.WindowsRegistry"/> Field to acces the Registry</remarks>
 	public class Registry
 	{
+
+		public class Configuration
+		{
+			public string Path { get; set; } = Helper.SimPePath;
+			public string DataPath { get; set; } = Helper.SimPeDataPath;
+			public string PluginPath { get; set; } = Helper.SimPePluginPath;
+			public long LastVersion
+			{
+				get; set;
+			}
+			/// <summary>
+			/// Whether the wait bar should always be shown
+			/// </summary>
+			public bool ShowWaitBarPermanent { get; set; } = true;
+			public bool FileTableSimpleSelectUseGroups { get; set; } = true;
+			/// <summary>
+			/// Whether Sims Stories Hoods should be loaded as well
+			/// </summary>
+			public bool LoadAllHoods { get; set; } = false;
+			public string UserName { get; set; } = "";
+			/// <summary>
+			/// Whether the main file table should be loaded on startup
+			/// </summary>
+			public bool LoadTableAtStartup { get; set; } = false;
+			/// <summary>
+			/// Whether to enable the cache
+			/// </summary>
+			public bool UseCache { get; set; } = true;
+			/// <summary>
+			/// Whether to show the splash screen on startup
+			/// </summary>
+			public bool ShowStartupSplash { get; set; } = true;
+			/// <summary>
+			/// Whether to show the OBJD file names in Object Workshop
+			/// </summary>
+			public bool ShowObjdNames { get; set; } = false;
+			/// <summary>
+			/// Whether Joint names should be shown in GMDC
+			/// </summary>
+			public bool ShowJointNames { get; set; } = false;
+
+		}
+
 		#region Attributes
 		///Number of Recent Files stored in the Reg
 		public const byte RECENT_COUNT = 15;
-
-		/// <summary>
-		/// The Root Registry Kex for this Application
-		/// </summary>
-		private RegistryKey rk;
 
 		/// <summary>
 		/// Contains the Registry
@@ -45,6 +87,8 @@ namespace SimPe
 			get; private set;
 		}
 
+		public Configuration Config { get; private set; } = new Configuration();
+
 		// int pep, pepct; long pver; - seem not to be used will comment all out
 		#endregion
 
@@ -54,10 +98,28 @@ namespace SimPe
 		/// </summary>
 		internal Registry()
 		{
-			rk = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(
-				"Software\\Ambertation\\SimPe"
-			);
-			PreviousVersion = GetPreviousVersion();
+			string configpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SimPe", "config.json");
+			bool success = true;
+			if (File.Exists(configpath))
+			{
+				try
+				{
+					Config = JsonSerializer.Deserialize<Configuration>(File.ReadAllText(configpath, Encoding.UTF8), new JsonSerializerOptions
+					{
+						UnmappedMemberHandling = System.Text.Json.Serialization.JsonUnmappedMemberHandling.Skip,
+						DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
+					});
+				}
+				catch (Exception ex) { Message.Show($"Config could not be loaded!\n{ex.Message}\n{ex.StackTrace}"); success = false; }
+			}
+			else
+			{
+				success = false;
+			}
+			if (!success)
+			{
+				Message.Show("No config found! Creating a new one.");
+			}
 			// pep = -1;
 			// pepct = this.GetPreviousEpCount();
 			Reload();
@@ -112,6 +174,7 @@ namespace SimPe
 		/// </summary>
 		public void Flush()
 		{
+			SaveConfig();
 			Layout?.Flush();
 
 			reg?.Flush();
@@ -138,47 +201,36 @@ namespace SimPe
 		/// </summary>
 		public void UpdateSimPEDirectory()
 		{
-			RegistryKey rkf = rk.CreateSubKey("Settings");
-			rkf.SetValue("Path", Helper.SimPePath);
-			rkf.SetValue("DataPath", Helper.SimPeDataPath);
-			rkf.SetValue("PluginPath", Helper.SimPePluginPath);
-			rkf.SetValue("LastVersion", Helper.SimPeVersionLong);
+			Config.Path = Helper.SimPePath;
+			Config.DataPath = Helper.SimPeDataPath;
+			Config.PluginPath = Helper.SimPePluginPath;
+			Config.LastVersion = Helper.SimPeVersionLong;
+
+			SaveConfig();
+		}
+
+		public void SaveConfig()
+		{
+			string configpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SimPe", "config.json");
+			try
+			{
+				File.WriteAllText(configpath, JsonSerializer.Serialize(Config, new JsonSerializerOptions { WriteIndented = true }), Encoding.UTF8);
+			}
+			catch (Exception ex)
+			{
+				Message.Show($"Config could not be saved!\n{ex.Message}\n{ex.StackTrace}");
+			}
 		}
 
 		/// <summary>
 		/// Returns the DataFolder as set by the last SimPe run
 		/// </summary>
-		public string PreviousDataFolder
-		{
-			get
-			{
-				RegistryKey rkf = rk.CreateSubKey("Settings");
-				return rkf.GetValue("DataPath", "").ToString();
-			}
-		}
-
-		public string GetPreviousData()
-		{
-			RegistryKey rkf = rk.CreateSubKey("Settings");
-			return rkf.GetValue("DataPath", "").ToString();
-		}
-
-		/// <summary>
-		/// Returns the SimPe Version as set by the last SimPe run
-		/// </summary>
-		public long GetPreviousVersion()
-		{
-			RegistryKey rkf = rk.CreateSubKey("Settings");
-			return Convert.ToInt64(rkf.GetValue("LastVersion", (long)0));
-		}
+		public string PreviousDataFolder => Config.DataPath;
 
 		/// <summary>
 		/// Returns the Version of the latest SimPe used so far
 		/// </summary>
-		public long PreviousVersion
-		{
-			get;
-		}
+		public long PreviousVersion => Config.LastVersion;
 
 		#region EP Handler
 		public bool FoundUnknownEP()
@@ -240,41 +292,46 @@ namespace SimPe
 		{
 			get
 			{
-				RegistryKey tk =
-					Microsoft.Win32.Registry.LocalMachine.OpenSubKey(
-						"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\Sims2.exe",
-						false
-					);
-				if (tk == null)
+				if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
 				{
-					return new string[0];
-				}
-
-				object gr = tk.GetValue("Game Registry", false);
-				RegistryKey rk =
-					Microsoft.Win32.Registry.LocalMachine.OpenSubKey((string)gr, false);
-				if (rk != null)
-				{
-					object o = rk.GetValue("EPsInstalled", "");
-					if (o == null)
+					RegistryKey tk =
+						Microsoft.Win32.Registry.LocalMachine.OpenSubKey(
+							"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\Sims2.exe",
+							false
+						);
+					if (tk == null)
 					{
 						return new string[0];
 					}
 
-					string s = o.ToString();
-
-					string[] ret = s.Split(new char[] { ',' });
-					for (int i = 0; i < ret.Length; i++)
+					object gr = tk.GetValue("Game Registry", false);
+					RegistryKey rk =
+						Microsoft.Win32.Registry.LocalMachine.OpenSubKey((string)gr, false);
+					if (rk != null)
 					{
-						ret[i] = ret[i].ToLower().Trim();
-					}
+						object o = rk.GetValue("EPsInstalled", "");
+						if (o == null)
+						{
+							return new string[0];
+						}
 
-					return ret;
+						string s = o.ToString();
+
+						string[] ret = s.Split(new char[] { ',' });
+						for (int i = 0; i < ret.Length; i++)
+						{
+							ret[i] = ret[i].ToLower().Trim();
+						}
+
+						return ret;
+					}
+					else
+					{
+						return new string[0];
+					}
 				}
 				else
-				{
 					return new string[0];
-				}
 			}
 		}
 
@@ -285,69 +342,8 @@ namespace SimPe
 		/// </summary>
 		public bool FileTableSimpleSelectUseGroups
 		{
-			get
-			{
-				if (HiddenMode)
-				{
-					return false;
-				}
-
-				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
-				object o = rkf.GetValue("FileTableSimpleSelectUseGroups", true);
-				return Convert.ToBoolean(o);
-			}
-			set
-			{
-				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
-				rkf.SetValue("FileTableSimpleSelectUseGroups", value);
-			}
-		}
-
-		/// <summary>
-		/// true, if the user wants the Wait bar to always be visible
-		/// </summary>
-		public bool ShowWaitBarPermanent
-		{
-			get
-			{
-				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
-				object o = rkf.GetValue("ShowWaitBarPermanent", true);
-				return Convert.ToBoolean(o);
-			}
-			set
-			{
-				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
-				rkf.SetValue("ShowWaitBarPermanent", value);
-			}
-		}
-
-		/// <summary>
-		/// true, if user want all neighbourhoods available
-		/// </summary>
-		[System.ComponentModel.Description(
-			"Enable this to load sim story neighbourhoods as well as default"
-		)]
-		public bool LoadAllNeighbourhoods
-		{
-			get
-			{
-				if (
-					Helper.WindowsRegistry.Layout.IsClassicPreset
-					|| LoadOnlySimsStory > 0
-				)
-				{
-					return false;
-				}
-
-				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
-				object o = rkf.GetValue("LoadAllHoods", false);
-				return Convert.ToBoolean(o);
-			}
-			set
-			{
-				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
-				rkf.SetValue("LoadAllHoods", value);
-			}
+			get => !HiddenMode && Config.FileTableSimpleSelectUseGroups;
+			set => Config.FileTableSimpleSelectUseGroups = value;
 		}
 
 		/// <summary>
@@ -465,81 +461,6 @@ namespace SimPe
 		}
 
 		/// <summary>
-		/// true to load the main file table at startup
-		/// </summary>
-		[System.ComponentModel.Description(
-			"Enable this to load the main file table at startup instead of when first needed"
-		)]
-		public bool LoadTableAtStartup
-		{
-			get
-			{
-				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
-				object o = rkf.GetValue("loadAtStartup", false);
-				return Convert.ToBoolean(o);
-			}
-			set
-			{
-				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
-				rkf.SetValue("loadAtStartup", value);
-			}
-		}
-
-		/// <summary>
-		/// true, if user wants to activate the Cache
-		/// </summary>
-		public bool UseCache
-		{
-			get
-			{
-				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
-				object o = rkf.GetValue("UseCache", true);
-				return Convert.ToBoolean(o);
-			}
-			set
-			{
-				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
-				rkf.SetValue("UseCache", value);
-			}
-		}
-
-		/// <summary>
-		/// true, if user wants see the startup splash screen
-		/// </summary>
-		public bool ShowStartupSplash
-		{
-			get
-			{
-				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
-				object o = rkf.GetValue("ShowStartupSplash", true);
-				return Convert.ToBoolean(o);
-			}
-			set
-			{
-				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
-				rkf.SetValue("ShowStartupSplash", value);
-			}
-		}
-
-		/// <summary>
-		/// true, if user wants to show the OBJD Filenames in OW
-		/// </summary>
-		public bool ShowObjdNames
-		{
-			get
-			{
-				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
-				object o = rkf.GetValue("ShowObjdNames", false);
-				return Convert.ToBoolean(o);
-			}
-			set
-			{
-				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
-				rkf.SetValue("ShowObjdNames", value);
-			}
-		}
-
-		/// <summary>
 		/// true, if we allow Users to change the secondary aspiraions.
 		/// </summary>
 		public bool AllowChangeOfSecondaryAspiration
@@ -559,24 +480,6 @@ namespace SimPe
 			{
 				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("AllowChangeOfSecondaryAspiration", value);
-			}
-		}
-
-		/// <summary>
-		/// true, if user wants to show the Name of a Joint in the GMDC Plugin
-		/// </summary>
-		public bool ShowJointNames
-		{
-			get
-			{
-				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
-				object o = rkf.GetValue("ShowJointNames", true);
-				return Convert.ToBoolean(o);
-			}
-			set
-			{
-				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
-				rkf.SetValue("ShowJointNames", value);
 			}
 		}
 
@@ -657,24 +560,6 @@ namespace SimPe
 			{
 				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				rkf.SetValue("DecodeFilenames", value);
-			}
-		}
-
-		/// <summary>
-		/// Optional User Name
-		/// </summary>
-		public string Username
-		{
-			get
-			{
-				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
-				object o = rkf.GetValue("Username", "");
-				return o.ToString();
-			}
-			set
-			{
-				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
-				rkf.SetValue("Username", value);
 			}
 		}
 
@@ -1740,535 +1625,5 @@ namespace SimPe
 			PathProvider.Global.BlurNudityUpdate();
 		}
 		#endregion
-		/*
-		#region Obsolete
-
-		/// <summary>
-		/// Returns the latest number of the Expansion used so far - seems not to be used ever
-		/// </summary>
-		public int PreviousEpCount
-		{
-			get
-			{
-				if (pep == -1) pep = this.GetPreviousEp();
-				return pep;
-			}
-		}
-		protected int EPCount
-		{
-			get
-			{
-				int cints = 0;
-				string[] cinst = InstalledEPExecutables;
-				if (cinst.Length == 0) return 0;
-				foreach (string csi in cinst)
-				{
-					if (csi != "") cints += 1;
-				}
-				return cints;
-			}
-		}
-
-		/// <summary>
-		/// Returns the number of the EPs used, and writes the new Number to the Registry
-		/// </summary>
-		protected int GetPreviousEpCount()
-		{
-			RegistryKey rkf = rk.CreateSubKey("Settings");
-			int res = Convert.ToInt32(rkf.GetValue("LastEPCount", this.EPCount));
-
-			rkf.SetValue("LastEPCount", this.EPCount);
-			return res;
-		}
-		/// <summary>
-		/// Returns the number of the latest EP used, and writes the new Number to the Registry
-		/// </summary>
-		protected int GetPreviousEp()
-		{
-			RegistryKey rkf = rk.CreateSubKey("Settings");
-			int res = Convert.ToInt32(rkf.GetValue("LatestEP", 0));
-
-			//rkf.SetValue("LatestEP", PathProvider.Global.EPInstalled);
-			rkf.SetValue("LatestEP", PathProvider.Global.GameVersion);
-			return res;
-		}
-
-		private string scramble(string rey)
-		{
-			byte[] b = Helper.ToBytes(rey);
-			return Helper.BytesToHexList(b);
-		}
-
-		private string descramble(string rey)
-		{
-			string ret = "";
-			byte[] b = Helper.HexListToBytes(rey);
-			foreach (byte f in b) ret += (char)f;
-			return ret;
-		}
-		/// <summary>
-		/// oboslete??? True, if you want to see items added to the resoruceList at once (ie. no BeginUpdate)
-		/// </summary>
-		private bool ShowResourceListContentAtOnce
-		{
-			get
-			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-				object o = rkf.GetValue("ShowResourceListContentAtOnce", false);
-				return Convert.ToBoolean(o);
-			}
-			set
-			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-				rkf.SetValue("ShowResourceListContentAtOnce", value);
-			}
-		}
-
-		/// <summary>
-		/// true, if user wants to activate the Cache
-		/// </summary>
-		public  bool XPStyle
-		{
-			get
-			{
-				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
-				object o = rkf.GetValue("XPStyle", true);
-				return Convert.ToBoolean(o);
-			}
-			set
-			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-				rkf.SetValue("XPStyle", value);
-			}
-		}
-		/// <summary>
-		/// true, if the user wanted to use the HexViewer
-		/// </summary>
-		public  bool HexViewState
-		{
-			get
-			{
-				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
-				object o = rkf.GetValue("HexViewEnabled", false);
-				return Convert.ToBoolean(o);
-			}
-			set
-			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-				rkf.SetValue("HexViewEnabled", value);
-			}
-		}
-		/// <summary>
-		/// Obsolete, Since there is no updates will always get/set false
-		/// </summary>
-		public bool CheckForUpdates
-		{
-			get
-			{
-				return false;
-			}
-			set
-			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-				rkf.SetValue("CheckForUpdates", false);
-			}
-		}
-		/// <summary>
-		/// When did whe perform the last UpdateCheck? Obsolete always returns the default
-		/// </summary>
-		public DateTime LastUpdateCheck
-		{
-			get
-			{
-				XmlRegistryKey  rkf = xrk.CreateSubKey("Settings");
-				object o = rkf.GetValue("LastUpdateCheck", DateTime.Now.Subtract(new TimeSpan(2, 0, 0, 0, 0)));
-				return Convert.ToDateTime(o);
-			}
-			set
-			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("Settings");
-				rkf.SetValue("LastUpdateCheck", value);
-			}
-		}
-		public class ObsoleteWarning : Warning
-		{
-			internal ObsoleteWarning(string message, string detail) : base(message, detail) { }
-		}
-
-		protected static void WarnObsolete()
-		{
-			// if (Helper.DebugMode)
-				throw new SimPe.Registry.ObsoleteWarning("This call is obsolete!", "The Call to this method is obsolete.\n\n Please use the matching version in SimPe.PathProvider.Global, or see http://www.modthesims2.com/index.php? for details.");
-		}
-		/// <summary>
-		/// Obsolete!
-		/// </summary>
-		public string RealEP1GamePath
-		{
-			get
-			{
-				WarnObsolete();
-				return SimPe.PathProvider.Global[Expansions.University].RealInstallFolder;
-			}
-		}
-		/// <summary>
-		/// Obsolete!
-		/// </summary>
-		public string RealEP2GamePath
-		{
-			get
-			{
-				WarnObsolete();
-				return SimPe.PathProvider.Global[Expansions.Nightlife].RealInstallFolder;
-			}
-		}
-		/// <summary>
-		/// Obsolete!
-		/// </summary>
-		public string RealEP3GamePath
-		{
-			get
-			{
-				WarnObsolete();
-				return SimPe.PathProvider.Global[Expansions.Business].RealInstallFolder;
-			}
-		}
-		/// <summary>
-		/// Obsolete!
-		/// </summary>
-		public string RealSP1GamePath
-		{
-			get
-			{
-				WarnObsolete();
-				return SimPe.PathProvider.Global[Expansions.FamilyFun].RealInstallFolder;
-			}
-		}
-		/// <summary>
-		/// Obsolete!
-		/// </summary>
-		public string RealSP2GamePath
-		{
-			get
-			{
-				WarnObsolete();
-				return SimPe.PathProvider.Global[Expansions.Glamour].RealInstallFolder;
-			}
-		}
-		/// <summary>
-		/// Obsolete!
-		/// </summary>
-		public int InstalledVersions
-		{
-			get
-			{
-				WarnObsolete();
-				int ret = EPInstalled;
-				ret |= SPInstalled<<16;
-				return ret;
-			}
-		}
-		/// <summary>
-		/// Obsolete!
-		/// </summary>
-		public int GameVersion
-		{
-			get
-			{
-				WarnObsolete();
-				return SimPe.PathProvider.Global.GameVersion;
-			}
-		}
-		/// <summary>
-		/// Obsolete!
-		/// </summary>
-		public int EPInstalled
-		{
-			get
-			{
-				WarnObsolete();
-				return SimPe.PathProvider.Global.EPInstalled;
-			}
-		}
-		/// <summary>
-		/// Obsolete!
-		/// </summary>
-		public int SPInstalled
-		{
-			get
-			{
-				WarnObsolete();
-				return PathProvider.Global.SPInstalled;
-			}
-		}
-		/// <summary>
-		/// Obsolete!
-		/// </summary>
-		public int STInstalled
-		{
-			get
-			{
-				WarnObsolete();
-				return PathProvider.Global.STInstalled;
-			}
-		}
-		/// <summary>
-		/// Obsolete!
-		/// </summary>
-		public string RealSavegamePath
-		{
-			get
-			{
-				WarnObsolete();
-				return SimPe.PathProvider.RealSavegamePath;
-			}
-		}
-		/// <summary>
-		/// Obsolete!
-		/// </summary>
-		public string RealGamePath
-		{
-			get
-			{
-				WarnObsolete();
-				return SimPe.PathProvider.Global[Expansions.BaseGame].RealInstallFolder;
-			}
-		}
-		/// <summary>
-		/// Obsolete!
-		/// </summary>
-		public string SimsPath
-		{
-			get
-			{
-				WarnObsolete();
-				return SimPe.PathProvider.Global[Expansions.BaseGame].InstallFolder;
-			}
-			set
-			{
-				 WarnObsolete();
-				SimPe.PathProvider.Global[Expansions.BaseGame].InstallFolder = value;
-			}
-		}
-		/// <summary>
-		/// Obsolete!
-		/// </summary>
-		public string NvidiaDDSTool
-		{
-			get
-			{
-				WarnObsolete();
-				return PathProvider.Global.NvidiaDDSTool;
-			}
-		}
-		/// <summary>
-		/// Obsolete!
-		/// </summary>
-		public string StartupCheatFile
-		{
-			get
-			{
-				WarnObsolete();
-				return PathProvider.Global.StartupCheatFile;
-			}
-		}
-		/// <summary>
-		/// Obsolete!
-		/// </summary>
-		public string NeighborhoodFolder
-		{
-			get
-			{
-				WarnObsolete();
-				return PathProvider.Global.NeighborhoodFolder;
-			}
-		}
-		/// <summary>
-		/// Obsolete!
-		/// </summary>
-		public string BackupFolder
-		{
-			get
-			{
-				WarnObsolete();
-				return PathProvider.Global.BackupFolder;
-			}
-		}
-		/// <summary>
-		/// Obsolete!
-		/// </summary>
-		public string NvidiaDDSPath
-		{
-			get
-			{
-				WarnObsolete();
-				return PathProvider.Global.NvidiaDDSPath;
-			}
-			set
-			{
-				WarnObsolete();
-				PathProvider.Global.NvidiaDDSPath = value;
-			}
-		}
-		/// <summary>
-		/// Obsolete!
-		/// </summary>
-		public string SimsEP1Path
-		{
-			get
-			{
-				WarnObsolete();
-				return PathProvider.Global[Expansions.University].InstallFolder;
-			}
-			set
-			{
-				WarnObsolete();
-				PathProvider.Global[Expansions.University].InstallFolder = value;
-			}
-		}
-		/// <summary>
-		/// Obsolete!
-		/// </summary>
-		public string SimsEP2Path
-		{
-			get
-			{
-				WarnObsolete();
-				return PathProvider.Global[Expansions.Nightlife].InstallFolder;
-			}
-			set
-			{
-				WarnObsolete();
-				PathProvider.Global[Expansions.Nightlife].InstallFolder = value;
-			}
-		}
-		/// <summary>
-		/// Obsolete!
-		/// </summary>
-		public string SimsEP3Path
-		{
-			get
-			{
-				WarnObsolete();
-				return PathProvider.Global[Expansions.Business].InstallFolder;
-			}
-			set
-			{
-				WarnObsolete();
-				PathProvider.Global[Expansions.Business].InstallFolder = value;
-			}
-		}
-		/// <summary>
-		///Obsolete !
-		/// </summary>
-		public string SimsSP1Path
-		{
-			get
-			{
-				WarnObsolete();
-				return PathProvider.Global[Expansions.FamilyFun].InstallFolder;
-			}
-			set
-			{
-				WarnObsolete();
-				PathProvider.Global[Expansions.FamilyFun].InstallFolder = value;
-			}
-		}
-		/// <summary>
-		/// Obsolete!
-		/// </summary>
-		public string SimsSP2Path
-		{
-			get
-			{
-				WarnObsolete();
-				return PathProvider.Global[Expansions.Glamour].InstallFolder;
-			}
-			set
-			{
-				WarnObsolete();
-				PathProvider.Global[Expansions.Glamour].InstallFolder = value;
-			}
-		}
-		protected static int GetVersion(int index) {
-			if ((index & 0xFFFF0000) == 0x00020000) return 5;
-			if ((index & 0xFFFF0000) == 0x00010000) return 4;
-			if ((index & 0x0000FFFF) == 0x00000003) return 3;
-			if ((index & 0x0000FFFF) == 0x00000002) return 2;
-			if ((index & 0x0000FFFF) == 0x00000001) return 1;
-			return 0;
-		}
-		/// <summary>
-		/// Obsolete!
-		/// </summary>
-		/// <param name="index"></param>
-		/// <returns></returns>
-		public static string GetEpName(int index)
-		{
-
-			WarnObsolete();
-			return PathProvider.Global[GetVersion(index)].Name;
-		}
-		/// <summary>
-		/// Obsolete!
-		/// </summary>
-		public string CurrentEPName
-		{
-			get
-			{
-				WarnObsolete();
-				return SimPe.PathProvider.Global.Latest.DisplayName;
-			}
-		}
-		/// <summary>
-		/// Obsolete!
-		/// </summary>
-		/// <param name="index"></param>
-		/// <returns></returns>
-		public static string GetExecutableName(int index)
-		{
-			WarnObsolete();
-			return PathProvider.Global[GetVersion(index)].ExeName;
-		}
-		/// <summary>
-		/// Obsolete!
-		/// </summary>
-		/// <param name="index"></param>
-		/// <returns></returns>
-		public string GetExecutableFolder(int index)
-		{
-			WarnObsolete();
-			return PathProvider.Global[GetVersion(index)].InstallFolder;
-		}
-		/// <summary>
-		/// Obsolete!
-		/// </summary>
-		public string SimsApplication
-		{
-			get
-			{
-				WarnObsolete();
-				return PathProvider.Global.SimsApplication;
-			}
-
-		}
-		/// <summary>
-		/// Obsolete!
-		/// </summary>
-		public string SimSavegameFolder
-		{
-			get
-			{
-				WarnObsolete();
-				return PathProvider.SimSavegameFolder;
-			}
-			set
-			{
-				WarnObsolete();
-				PathProvider.SimSavegameFolder = value;
-			}
-		}
-		#endregion
-		 */
 	}
 }

@@ -267,7 +267,7 @@ namespace SimPe.Plugin.Gmdc
 				  //if (minct==int.MaxValue) minct=0;
 			}
 
-			if (Helper.WindowsRegistry.ShowJointNames)
+			if (Helper.WindowsRegistry.Config.ShowJointNames)
 			{
 				foreach (ImportedBone bn in bns)
 				{

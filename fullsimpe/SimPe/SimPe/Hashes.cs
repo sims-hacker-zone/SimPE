@@ -281,12 +281,12 @@ namespace SimPe
 		}
 
 		public static bool HaveUserId => (Helper.WindowsRegistry.CachedUserId != 0)
-					&& (Helper.WindowsRegistry.Username.Trim() != "");
+					&& (Helper.WindowsRegistry.Config.UserName.Trim() != "");
 
 		public static bool HaveValidUserId => HaveUserId
 					&& ValidUserId(
 						Helper.WindowsRegistry.CachedUserId,
-						Helper.WindowsRegistry.Username,
+						Helper.WindowsRegistry.Config.UserName,
 						Helper.WindowsRegistry.Password
 					);
 

@@ -80,9 +80,9 @@ namespace SimPe.Plugin
 
 			sorter = new ColumnSorter();
 
-			if (Helper.WindowsRegistry.Username.Trim() != "")
+			if (Helper.WindowsRegistry.Config.UserName.Trim() != "")
 			{
-				tbname.Text = Helper.WindowsRegistry.Username + "-";
+				tbname.Text = Helper.WindowsRegistry.Config.UserName + "-";
 			}
 		}
 

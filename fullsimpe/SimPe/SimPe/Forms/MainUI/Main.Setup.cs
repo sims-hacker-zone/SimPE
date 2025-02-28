@@ -131,7 +131,7 @@ namespace SimPe
 			manager.ForceCleanUp();
 			lv.Filter = filter;
 
-			if (Helper.WindowsRegistry.LoadTableAtStartup)
+			if (Helper.WindowsRegistry.Config.LoadTableAtStartup)
 			{
 				FileTableBase.FileIndex.AllowEvent = false;
 				Splash.Screen.SetMessage("Loading the FileTable");
@@ -145,7 +145,7 @@ namespace SimPe
 			waitControl1.ShowProgress = false;
 			waitControl1.Progress = 0;
 			waitControl1.Message = "";
-			waitControl1.Visible = Helper.WindowsRegistry.ShowWaitBarPermanent;
+			waitControl1.Visible = Helper.WindowsRegistry.Config.ShowWaitBarPermanent;
 		}
 
 		void LoadForm(object sender, EventArgs e)

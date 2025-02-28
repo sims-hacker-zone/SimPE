@@ -127,10 +127,10 @@ namespace SimPe
 			cbwait.Checked = Helper.WindowsRegistry.WaitingScreen;
 			cbow.Checked = Helper.WindowsRegistry.LoadOWFast;
 			//cbsilent.Checked = Helper.WindowsRegistry.Silent;
-			cbcache.Checked = Helper.WindowsRegistry.UseCache;
-			cbshowobjd.Checked = Helper.WindowsRegistry.ShowObjdNames;
+			cbcache.Checked = Helper.WindowsRegistry.Config.UseCache;
+			cbshowobjd.Checked = Helper.WindowsRegistry.Config.ShowObjdNames;
 			cbhidden.Checked = Helper.WindowsRegistry.HiddenMode;
-			cbjointname.Checked = Helper.WindowsRegistry.ShowJointNames;
+			cbjointname.Checked = Helper.WindowsRegistry.Config.ShowJointNames;
 			tbthumb.Text = Helper.WindowsRegistry.OWThumbSize.ToString();
 			cbshowalls.Checked = Helper.WindowsRegistry.OWincludewalls;
 			cbtrimname.Checked = Helper.WindowsRegistry.OWtrimnames;
@@ -143,7 +143,7 @@ namespace SimPe
 			cbSimTemp.Checked = Helper.WindowsRegistry.DeepSimTemplateScan;
 			cbAsync.Checked = Helper.WindowsRegistry.AsynchronLoad;
 			cbLock.Checked = Helper.WindowsRegistry.LockDocks;
-			cbsplash.Checked = Helper.WindowsRegistry.ShowStartupSplash;
+			cbsplash.Checked = Helper.WindowsRegistry.Config.ShowStartupSplash;
 			cbAsyncSort.Checked = Helper.WindowsRegistry.AsynchronSort;
 			//cbexthemes.Checked = Helper.WindowsRegistry.ThemedForms;
 			cbBigIcons.Checked = Helper.WindowsRegistry.UseBigIcons;
@@ -153,7 +153,7 @@ namespace SimPe
 
 			cbLock_CheckedChanged(cbLock, null);
 
-			tbUsername.Text = Helper.WindowsRegistry.Username;
+			tbUsername.Text = Helper.WindowsRegistry.Config.UserName;
 			tbPassword.Text = Helper.WindowsRegistry.Password;
 			tbUserid.Text =
 				"0x" + Helper.HexString(Helper.WindowsRegistry.CachedUserId);
@@ -270,10 +270,10 @@ namespace SimPe
 			Helper.WindowsRegistry.WaitingScreen = cbwait.Checked;
 			Helper.WindowsRegistry.LoadOWFast = cbow.Checked;
 			//Helper.WindowsRegistry.Silent = cbsilent.Checked;
-			Helper.WindowsRegistry.UseCache = cbcache.Checked;
-			Helper.WindowsRegistry.ShowObjdNames = cbshowobjd.Checked;
+			Helper.WindowsRegistry.Config.UseCache = cbcache.Checked;
+			Helper.WindowsRegistry.Config.ShowObjdNames = cbshowobjd.Checked;
 			Helper.WindowsRegistry.HiddenMode = cbhidden.Checked;
-			Helper.WindowsRegistry.ShowJointNames = cbjointname.Checked;
+			Helper.WindowsRegistry.Config.ShowJointNames = cbjointname.Checked;
 			Helper.WindowsRegistry.UsePackageMaintainer = cbpkgmaint.Checked;
 			Helper.WindowsRegistry.MultipleFiles = cbmulti.Checked;
 			// Helper.WindowsRegistry.Layout.SelectedTheme = (byte)
@@ -286,7 +286,7 @@ namespace SimPe
 			Helper.WindowsRegistry.ReportFormat = (Registry.ReportFormats)
 				cbReport.SelectedItem;
 			Helper.WindowsRegistry.LockDocks = cbLock.Checked;
-			Helper.WindowsRegistry.ShowStartupSplash = cbsplash.Checked;
+			Helper.WindowsRegistry.Config.ShowStartupSplash = cbsplash.Checked;
 			Helper.WindowsRegistry.AsynchronSort = cbAsyncSort.Checked;
 			Helper.WindowsRegistry.ResourceListExtensionFormat =
 				(Registry.ResourceListExtensionFormats)cbRLExt.SelectedIndex;
@@ -294,7 +294,7 @@ namespace SimPe
 				cbRLNames.SelectedIndex;
 			Helper.WindowsRegistry.ResourceListUnknownDescriptionFormat =
 				(Registry.ResourceListUnnamedFormats)cbRLTGI.SelectedIndex;
-			Helper.WindowsRegistry.Username = tbUsername.Text;
+			Helper.WindowsRegistry.Config.UserName = tbUsername.Text;
 			Helper.WindowsRegistry.Password = tbPassword.Text;
 			Helper.WindowsRegistry.FileTableSimpleSelectUseGroups = !cbhidden.Checked;
 

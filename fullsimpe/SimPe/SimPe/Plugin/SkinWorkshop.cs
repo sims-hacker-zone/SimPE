@@ -58,7 +58,7 @@ namespace SimPe.Plugin
 		{
 			cachechg = false;
 
-			if (!Helper.WindowsRegistry.UseCache)
+			if (!Helper.WindowsRegistry.Config.UseCache)
 			{
 				return;
 			}
@@ -76,7 +76,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		void SaveCacheIndex()
 		{
-			if (!Helper.WindowsRegistry.UseCache)
+			if (!Helper.WindowsRegistry.Config.UseCache)
 			{
 				return;
 			}
@@ -137,7 +137,7 @@ namespace SimPe.Plugin
 									)
 									{
 										Tag = (new object[3] { nrefitem.FileDescriptor, nrefitem.LocalGroup, nrefitem.FileDescriptor.Instance }),
-										Name = Helper.WindowsRegistry.ShowObjdNames ? oci.ObjectFileName : oci.Name
+										Name = Helper.WindowsRegistry.Config.ShowObjdNames ? oci.ObjectFileName : oci.Name
 									});
 								}
 							}

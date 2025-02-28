@@ -482,7 +482,7 @@ namespace SimPe.Plugin
 
 		void UpdateList(bool savecache, bool rescan)
 		{
-			if (Helper.WindowsRegistry.UseCache && savecache)
+			if (Helper.WindowsRegistry.Config.UseCache && savecache)
 			{
 				cachefile.Save();
 			}
@@ -1283,7 +1283,7 @@ namespace SimPe.Plugin
 
 				try
 				{
-					if (Helper.WindowsRegistry.UseCache && cachechg)
+					if (Helper.WindowsRegistry.Config.UseCache && cachechg)
 					{
 						cachefile.Save();
 					}
@@ -1479,7 +1479,7 @@ namespace SimPe.Plugin
 				try
 				{
 					WaitingScreen.UpdateMessage("Writing Cache");
-					if (Helper.WindowsRegistry.UseCache)
+					if (Helper.WindowsRegistry.Config.UseCache)
 					{
 						cachefile.Save();
 					}

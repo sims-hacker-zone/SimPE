@@ -112,9 +112,9 @@ namespace SimPe.Plugin.Scanner
 			cbsexes[1] = cbfemale;
 			cbfemale.Tag = Data.Gender.Female;
 
-			if (Helper.WindowsRegistry.Username.Trim() != "")
+			if (Helper.WindowsRegistry.Config.UserName.Trim() != "")
 			{
-				tbname.Text = Helper.WindowsRegistry.Username + "-";
+				tbname.Text = Helper.WindowsRegistry.Config.UserName + "-";
 			}
 
 			cbskins.SelectedIndex = 0;

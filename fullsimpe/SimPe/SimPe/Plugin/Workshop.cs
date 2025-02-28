@@ -376,7 +376,7 @@ namespace SimPe.Plugin
 
 			cachechg = false;
 
-			if (!Helper.WindowsRegistry.UseCache)
+			if (!Helper.WindowsRegistry.Config.UseCache)
 			{
 				return;
 			}
@@ -391,7 +391,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		void SaveCacheIndex()
 		{
-			if (!Helper.WindowsRegistry.UseCache)
+			if (!Helper.WindowsRegistry.Config.UseCache)
 			{
 				return;
 			}

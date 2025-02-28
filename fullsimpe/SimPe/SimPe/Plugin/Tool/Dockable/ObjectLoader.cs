@@ -47,7 +47,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 			cachechg = false;
 
-			if (!Helper.WindowsRegistry.UseCache)
+			if (!Helper.WindowsRegistry.Config.UseCache)
 			{
 				return;
 			}
@@ -62,7 +62,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		/// </summary>
 		void SaveCacheIndex()
 		{
-			if (!Helper.WindowsRegistry.UseCache)
+			if (!Helper.WindowsRegistry.Config.UseCache)
 			{
 				return;
 			}
@@ -494,7 +494,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 			a.Tag = os;
 
-			a.Name = Helper.WindowsRegistry.ShowObjdNames ? oci.ObjectFileName : oci.Name;
+			a.Name = Helper.WindowsRegistry.Config.ShowObjdNames ? oci.ObjectFileName : oci.Name;
 
 			a.Name += " (cached)";
 			Image img = oci.Thumbnail;

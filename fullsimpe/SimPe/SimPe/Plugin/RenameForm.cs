@@ -495,7 +495,7 @@ namespace SimPe.Plugin
 		/// <returns>a Unique String or null</returns>
 		public static string GetUniqueName(bool retnull)
 		{
-			string uname = Helper.WindowsRegistry.Username.Trim();
+			string uname = Helper.WindowsRegistry.Config.UserName.Trim();
 			if (uname == "")
 			{
 				if (retnull)

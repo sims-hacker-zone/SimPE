@@ -128,7 +128,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public static void SaveCache()
 		{
-			if (Helper.WindowsRegistry.UseCache && hasnew)
+			if (!Helper.WindowsRegistry.Config.UseCache && hasnew)
 			{
 				Cache.Cache.GlobalCache.Save();
 			}
