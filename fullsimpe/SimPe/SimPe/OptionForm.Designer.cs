@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: © 2005 Ambertation and SimPE contributors
+// SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Drawing;
@@ -8,25 +8,25 @@ using System.Windows.Forms;
 
 namespace SimPe
 {
-    partial class OptionForm
-    {
-        private Panel ThemPanel;
-        private Button button1;
-        private CheckBox cbdebug;
-        private CheckBox cbblur;
-        private CheckBox cbsound;
-        private Label label1;
-        private ListBox lbext;
-        private LinkLabel linkLabel1;
-        private LinkLabel linkLabel2;
-        private FolderBrowserDialog fbd;
-        private Button button4;
-        private TextBox tbdds;
-        private Label label5;
-        private OpenFileDialog ofd;
-        private ToolTip toolTip1;
-	    private GroupBox groupBox1;
+	partial class OptionForm
 	{
+		private Panel ThemPanel;
+		private Button button1;
+		private CheckBox cbdebug;
+		private CheckBox cbblur;
+		private CheckBox cbsound;
+		private Label label1;
+		private ListBox lbext;
+		private LinkLabel linkLabel1;
+		private LinkLabel linkLabel2;
+		private FolderBrowserDialog fbd;
+		private Button button4;
+		private TextBox tbdds;
+		private Label label5;
+		private OpenFileDialog ofd;
+		private ToolTip toolTip1;
+		private GroupBox groupBox1;
+		private GroupBox groupBox2;
 		private CheckBox cbautobak;
 		private CheckBox cbcache;
 		private ComboBox cblang;
@@ -139,38 +139,21 @@ namespace SimPe
 		private CheckBox cbpetability;
 		private System.ComponentModel.IContainer components;
 		internal bool speady = false;
-		
+
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
 		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
 		protected override void Dispose(bool disposing)
 		{
-		    if (disposing)
-		    {
-		        if (components != null)
-		        {
-		            components.Dispose();
-		        }
-		    }
-		    base.Dispose(disposing);
-		}
-		
-        #region Windows Form Designer generated code
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-		private void InitializeComponent()
-		{
-			this.components = new System.ComponentModel.Container();
+			if (disposing)
 			{
-				.button1 = new System.Windows.Forms.Button();
+				if (components != null)
 				{
-					lur = new System.Windows.Forms.CheckBox();
+					components.Dispose();
 				}
 			}
-			this.lbext = new System.Windows.Forms.ListBox();
+			base.Dispose(disposing);
 		}
 
 		#region Windows Form Designer generated code
@@ -178,8 +161,25 @@ namespace SimPe
 		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
-		    this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OptionForm));
+			this.button1 = new System.Windows.Forms.Button();
+			this.cbdebug = new System.Windows.Forms.CheckBox();
+			this.cbblur = new System.Windows.Forms.CheckBox();
+			this.cbsound = new System.Windows.Forms.CheckBox();
+			this.label1 = new System.Windows.Forms.Label();
+			this.lbext = new System.Windows.Forms.ListBox();
+			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+			this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+			this.fbd = new System.Windows.Forms.FolderBrowserDialog();
+			this.button4 = new System.Windows.Forms.Button();
+			this.tbdds = new System.Windows.Forms.TextBox();
+			this.label5 = new System.Windows.Forms.Label();
+			this.ofd = new System.Windows.Forms.OpenFileDialog();
+			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+			this.tbthumb = new System.Windows.Forms.TextBox();
 			this.cbAsync = new System.Windows.Forms.CheckBox();
 			this.cbhidden = new System.Windows.Forms.CheckBox();
 			this.tbscale = new System.Windows.Forms.TextBox();
@@ -333,173 +333,173 @@ namespace SimPe
 			resources.ApplyResources(this.cbblur, "cbblur");
 			this.cbblur.Name = "cbblur";
 			this.cbblur.CheckedChanged += new System.EventHandler(this.cbblur_CheckedChanged);
-			// 
-			// button1
-			// 
+			//
+			// cbsound
+			//
 			resources.ApplyResources(this.cbsound, "cbsound");
 			this.cbsound.Name = "cbsound";
 			this.toolTip1.SetToolTip(this.cbsound, resources.GetString("cbsound.ToolTip"));
-			// 
-			// cbdebug
-			// 
+			//
+			// label1
+			//
 			resources.ApplyResources(this.label1, "label1");
 			this.label1.Name = "label1";
-			// 
-			// cbblur
-			// 
+			//
+			// lbext
+			//
 			resources.ApplyResources(this.lbext, "lbext");
 			this.lbext.Name = "lbext";
 			//
-			// 
-			// cbsound
-			// 
+			// linkLabel1
+			//
+			resources.ApplyResources(this.linkLabel1, "linkLabel1");
 			this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
 			this.linkLabel1.Name = "linkLabel1";
 			this.linkLabel1.TabStop = true;
-			// 
-			// label1
-			// 
+			this.linkLabel1.UseCompatibleTextRendering = true;
+			this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.AddExt);
+			//
 			// linkLabel2
 			//
-			// 
-			// lbext
-			// 
+			resources.ApplyResources(this.linkLabel2, "linkLabel2");
+			this.linkLabel2.BackColor = System.Drawing.Color.Transparent;
+			this.linkLabel2.Name = "linkLabel2";
 			this.linkLabel2.TabStop = true;
 			this.linkLabel2.UseCompatibleTextRendering = true;
-			// 
-			// linkLabel1
-			// 
+			this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.DeleteExt);
+			//
+			// button4
 			//
 			resources.ApplyResources(this.button4, "button4");
 			this.button4.BackColor = System.Drawing.Color.Transparent;
 			this.button4.Name = "button4";
 			this.button4.UseVisualStyleBackColor = false;
 			this.button4.Click += new System.EventHandler(this.button4_Click);
-			// 
-			// linkLabel2
-			// 
+			//
+			// tbdds
+			//
 			resources.ApplyResources(this.tbdds, "tbdds");
 			this.tbdds.Name = "tbdds";
 			this.tbdds.TextChanged += new System.EventHandler(this.DDSChanged);
 			//
 			// label5
 			//
-			// 
-			// button4
-			// 
+			resources.ApplyResources(this.label5, "label5");
+			this.label5.BackColor = System.Drawing.Color.Transparent;
+			this.label5.Name = "label5";
 			//
 			// ofd
 			//
 			resources.ApplyResources(this.ofd, "ofd");
 			//
-			// 
-			// tbdds
-			// 
+			// tbthumb
+			//
+			resources.ApplyResources(this.tbthumb, "tbthumb");
 			this.tbthumb.Name = "tbthumb";
 			this.toolTip1.SetToolTip(this.tbthumb, resources.GetString("tbthumb.ToolTip"));
 			//
-			// 
-			// label5
-			// 
+			// cbAsync
+			//
+			resources.ApplyResources(this.cbAsync, "cbAsync");
 			this.cbAsync.Name = "cbAsync";
 			this.toolTip1.SetToolTip(this.cbAsync, resources.GetString("cbAsync.ToolTip"));
 			//
-			// 
-			// ofd
-			// 
+			// cbhidden
+			//
+			resources.ApplyResources(this.cbhidden, "cbhidden");
 			this.cbhidden.Name = "cbhidden";
-			// 
-			// tbthumb
-			// 
+			this.toolTip1.SetToolTip(this.cbhidden, resources.GetString("cbhidden.ToolTip"));
+			this.cbhidden.CheckedChanged += new System.EventHandler(this.cbhidden_CheckedChanged);
+			//
 			// tbscale
 			//
 			resources.ApplyResources(this.tbscale, "tbscale");
-			// 
-			// cbAsync
-			// 
+			this.tbscale.Name = "tbscale";
+			this.toolTip1.SetToolTip(this.tbscale, resources.GetString("tbscale.ToolTip"));
+			//
 			// button8
 			//
 			resources.ApplyResources(this.button8, "button8");
-			// 
-			// cbhidden
-			// 
+			this.button8.BackColor = System.Drawing.Color.Transparent;
+			this.button8.Name = "button8";
+			this.toolTip1.SetToolTip(this.button8, resources.GetString("button8.ToolTip"));
 			this.button8.UseVisualStyleBackColor = false;
 			this.button8.Click += new System.EventHandler(this.button8_Click);
 			//
 			// button7
-			// 
-			// tbscale
-			// 
+			//
+			resources.ApplyResources(this.button7, "button7");
+			this.button7.BackColor = System.Drawing.Color.Transparent;
 			this.button7.Name = "button7";
 			this.toolTip1.SetToolTip(this.button7, resources.GetString("button7.ToolTip"));
 			this.button7.UseVisualStyleBackColor = false;
-			// 
-			// button8
-			// 
+			this.button7.Click += new System.EventHandler(this.ResetLayoutClick);
+			//
+			// panel1
 			//
 			this.panel1.BackColor = System.Drawing.Color.Transparent;
 			resources.ApplyResources(this.panel1, "panel1");
 			this.panel1.Name = "panel1";
 			this.toolTip1.SetToolTip(this.panel1, resources.GetString("panel1.ToolTip"));
 			//
-			// 
-			// button7
-			// 
+			// cbBigIcons
+			//
+			resources.ApplyResources(this.cbBigIcons, "cbBigIcons");
 			this.cbBigIcons.Name = "cbBigIcons";
 			this.toolTip1.SetToolTip(this.cbBigIcons, resources.GetString("cbBigIcons.ToolTip"));
 			this.cbBigIcons.UseVisualStyleBackColor = true;
 			this.cbBigIcons.CheckedChanged += new System.EventHandler(this.cbBigIcons_CheckedChanged);
 			//
 			// tbUserid
-			// 
-			// panel1
-			// 
+			//
+			resources.ApplyResources(this.tbUserid, "tbUserid");
+			this.tbUserid.Name = "tbUserid";
 			this.toolTip1.SetToolTip(this.tbUserid, resources.GetString("tbUserid.ToolTip"));
 			//
 			// label7
 			//
-			// 
-			// cbBigIcons
-			// 
+			resources.ApplyResources(this.label7, "label7");
+			this.label7.Name = "label7";
+			this.toolTip1.SetToolTip(this.label7, resources.GetString("label7.ToolTip"));
 			//
 			// cbautostore
 			//
 			resources.ApplyResources(this.cbautostore, "cbautostore");
 			this.cbautostore.BackColor = System.Drawing.Color.Transparent;
-			// 
-			// tbUserid
-			// 
+			this.cbautostore.Name = "cbautostore";
+			this.cbautostore.UseVisualStyleBackColor = false;
+			this.cbautostore.CheckedChanged += new System.EventHandler(this.cbautostore_CheckedChanged);
 			//
 			// cbLock
 			//
-			// 
-			// label7
-			// 
+			resources.ApplyResources(this.cbLock, "cbLock");
+			this.cbLock.Name = "cbLock";
+			this.cbLock.CheckedChanged += new System.EventHandler(this.cbLock_CheckedChanged);
 			//
 			// cbsplash
 			//
-			// 
-			// cbautostore
-			// 
+			resources.ApplyResources(this.cbsplash, "cbsplash");
+			this.cbsplash.Name = "cbsplash";
+			//
 			// lldds2
 			//
 			this.lldds2.BackColor = System.Drawing.Color.Transparent;
 			resources.ApplyResources(this.lldds2, "lldds2");
 			this.lldds2.ForeColor = System.Drawing.Color.Gray;
-			// 
-			// cbLock
-			// 
+			this.lldds2.LinkColor = System.Drawing.Color.Red;
+			this.lldds2.Name = "lldds2";
+			this.lldds2.TabStop = true;
 			this.lldds2.UseCompatibleTextRendering = true;
 			this.lldds2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LoadDDS);
 			//
-			// 
-			// cbsplash
-			// 
+			// lldds
+			//
+			this.lldds.BackColor = System.Drawing.Color.Transparent;
 			resources.ApplyResources(this.lldds, "lldds");
 			this.lldds.ForeColor = System.Drawing.Color.Gray;
-			// 
-			// lldds2
-			// 
+			this.lldds.Name = "lldds";
+			//
+			// groupBox3
 			//
 			this.groupBox3.BackColor = System.Drawing.Color.Transparent;
 			this.groupBox3.Controls.Add(this.cbtrimname);
@@ -508,16 +508,16 @@ namespace SimPe
 			this.groupBox3.Controls.Add(this.cbshowobjd);
 			this.groupBox3.Controls.Add(this.label8);
 			this.groupBox3.Controls.Add(this.tbthumb);
-			// 
-			// lldds
-			// 
+			resources.ApplyResources(this.groupBox3, "groupBox3");
+			this.groupBox3.Name = "groupBox3";
+			this.groupBox3.TabStop = false;
 			//
 			// cbow
 			//
 			resources.ApplyResources(this.cbow, "cbow");
-			// 
-			// groupBox3
-			// 
+			this.cbow.Name = "cbow";
+			//
+			// cbshowobjd
 			//
 			resources.ApplyResources(this.cbshowobjd, "cbshowobjd");
 			this.cbshowobjd.Name = "cbshowobjd";
@@ -528,32 +528,32 @@ namespace SimPe
 			this.label8.Name = "label8";
 			//
 			// button6
-			// 
-			// cbow
-			// 
+			//
+			resources.ApplyResources(this.button6, "button6");
+			this.button6.BackColor = System.Drawing.Color.Transparent;
 			this.button6.Name = "button6";
 			this.button6.UseVisualStyleBackColor = false;
-			// 
-			// cbshowobjd
-			// 
+			this.button6.Click += new System.EventHandler(this.ClearCaches);
+			//
+			// groupBox2
 			//
 			this.groupBox2.BackColor = System.Drawing.Color.Transparent;
-			// 
-			// label8
-			// 
+			this.groupBox2.Controls.Add(this.cbautostore);
+			this.groupBox2.Controls.Add(this.cbBigIcons);
+			this.groupBox2.Controls.Add(this.cbsplash);
 			this.groupBox2.Controls.Add(this.cbLock);
 			this.groupBox2.Controls.Add(this.cbReport);
-			// 
-			// button6
-			// 
+			this.groupBox2.Controls.Add(this.label9);
+			this.groupBox2.Controls.Add(this.cbpkgmaint);
+			this.groupBox2.Controls.Add(this.cbhidden);
 			this.groupBox2.Controls.Add(this.label4);
 			this.groupBox2.Controls.Add(this.cbautobak);
 			this.groupBox2.Controls.Add(this.cbcache);
 			this.groupBox2.Controls.Add(this.cblang);
 			this.groupBox2.Controls.Add(this.cbsilent);
-			// 
-			// groupBox2
-			// 
+			this.groupBox2.Controls.Add(this.cbwait);
+			resources.ApplyResources(this.groupBox2, "groupBox2");
+			this.groupBox2.Name = "groupBox2";
 			this.groupBox2.TabStop = false;
 			//
 			// cbReport
@@ -572,68 +572,68 @@ namespace SimPe
 			resources.ApplyResources(this.cbpkgmaint, "cbpkgmaint");
 			this.cbpkgmaint.Name = "cbpkgmaint";
 			//
-			// 
-			// cbReport
-			// 
+			// label4
+			//
+			resources.ApplyResources(this.label4, "label4");
 			this.label4.Name = "label4";
 			//
 			// cbautobak
-			// 
-			// label9
-			// 
+			//
+			resources.ApplyResources(this.cbautobak, "cbautobak");
+			this.cbautobak.Name = "cbautobak";
 			this.cbautobak.CheckedChanged += new System.EventHandler(this.cbautobak_CheckedChanged);
 			//
-			// 
-			// cbpkgmaint
-			// 
+			// cbcache
+			//
+			resources.ApplyResources(this.cbcache, "cbcache");
 			this.cbcache.Name = "cbcache";
 			//
-			// 
-			// label4
-			// 
+			// cblang
+			//
+			resources.ApplyResources(this.cblang, "cblang");
 			this.cblang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cblang.Name = "cblang";
-			// 
-			// cbautobak
-			// 
+			//
+			// cbsilent
+			//
 			resources.ApplyResources(this.cbsilent, "cbsilent");
 			this.cbsilent.Name = "cbsilent";
 			//
-			// 
-			// cbcache
-			// 
+			// cbwait
+			//
+			resources.ApplyResources(this.cbwait, "cbwait");
 			this.cbwait.Name = "cbwait";
 			//
-			// 
-			// cblang
-			// 
+			// cbSimple
+			//
+			resources.ApplyResources(this.cbSimple, "cbSimple");
 			this.cbSimple.Name = "cbSimple";
 			//
 			// cbmulti
-			// 
-			// cbsilent
-			// 
+			//
+			resources.ApplyResources(this.cbmulti, "cbmulti");
+			this.cbmulti.Name = "cbmulti";
 			this.cbmulti.CheckedChanged += new System.EventHandler(this.cbmulti_CheckedChanged);
 			//
-			// 
-			// cbwait
-			// 
+			// groupBox1
+			//
+			resources.ApplyResources(this.groupBox1, "groupBox1");
 			this.groupBox1.BackColor = System.Drawing.Color.Transparent;
 			this.groupBox1.Controls.Add(this.cbdebug);
-			// 
-			// cbSimple
-			// 
+			this.groupBox1.Controls.Add(this.cbblur);
+			this.groupBox1.Controls.Add(this.cbsound);
+			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.TabStop = false;
 			//
-			// 
-			// cbmulti
-			// 
+			// lladddown
+			//
+			resources.ApplyResources(this.lladddown, "lladddown");
 			this.lladddown.Name = "lladddown";
 			this.lladddown.TabStop = true;
 			this.lladddown.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lladddown_LinkClicked);
-			// 
-			// groupBox1
-			// 
+			//
+			// lldel
+			//
 			resources.ApplyResources(this.lldel, "lldel");
 			this.lldel.Name = "lldel";
 			this.lldel.TabStop = true;
@@ -641,32 +641,32 @@ namespace SimPe
 			this.lldel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lldel_LinkClicked);
 			//
 			// lladd
-			// 
-			// lladddown
-			// 
+			//
+			resources.ApplyResources(this.lladd, "lladd");
+			this.lladd.Name = "lladd";
 			this.lladd.TabStop = true;
 			this.lladd.UseCompatibleTextRendering = true;
 			this.lladd.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lladd_LinkClicked);
 			//
-			// 
-			// lldel
-			// 
+			// groupBox4
+			//
+			resources.ApplyResources(this.groupBox4, "groupBox4");
 			this.groupBox4.BackColor = System.Drawing.Color.Transparent;
 			this.groupBox4.Controls.Add(this.label10);
 			this.groupBox4.Controls.Add(this.tbscale);
 			this.groupBox4.Controls.Add(this.cbjointname);
 			this.groupBox4.Name = "groupBox4";
-			// 
-			// lladd
-			// 
+			this.groupBox4.TabStop = false;
+			//
+			// label10
 			//
 			resources.ApplyResources(this.label10, "label10");
 			this.label10.Name = "label10";
 			//
 			// cbjointname
-			// 
-			// groupBox4
-			// 
+			//
+			resources.ApplyResources(this.cbjointname, "cbjointname");
+			this.cbjointname.Name = "cbjointname";
 			//
 			// hcFolders
 			//
@@ -674,39 +674,39 @@ namespace SimPe
 			this.hcFolders.Controls.Add(this.pgPaths);
 			resources.ApplyResources(this.hcFolders, "hcFolders");
 			this.hcFolders.Name = "hcFolders";
-			// 
-			// label10
-			// 
+			//
+			// hdFolders
+			//
 			resources.ApplyResources(this.hdFolders, "hdFolders");
 			this.hdFolders.Name = "hdFolders";
-			// 
-			// cbjointname
-			// 
+			//
+			// pgPaths
+			//
 			this.pgPaths.CommandsBackColor = System.Drawing.SystemColors.Window;
 			resources.ApplyResources(this.pgPaths, "pgPaths");
-			// 
-			// hcFolders
-			// 
+			this.pgPaths.LineColor = System.Drawing.SystemColors.ScrollBar;
+			this.pgPaths.Name = "pgPaths";
+			this.pgPaths.ToolbarVisible = false;
 			//
 			// hcSettings
 			//
 			this.hcSettings.Controls.Add(this.lbBigIconNote);
-			// 
-			// hdFolders
-			// 
+			this.hcSettings.Controls.Add(this.hdSettings);
+			this.hcSettings.Controls.Add(this.button8);
+			this.hcSettings.Controls.Add(this.groupBox6);
 			this.hcSettings.Controls.Add(this.groupBox5);
 			this.hcSettings.Controls.Add(this.button6);
-			// 
-			// pgPaths
-			// 
+			this.hcSettings.Controls.Add(this.groupBox2);
+			this.hcSettings.Controls.Add(this.groupBox1);
+			this.hcSettings.Controls.Add(this.groupBox3);
 			this.hcSettings.Controls.Add(this.button7);
 			this.hcSettings.Controls.Add(this.button4);
 			this.hcSettings.Controls.Add(this.tbdds);
 			this.hcSettings.Controls.Add(this.label5);
 			this.hcSettings.Controls.Add(this.lldds2);
-			// 
-			// hcSettings
-			// 
+			this.hcSettings.Controls.Add(this.lldds);
+			resources.ApplyResources(this.hcSettings, "hcSettings");
+			this.hcSettings.Name = "hcSettings";
 			//
 			// lbBigIconNote
 			//
@@ -724,19 +724,19 @@ namespace SimPe
 			this.groupBox6.BackColor = System.Drawing.Color.Transparent;
 			this.groupBox6.Controls.Add(this.cbFirefox);
 			this.groupBox6.Controls.Add(this.cbSimple);
-			// 
-			// lbBigIconNote
-			// 
+			this.groupBox6.Controls.Add(this.cbmulti);
+			this.groupBox6.Name = "groupBox6";
+			this.groupBox6.TabStop = false;
 			//
 			// cbFirefox
-			// 
-			// hdSettings
-			// 
+			//
+			resources.ApplyResources(this.cbFirefox, "cbFirefox");
+			this.cbFirefox.Name = "cbFirefox";
 			//
 			// groupBox5
-			// 
-			// groupBox6
-			// 
+			//
+			resources.ApplyResources(this.groupBox5, "groupBox5");
+			this.groupBox5.BackColor = System.Drawing.Color.Transparent;
 			this.groupBox5.Controls.Add(this.cbexthemes);
 			this.groupBox5.Controls.Add(this.cbThemes);
 			this.groupBox5.Name = "groupBox5";
@@ -744,37 +744,37 @@ namespace SimPe
 			//
 			// cbexthemes
 			//
-			// 
-			// cbFirefox
-			// 
+			resources.ApplyResources(this.cbexthemes, "cbexthemes");
+			this.cbexthemes.Name = "cbexthemes";
+			this.cbexthemes.UseVisualStyleBackColor = true;
 			this.cbexthemes.CheckedChanged += new System.EventHandler(this.cbexthemes_CheckedChanged);
 			//
-			// 
-			// groupBox5
-			// 
+			// cbThemes
+			//
+			resources.ApplyResources(this.cbThemes, "cbThemes");
 			this.cbThemes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbThemes.Name = "cbThemes";
 			this.cbThemes.SelectedIndexChanged += new System.EventHandler(this.ChangedThemeHandler);
 			//
 			// hcTools
 			//
-			// 
-			// cbexthemes
-			// 
+			this.hcTools.Controls.Add(this.hdTools);
+			this.hcTools.Controls.Add(this.lbext);
+			this.hcTools.Controls.Add(this.linkLabel1);
 			this.hcTools.Controls.Add(this.linkLabel2);
 			this.hcTools.Controls.Add(this.label1);
 			resources.ApplyResources(this.hcTools, "hcTools");
 			this.hcTools.Name = "hcTools";
-			// 
-			// cbThemes
-			// 
+			//
+			// hdTools
+			//
 			resources.ApplyResources(this.hdTools, "hdTools");
 			this.hdTools.Name = "hdTools";
 			//
 			// hcFileTable
-			// 
-			// hcTools
-			// 
+			//
+			this.hcFileTable.Controls.Add(this.hdFileTable);
+			this.hcFileTable.Controls.Add(this.btevryfing);
 			this.hcFileTable.Controls.Add(this.btNuffing);
 			this.hcFileTable.Controls.Add(this.groupBox8);
 			this.hcFileTable.Controls.Add(this.groupBox9);
@@ -782,14 +782,14 @@ namespace SimPe
 			this.hcFileTable.Name = "hcFileTable";
 			//
 			// hdFileTable
-			// 
-			// hdTools
-			// 
+			//
+			this.hdFileTable.Controls.Add(this.btReload);
+			resources.ApplyResources(this.hdFileTable, "hdFileTable");
 			this.hdFileTable.Name = "hdFileTable";
 			//
-			// 
-			// hcFileTable
-			// 
+			// btReload
+			//
+			this.btReload.BackColor = System.Drawing.Color.Transparent;
 			resources.ApplyResources(this.btReload, "btReload");
 			this.btReload.Name = "btReload";
 			this.btReload.UseVisualStyleBackColor = false;
@@ -797,55 +797,55 @@ namespace SimPe
 			//
 			// btevryfing
 			//
-			// 
-			// hdFileTable
-			// 
+			this.btevryfing.BackColor = System.Drawing.Color.Transparent;
+			this.btevryfing.ForeColor = System.Drawing.Color.DarkBlue;
+			resources.ApplyResources(this.btevryfing, "btevryfing");
 			this.btevryfing.Name = "btevryfing";
 			this.btevryfing.UseVisualStyleBackColor = false;
 			this.btevryfing.Click += new System.EventHandler(this.btevryfing_Click);
-			// 
-			// btReload
-			// 
+			//
+			// btNuffing
+			//
 			this.btNuffing.BackColor = System.Drawing.Color.Transparent;
 			resources.ApplyResources(this.btNuffing, "btNuffing");
 			this.btNuffing.ForeColor = System.Drawing.Color.DarkBlue;
 			this.btNuffing.Name = "btNuffing";
 			this.btNuffing.UseVisualStyleBackColor = false;
-			// 
-			// btevryfing
-			// 
+			this.btNuffing.Click += new System.EventHandler(this.btNuffing_Click);
+			//
+			// groupBox8
 			//
 			this.groupBox8.BackColor = System.Drawing.Color.Transparent;
 			this.groupBox8.Controls.Add(this.cbIncCep);
 			resources.ApplyResources(this.groupBox8, "groupBox8");
 			this.groupBox8.Name = "groupBox8";
 			this.groupBox8.TabStop = false;
-			// 
-			// btNuffing
-			// 
+			//
+			// cbIncCep
+			//
 			resources.ApplyResources(this.cbIncCep, "cbIncCep");
 			this.cbIncCep.Name = "cbIncCep";
 			this.cbIncCep.CheckedChanged += new System.EventHandler(this.cbIncNightlife_CheckedChanged);
 			//
 			// groupBox9
 			//
-			// 
-			// groupBox8
-			// 
+			this.groupBox9.BackColor = System.Drawing.Color.Transparent;
+			this.groupBox9.Controls.Add(this.lbAboot);
+			this.groupBox9.Controls.Add(this.linkLabel6);
 			this.groupBox9.Controls.Add(this.lldel);
 			this.groupBox9.Controls.Add(this.lladddown);
 			this.groupBox9.Controls.Add(this.lbfolder);
 			this.groupBox9.Controls.Add(this.llchg);
 			this.groupBox9.Controls.Add(this.lladd);
-			// 
-			// cbIncCep
-			// 
+			resources.ApplyResources(this.groupBox9, "groupBox9");
+			this.groupBox9.Name = "groupBox9";
+			this.groupBox9.TabStop = false;
 			//
 			// lbAboot
 			//
-			// 
-			// groupBox9
-			// 
+			resources.ApplyResources(this.lbAboot, "lbAboot");
+			this.lbAboot.LinkColor = System.Drawing.Color.DarkBlue;
+			this.lbAboot.Name = "lbAboot";
 			this.lbAboot.TabStop = true;
 			this.lbAboot.UseCompatibleTextRendering = true;
 			this.lbAboot.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbAboot_LinkClicked);
@@ -857,42 +857,42 @@ namespace SimPe
 			this.linkLabel6.TabStop = true;
 			this.linkLabel6.UseCompatibleTextRendering = true;
 			this.linkLabel6.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel6_LinkClicked);
-			// 
-			// lbAboot
-			// 
+			//
+			// lbfolder
+			//
 			resources.ApplyResources(this.lbfolder, "lbfolder");
 			this.lbfolder.CheckOnClick = true;
 			this.lbfolder.Name = "lbfolder";
 			this.lbfolder.SelectedIndexChanged += new System.EventHandler(this.lbfolder_SelectedIndexChanged);
 			this.lbfolder.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.lbfolder_ItemCheck);
 			//
-			// 
-			// linkLabel6
-			// 
+			// llchg
+			//
+			resources.ApplyResources(this.llchg, "llchg");
 			this.llchg.Name = "llchg";
 			this.llchg.TabStop = true;
 			this.llchg.UseCompatibleTextRendering = true;
 			this.llchg.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llchg_LinkClicked);
 			//
-			// 
-			// lbfolder
-			// 
+			// hcSceneGraph
+			//
+			this.hcSceneGraph.Controls.Add(this.groupBox11);
 			this.hcSceneGraph.Controls.Add(this.hdSceneGraph);
 			this.hcSceneGraph.Controls.Add(this.groupBox10);
 			this.hcSceneGraph.Controls.Add(this.groupBox7);
 			this.hcSceneGraph.Controls.Add(this.groupBox4);
 			resources.ApplyResources(this.hcSceneGraph, "hcSceneGraph");
-			// 
-			// llchg
-			// 
+			this.hcSceneGraph.Name = "hcSceneGraph";
+			//
+			// groupBox11
 			//
 			this.groupBox11.Controls.Add(this.cbmoreskills);
 			this.groupBox11.Controls.Add(this.cbpetability);
 			resources.ApplyResources(this.groupBox11, "groupBox11");
 			this.groupBox11.Name = "groupBox11";
-			// 
-			// hcSceneGraph
-			// 
+			this.groupBox11.TabStop = false;
+			//
+			// cbpetability
 			//
 			resources.ApplyResources(this.cbpetability, "cbpetability");
 			this.cbpetability.Name = "cbpetability";
@@ -900,36 +900,36 @@ namespace SimPe
 			this.cbpetability.CheckedChanged += new System.EventHandler(this.cbpetability_CheckedChanged);
 			//
 			// cbmoreskills
-			// 
-			// groupBox11
-			// 
+			//
+			resources.ApplyResources(this.cbmoreskills, "cbmoreskills");
+			this.cbmoreskills.Name = "cbmoreskills";
 			this.cbmoreskills.UseVisualStyleBackColor = true;
 			this.cbmoreskills.CheckedChanged += new System.EventHandler(this.cbmoreskills_CheckedChanged);
 			//
 			// hdSceneGraph
 			//
-			// 
-			// cbpetability
-			// 
+			resources.ApplyResources(this.hdSceneGraph, "hdSceneGraph");
+			this.hdSceneGraph.Name = "hdSceneGraph";
+			//
 			// groupBox10
 			//
 			resources.ApplyResources(this.groupBox10, "groupBox10");
 			this.groupBox10.BackColor = System.Drawing.Color.Transparent;
-			// 
-			// cbmoreskills
-			// 
+			this.groupBox10.Controls.Add(this.cbAsyncSort);
+			this.groupBox10.Controls.Add(this.cbRLExt);
+			this.groupBox10.Controls.Add(this.cbAsync);
 			this.groupBox10.Controls.Add(this.label17);
 			this.groupBox10.Controls.Add(this.cbRLTGI);
 			this.groupBox10.Controls.Add(this.label16);
 			this.groupBox10.Controls.Add(this.cbRLNames);
-			// 
-			// hdSceneGraph
-			// 
+			this.groupBox10.Controls.Add(this.label15);
+			this.groupBox10.Name = "groupBox10";
+			this.groupBox10.TabStop = false;
 			//
 			// cbAsyncSort
-			// 
-			// groupBox10
-			// 
+			//
+			resources.ApplyResources(this.cbAsyncSort, "cbAsyncSort");
+			this.cbAsyncSort.Name = "cbAsyncSort";
 			//
 			// cbRLExt
 			//
@@ -942,67 +942,67 @@ namespace SimPe
 			resources.ApplyResources(this.label17, "label17");
 			this.label17.Name = "label17";
 			//
-			// 
-			// cbAsyncSort
-			// 
+			// cbRLTGI
+			//
+			this.cbRLTGI.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			resources.ApplyResources(this.cbRLTGI, "cbRLTGI");
 			this.cbRLTGI.Name = "cbRLTGI";
-			// 
-			// cbRLExt
-			// 
+			//
+			// label16
+			//
 			resources.ApplyResources(this.label16, "label16");
 			this.label16.Name = "label16";
 			//
-			// 
-			// label17
-			// 
+			// cbRLNames
+			//
+			this.cbRLNames.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			resources.ApplyResources(this.cbRLNames, "cbRLNames");
 			this.cbRLNames.Name = "cbRLNames";
-			// 
-			// cbRLTGI
-			// 
+			//
+			// label15
+			//
 			resources.ApplyResources(this.label15, "label15");
 			this.label15.Name = "label15";
 			//
-			// 
-			// label16
-			// 
+			// groupBox7
+			//
+			resources.ApplyResources(this.groupBox7, "groupBox7");
 			this.groupBox7.BackColor = System.Drawing.Color.Transparent;
 			this.groupBox7.Controls.Add(this.cbSimTemp);
-			// 
-			// cbRLNames
-			// 
+			this.groupBox7.Controls.Add(this.cbDeep);
+			this.groupBox7.Name = "groupBox7";
+			this.groupBox7.TabStop = false;
 			//
 			// cbSimTemp
 			//
-			// 
-			// label15
-			// 
+			resources.ApplyResources(this.cbSimTemp, "cbSimTemp");
+			this.cbSimTemp.Name = "cbSimTemp";
+			//
 			// cbDeep
 			//
-			// 
-			// groupBox7
-			// 
+			resources.ApplyResources(this.cbDeep, "cbDeep");
+			this.cbDeep.Name = "cbDeep";
+			this.cbDeep.CheckedChanged += new System.EventHandler(this.cbDeep_CheckedChanged);
 			//
 			// hcPlugins
 			//
 			this.hcPlugins.BackColor = System.Drawing.Color.Transparent;
 			this.hcPlugins.Controls.Add(this.btpup);
 			this.hcPlugins.Controls.Add(this.btpdown);
-			// 
-			// cbSimTemp
-			// 
+			this.hcPlugins.Controls.Add(this.cnt);
+			this.hcPlugins.Controls.Add(this.hdPlugins);
+			resources.ApplyResources(this.hcPlugins, "hcPlugins");
 			this.hcPlugins.Name = "hcPlugins";
 			//
-			// 
-			// cbDeep
-			// 
+			// btpup
+			//
+			resources.ApplyResources(this.btpup, "btpup");
 			this.btpup.BackColor = System.Drawing.Color.Transparent;
 			this.btpup.Name = "btpup";
 			this.btpup.UseVisualStyleBackColor = false;
-			// 
-			// hcPlugins
-			// 
+			this.btpup.Click += new System.EventHandler(this.btpup_Click);
+			//
+			// btpdown
 			//
 			resources.ApplyResources(this.btpdown, "btpdown");
 			this.btpdown.BackColor = System.Drawing.Color.Transparent;
@@ -1010,36 +1010,36 @@ namespace SimPe
 			this.btpdown.UseVisualStyleBackColor = false;
 			this.btpdown.Click += new System.EventHandler(this.btpdown_Click);
 			//
-			// 
-			// btpup
-			// 
+			// cnt
+			//
+			resources.ApplyResources(this.cnt, "cnt");
 			this.cnt.BackColor = System.Drawing.Color.Transparent;
 			this.cnt.Name = "cnt";
 			//
 			// hdPlugins
 			//
-			// 
-			// btpdown
-			// 
+			resources.ApplyResources(this.hdPlugins, "hdPlugins");
+			this.hdPlugins.Name = "hdPlugins";
+			//
 			// hcIdent
 			//
 			this.hcIdent.Controls.Add(this.hdIdent);
 			this.hcIdent.Controls.Add(this.btcreateid);
 			this.hcIdent.Controls.Add(this.tbUserid);
-			// 
-			// cnt
-			// 
+			this.hcIdent.Controls.Add(this.label7);
+			this.hcIdent.Controls.Add(this.tbPassword);
+			this.hcIdent.Controls.Add(this.label12);
 			this.hcIdent.Controls.Add(this.tbUsername);
 			this.hcIdent.Controls.Add(this.label11);
 			resources.ApplyResources(this.hcIdent, "hcIdent");
-			// 
-			// hdPlugins
-			// 
+			this.hcIdent.Name = "hcIdent";
+			//
+			// hdIdent
 			//
 			resources.ApplyResources(this.hdIdent, "hdIdent");
-			// 
-			// hcIdent
-			// 
+			this.hdIdent.Name = "hdIdent";
+			//
+			// btcreateid
 			//
 			resources.ApplyResources(this.btcreateid, "btcreateid");
 			this.btcreateid.Name = "btcreateid";
@@ -1050,97 +1050,97 @@ namespace SimPe
 			//
 			resources.ApplyResources(this.tbPassword, "tbPassword");
 			this.tbPassword.Name = "tbPassword";
-			// 
-			// hdIdent
-			// 
+			this.tbPassword.Leave += new System.EventHandler(this.tbPassword_Leave);
+			//
+			// label12
 			//
 			this.label12.BackColor = System.Drawing.Color.Transparent;
-			// 
-			// btcreateid
-			// 
+			resources.ApplyResources(this.label12, "label12");
+			this.label12.Name = "label12";
+			//
 			// tbUsername
 			//
 			resources.ApplyResources(this.tbUsername, "tbUsername");
 			this.tbUsername.Name = "tbUsername";
-			// 
-			// tbPassword
-			// 
+			this.tbUsername.Leave += new System.EventHandler(this.tbPassword_Leave);
+			//
+			// label11
 			//
 			this.label11.BackColor = System.Drawing.Color.Transparent;
 			resources.ApplyResources(this.label11, "label11");
-			// 
-			// label12
-			// 
+			this.label11.Name = "label11";
+			//
+			// hcCheck
 			//
 			this.hcCheck.Controls.Add(this.infocheck1);
 			this.hcCheck.Controls.Add(this.hdCheck);
-			// 
-			// tbUsername
-			// 
+			this.hcCheck.Controls.Add(this.checkControl1);
+			resources.ApplyResources(this.hcCheck, "hcCheck");
+			this.hcCheck.Name = "hcCheck";
 			//
 			// infocheck1
 			//
-			// 
-			// label11
-			// 
+			resources.ApplyResources(this.infocheck1, "infocheck1");
+			this.infocheck1.Name = "infocheck1";
+			//
 			// hdCheck
 			//
 			resources.ApplyResources(this.hdCheck, "hdCheck");
-			// 
-			// hcCheck
-			// 
+			this.hdCheck.Name = "hdCheck";
+			//
+			// checkControl1
 			//
 			this.checkControl1.BackColor = System.Drawing.Color.Transparent;
 			resources.ApplyResources(this.checkControl1, "checkControl1");
 			this.checkControl1.Name = "checkControl1";
 			this.checkControl1.FixedFileTable += new System.EventHandler(this.checkControl1_FixedFileTable);
-			// 
-			// infocheck1
-			// 
+			//
+			// hcCustom
+			//
 			this.hcCustom.Controls.Add(this.cbCustom);
 			this.hcCustom.Controls.Add(this.hdCustom);
-			// 
-			// hdCheck
-			// 
+			this.hcCustom.Controls.Add(this.pgcustom);
+			resources.ApplyResources(this.hcCustom, "hcCustom");
+			this.hcCustom.Name = "hcCustom";
 			//
 			// cbCustom
-			// 
-			// checkControl1
-			// 
+			//
+			resources.ApplyResources(this.cbCustom, "cbCustom");
+			this.cbCustom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbCustom.Name = "cbCustom";
 			this.cbCustom.SelectedIndexChanged += new System.EventHandler(this.cbCustom_SelectedIndexChanged);
 			//
 			// hdCustom
-			// 
-			// hcCustom
-			// 
+			//
+			resources.ApplyResources(this.hdCustom, "hdCustom");
+			this.hdCustom.Name = "hdCustom";
 			//
 			// pgcustom
 			//
 			resources.ApplyResources(this.pgcustom, "pgcustom");
 			this.pgcustom.CommandsBackColor = System.Drawing.SystemColors.Window;
-			// 
-			// cbCustom
-			// 
+			this.pgcustom.LineColor = System.Drawing.SystemColors.ScrollBar;
+			this.pgcustom.Name = "pgcustom";
+			//
 			// ThemPanel
 			//
 			resources.ApplyResources(this.ThemPanel, "ThemPanel");
 			this.ThemPanel.BackColor = System.Drawing.Color.Transparent;
-			// 
-			// hdCustom
-			// 
+			this.ThemPanel.Controls.Add(this.toolBar1);
+			this.ThemPanel.Controls.Add(this.button1);
+			this.ThemPanel.Controls.Add(this.hcFolders);
 			this.ThemPanel.Controls.Add(this.panel1);
 			this.ThemPanel.Controls.Add(this.hcFileTable);
-			// 
-			// pgcustom
-			// 
+			this.ThemPanel.Controls.Add(this.hcCheck);
+			this.ThemPanel.Controls.Add(this.hcSettings);
+			this.ThemPanel.Controls.Add(this.hcSceneGraph);
 			this.ThemPanel.Controls.Add(this.hcCustom);
 			this.ThemPanel.Controls.Add(this.hcPlugins);
 			this.ThemPanel.Controls.Add(this.hcTools);
 			this.ThemPanel.Controls.Add(this.hcIdent);
-			// 
-			// ThemPanel
-			// 
+			this.ThemPanel.Name = "ThemPanel";
+			//
+			// toolBar1
 			//
 			resources.ApplyResources(this.toolBar1, "toolBar1");
 			this.toolBar1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
@@ -1156,9 +1156,9 @@ namespace SimPe
 			this.tbTools,
 			this.tbIdent});
 			this.toolBar1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
-			// 
-			// toolBar1
-			// 
+			this.toolBar1.MaximumSize = new System.Drawing.Size(101, 0);
+			this.toolBar1.Name = "toolBar1";
+			//
 			// tbFolders
 			//
 			this.tbFolders.Checked = true;
@@ -1175,86 +1175,86 @@ namespace SimPe
 			this.tbFileTable.Name = "tbFileTable";
 			this.tbFileTable.Click += new System.EventHandler(this.ChoosePage);
 			//
-			// 
-			// tbFolders
-			// 
+			// tbCheck
+			//
+			resources.ApplyResources(this.tbCheck, "tbCheck");
 			this.tbCheck.Margin = new System.Windows.Forms.Padding(0, 2, 0, 4);
 			this.tbCheck.Name = "tbCheck";
 			this.tbCheck.Click += new System.EventHandler(this.ChoosePage);
 			//
 			// tbSettings
 			//
-			// 
-			// tbFileTable
-			// 
+			resources.ApplyResources(this.tbSettings, "tbSettings");
+			this.tbSettings.Margin = new System.Windows.Forms.Padding(0, 2, 0, 4);
+			this.tbSettings.Name = "tbSettings";
 			this.tbSettings.Click += new System.EventHandler(this.ChoosePage);
 			//
 			// tbCustom
 			//
-			// 
-			// tbCheck
-			// 
+			resources.ApplyResources(this.tbCustom, "tbCustom");
+			this.tbCustom.Margin = new System.Windows.Forms.Padding(0, 2, 0, 4);
+			this.tbCustom.Name = "tbCustom";
 			this.tbCustom.Click += new System.EventHandler(this.ChoosePage);
 			//
 			// tbSceneGraph
 			//
-			// 
-			// tbSettings
-			// 
+			resources.ApplyResources(this.tbSceneGraph, "tbSceneGraph");
+			this.tbSceneGraph.Margin = new System.Windows.Forms.Padding(0, 2, 0, 4);
+			this.tbSceneGraph.Name = "tbSceneGraph";
 			this.tbSceneGraph.Click += new System.EventHandler(this.ChoosePage);
 			//
 			// tbPlugins
 			//
-			// 
-			// tbCustom
-			// 
+			resources.ApplyResources(this.tbPlugins, "tbPlugins");
+			this.tbPlugins.Margin = new System.Windows.Forms.Padding(0, 2, 0, 4);
+			this.tbPlugins.Name = "tbPlugins";
 			this.tbPlugins.Click += new System.EventHandler(this.ChoosePage);
 			//
 			// tbTools
 			//
-			// 
-			// tbSceneGraph
-			// 
+			resources.ApplyResources(this.tbTools, "tbTools");
+			this.tbTools.Margin = new System.Windows.Forms.Padding(0, 2, 0, 4);
+			this.tbTools.Name = "tbTools";
 			this.tbTools.Click += new System.EventHandler(this.ChoosePage);
 			//
 			// tbIdent
 			//
-			// 
-			// tbPlugins
-			// 
+			resources.ApplyResources(this.tbIdent, "tbIdent");
+			this.tbIdent.Margin = new System.Windows.Forms.Padding(0, 2, 0, 4);
+			this.tbIdent.Name = "tbIdent";
 			this.tbIdent.Click += new System.EventHandler(this.ChoosePage);
 			//
 			// cbtrimname
 			//
-			// 
-			// tbTools
-			// 
+			resources.ApplyResources(this.cbtrimname, "cbtrimname");
+			this.cbtrimname.Name = "cbtrimname";
+			this.cbtrimname.CheckedChanged += new System.EventHandler(this.cbtrimname_CheckedChanged);
 			//
 			// cbshowalls
 			//
 			resources.ApplyResources(this.cbshowalls, "cbshowalls");
-			// 
-			// tbIdent
-			// 
+			this.cbshowalls.Name = "cbshowalls";
+			this.cbshowalls.CheckedChanged += new System.EventHandler(this.cbshowalls_CheckedChanged);
+			//
 			// OptionForm
 			//
 			resources.ApplyResources(this, "$this");
 			this.BackColor = System.Drawing.SystemColors.Window;
-			// 
-			// cbtrimname
-			// 
+			this.Controls.Add(this.ThemPanel);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "OptionForm";
 			this.groupBox3.ResumeLayout(false);
-			// 
-			// cbshowalls
-			// 
+			this.groupBox3.PerformLayout();
+			this.groupBox2.ResumeLayout(false);
+			this.groupBox2.PerformLayout();
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox4.ResumeLayout(false);
 			this.groupBox4.PerformLayout();
-			// 
-			// OptionForm
-			// 
+			this.hcFolders.ResumeLayout(false);
+			this.hcSettings.ResumeLayout(false);
+			this.hcSettings.PerformLayout();
 			this.groupBox6.ResumeLayout(false);
 			this.groupBox5.ResumeLayout(false);
 			this.groupBox5.PerformLayout();
@@ -1282,9 +1282,8 @@ namespace SimPe
 			this.toolBar1.ResumeLayout(false);
 			this.toolBar1.PerformLayout();
 			this.ResumeLayout(false);
-			
-			
-			region
-			
-			
-			
+
+		}
+		#endregion
+	}
+}

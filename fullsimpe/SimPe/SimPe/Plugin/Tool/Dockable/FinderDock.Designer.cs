@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: © 2005 Ambertation and SimPE contributors
+// SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
@@ -10,66 +10,66 @@ using Ambertation.Windows.Forms;
 
 namespace SimPe.Plugin.Tool.Dockable
 {
-    partial class FinderDock
-    {
-
-        private SteepValley.Windows.Forms.XPGradientPanel xpGradientPanel1;
-        private System.Windows.Forms.Panel panel1;
-        private Ambertation.Windows.Forms.FlatComboBox cbTask;
-        private System.Windows.Forms.Label label1;
-        private Ambertation.Windows.Forms.XPTaskBoxSimple tbResult;
-        private SteepValley.Windows.Forms.XPCueBannerExtender xpCueBannerExtender1;
-        private SteepValley.Windows.Forms.XPListView lv;
-        private ToolStrip toolBar1;
-        private ToolStripButton biList;
-        private ToolStripButton biTile;
-        private ToolStripButton biDetail;
-        private System.Windows.Forms.Panel panel2;
-        private System.ComponentModel.IContainer components;
-
-	    /// <summary>
+	partial class FinderDock
 	{
 
-		protected override void Dispose(bool disposing)
-		{
-		    if (disposing)
-		    {
-		        if (tm != null) tm.Clear();
-		        tm = null;
-		
-		        if (components != null)
-		        {
-		            components.Dispose();
-		        }
-		    }
-		    base.Dispose(disposing);
-        }
-		/// <summary> 
+		private SteepValley.Windows.Forms.XPGradientPanel xpGradientPanel1;
+		private System.Windows.Forms.Panel panel1;
+		private Ambertation.Windows.Forms.FlatComboBox cbTask;
+		private System.Windows.Forms.Label label1;
+		private Ambertation.Windows.Forms.XPTaskBoxSimple tbResult;
+		private SteepValley.Windows.Forms.XPCueBannerExtender xpCueBannerExtender1;
+		private SteepValley.Windows.Forms.XPListView lv;
+		private ToolStrip toolBar1;
+		private ToolStripButton biList;
+		private ToolStripButton biTile;
+		private ToolStripButton biDetail;
+		private System.Windows.Forms.Panel panel2;
+		private System.ComponentModel.IContainer components;
+
+		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		/// Required method for Designer support - do not modify
+		protected override void Dispose(bool disposing)
 		{
-			</summary>
+			if (disposing)
 			{
-				
+				if (tm != null)
 					tm.Clear();
 				tm = null;
 
-				.xpGradientPanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
+				if (components != null)
 				{
-					= new SteepValley.Windows.Forms.XPListView(this.components);
+					components.Dispose();
 				}
 			}
-			this.cbTask = new Ambertation.Windows.Forms.FlatComboBox();
+			base.Dispose(disposing);
 		}
 
 		#region Component Designer generated code
-		/// <summary> 
-		/// Required method for Designer support - do not modify 
+		/// <summary>
+		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
-		    this.pnErr = new System.Windows.Forms.Label();
+		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FinderDock));
+			this.xpGradientPanel1 = new SteepValley.Windows.Forms.XPGradientPanel();
+			this.tbResult = new Ambertation.Windows.Forms.XPTaskBoxSimple();
+			this.lv = new SteepValley.Windows.Forms.XPListView(this.components);
+			this.pnContainer = new System.Windows.Forms.Panel();
+			this.panel1 = new System.Windows.Forms.Panel();
+			this.cbTask = new Ambertation.Windows.Forms.FlatComboBox();
+			this.label1 = new System.Windows.Forms.Label();
+			this.toolBar1 = new System.Windows.Forms.ToolStrip();
+			this.biList = new System.Windows.Forms.ToolStripButton();
+			this.biTile = new System.Windows.Forms.ToolStripButton();
+			this.biDetail = new System.Windows.Forms.ToolStripButton();
+			this.panel2 = new System.Windows.Forms.Panel();
+			this.xpCueBannerExtender1 = new SteepValley.Windows.Forms.XPCueBannerExtender(this.components);
+			this.pnErr = new System.Windows.Forms.Label();
+			this.xpGradientPanel1.SuspendLayout();
 			this.tbResult.SuspendLayout();
 			this.panel1.SuspendLayout();
 			this.toolBar1.SuspendLayout();
@@ -91,9 +91,9 @@ namespace SimPe.Plugin.Tool.Dockable
 			// tbResult
 			//
 			this.tbResult.BackColor = System.Drawing.Color.Transparent;
-			// 
-			// xpGradientPanel1
-			// 
+			this.tbResult.BodyColor = System.Drawing.SystemColors.InactiveCaptionText;
+			this.tbResult.BorderColor = System.Drawing.SystemColors.Window;
+			this.tbResult.Controls.Add(this.lv);
 			this.tbResult.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tbResult.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
 			this.tbResult.HeaderText = "Results";
@@ -104,16 +104,16 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.tbResult.LeftHeaderColor = System.Drawing.SystemColors.InactiveCaption;
 			this.tbResult.Location = new System.Drawing.Point(8, 159);
 			this.tbResult.Name = "tbResult";
-			// 
-			// tbResult
-			// 
+			this.tbResult.Padding = new System.Windows.Forms.Padding(4, 44, 4, 4);
+			this.tbResult.RightHeaderColor = System.Drawing.SystemColors.Highlight;
+			this.tbResult.Size = new System.Drawing.Size(238, 284);
 			this.tbResult.TabIndex = 4;
 			//
 			// lv
 			//
 			this.lv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-			            | System.Windows.Forms.AnchorStyles.Left)
-			            | System.Windows.Forms.AnchorStyles.Right)));
+						| System.Windows.Forms.AnchorStyles.Left)
+						| System.Windows.Forms.AnchorStyles.Right)));
 			this.lv.HideSelection = false;
 			this.lv.Location = new System.Drawing.Point(8, 48);
 			this.lv.MultiSelect = false;
@@ -121,16 +121,16 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.lv.Size = new System.Drawing.Size(222, 229);
 			this.lv.TabIndex = 0;
 			this.lv.TileColumns = new int[] {
-			
+		1};
 			this.lv.TileSize = new System.Drawing.Size(350, 90);
 			this.lv.UseCompatibleStateImageBehavior = false;
 			this.lv.DoubleClick += new System.EventHandler(this.lv_DoubleClick);
-			// 
-			// lv
-			// 
+			this.lv.SelectedIndexChanged += new System.EventHandler(this.lv_SelectedIndexChanged);
+			this.lv.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lv_ColumnClick);
+			//
 			// pnContainer
-						
-						iner.BackColor = System.Drawing.Color.Transparent;
+			//
+			this.pnContainer.BackColor = System.Drawing.Color.Transparent;
 			this.pnContainer.Dock = System.Windows.Forms.DockStyle.Top;
 			this.pnContainer.Location = new System.Drawing.Point(8, 65);
 			this.pnContainer.Name = "pnContainer";
@@ -138,24 +138,24 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.pnContainer.TabIndex = 5;
 			//
 			// panel1
-		    //
+			//
 			this.panel1.BackColor = System.Drawing.Color.Transparent;
 			this.panel1.Controls.Add(this.cbTask);
 			this.panel1.Controls.Add(this.label1);
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
 			this.panel1.Location = new System.Drawing.Point(8, 41);
-			// 
-			// pnContainer
-			// 
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(238, 24);
+			this.panel1.TabIndex = 3;
 			//
 			// cbTask
 			//
 			this.cbTask.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-			            | System.Windows.Forms.AnchorStyles.Right)));
+						| System.Windows.Forms.AnchorStyles.Right)));
 			this.xpCueBannerExtender1.SetCueBannerText(this.cbTask, "");
-			// 
-			// panel1
-			// 
+			this.cbTask.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbTask.Location = new System.Drawing.Point(48, 0);
+			this.cbTask.Name = "cbTask";
 			this.cbTask.Size = new System.Drawing.Size(190, 21);
 			this.cbTask.TabIndex = 3;
 			this.cbTask.SelectedIndexChanged += new System.EventHandler(this.cbTask_SelectedIndexChanged);
@@ -164,11 +164,11 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			this.label1.BackColor = System.Drawing.Color.Transparent;
 			this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			// 
-			// cbTask
-			// 
+			this.label1.Location = new System.Drawing.Point(0, 0);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(40, 23);
 			this.label1.TabIndex = 2;
-						Text = "Find:";
+			this.label1.Text = "Find:";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			//
 			// toolBar1
@@ -176,9 +176,9 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.toolBar1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
 			this.biList,
 			this.biTile,
-			// 
-			// label1
-			// 
+			this.biDetail});
+			this.toolBar1.Location = new System.Drawing.Point(0, 0);
+			this.toolBar1.Name = "toolBar1";
 			this.toolBar1.Size = new System.Drawing.Size(254, 25);
 			this.toolBar1.TabIndex = 1;
 			this.toolBar1.Text = "toolBar1";
@@ -187,9 +187,9 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			this.biList.Image = ((System.Drawing.Image)(resources.GetObject("biList.Image")));
 			this.biList.Name = "biList";
-			// 
-			// toolBar1
-			// 
+			this.biList.Size = new System.Drawing.Size(23, 22);
+			this.biList.ToolTipText = "List View";
+			this.biList.Click += new System.EventHandler(this.Activate_biList);
 			//
 			// biTile
 			//
@@ -199,25 +199,25 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.biTile.ToolTipText = "Tiled View";
 			this.biTile.Click += new System.EventHandler(this.Activate_biTile);
 			//
-			// 
-			// biList
-			// 
+			// biDetail
+			//
+			this.biDetail.Checked = true;
 			this.biDetail.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.biDetail.Image = ((System.Drawing.Image)(resources.GetObject("biDetail.Image")));
 			this.biDetail.Name = "biDetail";
 			this.biDetail.Size = new System.Drawing.Size(23, 22);
 			this.biDetail.ToolTipText = "Detailed View";
-			// 
-			// biTile
-			// 
+			this.biDetail.Click += new System.EventHandler(this.Activate_biDetails);
+			//
+			// panel2
 			//
 			this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panel2.Location = new System.Drawing.Point(0, 20);
 			this.panel2.Name = "panel2";
 			this.panel2.Size = new System.Drawing.Size(304, 402);
-			// 
-			// biDetail
-			// 
+			this.panel2.TabIndex = 5;
+			//
+			// pnErr
 			//
 			this.pnErr.BackColor = System.Drawing.Color.Transparent;
 			this.pnErr.Dock = System.Windows.Forms.DockStyle.Top;
@@ -225,17 +225,17 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.pnErr.ForeColor = System.Drawing.Color.Maroon;
 			this.pnErr.Location = new System.Drawing.Point(8, 8);
 			this.pnErr.Name = "pnErr";
-			// 
-			// panel2
-			// 
+			this.pnErr.Size = new System.Drawing.Size(238, 33);
+			this.pnErr.TabIndex = 6;
+			this.pnErr.Text = "Only the first {nr} Results are displayed below.";
 			this.pnErr.Visible = false;
 			//
 			// FinderDock
 			//
 			this.AutoScroll = true;
-			// 
-			// pnErr
-			// 
+			this.AutoScrollMinSize = new System.Drawing.Size(208, 288);
+			this.ButtonText = "Finder";
+			this.CaptionText = "Scenegraph Resource Finder";
 			this.Controls.Add(this.xpGradientPanel1);
 			this.Controls.Add(this.toolBar1);
 			this.FloatingSize = new System.Drawing.Size(266, 502);
@@ -246,17 +246,16 @@ namespace SimPe.Plugin.Tool.Dockable
 			this.TabImage = ((System.Drawing.Image)(resources.GetObject("$this.TabImage")));
 			this.TabText = "Finder";
 			this.xpGradientPanel1.ResumeLayout(false);
-			// 
-			// FinderDock
-			// 
+			this.tbResult.ResumeLayout(false);
+			this.panel1.ResumeLayout(false);
+			this.toolBar1.ResumeLayout(false);
 			this.toolBar1.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
-			
-			
-			region
-			
-			ate Label pnErr;
-			
-			
-			
+
+		}
+		#endregion
+
+		private Label pnErr;
+	}
+}
