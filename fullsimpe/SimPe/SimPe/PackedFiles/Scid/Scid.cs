@@ -1,8 +1,8 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
-using SimPe.Plugin;
 
 namespace SimPe.PackedFiles.Scid
 {
@@ -50,7 +50,7 @@ namespace SimPe.PackedFiles.Scid
 
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
-			Idno idno = Idno.FromPackage(package);
+			Idno.Idno idno = Idno.Idno.FromPackage(package);
 			IsOK = idno == null || idno.Type == NeighborhoodType.Normal;
 
 			reader.BaseStream.Seek(0xc, System.IO.SeekOrigin.Begin);

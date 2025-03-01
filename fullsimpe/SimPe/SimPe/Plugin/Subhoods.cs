@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
+using SimPe.PackedFiles.Idno;
+
 namespace SimPe.Plugin
 {
 	public class Subhoods

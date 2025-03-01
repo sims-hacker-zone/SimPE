@@ -7,8 +7,10 @@ using System.IO;
 using System.Text;
 
 using SimPe;
+using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
+using SimPe.PackedFiles.Idno;
 using SimPe.PackedFiles.Ltxt;
 using SimPe.PackedFiles.Wrapper;
 using SimPe.Plugin;
@@ -400,7 +402,7 @@ namespace pjHoodTool
 								);
 								if (
 									ntype.Subep
-										!= SimPe.Data.MetaData.NeighbourhoodEP.Business
+										!= SimPe.Data.NeighborhoodEP.Business
 									&& hoodtipe == "Suburb"
 								)
 								{

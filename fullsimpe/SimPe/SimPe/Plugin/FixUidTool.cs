@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 
+using SimPe.PackedFiles.Idno;
+
 namespace SimPe.Plugin
 {
 	/// <summary>

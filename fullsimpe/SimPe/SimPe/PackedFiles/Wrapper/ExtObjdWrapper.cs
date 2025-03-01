@@ -817,98 +817,98 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public bool Basegame
 		{
-			get => GetBit((byte)Data.MetaData.NeighbourhoodEP.BaseGame);
-			set => SetBit((byte)Data.MetaData.NeighbourhoodEP.BaseGame, value);
+			get => GetBit((byte)Data.NeighborhoodEP.BaseGame);
+			set => SetBit((byte)Data.NeighborhoodEP.BaseGame, value);
 		}
 
 		public bool University
 		{
-			get => GetBit((byte)Data.MetaData.NeighbourhoodEP.University);
-			set => SetBit((byte)Data.MetaData.NeighbourhoodEP.University, value);
+			get => GetBit((byte)Data.NeighborhoodEP.University);
+			set => SetBit((byte)Data.NeighborhoodEP.University, value);
 		}
 
 		public bool Nightlife
 		{
-			get => GetBit((byte)Data.MetaData.NeighbourhoodEP.Nightlife);
-			set => SetBit((byte)Data.MetaData.NeighbourhoodEP.Nightlife, value);
+			get => GetBit((byte)Data.NeighborhoodEP.Nightlife);
+			set => SetBit((byte)Data.NeighborhoodEP.Nightlife, value);
 		}
 
 		public bool Business
 		{
-			get => GetBit((byte)Data.MetaData.NeighbourhoodEP.Business);
-			set => SetBit((byte)Data.MetaData.NeighbourhoodEP.Business, value);
+			get => GetBit((byte)Data.NeighborhoodEP.Business);
+			set => SetBit((byte)Data.NeighborhoodEP.Business, value);
 		}
 
 		public bool FamilyFun
 		{
-			get => GetBit((byte)Data.MetaData.NeighbourhoodEP.FamilyFun);
-			set => SetBit((byte)Data.MetaData.NeighbourhoodEP.FamilyFun, value);
+			get => GetBit((byte)Data.NeighborhoodEP.FamilyFun);
+			set => SetBit((byte)Data.NeighborhoodEP.FamilyFun, value);
 		}
 
 		public bool GlamourLife
 		{
-			get => GetBit((byte)Data.MetaData.NeighbourhoodEP.GlamourLife);
-			set => SetBit((byte)Data.MetaData.NeighbourhoodEP.GlamourLife, value);
+			get => GetBit((byte)Data.NeighborhoodEP.GlamourLife);
+			set => SetBit((byte)Data.NeighborhoodEP.GlamourLife, value);
 		}
 
 		public bool Pets
 		{
-			get => GetBit((byte)Data.MetaData.NeighbourhoodEP.Pets);
-			set => SetBit((byte)Data.MetaData.NeighbourhoodEP.Pets, value);
+			get => GetBit((byte)Data.NeighborhoodEP.Pets);
+			set => SetBit((byte)Data.NeighborhoodEP.Pets, value);
 		}
 
 		public bool Seasons
 		{
-			get => GetBit((byte)Data.MetaData.NeighbourhoodEP.Seasons);
-			set => SetBit((byte)Data.MetaData.NeighbourhoodEP.Seasons, value);
+			get => GetBit((byte)Data.NeighborhoodEP.Seasons);
+			set => SetBit((byte)Data.NeighborhoodEP.Seasons, value);
 		}
 
 		public bool Celebration
 		{
-			get => GetBit((byte)Data.MetaData.NeighbourhoodEP.Celebration);
-			set => SetBit((byte)Data.MetaData.NeighbourhoodEP.Celebration, value);
+			get => GetBit((byte)Data.NeighborhoodEP.Celebration);
+			set => SetBit((byte)Data.NeighborhoodEP.Celebration, value);
 		}
 
 		public bool Fashion
 		{
-			get => GetBit((byte)Data.MetaData.NeighbourhoodEP.Fashion);
-			set => SetBit((byte)Data.MetaData.NeighbourhoodEP.Fashion, value);
+			get => GetBit((byte)Data.NeighborhoodEP.Fashion);
+			set => SetBit((byte)Data.NeighborhoodEP.Fashion, value);
 		}
 
 		public bool BonVoyage
 		{
-			get => GetBit((byte)Data.MetaData.NeighbourhoodEP.BonVoyage);
-			set => SetBit((byte)Data.MetaData.NeighbourhoodEP.BonVoyage, value);
+			get => GetBit((byte)Data.NeighborhoodEP.BonVoyage);
+			set => SetBit((byte)Data.NeighborhoodEP.BonVoyage, value);
 		}
 
 		public bool TeenStyle
 		{
-			get => GetBit((byte)Data.MetaData.NeighbourhoodEP.TeenStyle);
-			set => SetBit((byte)Data.MetaData.NeighbourhoodEP.TeenStyle, value);
+			get => GetBit((byte)Data.NeighborhoodEP.TeenStyle);
+			set => SetBit((byte)Data.NeighborhoodEP.TeenStyle, value);
 		}
 
 		public bool StoreEdition_old
 		{
-			get => GetBit((byte)Data.MetaData.NeighbourhoodEP.StoreEdition_old);
-			set => SetBit((byte)Data.MetaData.NeighbourhoodEP.StoreEdition_old, value);
+			get => GetBit((byte)Data.NeighborhoodEP.StoreEdition_old);
+			set => SetBit((byte)Data.NeighborhoodEP.StoreEdition_old, value);
 		}
 
 		public bool Freetime
 		{
-			get => GetBit((byte)Data.MetaData.NeighbourhoodEP.Freetime);
-			set => SetBit((byte)Data.MetaData.NeighbourhoodEP.Freetime, value);
+			get => GetBit((byte)Data.NeighborhoodEP.Freetime);
+			set => SetBit((byte)Data.NeighborhoodEP.Freetime, value);
 		}
 
 		public bool KitchenBath
 		{
-			get => GetBit((byte)Data.MetaData.NeighbourhoodEP.KitchenBath);
-			set => SetBit((byte)Data.MetaData.NeighbourhoodEP.KitchenBath, value);
+			get => GetBit((byte)Data.NeighborhoodEP.KitchenBath);
+			set => SetBit((byte)Data.NeighborhoodEP.KitchenBath, value);
 		}
 
 		public bool IkeaHome
 		{
-			get => GetBit((byte)Data.MetaData.NeighbourhoodEP.IkeaHome);
-			set => SetBit((byte)Data.MetaData.NeighbourhoodEP.IkeaHome, value);
+			get => GetBit((byte)Data.NeighborhoodEP.IkeaHome);
+			set => SetBit((byte)Data.NeighborhoodEP.IkeaHome, value);
 		}
 	}
 	#endregion
