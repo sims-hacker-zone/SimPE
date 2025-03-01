@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 using Ambertation.Windows.Forms;
 
+using SimPe.PackedFiles.Ttab;
 using SimPe.PackedFiles.Wrapper;
 
 namespace pjse.guidtool

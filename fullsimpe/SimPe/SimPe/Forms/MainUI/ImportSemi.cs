@@ -4,6 +4,8 @@ using System;
 using System.Collections;
 using System.Windows.Forms;
 
+using SimPe.PackedFiles.Ttab;
+
 namespace SimPe.Forms.MainUI
 {
 	/// <summary>
@@ -566,7 +568,7 @@ namespace SimPe.Forms.MainUI
 					}
 					else if (npfd.Type == 0x54544142) //TTAB
 					{
-						Plugin.Ttab ttab = new Plugin.Ttab(
+						Ttab ttab = new Ttab(
 							prov.OpcodeProvider
 						);
 						ttab.ProcessData(npfd, package);
@@ -591,7 +593,7 @@ namespace SimPe.Forms.MainUI
 					pfds = package.FindFiles(0x54544142);
 					foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 					{
-						Plugin.Ttab ttab = new Plugin.Ttab(
+						Ttab ttab = new Ttab(
 							prov.OpcodeProvider
 						);
 						ttab.ProcessData(pfd, package);
@@ -614,9 +616,9 @@ namespace SimPe.Forms.MainUI
 				}
 
 				//Relink all TTAbs
-				foreach (Plugin.Ttab ttab in ttabs)
+				foreach (Ttab ttab in ttabs)
 				{
-					foreach (PackedFiles.Wrapper.TtabItem item in ttab)
+					foreach (TtabItem item in ttab)
 					{
 						if (bhavalias.Contains(item.Guardian))
 						{

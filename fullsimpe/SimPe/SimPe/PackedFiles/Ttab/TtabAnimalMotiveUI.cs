@@ -3,9 +3,7 @@
 using System;
 using System.Windows.Forms;
 
-using SimPe.PackedFiles.Wrapper;
-
-namespace SimPe.PackedFiles.UserInterface
+namespace SimPe.PackedFiles.Ttab
 {
 	/// <summary>
 	/// Summary description for TtabSingleMotive.
@@ -86,8 +84,8 @@ namespace SimPe.PackedFiles.UserInterface
 			tbValue.Text =
 				"0x"
 				+ (
-					(item.Count < 0x100) ? Helper.HexString((byte)item.Count)
-					: (item.Count < 0x10000) ? Helper.HexString((ushort)item.Count)
+					item.Count < 0x100 ? Helper.HexString((byte)item.Count)
+					: item.Count < 0x10000 ? Helper.HexString((ushort)item.Count)
 					: Helper.HexString(item.Count)
 				);
 			for (int i = 0; i < item.Count; i++)
