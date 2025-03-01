@@ -42,7 +42,6 @@ namespace SimPe.PackedFiles.UserInterface
 			biEP3.Tag = pnEP3;
 			biEP6.Tag = pnVoyage;
 			biEP7.Tag = pnEP7;
-			biEP9.Tag = pnEP9;
 			biInt.Tag = pnInt;
 			biRel.Tag = pnRel;
 			biMisc.Tag = pnMisc;
@@ -71,8 +70,6 @@ namespace SimPe.PackedFiles.UserInterface
 				biEP6.Image = null;
 				biEP7.TextImageRelation = TextImageRelation.Overlay;
 				biEP7.Image = null;
-				biEP9.TextImageRelation = TextImageRelation.Overlay;
-				biEP9.Image = null;
 				biInt.TextImageRelation = TextImageRelation.Overlay;
 				biInt.Image = null;
 				biRel.TextImageRelation = TextImageRelation.Overlay;
@@ -83,8 +80,6 @@ namespace SimPe.PackedFiles.UserInterface
 				biMax.Image = null;
 				biMore.TextImageRelation = TextImageRelation.Overlay;
 				biMore.Image = null;
-				biLezby.TextImageRelation = TextImageRelation.Overlay;
-				biLezby.Image = null;
 			}
 
 			InitDropDowns();
@@ -1070,7 +1065,6 @@ namespace SimPe.PackedFiles.UserInterface
 				else
 				{
 					HeaderText = Sdesc.SimName;
-					biLezby.Visible = false;
 					pnimage = null;
 				}
 
@@ -1112,11 +1106,6 @@ namespace SimPe.PackedFiles.UserInterface
 						>= (int)PackedFiles.Wrapper.SDescVersions.Freetime
 					&& Sdesc.Nightlife.Species == 0
 				;
-				biEP9.Enabled =
-					(int)Sdesc.Version
-						>= (int)PackedFiles.Wrapper.SDescVersions.Apartment
-					&& Sdesc.Nightlife.Species == 0
-				;
 				cbSpecies.Enabled =
 					(int)Sdesc.Version
 					>= (int)PackedFiles.Wrapper.SDescVersions.Pets
@@ -1147,11 +1136,6 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 
 				if (pnEP7.Visible && !biEP7.Enabled)
-				{
-					SelectButton(biId);
-				}
-
-				if (pnEP9.Visible && !biEP9.Enabled)
 				{
 					SelectButton(biId);
 				}
@@ -1884,12 +1868,6 @@ namespace SimPe.PackedFiles.UserInterface
 				{
 					lv.Items[0].Selected = true;
 				}
-			}
-			else if (pnEP9.Visible)
-			{
-				InternalChange = true;
-				pbRomance.Value = pbRomance.Maximum;
-				//intern = false; this.ChangedVarious(null, null);
 			}
 		}
 
