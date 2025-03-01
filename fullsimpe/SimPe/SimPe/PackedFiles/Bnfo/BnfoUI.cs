@@ -10,8 +10,9 @@ using Ambertation.Windows.Forms;
 
 using SimPe.Data;
 using SimPe.PackedFiles.Wrapper;
+using SimPe.Plugin;
 
-namespace SimPe.Plugin.Bnfo
+namespace SimPe.PackedFiles.Bnfo
 {
 	/// <summary>
 	/// Summary description for ExtNgbhUI.
@@ -1741,8 +1742,8 @@ namespace SimPe.Plugin.Bnfo
 
 		private void btClearim_Click(object sender, EventArgs e)
 		{
-			Collections.BnfoCustomerItems bnff =
-				new Collections.BnfoCustomerItems(Bnfo);
+			BnfoCustomerItems bnff =
+				new BnfoCustomerItems(Bnfo);
 
 			foreach (BnfoCustomerItem item in Bnfo.CustomerItems)
 			{

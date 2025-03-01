@@ -4,7 +4,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace SimPe.Plugin.Bnfo
+namespace SimPe.PackedFiles.Bnfo
 {
 	/// <summary>
 	/// Summary description for BnfoCustomerItemUI.

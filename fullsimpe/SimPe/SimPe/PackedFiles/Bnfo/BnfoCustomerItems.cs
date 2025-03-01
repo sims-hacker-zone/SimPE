@@ -3,24 +3,24 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace SimPe.Plugin.Collections
+namespace SimPe.PackedFiles.Bnfo
 {
 	/// <summary>
 	/// Collection of <see cref="BnfoCustomerItem"/> Objects
 	/// </summary>
-	public class BnfoCustomerItems : System.IDisposable, IEnumerable<Bnfo.BnfoCustomerItem>
+	public class BnfoCustomerItems : System.IDisposable, IEnumerable<BnfoCustomerItem>
 	{
-		private List<Bnfo.BnfoCustomerItem> list = new List<Bnfo.BnfoCustomerItem>();
-		Bnfo.Bnfo parent;
+		private List<BnfoCustomerItem> list = new List<BnfoCustomerItem>();
+		Bnfo parent;
 
-		internal BnfoCustomerItems(Bnfo.Bnfo parent)
+		internal BnfoCustomerItems(Bnfo parent)
 		{
 			this.parent = parent;
 		}
 
-		public Bnfo.BnfoCustomerItem AddNew(ushort inst)
+		public BnfoCustomerItem AddNew(ushort inst)
 		{
-			Bnfo.BnfoCustomerItem s = new Bnfo.BnfoCustomerItem(parent)
+			BnfoCustomerItem s = new BnfoCustomerItem(parent)
 			{
 				SimInstance = inst
 			};
@@ -30,12 +30,12 @@ namespace SimPe.Plugin.Collections
 			return s;
 		}
 
-		public void Add(Bnfo.BnfoCustomerItem item)
+		public void Add(BnfoCustomerItem item)
 		{
 			list.Add(item);
 		}
 
-		public void Remove(Bnfo.BnfoCustomerItem item)
+		public void Remove(BnfoCustomerItem item)
 		{
 			list.Remove(item);
 		}
@@ -50,12 +50,12 @@ namespace SimPe.Plugin.Collections
 			list.Clear();
 		}
 
-		public bool Contains(Bnfo.BnfoCustomerItem item)
+		public bool Contains(BnfoCustomerItem item)
 		{
 			return list.Contains(item);
 		}
 
-		public Bnfo.BnfoCustomerItem this[int index]
+		public BnfoCustomerItem this[int index]
 		{
 			get => list[index];
 			set => list[index] = value;
@@ -70,10 +70,10 @@ namespace SimPe.Plugin.Collections
 			return Clone(parent);
 		}
 
-		public BnfoCustomerItems Clone(Bnfo.Bnfo newparent)
+		public BnfoCustomerItems Clone(Bnfo newparent)
 		{
 			BnfoCustomerItems ret = new BnfoCustomerItems(newparent);
-			foreach (Bnfo.BnfoCustomerItem s in list)
+			foreach (BnfoCustomerItem s in list)
 			{
 				ret.Add(s);
 			}
@@ -81,14 +81,14 @@ namespace SimPe.Plugin.Collections
 			return ret;
 		}
 
-		public Bnfo.BnfoCustomerItem GetInstanceItem(ushort instance)
+		public BnfoCustomerItem GetInstanceItem(ushort instance)
 		{
 			return GetInstanceItem(instance, false);
 		}
 
-		public Bnfo.BnfoCustomerItem GetInstanceItem(ushort instance, bool create)
+		public BnfoCustomerItem GetInstanceItem(ushort instance, bool create)
 		{
-			foreach (Bnfo.BnfoCustomerItem s in list)
+			foreach (BnfoCustomerItem s in list)
 			{
 				if (s.SimInstance == instance)
 				{
@@ -112,9 +112,9 @@ namespace SimPe.Plugin.Collections
 
 		#region IEnumerable Member
 
-		public IEnumerator<Bnfo.BnfoCustomerItem> GetEnumerator()
+		public IEnumerator<BnfoCustomerItem> GetEnumerator()
 		{
-			return ((IEnumerable<Bnfo.BnfoCustomerItem>)list).GetEnumerator();
+			return ((IEnumerable<BnfoCustomerItem>)list).GetEnumerator();
 		}
 
 		IEnumerator IEnumerable.GetEnumerator()

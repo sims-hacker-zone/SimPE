@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 
-namespace SimPe.Plugin.Bnfo
+namespace SimPe.PackedFiles.Bnfo
 {
 	/// <summary>
 	/// Summary description for BnfoCustomerItem.
@@ -38,7 +38,7 @@ namespace SimPe.Plugin.Bnfo
 		} = new byte[0x60];
 
 		private readonly Bnfo parent;
-		public PackedFiles.Wrapper.ExtSDesc SimDescription => FileTableBase.ProviderRegistry.SimDescriptionProvider.SimInstance[SimInstance] as PackedFiles.Wrapper.ExtSDesc;
+		public Wrapper.ExtSDesc SimDescription => FileTableBase.ProviderRegistry.SimDescriptionProvider.SimInstance[SimInstance] as Wrapper.ExtSDesc;
 
 		internal BnfoCustomerItem(Bnfo parent)
 		{
