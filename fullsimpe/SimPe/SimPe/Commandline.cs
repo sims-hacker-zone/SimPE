@@ -506,7 +506,7 @@ namespace SimPe
 		static void Overridelayout(string name)
 		{
 			Stream s = typeof(Commandline).Assembly.GetManifestResourceStream(
-				"SimPe.data." + name
+				"SimPe.files." + name
 			);
 			if (s != null)
 			{
@@ -537,7 +537,7 @@ namespace SimPe
 
 			string name2 = name.Replace("_layout.xreg", ".layout");
 			s = typeof(Commandline).Assembly.GetManifestResourceStream(
-				"SimPe.data." + name2
+				"SimPe.files." + name2
 			);
 			if (s != null)
 			{
@@ -724,7 +724,7 @@ namespace SimPe
 
 			string path;
 			Stream s = typeof(Commandline).Assembly.GetManifestResourceStream(
-				"SimPe.data." + namer
+				"SimPe.files." + namer
 			);
 			path = namer == "guidindex.txt"
 				? Path.Combine(

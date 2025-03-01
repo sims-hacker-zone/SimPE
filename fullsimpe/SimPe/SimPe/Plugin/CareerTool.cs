@@ -22,7 +22,7 @@ namespace SimPe.Plugin
 
 		#region ITool Member
 
-		internal static string DefaultCareerFile => "SimPe.data.base.career";
+		internal static string DefaultCareerFile => "SimPe.files.base.career";
 
 		public bool IsEnabled(Interfaces.Files.IPackedFileDescriptor pfd, Interfaces.Files.IPackageFile package)
 		{
