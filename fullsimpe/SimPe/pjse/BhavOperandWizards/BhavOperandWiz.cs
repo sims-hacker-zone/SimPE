@@ -92,6 +92,10 @@ namespace pjse
 			int footHeight = Height - panel1.Bottom + 8;
 			Width = pn.Width + 8;
 			Height = pn.Height + footHeight;
+
+			// TODO - WH - why the fuck is this needed?
+			Width += 10;
+			Height -= 5;
 		}
 
 		#region Vom Windows Form-Designer generierter Code

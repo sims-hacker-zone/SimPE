@@ -642,6 +642,11 @@ namespace pjse.BhavNameWizards
 		public WizPrim0x0007(Instruction i)
 			: base(i) { }
 
+		public override ABhavOperandWiz Wizard()
+		{
+			return new whse.PrimitiveWizards.BhavOperandWiz0x0007(instruction);
+		}
+
 		protected override string Operands(bool lng)
 		{
 			byte[] o = new byte[16];
@@ -761,6 +766,11 @@ namespace pjse.BhavNameWizards
 		public WizPrim0x000c(Instruction i)
 			: base(i) { }
 
+		public override ABhavOperandWiz Wizard()
+		{
+			return new whse.PrimitiveWizards.BhavOperandWiz0x000c(instruction);
+		}
+
 		protected override string Operands(bool lng)
 		{
 			byte[] o = new byte[16];
@@ -807,6 +817,11 @@ namespace pjse.BhavNameWizards
 	{
 		public WizPrim0x000d(Instruction i)
 			: base(i) { }
+
+		public override ABhavOperandWiz Wizard()
+		{
+			return new whse.PrimitiveWizards.BhavOperandWiz0x000d(instruction);
+		}
 
 		protected override string Operands(bool lng)
 		{
@@ -957,6 +972,11 @@ namespace pjse.BhavNameWizards
 		public WizPrim0x000e(Instruction i)
 			: base(i) { }
 
+		public override ABhavOperandWiz Wizard()
+		{
+			return new whse.PrimitiveWizards.BhavOperandWiz0x000e(instruction);
+		}
+
 		protected override string Operands(bool lng)
 		{
 			byte[] o = new byte[16];
@@ -1051,6 +1071,11 @@ namespace pjse.BhavNameWizards
 	{
 		public WizPrim0x0010(Instruction i)
 			: base(i) { }
+
+		public override ABhavOperandWiz Wizard()
+		{
+			return new whse.PrimitiveWizards.BhavOperandWiz0x0010(instruction);
+		}
 
 		protected override string Operands(bool lng)
 		{
@@ -1240,6 +1265,11 @@ namespace pjse.BhavNameWizards
 		public WizPrim0x0011(Instruction i)
 			: base(i) { }
 
+		public override ABhavOperandWiz Wizard()
+		{
+			return new whse.PrimitiveWizards.BhavOperandWiz0x0011(instruction);
+		}
+
 		protected override string Operands(bool lng)
 		{
 			byte[] o = new byte[16];
@@ -1286,6 +1316,11 @@ namespace pjse.BhavNameWizards
 	{
 		public WizPrim0x0012(Instruction i)
 			: base(i) { }
+
+		public override ABhavOperandWiz Wizard()
+		{
+			return new whse.PrimitiveWizards.BhavOperandWiz0x0012(instruction);
+		}
 
 		protected override string Operands(bool lng)
 		{
@@ -1477,6 +1512,11 @@ namespace pjse.BhavNameWizards
 		public WizPrim0x0014(Instruction i)
 			: base(i) { }
 
+		public override ABhavOperandWiz Wizard()
+		{
+			return new whse.PrimitiveWizards.BhavOperandWiz0x0014(instruction);
+		}
+
 		protected override string Operands(bool lng)
 		{
 			byte[] o = new byte[16];
@@ -1524,6 +1564,11 @@ namespace pjse.BhavNameWizards
 		public WizPrim0x0016(Instruction i)
 			: base(i) { }
 
+		public override ABhavOperandWiz Wizard()
+		{
+			return new whse.PrimitiveWizards.BhavOperandWiz0x0016(instruction);
+		}
+
 		protected override string Operands(bool lng)
 		{
 			byte[] o = new byte[16];
@@ -1548,6 +1593,11 @@ namespace pjse.BhavNameWizards
 	{
 		public WizPrim0x0017(Instruction i)
 			: base(i) { }
+
+		public override ABhavOperandWiz Wizard()
+		{
+			return new whse.PrimitiveWizards.BhavOperandWiz0x0017(instruction);
+		}
 
 		protected override string Operands(bool lng)
 		{
@@ -1757,6 +1807,11 @@ namespace pjse.BhavNameWizards
 	{
 		public WizPrim0x001a(Instruction i)
 			: base(i) { }
+
+		public override ABhavOperandWiz Wizard()
+		{
+			return new whse.PrimitiveWizards.BhavOperandWiz0x001a(instruction);
+		}
 
 		protected override string Operands(bool lng)
 		{
@@ -2107,6 +2162,11 @@ namespace pjse.BhavNameWizards
 	{
 		public WizPrim0x001d(Instruction i)
 			: base(i) { }
+
+		public override ABhavOperandWiz Wizard()
+		{
+			return new whse.PrimitiveWizards.BhavOperandWiz0x001d(instruction);
+		}
 
 		protected override string Operands(bool lng)
 		{
@@ -2593,6 +2653,11 @@ namespace pjse.BhavNameWizards
 	{
 		public WizPrim0x0023(Instruction i)
 			: base(i) { }
+
+		public override ABhavOperandWiz Wizard()
+		{
+			return new whse.PrimitiveWizards.BhavOperandWiz0x0023(instruction);
+		}
 
 		protected override string Operands(bool lng)
 		{
@@ -3114,6 +3179,11 @@ namespace pjse.BhavNameWizards
 		public WizPrim0x002a(Instruction i)
 			: base(i) { }
 
+		public override ABhavOperandWiz Wizard()
+		{
+			return new whse.PrimitiveWizards.BhavOperandWiz0x002a(instruction);
+		}
+
 		protected override string Operands(bool lng)
 		{
 			byte[] o = new byte[16];
@@ -3343,6 +3413,11 @@ namespace pjse.BhavNameWizards
 		public WizPrim0x002e(Instruction i)
 			: base(i) { }
 
+		public override ABhavOperandWiz Wizard()
+		{
+			return new whse.PrimitiveWizards.BhavOperandWiz0x002e(instruction);
+		}
+
 		protected override string Operands(bool lng)
 		{
 			byte[] o = new byte[16];
@@ -3429,6 +3504,11 @@ namespace pjse.BhavNameWizards
 	{
 		public WizPrim0x0030(Instruction i)
 			: base(i) { }
+
+		public override ABhavOperandWiz Wizard()
+		{
+			return new whse.PrimitiveWizards.BhavOperandWiz0x0030(instruction);
+		}
 
 		protected override string Operands(bool lng)
 		{
@@ -5090,6 +5170,11 @@ namespace pjse.BhavNameWizards
 		public WizPrim0x006c(Instruction i)
 			: base(i) { }
 
+		public override ABhavOperandWiz Wizard()
+		{
+			return new whse.PrimitiveWizards.BhavOperandWiz0x006c(instruction);
+		}
+
 		protected override string Operands(bool lng)
 		{
 			byte[] o = new byte[16];
@@ -5786,6 +5871,11 @@ namespace pjse.BhavNameWizards
 		public WizPrim0x006f(Instruction i)
 			: base(i) { }
 
+		public override ABhavOperandWiz Wizard()
+		{
+			return new whse.PrimitiveWizards.BhavOperandWiz0x006f(instruction);
+		}
+
 		protected override string Operands(bool lng)
 		{
 			byte[] o = new byte[16];
@@ -5859,6 +5949,11 @@ namespace pjse.BhavNameWizards
 	{
 		public WizPrim0x0070(Instruction i)
 			: base(i) { }
+
+		public override ABhavOperandWiz Wizard()
+		{
+			return new whse.PrimitiveWizards.BhavOperandWiz0x0070(instruction);
+		}
 
 		protected override string Operands(bool lng)
 		{
@@ -6102,6 +6197,11 @@ namespace pjse.BhavNameWizards
 		public WizPrim0x0071(Instruction i)
 			: base(i) { }
 
+		public override ABhavOperandWiz Wizard()
+		{
+			return new whse.PrimitiveWizards.BhavOperandWiz0x0071(instruction);
+		}
+
 		protected override string Operands(bool lng)
 		{
 			byte[] o = new byte[16];
@@ -6164,6 +6264,11 @@ namespace pjse.BhavNameWizards
 	{
 		public WizPrim0x0072(Instruction i)
 			: base(i) { }
+
+		public override ABhavOperandWiz Wizard()
+		{
+			return new whse.PrimitiveWizards.BhavOperandWiz0x0072(instruction);
+		}
 
 		protected override string Operands(bool lng)
 		{
@@ -6357,6 +6462,11 @@ namespace pjse.BhavNameWizards
 	{
 		public WizPrim0x0074(Instruction i)
 			: base(i) { }
+
+		public override ABhavOperandWiz Wizard()
+		{
+			return new whse.PrimitiveWizards.BhavOperandWiz0x0074(instruction);
+		}
 
 		protected override string Operands(bool lng)
 		{
@@ -6769,6 +6879,11 @@ namespace pjse.BhavNameWizards
 		public WizPrim0x0077(Instruction i)
 			: base(i) { }
 
+		public override ABhavOperandWiz Wizard()
+		{
+			return new whse.PrimitiveWizards.BhavOperandWiz0x0077(instruction);
+		}
+
 		protected override string Operands(bool lng)
 		{
 			byte[] o = new byte[16];
@@ -6960,6 +7075,11 @@ namespace pjse.BhavNameWizards
 		public WizPrim0x0078(Instruction i)
 			: base(i) { }
 
+		public override ABhavOperandWiz Wizard()
+		{
+			return new whse.PrimitiveWizards.BhavOperandWiz0x0078(instruction);
+		}
+
 		protected override string Operands(bool lng)
 		{
 			byte[] o = new byte[16];
@@ -7048,6 +7168,11 @@ namespace pjse.BhavNameWizards
 	{
 		public WizPrim0x0079(Instruction i)
 			: base(i) { }
+
+		public override ABhavOperandWiz Wizard()
+		{
+			return new whse.PrimitiveWizards.BhavOperandWiz0x0079(instruction);
+		}
 
 		protected override string Operands(bool lng)
 		{
@@ -7157,6 +7282,11 @@ namespace pjse.BhavNameWizards
 	{
 		public WizPrim0x007a(Instruction i)
 			: base(i) { }
+
+		public override ABhavOperandWiz Wizard()
+		{
+			return new whse.PrimitiveWizards.BhavOperandWiz0x007a(instruction);
+		}
 
 		protected override string Operands(bool lng)
 		{
@@ -7421,6 +7551,11 @@ namespace pjse.BhavNameWizards
 		public WizPrim0x007c(Instruction i)
 			: base(i) { }
 
+		public override ABhavOperandWiz Wizard()
+		{
+			return new whse.PrimitiveWizards.BhavOperandWiz0x007c(instruction);
+		}
+
 		protected override string Operands(bool lng)
 		{
 			byte[] o = new byte[16];
@@ -7548,6 +7683,11 @@ namespace pjse.BhavNameWizards
 	{
 		public WizPrim0x007e(Instruction i)
 			: base(i) { }
+
+		public override ABhavOperandWiz Wizard()
+		{
+			return new whse.PrimitiveWizards.BhavOperandWiz0x007e(instruction);
+		}
 
 		protected override string Operands(bool lng)
 		{
