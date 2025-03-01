@@ -1,8 +1,10 @@
+// SPDX-FileCopyrightText: © SimPE contributors
+// SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace SimPe.Plugin
+namespace SimPe.Plugin.Bnfo
 {
 	/// <summary>
 	/// Summary description for BnfoCustomerItemUI.
@@ -12,7 +14,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		private System.ComponentModel.Container components = null;
+		private readonly System.ComponentModel.Container components = null;
 
 		public BnfoCustomerItemUI()
 		{
@@ -102,7 +104,7 @@ namespace SimPe.Plugin
 		}
 		#endregion
 
-		BnfoCustomerItem item;
+		private BnfoCustomerItem item;
 		private TextBox tb;
 
 		[System.ComponentModel.Browsable(false)]
@@ -120,7 +122,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		BnfoCustomerItemsUI ui;
+		private BnfoCustomerItemsUI ui;
 		private Ambertation.Windows.Forms.LabeledProgressBar pb;
 
 		public BnfoCustomerItemsUI BnfoCustomerItemsUI
@@ -142,9 +144,9 @@ namespace SimPe.Plugin
 			}
 		}
 
-		bool intern;
+		private bool intern;
 
-		void SetContent()
+		private void SetContent()
 		{
 			if (intern)
 			{

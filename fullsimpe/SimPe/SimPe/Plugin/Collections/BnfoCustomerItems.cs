@@ -1,26 +1,26 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Collections;
+using System.Collections.Generic;
 
 namespace SimPe.Plugin.Collections
 {
 	/// <summary>
 	/// Collection of <see cref="BnfoCustomerItem"/> Objects
 	/// </summary>
-	public class BnfoCustomerItems : System.IDisposable, IEnumerable
+	public class BnfoCustomerItems : System.IDisposable, IEnumerable<Bnfo.BnfoCustomerItem>
 	{
-		ArrayList list = new ArrayList();
-		Bnfo parent;
+		private List<Bnfo.BnfoCustomerItem> list = new List<Bnfo.BnfoCustomerItem>();
+		Bnfo.Bnfo parent;
 
-		internal BnfoCustomerItems(Bnfo parent)
+		internal BnfoCustomerItems(Bnfo.Bnfo parent)
 		{
-			list = new ArrayList();
 			this.parent = parent;
 		}
 
-		public BnfoCustomerItem AddNew(ushort inst)
+		public Bnfo.BnfoCustomerItem AddNew(ushort inst)
 		{
-			BnfoCustomerItem s = new BnfoCustomerItem(parent)
+			Bnfo.BnfoCustomerItem s = new Bnfo.BnfoCustomerItem(parent)
 			{
 				SimInstance = inst
 			};
@@ -30,12 +30,12 @@ namespace SimPe.Plugin.Collections
 			return s;
 		}
 
-		public void Add(BnfoCustomerItem item)
+		public void Add(Bnfo.BnfoCustomerItem item)
 		{
 			list.Add(item);
 		}
 
-		public void Remove(BnfoCustomerItem item)
+		public void Remove(Bnfo.BnfoCustomerItem item)
 		{
 			list.Remove(item);
 		}
@@ -50,14 +50,14 @@ namespace SimPe.Plugin.Collections
 			list.Clear();
 		}
 
-		public bool Contains(BnfoCustomerItem item)
+		public bool Contains(Bnfo.BnfoCustomerItem item)
 		{
 			return list.Contains(item);
 		}
 
-		public BnfoCustomerItem this[int index]
+		public Bnfo.BnfoCustomerItem this[int index]
 		{
-			get => list[index] as BnfoCustomerItem;
+			get => list[index];
 			set => list[index] = value;
 		}
 
@@ -70,10 +70,10 @@ namespace SimPe.Plugin.Collections
 			return Clone(parent);
 		}
 
-		public BnfoCustomerItems Clone(Bnfo newparent)
+		public BnfoCustomerItems Clone(Bnfo.Bnfo newparent)
 		{
 			BnfoCustomerItems ret = new BnfoCustomerItems(newparent);
-			foreach (BnfoCustomerItem s in list)
+			foreach (Bnfo.BnfoCustomerItem s in list)
 			{
 				ret.Add(s);
 			}
@@ -81,14 +81,14 @@ namespace SimPe.Plugin.Collections
 			return ret;
 		}
 
-		public BnfoCustomerItem GetInstanceItem(ushort instance)
+		public Bnfo.BnfoCustomerItem GetInstanceItem(ushort instance)
 		{
 			return GetInstanceItem(instance, false);
 		}
 
-		public BnfoCustomerItem GetInstanceItem(ushort instance, bool create)
+		public Bnfo.BnfoCustomerItem GetInstanceItem(ushort instance, bool create)
 		{
-			foreach (BnfoCustomerItem s in list)
+			foreach (Bnfo.BnfoCustomerItem s in list)
 			{
 				if (s.SimInstance == instance)
 				{
@@ -112,9 +112,14 @@ namespace SimPe.Plugin.Collections
 
 		#region IEnumerable Member
 
-		public IEnumerator GetEnumerator()
+		public IEnumerator<Bnfo.BnfoCustomerItem> GetEnumerator()
 		{
-			return list.GetEnumerator();
+			return ((IEnumerable<Bnfo.BnfoCustomerItem>)list).GetEnumerator();
+		}
+
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return ((IEnumerable)list).GetEnumerator();
 		}
 
 		#endregion

@@ -1,6 +1,8 @@
+// SPDX-FileCopyrightText: © SimPE contributors
+// SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 
-namespace SimPe.Plugin
+namespace SimPe.Plugin.Bnfo
 {
 	/// <summary>
 	/// Summary description for BnfoCustomerItemsUI.
@@ -11,7 +13,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		private System.ComponentModel.Container components = null;
+		private readonly System.ComponentModel.Container components = null;
 
 		public BnfoCustomerItemsUI()
 		{
@@ -74,8 +76,7 @@ namespace SimPe.Plugin
 		#endregion
 
 		private System.Windows.Forms.ListBox lb;
-
-		Collections.BnfoCustomerItems items;
+		private Collections.BnfoCustomerItems items;
 
 		[System.ComponentModel.Browsable(false)]
 		public Collections.BnfoCustomerItems Items
@@ -88,7 +89,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		void SetContent()
+		private void SetContent()
 		{
 			lb.Items.Clear();
 			if (items != null)
@@ -113,10 +114,7 @@ namespace SimPe.Plugin
 
 		private void lb_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (SelectedItemChanged != null)
-			{
-				SelectedItemChanged(this, new EventArgs());
-			}
+			SelectedItemChanged?.Invoke(this, new EventArgs());
 		}
 	}
 }

@@ -1,16 +1,11 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
-using System;
+using System.Collections.Generic;
 
 using SimPe.Interfaces.Plugin;
 
-namespace SimPe.Plugin
+namespace SimPe.Plugin.Bnfo
 {
-	public enum BnfoVersions : uint
-	{
-		Business = 0x04,
-	}
-
 	/// <summary>
 	/// Wrapper for 0x104F6A6E , which apear to be the "Business info Resource"
 	/// </summary>
@@ -21,12 +16,7 @@ namespace SimPe.Plugin
 			IMultiplePackedFileWrapper
 	{
 		#region Attributes
-		uint ver;
-		public BnfoVersions Version
-		{
-			get => (BnfoVersions)ver;
-			set => ver = (uint)value;
-		}
+		public BnfoVersions Version { get; set; } = BnfoVersions.Business;
 
 		public uint CurrentBusinessState
 		{
@@ -41,38 +31,17 @@ namespace SimPe.Plugin
 		{
 			get; set;
 		}
-		ushort[] empls;
-		public ushort[] Employees
-		{
-			get => empls;
-			set => empls = value;
-		}
-		int[] pr;
-		public int[] PayRate //doesn't need to be int, could just be byte but int is easier to work with. 0 to 6 inclusive
-		{
-			get => pr;
-			set => pr = value;
-		}
-		uint[] a;
-		public uint[] A // Fair Pay - should never be below 15
-		{
-			get => a;
-			set => a = value;
-		}
-
-		int[] reven;
-		public int[] Revenue => reven;
-		int[] expe;
-		public int[] Expences => expe;
+		public List<BnfoEmployee> Employees { get; set; } = new List<BnfoEmployee>();
+		public List<BnfoHistory> History { get; set; } = new List<BnfoHistory>();
 
 		public int HistoryCount
 		{
 			get; private set;
 		}
 
-		uint unk1,
+		private uint unk1,
 			unk2;
-		uint empct;
+		private uint empct;
 
 		public Collections.BnfoCustomerItems CustomerItems
 		{
@@ -80,10 +49,8 @@ namespace SimPe.Plugin
 		}
 		#endregion
 
-		public Bnfo()
-			: base()
+		public Bnfo() : base()
 		{
-			Version = BnfoVersions.Business;
 			CustomerItems = new Collections.BnfoCustomerItems(this);
 		}
 
@@ -106,11 +73,11 @@ namespace SimPe.Plugin
 			return new BnfoUI();
 		}
 
-		byte[] over;
+		private byte[] over;
 
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
-			ver = reader.ReadUInt32();
+			Version = (BnfoVersions)reader.ReadUInt32();
 			CurrentBusinessState = reader.ReadUInt32();
 			MaxSeenBusinessState = reader.ReadUInt32();
 			unk1 = reader.ReadUInt32();
@@ -131,14 +98,10 @@ namespace SimPe.Plugin
 			reader.BaseStream.Seek(pos, System.IO.SeekOrigin.Begin);
 			*/
 			EmployeeCount = reader.ReadInt32();
-			Array.Resize(ref empls, EmployeeCount);
-			Array.Resize(ref pr, EmployeeCount);
-			Array.Resize(ref a, EmployeeCount);
+			Employees.Capacity = EmployeeCount;
 			for (int i = 0; i < EmployeeCount; i++)
 			{
-				empls[i] = reader.ReadUInt16();
-				pr[i] = reader.ReadInt32();
-				a[i] = reader.ReadUInt32();
+				Employees.Add(new BnfoEmployee(reader));
 			}
 			long pos = reader.BaseStream.Position;
 			over = reader.ReadBytes(
@@ -150,23 +113,27 @@ namespace SimPe.Plugin
 
 			if (HistoryCount > 0 && over.Length > 60)
 			{
-				Array.Resize(ref reven, HistoryCount);
-				Array.Resize(ref expe, HistoryCount);
+				History.Capacity = HistoryCount;
 				reader.BaseStream.Seek(-8, System.IO.SeekOrigin.Current);
 				// first is + 52, I would jump over it so I must pull back 8?
 				for (int i = 0; i < HistoryCount; i++)
 				{
-					reader.BaseStream.Seek(60, System.IO.SeekOrigin.Current);
-					reven[i] = reader.ReadInt32(); // Renenue
+					reader.BaseStream.Seek(60, System.IO.SeekOrigin.Current); // TODO: Investigate if there is information in this data
+					int revenue = reader.ReadInt32();
 					reader.BaseStream.Seek(4, System.IO.SeekOrigin.Current); // credited
-					expe[i] = reader.ReadInt32(); // Expences
+					int expenses = reader.ReadInt32();
+					History.Add(new BnfoHistory
+					{
+						Expenses = expenses,
+						Revenue = revenue
+					});
 				}
 			}
 		}
 
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
-			writer.Write(ver);
+			writer.Write((uint)Version);
 			writer.Write(CurrentBusinessState);
 			writer.Write(MaxSeenBusinessState);
 			writer.Write(unk1);
@@ -179,12 +146,10 @@ namespace SimPe.Plugin
 				item.Serialize(writer);
 			}
 
-			writer.Write(EmployeeCount);
-			for (int i = 0; i < EmployeeCount; i++)
+			writer.Write(Employees.Count);
+			foreach (BnfoEmployee employee in Employees)
 			{
-				writer.Write(empls[i]);
-				writer.Write(pr[i]);
-				writer.Write(a[i]);
+				employee.Serialize(writer);
 			}
 
 			writer.Write(over);
