@@ -13,6 +13,7 @@ using pjse;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Bnfo;
+using SimPe.PackedFiles.Ltxt;
 using SimPe.PackedFiles.Wrapper;
 using SimPe.Plugin.Tool;
 using SimPe.Plugin.Tool.Action;

@@ -10,7 +10,6 @@ using Ambertation.Windows.Forms;
 
 using SimPe.Data;
 using SimPe.PackedFiles.Wrapper;
-using SimPe.Plugin;
 
 namespace SimPe.PackedFiles.Bnfo
 {
@@ -1139,11 +1138,11 @@ namespace SimPe.PackedFiles.Bnfo
 					);
 				if (pfd != null)
 				{
-					Ltxt ltx = new Ltxt();
+					Ltxt.Ltxt ltx = new Ltxt.Ltxt();
 					ltx.ProcessData(pfd, Bnfo.Package);
 					owner = (ushort)ltx.OwnerInstance;
 					ltname = ltx.LotName;
-					homeb = ltx.Type == Ltxt.LotType.Residential ? 0 : 1;
+					homeb = ltx.Type == Ltxt.Ltxt.LotType.Residential ? 0 : 1;
 
 					lblot.Text = ltname + " (" + ltx.Type.ToString() + " Lot)";
 				}
@@ -2189,7 +2188,7 @@ namespace SimPe.PackedFiles.Bnfo
 						);
 					if (pfd != null)
 					{
-						Ltxt ltx = new Ltxt();
+						Ltxt.Ltxt ltx = new Ltxt.Ltxt();
 						ltx.ProcessData(pfd, Bnfo.Package);
 						ltx.OwnerInstance = s.Instance;
 						ltx.SynchronizeUserData();
