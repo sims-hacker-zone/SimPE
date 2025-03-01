@@ -14,6 +14,7 @@ using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Bnfo;
 using SimPe.PackedFiles.Ltxt;
+using SimPe.PackedFiles.Scid;
 using SimPe.PackedFiles.Wrapper;
 using SimPe.Plugin.Tool;
 using SimPe.Plugin.Tool.Action;
@@ -196,7 +197,7 @@ namespace SimPe.Plugin
 						new LastEPusePackedFileWrapper(),
 						new GWInvPackedFileWrapper(),
 						new XGoal(),
-						new SimindexPackedFileWrapper(),
+						new Scid(),
 						new FunctionPackedFileWrapper(),
 						new SimpleTextPackedFileWrapper(),
 						new SimmyListPackedFileWrapper(),
