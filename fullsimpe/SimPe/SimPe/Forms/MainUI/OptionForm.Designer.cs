@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
+using SimPe.Forms.MainUI.CustomControls;
 
 namespace SimPe
 {
@@ -92,7 +93,7 @@ namespace SimPe
 		private ComboBox cbReport;
 		private CheckBox cbLock;
 		private MyPropertyGrid pgPaths;
-		private SimPe.CheckControl checkControl1;
+		private CheckControl checkControl1;
 		private ComboBox cbCustom;
 		private PropertyGrid pgcustom;
 		private CheckBox cbsplash;
@@ -274,7 +275,7 @@ namespace SimPe
 			this.hcCheck = new System.Windows.Forms.Panel();
 			this.infocheck1 = new SimPe.infocheck();
 			this.hdCheck = new Panel();
-			this.checkControl1 = new SimPe.CheckControl();
+			this.checkControl1 = new CheckControl();
 			this.hcCustom = new System.Windows.Forms.Panel();
 			this.cbCustom = new System.Windows.Forms.ComboBox();
 			this.hdCustom = new Panel();

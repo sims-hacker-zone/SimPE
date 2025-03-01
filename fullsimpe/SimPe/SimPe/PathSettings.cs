@@ -3,6 +3,8 @@
 using System;
 using System.ComponentModel;
 
+using SimPe.Forms.MainUI;
+
 namespace SimPe
 {
 	/// <summary>

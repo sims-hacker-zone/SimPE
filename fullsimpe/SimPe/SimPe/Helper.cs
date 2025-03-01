@@ -5,6 +5,8 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 
+using SimPe.Forms.MainUI;
+
 namespace SimPe
 {
 	/// <summary>

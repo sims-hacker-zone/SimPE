@@ -3,7 +3,7 @@
 
 using System.Windows.Forms;
 
-namespace SimPe
+namespace SimPe.Forms.MainUI.CustomControls
 {
 	/// <summary>
 	/// Summary description for CheckItem.

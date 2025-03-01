@@ -4,7 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
+using SimPe.Forms.MainUI;
 using SimPe.PackedFiles.Wrapper.Supporting;
+
+using Message = SimPe.Forms.MainUI.Message;
 
 namespace SimPe.PackedFiles.UserInterface
 {

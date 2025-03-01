@@ -3,7 +3,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace SimPe
+namespace SimPe.Forms.MainUI
 {
 	/// <summary>
 	/// Summary description for WaitingForm.
@@ -194,9 +194,9 @@ namespace SimPe
 			//
 			lbmsg.AccessibleRole = AccessibleRole.Text;
 			lbmsg.ForeColor = System.Drawing.Color.FromArgb(
-				(byte)204,
-				(byte)211,
-				(byte)213
+				204,
+				211,
+				213
 			);
 			resources.ApplyResources(lbmsg, "lbmsg");
 			lbmsg.Name = "lbmsg";
@@ -227,9 +227,9 @@ namespace SimPe
 			AccessibleRole = AccessibleRole.None;
 			resources.ApplyResources(this, "$this");
 			BackColor = System.Drawing.Color.FromArgb(
-				(byte)102,
-				(byte)102,
-				(byte)153
+				102,
+				102,
+				153
 			);
 			CausesValidation = false;
 			Controls.Add(panel1);

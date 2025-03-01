@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 
+using SimPe.Forms.MainUI;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Scenegraph;
 

@@ -5,7 +5,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace SimPe
+namespace SimPe.Forms.MainUI
 {
 	/// <summary>
 	/// Summary description for Message.
@@ -201,7 +201,7 @@ namespace SimPe
 				m.label1.AutoSize = true;
 				m.panel1.Width = m.ClientRectangle.Width;
 				m.panel2.Width = m.panel1.Width;
-				m.label1.Width = m.panel2.Width - (2 * m.label1.Left);
+				m.label1.Width = m.panel2.Width - 2 * m.label1.Left;
 				m.label1.Text = message;
 
 				string text = m.label1.Text;
@@ -213,7 +213,7 @@ namespace SimPe
 				SizeF stringSize = g.MeasureString(text, textFont, layoutSize);
 				g.Dispose();
 				m.label1.Height = (int)stringSize.Height;
-				int newsize = m.label1.Height + 10 + (2 * m.label1.Top);
+				int newsize = m.label1.Height + 10 + 2 * m.label1.Top;
 
 				m.panel2.Height = newsize;
 				m.panel1.Top = m.panel2.Height;
@@ -257,7 +257,7 @@ namespace SimPe
 			int pos = (int)panel1.Tag;
 			panel1.Tag = pos + 1;
 
-			bn.Left = panel1.Width - ((bn.Width + 8) * pos);
+			bn.Left = panel1.Width - (bn.Width + 8) * pos;
 			bn.Top = 8;
 			bn.FlatStyle = FlatStyle.System;
 

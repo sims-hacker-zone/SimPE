@@ -3,6 +3,8 @@
 using System;
 using System.Windows.Forms;
 
+using SimPe.Forms.MainUI.Components;
+
 namespace SimPe
 {
 	partial class MainForm

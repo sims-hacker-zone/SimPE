@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.IO;
 
+using SimPe.Forms.MainUI;
 using SimPe.Geometry;
 using SimPe.Plugin.Anim;
 using SimPe.Plugin.Gmdc;

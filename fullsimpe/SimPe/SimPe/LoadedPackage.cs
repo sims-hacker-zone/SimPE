@@ -5,6 +5,9 @@ using System.Windows.Forms;
 
 using SimPe.Collections;
 using SimPe.Events;
+using SimPe.Forms.MainUI;
+
+using Message = SimPe.Forms.MainUI.Message;
 
 namespace SimPe
 {

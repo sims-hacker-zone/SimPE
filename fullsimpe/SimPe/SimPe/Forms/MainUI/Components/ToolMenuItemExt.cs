@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 using SimPe.Interfaces;
 
-namespace SimPe
+namespace SimPe.Forms.MainUI.Components
 {
 	public class ToolMenuItemExt : ToolStripMenuItem
 	{

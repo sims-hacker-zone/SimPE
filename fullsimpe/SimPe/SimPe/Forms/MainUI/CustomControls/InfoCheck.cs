@@ -7,6 +7,10 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Xml;
 
+using SimPe.Forms.MainUI;
+
+using Message = SimPe.Forms.MainUI.Message;
+
 namespace SimPe
 {
 	[ToolboxBitmap(typeof(Panel))]

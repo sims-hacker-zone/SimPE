@@ -3,6 +3,7 @@
 using System;
 using System.Collections;
 
+using SimPe.Forms.MainUI;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Wrapper;

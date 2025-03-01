@@ -4,6 +4,10 @@ using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
+using SimPe.Forms.MainUI;
+
+using Message = SimPe.Forms.MainUI.Message;
+
 namespace SimPe.Plugin
 {
 	/// <summary>

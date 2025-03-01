@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using Ambertation.Windows.Forms;
 
 using SimPe.Events;
+using SimPe.Forms.MainUI;
 
 namespace SimPe
 {

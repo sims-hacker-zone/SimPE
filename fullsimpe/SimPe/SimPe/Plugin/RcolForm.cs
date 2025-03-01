@@ -3,6 +3,7 @@
 using System;
 using System.Windows.Forms;
 
+using SimPe.Forms.MainUI;
 using SimPe.Interfaces.Scenegraph;
 
 namespace SimPe.Plugin
