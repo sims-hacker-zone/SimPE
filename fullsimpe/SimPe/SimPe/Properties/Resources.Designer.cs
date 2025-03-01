@@ -8,869 +8,1114 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SimPe.Properties {
-    using System;
-    using System.Reflection;
-    
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
-    [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-    [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
-        
-        private static System.Resources.ResourceManager resourceMan;
-        
-        private static System.Globalization.CultureInfo resourceCulture;
-        
-        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static System.Resources.ResourceManager ResourceManager {
-            get {
-                if (object.Equals(null, resourceMan)) {
-                    System.Resources.ResourceManager temp = new System.Resources.ResourceManager("SimPe.SimPe.Properties.Resources", typeof(Resources).Assembly);
-                    resourceMan = temp;
-                }
-                return resourceMan;
-            }
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static System.Globalization.CultureInfo Culture {
-            get {
-                return resourceCulture;
-            }
-            set {
-                resourceCulture = value;
-            }
-        }
-        
-        internal static System.Drawing.Bitmap acbgclone {
-            get {
-                object obj = ResourceManager.GetObject("acbgclone", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap acbgcreate {
-            get {
-                object obj = ResourceManager.GetObject("acbgcreate", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap acbgdelete {
-            get {
-                object obj = ResourceManager.GetObject("acbgdelete", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap acbgexport {
-            get {
-                object obj = ResourceManager.GetObject("acbgexport", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap acbgfilter {
-            get {
-                object obj = ResourceManager.GetObject("acbgfilter", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap acbgfixtgi {
-            get {
-                object obj = ResourceManager.GetObject("acbgfixtgi", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap acbgimport {
-            get {
-                object obj = ResourceManager.GetObject("acbgimport", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap acbgreplace {
-            get {
-                object obj = ResourceManager.GetObject("acbgreplace", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap acbgrestore {
-            get {
-                object obj = ResourceManager.GetObject("acbgrestore", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap acbgstart {
-            get {
-                object obj = ResourceManager.GetObject("acbgstart", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap acchecktable {
-            get {
-                object obj = ResourceManager.GetObject("acchecktable", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap acclone {
-            get {
-                object obj = ResourceManager.GetObject("acclone", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap accreate {
-            get {
-                object obj = ResourceManager.GetObject("accreate", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap acdelete {
-            get {
-                object obj = ResourceManager.GetObject("acdelete", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap acexport {
-            get {
-                object obj = ResourceManager.GetObject("acexport", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap acfilter {
-            get {
-                object obj = ResourceManager.GetObject("acfilter", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap acfixtgi {
-            get {
-                object obj = ResourceManager.GetObject("acfixtgi", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap acimport {
-            get {
-                object obj = ResourceManager.GetObject("acimport", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap acreplace {
-            get {
-                object obj = ResourceManager.GetObject("acreplace", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap acrestore {
-            get {
-                object obj = ResourceManager.GetObject("acrestore", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap acstart {
-            get {
-                object obj = ResourceManager.GetObject("acstart", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap anibgcamera {
-            get {
-                object obj = ResourceManager.GetObject("anibgcamera", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap anicamera {
-            get {
-                object obj = ResourceManager.GetObject("anicamera", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap bgacchecktable {
-            get {
-                object obj = ResourceManager.GetObject("bgacchecktable", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap bgbookmark {
-            get {
-                object obj = ResourceManager.GetObject("bgbookmark", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap bgbutflie {
-            get {
-                object obj = ResourceManager.GetObject("bgbutflie", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap bgdebug {
-            get {
-                object obj = ResourceManager.GetObject("bgdebug", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap bgDelete {
-            get {
-                object obj = ResourceManager.GetObject("bgDelete", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap bgdeletesim {
-            get {
-                object obj = ResourceManager.GetObject("bgdeletesim", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap bgExtractSt {
-            get {
-                object obj = ResourceManager.GetObject("bgExtractSt", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap bgfinder {
-            get {
-                object obj = ResourceManager.GetObject("bgfinder", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap bghoodtool {
-            get {
-                object obj = ResourceManager.GetObject("bghoodtool", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap bgKey {
-            get {
-                object obj = ResourceManager.GetObject("bgKey", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap bgLinkSt {
-            get {
-                object obj = ResourceManager.GetObject("bgLinkSt", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap bgNew {
-            get {
-                object obj = ResourceManager.GetObject("bgNew", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap bgOpen {
-            get {
-                object obj = ResourceManager.GetObject("bgOpen", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap bgPhpGuid {
-            get {
-                object obj = ResourceManager.GetObject("bgPhpGuid", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap bgpjobjdtool {
-            get {
-                object obj = ResourceManager.GetObject("bgpjobjdtool", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap bgReset {
-            get {
-                object obj = ResourceManager.GetObject("bgReset", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap bgSave {
-            get {
-                object obj = ResourceManager.GetObject("bgSave", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap bgSaveAs {
-            get {
-                object obj = ResourceManager.GetObject("bgSaveAs", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap bhbgimport {
-            get {
-                object obj = ResourceManager.GetObject("bhbgimport", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap bhbglua {
-            get {
-                object obj = ResourceManager.GetObject("bhbglua", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap bhimport {
-            get {
-                object obj = ResourceManager.GetObject("bhimport", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap bhlua {
-            get {
-                object obj = ResourceManager.GetObject("bhlua", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap blDelete {
-            get {
-                object obj = ResourceManager.GetObject("blDelete", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap blNew {
-            get {
-                object obj = ResourceManager.GetObject("blNew", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap blOpen {
-            get {
-                object obj = ResourceManager.GetObject("blOpen", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap blReset {
-            get {
-                object obj = ResourceManager.GetObject("blReset", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap blSave {
-            get {
-                object obj = ResourceManager.GetObject("blSave", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap blSaveAs {
-            get {
-                object obj = ResourceManager.GetObject("blSaveAs", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap bookmark {
-            get {
-                object obj = ResourceManager.GetObject("bookmark", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap butflie {
-            get {
-                object obj = ResourceManager.GetObject("butflie", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap CAF {
-            get {
-                object obj = ResourceManager.GetObject("CAF", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap cbgpreview {
-            get {
-                object obj = ResourceManager.GetObject("cbgpreview", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap copyright {
-            get {
-                object obj = ResourceManager.GetObject("copyright", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap copyrightbg {
-            get {
-                object obj = ResourceManager.GetObject("copyrightbg", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap cpreview {
-            get {
-                object obj = ResourceManager.GetObject("cpreview", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap dbagent {
-            get {
-                object obj = ResourceManager.GetObject("dbagent", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap dbbgagent {
-            get {
-                object obj = ResourceManager.GetObject("dbbgagent", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap dbbgoS2pack {
-            get {
-                object obj = ResourceManager.GetObject("dbbgoS2pack", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap dbbgos2pc {
-            get {
-                object obj = ResourceManager.GetObject("dbbgos2pc", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap dbbgpackage {
-            get {
-                object obj = ResourceManager.GetObject("dbbgpackage", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap dbbgrecur {
-            get {
-                object obj = ResourceManager.GetObject("dbbgrecur", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap dbbgS2pack {
-            get {
-                object obj = ResourceManager.GetObject("dbbgS2pack", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap dbbgs2pc {
-            get {
-                object obj = ResourceManager.GetObject("dbbgs2pc", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap dbbgselected {
-            get {
-                object obj = ResourceManager.GetObject("dbbgselected", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap dbpackage {
-            get {
-                object obj = ResourceManager.GetObject("dbpackage", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap dbrecur {
-            get {
-                object obj = ResourceManager.GetObject("dbrecur", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap dbS2pack {
-            get {
-                object obj = ResourceManager.GetObject("dbS2pack", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap dbs2pc {
-            get {
-                object obj = ResourceManager.GetObject("dbs2pc", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap dbselected {
-            get {
-                object obj = ResourceManager.GetObject("dbselected", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap debug {
-            get {
-                object obj = ResourceManager.GetObject("debug", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap deletesim {
-            get {
-                object obj = ResourceManager.GetObject("deletesim", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap demo {
-            get {
-                object obj = ResourceManager.GetObject("demo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap ExtractSt {
-            get {
-                object obj = ResourceManager.GetObject("ExtractSt", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap gametip {
-            get {
-                object obj = ResourceManager.GetObject("gametip", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap hoodtool {
-            get {
-                object obj = ResourceManager.GetObject("hoodtool", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap Info {
-            get {
-                object obj = ResourceManager.GetObject("Info", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap Infobg {
-            get {
-                object obj = ResourceManager.GetObject("Infobg", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap LinkSt {
-            get {
-                object obj = ResourceManager.GetObject("LinkSt", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap network {
-            get {
-                object obj = ResourceManager.GetObject("network", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap noone {
-            get {
-                object obj = ResourceManager.GetObject("noone", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap pjfinder {
-            get {
-                object obj = ResourceManager.GetObject("pjfinder", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap pjkey {
-            get {
-                object obj = ResourceManager.GetObject("pjkey", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap pjobjdtool {
-            get {
-                object obj = ResourceManager.GetObject("pjobjdtool", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap psDelete {
-            get {
-                object obj = ResourceManager.GetObject("psDelete", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap psNew {
-            get {
-                object obj = ResourceManager.GetObject("psNew", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap psOpen {
-            get {
-                object obj = ResourceManager.GetObject("psOpen", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap psSave {
-            get {
-                object obj = ResourceManager.GetObject("psSave", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap readim {
-            get {
-                object obj = ResourceManager.GetObject("readim", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap sheone {
-            get {
-                object obj = ResourceManager.GetObject("sheone", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap stxt {
-            get {
-                object obj = ResourceManager.GetObject("stxt", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap support {
-            get {
-                object obj = ResourceManager.GetObject("support", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap tbbgcamera {
-            get {
-                object obj = ResourceManager.GetObject("tbbgcamera", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap tbbgcontents {
-            get {
-                object obj = ResourceManager.GetObject("tbbgcontents", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap tbbgcreatepackage {
-            get {
-                object obj = ResourceManager.GetObject("tbbgcreatepackage", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap tbbggenerator {
-            get {
-                object obj = ResourceManager.GetObject("tbbggenerator", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap tbbgintegrity {
-            get {
-                object obj = ResourceManager.GetObject("tbbgintegrity", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap tbbgneighboorhood {
-            get {
-                object obj = ResourceManager.GetObject("tbbgneighboorhood", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap tbbgsimbrowser {
-            get {
-                object obj = ResourceManager.GetObject("tbbgsimbrowser", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap tbbgskinn {
-            get {
-                object obj = ResourceManager.GetObject("tbbgskinn", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap tbbgsurg {
-            get {
-                object obj = ResourceManager.GetObject("tbbgsurg", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap tbbgwcreatepackage {
-            get {
-                object obj = ResourceManager.GetObject("tbbgwcreatepackage", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap tbcamera {
-            get {
-                object obj = ResourceManager.GetObject("tbcamera", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap tbcontents {
-            get {
-                object obj = ResourceManager.GetObject("tbcontents", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap tbcreatepackage {
-            get {
-                object obj = ResourceManager.GetObject("tbcreatepackage", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap tbgenerator {
-            get {
-                object obj = ResourceManager.GetObject("tbgenerator", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap tbintegrit {
-            get {
-                object obj = ResourceManager.GetObject("tbintegrit", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap tbneighboorhood {
-            get {
-                object obj = ResourceManager.GetObject("tbneighboorhood", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap tbPhpGuid {
-            get {
-                object obj = ResourceManager.GetObject("tbPhpGuid", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap tbsimbrowser {
-            get {
-                object obj = ResourceManager.GetObject("tbsimbrowser", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap tbskinn {
-            get {
-                object obj = ResourceManager.GetObject("tbskinn", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap tbsurg {
-            get {
-                object obj = ResourceManager.GetObject("tbsurg", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap whfail {
-            get {
-                object obj = ResourceManager.GetObject("whfail", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap whok {
-            get {
-                object obj = ResourceManager.GetObject("whok", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap whunk {
-            get {
-                object obj = ResourceManager.GetObject("whunk", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap whwarn {
-            get {
-                object obj = ResourceManager.GetObject("whwarn", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-    }
+namespace SimPe.Properties
+{
+	using System;
+	using System.Reflection;
+
+
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+	[System.Diagnostics.DebuggerNonUserCodeAttribute()]
+	[System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+	internal class Resources
+	{
+
+		private static System.Resources.ResourceManager resourceMan;
+
+		private static System.Globalization.CultureInfo resourceCulture;
+
+		[System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+		internal Resources()
+		{
+		}
+
+		[System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+		internal static System.Resources.ResourceManager ResourceManager
+		{
+			get
+			{
+				if (object.Equals(null, resourceMan))
+				{
+					System.Resources.ResourceManager temp = new System.Resources.ResourceManager("SimPe.Properties.Resources", typeof(Resources).Assembly);
+					resourceMan = temp;
+				}
+				return resourceMan;
+			}
+		}
+
+		[System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+		internal static System.Globalization.CultureInfo Culture
+		{
+			get
+			{
+				return resourceCulture;
+			}
+			set
+			{
+				resourceCulture = value;
+			}
+		}
+
+		internal static System.Drawing.Bitmap acbgclone
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("acbgclone", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap acbgcreate
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("acbgcreate", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap acbgdelete
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("acbgdelete", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap acbgexport
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("acbgexport", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap acbgfilter
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("acbgfilter", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap acbgfixtgi
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("acbgfixtgi", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap acbgimport
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("acbgimport", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap acbgreplace
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("acbgreplace", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap acbgrestore
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("acbgrestore", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap acbgstart
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("acbgstart", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap acchecktable
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("acchecktable", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap acclone
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("acclone", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap accreate
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("accreate", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap acdelete
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("acdelete", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap acexport
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("acexport", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap acfilter
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("acfilter", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap acfixtgi
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("acfixtgi", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap acimport
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("acimport", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap acreplace
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("acreplace", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap acrestore
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("acrestore", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap acstart
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("acstart", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap anibgcamera
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("anibgcamera", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap anicamera
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("anicamera", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap bgacchecktable
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("bgacchecktable", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap bgbookmark
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("bgbookmark", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap bgbutflie
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("bgbutflie", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap bgdebug
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("bgdebug", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap bgDelete
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("bgDelete", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap bgdeletesim
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("bgdeletesim", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap bgExtractSt
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("bgExtractSt", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap bgfinder
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("bgfinder", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap bghoodtool
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("bghoodtool", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap bgKey
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("bgKey", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap bgLinkSt
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("bgLinkSt", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap bgNew
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("bgNew", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap bgOpen
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("bgOpen", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap bgPhpGuid
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("bgPhpGuid", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap bgpjobjdtool
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("bgpjobjdtool", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap bgReset
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("bgReset", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap bgSave
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("bgSave", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap bgSaveAs
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("bgSaveAs", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap bhbgimport
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("bhbgimport", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap bhbglua
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("bhbglua", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap bhimport
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("bhimport", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap bhlua
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("bhlua", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap blDelete
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("blDelete", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap blNew
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("blNew", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap blOpen
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("blOpen", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap blReset
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("blReset", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap blSave
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("blSave", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap blSaveAs
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("blSaveAs", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap bookmark
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("bookmark", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap butflie
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("butflie", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap CAF
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("CAF", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap cbgpreview
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("cbgpreview", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap copyright
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("copyright", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap copyrightbg
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("copyrightbg", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap cpreview
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("cpreview", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap dbagent
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("dbagent", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap dbbgagent
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("dbbgagent", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap dbbgoS2pack
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("dbbgoS2pack", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap dbbgos2pc
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("dbbgos2pc", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap dbbgpackage
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("dbbgpackage", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap dbbgrecur
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("dbbgrecur", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap dbbgS2pack
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("dbbgS2pack", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap dbbgs2pc
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("dbbgs2pc", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap dbbgselected
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("dbbgselected", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap dbpackage
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("dbpackage", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap dbrecur
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("dbrecur", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap dbS2pack
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("dbS2pack", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap dbs2pc
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("dbs2pc", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap dbselected
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("dbselected", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap debug
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("debug", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap deletesim
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("deletesim", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap demo
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("demo", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap ExtractSt
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("ExtractSt", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap gametip
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("gametip", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap hoodtool
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("hoodtool", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap Info
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("Info", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap Infobg
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("Infobg", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap LinkSt
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("LinkSt", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap network
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("network", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap noone
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("noone", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap pjfinder
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("pjfinder", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap pjkey
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("pjkey", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap pjobjdtool
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("pjobjdtool", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap psDelete
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("psDelete", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap psNew
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("psNew", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap psOpen
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("psOpen", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap psSave
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("psSave", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap readim
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("readim", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap sheone
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("sheone", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap stxt
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("stxt", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap support
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("support", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap tbbgcamera
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("tbbgcamera", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap tbbgcontents
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("tbbgcontents", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap tbbgcreatepackage
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("tbbgcreatepackage", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap tbbggenerator
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("tbbggenerator", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap tbbgintegrity
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("tbbgintegrity", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap tbbgneighboorhood
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("tbbgneighboorhood", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap tbbgsimbrowser
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("tbbgsimbrowser", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap tbbgskinn
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("tbbgskinn", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap tbbgsurg
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("tbbgsurg", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap tbbgwcreatepackage
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("tbbgwcreatepackage", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap tbcamera
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("tbcamera", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap tbcontents
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("tbcontents", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap tbcreatepackage
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("tbcreatepackage", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap tbgenerator
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("tbgenerator", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap tbintegrit
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("tbintegrit", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap tbneighboorhood
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("tbneighboorhood", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap tbPhpGuid
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("tbPhpGuid", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap tbsimbrowser
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("tbsimbrowser", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap tbskinn
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("tbskinn", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap tbsurg
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("tbsurg", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap whfail
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("whfail", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap whok
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("whok", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap whunk
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("whunk", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+
+		internal static System.Drawing.Bitmap whwarn
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("whwarn", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+	}
 }
