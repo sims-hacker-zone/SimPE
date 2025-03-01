@@ -4,7 +4,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace SimPe
+namespace SimPe.Forms.MainUI
 {
 	/// <summary>
 	/// Summary description for ExceptionForm.
@@ -104,9 +104,9 @@ namespace SimPe
 			rtb.BackColor = System.Drawing.SystemColors.ControlLightLight;
 			rtb.BorderStyle = BorderStyle.None;
 			rtb.ForeColor = System.Drawing.Color.FromArgb(
-				(byte)64,
-				(byte)64,
-				(byte)64
+				64,
+				64,
+				64
 			);
 			rtb.Name = "rtb";
 			rtb.ReadOnly = true;

@@ -3,7 +3,7 @@
 
 using System;
 
-namespace SimPe
+namespace SimPe.Forms.MainUI.Components
 {
 	/// <summary>
 	/// An Item in the Help Menu

@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Windows.Forms;
 
 using SimPe.Data;
+using SimPe.Forms.MainUI;
 using SimPe.Interfaces.Files;
 
 namespace SimPe.Plugin.UI

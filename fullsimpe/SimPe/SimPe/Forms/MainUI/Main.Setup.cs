@@ -4,6 +4,8 @@ using System;
 using System.Windows.Forms;
 
 using SimPe.Events;
+using SimPe.Forms.MainUI;
+using SimPe.Forms.MainUI.Components;
 
 namespace SimPe
 {

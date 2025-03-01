@@ -4,7 +4,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace SimPe
+namespace SimPe.Forms.MainUI
 {
 	/// <summary>
 	/// Summary description for About.

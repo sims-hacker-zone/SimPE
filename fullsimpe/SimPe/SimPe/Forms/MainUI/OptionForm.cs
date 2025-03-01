@@ -7,6 +7,9 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
+using SimPe.Forms.MainUI;
+using SimPe.Forms.MainUI.CustomControls;
+
 namespace SimPe
 {
 	/// <summary>

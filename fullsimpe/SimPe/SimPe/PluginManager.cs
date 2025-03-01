@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
+using SimPe.Forms.MainUI.Components;
 using SimPe.Interfaces;
 
 namespace SimPe

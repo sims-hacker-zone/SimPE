@@ -3,7 +3,7 @@
 
 using System.Windows.Forms;
 
-namespace SimPe
+namespace SimPe.Forms.MainUI
 {
 	/// <summary>
 	/// Summary description for FileTableItemForm.

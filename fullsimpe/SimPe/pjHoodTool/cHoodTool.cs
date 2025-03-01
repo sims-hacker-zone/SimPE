@@ -7,6 +7,7 @@ using System.IO;
 using System.Text;
 
 using SimPe;
+using SimPe.Forms.MainUI;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
 using SimPe.PackedFiles.Ltxt;

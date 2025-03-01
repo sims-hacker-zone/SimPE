@@ -4,7 +4,7 @@ using System;
 using System.Collections;
 using System.Windows.Forms;
 
-namespace SimPe
+namespace SimPe.Forms.MainUI
 {
 	/// <summary>
 	/// Summary description for ImportSemi.
@@ -452,8 +452,8 @@ namespace SimPe
 						lbfiles.Items.Add(
 							item,
 
-								(item.FileDescriptor.Type == Data.MetaData.BHAV_FILE)
-								|| (item.FileDescriptor.Type == 0x42434F4E)
+								item.FileDescriptor.Type == Data.MetaData.BHAV_FILE
+								|| item.FileDescriptor.Type == 0x42434F4E
 
 						);
 						loaded.Add(item.FileDescriptor);
@@ -478,7 +478,7 @@ namespace SimPe
 			uint maxbhavinst = 0x1000;
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
-				if ((pfd.Instance < 0x2000) && (pfd.Instance > maxbhavinst))
+				if (pfd.Instance < 0x2000 && pfd.Instance > maxbhavinst)
 				{
 					maxbhavinst = pfd.Instance;
 				}
@@ -492,7 +492,7 @@ namespace SimPe
 			uint maxbconinst = 0x1000;
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
-				if ((pfd.Instance < 0x2000) && (pfd.Instance > maxbconinst))
+				if (pfd.Instance < 0x2000 && pfd.Instance > maxbconinst)
 				{
 					maxbconinst = pfd.Instance;
 				}
