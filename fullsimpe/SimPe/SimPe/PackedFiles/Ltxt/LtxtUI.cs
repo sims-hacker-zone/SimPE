@@ -4,7 +4,7 @@ using System;
 
 using SimPe.Interfaces.Plugin;
 
-namespace SimPe.Plugin
+namespace SimPe.PackedFiles.Ltxt
 {
 	/// <summary>
 	/// This class is used to fill the UI for this FileType with Data
@@ -93,18 +93,17 @@ namespace SimPe.Plugin
 			form.tbleft.Text = wrp.LotPosition.X.ToString();
 			form.tbz.Text = wrp.LotElevation.ToString();
 			form.cborient.SelectedValue = wrp.Orientation;
-			form.tbrotation.Text = "0x" + Helper.HexString(wrp.LotRotation);
-			form.tbu0.Text = "0x" + Helper.HexString(wrp.Unknown0);
-			Boolset bby = wrp.Unknown0;
-			form.cbhidim.Checked = bby[4];
-			form.cbBeachy.Checked = bby[7];
+			form.tbrotation.Text = "0x" + Helper.HexString((uint)wrp.LotRotation);
+			form.tbu0.Text = "0x" + Helper.HexString((uint)wrp.LotFlags);
+			form.cbhidim.Checked = wrp.LotFlags.HasFlag(LotFlags.IsHidden);
+			form.cbBeachy.Checked = wrp.LotFlags.HasFlag(LotFlags.HasBeach);
 			if (
 				wrp.Version >= LtxtVersion.Apartment
 				|| wrp.SubVersion >= LtxtSubVersion.Apartment
 			)
 			{
 				form.cbLotClas.Enabled = true;
-				form.cbLotClas.SelectedIndex = bby[12] ? 1 : bby[13] ? 2 : bby[14] ? 3 : 0;
+				form.cbLotClas.SelectedIndex = wrp.LotFlags.HasFlag(LotFlags.LowClass) ? 1 : wrp.LotFlags.HasFlag(LotFlags.MiddleClass) ? 2 : wrp.LotFlags.HasFlag(LotFlags.HighClass) ? 3 : 0;
 			}
 			else
 			{
@@ -127,7 +126,6 @@ namespace SimPe.Plugin
 				form.gbunown.Location = new System.Drawing.Point(116, 408);
 				form.llunknone.Location = new System.Drawing.Point(41, 408);
 				form.gbhobby.Location = new System.Drawing.Point(30, 408);
-				form.gbtravel.Location = new System.Drawing.Point(372, 408);
 			}
 			else
 			{
@@ -135,7 +133,6 @@ namespace SimPe.Plugin
 				form.gbunown.Location = new System.Drawing.Point(116, 333);
 				form.llunknone.Location = new System.Drawing.Point(41, 333);
 				form.gbhobby.Location = new System.Drawing.Point(30, 333);
-				form.gbtravel.Location = new System.Drawing.Point(372, 333);
 			}
 
 			form.lbPlayim.Visible = wrp.appendage != null;
@@ -144,50 +141,25 @@ namespace SimPe.Plugin
 			form.tbdesc.Text = wrp.LotDesc;
 			form.tbinst.Text = "0x" + Helper.HexString(wrp.LotInstance);
 			form.tbu3.Text = wrp.Unknown3.ToString();
-			form.tbu4.Text = "0x" + Helper.HexString(wrp.Unknown4);
-			Boolset tty = wrp.Unknown4;
+			form.tbu4.Text = "0x" + Helper.HexString((uint)wrp.LotHobbyFlags);
 			if (wrp.SubVersion >= LtxtSubVersion.Freetime)
 			{
-				form.cbtrjflag5.Checked = tty[30];
-				form.cbtrjflag4.Checked = tty[28];
-				form.cbtrjflag3.Checked = tty[27];
-				form.cbtrjflag2.Checked = tty[26];
-				form.cbtrjflag1.Checked = tty[25];
-				form.cbtrjungle.Checked = tty[24];
-				form.cbtrhidec.Checked = tty[23];
-				form.cbtrpool.Checked = tty[22];
-				form.cbtrmale.Checked = tty[21];
-				form.cbtrfem.Checked = tty[20];
-				form.cbtrbeach.Checked = tty[19];
-				form.cbtrformal.Checked = tty[18];
-				form.cbtrteen.Checked = tty[17];
-				form.cbtrnude.Checked = tty[16];
-				form.cbtrpern.Checked = tty[15];
-				form.cgtrwhite.Checked = tty[14];
-				form.cbtrblue.Checked = tty[13];
-				form.cbtrredred.Checked = tty[12];
-				form.cbtradult.Checked = tty[11];
-				form.cbtrclub.Checked = tty[10];
-				form.cbhbmusic.Checked = tty[9];
-				form.cbhbscience.Checked = tty[8];
-				form.cbhbfitness.Checked = tty[7];
-				form.cbhbtinker.Checked = tty[6];
-				form.cbhbnature.Checked = tty[5];
-				form.cbhbgames.Checked = tty[4];
-				form.cbhbsport.Checked = tty[3];
-				form.cbhbfilm.Checked = tty[2];
-				form.cbhbart.Checked = tty[1];
-				form.cbhbcook.Checked = tty[0];
+				form.cbhbmusic.Checked = wrp.LotHobbyFlags.HasFlag(LotHobbyFlags.Music);
+				form.cbhbscience.Checked = wrp.LotHobbyFlags.HasFlag(LotHobbyFlags.Science);
+				form.cbhbfitness.Checked = wrp.LotHobbyFlags.HasFlag(LotHobbyFlags.Fitness);
+				form.cbhbtinker.Checked = wrp.LotHobbyFlags.HasFlag(LotHobbyFlags.Tinkering);
+				form.cbhbnature.Checked = wrp.LotHobbyFlags.HasFlag(LotHobbyFlags.Nature);
+				form.cbhbgames.Checked = wrp.LotHobbyFlags.HasFlag(LotHobbyFlags.Games);
+				form.cbhbsport.Checked = wrp.LotHobbyFlags.HasFlag(LotHobbyFlags.Sport);
+				form.cbhbfilm.Checked = wrp.LotHobbyFlags.HasFlag(LotHobbyFlags.Films);
+				form.cbhbart.Checked = wrp.LotHobbyFlags.HasFlag(LotHobbyFlags.Art);
+				form.cbhbcook.Checked = wrp.LotHobbyFlags.HasFlag(LotHobbyFlags.Cooking);
 
 				if (wrp.Type != Ltxt.LotType.Hobby)
 				{
-					form.gbtravel.Visible = form.gbhobby.Visible = false;
+					form.gbhobby.Visible = false;
 				}
 
-				form.cbtrmale.Enabled = !form.cbtrfem.Checked;
-				form.cbtrfem.Enabled = !form.cbtrmale.Checked;
-				form.cbtrclub.Enabled = wrp.Type == Ltxt.LotType.Hobby;
-				form.cbtrhidec.Enabled = wrp.Type == Ltxt.LotType.Hobby;
 				form.gbhobby.Enabled = wrp.Type == Ltxt.LotType.Hobby;
 				form.bthbytrvl.Enabled = wrp.Type == Ltxt.LotType.Hobby;
 			}
@@ -195,7 +167,6 @@ namespace SimPe.Plugin
 			{
 				form.bthbytrvl.Enabled = false;
 				form.gbhobby.Visible = false;
-				form.gbtravel.Visible = false;
 			}
 
 			form.cbBeachy.Enabled = wrp.SubVersion >= LtxtSubVersion.Voyage;

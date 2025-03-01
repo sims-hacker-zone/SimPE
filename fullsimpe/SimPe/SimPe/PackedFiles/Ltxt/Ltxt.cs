@@ -1,35 +1,13 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
-using System;
 using System.Collections.Generic;
 using System.Drawing;
 
 using SimPe.Interfaces.Plugin;
+using SimPe.Plugin;
 
-namespace SimPe.Plugin
+namespace SimPe.PackedFiles.Ltxt
 {
-	public enum LtxtVersion : ushort
-	{
-		Original = 0x000D,
-		Business = 0x000E,
-		Apartment = 0x0012,
-	}
-
-	public enum LtxtSubVersion : ushort
-	{
-		Original = 0x0006,
-		Voyage = 0x0007,
-		Freetime = 0x0008,
-		Apartment = 0x000B,
-	}
-
-	public enum LotOrientation : byte
-	{
-		Below = 0,
-		Left = 1,
-		Above = 2,
-		Right = 3,
-	}
 
 	/// <summary>
 	/// This is the actual FileWrapper
@@ -38,126 +16,38 @@ namespace SimPe.Plugin
 	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
-	public class Ltxt
-		: AbstractWrapper //Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
-			,
-			IFileWrapper //This Interface is used when loading a File
-			,
-			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
-									  //,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
+	public partial class Ltxt : AbstractWrapper, IFileWrapper, IFileWrapperSaveExtension
 	{
-		public enum LotType : byte
-		{
-			Residential = 0x00,
-			Community = 0x01,
-			Dorm = 0x02,
-			GreekHouse = 0x03,
-			SecretSociety = 0x04,
-			Hotel = 0x05,
-			SecretHoliday = 0x06,
-			Hobby = 0x07,
-			ApartmentBase = 0x08,
-			ApartmentSublot = 0x09,
-			Witches = 0x0a,
-			Unknown = 0xff,
-		}
-
-		public enum Rotation
-		{
-			toLeft = 0x00,
-			toTop,
-			toRight,
-			toBottom,
-		};
-
-		public class SubLot
-		{
-			public uint ApartmentSublot
-			{
-				get; set;
-			}
-
-			public uint Family
-			{
-				get; set;
-			}
-
-			internal uint Unknown2
-			{
-				get; set;
-			}
-
-			internal uint Unknown3
-			{
-				get; set;
-			}
-
-			internal SubLot()
-			{
-			}
-
-			internal SubLot(System.IO.BinaryReader reader)
-			{
-				Unserialize(reader);
-			}
-
-			private void Unserialize(System.IO.BinaryReader reader)
-			{
-				ApartmentSublot = reader.ReadUInt32();
-				Family = reader.ReadUInt32();
-				Unknown2 = reader.ReadUInt32();
-				Unknown3 = reader.ReadUInt32();
-			}
-
-			internal void Serialize(System.IO.BinaryWriter writer)
-			{
-				writer.Write(ApartmentSublot);
-				writer.Write(Family);
-				writer.Write(Unknown2);
-				writer.Write(Unknown3);
-			}
-		}
 
 		#region Attributes
-		ushort ver;
-		ushort subver;
-		Size sz;
-		Rotation rotation;
 		byte[] unknown_5; //if subver >= Apartment Life
 		Point loc;
 		byte[] unknown_6; //if subver >= Apartment Life (9 bytes)
 		#endregion
 
-		#region Accessor methods
+		#region Properties
 		public LtxtVersion Version
 		{
-			get => (LtxtVersion)ver;
-			set => ver = (ushort)value;
+			get; set;
 		}
-		internal LtxtSubVersion SubVersion
+		public LtxtSubVersion SubVersion
 		{
-			get => (LtxtSubVersion)subver;
-			set => subver = (ushort)value;
+			get; set;
 		}
-		public Size LotSize
-		{
-			get => sz;
-			set => sz = value;
-		}
+		public Size LotSize { get; set; } = new Size(1, 1);
 		public LotType Type
 		{
 			get; set;
 		}
 		public byte LotRoads { get; set; } = 0x00;
-		public byte LotRotation
-		{
-			get => (byte)rotation;
-			set => rotation = (Rotation)value;
-		}
-		public uint Unknown0
+		public Rotation LotRotation
 		{
 			get; set;
-		} // Lot Flags, Use as Boolset
+		}
+		public LotFlags LotFlags
+		{
+			get; set;
+		}
 		public string LotName
 		{
 			get; set;
@@ -169,15 +59,15 @@ namespace SimPe.Plugin
 		internal List<float> Unknown1
 		{
 			get; private set;
-		}
+		} = new List<float>();
 		internal float Unknown3
 		{
 			get; set;
 		}
-		public uint Unknown4
+		public LotHobbyFlags LotHobbyFlags
 		{
 			get; set;
-		} // Lot Hobby Flags, Use as Boolset
+		}
 		internal byte[] Unknown5
 		{
 			get => unknown_5;
@@ -198,7 +88,6 @@ namespace SimPe.Plugin
 		{
 			get; set;
 		}
-
 		public Point LotPosition
 		{
 			get => loc;
@@ -207,7 +96,7 @@ namespace SimPe.Plugin
 		public float LotElevation
 		{
 			get; set;
-		}
+		} = 0x439D;
 		public uint LotInstance
 		{
 			get; set;
@@ -255,7 +144,7 @@ namespace SimPe.Plugin
 		internal byte[] Followup
 		{
 			get; set;
-		}
+		} = new byte[0];
 		internal string appendage
 		{
 			get
@@ -302,16 +191,9 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public Ltxt(Interfaces.IProviderRegistry provider)
-			: base()
+		public Ltxt(Interfaces.IProviderRegistry provider) : base()
 		{
 			Provider = provider;
-
-			Unknown1 = new List<float>();
-			sz = new Size(1, 1);
-			LotElevation = 0x439D;
-
-			Followup = new byte[0];
 		}
 
 		#region IWrapper member
@@ -351,15 +233,18 @@ namespace SimPe.Plugin
 		/// <param name="reader">The Stream that contains the FileData</param>
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
-			ver = reader.ReadUInt16();
-			subver = reader.ReadUInt16();
-			sz.Width = reader.ReadInt32();
-			sz.Height = reader.ReadInt32();
+			Version = (LtxtVersion)reader.ReadUInt16();
+			SubVersion = (LtxtSubVersion)reader.ReadUInt16();
+			LotSize = new Size
+			{
+				Width = reader.ReadInt32(),
+				Height = reader.ReadInt32()
+			};
 			Type = (LotType)reader.ReadByte();
 
 			LotRoads = reader.ReadByte();
-			rotation = (Rotation)reader.ReadByte();
-			Unknown0 = reader.ReadUInt32(); // Lot Flags, Use as Boolset
+			LotRotation = (Rotation)reader.ReadByte();
+			LotFlags = (LotFlags)reader.ReadUInt32();
 
 			LotName = StreamHelper.ReadString(reader);
 			LotDesc = StreamHelper.ReadString(reader);
@@ -371,20 +256,20 @@ namespace SimPe.Plugin
 				Unknown1.Add(reader.ReadSingle());
 			}
 
-			Unknown3 = subver >= (ushort)LtxtSubVersion.Voyage ? reader.ReadSingle() : 0;
+			Unknown3 = SubVersion >= LtxtSubVersion.Voyage ? reader.ReadSingle() : 0;
 
-			if (subver >= (ushort)LtxtSubVersion.Freetime)
+			if (SubVersion >= LtxtSubVersion.Freetime)
 			{
-				Unknown4 = reader.ReadUInt32();
+				LotHobbyFlags = (LotHobbyFlags)reader.ReadUInt32();
 			}
 			else
 			{
-				Unknown4 = 0; // Lot Hobby Flags, Use as Boolset
+				LotHobbyFlags = 0; // Lot Hobby Flags, Use as Boolset
 			}
 
 			if (
-				ver >= (ushort)LtxtVersion.Apartment
-				|| subver >= (ushort)LtxtSubVersion.Apartment
+				Version >= LtxtVersion.Apartment
+				|| SubVersion >= LtxtSubVersion.Apartment
 			)
 			{
 				unknown_5 = reader.ReadBytes(9);
@@ -410,11 +295,11 @@ namespace SimPe.Plugin
 
 			Unknown2 = reader.ReadByte();
 
-			OwnerInstance = ver >= (int)LtxtVersion.Business ? reader.ReadUInt32() : 0;
+			OwnerInstance = Version >= LtxtVersion.Business ? reader.ReadUInt32() : 0;
 
 			if (
-				ver >= (ushort)LtxtVersion.Apartment
-				|| subver >= (ushort)LtxtSubVersion.Apartment
+				Version >= LtxtVersion.Apartment
+				|| SubVersion >= LtxtSubVersion.Apartment
 			)
 			{
 				int count;
@@ -459,15 +344,15 @@ namespace SimPe.Plugin
 		/// </remarks>
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
-			writer.Write(ver);
-			writer.Write(subver);
-			writer.Write(sz.Width);
-			writer.Write(sz.Height);
+			writer.Write((ushort)Version);
+			writer.Write((ushort)SubVersion);
+			writer.Write(LotSize.Width);
+			writer.Write(LotSize.Height);
 			writer.Write((byte)Type);
 
 			writer.Write(LotRoads);
-			writer.Write((byte)rotation);
-			writer.Write(Unknown0);
+			writer.Write((byte)LotRotation);
+			writer.Write((uint)LotFlags);
 
 			StreamHelper.WriteString(writer, LotName);
 			StreamHelper.WriteString(writer, LotDesc);
@@ -478,19 +363,19 @@ namespace SimPe.Plugin
 				writer.Write(i);
 			}
 
-			if (subver >= (ushort)LtxtSubVersion.Voyage)
+			if (SubVersion >= LtxtSubVersion.Voyage)
 			{
 				writer.Write(Unknown3);
 			}
 
-			if (subver >= (ushort)LtxtSubVersion.Freetime)
+			if (SubVersion >= LtxtSubVersion.Freetime)
 			{
-				writer.Write(Unknown4);
+				writer.Write((uint)LotHobbyFlags);
 			}
 
 			if (
-				ver >= (ushort)LtxtVersion.Apartment
-				|| subver >= (ushort)LtxtSubVersion.Apartment
+				Version >= LtxtVersion.Apartment
+				|| SubVersion >= LtxtSubVersion.Apartment
 			)
 			{
 				writer.Write(unknown_5);
@@ -509,14 +394,14 @@ namespace SimPe.Plugin
 
 			writer.Write(Unknown2);
 
-			if (ver >= (int)LtxtVersion.Business)
+			if (Version >= LtxtVersion.Business)
 			{
 				writer.Write(OwnerInstance);
 			}
 
 			if (
-				ver >= (ushort)LtxtVersion.Apartment
-				|| subver >= (ushort)LtxtSubVersion.Apartment
+				Version >= LtxtVersion.Apartment
+				|| SubVersion >= LtxtSubVersion.Apartment
 			)
 			{
 				writer.Write(ApartmentBase);

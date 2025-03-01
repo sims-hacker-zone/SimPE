@@ -4,7 +4,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace SimPe.Plugin
+namespace SimPe.PackedFiles.Ltxt
 {
 	/// <summary>
 	/// Summary description for LtxtForm.
@@ -51,7 +51,6 @@ namespace SimPe.Plugin
 		internal GroupBox gbunown;
 		private GroupBox gbFlagg;
 		internal GroupBox gbApart;
-		internal GroupBox gbtravel;
 		internal GroupBox gbhobby;
 		internal TextBox tblotname;
 		internal TextBox tbdesc;
@@ -101,26 +100,6 @@ namespace SimPe.Plugin
 		internal CheckBox cbhbfilm;
 		internal CheckBox cbhbart;
 		internal CheckBox cbhbcook;
-		internal CheckBox cbtrjflag5;
-		internal CheckBox cbtrjflag4;
-		internal CheckBox cbtrjflag3;
-		internal CheckBox cbtrjflag2;
-		internal CheckBox cbtrjflag1;
-		internal CheckBox cbtrjungle;
-		internal CheckBox cbtrhidec;
-		internal CheckBox cbtrpool;
-		internal CheckBox cbtrmale;
-		internal CheckBox cbtrfem;
-		internal CheckBox cbtrbeach;
-		internal CheckBox cbtrformal;
-		internal CheckBox cbtrteen;
-		internal CheckBox cbtrnude;
-		internal CheckBox cbtrpern;
-		internal CheckBox cgtrwhite;
-		internal CheckBox cbtrblue;
-		internal CheckBox cbtrredred;
-		internal CheckBox cbtradult;
-		internal CheckBox cbtrclub;
 		internal CheckBox cbBeachy;
 		internal PictureBox pb;
 		internal Button btnDelApt;
@@ -192,27 +171,6 @@ namespace SimPe.Plugin
 			btnDelApt = new Button();
 			btnAddApt = new Button();
 			tbdesc = new TextBox();
-			gbtravel = new GroupBox();
-			cbtrjflag5 = new CheckBox();
-			cbtrjflag4 = new CheckBox();
-			cbtrjflag3 = new CheckBox();
-			cbtrjflag2 = new CheckBox();
-			cbtrjflag1 = new CheckBox();
-			cbtrjungle = new CheckBox();
-			cbtrhidec = new CheckBox();
-			cbtrpool = new CheckBox();
-			cbtrmale = new CheckBox();
-			cbtrfem = new CheckBox();
-			cbtrbeach = new CheckBox();
-			cbtrformal = new CheckBox();
-			cbtrteen = new CheckBox();
-			cbtrnude = new CheckBox();
-			cbtrpern = new CheckBox();
-			cgtrwhite = new CheckBox();
-			cbtrblue = new CheckBox();
-			cbtrredred = new CheckBox();
-			cbtradult = new CheckBox();
-			cbtrclub = new CheckBox();
 			label5 = new Label();
 			tblotname = new TextBox();
 			gbhobby = new GroupBox();
@@ -291,7 +249,6 @@ namespace SimPe.Plugin
 			ltxtPanel.SuspendLayout();
 			gbApart.SuspendLayout();
 			gbApartment.SuspendLayout();
-			gbtravel.SuspendLayout();
 			gbhobby.SuspendLayout();
 			gbFlagg.SuspendLayout();
 			gbunown.SuspendLayout();
@@ -306,7 +263,6 @@ namespace SimPe.Plugin
 			ltxtPanel.Controls.Add(lbPlayim);
 			ltxtPanel.Controls.Add(gbApart);
 			ltxtPanel.Controls.Add(tbdesc);
-			ltxtPanel.Controls.Add(gbtravel);
 			ltxtPanel.Controls.Add(label5);
 			ltxtPanel.Controls.Add(tblotname);
 			ltxtPanel.Controls.Add(gbhobby);
@@ -500,213 +456,6 @@ namespace SimPe.Plugin
 			resources.ApplyResources(tbdesc, "tbdesc");
 			tbdesc.Name = "tbdesc";
 			tbdesc.TextChanged += new EventHandler(CommonChange);
-			//
-			// gbtravel
-			//
-			gbtravel.BackColor = Color.Transparent;
-			gbtravel.Controls.Add(cbtrjflag5);
-			gbtravel.Controls.Add(cbtrjflag4);
-			gbtravel.Controls.Add(cbtrjflag3);
-			gbtravel.Controls.Add(cbtrjflag2);
-			gbtravel.Controls.Add(cbtrjflag1);
-			gbtravel.Controls.Add(cbtrjungle);
-			gbtravel.Controls.Add(cbtrhidec);
-			gbtravel.Controls.Add(cbtrpool);
-			gbtravel.Controls.Add(cbtrmale);
-			gbtravel.Controls.Add(cbtrfem);
-			gbtravel.Controls.Add(cbtrbeach);
-			gbtravel.Controls.Add(cbtrformal);
-			gbtravel.Controls.Add(cbtrteen);
-			gbtravel.Controls.Add(cbtrnude);
-			gbtravel.Controls.Add(cbtrpern);
-			gbtravel.Controls.Add(cgtrwhite);
-			gbtravel.Controls.Add(cbtrblue);
-			gbtravel.Controls.Add(cbtrredred);
-			gbtravel.Controls.Add(cbtradult);
-			gbtravel.Controls.Add(cbtrclub);
-			resources.ApplyResources(gbtravel, "gbtravel");
-			gbtravel.Name = "gbtravel";
-			gbtravel.TabStop = false;
-			//
-			// cbtrjflag5
-			//
-			resources.ApplyResources(cbtrjflag5, "cbtrjflag5");
-			cbtrjflag5.Name = "cbtrjflag5";
-			cbtrjflag5.UseVisualStyleBackColor = true;
-			cbtrjflag5.CheckedChanged += new EventHandler(
-				hobbytravel_CheckedChanged
-			);
-			//
-			// cbtrjflag4
-			//
-			resources.ApplyResources(cbtrjflag4, "cbtrjflag4");
-			cbtrjflag4.Name = "cbtrjflag4";
-			cbtrjflag4.UseVisualStyleBackColor = true;
-			cbtrjflag4.CheckedChanged += new EventHandler(
-				hobbytravel_CheckedChanged
-			);
-			//
-			// cbtrjflag3
-			//
-			resources.ApplyResources(cbtrjflag3, "cbtrjflag3");
-			cbtrjflag3.Name = "cbtrjflag3";
-			cbtrjflag3.UseVisualStyleBackColor = true;
-			cbtrjflag3.CheckedChanged += new EventHandler(
-				hobbytravel_CheckedChanged
-			);
-			//
-			// cbtrjflag2
-			//
-			resources.ApplyResources(cbtrjflag2, "cbtrjflag2");
-			cbtrjflag2.Name = "cbtrjflag2";
-			cbtrjflag2.UseVisualStyleBackColor = true;
-			cbtrjflag2.CheckedChanged += new EventHandler(
-				hobbytravel_CheckedChanged
-			);
-			//
-			// cbtrjflag1
-			//
-			resources.ApplyResources(cbtrjflag1, "cbtrjflag1");
-			cbtrjflag1.Name = "cbtrjflag1";
-			cbtrjflag1.UseVisualStyleBackColor = true;
-			cbtrjflag1.CheckedChanged += new EventHandler(
-				hobbytravel_CheckedChanged
-			);
-			//
-			// cbtrjungle
-			//
-			resources.ApplyResources(cbtrjungle, "cbtrjungle");
-			cbtrjungle.Name = "cbtrjungle";
-			cbtrjungle.UseVisualStyleBackColor = true;
-			cbtrjungle.CheckedChanged += new EventHandler(
-				hobbytravel_CheckedChanged
-			);
-			//
-			// cbtrhidec
-			//
-			resources.ApplyResources(cbtrhidec, "cbtrhidec");
-			cbtrhidec.Name = "cbtrhidec";
-			cbtrhidec.UseVisualStyleBackColor = true;
-			cbtrhidec.CheckedChanged += new EventHandler(
-				hobbytravel_CheckedChanged
-			);
-			//
-			// cbtrpool
-			//
-			resources.ApplyResources(cbtrpool, "cbtrpool");
-			cbtrpool.Name = "cbtrpool";
-			cbtrpool.UseVisualStyleBackColor = true;
-			cbtrpool.CheckedChanged += new EventHandler(
-				hobbytravel_CheckedChanged
-			);
-			//
-			// cbtrmale
-			//
-			resources.ApplyResources(cbtrmale, "cbtrmale");
-			cbtrmale.Name = "cbtrmale";
-			cbtrmale.UseVisualStyleBackColor = true;
-			cbtrmale.CheckedChanged += new EventHandler(
-				hobbytravel_CheckedChanged
-			);
-			//
-			// cbtrfem
-			//
-			resources.ApplyResources(cbtrfem, "cbtrfem");
-			cbtrfem.Name = "cbtrfem";
-			cbtrfem.UseVisualStyleBackColor = true;
-			cbtrfem.CheckedChanged += new EventHandler(
-				hobbytravel_CheckedChanged
-			);
-			//
-			// cbtrbeach
-			//
-			resources.ApplyResources(cbtrbeach, "cbtrbeach");
-			cbtrbeach.Name = "cbtrbeach";
-			cbtrbeach.UseVisualStyleBackColor = true;
-			cbtrbeach.CheckedChanged += new EventHandler(
-				hobbytravel_CheckedChanged
-			);
-			//
-			// cbtrformal
-			//
-			resources.ApplyResources(cbtrformal, "cbtrformal");
-			cbtrformal.Name = "cbtrformal";
-			cbtrformal.UseVisualStyleBackColor = true;
-			cbtrformal.CheckedChanged += new EventHandler(
-				hobbytravel_CheckedChanged
-			);
-			//
-			// cbtrteen
-			//
-			resources.ApplyResources(cbtrteen, "cbtrteen");
-			cbtrteen.Name = "cbtrteen";
-			cbtrteen.UseVisualStyleBackColor = true;
-			cbtrteen.CheckedChanged += new EventHandler(
-				hobbytravel_CheckedChanged
-			);
-			//
-			// cbtrnude
-			//
-			resources.ApplyResources(cbtrnude, "cbtrnude");
-			cbtrnude.Name = "cbtrnude";
-			cbtrnude.UseVisualStyleBackColor = true;
-			cbtrnude.CheckedChanged += new EventHandler(
-				hobbytravel_CheckedChanged
-			);
-			//
-			// cbtrpern
-			//
-			resources.ApplyResources(cbtrpern, "cbtrpern");
-			cbtrpern.Name = "cbtrpern";
-			cbtrpern.UseVisualStyleBackColor = true;
-			cbtrpern.CheckedChanged += new EventHandler(
-				hobbytravel_CheckedChanged
-			);
-			//
-			// cgtrwhite
-			//
-			resources.ApplyResources(cgtrwhite, "cgtrwhite");
-			cgtrwhite.Name = "cgtrwhite";
-			cgtrwhite.UseVisualStyleBackColor = true;
-			cgtrwhite.CheckedChanged += new EventHandler(
-				hobbytravel_CheckedChanged
-			);
-			//
-			// cbtrblue
-			//
-			resources.ApplyResources(cbtrblue, "cbtrblue");
-			cbtrblue.Name = "cbtrblue";
-			cbtrblue.UseVisualStyleBackColor = true;
-			cbtrblue.CheckedChanged += new EventHandler(
-				hobbytravel_CheckedChanged
-			);
-			//
-			// cbtrredred
-			//
-			resources.ApplyResources(cbtrredred, "cbtrredred");
-			cbtrredred.Name = "cbtrredred";
-			cbtrredred.UseVisualStyleBackColor = true;
-			cbtrredred.CheckedChanged += new EventHandler(
-				hobbytravel_CheckedChanged
-			);
-			//
-			// cbtradult
-			//
-			resources.ApplyResources(cbtradult, "cbtradult");
-			cbtradult.Name = "cbtradult";
-			cbtradult.UseVisualStyleBackColor = true;
-			cbtradult.CheckedChanged += new EventHandler(
-				hobbytravel_CheckedChanged
-			);
-			//
-			// cbtrclub
-			//
-			resources.ApplyResources(cbtrclub, "cbtrclub");
-			cbtrclub.Name = "cbtrclub";
-			cbtrclub.UseVisualStyleBackColor = true;
-			cbtrclub.CheckedChanged += new EventHandler(
-				hobbytravel_CheckedChanged
-			);
 			//
 			// label5
 			//
@@ -1309,8 +1058,6 @@ namespace SimPe.Plugin
 			gbApart.PerformLayout();
 			gbApartment.ResumeLayout(false);
 			gbApartment.PerformLayout();
-			gbtravel.ResumeLayout(false);
-			gbtravel.PerformLayout();
 			gbhobby.ResumeLayout(false);
 			gbhobby.PerformLayout();
 			gbFlagg.ResumeLayout(false);
@@ -1339,10 +1086,7 @@ namespace SimPe.Plugin
 			btnAddApt.Enabled = btnDelApt.Enabled =
 				wrapper.Type == Ltxt.LotType.ApartmentBase
 			;
-			cbtrclub.Enabled =
-				cbtrhidec.Enabled =
-				gbhobby.Enabled =
-					wrapper.Type == Ltxt.LotType.Hobby;
+			gbhobby.Enabled = wrapper.Type == Ltxt.LotType.Hobby;
 			if (wrapper.SubVersion >= LtxtSubVersion.Freetime)
 			{
 				bthbytrvl.Enabled = wrapper.Type == Ltxt.LotType.Hobby;
@@ -1357,7 +1101,6 @@ namespace SimPe.Plugin
 				gbunown.Location = new Point(116, 408);
 				llunknone.Location = new Point(41, 408);
 				gbhobby.Location = new Point(30, 408);
-				gbtravel.Location = new Point(372, 408);
 			}
 			else
 			{
@@ -1365,7 +1108,6 @@ namespace SimPe.Plugin
 				gbunown.Location = new Point(116, 333);
 				llunknone.Location = new Point(41, 333);
 				gbhobby.Location = new Point(30, 333);
-				gbtravel.Location = new Point(372, 333);
 			}
 
 			wrapper.Changed = true;
@@ -1417,22 +1159,21 @@ namespace SimPe.Plugin
 				);
 
 				wrapper.Orientation = (LotOrientation)cborient.SelectedValue;
-				wrapper.LotRotation = Convert.ToByte(tbrotation.Text, 16);
-				wrapper.Unknown0 = Helper.StringToUInt32(
+				wrapper.LotRotation = (Ltxt.Rotation)Convert.ToByte(tbrotation.Text, 16);
+				wrapper.LotFlags = (LotFlags)Helper.StringToUInt32(
 					tbu0.Text,
-					wrapper.Unknown0,
+					(uint)wrapper.LotFlags,
 					16
 				);
-				Boolset bby = wrapper.Unknown0;
-				cbhidim.Checked = bby[4];
-				cbBeachy.Checked = bby[7];
+				cbhidim.Checked = wrapper.LotFlags.HasFlag(LotFlags.IsHidden);
+				cbBeachy.Checked = wrapper.LotFlags.HasFlag(LotFlags.HasBeach);
 				if (
 					wrapper.Version >= LtxtVersion.Apartment
 					|| wrapper.SubVersion >= LtxtSubVersion.Apartment
 				)
 				{
 					cbLotClas.Enabled = true;
-					cbLotClas.SelectedIndex = bby[12] ? 1 : bby[13] ? 2 : bby[14] ? 3 : 0;
+					cbLotClas.SelectedIndex = wrapper.LotFlags.HasFlag(LotFlags.LowClass) ? 1 : wrapper.LotFlags.HasFlag(LotFlags.MiddleClass) ? 2 : wrapper.LotFlags.HasFlag(LotFlags.HighClass) ? 3 : 0;
 				}
 				else
 				{
@@ -1450,9 +1191,9 @@ namespace SimPe.Plugin
 					16
 				);
 				wrapper.Unknown3 = Helper.StringToFloat(tbu3.Text, wrapper.Unknown3);
-				wrapper.Unknown4 = Helper.StringToUInt32(
+				wrapper.LotHobbyFlags = (LotHobbyFlags)Helper.StringToUInt32(
 					tbu4.Text,
-					wrapper.Unknown4,
+					(uint)wrapper.LotHobbyFlags,
 					16
 				);
 				wrapper.LotClass = Helper.StringToUInt32(
@@ -1460,38 +1201,17 @@ namespace SimPe.Plugin
 					wrapper.LotClass,
 					16
 				);
-				Boolset tty = wrapper.Unknown4;
 
-				cbtrjflag5.Checked = tty[30];
-				cbtrjflag4.Checked = tty[28];
-				cbtrjflag3.Checked = tty[27];
-				cbtrjflag2.Checked = tty[26];
-				cbtrjflag1.Checked = tty[25];
-				cbtrjungle.Checked = tty[24];
-				cbtrhidec.Checked = tty[23];
-				cbtrpool.Checked = tty[22];
-				cbtrmale.Checked = tty[21];
-				cbtrfem.Checked = tty[20];
-				cbtrbeach.Checked = tty[19];
-				cbtrformal.Checked = tty[18];
-				cbtrteen.Checked = tty[17];
-				cbtrnude.Checked = tty[16];
-				cbtrpern.Checked = tty[15];
-				cgtrwhite.Checked = tty[14];
-				cbtrblue.Checked = tty[13];
-				cbtrredred.Checked = tty[12];
-				cbtradult.Checked = tty[11];
-				cbtrclub.Checked = tty[10];
-				cbhbmusic.Checked = tty[9];
-				cbhbscience.Checked = tty[8];
-				cbhbfitness.Checked = tty[7];
-				cbhbtinker.Checked = tty[6];
-				cbhbnature.Checked = tty[5];
-				cbhbgames.Checked = tty[4];
-				cbhbsport.Checked = tty[3];
-				cbhbfilm.Checked = tty[2];
-				cbhbart.Checked = tty[1];
-				cbhbcook.Checked = tty[0];
+				cbhbmusic.Checked = wrapper.LotHobbyFlags.HasFlag(LotHobbyFlags.Music);
+				cbhbscience.Checked = wrapper.LotHobbyFlags.HasFlag(LotHobbyFlags.Science);
+				cbhbfitness.Checked = wrapper.LotHobbyFlags.HasFlag(LotHobbyFlags.Fitness);
+				cbhbtinker.Checked = wrapper.LotHobbyFlags.HasFlag(LotHobbyFlags.Tinkering);
+				cbhbnature.Checked = wrapper.LotHobbyFlags.HasFlag(LotHobbyFlags.Nature);
+				cbhbgames.Checked = wrapper.LotHobbyFlags.HasFlag(LotHobbyFlags.Games);
+				cbhbsport.Checked = wrapper.LotHobbyFlags.HasFlag(LotHobbyFlags.Sport);
+				cbhbfilm.Checked = wrapper.LotHobbyFlags.HasFlag(LotHobbyFlags.Films);
+				cbhbart.Checked = wrapper.LotHobbyFlags.HasFlag(LotHobbyFlags.Art);
+				cbhbcook.Checked = wrapper.LotHobbyFlags.HasFlag(LotHobbyFlags.Cooking);
 
 				wrapper.Unknown2 = (byte)
 					Helper.StringToUInt16(tbu2.Text, wrapper.Unknown2, 16);
@@ -1518,20 +1238,41 @@ namespace SimPe.Plugin
 
 			try
 			{
-				Boolset bby = wrapper.Unknown0;
-				bby[4] = cbhidim.Checked;
-				bby[7] = cbBeachy.Checked;
+				if (cbhidim.Checked)
+				{
+					wrapper.LotFlags |= LotFlags.IsHidden;
+				}
+				else
+				{
+					wrapper.LotFlags &= ~LotFlags.IsHidden;
+				}
+				if (cbBeachy.Checked)
+				{
+					wrapper.LotFlags |= LotFlags.HasBeach;
+				}
+				else
+				{
+					wrapper.LotFlags &= ~LotFlags.HasBeach;
+				}
 				if (
 					wrapper.Version >= LtxtVersion.Apartment
 					|| wrapper.SubVersion >= LtxtSubVersion.Apartment
 				)
 				{
-					bby[12] = cbLotClas.SelectedIndex == 1;
-					bby[13] = cbLotClas.SelectedIndex == 2;
-					bby[14] = cbLotClas.SelectedIndex == 3;
+					switch (cbLotClas.SelectedIndex)
+					{
+						case 1:
+							wrapper.LotFlags = (wrapper.LotFlags | LotFlags.LowClass) & ~(LotFlags.MiddleClass | LotFlags.HighClass);
+							break;
+						case 2:
+							wrapper.LotFlags = (wrapper.LotFlags | LotFlags.MiddleClass) & ~(LotFlags.LowClass | LotFlags.HighClass);
+							break;
+						case 3:
+							wrapper.LotFlags = (wrapper.LotFlags | LotFlags.HighClass) & ~(LotFlags.MiddleClass | LotFlags.LowClass);
+							break;
+					}
 				}
-				wrapper.Unknown0 = bby;
-				tbu0.Text = "0x" + Helper.HexString(wrapper.Unknown0);
+				tbu0.Text = "0x" + Helper.HexString((uint)wrapper.LotFlags);
 				wrapper.Changed = true;
 			}
 			catch (Exception ex)
@@ -1549,161 +1290,59 @@ namespace SimPe.Plugin
 
 			try
 			{
-				uint tty = 0;
+				LotHobbyFlags hobbyflags = 0;
 				if (cbhbcook.Checked)
 				{
-					tty += 1;
+					hobbyflags |= LotHobbyFlags.Cooking;
 				}
 
 				if (cbhbart.Checked)
 				{
-					tty += 2;
+					hobbyflags |= LotHobbyFlags.Art;
 				}
 
 				if (cbhbfilm.Checked)
 				{
-					tty += 4;
+					hobbyflags |= LotHobbyFlags.Films;
 				}
 
 				if (cbhbsport.Checked)
 				{
-					tty += 8;
+					hobbyflags |= LotHobbyFlags.Sport;
 				}
 
 				if (cbhbgames.Checked)
 				{
-					tty += 16;
+					hobbyflags |= LotHobbyFlags.Games;
 				}
 
 				if (cbhbnature.Checked)
 				{
-					tty += 32;
+					hobbyflags |= LotHobbyFlags.Nature;
 				}
 
 				if (cbhbtinker.Checked)
 				{
-					tty += 64;
+					hobbyflags |= LotHobbyFlags.Tinkering;
 				}
 
 				if (cbhbfitness.Checked)
 				{
-					tty += 128;
+					hobbyflags |= LotHobbyFlags.Fitness;
 				}
 
 				if (cbhbscience.Checked)
 				{
-					tty += 256;
+					hobbyflags |= LotHobbyFlags.Science;
 				}
 
 				if (cbhbmusic.Checked)
 				{
-					tty += 512;
+					hobbyflags |= LotHobbyFlags.Music;
 				}
 
-				if (cbtrclub.Checked)
-				{
-					tty += 1024;
-				}
-
-				if (cbtradult.Checked)
-				{
-					tty += 2048;
-				}
-
-				if (cbtrredred.Checked)
-				{
-					tty += 4096;
-				}
-
-				if (cbtrblue.Checked)
-				{
-					tty += 8192;
-				}
-
-				if (cgtrwhite.Checked)
-				{
-					tty += 16384;
-				}
-
-				if (cbtrpern.Checked)
-				{
-					tty += 32768;
-				}
-
-				if (cbtrnude.Checked)
-				{
-					tty += 65536;
-				}
-
-				if (cbtrteen.Checked)
-				{
-					tty += 131072;
-				}
-
-				if (cbtrformal.Checked)
-				{
-					tty += 262144;
-				}
-
-				if (cbtrbeach.Checked)
-				{
-					tty += 524288;
-				}
-
-				if (cbtrfem.Checked)
-				{
-					tty += 1048576;
-				}
-
-				if (cbtrmale.Checked)
-				{
-					tty += 2097152;
-				}
-
-				if (cbtrpool.Checked)
-				{
-					tty += 4194304;
-				}
-
-				if (cbtrhidec.Checked)
-				{
-					tty += 8388608;
-				}
-
-				if (cbtrjungle.Checked)
-				{
-					tty += 16777216;
-				}
-
-				if (cbtrjflag1.Checked)
-				{
-					tty += 33554432;
-				}
-
-				if (cbtrjflag2.Checked)
-				{
-					tty += 67108864;
-				}
-
-				if (cbtrjflag3.Checked)
-				{
-					tty += 134217728;
-				}
-
-				if (cbtrjflag4.Checked)
-				{
-					tty += 268435456;
-				}
-
-				if (cbtrjflag5.Checked)
-				{
-					tty += 536870912;
-				}
-
-				cbtrmale.Enabled = !cbtrfem.Checked;
-				cbtrfem.Enabled = !cbtrmale.Checked;
-				wrapper.Unknown4 = tty;
-				tbu4.Text = "0x" + Helper.HexString(wrapper.Unknown4);
+				wrapper.LotHobbyFlags = hobbyflags;
+				tbu4.Text = "0x" + Helper.HexString((uint)wrapper.LotHobbyFlags);
 
 				wrapper.Changed = true;
 			}
@@ -1724,8 +1363,6 @@ namespace SimPe.Plugin
 			{
 				gbunown.Visible = false;
 				gbhobby.Visible = !gbhobby.Visible;
-				gbtravel.Visible = gbhobby.Visible;
-				//this.bthbytrvl.Enabled = false;
 				wrapper.Changed = true;
 			}
 			catch (Exception ex)
@@ -1803,7 +1440,7 @@ namespace SimPe.Plugin
 				int x,
 					y;
 				y = Convert.ToInt32(lb.SelectedIndex / wrp.LotSize.Height);
-				x = lb.SelectedIndex - (y * wrp.LotSize.Height);
+				x = lb.SelectedIndex - y * wrp.LotSize.Height;
 				lb.Items[lb.SelectedIndex] =
 					"(" + x + "," + y + ") " + wrp.Unknown1[lb.SelectedIndex];
 
@@ -2046,7 +1683,7 @@ namespace SimPe.Plugin
 
 			if (FileTableBase.ProviderRegistry.SimDescriptionProvider.SimInstance[
 					(ushort)simmy
-				] is PackedFiles.Wrapper.ExtSDesc sdsc)
+				] is Wrapper.ExtSDesc sdsc)
 			{
 				Interfaces.Files.IPackedFileDescriptor pfd = sdsc.Package.NewDescriptor(
 					0xAACE2EFB,

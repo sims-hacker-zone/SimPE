@@ -4,6 +4,7 @@
 using System;
 
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Ltxt;
 
 namespace SimPe.Plugin
 {

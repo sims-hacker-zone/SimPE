@@ -9,6 +9,7 @@ using System.Text;
 using SimPe;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
+using SimPe.PackedFiles.Ltxt;
 using SimPe.PackedFiles.Wrapper;
 using SimPe.Plugin;
 
@@ -1002,66 +1003,64 @@ namespace pjHoodTool
 		)
 		{
 			string perv = "";
-			Boolset bby = ltxt.Unknown0;
-			if (bby[7])
+			if (ltxt.LotFlags.HasFlag(LotFlags.HasBeach))
 			{
 				perv = "Has Beach";
 			}
 
-			if (bby[4])
+			if (ltxt.LotFlags.HasFlag(LotFlags.IsHidden))
 			{
 				perv += " - Hidden";
 			}
 
-			Boolset tty = ltxt.Unknown4;
 			if (ltxt.Type == Ltxt.LotType.Hobby)
 			{
-				if (tty[9])
+				if (ltxt.LotHobbyFlags.HasFlag(LotHobbyFlags.Music))
 				{
 					perv += " (Music)";
 				}
 
-				if (tty[8])
+				if (ltxt.LotHobbyFlags.HasFlag(LotHobbyFlags.Science))
 				{
 					perv += " (Science)";
 				}
 
-				if (tty[7])
+				if (ltxt.LotHobbyFlags.HasFlag(LotHobbyFlags.Fitness))
 				{
 					perv += " (Fitness)";
 				}
 
-				if (tty[6])
+				if (ltxt.LotHobbyFlags.HasFlag(LotHobbyFlags.Tinkering))
 				{
 					perv += " (Tinkering)";
 				}
 
-				if (tty[5])
+				if (ltxt.LotHobbyFlags.HasFlag(LotHobbyFlags.Nature))
 				{
 					perv += " (Nature)";
 				}
 
-				if (tty[4])
+				if (ltxt.LotHobbyFlags.HasFlag(LotHobbyFlags.Games))
 				{
 					perv += " (Games)";
 				}
 
-				if (tty[3])
+				if (ltxt.LotHobbyFlags.HasFlag(LotHobbyFlags.Sport))
 				{
 					perv += " (Sport)";
 				}
 
-				if (tty[2])
+				if (ltxt.LotHobbyFlags.HasFlag(LotHobbyFlags.Films))
 				{
 					perv += " (Films)";
 				}
 
-				if (tty[1])
+				if (ltxt.LotHobbyFlags.HasFlag(LotHobbyFlags.Art))
 				{
 					perv += " (Art)";
 				}
 
-				if (tty[0])
+				if (ltxt.LotHobbyFlags.HasFlag(LotHobbyFlags.Cooking))
 				{
 					perv += " (Cooking)";
 				}
