@@ -2,9 +2,10 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 
-namespace SimPe.Plugin
+namespace SimPe.PackedFiles.Idno
 {
 	/// <summary>
 	/// This class is used to fill the UI for this FileType with Data
@@ -35,36 +36,36 @@ namespace SimPe.Plugin
 
 			form.cbreqtp.Items.Clear();
 			form.cbsubtp.Items.Clear();
-			foreach (uint i in Enum.GetValues(typeof(Data.MetaData.NeighbourhoodEP)))
+			foreach (uint i in Enum.GetValues(typeof(NeighborhoodEP)))
 			{
 				form.cbreqtp.Items.Add(
-					new Data.LocalizedNeighbourhoodEP((Data.MetaData.NeighbourhoodEP)i)
+					new LocalizedNeighborhoodEP((NeighborhoodEP)i)
 				);
 				form.cbsubtp.Items.Add(
-					new Data.LocalizedNeighbourhoodEP((Data.MetaData.NeighbourhoodEP)i)
+					new LocalizedNeighborhoodEP((NeighborhoodEP)i)
 				);
 			}
 
-			NhSeasons[] valf = (NhSeasons[])Enum.GetValues(typeof(NhSeasons));
-			foreach (NhSeasons v in valf)
+			NeighborhoodSeason[] valf = (NeighborhoodSeason[])Enum.GetValues(typeof(NeighborhoodSeason));
+			foreach (NeighborhoodSeason v in valf)
 			{
 				form.cbquada.Items.Add(v);
 			}
 
-			NhSeasons[] valu = (NhSeasons[])Enum.GetValues(typeof(NhSeasons));
-			foreach (NhSeasons v in valu)
+			NeighborhoodSeason[] valu = (NeighborhoodSeason[])Enum.GetValues(typeof(NeighborhoodSeason));
+			foreach (NeighborhoodSeason v in valu)
 			{
 				form.cbquadb.Items.Add(v);
 			}
 
-			NhSeasons[] valc = (NhSeasons[])Enum.GetValues(typeof(NhSeasons));
-			foreach (NhSeasons v in valc)
+			NeighborhoodSeason[] valc = (NeighborhoodSeason[])Enum.GetValues(typeof(NeighborhoodSeason));
+			foreach (NeighborhoodSeason v in valc)
 			{
 				form.cbquadc.Items.Add(v);
 			}
 
-			NhSeasons[] valk = (NhSeasons[])Enum.GetValues(typeof(NhSeasons));
-			foreach (NhSeasons v in valk)
+			NeighborhoodSeason[] valk = (NeighborhoodSeason[])Enum.GetValues(typeof(NeighborhoodSeason));
+			foreach (NeighborhoodSeason v in valk)
 			{
 				form.cbquadd.Items.Add(v);
 			}
@@ -108,9 +109,9 @@ namespace SimPe.Plugin
 				for (int i = 0; i < form.cbreqtp.Items.Count; i++)
 				{
 					object o = form.cbreqtp.Items[i];
-					Data.MetaData.NeighbourhoodEP le;
-					le = (Data.LocalizedNeighbourhoodEP)o;
-					// NeighbourhoodEP le = (NeighbourhoodEP)form.cbreqtp.Items[i];
+					NeighborhoodEP le;
+					le = (LocalizedNeighborhoodEP)o;
+					// NeighborhoodEP le = (NeighborhoodEP)form.cbreqtp.Items[i];
 					if (le == wrp.Reqep)
 					{
 						form.cbreqtp.SelectedIndex = i;
@@ -123,9 +124,9 @@ namespace SimPe.Plugin
 				for (int i = 0; i < form.cbsubtp.Items.Count; i++)
 				{
 					object o = form.cbsubtp.Items[i];
-					Data.MetaData.NeighbourhoodEP ls;
-					ls = (Data.LocalizedNeighbourhoodEP)o;
-					// NeighbourhoodEP ls = (NeighbourhoodEP)form.cbsubtp.Items[i];
+					NeighborhoodEP ls;
+					ls = (LocalizedNeighborhoodEP)o;
+					// NeighborhoodEP ls = (NeighborhoodEP)form.cbsubtp.Items[i];
 					if (ls == wrp.Subep)
 					{
 						form.cbsubtp.SelectedIndex = i;
@@ -137,7 +138,7 @@ namespace SimPe.Plugin
 				form.cbquada.SelectedIndex = 0;
 				for (int i = 0; i < form.cbquada.Items.Count; i++)
 				{
-					NhSeasons fa = (NhSeasons)form.cbquada.Items[i];
+					NeighborhoodSeason fa = (NeighborhoodSeason)form.cbquada.Items[i];
 					if (fa == wrp.Quada)
 					{
 						form.cbquada.SelectedIndex = i;
@@ -147,7 +148,7 @@ namespace SimPe.Plugin
 				form.cbquadb.SelectedIndex = 0;
 				for (int i = 0; i < form.cbquadb.Items.Count; i++)
 				{
-					NhSeasons fb = (NhSeasons)form.cbquadb.Items[i];
+					NeighborhoodSeason fb = (NeighborhoodSeason)form.cbquadb.Items[i];
 					if (fb == wrp.Quadb)
 					{
 						form.cbquadb.SelectedIndex = i;
@@ -157,7 +158,7 @@ namespace SimPe.Plugin
 				form.cbquadc.SelectedIndex = 0;
 				for (int i = 0; i < form.cbquadc.Items.Count; i++)
 				{
-					NhSeasons fc = (NhSeasons)form.cbquadc.Items[i];
+					NeighborhoodSeason fc = (NeighborhoodSeason)form.cbquadc.Items[i];
 					if (fc == wrp.Quadc)
 					{
 						form.cbquadc.SelectedIndex = i;
@@ -167,7 +168,7 @@ namespace SimPe.Plugin
 				form.cbquadd.SelectedIndex = 0;
 				for (int i = 0; i < form.cbquadd.Items.Count; i++)
 				{
-					NhSeasons fd = (NhSeasons)form.cbquadd.Items[i];
+					NeighborhoodSeason fd = (NeighborhoodSeason)form.cbquadd.Items[i];
 					if (fd == wrp.Quadd)
 					{
 						form.cbquadd.SelectedIndex = i;

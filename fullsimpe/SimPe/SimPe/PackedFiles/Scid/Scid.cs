@@ -1,17 +1,18 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 
-namespace SimPe.Plugin
+namespace SimPe.PackedFiles.Scid
 {
-	public class SimindexPackedFileWrapper
+	public class Scid
 		: AbstractWrapper,
 			IFileWrapper,
 			IFileWrapperSaveExtension
 	{
 		#region CreationIndex Attribute
-		public ushort Sciname
+		public ushort SCID
 		{
 			get; set;
 		}
@@ -21,8 +22,7 @@ namespace SimPe.Plugin
 		}
 		#endregion
 
-		public SimindexPackedFileWrapper()
-			: base() { }
+		public Scid() : base() { }
 
 		#region IWrapper member
 		public override bool CheckVersion(uint version)
@@ -34,7 +34,7 @@ namespace SimPe.Plugin
 		#region AbstractWrapper Member
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
-			return new SimindexPackedFileUI();
+			return new ScidUI();
 		}
 
 		protected override IWrapperInfo CreateWrapperInfo()
@@ -50,11 +50,11 @@ namespace SimPe.Plugin
 
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
-			Idno idno = Idno.FromPackage(package);
+			Idno.Idno idno = Idno.Idno.FromPackage(package);
 			IsOK = idno == null || idno.Type == NeighborhoodType.Normal;
 
 			reader.BaseStream.Seek(0xc, System.IO.SeekOrigin.Begin);
-			Sciname = reader.ReadUInt16();
+			SCID = reader.ReadUInt16();
 		}
 
 		protected override void Serialize(System.IO.BinaryWriter writer)
@@ -64,7 +64,7 @@ namespace SimPe.Plugin
 			writer.Write(scitype);
 			writer.Write(scivers);
 			writer.BaseStream.Seek(0xc, System.IO.SeekOrigin.Begin);
-			writer.Write(Sciname);
+			writer.Write(SCID);
 		}
 		#endregion
 

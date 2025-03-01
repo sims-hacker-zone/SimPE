@@ -4,7 +4,9 @@
 using System;
 using System.Windows.Forms;
 
-namespace SimPe.Plugin
+using SimPe.Data;
+
+namespace SimPe.PackedFiles.Idno
 {
 	/// <summary>
 	/// Summary description for IdnoForm.
@@ -14,7 +16,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		private System.ComponentModel.Container components = null;
+		private readonly System.ComponentModel.Container components = null;
 
 		public IdnoForm()
 		{
@@ -73,18 +75,7 @@ namespace SimPe.Plugin
 			//
 			// pnidno
 			//
-			pnidno.Anchor =
-
-
-
-
-								AnchorStyles.Top
-								| AnchorStyles.Bottom
-							 | AnchorStyles.Left
-						 | AnchorStyles.Right
-
-
-			;
+			pnidno.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
 			pnidno.AutoScroll = true;
 			pnidno.BackColor = System.Drawing.Color.Transparent;
 			pnidno.Controls.Add(cbquadd);
@@ -471,16 +462,7 @@ namespace SimPe.Plugin
 			//
 			// panel2
 			//
-			panel2.Anchor =
-
-
-
-							AnchorStyles.Top
-							| AnchorStyles.Left
-						 | AnchorStyles.Right
-
-
-			;
+			panel2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 			panel2.Location = new System.Drawing.Point(0, 0);
 			panel2.Margin = new Padding(0);
 			panel2.Name = "panel2";
@@ -569,7 +551,7 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			Data.MetaData.NeighbourhoodEP nr = (Data.LocalizedNeighbourhoodEP)
+			NeighborhoodEP nr = (LocalizedNeighborhoodEP)
 				cbreqtp.Items[cbreqtp.SelectedIndex];
 			tbreqep.Text = "0x" + Helper.HexString((uint)nr);
 
@@ -590,7 +572,7 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			Data.MetaData.NeighbourhoodEP ns = (Data.LocalizedNeighbourhoodEP)
+			NeighborhoodEP ns = (LocalizedNeighborhoodEP)
 				cbsubtp.Items[cbsubtp.SelectedIndex];
 			tbsubep.Text = "0x" + Helper.HexString((uint)ns);
 
@@ -610,7 +592,7 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			NhSeasons sa = (NhSeasons)cbquada.Items[cbquada.SelectedIndex];
+			NeighborhoodSeason sa = (NeighborhoodSeason)cbquada.Items[cbquada.SelectedIndex];
 			if (Tag != null)
 			{
 				return;
@@ -627,7 +609,7 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			NhSeasons sb = (NhSeasons)cbquadb.Items[cbquadb.SelectedIndex];
+			NeighborhoodSeason sb = (NeighborhoodSeason)cbquadb.Items[cbquadb.SelectedIndex];
 			if (Tag != null)
 			{
 				return;
@@ -644,7 +626,7 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			NhSeasons sc = (NhSeasons)cbquadc.Items[cbquadc.SelectedIndex];
+			NeighborhoodSeason sc = (NeighborhoodSeason)cbquadc.Items[cbquadc.SelectedIndex];
 			if (Tag != null)
 			{
 				return;
@@ -661,7 +643,7 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			NhSeasons sd = (NhSeasons)cbquadd.Items[cbquadd.SelectedIndex];
+			NeighborhoodSeason sd = (NeighborhoodSeason)cbquadd.Items[cbquadd.SelectedIndex];
 			if (Tag != null)
 			{
 				return;

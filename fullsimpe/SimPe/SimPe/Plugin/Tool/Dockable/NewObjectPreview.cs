@@ -454,8 +454,8 @@ namespace SimPe.Plugin.Tool.Dockable
 					lbEPList.Text +=
 						(lbEPList.Text.Length == 0 ? "" : "; ")
 						+
-							new Data.LocalizedNeighbourhoodEP(
-								(Data.MetaData.NeighbourhoodEP)i
+							new Data.LocalizedNeighborhoodEP(
+								(Data.NeighborhoodEP)i
 							)
 						;
 				}
@@ -477,8 +477,8 @@ namespace SimPe.Plugin.Tool.Dockable
 						lbEPList.Text +=
 							(lbEPList.Text.Length == 0 ? "" : "; ")
 							+
-								new Data.LocalizedNeighbourhoodEP(
-									(Data.MetaData.NeighbourhoodEP)i + 16
+								new Data.LocalizedNeighborhoodEP(
+									(Data.NeighborhoodEP)i + 16
 								)
 							;
 					}
