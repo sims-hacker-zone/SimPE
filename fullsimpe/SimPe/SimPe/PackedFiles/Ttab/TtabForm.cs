@@ -8,11 +8,12 @@ using System.Windows.Forms;
 using pjse;
 
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.UserInterface;
 using SimPe.PackedFiles.Wrapper;
 
 using Str = pjse.Str;
 
-namespace SimPe.PackedFiles.UserInterface
+namespace SimPe.PackedFiles.Ttab
 {
 	/// <summary>
 	/// Summary description for BconForm.
@@ -450,7 +451,7 @@ namespace SimPe.PackedFiles.UserInterface
 						+ i
 						+ "): "
 						+ (
-							(si == null)
+							si == null
 								? "*!no default string!*"
 								: si.strItem.Title
 									+ (si.lidFallback ? " [LID=1]" : "")
@@ -2033,7 +2034,7 @@ namespace SimPe.PackedFiles.UserInterface
 			ttabPanel.SuspendLayout();
 			internalchg = true;
 			wrapper.Add(
-				(lbttab.SelectedIndex == -1)
+				lbttab.SelectedIndex == -1
 					? new TtabItem(wrapper)
 					: wrapper[lbttab.SelectedIndex].Clone()
 			);
@@ -2217,7 +2218,7 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			pjse.FileTable.Entry item = wrapper.ResourceByInstance(
 				Data.MetaData.BHAV_FILE,
-				(sender == llAction) ? currentItem.Action : currentItem.Guardian
+				sender == llAction ? currentItem.Action : currentItem.Guardian
 			);
 			Bhav b = new Bhav();
 			b.ProcessData(item.PFD, item.Package);

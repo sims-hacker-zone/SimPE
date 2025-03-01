@@ -10,6 +10,7 @@ using pjse;
 
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Ttab;
 using SimPe.PackedFiles.Wrapper;
 
 namespace SimPe.PackedFiles.UserInterface
@@ -435,7 +436,7 @@ namespace SimPe.PackedFiles.UserInterface
 				"TTAB",
 				wrapper.FileDescriptor.Instance,
 				npfd,
-				pjse.FileTable.GFT[Ttab.Ttabtype, pjse.FileTable.Source.Local],
+				pjse.FileTable.GFT[Ttab.Ttab.Ttabtype, pjse.FileTable.Source.Local],
 				null,
 				new matchItem[]
 				{

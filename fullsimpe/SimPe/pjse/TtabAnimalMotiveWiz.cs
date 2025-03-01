@@ -3,8 +3,7 @@
 using System;
 using System.Windows.Forms;
 
-using SimPe.PackedFiles.UserInterface;
-using SimPe.PackedFiles.Wrapper;
+using SimPe.PackedFiles.Ttab;
 
 namespace pjse
 {

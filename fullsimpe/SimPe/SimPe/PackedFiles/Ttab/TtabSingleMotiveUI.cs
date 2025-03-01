@@ -4,9 +4,7 @@ using System;
 using System.Collections;
 using System.Windows.Forms;
 
-using SimPe.PackedFiles.Wrapper;
-
-namespace SimPe.PackedFiles.UserInterface
+namespace SimPe.PackedFiles.Ttab
 {
 	/// <summary>
 	/// Summary description for TtabSingleMotive.
