@@ -1,370 +1,491 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-    <resheader name="resmimetype">
-        <value>text/microsoft-resx</value>
-    </resheader>
-    <resheader name="version">
-        <value>2.0</value>
-    </resheader>
-    <resheader name="reader">
-        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-    </resheader>
-    <resheader name="writer">
-        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-    </resheader>
-    <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0,
+      Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0,
+      Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms"
+    name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="acbgclone" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\acbgclone.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\acbgclone.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="acbgcreate" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\acbgcreate.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\acbgcreate.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="acbgdelete" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\acbgdelete.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\acbgdelete.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="acbgexport" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\acbgexport.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\acbgexport.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="acbgfilter" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\acbgfilter.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\acbgfilter.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="acbgfixtgi" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\acbgfixtgi.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\acbgfixtgi.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="acbgimport" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\acbgimport.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\acbgimport.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="acbgreplace" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\acbgreplace.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\acbgreplace.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="acbgrestore" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\acbgrestore.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\acbgrestore.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="acbgstart" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\acbgstart.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\acbgstart.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="acchecktable" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\acchecktable.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\acchecktable.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="acclone" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\acclone.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\acclone.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="accreate" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\accreate.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\accreate.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="acdelete" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\acdelete.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\acdelete.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="acexport" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\acexport.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\acexport.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="acfilter" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\acfilter.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\acfilter.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="acfixtgi" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\acfixtgi.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\acfixtgi.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="acimport" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\acimport.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\acimport.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="acreplace" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\acreplace.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\acreplace.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="acrestore" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\acrestore.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\acrestore.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="acstart" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\acstart.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\acstart.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="anibgcamera" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\anibgcamera.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\anibgcamera.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="anicamera" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\anicamera.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\anicamera.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bgacchecktable" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\bgacchecktable.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\bgacchecktable.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bgbookmark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\bgbookmark.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\bgbookmark.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bgbutflie" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\bgbutflie.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\bgbutflie.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bgdebug" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\bgdebug.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\bgdebug.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bgDelete" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\bgDelete.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\bgDelete.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bgdeletesim" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\bgdeletesim.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\bgdeletesim.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bgExtractSt" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\bgExtractSt.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\bgExtractSt.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bgfinder" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\bgfinder.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\bgfinder.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bghoodtool" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\bghoodtool.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\bghoodtool.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bgKey" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\bgKey.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\bgKey.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral,
+      PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bgLinkSt" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\bgLinkSt.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\bgLinkSt.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bgNew" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\bgNew.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\bgNew.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral,
+      PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bgOpen" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\bgOpen.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\bgOpen.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bgPhpGuid" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\bgPhpGuid.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\bgPhpGuid.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bgpjobjdtool" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\bgpjobjdtool.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\bgpjobjdtool.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bgReset" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\bgReset.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\bgReset.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bgSave" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\bgSave.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\bgSave.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bgSaveAs" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\bgSaveAs.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\bgSaveAs.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bhbgimport" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\bhbgimport.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\bhbgimport.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bhbglua" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\bhbglua.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\bhbglua.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bhimport" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\bhimport.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\bhimport.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bhlua" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\bhlua.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\bhlua.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral,
+      PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="blDelete" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\blDelete.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\blDelete.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="blNew" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\blNew.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\blNew.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral,
+      PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="blOpen" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\blOpen.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\blOpen.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="blReset" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\blReset.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\blReset.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="blSave" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\blSave.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\blSave.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="blSaveAs" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\blSaveAs.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\blSaveAs.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bookmark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\bookmark.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\bookmark.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="butflie" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\butflie.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\butflie.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CAF" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\CAF.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\CAF.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral,
+      PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cbgpreview" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\cbgpreview.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\cbgpreview.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="copyright" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\copyright.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\copyright.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="copyrightbg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\copyrightbg.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\copyrightbg.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cpreview" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\cpreview.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\cpreview.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="dbagent" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\dbagent.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\dbagent.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="dbbgagent" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\dbbgagent.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\dbbgagent.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="dbbgoS2pack" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\dbbgoS2pack.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\dbbgoS2pack.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="dbbgos2pc" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\dbbgos2pc.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\dbbgos2pc.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="dbbgpackage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\dbbgpackage.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\dbbgpackage.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="dbbgrecur" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\dbbgrecur.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\dbbgrecur.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="dbbgS2pack" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\dbbgS2pack.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\dbbgS2pack.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="dbbgs2pc" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\dbbgs2pc.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\dbbgs2pc.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="dbbgselected" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\dbbgselected.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\dbbgselected.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="dbpackage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\dbpackage.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\dbpackage.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="dbrecur" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\dbrecur.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\dbrecur.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="dbS2pack" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\dbS2pack.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\dbS2pack.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="dbs2pc" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\dbs2pc.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\dbs2pc.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="dbselected" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\dbselected.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\dbselected.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="debug" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\debug.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\debug.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral,
+      PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="deletesim" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\deletesim.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\deletesim.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="demo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\demo.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\demo.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral,
+      PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ExtractSt" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\ExtractSt.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\ExtractSt.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="gametip" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\gametip.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\gametip.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="hoodtool" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\hoodtool.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\hoodtool.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Info" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\Info.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\Info.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral,
+      PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Infobg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\Infobg.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\Infobg.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="LinkSt" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\LinkSt.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\LinkSt.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="network" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\network.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\network.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="noone" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\noone.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\noone.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral,
+      PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="pjfinder" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\pjfinder.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\pjfinder.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="pjkey" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\pjkey.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\pjkey.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral,
+      PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="pjobjdtool" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\pjobjdtool.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\pjobjdtool.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="psDelete" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\psDelete.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\psDelete.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="psNew" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\psNew.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\psNew.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral,
+      PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="psOpen" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\psOpen.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\psOpen.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="psSave" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\psSave.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\psSave.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="readim" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\readim.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\readim.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="sheone" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\sheone.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\sheone.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="stxt" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\stxt.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\stxt.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral,
+      PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="support" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\support.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\support.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tbbgcamera" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\tbbgcamera.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\tbbgcamera.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tbbgcontents" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\tbbgcontents.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\tbbgcontents.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tbbgcreatepackage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\tbbgcreatepackage.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\tbbgcreatepackage.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tbbggenerator" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\tbbggenerator.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\tbbggenerator.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tbbgintegrity" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\tbbgintegrity.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\tbbgintegrity.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tbbgneighboorhood" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\tbbgneighboorhood.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\tbbgneighboorhood.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tbbgsimbrowser" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\tbbgsimbrowser.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\tbbgsimbrowser.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tbbgskinn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\tbbgskinn.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\tbbgskinn.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tbbgsurg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\tbbgsurg.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\tbbgsurg.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tbbgwcreatepackage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\tbbgwcreatepackage.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\tbbgwcreatepackage.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tbcamera" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\tbcamera.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\tbcamera.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tbcontents" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\tbcontents.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\tbcontents.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tbcreatepackage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\tbcreatepackage.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\tbcreatepackage.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tbgenerator" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\tbgenerator.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\tbgenerator.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tbintegrit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\tbintegrit.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\tbintegrit.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tbneighboorhood" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\tbneighboorhood.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\tbneighboorhood.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tbPhpGuid" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\tbPhpGuid.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\tbPhpGuid.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tbsimbrowser" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\tbsimbrowser.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\tbsimbrowser.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tbskinn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\tbskinn.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\tbskinn.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tbsurg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\tbsurg.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\tbsurg.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="whfail" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\whfail.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\whfail.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="whok" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\whok.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\whok.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral,
+      PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="whunk" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\whunk.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\whunk.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral,
+      PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="whwarn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\img\whwarn.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\img\whwarn.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

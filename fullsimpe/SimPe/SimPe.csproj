@@ -7,7 +7,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>7.3</LangVersion>
     <TargetFramework>net471</TargetFramework>
-    <ApplicationIcon>img\Simpe2.ico</ApplicationIcon>
+    <ApplicationIcon>SimPe\img\Simpe2.ico</ApplicationIcon>
     <StartupObject>SimPe.MainForm</StartupObject>
     <RuntimeIdentifier>win-x86</RuntimeIdentifier>
     <EnableDefaultCompileItems>true</EnableDefaultCompileItems>
@@ -36,9 +36,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <EmbeddedResource Include="data\*" />
-    <EmbeddedResource Include="docs\*" />
-    <EmbeddedResource Include="img\*" />
+    <EmbeddedResource Include="SimPe\data\*" />
+    <EmbeddedResource Include="SimPe\docs\*" />
+    <EmbeddedResource Include="SimPe\img\*" />
   </ItemGroup>
   <ItemGroup>
     <CompilerVisibleProperty Include="RootNamespace" />
