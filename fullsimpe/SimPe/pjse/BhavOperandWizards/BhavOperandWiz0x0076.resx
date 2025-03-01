@@ -904,34 +904,34 @@
     <value>Set all elements</value>
   </data>
   <data name="cbOperation.Items4" xml:space="preserve">
-    <value>Unshift (drop last element, move elements up, Value to 0th element)</value>
+    <value>Unshift onto the front of the array</value>
   </data>
   <data name="cbOperation.Items5" xml:space="preserve">
-    <value>Push (drop 0th element, move elements down, Value to last element)</value>
+    <value>Push onto the back of the array</value>
   </data>
   <data name="cbOperation.Items6" xml:space="preserve">
-    <value>Insert (drop last element, move elements above Index up, Value to element at Index)</value>
+    <value>Insert at Index</value>
   </data>
   <data name="cbOperation.Items7" xml:space="preserve">
-    <value>Shift (drop 0th element, move elements down)</value>
+    <value>Shift first element off array</value>
   </data>
   <data name="cbOperation.Items8" xml:space="preserve">
-    <value>Pop (drop last element, move elements up)</value>
+    <value>Pop last element off array</value>
   </data>
   <data name="cbOperation.Items9" xml:space="preserve">
-    <value>Remove (move elements above Index down)</value>
+    <value>Remove at Index</value>
   </data>
   <data name="cbOperation.Items10" xml:space="preserve">
-    <value>Set to Index next element of Value</value>
+    <value>Set Index to next element of Value</value>
   </data>
   <data name="cbOperation.Items11" xml:space="preserve">
     <value>Swap elements</value>
   </data>
   <data name="cbOperation.Items12" xml:space="preserve">
-    <value>Sort (highest value in 0th element)</value>
+    <value>Sort array into highest to lowest order</value>
   </data>
   <data name="cbOperation.Items13" xml:space="preserve">
-    <value>Sort (highest value in last)</value>
+    <value>Sort array into lowest to highest order</value>
   </data>
   <data name="cbOperation.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 20</value>
