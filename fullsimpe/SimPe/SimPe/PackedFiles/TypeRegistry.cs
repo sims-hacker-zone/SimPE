@@ -1,8 +1,8 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
