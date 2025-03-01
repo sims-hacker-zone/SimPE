@@ -376,7 +376,7 @@ namespace SimPe.Plugin
 			//now add the default MMAT
 			System.IO.BinaryReader br = new System.IO.BinaryReader(
 				GetType()
-					.Assembly.GetManifestResourceStream("SimPe.data.mmat.simpe")
+					.Assembly.GetManifestResourceStream("SimPe.files.mmat.simpe")
 			);
 			Packages.PackedFileDescriptor pfd1 =
 				new Packages.PackedFileDescriptor

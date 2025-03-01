@@ -1070,11 +1070,11 @@ namespace SimPe.Plugin
 
 				System.IO.BinaryReader br1 = new System.IO.BinaryReader(
 					GetType()
-						.Assembly.GetManifestResourceStream("SimPe.data.3d.simpe")
+						.Assembly.GetManifestResourceStream("SimPe.files.3d.simpe")
 				);
 				System.IO.BinaryReader br2 = new System.IO.BinaryReader(
 					GetType()
-						.Assembly.GetManifestResourceStream("SimPe.data.bin.simpe")
+						.Assembly.GetManifestResourceStream("SimPe.files.bin.simpe")
 				);
 
 				Packages.PackedFileDescriptor pfd1 =
