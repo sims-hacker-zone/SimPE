@@ -1,22 +1,5 @@
-/***************************************************************************
- *   Copyright (C) 2008 by Peter L Jones                                   *
- *   pljones@users.sf.net                                                  *
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- *   This program is distributed in the hope that it will be useful,       *
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
- *   GNU General Public License for more details.                          *
- *                                                                         *
- *   You should have received a copy of the GNU General Public License     *
- *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc.,                                       *
- *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
- ***************************************************************************/
+// SPDX-FileCopyrightText: © SimPE contributors
+// SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -26,6 +9,7 @@ using System.Text;
 using SimPe;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
+using SimPe.PackedFiles.Ltxt;
 using SimPe.PackedFiles.Wrapper;
 using SimPe.Plugin;
 
@@ -1019,66 +1003,64 @@ namespace pjHoodTool
 		)
 		{
 			string perv = "";
-			Boolset bby = ltxt.Unknown0;
-			if (bby[7])
+			if (ltxt.LotFlags.HasFlag(LotFlags.HasBeach))
 			{
 				perv = "Has Beach";
 			}
 
-			if (bby[4])
+			if (ltxt.LotFlags.HasFlag(LotFlags.IsHidden))
 			{
 				perv += " - Hidden";
 			}
 
-			Boolset tty = ltxt.Unknown4;
 			if (ltxt.Type == Ltxt.LotType.Hobby)
 			{
-				if (tty[9])
+				if (ltxt.LotHobbyFlags.HasFlag(LotHobbyFlags.Music))
 				{
 					perv += " (Music)";
 				}
 
-				if (tty[8])
+				if (ltxt.LotHobbyFlags.HasFlag(LotHobbyFlags.Science))
 				{
 					perv += " (Science)";
 				}
 
-				if (tty[7])
+				if (ltxt.LotHobbyFlags.HasFlag(LotHobbyFlags.Fitness))
 				{
 					perv += " (Fitness)";
 				}
 
-				if (tty[6])
+				if (ltxt.LotHobbyFlags.HasFlag(LotHobbyFlags.Tinkering))
 				{
 					perv += " (Tinkering)";
 				}
 
-				if (tty[5])
+				if (ltxt.LotHobbyFlags.HasFlag(LotHobbyFlags.Nature))
 				{
 					perv += " (Nature)";
 				}
 
-				if (tty[4])
+				if (ltxt.LotHobbyFlags.HasFlag(LotHobbyFlags.Games))
 				{
 					perv += " (Games)";
 				}
 
-				if (tty[3])
+				if (ltxt.LotHobbyFlags.HasFlag(LotHobbyFlags.Sport))
 				{
 					perv += " (Sport)";
 				}
 
-				if (tty[2])
+				if (ltxt.LotHobbyFlags.HasFlag(LotHobbyFlags.Films))
 				{
 					perv += " (Films)";
 				}
 
-				if (tty[1])
+				if (ltxt.LotHobbyFlags.HasFlag(LotHobbyFlags.Art))
 				{
 					perv += " (Art)";
 				}
 
-				if (tty[0])
+				if (ltxt.LotHobbyFlags.HasFlag(LotHobbyFlags.Cooking))
 				{
 					perv += " (Cooking)";
 				}

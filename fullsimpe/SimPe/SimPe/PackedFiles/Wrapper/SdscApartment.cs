@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: © SimPE contributors
+// SPDX-License-Identifier: GPL-2.0-or-later
+
 using System.IO;
 
 namespace SimPe.PackedFiles.Wrapper

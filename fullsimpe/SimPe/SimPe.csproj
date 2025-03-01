@@ -2,12 +2,12 @@
 <Project ToolsVersion="4.0" Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>SimPe</RootNamespace>
+    <RootNamespace></RootNamespace>
     <AssemblyName>SimPe</AssemblyName>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>7.3</LangVersion>
     <TargetFramework>net471</TargetFramework>
-    <ApplicationIcon>img\Simpe2.ico</ApplicationIcon>
+    <ApplicationIcon>SimPe\img\Simpe2.ico</ApplicationIcon>
     <StartupObject>SimPe.MainForm</StartupObject>
     <RuntimeIdentifier>win-x86</RuntimeIdentifier>
     <EnableDefaultCompileItems>true</EnableDefaultCompileItems>
@@ -36,74 +36,78 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <EmbeddedResource Include="data\*" />
-    <EmbeddedResource Include="docs\*" />
-    <EmbeddedResource Include="img\*" />
+    <EmbeddedResource Include="SimPe\docs\*" />
+    <EmbeddedResource Include="SimPe\files\*" />
+    <EmbeddedResource Include="SimPe\img\*" />
   </ItemGroup>
   <ItemGroup>
+    <CompilerVisibleProperty Include="RootNamespace" />
+    <CompilerVisibleProperty Include="ProjectDir" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
     <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="NetDocks">
-      <HintPath>..\NetDocks.dll</HintPath>
+      <HintPath>..\.assemblys\NetDocks.dll</HintPath>
     </Reference>
     <Reference Include="XPCommonControls">
-      <HintPath>..\XPCommonControls.dll</HintPath>
+      <HintPath>..\.assemblys\XPCommonControls.dll</HintPath>
     </Reference>
     <Reference Include="ambertation.3D">
-      <HintPath>..\ambertation.3D.dll</HintPath>
+      <HintPath>..\.assemblys\ambertation.3D.dll</HintPath>
     </Reference>
     <Reference Include="ambertation.utilities">
-      <HintPath>..\ambertation.utilities.dll</HintPath>
+      <HintPath>..\.assemblys\ambertation.utilities.dll</HintPath>
     </Reference>
     <Reference Include="ambertation.3D.mdx.binding">
-      <HintPath>..\ambertation.3D.mdx.binding.dll</HintPath>
+      <HintPath>..\.assemblys\ambertation.3D.mdx.binding.dll</HintPath>
     </Reference>
     <Reference Include="SandDock">
-      <HintPath>..\SandDock.dll</HintPath>
+      <HintPath>..\.assemblys\SandDock.dll</HintPath>
     </Reference>
     <Reference Include="Eyefinder">
-      <HintPath>..\Eyefinder.dll</HintPath>
+      <HintPath>..\.assemblys\Eyefinder.dll</HintPath>
     </Reference>
-    <Reference Include="System.Design" />
     <Reference Include="AdvancedForms">
-      <HintPath>..\AdvancedForms.dll</HintPath>
+      <HintPath>..\.assemblys\AdvancedForms.dll</HintPath>
     </Reference>
     <Reference Include="microsoft.directx.audiovideoplayback">
-      <HintPath>..\microsoft.directx.audiovideoplayback.dll</HintPath>
+      <HintPath>..\.assemblys\microsoft.directx.audiovideoplayback.dll</HintPath>
     </Reference>
     <Reference Include="microsoft.directx.diagnostics">
-      <HintPath>..\microsoft.directx.diagnostics.dll</HintPath>
+      <HintPath>..\.assemblys\microsoft.directx.diagnostics.dll</HintPath>
     </Reference>
     <Reference Include="microsoft.directx.direct3d">
-      <HintPath>..\microsoft.directx.direct3d.dll</HintPath>
+      <HintPath>..\.assemblys\microsoft.directx.direct3d.dll</HintPath>
     </Reference>
     <Reference Include="microsoft.directx.direct3dx">
-      <HintPath>..\microsoft.directx.direct3dx.dll</HintPath>
+      <HintPath>..\.assemblys\microsoft.directx.direct3dx.dll</HintPath>
     </Reference>
     <Reference Include="microsoft.directx.directdraw">
-      <HintPath>..\microsoft.directx.directdraw.dll</HintPath>
+      <HintPath>..\.assemblys\microsoft.directx.directdraw.dll</HintPath>
     </Reference>
     <Reference Include="microsoft.directx.directinput">
-      <HintPath>..\microsoft.directx.directinput.dll</HintPath>
+      <HintPath>..\.assemblys\microsoft.directx.directinput.dll</HintPath>
     </Reference>
     <Reference Include="microsoft.directx.directplay">
-      <HintPath>..\microsoft.directx.directplay.dll</HintPath>
+      <HintPath>..\.assemblys\microsoft.directx.directplay.dll</HintPath>
     </Reference>
     <Reference Include="microsoft.directx.directsound">
-      <HintPath>..\microsoft.directx.directsound.dll</HintPath>
+      <HintPath>..\.assemblys\microsoft.directx.directsound.dll</HintPath>
     </Reference>
     <Reference Include="microsoft.directx">
-      <HintPath>..\microsoft.directx.dll</HintPath>
+      <HintPath>..\.assemblys\microsoft.directx.dll</HintPath>
     </Reference>
     <Reference Include="xsi.lib">
-      <HintPath>..\xsi.lib.dll</HintPath>
+      <HintPath>..\.assemblys\xsi.lib.dll</HintPath>
     </Reference>
-    <Reference Include="mscorlib" />
     <Reference Include="7z">
-      <HintPath>..\7z.dll</HintPath>
+      <HintPath>..\.assemblys\7z.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

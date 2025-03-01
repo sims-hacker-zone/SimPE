@@ -1,0 +1,36 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimPe", "SimPe\SimPe.csproj", "{C62B5A09-3F7E-49E9-9A74-CC3634550179}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		InProgress|Any CPU = InProgress|Any CPU
+		Release MAC|Any CPU = Release MAC|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C62B5A09-3F7E-49E9-9A74-CC3634550179}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C62B5A09-3F7E-49E9-9A74-CC3634550179}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C62B5A09-3F7E-49E9-9A74-CC3634550179}.InProgress|Any CPU.ActiveCfg = Release|Any CPU
+		{C62B5A09-3F7E-49E9-9A74-CC3634550179}.InProgress|Any CPU.Build.0 = Release|Any CPU
+		{C62B5A09-3F7E-49E9-9A74-CC3634550179}.Release MAC|Any CPU.ActiveCfg = Release|Any CPU
+		{C62B5A09-3F7E-49E9-9A74-CC3634550179}.Release MAC|Any CPU.Build.0 = Release|Any CPU
+		{C62B5A09-3F7E-49E9-9A74-CC3634550179}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C62B5A09-3F7E-49E9-9A74-CC3634550179}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5D74D7B1-33CC-470D-8B31-75A4631F91E5}
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = PrefixedHierarchical
+		$0.StandardHeader = $2
+	EndGlobalSection
+EndGlobal

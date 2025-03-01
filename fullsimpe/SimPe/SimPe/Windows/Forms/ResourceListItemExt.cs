@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: © SimPE contributors
+// SPDX-License-Identifier: GPL-2.0-or-later
+
 namespace SimPe.Windows.Forms
 {
 	public class ResourceListItemExt : System.Windows.Forms.ListViewItem
