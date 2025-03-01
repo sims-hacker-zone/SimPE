@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 
-namespace SimPe.Plugin.Bnfo
+namespace SimPe.PackedFiles.Bnfo
 {
 	/// <summary>
 	/// Summary description for BnfoCustomerItemsUI.
@@ -76,10 +76,10 @@ namespace SimPe.Plugin.Bnfo
 		#endregion
 
 		private System.Windows.Forms.ListBox lb;
-		private Collections.BnfoCustomerItems items;
+		private BnfoCustomerItems items;
 
 		[System.ComponentModel.Browsable(false)]
-		public Collections.BnfoCustomerItems Items
+		public BnfoCustomerItems Items
 		{
 			get => items;
 			set

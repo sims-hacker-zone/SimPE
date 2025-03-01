@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 using SimPe.Interfaces.Plugin;
 
-namespace SimPe.Plugin.Bnfo
+namespace SimPe.PackedFiles.Bnfo
 {
 	/// <summary>
 	/// Wrapper for 0x104F6A6E , which apear to be the "Business info Resource"
@@ -43,7 +43,7 @@ namespace SimPe.Plugin.Bnfo
 			unk2;
 		private uint empct;
 
-		public Collections.BnfoCustomerItems CustomerItems
+		public BnfoCustomerItems CustomerItems
 		{
 			get;
 		}
@@ -51,7 +51,7 @@ namespace SimPe.Plugin.Bnfo
 
 		public Bnfo() : base()
 		{
-			CustomerItems = new Collections.BnfoCustomerItems(this);
+			CustomerItems = new BnfoCustomerItems(this);
 		}
 
 		#region IWrapper Member

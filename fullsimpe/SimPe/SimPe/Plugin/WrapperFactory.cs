@@ -12,6 +12,7 @@ using pjse;
 
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Bnfo;
 using SimPe.PackedFiles.Wrapper;
 using SimPe.Plugin.Tool;
 using SimPe.Plugin.Tool.Action;
@@ -173,7 +174,7 @@ namespace SimPe.Plugin
 						new Idno(),
 						new RoadTexture(),
 						new Tatt(),
-						new Bnfo.Bnfo(),
+						new Bnfo(),
 						new Nhtr(),
 						new Lot(),
 						new Bcon(),
