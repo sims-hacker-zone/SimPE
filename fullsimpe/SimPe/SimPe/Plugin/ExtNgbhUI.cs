@@ -4,6 +4,10 @@ using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
+using SimPe.Forms.PackedFileEditors.CustomControls;
+
+using Message = SimPe.Forms.MainUI.Message;
+
 namespace SimPe.Plugin
 {
 	/// <summary>
@@ -17,7 +21,7 @@ namespace SimPe.Plugin
 	{
 		private IContainer components;
 		private Panel pnSims;
-		PackedFiles.Wrapper.SimPoolControl spc = null;
+		SimPoolControl spc = null;
 		private Panel pnDebug;
 		private NgbhSlotSelection nssel;
 		private NgbhSlotUI nsui;
@@ -195,7 +199,7 @@ namespace SimPe.Plugin
 			spc.TabIndex = 0;
 			spc.TileColumns = new int[] { 1 };
 			spc.SelectedSimChanged +=
-				new PackedFiles.Wrapper.SimPoolControl.SelectedSimHandler(
+				new SimPoolControl.SelectedSimHandler(
 					spc_SelectedSimChanged
 				);
 			//

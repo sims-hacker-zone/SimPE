@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 
+using SimPe.Forms.PackedFileEditors.CustomControls;
+
 namespace SimPe.Plugin
 {
 	public enum SimMemoryType : byte
@@ -121,9 +123,7 @@ namespace SimPe.Plugin
 		{
 			foreach (
 				Cache.MemoryCacheItem mci in
-					PackedFiles
-					.Wrapper
-					.ObjectComboBox
+					ObjectComboBox
 					.ObjectCache
 					.List
 			)
@@ -274,7 +274,7 @@ namespace SimPe.Plugin
 				objd = new PackedFiles.Wrapper.ExtObjd();
 
 				Cache.MemoryCacheItem mci =
-					PackedFiles.Wrapper.ObjectComboBox.ObjectCache.FindItem(guid);
+					ObjectComboBox.ObjectCache.FindItem(guid);
 				if (mci != null)
 				{
 					objd.Type = mci.ObjectType;
@@ -296,7 +296,7 @@ namespace SimPe.Plugin
 					if (mci == null)
 					{
 						mci =
-							PackedFiles.Wrapper.ObjectComboBox.ObjectCache.FindItem(
+							ObjectComboBox.ObjectCache.FindItem(
 								guid
 							);
 					}
@@ -642,7 +642,7 @@ namespace SimPe.Plugin
 			else
 			{
 				Cache.MemoryCacheItem mci =
-					PackedFiles.Wrapper.ObjectComboBox.ObjectCache.FindItem(
+					ObjectComboBox.ObjectCache.FindItem(
 						SimID
 					);
 				if (mci != null)
@@ -695,7 +695,7 @@ namespace SimPe.Plugin
 			{
 				name += " {";
 				Cache.MemoryCacheItem mci =
-					PackedFiles.Wrapper.ObjectComboBox.ObjectCache.FindItem(
+					ObjectComboBox.ObjectCache.FindItem(
 						ReferencedObjectGuid
 					);
 				if (mci != null)

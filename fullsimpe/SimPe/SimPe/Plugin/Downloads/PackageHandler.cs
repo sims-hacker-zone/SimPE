@@ -1,6 +1,8 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+using SimPe.Forms.PackedFileEditors.CustomControls;
+
 namespace SimPe.Plugin.Downloads
 {
 	/// <summary>
@@ -28,7 +30,7 @@ namespace SimPe.Plugin.Downloads
 				|| type == Cache.PackageType.Object
 			)
 			{
-				PackedFiles.Wrapper.ObjectComboBox.ObjectCache.ReloadCache(
+				ObjectComboBox.ObjectCache.ReloadCache(
 					DownloadsToolFactory.FileIndex,
 					false
 				);

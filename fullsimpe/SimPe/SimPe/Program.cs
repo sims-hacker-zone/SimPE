@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
+using Message = SimPe.Forms.MainUI.Message;
+
 //using Ambertation.Windows.Forms;
 
 namespace SimPe

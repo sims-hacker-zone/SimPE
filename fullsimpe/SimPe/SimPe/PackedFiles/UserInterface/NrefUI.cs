@@ -1,5 +1,6 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using SimPe.Forms.PackedFileEditors;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Wrapper;
 

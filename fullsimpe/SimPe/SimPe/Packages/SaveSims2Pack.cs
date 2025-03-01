@@ -642,7 +642,7 @@ namespace SimPe.Packages
 		{
 			if (tbflname.ReadOnly)
 			{
-				if ((lblist.SelectedItems.Count == 0) && ok)
+				if (lblist.SelectedItems.Count == 0 && ok)
 				{
 					MessageBox.Show("You have to select at Least one Package");
 					btadd.Select();
@@ -651,7 +651,7 @@ namespace SimPe.Packages
 			}
 			else
 			{
-				if ((tbflname.Text.Trim() == "") && ok)
+				if (tbflname.Text.Trim() == "" && ok)
 				{
 					MessageBox.Show(
 						"You have to specify a Filename for the Sims2Community Pack File."
@@ -660,7 +660,7 @@ namespace SimPe.Packages
 					e.Cancel = true;
 				}
 
-				if ((lblist.Items.Count == 0) && ok)
+				if (lblist.Items.Count == 0 && ok)
 				{
 					MessageBox.Show("You have to add at least one Package.");
 					btadd.Select();

@@ -4,6 +4,10 @@ using System;
 using System.Collections;
 using System.Windows.Forms;
 
+using SimPe.Forms.PackedFileEditors.CustomControls;
+
+using Message = SimPe.Forms.MainUI.Message;
+
 namespace SimPe.Plugin.Tool.Dockable
 {
 	/// <summary>
@@ -231,7 +235,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				FileTableBase.FileIndex.AddNewChild();
 
 			Cache.MemoryCacheItem mci =
-				PackedFiles.Wrapper.ObjectComboBox.ObjectCache.FindItem(guid);
+				ObjectComboBox.ObjectCache.FindItem(guid);
 			if (mci != null)
 			{
 				localgroup = mci.FileDescriptor.Group;

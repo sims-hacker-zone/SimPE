@@ -3,6 +3,8 @@
 using System.Drawing;
 using System.Windows.Forms;
 
+using SimPe.Forms.PackedFileEditors.CustomControls;
+
 namespace SimPe.Plugin
 {
 	/// <summary>
@@ -363,8 +365,8 @@ namespace SimPe.Plugin
 			}
 		}
 
-		PackedFiles.Wrapper.SimPoolControl pc;
-		public PackedFiles.Wrapper.SimPoolControl SimPoolControl
+		SimPoolControl pc;
+		public SimPoolControl SimPoolControl
 		{
 			get => pc;
 			set
@@ -372,7 +374,7 @@ namespace SimPe.Plugin
 				if (pc != null)
 				{
 					pc.SelectedSimChanged -=
-						new PackedFiles.Wrapper.SimPoolControl.SelectedSimHandler(
+						new SimPoolControl.SelectedSimHandler(
 							pc_SelectedSimChanged
 						);
 				}
@@ -381,7 +383,7 @@ namespace SimPe.Plugin
 				if (pc != null)
 				{
 					pc.SelectedSimChanged +=
-						new PackedFiles.Wrapper.SimPoolControl.SelectedSimHandler(
+						new SimPoolControl.SelectedSimHandler(
 							pc_SelectedSimChanged
 						);
 					pc_SelectedSimChanged(pc, null, null);

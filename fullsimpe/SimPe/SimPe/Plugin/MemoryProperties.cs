@@ -5,6 +5,8 @@ using System;
 using System.Collections;
 using System.Windows.Forms;
 
+using SimPe.Forms.PackedFileEditors.CustomControls;
+
 namespace SimPe.Plugin
 {
 	/// <summary>
@@ -625,20 +627,20 @@ namespace SimPe.Plugin
 		private LinkLabel llSetRawLength;
 		private Label lbtype;
 		private Ambertation.Windows.Forms.EnumComboBox cbtype;
-		private PackedFiles.Wrapper.ObjectComboBox cbMems;
-		private PackedFiles.Wrapper.ObjectComboBox cbToks;
+		private ObjectComboBox cbMems;
+		private ObjectComboBox cbToks;
 		private Label label2;
-		private PackedFiles.Wrapper.ObjectComboBox cbObjs;
+		private ObjectComboBox cbObjs;
 		private PictureBox pb;
 		private Panel pnSelection;
 		private Panel pnOwner;
 		private Label label3;
 		private LinkLabel llme;
-		PackedFiles.Wrapper.SimComboBox cbOwner;
+		SimComboBox cbOwner;
 		private Label label4;
 		private Panel pnSubject;
-		private PackedFiles.Wrapper.SimComboBox cbSubject;
-		private PackedFiles.Wrapper.ObjectComboBox cbSubjectObj;
+		private SimComboBox cbSubject;
+		private ObjectComboBox cbSubjectObj;
 		private Panel pnObjectGuid;
 		private Label label5;
 		private LinkLabel llme2;
@@ -810,12 +812,12 @@ namespace SimPe.Plugin
 			}
 		}
 
-		void SelectNgbhItem(PackedFiles.Wrapper.ObjectComboBox cb, NgbhItem item)
+		void SelectNgbhItem(ObjectComboBox cb, NgbhItem item)
 		{
 			cb.SelectedGuid = item.Guid;
 		}
 
-		void SelectOwner(PackedFiles.Wrapper.SimComboBox cb, NgbhItem item)
+		void SelectOwner(SimComboBox cb, NgbhItem item)
 		{
 			cb.SelectedSimInstance = item.OwnerInstance;
 		}
@@ -871,8 +873,8 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			PackedFiles.Wrapper.ObjectComboBox cb =
-				sender as PackedFiles.Wrapper.ObjectComboBox;
+			ObjectComboBox cb =
+				sender as ObjectComboBox;
 			item.Guid = cb.SelectedGuid;
 			SetContent();
 			FireChangeEvent();
@@ -950,7 +952,7 @@ namespace SimPe.Plugin
 			pnListing.Visible = Helper.WindowsRegistry.HiddenMode;
 		}
 
-		void SetMe(PackedFiles.Wrapper.SimComboBox cb)
+		void SetMe(SimComboBox cb)
 		{
 			if (item == null)
 			{

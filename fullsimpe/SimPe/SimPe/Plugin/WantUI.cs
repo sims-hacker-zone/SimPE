@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 
+using SimPe.Forms.PackedFileEditors.CustomControls;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -39,7 +40,7 @@ namespace SimPe.Plugin
 				form.ListWants();
 
 				WantLoader.WantNameLoader.AddObjects(
-					PackedFiles.Wrapper.ObjectComboBox.ObjectCache.List
+					ObjectComboBox.ObjectCache.List
 				);
 			}
 		}

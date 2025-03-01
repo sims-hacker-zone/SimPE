@@ -11,9 +11,11 @@
  */
 
 using pjse.BhavOperandWizards;
+
 using SimPe.Data;
-using SimPe.PackedFiles.UserInterface;
+using SimPe.Forms.PackedFileEditors;
 using SimPe.PackedFiles.Wrapper;
+
 using System;
 using System.Windows.Forms;
 
@@ -24,7 +26,7 @@ using System.Windows.Forms;
  */
 namespace whse.PrimitiveWizards.Wiz0x007a
 {
-    public partial class UI : UserControl, pjse.iBhavOperandWizForm
+	public partial class UI : UserControl, pjse.iBhavOperandWizForm
     {
         private Instruction inst;
 

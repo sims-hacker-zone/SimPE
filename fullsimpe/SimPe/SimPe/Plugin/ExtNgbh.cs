@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Collections;
 
+using SimPe.Forms.PackedFileEditors.CustomControls;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -31,9 +32,7 @@ namespace SimPe.Plugin
 			ArrayList list = new ArrayList();
 			foreach (
 				Cache.MemoryCacheItem mci in
-					PackedFiles
-					.Wrapper
-					.ObjectComboBox
+					ObjectComboBox
 					.ObjectCache
 					.List
 			)

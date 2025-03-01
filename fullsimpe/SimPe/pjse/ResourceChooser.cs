@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
+using SimPe.Forms.PackedFileEditors;
 using SimPe.Interfaces.Files;
 using SimPe.Plugin;
 
@@ -849,8 +850,8 @@ namespace pjse
 			Bhav b = new Bhav();
 			b.ProcessData(item.PFD, item.Package);
 
-			SimPe.PackedFiles.UserInterface.BhavForm ui =
-				(SimPe.PackedFiles.UserInterface.BhavForm)b.UIHandler;
+			BhavForm ui =
+				(BhavForm)b.UIHandler;
 			ui.Tag = "Popup"; // tells the SetReadOnly function it's in a popup - so everything locked down
 			ui.Text =
 				Localization.GetString("viewbhav")

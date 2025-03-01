@@ -4,6 +4,8 @@
 using System;
 using System.Windows.Forms;
 
+using Message = SimPe.Forms.MainUI.Message;
+
 namespace SimPe.Plugin.Anim
 {
 	/// <summary>

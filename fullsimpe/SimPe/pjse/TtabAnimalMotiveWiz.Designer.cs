@@ -1,6 +1,8 @@
+using SimPe.Forms.PackedFileEditors.CustomControls;
+
 namespace pjse
 {
-    partial class TtabAnimalMotiveWiz
+	partial class TtabAnimalMotiveWiz
     {
         /// <summary>
         /// Required designer variable.
@@ -336,24 +338,24 @@ namespace pjse
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private SimPe.PackedFiles.UserInterface.TtabSingleMotiveUI ttabSingleMotiveUI1;
+        private TtabSingleMotiveUI ttabSingleMotiveUI1;
         private System.Windows.Forms.Button btnPlus;
         private System.Windows.Forms.Button btnMinus;
-        private SimPe.PackedFiles.UserInterface.TtabSingleMotiveUI ttabSingleMotiveUI2;
-        private SimPe.PackedFiles.UserInterface.TtabSingleMotiveUI ttabSingleMotiveUI3;
-        private SimPe.PackedFiles.UserInterface.TtabSingleMotiveUI ttabSingleMotiveUI4;
-        private SimPe.PackedFiles.UserInterface.TtabSingleMotiveUI ttabSingleMotiveUI5;
-        private SimPe.PackedFiles.UserInterface.TtabSingleMotiveUI ttabSingleMotiveUI6;
-        private SimPe.PackedFiles.UserInterface.TtabSingleMotiveUI ttabSingleMotiveUI7;
-        private SimPe.PackedFiles.UserInterface.TtabSingleMotiveUI ttabSingleMotiveUI8;
-        private SimPe.PackedFiles.UserInterface.TtabSingleMotiveUI ttabSingleMotiveUI9;
-        private SimPe.PackedFiles.UserInterface.TtabSingleMotiveUI ttabSingleMotiveUI10;
-        private SimPe.PackedFiles.UserInterface.TtabSingleMotiveUI ttabSingleMotiveUI11;
-        private SimPe.PackedFiles.UserInterface.TtabSingleMotiveUI ttabSingleMotiveUI12;
-        private SimPe.PackedFiles.UserInterface.TtabSingleMotiveUI ttabSingleMotiveUI13;
-        private SimPe.PackedFiles.UserInterface.TtabSingleMotiveUI ttabSingleMotiveUI14;
-        private SimPe.PackedFiles.UserInterface.TtabSingleMotiveUI ttabSingleMotiveUI15;
-        private SimPe.PackedFiles.UserInterface.TtabSingleMotiveUI ttabSingleMotiveUI16;
+        private TtabSingleMotiveUI ttabSingleMotiveUI2;
+        private TtabSingleMotiveUI ttabSingleMotiveUI3;
+        private TtabSingleMotiveUI ttabSingleMotiveUI4;
+        private TtabSingleMotiveUI ttabSingleMotiveUI5;
+        private TtabSingleMotiveUI ttabSingleMotiveUI6;
+        private TtabSingleMotiveUI ttabSingleMotiveUI7;
+        private TtabSingleMotiveUI ttabSingleMotiveUI8;
+        private TtabSingleMotiveUI ttabSingleMotiveUI9;
+        private TtabSingleMotiveUI ttabSingleMotiveUI10;
+        private TtabSingleMotiveUI ttabSingleMotiveUI11;
+        private TtabSingleMotiveUI ttabSingleMotiveUI12;
+        private TtabSingleMotiveUI ttabSingleMotiveUI13;
+        private TtabSingleMotiveUI ttabSingleMotiveUI14;
+        private TtabSingleMotiveUI ttabSingleMotiveUI15;
+        private TtabSingleMotiveUI ttabSingleMotiveUI16;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;

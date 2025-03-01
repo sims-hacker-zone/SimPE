@@ -3,7 +3,7 @@
 using System;
 using System.Windows.Forms;
 
-using SimPe.PackedFiles.UserInterface;
+using SimPe.Forms.PackedFileEditors.CustomControls;
 using SimPe.PackedFiles.Wrapper;
 
 namespace pjse

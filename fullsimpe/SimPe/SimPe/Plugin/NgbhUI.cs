@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 
 using SimPe.Cache;
+using SimPe.Forms.PackedFileEditors.CustomControls;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -16,7 +17,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns the MemoryObject Cache
 		/// </summary>
-		internal static MemoryCacheFile ObjectCache => PackedFiles.Wrapper.ObjectComboBox.ObjectCache;
+		internal static MemoryCacheFile ObjectCache => ObjectComboBox.ObjectCache;
 
 		#region Code to Startup the UI
 
