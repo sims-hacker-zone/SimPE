@@ -31,20 +31,17 @@ namespace SimPe.Plugin.Bnfo
 		{
 			get; set;
 		}
-		public List<ushort> Employees { get; set; } = new List<ushort>();
-		public List<int> PayRate { get; set; } = new List<int>(); //doesn't need to be int, could just be byte but int is easier to work with. 0 to 6 inclusive
-		public List<uint> FairPay { get; set; } = new List<uint>(); // Fair Pay - should never be below 15
-		public List<int> Revenue { get; private set; } = new List<int>();
-		public List<int> Expenses { get; private set; } = new List<int>();
+		public List<BnfoEmployee> Employees { get; set; } = new List<BnfoEmployee>();
+		public List<BnfoHistory> History { get; set; } = new List<BnfoHistory>();
 
 		public int HistoryCount
 		{
 			get; private set;
 		}
 
-		uint unk1,
+		private uint unk1,
 			unk2;
-		uint empct;
+		private uint empct;
 
 		public Collections.BnfoCustomerItems CustomerItems
 		{
@@ -76,7 +73,7 @@ namespace SimPe.Plugin.Bnfo
 			return new BnfoUI();
 		}
 
-		byte[] over;
+		private byte[] over;
 
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
@@ -102,13 +99,9 @@ namespace SimPe.Plugin.Bnfo
 			*/
 			EmployeeCount = reader.ReadInt32();
 			Employees.Capacity = EmployeeCount;
-			PayRate.Capacity = EmployeeCount;
-			FairPay.Capacity = EmployeeCount;
 			for (int i = 0; i < EmployeeCount; i++)
 			{
-				Employees.Add(reader.ReadUInt16());
-				PayRate.Add(reader.ReadInt32());
-				FairPay.Add(reader.ReadUInt32());
+				Employees.Add(new BnfoEmployee(reader));
 			}
 			long pos = reader.BaseStream.Position;
 			over = reader.ReadBytes(
@@ -120,16 +113,20 @@ namespace SimPe.Plugin.Bnfo
 
 			if (HistoryCount > 0 && over.Length > 60)
 			{
-				Revenue.Capacity = HistoryCount;
-				Expenses.Capacity = HistoryCount;
+				History.Capacity = HistoryCount;
 				reader.BaseStream.Seek(-8, System.IO.SeekOrigin.Current);
 				// first is + 52, I would jump over it so I must pull back 8?
 				for (int i = 0; i < HistoryCount; i++)
 				{
-					reader.BaseStream.Seek(60, System.IO.SeekOrigin.Current);
-					Revenue.Add(reader.ReadInt32()); // Revenue
+					reader.BaseStream.Seek(60, System.IO.SeekOrigin.Current); // TODO: Investigate if there is information in this data
+					int revenue = reader.ReadInt32();
 					reader.BaseStream.Seek(4, System.IO.SeekOrigin.Current); // credited
-					Expenses.Add(reader.ReadInt32()); // Expenses
+					int expenses = reader.ReadInt32();
+					History.Add(new BnfoHistory
+					{
+						Expenses = expenses,
+						Revenue = revenue
+					});
 				}
 			}
 		}
@@ -149,12 +146,10 @@ namespace SimPe.Plugin.Bnfo
 				item.Serialize(writer);
 			}
 
-			writer.Write(EmployeeCount);
-			for (int i = 0; i < EmployeeCount; i++)
+			writer.Write(Employees.Count);
+			foreach (BnfoEmployee employee in Employees)
 			{
-				writer.Write(Employees[i]);
-				writer.Write(PayRate[i]);
-				writer.Write(FairPay[i]);
+				employee.Serialize(writer);
 			}
 
 			writer.Write(over);

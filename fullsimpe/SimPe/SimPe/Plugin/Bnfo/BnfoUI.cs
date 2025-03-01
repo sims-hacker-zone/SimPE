@@ -3,6 +3,7 @@
 using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 using Ambertation.Windows.Forms;
@@ -80,8 +81,8 @@ namespace SimPe.Plugin.Bnfo
 		private ToolTip toolTip1;
 		private PictureBox pbox;
 		private IContainer components;
-		int[] edatas;
-		int[] rdatas;
+		private int[] edatas;
+		private int[] rdatas;
 
 		public BnfoUI()
 		{
@@ -196,16 +197,7 @@ namespace SimPe.Plugin.Bnfo
 			//
 			// lv
 			//
-			lv.Anchor =
-
-
-
-							AnchorStyles.Top
-							| AnchorStyles.Bottom
-						 | AnchorStyles.Left
-
-
-			;
+			lv.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
 			lv.Font = new Font("Tahoma", 8.25F);
 			lv.Items = null;
 			lv.Location = new Point(8, 32);
@@ -215,16 +207,7 @@ namespace SimPe.Plugin.Bnfo
 			//
 			// bnfoCustomerItemUI1
 			//
-			bnfoCustomerItemUI1.Anchor =
-
-
-
-							AnchorStyles.Top
-							| AnchorStyles.Bottom
-						 | AnchorStyles.Left
-
-
-			;
+			bnfoCustomerItemUI1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
 			bnfoCustomerItemUI1.BackColor = Color.Transparent;
 			bnfoCustomerItemUI1.BnfoCustomerItemsUI = lv;
 			bnfoCustomerItemUI1.Font = new Font("Tahoma", 8.25F);
@@ -362,14 +345,7 @@ namespace SimPe.Plugin.Bnfo
 			//
 			// lbcashf
 			//
-			lbcashf.Anchor =
-
-
-						AnchorStyles.Bottom
-						| AnchorStyles.Left
-
-
-			;
+			lbcashf.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
 			lbcashf.AutoSize = true;
 			lbcashf.Font = new Font(
 				"Tahoma",
@@ -384,14 +360,7 @@ namespace SimPe.Plugin.Bnfo
 			//
 			// gpexpen
 			//
-			gpexpen.Anchor =
-
-
-						AnchorStyles.Bottom
-						| AnchorStyles.Left
-
-
-			;
+			gpexpen.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
 			gpexpen.BackColor = Color.Transparent;
 			gpexpen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
 			gpexpen.Location = new Point(551, 212);
@@ -401,14 +370,7 @@ namespace SimPe.Plugin.Bnfo
 			//
 			// gpreven
 			//
-			gpreven.Anchor =
-
-
-						AnchorStyles.Bottom
-						| AnchorStyles.Left
-
-
-			;
+			gpreven.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
 			gpreven.BackColor = Color.Transparent;
 			gpreven.Location = new Point(344, 212);
 			gpreven.Name = "gpreven";
@@ -417,14 +379,7 @@ namespace SimPe.Plugin.Bnfo
 			//
 			// btClearim
 			//
-			btClearim.Anchor =
-
-
-						AnchorStyles.Bottom
-						| AnchorStyles.Left
-
-
-			;
+			btClearim.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
 			btClearim.Location = new Point(261, 270);
 			btClearim.Name = "btClearim";
 			btClearim.Size = new Size(75, 25);
@@ -439,14 +394,7 @@ namespace SimPe.Plugin.Bnfo
 			//
 			// tbMax
 			//
-			tbMax.Anchor =
-
-
-						AnchorStyles.Bottom
-						| AnchorStyles.Left
-
-
-			;
+			tbMax.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
 			tbMax.Location = new Point(120, 293);
 			tbMax.Name = "tbMax";
 			tbMax.Size = new Size(100, 21);
@@ -455,14 +403,7 @@ namespace SimPe.Plugin.Bnfo
 			//
 			// tbCur
 			//
-			tbCur.Anchor =
-
-
-						AnchorStyles.Bottom
-						| AnchorStyles.Left
-
-
-			;
+			tbCur.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
 			tbCur.Location = new Point(120, 269);
 			tbCur.Name = "tbCur";
 			tbCur.Size = new Size(100, 21);
@@ -471,14 +412,7 @@ namespace SimPe.Plugin.Bnfo
 			//
 			// label3
 			//
-			label3.Anchor =
-
-
-						AnchorStyles.Bottom
-						| AnchorStyles.Left
-
-
-			;
+			label3.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
 			label3.BackColor = Color.Transparent;
 			label3.Font = new Font(
 				"Tahoma",
@@ -495,14 +429,7 @@ namespace SimPe.Plugin.Bnfo
 			//
 			// label2
 			//
-			label2.Anchor =
-
-
-						AnchorStyles.Bottom
-						| AnchorStyles.Left
-
-
-			;
+			label2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
 			label2.BackColor = Color.Transparent;
 			label2.Font = new Font(
 				"Tahoma",
@@ -554,14 +481,7 @@ namespace SimPe.Plugin.Bnfo
 			//
 			// btaddim
 			//
-			btaddim.Anchor =
-
-
-						AnchorStyles.Bottom
-						| AnchorStyles.Left
-
-
-			;
+			btaddim.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
 			btaddim.Location = new Point(710, 291);
 			btaddim.Name = "btaddim";
 			btaddim.Size = new Size(47, 23);
@@ -807,14 +727,7 @@ namespace SimPe.Plugin.Bnfo
 			//
 			// btdelety
 			//
-			btdelety.Anchor =
-
-
-						AnchorStyles.Bottom
-						| AnchorStyles.Left
-
-
-			;
+			btdelety.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
 			btdelety.Location = new Point(625, 291);
 			btdelety.Name = "btdelety";
 			btdelety.Size = new Size(75, 23);
@@ -1101,16 +1014,7 @@ namespace SimPe.Plugin.Bnfo
 			//
 			// lvEmployees
 			//
-			lvEmployees.Anchor =
-
-
-
-							AnchorStyles.Top
-							| AnchorStyles.Bottom
-						 | AnchorStyles.Left
-
-
-			;
+			lvEmployees.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
 			lvEmployees.BorderStyle = BorderStyle.None;
 			lvEmployees.FullRowSelect = true;
 			lvEmployees.HideSelection = false;
@@ -1145,14 +1049,7 @@ namespace SimPe.Plugin.Bnfo
 			//
 			// btchngeOwn
 			//
-			btchngeOwn.Anchor =
-
-
-						AnchorStyles.Bottom
-						| AnchorStyles.Left
-
-
-			;
+			btchngeOwn.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
 			btchngeOwn.Location = new Point(625, 291);
 			btchngeOwn.Name = "btchngeOwn";
 			btchngeOwn.Size = new Size(75, 23);
@@ -1198,11 +1095,11 @@ namespace SimPe.Plugin.Bnfo
 
 		public Bnfo Bnfo => (Bnfo)Wrapper;
 
-		bool intern;
-		bool employees = false;
-		int homeb = 1;
-		ushort owner = 0xffff;
-		ushort famly = 0;
+		private bool intern;
+		private bool employees = false;
+		private int homeb = 1;
+		private ushort owner = 0xffff;
+		private ushort famly = 0;
 
 		protected override void RefreshGUI()
 		{
@@ -1213,7 +1110,7 @@ namespace SimPe.Plugin.Bnfo
 
 			System.Resources.ResourceManager resources =
 				new System.Resources.ResourceManager(typeof(BnfoUI));
-			HeaderText = resources.GetString("$this.HeaderText") == null ? "Business Info" : resources.GetString("$this.HeaderText");
+			HeaderText = resources.GetString("$this.HeaderText") ?? "Business Info";
 
 			intern = true;
 			// Clear Panel2 but it doesn't seem to be needed
@@ -1328,12 +1225,9 @@ namespace SimPe.Plugin.Bnfo
 				famly = 0;
 			}
 
-			for (int i = 0; i < Bnfo.EmployeeCount; i++)
+			foreach ((BnfoEmployee employee, int i) in Bnfo.Employees.Select((x, i) => (x, i)))
 			{
-				sdsc =
-					FileTableBase.ProviderRegistry.SimDescriptionProvider.SimInstance[
-						Bnfo.Employees[i]
-					] as ExtSDesc;
+				sdsc = FileTableBase.ProviderRegistry.SimDescriptionProvider.SimInstance[employee.SimInstance] as ExtSDesc;
 				if (sdsc != null)
 				{
 					AddImage(sdsc);
@@ -1343,9 +1237,9 @@ namespace SimPe.Plugin.Bnfo
 						ImageIndex = ilist.Images.Count - 1,
 						Tag = sdsc
 					};
-					lvi.SubItems.Add(Convert.ToString(Bnfo.PayRate[i]));
-					lvi.SubItems.Add(Convert.ToString(i));
-					lvi.SubItems.Add(Convert.ToString(Bnfo.FairPay[i]));
+					lvi.SubItems.Add(employee.PayRate.ToString());
+					lvi.SubItems.Add(i.ToString());
+					lvi.SubItems.Add(employee.FairPay.ToString());
 					lvEmployees.Items.Add(lvi);
 				}
 				else
@@ -1357,13 +1251,14 @@ namespace SimPe.Plugin.Bnfo
 						ImageIndex = ilist.Images.Count - 1,
 						Tag = null
 					};
-					lvi.SubItems.Add(Convert.ToString(Bnfo.PayRate[i]));
-					lvi.SubItems.Add(Convert.ToString(i));
-					lvi.SubItems.Add(Convert.ToString(Bnfo.FairPay[i]));
+					lvi.SubItems.Add(employee.PayRate.ToString());
+					lvi.SubItems.Add(i.ToString());
+					lvi.SubItems.Add(employee.FairPay.ToString());
 					lvEmployees.Items.Add(lvi);
 				}
+
+				btdelety.Visible = btchngeOwn.Visible = false;
 			}
-			btdelety.Visible = btchngeOwn.Visible = false;
 		}
 
 		private void RefreshGraphs()
@@ -1375,9 +1270,7 @@ namespace SimPe.Plugin.Bnfo
 			*/
 			if (historycount > homeb)
 			{
-				int cflo =
-					Bnfo.Revenue[historycount - 1]
-					- Bnfo.Expenses[historycount - 1];
+				int cflo = Bnfo.History.Last().Cashflow;
 				Array.Resize(ref rdatas, historycount - homeb);
 				Array.Resize(ref edatas, historycount - homeb);
 				// set both graphs to same max value so a direct comparison between the bar heights is possible
@@ -1390,11 +1283,11 @@ namespace SimPe.Plugin.Bnfo
 					 * negative values get cut off to zero at the graph as it can't display them
 					 * therefore I add (subtract because they are negative) to revenue
 					*/
-					edatas[n] = Bnfo.Expenses[i];
-					rdatas[n] = Bnfo.Revenue[i];
-					if (Bnfo.Expenses[i] < 0)
+					edatas[n] = Bnfo.History[i].Expenses;
+					rdatas[n] = Bnfo.History[i].Revenue;
+					if (Bnfo.History[i].Expenses < 0)
 					{
-						rdatas[n] -= Bnfo.Expenses[i];
+						rdatas[n] -= Bnfo.History[i].Expenses;
 					}
 
 					if (edatas[n] > mMax)
@@ -1409,13 +1302,13 @@ namespace SimPe.Plugin.Bnfo
 
 					n++;
 				}
-				lbcashf.Text = "Current Cashflow = " + cflo.ToString("c");
+				lbcashf.Text = $"Current Cashflow = {cflo}§";
 			}
 			else
 			{
 				edatas = new int[] { 0, 0 };
 				rdatas = new int[] { 0, 0 };
-				lbcashf.Text = "Cashflow = $0";
+				lbcashf.Text = "Cashflow = 0§";
 			}
 		}
 
@@ -1640,17 +1533,9 @@ namespace SimPe.Plugin.Bnfo
 
 		private void lvEmployees_DoubleClick(object sender, EventArgs e)
 		{
-			if (lvEmployees.SelectedItems.Count < 1)
-			{
-				return;
-			}
-
-			if (lvEmployees.SelectedItems[0].Tag == null)
-			{
-				return;
-			}
-
-			if (!(lvEmployees.SelectedItems[0].Tag is ExtSDesc sdsc))
+			if (lvEmployees.SelectedItems.Count < 1
+				|| lvEmployees.SelectedItems[0].Tag == null
+				|| !(lvEmployees.SelectedItems[0].Tag is ExtSDesc sdsc))
 			{
 				return;
 			}
@@ -1682,40 +1567,36 @@ namespace SimPe.Plugin.Bnfo
 		private void PayBar(int PayRate)
 		{
 			pbpay.Value = PayRate + 1;
-			if (PayRate == 0)
+			switch (PayRate)
 			{
-				pbpay.SelectedColor = Color.DarkRed;
-				lbpay.Text = "Ridiculously Underpaid (25%)";
-			}
-			if (PayRate == 1)
-			{
-				pbpay.SelectedColor = Color.Red;
-				lbpay.Text = "Very Underpaid (50%)";
-			}
-			if (PayRate == 2)
-			{
-				pbpay.SelectedColor = Color.OrangeRed;
-				lbpay.Text = "Underpaid (75%)";
-			}
-			if (PayRate == 3)
-			{
-				pbpay.SelectedColor = Color.Gold;
-				lbpay.Text = "Fairly Paid (100%)";
-			}
-			if (PayRate == 4)
-			{
-				pbpay.SelectedColor = Color.YellowGreen;
-				lbpay.Text = "Overpaid (125%)";
-			}
-			if (PayRate == 5)
-			{
-				pbpay.SelectedColor = Color.LimeGreen;
-				lbpay.Text = "Very Overpaid (150%)";
-			}
-			if (PayRate == 6)
-			{
-				pbpay.SelectedColor = Color.Green;
-				lbpay.Text = "Ridiculously Overpaid (175%)";
+				case 0:
+					pbpay.SelectedColor = Color.DarkRed;
+					lbpay.Text = "Ridiculously Underpaid (25%)";
+					break;
+				case 1:
+					pbpay.SelectedColor = Color.Red;
+					lbpay.Text = "Very Underpaid (50%)";
+					break;
+				case 2:
+					pbpay.SelectedColor = Color.OrangeRed;
+					lbpay.Text = "Underpaid (75%)";
+					break;
+				case 3:
+					pbpay.SelectedColor = Color.Gold;
+					lbpay.Text = "Fairly Paid (100%)";
+					break;
+				case 4:
+					pbpay.SelectedColor = Color.YellowGreen;
+					lbpay.Text = "Overpaid (125%)";
+					break;
+				case 5:
+					pbpay.SelectedColor = Color.LimeGreen;
+					lbpay.Text = "Very Overpaid (150%)";
+					break;
+				case 6:
+					pbpay.SelectedColor = Color.Green;
+					lbpay.Text = "Ridiculously Overpaid (175%)";
+					break;
 			}
 			SetSmilyIcon();
 		}
@@ -1749,7 +1630,7 @@ namespace SimPe.Plugin.Bnfo
 				);
 				if (indects > -1)
 				{
-					Bnfo.PayRate[indects] = pbpay.Value - 1;
+					Bnfo.Employees[indects].PayRate = (BnfoEmployeePayRate)(pbpay.Value - 1);
 					lvEmployees.SelectedItems[0].SubItems[1].Text = Convert.ToString(
 						pbpay.Value - 1
 					);
@@ -1761,12 +1642,7 @@ namespace SimPe.Plugin.Bnfo
 
 		private void tbunknown_TextChanged(object sender, EventArgs e)
 		{
-			if (intern)
-			{
-				return;
-			}
-
-			if (lvEmployees.SelectedItems.Count < 1)
+			if (intern || lvEmployees.SelectedItems.Count < 1)
 			{
 				return;
 			}
@@ -1784,9 +1660,9 @@ namespace SimPe.Plugin.Bnfo
 						fp = fp.Substring(1);
 					}
 
-					Bnfo.FairPay[indects] = Convert.ToUInt32(fp);
+					Bnfo.Employees[indects].FairPay = Convert.ToUInt32(fp);
 					lvEmployees.SelectedItems[0].SubItems[3].Text = Convert.ToString(
-						Bnfo.FairPay[indects]
+						Bnfo.Employees[indects].FairPay
 					);
 					CanCommit = true;
 				}
@@ -1848,8 +1724,7 @@ namespace SimPe.Plugin.Bnfo
 				);
 				if (pfd != null)
 				{
-					Picture pic =
-						new Picture();
+					Picture pic = new Picture();
 					pic.ProcessData(pfd, pkg);
 					pbox.Image = pic.Image;
 				}
@@ -1949,29 +1824,7 @@ namespace SimPe.Plugin.Bnfo
 			{
 				try
 				{
-					ushort[] empls = new ushort[Bnfo.EmployeeCount - 1];
-					int[] pr = new int[Bnfo.EmployeeCount - 1];
-					uint[] a = new uint[Bnfo.EmployeeCount - 1];
-					int j = 0;
-					for (int i = 0; i < Bnfo.EmployeeCount; i++)
-					{
-						if (i != indects)
-						{
-							empls[j] = Bnfo.Employees[i];
-							pr[j] = Bnfo.PayRate[i];
-							a[j] = Bnfo.FairPay[i];
-							j++;
-						}
-					}
-
-					Bnfo.EmployeeCount--;
-
-					for (int i = 0; i < Bnfo.EmployeeCount; i++)
-					{
-						Bnfo.Employees[i] = empls[i];
-						Bnfo.PayRate[i] = pr[i];
-						Bnfo.FairPay[i] = a[i];
-					}
+					Bnfo.Employees.RemoveAt(indects);
 				}
 				catch { }
 			}
@@ -2054,9 +1907,12 @@ namespace SimPe.Plugin.Bnfo
 				bpy += s.Skills.Music / 100;
 
 				Bnfo.EmployeeCount++;
-				Bnfo.Employees.Add(s.Instance);
-				Bnfo.PayRate.Add(3);
-				Bnfo.FairPay.Add((uint)bpy);
+				Bnfo.Employees.Add(new BnfoEmployee
+				{
+					SimInstance = s.Instance,
+					PayRate = BnfoEmployeePayRate.FairlyPaid,
+					FairPay = (uint)bpy
+				});
 
 				if (Bnfo.Package == s.Package)
 				{
@@ -2130,12 +1986,9 @@ namespace SimPe.Plugin.Bnfo
 
 		private bool canhire(ExtSDesc sdsc)
 		{
-			foreach (ushort employee in Bnfo.Employees)
+			if (Bnfo.Employees.Any((employee) => sdsc.Instance == employee.SimInstance))
 			{
-				if (sdsc.Instance == employee)
-				{
-					return false; // already employee
-				}
+				return false; // already employee
 			}
 
 			if (sdsc.CharacterDescription.Realage < 16)
@@ -2352,12 +2205,9 @@ namespace SimPe.Plugin.Bnfo
 
 		private bool canownim(ExtSDesc sdsc)
 		{
-			foreach (ushort employee in Bnfo.Employees)
+			if (Bnfo.Employees.Any((employee) => sdsc.Instance == employee.SimInstance))
 			{
-				if (sdsc.Instance == employee)
-				{
-					return false; // an employee
-				}
+				return false; // an employee
 			}
 
 			if (sdsc.Instance == owner)

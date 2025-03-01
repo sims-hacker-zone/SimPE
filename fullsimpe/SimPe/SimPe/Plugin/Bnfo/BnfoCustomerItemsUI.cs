@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: © SimPE contributors
+// SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 
 namespace SimPe.Plugin.Bnfo
@@ -74,8 +76,7 @@ namespace SimPe.Plugin.Bnfo
 		#endregion
 
 		private System.Windows.Forms.ListBox lb;
-
-		Collections.BnfoCustomerItems items;
+		private Collections.BnfoCustomerItems items;
 
 		[System.ComponentModel.Browsable(false)]
 		public Collections.BnfoCustomerItems Items
@@ -88,7 +89,7 @@ namespace SimPe.Plugin.Bnfo
 			}
 		}
 
-		void SetContent()
+		private void SetContent()
 		{
 			lb.Items.Clear();
 			if (items != null)

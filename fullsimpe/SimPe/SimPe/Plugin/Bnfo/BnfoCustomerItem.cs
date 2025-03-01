@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: © SimPE contributors
+// SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 
 namespace SimPe.Plugin.Bnfo
@@ -35,29 +37,21 @@ namespace SimPe.Plugin.Bnfo
 			get; private set;
 		} = new byte[0x60];
 
-		Bnfo parent;
-		public PackedFiles.Wrapper.ExtSDesc SimDescription
-		{
-			get
-			{
-				return FileTableBase.ProviderRegistry.SimDescriptionProvider.SimInstance[SimInstance] as PackedFiles.Wrapper.ExtSDesc;
-			}
-		}
+		private readonly Bnfo parent;
+		public PackedFiles.Wrapper.ExtSDesc SimDescription => FileTableBase.ProviderRegistry.SimDescriptionProvider.SimInstance[SimInstance] as PackedFiles.Wrapper.ExtSDesc;
 
 		internal BnfoCustomerItem(Bnfo parent)
 		{
 			this.parent = parent;
 		}
 
-		long endpos;
 
 		internal void Unserialize(System.IO.BinaryReader reader)
 		{
 			SimInstance = reader.ReadUInt16();
 			LoadedLoyalty = reader.ReadInt32();
 			Data = reader.ReadBytes(Data.Length);
-			LoadedLoyalty = reader.ReadInt32();
-			endpos = reader.BaseStream.Position;
+			LoyaltyStars = reader.ReadInt32();
 		}
 
 		internal void Serialize(System.IO.BinaryWriter writer)
@@ -70,7 +64,7 @@ namespace SimPe.Plugin.Bnfo
 
 		public override string ToString()
 		{
-			string s = "";
+			string s;
 			if (SimDescription != null)
 			{
 				s = SimDescription.SimName + " " + SimDescription.SimFamilyName;
