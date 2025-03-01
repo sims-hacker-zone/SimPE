@@ -4,7 +4,9 @@ using System.Collections;
 using System.Drawing;
 
 using SimPe.Cache;
+using SimPe.Data;
 using SimPe.Interfaces.Plugin.Scanner;
+using SimPe.PackedFiles.Idno;
 using SimPe.Plugin.Scanner;
 
 namespace SimPe.Plugin

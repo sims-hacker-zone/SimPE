@@ -3,8 +3,8 @@
 using System.Collections.Generic;
 using System.Drawing;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
-using SimPe.Plugin;
 
 namespace SimPe.PackedFiles.Ltxt
 {
@@ -154,7 +154,7 @@ namespace SimPe.PackedFiles.Ltxt
 					return null;
 				}
 
-				Idno idno = Idno.FromPackage(Package);
+				Idno.Idno idno = Idno.Idno.FromPackage(Package);
 				if (idno == null)
 				{
 					return "-load:\"Tutorial;" + LotName + "\"";

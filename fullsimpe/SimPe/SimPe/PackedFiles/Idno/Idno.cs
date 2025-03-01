@@ -2,76 +2,11 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Collections;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 
-namespace SimPe.Plugin
+namespace SimPe.PackedFiles.Idno
 {
-	/// <summary>
-	/// Available Neighbourhood Types
-	/// </summary>
-	public enum NeighborhoodType : uint
-	{
-		Unknown = 0x00,
-		Normal = 0x01,
-		University = 0x02,
-		Downtown = 0x03,
-		Suburb = 0x04,
-		Village = 0x05,
-		Lakes = 0x06,
-		Island = 0x07,
-		Custom = 0x08,
-	}
-
-	/// <summary>
-	/// Available EPs
-	/// </summary>
-	public enum NeighbourhoodEP : uint
-	{
-		None = 0x00,
-		University = 0x01,
-		Nightlife = 0x02,
-		Business = 0x03,
-		FamilyFun = 0x04,
-		GlamourLife = 0x05,
-		Pets = 0x06,
-		Seasons = 0x07,
-		Celebration = 0x08,
-		Fashion = 0x09,
-		BonVoyage = 0x0a,
-		TeenStyle = 0x0b,
-		StoreEdition_old = 0x0c,
-		Freetime = 0x0d,
-		KitchenBath = 0x0e,
-		IkeaHome = 0x0f,
-		ApartmentLife = 0x10,
-		MansionGarden = 0x11,
-		StoreEdition = 0x1f,
-	}
-
-	/// <summary>
-	/// Known Neighborhhod Versions
-	/// </summary>
-	public enum NeighborhoodVersion : uint
-	{
-		Unknown = 0x00,
-		Sims2 = 0x03,
-		Sims2_University = 0x05,
-		Sims2_Nightlife = 0x07,
-		Sims2_Business = 0x08,
-		Sims2_Pets = 0x09,
-		Sims2_Seasons = 0x0A,
-	}
-
-	/// <summary>
-	/// Available Seasons
-	/// </summary>
-	public enum NhSeasons : byte
-	{
-		Spring = 0,
-		Summer = 1,
-		Autumn = 2,
-		Winter = 3,
-	}
 
 	/// <summary>
 	/// This is the actual FileWrapper
@@ -80,21 +15,17 @@ namespace SimPe.Plugin
 	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
-	public class Idno
-		: AbstractWrapper //Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
-			,
-			IFileWrapper //This Interface is used when loading a File
-			,
-			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
-									  //,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
+	public class Idno : AbstractWrapper, IFileWrapper, IFileWrapperSaveExtension
 	{
 		#region Attributes
-		uint version;
-
 		/// <summary>
 		/// Returns the Version of this File
 		/// </summary>
-		public NeighborhoodVersion Version => (NeighborhoodVersion)version;
+		public NeighborhoodVersion Version
+		{
+			get;
+			private set;
+		}
 
 		/// <summary>
 		/// Returns the Type of this Neighbourhood
@@ -107,7 +38,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns the required EP of this Neighbourhood
 		/// </summary>
-		public Data.MetaData.NeighbourhoodEP Reqep
+		public NeighborhoodEP Reqep
 		{
 			get; set;
 		}
@@ -115,7 +46,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns the affiliated EP of this Neighbourhood
 		/// </summary>
-		public Data.MetaData.NeighbourhoodEP Subep
+		public NeighborhoodEP Subep
 		{
 			get; set;
 		}
@@ -123,7 +54,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns the 1st season qaudrant of this Neighbourhood
 		/// </summary>
-		public NhSeasons Quada
+		public NeighborhoodSeason Quada
 		{
 			get; set;
 		}
@@ -131,7 +62,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns the 2nd season qaudrant of this Neighbourhood
 		/// </summary>
-		public NhSeasons Quadb
+		public NeighborhoodSeason Quadb
 		{
 			get; set;
 		}
@@ -139,7 +70,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns the 3rd season qaudrant of this Neighbourhood
 		/// </summary>
-		public NhSeasons Quadc
+		public NeighborhoodSeason Quadc
 		{
 			get; set;
 		}
@@ -147,7 +78,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns the 4th season qaudrant of this Neighbourhood
 		/// </summary>
-		public NhSeasons Quadd
+		public NeighborhoodSeason Quadd
 		{
 			get; set;
 		}
@@ -192,7 +123,7 @@ namespace SimPe.Plugin
 			get; set;
 		}
 
-		byte[] over;
+		private byte[] over;
 		#endregion
 
 		#region static Methods
@@ -209,9 +140,9 @@ namespace SimPe.Plugin
 			}
 
 			Interfaces.Files.IPackedFileDescriptor idno = pkg.FindFile(
-				Data.MetaData.IDNO,
+				MetaData.IDNO,
 				0,
-				Data.MetaData.LOCAL_GROUP,
+				MetaData.LOCAL_GROUP,
 				1
 			);
 			if (idno != null)
@@ -274,12 +205,7 @@ namespace SimPe.Plugin
 		/// </remarks>
 		public static void MakeUnique(Idno idno, string filename, Hashtable ids)
 		{
-			if (idno == null)
-			{
-				return;
-			}
-
-			if (filename == null)
+			if (idno == null || filename == null)
 			{
 				return;
 			}
@@ -374,7 +300,7 @@ namespace SimPe.Plugin
 		///   true, if you want to scan all package Files in the Folder
 		///   (otherwise only Neighbourhood Files are scanned!)
 		///  </param>
-		static void FindUids(string folder, Hashtable ids, bool scanall)
+		private static void FindUids(string folder, Hashtable ids, bool scanall)
 		{
 			Wait.Message = folder;
 
@@ -409,7 +335,7 @@ namespace SimPe.Plugin
 			{
 				Packages.File fl = Packages.File.LoadFromFile(name);
 				Interfaces.Files.IPackedFileDescriptor[] pfds = fl.FindFiles(
-					Data.MetaData.IDNO
+					MetaData.IDNO
 				);
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
@@ -452,10 +378,9 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public Idno()
-			: base()
+		public Idno() : base()
 		{
-			version = PathProvider.Global.EPInstalled >= 1 ? (uint)NeighborhoodVersion.Sims2_University : (uint)NeighborhoodVersion.Sims2;
+			Version = PathProvider.Global.EPInstalled >= 1 ? NeighborhoodVersion.Sims2_University : NeighborhoodVersion.Sims2;
 
 			Type = NeighborhoodType.Normal;
 			over = new byte[0];
@@ -502,12 +427,12 @@ namespace SimPe.Plugin
 		/// <param name="reader">The Stream that contains the FileData</param>
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
-			version = reader.ReadUInt32();
+			Version = (NeighborhoodVersion)reader.ReadUInt32();
 			int ct = reader.ReadInt32();
 			OwnerName = Helper.ToString(reader.ReadBytes(ct));
 			Uid = reader.ReadUInt32();
 
-			if (version >= (int)NeighborhoodVersion.Sims2_University)
+			if (Version >= NeighborhoodVersion.Sims2_University)
 			{
 				Type = (NeighborhoodType)reader.ReadUInt32();
 				Subtype = reader.ReadUInt32();
@@ -516,16 +441,16 @@ namespace SimPe.Plugin
 					SubName = Helper.ToString(reader.ReadBytes((int)Subtype)); // CJH - was ReadBytes(ct) -ct is parent name length -EndOfStream error when ct is longer than 4 chars
 				}
 
-				if (version >= (int)NeighborhoodVersion.Sims2_Seasons)
+				if (Version >= NeighborhoodVersion.Sims2_Seasons)
 				{
-					ct = reader.ReadInt32();
-					Reqep = (Data.MetaData.NeighbourhoodEP)reader.ReadUInt32();
-					Subep = (Data.MetaData.NeighbourhoodEP)reader.ReadUInt32();
+					_ = reader.ReadInt32();
+					Reqep = (NeighborhoodEP)reader.ReadUInt32();
+					Subep = (NeighborhoodEP)reader.ReadUInt32();
 					Idflags = reader.ReadUInt32();
-					Quada = (NhSeasons)reader.ReadByte();
-					Quadb = (NhSeasons)reader.ReadByte();
-					Quadc = (NhSeasons)reader.ReadByte();
-					Quadd = (NhSeasons)reader.ReadByte();
+					Quada = (NeighborhoodSeason)reader.ReadByte();
+					Quadb = (NeighborhoodSeason)reader.ReadByte();
+					Quadc = (NeighborhoodSeason)reader.ReadByte();
+					Quadd = (NeighborhoodSeason)reader.ReadByte();
 				}
 			}
 			else
@@ -547,14 +472,14 @@ namespace SimPe.Plugin
 		/// </remarks>
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
-			writer.Write(version);
+			writer.Write((uint)Version);
 
 			byte[] b = Helper.ToBytes(OwnerName, 0);
 			writer.Write(b.Length);
 			writer.Write(b);
 			writer.Write(Uid);
 
-			if (version >= (int)NeighborhoodVersion.Sims2_University)
+			if (Version >= NeighborhoodVersion.Sims2_University)
 			{
 				writer.Write((uint)Type);
 				if (Subtype > 0)
@@ -568,7 +493,7 @@ namespace SimPe.Plugin
 					writer.Write((int)Subtype);
 				}
 
-				if (version >= (int)NeighborhoodVersion.Sims2_Seasons)
+				if (Version >= NeighborhoodVersion.Sims2_Seasons)
 				{
 					writer.Write(0);
 					writer.Write((int)Reqep);
@@ -602,7 +527,7 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				uint[] types = { Data.MetaData.IDNO };
+				uint[] types = { MetaData.IDNO };
 				return types;
 			}
 		}

@@ -399,18 +399,18 @@ namespace SimPe.Data
 	/// <summary>
 	/// Localized Version of the Available EPs
 	/// </summary>
-	public class LocalizedNeighbourhoodEP
+	public class LocalizedNeighborhoodEP
 	{
 		/// <summary>
 		/// Contains the value
 		/// </summary>
-		MetaData.NeighbourhoodEP data;
+		NeighborhoodEP data;
 
 		/// <summary>
 		/// Constructor
 		/// </summary>
 		/// <param name="data">The Value of the Enum</param>
-		public LocalizedNeighbourhoodEP(MetaData.NeighbourhoodEP data)
+		public LocalizedNeighborhoodEP(NeighborhoodEP data)
 		{
 			this.data = data;
 		}
@@ -420,11 +420,11 @@ namespace SimPe.Data
 		/// </summary>
 		/// <param name="item">the value</param>
 		/// <returns>the new Object</returns>
-		public static implicit operator LocalizedNeighbourhoodEP(
-			MetaData.NeighbourhoodEP item
+		public static implicit operator LocalizedNeighborhoodEP(
+			NeighborhoodEP item
 		)
 		{
-			return new LocalizedNeighbourhoodEP(item);
+			return new LocalizedNeighborhoodEP(item);
 		}
 
 		/// <summary>
@@ -432,8 +432,8 @@ namespace SimPe.Data
 		/// </summary>
 		/// <param name="item">the value</param>
 		/// <returns>the new Object</returns>
-		public static implicit operator MetaData.NeighbourhoodEP(
-			LocalizedNeighbourhoodEP item
+		public static implicit operator NeighborhoodEP(
+			LocalizedNeighborhoodEP item
 		)
 		{
 			return item.data;
@@ -444,9 +444,9 @@ namespace SimPe.Data
 		/// </summary>
 		/// <param name="item">the value</param>
 		/// <returns>the new Object</returns>
-		public static implicit operator LocalizedNeighbourhoodEP(uint item)
+		public static implicit operator LocalizedNeighborhoodEP(uint item)
 		{
-			return new LocalizedNeighbourhoodEP((MetaData.NeighbourhoodEP)item);
+			return new LocalizedNeighborhoodEP((NeighborhoodEP)item);
 		}
 
 		/// <summary>
@@ -454,7 +454,7 @@ namespace SimPe.Data
 		/// </summary>
 		/// <param name="item">the value</param>
 		/// <returns>the new Object</returns>
-		public static implicit operator uint(LocalizedNeighbourhoodEP item)
+		public static implicit operator uint(LocalizedNeighborhoodEP item)
 		{
 			return (uint)item.data;
 		}

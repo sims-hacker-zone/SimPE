@@ -6,6 +6,9 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
+using SimPe.Data;
+using SimPe.PackedFiles.Idno;
+
 namespace SimPe.Plugin
 {
 	/// <summary>

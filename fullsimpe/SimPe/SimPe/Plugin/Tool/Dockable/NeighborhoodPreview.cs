@@ -6,6 +6,9 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
+using SimPe.Data;
+using SimPe.PackedFiles.Idno;
+
 namespace SimPe.Plugin.Tool.Dockable
 {
 	/// <summary>
@@ -318,9 +321,9 @@ namespace SimPe.Plugin.Tool.Dockable
 						|| (
 							idno.Type == NeighborhoodType.Suburb
 							&& (
-								idno.Subep == Data.MetaData.NeighbourhoodEP.Business
+								idno.Subep == Data.NeighborhoodEP.Business
 								|| idno.Subep
-									== Data.MetaData.NeighbourhoodEP.MansionGarden
+									== Data.NeighborhoodEP.MansionGarden
 							)
 						)
 					)
@@ -351,7 +354,7 @@ namespace SimPe.Plugin.Tool.Dockable
 					}
 
 					lbType.Text = idno.Type == NeighborhoodType.Suburb
-						&& idno.Subep != Data.MetaData.NeighbourhoodEP.Business
+						&& idno.Subep != Data.NeighborhoodEP.Business
 						? "Hidden " + idno.Type.ToString().Replace("_", " ")
 						: idno.Type.ToString().Replace("_", " ");
 

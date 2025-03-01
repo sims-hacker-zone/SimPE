@@ -4,7 +4,9 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Idno;
 
 namespace SimPe.Plugin
 {
