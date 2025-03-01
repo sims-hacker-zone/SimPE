@@ -36,7 +36,7 @@ namespace SimPe.Properties
 			{
 				if (object.Equals(null, resourceMan))
 				{
-					System.Resources.ResourceManager temp = new System.Resources.ResourceManager("SimPe.SimPe.Properties.Resources", typeof(Resources).Assembly);
+					System.Resources.ResourceManager temp = new System.Resources.ResourceManager("SimPe.Properties.Resources", typeof(Resources).Assembly);
 					resourceMan = temp;
 				}
 				return resourceMan;
