@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: © SimPE contributors
+// SPDX-License-Identifier: GPL-2.0-or-later
+
 using SimPe.Plugin.Anim;
 
 namespace SimPe.Plugin

@@ -2,7 +2,6 @@
 <Project ToolsVersion="4.0" Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>SimPe</RootNamespace>
     <AssemblyName>SimPe</AssemblyName>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>7.3</LangVersion>
@@ -39,6 +38,10 @@
     <EmbeddedResource Include="data\*" />
     <EmbeddedResource Include="docs\*" />
     <EmbeddedResource Include="img\*" />
+  </ItemGroup>
+  <ItemGroup>
+    <CompilerVisibleProperty Include="RootNamespace" />
+    <CompilerVisibleProperty Include="ProjectDir" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
