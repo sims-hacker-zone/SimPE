@@ -5,20 +5,18 @@ using System;
 
 using SimPe.Interfaces.Plugin;
 
-namespace SimPe.Plugin
+namespace SimPe.PackedFiles.Scid
 {
-	public partial class SimindexPackedFileUI
+	public partial class ScidUI
 		: Windows.Forms.WrapperBaseControl,
 			IPackedFileUI
 	{
-		protected new SimindexPackedFileWrapper Wrapper => base.Wrapper as SimindexPackedFileWrapper;
-		public SimindexPackedFileWrapper TPFW => Wrapper;
-
-		ushort scinstance;
+		protected new Scid Wrapper => base.Wrapper as Scid;
+		public Scid TPFW => Wrapper;
 
 		#region WrapperBaseControl Member
 
-		public SimindexPackedFileUI()
+		public ScidUI()
 		{
 			InitializeComponent();
 		}
@@ -28,8 +26,7 @@ namespace SimPe.Plugin
 			base.RefreshGUI();
 			warnlbl.Visible = false;
 
-			scinstance = Wrapper.Sciname;
-			scinst.Text = "0x" + Helper.HexString(scinstance);
+			scinst.Text = "0x" + Helper.HexString(Wrapper.SCID);
 			if (!Wrapper.IsOK)
 			{
 				desclbl.Text =
@@ -60,14 +57,13 @@ namespace SimPe.Plugin
 		{
 			try
 			{
-				scinstance = Convert.ToUInt16(scinst.Text, 16);
-				if (scinstance < 1)
+				Wrapper.SCID = Convert.ToUInt16(scinst.Text, 16);
+				if (Wrapper.SCID < 1)
 				{
-					scinstance = 1;
+					Wrapper.SCID = 1;
 					scinst.Text = "0x0001";
 					warnlbl.Visible = true;
 				}
-				Wrapper.Sciname = scinstance;
 				scinst.ForeColor = System.Drawing.SystemColors.WindowText;
 				CanCommit = true;
 			}
