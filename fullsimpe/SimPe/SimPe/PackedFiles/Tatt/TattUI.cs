@@ -1,6 +1,9 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
-namespace SimPe.Plugin
+
+// SPDX-FileCopyrightText: © SimPE contributors
+// SPDX-License-Identifier: GPL-2.0-or-later
+namespace SimPe.PackedFiles.Tatt
 {
 	/// <summary>
 	/// Summary description for TattUI.
@@ -8,7 +11,6 @@ namespace SimPe.Plugin
 	public class TattUI : Windows.Forms.WrapperBaseControl
 	//System.Windows.Forms.UserControl
 	{
-		private System.Windows.Forms.Timer timer1;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label3;
@@ -47,7 +49,6 @@ namespace SimPe.Plugin
 			components = new System.ComponentModel.Container();
 			System.Resources.ResourceManager resources =
 				new System.Resources.ResourceManager(typeof(TattUI));
-			timer1 = new System.Windows.Forms.Timer(components);
 			label1 = new System.Windows.Forms.Label();
 			label2 = new System.Windows.Forms.Label();
 			label3 = new System.Windows.Forms.Label();

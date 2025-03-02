@@ -1,10 +1,11 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Collections;
+using System.Collections.Generic;
 
 using SimPe.Interfaces.Plugin;
 
-namespace SimPe.Plugin
+namespace SimPe.PackedFiles.Tatt
 {
 	/// <summary>
 	/// This is the actual FileWrapper
@@ -13,15 +14,7 @@ namespace SimPe.Plugin
 	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
-	public class Tatt
-		: AbstractWrapper //Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
-			,
-			IFileWrapper //This Interface is used when loading a File
-			,
-			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
-			,
-			IMultiplePackedFileWrapper,
-			IEnumerable
+	public class Tatt : AbstractWrapper, IFileWrapper, IFileWrapperSaveExtension, IMultiplePackedFileWrapper, IEnumerable<TattItem>
 	{
 		#region Attributes
 		/// <summary>
@@ -31,9 +24,9 @@ namespace SimPe.Plugin
 		public string FileName
 		{
 			get; set;
-		}
+		} = "";
 
-		byte[] id;
+		private byte[] id = new byte[] { (byte)'T', (byte)'T', (byte)'A', (byte)'T' };
 
 		/// <summary>
 		/// The Version
@@ -41,7 +34,7 @@ namespace SimPe.Plugin
 		public uint Version
 		{
 			get; set;
-		}
+		} = 0x4f;
 
 		/// <summary>
 		/// Reserved
@@ -50,7 +43,8 @@ namespace SimPe.Plugin
 		{
 			get; set;
 		}
-		ArrayList items;
+
+		private readonly List<TattItem> items = new List<TattItem>();
 		#endregion
 
 
@@ -60,18 +54,13 @@ namespace SimPe.Plugin
 		public Tatt()
 			: base()
 		{
-			id = new byte[] { (byte)'T', (byte)'T', (byte)'A', (byte)'T' };
-			FileName = "";
-			Version = 0x4f;
-
-			items = new ArrayList();
 		}
 
 		#region IWrapper member
 		public override bool CheckVersion(uint version)
 		{
-			return (version == 0012) //0.10
-				|| (version == 0013); //0.12
+			return version == 0012 //0.10
+				|| version == 0013; //0.12
 		}
 		#endregion
 
@@ -157,17 +146,10 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] types =
+		public uint[] AssignableTypes => new uint[]
 				{
 					0x54415454, //handles the TATT File
 				};
-				return types;
-			}
-		}
 
 		#endregion
 
@@ -183,8 +165,13 @@ namespace SimPe.Plugin
 
 		public TattItem this[int index]
 		{
-			get => (TattItem)items[index];
+			get => items[index];
 			set => items[index] = value;
+		}
+
+		IEnumerator<TattItem> IEnumerable<TattItem>.GetEnumerator()
+		{
+			return items.GetEnumerator();
 		}
 
 		public IEnumerator GetEnumerator()

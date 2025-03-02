@@ -1,6 +1,6 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
-namespace SimPe.Plugin
+namespace SimPe.PackedFiles.Tatt
 {
 	/// <summary>
 	/// This is the actual FileWrapper
@@ -12,8 +12,8 @@ namespace SimPe.Plugin
 	public class TattItem : System.IDisposable
 	{
 		#region Attributes
-		uint guid;
-		ushort[] items;
+		private uint guid;
+		private ushort[] items;
 		#endregion
 
 
