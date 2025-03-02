@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using SimPe.Interfaces.Plugin;
 
-namespace SimPe.Plugin
+namespace SimPe.PackedFiles.Nmap
 {
 	/// <summary>
 	/// This class is used to fill the UI for this FileType with Data

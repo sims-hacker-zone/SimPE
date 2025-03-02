@@ -1,17 +1,21 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
-namespace SimPe.Plugin
+namespace SimPe.PackedFiles.Nmap
 {
 	/// <summary>
 	/// Summary description for PackedFileItem.
 	/// </summary>
 	public class NmapItem : Packages.PackedFileDescriptor
 	{
-		Nmap parent;
 
 		public NmapItem(Nmap parent)
 		{
-			this.parent = parent;
+			Parent = parent;
+		}
+
+		public Nmap Parent
+		{
+			get;
 		}
 
 		public override string ToString()

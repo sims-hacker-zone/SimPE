@@ -6,6 +6,7 @@ using System.Collections;
 
 using SimPe.Interfaces.Scenegraph;
 using SimPe.PackedFiles.Cpf;
+using SimPe.PackedFiles.Nmap;
 using SimPe.PackedFiles.ThreeIdr;
 
 namespace SimPe.Plugin

@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 
+using SimPe.PackedFiles.Nmap;
+
 namespace SimPe.Plugin.Tool.Action
 {
 	/// <summary>
@@ -107,10 +109,8 @@ namespace SimPe.Plugin.Tool.Action
 					}
 					catch (Exception) { }
 				} //foreach
-
-				nmap.Items = new Packages.PackedFileDescriptor[list.Count];
-				list.CopyTo(nmap.Items);
-
+				nmap.Items.Clear();
+				nmap.Items.AddRange((System.Collections.Generic.IEnumerable<Interfaces.Files.IPackedFileDescriptor>)list);
 				nmap.SynchronizeUserData();
 				if (add)
 				{

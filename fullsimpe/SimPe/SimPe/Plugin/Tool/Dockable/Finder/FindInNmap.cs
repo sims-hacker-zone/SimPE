@@ -1,6 +1,8 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+using SimPe.PackedFiles.Nmap;
+
 namespace SimPe.Plugin.Tool.Dockable.Finder
 {
 	public partial class FindInNmap : FindInStr
