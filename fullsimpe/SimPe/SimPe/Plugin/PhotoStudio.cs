@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Windows.Forms;
 
 using SimPe.PackedFiles.Cpf;
+using SimPe.PackedFiles.Txtr;
 
 namespace SimPe.Plugin
 {
