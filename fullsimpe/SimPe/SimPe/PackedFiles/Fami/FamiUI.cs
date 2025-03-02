@@ -1,17 +1,19 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.UserInterface;
 
-namespace SimPe.PackedFiles.UserInterface
+namespace SimPe.PackedFiles.Fami
 {
 	/// <summary>
 	/// handles Packed XmlFiles
 	/// </summary>
-	public class Fami : UIBase, IPackedFileUI
+	public class FamiUI : UIBase, IPackedFileUI
 	{
 		#region IPackedFileHandler Member
 
@@ -19,7 +21,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		public void UpdateGUI(IFileWrapper wrapper)
 		{
-			Wrapper.Fami fami = (Wrapper.Fami)wrapper;
+			Fami fami = (Fami)wrapper;
 			form.wrapper = fami;
 
 			form.pbImage.Image = fami.FamiThumb != null
@@ -48,7 +50,7 @@ namespace SimPe.PackedFiles.UserInterface
 				: "0x" + Helper.HexString(fami.LotInstance);
 
 			form.tbalbum.Text = "0x" + Helper.HexString(fami.AlbumGUID);
-			form.tbflag.Text = "0x" + Helper.HexString(fami.Flags);
+			form.tbflag.Text = "0x" + Helper.HexString((uint)fami.Flags);
 			form.tbsubhood.Text = "0x" + Helper.HexString(fami.SubHoodNumber);
 			form.tbvac.Text = "0x" + Helper.HexString(fami.VacationLotInstance);
 			form.tbblot.Text = "0x" + Helper.HexString(fami.CurrentlyOnLotInstance);
@@ -58,24 +60,18 @@ namespace SimPe.PackedFiles.UserInterface
 			form.tbcares.Text = fami.CastAwayResources.ToString();
 			form.tbcaunk.Text = "0x" + Helper.HexString(fami.CastAwayFoodDecay);
 			form.label14.Visible = form.tbblot.Visible =
-				(int)fami.Version
-				>= (int)Wrapper.FamiVersions.Business;
+				fami.Version >= FamiVersions.Business;
 			form.label7.Visible = form.tbvac.Visible =
-				(int)fami.Version == (int)Wrapper.FamiVersions.Voyage;
+				fami.Version == FamiVersions.Voyage;
 			form.tbsubhood.Enabled =
-				(int)fami.Version
-				>= (int)Wrapper.FamiVersions.University;
+				fami.Version >= FamiVersions.University;
 			form.gbCastaway.Visible =
-				(int)fami.Version
-				== (int)Wrapper.FamiVersions.Castaway;
+				fami.Version == FamiVersions.Castaway;
 			form.label3.Visible = form.tbmoney.Visible =
-				(int)fami.Version
-				< (int)Wrapper.FamiVersions.Castaway;
+				fami.Version < FamiVersions.Castaway;
 			form.label16.Visible = form.tbbmoney.Visible =
-				(int)fami.Version
-					>= (int)Wrapper.FamiVersions.Business
-				&& (int)fami.Version
-					< (int)Wrapper.FamiVersions.Castaway
+				fami.Version >= FamiVersions.Business
+				&& fami.Version < FamiVersions.Castaway
 			;
 			//form.panel4.HeaderText = Data.MetaData.NPCFamily(fami.FileDescriptor.Instance);
 			form.btOpenHistory.Visible =
@@ -93,13 +89,12 @@ namespace SimPe.PackedFiles.UserInterface
 				: Color.Blue;
 
 			form.lbmembers.Sorted = false;
-			string[] names = fami.SimNames;
-			for (int i = 0; i < fami.Members.Length; i++)
-			{
-				Data.Alias a = new Data.Alias(fami.Members[i], fami.SimNames[i]);
-				form.lbmembers.Items.Add(a);
-			}
-			if (fami.Members.Length > 5)
+
+			form.lbmembers.Items.AddRange(fami.Members.Zip(fami.SimNames,
+										  (member, name) => new Data.Alias(member, name))
+										  .ToArray());
+
+			if (fami.Members.Count > 5)
 			{
 				form.lbmembers.Sorted = true;
 			}
