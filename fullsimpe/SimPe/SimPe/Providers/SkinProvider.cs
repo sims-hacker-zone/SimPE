@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 
 using SimPe.PackedFiles.Cpf;
+using SimPe.PackedFiles.Nmap;
 using SimPe.PackedFiles.ThreeIdr;
 using SimPe.PackedFiles.Txtr;
 
@@ -94,7 +95,7 @@ namespace SimPe.Providers
 				Data.MetaData.NAME_MAP
 			);
 			pfds = package.FindFiles(0x49596978);
-			Plugin.Nmap nmap = new Plugin.Nmap(null);
+			Nmap nmap = new Nmap(null);
 			if (nmap_pfd.Length > 0)
 			{
 				nmap.ProcessData(nmap_pfd[0], package);

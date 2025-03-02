@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 using SimPe.Forms.MainUI;
 
-namespace SimPe.Plugin
+namespace SimPe.PackedFiles.Nmap
 {
 	/// <summary>
 	/// Summary description for NmapForm.
@@ -15,7 +15,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		private System.ComponentModel.Container components = null;
+		private readonly System.ComponentModel.Container components = null;
 
 		public NmapForm()
 		{
@@ -402,14 +402,8 @@ namespace SimPe.Plugin
 		{
 			try
 			{
-				Interfaces.Files.IPackedFileDescriptor[] pfds =
-					new Interfaces.Files.IPackedFileDescriptor[lblist.Items.Count];
-				for (int i = 0; i < pfds.Length; i++)
-				{
-					pfds[i] = (Interfaces.Files.IPackedFileDescriptor)lblist.Items[i];
-				}
-
-				wrapper.Items = pfds;
+				wrapper.Items.Clear();
+				wrapper.Items.AddRange((System.Collections.Generic.IEnumerable<Interfaces.Files.IPackedFileDescriptor>)lblist.Items);
 				wrapper.SynchronizeUserData();
 				MessageBox.Show(Localization.Manager.GetString("commited"));
 			}

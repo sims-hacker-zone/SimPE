@@ -1,9 +1,12 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using System.Collections.Generic;
+using System.Linq;
+
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
 
-namespace SimPe.Plugin
+namespace SimPe.PackedFiles.Nmap
 {
 	/// <summary>
 	/// This is the actual FileWrapper
@@ -12,13 +15,7 @@ namespace SimPe.Plugin
 	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
-	public class Nmap
-		: AbstractWrapper //Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
-			,
-			IFileWrapper //This Interface is used when loading a File
-			,
-			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
-									  //,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
+	public class Nmap : AbstractWrapper, IFileWrapper, IFileWrapperSaveExtension
 	{
 		#region Attributes
 		/// <summary>
@@ -27,10 +24,10 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns / Sets the Header
 		/// </summary>
-		public Interfaces.Files.IPackedFileDescriptor[] Items
+		public List<Interfaces.Files.IPackedFileDescriptor> Items
 		{
 			get; set;
-		}
+		} = new List<Interfaces.Files.IPackedFileDescriptor>();
 
 		#endregion
 
@@ -46,7 +43,6 @@ namespace SimPe.Plugin
 			: base()
 		{
 			Provider = provider;
-			Items = new Interfaces.Files.IPackedFileDescriptor[0];
 		}
 
 		/// <summary>
@@ -54,22 +50,11 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="start">The string the FIlename starts with</param>
 		/// <returns>A List of File Descriptors</returns>
-		public Interfaces.Files.IPackedFileDescriptor[] FindFiles(string start)
+		public IEnumerable<Interfaces.Files.IPackedFileDescriptor> FindFiles(string start)
 		{
-			start = start.Trim().ToLower();
-			System.Collections.ArrayList a = new System.Collections.ArrayList();
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in Items)
-			{
-				if (pfd.Filename.Trim().ToLower().StartsWith(start))
-				{
-					a.Add(pfd);
-				}
-			}
-
-			Interfaces.Files.IPackedFileDescriptor[] pfds =
-				new Interfaces.Files.IPackedFileDescriptor[a.Count];
-			a.CopyTo(pfds);
-			return pfds;
+			return from pfd in Items
+				   where pfd.Filename.Trim().ToLower().StartsWith(start.Trim().ToLower())
+				   select pfd;
 		}
 
 		#region IWrapper member
@@ -109,9 +94,11 @@ namespace SimPe.Plugin
 		/// <param name="reader">The Stream that contains the FileData</param>
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
-			Items = new Interfaces.Files.IPackedFileDescriptor[reader.ReadUInt32()];
+			Items.Clear();
+			uint count = reader.ReadUInt32();
+			Items.Capacity = (int)count;
 
-			for (int i = 0; i < Items.Length; i++)
+			for (int i = 0; i < count; i++)
 			{
 				NmapItem pfd = new NmapItem(this)
 				{
@@ -122,7 +109,7 @@ namespace SimPe.Plugin
 				uint len = reader.ReadUInt32();
 				pfd.Filename = Helper.ToString(reader.ReadBytes((int)len));
 
-				Items[i] = pfd;
+				Items.Add(pfd);
 			}
 		}
 
@@ -136,11 +123,10 @@ namespace SimPe.Plugin
 		/// </remarks>
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
-			writer.Write((uint)Items.Length);
+			writer.Write((uint)Items.Count);
 
-			for (int i = 0; i < Items.Length; i++)
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in Items)
 			{
-				Interfaces.Files.IPackedFileDescriptor pfd = Items[i];
 				writer.Write(pfd.Group);
 				writer.Write(pfd.Instance);
 
@@ -160,17 +146,10 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] types =
+		public uint[] AssignableTypes => new uint[]
 				{
 					Data.MetaData.NAME_MAP, //handles the NMAP File
 				};
-				return types;
-			}
-		}
 
 		#endregion
 	}

@@ -4,11 +4,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
 using SimPe.PackedFiles.Cpf;
+using SimPe.PackedFiles.Nmap;
 using SimPe.PackedFiles.ThreeIdr;
 
 namespace pj
@@ -135,9 +137,9 @@ namespace pj
 				return false;
 			}
 
-			SimPe.Plugin.Nmap nmap = new SimPe.Plugin.Nmap(null);
+			Nmap nmap = new Nmap(null);
 			nmap.ProcessData(pfa[0], p);
-			pfa = nmap.FindFiles(name + "_");
+			pfa = nmap.FindFiles(name + "_").ToArray();
 			if (pfa == null || pfa.Length != 1)
 			{
 				return false;
