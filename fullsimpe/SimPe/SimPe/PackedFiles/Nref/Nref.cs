@@ -2,19 +2,12 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using SimPe.Interfaces.Plugin;
 
-namespace SimPe.PackedFiles.Wrapper
+namespace SimPe.PackedFiles.Nref
 {
 	/// <summary>
 	/// The Name Reference Files
 	/// </summary>
-	public class Nref
-		: AbstractWrapper //Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
-			,
-			IFileWrapper //This Interface is used when loading a File
-			,
-			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
-			,
-			IMultiplePackedFileWrapper //Allow Multiple Instances
+	public class Nref : AbstractWrapper, IFileWrapper, IFileWrapperSaveExtension, IMultiplePackedFileWrapper
 	{
 		byte[] data;
 
@@ -39,7 +32,7 @@ namespace SimPe.PackedFiles.Wrapper
 		#region AbstractWrapper Member
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
-			return new UserInterface.NrefUI();
+			return new NrefUI();
 		}
 
 		/// <summary>
@@ -85,11 +78,10 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				uint[] types =
+				return new uint[]
 				{
 					0x4E524546, //NREF
-				}; //handles the Version Information File
-				return types;
+				};
 			}
 		}
 
@@ -98,8 +90,7 @@ namespace SimPe.PackedFiles.Wrapper
 		#region IMultiplePackedFileWrapper
 		public override object[] GetConstructorArguments()
 		{
-			object[] o = new object[0];
-			return o;
+			return new object[0];
 		}
 		#endregion
 	}

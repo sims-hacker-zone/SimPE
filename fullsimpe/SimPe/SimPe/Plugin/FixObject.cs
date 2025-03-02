@@ -5,6 +5,7 @@ using System.Collections;
 
 using SimPe.Interfaces.Files;
 using SimPe.PackedFiles.Cpf;
+using SimPe.PackedFiles.Nref;
 using SimPe.PackedFiles.ThreeIdr;
 
 namespace SimPe.Plugin
@@ -835,8 +836,8 @@ namespace SimPe.Plugin
 				mpfds = package.FindFiles(0x4E524546);
 				foreach (IPackedFileDescriptor pfd in mpfds)
 				{
-					PackedFiles.Wrapper.Nref nref =
-						new PackedFiles.Wrapper.Nref();
+					Nref nref =
+						new Nref();
 					nref.ProcessData(pfd, package);
 					nref.FileName = ver == FixVersion.UniversityReady ? "SIMPE_" + modelname : "SIMPE_v2_" + modelname;
 
