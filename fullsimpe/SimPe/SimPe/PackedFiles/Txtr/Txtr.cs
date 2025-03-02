@@ -1,8 +1,9 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using SimPe.Interfaces.Plugin;
+using SimPe.Plugin;
 
-namespace SimPe.Plugin
+namespace SimPe.PackedFiles.Txtr
 {
 	/// <summary>
 	/// This is the actual FileWrapper
@@ -54,11 +55,10 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				uint[] types =
+				return new uint[]
 				{
 					0x1C4A276C, //TXTR Files
 				};
-				return types;
 			}
 		}
 

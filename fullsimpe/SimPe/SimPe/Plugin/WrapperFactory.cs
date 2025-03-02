@@ -20,6 +20,7 @@ using SimPe.PackedFiles.Scid;
 using SimPe.PackedFiles.Tatt;
 using SimPe.PackedFiles.ThreeIdr;
 using SimPe.PackedFiles.Ttab;
+using SimPe.PackedFiles.Txtr;
 using SimPe.PackedFiles.Wrapper;
 using SimPe.Plugin.Tool;
 using SimPe.Plugin.Tool.Action;

@@ -5,6 +5,7 @@ using System.Collections;
 
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.ThreeIdr;
+using SimPe.PackedFiles.Txtr;
 
 namespace SimPe.Providers
 {
@@ -140,7 +141,7 @@ namespace SimPe.Providers
 			{
 				try
 				{
-					Plugin.Txtr txtr = new Plugin.Txtr(null, true);
+					Txtr txtr = new Txtr(null, true);
 					check = false;
 
 					foreach (Interfaces.Files.IPackedFileDescriptor epfd in nmap.Items)
@@ -444,7 +445,7 @@ namespace SimPe.Providers
 				//look for the right one
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
-					Plugin.Txtr rcol = new Plugin.Txtr(null, false);
+					Txtr rcol = new Txtr(null, false);
 					rcol.ProcessData(pfd, package);
 					if (rcol.FileName.Trim().ToLower() == name.Trim().ToLower())
 					{
@@ -469,7 +470,7 @@ namespace SimPe.Providers
 			}
 
 			name = name.ToLower();
-			Plugin.Txtr txtr = (Plugin.Txtr)txtrs[name] ?? (Plugin.Txtr)txtrs[name + "_txtr"];
+			Txtr txtr = (Txtr)txtrs[name] ?? (Txtr)txtrs[name + "_txtr"];
 
 			if (txtr == null)
 			{

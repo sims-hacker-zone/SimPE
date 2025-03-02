@@ -11,6 +11,7 @@ using SimPe.Interfaces.Scenegraph;
 using SimPe.Packages;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.ThreeIdr;
+using SimPe.PackedFiles.Txtr;
 
 namespace SimPe.Plugin
 {

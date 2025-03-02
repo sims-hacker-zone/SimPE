@@ -5,8 +5,9 @@ using System.Drawing;
 using System.Windows.Forms;
 
 using SimPe.Interfaces.Scenegraph;
+using SimPe.Plugin;
 
-namespace SimPe.Plugin
+namespace SimPe.PackedFiles.Txtr
 {
 	/// <summary>
 	/// Summary description for TxtrForm.
@@ -87,6 +88,8 @@ namespace SimPe.Plugin
 			panel2 = new Panel();
 			btex = new Button();
 			btim = new Button();
+			label27 = new Label();
+			btcommit = new Button();
 			label1 = new Label();
 			sfd = new SaveFileDialog();
 			ofd = new OpenFileDialog();
@@ -136,14 +139,7 @@ namespace SimPe.Plugin
 			//
 			// linkLabel4
 			//
-			linkLabel4.Anchor =
-
-
-						AnchorStyles.Bottom
-						| AnchorStyles.Left
-
-
-			;
+			linkLabel4.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
 			linkLabel4.AutoSize = true;
 			linkLabel4.BackColor = Color.Transparent;
 			linkLabel4.Font = new Font(
@@ -236,14 +232,7 @@ namespace SimPe.Plugin
 			//
 			// linkLabel2
 			//
-			linkLabel2.Anchor =
-
-
-						AnchorStyles.Bottom
-						| AnchorStyles.Left
-
-
-			;
+			linkLabel2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
 			linkLabel2.AutoSize = true;
 			linkLabel2.BackColor = Color.Transparent;
 			linkLabel2.Font = new Font(
@@ -264,14 +253,7 @@ namespace SimPe.Plugin
 			//
 			// lldel
 			//
-			lldel.Anchor =
-
-
-						AnchorStyles.Bottom
-						| AnchorStyles.Left
-
-
-			;
+			lldel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
 			lldel.AutoSize = true;
 			lldel.BackColor = Color.Transparent;
 			lldel.Font = new Font(
@@ -292,16 +274,7 @@ namespace SimPe.Plugin
 			//
 			// tblifo
 			//
-			tblifo.Anchor =
-
-
-
-							AnchorStyles.Bottom
-							| AnchorStyles.Left
-						 | AnchorStyles.Right
-
-
-			;
+			tblifo.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
 			tblifo.Location = new Point(440, 252);
 			tblifo.Name = "tblifo";
 			tblifo.Size = new Size(320, 21);
@@ -310,14 +283,7 @@ namespace SimPe.Plugin
 			//
 			// label6
 			//
-			label6.Anchor =
-
-
-						AnchorStyles.Bottom
-						| AnchorStyles.Left
-
-
-			;
+			label6.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
 			label6.AutoSize = true;
 			label6.BackColor = Color.Transparent;
 			label6.Font = new Font(
@@ -464,18 +430,7 @@ namespace SimPe.Plugin
 			//
 			// panel1
 			//
-			panel1.Anchor =
-
-
-
-
-								AnchorStyles.Top
-								| AnchorStyles.Bottom
-							 | AnchorStyles.Left
-						 | AnchorStyles.Right
-
-
-			;
+			panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
 			panel1.AutoScroll = true;
 			panel1.AutoScrollMinSize = new Size(24, 24);
 			panel1.BackColor = Color.Transparent;
@@ -488,14 +443,7 @@ namespace SimPe.Plugin
 			//
 			// label7
 			//
-			label7.Anchor =
-
-
-						AnchorStyles.Bottom
-						| AnchorStyles.Left
-
-
-			;
+			label7.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
 			label7.AutoSize = true;
 			label7.Font = new Font("Verdana", 8.25F);
 			label7.ForeColor = SystemColors.ActiveCaptionText;
@@ -594,16 +542,7 @@ namespace SimPe.Plugin
 			//
 			// lbimg
 			//
-			lbimg.Anchor =
-
-
-
-							AnchorStyles.Top
-							| AnchorStyles.Bottom
-						 | AnchorStyles.Left
-
-
-			;
+			lbimg.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
 			lbimg.IntegralHeight = false;
 			lbimg.Location = new Point(8, 184);
 			lbimg.Name = "lbimg";
@@ -615,16 +554,7 @@ namespace SimPe.Plugin
 			//
 			// panel2
 			//
-			panel2.Anchor =
-
-
-
-							AnchorStyles.Top
-							| AnchorStyles.Left
-						 | AnchorStyles.Right
-
-
-			;
+			panel2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 			panel2.Controls.Add(btex);
 			panel2.Controls.Add(btim);
 			panel2.Controls.Add(label27);
@@ -643,14 +573,7 @@ namespace SimPe.Plugin
 			//
 			// btex
 			//
-			btex.Anchor =
-
-
-						AnchorStyles.Top
-						| AnchorStyles.Right
-
-
-			;
+			btex.Anchor = AnchorStyles.Top | AnchorStyles.Right;
 			btex.FlatStyle = FlatStyle.System;
 			btex.Font = new Font(
 				"Verdana",
@@ -669,14 +592,7 @@ namespace SimPe.Plugin
 			//
 			// btim
 			//
-			btim.Anchor =
-
-
-						AnchorStyles.Top
-						| AnchorStyles.Right
-
-
-			;
+			btim.Anchor = AnchorStyles.Top | AnchorStyles.Right;
 			btim.FlatStyle = FlatStyle.System;
 			btim.Font = new Font(
 				"Verdana",
@@ -705,14 +621,7 @@ namespace SimPe.Plugin
 			//
 			// btcommit
 			//
-			btcommit.Anchor =
-
-
-						AnchorStyles.Top
-						| AnchorStyles.Right
-
-
-			;
+			btcommit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
 			btcommit.FlatStyle = FlatStyle.System;
 			btcommit.Font = new Font(
 				"Verdana",
@@ -1670,12 +1579,12 @@ namespace SimPe.Plugin
 						SelectedImageData().TextureSize = new Size(wd, hg);
 					}
 
-					if ((wd == hg) && (wd == 1))
+					if (wd == hg && wd == 1)
 					{
 						wd = Math.Max(1, sz.Width / Math.Max(1, sz.Height));
 						hg = Math.Max(1, sz.Height / Math.Max(1, sz.Width));
 
-						if ((wd == hg) && (wd == 1))
+						if (wd == hg && wd == 1)
 						{
 							wd *= 2;
 							hg *= 2;
