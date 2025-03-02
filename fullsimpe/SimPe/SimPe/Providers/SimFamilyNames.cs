@@ -5,6 +5,7 @@ using System.Collections;
 using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
+using SimPe.PackedFiles.Fami;
 
 namespace SimPe.Providers
 {
@@ -44,9 +45,7 @@ namespace SimPe.Providers
 				return;
 			}
 
-			PackedFiles.Wrapper.Fami fami = new PackedFiles.Wrapper.Fami(
-				null
-			);
+			Fami fami = new Fami(null);
 			Hashtable al = new Hashtable();
 			foreach (uint type in fami.AssignableTypes)
 			{
