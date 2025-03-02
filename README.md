@@ -13,7 +13,7 @@ An editor designed for modding The Sims 2.
 
 #### Visual Studio
 
-Inside the `fullsimpe` folder is the file `Everything.sln`, which can be opened with Visual Studio.
+Inside the `fullsimpe` folder is the file `SimPe.sln`, which can be opened with Visual Studio.
 
 #### VSCode
 
