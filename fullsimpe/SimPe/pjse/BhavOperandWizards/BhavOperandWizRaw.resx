@@ -117,18 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;tbRaw.Name" xml:space="preserve">
-    <value>tbRaw</value>
-  </data>
-  <data name="&gt;&gt;tbRaw.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbRaw.Parent" xml:space="preserve">
-    <value>pnWizRaw</value>
-  </data>
-  <data name="&gt;&gt;tbRaw.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pnWizRaw.Location" type="System.Drawing.Point, System.Drawing">
     <value>11, 10</value>
