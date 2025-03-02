@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
+using SimPe.PackedFiles.ThreeIdr;
 
 namespace pj
 {
@@ -373,7 +374,7 @@ namespace pj
 					);
 					if (pf3d != null && pf3d.Length > 0)
 					{
-						SimPe.Plugin.RefFile refl = new SimPe.Plugin.RefFile();
+						ThreeIdr refl = new ThreeIdr();
 						for (int i = 0; i < pf3d.Length; i++)
 						{
 							refl.ProcessData(pf3d[i], p);

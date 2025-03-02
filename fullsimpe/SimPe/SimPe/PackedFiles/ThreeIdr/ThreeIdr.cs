@@ -1,8 +1,11 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+
+// SPDX-FileCopyrightText: © SimPE contributors
+// SPDX-License-Identifier: GPL-2.0-or-later
 using SimPe.Interfaces.Plugin;
 
-namespace SimPe.Plugin
+namespace SimPe.PackedFiles.ThreeIdr
 {
 	/// <summary>
 	/// This is the actual FileWrapper
@@ -11,7 +14,7 @@ namespace SimPe.Plugin
 	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
-	public class RefFile
+	public class ThreeIdr
 		: AbstractWrapper //Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
 			,
 			IFileWrapper //This Interface is used when loading a File
@@ -23,12 +26,12 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// ID of the File
 		/// </summary>
-		uint id;
+		private uint id = 0xDEADBEEF;
 
 		/// <summary>
 		/// Type of the File
 		/// </summary>
-		Data.MetaData.IndexTypes type;
+		private Data.MetaData.IndexTypes type = Data.MetaData.IndexTypes.ptLongFileIndex;
 
 		/// <summary>
 		/// List of Stored References
@@ -36,33 +39,27 @@ namespace SimPe.Plugin
 		public Interfaces.Files.IPackedFileDescriptor[] Items
 		{
 			get; set;
-		}
+		} = new Interfaces.Files.IPackedFileDescriptor[0];
 
 		#endregion
 
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public RefFile()
-			: base()
-		{
-			Items = new Interfaces.Files.IPackedFileDescriptor[0];
-			id = 0xDEADBEEF;
-			type = Data.MetaData.IndexTypes.ptLongFileIndex;
-		}
+		public ThreeIdr() : base() { }
 
 		#region IWrapper member
 		public override bool CheckVersion(uint version)
 		{
-			return (version == 0009) //0.00
-				|| (version == 0010); //0.10
+			return version == 0009 //0.00
+				|| version == 0010; //0.10
 		}
 		#endregion
 
 		#region AbstractWrapper Member
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
-			return new RefFileUI();
+			return new ThreeIdrUI();
 		}
 
 		/// <summary>
@@ -96,7 +93,7 @@ namespace SimPe.Plugin
 
 			for (int i = 0; i < Items.Length; i++)
 			{
-				RefFileItem pfd = new RefFileItem(this)
+				ThreeIdrItem pfd = new ThreeIdrItem(this)
 				{
 					Type = reader.ReadUInt32(),
 					Group = reader.ReadUInt32(),
@@ -157,17 +154,10 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] types =
+		public uint[] AssignableTypes => new uint[]
 				{
 					0xAC506764, //handles the 3IDR File
 				};
-				return types;
-			}
-		}
 
 		#endregion
 	}

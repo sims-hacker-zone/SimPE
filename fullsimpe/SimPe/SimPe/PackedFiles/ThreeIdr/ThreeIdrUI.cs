@@ -2,27 +2,27 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using SimPe.Interfaces.Plugin;
 
-namespace SimPe.Plugin
+namespace SimPe.PackedFiles.ThreeIdr
 {
 	/// <summary>
 	/// This class is used to fill the UI for this FileType with Data
 	/// </summary>
-	public class RefFileUI : IPackedFileUI
+	public class ThreeIdrUI : IPackedFileUI
 	{
 		#region Code to Startup the UI
 
 		/// <summary>
 		/// Holds a reference to the Form containing the UI Panel
 		/// </summary>
-		internal RefFileForm form;
+		internal ThreeIdrForm form;
 
 		/// <summary>
 		/// Constructor for the Class
 		/// </summary>
-		public RefFileUI()
+		public ThreeIdrUI()
 		{
 			//form = WrapperFactory.form;
-			form = new RefFileForm();
+			form = new ThreeIdrForm();
 
 			foreach (Interfaces.IAlias alias in Helper.TGILoader.FileTypes)
 			{
@@ -49,7 +49,7 @@ namespace SimPe.Plugin
 			FileTableBase.FileIndex.Load();
 			form.wrapper = (IFileWrapperSaveExtension)wrapper;
 
-			RefFile mywrapper = (RefFile)wrapper;
+			ThreeIdr mywrapper = (ThreeIdr)wrapper;
 
 			form.llcommit.Enabled = false;
 			form.lldelete.Enabled = false;

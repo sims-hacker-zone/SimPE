@@ -4,6 +4,8 @@ using System;
 using System.Collections;
 using System.Windows.Forms;
 
+using SimPe.PackedFiles.ThreeIdr;
+
 namespace SimPe.Plugin
 {
 	/// <summary>

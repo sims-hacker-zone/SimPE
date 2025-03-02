@@ -5,6 +5,7 @@ using System.Windows.Forms;
 
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
+using SimPe.PackedFiles.ThreeIdr;
 
 namespace pj
 {
@@ -55,7 +56,7 @@ namespace pj
 				return;
 			}
 
-			SimPe.Plugin.RefFile refFile = new SimPe.Plugin.RefFile();
+			ThreeIdr refFile = new ThreeIdr();
 			refFile.ProcessData(refFilePFD, currentPackage);
 
 			if (LinkBodyMesh(refFile))
@@ -70,7 +71,7 @@ namespace pj
 			}
 		}
 
-		public bool LinkBodyMesh(SimPe.Plugin.RefFile refFile)
+		public bool LinkBodyMesh(ThreeIdr refFile)
 		{
 			if (
 				refFile.Items[0].Type != SimPe.Data.MetaData.CRES

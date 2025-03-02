@@ -16,6 +16,7 @@ using SimPe.PackedFiles.Bnfo;
 using SimPe.PackedFiles.Idno;
 using SimPe.PackedFiles.Ltxt;
 using SimPe.PackedFiles.Scid;
+using SimPe.PackedFiles.ThreeIdr;
 using SimPe.PackedFiles.Ttab;
 using SimPe.PackedFiles.Wrapper;
 using SimPe.Plugin.Tool;
@@ -161,7 +162,7 @@ namespace SimPe.Plugin
 						new Glob(),
 						new ObjLua(),
 						new CompressedFileList(),
-						new RefFile(),
+						new ThreeIdr(),
 						new Txtr(LinkedProvider, false),
 						new Lifo(LinkedProvider, false),
 						// new Plugin.Shpe(this.LinkedProvider),

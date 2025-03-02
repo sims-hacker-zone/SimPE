@@ -5,13 +5,14 @@ using System.Windows.Forms;
 
 using SimPe.Forms.MainUI;
 using SimPe.Interfaces.Plugin;
+using SimPe.Plugin;
 
-namespace SimPe.Plugin
+namespace SimPe.PackedFiles.ThreeIdr
 {
 	/// <summary>
 	/// Summary description for MyPackedFileForm.
 	/// </summary>
-	public class RefFileForm : Form
+	public class ThreeIdrForm : Form
 	{
 		internal Panel wrapperPanel;
 		private Panel panel3;
@@ -40,10 +41,10 @@ namespace SimPe.Plugin
 		private ContextMenu contextMenu1;
 		private MenuItem miAdd;
 		internal MenuItem miRem;
-		private System.ComponentModel.IContainer components;
+		private readonly System.ComponentModel.IContainer components;
 		internal System.Drawing.Image imge;
 
-		public RefFileForm()
+		public ThreeIdrForm()
 		{
 			components = null;
 			//
@@ -647,10 +648,10 @@ namespace SimPe.Plugin
 				tbtype.Text = "0x" + Helper.HexString(pfd.Type);
 
 				//get Texture
-				if (pfd.GetType() == typeof(RefFileItem))
+				if (pfd.GetType() == typeof(ThreeIdrItem))
 				{
-					RefFile wrp = (RefFile)wrapper;
-					SkinChain sc = ((RefFileItem)pfd).Skin;
+					ThreeIdr wrp = (ThreeIdr)wrapper;
+					SkinChain sc = ((ThreeIdrItem)pfd).Skin;
 					GenericRcol txtr = null;
 					if (sc != null)
 					{
@@ -710,7 +711,7 @@ namespace SimPe.Plugin
 					lblist.Items[lblist.SelectedIndex] = pfd;
 					try
 					{
-						RefFileItem rfi = (RefFileItem)pfd;
+						ThreeIdrItem rfi = (ThreeIdrItem)pfd;
 						rfi.Skin = null;
 					}
 					catch { }
@@ -767,7 +768,7 @@ namespace SimPe.Plugin
 		{
 			try
 			{
-				RefFile wrp = (RefFile)wrapper;
+				ThreeIdr wrp = (ThreeIdr)wrapper;
 
 				Interfaces.Files.IPackedFileDescriptor[] pfds =
 					new Interfaces.Files.IPackedFileDescriptor[lblist.Items.Count];
@@ -844,7 +845,7 @@ namespace SimPe.Plugin
 		{
 			try
 			{
-				RefFile wrp = (RefFile)wrapper;
+				ThreeIdr wrp = (ThreeIdr)wrapper;
 				Interfaces.Files.IPackedFileDescriptor pfd = FileSelect.Execute();
 				if (pfd != null)
 				{
@@ -868,7 +869,7 @@ namespace SimPe.Plugin
 		private void ShowPackageSelector(object sender, EventArgs e)
 		{
 			PackageSelectorForm form = new PackageSelectorForm();
-			form.Execute(((RefFile)wrapper).Package);
+			form.Execute(((ThreeIdr)wrapper).Package);
 		}
 
 		private void PackageItemDragEnter(object sender, DragEventArgs e)

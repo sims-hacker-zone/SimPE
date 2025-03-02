@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 
 using SimPe.Interfaces.Files;
+using SimPe.PackedFiles.ThreeIdr;
 
 namespace SimPe.Plugin
 {
@@ -1272,7 +1273,7 @@ namespace SimPe.Plugin
 			//set list of critical types
 			uint[] types = new uint[] { Data.MetaData.REF_FILE };
 
-			RefFile fl = new RefFile();
+			ThreeIdr fl = new ThreeIdr();
 
 			//now fix the texture References in those Resources
 			foreach (uint t in types)
