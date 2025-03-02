@@ -1184,7 +1184,7 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				try
 				{
-					Wrapper.Xml xml = (Wrapper.Xml)wrapper;
+					Xml.Xml xml = (Xml.Xml)wrapper;
 
 					xml.Text = "";
 					foreach (string clit in rtb.Lines)

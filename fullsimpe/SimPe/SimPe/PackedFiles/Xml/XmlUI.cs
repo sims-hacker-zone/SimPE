@@ -3,13 +3,14 @@
 using System.Windows.Forms;
 
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.UserInterface;
 
-namespace SimPe.PackedFiles.UserInterface
+namespace SimPe.PackedFiles.Xml
 {
 	/// <summary>
 	/// handles Packed XmlFiles
 	/// </summary>
-	public class Xml : UIBase, IPackedFileUI
+	public class XmlUI : UIBase, IPackedFileUI
 	{
 		#region IPackedFileHandler Member
 
@@ -17,7 +18,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		public void UpdateGUI(IFileWrapper wrapper)
 		{
-			Wrapper.Xml xml = (Wrapper.Xml)wrapper;
+			Xml xml = (Xml)wrapper;
 			form.wrapper = xml;
 			form.rtb.Text = xml.Text;
 		}

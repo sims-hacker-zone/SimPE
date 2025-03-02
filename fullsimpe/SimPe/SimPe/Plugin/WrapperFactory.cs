@@ -24,6 +24,7 @@ using SimPe.PackedFiles.ThreeIdr;
 using SimPe.PackedFiles.Ttab;
 using SimPe.PackedFiles.Txtr;
 using SimPe.PackedFiles.Wrapper;
+using SimPe.PackedFiles.Xml;
 using SimPe.Plugin.Tool;
 using SimPe.Plugin.Tool.Action;
 using SimPe.Plugin.Tool.Dockable;
