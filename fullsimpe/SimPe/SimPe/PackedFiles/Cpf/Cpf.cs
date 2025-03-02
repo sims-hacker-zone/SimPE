@@ -6,7 +6,7 @@ using System.Xml;
 
 using SimPe.Interfaces.Plugin;
 
-namespace SimPe.PackedFiles.Wrapper
+namespace SimPe.PackedFiles.Cpf
 {
 	/// <summary>
 	/// This is the actual FileWrapper
@@ -42,7 +42,7 @@ namespace SimPe.PackedFiles.Wrapper
 		public CpfItem[] Items
 		{
 			get; set;
-		}
+		} = new CpfItem[0];
 		#endregion
 
 		/// <summary>
@@ -52,7 +52,6 @@ namespace SimPe.PackedFiles.Wrapper
 			: base()
 		{
 			Id = FileSignature;
-			Items = new CpfItem[0];
 		}
 
 		/// <summary>
@@ -123,15 +122,15 @@ namespace SimPe.PackedFiles.Wrapper
 		#region IWrapper member
 		public override bool CheckVersion(uint version)
 		{
-			return (version == 0009) //0.00
-				|| (version == 0010); //0.10
+			return version == 0009 //0.00
+				|| version == 0010; //0.10
 		}
 		#endregion
 
 		#region AbstractWrapper Member
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
-			return new UserInterface.CpfUI(null);
+			return new CpfUI(null);
 		}
 
 		/// <summary>
@@ -223,8 +222,8 @@ namespace SimPe.PackedFiles.Wrapper
 														);
 					}
 					else if (
-						(subnode.LocalName.Trim().ToLower() == "anyint32")
-						|| (subnode.LocalName.Trim().ToLower() == "anysint32")
+						subnode.LocalName.Trim().ToLower() == "anyint32"
+						|| subnode.LocalName.Trim().ToLower() == "anysint32"
 					)
 					{
 						item.Datatype = Data.MetaData.DataTypes.dtInteger;
@@ -246,7 +245,7 @@ namespace SimPe.PackedFiles.Wrapper
 					else if (subnode.LocalName.Trim().ToLower() == "anyboolean")
 					{
 						item.Datatype = Data.MetaData.DataTypes.dtBoolean;
-						item.BooleanValue = subnode.InnerText.Trim().ToLower() == "true" || (subnode.InnerText.Trim().ToLower() != "false" && Convert.ToInt32(subnode.InnerText) != 0);
+						item.BooleanValue = subnode.InnerText.Trim().ToLower() == "true" || subnode.InnerText.Trim().ToLower() != "false" && Convert.ToInt32(subnode.InnerText) != 0;
 					}
 					else if (subnode.LocalName.Trim().ToLower() == "#comment")
 					{

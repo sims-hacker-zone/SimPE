@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Cpf;
 
 namespace SimPe.Plugin
 {
@@ -179,8 +180,8 @@ namespace SimPe.Plugin
 			{
 				try
 				{
-					PackedFiles.Wrapper.Cpf colour =
-						new PackedFiles.Wrapper.Cpf();
+					Cpf colour =
+						new Cpf();
 					colour.ProcessData(item);
 					if (
 						!wallsandfloors.ContainsKey(

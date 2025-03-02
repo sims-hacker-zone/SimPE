@@ -1,9 +1,8 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using SimPe.Interfaces.Plugin;
-using SimPe.PackedFiles.Wrapper;
 
-namespace SimPe.PackedFiles.UserInterface
+namespace SimPe.PackedFiles.Cpf
 {
 	/// <summary>
 	/// UI Handler for a Str Wrapper
@@ -20,7 +19,7 @@ namespace SimPe.PackedFiles.UserInterface
 		/// <summary>
 		/// Holds a reference to the Form containing the UI Panel
 		/// </summary>
-		private Elements2 form;
+		private CpfForm form;
 		ExecutePreview fkt;
 
 		/// <summary>
@@ -28,7 +27,7 @@ namespace SimPe.PackedFiles.UserInterface
 		/// </summary>
 		public CpfUI(ExecutePreview fkt)
 		{
-			form = new Elements2();
+			form = new CpfForm();
 			form.cbtype.Items.Add(Data.MetaData.DataTypes.dtString);
 			form.cbtype.Items.Add(Data.MetaData.DataTypes.dtUInteger);
 			form.cbtype.Items.Add(Data.MetaData.DataTypes.dtInteger);

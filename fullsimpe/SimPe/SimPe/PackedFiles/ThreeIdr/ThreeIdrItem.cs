@@ -46,8 +46,8 @@ namespace SimPe.PackedFiles.ThreeIdr
 							FileTableBase.FileIndex.FindFile(this, parent.Package);
 						if (items.Length > 0)
 						{
-							Wrapper.Cpf cpff =
-								new Wrapper.Cpf();
+							Cpf.Cpf cpff =
+								new Cpf.Cpf();
 							cpff.ProcessData(items[0]);
 
 							skin = new SkinChain(cpff);

@@ -3,6 +3,8 @@
 
 using System.Drawing;
 
+using SimPe.PackedFiles.Cpf;
+
 namespace SimPe.Plugin.Downloads
 {
 	public class XTypeHandler : DefaultTypeHandler
@@ -27,7 +29,7 @@ namespace SimPe.Plugin.Downloads
 		public XTypeHandler()
 			: base() { }
 
-		PackedFiles.Wrapper.Cpf cpf;
+		Cpf cpf;
 
 		public override void SetFromObjectCacheItem(Cache.ObjectCacheItem oci)
 		{
@@ -52,7 +54,7 @@ namespace SimPe.Plugin.Downloads
 			{
 				if (oci.Tag is Interfaces.Scenegraph.IScenegraphFileIndexItem)
 				{
-					cpf = new PackedFiles.Wrapper.Cpf();
+					cpf = new Cpf();
 					cpf.ProcessData(
 						(Interfaces.Scenegraph.IScenegraphFileIndexItem)oci.Tag
 					);
@@ -94,10 +96,10 @@ namespace SimPe.Plugin.Downloads
 				Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(t);
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
-					cpf = new PackedFiles.Wrapper.Cpf();
+					cpf = new Cpf();
 					cpf.ProcessData(pfd, pkg);
 
-					PackedFiles.Wrapper.CpfItem item = cpf.GetItem("guid");
+					CpfItem item = cpf.GetItem("guid");
 					if (item != null)
 					{
 						nfo.AddGuid(item.UIntegerValue);
@@ -106,7 +108,7 @@ namespace SimPe.Plugin.Downloads
 			}
 		}
 
-		public void SetFromXObject(PackedFiles.Wrapper.Cpf cpf)
+		public void SetFromXObject(Cpf cpf)
 		{
 			this.cpf = cpf;
 			UpdateXObjScreen(cpf.Package, true);
@@ -187,7 +189,7 @@ namespace SimPe.Plugin.Downloads
 		}
 
 		public static Data.XObjFunctionSubSort GetFunctionSort(
-			PackedFiles.Wrapper.Cpf cpf
+			Cpf cpf
 		)
 		{
 			string type = cpf.GetSaveItem("type").StringValue.Trim().ToLower();
@@ -287,7 +289,7 @@ namespace SimPe.Plugin.Downloads
 		static Packages.File xthumbs,
 			nthumbs;
 
-		public static Image GetXThumbnail(PackedFiles.Wrapper.Cpf cpf)
+		public static Image GetXThumbnail(Cpf cpf)
 		{
 			if (xthumbs == null)
 			{

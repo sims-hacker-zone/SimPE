@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using SimPe.Interfaces;
+using SimPe.PackedFiles.Cpf;
 
 namespace SimPe.Plugin
 {
@@ -21,7 +22,7 @@ namespace SimPe.Plugin
 		public WorkshopToolFactory()
 		{
 			MmatWrapper.GlobalCpfPreview =
-				new PackedFiles.UserInterface.CpfUI.ExecutePreview(
+				new CpfUI.ExecutePreview(
 					PreviewForm.Execute
 				);
 		}

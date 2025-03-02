@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using SimPe.Interfaces.Plugin.Scanner;
+using SimPe.PackedFiles.Cpf;
 
 namespace SimPe.Plugin.Identifiers
 {
@@ -201,7 +202,7 @@ namespace SimPe.Plugin.Identifiers
 
 			if (pfds.Length > 0)
 			{
-				PackedFiles.Wrapper.Cpf cpf = new PackedFiles.Wrapper.Cpf();
+				Cpf cpf = new Cpf();
 				cpf.ProcessData(pfds[0], pkg, false);
 
 

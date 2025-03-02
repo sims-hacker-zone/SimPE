@@ -1,12 +1,14 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+using SimPe.PackedFiles.Cpf;
+
 namespace SimPe.Plugin
 {
 	/// <summary>
 	/// Summary description for MmatWrapper.
 	/// </summary>
-	public class XGoal : PackedFiles.Wrapper.Cpf
+	public class XGoal : Cpf
 	{
 		/// <summary>
 		/// creates a new Instance

@@ -3,7 +3,7 @@
 
 using System;
 
-using SimPe.PackedFiles.Wrapper;
+using SimPe.PackedFiles.Cpf;
 
 namespace SimPe.Plugin
 {

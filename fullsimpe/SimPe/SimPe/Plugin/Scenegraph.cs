@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 
 using SimPe.Interfaces.Scenegraph;
+using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.ThreeIdr;
 
 namespace SimPe.Plugin
@@ -143,8 +144,8 @@ namespace SimPe.Plugin
 			{
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
-					PackedFiles.Wrapper.Cpf cpf =
-						new PackedFiles.Wrapper.Cpf();
+					Cpf cpf =
+						new Cpf();
 					cpf.ProcessData(pfd, pkg);
 
 					string mname = Hashes.StripHashFromName(
@@ -380,7 +381,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="mmat"></param>
 		/// <returns></returns>
-		public static string MmatContent(PackedFiles.Wrapper.Cpf mmat)
+		public static string MmatContent(Cpf mmat)
 		{
 			return mmat.GetSaveItem("modelName").StringValue /*+mmat.GetSaveItem("family").StringValue*/
 				+ mmat.GetSaveItem("subsetName").StringValue
@@ -1361,7 +1362,7 @@ namespace SimPe.Plugin
 				(Interfaces.Files.IPackedFileDescriptor[])pkg.Index.Clone();
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in index)
 			{
-				PackedFiles.Wrapper.Cpf cpf = new PackedFiles.Wrapper.Cpf();
+				Cpf cpf = new Cpf();
 				if (!cpf.CanHandleType(pfd.Type))
 				{
 					continue;
@@ -1421,7 +1422,7 @@ namespace SimPe.Plugin
 		/// Add Resources referenced from XML Files
 		/// </summary>
 		protected void AddFromXml(
-			PackedFiles.Wrapper.CpfItem item,
+			CpfItem item,
 			string prefix,
 			uint type
 		)

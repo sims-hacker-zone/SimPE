@@ -6,7 +6,7 @@ namespace SimPe.PackedFiles.ThreeIdr
 	{
 		private readonly uint category;
 
-		internal CpfListItem(Wrapper.Cpf cpf)
+		internal CpfListItem(Cpf.Cpf cpf)
 			: base(cpf)
 		{
 			this.cpf = cpf;
@@ -14,7 +14,7 @@ namespace SimPe.PackedFiles.ThreeIdr
 			category = 0;
 			if (cpf != null)
 			{
-				foreach (Wrapper.CpfItem citem in cpf.Items)
+				foreach (Cpf.CpfItem citem in cpf.Items)
 				{
 					if (citem.Name.ToLower() == "name")
 					{
@@ -22,7 +22,7 @@ namespace SimPe.PackedFiles.ThreeIdr
 					}
 				}
 
-				foreach (Wrapper.CpfItem citem in cpf.Items)
+				foreach (Cpf.CpfItem citem in cpf.Items)
 				{
 					if (citem.Name.ToLower() == "category")
 					{
@@ -39,7 +39,7 @@ namespace SimPe.PackedFiles.ThreeIdr
 			get;
 		}
 
-		internal Wrapper.Cpf File => cpf;
+		internal Cpf.Cpf File => cpf;
 
 		public override string ToString()
 		{

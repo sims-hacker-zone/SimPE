@@ -8,6 +8,8 @@ using System.Windows.Forms;
 
 using Ambertation.Threading;
 
+using SimPe.PackedFiles.Cpf;
+
 namespace SimPe.Plugin.Tool.Dockable
 {
 	internal class ObjectReader : ProducerThread
@@ -338,7 +340,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		public event ObjectLoader.LoadItemHandler LoadedItem;
 
 		static void SetFunctionSortForXObj(
-			PackedFiles.Wrapper.Cpf cpf,
+			Cpf cpf,
 			Cache.ObjectCacheItem oci
 		)
 		{
@@ -351,7 +353,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			Data.MetaData.Languages deflang
 		)
 		{
-			PackedFiles.Wrapper.Cpf cpf = new PackedFiles.Wrapper.Cpf();
+			Cpf cpf = new Cpf();
 			nrefitem.FileDescriptor.UserData = nrefitem
 				.Package.Read(nrefitem.FileDescriptor)
 				.UncompressedData;

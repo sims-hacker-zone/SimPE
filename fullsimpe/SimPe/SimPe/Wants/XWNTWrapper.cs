@@ -6,6 +6,7 @@ using System.Text;
 using System.Xml;
 
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Cpf;
 
 namespace SimPe.Wants
 {
@@ -138,7 +139,7 @@ namespace SimPe.Wants
 
 			if (isCpf)
 			{
-				PackedFiles.Wrapper.Cpf cpf = new PackedFiles.Wrapper.Cpf();
+				Cpf cpf = new Cpf();
 				cpf.ProcessData(FileDescriptor, Package);
 				XWNTWrapper xwnt = new XWNTWrapper();
 				foreach (XWNTItem item in xwnt)
@@ -149,7 +150,7 @@ namespace SimPe.Wants
 					}
 					else
 					{
-						PackedFiles.Wrapper.CpfItem cpfitem = cpf.GetItem(
+						CpfItem cpfitem = cpf.GetItem(
 							item.Key
 						);
 						if (cpfitem != null)

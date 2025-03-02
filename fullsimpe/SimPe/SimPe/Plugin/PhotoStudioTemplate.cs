@@ -3,6 +3,8 @@
 using System;
 using System.Drawing;
 
+using SimPe.PackedFiles.Cpf;
+
 namespace SimPe.Plugin
 {
 	/// <summary>
@@ -10,7 +12,7 @@ namespace SimPe.Plugin
 	/// </summary>
 	public class PhotoStudioTemplate
 	{
-		PackedFiles.Wrapper.Cpf pset;
+		Cpf pset;
 		PackedFiles.Wrapper.Str ctss;
 
 		/// <summary>
@@ -27,7 +29,7 @@ namespace SimPe.Plugin
 				0xffffffff,
 				0xffffffff
 			);
-			pset = new PackedFiles.Wrapper.Cpf();
+			pset = new Cpf();
 			ctss = null;
 			if (pfd != null)
 			{

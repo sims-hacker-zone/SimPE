@@ -1,6 +1,8 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+using SimPe.PackedFiles.Cpf;
+
 namespace SimPe.Plugin.Tool.Dockable.Finder
 {
 	public partial class FindInCpf : FindInStr
@@ -51,7 +53,7 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 				}
 			}
 
-			PackedFiles.Wrapper.Cpf cpf = new PackedFiles.Wrapper.Cpf();
+			Cpf cpf = new Cpf();
 			cpf.ProcessData(pfd, pkg);
 
 			bool found = false;
@@ -61,7 +63,7 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 			}
 			else
 			{
-				foreach (PackedFiles.Wrapper.CpfItem item in cpf.Items)
+				foreach (CpfItem item in cpf.Items)
 				{
 					found = FindInField(cpf, found, item.Name);
 					if (found)
@@ -79,7 +81,7 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 		}
 
 		private bool FindInField(
-			PackedFiles.Wrapper.Cpf cpf,
+			Cpf cpf,
 			bool found,
 			string fldname
 		)

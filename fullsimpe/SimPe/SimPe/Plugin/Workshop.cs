@@ -7,6 +7,7 @@ using System.Windows.Forms;
 
 using SimPe.Data;
 using SimPe.Interfaces;
+using SimPe.PackedFiles.Cpf;
 
 namespace SimPe.Plugin
 {
@@ -1366,7 +1367,7 @@ namespace SimPe.Plugin
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
 				pfd.UserData = pkg.Read(pfd).UncompressedData;
-				PackedFiles.Wrapper.Cpf cpf = new PackedFiles.Wrapper.Cpf();
+				Cpf cpf = new Cpf();
 				cpf.ProcessData(pfd, pkg);
 
 				string mmatname =

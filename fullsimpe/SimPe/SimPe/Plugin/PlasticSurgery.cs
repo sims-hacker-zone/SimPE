@@ -6,6 +6,7 @@ using System.Collections;
 
 using SimPe.Data;
 using SimPe.Interfaces.Files;
+using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.ThreeIdr;
 using SimPe.PackedFiles.Wrapper;
 

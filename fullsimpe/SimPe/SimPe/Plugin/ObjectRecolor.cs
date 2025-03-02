@@ -4,6 +4,7 @@ using System.Collections;
 
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Scenegraph;
+using SimPe.PackedFiles.Cpf;
 
 namespace SimPe.Plugin
 {
@@ -67,7 +68,7 @@ namespace SimPe.Plugin
 		/// Chnages materialStateFlags and objectStateIndex according to the MaTD Reference Name
 		/// </summary>
 		/// <param name="mmat">The MMAT File to change the values in</param>
-		public static void FixMMAT(PackedFiles.Wrapper.Cpf mmat)
+		public static void FixMMAT(Cpf mmat)
 		{
 			string name = mmat.GetSaveItem("name").StringValue;
 			if (name.EndsWith("_clean"))
@@ -365,7 +366,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Add a MMAT to the package
 		/// </summary>
-		protected PackedFiles.Wrapper.Cpf AddMMAT(
+		protected Cpf AddMMAT(
 			Rcol matd,
 			string subset,
 			string cresname,
@@ -389,7 +390,7 @@ namespace SimPe.Plugin
 				};
 
 			Package.Add(pfd1);
-			PackedFiles.Wrapper.Cpf mmat = new PackedFiles.Wrapper.Cpf();
+			Cpf mmat = new Cpf();
 			mmat.ProcessData(pfd1, Package);
 
 			if (!substate)
@@ -442,7 +443,7 @@ namespace SimPe.Plugin
 						Rcol submatd = new GenericRcol(null, false);
 						submatd.ProcessData(pfds[0], Package);
 
-						PackedFiles.Wrapper.Cpf mmat2 = AddMMAT(
+						Cpf mmat2 = AddMMAT(
 							submatd,
 							subset,
 							cresname,
@@ -481,7 +482,7 @@ namespace SimPe.Plugin
 		/// Add the MATD referenced by the passed MMAT
 		/// </summary>
 		/// <param name="mmat">A valid MMAT file</param>
-		protected void AddMATD(PackedFiles.Wrapper.Cpf mmat)
+		protected void AddMATD(Cpf mmat)
 		{
 			Packages.File pkg = Packages.File.LoadFromFile(
 				System.IO.Path.Combine(
@@ -532,8 +533,8 @@ namespace SimPe.Plugin
 
 			foreach (IPackedFileDescriptor pfd in pfds)
 			{
-				PackedFiles.Wrapper.Cpf mmat =
-					new PackedFiles.Wrapper.Cpf();
+				Cpf mmat =
+					new Cpf();
 				mmat.ProcessData(pfd, Package);
 				AddMATD(mmat);
 			}

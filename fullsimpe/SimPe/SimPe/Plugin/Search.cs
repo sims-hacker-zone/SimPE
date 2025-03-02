@@ -5,6 +5,7 @@ using System.Windows.Forms;
 
 using Ambertation.Windows.Forms;
 
+using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Wrapper;
 
 namespace SimPe.Plugin
@@ -1019,7 +1020,7 @@ namespace SimPe.Plugin
 			Cpf cpf = new Cpf();
 			cpf.ProcessData(pfd, package);
 
-			//foreach (SimPe.PackedFiles.Wrapper.CpfItem i in cpf.Items)
+			//foreach (CpfItem i in cpf.Items)
 			{
 				bool check = false;
 				string s1 = cpf.GetSaveItem(tbpropname.Text)

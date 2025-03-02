@@ -4,6 +4,8 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
+using SimPe.PackedFiles.Cpf;
+
 namespace SimPe.Plugin
 {
 	/// <summary>
@@ -607,8 +609,8 @@ namespace SimPe.Plugin
 			{
 				Txtr txtr = new Txtr(null, false);
 				Rcol matd = new GenericRcol(null, false);
-				PackedFiles.Wrapper.Cpf mmat =
-					new PackedFiles.Wrapper.Cpf();
+				Cpf mmat =
+					new Cpf();
 
 				Packages.GeneratableFile pkg =
 					Packages.File.LoadFromStream(

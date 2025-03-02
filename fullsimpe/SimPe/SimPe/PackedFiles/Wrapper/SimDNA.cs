@@ -3,15 +3,16 @@
 using System;
 
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Cpf;
 
 namespace SimPe.PackedFiles.Wrapper
 {
 	public class Gene : Serializer
 	{
-		Cpf dna;
+		Cpf.Cpf dna;
 		uint b;
 
-		internal Gene(Cpf dna, uint b)
+		internal Gene(Cpf.Cpf dna, uint b)
 		{
 			this.dna = dna;
 			this.b = b;
@@ -90,7 +91,7 @@ namespace SimPe.PackedFiles.Wrapper
 	/// <summary>
 	/// Contains the SimDNA Data
 	/// </summary>
-	public class SimDNA : Cpf
+	public class SimDNA : Cpf.Cpf
 	{
 		public SimDNA()
 			: base()
