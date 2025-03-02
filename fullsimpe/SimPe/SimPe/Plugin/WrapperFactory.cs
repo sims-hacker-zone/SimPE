@@ -16,6 +16,7 @@ using SimPe.PackedFiles.Bnfo;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Idno;
 using SimPe.PackedFiles.Ltxt;
+using SimPe.PackedFiles.Nref;
 using SimPe.PackedFiles.Scid;
 using SimPe.PackedFiles.Tatt;
 using SimPe.PackedFiles.ThreeIdr;

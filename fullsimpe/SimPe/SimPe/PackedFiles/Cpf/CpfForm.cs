@@ -4,7 +4,6 @@ using System;
 using System.Windows.Forms;
 
 using SimPe.Interfaces.Plugin;
-using SimPe.PackedFiles.Wrapper;
 
 namespace SimPe.PackedFiles.Cpf
 {
@@ -507,7 +506,7 @@ namespace SimPe.PackedFiles.Cpf
 		{
 			try
 			{
-				Nref wrp = (Nref)wrapper;
+				Nref.Nref wrp = (Nref.Nref)wrapper;
 				tbnrefhash.Text = "0x" + Helper.HexString(wrp.Group);
 				if (tbNref.Tag == null) // allow event execution
 				{

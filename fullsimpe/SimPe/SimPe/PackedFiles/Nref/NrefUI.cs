@@ -2,9 +2,8 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
-using SimPe.PackedFiles.Wrapper;
 
-namespace SimPe.PackedFiles.UserInterface
+namespace SimPe.PackedFiles.Nref
 {
 	/// <summary>
 	/// UI Handler for a Str Wrapper
