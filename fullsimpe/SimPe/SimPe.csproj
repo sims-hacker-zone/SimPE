@@ -87,15 +87,6 @@
     <Reference Include="XPCommonControls">
       <HintPath>..\.assemblys\XPCommonControls.dll</HintPath>
     </Reference>
-    <Reference Include="ambertation.3D">
-      <HintPath>..\.assemblys\ambertation.3D.dll</HintPath>
-    </Reference>
-    <Reference Include="ambertation.utilities">
-      <HintPath>..\.assemblys\ambertation.utilities.dll</HintPath>
-    </Reference>
-    <Reference Include="ambertation.3D.mdx.binding">
-      <HintPath>..\.assemblys\ambertation.3D.mdx.binding.dll</HintPath>
-    </Reference>
     <Reference Include="SandDock">
       <HintPath>..\.assemblys\SandDock.dll</HintPath>
     </Reference>
@@ -128,12 +119,6 @@
     </Reference>
     <Reference Include="microsoft.directx">
       <HintPath>..\.assemblys\microsoft.directx.dll</HintPath>
-    </Reference>
-    <Reference Include="xsi.lib">
-      <HintPath>..\.assemblys\xsi.lib.dll</HintPath>
-    </Reference>
-    <Reference Include="7z">
-      <HintPath>..\.assemblys\7z.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
