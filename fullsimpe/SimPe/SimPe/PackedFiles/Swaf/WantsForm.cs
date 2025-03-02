@@ -2,9 +2,12 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Linq;
 using System.Windows.Forms;
 
-namespace SimPe.Plugin
+using SimPe.Plugin;
+
+namespace SimPe.PackedFiles.Swaf
 {
 	/// <summary>
 	/// Summary description for WantsForm.
@@ -15,10 +18,10 @@ namespace SimPe.Plugin
 		private Label label27;
 		internal Panel wantsPanel;
 		internal TabControl tabControl1;
-		internal System.Windows.Forms.TabPage tblife;
-		private System.Windows.Forms.TabPage tbwant;
-		private System.Windows.Forms.TabPage tbfear;
-		private System.Windows.Forms.TabPage tbhist;
+		internal TabPage tblife;
+		private TabPage tbwant;
+		private TabPage tbfear;
+		private TabPage tbhist;
 		internal ImageList iwant;
 		internal ImageList ifear;
 		internal ImageList ihist;
@@ -116,16 +119,16 @@ namespace SimPe.Plugin
 			pb = new PictureBox();
 			label5 = new Label();
 			tabControl1 = new TabControl();
-			tbwant = new System.Windows.Forms.TabPage();
+			tbwant = new TabPage();
 			lvwant = new ListView();
 			iwant = new ImageList(components);
-			tbfear = new System.Windows.Forms.TabPage();
+			tbfear = new TabPage();
 			lvfear = new ListView();
 			ifear = new ImageList(components);
-			tbhist = new System.Windows.Forms.TabPage();
+			tbhist = new TabPage();
 			tvhist = new TreeView();
 			ihist = new ImageList(components);
-			tblife = new System.Windows.Forms.TabPage();
+			tblife = new TabPage();
 			lvlife = new ListView();
 			ilife = new ImageList(components);
 			panel2 = new Panel();
@@ -1084,7 +1087,7 @@ namespace SimPe.Plugin
 		}
 		#endregion
 
-		internal Want wrapper;
+		internal Swaf wrapper;
 
 		internal void AddWantToList(ListView lv, ImageList il, WantItem wnt)
 		{
@@ -1105,7 +1108,7 @@ namespace SimPe.Plugin
 			lv.Items.Add(lvi);
 		}
 
-		void LoadHistory()
+		private void LoadHistory()
 		{
 			lasttve = null;
 			Wait.SubStart();
@@ -1136,22 +1139,17 @@ namespace SimPe.Plugin
 				Wait.Image = wc.Information.Icon;
 			}
 
-			foreach (WantItem wi in wc.Items)
-			{
-				TreeNode node = new TreeNode(wi.ToString())
-				{
-					ImageIndex = parent.ImageIndex,
-					SelectedImageIndex = parent.SelectedImageIndex,
-					Tag = wi
-				};
-
-				parent.Nodes.Add(node);
-			}
-
+			parent.Nodes.AddRange((from wi in wc.Items
+								   select new TreeNode(wi.ToString())
+								   {
+									   ImageIndex = parent.ImageIndex,
+									   SelectedImageIndex = parent.SelectedImageIndex,
+									   Tag = wi
+								   }).ToArray());
 			tv.Nodes.Add(parent);
 		}
 
-		void SelectTvNode(WantItem wi)
+		private void SelectTvNode(WantItem wi)
 		{
 			foreach (TreeNode parent in tv.Nodes)
 			{
@@ -1172,7 +1170,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		void ShowWantItem(WantItem wi)
+		private void ShowWantItem(WantItem wi)
 		{
 			lastwi = wi;
 
@@ -1182,9 +1180,9 @@ namespace SimPe.Plugin
 			tbprop.Text = wi.Property.ToString();
 			tbindex.Text = "0x" + Helper.HexString(wi.Index);
 			tbpoints.Text = wi.Score.ToString();
-			tbunknown1.Text = "0x" + Helper.HexString((byte)wi.Flag.Value);
+			tbunknown1.Text = "0x" + Helper.HexString((byte)wi.Flag);
 			tbunknown2.Text = wi.Influence.ToString();
-			cblock.Checked = wi.Flag.Locked;
+			cblock.Checked = wi.Flag == WantFlags.Locked;
 
 			pb.Image = wi.Information.Icon;
 
@@ -1256,13 +1254,9 @@ namespace SimPe.Plugin
 		{
 			cbsel.Items.Clear();
 			cbsel.Sorted = false;
-			ArrayList list = WantLoader.WantNameLoader.GetNames(
+			cbsel.Items.AddRange(WantLoader.WantNameLoader.GetNames(
 				(WantType)cbtype.Items[cbtype.SelectedIndex]
-			);
-			foreach (Data.Alias a in list)
-			{
-				cbsel.Items.Add(a);
-			}
+			).ToArray());
 
 			cbsel.Sorted = true;
 
@@ -1346,7 +1340,15 @@ namespace SimPe.Plugin
 				lastwi.Value = Convert.ToUInt32(tbval.Text, 16);
 				lastwi.Property = Convert.ToUInt16(tbprop.Text);
 
-				lastwi.Flag.Locked = cblock.Checked;
+				if (cblock.Checked)
+				{
+					lastwi.Flag |= WantFlags.Locked;
+				}
+				else
+				{
+					lastwi.Flag &= ~WantFlags.Locked;
+				}
+
 				wrapper.Changed = true;
 
 				if (lastlvi != null)
@@ -1386,7 +1388,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		TreeViewEventArgs lasttve;
+		private TreeViewEventArgs lasttve;
 
 		private void SeletTv(object sender, TreeViewEventArgs e)
 		{
@@ -1454,7 +1456,7 @@ namespace SimPe.Plugin
 				wi.prefix = "    ";
 				al.Add(wi);
 
-				if ((ct % 3) == 1)
+				if (ct % 3 == 1)
 				{
 					Wait.Image = wi.Icon;
 					Wait.Progress = ct;
@@ -1493,22 +1495,7 @@ namespace SimPe.Plugin
 
 		private void SelectWant(object sender, TreeViewEventArgs e)
 		{
-			if (Tag != null)
-			{
-				return;
-			}
-
-			if (e == null)
-			{
-				return;
-			}
-
-			if (e.Node == null)
-			{
-				return;
-			}
-
-			if (e.Node.Tag == null)
+			if (Tag != null || e?.Node?.Tag == null)
 			{
 				return;
 			}

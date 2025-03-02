@@ -1,18 +1,20 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
-namespace SimPe.Plugin
+using System.Collections.Generic;
+
+namespace SimPe.PackedFiles.Swaf
 {
 	/// <summary>
 	/// Summary description for WantItemContainer.
 	/// </summary>
 	public class WantItemContainer
 	{
-		uint guid;
+		private uint guid;
 
-		public WantItem[] Items
+		public List<WantItem> Items
 		{
 			get; set;
-		}
+		} = new List<WantItem>();
 
 		/// <summary>
 		/// Returns Informations about the Selected want
@@ -26,7 +28,6 @@ namespace SimPe.Plugin
 
 		public WantItemContainer(Interfaces.IProviderRegistry provider)
 		{
-			Items = new WantItem[0];
 			Provider = provider;
 		}
 
@@ -37,12 +38,14 @@ namespace SimPe.Plugin
 		public void Unserialize(System.IO.BinaryReader reader)
 		{
 			guid = reader.ReadUInt32();
-			Items = new WantItem[reader.ReadUInt32()];
 
-			for (int i = 0; i < Items.Length; i++)
+			uint wantcount = reader.ReadUInt32();
+			Items.Capacity = (int)wantcount;
+			for (int i = 0; i < wantcount; i++)
 			{
-				Items[i] = new WantItem(Provider);
-				Items[i].Unserialize(reader);
+				WantItem want = new WantItem(Provider);
+				want.Unserialize(reader);
+				Items.Add(want);
 			}
 		}
 
@@ -57,17 +60,17 @@ namespace SimPe.Plugin
 		public void Serialize(System.IO.BinaryWriter writer)
 		{
 			writer.Write(guid);
-			writer.Write((uint)Items.Length);
+			writer.Write((uint)Items.Count);
 
-			for (int i = 0; i < Items.Length; i++)
+			foreach (WantItem want in Items)
 			{
-				Items[i].Serialize(writer);
+				want.Serialize(writer);
 			}
 		}
 
 		public override string ToString()
 		{
-			return Information.Name + " (count=" + Items.Length.ToString() + ")";
+			return $"{Information.Name} (count={Items.Count})";
 		}
 	}
 }

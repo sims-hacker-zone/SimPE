@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.Xml;
 
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Swaf;
 using SimPe.PackedFiles.Wrapper;
 
 namespace SimPe.Wants
@@ -178,7 +179,7 @@ namespace SimPe.Wants
 
 						xwnts.Add(i, new object[] { e.FileDescriptor, e.Package });
 						wants.Add(new KeyValuePair<string, uint>(s, i));
-						Plugin.WantInformation.LoadWant(i);
+						WantInformation.LoadWant(i);
 					}
 					finally
 					{
@@ -398,7 +399,7 @@ namespace SimPe.Wants
 			}
 			gcSIObject.KnownObjects = new object[] { objectNames, objectIDs };
 			gcSICareer.KnownObjects = new object[] { careerNames, careerIDs };
-			Plugin.WantInformation.SaveCache();
+			WantInformation.SaveCache();
 			#endregion
 
 			internalchg = false;
@@ -1447,8 +1448,8 @@ namespace SimPe.Wants
 
 					gcSIWant.Value = i.WantId;
 					SIWant(i, i.WantId);
-					Plugin.WantInformation wantim =
-						Plugin.WantInformation.LoadWant(i.WantId);
+					WantInformation wantim =
+						WantInformation.LoadWant(i.WantId);
 					tbSIArg2.Text = "0x" + Helper.HexString(i.Arg2);
 					cbSIArgType.SelectedIndex =
 						new List<string>(Enum.GetNames(typeof(SWAFItem.ArgTypes)))

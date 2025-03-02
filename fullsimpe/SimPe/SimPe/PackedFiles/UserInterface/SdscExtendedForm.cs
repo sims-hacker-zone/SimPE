@@ -3,7 +3,9 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
+using SimPe.PackedFiles.Swaf;
 using SimPe.PackedFiles.Wrapper;
 
 namespace SimPe.PackedFiles.UserInterface
@@ -261,7 +263,7 @@ namespace SimPe.PackedFiles.UserInterface
 		Ambertation.PropertyObjectBuilder pob;
 		Hashtable names;
 		bool propchanged;
-		Plugin.WantNameLoader wnl;
+		WantNameLoader wnl;
 		short[] shortdata;
 
 		string GetName(int i)
@@ -322,7 +324,7 @@ namespace SimPe.PackedFiles.UserInterface
 						xml += "  </persondata>" + Helper.lbr;
 						xml += "</wantSimulator>" + Helper.lbr;
 
-						wnl = new Plugin.WantNameLoader(xml);
+						wnl = new WantNameLoader(xml);
 					}
 				}
 			}
@@ -330,7 +332,7 @@ namespace SimPe.PackedFiles.UserInterface
 			if (wnl == null)
 			{
 				// FileTable.FileIndex.Load(); // don't need this anymore
-				wnl = new Plugin.WantNameLoader(version);
+				wnl = new WantNameLoader(version);
 			}
 		}
 
@@ -356,7 +358,7 @@ namespace SimPe.PackedFiles.UserInterface
 			pg.SelectedObject = null;
 
 			names = new Hashtable();
-			ArrayList ns = wnl.GetNames(Plugin.WantType.Undefined);
+			IEnumerable<Data.Alias> ns = wnl.GetNames(WantType.Undefined);
 
 			int max = -1;
 			foreach (Interfaces.IAlias a in ns)
