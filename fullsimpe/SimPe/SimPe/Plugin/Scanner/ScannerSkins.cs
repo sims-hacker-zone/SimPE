@@ -4,6 +4,7 @@ using System.Collections;
 
 using SimPe.Cache;
 using SimPe.Interfaces.Plugin.Scanner;
+using SimPe.PackedFiles.ThreeIdr;
 using SimPe.PackedFiles.Wrapper;
 
 namespace SimPe.Plugin.Scanner
@@ -340,7 +341,7 @@ namespace SimPe.Plugin.Scanner
 							&& addref
 						)
 						{
-							RefFile r = newsc.ReferenceFile;
+							ThreeIdr r = newsc.ReferenceFile;
 							r.FileDescriptor = sc.ReferenceFile.FileDescriptor.Clone();
 
 							r.SynchronizeUserData();

@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 
 using SimPe.Interfaces.Scenegraph;
+using SimPe.PackedFiles.ThreeIdr;
 
 namespace SimPe.Plugin
 {
@@ -1309,7 +1310,7 @@ namespace SimPe.Plugin
 			);
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
-				RefFile re = new RefFile();
+				ThreeIdr re = new ThreeIdr();
 				re.ProcessData(pfd, pkg);
 
 				foreach (Interfaces.Files.IPackedFileDescriptor p in re.Items)

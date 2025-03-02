@@ -2,18 +2,20 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 
-namespace SimPe.Plugin
+using SimPe.Plugin;
+
+namespace SimPe.PackedFiles.ThreeIdr
 {
 	public class SkinChain
 	{
-		protected PackedFiles.Wrapper.Cpf cpf;
+		protected Wrapper.Cpf cpf;
 
-		public SkinChain(PackedFiles.Wrapper.Cpf cpf)
+		public SkinChain(Wrapper.Cpf cpf)
 		{
 			this.cpf = cpf;
 		}
 
-		public PackedFiles.Wrapper.Cpf Cpf => cpf;
+		public Wrapper.Cpf Cpf => cpf;
 
 		public uint Category
 		{
@@ -23,7 +25,7 @@ namespace SimPe.Plugin
 				{
 					if (Cpf != null)
 					{
-						PackedFiles.Wrapper.CpfItem citem = Cpf.GetItem(
+						Wrapper.CpfItem citem = Cpf.GetItem(
 							"category"
 						);
 						if (citem != null)
@@ -58,7 +60,7 @@ namespace SimPe.Plugin
 				{
 					if (Cpf != null)
 					{
-						PackedFiles.Wrapper.CpfItem citem = Cpf.GetItem("age");
+						Wrapper.CpfItem citem = Cpf.GetItem("age");
 						if (citem != null)
 						{
 							return citem.UIntegerValue;
@@ -78,7 +80,7 @@ namespace SimPe.Plugin
 				{
 					if (Cpf != null)
 					{
-						PackedFiles.Wrapper.CpfItem citem = Cpf.GetItem("name");
+						Wrapper.CpfItem citem = Cpf.GetItem("name");
 						if (citem != null)
 						{
 							return citem.StringValue;
@@ -98,7 +100,7 @@ namespace SimPe.Plugin
 				{
 					if (Cpf != null)
 					{
-						PackedFiles.Wrapper.CpfItem citem = Cpf.GetItem("gender");
+						Wrapper.CpfItem citem = Cpf.GetItem("gender");
 						if (citem != null)
 						{
 							return citem.UIntegerValue;
@@ -118,7 +120,7 @@ namespace SimPe.Plugin
 				{
 					if (Cpf != null)
 					{
-						PackedFiles.Wrapper.CpfItem citem = Cpf.GetItem(
+						Wrapper.CpfItem citem = Cpf.GetItem(
 							"product"
 						);
 						if (citem != null)
@@ -157,7 +159,7 @@ namespace SimPe.Plugin
 				{
 					if (Cpf != null)
 					{
-						PackedFiles.Wrapper.CpfItem citem = Cpf.GetItem("outfit") ?? Cpf.GetItem("parts");
+						Wrapper.CpfItem citem = Cpf.GetItem("outfit") ?? Cpf.GetItem("parts");
 
 						if (citem != null)
 						{
@@ -170,7 +172,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		public RefFile ReferenceFile
+		public ThreeIdr ReferenceFile
 		{
 			get
 			{
@@ -187,7 +189,7 @@ namespace SimPe.Plugin
 							);
 						if (pfd != null)
 						{
-							RefFile reffile = new RefFile();
+							ThreeIdr reffile = new ThreeIdr();
 							reffile.ProcessData(pfd, Cpf.Package);
 
 							return reffile;
@@ -262,7 +264,7 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				RefFile reffile = ReferenceFile;
+				ThreeIdr reffile = ReferenceFile;
 				System.Collections.ArrayList list = new System.Collections.ArrayList();
 				if (reffile != null)
 				{
@@ -316,7 +318,7 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				RefFile reffile = ReferenceFile;
+				ThreeIdr reffile = ReferenceFile;
 				if (reffile != null && cpf != null)
 				{
 					if (cpf.GetItem("override0resourcekeyidx") != null)
@@ -453,149 +455,6 @@ namespace SimPe.Plugin
 		public override string ToString()
 		{
 			return "Category=" + CategoryNames + "; Age=" + AgeNames + "; Name=" + Name;
-		}
-	}
-
-	/// <summary>
-	/// A Item in a 3IDR File
-	/// </summary>
-	public class RefFileItem : Packages.PackedFileDescriptor
-	{
-		RefFile parent;
-
-		public RefFileItem(RefFile parent)
-		{
-			this.parent = parent;
-		}
-
-		public RefFileItem(Interfaces.Files.IPackedFileDescriptor pfd, RefFile parent)
-		{
-			this.parent = parent;
-			Group = pfd.Group;
-			Type = pfd.Type;
-			SubType = pfd.SubType;
-			Instance = pfd.Instance;
-		}
-
-		SkinChain skin;
-		public SkinChain Skin
-		{
-			get
-			{
-				if (
-					(skin == null)
-					&& (
-						Type == Data.MetaData.GZPS
-						|| Type == Data.MetaData.AGED
-						|| Type == Data.MetaData.XSTN
-					)
-					&& (parent != null)
-				)
-				{
-					try
-					{
-						FileTableBase.FileIndex.Load();
-						Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-							FileTableBase.FileIndex.FindFile(this, parent.Package);
-						if (items.Length > 0)
-						{
-							PackedFiles.Wrapper.Cpf cpff =
-								new PackedFiles.Wrapper.Cpf();
-							cpff.ProcessData(items[0]);
-
-							skin = new SkinChain(cpff);
-						}
-					}
-					catch { }
-				}
-				return skin;
-			}
-			set => skin = value;
-		}
-
-		public override string ToString()
-		{
-			string name = base.ToString();
-			if (Skin != null)
-			{
-				if (Skin.PartNames != "")
-				{
-					name += "; Part=" + Skin.PartNames;
-				}
-
-				if (Skin.CategoryNames != "")
-				{
-					name += "; Category=" + Skin.CategoryNames;
-				}
-
-				if (Skin.AgeNames != "")
-				{
-					name += "; Age=" + Skin.AgeNames;
-				}
-
-				if (Skin.GenderNames != "")
-				{
-					name += "; Gender=" + Skin.GenderNames;
-				}
-
-				if (Skin.Name != "")
-				{
-					name += "; Name=" + Skin.Name;
-				}
-
-				if (Skin.Bodyshape != "Unknown" && !Skin.Bodyshape.Contains("Maxis"))
-				{
-					name += "; Body=" + Skin.Bodyshape;
-				}
-				// name = "Category="+Skin.CategoryNames+"; Age="+Skin.AgeNames+"; Name="+Skin.Name;
-				// name += " ("+base.ToString()+")";
-			}
-			return name;
-		}
-	}
-
-	internal class CpfListItem : SkinChain
-	{
-		uint category;
-
-		internal CpfListItem(PackedFiles.Wrapper.Cpf cpf)
-			: base(cpf)
-		{
-			this.cpf = cpf;
-			Name = Localization.Manager.GetString("Unknown");
-			category = 0;
-			if (cpf != null)
-			{
-				foreach (PackedFiles.Wrapper.CpfItem citem in cpf.Items)
-				{
-					if (citem.Name.ToLower() == "name")
-					{
-						Name = citem.StringValue;
-					}
-				}
-
-				foreach (PackedFiles.Wrapper.CpfItem citem in cpf.Items)
-				{
-					if (citem.Name.ToLower() == "category")
-					{
-						category = citem.UIntegerValue;
-					}
-				}
-			}
-
-			Name = Name.Replace("CASIE_", "");
-		}
-
-		public new string Name
-		{
-			get;
-		}
-
-		internal PackedFiles.Wrapper.Cpf File => cpf;
-
-		public override string ToString()
-		{
-			return "0x" + Helper.HexString((ushort)category) + ": " + Name;
 		}
 	}
 }

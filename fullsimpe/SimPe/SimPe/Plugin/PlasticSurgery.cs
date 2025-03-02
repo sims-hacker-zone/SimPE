@@ -6,6 +6,7 @@ using System.Collections;
 
 using SimPe.Data;
 using SimPe.Interfaces.Files;
+using SimPe.PackedFiles.ThreeIdr;
 using SimPe.PackedFiles.Wrapper;
 
 namespace SimPe.Plugin
@@ -279,7 +280,7 @@ namespace SimPe.Plugin
 
 			if (arcTargetRef != null && patSourceRef != null)
 			{
-				RefFileItem[] pcItems = GetClothingItems(patSourceRef, patient);
+				ThreeIdrItem[] pcItems = GetClothingItems(patSourceRef, patient);
 				if (pcItems == null || pcItems.Length == 0)
 				{
 					// cascade fatal error
@@ -290,7 +291,7 @@ namespace SimPe.Plugin
 
 				// next, find the clothing references in the patient package.
 				// copy them to the arcTargetRef items
-				using (RefFile arcRef = new RefFile())
+				using (ThreeIdr arcRef = new ThreeIdr())
 				{
 					arcRef.ProcessData(arcTargetRef, archetype, false);
 
@@ -299,13 +300,13 @@ namespace SimPe.Plugin
 
 					foreach (IPackedFileDescriptor pfd in items)
 					{
-						if ((pfd is RefFileItem) && ((RefFileItem)pfd).Skin != null)
+						if ((pfd is ThreeIdrItem) && ((ThreeIdrItem)pfd).Skin != null)
 						{
-							inUse.Add(((RefFileItem)pfd).Skin.Category);
+							inUse.Add(((ThreeIdrItem)pfd).Skin.Category);
 						}
 					}
 
-					foreach (RefFileItem item in pcItems)
+					foreach (ThreeIdrItem item in pcItems)
 					{
 						if (item.Skin != null)
 						{
@@ -323,19 +324,19 @@ namespace SimPe.Plugin
 			}
 		}
 
-		RefFileItem[] GetClothingItems(IPackedFileDescriptor pfd, IPackageFile file)
+		ThreeIdrItem[] GetClothingItems(IPackedFileDescriptor pfd, IPackageFile file)
 		{
 			ArrayList ret = new ArrayList();
 
-			RefFile refFile = new RefFile();
+			ThreeIdr refFile = new ThreeIdr();
 			refFile.ProcessData(pfd, file, true); // <-- ERROR is here!
 			if (refFile.Items.Length > 0)
 			{
 				foreach (IPackedFileDescriptor ptr in refFile.Items)
 				{
-					if (ptr is RefFileItem)
+					if (ptr is ThreeIdrItem)
 					{
-						RefFileItem item = ptr as RefFileItem;
+						ThreeIdrItem item = ptr as ThreeIdrItem;
 						if (item.Skin != null)
 						{
 							SkinCategories cat = (SkinCategories)item.Skin.Category;
@@ -351,7 +352,7 @@ namespace SimPe.Plugin
 					}
 				}
 			}
-			return (RefFileItem[])ret.ToArray(typeof(RefFileItem));
+			return (ThreeIdrItem[])ret.ToArray(typeof(ThreeIdrItem));
 		}
 
 		IPackedFileDescriptor GetClothing3IDREntry(IPackageFile file)
@@ -505,7 +506,7 @@ namespace SimPe.Plugin
 		/// <param name="reffile">the 3IDR File</param><param name="skin">the new skintone</param>
 		/// <param name="skinfiles">a Hashtable listing al Proerty Sets for each available skintone (key=skintone string, value= ArrayList of Cpf Objects)</param>
 		void UpdateSkintone(
-			RefFile reffile,
+			ThreeIdr reffile,
 			string skin,
 			Hashtable skinfiles
 		)
@@ -815,7 +816,7 @@ namespace SimPe.Plugin
 			);
 			foreach (IPackedFileDescriptor pfd in pfds)
 			{
-				RefFile reffile = new RefFile();
+				ThreeIdr reffile = new ThreeIdr();
 				reffile.ProcessData(pfd, ret);
 
 				UpdateSkintone(reffile, skin, skinfiles);

@@ -9,6 +9,7 @@ using SimPe.Data;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Scenegraph;
 using SimPe.Packages;
+using SimPe.PackedFiles.ThreeIdr;
 using SimPe.PackedFiles.Wrapper;
 
 namespace SimPe.Plugin
@@ -605,7 +606,7 @@ namespace SimPe.Plugin
 			{
 				// we're not even trying to touch these, so let's just release
 				// their resources after we take a peek...
-				using (RefFile refFile = new RefFile())
+				using (ThreeIdr refFile = new ThreeIdr())
 				{
 					foreach (IPackedFileDescriptor pfd in pfds) // there should be only one!
 					{

@@ -7,6 +7,7 @@ using System.Collections.Specialized;
 
 using SimPe.Data;
 using SimPe.Interfaces.Files;
+using SimPe.PackedFiles.ThreeIdr;
 using SimPe.PackedFiles.Wrapper;
 
 namespace SimPe.Plugin
@@ -185,7 +186,7 @@ namespace SimPe.Plugin
 					);
 					foreach (IPackedFileDescriptor pfd in pfd3IDR)
 					{
-						using (RefFile refFile = new RefFile())
+						using (ThreeIdr refFile = new ThreeIdr())
 						{
 							refFile.ProcessData(pfd, package, false);
 

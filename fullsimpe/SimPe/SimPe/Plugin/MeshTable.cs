@@ -8,6 +8,7 @@ using System.Collections.Specialized;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Scenegraph;
 using SimPe.Packages;
+using SimPe.PackedFiles.ThreeIdr;
 
 namespace SimPe.Plugin
 {
@@ -102,7 +103,7 @@ namespace SimPe.Plugin
 				IPackedFileDescriptor pfd = Get3IDRResource(item);
 				if (pfd != null)
 				{
-					RefFile refFile = new RefFile();
+					ThreeIdr refFile = new ThreeIdr();
 					refFile.ProcessData(pfd, item.PropertySet.Package, false);
 
 					int idxCres = item.GetProperty("resourcekeyidx").IntegerValue;
@@ -228,7 +229,7 @@ namespace SimPe.Plugin
 				IPackedFileDescriptor idr = Get3IDRResource(item);
 				if (idr != null)
 				{
-					RefFile refFile = new RefFile();
+					ThreeIdr refFile = new ThreeIdr();
 					refFile.ProcessData(idr, item.PropertySet.Package, false);
 
 					MeshInfo mi = new MeshInfo();

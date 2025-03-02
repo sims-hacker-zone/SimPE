@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.ThreeIdr;
 
 namespace pj
 {
@@ -267,7 +268,7 @@ namespace pj
 					objKeyCPF = new SimPe.PackedFiles.Wrapper.Cpf();
 					objKeyCPF.ProcessData(currentPfd, currentPackage);
 					addFile(p3);
-					objKey3IDR = new SimPe.Plugin.RefFile();
+					objKey3IDR = new ThreeIdr();
 					objKey3IDR.ProcessData(p3.FileDescriptor, p3.Package);
 				}
 			}
@@ -297,7 +298,7 @@ namespace pj
 						addFile(pc);
 						objKeyCPF = new SimPe.PackedFiles.Wrapper.Cpf();
 						objKeyCPF.ProcessData(pc.FileDescriptor, pc.Package);
-						objKey3IDR = new SimPe.Plugin.RefFile();
+						objKey3IDR = new ThreeIdr();
 						objKey3IDR.ProcessData(currentPfd, currentPackage);
 						break;
 					}
@@ -345,14 +346,14 @@ namespace pj
 				return null;
 			}
 
-			AbstractWrapper tgt = Filetype == SimPe.Data.MetaData.REF_FILE ? new SimPe.Plugin.RefFile() : (AbstractWrapper)new SimPe.PackedFiles.Wrapper.Cpf();
+			AbstractWrapper tgt = Filetype == SimPe.Data.MetaData.REF_FILE ? new ThreeIdr() : (AbstractWrapper)new SimPe.PackedFiles.Wrapper.Cpf();
 			tgt.ProcessData(pt, p);
 			return tgt;
 		}
 
 		private AbstractWrapper[] getCpf3idrPair(
 			SimPe.PackedFiles.Wrapper.Cpf srcCpf,
-			SimPe.Plugin.RefFile src3idr,
+			ThreeIdr src3idr,
 			string cpfItemKey,
 			List<string> pkgs
 		)
@@ -415,7 +416,7 @@ namespace pj
 			AbstractWrapper[] tgt = new AbstractWrapper[]
 			{
 				new SimPe.PackedFiles.Wrapper.Cpf(),
-				new SimPe.Plugin.RefFile(),
+				new ThreeIdr(),
 			};
 			tgt[0].ProcessData(pc, p);
 			tgt[1].ProcessData(p3, p);
@@ -425,7 +426,7 @@ namespace pj
 
 		private SimPe.Plugin.GenericRcol getRcol(
 			SimPe.PackedFiles.Wrapper.Cpf srcCpf,
-			SimPe.Plugin.RefFile src3idr,
+			ThreeIdr src3idr,
 			string cpfItemKey,
 			List<string> pkgs
 		)
@@ -562,7 +563,7 @@ namespace pj
 						}
 
 						// load the pair
-						SimPe.Plugin.RefFile fk3idr = new SimPe.Plugin.RefFile();
+						ThreeIdr fk3idr = new ThreeIdr();
 						fk3idr.ProcessData(pfd, p);
 						SimPe.PackedFiles.Wrapper.Cpf fkCpf =
 							new SimPe.PackedFiles.Wrapper.Cpf();
@@ -607,7 +608,7 @@ namespace pj
 			{
 				AbstractWrapper[] tgt = getCpf3idrPair(
 					(SimPe.PackedFiles.Wrapper.Cpf)fk[0],
-					(SimPe.Plugin.RefFile)fk[1],
+					(ThreeIdr)fk[1],
 					"binidx",
 					binkeys
 				);
@@ -756,7 +757,7 @@ namespace pj
 
 		private void addStr(
 			SimPe.PackedFiles.Wrapper.Cpf srcCpf,
-			SimPe.Plugin.RefFile src3idr
+			ThreeIdr src3idr
 		)
 		{
 			SimPe.PackedFiles.Wrapper.CpfItem cpfItem = srcCpf.GetItem("stringsetidx");
@@ -822,7 +823,7 @@ namespace pj
 		private IPackedFileDescriptor currentPfd = null;
 		private IPackageFile currentPackage = null;
 		private SimPe.PackedFiles.Wrapper.Cpf objKeyCPF = null;
-		private SimPe.Plugin.RefFile objKey3IDR = null;
+		private ThreeIdr objKey3IDR = null;
 
 		private void Main(IPackedFileDescriptor pfd, IPackageFile package)
 		{
@@ -866,7 +867,7 @@ namespace pj
 				addFile(ap[1]);
 				addStr(
 					(SimPe.PackedFiles.Wrapper.Cpf)ap[0],
-					(SimPe.Plugin.RefFile)ap[1]
+					(ThreeIdr)ap[1]
 				);
 				SimPe.Wait.Progress++;
 			}
@@ -879,7 +880,7 @@ namespace pj
 				addFile(ap[1]);
 				addStr(
 					(SimPe.PackedFiles.Wrapper.Cpf)ap[0],
-					(SimPe.Plugin.RefFile)ap[1]
+					(ThreeIdr)ap[1]
 				);
 				SimPe.Wait.Progress++;
 			}

@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 using SimPe.Data;
 using SimPe.PackedFiles.Idno;
+using SimPe.PackedFiles.ThreeIdr;
 
 namespace SimPe.Plugin
 {
@@ -635,7 +636,7 @@ namespace SimPe.Plugin
 								);
 							if (idr.Length > 0)
 							{
-								RefFile reffile = new RefFile();
+								ThreeIdr reffile = new ThreeIdr();
 								reffile.ProcessData(idr[0]);
 
 								ListViewItem lvi = new ListViewItem(

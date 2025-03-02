@@ -3,6 +3,8 @@
 using System;
 using System.Collections;
 
+using SimPe.PackedFiles.ThreeIdr;
+
 namespace SimPe.Providers
 {
 	/// <summary>
@@ -66,7 +68,7 @@ namespace SimPe.Providers
 			{
 				try
 				{
-					Plugin.RefFile reffile = new Plugin.RefFile();
+					ThreeIdr reffile = new ThreeIdr();
 					reffile.ProcessData(pfd, package);
 					refs.Add(reffile);
 				}
@@ -375,7 +377,7 @@ namespace SimPe.Providers
 				return "";
 			}
 
-			foreach (Plugin.RefFile reff in refs)
+			foreach (ThreeIdr reff in refs)
 			{
 				Interfaces.Files.IPackedFileDescriptor pfd = reff.FileDescriptor;
 				if (
