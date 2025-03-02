@@ -2,14 +2,15 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 
+using SimPe.Forms.MainUI;
 using SimPe.Interfaces.Plugin;
 
-namespace SimPe.Plugin
+namespace SimPe.PackedFiles.Swaf
 {
 	/// <summary>
 	/// This class is used to fill the UI for this FileType with Data
 	/// </summary>
-	public class WantsUI : IPackedFileUI
+	public class SwafUI : IPackedFileUI
 	{
 		#region Code to Startup the UI
 
@@ -21,7 +22,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Constructor for the Class
 		/// </summary>
-		public WantsUI()
+		public SwafUI()
 		{
 			//form = WrapperFactory.form;
 			if (form == null)
@@ -39,7 +40,7 @@ namespace SimPe.Plugin
 				form.ListWants();
 
 				WantLoader.WantNameLoader.AddObjects(
-					PackedFiles.Wrapper.ObjectComboBox.ObjectCache.List
+					Wrapper.ObjectComboBox.ObjectCache.List
 				);
 			}
 		}
@@ -52,14 +53,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public System.Windows.Forms.Control GUIHandle => form.wantsPanel;
 
-		static string oldpkg = "";
+		private static string oldpkg = "";
 
 		/// <summary>
 		/// true if the package was changed since the last run
 		/// </summary>
 		/// <param name="wrp">The File that will be loaded (contains a valid Package witha FileName)</param>
 		/// <returns>true, if the package Name changed</returns>
-		public static bool ChangedNeighborhood(Want wrp)
+		public static bool ChangedNeighborhood(Swaf wrp)
 		{
 			string newpkg = wrp.Package.FileName.Trim().ToString();
 			if (newpkg != oldpkg)
@@ -79,7 +80,7 @@ namespace SimPe.Plugin
 		/// <param name="wrapper">The Attributes of this Wrapper have to be displayed</param>
 		public void UpdateGUI(IFileWrapper wrapper)
 		{
-			Want wrp = (Want)wrapper;
+			Swaf wrp = (Swaf)wrapper;
 			form.wrapper = wrp;
 			form.Tag = true;
 
@@ -148,7 +149,7 @@ namespace SimPe.Plugin
 			}
 			catch (Exception ex)
 			{
-				Helper.ExceptionMessage("", ex);
+				Message.Show(ex.Message + "\n" + ex.StackTrace);
 			}
 			finally
 			{

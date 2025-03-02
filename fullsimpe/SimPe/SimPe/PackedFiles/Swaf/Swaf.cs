@@ -1,8 +1,13 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+
+// SPDX-FileCopyrightText: © SimPE contributors
+// SPDX-License-Identifier: GPL-2.0-or-later
+using System.Collections.Generic;
+
 using SimPe.Interfaces.Plugin;
 
-namespace SimPe.Plugin
+namespace SimPe.PackedFiles.Swaf
 {
 	/// <summary>
 	/// This is the actual FileWrapper
@@ -11,44 +16,57 @@ namespace SimPe.Plugin
 	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
-	public class Want
-		: AbstractWrapper //Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
-			,
-			IFileWrapper //This Interface is used when loading a File
-			,
-			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
-									  //,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
+	public class Swaf : AbstractWrapper, IFileWrapper, IFileWrapperSaveExtension
 	{
 		#region Attributes
 		public uint Version
 		{
 			get; private set;
-		}
+		} = 1;
 
-		public WantItem[] LifetimeWants
+		public List<WantItem> LifetimeWants
 		{
 			get; set;
-		}
+		} = new List<WantItem>();
 
-		public WantItem[] Wants
+		public uint MaxWants
+		{
+			get;
+			set;
+		}
+		public List<WantItem> Wants
 		{
 			get; set;
+		} = new List<WantItem>();
+		public uint MaxFears
+		{
+			get;
+			set;
 		}
-
-		public WantItem[] Fears
+		public List<WantItem> Fears
 		{
 			get; set;
+		} = new List<WantItem>();
+		public uint Unknown5
+		{
+			get;
+			set;
 		}
-		uint unknown1;
-		uint unknown2;
-		uint maxwants;
-		uint maxfears;
-		uint unknown5;
+		public uint Unknown1
+		{
+			get;
+			set;
+		} = 2;
+		public uint Unknown2
+		{
+			get;
+			set;
+		}
 
-		public WantItemContainer[] History
+		public List<WantItemContainer> History
 		{
 			get; set;
-		}
+		} = new List<WantItemContainer>();
 
 		/// <summary>
 		/// Returns null or a loaded SimDescription
@@ -67,8 +85,8 @@ namespace SimPe.Plugin
 					);
 					if (pfds.Length > 0)
 					{
-						PackedFiles.Wrapper.SDesc sdsc =
-							new PackedFiles.Wrapper.SDesc(
+						Wrapper.SDesc sdsc =
+							new Wrapper.SDesc(
 								Provider.SimNameProvider,
 								Provider.SimFamilynameProvider,
 								Provider.SimDescriptionProvider
@@ -83,7 +101,7 @@ namespace SimPe.Plugin
 		}
 		#endregion
 
-		byte[] overhead;
+		private byte[] overhead = new byte[0];
 
 		public Interfaces.IProviderRegistry Provider
 		{
@@ -93,32 +111,24 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public Want(Interfaces.IProviderRegistry provider)
+		public Swaf(Interfaces.IProviderRegistry provider)
 			: base()
 		{
 			Provider = provider;
-
-			Version = 1;
-			unknown1 = 2;
-			Wants = new WantItem[0];
-			Fears = new WantItem[0];
-			History = new WantItemContainer[0];
-			LifetimeWants = new WantItem[0];
-			overhead = new byte[0];
 		}
 
 		#region IWrapper member
 		public override bool CheckVersion(uint version)
 		{
-			return (version == 0012) //0.10
-				|| (version == 0013); //0.12
+			return version == 0012 //0.10
+				|| version == 0013; //0.12
 		}
 		#endregion
 
 		#region AbstractWrapper Member
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
-			return new WantsUI();
+			return new SwafUI();
 		}
 
 		/// <summary>
@@ -145,54 +155,66 @@ namespace SimPe.Plugin
 		/// <param name="reader">The Stream that contains the FileData</param>
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
+			LifetimeWants.Clear();
+			Wants.Clear();
+			Fears.Clear();
+			History.Clear();
+
 			Version = reader.ReadUInt32();
 
 			if (Version >= 0x05)
 			{
-				LifetimeWants = new WantItem[reader.ReadUInt32()];
-				for (int i = 0; i < LifetimeWants.Length; i++)
+				uint lwcount = reader.ReadUInt32();
+				LifetimeWants.Capacity = (int)lwcount;
+				for (int i = 0; i < lwcount; i++)
 				{
-					LifetimeWants[i] = new WantItem(Provider);
-					LifetimeWants[i].Unserialize(reader);
+					WantItem lw = new WantItem(Provider);
+					lw.Unserialize(reader);
+					LifetimeWants.Add(lw);
 				}
 
-				maxwants = reader.ReadUInt32();
+				MaxWants = reader.ReadUInt32();
 			}
 			else
 			{
-				maxwants = 4;
-				LifetimeWants = new WantItem[0];
+				MaxWants = 4;
 			}
 
-			Wants = new WantItem[reader.ReadUInt32()];
-			for (int i = 0; i < Wants.Length; i++)
+			uint wantcount = reader.ReadUInt32();
+			Wants.Capacity = (int)wantcount;
+			for (int i = 0; i < wantcount; i++)
 			{
-				Wants[i] = new WantItem(Provider);
-				Wants[i].Unserialize(reader);
+				WantItem want = new WantItem(Provider);
+				want.Unserialize(reader);
+				Wants.Add(want);
 			}
 
-			maxfears = Version >= 0x05 ? reader.ReadUInt32() : 3;
+			MaxFears = Version >= 0x05 ? reader.ReadUInt32() : 3;
 
-			Fears = new WantItem[reader.ReadUInt32()];
-			for (int i = 0; i < Fears.Length; i++)
+			uint fearcount = reader.ReadUInt32();
+			Fears.Capacity = (int)fearcount;
+			for (int i = 0; i < fearcount; i++)
 			{
-				Fears[i] = new WantItem(Provider);
-				Fears[i].Unserialize(reader);
+				WantItem fear = new WantItem(Provider);
+				fear.Unserialize(reader);
+				Fears.Add(fear);
 			}
 
 			if (Version >= 0x05)
 			{
-				unknown5 = reader.ReadUInt32();
+				Unknown5 = reader.ReadUInt32();
 			}
 
-			unknown1 = reader.ReadUInt32();
-			unknown2 = reader.ReadUInt32();
+			Unknown1 = reader.ReadUInt32();
+			Unknown2 = reader.ReadUInt32();
 
-			History = new WantItemContainer[reader.ReadUInt32()];
-			for (int i = 0; i < History.Length; i++)
+			uint historycount = reader.ReadUInt32();
+			History.Capacity = (int)historycount;
+			for (int i = 0; i < historycount; i++)
 			{
-				History[i] = new WantItemContainer(Provider);
-				History[i].Unserialize(reader);
+				WantItemContainer history = new WantItemContainer(Provider);
+				history.Unserialize(reader);
+				History.Add(history);
 			}
 
 			overhead = reader.ReadBytes(
@@ -214,53 +236,44 @@ namespace SimPe.Plugin
 
 			if (Version >= 0x05)
 			{
-				writer.Write((uint)LifetimeWants.Length);
-				for (int i = 0; i < LifetimeWants.Length; i++)
+				writer.Write((uint)LifetimeWants.Count);
+				foreach (WantItem lw in LifetimeWants)
 				{
-					LifetimeWants[i].Serialize(writer);
+					lw.Serialize(writer);
 				}
 
-				writer.Write(maxwants);
-			}
-			else
-			{
-				maxwants = 4;
-				LifetimeWants = new WantItem[0];
+				writer.Write(MaxWants);
 			}
 
-			writer.Write((uint)Wants.Length);
-			for (int i = 0; i < Wants.Length; i++)
+			writer.Write((uint)Wants.Count);
+			foreach (WantItem want in Wants)
 			{
-				Wants[i].Serialize(writer);
+				want.Serialize(writer);
 			}
 
 			if (Version >= 0x05)
 			{
-				writer.Write(maxfears);
-			}
-			else
-			{
-				maxfears = 3;
+				writer.Write(MaxFears);
 			}
 
-			writer.Write((uint)Fears.Length);
-			for (int i = 0; i < Fears.Length; i++)
+			writer.Write((uint)Fears.Count);
+			foreach (WantItem fear in Fears)
 			{
-				Fears[i].Serialize(writer);
+				fear.Serialize(writer);
 			}
 
 			if (Version >= 0x05)
 			{
-				writer.Write(unknown5);
+				writer.Write(Unknown5);
 			}
 
-			writer.Write(unknown1);
-			writer.Write(unknown2);
+			writer.Write(Unknown1);
+			writer.Write(Unknown2);
 
-			writer.Write((uint)History.Length);
-			for (int i = 0; i < History.Length; i++)
+			writer.Write((uint)History.Count);
+			foreach (WantItemContainer history in History)
 			{
-				History[i].Serialize(writer);
+				history.Serialize(writer);
 			}
 
 			writer.Write(overhead);
@@ -281,18 +294,10 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] types =
+		public uint[] AssignableTypes => new uint[]
 				{
 					0xCD95548E, //handles the Want Files
 				};
-				return types;
-			}
-		}
-
 		#endregion
 	}
 }

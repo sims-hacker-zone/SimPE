@@ -1,10 +1,10 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
-using System.Collections;
+using System.Collections.Generic;
 
-using SimPe.Plugin;
+using SimPe.Cache;
 
-namespace SimPe.Cache
+namespace SimPe.PackedFiles.Swaf
 {
 	/// <summary>
 	/// Contains an Instance of a CacheFile
@@ -31,7 +31,7 @@ namespace SimPe.Cache
 				want.XWant.Package.FileName
 			);
 
-			WantCacheItem wci = new WantCacheItem
+			mycc.Items.Add(new WantCacheItem
 			{
 				FileDescriptor = want.XWant.FileDescriptor,
 				Folder = want.XWant.Folder,
@@ -41,17 +41,15 @@ namespace SimPe.Cache
 				Name = want.Name,
 				ObjectType = want.XWant.ObjectType,
 				Score = want.XWant.Score
-			};
-
-			mycc.Items.Add(wci);
+			});
 		}
 
-		Hashtable map;
+		private Dictionary<uint, WantCacheItem> map;
 
 		/// <summary>
 		/// Return the FileIndex represented by the Cached Files
 		/// </summary>
-		public Hashtable Map
+		public Dictionary<uint, WantCacheItem> Map
 		{
 			get
 			{
@@ -66,7 +64,7 @@ namespace SimPe.Cache
 
 		public void LoadWants()
 		{
-			map = new Hashtable();
+			map = new Dictionary<uint, WantCacheItem>();
 
 			foreach (CacheContainer cc in Containers)
 			{
@@ -77,7 +75,7 @@ namespace SimPe.Cache
 						map[wci.Guid] = wci;
 					}
 				}
-			} //foreach
+			}
 		}
 	}
 }

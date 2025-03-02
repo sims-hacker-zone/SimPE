@@ -4,6 +4,7 @@
 using System.Collections;
 
 using SimPe.PackedFiles.Cpf;
+using SimPe.PackedFiles.Swaf;
 
 namespace SimPe.Plugin
 {
