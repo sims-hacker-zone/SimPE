@@ -14,6 +14,7 @@ using SimPe.PackedFiles.Idno;
 using SimPe.PackedFiles.Ltxt;
 using SimPe.PackedFiles.Wrapper;
 using SimPe.Plugin;
+using SimPe.PackedFiles.Fami;
 
 namespace pjHoodTool
 {

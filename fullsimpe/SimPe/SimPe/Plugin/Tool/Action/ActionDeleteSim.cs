@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 
 using SimPe.Forms.MainUI;
+using SimPe.PackedFiles.Fami;
 
 namespace SimPe.Plugin.Tool.Action
 {
@@ -358,29 +359,15 @@ namespace SimPe.Plugin.Tool.Action
 			PackedFiles.Wrapper.ExtSDesc victim
 		)
 		{
-			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
-				0x46414D49
-			);
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pkg.FindFiles(0x46414D49))
 			{
-				PackedFiles.Wrapper.Fami f = new PackedFiles.Wrapper.Fami(
-					null
-				);
+				Fami f = new Fami(null);
 				f.ProcessData(pfd, pkg);
-
-				ArrayList list = new ArrayList();
-				foreach (uint i in f.Members)
+				if (f.Members.Contains(guid))
 				{
-					if (i != guid)
-					{
-						list.Add(i);
-					}
+					f.Members.Remove(guid);
+					f.SynchronizeUserData();
 				}
-
-				f.Members = new uint[list.Count];
-				list.CopyTo(f.Members);
-
-				f.SynchronizeUserData();
 			}
 		}
 
