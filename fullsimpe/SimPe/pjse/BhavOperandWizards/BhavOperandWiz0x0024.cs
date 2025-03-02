@@ -94,10 +94,6 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 			//
 			InitializeComponent();
 
-			//
-			// TODO: Add any constructor code after InitializeComponent call
-			//
-
 			cbType.Items.Clear();
 			cbType.Items.AddRange(BhavWiz.readStr(GS.BhavStr.Dialog).ToArray());
 
