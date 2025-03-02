@@ -1,4 +1,4 @@
-﻿/*
+/*
  * SimpePrimitiveWizards - additional primitive wizards for SimPe
  *                       - see https://www.picknmixmods.com/Sims2/Notes/SimpePrimitiveWizards/SimpePrimitiveWizards.html
  *
@@ -63,8 +63,7 @@ namespace whse.PrimitiveWizards.Wiz0x007a
             comboTickCount.SelectedIndex = (boolset5[OperandConstants.Bit4] ? 1 : 0);
             doTickCount = WizardHelpers.CreateDataControl(inst, textTickCount, checkDecimal, operands[OperandConstants.Operand0], operands[OperandConstants.Operand1]);
 
-            // IDEA - 0x007A, Op2 - correct SimPe for this operand?
-            WizardHelpers.ComboSelectIndex(comboEventTreeScope, (operands[OperandConstants.Operand2] & 0x03)); // See comment about this in the operands table
+            WizardHelpers.ComboSelectIndex(comboEventTreeScope, (operands[OperandConstants.Operand2] & 0x03));
             doEventTree = WizardHelpers.CreateDataControl(inst, textEventTree, checkDecimal, operands[OperandConstants.Operand3], operands[OperandConstants.Operand4]);
 
             lblEventTreeLink = WizardHelpers.CreateLinkLabel(lblEventTree);

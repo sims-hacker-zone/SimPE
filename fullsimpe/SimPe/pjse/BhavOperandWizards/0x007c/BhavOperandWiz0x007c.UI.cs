@@ -47,12 +47,10 @@ namespace whse.PrimitiveWizards.Wiz0x007c
 
             internalchg = true;
 
-            // IDEA - 0x007C, Op0 thru 2 - correct SimPe for these operands?
             doTargetSim = WizardHelpers.CreateDataOwnerControl(inst, comboDataOwner1, comboDataPicker1, textDataValue1, checkDecimal, checkAttrPicker, toolTip, operands[OperandConstants.Operand0], operands[OperandConstants.Operand1], operands[OperandConstants.Operand2]);
 
             WizardHelpers.SetGUID((byte[])operands, OperandConstants.Operand3, textGUID, null);
 
-            // IDEA - 0x007C, Op7 thru 9 - correct SimPe for these operands?
             doSubjectSim = WizardHelpers.CreateDataOwnerControl(inst, comboDataOwner2, comboDataPicker2, textDataValue2, checkDecimal, checkAttrPicker, toolTip, operands[OperandConstants.Operand7], reserved1[OperandConstants.Operand8], reserved1[OperandConstants.Operand9]);
 
             doLevel = WizardHelpers.CreateDataOwnerControl(inst, comboDataOwner3, comboDataPicker3, textDataValue3, checkDecimal, checkAttrPicker, toolTip, reserved1[OperandConstants.Operand10], reserved1[OperandConstants.Operand11], reserved1[OperandConstants.Operand12]);

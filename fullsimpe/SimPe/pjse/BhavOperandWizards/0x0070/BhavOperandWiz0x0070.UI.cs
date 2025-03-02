@@ -1,4 +1,4 @@
-﻿/*
+/*
  * SimpePrimitiveWizards - additional primitive wizards for SimPe
  *                       - see https://www.picknmixmods.com/Sims2/Notes/SimpePrimitiveWizards/SimpePrimitiveWizards.html
  *
@@ -66,8 +66,7 @@ namespace whse.PrimitiveWizards.Wiz0x0070
             doEffect = WizardHelpers.CreateDataControl(inst, textEffect, checkDecimal, operands[OperandConstants.Operand4]);
             comboEffectScope.SelectedIndex = (boolset10[OperandConstants.Bit1] ? 2 : (boolset10[OperandConstants.Bit2] ? 1 : 0));
 
-            // IDEA - 0x0070, Op9 - correct SimPe for this operand?
-            WizardHelpers.ComboSelectIndex(comboSlotType, reserved1[OperandConstants.Operand9]); // See comment about this in the operands table
+            WizardHelpers.ComboSelectIndex(comboSlotType, reserved1[OperandConstants.Operand9]);
             doSlot = WizardHelpers.CreateDataControl(inst, textSlot, checkDecimal, operands[OperandConstants.Operand6]);
 
             comboIconType.SelectedIndex = (boolset11[OperandConstants.Bit5] ? 5 :

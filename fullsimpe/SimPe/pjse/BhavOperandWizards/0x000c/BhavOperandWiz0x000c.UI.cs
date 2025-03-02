@@ -1,4 +1,4 @@
-﻿/*
+/*
  * SimpePrimitiveWizards - additional primitive wizards for SimPe
  *                       - see https://www.picknmixmods.com/Sims2/Notes/SimpePrimitiveWizards/SimpePrimitiveWizards.html
  *
@@ -55,8 +55,7 @@ namespace whse.PrimitiveWizards.Wiz0x000c
 
             doVariable = WizardHelpers.CreateDataOwnerControl(inst, comboDataOwner1, comboDataPicker1, textDataValue1, checkDecimal, checkAttrPicker, toolTip, operands[OperandConstants.Operand5], operands[OperandConstants.Operand6], operands[OperandConstants.Operand7]);
 
-            // IDEA - 0x000C, Op8, Bit2 - correct SimPe for this bit?
-            checkDegrees.Checked = boolset8[OperandConstants.Bit2]; // See comment about this bit in the operands table
+            checkDegrees.Checked = boolset8[OperandConstants.Bit2];
 
             internalchg = false;
 
