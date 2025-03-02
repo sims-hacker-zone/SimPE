@@ -791,7 +791,7 @@ namespace pjse.BhavNameWizards
 					", "
 					+ Localization.GetString("bwp0c_degrees")
 					+ ": "
-					+ ((o[8] & 0x02) == 0).ToString();
+					+ ((o[8] & 0x02) != 0).ToString(); // See https://modthesims.info/wiki.php?title=0x000C - CORRECTED
 			}
 
 			return s;
@@ -5972,7 +5972,7 @@ namespace pjse.BhavNameWizards
 
 			if (lng && o[0] != 0x9 && o[0] != 0xE)
 			{
-				s += ", " + Slot(o[9], o[6]);
+				s += ", " + Slot((byte)(o[9] + 1), o[6]); // See https://www.picknmixmods.com/Sims2/Notes/Primitives/0x0070.html - CORRECTED
 			}
 
 			Scope scope = Scope.Private;
@@ -7336,12 +7336,12 @@ namespace pjse.BhavNameWizards
 						+ ": "
 						+ bhavName(ToShort(o[3], o[4]), ref found);
 
-					Scope scope = Scope.Global;
-					if (o[14] == 0)
+					Scope scope = Scope.Global; // See https://www.picknmixmods.com/Sims2/Notes/Primitives/0x0070.html - CORRECTED
+					if (o[2] == 0)
 					{
 						scope = Scope.Private;
 					}
-					else if (o[14] == 1)
+					else if (o[2] == 1)
 					{
 						scope = Scope.SemiGlobal;
 					}
@@ -7564,9 +7564,15 @@ namespace pjse.BhavNameWizards
 
 			string s = "";
 
+			// See https://modthesims.info/wiki.php?title=0x007C - CORRECTED
 			s +=
 				(lng ? Localization.GetString("Target") + ": " : "")
+				+ dataOwner(lng, o[0], o[1], o[2]);
+			s +=
+				", "
+				+ (lng ? Localization.GetString("Subject") + ": " : "")
 				+ dataOwner(lng, o[7], o[8], o[9]);
+
 			// Mmm, wants don't appear to use OBJDs, so GUID lookups don't work...
 			uint want = (uint)(o[3] | (o[4] << 8) | (o[5] << 16) | (o[6] << 24));
 			s +=

@@ -50,10 +50,6 @@ namespace pjse.BhavOperandWizards.WizDefault
 			//
 			InitializeComponent();
 
-			//
-			// TODO: Add any constructor code after InitializeComponent call
-			//
-
 			TextBox[] iow = { tbInst_Op01_dec, tbInst_Op23_dec };
 			alDec16 = new ArrayList(iow);
 			TextBox[] iob =
