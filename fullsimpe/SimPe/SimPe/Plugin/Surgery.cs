@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Windows.Forms;
 
 using SimPe.Data;
+using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Idno;
 using SimPe.PackedFiles.ThreeIdr;
 
@@ -575,8 +576,8 @@ namespace SimPe.Plugin
 					Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
 				)
 				{
-					PackedFiles.Wrapper.Cpf skin =
-						new PackedFiles.Wrapper.Cpf();
+					Cpf skin =
+						new Cpf();
 					skin.ProcessData(item);
 					if (
 						(skin.GetSaveItem("type").StringValue == "skin")
@@ -1136,12 +1137,12 @@ namespace SimPe.Plugin
 								|| (pfd.Type == 0xAC598EAC)
 							) //property set and 3IDR
 							{
-								PackedFiles.Wrapper.Cpf cpf =
-									new PackedFiles.Wrapper.Cpf();
+								Cpf cpf =
+									new Cpf();
 								cpf.ProcessData(pfd, patient);
 
-								PackedFiles.Wrapper.CpfItem ci =
-									new PackedFiles.Wrapper.CpfItem
+								CpfItem ci =
+									new CpfItem
 									{
 										Name = "product",
 										UIntegerValue = 0
@@ -1151,7 +1152,7 @@ namespace SimPe.Plugin
 								ci = cpf.GetItem("version");
 								if (ci == null)
 								{
-									ci = new PackedFiles.Wrapper.CpfItem
+									ci = new CpfItem
 									{
 										Name = "version"
 									};
@@ -1409,8 +1410,8 @@ namespace SimPe.Plugin
 				);
 				if (pfdAged != null)
 				{
-					PackedFiles.Wrapper.Cpf aged =
-						new PackedFiles.Wrapper.Cpf();
+					Cpf aged =
+						new Cpf();
 					aged.ProcessData(pfdAged, package, true);
 
 					SimInfo nfo = new SimInfo(
@@ -1433,8 +1434,8 @@ namespace SimPe.Plugin
 			);
 			if (pfdAged != null)
 			{
-				PackedFiles.Wrapper.Cpf aged =
-					new PackedFiles.Wrapper.Cpf();
+				Cpf aged =
+					new Cpf();
 				aged.ProcessData(pfdAged, package, true);
 
 				SimInfo nfo = new SimInfo(
@@ -1507,7 +1508,7 @@ namespace SimPe.Plugin
 	/// </summary>
 	internal sealed class SimInfo
 	{
-		PackedFiles.Wrapper.Cpf ageData;
+		Cpf ageData;
 
 		[Category("General")]
 		public Data.Ages Age => (Data.Ages)ageData.GetItem("age").UIntegerValue;
@@ -1543,7 +1544,7 @@ namespace SimPe.Plugin
 					)
 				);
 
-		public SimInfo(PackedFiles.Wrapper.Cpf aged, string filename, string name)
+		public SimInfo(Cpf aged, string filename, string name)
 		{
 			ageData = aged ?? throw new ArgumentNullException();
 			Filename = filename;

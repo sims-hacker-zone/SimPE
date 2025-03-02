@@ -8,14 +8,14 @@ namespace SimPe.PackedFiles.ThreeIdr
 {
 	public class SkinChain
 	{
-		protected Wrapper.Cpf cpf;
+		protected Cpf.Cpf cpf;
 
-		public SkinChain(Wrapper.Cpf cpf)
+		public SkinChain(Cpf.Cpf cpf)
 		{
 			this.cpf = cpf;
 		}
 
-		public Wrapper.Cpf Cpf => cpf;
+		public Cpf.Cpf Cpf => cpf;
 
 		public uint Category
 		{
@@ -25,7 +25,7 @@ namespace SimPe.PackedFiles.ThreeIdr
 				{
 					if (Cpf != null)
 					{
-						Wrapper.CpfItem citem = Cpf.GetItem(
+						Cpf.CpfItem citem = Cpf.GetItem(
 							"category"
 						);
 						if (citem != null)
@@ -60,7 +60,7 @@ namespace SimPe.PackedFiles.ThreeIdr
 				{
 					if (Cpf != null)
 					{
-						Wrapper.CpfItem citem = Cpf.GetItem("age");
+						Cpf.CpfItem citem = Cpf.GetItem("age");
 						if (citem != null)
 						{
 							return citem.UIntegerValue;
@@ -80,7 +80,7 @@ namespace SimPe.PackedFiles.ThreeIdr
 				{
 					if (Cpf != null)
 					{
-						Wrapper.CpfItem citem = Cpf.GetItem("name");
+						Cpf.CpfItem citem = Cpf.GetItem("name");
 						if (citem != null)
 						{
 							return citem.StringValue;
@@ -100,7 +100,7 @@ namespace SimPe.PackedFiles.ThreeIdr
 				{
 					if (Cpf != null)
 					{
-						Wrapper.CpfItem citem = Cpf.GetItem("gender");
+						Cpf.CpfItem citem = Cpf.GetItem("gender");
 						if (citem != null)
 						{
 							return citem.UIntegerValue;
@@ -120,7 +120,7 @@ namespace SimPe.PackedFiles.ThreeIdr
 				{
 					if (Cpf != null)
 					{
-						Wrapper.CpfItem citem = Cpf.GetItem(
+						Cpf.CpfItem citem = Cpf.GetItem(
 							"product"
 						);
 						if (citem != null)
@@ -159,7 +159,7 @@ namespace SimPe.PackedFiles.ThreeIdr
 				{
 					if (Cpf != null)
 					{
-						Wrapper.CpfItem citem = Cpf.GetItem("outfit") ?? Cpf.GetItem("parts");
+						Cpf.CpfItem citem = Cpf.GetItem("outfit") ?? Cpf.GetItem("parts");
 
 						if (citem != null)
 						{

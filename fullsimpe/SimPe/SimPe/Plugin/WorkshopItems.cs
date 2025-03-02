@@ -1,5 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using SimPe.PackedFiles.Cpf;
+
 namespace SimPe.Plugin
 {
 	/// <summary>
@@ -14,7 +16,7 @@ namespace SimPe.Plugin
 		public WorkshopMMAT(string subset)
 		{
 			Subset = subset;
-			MMATs = new PackedFiles.Wrapper.Cpf[0];
+			MMATs = new Cpf[0];
 			ObjectStateIndex = new uint[0];
 		}
 
@@ -34,7 +36,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// The stored MMATs
 		/// </summary>
-		public PackedFiles.Wrapper.Cpf[] MMATs
+		public Cpf[] MMATs
 		{
 			get; private set;
 		}
@@ -43,13 +45,13 @@ namespace SimPe.Plugin
 		/// adds the passed value if it doesn't already exist
 		/// </summary>
 		/// <param name="val">The value to add</param>
-		public bool AddMMAT(PackedFiles.Wrapper.Cpf mmat)
+		public bool AddMMAT(Cpf mmat)
 		{
 			if (
 				AddObjectStateIndex(mmat.GetItem("objectStateIndex").UIntegerValue)
 			)
 			{
-				MMATs = (PackedFiles.Wrapper.Cpf[])Helper.Add(MMATs, mmat);
+				MMATs = (Cpf[])Helper.Add(MMATs, mmat);
 				return true;
 			}
 			return false;

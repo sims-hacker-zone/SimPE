@@ -4,7 +4,7 @@ using System;
 
 using SimPe.Data;
 
-namespace SimPe.PackedFiles.Wrapper
+namespace SimPe.PackedFiles.Cpf
 {
 	/// <summary>
 	/// An Item stored in a CPF File
@@ -16,8 +16,6 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public CpfItem()
 		{
-			PlainName = new byte[0];
-			Value = new byte[0];
 		}
 
 		/// <summary>
@@ -43,7 +41,7 @@ namespace SimPe.PackedFiles.Wrapper
 		public byte[] PlainName
 		{
 			get; set;
-		}
+		} = new byte[0];
 
 		#region value Handling
 
@@ -53,7 +51,7 @@ namespace SimPe.PackedFiles.Wrapper
 		public byte[] Value
 		{
 			get; set;
-		}
+		} = new byte[0];
 
 		/// <summary>
 		/// Returns the value as a String

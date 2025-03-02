@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Wrapper;
 
 namespace SimPe.PackedFiles.UserInterface
@@ -15,14 +16,14 @@ namespace SimPe.PackedFiles.UserInterface
 		/// <summary>
 		/// Holds a reference to the Form containing the UI Panel
 		/// </summary>
-		private Elements2 form;
+		private CpfForm form;
 
 		/// <summary>
 		/// Constructor for the Class
 		/// </summary>
 		public NrefUI()
 		{
-			form = new Elements2();
+			form = new CpfForm();
 		}
 		#endregion
 

@@ -3,12 +3,14 @@
 
 using System.Collections;
 
+using SimPe.PackedFiles.Cpf;
+
 namespace SimPe.Plugin
 {
 	/// <summary>
 	/// Summary description for MmatWrapper.
 	/// </summary>
-	public class XWant : PackedFiles.Wrapper.Cpf
+	public class XWant : Cpf
 	{
 		static Hashtable wanttypelookup;
 		static Hashtable wantnamelookup;

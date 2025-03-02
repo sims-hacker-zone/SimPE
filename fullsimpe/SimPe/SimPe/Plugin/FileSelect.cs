@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Windows.Forms;
 
+using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.ThreeIdr;
 
 namespace SimPe.Plugin
@@ -92,8 +93,8 @@ namespace SimPe.Plugin
 				WaitingScreen.UpdateMessage("Loading Clothing..");
 				foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
 				{
-					PackedFiles.Wrapper.Cpf skin =
-						new PackedFiles.Wrapper.Cpf();
+					Cpf skin =
+						new Cpf();
 					skin.ProcessData(item);
 
 					if (
@@ -425,7 +426,7 @@ namespace SimPe.Plugin
 
 			if (ok && (last != null))
 			{
-				PackedFiles.Wrapper.Cpf cpf = (PackedFiles.Wrapper.Cpf)
+				Cpf cpf = (Cpf)
 					last.Tag;
 				return cpf.FileDescriptor;
 			}
@@ -463,7 +464,7 @@ namespace SimPe.Plugin
 			button1.Enabled = true;
 			last = e.Node;
 
-			SkinChain sc = new SkinChain((PackedFiles.Wrapper.Cpf)e.Node.Tag);
+			SkinChain sc = new SkinChain((Cpf)e.Node.Tag);
 			GenericRcol rcol = sc.TXTR;
 
 			if (rcol != null)

@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 using SimPe.Cache;
 using SimPe.Interfaces.Plugin.Scanner;
-using SimPe.PackedFiles.Wrapper;
+using SimPe.PackedFiles.Cpf;
 
 namespace SimPe.Plugin.Scanner
 {

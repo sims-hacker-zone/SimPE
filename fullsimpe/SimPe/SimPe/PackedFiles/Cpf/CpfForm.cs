@@ -4,20 +4,21 @@ using System;
 using System.Windows.Forms;
 
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Wrapper;
 
-namespace SimPe.PackedFiles.Wrapper
+namespace SimPe.PackedFiles.Cpf
 {
 	/// <summary>
 	/// Summary description for Elements2.
 	/// </summary>
-	public class Elements2 : Form
+	public class CpfForm : Form
 	{
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
-		public Elements2()
+		public CpfForm()
 		{
 			//
 			// Required designer variable.
@@ -54,7 +55,7 @@ namespace SimPe.PackedFiles.Wrapper
 		private void InitializeComponent()
 		{
 			System.ComponentModel.ComponentResourceManager resources =
-				new System.ComponentModel.ComponentResourceManager(typeof(Elements2));
+				new System.ComponentModel.ComponentResourceManager(typeof(CpfForm));
 			btprev = new Button();
 			cbtype = new ComboBox();
 			label8 = new Label();
@@ -560,7 +561,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		internal UserInterface.CpfUI.ExecutePreview fkt;
+		internal CpfUI.ExecutePreview fkt;
 
 		private void btprev_Click(object sender, EventArgs e)
 		{

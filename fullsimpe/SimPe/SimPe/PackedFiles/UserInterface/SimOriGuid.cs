@@ -456,8 +456,8 @@ namespace SimPe.PackedFiles.UserInterface
 			);
 			if (pfds.Length == 1)
 			{
-				Wrapper.Cpf ageData =
-					new Wrapper.Cpf();
+				Cpf.Cpf ageData =
+					new Cpf.Cpf();
 				ageData.ProcessData(pfds[0], pkg);
 				curspec = ageData.GetItem("species").UIntegerValue;
 				if (curspec == 8)

@@ -4,6 +4,7 @@ using System.Collections;
 
 using SimPe.Cache;
 using SimPe.Interfaces.Plugin.Scanner;
+using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.ThreeIdr;
 using SimPe.PackedFiles.Wrapper;
 

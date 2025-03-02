@@ -4,7 +4,7 @@
 using System;
 
 using SimPe.Data;
-using SimPe.PackedFiles.Wrapper;
+using SimPe.PackedFiles.Cpf;
 
 namespace SimPe.Plugin
 {

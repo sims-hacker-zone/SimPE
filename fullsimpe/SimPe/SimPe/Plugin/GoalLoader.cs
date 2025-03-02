@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 
 using SimPe.Cache;
+using SimPe.PackedFiles.Cpf;
 
 namespace SimPe.Plugin
 {
@@ -47,20 +48,20 @@ namespace SimPe.Plugin
 			};
 
 			XGoal w = new XGoal();
-			PackedFiles.Wrapper.CpfItem i =
-				new PackedFiles.Wrapper.CpfItem
+			CpfItem i =
+				new CpfItem
 				{
 					Name = "id",
 					UIntegerValue = wci.Guid
 				};
 			w.AddItem(i, true);
-			i = new PackedFiles.Wrapper.CpfItem
+			i = new CpfItem
 			{
 				Name = "score",
 				IntegerValue = wci.Score
 			};
 			w.AddItem(i, true);
-			i = new PackedFiles.Wrapper.CpfItem
+			i = new CpfItem
 			{
 				Name = "influence",
 				IntegerValue = wci.Influence

@@ -3,6 +3,7 @@
 using System.Collections;
 
 using SimPe.Packages;
+using SimPe.PackedFiles.Cpf;
 
 namespace SimPe.Plugin
 {
@@ -26,7 +27,7 @@ namespace SimPe.Plugin
 	/// </summary>
 	public class ColorOptionsItem
 	{
-		public ColorOptionsItem(PackedFiles.Wrapper.Cpf mmat)
+		public ColorOptionsItem(Cpf mmat)
 		{
 			MMAT = mmat;
 
@@ -42,7 +43,7 @@ namespace SimPe.Plugin
 		public string Family;
 		public bool Default;
 
-		public PackedFiles.Wrapper.Cpf MMAT;
+		public Cpf MMAT;
 
 		public Rcol matd;
 

@@ -3,6 +3,8 @@
 using System;
 using System.Windows.Forms;
 
+using SimPe.PackedFiles.Cpf;
+
 namespace SimPe.PackedFiles.UserInterface
 {
 	/// <summary>
@@ -216,7 +218,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		public Wrapper.SimDNA Sdna => (Wrapper.SimDNA)Wrapper;
 
-		private Wrapper.Cpf wrp => (Wrapper.Cpf)Wrapper;
+		private Cpf.Cpf wrp => (Cpf.Cpf)Wrapper;
 
 		protected override void RefreshGUI()
 		{
@@ -270,7 +272,7 @@ namespace SimPe.PackedFiles.UserInterface
 						+ sdsc.SimFamilyName
 						+ " DNA)";
 
-				foreach (Wrapper.CpfItem item in wrp.Items)
+				foreach (CpfItem item in wrp.Items)
 				{
 					lbcpf.Items.Add(item);
 				}

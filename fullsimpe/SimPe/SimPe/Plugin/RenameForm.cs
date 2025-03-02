@@ -5,6 +5,8 @@ using System;
 using System.Collections;
 using System.Windows.Forms;
 
+using SimPe.PackedFiles.Cpf;
+
 namespace SimPe.Plugin
 {
 	/// <summary>
@@ -282,7 +284,7 @@ namespace SimPe.Plugin
 			pfds = package.FindFiles(0x4C697E5A);
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
-				PackedFiles.Wrapper.Cpf cpf = new PackedFiles.Wrapper.Cpf();
+				Cpf cpf = new Cpf();
 				cpf.ProcessData(pfd, package);
 
 				if (cpf.GetSaveItem("modelName").StringValue.Trim() != "")

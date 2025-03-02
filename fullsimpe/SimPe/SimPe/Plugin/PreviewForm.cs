@@ -4,6 +4,8 @@
 using System;
 using System.Windows.Forms;
 
+using SimPe.PackedFiles.Cpf;
+
 namespace SimPe.Plugin
 {
 	/// <summary>
@@ -285,7 +287,7 @@ namespace SimPe.Plugin
 
 		//static Ambertation.Panel3D p3d;
 		public static void Execute(
-			PackedFiles.Wrapper.Cpf cmmat,
+			Cpf cmmat,
 			Interfaces.Files.IPackageFile package
 		)
 		{

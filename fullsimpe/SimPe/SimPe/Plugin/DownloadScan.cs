@@ -5,6 +5,8 @@ using System.Collections;
 using System.Drawing;
 using System.Windows.Forms;
 
+using SimPe.PackedFiles.Cpf;
+
 namespace SimPe.Plugin
 {
 	/// <summary>
@@ -1139,8 +1141,8 @@ namespace SimPe.Plugin
 								pfds = package.FindFiles(0x4C697E5A); //MMAT
 								if (pfds.Length > 0)
 								{
-									PackedFiles.Wrapper.Cpf mmat =
-										new PackedFiles.Wrapper.Cpf();
+									Cpf mmat =
+										new Cpf();
 									mmat.ProcessData(pfds[0], package);
 									desc =
 										"[recolor] "
@@ -1154,8 +1156,8 @@ namespace SimPe.Plugin
 					pfds = package.FindFiles(Data.MetaData.GZPS);
 					foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 					{
-						PackedFiles.Wrapper.Cpf cpf =
-							new PackedFiles.Wrapper.Cpf();
+						Cpf cpf =
+							new Cpf();
 						cpf.ProcessData(pfd, package);
 
 						desc = "[" + cpf.GetSaveItem("type").StringValue + "] " + desc;
@@ -1346,7 +1348,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		void SetSkinBoxes(PackedFiles.Wrapper.Cpf cpf)
+		void SetSkinBoxes(Cpf cpf)
 		{
 			uint age = cpf.GetSaveItem("age").UIntegerValue;
 			uint cat = cpf.GetSaveItem("category").UIntegerValue;
@@ -1400,8 +1402,8 @@ namespace SimPe.Plugin
 				);
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
-					PackedFiles.Wrapper.Cpf cpf =
-						new PackedFiles.Wrapper.Cpf();
+					Cpf cpf =
+						new Cpf();
 					cpf.ProcessData(pfd, skin);
 
 					if (cpf.GetSaveItem("type").StringValue == "skin")
@@ -1738,12 +1740,12 @@ namespace SimPe.Plugin
 			pb.Value = 0;
 		}
 
-		void AddUniversityFields(PackedFiles.Wrapper.Cpf cpf)
+		void AddUniversityFields(Cpf cpf)
 		{
 			if (cpf.GetItem("product") == null)
 			{
-				PackedFiles.Wrapper.CpfItem i =
-					new PackedFiles.Wrapper.CpfItem
+				CpfItem i =
+					new CpfItem
 					{
 						Name = "product",
 						UIntegerValue = 1
@@ -1753,8 +1755,8 @@ namespace SimPe.Plugin
 
 			if (cpf.GetItem("version") == null)
 			{
-				PackedFiles.Wrapper.CpfItem i =
-					new PackedFiles.Wrapper.CpfItem
+				CpfItem i =
+					new CpfItem
 					{
 						Name = "version",
 						UIntegerValue = 2
@@ -1799,8 +1801,8 @@ namespace SimPe.Plugin
 							Interfaces.Files.IPackedFileDescriptor pfd in pfds
 						)
 						{
-							PackedFiles.Wrapper.Cpf cpf =
-								new PackedFiles.Wrapper.Cpf();
+							Cpf cpf =
+								new Cpf();
 							cpf.ProcessData(pfd, skin);
 
 							if (cpf.GetSaveItem("type").StringValue == "skin")

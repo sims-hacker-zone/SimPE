@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 
 using SimPe.Interfaces.Files;
+using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.ThreeIdr;
 
 namespace SimPe.Plugin
@@ -412,8 +413,8 @@ namespace SimPe.Plugin
 			ArrayList mmats = new ArrayList();
 			foreach (IPackedFileDescriptor pfd in mpfds)
 			{
-				PackedFiles.Wrapper.Cpf mmat =
-					new PackedFiles.Wrapper.Cpf();
+				Cpf mmat =
+					new Cpf();
 				mmat.ProcessData(pfd, package);
 
 				string content = Scenegraph.MmatContent(mmat);
@@ -1007,7 +1008,7 @@ namespace SimPe.Plugin
 
 		#region Fix Skins
 		void FixCpfProperties(
-			PackedFiles.Wrapper.Cpf cpf,
+			Cpf cpf,
 			string[] props,
 			Hashtable namemap,
 			string prefix,
@@ -1016,7 +1017,7 @@ namespace SimPe.Plugin
 		{
 			foreach (string p in props)
 			{
-				PackedFiles.Wrapper.CpfItem item = cpf.GetItem(p);
+				CpfItem item = cpf.GetItem(p);
 				if (item == null)
 				{
 					continue;
@@ -1045,14 +1046,14 @@ namespace SimPe.Plugin
 		}
 
 		void FixCpfProperties(
-			PackedFiles.Wrapper.Cpf cpf,
+			Cpf cpf,
 			string[] props,
 			uint val
 		)
 		{
 			foreach (string p in props)
 			{
-				PackedFiles.Wrapper.CpfItem item = cpf.GetItem(p);
+				CpfItem item = cpf.GetItem(p);
 				if (item == null)
 				{
 					continue;
@@ -1062,13 +1063,13 @@ namespace SimPe.Plugin
 			}
 		}
 
-		PackedFiles.Wrapper.CpfItem FixCpfProperties(
-			PackedFiles.Wrapper.Cpf cpf,
+		CpfItem FixCpfProperties(
+			Cpf cpf,
 			string prop,
 			uint val
 		)
 		{
-			PackedFiles.Wrapper.CpfItem item = cpf.GetItem(prop);
+			CpfItem item = cpf.GetItem(prop);
 			if (item == null)
 			{
 				return null;
@@ -1185,7 +1186,7 @@ namespace SimPe.Plugin
 
 		protected void FixSkin(Hashtable namemap, Hashtable refmap, string grphash)
 		{
-			PackedFiles.Wrapper.Cpf cpf = new PackedFiles.Wrapper.Cpf();
+			Cpf cpf = new Cpf();
 			Random rnd = new Random();
 
 			//set list of critical types

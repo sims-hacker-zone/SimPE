@@ -4,6 +4,8 @@
 using System.ComponentModel;
 using System.Drawing;
 
+using SimPe.PackedFiles.Cpf;
+
 namespace SimPe.Plugin.Tool.Dockable
 {
 	/// <summary>
@@ -28,10 +30,10 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		public override bool Loaded => base.Loaded || (cpf != null);
 
-		PackedFiles.Wrapper.Cpf cpf;
+		Cpf cpf;
 
 		[Browsable(false)]
-		public PackedFiles.Wrapper.Cpf SelectedXObject
+		public Cpf SelectedXObject
 		{
 			get => cpf;
 			set
@@ -67,7 +69,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			{
 				if (oci.Tag is Interfaces.Scenegraph.IScenegraphFileIndexItem)
 				{
-					cpf = new PackedFiles.Wrapper.Cpf();
+					cpf = new Cpf();
 					cpf.ProcessData(
 						(Interfaces.Scenegraph.IScenegraphFileIndexItem)oci.Tag
 					);
@@ -108,7 +110,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(t);
 				if (pfds.Length > 0)
 				{
-					cpf = new PackedFiles.Wrapper.Cpf();
+					cpf = new Cpf();
 					cpf.ProcessData(pfds[0], pkg);
 					break;
 				}
@@ -117,7 +119,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			UpdateXObjScreen();
 		}
 
-		public void SetFromXObject(PackedFiles.Wrapper.Cpf cpf)
+		public void SetFromXObject(Cpf cpf)
 		{
 			this.cpf = cpf;
 			UpdateXObjScreen();
@@ -193,7 +195,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		}
 
 		public static Data.XObjFunctionSubSort GetFunctionSort(
-			PackedFiles.Wrapper.Cpf cpf
+			Cpf cpf
 		)
 		{
 			string type = cpf.GetSaveItem("type").StringValue.Trim().ToLower();
@@ -293,7 +295,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		static Packages.File xthumbs,
 			nthumbs;
 
-		public static Image GetXThumbnail(PackedFiles.Wrapper.Cpf cpf)
+		public static Image GetXThumbnail(Cpf cpf)
 		{
 			if (xthumbs == null)
 			{

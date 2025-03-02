@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
+using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.ThreeIdr;
 
 namespace pj
@@ -410,8 +411,8 @@ namespace pj
 
 					#region Get the mesh name(s)
 					bool prompted = false;
-					SimPe.PackedFiles.Wrapper.Cpf cpf =
-						new SimPe.PackedFiles.Wrapper.Cpf();
+					Cpf cpf =
+						new Cpf();
 					for (int i = 0; i < pfa.Length + pfb.Length; i++)
 					{
 						if (i < pfa.Length)

@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.ThreeIdr;
 
 namespace pj
@@ -265,7 +266,7 @@ namespace pj
 				);
 				if (p3 != null)
 				{
-					objKeyCPF = new SimPe.PackedFiles.Wrapper.Cpf();
+					objKeyCPF = new Cpf();
 					objKeyCPF.ProcessData(currentPfd, currentPackage);
 					addFile(p3);
 					objKey3IDR = new ThreeIdr();
@@ -288,7 +289,7 @@ namespace pj
 				)
 				{
 					AbstractWrapper pc =
-						(SimPe.PackedFiles.Wrapper.Cpf)findInPackagelist(
+						(Cpf)findInPackagelist(
 							objkeys,
 							t,
 							currentPfd
@@ -296,7 +297,7 @@ namespace pj
 					if (pc != null)
 					{
 						addFile(pc);
-						objKeyCPF = new SimPe.PackedFiles.Wrapper.Cpf();
+						objKeyCPF = new Cpf();
 						objKeyCPF.ProcessData(pc.FileDescriptor, pc.Package);
 						objKey3IDR = new ThreeIdr();
 						objKey3IDR.ProcessData(currentPfd, currentPackage);
@@ -346,19 +347,19 @@ namespace pj
 				return null;
 			}
 
-			AbstractWrapper tgt = Filetype == SimPe.Data.MetaData.REF_FILE ? new ThreeIdr() : (AbstractWrapper)new SimPe.PackedFiles.Wrapper.Cpf();
+			AbstractWrapper tgt = Filetype == SimPe.Data.MetaData.REF_FILE ? new ThreeIdr() : (AbstractWrapper)new Cpf();
 			tgt.ProcessData(pt, p);
 			return tgt;
 		}
 
 		private AbstractWrapper[] getCpf3idrPair(
-			SimPe.PackedFiles.Wrapper.Cpf srcCpf,
+			Cpf srcCpf,
 			ThreeIdr src3idr,
 			string cpfItemKey,
 			List<string> pkgs
 		)
 		{
-			SimPe.PackedFiles.Wrapper.CpfItem cpfItem = srcCpf.GetItem(cpfItemKey);
+			CpfItem cpfItem = srcCpf.GetItem(cpfItemKey);
 			if (
 				cpfItem == null
 				|| cpfItem.Datatype != SimPe.Data.MetaData.DataTypes.dtUInteger
@@ -415,7 +416,7 @@ namespace pj
 
 			AbstractWrapper[] tgt = new AbstractWrapper[]
 			{
-				new SimPe.PackedFiles.Wrapper.Cpf(),
+				new Cpf(),
 				new ThreeIdr(),
 			};
 			tgt[0].ProcessData(pc, p);
@@ -425,13 +426,13 @@ namespace pj
 		}
 
 		private SimPe.Plugin.GenericRcol getRcol(
-			SimPe.PackedFiles.Wrapper.Cpf srcCpf,
+			Cpf srcCpf,
 			ThreeIdr src3idr,
 			string cpfItemKey,
 			List<string> pkgs
 		)
 		{
-			SimPe.PackedFiles.Wrapper.CpfItem cpfItem = srcCpf.GetItem(cpfItemKey);
+			CpfItem cpfItem = srcCpf.GetItem(cpfItemKey);
 			if (
 				cpfItem == null
 				|| cpfItem.Datatype != SimPe.Data.MetaData.DataTypes.dtUInteger
@@ -565,12 +566,12 @@ namespace pj
 						// load the pair
 						ThreeIdr fk3idr = new ThreeIdr();
 						fk3idr.ProcessData(pfd, p);
-						SimPe.PackedFiles.Wrapper.Cpf fkCpf =
-							new SimPe.PackedFiles.Wrapper.Cpf();
+						Cpf fkCpf =
+							new Cpf();
 						fkCpf.ProcessData(bx, p);
 
 						// does the pair point to the object we're working on?
-						SimPe.PackedFiles.Wrapper.CpfItem objKeyIdx = fkCpf.GetItem(
+						CpfItem objKeyIdx = fkCpf.GetItem(
 							"objectidx"
 						);
 						if (
@@ -607,7 +608,7 @@ namespace pj
 			foreach (AbstractWrapper[] fk in fragKeys)
 			{
 				AbstractWrapper[] tgt = getCpf3idrPair(
-					(SimPe.PackedFiles.Wrapper.Cpf)fk[0],
+					(Cpf)fk[0],
 					(ThreeIdr)fk[1],
 					"binidx",
 					binkeys
@@ -687,7 +688,7 @@ namespace pj
 			}
 
 			uint numOverrides = 0;
-			SimPe.PackedFiles.Wrapper.CpfItem cpfItem = objKeyCPF.GetItem(
+			CpfItem cpfItem = objKeyCPF.GetItem(
 				"numoverrides"
 			);
 			if (cpfItem.Datatype == SimPe.Data.MetaData.DataTypes.dtUInteger)
@@ -756,11 +757,11 @@ namespace pj
 		}
 
 		private void addStr(
-			SimPe.PackedFiles.Wrapper.Cpf srcCpf,
+			Cpf srcCpf,
 			ThreeIdr src3idr
 		)
 		{
-			SimPe.PackedFiles.Wrapper.CpfItem cpfItem = srcCpf.GetItem("stringsetidx");
+			CpfItem cpfItem = srcCpf.GetItem("stringsetidx");
 			if (
 				cpfItem == null
 				|| cpfItem.Datatype != SimPe.Data.MetaData.DataTypes.dtUInteger
@@ -822,7 +823,7 @@ namespace pj
 
 		private IPackedFileDescriptor currentPfd = null;
 		private IPackageFile currentPackage = null;
-		private SimPe.PackedFiles.Wrapper.Cpf objKeyCPF = null;
+		private Cpf objKeyCPF = null;
 		private ThreeIdr objKey3IDR = null;
 
 		private void Main(IPackedFileDescriptor pfd, IPackageFile package)
@@ -866,7 +867,7 @@ namespace pj
 				addFile(ap[0]);
 				addFile(ap[1]);
 				addStr(
-					(SimPe.PackedFiles.Wrapper.Cpf)ap[0],
+					(Cpf)ap[0],
 					(ThreeIdr)ap[1]
 				);
 				SimPe.Wait.Progress++;
@@ -879,7 +880,7 @@ namespace pj
 				addFile(ap[0]);
 				addFile(ap[1]);
 				addStr(
-					(SimPe.PackedFiles.Wrapper.Cpf)ap[0],
+					(Cpf)ap[0],
 					(ThreeIdr)ap[1]
 				);
 				SimPe.Wait.Progress++;

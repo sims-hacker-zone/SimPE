@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 
 using SimPe.Cache;
+using SimPe.PackedFiles.Cpf;
 
 namespace SimPe.Plugin
 {
@@ -46,32 +47,32 @@ namespace SimPe.Plugin
 			};
 
 			XWant w = new XWant();
-			PackedFiles.Wrapper.CpfItem i =
-				new PackedFiles.Wrapper.CpfItem
+			CpfItem i =
+				new CpfItem
 				{
 					Name = "id",
 					UIntegerValue = wci.Guid
 				};
 			w.AddItem(i, true);
-			i = new PackedFiles.Wrapper.CpfItem
+			i = new CpfItem
 			{
 				Name = "folder",
 				StringValue = wci.Folder
 			};
 			w.AddItem(i, true);
-			i = new PackedFiles.Wrapper.CpfItem
+			i = new CpfItem
 			{
 				Name = "score",
 				IntegerValue = wci.Score
 			};
 			w.AddItem(i, true);
-			i = new PackedFiles.Wrapper.CpfItem
+			i = new CpfItem
 			{
 				Name = "influence",
 				IntegerValue = wci.Influence
 			};
 			w.AddItem(i, true);
-			i = new PackedFiles.Wrapper.CpfItem
+			i = new CpfItem
 			{
 				Name = "objectType",
 				StringValue = wci.ObjectType

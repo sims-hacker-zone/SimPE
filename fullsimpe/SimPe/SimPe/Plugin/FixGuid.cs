@@ -3,6 +3,7 @@
 using System.Collections;
 
 using SimPe.Interfaces.Files;
+using SimPe.PackedFiles.Cpf;
 
 namespace SimPe.Plugin
 {
@@ -46,8 +47,8 @@ namespace SimPe.Plugin
 
 			foreach (IPackedFileDescriptor pfd in mpfds)
 			{
-				PackedFiles.Wrapper.Cpf mmat =
-					new PackedFiles.Wrapper.Cpf();
+				Cpf mmat =
+					new Cpf();
 				mmat.ProcessData(pfd, package);
 
 				if (guids != null)
@@ -78,8 +79,8 @@ namespace SimPe.Plugin
 
 			foreach (IPackedFileDescriptor pfd in mpfds)
 			{
-				PackedFiles.Wrapper.Cpf mmat =
-					new PackedFiles.Wrapper.Cpf();
+				Cpf mmat =
+					new Cpf();
 				mmat.ProcessData(pfd, package);
 
 				mmat.GetSaveItem("objectGUID").UIntegerValue = newguid;

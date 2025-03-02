@@ -3,17 +3,19 @@
 
 using System.Collections;
 
+using SimPe.PackedFiles.Cpf;
+
 namespace SimPe.Plugin
 {
 	/// <summary>
 	/// Summary description for MmatWrapper.
 	/// </summary>
 	public class MmatWrapper
-		: PackedFiles.Wrapper.Cpf,
+		: Cpf,
 			Interfaces.Scenegraph.IScenegraphBlock,
 			Interfaces.Scenegraph.IScenegraphItem
 	{
-		public static PackedFiles.UserInterface.CpfUI.ExecutePreview GlobalCpfPreview
+		public static CpfUI.ExecutePreview GlobalCpfPreview
 		{
 			get; set;
 		}
@@ -71,7 +73,7 @@ namespace SimPe.Plugin
 
 		protected override Interfaces.Plugin.IPackedFileUI CreateDefaultUIHandler()
 		{
-			return new PackedFiles.UserInterface.CpfUI(GlobalCpfPreview);
+			return new CpfUI(GlobalCpfPreview);
 		}
 
 		/// <summary>

@@ -3,6 +3,7 @@
 using System;
 using System.Collections;
 
+using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.ThreeIdr;
 
 namespace SimPe.Providers
@@ -48,8 +49,8 @@ namespace SimPe.Providers
 			{
 				try
 				{
-					PackedFiles.Wrapper.Cpf cpf =
-						new PackedFiles.Wrapper.Cpf();
+					Cpf cpf =
+						new Cpf();
 					cpf.ProcessData(pfd, package);
 					sets.Add(cpf);
 				}
@@ -267,7 +268,7 @@ namespace SimPe.Providers
 				return null;
 			}
 
-			foreach (PackedFiles.Wrapper.Cpf cpf in sets)
+			foreach (Cpf cpf in sets)
 			{
 				Interfaces.Files.IPackedFileDescriptor pfd = cpf.FileDescriptor;
 				if (
@@ -291,8 +292,8 @@ namespace SimPe.Providers
 		/// <returns>The Texture or null</returns>
 		public object FindTxtrName(object ocpf)
 		{
-			PackedFiles.Wrapper.Cpf cpf = (PackedFiles.Wrapper.Cpf)ocpf;
-			PackedFiles.Wrapper.CpfItem item = cpf.GetSaveItem("name");
+			Cpf cpf = (Cpf)ocpf;
+			CpfItem item = cpf.GetSaveItem("name");
 
 			if (cpf.Package != BasePackage)
 			{

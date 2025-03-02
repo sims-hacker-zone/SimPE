@@ -6,6 +6,7 @@ using System.Drawing;
 
 using SimPe.Cache;
 using SimPe.Interfaces.Plugin.Scanner;
+using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Wrapper;
 
 namespace SimPe.Plugin.Scanner

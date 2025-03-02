@@ -19,32 +19,32 @@ namespace SimPe.PackedFiles.Wrapper.Factory
 				{
 					return new IWrapper[0];
 				}
-				if (Helper.StartedGui == Executable.Classic)
-				{
-					IWrapper[] wrappers =
-					{
-						new Picture(),
-						new Xml(),
-						new Fami(
-							LinkedProvider.SimNameProvider
-						),
-						new SRel(),
-						new Cpf(),
-						new FamilyTies(
-							LinkedProvider.SimNameProvider
-						),
-						new Nref(),
-						new Objd(
-							LinkedProvider.OpcodeProvider
-						),
-						new Plugin.Glob(),
-						new ObjLua(),
-						new CompressedFileList(),
-						new Str(),
-					};
-					return wrappers;
-				}
-				else
+				// if (Helper.StartedGui == Executable.Classic)
+				// {
+				// 	IWrapper[] wrappers =
+				// 	{
+				// 		new Picture(),
+				// 		new Xml(),
+				// 		new Fami(
+				// 			LinkedProvider.SimNameProvider
+				// 		),
+				// 		new SRel(),
+				// 		new Cpf(),
+				// 		new FamilyTies(
+				// 			LinkedProvider.SimNameProvider
+				// 		),
+				// 		new Nref(),
+				// 		new Objd(
+				// 			LinkedProvider.OpcodeProvider
+				// 		),
+				// 		new Plugin.Glob(),
+				// 		new ObjLua(),
+				// 		new CompressedFileList(),
+				// 		new Str(),
+				// 	};
+				// 	return wrappers;
+				// }
+				// else
 				{
 					IWrapper[] wrappers =
 					{

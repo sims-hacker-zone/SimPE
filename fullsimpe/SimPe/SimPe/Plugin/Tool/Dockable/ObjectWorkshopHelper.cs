@@ -5,6 +5,7 @@ using System.Collections;
 using System.Windows.Forms;
 
 using SimPe.Forms.MainUI;
+using SimPe.PackedFiles.Cpf;
 
 using Message = SimPe.Forms.MainUI.Message;
 
@@ -945,7 +946,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		protected static Interfaces.Files.IPackedFileDescriptor UpdateDescription(
 			OWCloneSettings cs,
 			Packages.GeneratableFile package,
-			PackedFiles.Wrapper.Cpf cpf
+			Cpf cpf
 		)
 		{
 			cpf.GetSaveItem("cost").UIntegerValue = (uint)cs.Price;
@@ -1025,7 +1026,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				Data.MetaData.XFLR,
 				Data.MetaData.XOBJ,
 			};
-			PackedFiles.Wrapper.Cpf cpf = new PackedFiles.Wrapper.Cpf();
+			Cpf cpf = new Cpf();
 			foreach (uint t in types)
 			{
 				pfds = package.FindFiles(t);
