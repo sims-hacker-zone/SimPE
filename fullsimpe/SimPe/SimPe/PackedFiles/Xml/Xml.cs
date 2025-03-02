@@ -1,31 +1,21 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
-using System;
-
 using SimPe.Interfaces.Plugin;
 
-namespace SimPe.PackedFiles.Wrapper
+namespace SimPe.PackedFiles.Xml
 {
 	/// <summary>
 	/// Represents a PackedFile in XmlFormat
 	/// </summary>
-	public class Xml
-		: AbstractWrapper,
-			IFileWrapper,
-			IFileWrapperSaveExtension
+	public class Xml : AbstractWrapper, IFileWrapper, IFileWrapperSaveExtension
 	{
 		/// <summary>
-		/// the xml text
-		/// </summary>
-		protected string text;
-
-		/// <summary>
-		/// Returns the xml File as String
+		/// The XML Text
 		/// </summary>
 		public string Text
 		{
-			get => text;
-			set => text = value;
+			get;
+			set;
 		}
 
 		#region IWrapper Member
@@ -38,7 +28,7 @@ namespace SimPe.PackedFiles.Wrapper
 		#region AbstractWrapper Member
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
-			return new UserInterface.Xml();
+			return new XmlUI();
 		}
 
 		public Xml()
@@ -46,8 +36,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
-			System.IO.StreamReader sr = new System.IO.StreamReader(reader.BaseStream);
-			text = sr.ReadToEnd();
+			Text = new System.IO.StreamReader(reader.BaseStream).ReadToEnd();
 		}
 
 		protected override void Serialize(System.IO.BinaryWriter writer)
@@ -64,29 +53,15 @@ namespace SimPe.PackedFiles.Wrapper
 
 		#region IPackedFileWrapper Member
 
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] Types =
+		public uint[] AssignableTypes => new uint[]
 				{
 					0x00000000, //UI Data
 					0xCD7FE87A, //Material Shaders
 					0x7181C501, //Pet Unknown
 					0x0B9EB87E, // Track Settings
 				};
-				return Types;
-			}
-		}
 
-		public byte[] FileSignature
-		{
-			get
-			{
-				byte[] sig = { (byte)'<', (byte)'?', (byte)'x', (byte)'m', (byte)'l' };
-				return sig;
-			}
-		}
+		public byte[] FileSignature => new byte[] { (byte)'<', (byte)'?', (byte)'x', (byte)'m', (byte)'l' };
 
 		#endregion
 	}

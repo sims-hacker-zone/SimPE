@@ -4,6 +4,8 @@ using System;
 using System.Collections;
 using System.Xml;
 
+using SimPe.PackedFiles.Xml;
+
 namespace SimPe.Plugin
 {
 	/// <summary>
@@ -109,8 +111,7 @@ namespace SimPe.Plugin
 					);
 					if (pfd != null)
 					{
-						PackedFiles.Wrapper.Xml xml =
-							new PackedFiles.Wrapper.Xml();
+						Xml xml = new Xml();
 						xml.ProcessData(pfd, pkg);
 						ParseXml(xml.Text);
 					}
