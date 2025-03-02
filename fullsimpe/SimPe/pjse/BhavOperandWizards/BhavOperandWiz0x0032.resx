@@ -207,54 +207,6 @@
   <data name="pnStrIndex.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
-  <data name="&gt;&gt;label5.Name" xml:space="preserve">
-    <value>label5</value>
-  </data>
-  <data name="&gt;&gt;label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
-    <value>pnStrIndex</value>
-  </data>
-  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;btnActionString.Name" xml:space="preserve">
-    <value>btnActionString</value>
-  </data>
-  <data name="&gt;&gt;btnActionString.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnActionString.Parent" xml:space="preserve">
-    <value>pnStrIndex</value>
-  </data>
-  <data name="&gt;&gt;btnActionString.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tbStrIndex.Name" xml:space="preserve">
-    <value>tbStrIndex</value>
-  </data>
-  <data name="&gt;&gt;tbStrIndex.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbStrIndex.Parent" xml:space="preserve">
-    <value>pnStrIndex</value>
-  </data>
-  <data name="&gt;&gt;tbStrIndex.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;lbActionString.Name" xml:space="preserve">
-    <value>lbActionString</value>
-  </data>
-  <data name="&gt;&gt;lbActionString.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbActionString.Parent" xml:space="preserve">
-    <value>pnStrIndex</value>
-  </data>
-  <data name="&gt;&gt;lbActionString.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="pnStrIndex.Location" type="System.Drawing.Point, System.Drawing">
     <value>92, 72</value>
   </data>
@@ -474,102 +426,6 @@
   <data name="&gt;&gt;pnAction.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;pnObject.Name" xml:space="preserve">
-    <value>pnObject</value>
-  </data>
-  <data name="&gt;&gt;pnObject.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pnObject.Parent" xml:space="preserve">
-    <value>pnIcon</value>
-  </data>
-  <data name="&gt;&gt;pnObject.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;pnThumbnail.Name" xml:space="preserve">
-    <value>pnThumbnail</value>
-  </data>
-  <data name="&gt;&gt;pnThumbnail.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pnThumbnail.Parent" xml:space="preserve">
-    <value>pnIcon</value>
-  </data>
-  <data name="&gt;&gt;pnThumbnail.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;rbIconSourceObj.Name" xml:space="preserve">
-    <value>rbIconSourceObj</value>
-  </data>
-  <data name="&gt;&gt;rbIconSourceObj.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;rbIconSourceObj.Parent" xml:space="preserve">
-    <value>pnIcon</value>
-  </data>
-  <data name="&gt;&gt;rbIconSourceObj.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;rbIconSourceTN.Name" xml:space="preserve">
-    <value>rbIconSourceTN</value>
-  </data>
-  <data name="&gt;&gt;rbIconSourceTN.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;rbIconSourceTN.Parent" xml:space="preserve">
-    <value>pnIcon</value>
-  </data>
-  <data name="&gt;&gt;rbIconSourceTN.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;tfIconTemp.Name" xml:space="preserve">
-    <value>tfIconTemp</value>
-  </data>
-  <data name="&gt;&gt;tfIconTemp.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tfIconTemp.Parent" xml:space="preserve">
-    <value>pnIcon</value>
-  </data>
-  <data name="&gt;&gt;tfIconTemp.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;pnIconIndex.Name" xml:space="preserve">
-    <value>pnIconIndex</value>
-  </data>
-  <data name="&gt;&gt;pnIconIndex.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pnIconIndex.Parent" xml:space="preserve">
-    <value>pnIcon</value>
-  </data>
-  <data name="&gt;&gt;pnIconIndex.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;label10.Name" xml:space="preserve">
-    <value>label10</value>
-  </data>
-  <data name="&gt;&gt;label10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
-    <value>pnIcon</value>
-  </data>
-  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;label4.Name" xml:space="preserve">
-    <value>label4</value>
-  </data>
-  <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
-    <value>pnIcon</value>
-  </data>
-  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
   <data name="pnIcon.Location" type="System.Drawing.Point, System.Drawing">
     <value>24, 144</value>
   </data>
@@ -728,78 +584,6 @@
   </data>
   <data name="&gt;&gt;lbActionString.ZOrder" xml:space="preserve">
     <value>3</value>
-  </data>
-  <data name="&gt;&gt;cbAttrPicker.Name" xml:space="preserve">
-    <value>cbAttrPicker</value>
-  </data>
-  <data name="&gt;&gt;cbAttrPicker.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbAttrPicker.Parent" xml:space="preserve">
-    <value>pnObject</value>
-  </data>
-  <data name="&gt;&gt;cbAttrPicker.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;cbDecimal.Name" xml:space="preserve">
-    <value>cbDecimal</value>
-  </data>
-  <data name="&gt;&gt;cbDecimal.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbDecimal.Parent" xml:space="preserve">
-    <value>pnObject</value>
-  </data>
-  <data name="&gt;&gt;cbDecimal.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;cbPicker1.Name" xml:space="preserve">
-    <value>cbPicker1</value>
-  </data>
-  <data name="&gt;&gt;cbPicker1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbPicker1.Parent" xml:space="preserve">
-    <value>pnObject</value>
-  </data>
-  <data name="&gt;&gt;cbPicker1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;tbVal1.Name" xml:space="preserve">
-    <value>tbVal1</value>
-  </data>
-  <data name="&gt;&gt;tbVal1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbVal1.Parent" xml:space="preserve">
-    <value>pnObject</value>
-  </data>
-  <data name="&gt;&gt;tbVal1.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;cbDataOwner1.Name" xml:space="preserve">
-    <value>cbDataOwner1</value>
-  </data>
-  <data name="&gt;&gt;cbDataOwner1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbDataOwner1.Parent" xml:space="preserve">
-    <value>pnObject</value>
-  </data>
-  <data name="&gt;&gt;cbDataOwner1.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;label9.Name" xml:space="preserve">
-    <value>label9</value>
-  </data>
-  <data name="&gt;&gt;label9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
-    <value>pnObject</value>
-  </data>
-  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>5</value>
   </data>
   <data name="pnObject.Location" type="System.Drawing.Point, System.Drawing">
     <value>92, 144</value>
@@ -984,42 +768,6 @@
   <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="&gt;&gt;tfGUIDTemp.Name" xml:space="preserve">
-    <value>tfGUIDTemp</value>
-  </data>
-  <data name="&gt;&gt;tfGUIDTemp.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tfGUIDTemp.Parent" xml:space="preserve">
-    <value>pnThumbnail</value>
-  </data>
-  <data name="&gt;&gt;tfGUIDTemp.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;pnGUID.Name" xml:space="preserve">
-    <value>pnGUID</value>
-  </data>
-  <data name="&gt;&gt;pnGUID.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pnGUID.Parent" xml:space="preserve">
-    <value>pnThumbnail</value>
-  </data>
-  <data name="&gt;&gt;pnGUID.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;label7.Name" xml:space="preserve">
-    <value>label7</value>
-  </data>
-  <data name="&gt;&gt;label7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
-    <value>pnThumbnail</value>
-  </data>
-  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="pnThumbnail.Location" type="System.Drawing.Point, System.Drawing">
     <value>92, 72</value>
   </data>
@@ -1070,30 +818,6 @@
   </data>
   <data name="&gt;&gt;tfGUIDTemp.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="&gt;&gt;label8.Name" xml:space="preserve">
-    <value>label8</value>
-  </data>
-  <data name="&gt;&gt;label8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
-    <value>pnGUID</value>
-  </data>
-  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tbGUID.Name" xml:space="preserve">
-    <value>tbGUID</value>
-  </data>
-  <data name="&gt;&gt;tbGUID.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbGUID.Parent" xml:space="preserve">
-    <value>pnGUID</value>
-  </data>
-  <data name="&gt;&gt;tbGUID.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="pnGUID.Location" type="System.Drawing.Point, System.Drawing">
     <value>115, 24</value>
@@ -1289,30 +1013,6 @@
   </data>
   <data name="&gt;&gt;tfIconTemp.ZOrder" xml:space="preserve">
     <value>4</value>
-  </data>
-  <data name="&gt;&gt;label6.Name" xml:space="preserve">
-    <value>label6</value>
-  </data>
-  <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
-    <value>pnIconIndex</value>
-  </data>
-  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tbIconIndex.Name" xml:space="preserve">
-    <value>tbIconIndex</value>
-  </data>
-  <data name="&gt;&gt;tbIconIndex.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbIconIndex.Parent" xml:space="preserve">
-    <value>pnIconIndex</value>
-  </data>
-  <data name="&gt;&gt;tbIconIndex.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="pnIconIndex.Location" type="System.Drawing.Point, System.Drawing">
     <value>92, 24</value>
