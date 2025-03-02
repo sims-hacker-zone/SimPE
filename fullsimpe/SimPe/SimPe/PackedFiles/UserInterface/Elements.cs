@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 
 using SimPe.Forms.MainUI;
+using SimPe.PackedFiles.Fami;
 using SimPe.PackedFiles.Wrapper.Supporting;
 
 using Message = SimPe.Forms.MainUI.Message;
@@ -1082,10 +1083,10 @@ namespace SimPe.PackedFiles.UserInterface
 				try
 				{
 					Cursor = Cursors.WaitCursor;
-					Wrapper.Fami fami = (Wrapper.Fami)wrapper;
+					Fami.Fami fami = (Fami.Fami)wrapper;
 					fami.Money = Convert.ToInt32(tbmoney.Text);
 					fami.Friends = Convert.ToUInt32(tbfamily.Text);
-					fami.Flags = Convert.ToUInt32(tbflag.Text, 16);
+					fami.Flags = (FamiFlags)Convert.ToUInt32(tbflag.Text, 16);
 					fami.AlbumGUID = Convert.ToUInt32(tbalbum.Text, 16);
 					fami.SubHoodNumber = Convert.ToUInt32(tbsubhood.Text, 16);
 					fami.VacationLotInstance = Helper.StringToUInt32(
@@ -1121,16 +1122,14 @@ namespace SimPe.PackedFiles.UserInterface
 					);
 
 					uint[] members = new uint[lbmembers.Items.Count];
-					for (int i = 0; i < members.Length; i++)
+					fami.Members.Clear();
+					foreach (Interfaces.IAlias member in lbmembers.Items)
 					{
-						members[i] = ((Interfaces.IAlias)lbmembers.Items[i]).Id;
-						Wrapper.SDesc sdesc = fami.GetDescriptionFile(
-							members[i]
-						);
+						fami.Members.Add(member.Id);
+						Wrapper.SDesc sdesc = fami.GetDescriptionFile(member.Id);
 						sdesc.FamilyInstance = (ushort)fami.FileDescriptor.Instance;
 						sdesc.SynchronizeUserData();
 					}
-					fami.Members = members;
 					fami.LotInstance = tblotinst.Text != "Sim Bin" ? Convert.ToUInt32(tblotinst.Text, 16) : 0;
 					//name was changed
 					if (tbname.Text != fami.Name)
@@ -1159,7 +1158,7 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			if (lbmembers.SelectedIndex >= 0)
 			{
-				Wrapper.Fami fami = (Wrapper.Fami)wrapper;
+				Fami.Fami fami = (Fami.Fami)wrapper;
 				Data.Alias a = (Data.Alias)lbmembers.SelectedItem;
 				Wrapper.SDesc sdsc = fami.GetDescriptionFile(a.Id);
 				if (sdsc == null)
@@ -1265,7 +1264,7 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			try
 			{
-				Wrapper.Fami fami = (Wrapper.Fami)wrapper;
+				Fami.Fami fami = (Fami.Fami)wrapper;
 				Interfaces.Files.IPackedFileDescriptor pfd = fami.Package.NewDescriptor(
 					0x46414D68,
 					fami.FileDescriptor.SubType,
@@ -1732,14 +1731,12 @@ namespace SimPe.PackedFiles.UserInterface
 			tbflag.Tag = true;
 			try
 			{
-				uint flag = Convert.ToUInt32(tbflag.Text, 16);
-				Wrapper.FamiFlags flags =
-					new Wrapper.FamiFlags((ushort)flag);
+				FamiFlags flag = (FamiFlags)Convert.ToUInt32(tbflag.Text, 16);
 
-				cbphone.Checked = flags.HasPhone;
-				cbcomputer.Checked = flags.HasComputer;
-				cbbaby.Checked = flags.HasBaby;
-				cblot.Checked = flags.NewLot;
+				cbphone.Checked = flag.HasFlag(FamiFlags.HasPhone);
+				cbcomputer.Checked = flag.HasFlag(FamiFlags.HasComputer);
+				cbbaby.Checked = flag.HasFlag(FamiFlags.HasBaby);
+				cblot.Checked = flag.HasFlag(FamiFlags.NewLot);
 			}
 			catch (Exception) { }
 			finally
@@ -1758,19 +1755,40 @@ namespace SimPe.PackedFiles.UserInterface
 			tbflag.Tag = true;
 			try
 			{
-				uint flag = Convert.ToUInt32(tbflag.Text, 16) & 0xffff0000;
-
-				Wrapper.FamiFlags flags =
-					new Wrapper.FamiFlags(0)
-					{
-						HasPhone = cbphone.Checked,
-						HasComputer = cbcomputer.Checked,
-						HasBaby = cbbaby.Checked,
-						NewLot = cblot.Checked
-					};
-
-				flag |= flags.Value;
-				tbflag.Text = "0x" + Helper.HexString(flag);
+				FamiFlags flag = (FamiFlags)Convert.ToUInt32(tbflag.Text, 16);
+				if (cbphone.Checked)
+				{
+					flag |= FamiFlags.HasPhone;
+				}
+				else
+				{
+					flag &= ~FamiFlags.HasPhone;
+				}
+				if (cbcomputer.Checked)
+				{
+					flag |= FamiFlags.HasComputer;
+				}
+				else
+				{
+					flag &= ~FamiFlags.HasComputer;
+				}
+				if (cbbaby.Checked)
+				{
+					flag |= FamiFlags.HasBaby;
+				}
+				else
+				{
+					flag &= ~FamiFlags.HasBaby;
+				}
+				if (cblot.Checked)
+				{
+					flag |= FamiFlags.NewLot;
+				}
+				else
+				{
+					flag &= ~FamiFlags.NewLot;
+				}
+				tbflag.Text = "0x" + Helper.HexString((uint)flag);
 			}
 			catch (Exception) { }
 			finally
@@ -1810,7 +1828,7 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			try
 			{
-				Wrapper.Fami fami = (Wrapper.Fami)wrapper;
+				Fami.Fami fami = (Fami.Fami)wrapper;
 				if (fami.LotInstance == 0)
 				{
 					return;
@@ -1840,21 +1858,16 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				return;
 			}
-
 			intern = true;
-			Wrapper.Fami fami = (Wrapper.Fami)wrapper;
+			Fami.Fami fami = (Fami.Fami)wrapper;
 			TextBox tb = (TextBox)sender;
-			fami.Money = Helper.StringToInt32(tb.Text, fami.Money, 10);
-			fami.CastAwayFood = fami.Money;
-
-			if (tb != tbmoney)
+			if (tb == tbmoney)
 			{
-				tbmoney.Text = fami.Money.ToString();
+				fami.Money = Helper.StringToInt32(tb.Text, fami.Money, 10);
 			}
-
-			if (tb != tbcafood1)
+			else if (tb == tbcafood1)
 			{
-				tbcafood1.Text = fami.CastAwayFood.ToString();
+				fami.CastAwayFood = Helper.StringToInt32(tb.Text, fami.CastAwayFood, 10);
 			}
 
 			intern = false;
@@ -1868,19 +1881,15 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 
 			intern = true;
-			Wrapper.Fami fami = (Wrapper.Fami)wrapper;
+			Fami.Fami fami = (Fami.Fami)wrapper;
 			TextBox tb = (TextBox)sender;
-			fami.BusinessMoney = Helper.StringToInt32(tb.Text, fami.BusinessMoney, 10);
-			fami.CastAwayFoodDecay = fami.BusinessMoney;
-
-			if (tb != tbbmoney)
+			if (tb == tbbmoney)
 			{
-				tbbmoney.Text = fami.BusinessMoney.ToString();
+				fami.BusinessMoney = Helper.StringToInt32(tb.Text, fami.BusinessMoney, 10);
 			}
-
-			if (tb != tbcaunk)
+			else if (tb == tbcaunk)
 			{
-				tbcaunk.Text = fami.CastAwayFoodDecay.ToString();
+				fami.CastAwayFoodDecay = Helper.StringToInt32(tb.Text, fami.CastAwayFoodDecay, 10);
 			}
 
 			intern = false;

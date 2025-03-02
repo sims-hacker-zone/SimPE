@@ -1,122 +1,64 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Wrapper;
 
-namespace SimPe.PackedFiles.Wrapper
+namespace SimPe.PackedFiles.Fami
 {
-	/// <summary>
-	/// The Type of this Memory
-	/// </summary>
-	enum MemoryType : ushort
-	{
-		GoodMemory = 0x0000,
-		BadMemory = 0xfff8,
-	}
-
-	public enum FamiVersions : int
-	{
-		Original = 0x4e,
-		University = 0x4f,
-		Business = 0x51,
-		Voyage = 0x55,
-		Castaway = 0x56,
-	}
-
-	public class FamiFlags : FlagBase
-	{
-		public FamiFlags(ushort flags)
-			: base(flags) { }
-
-		public bool HasPhone
-		{
-			get => GetBit(0);
-			set => SetBit(0, value);
-		}
-
-		public bool HasBaby
-		{
-			get => GetBit(1);
-			set => SetBit(1, value);
-		}
-
-		public bool NewLot
-		{
-			get => GetBit(2);
-			set => SetBit(2, value);
-		}
-
-		public bool HasComputer
-		{
-			get => GetBit(3);
-			set => SetBit(3, value);
-		}
-	}
 
 	/// <summary>
 	/// Represents a PackedFile in Fami Format
 	/// </summary>
 	public class Fami : AbstractWrapper, IFileWrapper, IFileWrapperSaveExtension
 	{
-		/// <summary>
-		/// Instance Number of the TExtfile containing the Family Name
-		/// </summary>
-		private uint strinstance;
+		#region Properties
+		public uint Id { get; set; } = 0x46414D49;
+		public FamiVersions Version { get; private set; } = FamiVersions.Original;
+		public uint Unknown { get; set; } = 0;
 
 		/// <summary>
-		/// The Members of this Family
+		/// Returns a Descriptor for the Lot the Family lives in, or null if none assigned
 		/// </summary>
-		private uint[] sims;
-
-		private uint id;
-		private uint unknown;
-
-		public FamiVersions Version
-		{
-			get; private set;
-		}
-
-		/// <summary>
-		/// Returns/Sets the Flags
-		/// </summary>
-		public uint Flags
+		public uint LotInstance
 		{
 			get; set;
 		}
 
 		/// <summary>
-		/// Returns/Sets the Story Telling Album GUID
+		/// Returns the INstance of the Lot, where the Player last left the Family
 		/// </summary>
-		public uint AlbumGUID
+		public uint CurrentlyOnLotInstance
 		{
 			get; set;
 		}
 
 		/// <summary>
-		/// Returns/Sets the Business Money (???)
+		/// Returns a Descriptor for the Lot where the family stays for vacation
 		/// </summary>
-		public int BusinessMoney
+		public uint VacationLotInstance
 		{
 			get; set;
+		}
+
+		/// <summary>
+		/// The STR instance, which contains the family name
+		/// </summary>
+		public uint FamilyNameStrInstance
+		{
+			get;
+			set;
 		}
 
 		/// <summary>
 		/// Returns/Sets the amount of Money the Family posesses
 		/// </summary>
 		public int Money
-		{
-			get; set;
-		}
-
-		public int CastAwayResources
-		{
-			get; set;
-		}
-
-		public int CastAwayFood
 		{
 			get; set;
 		}
@@ -135,61 +77,22 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 
 		/// <summary>
-		/// Returns/Sets the Sim Id's for Familymembers
+		/// Returns/Sets the Flags
 		/// </summary>
-		public uint[] Members
-		{
-			get => sims;
-			set
-			{
-				sims = value;
-				if (sims == null)
-				{
-					sims = new uint[0];
-				}
-			}
-		}
-
-		/// <summary>
-		/// Returns the FirstName of a Sim the Sims
-		/// </summary>
-		/// <remarks>If no SimName Provider is available, all Names will be empty</remarks>
-		public string[] SimNames
-		{
-			get
-			{
-				string[] names = new string[sims.Length];
-				if (NameProvider != null)
-				{
-					for (int i = 0; i < sims.Length; i++)
-					{
-						names[i] = NameProvider.FindName(sims[i]).Name;
-					}
-				}
-				return names;
-			}
-		}
-
-		/// <summary>
-		/// Returns a Descriptor for the Lot the Family lives in, or null if none assigned
-		/// </summary>
-		public uint LotInstance
+		public FamiFlags Flags
 		{
 			get; set;
-		}
+		} = FamiFlags.NewLot;
 
 		/// <summary>
-		/// Returns a Descriptor for the Lot where the family stays for vacation
+		/// The Members of this Family as Sim IDs
 		/// </summary>
-		public uint VacationLotInstance
-		{
-			get; set;
-		}
+		public List<uint> Members { get; set; } = new List<uint>();
 
 		/// <summary>
-		/// Returns the INstance of the Lot, where the Player last left the Family
+		/// Returns/Sets the Story Telling Album GUID
 		/// </summary>
-		public uint CurrentlyOnLotInstance
+		public uint AlbumGUID
 		{
 			get; set;
 		}
@@ -198,6 +101,33 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get; set;
 		}
+
+		public int CastAwayResources
+		{
+			get; set;
+		}
+
+		public int CastAwayFood
+		{
+			get; set;
+		}
+
+		/// <summary>
+		/// Returns/Sets the Business Money (???)
+		/// </summary>
+		public int BusinessMoney
+		{
+			get; set;
+		}
+
+
+		/// <summary>
+		/// Returns the FirstName of a Sim the Sims
+		/// </summary>
+		/// <remarks>If no SimName Provider is available, all Names will be empty</remarks>
+		public IEnumerable<string> SimNames => NameProvider != null
+					? from member in Members select NameProvider.FindName(member).Name
+					: from member in Members select default(string);
 
 		/// <summary>
 		/// Returns the Name of the Family
@@ -370,6 +300,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get; private set;
 		}
+		#endregion
 
 		/// <summary>
 		/// Returns the Description File for the passed Sim id
@@ -426,24 +357,20 @@ namespace SimPe.PackedFiles.Wrapper
 		#region AbstractWrapper Member
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
-			return new UserInterface.Fami();
+			return new FamiUI();
 		}
 
 		public Fami(Interfaces.Providers.ISimNames names)
 			: base()
 		{
-			id = 0x46414D49;
-			Version = FamiVersions.Original;
-			unknown = 0;
 			NameProvider = names;
-			Flags = 0x04;
 		}
 
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
-			id = reader.ReadUInt32();
+			Id = reader.ReadUInt32();
 			Version = (FamiVersions)reader.ReadUInt32();
-			unknown = reader.ReadUInt32(); // Always 0x0000
+			Unknown = reader.ReadUInt32(); // Always 0x0000
 			LotInstance = reader.ReadUInt32();
 			if ((int)Version >= (int)FamiVersions.Business)
 			{
@@ -455,22 +382,29 @@ namespace SimPe.PackedFiles.Wrapper
 				VacationLotInstance = reader.ReadUInt32();
 			}
 
-			strinstance = reader.ReadUInt32();
-			Money = reader.ReadInt32();
 			if ((int)Version >= (int)FamiVersions.Castaway)
 			{
+				CastAwayResources = reader.ReadInt32();
+				CastAwayFood = reader.ReadInt32();
 				CastAwayFoodDecay = reader.ReadInt32();
+			}
+			else
+			{
+				FamilyNameStrInstance = reader.ReadUInt32();
+				Money = reader.ReadInt32();
 			}
 
 			Friends = reader.ReadUInt32();
-			Flags = reader.ReadUInt32();
-			uint count = reader.ReadUInt32();
-			sims = new uint[count];
+			Flags = (FamiFlags)reader.ReadUInt32();
 
-			for (int i = 0; i < sims.Length; i++)
+			uint count = reader.ReadUInt32();
+			Members.Clear();
+			Members.Capacity = (int)count;
+			for (int i = 0; i < count; i++)
 			{
-				sims[i] = reader.ReadUInt32();
+				Members.Add(reader.ReadUInt32());
 			}
+
 			AlbumGUID = reader.ReadUInt32(); //relations??
 			if ((int)Version >= (int)FamiVersions.University)
 			{
@@ -481,9 +415,9 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				CastAwayResources = reader.ReadInt32();
 				CastAwayFood = reader.ReadInt32();
+				CastAwayFoodDecay = reader.ReadInt32();
 			}
-
-			if ((int)Version >= (int)FamiVersions.Business)
+			else if ((int)Version >= (int)FamiVersions.Business)
 			{
 				BusinessMoney = reader.ReadInt32();
 			}
@@ -491,9 +425,9 @@ namespace SimPe.PackedFiles.Wrapper
 
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
-			writer.Write(id);
+			writer.Write(Id);
 			writer.Write((uint)Version);
-			writer.Write(unknown);
+			writer.Write(Unknown);
 			writer.Write(LotInstance);
 			if ((int)Version >= (int)FamiVersions.Business)
 			{
@@ -513,17 +447,18 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 			else
 			{
-				writer.Write(strinstance);
+				writer.Write(FamilyNameStrInstance);
 				writer.Write(Money);
 			}
 			writer.Write(Friends);
-			writer.Write(Flags);
-			writer.Write((uint)sims.Length);
+			writer.Write((uint)Flags);
 
-			for (int i = 0; i < sims.Length; i++)
+			writer.Write((uint)Members.Count);
+			foreach (uint member in Members)
 			{
-				writer.Write(sims[i]);
+				writer.Write(member);
 			}
+
 			writer.Write(AlbumGUID);
 
 			if ((int)Version >= (int)FamiVersions.University)
@@ -573,23 +508,10 @@ namespace SimPe.PackedFiles.Wrapper
 
 		#region IPackedFileWrapper Member
 
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] Types = { 0x46414D49 };
-				return Types;
-			}
-		}
+		public uint[] AssignableTypes => new uint[] { 0x46414D49 };
 
-		public byte[] FileSignature
-		{
-			get
-			{
-				byte[] sig = { (byte)'I', (byte)'M', (byte)'A', (byte)'F' };
-				return sig;
-			}
-		}
+		public byte[] FileSignature => new byte[] { (byte)'I', (byte)'M', (byte)'A', (byte)'F' };
+
 		#endregion
 	}
 }
