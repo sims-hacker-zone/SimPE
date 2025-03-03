@@ -6,15 +6,15 @@ using System.Windows.Forms;
 
 using SimPe.Interfaces.Plugin;
 
-namespace SimPe.Wants
+namespace SimPe.PackedFiles.Xwnt
 {
 	public partial class XWNTEditor : Form, IPackedFileUI
 	{
 		public XWNTEditor()
 		{
 			InitializeComponent();
-			cbVersion.Items.AddRange(XWNTWrapper.ValidVersions.ToArray());
-			cbProperty.Items.AddRange(XWNTItem.ValidKeys.ToArray());
+			cbVersion.Items.AddRange(Xwnt.ValidVersions.ToArray());
+			cbProperty.Items.AddRange(XwntItem.ValidKeys.ToArray());
 		}
 
 		/// <summary>
@@ -28,17 +28,11 @@ namespace SimPe.Wants
 				components.Dispose();
 			}
 			base.Dispose(disposing);
-			if (setHandler && wrapper != null)
-			{
-				//wrapper.FileDescriptor.DescriptionChanged -= new EventHandler(FileDescriptor_DescriptionChanged);
-				wrapper.WrapperChanged -= new EventHandler(WrapperChanged);
-				setHandler = false;
-			}
 			wrapper = null;
 		}
 
 		#region XWNTEditor
-		private XWNTWrapper wrapper = null;
+		private Xwnt wrapper = null;
 		private bool setHandler = false;
 		private bool internalchg;
 
@@ -58,25 +52,25 @@ namespace SimPe.Wants
 			cbValue.Visible = false;
 		}
 
-		private void setEdit(XWNTItem xi)
+		private void setEdit(XwntItem xi)
 		{
 			internalchg = true;
 			try
 			{
-				cbProperty.SelectedIndex = XWNTItem.ValidKeys.IndexOf(xi.Key);
+				cbProperty.SelectedIndex = XwntItem.ValidKeys.IndexOf(xi.Key);
 				switch (xi.Key)
 				{
 					case "integerOperator":
-						setCbValue(XWNTItem.ValidIntegerOperators, xi.Value);
+						setCbValue(XwntItem.ValidIntegerOperators, xi.Value);
 						break;
 					case "integerType":
-						setCbValue(XWNTItem.ValidIntegerTypes, xi.Value);
+						setCbValue(XwntItem.ValidIntegerTypes, xi.Value);
 						break;
 					case "level":
-						setCbValue(XWNTItem.ValidLevels, xi.Value);
+						setCbValue(XwntItem.ValidLevels, xi.Value);
 						break;
 					case "objectType":
-						setCbValue(XWNTItem.ValidObjectTypes, xi.Value);
+						setCbValue(XwntItem.ValidObjectTypes, xi.Value);
 						break;
 					default:
 						switch (xi.Stype)
@@ -109,21 +103,18 @@ namespace SimPe.Wants
 		private void setLbWant()
 		{
 			string s = "";
-			if (wrapper["folder"] != null)
+			if (wrapper.Folder != null)
 			{
-				s += (s.Length > 0 ? " " : "") + wrapper["folder"].Value;
+				s += (s.Length > 0 ? " " : "") + wrapper.Folder;
 			}
 
-			if (wrapper["nodeText"] != null)
+			if (wrapper.NodeText != null)
 			{
-				s += (s.Length > 0 ? " / " : "") + wrapper["nodeText"].Value;
+				s += (s.Length > 0 ? " / " : "") + wrapper.NodeText;
 			}
 
-			if (wrapper["objectType"] != null)
-			{
-				s +=
-					(s.Length > 0 ? " " : "") + "(" + wrapper["objectType"].Value + ")";
-			}
+			s +=
+				(s.Length > 0 ? " " : "") + "(" + wrapper.ObjectType.ToString() + ")";
 
 			lbWant.Text = s;
 		}
@@ -135,7 +126,7 @@ namespace SimPe.Wants
 
 		public void UpdateGUI(IFileWrapper wrp)
 		{
-			wrapper = (XWNTWrapper)wrp;
+			wrapper = (Xwnt)wrp;
 			WrapperChanged(wrapper, null);
 
 			internalchg = true;
@@ -143,26 +134,26 @@ namespace SimPe.Wants
 			{
 				pjse_banner1.TitleText = "XML Goal File";
 				label1.Text = "Goal:";
-				lbWant.Text = wrapper["nodeText"].Value;
+				lbWant.Text = wrapper.NodeText;
 			}
 			else
 			{
 				pjse_banner1.TitleText = "XML Want File";
 				label1.Text = "Want:";
 				lbWant.Text =
-					wrapper["folder"].Value
+					wrapper.Folder
 					+ " / "
-					+ wrapper["nodeText"].Value
+					+ wrapper.NodeText
 					+ " ("
-					+ wrapper["objectType"].Value
+					+ wrapper.ObjectType.ToString()
 					+ ")";
 			}
-			cbVersion.SelectedIndex = XWNTWrapper.ValidVersions.IndexOf(
+			cbVersion.SelectedIndex = Xwnt.ValidVersions.IndexOf(
 				wrapper.Version
 			);
 
 			lvWants.Items.Clear();
-			foreach (XWNTItem xi in wrapper)
+			foreach (XwntItem xi in wrapper)
 			{
 				if (!xi.Key.StartsWith("<"))
 				{
@@ -181,12 +172,6 @@ namespace SimPe.Wants
 			else
 			{
 				lvWants_SelectedIndexChanged(null, null);
-			}
-
-			if (!setHandler)
-			{
-				wrapper.WrapperChanged += new EventHandler(WrapperChanged);
-				setHandler = true;
 			}
 		}
 
@@ -210,7 +195,7 @@ namespace SimPe.Wants
 					List<string> keys = new List<string>(
 						new string[] { "folder", "nodeText", "objectType" }
 					);
-					XWNTItem xi = (XWNTItem)sender;
+					XwntItem xi = (XwntItem)sender;
 					if (keys.Contains(xi.Key))
 					{
 						setLbWant();
@@ -232,7 +217,7 @@ namespace SimPe.Wants
 
 		private void cbVersion_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			wrapper.Version = XWNTWrapper.ValidVersions[cbVersion.SelectedIndex];
+			wrapper.Version = Xwnt.ValidVersions[cbVersion.SelectedIndex];
 		}
 
 		private void lvWants_SelectedIndexChanged(object sender, EventArgs e)
@@ -284,14 +269,14 @@ namespace SimPe.Wants
 				return;
 			}
 
-			XWNTItem xi = wrapper[lvWants.SelectedItems[0].Text];
-			string key = XWNTItem.ValidKeys[cbProperty.SelectedIndex];
+			XwntItem xi = wrapper[lvWants.SelectedItems[0].Text];
+			string key = XwntItem.ValidKeys[cbProperty.SelectedIndex];
 
 			// Disallow duplicate keys
 			if (wrapper[key] != null)
 			{
 				internalchg = true;
-				cbProperty.SelectedIndex = XWNTItem.ValidKeys.IndexOf(xi.Key);
+				cbProperty.SelectedIndex = XwntItem.ValidKeys.IndexOf(xi.Key);
 				internalchg = false;
 				return;
 			}
@@ -303,26 +288,26 @@ namespace SimPe.Wants
 			{
 				case "integerOperator":
 					setCbValue(
-						XWNTItem.ValidIntegerOperators,
-						XWNTItem.ValidIntegerOperators[0]
+						XwntItem.ValidIntegerOperators,
+						XwntItem.ValidIntegerOperators[0]
 					);
 					break;
 				case "integerType":
 					setCbValue(
-						XWNTItem.ValidIntegerTypes,
-						XWNTItem.ValidIntegerTypes[0]
+						XwntItem.ValidIntegerTypes,
+						XwntItem.ValidIntegerTypes[0]
 					);
 					break;
 				case "level":
-					setCbValue(XWNTItem.ValidLevels, XWNTItem.ValidLevels[0]);
+					setCbValue(XwntItem.ValidLevels, XwntItem.ValidLevels[0]);
 					break;
 				case "objectType":
-					setCbValue(XWNTItem.ValidObjectTypes, XWNTItem.ValidObjectTypes[0]);
+					setCbValue(XwntItem.ValidObjectTypes, XwntItem.ValidObjectTypes[0]);
 					break;
 				default:
 					switch (
-						XWNTItem.StypeForKey(
-							XWNTItem.ValidKeys[cbProperty.SelectedIndex]
+						XwntItem.StypeForKey(
+							XwntItem.ValidKeys[cbProperty.SelectedIndex]
 						)
 					)
 					{
@@ -343,8 +328,8 @@ namespace SimPe.Wants
 							break;
 						default:
 							setTbValue(
-								XWNTItem.IsUint32Long(
-									XWNTItem.ValidKeys[cbProperty.SelectedIndex]
+								XwntItem.IsUint32Long(
+									XwntItem.ValidKeys[cbProperty.SelectedIndex]
 								)
 									? "0x00000000"
 									: "0"
@@ -387,7 +372,7 @@ namespace SimPe.Wants
 			}
 
 			internalchg = true;
-			XWNTItem xi = wrapper[lvWants.SelectedItems[0].Text];
+			XwntItem xi = wrapper[lvWants.SelectedItems[0].Text];
 			try
 			{
 				switch (xi.Stype)
@@ -413,11 +398,11 @@ namespace SimPe.Wants
 							uint u = Convert.ToUInt32(
 								tbValue.Text,
 								tbValue.Text.Trim().ToLower().StartsWith("0x")
-								|| XWNTItem.IsUint32Long(xi.Key)
+								|| XwntItem.IsUint32Long(xi.Key)
 									? 16
 									: 10
 							);
-							xi.Value = XWNTItem.IsUint32Long(xi.Key) ? "0x" + u.ToString("x").PadLeft(8, '0') : u.ToString();
+							xi.Value = XwntItem.IsUint32Long(xi.Key) ? "0x" + u.ToString("x").PadLeft(8, '0') : u.ToString();
 						}
 						catch
 						{
@@ -448,7 +433,7 @@ namespace SimPe.Wants
 			internalchg = true;
 			try
 			{
-				wrapper.Add(new XWNTItem(wrapper, XWNTItem.ValidKeys[0], ""));
+				wrapper.Add(new XwntItem(wrapper, XwntItem.ValidKeys[0], ""));
 				lvWants.Items.Add(
 					new ListViewItem(
 						new string[]

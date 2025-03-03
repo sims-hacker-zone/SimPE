@@ -4,26 +4,26 @@ using System;
 using System.Collections.Generic;
 using System.Resources;
 
-namespace SimPe.Wants
+namespace SimPe.PackedFiles.Swaf
 {
-	class Settings : GlobalizedObject
+	internal class Settings : GlobalizedObject
 	{
-		const string BASENAME = "PJSE\\Wants";
-		XmlRegistryKey xrk = Helper.WindowsRegistry.PluginRegistryKey;
-		XmlRegistryKey rkf =
+		private const string BASENAME = "PJSE\\Wants";
+		private readonly XmlRegistryKey xrk = Helper.WindowsRegistry.PluginRegistryKey;
+		private readonly XmlRegistryKey rkf =
 			Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(BASENAME);
 
 		public Settings()
 			: base(new ResourceManager(typeof(Settings))) { }
 
-		private static Settings settings = new Settings();
+		private static readonly Settings settings = new Settings();
 
 		public static int[] SWAFColumns
 		{
 			get
 			{
 				object o = settings.rkf.GetValue("SWAFColumns", null);
-				if (o == null || o as string == null)
+				if (o == null || (o as string) == null)
 				{
 					return null;
 				}
@@ -91,7 +91,7 @@ namespace SimPe.Wants
 			{
 				bool[] def = new bool[] { true, true, true, true };
 				object o = settings.rkf.GetValue("SWAFItemTypes", null);
-				if (o == null || o as string == null)
+				if (o == null || (o as string) == null)
 				{
 					return def;
 				}

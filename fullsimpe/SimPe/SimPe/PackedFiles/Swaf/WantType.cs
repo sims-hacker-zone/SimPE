@@ -7,12 +7,12 @@ namespace SimPe.PackedFiles.Swaf
 	/// </summary>
 	public enum WantType : byte
 	{
-		Undefined = 0xff,
-		None = 0,
-		Sim = 1,
-		Object = 2,
-		Category = 3,
-		Skill = 4,
-		Career = 5,
+		None,
+		Sim,
+		Guid,
+		Category,
+		Skill,
+		Career,
+		Badge
 	}
 }

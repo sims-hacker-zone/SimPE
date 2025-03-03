@@ -8,6 +8,12 @@ namespace SimPe.PackedFiles.Swaf
 	public class WantItem
 	{
 		#region Attributes
+
+		public SwafItemType ItemType
+		{
+			get;
+			set;
+		}
 		public uint Version
 		{
 			get; set;
@@ -69,16 +75,22 @@ namespace SimPe.PackedFiles.Swaf
 		public WantInformation Information => WantInformation.LoadWant(Guid);
 		#endregion
 
-		public WantItem(Interfaces.IProviderRegistry provider)
+		public WantItem(Interfaces.IProviderRegistry provider, SwafItemType type)
 		{
 			Provider = provider;
+			ItemType = type;
+		}
+
+		public WantItem(Swaf parent, SwafItemType type)
+		{
+			ItemType = type;
 		}
 
 		/// <summary>
 		/// Unserializes a BinaryStream into the Attributes of this Instance
 		/// </summary>
 		/// <param name="reader">The Stream that contains the FileData</param>
-		public void Unserialize(System.IO.BinaryReader reader)
+		public WantItem Unserialize(System.IO.BinaryReader reader)
 		{
 			Version = reader.ReadUInt32();
 			SimInstance = reader.ReadUInt16();
@@ -112,6 +124,7 @@ namespace SimPe.PackedFiles.Swaf
 			}
 
 			Flag = (WantFlags)reader.ReadByte();
+			return this;
 		}
 
 		/// <summary>
@@ -189,7 +202,7 @@ namespace SimPe.PackedFiles.Swaf
 						n = n.Replace("$ObjectType", c);
 					}
 					break;
-				case WantType.Object:
+				case WantType.Guid:
 					if (c != null)
 					{
 						n = n.Replace("$Object", c);
