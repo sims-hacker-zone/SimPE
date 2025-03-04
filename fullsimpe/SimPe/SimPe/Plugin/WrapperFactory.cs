@@ -19,6 +19,7 @@ using SimPe.PackedFiles.Idno;
 using SimPe.PackedFiles.Ltxt;
 using SimPe.PackedFiles.Nmap;
 using SimPe.PackedFiles.Nref;
+using SimPe.PackedFiles.Picture;
 using SimPe.PackedFiles.Scid;
 using SimPe.PackedFiles.Swaf;
 using SimPe.PackedFiles.Tatt;

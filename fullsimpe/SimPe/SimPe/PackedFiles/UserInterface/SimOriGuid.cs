@@ -629,8 +629,7 @@ namespace SimPe.PackedFiles.UserInterface
 				);
 				if (pfd != null)
 				{
-					Wrapper.Picture pic =
-						new Wrapper.Picture();
+					Picture.Picture pic = new Picture.Picture();
 					pic.ProcessData(pfd, pkg);
 					return pic.Image;
 				}

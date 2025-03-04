@@ -5,6 +5,8 @@ using System;
 using System.Collections;
 using System.Drawing;
 
+using SimPe.PackedFiles.Picture;
+
 namespace SimPe.Plugin.Downloads
 {
 	/// <summary>
@@ -219,8 +221,7 @@ namespace SimPe.Plugin.Downloads
 					Interfaces.Files.IPackedFileDescriptor pfd = pfds[0];
 					try
 					{
-						PackedFiles.Wrapper.Picture pic =
-							new PackedFiles.Wrapper.Picture();
+						Picture pic = new Picture();
 						pic.ProcessData(pfd, thumbs);
 						Bitmap bm = (Bitmap)
 							ImageLoader.Preview(pic.Image, WaitingScreen.ImageSize);

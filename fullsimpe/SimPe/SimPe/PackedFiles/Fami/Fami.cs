@@ -224,8 +224,8 @@ namespace SimPe.PackedFiles.Fami
 					{
 						try
 						{
-							Picture pic =
-								new Picture();
+							Picture.Picture pic =
+								new Picture.Picture();
 							pic.ProcessData(pfc, package);
 							return Ambertation.Drawing.GraphicRoutines.MakeTransparent(
 								pic.Image,
@@ -273,8 +273,7 @@ namespace SimPe.PackedFiles.Fami
 					{
 						try
 						{
-							Picture pic =
-								new Picture();
+							Picture.Picture pic = new Picture.Picture();
 							pic.ProcessData(pfd, fumbs);
 							return Ambertation.Drawing.GraphicRoutines.MakeTransparent(
 								pic.Image,

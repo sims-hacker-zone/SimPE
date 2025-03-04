@@ -3,6 +3,7 @@
 using System;
 using System.Collections;
 
+using SimPe.PackedFiles.Picture;
 using SimPe.Plugin;
 
 namespace SimPe.Cache
@@ -205,8 +206,8 @@ namespace SimPe.Cache
 				mci.Name = objd.FileName;
 			}
 			//having an icon?
-			PackedFiles.Wrapper.Picture pic =
-				new PackedFiles.Wrapper.Picture();
+			Picture pic =
+				new Picture();
 			Interfaces.Scenegraph.IScenegraphFileIndexItem[] iitems = mci.IsBadge
 				? FileTableBase.FileIndex.FindFile(
 					Data.MetaData.SIM_IMAGE_FILE,

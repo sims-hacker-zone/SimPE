@@ -6,6 +6,7 @@ using System.Collections;
 
 using SimPe.Cache;
 using SimPe.PackedFiles.Cpf;
+using SimPe.PackedFiles.Picture;
 
 namespace SimPe.Plugin
 {
@@ -87,7 +88,7 @@ namespace SimPe.Plugin
 	{
 		protected XGoal wnt; // Fuick
 		PackedFiles.Wrapper.Str str;
-		PackedFiles.Wrapper.Picture primicon;
+		Picture primicon;
 		protected uint guid;
 		internal string prefix = "";
 
@@ -386,7 +387,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="wnt">The Goal File</param>
 		/// <returns>The Picture File or null if none was found</returns>
-		public static PackedFiles.Wrapper.Picture LoadIcon(XGoal wnt)
+		public static Picture LoadIcon(XGoal wnt)
 		{
 			if (wnt == null)
 			{
@@ -402,8 +403,7 @@ namespace SimPe.Plugin
 				FileTableBase.FileIndex.FindFile(wnt.IconFileDescriptor, null);
 			if (items.Length > 0)
 			{
-				PackedFiles.Wrapper.Picture pic =
-					new PackedFiles.Wrapper.Picture();
+				Picture pic = new Picture();
 				items[0].FileDescriptor.UserData = items[0]
 					.Package.Read(items[0].FileDescriptor)
 					.UncompressedData;

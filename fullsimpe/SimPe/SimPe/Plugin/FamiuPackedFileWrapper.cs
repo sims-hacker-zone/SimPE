@@ -7,6 +7,7 @@ using System.IO;
 
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Picture;
 
 namespace SimPe.Plugin
 {
@@ -192,8 +193,7 @@ namespace SimPe.Plugin
 				{
 					try
 					{
-						PackedFiles.Wrapper.Picture pic =
-							new PackedFiles.Wrapper.Picture();
+						Picture pic = new Picture();
 						pic.ProcessData(pfd, fumbs);
 						return Ambertation.Drawing.GraphicRoutines.MakeTransparent(
 							pic.Image,

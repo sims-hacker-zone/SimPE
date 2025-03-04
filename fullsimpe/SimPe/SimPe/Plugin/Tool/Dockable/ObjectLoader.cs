@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Ambertation.Threading;
 
 using SimPe.PackedFiles.Cpf;
+using SimPe.PackedFiles.Picture;
 
 namespace SimPe.Plugin.Tool.Dockable
 {
@@ -328,8 +329,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			deflang = Helper.WindowsRegistry.LanguageCode;
 
 			pict = new ArrayList();
-			PackedFiles.Wrapper.Picture pw =
-				new PackedFiles.Wrapper.Picture();
+			Picture pw = new Picture();
 			uint[] picts = pw.AssignableTypes;
 			foreach (uint p in picts)
 			{

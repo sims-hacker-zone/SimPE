@@ -1801,8 +1801,8 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void btPicExport_Click(object sender, EventArgs e)
 		{
-			Wrapper.Picture wrp =
-				(Wrapper.Picture)picwrapper;
+			Picture.Picture wrp =
+				(Picture.Picture)picwrapper;
 			SaveFileDialog sfd = new SaveFileDialog
 			{
 				Filter = "Image (*.png) | *.png"

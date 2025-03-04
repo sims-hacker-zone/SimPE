@@ -1724,7 +1724,7 @@ namespace SimPe.PackedFiles.Bnfo
 				);
 				if (pfd != null)
 				{
-					Picture pic = new Picture();
+					Picture.Picture pic = new Picture.Picture();
 					pic.ProcessData(pfd, pkg);
 					pbox.Image = pic.Image;
 				}

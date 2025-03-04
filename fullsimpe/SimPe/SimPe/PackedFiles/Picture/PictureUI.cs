@@ -4,13 +4,14 @@ using System.Drawing;
 using System.Windows.Forms;
 
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.UserInterface;
 
-namespace SimPe.PackedFiles.UserInterface
+namespace SimPe.PackedFiles.Picture
 {
 	/// <summary>
 	/// handles Packed Jpeg Files
 	/// </summary>
-	public class Picture : UIBase, IPackedFileUI
+	public class PictureUI : UIBase, IPackedFileUI
 	{
 		#region IPackedFileUI Member
 		public Control GUIHandle => form.JpegPanel;
@@ -19,7 +20,7 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			form.picwrapper = wrapper;
 			PictureBox pb = form.pb;
-			Image img = ((Wrapper.Picture)wrapper).Image;
+			Image img = ((Picture)wrapper).Image;
 			pb.Image = img;
 		}
 

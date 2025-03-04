@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 
+using SimPe.PackedFiles.Picture;
 using SimPe.PackedFiles.Wrapper;
 
 

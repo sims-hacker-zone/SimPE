@@ -16,7 +16,7 @@ namespace SimPe.PackedFiles.Swaf
 	{
 		protected XWant wnt;
 		Wrapper.Str str;
-		Wrapper.Picture primicon;
+		Picture.Picture primicon;
 		protected uint guid;
 		internal string prefix = "";
 

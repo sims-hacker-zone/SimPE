@@ -148,7 +148,7 @@ namespace SimPe.PackedFiles.Swaf
 		/// </summary>
 		/// <param name="wnt">The Want File</param>
 		/// <returns>The Picture File or null if none was found</returns>
-		public static Wrapper.Picture LoadIcon(XWant wnt)
+		public static Picture.Picture LoadIcon(XWant wnt)
 		{
 			if (wnt == null)
 			{
@@ -164,8 +164,7 @@ namespace SimPe.PackedFiles.Swaf
 				FileTableBase.FileIndex.FindFile(wnt.IconFileDescriptor, null);
 			if (items.Length > 0)
 			{
-				Wrapper.Picture pic =
-					new Wrapper.Picture();
+				Picture.Picture pic = new Picture.Picture();
 				items[0].FileDescriptor.UserData = items[0]
 					.Package.Read(items[0].FileDescriptor)
 					.UncompressedData;

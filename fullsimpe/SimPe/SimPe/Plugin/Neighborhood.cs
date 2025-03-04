@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Idno;
+using SimPe.PackedFiles.Picture;
 
 namespace SimPe.Plugin
 {
@@ -779,8 +780,7 @@ if (pbpay.Value == 7) inst = 0xABBA2575;
 				);
 				if (pfd != null)
 				{
-					PackedFiles.Wrapper.Picture pic =
-						new PackedFiles.Wrapper.Picture();
+					Picture pic = new Picture();
 					pic.ProcessData(pfd, pkg);
 					pbox.Image = pic.Image;
 				}
