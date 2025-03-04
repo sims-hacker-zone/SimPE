@@ -5,7 +5,7 @@ using System.Drawing;
 
 using SimPe.Interfaces.Plugin;
 
-namespace SimPe.PackedFiles.Wrapper
+namespace SimPe.PackedFiles.Picture
 {
 	/// <summary>
 	/// Represents a PacjedFile in JPEG Format
@@ -54,7 +54,7 @@ namespace SimPe.PackedFiles.Wrapper
 				for (int x = 0; x < bmp.Size.Width; x++)
 				{
 					Color basecol = ((Bitmap)img).GetPixel(x, y);
-					int a = 0xFF - ((basecol.R + basecol.G + basecol.B) / 3);
+					int a = 0xFF - (basecol.R + basecol.G + basecol.B) / 3;
 					if (a > 0x10)
 					{
 						a = 0xff;
@@ -101,7 +101,7 @@ namespace SimPe.PackedFiles.Wrapper
 		#region AbstractWrapper Member
 		protected override IPackedFileUI CreateDefaultUIHandler()
 		{
-			return new UserInterface.Picture();
+			return new PictureUI();
 		}
 
 		public Picture()

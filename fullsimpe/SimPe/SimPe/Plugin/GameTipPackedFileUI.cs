@@ -4,6 +4,7 @@
 using System;
 
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Picture;
 
 namespace SimPe.Plugin
 {
@@ -209,8 +210,7 @@ namespace SimPe.Plugin
 				);
 				if (pfd != null)
 				{
-					PackedFiles.Wrapper.Picture pic =
-						new PackedFiles.Wrapper.Picture();
+					Picture pic = new Picture();
 					pic.ProcessData(pfd, pkg);
 					gtpbimage.Image = pic.Image;
 				}

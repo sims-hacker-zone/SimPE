@@ -1,6 +1,8 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+using SimPe.PackedFiles.Picture;
+
 namespace SimPe.Plugin.Downloads
 {
 	/// <summary>
@@ -37,8 +39,7 @@ namespace SimPe.Plugin.Downloads
 
 			if (pfd != null)
 			{
-				PackedFiles.Wrapper.Picture pic =
-					new PackedFiles.Wrapper.Picture();
+				Picture pic = new Picture();
 				pic.ProcessData(pfd, pkg);
 				nfo.Image = pic.Image;
 			}

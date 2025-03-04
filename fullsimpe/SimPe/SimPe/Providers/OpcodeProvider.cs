@@ -6,6 +6,7 @@ using System.Collections;
 using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
+using SimPe.PackedFiles.Picture;
 
 namespace SimPe.Providers
 {
@@ -172,8 +173,7 @@ namespace SimPe.Providers
 						o[0] = pfd;
 						o[1] = objd.Type;
 						o[2] = null;
-						PackedFiles.Wrapper.Picture pic =
-							new PackedFiles.Wrapper.Picture();
+						Picture pic = new Picture();
 						Interfaces.Scenegraph.IScenegraphFileIndexItem[] iitems =
 							FileTableBase.FileIndex.FindFile(
 								MetaData.SIM_IMAGE_FILE,

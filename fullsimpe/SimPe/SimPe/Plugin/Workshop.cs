@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.PackedFiles.Cpf;
+using SimPe.PackedFiles.Picture;
 
 namespace SimPe.Plugin
 {
@@ -1333,8 +1334,7 @@ namespace SimPe.Plugin
 				Interfaces.Files.IPackedFileDescriptor pfd = pfds[0];
 				try
 				{
-					PackedFiles.Wrapper.Picture pic =
-						new PackedFiles.Wrapper.Picture();
+					Picture pic = new Picture();
 					pic.ProcessData(pfd, thumbs);
 					Bitmap bm = (Bitmap)
 						ImageLoader.Preview(pic.Image, WaitingScreen.ImageSize);

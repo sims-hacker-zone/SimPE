@@ -10,6 +10,7 @@ using Ambertation.Threading;
 using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
+using SimPe.PackedFiles.Picture;
 
 namespace SimPe.Providers
 {
@@ -212,8 +213,7 @@ namespace SimPe.Providers
 
 					if (pfd.Instance < 0x200)
 					{
-						PackedFiles.Wrapper.Picture pic =
-							new PackedFiles.Wrapper.Picture();
+						Picture pic = new Picture();
 						pic.ProcessData(pfd, fl);
 
 						tags[1] = pic.Image;

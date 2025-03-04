@@ -7,6 +7,8 @@ using System.Threading;
 
 using Ambertation.Threading;
 
+using SimPe.PackedFiles.Picture;
+
 namespace SimPe.Providers
 {
 	/// <summary>
@@ -304,8 +306,7 @@ namespace SimPe.Providers
 						}
 					}
 
-					PackedFiles.Wrapper.Picture pic =
-						new PackedFiles.Wrapper.Picture();
+					Picture pic = new Picture();
 					pic.ProcessData(item);
 
 					uint inst = GetInstanceFromFilename(pkg.SaveFileName);

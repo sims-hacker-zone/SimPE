@@ -6,6 +6,8 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
+using SimPe.PackedFiles.Picture;
+
 namespace SimPe.Plugin.Tool.Dockable
 {
 	public partial class SimpleObjectPreview : UserControl
@@ -207,8 +209,7 @@ namespace SimPe.Plugin.Tool.Dockable
 					Interfaces.Files.IPackedFileDescriptor pfd = pfds[0];
 					try
 					{
-						PackedFiles.Wrapper.Picture pic =
-							new PackedFiles.Wrapper.Picture();
+						Picture pic = new Picture();
 						pic.ProcessData(pfd, thumbs);
 						Bitmap bm = (Bitmap)
 							ImageLoader.Preview(pic.Image, WaitingScreen.ImageSize);

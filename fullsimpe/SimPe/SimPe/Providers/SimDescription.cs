@@ -5,6 +5,7 @@ using System.Collections;
 
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Providers;
+using SimPe.PackedFiles.Picture;
 using SimPe.PackedFiles.Wrapper;
 using SimPe.PackedFiles.Xml;
 
