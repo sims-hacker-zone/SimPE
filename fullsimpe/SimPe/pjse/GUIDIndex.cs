@@ -5,6 +5,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 
+using SimPe.PackedFiles.Glob;
+
 namespace pjse
 {
 	public class GUIDIndex : IDictionary<uint, string>
@@ -72,7 +74,7 @@ namespace pjse
 						ii.semiGlobal =
 							(globs.Length == 0)
 								? 0
-								: ((SimPe.Plugin.Glob)globs[0].Wrapper).SemiGlobalGroup;
+								: ((Glob)globs[0].Wrapper).SemiGlobalGroup;
 
 						BinaryReader reader = wrapper.StoredData;
 						if (reader.BaseStream.Length >= 0x40) // filename length
@@ -239,7 +241,7 @@ namespace pjse
 			ii.semiGlobal =
 				(globs.Length == 0)
 					? 0
-					: ((SimPe.Plugin.Glob)globs[0].Wrapper).SemiGlobalGroup;
+					: ((Glob)globs[0].Wrapper).SemiGlobalGroup;
 			guidIndex[key] = ii;
 			Save();
 		}

@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 using Ambertation.Windows.Forms;
 
+using SimPe.PackedFiles.Glob;
 using SimPe.PackedFiles.Ttab;
 using SimPe.PackedFiles.Wrapper;
 
@@ -190,7 +191,7 @@ namespace pjse.guidtool
 						);
 						foreach (FileTable.Entry fte in globs)
 						{
-							SimPe.Plugin.Glob glob = (SimPe.Plugin.Glob)fte.Wrapper;
+							Glob glob = (Glob)fte.Wrapper;
 							if (glob == null)
 							{
 								continue;
@@ -269,7 +270,7 @@ namespace pjse.guidtool
 						);
 						foreach (FileTable.Entry fte in globs)
 						{
-							SimPe.Plugin.Glob glob = (SimPe.Plugin.Glob)fte.Wrapper;
+							Glob glob = (Glob)fte.Wrapper;
 							if (glob == null)
 							{
 								continue;

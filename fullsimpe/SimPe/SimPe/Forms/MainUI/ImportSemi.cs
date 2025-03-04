@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Windows.Forms;
 
+using SimPe.PackedFiles.Glob;
 using SimPe.PackedFiles.Ttab;
 
 namespace SimPe.Forms.MainUI
@@ -53,7 +54,7 @@ namespace SimPe.Forms.MainUI
 
 					ct++;
 
-					Plugin.NamedGlob glob = new Plugin.NamedGlob();
+					NamedGlob glob = new NamedGlob();
 					glob.ProcessData(item.FileDescriptor, item.Package);
 
 					if (!names.Contains(glob.SemiGlobalName.Trim().ToLower()))
@@ -399,7 +400,7 @@ namespace SimPe.Forms.MainUI
 
 			try
 			{
-				Plugin.NamedGlob glob = (Plugin.NamedGlob)
+				NamedGlob glob = (NamedGlob)
 					cbsemi.Items[cbsemi.SelectedIndex];
 				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
 					FileTableBase.FileIndex.FindFileByGroup(glob.SemiGlobalGroup);

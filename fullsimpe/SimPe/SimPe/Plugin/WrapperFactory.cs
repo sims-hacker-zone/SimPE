@@ -15,6 +15,7 @@ using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Bnfo;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Fami;
+using SimPe.PackedFiles.Glob;
 using SimPe.PackedFiles.Idno;
 using SimPe.PackedFiles.Ltxt;
 using SimPe.PackedFiles.Nmap;
