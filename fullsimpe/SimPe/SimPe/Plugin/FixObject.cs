@@ -5,6 +5,7 @@ using System.Collections;
 
 using SimPe.Interfaces.Files;
 using SimPe.PackedFiles.Cpf;
+using SimPe.PackedFiles.Lifo;
 using SimPe.PackedFiles.Nref;
 using SimPe.PackedFiles.ThreeIdr;
 

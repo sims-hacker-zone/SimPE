@@ -1528,7 +1528,7 @@ namespace SimPe.PackedFiles.Txtr
 				cbitem.Tag = true;
 				MipMap mm = (MipMap)lbimg.Items[lbimg.SelectedIndex];
 				Interfaces.Files.IPackedFileDescriptor pfd = GetLocalLifo(mm);
-				Lifo lifo = new Lifo(null, false);
+				Lifo.Lifo lifo = new Lifo.Lifo(null, false);
 				lifo.ProcessData(pfd, wrapper.Package);
 				mm.Texture = null; //((LevelInfo)lifo.Blocks[0]).Texture;
 				mm.Data = ((LevelInfo)lifo.Blocks[0]).Data;

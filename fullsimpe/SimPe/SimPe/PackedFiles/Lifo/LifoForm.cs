@@ -5,8 +5,9 @@ using System.Drawing;
 using System.Windows.Forms;
 
 using SimPe.Interfaces.Scenegraph;
+using SimPe.Plugin;
 
-namespace SimPe.Plugin
+namespace SimPe.PackedFiles.Lifo
 {
 	/// <summary>
 	/// Summary description for LifoForm.

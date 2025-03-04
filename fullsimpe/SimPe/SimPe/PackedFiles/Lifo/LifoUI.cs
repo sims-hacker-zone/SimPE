@@ -1,8 +1,9 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using SimPe.Interfaces.Plugin;
+using SimPe.Plugin;
 
-namespace SimPe.Plugin
+namespace SimPe.PackedFiles.Lifo
 {
 	/// <summary>
 	/// This class is used to fill the UI for this FileType with Data

@@ -17,6 +17,7 @@ using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Fami;
 using SimPe.PackedFiles.Glob;
 using SimPe.PackedFiles.Idno;
+using SimPe.PackedFiles.Lifo;
 using SimPe.PackedFiles.Ltxt;
 using SimPe.PackedFiles.Nmap;
 using SimPe.PackedFiles.Nref;
