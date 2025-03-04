@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 using SimPe.Interfaces.Plugin;
 
-namespace SimPe.Plugin
+namespace SimPe.PackedFiles.Glob
 {
 	public partial class GlobCtrl : UserControl
 	{

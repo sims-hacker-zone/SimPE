@@ -3,6 +3,7 @@
 using System.Collections.Generic;
 
 using SimPe.Interfaces;
+using SimPe.PackedFiles.Glob;
 
 namespace SimPe.Plugin
 {

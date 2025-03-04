@@ -546,7 +546,7 @@ namespace SimPe.PackedFiles.UserInterface
 					pfds = pkg.FindFiles(Data.MetaData.GLOB_FILE);
 					if (pfds.Length == 1)
 					{
-						Plugin.Glob globy = new Plugin.Glob();
+						Glob.Glob globy = new Glob.Glob();
 						globy.ProcessData(pfds[0], pkg);
 						globy.SemiGlobalName = semig;
 						globy.SynchronizeUserData();

@@ -1,8 +1,9 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using SimPe.Interfaces.Plugin;
+using SimPe.Plugin;
 
-namespace SimPe.Plugin
+namespace SimPe.PackedFiles.Glob
 {
 	/// <summary>
 	/// This class is used to fill the UI for this File Type with Data
@@ -63,9 +64,9 @@ namespace SimPe.Plugin
 			form.cbseminame.Text = wrp.SemiGlobalName;
 			form.tbgroup.ForeColor = System.Drawing.Color.BlueViolet;
 			form.tbgroup.Text =
-				"0x" + Helper.HexString(Hashes.GroupHash(wrp.SemiGlobalName));
-			form.lbBug.Visible = wrp.faulty;
-			form.lbBloat.Visible = wrp.bloaty && !wrp.faulty;
+				"0x" + Helper.HexString(wrp.SemiGlobalGroup);
+			form.lbBug.Visible = wrp.Faulty;
+			form.lbBloat.Visible = wrp.Bloaty && !wrp.Faulty;
 			for (int i = 0; i < form.cbseminame.Items.Count; i++)
 			{
 				Data.SemiGlobalAlias a =
@@ -74,7 +75,7 @@ namespace SimPe.Plugin
 				{
 					form.cbseminame.SelectedIndex = i;
 					form.tbgroup.Text = "0x" + Helper.HexString(a.Id);
-					form.tbgroup.ForeColor = a.Id == Hashes.GroupHash(wrp.SemiGlobalName) ? System.Drawing.SystemColors.WindowText : System.Drawing.Color.Red;
+					form.tbgroup.ForeColor = a.Id == wrp.SemiGlobalGroup ? System.Drawing.SystemColors.WindowText : System.Drawing.Color.Red;
 
 					break;
 				}

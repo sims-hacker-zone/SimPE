@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using SimPe.Interfaces;
+using SimPe.PackedFiles.Glob;
 
 namespace SimPe.Plugin
 {

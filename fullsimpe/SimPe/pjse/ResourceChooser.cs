@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Windows.Forms;
 
 using SimPe.Interfaces.Files;
-using SimPe.Plugin;
+using SimPe.PackedFiles.Glob;
 
 using Bhav = SimPe.PackedFiles.Wrapper.Bhav;
 
