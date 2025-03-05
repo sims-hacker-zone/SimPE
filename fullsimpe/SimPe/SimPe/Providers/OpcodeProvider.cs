@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Linq;
 
 using SimPe.Data;
 using SimPe.Interfaces;
@@ -89,15 +90,15 @@ namespace SimPe.Providers
 			PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
 
 			FileTableBase.FileIndex.Load();
-			Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+			var items =
 				FileTableBase.FileIndex.FindFileDiscardingGroup(
 					MetaData.OBJD_FILE,
 					0x00000000000041A7
 				);
 
-			string max = " / " + items.Length.ToString();
+			string max = " / " + items.Count().ToString();
 			int ct = 0;
-			if (items.Length != 0) //found anything?
+			if (items.Any()) //found anything?
 			{
 				bool wasrunning = WaitingScreen.Running;
 				WaitingScreen.Wait();
@@ -125,16 +126,16 @@ namespace SimPe.Providers
 
 						try
 						{
-							Interfaces.Scenegraph.IScenegraphFileIndexItem[] sitems =
+							var sitem =
 								FileTableBase.FileIndex.FindFile(
 									MetaData.CTSS_FILE,
 									pfd.Group,
 									objd.CTSSInstance,
 									null
-								);
-							if (sitems.Length > 0)
+								).FirstOrDefault();
+							if (sitem != null)
 							{
-								str.ProcessData(sitems[0]);
+								str.ProcessData(sitem);
 								PackedFiles.Wrapper.StrItemList strs =
 									str.LanguageItems(
 										Helper.WindowsRegistry.LanguageCode
@@ -174,16 +175,16 @@ namespace SimPe.Providers
 						o[1] = objd.Type;
 						o[2] = null;
 						Picture pic = new Picture();
-						Interfaces.Scenegraph.IScenegraphFileIndexItem[] iitems =
+						var iitem =
 							FileTableBase.FileIndex.FindFile(
 								MetaData.SIM_IMAGE_FILE,
 								pfd.Group,
 								1,
 								null
-							);
-						if (iitems.Length > 0)
+							).FirstOrDefault();
+						if (iitem != null)
 						{
-							pic.ProcessData(iitems[0]);
+							pic.ProcessData(iitem);
 							System.Drawing.Image img = pic.Image;
 							o[2] = img;
 
@@ -292,7 +293,7 @@ namespace SimPe.Providers
 
 			//IPackedFileDescriptor pfd = BasePackage.FindFile(Data.MetaData.STRING_FILE, 0x00000000, 0x7FE59FD0, 0x0000008B);
 			FileTableBase.FileIndex.Load();
-			Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+			var items =
 				FileTableBase.FileIndex.FindFile(
 					MetaData.STRING_FILE,
 					0x7FE59FD0,
@@ -357,16 +358,14 @@ namespace SimPe.Providers
 				}
 				//IPackedFileDescriptor pfd = BasePackage.FindFile(Data.MetaData.BHAV_FILE, 0x0, 0x7FD46CD0, opcode);
 				FileTableBase.FileIndex.Load();
-				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-					FileTableBase.FileIndex.FindFile(
+
+				foreach (
+					Interfaces.Scenegraph.IScenegraphFileIndexItem item in FileTableBase.FileIndex.FindFile(
 						MetaData.BHAV_FILE,
 						0x7FD46CD0,
 						opcode,
 						null
-					);
-
-				foreach (
-					Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
+					)
 				)
 				{
 					if (item.FileDescriptor != null)
@@ -618,14 +617,13 @@ namespace SimPe.Providers
 			//LoadPackage();
 			//if (BasePackage==null) return null;
 			FileTableBase.FileIndex.Load();
-			Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-				FileTableBase.FileIndex.FindFile(
-					MetaData.BHAV_FILE,
-					group,
-					opcode,
-					null
-				);
-			return items.Length > 0 ? items[0] : null;
+
+			return FileTableBase.FileIndex.FindFile(
+				MetaData.BHAV_FILE,
+				group,
+				opcode,
+				null
+			).FirstOrDefault();
 		}
 
 		/// <summary>

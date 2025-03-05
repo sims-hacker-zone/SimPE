@@ -1,7 +1,9 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Linq;
 
+using SimPe.Cache;
 using SimPe.Forms.MainUI;
 using SimPe.Interfaces.Plugin;
 
@@ -40,7 +42,9 @@ namespace SimPe.PackedFiles.Swaf
 				form.ListWants();
 
 				WantLoader.WantNameLoader.AddObjects(
-					Wrapper.ObjectComboBox.ObjectCache.List
+					from container in Cache.Cache.GlobalCache.Items[ContainerType.Memory].Values
+					from MemoryCacheItem mem in container
+					select mem
 				);
 			}
 		}

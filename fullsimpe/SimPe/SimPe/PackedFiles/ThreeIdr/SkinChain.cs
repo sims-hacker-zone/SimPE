@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Linq;
 
 using SimPe.Plugin;
 
@@ -208,12 +209,12 @@ namespace SimPe.PackedFiles.ThreeIdr
 		{
 			if (pfd.Type == type)
 			{
-				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-					FileTableBase.FileIndex.FindFile(pfd, null);
-				if (items.Length > 0)
+				Interfaces.Scenegraph.IScenegraphFileIndexItem item =
+					FileTableBase.FileIndex.FindFile(pfd, null).FirstOrDefault();
+				if (item != null)
 				{
 					GenericRcol rcol = new GenericRcol(null, false);
-					rcol.ProcessData(items[0], false);
+					rcol.ProcessData(item, false);
 
 					return rcol;
 				}

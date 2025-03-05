@@ -87,16 +87,6 @@ namespace SimPe.Plugin
 
 			cbfolder.SelectedIndex = 0;
 
-			cachefile = new Cache.PackageCacheFile();
-			try
-			{
-				cachefile.Load(Cache.PackageCacheFile.CacheFileName);
-			}
-			catch (Exception ex)
-			{
-				Helper.ExceptionMessage("Unable to reload the Cache File.", ex);
-			}
-
 			//display the list of identifiers
 			foreach (IIdentifier id in ScannerRegistry.Global.Identifiers)
 			{
@@ -156,7 +146,7 @@ namespace SimPe.Plugin
 			// llSave.Left = lv.Right - llSave.Width;
 		}
 
-		Cache.PackageCacheFile cachefile;
+		Cache.Cache cachefile => Cache.Cache.GlobalCache;
 		string folder;
 		string errorlog;
 		bool cachechg;
@@ -386,7 +376,7 @@ namespace SimPe.Plugin
 				try
 				{
 					//Load the Item from the cache (if possible)
-					ScannerItem si = cachefile.LoadItem(file);
+					ScannerItem si = cachefile.LoadPackageItem(file);
 					si.PackageCacheItem.Enabled = enabled;
 					if (WaitingScreen.Running)
 					{
@@ -1238,10 +1228,6 @@ namespace SimPe.Plugin
 			try
 			{
 				btscan.Enabled = false;
-				if (Helper.WindowsRegistry.UseCache)
-				{
-					cachefile.LoadFiles();
-				}
 
 				//Setup ListView
 				lv.SmallImageList = null;
@@ -1425,10 +1411,6 @@ namespace SimPe.Plugin
 
 		private void ReloadCache(object sender, EventArgs e)
 		{
-			if (Helper.WindowsRegistry.UseCache)
-			{
-				cachefile.Load(Cache.PackageCacheFile.CacheFileName);
-			}
 		}
 
 		private void SetEnabledState(object sender, EventArgs e)
@@ -1526,15 +1508,14 @@ namespace SimPe.Plugin
 
 			if (dr == DialogResult.Yes)
 			{
-				try
-				{
-					System.IO.File.Delete(Cache.PackageCacheFile.CacheFileName);
-					cachefile.Load(Cache.PackageCacheFile.CacheFileName);
-				}
-				catch (Exception ex)
-				{
-					Helper.ExceptionMessage("", ex);
-				}
+				// try
+				// {
+				// 	System.IO.File.Delete(Cache.PackageCacheFile.CacheFileName);
+				// }
+				// catch (Exception ex)
+				// {
+				// 	Helper.ExceptionMessage("", ex);
+				// }
 			}
 		}
 

@@ -4,6 +4,7 @@
 using System;
 using System.Collections;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 using SimPe.Data;
@@ -574,8 +575,8 @@ namespace SimPe.Plugin.UI
 
 		void LoadItems(HairColor key)
 		{
-			RecolorItem[] rcolItems = box.GetRecolorItems(key);
-			if (!Utility.IsNullOrEmpty(rcolItems))
+			var rcolItems = box.GetRecolorItems(key);
+			if (rcolItems.Any())
 			{
 				ListView lv = GetView(key);
 				foreach (RecolorItem item in rcolItems)
@@ -617,8 +618,7 @@ namespace SimPe.Plugin.UI
 				}
 				if (box.AddPackage(key, fileName))
 				{
-					RecolorItem[] rcolItems = box.GetRecolorItems(key);
-					foreach (RecolorItem item in rcolItems)
+					foreach (RecolorItem item in box.GetRecolorItems(key))
 					{
 						if (box.Settings.FamilyGuid == Guid.Empty)
 						{
@@ -814,20 +814,20 @@ namespace SimPe.Plugin.UI
 			li.ImageIndex = 0;
 			li.Tag = rcol;
 			string txtrID = "<not found in FileTable>";
-			IPackedFileDescriptor[] pfd = box.GetTextureDescriptor(rcol);
-			if (!Utility.IsNullOrEmpty(pfd))
+			var pfd = box.GetTextureDescriptor(rcol);
+			if (pfd.Any())
 			{
 				txtrID = string.Format(
 					"Group={0:X8} Instance={1:X16}",
-					pfd[0].Group,
-					pfd[0].LongInstance
+					pfd.First().Group,
+					pfd.First().LongInstance
 				);
-				if (pfd.Length > 1)
+				if (pfd.Count() > 1)
 				{
 					txtrID += string.Format(
 						"; BumpMap: Group={0:X8} Instance={1:X16}",
-						pfd[1].Group,
-						pfd[1].LongInstance
+						pfd.Skip(1).First().Group,
+						pfd.Skip(1).First().LongInstance
 					);
 				}
 			}

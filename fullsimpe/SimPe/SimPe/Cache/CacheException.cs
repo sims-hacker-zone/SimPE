@@ -9,11 +9,8 @@ namespace SimPe.Cache
 	/// </summary>
 	public class CacheException : Exception
 	{
-		string filename;
-		byte ver;
-
 		/// <summary>
-		/// Creaet a new Instance of the Exception
+		/// Create a new Instance of the Exception
 		/// </summary>
 		/// <param name="message">The Message</param>
 		/// <param name="filename">the Name of the Cache File (can be null)</param>
@@ -23,8 +20,6 @@ namespace SimPe.Cache
 				message + " (file=" + filename + ", version=" + version.ToString() + ")"
 			)
 		{
-			this.filename = filename;
-			ver = version;
 		}
 	}
 }

@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Collections.Generic;
+using System.Linq;
 
 using SimPe.Plugin;
 
@@ -160,15 +161,15 @@ namespace SimPe.PackedFiles.Swaf
 				LoadTextPackage();
 			}
 
-			Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-				FileTableBase.FileIndex.FindFile(wnt.IconFileDescriptor, null);
-			if (items.Length > 0)
+			Interfaces.Scenegraph.IScenegraphFileIndexItem item =
+				FileTableBase.FileIndex.FindFile(wnt.IconFileDescriptor, null).FirstOrDefault();
+			if (item != null)
 			{
 				Picture.Picture pic = new Picture.Picture();
-				items[0].FileDescriptor.UserData = items[0]
-					.Package.Read(items[0].FileDescriptor)
+				item.FileDescriptor.UserData = item
+					.Package.Read(item.FileDescriptor)
 					.UncompressedData;
-				pic.ProcessData(items[0]);
+				pic.ProcessData(item);
 
 				return pic;
 			}

@@ -388,7 +388,7 @@ namespace SimPe.Plugin
 		public void GraphItemClick(object sender, EventArgs e)
 		{
 			GraphItem gi = (GraphItem)sender;
-			Hashtable ht = null;
+			System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<Interfaces.Files.IPackedFileDescriptor>> ht = null;
 			llopen.Enabled = false;
 			selpfd = null;
 			if (gi.Tag.GetType() == typeof(string))
@@ -430,7 +430,7 @@ namespace SimPe.Plugin
 			{
 				foreach (string s in ht.Keys)
 				{
-					foreach (Interfaces.Files.IPackedFileDescriptor pfd in (ArrayList)ht[s])
+					foreach (Interfaces.Files.IPackedFileDescriptor pfd in ht[s])
 					{
 						cbrefnames.Items.Add(pfd.Filename);
 					}

@@ -28,7 +28,7 @@ namespace SimPe.Plugin.Downloads
 				|| type == Cache.PackageType.Object
 			)
 			{
-				PackedFiles.Wrapper.ObjectComboBox.ObjectCache.ReloadCache(
+				PackedFiles.Wrapper.ObjectComboBox.ObjectCache.ReloadMemoryCache(
 					DownloadsToolFactory.FileIndex,
 					false
 				);

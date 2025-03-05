@@ -3,6 +3,8 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 using SimPe.Cache;
 using SimPe.PackedFiles.Cpf;
@@ -92,7 +94,9 @@ namespace SimPe.Plugin
 		protected uint guid;
 		internal string prefix = "";
 
-		static Hashtable goalcache;
+		private static ILookup<uint, GoalCacheItem> GoalCache => (from container in Cache.Cache.GlobalCache.Items[ContainerType.Goal].Values
+																  from GoalCacheItem gci in container
+																  select gci).ToLookup(gci => gci.Guid);
 
 		/// <summary>
 		/// Use GoalInformation::LoadGoal() to create a new Instance
@@ -115,48 +119,17 @@ namespace SimPe.Plugin
 		}
 
 		#region Cache
-		static GoalCacheFile cachefile;
 		static bool hasnew = false;
-
-		static void LoadCache()
-		{
-			if (cachefile != null)
-			{
-				return;
-			}
-
-			cachefile = new GoalCacheFile();
-			if (!Helper.WindowsRegistry.UseCache)
-			{
-				return;
-			}
-
-			try
-			{
-				cachefile.Load(Helper.SimPeLanguageCache, true);
-			}
-			catch (Exception ex)
-			{
-				Helper.ExceptionMessage("", ex);
-			}
-		}
 
 		/// <summary>
 		/// Save the Cache to the FileSystem
 		/// </summary>
 		public static void SaveCache()
 		{
-			if (!Helper.WindowsRegistry.UseCache)
+			if (Helper.WindowsRegistry.UseCache && hasnew)
 			{
-				return;
+				Cache.Cache.GlobalCache.Save();
 			}
-
-			if (cachefile == null || !hasnew)
-			{
-				return;
-			}
-
-			cachefile.Save(Helper.SimPeLanguageCache);
 		}
 		#endregion
 
@@ -167,24 +140,14 @@ namespace SimPe.Plugin
 		/// <returns>A Goal Information Structure</returns>
 		public static GoalInformation LoadGoal(uint guid)
 		{
-			LoadCache();
-			if (goalcache == null)
+			if (GoalCache.Contains(guid))
 			{
-				goalcache = cachefile.Map;
-			}
-
-			if (goalcache.ContainsKey(guid))
-			{
-				object o = goalcache[guid];
-				GoalInformation wf = o.GetType() == typeof(GoalInformation) ? (GoalInformation)o : GoalCacheInformation.LoadGoal((GoalCacheItem)o);
-
-				return wf;
+				return GoalCacheInformation.LoadGoal(GoalCache[guid].First());
 			}
 			else
 			{
 				GoalInformation wf = new GoalInformation(guid);
-				goalcache[guid] = wf;
-				cachefile.AddItem(wf);
+				Cache.Cache.GlobalCache.AddGoalItem(wf);
 				hasnew = true;
 				return wf;
 			}
@@ -311,10 +274,8 @@ namespace SimPe.Plugin
 			goals = new Hashtable();
 
 			FileTableBase.FileIndex.Load();
-			Interfaces.Scenegraph.IScenegraphFileIndexItem[] wtss =
-				FileTableBase.FileIndex.FindFile(0xBEEF7B4D, true);
 
-			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem wts in wtss)
+			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem wts in FileTableBase.FileIndex.FindFile(0xBEEF7B4D, true))
 			{
 				goals[wts.FileDescriptor.Instance] = wts;
 			}
@@ -399,15 +360,15 @@ namespace SimPe.Plugin
 				LoadTextPackage();
 			}
 
-			Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-				FileTableBase.FileIndex.FindFile(wnt.IconFileDescriptor, null);
-			if (items.Length > 0)
+			var item =
+				FileTableBase.FileIndex.FindFile(wnt.IconFileDescriptor, null).FirstOrDefault();
+			if (item != null)
 			{
 				Picture pic = new Picture();
-				items[0].FileDescriptor.UserData = items[0]
-					.Package.Read(items[0].FileDescriptor)
+				item.FileDescriptor.UserData = item
+					.Package.Read(item.FileDescriptor)
 					.UncompressedData;
-				pic.ProcessData(items[0]);
+				pic.ProcessData(item);
 
 				return pic;
 			}

@@ -77,7 +77,7 @@ namespace SimPe.Cache
 
 		#region ICacheItem Member
 
-		public void Load(System.IO.BinaryReader reader)
+		public ICacheItem Load(System.IO.BinaryReader reader)
 		{
 			Version = reader.ReadByte();
 			if (Version > VERSION)
@@ -93,6 +93,7 @@ namespace SimPe.Cache
 				Group = reader.ReadUInt32(),
 				LongInstance = reader.ReadUInt64()
 			};
+			return this;
 		}
 
 		public void Save(System.IO.BinaryWriter writer)

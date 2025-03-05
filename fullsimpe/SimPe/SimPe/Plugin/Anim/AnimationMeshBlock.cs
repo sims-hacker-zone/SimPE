@@ -423,10 +423,8 @@ namespace SimPe.Plugin.Anim
 			)
 			{
 				FileTableBase.FileIndex.Load();
-				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-					FileTableBase.FileIndex.FindFile(Data.MetaData.CRES, true);
 				foreach (
-					Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
+					Interfaces.Scenegraph.IScenegraphFileIndexItem item in FileTableBase.FileIndex.FindFile(Data.MetaData.CRES, true)
 				)
 				{
 					GenericRcol rcol = FindDefiningCRES(
@@ -496,15 +494,13 @@ namespace SimPe.Plugin.Anim
 					instns = 0x57D5D2CDFF545BA9;
 				}
 
-				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-					FileTableBase.FileIndex.FindFile(
+				foreach (
+					Interfaces.Scenegraph.IScenegraphFileIndexItem iteme in FileTableBase.FileIndex.FindFile(
 						Data.MetaData.GMDC,
 						0x1C0532FA,
 						instns,
 						Parent.Package
-					);
-				foreach (
-					Interfaces.Scenegraph.IScenegraphFileIndexItem iteme in items
+					)
 				)
 				{
 					if (iteme != null)

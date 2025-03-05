@@ -2,7 +2,9 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 using SimPe.Data;
@@ -41,7 +43,7 @@ namespace SimPe.Plugin
 		}
 
 		#region Cache Handling
-		Cache.ObjectCacheFile cachefile;
+		Cache.Cache cachefile => Cache.Cache.GlobalCache;
 		bool cachechg;
 
 		/// <summary>
@@ -54,13 +56,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		void LoadCachIndex()
 		{
-			if (cachefile != null)
-			{
-				return;
-			}
-
 			cachechg = false;
-			cachefile = new Cache.ObjectCacheFile();
 
 			if (!Helper.WindowsRegistry.UseCache)
 			{
@@ -70,15 +66,6 @@ namespace SimPe.Plugin
 			if (WaitingScreen.Running)
 			{
 				WaitingScreen.UpdateMessage("Loading Cache");
-			}
-
-			try
-			{
-				cachefile.Load(CacheFileName);
-			}
-			catch (Exception ex)
-			{
-				Helper.ExceptionMessage("", ex);
 			}
 
 			cachefile.LoadObjects();
@@ -104,7 +91,7 @@ namespace SimPe.Plugin
 				WaitingScreen.UpdateMessage("Saving Cache");
 			}
 
-			cachefile.Save(CacheFileName);
+			cachefile.Save();
 		}
 		#endregion
 
@@ -121,120 +108,82 @@ namespace SimPe.Plugin
 					lbobj.Items.Clear();
 					lbobj.Sorted = false;
 					FileTableBase.FileIndex.Load();
-					Interfaces.Scenegraph.IScenegraphFileIndexItem[] nrefitems =
-						FileTableBase.FileIndex.Sort(
-							FileTableBase.FileIndex.FindFile(type, true)
-						);
 					WaitingScreen.UpdateMessage("Loading Items");
 					foreach (
-						Interfaces.Scenegraph.IScenegraphFileIndexItem nrefitem in nrefitems
+						Interfaces.Scenegraph.IScenegraphFileIndexItem nrefitem in FileTableBase.FileIndex.Sort(
+							FileTableBase.FileIndex.FindFile(type, true)
+						)
 					)
 					{
-						if (nrefitem.LocalGroup == MetaData.LOCAL_GROUP)
-						{
-							continue;
-						}
-
-						Interfaces.Scenegraph.IScenegraphFileIndexItem[] cacheitems =
-							cachefile.FileIndex.FindFile(
-								nrefitem.FileDescriptor,
-								nrefitem.Package
-							);
-						//find the correct File
-						int cindex = -1;
-						string pname = nrefitem.Package.FileName.Trim().ToLower();
-						for (int i = 0; i < cacheitems.Length; i++)
+						if (nrefitem.LocalGroup != MetaData.LOCAL_GROUP)
 						{
 							Interfaces.Scenegraph.IScenegraphFileIndexItem citem =
-								cacheitems[i];
-
-							if (citem.FileDescriptor.Filename.Trim().ToLower() == pname)
+								(from item in cachefile.ObjectCacheFileIndex.FindFile(
+									nrefitem.FileDescriptor,
+									nrefitem.Package
+								)
+								 where nrefitem.Package.FileName.Trim().ToLower() == item.FileDescriptor.Filename.Trim().ToLower()
+								 select item).FirstOrDefault();
+							if (citem != null) //found in the cache
 							{
-								cindex = i;
-								break;
-							}
-						}
-
-						if (cindex != -1) //found in the cache
-						{
-							Cache.ObjectCacheItem oci =
-								(Cache.ObjectCacheItem)
-									cacheitems[cindex].FileDescriptor.Tag;
-							if (oci.Name.Length < 3)
-							{
-								continue;
-							}
-
-							if (!oci.Useable)
-							{
-								continue;
-							}
-
-							Alias a = new Alias(
-								oci.FileDescriptor.Instance,
-								oci.Name
-							);
-							object[] o = new object[3];
-							o[0] = nrefitem.FileDescriptor;
-							o[1] = nrefitem.LocalGroup;
-							o[2] = nrefitem.FileDescriptor.Instance;
-							a.Tag = o;
-							a.Name = Helper.WindowsRegistry.ShowObjdNames ? oci.ObjectFileName : oci.Name;
-
-							Image img = oci.Thumbnail;
-							lbobj.Items.Add(a);
-						}
-						else //not found in chache
-						{
-							try
-							{
-								Cpf cpf =
-									new Cpf();
-								nrefitem.FileDescriptor.UserData = nrefitem
-									.Package.Read(nrefitem.FileDescriptor)
-									.UncompressedData;
-								cpf.ProcessData(nrefitem);
-								if (cpf.GetItem("name").StringValue.Length < 3)
-								{
-									continue;
-								}
-
 								Cache.ObjectCacheItem oci =
-									new Cache.ObjectCacheItem
+									(Cache.ObjectCacheItem)
+										citem.FileDescriptor.Tag;
+								if (oci.Name.Length >= 3 && oci.Useable)
+								{
+									lbobj.Items.Add(new Alias(
+										oci.FileDescriptor.Instance,
+										oci.Name
+									)
+									{
+										Tag = (new object[3] { nrefitem.FileDescriptor, nrefitem.LocalGroup, nrefitem.FileDescriptor.Instance }),
+										Name = Helper.WindowsRegistry.ShowObjdNames ? oci.ObjectFileName : oci.Name
+									});
+								}
+							}
+							else //not found in cache
+							{
+								try
+								{
+									Cpf cpf =
+										new Cpf();
+									nrefitem.FileDescriptor.UserData = nrefitem
+										.Package.Read(nrefitem.FileDescriptor)
+										.UncompressedData;
+									cpf.ProcessData(nrefitem);
+									if (cpf.GetItem("name").StringValue.Length < 3)
+									{
+										continue;
+									}
+
+									Alias a = new Alias(
+										nrefitem.FileDescriptor.Instance,
+										cpf.GetItem("name").StringValue
+									)
+									{
+										Name = cpf.GetItem("name").StringValue,
+										Tag = (new object[3] { nrefitem.FileDescriptor, nrefitem.LocalGroup, nrefitem.FileDescriptor.Instance })
+									};
+
+									cachechg = true;
+
+									cachefile.AddObjectItem(new Cache.ObjectCacheItem
 									{
 										FileDescriptor = nrefitem.FileDescriptor,
 										LocalGroup = nrefitem.LocalGroup,
 										ObjectType = ObjectTypes.Outfit,
 										ObjectFileName = cpf.GetItem("name").StringValue,
 										Useable = true,
-										Class = Cache.ObjectClass.Skin
-									};
-
-								Alias a = new Alias(
-									nrefitem.FileDescriptor.Instance,
-									cpf.GetItem("name").StringValue
-								);
-								object[] o = new object[3];
-								o[0] = nrefitem.FileDescriptor;
-								o[1] = nrefitem.LocalGroup;
-								o[2] = nrefitem.FileDescriptor.Instance;
-
-								a.Name = cpf.GetItem("name").StringValue;
-
-								a.Tag = o;
-								// Image img = GetFumbnail(nrefitem.FileDescriptor.Group, nrefitem.FileDescriptor.SubType, nrefitem.FileDescriptor.Instance);
-
-								//create a cache Item
-								cachechg = true;
-								oci.Name = a.Name;
-								oci.ModelName = "";
-								oci.Thumbnail = null;
-
-								cachefile.AddItem(oci, nrefitem.Package.FileName);
-								lbobj.Items.Add(a);
-							}
-							catch { }
-						} // if not in cache
+										Class = Cache.ObjectClass.Skin,
+										Name = a.Name,
+										ModelName = "",
+										Thumbnail = null
+									}, nrefitem.Package.FileName);
+									lbobj.Items.Add(a);
+								}
+								catch { }
+							} // if not in cache
+						}
 					} //foreach txt
 
 					SaveCacheIndex();
@@ -759,22 +708,17 @@ namespace SimPe.Plugin
 		/// <param name="objpkg">The Object Package you wanna process</param>
 		/// <param name="package">The package that should get the Files</param>
 		/// <returns>The Modlename of that Object or null if none</returns>
-		public static string[] BaseClone(
+		public static List<string> BaseClone(
 			Interfaces.Files.IPackedFileDescriptor pfd,
 			uint localgroup,
 			Packages.File package
 		)
 		{
 			//Get the Base Object Data from the Objects.package File
-
-			Interfaces.Scenegraph.IScenegraphFileIndexItem[] files =
-				FileTableBase.FileIndex.FindFileByGroupAndInstance(
+			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in FileTableBase.FileIndex.FindFileByGroupAndInstance(
 					localgroup,
 					pfd.LongInstance
-				);
-
-			ArrayList list = new ArrayList();
-			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in files)
+				))
 			{
 				Interfaces.Files.IPackedFile file = item.Package.Read(
 					item.FileDescriptor
@@ -796,9 +740,8 @@ namespace SimPe.Plugin
 				}
 			}
 
-			string[] refname = new string[0];
 
-			return refname;
+			return new List<string>();
 		}
 
 		/// <summary>
@@ -820,7 +763,7 @@ namespace SimPe.Plugin
 			);
 
 			//Get the Base Object Data from the Objects.package File
-			string[] modelname = BaseClone(pfd, localgroup, package);
+			List<string> modelname = BaseClone(pfd, localgroup, package);
 			ObjectCloner objclone = new ObjectCloner(package);
 			ArrayList exclude = new ArrayList
 			{
@@ -836,11 +779,9 @@ namespace SimPe.Plugin
 			objclone.Setup.BaseResource = CloneSettings.BaseResourceType.Ref;
 			objclone.RcolModelClone(modelname, exclude);
 
-			string[] modelnames = modelname;
-			modelnames = null;
 			objclone.RemoveSubsetReferences(
 				Scenegraph.GetParentSubsets(package),
-				modelnames
+				null
 			);
 		}
 
@@ -912,7 +853,7 @@ namespace SimPe.Plugin
 			tbseek.Tag = true;
 			try
 			{
-				string name = tbseek.Text.TrimStart().ToLower();
+				string name = tbseek.Text.TrimStart(new char[] { }).ToLower();
 				if (lbobj.SelectionMode != SelectionMode.One)
 				{
 					lbobj.ClearSelected();
@@ -923,9 +864,9 @@ namespace SimPe.Plugin
 					IAlias a = (IAlias)lbobj.Items[i];
 					if (a.Name != null)
 					{
-						if (a.Name.TrimStart().ToLower().StartsWith(name))
+						if (a.Name.TrimStart(new char[] { }).ToLower().StartsWith(name))
 						{
-							tbseek.Text = a.Name.TrimStart();
+							tbseek.Text = a.Name.TrimStart(new char[] { });
 							tbseek.SelectionStart = name.Length;
 							tbseek.SelectionLength = Math.Max(
 								0,
@@ -935,9 +876,9 @@ namespace SimPe.Plugin
 							break;
 						}
 
-						if (a.Name.TrimStart().ToLower().StartsWith("* " + name))
+						if (a.Name.TrimStart(new char[] {}).ToLower().StartsWith("* " + name))
 						{
-							tbseek.Text = a.Name.TrimStart();
+							tbseek.Text = a.Name.TrimStart(new char[] {});
 							tbseek.SelectionStart = name.Length + 2;
 							tbseek.SelectionLength = Math.Max(
 								0,

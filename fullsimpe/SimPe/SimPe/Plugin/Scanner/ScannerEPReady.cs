@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Collections.Generic;
 
 using SimPe.Cache;
 using SimPe.Interfaces.Plugin.Scanner;
@@ -41,8 +42,10 @@ namespace SimPe.Plugin.Scanner
 			System.Windows.Forms.ListViewItem lvi
 		)
 		{
-			ps.Data = new uint[1];
-			ps.Data[0] = (uint)ReadyState.Yes;
+			ps.Data = new List<uint>
+			{
+				[0] = (uint)ReadyState.Yes
+			};
 			ps.State = TriState.True;
 
 			if (
@@ -115,7 +118,7 @@ namespace SimPe.Plugin.Scanner
 					Uid,
 					true
 				);
-				if ((ps.State != TriState.Null) && (ps.Data.Length > 0))
+				if ((ps.State != TriState.Null) && (ps.Data.Count > 0))
 				{
 					if ((ReadyState)ps.Data[0] != ReadyState.Yes)
 					{
@@ -164,7 +167,7 @@ namespace SimPe.Plugin.Scanner
 						Uid,
 						true
 					);
-					if (ps.Data.Length < 1)
+					if (ps.Data.Count < 1)
 					{
 						continue;
 					}

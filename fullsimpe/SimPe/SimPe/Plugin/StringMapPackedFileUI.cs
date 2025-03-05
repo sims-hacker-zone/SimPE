@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
@@ -172,9 +173,9 @@ namespace SimPe.Plugin
 		{
 			wallsandfloors.Add(0x00000000, "none"); //ensure dictionary is no longer empty even if none of the catpatterns are available
 			FileTableBase.FileIndex.Load();
-			Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+			IEnumerable<Interfaces.Scenegraph.IScenegraphFileIndexItem> items =
 				FileTableBase.FileIndex.FindFile(0xCCA8E925, true);
-			Wait.SubStart(items.Length);
+			Wait.SubStart(items.Count());
 			Wait.Message = "Loading Wall & Floor Names";
 			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
 			{

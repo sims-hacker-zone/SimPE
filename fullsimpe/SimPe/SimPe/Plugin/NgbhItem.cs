@@ -1,6 +1,9 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Linq;
+
+using SimPe.Cache;
 
 namespace SimPe.Plugin
 {
@@ -119,44 +122,21 @@ namespace SimPe.Plugin
 
 		void SetGuidForType(SimMemoryType type)
 		{
-			foreach (
-				Cache.MemoryCacheItem mci in
-					PackedFiles
-					.Wrapper
-					.ObjectComboBox
-					.ObjectCache
-					.List
-			)
-			{
-				if (
-					type == SimMemoryType.Inventory
-					|| type == SimMemoryType.GossipInventory
-					|| type == SimMemoryType.Object
-				)
-				{
-					if (mci.IsInventory && !mci.IsToken)
-					{
-						Guid = mci.Guid;
-						return;
-					}
-				}
-				else if (type == SimMemoryType.Memory || type == SimMemoryType.Gossip)
-				{
-					if (!mci.IsInventory && !mci.IsToken && mci.IsMemory)
-					{
-						Guid = mci.Guid;
-						return;
-					}
-				}
-				else
-				{
-					if (!mci.IsInventory && mci.IsToken)
-					{
-						Guid = mci.Guid;
-						return;
-					}
-				}
-			}
+			Guid = (from container in Cache.Cache.GlobalCache.Items[ContainerType.Memory].Values
+					from MemoryCacheItem mci in container
+					where (
+						(
+							type == SimMemoryType.Inventory
+					 		|| type == SimMemoryType.GossipInventory
+					 		|| type == SimMemoryType.Object
+						) && mci.IsInventory && !mci.IsToken)
+					 || (
+							(
+								type == SimMemoryType.Memory
+								|| type == SimMemoryType.Gossip
+							) && !mci.IsInventory && !mci.IsToken && mci.IsMemory)
+					 || (!mci.IsInventory && mci.IsToken)
+					select mci.Guid).FirstOrDefault();
 		}
 
 		uint guid;
@@ -217,7 +197,6 @@ namespace SimPe.Plugin
 				{
 					guid = value;
 					objd = null;
-					mci = null;
 
 					if (parent != null)
 					{
@@ -273,8 +252,7 @@ namespace SimPe.Plugin
 
 				objd = new PackedFiles.Wrapper.ExtObjd();
 
-				Cache.MemoryCacheItem mci =
-					PackedFiles.Wrapper.ObjectComboBox.ObjectCache.FindItem(guid);
+				MemoryCacheItem mci = Cache.Cache.GlobalCache.FindMemoryItem(guid);
 				if (mci != null)
 				{
 					objd.Type = mci.ObjectType;
@@ -285,32 +263,8 @@ namespace SimPe.Plugin
 				return objd;
 			}
 		}
-
-		Cache.MemoryCacheItem mci;
-		public Cache.MemoryCacheItem MemoryCacheItem
-		{
-			get
-			{
-				try
-				{
-					if (mci == null)
-					{
-						mci =
-							PackedFiles.Wrapper.ObjectComboBox.ObjectCache.FindItem(
-								guid
-							);
-					}
-				}
-				catch (Exception) { }
-
-				if (mci == null)
-				{
-					mci = new Cache.MemoryCacheItem();
-				}
-
-				return mci;
-			}
-		}
+		public MemoryCacheItem MemoryCacheItem => Cache.Cache.GlobalCache.FindMemoryItem(guid)
+			?? new MemoryCacheItem();
 
 		public System.Drawing.Image Icon => Ambertation.Drawing.GraphicRoutines.ScaleImage(
 					MemoryCacheItem.Image,
@@ -641,10 +595,7 @@ namespace SimPe.Plugin
 			}
 			else
 			{
-				Cache.MemoryCacheItem mci =
-					PackedFiles.Wrapper.ObjectComboBox.ObjectCache.FindItem(
-						SimID
-					);
+				MemoryCacheItem mci = Cache.Cache.GlobalCache.FindMemoryItem(SimID);
 				if (mci != null)
 				{
 					n = mci.Name + ext;
@@ -694,10 +645,7 @@ namespace SimPe.Plugin
 			if (MemoryType == SimMemoryType.Object)
 			{
 				name += " {";
-				Cache.MemoryCacheItem mci =
-					PackedFiles.Wrapper.ObjectComboBox.ObjectCache.FindItem(
-						ReferencedObjectGuid
-					);
+				MemoryCacheItem mci = Cache.Cache.GlobalCache.FindMemoryItem(ReferencedObjectGuid);
 				if (mci != null)
 				{
 					name += mci.Name;

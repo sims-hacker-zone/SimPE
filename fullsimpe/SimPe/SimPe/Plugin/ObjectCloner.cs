@@ -1,6 +1,8 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 using SimPe.Interfaces.Files;
 using SimPe.Packages;
@@ -310,10 +312,7 @@ namespace SimPe.Plugin
 			{
 				return;
 			}
-
-			string[] ms = new string[1];
-			ms[0] = modelname;
-			RcolModelClone(ms);
+			RcolModelClone(new List<string> { modelname });
 		}
 
 		/// <summary>
@@ -321,7 +320,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="modelnames">The Name of the Model</param>
 		/// <param name="onlydefault">true if you only want default MMAT Files</param>
-		public void RcolModelClone(string[] modelnames)
+		public void RcolModelClone(List<string> modelnames)
 		{
 			RcolModelClone(modelnames, new ArrayList());
 		}
@@ -391,7 +390,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="onlydefault">true if you only want default MMAT Files</param>
 		/// <param name="exclude">List of ReferenceNames that should be excluded</param>
-		public void RcolModelClone(string[] modelnames, ArrayList exclude)
+		public void RcolModelClone(List<string> modelnames, ArrayList exclude)
 		{
 			if (modelnames == null)
 			{
@@ -507,7 +506,7 @@ namespace SimPe.Plugin
 		/// <param name="pkg">The package that should receive the Files</param>
 		/// <remarks>Simply Copies MMAT, LIFO, TXTR and TXMT Files</remarks>
 		public void AddParentFiles(
-			string[] orgmodelnames,
+			IEnumerable<string> orgmodelnames,
 			IPackageFile pkg
 		)
 		{
@@ -516,13 +515,13 @@ namespace SimPe.Plugin
 				WaitingScreen.UpdateMessage("Loading Parent Files");
 			}
 
-			ArrayList names = new ArrayList();
+			List<string> names = new List<string>();
 			foreach (string s in orgmodelnames)
 			{
 				names.Add(s);
 			}
 
-			ArrayList types = new ArrayList
+			List<uint> types = new List<uint>
 			{
 				Data.MetaData.MMAT,
 				Data.MetaData.TXMT,
@@ -577,7 +576,7 @@ namespace SimPe.Plugin
 		/// <param name="exclude">List of subset names</param>
 		/// <param name="modelnames">null or a List of allowed Modelnames. If a List is passed, only references to files
 		/// starting with one of the passed Modelnames will be keept</param>
-		public void RemoveSubsetReferences(ArrayList exclude, string[] modelnames)
+		public void RemoveSubsetReferences(ArrayList exclude, IEnumerable<string> modelnames)
 		{
 			if (WaitingScreen.Running)
 			{
@@ -635,10 +634,8 @@ namespace SimPe.Plugin
 							n += "_txmt";
 						}
 
-						ArrayList names = new ArrayList();
-						IPackedFileDescriptor[] rpfds =
-							Package.FindFile(n, Data.MetaData.TXMT);
-						foreach (IPackedFileDescriptor rpfd in rpfds)
+						List<IPackedFileDescriptor> names = new List<IPackedFileDescriptor>();
+						foreach (IPackedFileDescriptor rpfd in Package.FindFile(n, Data.MetaData.TXMT))
 						{
 							names.Add(rpfd);
 						}
@@ -646,8 +643,7 @@ namespace SimPe.Plugin
 						int pos = 0;
 						while (pos < names.Count)
 						{
-							IPackedFileDescriptor rpfd =
-								(IPackedFileDescriptor)names[pos++];
+							IPackedFileDescriptor rpfd = names[pos++];
 							rpfd = Package.FindFile(rpfd);
 
 							if (rpfd != null)
@@ -657,20 +653,10 @@ namespace SimPe.Plugin
 								GenericRcol fl = new GenericRcol(null, false);
 								fl.ProcessData(rpfd, Package);
 
-								Hashtable ht = fl.ReferenceChains;
-								foreach (string k in ht.Keys)
-								{
-									foreach (
-										IPackedFileDescriptor lpfd in (ArrayList)
-											ht[k]
-									)
-									{
-										if (!names.Contains(lpfd))
-										{
-											names.Add(lpfd);
-										}
-									}
-								}
+								names.AddRange((from items in fl.ReferenceChains.Values
+												from lpfd in items
+												where !names.Contains(lpfd)
+												select lpfd).ToArray());
 							}
 						} //while
 					}

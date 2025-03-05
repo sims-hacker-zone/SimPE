@@ -114,10 +114,8 @@ namespace SimPe.Plugin.Downloads
 			Interfaces.Files.IPackedFileDescriptor pfd
 		)
 		{
-			Interfaces.Scenegraph.IScenegraphFileIndexItem[] fiis =
-				FileTableBase.FileIndex.FindFile(pfd, null);
 			uint min = (uint)Expansions.None;
-			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem fii in fiis)
+			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem fii in FileTableBase.FileIndex.FindFile(pfd, null))
 			{
 				try
 				{

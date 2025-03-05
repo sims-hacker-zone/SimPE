@@ -1,7 +1,9 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Collections;
+using System.Collections.Generic;
 
+using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Scenegraph;
 
 namespace SimPe.Plugin
@@ -115,11 +117,11 @@ namespace SimPe.Plugin
 
 		#region IScenegraphItem Member
 
-		public void ReferencedItems(Hashtable refmap, uint parentgroup)
+		public void ReferencedItems(Dictionary<string, List<IPackedFileDescriptor>> refmap, uint parentgroup)
 		{
 			if (Extension.VarName.Trim().ToLower() == "tsmaterialsmeshname")
 			{
-				ArrayList list = new ArrayList();
+				List<IPackedFileDescriptor> list = new List<IPackedFileDescriptor>();
 				foreach (ExtensionItem ei in Extension.Items)
 				{
 					string name = ei.String.Trim();

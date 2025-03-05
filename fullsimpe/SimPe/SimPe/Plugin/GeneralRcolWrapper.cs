@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
-using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Scenegraph;
@@ -41,17 +42,17 @@ namespace SimPe.Plugin
 				string str = "filename=";
 				str += FileName;
 				str += ", references=";
-				Hashtable map = ReferenceChains;
+				Dictionary<string, List<Interfaces.Files.IPackedFileDescriptor>> map = ReferenceChains;
 				foreach (string s in map.Keys)
 				{
 					str += s + ": ";
 					foreach (
-						Interfaces.Files.IPackedFileDescriptor pfd in (ArrayList)map[s]
+						Interfaces.Files.IPackedFileDescriptor pfd in map[s]
 					)
 					{
 						str += pfd.Filename + " (" + pfd.ToString() + ") | ";
 					}
-					if (((ArrayList)map[s]).Count > 0)
+					if (map[s].Count > 0)
 					{
 						str = str.Substring(0, str.Length - 2);
 					}
@@ -98,7 +99,7 @@ namespace SimPe.Plugin
 		/// Subcallses can reimplement this Method to add additional References
 		/// </summary>
 		/// <param name="refmap">The Reference Map, Keys are the name of the Reference type, values are ArrayLists containing IPackedFileDescriptors</param>
-		protected virtual void FindReferences(Hashtable refmap)
+		protected virtual void FindReferences(Dictionary<string, List<Interfaces.Files.IPackedFileDescriptor>> refmap)
 		{
 		}
 
@@ -106,25 +107,15 @@ namespace SimPe.Plugin
 		/// Add te References stored in the Reference Section
 		/// </summary>
 		/// <param name="refmap">The Reference Map, Keys are the name of the Reference type, values are ArrayLists containing IPackedFileDescriptors</param>
-		void FindGenericReferences(Hashtable refmap)
+		void FindGenericReferences(Dictionary<string, List<Interfaces.Files.IPackedFileDescriptor>> refmap)
 		{
-			ArrayList list = new ArrayList();
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in ReferencedFiles)
-			{
-				list.Add(pfd);
-			}
-
-			refmap["Generic"] = list;
+			refmap["Generic"] = new List<Interfaces.Files.IPackedFileDescriptor>(ReferencedFiles);
 
 			//now check each stored block if it implements IScenegraphBlock
 			foreach (IRcolBlock irb in Blocks)
 			{
-				if (
-					typeof(IScenegraphBlock)
-					== irb.GetType().GetInterface("IScenegraphBlock")
-				)
+				if (irb is IScenegraphBlock sgb)
 				{
-					IScenegraphBlock sgb = (IScenegraphBlock)irb;
 					sgb.ReferencedItems(refmap, FileDescriptor.Group);
 				}
 			}
@@ -135,12 +126,11 @@ namespace SimPe.Plugin
 			uint type
 		)
 		{
-			foreach (ArrayList list in ReferenceChains.Values)
+			foreach (List<Interfaces.Files.IPackedFileDescriptor> list in ReferenceChains.Values)
 			{
-				foreach (object o in list)
+				foreach (Interfaces.Files.IPackedFileDescriptor o in list)
 				{
-					Interfaces.Files.IPackedFileDescriptor opfd =
-						(Interfaces.Files.IPackedFileDescriptor)o;
+					Interfaces.Files.IPackedFileDescriptor opfd = o;
 					if (opfd.Type == type)
 					{
 						Interfaces.Files.IPackedFileDescriptor pfd = Package.FindFile(
@@ -156,19 +146,14 @@ namespace SimPe.Plugin
 							opfd.Group = Data.MetaData.LOCAL_GROUP;
 							pfd = Package.FindFile(opfd);
 						}
-						IScenegraphFileIndexItem item = null;
+						IScenegraphFileIndexItem item;
 						if (pfd == null)
 						{
 							FileTableBase.FileIndex.Load();
-							IScenegraphFileIndexItem[] items =
-								FileTableBase.FileIndex.FindFile(
-									(Interfaces.Files.IPackedFileDescriptor)o,
+							item = FileTableBase.FileIndex.FindFile(
+									o,
 									null
-								);
-							if (items.Length > 0)
-							{
-								item = items[0];
-							}
+								).FirstOrDefault();
 						}
 						else
 						{
@@ -186,11 +171,11 @@ namespace SimPe.Plugin
 			return null;
 		}
 
-		public Hashtable ReferenceChains
+		public Dictionary<string, List<Interfaces.Files.IPackedFileDescriptor>> ReferenceChains
 		{
 			get
 			{
-				Hashtable refmap = new Hashtable();
+				Dictionary<string, List<Interfaces.Files.IPackedFileDescriptor>> refmap = new Dictionary<string, List<Interfaces.Files.IPackedFileDescriptor>>();
 				FindGenericReferences(refmap);
 				FindReferences(refmap);
 				return refmap;

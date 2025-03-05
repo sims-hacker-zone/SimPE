@@ -2,7 +2,9 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 
 using SimPe.Cache;
 using SimPe.Interfaces.Plugin.Scanner;
@@ -491,11 +493,8 @@ namespace SimPe.Plugin.Scanner
 						group = gci.LocalGroup;
 					}
 				}
-				string[] modelnames = Scenegraph.FindModelNames(
-					si.Package
-				);
 
-				foreach (string modelname in modelnames)
+				foreach (string modelname in Scenegraph.FindModelNames(si.Package))
 				{
 					Image img = GetThumbnail(group, modelname);
 					if (img != null)
@@ -672,7 +671,7 @@ namespace SimPe.Plugin.Scanner
 	/// </summary>
 	internal class GuidScanner : AbstractScanner, IScanner
 	{
-		static MemoryCacheFile cachefile;
+		static Cache.Cache cachefile => Cache.Cache.GlobalCache;
 
 		public GuidScanner()
 			: base() { }
@@ -685,19 +684,10 @@ namespace SimPe.Plugin.Scanner
 
 		#region IScanner Member
 
-		Hashtable list;
+		Dictionary<uint, string> list;
 
 		protected override void DoInitScan()
 		{
-			if (list == null)
-			{
-				list = new Hashtable();
-			}
-			else
-			{
-				list.Clear();
-			}
-
 			string WaitingScreenMessage = "";
 			if (WaitingScreen.Running)
 			{
@@ -709,17 +699,6 @@ namespace SimPe.Plugin.Scanner
 				WaitingScreen.Message = "Init Cache File";
 			}
 
-			if (cachefile == null)
-			{
-				cachefile = MemoryCacheFile.InitCacheFile();
-				cachefile.Save();
-				cachefile.Dispose();
-				GC.Collect();
-				GC.WaitForPendingFinalizers();
-				cachefile = null;
-				cachefile = MemoryCacheFile.InitCacheFile();
-			}
-
 			AddColumn(ListView, "GUIDs", 180);
 			AddColumn(ListView, "Duplicate GUID", 80);
 			AddColumn(ListView, "First found", 80);
@@ -729,24 +708,14 @@ namespace SimPe.Plugin.Scanner
 				WaitingScreen.Message = "Create hashtable";
 			}
 
-			foreach (MemoryCacheItem mci in cachefile.List)
-			{
-				string flname = mci.ParentCacheContainer == null ? mci.FileDescriptor.Filename : mci.ParentCacheContainer.FileName;
-
-				list[mci.Guid] = flname;
-				// list[(uint)mci.Guid] = flname.Trim().ToLower();
-				/*if (mci.Guid == guid)
-				{
-					if (mci.ParentCacheContainer!=null)
+			list = (from container in Cache.Cache.GlobalCache.Items[ContainerType.Memory].Values
+					from MemoryCacheItem mci in container
+					select new
 					{
-						if (mci.ParentCacheContainer.FileName.Trim().ToLower() != flname)
-						{
-							ps.State = TriState.False;
-							break;
-						}
-					}
-				}*/
-			}
+						Key = mci.Guid,
+						Value = mci.ParentCacheContainer == null ? mci.FileDescriptor.Filename : mci.ParentCacheContainer.FileName
+					}).ToDictionary(item => item.Key, item => item.Value);
+
 			if (WaitingScreen.Running)
 			{
 				WaitingScreen.Message = WaitingScreenMessage;
@@ -762,7 +731,7 @@ namespace SimPe.Plugin.Scanner
 			Interfaces.Files.IPackedFileDescriptor[] pfds = si.Package.FindFiles(
 				Data.MetaData.OBJD_FILE
 			);
-			ArrayList mylist = new ArrayList();
+			List<uint> mylist = new List<uint>();
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
 				ExtObjd objd = new ExtObjd();
@@ -771,10 +740,7 @@ namespace SimPe.Plugin.Scanner
 				mylist.Add(objd.Guid);
 				objd.Dispose();
 			}
-
-			uint[] guids = new uint[mylist.Count];
-			mylist.CopyTo(guids);
-			si.PackageCacheItem.Guids = guids;
+			si.PackageCacheItem.Guids = mylist;
 			ps.State = TriState.True;
 
 			UpdateState(si, ps, lvi);
@@ -865,7 +831,7 @@ namespace SimPe.Plugin.Scanner
 	/// </summary>
 	internal class RecolorBasemeshScanner : AbstractScanner, IScanner
 	{
-		static MemoryCacheFile cachefile;
+		static Cache.Cache cachefile;
 
 		public RecolorBasemeshScanner()
 			: base() { }
@@ -880,11 +846,6 @@ namespace SimPe.Plugin.Scanner
 
 		protected override void DoInitScan()
 		{
-			if (cachefile == null)
-			{
-				cachefile = MemoryCacheFile.InitCacheFile();
-			}
-
 			AddColumn(ListView, "Found Base", 180);
 		}
 
@@ -1028,7 +989,7 @@ namespace SimPe.Plugin.Scanner
 				}
 				rcol.Dispose();
 			}
-			ps.Data = new uint[] { vct, fct };
+			ps.Data = new List<uint> { vct, fct };
 
 			UpdateState(si, ps, lvi);
 		}

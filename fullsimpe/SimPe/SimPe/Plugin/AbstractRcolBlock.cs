@@ -4,6 +4,7 @@
 using System;
 using System.Collections;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 
 using SimPe.Interfaces.Scenegraph;
@@ -324,7 +325,7 @@ namespace SimPe.Plugin
 		{
 			WaitMessasge wm;
 
-			IScenegraphFileIndexItem[] items =
+			System.Collections.Generic.IEnumerable<IScenegraphFileIndexItem> items =
 				FileTableBase.FileIndex.FindFile(type, true);
 			try
 			{
@@ -335,7 +336,7 @@ namespace SimPe.Plugin
 						Wait.Message = message;
 						Wait.Progress++;
 					};
-					Wait.SubStart(items.Length);
+					Wait.SubStart(items.Count());
 				}
 				else
 				{

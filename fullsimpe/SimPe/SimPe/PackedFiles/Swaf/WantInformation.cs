@@ -3,6 +3,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 using SimPe.Cache;
 using SimPe.Plugin;
@@ -20,7 +21,9 @@ namespace SimPe.PackedFiles.Swaf
 		protected uint guid;
 		internal string prefix = "";
 
-		static Dictionary<uint, WantCacheItem> wantcache;
+		static ILookup<uint, WantCacheItem> wantcache => (from container in Cache.Cache.GlobalCache.Items[ContainerType.Want].Values
+														  from WantCacheItem wci in container
+														  select wci).ToLookup(wci => wci.Guid);
 
 		/// <summary>
 		/// Use WantInformation::LoadWant() to create a new Instance
@@ -43,43 +46,21 @@ namespace SimPe.PackedFiles.Swaf
 		}
 
 		#region Cache
-		static WantCacheFile cachefile;
-
-		static void LoadCache()
-		{
-			if (cachefile != null || !Helper.WindowsRegistry.UseCache)
-			{
-				return;
-			}
-
-			cachefile = new WantCacheFile();
-
-			Wait.SubStart();
-			Wait.Message = "Loading Cache";
-			try
-			{
-				cachefile.Load(Helper.SimPeLanguageCache, true);
-			}
-			catch (Exception ex)
-			{
-				Helper.ExceptionMessage("", ex);
-			}
-			Wait.SubStop();
-		}
+		static Cache.Cache cachefile => Cache.Cache.GlobalCache;
 
 		/// <summary>
 		/// Save the Cache to the FileSystem
 		/// </summary>
 		public static void SaveCache()
 		{
-			if (!Helper.WindowsRegistry.UseCache || cachefile == null)
+			if (!Helper.WindowsRegistry.UseCache)
 			{
 				return;
 			}
 
 			Wait.SubStart();
 			Wait.Message = "Saving Cache";
-			cachefile.Save(Helper.SimPeLanguageCache);
+			cachefile.Save();
 			Wait.SubStop();
 		}
 		#endregion
@@ -91,20 +72,14 @@ namespace SimPe.PackedFiles.Swaf
 		/// <returns>A Want Information Structure</returns>
 		public static WantInformation LoadWant(uint guid)
 		{
-			LoadCache();
-			if (wantcache == null)
+			if (wantcache.Contains(guid))
 			{
-				wantcache = cachefile.Map;
-			}
-
-			if (wantcache.ContainsKey(guid))
-			{
-				return WantCacheInformation.LoadWant(wantcache[guid]);
+				return WantCacheInformation.LoadWant(wantcache[guid].First());
 			}
 			else
 			{
 				WantInformation wf = new WantInformation(guid);
-				cachefile.AddItem(wf);
+				cachefile.AddWantItem(wf);
 				return wf;
 			}
 		}

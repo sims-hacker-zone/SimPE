@@ -2,7 +2,10 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
+using SimPe.Interfaces.Files;
 using SimPe.PackedFiles.Cpf;
 
 namespace SimPe.Plugin
@@ -23,11 +26,11 @@ namespace SimPe.Plugin
 		#region IScenegraphBlock Member
 
 		public void ReferencedItems(
-			Hashtable refmap,
+			Dictionary<string, List<IPackedFileDescriptor>> refmap,
 			uint parentgroup
 		)
 		{
-			ArrayList list = new ArrayList();
+			List<IPackedFileDescriptor> list = new List<IPackedFileDescriptor>();
 			string name = GetSaveItem("modelName").StringValue.Trim();
 			if (!name.ToLower().EndsWith("_cres"))
 			{
@@ -43,7 +46,7 @@ namespace SimPe.Plugin
 			);
 			refmap["CRES"] = list;
 
-			list = new ArrayList();
+			list = new List<IPackedFileDescriptor>();
 			name = GetSaveItem("name").StringValue.Trim();
 			if (!name.ToLower().EndsWith("_txmt"))
 			{
@@ -121,54 +124,32 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				Hashtable refs = ReferenceChains;
-				ArrayList cress = (ArrayList)refs["CRES"];
-				if (cress != null)
+				IPackedFileDescriptor cres = ReferenceChains["CRES"]?.FirstOrDefault();
+				if (cres != null)
 				{
-					if (cress.Count > 0)
+					IPackedFileDescriptor pfd = package.FindFile(cres)
+						?? package.FindFile(cres.Filename, Data.MetaData.CRES).FirstOrDefault();
+
+					if (pfd != null)
 					{
-						Interfaces.Files.IPackedFileDescriptor pfd = package.FindFile(
-							(Interfaces.Files.IPackedFileDescriptor)cress[0]
-						);
-						if (pfd == null) //fallback code
+						GenericRcol cresfile = new GenericRcol(null, false);
+						cresfile.ProcessData(pfd, package);
+
+						return cresfile;
+					}
+					else //FileTable fallback code
+					{
+						Interfaces.Scenegraph.IScenegraphFileIndexItem item =
+							FileTableBase.FileIndex.FindFileDiscardingGroup(cres).FirstOrDefault();
+						if (item != null)
 						{
-							Interfaces.Files.IPackedFileDescriptor[] pfds =
-								package.FindFile(
-									(
-										(Interfaces.Files.IPackedFileDescriptor)cress[0]
-									).Filename,
-									Data.MetaData.CRES
-								);
-							if (pfds.Length > 0)
-							{
-								pfd = pfds[0];
-							}
-						}
+							GenericRcol cresfile = new GenericRcol(null, false);
+							cresfile.ProcessData(
+								item.FileDescriptor,
+								item.Package
+							);
 
-						if (pfd != null)
-						{
-							GenericRcol cres = new GenericRcol(null, false);
-							cres.ProcessData(pfd, package);
-
-							return cres;
-						}
-
-						if (pfd == null) //FileTable fallback code
-						{
-							Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-								FileTableBase.FileIndex.FindFileDiscardingGroup(
-									(Interfaces.Files.IPackedFileDescriptor)cress[0]
-								);
-							if (items.Length > 0)
-							{
-								GenericRcol cres = new GenericRcol(null, false);
-								cres.ProcessData(
-									items[0].FileDescriptor,
-									items[0].Package
-								);
-
-								return cres;
-							}
+							return cresfile;
 						}
 					}
 				}
@@ -187,54 +168,32 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				Hashtable refs = ReferenceChains;
-				ArrayList txmts = (ArrayList)refs["TXMT"];
-				if (txmts != null)
+				IPackedFileDescriptor txmt = ReferenceChains["TXMT"]?.FirstOrDefault();
+				if (txmt != null)
 				{
-					if (txmts.Count > 0)
+					IPackedFileDescriptor pfd = package.FindFile(txmt)
+						?? package.FindFile(txmt.Filename, Data.MetaData.TXMT).FirstOrDefault();
+
+					if (pfd != null)
 					{
-						Interfaces.Files.IPackedFileDescriptor pfd = package.FindFile(
-							(Interfaces.Files.IPackedFileDescriptor)txmts[0]
-						);
-						if (pfd == null) //fallback code
+						GenericRcol txmtfile = new GenericRcol(null, false);
+						txmtfile.ProcessData(pfd, package);
+
+						return txmtfile;
+					}
+					else //FileTable fallback code
+					{
+						Interfaces.Scenegraph.IScenegraphFileIndexItem item =
+							FileTableBase.FileIndex.FindFileDiscardingGroup(txmt).FirstOrDefault();
+						if (item != null)
 						{
-							Interfaces.Files.IPackedFileDescriptor[] pfds =
-								package.FindFile(
-									(
-										(Interfaces.Files.IPackedFileDescriptor)txmts[0]
-									).Filename,
-									Data.MetaData.TXMT
-								);
-							if (pfds.Length > 0)
-							{
-								pfd = pfds[0];
-							}
-						}
+							GenericRcol txmtfile = new GenericRcol(null, false);
+							txmtfile.ProcessData(
+								item.FileDescriptor,
+								item.Package
+							);
 
-						if (pfd != null)
-						{
-							GenericRcol txmt = new GenericRcol(null, false);
-							txmt.ProcessData(pfd, package);
-
-							return txmt;
-						}
-
-						if (pfd == null) //FileTable fallback code
-						{
-							Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-								FileTableBase.FileIndex.FindFileDiscardingGroup(
-									(Interfaces.Files.IPackedFileDescriptor)txmts[0]
-								);
-							if (items.Length > 0)
-							{
-								GenericRcol txmt = new GenericRcol(null, false);
-								txmt.ProcessData(
-									items[0].FileDescriptor,
-									items[0].Package
-								);
-
-								return txmt;
-							}
+							return txmtfile;
 						}
 					}
 				}
@@ -249,59 +208,35 @@ namespace SimPe.Plugin
 		/// <returns>the Texture or null</returns>
 		public GenericRcol GetTxtr(GenericRcol txmt)
 		{
-			if (txmt == null)
+			IPackedFileDescriptor txtr = txmt?.ReferenceChains["stdMatBaseTextureName"]?.FirstOrDefault();
+			if (txtr != null)
 			{
-				return null;
-			}
+				IPackedFileDescriptor pfd = package.FindFile(txtr)
+					?? package.FindFile(txtr.Filename, Data.MetaData.TXMT).FirstOrDefault();
 
-			Hashtable refs = txmt.ReferenceChains;
-			ArrayList txtrs = (ArrayList)refs["stdMatBaseTextureName"]; //["TXTR"];
-			if (txtrs != null)
-			{
-				if (txtrs.Count > 0)
+				if (pfd != null)
 				{
-					Interfaces.Files.IPackedFileDescriptor pfd = package.FindFile(
-						(Interfaces.Files.IPackedFileDescriptor)txtrs[0]
-					);
-					if (pfd == null) //fallback code
-					{
-						Interfaces.Files.IPackedFileDescriptor[] pfds =
-							package.FindFile(
-								(
-									(Interfaces.Files.IPackedFileDescriptor)txtrs[0]
-								).Filename,
-								Data.MetaData.TXTR
-							);
-						if (pfds.Length > 0)
-						{
-							pfd = pfds[0];
-						}
-					}
-					if (pfd != null)
-					{
-						GenericRcol txtr = new GenericRcol(null, false);
-						txtr.ProcessData(pfd, package);
+					GenericRcol txtrfile = new GenericRcol(null, false);
+					txtrfile.ProcessData(pfd, package);
 
-						return txtr;
-					}
-
-					if (pfd == null) //FileTable fallback code
+					return txtrfile;
+				}
+				else //FileTable fallback code
+				{
+					Interfaces.Scenegraph.IScenegraphFileIndexItem item =
+						FileTableBase.FileIndex.FindFileDiscardingGroup(txtr).FirstOrDefault();
+					if (item != null)
 					{
-						Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-							FileTableBase.FileIndex.FindFileDiscardingGroup(
-								(Interfaces.Files.IPackedFileDescriptor)txtrs[0]
-							);
-						if (items.Length > 0)
-						{
-							GenericRcol txtr = new GenericRcol(null, false);
-							txtr.ProcessData(items[0].FileDescriptor, items[0].Package);
+						GenericRcol txtrfile = new GenericRcol(null, false);
+						txtrfile.ProcessData(
+							item.FileDescriptor,
+							item.Package
+						);
 
-							return txtr;
-						}
+						return txtrfile;
 					}
 				}
 			}
-
 			return null;
 		}
 
@@ -312,93 +247,42 @@ namespace SimPe.Plugin
 		/// You should store this value in a temp var if you need it multiple times,
 		/// as the File is reloaded with each call
 		/// </remarks>
-		public GenericRcol TXTR
-		{
-			get
-			{
-				GenericRcol txmt = TXMT;
-				return GetTxtr(txmt);
-			}
-		}
+		public GenericRcol TXTR => GetTxtr(TXMT);
 
-		protected void FindRcolr(Interfaces.Files.IPackedFileDescriptor pfd)
+		protected void FindRcolr(IPackedFileDescriptor pfd)
 		{
 		}
 
 		protected GenericRcol GetGmdc()
 		{
-			GenericRcol rcol = CRES;
-			if (rcol != null)
+			IPackedFileDescriptor shp = CRES?.ReferenceChains["Generic"]?.FirstOrDefault();
+			Interfaces.Scenegraph.IScenegraphFileIndexItem item = FileTableBase.FileIndex.FindFile(shp, null).FirstOrDefault();
+			if (item != null)
 			{
-				Hashtable refs = rcol.ReferenceChains;
-				ArrayList shps = (ArrayList)refs["Generic"];
-				if (shps != null)
+				GenericRcol shpe = new GenericRcol(null, false);
+				shpe.ProcessData(item.FileDescriptor, item.Package);
+				IPackedFileDescriptor gmnd = shpe.ReferenceChains["Models"]?.FirstOrDefault();
+				if (gmnd != null)
 				{
-					if (shps.Count > 0)
+					Interfaces.Scenegraph.IScenegraphFileIndexItem item1 = FileTableBase.FileIndex.FindFile(gmnd, null).FirstOrDefault();
+					if (item1 != null)
 					{
-						Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-							FileTableBase.FileIndex.FindFile(
-								(Interfaces.Files.IPackedFileDescriptor)shps[0],
-								null
-							);
-						if (items.Length > 0)
+						GenericRcol gmndfile = new GenericRcol(null, false);
+						gmndfile.ProcessData(item1.FileDescriptor, item1.Package);
+						IPackedFileDescriptor gmdc = gmndfile.ReferenceChains["Generic"]?.FirstOrDefault();
+						if (gmdc != null)
 						{
-							GenericRcol shpe = new GenericRcol(null, false);
-							shpe.ProcessData(items[0].FileDescriptor, items[0].Package);
-
-							refs = shpe.ReferenceChains;
-							ArrayList gmnds = (ArrayList)refs["Models"];
-							if (gmnds != null)
+							Interfaces.Scenegraph.IScenegraphFileIndexItem item2 = FileTableBase.FileIndex.FindFile(gmdc, null).FirstOrDefault();
+							if (item2 != null)
 							{
-								if (gmnds.Count > 0)
-								{
-									items = FileTableBase.FileIndex.FindFile(
-										(Interfaces.Files.IPackedFileDescriptor)
-											gmnds[0],
-										null
-									);
-									if (items.Length > 0)
-									{
-										GenericRcol gmnd = new GenericRcol(null, false);
-										gmnd.ProcessData(
-											items[0].FileDescriptor,
-											items[0].Package
-										);
-
-										refs = gmnd.ReferenceChains;
-										ArrayList gmdcs = (ArrayList)refs["Generic"];
-										if (gmdcs != null)
-										{
-											if (gmdcs.Count > 0)
-											{
-												items = FileTableBase.FileIndex.FindFile(
-													(Interfaces.Files.IPackedFileDescriptor)
-														gmdcs[0],
-													null
-												);
-												if (items.Length > 0)
-												{
-													GenericRcol gmdc = new GenericRcol(
-														null,
-														false
-													);
-													gmdc.ProcessData(
-														items[0].FileDescriptor,
-														items[0].Package
-													);
-
-													return gmdc;
-												}
-											}
-										}
-									}
-								}
+								GenericRcol gmdcfile = new GenericRcol(null, false);
+								gmdcfile.ProcessData(item2.FileDescriptor, item2.Package);
+								return gmdcfile;
 							}
 						}
 					}
 				}
 			}
-
 			return null;
 		}
 
@@ -421,17 +305,15 @@ namespace SimPe.Plugin
 					+ "; subset="
 					+ SubsetName
 					+ "; references=";
-				Hashtable map = ReferenceChains;
+				Dictionary<string, List<IPackedFileDescriptor>> map = ReferenceChains;
 				foreach (string s in map.Keys)
 				{
 					str += s + ":";
-					foreach (
-						Interfaces.Files.IPackedFileDescriptor pfd in (ArrayList)map[s]
-					)
+					foreach (IPackedFileDescriptor pfd in map[s])
 					{
 						str += pfd.Filename + " (" + pfd.ToString() + ") | ";
 					}
-					if (((ArrayList)map[s]).Count > 0)
+					if (map[s].Count > 0)
 					{
 						str = str.Substring(0, str.Length - 2);
 					}
@@ -449,11 +331,11 @@ namespace SimPe.Plugin
 
 		#region IScenegraphItem Member
 
-		public Hashtable ReferenceChains
+		public Dictionary<string, List<IPackedFileDescriptor>> ReferenceChains
 		{
 			get
 			{
-				Hashtable refmap = new Hashtable();
+				Dictionary<string, List<IPackedFileDescriptor>> refmap = new Dictionary<string, List<IPackedFileDescriptor>>();
 				ReferencedItems(refmap, FileDescriptor.Group);
 				return refmap;
 			}

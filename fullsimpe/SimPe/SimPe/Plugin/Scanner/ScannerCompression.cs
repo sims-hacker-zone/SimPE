@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Collections.Generic;
 
 using SimPe.Cache;
 using SimPe.Interfaces.Plugin.Scanner;
@@ -48,9 +49,11 @@ namespace SimPe.Plugin.Scanner
 			System.Windows.Forms.ListViewItem lvi
 		)
 		{
-			ps.Data = new uint[1];
+			ps.Data = new List<uint>
+			{
+				[0] = (uint)HealthState.Ok
+			};
 			ps.State = TriState.True;
-			ps.Data[0] = (uint)HealthState.Ok;
 			if (
 				si.Package.Header.Version != 0x100000001
 				&& si.Package.Header.Version != 0x100000002
@@ -206,7 +209,7 @@ namespace SimPe.Plugin.Scanner
 					Uid,
 					true
 				);
-				if ((ps.State != TriState.Null) && (ps.Data.Length > 0))
+				if ((ps.State != TriState.Null) && (ps.Data.Count > 0))
 				{
 					if ((HealthState)ps.Data[0] == HealthState.WrongCompressionSize) // if ((HealthState)ps.Data[0]!=HealthState.Ok)
 					{
@@ -271,7 +274,7 @@ namespace SimPe.Plugin.Scanner
 						Uid,
 						true
 					);
-					if ((ps.State != TriState.Null) && (ps.Data.Length > 0))
+					if ((ps.State != TriState.Null) && (ps.Data.Count > 0))
 					{
 						if ((HealthState)ps.Data[0] != HealthState.Ok)
 						{

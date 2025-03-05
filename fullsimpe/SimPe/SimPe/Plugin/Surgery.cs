@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.ComponentModel;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 using SimPe.Data;
@@ -483,7 +484,7 @@ namespace SimPe.Plugin
 
 			if (
 				sdesc.CharacterDescription.ServiceTypes
-				== Data.MetaData.ServiceTypes.TinySim
+				== MetaData.ServiceTypes.TinySim
 			)
 			{
 				return;
@@ -511,7 +512,7 @@ namespace SimPe.Plugin
 			if (
 				cbadults.Checked
 				&& sdesc.CharacterDescription.LifeSection
-					!= Data.MetaData.LifeSections.Adult
+					!= MetaData.LifeSections.Adult
 			)
 			{
 				return;
@@ -519,7 +520,7 @@ namespace SimPe.Plugin
 
 			if (
 				cbmens.Checked
-				&& sdesc.CharacterDescription.Gender == Data.MetaData.Gender.Female
+				&& sdesc.CharacterDescription.Gender == MetaData.Gender.Female
 			)
 			{
 				return;
@@ -527,7 +528,7 @@ namespace SimPe.Plugin
 
 			if (
 				cbgals.Checked
-				&& sdesc.CharacterDescription.Gender == Data.MetaData.Gender.Male
+				&& sdesc.CharacterDescription.Gender == MetaData.Gender.Male
 			)
 			{
 				return;
@@ -570,8 +571,8 @@ namespace SimPe.Plugin
 				skinfiles = new Hashtable();
 				ArrayList tones = new ArrayList();
 				FileTableBase.FileIndex.Load();
-				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-					FileTableBase.FileIndex.FindFile(Data.MetaData.GZPS, true);
+				System.Collections.Generic.IEnumerable<Interfaces.Scenegraph.IScenegraphFileIndexItem> items =
+					FileTableBase.FileIndex.FindFile(MetaData.GZPS, true);
 				foreach (
 					Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
 				)
@@ -584,8 +585,8 @@ namespace SimPe.Plugin
 						&& (
 							(
 								skin.GetSaveItem("category").UIntegerValue
-								& (uint)Data.SkinCategories.Skin
-							) == (uint)Data.SkinCategories.Skin
+								& (uint)SkinCategories.Skin
+							) == (uint)SkinCategories.Skin
 						)
 					)
 					{
@@ -612,7 +613,7 @@ namespace SimPe.Plugin
 							)
 							&& skin.GetSaveItem("gender").UIntegerValue == 1
 							&& skin.GetSaveItem("age").UIntegerValue
-								== (uint)Data.Ages.Adult
+								== (uint)Ages.Adult
 						)
 						{
 							WaitingScreen.UpdateMessage(
@@ -628,17 +629,17 @@ namespace SimPe.Plugin
 								tones.Add(st);
 							}
 
-							Interfaces.Scenegraph.IScenegraphFileIndexItem[] idr =
+							Interfaces.Scenegraph.IScenegraphFileIndexItem idr =
 								FileTableBase.FileIndex.FindFile(
 									0xAC506764,
 									item.FileDescriptor.Group,
 									item.FileDescriptor.LongInstance,
 									null
-								);
-							if (idr.Length > 0)
+								).FirstOrDefault();
+							if (idr != null)
 							{
 								ThreeIdr reffile = new ThreeIdr();
-								reffile.ProcessData(idr[0]);
+								reffile.ProcessData(idr);
 
 								ListViewItem lvi = new ListViewItem(
 									skin.GetSaveItem("name").StringValue
@@ -656,17 +657,17 @@ namespace SimPe.Plugin
 									Interfaces.Files.IPackedFileDescriptor pfd in reffile.Items
 								)
 								{
-									if (pfd.Type == Data.MetaData.TXMT)
+									if (pfd.Type == MetaData.TXMT)
 									{
-										Interfaces.Scenegraph.IScenegraphFileIndexItem[] txmts =
-											FileTableBase.FileIndex.FindFile(pfd, null);
-										if (txmts.Length > 0)
+										Interfaces.Scenegraph.IScenegraphFileIndexItem txmt =
+											FileTableBase.FileIndex.FindFile(pfd, null).FirstOrDefault();
+										if (txmt != null)
 										{
 											Rcol rcol = new GenericRcol(
 												null,
 												false
 											);
-											rcol.ProcessData(txmts[0]);
+											rcol.ProcessData(txmt);
 
 											MaterialDefinition md = (MaterialDefinition)
 												rcol.Blocks[0];
@@ -678,8 +679,8 @@ namespace SimPe.Plugin
 											Interfaces.Scenegraph.IScenegraphFileIndexItem txtri =
 												FileTableBase.FileIndex.FindFileByName(
 													txtrname,
-													Data.MetaData.TXTR,
-													Data.MetaData.LOCAL_GROUP,
+													MetaData.TXTR,
+													MetaData.LOCAL_GROUP,
 													true
 												);
 											if (txtri != null)
@@ -758,7 +759,7 @@ namespace SimPe.Plugin
 			lv.Items.Clear();
 
 			Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(
-				Data.MetaData.SIM_DESCRIPTION_FILE
+				MetaData.SIM_DESCRIPTION_FILE
 			);
 			WaitingScreen.Wait();
 			try
@@ -1133,7 +1134,7 @@ namespace SimPe.Plugin
 							patient.Add(pfd);
 
 							if (
-								(pfd.Type == Data.MetaData.GZPS)
+								(pfd.Type == MetaData.GZPS)
 								|| (pfd.Type == 0xAC598EAC)
 							) //property set and 3IDR
 							{
@@ -1158,7 +1159,7 @@ namespace SimPe.Plugin
 									};
 									ci.UIntegerValue = (
 											cpf.GetSaveItem("age").UIntegerValue
-											& (uint)Data.Ages.YoungAdult
+											& (uint)Ages.YoungAdult
 										) != 0
 										? 2
 										: (uint)1;
@@ -1293,7 +1294,7 @@ namespace SimPe.Plugin
 			ArrayList list = new ArrayList
 			{
 				0xAC506764u, //3IDR
-				Data.MetaData.GZPS, //GZPS, Property Set
+				MetaData.GZPS, //GZPS, Property Set
 				0xAC598EACu, //AGED
 				0xCCCEF852u //LxNR, Face
 			};
@@ -1357,7 +1358,7 @@ namespace SimPe.Plugin
 			lv.Items.Clear();
 
 			Interfaces.Files.IPackedFileDescriptor[] pfds = ngbh.FindFiles(
-				Data.MetaData.SIM_DESCRIPTION_FILE
+				MetaData.SIM_DESCRIPTION_FILE
 			);
 			WaitingScreen.Wait();
 			try
@@ -1405,7 +1406,7 @@ namespace SimPe.Plugin
 				Interfaces.Files.IPackedFileDescriptor pfdAged = package.FindFile(
 					0xAC598EAC,
 					0,
-					Data.MetaData.LOCAL_GROUP,
+					MetaData.LOCAL_GROUP,
 					1
 				);
 				if (pfdAged != null)
@@ -1429,7 +1430,7 @@ namespace SimPe.Plugin
 			Interfaces.Files.IPackedFileDescriptor pfdAged = package.FindFile(
 				0xAC598EAC,
 				0,
-				Data.MetaData.LOCAL_GROUP,
+				MetaData.LOCAL_GROUP,
 				1
 			);
 			if (pfdAged != null)
@@ -1511,7 +1512,7 @@ namespace SimPe.Plugin
 		Cpf ageData;
 
 		[Category("General")]
-		public Data.Ages Age => (Data.Ages)ageData.GetItem("age").UIntegerValue;
+		public Ages Age => (Ages)ageData.GetItem("age").UIntegerValue;
 
 		[Category("General")]
 		public Data.SimGender Gender => (Data.SimGender)ageData.GetItem("gender").UIntegerValue;
@@ -1538,8 +1539,8 @@ namespace SimPe.Plugin
 		public string Skin => ageData.GetItem("skincolor").StringValue;
 
 		[Category("Genetics")]
-		public string Bodyshape => Data.MetaData.GetBodyName(
-					Data.MetaData.GetBodyShapeid(
+		public string Bodyshape => MetaData.GetBodyName(
+					MetaData.GetBodyShapeid(
 						ageData.GetItem("skincolor").StringValue
 					)
 				);

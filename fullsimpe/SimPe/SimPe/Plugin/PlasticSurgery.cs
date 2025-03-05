@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections;
+using System.Linq;
 
 using SimPe.Data;
 using SimPe.Interfaces.Files;
@@ -538,12 +539,12 @@ namespace SimPe.Plugin
 
 				if (pfd.Type == MetaData.GZPS)
 				{
-					Interfaces.Scenegraph.IScenegraphFileIndexItem[] fii =
-						FileTableBase.FileIndex.FindFile(pfd, reffile.Package);
-					if (fii.Length > 0)
+					Interfaces.Scenegraph.IScenegraphFileIndexItem fii =
+						FileTableBase.FileIndex.FindFile(pfd, reffile.Package).FirstOrDefault();
+					if (fii != null)
 					{
 						Cpf skinfile = new Cpf();
-						skinfile.ProcessData(fii[0]);
+						skinfile.ProcessData(fii);
 
 						reffile.Items[i] = UpdateSkintone(skinfile, skin, skinfiles);
 					}

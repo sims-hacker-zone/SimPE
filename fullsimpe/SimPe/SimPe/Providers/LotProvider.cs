@@ -3,6 +3,7 @@
 using System;
 using System.Collections;
 using System.IO;
+using System.Linq;
 using System.Threading;
 
 using Ambertation.Threading;
@@ -210,9 +211,7 @@ namespace SimPe.Providers
 			: base()
 		{
 			BaseFolder = folder;
-
-			ArrayList folders = new ArrayList();
-			lotfi = new Plugin.FileIndex(folders);
+			lotfi = new Plugin.FileIndex(new System.Collections.Generic.List<FileTableItem>());
 			ngbhfi = lotfi.AddNewChild();
 		}
 
@@ -259,7 +258,7 @@ namespace SimPe.Providers
 		protected override void StartThread()
 		{
 			lotfi.Load();
-			Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+			var items =
 				lotfi.FindFile(0x856DDBAC, Data.MetaData.LOCAL_GROUP, 0x35CA0002, null);
 			bool run = Wait.Running;
 			if (!run)
@@ -267,7 +266,7 @@ namespace SimPe.Providers
 				Wait.Start();
 			}
 
-			Wait.SubStart(items.Length);
+			Wait.SubStart(items.Count());
 			try
 			{
 				int ct = 0;
@@ -311,24 +310,14 @@ namespace SimPe.Providers
 
 					uint inst = GetInstanceFromFilename(pkg.SaveFileName);
 
-					Interfaces.Scenegraph.IScenegraphFileIndexItem[] ltxtitems =
-						ngbhfi.FindFile(
+
+					LotItem li = new LotItem(inst, name, pic.Image, ngbhfi.FindFile(
 							0x0BF999E7,
 							Data.MetaData.LOCAL_GROUP,
 							inst,
 							null
-						);
-					Interfaces.Scenegraph.IScenegraphFileIndexItem ltxt = null;
-					if (ltxtitems.Length > 0)
-					{
-						ltxt = ltxtitems[0];
-					}
-
-					LotItem li = new LotItem(inst, name, pic.Image, ltxt);
-					if (LoadingLot != null)
-					{
-						LoadingLot(this, li);
-					}
+						).FirstOrDefault());
+					LoadingLot?.Invoke(this, li);
 
 					content[li.Instance] = li;
 					ct++;

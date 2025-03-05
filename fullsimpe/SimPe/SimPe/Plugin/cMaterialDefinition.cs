@@ -2,7 +2,10 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
+using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Scenegraph;
 
 namespace SimPe.Plugin
@@ -324,25 +327,20 @@ namespace SimPe.Plugin
 
 		#region IScenegraphBlock Member
 
-		public void ReferencedItems(Hashtable refmap, uint parentgroup)
+		public void ReferencedItems(Dictionary<string, List<IPackedFileDescriptor>> refmap, uint parentgroup)
 		{
-			ArrayList list = new ArrayList();
-			foreach (string name in Listing)
-			{
-				list.Add(
-					ScenegraphHelper.BuildPfd(
-						name + "_txtr",
-						ScenegraphHelper.TXTR,
-						parentgroup
-					)
-				);
-			}
-			refmap["TXTR"] = list;
+			List<IPackedFileDescriptor> list = new List<IPackedFileDescriptor>();
+			refmap["TXTR"] = (from name in Listing
+							  select ScenegraphHelper.BuildPfd(
+										  name + "_txtr",
+										  ScenegraphHelper.TXTR,
+										  parentgroup
+									  )).ToList();
 
 			string refname = GetProperty("stdMatBaseTextureName").Value;
 			if (refname.Trim() != "")
 			{
-				list = new ArrayList
+				refmap["stdMatBaseTextureName"] = new List<IPackedFileDescriptor>
 				{
 					ScenegraphHelper.BuildPfd(
 						refname + "_txtr",
@@ -350,13 +348,12 @@ namespace SimPe.Plugin
 						parentgroup
 					)
 				};
-				refmap["stdMatBaseTextureName"] = list;
 			}
 
 			refname = GetProperty("stdMatNormalMapTextureName").Value;
 			if (refname.Trim() != "")
 			{
-				list = new ArrayList
+				refmap["stdMatNormalMapTextureName"] = new List<IPackedFileDescriptor>
 				{
 					ScenegraphHelper.BuildPfd(
 						refname + "_txtr",
@@ -364,13 +361,12 @@ namespace SimPe.Plugin
 						parentgroup
 					)
 				};
-				refmap["stdMatNormalMapTextureName"] = list;
 			}
 
 			refname = GetProperty("stdMatEnvCubeTextureName").Value;
 			if (refname.Trim() != "")
 			{
-				list = new ArrayList
+				refmap["stdMatEnvCubeTextureName"] = new List<IPackedFileDescriptor>
 				{
 					ScenegraphHelper.BuildPfd(
 						refname + "_txtr",
@@ -378,7 +374,6 @@ namespace SimPe.Plugin
 						parentgroup
 					)
 				};
-				refmap["stdMatEnvCubeTextureName"] = list;
 			}
 
 			//for characters
@@ -394,7 +389,7 @@ namespace SimPe.Plugin
 				}
 			}
 			catch { }
-			list = new ArrayList();
+			list = new List<IPackedFileDescriptor>();
 			refmap["baseTexture"] = list;
 			for (int i = 0; i < count; i++)
 			{

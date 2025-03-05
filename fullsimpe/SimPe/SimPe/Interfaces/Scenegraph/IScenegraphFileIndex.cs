@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Collections.Generic;
 
 namespace SimPe.Interfaces.Scenegraph
 {
@@ -137,7 +138,7 @@ namespace SimPe.Interfaces.Scenegraph
 		/// </summary>
 		/// <param name="pfd">The File you are looking for</param>
 		/// <returns>all FileIndexItems</returns>
-		IScenegraphFileIndexItem[] FindFile(
+		IEnumerable<IScenegraphFileIndexItem> FindFile(
 			Files.IPackedFileDescriptor pfd,
 			Files.IPackageFile pkg
 		);
@@ -148,7 +149,7 @@ namespace SimPe.Interfaces.Scenegraph
 		/// <param name="type">the Type of the Files</param>
 		/// <param name="nolocal">true, if you don't want to get local Files (group=0xffffffff) returned</param>
 		/// <returns>all FileIndexItems</returns>
-		IScenegraphFileIndexItem[] FindFile(uint type, bool nolocal);
+		IEnumerable<IScenegraphFileIndexItem> FindFile(uint type, bool nolocal);
 
 		/// <summary>
 		/// Returns all matching FileIndexItems for the passed type
@@ -156,7 +157,7 @@ namespace SimPe.Interfaces.Scenegraph
 		/// <param name="type">the Type of the Files</param>
 		/// <param name="group">the Group of the Files</param>
 		/// <returns>all FileIndexItems</returns>
-		IScenegraphFileIndexItem[] FindFile(uint type, uint group);
+		IEnumerable<IScenegraphFileIndexItem> FindFile(uint type, uint group);
 
 		/// <summary>
 		/// Return all matching FileIndexItems (by Instance)
@@ -164,7 +165,7 @@ namespace SimPe.Interfaces.Scenegraph
 		/// <param name="group">The Group you are looking for</param>
 		/// <param name="instance">The instance you are looking for</param>
 		/// <returns>all FileIndexItems</returns>
-		IScenegraphFileIndexItem[] FindFileByGroupAndInstance(
+		IEnumerable<IScenegraphFileIndexItem> FindFileByGroupAndInstance(
 			uint group,
 			ulong instance
 		);
@@ -176,7 +177,7 @@ namespace SimPe.Interfaces.Scenegraph
 		/// <param name="group">the Group of the Files</param>
 		/// <param name="instance">Instance Number of the File</param>
 		/// <returns>all FileIndexItems</returns>
-		IScenegraphFileIndexItem[] FindFile(
+		IEnumerable<IScenegraphFileIndexItem> FindFile(
 			uint type,
 			uint group,
 			ulong instance,
@@ -190,7 +191,7 @@ namespace SimPe.Interfaces.Scenegraph
 		/// <param name="group">the Group of the Files</param>
 		/// <param name="instance">Instance Number of the File</param>
 		/// <returns>all FileIndexItems</returns>
-		IScenegraphFileIndexItem[] FindFileDiscardingHighInstance(
+		IEnumerable<IScenegraphFileIndexItem> FindFileDiscardingHighInstance(
 			uint type,
 			uint group,
 			uint instance,
@@ -202,7 +203,7 @@ namespace SimPe.Interfaces.Scenegraph
 		/// </summary>
 		/// <param name="pfd">The File you are looking for</param>
 		/// <returns>all FileIndexItems</returns>
-		IScenegraphFileIndexItem[] FindFileDiscardingGroup(
+		IEnumerable<IScenegraphFileIndexItem> FindFileDiscardingGroup(
 			Files.IPackedFileDescriptor pfd
 		);
 
@@ -212,21 +213,21 @@ namespace SimPe.Interfaces.Scenegraph
 		/// <param name="type">the Type of the Files</param>
 		/// <param name="instance">Instance Number of the File</param>
 		/// <returns>all FileIndexItems</returns>
-		IScenegraphFileIndexItem[] FindFileDiscardingGroup(uint type, ulong instance);
+		IEnumerable<IScenegraphFileIndexItem> FindFileDiscardingGroup(uint type, ulong instance);
 
 		/// <summary>
 		/// Return all matching FileIndexItems (by Instance)
 		/// </summary>
 		/// <param name="pfd">The File you are looking for</param>
 		/// <returns>all FileIndexItems</returns>
-		IScenegraphFileIndexItem[] FindFileByInstance(ulong instance);
+		IEnumerable<IScenegraphFileIndexItem> FindFileByInstance(ulong instance);
 
 		/// <summary>
 		/// Return all matching FileIndexItems (by Instance)
 		/// </summary>
 		/// <param name="group">The Group you are looking for</param>
 		/// <returns>all FileIndexItems</returns>
-		IScenegraphFileIndexItem[] FindFileByGroup(uint group);
+		IEnumerable<IScenegraphFileIndexItem> FindFileByGroup(uint group);
 
 		/// <summary>
 		/// Looks for a File based on the Filename
@@ -265,7 +266,7 @@ namespace SimPe.Interfaces.Scenegraph
 		/// Sort the Files in this type ascending by instance value
 		/// </summary>
 		/// <param name="files">The Files you want to sort</param>
-		IScenegraphFileIndexItem[] Sort(IScenegraphFileIndexItem[] files);
+		IEnumerable<IScenegraphFileIndexItem> Sort(IEnumerable<IScenegraphFileIndexItem> files);
 
 		/// <summary>
 		/// Stores the current State of the FileIndex.
@@ -299,7 +300,7 @@ namespace SimPe.Interfaces.Scenegraph
 		/// <summary>
 		/// Returns the List of all Folders this FileIndex is processing
 		/// </summary>
-		System.Collections.ArrayList BaseFolders
+		List<FileTableItem> BaseFolders
 		{
 			get; set;
 		}

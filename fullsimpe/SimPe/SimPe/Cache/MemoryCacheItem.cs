@@ -1,5 +1,6 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 
@@ -21,7 +22,6 @@ namespace SimPe.Cache
 			Version = VERSION;
 			Name = "";
 			pfd = new Packages.PackedFileDescriptor();
-			valuenames = new string[0];
 		}
 
 		Interfaces.Files.IPackedFileDescriptor pfd;
@@ -53,22 +53,13 @@ namespace SimPe.Cache
 		{
 			get; set;
 		}
-
-		string[] valuenames;
-		public string[] ValueNames
+		public List<string> ValueNames
 		{
-			get => valuenames;
-			set
-			{
-				valuenames = value;
-				if (valuenames == null)
-				{
-					valuenames = new string[0];
-				}
-			}
-		}
+			get;
+			set;
+		} = new List<string>();
 
-		string objdname;
+		private string objdname;
 		public string ObjdName
 		{
 			get => objdname ?? Name;
@@ -154,7 +145,7 @@ namespace SimPe.Cache
 
 		#region ICacheItem Member
 
-		public void Load(BinaryReader reader)
+		public ICacheItem Load(BinaryReader reader)
 		{
 			Version = reader.ReadByte();
 			if (Version > VERSION)
@@ -168,15 +159,10 @@ namespace SimPe.Cache
 			if (Version >= 3)
 			{
 				int ct = reader.ReadUInt16();
-				valuenames = new string[ct];
 				for (int i = 0; i < ct; i++)
 				{
-					valuenames[i] = reader.ReadString();
+					ValueNames.Add(reader.ReadString());
 				}
-			}
-			else
-			{
-				valuenames = new string[0];
 			}
 
 			ObjectType = (Data.ObjectTypes)reader.ReadUInt16();
@@ -189,17 +175,9 @@ namespace SimPe.Cache
 			Guid = reader.ReadUInt32();
 
 			int size = reader.ReadInt32();
-			if (size == 0)
-			{
-				Icon = null;
-			}
-			else
-			{
-				byte[] data = reader.ReadBytes(size);
-				MemoryStream ms = new MemoryStream(data);
-
-				Icon = Image.FromStream(ms);
-			}
+			Icon = size == 0 ? null
+							 : Image.FromStream(new MemoryStream(reader.ReadBytes(size)));
+			return this;
 		}
 
 		public void Save(BinaryWriter writer)
@@ -208,8 +186,8 @@ namespace SimPe.Cache
 			writer.Write(Version);
 			writer.Write(Name);
 			writer.Write(objdname);
-			writer.Write((ushort)valuenames.Length);
-			foreach (string s in valuenames)
+			writer.Write((ushort)ValueNames.Count);
+			foreach (string s in ValueNames)
 			{
 				writer.Write(s);
 			}

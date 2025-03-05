@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -354,7 +355,7 @@ namespace SimPe.Plugin
 		}
 
 		#region Cache Handling
-		Cache.ObjectLoaderCacheFile cachefile;
+		Cache.Cache cachefile => Cache.Cache.GlobalCache;
 		bool cachechg;
 
 		/// <summary>
@@ -373,7 +374,6 @@ namespace SimPe.Plugin
 			}
 
 			cachechg = false;
-			cachefile = new Cache.ObjectLoaderCacheFile();
 
 			if (!Helper.WindowsRegistry.UseCache)
 			{
@@ -381,19 +381,8 @@ namespace SimPe.Plugin
 			}
 
 			WaitingScreen.UpdateMessage("Loading Cache");
-			try
-			{
-				cachefile.Load(CacheFileName);
-				cachefile.LoadObjects();
-			}
-			catch (Exception ex)
-			{
-				Helper.ExceptionMessage("", ex);
-			}
-			finally
-			{
-				WaitingScreen.Stop();
-			}
+			cachefile.LoadObjects();
+			WaitingScreen.Stop();
 		}
 
 		/// <summary>
@@ -416,7 +405,7 @@ namespace SimPe.Plugin
 				WaitingScreen.UpdateMessage("Saving Cache");
 			}
 
-			cachefile.Save(CacheFileName);
+			cachefile.Save();
 		}
 		#endregion
 
@@ -1392,7 +1381,7 @@ namespace SimPe.Plugin
 		/// <param name="objpkg">The Object Package you wanna process</param>
 		/// <param name="package">The package that should get the Files</param>
 		/// <returns>The Modlename of that Object or null if none</returns>
-		public static string[] BaseClone(
+		public static List<string> BaseClone(
 			Interfaces.Files.IPackedFileDescriptor pfd,
 			uint localgroup,
 			Packages.File package
@@ -1400,11 +1389,9 @@ namespace SimPe.Plugin
 		{
 			//Get the Base Object Data from the Objects.package File
 
-			Interfaces.Scenegraph.IScenegraphFileIndexItem[] files =
-				FileTableBase.FileIndex.FindFileByGroup(localgroup);
 
-			ArrayList list = new ArrayList();
-			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in files)
+			List<string> list = new List<string>();
+			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in FileTableBase.FileIndex.FindFileByGroup(localgroup))
 			{
 				Interfaces.Files.IPackedFile file = item.Package.Read(
 					item.FileDescriptor
@@ -1438,11 +1425,7 @@ namespace SimPe.Plugin
 					//if (items.Length>1) refname = items[1].Title;
 				}
 			}
-
-			string[] refname = new string[list.Count];
-			list.CopyTo(refname);
-
-			return refname;
+			return list;
 		}
 
 		/// <summary>
@@ -1464,7 +1447,7 @@ namespace SimPe.Plugin
 			);
 
 			//Get the Base Object Data from the Objects.package File
-			string[] modelname = BaseClone(pfd, localgroup, package);
+			List<string> modelname = BaseClone(pfd, localgroup, package);
 			ObjectCloner objclone = new ObjectCloner(package);
 			ArrayList exclude = new ArrayList();
 
@@ -1496,7 +1479,7 @@ namespace SimPe.Plugin
 			//for clones only when cbparent is checked
 			if (cbparent.Checked && (!rbColor.Checked))
 			{
-				string[] names = Scenegraph.LoadParentModelNames(package, true);
+				List<string> names = Scenegraph.LoadParentModelNames(package, true);
 				Packages.File pkg = Packages.File.LoadFromFile(null);
 
 				ObjectCloner pobj = new ObjectCloner(pkg);
@@ -1511,7 +1494,7 @@ namespace SimPe.Plugin
 			//for clones only when cbparent is not checked
 			if ((!cbparent.Checked) && (!rbColor.Checked))
 			{
-				string[] modelnames = modelname;
+				List<string> modelnames = modelname;
 				if (!cbclean.Checked)
 				{
 					modelnames = null;
@@ -1660,7 +1643,7 @@ namespace SimPe.Plugin
 			tbseek.Tag = true;
 			try
 			{
-				string name = tbseek.Text.TrimStart().ToLower();
+				string name = tbseek.Text.TrimStart(new char[] { }).ToLower();
 				if (lbobj.SelectionMode != SelectionMode.One)
 				{
 					lbobj.ClearSelected();
@@ -1671,9 +1654,9 @@ namespace SimPe.Plugin
 					IAlias a = (IAlias)lbobj.Items[i];
 					if (a.Name != null)
 					{
-						if (a.Name.TrimStart().ToLower().StartsWith(name))
+						if (a.Name.TrimStart(new char[] { }).ToLower().StartsWith(name))
 						{
-							tbseek.Text = a.Name.TrimStart();
+							tbseek.Text = a.Name.TrimStart(new char[] { });
 							tbseek.SelectionStart = name.Length;
 							tbseek.SelectionLength = Math.Max(
 								0,
@@ -1683,9 +1666,9 @@ namespace SimPe.Plugin
 							break;
 						}
 
-						if (a.Name.TrimStart().ToLower().StartsWith("* " + name))
+						if (a.Name.TrimStart(new char[] { }).ToLower().StartsWith("* " + name))
 						{
-							tbseek.Text = a.Name.TrimStart();
+							tbseek.Text = a.Name.TrimStart(new char[] { });
 							tbseek.SelectionStart = name.Length + 2;
 							tbseek.SelectionLength = Math.Max(
 								0,

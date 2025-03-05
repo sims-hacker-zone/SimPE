@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
 using Ambertation.Windows.Forms;
@@ -1207,11 +1208,11 @@ namespace SimPe.Plugin
 				)
 					};
 
-				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+				System.Collections.Generic.IEnumerable<Interfaces.Scenegraph.IScenegraphFileIndexItem> items =
 					FileTableBase.FileIndex.FindFileByInstance(pfd.LongInstance);
 
 				//short Index
-				if (items.Length == 0)
+				if (items.Count() == 0)
 				{
 					pfd.SubType = 0;
 					items = FileTableBase.FileIndex.FindFileByInstance(pfd.LongInstance);

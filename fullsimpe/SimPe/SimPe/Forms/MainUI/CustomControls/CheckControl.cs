@@ -3,6 +3,7 @@
 
 using System;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace SimPe.Forms.MainUI.CustomControls
@@ -958,7 +959,7 @@ namespace SimPe.Forms.MainUI.CustomControls
 			CheckItem ci = sender as CheckItem;
 			try
 			{
-				Cache.CacheFile cf = new Cache.CacheFile();
+				Cache.Cache cf = Cache.Cache.GlobalCache;
 				string path = System.IO.Path.Combine(
 					Helper.SimPeDataPath,
 					"objcache.simpepkg"
@@ -968,34 +969,11 @@ namespace SimPe.Forms.MainUI.CustomControls
 					if (System.IO.File.Exists(path))
 					{
 						System.IO.File.Delete(
-							System.IO.Path.Combine(
-								Helper.SimPeDataPath,
-								"objcache.simpepkg"
-							)
+							path
 						);
 					}
 				}
 				catch { }
-
-				path = Helper.SimPeLanguageCache;
-				try
-				{
-					cf.Load(path);
-				}
-				catch (Exception ex)
-				{
-					ci.Details +=
-						Localization.GetString("Check: Unable to load cache")
-						+ Helper.lbr;
-					ci.Details +=
-						"    "
-						+
-							Localization.GetString("Check: Error while load")
-							.Replace("{name}", path)
-						+ Helper.lbr;
-					ci.Details += "    " + ex.Message + Helper.lbr + Helper.lbr;
-					isok = CheckItemState.Fail;
-				}
 			}
 			catch (Exception ex)
 			{
@@ -1028,9 +1006,9 @@ namespace SimPe.Forms.MainUI.CustomControls
 			CheckItem ci = sender as CheckItem;
 			try
 			{
-				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+				System.Collections.Generic.IEnumerable<Interfaces.Scenegraph.IScenegraphFileIndexItem> items =
 					FileTableBase.FileIndex.FindFile(Data.MetaData.OBJD_FILE, true);
-				if (items.Length < 3000)
+				if (items.Count() < 3000)
 				{
 					ci.Details +=
 						Localization.GetString("Check: No Objects") + Helper.lbr;
@@ -1044,7 +1022,7 @@ namespace SimPe.Forms.MainUI.CustomControls
 						0x000041AB,
 						null
 					); //Bed - Double - Loft - D
-					if (items.Length == 0)
+					if (items.Count() == 0)
 					{
 						ci.Details +=
 							Localization.GetString("Check: No Objects")
@@ -1054,7 +1032,7 @@ namespace SimPe.Forms.MainUI.CustomControls
 				}
 
 				items = FileTableBase.FileIndex.FindFile(Data.MetaData.TXMT, true);
-				if (items.Length < 100)
+				if (items.Count() < 100)
 				{
 					ci.Details +=
 						Localization.GetString("Check: No Textures") + Helper.lbr;

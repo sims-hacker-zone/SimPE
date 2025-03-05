@@ -11,7 +11,7 @@ namespace SimPe.Cache
 		/// Load the Item from the Stream
 		/// </summary>
 		/// <param name="reader">the Stream Reader</param>
-		void Load(System.IO.BinaryReader reader);
+		ICacheItem Load(System.IO.BinaryReader reader);
 
 		/// <summary>
 		/// Save the Item to the Stream

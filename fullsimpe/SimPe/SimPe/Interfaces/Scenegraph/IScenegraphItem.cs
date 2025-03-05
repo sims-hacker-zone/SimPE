@@ -1,6 +1,6 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
-using System.Collections;
+using System.Collections.Generic;
 
 namespace SimPe.Interfaces.Scenegraph
 {
@@ -13,7 +13,7 @@ namespace SimPe.Interfaces.Scenegraph
 		/// Returns all Referenced Scenegraph Resources sorted by type of Reference
 		/// </summary>
 		/// <remarks>The Key is the name of the Reference Type, the value is an ArrayList containing all ReferencedFiles</remarks>
-		Hashtable ReferenceChains
+		Dictionary<string, List<Files.IPackedFileDescriptor>> ReferenceChains
 		{
 			get;
 		}

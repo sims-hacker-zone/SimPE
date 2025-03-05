@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Linq;
 
 using SimPe.Cache;
 
@@ -12,23 +13,10 @@ namespace SimPe.PackedFiles.Wrapper
 	[System.ComponentModel.DefaultEvent("SelectedObjectChanged")]
 	public class ObjectComboBox : System.Windows.Forms.UserControl
 	{
-		static MemoryCacheFile cachefile;
-
 		/// <summary>
 		/// Returns the MemoryObject Cache
 		/// </summary>
-		public static MemoryCacheFile ObjectCache
-		{
-			get
-			{
-				if (cachefile == null)
-				{
-					cachefile = MemoryCacheFile.InitCacheFile();
-				}
-
-				return cachefile;
-			}
-		}
+		public static Cache.Cache ObjectCache => Cache.Cache.GlobalCache;
 
 		private System.Windows.Forms.ComboBox cb;
 
@@ -107,75 +95,32 @@ namespace SimPe.PackedFiles.Wrapper
 			cb.BeginUpdate();
 			try
 			{
-				if (!loaded)
-				{
-					return;
-				}
-
-				if (DesignMode)
+				if (!loaded || DesignMode)
 				{
 					return;
 				}
 
 				cb.Items.Clear();
 				cb.Sorted = false;
-				foreach (MemoryCacheItem mci in ObjectCache.List)
-				{
-					bool use = false;
-					if (
-						ShowInventory
-						&& mci.IsInventory
-						&& !mci.IsToken
-						&& !mci.IsMemory
-						&& !mci.IsJobData
-					)
-					{
-						use = true;
-					}
-
-					if (ShowTokens && mci.IsToken)
-					{
-						use = true;
-					}
-
-					if (ShowMemories && !mci.IsToken && mci.IsMemory)
-					{
-						use = true;
-					}
-
-					if (ShowJobData && mci.IsJobData)
-					{
-						use = true;
-					}
-
-					if (ShowAspiration && mci.IsAspiration)
-					{
-						use = true;
-					}
-
-					if (ShowBadge && mci.IsBadge)
-					{
-						use = true;
-					}
-
-					if (ShowSkill && mci.IsSkill)
-					{
-						use = true;
-					}
-
-					if (!use)
-					{
-						continue;
-					}
-
-					Interfaces.IAlias a = new Data.StaticAlias(
-						mci.Guid,
-						mci.Name + " {" + mci.ObjdName + "}",
-						new object[] { mci }
-					);
-
-					cb.Items.Add(a);
-				}
+				Cache.Cache.GlobalCache.InitMemoryCache();
+				cb.Items.AddRange((from container in Cache.Cache.GlobalCache.Items[ContainerType.Memory].Values
+								   from MemoryCacheItem mci in container
+								   where (ShowBadge && mci.IsBadge)
+										|| (ShowSkill && mci.IsSkill)
+										|| (ShowAspiration && mci.IsAspiration)
+										|| (ShowJobData && mci.IsJobData)
+										|| (ShowMemories && !mci.IsToken && mci.IsMemory)
+										|| (ShowTokens && mci.IsToken)
+										|| (ShowInventory
+											&& mci.IsInventory
+											&& !mci.IsToken
+											&& !mci.IsMemory
+											&& !mci.IsJobData)
+								   select new Data.StaticAlias(
+									   mci.Guid,
+									   mci.Name + " {" + mci.ObjdName + "}",
+									   new object[] { mci }
+								   )).ToArray());
 				cb.Sorted = true;
 			}
 			catch (Exception ex)
@@ -362,10 +307,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		private void cb_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (SelectedObjectChanged != null)
-			{
-				SelectedObjectChanged(this, new EventArgs());
-			}
+			SelectedObjectChanged?.Invoke(this, new EventArgs());
 		}
 
 		protected override void OnVisibleChanged(EventArgs e)
