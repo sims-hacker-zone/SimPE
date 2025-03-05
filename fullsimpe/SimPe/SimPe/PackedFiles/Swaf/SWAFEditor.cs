@@ -4,14 +4,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using System.Xml;
 
 using SimPe.Interfaces.Plugin;
-using SimPe.PackedFiles.Swaf;
 using SimPe.PackedFiles.Wrapper;
 
-namespace SimPe.Wants
+namespace SimPe.PackedFiles.Swaf
 {
 	public partial class SWAFEditor : Form, IPackedFileUI
 	{
@@ -93,19 +93,19 @@ namespace SimPe.Wants
 			//    splitContainer1.SplitterDistance = sd;
 
 			cbFileVersion.Items.Clear();
-			foreach (uint v in SWAFWrapper.ValidVersions)
+			foreach (uint v in Enum.GetValues(typeof(SwafVersion)))
 			{
-				cbFileVersion.Items.Add("0x" + Helper.HexString((byte)v));
+				cbFileVersion.Items.Add(v);
 			}
 
 			cbSIVersion.Items.Clear();
-			foreach (uint v in SWAFItem.ValidVersions)
+			foreach (uint v in Enum.GetValues(typeof(SwafItemVersion)))
 			{
-				cbSIVersion.Items.Add("0x" + Helper.HexString((byte)v));
+				cbSIVersion.Items.Add(v);
 			}
 
 			cbSIArgType.Items.Clear();
-			cbSIArgType.Items.AddRange(Enum.GetNames(typeof(SWAFItem.ArgTypes)));
+			cbSIArgType.Items.AddRange(Enum.GetNames(typeof(WantType)));
 
 			#region Want names
 			if (wantNames == null)
@@ -113,7 +113,7 @@ namespace SimPe.Wants
 				List<KeyValuePair<string, uint>> wants =
 					new List<KeyValuePair<string, uint>>();
 				xwnts = new Dictionary<uint, object[]>();
-				pjse.FileTable.Entry[] ae = pjse.FileTable.GFT[XWNTWrapper.XWNTType];
+				pjse.FileTable.Entry[] ae = pjse.FileTable.GFT[Xwnt.Xwnt.XWNTType];
 
 				Wait.Start(ae.Length / 10);
 				Wait.Message = "Want names...";
@@ -125,51 +125,26 @@ namespace SimPe.Wants
 					{
 						Application.DoEvents();
 
-						if (!(e.Wrapper is XWNTWrapper xwnt))
-						{
-							continue;
-						}
-
-						if (xwnt["id"] == null)
-						{
-							continue;
-						}
-
-						uint i = 0;
-						try
-						{
-							i = Convert.ToUInt32(
-								xwnt["id"].Value,
-								xwnt["id"].Value.StartsWith("0x") ? 16 : 10
-							);
-						}
-						catch
-						{
-							continue;
-						}
-						if (xwnts.ContainsKey(i))
+						if (!(e.Wrapper is Xwnt.Xwnt xwnt))
 						{
 							continue;
 						}
 
 						string s = "";
-						if (xwnt["objectType"] != null)
+						s +=
+							(s.Length > 0 ? " " : "")
+							+ "("
+							+ xwnt.ObjectType.ToString()
+							+ ")";
+
+						if (xwnt.Folder != null)
 						{
-							s +=
-								(s.Length > 0 ? " " : "")
-								+ "("
-								+ xwnt["objectType"].Value
-								+ ")";
+							s += (s.Length > 0 ? " " : "") + xwnt.Folder;
 						}
 
-						if (xwnt["folder"] != null)
+						if (xwnt.NodeText != null)
 						{
-							s += (s.Length > 0 ? " " : "") + xwnt["folder"].Value;
-						}
-
-						if (xwnt["nodeText"] != null)
-						{
-							s += (s.Length > 0 ? " / " : "") + xwnt["nodeText"].Value;
+							s += (s.Length > 0 ? " / " : "") + xwnt.NodeText;
 						}
 
 						if (s.Length == 0)
@@ -177,9 +152,9 @@ namespace SimPe.Wants
 							continue;
 						}
 
-						xwnts.Add(i, new object[] { e.FileDescriptor, e.Package });
-						wants.Add(new KeyValuePair<string, uint>(s, i));
-						WantInformation.LoadWant(i);
+						xwnts.Add(xwnt.Id, new object[] { e.FileDescriptor, e.Package });
+						wants.Add(new KeyValuePair<string, uint>(s, xwnt.Id));
+						WantInformation.LoadWant(xwnt.Id);
 					}
 					finally
 					{
@@ -416,19 +391,13 @@ namespace SimPe.Wants
 				components.Dispose();
 			}
 			base.Dispose(disposing);
-			if (setHandler && wrapper != null)
-			{
-				//wrapper.FileDescriptor.DescriptionChanged -= new EventHandler(FileDescriptor_DescriptionChanged);
-				wrapper.WrapperChanged -= new EventHandler(WrapperChanged);
-				setHandler = false;
-			}
 			wrapper = null;
 		}
 
 		#region SWAFEditor
-		private SWAFWrapper wrapper = null;
-		private IDictionary<uint, List<SWAFItem>> history = null;
-		private IList<SWAFItem> current = null;
+		private Swaf wrapper = null;
+		private IDictionary<uint, List<WantItem>> history = null;
+		private IList<WantItem> current = null;
 		private bool setHandler = false;
 		private bool internalchg;
 
@@ -494,32 +463,32 @@ namespace SimPe.Wants
 				: "0x" + Helper.HexString(value);
 		}
 
-		private string ArgValue(SWAFItem i)
+		private string ArgValue(WantItem i)
 		{
-			switch (i.ArgType)
+			switch (i.Type)
 			{
-				case SWAFItem.ArgTypes.None:
+				case WantType.None:
 					return "-";
-				case SWAFItem.ArgTypes.Sim:
-					return SimName(i.Version < 0x08 ? (ushort)0 : i.Sim);
-				case SWAFItem.ArgTypes.Guid:
-					return getName(objectNames, objectIDs, i.Guid);
-				case SWAFItem.ArgTypes.Category:
-					return getName(categoryNames, categoryIDs, i.Category);
-				case SWAFItem.ArgTypes.Skill:
+				case WantType.Sim:
+					return SimName(i.Version < 0x08 ? (ushort)0 : (ushort)i.Value);
+				case WantType.Guid:
+					return getName(objectNames, objectIDs, i.Value);
+				case WantType.Category:
+					return getName(categoryNames, categoryIDs, i.Value);
+				case WantType.Skill:
 					foreach (KeyValuePair<ushort, string> kvp in skills)
 					{
-						if (kvp.Key == i.Skill)
+						if (kvp.Key == i.Value)
 						{
 							return kvp.Value;
 						}
 					}
 
-					return "0x" + Helper.HexString(i.Skill);
-				case SWAFItem.ArgTypes.Badge:
-					return getName(badgeNames, badgeIDs, i.Badge);
-				case SWAFItem.ArgTypes.Career:
-					return getName(careerNames, careerIDs, i.Career);
+					return "0x" + Helper.HexString(i.Value);
+				case WantType.Badge:
+					return getName(badgeNames, badgeIDs, i.Value);
+				case WantType.Career:
+					return getName(careerNames, careerIDs, i.Value);
 			}
 			return "{argValue}";
 		}
@@ -541,22 +510,22 @@ namespace SimPe.Wants
 				: sdsc.SimName + " " + sdsc.SimFamilyName;
 		}
 
-		private ListViewItem MakeLVI(SWAFItem i)
+		private ListViewItem MakeLVI(WantItem i)
 		{
 			ListViewItem lvi = new ListViewItem(
 				new string[]
 				{
 					"" + i.ItemType,
-					getName(wantNames, wantIDs, i.WantId),
+					getName(wantNames, wantIDs, i.Guid),
 					ArgValue(i),
-					"0x" + Helper.HexString(i.Arg2),
-					"0x" + Helper.HexString(i.Counter),
+					"0x" + Helper.HexString(i.Property),
+					"0x" + Helper.HexString(i.Index),
 					"" + i.Score,
 					"" + i.Influence,
-					"0x" + Helper.HexString((byte)i.Flags),
+					"0x" + Helper.HexString((byte)i.Flag),
 					"0x" + Helper.HexString((byte)i.Version),
-					"0x" + Helper.HexString(i.SimID),
-					"" + i.ArgType,
+					"0x" + Helper.HexString(i.SimInstance),
+					"" + i.Type,
 				}
 			)
 			{
@@ -566,17 +535,17 @@ namespace SimPe.Wants
 			return lvi;
 		}
 
-		private bool incItem(SWAFItem.SWAFItemType t)
+		private bool incItem(SwafItemType t)
 		{
 			switch (t)
 			{
-				case SWAFItem.SWAFItemType.Wants:
+				case SwafItemType.Wants:
 					return ckbIncWants.Checked;
-				case SWAFItem.SWAFItemType.Fears:
+				case SwafItemType.Fears:
 					return ckbIncFears.Checked;
-				case SWAFItem.SWAFItemType.LifetimeWants:
+				case SwafItemType.LifetimeWants:
 					return ckbIncLTWants.Checked;
-				case SWAFItem.SWAFItemType.History:
+				case SwafItemType.History:
 					return ckbIncHistory.Checked;
 				default:
 					return false;
@@ -586,15 +555,15 @@ namespace SimPe.Wants
 		private void setLV()
 		{
 			btnAddWant.Enabled =
-				ckbIncWants.Checked && wrapper.Wants.Count < wrapper.MaxWants;
+				ckbIncWants.Checked && wrapper.Wants.Count() < wrapper.MaxWants;
 			btnAddFear.Enabled =
-				ckbIncFears.Checked && wrapper.Fears.Count < wrapper.MaxFears;
+				ckbIncFears.Checked && wrapper.Fears.Count() < wrapper.MaxFears;
 			btnAddLTWant.Enabled = ckbIncLTWants.Checked && wrapper.Version >= 0x05;
 			btnAddHistory.Enabled = ckbIncHistory.Checked;
 
 			lvItems.BeginUpdate();
 			lvItems.Items.Clear();
-			foreach (SWAFItem i in current)
+			foreach (WantItem i in current)
 			{
 				if (incItem(i.ItemType))
 				{
@@ -602,9 +571,9 @@ namespace SimPe.Wants
 				}
 			}
 
-			foreach (KeyValuePair<uint, List<SWAFItem>> kvp in history)
+			foreach (KeyValuePair<uint, List<WantItem>> kvp in history)
 			{
-				foreach (SWAFItem i in kvp.Value)
+				foreach (WantItem i in kvp.Value)
 				{
 					if (incItem(i.ItemType))
 					{
@@ -616,12 +585,12 @@ namespace SimPe.Wants
 			lvItems.EndUpdate();
 		}
 
-		private void SISimID2(SWAFItem i)
+		private void SISimID2(WantItem i)
 		{
 			Image noone = GetImage.NoOne;
 			ExtSDesc sdsc =
-				i.Sim != 0
-					? FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(i.Sim)
+				i.Value != 0
+					? FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(i.Value)
 						as ExtSDesc
 					: null;
 			if (sdsc == null)
@@ -664,16 +633,16 @@ namespace SimPe.Wants
 			return -1;
 		}
 
-		private void SIArg(SWAFItem i)
+		private void SIArg(WantItem i)
 		{
 			llSimName2.Visible =
 				llSREL.Visible =
 				tbSISimID2.Visible =
 				btnSim2.Visible =
 					false;
-			switch (i.ArgType)
+			switch (i.Type)
 			{
-				case SWAFItem.ArgTypes.None:
+				case WantType.None:
 					pnArg.Visible = false;
 					gbSelectedItem.Height = 346;
 					gcSIObject.Visible =
@@ -683,7 +652,7 @@ namespace SimPe.Wants
 						gcSICareer.Visible =
 							false;
 					break;
-				case SWAFItem.ArgTypes.Sim:
+				case WantType.Sim:
 					pnArg.Visible = true;
 					gbSelectedItem.Height = 451;
 					llSimName2.Visible =
@@ -705,11 +674,11 @@ namespace SimPe.Wants
 					}
 					else
 					{
-						tbSISimID2.Text = "0x" + Helper.HexString(i.Sim);
+						tbSISimID2.Text = "0x" + Helper.HexString(i.Value);
 						SISimID2(i);
 					}
 					break;
-				case SWAFItem.ArgTypes.Guid:
+				case WantType.Guid:
 					pnArg.Visible = true;
 					gbSelectedItem.Height = 451;
 					gcSIObject.Visible = true;
@@ -718,9 +687,9 @@ namespace SimPe.Wants
 						gcSIBadge.Visible =
 						gcSICareer.Visible =
 							false;
-					gcSIObject.Value = i.Guid;
+					gcSIObject.Value = i.Value;
 					break;
-				case SWAFItem.ArgTypes.Category:
+				case WantType.Category:
 					pnArg.Visible = true;
 					gbSelectedItem.Height = 451;
 					gcSICategory.Visible = true;
@@ -729,9 +698,9 @@ namespace SimPe.Wants
 						gcSIBadge.Visible =
 						gcSICareer.Visible =
 							false;
-					gcSICategory.Value = i.Category;
+					gcSICategory.Value = i.Value;
 					break;
-				case SWAFItem.ArgTypes.Skill:
+				case WantType.Skill:
 					pnArg.Visible = true;
 					gbSelectedItem.Height = 451;
 					cbSISkill.Visible = true;
@@ -740,9 +709,9 @@ namespace SimPe.Wants
 						gcSIBadge.Visible =
 						gcSICareer.Visible =
 							false;
-					cbSISkill.SelectedIndex = findSkill(i.Skill);
+					cbSISkill.SelectedIndex = findSkill((ushort)i.Value);
 					break;
-				case SWAFItem.ArgTypes.Badge:
+				case WantType.Badge:
 					pnArg.Visible = true;
 					gbSelectedItem.Height = 451;
 					gcSIBadge.Visible = true;
@@ -751,9 +720,9 @@ namespace SimPe.Wants
 						cbSISkill.Visible =
 						gcSICareer.Visible =
 							false;
-					gcSIBadge.Value = i.Badge;
+					gcSIBadge.Value = i.Value;
 					break;
-				case SWAFItem.ArgTypes.Career:
+				case WantType.Career:
 					pnArg.Visible = true;
 					gbSelectedItem.Height = 451;
 					gcSICareer.Visible = true;
@@ -762,61 +731,54 @@ namespace SimPe.Wants
 						cbSISkill.Visible =
 						gcSIBadge.Visible =
 							false;
-					gcSICareer.Value = i.Career;
+					gcSICareer.Value = i.Value;
 					break;
 			}
 		}
 
-		private void SIWant(SWAFItem i, uint newWantId)
+		private void SIWant(WantItem i, uint newWantId)
 		{
-			if (i.WantId != newWantId)
+			if (i.Guid != newWantId)
 			{
-				if (i.ItemType == SWAFItem.SWAFItemType.History)
+				if (i.ItemType == SwafItemType.History)
 				{
-					history[i.WantId].Remove(i);
+					history[i.Guid].Remove(i);
 				}
 
-				i.WantId = newWantId;
-				if (i.ItemType == SWAFItem.SWAFItemType.History)
+				i.Guid = newWantId;
+				if (i.ItemType == SwafItemType.History)
 				{
-					history[i.WantId].Add(i);
+					history[i.Guid].Add(i);
 				}
 			}
 
-			if (!xwnts.ContainsKey(i.WantId))
+			if (!xwnts.ContainsKey(i.Guid))
 			{
 				lbXWNTIntOp.Text = "(Unknown want)";
 				lbTimes.Visible = lbXWNTIntMult.Visible = false;
 				return;
 			}
 
-			XWNTWrapper xwnt =
+			Xwnt.Xwnt xwnt =
 				pjse.FileTable
 					.GFT[
-						xwnts[i.WantId][1] as Interfaces.Files.IPackageFile,
-						xwnts[i.WantId][0]
+						xwnts[i.Guid][1] as Interfaces.Files.IPackageFile,
+						xwnts[i.Guid][0]
 							as Interfaces.Files.IPackedFileDescriptor
 					][0]
-					.Wrapper as XWNTWrapper;
-			if (xwnt["integerType"] == null || xwnt["integerType"].Value.Equals("None"))
+					.Wrapper as Xwnt.Xwnt;
+			if (xwnt.IntegerType == Xwnt.XwntIntegerType.None)
 			{
 				lbXWNTIntOp.Text = "(Not used)";
 				lbTimes.Visible = lbXWNTIntMult.Visible = false;
 			}
 			else
 			{
-				lbXWNTIntOp.Text =
-					xwnt["integerOperator"] != null
-						? xwnt["integerOperator"].Value
-						: "Equals";
+				lbXWNTIntOp.Text = xwnt.IntegerOperator.ToString();
 				lbTimes.Visible = lbXWNTIntMult.Visible = true;
-				lbXWNTIntMult.Text =
-					xwnt["integerMultiplier"] != null
-						? xwnt["integerMultiplier"].Value
-						: "1";
+				lbXWNTIntMult.Text = xwnt.IntegerMultiplier.ToString();
 			}
-			lbXWNTType.Text =
-				xwnt["objectType"] != null ? xwnt["objectType"].Value : "(Unknown)";
+			lbXWNTType.Text = xwnt.ObjectType.ToString();
 		}
 		#endregion
 
@@ -826,9 +788,9 @@ namespace SimPe.Wants
 
 		public void UpdateGUI(IFileWrapper wrp)
 		{
-			wrapper = (SWAFWrapper)wrp;
-			current = wrapper;
-			history = wrapper;
+			wrapper = (Swaf)wrp;
+			current = wrapper.Items;
+			history = wrapper.History;
 
 			WrapperChanged(wrapper, null);
 
@@ -842,9 +804,7 @@ namespace SimPe.Wants
 					wrapper.Version >= 0x05;
 			//ckbIncWants.Enabled = ckbIncFears.Enabled = ckbIncLTWants.Enabled = ckbIncHistory.Enabled = true;
 
-			cbFileVersion.SelectedIndex = SWAFWrapper.ValidVersions.IndexOf(
-				wrapper.Version
-			);
+			cbFileVersion.SelectedItem = wrapper.Version;
 
 			tbMaxWants.Text = "0x" + Helper.HexString(wrapper.MaxWants);
 			tbMaxFears.Text = "0x" + Helper.HexString(wrapper.MaxFears);
@@ -874,12 +834,6 @@ namespace SimPe.Wants
 			if (sd != -1)
 			{
 				splitContainer1.SplitterDistance = sd;
-			}
-
-			if (!setHandler)
-			{
-				wrapper.WrapperChanged += new EventHandler(WrapperChanged);
-				setHandler = true;
 			}
 		}
 
@@ -943,7 +897,7 @@ namespace SimPe.Wants
 
 		private void UpdateGroupsColumn(ListViewItem lvi, int column)
 		{
-			SWAFItem i = lvi.Tag as SWAFItem;
+			WantItem i = lvi.Tag as WantItem;
 			if (groupTables[column] == null)
 			{
 				groupTables[column] = new Hashtable();
@@ -953,26 +907,26 @@ namespace SimPe.Wants
 
 			string subItemText = lvi.SubItems[column].Text;
 
-			if (column == 1 && xwnts.ContainsKey(i.WantId))
+			if (column == 1 && xwnts.ContainsKey(i.Guid))
 			{
 				if (pjse.FileTable
 						.GFT[
-							xwnts[i.WantId][1] as Interfaces.Files.IPackageFile,
-							xwnts[i.WantId][0]
+							xwnts[i.Guid][1] as Interfaces.Files.IPackageFile,
+							xwnts[i.Guid][0]
 								as Interfaces.Files.IPackedFileDescriptor
 						][0]
-						.Wrapper is XWNTWrapper xwnt && xwnt["folder"] != null)
+						.Wrapper is Xwnt.Xwnt xwnt && xwnt.Folder != null)
 				{
-					subItemText = xwnt["folder"].Value;
+					subItemText = xwnt.Folder;
 				}
 			}
 			else if (
 				column == 2
-				&& i.ArgType == SWAFItem.ArgTypes.Sim
+				&& i.Type == WantType.Sim
 				&& i.Version >= 0x08
 			)
 			{
-				if (FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(i.Sim) is ExtSDesc sdsc && sdsc.SimFamilyName != null)
+				if (FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(i.Value) is ExtSDesc sdsc && sdsc.SimFamilyName != null)
 				{
 					subItemText = sdsc.SimFamilyName;
 				}
@@ -1019,30 +973,30 @@ namespace SimPe.Wants
 					// Retrieve the subitem text corresponding to the column.
 					string subItemText = item.SubItems[column].Text;
 
-					if (item.Tag is SWAFItem i)
+					if (item.Tag is WantItem i)
 					{
 						if (column == 1)
 						{
 							if (pjse.FileTable
 									.GFT[
-										xwnts[i.WantId][1]
+										xwnts[i.Guid][1]
 											as Interfaces.Files.IPackageFile,
-										xwnts[i.WantId][0]
+										xwnts[i.Guid][0]
 											as Interfaces.Files.IPackedFileDescriptor
 									][0]
-									.Wrapper is XWNTWrapper xwnt && xwnt["folder"] != null)
+									.Wrapper is Xwnt.Xwnt xwnt && xwnt.Folder != null)
 							{
-								subItemText = xwnt["folder"].Value;
+								subItemText = xwnt.Folder;
 							}
 						}
 						else if (
 							column == 2
-							&& i.ArgType == SWAFItem.ArgTypes.Sim
+							&& i.Type == WantType.Sim
 							&& i.Version >= 0x08
 						)
 						{
 							if (FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
-									i.Sim
+									i.Value
 								) is ExtSDesc sdsc && sdsc.SimFamilyName != null)
 							{
 								subItemText = sdsc.SimFamilyName;
@@ -1120,16 +1074,16 @@ namespace SimPe.Wants
 
 			if (
 				lvItems.SelectedIndices.Count == 0
-				|| lvItems.SelectedItems[0].Tag as SWAFItem == null
+				|| lvItems.SelectedItems[0].Tag as WantItem == null
 			)
 			{
 				return;
 			}
 
-			SWAFItem i = lvItems.SelectedItems[0].Tag as SWAFItem;
+			WantItem i = lvItems.SelectedItems[0].Tag as WantItem;
 
 			if (!(FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
-					sender.Equals(llSimName) ? i.SimID : i.Sim
+					sender.Equals(llSimName) ? i.SimInstance : i.Value
 				) is ExtSDesc sdsc))
 			{
 				return;
@@ -1142,22 +1096,22 @@ namespace SimPe.Wants
 		{
 			if (
 				lvItems.SelectedIndices.Count == 0
-				|| lvItems.SelectedItems[0].Tag as SWAFItem == null
+				|| lvItems.SelectedItems[0].Tag as WantItem == null
 			)
 			{
 				return;
 			}
 
-			SWAFItem i = lvItems.SelectedItems[0].Tag as SWAFItem;
-			if (!xwnts.ContainsKey(i.WantId))
+			WantItem i = lvItems.SelectedItems[0].Tag as WantItem;
+			if (!xwnts.ContainsKey(i.Guid))
 			{
 				return;
 			}
 
-			XWNTWrapper xwnt = new XWNTWrapper();
+			Xwnt.Xwnt xwnt = new Xwnt.Xwnt();
 			xwnt.ProcessData(
-				xwnts[i.WantId][0] as Interfaces.Files.IPackedFileDescriptor,
-				xwnts[i.WantId][1] as Interfaces.Files.IPackageFile
+				xwnts[i.Guid][0] as Interfaces.Files.IPackedFileDescriptor,
+				xwnts[i.Guid][1] as Interfaces.Files.IPackageFile
 			);
 
 			if (!(xwnt.UIHandler is Form xwntForm))
@@ -1173,15 +1127,15 @@ namespace SimPe.Wants
 		{
 			if (
 				lvItems.SelectedIndices.Count == 0
-				|| lvItems.SelectedItems[0].Tag as SWAFItem == null
+				|| lvItems.SelectedItems[0].Tag as WantItem == null
 			)
 			{
 				return;
 			}
 
-			SWAFItem i = lvItems.SelectedItems[0].Tag as SWAFItem;
+			WantItem i = lvItems.SelectedItems[0].Tag as WantItem;
 
-			if (!(FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(i.SimID) is ExtSDesc sdsc))
+			if (!(FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(i.SimInstance) is ExtSDesc sdsc))
 			{
 				return;
 			}
@@ -1190,7 +1144,7 @@ namespace SimPe.Wants
 				Data.MetaData.RELATION_FILE,
 				0,
 				sdsc.FileDescriptor.Group,
-				(uint)((i.SimID << 16) + i.Sim)
+				(uint)((i.SimInstance << 16) + i.Value)
 			);
 			RemoteControl.OpenPackedFile(pfd1, sdsc.Package);
 		}
@@ -1210,9 +1164,7 @@ namespace SimPe.Wants
 			internalchg = true;
 			try
 			{
-				wrapper.Version = SWAFWrapper.ValidVersions[
-					cbFileVersion.SelectedIndex
-				];
+				wrapper.Version = (uint)cbFileVersion.SelectedItem;
 				btnAddLTWant.Enabled =
 					tbUnknown3.Enabled =
 					tbMaxWants.Enabled =
@@ -1240,30 +1192,30 @@ namespace SimPe.Wants
 			internalchg = true;
 			try
 			{
-				SWAFItem i = null;
+				WantItem i = null;
 				switch (lbtn.IndexOf((Button)sender))
 				{
 					case 0: //Want
-						i = new SWAFItem(wrapper, SWAFItem.SWAFItemType.Wants);
-						btnAddWant.Enabled = wrapper.Wants.Count < wrapper.MaxWants;
+						i = new WantItem(wrapper, SwafItemType.Wants);
+						btnAddWant.Enabled = wrapper.Wants.Count() < wrapper.MaxWants;
 						break;
 					case 1: //Fear
-						i = new SWAFItem(wrapper, SWAFItem.SWAFItemType.Fears);
-						btnAddFear.Enabled = wrapper.Fears.Count < wrapper.MaxFears;
+						i = new WantItem(wrapper, SwafItemType.Fears);
+						btnAddFear.Enabled = wrapper.Fears.Count() < wrapper.MaxFears;
 						break;
 					case 2: //LifetimeWant
-						i = new SWAFItem(wrapper, SWAFItem.SWAFItemType.LifetimeWants);
+						i = new WantItem(wrapper, SwafItemType.LifetimeWants);
 						break;
 					case 3: //History
-						i = new SWAFItem(wrapper, SWAFItem.SWAFItemType.History);
+						i = new WantItem(wrapper, SwafItemType.History);
 						break;
 					default:
 						throw new InvalidOperationException();
 				}
-				i.SimID = (ushort)wrapper.FileDescriptor.Instance;
-				if (i.ItemType == SWAFItem.SWAFItemType.History)
+				i.SimInstance = (ushort)wrapper.FileDescriptor.Instance;
+				if (i.ItemType == SwafItemType.History)
 				{
-					history[i.WantId].Add(i);
+					history[i.Guid].Add(i);
 				}
 				else
 				{
@@ -1288,7 +1240,7 @@ namespace SimPe.Wants
 
 			if (
 				lvItems.SelectedIndices.Count == 0
-				|| lvItems.SelectedItems[0].Tag as SWAFItem == null
+				|| lvItems.SelectedItems[0].Tag as WantItem == null
 			)
 			{
 				return;
@@ -1299,11 +1251,11 @@ namespace SimPe.Wants
 			internalchg = true;
 			try
 			{
-				SWAFItem i = lvItems.SelectedItems[0].Tag as SWAFItem;
+				WantItem i = lvItems.SelectedItems[0].Tag as WantItem;
 
-				if (i.ItemType == SWAFItem.SWAFItemType.History)
+				if (i.ItemType == SwafItemType.History)
 				{
-					history[i.WantId].Remove(i);
+					history[i.Guid].Remove(i);
 				}
 				else
 				{
@@ -1349,7 +1301,7 @@ namespace SimPe.Wants
 			{
 				if (
 					lvItems.SelectedIndices.Count == 0
-					|| lvItems.SelectedItems[0].Tag as SWAFItem == null
+					|| lvItems.SelectedItems[0].Tag as WantItem == null
 				)
 				{
 					pnArg.Visible = false;
@@ -1393,21 +1345,19 @@ namespace SimPe.Wants
 						ckb.Enabled = true;
 					}
 
-					SWAFItem i = lvItems.SelectedItems[0].Tag as SWAFItem;
+					WantItem i = lvItems.SelectedItems[0].Tag as WantItem;
 					lbSIItemType.Text = "" + i.ItemType;
-					cbSIVersion.SelectedIndex = SWAFItem.ValidVersions.IndexOf(
-						i.Version
-					);
+					cbSIVersion.SelectedItem = i.Version;
 					lbXWNTIntOp.Visible =
 						label13.Visible =
 						tbSIArg2.Visible =
 						lbTimes.Visible =
 						lbXWNTIntMult.Visible =
-							i.Arg2 != 0;
-					tbSISimID.Text = "0x" + Helper.HexString(i.SimID);
+							i.Property != 0;
+					tbSISimID.Text = "0x" + Helper.HexString(i.SimInstance);
 					sdsc =
 						FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
-							i.SimID
+							i.SimInstance
 						) as ExtSDesc;
 					if (sdsc == null)
 					{
@@ -1446,25 +1396,22 @@ namespace SimPe.Wants
 						llSimName.Text = sdsc.SimName + " " + sdsc.SimFamilyName;
 					}
 
-					gcSIWant.Value = i.WantId;
-					SIWant(i, i.WantId);
+					gcSIWant.Value = i.Guid;
+					SIWant(i, i.Guid);
 					WantInformation wantim =
-						WantInformation.LoadWant(i.WantId);
-					tbSIArg2.Text = "0x" + Helper.HexString(i.Arg2);
+						WantInformation.LoadWant(i.Guid);
+					tbSIArg2.Text = "0x" + Helper.HexString(i.Property);
 					cbSIArgType.SelectedIndex =
-						new List<string>(Enum.GetNames(typeof(SWAFItem.ArgTypes)))
-					.IndexOf("" + i.ArgType);
+						new List<string>(Enum.GetNames(typeof(WantType)))
+					.IndexOf("" + i.Type.ToString());
 					SIArg(i);
-					tbSICounter.Text = "0x" + Helper.HexString(i.Counter);
+					tbSICounter.Text = "0x" + Helper.HexString(i.Index);
 					tbSIScore.Text = "" + i.Score;
 					tbSIInfluence.Enabled = i.Version >= 0x09;
 					tbSIInfluence.Text = i.Version >= 0x09 ? "" + i.Influence : "";
-					for (int f = 0; f < i.Flags.Length; f++)
-					{
-						lflags[f].CheckState = i.Flags[f]
+					lflags[0].CheckState = i.Flag.HasFlag(WantFlags.Locked)
 							? CheckState.Checked
 							: CheckState.Unchecked;
-					}
 				}
 			}
 			finally
@@ -1573,13 +1520,13 @@ namespace SimPe.Wants
 
 			if (
 				lvItems.SelectedIndices.Count == 0
-				|| lvItems.SelectedItems[0].Tag as SWAFItem == null
+				|| lvItems.SelectedItems[0].Tag as WantItem == null
 			)
 			{
 				return;
 			}
 
-			SWAFItem i = lvItems.SelectedItems[0].Tag as SWAFItem;
+			WantItem i = lvItems.SelectedItems[0].Tag as WantItem;
 
 			internalchg = true;
 			try
@@ -1597,7 +1544,7 @@ namespace SimPe.Wants
 					return;
 				}
 
-				i.Sim = simID2;
+				i.Value = simID2;
 				lvItems.SelectedItems[0].SubItems[2].Text = ArgValue(i);
 				UpdateGroupsColumn(lvItems.SelectedItems[0], 2);
 				SISimID2(i);
@@ -1643,18 +1590,18 @@ namespace SimPe.Wants
 
 			if (
 				lvItems.SelectedIndices.Count == 0
-				|| lvItems.SelectedItems[0].Tag as SWAFItem == null
+				|| lvItems.SelectedItems[0].Tag as WantItem == null
 			)
 			{
 				return;
 			}
 
-			SWAFItem i = lvItems.SelectedItems[0].Tag as SWAFItem;
+			WantItem i = lvItems.SelectedItems[0].Tag as WantItem;
 
 			internalchg = true;
 			try
 			{
-				i.Skill = skills[cbSISkill.SelectedIndex].Key;
+				i.Value = skills[cbSISkill.SelectedIndex].Key;
 				lvItems.SelectedItems[0].SubItems[2].Text = ArgValue(i);
 				UpdateGroupsColumn(lvItems.SelectedItems[0], 2);
 			}
@@ -1694,11 +1641,11 @@ namespace SimPe.Wants
 				{
 					case 0:
 						wrapper.MaxFears = value;
-						btnAddFear.Enabled = wrapper.Fears.Count < wrapper.MaxFears;
+						btnAddFear.Enabled = wrapper.Fears.Count() < wrapper.MaxFears;
 						break;
 					case 1:
 						wrapper.MaxWants = value;
-						btnAddWant.Enabled = wrapper.Wants.Count < wrapper.MaxWants;
+						btnAddWant.Enabled = wrapper.Wants.Count() < wrapper.MaxWants;
 						break;
 					case 2:
 						wrapper.Unknown1 = value;
@@ -1712,15 +1659,15 @@ namespace SimPe.Wants
 					case 5:
 						if (
 							lvItems.SelectedIndices.Count == 0
-							|| lvItems.SelectedItems[0].Tag as SWAFItem == null
+							|| lvItems.SelectedItems[0].Tag as WantItem == null
 						)
 						{
 							return;
-						} (lvItems.SelectedItems[0].Tag as SWAFItem).Counter = value;
+						} (lvItems.SelectedItems[0].Tag as WantItem).Index = value;
 						lvItems.SelectedItems[0].SubItems[4].Text =
 							"0x"
 							+ Helper.HexString(
-								(lvItems.SelectedItems[0].Tag as SWAFItem).Counter
+								(lvItems.SelectedItems[0].Tag as WantItem).Index
 							);
 						UpdateGroupsColumn(lvItems.SelectedItems[0], 4);
 						break;
@@ -1748,7 +1695,7 @@ namespace SimPe.Wants
 
 			if (
 				lvItems.SelectedIndices.Count == 0
-				|| lvItems.SelectedItems[0].Tag as SWAFItem == null
+				|| lvItems.SelectedItems[0].Tag as WantItem == null
 			)
 			{
 				return;
@@ -1767,14 +1714,14 @@ namespace SimPe.Wants
 				return;
 			}
 
-			SWAFItem i = lvItems.SelectedItems[0].Tag as SWAFItem;
+			WantItem i = lvItems.SelectedItems[0].Tag as WantItem;
 
 			internalchg = true;
 			try
 			{
-				i.Arg2 = value;
+				i.Property = value;
 				lvItems.SelectedItems[0].SubItems[3].Text =
-					"0x" + Helper.HexString(i.Arg2);
+					"0x" + Helper.HexString(i.Property);
 				UpdateGroupsColumn(lvItems.SelectedItems[0], 3);
 			}
 			finally
@@ -1800,14 +1747,14 @@ namespace SimPe.Wants
 
 			if (
 				lvItems.SelectedIndices.Count == 0
-				|| lvItems.SelectedItems[0].Tag as SWAFItem == null
+				|| lvItems.SelectedItems[0].Tag as WantItem == null
 			)
 			{
 				return;
 			}
 
 			Plugin.GUIDChooser gc = sender as Plugin.GUIDChooser;
-			SWAFItem i = lvItems.SelectedItems[0].Tag as SWAFItem;
+			WantItem i = lvItems.SelectedItems[0].Tag as WantItem;
 
 			internalchg = true;
 			try
@@ -1818,16 +1765,16 @@ namespace SimPe.Wants
 						SIWant(i, gc.Value);
 						break;
 					case 1:
-						i.Guid = gc.Value;
+						i.Value = gc.Value;
 						break;
 					case 2:
-						i.Category = gc.Value;
+						i.Value = gc.Value;
 						break;
 					case 3:
-						i.Career = gc.Value;
+						i.Value = gc.Value;
 						break;
 					case 4:
-						i.Badge = gc.Value;
+						i.Value = gc.Value;
 						break;
 				}
 				if (lgc.IndexOf(gc) == 0)
@@ -1835,7 +1782,7 @@ namespace SimPe.Wants
 					lvItems.SelectedItems[0].SubItems[1].Text = getName(
 						wantNames,
 						wantIDs,
-						i.WantId
+						i.Guid
 					);
 					UpdateGroupsColumn(lvItems.SelectedItems[0], 1);
 				}
@@ -1876,13 +1823,13 @@ namespace SimPe.Wants
 
 			if (
 				lvItems.SelectedIndices.Count == 0
-				|| lvItems.SelectedItems[0].Tag as SWAFItem == null
+				|| lvItems.SelectedItems[0].Tag as WantItem == null
 			)
 			{
 				return;
 			}
 
-			SWAFItem i = lvItems.SelectedItems[0].Tag as SWAFItem;
+			WantItem i = lvItems.SelectedItems[0].Tag as WantItem;
 
 			internalchg = true;
 			try
@@ -1924,7 +1871,7 @@ namespace SimPe.Wants
 
 			if (
 				lvItems.SelectedIndices.Count == 0
-				|| lvItems.SelectedItems[0].Tag as SWAFItem == null
+				|| lvItems.SelectedItems[0].Tag as WantItem == null
 			)
 			{
 				return;
@@ -1936,14 +1883,24 @@ namespace SimPe.Wants
 				return;
 			}
 
-			SWAFItem i = lvItems.SelectedItems[0].Tag as SWAFItem;
+			WantItem i = lvItems.SelectedItems[0].Tag as WantItem;
 
 			internalchg = true;
 			try
 			{
-				i.Flags[lflags.IndexOf(ckb)] = ckb.Checked;
+				if (lflags.IndexOf(sender as CheckBox) == 0)
+				{
+					if (ckb.Checked)
+					{
+						i.Flag |= WantFlags.Locked;
+					}
+					else
+					{
+						i.Flag &= ~WantFlags.Locked;
+					}
+				}
 				lvItems.SelectedItems[0].SubItems[7].Text =
-					"0x" + Helper.HexString((byte)i.Flags);
+					"0x" + Helper.HexString((byte)i.Flag);
 				UpdateGroupsColumn(lvItems.SelectedItems[0], 7);
 			}
 			finally
@@ -1956,30 +1913,19 @@ namespace SimPe.Wants
 
 		private void cbSIVersion_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (internalchg)
+			if (internalchg || cbSIVersion.SelectedIndex < 0 || lvItems.SelectedIndices.Count == 0
+				|| lvItems.SelectedItems[0].Tag as WantItem == null
+)
 			{
 				return;
 			}
 
-			if (cbSIVersion.SelectedIndex < 0)
-			{
-				return;
-			}
-
-			if (
-				lvItems.SelectedIndices.Count == 0
-				|| lvItems.SelectedItems[0].Tag as SWAFItem == null
-			)
-			{
-				return;
-			}
-
-			SWAFItem i = lvItems.SelectedItems[0].Tag as SWAFItem;
+			WantItem i = lvItems.SelectedItems[0].Tag as WantItem;
 
 			internalchg = true;
 			try
 			{
-				i.Version = SWAFItem.ValidVersions[cbSIVersion.SelectedIndex];
+				i.Version = (uint)cbSIVersion.SelectedItem;
 				lvItems.SelectedItems[0].SubItems[8].Text =
 					"0x" + Helper.HexString((byte)i.Version);
 				UpdateGroupsColumn(lvItems.SelectedItems[0], 8);
@@ -1991,7 +1937,7 @@ namespace SimPe.Wants
 
 			tbSIInfluence.Enabled = false;
 			tbSIInfluence.Text = "";
-			if (i.ArgType == SWAFItem.ArgTypes.Sim)
+			if (i.Type == WantType.Sim)
 			{
 				llSimName2.Visible =
 					llSREL.Visible =
@@ -2010,7 +1956,7 @@ namespace SimPe.Wants
 			}
 			if (i.Version >= 0x08)
 			{
-				if (i.ArgType == SWAFItem.ArgTypes.Sim)
+				if (i.Type == WantType.Sim)
 				{
 					lbXWNTIntOp.Visible =
 						label13.Visible =
@@ -2018,7 +1964,7 @@ namespace SimPe.Wants
 						lbTimes.Visible =
 						lbXWNTIntMult.Visible =
 							true;
-					tbSISimID2.Text = "0x" + Helper.HexString(i.Sim);
+					tbSISimID2.Text = "0x" + Helper.HexString(i.Value);
 					SISimID2(i);
 				}
 				if (i.Version >= 0x09)
@@ -2031,62 +1977,23 @@ namespace SimPe.Wants
 
 		private void cbSIArgType_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (internalchg)
+			if (internalchg || cbSIArgType.SelectedIndex < 0 || lvItems.SelectedIndices.Count == 0
+				|| (lvItems.SelectedItems[0].Tag as WantItem) == null
+)
 			{
 				return;
 			}
 
-			if (cbSIArgType.SelectedIndex < 0)
-			{
-				return;
-			}
-
-			if (
-				lvItems.SelectedIndices.Count == 0
-				|| lvItems.SelectedItems[0].Tag as SWAFItem == null
-			)
-			{
-				return;
-			}
-
-			SWAFItem i = lvItems.SelectedItems[0].Tag as SWAFItem;
+			WantItem i = lvItems.SelectedItems[0].Tag as WantItem;
 
 			internalchg = true;
 			try
 			{
-				i.ArgType = (SWAFItem.ArgTypes)cbSIArgType.SelectedIndex;
-				switch (i.ArgType)
-				{
-					case SWAFItem.ArgTypes.None:
-						break;
-					case SWAFItem.ArgTypes.Sim:
-						if (i.Version >= 0x08)
-						{
-							i.Sim = 0;
-						}
-
-						break;
-					case SWAFItem.ArgTypes.Guid:
-						i.Guid = 0;
-						break;
-					case SWAFItem.ArgTypes.Category:
-						i.Category = 0;
-						break;
-					case SWAFItem.ArgTypes.Skill:
-						i.Skill = 0;
-						break;
-					case SWAFItem.ArgTypes.Badge:
-						i.Badge = 0;
-						break;
-					case SWAFItem.ArgTypes.Career:
-						i.Career = 0;
-						break;
-					default:
-						throw new InvalidOperationException();
-				}
+				i.Type = (WantType)cbSIArgType.SelectedIndex;
+				i.Value = 0;
 				lvItems.SelectedItems[0].SubItems[2].Text = ArgValue(i);
 				UpdateGroupsColumn(lvItems.SelectedItems[0], 2);
-				lvItems.SelectedItems[0].SubItems[10].Text = "" + i.ArgType;
+				lvItems.SelectedItems[0].SubItems[10].Text = "" + i.Type;
 				UpdateGroupsColumn(lvItems.SelectedItems[0], 10);
 				SIArg(i);
 			}
