@@ -93,6 +93,7 @@ namespace SimPe
 					// Global.package.LoadOrImportFiles(argv.ToArray(), true);
 					Application.Run(Global);
 				}
+				Console.WriteLine("Exiting Application!");
 
 				Helper.WindowsRegistry.Flush();
 				Helper.WindowsRegistry.Layout.Flush();
@@ -131,7 +132,7 @@ namespace SimPe
 			try
 			{
 				Packages.StreamFactory.UnlockAll();
-				Packages.StreamFactory.CloseAll(true);
+				//Packages.StreamFactory.CloseAll(true); // TODO(autinerd): Let's care another time about closing files cleanly on app shutdown
 				Packages.StreamFactory.CleanupTeleport();
 			}
 			catch { }
