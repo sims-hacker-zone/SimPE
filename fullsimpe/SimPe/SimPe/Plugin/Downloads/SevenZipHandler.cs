@@ -1,5 +1,6 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using System.Collections.Generic;
 
 namespace SimPe.Plugin.Downloads
 {
@@ -11,9 +12,9 @@ namespace SimPe.Plugin.Downloads
 		public SevenZipHandler(string filename)
 			: base(filename) { }
 
-		protected override StringArrayList ExtractArchive()
+		protected override List<string> ExtractArchive()
 		{
-			StringArrayList ret = new StringArrayList();
+			List<string> ret = new List<string>();
 			Ambertation.SevenZip.IO.CommandlineArchive a =
 				new Ambertation.SevenZip.IO.CommandlineArchive(ArchiveName);
 			Ambertation.SevenZip.IO.ArchiveFile[] content = a.ListContent();

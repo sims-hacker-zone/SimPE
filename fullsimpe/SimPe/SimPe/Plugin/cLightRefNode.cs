@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.ComponentModel;
+using System.Collections.Generic;
 
 namespace SimPe.Plugin
 {
@@ -62,7 +63,7 @@ namespace SimPe.Plugin
 		/// Returns a List of all Child Blocks referenced by this Element
 		/// </summary>
 		[Browsable(false)]
-		public override IntArrayList ChildBlocks => tn.ChildBlocks;
+		public override List<int> ChildBlocks => tn.ChildBlocks;
 
 		[Browsable(false)]
 		public override int ImageIndex => 2; //light

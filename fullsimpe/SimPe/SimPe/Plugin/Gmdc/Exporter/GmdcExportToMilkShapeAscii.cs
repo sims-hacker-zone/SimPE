@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 using SimPe.Geometry;
 using SimPe.Plugin.Anim;
@@ -102,7 +103,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 				ElementIdentity.BoneAssignment
 			);
 			//List of ordered Joints
-			IntArrayList js = Gmdc.SortJoints();
+			List<int> js = Gmdc.SortJoints();
 
 			writer.WriteLine("\"" + Group.Name + "\" 0 -1");
 
@@ -270,7 +271,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 			writer.WriteLine("Materials: 0");
 
 			Hashtable relationmap = Gmdc.LoadJointRelationMap();
-			IntArrayList js = Gmdc.SortJoints(relationmap);
+			List<int> js = Gmdc.SortJoints(relationmap);
 			ArrayList animbname = new ArrayList();
 
 			Hashtable correct_rot = new Hashtable();

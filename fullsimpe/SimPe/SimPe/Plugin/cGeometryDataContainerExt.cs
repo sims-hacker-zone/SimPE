@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 using Ambertation.Scenes;
 
@@ -118,7 +119,7 @@ namespace SimPe.Plugin
 				nj.Rotation.Y = tmp.Y;
 				nj.Rotation.Z = tmp.Z;
 
-				IntArrayList li = j.AssignedTransformNode.ChildBlocks;
+				List<int> li = j.AssignedTransformNode.ChildBlocks;
 				foreach (int i in li)
 				{
 					Interfaces.Scenegraph.ICresChildren cld =
@@ -142,7 +143,7 @@ namespace SimPe.Plugin
 				return new Hashtable();
 			}
 
-			IntArrayList js = new IntArrayList();
+			List<int> js = new List<int>();
 			Hashtable relationmap = Gmdc.LoadJointRelationMap();
 
 			foreach (int k in relationmap.Keys)
@@ -379,7 +380,7 @@ namespace SimPe.Plugin
 				foreach (GmdcElementValueOneInt vi in bonee.Values)
 				{
 					byte[] data = vi.Bytes;
-					IntArrayList used = new IntArrayList();
+					List<int> used = new List<int>();
 
 					for (int datapos = 0; datapos < 3; datapos++) //we can only store 3 bone weights
 					{

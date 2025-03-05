@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 using SimPe.Geometry;
 
@@ -29,7 +30,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Some additional Index Data (yet unknown)
 		/// </summary>
-		public IntArrayList Items
+		public List<int> Items
 		{
 			get; set;
 		}
@@ -42,7 +43,7 @@ namespace SimPe.Plugin.Gmdc
 			: base(parent)
 		{
 			Vertices = new Vectors3f();
-			Items = new IntArrayList();
+			Items = new List<int>();
 		}
 
 		/// <summary>
@@ -93,13 +94,13 @@ namespace SimPe.Plugin.Gmdc
 
 			if (Vertices.Count > 0)
 			{
-				writer.Write(Items.Length);
+				writer.Write(Items.Count);
 				for (int i = 0; i < Vertices.Count; i++)
 				{
 					Vertices[i].Serialize(writer);
 				}
 
-				for (int i = 0; i < Items.Length; i++)
+				for (int i = 0; i < Items.Count; i++)
 				{
 					WriteValue(writer, Items[i]);
 				}

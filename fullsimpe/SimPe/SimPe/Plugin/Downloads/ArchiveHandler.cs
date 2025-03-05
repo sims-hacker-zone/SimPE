@@ -1,5 +1,6 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using System.Collections.Generic;
 
 namespace SimPe.Plugin.Downloads
 {
@@ -40,12 +41,12 @@ namespace SimPe.Plugin.Downloads
 		{
 		}
 
-		protected abstract StringArrayList ExtractArchive();
+		protected abstract List<string> ExtractArchive();
 
 		protected void LoadContent()
 		{
 			Wait.Message = "Extracting Archive";
-			StringArrayList files = ExtractArchive();
+			List<string> files = ExtractArchive();
 
 			Wait.SubStart(files.Count);
 
@@ -55,7 +56,7 @@ namespace SimPe.Plugin.Downloads
 			Wait.SubStop();
 		}
 
-		private void LoadFiles(StringArrayList files)
+		private void LoadFiles(List<string> files)
 		{
 			int nr = 0;
 			foreach (string file in files)
@@ -82,10 +83,10 @@ namespace SimPe.Plugin.Downloads
 			}
 		}
 
-		private StringArrayList SortFilesByType(StringArrayList files)
+		private List<string> SortFilesByType(List<string> files)
 		{
-			StringArrayList objects = new StringArrayList();
-			StringArrayList other = new StringArrayList();
+			List<string> objects = new List<string>();
+			List<string> other = new List<string>();
 			foreach (string file in files)
 			{
 				if (file.EndsWith(".package", true, null))

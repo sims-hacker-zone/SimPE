@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 
 namespace SimPe.Plugin.Gmdc
@@ -434,7 +435,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Yet unknown what this is doing
 		/// </summary>
-		public IntArrayList Items
+		public List<int> Items
 		{
 			get; set;
 		}
@@ -447,7 +448,7 @@ namespace SimPe.Plugin.Gmdc
 			: base(parent)
 		{
 			Values = new GmdcElementValues();
-			Items = new IntArrayList();
+			Items = new List<int>();
 		}
 
 		/// <summary>
@@ -509,7 +510,7 @@ namespace SimPe.Plugin.Gmdc
 		public void Serialize(BinaryWriter writer)
 		{
 			//automatically keep the Number Field correct
-			if (Items.Length == 0)
+			if (Items.Count == 0)
 			{
 				Number = Values.Length;
 				foreach (int i in Items)

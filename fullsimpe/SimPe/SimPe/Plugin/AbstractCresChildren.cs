@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Collections;
+using System.Collections.Generic;
 
 using SimPe.Geometry;
 using SimPe.Interfaces.Scenegraph;
@@ -75,9 +76,9 @@ namespace SimPe.Plugin
 		/// Get List of al parent Blocks
 		/// </summary>
 		/// <returns></returns>
-		public IntArrayList GetParentBlocks()
+		public List<int> GetParentBlocks()
 		{
-			IntArrayList l = new IntArrayList();
+			List<int> l = new List<int>();
 			for (int i = 0; i < parent.Blocks.Length; i++)
 			{
 				IRcolBlock irb =
@@ -103,14 +104,14 @@ namespace SimPe.Plugin
 		/// <returns></returns>
 		public ICresChildren GetFirstParent()
 		{
-			IntArrayList l = GetParentBlocks();
-			return l.Length == 0 ? null : (ICresChildren)parent.Blocks[l[0]];
+			List<int> l = GetParentBlocks();
+			return l.Count == 0 ? null : (ICresChildren)parent.Blocks[l[0]];
 		}
 
 		/// <summary>
 		/// Returns a List of all Child Blocks referenced by this Element
 		/// </summary>
-		public abstract IntArrayList ChildBlocks
+		public abstract List<int> ChildBlocks
 		{
 			get;
 		}

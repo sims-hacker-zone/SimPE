@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace SimPe.Plugin.Gmdc
 {
@@ -16,7 +17,7 @@ namespace SimPe.Plugin.Gmdc
 		/// This returns the List of all used <see cref="GmdcElement"/> Items. The Values are Indices
 		/// for the <see cref="GeometryDataContainer.Elements"/> Property.
 		/// </summary>
-		public IntArrayList ReferencedElement
+		public List<int> ReferencedElement
 		{
 			get; set;
 		}
@@ -38,7 +39,7 @@ namespace SimPe.Plugin.Gmdc
 		}
 
 		/// <summary>
-		/// This Array Contains three <see cref="IntArrayList"/> Items. Each Item has to be interporeted as
+		/// This Array Contains three <see cref="List<int>"/> Items. Each Item has to be interporeted as
 		/// Element Index Alias.
 		/// The <see cref="GmdcGroup"/> is referencing the Vertices that form a Face by an Index. If one of
 		/// this Lists is set, it means, that whenever you pares an Index, read the value stored at that Index
@@ -47,7 +48,7 @@ namespace SimPe.Plugin.Gmdc
 		/// The first List store here is an Alias Map for the first referenced <see cref="GmdcElement"/> in the
 		/// <see cref="ReferencedElement"/> Property.
 		/// </summary>
-		public IntArrayList[] AliasValues
+		public List<int>[] AliasValues
 		{
 			get;
 		}
@@ -59,11 +60,11 @@ namespace SimPe.Plugin.Gmdc
 		public GmdcLink(GeometryDataContainer parent)
 			: base(parent)
 		{
-			ReferencedElement = new IntArrayList();
-			AliasValues = new IntArrayList[3];
+			ReferencedElement = new List<int>();
+			AliasValues = new List<int>[3];
 			for (int i = 0; i < AliasValues.Length; i++)
 			{
-				AliasValues[i] = new IntArrayList();
+				AliasValues[i] = new List<int>();
 			}
 		}
 
@@ -111,10 +112,10 @@ namespace SimPe.Plugin.Gmdc
 		/// <returns>A String Describing the Data</returns>
 		public override string ToString()
 		{
-			string s = ReferencedElement.Length.ToString();
+			string s = ReferencedElement.Count.ToString();
 			for (int i = 0; i < AliasValues.Length; i++)
 			{
-				s += ", " + AliasValues[i].Length;
+				s += ", " + AliasValues[i].Count;
 			}
 
 			return s;
@@ -154,7 +155,7 @@ namespace SimPe.Plugin.Gmdc
 				return -1;
 			}
 
-			for (int i = 0; i < ReferencedElement.Length; i++)
+			for (int i = 0; i < ReferencedElement.Count; i++)
 			{
 				if (parent.Elements[ReferencedElement[i]] == e)
 				{
@@ -190,7 +191,7 @@ namespace SimPe.Plugin.Gmdc
 				}
 
 				//Do we have aliases?
-				if (AliasValues[nr].Length == 0) //no
+				if (AliasValues[nr].Count == 0) //no
 				{
 					//if (index>=e.Values.Length) return null;
 					return e.Values[index];
@@ -231,7 +232,7 @@ namespace SimPe.Plugin.Gmdc
 				}
 
 				//Do we have aliases?
-				return AliasValues[nr].Length == 0 ? index : AliasValues[nr][index];
+				return AliasValues[nr].Count == 0 ? index : AliasValues[nr][index];
 			}
 			catch
 			{
@@ -266,9 +267,9 @@ namespace SimPe.Plugin.Gmdc
 			minct = int.MaxValue;
 			for (int i = 0; i < AliasValues.Length; i++)
 			{
-				if (AliasValues[i].Length > 0)
+				if (AliasValues[i].Count > 0)
 				{
-					minct = Math.Min(minct, AliasValues[i].Length);
+					minct = Math.Min(minct, AliasValues[i].Count);
 				}
 			}
 

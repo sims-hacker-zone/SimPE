@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 using SimPe.Geometry;
@@ -93,7 +94,7 @@ namespace SimPe.Plugin.Anim
 			{
 				foreach (AnimationAxisTransformBlock ab in AxisSet)
 				{
-					IntArrayList tcs = ab.GetTimeCodes(true, true);
+					List<int> tcs = ab.GetTimeCodes(true, true);
 
 					if (ab.Locked && exludelocked && ab.Count <= 1)
 					{
@@ -790,7 +791,7 @@ namespace SimPe.Plugin.Anim
 			const float DELTA = float.Epsilon * 10;
 			for (int blid = AxisSet.Length - 1; blid >= 0; blid--)
 			{
-				IntArrayList remlist = new IntArrayList();
+				List<int> remlist = new List<int>();
 				for (int nr = 1; nr < AxisSet[blid].Count - 1; nr++)
 				{
 					AnimationAxisTransform iframe = null;

@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Collections;
+using System.Collections.Generic;
 
 using SimPe.Geometry;
 
@@ -120,22 +121,22 @@ namespace SimPe.Plugin
 			get; set;
 		}
 
-		public IntArrayList Numbers1
+		public List<int> Numbers1
 		{
 			get; set;
 		}
 
-		public IntArrayList Numbers2
+		public List<int> Numbers2
 		{
 			get; set;
 		}
 
-		public IntArrayList Numbers3
+		public List<int> Numbers3
 		{
 			get; set;
 		}
 
-		public IntArrayList Numbers4
+		public List<int> Numbers4
 		{
 			get; set;
 		}
@@ -234,10 +235,10 @@ namespace SimPe.Plugin
 			Vectors5 = new Vectors2f();
 			Vectors6 = new Vectors2f();
 
-			Numbers1 = new IntArrayList();
-			Numbers2 = new IntArrayList();
-			Numbers3 = new IntArrayList();
-			Numbers4 = new IntArrayList();
+			Numbers1 = new List<int>();
+			Numbers2 = new List<int>();
+			Numbers3 = new List<int>();
+			Numbers4 = new List<int>();
 
 			Items = new IndexedMeshBuilderItems();
 

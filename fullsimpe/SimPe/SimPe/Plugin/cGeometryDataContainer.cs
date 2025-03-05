@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 
 using SimPe.Forms.MainUI;
@@ -812,7 +813,7 @@ namespace SimPe.Plugin
 		static void SortJointsRec(
 			int start,
 			Hashtable relmap,
-			IntArrayList l
+			List<int> l
 		)
 		{
 			if (start == -1)
@@ -842,7 +843,7 @@ namespace SimPe.Plugin
 		/// <param name="joints"><see cref="Joints"/></param>
 		/// <param name="relmap"><see cref="LoadJointRelationMap"/></param>
 		/// <returns></returns>
-		public static IntArrayList SortJoints(
+		public static List<int> SortJoints(
 			GmdcJoints joints,
 			Hashtable relmap
 		)
@@ -859,7 +860,7 @@ namespace SimPe.Plugin
 
 			if (start != -1)
 			{
-				IntArrayList l = new IntArrayList();
+				List<int> l = new List<int>();
 				SortJointsRec(start, relmap, l);
 
 				//check if there are some Joint's that were not added so far
@@ -876,7 +877,7 @@ namespace SimPe.Plugin
 				//recursivley process remaing joints
 				if (nrelmap.Count > 0)
 				{
-					IntArrayList l2 = SortJoints(joints, nrelmap);
+					List<int> l2 = SortJoints(joints, nrelmap);
 					foreach (int i in l2)
 					{
 						l.Add(i);
@@ -886,7 +887,7 @@ namespace SimPe.Plugin
 				return l;
 			}
 
-			IntArrayList ls = new IntArrayList();
+			List<int> ls = new List<int>();
 			foreach (GmdcJoint j in joints)
 			{
 				ls.Add(j.Index);
@@ -899,7 +900,7 @@ namespace SimPe.Plugin
 		/// Sort the passed list of Joints so that parent joints allways come first
 		/// </summary>
 		/// <returns></returns>
-		public IntArrayList SortJoints()
+		public List<int> SortJoints()
 		{
 			return SortJoints(Joints, LoadJointRelationMap());
 		}
@@ -909,7 +910,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="relmap"></param>
 		/// <returns></returns>
-		public IntArrayList SortJoints(Hashtable relmap)
+		public List<int> SortJoints(Hashtable relmap)
 		{
 			return SortJoints(Joints, relmap);
 		}
