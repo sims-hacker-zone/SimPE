@@ -81,7 +81,7 @@ namespace SimPe.Cache
 
 		#region ICacheItem Member
 
-		public void Load(BinaryReader reader)
+		public ICacheItem Load(BinaryReader reader)
 		{
 			Version = reader.ReadByte();
 			if (Version > VERSION)
@@ -114,6 +114,7 @@ namespace SimPe.Cache
 
 				Icon = Image.FromStream(ms);
 			}
+			return this;
 		}
 
 		public void Save(BinaryWriter writer)

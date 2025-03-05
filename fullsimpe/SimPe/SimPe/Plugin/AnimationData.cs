@@ -109,11 +109,11 @@ namespace SimPe.Plugin
 
 			for (short i = first.TimeCode; i <= max; i++)
 			{
-				CreaetInterpolatedFrame(axis, i, first, last);
+				CreateInterpolatedFrame(axis, i, first, last);
 			}
 		}
 
-		void CreaetInterpolatedFrame(
+		void CreateInterpolatedFrame(
 			byte axis,
 			short index,
 			AnimationFrame first,

@@ -60,16 +60,14 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 				//we have a match, so add the result item
 				if (found)
 				{
-					Interfaces.Scenegraph.IScenegraphFileIndexItem[] rfiis =
-						FileTableBase.FileIndex.FindFileDiscardingHighInstance(
+
+					foreach (
+						Interfaces.Scenegraph.IScenegraphFileIndexItem rfii in FileTableBase.FileIndex.FindFileDiscardingHighInstance(
 							pfd.Instance,
 							mypfd.Group,
 							mypfd.Instance,
 							null
-						);
-
-					foreach (
-						Interfaces.Scenegraph.IScenegraphFileIndexItem rfii in rfiis
+						)
 					)
 					{
 						ResultGui.AddResult(rfii.Package, rfii.FileDescriptor);

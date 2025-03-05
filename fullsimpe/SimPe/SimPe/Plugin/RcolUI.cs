@@ -83,13 +83,10 @@ namespace SimPe.Plugin
 			)
 			{
 				form.tbResource.TabPages.Add(form.tpref);
-				System.Collections.Hashtable refmap = (
-					(IScenegraphItem)wrp
-				).ReferenceChains;
+				System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<Interfaces.Files.IPackedFileDescriptor>> refmap = ((IScenegraphItem)wrp).ReferenceChains;
 				foreach (string k in refmap.Keys)
 				{
-					System.Collections.ArrayList l = (System.Collections.ArrayList)
-						refmap[k];
+					System.Collections.Generic.List<Interfaces.Files.IPackedFileDescriptor> l = refmap[k];
 					TreeNode node = new TreeNode(k);
 
 					foreach (Interfaces.Files.IPackedFileDescriptor pfd in l)

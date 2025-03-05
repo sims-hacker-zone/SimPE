@@ -28,14 +28,6 @@ namespace SimPe.Cache
 		XObject = 0x02,
 	}
 
-	public enum ObjectCacheItemVersions : byte
-	{
-		Outdated = 0x00,
-		ClassicOW = 0x03,
-		DockableOW = 0x05,
-		Unsupported = 0xff,
-	}
-
 	/// <summary>
 	/// Contains one ObjectCacheItem
 	/// </summary>
@@ -56,7 +48,7 @@ namespace SimPe.Cache
 			pfd = new Packages.PackedFileDescriptor();
 		}
 
-		Interfaces.Files.IPackedFileDescriptor pfd;
+		private Interfaces.Files.IPackedFileDescriptor pfd;
 
 		public object Tag
 		{
@@ -77,11 +69,6 @@ namespace SimPe.Cache
 						return Version > VERSION ? ObjectCacheItemVersions.Unsupported : ObjectCacheItemVersions.Outdated;
 				}
 			}
-			/*set {
-				if (value == ObjectCacheItemVersions.Outdated) version = (byte)ObjectCacheItemVersions.ClassicOW;
-				else if (value == ObjectCacheItemVersions.Unsupported) version = (byte)ObjectCacheItemVersions.DockableOW;
-				version = (byte)value;
-			}*/
 		}
 
 		/// <summary>
@@ -146,8 +133,7 @@ namespace SimPe.Cache
 		)
 		{
 			uint ofss = (uint)subsort;
-			string[][] ret = null;
-
+			string[][] ret;
 			if (version == ObjectCacheItemVersions.ClassicOW)
 			{
 				System.Collections.ArrayList list = new System.Collections.ArrayList();
@@ -387,7 +373,7 @@ namespace SimPe.Cache
 
 		#region ICacheItem Member
 
-		public void Load(BinaryReader reader)
+		public ICacheItem Load(BinaryReader reader)
 		{
 			Version = reader.ReadByte();
 			if (Version > VERSION)
@@ -406,17 +392,7 @@ namespace SimPe.Cache
 			pfd.LongInstance = reader.ReadUInt64();
 
 			int size = reader.ReadInt32();
-			if (size == 0)
-			{
-				Thumbnail = null;
-			}
-			else
-			{
-				byte[] data = reader.ReadBytes(size);
-				MemoryStream ms = new MemoryStream(data);
-
-				Thumbnail = Image.FromStream(ms);
-			}
+			Thumbnail = size == 0 ? null : Image.FromStream(new MemoryStream(reader.ReadBytes(size)));
 
 			ObjectType = (Data.ObjectTypes)reader.ReadUInt16();
 			ObjectFunctionSort = Version >= 4 ? reader.ReadUInt32() : (uint)reader.ReadInt16();
@@ -435,6 +411,7 @@ namespace SimPe.Cache
 			}
 
 			Class = Version >= 3 ? (ObjectClass)reader.ReadByte() : ObjectClass.Object;
+			return this;
 		}
 
 		public void Save(BinaryWriter writer)

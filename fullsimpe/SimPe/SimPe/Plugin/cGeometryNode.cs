@@ -208,10 +208,8 @@ namespace SimPe.Plugin
 		/// <remarks>This Version will not Load the FileTable!</remarks>
 		public Rcol FindReferencingSHPE_NoLoad()
 		{
-			IScenegraphFileIndexItem[] items =
-				FileTableBase.FileIndex.FindFile(Data.MetaData.SHPE, true);
 			string mn = Hashes.StripHashFromName(Parent.FileName.Trim().ToLower());
-			foreach (IScenegraphFileIndexItem item in items)
+			foreach (IScenegraphFileIndexItem item in FileTableBase.FileIndex.FindFile(Data.MetaData.SHPE, true))
 			{
 				Rcol r = new GenericRcol(null, false);
 				//try to open the File in the same package, not in the FileTable Package!

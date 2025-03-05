@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 using SimPe.Forms.MainUI;
@@ -235,8 +237,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			Interfaces.Scenegraph.IScenegraphFileIndex fii =
 				FileTableBase.FileIndex.AddNewChild();
 
-			Cache.MemoryCacheItem mci =
-				PackedFiles.Wrapper.ObjectComboBox.ObjectCache.FindItem(guid);
+			Cache.MemoryCacheItem mci = Cache.Cache.GlobalCache.FindMemoryItem(guid);
 			if (mci != null)
 			{
 				localgroup = mci.FileDescriptor.Group;
@@ -370,23 +371,20 @@ namespace SimPe.Plugin.Tool.Dockable
 					package = Packages.File.CreateNew();
 				}
 				//Get the Base Object Data from the Objects.package File
-				string[] modelname = new string[0];
+				List<string> modelname = new List<string>();
 				if (br == CloneSettings.BaseResourceType.Objd)
 				{
 					modelname = BaseClone(localgroup, package, pkgcontainsonlybase);
 				}
 				else
 				{
-					Interfaces.Scenegraph.IScenegraphFileIndexItem[] fii =
-						FileTableBase.FileIndex.FindFile(pfd, null);
-					if (fii.Length > 0)
+					Interfaces.Scenegraph.IScenegraphFileIndexItem fii =
+						FileTableBase.FileIndex.FindFile(pfd, null).FirstOrDefault();
+					if (fii != null)
 					{
-						Interfaces.Files.IPackedFileDescriptor cpfd = fii[0]
-							.FileDescriptor.Clone();
+						Interfaces.Files.IPackedFileDescriptor cpfd = fii.FileDescriptor.Clone();
 						cpfd = cpfd.Clone();
-						cpfd.UserData = fii[0]
-							.Package.Read(fii[0].FileDescriptor)
-							.UncompressedData;
+						cpfd.UserData = fii.Package.Read(fii.FileDescriptor).UncompressedData;
 						package.Add(cpfd);
 					}
 				}
@@ -424,14 +422,14 @@ namespace SimPe.Plugin.Tool.Dockable
 				objclone.RcolModelClone(modelname, exclude);
 
 				//for clones only when cbparent is checked
-				if (settings is OWCloneSettings)
+				if (settings is OWCloneSettings settings1)
 				{
 					if (
-						((OWCloneSettings)settings).StandAloneObject
+						settings1.StandAloneObject
 						|| br == CloneSettings.BaseResourceType.Xml
 					)
 					{
-						string[] names = Scenegraph.LoadParentModelNames(package, true);
+						List<string> names = Scenegraph.LoadParentModelNames(package, true);
 						Packages.File pkg = Packages.File.LoadFromFile(
 							null
 						);
@@ -458,8 +456,8 @@ namespace SimPe.Plugin.Tool.Dockable
 					}
 					else
 					{
-						string[] modelnames = modelname;
-						if (!((OWCloneSettings)settings).RemoveUselessResource)
+						List<string> modelnames = modelname;
+						if (!settings1.RemoveUselessResource)
 						{
 							modelnames = null;
 						}
@@ -476,7 +474,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		}
 
 		static void LoadModelName(
-			ArrayList list,
+			List<string> list,
 			Interfaces.Files.IPackedFileDescriptor pfd,
 			Interfaces.Files.IPackageFile pkg
 		)
@@ -499,14 +497,14 @@ namespace SimPe.Plugin.Tool.Dockable
 		/// <param name="package">The package that should get the Files</param>
 		/// <param name="pkgcontainsbase">true, if the package does already contain the Base Object</param>
 		/// <returns>The Modlename of that Object or null if none</returns>
-		public static string[] BaseClone(
+		public static List<string> BaseClone(
 			uint localgroup,
 			Packages.File package,
 			bool pkgcontainsbase
 		)
 		{
 			//Get the Base Object Data from the Objects.package File
-			ArrayList list = new ArrayList();
+			List<string> list = new List<string>();
 			if (pkgcontainsbase)
 			{
 				foreach (
@@ -524,10 +522,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 			else
 			{
-				Interfaces.Scenegraph.IScenegraphFileIndexItem[] files =
-					FileTableBase.FileIndex.FindFileByGroup(localgroup);
-
-				foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in files)
+				foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in FileTableBase.FileIndex.FindFileByGroup(localgroup))
 				{
 					Interfaces.Files.IPackedFile file = item.Package.Read(
 						item.FileDescriptor
@@ -557,11 +552,7 @@ namespace SimPe.Plugin.Tool.Dockable
 					}
 				}
 			}
-
-			string[] refname = new string[list.Count];
-			list.CopyTo(refname);
-
-			return refname;
+			return list;
 		}
 
 		protected static Packages.GeneratableFile ReColorXObject(

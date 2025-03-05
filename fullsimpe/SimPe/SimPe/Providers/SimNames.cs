@@ -2,7 +2,9 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading;
 
 using Ambertation.Threading;
@@ -55,7 +57,7 @@ namespace SimPe.Providers
 			BaseFolder = folder;
 			this.opcodes = opcodes;
 
-			ArrayList folders = new ArrayList();
+			List<FileTableItem> folders = new List<FileTableItem>();
 			foreach (ExpansionItem ei in PathProvider.Global.Expansions)
 			{
 				if (!ei.Exists)
@@ -292,12 +294,12 @@ namespace SimPe.Providers
 				return;
 			}
 
-			Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+			IEnumerable<Interfaces.Scenegraph.IScenegraphFileIndexItem> items =
 				FileTableBase.FileIndex.FindFileDiscardingGroup(
 					MetaData.OBJD_FILE,
 					inst
 				);
-			Wait.MaxProgress = items.Length;
+			Wait.MaxProgress = items.Count();
 			int ct = 0;
 			int step = Math.Max(2, Wait.MaxProgress / 100);
 			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)

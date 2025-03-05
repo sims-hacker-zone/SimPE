@@ -2,7 +2,10 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
+using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Scenegraph;
 
 namespace SimPe.Plugin
@@ -450,33 +453,20 @@ namespace SimPe.Plugin
 
 		#region IScenegraphItem Member
 
-		public void ReferencedItems(Hashtable refmap, uint parentgroup)
+		public void ReferencedItems(Dictionary<string, List<IPackedFileDescriptor>> refmap, uint parentgroup)
 		{
-			ArrayList list = new ArrayList();
-			foreach (ShapePart part in Parts)
-			{
-				list.Add(
-					ScenegraphHelper.BuildPfd(
-						part.FileName.Trim() + "_txmt",
-						ScenegraphHelper.TXMT,
-						parentgroup
-					)
-				);
-			}
-			refmap["Subsets"] = list;
-
-			list = new ArrayList();
-			foreach (ShapeItem item in Items)
-			{
-				list.Add(
-					ScenegraphHelper.BuildPfd(
-						item.FileName.Trim(),
-						ScenegraphHelper.GMND,
-						parentgroup
-					)
-				);
-			}
-			refmap["Models"] = list;
+			refmap["Subsets"] = (from part in Parts
+								 select ScenegraphHelper.BuildPfd(
+											 part.FileName.Trim() + "_txmt",
+											 ScenegraphHelper.TXMT,
+											 parentgroup
+										 )).ToList();
+			refmap["Models"] = (from item in Items
+								select ScenegraphHelper.BuildPfd(
+									item.FileName.Trim(),
+									ScenegraphHelper.GMND,
+									parentgroup
+								)).ToList();
 		}
 
 		#endregion

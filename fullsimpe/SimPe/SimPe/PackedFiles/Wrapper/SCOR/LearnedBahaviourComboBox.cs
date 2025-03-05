@@ -3,6 +3,7 @@
 
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace SimPe.PackedFiles.Wrapper.SCOR
@@ -78,20 +79,13 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 			objds = new List<ExtObjd>();
 
 			FileTableBase.FileIndex.Load();
-			Interfaces.Scenegraph.IScenegraphFileIndexItem[] objs =
+			IEnumerable<Interfaces.Scenegraph.IScenegraphFileIndexItem> objs =
 				FileTableBase.FileIndex.FindFileDiscardingGroup(
 					Data.MetaData.OBJD_FILE,
 					0x41a7
 				);
-			Wait.Start(objs.Length);
+			Wait.Start(objs.Count());
 			Wait.Message = "Loading Behaviours...";
-			/*foreach (SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem fii in globs)
-			{
-				SimPe.Plugin.Glob glb = new SimPe.Plugin.Glob();
-				glb.ProcessData(fii);
-				if (glb.SemiGlobalGroup == 0x7FD90EDB)
-				{
-					SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] objs = FileTable.FileIndex.FindFile(Data.MetaData.OBJD_FILE, fii.FileDescriptor.Group);*/
 			int ct = 0;
 			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem ofii in objs)
 			{
@@ -101,12 +95,9 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 				if (obj.FileName.StartsWith("Learned Behavior"))
 				{
 					objds.Add(obj);
-					//Console.WriteLine(obj.ResourceName);
 				}
 			}
 			Wait.Stop();
-			/*        }
-				}*/
 		}
 		#endregion
 

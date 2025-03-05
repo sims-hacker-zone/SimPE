@@ -35,8 +35,7 @@ namespace SimPe.Plugin.Scanner
 			System.Windows.Forms.ListViewItem lvi
 		)
 		{
-			ps.Data = new uint[1];
-			ps.Data[0] = (uint)ShelveDimension.Indetermined;
+			ps.Data = new System.Collections.Generic.List<uint> { (uint)ShelveDimension.Indetermined };
 			ps.State = TriState.True;
 
 			if (
@@ -112,7 +111,7 @@ namespace SimPe.Plugin.Scanner
 			{
 				PackageState ps = items[0]
 					.PackageCacheItem.FindState(Uid, true);
-				if (ps.Data.Length > 0)
+				if (ps.Data.Count > 0)
 				{
 					ScannerPanelForm.Form.cbshelve.SelectedValue =
 						(ShelveDimension)ps.Data[0];
@@ -166,7 +165,7 @@ namespace SimPe.Plugin.Scanner
 						Uid,
 						true
 					);
-					if (ps.Data.Length < 1)
+					if (ps.Data.Count < 1)
 					{
 						continue;
 					}

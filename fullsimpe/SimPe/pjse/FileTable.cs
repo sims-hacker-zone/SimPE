@@ -3,6 +3,7 @@
 using System;
 using System.Collections;
 using System.IO;
+using System.Linq;
 using System.Resources;
 
 using SimPe.Interfaces;
@@ -561,9 +562,7 @@ namespace pjse
 				IsMaxis = isMaxis;
 				IsFixed = isFixed;
 
-				SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] fiis =
-					SimPe.FileTableBase.FileIndex.FindFile(pfd, package);
-				fii = (fiis.Length == 1) ? fiis[0] : null;
+				fii = SimPe.FileTableBase.FileIndex.FindFile(pfd, package).FirstOrDefault();
 
 				PFD.ChangedData += new SimPe.Events.PackedFileChanged(
 					pfd_ChangedData

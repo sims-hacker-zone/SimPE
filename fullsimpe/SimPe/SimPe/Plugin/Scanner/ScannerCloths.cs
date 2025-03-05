@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 using SimPe.Cache;
@@ -76,7 +77,7 @@ namespace SimPe.Plugin.Scanner
 					pfds = si.Package.FindFiles(0x0C1FE246); //Mesh Overlay XML
 				}
 
-				ArrayList data = new ArrayList();
+				List<uint> data = new List<uint>();
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
 					Cpf cpf = new Cpf();
@@ -87,8 +88,7 @@ namespace SimPe.Plugin.Scanner
 					data.Add(cpf.GetSaveItem("gender").UIntegerValue);
 				}
 
-				ps.Data = new uint[data.Count];
-				data.CopyTo(ps.Data);
+				ps.Data = new List<uint>(data);
 				ps.State = TriState.True;
 			}
 			else
@@ -113,7 +113,7 @@ namespace SimPe.Plugin.Scanner
 				uint f = 0;
 				uint c = 0;
 				uint a = 0;
-				for (int i = 0; i < ps.Data.Length - 2; i += 3)
+				for (int i = 0; i < ps.Data.Count - 2; i += 3)
 				{
 					f |= ps.Data[i + 2];
 					c |= ps.Data[i + 1];
@@ -228,7 +228,7 @@ namespace SimPe.Plugin.Scanner
 					Uid,
 					true
 				);
-				for (int ct = 0; ct < ps.Data.Length - 2; ct += 3)
+				for (int ct = 0; ct < ps.Data.Count - 2; ct += 3)
 				{
 					en = true;
 					maxagecount++;

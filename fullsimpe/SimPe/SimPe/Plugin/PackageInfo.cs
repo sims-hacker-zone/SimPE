@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 
 using SimPe.Data;
@@ -69,7 +70,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		public RecolorItem[] RecolorItems
+		public List<RecolorItem> RecolorItems
 		{
 			get; set;
 		}
@@ -348,9 +349,9 @@ namespace SimPe.Plugin
 					// Dispose managed resources.
 					foreach (PackageInfo pnfo in Values)
 					{
-						if (pnfo.Package is IDisposable)
+						if (pnfo.Package is IDisposable disposable)
 						{
-							((IDisposable)pnfo.Package).Dispose();
+							disposable.Dispose();
 						}
 					}
 				}

@@ -186,9 +186,8 @@ namespace SimPe
 			}
 
 			//FileTable
-			ArrayList folders = FileTableBase.DefaultFolders;
 			lbfolder.Items.Clear();
-			foreach (FileTableItem fti in folders)
+			foreach (FileTableItem fti in FileTableBase.DefaultFolders)
 			{
 				lbfolder.Items.Add(fti, !fti.Ignore);
 			}

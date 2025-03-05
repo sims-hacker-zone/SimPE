@@ -1,8 +1,9 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Xml;
+using System.Xml.Linq;
 
 using SimPe.Interfaces.Wrapper;
 
@@ -22,142 +23,95 @@ namespace SimPe
 			get; set;
 		}
 
+		private static List<FileTableItem> defaultFolders;
+
 		/// <summary>
 		/// Returns a List of all Folders, even those the User doesn't want to scan for Content
 		/// </summary>
-		public static ArrayList DefaultFolders
+		public static List<FileTableItem> DefaultFolders
 		{
 			get
 			{
-				string filename = Helper.DataFolder.FoldersXREG;
-				if (!System.IO.File.Exists(filename))
+				if (defaultFolders == null)
 				{
-					BuildFolderXml();
-					filename = Helper.DataFolder.FoldersXREGW;
-				} // as that's what we just wrote
-
-				System.Collections.Generic.Dictionary<string, ExpansionItem> shortmap =
-					new System.Collections.Generic.Dictionary<string, ExpansionItem>();
-				foreach (ExpansionItem ei in PathProvider.Global.Expansions)
-				{
-					shortmap[ei.ShortId.ToLower()] = ei;
-				}
-
-				ArrayList folders = new ArrayList();
-
-				XmlReaderSettings xrs = new XmlReaderSettings
-				{
-					CloseInput = true,
-					IgnoreComments = true,
-					IgnoreProcessingInstructions = true,
-					IgnoreWhitespace = true
-				};
-				XmlReader xr = XmlReader.Create(filename, xrs);
-				try
-				{
-					xr.ReadStartElement("folders");
-					xr.ReadStartElement("filetable");
-					while (xr.IsStartElement())
+					string filename = Helper.DataFolder.FoldersXREG;
+					if (!System.IO.File.Exists(filename))
 					{
-						int ftiver = -1;
-						bool ftiignore = false;
-						bool ftirec = false;
-						FileTableItemType ftitype = FileTablePaths.Absolute;
+						BuildFolderXml();
+						filename = Helper.DataFolder.FoldersXREGW;
+					} // as that's what we just wrote
 
-						if (xr.Name != "path" && xr.Name != "file")
-						{
-							xr.Skip();
-							continue;
-						}
-						while (xr.MoveToNextAttribute())
-						{
-							if (xr.Name == "recursive" && xr.Value != "0")
-							{
-								ftirec = true;
-							}
-							else if (xr.Name == "ignore" && xr.Value != "0")
-							{
-								ftiignore = true;
-							}
-							else if (xr.Name == "version" || xr.Name == "epversion")
-							{
-								try
-								{
-									int ver = Convert.ToInt32(xr.Value);
-									ftiver = ver;
-								}
-								catch { }
-							}
-							else if (xr.Name == "root")
-							{
-								string root = xr.Value.ToLower();
-
-								if (shortmap.ContainsKey(root))
-								{
-									ExpansionItem ei = shortmap[root];
-									ftitype = ei.Expansion;
-									root = ei.InstallFolder;
-								}
-								else if (root == "save")
-								{
-									root = PathProvider.SimSavegameFolder;
-									ftitype = FileTablePaths.SaveGameFolder;
-								}
-								else if (root == "simpe")
-								{
-									root = Helper.SimPePath;
-									ftitype = FileTablePaths.SimPEFolder;
-								}
-								else if (root == "simpedata")
-								{
-									root = Helper.SimPeDataPath;
-									ftitype = FileTablePaths.SimPEDataFolder;
-								}
-								else if (root == "simpeplugin")
-								{
-									root = Helper.SimPePluginPath;
-									ftitype = FileTablePaths.SimPEPluginFolder;
-								}
-							} // root
-						} // MoveToNextAttribute
-						xr.MoveToElement();
-
-						FileTableItem fti = xr.Name == "file"
-							? new FileTableItem(
-								xr.ReadString(),
-								ftitype,
-								false,
-								true,
-								ftiver,
-								ftiignore
-							)
-							: new FileTableItem(
-								xr.ReadString(),
-								ftitype,
-								ftirec,
-								false,
-								ftiver,
-								ftiignore
-							);
-
-						folders.Add(fti);
-						xr.ReadEndElement();
+					Dictionary<string, ExpansionItem> shortmap =
+						new Dictionary<string, ExpansionItem>();
+					foreach (ExpansionItem ei in PathProvider.Global.Expansions)
+					{
+						shortmap[ei.ShortId.ToLower()] = ei;
 					}
-					xr.ReadEndElement();
-					xr.ReadEndElement();
 
-					return folders;
+					XElement doc = XElement.Load(filename);
+
+					List<FileTableItem> list = new List<FileTableItem>();
+
+					foreach (XElement el in doc.Element("filetable").Elements())
+					{
+						FileTableItemType ftitype = FileTablePaths.Absolute;
+						XAttribute root = el.Attribute("root");
+						if (root != null)
+						{
+							switch ((string)root)
+							{
+								case "save":
+									ftitype = FileTablePaths.SaveGameFolder;
+									break;
+								case "simpe":
+									ftitype = FileTablePaths.SimPEFolder;
+									break;
+								case "simpedata":
+									ftitype = FileTablePaths.SimPEDataFolder;
+									break;
+								case "simpeplugin":
+									ftitype = FileTablePaths.SimPEPluginFolder;
+									break;
+								default:
+									if (shortmap.ContainsKey((string)root))
+									{
+										ftitype = shortmap[(string)root].Expansion;
+									}
+									break;
+							}
+						}
+						XAttribute version = el.Attribute("version");
+						int ftiver = version != null ? (int)version : -1;
+						XAttribute ignore = el.Attribute("ignore");
+						bool ftiignore = ignore != null && (int)ignore == 1;
+						XAttribute recursive = el.Attribute("recursive");
+						bool ftirec = recursive != null && (int)recursive == 1;
+						if (el.Name == "file")
+						{
+							list.Add(new FileTableItem(
+									el.Value,
+									ftitype,
+									false,
+									true,
+									ftiver,
+									ftiignore
+								));
+						}
+						else
+						{
+							list.Add(new FileTableItem(
+									el.Value,
+									ftitype,
+									ftirec,
+									false,
+									ftiver,
+									ftiignore
+								));
+						}
+					}
+					defaultFolders = list;
 				}
-				catch (Exception ex)
-				{
-					Helper.ExceptionMessage("", ex);
-					return new ArrayList();
-				}
-				finally
-				{
-					xr.Close();
-					xr = null;
-				}
+				return defaultFolders;
 			}
 		}
 
@@ -304,9 +258,7 @@ namespace SimPe
 		/// Write folders.xreg
 		/// </summary>
 		/// <param name="lfti">A <typeparamref name="List&lt;&gt;"/> of <typeparamref name="FileTableItem"/> entries</param>
-		public static void StoreFoldersXml(
-			System.Collections.Generic.List<FileTableItem> lfti
-		)
+		public static void StoreFoldersXml(List<FileTableItem> lfti)
 		{
 			try
 			{

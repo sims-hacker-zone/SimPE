@@ -151,6 +151,7 @@ namespace SimPe
 			System.Diagnostics.Trace.WriteLine(
 				"SimPe.WaitingScreen.doUpdate(message): " + msg + ", " + count
 			);
+			Console.WriteLine($"WaitingScreen: {msg}");
 			lock (lockFrm)
 			{
 				prevMessage = msg;

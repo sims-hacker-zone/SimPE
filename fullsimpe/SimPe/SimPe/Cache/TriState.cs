@@ -1,13 +1,14 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
-
-namespace SimPe.Interfaces
+namespace SimPe.Cache
 {
 	/// <summary>
-	/// Summary description for ICacheFileTest.
+	/// Adds the Null State to the Bollen states
 	/// </summary>
-	public interface ICacheFileTest
+	public enum TriState : byte
 	{
-		void Load(string flname);
+		False = 0,
+		True = 1,
+		Null = 2,
 	}
 }

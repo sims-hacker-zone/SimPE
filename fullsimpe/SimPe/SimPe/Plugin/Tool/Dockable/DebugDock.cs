@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SimPe.Plugin.Tool.Dockable
 {
@@ -208,7 +210,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		private void label1_Click(object sender, EventArgs e)
 		{
-			System.IO.StreamWriter sw = System.IO.File.CreateText(@"i:\replicated.txt");
+			System.IO.StreamWriter sw = System.IO.File.CreateText(System.IO.Path.Combine(Helper.SimPeDataPath, "replicated.txt"));
 			string objname = System
 				.IO.Path.Combine(
 					PathProvider.Global[Expansions.BaseGame].InstallFolder,
@@ -226,17 +228,18 @@ namespace SimPe.Plugin.Tool.Dockable
 			FileTableBase.FileIndex.Load();
 			lbft.Items.Clear();
 
-			int[] ct = new int[3];
+			Dictionary<int, int> ct = new Dictionary<int, int>();
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pkg.Index)
 			{
-				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+				IEnumerable<Interfaces.Scenegraph.IScenegraphFileIndexItem> items =
 					FileTableBase.FileIndex.FindFile(pfd, null);
 
 				bool copy = false;
-				if ((items.Length - 1) < 4)
+				if (!ct.ContainsKey(items.Count()))
 				{
-					ct[items.Length - 1]++;
+					ct[items.Count()] = 0;
 				}
+				ct[items.Count()]++;
 
 				foreach (
 					Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
@@ -250,19 +253,19 @@ namespace SimPe.Plugin.Tool.Dockable
 
 				if (!copy)
 				{
-					lbft.Items.Add(items.Length.ToString() + ": " + pfd.ToString());
-					sw.WriteLine(items.Length.ToString() + ": " + pfd.ToString());
+					lbft.Items.Add(items.Count().ToString() + ": " + pfd.ToString());
+					sw.WriteLine(items.Count().ToString() + ": " + pfd.ToString());
 				}
 			}
 
 			lbft.Items.Add(" m: " + pkg.Index.Length.ToString());
-			lbft.Items.Add(" 1: " + ct[0].ToString());
-			lbft.Items.Add(" 2: " + ct[1].ToString());
-			lbft.Items.Add(" 3: " + ct[2].ToString());
+			foreach (KeyValuePair<int, int> kv in ct)
+			{
+				lbft.Items.Add($" {kv.Key}: {kv.Value}");
+			}
 
 			sw.Close();
 			sw.Dispose();
-			sw = null;
 		}
 
 		#region IToolExt Member

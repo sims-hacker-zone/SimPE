@@ -1,6 +1,5 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
@@ -148,7 +147,7 @@ namespace SimPe.PackedFiles.Swaf
 		/// Adds all available Object Names
 		/// </summary>
 		/// <param name="list">A List of MemoryCacheItems</param>
-		public void AddObjects(ArrayList list)
+		public void AddObjects(IEnumerable<Cache.MemoryCacheItem> list)
 		{
 			Map[WantType.Object] = (from Cache.MemoryCacheItem mci in list
 									where mci.ObjectType == Data.ObjectTypes.Normal

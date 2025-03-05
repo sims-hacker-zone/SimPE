@@ -1,7 +1,9 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
-using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
+using SimPe.Cache;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -12,8 +14,8 @@ namespace SimPe.Plugin
 	public class ExtNgbh : Ngbh
 	{
 		#region Value Descriptors, used for Badges and Hiden Skills
-		static NgbhValueDescriptor[] vd;
-		public static NgbhValueDescriptor[] ValueDescriptors
+		static List<NgbhValueDescriptor> vd;
+		public static List<NgbhValueDescriptor> ValueDescriptors
 		{
 			get
 			{
@@ -28,33 +30,20 @@ namespace SimPe.Plugin
 
 		protected static void CreateValueDescriptors()
 		{
-			ArrayList list = new ArrayList();
-			foreach (
-				Cache.MemoryCacheItem mci in
-					PackedFiles
-					.Wrapper
-					.ObjectComboBox
-					.ObjectCache
-					.List
-			)
-			{
-				if (mci.IsBadge)
-				{
-					list.Add(
-						new NgbhValueDescriptor(
-							mci.Name,
-							true,
-							NgbhValueDescriptorType.Badge,
-							mci.Guid,
-							0,
-							0,
-							1000
-						)
-					);
-				}
-			}
+			vd = (from container in Cache.Cache.GlobalCache.Items[ContainerType.Memory].Values
+				  from MemoryCacheItem mci in container
+				  where mci.IsBadge
+				  select new NgbhValueDescriptor(
+						  mci.Name,
+						  true,
+						  NgbhValueDescriptorType.Badge,
+						  mci.Guid,
+						  0,
+						  0,
+						  1000
+					  )).ToList();
 
-			list.AddRange(
+			vd.AddRange(
 				new NgbhValueDescriptor[]
 				{
 					new NgbhValueDescriptor(
@@ -129,7 +118,7 @@ namespace SimPe.Plugin
 
 			if (PathProvider.Global.EPInstalled >= 13)
 			{
-				list.AddRange(
+				vd.AddRange(
 					new NgbhValueDescriptor[]
 					{
 						new NgbhValueDescriptor(
@@ -148,7 +137,7 @@ namespace SimPe.Plugin
 
 			if (PathProvider.Global.GetExpansion(Expansions.IslandStories).Exists)
 			{
-				list.AddRange(
+				vd.AddRange(
 					new NgbhValueDescriptor[]
 					{
 						new NgbhValueDescriptor(
@@ -163,9 +152,6 @@ namespace SimPe.Plugin
 					}
 				);
 			}
-
-			vd = new NgbhValueDescriptor[list.Count];
-			list.CopyTo(vd);
 		}
 		#endregion
 

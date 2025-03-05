@@ -1,5 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using System;
+
 namespace SimPe
 {
 	public class Splash
@@ -49,6 +51,7 @@ namespace SimPe
 					new System.Threading.ThreadStart(StartThread)
 				);
 				t.Start();
+				sw.Start();
 			}
 			else
 			{
@@ -80,9 +83,12 @@ namespace SimPe
 		}
 
 		string mmsg;
+		System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
 
 		public void SetMessage(string msg)
 		{
+			Console.WriteLine($"Splash: {msg} ({sw.ElapsedMilliseconds} ms)");
+			sw.Restart();
 			mmsg = msg;
 			if (frm != null)
 			{
@@ -93,6 +99,7 @@ namespace SimPe
 		public void Stop()
 		{
 			frm?.StopSplash();
+			sw.Stop();
 		}
 
 		public void ShutDown()

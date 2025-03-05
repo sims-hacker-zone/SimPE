@@ -1,5 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using System.Linq;
+
 namespace SimPe.Plugin.Tool.Action
 {
 	/// <summary>
@@ -32,12 +34,12 @@ namespace SimPe.Plugin.Tool.Action
 			try
 			{
 				System.Collections.ArrayList guids = new System.Collections.ArrayList();
-				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
+				var items =
 					FileTableBase.FileIndex.FindFile(Data.MetaData.OBJD_FILE, true);
 				sw.WriteLine("<?");
 				sw.WriteLine("$guids = array(");
 				sw.Write("    ");
-				Wait.SubStart(items.Length);
+				Wait.SubStart(items.Count());
 				int ct = 0;
 				foreach (
 					Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
@@ -47,17 +49,7 @@ namespace SimPe.Plugin.Tool.Action
 						new PackedFiles.Wrapper.ExtObjd();
 					objd.ProcessData(item);
 
-					if (guids.Contains(objd.Guid))
-					{
-						continue;
-					}
-
-					if (objd.Type == Data.ObjectTypes.Memory)
-					{
-						continue;
-					}
-
-					if (objd.Type == Data.ObjectTypes.Person)
+					if (guids.Contains(objd.Guid) || objd.Type == Data.ObjectTypes.Memory || objd.Type == Data.ObjectTypes.Person)
 					{
 						continue;
 					}

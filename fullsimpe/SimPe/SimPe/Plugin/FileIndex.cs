@@ -2,227 +2,13 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 using SimPe.Interfaces.Scenegraph;
 
 namespace SimPe.Plugin
 {
-	/// <summary>
-	/// This is a Item describing the File
-	/// </summary>
-	public class FileIndexItem : IScenegraphFileIndexItem, IComparer, IDisposable
-	{
-		uint localgr;
-
-		/// <summary>
-		/// The Descriptor of that File
-		/// </summary>
-		/// <remarks>Contains the original Group (can be 0xffffffff)</remarks>
-		public Interfaces.Files.IPackedFileDescriptor FileDescriptor
-		{
-			get; set;
-		}
-
-		/// <summary>
-		/// The Descriptor of that File, with a real Group value
-		/// </summary>
-		/// <returns>A Clonde FileDescriptor, that contains the correct Group</returns>
-		/// <remarks>Contains the local Group (can never be 0xffffffff)</remarks>
-		public Interfaces.Files.IPackedFileDescriptor GetLocalFileDescriptor()
-		{
-			Interfaces.Files.IPackedFileDescriptor p =
-				FileDescriptor.Clone();
-			p.Group = LocalGroup;
-			return p;
-		}
-
-		/// <summary>
-		/// The package the File is stored in
-		/// </summary>
-		public Interfaces.Files.IPackageFile Package
-		{
-			get; private set;
-		}
-
-		/// <summary>
-		/// Get the Local Group Value used for this Package
-		/// </summary>
-		public uint LocalGroup => FileDescriptor.Group == Data.MetaData.LOCAL_GROUP ? localgr : FileDescriptor.Group;
-
-		/// <summary>
-		/// Create a new Instance
-		/// </summary>
-		/// <param name="pfd">the Descriptor</param>
-		/// <param name="package">the package</param>
-		public FileIndexItem(
-			Interfaces.Files.IPackedFileDescriptor pfd,
-			Interfaces.Files.IPackageFile package
-		)
-		{
-			if (pfd == null)
-			{
-				pfd = new Packages.PackedFileDescriptor();
-			}
-
-			if (package == null)
-			{
-				package = Packages.File.LoadFromStream(
-					null
-				);
-			}
-
-			FileDescriptor = pfd;
-			Package = package;
-
-			localgr = FileIndex.GetLocalGroup(package);
-		}
-
-		public override string ToString()
-		{
-			return FileDescriptor != null ? FileDescriptor.Filename : Localization.Manager.GetString("unknown");
-		}
-
-		public override int GetHashCode()
-		{
-			return FileDescriptor.GetHashCode();
-		}
-
-		public override bool Equals(object obj)
-		{
-			if (obj == null)
-			{
-				return false;
-			}
-
-			if (obj.GetType() == typeof(FileIndexItem))
-			{
-				FileIndexItem fii = (FileIndexItem)obj;
-				if (fii.FileDescriptor == null)
-				{
-					return FileDescriptor == null;
-				}
-
-				if (fii.LocalGroup != LocalGroup)
-				{
-					return false;
-				}
-
-				bool res = fii.FileDescriptor.Equals(FileDescriptor);
-
-				//null Values for Packages
-				if (fii.Package == null)
-				{
-					return Package == null && res;
-				}
-				else if (Package == null)
-				{
-					return false;
-				}
-
-				//null Values for FileNames
-				/*if (fii.Package.FileName==null)
-				{
-					if (Package.FileName!=null) return false;
-					else return true;
-				} else if (Package.FileName==null) return false;*/
-
-				return res && fii.Package.Equals(Package);
-			}
-			else
-			{
-				return base.Equals(obj);
-			}
-		}
-
-		/// <summary>
-		/// returns a String that can identify this Instance
-		/// </summary>
-		/// <returns></returns>
-		public string GetLongHashCode()
-		{
-			return FileDescriptor.ToString() + "-" + (Package.FileName ?? "");
-		}
-
-		#region IComparer Member
-
-		public int Compare(object x, object y)
-		{
-			if (
-				x.GetType() == typeof(FileIndexItem)
-				&& y.GetType() == typeof(FileIndexItem)
-			)
-			{
-				FileIndexItem a = (FileIndexItem)x;
-				FileIndexItem b = (FileIndexItem)y;
-
-				return (int)(
-					a.FileDescriptor.Instance - (long)b.FileDescriptor.Instance
-				);
-			}
-			return 0;
-		}
-
-		#endregion
-
-		public void Dispose()
-		{
-			FileDescriptor = null;
-			Package = null;
-		}
-	}
-
-	/// <summary>
-	/// Typesave ArrayList for FileIndexItem Objects
-	/// </summary>
-	public class FileIndexItems : ArrayList
-	{
-		public new FileIndexItem this[int index]
-		{
-			get => (FileIndexItem)base[index];
-			set => base[index] = value;
-		}
-
-		public FileIndexItem this[uint index]
-		{
-			get => (FileIndexItem)base[(int)index];
-			set => base[(int)index] = value;
-		}
-
-		public int Add(FileIndexItem fii)
-		{
-			return base.Add(fii);
-		}
-
-		public void Insert(int index, FileIndexItem fii)
-		{
-			base.Insert(index, fii);
-		}
-
-		public void Remove(FileIndexItem fii)
-		{
-			base.Remove(fii);
-		}
-
-		public bool Contains(FileIndexItem fii)
-		{
-			foreach (FileIndexItem i in this)
-			{
-				if (i.Equals(fii))
-				{
-					return true;
-				}
-			}
-
-			return false;
-		}
-
-		public int Length => Count;
-
-		public override void Sort()
-		{
-			base.Sort(new FileIndexItem(null, null));
-		}
-	}
 
 	/// <summary>
 	/// This class contains a Index of all found Files
@@ -233,14 +19,14 @@ namespace SimPe.Plugin
 			IDisposable
 	{
 		/// <summary>
-		/// This Hashtable (FileType) contains a Hashtable (Group) of Hashtables (Instance) of ArrayLists (coliding Files)
+		/// This Hashtable (FileType) contains a Hashtable (Group) of Hashtables (Instance) of ArrayLists (Files)
 		/// </summary>
-		Hashtable index;
+		Dictionary<uint, Dictionary<uint, Dictionary<ulong, List<IScenegraphFileIndexItem>>>> Index { get; set; } = new Dictionary<uint, Dictionary<uint, Dictionary<ulong, List<IScenegraphFileIndexItem>>>>();
 
 		/// <summary>
 		/// Contains a List of the Filenames of all added packages
 		/// </summary>
-		ArrayList addedfilenames;
+		List<string> addedfilenames = new List<string>();
 
 #if DEBUG
 		/// <summary>
@@ -252,7 +38,7 @@ namespace SimPe.Plugin
 			{
 				ArrayList ret = new ArrayList();
 
-				foreach (IScenegraphFileIndex fi in childs)
+				foreach (IScenegraphFileIndex fi in Children)
 				{
 					ret.AddRange(((FileIndex)fi).StoredFiles);
 				}
@@ -264,11 +50,6 @@ namespace SimPe.Plugin
 #endif
 
 		/// <summary>
-		/// Contains a Mapping from a Filename ro a local Group
-		/// </summary>
-		static Hashtable localGroupMap;
-
-		/// <summary>
 		/// Contains the next number the Core can assign as a localGroup
 		/// </summary>
 		//static uint lastLocalGroup = 0x6f000000;
@@ -276,12 +57,17 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Contains a Listing of all alternate Groups SimPe should check if the first try was no success
 		/// </summary>
-		static ArrayList alternaiveGroups;
+		private static readonly uint[] ALTERNATIVE_GROUPS = {Data.MetaData.CUSTOM_GROUP,
+					Data.MetaData.GLOBAL_GROUP,
+					Data.MetaData.LOCAL_GROUP};
 
 		public bool Duplicates
 		{
 			get; set;
 		}
+
+		List<IScenegraphFileIndex> Children { get; set; } = new List<IScenegraphFileIndex>();
+		FileIndex parent;
 
 		/// <summary>
 		/// Create a new Instance
@@ -295,13 +81,11 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="folders">The Folders where you want to look for packages, null for the default Set</param>
 		/// <remarks>The Default set is read from the Folder.xml File</remarks>
-		public FileIndex(ArrayList folders)
+		public FileIndex(List<FileTableItem> folders)
 			: base()
 		{
 			Loaded = false;
-			childs = new ArrayList();
 			paths = new ArrayList();
-			ignoredfl = new ArrayList();
 			Init(folders);
 		}
 
@@ -311,11 +95,11 @@ namespace SimPe.Plugin
 		/// <returns>The Clone</returns>
 		public IScenegraphFileIndex Clone()
 		{
-			FileIndex ret = new FileIndex(new ArrayList())
+			FileIndex ret = new FileIndex(new List<FileTableItem>())
 			{
-				index = (Hashtable)index.Clone(),
-				BaseFolders = (ArrayList)BaseFolders.Clone(),
-				addedfilenames = (ArrayList)addedfilenames.Clone(),
+				Index = new Dictionary<uint, Dictionary<uint, Dictionary<ulong, List<IScenegraphFileIndexItem>>>>(Index),
+				BaseFolders = new List<FileTableItem>(BaseFolders),
+				addedfilenames = new List<string>(addedfilenames),
 				Duplicates = Duplicates,
 				Loaded = Loaded
 			};
@@ -324,8 +108,8 @@ namespace SimPe.Plugin
 		}
 
 		#region StoreState
-		ArrayList oldnames;
-		Hashtable oldindex;
+		List<string> oldnames;
+		Dictionary<uint, Dictionary<uint, Dictionary<ulong, List<IScenegraphFileIndexItem>>>> oldindex;
 		bool olddup;
 
 		/// <summary>
@@ -335,8 +119,8 @@ namespace SimPe.Plugin
 		/// </summary>
 		public void StoreCurrentState()
 		{
-			oldnames = (ArrayList)addedfilenames.Clone();
-			oldindex = (Hashtable)index.Clone();
+			oldnames = new List<string>(addedfilenames);
+			oldindex = new Dictionary<uint, Dictionary<uint, Dictionary<ulong, List<IScenegraphFileIndexItem>>>>(Index);
 			olddup = Duplicates;
 		}
 
@@ -353,7 +137,7 @@ namespace SimPe.Plugin
 			PrepareAllForRemove();
 
 			addedfilenames = oldnames;
-			index = oldindex;
+			Index = oldindex;
 			Duplicates = olddup;
 
 			oldnames = null;
@@ -367,70 +151,27 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns the List of all Folders this FileIndex is processing
 		/// </summary>
-		public ArrayList BaseFolders
+		public List<FileTableItem> BaseFolders
 		{
 			get; set;
 		}
 
-		ArrayList ignoredfl;
-
-		/// <summary>
-		/// Returns a List of FileNames that should be Ignored
-		/// </summary>
-		/// <returns></returns>
-		public void LoadIgnoredFiles()
-		{
-			if (ignoredfl != null)
-			{
-				ignoredfl.Clear();
-			}
-			else
-			{
-				ignoredfl = new ArrayList();
-			}
-
-			if (BaseFolders != null)
-			{
-				foreach (FileTableItem fti in BaseFolders)
-				{
-					if (fti.IsFile && fti.IsUseable && fti.Ignore)
-					{
-						ignoredfl.Add(fti.Name.Trim().ToLower());
-					}
-				}
-			}
-		}
+		IEnumerable<string> IgnoredFiles => from fti in BaseFolders
+											where fti.IsFile && fti.IsUseable && fti.Ignore
+											select fti.Name.Trim().ToLower();
 
 		/// <summary>
 		/// Initialize the instance Data
 		/// </summary>
 		/// <param name="folders">Fodlers to scan</param>
-		protected void Init(ArrayList folders)
+		protected void Init(List<FileTableItem> folders)
 		{
 			paths = new ArrayList();
-			addedfilenames = new ArrayList();
 			Duplicates = false;
 
-			//Add alternate Groups
-			if (alternaiveGroups == null)
-			{
-				alternaiveGroups = new ArrayList
-				{
-					Data.MetaData.CUSTOM_GROUP,
-					Data.MetaData.GLOBAL_GROUP,
-					Data.MetaData.LOCAL_GROUP
-				};
-			}
-
-			index = new Hashtable();
 			StoreCurrentState();
 
-			if (folders == null)
-			{
-				folders = FileTableBase.DefaultFolders;
-			}
-
-			BaseFolders = folders;
+			BaseFolders = folders ?? FileTableBase.DefaultFolders;
 		}
 
 		/// <summary>
@@ -440,8 +181,7 @@ namespace SimPe.Plugin
 		/// <returns>the local Group</returns>
 		public static uint GetLocalGroup(Interfaces.Files.IPackageFile package)
 		{
-			string flname = package.SaveFileName;
-			return GetLocalGroup(flname);
+			return GetLocalGroup(package.SaveFileName);
 		}
 
 		/// <summary>
@@ -456,11 +196,6 @@ namespace SimPe.Plugin
 				WrapperFactory.LoadGroupCache();
 			}
 
-			if (localGroupMap == null)
-			{
-				localGroupMap = new Hashtable();
-			}
-
 			if (flname == null)
 			{
 				flname = "memoryfile";
@@ -468,10 +203,7 @@ namespace SimPe.Plugin
 
 			flname = flname.Trim().ToLower();
 
-			Interfaces.Wrapper.IGroupCacheItem gci = FileTableBase.GroupCache.GetItem(
-				flname
-			);
-			return gci.LocalGroup;
+			return FileTableBase.GroupCache.GetItem(flname).LocalGroup;
 		}
 
 		public bool Loaded
@@ -532,7 +264,6 @@ namespace SimPe.Plugin
 			WrapperFactory.LoadGroupCache();
 
 			Clear();
-			LoadIgnoredFiles();
 
 			int ct = 0;
 			foreach (FileTableItem fti in BaseFolders)
@@ -564,10 +295,7 @@ namespace SimPe.Plugin
 
 		public virtual void OnFILoad(object sender, EventArgs e)
 		{
-			if (FILoad != null)
-			{
-				FILoad(sender, e);
-			}
+			FILoad?.Invoke(sender, e);
 		}
 
 		ArrayList paths;
@@ -584,7 +312,7 @@ namespace SimPe.Plugin
 				return false;
 			}
 
-			foreach (IScenegraphFileIndex fi in childs)
+			foreach (IScenegraphFileIndex fi in Children)
 			{
 				if (fi.ContainsPath(path))
 				{
@@ -612,10 +340,9 @@ namespace SimPe.Plugin
 				paths.Add(fti.Name);
 			}
 
-			string[] files = fti.GetFiles();
 
 			string err = "";
-			foreach (string afile in files)
+			foreach (string afile in fti.GetFiles())
 			{
 				try
 				{
@@ -668,7 +395,7 @@ namespace SimPe.Plugin
 		/// <remarks>Updates the WaitingScreen Message</remarks>
 		public void AddIndexFromPackage(string file)
 		{
-			if (ignoredfl.Contains(file.Trim().ToLower()))
+			if (IgnoredFiles.Contains(file.Trim().ToLower()))
 			{
 				return;
 			}
@@ -821,11 +548,11 @@ namespace SimPe.Plugin
 					addedfilenames.Add(s);
 			}*/
 
-			foreach (Hashtable groups in index.Values)
+			foreach (Dictionary<uint, Dictionary<ulong, List<IScenegraphFileIndexItem>>> groups in Index.Values)
 			{
-				foreach (Hashtable instances in groups.Values)
+				foreach (Dictionary<ulong, List<IScenegraphFileIndexItem>> instances in groups.Values)
 				{
-					foreach (ArrayList res in instances.Values)
+					foreach (List<IScenegraphFileIndexItem> res in instances.Values)
 					{
 						foreach (
 							IScenegraphFileIndexItem pfd in res
@@ -840,17 +567,16 @@ namespace SimPe.Plugin
 				}
 				groups.Clear();
 			}
-
-			index.Clear();
+			Index.Clear();
 		}
 
 		protected void PrepareAllForAdd()
 		{
-			foreach (Hashtable groups in index.Values)
+			foreach (Dictionary<uint, Dictionary<ulong, List<IScenegraphFileIndexItem>>> groups in Index.Values)
 			{
-				foreach (Hashtable instances in groups.Values)
+				foreach (Dictionary<ulong, List<IScenegraphFileIndexItem>> instances in groups.Values)
 				{
-					foreach (ArrayList res in instances.Values)
+					foreach (List<IScenegraphFileIndexItem> res in instances.Values)
 					{
 						foreach (
 							IScenegraphFileIndexItem item in res
@@ -865,21 +591,11 @@ namespace SimPe.Plugin
 
 		protected void PrepareAllForRemove()
 		{
-			foreach (Hashtable groups in index.Values)
-			{
-				foreach (Hashtable instances in groups.Values)
-				{
-					foreach (ArrayList res in instances.Values)
-					{
-						foreach (
-							IScenegraphFileIndexItem item in res
-						)
-						{
-							PrepareForRemove(item.FileDescriptor);
-						}
-					}
-				}
-			}
+			PrepareForRemove(from groups in Index.Values
+							 from instances in groups.Values
+							 from res in instances.Values
+							 from item in res
+							 select item.FileDescriptor);
 		}
 
 		protected void PrepareForRemove(
@@ -889,9 +605,25 @@ namespace SimPe.Plugin
 			pfd.Closed -= new Events.PackedFileChanged(ClosedDescriptor);
 		}
 
+		protected void PrepareForRemove(IEnumerable<Interfaces.Files.IPackedFileDescriptor> pfds)
+		{
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			{
+				pfd.Closed -= new Events.PackedFileChanged(ClosedDescriptor);
+			}
+		}
+
 		protected void PrepareForAdd(Interfaces.Files.IPackedFileDescriptor pfd)
 		{
 			pfd.Closed += new Events.PackedFileChanged(ClosedDescriptor);
+		}
+
+		protected void PrepareForAdd(IEnumerable<Interfaces.Files.IPackedFileDescriptor> pfds)
+		{
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			{
+				pfd.Closed += new Events.PackedFileChanged(ClosedDescriptor);
+			}
 		}
 
 		/// <summary>
@@ -909,39 +641,22 @@ namespace SimPe.Plugin
 			PrepareForAdd(pfd);
 			FileIndexItem item = new FileIndexItem(pfd, package);
 
-			Hashtable groups = null;
-			Hashtable instances = null;
-			FileIndexItems files = null;
-
-			if (index.ContainsKey(item.FileDescriptor.Type))
+			if (!Index.ContainsKey(item.FileDescriptor.Type))
 			{
-				groups = (Hashtable)index[item.FileDescriptor.Type];
-			}
-			else
-			{
-				groups = new Hashtable();
-				index[item.FileDescriptor.Type] = groups;
+				Index[item.FileDescriptor.Type] = new Dictionary<uint, Dictionary<ulong, List<IScenegraphFileIndexItem>>>();
 			}
 
-			if (groups.ContainsKey(item.FileDescriptor.Group))
+			if (!Index[item.FileDescriptor.Type].ContainsKey(item.FileDescriptor.Group))
 			{
-				instances = (Hashtable)groups[item.FileDescriptor.Group];
-			}
-			else
-			{
-				instances = new Hashtable();
-				groups[item.FileDescriptor.Group] = instances;
+				Index[item.FileDescriptor.Type][item.FileDescriptor.Group] = new Dictionary<ulong, List<IScenegraphFileIndexItem>>();
 			}
 
-			if (instances.ContainsKey(item.FileDescriptor.LongInstance))
+			if (!Index[item.FileDescriptor.Type][item.FileDescriptor.Group].ContainsKey(item.FileDescriptor.LongInstance))
 			{
-				files = (FileIndexItems)instances[item.FileDescriptor.LongInstance];
+				Index[item.FileDescriptor.Type][item.FileDescriptor.Group][item.FileDescriptor.LongInstance] = new List<IScenegraphFileIndexItem>();
 			}
-			else
-			{
-				files = new FileIndexItems();
-				instances[item.FileDescriptor.LongInstance] = files;
-			}
+
+			List<IScenegraphFileIndexItem> files = Index[item.FileDescriptor.Type][item.FileDescriptor.Group][item.FileDescriptor.LongInstance];
 
 			if (Duplicates || (!files.Contains(item)))
 			{
@@ -951,25 +666,17 @@ namespace SimPe.Plugin
 			//add it a second Time if it is a local Group
 			if (pfd.Group == 0xffffffff)
 			{
-				if (groups.ContainsKey(localgroup))
+				if (!Index[item.FileDescriptor.Type].ContainsKey(localgroup))
 				{
-					instances = (Hashtable)groups[localgroup];
-				}
-				else
-				{
-					instances = new Hashtable();
-					groups[localgroup] = instances;
+					Index[item.FileDescriptor.Type][localgroup] = new Dictionary<ulong, List<IScenegraphFileIndexItem>>();
 				}
 
-				if (instances.ContainsKey(item.FileDescriptor.Group))
+				if (!Index[item.FileDescriptor.Type][localgroup].ContainsKey(item.FileDescriptor.LongInstance))
 				{
-					files = (FileIndexItems)instances[item.FileDescriptor.LongInstance];
+					Index[item.FileDescriptor.Type][localgroup][item.FileDescriptor.LongInstance] = new List<IScenegraphFileIndexItem>();
 				}
-				else
-				{
-					files = new FileIndexItems();
-					instances[item.FileDescriptor.LongInstance] = files;
-				}
+
+				files = Index[item.FileDescriptor.Type][localgroup][item.FileDescriptor.LongInstance];
 
 				if (Duplicates || (!files.Contains(item)))
 				{
@@ -984,36 +691,15 @@ namespace SimPe.Plugin
 		/// <param name="item">The item you want to remove</param>
 		public void RemoveItem(IScenegraphFileIndexItem item)
 		{
-			Interfaces.Files.IPackedFileDescriptor pfd = item.FileDescriptor;
-			ArrayList list = new ArrayList();
 
-			if (index.ContainsKey(pfd.Type))
+			foreach (List<IScenegraphFileIndexItem> list in from types in Index.Values
+															from groups in types.Values
+															from instances in groups.Values
+															where instances.Contains(item)
+															select instances)
 			{
-				Hashtable groups = (Hashtable)index[pfd.Type];
-				if (groups.ContainsKey(pfd.Group))
-				{
-					Hashtable instances = (Hashtable)groups[pfd.Group];
-					if (instances.ContainsKey(pfd.LongInstance))
-					{
-						list = (ArrayList)instances[pfd.LongInstance];
-						list.Remove(item);
-					}
-				}
-
-				if (pfd.Group == Data.MetaData.LOCAL_GROUP)
-				{
-					if (groups.ContainsKey(item.LocalGroup))
-					{
-						Hashtable instances = (Hashtable)groups[item.LocalGroup];
-						if (instances.ContainsKey(pfd.LongInstance))
-						{
-							list = (ArrayList)instances[pfd.LongInstance];
-							list.Remove(item);
-						}
-					}
-				}
+				list.Remove(item);
 			}
-
 			PrepareForRemove(item.FileDescriptor);
 		}
 
@@ -1024,50 +710,23 @@ namespace SimPe.Plugin
 		/// <param name="group">the Group of the Files</param>
 		/// <param name="instance">Instance Number of the File</param>
 		/// <returns>all FileIndexItems</returns>
-		public IScenegraphFileIndexItem[] FindFileDiscardingHighInstance(
+		public IEnumerable<IScenegraphFileIndexItem> FindFileDiscardingHighInstance(
 			uint type,
-			uint group,
+			uint grp,
 			uint instance,
 			Interfaces.Files.IPackageFile pkg
 		)
 		{
-			ArrayList list = new ArrayList();
-			//first, we scan the Child Tables
-			foreach (IScenegraphFileIndex fi in childs)
-			{
-				IScenegraphFileIndexItem[] res = fi.FindFileDiscardingHighInstance(
-					type,
-					group,
-					instance,
-					pkg
-				);
-				foreach (IScenegraphFileIndexItem i in res)
-				{
-					list.Add(i);
-				}
-			}
-
-			//second, we scan our FileTable
-			if (index.ContainsKey(type))
-			{
-				Hashtable groups = (Hashtable)index[type];
-				if (groups.ContainsKey(group))
-				{
-					Hashtable instances = (Hashtable)groups[group];
-					foreach (ulong i in instances.Keys)
-					{
-						if ((i & 0xffffffff) == instance)
-						{
-							list.AddRange((ArrayList)instances[i]);
-						}
-					}
-				}
-			}
-
-			//return the Result
-			FileIndexItem[] files = new FileIndexItem[list.Count];
-			list.CopyTo(files);
-			return files;
+			return (from fi in Children
+					from item in fi.FindFileDiscardingHighInstance(type, grp, instance, pkg)
+					select item).Union(from types in Index
+									   from groups in types.Value
+									   from instances in groups.Value
+									   from items in instances.Value
+									   where types.Key == type
+									   where groups.Key == grp
+									   where (instances.Key & 0xffffffff) == instance
+									   select items);
 		}
 
 		/// <summary>
@@ -1075,48 +734,22 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="pfd">The File you are looking for</param>
 		/// <returns>all FileIndexItems</returns>
-		public IScenegraphFileIndexItem[] FindFile(
+		public IEnumerable<IScenegraphFileIndexItem> FindFile(
 			Interfaces.Files.IPackedFileDescriptor pfd,
 			Interfaces.Files.IPackageFile pkg
 		)
 		{
-			ArrayList list = new ArrayList();
-			//first, we scan the Child Tables
-			foreach (IScenegraphFileIndex fi in childs)
-			{
-				IScenegraphFileIndexItem[] res = fi.FindFile(pfd, pkg);
-				foreach (IScenegraphFileIndexItem i in res)
-				{
-					list.Add(i);
-				}
-			}
+			List<IScenegraphFileIndexItem> list = (from IScenegraphFileIndex fi in Children
+												   from item in fi.FindFile(pfd, pkg)
+												   select item).ToList();
 
-			//second, we scan our FileTable
-			if (index.ContainsKey(pfd.Type))
+			if (Index.ContainsKey(pfd.Type)
+				&& Index[pfd.Type].ContainsKey(pfd.Group)
+				&& Index[pfd.Type][pfd.Group].ContainsKey(pfd.LongInstance))
 			{
-				Hashtable groups = (Hashtable)index[pfd.Type];
-				if (groups.ContainsKey(pfd.Group))
-				{
-					Hashtable instances = (Hashtable)groups[pfd.Group];
-					if (instances.ContainsKey(pfd.LongInstance))
-					{
-						/*if (pkg!=null)
-						{
-							foreach (FileIndexItem fii in (ArrayList)instances[pfd.LongInstance])
-							{
-								if (fii.Package.Equals(pkg)) list.Add(fii);
-							}
-						}
-						else */
-						list.AddRange((ArrayList)instances[pfd.LongInstance]);
-					}
-				}
+				list.AddRange(Index[pfd.Type][pfd.Group][pfd.LongInstance]);
 			}
-
-			//return the Result
-			FileIndexItem[] files = new FileIndexItem[list.Count];
-			list.CopyTo(files);
-			return files;
+			return list;
 		}
 
 		public void UpdateListOfAddedFilenames()
@@ -1124,30 +757,13 @@ namespace SimPe.Plugin
 			addedfilenames.Clear();
 			Hashtable known = new Hashtable();
 
-			foreach (uint type in index.Keys)
-			{
-				Hashtable groups = (Hashtable)index[type];
-				foreach (uint group in groups.Keys)
-				{
-					Hashtable instances = (Hashtable)groups[group];
-					foreach (ulong inst in instances.Keys)
-					{
-						ArrayList list = (ArrayList)instances[inst];
-						foreach (object o in list)
-						{
-							FileIndexItem fii = o as FileIndexItem;
-							string sfn = fii.Package.SaveFileName.Trim().ToLower();
-							if (!known.ContainsKey(sfn))
-							{
-								known[sfn] = true;
-								addedfilenames.Add(sfn);
-							}
-						}
-					}
-				}
-			}
+			addedfilenames = (from types in Index
+							  from groups in types.Value
+							  from instances in groups.Value
+							  from item in instances.Value
+							  select item.Package.SaveFileName.Trim().ToLower()).Distinct().ToList();
 
-			foreach (IScenegraphFileIndex fi in childs)
+			foreach (IScenegraphFileIndex fi in Children)
 			{
 				fi.UpdateListOfAddedFilenames();
 			}
@@ -1156,38 +772,25 @@ namespace SimPe.Plugin
 		public void WriteContentToConsole()
 		{
 			System.Windows.Forms.Form f = new System.Windows.Forms.Form();
-			System.Windows.Forms.ListBox lb = new System.Windows.Forms.ListBox();
+			System.Windows.Forms.ListBox lb = new System.Windows.Forms.ListBox
+			{
+				Dock = System.Windows.Forms.DockStyle.Fill
+			};
 			f.Controls.Add(lb);
-			lb.Dock = System.Windows.Forms.DockStyle.Fill;
 
-			foreach (IScenegraphFileIndex fi in childs)
+			foreach (IScenegraphFileIndex fi in Children)
 			{
-				if (fi is FileIndex)
+				if (fi is FileIndex index1)
 				{
-					((FileIndex)fi).WriteContentToConsole();
+					index1.WriteContentToConsole();
 				}
 			}
-			foreach (uint type in index.Keys)
-			{
-				Hashtable groups = (Hashtable)index[type];
-				foreach (uint group in groups.Keys)
-				{
-					Hashtable instances = (Hashtable)groups[group];
-					foreach (ulong inst in instances.Keys)
-					{
-						ArrayList list = (ArrayList)instances[inst];
-						foreach (object o in list)
-						{
-							FileIndexItem fii = o as FileIndexItem;
-							lb.Items.Add(
-								fii.FileDescriptor.ToString()
-									+ " in "
-									+ fii.Package.SaveFileName
-							);
-						}
-					}
-				}
-			}
+
+			lb.Items.AddRange((from types in Index
+							   from groups in types.Value
+							   from instances in groups.Value
+							   from item in instances.Value
+							   select $"{item.FileDescriptor} in {item.Package.SaveFileName}").ToArray());
 
 			f.ShowDialog();
 			f.Dispose();
@@ -1199,46 +802,17 @@ namespace SimPe.Plugin
 		/// <param name="type">the Type of the Files</param>
 		/// <param name="nolocal">true, if you don't want to get local Files (group=0xffffffff) returned</param>
 		/// <returns>all FileIndexItems</returns>
-		public IScenegraphFileIndexItem[] FindFile(uint type, bool nolocal)
+		public IEnumerable<IScenegraphFileIndexItem> FindFile(uint type, bool nolocal)
 		{
-			ArrayList list = new ArrayList();
-			//first, we scan the Child Tables
-			foreach (IScenegraphFileIndex fi in childs)
-			{
-				IScenegraphFileIndexItem[] res = fi.FindFile(type, nolocal);
-				foreach (IScenegraphFileIndexItem i in res)
-				{
-					list.Add(i);
-				}
-			}
-
-			//second, we scan our FileTable
-			if (index.ContainsKey(type))
-			{
-				Hashtable groups = (Hashtable)index[type];
-				foreach (uint group in groups.Keys)
-				{
-					if (nolocal && (group == Data.MetaData.LOCAL_GROUP))
-					{
-						continue;
-					}
-
-					if (groups.ContainsKey(group))
-					{
-						Hashtable instances = (Hashtable)groups[group];
-
-						foreach (ulong instance in instances.Keys)
-						{
-							list.AddRange((ArrayList)instances[instance]);
-						}
-					}
-				}
-			}
-
-			//return the Result
-			FileIndexItem[] files = new FileIndexItem[list.Count];
-			list.CopyTo(files);
-			return files;
+			return (from fi in Children
+					from item in fi.FindFile(type, nolocal)
+					select item).Union(from types in Index
+									   from groups in types.Value
+									   from instances in groups.Value
+									   from item in instances.Value
+									   where types.Key == type
+									   where !nolocal || groups.Key != Data.MetaData.LOCAL_GROUP
+									   select item);
 		}
 
 		/// <summary>
@@ -1248,7 +822,7 @@ namespace SimPe.Plugin
 		/// <param name="group">the Group of the Files</param>
 		/// <param name="instance">Instance Number of the File</param>
 		/// <returns>all FileIndexItems</returns>
-		public IScenegraphFileIndexItem[] FindFile(
+		public IEnumerable<IScenegraphFileIndexItem> FindFile(
 			uint type,
 			uint group,
 			ulong instance,
@@ -1270,41 +844,19 @@ namespace SimPe.Plugin
 		/// Returns all matching FileIndexItems for the passed type
 		/// </summary>
 		/// <param name="type">the Type of the Files</param>
-		/// <param name="group">the Group of the Files</param>
+		/// <param name="grp">the Group of the Files</param>
 		/// <returns>all FileIndexItems</returns>
-		public IScenegraphFileIndexItem[] FindFile(uint type, uint group)
+		public IEnumerable<IScenegraphFileIndexItem> FindFile(uint type, uint grp)
 		{
-			ArrayList list = new ArrayList();
-
-			//first, we scan the Child Tables
-			foreach (IScenegraphFileIndex fi in childs)
-			{
-				IScenegraphFileIndexItem[] res = fi.FindFile(type, group);
-				foreach (IScenegraphFileIndexItem i in res)
-				{
-					list.Add(i);
-				}
-			}
-
-			//second, we scan our FileTable
-			if (index.ContainsKey(type))
-			{
-				Hashtable groups = (Hashtable)index[type];
-				if (groups.Contains(group))
-				{
-					Hashtable instances = (Hashtable)groups[group];
-
-					foreach (ulong instance in instances.Keys)
-					{
-						list.AddRange((ArrayList)instances[instance]);
-					}
-				}
-			}
-
-			//return the Result
-			FileIndexItem[] files = new FileIndexItem[list.Count];
-			list.CopyTo(files);
-			return files;
+			return (from fi in Children
+					from item in fi.FindFile(type, grp)
+					select item).Union(from types in Index
+									   from groups in types.Value
+									   from instances in groups.Value
+									   from item in instances.Value
+									   where types.Key == type
+									   where groups.Key == grp
+									   select item);
 		}
 
 		/// <summary>
@@ -1312,7 +864,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="pfd">The File you are looking for</param>
 		/// <returns>all FileIndexItems</returns>
-		public IScenegraphFileIndexItem[] FindFileDiscardingGroup(
+		public IEnumerable<IScenegraphFileIndexItem> FindFileDiscardingGroup(
 			Interfaces.Files.IPackedFileDescriptor pfd
 		)
 		{
@@ -1325,47 +877,20 @@ namespace SimPe.Plugin
 		/// <param name="type">the Type of the Files</param>
 		/// <param name="instance">Instance Number of the File</param>
 		/// <returns>all FileIndexItems</returns>
-		public IScenegraphFileIndexItem[] FindFileDiscardingGroup(
+		public IEnumerable<IScenegraphFileIndexItem> FindFileDiscardingGroup(
 			uint type,
 			ulong instance
 		)
 		{
-			ArrayList list = new ArrayList();
-			//first, we scan the Child Tables
-			foreach (IScenegraphFileIndex fi in childs)
-			{
-				IScenegraphFileIndexItem[] res = fi.FindFileDiscardingGroup(
-					type,
-					instance
-				);
-				foreach (IScenegraphFileIndexItem i in res)
-				{
-					list.Add(i);
-				}
-			}
-
-			//second, we scan our FileTable
-
-			if (index.ContainsKey(type))
-			{
-				Hashtable groups = (Hashtable)index[type];
-				foreach (uint group in groups.Keys)
-				{
-					if (groups.ContainsKey(group))
-					{
-						Hashtable instances = (Hashtable)groups[group];
-						if (instances.ContainsKey(instance))
-						{
-							list.AddRange((ArrayList)instances[instance]);
-						}
-					}
-				}
-			}
-
-			//return the Result
-			FileIndexItem[] files = new FileIndexItem[list.Count];
-			list.CopyTo(files);
-			return files;
+			return (from fi in Children
+					from item in fi.FindFileDiscardingGroup(type, instance)
+					select item).Union(from types in Index
+									   from groups in types.Value
+									   from instances in groups.Value
+									   from item in instances.Value
+									   where types.Key == type
+									   where instances.Key == instance
+									   select item);
 		}
 
 		/// <summary>
@@ -1373,122 +898,55 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="pfd">The File you are looking for</param>
 		/// <returns>all FileIndexItems</returns>
-		public IScenegraphFileIndexItem[] FindFileByInstance(ulong instance)
+		public IEnumerable<IScenegraphFileIndexItem> FindFileByInstance(ulong instance)
 		{
-			ArrayList list = new ArrayList();
-			//first, we scan the Child Tables
-			foreach (IScenegraphFileIndex fi in childs)
-			{
-				IScenegraphFileIndexItem[] res = fi.FindFileByInstance(instance);
-				foreach (IScenegraphFileIndexItem i in res)
-				{
-					list.Add(i);
-				}
-			}
-
-			//second, we scan our FileTable
-			foreach (uint type in index.Keys)
-			{
-				Hashtable groups = (Hashtable)index[type];
-				foreach (uint group in groups.Keys)
-				{
-					Hashtable instances = (Hashtable)groups[group];
-					if (instances.ContainsKey(instance))
-					{
-						list.AddRange((ArrayList)instances[instance]);
-					}
-				}
-			}
-
-			//return the Result
-			FileIndexItem[] files = new FileIndexItem[list.Count];
-			list.CopyTo(files);
-			return files;
+			return (from fi in Children
+					from item in fi.FindFileByInstance(instance)
+					select item).Union(from types in Index
+									   from groups in types.Value
+									   from instances in groups.Value
+									   from item in instances.Value
+									   where instances.Key == instance
+									   select item);
 		}
 
 		/// <summary>
 		/// Return all matching FileIndexItems (by Instance)
 		/// </summary>
-		/// <param name="group">The Group you are looking for</param>
+		/// <param name="grp">The Group you are looking for</param>
 		/// <param name="instance">The instance you are looking for</param>
 		/// <returns>all FileIndexItems</returns>
-		public IScenegraphFileIndexItem[] FindFileByGroupAndInstance(
-			uint group,
+		public IEnumerable<IScenegraphFileIndexItem> FindFileByGroupAndInstance(
+			uint grp,
 			ulong instance
 		)
 		{
-			ArrayList list = new ArrayList();
-
-			//first, we scan the Child Tables
-			foreach (IScenegraphFileIndex fi in childs)
-			{
-				IScenegraphFileIndexItem[] res = fi.FindFileByGroupAndInstance(
-					group,
-					instance
-				);
-				foreach (IScenegraphFileIndexItem i in res)
-				{
-					list.Add(i);
-				}
-			}
-
-			//second, we scan our FileTable
-			foreach (uint type in index.Keys)
-			{
-				Hashtable groups = (Hashtable)index[type];
-				if (groups.ContainsKey(group))
-				{
-					Hashtable instances = (Hashtable)groups[group];
-					if (instances.ContainsKey(instance))
-					{
-						list.AddRange((ArrayList)instances[instance]);
-					}
-				}
-			}
-
-			//return the Result
-			FileIndexItem[] files = new FileIndexItem[list.Count];
-			list.CopyTo(files);
-			return files;
+			return (from fi in Children
+					from item in fi.FindFileByGroupAndInstance(grp, instance)
+					select item).Union(from types in Index
+									   from groups in types.Value
+									   from instances in groups.Value
+									   from item in instances.Value
+									   where groups.Key == grp
+									   where instances.Key == instance
+									   select item);
 		}
 
 		/// <summary>
 		/// Return all matching FileIndexItems (by Instance)
 		/// </summary>
-		/// <param name="group">The Group you are looking for</param>
+		/// <param name="grp">The Group you are looking for</param>
 		/// <returns>all FileIndexItems</returns>
-		public IScenegraphFileIndexItem[] FindFileByGroup(uint group)
+		public IEnumerable<IScenegraphFileIndexItem> FindFileByGroup(uint grp)
 		{
-			ArrayList list = new ArrayList(); //first, we scan the Child Tables
-			foreach (IScenegraphFileIndex fi in childs)
-			{
-				IScenegraphFileIndexItem[] res = fi.FindFileByGroup(group);
-				foreach (IScenegraphFileIndexItem i in res)
-				{
-					list.Add(i);
-				}
-			}
-
-			//second, we scan our FileTable
-
-
-			foreach (uint type in index.Keys)
-			{
-				Hashtable groups = (Hashtable)index[type];
-				if (groups.ContainsKey(group))
-				{
-					Hashtable instances = (Hashtable)groups[group];
-					foreach (ulong instance in instances.Keys)
-					{
-						list.AddRange((ArrayList)instances[instance]);
-					}
-				}
-			}
-
-			//return the Result
-			FileIndexItem[] files = new FileIndexItem[list.Count];
-			list.CopyTo(files);
-			return files;
+			return (from fi in Children
+					from item in fi.FindFileByGroup(grp)
+					select item).Union(from types in Index
+									   from groups in types.Value
+									   from instances in groups.Value
+									   from item in instances.Value
+									   where groups.Key == grp
+									   select item);
 		}
 
 		/// <summary>
@@ -1537,50 +995,20 @@ namespace SimPe.Plugin
 			bool betolerant
 		)
 		{
-			IScenegraphFileIndexItem[] list;
-			list = FindFile(pfd, pkg);
-
-			//something is wrong with the Link, try to be tolerant
-			if (list.Length == 0)
-			{
-				//check alternaive Groups
-				for (int i = 0; i < alternaiveGroups.Count; i++)
-				{
-					pfd.Group = (uint)alternaiveGroups[i];
-					list = FindFile(pfd, pkg);
-					if (list.Length > 0)
-					{
-						break;
-					}
-				}
-
-				//ignor Group andd look for any Files with that Instance
-				if (list.Length == 0)
-				{
-					list = FindFileDiscardingGroup(pfd);
-				}
-			}
-
-			return list.Length > 0 ? list[0] : null;
+			return FindFile(pfd, pkg).FirstOrDefault()
+					?? (from grp in ALTERNATIVE_GROUPS // check alternative groups
+						from item in FindFile(pfd.Type, grp, pfd.LongInstance, pkg)
+						select item).FirstOrDefault()
+					?? FindFileDiscardingGroup(pfd).FirstOrDefault(); // check for any file with the instance
 		}
 
 		/// <summary>
 		/// Sort the Files in this type ascending by instance value
 		/// </summary>
 		/// <param name="files">The Files you want to sort</param>
-		public IScenegraphFileIndexItem[] Sort(IScenegraphFileIndexItem[] files)
+		public IEnumerable<IScenegraphFileIndexItem> Sort(IEnumerable<IScenegraphFileIndexItem> files)
 		{
-			FileIndexItems fii = new FileIndexItems();
-			foreach (FileIndexItem f in files)
-			{
-				fii.Add(f);
-			}
-
-			fii.Sort();
-
-			FileIndexItem[] ret = new FileIndexItem[fii.Count];
-			fii.CopyTo(ret);
-			return ret;
+			return files.OrderBy(item => item.FileDescriptor.LongInstance);
 		}
 
 		/// <summary>
@@ -1617,11 +1045,7 @@ namespace SimPe.Plugin
 			/// TODO: This might be critical! Maybe we need to send the parent package along
 			/// with this Data, otherwise to many Files could get removed!
 			///
-			IScenegraphFileIndexItem[] sgis = FindFile(
-				sender,
-				null
-			);
-			foreach (IScenegraphFileIndexItem sgi in sgis)
+			foreach (IScenegraphFileIndexItem sgi in FindFile(sender, null))
 			{
 				RemoveItem(sgi);
 			}
@@ -1666,22 +1090,19 @@ namespace SimPe.Plugin
 		/// </summary>
 		public void CloseAssignedPackages()
 		{
-			ArrayList files = addedfilenames.Clone() as ArrayList;
+			List<string> files = new List<string>(addedfilenames);
 			addedfilenames.Clear();
 			foreach (string file in files)
 			{
-				if (parent != null)
+				if (parent != null && parent.addedfilenames.Contains(file))
 				{
-					if (parent.addedfilenames.Contains(file))
-					{
-						continue;
-					}
+					continue;
 				}
 
 				bool close = true;
-				if (childs != null)
+				if (Children != null)
 				{
-					foreach (FileIndex fi in childs)
+					foreach (FileIndex fi in Children)
 					{
 						if (fi.addedfilenames.Contains(file))
 						{
@@ -1708,24 +1129,8 @@ namespace SimPe.Plugin
 		public bool Contains(string flname)
 		{
 			flname = flname.Trim().ToLower();
-			if (addedfilenames.Contains(flname))
-			{
-				return true;
-			}
-
-			foreach (IScenegraphFileIndex fi in childs)
-			{
-				if (fi.Contains(flname))
-				{
-					return true;
-				}
-			}
-
-			return false;
+			return addedfilenames.Contains(flname) || Children.Any(fi => fi.Contains(flname));
 		}
-
-		ArrayList childs;
-		FileIndex parent;
 
 		public IScenegraphFileIndex AddNewChild()
 		{
@@ -1737,31 +1142,31 @@ namespace SimPe.Plugin
 
 		public void AddChild(IScenegraphFileIndex cld)
 		{
-			if (!childs.Contains(cld))
+			if (!Children.Contains(cld))
 			{
-				if (cld is FileIndex)
+				if (cld is FileIndex index1)
 				{
-					((FileIndex)cld).parent = this;
+					index1.parent = this;
 				}
 
-				childs.Add(cld);
+				Children.Add(cld);
 			}
 		}
 
 		public void ClearChilds()
 		{
-			childs.Clear();
+			Children.Clear();
 		}
 
 		public void RemoveChild(IScenegraphFileIndex cld)
 		{
-			int c = childs.Count;
-			childs.Remove(cld);
-			if (c != childs.Count)
+			int c = Children.Count;
+			Children.Remove(cld);
+			if (c != Children.Count)
 			{
-				if (cld is FileIndex)
+				if (cld is FileIndex index1)
 				{
-					((FileIndex)cld).parent = null;
+					index1.parent = null;
 				}
 			}
 		}
@@ -1778,7 +1183,7 @@ namespace SimPe.Plugin
 			}
 			catch { }
 
-			index = null;
+			Index = null;
 			oldindex = null;
 			addedfilenames = null;
 			oldnames = null;

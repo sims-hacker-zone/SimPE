@@ -3,6 +3,8 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 using SimPe.Interfaces.Files;
 
@@ -75,33 +77,27 @@ namespace SimPe.Plugin
 		{
 		}
 
-		public Hashtable GetTextureDescriptor()
+		public Dictionary<TextureType, IPackedFileDescriptor> GetTextureDescriptor()
 		{
-			Hashtable ret = new Hashtable();
+			Dictionary<TextureType, IPackedFileDescriptor> ret = new Dictionary<TextureType, IPackedFileDescriptor>();
 
 			if (ReferenceChains.ContainsKey("stdMatBaseTextureName"))
 			{
-				ArrayList list =
-					ReferenceChains["stdMatBaseTextureName"] as ArrayList;
-				if (!Utility.IsNullOrEmpty(list))
+				IPackedFileDescriptor item =
+					ReferenceChains["stdMatBaseTextureName"].FirstOrDefault();
+				if (item != null)
 				{
-					if (list[0] is IPackedFileDescriptor pfd)
-					{
-						ret.Add(TextureType.Base, pfd);
-					}
+					ret.Add(TextureType.NormalMap, item);
 				}
 			}
 
 			if (ReferenceChains.ContainsKey("stdMatNormalMapTextureName"))
 			{
-				ArrayList list =
-					ReferenceChains["stdMatNormalMapTextureName"] as ArrayList;
-				if (!Utility.IsNullOrEmpty(list))
+				IPackedFileDescriptor item =
+					ReferenceChains["stdMatNormalMapTextureName"].FirstOrDefault();
+				if (item != null)
 				{
-					if (list[0] is IPackedFileDescriptor pfd)
-					{
-						ret.Add(TextureType.NormalMap, pfd);
-					}
+					ret.Add(TextureType.NormalMap, item);
 				}
 			}
 

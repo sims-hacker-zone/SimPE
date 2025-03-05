@@ -1,9 +1,9 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 using SimPe.Interfaces;
@@ -719,13 +719,10 @@ namespace pj
 			SimPe.Plugin.GenericRcol txmt
 		)
 		{
-			ArrayList txtrs = (ArrayList)txmt.ReferenceChains["stdMatBaseTextureName"]; //["TXTR"];
-			if (txtrs != null && txtrs.Count > 0)
+			IPackedFileDescriptor txtrfile = txmt.ReferenceChains["stdMatBaseTextureName"].FirstOrDefault();
+			if (txtrfile != null)
 			{
-				SimPe.Plugin.GenericRcol txtr = getRcol(
-					(IPackedFileDescriptor)txtrs[0],
-					txtrpkg
-				);
+				SimPe.Plugin.GenericRcol txtr = getRcol(txtrfile, txtrpkg);
 				if (txtr != null)
 				{
 					rcolChain.Add(txtr);

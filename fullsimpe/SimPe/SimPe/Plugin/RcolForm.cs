@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
 using SimPe.Forms.MainUI;
@@ -1535,33 +1536,22 @@ namespace SimPe.Plugin
 				tbrefinst.Text = "0x" + Helper.HexString(pfd.Instance);
 
 				FileTableBase.FileIndex.Load();
-				IScenegraphFileIndexItem[] items =
-					FileTableBase.FileIndex.FindFile(pfd, null);
-				if (items.Length == 0)
-				{
-					IScenegraphFileIndexItem item =
-						FileTableBase.FileIndex.FindFileByName(
+
+				IScenegraphFileIndexItem item = FileTableBase.FileIndex.FindFile(pfd, null).FirstOrDefault()
+						?? FileTableBase.FileIndex.FindFileByName(
 							pfd.Filename,
 							pfd.Type,
 							pfd.Group,
 							true
 						);
-					if (item != null)
-					{
-						items =
-							new IScenegraphFileIndexItem[1];
-						items[0] = item;
-					}
-				}
-				if (items.Length == 0)
+				if (item == null)
 				{
 					Interfaces.Files.IPackedFileDescriptor npfd =
 						pfd.Clone();
 					npfd.SubType = 0;
-					items = FileTableBase.FileIndex.FindFile(npfd, null);
+					item = FileTableBase.FileIndex.FindFile(npfd, null).FirstOrDefault();
 				}
-
-				tbfile.Text = items.Length > 0 ? items[0].Package.FileName : "[unreferenced]";
+				tbfile.Text = item != null ? item.Package.FileName : "[unreferenced]";
 			}
 		}
 

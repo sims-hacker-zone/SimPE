@@ -1,5 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using System.Linq;
+
 namespace SimPe.Plugin.Tool.Action
 {
 	/// <summary>
@@ -47,15 +49,15 @@ namespace SimPe.Plugin.Tool.Action
 						.Index
 				)
 				{
-					Interfaces.Scenegraph.IScenegraphFileIndexItem[] fiis =
+					System.Collections.Generic.IEnumerable<Interfaces.Scenegraph.IScenegraphFileIndexItem> fiis =
 						FileTableBase.FileIndex.FindFile(pfd, e.LoadedPackage.Package);
 
-					if (fiis.Length != 1)
+					if (fiis.Count() != 1)
 					{
 						sw.WriteLine(
 							GetString(pfd)
 								+ " found "
-								+ fiis.Length.ToString()
+								+ fiis.Count().ToString()
 								+ " times."
 						);
 						foreach (
@@ -71,15 +73,15 @@ namespace SimPe.Plugin.Tool.Action
 						}
 					}
 					else if (
-						fiis[0].FileDescriptor.Offset != pfd.Offset
-						|| fiis[0].FileDescriptor.Size != pfd.Size
+						fiis.First().FileDescriptor.Offset != pfd.Offset
+						|| fiis.First().FileDescriptor.Size != pfd.Size
 					)
 					{
 						sw.WriteLine(
 							GetString(pfd)
 								+ " "
 								+ " <> "
-								+ GetString(fiis[0].FileDescriptor)
+								+ GetString(fiis.First().FileDescriptor)
 						);
 					}
 				}

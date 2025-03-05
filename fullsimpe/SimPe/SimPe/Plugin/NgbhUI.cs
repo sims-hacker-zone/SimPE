@@ -5,6 +5,7 @@ using System.Windows.Forms;
 
 using SimPe.Cache;
 using SimPe.Interfaces.Plugin;
+using System.Linq;
 
 namespace SimPe.Plugin
 {
@@ -16,7 +17,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns the MemoryObject Cache
 		/// </summary>
-		internal static MemoryCacheFile ObjectCache => PackedFiles.Wrapper.ObjectComboBox.ObjectCache;
+		internal static Cache.Cache ObjectCache => PackedFiles.Wrapper.ObjectComboBox.ObjectCache;
 
 		#region Code to Startup the UI
 
@@ -46,28 +47,16 @@ namespace SimPe.Plugin
 				);
 
 				Wait.Message = "Load Memories from Cache";
-				foreach (MemoryCacheItem mci in ObjectCache.List)
-				{
-					Data.Alias a = new Data.Alias(mci.Guid, mci.Name);
-					object[] o = new object[3];
-					o[0] = mci.FileDescriptor;
-					o[1] = mci.ObjectType;
-					o[2] = mci.Icon;
+				form.cbguid.Items.AddRange((from container in Cache.Cache.GlobalCache.Items[ContainerType.Memory].Values
+											from MemoryCacheItem mci in container
+											where mci.ObjectType == Data.ObjectTypes.Memory
+												|| (mci.ObjectType == Data.ObjectTypes.Normal
+													&& mci.ObjdName.ToLower().IndexOf("token") != -1)
+											select new Data.Alias(mci.Guid, mci.Name)
+											{
+												Tag = (new object[3] { mci.FileDescriptor, mci.ObjectType, mci.Icon })
+											}).ToArray());
 
-					a.Tag = o;
-
-					if (mci.ObjectType == Data.ObjectTypes.Memory)
-					{
-						form.cbguid.Items.Add(a);
-					}
-					else if (mci.ObjectType == Data.ObjectTypes.Normal)
-					{
-						if (mci.ObjdName.ToLower().IndexOf("token") != -1)
-						{
-							form.cbguid.Items.Add(a);
-						}
-					}
-				}
 				form.cbguid.Sorted = true;
 			}
 		}

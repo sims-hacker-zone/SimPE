@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 using SimPe.PackedFiles.Glob;
@@ -40,10 +42,10 @@ namespace SimPe.Forms.MainUI
 				WaitingScreen.UpdateMessage("getting all SemiGlobal Groups");
 				FileTableBase.FileIndex.Load();
 
-				Interfaces.Scenegraph.IScenegraphFileIndexItem[] globs =
+				IEnumerable<Interfaces.Scenegraph.IScenegraphFileIndexItem> globs =
 					FileTableBase.FileIndex.FindFile(Data.MetaData.GLOB_FILE, true);
-				ArrayList names = new ArrayList();
-				string max = " / " + globs.Length.ToString();
+				List<string> names = new List<string>();
+				string max = " / " + globs.Count().ToString();
 				int ct = 0;
 				foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in globs)
 				{
@@ -402,11 +404,9 @@ namespace SimPe.Forms.MainUI
 			{
 				NamedGlob glob = (NamedGlob)
 					cbsemi.Items[cbsemi.SelectedIndex];
-				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-					FileTableBase.FileIndex.FindFileByGroup(glob.SemiGlobalGroup);
 
 				lbfiles.Sorted = false;
-				foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
+				foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in FileTableBase.FileIndex.FindFileByGroup(glob.SemiGlobalGroup))
 				{
 					if (item.FileDescriptor.Type == Data.MetaData.BHAV_FILE)
 					{

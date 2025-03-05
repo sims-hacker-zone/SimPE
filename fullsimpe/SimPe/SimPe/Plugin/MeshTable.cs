@@ -4,6 +4,7 @@
 using System;
 using System.Collections;
 using System.Collections.Specialized;
+using System.Linq;
 
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Scenegraph;
@@ -317,39 +318,13 @@ namespace SimPe.Plugin
 
 		IScenegraphFileIndexItem FindFileByReference(IPackedFileDescriptor reference)
 		{
-			/*if (!FileTable.FileIndex.Loaded && WrapperFactory.Settings.ForceTableLoad)
-				FileTable.FileIndex.Load();*/
-			IScenegraphFileIndexItem ret = null;
-
 			// find in all packages
-			IScenegraphFileIndexItem[] items =
-				FileTableBase.FileIndex.FindFileByGroupAndInstance(
+			return (from sfi in FileTableBase.FileIndex.FindFileByGroupAndInstance(
 					reference.Group,
-					reference.LongInstance
-				);
-			if (!Utility.IsNullOrEmpty(items))
-			{
-				foreach (IScenegraphFileIndexItem sfi in items)
-				{
-					if (sfi.FileDescriptor.Type == reference.Type)
-					{
-						ret = sfi;
-						break;
-					}
-				}
-			}
-
-			if (ret == null)
-			{
-				IScenegraphFileIndexItem[] sfi =
-					FileTableBase.FileIndex.FindFileDiscardingGroup(reference); //, pnfo.Package);
-				if (!Utility.IsNullOrEmpty(sfi))
-				{
-					ret = sfi[0];
-				}
-			}
-
-			return ret;
+					reference.LongInstance)
+					where sfi.FileDescriptor.Type == reference.Type
+					select sfi).FirstOrDefault()
+					?? FileTableBase.FileIndex.FindFileDiscardingGroup(reference).FirstOrDefault();
 		}
 
 		protected override void Dispose(bool disposing)

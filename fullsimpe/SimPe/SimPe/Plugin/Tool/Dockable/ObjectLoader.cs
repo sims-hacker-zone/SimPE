@@ -2,7 +2,9 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -23,7 +25,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		}
 
 		#region Cache Handling
-		Cache.ObjectLoaderCacheFile cachefile;
+		Cache.Cache cachefile => Cache.Cache.GlobalCache;
 		bool cachechg;
 
 		/// <summary>
@@ -42,7 +44,6 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 
 			cachechg = false;
-			cachefile = new Cache.ObjectLoaderCacheFile();
 
 			if (!Helper.WindowsRegistry.UseCache)
 			{
@@ -50,14 +51,6 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 
 			Wait.Message = "Loading Cache";
-			try
-			{
-				cachefile.Load(CacheFileName, true);
-			}
-			catch (Exception ex)
-			{
-				Helper.ExceptionMessage("", ex);
-			}
 
 			cachefile.LoadObjects();
 		}
@@ -79,24 +72,24 @@ namespace SimPe.Plugin.Tool.Dockable
 
 			Wait.Message = "Saving Cache";
 
-			cachefile.Save(CacheFileName);
+			cachefile.Save();
 		}
 		#endregion
 
 
 		void ProduceByXObj(uint type)
 		{
-			ArrayList pitems = new ArrayList();
-			ArrayList groups = new ArrayList();
+			List<Interfaces.Scenegraph.IScenegraphFileIndexItem> pitems = new List<Interfaces.Scenegraph.IScenegraphFileIndexItem>();
+			List<uint> groups = new List<uint>();
 			int ct = 0;
 			//this is the first part loading by objd Resources
-			Interfaces.Scenegraph.IScenegraphFileIndexItem[] nrefitems =
+			IEnumerable<Interfaces.Scenegraph.IScenegraphFileIndexItem> nrefitems =
 				FileTableBase.FileIndex.Sort(FileTableBase.FileIndex.FindFile(type, true));
-			string len = " / " + nrefitems.Length.ToString();
+			string len = " / " + nrefitems.Count().ToString();
 
 			Data.MetaData.Languages deflang = Helper.WindowsRegistry.LanguageCode;
 			Wait.Message = "Loading Walls, Fences and Floors";
-			Wait.MaxProgress = nrefitems.Length;
+			Wait.MaxProgress = nrefitems.Count();
 			foreach (
 				Interfaces.Scenegraph.IScenegraphFileIndexItem lnrefitem in nrefitems
 			)
@@ -108,48 +101,23 @@ namespace SimPe.Plugin.Tool.Dockable
 					Wait.Progress = ct;
 				}
 				//if (nrefitem.FileDescriptor.Instance != 0x41A7) continue;
-				if (nrefitem.LocalGroup == Data.MetaData.LOCAL_GROUP)
-				{
-					continue;
-				}
-
-				if (pitems.Contains(nrefitem))
-				{
-					continue;
-				}
-
-				if (groups.Contains(nrefitem.FileDescriptor.Instance))
+				if (nrefitem.LocalGroup == Data.MetaData.LOCAL_GROUP || pitems.Contains(nrefitem) || groups.Contains(nrefitem.FileDescriptor.Instance))
 				{
 					continue;
 				}
 
 				//try to find the best objd
-				Interfaces.Scenegraph.IScenegraphFileIndexItem[] cacheitems =
-					cachefile.FileIndex.FindFile(
+				Interfaces.Scenegraph.IScenegraphFileIndexItem cacheitem =
+					(from citem in cachefile.ObjectCacheFileIndex.FindFile(
 						nrefitem.FileDescriptor,
 						nrefitem.Package
-					);
+					)
+					 where citem.FileDescriptor.Filename == nrefitem.Package.FileName.Trim().ToLower()
+					 select citem).FirstOrDefault();
 
-				//find the correct File
-				int cindex = -1;
-				string pname = nrefitem.Package.FileName.Trim().ToLower();
-				for (int i = 0; i < cacheitems.Length; i++)
+				if (!(cacheitem == null)) //found in the cache
 				{
-					Interfaces.Scenegraph.IScenegraphFileIndexItem citem = cacheitems[
-						i
-					];
-
-					if (citem.FileDescriptor.Filename == pname)
-					{
-						cindex = i;
-						break;
-					}
-				}
-
-				if (cindex != -1) //found in the cache
-				{
-					Cache.ObjectCacheItem oci = (Cache.ObjectCacheItem)
-						cacheitems[cindex].FileDescriptor.Tag;
+					Cache.ObjectCacheItem oci = (Cache.ObjectCacheItem)cacheitem.FileDescriptor.Tag;
 					if (!oci.Useable)
 					{
 						continue;
@@ -172,7 +140,7 @@ namespace SimPe.Plugin.Tool.Dockable
 						Useable = false
 					};
 					cachechg = true;
-					cachefile.AddItem(oci, nrefitem.Package.FileName);
+					cachefile.AddObjectItem(oci, nrefitem.Package.FileName);
 
 					AddToBuffer(oci);
 				}
@@ -184,20 +152,20 @@ namespace SimPe.Plugin.Tool.Dockable
 			LoadCachIndex();
 			changedcache = false;
 
-			ArrayList pitems = new ArrayList();
-			ArrayList groups = new ArrayList();
+			List<Interfaces.Scenegraph.IScenegraphFileIndexItem> pitems = new List<Interfaces.Scenegraph.IScenegraphFileIndexItem>();
+			List<uint> groups = new List<uint>();
 			int ct = 0;
 			//this is the first part loading by objd Resources
-			Interfaces.Scenegraph.IScenegraphFileIndexItem[] nrefitems =
+			var nrefitems =
 				FileTableBase.FileIndex.Sort(
 					FileTableBase.FileIndex.FindFile(Data.MetaData.OBJD_FILE, true)
 				);
 
-			string len = " / " + nrefitems.Length.ToString();
+			string len = " / " + nrefitems.Count().ToString();
 
 			Data.MetaData.Languages deflang = Helper.WindowsRegistry.LanguageCode;
 			Wait.Message = "Loading Objects";
-			Wait.MaxProgress = nrefitems.Length;
+			Wait.MaxProgress = nrefitems.Count();
 			foreach (
 				Interfaces.Scenegraph.IScenegraphFileIndexItem lnrefitem in nrefitems
 			)
@@ -210,68 +178,31 @@ namespace SimPe.Plugin.Tool.Dockable
 				}
 
 				//if (nrefitem.FileDescriptor.Instance != 0x41A7) continue;
-				if (nrefitem.LocalGroup == Data.MetaData.LOCAL_GROUP)
-				{
-					continue;
-				}
-
-				if (pitems.Contains(nrefitem))
-				{
-					continue;
-				}
-
-				if (groups.Contains(nrefitem.LocalGroup))
+				if (nrefitem.LocalGroup == Data.MetaData.LOCAL_GROUP || pitems.Contains(nrefitem) || groups.Contains(nrefitem.LocalGroup))
 				{
 					continue;
 				}
 
 				//try to find the best objd
-				Interfaces.Scenegraph.IScenegraphFileIndexItem[] oitems =
-					FileTableBase.FileIndex.FindFile(
+				nrefitem =
+					(from item in FileTableBase.FileIndex.FindFile(
 						nrefitem.FileDescriptor.Type,
 						nrefitem.LocalGroup
-					);
-				if (oitems.Length > 1)
-				{
-					for (int i = 0; i < oitems.Length; i++)
-					{
-						if (
-							oitems[i].FileDescriptor.Instance == 0x41A7
-							|| oitems[i].FileDescriptor.Instance == 0x41AF
-						)
-						{
-							nrefitem = oitems[i];
-							break;
-						}
-					}
-				}
+					)
+					 where item.FileDescriptor.Instance == 0x41A7 || item.FileDescriptor.Instance == 0x41AF
+					 select item).FirstOrDefault() ?? nrefitem;
 
-				Interfaces.Scenegraph.IScenegraphFileIndexItem[] cacheitems =
-					cachefile.FileIndex.FindFile(
+				Interfaces.Scenegraph.IScenegraphFileIndexItem cacheitem =
+					(from citem in cachefile.ObjectCacheFileIndex.FindFile(
 						nrefitem.FileDescriptor,
 						nrefitem.Package
-					);
+					)
+					 where citem.FileDescriptor.Filename == nrefitem.Package.FileName.Trim().ToLower()
+					 select citem).FirstOrDefault();
 
-				//find the correct File
-				int cindex = -1;
-				string pname = nrefitem.Package.FileName.Trim().ToLower();
-				for (int i = 0; i < cacheitems.Length; i++)
+				if (cacheitem != null) //found in the cache
 				{
-					Interfaces.Scenegraph.IScenegraphFileIndexItem citem = cacheitems[
-						i
-					];
-
-					if (citem.FileDescriptor.Filename == pname)
-					{
-						cindex = i;
-						break;
-					}
-				}
-
-				if (cindex != -1) //found in the cache
-				{
-					Cache.ObjectCacheItem oci = (Cache.ObjectCacheItem)
-						cacheitems[cindex].FileDescriptor.Tag;
+					Cache.ObjectCacheItem oci = (Cache.ObjectCacheItem)cacheitem.FileDescriptor.Tag;
 					if (!oci.Useable)
 					{
 						continue;
@@ -294,7 +225,7 @@ namespace SimPe.Plugin.Tool.Dockable
 						Useable = false
 					};
 					cachechg = true;
-					cachefile.AddItem(oci, nrefitem.Package.FileName);
+					cachefile.AddObjectItem(oci, nrefitem.Package.FileName);
 
 					AddToBuffer(oci);
 				}
@@ -374,17 +305,17 @@ namespace SimPe.Plugin.Tool.Dockable
 			oci.Useable = true;
 			oci.Class = Cache.ObjectClass.XObject;
 
-			Interfaces.Scenegraph.IScenegraphFileIndexItem[] ctssitems =
+			var ctssitem =
 				FileTableBase.FileIndex.FindFile(
 					cpf.GetSaveItem("stringsetrestypeid").UIntegerValue,
 					cpf.GetSaveItem("stringsetgroupid").UIntegerValue,
 					cpf.GetSaveItem("stringsetid").UIntegerValue,
 					null
-				); //Data.MetaData.STRING_FILE
-			if (ctssitems.Length > 0)
+				).FirstOrDefault(); //Data.MetaData.STRING_FILE
+			if (ctssitem != null)
 			{
 				PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
-				str.ProcessData(ctssitems[0]);
+				str.ProcessData(ctssitem);
 				PackedFiles.Wrapper.StrItemList items = str.LanguageItems(
 					deflang
 				);
@@ -472,16 +403,16 @@ namespace SimPe.Plugin.Tool.Dockable
 				}*/
 
 				//Get the Name of the Object
-				Interfaces.Scenegraph.IScenegraphFileIndexItem[] ctssitems =
+				var ctssitem =
 					FileTableBase.FileIndex.FindFile(
 						Data.MetaData.CTSS_FILE,
 						nrefitem.LocalGroup
-					);
-				if (ctssitems.Length > 0)
+					).FirstOrDefault();
+				if (ctssitem != null)
 				{
 					PackedFiles.Wrapper.Str str =
 						new PackedFiles.Wrapper.Str();
-					str.ProcessData(ctssitems[0]);
+					str.ProcessData(ctssitem);
 					PackedFiles.Wrapper.StrItemList items = str.LanguageItems(
 						deflang
 					);
@@ -506,18 +437,18 @@ namespace SimPe.Plugin.Tool.Dockable
 				}
 
 				//now the ModeName File
-				Interfaces.Scenegraph.IScenegraphFileIndexItem[] txtitems =
+				var txtitem =
 					FileTableBase.FileIndex.FindFile(
 						Data.MetaData.STRING_FILE,
 						nrefitem.LocalGroup,
 						0x85,
 						null
-					);
-				if (txtitems.Length > 0)
+					).FirstOrDefault();
+				if (txtitem != null)
 				{
 					PackedFiles.Wrapper.Str str =
 						new PackedFiles.Wrapper.Str(2);
-					str.ProcessData(txtitems[0]);
+					str.ProcessData(txtitem);
 					PackedFiles.Wrapper.StrItemList items = str.LanguageItems(1);
 					if (items.Length > 1)
 					{
@@ -621,16 +552,13 @@ namespace SimPe.Plugin.Tool.Dockable
 				Class = Cache.ObjectClass.Object
 			};
 
-			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
-				Data.MetaData.OBJD_FILE
-			);
 			bool first = true;
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pkg.FindFiles(
+				Data.MetaData.OBJD_FILE
+			))
 			{
-				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-					FileTableBase.FileIndex.FindFile(pfd, pkg);
 				foreach (
-					Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
+					Interfaces.Scenegraph.IScenegraphFileIndexItem item in FileTableBase.FileIndex.FindFile(pfd, pkg)
 				)
 				{
 					if (

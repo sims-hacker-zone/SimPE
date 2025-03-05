@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Collections.Generic;
+using System.Linq;
 
 using SimPe.Interfaces;
 using SimPe.PackedFiles.Glob;
@@ -23,10 +24,10 @@ namespace SimPe.Plugin
 			Splash.Screen.SetMessage("Loading FileTable...");
 			FileTableBase.FileIndex.Load();
 			Splash.Screen.SetMessage("Looking for GLOB Resources...");
-			Interfaces.Scenegraph.IScenegraphFileIndexItem[] resources =
+			IEnumerable<Interfaces.Scenegraph.IScenegraphFileIndexItem> resources =
 				FileTableBase.FileIndex.FindFile(Data.MetaData.GLOB_FILE, true);
 
-			Splash.Screen.SetMessage("Found " + resources.Length + " GLOB Resources");
+			Splash.Screen.SetMessage("Found " + resources.Count() + " GLOB Resources");
 			string fl = Helper.SimPeSemiGlobalFile;
 			//            Console.WriteLine("Opening " + fl);
 			System.IO.StreamWriter sw = new System.IO.StreamWriter(fl, false);

@@ -1,5 +1,6 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
@@ -32,6 +33,7 @@ namespace SimPe
 				{
 					bar.Message = value;
 				}
+				Console.WriteLine($"Wait: {value}");
 
 				Application.DoEvents();
 			}

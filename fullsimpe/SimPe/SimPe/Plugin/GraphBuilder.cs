@@ -232,8 +232,7 @@ else
 						//now process the Reference Files
 						if (item != null)
 						{
-							Hashtable ht = item.ReferenceChains;
-							foreach (ArrayList list in ht.Values)
+							foreach (var list in item.ReferenceChains.Values)
 							{
 								foreach (
 									Interfaces.Files.IPackedFileDescriptor spfd in list

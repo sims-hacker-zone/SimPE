@@ -169,10 +169,8 @@ namespace SimPe.Plugin.Scanner
 				//find al description Files that belong to the Skintone that should be replaced
 				ArrayList basecpf = new ArrayList();
 
-				Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-					FileTableBase.FileIndex.FindFile(Data.MetaData.GZPS, true);
 				foreach (
-					Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
+					Interfaces.Scenegraph.IScenegraphFileIndexItem item in FileTableBase.FileIndex.FindFile(Data.MetaData.GZPS, true)
 				)
 				{
 					Cpf cpf = new Cpf();

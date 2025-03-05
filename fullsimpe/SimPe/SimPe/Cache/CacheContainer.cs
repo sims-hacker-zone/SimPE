@@ -1,39 +1,15 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace SimPe.Cache
 {
 	/// <summary>
-	/// What type have the items stored in the container
-	/// </summary>
-	public enum ContainerType : byte
-	{
-		None = 0x00,
-		Object = 0x01,
-		MaterialOverride = 0x02,
-		Want = 0x03,
-		Memory = 0x04,
-		Package = 0x05,
-		Rcol = 0x06,
-		Goal = 0x07,
-	};
-
-	/// <summary>
-	/// Detailed Information about the Valid State of the Container
-	/// </summary>
-	public enum ContainerValid : byte
-	{
-		Yes = 0x04,
-		FileNotFound = 0x01,
-		Modified = 0x02,
-		UnknownVersion = 0x03,
-	}
-
-	/// <summary>
 	/// Contains one or more CacheItems
 	/// </summary>
-	public class CacheContainer : IDisposable
+	public class CacheContainer : IDisposable, IEnumerable<ICacheItem>
 	{
 		/// <summary>
 		/// The current Version
@@ -50,11 +26,18 @@ namespace SimPe.Cache
 			Added = DateTime.Now;
 			filename = "";
 			ValidState = ContainerValid.Yes;
-
-			Items = new CacheItems();
 		}
 
-		string filename;
+		public CacheContainer()
+		{
+			Version = VERSION;
+			Type = ContainerType.None;
+			Added = DateTime.Now;
+			filename = "";
+			ValidState = ContainerValid.Yes;
+		}
+
+		private string filename;
 
 		/// <summary>
 		/// Returns the Version of the File
@@ -75,10 +58,10 @@ namespace SimPe.Cache
 		/// <summary>
 		/// Return all available Items
 		/// </summary>
-		public CacheItems Items
+		public List<ICacheItem> Items
 		{
 			get; private set;
-		}
+		} = new List<ICacheItem>();
 
 		/// <summary>
 		/// Returns the Type of this Container
@@ -111,7 +94,7 @@ namespace SimPe.Cache
 		/// Load the Container from the Stream
 		/// </summary>
 		/// <param name="reader">the Stream Reader</param>
-		internal void Load(System.IO.BinaryReader reader)
+		internal CacheContainer Load(System.IO.BinaryReader reader)
 		{
 			ValidState = ContainerValid.FileNotFound;
 			Items.Clear();
@@ -135,13 +118,7 @@ namespace SimPe.Cache
 						ValidState = mod <= Added ? ContainerValid.Yes : ContainerValid.Modified;
 					}
 
-					if (
-						ValidState == ContainerValid.Yes
-						|| System
-							.Windows.Forms.Application.ExecutablePath.Trim()
-							.ToLower()
-							.EndsWith("settingmanager.exe")
-					)
+					if (ValidState == ContainerValid.Yes)
 					{
 						switch (Type)
 						{
@@ -149,31 +126,23 @@ namespace SimPe.Cache
 							{
 								for (int i = 0; i < count; i++)
 								{
-									ObjectCacheItem oci = new ObjectCacheItem();
-									oci.Load(reader);
-									Items.Add(oci);
+									Items.Add(new ObjectCacheItem().Load(reader));
 								}
-
 								break;
 							}
 							case ContainerType.MaterialOverride:
 							{
 								for (int i = 0; i < count; i++)
 								{
-									MMATCacheItem oci = new MMATCacheItem();
-									oci.Load(reader);
-									Items.Add(oci);
+									Items.Add(new MMATCacheItem().Load(reader));
 								}
-
 								break;
 							}
 							case ContainerType.Rcol:
 							{
 								for (int i = 0; i < count; i++)
 								{
-									RcolCacheItem oci = new RcolCacheItem();
-									oci.Load(reader);
-									Items.Add(oci);
+									Items.Add(new RcolCacheItem().Load(reader));
 								}
 
 								break;
@@ -182,9 +151,7 @@ namespace SimPe.Cache
 							{
 								for (int i = 0; i < count; i++)
 								{
-									WantCacheItem oci = new WantCacheItem();
-									oci.Load(reader);
-									Items.Add(oci);
+									Items.Add(new WantCacheItem().Load(reader));
 								}
 
 								break;
@@ -193,9 +160,7 @@ namespace SimPe.Cache
 							{
 								for (int i = 0; i < count; i++)
 								{
-									GoalCacheItem oci = new GoalCacheItem();
-									oci.Load(reader);
-									Items.Add(oci);
+									Items.Add(new GoalCacheItem().Load(reader));
 								}
 
 								break;
@@ -204,8 +169,7 @@ namespace SimPe.Cache
 							{
 								for (int i = 0; i < count; i++)
 								{
-									MemoryCacheItem oci = new MemoryCacheItem();
-									oci.Load(reader);
+									MemoryCacheItem oci = (MemoryCacheItem)new MemoryCacheItem().Load(reader);
 									oci.ParentCacheContainer = this;
 									if (
 										oci.Version
@@ -222,9 +186,7 @@ namespace SimPe.Cache
 							{
 								for (int i = 0; i < count; i++)
 								{
-									PackageCacheItem oci = new PackageCacheItem();
-									oci.Load(reader);
-									Items.Add(oci);
+									Items.Add(new PackageCacheItem().Load(reader));
 								}
 
 								break;
@@ -241,6 +203,7 @@ namespace SimPe.Cache
 			{
 				reader.BaseStream.Seek(pos, System.IO.SeekOrigin.Begin);
 			}
+			return this;
 		}
 
 		/// <summary>
@@ -280,15 +243,25 @@ namespace SimPe.Cache
 			{
 				foreach (object o in Items)
 				{
-					if (o is IDisposable)
+					if (o is IDisposable disposable)
 					{
-						((IDisposable)o).Dispose();
+						disposable.Dispose();
 					}
 				}
 
 				Items.Clear();
 			}
 			Items = null;
+		}
+
+		public IEnumerator<ICacheItem> GetEnumerator()
+		{
+			return ((IEnumerable<ICacheItem>)Items).GetEnumerator();
+		}
+
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return ((IEnumerable)Items).GetEnumerator();
 		}
 
 		#endregion

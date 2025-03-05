@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 using SimPe.Interfaces.Files;
 
@@ -10,84 +12,43 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for RcolTable.
 	/// </summary>
-	public class RcolTable : CollectionBase
+	public class RcolTable : List<Rcol>
 	{
-		public Rcol this[int index]
+		public RcolTable() : base()
 		{
-			get => List[index] as Rcol;
-			set => List[index] = value;
-		}
-
-		public RcolTable()
-		{
-		}
-
-		public int Add(Rcol rcol)
-		{
-			return List.Add(rcol);
-		}
-
-		public void AddRange(Rcol[] rcols)
-		{
-			InnerList.AddRange(rcols);
 		}
 
 		public Rcol FindByReference(string reference)
 		{
-			ResourceReference r = ResourceReference.Parse(reference);
-			return FindByReference(r);
+			return FindByReference(ResourceReference.Parse(reference));
 		}
 
 		public Rcol FindByReference(ResourceReference reference)
 		{
-			foreach (Rcol rcol in List)
-			{
-				if (rcol.FileDescriptor != null)
-				{
-					ResourceReference rcolRef = new ResourceReference(
-						rcol.FileDescriptor
-					);
-					if (rcolRef == reference)
-					{
-						return rcol;
-					}
-				}
-			}
-
-			return null;
+			return (from rcol in this
+					where rcol.FileDescriptor != null
+					let rcolRef = new ResourceReference(rcol.FileDescriptor)
+					where rcolRef == reference
+					select rcol).FirstOrDefault();
 		}
 
 		public Rcol FindByInstance(uint instance)
 		{
-			foreach (Rcol rcol in List)
-			{
-				if (rcol.FileDescriptor != null)
-				{
-					if (rcol.FileDescriptor.Instance == instance)
-					{
-						return rcol;
-					}
-				}
-			}
-
-			return null;
+			return (from rcol in this
+					where rcol.FileDescriptor != null
+					where rcol.FileDescriptor.Instance == instance
+					select rcol).FirstOrDefault();
 		}
 
-		public IPackedFileDescriptor[] GetFileDescriptor()
+		public IEnumerable<IPackedFileDescriptor> GetFileDescriptor()
 		{
-			ArrayList ret = new ArrayList();
-
-			foreach (Rcol rcol in List)
-			{
-				ret.Add(rcol.FileDescriptor);
-			}
-
-			return (IPackedFileDescriptor[])ret.ToArray(typeof(IPackedFileDescriptor));
+			return from rcol in this
+				   select rcol.FileDescriptor;
 		}
 
 		public void SynchronizeAll()
 		{
-			foreach (Rcol rcol in List)
+			foreach (Rcol rcol in this)
 			{
 				rcol.SynchronizeUserData();
 			}

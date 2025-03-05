@@ -1,5 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using System.Linq;
+
 namespace SimPe.PackedFiles.ThreeIdr
 {
 
@@ -42,13 +44,13 @@ namespace SimPe.PackedFiles.ThreeIdr
 					try
 					{
 						FileTableBase.FileIndex.Load();
-						Interfaces.Scenegraph.IScenegraphFileIndexItem[] items =
-							FileTableBase.FileIndex.FindFile(this, parent.Package);
-						if (items.Length > 0)
+						Interfaces.Scenegraph.IScenegraphFileIndexItem item =
+							FileTableBase.FileIndex.FindFile(this, parent.Package).FirstOrDefault();
+						if (item != null)
 						{
 							Cpf.Cpf cpff =
 								new Cpf.Cpf();
-							cpff.ProcessData(items[0]);
+							cpff.ProcessData(item);
 
 							skin = new SkinChain(cpff);
 						}

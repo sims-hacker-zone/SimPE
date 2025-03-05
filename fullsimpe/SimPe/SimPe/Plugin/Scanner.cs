@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Collections;
+using System.Collections.Generic;
 using System.Drawing;
 
 using SimPe.Cache;
@@ -76,9 +77,11 @@ namespace SimPe.Plugin
 					Idno idno = new Idno();
 					idno.ProcessData(pfds[0], si.Package);
 
-					ps.Data = new uint[2];
-					ps.Data[0] = (uint)idno.Type;
-					ps.Data[1] = idno.Uid;
+					ps.Data = new List<uint>
+					{
+						[0] = (uint)idno.Type,
+						[1] = idno.Uid
+					};
 
 					//check for duplicates
 					ps.State = ids.Contains(idno.Uid)
@@ -88,9 +91,11 @@ namespace SimPe.Plugin
 				}
 				else
 				{
-					ps.Data = new uint[2];
-					ps.Data[0] = 0;
-					ps.Data[1] = 0;
+					ps.Data = new List<uint>
+					{
+						[0] = 0,
+						[1] = 0
+					};
 					ps.State = TriState.True;
 				}
 			}
@@ -119,7 +124,7 @@ namespace SimPe.Plugin
 					lvi.ImageIndex = ListView.SmallImageList.Images.Count - 1;
 				}
 
-				if (ps.Data.Length > 1)
+				if (ps.Data.Count > 1)
 				{
 					ids.Add(ps.Data[1]);
 					SetSubItem(
@@ -242,9 +247,9 @@ namespace SimPe.Plugin
 							idno.ProcessData(pfds[0], si.Package);
 							idno.MakeUnique(ids);
 
-							if (ps.Data.Length < 2)
+							if (ps.Data.Count < 2)
 							{
-								ps.Data = new uint[2];
+								ps.Data = new List<uint> { 0, 0 };
 							}
 
 							if (idno.Uid != ps.Data[1])

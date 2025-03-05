@@ -2,8 +2,11 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 
+using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Scenegraph;
 
 namespace SimPe.Plugin
@@ -765,26 +768,14 @@ namespace SimPe.Plugin
 
 		#region IScenegraphBlock Member
 
-		public void ReferencedItems(Hashtable refmap, uint parentgroup)
+		public void ReferencedItems(Dictionary<string, List<IPackedFileDescriptor>> refmap, uint parentgroup)
 		{
-			ArrayList list = new ArrayList();
-			foreach (MipMapBlock mmp in MipMapBlocks)
-			{
-				foreach (MipMap mm in mmp.MipMaps)
-				{
-					if (mm.DataType == MipMapType.LifoReference)
-					{
-						list.Add(
-							ScenegraphHelper.BuildPfd(
-								mm.LifoFile,
-								ScenegraphHelper.LIFO,
-								parentgroup
-							)
-						);
-					}
-				}
-			}
-			refmap["LIFO"] = list;
+			refmap["LIFO"] = (from mmp in MipMapBlocks
+							  from mm in mmp.MipMaps
+							  where mm.DataType == MipMapType.LifoReference
+							  select ScenegraphHelper.BuildPfd(mm.LifoFile,
+							  	ScenegraphHelper.LIFO,
+							  	parentgroup)).ToList();
 		}
 
 		#endregion
