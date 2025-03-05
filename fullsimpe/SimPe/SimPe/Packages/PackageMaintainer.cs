@@ -1,7 +1,8 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
-using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SimPe.Packages
 {
@@ -28,22 +29,15 @@ namespace SimPe.Packages
 			}
 		}
 
-		Hashtable ht;
-		Interfaces.Scenegraph.IScenegraphFileIndex localfileindex;
+		private readonly Dictionary<string, GeneratableFile> ht = new Dictionary<string, GeneratableFile>(StringComparer.InvariantCultureIgnoreCase);
 
 		/// <summary>
 		/// Set or Get the FileIndex used to hold loaded Packages
 		/// </summary>
 		public Interfaces.Scenegraph.IScenegraphFileIndex FileIndex
 		{
-			get => localfileindex;
-			set
-			{
-				if (localfileindex == null)
-				{
-					localfileindex = value;
-				}
-			}
+			get;
+			set;
 		}
 
 		/// <summary>
@@ -51,7 +45,6 @@ namespace SimPe.Packages
 		/// </summary>
 		internal PackageMaintainer()
 		{
-			ht = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
 		}
 
 		/// <summary>
@@ -83,19 +76,8 @@ namespace SimPe.Packages
 			{
 				return;
 			}
-
 			folder = folder.Trim().ToLower();
-
-			ArrayList list = new ArrayList();
-			foreach (string k in ht.Keys)
-			{
-				if (k.Trim().ToLower().StartsWith(folder))
-				{
-					list.Add(k);
-				}
-			}
-
-			foreach (string k in list)
+			foreach (string k in from key in ht.Keys where key.Trim().ToLower().StartsWith(folder) select key)
 			{
 				RemovePackage(k);
 			}
@@ -114,7 +96,7 @@ namespace SimPe.Packages
 
 			if (ht.ContainsKey(flname))
 			{
-				FileTableBase.FileIndex.ClosePackage((GeneratableFile)ht[flname]);
+				FileTableBase.FileIndex.ClosePackage(ht[flname]);
 				//((GeneratableFile)ht[filename]).Close(true);
 				ht.Remove(flname);
 			}
@@ -151,7 +133,7 @@ namespace SimPe.Packages
 		/// </remarks>
 		public GeneratableFile LoadPackageFromFile(string filename, bool sync)
 		{
-			GeneratableFile ret = null;
+			GeneratableFile ret;
 			if (filename == null)
 			{
 				ret = File.CreateNew();
@@ -171,12 +153,12 @@ namespace SimPe.Packages
 					else if (sync)
 					{
 						FileTableBase.FileIndex.ClosePackage(
-							(GeneratableFile)ht[filename]
+							ht[filename]
 						);
 						//((GeneratableFile)ht[filename]).Close(true);
-						((GeneratableFile)ht[filename]).ReloadFromFile(filename);
+						ht[filename].ReloadFromFile(filename);
 					}
-					ret = (GeneratableFile)ht[filename];
+					ret = ht[filename];
 				}
 			}
 
