@@ -322,7 +322,7 @@ namespace SimPe.Plugin.Gmdc
 			//Update the Bone Indices
 			foreach (ImportedGroup g in grps)
 			{
-				for (int i = 0; i < g.Group.UsedJoints.Length; i++)
+				for (int i = 0; i < g.Group.UsedJoints.Count; i++)
 				{
 					int index = g.Group.UsedJoints[i];
 					if (boneIndexMap.ContainsKey(index))

@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace SimPe.Plugin
@@ -120,11 +121,11 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns a List of all Child Blocks referenced by this Element
 		/// </summary>
-		public override IntArrayList ChildBlocks
+		public override List<int> ChildBlocks
 		{
 			get
 			{
-				IntArrayList l = new IntArrayList();
+				List<int> l = new List<int>();
 				foreach (ResourceNodeItem rni in Items)
 				{
 					l.Add((rni.Unknown2 >> 24) & 0xff);

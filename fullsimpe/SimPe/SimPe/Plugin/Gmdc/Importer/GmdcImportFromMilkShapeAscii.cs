@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 using SimPe.Geometry;
 using SimPe.Plugin.Anim;
@@ -337,12 +338,12 @@ namespace SimPe.Plugin.Gmdc.Importer
 					{
 						g.Group.UsedJoints.Add(b);
 						//get real Bone Index
-						b = g.Group.UsedJoints.Length - 1;
+						b = g.Group.UsedJoints.Count - 1;
 					}
 					else
 					{
 						//get real Bone Index
-						for (int i = 0; i < g.Group.UsedJoints.Length; i++)
+						for (int i = 0; i < g.Group.UsedJoints.Count; i++)
 						{
 							if (g.Group.UsedJoints[i] == b)
 							{
@@ -455,7 +456,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 		/// <param name="ct"></param>
 		void ParseBonesSection(ImportedGroups grps, int ct)
 		{
-			IntArrayList sort = Gmdc.SortJoints();
+			List<int> sort = Gmdc.SortJoints();
 			for (int i = 0; i < ct; i++)
 			{
 				ImportedBone b = new ImportedBone(Gmdc)
@@ -752,7 +753,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 		{
 			for (int k = 1; k < g.Link.AliasValues.Length; k++)
 			{
-				for (int i = 0; i < g.Link.AliasValues[0].Length; i++)
+				for (int i = 0; i < g.Link.AliasValues[0].Count; i++)
 				{
 					if (g.Link.AliasValues[k - 1][i] != g.Link.AliasValues[k][i])
 					{
@@ -770,7 +771,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 		/// <param name="g"></param>
 		void RemoveAliasTables(ImportedGroup g)
 		{
-			for (int i = 0; i < g.Group.Faces.Length; i++)
+			for (int i = 0; i < g.Group.Faces.Count; i++)
 			{
 				int k = g.Group.Faces[i];
 				k = g.Link.AliasValues[0][k];
@@ -802,7 +803,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 			ArrayList remove = new ArrayList();
 
 			int offset = 0;
-			for (int i = 0; i < g.Link.AliasValues[0].Length; i++)
+			for (int i = 0; i < g.Link.AliasValues[0].Count; i++)
 			{
 				int v = g.Link.AliasValues[0][i];
 				int vn = g.Link.AliasValues[1][i];

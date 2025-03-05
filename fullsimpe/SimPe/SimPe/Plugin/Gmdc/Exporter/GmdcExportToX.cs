@@ -196,8 +196,8 @@ namespace SimPe.Plugin.Gmdc.Exporter
 			//now Material Definitions
 			writer.WriteLine("MeshMaterialList{");
 			writer.WriteLine("1;");
-			writer.WriteLine((Group.Faces.Length / 3).ToString() + "; //Face Count");
-			for (int i = 0; i < Group.Faces.Length; i += 3)
+			writer.WriteLine((Group.Faces.Count / 3).ToString() + "; //Face Count");
+			for (int i = 0; i < Group.Faces.Count; i += 3)
 			{
 				if (i != 0)
 				{

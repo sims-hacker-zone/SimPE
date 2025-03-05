@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace SimPe.Plugin.Gmdc
 {
@@ -65,7 +66,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// The Index of the used Vertices
 		/// </summary>
-		public IntArrayList Faces
+		public List<int> Faces
 		{
 			get; set;
 		}
@@ -81,7 +82,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// List all Joints used by this Group
 		/// </summary>
-		public IntArrayList UsedJoints
+		public List<int> UsedJoints
 		{
 			get; set;
 		}
@@ -93,8 +94,8 @@ namespace SimPe.Plugin.Gmdc
 		public GmdcGroup(GeometryDataContainer parent)
 			: base(parent)
 		{
-			Faces = new IntArrayList();
-			UsedJoints = new IntArrayList();
+			Faces = new List<int>();
+			UsedJoints = new List<int>();
 			Name = "";
 			LinkIndex = -1;
 		}

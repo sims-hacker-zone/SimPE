@@ -1,5 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using System.Collections.Generic;
+
 using SimPe.Plugin;
 
 namespace SimPe.Interfaces.Scenegraph
@@ -12,7 +14,7 @@ namespace SimPe.Interfaces.Scenegraph
 		/// <summary>
 		/// Returns a List of all Child Blocks referenced by this Element
 		/// </summary>
-		IntArrayList ChildBlocks
+		List<int> ChildBlocks
 		{
 			get;
 		}
@@ -28,7 +30,7 @@ namespace SimPe.Interfaces.Scenegraph
 		/// <summary>
 		/// Returns a List of all Parent Nodes
 		/// </summary>
-		IntArrayList GetParentBlocks();
+		List<int> GetParentBlocks();
 
 		/// <summary>
 		/// Returns the First Block that is holds this Node as a Child

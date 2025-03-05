@@ -1,5 +1,6 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using System.Collections.Generic;
 namespace SimPe.Plugin.Gmdc
 {
 	/// <summary>
@@ -235,7 +236,7 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		/// <param name="reader"></param>
 		/// <param name="items"></param>
-		protected void ReadBlock(System.IO.BinaryReader reader, IntArrayList items)
+		protected void ReadBlock(System.IO.BinaryReader reader, List<int> items)
 		{
 			int count = reader.ReadInt32();
 			items.Clear();
@@ -250,10 +251,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		/// <param name="writer"></param>
 		/// <param name="items"></param>
-		protected void WriteBlock(System.IO.BinaryWriter writer, IntArrayList items)
+		protected void WriteBlock(System.IO.BinaryWriter writer, List<int> items)
 		{
-			writer.Write(items.Length);
-			for (int i = 0; i < items.Length; i++)
+			writer.Write(items.Count);
+			for (int i = 0; i < items.Count; i++)
 			{
 				WriteValue(writer, items[i]);
 			}

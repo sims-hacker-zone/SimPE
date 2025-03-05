@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace SimPe.Plugin.Anim
@@ -319,9 +320,9 @@ namespace SimPe.Plugin.Anim
 		/// <param name="linear">true if you want to have TimeCodes for Linear KeyFrames</param>
 		/// <param name="nonlinear">true if you want TimeCodes for Non Linear KeyFrames</param>
 		/// <returns>List of TimeCodes</returns>
-		public IntArrayList GetTimeCodes(bool linear, bool nonlinear)
+		public List<int> GetTimeCodes(bool linear, bool nonlinear)
 		{
-			IntArrayList list = new IntArrayList();
+			List<int> list = new List<int>();
 
 			foreach (AnimationAxisTransform aat in items)
 			{
