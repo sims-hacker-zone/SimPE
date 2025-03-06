@@ -95,7 +95,7 @@ namespace SimPe.Plugin
 		}
 		#endregion
 
-		void BuildListing(uint type)
+		void BuildListing(FileTypes type)
 		{
 			//build Object List
 			if (lbobj.Items.Count == 0)
@@ -466,7 +466,7 @@ namespace SimPe.Plugin
 
 		void BuildListing()
 		{
-			BuildListing(MetaData.GZPS);
+			BuildListing(FileTypes.GZPS);
 		}
 
 		private void Select(object sender, EventArgs e) // Fuck
@@ -590,7 +590,7 @@ namespace SimPe.Plugin
 		{
 			uint inst = FumbnailHash(group, instahi, instans);
 
-			Interfaces.Files.IPackedFileDescriptor pfd = fumbs.FindFile(0x0C7E9A76, instans, 0xFFFFFFFF, inst);
+			Interfaces.Files.IPackedFileDescriptor pfd = fumbs.FindFile(FileTypes.JPG, instans, 0xFFFFFFFF, inst);
 			if (pfd!=null)
 			{
 				try
@@ -653,8 +653,8 @@ namespace SimPe.Plugin
 				thumbs.Persistent = true;
 			}
 
-			//0x6C2A22C3 0x0C7E9A76
-			Interfaces.Files.IPackedFileDescriptor[] pfds = thumbs.FindFile(0x0C7E9A76, 0, inst);
+			//0x6C2A22C3 FileTypes.JPG
+			Interfaces.Files.IPackedFileDescriptor[] pfds = thumbs.FindFile(FileTypes.JPG, 0, inst);
 			if (pfds.Length>0)
 			{
 				Interfaces.Files.IPackedFileDescriptor pfd = pfds[0];
@@ -679,7 +679,7 @@ namespace SimPe.Plugin
 			SimPe.Packages.File pkg = SimPe.Packages.File.LoadFromFile(filename);
 
 			ArrayList list = new ArrayList();
-			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(0x4C697E5A);
+			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(FileTypes.MMAT);
 
 			string name = matd.FileName.Trim().ToLower();
 
@@ -876,9 +876,9 @@ namespace SimPe.Plugin
 							break;
 						}
 
-						if (a.Name.TrimStart(new char[] {}).ToLower().StartsWith("* " + name))
+						if (a.Name.TrimStart(new char[] { }).ToLower().StartsWith("* " + name))
 						{
-							tbseek.Text = a.Name.TrimStart(new char[] {});
+							tbseek.Text = a.Name.TrimStart(new char[] { });
 							tbseek.SelectionStart = name.Length + 2;
 							tbseek.SelectionLength = Math.Max(
 								0,

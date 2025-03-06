@@ -53,7 +53,7 @@ namespace SimPe.Interfaces.Files
 		/// <summary>
 		/// Returns or Sets the Type of the Package
 		/// </summary>
-		Data.MetaData.IndexTypes IndexType
+		Data.IndexTypes IndexType
 		{
 			get; set;
 		}

@@ -563,7 +563,7 @@ namespace SimPe.PackedFiles.UserInterface
 		)
 		{
 			pjse.FileTable.Entry item = wrapper.ResourceByInstance(
-				Data.MetaData.BHAV_FILE,
+				Data.FileTypes.BHAV,
 				(sender == llAction) ? currentItem.Action : currentItem.Guardian
 			);
 			Bhav b = new Bhav();
@@ -606,7 +606,7 @@ namespace SimPe.PackedFiles.UserInterface
 		private void GetObjfAction(object sender, EventArgs e)
 		{
 			pjse.FileTable.Entry item = new pjse.ResourceChooser().Execute(
-				Data.MetaData.BHAV_FILE,
+				Data.FileTypes.BHAV,
 				wrapper.FileDescriptor.Group,
 				objfPanel.Parent,
 				false
@@ -620,7 +620,7 @@ namespace SimPe.PackedFiles.UserInterface
 		private void GetObjfGuard(object sender, EventArgs e)
 		{
 			pjse.FileTable.Entry item = new pjse.ResourceChooser().Execute(
-				Data.MetaData.BHAV_FILE,
+				Data.FileTypes.BHAV,
 				wrapper.FileDescriptor.Group,
 				objfPanel.Parent,
 				false

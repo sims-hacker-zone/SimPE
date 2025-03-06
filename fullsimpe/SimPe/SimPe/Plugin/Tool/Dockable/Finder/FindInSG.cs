@@ -1,6 +1,9 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+using SimPe.Data;
+using SimPe.Extensions;
+
 namespace SimPe.Plugin.Tool.Dockable.Finder
 {
 	public partial class FindInSG : FindInStr
@@ -11,9 +14,9 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 			InitializeComponent();
 
 			cbtypes.Items.Add("--- All ---");
-			foreach (uint t in Data.MetaData.RcolList)
+			foreach (FileTypes t in MetaData.RcolList)
 			{
-				cbtypes.Items.Add(Data.MetaData.FindTypeAlias(t));
+				cbtypes.Items.Add(t.ToFileTypeInformation());
 			}
 			cbtypes.SelectedIndex = 0;
 		}
@@ -23,14 +26,14 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 
 		public override bool ProcessParalell => false;
 
-		uint type;
+		FileTypes type;
 
 		protected override bool OnPrepareStart()
 		{
 			type = 0;
 			if (cbtypes.SelectedIndex > 0)
 			{
-				type = ((Data.TypeAlias)cbtypes.SelectedItem).Id;
+				type = (FileTypes)cbtypes.SelectedItem;
 			}
 			return base.OnPrepareStart();
 		}
@@ -44,7 +47,7 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 
 			if (type == 0)
 			{
-				foreach (uint tt in Data.MetaData.RcolList)
+				foreach (FileTypes tt in MetaData.RcolList)
 				{
 					if (tt == pfd.Type)
 					{

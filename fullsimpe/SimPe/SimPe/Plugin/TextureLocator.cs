@@ -3,6 +3,8 @@
 
 using System.Collections;
 
+using SimPe.Data;
+
 namespace SimPe.Plugin
 {
 	/// <summary>
@@ -41,7 +43,7 @@ namespace SimPe.Plugin
 			}
 
 			Interfaces.Files.IPackedFileDescriptor[] pfds = lpackage.FindFiles(
-				0x7BA3838C
+				FileTypes.GMND
 			);
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
@@ -86,7 +88,7 @@ namespace SimPe.Plugin
 			}
 
 			Interfaces.Files.IPackedFileDescriptor[] pfds = lpackage.FindFiles(
-				0xFC6EB1F7
+				FileTypes.SHPE
 			);
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
@@ -138,7 +140,7 @@ namespace SimPe.Plugin
 
 				Interfaces.Files.IPackedFileDescriptor[] pfds = lpackage.FindFile(
 					txmtflname,
-					0x49596978
+					FileTypes.TXMT
 				);
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
@@ -193,7 +195,7 @@ namespace SimPe.Plugin
 
 				Interfaces.Files.IPackedFileDescriptor[] pfds = lpackage.FindFile(
 					txtrname,
-					0x1C4A276C
+					FileTypes.TXTR
 				);
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{

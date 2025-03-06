@@ -3,6 +3,8 @@
 
 using System;
 
+using SimPe.Data;
+using SimPe.Extensions;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -33,7 +35,7 @@ namespace SimPe.Plugin
 		private int orfset;
 		private ushort generalp;
 		private int dataqnt;
-		private uint tipe = 0x4B58975B;
+		private FileTypes tipe = FileTypes.LTTX;
 		private byte[] filename;
 
 		/// <summary>
@@ -98,10 +100,10 @@ namespace SimPe.Plugin
 			itemnum = -1; // Set as Unknown version
 			Badges = 0;
 			Hoodtexture = "";
-			if (FileDescriptor.Type == 0x4B58975B) // Lot Texture
+			if (FileDescriptor.Type == FileTypes.LTTX)
 			{
 				filename = reader.ReadBytes(64);
-				tipe = reader.ReadUInt32();
+				tipe = (FileTypes)reader.ReadUInt32();
 				virsion = reader.ReadInt32();
 				Badges = reader.ReadInt32();
 				dataqnt = reader.ReadInt32();
@@ -117,7 +119,7 @@ namespace SimPe.Plugin
 					}
 				}
 			}
-			else if (FileDescriptor.Type == 0xCDB8BDC4) //Sim Memory
+			else if (FileDescriptor.Type == FileTypes.SMEM) //Sim Memory
 			{
 				virsion = reader.ReadInt32();
 				if (virsion == 0x000000CB)
@@ -174,7 +176,7 @@ namespace SimPe.Plugin
 				PackedFiles.Wrapper.ExtSDesc sdesc =
 					new PackedFiles.Wrapper.ExtSDesc();
 				Interfaces.Files.IPackedFileDescriptor[] files =
-					package.FindFiles(Data.MetaData.SIM_DESCRIPTION_FILE);
+					package.FindFiles(Data.FileTypes.SDSC);
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in files)
 				{
 					sdesc.ProcessData(pfd, package);
@@ -189,7 +191,7 @@ namespace SimPe.Plugin
 					Hoodtexture = Localization.GetString("Unknown");
 				}
 			}
-			else if (FileDescriptor.Type == 0x2DB5C0F4) // Nid Map
+			else if (FileDescriptor.Type == FileTypes.NIDM) // Nid Map
 			{
 				virsion = reader.ReadInt32(); // version
 				dataqnt = reader.ReadInt32(); // number of family sims
@@ -211,7 +213,7 @@ namespace SimPe.Plugin
 					remeberid[i] = reader.ReadUInt32(); // Nid
 					badgesid[i] = reader.ReadUInt32(); // Instance - GUID
 					Interfaces.Files.IPackedFileDescriptor pfd = package.FindFile(
-						Data.MetaData.SIM_DESCRIPTION_FILE,
+						Data.FileTypes.SDSC,
 						0,
 						0xFFFFFFFF,
 						badgesid[i]
@@ -243,10 +245,10 @@ namespace SimPe.Plugin
 		/// </remarks>
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
-			if (FileDescriptor.Type == 0x4B58975B) // Lot Texture
+			if (FileDescriptor.Type == FileTypes.LTTX)
 			{
 				writer.Write(filename);
-				writer.Write(tipe);
+				writer.Write((uint)tipe);
 				writer.Write(virsion);
 				writer.Write(Badges);
 				writer.Write(dataqnt);
@@ -277,31 +279,24 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] types =
+		public FileTypes[] AssignableTypes => new FileTypes[]
 				{
-					0x4B58975B, // Lot Texture
-					0xCDB8BDC4, //Sim Memory
-					0x2DB5C0F4, // Nid Map
+					FileTypes.LTTX,
+					FileTypes.SMEM,
+					FileTypes.NIDM,
 				};
-				return types;
-			}
-		}
 
 		#endregion
 
-		protected override string GetResourceName(Data.TypeAlias ta)
+		protected override string GetResourceName(FileTypeInformation fti)
 		{
-			return FileDescriptor.Type == 0xCDB8BDC4
+			return FileDescriptor.Type == FileTypes.SMEM
 				? !(FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
 						(ushort)FileDescriptor.Instance
 					) is PackedFiles.Wrapper.ExtSDesc sdsc)
-					? base.GetResourceName(ta)
+					? base.GetResourceName(fti)
 					: sdsc.SimName + " Memories"
-				: base.GetResourceName(ta);
+				: base.GetResourceName(fti);
 		}
 	}
 }

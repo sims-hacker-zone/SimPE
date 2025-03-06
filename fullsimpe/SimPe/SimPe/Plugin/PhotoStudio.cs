@@ -4,6 +4,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
+using SimPe.Data;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Txtr;
 
@@ -432,7 +433,7 @@ namespace SimPe.Plugin
 			if (package != null)
 			{
 				Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(
-					Data.MetaData.SIM_DESCRIPTION_FILE
+					Data.FileTypes.SDSC
 				);
 				if (pfds.Length > 0)
 				{
@@ -531,7 +532,7 @@ namespace SimPe.Plugin
 				Interfaces.Files.IPackedFileDescriptor[] pfd = pkg.FindFile(
 					((PhotoStudioTemplate)lvbase.SelectedItems[0].Tag).TxtrFile
 						+ "_txtr",
-					0x1C4A276C
+					FileTypes.TXTR
 				);
 				if (pfd.Length > 0)
 				{
@@ -635,7 +636,7 @@ namespace SimPe.Plugin
 				//load MMAT
 				WaitingScreen.UpdateMessage("Loading Material Override");
 				Interfaces.Files.IPackedFileDescriptor pfd = tpkg.FindFile(
-					0x4C697E5A,
+					FileTypes.MMAT,
 					0x0,
 					0xffffffff,
 					template.MmatInstance
@@ -657,7 +658,7 @@ namespace SimPe.Plugin
 				//load MATD
 				WaitingScreen.UpdateMessage("Loading Material Definition");
 				pfd = tpkg.FindFile(
-					0x49596978,
+					FileTypes.TXMT,
 					Hashes.SubTypeHash(
 						Hashes.StripHashFromName(template.MatdFile + "_txmt")
 					),
@@ -669,7 +670,7 @@ namespace SimPe.Plugin
 				if (pfd == null)
 				{
 					pfd = tpkg.FindFile(
-						0x49596978,
+						FileTypes.TXMT,
 						Hashes.SubTypeHash(
 							Hashes.StripHashFromName(template.MatdFile + "_txmt")
 						),
@@ -706,7 +707,7 @@ namespace SimPe.Plugin
 
 					matd.FileDescriptor = new Packages.PackedFileDescriptor
 					{
-						Type = 0x49596978, //TXMT
+						Type = FileTypes.TXMT,
 						SubType = Hashes.SubTypeHash(
 						Hashes.StripHashFromName(matd.FileName)
 					),
@@ -722,7 +723,7 @@ namespace SimPe.Plugin
 				//load TXTR
 				WaitingScreen.UpdateMessage("Loading Texture Image");
 				pfd = tpkg.FindFile(
-					0x1C4A276C,
+					FileTypes.TXTR,
 					Hashes.SubTypeHash(
 						Hashes.StripHashFromName(template.TxtrFile + "_txtr")
 					),
@@ -734,7 +735,7 @@ namespace SimPe.Plugin
 				if (pfd == null)
 				{
 					pfd = tpkg.FindFile(
-						0x1C4A276C,
+						FileTypes.TXTR,
 						Hashes.SubTypeHash(
 							Hashes.StripHashFromName(template.TxtrFile + "_txtr")
 						),
@@ -836,7 +837,7 @@ namespace SimPe.Plugin
 
 					txtr.FileDescriptor = new Packages.PackedFileDescriptor
 					{
-						Type = 0x1C4A276C, //TXTR
+						Type = FileTypes.TXTR,
 						SubType = Hashes.SubTypeHash(
 						Hashes.StripHashFromName(txtr.FileName)
 					),

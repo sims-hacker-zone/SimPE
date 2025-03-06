@@ -44,7 +44,7 @@ namespace SimPe.Plugin.Scanner
 			)
 			{
 				Interfaces.Files.IPackedFileDescriptor[] pfds =
-					si.Package.FindFiles(Data.MetaData.OBJD_FILE);
+					si.Package.FindFiles(Data.FileTypes.OBJD);
 
 				if (pfds.Length > 1)
 				{
@@ -179,7 +179,7 @@ namespace SimPe.Plugin.Scanner
 					try
 					{
 						Interfaces.Files.IPackedFileDescriptor[] pfds =
-							si.Package.FindFiles(Data.MetaData.OBJD_FILE);
+							si.Package.FindFiles(Data.FileTypes.OBJD);
 
 						foreach (
 							Interfaces.Files.IPackedFileDescriptor pfd in pfds

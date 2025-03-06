@@ -1,5 +1,6 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Xml
@@ -53,12 +54,12 @@ namespace SimPe.PackedFiles.Xml
 
 		#region IPackedFileWrapper Member
 
-		public uint[] AssignableTypes => new uint[]
+		public FileTypes[] AssignableTypes => new FileTypes[]
 				{
-					0x00000000, //UI Data
-					0xCD7FE87A, //Material Shaders
-					0x7181C501, //Pet Unknown
-					0x0B9EB87E, // Track Settings
+					FileTypes.UI,
+					FileTypes.MATSHAD,
+					FileTypes.REW,
+					FileTypes.TRKS,
 				};
 
 		public byte[] FileSignature => new byte[] { (byte)'<', (byte)'?', (byte)'x', (byte)'m', (byte)'l' };

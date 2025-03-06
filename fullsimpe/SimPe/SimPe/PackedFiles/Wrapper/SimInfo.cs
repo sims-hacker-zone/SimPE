@@ -17,7 +17,7 @@ namespace SimPe.PackedFiles.Wrapper
 			lbshead.Text += "\r\n  From the " + Sim.HouseholdName + " family";
 			if (
 				Sim.CharacterDescription.ServiceTypes
-				!= Data.MetaData.ServiceTypes.Normal
+				!= Data.ServiceTypes.Normal
 			)
 			{
 				lbshead.Text +=
@@ -28,7 +28,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 			else if (
 				Sim.CharacterDescription.Career
-				!= Data.MetaData.Careers.Unemployed
+				!= Data.Careers.Unemployed
 			)
 			{
 				lbshead.Text +=
@@ -38,7 +38,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 			else if (
 				Sim.CharacterDescription.Retired
-					!= Data.MetaData.Careers.Unemployed
+					!= Data.Careers.Unemployed
 				&& Sim.CharacterDescription.Realage > 19
 			)
 			{
@@ -58,7 +58,7 @@ namespace SimPe.PackedFiles.Wrapper
 			else if (
 				Sim.CharacterDescription.Realage < 17
 				&& Sim.CharacterDescription.SchoolType
-					!= Data.MetaData.SchoolTypes.NoSchool
+					!= Data.SchoolTypes.NoSchool
 			)
 			{
 				if (Sim.CharacterDescription.Realage < 3)

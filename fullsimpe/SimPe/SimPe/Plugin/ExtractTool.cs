@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+using SimPe.Data;
 using SimPe.Interfaces;
 
 namespace SimPe.Plugin
@@ -41,19 +42,11 @@ namespace SimPe.Plugin
 				return false;
 			}
 
-			if (package.FindFiles(0x53545223).Length > 0)
+			if (package.FindFiles(FileTypes.STR).Length > 0
+				|| package.FindFiles(FileTypes.TTAs).Length > 0
+				|| package.FindFiles(FileTypes.CTSS).Length > 0)
 			{
-				return true; //Strings (STR#)
-			}
-
-			if (package.FindFiles(0x54544173).Length > 0)
-			{
-				return true; //Pie String (TTAB)
-			}
-
-			if (package.FindFiles(0x43545353).Length > 0)
-			{
-				return true; //Catalogue Description (CTSS)
+				return true;
 			}
 
 			System.Windows.Forms.MessageBox.Show(

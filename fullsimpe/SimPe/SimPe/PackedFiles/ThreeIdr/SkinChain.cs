@@ -3,6 +3,7 @@
 using System;
 using System.Linq;
 
+using SimPe.Data;
 using SimPe.Plugin;
 
 namespace SimPe.PackedFiles.ThreeIdr
@@ -183,7 +184,7 @@ namespace SimPe.PackedFiles.ThreeIdr
 					{
 						Interfaces.Files.IPackedFileDescriptor pfd =
 							Cpf.Package.FindFile(
-								0xAC506764,
+								FileTypes.THREE_IDR,
 								Cpf.FileDescriptor.SubType,
 								Cpf.FileDescriptor.Group,
 								Cpf.FileDescriptor.Instance
@@ -203,7 +204,7 @@ namespace SimPe.PackedFiles.ThreeIdr
 		}
 
 		protected GenericRcol LoadRcol(
-			uint type,
+			FileTypes type,
 			Interfaces.Files.IPackedFileDescriptor pfd
 		)
 		{
@@ -244,7 +245,7 @@ namespace SimPe.PackedFiles.ThreeIdr
 				Interfaces.Scenegraph.IScenegraphFileIndexItem item =
 					FileTableBase.FileIndex.FindFileByName(
 						txtrname,
-						Data.MetaData.TXTR,
+						Data.FileTypes.TXTR,
 						Data.MetaData.LOCAL_GROUP,
 						true
 					);
@@ -276,7 +277,7 @@ namespace SimPe.PackedFiles.ThreeIdr
 						)
 						{
 							GenericRcol rcol = LoadRcol(
-								Data.MetaData.TXMT,
+								Data.FileTypes.TXMT,
 								pfd
 							);
 							if (rcol != null)
@@ -332,7 +333,7 @@ namespace SimPe.PackedFiles.ThreeIdr
 							Interfaces.Files.IPackedFileDescriptor pfd = reffile.Items[
 								rki
 							];
-							return LoadRcol(Data.MetaData.TXMT, pfd);
+							return LoadRcol(Data.FileTypes.TXMT, pfd);
 						}
 					}
 				}
@@ -435,8 +436,8 @@ namespace SimPe.PackedFiles.ThreeIdr
 			{
 				string ssex = "";
 				uint sex = Gender;
-				Array a = Enum.GetValues(typeof(Data.Sex));
-				foreach (Data.Sex k in a)
+				Array a = Enum.GetValues(typeof(Data.Gender));
+				foreach (Data.Gender k in a)
 				{
 					if ((sex & (uint)k) == (uint)k)
 					{

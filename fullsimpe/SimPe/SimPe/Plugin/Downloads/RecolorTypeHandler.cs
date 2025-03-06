@@ -81,7 +81,7 @@ namespace SimPe.Plugin.Downloads
 			DisposeTmpPkg();
 
 			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
-				Data.MetaData.MMAT
+				Data.FileTypes.MMAT
 			);
 			if (pfds.Length > 0)
 			{

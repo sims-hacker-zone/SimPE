@@ -1314,7 +1314,7 @@ namespace SimPe.Plugin
 
 			//0x6C2A22C3
 			Interfaces.Files.IPackedFileDescriptor[] pfds = thumbs.FindFile(
-				0xAC2950C1,
+				FileTypes.THUB,
 				0,
 				inst
 			);
@@ -1349,7 +1349,7 @@ namespace SimPe.Plugin
 			Packages.File pkg = Packages.File.LoadFromFile(filename);
 
 			ArrayList list = new ArrayList();
-			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(0x4C697E5A);
+			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(FileTypes.MMAT);
 
 			string name = matd.FileName.Trim().ToLower();
 
@@ -1412,7 +1412,7 @@ namespace SimPe.Plugin
 					package.Add(npfd);
 				}
 
-				if ((npfd.Instance == 0x85) && (npfd.Type == MetaData.STRING_FILE))
+				if ((npfd.Instance == 0x85) && (npfd.Type == FileTypes.STR))
 				{
 					PackedFiles.Wrapper.Str str =
 						new PackedFiles.Wrapper.Str();

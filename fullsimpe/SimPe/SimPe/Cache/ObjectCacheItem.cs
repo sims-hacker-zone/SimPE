@@ -385,7 +385,7 @@ namespace SimPe.Cache
 			ModelName = reader.ReadString();
 			pfd = new Packages.PackedFileDescriptor
 			{
-				Type = reader.ReadUInt32(),
+				Type = (Data.FileTypes)reader.ReadUInt32(),
 				Group = reader.ReadUInt32()
 			};
 			LocalGroup = reader.ReadUInt32();
@@ -420,7 +420,7 @@ namespace SimPe.Cache
 			writer.Write(Version);
 			writer.Write(Name);
 			writer.Write(ModelName);
-			writer.Write(pfd.Type);
+			writer.Write((uint)pfd.Type);
 			writer.Write(pfd.Group);
 			writer.Write(LocalGroup);
 			writer.Write(pfd.LongInstance);

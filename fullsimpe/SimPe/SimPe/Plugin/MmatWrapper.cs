@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
+using SimPe.Data;
 using SimPe.Interfaces.Files;
 using SimPe.PackedFiles.Cpf;
 
@@ -40,7 +41,7 @@ namespace SimPe.Plugin
 			list.Add(
 				ScenegraphHelper.BuildPfd(
 					name,
-					ScenegraphHelper.CRES,
+					FileTypes.CRES,
 					parentgroup
 				)
 			);
@@ -56,7 +57,7 @@ namespace SimPe.Plugin
 			list.Add(
 				ScenegraphHelper.BuildPfd(
 					name,
-					ScenegraphHelper.TXMT,
+					FileTypes.TXMT,
 					parentgroup
 				)
 			);
@@ -100,18 +101,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public override uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] types =
-				{
-					0x4C697E5A, //MMAT
-				};
-
-				return types;
-			}
-		}
+		public override FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.MMAT };
 
 		/// <summary>
 		/// Load and return the referenced CRES File (null if none was available)
@@ -128,7 +118,7 @@ namespace SimPe.Plugin
 				if (cres != null)
 				{
 					IPackedFileDescriptor pfd = package.FindFile(cres)
-						?? package.FindFile(cres.Filename, Data.MetaData.CRES).FirstOrDefault();
+						?? package.FindFile(cres.Filename, Data.FileTypes.CRES).FirstOrDefault();
 
 					if (pfd != null)
 					{
@@ -172,7 +162,7 @@ namespace SimPe.Plugin
 				if (txmt != null)
 				{
 					IPackedFileDescriptor pfd = package.FindFile(txmt)
-						?? package.FindFile(txmt.Filename, Data.MetaData.TXMT).FirstOrDefault();
+						?? package.FindFile(txmt.Filename, Data.FileTypes.TXMT).FirstOrDefault();
 
 					if (pfd != null)
 					{
@@ -212,7 +202,7 @@ namespace SimPe.Plugin
 			if (txtr != null)
 			{
 				IPackedFileDescriptor pfd = package.FindFile(txtr)
-					?? package.FindFile(txtr.Filename, Data.MetaData.TXMT).FirstOrDefault();
+					?? package.FindFile(txtr.Filename, Data.FileTypes.TXMT).FirstOrDefault();
 
 				if (pfd != null)
 				{

@@ -3,6 +3,7 @@
 using System;
 using System.Collections;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Wrapper
@@ -465,23 +466,9 @@ catch (Exception) {};*/
 
 		#region IPackedFileWrapper Member
 
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] Types = { 0x4F424A44 };
-				return Types;
-			}
-		}
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.OBJD };
 
-		public byte[] FileSignature
-		{
-			get
-			{
-				byte[] sig = { };
-				return sig;
-			}
-		}
+		public byte[] FileSignature => new byte[] { };
 
 		#endregion
 

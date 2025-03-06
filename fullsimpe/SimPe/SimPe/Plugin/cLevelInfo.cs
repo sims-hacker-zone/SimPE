@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Drawing;
 
+using SimPe.Data;
+
 namespace SimPe.Plugin
 {
 	/// <summary>
@@ -86,7 +88,7 @@ namespace SimPe.Plugin
 			texturesize = new Size(0, 0);
 			ZLevel = 0;
 			sgres = new SGResource(null);
-			BlockID = 0xED534136;
+			BlockID = (uint)FileTypes.LIFO;
 			data = new byte[0];
 			datatype = MipMapType.SimPE_PlainData;
 		}

@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Glob;
 using SimPe.PackedFiles.Wrapper;
@@ -109,23 +110,23 @@ namespace pjse
 
 		public uint GroupForContext => GroupForScope(Context);
 
-		public FileTable.Entry ResourceByInstance(uint type, uint instance)
+		public FileTable.Entry ResourceByInstance(FileTypes type, uint instance)
 		{
 			return ResourceByInstance(type, instance, FileTable.Source.Any);
 		}
 
 		public FileTable.Entry ResourceByInstance(
-			uint type,
+			FileTypes type,
 			uint instance,
 			FileTable.Source src
 		)
 		{
 			uint group = PrivateGroup;
 			if (
-				type == SimPe.Data.MetaData.BHAV_FILE
-				|| type == 0x42434F4E /*BCON*/
-				|| type == 0x54505250 /*TPRP*/
-				|| type == 0x5452434E /*TRCN*/
+				type == FileTypes.BHAV
+				|| type == FileTypes.BCON
+				|| type == FileTypes.TPRP
+				|| type == FileTypes.TRCN
 			)
 			{
 				if (instance < 0x1000)
@@ -148,7 +149,7 @@ namespace pjse
 		}
 
 		public SimPe.Interfaces.Plugin.Internal.IPackedFileWrapper SiblingResource(
-			uint type
+			FileTypes type
 		)
 		{
 			if (FileDescriptor == null)

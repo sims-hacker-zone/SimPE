@@ -3,6 +3,8 @@
 using System;
 using System.Collections.Generic;
 
+using SimPe.Data;
+using SimPe.Extensions;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Wrapper;
 
@@ -333,13 +335,11 @@ namespace SimPe.Wants
 			return new AbstractWrapperInfo("PJSE SWAF Wrapper", "Peter L Jones", "", 1);
 		}
 
-		public const uint SWAFType = 0xCD95548E;
-
 		#region IFileWrapper Member
 		/// <summary>
 		/// Returns a list of File Types this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes => new uint[] { SWAFType };
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.SWAF };
 
 		/// <summary>
 		/// Returns the Signature that can be used to identify Files processable with this Plugin
@@ -349,12 +349,12 @@ namespace SimPe.Wants
 		#endregion
 
 		#region IFileWrapperSaveExtension Member
-		protected override string GetResourceName(Data.TypeAlias ta)
+		protected override string GetResourceName(FileTypeInformation fti)
 		{
 			return !(FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
 					(ushort)FileDescriptor.Instance
 				) is ExtSDesc sdsc)
-				? base.GetResourceName(ta)
+				? base.GetResourceName(fti)
 				: sdsc.SimName + " " + sdsc.SimFamilyName + " (Wants/Fears)";
 		}
 		#endregion

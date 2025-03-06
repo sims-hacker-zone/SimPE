@@ -8,6 +8,7 @@ using System.Threading;
 
 using Ambertation.Threading;
 
+using SimPe.Data;
 using SimPe.PackedFiles.Picture;
 
 namespace SimPe.Providers
@@ -103,7 +104,7 @@ namespace SimPe.Providers
 
 					Interfaces.Files.IPackedFileDescriptor pfd =
 						LtxtFileIndexItem.Package.FindFile(
-							0x104F6A6E,
+							FileTypes.BNFO,
 							0,
 							Data.MetaData.LOCAL_GROUP,
 							Instance
@@ -128,7 +129,7 @@ namespace SimPe.Providers
 
 					Interfaces.Files.IPackedFileDescriptor pfd =
 						LtxtFileIndexItem.Package.FindFile(
-							Data.MetaData.STRING_FILE,
+							Data.FileTypes.STR,
 							0,
 							Data.MetaData.LOCAL_GROUP,
 							Instance | 0x8000
@@ -259,7 +260,7 @@ namespace SimPe.Providers
 		{
 			lotfi.Load();
 			var items =
-				lotfi.FindFile(0x856DDBAC, Data.MetaData.LOCAL_GROUP, 0x35CA0002, null);
+				lotfi.FindFile(FileTypes.IMG, Data.MetaData.LOCAL_GROUP, 0x35CA0002, null);
 			bool run = Wait.Running;
 			if (!run)
 			{
@@ -283,7 +284,7 @@ namespace SimPe.Providers
 					Interfaces.Files.IPackageFile pkg = item.Package;
 
 					Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(
-						Data.MetaData.STRING_FILE,
+						Data.FileTypes.STR,
 						0,
 						Data.MetaData.LOCAL_GROUP,
 						0x00000A46
@@ -312,7 +313,7 @@ namespace SimPe.Providers
 
 
 					LotItem li = new LotItem(inst, name, pic.Image, ngbhfi.FindFile(
-							0x0BF999E7,
+							FileTypes.LTXT,
 							Data.MetaData.LOCAL_GROUP,
 							inst,
 							null
@@ -356,7 +357,7 @@ namespace SimPe.Providers
 			{
 				Packages.GeneratableFile pkg =
 					Packages.File.LoadFromFile(name);
-				ngbhfi.AddTypesIndexFromPackage(pkg, 0x0BF999E7, false);
+				ngbhfi.AddTypesIndexFromPackage(pkg, FileTypes.LTXT, false);
 			}
 		}
 
@@ -368,7 +369,7 @@ namespace SimPe.Providers
 			{
 				Packages.GeneratableFile pkg =
 					Packages.File.LoadFromFile(name);
-				ngbhfi.AddTypesIndexFromPackage(pkg, 0x856DDBAC, false);
+				ngbhfi.AddTypesIndexFromPackage(pkg, FileTypes.IMG, false);
 			}
 		}
 

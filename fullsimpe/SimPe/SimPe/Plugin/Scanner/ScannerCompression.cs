@@ -95,7 +95,7 @@ namespace SimPe.Plugin.Scanner
 								pfd
 							);
 
-							if (pfd.Type == Data.MetaData.OBJD_FILE)
+							if (pfd.Type == Data.FileTypes.OBJD)
 							{
 								ExtObjd obj = new ExtObjd();
 								obj.ProcessData(pfd, si.Package);
@@ -110,7 +110,7 @@ namespace SimPe.Plugin.Scanner
 								}
 							}
 
-							if (pfd.Type == Data.MetaData.GMDC)
+							if (pfd.Type == Data.FileTypes.GMDC)
 							{
 								GenericRcol rcol = new GenericRcol();
 								rcol.ProcessData(pfd, si.Package);
@@ -294,7 +294,7 @@ namespace SimPe.Plugin.Scanner
 									)
 								;
 
-								if (pfd.Type == Data.MetaData.OBJD_FILE)
+								if (pfd.Type == Data.FileTypes.OBJD)
 								{
 									ExtObjd objd =
 										new ExtObjd();

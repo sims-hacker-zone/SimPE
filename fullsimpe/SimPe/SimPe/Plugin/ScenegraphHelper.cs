@@ -1,6 +1,8 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+using SimPe.Data;
+
 namespace SimPe.Plugin
 {
 	/// <summary>
@@ -9,19 +11,8 @@ namespace SimPe.Plugin
 	public class ScenegraphHelper
 	{
 		#region Constant Repeat
-		public const uint GMND = Data.MetaData.GMND;
-		public const uint TXMT = Data.MetaData.TXMT;
-		public const uint TXTR = Data.MetaData.TXTR;
-		public const uint LIFO = Data.MetaData.LIFO;
-		public const uint ANIM = Data.MetaData.ANIM;
-		public const uint SHPE = Data.MetaData.SHPE;
-		public const uint CRES = Data.MetaData.CRES;
-		public const uint GMDC = Data.MetaData.GMDC;
-
-		public const uint MMAT = Data.MetaData.MMAT;
-
-		public static string GMND_PACKAGE = Data.MetaData.GMND_PACKAGE;
-		public static string MMAT_PACKAGE = Data.MetaData.MMAT_PACKAGE;
+		public static string GMND_PACKAGE = MetaData.GMND_PACKAGE;
+		public static string MMAT_PACKAGE = MetaData.MMAT_PACKAGE;
 		#endregion
 
 		/// <summary>
@@ -33,7 +24,7 @@ namespace SimPe.Plugin
 		/// <returns></returns>
 		public static Interfaces.Files.IPackedFileDescriptor BuildPfd(
 			string flname,
-			uint type,
+			FileTypes type,
 			uint defgroup
 		)
 		{

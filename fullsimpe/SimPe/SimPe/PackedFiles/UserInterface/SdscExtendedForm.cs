@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
+using SimPe.Data;
 using SimPe.PackedFiles.Swaf;
 using SimPe.PackedFiles.Wrapper;
 
@@ -294,7 +295,7 @@ namespace SimPe.PackedFiles.UserInterface
 				{
 					Packages.File fl = Packages.File.LoadFromFile(flname);
 					Interfaces.Files.IPackedFileDescriptor pfd = fl.FindFile(
-						0x53545223,
+						FileTypes.STR,
 						0,
 						0x7FE59FD0,
 						0xc8

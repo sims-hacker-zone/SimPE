@@ -81,7 +81,7 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 			FileTableBase.FileIndex.Load();
 			IEnumerable<Interfaces.Scenegraph.IScenegraphFileIndexItem> objs =
 				FileTableBase.FileIndex.FindFileDiscardingGroup(
-					Data.MetaData.OBJD_FILE,
+					Data.FileTypes.OBJD,
 					0x41a7
 				);
 			Wait.Start(objs.Count());

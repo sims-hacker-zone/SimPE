@@ -3,6 +3,8 @@
 
 using System;
 
+using SimPe.Data;
+
 namespace SimPe.PackedFiles.UserInterface
 {
 	class SimOriGuid
@@ -452,7 +454,7 @@ namespace SimPe.PackedFiles.UserInterface
 			Packages.GeneratableFile pkg =
 				Packages.File.LoadFromFile(Sim.CharacterFileName);
 			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
-				Data.MetaData.AGED
+				Data.FileTypes.AGED
 			);
 			if (pfds.Length == 1)
 			{
@@ -492,7 +494,7 @@ namespace SimPe.PackedFiles.UserInterface
 				return;
 			}
 
-			pfds = pkg.FindFiles(Data.MetaData.OBJD_FILE);
+			pfds = pkg.FindFiles(Data.FileTypes.OBJD);
 			if (pfds.Length == 1)
 			{
 				Wrapper.ExtObjd objd =
@@ -517,11 +519,7 @@ namespace SimPe.PackedFiles.UserInterface
 				{
 					Sim.CharacterDescription.NPCType = 79;
 					Sim.Nightlife.Species = 0; // EP9 Tiny Sim, Don't apply gooee and do force age
-					Sim.CharacterDescription.LifeSection =
-						Data
-						.MetaData
-						.LifeSections
-						.Child;
+					Sim.CharacterDescription.LifeSection = Data.LifeSections.Child;
 					fixresult = "Tiny Sim, Changes Must Not be applied";
 				}
 				else
@@ -543,7 +541,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 					objd.SynchronizeUserData();
 
-					pfds = pkg.FindFiles(Data.MetaData.GLOB_FILE);
+					pfds = pkg.FindFiles(Data.FileTypes.GLOB);
 					if (pfds.Length == 1)
 					{
 						Glob.Glob globy = new Glob.Glob();
@@ -622,7 +620,7 @@ namespace SimPe.PackedFiles.UserInterface
 			if (pkg != null)
 			{
 				Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(
-					0x856DDBAC,
+					FileTypes.IMG,
 					0,
 					0x499DB772,
 					j
@@ -855,56 +853,56 @@ namespace SimPe.PackedFiles.UserInterface
 
 			if (
 				Sim.Freetime.PrimaryAspiration
-				== Data.MetaData.AspirationTypes.Romance
+				== Data.AspirationTypes.Romance
 			)
 			{
 				ret += "get lots of lovers";
 			}
 			else if (
 				Sim.Freetime.PrimaryAspiration
-				== Data.MetaData.AspirationTypes.Family
+				== Data.AspirationTypes.Family
 			)
 			{
 				ret += "raise a large, happy family";
 			}
 			else if (
 				Sim.Freetime.PrimaryAspiration
-				== Data.MetaData.AspirationTypes.Chees
+				== Data.AspirationTypes.Chees
 			) //
 			{
 				ret += "eat grilled cheese";
 			}
 			else if (
 				Sim.Freetime.PrimaryAspiration
-				== Data.MetaData.AspirationTypes.Fortune
+				== Data.AspirationTypes.Fortune
 			)
 			{
 				ret += "be successful";
 			}
 			else if (
 				Sim.Freetime.PrimaryAspiration
-				== Data.MetaData.AspirationTypes.Knowledge
+				== Data.AspirationTypes.Knowledge
 			)
 			{
 				ret += "learn all the secrets of the universe";
 			}
 			else if (
 				Sim.Freetime.PrimaryAspiration
-				== Data.MetaData.AspirationTypes.Pleasure
+				== Data.AspirationTypes.Pleasure
 			)
 			{
 				ret += "party hard and often";
 			}
 			else if (
 				Sim.Freetime.PrimaryAspiration
-				== Data.MetaData.AspirationTypes.Reputation
+				== Data.AspirationTypes.Reputation
 			)
 			{
 				ret += "make as many friends as possible";
 			}
 			else if (
 				Sim.Freetime.PrimaryAspiration
-				== Data.MetaData.AspirationTypes.Growup
+				== Data.AspirationTypes.Growup
 			)
 			{
 				ret += "grow up";
@@ -921,55 +919,55 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				if (
 					Sim.Freetime.SecondaryAspiration
-					!= Data.MetaData.AspirationTypes.Nothing
+					!= Data.AspirationTypes.Nothing
 				)
 				{
 					ret += " and ";
 					if (
 						Sim.Freetime.SecondaryAspiration
-						== Data.MetaData.AspirationTypes.Romance
+						== Data.AspirationTypes.Romance
 					)
 					{
 						ret += "get lots of lovers.";
 					}
 					else if (
 						Sim.Freetime.SecondaryAspiration
-						== Data.MetaData.AspirationTypes.Family
+						== Data.AspirationTypes.Family
 					)
 					{
 						ret += "raise a large, happy family.";
 					}
 					else if (
 						Sim.Freetime.SecondaryAspiration
-						== Data.MetaData.AspirationTypes.Chees
+						== Data.AspirationTypes.Chees
 					) //
 					{
 						ret += "eat grilled cheese.";
 					}
 					else if (
 						Sim.Freetime.SecondaryAspiration
-						== Data.MetaData.AspirationTypes.Fortune
+						== Data.AspirationTypes.Fortune
 					)
 					{
 						ret += "be successful.";
 					}
 					else if (
 						Sim.Freetime.SecondaryAspiration
-						== Data.MetaData.AspirationTypes.Knowledge
+						== Data.AspirationTypes.Knowledge
 					)
 					{
 						ret += "learn all the secrets of the universe.";
 					}
 					else if (
 						Sim.Freetime.SecondaryAspiration
-						== Data.MetaData.AspirationTypes.Pleasure
+						== Data.AspirationTypes.Pleasure
 					)
 					{
 						ret += "party hard and often.";
 					}
 					else if (
 						Sim.Freetime.SecondaryAspiration
-						== Data.MetaData.AspirationTypes.Reputation
+						== Data.AspirationTypes.Reputation
 					)
 					{
 						ret += "make as many friends as possible.";

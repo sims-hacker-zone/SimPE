@@ -5,6 +5,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Collections.Generic;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Swaf
@@ -79,7 +80,7 @@ namespace SimPe.PackedFiles.Swaf
 				{
 					//return provider.SimDescriptionProvider.FindSim((ushort)this.FileDescriptor.Instance);
 					Interfaces.Files.IPackedFileDescriptor[] pfds = Package.FindFile(
-						Data.MetaData.SIM_DESCRIPTION_FILE,
+						Data.FileTypes.SDSC,
 						0,
 						FileDescriptor.Instance
 					);
@@ -294,9 +295,9 @@ namespace SimPe.PackedFiles.Swaf
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes => new uint[]
+		public FileTypes[] AssignableTypes => new FileTypes[]
 				{
-					0xCD95548E, //handles the Want Files
+					FileTypes.SWAF, //handles the Want Files
 				};
 		#endregion
 	}

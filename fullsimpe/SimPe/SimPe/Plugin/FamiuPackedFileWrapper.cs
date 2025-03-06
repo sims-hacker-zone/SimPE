@@ -5,6 +5,8 @@ using System;
 using System.Drawing;
 using System.IO;
 
+using SimPe.Data;
+using SimPe.Extensions;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Picture;
@@ -28,7 +30,7 @@ namespace SimPe.Plugin
 		/// Contains the Data of the File
 		/// </summary>
 		private ushort[] fval;
-		private int signate = 0x46414d68;
+		private FileTypes signate = FileTypes.FAMH;
 		public bool isnew = true;
 
 		/// <summary>
@@ -66,7 +68,7 @@ namespace SimPe.Plugin
 				try
 				{
 					IPackedFileDescriptor pfd = package.FindFile(
-						Data.MetaData.STRING_FILE,
+						Data.FileTypes.STR,
 						0,
 						FileDescriptor.Group,
 						FileDescriptor.Instance
@@ -123,10 +125,10 @@ namespace SimPe.Plugin
 				foreach (string file in overs)
 				{
 					pkg = Packages.File.LoadFromFile(file);
-					if (pkg.FindFileAnyGroup(0x0BF999E7, 0, instc) != null)
+					if (pkg.FindFileAnyGroup(FileTypes.LTXT, 0, instc) != null)
 					{
 						IPackedFileDescriptor pfd = pkg.FindFileAnyGroup(
-							Data.MetaData.CTSS_FILE,
+							Data.FileTypes.CTSS,
 							0,
 							1
 						);
@@ -185,7 +187,7 @@ namespace SimPe.Plugin
 					)
 				);
 				IPackedFileDescriptor pfd = fumbs.FindFileAnyGroup(
-					0x8C3CE95A,
+					FileTypes.THUMB_FAMILY,
 					0,
 					FileDescriptor.Instance
 				);
@@ -250,7 +252,7 @@ namespace SimPe.Plugin
 			);
 		}
 
-		protected override string GetResourceName(Data.TypeAlias ta)
+		protected override string GetResourceName(FileTypeInformation fti)
 		{
 			if (!Processed)
 			{
@@ -268,7 +270,7 @@ namespace SimPe.Plugin
 		{
 			isnew = false; // empty files don't get Unserialize, this value shows the file as not empty
 			GoodSections = 0;
-			signate = reader.ReadInt32();
+			signate = (FileTypes)reader.ReadInt32();
 			Version = reader.ReadByte(); // Versions match Fami Versions
 			reader.BaseStream.Seek(13, SeekOrigin.Begin);
 			Sections = reader.ReadInt32();
@@ -318,7 +320,7 @@ namespace SimPe.Plugin
 		/// </remarks>
 		protected override void Serialize(BinaryWriter writer)
 		{
-			writer.Write(signate);
+			writer.Write((uint)signate);
 			writer.Write(Version);
 			writer.Write(0);
 			writer.Write(0);
@@ -356,14 +358,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] types = { 0x46414D68 }; //handles the Family History File
-				return types;
-			}
-		}
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.FAMH };
 
 		#endregion
 	}

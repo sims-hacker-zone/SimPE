@@ -3,6 +3,7 @@
 using System;
 using System.Drawing;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Picture
@@ -125,36 +126,27 @@ namespace SimPe.PackedFiles.Picture
 
 		#region IPackedFileWrapper Member
 
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] Types =
+		public FileTypes[] AssignableTypes => new FileTypes[]
 				{
-					0x0C7E9A76, //jpeg
-					0x856DDBAC, //jpeg
-					0x424D505F, //bitmap
-					0x856DDBAC, //png
-					0x856DDBAC, //tga
-					0xAC2950C1, //thumbnail
-					0x4D533EDD,
-					0xAC2950C1,
-					0x2C30E040,
-					0x2C43CBD4,
-					0x2C488BCA,
-					0x8C31125E,
-					0x8C311262,
-					0xCC30CDF8,
-					0xCC44B5EC,
-					0xCC489E46,
-					0xCC48C51F,
-					0x8C3CE95A,
-					0xEC3126C4,
-					0xF03D464C,
+					FileTypes.JPG,
+					FileTypes.IMG,
+					FileTypes.BMP,
+					FileTypes.THUB,
+					FileTypes.THUMB_NHOBJ,
+					FileTypes.THUB,
+					FileTypes.THUMB_FARC,
+					FileTypes.THUMB_POOL,
+					FileTypes.THUMB_DORM,
+					FileTypes.THUMB_WALL,
+					FileTypes.THUMB_FLOOR,
+					FileTypes.THUMB_FENCE,
+					FileTypes.THUMB_MODST,
+					FileTypes.THUMB_ROOF,
+					FileTypes.THUMB_CHIM,
+					FileTypes.THUMB_FAMILY,
+					FileTypes.THUMB_TERRAIN,
+					FileTypes.THUMB_AWN,
 				};
-				return Types;
-			}
-		}
 
 		public byte[] FileSignature => new byte[0];
 

@@ -3,6 +3,8 @@
 using System;
 using System.Collections;
 
+using SimPe.Data;
+using SimPe.Extensions;
 using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Scenegraph;
 
@@ -15,17 +17,8 @@ namespace SimPe.Plugin
 	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
-	public abstract class Rcol
-		: AbstractWrapper //Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
-			,
-			IFileWrapper //This Interface is used when loading a File
-			,
-			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
-									  //,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
-			,
-			IMultiplePackedFileWrapper //Allow Multiple Instances
-			,
-			IDisposable
+	public abstract class Rcol : AbstractWrapper, IFileWrapper,
+			IFileWrapperSaveExtension, IMultiplePackedFileWrapper, IDisposable
 	{
 		#region Attributes
 		byte[] oversize;
@@ -344,7 +337,7 @@ namespace SimPe.Plugin
 							Group = reader.ReadUInt32(),
 							Instance = reader.ReadUInt32(),
 							SubType = (Count == 0xffff0001) ? reader.ReadUInt32() : 0,
-							Type = reader.ReadUInt32()
+							Type = (FileTypes)reader.ReadUInt32()
 						};
 
 					reffiles[i] = pfd;
@@ -413,7 +406,7 @@ namespace SimPe.Plugin
 					writer.Write(pfd.SubType);
 				}
 
-				writer.Write(pfd.Type);
+				writer.Write((uint)pfd.Type);
 			}
 
 			writer.Write((uint)blocks.Length);
@@ -504,20 +497,13 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public virtual uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] types = { };
-				return types;
-			}
-		}
+		public virtual FileTypes[] AssignableTypes => new FileTypes[] { };
 
 		/// <summary>
 		/// Override this to add your own Implementation for <see cref="ResourceName"/>
 		/// </summary>
 		/// <returns>null, if the Default Name should be generated</returns>
-		protected override string GetResourceName(Data.TypeAlias ta)
+		protected override string GetResourceName(FileTypeInformation fti)
 		{
 			if (!Processed)
 			{

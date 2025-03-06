@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+using SimPe.Data;
 using SimPe.PackedFiles.Cpf;
 
 namespace SimPe.Plugin.Tool.Dockable.Finder
@@ -18,7 +19,7 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 		public FindInCpf()
 			: this(null) { }
 
-		uint type;
+		FileTypes type;
 		string field;
 
 		protected override bool OnPrepareStart()
@@ -27,7 +28,7 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 
 			if (res)
 			{
-				type = Helper.StringToUInt32(tbType.Text, 0, 16);
+				type = (FileTypes)Helper.StringToUInt32(tbType.Text, 0, 16);
 				field = tbName.Text.ToLower().Trim();
 			}
 			return res;
@@ -47,7 +48,7 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 			}
 			else
 			{
-				if (pfd.Type != Data.MetaData.GZPS && pfd.Type != Data.MetaData.MMAT)
+				if (pfd.Type != Data.FileTypes.GZPS && pfd.Type != Data.FileTypes.MMAT)
 				{
 					return;
 				}

@@ -7,416 +7,6 @@ using System.Drawing;
 
 namespace SimPe.Data
 {
-	public enum NeighborhoodSlots
-	{
-		LotsIntern = 0,
-		Lots = 1,
-		FamiliesIntern = 2,
-		Families = 3,
-		SimsIntern = 4,
-		Sims = 5,
-	}
-
-	/// <summary>
-	/// Determins the concrete Type of an Overlay Item (texture or mesh overlay)
-	/// </summary>
-	public enum TextureOverlayTypes : uint
-	{
-		Beard = 0x00,
-		EyeBrow = 0x01,
-		Lipstick = 0x02,
-		Eye = 0x03,
-		Mask = 0x04,
-		Glasses = 0x05,
-		Blush = 0x06,
-		EyeShadow = 0x07,
-	}
-
-	/// <summary>
-	/// Ages used for Property Sets (Character Data, Skins)
-	/// </summary>
-	public enum Ages : uint
-	{
-		Baby = 0x20,
-		Toddler = 0x01,
-		Child = 0x02,
-		Teen = 0x04,
-		Adult = 0x08,
-		Elder = 0x10,
-		YoungAdult = 0x40,
-	}
-
-	/// <summary>
-	/// Categories used for Property Sets (Skins) (Updated by Theo)
-	/// </summary>
-	[Flags]
-	public enum SkinCategories : uint
-	{
-		Casual1 = 0x01,
-		Casual2 = 0x02,
-		Casual3 = 0x04,
-		Everyday = Casual1 | Casual2 | Casual3,
-		Swimmwear = 0x08,
-		PJ = 0x10,
-		Formal = 0x20,
-		Undies = 0x40,
-		Skin = 0x80,
-		Pregnant = 0x100,
-		Activewear = 0x200,
-		TryOn = 0x400,
-		NakedOverlay = 0x800,
-		Outerwear = 0x1000,
-		Hair = 0x2000, // does not exist so won't be used but gives me somewhere to shove hair out of the way when browsing for clothes
-	}
-
-	/// <summary>
-	/// outfit type used for Property Sets (Skins)
-	/// </summary>
-	[Flags]
-	public enum SkinParts : uint
-	{
-		Hair = 0x01,
-		Face = 0x02,
-		Top = 0x04,
-		Body = 0x08,
-		Bottom = 0x10,
-		Jewellery = 0x20,
-		LongTail = 0x40,
-		Ear_Up = 0x80,
-		ShortTail = 0x100,
-		Ear_Flop = 0x200,
-		LongBrushTail = 0x400,
-		ShortBrushTail = 0x800,
-		SpitzTail = 0x1000,
-		LongFlowingTail = 0x2000,
-	}
-
-	/// <summary>
-	/// Categories used for the clothing scanner, the naming above appears and is bloody awfull
-	/// </summary>
-	[Flags]
-	public enum OutfitCats : uint
-	{
-		Everyday = 0x07,
-		Swimsuit = 0x08, // Swimmwear
-		Pyjamas = 0x10,
-		Formal = 0x20,
-		Underwear = 0x40, //Undies
-		Skin = 0x80,
-		Maternity = 0x100, //Pregnant
-		Gym = 0x200, //Activewear
-		TryOn = 0x400,
-		NakedOverlay = 0x800,
-		WinterWear = 0x1000, // Outerwear
-	}
-
-	/// <summary>
-	/// Gender of a Sim used for Property Sets (Skins & Clothing)
-	/// </summary>
-	public enum Sex : uint
-	{
-		Male = 0x02,
-		Female = 0x01,
-	}
-
-	public enum SimGender
-	{
-		Unspecified = 0,
-		Female = 1,
-		Male = 2,
-		Both = Female | Male,
-	}
-
-	/// <summary>
-	///
-	/// </summary>
-	public enum Majors : uint
-	{
-		Unset = 0,
-		Unknown = 0xffffffff,
-		Art = 0x2e9cf007,
-		Biology = 0x4e9cf02b,
-		Drama = 0x4e9cf04d,
-		Economics = 0xEe9cf044,
-		History = 0x2e9cf074,
-		Literature = 0xce9cf085,
-		Mathematics = 0xee9cf08d,
-		Philosophy = 0x2e9cf057,
-		Physics = 0xae9cf063,
-		PoliticalScience = 0x4e9cf06d,
-		Psychology = 0xCE9CF07C,
-		Undeclared = 0x8e97bf1d,
-	}
-
-	/// <summary>
-	/// Catalogue Use Flag
-	/// </summary>
-	public enum ObjCatalogueUseBits : byte
-	{
-		Adults = 0x00,
-		Children = 0x01,
-		Group = 0x02,
-		Teens = 0x03,
-		Elders = 0x04,
-		Toddlers = 0x05,
-	}
-
-	/// <summary>
-	/// Room Sort Flag
-	/// </summary>
-	public enum ObjRoomSortBits : byte
-	{
-		Kitchen = 0x00,
-		Bedroom = 0x01,
-		Bathroom = 0x02,
-		LivingRoom = 0x03,
-		Outside = 0x04,
-		DiningRoom = 0x05,
-		Misc = 0x06,
-		Study = 0x07,
-		Kids = 0x08,
-	}
-
-	/// <summary>
-	/// Build type Flag
-	/// </summary>
-	public enum ObjBuildTypeBits : byte
-	{
-		General = 0x00,
-		unknown = 0x01,
-		Garden = 0x02,
-		Openings = 0x03,
-	}
-
-	/// <summary>
-	/// Build Function Sort Flag
-	/// </summary>
-	/// <remarks>the higher 2 bytes contains the <see cref="ObjFunctionSortBits"/>, the lower one the actual SubSort</remarks>
-	public enum BuildFunctionSubSort : uint
-	{
-		none = 0x00000,
-		General_Columns = 0x10008,
-		General_Stairs = 0x10020,
-		General_Pool = 0x10040,
-		General_TallColumns = 0x10100,
-		General_Arch = 0x10200,
-		General_Driveway = 0x10400,
-		General_Elevator = 0x10800,
-		General_Architectural = 0x11000,
-
-		Garden_Trees = 0x40001,
-		Garden_Shrubs = 0x40002,
-		Garden_Flowers = 0x40004,
-		Garden_Objects = 0x40010,
-
-		Openings_Door = 0x80001,
-		Openings_TallWindow = 0x80002,
-		Openings_Window = 0x80004,
-		Openings_Gate = 0x80008,
-		Openings_Arch = 0x80010,
-		Openings_TallDoor = 0x80100,
-
-		unknown = 0x00069, // just to locate unknown things, is read but not written
-	}
-
-	/// <summary>
-	/// Community Room Sort Flag
-	/// </summary>
-	public enum CommRoomSortBits : byte
-	{
-		Dining = 0x00,
-		Shopping = 0x01,
-		Outdoor = 0x02,
-		Street = 0x03,
-		Misc = 0x07,
-	}
-
-	/// <summary>
-	/// Function Sort Flag
-	/// </summary>
-	public enum ObjFunctionSortBits : byte
-	{
-		Seating = 0x00,
-		Surfaces = 0x01,
-		Appliances = 0x02,
-		Electronics = 0x03,
-		Plumbing = 0x04,
-		Decorative = 0x05,
-		General = 0x06,
-		Lighting = 0x07,
-		Hobbies = 0x08,
-		AspirationRewards = 0x0a,
-		CareerRewards = 0x0b,
-	}
-
-	/// <summary>
-	/// Function for xml Based Objects
-	/// </summary>
-	public enum XObjFunctionSubSort : uint
-	{
-		Roof = 0x0100,
-
-		Floor_Brick = 0x0201,
-		Floor_Carpet = 0x0202,
-		Floor_Lino = 0x0204,
-		Floor_Poured = 0x0208,
-		Floor_Stone = 0x0210,
-		Floor_Tile = 0x0220,
-		Floor_Wood = 0x0240,
-		Floor_Other = 0x0200,
-
-		Fence_Rail = 0x0400,
-		Fence_Halfwall = 0x0401,
-
-		Wall_Brick = 0x0501,
-		Wall_Masonry = 0x0502,
-		Wall_Paint = 0x0504,
-		Wall_Paneling = 0x0508,
-		Wall_Poured = 0x0510,
-		Wall_Siding = 0x0520,
-		Wall_Tile = 0x0540,
-		Wall_Wallpaper = 0x0580,
-		Wall_Other = 0x0500,
-
-		Terrain = 0x0600,
-
-		Hood_Landmark = 0x0701,
-		Hood_Flora = 0x0702,
-		Hood_Effects = 0x0703,
-		Hood_Misc = 0x0704,
-		Hood_Stone = 0x0705,
-		Hood_Other = 0x0700,
-	}
-
-	/// <summary>
-	/// Function Sort Flag
-	/// </summary>
-	/// <remarks>the higher byte contains the <see cref="ObjFunctionSortBits"/>, the lower one the actual SubSort</remarks>
-	public enum ObjFunctionSubSort : uint
-	{
-		none = 0x0000,
-		Seating_DiningroomChair = 0x101,
-		Seating_LivingroomChair = 0x102,
-		Seating_Sofas = 0x104,
-		Seating_Beds = 0x108,
-		Seating_Recreation = 0x110,
-		Seating_UnknownA = 0x120,
-		Seating_UnknownB = 0x140,
-		Seating_Misc = 0x180,
-
-		Surfaces_Counter = 0x201,
-		Surfaces_Table = 0x202,
-		Surfaces_EndTable = 0x204,
-		Surfaces_Desks = 0x208,
-		Surfaces_Coffeetable = 0x210,
-		Surfaces_Business = 0x220,
-		Surfaces_UnknownB = 0x240,
-		Surfaces_Misc = 0x280,
-
-		Decorative_Wall = 0x2001,
-		Decorative_Sculpture = 0x2002,
-		Decorative_Rugs = 0x2004,
-		Decorative_Plants = 0x2008,
-		Decorative_Mirror = 0x2010,
-		Decorative_Curtain = 0x2020,
-		Decorative_UnknownB = 0x2040,
-		Decorative_Misc = 0x2080,
-
-		Plumbing_Toilet = 0x1001,
-		Plumbing_Shower = 0x1002,
-		Plumbing_Sink = 0x1004,
-		Plumbing_HotTub = 0x1008,
-		Plumbing_UnknownA = 0x1010,
-		Plumbing_UnknownB = 0x1020,
-		Plumbing_UnknownC = 0x1040,
-		Plumbing_Misc = 0x1080,
-
-		Appliances_Cooking = 0x401,
-		Appliances_Refrigerator = 0x402,
-		Appliances_Small = 0x404,
-		Appliances_Large = 0x408,
-		Appliances_UnknownA = 0x410,
-		Appliances_UnknownB = 0x420,
-		Appliances_UnknownC = 0x440,
-		Appliances_Misc = 0x480,
-
-		Electronics_Entertainment = 0x801,
-		Electronics_TV_and_Computer = 0x802,
-		Electronics_Audio = 0x804,
-		Electronics_Small = 0x808,
-		Electronics_UnknownA = 0x810,
-		Electronics_UnknownB = 0x820,
-		Electronics_UnknownC = 0x840,
-		Electronics_Misc = 0x880,
-
-		Lighting_TableLamp = 0x8001,
-		Lighting_FloorLamp = 0x8002,
-		Lighting_WallLamp = 0x8004,
-		Lighting_CeilingLamp = 0x8008,
-		Lighting_Outdoor = 0x8010,
-		Lighting_UnknownA = 0x8020,
-		Lighting_UnknownB = 0x8040,
-		Lighting_Misc = 0x8080,
-
-		Hobbies_Creative = 0x10001,
-		Hobbies_Knowledge = 0x10002,
-		Hobbies_Excerising = 0x10004,
-		Hobbies_Recreation = 0x10008,
-		Hobbies_UnknownA = 0x10010,
-		Hobbies_UnknownB = 0x10020,
-		Hobbies_UnknownC = 0x10040,
-		Hobbies_Misc = 0x10080,
-
-		General_UnknownA = 0x4001,
-		General_Dresser = 0x4002,
-		General_UnknownB = 0x4004,
-		General_Party = 0x4008,
-		General_Child = 0x4010,
-		General_Car = 0x4020,
-		General_Pets = 0x4040,
-		General_Misc = 0x4080,
-
-		AspirationRewards_UnknownA = 0x40001,
-		AspirationRewards_UnknownB = 0x40002,
-		AspirationRewards_UnknownC = 0x40004,
-		AspirationRewards_UnknownD = 0x40008,
-		AspirationRewards_UnknownE = 0x40010,
-		AspirationRewards_UnknownF = 0x40020,
-		AspirationRewards_UnknownG = 0x40040,
-		AspirationRewards_UnknownH = 0x40080,
-
-		CareerRewards_UnknownA = 0x80001,
-		CareerRewards_UnknownB = 0x80002,
-		CareerRewards_UnknownC = 0x80004,
-		CareerRewards_UnknownD = 0x80008,
-		CareerRewards_UnknownE = 0x80010,
-		CareerRewards_UnknownF = 0x80020,
-		CareerRewards_UnknownG = 0x80040,
-		CareerRewards_UnknownH = 0x80080,
-	}
-
-	/// <summary>
-	/// Enumerates known Object Types
-	/// </summary>
-	public enum ObjectTypes : ushort
-	{
-		Unknown = 0x0000,
-		Person = 0x0002,
-		Normal = 0x0004,
-		ArchitecturalSupport = 0x0005,
-		SimType = 0x0007,
-		Door = 0x0008,
-		Window = 0x0009,
-		Stairs = 0x000A,
-		ModularStairs = 0x000B,
-		ModularStairsPortal = 0x000C,
-		Vehicle = 0x000D,
-		Outfit = 0x000E,
-		Memory = 0x000F,
-		Template = 0x0010,
-		UnlinkedSim = 0x0011,
-		Tiles = 0x0013,
-	}
 
 	/// <summary>
 	/// Hold Constants, Enumerations and other Metadata
@@ -461,118 +51,9 @@ namespace SimPe.Data
 		public const uint LOCAL_GROUP = 0xffffffff;
 
 		/// <summary>
-		/// A Directory file will have this Type in the fileindex.
-		/// </summary>
-		public const uint DIRECTORY_FILE = 0xE86B1EEF; //0xEF1E6BE8;
-
-		/// <summary>
-		/// Stores the relationship Value for a Sim
-		/// </summary>
-		public const uint RELATION_FILE = 0xCC364C2A;
-
-		/// <summary>
-		/// File Containing Strings
-		/// </summary>
-		public const uint STRING_FILE = 0x53545223;
-
-		/// <summary>
-		/// File Containing Pie Strings
-		/// </summary>
-		public const uint PIE_STRING_FILE = 0x54544173;
-
-		/// <summary>
-		/// File Containing Sim Descriptions
-		/// </summary>
-		public const uint SIM_DESCRIPTION_FILE = 0xAACE2EFB;
-
-		/// <summary>
-		/// Files Containing Sim Images
-		/// </summary>
-		public const uint SIM_IMAGE_FILE = 0x856DDBAC;
-
-		/// <summary>
-		/// The File containing all Family Ties
-		/// </summary>
-		public const uint FAMILY_TIES_FILE = 0x8C870743;
-
-		/// <summary>
-		/// File containing BHAV Informations
-		/// </summary>
-		public const uint BHAV_FILE = 0x42484156;
-
-		/// <summary>
-		/// File containng Global Data
-		/// </summary>
-		public const uint GLOB_FILE = 0x474C4F42;
-
-		/// <summary>
-		/// File Containing Object Data
-		/// </summary>
-		public const uint OBJD_FILE = 0x4F424A44;
-
-		/// <summary>
-		/// File Containing Catalog Strings
-		/// </summary>
-		public const uint CTSS_FILE = 0x43545353;
-
-		/// <summary>
-		/// File Containing Name Maps
-		/// </summary>
-		public const uint NAME_MAP = 0x4E6D6150;
-
-		/// <summary>
-		/// Neighborhood/Memory File Typesss
-		/// </summary>
-		public const uint MEMORIES = 0x4E474248;
-
-		/// <summary>
-		/// Sim DNA
-		/// </summary>
-		public const uint SDNA = 0xEBFEE33F;
-
-		/// <summary>
 		/// Signature identifying a compressed PackedFile
 		/// </summary>
 		public const ushort COMPRESS_SIGNATURE = 0xFB10;
-
-		public const uint GZPS = 0xEBCF3E27;
-		public const uint XWNT = 0xED7D7B4D;
-		public const uint REF_FILE = 0xAC506764;
-		public const uint IDNO = 0xAC8A7A2E;
-		public const uint HOUS = 0x484F5553;
-		public const uint SLOT = 0x534C4F54;
-
-		public const uint GMND = 0x7BA3838C;
-		public const uint TXMT = 0x49596978;
-		public const uint TXTR = 0x1C4A276C;
-		public const uint LIFO = 0xED534136;
-		public const uint ANIM = 0xFB00791E;
-		public const uint SHPE = 0xFC6EB1F7;
-		public const uint CRES = 0xE519C933;
-		public const uint GMDC = 0xAC4F8687;
-		public const uint LDIR = 0xC9C81B9B;
-		public const uint LAMB = 0xC9C81BA3;
-		public const uint LPNT = 0xC9C81BA9;
-		public const uint LSPT = 0xC9C81BAD;
-
-		public const uint MMAT = 0x4C697E5A;
-		public const uint XOBJ = 0xCCA8E925;
-		public const uint XROF = 0xACA8EA06;
-		public const uint XFLR = 0x4DCADB7E;
-		public const uint XFNC = 0x2CB230B8;
-		public const uint XNGB = 0x6D619378;
-
-		public const uint GLUA = 0x9012468A;
-		public const uint OLUA = 0x9012468B;
-		public const uint GINV = 0x0ABA73AF;
-
-		public const uint XHTN = 0x8C1580B5;
-		public const uint XTOL = 0x2C1FD8A1;
-		public const uint XMOL = 0x0C1FE246;
-		public const uint XSTN = 0x4C158081;
-		public const uint AGED = 0xAC598EAC;
-		public const uint LxNR = 0xCCCEF852;
-		public const uint BINX = 0x0C560F39;
 		#endregion
 
 		#region CEP Strings
@@ -597,137 +78,6 @@ namespace SimPe.Data
 		#endregion
 
 		#region Enums
-
-		/// <summary>
-		/// Type of school a Sim attends
-		/// </summary>
-		public enum SchoolTypes : uint
-		{
-			Unknown = 0xFFFFFFFF,
-			NoSchool = 0x00000000,
-			PublicSchool = 0xD06788B5,
-			PrivateSchool = 0xCC8F4C11,
-		}
-
-		/// <summary>
-		/// Available Grades
-		/// </summary>
-		public enum Grades : ushort
-		{
-			Unknown = 0x00,
-			F = 0x01,
-			DMinus = 0x02,
-			D = 0x03,
-			DPlus = 0x04,
-			CMinus = 0x05,
-			C = 0x06,
-			CPlus = 0x07,
-			BMinus = 0x08,
-			B = 0x09,
-			BPlus = 0x0A,
-			AMinus = 0x0B,
-			A = 0x0C,
-			APlus = 0x0D,
-		}
-
-		/// <summary>
-		/// Enumerates known Languages - CJH
-		/// </summary>
-		public enum Languages : byte
-		{
-			Unknown = 0x00,
-			English = 0x01,
-			English_uk = 0x02,
-			French = 0x03,
-			German = 0x04,
-			Italian = 0x05,
-			Spanish = 0x06,
-			Dutch = 0x07,
-			Danish = 0x08,
-			Swedish = 0x09,
-			Norwegian = 0x0a,
-			Finnish = 0x0b,
-			Hebrew = 0x0c,
-			Russian = 0x0d,
-			Portuguese = 0x0e,
-			Japanese = 0x0f,
-			Polish = 0x10,
-			SimplifiedChinese = 0x11,
-			TraditionalChinese = 0x12,
-			Thai = 0x13,
-			Korean = 0x14,
-			Hindi = 0x15,
-			Arabic = 0x16,
-			Bulgarian = 0x17,
-			Cyrillic = 0x18,
-			Ukranian = 0x19,
-			Czech = 0x1a,
-			Greek = 0x1b,
-			Hungarian = 0x1c,
-			Icelandic = 0x1d,
-			Romanian = 0x1e,
-			Latin = 0x1f,
-			Slovak = 0x20,
-			Albabian = 0x21,
-			Turkish = 0x22,
-			Brazilian = 0x23,
-			SwissFrench = 0x24,
-			CanadianFrench = 0x25,
-			BelgianFrench = 0x26,
-			SwissGerman = 0x27,
-			SwissItalian = 0x28,
-			BelgianDutch = 0x29,
-			Mexican = 0x2a,
-			Tagalog = 0x2b,
-			Vietnamese = 0x2c,
-		}
-
-		/// <summary>
-		/// Enumerates available Datatypes
-		/// </summary>
-		public enum DataTypes : uint
-		{
-			dtUInteger = 0xEB61E4F7,
-			dtString = 0x0B8BEA18,
-			dtSingle = 0xABC78708,
-			dtBoolean = 0xCBA908E1,
-			dtInteger = 0x0C264712,
-		}
-
-		/// <summary>
-		/// Available Format Codes
-		/// </summary>
-		public enum FormatCode : ushort
-		{
-			normal = 0xFFFD,
-		};
-
-		/// <summary>
-		/// Is an Item within the PackedFile Index new Alias(0x20 , "or 0x24 Bytes long"),
-		/// </summary>
-		public enum IndexTypes : uint
-		{
-			ptShortFileIndex = 0x01,
-			ptLongFileIndex = 0x02,
-		}
-
-		/// <summary>
-		/// Which general apiration does a Sim have
-		/// </summary>
-		public enum AspirationTypes : ushort
-		{
-			Nothing = 0x00,
-			Romance = 0x01,
-			Family = 0x02,
-			Fortune = 0x04,
-
-			// Power = 0x08,
-			Reputation = 0x10,
-			Knowledge = 0x20,
-			Growup = 0x40,
-			Pleasure = 0x80,
-			Chees = 0x100,
-		}
 
 		/// <summary>
 		/// Relationships a Sim can have
@@ -755,25 +105,6 @@ namespace SimPe.Data
 		};
 
 		/// <summary>
-		/// Available Zodia Signes
-		/// </summary>
-		public enum ZodiacSignes : ushort
-		{
-			Aries = 0x01, //de: Widder
-			Taurus = 0x02,
-			Gemini = 0x03,
-			Cancer = 0x04,
-			Leo = 0x05,
-			Virgo = 0x06, //de: Jungfrau
-			Libra = 0x07, //de: Waage
-			Scorpio = 0x08,
-			Sagittarius = 0x09, //de: Sch�tze
-			Capricorn = 0x0A, //de: Steinbock
-			Aquarius = 0x0B,
-			Pisces = 0x0C, //de: Fische
-		}
-
-		/// <summary>
 		/// Known Types for Family ties
 		/// </summary>
 		public enum FamilyTieTypes : uint
@@ -786,213 +117,12 @@ namespace SimPe.Data
 		}
 
 		/// <summary>
-		/// Detailed Relationships between Sims
-		/// </summary>
-		public enum RelationshipTypes : uint
-		{
-			Unset_Unknown = 0x00,
-			Parent = 0x01,
-			Child = 0x02,
-			Sibling = 0x03,
-			Gradparent = 0x04,
-			Grandchild = 0x05,
-			Nice_Nephew = 0x07,
-			Aunt = 0x06,
-			Cousin = 0x08,
-			Spouses = 0x09,
-			Child_Inlaw = 0x0a,
-			Parent_Inlaw = 0x0b,
-			Sibling_Inlaw = 0x0c,
-		}
-
-		/// <summary>
-		/// Known NPC Types
-		/// </summary>
-		public enum ServiceTypes : uint
-		{
-			Normal = 0x00,
-			Bartenderb = 0x01,
-			Bartenderp = 0x02,
-			Boss = 0x03,
-			Burglar = 0x04,
-			Driver = 0x05,
-			Streaker = 0x06,
-			Coach = 0x07,
-			LunchLady = 0x08,
-			Cop = 0x09,
-			Delivery = 0x0A,
-			Exterminator = 0x0B,
-			FireFighter = 0x0C,
-			Gardener = 0x0D,
-			Barista = 0x0E,
-			Grim = 0x0F,
-			Handy = 0x10,
-			Headmistress = 0x11,
-			Matchmaker = 0x12,
-			Maid = 0x13,
-			MailCarrier = 0x14,
-			Nanny = 0x15,
-			Paper = 0x16,
-			Pizza = 0x17,
-			Professor = 0x18,
-			EvilMascot = 0x19,
-			Repo = 0x1A,
-			CheerLeader = 0x1B,
-			Mascot = 0x1C,
-			SocialBunny = 0x1D,
-			SocialWorker = 0x1E,
-			Register = 0x1F,
-			Therapist = 0x20,
-			Chinese = 0x21,
-			Podium = 0x22,
-			Waitress = 0x23,
-			Chef = 0x24,
-			DJ = 0x25,
-			Crumplebottom = 0x26,
-			Vampyre = 0x27,
-			Servo = 0x28,
-			Reporter = 0x29,
-			Salon = 0x2A,
-			Wolf = 0x2B,
-			WolfLOTP = 0x2C,
-			Skunk = 0x2D,
-			AnimalControl = 0x2E,
-			Obedience = 0x2F,
-			Masseuse = 0x30,
-			Bellhop = 0x31,
-			Villain = 0x32,
-			TourGuide = 0x33,
-			Hermit = 0x34,
-			Ninja = 0x35,
-			BigFoot = 0x36,
-			Housekeeper = 0x37,
-			FoodStandChef = 0x38,
-			FireDancer = 0x39,
-			WitchDoctor = 0x3A,
-			GhostCaptain = 0x3B,
-			FoodJudge = 0x3C,
-			Genie = 0x3D,
-			exDJ = 0x3E,
-			exGypsy = 0x3F,
-			Witch1 = 0x40,
-			Breakdancer = 0x41,
-			SpectralCat = 0x42,
-			Statue = 0x43,
-			Landlord = 0x44,
-			Butler = 0x45,
-			hotdogchef = 0x46,
-			assistant = 0x47,
-			exWitch2 = 0x48,
-			Mermaid = 0x49,
-			MeterMaid = 0x4A,
-			Servant = 0x4B,
-			Teacher = 0x4C,
-			God = 0x4D,
-			Preacher = 0x4E,
-			TinySim = 0x4F,
-			Nurse = 0x50,
-			Pandora = 0xAC,
-			DMASim = 0xDA,
-			icontrol = 0xE9,
-		}
-
-		/// <summary>
-		/// How old (in Life Sections) is the Sim
-		/// </summary>
-		public enum LifeSections : ushort
-		{
-			Unknown = 0x00,
-			Baby = 0x01,
-			Toddler = 0x02,
-			Child = 0x03,
-			Teen = 0x10,
-			Adult = 0x13,
-			Elder = 0x33,
-			YoungAdult = 0x40,
-		}
-
-		/// <summary>
 		/// Gender of a Sim
 		/// </summary>
 		public enum Gender : ushort
 		{
 			Male = 0x00,
 			Female = 0x01,
-		}
-
-		/// <summary>
-		/// The Jobs known by SimPe
-		/// </summary>
-		/// <remarks>Use finder dock object search for JobData*</remarks>
-		public enum Careers : uint
-		{
-			Unknown = 0xFFFFFFFF,
-			Unemployed = 0x00000000,
-			TeenElderAthletic = 0xAC89E947,
-			TeenElderBusiness = 0x4C1E0577,
-			TeenElderCriminal = 0xACA07ACD,
-			TeenElderCulinary = 0x4CA07B0C,
-			TeenElderLawEnforcement = 0x6CA07B39,
-			TeenElderMedical = 0xAC89E918,
-			TeenElderMilitary = 0xCCA07B66,
-			TeenElderPolitics = 0xCCA07B8D,
-			TeenElderScience = 0xECA07BB0,
-			TeenElderSlacker = 0x6CA07BDC,
-			TeenElderAdventurer = 0xF240D235,
-			TeenElderEducation = 0xD243BBEC,
-			TeenElderGamer = 0x1240C962,
-			TeenElderJournalism = 0x5240E212,
-			TeenElderLaw = 0x1243BBDE,
-			TeenElderMusic = 0xB243BBD2,
-			TeenElderConstruction = 0x53E1C30F,
-			TeenElderDance = 0xD3E094A5,
-			TeenElderEntertainment = 0x53E09494,
-			TeenElderIntelligence = 0x93E094C0,
-			TeenElderOcenography = 0x13E09443,
-			TeenElderSexIndustry = 0x00845D11,
-			TeenElderCrafter = 0xF3A37D20,
-			TeenElderGatherer = 0xB3A37CE1,
-			TeenElderHunter = 0x7383E1DD,
-			Military = 0x6C9EBD32,
-			Politics = 0x2C945B14,
-			Science = 0x0C9EBD47,
-			Medical = 0x0C7761FD,
-			Athletic = 0x2C89E95F,
-			Economy = 0x45196555,
-			LawEnforcement = 0xAC9EBCE3,
-			Culinary = 0xEC9EBD5F,
-			Slacker = 0xEC77620B,
-			Criminal = 0x6C9EBD0E,
-			Paranormal = 0x2E6FFF87,
-			NaturalScientist = 0xEE70001C,
-			ShowBiz = 0xAE6FFFB0,
-			Artist = 0x4E6FFFBC,
-			Adventurer = 0x3240CBA5,
-			Education = 0x72428B30,
-			Gamer = 0xF240C306,
-			Journalism = 0x7240D944,
-			Law = 0x12428B19,
-			Music = 0xB2428B0C,
-			Construction = 0xF3E1C301,
-			Dance = 0xD3E09422,
-			Entertainment = 0xB3E09417,
-			Intelligence = 0x33E0940E,
-			Ocenography = 0x73E09404,
-			SexIndustry = 0x00845D10,
-			LiveInServant = 0x00845D99,
-			Crafter = 0xD38D6534,
-			Gatherer = 0x738D6245,
-			Hunter = 0x93701850,
-			EntertainLS = 0x117DF1D4,
-			GameDevelopment = 0x713E7857,
-			PetSecurity = 0xD188A400,
-			PetService = 0xB188A4C1,
-			PetShowBiz = 0xD175CC2D,
-			OrangutanCrafter = 0xD3ACF0E0,
-			OrangutanGatherer = 0x53ACF0CD,
-			OrangutanHunter = 0xF3ACF09E,
-			OwnedBuss = 0xD08F400A,
-			TeenOwnedBuss = 0x316BD91F,
 		}
 
 		/// <summary>
@@ -2822,23 +1952,6 @@ namespace SimPe.Data
 
 		#region Supporting Methods
 		/// <summary>
-		/// Returns the describing TypeAlias for the passed Type
-		/// </summary>
-		/// <param name="type">The type you want to load the TypeAlias for</param>
-		/// <returns>The TypeAlias representing the Type</returns>
-		public static TypeAlias FindTypeAlias(uint type)
-		{
-			TypeAlias a = Helper.TGILoader.GetByType(type) ?? new TypeAlias(
-					false,
-					Localization.Manager.GetString("unk") + "",
-					type,
-					"0x" + Helper.HexString(type)
-				);
-
-			return a;
-		}
-
-		/// <summary>
 		/// Returns the Group Number of a SemiGlobal File
 		/// </summary>
 		/// <param name="name">the nme of the semi global</param>
@@ -2883,60 +1996,60 @@ namespace SimPe.Data
 		#endregion
 
 		#region Map's
-		static ArrayList rcollist;
-		static ArrayList complist;
+		static List<FileTypes> rcollist;
+		static List<FileTypes> complist;
 		static Hashtable agelist;
-		static List<uint> cachedft;
+		static List<FileTypes> cachedft;
 
-		public static List<uint> CachedFileTypes
+		public static List<FileTypes> CachedFileTypes
 		{
 			get
 			{
 				if (cachedft == null)
 				{
-					cachedft = new List<uint>();
+					cachedft = new List<FileTypes>();
 
-					foreach (uint i in RcolList)
+					foreach (FileTypes i in RcolList)
 					{
 						cachedft.Add(i);
 					}
 
-					cachedft.Add(OBJD_FILE);
-					cachedft.Add(CTSS_FILE);
-					cachedft.Add(STRING_FILE);
+					cachedft.Add(FileTypes.OBJD);
+					cachedft.Add(FileTypes.CTSS);
+					cachedft.Add(FileTypes.STR);
 
-					cachedft.Add(XFLR);
-					cachedft.Add(XFNC);
-					cachedft.Add(XNGB);
-					cachedft.Add(XOBJ);
-					cachedft.Add(XROF);
-					cachedft.Add(XWNT);
+					cachedft.Add(FileTypes.XFLR);
+					cachedft.Add(FileTypes.XFNC);
+					cachedft.Add(FileTypes.XNGB);
+					cachedft.Add(FileTypes.XOBJ);
+					cachedft.Add(FileTypes.XROF);
+					cachedft.Add(FileTypes.XWNT);
 				}
 				return cachedft;
 			}
 		}
 
 		//Returns a List of all RCOl Compatible File Types
-		public static ArrayList RcolList
+		public static List<FileTypes> RcolList
 		{
 			get
 			{
 				if (rcollist == null)
 				{
-					rcollist = new ArrayList
+					rcollist = new List<FileTypes>
 					{
-						GMDC, //GMDC
-						TXTR, //TXTR
-						LIFO, //LIFO
-						TXMT, //MATD
-						ANIM, //ANIM
-						GMND, //GMND
-						SHPE, //SHPE
-						CRES, //CRES
-						LDIR,
-						LAMB,
-						LSPT,
-						LPNT
+						FileTypes.GMDC,
+						FileTypes.TXTR,
+						FileTypes.LIFO,
+						FileTypes.TXMT,
+						FileTypes.ANIM,
+						FileTypes.GMND,
+						FileTypes.SHPE,
+						FileTypes.CRES,
+						FileTypes.LDIR,
+						FileTypes.LAMB,
+						FileTypes.LSPT,
+						FileTypes.LPNT
 					};
 				}
 				return rcollist;
@@ -2944,7 +2057,7 @@ namespace SimPe.Data
 		}
 
 		//Returns a List of File Types that should be compressed
-		public static ArrayList CompressionCandidates
+		public static List<FileTypes> CompressionCandidates
 		{
 			get
 			{
@@ -2952,36 +2065,11 @@ namespace SimPe.Data
 				{
 					complist = RcolList;
 
-					complist.Add(STRING_FILE);
-					complist.Add((uint)0x0C560F39); //Binary Index
-					complist.Add(0xAC506764); //3D IDR
+					complist.Add(FileTypes.STR);
+					complist.Add(FileTypes.BINX);
+					complist.Add(FileTypes.THREE_IDR);
 				}
 				return complist;
-			}
-		}
-
-		/// <summary>
-		/// translates the Ages from a SDesc to a Property Set age
-		/// </summary>
-		public static Ages AgeTranslation(LifeSections age)
-		{
-			agelist = new Hashtable();
-			switch (age)
-			{
-				case LifeSections.Adult:
-					return Ages.Adult;
-				case LifeSections.Baby:
-					return Ages.Baby;
-				case LifeSections.Child:
-					return Ages.Child;
-				case LifeSections.Elder:
-					return Ages.Elder;
-				case LifeSections.Teen:
-					return Ages.Teen;
-				case LifeSections.Toddler:
-					return Ages.Toddler;
-				default:
-					return Ages.Adult;
 			}
 		}
 		#endregion

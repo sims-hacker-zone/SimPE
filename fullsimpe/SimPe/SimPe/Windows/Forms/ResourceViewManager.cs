@@ -4,6 +4,8 @@
 using System;
 using System.ComponentModel;
 
+using SimPe.Data;
+
 namespace SimPe.Windows.Forms
 {
 	public partial class ResourceViewManager : Component
@@ -284,7 +286,7 @@ namespace SimPe.Windows.Forms
 			pfdlist.Add(npfd);
 		}
 
-		internal static int GetIndexForResourceType(uint type)
+		internal static int GetIndexForResourceType(FileTypes type)
 		{
 			if (Helper.WindowsRegistry.DecodeFilenamesState)
 			{

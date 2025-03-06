@@ -68,7 +68,7 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 		)
 		{
 			if (
-				(t.val == pfd.Type || !t.use)
+				(t.val == (uint)pfd.Type || !t.use)
 				&& (g.val == pfd.Group || !g.use)
 				&& (hi.val == pfd.SubType || !hi.use)
 				&& (li.val == pfd.Instance || !li.use)

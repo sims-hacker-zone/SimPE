@@ -4,6 +4,8 @@ using System;
 using System.Linq;
 using System.Windows.Forms;
 
+using SimPe.Data;
+using SimPe.Extensions;
 using SimPe.Forms.MainUI;
 using SimPe.Interfaces.Scenegraph;
 
@@ -69,10 +71,8 @@ namespace SimPe.Plugin
 			// Required designer variable.
 			//
 			InitializeComponent();
-			foreach (Interfaces.IAlias alias in Helper.TGILoader.FileTypes)
-			{
-				cbtypes.Items.Add(alias);
-			}
+			cbtypes.Items.AddRange((from FileTypes type in Enum.GetValues(typeof(FileTypes))
+									select type.ToFileTypeInformation()).Cast<object>().ToArray());
 		}
 
 		/// <summary>
@@ -1133,7 +1133,7 @@ namespace SimPe.Plugin
 			tbtype.Text =
 				"0x"
 				+ Helper.HexString(
-					((Data.TypeAlias)cbtypes.Items[cbtypes.SelectedIndex]).Id
+					(uint)((FileTypeInformation)cbtypes.Items[cbtypes.SelectedIndex]).Type
 				);
 		}
 
@@ -1156,7 +1156,7 @@ namespace SimPe.Plugin
 					(Interfaces.Files.IPackedFileDescriptor)
 						lbref.Items[lbref.SelectedIndex];
 
-				pfd.Type = Convert.ToUInt32(tbtype.Text, 16);
+				pfd.Type = (Data.FileTypes)Convert.ToUInt32(tbtype.Text, 16);
 				pfd.SubType = Convert.ToUInt32(tbsubtype.Text, 16);
 				pfd.Group = Convert.ToUInt32(tbgroup.Text, 16);
 				pfd.Instance = Convert.ToUInt32(tbinstance.Text, 16);
@@ -1178,14 +1178,12 @@ namespace SimPe.Plugin
 			Change();
 
 			cbtypes.Tag = true;
-			Data.TypeAlias a = Data.MetaData.FindTypeAlias(
-				Helper.HexStringToUInt(tbtype.Text)
-			);
+			FileTypeInformation typeinfo = ((FileTypes)Helper.HexStringToUInt(tbtype.Text)).ToFileTypeInformation();
 
 			int ct = 0;
-			foreach (Data.TypeAlias i in cbtypes.Items)
+			foreach (FileTypeInformation i in cbtypes.Items)
 			{
-				if (i == a)
+				if (i == typeinfo)
 				{
 					cbtypes.SelectedIndex = ct;
 					cbtypes.Tag = null;
@@ -1246,7 +1244,7 @@ namespace SimPe.Plugin
 				Interfaces.Files.IPackedFileDescriptor pfd =
 					new Packages.PackedFileDescriptor
 					{
-						Type = Convert.ToUInt32(tbtype.Text, 16),
+						Type = (Data.FileTypes)Convert.ToUInt32(tbtype.Text, 16),
 						SubType = Convert.ToUInt32(tbsubtype.Text, 16),
 						Group = Convert.ToUInt32(tbgroup.Text, 16),
 						Instance = Convert.ToUInt32(tbinstance.Text, 16)

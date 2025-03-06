@@ -1,14 +1,12 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
 {
-	public class GametipPackedFileWrapper
-		: AbstractWrapper,
-			IFileWrapper,
-			IFileWrapperSaveExtension
+	public class GametipPackedFileWrapper : AbstractWrapper, IFileWrapper, IFileWrapperSaveExtension
 	{
 		#region Gametip Attribute
 
@@ -91,14 +89,7 @@ namespace SimPe.Plugin
 
 		public byte[] FileSignature => new byte[0];
 
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] types = { 0xB1827A47 }; //handles the Game Tip File
-				return types;
-			}
-		}
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.GTIP };
 
 		#endregion
 	}

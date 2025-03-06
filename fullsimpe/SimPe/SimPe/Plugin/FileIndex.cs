@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
+using SimPe.Data;
 using SimPe.Interfaces.Scenegraph;
 
 namespace SimPe.Plugin
@@ -21,7 +22,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// This Hashtable (FileType) contains a Hashtable (Group) of Hashtables (Instance) of ArrayLists (Files)
 		/// </summary>
-		Dictionary<uint, Dictionary<uint, Dictionary<ulong, List<IScenegraphFileIndexItem>>>> Index { get; set; } = new Dictionary<uint, Dictionary<uint, Dictionary<ulong, List<IScenegraphFileIndexItem>>>>();
+		Dictionary<FileTypes, Dictionary<uint, Dictionary<ulong, List<IScenegraphFileIndexItem>>>> Index { get; set; } = new Dictionary<FileTypes, Dictionary<uint, Dictionary<ulong, List<IScenegraphFileIndexItem>>>>();
 
 		/// <summary>
 		/// Contains a List of the Filenames of all added packages
@@ -57,9 +58,9 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Contains a Listing of all alternate Groups SimPe should check if the first try was no success
 		/// </summary>
-		private static readonly uint[] ALTERNATIVE_GROUPS = {Data.MetaData.CUSTOM_GROUP,
-					Data.MetaData.GLOBAL_GROUP,
-					Data.MetaData.LOCAL_GROUP};
+		private static readonly uint[] ALTERNATIVE_GROUPS = {MetaData.CUSTOM_GROUP,
+					MetaData.GLOBAL_GROUP,
+					MetaData.LOCAL_GROUP};
 
 		public bool Duplicates
 		{
@@ -97,7 +98,7 @@ namespace SimPe.Plugin
 		{
 			FileIndex ret = new FileIndex(new List<FileTableItem>())
 			{
-				Index = new Dictionary<uint, Dictionary<uint, Dictionary<ulong, List<IScenegraphFileIndexItem>>>>(Index),
+				Index = new Dictionary<FileTypes, Dictionary<uint, Dictionary<ulong, List<IScenegraphFileIndexItem>>>>(Index),
 				BaseFolders = new List<FileTableItem>(BaseFolders),
 				addedfilenames = new List<string>(addedfilenames),
 				Duplicates = Duplicates,
@@ -109,7 +110,7 @@ namespace SimPe.Plugin
 
 		#region StoreState
 		List<string> oldnames;
-		Dictionary<uint, Dictionary<uint, Dictionary<ulong, List<IScenegraphFileIndexItem>>>> oldindex;
+		Dictionary<FileTypes, Dictionary<uint, Dictionary<ulong, List<IScenegraphFileIndexItem>>>> oldindex;
 		bool olddup;
 
 		/// <summary>
@@ -120,7 +121,7 @@ namespace SimPe.Plugin
 		public void StoreCurrentState()
 		{
 			oldnames = new List<string>(addedfilenames);
-			oldindex = new Dictionary<uint, Dictionary<uint, Dictionary<ulong, List<IScenegraphFileIndexItem>>>>(Index);
+			oldindex = new Dictionary<FileTypes, Dictionary<uint, Dictionary<ulong, List<IScenegraphFileIndexItem>>>>(Index);
 			olddup = Duplicates;
 		}
 
@@ -470,7 +471,7 @@ namespace SimPe.Plugin
 		/// <param name="overwrite">true, if an existing Instance of that File should be overwritten</param>
 		public void AddTypesIndexFromPackage(
 			Interfaces.Files.IPackageFile package,
-			uint type,
+			FileTypes type,
 			bool overwrite
 		)
 		{
@@ -711,7 +712,7 @@ namespace SimPe.Plugin
 		/// <param name="instance">Instance Number of the File</param>
 		/// <returns>all FileIndexItems</returns>
 		public IEnumerable<IScenegraphFileIndexItem> FindFileDiscardingHighInstance(
-			uint type,
+			FileTypes type,
 			uint grp,
 			uint instance,
 			Interfaces.Files.IPackageFile pkg
@@ -802,7 +803,7 @@ namespace SimPe.Plugin
 		/// <param name="type">the Type of the Files</param>
 		/// <param name="nolocal">true, if you don't want to get local Files (group=0xffffffff) returned</param>
 		/// <returns>all FileIndexItems</returns>
-		public IEnumerable<IScenegraphFileIndexItem> FindFile(uint type, bool nolocal)
+		public IEnumerable<IScenegraphFileIndexItem> FindFile(FileTypes type, bool nolocal)
 		{
 			return (from fi in Children
 					from item in fi.FindFile(type, nolocal)
@@ -811,7 +812,7 @@ namespace SimPe.Plugin
 									   from instances in groups.Value
 									   from item in instances.Value
 									   where types.Key == type
-									   where !nolocal || groups.Key != Data.MetaData.LOCAL_GROUP
+									   where !nolocal || groups.Key != MetaData.LOCAL_GROUP
 									   select item);
 		}
 
@@ -823,7 +824,7 @@ namespace SimPe.Plugin
 		/// <param name="instance">Instance Number of the File</param>
 		/// <returns>all FileIndexItems</returns>
 		public IEnumerable<IScenegraphFileIndexItem> FindFile(
-			uint type,
+			FileTypes type,
 			uint group,
 			ulong instance,
 			Interfaces.Files.IPackageFile pkg
@@ -846,7 +847,7 @@ namespace SimPe.Plugin
 		/// <param name="type">the Type of the Files</param>
 		/// <param name="grp">the Group of the Files</param>
 		/// <returns>all FileIndexItems</returns>
-		public IEnumerable<IScenegraphFileIndexItem> FindFile(uint type, uint grp)
+		public IEnumerable<IScenegraphFileIndexItem> FindFile(FileTypes type, uint grp)
 		{
 			return (from fi in Children
 					from item in fi.FindFile(type, grp)
@@ -878,7 +879,7 @@ namespace SimPe.Plugin
 		/// <param name="instance">Instance Number of the File</param>
 		/// <returns>all FileIndexItems</returns>
 		public IEnumerable<IScenegraphFileIndexItem> FindFileDiscardingGroup(
-			uint type,
+			FileTypes type,
 			ulong instance
 		)
 		{
@@ -962,7 +963,7 @@ namespace SimPe.Plugin
 		/// <returns>The first matching File or null if none</returns>
 		public IScenegraphFileIndexItem FindFileByName(
 			string filename,
-			uint type,
+			FileTypes type,
 			uint defgroup,
 			bool betolerant
 		)

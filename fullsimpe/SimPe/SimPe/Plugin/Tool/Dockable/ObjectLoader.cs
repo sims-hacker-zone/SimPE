@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 using Ambertation.Threading;
 
+using SimPe.Data;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Picture;
 
@@ -77,7 +78,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		#endregion
 
 
-		void ProduceByXObj(uint type)
+		void ProduceByXObj(FileTypes type)
 		{
 			List<Interfaces.Scenegraph.IScenegraphFileIndexItem> pitems = new List<Interfaces.Scenegraph.IScenegraphFileIndexItem>();
 			List<uint> groups = new List<uint>();
@@ -87,7 +88,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				FileTableBase.FileIndex.Sort(FileTableBase.FileIndex.FindFile(type, true));
 			string len = " / " + nrefitems.Count().ToString();
 
-			Data.MetaData.Languages deflang = Helper.WindowsRegistry.LanguageCode;
+			Data.Languages deflang = Helper.WindowsRegistry.LanguageCode;
 			Wait.Message = "Loading Walls, Fences and Floors";
 			Wait.MaxProgress = nrefitems.Count();
 			foreach (
@@ -158,12 +159,12 @@ namespace SimPe.Plugin.Tool.Dockable
 			//this is the first part loading by objd Resources
 			var nrefitems =
 				FileTableBase.FileIndex.Sort(
-					FileTableBase.FileIndex.FindFile(Data.MetaData.OBJD_FILE, true)
+					FileTableBase.FileIndex.FindFile(Data.FileTypes.OBJD, true)
 				);
 
 			string len = " / " + nrefitems.Count().ToString();
 
-			Data.MetaData.Languages deflang = Helper.WindowsRegistry.LanguageCode;
+			Data.Languages deflang = Helper.WindowsRegistry.LanguageCode;
 			Wait.Message = "Loading Objects";
 			Wait.MaxProgress = nrefitems.Count();
 			foreach (
@@ -234,11 +235,11 @@ namespace SimPe.Plugin.Tool.Dockable
 			if (Helper.WindowsRegistry.OWincludewalls)
 			{
 				//In the second pass we use ObjectXml Resources to load Objects like Walls. What For?? who cares??
-				ProduceByXObj(Data.MetaData.XOBJ);
-				ProduceByXObj(Data.MetaData.XROF);
-				ProduceByXObj(Data.MetaData.XFLR);
-				ProduceByXObj(Data.MetaData.XFNC);
-				ProduceByXObj(Data.MetaData.XNGB);
+				ProduceByXObj(Data.FileTypes.XOBJ);
+				ProduceByXObj(Data.FileTypes.XROF);
+				ProduceByXObj(Data.FileTypes.XFLR);
+				ProduceByXObj(Data.FileTypes.XFNC);
+				ProduceByXObj(Data.FileTypes.XNGB);
 			}
 		}
 
@@ -251,18 +252,17 @@ namespace SimPe.Plugin.Tool.Dockable
 
 	internal class ObjectConsumer : ConsumerThread
 	{
-		Data.MetaData.Languages deflang;
-		ArrayList pict;
+		Data.Languages deflang;
+		List<FileTypes> pict;
 
 		internal ObjectConsumer(ProducerThread pt)
 			: base(pt)
 		{
 			deflang = Helper.WindowsRegistry.LanguageCode;
 
-			pict = new ArrayList();
+			pict = new List<FileTypes>();
 			Picture pw = new Picture();
-			uint[] picts = pw.AssignableTypes;
-			foreach (uint p in picts)
+			foreach (FileTypes p in pw.AssignableTypes)
 			{
 				pict.Add(p);
 			}
@@ -281,7 +281,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		static void ConsumeFromXobj(
 			Cache.ObjectCacheItem oci,
 			Interfaces.Scenegraph.IScenegraphFileIndexItem nrefitem,
-			Data.MetaData.Languages deflang
+			Data.Languages deflang
 		)
 		{
 			Cpf cpf = new Cpf();
@@ -305,13 +305,13 @@ namespace SimPe.Plugin.Tool.Dockable
 			oci.Useable = true;
 			oci.Class = Cache.ObjectClass.XObject;
 
-			var ctssitem =
+			Interfaces.Scenegraph.IScenegraphFileIndexItem ctssitem =
 				FileTableBase.FileIndex.FindFile(
-					cpf.GetSaveItem("stringsetrestypeid").UIntegerValue,
+					(FileTypes)cpf.GetSaveItem("stringsetrestypeid").UIntegerValue,
 					cpf.GetSaveItem("stringsetgroupid").UIntegerValue,
 					cpf.GetSaveItem("stringsetid").UIntegerValue,
 					null
-				).FirstOrDefault(); //Data.MetaData.STRING_FILE
+				).FirstOrDefault(); //Data.FileTypes.STR
 			if (ctssitem != null)
 			{
 				PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
@@ -362,7 +362,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		internal static bool DoConsume(
 			object o,
 			ObjectLoader.LoadItemHandler LoadedItem,
-			Data.MetaData.Languages deflang
+			Data.Languages deflang
 		)
 		{
 			Cache.ObjectCacheItem oci = (Cache.ObjectCacheItem)o;
@@ -376,7 +376,7 @@ namespace SimPe.Plugin.Tool.Dockable
 					|| oci.ObjectVersion
 						!= Cache.ObjectCacheItemVersions.DockableOW
 				)
-				&& nrefitem.FileDescriptor.Type == Data.MetaData.OBJD_FILE
+				&& nrefitem.FileDescriptor.Type == Data.FileTypes.OBJD
 			)
 			{
 				PackedFiles.Wrapper.ExtObjd objd =
@@ -405,7 +405,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				//Get the Name of the Object
 				var ctssitem =
 					FileTableBase.FileIndex.FindFile(
-						Data.MetaData.CTSS_FILE,
+						Data.FileTypes.CTSS,
 						nrefitem.LocalGroup
 					).FirstOrDefault();
 				if (ctssitem != null)
@@ -439,7 +439,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				//now the ModeName File
 				var txtitem =
 					FileTableBase.FileIndex.FindFile(
-						Data.MetaData.STRING_FILE,
+						Data.FileTypes.STR,
 						nrefitem.LocalGroup,
 						0x85,
 						null
@@ -465,7 +465,7 @@ namespace SimPe.Plugin.Tool.Dockable
 					|| oci.ObjectVersion
 						!= Cache.ObjectCacheItemVersions.DockableOW
 				)
-				&& nrefitem.FileDescriptor.Type != Data.MetaData.OBJD_FILE
+				&& nrefitem.FileDescriptor.Type != Data.FileTypes.OBJD
 			)
 			{
 				ConsumeFromXobj(oci, nrefitem, deflang);
@@ -554,7 +554,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 			bool first = true;
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pkg.FindFiles(
-				Data.MetaData.OBJD_FILE
+				Data.FileTypes.OBJD
 			))
 			{
 				foreach (

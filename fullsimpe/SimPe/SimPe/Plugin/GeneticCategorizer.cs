@@ -238,16 +238,16 @@ namespace SimPe.Plugin
 				if (pnfo != null)
 				{
 					IPackedFileDescriptor[] files = pnfo.FindFiles(
-						MetaData.GZPS
+						FileTypes.GZPS
 					);
 					if (Utility.IsNullOrEmpty(files))
 					{
-						files = pnfo.FindFiles(Utility.DataType.XTOL);
+						files = pnfo.FindFiles(FileTypes.XTOL);
 					}
 
 					if (Utility.IsNullOrEmpty(files))
 					{
-						files = pnfo.FindFiles(Utility.DataType.XMOL);
+						files = pnfo.FindFiles(FileTypes.XMOL);
 					}
 
 					list.AddRange(ProcessCpfItems(files, pnfo.Package));
@@ -291,11 +291,11 @@ namespace SimPe.Plugin
 						CpfItem ci = item.GetProperty("subtype");
 						switch (ci.Datatype)
 						{
-							case MetaData.DataTypes.dtBoolean:
-							case MetaData.DataTypes.dtInteger:
-							case MetaData.DataTypes.dtSingle:
-							case MetaData.DataTypes.dtString:
-							case MetaData.DataTypes.dtUInteger:
+							case DataTypes.dtBoolean:
+							case DataTypes.dtInteger:
+							case DataTypes.dtSingle:
+							case DataTypes.dtString:
+							case DataTypes.dtUInteger:
 								break;
 
 							default:
@@ -548,7 +548,7 @@ namespace SimPe.Plugin
 
 			IPackedFileDescriptor[] pfds = Utility.FindFiles(
 				package,
-				MetaData.REF_FILE,
+				FileTypes.THREE_IDR,
 				refGroup,
 				refInstance
 			);
@@ -565,7 +565,7 @@ namespace SimPe.Plugin
 							refFile.ProcessData(pfd, package, false);
 							foreach (IPackedFileDescriptor ptr in refFile.Items)
 							{
-								if (ptr.Type == MetaData.TXMT)
+								if (ptr.Type == FileTypes.TXMT)
 								{
 									ret.Add(new ResourceReference(ptr));
 								}
@@ -589,7 +589,7 @@ namespace SimPe.Plugin
 			{
 				IPackedFileDescriptor[] pfds = Utility.FindFiles(
 					item.PropertySet.Package,
-					MetaData.REF_FILE,
+					FileTypes.THREE_IDR,
 					item.PropertySet.FileDescriptor.Group,
 					item.PropertySet.FileDescriptor.Instance
 				);
@@ -767,7 +767,7 @@ namespace SimPe.Plugin
 
 				// textures deemed unnecessary are now marked for deletion
 				IPackedFileDescriptor[] textureFiles = ret.FindFiles(
-					MetaData.TXTR
+					FileTypes.TXTR
 				);
 				foreach (IPackedFileDescriptor pfd in textureFiles)
 				{

@@ -4,6 +4,7 @@ using System;
 using System.IO;
 
 using SimPe.Data;
+using SimPe.Extensions;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Wrapper.Supporting;
@@ -676,12 +677,12 @@ namespace SimPe.PackedFiles.Wrapper
 			get; set;
 		}
 
-		public MetaData.SchoolTypes SchoolType
+		public SchoolTypes SchoolType
 		{
 			get; set;
 		}
 
-		public MetaData.Grades Grade
+		public Grades Grade
 		{
 			get; set;
 		}
@@ -691,7 +692,7 @@ namespace SimPe.PackedFiles.Wrapper
 			get; set;
 		}
 
-		public MetaData.Careers Career
+		public Careers Career
 		{
 			get; set;
 		}
@@ -706,7 +707,7 @@ namespace SimPe.PackedFiles.Wrapper
 			get; set;
 		}
 
-		public MetaData.Careers Retired
+		public Careers Retired
 		{
 			get; set;
 		}
@@ -721,17 +722,17 @@ namespace SimPe.PackedFiles.Wrapper
 			get; set;
 		}
 
-		public MetaData.ServiceTypes ServiceTypes
+		public ServiceTypes ServiceTypes
 		{
 			get; set;
 		}
 
-		public MetaData.ZodiacSignes ZodiacSign
+		public ZodiacSigns ZodiacSign
 		{
 			get; set;
 		}
 
-		public MetaData.AspirationTypes Aspiration
+		public AspirationTypes Aspiration
 		{
 			get; set;
 		}
@@ -741,7 +742,7 @@ namespace SimPe.PackedFiles.Wrapper
 			get; set;
 		}
 
-		public MetaData.LifeSections LifeSection
+		public LifeSections LifeSection
 		{
 			get; set;
 		}
@@ -1176,7 +1177,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 
 			IPackedFileDescriptor pfd = parent.Package.FindFile(
-				MetaData.SIM_DESCRIPTION_FILE,
+				FileTypes.SDSC,
 				0,
 				parent.FileDescriptor.Group,
 				instance
@@ -1210,14 +1211,14 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 
 			IPackedFileDescriptor pfd1 = parent.Package.FindFile(
-				MetaData.RELATION_FILE,
+				FileTypes.SREL,
 				0,
 				parent.FileDescriptor.Group,
 				(uint)((instance << 16) + parent.FileDescriptor.Instance)
 			);
 
 			IPackedFileDescriptor pfd2 = parent.Package.FindFile(
-				MetaData.RELATION_FILE,
+				FileTypes.SREL,
 				0,
 				parent.FileDescriptor.Group,
 				(parent.FileDescriptor.Instance << 16) + instance
@@ -2008,7 +2009,7 @@ namespace SimPe.PackedFiles.Wrapper
 				Packages.GeneratableFile file =
 					Packages.File.LoadFromFile(CharacterFileName);
 				IPackedFileDescriptor[] pfds = file.FindFiles(
-					MetaData.CTSS_FILE
+					FileTypes.CTSS
 				);
 				if (pfds.Length > 0)
 				{
@@ -2147,7 +2148,7 @@ namespace SimPe.PackedFiles.Wrapper
 		public static SDesc FindForSimId(uint simid, IPackageFile package)
 		{
 			IPackedFileDescriptor[] files = package.FindFiles(
-				MetaData.SIM_DESCRIPTION_FILE
+				FileTypes.SDSC
 			);
 
 			SDesc sdesc = new SDesc(null, null, null);
@@ -2178,7 +2179,7 @@ namespace SimPe.PackedFiles.Wrapper
 			);
 		}
 
-		protected override string GetResourceName(TypeAlias ta)
+		protected override string GetResourceName(FileTypeInformation fti)
 		{
 			if (!Processed)
 			{
@@ -2258,9 +2259,9 @@ namespace SimPe.PackedFiles.Wrapper
 			Freetime = new SdscFreetime(this);
 			Apartment = new SdscApartment(this);
 
-			CharacterDescription.Aspiration = MetaData.AspirationTypes.Romance;
-			CharacterDescription.ZodiacSign = MetaData.ZodiacSignes.Virgo;
-			CharacterDescription.LifeSection = MetaData.LifeSections.Adult;
+			CharacterDescription.Aspiration = AspirationTypes.Romance;
+			CharacterDescription.ZodiacSign = ZodiacSigns.Virgo;
+			CharacterDescription.LifeSection = LifeSections.Adult;
 			CharacterDescription.Gender = MetaData.Gender.Female;
 			CharacterDescription.LifelinePoints = 500;
 
@@ -2413,16 +2414,16 @@ namespace SimPe.PackedFiles.Wrapper
 			reader.BaseStream.Seek(startpos + 0x46, SeekOrigin.Begin);
 			CharacterDescription.MotivesStatic = reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x68, SeekOrigin.Begin);
-			CharacterDescription.Aspiration = (MetaData.AspirationTypes)reader.ReadUInt16();
+			CharacterDescription.Aspiration = (AspirationTypes)reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0xBC, SeekOrigin.Begin);
 			CharacterDescription.VoiceType = reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x7C, SeekOrigin.Begin);
-			CharacterDescription.Grade = (MetaData.Grades)reader.ReadUInt16();
+			CharacterDescription.Grade = (Grades)reader.ReadUInt16();
 			CharacterDescription.CareerLevel = reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x80, SeekOrigin.Begin);
 			CharacterDescription.Realage = reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x80, SeekOrigin.Begin);
-			CharacterDescription.LifeSection = (MetaData.LifeSections)reader.ReadUInt16();
+			CharacterDescription.LifeSection = (LifeSections)reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x86, SeekOrigin.Begin);
 			FamilyInstance = reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x8A, SeekOrigin.Begin);
@@ -2434,7 +2435,7 @@ namespace SimPe.PackedFiles.Wrapper
 			reader.BaseStream.Seek(startpos + 0x96, SeekOrigin.Begin);
 			CharacterDescription.PTO = reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x98, SeekOrigin.Begin);
-			CharacterDescription.ZodiacSign = (MetaData.ZodiacSignes)reader.ReadUInt16();
+			CharacterDescription.ZodiacSign = (ZodiacSigns)reader.ReadUInt16();
 
 			reader.BaseStream.Seek(startpos + 0x102, SeekOrigin.Begin);
 			CharacterDescription.Pension = reader.ReadUInt16();
@@ -2453,19 +2454,19 @@ namespace SimPe.PackedFiles.Wrapper
 			reader.BaseStream.Seek(startpos + 0xB0, SeekOrigin.Begin);
 			Skills.Fatness = reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0xBE, SeekOrigin.Begin);
-			CharacterDescription.Career = (MetaData.Careers)reader.ReadUInt32();
+			CharacterDescription.Career = (Careers)reader.ReadUInt32();
 			reader.BaseStream.Seek(startpos + 0x12C, SeekOrigin.Begin);
 			CharacterDescription.AllocatedSuburb = reader.ReadUInt16();
 			CharacterDescription.PersonFlags3.Value = reader.ReadUInt16();
 			CharacterDescription.Bodyshape = (MetaData.Bodyshape)reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0xE2, SeekOrigin.Begin);
-			CharacterDescription.SchoolType = (MetaData.SchoolTypes)reader.ReadUInt32();
+			CharacterDescription.SchoolType = (SchoolTypes)reader.ReadUInt32();
 			reader.BaseStream.Seek(startpos + 0x14C, SeekOrigin.Begin);
 			CharacterDescription.LifelinePoints = reader.ReadInt16();
 			CharacterDescription.LifelineScore = (uint)(reader.ReadUInt16() * 10);
 			CharacterDescription.BlizLifelinePoints = reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x142, SeekOrigin.Begin);
-			CharacterDescription.ServiceTypes = (MetaData.ServiceTypes)reader.ReadUInt16();
+			CharacterDescription.ServiceTypes = (ServiceTypes)reader.ReadUInt16();
 			reader.BaseStream.Seek(startpos + 0x142, SeekOrigin.Begin);
 			CharacterDescription.NPCType = reader.ReadUInt16();
 			CharacterDescription.AgeDuration = reader.ReadUInt16();
@@ -2477,7 +2478,7 @@ namespace SimPe.PackedFiles.Wrapper
 			Unlinked = reader.ReadUInt16();
 
 			reader.BaseStream.Seek(startpos + 0x15A, SeekOrigin.Begin);
-			CharacterDescription.Retired = (MetaData.Careers)reader.ReadUInt32();
+			CharacterDescription.Retired = (Careers)reader.ReadUInt32();
 			CharacterDescription.RetiredLevel = reader.ReadUInt16();
 
 			//available Relationships
@@ -2885,14 +2886,7 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] Types = { 0xAACE2EFB };
-				return Types;
-			}
-		}
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.SDSC };
 
 		public byte[] FileSignature
 		{

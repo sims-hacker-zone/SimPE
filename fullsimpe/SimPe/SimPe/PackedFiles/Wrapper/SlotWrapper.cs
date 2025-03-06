@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Wrapper
@@ -9,15 +10,10 @@ namespace SimPe.PackedFiles.Wrapper
 	/// <summary>
 	/// Used to decode the Group Cache
 	/// </summary>
-	public class Slot
-		: AbstractWrapper //Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
-			,
-			IFileWrapper //This Interface is used when loading a File
-			,
-			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
+	public class Slot : AbstractWrapper, IFileWrapper, IFileWrapperSaveExtension
 	{
 		#region Attributes
-		uint id;
+		FileTypes id;
 
 		/// <summary>
 		/// Returns the Items stored in the FIle
@@ -53,7 +49,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			Items = new SlotItems();
 			FileName = "";
-			id = 0x534C4F54;
+			id = FileTypes.SLOT;
 			Version = 4;
 		}
 
@@ -95,7 +91,7 @@ namespace SimPe.PackedFiles.Wrapper
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
 			FileName = Helper.ToString(reader.ReadBytes(0x40));
-			id = reader.ReadUInt32();
+			id = (FileTypes)reader.ReadUInt32();
 			Version = reader.ReadUInt32();
 			Unknown = reader.ReadUInt32();
 
@@ -121,7 +117,7 @@ namespace SimPe.PackedFiles.Wrapper
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
 			writer.Write(Helper.ToBytes(FileName, 0x40));
-			writer.Write(id);
+			writer.Write((uint)id);
 			writer.Write(Version);
 			writer.Write(Unknown);
 
@@ -160,15 +156,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] types = { Data.MetaData.SLOT };
-
-				return types;
-			}
-		}
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.SLOT };
 
 		#endregion
 	}

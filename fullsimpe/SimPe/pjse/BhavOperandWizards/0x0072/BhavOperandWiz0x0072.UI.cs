@@ -11,8 +11,10 @@
  */
 
 using pjse.BhavOperandWizards;
+
 using SimPe.Data;
 using SimPe.PackedFiles.Wrapper;
+
 using System;
 using System.Windows.Forms;
 
@@ -23,171 +25,174 @@ using System.Windows.Forms;
  */
 namespace whse.PrimitiveWizards.Wiz0x0072
 {
-    public partial class UI : UserControl, pjse.iBhavOperandWizForm
-    {
-        private Instruction inst;
+	public partial class UI : UserControl, pjse.iBhavOperandWizForm
+	{
+		private Instruction inst;
 
-        private DataOwnerControl doLocoAnim;
+		private DataOwnerControl doLocoAnim;
 
-        private bool internalchg;
+		private bool internalchg;
 
-        private readonly pjse.Scope[] scopeArray = new pjse.Scope[3]
-        {
-            pjse.Scope.Private,
-            pjse.Scope.SemiGlobal,
-            pjse.Scope.Global
-        };
+		private readonly pjse.Scope[] scopeArray = new pjse.Scope[3]
+		{
+			pjse.Scope.Private,
+			pjse.Scope.SemiGlobal,
+			pjse.Scope.Global
+		};
 
-        public UI()
-        {
-            InitializeComponent();
-        }
+		public UI()
+		{
+			InitializeComponent();
+		}
 
-        public Panel WizPanel => this.panelMain;
+		public Panel WizPanel => this.panelMain;
 
-        public void Execute(Instruction inst)
-        {
-            this.inst = inst;
-            wrappedByteArray operands = inst.Operands;
-            // wrappedByteArray reserved1 = inst.Reserved1;
+		public void Execute(Instruction inst)
+		{
+			this.inst = inst;
+			wrappedByteArray operands = inst.Operands;
+			// wrappedByteArray reserved1 = inst.Reserved1;
 
-            Boolset boolset2 = new Boolset(operands[OperandConstants.Operand2]);
+			Boolset boolset2 = new Boolset(operands[OperandConstants.Operand2]);
 
-            internalchg = true;
+			internalchg = true;
 
-            ushort index = pjse.BhavWiz.ToShort(operands[OperandConstants.Operand0], operands[OperandConstants.Operand1]);
+			ushort index = pjse.BhavWiz.ToShort(operands[OperandConstants.Operand0], operands[OperandConstants.Operand1]);
 
-            if (index == 0)
-            {
-                comboAction.SelectedIndex = 0;
-                doLocoAnim = WizardHelpers.CreateDataControl(inst, textLocoAnimEntry, checkDecimal, 0);
-            }
-            else if (index == 1)
-            {
-                comboAction.SelectedIndex = 1;
-                doLocoAnim = WizardHelpers.CreateDataControl(inst, textLocoAnimEntry, checkDecimal, 0);
-            }
-            else
-            {
-                comboAction.SelectedIndex = 2;
-                doLocoAnim = WizardHelpers.CreateDataControl(inst, textLocoAnimEntry, checkDecimal, (ushort)(index - 2));
-            }
+			if (index == 0)
+			{
+				comboAction.SelectedIndex = 0;
+				doLocoAnim = WizardHelpers.CreateDataControl(inst, textLocoAnimEntry, checkDecimal, 0);
+			}
+			else if (index == 1)
+			{
+				comboAction.SelectedIndex = 1;
+				doLocoAnim = WizardHelpers.CreateDataControl(inst, textLocoAnimEntry, checkDecimal, 0);
+			}
+			else
+			{
+				comboAction.SelectedIndex = 2;
+				doLocoAnim = WizardHelpers.CreateDataControl(inst, textLocoAnimEntry, checkDecimal, (ushort)(index - 2));
+			}
 
-            comboLocoAnimScope.SelectedIndex = (boolset2[OperandConstants.Bit2] ? 1 : (boolset2[OperandConstants.Bit3] ? 2 : 0));
+			comboLocoAnimScope.SelectedIndex = (boolset2[OperandConstants.Bit2] ? 1 : (boolset2[OperandConstants.Bit3] ? 2 : 0));
 
-            internalchg = false;
+			internalchg = false;
 
-            // Do these manually, as we want them after the Data Owner control handlers
-            textLocoAnimEntry.TextChanged += new EventHandler(OnLocoAnimControlChanged);
+			// Do these manually, as we want them after the Data Owner control handlers
+			textLocoAnimEntry.TextChanged += new EventHandler(OnLocoAnimControlChanged);
 
-            UpdateLocoAnimName();
-            UpdatePanelState();
-        }
+			UpdateLocoAnimName();
+			UpdatePanelState();
+		}
 
-        public Instruction Write(Instruction inst)
-        {
-            if (inst != null)
-            {
-                wrappedByteArray operands = inst.Operands;
-                // wrappedByteArray reserved1 = inst.Reserved1;
+		public Instruction Write(Instruction inst)
+		{
+			if (inst != null)
+			{
+				wrappedByteArray operands = inst.Operands;
+				// wrappedByteArray reserved1 = inst.Reserved1;
 
-                ushort index;
+				ushort index;
 
-                if (comboAction.SelectedIndex == 0)
-                {
-                    index = 0;
-                }
-                else if (comboAction.SelectedIndex == 1)
-                {
-                    index = 1;
-                }
-                else
-                {
-                    index = (ushort)(doLocoAnim.Value + 2);
-                }
+				if (comboAction.SelectedIndex == 0)
+				{
+					index = 0;
+				}
+				else if (comboAction.SelectedIndex == 1)
+				{
+					index = 1;
+				}
+				else
+				{
+					index = (ushort)(doLocoAnim.Value + 2);
+				}
 
-                operands[OperandConstants.Operand0] = (byte)index;
-                operands[OperandConstants.Operand1] = (byte)(index >> 8);
+				operands[OperandConstants.Operand0] = (byte)index;
+				operands[OperandConstants.Operand1] = (byte)(index >> 8);
 
-                Boolset boolset2 = new Boolset(operands[OperandConstants.Operand2]);
-                boolset2[OperandConstants.Bit1] = (comboLocoAnimScope.SelectedIndex == 0);
-                boolset2[OperandConstants.Bit2] = (comboLocoAnimScope.SelectedIndex == 1);
-                boolset2[OperandConstants.Bit3] = (comboLocoAnimScope.SelectedIndex == 2);
-                operands[OperandConstants.Operand2] = boolset2;
-            }
+				Boolset boolset2 = new Boolset(operands[OperandConstants.Operand2]);
+				boolset2[OperandConstants.Bit1] = (comboLocoAnimScope.SelectedIndex == 0);
+				boolset2[OperandConstants.Bit2] = (comboLocoAnimScope.SelectedIndex == 1);
+				boolset2[OperandConstants.Bit3] = (comboLocoAnimScope.SelectedIndex == 2);
+				operands[OperandConstants.Operand2] = boolset2;
+			}
 
-            return inst;
-        }
+			return inst;
+		}
 
-        private void ShowStrChooser()
-        {
-            pjse.FileTable.Entry[] entryArray = comboLocoAnimScope.SelectedIndex < 0 ? (pjse.FileTable.Entry[])null : pjse.FileTable.GFT[MetaData.STRING_FILE, inst.Parent.GroupForScope(scopeArray[comboLocoAnimScope.SelectedIndex]), (ushort)pjse.GS.GlobalStr.LocoAnims];
+		private void ShowStrChooser()
+		{
+			pjse.FileTable.Entry[] entryArray = comboLocoAnimScope.SelectedIndex < 0 ? (pjse.FileTable.Entry[])null : pjse.FileTable.GFT[FileTypes.STR, inst.Parent.GroupForScope(scopeArray[comboLocoAnimScope.SelectedIndex]), (ushort)pjse.GS.GlobalStr.LocoAnims];
 
-            if (entryArray == null || entryArray.Length == 0)
-            {
-                MessageBox.Show(pjse.Localization.GetString("bow_noStrings") + " (" + pjse.Localization.GetString(scopeArray[comboLocoAnimScope.SelectedIndex].ToString()) + ")");
-            }
-            else
-            {
-                StrWrapper wrapper = new StrWrapper();
+			if (entryArray == null || entryArray.Length == 0)
+			{
+				MessageBox.Show(pjse.Localization.GetString("bow_noStrings") + " (" + pjse.Localization.GetString(scopeArray[comboLocoAnimScope.SelectedIndex].ToString()) + ")");
+			}
+			else
+			{
+				StrWrapper wrapper = new StrWrapper();
 
-                wrapper.ProcessData(entryArray[0].PFD, entryArray[0].Package);
+				wrapper.ProcessData(entryArray[0].PFD, entryArray[0].Package);
 
-                int strIndex = new pjse.StrChooser(true).Strnum(wrapper);
+				int strIndex = new pjse.StrChooser(true).Strnum(wrapper);
 
-                if (strIndex >= 0)
-                {
-                    bool internalchg = this.internalchg;
-                    this.internalchg = true;
+				if (strIndex >= 0)
+				{
+					bool internalchg = this.internalchg;
+					this.internalchg = true;
 
-                    WizardHelpers.SetValue(textLocoAnimEntry, (ushort)strIndex, checkDecimal);
-                    UpdateLocoAnimName();
+					WizardHelpers.SetValue(textLocoAnimEntry, (ushort)strIndex, checkDecimal);
+					UpdateLocoAnimName();
 
-                    this.internalchg = internalchg;
-                }
-            }
-        }
+					this.internalchg = internalchg;
+				}
+			}
+		}
 
-        private void UpdateLocoAnimName()
-        {
-            try
-            {
-                WizardHelpers.SetName(lblLocoAnimName, toolTip, comboLocoAnimScope.SelectedIndex < 0 ? "" : ((pjse.BhavWiz)inst).readStr(scopeArray[comboLocoAnimScope.SelectedIndex], pjse.GS.GlobalStr.LocoAnims, doLocoAnim.Value, -1, pjse.Detail.ErrorNames));
-            }
-            catch (Exception)
-            {
-            }
-        }
+		private void UpdateLocoAnimName()
+		{
+			try
+			{
+				WizardHelpers.SetName(lblLocoAnimName, toolTip, comboLocoAnimScope.SelectedIndex < 0 ? "" : ((pjse.BhavWiz)inst).readStr(scopeArray[comboLocoAnimScope.SelectedIndex], pjse.GS.GlobalStr.LocoAnims, doLocoAnim.Value, -1, pjse.Detail.ErrorNames));
+			}
+			catch (Exception)
+			{
+			}
+		}
 
-        private void UpdatePanelState()
-        {
-            panelLocoAnim.Visible = (comboAction.SelectedIndex == 2);
-        }
+		private void UpdatePanelState()
+		{
+			panelLocoAnim.Visible = (comboAction.SelectedIndex == 2);
+		}
 
-        private void OnControlChanged(object sender, EventArgs e)
-        {
-            if (internalchg) return;
+		private void OnControlChanged(object sender, EventArgs e)
+		{
+			if (internalchg)
+				return;
 
-            UpdatePanelState();
-        }
+			UpdatePanelState();
+		}
 
-        private void OnLocoAnimControlChanged(object sender, EventArgs e)
-        {
-            if (internalchg) return;
+		private void OnLocoAnimControlChanged(object sender, EventArgs e)
+		{
+			if (internalchg)
+				return;
 
-            UpdateLocoAnimName();
-        }
+			UpdateLocoAnimName();
+		}
 
-        private void OnLocoAnimPickerClicked(object sender, EventArgs e)
-        {
-            ShowStrChooser();
-        }
+		private void OnLocoAnimPickerClicked(object sender, EventArgs e)
+		{
+			ShowStrChooser();
+		}
 
-        private void OnParametersClicked(object sender, EventArgs e)
-        {
-            if (internalchg) return;
+		private void OnParametersClicked(object sender, EventArgs e)
+		{
+			if (internalchg)
+				return;
 
-            UpdatePanelState();
-        }
-    }
+			UpdatePanelState();
+		}
+	}
 }

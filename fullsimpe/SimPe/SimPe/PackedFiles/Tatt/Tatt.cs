@@ -3,6 +3,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Tatt
@@ -146,10 +147,7 @@ namespace SimPe.PackedFiles.Tatt
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes => new uint[]
-				{
-					0x54415454, //handles the TATT File
-				};
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.TATT };
 
 		#endregion
 

@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 
+using SimPe.Data;
 using SimPe.Forms.MainUI;
 using SimPe.Geometry;
 using SimPe.Plugin.Anim;
@@ -69,7 +70,7 @@ namespace SimPe.Plugin
 			sgres = new SGResource(null);
 
 			version = 0x04;
-			BlockID = 0xAC4F8687;
+			BlockID = (uint)FileTypes.GMDC;
 
 			Elements = new GmdcElements();
 			Links = new GmdcLinks();
@@ -710,7 +711,7 @@ namespace SimPe.Plugin
 		{
 			//WaitingScreen.UpdateMessage("Loading Geometry Node");
 			Wait.Message = "Loading Geometry Node";
-			Rcol step = FindReferencingParent_NoLoad(Data.MetaData.GMND);
+			Rcol step = FindReferencingParent_NoLoad(Data.FileTypes.GMND);
 			if (step == null)
 			{
 				return null;
@@ -727,7 +728,7 @@ namespace SimPe.Plugin
 			//WaitingScreen.UpdateMessage("Loading ResourceNode");
 			Wait.Message = "Loading ResourceNode";
 			step = ((AbstractRcolBlock)step.Blocks[0]).FindReferencingParent_NoLoad(
-				Data.MetaData.CRES
+				Data.FileTypes.CRES
 			);
 			return step ?? null;
 		}

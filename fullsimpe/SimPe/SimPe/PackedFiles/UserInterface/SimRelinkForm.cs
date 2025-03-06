@@ -265,7 +265,7 @@ namespace SimPe.PackedFiles.UserInterface
 					Packages.File.LoadFromFile((string)a.Tag[0]);
 
 				Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
-					Data.MetaData.OBJD_FILE
+					Data.FileTypes.OBJD
 				);
 				if (pfds.Length == 1)
 				{

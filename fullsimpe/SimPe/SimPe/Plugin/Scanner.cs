@@ -70,7 +70,7 @@ namespace SimPe.Plugin
 			if (si.PackageCacheItem.Type == PackageType.Neighbourhood)
 			{
 				Interfaces.Files.IPackedFileDescriptor[] pfds = si.Package.FindFiles(
-					Data.MetaData.IDNO
+					Data.FileTypes.IDNO
 				);
 				if (pfds.Length > 0)
 				{
@@ -240,7 +240,7 @@ namespace SimPe.Plugin
 					if (si.PackageCacheItem.Type == PackageType.Neighbourhood)
 					{
 						Interfaces.Files.IPackedFileDescriptor[] pfds =
-							si.Package.FindFiles(Data.MetaData.IDNO);
+							si.Package.FindFiles(FileTypes.IDNO);
 						if (pfds.Length > 0)
 						{
 							Idno idno = new Idno();

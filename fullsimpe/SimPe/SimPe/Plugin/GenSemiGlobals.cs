@@ -25,7 +25,7 @@ namespace SimPe.Plugin
 			FileTableBase.FileIndex.Load();
 			Splash.Screen.SetMessage("Looking for GLOB Resources...");
 			IEnumerable<Interfaces.Scenegraph.IScenegraphFileIndexItem> resources =
-				FileTableBase.FileIndex.FindFile(Data.MetaData.GLOB_FILE, true);
+				FileTableBase.FileIndex.FindFile(Data.FileTypes.GLOB, true);
 
 			Splash.Screen.SetMessage("Found " + resources.Count() + " GLOB Resources");
 			string fl = Helper.SimPeSemiGlobalFile;

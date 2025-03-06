@@ -3,6 +3,7 @@
 using System;
 using System.Windows.Forms;
 
+using SimPe.Extensions;
 using SimPe.Forms.MainUI;
 
 namespace SimPe.PackedFiles.Nmap
@@ -445,7 +446,7 @@ namespace SimPe.PackedFiles.Nmap
 					Type = pfd.Type,
 					SubType = pfd.SubType,
 					Instance = pfd.Instance,
-					Filename = Data.MetaData.FindTypeAlias(pfd.Type).Name
+					Filename = pfd.Type.ToFileTypeInformation().LongName
 				};
 				lblist.Items.Add(nmi);
 			}

@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 
+using SimPe.Data;
 using SimPe.Interfaces.Scenegraph;
 
 namespace SimPe.Plugin
@@ -292,7 +293,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="type">the Type of the ressource youar looking for</param>
 		/// <returns>null or the RCOl Ressource</returns>
-		public Rcol FindReferencingParent(uint type)
+		public Rcol FindReferencingParent(FileTypes type)
 		{
 			IScenegraphFileIndex nfi =
 				FileTableBase.FileIndex.AddNewChild();
@@ -321,7 +322,7 @@ namespace SimPe.Plugin
 		/// <param name="type">the Type of the ressource youar looking for</param>
 		/// <returns>null or the RCOl Ressource</returns>
 		/// <remarks>This Version will not load the FileTable</remarks>
-		public Rcol FindReferencingParent_NoLoad(uint type)
+		public Rcol FindReferencingParent_NoLoad(FileTypes type)
 		{
 			WaitMessasge wm;
 

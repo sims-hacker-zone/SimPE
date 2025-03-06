@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Xml;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Swaf;
 using SimPe.PackedFiles.Wrapper;
@@ -113,7 +114,7 @@ namespace SimPe.Wants
 				List<KeyValuePair<string, uint>> wants =
 					new List<KeyValuePair<string, uint>>();
 				xwnts = new Dictionary<uint, object[]>();
-				pjse.FileTable.Entry[] ae = pjse.FileTable.GFT[XWNTWrapper.XWNTType];
+				pjse.FileTable.Entry[] ae = pjse.FileTable.GFT[FileTypes.XWNT];
 
 				Wait.Start(ae.Length / 10);
 				Wait.Message = "Want names...";
@@ -1187,7 +1188,7 @@ namespace SimPe.Wants
 			}
 
 			Interfaces.Files.IPackedFileDescriptor pfd1 = sdsc.Package.FindFile(
-				Data.MetaData.RELATION_FILE,
+				Data.FileTypes.SREL,
 				0,
 				sdsc.FileDescriptor.Group,
 				(uint)((i.SimID << 16) + i.Sim)

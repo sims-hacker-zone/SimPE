@@ -16,7 +16,7 @@ namespace SimPe.Plugin.Downloads
 		)
 		{
 			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
-				Data.MetaData.TXTR
+				Data.FileTypes.TXTR
 			);
 			if (pfds.Length > 0)
 			{

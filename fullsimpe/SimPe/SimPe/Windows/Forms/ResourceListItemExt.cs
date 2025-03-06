@@ -86,9 +86,9 @@ namespace SimPe.Windows.Forms
 			)
 			{
 				case Registry.ResourceListExtensionFormats.Short:
-					return pfd.Descriptor.TypeName.shortname;
+					return pfd.Descriptor.TypeInfo.ShortName;
 				case Registry.ResourceListExtensionFormats.Long:
-					return pfd.Descriptor.TypeName.Name;
+					return pfd.Descriptor.TypeInfo.LongName;
 				case Registry.ResourceListExtensionFormats.Hex:
 					return "0x" + Helper.HexString(pfd.Descriptor.Type);
 				default:

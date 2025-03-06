@@ -1,5 +1,8 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using SimPe.Data;
+using SimPe.Extensions;
+
 namespace SimPe.PackedFiles.Wrapper
 {
 	/// <summary>
@@ -7,12 +10,12 @@ namespace SimPe.PackedFiles.Wrapper
 	/// </summary>
 	public class ClstItem
 	{
-		Data.MetaData.IndexTypes format;
+		Data.IndexTypes format;
 
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public ClstItem(Data.MetaData.IndexTypes format)
+		public ClstItem(Data.IndexTypes format)
 			: this(null, format) { }
 
 		/// <summary>
@@ -20,7 +23,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		public ClstItem(
 			Interfaces.Files.IPackedFileDescriptor pfd,
-			Data.MetaData.IndexTypes format
+			Data.IndexTypes format
 		)
 		{
 			this.format = format;
@@ -36,7 +39,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns the Type of the referenced File
 		/// </summary>
-		public uint Type
+		public FileTypes Type
 		{
 			get; set;
 		}
@@ -44,7 +47,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns the Name of the represented Type
 		/// </summary>
-		public Data.TypeAlias TypeName => Data.MetaData.FindTypeAlias(Type);
+		public FileTypeInformation TypeName => Type.ToFileTypeInformation();
 
 		/// <summary>
 		/// Returns the Group the referenced file is assigned to
@@ -81,7 +84,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public override int GetHashCode()
 		{
-			return (int)(Type | Instance) - (int)(Type & Instance);
+			return (int)((uint)Type | Instance) - (int)((uint)Type & Instance);
 		}
 
 		public override bool Equals(object obj)
@@ -100,8 +103,8 @@ namespace SimPe.PackedFiles.Wrapper
 					&& ci.Type == Type
 					&& (
 						ci.SubType == SubType
-						|| ci.format == Data.MetaData.IndexTypes.ptShortFileIndex
-						|| format == Data.MetaData.IndexTypes.ptShortFileIndex
+						|| ci.format == Data.IndexTypes.ptShortFileIndex
+						|| format == Data.IndexTypes.ptShortFileIndex
 					)
 				;
 			}
@@ -113,7 +116,7 @@ namespace SimPe.PackedFiles.Wrapper
 									&& ci.Type == Type
 									&& (
 										ci.SubType == SubType
-										|| format == Data.MetaData.IndexTypes.ptShortFileIndex
+										|| format == Data.IndexTypes.ptShortFileIndex
 									)
 					: base.Equals(obj);
 			}
@@ -122,7 +125,7 @@ namespace SimPe.PackedFiles.Wrapper
 		public override string ToString()
 		{
 			string name = TypeName + ": 0x" + Helper.HexString(Type);
-			if (format == Data.MetaData.IndexTypes.ptLongFileIndex)
+			if (format == Data.IndexTypes.ptLongFileIndex)
 			{
 				name += " - 0x" + Helper.HexString(SubType);
 			}
@@ -143,10 +146,10 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <param name="reader">The Stream that contains the FileData</param>
 		internal void Unserialize(System.IO.BinaryReader reader)
 		{
-			Type = reader.ReadUInt32();
+			Type = (FileTypes)reader.ReadUInt32();
 			Group = reader.ReadUInt32();
 			Instance = reader.ReadUInt32();
-			SubType = format == Data.MetaData.IndexTypes.ptLongFileIndex ? reader.ReadUInt32() : 0;
+			SubType = format == Data.IndexTypes.ptLongFileIndex ? reader.ReadUInt32() : 0;
 
 			UncompressedSize = reader.ReadUInt32();
 		}
@@ -157,15 +160,15 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <param name="reader">The Stream that contains the FileData</param>
 		internal void Serialize(
 			System.IO.BinaryWriter writer,
-			Data.MetaData.IndexTypes format
+			Data.IndexTypes format
 		)
 		{
 			this.format = format;
 
-			writer.Write(Type);
+			writer.Write((uint)Type);
 			writer.Write(Group);
 			writer.Write(Instance);
-			if (format == Data.MetaData.IndexTypes.ptLongFileIndex)
+			if (format == Data.IndexTypes.ptLongFileIndex)
 			{
 				writer.Write(SubType);
 			}

@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+using SimPe.Data;
 using SimPe.PackedFiles.Nref;
 
 namespace SimPe.Plugin.Tool.Dockable.Finder
@@ -23,7 +24,7 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 			Interfaces.Files.IPackedFileDescriptor pfd
 		)
 		{
-			if (pfd.Type != 0x4E524546)
+			if (pfd.Type != FileTypes.NREF)
 			{
 				return;
 			}

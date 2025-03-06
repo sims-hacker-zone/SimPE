@@ -9,29 +9,27 @@ using SimPe.PackedFiles.Idno;
 
 namespace SimPe.Plugin
 {
-	public class SimmyListPackedFileWrapper
-		: AbstractWrapper,
-			IFileWrapper,
-			IFileWrapperSaveExtension
+	public class SimListPackedFileWrapper
+		: AbstractWrapper, IFileWrapper, IFileWrapperSaveExtension
 	{
 		#region CreationIndex Attribute
-		public string twine; // Show Good girls as well as damaged
-		public uint sluts; // Number of Sims
-		private uint slut; // Current Sim Instance
-		public string strung; // the actaul string,
-		public string Strung
+		public string displaystring_all; // String which contains missing Sims as well
+		public uint sims;
+		private uint currentsim;
+		public string displaystring;
+		public string DisplayString
 		{
-			get => strung;
-			set => strung = value;
+			get => displaystring;
+			set => displaystring = value;
 		}
-		public string Twine
+		public string DisplayStringAll
 		{
-			get => twine;
-			set => twine = value;
+			get => displaystring_all;
+			set => displaystring_all = value;
 		}
 		#endregion
 
-		public SimmyListPackedFileWrapper()
+		public SimListPackedFileWrapper()
 			: base() { }
 
 		#region IWrapper member
@@ -61,60 +59,60 @@ namespace SimPe.Plugin
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
 			reader.BaseStream.Seek(4, System.IO.SeekOrigin.Begin); // move to the Index (Number of Sims)
-			strung = "";
-			twine = "";
+			displaystring = "";
+			displaystring_all = "";
 			Idno idno = Idno.FromPackage(package);
 			if (idno != null)
 			{
 				if (idno.Type != NeighborhoodType.Normal)
 				{
-					strung =
+					displaystring =
 						"-INVALID FILE-\r\nData only Valid in a Primary Neighbourhood\r\n\r\n";
-					twine =
+					displaystring_all =
 						"-INVALID FILE-\r\nData only Valid in a Primary Neighbourhood\r\n\r\n";
 				}
 			}
-			sluts = reader.ReadUInt32(); // Number of Neighbours
-			if (sluts != 0)
+			sims = reader.ReadUInt32(); // Number of Neighbours
+			if (sims != 0)
 			{
-				bool dided;
-				for (int i = 0; i < sluts; i++)
+				bool found;
+				for (int i = 0; i < sims; i++)
 				{
-					slut = reader.ReadUInt32();
+					currentsim = reader.ReadUInt32();
 					if (Helper.IsLotCatalogFile(package.FileName)) // Search by Nid, slow but accurate
 					{
-						dided = false;
+						found = false;
 						PackedFiles.Wrapper.ExtSDesc sdesc =
 							new PackedFiles.Wrapper.ExtSDesc();
 						Interfaces.Files.IPackedFileDescriptor[] files =
-							package.FindFiles(Data.MetaData.SIM_DESCRIPTION_FILE);
+							package.FindFiles(FileTypes.SDSC);
 						foreach (
 							Interfaces.Files.IPackedFileDescriptor pfd in files
 						)
 						{
 							sdesc.ProcessData(pfd, package);
-							if (sdesc.Instance == slut)
+							if (sdesc.Instance == currentsim)
 							{
-								strung +=
+								displaystring +=
 									"0x"
-									+ Helper.HexString(Convert.ToInt16(slut))
+									+ Helper.HexString(Convert.ToInt16(currentsim))
 									+ " - "
 									+ sdesc.SimName
 									+ " "
 									+ sdesc.SimFamilyName
 									+ "\r\n";
-								dided = true;
+								found = true;
 							}
 						}
-						if (!dided)
+						if (!found)
 						{
-							strung +=
+							displaystring +=
 								"0x"
-								+ Helper.HexString(Convert.ToInt16(slut))
+								+ Helper.HexString(Convert.ToInt16(currentsim))
 								+ " - MISSING\r\n";
-							twine +=
+							displaystring_all +=
 								"0x"
-								+ Helper.HexString(Convert.ToInt16(slut))
+								+ Helper.HexString(Convert.ToInt16(currentsim))
 								+ " - MISSING\r\n";
 						}
 					}
@@ -122,20 +120,20 @@ namespace SimPe.Plugin
 					{
 						Interfaces.Files.IPackedFileDescriptor pfd =
 							package.FindFile(
-								Data.MetaData.SIM_DESCRIPTION_FILE,
+								FileTypes.SDSC,
 								0,
 								0xFFFFFFFF,
-								slut
+								currentsim
 							);
 						if (pfd == null)
 						{
-							strung +=
+							displaystring +=
 								"0x"
-								+ Helper.HexString(Convert.ToInt16(slut))
+								+ Helper.HexString(Convert.ToInt16(currentsim))
 								+ " - MISSING\r\n";
-							twine +=
+							displaystring_all +=
 								"0x"
-								+ Helper.HexString(Convert.ToInt16(slut))
+								+ Helper.HexString(Convert.ToInt16(currentsim))
 								+ " - MISSING\r\n";
 						}
 						else
@@ -143,9 +141,9 @@ namespace SimPe.Plugin
 							PackedFiles.Wrapper.ExtSDesc sdesc =
 								new PackedFiles.Wrapper.ExtSDesc();
 							sdesc.ProcessData(pfd, package);
-							strung +=
+							displaystring +=
 								"0x"
-								+ Helper.HexString(Convert.ToInt16(slut))
+								+ Helper.HexString(Convert.ToInt16(currentsim))
 								+ " - "
 								+ sdesc.SimName
 								+ " "
@@ -170,17 +168,7 @@ namespace SimPe.Plugin
 
 		public byte[] FileSignature => new byte[0];
 
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] types =
-				{
-					0x2C310F46, //handles the Popups (List of Parsed Neighbour Ids)
-				};
-				return types;
-			}
-		}
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.POPS };
 
 		#endregion
 	}

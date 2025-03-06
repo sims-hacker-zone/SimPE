@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
+using SimPe.Data;
 using SimPe.PackedFiles.Picture;
 using SimPe.PackedFiles.Swaf;
 using SimPe.Plugin;
@@ -282,12 +283,12 @@ namespace SimPe.Cache
 			{
 				Interfaces.Scenegraph.IScenegraphFileIndexItem sitem =
 					FileTableBase.FileIndex.FindFile(
-						Data.MetaData.CTSS_FILE,
+						Data.FileTypes.CTSS,
 						objd.FileDescriptor.Group,
 						objd.CTSSInstance + (ulong)1,
 						null
 					).FirstOrDefault() ?? FileTableBase.FileIndex.FindFile(
-						Data.MetaData.CTSS_FILE,
+						Data.FileTypes.CTSS,
 						objd.FileDescriptor.Group,
 						objd.CTSSInstance,
 						null
@@ -323,7 +324,7 @@ namespace SimPe.Cache
 			{
 				Interfaces.Scenegraph.IScenegraphFileIndexItem sitem =
 					FileTableBase.FileIndex.FindFile(
-						Data.MetaData.STRING_FILE,
+						Data.FileTypes.STR,
 						objd.FileDescriptor.Group,
 						0x100,
 						null
@@ -334,7 +335,7 @@ namespace SimPe.Cache
 						new PackedFiles.Wrapper.Str();
 					str.ProcessData(sitem);
 					PackedFiles.Wrapper.StrItemList strs = str.LanguageItems(
-						Data.MetaData.Languages.English
+						Data.Languages.English
 					);
 					mci.ValueNames.AddRange((IEnumerable<string>)strs);
 				}
@@ -351,13 +352,13 @@ namespace SimPe.Cache
 				new Picture();
 			Interfaces.Scenegraph.IScenegraphFileIndexItem iitem = mci.IsBadge
 				? FileTableBase.FileIndex.FindFile(
-					Data.MetaData.SIM_IMAGE_FILE,
+					FileTypes.IMG,
 					objd.FileDescriptor.Group,
 					3,
 					null
 				).FirstOrDefault()
 				: FileTableBase.FileIndex.FindFile(
-					Data.MetaData.SIM_IMAGE_FILE,
+					FileTypes.IMG,
 					objd.FileDescriptor.Group,
 					1,
 					null
@@ -393,7 +394,7 @@ namespace SimPe.Cache
 		)
 		{
 			IEnumerable<Interfaces.Scenegraph.IScenegraphFileIndexItem> items = fileindex.FindFile(
-				Data.MetaData.OBJD_FILE,
+				Data.FileTypes.OBJD,
 				true
 			);
 

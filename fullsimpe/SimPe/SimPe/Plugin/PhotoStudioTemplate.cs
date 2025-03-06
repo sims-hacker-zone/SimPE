@@ -3,6 +3,7 @@
 using System;
 using System.Drawing;
 
+using SimPe.Data;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Txtr;
 
@@ -25,7 +26,7 @@ namespace SimPe.Plugin
 			Package = package;
 
 			Interfaces.Files.IPackedFileDescriptor pfd = package.FindFile(
-				0xEBCF3E27,
+				FileTypes.GZPS,
 				0xffffffff,
 				0xffffffff,
 				0xffffffff
@@ -37,7 +38,7 @@ namespace SimPe.Plugin
 				pset.ProcessData(pfd, package);
 
 				pfd = package.FindFile(
-					Data.MetaData.CTSS_FILE,
+					Data.FileTypes.CTSS,
 					0xffffffff,
 					0xffffffff,
 					pset.GetSaveItem("description").UIntegerValue
@@ -103,7 +104,7 @@ namespace SimPe.Plugin
 					//load TXTR
 					Interfaces.Files.IPackedFileDescriptor[] pfd = Package.FindFile(
 						TxtrFile + "_txtr",
-						0x1C4A276C
+						FileTypes.TXTR
 					);
 					if (pfd.Length > 0)
 					{

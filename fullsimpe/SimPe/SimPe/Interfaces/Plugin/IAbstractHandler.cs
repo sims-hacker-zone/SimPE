@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 
+using SimPe.Extensions;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin.Internal;
 
@@ -529,27 +530,11 @@ namespace SimPe.Interfaces.Plugin
 		/// </summary>
 		/// <param name="ta">The Current Type</param>
 		/// <returns></returns>
-		string GetEmbeddedFileName(Data.TypeAlias ta)
+		string GetEmbeddedFileName(FileTypeInformation fti)
 		{
-			if (Package == null)
-			{
-				return null;
-			}
-
-			if (FileDescriptor == null)
-			{
-				return null;
-			}
-
-			if (ta.containsfilename)
-			{
-				IPackedFile pf = Package.Read(FileDescriptor);
-				return Helper.ToString(pf.GetUncompressedData(0x40));
-			}
-			else
-			{
-				return null;
-			}
+			return Package != null && FileDescriptor != null && fti.ContainsFileName
+				? Helper.ToString(Package.Read(FileDescriptor).GetUncompressedData(0x40))
+				: null;
 		}
 
 		/// <summary>
@@ -557,7 +542,7 @@ namespace SimPe.Interfaces.Plugin
 		/// </summary>
 		/// <param name="ta">The Current Type</param>
 		/// <returns>null, if the Default Name should be generated</returns>
-		protected virtual string GetResourceName(Data.TypeAlias ta)
+		protected virtual string GetResourceName(FileTypeInformation fti)
 		{
 			return null;
 		}
@@ -569,69 +554,44 @@ namespace SimPe.Interfaces.Plugin
 		{
 			get
 			{
-				string res = null;
+				string res;
 				if (FileDescriptor != null)
 				{
-					Data.TypeAlias ta = Helper.TGILoader.GetByType(FileDescriptor.Type);
-					if (ta != null)
+					FileTypeInformation typeinfo = FileDescriptor.Type.ToFileTypeInformation();
+					res = Helper.WindowsRegistry.ResourceListFormat
+						== Registry.ResourceListFormats.JustLongType
+						? typeinfo.LongName
+						: GetResourceName(typeinfo);
+
+					if (res == null)
 					{
-						if (
-							Helper.WindowsRegistry.ResourceListFormat
-							== Registry.ResourceListFormats.JustLongType
-						)
-						{
-							res = ta.Name;
-							if (res == "")
-							{
-								res = null;
-							}
-						}
-						else
-						{
-							res = GetResourceName(ta);
-						}
+						res = GetEmbeddedFileName(typeinfo);
+					}
 
-						if (res == null)
-						{
-							res = GetEmbeddedFileName(ta);
-						}
-
-						if (res == null)
-						{
-							res = FileDescriptor.ToResListString();
-						}
-						else if (ta.Name == null)
-						{
-							res = Localization.GetString("Unknown") + ": " + res;
-						}
-						else
-						{
-							if (
-								Helper.WindowsRegistry.ResourceListFormat
-								== Registry.ResourceListFormats.LongTypeNames
-							)
-							{
-								res = ta.Name + ": " + res;
-							}
-							else if (
-								Helper.WindowsRegistry.ResourceListFormat
-								== Registry.ResourceListFormats.ShortTypeNames
-							)
-							{
-								res = ta.shortname + ": " + res;
-							}
-							else if (res.Trim() == "")
-							{
-								res = "[" + ta.Name + "]";
-							}
-						}
+					if (res == null)
+					{
+						res = FileDescriptor.ToResListString();
 					}
 					else
 					{
-						res =
-							Localization.GetString("Unknown")
-							+ ": "
-							+ FileDescriptor.ToResListString();
+						if (
+							Helper.WindowsRegistry.ResourceListFormat
+							== Registry.ResourceListFormats.LongTypeNames
+						)
+						{
+							res = typeinfo.LongName + ": " + res;
+						}
+						else if (
+							Helper.WindowsRegistry.ResourceListFormat
+							== Registry.ResourceListFormats.ShortTypeNames
+						)
+						{
+							res = typeinfo.ShortName + ": " + res;
+						}
+						else if (res.Trim() == "")
+						{
+							res = "[" + typeinfo.LongName + "]";
+						}
 					}
 				}
 				else
@@ -651,7 +611,7 @@ namespace SimPe.Interfaces.Plugin
 		/// <summary>
 		/// Returns the default Extension for this File
 		/// </summary>
-		public virtual string FileExtension => Data.MetaData.FindTypeAlias(FileDescriptor.Type).Extension;
+		public virtual string FileExtension => FileDescriptor.Type.ToFileTypeInformation().Extension;
 		#endregion
 
 		IFileWrapper guiwrapper;

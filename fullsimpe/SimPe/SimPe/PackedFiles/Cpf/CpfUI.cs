@@ -1,5 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using System;
+
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Cpf
@@ -28,11 +30,7 @@ namespace SimPe.PackedFiles.Cpf
 		public CpfUI(ExecutePreview fkt)
 		{
 			form = new CpfForm();
-			form.cbtype.Items.Add(Data.MetaData.DataTypes.dtString);
-			form.cbtype.Items.Add(Data.MetaData.DataTypes.dtUInteger);
-			form.cbtype.Items.Add(Data.MetaData.DataTypes.dtInteger);
-			form.cbtype.Items.Add(Data.MetaData.DataTypes.dtSingle);
-			form.cbtype.Items.Add(Data.MetaData.DataTypes.dtBoolean);
+			form.cbtype.Items.AddRange((object[])Enum.GetValues(typeof(Data.DataTypes)));
 
 			form.cbtype.SelectedIndex = 0;
 

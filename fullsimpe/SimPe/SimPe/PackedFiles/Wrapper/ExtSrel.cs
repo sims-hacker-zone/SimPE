@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Drawing;
 
+using SimPe.Extensions;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Wrapper
@@ -50,7 +51,7 @@ namespace SimPe.PackedFiles.Wrapper
 				if (this.FileDescriptor == null)
 					return null;
 				SimPe.Interfaces.Files.IPackedFileDescriptor pfd = Package.FindFile(
-					Data.MetaData.SIM_DESCRIPTION_FILE,
+					Data.FileTypes.SDSC,
 					0,
 					FileDescriptor.Group,
 					inst
@@ -175,7 +176,7 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 		#endregion
 
-		protected override string GetResourceName(Data.TypeAlias ta)
+		protected override string GetResourceName(FileTypeInformation fti)
 		{
 			if (!Processed)
 			{

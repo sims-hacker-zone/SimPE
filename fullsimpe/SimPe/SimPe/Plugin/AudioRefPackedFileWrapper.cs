@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -95,18 +96,11 @@ namespace SimPe.Plugin
 
 		public byte[] FileSignature => new byte[0];
 
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] types =
+		public FileTypes[] AssignableTypes => new FileTypes[]
 				{
-					0x43415453, // Catalogue String
-					0x46574156, // Audio Reference
+					FileTypes.CATS,
+					FileTypes.FWAV,
 				};
-				return types;
-			}
-		}
 
 		#endregion
 	}

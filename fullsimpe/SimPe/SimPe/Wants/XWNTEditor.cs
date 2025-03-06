@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Wants
@@ -139,7 +140,7 @@ namespace SimPe.Wants
 			WrapperChanged(wrapper, null);
 
 			internalchg = true;
-			if (wrapper.FileDescriptor.Type == 0xBEEF7B4D)
+			if (wrapper.FileDescriptor.Type == FileTypes.GOAL)
 			{
 				pjse_banner1.TitleText = "XML Goal File";
 				label1.Text = "Goal:";

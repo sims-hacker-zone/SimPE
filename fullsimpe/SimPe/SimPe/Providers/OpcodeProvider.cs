@@ -92,7 +92,7 @@ namespace SimPe.Providers
 			FileTableBase.FileIndex.Load();
 			var items =
 				FileTableBase.FileIndex.FindFileDiscardingGroup(
-					MetaData.OBJD_FILE,
+					FileTypes.OBJD,
 					0x00000000000041A7
 				);
 
@@ -128,7 +128,7 @@ namespace SimPe.Providers
 						{
 							var sitem =
 								FileTableBase.FileIndex.FindFile(
-									MetaData.CTSS_FILE,
+									FileTypes.CTSS,
 									pfd.Group,
 									objd.CTSSInstance,
 									null
@@ -177,7 +177,7 @@ namespace SimPe.Providers
 						Picture pic = new Picture();
 						var iitem =
 							FileTableBase.FileIndex.FindFile(
-								MetaData.SIM_IMAGE_FILE,
+								FileTypes.IMG,
 								pfd.Group,
 								1,
 								null
@@ -223,7 +223,7 @@ namespace SimPe.Providers
 			}
 
 			IPackedFileDescriptor pfd = BasePackage.FindFile(
-				MetaData.STRING_FILE,
+				FileTypes.STR,
 				0x00000000,
 				0x7FE59FD0,
 				instance
@@ -231,7 +231,7 @@ namespace SimPe.Providers
 			PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
 			str.ProcessData(pfd, BasePackage);
 			PackedFiles.Wrapper.StrItemList sis = str.FallbackedLanguageItems(
-				(MetaData.Languages)lang
+				(Languages)lang
 			);
 			for (ushort i = 0; i < sis.Length; i++)
 			{
@@ -291,11 +291,11 @@ namespace SimPe.Providers
 				return;
 			}
 
-			//IPackedFileDescriptor pfd = BasePackage.FindFile(Data.MetaData.STRING_FILE, 0x00000000, 0x7FE59FD0, 0x0000008B);
+			//IPackedFileDescriptor pfd = BasePackage.FindFile(Data.FileTypes.STR, 0x00000000, 0x7FE59FD0, 0x0000008B);
 			FileTableBase.FileIndex.Load();
 			var items =
 				FileTableBase.FileIndex.FindFile(
-					MetaData.STRING_FILE,
+					FileTypes.STR,
 					0x7FE59FD0,
 					0x000000000000008B,
 					null
@@ -356,12 +356,12 @@ namespace SimPe.Providers
 				{
 					return "Unknown Global";
 				}
-				//IPackedFileDescriptor pfd = BasePackage.FindFile(Data.MetaData.BHAV_FILE, 0x0, 0x7FD46CD0, opcode);
+				//IPackedFileDescriptor pfd = BasePackage.FindFile(Data.FileTypes.BHAV, 0x0, 0x7FD46CD0, opcode);
 				FileTableBase.FileIndex.Load();
 
 				foreach (
 					Interfaces.Scenegraph.IScenegraphFileIndexItem item in FileTableBase.FileIndex.FindFile(
-						MetaData.BHAV_FILE,
+						FileTypes.BHAV,
 						0x7FD46CD0,
 						opcode,
 						null
@@ -619,7 +619,7 @@ namespace SimPe.Providers
 			FileTableBase.FileIndex.Load();
 
 			return FileTableBase.FileIndex.FindFile(
-				MetaData.BHAV_FILE,
+				FileTypes.BHAV,
 				group,
 				opcode,
 				null

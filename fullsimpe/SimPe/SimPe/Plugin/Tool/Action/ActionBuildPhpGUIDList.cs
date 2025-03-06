@@ -35,7 +35,7 @@ namespace SimPe.Plugin.Tool.Action
 			{
 				System.Collections.ArrayList guids = new System.Collections.ArrayList();
 				var items =
-					FileTableBase.FileIndex.FindFile(Data.MetaData.OBJD_FILE, true);
+					FileTableBase.FileIndex.FindFile(Data.FileTypes.OBJD, true);
 				sw.WriteLine("<?");
 				sw.WriteLine("$guids = array(");
 				sw.Write("    ");
@@ -71,7 +71,7 @@ namespace SimPe.Plugin.Tool.Action
 								.Replace("\\", "")
 								.Replace("\"", "")
 					);
-					/*SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] list = SimPe.FileTable.FileIndex.FindFile(Data.MetaData.CTSS_FILE, objd.FileDescriptor.Group, objd.CTSSInstance, null);
+					/*SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem[] list = SimPe.FileTable.FileIndex.FindFile(Data.FileTypes.CTSS, objd.FileDescriptor.Group, objd.CTSSInstance, null);
 					if (list.Length==0) sw.Write(objd.FileName.Replace("'", "").Replace("\\", "").Replace("\"", ""));
 					else
 					{

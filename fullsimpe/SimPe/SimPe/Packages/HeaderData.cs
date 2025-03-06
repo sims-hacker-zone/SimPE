@@ -35,7 +35,7 @@ namespace SimPe.Packages
 			epicon = 0;
 			showicon = 0;
 
-			IndexType = Data.MetaData.IndexTypes.ptLongFileIndex;
+			IndexType = Data.IndexTypes.ptLongFileIndex;
 		}
 
 		/// <summary>
@@ -222,9 +222,9 @@ namespace SimPe.Packages
 			Description(
 				"The Indextype used in the Package. ptLongFileIndex allows the use of the \"Instance (high)\" Value."
 			),
-			DefaultValue(Data.MetaData.IndexTypes.ptLongFileIndex)
+			DefaultValue(Data.IndexTypes.ptLongFileIndex)
 		]
-		public Data.MetaData.IndexTypes IndexType
+		public Data.IndexTypes IndexType
 		{
 			get; set;
 		}
@@ -315,7 +315,7 @@ namespace SimPe.Packages
 
 			if (IsVersion0101)
 			{
-				IndexType = (Data.MetaData.IndexTypes)reader.ReadUInt32();
+				IndexType = (Data.IndexTypes)reader.ReadUInt32();
 			}
 
 			epicon = reader.ReadInt16();

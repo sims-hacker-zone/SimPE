@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 
+using SimPe.Data;
+
 namespace SimPe.Plugin
 {
 	public class ResourceNodeItem
@@ -109,7 +111,7 @@ namespace SimPe.Plugin
 
 			version = 0x07;
 			TypeCode = 0x01;
-			BlockID = 0xE519C933;
+			BlockID = (uint)FileTypes.CRES;
 		}
 
 		#region AbstractCresChildren Member

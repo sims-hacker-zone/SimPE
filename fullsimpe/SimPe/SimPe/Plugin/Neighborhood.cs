@@ -340,7 +340,7 @@ namespace SimPe.Plugin
 			try
 			{
 				Interfaces.Files.IPackedFileDescriptor pfd = pk.FindFile(
-					0x43545353,
+					FileTypes.CTSS,
 					0,
 					0xffffffff,
 					1
@@ -360,7 +360,7 @@ namespace SimPe.Plugin
 					name = "Tutorial"; // CJH
 				}
 
-				pfd = pk.FindFile(0xAC8A7A2E, 0, 0xffffffff, 1);
+				pfd = pk.FindFile(FileTypes.IDNO, 0, 0xffffffff, 1);
 				if (pfd != null)
 				{
 					Idno idno = new Idno();
@@ -773,7 +773,7 @@ if (pbpay.Value == 7) inst = 0xABBA2575;
 			if (pkg != null)
 			{
 				Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(
-					0x856DDBAC,
+					FileTypes.IMG,
 					0,
 					0x499DB772,
 					inst

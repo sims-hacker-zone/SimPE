@@ -65,7 +65,7 @@ namespace SimPe.Packages
 			string guid = null;
 
 			Interfaces.Files.IPackedFileDescriptor pfd = p.FindFile(
-				Data.MetaData.STRING_FILE,
+				Data.FileTypes.STR,
 				0xffffffff,
 				0x00000000,
 				0xffffffff
@@ -100,7 +100,7 @@ namespace SimPe.Packages
 
 			//Title and Description is stored in the CatalogString
 			Interfaces.Files.IPackedFileDescriptor[] pfds = p.FindFiles(
-				Data.MetaData.OBJD_FILE
+				Data.FileTypes.OBJD
 			);
 
 			uint ctssid = 1;
@@ -114,7 +114,7 @@ namespace SimPe.Packages
 				group = objd.FileDescriptor.Group;
 			}
 
-			pfd = p.FindFile(Data.MetaData.CTSS_FILE, 0, group, ctssid);
+			pfd = p.FindFile(Data.FileTypes.CTSS, 0, group, ctssid);
 			if (pfd != null)
 			{
 				PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
@@ -366,7 +366,7 @@ namespace SimPe.Packages
 		)
 		{
 			Interfaces.Files.IPackedFileDescriptor pfd = p.FindFile(
-				Data.MetaData.STRING_FILE,
+				Data.FileTypes.STR,
 				0xffffffff,
 				0x00000000,
 				0xffffffff
@@ -383,7 +383,7 @@ namespace SimPe.Packages
 				{
 					FileDescriptor = new PackedFileDescriptor
 					{
-						Type = Data.MetaData.STRING_FILE,
+						Type = Data.FileTypes.STR,
 						Group = 0,
 						SubType = 0xffffffff,
 						Instance = 0xffffffff
@@ -461,7 +461,7 @@ namespace SimPe.Packages
 
 			//Title and Description is stored in the CatalogString
 			Interfaces.Files.IPackedFileDescriptor[] pfds = p.FindFiles(
-				Data.MetaData.OBJD_FILE
+				Data.FileTypes.OBJD
 			);
 			uint ctssid = 1;
 			uint group = 0xffffffff;
@@ -474,14 +474,14 @@ namespace SimPe.Packages
 				group = objd.FileDescriptor.Group;
 			}
 
-			pfd = p.FindFile(Data.MetaData.CTSS_FILE, 0, group, ctssid);
+			pfd = p.FindFile(Data.FileTypes.CTSS, 0, group, ctssid);
 			if (pfd == null)
 			{
 				str = new PackedFiles.Wrapper.Str
 				{
 					FileDescriptor = new PackedFileDescriptor
 					{
-						Type = Data.MetaData.CTSS_FILE,
+						Type = Data.FileTypes.CTSS,
 						Group = 0xffffffff,
 						SubType = 0x00000000,
 						Instance = 0x1
@@ -564,7 +564,7 @@ namespace SimPe.Packages
 			string guid = null;
 
 			Interfaces.Files.IPackedFileDescriptor pfd = p.FindFile(
-				Data.MetaData.STRING_FILE,
+				Data.FileTypes.STR,
 				0xffffffff,
 				0x00000000,
 				0xffffffff
@@ -588,7 +588,7 @@ namespace SimPe.Packages
 			}
 
 			Interfaces.Files.IPackedFileDescriptor[] pfds = p.FindFiles(
-				Data.MetaData.OBJD_FILE
+				Data.FileTypes.OBJD
 			);
 			uint ctssid = 1;
 			uint group = 0xffffffff;
@@ -601,7 +601,7 @@ namespace SimPe.Packages
 				group = objd.FileDescriptor.Group;
 			}
 
-			pfd = p.FindFile(Data.MetaData.CTSS_FILE, 0, group, ctssid);
+			pfd = p.FindFile(Data.FileTypes.CTSS, 0, group, ctssid);
 			if (pfd == null)
 			{
 				UpdateGlobalGuid(p, title, description);
@@ -772,7 +772,7 @@ namespace SimPe.Packages
 				}
 
 				Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(
-					Data.MetaData.OBJD_FILE
+					Data.FileTypes.OBJD
 				);
 				gameguid = "";
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)

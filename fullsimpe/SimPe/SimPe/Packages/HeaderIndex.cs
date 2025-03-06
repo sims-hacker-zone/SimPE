@@ -36,12 +36,12 @@ namespace SimPe.Packages
 		{
 			get
 			{
-				if (Parent.IndexType == Data.MetaData.IndexTypes.ptLongFileIndex)
+				if (Parent.IndexType == Data.IndexTypes.ptLongFileIndex)
 				{
 					return 6 * 4;
 				}
 				else if (
-					Parent.IndexType == Data.MetaData.IndexTypes.ptShortFileIndex
+					Parent.IndexType == Data.IndexTypes.ptShortFileIndex
 				)
 				{
 					return 5 * 4;

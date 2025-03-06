@@ -31,7 +31,7 @@ namespace pjOBJDTool
 			}
 
 			SimPe.Interfaces.Files.IPackedFileDescriptor[] obbies = package.FindFiles(
-				SimPe.Data.MetaData.OBJD_FILE
+				SimPe.Data.FileTypes.OBJD
 			);
 			return obbies.Length >= 1;
 		}

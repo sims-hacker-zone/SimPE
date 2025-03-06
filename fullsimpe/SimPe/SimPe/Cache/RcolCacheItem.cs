@@ -89,7 +89,7 @@ namespace SimPe.Cache
 			RcolType = (RcolCacheItemType)reader.ReadByte();
 			pfd = new Packages.PackedFileDescriptor
 			{
-				Type = reader.ReadUInt32(),
+				Type = (Data.FileTypes)reader.ReadUInt32(),
 				Group = reader.ReadUInt32(),
 				LongInstance = reader.ReadUInt64()
 			};
@@ -102,7 +102,7 @@ namespace SimPe.Cache
 			writer.Write(Version);
 			writer.Write(ResourceName);
 			writer.Write((byte)RcolType);
-			writer.Write(pfd.Type);
+			writer.Write((uint)pfd.Type);
 			writer.Write(pfd.Group);
 			writer.Write(pfd.LongInstance);
 		}

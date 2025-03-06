@@ -21,7 +21,7 @@ namespace SimPe.PackedFiles.Cpf
 		/// <summary>
 		/// Returns the
 		/// </summary>
-		public MetaData.DataTypes Datatype
+		public DataTypes Datatype
 		{
 			get; set;
 		}
@@ -62,16 +62,16 @@ namespace SimPe.PackedFiles.Cpf
 			{
 				switch (Datatype)
 				{
-					case MetaData.DataTypes.dtSingle:
+					case DataTypes.dtSingle:
 					{
 						return AsSingle().ToString();
 					}
-					case MetaData.DataTypes.dtInteger:
-					case MetaData.DataTypes.dtUInteger:
+					case DataTypes.dtInteger:
+					case DataTypes.dtUInteger:
 					{
 						return "0x" + Helper.HexString(AsInteger());
 					}
-					case MetaData.DataTypes.dtString:
+					case DataTypes.dtString:
 					{
 						return AsString();
 					}
@@ -83,7 +83,7 @@ namespace SimPe.PackedFiles.Cpf
 			}
 			set
 			{
-				Datatype = MetaData.DataTypes.dtString;
+				Datatype = DataTypes.dtString;
 				Value = Helper.ToBytes(value, 0);
 			}
 		}
@@ -97,16 +97,16 @@ namespace SimPe.PackedFiles.Cpf
 			{
 				switch (Datatype)
 				{
-					case MetaData.DataTypes.dtSingle:
+					case DataTypes.dtSingle:
 					{
 						return Convert.ToUInt32(AsSingle());
 					}
-					case MetaData.DataTypes.dtInteger:
-					case MetaData.DataTypes.dtUInteger:
+					case DataTypes.dtInteger:
+					case DataTypes.dtUInteger:
 					{
 						return AsUInteger();
 					}
-					case MetaData.DataTypes.dtString:
+					case DataTypes.dtString:
 					{
 						uint ret = 0;
 						try
@@ -124,7 +124,7 @@ namespace SimPe.PackedFiles.Cpf
 			}
 			set
 			{
-				Datatype = MetaData.DataTypes.dtUInteger;
+				Datatype = DataTypes.dtUInteger;
 				System.IO.BinaryWriter bw = new System.IO.BinaryWriter(
 					new System.IO.MemoryStream()
 				);
@@ -144,16 +144,16 @@ namespace SimPe.PackedFiles.Cpf
 			{
 				switch (Datatype)
 				{
-					case MetaData.DataTypes.dtSingle:
+					case DataTypes.dtSingle:
 					{
 						return Convert.ToInt32(AsSingle());
 					}
-					case MetaData.DataTypes.dtInteger:
-					case MetaData.DataTypes.dtUInteger:
+					case DataTypes.dtInteger:
+					case DataTypes.dtUInteger:
 					{
 						return AsInteger();
 					}
-					case MetaData.DataTypes.dtString:
+					case DataTypes.dtString:
 					{
 						int ret = 0;
 						try
@@ -171,7 +171,7 @@ namespace SimPe.PackedFiles.Cpf
 			}
 			set
 			{
-				Datatype = MetaData.DataTypes.dtInteger;
+				Datatype = DataTypes.dtInteger;
 				System.IO.BinaryWriter bw = new System.IO.BinaryWriter(
 					new System.IO.MemoryStream()
 				);
@@ -191,16 +191,16 @@ namespace SimPe.PackedFiles.Cpf
 			{
 				switch (Datatype)
 				{
-					case MetaData.DataTypes.dtSingle:
+					case DataTypes.dtSingle:
 					{
 						return AsSingle();
 					}
-					case MetaData.DataTypes.dtInteger:
-					case MetaData.DataTypes.dtUInteger:
+					case DataTypes.dtInteger:
+					case DataTypes.dtUInteger:
 					{
 						return AsInteger();
 					}
-					case MetaData.DataTypes.dtString:
+					case DataTypes.dtString:
 					{
 						float ret = 0;
 						try
@@ -218,7 +218,7 @@ namespace SimPe.PackedFiles.Cpf
 			}
 			set
 			{
-				Datatype = MetaData.DataTypes.dtSingle;
+				Datatype = DataTypes.dtSingle;
 				System.IO.BinaryWriter bw = new System.IO.BinaryWriter(
 					new System.IO.MemoryStream()
 				);
@@ -238,16 +238,16 @@ namespace SimPe.PackedFiles.Cpf
 			{
 				switch (Datatype)
 				{
-					case MetaData.DataTypes.dtSingle:
+					case DataTypes.dtSingle:
 					{
 						return AsSingle() != 0.0;
 					}
-					case MetaData.DataTypes.dtInteger:
-					case MetaData.DataTypes.dtUInteger:
+					case DataTypes.dtInteger:
+					case DataTypes.dtUInteger:
 					{
 						return AsInteger() != 0;
 					}
-					case MetaData.DataTypes.dtString:
+					case DataTypes.dtString:
 					{
 						bool ret = false;
 						try
@@ -257,7 +257,7 @@ namespace SimPe.PackedFiles.Cpf
 						catch (Exception) { }
 						return ret;
 					}
-					case MetaData.DataTypes.dtBoolean:
+					case DataTypes.dtBoolean:
 					{
 						return AsBoolean();
 					}
@@ -269,7 +269,7 @@ namespace SimPe.PackedFiles.Cpf
 			}
 			set
 			{
-				Datatype = MetaData.DataTypes.dtBoolean;
+				Datatype = DataTypes.dtBoolean;
 				System.IO.BinaryWriter bw = new System.IO.BinaryWriter(
 					new System.IO.MemoryStream()
 				);
@@ -289,19 +289,19 @@ namespace SimPe.PackedFiles.Cpf
 			{
 				switch (Datatype)
 				{
-					case MetaData.DataTypes.dtUInteger:
+					case DataTypes.dtUInteger:
 					{
 						return UIntegerValue;
 					}
-					case MetaData.DataTypes.dtInteger:
+					case DataTypes.dtInteger:
 					{
 						return IntegerValue;
 					}
-					case MetaData.DataTypes.dtSingle:
+					case DataTypes.dtSingle:
 					{
 						return SingleValue;
 					}
-					case MetaData.DataTypes.dtBoolean:
+					case DataTypes.dtBoolean:
 					{
 						return BooleanValue;
 					}
@@ -415,7 +415,7 @@ namespace SimPe.PackedFiles.Cpf
 		internal void Unserialize(System.IO.BinaryReader reader)
 		{
 			//Load Datatype
-			Datatype = (MetaData.DataTypes)reader.ReadUInt32();
+			Datatype = (DataTypes)reader.ReadUInt32();
 
 			//Load the Name
 			int namelength = reader.ReadInt32();
@@ -425,12 +425,12 @@ namespace SimPe.PackedFiles.Cpf
 			int valuelength;
 			switch (Datatype)
 			{
-				case MetaData.DataTypes.dtString:
+				case DataTypes.dtString:
 				{
 					valuelength = reader.ReadInt32();
 					break;
 				}
-				case MetaData.DataTypes.dtBoolean:
+				case DataTypes.dtBoolean:
 				{
 					valuelength = 1;
 					break;
@@ -460,7 +460,7 @@ namespace SimPe.PackedFiles.Cpf
 			//Store the Value
 			switch (Datatype)
 			{
-				case MetaData.DataTypes.dtString:
+				case DataTypes.dtString:
 				{
 					writer.Write((uint)Value.Length);
 					writer.Write(Value);
@@ -481,8 +481,8 @@ namespace SimPe.PackedFiles.Cpf
 
 			switch (Datatype)
 			{
-				case MetaData.DataTypes.dtUInteger:
-				case MetaData.DataTypes.dtInteger:
+				case DataTypes.dtUInteger:
+				case DataTypes.dtInteger:
 				{
 					ret += "0x" + Helper.HexString(UIntegerValue);
 					break;

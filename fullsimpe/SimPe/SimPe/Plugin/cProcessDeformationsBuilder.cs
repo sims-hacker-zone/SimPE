@@ -57,7 +57,7 @@ namespace SimPe.Plugin
 				pfd.SubType = reader.ReadUInt32();
 			}
 
-			pfd.Type = reader.ReadUInt32();
+			pfd.Type = (Data.FileTypes)reader.ReadUInt32();
 
 			Unknown1 = reader.ReadInt16();
 			Unknown2 = reader.ReadInt32();
@@ -86,7 +86,7 @@ namespace SimPe.Plugin
 				writer.Write(pfd.SubType);
 			}
 
-			writer.Write(pfd.Type);
+			writer.Write((uint)pfd.Type);
 
 			writer.Write(Unknown1);
 			writer.Write(Unknown2);

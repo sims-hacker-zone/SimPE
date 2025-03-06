@@ -90,7 +90,7 @@ namespace SimPe.Plugin
 			form.lbmem.Items.Clear();
 
 			Interfaces.Files.IPackedFileDescriptor[] pfds = wrp.Package.FindFiles(
-				Data.MetaData.SIM_DESCRIPTION_FILE
+				Data.FileTypes.SDSC
 			);
 			form.cbsub.Items.Add(new Data.Alias(0, "---", "{name}"));
 			form.cbsub.Sorted = false;

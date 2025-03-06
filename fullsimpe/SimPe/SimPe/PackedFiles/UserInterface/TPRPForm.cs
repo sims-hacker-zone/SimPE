@@ -5,6 +5,7 @@ using System.Collections;
 using System.Drawing;
 using System.Windows.Forms;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Wrapper;
 
@@ -82,7 +83,7 @@ namespace SimPe.PackedFiles.UserInterface
 		void GFT_FiletableRefresh(object sender, EventArgs e)
 		{
 			pjse_banner1.SiblingEnabled =
-				wrapper != null && wrapper.SiblingResource(Bhav.Bhavtype) != null;
+				wrapper != null && wrapper.SiblingResource(FileTypes.BHAV) != null;
 		}
 
 		/// <summary>
@@ -414,7 +415,7 @@ namespace SimPe.PackedFiles.UserInterface
 			wrapper = (TPRP)wrp;
 			WrapperChanged(wrapper, null);
 			pjse_banner1.SiblingEnabled =
-				wrapper.SiblingResource(Bhav.Bhavtype) != null;
+				wrapper.SiblingResource(FileTypes.BHAV) != null;
 
 			if (!wrapper.TextOnly)
 			{
@@ -796,7 +797,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void pjse_banner1_SiblingClick(object sender, EventArgs e)
 		{
-			Bhav bhav = (Bhav)wrapper.SiblingResource(Bhav.Bhavtype);
+			Bhav bhav = (Bhav)wrapper.SiblingResource(FileTypes.BHAV);
 			if (bhav == null)
 			{
 				return;

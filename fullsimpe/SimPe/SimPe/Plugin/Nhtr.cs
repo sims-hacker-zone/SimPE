@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -12,7 +13,7 @@ namespace SimPe.Plugin
 	}
 
 	/// <summary>
-	/// Wrapper for 0xABD0DC63 , which appear to be the "Neighbourhood terrain" Resource
+	/// Wrapper for FileTypes.NHTR , which appear to be the "Neighbourhood terrain" Resource
 	/// </summary>
 	public class Nhtr
 		: AbstractWrapper,
@@ -98,23 +99,9 @@ namespace SimPe.Plugin
 
 		#region IPackedFileWrapper Member
 
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] Types = { 0xABD0DC63 };
-				return Types;
-			}
-		}
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.NHTR };
 
-		public byte[] FileSignature
-		{
-			get
-			{
-				byte[] sig = { };
-				return sig;
-			}
-		}
+		public byte[] FileSignature => new byte[] { };
 
 		#endregion
 	}

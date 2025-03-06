@@ -57,7 +57,7 @@ namespace SimPe.Plugin
 					{
 						IPackedFileDescriptor[] pfds = Package.FindFile(
 							newname,
-							Data.MetaData.TXMT
+							Data.FileTypes.TXMT
 						);
 						if (pfds.Length > 0)
 						{
@@ -113,7 +113,7 @@ namespace SimPe.Plugin
 				///*"##0x"+Helper.HexString(Data.MetaData.CUSTOM_GROUP)+"!"+*/name+"_"+unique+"_txmt";
 				txmt.FileDescriptor = ScenegraphHelper.BuildPfd(
 					txmt.FileName,
-					Data.MetaData.TXMT,
+					Data.FileTypes.TXMT,
 					Data.MetaData.CUSTOM_GROUP
 				);
 
@@ -196,7 +196,7 @@ namespace SimPe.Plugin
 
 			txtr.FileDescriptor = ScenegraphHelper.BuildPfd(
 				txtr.FileName,
-				Data.MetaData.TXTR,
+				Data.FileTypes.TXTR,
 				Data.MetaData.CUSTOM_GROUP
 			);
 
@@ -288,7 +288,7 @@ namespace SimPe.Plugin
 
 						IPackageFile pkg = txmt.Package;
 						IPackedFileDescriptor[] pfds =
-							pkg.FindFile(name, Data.MetaData.TXTR);
+							pkg.FindFile(name, Data.FileTypes.TXTR);
 						if (pfds.Length > 0)
 						{
 							IPackedFileDescriptor pfd = pfds[0];

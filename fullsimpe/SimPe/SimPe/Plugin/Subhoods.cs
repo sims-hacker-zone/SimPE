@@ -80,14 +80,14 @@ namespace SimPe.Plugin
 					subh = Localization.Manager.GetString("unknown");
 					pkg = Packages.File.LoadFromFile(file);
 					Interfaces.Files.IPackedFileDescriptor pfd =
-						pkg.FindFileAnyGroup(Data.MetaData.IDNO, 0, 1);
+						pkg.FindFileAnyGroup(Data.FileTypes.IDNO, 0, 1);
 					if (pfd != null)
 					{
 						Idno idno = new Idno();
 						idno.ProcessData(pfd, pkg);
 						uid = idno.Uid;
 
-						pfd = pkg.FindFileAnyGroup(Data.MetaData.CTSS_FILE, 0, 1);
+						pfd = pkg.FindFileAnyGroup(Data.FileTypes.CTSS, 0, 1);
 						if (pfd != null)
 						{
 							PackedFiles.Wrapper.Str str =

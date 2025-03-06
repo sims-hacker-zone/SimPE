@@ -1,5 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using SimPe.Data;
+
 namespace SimPe.Actions.Default
 {
 	/// <summary>
@@ -33,7 +35,7 @@ namespace SimPe.Actions.Default
 
 			e.LoadedPackage.Package.Add(
 				e.LoadedPackage.Package.NewDescriptor(
-					0xffffffff,
+					FileTypes.ALL_TYPES,
 					0,
 					Data.MetaData.LOCAL_GROUP,
 					0

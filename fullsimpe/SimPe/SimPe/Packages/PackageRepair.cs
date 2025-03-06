@@ -1,7 +1,11 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
-using System.Collections;
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+
+using SimPe.Data;
 
 namespace SimPe.Packages
 {
@@ -28,7 +32,7 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Returns or Sets the Type of the Package
 		/// </summary>
-		public Data.MetaData.IndexTypes IndexType
+		public Data.IndexTypes IndexType
 		{
 			get => hd.IndexType;
 			set => hd.IndexType = value;
@@ -99,7 +103,7 @@ namespace SimPe.Packages
 	public class PackageRepair : System.IDisposable
 	{
 		Interfaces.Files.IPackageFile pkg;
-		static ArrayList types;
+		static IEnumerable<FileTypes> types = (IEnumerable<FileTypes>)Enum.GetValues(typeof(FileTypes));
 
 		public PackageRepair(Interfaces.Files.IPackageFile pkg)
 		{
@@ -109,12 +113,6 @@ namespace SimPe.Packages
 
 		void InitTypes()
 		{
-			types = new ArrayList();
-			Data.TypeAlias[] ftis = Helper.TGILoader.FileTypes;
-			foreach (Data.TypeAlias ta in ftis)
-			{
-				types.Add(ta.Id);
-			}
 		}
 
 		bool CouldBeIndexItem(BinaryReader br, long pos, int step, bool strict)
@@ -152,7 +150,7 @@ namespace SimPe.Packages
 						return false;
 					}
 
-					if (pfd.Type == 0xffffffff)
+					if (pfd.Type == FileTypes.ALL_TYPES)
 					{
 						return false;
 					}
@@ -177,7 +175,7 @@ namespace SimPe.Packages
 
 			BinaryReader br = pkg.Reader;
 			int step = 0x18;
-			if (pkg.Header.IndexType == Data.MetaData.IndexTypes.ptShortFileIndex)
+			if (pkg.Header.IndexType == Data.IndexTypes.ptShortFileIndex)
 			{
 				step = 0x14;
 			}

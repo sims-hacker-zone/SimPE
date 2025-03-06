@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
+using SimPe.Data;
 using SimPe.PackedFiles.Picture;
 
 namespace SimPe.Plugin.Tool.Dockable
@@ -137,13 +138,13 @@ namespace SimPe.Plugin.Tool.Dockable
 			uint inst = ThumbnailHash(group, modelname);
 			Image img = GetThumbnail(
 				message,
-				new uint[] { 0xAC2950C1 },
+				new FileTypes[] { FileTypes.THUB },
 				group,
 				inst,
 				thumbs
 			);
 
-			//if (img==null) img = GetThumbnail(message, new uint[] { 0xAC2950C1}, Hashes.GetCrc32(Hashes.StripHashFromName(modelname.Trim().ToLower())), thumbs);
+			//if (img==null) img = GetThumbnail(message, new uint[] { FileTypes.THUB}, Hashes.GetCrc32(Hashes.StripHashFromName(modelname.Trim().ToLower())), thumbs);
 
 			return img;
 		}
@@ -156,13 +157,13 @@ namespace SimPe.Plugin.Tool.Dockable
 		/// <returns>The Thumbnail</returns>
 		public static Image GetThumbnail(
 			string message,
-			uint type,
+			FileTypes type,
 			uint group,
 			uint inst,
 			Packages.File thumbs
 		)
 		{
-			return GetThumbnail(message, new uint[] { type }, group, inst, thumbs);
+			return GetThumbnail(message, new FileTypes[] { type }, group, inst, thumbs);
 		}
 
 		/// <summary>
@@ -173,25 +174,25 @@ namespace SimPe.Plugin.Tool.Dockable
 		/// <returns>The Thumbnail</returns>
 		public static Image GetThumbnail(
 			string message,
-			uint[] types,
+			FileTypes[] types,
 			uint group,
 			uint inst,
 			Packages.File thumbs
 		)
 		{
 			/*ArrayList types = new ArrayList();
-			types.Add(0xAC2950C1); // Objects
-			types.Add(0xEC3126C4); // Terrain
-			types.Add(0xCC48C51F); //chimney
-			types.Add(0x2C30E040); //fence Arch
-			types.Add(0xCC30CDF8); //fences
-			types.Add(0x8C311262); //floors
-			types.Add(0x2C43CBD4); //foundtaion / pools
-			types.Add(0xCC44B5EC); //modular Stairs
-			types.Add(0xCC489E46); //roof
-			types.Add(0x8C31125E); //wall*/
+			types.Add(FileTypes.THUB); // Objects
+			types.Add(FileTypes.THUMB_TERRAIN); // Terrain
+			types.Add(FileTypes.THUMB_CHIM); //chimney
+			types.Add(FileTypes.THUMB_FARC); //fence Arch
+			types.Add(FileTypes.THUMB_FENCE); //fences
+			types.Add(FileTypes.THUMB_FLOOR); //floors
+			types.Add(FileTypes.THUMB_POOL); //foundtaion / pools
+			types.Add(FileTypes.THUMB_MODST); //modular Stairs
+			types.Add(FileTypes.THUMB_ROOF); //roof
+			types.Add(FileTypes.THUMB_WALL); //wall*/
 
-			foreach (uint type in types)
+			foreach (FileTypes type in types)
 			{
 				//0x6C2A22C3
 				Interfaces.Files.IPackedFileDescriptor[] pfds = thumbs.FindFile(
@@ -346,7 +347,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 
 			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFile(
-				Data.MetaData.OBJD_FILE,
+				Data.FileTypes.OBJD,
 				0,
 				0x41A7
 			);
@@ -357,7 +358,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 			int fct = 0;
 			int vct = 0;
-			pfds = pkg.FindFiles(Data.MetaData.GMDC);
+			pfds = pkg.FindFiles(Data.FileTypes.GMDC);
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
 				Rcol rcol = new GenericRcol();
@@ -500,7 +501,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 
 			Interfaces.Files.IPackedFileDescriptor pfd = objd.Package.FindFile(
-				Data.MetaData.STRING_FILE,
+				Data.FileTypes.STR,
 				0,
 				objd.FileDescriptor.Group,
 				0x85
@@ -557,7 +558,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 			//Get the Name of the Object
 			Interfaces.Files.IPackedFileDescriptor ctss = objd.Package.FindFile(
-				Data.MetaData.CTSS_FILE,
+				Data.FileTypes.CTSS,
 				0,
 				objd.FileDescriptor.Group,
 				objd.CTSSInstance

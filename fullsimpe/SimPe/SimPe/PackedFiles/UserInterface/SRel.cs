@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 using SimPe.Data;
@@ -20,44 +21,8 @@ namespace SimPe.PackedFiles.UserInterface
 		public SRel()
 		{
 			form.cbfamtype.Items.Clear();
-			form.cbfamtype.Items.Add(
-				new LocalizedRelationshipTypes(
-					MetaData.RelationshipTypes.Unset_Unknown
-				)
-			);
-			form.cbfamtype.Items.Add(
-				new LocalizedRelationshipTypes(MetaData.RelationshipTypes.Aunt)
-			);
-			form.cbfamtype.Items.Add(
-				new LocalizedRelationshipTypes(MetaData.RelationshipTypes.Child)
-			);
-			form.cbfamtype.Items.Add(
-				new LocalizedRelationshipTypes(MetaData.RelationshipTypes.Cousin)
-			);
-			form.cbfamtype.Items.Add(
-				new LocalizedRelationshipTypes(
-					MetaData.RelationshipTypes.Grandchild
-				)
-			);
-			form.cbfamtype.Items.Add(
-				new LocalizedRelationshipTypes(
-					MetaData.RelationshipTypes.Gradparent
-				)
-			);
-			form.cbfamtype.Items.Add(
-				new LocalizedRelationshipTypes(
-					MetaData.RelationshipTypes.Nice_Nephew
-				)
-			);
-			form.cbfamtype.Items.Add(
-				new LocalizedRelationshipTypes(MetaData.RelationshipTypes.Parent)
-			);
-			form.cbfamtype.Items.Add(
-				new LocalizedRelationshipTypes(MetaData.RelationshipTypes.Sibling)
-			);
-			form.cbfamtype.Items.Add(
-				new LocalizedRelationshipTypes(MetaData.RelationshipTypes.Spouses)
-			);
+			form.cbfamtype.Items.AddRange((from RelationshipTypes type in Enum.GetValues(typeof(RelationshipTypes))
+										   select new LocalizedRelationshipTypes(type)).ToArray());
 		}
 
 		#region IPackedFileHandler Member

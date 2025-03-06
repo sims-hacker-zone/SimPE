@@ -3,6 +3,7 @@
 
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.ThreeIdr
@@ -14,13 +15,7 @@ namespace SimPe.PackedFiles.ThreeIdr
 	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
-	public class ThreeIdr
-		: AbstractWrapper //Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
-			,
-			IFileWrapper //This Interface is used when loading a File
-			,
-			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
-									  //,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
+	public class ThreeIdr : AbstractWrapper, IFileWrapper, IFileWrapperSaveExtension
 	{
 		#region Attributes
 		/// <summary>
@@ -31,7 +26,7 @@ namespace SimPe.PackedFiles.ThreeIdr
 		/// <summary>
 		/// Type of the File
 		/// </summary>
-		private Data.MetaData.IndexTypes type = Data.MetaData.IndexTypes.ptLongFileIndex;
+		private Data.IndexTypes type = Data.IndexTypes.ptLongFileIndex;
 
 		/// <summary>
 		/// List of Stored References
@@ -87,7 +82,7 @@ namespace SimPe.PackedFiles.ThreeIdr
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
 			id = reader.ReadUInt32();
-			type = (Data.MetaData.IndexTypes)reader.ReadUInt32();
+			type = (Data.IndexTypes)reader.ReadUInt32();
 
 			Items = new Interfaces.Files.IPackedFileDescriptor[reader.ReadUInt32()];
 
@@ -95,11 +90,11 @@ namespace SimPe.PackedFiles.ThreeIdr
 			{
 				ThreeIdrItem pfd = new ThreeIdrItem(this)
 				{
-					Type = reader.ReadUInt32(),
+					Type = (FileTypes)reader.ReadUInt32(),
 					Group = reader.ReadUInt32(),
 					Instance = reader.ReadUInt32()
 				};
-				if (type == Data.MetaData.IndexTypes.ptLongFileIndex)
+				if (type == Data.IndexTypes.ptLongFileIndex)
 				{
 					pfd.SubType = reader.ReadUInt32();
 				}
@@ -129,10 +124,10 @@ namespace SimPe.PackedFiles.ThreeIdr
 			{
 				Interfaces.Files.IPackedFileDescriptor pfd = Items[i];
 
-				writer.Write(pfd.Type);
+				writer.Write((uint)pfd.Type);
 				writer.Write(pfd.Group);
 				writer.Write(pfd.Instance);
-				if (type == Data.MetaData.IndexTypes.ptLongFileIndex)
+				if (type == Data.IndexTypes.ptLongFileIndex)
 				{
 					writer.Write(pfd.SubType);
 				}
@@ -154,10 +149,7 @@ namespace SimPe.PackedFiles.ThreeIdr
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes => new uint[]
-				{
-					0xAC506764, //handles the 3IDR File
-				};
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.THREE_IDR };
 
 		#endregion
 	}

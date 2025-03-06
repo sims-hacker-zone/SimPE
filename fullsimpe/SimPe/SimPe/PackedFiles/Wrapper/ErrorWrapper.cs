@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 
+using SimPe.Data;
+
 namespace SimPe.PackedFiles.Wrapper
 {
 	/// <summary>
@@ -60,7 +62,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public byte[] FileSignature => new byte[0];
 
-		public uint[] AssignableTypes => new uint[0];
+		public FileTypes[] AssignableTypes => new FileTypes[0];
 
 		#endregion
 

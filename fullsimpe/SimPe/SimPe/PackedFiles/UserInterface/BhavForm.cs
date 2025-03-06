@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 using pjse;
 
+using SimPe.Data;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Ttab;
@@ -225,7 +226,7 @@ namespace SimPe.PackedFiles.UserInterface
 		}
 
 		private static IPackedFileDescriptor newPFD(
-			uint type,
+			FileTypes type,
 			uint group,
 			uint instance
 		)
@@ -234,7 +235,7 @@ namespace SimPe.PackedFiles.UserInterface
 		}
 
 		private static IPackedFileDescriptor newPFD(
-			uint type,
+			FileTypes type,
 			uint group,
 			uint subtype,
 			uint instance
@@ -342,7 +343,7 @@ namespace SimPe.PackedFiles.UserInterface
 			#region Finding available BHAV number
 			WaitingScreen.Message = "Finding available BHAV number...";
 			pjse.FileTable.Entry[] ai = pjse.FileTable.GFT[
-				Bhav.Bhavtype,
+				FileTypes.BHAV,
 				pjse.FileTable.Source.Local
 			];
 			ushort newInst = 0x0fff;
@@ -361,7 +362,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 			#region Cloning BHAV
 			WaitingScreen.Message = "Cloning BHAV...";
-			IPackedFileDescriptor npfd = newPFD(Bhav.Bhavtype, 0xffffffff, newInst);
+			IPackedFileDescriptor npfd = newPFD(FileTypes.BHAV, 0xffffffff, newInst);
 			npfd.UserData = wrapper
 				.Package.Read(wrapper.FileDescriptor)
 				.UncompressedData;
@@ -404,7 +405,7 @@ namespace SimPe.PackedFiles.UserInterface
 				"OBJF",
 				wrapper.FileDescriptor.Instance,
 				npfd,
-				pjse.FileTable.GFT[Objf.Objftype, pjse.FileTable.Source.Local],
+				pjse.FileTable.GFT[FileTypes.OBJf, pjse.FileTable.Source.Local],
 				null,
 				new matchItem[]
 				{
@@ -436,7 +437,7 @@ namespace SimPe.PackedFiles.UserInterface
 				"TTAB",
 				wrapper.FileDescriptor.Instance,
 				npfd,
-				pjse.FileTable.GFT[Ttab.Ttab.Ttabtype, pjse.FileTable.Source.Local],
+				pjse.FileTable.GFT[FileTypes.TTAB, pjse.FileTable.Source.Local],
 				null,
 				new matchItem[]
 				{
@@ -587,8 +588,8 @@ namespace SimPe.PackedFiles.UserInterface
 					,
 					wrapper
 						.FileDescriptor
-						.TypeName
-						.shortname // Type (short name)
+						.TypeInfo
+						.ShortName // Type (short name)
 					,
 					"0x"
 						+ Helper.HexString(
@@ -698,7 +699,7 @@ namespace SimPe.PackedFiles.UserInterface
 		private bool instIsBhav()
 		{
 			return wrapper.ResourceByInstance(
-					Data.MetaData.BHAV_FILE,
+					Data.FileTypes.BHAV,
 					currentInst.Instruction.OpCode
 				) != null;
 		}
@@ -992,7 +993,7 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				int minArgc = 0;
 				int minLocalC = 0;
-				TPRP tprp = (TPRP)wrapper.SiblingResource(TPRP.TPRPtype); // find TPRP for this BHAV
+				TPRP tprp = (TPRP)wrapper.SiblingResource(FileTypes.TPRP); // find TPRP for this BHAV
 
 				wrapper.Package.BeginUpdate();
 
@@ -1073,7 +1074,7 @@ namespace SimPe.PackedFiles.UserInterface
 					tprp = new TPRP
 					{
 						FileDescriptor = newPFD(
-						TPRP.TPRPtype,
+						FileTypes.TPRP,
 						wrapper.FileDescriptor.Group,
 						wrapper.FileDescriptor.SubType,
 						wrapper.FileDescriptor.Instance
@@ -1268,7 +1269,7 @@ namespace SimPe.PackedFiles.UserInterface
 		private void FiletableRefresh(object sender, EventArgs e)
 		{
 			pjse_banner1.SiblingEnabled =
-				wrapper != null && wrapper.SiblingResource(TPRP.TPRPtype) != null;
+				wrapper != null && wrapper.SiblingResource(FileTypes.TPRP) != null;
 			UpdateInstPanel();
 		}
 
@@ -1294,7 +1295,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 			WrapperChanged(wrapper, null);
 			pjse_banner1.SiblingEnabled =
-				wrapper.SiblingResource(TPRP.TPRPtype) != null;
+				wrapper.SiblingResource(FileTypes.TPRP) != null;
 
 			currentInst = null;
 			origInst = null;
@@ -1383,7 +1384,7 @@ namespace SimPe.PackedFiles.UserInterface
 		void FileDescriptor_DescriptionChanged(object sender, EventArgs e)
 		{
 			pjse_banner1.SiblingEnabled =
-				wrapper.SiblingResource(TPRP.TPRPtype) != null;
+				wrapper.SiblingResource(FileTypes.TPRP) != null;
 			if (isPopup)
 			{
 				Text = formTitle;
@@ -2634,7 +2635,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void pjse_banner1_SiblingClick(object sender, EventArgs e)
 		{
-			TPRP tprp = (TPRP)wrapper.SiblingResource(TPRP.TPRPtype);
+			TPRP tprp = (TPRP)wrapper.SiblingResource(FileTypes.TPRP);
 			if (tprp == null)
 			{
 				return;
@@ -2717,7 +2718,7 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			common_LinkClicked(
 				wrapper.ResourceByInstance(
-					Data.MetaData.BHAV_FILE,
+					Data.FileTypes.BHAV,
 					currentInst.Instruction.OpCode
 				)
 			);
@@ -2730,7 +2731,7 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			common_LinkClicked(
 				wrapper.ResourceByInstance(
-					Data.MetaData.BHAV_FILE,
+					Data.FileTypes.BHAV,
 					wrapper.FileDescriptor.Instance,
 					(pjse.FileTable.Source)llHidesOP.Tag
 				)
@@ -2767,7 +2768,7 @@ namespace SimPe.PackedFiles.UserInterface
 		private void btnOpCode_Clicked(object sender, EventArgs e)
 		{
 			pjse.FileTable.Entry item = new ResourceChooser().Execute(
-				Data.MetaData.BHAV_FILE,
+				Data.FileTypes.BHAV,
 				wrapper.FileDescriptor.Group,
 				bhavPanel.Parent,
 				false
@@ -3425,7 +3426,7 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			pnflowcontainer.Append(
 				new ResourceChooser().Execute(
-					Data.MetaData.BHAV_FILE,
+					Data.FileTypes.BHAV,
 					wrapper.FileDescriptor.Group,
 					bhavPanel.Parent,
 					true,

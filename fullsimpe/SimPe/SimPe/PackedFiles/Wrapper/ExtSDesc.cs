@@ -356,7 +356,7 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				Interfaces.Files.IPackedFileDescriptor spfd =
 					cache.Package.FindFile(
-						Data.MetaData.RELATION_FILE,
+						Data.FileTypes.SREL,
 						0,
 						cache.FileDescriptor.Group,
 						sinst
@@ -388,7 +388,7 @@ namespace SimPe.PackedFiles.Wrapper
 			ExtSrel srel = new ExtSrel();
 			uint inst = GetRelationInstance(sdesc);
 			srel.FileDescriptor = package.NewDescriptor(
-				Data.MetaData.RELATION_FILE,
+				Data.FileTypes.SREL,
 				0,
 				FileDescriptor.Group,
 				inst
@@ -507,7 +507,7 @@ namespace SimPe.PackedFiles.Wrapper
 				if (sdna == null)
 				{
 					Interfaces.Files.IPackedFileDescriptor pfd = package.FindFile(
-						Data.MetaData.SDNA,
+						Data.FileTypes.SDNA,
 						0,
 						Data.MetaData.LOCAL_GROUP,
 						FileDescriptor.Instance

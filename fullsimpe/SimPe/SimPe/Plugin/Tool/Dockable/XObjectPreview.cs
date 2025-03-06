@@ -4,6 +4,7 @@
 using System.ComponentModel;
 using System.Drawing;
 
+using SimPe.Data;
 using SimPe.PackedFiles.Cpf;
 
 namespace SimPe.Plugin.Tool.Dockable
@@ -13,18 +14,18 @@ namespace SimPe.Plugin.Tool.Dockable
 	/// </summary>
 	public class ObjectPreview : SimpleObjectPreview
 	{
-		uint[] xtypes;
+		FileTypes[] xtypes;
 
 		public ObjectPreview()
 			: base()
 		{
-			xtypes = new uint[]
+			xtypes = new FileTypes[]
 			{
-				Data.MetaData.XFLR,
-				Data.MetaData.XFNC,
-				Data.MetaData.XROF,
-				Data.MetaData.XOBJ,
-				Data.MetaData.XNGB,
+				FileTypes.XFLR,
+				FileTypes.XFNC,
+				FileTypes.XROF,
+				FileTypes.XOBJ,
+				FileTypes.XNGB,
 			};
 		}
 
@@ -95,7 +96,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 
 			//this is a regular Object?
-			if (pkg.FindFiles(Data.MetaData.OBJD_FILE).Length > 0)
+			if (pkg.FindFiles(FileTypes.OBJD).Length > 0)
 			{
 				cpf = null;
 				base.SetFromPackage(pkg);
@@ -105,7 +106,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			objd = null;
 			cpf = null; // CJH
 
-			foreach (uint t in xtypes)
+			foreach (FileTypes t in xtypes)
 			{
 				Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(t);
 				if (pfds.Length > 0)
@@ -139,7 +140,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				Cache.ObjectCacheItem.GetCategory(
 					Cache.ObjectCacheItemVersions.DockableOW,
 					(Data.ObjFunctionSubSort)GetFunctionSort(cpf),
-					Data.ObjectTypes.Normal,
+					ObjectTypes.Normal,
 					Cache.ObjectClass.XObject
 				)
 			);
@@ -180,7 +181,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			{
 				//Get the Name of the Object
 				Interfaces.Files.IPackedFileDescriptor ctss = cpf.Package.FindFile(
-					cpf.GetSaveItem("stringsetrestypeid").UIntegerValue,
+					(FileTypes)cpf.GetSaveItem("stringsetrestypeid").UIntegerValue,
 					0,
 					cpf.GetSaveItem("stringsetgroupid").UIntegerValue,
 					cpf.GetSaveItem("stringsetid").UIntegerValue
@@ -207,17 +208,17 @@ namespace SimPe.Plugin.Tool.Dockable
 					switch (cpf.GetSaveItem("sort").StringValue.Trim().ToLower())
 					{
 						case "landmark":
-							return Data.XObjFunctionSubSort.Hood_Landmark;
+							return XObjFunctionSubSort.Hood_Landmark;
 						case "flora":
-							return Data.XObjFunctionSubSort.Hood_Flora;
+							return XObjFunctionSubSort.Hood_Flora;
 						case "effects":
-							return Data.XObjFunctionSubSort.Hood_Effects;
+							return XObjFunctionSubSort.Hood_Effects;
 						case "misc":
-							return Data.XObjFunctionSubSort.Hood_Misc;
+							return XObjFunctionSubSort.Hood_Misc;
 						case "stone":
-							return Data.XObjFunctionSubSort.Hood_Stone;
+							return XObjFunctionSubSort.Hood_Stone;
 						default:
-							return Data.XObjFunctionSubSort.Hood_Other;
+							return XObjFunctionSubSort.Hood_Other;
 					}
 				}
 				case "wall":
@@ -227,28 +228,28 @@ namespace SimPe.Plugin.Tool.Dockable
 						.ToLower())
 					{
 						case "brick":
-							return Data.XObjFunctionSubSort.Wall_Brick;
+							return XObjFunctionSubSort.Wall_Brick;
 						case "masonry":
-							return Data.XObjFunctionSubSort.Wall_Masonry;
+							return XObjFunctionSubSort.Wall_Masonry;
 						case "paint":
-							return Data.XObjFunctionSubSort.Wall_Paint;
+							return XObjFunctionSubSort.Wall_Paint;
 						case "paneling":
-							return Data.XObjFunctionSubSort.Wall_Paneling;
+							return XObjFunctionSubSort.Wall_Paneling;
 						case "poured":
-							return Data.XObjFunctionSubSort.Wall_Poured;
+							return XObjFunctionSubSort.Wall_Poured;
 						case "siding":
-							return Data.XObjFunctionSubSort.Wall_Siding;
+							return XObjFunctionSubSort.Wall_Siding;
 						case "tile":
-							return Data.XObjFunctionSubSort.Wall_Tile;
+							return XObjFunctionSubSort.Wall_Tile;
 						case "wallpaper":
-							return Data.XObjFunctionSubSort.Wall_Wallpaper;
+							return XObjFunctionSubSort.Wall_Wallpaper;
 						default:
-							return Data.XObjFunctionSubSort.Wall_Other;
+							return XObjFunctionSubSort.Wall_Other;
 					}
 				}
 				case "terrainpaint":
 				{
-					return Data.XObjFunctionSubSort.Terrain;
+					return XObjFunctionSubSort.Terrain;
 				}
 				case "floor":
 				{
@@ -257,32 +258,32 @@ namespace SimPe.Plugin.Tool.Dockable
 						.ToLower())
 					{
 						case "brick":
-							return Data.XObjFunctionSubSort.Floor_Brick;
+							return XObjFunctionSubSort.Floor_Brick;
 						case "carpet":
-							return Data.XObjFunctionSubSort.Floor_Carpet;
+							return XObjFunctionSubSort.Floor_Carpet;
 						case "lino":
-							return Data.XObjFunctionSubSort.Floor_Lino;
+							return XObjFunctionSubSort.Floor_Lino;
 						case "poured":
-							return Data.XObjFunctionSubSort.Floor_Poured;
+							return XObjFunctionSubSort.Floor_Poured;
 						case "stone":
-							return Data.XObjFunctionSubSort.Floor_Stone;
+							return XObjFunctionSubSort.Floor_Stone;
 						case "tile":
-							return Data.XObjFunctionSubSort.Floor_Tile;
+							return XObjFunctionSubSort.Floor_Tile;
 						case "wood":
-							return Data.XObjFunctionSubSort.Floor_Wood;
+							return XObjFunctionSubSort.Floor_Wood;
 						default:
-							return Data.XObjFunctionSubSort.Floor_Other;
+							return XObjFunctionSubSort.Floor_Other;
 					}
 				}
 				case "roof":
 				{
-					return Data.XObjFunctionSubSort.Roof;
+					return XObjFunctionSubSort.Roof;
 				}
 				case "fence":
 				{
 					return cpf.GetSaveItem("ishalfwall").UIntegerValue == 1
-						? Data.XObjFunctionSubSort.Fence_Halfwall
-						: Data.XObjFunctionSubSort.Fence_Rail;
+						? XObjFunctionSubSort.Fence_Halfwall
+						: XObjFunctionSubSort.Fence_Rail;
 				}
 				default:
 				{
@@ -318,25 +319,25 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 
 			//get Thumbnail Type
-			uint[] types = new uint[] { }; //{0x8C311262, 0x8C31125E}; //floors, walls - no point loading these, this can't find these thumbs anyway
-			if (fss == Data.XObjFunctionSubSort.Roof)
+			FileTypes[] types = new FileTypes[] { }; //{FileTypes.THUMB_FLOOR, FileTypes.THUMB_WALL}; //floors, walls - no point loading these, this can't find these thumbs anyway
+			if (fss == XObjFunctionSubSort.Roof)
 			{
-				types = new uint[] { 0xCC489E46 };
+				types = new FileTypes[] { FileTypes.THUMB_ROOF };
 			}
 			else if (
-				fss == Data.XObjFunctionSubSort.Fence_Rail
-				|| fss == Data.XObjFunctionSubSort.Fence_Halfwall
+				fss == XObjFunctionSubSort.Fence_Rail
+				|| fss == XObjFunctionSubSort.Fence_Halfwall
 			)
 			{
-				types = new uint[] { 0xCC30CDF8 };
+				types = new FileTypes[] { FileTypes.THUMB_FENCE };
 			}
-			else if (fss == Data.XObjFunctionSubSort.Roof)
+			else if (fss == XObjFunctionSubSort.Roof)
 			{
-				types = new uint[] { 0xCC489E46 };
+				types = new FileTypes[] { FileTypes.THUMB_ROOF };
 			}
-			else if (fss == Data.XObjFunctionSubSort.Terrain)
+			else if (fss == XObjFunctionSubSort.Terrain)
 			{
-				types = new uint[] { 0xEC3126C4 };
+				types = new FileTypes[] { FileTypes.THUMB_TERRAIN };
 				if (cpf.GetItem("texturetname") != null)
 				{
 					inst = Hashes.GetCrc32(
@@ -346,9 +347,9 @@ namespace SimPe.Plugin.Tool.Dockable
 					);
 				}
 			}
-			else if (cpf.FileDescriptor.Type == Data.MetaData.XNGB)
+			else if (cpf.FileDescriptor.Type == FileTypes.XNGB)
 			{
-				types = new uint[] { 0x4D533EDD };
+				types = new FileTypes[] { FileTypes.THUMB_NHOBJ };
 				if (nthumbs == null)
 				{
 					nthumbs = Packages.File.LoadFromFile(

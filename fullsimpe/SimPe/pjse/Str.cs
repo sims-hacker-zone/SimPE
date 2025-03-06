@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
+using SimPe.Data;
 using SimPe.PackedFiles.Wrapper;
 
 namespace pjse
@@ -17,7 +18,7 @@ namespace pjse
 
 		static Str()
 		{
-			uint[] aui = { 0x43545353, 0x53545223, 0x54544173 }; // CTSS ,STR# ,TTAs ,
+			FileTypes[] aui = { FileTypes.CTSS, FileTypes.STR, FileTypes.TTAs };
 			ValidTypes = new ArrayList(aui);
 		}
 
@@ -25,7 +26,7 @@ namespace pjse
 		public ExtendedWrapper Parent { get; private set; } = null;
 		public uint Group { get; } = 0;
 		public uint Instance { get; } = 0;
-		public uint Type { get; } = 0;
+		public FileTypes Type { get; } = 0;
 
 		public Str(Scope scope, ExtendedWrapper parent, uint instance, bool fallback)
 			: this(
@@ -33,7 +34,7 @@ namespace pjse
 				fallback ? parent : null,
 				parent.GroupForScope(scope),
 				instance,
-				SimPe.Data.MetaData.STRING_FILE
+				SimPe.Data.FileTypes.STR
 			)
 		{
 		}
@@ -44,7 +45,7 @@ namespace pjse
 				parent,
 				parent.GroupForScope(scope),
 				instance,
-				SimPe.Data.MetaData.STRING_FILE
+				FileTypes.STR
 			)
 		{
 		}
@@ -55,12 +56,12 @@ namespace pjse
 				null,
 				(uint)pjse.Group.Parsing,
 				(uint)instance,
-				SimPe.Data.MetaData.STRING_FILE
+				FileTypes.STR
 			)
 		{
 		}
 
-		public Str(ExtendedWrapper parent, uint instance, uint type)
+		public Str(ExtendedWrapper parent, uint instance, FileTypes type)
 			: this(Scope.Private, parent, parent.PrivateGroup, instance, type) { }
 
 		protected Str(
@@ -68,7 +69,7 @@ namespace pjse
 			ExtendedWrapper parent,
 			uint group,
 			uint instance,
-			uint type
+			FileTypes type
 		)
 		{
 			if (!ValidTypes.Contains(type))
@@ -97,11 +98,11 @@ namespace pjse
 			private Hashtable groupHash = new Hashtable();
 			public Str this[uint group, uint instance]
 			{
-				get => this[group, instance, SimPe.Data.MetaData.STRING_FILE];
-				set => this[group, instance, SimPe.Data.MetaData.STRING_FILE] = value;
+				get => this[group, instance, SimPe.Data.FileTypes.STR];
+				set => this[group, instance, SimPe.Data.FileTypes.STR] = value;
 			}
 
-			public Str this[uint group, uint instance, uint type]
+			public Str this[uint group, uint instance, FileTypes type]
 			{
 				get
 				{
@@ -405,7 +406,7 @@ namespace pjse
 			int sid
 		)
 		{
-			Str str = new Str(parent, group, instance);
+			Str str = new Str(parent, group, (FileTypes)instance);
 			return str?[lid, sid];
 		}
 

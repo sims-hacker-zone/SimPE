@@ -23,7 +23,7 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 			Interfaces.Files.IPackedFileDescriptor pfd
 		)
 		{
-			if (pfd.Type != Data.MetaData.NAME_MAP)
+			if (pfd.Type != Data.FileTypes.NMAP)
 			{
 				return;
 			}
@@ -63,7 +63,7 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 
 					foreach (
 						Interfaces.Scenegraph.IScenegraphFileIndexItem rfii in FileTableBase.FileIndex.FindFileDiscardingHighInstance(
-							pfd.Instance,
+							(Data.FileTypes)pfd.Instance,
 							mypfd.Group,
 							mypfd.Instance,
 							null

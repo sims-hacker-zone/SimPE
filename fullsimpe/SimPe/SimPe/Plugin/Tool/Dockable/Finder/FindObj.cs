@@ -32,7 +32,7 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 			Interfaces.Files.IPackedFileDescriptor pfd
 		)
 		{
-			if (pfd.Type != Data.MetaData.OBJD_FILE)
+			if (pfd.Type != Data.FileTypes.OBJD)
 			{
 				return;
 			}

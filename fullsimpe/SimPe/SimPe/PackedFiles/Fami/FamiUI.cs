@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
+using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.UserInterface;
@@ -76,14 +77,14 @@ namespace SimPe.PackedFiles.Fami
 			//form.panel4.HeaderText = Data.MetaData.NPCFamily(fami.FileDescriptor.Instance);
 			form.btOpenHistory.Visible =
 				fami.Package.FindFile(
-					0x46414D68,
+					FileTypes.FAMH,
 					fami.FileDescriptor.SubType,
 					fami.FileDescriptor.Group,
 					fami.FileDescriptor.Instance
 				) != null
 			;
 			form.label15.ForeColor = fami.LotInstance == 0
-				|| fami.Package.FindFile(0x0BF999E7, 0, 0xFFFFFFFF, fami.LotInstance)
+				|| fami.Package.FindFile(FileTypes.LTXT, 0, 0xFFFFFFFF, fami.LotInstance)
 					== null
 				? SystemColors.ControlText
 				: Color.Blue;

@@ -6,6 +6,8 @@ using System.IO;
 using System.Windows.Forms;
 using System.Xml;
 
+using SimPe.Data;
+
 namespace SimPe
 {
 	/// <summary>
@@ -33,14 +35,14 @@ namespace SimPe
 
 			ArrayList list = new ArrayList();
 			//Alle Eintr&auml;ge im Root Node verarbeiten
-			Data.MetaData.IndexTypes type = Data.MetaData.IndexTypes.ptShortFileIndex;
+			Data.IndexTypes type = Data.IndexTypes.ptShortFileIndex;
 			for (int i = 0; i < XMLData.Count; i++)
 			{
 				XmlNode node = XMLData.Item(i);
 
 				object o = node.Attributes["type"].Value ?? "1";
 
-				type = (Data.MetaData.IndexTypes)uint.Parse(o.ToString());
+				type = (Data.IndexTypes)uint.Parse(o.ToString());
 
 				if (pb != null)
 				{
@@ -71,7 +73,7 @@ namespace SimPe
 			foreach (Packages.PackedFileDescriptor pfd in list)
 			{
 				file.Add(pfd);
-				if (pfd.Type == Packages.File.FILELIST_TYPE)
+				if (pfd.Type == FileTypes.CLST)
 				{
 					file.FileList = pfd;
 				}
@@ -147,7 +149,7 @@ namespace SimPe
 							{
 								case "number":
 								{
-									pfd.Type = Convert.ToUInt32(typenode.InnerText);
+									pfd.Type = (FileTypes)Convert.ToUInt32(typenode.InnerText);
 									break;
 								}
 							}

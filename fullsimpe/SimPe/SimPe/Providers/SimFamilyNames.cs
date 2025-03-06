@@ -47,7 +47,7 @@ namespace SimPe.Providers
 
 			Fami fami = new Fami(null);
 			Hashtable al = new Hashtable();
-			foreach (uint type in fami.AssignableTypes)
+			foreach (FileTypes type in fami.AssignableTypes)
 			{
 				IPackedFileDescriptor[] list = BasePackage.FindFiles(type);
 
@@ -148,7 +148,7 @@ namespace SimPe.Providers
 
 			//load a list of all avail SimID's
 			ArrayList simids = new ArrayList();
-			/*IPackedFileDescriptor[] pfds = BasePackage.FindFiles(Data.MetaData.SIM_DESCRIPTION_FILE);
+			/*IPackedFileDescriptor[] pfds = BasePackage.FindFiles(Data.FileTypes.SDSC);
 
 			SimPe.PackedFiles.Wrapper.SDesc sdesc = new SimPe.PackedFiles.Wrapper.SDesc(null, null, null);
 			foreach(IPackedFileDescriptor pfd in pfds)

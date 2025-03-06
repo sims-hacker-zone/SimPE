@@ -71,7 +71,7 @@ namespace pjOBJDTool
 			}
 
 			pjse.FileTable.Entry[] actss = pjse.FileTable.GFT[
-				SimPe.Data.MetaData.CTSS_FILE,
+				SimPe.Data.FileTypes.CTSS,
 				wrapper.FileDescriptor.Group,
 				docCTSSInstance.Value
 			];
@@ -633,7 +633,7 @@ namespace pjOBJDTool
 
 				List<pfOBJD> lpfo = new List<pfOBJD>();
 				pjse.FileTable.Entry[] items = pjse.FileTable.GFT[
-					SimPe.Data.MetaData.OBJD_FILE,
+					SimPe.Data.FileTypes.OBJD,
 					pjse.FileTable.Source.Local
 				];
 				SimPe.Wait.Start(items.Length);

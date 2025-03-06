@@ -268,7 +268,7 @@ namespace pjHoodTool
 			);
 			eft = new ExtFamilyTies();
 			IPackedFileDescriptor[] pfds = pkg.FindFiles(
-				SimPe.Data.MetaData.FAMILY_TIES_FILE
+				FileTypes.FAMT
 			);
 			if (pfds != null && pfds.Length > 0)
 			{
@@ -296,7 +296,7 @@ namespace pjHoodTool
 
 			string hoodtipe = "Primary";
 			string hoodName = Localization.GetString("Unknown");
-			IPackedFileDescriptor[] pfds = pkg.FindFiles(SimPe.Data.MetaData.CTSS_FILE);
+			IPackedFileDescriptor[] pfds = pkg.FindFiles(SimPe.Data.FileTypes.CTSS);
 			StrWrapper ctss = null;
 			Idno ntype = null;
 			if (pfds.Length == 1)
@@ -323,7 +323,7 @@ namespace pjHoodTool
 
 			dt = new DateTime(0);
 			wasUnk = true;
-			pfds = pkg.FindFiles(SimPe.Data.MetaData.SIM_DESCRIPTION_FILE);
+			pfds = pkg.FindFiles(FileTypes.SDSC);
 			foreach (IPackedFileDescriptor spfd in pfds)
 			{
 				ExtSDesc sdsc = new ExtSDesc();
@@ -352,7 +352,7 @@ namespace pjHoodTool
 
 				dt = new DateTime(0);
 				wasUnk = true;
-				pfds = pkg.FindFiles(Ltxt.Ltxttype);
+				pfds = pkg.FindFiles(FileTypes.LTXT);
 				foreach (IPackedFileDescriptor spfd in pfds)
 				{
 					Ltxt ltxt = new Ltxt();
@@ -374,7 +374,7 @@ namespace pjHoodTool
 						{
 							pkg = SimPe.Packages.File.LoadFromFile(file);
 							hoodName = Localization.GetString("Unknown");
-							pfds = pkg.FindFiles(SimPe.Data.MetaData.CTSS_FILE);
+							pfds = pkg.FindFiles(SimPe.Data.FileTypes.CTSS);
 							if (pfds.Length == 1)
 							{
 								ctss = new StrWrapper();
@@ -392,7 +392,7 @@ namespace pjHoodTool
 								System.Windows.Forms.Application.DoEvents();
 								splash("Loading Subhood : " + hoodName);
 							}
-							pfds = pkg.FindFiles(SimPe.Data.MetaData.IDNO);
+							pfds = pkg.FindFiles(FileTypes.IDNO);
 							if (pfds.Length == 1)
 							{
 								ntype = new Idno();
@@ -412,7 +412,7 @@ namespace pjHoodTool
 							}
 
 							SetProvider(pkg);
-							pfds = pkg.FindFiles(Ltxt.Ltxttype);
+							pfds = pkg.FindFiles(FileTypes.LTXT);
 							foreach (IPackedFileDescriptor spfd in pfds)
 							{
 								Ltxt ltxt = new Ltxt();
@@ -459,7 +459,7 @@ namespace pjHoodTool
 			}
 			else
 			{
-				IPackedFileDescriptor[] pfds = pkg.FindFiles(StrWrapper.CTSStype);
+				IPackedFileDescriptor[] pfds = pkg.FindFiles(FileTypes.CTSS);
 				if (pfds == null || pfds.Length == 0)
 				{
 					if (SimPe.Data.MetaData.GetKnownNPC(sdsc.SimId) != "not found")
@@ -557,7 +557,7 @@ namespace pjHoodTool
 			#region family
 			string family = ",,";
 			IPackedFileDescriptor pfd = sdsc.Package.FindFile(
-				0x46414D49,
+				FileTypes.FAMI,
 				0x00000000,
 				0xffffffff,
 				sdsc.FamilyInstance

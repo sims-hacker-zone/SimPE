@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 using pjse.BhavNameWizards;
 
+using SimPe.Data;
 using SimPe.PackedFiles.Wrapper;
 
 namespace pjse.BhavOperandWizards.WizBhav
@@ -319,14 +320,14 @@ namespace pjse.BhavOperandWizards.WizBhav
 			nodeVersion = inst.NodeVersion;
 
 			FileTable.Entry ftEntry = inst.Parent.ResourceByInstance(
-				SimPe.Data.MetaData.BHAV_FILE,
+				SimPe.Data.FileTypes.BHAV,
 				inst.OpCode
 			);
 			TPRP tprp = null;
 			if (ftEntry != null)
 			{
 				Bhav wrapper = (Bhav)ftEntry.Wrapper;
-				tprp = (TPRP)wrapper.SiblingResource(TPRP.TPRPtype);
+				tprp = (TPRP)wrapper.SiblingResource(FileTypes.TPRP);
 				nrArgs = wrapper.Header.ArgumentCount;
 
 				lbBhavName.Text =

@@ -151,7 +151,7 @@ namespace SimPe.Providers
 		{
 			IPackageFile fl = objd.Package;
 			//BinaryReader br = new BinaryReader(File.OpenRead(file));//new StreamReader(file)
-			bool hasagedata = fl.FindFiles(0xAC598EAC).Length > 0; //has Age Data
+			bool hasagedata = fl.FindFiles(FileTypes.AGED).Length > 0; //has Age Data
 			object[] tags = new object[5];
 			tags[0] = fl.FileName;
 			tags[1] = null;
@@ -159,7 +159,7 @@ namespace SimPe.Providers
 			tags[3] = hasagedata;
 			tags[4] = null;
 			/*if (Helper.WindowsRegistry.HiddenMode)
-				tags[5] = (!hasagedata) && (fl.FindFiles(0xAC506764).Length>0); //if this is true, the Sim has a Problem, and the package was probably split
+				tags[5] = (!hasagedata) && (fl.FindFiles(FileTypes.THREE_IDR).Length>0); //if this is true, the Sim has a Problem, and the package was probably split
 			else
 				tags[5] = false;*/
 
@@ -174,7 +174,7 @@ namespace SimPe.Providers
 			Alias a = null;
 
 			IPackedFileDescriptor str_pfd = fl.FindFile(
-				MetaData.CTSS_FILE,
+				FileTypes.CTSS,
 				0,
 				objd.FileDescriptor.Group,
 				objd.CTSSInstance
@@ -204,7 +204,7 @@ namespace SimPe.Providers
 			if (a != null)
 			{
 				IPackedFileDescriptor[] piclist = fl.FindFiles(
-					MetaData.SIM_IMAGE_FILE
+					FileTypes.IMG
 				);
 				foreach (IPackedFileDescriptor pfd in piclist)
 				{
@@ -296,7 +296,7 @@ namespace SimPe.Providers
 
 			IEnumerable<Interfaces.Scenegraph.IScenegraphFileIndexItem> items =
 				FileTableBase.FileIndex.FindFileDiscardingGroup(
-					MetaData.OBJD_FILE,
+					FileTypes.OBJD,
 					inst
 				);
 			Wait.MaxProgress = items.Count();
@@ -370,7 +370,7 @@ namespace SimPe.Providers
 						}
 
 						IPackedFileDescriptor[] list = fl.FindFiles(
-							MetaData.OBJD_FILE
+							FileTypes.OBJD
 						);
 						if (list.Length > 0)
 						{

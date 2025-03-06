@@ -26,7 +26,7 @@ namespace SimPe.Plugin.Tool.Action
 		{
 			return es.Loaded
 && es.LoadedPackage.Package.FindFiles(
-					Data.MetaData.SIM_DESCRIPTION_FILE
+					Data.FileTypes.SDSC
 				).Length > 0;
 		}
 
@@ -45,7 +45,7 @@ namespace SimPe.Plugin.Tool.Action
 			PackedFiles.Wrapper.SimDNA sdna; // Fuck
 
 			Interfaces.Files.IPackedFileDescriptor[] pfds =
-				e.LoadedPackage.Package.FindFiles(Data.MetaData.SIM_DESCRIPTION_FILE);
+				e.LoadedPackage.Package.FindFiles(Data.FileTypes.SDSC);
 
 			PackedFiles.Wrapper.SDesc sdesc = new PackedFiles.Wrapper.SDesc(
 				null,
@@ -70,7 +70,7 @@ namespace SimPe.Plugin.Tool.Action
 
 				Interfaces.Files.IPackedFileDescriptor pfb =
 					e.LoadedPackage.Package.FindFileAnyGroup(
-						Data.MetaData.SDNA,
+						Data.FileTypes.SDNA,
 						0,
 						pfd.Instance
 					);

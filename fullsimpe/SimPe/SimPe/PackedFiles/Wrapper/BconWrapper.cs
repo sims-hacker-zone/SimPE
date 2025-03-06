@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Wrapper
@@ -15,15 +16,7 @@ namespace SimPe.PackedFiles.Wrapper
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
 	public class Bcon
-		: pjse.ExtendedWrapper<
-			BconItem,
-			Bcon
-		> //AbstractWrapper				//Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
-			,
-			IFileWrapper //This Interface is used when loading a File
-			,
-			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
-									  //,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
+		: pjse.ExtendedWrapper<BconItem, Bcon>, IFileWrapper, IFileWrapperSaveExtension
 	{
 		#region Attributes
 		/// <summary>
@@ -143,13 +136,11 @@ namespace SimPe.PackedFiles.Wrapper
 
 		#endregion
 
-		public const uint Bcontype = 0x42434F4E;
-
 		#region IFileWrapper Member
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes => new uint[] { Bcontype };
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.BCON };
 
 		/// <summary>
 		/// Returns the Signature that can be used to identify Files processable with this Plugin

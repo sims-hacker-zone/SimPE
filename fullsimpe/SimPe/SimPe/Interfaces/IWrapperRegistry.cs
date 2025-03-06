@@ -3,6 +3,8 @@
 using System;
 using System.Collections.Generic;
 
+using SimPe.Data;
+
 namespace SimPe.Interfaces
 {
 	/// <summary>
@@ -56,7 +58,7 @@ namespace SimPe.Interfaces
 		/// </summary>
 		/// <param name="type">The Type of the PackedFile</param>
 		/// <returns>The assigned Handler or null if none was found</returns>
-		Plugin.Internal.IPackedFileWrapper FindHandler(uint type);
+		Plugin.Internal.IPackedFileWrapper FindHandler(FileTypes type);
 
 		/// <summary>
 		/// Returns the first Handler capable of processing a File

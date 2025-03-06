@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 
+using SimPe.Data;
+using SimPe.Extensions;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
 
@@ -135,7 +137,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		public override byte[] FileSignature => new byte[0];
 
-		public override uint[] AssignableTypes => new uint[] { Data.MetaData.SDNA };
+		public override FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.SDNA };
 
 		public override string DescriptionHeader
 		{
@@ -165,12 +167,12 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 		}
 
-		protected override string GetResourceName(Data.TypeAlias ta)
+		protected override string GetResourceName(FileTypeInformation fti)
 		{
 			return !(FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
 					(ushort)FileDescriptor.Instance
 				) is ExtSDesc sdsc)
-				? base.GetResourceName(ta)
+				? base.GetResourceName(fti)
 				: sdsc.SimName + " " + sdsc.SimFamilyName + " (DNA)";
 		}
 	}

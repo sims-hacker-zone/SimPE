@@ -484,7 +484,7 @@ namespace SimPe.Plugin
 
 			if (
 				sdesc.CharacterDescription.ServiceTypes
-				== MetaData.ServiceTypes.TinySim
+				== ServiceTypes.TinySim
 			)
 			{
 				return;
@@ -512,7 +512,7 @@ namespace SimPe.Plugin
 			if (
 				cbadults.Checked
 				&& sdesc.CharacterDescription.LifeSection
-					!= MetaData.LifeSections.Adult
+					!= LifeSections.Adult
 			)
 			{
 				return;
@@ -572,7 +572,7 @@ namespace SimPe.Plugin
 				ArrayList tones = new ArrayList();
 				FileTableBase.FileIndex.Load();
 				System.Collections.Generic.IEnumerable<Interfaces.Scenegraph.IScenegraphFileIndexItem> items =
-					FileTableBase.FileIndex.FindFile(MetaData.GZPS, true);
+					FileTableBase.FileIndex.FindFile(FileTypes.GZPS, true);
 				foreach (
 					Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
 				)
@@ -631,7 +631,7 @@ namespace SimPe.Plugin
 
 							Interfaces.Scenegraph.IScenegraphFileIndexItem idr =
 								FileTableBase.FileIndex.FindFile(
-									0xAC506764,
+									FileTypes.THREE_IDR,
 									item.FileDescriptor.Group,
 									item.FileDescriptor.LongInstance,
 									null
@@ -657,7 +657,7 @@ namespace SimPe.Plugin
 									Interfaces.Files.IPackedFileDescriptor pfd in reffile.Items
 								)
 								{
-									if (pfd.Type == MetaData.TXMT)
+									if (pfd.Type == FileTypes.TXMT)
 									{
 										Interfaces.Scenegraph.IScenegraphFileIndexItem txmt =
 											FileTableBase.FileIndex.FindFile(pfd, null).FirstOrDefault();
@@ -679,7 +679,7 @@ namespace SimPe.Plugin
 											Interfaces.Scenegraph.IScenegraphFileIndexItem txtri =
 												FileTableBase.FileIndex.FindFileByName(
 													txtrname,
-													MetaData.TXTR,
+													FileTypes.TXTR,
 													MetaData.LOCAL_GROUP,
 													true
 												);
@@ -759,7 +759,7 @@ namespace SimPe.Plugin
 			lv.Items.Clear();
 
 			Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(
-				MetaData.SIM_DESCRIPTION_FILE
+				FileTypes.SDSC
 			);
 			WaitingScreen.Wait();
 			try
@@ -1015,7 +1015,7 @@ namespace SimPe.Plugin
 
 				//Load Facial Data
 				Interfaces.Files.IPackedFileDescriptor[] apfds = archetype.FindFiles(
-					0xCCCEF852
+					FileTypes.LxNR
 				); //LxNR, Face
 				if (apfds.Length == 0)
 				{
@@ -1025,7 +1025,7 @@ namespace SimPe.Plugin
 				Interfaces.Files.IPackedFile file = archetype.Read(apfds[0]);
 
 				Interfaces.Files.IPackedFileDescriptor[] ppfds = patient.FindFiles(
-					0xCCCEF852
+					FileTypes.LxNR
 				); //LxNR, Face
 				if (ppfds.Length == 0)
 				{
@@ -1062,16 +1062,16 @@ namespace SimPe.Plugin
 				//list of all Files top copy from the Archetype
 				ArrayList list = new ArrayList
 				{
-					0xAC506764, //3IDR
-					0xE519C933, //CRES
-					0xEBCF3E27, //GZPS, Property Set
-					0xAC598EAC, //AGED
-					0xCCCEF852, //LxNR, Face
-					(uint)0x0C560F39, //BINX
-					0xAC4F8687, //GMDC
-					(uint)0x7BA3838C, //GMND
-					(uint)0x49596978, //MATD
-					0xFC6EB1F7 //SHPE
+					FileTypes.THREE_IDR, //3IDR
+					FileTypes.CRES,
+					FileTypes.GZPS,
+					FileTypes.AGED, //AGED
+					FileTypes.LxNR, //LxNR, Face
+					(uint)FileTypes.BINX, //BINX
+					FileTypes.GMDC,
+					(uint)FileTypes.GMND,
+					(uint)FileTypes.TXMT, //MATD
+					FileTypes.SHPE
 				};
 
 				System.IO.BinaryReader br1 = new System.IO.BinaryReader(
@@ -1089,7 +1089,7 @@ namespace SimPe.Plugin
 						Group = 0xffffffff,
 						SubType = 0x00000000,
 						Instance = 0xFF123456,
-						Type = 0xAC506764, //3IDR
+						Type = FileTypes.THREE_IDR, //3IDR
 						UserData = br1.ReadBytes((int)br1.BaseStream.Length)
 					};
 
@@ -1099,7 +1099,7 @@ namespace SimPe.Plugin
 						Group = 0xffffffff,
 						SubType = 0x00000000,
 						Instance = 0xFF123456,
-						Type = 0x0C560F39, //BINX
+						Type = FileTypes.BINX, //BINX
 						UserData = br2.ReadBytes((int)br2.BaseStream.Length)
 					};
 
@@ -1134,8 +1134,8 @@ namespace SimPe.Plugin
 							patient.Add(pfd);
 
 							if (
-								(pfd.Type == MetaData.GZPS)
-								|| (pfd.Type == 0xAC598EAC)
+								(pfd.Type == FileTypes.GZPS)
+								|| (pfd.Type == FileTypes.AGED)
 							) //property set and 3IDR
 							{
 								Cpf cpf =
@@ -1293,16 +1293,16 @@ namespace SimPe.Plugin
 			// Could this list be static?
 			ArrayList list = new ArrayList
 			{
-				0xAC506764u, //3IDR
-				MetaData.GZPS, //GZPS, Property Set
-				0xAC598EACu, //AGED
-				0xCCCEF852u //LxNR, Face
+				FileTypes.THREE_IDR,
+				FileTypes.GZPS,
+				FileTypes.AGED,
+				FileTypes.LxNR
 			};
 			// For now we disregard the user options, and consider
 			// all these types mandatory.
 			for (
 				int i = 0;
-				i < list.Count && (ret = ContainsType(archeFile.Index, (uint)list[i]));
+				i < list.Count && (ret = ContainsType(archeFile.Index, (FileTypes)list[i]));
 				i++
 			)
 			{
@@ -1314,7 +1314,7 @@ namespace SimPe.Plugin
 
 		static bool ContainsType(
 			Interfaces.Files.IPackedFileDescriptor[] index,
-			uint type
+			FileTypes type
 		)
 		{
 			for (int i = 0; i < index.Length; i++)
@@ -1358,7 +1358,7 @@ namespace SimPe.Plugin
 			lv.Items.Clear();
 
 			Interfaces.Files.IPackedFileDescriptor[] pfds = ngbh.FindFiles(
-				MetaData.SIM_DESCRIPTION_FILE
+				FileTypes.SDSC
 			);
 			WaitingScreen.Wait();
 			try
@@ -1404,7 +1404,7 @@ namespace SimPe.Plugin
 			if (package != null)
 			{
 				Interfaces.Files.IPackedFileDescriptor pfdAged = package.FindFile(
-					0xAC598EAC,
+					FileTypes.AGED,
 					0,
 					MetaData.LOCAL_GROUP,
 					1
@@ -1428,7 +1428,7 @@ namespace SimPe.Plugin
 		void ShowSimDetails(Packages.File package, PropertyGrid pg)
 		{
 			Interfaces.Files.IPackedFileDescriptor pfdAged = package.FindFile(
-				0xAC598EAC,
+				FileTypes.AGED,
 				0,
 				MetaData.LOCAL_GROUP,
 				1

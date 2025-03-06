@@ -170,7 +170,7 @@ namespace SimPe.Plugin.Scanner
 				ArrayList basecpf = new ArrayList();
 
 				foreach (
-					Interfaces.Scenegraph.IScenegraphFileIndexItem item in FileTableBase.FileIndex.FindFile(Data.MetaData.GZPS, true)
+					Interfaces.Scenegraph.IScenegraphFileIndexItem item in FileTableBase.FileIndex.FindFile(Data.FileTypes.GZPS, true)
 				)
 				{
 					Cpf cpf = new Cpf();
@@ -210,7 +210,7 @@ namespace SimPe.Plugin.Scanner
 
 				//now select matching Files
 				Interfaces.Files.IPackedFileDescriptor[] pfds = src.FindFiles(
-					Data.MetaData.GZPS
+					Data.FileTypes.GZPS
 				);
 
 #if DEBUG
@@ -408,7 +408,7 @@ namespace SimPe.Plugin.Scanner
 
 				str.FileDescriptor = new Packages.PackedFileDescriptor
 				{
-					Type = Data.MetaData.STRING_FILE,
+					Type = Data.FileTypes.STR,
 					Group = Data.MetaData.LOCAL_GROUP,
 					LongInstance = 0
 				};

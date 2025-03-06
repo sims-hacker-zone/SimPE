@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Wrapper
@@ -267,7 +268,7 @@ namespace SimPe.PackedFiles.Wrapper
 				// TODO
 				//string gooee = "";
 				//uint gid;
-				//SimPe.Interfaces.Files.IPackedFileDescriptor[] nrfile = package.FindFiles(0x4E524546);
+				//SimPe.Interfaces.Files.IPackedFileDescriptor[] nrfile = package.FindFiles(FileTypes.NREF);
 				//foreach (Interfaces.Files.IPackedFileDescriptor pfd in nrfile)
 				//{
 				//    if (pfd.Group == this.FileDescriptor.Group)
@@ -490,23 +491,9 @@ namespace SimPe.PackedFiles.Wrapper
 		#endregion
 
 		#region IFileWrapper Member
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] Types = { 0x4F424A44 };
-				return Types;
-			}
-		}
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.OBJD };
 
-		public byte[] FileSignature
-		{
-			get
-			{
-				byte[] sig = { };
-				return sig;
-			}
-		}
+		public byte[] FileSignature => new byte[] { };
 
 		public override string Description => "FileName="
 					+ FileName

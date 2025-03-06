@@ -572,7 +572,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0024
 		private void doStrChooser(int which)
 		{
 			FileTable.Entry[] items = FileTable.GFT[
-				SimPe.Data.MetaData.STRING_FILE,
+				SimPe.Data.FileTypes.STR,
 				inst.Parent.GroupForScope(scope),
 				(uint)GS.GlobalStr.DialogString
 			];

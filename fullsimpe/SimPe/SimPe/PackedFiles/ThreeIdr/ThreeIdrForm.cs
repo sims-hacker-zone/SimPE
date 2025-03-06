@@ -3,6 +3,8 @@
 using System;
 using System.Windows.Forms;
 
+using SimPe.Data;
+using SimPe.Extensions;
 using SimPe.Forms.MainUI;
 using SimPe.Interfaces.Plugin;
 using SimPe.Plugin;
@@ -582,22 +584,19 @@ namespace SimPe.PackedFiles.ThreeIdr
 			tbtype.Text =
 				"0x"
 				+ Helper.HexString(
-					((Data.TypeAlias)cbtypes.Items[cbtypes.SelectedIndex]).Id
+					(uint)((FileTypeInformation)cbtypes.Items[cbtypes.SelectedIndex]).Type
 				);
 		}
 
 		private void tbtype_TextChanged(object sender, EventArgs e)
 		{
 			cbtypes.Tag = true;
-			Data.TypeAlias a = Data.MetaData.FindTypeAlias(
-				Helper.HexStringToUInt(tbtype.Text)
-			);
+			FileTypeInformation typeinfo = ((FileTypes)Helper.HexStringToUInt(tbtype.Text)).ToFileTypeInformation();
 
-			AutoChange(sender, e);
 			int ct = 0;
-			foreach (Data.TypeAlias i in cbtypes.Items)
+			foreach (FileTypeInformation i in cbtypes.Items)
 			{
-				if (i == a)
+				if (i == typeinfo)
 				{
 					cbtypes.SelectedIndex = ct;
 					cbtypes.Tag = null;
@@ -704,7 +703,7 @@ namespace SimPe.PackedFiles.ThreeIdr
 				pfd.Group = Convert.ToUInt32(tbgroup.Text, 16);
 				pfd.Instance = Convert.ToUInt32(tbinstance.Text, 16);
 				pfd.SubType = Convert.ToUInt32(tbsubtype.Text, 16);
-				pfd.Type = Convert.ToUInt32(tbtype.Text, 16);
+				pfd.Type = (Data.FileTypes)Convert.ToUInt32(tbtype.Text, 16);
 
 				if (lblist.SelectedIndex >= 0)
 				{

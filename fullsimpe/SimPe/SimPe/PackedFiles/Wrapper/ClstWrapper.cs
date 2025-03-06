@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 
+using SimPe.Data;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
 
@@ -15,18 +16,13 @@ namespace SimPe.PackedFiles.Wrapper
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
 	public class CompressedFileList
-		: AbstractWrapper //Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
-			,
-			IFileWrapper //This Interface is used when loading a File
-			,
-			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
-									  //,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
+		: AbstractWrapper, IFileWrapper, IFileWrapperSaveExtension
 	{
 		#region Attributes
 		/// <summary>
 		/// Returns or Sets wether the type of the Index
 		/// </summary>
-		public Data.MetaData.IndexTypes IndexType
+		public Data.IndexTypes IndexType
 		{
 			get; set;
 		}
@@ -46,7 +42,7 @@ namespace SimPe.PackedFiles.Wrapper
 		internal CompressedFileList()
 			: base()
 		{
-			IndexType = Data.MetaData.IndexTypes.ptShortFileIndex;
+			IndexType = Data.IndexTypes.ptShortFileIndex;
 			Items = new ClstItem[0];
 		}
 
@@ -54,7 +50,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// Constructor
 		/// </summary>
 		/// <param name="type">ize of the Package Index</param>
-		public CompressedFileList(Data.MetaData.IndexTypes type)
+		public CompressedFileList(Data.IndexTypes type)
 			: base()
 		{
 			IndexType = type;
@@ -96,7 +92,7 @@ namespace SimPe.PackedFiles.Wrapper
 					&& (lfi.Instance == pfd.Instance)
 					&& (
 						(lfi.SubType == pfd.SubType)
-						|| (IndexType == Data.MetaData.IndexTypes.ptShortFileIndex)
+						|| (IndexType == Data.IndexTypes.ptShortFileIndex)
 					)
 					&& (lfi.Type == pfd.Type)
 				)
@@ -164,7 +160,7 @@ namespace SimPe.PackedFiles.Wrapper
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
 			IndexType = package.Header.IndexType;
-			long count = IndexType == Data.MetaData.IndexTypes.ptLongFileIndex ? reader.BaseStream.Length / 0x14 : reader.BaseStream.Length / 0x10;
+			long count = IndexType == Data.IndexTypes.ptLongFileIndex ? reader.BaseStream.Length / 0x14 : reader.BaseStream.Length / 0x10;
 
 			Items = new ClstItem[count];
 
@@ -188,9 +184,9 @@ namespace SimPe.PackedFiles.Wrapper
 					)
 					{
 						i = 0;
-						IndexType = IndexType == Data.MetaData.IndexTypes.ptLongFileIndex
-							? Data.MetaData.IndexTypes.ptShortFileIndex
-							: Data.MetaData.IndexTypes.ptLongFileIndex;
+						IndexType = IndexType == Data.IndexTypes.ptLongFileIndex
+							? Data.IndexTypes.ptShortFileIndex
+							: Data.IndexTypes.ptLongFileIndex;
 
 						reader.BaseStream.Seek(pos, System.IO.SeekOrigin.Begin);
 						item = new ClstItem(IndexType);
@@ -228,30 +224,12 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns the Signature that can be used to identify Files processable with this Plugin
 		/// </summary>
-		public byte[] FileSignature
-		{
-			get
-			{
-				byte[] sig = { };
-				return sig;
-			}
-		}
+		public byte[] FileSignature => new byte[] { };
 
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] types =
-				{
-					0xE86B1EEF, //clst
-				};
-
-				return types;
-			}
-		}
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.CLST };
 
 		#endregion
 	}

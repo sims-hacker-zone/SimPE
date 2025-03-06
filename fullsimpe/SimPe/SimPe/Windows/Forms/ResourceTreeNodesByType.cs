@@ -2,6 +2,9 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 using System.Collections.Generic;
+using System.Linq;
+
+using SimPe.Data;
 
 namespace SimPe.Windows.Forms
 {
@@ -25,21 +28,11 @@ namespace SimPe.Windows.Forms
 
 		#endregion
 
-		public static void AddType(ResourceMaps.IntMap map, ResourceTreeNodeExt tn)
+		public static void AddType(ResourceMaps.TypeMap map, ResourceTreeNodeExt tn)
 		{
-			List<ResourceTreeNodeExt> nodelist = new List<ResourceTreeNodeExt>();
-			foreach (uint type in map.Keys)
-			{
-				ResourceViewManager.ResourceNameList list = map[type];
-				ResourceTreeNodeExt node = new ResourceTreeTypeNodeExt(list, type);
-				nodelist.Add(node);
-			}
-
-			nodelist.Sort();
-			foreach (ResourceTreeNodeExt node in nodelist)
-			{
-				tn.Nodes.Add(node);
-			}
+			tn.Nodes.AddRange((from item in map
+							   select new ResourceTreeTypeNodeExt(item.Value, item.Key))
+							   .OrderBy(item => item.Text).ToArray());
 		}
 	}
 }

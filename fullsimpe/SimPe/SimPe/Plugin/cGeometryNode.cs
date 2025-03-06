@@ -1,5 +1,6 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using SimPe.Data;
 using SimPe.Interfaces.Scenegraph;
 
 namespace SimPe.Plugin
@@ -48,7 +49,7 @@ namespace SimPe.Plugin
 			sgres = new SGResource(null);
 
 			version = 0x0c;
-			BlockID = 0x7BA3838C;
+			BlockID = (uint)FileTypes.GMND;
 
 			Blocks = new IRcolBlock[0];
 		}
@@ -209,7 +210,7 @@ namespace SimPe.Plugin
 		public Rcol FindReferencingSHPE_NoLoad()
 		{
 			string mn = Hashes.StripHashFromName(Parent.FileName.Trim().ToLower());
-			foreach (IScenegraphFileIndexItem item in FileTableBase.FileIndex.FindFile(Data.MetaData.SHPE, true))
+			foreach (IScenegraphFileIndexItem item in FileTableBase.FileIndex.FindFile(Data.FileTypes.SHPE, true))
 			{
 				Rcol r = new GenericRcol(null, false);
 				//try to open the File in the same package, not in the FileTable Package!

@@ -75,9 +75,6 @@ namespace SimPe
 			if (
 				(
 					!File.Exists(Helper.DataFolder.ExpansionsXREG)
-					|| !File.Exists(
-						Path.Combine(Helper.SimPeDataPath, "tgi.xml")
-					)
 					|| Helper.WindowsRegistry.GetPreviousVersion()
 						!= Helper.SimPeVersionLong
 				)
@@ -128,7 +125,6 @@ namespace SimPe
 				CompleteSetup("objddefinition.xml");
 				CompleteSetup("release.nfo");
 				CompleteSetup("semiglobals.xml");
-				CompleteSetup("tgi.xml");
 				CompleteSetup("txmtdefinition.xml");
 				CompleteSetup("guidindex.txt");
 				CompleteSetup("GLOBALS-AO.package");

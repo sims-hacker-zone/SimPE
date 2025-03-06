@@ -1007,7 +1007,7 @@ namespace SimPe.Forms.MainUI.CustomControls
 			try
 			{
 				System.Collections.Generic.IEnumerable<Interfaces.Scenegraph.IScenegraphFileIndexItem> items =
-					FileTableBase.FileIndex.FindFile(Data.MetaData.OBJD_FILE, true);
+					FileTableBase.FileIndex.FindFile(Data.FileTypes.OBJD, true);
 				if (items.Count() < 3000)
 				{
 					ci.Details +=
@@ -1017,7 +1017,7 @@ namespace SimPe.Forms.MainUI.CustomControls
 				else
 				{
 					items = FileTableBase.FileIndex.FindFile(
-						Data.MetaData.OBJD_FILE,
+						Data.FileTypes.OBJD,
 						0x7F94AFE8,
 						0x000041AB,
 						null
@@ -1031,7 +1031,7 @@ namespace SimPe.Forms.MainUI.CustomControls
 					}
 				}
 
-				items = FileTableBase.FileIndex.FindFile(Data.MetaData.TXMT, true);
+				items = FileTableBase.FileIndex.FindFile(Data.FileTypes.TXMT, true);
 				if (items.Count() < 100)
 				{
 					ci.Details +=

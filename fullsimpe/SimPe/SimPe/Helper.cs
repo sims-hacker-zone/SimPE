@@ -5,6 +5,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 
+using SimPe.Data;
 using SimPe.Forms.MainUI;
 
 namespace SimPe
@@ -187,6 +188,16 @@ namespace SimPe
 		public static string HexString(uint input)
 		{
 			return MinStrLength(input.ToString("X"), 8);
+		}
+
+		/// <summary>
+		/// Returns the Value as HexString
+		/// </summary>
+		/// <param name="input">the Input Value</param>
+		/// <returns>value as HexString (allways 8 Chars long)</returns>
+		public static string HexString(FileTypes input)
+		{
+			return $"{(uint)input:X8}";
 		}
 
 		/// <summary>
@@ -1057,108 +1068,105 @@ namespace SimPe
 		/// if not then Returns the Language Code that matches the current Culture best
 		/// </summary>
 		/// <returns>The language Code</returns>
-		public static Data.MetaData.Languages GetMatchingLanguage()
+		public static Data.Languages GetMatchingLanguage()
 		{
-			Data.MetaData.Languages lng = Data.MetaData.Languages.English;
-			string s = PathProvider.Global.InGameLang;
-			switch (s)
+			Data.Languages lng = Data.Languages.English;
+			switch (PathProvider.Global.InGameLang)
 			{
 				case "US English":
-					return Data.MetaData.Languages.English;
+					return Data.Languages.English;
 				case "French":
-					return Data.MetaData.Languages.French;
+					return Data.Languages.French;
 				case "German":
-					return Data.MetaData.Languages.German;
+					return Data.Languages.German;
 				case "Italian":
-					return Data.MetaData.Languages.Italian;
+					return Data.Languages.Italian;
 				case "Spanish":
-					return Data.MetaData.Languages.Spanish;
+					return Data.Languages.Spanish;
 				case "Swedish":
-					return Data.MetaData.Languages.Swedish;
+					return Data.Languages.Swedish;
 				case "Finnish":
-					return Data.MetaData.Languages.Finnish;
+					return Data.Languages.Finnish;
 				case "Dutch":
-					return Data.MetaData.Languages.Dutch;
+					return Data.Languages.Dutch;
 				case "Danish":
-					return Data.MetaData.Languages.Danish;
+					return Data.Languages.Danish;
 				case "Brazilian Portuguese":
-					return Data.MetaData.Languages.Brazilian;
+					return Data.Languages.Brazilian;
 				case "Czech":
-					return Data.MetaData.Languages.Czech;
+					return Data.Languages.Czech;
 				case "Japanese":
-					return Data.MetaData.Languages.Japanese;
+					return Data.Languages.Japanese;
 				case "Korean":
-					return Data.MetaData.Languages.Korean;
+					return Data.Languages.Korean;
 				case "Russian":
-					return Data.MetaData.Languages.Russian;
+					return Data.Languages.Russian;
 				case "Simplified Chinese":
-					return Data.MetaData.Languages.SimplifiedChinese;
+					return Data.Languages.SimplifiedChinese;
 				case "Traditional Chinese":
-					return Data.MetaData.Languages.TraditionalChinese;
+					return Data.Languages.TraditionalChinese;
 				case "English":
-					return Data.MetaData.Languages.English_uk;
+					return Data.Languages.English_uk;
 				case "Polish":
-					return Data.MetaData.Languages.Polish;
+					return Data.Languages.Polish;
 				case "Thai":
-					return Data.MetaData.Languages.Thai;
+					return Data.Languages.Thai;
 				case "Norwegian":
-					return Data.MetaData.Languages.Norwegian;
+					return Data.Languages.Norwegian;
 				case "Portuguese":
-					return Data.MetaData.Languages.Portuguese;
+					return Data.Languages.Portuguese;
 				case "Hungarian":
-					return Data.MetaData.Languages.Hungarian;
+					return Data.Languages.Hungarian;
 			}
 
-			s =
-				System.Threading.Thread.CurrentThread.CurrentCulture.ThreeLetterISOLanguageName.ToUpper();
-			switch (s)
+			switch (System.Threading.Thread.CurrentThread.CurrentCulture.ThreeLetterISOLanguageName.ToUpper())
 			{
 				case "ENA":
-					return Data.MetaData.Languages.English_uk;
+					return Data.Languages.English_uk;
 				case "ENG":
-					return Data.MetaData.Languages.English_uk;
+					return Data.Languages.English_uk;
 				case "ENZ":
-					return Data.MetaData.Languages.English_uk;
+					return Data.Languages.English_uk;
 				case "ENS":
-					return Data.MetaData.Languages.English_uk;
+					return Data.Languages.English_uk;
 				case "ENC":
-					return Data.MetaData.Languages.English_uk;
+					return Data.Languages.English_uk;
 				case "ENU":
-					return Data.MetaData.Languages.English;
+					return Data.Languages.English;
 				case "DEU":
-					return Data.MetaData.Languages.German;
+					return Data.Languages.German;
 				case "ESP":
-					return Data.MetaData.Languages.Spanish;
+					return Data.Languages.Spanish;
 				case "FIN":
-					return Data.MetaData.Languages.Finnish;
+					return Data.Languages.Finnish;
 				case "CHS":
-					return Data.MetaData.Languages.SimplifiedChinese;
+					return Data.Languages.SimplifiedChinese;
 				case "CHT":
-					return Data.MetaData.Languages.TraditionalChinese;
+					return Data.Languages.TraditionalChinese;
 				case "FRE":
-					return Data.MetaData.Languages.French;
+					return Data.Languages.French;
 				case "JPN":
-					return Data.MetaData.Languages.Japanese;
+					return Data.Languages.Japanese;
 				case "ITA":
-					return Data.MetaData.Languages.Italian;
+					return Data.Languages.Italian;
 				case "DUT":
-					return Data.MetaData.Languages.Dutch;
+					return Data.Languages.Dutch;
 				case "DAN":
-					return Data.MetaData.Languages.Danish;
+					return Data.Languages.Danish;
 				case "NOR":
-					return Data.MetaData.Languages.Norwegian;
+					return Data.Languages.Norwegian;
 				case "RUS":
-					return Data.MetaData.Languages.Russian;
+					return Data.Languages.Russian;
 				case "POR":
-					return Data.MetaData.Languages.Portuguese;
+					return Data.Languages.Portuguese;
 				case "POL":
-					return Data.MetaData.Languages.Polish;
+					return Data.Languages.Polish;
 				case "THA":
-					return Data.MetaData.Languages.Thai;
+					return Data.Languages.Thai;
 				case "KOR":
-					return Data.MetaData.Languages.Korean;
+					return Data.Languages.Korean;
 				case "HUN":
-					return Data.MetaData.Languages.Hungarian;
+					return Data.Languages.Hungarian;
 			}
 
 			return lng;
@@ -1519,24 +1527,6 @@ namespace SimPe
 		/// </summary>
 		/// <returns></returns>
 		public static string NewestGamePath => PathProvider.Global.Latest.InstallFolder;
-
-		static TGILoader tgiload;
-
-		/// <summary>
-		/// Retrns the TGI Loader Class
-		/// </summary>
-		public static TGILoader TGILoader
-		{
-			get
-			{
-				if (tgiload == null)
-				{
-					tgiload = new TGILoader();
-				}
-
-				return tgiload;
-			}
-		}
 
 		/// <summary>
 		/// Returns a Save FileName

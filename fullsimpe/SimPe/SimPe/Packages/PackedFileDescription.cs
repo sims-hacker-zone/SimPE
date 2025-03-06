@@ -2,7 +2,9 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 
+using SimPe.Data;
 using SimPe.Events;
+using SimPe.Extensions;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin.Internal;
 
@@ -14,7 +16,7 @@ namespace SimPe.Packages
 		public PackedFileDescriptorSimple()
 			: this(0, 0, 0, 0) { }
 
-		public PackedFileDescriptorSimple(uint type, uint grp, uint ihi, uint ilo)
+		public PackedFileDescriptorSimple(FileTypes type, uint grp, uint ihi, uint ilo)
 		{
 			this.type = type;
 			group = grp;
@@ -25,12 +27,12 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Type of the referenced File
 		/// </summary>
-		internal uint type;
+		internal FileTypes type;
 
 		/// <summary>
 		/// Returns/Sets the Type of the referenced File
 		/// </summary>
-		public uint Type
+		public FileTypes Type
 		{
 			get => type;
 			set
@@ -44,9 +46,9 @@ namespace SimPe.Packages
 		}
 
 		/// <summary>
-		/// Returns the Name of the represented Type
+		/// Returns the Information of the represented Type
 		/// </summary>
-		public Data.TypeAlias TypeName => Data.MetaData.FindTypeAlias(Type);
+		public FileTypeInformation TypeInfo => Type.ToFileTypeInformation();
 
 		/// <summary>
 		/// Group the referenced file is assigned to
@@ -246,7 +248,7 @@ namespace SimPe.Packages
 						+ Helper.HexString(Group)
 						+ "-"
 						+ Helper.HexString(Instance);
-					filename += "." + TypeName.Extension;
+					filename += "." + TypeInfo.Extension;
 				}
 
 				return filename;
@@ -276,7 +278,7 @@ namespace SimPe.Packages
 					path +=
 						" - "
 						+ Helper.RemoveUnlistedCharacters(
-							TypeName.Name,
+							TypeInfo.LongName,
 							Helper.PATH_CHARACTERS
 						);
 				}
@@ -347,7 +349,7 @@ namespace SimPe.Packages
 		public override string ToString()
 		{
 			string name =
-				TypeName
+				TypeInfo.LongName
 				+ ": "
 				+ Helper.HexString(Type)
 				+ " - "
@@ -395,7 +397,7 @@ namespace SimPe.Packages
 				== Registry.ResourceListFormats.ShortTypeNames
 			)
 			{
-				return TypeName.shortname + ": " + GetResDescString();
+				return TypeInfo.ShortName + ": " + GetResDescString();
 			}
 
 			if (
@@ -403,7 +405,7 @@ namespace SimPe.Packages
 				== Registry.ResourceListFormats.JustNames
 			)
 			{
-				return TypeName.ToString();
+				return TypeInfo.ToString();
 			}
 
 			if (
@@ -411,11 +413,11 @@ namespace SimPe.Packages
 				== Registry.ResourceListFormats.JustLongType
 			)
 			{
-				return TypeName.ToString();
+				return TypeInfo.ToString();
 			}
 
 			//if ((this.Size==0) && (this.Offset==0)) name += " [UserFile]";
-			return TypeName + ": " + GetResDescString();
+			return TypeInfo + ": " + GetResDescString();
 		}
 
 		#region Compare Methods
@@ -796,7 +798,7 @@ namespace SimPe.Packages
 			{
 				string msg = "";
 				msg +=
-					TypeName.Name
+					TypeInfo.LongName
 					+ " ("
 					+ Helper.HexString(Type)
 					+ ") - "
@@ -815,7 +817,7 @@ namespace SimPe.Packages
 			System.IO.BinaryReader reader
 		)
 		{
-			type = reader.ReadUInt32();
+			type = (FileTypes)reader.ReadUInt32();
 			group = reader.ReadUInt32();
 			instance = reader.ReadUInt32();
 			if (header.IsVersion0101 && (header.Index.ItemSize >= 24))

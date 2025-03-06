@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Collections;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -14,12 +15,7 @@ namespace SimPe.Plugin
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
 	public class RoadTexture
-		: AbstractWrapper //Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
-			,
-			IFileWrapper //This Interface is used when loading a File
-			,
-			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
-			,
+		: AbstractWrapper, IFileWrapper, IFileWrapperSaveExtension,
 			IMultiplePackedFileWrapper,
 			IEnumerable
 	{
@@ -198,17 +194,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] types =
-				{
-					0xACE46235, //handles the RTEX File
-				};
-				return types;
-			}
-		}
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.RTEX };
 
 		#endregion
 

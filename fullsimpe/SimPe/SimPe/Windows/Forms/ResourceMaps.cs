@@ -3,11 +3,16 @@
 
 using System.Collections.Generic;
 
+using SimPe.Data;
+
 namespace SimPe.Windows.Forms
 {
 	public class ResourceMaps
 	{
 		public class IntMap : Dictionary<uint, ResourceViewManager.ResourceNameList>
+		{
+		}
+		public class TypeMap : Dictionary<FileTypes, ResourceViewManager.ResourceNameList>
 		{
 		}
 
@@ -19,7 +24,7 @@ namespace SimPe.Windows.Forms
 		public ResourceMaps()
 		{
 			Everything = new ResourceViewManager.ResourceNameList();
-			ByType = new IntMap();
+			ByType = new TypeMap();
 			ByGroup = new IntMap();
 			ByInstance = new LongMap();
 		}
@@ -33,7 +38,7 @@ namespace SimPe.Windows.Forms
 		{
 			get;
 		}
-		internal IntMap ByType
+		internal TypeMap ByType
 		{
 			get;
 		}

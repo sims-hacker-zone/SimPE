@@ -1,8 +1,11 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
+using SimPe.Data;
+using SimPe.Extensions;
 using Ambertation.Windows.Forms;
 
 namespace SimPe.Plugin.Tool.Dockable
@@ -75,10 +78,8 @@ namespace SimPe.Plugin.Tool.Dockable
 			tm.AddControl(xpGradientPanel4);
 
 			lv.View = View.Details;
-			foreach (Data.TypeAlias a in Helper.TGILoader.FileTypes)
-			{
-				cbtypes.Items.Add(a);
-			}
+			cbtypes.Items.AddRange((from FileTypes type in Enum.GetValues(typeof(FileTypes))
+									select type.ToFileTypeInformation()).Cast<object>().ToArray());
 
 			cbtypes.Sorted = true;
 			tbFloat.Width = tbBin.Width;
@@ -771,7 +772,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			tbtype.Text =
 				"0x"
 				+ Helper.HexString(
-					((Data.TypeAlias)cbtypes.Items[cbtypes.SelectedIndex]).Id
+					(uint)((FileTypeInformation)cbtypes.Items[cbtypes.SelectedIndex]).Type
 				);
 			tbtype.Tag = true;
 			tbtype_TextChanged2(tbtype, e);
@@ -780,14 +781,12 @@ namespace SimPe.Plugin.Tool.Dockable
 		private void tbtype_TextChanged(object sender, EventArgs e)
 		{
 			cbtypes.Tag = true;
-			Data.TypeAlias a = Data.MetaData.FindTypeAlias(
-				Helper.HexStringToUInt(tbtype.Text)
-			);
+			FileTypeInformation typeinfo = ((FileTypes)Helper.HexStringToUInt(tbtype.Text)).ToFileTypeInformation();
 
 			int ct = 0;
-			foreach (Data.TypeAlias i in cbtypes.Items)
+			foreach (FileTypeInformation i in cbtypes.Items)
 			{
-				if (i == a)
+				if (i == typeinfo)
 				{
 					cbtypes.SelectedIndex = ct;
 					cbtypes.Tag = null;
@@ -817,7 +816,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 				try
 				{
-					e.Resource.FileDescriptor.Type = Convert.ToUInt32(tbtype.Text, 16);
+					e.Resource.FileDescriptor.Type = (Data.FileTypes)Convert.ToUInt32(tbtype.Text, 16);
 
 					e.Resource.FileDescriptor.Changed = true;
 				}
@@ -1179,7 +1178,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 				try
 				{
-					e.Resource.FileDescriptor.Type = Convert.ToUInt32(tbtype.Text, 16);
+					e.Resource.FileDescriptor.Type = (Data.FileTypes)Convert.ToUInt32(tbtype.Text, 16);
 					e.Resource.FileDescriptor.Group = Convert.ToUInt32(
 						tbgroup.Text,
 						16

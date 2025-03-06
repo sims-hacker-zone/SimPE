@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 
+using SimPe.Data;
 using SimPe.PackedFiles.Nmap;
 
 namespace SimPe.Plugin.Tool.Action
@@ -55,15 +56,14 @@ namespace SimPe.Plugin.Tool.Action
 				}
 			}
 
-			Data.TypeAlias a = Helper.TGILoader.GetByType(pfd.Type);
-			if (Data.MetaData.RcolList.Contains(a.Id))
+			if (Data.MetaData.RcolList.Contains(pfd.Type))
 			{
 				Packages.PackedFileDescriptor fd =
 					new Packages.PackedFileDescriptor
 					{
-						Type = Data.MetaData.NAME_MAP,
+						Type = Data.FileTypes.NMAP,
 						Group = 0x52737256,
-						Instance = a.Id,
+						Instance = (uint)pfd.Type,
 						SubType = 0
 					};
 
@@ -87,7 +87,7 @@ namespace SimPe.Plugin.Tool.Action
 						continue;
 					}
 
-					if (e.Resource.FileDescriptor.Type != a.Id)
+					if (e.Resource.FileDescriptor.Type != pfd.Type)
 					{
 						continue;
 					}

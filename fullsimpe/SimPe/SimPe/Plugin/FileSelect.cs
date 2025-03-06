@@ -89,7 +89,7 @@ namespace SimPe.Plugin
 			{
 				FileTableBase.FileIndex.Load();
 				System.Collections.Generic.IEnumerable<Interfaces.Scenegraph.IScenegraphFileIndexItem> items =
-					FileTableBase.FileIndex.FindFile(Data.MetaData.GZPS, true);
+					FileTableBase.FileIndex.FindFile(Data.FileTypes.GZPS, true);
 				WaitingScreen.UpdateMessage("Loading Clothing..");
 				foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
 				{

@@ -7,6 +7,7 @@ using System.Windows.Forms;
 
 using pjse;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.UserInterface;
 using SimPe.PackedFiles.Wrapper;
@@ -379,7 +380,7 @@ namespace SimPe.PackedFiles.Ttab
 			{
 				if (str == null)
 				{
-					str = new Str(wrapper, wrapper.FileDescriptor.Instance, 0x54544173);
+					str = new Str(wrapper, wrapper.FileDescriptor.Instance, FileTypes.TTAs);
 				}
 
 				return str;
@@ -2186,7 +2187,7 @@ namespace SimPe.PackedFiles.Ttab
 		private void GetTTABGuard(object sender, EventArgs e)
 		{
 			pjse.FileTable.Entry item = new ResourceChooser().Execute(
-				Data.MetaData.BHAV_FILE,
+				Data.FileTypes.BHAV,
 				wrapper.FileDescriptor.Group,
 				ttabPanel.Parent,
 				false
@@ -2200,7 +2201,7 @@ namespace SimPe.PackedFiles.Ttab
 		private void GetTTABAction(object sender, EventArgs e)
 		{
 			pjse.FileTable.Entry item = new ResourceChooser().Execute(
-				Data.MetaData.BHAV_FILE,
+				Data.FileTypes.BHAV,
 				wrapper.FileDescriptor.Group,
 				ttabPanel.Parent,
 				false
@@ -2217,7 +2218,7 @@ namespace SimPe.PackedFiles.Ttab
 		)
 		{
 			pjse.FileTable.Entry item = wrapper.ResourceByInstance(
-				Data.MetaData.BHAV_FILE,
+				Data.FileTypes.BHAV,
 				sender == llAction ? currentItem.Action : currentItem.Guardian
 			);
 			Bhav b = new Bhav();

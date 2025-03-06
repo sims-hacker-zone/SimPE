@@ -4,6 +4,8 @@ using System;
 using System.Collections;
 using System.Diagnostics;
 
+using SimPe.Data;
+
 namespace SimPe
 {
 	/// <summary>
@@ -40,7 +42,7 @@ namespace SimPe
 			this.name = name;
 			filename = "";
 			arguments = "{tempfile}";
-			type = 0xffffffff;
+			type = FileTypes.ALL_TYPES;
 		}
 
 		protected string name;
@@ -79,13 +81,13 @@ namespace SimPe
 			set => arguments = value;
 		}
 
-		protected uint type;
+		protected FileTypes type;
 
 		/// <summary>
 		/// Returns the Type of the Packged File this Application can be used with
 		/// </summary>
 		/// <remarks>0xfffffff for all Types</remarks>
-		public uint Type
+		public FileTypes Type
 		{
 			get => type;
 			set => type = value;
@@ -151,7 +153,7 @@ namespace SimPe
 							.Split("-".ToCharArray(), 4);
 						try
 						{
-							pfd.Type = Convert.ToUInt32(part[0].Trim(), 16);
+							pfd.Type = (FileTypes)Convert.ToUInt32(part[0].Trim(), 16);
 							pfd.SubType = Convert.ToUInt32(part[1].Trim(), 16);
 							pfd.Group = Convert.ToUInt32(part[2].Trim(), 16);
 							pfd.Instance = Convert.ToUInt32(part[3].Trim(), 16);
@@ -164,7 +166,7 @@ namespace SimPe
 
 							try
 							{
-								pfd.Type = Convert.ToUInt32(part[0].Trim(), 16);
+								pfd.Type = (FileTypes)Convert.ToUInt32(part[0].Trim(), 16);
 								pfd.SubType = Convert.ToUInt32(part[2].Trim(), 16);
 								pfd.Group = Convert.ToUInt32(part[3].Trim(), 16);
 								pfd.Instance = Convert.ToUInt32(part[4].Trim(), 16);
@@ -181,7 +183,7 @@ namespace SimPe
 							{
 								string last = part[part.Length - 1];
 								part = last.Split("-".ToCharArray(), 2);
-								pfd.Type = Convert.ToUInt32(part[0].Trim(), 16);
+								pfd.Type = (FileTypes)Convert.ToUInt32(part[0].Trim(), 16);
 							}
 						}
 						catch (Exception) { }
@@ -454,7 +456,7 @@ namespace SimPe
 
 				ToolLoaderItemExt tli = new ToolLoaderItemExt(rname)
 				{
-					Type = Convert.ToUInt32(srk.GetValue("type")),
+					Type = (FileTypes)Convert.ToUInt32(srk.GetValue("type")),
 					//tli.Name = Convert.ToString(srk.GetValue("name"));
 					FileName = Convert.ToString(srk.GetValue("filename")),
 					Attributes = Convert.ToString(srk.GetValue("attributes"))
@@ -472,7 +474,7 @@ namespace SimPe
 		/// </summary>
 		/// <param name="type"></param>
 		/// <returns></returns>
-		public static ToolLoaderItemExt[] UsableItems(uint type)
+		public static ToolLoaderItemExt[] UsableItems(FileTypes type)
 		{
 			if (items == null)
 			{
@@ -480,7 +482,7 @@ namespace SimPe
 			}
 
 			ArrayList list = new ArrayList();
-			if (type != 0xffffffff)
+			if (type != FileTypes.ALL_TYPES)
 			{
 				foreach (ToolLoaderItemExt tli in items)
 				{
@@ -493,7 +495,7 @@ namespace SimPe
 
 			foreach (ToolLoaderItemExt tli in items)
 			{
-				if (tli.Type == 0xffffffff)
+				if (tli.Type == FileTypes.ALL_TYPES)
 				{
 					list.Add(tli);
 				}

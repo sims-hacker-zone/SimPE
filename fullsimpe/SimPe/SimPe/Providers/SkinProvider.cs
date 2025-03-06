@@ -3,6 +3,7 @@
 using System;
 using System.Collections;
 
+using SimPe.Data;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Nmap;
 using SimPe.PackedFiles.ThreeIdr;
@@ -43,9 +44,7 @@ namespace SimPe.Providers
 
 		protected void LoadSkinFormPackage(Interfaces.Files.IPackageFile package)
 		{
-			Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(
-				0xEBCF3E27
-			);
+			Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(FileTypes.GZPS);
 
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
@@ -65,7 +64,7 @@ namespace SimPe.Providers
 		)
 		{
 			Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(
-				0xAC506764
+				FileTypes.THREE_IDR
 			);
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
@@ -78,7 +77,7 @@ namespace SimPe.Providers
 				catch (Exception) { }
 			}
 
-			pfds = package.FindFiles(0x49596978);
+			pfds = package.FindFiles(FileTypes.TXMT);
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
 				try
@@ -92,9 +91,9 @@ namespace SimPe.Providers
 
 			//Material Files
 			Interfaces.Files.IPackedFileDescriptor[] nmap_pfd = package.FindFiles(
-				Data.MetaData.NAME_MAP
+				Data.FileTypes.NMAP
 			);
-			pfds = package.FindFiles(0x49596978);
+			pfds = package.FindFiles(FileTypes.TXMT);
 			Nmap nmap = new Nmap(null);
 			if (nmap_pfd.Length > 0)
 			{
@@ -134,8 +133,8 @@ namespace SimPe.Providers
 			}
 
 			//Texture Files
-			nmap_pfd = package.FindFiles(Data.MetaData.NAME_MAP);
-			pfds = package.FindFiles(0x1C4A276C);
+			nmap_pfd = package.FindFiles(Data.FileTypes.NMAP);
+			pfds = package.FindFiles(FileTypes.TXTR);
 			check = false;
 
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
@@ -332,11 +331,11 @@ namespace SimPe.Providers
 					Packages.File.LoadFromFile(file);
 				Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFile(
 					matdname.Replace("CASIE_", ""),
-					0x49596978
+					FileTypes.TXMT
 				);
 				if (pfds.Length == 0)
 				{
-					pfds = package.FindFile(matdname, 0x49596978);
+					pfds = package.FindFile(matdname, FileTypes.TXMT);
 				}
 				//try another Package
 				//look for the right one
@@ -394,7 +393,7 @@ namespace SimPe.Providers
 					)
 					{
 						//found a MATD Reference File
-						if (refpfd.Type == 0x49596978)
+						if (refpfd.Type == FileTypes.TXMT)
 						{
 							foreach (Plugin.Rcol matd in matds)
 							{
@@ -440,7 +439,7 @@ namespace SimPe.Providers
 					Packages.File.LoadFromFile(file);
 				Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFile(
 					name,
-					0x1C4A276C
+					FileTypes.TXTR
 				);
 
 				//look for the right one

@@ -2,12 +2,13 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Collections.Generic;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Bnfo
 {
 	/// <summary>
-	/// Wrapper for 0x104F6A6E , which apear to be the "Business info Resource"
+	/// Wrapper for FileTypes.BNFO , which apear to be the "Business info Resource"
 	/// </summary>
 	public class Bnfo
 		: AbstractWrapper,
@@ -158,14 +159,7 @@ namespace SimPe.PackedFiles.Bnfo
 
 		#region IPackedFileWrapper Member
 
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] Types = { 0x104F6A6E };
-				return Types;
-			}
-		}
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.BNFO };
 
 		public byte[] FileSignature
 		{
