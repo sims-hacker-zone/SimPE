@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 
 using SimPe.Data;
+using SimPe.Extensions;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Ltxt
@@ -428,8 +429,6 @@ namespace SimPe.PackedFiles.Ltxt
 		//all covered by Serialize()
 		#endregion
 
-		public const uint Ltxttype = 0x0BF999E7;
-
 		#region IFileWrapper Member
 
 		/// <summary>
@@ -440,11 +439,11 @@ namespace SimPe.PackedFiles.Ltxt
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes => new uint[] { Ltxttype };
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.LTXT };
 
 		#endregion
 
-		protected override string GetResourceName(Data.TypeAlias ta)
+		protected override string GetResourceName(FileTypeInformation fti)
 		{
 			if (!Processed)
 			{

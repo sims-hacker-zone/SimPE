@@ -1297,7 +1297,7 @@ namespace SimPe.PackedFiles.Swaf
 
 				Interfaces.Files.IPackedFileDescriptor pfd =
 					wrapper.Package.NewDescriptor(
-						Data.MetaData.SIM_DESCRIPTION_FILE,
+						Data.FileTypes.SDSC,
 						wrapper.FileDescriptor.SubType,
 						wrapper.FileDescriptor.Group,
 						wrapper.FileDescriptor.Instance

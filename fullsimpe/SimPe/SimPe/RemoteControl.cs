@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 
+using SimPe.Data;
+
 namespace SimPe
 {
 	/// <summary>
@@ -13,13 +15,13 @@ namespace SimPe
 		{
 			object[] data;
 
-			public ControlEventArgs(uint target)
+			public ControlEventArgs(FileTypes target)
 				: this(target, new object[0]) { }
 
-			public ControlEventArgs(uint target, object data)
+			public ControlEventArgs(FileTypes target, object data)
 				: this(target, new object[] { data }) { }
 
-			public ControlEventArgs(uint target, object[] data)
+			public ControlEventArgs(FileTypes target, object[] data)
 			{
 				if (data == null)
 				{
@@ -31,7 +33,7 @@ namespace SimPe
 				TargetType = target;
 			}
 
-			public uint TargetType
+			public FileTypes TargetType
 			{
 				get;
 			}
@@ -43,14 +45,14 @@ namespace SimPe
 
 		struct MessageQueueItemInfo
 		{
-			public uint target;
+			public FileTypes target;
 			public ControlEvent fkt;
 		}
 
 		public delegate void ControlEvent(object sender, ControlEventArgs e);
 		static System.Collections.ArrayList events = new System.Collections.ArrayList();
 
-		public static void HookToMessageQueue(uint type, ControlEvent fkt)
+		public static void HookToMessageQueue(FileTypes type, ControlEvent fkt)
 		{
 			MessageQueueItemInfo mqi = new MessageQueueItemInfo
 			{
@@ -61,7 +63,7 @@ namespace SimPe
 			events.Add(mqi);
 		}
 
-		public static void UnhookFromMessageQueue(uint type, ControlEvent fkt)
+		public static void UnhookFromMessageQueue(FileTypes type, ControlEvent fkt)
 		{
 			for (int i = events.Count - 1; i >= 0; i--)
 			{
@@ -82,8 +84,8 @@ namespace SimPe
 			{
 				if (
 					mqi.target == e.TargetType
-					|| mqi.target == 0xffffffff
-					|| e.TargetType == 0xffffffff
+					|| mqi.target == FileTypes.ALL_TYPES
+					|| e.TargetType == FileTypes.ALL_TYPES
 				)
 				{
 					mqi.fkt(sender, e);

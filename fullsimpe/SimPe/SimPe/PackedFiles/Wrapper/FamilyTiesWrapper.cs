@@ -125,23 +125,9 @@ namespace SimPe.PackedFiles.Wrapper
 
 		#region IPackedFileWrapper Member
 
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] Types = { MetaData.FAMILY_TIES_FILE };
-				return Types;
-			}
-		}
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.FAMT };
 
-		public byte[] FileSignature
-		{
-			get
-			{
-				byte[] sig = { };
-				return sig;
-			}
-		}
+		public byte[] FileSignature => new byte[] { };
 
 		#endregion
 

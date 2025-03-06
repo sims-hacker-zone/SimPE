@@ -4,6 +4,7 @@ using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
+using SimPe.Data;
 using SimPe.Forms.MainUI;
 
 using Message = SimPe.Forms.MainUI.Message;
@@ -59,7 +60,7 @@ namespace SimPe.Plugin
 			;
 
 			RemoteControl.HookToMessageQueue(
-				0x4E474248,
+				FileTypes.NGBH,
 				new RemoteControl.ControlEvent(ControlEvent)
 			);
 		}

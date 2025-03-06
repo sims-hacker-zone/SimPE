@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
+using SimPe.Data;
 using SimPe.Interfaces.Files;
 using SimPe.PackedFiles.Glob;
 
@@ -194,7 +195,7 @@ namespace pjse
 		/// <param name="canDoEA">Whether to differentiate overriding resources</param>
 		/// <returns>The chosen resource entry</returns>
 		public FileTable.Entry Execute(
-			uint resourceType,
+			FileTypes resourceType,
 			uint group,
 			Control form,
 			bool canDoEA
@@ -213,7 +214,7 @@ namespace pjse
 		/// <param name="canDoEA">Whether to differentiate overriding resources</param>
 		/// <returns>The chosen resource entry</returns>
 		public FileTable.Entry Execute(
-			uint resourceType,
+			FileTypes resourceType,
 			uint group,
 			Control form,
 			bool canDoEA,
@@ -236,7 +237,7 @@ namespace pjse
 				}
 			);
 
-			btnViewBHAV.Visible = resourceType == SimPe.Data.MetaData.BHAV_FILE;
+			btnViewBHAV.Visible = resourceType == SimPe.Data.FileTypes.BHAV;
 
 			tcResources.TabPages.Clear();
 
@@ -283,7 +284,7 @@ namespace pjse
 				);
 			}
 
-			if (!skip_pages[4] && resourceType == SimPe.Data.MetaData.BHAV_FILE)
+			if (!skip_pages[4] && resourceType == SimPe.Data.FileTypes.BHAV)
 			{
 				FillBuiltIn(resourceType, lvPrim, tpBuiltIn);
 			}
@@ -338,7 +339,7 @@ namespace pjse
 			return null;
 		}
 
-		private void FillPackage(uint type, ListView list, TabPage tab)
+		private void FillPackage(FileTypes type, ListView list, TabPage tab)
 		{
 			Fill(
 				FileTable.GFT[FileTable.GFT.CurrentPackage, type],
@@ -347,7 +348,7 @@ namespace pjse
 			);
 		}
 
-		private void FillGroup(uint type, uint group, ListView list, TabPage tab)
+		private void FillGroup(FileTypes type, uint group, ListView list, TabPage tab)
 		{
 			Fill(FileTable.GFT[type, group], list, tab);
 		}
@@ -379,7 +380,7 @@ namespace pjse
 			}
 		}
 
-		private void FillBuiltIn(uint type, ListView list, TabPage tab)
+		private void FillBuiltIn(FileTypes type, ListView list, TabPage tab)
 		{
 			list.Items.Clear();
 			ListViewItem lvi;

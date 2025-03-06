@@ -1,24 +1,27 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+using SimPe.Data;
+using SimPe.Extensions;
+
 namespace SimPe.Windows.Forms
 {
 	public class ResourceTreeTypeNodeExt : ResourceTreeNodeExt
 	{
 		public ResourceTreeTypeNodeExt(
 			ResourceViewManager.ResourceNameList list,
-			uint type
+			FileTypes type
 		)
-			: base(type, list, "")
+			: base((uint)type, list, "")
 		{
 			Type = type;
 			ImageIndex = ResourceViewManager.GetIndexForResourceType(type);
 			SelectedImageIndex = ImageIndex;
-			Data.TypeAlias ta = Data.MetaData.FindTypeAlias(type);
-			Text = ta.Name + " (" + ta.shortname + ") (" + list.Count + ")";
+			FileTypeInformation typeinfo = type.ToFileTypeInformation();
+			Text = typeinfo.LongName + " (" + typeinfo.ShortName + ") (" + list.Count + ")";
 		}
 
-		public uint Type
+		public FileTypes Type
 		{
 			get;
 		}

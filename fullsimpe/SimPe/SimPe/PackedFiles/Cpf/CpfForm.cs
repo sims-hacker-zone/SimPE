@@ -313,7 +313,7 @@ namespace SimPe.PackedFiles.Cpf
 				for (int i = 0; i < cbtype.Items.Count; i++)
 				{
 					cbtype.SelectedIndex = -1;
-					Data.MetaData.DataTypes type = (Data.MetaData.DataTypes)
+					Data.DataTypes type = (Data.DataTypes)
 						cbtype.Items[i];
 					if (type == item.Datatype)
 					{
@@ -324,22 +324,22 @@ namespace SimPe.PackedFiles.Cpf
 
 				switch (item.Datatype)
 				{
-					case Data.MetaData.DataTypes.dtSingle:
+					case Data.DataTypes.dtSingle:
 					{
 						rtbcpf.Text = item.SingleValue.ToString();
 						break;
 					}
-					case Data.MetaData.DataTypes.dtInteger:
+					case Data.DataTypes.dtInteger:
 					{
 						rtbcpf.Text = "0x" + Helper.HexString((uint)item.IntegerValue);
 						break;
 					}
-					case Data.MetaData.DataTypes.dtUInteger:
+					case Data.DataTypes.dtUInteger:
 					{
 						rtbcpf.Text = "0x" + Helper.HexString(item.UIntegerValue);
 						break;
 					}
-					case Data.MetaData.DataTypes.dtBoolean:
+					case Data.DataTypes.dtBoolean:
 					{
 						rtbcpf.Text = item.BooleanValue ? "1" : "0";
 
@@ -378,11 +378,11 @@ namespace SimPe.PackedFiles.Cpf
 			CpfItem item = lbcpf.SelectedIndex < 0 ? new CpfItem() : (CpfItem)lbcpf.Items[lbcpf.SelectedIndex];
 
 			item.Name = rtbcpfname.Text;
-			item.Datatype = (Data.MetaData.DataTypes)cbtype.Items[cbtype.SelectedIndex];
+			item.Datatype = (Data.DataTypes)cbtype.Items[cbtype.SelectedIndex];
 
 			switch (item.Datatype)
 			{
-				case Data.MetaData.DataTypes.dtInteger:
+				case Data.DataTypes.dtInteger:
 				{
 					try
 					{
@@ -394,7 +394,7 @@ namespace SimPe.PackedFiles.Cpf
 					}
 					break;
 				}
-				case Data.MetaData.DataTypes.dtUInteger:
+				case Data.DataTypes.dtUInteger:
 				{
 					try
 					{
@@ -406,7 +406,7 @@ namespace SimPe.PackedFiles.Cpf
 					}
 					break;
 				}
-				case Data.MetaData.DataTypes.dtSingle:
+				case Data.DataTypes.dtSingle:
 				{
 					try
 					{
@@ -418,7 +418,7 @@ namespace SimPe.PackedFiles.Cpf
 					}
 					break;
 				}
-				case Data.MetaData.DataTypes.dtBoolean:
+				case Data.DataTypes.dtBoolean:
 				{
 					try
 					{

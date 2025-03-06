@@ -151,7 +151,7 @@ namespace SimPe
 			}
 			else
 			{
-				s += SaveStr(pfd.TypeName.ToString()) + Seperator;
+				s += SaveStr(pfd.TypeInfo.ToString()) + Seperator;
 			}
 
 			s += "0x" + Helper.HexString(pfd.Type) + Seperator;

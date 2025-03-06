@@ -1,5 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using SimPe.Data;
+
 namespace SimPe.Actions.Default
 {
 	/// <summary>
@@ -33,17 +35,9 @@ namespace SimPe.Actions.Default
 
 			foreach (Events.ResourceContainer e in es)
 			{
-				if (e.HasFileDescriptor)
+				if (e.HasFileDescriptor && (item.Type == FileTypes.ALL_TYPES || item.Type == e.Resource.FileDescriptor.Type))
 				{
-					if (item.Type == 0xffffffff)
-					{
-						return true;
-					}
-
-					if (item.Type == e.Resource.FileDescriptor.Type)
-					{
-						return true;
-					}
+					return true;
 				}
 			}
 

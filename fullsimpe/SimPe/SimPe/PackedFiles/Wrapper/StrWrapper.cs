@@ -5,6 +5,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 
+using SimPe.Data;
+using SimPe.Extensions;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Wrapper
@@ -36,7 +38,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Format Code of the FIle
 		/// </summary>
-		private ushort format = (ushort)Data.MetaData.FormatCode.normal;
+		private ushort format = (ushort)Data.FormatCode.normal;
 
 		/// <summary>
 		/// Contains the LanguageIDs used in the wrapper
@@ -245,15 +247,11 @@ namespace SimPe.PackedFiles.Wrapper
 
 		#endregion
 
-		public const uint Strtype = 0x53545223;
-		public const uint TTAstype = 0x54544173;
-		public const uint CTSStype = 0x43545353;
-
 		#region IFileWrapper Member
 		/// <summary>
 		/// Returns a list of File Types this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes => new uint[] { Strtype, TTAstype, CTSStype };
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.STR, FileTypes.TTAs, FileTypes.CTSS };
 
 		/// <summary>
 		/// Returns the Signature that can be used to identify Files processable with this Plugin
@@ -264,11 +262,11 @@ namespace SimPe.PackedFiles.Wrapper
 
 		#region IFileWrapperSaveExtension Member
 		//all covered by AbstractWrapper
-		protected override string GetResourceName(Data.TypeAlias ta)
+		protected override string GetResourceName(FileTypeInformation fti)
 		{
 			if (!Helper.FileFormat)
 			{
-				return base.GetResourceName(ta);
+				return base.GetResourceName(fti);
 			}
 
 			Interfaces.Files.IPackedFile pf = Package.Read(FileDescriptor);

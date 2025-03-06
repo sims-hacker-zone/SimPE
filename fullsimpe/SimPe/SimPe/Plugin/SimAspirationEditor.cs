@@ -11,7 +11,7 @@ namespace SimPe.Plugin
 	{
 		public const uint SEC_ASP_TOKEN_GUID = 0x53D08989;
 
-		public Data.MetaData.AspirationTypes[] LoadAspirations(SDesc sim)
+		public Data.AspirationTypes[] LoadAspirations(SDesc sim)
 		{
 			if (sim == null)
 			{
@@ -20,33 +20,33 @@ namespace SimPe.Plugin
 
 			LoadMemoryResource(sim);
 			ushort sval = GetSecondaryAspirationValue(sim);
-			Data.MetaData.AspirationTypes[] res =
-				new Data.MetaData.AspirationTypes[]
+			Data.AspirationTypes[] res =
+				new Data.AspirationTypes[]
 				{
-					Data.MetaData.AspirationTypes.Nothing,
-					Data.MetaData.AspirationTypes.Nothing,
+					Data.AspirationTypes.Nothing,
+					Data.AspirationTypes.Nothing,
 				};
 			ushort a = (ushort)sim.CharacterDescription.Aspiration;
 
 			if (sval != 0)
 			{
-				res[0] = (Data.MetaData.AspirationTypes)(a ^ sval);
-				res[1] = (Data.MetaData.AspirationTypes)(a & sval);
+				res[0] = (Data.AspirationTypes)(a ^ sval);
+				res[1] = (Data.AspirationTypes)(a & sval);
 			}
 			else
 			{
-				Array arr = Enum.GetValues(typeof(Data.MetaData.AspirationTypes));
+				Array arr = Enum.GetValues(typeof(Data.AspirationTypes));
 				foreach (ushort i in arr)
 				{
 					if ((a & i) == i)
 					{
-						if (res[0] == Data.MetaData.AspirationTypes.Nothing)
+						if (res[0] == Data.AspirationTypes.Nothing)
 						{
-							res[0] = (Data.MetaData.AspirationTypes)i;
+							res[0] = (Data.AspirationTypes)i;
 						}
 						else
 						{
-							res[1] = (Data.MetaData.AspirationTypes)i;
+							res[1] = (Data.AspirationTypes)i;
 						}
 					}
 				}
@@ -56,7 +56,7 @@ namespace SimPe.Plugin
 		}
 
 		public void StoreAspirations(
-			Data.MetaData.AspirationTypes[] asps,
+			Data.AspirationTypes[] asps,
 			SDesc sim
 		)
 		{
@@ -75,7 +75,7 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			Data.MetaData.AspirationTypes[] old = LoadAspirations(sim);
+			Data.AspirationTypes[] old = LoadAspirations(sim);
 			bool chg = false;
 			bool chg2 = asps[1] != old[1];
 			for (int i = 0; i < 2; i++)
@@ -112,7 +112,7 @@ namespace SimPe.Plugin
 			}
 
 			sim.CharacterDescription.Aspiration =
-				(Data.MetaData.AspirationTypes)a;
+				(Data.AspirationTypes)a;
 
 			if (Helper.WindowsRegistry.AllowChangeOfSecondaryAspiration && chg2)
 			{
@@ -153,7 +153,7 @@ namespace SimPe.Plugin
 
 			Interfaces.Plugin.IFileWrapper wrapper =
 				(Interfaces.Plugin.IFileWrapper)
-					FileTableBase.WrapperRegistry.FindHandler(Data.MetaData.MEMORIES);
+					FileTableBase.WrapperRegistry.FindHandler(Data.FileTypes.NGBH);
 
 			if (wrapper == null)
 			{
@@ -161,7 +161,7 @@ namespace SimPe.Plugin
 			}
 
 			Interfaces.Files.IPackedFileDescriptor[] mems = sim.Package.FindFiles(
-				Data.MetaData.MEMORIES
+				Data.FileTypes.NGBH
 			);
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in mems)
 			{

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
+using SimPe.Data;
 using SimPe.Forms.MainUI;
 using SimPe.PackedFiles.Cpf;
 
@@ -299,7 +300,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			{
 				FileDescriptor = new Packages.PackedFileDescriptor
 				{
-					Type = Data.MetaData.STRING_FILE,
+					Type = Data.FileTypes.STR,
 					LongInstance = 0x85,
 					Group = 0x7F000000
 				}
@@ -316,7 +317,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			str.Add(
 				new PackedFiles.Wrapper.StrToken(
 					0,
-					(byte)Data.MetaData.Languages.English,
+					(byte)Data.Languages.English,
 					"",
 					""
 				)
@@ -324,7 +325,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			str.Add(
 				new PackedFiles.Wrapper.StrToken(
 					1,
-					(byte)Data.MetaData.Languages.English,
+					(byte)Data.Languages.English,
 					name,
 					""
 				)
@@ -513,7 +514,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				{
 					if (
 						(pfd.Instance == 0x85)
-						&& (pfd.Type == Data.MetaData.STRING_FILE)
+						&& (pfd.Type == Data.FileTypes.STR)
 					)
 					{
 						LoadModelName(list, pfd, package);
@@ -545,7 +546,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 					if (
 						(npfd.Instance == 0x85)
-						&& (npfd.Type == Data.MetaData.STRING_FILE)
+						&& (npfd.Type == Data.FileTypes.STR)
 					)
 					{
 						LoadModelName(list, npfd, item.Package);
@@ -752,7 +753,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				.Objd;
 			if (pfd != null)
 			{
-				if (pfd.Type != Data.MetaData.OBJD_FILE)
+				if (pfd.Type != Data.FileTypes.OBJD)
 				{
 					br = CloneSettings.BaseResourceType.Xml;
 				}
@@ -850,7 +851,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				if (package != null)
 				{
 					Interfaces.Files.IPackedFileDescriptor[] pfds =
-						package.FindFiles(Data.MetaData.OBJD_FILE);
+						package.FindFiles(Data.FileTypes.OBJD);
 					if (pfds.Length > 0)
 					{
 						pfd = pfds[0];
@@ -873,7 +874,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				if (package != null)
 				{
 					Interfaces.Files.IPackedFileDescriptor[] pfds =
-						package.FindFiles(Data.MetaData.TXTR);
+						package.FindFiles(Data.FileTypes.TXTR);
 					if (pfds.Length > 0)
 					{
 						pfd = pfds[0];
@@ -919,7 +920,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			obj.Data[0x26] = (short)Math.Floor(cs.Price * 0.40); // depreciation limit
 			obj.SynchronizeUserData();
 			Interfaces.Files.IPackedFileDescriptor pfd = package.FindFile(
-				Data.MetaData.CTSS_FILE,
+				Data.FileTypes.CTSS,
 				0,
 				obj.FileDescriptor.Group,
 				obj.CTSSInstance
@@ -952,7 +953,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			cpf.SynchronizeUserData();
 
 			Interfaces.Files.IPackedFileDescriptor pfd = package.FindFile(
-				cpf.GetSaveItem("stringsetrestypeid").UIntegerValue,
+				(FileTypes)cpf.GetSaveItem("stringsetrestypeid").UIntegerValue,
 				0,
 				cpf.GetSaveItem("stringsetgroupid").UIntegerValue,
 				cpf.GetSaveItem("stringsetid").UIntegerValue
@@ -990,7 +991,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				new PackedFiles.Wrapper.ExtObjd();
 			PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
 			Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(
-				Data.MetaData.OBJD_FILE
+				Data.FileTypes.OBJD
 			);
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
@@ -1010,15 +1011,14 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 
 			//change Price, Title, Desc in the XObj Files
-			uint[] types = new uint[]
-			{
-				Data.MetaData.XFNC,
-				Data.MetaData.XROF,
-				Data.MetaData.XFLR,
-				Data.MetaData.XOBJ,
-			};
 			Cpf cpf = new Cpf();
-			foreach (uint t in types)
+			foreach (FileTypes t in new FileTypes[]
+			{
+				FileTypes.XFNC,
+				FileTypes.XROF,
+				FileTypes.XFLR,
+				FileTypes.XOBJ,
+			})
 			{
 				pfds = package.FindFiles(t);
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)

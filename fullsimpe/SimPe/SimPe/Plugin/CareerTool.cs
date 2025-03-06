@@ -37,7 +37,7 @@ namespace SimPe.Plugin
 				return true;
 			}
 
-			Interfaces.Files.IPackedFileDescriptor[] globals = package.FindFiles(Data.MetaData.GLOB_FILE);
+			Interfaces.Files.IPackedFileDescriptor[] globals = package.FindFiles(Data.FileTypes.GLOB);
 			if (globals.Length == 1)
 			{
 				Glob glob = new Glob();

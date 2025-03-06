@@ -404,7 +404,7 @@ namespace SimPe.Plugin.Anim
 		public GenericRcol FindDefiningCRES()
 		{
 			Interfaces.Files.IPackedFileDescriptor[] pfds =
-				Parent.Package.FindFiles(Data.MetaData.CRES);
+				Parent.Package.FindFiles(Data.FileTypes.CRES);
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
 				GenericRcol rcol = FindDefiningCRES(pfd, Parent.Package);
@@ -424,7 +424,7 @@ namespace SimPe.Plugin.Anim
 			{
 				FileTableBase.FileIndex.Load();
 				foreach (
-					Interfaces.Scenegraph.IScenegraphFileIndexItem item in FileTableBase.FileIndex.FindFile(Data.MetaData.CRES, true)
+					Interfaces.Scenegraph.IScenegraphFileIndexItem item in FileTableBase.FileIndex.FindFile(Data.FileTypes.CRES, true)
 				)
 				{
 					GenericRcol rcol = FindDefiningCRES(
@@ -448,17 +448,17 @@ namespace SimPe.Plugin.Anim
 			}
 
 			Interfaces.Scenegraph.IScenegraphFileIndexItem item =
-				cres.FindReferencedType(Data.MetaData.SHPE);
+				cres.FindReferencedType(Data.FileTypes.SHPE);
 			if (item != null)
 			{
 				GenericRcol rcol = new GenericRcol();
 				rcol.ProcessData(item);
 
-				item = rcol.FindReferencedType(Data.MetaData.GMND);
+				item = rcol.FindReferencedType(Data.FileTypes.GMND);
 				if (item != null)
 				{
 					rcol.ProcessData(item);
-					item = rcol.FindReferencedType(Data.MetaData.GMDC);
+					item = rcol.FindReferencedType(Data.FileTypes.GMDC);
 					if (item != null)
 					{
 						rcol.ProcessData(item);
@@ -496,7 +496,7 @@ namespace SimPe.Plugin.Anim
 
 				foreach (
 					Interfaces.Scenegraph.IScenegraphFileIndexItem iteme in FileTableBase.FileIndex.FindFile(
-						Data.MetaData.GMDC,
+						Data.FileTypes.GMDC,
 						0x1C0532FA,
 						instns,
 						Parent.Package

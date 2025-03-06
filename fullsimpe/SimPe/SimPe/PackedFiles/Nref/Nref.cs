@@ -1,5 +1,6 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Nref
@@ -74,16 +75,7 @@ namespace SimPe.PackedFiles.Nref
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				return new uint[]
-				{
-					0x4E524546, //NREF
-				};
-			}
-		}
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.NREF };
 
 		#endregion
 

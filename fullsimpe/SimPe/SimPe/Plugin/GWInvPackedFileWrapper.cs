@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -133,14 +134,7 @@ namespace SimPe.Plugin
 
 		public byte[] FileSignature => new byte[0];
 
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] types = { 0x0ABA73AF }; //handles the Game Wide Inventory
-				return types;
-			}
-		}
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.GINV };
 
 		#endregion
 	}

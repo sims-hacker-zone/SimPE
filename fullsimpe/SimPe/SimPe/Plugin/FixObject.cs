@@ -3,6 +3,8 @@
 using System;
 using System.Collections;
 
+using SimPe.Data;
+using SimPe.Extensions;
 using SimPe.Interfaces.Files;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Lifo;
@@ -53,12 +55,12 @@ namespace SimPe.Plugin
 			{
 				types = new ArrayList
 				{
-					Data.MetaData.TXMT,
-					Data.MetaData.TXTR,
-					Data.MetaData.LIFO,
-					Data.MetaData.GMND
+					FileTypes.TXMT,
+					FileTypes.TXTR,
+					FileTypes.LIFO,
+					FileTypes.GMND
 				};
-				//types.Add(Data.MetaData.MMAT);
+				//types.Add(Data.FileTypes.MMAT);
 			}
 		}
 
@@ -150,9 +152,9 @@ namespace SimPe.Plugin
 		{
 			string name = Hashes.StripHashFromName(rcol.FileName.Trim().ToLower());
 			string newname = (string)map[name];
-			string ext = Data
-				.MetaData.FindTypeAlias(rcol.FileDescriptor.Type)
-				.shortname.Trim()
+			string ext =
+				rcol.FileDescriptor.Type.ToFileTypeInformation()
+				.ShortName.Trim()
 				.ToLower();
 
 			if (newname == null)
@@ -188,7 +190,7 @@ namespace SimPe.Plugin
 			{
 				newref =
 					"##0x"
-					+ Helper.HexString(Data.MetaData.CUSTOM_GROUP)
+					+ Helper.HexString(MetaData.CUSTOM_GROUP)
 					+ "!"
 					+ Hashes.StripHashFromName(newref);
 				matd.GetProperty(propname).Value = newref.Substring(
@@ -208,7 +210,7 @@ namespace SimPe.Plugin
 				{
 					matd.Listing[i] =
 						"##0x"
-						+ Helper.HexString(Data.MetaData.CUSTOM_GROUP)
+						+ Helper.HexString(MetaData.CUSTOM_GROUP)
 						+ "!"
 						+ Hashes.StripHashFromName(
 							newref.Substring(0, newref.Length - 5)
@@ -234,7 +236,7 @@ namespace SimPe.Plugin
 		{
 			switch (rcol.FileDescriptor.Type)
 			{
-				case Data.MetaData.TXMT: //MATD
+				case FileTypes.TXMT: //MATD
 				{
 					MaterialDefinition matd = (MaterialDefinition)rcol.Blocks[0];
 
@@ -243,7 +245,7 @@ namespace SimPe.Plugin
 					break;
 				}
 
-				case Data.MetaData.SHPE: //SHPE
+				case FileTypes.SHPE: //SHPE
 				{
 					Shape shp = (Shape)rcol.Blocks[0];
 					foreach (ShapeItem item in shp.Items)
@@ -256,7 +258,7 @@ namespace SimPe.Plugin
 						{
 							item.FileName =
 								"##0x"
-								+ Helper.HexString(Data.MetaData.CUSTOM_GROUP)
+								+ Helper.HexString(MetaData.CUSTOM_GROUP)
 								+ "!"
 								+ newref;
 						}
@@ -273,7 +275,7 @@ namespace SimPe.Plugin
 						{
 							part.FileName =
 								"##0x"
-								+ Helper.HexString(Data.MetaData.CUSTOM_GROUP)
+								+ Helper.HexString(MetaData.CUSTOM_GROUP)
 								+ "!"
 								+ newref.Substring(0, newref.Length - 5);
 						}
@@ -281,7 +283,7 @@ namespace SimPe.Plugin
 					break;
 				}
 
-				case Data.MetaData.TXTR: //TXTR
+				case FileTypes.TXTR: //TXTR
 				{
 					ImageData id = (ImageData)rcol.Blocks[0];
 					foreach (MipMapBlock mmb in id.MipMapBlocks)
@@ -292,7 +294,7 @@ namespace SimPe.Plugin
 							if (mm.Texture == null)
 							{
 								IPackedFileDescriptor[] pfd =
-									package.FindFile(mm.LifoFile, 0xED534136);
+									package.FindFile(mm.LifoFile, FileTypes.LIFO);
 								if (pfd.Length > 0)
 								{
 									Lifo lifo = new Lifo(null, false);
@@ -314,7 +316,7 @@ namespace SimPe.Plugin
 										mm.LifoFile =
 											"##0x"
 											+ Helper.HexString(
-												Data.MetaData.CUSTOM_GROUP
+												MetaData.CUSTOM_GROUP
 											)
 											+ "!"
 											+ newref;
@@ -326,7 +328,7 @@ namespace SimPe.Plugin
 					break;
 				}
 
-				case Data.MetaData.CRES: //CRES
+				case FileTypes.CRES: //CRES
 				{
 					ResourceNode rn = (ResourceNode)rcol.Blocks[0];
 					string name = Hashes.StripHashFromName(rcol.FileName);
@@ -343,7 +345,7 @@ namespace SimPe.Plugin
 					break;
 				}
 
-				case Data.MetaData.GMND: //GMND
+				case FileTypes.GMND: //GMND
 				{
 					GeometryNode gn = (GeometryNode)rcol.Blocks[0];
 					string name = Hashes.StripHashFromName(rcol.FileName);
@@ -360,10 +362,10 @@ namespace SimPe.Plugin
 					break;
 				}
 
-				case Data.MetaData.LDIR:
-				case Data.MetaData.LAMB:
-				case Data.MetaData.LPNT:
-				case Data.MetaData.LSPT:
+				case FileTypes.LDIR:
+				case FileTypes.LAMB:
+				case FileTypes.LPNT:
+				case FileTypes.LSPT:
 				{
 					DirectionalLight dl = (DirectionalLight)rcol.Blocks[0];
 					dl.LightT.NameResource.FileName = dl.NameResource.FileName;
@@ -379,7 +381,7 @@ namespace SimPe.Plugin
 		/// <param name="map"></param>
 		public void FixNames(Hashtable map)
 		{
-			foreach (uint type in Data.MetaData.RcolList)
+			foreach (FileTypes type in MetaData.RcolList)
 			{
 				IPackedFileDescriptor[] pfds = package.FindFiles(type);
 				foreach (IPackedFileDescriptor pfd in pfds)
@@ -390,7 +392,7 @@ namespace SimPe.Plugin
 					string name = Hashes.StripHashFromName(
 						FindReplacementName(map, rcol)
 					);
-					//if (rcol.FileDescriptor.Type==Data.MetaData.TXMT || rcol.FileDescriptor.Type==Data.MetaData.TXTR) name = "##0x"+Helper.HexString(Data.MetaData.CUSTOM_GROUP)+"!"+name;
+					//if (rcol.FileDescriptor.Type==Data.MetaData.TXMT || rcol.FileDescriptor.Type==Data.FileTypes.TXTR) name = "##0x"+Helper.HexString(Data.MetaData.CUSTOM_GROUP)+"!"+name;
 					rcol.FileName = name;
 
 					FixResource(map, rcol);
@@ -410,7 +412,7 @@ namespace SimPe.Plugin
 			}
 
 			IPackedFileDescriptor[] mpfds = package.FindFiles(
-				Data.MetaData.MMAT
+				FileTypes.MMAT
 			); //MMAT
 			ArrayList mmats = new ArrayList();
 			foreach (IPackedFileDescriptor pfd in mpfds)
@@ -435,7 +437,7 @@ namespace SimPe.Plugin
 
 					if (
 						package
-							.FindFile(Hashes.StripHashFromName(txmtname), 0x49596978)
+							.FindFile(Hashes.StripHashFromName(txmtname), FileTypes.TXMT)
 							.Length < 0
 					)
 					{
@@ -444,7 +446,7 @@ namespace SimPe.Plugin
 
 					if (
 						package
-							.FindFile(Hashes.StripHashFromName(cresname), 0xE519C933)
+							.FindFile(Hashes.StripHashFromName(cresname), FileTypes.CRES)
 							.Length < 0
 					)
 					{
@@ -468,21 +470,21 @@ namespace SimPe.Plugin
 		/// </summary>
 		public void FixGroup()
 		{
-			uint[] RCOLs =
+			FileTypes[] RCOLs =
 			{
-				0xFB00791E, //ANIM
-				0x4D51F042, //CINE
-				0xE519C933, //CRES
-				0xAC4F8687, //GMDC
-				0x7BA3838C, //GMND
-				0xC9C81B9B, //LGHT
-				0xC9C81BA3, //LGHT
-				0xC9C81BA9, //LGHT
-				0xC9C81BAD, //LGHT
-				0xED534136, //LIFO
-				0xFC6EB1F7, //SHPE
-				0x49596978, //TXMT, MATD
-				0x1C4A276C, //TXTR
+				FileTypes.ANIM,
+				FileTypes.CINE,
+				FileTypes.CRES,
+				FileTypes.GMDC,
+				FileTypes.GMND,
+				FileTypes.LDIR,
+				FileTypes.LAMB,
+				FileTypes.LPNT,
+				FileTypes.LSPT,
+				FileTypes.LIFO,
+				FileTypes.SHPE,
+				FileTypes.TXMT,
+				FileTypes.TXTR,
 			};
 
 			if (WaitingScreen.Running)
@@ -495,11 +497,11 @@ namespace SimPe.Plugin
 				bool RCOLcheck = types.Contains(pfd.Type);
 				if (ver == FixVersion.UniversityReady)
 				{
-					RCOLcheck = Data.MetaData.RcolList.Contains(pfd.Type);
+					RCOLcheck = MetaData.RcolList.Contains(pfd.Type);
 				}
 				//foreach (uint tp in RCOLs) if (tp==pfd.Type) { RCOLcheck=true; break; }
 
-				if (Data.MetaData.RcolList.Contains(pfd.Type))
+				if (MetaData.RcolList.Contains(pfd.Type))
 				{
 					GenericRcol rcol = new GenericRcol(null, false);
 					rcol.ProcessData(pfd, package);
@@ -509,22 +511,22 @@ namespace SimPe.Plugin
 					)
 					{
 						p.Group = ver == FixVersion.UniversityReady2
-							? types.Contains(p.Type) ? Data.MetaData.CUSTOM_GROUP : Data.MetaData.LOCAL_GROUP
-							: Data.MetaData.RcolList.Contains(p.Type)
-								? p.Type != Data.MetaData.ANIM ? Data.MetaData.CUSTOM_GROUP : Data.MetaData.GLOBAL_GROUP
-								: Data.MetaData.LOCAL_GROUP;
+							? types.Contains(p.Type) ? MetaData.CUSTOM_GROUP : MetaData.LOCAL_GROUP
+							: MetaData.RcolList.Contains(p.Type)
+								? p.Type != FileTypes.ANIM ? MetaData.CUSTOM_GROUP : MetaData.GLOBAL_GROUP
+								: MetaData.LOCAL_GROUP;
 					}
 					rcol.SynchronizeUserData();
 				}
 
 				pfd.Group = RCOLcheck
-					? pfd.Type != Data.MetaData.ANIM ? Data.MetaData.CUSTOM_GROUP : Data.MetaData.GLOBAL_GROUP
-					: Data.MetaData.LOCAL_GROUP;
+					? pfd.Type != FileTypes.ANIM ? MetaData.CUSTOM_GROUP : MetaData.GLOBAL_GROUP
+					: MetaData.LOCAL_GROUP;
 			}
 
 			//is this a Fence package? If so, do special FenceFixes
 			if (
-				package.FindFiles(Data.MetaData.XFNC).Length > 0 /*|| package.FindFiles(Data.MetaData.XNGB).Length>0*/
+				package.FindFiles(FileTypes.XFNC).Length > 0 /*|| package.FindFiles(Data.FileTypes.XNGB).Length>0*/
 			)
 			{
 				FixFence();
@@ -557,7 +559,7 @@ namespace SimPe.Plugin
 		public void Fix(Hashtable map, bool uniquefamily)
 		{
 			string grouphash =
-				"##0x" + Helper.HexString(Data.MetaData.CUSTOM_GROUP) + "!"; //"#0x"+Helper.HexString(package.FileGroupHash)+"!";
+				"##0x" + Helper.HexString(MetaData.CUSTOM_GROUP) + "!"; //"#0x"+Helper.HexString(package.FileGroupHash)+"!";
 
 			Hashtable refmap = new Hashtable();
 			Hashtable completerefmap = new Hashtable();
@@ -569,7 +571,7 @@ namespace SimPe.Plugin
 
 			FixNames(map);
 
-			foreach (uint type in Data.MetaData.RcolList)
+			foreach (FileTypes type in MetaData.RcolList)
 			{
 				IPackedFileDescriptor[] pfds = package.FindFiles(type);
 
@@ -603,7 +605,7 @@ namespace SimPe.Plugin
 				WaitingScreen.UpdateMessage("Updating TGI Values");
 			}
 
-			foreach (uint type in Data.MetaData.RcolList)
+			foreach (FileTypes type in MetaData.RcolList)
 			{
 				IPackedFileDescriptor[] pfds = package.FindFiles(type);
 
@@ -636,7 +638,7 @@ namespace SimPe.Plugin
 				WaitingScreen.UpdateMessage("Updating TGI References");
 			}
 
-			foreach (uint type in Data.MetaData.RcolList)
+			foreach (FileTypes type in MetaData.RcolList)
 			{
 				IPackedFileDescriptor[] pfds = package.FindFiles(type);
 
@@ -656,8 +658,8 @@ namespace SimPe.Plugin
 							+ Helper.HexString(rpfd.SubType);
 
 						rpfd.Group = ver == FixVersion.UniversityReady2
-							? types.Contains(rpfd.Type) ? Data.MetaData.CUSTOM_GROUP : Data.MetaData.LOCAL_GROUP
-							: rpfd.Type != Data.MetaData.ANIM ? Data.MetaData.CUSTOM_GROUP : Data.MetaData.GLOBAL_GROUP;
+							? types.Contains(rpfd.Type) ? MetaData.CUSTOM_GROUP : MetaData.LOCAL_GROUP
+							: rpfd.Type != FileTypes.ANIM ? MetaData.CUSTOM_GROUP : MetaData.GLOBAL_GROUP;
 
 						if (refmap.Contains(refstr))
 						{
@@ -692,7 +694,7 @@ namespace SimPe.Plugin
 			}
 
 			IPackedFileDescriptor[] mpfds = package.FindFiles(
-				Data.MetaData.STRING_FILE
+				FileTypes.STR
 			);
 			string modelname = null;
 			foreach (IPackedFileDescriptor pfd in mpfds)
@@ -765,37 +767,37 @@ namespace SimPe.Plugin
 						{
 							i.Title =
 								"##0x"
-								+ Helper.HexString(Data.MetaData.CUSTOM_GROUP)
+								+ Helper.HexString(MetaData.CUSTOM_GROUP)
 								+ "!"
 								+ i.Title;
 						}
 					}
 					else
 					{
-						uint tp = Data.MetaData.ANIM;
+						FileTypes tp = FileTypes.ANIM;
 						if (pfd.Instance == 0x88)
 						{
-							tp = Data.MetaData.TXMT;
+							tp = FileTypes.TXMT;
 						}
 						else if (pfd.Instance == 0x85)
 						{
-							tp = Data.MetaData.CRES;
+							tp = FileTypes.CRES;
 						}
 
 						Interfaces.Scenegraph.IScenegraphFileIndexItem fii =
 							FileTableBase.FileIndex.FindFileByName(
 								i.Title,
 								tp,
-								Data.MetaData.LOCAL_GROUP,
+								MetaData.LOCAL_GROUP,
 								true
 							);
 						if (fii != null)
 						{
-							if (fii.FileDescriptor.Group == Data.MetaData.CUSTOM_GROUP)
+							if (fii.FileDescriptor.Group == MetaData.CUSTOM_GROUP)
 							{
 								i.Title =
 									"##0x"
-									+ Helper.HexString(Data.MetaData.CUSTOM_GROUP)
+									+ Helper.HexString(MetaData.CUSTOM_GROUP)
 									+ "!"
 									+ Hashes.StripHashFromName(i.Title);
 							}
@@ -834,7 +836,7 @@ namespace SimPe.Plugin
 
 			if (modelname != null)
 			{
-				mpfds = package.FindFiles(0x4E524546);
+				mpfds = package.FindFiles(FileTypes.NREF);
 				foreach (IPackedFileDescriptor pfd in mpfds)
 				{
 					Nref nref =
@@ -861,7 +863,7 @@ namespace SimPe.Plugin
 			}
 
 			IPackedFileDescriptor[] pfds = package.FindFiles(
-				Data.MetaData.OBJD_FILE
+				FileTypes.OBJD
 			); //OBJd
 
 			bool updaterugs = false;
@@ -874,7 +876,7 @@ namespace SimPe.Plugin
 				//is one of the objd's a rug?
 				if (
 					objd.FunctionSubSort
-					== Data.ObjFunctionSubSort.Decorative_Rugs
+					== ObjFunctionSubSort.Decorative_Rugs
 				)
 				{
 					updaterugs = true;
@@ -892,9 +894,9 @@ namespace SimPe.Plugin
 					objd.ProcessData(pfd, package);
 
 					//make sure the Type of a Rug is not a Tile, but Normal
-					if (objd.Type == Data.ObjectTypes.Tiles)
+					if (objd.Type == ObjectTypes.Tiles)
 					{
-						objd.Type = Data.ObjectTypes.Normal;
+						objd.Type = ObjectTypes.Normal;
 						objd.SynchronizeUserData(true, true);
 					}
 				}
@@ -915,7 +917,7 @@ namespace SimPe.Plugin
 			}
 
 			IPackedFileDescriptor[] mpfds = package.FindFiles(
-				Data.MetaData.MMAT
+				FileTypes.MMAT
 			); //MMAT
 			Hashtable familymap = new Hashtable();
 			uint mininst = 0x5000;
@@ -979,15 +981,15 @@ namespace SimPe.Plugin
 					Interfaces.Scenegraph.IScenegraphFileIndexItem item =
 						FileTableBase.FileIndex.FindFileByName(
 							mmat.ModelName,
-							Data.MetaData.CRES,
-							Data.MetaData.GLOBAL_GROUP,
+							FileTypes.CRES,
+							MetaData.GLOBAL_GROUP,
 							true
 						);
 
 					bool addfl = true;
 					if (item != null)
 					{
-						if (item.FileDescriptor.Group == Data.MetaData.GLOBAL_GROUP)
+						if (item.FileDescriptor.Group == MetaData.GLOBAL_GROUP)
 						{
 							addfl = false;
 						}
@@ -997,7 +999,7 @@ namespace SimPe.Plugin
 					{
 						mmat.ModelName =
 							"##0x"
-							+ Helper.HexString(Data.MetaData.CUSTOM_GROUP)
+							+ Helper.HexString(MetaData.CUSTOM_GROUP)
 							+ "!"
 							+ mmat.ModelName;
 					}
@@ -1085,10 +1087,10 @@ namespace SimPe.Plugin
 		{
 			Hashtable shpnamemap = new Hashtable();
 			GenericRcol rcol = new GenericRcol();
-			uint[] types = new uint[] { Data.MetaData.SHPE, Data.MetaData.CRES };
+			FileTypes[] types = new FileTypes[] { FileTypes.SHPE, FileTypes.CRES };
 
 			//now fix the texture References in those Resources
-			foreach (uint t in types)
+			foreach (FileTypes t in types)
 			{
 				IPackedFileDescriptor[] pfds = package.FindFiles(
 					t
@@ -1098,13 +1100,13 @@ namespace SimPe.Plugin
 				{
 					//fix the references to the SHPE Resources, to mirror the fact
 					//that they are in the Global Group now
-					if (t == Data.MetaData.CRES || t == Data.MetaData.GMND)
+					if (t == FileTypes.CRES || t == FileTypes.GMND)
 					{
 						rcol.ProcessData(pfd, package);
 
 						string shpname = null;
 
-						if (t == Data.MetaData.CRES)
+						if (t == FileTypes.CRES)
 						{
 							ResourceNode rn = (ResourceNode)
 								rcol.Blocks[0];
@@ -1135,7 +1137,7 @@ namespace SimPe.Plugin
 								}
 							}
 						}
-						else if (t == Data.MetaData.GMND)
+						else if (t == FileTypes.GMND)
 						{
 							GeometryNode gn = (GeometryNode)
 								rcol.Blocks[0];
@@ -1149,26 +1151,26 @@ namespace SimPe.Plugin
 						)
 						{
 							//SHPE Resources get a new Name, so fix the Instance of the reference at this point
-							if (rpfd.Type == Data.MetaData.SHPE)
+							if (rpfd.Type == FileTypes.SHPE)
 							{
 								shpnamemap[rpfd.LongInstance] = shpname;
 								rpfd.Instance = Hashes.InstanceHash(shpname);
 								rpfd.SubType = Hashes.SubTypeHash(shpname);
 							}
 
-							rpfd.Group = Data.MetaData.GLOBAL_GROUP;
+							rpfd.Group = MetaData.GLOBAL_GROUP;
 						}
 
 						rcol.SynchronizeUserData();
 					}
 
-					pfd.Group = Data.MetaData.GLOBAL_GROUP;
+					pfd.Group = MetaData.GLOBAL_GROUP;
 				}
 			}
 
 			//we need some special Adjustments for SHPE Resources, as their name has to match a certain pattern
 			IPackedFileDescriptor[] spfds = package.FindFiles(
-				Data.MetaData.SHPE
+				FileTypes.SHPE
 			);
 			foreach (IPackedFileDescriptor pfd in spfds)
 			{
@@ -1192,13 +1194,13 @@ namespace SimPe.Plugin
 			Random rnd = new Random();
 
 			//set list of critical types
-			uint[] types = new uint[]
+			FileTypes[] types = new FileTypes[]
 			{
-				Data.MetaData.XOBJ,
-				Data.MetaData.XFLR,
-				Data.MetaData.XFNC,
-				Data.MetaData.XROF,
-				Data.MetaData.XNGB,
+				FileTypes.XOBJ,
+				FileTypes.XFLR,
+				FileTypes.XFNC,
+				FileTypes.XROF,
+				FileTypes.XNGB,
 			};
 			string[] txtr_props = new string[]
 			{
@@ -1223,7 +1225,7 @@ namespace SimPe.Plugin
 			string[] set_to_guid = new string[] { }; //"thumbnailinstanceid"
 
 			//now fix the texture References in those Resources
-			foreach (uint t in types)
+			foreach (FileTypes t in types)
 			{
 				IPackedFileDescriptor[] pfds = package.FindFiles(
 					t
@@ -1235,7 +1237,7 @@ namespace SimPe.Plugin
 					uint guid = (uint)rnd.Next();
 
 					string pfx = grphash;
-					if (t == Data.MetaData.XFNC)
+					if (t == FileTypes.XFNC)
 					{
 						pfx = "";
 					}
@@ -1243,12 +1245,12 @@ namespace SimPe.Plugin
 					FixCpfProperties(cpf, txtr_props, namemap, pfx, "_txtr");
 					FixCpfProperties(cpf, txmt_props, namemap, pfx, "_txmt");
 					FixCpfProperties(cpf, cres_props, namemap, pfx, "_cres");
-					if (pfd.Type == Data.MetaData.XNGB)
+					if (pfd.Type == FileTypes.XNGB)
 					{
 						FixCpfProperties(cpf, cres_props_ngb, namemap, pfx, "_cres");
 					}
 
-					FixCpfProperties(cpf, groups, Data.MetaData.LOCAL_GROUP);
+					FixCpfProperties(cpf, groups, MetaData.LOCAL_GROUP);
 					FixCpfProperties(cpf, set_to_guid, guid);
 #if DEBUG
 					FixCpfProperties(
@@ -1274,12 +1276,12 @@ namespace SimPe.Plugin
 		protected void FixXObject(Hashtable namemap, Hashtable refmap, string grphash)
 		{
 			//set list of critical types
-			uint[] types = new uint[] { Data.MetaData.REF_FILE };
+			FileTypes[] types = new FileTypes[] { FileTypes.THREE_IDR };
 
 			ThreeIdr fl = new ThreeIdr();
 
 			//now fix the texture References in those Resources
-			foreach (uint t in types)
+			foreach (FileTypes t in types)
 			{
 				IPackedFileDescriptor[] pfds = package.FindFiles(
 					t

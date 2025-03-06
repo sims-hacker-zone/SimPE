@@ -3,6 +3,8 @@
 using System;
 using System.Collections.Generic;
 
+using SimPe.Data;
+using SimPe.Extensions;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Ttab
@@ -175,13 +177,11 @@ namespace SimPe.PackedFiles.Ttab
 
 		#endregion
 
-		public const uint Ttabtype = 0x54544142;
-
 		#region IFileWrapper Member
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes => new uint[] { Ttabtype };
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.TTAB };
 
 		/// <summary>
 		/// Returns the Signature that can be used to identify Files processable with this Plugin
@@ -192,11 +192,11 @@ namespace SimPe.PackedFiles.Ttab
 
 		#region IFileWrapperSaveExtension Member
 		//all covered by AbstractWrapper
-		protected override string GetResourceName(Data.TypeAlias ta)
+		protected override string GetResourceName(FileTypeInformation fti)
 		{
 			if (!Helper.FileFormat)
 			{
-				return base.GetResourceName(ta);
+				return base.GetResourceName(fti);
 			}
 
 			Interfaces.Files.IPackedFile pf = Package.Read(FileDescriptor);

@@ -21,7 +21,7 @@ namespace SimPe.Plugin.Tool
 		{
 			return e.Loaded && e.HasResource && e.Count <= 1
 				&& e.Items[0].Resource.FileDescriptor.Type
-				== Data.MetaData.ANIM;
+				== Data.FileTypes.ANIM;
 		}
 
 		public void Execute(object sender, ResourceEventArgs es)

@@ -11,8 +11,10 @@
  */
 
 using pjse.BhavOperandWizards;
+
 using SimPe.Data;
 using SimPe.PackedFiles.Wrapper;
+
 using System;
 using System.Windows.Forms;
 
@@ -23,172 +25,174 @@ using System.Windows.Forms;
  */
 namespace whse.PrimitiveWizards.Wiz0x0017
 {
-    public partial class UI : UserControl, pjse.iBhavOperandWizForm
-    {
-        private Instruction inst;
+	public partial class UI : UserControl, pjse.iBhavOperandWizForm
+	{
+		private Instruction inst;
 
-        private DataOwnerControl doSound, doSampleRate, doVolume;
+		private DataOwnerControl doSound, doSampleRate, doVolume;
 
-        private bool internalchg;
+		private bool internalchg;
 
-        private readonly pjse.Scope[] scopeArray = new pjse.Scope[3]
-        {
-            pjse.Scope.Private,
-            pjse.Scope.SemiGlobal,
-            pjse.Scope.Global
-        };
+		private readonly pjse.Scope[] scopeArray = new pjse.Scope[3]
+		{
+			pjse.Scope.Private,
+			pjse.Scope.SemiGlobal,
+			pjse.Scope.Global
+		};
 
-        public UI()
-        {
-            InitializeComponent();
-        }
+		public UI()
+		{
+			InitializeComponent();
+		}
 
-        public Panel WizPanel => this.panelMain;
+		public Panel WizPanel => this.panelMain;
 
-        public void Execute(Instruction inst)
-        {
-            this.inst = inst;
-            wrappedByteArray operands = inst.Operands;
-            // wrappedByteArray reserved1 = inst.Reserved1;
+		public void Execute(Instruction inst)
+		{
+			this.inst = inst;
+			wrappedByteArray operands = inst.Operands;
+			// wrappedByteArray reserved1 = inst.Reserved1;
 
-            Boolset boolset4 = new Boolset(operands[OperandConstants.Operand4]);
+			Boolset boolset4 = new Boolset(operands[OperandConstants.Operand4]);
 
-            internalchg = true;
+			internalchg = true;
 
-            ushort index = pjse.BhavWiz.ToShort(operands[OperandConstants.Operand0], operands[OperandConstants.Operand1]);
+			ushort index = pjse.BhavWiz.ToShort(operands[OperandConstants.Operand0], operands[OperandConstants.Operand1]);
 
-            if (index >= 20000)
-            {
-                comboSoundScope.SelectedIndex = 1;
-                doSound = WizardHelpers.CreateDataControl(inst, textSoundEntry, checkDecimal, (ushort)(index - 20000));
-            }
-            else if (index >= 10000)
-            {
-                comboSoundScope.SelectedIndex = 2;
-                doSound = WizardHelpers.CreateDataControl(inst, textSoundEntry, checkDecimal, (ushort)(index - 10000));
-            }
-            else
-            {
-                comboSoundScope.SelectedIndex = 0;
-                doSound = WizardHelpers.CreateDataControl(inst, textSoundEntry, checkDecimal, index);
-            }
+			if (index >= 20000)
+			{
+				comboSoundScope.SelectedIndex = 1;
+				doSound = WizardHelpers.CreateDataControl(inst, textSoundEntry, checkDecimal, (ushort)(index - 20000));
+			}
+			else if (index >= 10000)
+			{
+				comboSoundScope.SelectedIndex = 2;
+				doSound = WizardHelpers.CreateDataControl(inst, textSoundEntry, checkDecimal, (ushort)(index - 10000));
+			}
+			else
+			{
+				comboSoundScope.SelectedIndex = 0;
+				doSound = WizardHelpers.CreateDataControl(inst, textSoundEntry, checkDecimal, index);
+			}
 
-            doSampleRate = WizardHelpers.CreateDataControl(inst, textSampleRate, checkDecimal, operands[OperandConstants.Operand2], operands[OperandConstants.Operand3]);
+			doSampleRate = WizardHelpers.CreateDataControl(inst, textSampleRate, checkDecimal, operands[OperandConstants.Operand2], operands[OperandConstants.Operand3]);
 
-            comboSource.SelectedIndex = (boolset4[OperandConstants.Bit2] ? 1 : 0);
+			comboSource.SelectedIndex = (boolset4[OperandConstants.Bit2] ? 1 : 0);
 
-            checkAutoVary.Checked = boolset4[OperandConstants.Bit5];
+			checkAutoVary.Checked = boolset4[OperandConstants.Bit5];
 
-            comboPlayStop.SelectedIndex = (boolset4[OperandConstants.Bit7] ? 1 : 0);
+			comboPlayStop.SelectedIndex = (boolset4[OperandConstants.Bit7] ? 1 : 0);
 
-            doVolume = WizardHelpers.CreateDataControl(inst, textVolume, checkDecimal, operands[OperandConstants.Operand5]);
+			doVolume = WizardHelpers.CreateDataControl(inst, textVolume, checkDecimal, operands[OperandConstants.Operand5]);
 
-            internalchg = false;
+			internalchg = false;
 
-            // Do these manually, as we want them after the Data Owner control handlers
-            textSoundEntry.TextChanged += new EventHandler(OnSoundControlChanged);
+			// Do these manually, as we want them after the Data Owner control handlers
+			textSoundEntry.TextChanged += new EventHandler(OnSoundControlChanged);
 
-            UpdateSoundName();
-            UpdatePanelState();
-        }
+			UpdateSoundName();
+			UpdatePanelState();
+		}
 
-        public Instruction Write(Instruction inst)
-        {
-            if (inst != null)
-            {
-                wrappedByteArray operands = inst.Operands;
-                // wrappedByteArray reserved1 = inst.Reserved1;
+		public Instruction Write(Instruction inst)
+		{
+			if (inst != null)
+			{
+				wrappedByteArray operands = inst.Operands;
+				// wrappedByteArray reserved1 = inst.Reserved1;
 
-                ushort index = doSound.Value;
+				ushort index = doSound.Value;
 
-                if (comboSoundScope.SelectedIndex == 1)
-                {
-                    index += 20000;
-                }
-                else if (comboSoundScope.SelectedIndex == 2)
-                {
-                    index += 10000;
-                }
+				if (comboSoundScope.SelectedIndex == 1)
+				{
+					index += 20000;
+				}
+				else if (comboSoundScope.SelectedIndex == 2)
+				{
+					index += 10000;
+				}
 
-                operands[OperandConstants.Operand0] = (byte)index;
-                operands[OperandConstants.Operand1] = (byte)(index >> 8);
+				operands[OperandConstants.Operand0] = (byte)index;
+				operands[OperandConstants.Operand1] = (byte)(index >> 8);
 
-                operands[OperandConstants.Operand2] = (byte)doSampleRate.Value;
-                operands[OperandConstants.Operand3] = (byte)(doSampleRate.Value >> 8);
+				operands[OperandConstants.Operand2] = (byte)doSampleRate.Value;
+				operands[OperandConstants.Operand3] = (byte)(doSampleRate.Value >> 8);
 
-                Boolset boolset4 = new Boolset(operands[OperandConstants.Operand4]);
-                boolset4[OperandConstants.Bit2] = (comboSource.SelectedIndex == 1);
-                boolset4[OperandConstants.Bit5] = checkAutoVary.Checked;
-                boolset4[OperandConstants.Bit7] = (comboPlayStop.SelectedIndex == 1);
-                operands[OperandConstants.Operand4] = boolset4;
+				Boolset boolset4 = new Boolset(operands[OperandConstants.Operand4]);
+				boolset4[OperandConstants.Bit2] = (comboSource.SelectedIndex == 1);
+				boolset4[OperandConstants.Bit5] = checkAutoVary.Checked;
+				boolset4[OperandConstants.Bit7] = (comboPlayStop.SelectedIndex == 1);
+				operands[OperandConstants.Operand4] = boolset4;
 
-                operands[OperandConstants.Operand5] = (byte)doVolume.Value;
-            }
+				operands[OperandConstants.Operand5] = (byte)doVolume.Value;
+			}
 
-            return inst;
-        }
+			return inst;
+		}
 
-        private void ShowStrChooser()
-        {
-            pjse.FileTable.Entry[] entryArray = comboSoundScope.SelectedIndex < 0 ? (pjse.FileTable.Entry[])null : pjse.FileTable.GFT[MetaData.STRING_FILE, inst.Parent.GroupForScope(scopeArray[comboSoundScope.SelectedIndex]), (ushort)pjse.GS.GlobalStr.Sound];
+		private void ShowStrChooser()
+		{
+			pjse.FileTable.Entry[] entryArray = comboSoundScope.SelectedIndex < 0 ? (pjse.FileTable.Entry[])null : pjse.FileTable.GFT[FileTypes.STR, inst.Parent.GroupForScope(scopeArray[comboSoundScope.SelectedIndex]), (ushort)pjse.GS.GlobalStr.Sound];
 
-            if (entryArray == null || entryArray.Length == 0)
-            {
-                MessageBox.Show(pjse.Localization.GetString("bow_noStrings") + " (" + pjse.Localization.GetString(scopeArray[comboSoundScope.SelectedIndex].ToString()) + ")");
-            }
-            else
-            {
-                StrWrapper wrapper = new StrWrapper();
+			if (entryArray == null || entryArray.Length == 0)
+			{
+				MessageBox.Show(pjse.Localization.GetString("bow_noStrings") + " (" + pjse.Localization.GetString(scopeArray[comboSoundScope.SelectedIndex].ToString()) + ")");
+			}
+			else
+			{
+				StrWrapper wrapper = new StrWrapper();
 
-                wrapper.ProcessData(entryArray[0].PFD, entryArray[0].Package);
+				wrapper.ProcessData(entryArray[0].PFD, entryArray[0].Package);
 
-                int strIndex = new pjse.StrChooser(true).Strnum(wrapper);
+				int strIndex = new pjse.StrChooser(true).Strnum(wrapper);
 
-                if (strIndex >= 0)
-                {
-                    bool internalchg = this.internalchg;
-                    this.internalchg = true;
+				if (strIndex >= 0)
+				{
+					bool internalchg = this.internalchg;
+					this.internalchg = true;
 
-                    WizardHelpers.SetValue(textSoundEntry, (ushort)strIndex, checkDecimal);
-                    UpdateSoundName();
+					WizardHelpers.SetValue(textSoundEntry, (ushort)strIndex, checkDecimal);
+					UpdateSoundName();
 
-                    this.internalchg = internalchg;
-                }
-            }
-        }
+					this.internalchg = internalchg;
+				}
+			}
+		}
 
-        private void UpdateSoundName()
-        {
-            try
-            {
-                WizardHelpers.SetName(lblSoundName, toolTip, comboSoundScope.SelectedIndex < 0 ? "" : ((pjse.BhavWiz)inst).readStr(scopeArray[comboSoundScope.SelectedIndex], pjse.GS.GlobalStr.Sound, doSound.Value, -1, pjse.Detail.ErrorNames));
-            }
-            catch (Exception)
-            {
-            }
-        }
+		private void UpdateSoundName()
+		{
+			try
+			{
+				WizardHelpers.SetName(lblSoundName, toolTip, comboSoundScope.SelectedIndex < 0 ? "" : ((pjse.BhavWiz)inst).readStr(scopeArray[comboSoundScope.SelectedIndex], pjse.GS.GlobalStr.Sound, doSound.Value, -1, pjse.Detail.ErrorNames));
+			}
+			catch (Exception)
+			{
+			}
+		}
 
-        private void UpdatePanelState()
-        {
-        }
+		private void UpdatePanelState()
+		{
+		}
 
-        private void OnSoundControlChanged(object sender, EventArgs e)
-        {
-            if (internalchg) return;
+		private void OnSoundControlChanged(object sender, EventArgs e)
+		{
+			if (internalchg)
+				return;
 
-            UpdateSoundName();
-        }
+			UpdateSoundName();
+		}
 
-        private void OnSoundPickerClicked(object sender, EventArgs e)
-        {
-            ShowStrChooser();
-        }
+		private void OnSoundPickerClicked(object sender, EventArgs e)
+		{
+			ShowStrChooser();
+		}
 
-        private void OnParametersClicked(object sender, EventArgs e)
-        {
-            if (internalchg) return;
+		private void OnParametersClicked(object sender, EventArgs e)
+		{
+			if (internalchg)
+				return;
 
-            UpdatePanelState();
-        }
-    }
+			UpdatePanelState();
+		}
+	}
 }

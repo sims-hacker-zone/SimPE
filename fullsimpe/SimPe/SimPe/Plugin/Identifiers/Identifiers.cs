@@ -1,5 +1,6 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using SimPe.Data;
 using SimPe.Interfaces.Plugin.Scanner;
 using SimPe.PackedFiles.Cpf;
 
@@ -88,12 +89,12 @@ namespace SimPe.Plugin.Identifiers
 
 		public Cache.PackageType GetType(Interfaces.Files.IPackageFile pkg)
 		{
-			if (pkg.FindFiles(0xCCCEF852).Length != 0)
+			if (pkg.FindFiles(FileTypes.LxNR).Length != 0)
 			{
 				return Cache.PackageType.Sim; //Facial Structure - Pets don't have
 			}
 
-			if (pkg.FindFiles(0xAC598EAC).Length != 0)
+			if (pkg.FindFiles(FileTypes.AGED).Length != 0)
 			{
 				return Cache.PackageType.Sim; //Age Data - Outfits with GUID do have
 			}
@@ -125,12 +126,12 @@ namespace SimPe.Plugin.Identifiers
 
 		public Cache.PackageType GetType(Interfaces.Files.IPackageFile pkg)
 		{
-			if (pkg.FindFiles(Data.MetaData.OBJD_FILE).Length == 0)
+			if (pkg.FindFiles(Data.FileTypes.OBJD).Length == 0)
 			{
 				return Cache.PackageType.Unknown;
 			}
 
-			if (pkg.FindFiles(0x484F5553).Length > 0)
+			if (pkg.FindFiles(FileTypes.HOUS).Length > 0)
 			{
 				return Cache.PackageType.Lot; //HOUS Resources - Lots won't get here
 			}
@@ -163,41 +164,41 @@ namespace SimPe.Plugin.Identifiers
 		public Cache.PackageType GetType(Interfaces.Files.IPackageFile pkg)
 		{
 			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
-				Data.MetaData.GZPS
+				Data.FileTypes.GZPS
 			);
 			if (pfds.Length == 0)
 			{
-				pfds = pkg.FindFiles(Data.MetaData.XOBJ); //Object XML
+				pfds = pkg.FindFiles(Data.FileTypes.XOBJ); //Object XML
 			}
 
 			if (pfds.Length == 0)
 			{
-				pfds = pkg.FindFiles(0x2C1FD8A1); //TextureOverlay XML
+				pfds = pkg.FindFiles(FileTypes.XTOL); //TextureOverlay XML
 			}
 
 			if (pfds.Length == 0)
 			{
-				pfds = pkg.FindFiles(0x8C1580B5); //Hairtone XML
+				pfds = pkg.FindFiles(FileTypes.XHTN); //Hairtone XML
 			}
 
 			if (pfds.Length == 0)
 			{
-				pfds = pkg.FindFiles(0x0C1FE246); //Mesh Overlay XML
+				pfds = pkg.FindFiles(FileTypes.XMOL); //Mesh Overlay XML
 			}
 
 			if (pfds.Length == 0)
 			{
-				pfds = pkg.FindFiles(Data.MetaData.XROF); //Object XML
+				pfds = pkg.FindFiles(Data.FileTypes.XROF); //Object XML
 			}
 
 			if (pfds.Length == 0)
 			{
-				pfds = pkg.FindFiles(Data.MetaData.XFLR); //Object XML
+				pfds = pkg.FindFiles(Data.FileTypes.XFLR); //Object XML
 			}
 
 			if (pfds.Length == 0)
 			{
-				pfds = pkg.FindFiles(Data.MetaData.XFNC); //Object XML
+				pfds = pkg.FindFiles(Data.FileTypes.XFNC); //Object XML
 			}
 
 			if (pfds.Length > 0)
@@ -299,44 +300,44 @@ namespace SimPe.Plugin.Identifiers
 
 		public Cache.PackageType GetType(Interfaces.Files.IPackageFile pkg)
 		{
-			if (pkg.FindFiles(Data.MetaData.TXMT).Length == 0)
+			if (pkg.FindFiles(FileTypes.TXMT).Length == 0)
 			{
 				return Cache.PackageType.Unknown;
 			}
 
-			if (pkg.FindFiles(Data.MetaData.OBJD_FILE).Length != 0)
+			if (pkg.FindFiles(Data.FileTypes.OBJD).Length != 0)
 			{
 				return Cache.PackageType.Unknown;
 			}
 
-			if (pkg.FindFiles(Data.MetaData.GZPS).Length != 0)
+			if (pkg.FindFiles(Data.FileTypes.GZPS).Length != 0)
 			{
 				return Cache.PackageType.Unknown;
 			}
 
-			if (pkg.FindFiles(0xCCA8E925).Length != 0)
+			if (pkg.FindFiles(FileTypes.XOBJ).Length != 0)
 			{
 				return Cache.PackageType.Unknown; //Object XML
 			}
 
-			if (pkg.FindFiles(Data.MetaData.REF_FILE).Length != 0)
+			if (pkg.FindFiles(Data.FileTypes.THREE_IDR).Length != 0)
 			{
 				return Cache.PackageType.Unknown;
 			}
 
-			foreach (uint type in Data.MetaData.RcolList)
+			foreach (FileTypes type in Data.MetaData.RcolList)
 			{
-				if (type == Data.MetaData.TXMT)
+				if (type == FileTypes.TXMT)
 				{
 					continue;
 				}
 
-				if (type == Data.MetaData.TXTR)
+				if (type == Data.FileTypes.TXTR)
 				{
 					continue;
 				}
 
-				if (type == Data.MetaData.LIFO)
+				if (type == Data.FileTypes.LIFO)
 				{
 					continue;
 				}

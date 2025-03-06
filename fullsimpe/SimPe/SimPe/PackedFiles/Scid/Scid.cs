@@ -59,10 +59,8 @@ namespace SimPe.PackedFiles.Scid
 
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
-			uint scitype = 0xcc2a6a34;
-			ushort scivers = 0xcb;
-			writer.Write(scitype);
-			writer.Write(scivers);
+			writer.Write((uint)FileTypes.SCID);
+			writer.Write((ushort)0xcb);
 			writer.BaseStream.Seek(0xc, System.IO.SeekOrigin.Begin);
 			writer.Write(SCID);
 		}
@@ -76,14 +74,7 @@ namespace SimPe.PackedFiles.Scid
 
 		public byte[] FileSignature => new byte[0];
 
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] types = { 0xCC2A6A34 }; //handles the Sim Creation Index
-				return types;
-			}
-		}
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.SCID };
 
 		#endregion
 	}

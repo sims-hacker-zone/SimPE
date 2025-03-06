@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 
 using SimPe.Data;
+using SimPe.Extensions;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Wrapper
@@ -11,15 +12,8 @@ namespace SimPe.PackedFiles.Wrapper
 	/// <summary>
 	/// Summary description for ScorWrapper.
 	/// </summary>
-	public class Scor
-		: AbstractWrapper //Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
-			,
-			IFileWrapper //This Interface is used when loading a File
-			,
-			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
-			,
-			IMultiplePackedFileWrapper,
-			System.Collections.Generic.IEnumerable<ScorItem>
+	public class Scor : AbstractWrapper, IFileWrapper, IFileWrapperSaveExtension,
+						IMultiplePackedFileWrapper, System.Collections.Generic.IEnumerable<ScorItem>
 	{
 		#region Attributes
 		protected ScorItems Items
@@ -63,12 +57,12 @@ namespace SimPe.PackedFiles.Wrapper
 		}
 		#endregion
 
-		protected override string GetResourceName(TypeAlias ta)
+		protected override string GetResourceName(FileTypeInformation fti)
 		{
 			return !(FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
 					(ushort)FileDescriptor.Instance
 				) is ExtSDesc sdsc)
-				? base.GetResourceName(ta)
+				? base.GetResourceName(fti)
 				: sdsc.SimName + " " + sdsc.SimFamilyName + " (Scores)";
 		}
 
@@ -154,14 +148,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] types = { 0x3053CF74 };
-				return types;
-			}
-		}
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.SCOR };
 
 		#endregion
 

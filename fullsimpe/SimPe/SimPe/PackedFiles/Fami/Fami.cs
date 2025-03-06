@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 
+using SimPe.Data;
+using SimPe.Extensions;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Wrapper;
@@ -18,7 +20,7 @@ namespace SimPe.PackedFiles.Fami
 	public class Fami : AbstractWrapper, IFileWrapper, IFileWrapperSaveExtension
 	{
 		#region Properties
-		public uint Id { get; set; } = 0x46414D49;
+		public FileTypes Id { get; set; } = FileTypes.FAMI;
 		public FamiVersions Version { get; private set; } = FamiVersions.Original;
 		public uint Unknown { get; set; } = 0;
 
@@ -141,7 +143,7 @@ namespace SimPe.PackedFiles.Fami
 				try
 				{
 					IPackedFileDescriptor pfd = package.FindFile(
-						Data.MetaData.STRING_FILE,
+						Data.FileTypes.STR,
 						0,
 						FileDescriptor.Group,
 						FileDescriptor.Instance
@@ -171,7 +173,7 @@ namespace SimPe.PackedFiles.Fami
 				try
 				{
 					IPackedFileDescriptor pfd = package.FindFile(
-						Data.MetaData.STRING_FILE,
+						Data.FileTypes.STR,
 						0,
 						FileDescriptor.Group,
 						FileDescriptor.Instance
@@ -215,7 +217,7 @@ namespace SimPe.PackedFiles.Fami
 				if (Helper.IsLotCatalogFile(package.FileName))
 				{
 					IPackedFileDescriptor pfc = package.FindFile(
-						0x856DDBAC,
+						FileTypes.IMG,
 						0,
 						0xFFFFFFFF,
 						0x6CD85218
@@ -265,7 +267,7 @@ namespace SimPe.PackedFiles.Fami
 						)
 					);
 					IPackedFileDescriptor pfd = fumbs.FindFileAnyGroup(
-						0x8C3CE95A,
+						FileTypes.THUMB_FAMILY,
 						0,
 						FileDescriptor.Instance
 					);
@@ -329,7 +331,7 @@ namespace SimPe.PackedFiles.Fami
 				sdesc.CharacterDescription.Gender = Data.MetaData.Gender.Female;
 
 				IPackedFileDescriptor[] files = package.FindFiles(
-					Data.MetaData.SIM_DESCRIPTION_FILE
+					Data.FileTypes.SDSC
 				);
 				sdesc.Instance = 0;
 				foreach (IPackedFileDescriptor pfd in files)
@@ -342,7 +344,7 @@ namespace SimPe.PackedFiles.Fami
 				sdesc.Instance++;
 
 				IPackedFileDescriptor fd = package.Add(
-					Data.MetaData.SIM_DESCRIPTION_FILE,
+					Data.FileTypes.SDSC,
 					0x0,
 					FileDescriptor.Group,
 					sdesc.Instance
@@ -367,7 +369,7 @@ namespace SimPe.PackedFiles.Fami
 
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
-			Id = reader.ReadUInt32();
+			Id = (FileTypes)reader.ReadUInt32();
 			Version = (FamiVersions)reader.ReadUInt32();
 			Unknown = reader.ReadUInt32(); // Always 0x0000
 			LotInstance = reader.ReadUInt32();
@@ -424,7 +426,7 @@ namespace SimPe.PackedFiles.Fami
 
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
-			writer.Write(Id);
+			writer.Write((uint)Id);
 			writer.Write((uint)Version);
 			writer.Write(Unknown);
 			writer.Write(LotInstance);
@@ -493,7 +495,7 @@ namespace SimPe.PackedFiles.Fami
 			);
 		}
 
-		protected override string GetResourceName(Data.TypeAlias ta)
+		protected override string GetResourceName(FileTypeInformation fti)
 		{
 			if (!Processed)
 			{
@@ -507,7 +509,7 @@ namespace SimPe.PackedFiles.Fami
 
 		#region IPackedFileWrapper Member
 
-		public uint[] AssignableTypes => new uint[] { 0x46414D49 };
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.FAMI };
 
 		public byte[] FileSignature => new byte[] { (byte)'I', (byte)'M', (byte)'A', (byte)'F' };
 

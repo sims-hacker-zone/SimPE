@@ -3,6 +3,7 @@
 
 using System;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -148,14 +149,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] types = { 0x4F6FD33D }; // Inventory Item
-				return types;
-			}
-		}
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.INIT };
 
 		#endregion
 	}

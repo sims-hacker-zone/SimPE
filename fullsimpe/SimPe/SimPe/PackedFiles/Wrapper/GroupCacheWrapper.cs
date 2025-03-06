@@ -3,6 +3,7 @@
 using System;
 using System.Collections;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Wrapper;
 
@@ -11,13 +12,7 @@ namespace SimPe.PackedFiles.Wrapper
 	/// <summary>
 	/// Used to decode the Group Cache
 	/// </summary>
-	public class GroupCache
-		: AbstractWrapper //Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
-			,
-			IFileWrapper //This Interface is used when loading a File
-			,
-			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
-			,
+	public class GroupCache : AbstractWrapper, IFileWrapper, IFileWrapperSaveExtension,
 			IGroupCache
 	{
 		#region Attributes
@@ -213,30 +208,12 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns the Signature that can be used to identify Files processable with this Plugin
 		/// </summary>
-		public byte[] FileSignature
-		{
-			get
-			{
-				byte[] sig = { };
-				return sig;
-			}
-		}
+		public byte[] FileSignature => new byte[] { };
 
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] types =
-				{
-					0x54535053, //group
-				};
-
-				return types;
-			}
-		}
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.GROP };
 
 		#endregion
 	}

@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Wrapper
@@ -15,15 +16,9 @@ namespace SimPe.PackedFiles.Wrapper
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
 	public class Objf
-		: pjse.ExtendedWrapper<
-			ObjfItem,
-			Objf
-		> //AbstractWrapper				//Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
-			,
-			IFileWrapper //This Interface is used when loading a File
-			,
-			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
-									  //,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
+		: pjse.ExtendedWrapper<ObjfItem, Objf>,
+			IFileWrapper,
+			IFileWrapperSaveExtension
 	{
 		#region Attributes
 		/// <summary>
@@ -34,7 +29,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Header of the File
 		/// </summary>
-		private uint[] header = { 0x00000000, 0x00000000, 0x4f424a66 }; // 'OBJf'
+		private uint[] header = { 0x00000000, 0x00000000, (uint)FileTypes.OBJf }; // 'OBJf'
 		#endregion
 
 		#region Accessor methods
@@ -139,16 +134,16 @@ namespace SimPe.PackedFiles.Wrapper
 			header[0] = reader.ReadUInt32();
 			header[1] = reader.ReadUInt32();
 			header[2] = reader.ReadUInt32();
-			//if (header[2] != 0x4f424a66)
+			//if (header[2] != FileTypes.OBJf)
 			//	return; // throws NullReferenceException if items = null
 
-			if (header[2] == 0x4f424a66)
+			if (header[2] == (uint)FileTypes.OBJf)
 			{
 				itemCount = reader.ReadUInt32();
 			}
 			else
 			{
-				header[2] = 0x4f424a66; // will be fixed when commited, this allows a corrupt file to load as a blank file
+				header[2] = (uint)FileTypes.OBJf; // will be fixed when commited, this allows a corrupt file to load as a blank file
 				Changed = true; // enable commit button for immediate commit.
 			}
 
@@ -161,20 +156,11 @@ namespace SimPe.PackedFiles.Wrapper
 
 		#endregion
 
-		public const uint Objftype = 0x4F424A66;
-
 		#region IFileWrapper Member
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] types = { Objftype }; //handles the OBJf File
-				return types;
-			}
-		}
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.OBJf };
 
 		/// <summary>
 		/// Returns the Signature that can be used to identify Files processable with this Plugin

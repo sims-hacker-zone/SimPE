@@ -3,6 +3,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
+using SimPe.Data;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Scenegraph;
 
@@ -133,7 +134,7 @@ namespace SimPe.Plugin
 					list.Add(
 						ScenegraphHelper.BuildPfd(
 							name,
-							ScenegraphHelper.CRES,
+							FileTypes.CRES,
 							parentgroup
 						)
 					);

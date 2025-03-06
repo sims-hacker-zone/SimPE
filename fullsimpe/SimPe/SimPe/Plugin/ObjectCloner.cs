@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
+using SimPe.Data;
 using SimPe.Interfaces.Files;
 using SimPe.Packages;
 
@@ -16,10 +17,10 @@ namespace SimPe.Plugin
 	{
 		public class StrIntsanceAlias : Data.Alias
 		{
-			internal StrIntsanceAlias(uint inst, uint type, string ext)
+			internal StrIntsanceAlias(uint inst, FileTypes type, string ext)
 				: base(inst, ext, new object[] { type }) { }
 
-			public uint Type => (uint)Tag[0];
+			public FileTypes Type => (FileTypes)Tag[0];
 
 			public uint Instance => Id;
 
@@ -113,7 +114,7 @@ namespace SimPe.Plugin
 		{
 			StrInstances = new StrIntsanceAlias[]
 			{
-				new StrIntsanceAlias(0x88, Data.MetaData.TXMT, "_txmt"),
+				new StrIntsanceAlias(0x88, FileTypes.TXMT, "_txmt"),
 			};
 			PullResourcesByStr = true;
 			IncludeWallmask = true;
@@ -182,42 +183,42 @@ namespace SimPe.Plugin
 			if (name.EndsWith("_clean"))
 			{
 				name = name.Substring(0, name.Length - 6) + "_dirty";
-				pfds = package.FindFile(name + "_txmt", 0x49596978);
+				pfds = package.FindFile(name + "_txmt", FileTypes.TXMT);
 			}
 			else if (name.EndsWith("_dirty"))
 			{
 				name = name.Substring(0, name.Length - 6) + "_clean";
-				pfds = package.FindFile(name + "_txmt", 0x49596978);
+				pfds = package.FindFile(name + "_txmt", FileTypes.TXMT);
 			}
 			else if (name.EndsWith("_lit"))
 			{
 				name = name.Substring(0, name.Length - 4) + "_unlit";
-				pfds = package.FindFile(name + "_txmt", 0x49596978);
+				pfds = package.FindFile(name + "_txmt", FileTypes.TXMT);
 			}
 			else if (name.EndsWith("_unlit"))
 			{
 				name = name.Substring(0, name.Length - 6) + "_lit";
-				pfds = package.FindFile(name + "_txmt", 0x49596978);
+				pfds = package.FindFile(name + "_txmt", FileTypes.TXMT);
 			}
 			else if (name.EndsWith("_on"))
 			{
 				name = name.Substring(0, name.Length - 3) + "_off";
-				pfds = package.FindFile(name + "_txmt", 0x49596978);
+				pfds = package.FindFile(name + "_txmt", FileTypes.TXMT);
 			}
 			else if (name.EndsWith("_off"))
 			{
 				name = name.Substring(0, name.Length - 4) + "_on";
-				pfds = package.FindFile(name + "_txmt", 0x49596978);
+				pfds = package.FindFile(name + "_txmt", FileTypes.TXMT);
 			}
 			else if (name.EndsWith("_shadeinside"))
 			{
 				name = name.Substring(0, name.Length - 4) + "_shadeoutside";
-				pfds = package.FindFile(name + "_txmt", 0x49596978);
+				pfds = package.FindFile(name + "_txmt", FileTypes.TXMT);
 			}
 			else if (name.EndsWith("_shadeoutside"))
 			{
 				name = name.Substring(0, name.Length - 4) + "_shadeinside";
-				pfds = package.FindFile(name + "_txmt", 0x49596978);
+				pfds = package.FindFile(name + "_txmt", FileTypes.TXMT);
 			}
 			return pfds;
 		}
@@ -230,13 +231,13 @@ namespace SimPe.Plugin
 		{
 			uint guid = 0;
 			IPackedFileDescriptor[] pfds = Package.FindFile(
-				Data.MetaData.OBJD_FILE,
+				FileTypes.OBJD,
 				0,
 				0x41A7
 			);
 			if (pfds.Length == 0)
 			{
-				pfds = Package.FindFiles(Data.MetaData.OBJD_FILE);
+				pfds = Package.FindFiles(FileTypes.OBJD);
 			}
 
 			if (pfds.Length > 0)
@@ -257,7 +258,7 @@ namespace SimPe.Plugin
 		{
 			ArrayList list = new ArrayList();
 			IPackedFileDescriptor[] pfds = Package.FindFiles(
-				Data.MetaData.OBJD_FILE
+				FileTypes.OBJD
 			);
 
 			foreach (IPackedFileDescriptor pfd in pfds)
@@ -284,7 +285,7 @@ namespace SimPe.Plugin
 			}
 
 			IPackedFileDescriptor[] pfds = Package.FindFiles(
-				Data.MetaData.MMAT
+				FileTypes.MMAT
 			);
 
 			foreach (IPackedFileDescriptor pfd in pfds)
@@ -336,7 +337,7 @@ namespace SimPe.Plugin
 			ArrayList list = new ArrayList();
 
 			IPackedFileDescriptor[] pfds =
-				Package.FindFiles(Data.MetaData.STRING_FILE);
+				Package.FindFiles(FileTypes.STR);
 			foreach (IPackedFileDescriptor pfd in pfds)
 			{
 				if (instances.Contains(pfd.Instance))
@@ -521,15 +522,14 @@ namespace SimPe.Plugin
 				names.Add(s);
 			}
 
-			List<uint> types = new List<uint>
-			{
-				Data.MetaData.MMAT,
-				Data.MetaData.TXMT,
-				Data.MetaData.TXTR,
-				Data.MetaData.LIFO
-			};
 
-			foreach (uint type in types)
+			foreach (FileTypes type in new List<FileTypes>
+			{
+				FileTypes.MMAT,
+				FileTypes.TXMT,
+				FileTypes.TXTR,
+				FileTypes.LIFO
+			})
 			{
 				IPackedFileDescriptor[] pfds = Package.FindFiles(
 					type
@@ -545,7 +545,7 @@ namespace SimPe.Plugin
 					pfd.UserData = file.UncompressedData;
 
 					//Update the modeName in the MMAT
-					if ((pfd.Type == Data.MetaData.MMAT) && (names.Count > 0))
+					if ((pfd.Type == FileTypes.MMAT) && (names.Count > 0))
 					{
 						MmatWrapper mmat = new MmatWrapper();
 						mmat.ProcessData(pfd, Package);
@@ -600,7 +600,7 @@ namespace SimPe.Plugin
 
 			bool deleted = false;
 			IPackedFileDescriptor[] pfds = Package.FindFiles(
-				Data.MetaData.SHPE
+				FileTypes.SHPE
 			);
 			foreach (IPackedFileDescriptor pfd in pfds)
 			{
@@ -635,7 +635,7 @@ namespace SimPe.Plugin
 						}
 
 						List<IPackedFileDescriptor> names = new List<IPackedFileDescriptor>();
-						foreach (IPackedFileDescriptor rpfd in Package.FindFile(n, Data.MetaData.TXMT))
+						foreach (IPackedFileDescriptor rpfd in Package.FindFile(n, FileTypes.TXMT))
 						{
 							names.Add(rpfd);
 						}

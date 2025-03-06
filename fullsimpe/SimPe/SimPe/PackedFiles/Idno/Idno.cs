@@ -140,7 +140,7 @@ namespace SimPe.PackedFiles.Idno
 			}
 
 			Interfaces.Files.IPackedFileDescriptor idno = pkg.FindFile(
-				MetaData.IDNO,
+				FileTypes.IDNO,
 				0,
 				MetaData.LOCAL_GROUP,
 				1
@@ -335,7 +335,7 @@ namespace SimPe.PackedFiles.Idno
 			{
 				Packages.File fl = Packages.File.LoadFromFile(name);
 				Interfaces.Files.IPackedFileDescriptor[] pfds = fl.FindFiles(
-					MetaData.IDNO
+					FileTypes.IDNO
 				);
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
@@ -523,14 +523,7 @@ namespace SimPe.PackedFiles.Idno
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] types = { MetaData.IDNO };
-				return types;
-			}
-		}
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.IDNO };
 
 		#endregion
 	}

@@ -4,6 +4,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
+using SimPe.Data;
 using SimPe.Interfaces.Scenegraph;
 using SimPe.Plugin;
 
@@ -1472,7 +1473,7 @@ namespace SimPe.PackedFiles.Txtr
 				uint inst = Hashes.InstanceHash(mm.LifoFile);
 
 				Interfaces.Files.IPackedFileDescriptor pfd = wrapper.Package.FindFile(
-					0xED534136,
+					FileTypes.LIFO,
 					st,
 					wrapper.FileDescriptor.Group,
 					inst

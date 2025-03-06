@@ -3,6 +3,8 @@
 using System;
 using System.Collections;
 
+using SimPe.Data;
+using SimPe.Extensions;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Wrapper
@@ -118,7 +120,7 @@ namespace SimPe.PackedFiles.Wrapper
 			BBits = 9;
 			CBits = 9;
 			NumberSize = 8;
-			id = 0x61754C1B;
+			id = (uint)FileTypes.SLUA;
 			sample = new byte[] { 0xb6, 0x09, 0x93, 0x68, 0xe7, 0xf5, 0x7d, 0x41 };
 
 			FileName = "";
@@ -299,14 +301,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		#region IPackedFileWrapper Member
 
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] Types = { Data.MetaData.GLUA, Data.MetaData.OLUA };
-				return Types;
-			}
-		}
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.GLUA, FileTypes.OLUA };
 
 		public byte[] FileSignature
 		{
@@ -319,7 +314,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 		#endregion
 
-		protected override string GetResourceName(Data.TypeAlias ta)
+		protected override string GetResourceName(FileTypeInformation fti)
 		{
 			if (!Processed)
 			{

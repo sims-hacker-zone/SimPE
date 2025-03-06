@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 
 using SimPe.Cache;
+using SimPe.Data;
 using SimPe.Interfaces.Plugin.Scanner;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Picture;
@@ -361,11 +362,11 @@ namespace SimPe.Plugin.Scanner
 			si.PackageCacheItem.Name = Localization.Manager.GetString("unknown");
 
 			Interfaces.Files.IPackedFileDescriptor[] pfds = si.Package.FindFiles(
-				Data.MetaData.CTSS_FILE
+				Data.FileTypes.CTSS
 			);
 			if (pfds.Length == 0)
 			{
-				pfds = si.Package.FindFiles(Data.MetaData.STRING_FILE);
+				pfds = si.Package.FindFiles(Data.FileTypes.STR);
 			}
 
 			//Check for Str compatible Items
@@ -388,15 +389,15 @@ namespace SimPe.Plugin.Scanner
 			}
 			else
 			{
-				pfds = si.Package.FindFiles(Data.MetaData.GZPS);
+				pfds = si.Package.FindFiles(Data.FileTypes.GZPS);
 				if (pfds.Length == 0)
 				{
-					pfds = si.Package.FindFiles(0xCCA8E925); //Object XML
+					pfds = si.Package.FindFiles(FileTypes.XOBJ); //Object XML
 				}
 
 				if (pfds.Length == 0)
 				{
-					pfds = si.Package.FindFiles(Data.MetaData.MMAT);
+					pfds = si.Package.FindFiles(Data.FileTypes.MMAT);
 				}
 
 				//Check for Cpf compatible Items
@@ -476,7 +477,7 @@ namespace SimPe.Plugin.Scanner
 			)
 			{
 				Interfaces.Files.IPackedFileDescriptor[] pfds =
-					si.Package.FindFiles(Data.MetaData.OBJD_FILE);
+					si.Package.FindFiles(Data.FileTypes.OBJD);
 
 				uint group = 0;
 				if (pfds.Length > 0)
@@ -510,8 +511,8 @@ namespace SimPe.Plugin.Scanner
 			if (ps.State == TriState.Null)
 			{
 				Picture pic = new Picture();
-				uint[] types = pic.AssignableTypes;
-				foreach (uint type in types)
+				FileTypes[] types = pic.AssignableTypes;
+				foreach (FileTypes type in types)
 				{
 					Interfaces.Files.IPackedFileDescriptor[] pfds =
 						si.Package.FindFiles(type);
@@ -549,7 +550,7 @@ namespace SimPe.Plugin.Scanner
 			{
 				//load the Texture Image
 				Interfaces.Files.IPackedFileDescriptor[] pfds =
-					si.Package.FindFiles(Data.MetaData.TXTR);
+					si.Package.FindFiles(Data.FileTypes.TXTR);
 				if (pfds.Length > 0)
 				{
 					GenericRcol rcol = new GenericRcol(null, false);
@@ -645,7 +646,7 @@ namespace SimPe.Plugin.Scanner
 
 			uint inst = ThumbnailHash(group, modelname);
 			Interfaces.Files.IPackedFileDescriptor ipfd = thumbs.FindFile(
-				0xAC2950C1,
+				FileTypes.THUB,
 				group,
 				0xFFFFFFFF,
 				inst
@@ -729,7 +730,7 @@ namespace SimPe.Plugin.Scanner
 		)
 		{
 			Interfaces.Files.IPackedFileDescriptor[] pfds = si.Package.FindFiles(
-				Data.MetaData.OBJD_FILE
+				Data.FileTypes.OBJD
 			);
 			List<uint> mylist = new List<uint>();
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
@@ -856,7 +857,7 @@ namespace SimPe.Plugin.Scanner
 		)
 		{
 			Interfaces.Files.IPackedFileDescriptor[] pfds = si.Package.FindFiles(
-				Data.MetaData.MMAT
+				Data.FileTypes.MMAT
 			);
 			//ArrayList list = new ArrayList();
 
@@ -889,7 +890,7 @@ namespace SimPe.Plugin.Scanner
 				Interfaces.Scenegraph.IScenegraphFileIndexItem item =
 					FileTableBase.FileIndex.FindFileByName(
 						m,
-						Data.MetaData.CRES,
+						Data.FileTypes.CRES,
 						Data.MetaData.LOCAL_GROUP,
 						true
 					);
@@ -967,7 +968,7 @@ namespace SimPe.Plugin.Scanner
 		)
 		{
 			Interfaces.Files.IPackedFileDescriptor[] pfds = si.Package.FindFiles(
-				Data.MetaData.GMDC
+				Data.FileTypes.GMDC
 			);
 			//ArrayList list = new ArrayList();
 

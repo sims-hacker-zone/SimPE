@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.ComponentModel;
 
+using SimPe.Data;
+
 namespace SimPe.Plugin.Anim
 {
 	/// <summary>
@@ -68,7 +70,7 @@ namespace SimPe.Plugin.Anim
 		{
 			sgres = new SGResource(null);
 			Data = new byte[0];
-			BlockID = 0xfb00791e;
+			BlockID = (uint)FileTypes.ANIM;
 
 			HeaderBytes = new byte[6];
 			HeaderInts = new uint[4];

@@ -1,5 +1,6 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using SimPe.Data;
 namespace SimPe.Plugin
 {
 	/// <summary>
@@ -14,7 +15,7 @@ namespace SimPe.Plugin
 			: base(parent)
 		{
 			version = 1;
-			BlockID = 0xc9c81b9b;
+			BlockID = (uint)FileTypes.LDIR;
 		}
 	}
 }

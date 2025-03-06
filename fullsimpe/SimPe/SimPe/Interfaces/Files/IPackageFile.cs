@@ -1,5 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using SimPe.Data;
+
 namespace SimPe.Interfaces.Files
 {
 	/// <summary>
@@ -63,7 +65,7 @@ namespace SimPe.Interfaces.Files
 		/// <param name="group">The Group for the File</param>
 		/// <param name="instance">The Instance of the FIle</param>
 		/// <returns>The created PackedFileDescriptor</returns>
-		IPackedFileDescriptor Add(uint type, uint subtype, uint group, uint instance);
+		IPackedFileDescriptor Add(FileTypes type, uint subtype, uint group, uint instance);
 
 		/// <summary>
 		/// Ads a new Descriptor to the Index
@@ -98,7 +100,7 @@ namespace SimPe.Interfaces.Files
 		/// </summary>
 		/// <returns>the new File descriptor</returns>
 		IPackedFileDescriptor NewDescriptor(
-			uint type,
+			FileTypes type,
 			uint subtype,
 			uint group,
 			uint instance
@@ -119,14 +121,14 @@ namespace SimPe.Interfaces.Files
 		/// </summary>
 		/// <param name="filename">The Filename you are looking for</param>
 		/// <returns>List of matching Files</returns>
-		IPackedFileDescriptor[] FindFile(string filename, uint type);
+		IPackedFileDescriptor[] FindFile(string filename, FileTypes type);
 
 		/// <summary>
 		/// Returns a List ofa all Files matching the passed type
 		/// </summary>
 		/// <param name="type">Type you want to look for</param>
 		/// <returns>A List of Files</returns>
-		IPackedFileDescriptor[] FindFiles(uint type);
+		IPackedFileDescriptor[] FindFiles(FileTypes type);
 
 		/// <summary>
 		/// Returns the first File matching
@@ -140,7 +142,7 @@ namespace SimPe.Interfaces.Files
 		/// </summary>
 		/// <param name="type">Type you want to look for</param>
 		/// <returns>The descriptor for the matching Dile or null</returns>
-		IPackedFileDescriptor[] FindFile(uint type, uint subtype, uint instance);
+		IPackedFileDescriptor[] FindFile(FileTypes type, uint subtype, uint instance);
 
 		/// <summary>
 		/// Returns the first File matching
@@ -155,7 +157,7 @@ namespace SimPe.Interfaces.Files
 		/// <param name="type">Type you want to look for</param>
 		/// <returns>The descriptor for the matching File or null</returns>
 		IPackedFileDescriptor FindFile(
-			uint type,
+			FileTypes type,
 			uint subtype,
 			uint group,
 			uint instance
@@ -174,7 +176,7 @@ namespace SimPe.Interfaces.Files
 		/// <param name="type">Type you want to look for</param>
 		/// <returns>The descriptor for the matching Dile or null</returns>
 		IPackedFileDescriptor FindExactFile(
-			uint type,
+			FileTypes type,
 			uint subtype,
 			uint group,
 			uint instance,

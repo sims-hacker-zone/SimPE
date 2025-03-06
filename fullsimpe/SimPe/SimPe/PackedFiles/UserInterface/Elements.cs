@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
+using SimPe.Data;
 using SimPe.Forms.MainUI;
 using SimPe.PackedFiles.Fami;
 using SimPe.PackedFiles.Wrapper.Supporting;
@@ -1167,7 +1168,7 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 
 				Interfaces.Files.IPackedFileDescriptor pfd = sdsc.Package.NewDescriptor(
-					0xAACE2EFB,
+					FileTypes.SDSC,
 					sdsc.FileDescriptor.SubType,
 					sdsc.FileDescriptor.Group,
 					sdsc.FileDescriptor.Instance
@@ -1266,7 +1267,7 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				Fami.Fami fami = (Fami.Fami)wrapper;
 				Interfaces.Files.IPackedFileDescriptor pfd = fami.Package.NewDescriptor(
-					0x46414D68,
+					FileTypes.FAMH,
 					fami.FileDescriptor.SubType,
 					fami.FileDescriptor.Group,
 					fami.FileDescriptor.Instance
@@ -1835,7 +1836,7 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 
 				Interfaces.Files.IPackedFileDescriptor pfd = fami.Package.NewDescriptor(
-					0x0BF999E7,
+					FileTypes.LTXT,
 					0,
 					0xFFFFFFFF,
 					fami.LotInstance

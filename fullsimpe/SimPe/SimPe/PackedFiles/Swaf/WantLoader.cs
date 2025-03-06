@@ -82,7 +82,7 @@ namespace SimPe.PackedFiles.Swaf
 
 			FileTableBase.FileIndex.Load();
 
-			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem wts in FileTableBase.FileIndex.FindFile(Data.MetaData.XWNT, true))
+			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem wts in FileTableBase.FileIndex.FindFile(Data.FileTypes.XWNT, true))
 			{
 				wants.Add(wts.FileDescriptor.Instance, wts);
 			}
@@ -129,7 +129,7 @@ namespace SimPe.PackedFiles.Swaf
 			}
 
 			Interfaces.Files.IPackedFileDescriptor[] pfds = txtpkg.FindFile(
-				Data.MetaData.STRING_FILE,
+				Data.FileTypes.STR,
 				0,
 				wnt.StringInstance
 			);

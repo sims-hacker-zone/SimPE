@@ -5,6 +5,7 @@ using System.Collections;
 using System.Drawing;
 using System.Windows.Forms;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Wrapper;
 
@@ -295,7 +296,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 			index = -1;
 			bconres = (Bcon)(
-				wrapper?.SiblingResource(Bcon.Bcontype)
+				wrapper?.SiblingResource(FileTypes.BCON)
 			);
 
 			lvTrcnItem.Items.Clear();
@@ -501,7 +502,7 @@ namespace SimPe.PackedFiles.UserInterface
 		void FiletableRefresh(object sender, EventArgs e)
 		{
 			pjse_banner1.SiblingEnabled =
-				wrapper != null && wrapper.SiblingResource(Bcon.Bcontype) != null;
+				wrapper != null && wrapper.SiblingResource(FileTypes.BCON) != null;
 			updateLists();
 		}
 		#endregion
@@ -521,7 +522,7 @@ namespace SimPe.PackedFiles.UserInterface
 			wrapper = (Trcn)wrp;
 			WrapperChanged(wrapper, null);
 			pjse_banner1.SiblingEnabled =
-				wrapper.SiblingResource(Bcon.Bcontype) != null;
+				wrapper.SiblingResource(FileTypes.BCON) != null;
 
 			internalchg = true;
 			updateLists();
@@ -1007,7 +1008,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void pjse_banner1_SiblingClick(object sender, EventArgs e)
 		{
-			Bcon bcon = (Bcon)wrapper.SiblingResource(Bcon.Bcontype);
+			Bcon bcon = (Bcon)wrapper.SiblingResource(FileTypes.BCON);
 			if (bcon == null)
 			{
 				return;

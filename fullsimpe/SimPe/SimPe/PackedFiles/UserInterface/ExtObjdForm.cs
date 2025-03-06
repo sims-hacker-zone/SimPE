@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 
+using SimPe.Data;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Wrapper;
@@ -411,7 +412,7 @@ namespace SimPe.PackedFiles.UserInterface
 				return;
 			}
 			IPackedFileDescriptor objDefPFD = glua.FindFile(
-				Data.MetaData.GLUA,
+				Data.FileTypes.GLUA,
 				0x49fa1f15,
 				0xffffffff,
 				0xff89f911
@@ -472,7 +473,7 @@ namespace SimPe.PackedFiles.UserInterface
 				return;
 			}
 			IPackedFileDescriptor objDefPFD = gs.FindFile(
-				0x53545223,
+				FileTypes.STR,
 				0,
 				0xfeedf00d,
 				0xcc

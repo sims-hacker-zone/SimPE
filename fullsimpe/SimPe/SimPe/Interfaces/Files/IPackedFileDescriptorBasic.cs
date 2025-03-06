@@ -2,6 +2,9 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 
+using SimPe.Data;
+using SimPe.Extensions;
+
 namespace SimPe.Interfaces.Files
 {
 	/// <summary>
@@ -44,7 +47,7 @@ namespace SimPe.Interfaces.Files
 		/// <summary>
 		/// Returns the Type of the referenced File
 		/// </summary>
-		uint Type
+		FileTypes Type
 		{
 			get; set;
 		}
@@ -52,7 +55,7 @@ namespace SimPe.Interfaces.Files
 		/// <summary>
 		/// Returns the Name of the represented Type
 		/// </summary>
-		Data.TypeAlias TypeName
+		FileTypeInformation TypeInfo
 		{
 			get;
 		}

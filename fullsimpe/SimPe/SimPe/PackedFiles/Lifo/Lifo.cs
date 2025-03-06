@@ -3,6 +3,7 @@
 
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 using SimPe.Plugin;
 
@@ -54,9 +55,9 @@ namespace SimPe.PackedFiles.Lifo
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public override uint[] AssignableTypes => new uint[]
+		public override FileTypes[] AssignableTypes => new FileTypes[]
 				{
-					0xED534136, //LIFO Files
+					FileTypes.LIFO,
 				};
 
 		#endregion

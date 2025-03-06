@@ -4,6 +4,8 @@
 using System.Drawing;
 using System.IO;
 
+using SimPe.Data;
+
 namespace SimPe
 {
 	/// <summary>
@@ -60,7 +62,7 @@ namespace SimPe
 			if (pkg != null)
 			{
 				Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(
-					0x856DDBAC,
+					FileTypes.IMG,
 					0,
 					0x499DB772,
 					0x8CBB9323
@@ -92,7 +94,7 @@ namespace SimPe
 			if (pkg != null)
 			{
 				Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(
-					0x856DDBAC,
+					FileTypes.IMG,
 					0,
 					0x499DB772,
 					inst
@@ -121,7 +123,7 @@ namespace SimPe
 				{
 					pkg = Packages.File.LoadFromFile(files[0]);
 					Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(
-						0x856DDBAC,
+						FileTypes.IMG,
 						0,
 						0x499DB772,
 						inst
@@ -279,7 +281,7 @@ namespace SimPe
 		//         }
 
 		//         pkg = SimPe.Packages.File.LoadFromFile(bakimge);
-		//         pfd = pkg.FindFile(0x856DDBAC, 0, 0x499DB772, maimg);
+		//         pfd = pkg.FindFile(FileTypes.IMG, 0, 0x499DB772, maimg);
 		//         if (pfd != null)
 		//         {
 		//             SimPe.PackedFiles.Wrapper.Picture pic = new SimPe.PackedFiles.Wrapper.Picture();
@@ -290,7 +292,7 @@ namespace SimPe
 		//         if (forimge != bakimge)
 		//             pkg = SimPe.Packages.File.LoadFromFile(forimge);
 
-		//         pfd = pkg.FindFile(0x856DDBAC, 0, 0x499DB772, foimg);
+		//         pfd = pkg.FindFile(FileTypes.IMG, 0, 0x499DB772, foimg);
 		//         if (pfd != null)
 		//         {
 		//             SimPe.PackedFiles.Wrapper.Picture pic = new SimPe.PackedFiles.Wrapper.Picture();

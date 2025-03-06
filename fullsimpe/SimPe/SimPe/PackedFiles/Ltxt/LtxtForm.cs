@@ -4,6 +4,8 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
+using SimPe.Data;
+
 namespace SimPe.PackedFiles.Ltxt
 {
 	/// <summary>
@@ -1584,20 +1586,20 @@ namespace SimPe.PackedFiles.Ltxt
 					new LinkLabel[] { llAptBase, llSubLot, llFamily }
 				);
 
-			uint type,
-				inst;
+			FileTypes type;
+			uint inst;
 			switch (lll.IndexOf((LinkLabel)sender))
 			{
 				case 0:
-					type = 0x0BF999E7;
+					type = FileTypes.LTXT;
 					inst = wrapper.ApartmentBase;
 					break;
 				case 1:
-					type = 0x0BF999E7;
+					type = FileTypes.LTXT;
 					inst = wrapper.SubLots[lbApts.SelectedIndex].ApartmentSublot;
 					break;
 				case 2:
-					type = 0x46414D49;
+					type = FileTypes.FAMI;
 					inst = wrapper.SubLots[lbApts.SelectedIndex].Family;
 					break;
 				default:
@@ -1686,7 +1688,7 @@ namespace SimPe.PackedFiles.Ltxt
 				] is Wrapper.ExtSDesc sdsc)
 			{
 				Interfaces.Files.IPackedFileDescriptor pfd = sdsc.Package.NewDescriptor(
-					0xAACE2EFB,
+					FileTypes.SDSC,
 					sdsc.FileDescriptor.SubType,
 					sdsc.FileDescriptor.Group,
 					sdsc.FileDescriptor.Instance

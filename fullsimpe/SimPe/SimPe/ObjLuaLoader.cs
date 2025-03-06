@@ -1,5 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using SimPe.Data;
+
 namespace SimPe
 {
 	/// <summary>
@@ -81,10 +83,10 @@ namespace SimPe
 					br = new System.IO.BinaryReader(bw.BaseStream);
 					br.BaseStream.Seek(0, System.IO.SeekOrigin.Begin);
 
-					uint type = Data.MetaData.OLUA;
+					FileTypes type = Data.FileTypes.OLUA;
 					if (global)
 					{
-						type = Data.MetaData.GLUA;
+						type = Data.FileTypes.GLUA;
 					}
 
 					Interfaces.Files.IPackedFileDescriptor pfd =

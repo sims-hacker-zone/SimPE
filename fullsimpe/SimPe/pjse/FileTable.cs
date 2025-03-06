@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Resources;
 
+using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
@@ -367,7 +368,7 @@ namespace pjse
 		private void Add(Entry key)
 		{
 			object val = true;
-			uint T = key.Type;
+			FileTypes T = key.Type;
 			uint G = key.Group;
 			uint I = key.Instance;
 			IPackageFile P = key.Package;
@@ -589,7 +590,7 @@ namespace pjse
 				get; private set;
 			}
 
-			public uint Type => PFD.Type;
+			public FileTypes Type => PFD.Type;
 
 			public uint Group => PFD.Group;
 
@@ -701,7 +702,7 @@ namespace pjse
 						: Source.Any
 				];
 
-		public Entry[] this[IPackageFile package, uint packedFileType]
+		public Entry[] this[IPackageFile package, FileTypes packedFileType]
 		{
 			get
 			{
@@ -729,8 +730,8 @@ namespace pjse
 			}
 		}
 
-		public Entry[] this[uint packedFileType] => this[packedFileType, Source.Any];
-		public Entry[] this[uint packedFileType, Source where]
+		public Entry[] this[FileTypes packedFileType] => this[packedFileType, Source.Any];
+		public Entry[] this[FileTypes packedFileType, Source where]
 		{
 			get
 			{
@@ -743,12 +744,12 @@ namespace pjse
 			}
 		}
 
-		public Entry[] this[uint packedFileType, uint group] => this[
+		public Entry[] this[FileTypes packedFileType, uint group] => this[
 					packedFileType,
 					group,
 					group == 0xffffffff ? Source.Local : Source.Any
 				];
-		public Entry[] this[uint packedFileType, uint group, Source where]
+		public Entry[] this[FileTypes packedFileType, uint group, Source where]
 		{
 			get
 			{
@@ -762,9 +763,9 @@ namespace pjse
 			}
 		}
 
-		public Entry[] this[uint packedFileType, uint group, uint instance] => this[packedFileType, group, instance, Source.Any];
+		public Entry[] this[FileTypes packedFileType, uint group, uint instance] => this[packedFileType, group, instance, Source.Any];
 		public Entry[] this[
-			uint packedFileType,
+			FileTypes packedFileType,
 			uint group,
 			uint instance,
 			Source where

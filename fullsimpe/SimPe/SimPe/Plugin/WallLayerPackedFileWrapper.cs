@@ -3,6 +3,7 @@
 
 using System;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -108,17 +109,13 @@ namespace SimPe.Plugin
 		/// </remarks>
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
-			byte nun = 0;
-			uint blok = 0x8A84D7B0;
-			int vershin = 1;
-			string named = "cWallLayer";
 			for (int j = 0; j < 64; j++)
 			{
-				writer.Write(nun);
+				writer.Write((byte)0);
 			}
-			writer.Write(blok);
-			writer.Write(vershin);
-			writer.Write(named);
+			writer.Write((uint)FileTypes.WLAY);
+			writer.Write(1);
+			writer.Write("cWallLayer");
 			writer.Write(ItemCount);
 			for (int i = 0; i < ItemCount; i++)
 			{
@@ -144,14 +141,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] types = { 0x8A84D7B0 }; //handles the Wall Layer
-				return types;
-			}
-		}
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.WLAY };
 
 		#endregion
 	}

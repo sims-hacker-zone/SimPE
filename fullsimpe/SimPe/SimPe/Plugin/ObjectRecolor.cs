@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Collections;
 
+using SimPe.Data;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Scenegraph;
 using SimPe.PackedFiles.Cpf;
@@ -112,7 +113,7 @@ namespace SimPe.Plugin
 		{
 			ArrayList list = new ArrayList();
 			IPackedFileDescriptor[] pfds = Package.FindFiles(
-				0x7BA3838C
+				FileTypes.GMND
 			);
 
 			foreach (IPackedFileDescriptor pfd in pfds)
@@ -151,7 +152,7 @@ namespace SimPe.Plugin
 		{
 			ArrayList list = new ArrayList();
 			IPackedFileDescriptor[] pfds = Package.FindFiles(
-				0xFC6EB1F7
+				FileTypes.SHPE
 			);
 
 			foreach (IPackedFileDescriptor pfd in pfds)
@@ -219,7 +220,7 @@ namespace SimPe.Plugin
 		protected Rcol FindResourceNode(Rcol shpe)
 		{
 			IPackedFileDescriptor[] pfds = Package.FindFiles(
-				0xE519C933
+				FileTypes.CRES
 			);
 			IPackedFileDescriptor pfd = shpe.FileDescriptor;
 
@@ -262,7 +263,7 @@ namespace SimPe.Plugin
 			ArrayList list = new ArrayList();
 			ArrayList localsubsets = new ArrayList();
 			DataListExtension dle = new DataListExtension(gmnd);
-			uint index = (uint)(gm_pkg.FindFiles(0x4C697E5A).Length + 1);
+			uint index = (uint)(gm_pkg.FindFiles(FileTypes.MMAT).Length + 1);
 
 			foreach (Rcol shpe in shpes)
 			{
@@ -284,7 +285,7 @@ namespace SimPe.Plugin
 					//Read the MATD
 					IPackedFileDescriptor[] pfds = Package.FindFile(
 						part.FileName + "_txmt",
-						0x49596978
+						FileTypes.TXMT
 					);
 					foreach (IPackedFileDescriptor pfd in pfds)
 					{
@@ -302,7 +303,7 @@ namespace SimPe.Plugin
 									.FindFile(
 										md.GetProperty("stdMatBaseTextureName").Value
 											+ "_txtr",
-										0x1C4A276C
+										FileTypes.TXTR
 									)
 									.Length > 0
 							)
@@ -385,7 +386,7 @@ namespace SimPe.Plugin
 					Group = 0xffffffff,
 					SubType = 0x00000000,
 					Instance = instance,
-					Type = 0x4C697E5A, //MMAT
+					Type = FileTypes.MMAT, //MMAT
 					UserData = br.ReadBytes((int)br.BaseStream.Length)
 				};
 
@@ -409,7 +410,7 @@ namespace SimPe.Plugin
 
 			//Get the GUID
 			IPackedFileDescriptor[] pfds = Package.FindFiles(
-				Data.MetaData.OBJD_FILE
+				Data.FileTypes.OBJD
 			);
 			mmat.GetSaveItem("objectGUID").UIntegerValue = 0x00000000;
 			foreach (IPackedFileDescriptor pfd in pfds)
@@ -496,7 +497,7 @@ namespace SimPe.Plugin
 				+ "_txmt";
 			IPackedFileDescriptor[] pfds = pkg.FindFile(
 				flname,
-				0x49596978
+				FileTypes.TXMT
 			);
 
 			foreach (IPackedFileDescriptor pfd in pfds)
@@ -546,7 +547,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public void LoadReferencedMATDs()
 		{
-			LoadReferencedMATDs(Package.FindFiles(0x4C697E5A));
+			LoadReferencedMATDs(Package.FindFiles(FileTypes.MMAT));
 		}
 	}
 }

@@ -196,7 +196,7 @@ namespace SimPe.Plugin
 			{
 				IPackedFileDescriptor[] pfds = Utility.FindFiles(
 					item.PropertySet.Package,
-					Data.MetaData.REF_FILE,
+					Data.FileTypes.THREE_IDR,
 					item.PropertySet.FileDescriptor.Group,
 					item.PropertySet.FileDescriptor.Instance
 				);
@@ -282,7 +282,7 @@ namespace SimPe.Plugin
 			ArrayList ret = new ArrayList();
 
 			IPackedFileDescriptor[] cresFiles = meshPackage.FindFiles(
-				Data.MetaData.CRES
+				Data.FileTypes.CRES
 			);
 			using (GenericRcol rcol = new GenericRcol())
 			{

@@ -70,8 +70,8 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 		)
 		{
 			if (
-				pfd.Type != Data.MetaData.STRING_FILE
-				&& pfd.Type != Data.MetaData.CTSS_FILE
+				pfd.Type != Data.FileTypes.STR
+				&& pfd.Type != Data.FileTypes.CTSS
 			)
 			{
 				return;

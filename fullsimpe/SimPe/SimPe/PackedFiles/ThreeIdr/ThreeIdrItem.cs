@@ -34,9 +34,9 @@ namespace SimPe.PackedFiles.ThreeIdr
 				if (
 					skin == null
 					&& (
-						Type == Data.MetaData.GZPS
-						|| Type == Data.MetaData.AGED
-						|| Type == Data.MetaData.XSTN
+						Type == Data.FileTypes.GZPS
+						|| Type == Data.FileTypes.AGED
+						|| Type == Data.FileTypes.XSTN
 					)
 					&& parent != null
 				)

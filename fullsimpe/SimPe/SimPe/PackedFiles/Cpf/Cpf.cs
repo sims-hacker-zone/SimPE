@@ -2,8 +2,11 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Linq;
 using System.Xml;
 
+using SimPe.Data;
+using SimPe.Extensions;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Cpf
@@ -151,7 +154,7 @@ namespace SimPe.PackedFiles.Cpf
 			);
 		}
 
-		protected override string GetResourceName(Data.TypeAlias ta)
+		protected override string GetResourceName(FileTypeInformation fti)
 		{
 			if (!Processed)
 			{
@@ -159,7 +162,7 @@ namespace SimPe.PackedFiles.Cpf
 			}
 
 			CpfItem item = GetItem("name");
-			return item == null ? base.GetResourceName(ta) : item.StringValue;
+			return item == null ? base.GetResourceName(fti) : item.StringValue;
 		}
 
 #if DEBUG
@@ -210,7 +213,7 @@ namespace SimPe.PackedFiles.Cpf
 
 					if (subnode.LocalName.Trim().ToLower() == "anyuint32")
 					{
-						item.Datatype = Data.MetaData.DataTypes.dtUInteger;
+						item.Datatype = Data.DataTypes.dtUInteger;
 						item.UIntegerValue = subnode.InnerText.IndexOf("-") != -1
 							? (uint)
 								Convert.ToInt32(subnode.InnerText)
@@ -226,17 +229,17 @@ namespace SimPe.PackedFiles.Cpf
 						|| subnode.LocalName.Trim().ToLower() == "anysint32"
 					)
 					{
-						item.Datatype = Data.MetaData.DataTypes.dtInteger;
+						item.Datatype = Data.DataTypes.dtInteger;
 						item.IntegerValue = subnode.InnerText.IndexOf("0x") == -1 ? Convert.ToInt32(subnode.InnerText) : Convert.ToInt32(subnode.InnerText, 16);
 					}
 					else if (subnode.LocalName.Trim().ToLower() == "anystring")
 					{
-						item.Datatype = Data.MetaData.DataTypes.dtString;
+						item.Datatype = Data.DataTypes.dtString;
 						item.StringValue = subnode.InnerText;
 					}
 					else if (subnode.LocalName.Trim().ToLower() == "anyfloat32")
 					{
-						item.Datatype = Data.MetaData.DataTypes.dtSingle;
+						item.Datatype = Data.DataTypes.dtSingle;
 						item.SingleValue = Convert.ToSingle(
 							subnode.InnerText,
 							System.Globalization.CultureInfo.InvariantCulture
@@ -244,7 +247,7 @@ namespace SimPe.PackedFiles.Cpf
 					}
 					else if (subnode.LocalName.Trim().ToLower() == "anyboolean")
 					{
-						item.Datatype = Data.MetaData.DataTypes.dtBoolean;
+						item.Datatype = Data.DataTypes.dtBoolean;
 						item.BooleanValue = subnode.InnerText.Trim().ToLower() == "true" || subnode.InnerText.Trim().ToLower() != "false" && Convert.ToInt32(subnode.InnerText) != 0;
 					}
 					else if (subnode.LocalName.Trim().ToLower() == "#comment")
@@ -337,54 +340,37 @@ namespace SimPe.PackedFiles.Cpf
 		/// </summary>
 		public virtual byte[] FileSignature => SIGNATURE;
 
-		public bool CanHandleType(uint type)
+		public bool CanHandleType(FileTypes type)
 		{
-			foreach (uint t in AssignableTypes)
-			{
-				if (t == type)
-				{
-					return true;
-				}
-			}
-
-			return false;
+			return AssignableTypes.Contains(type);
 		}
 
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public virtual uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] types =
+		public virtual FileTypes[] AssignableTypes => new FileTypes[]
 				{
-					0xAC598EAC, //Age Data
-					0xEBFEE342, //Version Information
-					0xEBCF3E27, //Property Set
-					0x0C560F39, //Binary Index
-					//0x4C697E5A, //MMAT
-					0xEBFEE33F, //Sim DNA
-					0x2C1FD8A1, //Texture Overlay XML
-					Data.MetaData.XOBJ, //Object XML
-					0x4C158081, //Skintone XML
-					0x0C1FE246, //Meshoverlay XML
-					0x8C1580B5, //Hairtone XML
-					0x8C93BF6C, //Face Region
-					0x6C93B566, //Face Neutral
-					0x0C93E3DE, //Face Modifier
-					0x8C93E35C, //Face Arch
-					Data.MetaData.XROF, //Roofs
-					Data.MetaData.XFLR, //Floors
-					Data.MetaData.XFNC, // Fences
-					Data.MetaData.XNGB, // Hood Objects
-					0xD1954460, //Pet Body Options
-					0x6C4F359D, //Collection
+					FileTypes.AGED,
+					FileTypes.VERS,
+					FileTypes.GZPS,
+					FileTypes.BINX,
+					FileTypes.SDNA,
+					FileTypes.XTOL,
+					FileTypes.XOBJ,
+					FileTypes.XSTN,
+					FileTypes.XMOL,
+					FileTypes.XHTN,
+					FileTypes.XFRG,
+					FileTypes.XFNU,
+					FileTypes.XFMD,
+					FileTypes.XFCH,
+					FileTypes.XROF,
+					FileTypes.XFLR,
+					FileTypes.XFNC,
+					FileTypes.XNGB,
+					FileTypes.PBOP,
+					FileTypes.COLL,
 				};
-
-				return types;
-			}
-		}
 
 		#endregion
 

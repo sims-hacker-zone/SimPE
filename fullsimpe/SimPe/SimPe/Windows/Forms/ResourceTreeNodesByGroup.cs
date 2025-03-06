@@ -77,7 +77,7 @@ namespace SimPe.Windows.Forms
 			ResourceViewManager.ResourceNameList resources
 		)
 		{
-			ResourceMaps.IntMap map = new ResourceMaps.IntMap();
+			ResourceMaps.TypeMap map = new ResourceMaps.TypeMap();
 			foreach (NamedPackedFileDescriptor pfd in resources)
 			{
 				ResourceViewManager.ResourceNameList list;

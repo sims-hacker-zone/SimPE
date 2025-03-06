@@ -6,6 +6,7 @@ using System.Collections.Generic;
 
 using pjse.BhavNameWizards;
 
+using SimPe.Data;
 using SimPe.PackedFiles.Glob;
 using SimPe.PackedFiles.Wrapper;
 
@@ -1214,7 +1215,7 @@ namespace pjse
 			}
 
 			FileTable.Entry ftEntry = parent.ResourceByInstance(
-				SimPe.Data.MetaData.BHAV_FILE,
+				SimPe.Data.FileTypes.BHAV,
 				instance
 			);
 			found = ftEntry != null;
@@ -1243,7 +1244,7 @@ namespace pjse
 
 		private string readParamLocal(bool local, Bhav bhav, int sid, Detail detail)
 		{
-			TPRP tprp = (TPRP)bhav.SiblingResource(TPRP.TPRPtype);
+			TPRP tprp = (TPRP)bhav.SiblingResource(FileTypes.TPRP);
 			return (
 				tprp != null
 				&& !tprp.TextOnly
@@ -1278,7 +1279,7 @@ namespace pjse
 			uint group = instruction.Parent.FileDescriptor.Group;
 			uint instance = instruction.Parent.FileDescriptor.Instance;
 			FileTable.Entry[] items = FileTable.GFT[
-				0x54505250,
+				FileTypes.TPRP,
 				group,
 				instance
 			];
@@ -1348,7 +1349,7 @@ namespace pjse
 		public static Glob GlobByGroup(uint group)
 		{
 			FileTable.Entry[] items = FileTable.GFT[
-				SimPe.Data.MetaData.GLOB_FILE,
+				SimPe.Data.FileTypes.GLOB,
 				group
 			];
 			if (items == null || items.Length == 0)
@@ -1424,7 +1425,7 @@ namespace pjse
 			}
 
 			FileTable.Entry[] items = FileTable.GFT[
-				0x42434F4E,
+				FileTypes.BCON,
 				instruction.Parent.GroupForScope(s),
 				instance
 			];
@@ -1442,7 +1443,7 @@ namespace pjse
 				return ""; //"Filename: " + bcon.FileName;
 			}
 
-			Trcn trcn = (Trcn)bcon.SiblingResource(Trcn.Trcntype);
+			Trcn trcn = (Trcn)bcon.SiblingResource(FileTypes.TRCN);
 			string label = (
 				(trcn != null && !trcn.TextOnly && bid < trcn.Count) ? trcn[bid] : ""
 			).Trim();

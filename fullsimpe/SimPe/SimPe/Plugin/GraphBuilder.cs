@@ -7,6 +7,7 @@ using System.Drawing;
 using Ambertation.Windows.Forms;
 using Ambertation.Windows.Forms.Graph;
 
+using SimPe.Extensions;
 namespace SimPe.Plugin
 {
 	/// <summary>
@@ -72,7 +73,7 @@ namespace SimPe.Plugin
 			gi.Text = Hashes.StripHashFromName(rcol.FileName);
 			gi.Tag = rcol;
 
-			if (pfd.Type == Data.MetaData.TXTR)
+			if (pfd.Type == Data.FileTypes.TXTR)
 			{
 				ImageData id = (ImageData)rcol.Blocks[0];
 				gi.Size = new Size(gi.Size.Width, 80);
@@ -155,8 +156,8 @@ namespace SimPe.Plugin
 			//gi.LinkColor = Color.FromArgb(35, Color.Black);
 			//gi.SelectedLinkColor = Color.FromArgb(0xff, Color.DarkBlue);
 
-			Data.TypeAlias ta = Data.MetaData.FindTypeAlias(pfd.Type);
-			gi.Properties["Type"].Value = ta.shortname;
+			FileTypeInformation fti = pfd.Type.ToFileTypeInformation();
+			gi.Properties["Type"].Value = fti.ShortName;
 			gi.Properties["Available"].Value = "false";
 			//gi.Parent = gc;
 			#endregion
@@ -200,16 +201,16 @@ namespace SimPe.Plugin
 				if (pkgpfd != null)
 				{
 					gi.Properties["Available"].Value = "true";
-					if (colors.ContainsKey(ta.shortname))
+					if (colors.ContainsKey(fti.ShortName))
 					{
-						gi.PanelColor = (Color)colors[ta.shortname];
+						gi.PanelColor = (Color)colors[fti.ShortName];
 					}
 
 					if (Data.MetaData.RcolList.Contains(pfd.Type))
 					{
 						item = BuildRcol(pkgpfd, pkg, gi);
 					}
-					else if (pfd.Type == Data.MetaData.MMAT)
+					else if (pfd.Type == Data.FileTypes.MMAT)
 					{
 						item = BuildMmat(pkgpfd, pkg, gi);
 					}
@@ -217,7 +218,7 @@ namespace SimPe.Plugin
 else
 {
 	if (Data.MetaData.RcolList.Contains(pfd.Type)) item = BuildRcol(pkgpfd, altpkg, gi);
-	else if (pfd.Type==Data.MetaData.MMAT) item = BuildMmat(pkgpfd, altpkg, gi);
+	else if (pfd.Type==Data.FileTypes.MMAT) item = BuildMmat(pkgpfd, altpkg, gi);
 }*/
 
 					//check again if we still don't have that file
@@ -296,7 +297,7 @@ else
 					WaitingScreen.UpdateMessage("Scaning CRES Tree");
 				}
 
-				pfds = pkg.FindFiles(Data.MetaData.CRES);
+				pfds = pkg.FindFiles(Data.FileTypes.CRES);
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
 					AddItem(pfd, pkg, null, fileindex);
@@ -306,7 +307,7 @@ else
 					WaitingScreen.UpdateMessage("Scaning MMAT Tree");
 				}
 
-				pfds = pkg.FindFiles(Data.MetaData.MMAT);
+				pfds = pkg.FindFiles(Data.FileTypes.MMAT);
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
 					AddItem(pfd, pkg, null, fileindex);
@@ -319,7 +320,7 @@ else
 					WaitingScreen.UpdateMessage("Scaning MMAT Tree");
 				}
 
-				pfds = pkg.FindFiles(Data.MetaData.MMAT);
+				pfds = pkg.FindFiles(Data.FileTypes.MMAT);
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
 					AddItem(pfd, pkg, null, fileindex);
@@ -329,7 +330,7 @@ else
 					WaitingScreen.UpdateMessage("Scaning CRES Tree");
 				}
 
-				pfds = pkg.FindFiles(Data.MetaData.CRES);
+				pfds = pkg.FindFiles(Data.FileTypes.CRES);
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
 					AddItem(pfd, pkg, null, fileindex);
@@ -360,7 +361,7 @@ else
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pkg.Index)
 			{
 				if (
-					(pfd.Type == Data.MetaData.MMAT)
+					(pfd.Type == Data.FileTypes.MMAT)
 					|| Data.MetaData.RcolList.Contains(pfd.Type)
 				)
 				{
@@ -382,12 +383,12 @@ else
 
 					//gi.SelectedLinkColor = Color.FromArgb(0xff, Color.DarkBlue);
 
-					Data.TypeAlias ta = Data.MetaData.FindTypeAlias(pfd.Type);
-					gi.Properties["Type"].Value = ta.shortname;
+					FileTypeInformation fti = pfd.Type.ToFileTypeInformation();
+					gi.Properties["Type"].Value = fti.ShortName;
 					gi.Properties["Available"].Value = "true (orphan)";
-					if (colors.ContainsKey(ta.shortname))
+					if (colors.ContainsKey(fti.ShortName))
 					{
-						gi.PanelColor = (Color)colors[ta.shortname];
+						gi.PanelColor = (Color)colors[fti.ShortName];
 					}
 
 					Interfaces.Scenegraph.IScenegraphItem item = null;
@@ -395,7 +396,7 @@ else
 					{
 						item = BuildRcol(pfd, pkg, gi);
 					}
-					else if (pfd.Type == Data.MetaData.MMAT)
+					else if (pfd.Type == Data.FileTypes.MMAT)
 					{
 						item = BuildMmat(pfd, pkg, gi);
 					}

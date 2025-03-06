@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+using SimPe.Data;
 using SimPe.PackedFiles.Picture;
 
 namespace SimPe.Plugin.Downloads
@@ -19,7 +20,7 @@ namespace SimPe.Plugin.Downloads
 		protected abstract void SetName(Interfaces.Files.IPackageFile pkg);
 		protected abstract void SetImage(Interfaces.Files.IPackageFile pkg);
 
-		protected void SetName(uint type, Interfaces.Files.IPackageFile pkg)
+		protected void SetName(FileTypes type, Interfaces.Files.IPackageFile pkg)
 		{
 			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(type);
 
@@ -34,7 +35,7 @@ namespace SimPe.Plugin.Downloads
 			}
 		}
 
-		protected void SetImage(uint type, Interfaces.Files.IPackageFile pkg)
+		protected void SetImage(FileTypes type, Interfaces.Files.IPackageFile pkg)
 		{
 			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(type);
 			if (pfds.Length > 0)

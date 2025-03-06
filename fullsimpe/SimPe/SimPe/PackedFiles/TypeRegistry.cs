@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Plugin.Internal;
@@ -170,7 +171,7 @@ namespace SimPe.PackedFiles
 		/// </summary>
 		/// <param name="type">The Type of the PackedFile</param>
 		/// <returns>The assigned Handler or null if none was found</returns>
-		public IPackedFileWrapper FindHandler(uint type)
+		public IPackedFileWrapper FindHandler(FileTypes type)
 		{
 			return (IPackedFileWrapper)Wrappers.FirstOrDefault((item) => item is IFileWrapper filewrapper && filewrapper.AssignableTypes.Contains(type));
 		}

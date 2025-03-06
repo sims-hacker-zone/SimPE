@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 
+using SimPe.Data;
 using SimPe.PackedFiles.Glob;
 
 namespace pjse
@@ -47,9 +48,9 @@ namespace pjse
 				(fromCurrent && FileTable.GFT.CurrentPackage != null)
 					? FileTable.GFT[
 						FileTable.GFT.CurrentPackage,
-						SimPe.Data.MetaData.OBJD_FILE
+						SimPe.Data.FileTypes.OBJD
 					]
-					: FileTable.GFT[SimPe.Data.MetaData.OBJD_FILE];
+					: FileTable.GFT[SimPe.Data.FileTypes.OBJD];
 
 			SimPe.Wait.Start(items.Length);
 			try
@@ -68,7 +69,7 @@ namespace pjse
 						IndexItem ii = new IndexItem();
 
 						FileTable.Entry[] globs = FileTable.GFT[
-							0x474C4F42,
+							FileTypes.GLOB,
 							item.Group
 						];
 						ii.semiGlobal =
@@ -237,7 +238,7 @@ namespace pjse
 				objdType = type,
 				objdGroup = group
 			};
-			FileTable.Entry[] globs = FileTable.GFT[0x474C4F42, group];
+			FileTable.Entry[] globs = FileTable.GFT[FileTypes.GLOB, group];
 			ii.semiGlobal =
 				(globs.Length == 0)
 					? 0

@@ -1,6 +1,8 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+using SimPe.Data;
+using SimPe.Extensions;
 using SimPe.PackedFiles.Cpf;
 
 namespace SimPe.Plugin
@@ -34,15 +36,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public override uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] types = { 0xBEEF7B4D };
-
-				return types;
-			}
-		}
+		public override FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.GOAL };
 
 		#region Default Attribute
 		public uint StringInstance
@@ -93,7 +87,7 @@ namespace SimPe.Plugin
 				Packages.PackedFileDescriptor pfd =
 					new Packages.PackedFileDescriptor
 					{
-						Type = Data.MetaData.SIM_IMAGE_FILE,
+						Type = FileTypes.IMG,
 						LongInstance = IconInstance
 					};
 				if (pfd.Instance == 0)
@@ -110,7 +104,7 @@ namespace SimPe.Plugin
 
 		public override string Description => "GUID=0x" + Helper.HexString(FileDescriptor.Instance);
 
-		protected override string GetResourceName(Data.TypeAlias ta)
+		protected override string GetResourceName(FileTypeInformation fti)
 		{
 			if (!Processed)
 			{

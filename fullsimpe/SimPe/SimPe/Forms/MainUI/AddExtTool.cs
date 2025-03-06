@@ -1,8 +1,11 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
+using SimPe.Data;
+using SimPe.Extensions;
 namespace SimPe.Forms.MainUI
 {
 	/// <summary>
@@ -31,26 +34,8 @@ namespace SimPe.Forms.MainUI
 		public AddExtTool()
 		{
 			InitializeComponent();
-
-			foreach (Data.TypeAlias a in Helper.TGILoader.FileTypes)
-			{
-				if (a.Id == 0xffffffff)
-				{
-					Data.TypeAlias an = new Data.TypeAlias(
-						false,
-						"ALL",
-						0xffffffff,
-						"---  All Types ---",
-						true,
-						true
-					);
-					cbtypes.Items.Add(an);
-				}
-				else
-				{
-					cbtypes.Items.Add(a);
-				}
-			}
+			cbtypes.Items.AddRange((from FileTypes type in Enum.GetValues(typeof(FileTypes))
+									select type.ToFileTypeInformation()).Cast<object>().ToArray());
 		}
 
 		/// <summary>
@@ -258,16 +243,7 @@ namespace SimPe.Forms.MainUI
 			//
 			// cbtypes
 			//
-			cbtypes.Anchor =
-
-
-
-							AnchorStyles.Top
-							| AnchorStyles.Left
-						 | AnchorStyles.Right
-
-
-			;
+			cbtypes.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 			cbtypes.DropDownStyle =
 				ComboBoxStyle
 				.DropDownList;
@@ -345,21 +321,19 @@ namespace SimPe.Forms.MainUI
 			tbtype.Text =
 				"0x"
 				+ Helper.HexString(
-					((Data.TypeAlias)cbtypes.Items[cbtypes.SelectedIndex]).Id
+					(uint)((FileTypeInformation)cbtypes.Items[cbtypes.SelectedIndex]).Type
 				);
 		}
 
 		private void SelectTypeByNameClick(object sender, EventArgs e)
 		{
 			cbtypes.Tag = true;
-			Data.TypeAlias a = Data.MetaData.FindTypeAlias(
-				Helper.HexStringToUInt(tbtype.Text)
-			);
+			FileTypeInformation typeinfo = ((FileTypes)Helper.HexStringToUInt(tbtype.Text)).ToFileTypeInformation();
 
 			int ct = 0;
-			foreach (Data.TypeAlias i in cbtypes.Items)
+			foreach (FileTypeInformation i in cbtypes.Items)
 			{
-				if (i == a)
+				if (i == typeinfo)
 				{
 					cbtypes.SelectedIndex = ct;
 					cbtypes.Tag = null;
@@ -381,11 +355,11 @@ namespace SimPe.Forms.MainUI
 			};
 			try
 			{
-				tli.Type = Convert.ToUInt32(tbtype.Text);
+				tli.Type = (FileTypes)Convert.ToUInt32(tbtype.Text);
 			}
 			catch (Exception)
 			{
-				tli.Type = 0xffffffff;
+				tli.Type = FileTypes.ALL_TYPES;
 			}
 
 			Close();

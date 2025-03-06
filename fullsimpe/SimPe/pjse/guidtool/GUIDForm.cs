@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 using Ambertation.Windows.Forms;
 
+using SimPe.Data;
 using SimPe.PackedFiles.Glob;
 using SimPe.PackedFiles.Ttab;
 using SimPe.PackedFiles.Wrapper;
@@ -187,7 +188,7 @@ namespace pjse.guidtool
 					#region Focus on SemiGlobal group
 					{
 						List<FileTable.Entry> globs = new List<FileTable.Entry>(
-							FileTable.GFT[SimPe.Data.MetaData.GLOB_FILE, where]
+							FileTable.GFT[SimPe.Data.FileTypes.GLOB, where]
 						);
 						foreach (FileTable.Entry fte in globs)
 						{
@@ -207,21 +208,21 @@ namespace pjse.guidtool
 							if (type[7])
 							{
 								temp.AddRange(
-									FileTable.GFT[Bhav.Bhavtype, fte.Group, where]
+									FileTable.GFT[FileTypes.BHAV, fte.Group, where]
 								);
 							}
 
 							if (type[8])
 							{
 								temp.AddRange(
-									FileTable.GFT[Objf.Objftype, fte.Group, where]
+									FileTable.GFT[FileTypes.OBJf, fte.Group, where]
 								);
 							}
 
 							if (type[9])
 							{
 								temp.AddRange(
-									FileTable.GFT[Ttab.Ttabtype, fte.Group, where]
+									FileTable.GFT[FileTypes.TTAB, fte.Group, where]
 								);
 							}
 
@@ -243,21 +244,21 @@ namespace pjse.guidtool
 						if (type[7])
 						{
 							results.AddRange(
-								FileTable.GFT[Bhav.Bhavtype, group, where]
+								FileTable.GFT[FileTypes.BHAV, group, where]
 							);
 						}
 
 						if (type[8])
 						{
 							results.AddRange(
-								FileTable.GFT[Objf.Objftype, group, where]
+								FileTable.GFT[FileTypes.OBJf, group, where]
 							);
 						}
 
 						if (type[9])
 						{
 							results.AddRange(
-								FileTable.GFT[Ttab.Ttabtype, group, where]
+								FileTable.GFT[FileTypes.TTAB, group, where]
 							);
 						}
 					}
@@ -266,7 +267,7 @@ namespace pjse.guidtool
 					#region References to GLOB
 					{
 						List<FileTable.Entry> globs = new List<FileTable.Entry>(
-							FileTable.GFT[SimPe.Data.MetaData.GLOB_FILE, where]
+							FileTable.GFT[SimPe.Data.FileTypes.GLOB, where]
 						);
 						foreach (FileTable.Entry fte in globs)
 						{
@@ -282,7 +283,7 @@ namespace pjse.guidtool
 							}
 
 							FileTable.Entry[] objds = FileTable.GFT[
-								SimPe.Data.MetaData.OBJD_FILE,
+								SimPe.Data.FileTypes.OBJD,
 								fte.Group,
 								where
 							];
@@ -319,7 +320,7 @@ namespace pjse.guidtool
 						{
 							results.AddRange(
 								FileTable.GFT[
-									SimPe.Data.MetaData.OBJD_FILE,
+									SimPe.Data.FileTypes.OBJD,
 									group,
 									where
 								]
@@ -329,21 +330,21 @@ namespace pjse.guidtool
 						if (type[2])
 						{
 							results.AddRange(
-								FileTable.GFT[0x4E524546, group, where]
+								FileTable.GFT[FileTypes.NREF, group, where]
 							); // NREF
 						}
 
 						if (type[3])
 						{
 							results.AddRange(
-								FileTable.GFT[Bhav.Bhavtype, group, where]
+								FileTable.GFT[FileTypes.BHAV, group, where]
 							);
 						}
 
 						if (type[4])
 						{
 							results.AddRange(
-								FileTable.GFT[Bcon.Bcontype, group, where]
+								FileTable.GFT[FileTypes.BCON, group, where]
 							);
 						}
 
@@ -352,42 +353,42 @@ namespace pjse.guidtool
 							if (type[7])
 							{
 								results.AddRange(
-									FileTable.GFT[Bhav.Bhavtype, group, where]
+									FileTable.GFT[FileTypes.BHAV, group, where]
 								);
 							}
 
 							if (type[8])
 							{
 								results.AddRange(
-									FileTable.GFT[Objf.Objftype, group, where]
+									FileTable.GFT[FileTypes.OBJf, group, where]
 								);
 							}
 
 							if (type[9])
 							{
 								results.AddRange(
-									FileTable.GFT[Ttab.Ttabtype, group, where]
+									FileTable.GFT[FileTypes.TTAB, group, where]
 								);
 							}
 						}
 						if (type[11])
 						{
 							results.AddRange(
-								FileTable.GFT[StrWrapper.Strtype, group, where]
+								FileTable.GFT[FileTypes.STR, group, where]
 							);
 						}
 
 						if (type[12])
 						{
 							results.AddRange(
-								FileTable.GFT[StrWrapper.CTSStype, group, where]
+								FileTable.GFT[FileTypes.STR, group, where]
 							);
 						}
 
 						if (type[13])
 						{
 							results.AddRange(
-								FileTable.GFT[StrWrapper.TTAstype, group, where]
+								FileTable.GFT[FileTypes.STR, group, where]
 							);
 						}
 					}
@@ -404,23 +405,23 @@ namespace pjse.guidtool
 						if (type[0] || type[1])
 						{
 							results.AddRange(
-								FileTable.GFT[SimPe.Data.MetaData.OBJD_FILE, where]
+								FileTable.GFT[SimPe.Data.FileTypes.OBJD, where]
 							);
 						}
 
 						if (type[2])
 						{
-							results.AddRange(FileTable.GFT[0x4E524546, where]); // NREF
+							results.AddRange(FileTable.GFT[FileTypes.NREF, where]); // NREF
 						}
 
 						if (type[3])
 						{
-							results.AddRange(FileTable.GFT[Bhav.Bhavtype, where]);
+							results.AddRange(FileTable.GFT[FileTypes.BHAV, where]);
 						}
 
 						if (type[4])
 						{
-							results.AddRange(FileTable.GFT[Bcon.Bcontype, where]);
+							results.AddRange(FileTable.GFT[FileTypes.BCON, where]);
 						}
 
 						if (type[5])
@@ -428,42 +429,42 @@ namespace pjse.guidtool
 							if (type[7])
 							{
 								results.AddRange(
-									FileTable.GFT[Bhav.Bhavtype, where]
+									FileTable.GFT[FileTypes.BHAV, where]
 								);
 							}
 
 							if (type[8])
 							{
 								results.AddRange(
-									FileTable.GFT[Objf.Objftype, where]
+									FileTable.GFT[FileTypes.OBJf, where]
 								);
 							}
 
 							if (type[9])
 							{
 								results.AddRange(
-									FileTable.GFT[Ttab.Ttabtype, where]
+									FileTable.GFT[FileTypes.TTAB, where]
 								);
 							}
 						}
 						if (type[11])
 						{
 							results.AddRange(
-								FileTable.GFT[StrWrapper.Strtype, where]
+								FileTable.GFT[FileTypes.STR, where]
 							);
 						}
 
 						if (type[12])
 						{
 							results.AddRange(
-								FileTable.GFT[StrWrapper.CTSStype, where]
+								FileTable.GFT[FileTypes.CTSS, where]
 							);
 						}
 
 						if (type[13])
 						{
 							results.AddRange(
-								FileTable.GFT[StrWrapper.TTAstype, where]
+								FileTable.GFT[FileTypes.TTAs, where]
 							);
 						}
 					}
@@ -485,7 +486,7 @@ namespace pjse.guidtool
 						uint itemguid = 0;
 
 						System.IO.BinaryReader reader = item.Wrapper.StoredData;
-						if (item.Type == SimPe.Data.MetaData.OBJD_FILE)
+						if (item.Type == SimPe.Data.FileTypes.OBJD)
 						{
 							if (reader.BaseStream.Length > 0x5c + 4) // sizeof(uint)
 							{
@@ -512,7 +513,7 @@ namespace pjse.guidtool
 						{
 							switch (item.Type)
 							{
-								case Bhav.Bhavtype:
+								case FileTypes.BHAV:
 									foreach (Instruction i in (Bhav)item.Wrapper)
 									{
 										if (i.OpCode == searchNumber)
@@ -525,7 +526,7 @@ namespace pjse.guidtool
 									}
 
 									break;
-								case Objf.Objftype:
+								case FileTypes.OBJf:
 									foreach (ObjfItem i in (Objf)item.Wrapper)
 									{
 										if (
@@ -541,7 +542,7 @@ namespace pjse.guidtool
 									}
 
 									break;
-								case Ttab.Ttabtype:
+								case FileTypes.TTAB:
 									foreach (TtabItem i in (Ttab)item.Wrapper)
 									{
 										if (
@@ -561,9 +562,9 @@ namespace pjse.guidtool
 						}
 						else if (
 
-								(type[11] && item.Type == StrWrapper.Strtype)
-								|| (type[12] && item.Type == StrWrapper.CTSStype)
-								|| (type[13] && item.Type == StrWrapper.TTAstype)
+								(type[11] && item.Type == FileTypes.STR)
+								|| (type[12] && item.Type == FileTypes.CTSS)
+								|| (type[13] && item.Type == FileTypes.TTAs)
 
 						)
 						{
@@ -649,13 +650,13 @@ namespace pjse.guidtool
 		private void AddResult(uint itemguid, FileTable.Entry item)
 		{
 			//string report_line = "Group {0}: [{1} guid: {2}] {3} ({4})";
-			if (item.Type == SimPe.Data.MetaData.OBJD_FILE)
+			if (item.Type == SimPe.Data.FileTypes.OBJD)
 			{
 				rtbReport.AppendText(
 					Localization.GetString(
 						"gt_reportOBJD",
 						SimPe.Helper.HexString(item.PFD.Group),
-						item.PFD.TypeName.Name,
+						item.PFD.TypeInfo,
 						"0x" + SimPe.Helper.HexString(itemguid),
 						item.ToString(),
 						item.Package.FileName
@@ -669,7 +670,7 @@ namespace pjse.guidtool
 					Localization.GetString(
 						"gt_report",
 						SimPe.Helper.HexString(item.PFD.Group),
-						item.PFD.TypeName.Name,
+						item.PFD.TypeInfo,
 						item.ToString(),
 						item.Package.FileName
 					) + "\r\n"

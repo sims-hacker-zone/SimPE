@@ -4,6 +4,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -32,7 +33,7 @@ namespace SimPe.Plugin
 #endif
 
 			RemoteControl.HookToMessageQueue(
-				0x4E474248,
+				FileTypes.NGBH,
 				new RemoteControl.ControlEvent(ControlEvent)
 			);
 		}
@@ -73,7 +74,7 @@ namespace SimPe.Plugin
 			if (disposing)
 			{
 				RemoteControl.UnhookFromMessageQueue(
-					0x4E474248,
+					FileTypes.NGBH,
 					new RemoteControl.ControlEvent(ControlEvent)
 				);
 				components?.Dispose();

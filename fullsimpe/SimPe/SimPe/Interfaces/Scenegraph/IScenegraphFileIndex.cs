@@ -3,6 +3,8 @@
 using System;
 using System.Collections.Generic;
 
+using SimPe.Data;
+
 namespace SimPe.Interfaces.Scenegraph
 {
 	/// <summary>
@@ -86,7 +88,7 @@ namespace SimPe.Interfaces.Scenegraph
 		/// <param name="overwrite">true, if an existing Instance of that File should be overwritten</param>
 		void AddTypesIndexFromPackage(
 			Files.IPackageFile package,
-			uint type,
+			FileTypes type,
 			bool overwrite
 		);
 
@@ -149,7 +151,7 @@ namespace SimPe.Interfaces.Scenegraph
 		/// <param name="type">the Type of the Files</param>
 		/// <param name="nolocal">true, if you don't want to get local Files (group=0xffffffff) returned</param>
 		/// <returns>all FileIndexItems</returns>
-		IEnumerable<IScenegraphFileIndexItem> FindFile(uint type, bool nolocal);
+		IEnumerable<IScenegraphFileIndexItem> FindFile(FileTypes type, bool nolocal);
 
 		/// <summary>
 		/// Returns all matching FileIndexItems for the passed type
@@ -157,7 +159,7 @@ namespace SimPe.Interfaces.Scenegraph
 		/// <param name="type">the Type of the Files</param>
 		/// <param name="group">the Group of the Files</param>
 		/// <returns>all FileIndexItems</returns>
-		IEnumerable<IScenegraphFileIndexItem> FindFile(uint type, uint group);
+		IEnumerable<IScenegraphFileIndexItem> FindFile(FileTypes type, uint group);
 
 		/// <summary>
 		/// Return all matching FileIndexItems (by Instance)
@@ -178,7 +180,7 @@ namespace SimPe.Interfaces.Scenegraph
 		/// <param name="instance">Instance Number of the File</param>
 		/// <returns>all FileIndexItems</returns>
 		IEnumerable<IScenegraphFileIndexItem> FindFile(
-			uint type,
+			FileTypes type,
 			uint group,
 			ulong instance,
 			Files.IPackageFile pkg
@@ -192,7 +194,7 @@ namespace SimPe.Interfaces.Scenegraph
 		/// <param name="instance">Instance Number of the File</param>
 		/// <returns>all FileIndexItems</returns>
 		IEnumerable<IScenegraphFileIndexItem> FindFileDiscardingHighInstance(
-			uint type,
+			FileTypes type,
 			uint group,
 			uint instance,
 			Files.IPackageFile pkg
@@ -213,7 +215,7 @@ namespace SimPe.Interfaces.Scenegraph
 		/// <param name="type">the Type of the Files</param>
 		/// <param name="instance">Instance Number of the File</param>
 		/// <returns>all FileIndexItems</returns>
-		IEnumerable<IScenegraphFileIndexItem> FindFileDiscardingGroup(uint type, ulong instance);
+		IEnumerable<IScenegraphFileIndexItem> FindFileDiscardingGroup(FileTypes type, ulong instance);
 
 		/// <summary>
 		/// Return all matching FileIndexItems (by Instance)
@@ -242,7 +244,7 @@ namespace SimPe.Interfaces.Scenegraph
 		/// <returns>The first matching File or null if none</returns>
 		IScenegraphFileIndexItem FindFileByName(
 			string filename,
-			uint type,
+			FileTypes type,
 			uint defgroup,
 			bool betolerant
 		);

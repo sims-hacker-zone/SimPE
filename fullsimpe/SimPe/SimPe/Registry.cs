@@ -699,13 +699,13 @@ namespace SimPe
 		/// <summary>
 		/// Language Code for SimPe
 		/// </summary>
-		public Data.MetaData.Languages LanguageCode
+		public Data.Languages LanguageCode
 		{
 			get
 			{
 				XmlRegistryKey rkf = RegistryKey.CreateSubKey("Settings");
 				object o = rkf.GetValue("Language");
-				return o == null ? Helper.GetMatchingLanguage() : (Data.MetaData.Languages)Convert.ToByte(o);
+				return o == null ? Helper.GetMatchingLanguage() : (Data.Languages)Convert.ToByte(o);
 			}
 			set
 			{

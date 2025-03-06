@@ -60,7 +60,7 @@ namespace SimPe.Plugin
 					{
 						StrToken item = new StrToken(
 							0,
-							Convert.ToByte(MetaData.Languages.English),
+							Convert.ToByte(Languages.English),
 							value,
 							string.Empty
 						);
@@ -92,7 +92,7 @@ namespace SimPe.Plugin
 		void ProcessPackage(IPackageFile package)
 		{
 			IPackedFileDescriptor[] strList = package.FindFiles(
-				MetaData.STRING_FILE
+				FileTypes.STR
 			);
 			if (Utility.IsNullOrEmpty(strList))
 			{
@@ -109,10 +109,10 @@ namespace SimPe.Plugin
 				stringList.ProcessData(strList[0], package);
 			}
 
-			IPackedFileDescriptor[] keyPfd = package.FindFiles(Utility.DataType.XHTN); // Hairtone XML
+			IPackedFileDescriptor[] keyPfd = package.FindFiles(FileTypes.XHTN);
 			if (Utility.IsNullOrEmpty(keyPfd))
 			{
-				keyPfd = package.FindFiles(Utility.DataType.XSTN); // Skintone XML
+				keyPfd = package.FindFiles(FileTypes.XSTN);
 			}
 
 			if (!Utility.IsNullOrEmpty(keyPfd))
@@ -124,7 +124,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		public IPackedFileDescriptor[] FindFiles(uint type)
+		public IPackedFileDescriptor[] FindFiles(FileTypes type)
 		{
 			return package != null ? package.FindFiles(type) : (new IPackedFileDescriptor[0]);
 		}
@@ -172,7 +172,7 @@ namespace SimPe.Plugin
 			if (group != 0)
 			{
 				ret = package.NewDescriptor(
-					MetaData.STRING_FILE,
+					FileTypes.STR,
 					0x00000000u,
 					group,
 					0x00000001u
@@ -184,7 +184,7 @@ namespace SimPe.Plugin
 				{
 					// link the newly created resource
 					IPackedFileDescriptor[] pfd3IDR = package.FindFiles(
-						MetaData.REF_FILE
+						FileTypes.THREE_IDR
 					);
 					foreach (IPackedFileDescriptor pfd in pfd3IDR)
 					{

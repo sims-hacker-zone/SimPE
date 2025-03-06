@@ -3,6 +3,7 @@
 
 using System;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -13,7 +14,7 @@ namespace SimPe.Plugin
 			IFileWrapperSaveExtension
 	{
 		#region CreationIndex Attribute
-		private uint filid; // File ID, must be SNCF (0x46434e53)
+		private FileTypes filid; // File ID, must be SNCF (FileTypes.FCNS)
 		private ushort fpurpos; // File Purpose, not sure of it's use but should be retained
 		public string[] strung; // the actaul string, don't change this
 		public float[] valwe; // the actual data or value.
@@ -56,11 +57,11 @@ namespace SimPe.Plugin
 			// for (int i = 0; i < 60; i++) { valwe[i] = 0; strung[i] = null; comnt[i] = null;}
 			Quanty = 0;
 			reader.BaseStream.Seek(0x40, System.IO.SeekOrigin.Begin);
-			filid = reader.ReadUInt32();
+			filid = (FileTypes)reader.ReadUInt32();
 			fpurpos = reader.ReadUInt16();
 			reader.BaseStream.Seek(0x6, System.IO.SeekOrigin.Current);
 			Quanty = reader.ReadUInt16(); // Number of items
-			if (filid == 0x46434e53 && Quanty > 0) // check for valid file
+			if (filid == FileTypes.FCNS && Quanty > 0) // check for valid file
 			{
 				Array.Resize(ref strung, Quanty);
 				Array.Resize(ref valwe, Quanty);
@@ -78,7 +79,7 @@ namespace SimPe.Plugin
 		protected override void Serialize(System.IO.BinaryWriter writer)
 		{
 			writer.BaseStream.Seek(0x40, System.IO.SeekOrigin.Begin);
-			writer.Write(filid);
+			writer.Write((uint)filid);
 			writer.Write(fpurpos);
 			writer.BaseStream.Seek(0x6, System.IO.SeekOrigin.Current);
 			writer.Write(Quanty);
@@ -100,14 +101,7 @@ namespace SimPe.Plugin
 
 		public byte[] FileSignature => new byte[0];
 
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] types = { 0x46434E53 }; //handles the Game Functions
-				return types;
-			}
-		}
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.FCNS };
 
 		#endregion
 	}

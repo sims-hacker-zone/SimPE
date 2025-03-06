@@ -3,6 +3,7 @@
 using System;
 using System.Collections;
 
+using SimPe.Data;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Providers;
 using SimPe.PackedFiles.Picture;
@@ -111,7 +112,7 @@ namespace SimPe.Providers
 			}
 
 			IPackedFileDescriptor[] files = BasePackage.FindFiles(
-				Data.MetaData.SIM_DESCRIPTION_FILE
+				Data.FileTypes.SDSC
 			);
 
 			foreach (IPackedFileDescriptor pfd in files)
@@ -265,7 +266,7 @@ namespace SimPe.Providers
 			);
 			Str str = new Str();
 			IPackedFileDescriptor pfd = pkg.FindFile(
-				Data.MetaData.STRING_FILE,
+				Data.FileTypes.STR,
 				0,
 				Data.MetaData.LOCAL_GROUP,
 				0xe1
@@ -404,7 +405,7 @@ namespace SimPe.Providers
 			);
 			Str str = new Str();
 			IPackedFileDescriptor pfd = pkg.FindFile(
-				Data.MetaData.STRING_FILE,
+				Data.FileTypes.STR,
 				0,
 				Data.MetaData.LOCAL_GROUP,
 				0xb7
@@ -553,7 +554,7 @@ namespace SimPe.Providers
 			if (pkg != null)
 			{
 				IPackedFileDescriptor pfd = pkg.FindFile(
-					0x856DDBAC,
+					FileTypes.IMG,
 					0,
 					g,
 					i

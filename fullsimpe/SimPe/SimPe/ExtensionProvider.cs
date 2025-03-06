@@ -1,7 +1,12 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
+using SimPe.Data;
+using SimPe.Extensions;
 namespace SimPe
 {
 	/// <summary>
@@ -32,24 +37,14 @@ namespace SimPe
 		/// <param name="ext">; seperated List of Extensions (like *.bmp;*.gif;*.tmp)</param>
 		internal ExtensionDescriptor(string name, string ext)
 		{
-			Extensions = new ArrayList();
-			string[] p = ext.Split(";".ToCharArray());
-
-			foreach (string s in p)
-			{
-				if (s.Trim() != "")
-				{
-					Extensions.Add(s.Trim());
-				}
-			}
-
+			Extensions = ext.Split(new char[] { ';' });
 			Text = Localization.GetString(name);
 		}
 
 		/// <summary>
 		/// Create an Instance
 		/// </summary>
-		internal ExtensionDescriptor(string name, ArrayList ext)
+		internal ExtensionDescriptor(string name, IEnumerable<string> ext)
 		{
 			Extensions = ext;
 			Text = Localization.GetString(name);
@@ -58,7 +53,7 @@ namespace SimPe
 		/// <summary>
 		/// Returns a List of allowed Extensions for this Type (like *.bmp, *.gif, *.jpg)
 		/// </summary>
-		public ArrayList Extensions
+		public IEnumerable<string> Extensions
 		{
 			get;
 		}
@@ -77,18 +72,7 @@ namespace SimPe
 		/// <returns></returns>
 		public string GetExtensionList()
 		{
-			string res = "";
-			for (int i = 0; i < Extensions.Count; i++)
-			{
-				if (i != 0)
-				{
-					res += ";";
-				}
-
-				res += Extensions[i];
-			}
-
-			return res;
+			return string.Join(";", Extensions);
 		}
 
 		/// <summary>
@@ -107,16 +91,7 @@ namespace SimPe
 		/// <returns></returns>
 		public bool AllowedExtension(string filename)
 		{
-			filename = filename.Trim().ToLower();
-			for (int i = 0; i < Extensions.Count; i++)
-			{
-				if (filename.EndsWith(Extensions[i].ToString().Replace("*", "")))
-				{
-					return true;
-				}
-			}
-
-			return false;
+			return Extensions.Any(item => filename.Trim().ToLower().EndsWith(item.Trim().ToLower().Replace("*", "")));
 		}
 	}
 
@@ -189,30 +164,10 @@ namespace SimPe
 		/// Returns a list of all extractable Extensions
 		/// </summary>
 		/// <returns></returns>
-		static ArrayList GetExtractExtensions(string suffix)
+		static IEnumerable<string> GetExtractExtensions(string suffix)
 		{
-			ArrayList exts = new ArrayList
-			{
-				"*.simpe" + suffix
-			};
-
-			Data.TypeAlias[] types = Helper.TGILoader.FileTypes;
-			foreach (Data.TypeAlias type in types)
-			{
-				string ext = type.Extension.Trim().ToLower();
-				if (ext == "")
-				{
-					continue;
-				}
-
-				ext = "*." + ext + suffix;
-				if (!exts.Contains(ext))
-				{
-					exts.Add(ext);
-				}
-			}
-
-			return exts;
+			return (from FileTypes type in Enum.GetValues(typeof(FileTypes))
+					select ("*." + type.ToFileTypeInformation().Extension + suffix)).Distinct();
 		}
 
 		/// <summary>

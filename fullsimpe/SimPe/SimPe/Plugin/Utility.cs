@@ -4,6 +4,7 @@
 using System;
 using System.Collections;
 
+using SimPe.Data;
 using SimPe.Interfaces.Files;
 
 namespace SimPe.Plugin
@@ -52,7 +53,7 @@ namespace SimPe.Plugin
 		/// <returns></returns>
 		public static IPackedFileDescriptor[] FindFiles(
 			IPackageFile package,
-			uint type,
+			FileTypes type,
 			uint group,
 			uint instance
 		)
@@ -91,14 +92,6 @@ namespace SimPe.Plugin
 			}
 
 			return (IPackedFileDescriptor[])ret.ToArray(typeof(IPackedFileDescriptor));
-		}
-
-		public sealed class DataType
-		{
-			public const uint XHTN = 0x8C1580B5u;
-			public const uint XTOL = 0x2C1FD8A1u;
-			public const uint XMOL = 0x0C1FE246u;
-			public const uint XSTN = 0x4C158081u;
 		}
 
 		public sealed class HairtoneGuid

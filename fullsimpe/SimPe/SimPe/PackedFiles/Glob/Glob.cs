@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Text;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Glob
@@ -130,7 +131,7 @@ namespace SimPe.PackedFiles.Glob
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes => new uint[] { 0x474C4F42 }; //handles the GLOB File
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.GLOB };
 		#endregion
 	}
 }

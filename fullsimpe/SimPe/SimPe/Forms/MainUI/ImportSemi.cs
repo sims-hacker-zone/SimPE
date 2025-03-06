@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
+using SimPe.Data;
 using SimPe.PackedFiles.Glob;
 using SimPe.PackedFiles.Ttab;
 
@@ -43,7 +44,7 @@ namespace SimPe.Forms.MainUI
 				FileTableBase.FileIndex.Load();
 
 				IEnumerable<Interfaces.Scenegraph.IScenegraphFileIndexItem> globs =
-					FileTableBase.FileIndex.FindFile(Data.MetaData.GLOB_FILE, true);
+					FileTableBase.FileIndex.FindFile(FileTypes.GLOB, true);
 				List<string> names = new List<string>();
 				string max = " / " + globs.Count().ToString();
 				int ct = 0;
@@ -408,37 +409,37 @@ namespace SimPe.Forms.MainUI
 				lbfiles.Sorted = false;
 				foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in FileTableBase.FileIndex.FindFileByGroup(glob.SemiGlobalGroup))
 				{
-					if (item.FileDescriptor.Type == Data.MetaData.BHAV_FILE)
+					if (item.FileDescriptor.Type == FileTypes.BHAV)
 					{
 						Plugin.Bhav bhav = new Plugin.Bhav(null);
 						bhav.ProcessData(item);
 						item.FileDescriptor.Filename =
-							item.FileDescriptor.TypeName.shortname
+							item.FileDescriptor.TypeInfo.ShortName
 							+ ": "
 							+ bhav.FileName
 							+ " ("
 							+ item.FileDescriptor.ToString()
 							+ ")";
 					}
-					else if (item.FileDescriptor.Type == Data.MetaData.STRING_FILE)
+					else if (item.FileDescriptor.Type == FileTypes.STR)
 					{
 						PackedFiles.Wrapper.Str str =
 							new PackedFiles.Wrapper.Str();
 						str.ProcessData(item);
 						item.FileDescriptor.Filename =
-							item.FileDescriptor.TypeName.shortname
+							item.FileDescriptor.TypeInfo.ShortName
 							+ ": "
 							+ str.FileName
 							+ " ("
 							+ item.FileDescriptor.ToString()
 							+ ")";
 					}
-					else if (item.FileDescriptor.Type == 0x42434F4E) //BCON
+					else if (item.FileDescriptor.Type == FileTypes.BCON) //BCON
 					{
 						Plugin.Bcon bcon = new Plugin.Bcon();
 						bcon.ProcessData(item);
 						item.FileDescriptor.Filename =
-							item.FileDescriptor.TypeName.shortname
+							item.FileDescriptor.TypeInfo.ShortName
 							+ ": "
 							+ bcon.FileName
 							+ " ("
@@ -455,8 +456,8 @@ namespace SimPe.Forms.MainUI
 						lbfiles.Items.Add(
 							item,
 
-								item.FileDescriptor.Type == Data.MetaData.BHAV_FILE
-								|| item.FileDescriptor.Type == 0x42434F4E
+								item.FileDescriptor.Type == FileTypes.BHAV
+								|| item.FileDescriptor.Type == FileTypes.BCON
 
 						);
 						loaded.Add(item.FileDescriptor);
@@ -476,7 +477,7 @@ namespace SimPe.Forms.MainUI
 
 			//first find the highest Instance of a BHAV, BCON in the package
 			Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(
-				Data.MetaData.BHAV_FILE
+				FileTypes.BHAV
 			);
 			uint maxbhavinst = 0x1000;
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
@@ -491,7 +492,7 @@ namespace SimPe.Forms.MainUI
 			maxbhavinst++;
 
 			//her is the BCOn part
-			pfds = package.FindFiles(0x42434F4E);
+			pfds = package.FindFiles(FileTypes.BCON);
 			uint maxbconinst = 0x1000;
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
@@ -532,7 +533,7 @@ namespace SimPe.Forms.MainUI
 						};
 					package.Add(npfd);
 
-					if (npfd.Type == Data.MetaData.BHAV_FILE)
+					if (npfd.Type == FileTypes.BHAV)
 					{
 						maxbhavinst++;
 						npfd.Group = 0xffffffff;
@@ -552,7 +553,7 @@ namespace SimPe.Forms.MainUI
 
 						bhavs.Add(bhav);
 					}
-					else if (npfd.Type == 0x42434F4E) //BCON
+					else if (npfd.Type == FileTypes.BCON) //BCON
 					{
 						npfd.Instance = maxbconinst++;
 						npfd.Group = 0xffffffff;
@@ -567,7 +568,7 @@ namespace SimPe.Forms.MainUI
 
 						bcon.SynchronizeUserData();
 					}
-					else if (npfd.Type == 0x54544142) //TTAB
+					else if (npfd.Type == FileTypes.TTAB) //TTAB
 					{
 						Ttab ttab = new Ttab(
 							prov.OpcodeProvider
@@ -580,7 +581,7 @@ namespace SimPe.Forms.MainUI
 
 				if (cbfix.Checked)
 				{
-					pfds = package.FindFiles(Data.MetaData.BHAV_FILE);
+					pfds = package.FindFiles(FileTypes.BHAV);
 					foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 					{
 						Plugin.Bhav bhav = new Plugin.Bhav(
@@ -591,7 +592,7 @@ namespace SimPe.Forms.MainUI
 						bhavs.Add(bhav);
 					}
 
-					pfds = package.FindFiles(0x54544142);
+					pfds = package.FindFiles(FileTypes.TTAB);
 					foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 					{
 						Ttab ttab = new Ttab(

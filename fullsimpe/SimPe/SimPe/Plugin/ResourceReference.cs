@@ -4,6 +4,7 @@
 using System;
 using System.Globalization;
 
+using SimPe.Data;
 using SimPe.Interfaces.Files;
 
 namespace SimPe.Plugin
@@ -13,7 +14,7 @@ namespace SimPe.Plugin
 	/// </summary>
 	public sealed class ResourceReference
 	{
-		public uint Type;
+		public FileTypes Type;
 		public uint Group;
 		public uint Instance;
 		public uint SubType;
@@ -41,7 +42,7 @@ namespace SimPe.Plugin
 		{
 			return BitConverter.ToInt32(
 				BitConverter.GetBytes(
-					Type ^ Group ^ SubType ^ Instance
+					(uint)Type ^ Group ^ SubType ^ Instance
 				),
 				0
 			);
@@ -60,7 +61,7 @@ namespace SimPe.Plugin
 
 		public static uint GetHash(IPackedFileDescriptor pfd)
 		{
-			return pfd.Type ^ pfd.Group ^ pfd.SubType ^ pfd.Instance;
+			return (uint)pfd.Type ^ pfd.Group ^ pfd.SubType ^ pfd.Instance;
 		}
 
 		public static ResourceReference Parse(string s)
@@ -78,7 +79,7 @@ namespace SimPe.Plugin
 
 				NumberStyles format =
 					NumberStyles.AllowHexSpecifier | NumberStyles.HexNumber;
-				ret.Type = uint.Parse(parts[0], format);
+				ret.Type = (FileTypes)uint.Parse(parts[0], format);
 				ret.Group = uint.Parse(parts[1], format);
 				ret.SubType = uint.Parse(parts[2], format);
 				ret.Instance = uint.Parse(parts[3], format);

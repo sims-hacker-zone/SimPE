@@ -52,7 +52,7 @@ namespace SimPe.Plugin
 						Packages.GeneratableFile fl =
 							Packages.File.LoadFromFile(file);
 						Interfaces.Files.IPackedFileDescriptor[] pfds =
-							fl.FindFiles(Data.MetaData.IDNO);
+							fl.FindFiles(Data.FileTypes.IDNO);
 						foreach (
 							Interfaces.Files.IPackedFileDescriptor spfd in pfds
 						)

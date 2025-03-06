@@ -3,6 +3,8 @@
 
 using System.Collections;
 
+using SimPe.Data;
+using SimPe.Extensions;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Swaf;
 
@@ -65,15 +67,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public override uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] types = { Data.MetaData.XWNT };
-
-				return types;
-			}
-		}
+		public override FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.XWNT };
 
 		#region Default Attribute
 		public uint StringInstance
@@ -167,7 +161,7 @@ namespace SimPe.Plugin
 				Packages.PackedFileDescriptor pfd =
 					new Packages.PackedFileDescriptor
 					{
-						Type = Data.MetaData.SIM_IMAGE_FILE,
+						Type = FileTypes.IMG,
 						LongInstance = IconInstance
 					};
 				if (pfd.Instance == 0)
@@ -189,7 +183,7 @@ namespace SimPe.Plugin
 					+ ", ObjectType="
 					+ ObjectType;
 
-		protected override string GetResourceName(Data.TypeAlias ta)
+		protected override string GetResourceName(FileTypeInformation fti)
 		{
 			if (!Processed)
 			{

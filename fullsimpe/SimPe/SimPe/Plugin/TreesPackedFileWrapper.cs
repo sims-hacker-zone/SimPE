@@ -3,6 +3,7 @@
 
 using System;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -33,7 +34,7 @@ namespace SimPe.Plugin
 		public Array vdata = Array.CreateInstance(typeof(uint), 10, 64);
 
 		public uint Vershin { get; set; } = 69;
-		internal uint Header { get; set; } = 0x54524545;
+		internal uint Header { get; set; } = (uint)FileTypes.TREE;
 		internal uint Unk0 { get; set; } = 5;
 		internal uint Unk1 { get; set; } = 0;
 		internal uint Unk2 { get; set; } = 0x83;
@@ -122,7 +123,7 @@ namespace SimPe.Plugin
 		}
 
 		public Interfaces.Plugin.Internal.IPackedFileWrapper SiblingResource(
-			uint type
+			FileTypes type
 		)
 		{
 			if (FileDescriptor == null)
@@ -348,14 +349,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] types = { 0x54524545 }; //handles Edith Flowchart Trees
-				return types;
-			}
-		}
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.TREE };
 
 		#endregion
 	}

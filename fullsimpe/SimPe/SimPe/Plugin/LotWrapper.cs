@@ -3,6 +3,8 @@
 using System.Collections.Generic;
 using System.Drawing;
 
+using SimPe.Data;
+using SimPe.Extensions;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Ltxt;
 
@@ -16,12 +18,7 @@ namespace SimPe.Plugin
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
 	public class Lot
-		: AbstractWrapper //Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
-			,
-			IFileWrapper //This Interface is used when loading a File
-			,
-			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
-									  //,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
+		: AbstractWrapper, IFileWrapper, IFileWrapperSaveExtension
 	{
 		#region Attributes
 		byte[] filename = null;
@@ -182,8 +179,6 @@ namespace SimPe.Plugin
 		//all covered by Serialize()
 		#endregion
 
-		public const uint Lottype = 0x6C589723;
-
 		#region IFileWrapper Member
 
 		/// <summary>
@@ -194,11 +189,11 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes => new uint[] { Lottype };
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.LOTD };
 
 		#endregion
 
-		protected override string GetResourceName(Data.TypeAlias ta)
+		protected override string GetResourceName(FileTypeInformation fti)
 		{
 			if (!Processed)
 			{

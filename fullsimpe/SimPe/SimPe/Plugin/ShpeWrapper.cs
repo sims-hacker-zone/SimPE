@@ -1,5 +1,6 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -37,17 +38,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public override uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] types =
-				{
-					0xFC6EB1F7, //SHPE Files
-				};
-				return types;
-			}
-		}
+		public override FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.SHPE };
 
 		#endregion
 	}

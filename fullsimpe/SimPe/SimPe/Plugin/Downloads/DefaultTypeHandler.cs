@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Drawing;
 
+using SimPe.Data;
 using SimPe.PackedFiles.Picture;
 
 namespace SimPe.Plugin.Downloads
@@ -163,7 +164,7 @@ namespace SimPe.Plugin.Downloads
 			uint inst = ThumbnailHash(group, modelname);
 			Image img = GetThumbnail(
 				message,
-				new uint[] { 0xAC2950C1 },
+				new FileTypes[] { FileTypes.THUB },
 				group,
 				inst,
 				thumbs
@@ -180,13 +181,13 @@ namespace SimPe.Plugin.Downloads
 		/// <returns>The Thumbnail</returns>
 		public static Image GetThumbnail(
 			string message,
-			uint type,
+			FileTypes type,
 			uint group,
 			uint inst,
 			Packages.File thumbs
 		)
 		{
-			return GetThumbnail(message, new uint[] { type }, group, inst, thumbs);
+			return GetThumbnail(message, new FileTypes[] { type }, group, inst, thumbs);
 		}
 
 		/// <summary>
@@ -197,13 +198,13 @@ namespace SimPe.Plugin.Downloads
 		/// <returns>The Thumbnail</returns>
 		public static Image GetThumbnail(
 			string message,
-			uint[] types,
+			FileTypes[] types,
 			uint group,
 			uint inst,
 			Packages.File thumbs
 		)
 		{
-			foreach (uint type in types)
+			foreach (FileTypes type in types)
 			{
 				//0x6C2A22C3
 				Interfaces.Files.IPackedFileDescriptor[] pfds = thumbs.FindFile(
@@ -311,7 +312,7 @@ namespace SimPe.Plugin.Downloads
 		protected void GetObjd(Interfaces.Files.IPackageFile pkg)
 		{
 			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
-				Data.MetaData.OBJD_FILE
+				Data.FileTypes.OBJD
 			);
 			if (pfds.Length > 0)
 			{
@@ -375,7 +376,7 @@ namespace SimPe.Plugin.Downloads
 			if (countvert)
 			{
 				Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
-					Data.MetaData.GMDC
+					Data.FileTypes.GMDC
 				);
 				bool first = !nfo.HasThumbnail;
 
@@ -556,7 +557,7 @@ namespace SimPe.Plugin.Downloads
 			}
 
 			Interfaces.Files.IPackedFileDescriptor pfd = objd.Package.FindFile(
-				Data.MetaData.STRING_FILE,
+				Data.FileTypes.STR,
 				0,
 				objd.FileDescriptor.Group,
 				0x85
@@ -613,7 +614,7 @@ namespace SimPe.Plugin.Downloads
 
 			//Get the Name of the Object
 			Interfaces.Files.IPackedFileDescriptor ctss = objd.Package.FindFile(
-				Data.MetaData.CTSS_FILE,
+				Data.FileTypes.CTSS,
 				0,
 				objd.FileDescriptor.Group,
 				objd.CTSSInstance

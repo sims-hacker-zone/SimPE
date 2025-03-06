@@ -1,5 +1,6 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using SimPe.Data;
 namespace SimPe.Plugin
 {
 	public class CinematicSceneItem
@@ -81,7 +82,7 @@ namespace SimPe.Plugin
 			desc = "";
 
 			items = new CinematicSceneItem[0];
-			BlockID = 0x4D51F042;
+			BlockID = (uint)FileTypes.CINE;
 		}
 
 		#region IRcolBlock Member

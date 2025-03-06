@@ -5,6 +5,8 @@ using System;
 using System.Collections;
 using System.Windows.Forms;
 
+using SimPe.Data;
+using SimPe.Extensions;
 using SimPe.PackedFiles.Cpf;
 
 namespace SimPe.Plugin
@@ -259,7 +261,7 @@ namespace SimPe.Plugin
 		)
 		{
 			Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(
-				Data.MetaData.STRING_FILE
+				Data.FileTypes.STR
 			);
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
@@ -281,7 +283,7 @@ namespace SimPe.Plugin
 				}
 			}
 
-			pfds = package.FindFiles(0x4C697E5A);
+			pfds = package.FindFiles(FileTypes.MMAT);
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
 				Cpf cpf = new Cpf();
@@ -371,7 +373,7 @@ namespace SimPe.Plugin
 			}
 
 			//load all Rcol Files
-			foreach (uint type in Data.MetaData.RcolList)
+			foreach (FileTypes type in Data.MetaData.RcolList)
 			{
 				Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(type);
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
@@ -435,7 +437,7 @@ namespace SimPe.Plugin
 						ListViewItem lvi = new ListViewItem(
 							Hashes.StripHashFromName(newname)
 						);
-						lvi.SubItems.Add(Data.MetaData.FindTypeAlias(type).shortname);
+						lvi.SubItems.Add(type.ToFileTypeInformation().ShortName);
 						lvi.SubItems.Add(Hashes.StripHashFromName(rcol.FileName));
 
 						lv.Items.Add(lvi);

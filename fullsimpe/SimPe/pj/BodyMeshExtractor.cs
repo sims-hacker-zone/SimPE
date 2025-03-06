@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
+using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
 using SimPe.PackedFiles.Cpf;
@@ -104,7 +105,7 @@ namespace pj
 			return DialogResult.OK.Equals(dr) ? ofd.FileName : null;
 		}
 
-		private bool findAndAdd(string name, uint type, string source)
+		private bool findAndAdd(string name, FileTypes type, string source)
 		{
 			foreach (string pkg in packs)
 			{
@@ -123,7 +124,7 @@ namespace pj
 			return false;
 		}
 
-		private bool addFromPkg(string name, uint type, string pkg)
+		private bool addFromPkg(string name, FileTypes type, string pkg)
 		{
 			IPackageFile p = SimPe.Packages.File.LoadFromFile(pkg);
 			if (p == null)
@@ -131,7 +132,7 @@ namespace pj
 				return false;
 			}
 
-			IPackedFileDescriptor[] pfa = p.FindFiles(SimPe.Data.MetaData.NAME_MAP);
+			IPackedFileDescriptor[] pfa = p.FindFiles(FileTypes.NMAP);
 			if (pfa == null || pfa.Length != 1)
 			{
 				return false;
@@ -223,7 +224,7 @@ namespace pj
 			found = false;
 			foreach (IPackedFileDescriptor pfb in grl.ReferencedFiles)
 			{
-				if (pfb.Type == SimPe.Data.MetaData.SHPE)
+				if (pfb.Type == FileTypes.SHPE)
 				{
 					pfa = pfb;
 					found = true;
@@ -276,8 +277,8 @@ namespace pj
 			SimPe.Interfaces.Scenegraph.IScenegraphFileIndexItem item =
 				SimPe.FileTableBase.FileIndex.FindFileByName(
 					gmndee,
-					SimPe.Data.MetaData.GMND,
-					SimPe.Data.MetaData.GLOBAL_GROUP,
+					FileTypes.GMND,
+					MetaData.GLOBAL_GROUP,
 					true
 				);
 			if (item == null)
@@ -297,7 +298,7 @@ namespace pj
 
 			foreach (IPackedFileDescriptor pfb in grd.ReferencedFiles)
 			{
-				if (pfb.Type == SimPe.Data.MetaData.GMDC)
+				if (pfb.Type == FileTypes.GMDC)
 				{
 					pfa = pfb;
 					found = true;
@@ -372,9 +373,7 @@ namespace pj
 				#region Find the Property Set or XML Mesh Overlay
 				if (Settings.BodyMeshExtractUseCres)
 				{
-					IPackedFileDescriptor[] pf3d = p.FindFiles(
-						SimPe.Data.MetaData.REF_FILE
-					);
+					IPackedFileDescriptor[] pf3d = p.FindFiles(FileTypes.THREE_IDR);
 					if (pf3d != null && pf3d.Length > 0)
 					{
 						ThreeIdr refl = new ThreeIdr();
@@ -383,7 +382,7 @@ namespace pj
 							refl.ProcessData(pf3d[i], p);
 							for (int j = 0; j < refl.Items.Length; j++)
 							{
-								if (refl.Items[j].Type == SimPe.Data.MetaData.CRES)
+								if (refl.Items[j].Type == FileTypes.CRES)
 								{
 									gotem = linkemall(refl.Items[j]);
 									break;
@@ -394,8 +393,8 @@ namespace pj
 				}
 				if (!gotem)
 				{
-					IPackedFileDescriptor[] pfa = p.FindFiles(SimPe.Data.MetaData.GZPS);
-					IPackedFileDescriptor[] pfb = p.FindFiles(0x0C1FE246); // XMOL?
+					IPackedFileDescriptor[] pfa = p.FindFiles(FileTypes.GZPS);
+					IPackedFileDescriptor[] pfb = p.FindFiles(FileTypes.XMOL);
 					if (
 						(pfa == null || pfa.Length == 0)
 						&& (pfb == null || pfb.Length == 0)
@@ -491,16 +490,16 @@ namespace pj
 				SimPe.RemoteControl.ApplicationForm.Cursor = Cursors.WaitCursor;
 				success =
 					success
-					&& findAndAdd(mesh, SimPe.Data.MetaData.GMDC, "Sims03.package");
+					&& findAndAdd(mesh, FileTypes.GMDC, "Sims03.package");
 				success =
 					success
-					&& findAndAdd(mesh, SimPe.Data.MetaData.GMND, "Sims04.package");
+					&& findAndAdd(mesh, FileTypes.GMND, "Sims04.package");
 				success =
 					success
-					&& findAndAdd(mesh, SimPe.Data.MetaData.SHPE, "Sims05.package");
+					&& findAndAdd(mesh, FileTypes.SHPE, "Sims05.package");
 				success =
 					success
-					&& findAndAdd(mesh, SimPe.Data.MetaData.CRES, "Sims06.package");
+					&& findAndAdd(mesh, FileTypes.CRES, "Sims06.package");
 				SimPe.RemoteControl.ApplicationForm.Cursor = Cursors.Default;
 				if (!success)
 				{

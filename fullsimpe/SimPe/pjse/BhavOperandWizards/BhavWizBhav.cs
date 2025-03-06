@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 
+using SimPe.Data;
 using SimPe.PackedFiles.Wrapper;
 
 namespace pjse.BhavNameWizards
@@ -46,7 +47,7 @@ namespace pjse.BhavNameWizards
 			get
 			{
 				FileTable.Entry ftEntry = instruction.Parent.ResourceByInstance(
-					SimPe.Data.MetaData.BHAV_FILE,
+					SimPe.Data.FileTypes.BHAV,
 					instruction.OpCode
 				);
 				return ftEntry ?? Localization.GetString("bhavnotfound");
@@ -133,7 +134,7 @@ namespace pjse.BhavNameWizards
 			((byte[])instruction.Operands).CopyTo(o, 0);
 			((byte[])instruction.Reserved1).CopyTo(o, 8);
 
-			TPRP tprp = (TPRP)bhav.SiblingResource(TPRP.TPRPtype);
+			TPRP tprp = (TPRP)bhav.SiblingResource(FileTypes.TPRP);
 
 			switch (opFormat(instruction.NodeVersion, o))
 			{
@@ -195,7 +196,7 @@ namespace pjse.BhavNameWizards
 					}
 
 					ftEntry = instruction.Parent.ResourceByInstance(
-						SimPe.Data.MetaData.BHAV_FILE,
+						SimPe.Data.FileTypes.BHAV,
 						instruction.OpCode
 					);
 					if (ftEntry == null)

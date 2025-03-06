@@ -3,6 +3,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Scenegraph;
 
@@ -71,27 +72,20 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public override uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] types =
+		public override FileTypes[] AssignableTypes => new FileTypes[]
 				{
-					ScenegraphHelper.TXMT,
-					ScenegraphHelper.CRES,
-					ScenegraphHelper.GMND,
-					ScenegraphHelper.GMDC,
-					ScenegraphHelper.SHPE,
-					Data.MetaData.ANIM, //ANIM
-					0x4D51F042, //CINE
-					Data.MetaData.LDIR,
-					Data.MetaData.LAMB,
-					Data.MetaData.LPNT,
-					Data.MetaData.LSPT,
+					FileTypes.TXMT,
+					FileTypes.CRES,
+					FileTypes.GMND,
+					FileTypes.GMDC,
+					FileTypes.SHPE,
+					FileTypes.ANIM,
+					FileTypes.CINE,
+					FileTypes.LDIR,
+					FileTypes.LAMB,
+					FileTypes.LPNT,
+					FileTypes.LSPT,
 				};
-				return types;
-			}
-		}
 
 		#endregion
 
@@ -123,7 +117,7 @@ namespace SimPe.Plugin
 
 		#region IScenegraphItem Member
 		public IScenegraphFileIndexItem FindReferencedType(
-			uint type
+			FileTypes type
 		)
 		{
 			foreach (List<Interfaces.Files.IPackedFileDescriptor> list in ReferenceChains.Values)

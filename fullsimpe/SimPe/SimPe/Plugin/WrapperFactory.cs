@@ -10,6 +10,7 @@ using pjOBJDTool;
 
 using pjse;
 
+using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Bnfo;
@@ -106,7 +107,7 @@ namespace SimPe.Plugin
 				{
 					Packages.File pkg = Packages.File.LoadFromFile(name);
 					Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(
-						0x54535053,
+						FileTypes.GROP,
 						0,
 						1,
 						1
@@ -214,7 +215,7 @@ namespace SimPe.Plugin
 						new Scid(),
 						new FunctionPackedFileWrapper(),
 						new SimpleTextPackedFileWrapper(),
-						new SimmyListPackedFileWrapper(),
+						new SimListPackedFileWrapper(),
 						new HugBugPackedFileWrapper(),
 						new AudioRefPackedFileWrapper(),
 						new InvenIndexPackedFileWrapper(),
@@ -308,7 +309,7 @@ namespace SimPe.Plugin
 			{
 				Providers.LotProvider.LotItem li =
 					item as Providers.LotProvider.LotItem;
-				//SimPe.Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(0x0BF999E7, 0, Data.MetaData.LOCAL_GROUP, item.Instance);
+				//SimPe.Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(FileTypes.LTXT, 0, Data.MetaData.LOCAL_GROUP, item.Instance);
 				if (item.LtxtFileIndexItem != null)
 				{
 					Ltxt ltxt = new Ltxt();

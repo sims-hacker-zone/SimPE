@@ -283,7 +283,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 		private void doStrChooser(TextBox tbVal, TextBox strText)
 		{
 			FileTable.Entry[] items = FileTable.GFT[
-				SimPe.Data.MetaData.STRING_FILE,
+				SimPe.Data.FileTypes.STR,
 				inst.Parent.GroupForScope(AnimScope()),
 				(uint)AnimInstance()
 			];
@@ -1237,7 +1237,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 		private void llEvent_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
 			FileTable.Entry item = inst.Parent.ResourceByInstance(
-				SimPe.Data.MetaData.BHAV_FILE,
+				SimPe.Data.FileTypes.BHAV,
 				doidEvent.Value
 			);
 			Bhav b = new Bhav();
@@ -1260,7 +1260,7 @@ namespace pjse.BhavOperandWizards.WizAnimate
 		private void btnEventTree_Click(object sender, EventArgs e)
 		{
 			FileTable.Entry item = new ResourceChooser().Execute(
-				SimPe.Data.MetaData.BHAV_FILE,
+				SimPe.Data.FileTypes.BHAV,
 				inst.Parent.FileDescriptor.Group,
 				this,
 				false

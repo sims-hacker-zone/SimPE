@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using SimPe.Cache;
+using SimPe.Data;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Picture;
 
@@ -275,7 +276,7 @@ namespace SimPe.Plugin
 
 			FileTableBase.FileIndex.Load();
 
-			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem wts in FileTableBase.FileIndex.FindFile(0xBEEF7B4D, true))
+			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem wts in FileTableBase.FileIndex.FindFile(FileTypes.GOAL, true))
 			{
 				goals[wts.FileDescriptor.Instance] = wts;
 			}
@@ -327,7 +328,7 @@ namespace SimPe.Plugin
 			}
 
 			Interfaces.Files.IPackedFileDescriptor[] pfds = txtpkg.FindFile(
-				Data.MetaData.STRING_FILE,
+				Data.FileTypes.STR,
 				0,
 				wnt.StringInstance
 			);

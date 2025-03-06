@@ -4,6 +4,7 @@ using System;
 using System.Windows.Forms;
 
 using SimPe.Collections;
+using SimPe.Data;
 using SimPe.Events;
 using SimPe.Forms.MainUI;
 
@@ -745,7 +746,7 @@ namespace SimPe
 					Packages.PackedFileDescriptor pfd =
 						new Packages.PackedFileDescriptor
 						{
-							Type = 0xffffffff
+							Type = FileTypes.ALL_TYPES
 						};
 					ToolLoaderItemExt.OpenPackedFile(flname, ref pfd);
 					list.Add(pfd);

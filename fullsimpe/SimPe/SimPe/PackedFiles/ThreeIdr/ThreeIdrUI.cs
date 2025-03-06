@@ -1,5 +1,10 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using System;
+using System.Linq;
+
+using SimPe.Data;
+using SimPe.Extensions;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.ThreeIdr
@@ -24,10 +29,8 @@ namespace SimPe.PackedFiles.ThreeIdr
 			//form = WrapperFactory.form;
 			form = new ThreeIdrForm();
 
-			foreach (Interfaces.IAlias alias in Helper.TGILoader.FileTypes)
-			{
-				form.cbtypes.Items.Add(alias);
-			}
+			form.cbtypes.Items.AddRange((from FileTypes type in Enum.GetValues(typeof(FileTypes))
+										 select type.ToFileTypeInformation()).Cast<object>().ToArray());
 		}
 		#endregion
 

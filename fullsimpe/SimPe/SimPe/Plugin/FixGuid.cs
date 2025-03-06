@@ -42,7 +42,7 @@ namespace SimPe.Plugin
 		public void FixGuids(ArrayList guids)
 		{
 			IPackedFileDescriptor[] mpfds = package.FindFiles(
-				Data.MetaData.MMAT
+				Data.FileTypes.MMAT
 			);
 
 			foreach (IPackedFileDescriptor pfd in mpfds)
@@ -74,7 +74,7 @@ namespace SimPe.Plugin
 		public void FixGuids(uint newguid)
 		{
 			IPackedFileDescriptor[] mpfds = package.FindFiles(
-				Data.MetaData.MMAT
+				Data.FileTypes.MMAT
 			);
 
 			foreach (IPackedFileDescriptor pfd in mpfds)

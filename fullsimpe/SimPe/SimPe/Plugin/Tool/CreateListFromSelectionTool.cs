@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 
+using SimPe.Data;
 using SimPe.Events;
 
 namespace SimPe.Plugin.Tool
@@ -88,7 +89,7 @@ namespace SimPe.Plugin.Tool
 
 			foreach (ResourceContainer e in es)
 			{
-				uint t = e.Resource.FileDescriptor.Type;
+				FileTypes t = e.Resource.FileDescriptor.Type;
 				if (!(map[t] is ResourceContainers o))
 				{
 					o = new ResourceContainers();

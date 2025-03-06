@@ -68,7 +68,7 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 				{
 					Interfaces.Files.IPackedFileDescriptor pfd =
 						famt.Package.FindFile(
-							MetaData.SIM_DESCRIPTION_FILE,
+							FileTypes.SDSC,
 							0,
 							famt.FileDescriptor.Group,
 							siminstance

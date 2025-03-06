@@ -4,6 +4,8 @@
 using System;
 using System.Windows.Forms;
 
+using SimPe.Data;
+
 namespace SimPe.Windows.Forms
 {
 	public partial class ResourceTreeViewExt : UserControl
@@ -112,7 +114,7 @@ namespace SimPe.Windows.Forms
 			{
 				foreach (ResourceTreeNodeExt node in firstnode.Nodes)
 				{
-					if (node.ID == 0x46414D49)
+					if (node.ID == (uint)FileTypes.FAMI)
 					{
 						tv.SelectedNode = node;
 						break;

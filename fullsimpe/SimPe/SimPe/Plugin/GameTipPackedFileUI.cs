@@ -3,6 +3,7 @@
 
 using System;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Picture;
 
@@ -203,7 +204,7 @@ namespace SimPe.Plugin
 			if (pkg != null)
 			{
 				Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(
-					0x856DDBAC,
+					FileTypes.IMG,
 					0,
 					0x499DB772,
 					Wrapper.Tipicon
@@ -233,7 +234,7 @@ namespace SimPe.Plugin
 			if (package != null)
 			{
 				Interfaces.Files.IPackedFileDescriptor pfd = package.FindFile(
-					0x53545223,
+					FileTypes.STR,
 					0,
 					0x7FE066DD,
 					0x0000012D

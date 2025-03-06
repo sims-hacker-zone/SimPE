@@ -40,7 +40,7 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			get
 			{
-				string enumName = ((Data.MetaData.Languages)Id).ToString();
+				string enumName = ((Data.Languages)Id).ToString();
 				return Localization.Manager.GetString(enumName) ?? enumName;
 			}
 		}

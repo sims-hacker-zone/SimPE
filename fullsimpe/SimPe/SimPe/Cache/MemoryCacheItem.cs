@@ -168,7 +168,7 @@ namespace SimPe.Cache
 			ObjectType = (Data.ObjectTypes)reader.ReadUInt16();
 			pfd = new Packages.PackedFileDescriptor
 			{
-				Type = reader.ReadUInt32(),
+				Type = (Data.FileTypes)reader.ReadUInt32(),
 				Group = reader.ReadUInt32(),
 				LongInstance = reader.ReadUInt64()
 			};
@@ -193,7 +193,7 @@ namespace SimPe.Cache
 			}
 
 			writer.Write((ushort)ObjectType);
-			writer.Write(pfd.Type);
+			writer.Write((uint)pfd.Type);
 			writer.Write(pfd.Group);
 			writer.Write(pfd.LongInstance);
 			writer.Write(Guid);

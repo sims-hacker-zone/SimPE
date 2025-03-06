@@ -108,9 +108,9 @@ namespace SimPe.Plugin.Scanner
 			cbout.Tag = Data.OutfitCats.WinterWear;
 
 			cbsexes[0] = cbmale;
-			cbmale.Tag = Data.Sex.Male;
+			cbmale.Tag = Data.Gender.Male;
 			cbsexes[1] = cbfemale;
-			cbfemale.Tag = Data.Sex.Female;
+			cbfemale.Tag = Data.Gender.Female;
 
 			if (Helper.WindowsRegistry.Username.Trim() != "")
 			{

@@ -3,6 +3,7 @@
 
 using System;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -204,14 +205,7 @@ namespace SimPe.Plugin
 
 		public byte[] FileSignature => new byte[0];
 
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] types = { 0xCC8A6A69 }; //handles the Previous EP Version Run
-				return types;
-			}
-		}
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.PEPV };
 
 		#endregion
 	}

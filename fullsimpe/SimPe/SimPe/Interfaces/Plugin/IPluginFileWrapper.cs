@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin.Internal;
 
 namespace SimPe.Interfaces.Plugin
@@ -14,7 +15,7 @@ namespace SimPe.Interfaces.Plugin
 		/// <summary>
 		/// Returns a List of all File Types this Class can Handel
 		/// </summary>
-		uint[] AssignableTypes
+		FileTypes[] AssignableTypes
 		{
 			get;
 		}

@@ -74,8 +74,8 @@ namespace pj
 		public bool LinkBodyMesh(ThreeIdr refFile)
 		{
 			if (
-				refFile.Items[0].Type != SimPe.Data.MetaData.CRES
-				|| refFile.Items[1].Type != SimPe.Data.MetaData.SHPE
+				refFile.Items[0].Type != SimPe.Data.FileTypes.CRES
+				|| refFile.Items[1].Type != SimPe.Data.FileTypes.SHPE
 			)
 			{
 				MessageBox.Show(
@@ -113,8 +113,8 @@ namespace pj
 				return false;
 			}
 
-			IPackedFileDescriptor[] pfa = p.FindFiles(SimPe.Data.MetaData.CRES);
-			IPackedFileDescriptor[] pfb = p.FindFiles(SimPe.Data.MetaData.SHPE);
+			IPackedFileDescriptor[] pfa = p.FindFiles(SimPe.Data.FileTypes.CRES);
+			IPackedFileDescriptor[] pfb = p.FindFiles(SimPe.Data.FileTypes.SHPE);
 			if (pfa == null || pfa.Length != 1 || pfb == null || pfb.Length != 1)
 			{
 				MessageBox.Show(
@@ -146,7 +146,7 @@ namespace pj
 		private bool IsReallyEnabled(IPackedFileDescriptor pfd, IPackageFile package)
 		{
 			currentPackage = package;
-			refFilePFD = pfd != null && pfd.Type == SimPe.Data.MetaData.REF_FILE ? pfd : null;
+			refFilePFD = pfd != null && pfd.Type == SimPe.Data.FileTypes.THREE_IDR ? pfd : null;
 
 			return package != null && refFilePFD != null;
 		}

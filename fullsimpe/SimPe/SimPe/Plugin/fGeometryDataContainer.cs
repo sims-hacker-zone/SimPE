@@ -4181,7 +4181,7 @@ namespace SimPe.Plugin
 			{
 				SimPe.Interfaces.Files.IPackageFile pkg = ((GeometryDataContainer)this.tMesh.Tag).Parent.Package;
 
-				SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(Data.MetaData.GMDC);
+				SimPe.Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(Data.FileTypes.GMDC);
 				int min = int.MaxValue;
 				int max = 0;
 				int av = 0;

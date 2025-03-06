@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 
 using SimPe.Cache;
+using SimPe.Data;
 using SimPe.Interfaces.Plugin.Scanner;
 using SimPe.PackedFiles.Cpf;
 
@@ -55,26 +56,26 @@ namespace SimPe.Plugin.Scanner
 			)
 			{
 				Interfaces.Files.IPackedFileDescriptor[] pfds = si.Package.FindFiles(
-					Data.MetaData.GZPS
+					Data.FileTypes.GZPS
 				);
 				if (pfds.Length == 0)
 				{
-					pfds = si.Package.FindFiles(0xCCA8E925); //Object XML
+					pfds = si.Package.FindFiles(FileTypes.XOBJ); //Object XML
 				}
 
 				if (pfds.Length == 0)
 				{
-					pfds = si.Package.FindFiles(0x2C1FD8A1); //TextureOverlay XML
+					pfds = si.Package.FindFiles(FileTypes.XTOL); //TextureOverlay XML
 				}
 
 				if (pfds.Length == 0)
 				{
-					pfds = si.Package.FindFiles(0x8C1580B5); //Hairtone XML
+					pfds = si.Package.FindFiles(FileTypes.XHTN); //Hairtone XML
 				}
 
 				if (pfds.Length == 0)
 				{
-					pfds = si.Package.FindFiles(0x0C1FE246); //Mesh Overlay XML
+					pfds = si.Package.FindFiles(FileTypes.XMOL); //Mesh Overlay XML
 				}
 
 				List<uint> data = new List<uint>();
@@ -143,8 +144,8 @@ namespace SimPe.Plugin.Scanner
 				SetSubItem(lvi, StartColum, age, cl);
 
 				string sex = "";
-				Data.Sex[] sexs = (Data.Sex[])Enum.GetValues(typeof(Data.Sex));
-				foreach (Data.Sex sx in sexs)
+				Data.Gender[] sexs = (Data.Gender[])Enum.GetValues(typeof(Data.Gender));
+				foreach (Data.Gender sx in sexs)
 				{
 					if ((f & (uint)sx) != 0)
 					{
@@ -389,25 +390,25 @@ namespace SimPe.Plugin.Scanner
 						ps.State = TriState.Null;
 
 						Interfaces.Files.IPackedFileDescriptor[] pfds =
-							si.Package.FindFiles(Data.MetaData.GZPS);
+							si.Package.FindFiles(Data.FileTypes.GZPS);
 						if (pfds.Length == 0)
 						{
-							pfds = si.Package.FindFiles(0xCCA8E925); //Object XML
+							pfds = si.Package.FindFiles(FileTypes.XOBJ);
 						}
 
 						if (pfds.Length == 0)
 						{
-							pfds = si.Package.FindFiles(0x2C1FD8A1); //TextureOverlay XML
+							pfds = si.Package.FindFiles(FileTypes.XTOL);
 						}
 
 						if (pfds.Length == 0)
 						{
-							pfds = si.Package.FindFiles(0x8C1580B5); //Hairtone XML
+							pfds = si.Package.FindFiles(FileTypes.XHTN);
 						}
 
 						if (pfds.Length == 0)
 						{
-							pfds = si.Package.FindFiles(0x0C1FE246); //Mesh Overlay XML
+							pfds = si.Package.FindFiles(FileTypes.XMOL);
 						}
 
 						ArrayList data = new ArrayList();

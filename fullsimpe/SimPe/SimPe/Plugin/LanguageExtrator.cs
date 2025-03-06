@@ -8,6 +8,8 @@ using System.Windows.Forms;
 
 using Ambertation.Windows.Forms;
 
+using SimPe.Data;
+
 namespace SimPe.Plugin
 {
 	/// <summary>
@@ -298,11 +300,11 @@ namespace SimPe.Plugin
 			}
 
 			Interfaces.Files.IPackedFileDescriptor[] pfdc =
-				package.FindFiles(0x43545353); //CTSS
+				package.FindFiles(FileTypes.CTSS); //CTSS
 			Interfaces.Files.IPackedFileDescriptor[] pfdm =
-				package.FindFiles(0x54544173); //Pie String (TTAB)
+				package.FindFiles(FileTypes.TTAs); //Pie String (TTAB)
 			Interfaces.Files.IPackedFileDescriptor[] pfdt =
-				package.FindFiles(0x53545223); //STR#
+				package.FindFiles(FileTypes.STR); //STR#
 			Progress.Maximum = pfdc.Length + pfdm.Length + pfdt.Length;
 
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfdc)
@@ -363,7 +365,7 @@ namespace SimPe.Plugin
 
 		private void getFiles()
 		{
-			uint tipe;
+			FileTypes tipe;
 			uint groop;
 			uint insta;
 			string twine;
@@ -398,15 +400,15 @@ namespace SimPe.Plugin
 				twine = Path.GetFileNameWithoutExtension(file);
 				if (twine.StartsWith("catalogue-"))
 				{
-					tipe = 0x43545353;
+					tipe = FileTypes.CTSS;
 				}
 				else if (twine.StartsWith("menu-"))
 				{
-					tipe = 0x54544173;
+					tipe = FileTypes.TTAs;
 				}
 				else if (twine.StartsWith("text-"))
 				{
-					tipe = 0x53545223;
+					tipe = FileTypes.STR;
 				}
 				else
 				{
@@ -438,11 +440,11 @@ namespace SimPe.Plugin
 				btclean.Enabled =
 					false;
 			Interfaces.Files.IPackedFileDescriptor[] pfdc =
-				package.FindFiles(0x43545353); //CTSS
+				package.FindFiles(FileTypes.CTSS); //CTSS
 			Interfaces.Files.IPackedFileDescriptor[] pfdm =
-				package.FindFiles(0x54544173); //Pie String (TTAB)
+				package.FindFiles(FileTypes.TTAs); //Pie String (TTAB)
 			Interfaces.Files.IPackedFileDescriptor[] pfdt =
-				package.FindFiles(0x53545223); //STR#
+				package.FindFiles(FileTypes.STR); //STR#
 			Progress.Maximum = pfdc.Length + pfdm.Length + pfdt.Length;
 
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfdc)

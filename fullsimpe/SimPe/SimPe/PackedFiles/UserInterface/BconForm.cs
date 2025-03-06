@@ -3,6 +3,7 @@
 using System;
 using System.Windows.Forms;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Wrapper;
 
@@ -151,7 +152,7 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			index = -1;
 			trcnres = (Trcn)(
-				wrapper?.SiblingResource(Trcn.Trcntype)
+				wrapper?.SiblingResource(FileTypes.TRCN)
 			);
 
 			lvConstants.Items.Clear();
@@ -333,8 +334,8 @@ namespace SimPe.PackedFiles.UserInterface
 					,
 					wrapper
 						.FileDescriptor
-						.TypeName
-						.shortname // Type (short name)
+						.TypeInfo
+						.ShortName // Type (short name)
 					,
 					"0x"
 						+ Helper.HexString(
@@ -449,7 +450,7 @@ namespace SimPe.PackedFiles.UserInterface
 			try
 			{
 				int minArgc = 0;
-				Trcn trcn = (Trcn)wrapper.SiblingResource(Trcn.Trcntype); // find Trcn for this Bcon
+				Trcn trcn = (Trcn)wrapper.SiblingResource(FileTypes.TRCN); // find Trcn for this Bcon
 
 				wrapper.Package.BeginUpdate();
 
@@ -529,7 +530,7 @@ namespace SimPe.PackedFiles.UserInterface
 					Interfaces.Files.IPackedFileDescriptor npfd =
 						wrapper.FileDescriptor.Clone();
 					trcn = new Trcn();
-					npfd.Type = Trcn.Trcntype;
+					npfd.Type = FileTypes.TRCN;
 					trcn.FileDescriptor = npfd;
 					wrapper.Package.Add(npfd, true);
 					trcn.SynchronizeUserData();
@@ -566,7 +567,7 @@ namespace SimPe.PackedFiles.UserInterface
 		private void FiletableRefresh(object sender, EventArgs e)
 		{
 			pjse_banner1.SiblingEnabled =
-				wrapper != null && wrapper.SiblingResource(Trcn.Trcntype) != null;
+				wrapper != null && wrapper.SiblingResource(FileTypes.TRCN) != null;
 			updateLists();
 		}
 		#endregion
@@ -586,7 +587,7 @@ namespace SimPe.PackedFiles.UserInterface
 			wrapper = (Bcon)wrp;
 			WrapperChanged(wrapper, null);
 			pjse_banner1.SiblingEnabled =
-				wrapper.SiblingResource(Trcn.Trcntype) != null;
+				wrapper.SiblingResource(FileTypes.TRCN) != null;
 
 			internalchg = true;
 			updateLists();
@@ -966,7 +967,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		private void pjse_banner1_SiblingClick(object sender, EventArgs e)
 		{
-			Trcn trcn = (Trcn)wrapper.SiblingResource(Trcn.Trcntype);
+			Trcn trcn = (Trcn)wrapper.SiblingResource(FileTypes.TRCN);
 			if (trcn == null)
 			{
 				return;

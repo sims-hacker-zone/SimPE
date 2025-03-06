@@ -3,6 +3,7 @@
 
 using System;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -260,11 +261,11 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes
+		public FileTypes[] AssignableTypes
 		{
 			get
 			{
-				uint[] types = { 0x6F626A74 }; // Object (this is where the Hug Bug Lives)
+				FileTypes[] types = { FileTypes.OBJT }; // Object (this is where the Hug Bug Lives)
 				return types;
 			}
 		}

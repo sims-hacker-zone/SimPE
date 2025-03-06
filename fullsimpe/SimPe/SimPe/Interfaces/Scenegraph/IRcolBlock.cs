@@ -3,6 +3,7 @@
 using System.Collections;
 using System.Windows.Forms;
 
+using SimPe.Data;
 using SimPe.Plugin;
 
 namespace SimPe.Interfaces.Scenegraph
@@ -109,6 +110,6 @@ namespace SimPe.Interfaces.Scenegraph
 		/// </summary>
 		/// <param name="type">the Type of the ressource youar looking for</param>
 		/// <returns>null or the RCOl Ressource</returns>
-		Rcol FindReferencingParent(uint type);
+		Rcol FindReferencingParent(FileTypes type);
 	}
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 
+using SimPe.Data;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Scenegraph;
 
@@ -299,7 +300,7 @@ namespace SimPe.Plugin
 				IScenegraphFileIndexItem item =
 					FileTableBase.FileIndex.FindFileByName(
 						lifofile,
-						SimPe.Data.MetaData.LIFO,
+						SimPe.Data.FileTypes.LIFO,
 						SimPe.Data.MetaData.LOCAL_GROUP,
 						true
 					);
@@ -315,7 +316,7 @@ namespace SimPe.Plugin
 					Interfaces.Files.IPackageFile pkg = parent.Parent.Package;
 					Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFile(
 						lifofile,
-						SimPe.Data.MetaData.LIFO
+						SimPe.Data.FileTypes.LIFO
 					);
 					if (pfds.Length > 0)
 					{
@@ -660,7 +661,7 @@ namespace SimPe.Plugin
 			MipMapBlocks[0] = new MipMapBlock(this);
 			MipMapLevels = 1;
 			sgres = new SGResource(null);
-			BlockID = 0x1c4a276c;
+			BlockID = (uint)FileTypes.TXTR;
 			FileNameRepeat = "";
 			version = 0x09;
 			unknown_0 = (float)1.0;
@@ -774,7 +775,7 @@ namespace SimPe.Plugin
 							  from mm in mmp.MipMaps
 							  where mm.DataType == MipMapType.LifoReference
 							  select ScenegraphHelper.BuildPfd(mm.LifoFile,
-							  	ScenegraphHelper.LIFO,
+							  	FileTypes.LIFO,
 							  	parentgroup)).ToList();
 		}
 

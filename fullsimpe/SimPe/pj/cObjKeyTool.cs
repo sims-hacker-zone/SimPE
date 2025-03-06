@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
+using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
@@ -213,7 +214,7 @@ namespace pj
 
 		private bool has3idr(IPackedFileDescriptor pfd, IPackageFile package)
 		{
-			return pfd != null && package != null && findInPackagelist(objkeys, SimPe.Data.MetaData.REF_FILE, pfd)
+			return pfd != null && package != null && findInPackagelist(objkeys, FileTypes.THREE_IDR, pfd)
 				!= null;
 		}
 
@@ -225,13 +226,11 @@ namespace pj
 			}
 
 			foreach (
-				uint t in new uint[]
+				FileTypes t in new FileTypes[]
 				{
-					0x0C1FE246 /*XMOL*/
-					,
-					0x2C1FD8A1 /*XTOL*/
-					,
-					SimPe.Data.MetaData.GZPS,
+					FileTypes.XMOL,
+					FileTypes.XTOL,
+					FileTypes.GZPS,
 				}
 			)
 			{
@@ -254,14 +253,14 @@ namespace pj
 			}
 
 			if (
-				currentPfd.Type == 0x0C1FE246 /*XMOL*/
-				|| currentPfd.Type == 0x2C1FD8A1 /*XTOL*/
-				|| currentPfd.Type == SimPe.Data.MetaData.GZPS
+				currentPfd.Type == FileTypes.XMOL
+				|| currentPfd.Type == FileTypes.XTOL
+				|| currentPfd.Type == FileTypes.GZPS
 			)
 			{
 				AbstractWrapper p3 = findInPackagelist(
 					objkeys,
-					SimPe.Data.MetaData.REF_FILE,
+					FileTypes.THREE_IDR,
 					currentPfd
 				);
 				if (p3 != null)
@@ -274,17 +273,15 @@ namespace pj
 				}
 			}
 			else if (
-				currentPfd.Type == SimPe.Data.MetaData.REF_FILE /*3IDR*/
+				currentPfd.Type == FileTypes.THREE_IDR
 			)
 			{
 				foreach (
-					uint t in new uint[]
+					FileTypes t in new FileTypes[]
 					{
-						0x0C1FE246 /*XMOL*/
-						,
-						0x2C1FD8A1 /*XTOL*/
-						,
-						SimPe.Data.MetaData.GZPS,
+						FileTypes.XMOL,
+						FileTypes.XTOL,
+						FileTypes.GZPS,
 					}
 				)
 				{
@@ -309,7 +306,7 @@ namespace pj
 
 		AbstractWrapper findInPackagelist(
 			List<string> pkgs,
-			uint Filetype,
+			FileTypes Filetype,
 			IPackedFileDescriptor pfd
 		)
 		{
@@ -326,7 +323,7 @@ namespace pj
 
 		AbstractWrapper findInPackage(
 			string pkg,
-			uint Filetype,
+			FileTypes Filetype,
 			IPackedFileDescriptor pfd
 		)
 		{
@@ -347,7 +344,7 @@ namespace pj
 				return null;
 			}
 
-			AbstractWrapper tgt = Filetype == SimPe.Data.MetaData.REF_FILE ? new ThreeIdr() : (AbstractWrapper)new Cpf();
+			AbstractWrapper tgt = Filetype == FileTypes.THREE_IDR ? new ThreeIdr() : (AbstractWrapper)new Cpf();
 			tgt.ProcessData(pt, p);
 			return tgt;
 		}
@@ -362,7 +359,7 @@ namespace pj
 			CpfItem cpfItem = srcCpf.GetItem(cpfItemKey);
 			if (
 				cpfItem == null
-				|| cpfItem.Datatype != SimPe.Data.MetaData.DataTypes.dtUInteger
+				|| cpfItem.Datatype != DataTypes.dtUInteger
 			)
 			{
 				return null;
@@ -400,10 +397,8 @@ namespace pj
 			}
 
 			IPackedFileDescriptor p3 = p.FindFile(
-				SimPe
-					.Data
-					.MetaData
-					.REF_FILE /*3IDR*/
+
+					FileTypes.THREE_IDR /*3IDR*/
 				,
 				pc.SubType,
 				pc.Group,
@@ -435,7 +430,7 @@ namespace pj
 			CpfItem cpfItem = srcCpf.GetItem(cpfItemKey);
 			if (
 				cpfItem == null
-				|| cpfItem.Datatype != SimPe.Data.MetaData.DataTypes.dtUInteger
+				|| cpfItem.Datatype != DataTypes.dtUInteger
 			)
 			{
 				return null;
@@ -540,7 +535,7 @@ namespace pj
 				}
 
 				IPackedFileDescriptor[] apfd = p.FindFiles(
-					0x0C560F39 /*BINX*/
+					FileTypes.BINX /*BINX*/
 				);
 				SimPe.Wait.SubStart(apfd.Length);
 				foreach (IPackedFileDescriptor bx in apfd)
@@ -549,10 +544,8 @@ namespace pj
 					{
 						// is there a paired 3idr?
 						IPackedFileDescriptor pfd = p.FindFile(
-							SimPe
-								.Data
-								.MetaData
-								.REF_FILE /*3IDR*/
+
+								FileTypes.THREE_IDR /*3IDR*/
 							,
 							bx.SubType,
 							bx.Group,
@@ -577,7 +570,7 @@ namespace pj
 						if (
 							objKeyIdx == null
 							|| objKeyIdx.Datatype
-								!= SimPe.Data.MetaData.DataTypes.dtUInteger
+								!= DataTypes.dtUInteger
 						)
 						{
 							continue;
@@ -639,7 +632,7 @@ namespace pj
 					rcolChain.Add(tgt);
 					foreach (IPackedFileDescriptor i in tgt.ReferencedFiles)
 					{
-						if (i.Type == SimPe.Data.MetaData.GMND)
+						if (i.Type == FileTypes.GMND)
 						{
 							SimPe.Plugin.GenericRcol gmnd = getRcol(i, gmndpkg);
 							if (gmnd != null)
@@ -649,7 +642,7 @@ namespace pj
 									IPackedFileDescriptor j in gmnd.ReferencedFiles
 								)
 								{
-									if (j.Type == SimPe.Data.MetaData.GMDC)
+									if (j.Type == FileTypes.GMDC)
 									{
 										SimPe.Plugin.GenericRcol gmdc = getRcol(
 											j,
@@ -663,7 +656,7 @@ namespace pj
 								}
 							}
 						}
-						else if (i.Type == SimPe.Data.MetaData.TXMT)
+						else if (i.Type == FileTypes.TXMT)
 						{
 							SimPe.Plugin.GenericRcol txmt = getRcol(i, txmtpkg);
 							if (txmt != null)
@@ -691,7 +684,7 @@ namespace pj
 			CpfItem cpfItem = objKeyCPF.GetItem(
 				"numoverrides"
 			);
-			if (cpfItem.Datatype == SimPe.Data.MetaData.DataTypes.dtUInteger)
+			if (cpfItem.Datatype == DataTypes.dtUInteger)
 			{
 				numOverrides = cpfItem.UIntegerValue;
 			}
@@ -761,7 +754,7 @@ namespace pj
 			CpfItem cpfItem = srcCpf.GetItem("stringsetidx");
 			if (
 				cpfItem == null
-				|| cpfItem.Datatype != SimPe.Data.MetaData.DataTypes.dtUInteger
+				|| cpfItem.Datatype != DataTypes.dtUInteger
 			)
 			{
 				return;
@@ -924,14 +917,14 @@ namespace pj
 				SetPacks();
 				SimPe.FileTableBase.FileIndex.FILoad += new EventHandler(FileIndex_FILoad);
 			}
-			if (pfd.Type == SimPe.Data.MetaData.REF_FILE)
+			if (pfd.Type == FileTypes.THREE_IDR)
 			{
 				return hasCpf(pfd, package);
 			}
 			else if (
-				pfd.Type == 0x0C1FE246 /*XMOL*/
-				|| pfd.Type == 0x2C1FD8A1 /*XTOL*/
-				|| pfd.Type == SimPe.Data.MetaData.GZPS
+				pfd.Type == FileTypes.XMOL /*XMOL*/
+				|| pfd.Type == FileTypes.XTOL /*XTOL*/
+				|| pfd.Type == FileTypes.GZPS
 			)
 			{
 				return has3idr(pfd, package);

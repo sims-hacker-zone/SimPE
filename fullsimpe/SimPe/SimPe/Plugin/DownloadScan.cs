@@ -5,6 +5,7 @@ using System.Collections;
 using System.Drawing;
 using System.Windows.Forms;
 
+using SimPe.Data;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Txtr;
 
@@ -1021,7 +1022,7 @@ namespace SimPe.Plugin
 		private uint[] CheckGuid(Packages.File package)
 		{
 			Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(
-				Data.MetaData.OBJD_FILE
+				Data.FileTypes.OBJD
 			);
 			uint[] res = new uint[pfds.Length];
 
@@ -1085,7 +1086,7 @@ namespace SimPe.Plugin
 					{
 						if (cbprev.Checked)
 						{
-							pfds = package.FindFiles(Data.MetaData.TXTR);
+							pfds = package.FindFiles(Data.FileTypes.TXTR);
 							if (pfds.Length > 0)
 							{
 								Txtr txtr = new Txtr(null, false);
@@ -1107,10 +1108,10 @@ namespace SimPe.Plugin
 					catch { }
 
 					//find Name
-					pfds = package.FindFiles(Data.MetaData.CTSS_FILE);
+					pfds = package.FindFiles(Data.FileTypes.CTSS);
 					if (pfds.Length == 0)
 					{
-						pfds = package.FindFiles(Data.MetaData.STRING_FILE);
+						pfds = package.FindFiles(Data.FileTypes.STR);
 					}
 
 					if (pfds.Length > 0)
@@ -1133,13 +1134,13 @@ namespace SimPe.Plugin
 					else
 					{
 						//check if Recolor
-						pfds = package.FindFiles(0x1C4A276C); //TXTR
+						pfds = package.FindFiles(FileTypes.TXTR);
 						if (pfds.Length > 0)
 						{
-							pfds = package.FindFiles(0x49596978); //TXMT
+							pfds = package.FindFiles(FileTypes.TXMT);
 							if (pfds.Length > 0)
 							{
-								pfds = package.FindFiles(0x4C697E5A); //MMAT
+								pfds = package.FindFiles(FileTypes.MMAT); //MMAT
 								if (pfds.Length > 0)
 								{
 									Cpf mmat =
@@ -1154,7 +1155,7 @@ namespace SimPe.Plugin
 					}
 
 					bool isskin = false;
-					pfds = package.FindFiles(Data.MetaData.GZPS);
+					pfds = package.FindFiles(Data.FileTypes.GZPS);
 					foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 					{
 						Cpf cpf =
@@ -1210,7 +1211,7 @@ namespace SimPe.Plugin
 							)
 						)
 						{
-							pfds = package.FindFiles(0x1C4A276C); //TXTR
+							pfds = package.FindFiles(FileTypes.TXTR);
 							if (pfds.Length > 0)
 							{
 								state = STR_NOT_EP;
@@ -1399,7 +1400,7 @@ namespace SimPe.Plugin
 					(string)lvi.Tag
 				);
 				Interfaces.Files.IPackedFileDescriptor[] pfds = skin.FindFiles(
-					Data.MetaData.GZPS
+					Data.FileTypes.GZPS
 				);
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
@@ -1429,7 +1430,7 @@ namespace SimPe.Plugin
 					(string)lvi.Tag
 				);
 				Interfaces.Files.IPackedFileDescriptor[] pfds = skin.FindFiles(
-					Data.MetaData.TXTR
+					Data.FileTypes.TXTR
 				);
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
@@ -1797,7 +1798,7 @@ namespace SimPe.Plugin
 							Packages.File.LoadFromFile(name);
 
 						Interfaces.Files.IPackedFileDescriptor[] pfds =
-							skin.FindFiles(Data.MetaData.GZPS);
+							skin.FindFiles(Data.FileTypes.GZPS);
 						foreach (
 							Interfaces.Files.IPackedFileDescriptor pfd in pfds
 						)

@@ -3,6 +3,7 @@
 using System;
 using System.Collections;
 
+using SimPe.Data;
 using SimPe.Forms.MainUI;
 using SimPe.PackedFiles.Fami;
 
@@ -30,7 +31,7 @@ namespace SimPe.Plugin.Tool.Action
 					{
 						if (
 							es.Items[i].Resource.FileDescriptor.Type
-							!= Data.MetaData.SIM_DESCRIPTION_FILE
+							!= Data.FileTypes.SDSC
 						)
 						{
 							return false;
@@ -98,7 +99,7 @@ namespace SimPe.Plugin.Tool.Action
 					new PackedFiles.Wrapper.ExtSDesc();
 				Interfaces.Files.IPackedFileDescriptor[] pfds =
 					e.LoadedPackage.Package.FindFiles(
-						Data.MetaData.SIM_DESCRIPTION_FILE
+						Data.FileTypes.SDSC
 					);
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
@@ -139,9 +140,9 @@ namespace SimPe.Plugin.Tool.Action
 				DeleteFamilyTies(inst, guid, victim.Package, victim);
 				DeleteMemories(inst, guid, victim.Package, victim);
 				DeleteFamMembers(inst, guid, victim.Package, victim);
-				DeleteRes(0xCD95548E, inst, guid, victim.Package, victim); //want & fear
-				DeleteRes(0xEBFEE33F, inst, guid, victim.Package, victim); //DNA
-				DeleteRes(0x3053CF74, inst, guid, victim.Package, victim); //Scores
+				DeleteRes(FileTypes.SWAF, inst, guid, victim.Package, victim); //want & fear
+				DeleteRes(FileTypes.SDNA, inst, guid, victim.Package, victim); //DNA
+				DeleteRes(FileTypes.SCOR, inst, guid, victim.Package, victim); //Scores
 				ret = DeleteCharacterFile(inst, guid, victim.Package, victim);
 				victim.FileDescriptor.MarkForDelete = true;
 			}
@@ -189,7 +190,7 @@ namespace SimPe.Plugin.Tool.Action
 		)
 		{
 			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
-				Data.MetaData.RELATION_FILE
+				Data.FileTypes.SREL
 			);
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
@@ -204,7 +205,7 @@ namespace SimPe.Plugin.Tool.Action
 		}
 
 		void DeleteRes(
-			uint type,
+			FileTypes type,
 			uint inst,
 			uint guid,
 			Interfaces.Files.IPackageFile pkg,
@@ -229,7 +230,7 @@ namespace SimPe.Plugin.Tool.Action
 		)
 		{
 			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
-				0x8C870743
+				FileTypes.FAMT
 			);
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
@@ -283,7 +284,7 @@ namespace SimPe.Plugin.Tool.Action
 		)
 		{
 			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
-				0x4E474248
+				FileTypes.NGBH
 			);
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
@@ -359,7 +360,7 @@ namespace SimPe.Plugin.Tool.Action
 			PackedFiles.Wrapper.ExtSDesc victim
 		)
 		{
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pkg.FindFiles(0x46414D49))
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pkg.FindFiles(FileTypes.FAMI))
 			{
 				Fami f = new Fami(null);
 				f.ProcessData(pfd, pkg);
@@ -379,7 +380,7 @@ namespace SimPe.Plugin.Tool.Action
 		)
 		{
 			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
-				Data.MetaData.SIM_DESCRIPTION_FILE
+				Data.FileTypes.SDSC
 			);
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
@@ -414,7 +415,7 @@ namespace SimPe.Plugin.Tool.Action
 		void DeleteOrphanDna(Interfaces.Files.IPackageFile pkg)
 		{
 			Interfaces.Files.IPackedFileDescriptor[] pfdSim = pkg.FindFiles(
-				0xAACE2EFBu
+				FileTypes.SDSC
 			); // get the existing SDSCs
 			ArrayList simInstances = new ArrayList();
 			foreach (Interfaces.Files.IPackedFileDescriptor pSim in pfdSim)
@@ -423,13 +424,13 @@ namespace SimPe.Plugin.Tool.Action
 			}
 
 			Interfaces.Files.IPackedFileDescriptor[] pfdDna = pkg.FindFiles(
-				0xEBFEE33Fu
+				FileTypes.SDNA
 			); // get the existing SDNAs
 			Interfaces.Files.IPackedFileDescriptor[] pfdSco = pkg.FindFiles(
-				0x3053CF74u
+				FileTypes.SCOR
 			); // get the existing Scores
 			Interfaces.Files.IPackedFileDescriptor[] pfdWaF = pkg.FindFiles(
-				0xCD95548Eu
+				FileTypes.SWAF
 			); // get the wants & fears
 
 			foreach (Interfaces.Files.IPackedFileDescriptor pDna in pfdDna)

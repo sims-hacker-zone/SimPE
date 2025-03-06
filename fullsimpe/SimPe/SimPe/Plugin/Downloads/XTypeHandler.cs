@@ -3,19 +3,20 @@
 
 using System.Drawing;
 
+using SimPe.Data;
 using SimPe.PackedFiles.Cpf;
 
 namespace SimPe.Plugin.Downloads
 {
 	public class XTypeHandler : DefaultTypeHandler
 	{
-		static uint[] xtypes = new uint[]
+		static FileTypes[] xtypes = new FileTypes[]
 		{
-			Data.MetaData.XFLR,
-			Data.MetaData.XFNC,
-			Data.MetaData.XROF,
-			Data.MetaData.XOBJ,
-			Data.MetaData.XNGB,
+			Data.FileTypes.XFLR,
+			Data.FileTypes.XFNC,
+			Data.FileTypes.XROF,
+			Data.FileTypes.XOBJ,
+			Data.FileTypes.XNGB,
 		};
 
 		public XTypeHandler(
@@ -76,7 +77,7 @@ namespace SimPe.Plugin.Downloads
 			}
 
 			//this is a regular Object?
-			if (pkg.FindFiles(Data.MetaData.OBJD_FILE).Length > 0)
+			if (pkg.FindFiles(Data.FileTypes.OBJD).Length > 0)
 			{
 				cpf = null;
 				base.SetFromPackage(pkg);
@@ -91,7 +92,7 @@ namespace SimPe.Plugin.Downloads
 
 		protected void GetCpf(Interfaces.Files.IPackageFile pkg)
 		{
-			foreach (uint t in xtypes)
+			foreach (FileTypes t in xtypes)
 			{
 				Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(t);
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
@@ -174,7 +175,7 @@ namespace SimPe.Plugin.Downloads
 			{
 				//Get the Name of the Object
 				Interfaces.Files.IPackedFileDescriptor ctss = cpf.Package.FindFile(
-					cpf.GetSaveItem("stringsetrestypeid").UIntegerValue,
+					(FileTypes)cpf.GetSaveItem("stringsetrestypeid").UIntegerValue,
 					0,
 					cpf.GetSaveItem("stringsetgroupid").UIntegerValue,
 					cpf.GetSaveItem("stringsetid").UIntegerValue
@@ -313,25 +314,25 @@ namespace SimPe.Plugin.Downloads
 			}
 
 			//get Thumbnail Type
-			uint[] types = new uint[] { 0x8C311262, 0x8C31125E }; //floors, walls
+			FileTypes[] types = new FileTypes[] { FileTypes.THUMB_FLOOR, FileTypes.THUMB_WALL }; //floors, walls
 			if (fss == Data.XObjFunctionSubSort.Roof)
 			{
-				types = new uint[] { 0xCC489E46 };
+				types = new FileTypes[] { FileTypes.THUMB_ROOF };
 			}
 			else if (
 				fss == Data.XObjFunctionSubSort.Fence_Rail
 				|| fss == Data.XObjFunctionSubSort.Fence_Halfwall
 			)
 			{
-				types = new uint[] { 0xCC30CDF8 };
+				types = new FileTypes[] { FileTypes.THUMB_FENCE };
 			}
 			else if (fss == Data.XObjFunctionSubSort.Roof)
 			{
-				types = new uint[] { 0xCC489E46 };
+				types = new FileTypes[] { FileTypes.THUMB_ROOF };
 			}
 			else if (fss == Data.XObjFunctionSubSort.Terrain)
 			{
-				types = new uint[] { 0xEC3126C4 };
+				types = new FileTypes[] { FileTypes.THUMB_TERRAIN };
 				if (cpf.GetItem("texturetname") != null)
 				{
 					inst = Hashes.GetCrc32(
@@ -341,9 +342,9 @@ namespace SimPe.Plugin.Downloads
 					);
 				}
 			}
-			else if (cpf.FileDescriptor.Type == Data.MetaData.XNGB)
+			else if (cpf.FileDescriptor.Type == Data.FileTypes.XNGB)
 			{
-				types = new uint[] { 0x4D533EDD };
+				types = new FileTypes[] { FileTypes.THUMB_NHOBJ };
 				if (nthumbs == null)
 				{
 					nthumbs = Packages.File.LoadFromFile(

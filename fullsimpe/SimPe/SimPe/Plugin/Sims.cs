@@ -672,7 +672,7 @@ namespace SimPe.Plugin
 			lv.BeginUpdate();
 			lv.Items.Clear();
 			Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(
-				Data.MetaData.SIM_DESCRIPTION_FILE
+				Data.FileTypes.SDSC
 			);
 			try
 			{
@@ -737,7 +737,7 @@ namespace SimPe.Plugin
 		private bool realIsAdult(PackedFiles.Wrapper.ExtSDesc sdesc)
 		{
 			return sdesc.CharacterDescription.LifeSection
-				== Data.MetaData.LifeSections.Adult;
+				== LifeSections.Adult;
 		}
 
 		Interfaces.Files.IPackedFileDescriptor pfd;

@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 
+using SimPe.Extensions;
 using SimPe.Forms.MainUI;
 
 namespace SimPe.Actions.Default
@@ -120,7 +121,6 @@ namespace SimPe.Actions.Default
 						System.Windows.Forms.Application.DoEvents();
 						Packages.PackedFileDescriptor fii =
 							(Packages.PackedFileDescriptor)pfds[i];
-						Data.TypeAlias a = fii.TypeName;
 
 						fii.Path = null;
 						string path = System.IO.Path.Combine(selpath, fii.Path);

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 
+using SimPe.Data;
 using SimPe.PackedFiles.Picture;
 using SimPe.PackedFiles.Wrapper;
 
@@ -4523,7 +4524,7 @@ namespace SimPe.Plugin
 						Text = isTeenCareer ? "Career Editor (by Bidou) - Teen, Elder Career" : "Career Editor (by Bidou) - Adult Career";
 					}
 				}
-				Interfaces.Files.IPackedFileDescriptor bfd = this.package.FindFile(0x856DDBAC, 0, groupId, 1);
+				Interfaces.Files.IPackedFileDescriptor bfd = this.package.FindFile(FileTypes.IMG, 0, groupId, 1);
 				if (bfd != null)
 				{
 					Picture pic = new Picture();
@@ -4602,7 +4603,7 @@ namespace SimPe.Plugin
 
 		private Bcon getBcon(uint instance)
 		{
-			Interfaces.Files.IPackedFileDescriptor pfd = package.FindFile(0x42434F4E, 0, groupId, instance);
+			Interfaces.Files.IPackedFileDescriptor pfd = package.FindFile(FileTypes.BCON, 0, groupId, instance);
 			if (pfd == null)
 			{
 				return null;
@@ -4614,8 +4615,8 @@ namespace SimPe.Plugin
 		}
 		private bool makeBcon(uint instance, int lvls, string flname)
 		{
-			package.Add(package.NewDescriptor(0x42434F4E, 0, groupId, instance));
-			Interfaces.Files.IPackedFileDescriptor pfd = package.FindFile(0x42434F4E, 0, groupId, instance);
+			package.Add(package.NewDescriptor(FileTypes.BCON, 0, groupId, instance));
+			Interfaces.Files.IPackedFileDescriptor pfd = package.FindFile(FileTypes.BCON, 0, groupId, instance);
 			if (pfd == null)
 			{
 				return false;
@@ -4651,11 +4652,11 @@ namespace SimPe.Plugin
 
 		private StrWrapper getCtss()
 		{
-			return getStr(package.FindFiles(Data.MetaData.CTSS_FILE)[0]);
+			return getStr(package.FindFiles(Data.FileTypes.CTSS)[0]);
 		}
 		private StrWrapper getStr(uint instance)
 		{
-			return getStr(package.FindFile(0x53545223, 0, groupId, instance));
+			return getStr(package.FindFile(FileTypes.STR, 0, groupId, instance));
 		}
 		private StrWrapper getStr(Interfaces.Files.IPackedFileDescriptor pfd)
 		{
@@ -4700,7 +4701,7 @@ namespace SimPe.Plugin
 
 			Bhav bhav;
 
-			foreach (Interfaces.Files.IPackedFileDescriptor p in package.FindFiles(0x42484156))
+			foreach (Interfaces.Files.IPackedFileDescriptor p in package.FindFiles(FileTypes.BHAV))
 			{
 				if (p.MarkForDelete || p.Invalid || p.Group != groupId)
 				{

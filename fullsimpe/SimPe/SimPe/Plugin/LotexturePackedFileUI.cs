@@ -3,6 +3,7 @@
 
 using System;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -39,7 +40,7 @@ namespace SimPe.Plugin
 			}
 			else
 			{
-				if (Wrapper.FileDescriptor.Type == 0x4B58975B)
+				if (Wrapper.FileDescriptor.Type == FileTypes.LTTX)
 				{
 					HeaderText = "Lot Texture Reader";
 					hoodtype = Wrapper.Hoodtexture;
@@ -71,7 +72,7 @@ namespace SimPe.Plugin
 						}
 					}
 				}
-				else if (Wrapper.FileDescriptor.Type == 0xCDB8BDC4)
+				else if (Wrapper.FileDescriptor.Type == FileTypes.SMEM)
 				{
 					HeaderText = "Single Sim Memories";
 					rtLotTex.Text =
@@ -174,7 +175,7 @@ namespace SimPe.Plugin
 
 		public override void OnCommit()
 		{
-			if (Wrapper.FileDescriptor.Type == 0x4B58975B)
+			if (Wrapper.FileDescriptor.Type == FileTypes.LTTX)
 			{
 				Updatey();
 				base.OnCommit();

@@ -261,7 +261,7 @@ namespace SimPe
 		{
 			PathProvider.Global.NvidiaDDSPath = tbdds.Text;
 			Helper.WindowsRegistry.LanguageCode =
-				(Data.MetaData.Languages)cblang.SelectedIndex + 1;
+				(Data.Languages)cblang.SelectedIndex + 1;
 			Helper.WindowsRegistry.GameDebug = cbdebug.Checked;
 			Helper.WindowsRegistry.AutoBackup = cbautobak.Checked;
 			Helper.WindowsRegistry.BlurNudity = PathProvider.Global.EPInstalled >= 18 || cbblur.Checked;

@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Wrapper
@@ -91,13 +92,7 @@ namespace SimPe.PackedFiles.Wrapper
 	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
-	public class SRel
-		: AbstractWrapper //Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
-			,
-			IFileWrapper //This Interface is used when loading a File
-			,
-			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
-									  //,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
+	public class SRel : AbstractWrapper, IFileWrapper, IFileWrapperSaveExtension
 	{
 		#region Attribute
 		/// <summary>
@@ -142,9 +137,9 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// The Type of Family Relationship the Sim has to another
 		/// </summary>
-		public Data.MetaData.RelationshipTypes FamilyRelation
+		public Data.RelationshipTypes FamilyRelation
 		{
-			get => (Data.MetaData.RelationshipTypes)GetValue(3);
+			get => (Data.RelationshipTypes)GetValue(3);
 			set => PutValue(3, (int)value);
 		}
 
@@ -282,18 +277,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				///
-				/// TODO: Change or Remove the Filetypes
-				///
-
-				uint[] types = { Data.MetaData.RELATION_FILE };
-				return types;
-			}
-		}
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.SREL };
 
 		#endregion
 	}

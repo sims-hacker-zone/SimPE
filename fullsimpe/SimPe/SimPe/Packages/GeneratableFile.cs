@@ -5,6 +5,7 @@ using System.Collections;
 using System.IO;
 
 using SimPe.Collections.IO;
+using SimPe.Data;
 using SimPe.Interfaces.Files;
 
 namespace SimPe.Packages
@@ -257,9 +258,9 @@ namespace SimPe.Packages
 			);
 			filelist = new PackedFileDescriptor
 			{
-				Type = Data.MetaData.DIRECTORY_FILE,
+				Type = Data.FileTypes.CLST,
 				LongInstance = 0x286B1F03,
-				Group = Data.MetaData.DIRECTORY_FILE
+				Group = (uint)Data.FileTypes.CLST
 			};
 
 			filelistfile.FileDescriptor = filelist;
@@ -317,7 +318,7 @@ namespace SimPe.Packages
 					continue;
 				}
 
-				if (pfd.Type == Data.MetaData.DIRECTORY_FILE)
+				if (pfd.Type == Data.FileTypes.CLST)
 				{
 					continue;
 				}
@@ -451,8 +452,8 @@ namespace SimPe.Packages
 				filelist = new PackedFileDescriptor
 				{
 					instance = 0x286B1F03,
-					Group = Data.MetaData.DIRECTORY_FILE,
-					Type = Data.MetaData.DIRECTORY_FILE
+					Group = (uint)Data.FileTypes.CLST,
+					Type = Data.FileTypes.CLST
 				};
 			}
 
@@ -526,12 +527,12 @@ namespace SimPe.Packages
 			long pos = writer.BaseStream.Position;
 			foreach (PackedFileDescriptor item in tmpindex)
 			{
-				writer.Write(item.Type);
+				writer.Write((uint)item.Type);
 				writer.Write(item.Group);
 				writer.Write(item.Instance);
 				if (
 					Header.IsVersion0101
-					&& (Header.IndexType == Data.MetaData.IndexTypes.ptLongFileIndex)
+					&& (Header.IndexType == Data.IndexTypes.ptLongFileIndex)
 				)
 				{
 					writer.Write(item.SubType);

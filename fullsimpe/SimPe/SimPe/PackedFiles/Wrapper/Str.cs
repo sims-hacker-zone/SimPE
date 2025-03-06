@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Collections;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Wrapper
@@ -13,13 +14,7 @@ namespace SimPe.PackedFiles.Wrapper
 	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
-	public class Str
-		: AbstractWrapper //Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
-			,
-			IFileWrapper //This Interface is used when loading a File
-			,
-			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
-									  //,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
+	public class Str : AbstractWrapper, IFileWrapper, IFileWrapperSaveExtension
 	{
 		#region Attributes
 		/// <summary>
@@ -61,7 +56,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns /Sets the Format Code
 		/// </summary>
-		public Data.MetaData.FormatCode Format
+		public Data.FormatCode Format
 		{
 			get; set; // should check it's valid
 		}
@@ -167,7 +162,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <returns>List of Strings</returns>
 		public StrItemList LanguageItems(StrLanguage l)
 		{
-			return l == null ? new StrItemList() : LanguageItems((Data.MetaData.Languages)l.Id);
+			return l == null ? new StrItemList() : LanguageItems((Data.Languages)l.Id);
 		}
 
 		/// <summary>
@@ -175,7 +170,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		/// <param name="l">the Language</param>
 		/// <returns>List of Strings</returns>
-		public StrItemList LanguageItems(Data.MetaData.Languages l)
+		public StrItemList LanguageItems(Data.Languages l)
 		{
 			StrItemList items = (StrItemList)Lines[(byte)l] ?? new StrItemList();
 
@@ -187,7 +182,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		/// <param name="l">the Language</param>
 		/// <returns>List of Strings</returns>
-		public StrToken FallbackedLanguageItem(Data.MetaData.Languages l, int index)
+		public StrToken FallbackedLanguageItem(Data.Languages l, int index)
 		{
 			StrItemList list = LanguageItems(l);
 			StrToken name = list.Length > index ? list[index] : new StrToken(0, 0, "", "");
@@ -210,17 +205,17 @@ namespace SimPe.PackedFiles.Wrapper
 		/// </summary>
 		/// <param name="l">the Language</param>
 		/// <returns>List of Strings</returns>
-		public StrItemList FallbackedLanguageItems(Data.MetaData.Languages l)
+		public StrItemList FallbackedLanguageItems(Data.Languages l)
 		{
-			if (l == Data.MetaData.Languages.English)
+			if (l == Data.Languages.English)
 			{
 				return LanguageItems(l);
 			}
 
 			StrItemList real = (StrItemList)LanguageItems(l).Clone();
-			StrItemList fallback = Languages.Contains(Data.MetaData.Languages.English)
-				? LanguageItems(Data.MetaData.Languages.English)
-				: Languages.Count == 1 ? LanguageItems(Languages[0]) : LanguageItems(Data.MetaData.Languages.English);
+			StrItemList fallback = Languages.Contains(Data.Languages.English)
+				? LanguageItems(Data.Languages.English)
+				: Languages.Count == 1 ? LanguageItems(Languages[0]) : LanguageItems(Data.Languages.English);
 
 			for (int i = 0; i < fallback.Length; i++)
 			{
@@ -246,7 +241,7 @@ namespace SimPe.PackedFiles.Wrapper
 			: base()
 		{
 			filename = new byte[64];
-			Format = Data.MetaData.FormatCode.normal;
+			Format = Data.FormatCode.normal;
 			Lines = new Hashtable();
 			this.limit = limit;
 		}
@@ -258,7 +253,7 @@ namespace SimPe.PackedFiles.Wrapper
 			: base()
 		{
 			filename = new byte[64];
-			Format = Data.MetaData.FormatCode.normal;
+			Format = Data.FormatCode.normal;
 			Lines = new Hashtable();
 			limit = 0;
 		}
@@ -343,9 +338,9 @@ namespace SimPe.PackedFiles.Wrapper
 
 			byte[] fi = reader.ReadBytes(0x40);
 
-			Data.MetaData.FormatCode fo = (Data.MetaData.FormatCode)
+			Data.FormatCode fo = (Data.FormatCode)
 				reader.ReadUInt16();
-			if (fo != Data.MetaData.FormatCode.normal)
+			if (fo != Data.FormatCode.normal)
 			{
 				return;
 			}
@@ -436,15 +431,15 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Returns a list of File Types this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes
+		public FileTypes[] AssignableTypes
 		{
 			get
 			{
-				uint[] types =
+				FileTypes[] types =
 				{
-					0x53545223, //STR#
-					0x54544173, //Pie String (TTAB)
-					0x43545353, //CTSS
+					FileTypes.STR,
+					FileTypes.TTAs,
+					FileTypes.CTSS,
 				};
 
 				return types;

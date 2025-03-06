@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
+using SimPe.Data;
 using SimPe.Interfaces.Scenegraph;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Nmap;
@@ -105,7 +106,7 @@ namespace SimPe.Plugin
 			List<string> names = new List<string>();
 
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pkg.FindFile(
-				Data.MetaData.STRING_FILE,
+				FileTypes.STR,
 				0,
 				0x85
 			))
@@ -131,7 +132,7 @@ namespace SimPe.Plugin
 				}
 			}
 
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pkg.FindFiles(Data.MetaData.MMAT))
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pkg.FindFiles(FileTypes.MMAT))
 			{
 				Cpf cpf = new Cpf();
 				cpf.ProcessData(pfd, pkg);
@@ -171,8 +172,8 @@ namespace SimPe.Plugin
 				IScenegraphFileIndexItem item =
 					FileTableBase.FileIndex.FindFileByName(
 						modelnames[i],
-						Data.MetaData.CRES,
-						Data.MetaData.LOCAL_GROUP,
+						FileTypes.CRES,
+						MetaData.LOCAL_GROUP,
 						true
 					);
 
@@ -207,7 +208,7 @@ namespace SimPe.Plugin
 		)
 		{
 			//if we load a CRES, we also have to add the Modelname!
-			if (rcol.FileDescriptor.Type == Data.MetaData.CRES)
+			if (rcol.FileDescriptor.Type == FileTypes.CRES)
 			{
 				modelnames.Add(rcol.FileName.Trim().ToLower());
 			}
@@ -227,7 +228,7 @@ namespace SimPe.Plugin
 				{
 					if (setup != null
 						&& setup.KeepOriginalMesh
-						&& (pfd.Type == Data.MetaData.GMND || pfd.Type == Data.MetaData.GMDC))
+						&& (pfd.Type == FileTypes.GMND || pfd.Type == FileTypes.GMDC))
 					{
 						continue;
 					}
@@ -384,8 +385,8 @@ namespace SimPe.Plugin
 						IScenegraphFileIndexItem item =
 							FileTableBase.FileIndex.FindFileByName(
 								slavename,
-								Data.MetaData.TXMT,
-								Data.MetaData.LOCAL_GROUP,
+								FileTypes.TXMT,
+								MetaData.LOCAL_GROUP,
 								true
 							);
 						if (item != null)
@@ -421,7 +422,7 @@ namespace SimPe.Plugin
 			{
 				GenericRcol rcol = files[i];
 
-				if (rcol.FileDescriptor.Type == Data.MetaData.TXMT)
+				if (rcol.FileDescriptor.Type == FileTypes.TXMT)
 				{
 					AddSlaveTxmts(
 						modelnames,
@@ -448,12 +449,12 @@ namespace SimPe.Plugin
 			List<GenericRcol> files = new List<GenericRcol>();
 			List<IScenegraphFileIndexItem> items = new List<IScenegraphFileIndexItem>();
 
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pkg.FindFiles(Data.MetaData.TXMT))
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pkg.FindFiles(FileTypes.TXMT))
 			{
 				GenericRcol rcol = new GenericRcol(null, false);
 				rcol.ProcessData(pfd, pkg);
 
-				if (rcol.FileDescriptor.Type == Data.MetaData.TXMT)
+				if (rcol.FileDescriptor.Type == FileTypes.TXMT)
 				{
 					AddSlaveTxmts(
 						new List<string>(),
@@ -519,7 +520,7 @@ namespace SimPe.Plugin
 			LoadCache();
 
 			IEnumerable<IScenegraphFileIndexItem> items =
-				FileTableBase.FileIndex.FindFile(Data.MetaData.MMAT, true);
+				FileTableBase.FileIndex.FindFile(FileTypes.MMAT, true);
 			List<IScenegraphFileIndexItem> itemlist = new List<IScenegraphFileIndexItem>();
 			ArrayList contentlist = new ArrayList();
 			List<string> defaultfam = new List<string>();
@@ -587,8 +588,8 @@ namespace SimPe.Plugin
 								FileTableBase.FileIndex.FindFileByName(
 									mmat.GetSaveItem("name").StringValue
 										+ "_txmt",
-									Data.MetaData.TXMT,
-									Data.MetaData.LOCAL_GROUP,
+									FileTypes.TXMT,
+									MetaData.LOCAL_GROUP,
 									true
 								);
 							if (txmtitem != null)
@@ -643,7 +644,7 @@ namespace SimPe.Plugin
 								if (
 									pkg.FindFile(
 										txmtname,
-										Data.MetaData.TXMT
+										FileTypes.TXMT
 									).Length > 0
 								)
 								{
@@ -705,7 +706,7 @@ namespace SimPe.Plugin
 
 			blockname = blockname.Trim().ToLower();
 			Interfaces.Files.IPackedFileDescriptor[] gmnds = pkg.FindFiles(
-				Data.MetaData.GMND
+				FileTypes.GMND
 			);
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in gmnds)
 			{
@@ -772,7 +773,7 @@ namespace SimPe.Plugin
 			Hashtable map = new Hashtable();
 			foreach (GenericRcol gmnd in files)
 			{
-				if (gmnd.FileDescriptor.Type == Data.MetaData.GMND)
+				if (gmnd.FileDescriptor.Type == FileTypes.GMND)
 				{
 					GetSlaveSubsets(gmnd, map);
 				}
@@ -789,7 +790,7 @@ namespace SimPe.Plugin
 		{
 			Hashtable map = new Hashtable();
 			Interfaces.Files.IPackedFileDescriptor[] gmnds = pkg.FindFiles(
-				Data.MetaData.GMND
+				FileTypes.GMND
 			);
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in gmnds)
 			{
@@ -814,7 +815,7 @@ namespace SimPe.Plugin
 			}
 
 			Interfaces.Files.IPackedFileDescriptor[] mmats = pkg.FindFiles(
-				Data.MetaData.MMAT
+				FileTypes.MMAT
 			);
 			Hashtable ht = new Hashtable();
 
@@ -921,7 +922,7 @@ namespace SimPe.Plugin
 			List<string> list = new List<string>();
 
 			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
-				Data.MetaData.GMND
+				FileTypes.GMND
 			);
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
@@ -970,7 +971,7 @@ namespace SimPe.Plugin
 		{
 			ArrayList list = new ArrayList();
 			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFile(
-				Data.MetaData.STRING_FILE,
+				FileTypes.STR,
 				0,
 				instance.Instance
 			);
@@ -994,7 +995,7 @@ namespace SimPe.Plugin
 							instance.Type,
 							Hashes.GetHashGroupFromName(
 								si.Title,
-								Data.MetaData.GLOBAL_GROUP
+								MetaData.GLOBAL_GROUP
 							),
 							true
 						);
@@ -1081,9 +1082,9 @@ namespace SimPe.Plugin
 			ArrayList foundnames = new ArrayList();
 			foreach (
 				IScenegraphFileIndexItem namemap in FileTableBase.FileIndex.FindFile(
-					Data.MetaData.NAME_MAP,
+					FileTypes.NMAP,
 					0x52737256,
-					Data.MetaData.TXMT,
+					(ulong)FileTypes.TXMT,
 					null
 				)
 			)
@@ -1099,7 +1100,7 @@ namespace SimPe.Plugin
 						IScenegraphFileIndexItem item =
 							FileTableBase.FileIndex.FindFileByName(
 								name,
-								Data.MetaData.TXMT,
+								FileTypes.TXMT,
 								ni.Group,
 								true
 							);
@@ -1119,7 +1120,7 @@ namespace SimPe.Plugin
 			{
 				string nmn = modelname + "_" + s + "_wallmask_txmt";
 
-				Interfaces.Scenegraph.IScenegraphFileIndexItem item = FileTable.FileIndex.FindFileByName(nmn, Data.MetaData.TXMT, Data.MetaData.LOCAL_GROUP, true);
+				Interfaces.Scenegraph.IScenegraphFileIndexItem item = FileTable.FileIndex.FindFileByName(nmn, Data.FileTypes.TXMT, Data.MetaData.LOCAL_GROUP, true);
 
 				if (item!=null) txmt.Add(item);
 			}*/
@@ -1178,8 +1179,8 @@ namespace SimPe.Plugin
 			IScenegraphFileIndexItem item =
 				FileTableBase.FileIndex.FindFileByName(
 					name,
-					Data.MetaData.ANIM,
-					Data.MetaData.LOCAL_GROUP,
+					FileTypes.ANIM,
+					MetaData.LOCAL_GROUP,
 					true
 				);
 			if (item != null)
@@ -1229,7 +1230,7 @@ namespace SimPe.Plugin
 		public void AddFrom3IDR(Interfaces.Files.IPackageFile pkg)
 		{
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pkg.FindFiles(
-				Data.MetaData.REF_FILE
+				FileTypes.THREE_IDR
 			))
 			{
 				ThreeIdr re = new ThreeIdr();
@@ -1243,7 +1244,7 @@ namespace SimPe.Plugin
 					{
 						try
 						{
-							// if (item.FileDescriptor.Type == Data.MetaData.STRING_FILE)
+							// if (item.FileDescriptor.Type == Data.FileTypes.STR)
 							GenericRcol sub = new GenericRcol(null, false);
 							sub.ProcessData(item);
 							LoadReferenced(
@@ -1290,44 +1291,44 @@ namespace SimPe.Plugin
 				cpf.ProcessData(pfd, pkg);
 
 				//xobj
-				AddFromXml(cpf.GetItem("material"), "_txmt", Data.MetaData.TXMT);
+				AddFromXml(cpf.GetItem("material"), "_txmt", FileTypes.TXMT);
 
 				//hood object
-				if (pfd.Type == Data.MetaData.XNGB)
+				if (pfd.Type == FileTypes.XNGB)
 				{
-					AddFromXml(cpf.GetItem("modelname"), "_cres", Data.MetaData.CRES);
+					AddFromXml(cpf.GetItem("modelname"), "_cres", FileTypes.CRES);
 				}
 
 				//fences
-				AddFromXml(cpf.GetItem("diagrail"), "_cres", Data.MetaData.CRES);
-				AddFromXml(cpf.GetItem("post"), "_cres", Data.MetaData.CRES);
-				AddFromXml(cpf.GetItem("rail"), "_cres", Data.MetaData.CRES);
-				AddFromXml(cpf.GetItem("diagrail"), "_txmt", Data.MetaData.TXMT);
-				AddFromXml(cpf.GetItem("post"), "_txmt", Data.MetaData.TXMT);
-				AddFromXml(cpf.GetItem("rail"), "_txmt", Data.MetaData.TXMT);
+				AddFromXml(cpf.GetItem("diagrail"), "_cres", FileTypes.CRES);
+				AddFromXml(cpf.GetItem("post"), "_cres", FileTypes.CRES);
+				AddFromXml(cpf.GetItem("rail"), "_cres", FileTypes.CRES);
+				AddFromXml(cpf.GetItem("diagrail"), "_txmt", FileTypes.TXMT);
+				AddFromXml(cpf.GetItem("post"), "_txmt", FileTypes.TXMT);
+				AddFromXml(cpf.GetItem("rail"), "_txmt", FileTypes.TXMT);
 
 				//terrain
-				AddFromXml(cpf.GetItem("texturetname"), "_txtr", Data.MetaData.TXTR);
+				AddFromXml(cpf.GetItem("texturetname"), "_txtr", FileTypes.TXTR);
 				AddFromXml(
 					cpf.GetItem("texturetname"),
 					"_detail_txtr",
-					Data.MetaData.TXTR
+					FileTypes.TXTR
 				);
 				AddFromXml(
 					cpf.GetItem("texturetname"),
 					"-bump_txtr",
-					Data.MetaData.TXTR
+					FileTypes.TXTR
 				);
 
 				//roof
-				AddFromXml(cpf.GetItem("textureedges"), "_txtr", Data.MetaData.TXTR);
-				AddFromXml(cpf.GetItem("texturetop"), "_txtr", Data.MetaData.TXTR);
-				AddFromXml(cpf.GetItem("texturetopbump"), "_txtr", Data.MetaData.TXTR);
-				AddFromXml(cpf.GetItem("texturetrim"), "_txtr", Data.MetaData.TXTR);
-				AddFromXml(cpf.GetItem("textureunder"), "_txtr", Data.MetaData.TXTR);
+				AddFromXml(cpf.GetItem("textureedges"), "_txtr", FileTypes.TXTR);
+				AddFromXml(cpf.GetItem("texturetop"), "_txtr", FileTypes.TXTR);
+				AddFromXml(cpf.GetItem("texturetopbump"), "_txtr", FileTypes.TXTR);
+				AddFromXml(cpf.GetItem("texturetrim"), "_txtr", FileTypes.TXTR);
+				AddFromXml(cpf.GetItem("textureunder"), "_txtr", FileTypes.TXTR);
 
 				AddFromXml(FileTableBase.FileIndex.FindFile(
-						cpf.GetSaveItem("stringsetrestypeid").UIntegerValue,
+						(FileTypes)cpf.GetSaveItem("stringsetrestypeid").UIntegerValue,
 						cpf.GetSaveItem("stringsetgroupid").UIntegerValue,
 						cpf.GetSaveItem("stringsetid").UIntegerValue,
 						null
@@ -1341,7 +1342,7 @@ namespace SimPe.Plugin
 		protected void AddFromXml(
 			CpfItem item,
 			string prefix,
-			uint type
+			FileTypes type
 		)
 		{
 			if (item == null)
@@ -1355,12 +1356,12 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Add Resources referenced from XML Files
 		/// </summary>
-		protected void AddFromXml(string name, uint type)
+		protected void AddFromXml(string name, FileTypes type)
 		{
 			AddFromXml(FileTableBase.FileIndex.FindFileByName(
 					name,
 					type,
-					Data.MetaData.LOCAL_GROUP,
+					MetaData.LOCAL_GROUP,
 					true
 				));
 		}

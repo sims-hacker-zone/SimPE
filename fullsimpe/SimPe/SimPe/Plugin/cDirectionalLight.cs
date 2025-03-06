@@ -1,5 +1,6 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using SimPe.Data;
 namespace SimPe.Plugin
 {
 	/// <summary>
@@ -69,7 +70,7 @@ namespace SimPe.Plugin
 			: base(parent)
 		{
 			version = 1;
-			BlockID = 0xC9C81BA3;
+			BlockID = (uint)FileTypes.LAMB;
 
 			StandardLightBase = new StandardLightBase(null);
 			sgres = new SGResource(null);

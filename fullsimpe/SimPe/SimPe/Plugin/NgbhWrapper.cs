@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Collections;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -23,13 +24,7 @@ namespace SimPe.Plugin
 	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
-	public class Ngbh
-		: AbstractWrapper //Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
-			,
-			IFileWrapper //This Interface is used when loading a File
-			,
-			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
-									  //,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
+	public class Ngbh : AbstractWrapper, IFileWrapper, IFileWrapperSaveExtension
 	{
 		#region Attributes
 		uint version;
@@ -376,17 +371,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes
-		{
-			get
-			{
-				uint[] types =
-				{
-					0x4E474248, //handles the NGBH File
-				};
-				return types;
-			}
-		}
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.NGBH };
 
 		#endregion
 	}

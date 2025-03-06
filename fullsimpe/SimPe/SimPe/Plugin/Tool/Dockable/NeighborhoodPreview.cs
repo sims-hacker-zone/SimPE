@@ -307,7 +307,7 @@ namespace SimPe.Plugin.Tool.Dockable
 					{
 						label2.Visible = true;
 						lbPop.Visible = true;
-						lbPop.Text = pkg.FindFiles(Data.MetaData.SIM_DESCRIPTION_FILE)
+						lbPop.Text = pkg.FindFiles(Data.FileTypes.SDSC)
 							.Length.ToString();
 					}
 					else
@@ -407,7 +407,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				if (ctss == null)
 				{
 					ctss = Package.FindFile(
-						Data.MetaData.CTSS_FILE,
+						Data.FileTypes.CTSS,
 						0,
 						Data.MetaData.LOCAL_GROUP,
 						1

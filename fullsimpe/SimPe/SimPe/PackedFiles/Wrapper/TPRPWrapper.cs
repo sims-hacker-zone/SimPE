@@ -3,6 +3,8 @@
 using System;
 using System.Collections.Generic;
 
+using SimPe.Data;
+using SimPe.Extensions;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.Wrapper
@@ -14,16 +16,7 @@ namespace SimPe.PackedFiles.Wrapper
 	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
-	public class TPRP
-		: pjse.ExtendedWrapper<
-			TPRPItem,
-			TPRP
-		> //AbstractWrapper				//Implements some of the default Behaviur of a Handler, you can Implement yourself if you want more flexibility!
-			,
-			IFileWrapper //This Interface is used when loading a File
-			,
-			IFileWrapperSaveExtension //This Interface (if available) will be used to store a File
-									  //,IPackedFileProperties		//This Interface can be used by thirdparties to retrive the FIleproperties, however you don't have to implement it!
+	public class TPRP : pjse.ExtendedWrapper<TPRPItem, TPRP>, IFileWrapper, IFileWrapperSaveExtension
 	{
 		#region Attributes
 		/// <summary>
@@ -34,7 +27,7 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <summary>
 		/// Header of the File
 		/// </summary>
-		private uint[] header = { 0x54505250, 0x0000004E, 0x00000000 }; // 'TPRP', version, 0
+		private uint[] header = { (uint)FileTypes.TPRP, 0x0000004E, 0x00000000 }; // 'TPRP', version, 0
 
 		/// <summary>
 		/// Count of Param labels
@@ -307,7 +300,7 @@ namespace SimPe.PackedFiles.Wrapper
 			header[0] = reader.ReadUInt32();
 			header[1] = reader.ReadUInt32();
 			header[2] = reader.ReadUInt32();
-			if (header[0] != 0x54505250)
+			if (header[0] != (uint)FileTypes.TPRP)
 			{
 				duff = true;
 				return;
@@ -350,13 +343,11 @@ namespace SimPe.PackedFiles.Wrapper
 
 		#endregion
 
-		public const uint TPRPtype = 0x54505250;
-
 		#region IFileWrapper Member
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes => new uint[] { TPRPtype };
+		public FileTypes[] AssignableTypes => new FileTypes[] { FileTypes.TPRP };
 
 		/// <summary>
 		/// Returns the Signature that can be used to identify Files processable with this Plugin
@@ -367,11 +358,11 @@ namespace SimPe.PackedFiles.Wrapper
 
 		#region IFileWrapperSaveExtension Member
 		//all covered by AbstractWrapper
-		protected override string GetResourceName(Data.TypeAlias ta)
+		protected override string GetResourceName(FileTypeInformation fti)
 		{
 			if (!Helper.FileFormat)
 			{
-				return base.GetResourceName(ta);
+				return base.GetResourceName(fti);
 			}
 
 			Interfaces.Files.IPackedFile pf = Package.Read(FileDescriptor);

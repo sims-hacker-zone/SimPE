@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 using Ambertation.Windows.Forms;
 
+using SimPe.Data;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Wrapper;
 
@@ -1087,7 +1088,7 @@ namespace SimPe.Plugin
 		{
 			StartSearch(
 				new SeekerFunction(SdscSearch),
-				package.FindFiles(Data.MetaData.SIM_DESCRIPTION_FILE)
+				package.FindFiles(Data.FileTypes.SDSC)
 			);
 		}
 
@@ -1119,7 +1120,7 @@ namespace SimPe.Plugin
 		{
 			StartSearch(
 				new SeekerFunction(BhavSearch),
-				package.FindFiles(Data.MetaData.BHAV_FILE)
+				package.FindFiles(Data.FileTypes.BHAV)
 			);
 		}
 
@@ -1161,8 +1162,8 @@ namespace SimPe.Plugin
 			Interfaces.Files.IPackedFileDescriptor[] pfds =
 				(Interfaces.Files.IPackedFileDescriptor[])
 					Helper.Merge(
-						package.FindFiles(0xEBCF3E27),
-						package.FindFiles(0x4C697E5A),
+						package.FindFiles(FileTypes.GZPS),
+						package.FindFiles(FileTypes.MMAT),
 						typeof(Interfaces.Files.IPackedFileDescriptor)
 					);
 			StartSearch(new SeekerFunction(GzpsSearch), pfds);
@@ -1174,7 +1175,7 @@ namespace SimPe.Plugin
 		)
 		{
 			Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(
-				Data.MetaData.OBJD_FILE
+				Data.FileTypes.OBJD
 			);
 			StartSearch(new SeekerFunction(GuidSearch), pfds);
 		}

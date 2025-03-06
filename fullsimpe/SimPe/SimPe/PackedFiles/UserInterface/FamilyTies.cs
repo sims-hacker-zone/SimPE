@@ -18,7 +18,7 @@ namespace SimPe.PackedFiles.UserInterface
 			form.cballtieablesims.Items.Clear();
 			form.cballtieablesims.Sorted = false;
 			Interfaces.Files.IPackedFileDescriptor[] pfds = famt.Package.FindFiles(
-				MetaData.SIM_DESCRIPTION_FILE
+				FileTypes.SDSC
 			);
 			Wrapper.SDesc sdesc = new Wrapper.SDesc(
 				famt.NameProvider,

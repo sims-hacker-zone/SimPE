@@ -4,6 +4,7 @@
 using System;
 using System.Windows.Forms;
 
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -50,7 +51,7 @@ namespace SimPe.Plugin
 					btDown.Visible =
 					btMove.Visible =
 						true;
-				btBhave.Visible = Wrapper.SiblingResource(0x42484156) != null;
+				btBhave.Visible = Wrapper.SiblingResource(FileTypes.BHAV) != null;
 				Comment2.Width = listLast.Width - 105;
 				CanCommit = true;
 			}
@@ -378,7 +379,7 @@ namespace SimPe.Plugin
 		private void btBhave_Click(object sender, EventArgs e)
 		{
 			PackedFiles.Wrapper.Bhav bhave = (PackedFiles.Wrapper.Bhav)
-				Wrapper.SiblingResource(0x42484156);
+				Wrapper.SiblingResource(FileTypes.BHAV);
 			if (bhave == null)
 			{
 				return;

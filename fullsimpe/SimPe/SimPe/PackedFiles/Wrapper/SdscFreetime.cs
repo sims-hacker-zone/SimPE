@@ -180,12 +180,12 @@ namespace SimPe.PackedFiles.Wrapper
 			StoreAspirations();
 		}
 
-		Data.MetaData.AspirationTypes pa;
+		Data.AspirationTypes pa;
 
 		protected void LoadAspirations()
 		{
-			pa = Data.MetaData.AspirationTypes.Nothing;
-			SecondaryAspiration = Data.MetaData.AspirationTypes.Nothing;
+			pa = Data.AspirationTypes.Nothing;
+			SecondaryAspiration = Data.AspirationTypes.Nothing;
 			if (parent == null)
 			{
 				return;
@@ -198,7 +198,7 @@ namespace SimPe.PackedFiles.Wrapper
 				return;
 			}
 
-			Data.MetaData.AspirationTypes[] asps = aspeditor.LoadAspirations(
+			Data.AspirationTypes[] asps = aspeditor.LoadAspirations(
 				parent
 			);
 
@@ -236,8 +236,8 @@ if (pa == SimPe.Data.MetaData.AspirationTypes.Nothing)
 	sa = SimPe.Data.MetaData.AspirationTypes.Nothing;
 }
 */
-			Data.MetaData.AspirationTypes[] asps =
-				new Data.MetaData.AspirationTypes[] { pa, SecondaryAspiration };
+			Data.AspirationTypes[] asps =
+				new Data.AspirationTypes[] { pa, SecondaryAspiration };
 			aspeditor.StoreAspirations(asps, parent);
 		}
 
@@ -245,7 +245,7 @@ if (pa == SimPe.Data.MetaData.AspirationTypes.Nothing)
 		/// The return value of this attribute is always valid,
 		/// no matter which version the loaded SDSC was
 		/// </remarks>
-		public Data.MetaData.AspirationTypes PrimaryAspiration
+		public Data.AspirationTypes PrimaryAspiration
 		{
 			get => parent == null ? pa : (int)parent.Version >= (int)SDescVersions.Freetime ? pa : parent.CharacterDescription.Aspiration;
 			set
@@ -261,7 +261,7 @@ if (pa == SimPe.Data.MetaData.AspirationTypes.Nothing)
 			}
 		}
 
-		public Data.MetaData.AspirationTypes SecondaryAspiration
+		public Data.AspirationTypes SecondaryAspiration
 		{
 			get; set;
 		}

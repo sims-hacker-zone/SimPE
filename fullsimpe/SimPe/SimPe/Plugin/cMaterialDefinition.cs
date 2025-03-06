@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
+using SimPe.Data;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Scenegraph;
 
@@ -54,7 +55,7 @@ namespace SimPe.Plugin
 			Properties = new MaterialDefinitionProperty[0];
 			Listing = new string[0];
 			sgres = new SGResource(null);
-			BlockID = 0x49596978;
+			BlockID = (uint)FileTypes.TXMT;
 			FileDescription = "";
 			MatterialType = "";
 		}
@@ -333,7 +334,7 @@ namespace SimPe.Plugin
 			refmap["TXTR"] = (from name in Listing
 							  select ScenegraphHelper.BuildPfd(
 										  name + "_txtr",
-										  ScenegraphHelper.TXTR,
+										  FileTypes.TXTR,
 										  parentgroup
 									  )).ToList();
 
@@ -344,7 +345,7 @@ namespace SimPe.Plugin
 				{
 					ScenegraphHelper.BuildPfd(
 						refname + "_txtr",
-						ScenegraphHelper.TXTR,
+						FileTypes.TXTR,
 						parentgroup
 					)
 				};
@@ -357,7 +358,7 @@ namespace SimPe.Plugin
 				{
 					ScenegraphHelper.BuildPfd(
 						refname + "_txtr",
-						ScenegraphHelper.TXTR,
+						FileTypes.TXTR,
 						parentgroup
 					)
 				};
@@ -370,7 +371,7 @@ namespace SimPe.Plugin
 				{
 					ScenegraphHelper.BuildPfd(
 						refname + "_txtr",
-						ScenegraphHelper.TXTR,
+						FileTypes.TXTR,
 						parentgroup
 					)
 				};
@@ -404,7 +405,7 @@ namespace SimPe.Plugin
 					list.Add(
 						ScenegraphHelper.BuildPfd(
 							refname,
-							ScenegraphHelper.TXTR,
+							FileTypes.TXTR,
 							parentgroup
 						)
 					);

@@ -26,11 +26,6 @@ namespace SimPe.Packages
 	public class File : IPackageFile, IDisposable
 	{
 		/// <summary>
-		/// The Type ID for CompressedFile Lists
-		/// </summary>
-		public const uint FILELIST_TYPE = 0xE86B1EEF;
-
-		/// <summary>
 		/// The Binary reader that has opened the .Package file
 		/// </summary>
 		protected BinaryReader reader;
@@ -422,7 +417,7 @@ namespace SimPe.Packages
 		/// </summary>
 		/// <returns>the new File descriptor</returns>
 		public IPackedFileDescriptor NewDescriptor(
-			uint type,
+			FileTypes type,
 			uint subtype,
 			uint group,
 			uint instance
@@ -528,7 +523,7 @@ namespace SimPe.Packages
 		/// <param name="group">The Group for the File</param>
 		/// <param name="instance">The Instance of the FIle</param>
 		public IPackedFileDescriptor Add(
-			uint type,
+			FileTypes type,
 			uint subtype,
 			uint group,
 			uint instance
@@ -784,7 +779,7 @@ namespace SimPe.Packages
 			fileindex[position] = item;
 
 			//remeber the filelist;
-			if (item.Type == FILELIST_TYPE)
+			if (item.Type == FileTypes.CLST)
 			{
 				filelist = item;
 			}
@@ -928,7 +923,7 @@ namespace SimPe.Packages
 					pf.headersize = 9;
 				}
 
-				if ((filelistfile != null) && (pfd.Type != FILELIST_TYPE))
+				if ((filelistfile != null) && (pfd.Type != FileTypes.CLST))
 				{
 					int pos = filelistfile.FindFile(pfd);
 					if (pos != -1)
@@ -976,7 +971,7 @@ namespace SimPe.Packages
 					pf.headersize = 9;
 				}
 
-				if ((filelistfile != null) && (pfd.Type != FILELIST_TYPE))
+				if ((filelistfile != null) && (pfd.Type != FileTypes.CLST))
 				{
 					int pos = filelistfile.FindFile(pfd);
 					if (pos != -1)
@@ -1060,7 +1055,7 @@ namespace SimPe.Packages
 		/// </summary>
 		/// <param name="type">Type you want to look for</param>
 		/// <returns>A List of Files</returns>
-		public IPackedFileDescriptor[] FindFiles(uint type)
+		public IPackedFileDescriptor[] FindFiles(FileTypes type)
 		{
 			ArrayList list = new ArrayList();
 
@@ -1133,7 +1128,7 @@ namespace SimPe.Packages
 		/// </summary>
 		/// <param name="filename">The Filename you are looking for</param>
 		/// <returns>List of matching Files</returns>
-		public IPackedFileDescriptor[] FindFile(string filename, uint type)
+		public IPackedFileDescriptor[] FindFile(string filename, FileTypes type)
 		{
 			filename = Hashes.StripHashFromName(filename);
 			uint inst = Hashes.InstanceHash(filename);
@@ -1175,7 +1170,7 @@ namespace SimPe.Packages
 		/// </summary>
 		/// <param name="type">Type you want to look for</param>
 		/// <returns>The descriptor for the matching Dile or null</returns>
-		public IPackedFileDescriptor[] FindFile(uint type, uint subtype, uint instance)
+		public IPackedFileDescriptor[] FindFile(FileTypes type, uint subtype, uint instance)
 		{
 			ArrayList list = new ArrayList();
 
@@ -1217,7 +1212,7 @@ namespace SimPe.Packages
 		/// <param name="type">Type you want to look for</param>
 		/// <returns>The descriptor for the matching Dile or null</returns>
 		public IPackedFileDescriptor FindFile(
-			uint type,
+			FileTypes type,
 			uint subtype,
 			uint group,
 			uint instance
@@ -1248,7 +1243,7 @@ namespace SimPe.Packages
 		/// <param name="type">Type you want to look for</param>
 		/// <returns>The descriptor for the matching Dile or null</returns>
 		public IPackedFileDescriptor FindFileAnyGroup(
-			uint type,
+			FileTypes type,
 			uint subtype,
 			uint instance
 		)
@@ -1623,7 +1618,7 @@ namespace SimPe.Packages
 		/// <param name="type">Type you want to look for</param>
 		/// <returns>The descriptor for the matching Dile or null</returns>
 		public IPackedFileDescriptor FindExactFile(
-			uint type,
+			FileTypes type,
 			uint subtype,
 			uint group,
 			uint instance,

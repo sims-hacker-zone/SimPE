@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
+using SimPe.Data;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Scenegraph;
 
@@ -244,7 +245,7 @@ namespace SimPe.Plugin
 			Unknwon = new uint[0];
 			Items = new ShapeItem[0];
 			Parts = new ShapePart[0];
-			BlockID = 0xFC6EB1F7;
+			BlockID = (uint)FileTypes.SHPE;
 		}
 
 		#region IRcolBlock Member
@@ -458,13 +459,13 @@ namespace SimPe.Plugin
 			refmap["Subsets"] = (from part in Parts
 								 select ScenegraphHelper.BuildPfd(
 											 part.FileName.Trim() + "_txmt",
-											 ScenegraphHelper.TXMT,
+											 FileTypes.TXMT,
 											 parentgroup
 										 )).ToList();
 			refmap["Models"] = (from item in Items
 								select ScenegraphHelper.BuildPfd(
 									item.FileName.Trim(),
-									ScenegraphHelper.GMND,
+									FileTypes.GMND,
 									parentgroup
 								)).ToList();
 		}

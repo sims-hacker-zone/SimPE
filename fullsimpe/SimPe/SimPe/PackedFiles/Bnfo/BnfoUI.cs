@@ -1131,7 +1131,7 @@ namespace SimPe.PackedFiles.Bnfo
 
 				Interfaces.Files.IPackedFileDescriptor pfd =
 					Bnfo.Package.FindFile(
-						0x0BF999E7,
+						FileTypes.LTXT,
 						0,
 						0xFFFFFFFF,
 						Bnfo.FileDescriptor.Instance
@@ -1469,7 +1469,7 @@ namespace SimPe.PackedFiles.Bnfo
 					as ExtSDesc;
 				tbLeft.Text = sdsc.SimName + " " + sdsc.SimFamilyName;
 				ybsimage.Text = Enum.GetName(
-					typeof(MetaData.LifeSections),
+					typeof(LifeSections),
 					(ushort)sdsc.CharacterDescription.LifeSection
 				);
 				tbsgender.Text = sdsc.CharacterDescription.Gender == MetaData.Gender.Female ? "Female" : "Male";
@@ -1492,7 +1492,7 @@ namespace SimPe.PackedFiles.Bnfo
 							? "Family Member"
 							: sdsc.CharacterDescription.CareerLevel == 2
 																		&& sdsc.CharacterDescription.Career
-																			== MetaData.Careers.OwnedBuss
+																			== Careers.OwnedBuss
 													? "Manager"
 													: "Employee";
 				}
@@ -1545,14 +1545,14 @@ namespace SimPe.PackedFiles.Bnfo
 			{
 				pfd = sdsc.Package == Bnfo.Package
 					? sdsc.Package.NewDescriptor(
-						0xAACE2EFB,
+						FileTypes.SDSC,
 						sdsc.FileDescriptor.SubType,
 						sdsc.FileDescriptor.Group,
 						sdsc.FileDescriptor.Instance
 					)
 					: fixlowercase(sdsc.Package.FileName)
 						.NewDescriptor(
-							0xAACE2EFB,
+							FileTypes.SDSC,
 							sdsc.FileDescriptor.SubType,
 							sdsc.FileDescriptor.Group,
 							sdsc.FileDescriptor.Instance
@@ -1717,7 +1717,7 @@ namespace SimPe.PackedFiles.Bnfo
 			if (pkg != null)
 			{
 				Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(
-					0x856DDBAC,
+					FileTypes.IMG,
 					0,
 					0x499DB772,
 					inst
@@ -1783,9 +1783,7 @@ namespace SimPe.PackedFiles.Bnfo
 					{
 						try
 						{
-							sdsc.CharacterDescription.Career = MetaData
-								.Careers
-								.Unemployed;
+							sdsc.CharacterDescription.Career = Careers.Unemployed;
 							sdsc.CharacterDescription.CareerLevel = 0;
 							sdsc.Business.Assignment = JobAssignment.Nothing;
 							sdsc.Business.LotID = 0;
@@ -1918,7 +1916,7 @@ namespace SimPe.PackedFiles.Bnfo
 				{
 					try
 					{
-						s.CharacterDescription.Career = MetaData.Careers.OwnedBuss;
+						s.CharacterDescription.Career = Careers.OwnedBuss;
 						s.CharacterDescription.CareerLevel = 1;
 						s.Business.Assignment = JobAssignment.Nothing;
 						s.Business.LotID = (ushort)Bnfo.FileDescriptor.Instance;
@@ -1971,7 +1969,7 @@ namespace SimPe.PackedFiles.Bnfo
 				if (a.Tag[0] is ExtSDesc s)
 				{
 					tbchage.Text = Enum.GetName(
-						typeof(MetaData.LifeSections),
+						typeof(LifeSections),
 						(ushort)s.CharacterDescription.LifeSection
 					);
 					tbchgender.Text = s.CharacterDescription.Gender == MetaData.Gender.Female ? "Female" : "Male";
@@ -2141,7 +2139,7 @@ namespace SimPe.PackedFiles.Bnfo
 				if (a.Tag[0] is ExtSDesc s)
 				{
 					tbOchage.Text = Enum.GetName(
-						typeof(MetaData.LifeSections),
+						typeof(LifeSections),
 						(ushort)s.CharacterDescription.LifeSection
 					);
 					tbOgender.Text = s.CharacterDescription.Gender == MetaData.Gender.Female ? "Female" : "Male";
@@ -2181,7 +2179,7 @@ namespace SimPe.PackedFiles.Bnfo
 				{
 					Interfaces.Files.IPackedFileDescriptor pfd =
 						Bnfo.Package.FindFile(
-							0x0BF999E7,
+							FileTypes.LTXT,
 							0,
 							0xFFFFFFFF,
 							Bnfo.FileDescriptor.Instance

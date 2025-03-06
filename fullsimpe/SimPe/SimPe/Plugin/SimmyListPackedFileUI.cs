@@ -11,8 +11,8 @@ namespace SimPe.Plugin
 		: Windows.Forms.WrapperBaseControl,
 			IPackedFileUI
 	{
-		protected new SimmyListPackedFileWrapper Wrapper => base.Wrapper as SimmyListPackedFileWrapper;
-		public SimmyListPackedFileWrapper TPFW => Wrapper;
+		protected new SimListPackedFileWrapper Wrapper => base.Wrapper as SimListPackedFileWrapper;
+		public SimListPackedFileWrapper TPFW => Wrapper;
 
 		#region WrapperBaseControl Member
 
@@ -26,7 +26,7 @@ namespace SimPe.Plugin
 			base.RefreshGUI();
 
 			checkBox1.Checked = false;
-			TBsting.Text = Wrapper.Strung;
+			TBsting.Text = Wrapper.DisplayString;
 		}
 
 		public override void OnCommit()
@@ -48,7 +48,7 @@ namespace SimPe.Plugin
 
 		private void checkBox1_CheckedChanged(object sender, EventArgs e)
 		{
-			TBsting.Text = checkBox1.Checked ? Wrapper.Twine : Wrapper.Strung;
+			TBsting.Text = checkBox1.Checked ? Wrapper.DisplayStringAll : Wrapper.DisplayString;
 
 			TBsting.Refresh();
 		}

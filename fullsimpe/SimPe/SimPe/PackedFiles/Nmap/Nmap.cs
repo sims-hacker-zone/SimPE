@@ -3,6 +3,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
+using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
 
@@ -146,9 +147,9 @@ namespace SimPe.PackedFiles.Nmap
 		/// <summary>
 		/// Returns a list of File Type this Plugin can process
 		/// </summary>
-		public uint[] AssignableTypes => new uint[]
+		public FileTypes[] AssignableTypes => new FileTypes[]
 				{
-					Data.MetaData.NAME_MAP, //handles the NMAP File
+					FileTypes.NMAP,
 				};
 
 		#endregion

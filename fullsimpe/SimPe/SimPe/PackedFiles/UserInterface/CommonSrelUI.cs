@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 using Ambertation.Windows.Forms;
@@ -337,44 +338,8 @@ namespace SimPe.PackedFiles.UserInterface
 		protected void InitComboBox()
 		{
 			cbfamtype.Items.Clear();
-			cbfamtype.Items.Add(
-				new LocalizedRelationshipTypes(
-					MetaData.RelationshipTypes.Unset_Unknown
-				)
-			);
-			cbfamtype.Items.Add(
-				new LocalizedRelationshipTypes(MetaData.RelationshipTypes.Aunt)
-			);
-			cbfamtype.Items.Add(
-				new LocalizedRelationshipTypes(MetaData.RelationshipTypes.Child)
-			);
-			cbfamtype.Items.Add(
-				new LocalizedRelationshipTypes(MetaData.RelationshipTypes.Cousin)
-			);
-			cbfamtype.Items.Add(
-				new LocalizedRelationshipTypes(
-					MetaData.RelationshipTypes.Grandchild
-				)
-			);
-			cbfamtype.Items.Add(
-				new LocalizedRelationshipTypes(
-					MetaData.RelationshipTypes.Gradparent
-				)
-			);
-			cbfamtype.Items.Add(
-				new LocalizedRelationshipTypes(
-					MetaData.RelationshipTypes.Nice_Nephew
-				)
-			);
-			cbfamtype.Items.Add(
-				new LocalizedRelationshipTypes(MetaData.RelationshipTypes.Parent)
-			);
-			cbfamtype.Items.Add(
-				new LocalizedRelationshipTypes(MetaData.RelationshipTypes.Sibling)
-			);
-			cbfamtype.Items.Add(
-				new LocalizedRelationshipTypes(MetaData.RelationshipTypes.Spouses)
-			);
+			cbfamtype.Items.AddRange((from RelationshipTypes type in Enum.GetValues(typeof(RelationshipTypes))
+									  select new LocalizedRelationshipTypes(type)).ToArray());
 		}
 
 		bool intern;
@@ -566,7 +531,7 @@ namespace SimPe.PackedFiles.UserInterface
 					"0x"
 					+ Helper.HexString(
 						(uint)
-							(MetaData.RelationshipTypes)
+							(RelationshipTypes)
 								(LocalizedRelationshipTypes)cbfamtype.SelectedItem
 
 
