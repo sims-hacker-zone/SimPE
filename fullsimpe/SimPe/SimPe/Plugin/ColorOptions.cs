@@ -200,7 +200,7 @@ namespace SimPe.Plugin
 				Data.MetaData.CUSTOM_GROUP
 			);
 
-			for (int i = 0; i < md.Listing.Length; i++)
+			for (int i = 0; i < md.Listing.Count; i++)
 			{
 				if (Hashes.StripHashFromName(md.Listing[i].Trim().ToLower()) == old)
 				{

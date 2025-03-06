@@ -2,9 +2,12 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 using SimPe.Data;
 using SimPe.Extensions;
+using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Scenegraph;
 
@@ -22,12 +25,12 @@ namespace SimPe.Plugin
 	{
 		#region Attributes
 		byte[] oversize;
-		uint[] index;
+		List<uint> index;
 
-		Interfaces.Files.IPackedFileDescriptor[] reffiles;
-		public Interfaces.Files.IPackedFileDescriptor[] ReferencedFiles
+		List<IPackedFileDescriptor> reffiles;
+		public List<IPackedFileDescriptor> ReferencedFiles
 		{
-			get => Duff ? new Interfaces.Files.IPackedFileDescriptor[0] : reffiles;
+			get => Duff ? new List<IPackedFileDescriptor>() : reffiles;
 			set
 			{
 				if (Duff)
@@ -39,10 +42,10 @@ namespace SimPe.Plugin
 			}
 		}
 
-		IRcolBlock[] blocks;
-		public IRcolBlock[] Blocks
+		List<IRcolBlock> blocks;
+		public List<IRcolBlock> Blocks
 		{
-			get => Duff ? new IRcolBlock[0] : blocks;
+			get => Duff ? new List<IRcolBlock>() : blocks;
 			set
 			{
 				if (Duff)
@@ -114,38 +117,14 @@ namespace SimPe.Plugin
 		/// </summary>
 		public string FileName
 		{
-			get
-			{
-				if (Duff)
-				{
-					return
-						Localization.GetString("InvalidCRES")
-						.Replace("{0}", e.Message);
-				}
-
-				if (blocks.Length > 0)
-				{
-					if (blocks[0].NameResource != null)
-					{
-						return blocks[0].NameResource.FileName;
-					}
-				}
-
-				return "";
-			}
+			get => Duff
+					? Localization.GetString("InvalidCRES").Replace("{0}", e.Message)
+					: blocks.FirstOrDefault()?.NameResource?.FileName ?? "";
 			set
 			{
-				if (Duff)
+				if (!Duff && blocks.FirstOrDefault()?.NameResource != null)
 				{
-					return;
-				}
-
-				if (blocks.Length > 0)
-				{
-					if (blocks[0].NameResource != null)
-					{
-						blocks[0].NameResource.FileName = value;
-					}
+					blocks[0].NameResource.FileName = value;
 				}
 			}
 		}
@@ -218,9 +197,9 @@ namespace SimPe.Plugin
 		{
 			Fast = fast;
 			Provider = provider;
-			reffiles = new Interfaces.Files.IPackedFileDescriptor[0];
-			index = new uint[0];
-			blocks = new IRcolBlock[0];
+			reffiles = new List<IPackedFileDescriptor>();
+			index = new List<uint>();
+			blocks = new List<IRcolBlock>();
 			oversize = new byte[0];
 			Duff = false;
 		}
@@ -326,41 +305,36 @@ namespace SimPe.Plugin
 
 			try
 			{
-				reffiles = new Interfaces.Files.IPackedFileDescriptor[
-					Count == 0xffff0001 ? reader.ReadUInt32() : Count
-				];
-				for (int i = 0; i < reffiles.Length; i++)
+				uint filecount = Count == 0xffff0001 ? reader.ReadUInt32() : Count;
+				reffiles = new List<IPackedFileDescriptor>();
+				for (int i = 0; i < filecount; i++)
 				{
-					Packages.PackedFileDescriptor pfd =
-						new Packages.PackedFileDescriptor
-						{
-							Group = reader.ReadUInt32(),
-							Instance = reader.ReadUInt32(),
-							SubType = (Count == 0xffff0001) ? reader.ReadUInt32() : 0,
-							Type = (FileTypes)reader.ReadUInt32()
-						};
-
-					reffiles[i] = pfd;
+					reffiles.Add(new Packages.PackedFileDescriptor
+					{
+						Group = reader.ReadUInt32(),
+						Instance = reader.ReadUInt32(),
+						SubType = (Count == 0xffff0001) ? reader.ReadUInt32() : 0,
+						Type = (FileTypes)reader.ReadUInt32()
+					});
 				}
 
 				uint nn = reader.ReadUInt32();
-				index = new uint[nn];
-				blocks = new IRcolBlock[index.Length];
-				for (int i = 0; i < index.Length; i++)
+				index = new List<uint>();
+				blocks = new List<IRcolBlock>();
+				for (int i = 0; i < nn; i++)
 				{
-					index[i] = reader.ReadUInt32();
+					index.Add(reader.ReadUInt32());
 				}
 
-				for (int i = 0; i < index.Length; i++)
+				for (int i = 0; i < nn; i++)
 				{
-					uint id = index[i];
-					IRcolBlock wrp = ReadBlock(id, reader);
+					IRcolBlock wrp = ReadBlock(index[i], reader);
 					if (wrp == null)
 					{
 						break;
 					}
 
-					blocks[i] = wrp;
+					blocks.Add(wrp);
 				}
 
 				if (!Fast)
@@ -393,9 +367,9 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			writer.Write(Count == 0xffff0001 ? Count : (uint)reffiles.Length);
-			writer.Write((uint)reffiles.Length);
-			for (int i = 0; i < reffiles.Length; i++)
+			writer.Write(Count == 0xffff0001 ? Count : (uint)reffiles.Count);
+			writer.Write((uint)reffiles.Count);
+			for (int i = 0; i < reffiles.Count; i++)
 			{
 				Packages.PackedFileDescriptor pfd =
 					(Packages.PackedFileDescriptor)reffiles[i];
@@ -409,13 +383,13 @@ namespace SimPe.Plugin
 				writer.Write((uint)pfd.Type);
 			}
 
-			writer.Write((uint)blocks.Length);
-			for (int i = 0; i < blocks.Length; i++)
+			writer.Write((uint)blocks.Count);
+			for (int i = 0; i < blocks.Count; i++)
 			{
 				writer.Write(blocks[i].BlockID);
 			}
 
-			for (int i = 0; i < blocks.Length; i++)
+			for (int i = 0; i < blocks.Count; i++)
 			{
 				IRcolBlock wrp = blocks[i];
 				WriteBlock(wrp, writer);
@@ -439,10 +413,10 @@ namespace SimPe.Plugin
 			base.Fix(registry);
 
 			//first we need to fix all referenced Files
-			for (int i = 0; i < ReferencedFiles.Length; i++)
+			for (int i = 0; i < ReferencedFiles.Count; i++)
 			{
-				Interfaces.Files.IPackedFileDescriptor lpfd = ReferencedFiles[i];
-				Interfaces.Files.IPackedFileDescriptor pfd = Package.FindFile(
+				IPackedFileDescriptor lpfd = ReferencedFiles[i];
+				IPackedFileDescriptor pfd = Package.FindFile(
 					lpfd
 				);
 				if (pfd != null)

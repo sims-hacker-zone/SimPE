@@ -478,7 +478,7 @@ namespace SimPe.Plugin.Anim
 				};
 				afb.CreateBaseAxisSet();
 
-				ab1.Part2 = (AnimationFrameBlock[])Helper.Add(ab1.Part2, afb);
+				ab1.Part2.Add(afb);
 
 				cbJoint.SelectedIndex = -1;
 				cbJoint.Items.Add(afb);
@@ -492,7 +492,7 @@ namespace SimPe.Plugin.Anim
 			AnimationFrameBlock afb = (AnimationFrameBlock)cbJoint.SelectedItem;
 			if (ab1 != null && afb != null)
 			{
-				ab1.Part2 = (AnimationFrameBlock[])Helper.Delete(ab1.Part2, afb);
+				ab1.Part2.Remove(afb);
 				int sel = cbJoint.SelectedIndex + 1;
 				if (sel >= cbJoint.Items.Count)
 				{

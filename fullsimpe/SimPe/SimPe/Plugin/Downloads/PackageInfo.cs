@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 
 namespace SimPe.Plugin.Downloads
@@ -159,7 +160,7 @@ namespace SimPe.Plugin.Downloads
 
 		public PackageInfo(Interfaces.Files.IPackageFile pkg)
 		{
-			Guids = new uint[0];
+			Guids = new List<uint>();
 			flname = pkg.SaveFileName;
 			KnockoutThumbnail = true;
 			BuildDefaultImage();
@@ -227,19 +228,19 @@ namespace SimPe.Plugin.Downloads
 			get; set;
 		}
 
-		public uint[] Guids
+		public List<uint> Guids
 		{
 			get; set;
 		}
 
 		internal void ClearGuidList()
 		{
-			Guids = new uint[0];
+			Guids.Clear();
 		}
 
 		public void AddGuid(uint guid)
 		{
-			Guids = Helper.Add(Guids, guid) as uint[];
+			Guids.Add(guid);
 		}
 
 		public Cache.PackageType Type

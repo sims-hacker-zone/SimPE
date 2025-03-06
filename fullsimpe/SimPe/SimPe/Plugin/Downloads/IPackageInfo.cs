@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+using System.Collections.Generic;
 using System.Drawing;
 
 namespace SimPe.Plugin.Downloads
@@ -101,7 +102,7 @@ namespace SimPe.Plugin.Downloads
 		/// <summary>
 		/// List of GUIDs used in the package
 		/// </summary>
-		uint[] Guids
+		List<uint> Guids
 		{
 			get;
 		}

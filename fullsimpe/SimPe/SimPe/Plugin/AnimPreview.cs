@@ -3,6 +3,7 @@
 using System;
 using System.Collections;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace SimPe.Plugin
@@ -174,12 +175,9 @@ namespace SimPe.Plugin
 
 		public static void Execute(Rcol anim)
 		{
-			if (anim.Blocks.Length > 0)
+			if (anim.Blocks.FirstOrDefault() is Anim.AnimResourceConst @const)
 			{
-				if (anim.Blocks[0] is Anim.AnimResourceConst)
-				{
-					Execute((Anim.AnimResourceConst)anim.Blocks[0]);
-				}
+				Execute(@const);
 			}
 		}
 

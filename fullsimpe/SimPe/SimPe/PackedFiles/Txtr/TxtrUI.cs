@@ -52,10 +52,9 @@ namespace SimPe.PackedFiles.Txtr
 		public void UpdateGUI(IFileWrapper wrapper)
 		{
 			Txtr wrp = (Txtr)wrapper;
-			if (wrp.Blocks.Length == 0)
+			if (wrp.Blocks.Count == 0)
 			{
-				wrp.Blocks = new Interfaces.Scenegraph.IRcolBlock[1];
-				wrp.Blocks[0] = new ImageData(wrp);
+				wrp.Blocks.Add(new ImageData(wrp));
 			}
 			form.wrapper = wrp;
 

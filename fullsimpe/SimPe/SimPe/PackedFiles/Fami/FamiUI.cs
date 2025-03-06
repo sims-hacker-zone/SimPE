@@ -59,7 +59,7 @@ namespace SimPe.PackedFiles.Fami
 			form.lbmembers.Items.Clear();
 			form.tbcafood1.Text = fami.CastAwayFood.ToString();
 			form.tbcares.Text = fami.CastAwayResources.ToString();
-			form.tbcaunk.Text = "0x" + Helper.HexString(fami.CastAwayFoodDecay);
+			form.tbcaunk.Text = "0x" + Helper.HexStringInt(fami.CastAwayFoodDecay);
 			form.label14.Visible = form.tbblot.Visible =
 				fami.Version >= FamiVersions.Business;
 			form.label7.Visible = form.tbvac.Visible =

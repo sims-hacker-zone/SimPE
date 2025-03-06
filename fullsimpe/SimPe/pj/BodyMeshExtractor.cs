@@ -425,7 +425,7 @@ namespace pj
 							cpf.ProcessData(pfb[i - pfa.Length], p);
 						}
 
-						for (int j = 0; j < cpf.Items.Length; j++)
+						for (int j = 0; j < cpf.Items.Count; j++)
 						{
 							if (cpf.Items[j].Name.ToLower().Equals("name"))
 							{

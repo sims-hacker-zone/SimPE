@@ -245,7 +245,7 @@ namespace SimPe.PackedFiles.UserInterface
 			foreach (Wrapper.ObjLuaLocalVar c in fkt.Locals)
 			{
 				TreeNode scltn = new TreeNode(
-					Helper.HexString(ct++) + ": " + c.ToString()
+					Helper.HexStringInt(ct++) + ": " + c.ToString()
 				)
 				{
 					Tag = c
@@ -260,7 +260,7 @@ namespace SimPe.PackedFiles.UserInterface
 			foreach (Wrapper.ObjLuaUpValue c in fkt.UpValues)
 			{
 				TreeNode scutn = new TreeNode(
-					Helper.HexString(ct++) + ": " + c.ToString()
+					Helper.HexStringInt(ct++) + ": " + c.ToString()
 				)
 				{
 					Tag = c
@@ -275,7 +275,7 @@ namespace SimPe.PackedFiles.UserInterface
 			foreach (Wrapper.ObjLuaSourceLine c in fkt.SourceLine)
 			{
 				TreeNode scstn = new TreeNode(
-					Helper.HexString(ct++) + ": " + c.ToString()
+					Helper.HexStringInt(ct++) + ": " + c.ToString()
 				)
 				{
 					Tag = c
@@ -297,7 +297,7 @@ namespace SimPe.PackedFiles.UserInterface
 			foreach (Wrapper.ObjLuaCode c in fkt.Codes)
 			{
 				TreeNode scdtn = new TreeNode(
-					Helper.HexString(ct++) + ": " + c.ToString()
+					Helper.HexStringInt(ct++) + ": " + c.ToString()
 				)
 				{
 					Tag = c

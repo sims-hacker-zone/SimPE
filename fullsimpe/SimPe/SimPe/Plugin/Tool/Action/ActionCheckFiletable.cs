@@ -25,7 +25,7 @@ namespace SimPe.Plugin.Tool.Action
 				+ " (o="
 				+ Helper.HexString(pfd.Offset)
 				+ ", s="
-				+ Helper.HexString(pfd.Size)
+				+ Helper.HexStringInt(pfd.Size)
 				+ ")";
 		}
 

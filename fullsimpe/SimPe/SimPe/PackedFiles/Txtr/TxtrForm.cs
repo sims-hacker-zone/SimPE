@@ -1106,10 +1106,7 @@ namespace SimPe.PackedFiles.Txtr
 				id = new ImageData(wrp);
 				id.NameResource.FileName = "Unknown";
 
-				IRcolBlock[] irc = new IRcolBlock[wrp.Blocks.Length + 1];
-				wrp.Blocks.CopyTo(irc, 0);
-				irc[irc.Length - 1] = id;
-				wrp.Blocks = irc;
+				wrp.Blocks.Add(id);
 				cbitem.Items.Add(id);
 				cbitem.SelectedIndex = cbitem.Items.Count - 1;
 			}

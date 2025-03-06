@@ -69,7 +69,7 @@ namespace SimPe.PackedFiles.Cpf
 					case DataTypes.dtInteger:
 					case DataTypes.dtUInteger:
 					{
-						return "0x" + Helper.HexString(AsInteger());
+						return "0x" + Helper.HexStringInt(AsInteger());
 					}
 					case DataTypes.dtString:
 					{

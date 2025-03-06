@@ -113,7 +113,7 @@ namespace whse.PrimitiveWizards.Wiz0x007c
 			this.internalchg = true;
 
 			e.Cancel = true;
-			((Control)sender).Text = "0x" + SimPe.Helper.HexString(inst.Operands[OperandConstants.Operand3] | inst.Operands[OperandConstants.Operand4] << 8 | inst.Operands[OperandConstants.Operand5] << 16 | inst.Operands[OperandConstants.Operand6] << 24);
+			((Control)sender).Text = "0x" + SimPe.Helper.HexStringInt(inst.Operands[OperandConstants.Operand3] | inst.Operands[OperandConstants.Operand4] << 8 | inst.Operands[OperandConstants.Operand5] << 16 | inst.Operands[OperandConstants.Operand6] << 24);
 			((TextBoxBase)sender).SelectAll();
 
 			this.internalchg = internalchg;

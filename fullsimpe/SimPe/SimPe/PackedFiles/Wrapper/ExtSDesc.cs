@@ -186,21 +186,13 @@ namespace SimPe.PackedFiles.Wrapper
 				}
 			}
 
-			Relations.SimInstances = (ushort[])
-				Helper.Add(
-					Relations.SimInstances,
-					(ushort)sdesc.FileDescriptor.Instance
-				);
+			Relations.SimInstances.Add((ushort)sdesc.FileDescriptor.Instance);
 			Changed = true;
 		}
 
 		public void RemoveRelation(ExtSDesc sdesc)
 		{
-			Relations.SimInstances = (ushort[])
-				Helper.Delete(
-					Relations.SimInstances,
-					(ushort)sdesc.FileDescriptor.Instance
-				);
+			Relations.SimInstances.Remove((ushort)sdesc.FileDescriptor.Instance);
 			Changed = true;
 		}
 

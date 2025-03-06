@@ -1,7 +1,9 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -66,24 +68,6 @@ namespace SimPe
 
 				return reg;
 			}
-		}
-
-		/// <summary>
-		/// Returns /Sets the Commandline Parameters
-		/// </summary>
-		public static Parameters CommandlineParameters
-		{
-			get; set;
-		}
-
-		/// <summary>
-		/// Generates a BinaryReader from a Byte Buffer
-		/// </summary>
-		/// <param name="data">The Byte Buffer</param>
-		/// <returns>The Binary Handler</returns>
-		public static BinaryReader GetBinaryReader(byte[] data)
-		{
-			return new BinaryReader(new MemoryStream(data));
 		}
 
 		/// <summary>
@@ -155,27 +139,7 @@ namespace SimPe
 		/// </summary>
 		/// <param name="input">the Input Value</param>
 		/// <returns>value as HexString (allways 8 Chars long)</returns>
-		public static string HexString(long input)
-		{
-			return HexString((ulong)input);
-		}
-
-		/// <summary>
-		/// Returns the Value as HexString
-		/// </summary>
-		/// <param name="input">the Input Value</param>
-		/// <returns>value as HexString (allways 8 Chars long)</returns>
-		public static string HexString(ulong input)
-		{
-			return MinStrLength(input.ToString("X"), 16);
-		}
-
-		/// <summary>
-		/// Returns the Value as HexString
-		/// </summary>
-		/// <param name="input">the Input Value</param>
-		/// <returns>value as HexString (allways 8 Chars long)</returns>
-		public static string HexString(int input)
+		public static string HexStringInt(int input)
 		{
 			return HexString((uint)input);
 		}
@@ -187,7 +151,7 @@ namespace SimPe
 		/// <returns>value as HexString (allways 8 Chars long)</returns>
 		public static string HexString(uint input)
 		{
-			return MinStrLength(input.ToString("X"), 8);
+			return $"{input:X8}";
 		}
 
 		/// <summary>
@@ -217,7 +181,7 @@ namespace SimPe
 		/// <returns>value as HexString (allways 4 Chars long)</returns>
 		public static string HexString(ushort input)
 		{
-			return MinStrLength(input.ToString("X"), 4);
+			return $"{input:X4}";
 		}
 
 		/// <summary>
@@ -227,7 +191,7 @@ namespace SimPe
 		/// <returns>value as HexString (allways 4 Chars long)</returns>
 		public static string HexString(byte input)
 		{
-			return MinStrLength(input.ToString("X"), 2);
+			return $"{input:X2}";
 		}
 
 		/// <summary>
@@ -363,23 +327,6 @@ namespace SimPe
 			return output;
 		}
 
-		/*
-		 * WTF is a Caharcter, that can't be displayed
-		 * how could I convert a Caharcter if I don't know what that is?
-		 * DisplayableCharactre? don't display a Charactre, they're ugly
-		 *
-		/// <summary>
-		/// Returns a Caharcter that can be displayed
-		/// </summary>
-		/// <param name="c">The Charcatre to convert</param>
-		/// <returns>a displayable character</returns>
-		public static char DisplayableCharactre(char c)
-		{
-			if ((c>0x1F) && (c<0xff) && (c!=0xAD) && ((c<0x7F) || (c>0x9F)))  return c;
-			else return '.';
-		}
-		*/
-
 		/// <summary>
 		/// Shows an Exception Message for the User
 		/// </summary>
@@ -408,20 +355,6 @@ namespace SimPe
 		{
 			return o == null ? "" : o.ToString();
 		}
-
-		/// <summary>
-		/// Creates a String from a Byte Array
-		/// </summary>
-		/// <param name="ba">The Aray</param>
-		/// <returns>The stored value as String</returns>
-		/*public static string ToString(byte[] ba)
-		{
-			if (ba==null) return "";
-
-			string s = "";
-			foreach(byte b in ba) if (b!=0) s += (char)b;
-			return s;
-		}*/
 
 		/// <summary>
 		/// Returns the Path SimPe is located in
@@ -798,40 +731,6 @@ namespace SimPe
 		}
 
 		/// <summary>
-		/// Formats a Long Version Number to a String
-		/// </summary>
-		/// <param name="l"></param>
-		/// <returns></returns>
-		public static string LongVersionToString(long l)
-		{
-			string res = "";
-			res = (l & 0xffff).ToString();
-			l >>= 16;
-			res = (l & 0xffff).ToString() + "." + res;
-			l >>= 16;
-			res = (l & 0xffff).ToString() + "." + res;
-			l >>= 16;
-			res = (l & 0xffff).ToString() + "." + res;
-			return res;
-		}
-
-		/// <summary>
-		/// Formats a Long Version Number to a String
-		/// </summary>
-		/// <param name="l"></param>
-		/// <returns></returns>
-		public static string LongVersionToShortString(long l)
-		{
-			string res = "";
-			l >>= 16;
-			l >>= 16;
-			res = (l & 0xffff).ToString();
-			l >>= 16;
-			res = (l & 0xffff).ToString() + "." + res;
-			return res;
-		}
-
-		/// <summary>
 		/// Returns the Version Number as Text
 		/// </summary>
 		public static string SimPeVersionString
@@ -1068,105 +967,105 @@ namespace SimPe
 		/// if not then Returns the Language Code that matches the current Culture best
 		/// </summary>
 		/// <returns>The language Code</returns>
-		public static Data.Languages GetMatchingLanguage()
+		public static Languages GetMatchingLanguage()
 		{
-			Data.Languages lng = Data.Languages.English;
+			Languages lng = Languages.English;
 			switch (PathProvider.Global.InGameLang)
 			{
 				case "US English":
-					return Data.Languages.English;
+					return Languages.English;
 				case "French":
-					return Data.Languages.French;
+					return Languages.French;
 				case "German":
-					return Data.Languages.German;
+					return Languages.German;
 				case "Italian":
-					return Data.Languages.Italian;
+					return Languages.Italian;
 				case "Spanish":
-					return Data.Languages.Spanish;
+					return Languages.Spanish;
 				case "Swedish":
-					return Data.Languages.Swedish;
+					return Languages.Swedish;
 				case "Finnish":
-					return Data.Languages.Finnish;
+					return Languages.Finnish;
 				case "Dutch":
-					return Data.Languages.Dutch;
+					return Languages.Dutch;
 				case "Danish":
-					return Data.Languages.Danish;
+					return Languages.Danish;
 				case "Brazilian Portuguese":
-					return Data.Languages.Brazilian;
+					return Languages.Brazilian;
 				case "Czech":
-					return Data.Languages.Czech;
+					return Languages.Czech;
 				case "Japanese":
-					return Data.Languages.Japanese;
+					return Languages.Japanese;
 				case "Korean":
-					return Data.Languages.Korean;
+					return Languages.Korean;
 				case "Russian":
-					return Data.Languages.Russian;
+					return Languages.Russian;
 				case "Simplified Chinese":
-					return Data.Languages.SimplifiedChinese;
+					return Languages.SimplifiedChinese;
 				case "Traditional Chinese":
-					return Data.Languages.TraditionalChinese;
+					return Languages.TraditionalChinese;
 				case "English":
-					return Data.Languages.English_uk;
+					return Languages.English_uk;
 				case "Polish":
-					return Data.Languages.Polish;
+					return Languages.Polish;
 				case "Thai":
-					return Data.Languages.Thai;
+					return Languages.Thai;
 				case "Norwegian":
-					return Data.Languages.Norwegian;
+					return Languages.Norwegian;
 				case "Portuguese":
-					return Data.Languages.Portuguese;
+					return Languages.Portuguese;
 				case "Hungarian":
-					return Data.Languages.Hungarian;
+					return Languages.Hungarian;
 			}
 
 			switch (System.Threading.Thread.CurrentThread.CurrentCulture.ThreeLetterISOLanguageName.ToUpper())
 			{
 				case "ENA":
-					return Data.Languages.English_uk;
+					return Languages.English_uk;
 				case "ENG":
-					return Data.Languages.English_uk;
+					return Languages.English_uk;
 				case "ENZ":
-					return Data.Languages.English_uk;
+					return Languages.English_uk;
 				case "ENS":
-					return Data.Languages.English_uk;
+					return Languages.English_uk;
 				case "ENC":
-					return Data.Languages.English_uk;
+					return Languages.English_uk;
 				case "ENU":
-					return Data.Languages.English;
+					return Languages.English;
 				case "DEU":
-					return Data.Languages.German;
+					return Languages.German;
 				case "ESP":
-					return Data.Languages.Spanish;
+					return Languages.Spanish;
 				case "FIN":
-					return Data.Languages.Finnish;
+					return Languages.Finnish;
 				case "CHS":
-					return Data.Languages.SimplifiedChinese;
+					return Languages.SimplifiedChinese;
 				case "CHT":
-					return Data.Languages.TraditionalChinese;
+					return Languages.TraditionalChinese;
 				case "FRE":
-					return Data.Languages.French;
+					return Languages.French;
 				case "JPN":
-					return Data.Languages.Japanese;
+					return Languages.Japanese;
 				case "ITA":
-					return Data.Languages.Italian;
+					return Languages.Italian;
 				case "DUT":
-					return Data.Languages.Dutch;
+					return Languages.Dutch;
 				case "DAN":
-					return Data.Languages.Danish;
+					return Languages.Danish;
 				case "NOR":
-					return Data.Languages.Norwegian;
+					return Languages.Norwegian;
 				case "RUS":
-					return Data.Languages.Russian;
+					return Languages.Russian;
 				case "POR":
-					return Data.Languages.Portuguese;
+					return Languages.Portuguese;
 				case "POL":
-					return Data.Languages.Polish;
+					return Languages.Polish;
 				case "THA":
-					return Data.Languages.Thai;
+					return Languages.Thai;
 				case "KOR":
-					return Data.Languages.Korean;
+					return Languages.Korean;
 				case "HUN":
-					return Data.Languages.Hungarian;
+					return Languages.Hungarian;
 			}
 
 			return lng;
@@ -1262,139 +1161,6 @@ namespace SimPe
 		}
 
 		/// <summary>
-		/// Extends the given arry by one item
-		/// </summary>
-		/// <param name="source">The Sourec Array</param>
-		/// <param name="item">The new Item</param>
-		/// <param name="elementType">Type of the Array Elements</param>
-		/// <returns>The extended Array</returns>
-		public static Array Add(Array source, object item, Type elementType)
-		{
-			Array a = Array.CreateInstance(elementType, source.Length + 1);
-			source.CopyTo(a, 0);
-			a.SetValue(item, a.Length - 1);
-			return a;
-		}
-
-		/// <summary>
-		/// Extends the given arry by one item
-		/// </summary>
-		/// <param name="source">The Sourec Array</param>
-		/// <param name="item">The new Item</param>
-		/// <returns>The extended Array</returns>
-		public static Array Add(Array source, object item)
-		{
-			return Add(source, item, item.GetType());
-		}
-
-		/// <summary>
-		/// Deletes the given Item from the Object (if it exists!)
-		/// </summary>
-		/// <param name="source">The Sourec Array</param>
-		/// <param name="item">The Item delete</param>
-		/// <param name="elementType">Type of the Array Elements</param>
-		/// <returns>The Source Array without any Element that Equals item</returns>
-		public static Array Delete(Array source, object item, Type elementType)
-		{
-			System.Collections.ArrayList a = new System.Collections.ArrayList();
-			foreach (object i in source)
-			{
-				if (i == null)
-				{
-					if (item == null)
-					{
-						a.Add(i);
-					}
-				}
-				else if (!i.Equals(item))
-				{
-					a.Add(i);
-				}
-			}
-
-			Array ar = Array.CreateInstance(elementType, a.Count);
-			a.CopyTo(ar);
-			return ar;
-		}
-
-		/// <summary>
-		/// Deletes the given Item from the Object (if it exists!)
-		/// </summary>
-		/// <param name="source">The Sourec Array</param>
-		/// <param name="item">The Item delete</param>
-		/// <returns>The Source Array without any Element that Equals item</returns>
-		public static Array Delete(Array source, object item)
-		{
-			return Delete(source, item, item.GetType());
-		}
-
-		/// <summary>
-		/// Deletes the given Item from the Object (if it exists!)
-		/// </summary>
-		/// <param name="source">The Sourec Array</param>
-		/// <param name="item">The Item delete</param>
-		/// <param name="elementType">Type of the Array Elements</param>
-		/// <returns>The Source Array without any Element that Equals item</returns>
-		public static Array Merge(Array source1, Array source2, Type elementType)
-		{
-			Array a = Array.CreateInstance(
-				elementType,
-				source1.Length + source2.Length
-			);
-			source1.CopyTo(a, 0);
-			source2.CopyTo(a, source1.Length);
-			return a;
-		}
-
-		/// <summary>
-		/// Creates a Short Value from the given bytes
-		/// </summary>
-		/// <param name="low">Lower Byte</param>
-		/// <param name="high">Higher Byte</param>
-		/// <returns>Short Walue</returns>
-		public static short ToShort(byte low, byte high)
-		{
-			return (short)(low + (high << 8));
-		}
-
-		/// <summary>
-		/// Retursn the lower and Higher Byte Value of a Short Type
-		/// </summary>
-		/// <param name="val">The Short value</param>
-		/// <returns>Byte arra, index 0 contains the lower byte </returns>
-		public static byte[] ToByte(short val)
-		{
-			byte[] ret = new byte[2];
-			ret[1] = (byte)(val & 0xff);
-			ret[2] = (byte)((val >> 8) & 0xff);
-			return ret;
-		}
-
-		/// <summary>
-		/// Creates a Integer Value from the given shorts
-		/// </summary>
-		/// <param name="low">Lower Short</param>
-		/// <param name="high">Higher Short</param>
-		/// <returns>Integer Walue</returns>
-		public static int ToInt(short low, short high)
-		{
-			return low + (high << 16);
-		}
-
-		/// <summary>
-		/// Retursn the lower and Higher Short Value of a Integer Type
-		/// </summary>
-		/// <param name="val">The Short value</param>
-		/// <returns>Byte arra, index 0 contains the lower byte </returns>
-		public static short[] Toshort(int val)
-		{
-			short[] ret = new short[2];
-			ret[1] = (short)(val & 0xffff);
-			ret[2] = (short)((val >> 16) & 0xffff);
-			return ret;
-		}
-
-		/// <summary>
 		/// Returns true, if the Helper dll was compiled with the DEBUG Flag
 		/// </summary>
 		public static bool DebugMode => WindowsRegistry.HiddenMode;
@@ -1404,7 +1170,7 @@ namespace SimPe
 		/// </summary>
 		/// <param name="flname"></param>
 		/// <returns></returns>
-		static string neighborhood_package = "_neighborhood.package";
+		private const string NEIGHBORHOOD_PACKAGE = "_neighborhood.package";
 
 		public static string GetMainNeighborhoodFile(string filename)
 		{
@@ -1416,7 +1182,7 @@ namespace SimPe
 			string flname = Path.GetFileName(filename);
 			flname = flname.Trim().ToLower();
 
-			if (flname.EndsWith(neighborhood_package))
+			if (flname.EndsWith(NEIGHBORHOOD_PACKAGE))
 			{
 				return filename;
 			}
@@ -1427,39 +1193,17 @@ namespace SimPe
 				? filename
 				: Path.Combine(
 				Path.GetDirectoryName(filename),
-				parts[0] + neighborhood_package
+				parts[0] + NEIGHBORHOOD_PACKAGE
 			);
 		}
-
-		// static string HoodsFile { get { return Path.Combine(Helper.SimPeDataPath, "hoods.xml"); ; } }
-		static System.Collections.Generic.List<string> knownHoods = null;
-		static System.Collections.Generic.List<string> KnownHoods
+		static List<string> KnownHoods => new List<string>
 		{
-			get
-			{
-				if (knownHoods == null)
-				{
-					LoadKnownHoods();
-				}
-
-				return knownHoods;
-			}
-		}
-
-		static void LoadKnownHoods()
-		{
-			knownHoods = new System.Collections.Generic.List<string>();
-			KnownHoods.Add("university");
-			KnownHoods.Add("downtown");
-			KnownHoods.Add("suburb");
-			KnownHoods.Add("vacation");
-			KnownHoods.Add("tutorial");
-			/*
-			 * This is called every time a package is opened from IsNeighborhoodFile below.
-			 * There is no handling for if hoods.xml is missing or corrupt
-			 * Since no new hood types will exist we don't need to use an external file
-			 */
-		}
+			"university",
+			"downtown",
+			"suburb",
+			"vacation",
+			"tutorial"
+		};
 
 		/// <summary>
 		/// Returns true if this is a Neighborhood File
@@ -1468,33 +1212,12 @@ namespace SimPe
 		/// <returns></returns>
 		public static bool IsNeighborhoodFile(string filename)
 		{
-			if (filename == null || filename == "")
-			{
-				return false;
-			}
-
-			filename = Path.GetFileName(filename);
-			filename = filename.Trim().ToLower();
-
-			// if (filename.IndexOf(neighborhood_package) == 4 && filename.Length == 4 + neighborhood_package.Length) return true;
-			// foreach (string hood in KnownHoods) if (filename.IndexOf("_" + hood) == 4 && filename.IndexOf(".package") == 4 + 1 + hood.Length + 3) return true;
-
-			if (filename.Contains("_neighborhood.package"))
-			{
-				return true;
-			}
-
-			foreach (string hood in KnownHoods)
-			{
-				if (
-					filename.Contains("_" + hood + "0") && filename.EndsWith(".package")
-				)
-				{
-					return true; // CJH - removes the 4 char limit
-				}
-			}
-
-			return false;
+			filename = Path.GetFileName(filename)?.Trim().ToLower();
+			return filename != null
+					&& filename != ""
+					&& (filename.Contains(NEIGHBORHOOD_PACKAGE)
+						|| KnownHoods.Any(hood => filename.Contains("_" + hood + "0")
+								&& filename.EndsWith(".package")));
 		}
 
 		/// <summary>

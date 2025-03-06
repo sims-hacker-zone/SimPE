@@ -110,7 +110,7 @@ namespace SimPe.Cache
 					{
 						throw new CacheException(
 							"Unknown Cache File Signature ("
-								+ Helper.HexString(c.Signature)
+								+ $"{c.Signature:X16}"
 								+ ")",
 							flname,
 							0

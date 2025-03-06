@@ -22,7 +22,7 @@ namespace SimPe.Plugin.Anim
 		}
 
 		[Browsable(false)]
-		public AnimationAxisTransformBlock[] AxisSet
+		public List<AnimationAxisTransformBlock> AxisSet
 		{
 			get; private set;
 		}
@@ -31,7 +31,7 @@ namespace SimPe.Plugin.Anim
 			Description("Number of loaded AnimationAxisTransformBlock Items"),
 			Category("Information")
 		]
-		public int AxisCount => AxisSet.Length;
+		public int AxisCount => AxisSet.Count;
 
 		internal int MaxAxisFrameCount
 		{
@@ -114,7 +114,7 @@ namespace SimPe.Plugin.Anim
 			}
 
 			tclist.Sort();
-			for (int part = 0; part < AxisSet.Length; part++)
+			for (int part = 0; part < AxisSet.Count; part++)
 			{
 				AnimationAxisTransformBlock ab = AxisSet[part];
 				if (ab.Locked && exludelocked && ab.Count <= 1)
@@ -353,10 +353,10 @@ namespace SimPe.Plugin.Anim
 			};
 			if (fullclone)
 			{
-				ab.AxisSet = new AnimationAxisTransformBlock[AxisCount];
-				for (int i = 0; i < ab.AxisCount; i++)
+				ab.AxisSet = new List<AnimationAxisTransformBlock>();
+				for (int i = 0; i < AxisCount; i++)
 				{
-					ab.AxisSet[i] = AxisSet[i].CloneBase();
+					ab.AxisSet.Add(AxisSet[i].CloneBase());
 				}
 			}
 
@@ -368,8 +368,7 @@ namespace SimPe.Plugin.Anim
 		/// </summary>
 		public void AddNewAxis()
 		{
-			AxisSet = (AnimationAxisTransformBlock[])
-				Helper.Add(AxisSet, new AnimationAxisTransformBlock(this));
+			AxisSet.Add(new AnimationAxisTransformBlock(this));
 		}
 
 		public void CreateBaseAxisSet()
@@ -379,13 +378,13 @@ namespace SimPe.Plugin.Anim
 
 		public void CreateBaseAxisSet(AnimationTokenType t)
 		{
-			AxisSet = new AnimationAxisTransformBlock[3];
-			for (int i = 0; i < AxisCount; i++)
+			AxisSet = new List<AnimationAxisTransformBlock>();
+			for (int i = 0; i < 3; i++)
 			{
-				AxisSet[i] = new AnimationAxisTransformBlock(this)
+				AxisSet.Add(new AnimationAxisTransformBlock(this)
 				{
 					Type = t
-				};
+				});
 			}
 		}
 
@@ -536,7 +535,7 @@ namespace SimPe.Plugin.Anim
 			datai[3] = 297403888;
 			datai[5] = 297403888;
 			Unknown5Bits = 15;
-			AxisSet = new AnimationAxisTransformBlock[0];
+			AxisSet = new List<AnimationAxisTransformBlock>();
 			TransformationType = FrameType.Unknown;
 		}
 
@@ -575,7 +574,7 @@ namespace SimPe.Plugin.Anim
 		/// <param name="writer">The Stream that receives the Data</param>
 		internal void SerializeData(System.IO.BinaryWriter writer)
 		{
-			SetPart3Count(AxisSet.Length);
+			SetPart3Count(AxisSet.Count);
 
 			writer.Write(datai[0]);
 			writer.Write(datai[1]);
@@ -591,10 +590,10 @@ namespace SimPe.Plugin.Anim
 		/// <param name="reader">The Stream that contains the FileData</param>
 		internal void UnserializePart3Data(System.IO.BinaryReader reader)
 		{
-			AxisSet = new AnimationAxisTransformBlock[GetPart3Count()];
-			for (int i = 0; i < AxisSet.Length; i++)
+			AxisSet = new List<AnimationAxisTransformBlock>();
+			for (int i = 0; i < GetPart3Count(); i++)
 			{
-				AxisSet[i] = new AnimationAxisTransformBlock(this);
+				AxisSet.Add(new AnimationAxisTransformBlock(this));
 				AxisSet[i].UnserializeData(reader);
 			}
 		}
@@ -605,7 +604,7 @@ namespace SimPe.Plugin.Anim
 		/// <param name="writer">The Stream that receives the Data</param>
 		internal void SerializePart3Data(System.IO.BinaryWriter writer)
 		{
-			for (int i = 0; i < AxisSet.Length; i++)
+			for (int i = 0; i < AxisSet.Count; i++)
 			{
 				AxisSet[i].SerializeData(writer);
 			}
@@ -617,7 +616,7 @@ namespace SimPe.Plugin.Anim
 		/// <param name="reader">The Stream that contains the FileData</param>
 		internal void UnserializePart3AddonData(System.IO.BinaryReader reader)
 		{
-			for (int i = 0; i < AxisSet.Length; i++)
+			for (int i = 0; i < AxisSet.Count; i++)
 			{
 				AxisSet[i].UnserializeAddonData(reader);
 			}
@@ -629,7 +628,7 @@ namespace SimPe.Plugin.Anim
 		/// <param name="writer">The Stream that receives the Data</param>
 		internal void SerializePart3AddonData(System.IO.BinaryWriter writer)
 		{
-			for (int i = 0; i < AxisSet.Length; i++)
+			for (int i = 0; i < AxisSet.Count; i++)
 			{
 				AxisSet[i].SerializeAddonData(writer);
 			}
@@ -789,7 +788,7 @@ namespace SimPe.Plugin.Anim
 		public void RemoveUnneededFrames()
 		{
 			const float DELTA = float.Epsilon * 10;
-			for (int blid = AxisSet.Length - 1; blid >= 0; blid--)
+			for (int blid = AxisSet.Count - 1; blid >= 0; blid--)
 			{
 				List<int> remlist = new List<int>();
 				for (int nr = 1; nr < AxisSet[blid].Count - 1; nr++)
@@ -842,8 +841,7 @@ namespace SimPe.Plugin.Anim
 				}
 				else if (AxisSet[blid].Count == 0)
 				{
-					AxisSet = (AnimationAxisTransformBlock[])
-						Helper.Delete(AxisSet, AxisSet[blid]);
+					AxisSet.Remove(AxisSet[blid]);
 				}
 			}
 		}
@@ -860,7 +858,7 @@ namespace SimPe.Plugin.Anim
 				s += "rot";
 			}
 			//s += ", "+this.FrameCount.ToString();
-			for (int i = 0; i < AxisSet.Length; i++)
+			for (int i = 0; i < AxisSet.Count; i++)
 			{
 				s += ", " + AxisSet[i].Count.ToString();
 			}

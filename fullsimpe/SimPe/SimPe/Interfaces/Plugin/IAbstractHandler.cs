@@ -160,7 +160,7 @@ namespace SimPe.Interfaces.Plugin
 				+ ", Version="
 				+ WrapperDescription.Version.ToString()
 				+ ", GUID="
-				+ Helper.HexString(WrapperDescription.UID)
+				+ $"{WrapperDescription.UID:X16}"
 				+ ", FileName="
 				+ WrapperFileName
 				+ ", Type="

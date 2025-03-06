@@ -1493,7 +1493,7 @@ namespace SimPe
 		public int GetWrapperPriority(ulong uid)
 		{
 			XmlRegistryKey rkf = RegistryKey.CreateSubKey("Priorities");
-			object o = rkf.GetValue(Helper.HexString(uid));
+			object o = rkf.GetValue($"{uid:X16}");
 			return o == null ? 0x00000000 : Convert.ToInt32(o);
 		}
 
@@ -1505,7 +1505,7 @@ namespace SimPe
 		public void SetWrapperPriority(ulong uid, int priority)
 		{
 			XmlRegistryKey rkf = RegistryKey.CreateSubKey("Priorities");
-			rkf.SetValue(Helper.HexString(uid), priority);
+			rkf.SetValue($"{uid:X16}", priority);
 		}
 		#endregion
 

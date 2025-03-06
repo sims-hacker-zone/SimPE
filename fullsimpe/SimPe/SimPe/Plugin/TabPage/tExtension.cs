@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -1058,7 +1059,7 @@ namespace SimPe.Plugin.TabPage
 
 				f.ShowDialog();
 
-				ei.Items = (ExtensionItem[])fe.gbIems.Tag;
+				ei.Items = (List<ExtensionItem>)fe.gbIems.Tag;
 				lb_items.Items[lb_items.SelectedIndex] = ei;
 
 				f.Dispose();
@@ -1122,7 +1123,7 @@ namespace SimPe.Plugin.TabPage
 				};
 				f.Controls.Add(scroller);
 
-				for (int i = 4; i < ei.Items.Length; i++)
+				for (int i = 4; i < ei.Items.Count; i++)
 				{
 					ExtensionItem item = ei.Items[i];
 					string[] a = item.Name.Split(new char[] { '(', ',', ')' });
@@ -1145,7 +1146,7 @@ namespace SimPe.Plugin.TabPage
 
 				f.ShowDialog();
 
-				for (int i = 4; i < ei.Items.Length; i++)
+				for (int i = 4; i < ei.Items.Count; i++)
 				{
 					ExtensionItem item = ei.Items[i];
 					int index = scroller.Controls.IndexOfKey(item.Name);
@@ -1251,11 +1252,11 @@ namespace SimPe.Plugin.TabPage
 
 			try
 			{
-				ExtensionItem[] list = (ExtensionItem[])gbIems.Tag;
+				List<ExtensionItem> list = (List<ExtensionItem>)gbIems.Tag;
 				ExtensionItem ei = (ExtensionItem)
 					lb_items.Items[lb_items.SelectedIndex];
 
-				list = (ExtensionItem[])Helper.Delete(list, ei);
+				list.Remove(ei);
 				gbIems.Tag = list;
 				lb_items.Items.Remove(ei);
 
@@ -1279,14 +1280,14 @@ namespace SimPe.Plugin.TabPage
 		{
 			try
 			{
-				ExtensionItem[] list = (ExtensionItem[])gbIems.Tag;
+				List<ExtensionItem> list = (List<ExtensionItem>)gbIems.Tag;
 				ExtensionItem ei = new ExtensionItem
 				{
 					Typecode = (ExtensionItem.ItemTypes)
 					cbtype.Items[cbtype.SelectedIndex]
 				};
 
-				list = (ExtensionItem[])Helper.Add(list, ei);
+				list.Add(ei);
 				gbIems.Tag = list;
 				lb_items.Items.Add(ei);
 

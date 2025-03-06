@@ -315,7 +315,7 @@ namespace SimPe
 			}
 			catch { }
 
-			ToolLoaderExt.Items = new ToolLoaderItemExt[0];
+			ToolLoaderExt.Items = new List<ToolLoaderItemExt>();
 			foreach (ToolLoaderItemExt tli in lbext.Items)
 			{
 				ToolLoaderExt.Add(tli);
@@ -670,7 +670,7 @@ namespace SimPe
 				Top = lbui.Top,
 				Left = lbui.Right + 4,
 				AutoSize = true,
-				Text = "0x" + Helper.HexString(wrapper.WrapperDescription.UID),
+				Text = $"0x{wrapper.WrapperDescription.UID:X16}",
 				Font = new Font(
 				cnt.Font.Name,
 				cnt.Font.Size,

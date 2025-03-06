@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -791,7 +792,7 @@ namespace SimPe.Plugin
 
 		protected void StartSearch(
 			SeekerFunction fkt,
-			Interfaces.Files.IPackedFileDescriptor[] pfds
+			IEnumerable<Interfaces.Files.IPackedFileDescriptor> pfds
 		)
 		{
 			try
@@ -806,7 +807,7 @@ namespace SimPe.Plugin
 				int count = 0;
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
-					pb.Value = count++ * pb.Maximum / pfds.Length;
+					pb.Value = count++ * pb.Maximum / pfds.Count();
 					SearchItem si = fkt(pfd, package, prov);
 					if (si != null)
 					{
@@ -1159,14 +1160,7 @@ namespace SimPe.Plugin
 			LinkLabelLinkClickedEventArgs e
 		)
 		{
-			Interfaces.Files.IPackedFileDescriptor[] pfds =
-				(Interfaces.Files.IPackedFileDescriptor[])
-					Helper.Merge(
-						package.FindFiles(FileTypes.GZPS),
-						package.FindFiles(FileTypes.MMAT),
-						typeof(Interfaces.Files.IPackedFileDescriptor)
-					);
-			StartSearch(new SeekerFunction(GzpsSearch), pfds);
+			StartSearch(new SeekerFunction(GzpsSearch), package.FindFiles(FileTypes.GZPS).Concat(package.FindFiles(FileTypes.MMAT)));
 		}
 
 		private void GuidSearch(

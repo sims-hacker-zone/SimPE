@@ -86,7 +86,7 @@ namespace SimPe.PackedFiles.Ttab
 				+ (
 					item.Count < 0x100 ? Helper.HexString((byte)item.Count)
 					: item.Count < 0x10000 ? Helper.HexString((ushort)item.Count)
-					: Helper.HexString(item.Count)
+					: Helper.HexStringInt(item.Count)
 				);
 			for (int i = 0; i < item.Count; i++)
 			{

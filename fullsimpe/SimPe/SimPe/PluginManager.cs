@@ -368,16 +368,10 @@ namespace SimPe
 		#endregion
 
 		#region External Program Tools
-		IToolAction[] LoadExternalTools()
+		IEnumerable<IToolAction> LoadExternalTools()
 		{
-			ToolLoaderItemExt[] items = ToolLoaderExt.Items;
-			IToolAction[] tools = new IToolAction[items.Length];
-			for (int i = 0; i < items.Length; i++)
-			{
-				tools[i] = new Actions.Default.StartExternalToolAction(items[i]);
-			}
-
-			return tools;
+			return from item in ToolLoaderExt.Items
+				   select new Actions.Default.StartExternalToolAction(item);
 		}
 		#endregion
 

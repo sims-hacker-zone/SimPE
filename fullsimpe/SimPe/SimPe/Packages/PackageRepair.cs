@@ -27,7 +27,7 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Returns the Overall Version of this Package
 		/// </summary>
-		public string Version => "0x" + Helper.HexString(hd.Version);
+		public string Version => $"0x{hd.Version:X16}";
 
 		/// <summary>
 		/// Returns or Sets the Type of the Package
@@ -72,16 +72,16 @@ namespace SimPe.Packages
 
 		public string IndexOffset => "0x" + Helper.HexString(hd.Index.Offset);
 
-		public string IndexSize => "0x" + Helper.HexString(hd.Index.Size);
+		public string IndexSize => "0x" + Helper.HexStringInt(hd.Index.Size);
 
 		public int ResourceCount => hd.Index.Count;
 
-		public string IndexVersion => "0x" + Helper.HexString(hd.Index.Type);
+		public string IndexVersion => "0x" + Helper.HexStringInt(hd.Index.Type);
 
 		public string IndexItemSize => "0x"
-					+ Helper.HexString(hd.Index.ItemSize)
+					+ Helper.HexStringInt(hd.Index.ItemSize)
 					+ " (0x"
-					+ Helper.HexString(hd.Index.Size / hd.Index.Count)
+					+ Helper.HexStringInt(hd.Index.Size / hd.Index.Count)
 					+ ")";
 
 		/// <summary>
@@ -192,9 +192,9 @@ namespace SimPe.Packages
 				{
 					WaitingScreen.UpdateMessage(
 						"0x"
-							+ Helper.HexString(pos)
+							+ $"{pos:X16}"
 							+ " / 0x"
-							+ Helper.HexString(br.BaseStream.Length)
+							+ $"{br.BaseStream.Length:X16}"
 					);
 
 					bool hit = CouldBeIndexItem(br, pos, step, lastitem == -1);

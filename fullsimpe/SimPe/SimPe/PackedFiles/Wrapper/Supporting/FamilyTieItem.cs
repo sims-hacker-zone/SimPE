@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Collections.Generic;
 
 using SimPe.Data;
 
@@ -141,7 +142,7 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		/// <param name="famt">The Parent Wrapper</param>
 		public FamilyTieSim(
 			ushort siminstance,
-			FamilyTieItem[] ties,
+			List<FamilyTieItem> ties,
 			FamilyTies famt
 		)
 			: base(siminstance, famt)
@@ -153,7 +154,7 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		/// <summary>
 		/// Returns / Sets the ties he perticipates in
 		/// </summary>
-		public FamilyTieItem[] Ties
+		public List<FamilyTieItem> Ties
 		{
 			get; set;
 		}
@@ -200,7 +201,7 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 			if (s == null)
 			{
 				s = new FamilyTieItem(type, sdsc.Instance, famt);
-				Ties = (FamilyTieItem[])Helper.Add(Ties, s);
+				Ties.Add(s);
 			}
 			s.Type = type;
 			return s;
@@ -213,9 +214,9 @@ namespace SimPe.PackedFiles.Wrapper.Supporting
 		/// <returns>true, if the Tie was removed</returns>
 		public bool RemoveTie(FamilyTieItem fti)
 		{
-			int len = Ties.Length;
-			Ties = (FamilyTieItem[])Helper.Delete(Ties, fti);
-			return Ties.Length < len;
+			int len = Ties.Count;
+			Ties.Remove(fti);
+			return Ties.Count < len;
 		}
 	}
 

@@ -258,10 +258,10 @@ namespace SimPe.Plugin
 					md.GetProperty("stdMatBaseTextureName").Value = /*groups +*/
 					Hashes.StripHashFromName(txtrname);
 
-					string[] files = new string[1];
-					files[0] = /*groups +*/
-					Hashes.StripHashFromName(txtrname);
-					md.Listing = files;
+					md.Listing = new System.Collections.Generic.List<string>
+					{
+						Hashes.StripHashFromName(txtrname)
+					};
 				}
 			}
 

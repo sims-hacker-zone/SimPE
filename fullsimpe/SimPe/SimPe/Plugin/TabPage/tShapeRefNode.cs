@@ -994,7 +994,7 @@ namespace SimPe.Plugin.TabPage
 				tb_srn_a_1.Text = "0x" + Helper.HexString(a.Unknown1);
 				tb_srn_a_2.Text = "0x" + Helper.HexString((uint)a.Unknown2);
 
-				srn.ItemsA = (ShapeRefNodeItem_A[])Helper.Add(srn.ItemsA, a);
+				srn.ItemsA.Add(a);
 				lb_srn_a.Items.Add(a);
 
 				srn.Changed = true;
@@ -1031,7 +1031,7 @@ namespace SimPe.Plugin.TabPage
 				ShapeRefNodeItem_A a = (ShapeRefNodeItem_A)
 					lb_srn_a.Items[lb_srn_a.SelectedIndex];
 
-				srn.ItemsA = (ShapeRefNodeItem_A[])Helper.Delete(srn.ItemsA, a);
+				srn.ItemsA.Remove(a);
 				lb_srn_a.Items.Remove(a);
 
 				srn.Changed = true;
@@ -1137,7 +1137,7 @@ namespace SimPe.Plugin.TabPage
 					Name = tb_srn_b_name.Text
 				};
 
-				srn.ItemsB = (ShapeRefNodeItem_B[])Helper.Add(srn.ItemsB, b);
+				srn.ItemsB.Add(b);
 				lb_srn_b.Items.Add(b);
 				srn.Changed = true;
 			}
@@ -1173,7 +1173,7 @@ namespace SimPe.Plugin.TabPage
 				ShapeRefNodeItem_B b = (ShapeRefNodeItem_B)
 					lb_srn_b.Items[lb_srn_b.SelectedIndex];
 
-				srn.ItemsB = (ShapeRefNodeItem_B[])Helper.Delete(srn.ItemsB, b);
+				srn.ItemsB.Remove(b);
 				lb_srn_b.Items.Remove(b);
 
 				srn.Changed = true;

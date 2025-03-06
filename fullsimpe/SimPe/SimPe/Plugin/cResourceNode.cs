@@ -78,7 +78,7 @@ namespace SimPe.Plugin
 			get; private set;
 		}
 
-		public ResourceNodeItem[] Items
+		public List<ResourceNodeItem> Items
 		{
 			get; set;
 		}
@@ -107,7 +107,7 @@ namespace SimPe.Plugin
 			sgres = new SGResource(null);
 			GraphNode = new ObjectGraphNode(null);
 			TreeNode = new CompositionTreeNode(null);
-			Items = new ResourceNodeItem[0];
+			Items = new List<ResourceNodeItem>();
 
 			version = 0x07;
 			TypeCode = 0x01;
@@ -212,10 +212,12 @@ namespace SimPe.Plugin
 				GraphNode.Unserialize(reader);
 				GraphNode.BlockID = myid;
 
-				Items = new ResourceNodeItem[reader.ReadByte()];
-				for (int i = 0; i < Items.Length; i++)
+				byte count = reader.ReadByte();
+
+				Items = new List<ResourceNodeItem>();
+				for (int i = 0; i < count; i++)
 				{
-					Items[i] = new ResourceNodeItem();
+					Items.Add(new ResourceNodeItem());
 					Items[i].Unserialize(reader);
 				}
 				Unknown1 = reader.ReadInt32();
@@ -225,8 +227,10 @@ namespace SimPe.Plugin
 				GraphNode.Unserialize(reader);
 				GraphNode.BlockID = myid;
 
-				Items = new ResourceNodeItem[1];
-				Items[0] = new ResourceNodeItem();
+				Items = new List<ResourceNodeItem>
+				{
+					[0] = new ResourceNodeItem()
+				};
 				Items[0].Unserialize(reader);
 			}
 			else
@@ -268,8 +272,8 @@ namespace SimPe.Plugin
 				writer.Write(GraphNode.BlockID);
 				GraphNode.Serialize(writer);
 
-				writer.Write((byte)Items.Length);
-				for (int i = 0; i < Items.Length; i++)
+				writer.Write((byte)Items.Count);
+				for (int i = 0; i < Items.Count; i++)
 				{
 					Items[i].Serialize(writer);
 				}
@@ -282,9 +286,9 @@ namespace SimPe.Plugin
 				writer.Write(GraphNode.BlockID);
 				GraphNode.Serialize(writer);
 
-				if (Items.Length < 1)
+				if (Items.Count < 1)
 				{
-					Items = new ResourceNodeItem[1];
+					Items = new List<ResourceNodeItem>() { new ResourceNodeItem() };
 				}
 
 				Items[0].Serialize(writer);
@@ -363,7 +367,7 @@ namespace SimPe.Plugin
 			}
 
 			tResourceNode.lb_rn.Items.Clear();
-			for (int i = 0; i < Items.Length; i++)
+			for (int i = 0; i < Items.Count; i++)
 			{
 				tResourceNode.lb_rn.Items.Add(Items[i]);
 			}
@@ -397,7 +401,7 @@ namespace SimPe.Plugin
 			sgres = null;
 			GraphNode = null;
 			TreeNode = null;
-			Items = new ResourceNodeItem[0];
+			Items = null;
 		}
 
 		#endregion

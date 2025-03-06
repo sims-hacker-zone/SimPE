@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
 using SimPe.Interfaces.Plugin;
@@ -465,15 +466,7 @@ namespace SimPe.PackedFiles.Cpf
 
 		private void CpfUpdate()
 		{
-			Cpf wrp = (Cpf)wrapper;
-
-			CpfItem[] items = new CpfItem[lbcpf.Items.Count];
-			for (int i = 0; i < items.Length; i++)
-			{
-				items[i] = (CpfItem)lbcpf.Items[i];
-			}
-
-			wrp.Items = items;
+			((Cpf)wrapper).Items = lbcpf.Items.Cast<CpfItem>().ToList();
 		}
 
 		private void CpfCommit(object sender, EventArgs e)

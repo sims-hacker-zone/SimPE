@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 using SimPe.Data;
 using SimPe.Interfaces.Plugin;
@@ -88,13 +89,14 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				ushort instance = reader.ReadUInt16();
 				int blockdel = reader.ReadInt32();
-				FamilyTieItem[] items = new FamilyTieItem[reader.ReadInt32()];
-				for (int k = 0; k < items.Length; k++)
+				int count2 = reader.ReadInt32();
+				List<FamilyTieItem> items = new List<FamilyTieItem>();
+				for (int k = 0; k < count2; k++)
 				{
 					MetaData.FamilyTieTypes type = (MetaData.FamilyTieTypes)
 						reader.ReadUInt32();
 					ushort tinstance = reader.ReadUInt16();
-					items[k] = new FamilyTieItem(type, tinstance, this);
+					items.Add(new FamilyTieItem(type, tinstance, this));
 				}
 				FamilyTieSim simtie = new FamilyTieSim(instance, items, this)
 				{
@@ -113,7 +115,7 @@ namespace SimPe.PackedFiles.Wrapper
 			{
 				writer.Write(sim.Instance);
 				writer.Write(sim.BlockDelimiter);
-				writer.Write(sim.Ties.Length);
+				writer.Write(sim.Ties.Count);
 				foreach (FamilyTieItem tie in sim.Ties)
 				{
 					writer.Write((uint)tie.Type);
@@ -164,7 +166,7 @@ namespace SimPe.PackedFiles.Wrapper
 			FamilyTieSim s = FindTies(sdsc);
 			if (s == null)
 			{
-				s = new FamilyTieSim(sdsc.Instance, new FamilyTieItem[0], this);
+				s = new FamilyTieSim(sdsc.Instance, new List<FamilyTieItem>(), this);
 				sims.Add(s);
 			}
 			return s;

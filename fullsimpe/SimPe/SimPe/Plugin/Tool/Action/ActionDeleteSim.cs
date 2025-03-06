@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Linq;
 
 using SimPe.Data;
 using SimPe.Forms.MainUI;
@@ -246,23 +247,7 @@ namespace SimPe.Plugin.Tool.Action
 					if (fts.Instance != inst)
 					{
 						sims.Add(fts);
-
-						ArrayList items = new ArrayList();
-						foreach (
-							PackedFiles.Wrapper.Supporting.FamilyTieItem fti in fts.Ties
-						)
-						{
-							if (fti.Instance != inst)
-							{
-								items.Add(fti);
-							}
-						}
-
-						fts.Ties =
-							new PackedFiles.Wrapper.Supporting.FamilyTieItem[
-								items.Count
-							];
-						items.CopyTo(fts.Ties);
+						fts.Ties = (from fti in fts.Ties where fti.Instance != inst select fti).ToList();
 					}
 				}
 
@@ -394,21 +379,11 @@ namespace SimPe.Plugin.Tool.Action
 					new PackedFiles.Wrapper.ExtSDesc();
 				sdsc.ProcessData(pfd, pkg);
 
-				foreach (uint i in sdsc.Relations.SimInstances)
-				{
-					if (i != inst)
-					{
-						list.Add((ushort)i);
-					}
-				}
+				sdsc.Relations.SimInstances = (from i in sdsc.Relations.SimInstances
+											   where i != inst
+											   select i).ToList();
 
-				if (list.Count < sdsc.Relations.SimInstances.Length)
-				{
-					sdsc.Relations.SimInstances = new ushort[list.Count];
-					list.CopyTo(sdsc.Relations.SimInstances);
-
-					sdsc.SynchronizeUserData();
-				}
+				sdsc.SynchronizeUserData();
 			}
 		}
 

@@ -702,9 +702,10 @@ namespace SimPe.Plugin
 
 									md.FindProperty("compositeBaseTextureName").Value =
 										txmtname;
-									string[] list = new string[1];
-									list[0] = txmtname;
-									md.Listing = list;
+									md.Listing = new System.Collections.Generic.List<string>
+									{
+										txmtname
+									};
 								}
 							}
 						}
@@ -1019,9 +1020,10 @@ namespace SimPe.Plugin
 				}
 
 				md.FindProperty("compositeBaseTextureName").Value = txmtname;
-				string[] list = new string[1];
-				list[0] = txmtname;
-				md.Listing = list;
+				md.Listing = new System.Collections.Generic.List<string>
+				{
+					txmtname
+				};
 
 				if (makeups)
 				{

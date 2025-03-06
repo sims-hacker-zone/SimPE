@@ -311,7 +311,7 @@ namespace SimPe.Plugin
 			}
 
 			tTransformNode.tb_tn_ver.Text = "0x" + Helper.HexString(version);
-			tTransformNode.tb_tn_ukn.Text = "0x" + Helper.HexString(JointReference);
+			tTransformNode.tb_tn_ukn.Text = "0x" + Helper.HexStringInt(JointReference);
 
 			tTransformNode.tb_tn_tx.Text = Transformation.Translation.X.ToString("N6");
 			tTransformNode.tb_tn_ty.Text = Transformation.Translation.Y.ToString("N6");

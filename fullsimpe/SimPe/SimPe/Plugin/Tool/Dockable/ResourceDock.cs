@@ -1017,7 +1017,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 			if (exclude != tbHex)
 			{
-				tbHex.Text = Helper.HexString(val);
+				tbHex.Text = $"{val:X16}";
 			}
 
 			if (exclude != tbBin)

@@ -38,7 +38,7 @@ namespace SimPe.Windows.Forms
 				ResourceTreeNodeExt node = new ResourceTreeNodeExt(
 					inst,
 					list,
-					"0x" + Helper.HexString(inst)
+					$"0x{inst:X16}"
 				);
 				if (group)
 				{

@@ -496,7 +496,7 @@ gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 36
 			try
 			{
 				int FamFund = Convert.ToInt32(tbFunds.Text);
-				string monee = Helper.HexString(FamFund);
+				string monee = Helper.HexStringInt(FamFund);
 				filedata[(currentsectionindex * 42) + 34] = Convert.ToUInt16(
 					monee.Substring(0, 4),
 					16
@@ -574,7 +574,7 @@ gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 36
 				tbFriends.ForeColor = SystemColors.WindowText;
 				tbFunds.ForeColor = Color.Red;
 				int FamFund = Convert.ToInt32(tbFunds.Text);
-				string monee = Helper.HexString(FamFund);
+				string monee = Helper.HexStringInt(FamFund);
 				tbFunds.ForeColor = SystemColors.WindowText;
 
 				sections++;

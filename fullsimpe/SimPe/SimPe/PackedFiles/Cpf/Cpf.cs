@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 
@@ -42,10 +43,10 @@ namespace SimPe.PackedFiles.Cpf
 		/// <summary>
 		/// Returns/Sets the Constants
 		/// </summary>
-		public CpfItem[] Items
+		public List<CpfItem> Items
 		{
 			get; set;
-		} = new CpfItem[0];
+		} = new List<CpfItem>();
 		#endregion
 
 		/// <summary>
@@ -88,7 +89,7 @@ namespace SimPe.PackedFiles.Cpf
 				}
 				else
 				{
-					Items = (CpfItem[])Helper.Add(Items, item);
+					Items.Add(item);
 				}
 			}
 		}
@@ -200,7 +201,7 @@ namespace SimPe.PackedFiles.Cpf
 			xmlfile.Load(strr);
 
 			XmlNodeList XMLData = xmlfile.GetElementsByTagName("cGZPropertySetString");
-			ArrayList list = new ArrayList();
+			List<CpfItem> list = new List<CpfItem>();
 
 			//Process all Root Node Entries
 			for (int i = 0; i < XMLData.Count; i++)
@@ -213,7 +214,7 @@ namespace SimPe.PackedFiles.Cpf
 
 					if (subnode.LocalName.Trim().ToLower() == "anyuint32")
 					{
-						item.Datatype = Data.DataTypes.dtUInteger;
+						item.Datatype = DataTypes.dtUInteger;
 						item.UIntegerValue = subnode.InnerText.IndexOf("-") != -1
 							? (uint)
 								Convert.ToInt32(subnode.InnerText)
@@ -229,17 +230,17 @@ namespace SimPe.PackedFiles.Cpf
 						|| subnode.LocalName.Trim().ToLower() == "anysint32"
 					)
 					{
-						item.Datatype = Data.DataTypes.dtInteger;
+						item.Datatype = DataTypes.dtInteger;
 						item.IntegerValue = subnode.InnerText.IndexOf("0x") == -1 ? Convert.ToInt32(subnode.InnerText) : Convert.ToInt32(subnode.InnerText, 16);
 					}
 					else if (subnode.LocalName.Trim().ToLower() == "anystring")
 					{
-						item.Datatype = Data.DataTypes.dtString;
+						item.Datatype = DataTypes.dtString;
 						item.StringValue = subnode.InnerText;
 					}
 					else if (subnode.LocalName.Trim().ToLower() == "anyfloat32")
 					{
-						item.Datatype = Data.DataTypes.dtSingle;
+						item.Datatype = DataTypes.dtSingle;
 						item.SingleValue = Convert.ToSingle(
 							subnode.InnerText,
 							System.Globalization.CultureInfo.InvariantCulture
@@ -247,7 +248,7 @@ namespace SimPe.PackedFiles.Cpf
 					}
 					else if (subnode.LocalName.Trim().ToLower() == "anyboolean")
 					{
-						item.Datatype = Data.DataTypes.dtBoolean;
+						item.Datatype = DataTypes.dtBoolean;
 						item.BooleanValue = subnode.InnerText.Trim().ToLower() == "true" || subnode.InnerText.Trim().ToLower() != "false" && Convert.ToInt32(subnode.InnerText) != 0;
 					}
 					else if (subnode.LocalName.Trim().ToLower() == "#comment")
@@ -268,8 +269,7 @@ namespace SimPe.PackedFiles.Cpf
 				}
 			} //for i
 
-			Items = new CpfItem[list.Count];
-			list.CopyTo(Items);
+			Items = list;
 		}
 
 		/// <summary>
@@ -286,11 +286,11 @@ namespace SimPe.PackedFiles.Cpf
 
 				return;
 			}
-			Items = new CpfItem[reader.ReadUInt32()];
+			uint count = reader.ReadUInt32();
 
-			for (int i = 0; i < Items.Length; i++)
+			for (int i = 0; i < count; i++)
 			{
-				Items[i] = new CpfItem();
+				Items.Add(new CpfItem());
 				Items[i].Unserialize(reader);
 			}
 		}
@@ -311,9 +311,9 @@ namespace SimPe.PackedFiles.Cpf
 			}
 
 			writer.Write(Id);
-			writer.Write((uint)Items.Length);
+			writer.Write((uint)Items.Count);
 
-			for (int i = 0; i < Items.Length; i++)
+			for (int i = 0; i < Items.Count; i++)
 			{
 				Items[i].Serialize(writer);
 			}
@@ -386,15 +386,7 @@ namespace SimPe.PackedFiles.Cpf
 		{
 			base.Dispose();
 
-			if (Items != null)
-			{
-				for (int i = Items.Length - 1; i >= 0; i--)
-				{
-					Items[i]?.Dispose();
-				}
-			}
-
-			Items = new CpfItem[0];
+			Items?.ForEach(item => item?.Dispose());
 			Items = null;
 		}
 	}

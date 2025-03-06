@@ -500,8 +500,7 @@ namespace SimPe.Plugin.TabPage
 
 			Plugin.MaterialDefinition md = (Plugin.MaterialDefinition)
 				Tag;
-			md.Properties = (MaterialDefinitionProperty[])
-				Helper.Add(md.Properties, prop);
+			md.Properties.Add(prop);
 
 			md.Changed = true;
 		}
@@ -523,8 +522,7 @@ namespace SimPe.Plugin.TabPage
 
 			Plugin.MaterialDefinition md = (Plugin.MaterialDefinition)
 				Tag;
-			md.Properties = (MaterialDefinitionProperty[])
-				Helper.Delete(md.Properties, lbprop.Items[lbprop.SelectedIndex]);
+			md.Properties.Remove((MaterialDefinitionProperty)lbprop.Items[lbprop.SelectedIndex]);
 			md.Changed = true;
 			lbprop.Items.Remove(lbprop.Items[lbprop.SelectedIndex]);
 		}
