@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Collections.Generic;
 using System.IO;
 
 using SimPe.Data;
@@ -1156,13 +1157,12 @@ namespace SimPe.PackedFiles.Wrapper
 		internal SimRelationAttribute(SDesc parent)
 		{
 			this.parent = parent;
-			SimInstances = new ushort[0];
 		}
 
-		public ushort[] SimInstances
+		public List<ushort> SimInstances
 		{
 			get; set;
-		}
+		} = new List<ushort>();
 
 		/// <summary>
 		/// Returns the SimDescription of the Sim with the passed Instance
@@ -2486,29 +2486,19 @@ namespace SimPe.PackedFiles.Wrapper
 				startpos + RelationPosition,
 				SeekOrigin.Begin
 			);
-			Relations.SimInstances = new ushort[reader.ReadUInt32()];
+
+			uint siminstancescount = reader.ReadUInt32();
+			Relations.SimInstances = new List<ushort>();
 
 			int ct = 0;
-			for (int i = 0; i < Relations.SimInstances.Length; i++)
+			for (int i = 0; i < siminstancescount; i++)
 			{
 				if (reader.BaseStream.Length - reader.BaseStream.Position < 4)
 				{
 					continue;
 				}
-				//reader.ReadUInt16();			//yet unknown
-				Relations.SimInstances[i] = (ushort)reader.ReadUInt32();
+				Relations.SimInstances.Add((ushort)reader.ReadUInt32());
 				ct++;
-			}
-
-			//something went wrong while reading the SimInstances
-			if (ct != Relations.SimInstances.Length)
-			{
-				ushort[] old = Relations.SimInstances;
-				Relations.SimInstances = new ushort[ct];
-				for (int i = 0; i < ct; i++)
-				{
-					Relations.SimInstances[i] = old[i];
-				}
 			}
 
 			EndByte = reader.BaseStream.Length - reader.BaseStream.Position > 0 ? reader.ReadByte() : (byte)0x01;
@@ -2746,9 +2736,9 @@ namespace SimPe.PackedFiles.Wrapper
 				startpos + RelationPosition,
 				SeekOrigin.Begin
 			);
-			writer.Write((uint)Relations.SimInstances.Length);
+			writer.Write((uint)Relations.SimInstances.Count);
 
-			for (int i = 0; i < Relations.SimInstances.Length; i++)
+			for (int i = 0; i < Relations.SimInstances.Count; i++)
 			{
 				writer.Write((uint)Relations.SimInstances[i]);
 			}

@@ -1,5 +1,6 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace SimPe.Plugin.Anim
@@ -18,7 +19,7 @@ namespace SimPe.Plugin.Anim
 		public AnimResourceConst Animation => (AnimResourceConst)Parent.Blocks[0];
 
 		[Browsable(false)]
-		public AnimationFrameBlock[] Part2
+		public List<AnimationFrameBlock> Part2
 		{
 			get; set;
 		}
@@ -27,10 +28,10 @@ namespace SimPe.Plugin.Anim
 			Description("Number of loaded AnimationFrameBlock Items"),
 			Category("Information")
 		]
-		public int Part2Count => Part2.Length;
+		public int Part2Count => Part2.Count;
 
 		[Browsable(false)]
-		public AnimBlock4[] Part4
+		public List<AnimBlock4> Part4
 		{
 			get; private set;
 		}
@@ -39,7 +40,7 @@ namespace SimPe.Plugin.Anim
 			Description("Number of loaded AnimBlock4 Items"),
 			Category("Information")
 		]
-		public int Part4Count => Part4.Length;
+		public int Part4Count => Part4.Count;
 
 		uint[] datai;
 
@@ -127,8 +128,8 @@ namespace SimPe.Plugin.Anim
 		{
 			datai = new uint[6];
 			datas = new short[4];
-			Part2 = new AnimationFrameBlock[0];
-			Part4 = new AnimBlock4[0];
+			Part2 = new List<AnimationFrameBlock>();
+			Part4 = new List<AnimBlock4>();
 			Parent = parent;
 		}
 
@@ -179,10 +180,10 @@ namespace SimPe.Plugin.Anim
 		/// <param name="reader">The Stream that contains the FileData</param>
 		internal void UnserializePart2Data(System.IO.BinaryReader reader)
 		{
-			Part2 = new AnimationFrameBlock[GetPart2Count()];
-			for (int i = 0; i < Part2.Length; i++)
+			Part2 = new List<AnimationFrameBlock>();
+			for (int i = 0; i < GetPart2Count(); i++)
 			{
-				Part2[i] = new AnimationFrameBlock(this);
+				Part2.Add(new AnimationFrameBlock(this));
 				Part2[i].UnserializeData(reader);
 			}
 		}
@@ -193,7 +194,7 @@ namespace SimPe.Plugin.Anim
 		/// <param name="writer">The Stream that receives the Data</param>
 		internal void SerializePart2Data(System.IO.BinaryWriter writer)
 		{
-			for (int i = 0; i < Part2.Length; i++)
+			for (int i = 0; i < Part2.Count; i++)
 			{
 				Part2[i].SerializeData(writer);
 			}
@@ -206,7 +207,7 @@ namespace SimPe.Plugin.Anim
 		internal int UnserializePart2Name(System.IO.BinaryReader reader)
 		{
 			int len = 0;
-			for (int i = 0; i < Part2.Length; i++)
+			for (int i = 0; i < Part2.Count; i++)
 			{
 				len += Part2[i].UnserializeName(reader);
 			}
@@ -221,7 +222,7 @@ namespace SimPe.Plugin.Anim
 		internal int SerializePart2Name(System.IO.BinaryWriter writer)
 		{
 			int len = 0;
-			for (int i = 0; i < Part2.Length; i++)
+			for (int i = 0; i < Part2.Count; i++)
 			{
 				len += Part2[i].SerializeName(writer);
 			}
@@ -235,7 +236,7 @@ namespace SimPe.Plugin.Anim
 		/// <param name="reader">The Stream that contains the FileData</param>
 		internal void UnserializePart3Data(System.IO.BinaryReader reader)
 		{
-			for (int i = 0; i < Part2.Length; i++)
+			for (int i = 0; i < Part2.Count; i++)
 			{
 				Part2[i].UnserializePart3Data(reader);
 			}
@@ -247,7 +248,7 @@ namespace SimPe.Plugin.Anim
 		/// <param name="writer">The Stream that receives the Data</param>
 		internal void SerializePart3Data(System.IO.BinaryWriter writer)
 		{
-			for (int i = 0; i < Part2.Length; i++)
+			for (int i = 0; i < Part2.Count; i++)
 			{
 				Part2[i].SerializePart3Data(writer);
 			}
@@ -259,7 +260,7 @@ namespace SimPe.Plugin.Anim
 		/// <param name="reader">The Stream that contains the FileData</param>
 		internal void UnserializePart3AddonData(System.IO.BinaryReader reader)
 		{
-			for (int i = 0; i < Part2.Length; i++)
+			for (int i = 0; i < Part2.Count; i++)
 			{
 				Part2[i].UnserializePart3AddonData(reader);
 			}
@@ -271,7 +272,7 @@ namespace SimPe.Plugin.Anim
 		/// <param name="writer">The Stream that receives the Data</param>
 		internal void SerializePart3AddonData(System.IO.BinaryWriter writer)
 		{
-			for (int i = 0; i < Part2.Length; i++)
+			for (int i = 0; i < Part2.Count; i++)
 			{
 				Part2[i].SerializePart3AddonData(writer);
 			}
@@ -283,10 +284,10 @@ namespace SimPe.Plugin.Anim
 		/// <param name="reader">The Stream that contains the FileData</param>
 		internal void UnserializePart4Data(System.IO.BinaryReader reader)
 		{
-			Part4 = new AnimBlock4[GetPart4Count()];
-			for (int i = 0; i < Part4.Length; i++)
+			Part4 = new List<AnimBlock4>();
+			for (int i = 0; i < GetPart4Count(); i++)
 			{
-				Part4[i] = new AnimBlock4();
+				Part4.Add(new AnimBlock4());
 				Part4[i].UnserializeData(reader);
 			}
 		}
@@ -297,7 +298,7 @@ namespace SimPe.Plugin.Anim
 		/// <param name="writer">The Stream that receives the Data</param>
 		internal void SerializePart4Data(System.IO.BinaryWriter writer)
 		{
-			for (int i = 0; i < Part4.Length; i++)
+			for (int i = 0; i < Part4.Count; i++)
 			{
 				Part4[i].SerializeData(writer);
 			}
@@ -309,7 +310,7 @@ namespace SimPe.Plugin.Anim
 		/// <param name="reader">The Stream that contains the FileData</param>
 		internal void UnserializePart5Data(System.IO.BinaryReader reader)
 		{
-			for (int i = 0; i < Part4.Length; i++)
+			for (int i = 0; i < Part4.Count; i++)
 			{
 				Part4[i].UnserializePart5Data(reader);
 			}
@@ -321,7 +322,7 @@ namespace SimPe.Plugin.Anim
 		/// <param name="writer">The Stream that receives the Data</param>
 		internal void SerializePart5Data(System.IO.BinaryWriter writer)
 		{
-			for (int i = 0; i < Part4.Length; i++)
+			for (int i = 0; i < Part4.Count; i++)
 			{
 				Part4[i].SerializePart5Data(writer);
 			}

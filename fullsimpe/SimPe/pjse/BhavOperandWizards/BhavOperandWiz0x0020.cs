@@ -343,7 +343,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0020
 			internalchg = true;
 			((TextBox)sender).Text =
 				"0x"
-				+ SimPe.Helper.HexString(
+				+ SimPe.Helper.HexStringInt(
 					inst.Operands[0x00]
 						| (inst.Operands[0x01] << 8)
 						| (inst.Operands[0x02] << 16)

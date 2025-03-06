@@ -252,7 +252,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 
 			tbGUID.Text =
 				"0x"
-				+ SimPe.Helper.HexString(
+				+ SimPe.Helper.HexStringInt(
 					ops1[0x05]
 						| (ops1[0x06] << 8)
 						| (ops1[0x07] << 16)
@@ -905,7 +905,7 @@ namespace pjse.BhavOperandWizards.Wiz0x0032
 			internalchg = true;
 			((TextBox)sender).Text =
 				"0x"
-				+ SimPe.Helper.HexString(
+				+ SimPe.Helper.HexStringInt(
 					inst.Operands[0x05]
 						| (inst.Operands[0x06] << 8)
 						| (inst.Operands[0x07] << 16)

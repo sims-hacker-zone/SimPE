@@ -745,17 +745,13 @@ namespace SimPe.PackedFiles.Lifo
 		protected LevelInfo SelectedLevelInfo()
 		{
 			//add a MipMapBlock if it doesnt already exist
-			LevelInfo li = null;
+			LevelInfo li;
 			if (cbitem.SelectedIndex < 0)
 			{
 				Lifo wrp = wrapper;
 				li = new LevelInfo(wrp);
 				li.NameResource.FileName = "Unknown";
-
-				IRcolBlock[] irc = new IRcolBlock[wrp.Blocks.Length + 1];
-				wrp.Blocks.CopyTo(irc, 0);
-				irc[irc.Length - 1] = li;
-				wrp.Blocks = irc;
+				wrp.Blocks.Add(li);
 				cbitem.Items.Add(li);
 				cbitem.SelectedIndex = cbitem.Items.Count - 1;
 			}
@@ -1020,18 +1016,14 @@ namespace SimPe.PackedFiles.Lifo
 		protected LevelInfo SelectedImageData()
 		{
 			//add a MipMapBlock if it doesnt already exist
-			LevelInfo id = null;
+			LevelInfo id;
 			if (cbitem.SelectedIndex < 0)
 			{
 				Lifo wrp = wrapper;
 				id = new LevelInfo(wrp);
 				id.NameResource.FileName = "Unknown";
 				id.Format = (ImageLoader.TxtrFormats)cbformats.SelectedItem;
-
-				IRcolBlock[] irc = new IRcolBlock[wrp.Blocks.Length + 1];
-				wrp.Blocks.CopyTo(irc, 0);
-				irc[irc.Length - 1] = id;
-				wrp.Blocks = irc;
+				wrp.Blocks.Add(id);
 				cbitem.Items.Add(id);
 				cbitem.SelectedIndex = cbitem.Items.Count - 1;
 			}

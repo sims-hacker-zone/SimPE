@@ -59,7 +59,7 @@ namespace SimPe.Windows.Forms
 									+ ")";
 
 			subitems[5] = "0x" + Helper.HexString(pfd.Descriptor.Offset);
-			subitems[6] = "0x" + Helper.HexString(pfd.Descriptor.Size);
+			subitems[6] = "0x" + Helper.HexStringInt(pfd.Descriptor.Size);
 
 			SubItems.Clear();
 			Text = subitems[0];
@@ -167,7 +167,7 @@ namespace SimPe.Windows.Forms
 											+ ")";
 
 				SubItems[5].Text = "0x" + Helper.HexString(pfd.Descriptor.Offset);
-				SubItems[6].Text = "0x" + Helper.HexString(pfd.Descriptor.Size);
+				SubItems[6].Text = "0x" + Helper.HexStringInt(pfd.Descriptor.Size);
 			}
 
 			System.Drawing.Color fg = System.Drawing.SystemColors.WindowText;

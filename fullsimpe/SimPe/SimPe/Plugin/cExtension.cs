@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Collections.Generic;
 
 using SimPe.Geometry;
 
@@ -92,7 +93,7 @@ namespace SimPe.Plugin
 			get; set;
 		}
 
-		public ExtensionItem[] Items
+		public List<ExtensionItem> Items
 		{
 			get; set;
 		}
@@ -114,7 +115,7 @@ namespace SimPe.Plugin
 			varname = "";
 			Translation = new Vector3f();
 			Single = 0;
-			Items = new ExtensionItem[0];
+			Items = new List<ExtensionItem>();
 			Rotation = new Quaternion();
 			Data = new byte[0];
 			String = "";
@@ -153,10 +154,11 @@ namespace SimPe.Plugin
 				}
 				case ItemTypes.Array:
 				{
-					Items = new ExtensionItem[reader.ReadUInt32()];
-					for (int i = 0; i < Items.Length; i++)
+					uint itemcount = reader.ReadUInt32();
+					Items = new List<ExtensionItem>();
+					for (int i = 0; i < itemcount; i++)
 					{
-						Items[i] = new ExtensionItem();
+						Items.Add(new ExtensionItem());
 						Items[i].Unserialize(reader);
 					}
 					break;
@@ -178,7 +180,7 @@ namespace SimPe.Plugin
 						"Unknown Extension Item 0x"
 							+ Helper.HexString((byte)Typecode)
 							+ "\n\nPosition: 0x"
-							+ Helper.HexString(reader.BaseStream.Position)
+							+ $"{reader.BaseStream.Position:X16}"
 					);
 				}
 			}
@@ -221,8 +223,8 @@ namespace SimPe.Plugin
 				}
 				case ItemTypes.Array:
 				{
-					writer.Write((uint)Items.Length);
-					for (int i = 0; i < Items.Length; i++)
+					writer.Write((uint)Items.Count);
+					for (int i = 0; i < Items.Count; i++)
 					{
 						Items[i].Serialize(writer);
 					}
@@ -275,7 +277,7 @@ namespace SimPe.Plugin
 				}
 				case ItemTypes.Array:
 				{
-					name += Items.Length.ToString() + " items";
+					name += Items.Count.ToString() + " items";
 					break;
 				}
 				case ItemTypes.Rotation:
@@ -319,7 +321,7 @@ namespace SimPe.Plugin
 			set => varname = value;
 		}
 
-		public ExtensionItem[] Items
+		public List<ExtensionItem> Items
 		{
 			get; set;
 		}
@@ -337,7 +339,7 @@ namespace SimPe.Plugin
 		public Extension(Rcol parent)
 			: base(parent)
 		{
-			Items = new ExtensionItem[0];
+			Items = new List<ExtensionItem>();
 			version = 0x03;
 			TypeCode = 0x07;
 			data = new byte[0];
@@ -381,22 +383,25 @@ namespace SimPe.Plugin
 					sz = 31;
 				}
 
-				Items = new ExtensionItem[1];
-				ExtensionItem ei = new ExtensionItem
+				Items = new List<ExtensionItem>
 				{
-					Typecode = ExtensionItem.ItemTypes.Binary,
-					Data = reader.ReadBytes(sz)
+					new ExtensionItem
+					{
+						Typecode = ExtensionItem.ItemTypes.Binary,
+						Data = reader.ReadBytes(sz)
+					}
 				};
-				Items[0] = ei;
 			}
 			else
 			{
 				varname = reader.ReadString();
 
-				Items = new ExtensionItem[reader.ReadUInt32()];
-				for (int i = 0; i < Items.Length; i++)
+				uint count = reader.ReadUInt32();
+
+				Items = new List<ExtensionItem>();
+				for (int i = 0; i < count; i++)
 				{
-					Items[i] = new ExtensionItem();
+					Items.Add(new ExtensionItem());
 					Items[i].Unserialize(reader);
 				}
 			}
@@ -445,7 +450,7 @@ namespace SimPe.Plugin
 					sz = 31;
 				}
 
-				if (Items.Length > 0)
+				if (Items.Count > 0)
 				{
 					data = Items[0].Data;
 				}
@@ -457,8 +462,8 @@ namespace SimPe.Plugin
 			{
 				writer.Write(varname);
 
-				writer.Write((uint)Items.Length);
-				for (int i = 0; i < Items.Length; i++)
+				writer.Write((uint)Items.Count);
+				for (int i = 0; i < Items.Count; i++)
 				{
 					Items[i].Serialize(writer);
 				}

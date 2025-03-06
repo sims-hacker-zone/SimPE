@@ -953,7 +953,7 @@ namespace SimPe.Plugin
 								}
 							}
 
-							dle.Extension.Items = new ExtensionItem[0];
+							dle.Extension.Items.Clear();
 							rcol.SynchronizeUserData();
 							break;
 						}

@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 using SimPe.Geometry;
 using SimPe.Interfaces.Scenegraph;
@@ -35,42 +36,18 @@ namespace SimPe.Plugin
 		/// <returns></returns>
 		public ICresChildren GetBlock(int index)
 		{
-			if (Parent == null || index < 0 || index >= Parent.Blocks.Length)
-			{
-				return null;
-			}
-
-			object o = Parent.Blocks[index];
-
-			return o.GetType().GetInterface("ICresChildren", false)
-				== typeof(ICresChildren)
-				? (ICresChildren)o
+			return Parent != null
+					&& index >= 0
+					&& index < Parent.Blocks.Count
+					&& Parent.Blocks[index] is ICresChildren children
+				? children
 				: null;
 		}
 
 		/// <summary>
 		/// Get the Index Number of this Block in the Parent
 		/// </summary>
-		public int Index
-		{
-			get
-			{
-				if (parent == null)
-				{
-					return -1;
-				}
-
-				for (int i = 0; i < parent.Blocks.Length; i++)
-				{
-					if (parent.Blocks[i] == this)
-					{
-						return i;
-					}
-				}
-
-				return -1;
-			}
-		}
+		public int Index => parent != null ? parent.Blocks.IndexOf(this) : -1;
 
 		/// <summary>
 		/// Get List of al parent Blocks
@@ -79,20 +56,11 @@ namespace SimPe.Plugin
 		public List<int> GetParentBlocks()
 		{
 			List<int> l = new List<int>();
-			for (int i = 0; i < parent.Blocks.Length; i++)
+			for (int i = 0; i < parent.Blocks.Count; i++)
 			{
-				IRcolBlock irb =
-					parent.Blocks[i];
-				if (
-					irb.GetType().GetInterface("ICresChildren", false)
-					== typeof(ICresChildren)
-				)
+				if (parent.Blocks[i] is ICresChildren icc && icc.ChildBlocks.Contains(Index))
 				{
-					ICresChildren icc = (ICresChildren)irb;
-					if (icc.ChildBlocks.Contains(Index))
-					{
-						l.Add(i);
-					}
+					l.Add(i);
 				}
 			}
 			return l;

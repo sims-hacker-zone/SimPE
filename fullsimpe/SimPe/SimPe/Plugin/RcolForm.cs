@@ -1156,7 +1156,7 @@ namespace SimPe.Plugin
 					(Interfaces.Files.IPackedFileDescriptor)
 						lbref.Items[lbref.SelectedIndex];
 
-				pfd.Type = (Data.FileTypes)Convert.ToUInt32(tbtype.Text, 16);
+				pfd.Type = (FileTypes)Convert.ToUInt32(tbtype.Text, 16);
 				pfd.SubType = Convert.ToUInt32(tbsubtype.Text, 16);
 				pfd.Group = Convert.ToUInt32(tbgroup.Text, 16);
 				pfd.Instance = Convert.ToUInt32(tbinstance.Text, 16);
@@ -1244,14 +1244,13 @@ namespace SimPe.Plugin
 				Interfaces.Files.IPackedFileDescriptor pfd =
 					new Packages.PackedFileDescriptor
 					{
-						Type = (Data.FileTypes)Convert.ToUInt32(tbtype.Text, 16),
+						Type = (FileTypes)Convert.ToUInt32(tbtype.Text, 16),
 						SubType = Convert.ToUInt32(tbsubtype.Text, 16),
 						Group = Convert.ToUInt32(tbgroup.Text, 16),
 						Instance = Convert.ToUInt32(tbinstance.Text, 16)
 					};
 
-				wrapper.ReferencedFiles = (Interfaces.Files.IPackedFileDescriptor[])
-					Helper.Add(wrapper.ReferencedFiles, pfd);
+				wrapper.ReferencedFiles.Add(pfd);
 				lbref.Items.Add(pfd);
 
 				wrapper.Changed = true;
@@ -1278,8 +1277,7 @@ namespace SimPe.Plugin
 					(Interfaces.Files.IPackedFileDescriptor)
 						lbref.Items[lbref.SelectedIndex];
 
-				wrapper.ReferencedFiles = (Interfaces.Files.IPackedFileDescriptor[])
-					Helper.Delete(wrapper.ReferencedFiles, pfd);
+				wrapper.ReferencedFiles.Remove(pfd);
 				lbref.Items.Remove(pfd);
 
 				wrapper.Changed = true;
@@ -1324,8 +1322,7 @@ namespace SimPe.Plugin
 				pfd = (Interfaces.Files.IPackedFileDescriptor)
 					e.Data.GetData(typeof(Packages.PackedFileDescriptor));
 
-				wrapper.ReferencedFiles = (Interfaces.Files.IPackedFileDescriptor[])
-					Helper.Add(wrapper.ReferencedFiles, pfd);
+				wrapper.ReferencedFiles.Add(pfd);
 				lbref.Items.Add(pfd);
 
 				wrapper.Changed = true;
@@ -1470,14 +1467,13 @@ namespace SimPe.Plugin
 				IRcolBlock irb = (
 					(IRcolBlock)cbblocks.Items[cbblocks.SelectedIndex]
 				).Create();
-				if (irb is AbstractRcolBlock)
+				if (irb is AbstractRcolBlock block)
 				{
-					((AbstractRcolBlock)irb).Parent = wrapper;
+					block.Parent = wrapper;
 				}
 
 				CountedListItem.AddHex(lbblocks, irb);
-				wrapper.Blocks = (IRcolBlock[])
-					Helper.Add(wrapper.Blocks, irb, typeof(IRcolBlock));
+				wrapper.Blocks.Add(irb);
 				UpdateComboBox();
 			}
 			catch (Exception ex)
@@ -1510,8 +1506,7 @@ namespace SimPe.Plugin
 					lbblocks.Items[lbblocks.SelectedIndex];
 				IRcolBlock irb = (IRcolBlock)cli.Object;
 				lbblocks.Items.Remove(cli);
-				wrapper.Blocks = (IRcolBlock[])
-					Helper.Delete(wrapper.Blocks, irb, typeof(IRcolBlock));
+				wrapper.Blocks.Remove(irb);
 
 				UpdateComboBox();
 			}

@@ -65,9 +65,9 @@ namespace SimPe.Plugin.Tool.Dockable
 
 			SubItems.Add("0x" + Helper.HexString(fii.FileDescriptor.Type));
 			SubItems.Add("0x" + Helper.HexString(fii.FileDescriptor.Group));
-			SubItems.Add("0x" + Helper.HexString(fii.FileDescriptor.LongInstance));
+			SubItems.Add($"0x{fii.FileDescriptor.LongInstance:X16}");
 			SubItems.Add("0x" + Helper.HexString(fii.FileDescriptor.Offset));
-			SubItems.Add("0x" + Helper.HexString(fii.FileDescriptor.Size));
+			SubItems.Add("0x" + Helper.HexStringInt(fii.FileDescriptor.Size));
 			SubItems.Add(fii.Package.SaveFileName);
 			/*this.SubItems.Add("    Type: 0x"+Helper.HexString(fii.FileDescriptor.Type));
 			this.SubItems.Add("    Group: 0x"+Helper.HexString(fii.FileDescriptor.Group));

@@ -1,6 +1,8 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+using System.Linq;
+
 namespace SimPe.Plugin.Downloads
 {
 	/// <summary>
@@ -31,20 +33,18 @@ namespace SimPe.Plugin.Downloads
 
 				Rcol rcol = new GenericRcol();
 				rcol.ProcessData(pfd, pkg);
-				if (rcol.Blocks.Length > 0)
+
+				if (rcol.Blocks.FirstOrDefault() is ImageData id)
 				{
-					if (rcol.Blocks[0] is ImageData id)
+					MipMap m = id.GetLargestTexture(
+						new System.Drawing.Size(
+							PackageInfo.IMAGESIZE,
+							PackageInfo.IMAGESIZE
+						)
+					);
+					if (m != null)
 					{
-						MipMap m = id.GetLargestTexture(
-							new System.Drawing.Size(
-								PackageInfo.IMAGESIZE,
-								PackageInfo.IMAGESIZE
-							)
-						);
-						if (m != null)
-						{
-							return m.Texture;
-						}
+						return m.Texture;
 					}
 				}
 			}

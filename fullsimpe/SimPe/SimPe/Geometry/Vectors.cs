@@ -588,11 +588,11 @@ namespace SimPe.Geometry
 		/// <returns>A String Describing the Data</returns>
 		public override string ToString()
 		{
-			return Helper.HexString(X)
+			return Helper.HexStringInt(X)
 				+ ", "
-				+ Helper.HexString(Y)
+				+ Helper.HexStringInt(Y)
 				+ ", "
-				+ Helper.HexString(Z);
+				+ Helper.HexStringInt(Z);
 		}
 	}
 

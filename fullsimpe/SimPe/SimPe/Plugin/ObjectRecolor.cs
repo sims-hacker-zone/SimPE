@@ -187,29 +187,13 @@ namespace SimPe.Plugin
 		{
 			dle.Extension.VarName = "tsDesignModeEnabled";
 
-			/*IRcolBlock[] newblock = new IRcolBlock[gmnd.Blocks.Length+1];
-			for (int i=0; i<gmnd.Blocks.Length; i++)
-			{
-				if (i==0) newblock[i] = gmnd.Blocks[i];
-				else newblock[i+1] = gmnd.Blocks[i];
-			}
-			newblock[1] = dle;
-			gmnd.Blocks = newblock;*/
-
-
-			GeometryNode gn = (GeometryNode)gmnd.Blocks[0];
-
-			ObjectGraphNodeItem item = new ObjectGraphNodeItem
+			((GeometryNode)gmnd.Blocks[0]).ObjectGraphNode.Items.Add(new ObjectGraphNodeItem
 			{
 				Enabled = 0x01,
 				Dependant = 0x00,
-				Index = (uint)gmnd.Blocks.Length
-			};
-
-			gn.ObjectGraphNode.Items = (ObjectGraphNodeItem[])
-				Helper.Add(gn.ObjectGraphNode.Items, item);
-			gmnd.Blocks = (IRcolBlock[])
-				Helper.Add(gmnd.Blocks, dle, typeof(IRcolBlock));
+				Index = (uint)gmnd.Blocks.Count
+			});
+			gmnd.Blocks.Add(dle);
 		}
 
 		/// <summary>
@@ -345,8 +329,7 @@ namespace SimPe.Plugin
 			foreach (WorkshopMMAT mmat in mmats)
 			{
 				subsets.Add(mmat.Subset);
-				dle.Extension.Items = (ExtensionItem[])
-					Helper.Add(dle.Extension.Items, (ExtensionItem)mmat.Tag[2]);
+				dle.Extension.Items.Add((ExtensionItem)mmat.Tag[2]);
 				AddMMAT(
 					(Rcol)mmat.Tag[0],
 					mmat.Subset,
@@ -356,7 +339,7 @@ namespace SimPe.Plugin
 				);
 			}
 
-			if (dle.Extension.Items.Length > 0)
+			if (dle.Extension.Items.Count > 0)
 			{
 				AddDesignModeBlock(gmnd, dle);
 				gmnd.SynchronizeUserData();

@@ -1,5 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using System.Collections.Generic;
+
 using SimPe.PackedFiles.Cpf;
 
 namespace SimPe.Plugin
@@ -16,8 +18,8 @@ namespace SimPe.Plugin
 		public WorkshopMMAT(string subset)
 		{
 			Subset = subset;
-			MMATs = new Cpf[0];
-			ObjectStateIndex = new uint[0];
+			MMATs = new List<Cpf>();
+			ObjectStateIndex = new List<uint>();
 		}
 
 		/// <summary>
@@ -36,7 +38,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// The stored MMATs
 		/// </summary>
-		public Cpf[] MMATs
+		public List<Cpf> MMATs
 		{
 			get; private set;
 		}
@@ -51,7 +53,7 @@ namespace SimPe.Plugin
 				AddObjectStateIndex(mmat.GetItem("objectStateIndex").UIntegerValue)
 			)
 			{
-				MMATs = (Cpf[])Helper.Add(MMATs, mmat);
+				MMATs.Add(mmat);
 				return true;
 			}
 			return false;
@@ -75,7 +77,7 @@ namespace SimPe.Plugin
 
 			if (!check)
 			{
-				ObjectStateIndex = (uint[])Helper.Add(ObjectStateIndex, val);
+				ObjectStateIndex.Add(val);
 			}
 
 			return !check;
@@ -84,14 +86,14 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns all known ObjectStateIndex for the current subset
 		/// </summary>
-		public uint[] ObjectStateIndex
+		public List<uint> ObjectStateIndex
 		{
 			get; private set;
 		}
 
 		public override string ToString()
 		{
-			return Subset + " (" + ObjectStateIndex.Length.ToString() + ")";
+			return Subset + " (" + ObjectStateIndex.Count.ToString() + ")";
 		}
 	}
 }

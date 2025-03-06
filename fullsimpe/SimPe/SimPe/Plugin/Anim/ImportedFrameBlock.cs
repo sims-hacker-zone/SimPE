@@ -157,7 +157,7 @@ namespace SimPe.Plugin.Anim
 				return;
 			}
 
-			amb.Part2 = (AnimationFrameBlock[])Helper.Add(amb.Part2, FrameBlock);
+			amb.Part2.Add(FrameBlock);
 
 			if (RemoveUnneeded)
 			{

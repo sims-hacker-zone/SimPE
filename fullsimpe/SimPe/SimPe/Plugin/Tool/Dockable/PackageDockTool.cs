@@ -53,7 +53,7 @@ namespace SimPe.Plugin.Tool.Dockable
 							Packages.HoleIndexItem hii =
 								es.LoadedPackage.Package.GetHoleIndex(i);
 							lvi.Text = "0x" + Helper.HexString(hii.Offset);
-							lvi.SubItems.Add("0x" + Helper.HexString(hii.Size));
+							lvi.SubItems.Add("0x" + Helper.HexStringInt(hii.Size));
 							rd.lv.Items.Add(lvi);
 						}
 					}

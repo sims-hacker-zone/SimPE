@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 using SimPe.Data;
@@ -1488,17 +1489,8 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				try
 				{
-					Wrapper.FamilyTies famt =
-						(Wrapper.FamilyTies)wrapper;
-
-					FamilyTieSim fts = (FamilyTieSim)
-						cbtiesims.Items[cbtiesims.SelectedIndex];
-					FamilyTieItem[] ftis = new FamilyTieItem[lbties.Items.Count];
-					for (int i = 0; i < lbties.Items.Count; i++)
-					{
-						ftis[i] = (FamilyTieItem)lbties.Items[i];
-					}
-					fts.Ties = ftis;
+					((FamilyTieSim)
+						cbtiesims.Items[cbtiesims.SelectedIndex]).Ties = lbties.Items.Cast<FamilyTieItem>().ToList();
 				}
 				catch (Exception ex)
 				{
@@ -1559,7 +1551,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 			FamilyTieSim sim = (FamilyTieSim)
 				cballtieablesims.Items[cballtieablesims.SelectedIndex];
-			sim.Ties = new FamilyTieItem[0];
+			sim.Ties = new List<FamilyTieItem>();
 
 			//check if the tie exists
 			bool exists = false;

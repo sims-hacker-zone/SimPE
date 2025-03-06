@@ -417,7 +417,7 @@ namespace SimPe.PackedFiles.Wrapper
 					if (DEBUG)
 					{
 						sw.Add(
-							Helper.HexString(cx.PC)
+							Helper.HexStringInt(cx.PC)
 								+ ": "
 								+ plusindent
 								+ cx.Indent
@@ -836,7 +836,7 @@ namespace SimPe.PackedFiles.Wrapper
 					"Unknown Constant Type: 0x"
 						+ Helper.HexString((byte)InstructionType)
 						+ ", 0x"
-						+ Helper.HexString(reader.BaseStream.Position - 0x40)
+						+ $"{reader.BaseStream.Position - 0x40:X16}"
 				);
 			}
 		}
@@ -877,7 +877,7 @@ namespace SimPe.PackedFiles.Wrapper
 					"Unknown Constant Type: 0x"
 						+ Helper.HexString((byte)InstructionType)
 						+ ", 0x"
-						+ Helper.HexString(writer.BaseStream.Position - 0x40)
+						+ $"{writer.BaseStream.Position - 0x40:X16}"
 				);
 			}
 		}

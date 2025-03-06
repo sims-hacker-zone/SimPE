@@ -555,7 +555,7 @@ namespace SimPe.Plugin.TabPage
 				tb_ogn_2.Text = "0x" + Helper.HexString(b.Dependant);
 				tb_ogn_3.Text = "0x" + Helper.HexString(b.Index);
 
-				ogn.Items = (ObjectGraphNodeItem[])Helper.Add(ogn.Items, b);
+				ogn.Items.Add(b);
 				lb_ogn.Items.Add(b);
 				ogn.Changed = true;
 			}
@@ -591,7 +591,7 @@ namespace SimPe.Plugin.TabPage
 				ObjectGraphNodeItem b = (ObjectGraphNodeItem)
 					lb_ogn.Items[lb_ogn.SelectedIndex];
 
-				ogn.Items = (ObjectGraphNodeItem[])Helper.Delete(ogn.Items, b);
+				ogn.Items.Remove(b);
 				lb_ogn.Items.Remove(b);
 				ogn.Changed = true;
 			}

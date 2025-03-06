@@ -1865,7 +1865,7 @@ namespace SimPe.Plugin.Anim
 			}
 
 			AnimationFrame af = (AnimationFrame)tv.SelectedNode.Tag;
-			while (afb.AxisSet.Length < 1)
+			while (afb.AxisSet.Count < 1)
 			{
 				afb.AddNewAxis();
 			}
@@ -1894,7 +1894,7 @@ namespace SimPe.Plugin.Anim
 			}
 
 			AnimationFrame af = (AnimationFrame)tv.SelectedNode.Tag;
-			while (afb.AxisSet.Length < 2)
+			while (afb.AxisSet.Count < 2)
 			{
 				afb.AddNewAxis();
 			}
@@ -1923,7 +1923,7 @@ namespace SimPe.Plugin.Anim
 			}
 
 			AnimationFrame af = (AnimationFrame)tv.SelectedNode.Tag;
-			while (afb.AxisSet.Length < 3)
+			while (afb.AxisSet.Count < 3)
 			{
 				afb.AddNewAxis();
 			}

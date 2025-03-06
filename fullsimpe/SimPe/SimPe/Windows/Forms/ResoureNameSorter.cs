@@ -42,7 +42,7 @@ namespace SimPe.Windows.Forms
 					)
 					{
 						Name =
-						"Resource Sorting Thread " + i + "." + Helper.HexString(ticket)
+						"Resource Sorting Thread " + i + "." + Helper.HexStringInt(ticket)
 					};
 					t.Start();
 				}

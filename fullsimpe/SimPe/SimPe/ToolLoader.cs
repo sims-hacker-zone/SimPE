@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 using SimPe.Data;
@@ -362,12 +363,12 @@ namespace SimPe
 	/// </summary>
 	public class ToolLoaderExt
 	{
-		static ToolLoaderItemExt[] items;
+		static List<ToolLoaderItemExt> items = new List<ToolLoaderItemExt>();
 
 		/// <summary>
 		/// List of all available Items
 		/// </summary>
-		public static ToolLoaderItemExt[] Items
+		public static List<ToolLoaderItemExt> Items
 		{
 			get
 			{
@@ -392,7 +393,7 @@ namespace SimPe
 				Load();
 			}
 
-			items = (ToolLoaderItemExt[])Helper.Add(items, tli);
+			items.Add(tli);
 		}
 
 		/// <summary>
@@ -406,7 +407,7 @@ namespace SimPe
 				Load();
 			}
 
-			items = (ToolLoaderItemExt[])Helper.Delete(items, tli);
+			items.Remove(tli);
 		}
 
 		/// <summary>
@@ -442,7 +443,7 @@ namespace SimPe
 
 		protected static void Load()
 		{
-			ArrayList list = new ArrayList();
+			items.Clear();
 
 			XmlRegistryKey rk = Helper.WindowsRegistry.RegistryKey.CreateSubKey(
 				"ExtTools"
@@ -451,22 +452,15 @@ namespace SimPe
 
 			foreach (string name in names)
 			{
-				string rname = ToolLoaderItemExt.SplitName(name);
 				XmlRegistryKey srk = rk.CreateSubKey(name);
-
-				ToolLoaderItemExt tli = new ToolLoaderItemExt(rname)
+				items.Add(new ToolLoaderItemExt(ToolLoaderItemExt.SplitName(name))
 				{
 					Type = (FileTypes)Convert.ToUInt32(srk.GetValue("type")),
 					//tli.Name = Convert.ToString(srk.GetValue("name"));
 					FileName = Convert.ToString(srk.GetValue("filename")),
 					Attributes = Convert.ToString(srk.GetValue("attributes"))
-				};
-
-				list.Add(tli);
+				});
 			}
-
-			items = new ToolLoaderItemExt[list.Count];
-			list.CopyTo(items);
 		}
 
 		/// <summary>

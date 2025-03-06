@@ -526,7 +526,7 @@ namespace SimPe.Plugin.TabPage
 					Unknown2 = (int)Convert.ToUInt32(tb_rn_2.Text, 16)
 				};
 
-				rn.Items = (ResourceNodeItem[])Helper.Add(rn.Items, b);
+				rn.Items.Add(b);
 				lb_rn.Items.Add(b);
 				rn.Changed = true;
 			}
@@ -561,7 +561,7 @@ namespace SimPe.Plugin.TabPage
 				Plugin.ResourceNode rn = (Plugin.ResourceNode)Tag;
 				ResourceNodeItem b = (ResourceNodeItem)lb_rn.Items[lb_rn.SelectedIndex];
 
-				rn.Items = (ResourceNodeItem[])Helper.Delete(rn.Items, b);
+				rn.Items.Remove(b);
 				lb_rn.Items.Remove(b);
 				rn.Changed = true;
 			}

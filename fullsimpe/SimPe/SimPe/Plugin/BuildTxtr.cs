@@ -335,9 +335,11 @@ namespace SimPe.Plugin
 			{
 				FileName = texturename,
 				FileDescriptor = new Packages.PackedFileDescriptor(),
-				Blocks = new IRcolBlock[1]
+				Blocks = new List<IRcolBlock>
+				{
+					id
+				}
 			};
-			rcol.Blocks[0] = id;
 
 			rcol.SynchronizeUserData();
 			System.IO.FileStream fs = System.IO.File.Create(output);

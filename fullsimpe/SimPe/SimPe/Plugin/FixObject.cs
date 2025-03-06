@@ -199,7 +199,7 @@ namespace SimPe.Plugin
 				);
 			}
 
-			for (int i = 0; i < matd.Listing.Length; i++)
+			for (int i = 0; i < matd.Listing.Count; i++)
 			{
 				newref = (string)
 					map[

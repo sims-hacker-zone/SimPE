@@ -1,5 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using System.Collections.Generic;
+
 namespace SimPe.Plugin
 {
 	public class ObjectGraphNodeItem
@@ -67,9 +69,9 @@ namespace SimPe.Plugin
 		#region Attributes
 
 
-		public ObjectGraphNodeItem[] Items
+		public List<ObjectGraphNodeItem> Items
 		{
-			get; set;
+			get; private set;
 		}
 
 		public string FileName
@@ -88,7 +90,7 @@ namespace SimPe.Plugin
 		public ObjectGraphNode(Rcol parent)
 			: base(parent)
 		{
-			Items = new ObjectGraphNodeItem[0];
+			Items = new List<ObjectGraphNodeItem>();
 			FileName = BlockName;
 			version = 4;
 		}
@@ -103,11 +105,14 @@ namespace SimPe.Plugin
 		{
 			version = reader.ReadUInt32();
 
-			Items = new ObjectGraphNodeItem[reader.ReadUInt32()];
-			for (int i = 0; i < Items.Length; i++)
+			uint itemcount = reader.ReadUInt32();
+
+			Items = new List<ObjectGraphNodeItem>();
+			for (int i = 0; i < itemcount; i++)
 			{
-				Items[i] = new ObjectGraphNodeItem();
-				Items[i].Unserialize(reader);
+				ObjectGraphNodeItem item = new ObjectGraphNodeItem();
+				item.Unserialize(reader);
+				Items.Add(item);
 			}
 
 			FileName = version == 0x04 ? reader.ReadString() : "cObjectGraphNode";
@@ -125,8 +130,8 @@ namespace SimPe.Plugin
 		{
 			writer.Write(version);
 
-			writer.Write((uint)Items.Length);
-			for (int i = 0; i < Items.Length; i++)
+			writer.Write((uint)Items.Count);
+			for (int i = 0; i < Items.Count; i++)
 			{
 				Items[i].Serialize(writer);
 			}
@@ -163,10 +168,7 @@ namespace SimPe.Plugin
 			}
 
 			tObjectGraphNode.lb_ogn.Items.Clear();
-			for (int i = 0; i < Items.Length; i++)
-			{
-				tObjectGraphNode.lb_ogn.Items.Add(Items[i]);
-			}
+			tObjectGraphNode.lb_ogn.Items.AddRange(Items.ToArray());
 
 			tObjectGraphNode.tb_ogn_file.Text = FileName;
 			tObjectGraphNode.tb_ogn_ver.Text = "0x" + Helper.HexString(version);

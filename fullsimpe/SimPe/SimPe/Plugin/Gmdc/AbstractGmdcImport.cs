@@ -604,17 +604,11 @@ namespace SimPe.Plugin.Gmdc
 					TransformNode tn = new TransformNode(
 						Gmdc.ParentResourceNode.Parent
 					);
-					tn.ObjectGraphNode.FileName = b.ImportedName;
 					tn.Transformation = b.Transformation.Clone();
 					tn.JointReference = nindex;
+					tn.ObjectGraphNode.FileName = b.ImportedName;
 
-					Gmdc.ParentResourceNode.Parent.Blocks =
-						(Interfaces.Scenegraph.IRcolBlock[])
-							Helper.Add(
-								Gmdc.ParentResourceNode.Parent.Blocks,
-								tn,
-								typeof(Interfaces.Scenegraph.IRcolBlock)
-							);
+					Gmdc.ParentResourceNode.Parent.Blocks.Add(tn);
 				}
 			}
 

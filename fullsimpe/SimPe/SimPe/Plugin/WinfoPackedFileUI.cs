@@ -62,7 +62,7 @@ namespace SimPe.Plugin
 				wiunk8.Text = "0x" + Helper.HexString(Wrapper.unkn8);
 				wiunk9.Text = "0x" + Helper.HexString(Wrapper.unkn9);
 				wiunk10.Text = "0x" + Helper.HexString(Wrapper.unkn0);
-				witemperate.Text = "0x" + Helper.HexString(Wrapper.wetemperature);
+				witemperate.Text = "0x" + Helper.HexStringInt(Wrapper.wetemperature);
 			}
 		}
 

@@ -1,5 +1,6 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using System.Linq;
 using System.Windows.Forms;
 
 using SimPe.Interfaces.Plugin;
@@ -105,13 +106,10 @@ namespace SimPe.Plugin
 			}
 			form.tbResource.SelectedIndex = 0;
 
-			if (wrp.Blocks.Length > 0)
-			{
-				((AbstractRcolBlock)wrp.Blocks[0]).AddToResourceTabControl(
-					form.tbResource,
-					form.cbitem
-				);
-			}
+			((AbstractRcolBlock)wrp.Blocks.FirstOrDefault())?.AddToResourceTabControl(
+				form.tbResource,
+				form.cbitem
+			);
 
 			form.Enabled = !wrp.Duff;
 		}

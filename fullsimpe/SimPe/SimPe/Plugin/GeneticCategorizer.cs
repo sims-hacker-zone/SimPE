@@ -308,7 +308,7 @@ namespace SimPe.Plugin
 									}
 								}
 
-								item.PropertySet.Items = items.ToArray();
+								item.PropertySet.Items = items;
 								break;
 						}
 					} //end fix
@@ -339,7 +339,7 @@ namespace SimPe.Plugin
 					{
 						string baseTextureName = mmatd.Listing[0];
 
-						if (mmatd.Listing.Length == 1)
+						if (mmatd.Listing.Count == 1)
 						{
 							string newTextureName = NewTextureName(
 								baseTextureName,

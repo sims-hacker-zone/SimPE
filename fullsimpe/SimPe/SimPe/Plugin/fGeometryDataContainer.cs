@@ -3279,7 +3279,7 @@ namespace SimPe.Plugin
 				tb_uk1.Text = item.Number.ToString();
 				tb_mod1.Text = "0x" + Helper.HexString((uint)item.BlockFormat);
 				tb_mod2.Text = "0x" + Helper.HexString((uint)item.SetFormat);
-				tb_uk5.Text = "0x" + Helper.HexString(item.GroupId);
+				tb_uk5.Text = "0x" + Helper.HexStringInt(item.GroupId);
 
 				cbid.SelectedIndex = 0;
 				for (int i = 0; i < cbid.Items.Count; i++)
@@ -3359,7 +3359,7 @@ namespace SimPe.Plugin
 					).Object;
 
 				tb_itemsa2.Text =
-					"0x" + Helper.HexString(item.Items[lb_itemsa2.SelectedIndex]);
+					"0x" + Helper.HexStringInt(item.Items[lb_itemsa2.SelectedIndex]);
 			}
 			catch (Exception ex)
 			{
@@ -3450,7 +3450,7 @@ namespace SimPe.Plugin
 					((CountedListItem)lb_itemsb.Items[lb_itemsb.SelectedIndex]).Object;
 				tb_itemsb2.Text =
 					"0x"
-					+ Helper.HexString(
+					+ Helper.HexStringInt(
 						item.ReferencedElement[lb_itemsb2.SelectedIndex]
 					);
 			}
@@ -3488,7 +3488,7 @@ namespace SimPe.Plugin
 					((CountedListItem)lb_itemsb.Items[lb_itemsb.SelectedIndex]).Object;
 				tb_itemsb3.Text =
 					"0x"
-					+ Helper.HexString(item.AliasValues[0][lb_itemsb3.SelectedIndex]);
+					+ Helper.HexStringInt(item.AliasValues[0][lb_itemsb3.SelectedIndex]);
 			}
 			catch (Exception ex)
 			{
@@ -3524,7 +3524,7 @@ namespace SimPe.Plugin
 					((CountedListItem)lb_itemsb.Items[lb_itemsb.SelectedIndex]).Object;
 				tb_itemsb4.Text =
 					"0x"
-					+ Helper.HexString(item.AliasValues[1][lb_itemsb4.SelectedIndex]);
+					+ Helper.HexStringInt(item.AliasValues[1][lb_itemsb4.SelectedIndex]);
 			}
 			catch (Exception ex)
 			{
@@ -3560,7 +3560,7 @@ namespace SimPe.Plugin
 					((CountedListItem)lb_itemsb.Items[lb_itemsb.SelectedIndex]).Object;
 				tb_itemsb5.Text =
 					"0x"
-					+ Helper.HexString(item.AliasValues[2][lb_itemsb5.SelectedIndex]);
+					+ Helper.HexStringInt(item.AliasValues[2][lb_itemsb5.SelectedIndex]);
 			}
 			catch (Exception ex)
 			{
@@ -3590,7 +3590,7 @@ namespace SimPe.Plugin
 				GmdcGroup item = (GmdcGroup)lb_itemsc.Items[lb_itemsc.SelectedIndex];
 
 				tb_uk2.Text = "0x" + Helper.HexString((uint)item.PrimitiveType);
-				tb_uk3.Text = "0x" + Helper.HexString(item.LinkIndex);
+				tb_uk3.Text = "0x" + Helper.HexStringInt(item.LinkIndex);
 				tb_opacity.Text = "0x" + Helper.HexString(item.Opacity);
 				tb_itemsc_name.Text = item.Name;
 
@@ -3639,7 +3639,7 @@ namespace SimPe.Plugin
 				GmdcGroup item = (GmdcGroup)lb_itemsc.Items[lb_itemsc.SelectedIndex];
 
 				tb_itemsc2.Text =
-					"0x" + Helper.HexString(item.Faces[lb_itemsc2.SelectedIndex]);
+					"0x" + Helper.HexStringInt(item.Faces[lb_itemsc2.SelectedIndex]);
 			}
 			catch (Exception ex)
 			{
@@ -3674,7 +3674,7 @@ namespace SimPe.Plugin
 				GmdcGroup item = (GmdcGroup)lb_itemsc.Items[lb_itemsc.SelectedIndex];
 
 				tb_itemsc3.Text =
-					"0x" + Helper.HexString(item.UsedJoints[lb_itemsc3.SelectedIndex]);
+					"0x" + Helper.HexStringInt(item.UsedJoints[lb_itemsc3.SelectedIndex]);
 			}
 			catch (Exception ex)
 			{

@@ -113,7 +113,7 @@ namespace SimPe.Plugin
 			get; set;
 		}
 
-		public ShapeRefNodeItem_A[] ItemsA
+		public List<ShapeRefNodeItem_A> ItemsA
 		{
 			get; set;
 		}
@@ -123,7 +123,7 @@ namespace SimPe.Plugin
 			get; set;
 		}
 
-		public ShapeRefNodeItem_B[] ItemsB
+		public List<ShapeRefNodeItem_B> ItemsB
 		{
 			get; set;
 		}
@@ -153,8 +153,8 @@ namespace SimPe.Plugin
 			bn = new BoundedNode(null);
 			tn = new TransformNode(null);
 
-			ItemsA = new ShapeRefNodeItem_A[0];
-			ItemsB = new ShapeRefNodeItem_B[0];
+			ItemsA = new List<ShapeRefNodeItem_A>();
+			ItemsB = new List<ShapeRefNodeItem_B>();
 
 			Data = new byte[0];
 
@@ -199,27 +199,31 @@ namespace SimPe.Plugin
 			Unknown3 = reader.ReadInt32();
 			Unknown4 = reader.ReadByte();
 
-			ItemsA = new ShapeRefNodeItem_A[reader.ReadUInt32()];
-			for (int i = 0; i < ItemsA.Length; i++)
+			uint count = reader.ReadUInt32();
+
+			ItemsA = new List<ShapeRefNodeItem_A>();
+			for (int i = 0; i < count; i++)
 			{
-				ItemsA[i] = new ShapeRefNodeItem_A();
+				ItemsA.Add(new ShapeRefNodeItem_A());
 				ItemsA[i].Unserialize(reader);
 			}
 			Unknown5 = reader.ReadInt32();
 
-			ItemsB = new ShapeRefNodeItem_B[reader.ReadUInt32()];
-			for (int i = 0; i < ItemsB.Length; i++)
+			count = reader.ReadUInt32();
+
+			ItemsB = new List<ShapeRefNodeItem_B>();
+			for (int i = 0; i < count; i++)
 			{
-				ItemsB[i] = new ShapeRefNodeItem_B
+				ItemsB.Add(new ShapeRefNodeItem_B
 				{
 					Unknown1 = reader.ReadInt32()
-				};
+				});
 			}
 
 			int len = 0;
 			if (version == 0x15)
 			{
-				for (int i = 0; i < ItemsB.Length; i++)
+				for (int i = 0; i < ItemsB.Count; i++)
 				{
 					ItemsB[i].Name = reader.ReadString();
 				}
@@ -260,23 +264,23 @@ namespace SimPe.Plugin
 			writer.Write(Unknown3);
 			writer.Write(Unknown4);
 
-			writer.Write((uint)ItemsA.Length);
-			for (int i = 0; i < ItemsA.Length; i++)
+			writer.Write((uint)ItemsA.Count);
+			for (int i = 0; i < ItemsA.Count; i++)
 			{
 				ItemsA[i].Serialize(writer);
 			}
 
 			writer.Write(Unknown5);
 
-			writer.Write((uint)ItemsB.Length);
-			for (int i = 0; i < ItemsB.Length; i++)
+			writer.Write((uint)ItemsB.Count);
+			for (int i = 0; i < ItemsB.Count; i++)
 			{
 				writer.Write(ItemsB[i].Unknown1);
 			}
 
 			if (version == 0x15)
 			{
-				for (int i = 0; i < ItemsB.Length; i++)
+				for (int i = 0; i < ItemsB.Count; i++)
 				{
 					writer.Write(ItemsB[i].Name);
 				}
@@ -329,13 +333,13 @@ namespace SimPe.Plugin
 			}
 
 			tShapeRefNode.lb_srn_a.Items.Clear();
-			for (int i = 0; i < ItemsA.Length; i++)
+			for (int i = 0; i < ItemsA.Count; i++)
 			{
 				tShapeRefNode.lb_srn_a.Items.Add(ItemsA[i]);
 			}
 
 			tShapeRefNode.lb_srn_b.Items.Clear();
-			for (int i = 0; i < ItemsB.Length; i++)
+			for (int i = 0; i < ItemsB.Count; i++)
 			{
 				tShapeRefNode.lb_srn_b.Items.Add(ItemsB[i]);
 			}

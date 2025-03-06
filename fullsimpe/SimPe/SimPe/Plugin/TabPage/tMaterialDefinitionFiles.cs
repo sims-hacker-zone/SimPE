@@ -284,8 +284,7 @@ namespace SimPe.Plugin.TabPage
 
 			Plugin.MaterialDefinition md = (Plugin.MaterialDefinition)
 				Tag;
-			md.Listing = (string[])
-				Helper.Delete(md.Listing, lbfl.Items[lbfl.SelectedIndex]);
+			md.Listing.Remove((string)lbfl.Items[lbfl.SelectedIndex]);
 
 			lbfl.Items.Remove(lbfl.Items[lbfl.SelectedIndex]);
 
@@ -307,7 +306,7 @@ namespace SimPe.Plugin.TabPage
 
 			Plugin.MaterialDefinition md = (Plugin.MaterialDefinition)
 				Tag;
-			md.Listing = (string[])Helper.Add(md.Listing, tblistfile.Text);
+			md.Listing.Add(tblistfile.Text);
 
 			md.Changed = true;
 		}

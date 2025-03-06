@@ -33,12 +33,12 @@ namespace SimPe.Plugin
 			get; set;
 		}
 
-		public MaterialDefinitionProperty[] Properties
+		public List<MaterialDefinitionProperty> Properties
 		{
 			get; set;
 		}
 
-		public string[] Listing
+		public List<string> Listing
 		{
 			get; set;
 		}
@@ -52,8 +52,8 @@ namespace SimPe.Plugin
 		public MaterialDefinition(Rcol parent)
 			: base(parent)
 		{
-			Properties = new MaterialDefinitionProperty[0];
-			Listing = new string[0];
+			Properties = new List<MaterialDefinitionProperty>();
+			Listing = new List<string>();
 			sgres = new SGResource(null);
 			BlockID = (uint)FileTypes.TXMT;
 			FileDescription = "";
@@ -126,14 +126,12 @@ namespace SimPe.Plugin
 				}
 				else
 				{
-					Properties = (MaterialDefinitionProperty[])
-						Helper.Add(Properties, prop);
+					Properties.Add(prop);
 				}
 			}
 			else
 			{
-				Properties = (MaterialDefinitionProperty[])
-					Helper.Add(Properties, prop);
+				Properties.Add(prop);
 			}
 		}
 
@@ -160,25 +158,28 @@ namespace SimPe.Plugin
 			mattype = Helper.ToString(reader.ReadBytes(len));*/
 			MatterialType = reader.ReadString();
 
-			Properties = new MaterialDefinitionProperty[reader.ReadUInt32()];
-			for (int i = 0; i < Properties.Length; i++)
+			uint count = reader.ReadUInt32();
+
+			Properties = new List<MaterialDefinitionProperty>();
+			for (int i = 0; i < count; i++)
 			{
-				Properties[i] = new MaterialDefinitionProperty();
+				Properties.Add(new MaterialDefinitionProperty());
 				Properties[i].Unserialize(reader);
 			}
 
 			if (version == 8)
 			{
-				Listing = new string[0];
+				Listing = new List<string>();
 			}
 			else
 			{
-				Listing = new string[reader.ReadUInt32()];
-				for (int i = 0; i < Listing.Length; i++)
+				count = reader.ReadUInt32();
+				Listing = new List<string>();
+				for (int i = 0; i < count; i++)
 				{
 					/*len = reader.ReadByte();
 					listing[i] = Helper.ToString(reader.ReadBytes(len));*/
-					Listing[i] = reader.ReadString();
+					Listing.Add(reader.ReadString());
 				}
 			}
 		}
@@ -208,16 +209,16 @@ namespace SimPe.Plugin
 			writer.Write(FileDescription);
 			writer.Write(MatterialType);
 
-			writer.Write((uint)Properties.Length);
-			for (int i = 0; i < Properties.Length; i++)
+			writer.Write((uint)Properties.Count);
+			for (int i = 0; i < Properties.Count; i++)
 			{
 				Properties[i].Serialize(writer);
 			}
 
 			if (version != 8)
 			{
-				writer.Write((uint)Listing.Length);
-				for (int i = 0; i < Listing.Length; i++)
+				writer.Write((uint)Listing.Count);
+				for (int i = 0; i < Listing.Count; i++)
 				{
 					/*writer.Write((byte)listing[i].Length);
 					writer.Write(Helper.ToBytes(listing[i], (byte)listing[i].Length));*/
@@ -446,9 +447,9 @@ namespace SimPe.Plugin
 		/// </summary>
 		public void Sort()
 		{
-			for (int i = 0; i < Properties.Length - 1; i++)
+			for (int i = 0; i < Properties.Count - 1; i++)
 			{
-				for (int j = i + 1; j < Properties.Length; j++)
+				for (int j = i + 1; j < Properties.Count; j++)
 				{
 					if (Properties[i].Name.CompareTo(Properties[j].Name) > 0)
 					{
@@ -562,7 +563,7 @@ namespace SimPe.Plugin
 		/// <param name="filename">The name of the file to import</param>
 		public void ImportProperties(string filename)
 		{
-			Properties = new MaterialDefinitionProperty[0];
+			Properties = new List<MaterialDefinitionProperty>();
 			MergeProperties(filename);
 		}
 
