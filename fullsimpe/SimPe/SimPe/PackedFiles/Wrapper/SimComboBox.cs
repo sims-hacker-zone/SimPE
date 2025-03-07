@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Linq;
 
 namespace SimPe.PackedFiles.Wrapper
 {
@@ -107,7 +108,7 @@ namespace SimPe.PackedFiles.Wrapper
 					.ProviderRegistry
 					.SimDescriptionProvider
 					.SimInstance
-					.Values
+					.SelectMany(item => item)
 			)
 			{
 				Interfaces.IAlias a = new Data.StaticAlias(

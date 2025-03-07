@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 using SimPe.Data;
 using SimPe.Interfaces.Files;
@@ -17,6 +19,8 @@ namespace SimPe.Providers
 	/// </summary>
 	public class SimDescriptions : SimCommonPackage, ISimDescriptions
 	{
+
+		List<Interfaces.Wrapper.ISDesc> sdescs = new List<Interfaces.Wrapper.ISDesc>();
 		/// <summary>
 		/// Holds all Descriptions by SimId
 		/// </summary>
@@ -25,18 +29,7 @@ namespace SimPe.Providers
 		/// <summary>
 		/// Returns availabl SDSC Files by SimGUID
 		/// </summary>
-		public Hashtable SimGuidMap
-		{
-			get
-			{
-				if (bysimid == null)
-				{
-					LoadDescriptions();
-				}
-
-				return bysimid;
-			}
-		}
+		public ILookup<uint, Interfaces.Wrapper.ISDesc> SimGuidMap => sdescs.ToLookup(item => item.SimId);
 
 		/// <summary>
 		/// Holds all Descriptions by Instance
@@ -46,18 +39,7 @@ namespace SimPe.Providers
 		/// <summary>
 		/// Returns availabl SDSC Files by Instance
 		/// </summary>
-		public Hashtable SimInstance
-		{
-			get
-			{
-				if (byinstance == null)
-				{
-					LoadDescriptions();
-				}
-
-				return byinstance;
-			}
-		}
+		public ILookup<ushort, Interfaces.Wrapper.ISDesc> SimInstance => sdescs.ToLookup(item => item.Instance);
 
 		/// <summary>
 		/// Null or a Nameprovider
@@ -103,27 +85,21 @@ namespace SimPe.Providers
 		/// </summary>
 		protected void LoadDescriptions()
 		{
-			bysimid = new Hashtable();
-			byinstance = new Hashtable();
+			sdescs.Clear();
 			bool didwarndoubleguid = false;
 			if (BasePackage == null)
 			{
 				return;
 			}
 
-			IPackedFileDescriptor[] files = BasePackage.FindFiles(
-				Data.FileTypes.SDSC
-			);
-
-			foreach (IPackedFileDescriptor pfd in files)
+			foreach (IPackedFileDescriptor pfd in BasePackage.FindFiles(FileTypes.SDSC))
 			{
-				//SDesc sdesc = new SDesc(this.names, this.famnames, this);
 				LinkedSDesc sdesc = new LinkedSDesc();
 				sdesc.ProcessData(pfd, BasePackage);
 
 				if (!didwarndoubleguid)
 				{
-					if (bysimid.ContainsKey(sdesc.SimId))
+					if (sdescs.Any(item => item.SimId == sdesc.SimId))
 					{
 						Helper.ExceptionMessage(
 							new Warning(
@@ -137,7 +113,7 @@ namespace SimPe.Providers
 						);
 						didwarndoubleguid = true;
 					}
-					if (byinstance.ContainsKey(sdesc.Instance))
+					if (sdescs.Any(item => item.Instance == sdesc.Instance))
 					{
 						Helper.ExceptionMessage(
 							new Warning(
@@ -152,71 +128,49 @@ namespace SimPe.Providers
 						didwarndoubleguid = true;
 					}
 				}
-
-				bysimid[sdesc.SimId] = sdesc;
-				byinstance[sdesc.Instance] = sdesc;
+				sdescs.Add(sdesc);
 			}
 		}
 
-		public ArrayList GetHouseholdNames()
+		public IEnumerable<string> GetHouseholdNames()
 		{
 			return GetHouseholdNames(out string fc);
 		}
 
-		public ArrayList GetHouseholdNames(out string firstcustum)
+		public IEnumerable<string> GetHouseholdNames(out string firstcustom)
 		{
-			Hashtable ht =
-				FileTableBase
-				.ProviderRegistry
-				.SimDescriptionProvider
-				.SimInstance;
-			ArrayList list = new ArrayList();
-			firstcustum = null;
-			foreach (LinkedSDesc sdesc in ht.Values)
-			{
-				string n = sdesc.HouseholdName ?? Localization.GetString("Unknown");
-
-				if (!list.Contains(n))
-				{
-					list.Add(n);
-					if (firstcustum == null && !sdesc.IsNPC && !sdesc.IsTownie)
-					{
-						firstcustum = n;
-					}
-				}
-			}
-
-			if (firstcustum == null)
-			{
-				firstcustum = list.Count > 0 ? (string)list[0] : Localization.GetString("Unknown");
-			}
-
-			list.Sort();
-			return list;
+			ILookup<ushort, Interfaces.Wrapper.ISDesc> ht = FileTableBase.ProviderRegistry
+															.SimDescriptionProvider.SimInstance;
+			firstcustom = ht.SelectMany(item => item)
+				   .Cast<LinkedSDesc>()
+				   .Where(sdesc => !sdesc.IsNPC && !sdesc.IsTownie)
+				   .Select(sdesc => sdesc.HouseholdName ?? Localization.GetString("Unknown"))
+				   .FirstOrDefault();
+			return ht.SelectMany(item => item)
+				.Select(sdesc => sdesc.HouseholdName
+								?? Localization.GetString("Unknown"));
 		}
 
 		#region ISimDescription Member
 
 		public Interfaces.Wrapper.ISDesc FindSim(uint simid)
 		{
-			if (bysimid == null)
+			if (sdescs.Count == 0)
 			{
 				LoadDescriptions();
 			}
 
-			return (Interfaces.Wrapper.ISDesc)bysimid[simid];
+			return SimGuidMap[simid].FirstOrDefault();
 		}
 
-		Interfaces.Wrapper.ISDesc ISimDescriptions.FindSim(
-			ushort instance
-		)
+		Interfaces.Wrapper.ISDesc ISimDescriptions.FindSim(ushort instance)
 		{
-			if (byinstance == null)
+			if (sdescs.Count == 0)
 			{
 				LoadDescriptions();
 			}
 
-			return (Interfaces.Wrapper.ISDesc)byinstance[instance];
+			return SimInstance[instance].FirstOrDefault();
 		}
 
 		public ushort GetInstance(uint simid)
@@ -236,7 +190,7 @@ namespace SimPe.Providers
 
 		#region Nightlife Turn On/Off Extension
 		int to1 = 13;
-		System.Collections.Generic.Dictionary<int, string> turnons;
+		Dictionary<int, string> turnons;
 
 		void LoadTurnOns()
 		{
@@ -245,7 +199,7 @@ namespace SimPe.Providers
 				return;
 			}
 
-			turnons = new System.Collections.Generic.Dictionary<int, string>();
+			turnons = new Dictionary<int, string>();
 			if (
 				PathProvider.Global.EPInstalled < 2
 				&& PathProvider.Global.STInstalled < 28
@@ -266,9 +220,9 @@ namespace SimPe.Providers
 			);
 			Str str = new Str();
 			IPackedFileDescriptor pfd = pkg.FindFile(
-				Data.FileTypes.STR,
+				FileTypes.STR,
 				0,
-				Data.MetaData.LOCAL_GROUP,
+				MetaData.LOCAL_GROUP,
 				0xe1
 			);
 
@@ -379,7 +333,7 @@ namespace SimPe.Providers
 		#endregion
 
 		#region Voyage Vacation Collectibles
-		System.Collections.Generic.Dictionary<int, CollectibleAlias> collectibles;
+		Dictionary<int, CollectibleAlias> collectibles;
 
 		void LoadCollectibles()
 		{
@@ -388,7 +342,7 @@ namespace SimPe.Providers
 				return;
 			}
 
-			collectibles = new System.Collections.Generic.Dictionary<
+			collectibles = new Dictionary<
 				int,
 				CollectibleAlias
 			>();
@@ -405,9 +359,9 @@ namespace SimPe.Providers
 			);
 			Str str = new Str();
 			IPackedFileDescriptor pfd = pkg.FindFile(
-				Data.FileTypes.STR,
+				FileTypes.STR,
 				0,
-				Data.MetaData.LOCAL_GROUP,
+				MetaData.LOCAL_GROUP,
 				0xb7
 			);
 			if (pfd != null)
@@ -700,8 +654,7 @@ namespace SimPe.Providers
 		/// </summary>
 		protected override void OnChangedPackage()
 		{
-			bysimid = null;
-			byinstance = null;
+			sdescs.Clear();
 			names = null;
 			famnames = null;
 		}

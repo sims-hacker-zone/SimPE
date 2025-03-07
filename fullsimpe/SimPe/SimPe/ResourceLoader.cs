@@ -2,9 +2,8 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Windows.Forms;
-
-using SimPe.Forms.MainUI;
 
 using Message = SimPe.Forms.MainUI.Message;
 
@@ -15,27 +14,28 @@ namespace SimPe
 	/// </summary>
 	public class ResourceLoader
 	{
-		TD.SandDock.TabControl dc;
-		LoadedPackage pkg;
+		private readonly TD.SandDock.TabControl dc;
+		private readonly LoadedPackage pkg;
 
 		/// <summary>
 		/// keeps a list of loaded Resource/Wrappers
 		/// </summary>
-		Hashtable loaded;
+		private readonly Dictionary<Interfaces.Scenegraph.IScenegraphFileIndexItem, TD.SandDock.DockControl> loaded
+		 = new Dictionary<Interfaces.Scenegraph.IScenegraphFileIndexItem, TD.SandDock.DockControl>();
 
 		/// <summary>
 		/// keeps a list of Resources that can only handle a single Instance
 		/// </summary>
-		Hashtable single;
-
-		static ResourceLoader srl = null;
+		private readonly Dictionary<string, Interfaces.Scenegraph.IScenegraphFileIndexItem> single
+			= new Dictionary<string, Interfaces.Scenegraph.IScenegraphFileIndexItem>();
+		private static ResourceLoader srl = null;
 
 		public static void Refresh()
 		{
 			if (srl != null)
 			{
 				foreach (
-					Interfaces.Scenegraph.IScenegraphFileIndexItem loaded in srl.loaded
+					Interfaces.Scenegraph.IScenegraphFileIndexItem loaded in srl.loaded.Keys
 				)
 				{
 					srl.RefreshUI(loaded);
@@ -90,8 +90,6 @@ namespace SimPe
 		{
 			this.dc = dc;
 			pkg = lp;
-			loaded = new Hashtable();
-			single = new Hashtable();
 			if (srl == null)
 			{
 				srl = this;
@@ -113,22 +111,11 @@ namespace SimPe
 			}
 
 			//try by Type
-			Interfaces.Plugin.IFileWrapper wrapper =
-				(Interfaces.Plugin.IFileWrapper)
-					FileTableBase.WrapperRegistry.FindHandler(fii.FileDescriptor.Type);
 
-			//try by Signature
-			if (wrapper == null)
-			{
-				Interfaces.Files.IPackedFile pf = pkg.Package.Read(
-					fii.FileDescriptor
-				);
-				wrapper = FileTableBase.WrapperRegistry.FindHandler(
-					pf.GetUncompressedData(0x40)
-				);
-			}
-
-			return wrapper;
+			return (Interfaces.Plugin.IFileWrapper)
+					FileTableBase.WrapperRegistry.FindHandler(fii.FileDescriptor.Type)
+					?? FileTableBase.WrapperRegistry.FindHandler(pkg.Package.Read(
+					fii.FileDescriptor).GetUncompressedData(0x40));
 		}
 
 		/// <summary>
@@ -171,7 +158,7 @@ namespace SimPe
 		/// <param name="fii"></param>
 		/// <param name="reload"></param>
 		/// <returns>true, if a Document was highlighted</returns>
-		bool FocusResource(
+		private bool FocusResource(
 			Interfaces.Scenegraph.IScenegraphFileIndexItem fii,
 			bool reload
 		)
@@ -207,7 +194,7 @@ namespace SimPe
 		/// </summary>
 		/// <param name="wrapper"></param>
 		/// <returns>true, if the Wrapper was unloaded or allows Multiple Instances</returns>
-		bool UnloadSingleInstanceWrappers(
+		private bool UnloadSingleInstanceWrappers(
 			Interfaces.Plugin.IFileWrapper wrapper,
 			ref bool overload
 		)
@@ -222,9 +209,7 @@ namespace SimPe
 				string id = wrapper.GetType().ToString();
 				if (single.ContainsKey(id))
 				{
-					Interfaces.Scenegraph.IScenegraphFileIndexItem oldfii =
-						(Interfaces.Scenegraph.IScenegraphFileIndexItem)
-							single[id];
+					Interfaces.Scenegraph.IScenegraphFileIndexItem oldfii = single[id];
 					if (!CloseDocument(oldfii))
 					{
 						return false;
@@ -245,7 +230,7 @@ namespace SimPe
 		/// <param name="wrapper"></param>
 		/// <param name="overload">Replace the currently active Document Tab with the new one</param>
 		/// <returns>true, if the Resource was Presented succesfull</returns>
-		bool Present(
+		private bool Present(
 			Interfaces.Scenegraph.IScenegraphFileIndexItem fii,
 			Interfaces.Plugin.IFileWrapper wrapper,
 			bool overload
@@ -253,23 +238,15 @@ namespace SimPe
 		{
 			if (wrapper != null)
 			{
-				if (wrapper.FileDescriptor == null)
-				{
-					return false;
-				}
-
-				if (wrapper.Package == null)
+				if (wrapper.FileDescriptor == null || wrapper.Package == null)
 				{
 					return false;
 				}
 
 				//do not open Wrappers for deleted Descriptors
-				if (wrapper.FileDescriptor != null)
+				if (wrapper.FileDescriptor != null && wrapper.FileDescriptor.MarkForDelete)
 				{
-					if (wrapper.FileDescriptor.MarkForDelete)
-					{
-						return false;
-					}
+					return false;
 				}
 
 				TD.SandDock.DockControl doc = null;
@@ -434,16 +411,16 @@ namespace SimPe
 
 			if (loaded.ContainsKey(fii))
 			{
-				TD.SandDock.DockControl doc = (TD.SandDock.DockControl)loaded[fii];
+				TD.SandDock.DockControl doc = loaded[fii];
 
 				if (doc.Parent == null)
 				{
 					return true;
 				}
 
-				if (doc.Parent is TD.SandDock.TabControl)
+				if (doc.Parent is TD.SandDock.TabControl control)
 				{
-					((TD.SandDock.TabControl)doc.Parent).SelectedPage =
+					control.SelectedPage =
 						(TD.SandDock.TabPage)doc;
 				}
 				else
@@ -466,7 +443,7 @@ namespace SimPe
 			Interfaces.Scenegraph.IScenegraphFileIndexItem fii
 		)
 		{
-			return loaded.ContainsKey(fii) ? (TD.SandDock.DockControl)loaded[fii] : null;
+			return loaded.ContainsKey(fii) ? loaded[fii] : null;
 		}
 
 		/// <summary>
@@ -482,12 +459,9 @@ namespace SimPe
 			{
 				Interfaces.Plugin.IFileWrapper wrapper =
 					(Interfaces.Plugin.IFileWrapper)doc.Tag;
-				if (wrapper != null)
+				if (wrapper != null && wrapper.FileDescriptor == pfd)
 				{
-					if (wrapper.FileDescriptor == pfd)
-					{
-						return doc;
-					}
+					return doc;
 				}
 			}
 			return null;
@@ -562,10 +536,10 @@ namespace SimPe
 		/// </summary>
 		/// <param name="fii">the Reource represented by the Document</param>
 		/// <returns>true, if the Document was closed</returns>
-		bool CloseDocument(Interfaces.Scenegraph.IScenegraphFileIndexItem fii)
+		private bool CloseDocument(Interfaces.Scenegraph.IScenegraphFileIndexItem fii)
 		{
 			bool remain = false;
-			TD.SandDock.DockControl doc = (TD.SandDock.DockControl)loaded[fii];
+			TD.SandDock.DockControl doc = loaded[fii];
 			if (doc != null)
 			{
 				doc.Close();
@@ -645,7 +619,7 @@ namespace SimPe
 		/// Make sure all Controls and Child Controls get disposed
 		/// </summary>
 		/// <param name="ctrls"></param>
-		void DisposeSubControls(Control.ControlCollection ctrls)
+		private void DisposeSubControls(Control.ControlCollection ctrls)
 		{
 			if (ctrls == null)
 			{
@@ -662,7 +636,7 @@ namespace SimPe
 			ctrls.Clear();
 		}
 
-		void ClearControls(Control c)
+		private void ClearControls(Control c)
 		{
 			c.Tag = null;
 			foreach (Control cc in c.Controls)
@@ -678,7 +652,7 @@ namespace SimPe
 		/// </summary>
 		/// <param name="doc">The document presenting the Wrapper</param>
 		/// <returns>true, if the Wrapper was unloaded completley (false if User decided to answer with Cancel)</returns>
-		bool UnloadWrapper(TD.SandDock.DockControl doc)
+		private bool UnloadWrapper(TD.SandDock.DockControl doc)
 		{
 			Interfaces.Plugin.IFileWrapper wrapper =
 				(Interfaces.Plugin.IFileWrapper)doc.Tag;
@@ -715,7 +689,7 @@ namespace SimPe
 		/// <remarks>When there are uncommited changes, the Method will
 		/// Prompt the User
 		/// if the changes should be commited</remarks>
-		bool UnloadWrapper(Interfaces.Plugin.IFileWrapper wrapper)
+		private bool UnloadWrapper(Interfaces.Plugin.IFileWrapper wrapper)
 		{
 			if (wrapper == null)
 			{
@@ -723,59 +697,44 @@ namespace SimPe
 			}
 
 			if (
-				wrapper.GetType().GetInterface("IPackedFileSaveExtension", false)
-				== typeof(Interfaces.Plugin.Internal.IPackedFileSaveExtension)
-			)
+				wrapper is Interfaces.Plugin.Internal.IPackedFileSaveExtension wrp && wrp.Changed)
 			{
-				Interfaces.Plugin.Internal.IPackedFileSaveExtension wrp =
-					(Interfaces.Plugin.Internal.IPackedFileSaveExtension)wrapper;
-				if (wrp.Changed)
+				MessageBoxButtons mbb = MessageBoxButtons.YesNoCancel;
+				//Deleted wrappers are Ignored!!!
+				if (wrp.FileDescriptor != null && wrp.FileDescriptor.MarkForDelete)
 				{
-					MessageBoxButtons mbb = MessageBoxButtons.YesNoCancel;
-					//Deleted wrappers are Ignored!!!
-					if (wrp.FileDescriptor != null)
-					{
-						if (wrp.FileDescriptor.MarkForDelete)
-						{
-							mbb = MessageBoxButtons.YesNo;
-						}
-					}
+					mbb = MessageBoxButtons.YesNo;
+				}
 
-					string flname = null;
-					if (wrapper != null)
-					{
-						if (wrapper.Package != null)
-						{
-							flname = wrapper.Package.FileName;
-						}
-					}
+				string flname = null;
+				if (wrapper != null && wrapper.Package != null)
+				{
+					flname = wrapper.Package.FileName;
+				}
 
-					if (flname == null)
-					{
-						flname = Localization.Manager.GetString("unknown");
-					}
+				if (flname == null)
+				{
+					flname = Localization.Manager.GetString("unknown");
+				}
 
-					DialogResult dr = Message.Show(
+				DialogResult dr = Message.Show(
+						Localization.Manager.GetString("savewrapperchanges")
+						.Replace("{name}", wrapper.ResourceName)
+						.Replace("{filename}", flname),
+					Localization.Manager.GetString("savechanges?"),
+					mbb
+				);
 
-							Localization.Manager.GetString("savewrapperchanges")
-							.Replace("{name}", wrapper.ResourceName)
-							.Replace("{filename}", flname),
-						Localization.Manager.GetString("savechanges?"),
-						mbb
-					);
-
-					if (dr == DialogResult.Yes)
-					{
+				switch (dr)
+				{
+					case DialogResult.Yes:
 						wrp.SynchronizeUserData();
-					}
-					else if (dr == DialogResult.Cancel)
-					{
+						break;
+					case DialogResult.Cancel:
 						return false;
-					}
-					else if (dr == DialogResult.No)
-					{
+					case DialogResult.No:
 						wrp.Changed = false;
-					}
+						break;
 				}
 			}
 
@@ -783,7 +742,7 @@ namespace SimPe
 			return true;
 		}
 
-		void UnlinkWrapper(Interfaces.Plugin.IFileWrapper wrapper)
+		private void UnlinkWrapper(Interfaces.Plugin.IFileWrapper wrapper)
 		{
 			if (wrapper.FileDescriptor != null)
 			{

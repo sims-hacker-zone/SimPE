@@ -128,17 +128,16 @@ namespace SimPe.PackedFiles.Swaf
 			Dictionary<uint, string> sims = new Dictionary<uint, string>();
 
 			foreach (
-				ushort inst in FileTableBase
+				IGrouping<ushort, Interfaces.Wrapper.ISDesc> inst in FileTableBase
 					.ProviderRegistry
 					.SimDescriptionProvider
 					.SimInstance
-					.Keys
 			)
 			{
 				Wrapper.SDesc sdsc =
-					(Wrapper.SDesc)FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(inst);
+					(Wrapper.SDesc)FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(inst.Key);
 				sdsc.SetProviders(FileTableBase.ProviderRegistry);
-				sims[inst] = $"{sdsc.SimName} {sdsc.SimFamilyName} ({sdsc.HouseholdName})";
+				sims[inst.Key] = $"{sdsc.SimName} {sdsc.SimFamilyName} ({sdsc.HouseholdName})";
 			}
 			Map[WantType.Sim] = sims;
 		}

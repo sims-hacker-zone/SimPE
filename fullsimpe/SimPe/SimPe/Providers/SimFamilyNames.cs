@@ -1,6 +1,8 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 using SimPe.Data;
 using SimPe.Interfaces;
@@ -72,8 +74,7 @@ namespace SimPe.Providers
 				PackedFiles.Wrapper.SDesc sdesc in FileTableBase
 					.ProviderRegistry
 					.SimDescriptionProvider
-					.SimInstance
-					.Values
+					.SimInstance.SelectMany(item => item)
 			)
 			{
 				//load extern Fami Name
@@ -139,36 +140,11 @@ namespace SimPe.Providers
 		/// Returns a List of All SimID's found in the Package
 		/// </summary>
 		/// <returns>The List of found SimID's</returns>
-		public ArrayList GetAllSimIDs()
+		public IEnumerable<(uint SimId, ushort FamilyInstance)> GetAllSimIDs()
 		{
-			if (BasePackage == null)
-			{
-				new ArrayList();
-			}
-
-			//load a list of all avail SimID's
-			ArrayList simids = new ArrayList();
-			/*IPackedFileDescriptor[] pfds = BasePackage.FindFiles(Data.FileTypes.SDSC);
-
-			SimPe.PackedFiles.Wrapper.SDesc sdesc = new SimPe.PackedFiles.Wrapper.SDesc(null, null, null);
-			foreach(IPackedFileDescriptor pfd in pfds)
-			{
-				sdesc.ProcessData(pfd, BasePackage);
-				simids.Add(sdesc.SimId);
-			}*/
-
-			foreach (
-				PackedFiles.Wrapper.SDesc sdesc in FileTableBase
-					.ProviderRegistry
-					.SimDescriptionProvider
-					.SimInstance
-					.Values
-			)
-			{
-				simids.Add(new object[] { sdesc.SimId, sdesc.FamilyInstance });
-			}
-
-			return simids;
+			return from items in FileTableBase.ProviderRegistry.SimDescriptionProvider.SimInstance
+				   from sdesc in items
+				   select (sdesc.SimId, sdesc.FamilyInstance);
 		}
 
 		/// <summary>
