@@ -3,6 +3,7 @@
 using System;
 using System.Collections;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 using SimPe.Data;
@@ -1729,7 +1730,7 @@ namespace SimPe.Plugin
 
 							pfd.MarkForReCompress =
 								file.IsCompressed
-								|| Data.MetaData.CompressionCandidates.Contains(
+								|| MetaData.CompressionCandidates.Contains(
 									pfd.Type
 								)
 							;

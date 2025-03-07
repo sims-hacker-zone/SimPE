@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 using SimPe.Cache;
 using SimPe.Interfaces.Plugin.Scanner;

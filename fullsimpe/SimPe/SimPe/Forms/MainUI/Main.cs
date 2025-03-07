@@ -629,12 +629,12 @@ namespace SimPe
 			filter.FilterInstance = false;
 			try
 			{
-				if (cbsemig.SelectedItem is Data.SemiGlobalAlias sga)
+				if (cbsemig.SelectedItem is Tuple<uint, string> sga)
 				{
 					if (sga != null)
 					{
 						string name = Hashes.StripHashFromName(tbRcolName.Text);
-						filter.Group = sga.Id;
+						filter.Group = sga.Item1;
 						filter.FilterGroup = cbsemig.Text.Trim() != "";
 					}
 				}
