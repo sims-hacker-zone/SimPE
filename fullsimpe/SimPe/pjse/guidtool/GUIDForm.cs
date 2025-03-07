@@ -99,13 +99,10 @@ namespace pjse.guidtool
 			sgGroups.Add(0x7FD46CD0);
 			sgNames.Add("Behaviour");
 			sgGroups.Add(0x7FE59FD0);
-			foreach (SimPe.Data.SemiGlobalAlias sga in SimPe.Data.MetaData.SemiGlobals)
+			foreach (KeyValuePair<uint, string> kv in SemiGlobalListing.SemiGlobals)
 			{
-				if (sga.Known)
-				{
-					sgNames.Add(sga.Name);
-					sgGroups.Add(sga.Id);
-				}
+				sgNames.Add(kv.Value);
+				sgGroups.Add(kv.Key);
 			}
 
 			gcGroup.KnownObjects = new object[] { sgNames, sgGroups };

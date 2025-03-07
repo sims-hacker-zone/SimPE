@@ -435,15 +435,6 @@ namespace SimPe
 
 			if (
 				!System.IO.File.Exists(
-					System.IO.Path.Combine(Helper.SimPeDataPath, "semiglobals.xml")
-				)
-			)
-			{
-				allexist = false;
-			}
-
-			if (
-				!System.IO.File.Exists(
 					System.IO.Path.Combine(Helper.SimPeDataPath, "tgi.xml")
 				)
 			)

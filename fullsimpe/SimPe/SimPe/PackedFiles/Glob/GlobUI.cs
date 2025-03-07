@@ -1,5 +1,9 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using System;
+using System.Linq;
+
+using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 using SimPe.Plugin;
 
@@ -24,20 +28,8 @@ namespace SimPe.PackedFiles.Glob
 		{
 			form = new GlobCtrl();
 			form.cbseminame.Items.Clear();
-
-			System.Collections.ArrayList names = new System.Collections.ArrayList();
-			foreach (Data.SemiGlobalAlias sga in Data.MetaData.SemiGlobals)
-			{
-				if (!names.Contains(sga.Name.Trim().ToLower()))
-				{
-					if (sga.Known)
-					{
-						form.cbseminame.Items.Add(sga);
-					}
-
-					names.Add(sga.Name.Trim().ToLower());
-				}
-			}
+			form.cbseminame.Items.AddRange((from global in SemiGlobalListing.SemiGlobals
+											select (global.Key, global.Value)).Cast<object>().ToArray());
 		}
 		#endregion
 
@@ -69,13 +61,12 @@ namespace SimPe.PackedFiles.Glob
 			form.lbBloat.Visible = wrp.Bloaty && !wrp.Faulty;
 			for (int i = 0; i < form.cbseminame.Items.Count; i++)
 			{
-				Data.SemiGlobalAlias a =
-					form.cbseminame.Items[i] as Data.SemiGlobalAlias;
-				if (a.Name.ToLower() == form.cbseminame.Text.ToLower())
+				Tuple<uint, string> a = form.cbseminame.Items[i] as Tuple<uint, string>;
+				if (a.Item2.ToLower() == form.cbseminame.Text.ToLower())
 				{
 					form.cbseminame.SelectedIndex = i;
-					form.tbgroup.Text = "0x" + Helper.HexString(a.Id);
-					form.tbgroup.ForeColor = a.Id == wrp.SemiGlobalGroup ? System.Drawing.SystemColors.WindowText : System.Drawing.Color.Red;
+					form.tbgroup.Text = "0x" + Helper.HexString(a.Item1);
+					form.tbgroup.ForeColor = a.Item1 == wrp.SemiGlobalGroup ? System.Drawing.SystemColors.WindowText : System.Drawing.Color.Red;
 
 					break;
 				}

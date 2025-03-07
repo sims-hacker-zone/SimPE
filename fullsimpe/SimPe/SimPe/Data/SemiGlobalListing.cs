@@ -1,68 +1,180 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
-
-using System.Xml;
+using System.Collections.Generic;
 
 namespace SimPe.Data
 {
-	public class SemiGlobalListing : System.Collections.Generic.List<SemiGlobalAlias>
+	public static class SemiGlobalListing
 	{
-		string flname;
-
-		public SemiGlobalListing()
-			: this(Helper.SimPeSemiGlobalFile) { }
-
-		public SemiGlobalListing(string flname)
+		public static Dictionary<uint, string> SemiGlobals => new Dictionary<uint, string>
 		{
-			this.flname = flname;
-			LoadXML();
-		}
-
-		void LoadXML()
-		{
-			//read XML File
-			XmlDocument xmlfile = new XmlDocument();
-			xmlfile.Load(flname);
-
-			//seek Root Node
-			XmlNodeList XMLData = xmlfile.GetElementsByTagName("semiglobals");
-
-			//Process all Root Node Entries
-			for (int i = 0; i < XMLData.Count; i++)
-			{
-				XmlNode node = XMLData.Item(i);
-				foreach (XmlNode subnode in node.ChildNodes)
-				{
-					ProcessItem(subnode);
-				}
-			}
-		}
-
-		void ProcessItem(XmlNode node)
-		{
-			bool known = false;
-			uint group = 0;
-			string name = "";
-			foreach (XmlNode subnode in node)
-			{
-				if (subnode.Name == "known")
-				{
-					known = true;
-				}
-				else if (subnode.Name == "group")
-				{
-					group = Helper.StringToUInt32(subnode.InnerText, 0, 16);
-				}
-				else if (subnode.Name == "name")
-				{
-					name = subnode.InnerText.Trim();
-				}
-			}
-
-			if (name != "" && group != 0)
-			{
-				Add(new SemiGlobalAlias(known, group, name));
-			}
-		}
+			[0x7F011198] = "RinkGlobals",
+			[0x7F0136DC] = "LotTransitionGlobals",
+			[0x7F01EC29] = "PersonGlobals",
+			[0x7F020C14] = "PetFoodDishGlobals",
+			[0x7F026EBD] = "DartboardGlobal",
+			[0x7F033984] = "Stove_Globals",
+			[0x7F05E901] = "ToyWaterWiggleSprinklerGlobals",
+			[0x7F067AA0] = "CraftingGlobals",
+			[0x7F074B38] = "ConversationPersonalityGlobals",
+			[0x7F07B054] = "WalkSignGlobals",
+			[0x7F084A90] = "DirtPile_Globals",
+			[0x7F0AB421] = "DateRewardGlobals",
+			[0x7F0B2AE7] = "VideoGame_CD_Globals",
+			[0x7F0B61F3] = "ChairGlobals",
+			[0x7F0C60C8] = "StairsStraightGlobals",
+			[0x7F1059B4] = "ToastingSetGlobals",
+			[0x7F117CD9] = "StairModularGlobals",
+			[0x7F119F0A] = "ToyboxToysGlobals",
+			[0x7F12A804] = "CounterGlobals",
+			[0x7F130D8A] = "BouncyToddlerObjectGlobals",
+			[0x7F16556B] = "ToiletGlobals",
+			[0x7F17E3A4] = "MajorGlobals",
+			[0x7F18E0F0] = "PaintingGlobals",
+			[0x7F1A9ECC] = "ShrubGlobals",
+			[0x7F1BFB16] = "BigRinkGlobals",
+			[0x7F1CEB97] = "SnowballFightGlobals",
+			[0x7F20C1E4] = "MagazineGlobals",
+			[0x7F23B01B] = "FoodProcessor_Globals",
+			[0x7F25E399] = "EffectHolderGlobals",
+			[0x7F277790] = "ToyBoxGlobals",
+			[0x7F281D4B] = "AutoSprinklerGlobals",
+			[0x7F28EEB6] = "ToyLanguageGlobals",
+			[0x7F293E85] = "PuddleGlobal",
+			[0x7F2B6F4B] = "RugGlobals",
+			[0x7F2BBA62] = "HelipadGlobals",
+			[0x7F2FEFCC] = "CoffeeMachineGlobals",
+			[0x7F327BCE] = "BookCaseGlobals",
+			[0x7F347DAB] = "FoodContainer_Globals",
+			[0x7F376D8B] = "EaselGlobals",
+			[0x7F383346] = "GardenGlobals",
+			[0x7F38969E] = "KegGlobals",
+			[0x7F38B8A7] = "UrnStoneGlobals",
+			[0x7F39D7FB] = "ToyXylophoneGlobals",
+			[0x7F3A03A4] = "MailBoxGlobals",
+			[0x7F3B5482] = "StairsSpiralGlobals",
+			[0x7F3B9D51] = "CurtainGlobals",
+			[0x7F3C9675] = "Food_Globals",
+			[0x7F441294] = "ComputerGlobals",
+			[0x7F4437F2] = "BedGlobals",
+			[0x7F449F3B] = "MusicGlobals",
+			[0x7F48AF7A] = "ClothingBoothGlobals",
+			[0x7F48CA31] = "PlantGlobals",
+			[0x7F491269] = "OrchardTreeGlobals",
+			[0x7F496A24] = "DanceGlobals",
+			[0x7F4BF0DB] = "JungleGymGlobals",
+			[0x7F4EA230] = "CarGlobals",
+			[0x7F4F06CA] = "StereoGlobals",
+			[0x7F514EE5] = "TableMassageGlobals",
+			[0x7F545E8D] = "DollHouseGlobals",
+			[0x7F553580] = "PersonalityGlobals",
+			[0x7F56BB72] = "CarGlobalsNew",
+			[0x7F575EBF] = "MemoryGlobals",
+			[0x7F5A0600] = "PhotoBoothGlobals",
+			[0x7F5BB15F] = "RouteBehaviorGlobals",
+			[0x7F60C397] = "LampGlobals",
+			[0x7F61CD20] = "VideoGame_Globals",
+			[0x7F62606D] = "WeatherGlobals",
+			[0x7F63E3F2] = "TutorialScriptingGlobals",
+			[0x7F675EF2] = "SocialMarkerGlobals",
+			[0x7F67DD1B] = "PetGlobals",
+			[0x7F67FE05] = "BarGlobals",
+			[0x7F681D60] = "PoolTable_Globals",
+			[0x7F6AB593] = "SnowManGlobals",
+			[0x7F6B7BD0] = "TreeGlobals",
+			[0x7F6E333B] = "DishwasherGlobals",
+			[0x7F6E998E] = "GrandfatherClockGlobals",
+			[0x7F71C68E] = "PokerTableGlobals",
+			[0x7F7234D0] = "TableDining_Globals",
+			[0x7F723E9D] = "VanityGlobals",
+			[0x7F74C118] = "ArcadeGlobals",
+			[0x7F759586] = "WaterPlantGlobals",
+			[0x7F7638B3] = "SinkGlobals",
+			[0x7F7A8450] = "Career_FingerprintGlobals",
+			[0x7F7BA762] = "ReactionGlobals",
+			[0x7F7D730B] = "ToasterOvenGlobals",
+			[0x7F7FA83D] = "IdleGlobals",
+			[0x7F83411E] = "HighChairGlobals",
+			[0x7F84A9F4] = "MirrorGlobals",
+			[0x7F85C391] = "TableCoffee_Globals",
+			[0x7F85DFD0] = "Food_Globals_Aspyr",
+			[0x7F8834C8] = "FoodDish_Globals",
+			[0x7F890CAC] = "CribGlobals",
+			[0x7F8A5209] = "FlowerGlobals",
+			[0x7F8B4A08] = "SofaSocialGlobals",
+			[0x7F8C5BAC] = "HotelDeskGlobals",
+			[0x7F8C6EDA] = "CareerCandyFactoryGlobals",
+			[0x7F8EC725] = "ConnectedColumnGlobals",
+			[0x7F8F4EB6] = "JobDataGlobals",
+			[0x7F8FA50E] = "AspirationsHatGlobals",
+			[0x7F9176E2] = "PetAgilityGlobals",
+			[0x7F92832C] = "TelevisionGlobals",
+			[0x7F92C7E1] = "DrivewayGlobals",
+			[0x7F940B2D] = "StorymodeGlobals",
+			[0x7F9A5330] = "FridgeGlobals",
+			[0x7F9A5831] = "VideoGame_Controller_Globals",
+			[0x7F9A625F] = "AquariumGlobals",
+			[0x7F9AB517] = "ExercisemachineGlobals",
+			[0x7F9BFA55] = "RobotGlobals",
+			[0x7F9CE3AF] = "juicerglobals",
+			[0x7F9D74A7] = "OrangutanGlobals",
+			[0x7F9EE20D] = "ControllerGroupGlobals",
+			[0x7FA083E3] = "DisplayPetGlobals",
+			[0x7FA1DF44] = "ChessGlobal",
+			[0x7FA3FCFE] = "TrashGlobals",
+			[0x7FA6640C] = "RemoteControlCarGlobals",
+			[0x7FA815EA] = "DeskGlobals",
+			[0x7FAB30B7] = "TableTeaGlobals",
+			[0x7FACC12B] = "TriggerHandler_Global",
+			[0x7FAE06B0] = "SofaGlobals",
+			[0x7FAF5F74] = "Aspiration_CoolShadesGlobals",
+			[0x7FB01AF3] = "Clock_Alarm_Globals",
+			[0x7FB208FA] = "PhoneGlobals",
+			[0x7FB22737] = "WitchGlobals",
+			[0x7FB8B012] = "LitterBoxGlobals",
+			[0x7FBD3903] = "PhoneCallGlobals",
+			[0x7FBE051B] = "JobDataSchoolGlobals",
+			[0x7FC6E1D8] = "CeilingFanGlobals",
+			[0x7FC758D8] = "PotionGlobals",
+			[0x7FC80134] = "SoccerNetGlobal",
+			[0x7FC95418] = "CS_Portal_Globals",
+			[0x7FC9DC08] = "PinballMachineGlobals",
+			[0x7FCE2168] = "HarvestableGlobals",
+			[0x7FCFF92E] = "FlamingoGlobals",
+			[0x7FD05A1E] = "PetBedGlobals",
+			[0x7FD0A90D] = "CakeGlobals",
+			[0x7FD0DEBA] = "DoorGlobalsNew",
+			[0x7FD178FF] = "TableEnd_Globals",
+			[0x7FD18CCD] = "ClimateGlobals",
+			[0x7FD2752D] = "SignGlobals",
+			[0x7FD3AF67] = "ThoughtGlobals",
+			[0x7FD90EDB] = "SocialGlobals",
+			[0x7FDA22BB] = "StoveGrill_Globals",
+			[0x7FDB80FC] = "StuffedAnimal_Globals",
+			[0x7FDC2970] = "Displayglobals",
+			[0x7FDDAB2B] = "ContainedPetGlobals",
+			[0x7FDE81DC] = "CashRegisterGlobals",
+			[0x7FDFD647] = "Aspyr_PetsStoryGlobals",
+			[0x7FDFFE55] = "DiningGlobals",
+			[0x7FE10572] = "ShoppingRackGlobals",
+			[0x7FE1C9FB] = "MicrowaveGlobals",
+			[0x7FE1FE8A] = "ToyJackInTheBoxGlobals",
+			[0x7FE3E694] = "FoodStandGlobals",
+			[0x7FE49F9B] = "Pool_Globals",
+			[0x7FE64A8D] = "BookGlobals",
+			[0x7FE69D2A] = "TelevisionChannelGlobals",
+			[0x7FE69E23] = "TubAndShowerGlobals",
+			[0x7FE6B74C] = "ElevatorGlobals",
+			[0x7FE6EE0D] = "Accessory_Globals",
+			[0x7FEABABA] = "HottubGlobals",
+			[0x7FEB25E9] = "WishingWellGlobals",
+			[0x7FEC2140] = "RoachGlobals",
+			[0x7FEF86EB] = "ToyKiteGlobals",
+			[0x7FF616D0] = "Windowglobals",
+			[0x7FF941DF] = "EmitterGlobals",
+			[0x7FF9DF6B] = "BuffetGlobals",
+			[0x7FFD4F2D] = "FireplaceGlobals",
+			[0x7FFEA664] = "TelescopeGlobals",
+		};
 	}
 }

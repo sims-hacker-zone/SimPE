@@ -1,8 +1,10 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
+using SimPe.Data;
 using SimPe.Events;
 using SimPe.Forms.MainUI;
 using SimPe.Forms.MainUI.Components;
@@ -157,19 +159,10 @@ namespace SimPe
 			dcFilter.Collapse(false);
 
 			cbsemig.Items.Add("[Group Filter]");
-			cbsemig.Items.Add(
-				new Data.SemiGlobalAlias(true, 0x7FD46CD0, "Globals")
-			);
-			cbsemig.Items.Add(
-				new Data.SemiGlobalAlias(true, 0x7FE59FD0, "Behaviour")
-			);
-			foreach (Data.SemiGlobalAlias sga in Data.MetaData.SemiGlobals)
-			{
-				if (sga.Known)
-				{
-					cbsemig.Items.Add(sga);
-				}
-			}
+			cbsemig.Items.Add((0x7FD46CD0, "Globals"));
+			cbsemig.Items.Add((0x7FE59FD0, "Behaviour"));
+			cbsemig.Items.AddRange((from global in SemiGlobalListing.SemiGlobals
+									select (global.Key, global.Value)).Cast<object>().ToArray());
 
 			if (cbsemig.Items.Count > 0)
 			{

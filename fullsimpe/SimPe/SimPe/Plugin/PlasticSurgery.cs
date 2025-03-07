@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 using SimPe.Data;
@@ -83,16 +84,16 @@ namespace SimPe.Plugin
 			Packages.GeneratableFile ret =
 				Packages.File.LoadFromFile(null);
 
-			ArrayList list = new ArrayList
+			HashSet<FileTypes> list = new HashSet<FileTypes>
 			{
-				FileTypes.THREE_IDR, //3IDR
+				FileTypes.THREE_IDR,
 				FileTypes.GZPS,
-				FileTypes.AGED, //AGED
-				FileTypes.LxNR, //LxNR, Face
-				FileTypes.IMG, //IMG
-				(uint)FileTypes.SLOT
+				FileTypes.AGED,
+				FileTypes.LxNR,
+				FileTypes.IMG,
+				FileTypes.SLOT
 			};
-			list.AddRange(MetaData.RcolList);
+			list.UnionWith(MetaData.RcolList);
 
 			uint hashgroup = GetPatientHash();
 

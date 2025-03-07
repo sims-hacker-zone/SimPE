@@ -1,9 +1,9 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 
 namespace SimPe.Data
 {
@@ -390,31 +390,6 @@ namespace SimPe.Data
 			}
 
 			return TitlePostName.ContainsKey(id) ? TitlePostName[id] : "";
-		}
-
-		/// <summary>
-		/// Convert the name to an id for Post Title Names, for easy combobox use the string is object
-		/// </summary>
-		public static short GetTitleId(object ob)
-		{
-			string val = Convert.ToString(ob);
-			if (TitlePostName.Count < 2)
-			{
-				InitializeTitlePostName();
-			}
-
-			if (TitlePostName.ContainsValue(val))
-			{
-				foreach (KeyValuePair<short, string> kvp in TitlePostName)
-				{
-					if (kvp.Value == val)
-					{
-						return kvp.Key;
-					}
-				}
-			}
-
-			return 0;
 		}
 
 		private static void InitializeTitlePostName()
@@ -1893,84 +1868,16 @@ namespace SimPe.Data
 
 		#region Arrays
 
-		/// <summary>
-		/// all Known SemiGlobal Groups
-		/// </summary>
-
-		static SemiGlobalListing sgl;
-		public static List<SemiGlobalAlias> SemiGlobals
-		{
-			get
-			{
-				if (sgl == null)
-				{
-					LoadSemGlobList();
-				}
-
-				return sgl;
-			}
-		}
-
-		static void LoadSemGlobList()
-		{
-			sgl = new SemiGlobalListing();
-			sgl.Sort();
-		}
-
 		public static uint SemiGlobalID(string sgname)
 		{
-			foreach (SemiGlobalAlias sga in SemiGlobals)
-			{
-				if (
-					sga
-						.Name.Trim()
-						.ToLowerInvariant()
-						.Equals(sgname.Trim().ToLowerInvariant())
-				)
-				{
-					return sga.Id;
-				}
-			}
-
-			return 0;
-		}
-
-		public static string SemiGlobalName(uint sgid)
-		{
-			foreach (SemiGlobalAlias sga in SemiGlobals)
-			{
-				if (sga.Id == sgid)
-				{
-					return sga.Name;
-				}
-			}
-
-			return "";
+			return (from global in SemiGlobalListing.SemiGlobals
+					where global.Value.Trim().ToLowerInvariant() == sgname.Trim().ToLowerInvariant()
+					select global.Key).FirstOrDefault();
 		}
 
 		#endregion
 
 		#region Supporting Methods
-		/// <summary>
-		/// Returns the Group Number of a SemiGlobal File
-		/// </summary>
-		/// <param name="name">the nme of the semi global</param>
-		/// <returns>The group Vlue of the Global</returns>
-		public static Alias FindSemiGlobal(string name)
-		{
-			name = name.ToLower();
-			foreach (Alias a in SemiGlobals)
-			{
-				if (a.Name.ToLower() == name)
-				{
-					return a;
-				}
-			} //for
-
-			//unknown SemiGlobal
-			return new Alias(0xffffffff, name.ToLower());
-		}
-
 		static Interfaces.IAlias[] addonskins;
 
 		/// <summary>
@@ -1996,82 +1903,44 @@ namespace SimPe.Data
 		#endregion
 
 		#region Map's
-		static List<FileTypes> rcollist;
-		static List<FileTypes> complist;
-		static Hashtable agelist;
-		static List<FileTypes> cachedft;
 
-		public static List<FileTypes> CachedFileTypes
-		{
-			get
+		public static IEnumerable<FileTypes> CachedFileTypes => RcolList.Union(new HashSet<FileTypes>
 			{
-				if (cachedft == null)
-				{
-					cachedft = new List<FileTypes>();
-
-					foreach (FileTypes i in RcolList)
-					{
-						cachedft.Add(i);
-					}
-
-					cachedft.Add(FileTypes.OBJD);
-					cachedft.Add(FileTypes.CTSS);
-					cachedft.Add(FileTypes.STR);
-
-					cachedft.Add(FileTypes.XFLR);
-					cachedft.Add(FileTypes.XFNC);
-					cachedft.Add(FileTypes.XNGB);
-					cachedft.Add(FileTypes.XOBJ);
-					cachedft.Add(FileTypes.XROF);
-					cachedft.Add(FileTypes.XWNT);
-				}
-				return cachedft;
-			}
-		}
+				FileTypes.OBJD,
+				FileTypes.CTSS,
+				FileTypes.STR,
+				FileTypes.XFLR,
+				FileTypes.XFNC,
+				FileTypes.XNGB,
+				FileTypes.XOBJ,
+				FileTypes.XROF,
+				FileTypes.XWNT
+			});
 
 		//Returns a List of all RCOl Compatible File Types
-		public static List<FileTypes> RcolList
-		{
-			get
+		public static HashSet<FileTypes> RcolList => new HashSet<FileTypes>
 			{
-				if (rcollist == null)
-				{
-					rcollist = new List<FileTypes>
-					{
-						FileTypes.GMDC,
-						FileTypes.TXTR,
-						FileTypes.LIFO,
-						FileTypes.TXMT,
-						FileTypes.ANIM,
-						FileTypes.GMND,
-						FileTypes.SHPE,
-						FileTypes.CRES,
-						FileTypes.LDIR,
-						FileTypes.LAMB,
-						FileTypes.LSPT,
-						FileTypes.LPNT
-					};
-				}
-				return rcollist;
-			}
-		}
+				FileTypes.GMDC,
+				FileTypes.TXTR,
+				FileTypes.LIFO,
+				FileTypes.TXMT,
+				FileTypes.ANIM,
+				FileTypes.GMND,
+				FileTypes.SHPE,
+				FileTypes.CRES,
+				FileTypes.LDIR,
+				FileTypes.LAMB,
+				FileTypes.LSPT,
+				FileTypes.LPNT
+			};
 
 		//Returns a List of File Types that should be compressed
-		public static List<FileTypes> CompressionCandidates
-		{
-			get
+		public static IEnumerable<FileTypes> CompressionCandidates => RcolList.Union(new HashSet<FileTypes>
 			{
-				if (complist == null)
-				{
-					complist = RcolList;
-
-					complist.Add(FileTypes.STR);
-					complist.Add(FileTypes.BINX);
-					complist.Add(FileTypes.THREE_IDR);
-				}
-				return complist;
-			}
-		}
+				FileTypes.STR,
+				FileTypes.BINX,
+				FileTypes.THREE_IDR
+			});
 		#endregion
 	}
 }

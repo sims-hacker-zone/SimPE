@@ -124,7 +124,6 @@ namespace SimPe
 				CompleteSetup("expansions2.xreg");
 				CompleteSetup("objddefinition.xml");
 				CompleteSetup("release.nfo");
-				CompleteSetup("semiglobals.xml");
 				CompleteSetup("txmtdefinition.xml");
 				CompleteSetup("guidindex.txt");
 				CompleteSetup("GLOBALS-AO.package");
