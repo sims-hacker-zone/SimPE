@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Linq;
 
 namespace SimPe.PackedFiles.Bnfo
 {
@@ -38,7 +39,11 @@ namespace SimPe.PackedFiles.Bnfo
 		} = new byte[0x60];
 
 		private readonly Bnfo parent;
-		public Wrapper.ExtSDesc SimDescription => FileTableBase.ProviderRegistry.SimDescriptionProvider.SimInstance[SimInstance] as Wrapper.ExtSDesc;
+		public Wrapper.ExtSDesc SimDescription => (Wrapper.ExtSDesc)FileTableBase
+			.ProviderRegistry
+			.SimDescriptionProvider
+			.SimInstance[SimInstance]
+			.FirstOrDefault();
 
 		internal BnfoCustomerItem(Bnfo parent)
 		{

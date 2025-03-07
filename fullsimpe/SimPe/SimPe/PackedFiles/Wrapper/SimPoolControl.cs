@@ -3,6 +3,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 using Ambertation.Windows.Forms.Graph;
 
@@ -84,14 +85,10 @@ namespace SimPe.PackedFiles.Wrapper
 				return;
 			}
 
-			List<string> names = new List<string>(
-				(string[])
-					FileTableBase
+			List<string> names = FileTableBase
 						.ProviderRegistry.SimDescriptionProvider.GetHouseholdNames(
 							out string chouse
-						)
-						.ToArray(typeof(string))
-			);
+						).ToList();
 			cbhousehold.Items.AddRange(names.ToArray());
 
 			int index = names.IndexOf(house);
@@ -225,23 +222,20 @@ namespace SimPe.PackedFiles.Wrapper
 			gp.Clear();
 			lastsel = null;
 
-			Hashtable ht = FileTableBase
+			IEnumerable<Interfaces.Wrapper.ISDesc> ht = FileTableBase
 				.ProviderRegistry
 				.SimDescriptionProvider
-				.SimInstance;
-			Wait.SubStart(ht.Count);
+				.SimInstance.SelectMany(item => item);
+			Wait.SubStart(ht.Count());
 			int ct = 0;
 
 			SortedList map = new SortedList();
 
-			foreach (ExtSDesc sdsc in ht.Values)
+			foreach (ExtSDesc sdsc in ht)
 			{
-				if (household != null)
+				if (household != null && household != sdsc.HouseholdName)
 				{
-					if (household != sdsc.HouseholdName)
-					{
-						continue;
-					}
+					continue;
 				}
 
 				string name = sdsc.SimName + " " + sdsc.SimFamilyName;
@@ -289,16 +283,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 				try
 				{
-					if (SelectedSimChanged != null)
-					{
-						SelectedSimChanged(
-							this,
-							((ExtSDesc)gp.Items[0].Tag).Image,
-
-								(ExtSDesc)gp.Items[0].Tag
-
-						);
-					}
+					SelectedSimChanged?.Invoke(this, ((ExtSDesc)gp.Items[0].Tag).Image, (ExtSDesc)gp.Items[0].Tag);
 				}
 				catch (Exception ex)
 				{

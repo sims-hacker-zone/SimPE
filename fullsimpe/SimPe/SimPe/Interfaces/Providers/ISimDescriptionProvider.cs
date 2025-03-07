@@ -1,6 +1,11 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+
+using SimPe.PackedFiles.Wrapper;
+
 
 namespace SimPe.Interfaces.Providers
 {
@@ -40,7 +45,7 @@ namespace SimPe.Interfaces.Providers
 		/// <summary>
 		/// Returns availabl SDSC Files by SimGUID
 		/// </summary>
-		Hashtable SimGuidMap
+		ILookup<uint, Wrapper.ISDesc> SimGuidMap
 		{
 			get;
 		}
@@ -48,7 +53,7 @@ namespace SimPe.Interfaces.Providers
 		/// <summary>
 		/// Returns availabl SDSC Files by Instance
 		/// </summary>
-		Hashtable SimInstance
+		ILookup<ushort, Wrapper.ISDesc> SimInstance
 		{
 			get;
 		}
@@ -57,14 +62,14 @@ namespace SimPe.Interfaces.Providers
 		/// Returns a List containing all Household Names
 		/// </summary>
 		/// <returns></returns>
-		ArrayList GetHouseholdNames();
+		IEnumerable<string> GetHouseholdNames();
 
 		/// <summary>
 		/// Returns a List containing all Household Names
 		/// </summary>
 		/// <param name="firstcustom">Returns the name of the first household with a custom Sim in it</param>
 		/// <returns></returns>
-		ArrayList GetHouseholdNames(out string firstcustom);
+		IEnumerable<string> GetHouseholdNames(out string firstcustom);
 
 		#region Nightlife
 		/// <summary>

@@ -1192,8 +1192,7 @@ namespace SimPe.PackedFiles.Bnfo
 			ExtSDesc sdsc;
 
 			sdsc =
-				FileTableBase.ProviderRegistry.SimDescriptionProvider.SimInstance[owner]
-				as ExtSDesc;
+				(ExtSDesc)FileTableBase.ProviderRegistry.SimDescriptionProvider.SimInstance[owner].FirstOrDefault();
 			if (sdsc != null)
 			{
 				AddImage(sdsc);
@@ -1227,7 +1226,7 @@ namespace SimPe.PackedFiles.Bnfo
 
 			foreach ((BnfoEmployee employee, int i) in Bnfo.Employees.Select((x, i) => (x, i)))
 			{
-				sdsc = FileTableBase.ProviderRegistry.SimDescriptionProvider.SimInstance[employee.SimInstance] as ExtSDesc;
+				sdsc = (ExtSDesc)FileTableBase.ProviderRegistry.SimDescriptionProvider.SimInstance[employee.SimInstance].FirstOrDefault();
 				if (sdsc != null)
 				{
 					AddImage(sdsc);
@@ -1856,8 +1855,7 @@ namespace SimPe.PackedFiles.Bnfo
 					ExtSDesc sdsc in FileTableBase
 						.ProviderRegistry
 						.SimDescriptionProvider
-						.SimInstance
-						.Values
+						.SimInstance.SelectMany(item => item)
 				)
 				{
 					if (canhire(sdsc))
@@ -2100,8 +2098,7 @@ namespace SimPe.PackedFiles.Bnfo
 					ExtSDesc sdsc in FileTableBase
 						.ProviderRegistry
 						.SimDescriptionProvider
-						.SimInstance
-						.Values
+						.SimInstance.SelectMany(item => item)
 				)
 				{
 					if (canownim(sdsc))

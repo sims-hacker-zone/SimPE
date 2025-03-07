@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Windows.Forms;
 
 using SimPe.Data;
 using SimPe.Forms.MainUI;
@@ -333,7 +334,7 @@ namespace SimPe
 		/// <param name="ex">The Exception</param>
 		public static void ExceptionMessage(Exception ex)
 		{
-			ExceptionForm.Execute("", ex);
+			MessageBox.Show($"{ex.Message}\n\n{ex.StackTrace}");
 		}
 
 		/// <summary>
@@ -343,7 +344,7 @@ namespace SimPe
 		/// <param name="message">An operation Description (when did the Exception occur)</param>
 		public static void ExceptionMessage(string message, Exception ex)
 		{
-			ExceptionForm.Execute(message, ex);
+			MessageBox.Show($"{message}\n\n{ex.Message}\n\n{ex.StackTrace}");
 		}
 
 		/// <summary>

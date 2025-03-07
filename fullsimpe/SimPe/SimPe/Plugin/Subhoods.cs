@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 using SimPe.PackedFiles.Idno;
 
@@ -150,7 +151,7 @@ namespace SimPe.Plugin
 						.ProviderRegistry
 						.SimDescriptionProvider
 						.SimInstance
-						.Values
+						.SelectMany(item => item)
 				)
 				{
 					if (

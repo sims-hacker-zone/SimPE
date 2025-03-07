@@ -1,6 +1,6 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
-using System.Collections;
+using System.Collections.Generic;
 
 namespace SimPe.Interfaces.Providers
 {
@@ -20,6 +20,6 @@ namespace SimPe.Interfaces.Providers
 		/// Returns a List of All SimID's found in the Package
 		/// </summary>
 		/// <returns>The List of found SimID's</returns>
-		ArrayList GetAllSimIDs();
+		IEnumerable<(uint SimId, ushort FamilyInstance)> GetAllSimIDs();
 	}
 }

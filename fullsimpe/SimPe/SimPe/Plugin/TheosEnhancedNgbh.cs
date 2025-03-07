@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Linq;
 
 using SimPe.Forms.MainUI;
 using SimPe.Interfaces;
@@ -174,9 +175,7 @@ namespace SimPe.Plugin
 					deletedCount += memoryToRemove.Count;
 					fixedCount += memoryToFix.Count;
 
-					if (FileTableBase.ProviderRegistry.SimDescriptionProvider.SimInstance[
-						slot.SlotID
-					] is SDesc simDesc) // SDesc always returns null so this won't be used as it always throwa an ERROR
+					if (FileTableBase.ProviderRegistry.SimDescriptionProvider.SimInstance[(ushort)slot.SlotID].FirstOrDefault() is SDesc simDesc) // SDesc always returns null so this won't be used as it always throwa an ERROR
 					{
 						trace.AppendFormat(
 							"{0} {1}: {2} \r\n",
@@ -249,9 +248,7 @@ namespace SimPe.Plugin
 				}
 
 				SDesc simDesc =
-					FileTableBase.ProviderRegistry.SimDescriptionProvider.SimInstance[
-						(ushort)slot.SlotID
-					] as SDesc;
+					(SDesc)FileTableBase.ProviderRegistry.SimDescriptionProvider.SimInstance[(ushort)slot.SlotID].FirstOrDefault();
 				Collections.NgbhItems simMemories = slot.ItemsB;
 
 				Collections.NgbhItems memoryToRemove =

@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 using SimPe.Data;
 using SimPe.Interfaces.Plugin;
@@ -27,7 +29,7 @@ namespace SimPe.PackedFiles.Wrapper
 			get;
 		}
 
-		Hashtable map;
+		Dictionary<string, GroupCacheItem> map = new Dictionary<string, GroupCacheItem>();
 		uint maxgroup;
 		byte[] over;
 		#endregion
@@ -40,7 +42,6 @@ namespace SimPe.PackedFiles.Wrapper
 		{
 			id = 0x05;
 			Items = new GroupCacheItems();
-			map = new Hashtable();
 			maxgroup = 0x6f000000;
 			over = new byte[0];
 		}
@@ -105,8 +106,8 @@ namespace SimPe.PackedFiles.Wrapper
 		/// <returns></returns>
 		public IGroupCacheItem GetItem(string flname)
 		{
-			GroupCacheItem gci = (GroupCacheItem)map[flname.Trim().ToLower()];
-			if (gci == null)
+			GroupCacheItem gci;
+			if (!map.ContainsKey(flname.Trim().ToLower()))
 			{
 				gci = new GroupCacheItem
 				{
@@ -114,6 +115,10 @@ namespace SimPe.PackedFiles.Wrapper
 					LocalGroup = maxgroup + 1
 				};
 				Add(gci);
+			}
+			else
+			{
+				gci = map[flname.Trim().ToLower()];
 			}
 
 			return gci;
