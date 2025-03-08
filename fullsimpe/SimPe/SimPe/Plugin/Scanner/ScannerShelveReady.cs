@@ -3,6 +3,7 @@
 using System;
 
 using SimPe.Cache;
+using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Plugin.Scanner;
 using SimPe.PackedFiles.Wrapper;
 
@@ -53,9 +54,7 @@ namespace SimPe.Plugin.Scanner
 				}
 				else if (pfds.Length > 0)
 				{
-					ExtObjd objd = new ExtObjd();
-					objd.ProcessData(pfds[0], si.Package);
-					ShelveDimension sd = objd.ShelveDimension;
+					ShelveDimension sd = new ExtObjd().ProcessFile(pfds[0], si.Package).ShelveDimension;
 					if (
 						sd == ShelveDimension.Unknown1
 						|| sd == ShelveDimension.Indetermined
@@ -185,8 +184,7 @@ namespace SimPe.Plugin.Scanner
 							Interfaces.Files.IPackedFileDescriptor pfd in pfds
 						)
 						{
-							ExtObjd objd = new ExtObjd();
-							objd.ProcessData(pfd, si.Package);
+							ExtObjd objd = new ExtObjd().ProcessFile(pfd, si.Package);
 							objd.ShelveDimension = sd;
 							objd.SynchronizeUserData();
 						}

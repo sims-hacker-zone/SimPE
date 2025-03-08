@@ -4,6 +4,7 @@ using System;
 using System.Linq;
 
 using SimPe.Data;
+using SimPe.Interfaces.Plugin;
 using SimPe.Plugin;
 
 namespace SimPe.PackedFiles.ThreeIdr
@@ -33,16 +34,16 @@ namespace SimPe.PackedFiles.ThreeIdr
 						if (citem != null)
 						{
 							if (
-								(citem.UIntegerValue & (uint)Data.SkinCategories.Skin)
-								== (uint)Data.SkinCategories.Skin
+								(citem.UIntegerValue & (uint)SkinCategories.Skin)
+								== (uint)SkinCategories.Skin
 							)
 							{
-								citem.UIntegerValue = (uint)Data.SkinCategories.Skin;
+								citem.UIntegerValue = (uint)SkinCategories.Skin;
 							}
 
 							if (citem.UIntegerValue != 128 && OutfitPart == 1)
 							{
-								citem.UIntegerValue = (uint)Data.SkinCategories.Hair;
+								citem.UIntegerValue = (uint)SkinCategories.Hair;
 							}
 
 							return citem.UIntegerValue;
@@ -129,7 +130,7 @@ namespace SimPe.PackedFiles.ThreeIdr
 						{
 							if (citem.UIntegerValue > 0 && citem.UIntegerValue < 255)
 							{
-								return Data.MetaData.GetBodyName(
+								return MetaData.GetBodyName(
 									citem.UIntegerValue
 								);
 							}
@@ -142,8 +143,8 @@ namespace SimPe.PackedFiles.ThreeIdr
 
 						if (citem != null)
 						{
-							return Data.MetaData.GetBodyName(
-								Data.MetaData.GetBodyShapeid(citem.StringValue)
+							return MetaData.GetBodyName(
+								MetaData.GetBodyShapeid(citem.StringValue)
 							);
 						}
 					}
@@ -191,10 +192,8 @@ namespace SimPe.PackedFiles.ThreeIdr
 							);
 						if (pfd != null)
 						{
-							ThreeIdr reffile = new ThreeIdr();
-							reffile.ProcessData(pfd, Cpf.Package);
 
-							return reffile;
+							return new ThreeIdr().ProcessFile(pfd, Cpf.Package);
 						}
 					}
 					catch { }
@@ -214,10 +213,7 @@ namespace SimPe.PackedFiles.ThreeIdr
 					FileTableBase.FileIndex.FindFile(pfd, null).FirstOrDefault();
 				if (item != null)
 				{
-					GenericRcol rcol = new GenericRcol(null, false);
-					rcol.ProcessData(item, false);
-
-					return rcol;
+					return new GenericRcol(null, false).ProcessFile(item, false);
 				}
 			}
 
@@ -245,16 +241,13 @@ namespace SimPe.PackedFiles.ThreeIdr
 				Interfaces.Scenegraph.IScenegraphFileIndexItem item =
 					FileTableBase.FileIndex.FindFileByName(
 						txtrname,
-						Data.FileTypes.TXTR,
-						Data.MetaData.LOCAL_GROUP,
+						FileTypes.TXTR,
+						MetaData.LOCAL_GROUP,
 						true
 					);
 				if (item != null)
 				{
-					GenericRcol rcol = new GenericRcol(null, false);
-					rcol.ProcessData(item, false);
-
-					return rcol;
+					return new GenericRcol(null, false).ProcessFile(item, false);
 				}
 			}
 			catch { }
@@ -277,7 +270,7 @@ namespace SimPe.PackedFiles.ThreeIdr
 						)
 						{
 							GenericRcol rcol = LoadRcol(
-								Data.FileTypes.TXMT,
+								FileTypes.TXMT,
 								pfd
 							);
 							if (rcol != null)
@@ -333,7 +326,7 @@ namespace SimPe.PackedFiles.ThreeIdr
 							Interfaces.Files.IPackedFileDescriptor pfd = reffile.Items[
 								rki
 							];
-							return LoadRcol(Data.FileTypes.TXMT, pfd);
+							return LoadRcol(FileTypes.TXMT, pfd);
 						}
 					}
 				}
@@ -364,8 +357,8 @@ namespace SimPe.PackedFiles.ThreeIdr
 			{
 				string scat = "";
 				uint cat = Category;
-				Array a = Enum.GetValues(typeof(Data.SkinCategories));
-				foreach (Data.SkinCategories k in a)
+				Array a = Enum.GetValues(typeof(SkinCategories));
+				foreach (SkinCategories k in a)
 				{
 					if ((cat & (uint)k) == (uint)k)
 					{
@@ -388,8 +381,8 @@ namespace SimPe.PackedFiles.ThreeIdr
 			{
 				string spart = "";
 				uint part = OutfitPart;
-				Array a = Enum.GetValues(typeof(Data.SkinParts));
-				foreach (Data.SkinParts k in a)
+				Array a = Enum.GetValues(typeof(SkinParts));
+				foreach (SkinParts k in a)
 				{
 					if ((part & (uint)k) == (uint)k)
 					{
@@ -412,8 +405,8 @@ namespace SimPe.PackedFiles.ThreeIdr
 			{
 				string sage = "";
 				uint age = Age;
-				Array a = Enum.GetValues(typeof(Data.Ages));
-				foreach (Data.Ages k in a)
+				Array a = Enum.GetValues(typeof(Ages));
+				foreach (Ages k in a)
 				{
 					if ((age & (uint)k) == (uint)k)
 					{
@@ -436,8 +429,8 @@ namespace SimPe.PackedFiles.ThreeIdr
 			{
 				string ssex = "";
 				uint sex = Gender;
-				Array a = Enum.GetValues(typeof(Data.Gender));
-				foreach (Data.Gender k in a)
+				Array a = Enum.GetValues(typeof(Gender));
+				foreach (Gender k in a)
 				{
 					if ((sex & (uint)k) == (uint)k)
 					{

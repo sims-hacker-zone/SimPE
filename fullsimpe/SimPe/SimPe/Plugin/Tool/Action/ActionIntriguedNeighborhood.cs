@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 
+using SimPe.Interfaces.Plugin;
+
 namespace SimPe.Plugin.Tool.Action
 {
 	/// <summary>
@@ -76,8 +78,7 @@ namespace SimPe.Plugin.Tool.Action
 					);
 				if (pfb != null)
 				{
-					sdna = new PackedFiles.Wrapper.SimDNA();
-					sdna.ProcessData(pfb, e.LoadedPackage.Package, true);
+					sdna = new PackedFiles.Wrapper.SimDNA().ProcessFile(pfb, e.LoadedPackage.Package, true);
 				}
 
 				sdesc.Interests.Animals = 1000;

@@ -8,6 +8,7 @@ using System.Collections.Specialized;
 
 using SimPe.Data;
 using SimPe.Interfaces.Files;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.ThreeIdr;
 using SimPe.PackedFiles.Wrapper;
@@ -105,8 +106,7 @@ namespace SimPe.Plugin
 
 			if (!Utility.IsNullOrEmpty(strList))
 			{
-				stringList = new Str();
-				stringList.ProcessData(strList[0], package);
+				stringList = new Str().ProcessFile(strList[0], package);
 			}
 
 			IPackedFileDescriptor[] keyPfd = package.FindFiles(FileTypes.XHTN);
@@ -117,8 +117,7 @@ namespace SimPe.Plugin
 
 			if (!Utility.IsNullOrEmpty(keyPfd))
 			{
-				PropertySet = new Cpf();
-				PropertySet.ProcessData(keyPfd[0], package, false);
+				PropertySet = new Cpf().ProcessFile(keyPfd[0], package, false);
 
 				//this.packageHash = this.GetPackageHash();
 			}
@@ -144,9 +143,8 @@ namespace SimPe.Plugin
 				///This is a scenegraph Resource so get the Hash from there!
 				if (MetaData.RcolList.Contains(pfd.Type))
 				{
-					using (Rcol rcol = new GenericRcol(null, false))
+					using (Rcol rcol = new GenericRcol(null, false).ProcessFile(pfd, package))
 					{
-						rcol.ProcessData(pfd, package);
 						ret = Hashes.GroupHash(rcol.FileName);
 					}
 					break;
@@ -183,15 +181,12 @@ namespace SimPe.Plugin
 				try
 				{
 					// link the newly created resource
-					IPackedFileDescriptor[] pfd3IDR = package.FindFiles(
+					foreach (IPackedFileDescriptor pfd in package.FindFiles(
 						FileTypes.THREE_IDR
-					);
-					foreach (IPackedFileDescriptor pfd in pfd3IDR)
+					))
 					{
-						using (ThreeIdr refFile = new ThreeIdr())
+						using (ThreeIdr refFile = new ThreeIdr().ProcessFile(pfd, package, false))
 						{
-							refFile.ProcessData(pfd, package, false);
-
 							ArrayList temp = new ArrayList();
 							foreach (IPackedFileDescriptor item in refFile.Items)
 							{

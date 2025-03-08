@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 using SimPe.Data;
 using SimPe.Interfaces;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Picture;
 
@@ -1320,16 +1321,13 @@ namespace SimPe.Plugin
 			);
 			if (pfds.Length > 0)
 			{
-				Interfaces.Files.IPackedFileDescriptor pfd = pfds[0];
 				try
 				{
-					Picture pic = new Picture();
-					pic.ProcessData(pfd, thumbs);
-					Bitmap bm = (Bitmap)
-						ImageLoader.Preview(pic.Image, WaitingScreen.ImageSize);
+					Picture pic = new Picture().ProcessFile(pfds[0], thumbs);
 					if (WaitingScreen.Running)
 					{
-						WaitingScreen.Update(bm, message);
+						WaitingScreen.Update((Bitmap)
+						ImageLoader.Preview(pic.Image, WaitingScreen.ImageSize), message);
 					}
 
 					return pic.Image;
@@ -1351,17 +1349,14 @@ namespace SimPe.Plugin
 			ArrayList list = new ArrayList();
 			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(FileTypes.MMAT);
 
-			string name = matd.FileName.Trim().ToLower();
 
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
 				pfd.UserData = pkg.Read(pfd).UncompressedData;
-				Cpf cpf = new Cpf();
-				cpf.ProcessData(pfd, pkg);
 
 				string mmatname =
-					cpf.GetItem("name").StringValue.Trim().ToLower() + "_txmt";
-				if (mmatname == name)
+					new Cpf().ProcessFile(pfd, pkg).GetItem("name").StringValue.Trim().ToLower() + "_txmt";
+				if (mmatname == matd.FileName.Trim().ToLower())
 				{
 					list.Add(pfd);
 				}
@@ -1414,10 +1409,7 @@ namespace SimPe.Plugin
 
 				if ((npfd.Instance == 0x85) && (npfd.Type == FileTypes.STR))
 				{
-					PackedFiles.Wrapper.Str str =
-						new PackedFiles.Wrapper.Str();
-					str.ProcessData(npfd, item.Package);
-					PackedFiles.Wrapper.StrItemList items = str.LanguageItems(1);
+					PackedFiles.Wrapper.StrItemList items = new PackedFiles.Wrapper.Str().ProcessFile(npfd, item.Package).LanguageItems(1);
 					for (int i = 1; i < items.Length; i++)
 					{
 						list.Add(items[i].Title);

@@ -421,12 +421,9 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				return;
 			}
-			Wrapper.ObjLua objDef =
-				new Wrapper.ObjLua();
-			objDef.ProcessData(objDefPFD, glua);
 
 			List<ObjLuaConstant> loc = new List<ObjLuaConstant>(
-				(ObjLuaConstant[])objDef.Root.Constants.ToArray(typeof(ObjLuaConstant))
+				(ObjLuaConstant[])new Wrapper.ObjLua().ProcessFile(objDefPFD, glua).Root.Constants.ToArray(typeof(ObjLuaConstant))
 			);
 			if (loc[0].String != "ObjDef")
 			{
@@ -482,8 +479,7 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				return;
 			}
-			Str objDef = new Str();
-			objDef.ProcessData(objDefPFD, gs);
+			Str objDef = new Str().ProcessFile(objDefPFD, gs);
 			if (objDef.LanguageItems(1) == null)
 			{
 				return;

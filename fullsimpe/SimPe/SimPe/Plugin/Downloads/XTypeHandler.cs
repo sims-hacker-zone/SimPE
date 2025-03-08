@@ -4,6 +4,7 @@
 using System.Drawing;
 
 using SimPe.Data;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
 
 namespace SimPe.Plugin.Downloads
@@ -53,11 +54,10 @@ namespace SimPe.Plugin.Downloads
 			cpf = null;
 			if (oci.Tag != null)
 			{
-				if (oci.Tag is Interfaces.Scenegraph.IScenegraphFileIndexItem)
+				if (oci.Tag is Interfaces.Scenegraph.IScenegraphFileIndexItem item)
 				{
-					cpf = new Cpf();
-					cpf.ProcessData(
-						(Interfaces.Scenegraph.IScenegraphFileIndexItem)oci.Tag
+					cpf = new Cpf().ProcessFile(
+						item
 					);
 				}
 			}
@@ -94,11 +94,9 @@ namespace SimPe.Plugin.Downloads
 		{
 			foreach (FileTypes t in xtypes)
 			{
-				Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(t);
-				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pkg.FindFiles(t))
 				{
-					cpf = new Cpf();
-					cpf.ProcessData(pfd, pkg);
+					cpf = new Cpf().ProcessFile(pfd, pkg);
 
 					CpfItem item = cpf.GetItem("guid");
 					if (item != null)

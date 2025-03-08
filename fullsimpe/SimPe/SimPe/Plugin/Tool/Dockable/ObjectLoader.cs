@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Ambertation.Threading;
 
 using SimPe.Data;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Picture;
 
@@ -314,8 +315,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				).FirstOrDefault(); //Data.FileTypes.STR
 			if (ctssitem != null)
 			{
-				PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
-				str.ProcessData(ctssitem);
+				PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str().ProcessFile(ctssitem);
 				PackedFiles.Wrapper.StrItemList items = str.LanguageItems(
 					deflang
 				);
@@ -411,8 +411,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				if (ctssitem != null)
 				{
 					PackedFiles.Wrapper.Str str =
-						new PackedFiles.Wrapper.Str();
-					str.ProcessData(ctssitem);
+						new PackedFiles.Wrapper.Str().ProcessFile(ctssitem);
 					PackedFiles.Wrapper.StrItemList items = str.LanguageItems(
 						deflang
 					);
@@ -446,10 +445,7 @@ namespace SimPe.Plugin.Tool.Dockable
 					).FirstOrDefault();
 				if (txtitem != null)
 				{
-					PackedFiles.Wrapper.Str str =
-						new PackedFiles.Wrapper.Str(2);
-					str.ProcessData(txtitem);
-					PackedFiles.Wrapper.StrItemList items = str.LanguageItems(1);
+					PackedFiles.Wrapper.StrItemList items = new PackedFiles.Wrapper.Str(2).ProcessFile(txtitem).LanguageItems(1);
 					if (items.Length > 1)
 					{
 						oci.ModelName = items[1].Title;

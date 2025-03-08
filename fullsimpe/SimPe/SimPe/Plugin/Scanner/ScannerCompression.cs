@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using SimPe.Cache;
+using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Plugin.Scanner;
 using SimPe.PackedFiles.Wrapper;
 
@@ -98,8 +99,7 @@ namespace SimPe.Plugin.Scanner
 
 							if (pfd.Type == Data.FileTypes.OBJD)
 							{
-								ExtObjd obj = new ExtObjd();
-								obj.ProcessData(pfd, si.Package);
+								ExtObjd obj = new ExtObjd().ProcessFile(pfd, si.Package);
 								if (obj.Ok != ObjdHealth.Ok)
 								{
 									ps.Data[0] = (uint)HealthState.NonDefaultObjd;
@@ -113,12 +113,8 @@ namespace SimPe.Plugin.Scanner
 
 							if (pfd.Type == Data.FileTypes.GMDC)
 							{
-								GenericRcol rcol = new GenericRcol();
-								rcol.ProcessData(pfd, si.Package);
 
-								GeometryDataContainer gmdc =
-									(GeometryDataContainer)rcol.Blocks[0];
-								foreach (Gmdc.GmdcGroup g in gmdc.Groups)
+								foreach (Gmdc.GmdcGroup g in ((GeometryDataContainer)new GenericRcol().ProcessFile(pfd, si.Package).Blocks[0]).Groups)
 								{
 									if (
 										g.FaceCount
@@ -298,8 +294,7 @@ namespace SimPe.Plugin.Scanner
 								if (pfd.Type == Data.FileTypes.OBJD)
 								{
 									ExtObjd objd =
-										new ExtObjd();
-									objd.ProcessData(pfd, si.Package);
+										new ExtObjd().ProcessFile(pfd, si.Package);
 
 									if (
 										objd.Ok

@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Windows.Forms;
 
 using SimPe.Data;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Idno;
 
 namespace SimPe.Plugin.Tool.Dockable
@@ -433,10 +434,8 @@ namespace SimPe.Plugin.Tool.Dockable
 				ctss.ChangedData += new Events.PackedFileChanged(
 					ctss_ChangedUserData
 				);
-				PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
-				str.ProcessData(ctss, Package);
 
-				return str.LanguageItems(Helper.WindowsRegistry.LanguageCode);
+				return new PackedFiles.Wrapper.Str().ProcessFile(ctss, Package).LanguageItems(Helper.WindowsRegistry.LanguageCode);
 			}
 			return null;
 		}

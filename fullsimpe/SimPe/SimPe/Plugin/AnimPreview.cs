@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
+using SimPe.Interfaces.Plugin;
+
 namespace SimPe.Plugin
 {
 	/// <summary>
@@ -167,10 +169,7 @@ namespace SimPe.Plugin
 			Interfaces.Scenegraph.IScenegraphFileIndexItem animitem
 		)
 		{
-			GenericRcol rcol = new GenericRcol();
-			rcol.ProcessData(animitem);
-
-			Execute(rcol);
+			Execute(new GenericRcol().ProcessFile(animitem));
 		}
 
 		public static void Execute(Rcol anim)

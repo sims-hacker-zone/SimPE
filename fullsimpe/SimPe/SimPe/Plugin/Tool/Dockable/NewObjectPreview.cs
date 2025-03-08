@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Windows.Forms;
 
 using SimPe.Data;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Picture;
 
 namespace SimPe.Plugin.Tool.Dockable
@@ -210,13 +211,11 @@ namespace SimPe.Plugin.Tool.Dockable
 					Interfaces.Files.IPackedFileDescriptor pfd = pfds[0];
 					try
 					{
-						Picture pic = new Picture();
-						pic.ProcessData(pfd, thumbs);
-						Bitmap bm = (Bitmap)
-							ImageLoader.Preview(pic.Image, WaitingScreen.ImageSize);
+						Picture pic = new Picture().ProcessFile(pfd, thumbs);
 						if (WaitingScreen.Running)
 						{
-							WaitingScreen.Update(bm, message);
+							WaitingScreen.Update((Bitmap)
+							ImageLoader.Preview(pic.Image, WaitingScreen.ImageSize), message);
 						}
 
 						return pic.Image;
@@ -321,11 +320,10 @@ namespace SimPe.Plugin.Tool.Dockable
 			objd = null;
 			if (oci.Tag != null)
 			{
-				if (oci.Tag is Interfaces.Scenegraph.IScenegraphFileIndexItem)
+				if (oci.Tag is Interfaces.Scenegraph.IScenegraphFileIndexItem item)
 				{
-					objd = new PackedFiles.Wrapper.ExtObjd();
-					objd.ProcessData(
-						(Interfaces.Scenegraph.IScenegraphFileIndexItem)oci.Tag
+					objd = new PackedFiles.Wrapper.ExtObjd().ProcessFile(
+						item
 					);
 				}
 			}
@@ -347,26 +345,22 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 
 			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFile(
-				Data.FileTypes.OBJD,
+				FileTypes.OBJD,
 				0,
 				0x41A7
 			);
 			if (pfds.Length > 0)
 			{
-				objd = new PackedFiles.Wrapper.ExtObjd();
-				objd.ProcessData(pfds[0], pkg);
+				objd = new PackedFiles.Wrapper.ExtObjd().ProcessFile(pfds[0], pkg);
 			}
 			int fct = 0;
 			int vct = 0;
-			pfds = pkg.FindFiles(Data.FileTypes.GMDC);
+			pfds = pkg.FindFiles(FileTypes.GMDC);
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
-				Rcol rcol = new GenericRcol();
-				rcol.ProcessData(pfd, pkg, true);
+				Rcol rcol = new GenericRcol().ProcessFile(pfd, pkg, true);
 
-				GeometryDataContainer gmdc =
-					rcol.Blocks[0] as GeometryDataContainer;
-				foreach (Gmdc.GmdcGroup g in gmdc.Groups)
+				foreach (Gmdc.GmdcGroup g in (rcol.Blocks[0] as GeometryDataContainer).Groups)
 				{
 					fct += g.FaceCount;
 					vct += g.UsedVertexCount;
@@ -456,8 +450,8 @@ namespace SimPe.Plugin.Tool.Dockable
 					lbEPList.Text +=
 						(lbEPList.Text.Length == 0 ? "" : "; ")
 						+
-							new Data.LocalizedNeighborhoodEP(
-								(Data.NeighborhoodEP)i
+							new LocalizedNeighborhoodEP(
+								(NeighborhoodEP)i
 							)
 						;
 				}
@@ -479,8 +473,8 @@ namespace SimPe.Plugin.Tool.Dockable
 						lbEPList.Text +=
 							(lbEPList.Text.Length == 0 ? "" : "; ")
 							+
-								new Data.LocalizedNeighborhoodEP(
-									(Data.NeighborhoodEP)i + 16
+								new LocalizedNeighborhoodEP(
+									(NeighborhoodEP)i + 16
 								)
 							;
 					}
@@ -501,7 +495,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 
 			Interfaces.Files.IPackedFileDescriptor pfd = objd.Package.FindFile(
-				Data.FileTypes.STR,
+				FileTypes.STR,
 				0,
 				objd.FileDescriptor.Group,
 				0x85
@@ -509,9 +503,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			ArrayList list = new ArrayList();
 			if (pfd != null)
 			{
-				PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
-				str.ProcessData(pfd, objd.Package);
-				PackedFiles.Wrapper.StrItemList items = str.LanguageItems(1);
+				PackedFiles.Wrapper.StrItemList items = new PackedFiles.Wrapper.Str().ProcessFile(pfd, objd.Package).LanguageItems(1);
 				for (int i = 1; i < items.Length; i++)
 				{
 					list.Add(items[i].Title);
@@ -528,15 +520,9 @@ namespace SimPe.Plugin.Tool.Dockable
 			Interfaces.Files.IPackageFile pkg
 		)
 		{
-			if (ctss != null)
-			{
-				PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
-				str.ProcessData(ctss, pkg);
-
-				return str.FallbackedLanguageItems(Helper.WindowsRegistry.LanguageCode);
-			}
-
-			return null;
+			return ctss != null
+				? new PackedFiles.Wrapper.Str().ProcessFile(ctss, pkg).FallbackedLanguageItems(Helper.WindowsRegistry.LanguageCode)
+				: null;
 		}
 
 		protected virtual PackedFiles.Wrapper.StrItemList GetCtssItems()
@@ -558,7 +544,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 			//Get the Name of the Object
 			Interfaces.Files.IPackedFileDescriptor ctss = objd.Package.FindFile(
-				Data.FileTypes.CTSS,
+				FileTypes.CTSS,
 				0,
 				objd.FileDescriptor.Group,
 				objd.CTSSInstance

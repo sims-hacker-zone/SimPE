@@ -59,8 +59,7 @@ namespace SimPe.PackedFiles.Wrapper
 				if (pfd == null)
 					return null;
 
-				ret = new SimPe.PackedFiles.Wrapper.ExtSDesc();
-				ret.ProcessData(pfd, Package);
+				ret = new SimPe.PackedFiles.Wrapper.ExtSDesc().ProcessFile(pfd, Package);
 			}
 			return ret;
 #endif

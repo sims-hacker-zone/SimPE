@@ -8,6 +8,7 @@ using System.Linq;
 
 using SimPe.Cache;
 using SimPe.Data;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Picture;
 
@@ -298,13 +299,12 @@ namespace SimPe.Plugin
 				(Interfaces.Scenegraph.IScenegraphFileIndexItem)goals[guid];
 			if (wts != null)
 			{
-				XGoal xwnt = new XGoal();
 				wts.FileDescriptor.UserData = wts
 					.Package.Read(wts.FileDescriptor)
 					.UncompressedData;
-				xwnt.ProcessData(wts);
 
-				return xwnt;
+				return new XGoal().ProcessFile(wts);
+
 			}
 
 			return null;
@@ -334,11 +334,10 @@ namespace SimPe.Plugin
 			);
 			if (pfds.Length > 0)
 			{
-				PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
 				pfds[0].UserData = txtpkg.Read(pfds[0]).UncompressedData;
-				str.ProcessData(pfds[0], txtpkg);
 
-				return str;
+				return new PackedFiles.Wrapper.Str().ProcessFile(pfds[0], txtpkg);
+
 			}
 
 			return null;
@@ -361,17 +360,17 @@ namespace SimPe.Plugin
 				LoadTextPackage();
 			}
 
-			var item =
+			Interfaces.Scenegraph.IScenegraphFileIndexItem item =
 				FileTableBase.FileIndex.FindFile(wnt.IconFileDescriptor, null).FirstOrDefault();
 			if (item != null)
 			{
-				Picture pic = new Picture();
 				item.FileDescriptor.UserData = item
 					.Package.Read(item.FileDescriptor)
 					.UncompressedData;
-				pic.ProcessData(item);
+				Picture pic = new Picture().ProcessFile(item);
 
 				return pic;
+
 			}
 			return null;
 		}

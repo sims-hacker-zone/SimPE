@@ -3,6 +3,7 @@
 using System.Collections;
 
 using SimPe.Interfaces.Files;
+using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
 {
@@ -61,10 +62,7 @@ namespace SimPe.Plugin
 						);
 						if (pfds.Length > 0)
 						{
-							GenericRcol txmt = new GenericRcol(null, false);
-							txmt.ProcessData(pfds[0], Package);
-
-							AddTxmt(newpkg, mmat, txmt, null, unique, null);
+							AddTxmt(newpkg, mmat, new GenericRcol(null, false).ProcessFile(pfds[0], Package), null, unique, null);
 						}
 					}
 				}
@@ -291,10 +289,7 @@ namespace SimPe.Plugin
 							pkg.FindFile(name, Data.FileTypes.TXTR);
 						if (pfds.Length > 0)
 						{
-							IPackedFileDescriptor pfd = pfds[0];
-							GenericRcol txtr = new GenericRcol();
-							txtr.ProcessData(pfd, pkg);
-							AddTxtr(newpkg, txtr, unique, txmt, md);
+							AddTxtr(newpkg, new GenericRcol().ProcessFile(pfds[0], pkg), unique, txmt, md);
 						}
 					}
 				}

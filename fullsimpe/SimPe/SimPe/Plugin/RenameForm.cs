@@ -7,6 +7,7 @@ using System.Windows.Forms;
 
 using SimPe.Data;
 using SimPe.Extensions;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
 
 namespace SimPe.Plugin
@@ -260,16 +261,12 @@ namespace SimPe.Plugin
 			Interfaces.Files.IPackageFile package
 		)
 		{
-			Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(
-				Data.FileTypes.STR
-			);
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in package.FindFiles(FileTypes.STR))
 			{
 				if (pfd.Instance == 0x85)
 				{
 					PackedFiles.Wrapper.Str str =
-						new PackedFiles.Wrapper.Str();
-					str.ProcessData(pfd, package);
+						new PackedFiles.Wrapper.Str().ProcessFile(pfd, package);
 
 					PackedFiles.Wrapper.StrItemList sil = str.LanguageItems(1);
 					if (sil.Length > 1)
@@ -283,11 +280,9 @@ namespace SimPe.Plugin
 				}
 			}
 
-			pfds = package.FindFiles(FileTypes.MMAT);
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in package.FindFiles(FileTypes.MMAT))
 			{
-				Cpf cpf = new Cpf();
-				cpf.ProcessData(pfd, package);
+				Cpf cpf = new Cpf().ProcessFile(pfd, package);
 
 				if (cpf.GetSaveItem("modelName").StringValue.Trim() != "")
 				{
@@ -373,13 +368,12 @@ namespace SimPe.Plugin
 			}
 
 			//load all Rcol Files
-			foreach (FileTypes type in Data.MetaData.RcolList)
+			foreach (FileTypes type in MetaData.RcolList)
 			{
 				Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(type);
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
-					Rcol rcol = new GenericRcol(null, false);
-					rcol.ProcessData(pfd, package);
+					Rcol rcol = new GenericRcol(null, false).ProcessFile(pfd, package);
 					string newname = Hashes.StripHashFromName(
 						rcol.FileName.Trim().ToLower()
 					);

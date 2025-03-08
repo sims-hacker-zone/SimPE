@@ -3,6 +3,8 @@
 
 using System.Linq;
 
+using SimPe.Interfaces.Plugin;
+
 namespace SimPe.Plugin.Downloads
 {
 	/// <summary>
@@ -31,10 +33,8 @@ namespace SimPe.Plugin.Downloads
 					}
 				}
 
-				Rcol rcol = new GenericRcol();
-				rcol.ProcessData(pfd, pkg);
 
-				if (rcol.Blocks.FirstOrDefault() is ImageData id)
+				if (new GenericRcol().ProcessFile(pfd, pkg).Blocks.FirstOrDefault() is ImageData id)
 				{
 					MipMap m = id.GetLargestTexture(
 						new System.Drawing.Size(

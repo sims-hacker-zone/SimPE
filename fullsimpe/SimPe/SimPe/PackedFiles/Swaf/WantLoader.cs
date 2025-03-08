@@ -3,6 +3,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
+using SimPe.Interfaces.Plugin;
 using SimPe.Plugin;
 
 namespace SimPe.PackedFiles.Swaf
@@ -100,13 +101,11 @@ namespace SimPe.PackedFiles.Swaf
 			Interfaces.Scenegraph.IScenegraphFileIndexItem wts = Wants[guid];
 			if (wts != null)
 			{
-				XWant xwnt = new XWant();
 				wts.FileDescriptor.UserData = wts
 					.Package.Read(wts.FileDescriptor)
 					.UncompressedData;
-				xwnt.ProcessData(wts);
+				return new XWant().ProcessFile(wts);
 
-				return xwnt;
 			}
 			return null;
 		}
@@ -135,11 +134,10 @@ namespace SimPe.PackedFiles.Swaf
 			);
 			if (pfds.Length > 0)
 			{
-				Wrapper.Str str = new Wrapper.Str();
 				pfds[0].UserData = txtpkg.Read(pfds[0]).UncompressedData;
-				str.ProcessData(pfds[0], txtpkg);
 
-				return str;
+				return new Wrapper.Str().ProcessFile(pfds[0], txtpkg);
+
 			}
 			return null;
 		}
@@ -165,13 +163,10 @@ namespace SimPe.PackedFiles.Swaf
 				FileTableBase.FileIndex.FindFile(wnt.IconFileDescriptor, null).FirstOrDefault();
 			if (item != null)
 			{
-				Picture.Picture pic = new Picture.Picture();
 				item.FileDescriptor.UserData = item
 					.Package.Read(item.FileDescriptor)
 					.UncompressedData;
-				pic.ProcessData(item);
-
-				return pic;
+				return new Picture.Picture().ProcessFile(item);
 			}
 			return null;
 		}

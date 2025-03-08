@@ -3,6 +3,7 @@
 
 using SimPe.Data;
 using SimPe.Extensions;
+using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin.Tool.Dockable.Finder
 {
@@ -66,30 +67,26 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 				return;
 			}
 
-			GenericRcol rcol = new GenericRcol(null, true);
-			rcol.ProcessData(pfd, pkg);
 
 			found = false;
-			string n = rcol.FileName.Trim().ToLower();
-			if (compareType == CompareType.Equal)
+			string n = new GenericRcol(null, true).ProcessFile(pfd, pkg).FileName.Trim().ToLower();
+			switch (compareType)
 			{
-				found = n == name;
-			}
-			else if (compareType == CompareType.Start)
-			{
-				found = n.StartsWith(name);
-			}
-			else if (compareType == CompareType.End)
-			{
-				found = n.EndsWith(name);
-			}
-			else if (compareType == CompareType.Contain)
-			{
-				found = n.IndexOf(name) > -1;
-			}
-			else if (compareType == CompareType.RegExp && reg != null)
-			{
-				found = reg.IsMatch(n);
+				case CompareType.Equal:
+					found = n == name;
+					break;
+				case CompareType.Start:
+					found = n.StartsWith(name);
+					break;
+				case CompareType.End:
+					found = n.EndsWith(name);
+					break;
+				case CompareType.Contain:
+					found = n.IndexOf(name) > -1;
+					break;
+				case CompareType.RegExp when reg != null:
+					found = reg.IsMatch(n);
+					break;
 			}
 
 			//we have a match, so add the result item

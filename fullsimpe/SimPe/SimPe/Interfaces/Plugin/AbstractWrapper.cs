@@ -340,12 +340,7 @@ namespace SimPe.Interfaces.Plugin
 		)
 		{
 			changed = false;
-			if (pfd == null)
-			{
-				return;
-			}
-
-			if (package == null)
+			if (pfd == null || package == null)
 			{
 				return;
 			}
@@ -415,12 +410,7 @@ namespace SimPe.Interfaces.Plugin
 			bool catchex
 		)
 		{
-			if (pfd == null)
-			{
-				return;
-			}
-
-			if (package == null)
+			if (pfd == null || package == null)
 			{
 				return;
 			}

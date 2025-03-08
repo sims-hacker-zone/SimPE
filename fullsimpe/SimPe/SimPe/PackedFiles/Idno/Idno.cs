@@ -145,15 +145,7 @@ namespace SimPe.PackedFiles.Idno
 				MetaData.LOCAL_GROUP,
 				1
 			);
-			if (idno != null)
-			{
-				Idno wrp = new Idno();
-				wrp.ProcessData(idno, pkg);
-
-				return wrp;
-			}
-
-			return null;
+			return idno != null ? new Idno().ProcessFile(idno, pkg) : null;
 		}
 
 		/// <summary>
@@ -324,8 +316,7 @@ namespace SimPe.PackedFiles.Idno
 			}
 			else
 			{
-				string[] a = System.IO.Directory.GetFiles(folder, "*.package");
-				foreach (string s in a)
+				foreach (string s in System.IO.Directory.GetFiles(folder, "*.package"))
 				{
 					names.Add(s);
 				}
@@ -334,20 +325,13 @@ namespace SimPe.PackedFiles.Idno
 			foreach (string name in names)
 			{
 				Packages.File fl = Packages.File.LoadFromFile(name);
-				Interfaces.Files.IPackedFileDescriptor[] pfds = fl.FindFiles(
-					FileTypes.IDNO
-				);
-				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+				foreach (Interfaces.Files.IPackedFileDescriptor pfd in fl.FindFiles(FileTypes.IDNO))
 				{
-					Idno idno = new Idno();
-					idno.ProcessData(pfd, fl);
-
-					ids[name.Trim().ToLower()] = idno.Uid;
+					ids[name.Trim().ToLower()] = new Idno().ProcessFile(pfd, fl).Uid;
 				}
 			}
 
-			string[] d = System.IO.Directory.GetDirectories(folder, "*");
-			foreach (string dir in d)
+			foreach (string dir in System.IO.Directory.GetDirectories(folder, "*"))
 			{
 				FindUids(dir, ids, scanall);
 			}

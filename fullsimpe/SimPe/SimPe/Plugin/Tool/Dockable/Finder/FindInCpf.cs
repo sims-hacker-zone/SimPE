@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 using SimPe.Data;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
 
 namespace SimPe.Plugin.Tool.Dockable.Finder
@@ -48,14 +49,13 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 			}
 			else
 			{
-				if (pfd.Type != Data.FileTypes.GZPS && pfd.Type != Data.FileTypes.MMAT)
+				if (pfd.Type != FileTypes.GZPS && pfd.Type != FileTypes.MMAT)
 				{
 					return;
 				}
 			}
 
-			Cpf cpf = new Cpf();
-			cpf.ProcessData(pfd, pkg);
+			Cpf cpf = new Cpf().ProcessFile(pfd, pkg);
 
 			bool found = false;
 			if (field != "")

@@ -68,18 +68,15 @@ namespace SimPe.Plugin
 				try
 				{
 					IPackedFileDescriptor pfd = package.FindFile(
-						Data.FileTypes.STR,
+						FileTypes.STR,
 						0,
 						FileDescriptor.Group,
 						FileDescriptor.Instance
 					);
 					if (pfd != null)
 					{
-						PackedFiles.Wrapper.Str str =
-							new PackedFiles.Wrapper.Str();
-						str.ProcessData(pfd, package);
 						PackedFiles.Wrapper.StrItemList items =
-							str.FallbackedLanguageItems(
+							new PackedFiles.Wrapper.Str().ProcessFile(pfd, package).FallbackedLanguageItems(
 								Helper.WindowsRegistry.LanguageCode
 							);
 						if (items.Length > 0)
@@ -128,17 +125,14 @@ namespace SimPe.Plugin
 					if (pkg.FindFileAnyGroup(FileTypes.LTXT, 0, instc) != null)
 					{
 						IPackedFileDescriptor pfd = pkg.FindFileAnyGroup(
-							Data.FileTypes.CTSS,
+							FileTypes.CTSS,
 							0,
 							1
 						);
 						if (pfd != null)
 						{
-							PackedFiles.Wrapper.Str str =
-								new PackedFiles.Wrapper.Str();
-							str.ProcessData(pfd, pkg);
 							PackedFiles.Wrapper.StrItemList items =
-								str.FallbackedLanguageItems(
+								new PackedFiles.Wrapper.Str().ProcessFile(pfd, pkg).FallbackedLanguageItems(
 									Helper.WindowsRegistry.LanguageCode
 								);
 							if (items.Length > 0)
@@ -195,10 +189,8 @@ namespace SimPe.Plugin
 				{
 					try
 					{
-						Picture pic = new Picture();
-						pic.ProcessData(pfd, fumbs);
 						return Ambertation.Drawing.GraphicRoutines.MakeTransparent(
-							pic.Image,
+							new Picture().ProcessFile(pfd, fumbs).Image,
 							Color.Black,
 							0.05f,
 							true

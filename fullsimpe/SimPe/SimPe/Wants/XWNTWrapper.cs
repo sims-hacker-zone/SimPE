@@ -141,8 +141,7 @@ namespace SimPe.Wants
 
 			if (isCpf)
 			{
-				Cpf cpf = new Cpf();
-				cpf.ProcessData(FileDescriptor, Package);
+				Cpf cpf = new Cpf().ProcessFile(FileDescriptor, Package);
 				XWNTWrapper xwnt = new XWNTWrapper();
 				foreach (XWNTItem item in xwnt)
 				{

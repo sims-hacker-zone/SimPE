@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using SimPe.Interfaces;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Glob;
 
 namespace SimPe.Plugin
@@ -38,14 +39,9 @@ namespace SimPe.Plugin
 			}
 
 			Interfaces.Files.IPackedFileDescriptor[] globals = package.FindFiles(Data.FileTypes.GLOB);
-			if (globals.Length == 1)
+			if (globals.Length == 1 && new Glob().ProcessFile(globals[0], package).SemiGlobalName == "JobDataGlobals")
 			{
-				Glob glob = new Glob();
-				glob.ProcessData(globals[0], package);
-				if (glob.SemiGlobalName == "JobDataGlobals")
-				{
-					return true;
-				}
+				return true;
 			}
 			System.Windows.Forms.MessageBox.Show("This package does not contain a career.");
 			return false;

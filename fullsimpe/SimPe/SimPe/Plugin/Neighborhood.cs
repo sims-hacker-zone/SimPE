@@ -347,10 +347,7 @@ namespace SimPe.Plugin
 				);
 				if (pfd != null)
 				{
-					PackedFiles.Wrapper.Str str =
-						new PackedFiles.Wrapper.Str();
-					str.ProcessData(pfd, pk);
-					name = str.FallbackedLanguageItem(
+					name = new PackedFiles.Wrapper.Str().ProcessFile(pfd, pk).FallbackedLanguageItem(
 						Helper.WindowsRegistry.LanguageCode,
 						0
 					).Title;
@@ -363,9 +360,7 @@ namespace SimPe.Plugin
 				pfd = pk.FindFile(FileTypes.IDNO, 0, 0xffffffff, 1);
 				if (pfd != null)
 				{
-					Idno idno = new Idno();
-					idno.ProcessData(pfd, pk);
-					type = idno.Type;
+					type = new Idno().ProcessFile(pfd, pk).Type;
 				}
 				else if (pk.FileName.Contains("Tutorial"))
 				{
@@ -778,16 +773,7 @@ if (pbpay.Value == 7) inst = 0xABBA2575;
 					0x499DB772,
 					inst
 				);
-				if (pfd != null)
-				{
-					Picture pic = new Picture();
-					pic.ProcessData(pfd, pkg);
-					pbox.Image = pic.Image;
-				}
-				else
-				{
-					pbox.Image = null;
-				}
+				pbox.Image = pfd != null ? new Picture().ProcessFile(pfd, pkg).Image : null;
 			}
 			else
 			{

@@ -3,6 +3,7 @@
 using System.Collections;
 
 using SimPe.Cache;
+using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Plugin.Scanner;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.ThreeIdr;
@@ -173,8 +174,7 @@ namespace SimPe.Plugin.Scanner
 					Interfaces.Scenegraph.IScenegraphFileIndexItem item in FileTableBase.FileIndex.FindFile(Data.FileTypes.GZPS, true)
 				)
 				{
-					Cpf cpf = new Cpf();
-					cpf.ProcessData(item);
+					Cpf cpf = new Cpf().ProcessFile(item);
 
 					if (cpf.GetSaveItem("skintone").StringValue != skintone)
 					{
@@ -252,8 +252,7 @@ namespace SimPe.Plugin.Scanner
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
 					//load a description File for the new Skintone
-					Cpf cpf = new Cpf();
-					cpf.ProcessData(pfd, src);
+					Cpf cpf = new Cpf().ProcessFile(pfd, src);
 
 					int index = -1;
 					int maxpoint = 0;

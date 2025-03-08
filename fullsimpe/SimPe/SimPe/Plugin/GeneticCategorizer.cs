@@ -8,6 +8,7 @@ using System.Linq;
 
 using SimPe.Data;
 using SimPe.Interfaces.Files;
+using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Scenegraph;
 using SimPe.Packages;
 using SimPe.PackedFiles.Cpf;
@@ -278,10 +279,8 @@ namespace SimPe.Plugin
 				int i = -1;
 				while (++i < cpfs.Length)
 				{
-					Cpf cpf = new Cpf();
 					IPackedFileDescriptor pfd = cpfs[i];
-
-					cpf.ProcessData(pfd, package);
+					Cpf cpf = new Cpf().ProcessFile(pfd, package);
 
 					RecolorItem item = new RecolorItem(cpf);
 
@@ -450,9 +449,7 @@ namespace SimPe.Plugin
 				);
 				if (pfd != null)
 				{
-					MaterialDefinitionRcol rcol = new MaterialDefinitionRcol(); // GenericRcol(null, false);
-
-					rcol.ProcessData(pfd, package, false);
+					MaterialDefinitionRcol rcol = new MaterialDefinitionRcol().ProcessFile(pfd, package, false);
 
 					ReloadTextureDescriptor(rcol);
 
@@ -494,8 +491,7 @@ namespace SimPe.Plugin
 					Txtr txtr = null;
 					if (!loadedTextures.ContainsKey(key))
 					{
-						txtr = new Txtr(null, false);
-						txtr.ProcessData(item.FileDescriptor, item.Package, false);
+						txtr = new Txtr(null, false).ProcessFile(item.FileDescriptor, item.Package, false);
 						loadedTextures.Add(key, txtr);
 					}
 					else
@@ -521,8 +517,7 @@ namespace SimPe.Plugin
 						Txtr txtr = null;
 						if (!loadedTextures.ContainsKey(key))
 						{
-							txtr = new Txtr(null, false);
-							txtr.ProcessData(item.FileDescriptor, item.Package, false);
+							txtr = new Txtr(null, false).ProcessFile(item.FileDescriptor, item.Package, false);
 							loadedTextures.Add(key, txtr);
 						}
 						else

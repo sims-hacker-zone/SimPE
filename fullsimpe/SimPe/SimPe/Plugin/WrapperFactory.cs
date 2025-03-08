@@ -312,8 +312,7 @@ namespace SimPe.Plugin
 				//SimPe.Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(FileTypes.LTXT, 0, Data.MetaData.LOCAL_GROUP, item.Instance);
 				if (item.LtxtFileIndexItem != null)
 				{
-					Ltxt ltxt = new Ltxt();
-					ltxt.ProcessData(item.LtxtFileIndexItem);
+					Ltxt ltxt = new Ltxt().ProcessFile(item.LtxtFileIndexItem);
 					item.Tags.Add(ltxt);
 					li.Owner = ltxt.OwnerInstance;
 				}

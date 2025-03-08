@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 using SimPe.Data;
 using SimPe.Extensions;
@@ -1183,17 +1184,13 @@ namespace SimPe.PackedFiles.Wrapper
 				instance
 			);
 
-			SDesc sdesc = new SDesc(
+			return pfd != null
+				? new SDesc(
 				parent.nameprovider,
 				parent.familynameprovider,
 				parent.sdescprovider
-			);
-			if (pfd != null)
-			{
-				sdesc.ProcessData(pfd, parent.Package);
-			}
-
-			return sdesc;
+			).ProcessFile(pfd, parent.Package)
+				: null;
 		}
 
 		/// <summary>
@@ -2014,8 +2011,7 @@ namespace SimPe.PackedFiles.Wrapper
 				if (pfds.Length > 0)
 				{
 					Str str =
-						new Str();
-					str.ProcessData(pfds[0], file);
+						new Str().ProcessFile(pfds[0], file);
 					foreach (StrLanguage lng in str.Languages)
 					{
 						if (lng == null)
@@ -2147,20 +2143,10 @@ namespace SimPe.PackedFiles.Wrapper
 		///
 		public static SDesc FindForSimId(uint simid, IPackageFile package)
 		{
-			IPackedFileDescriptor[] files = package.FindFiles(
-				FileTypes.SDSC
-			);
-
-			SDesc sdesc = new SDesc(null, null, null);
-			foreach (IPackedFileDescriptor pfd in files)
-			{
-				sdesc.ProcessData(pfd, package);
-				if (sdesc.SimId == simid)
-				{
-					return sdesc;
-				}
-			}
-			return null;
+			return (from pfd in package.FindFiles(FileTypes.SDSC)
+					let sdesc = new SDesc(null, null, null).ProcessFile(pfd, package)
+					where sdesc.SimId == simid
+					select sdesc).FirstOrDefault();
 		}
 		#endregion
 

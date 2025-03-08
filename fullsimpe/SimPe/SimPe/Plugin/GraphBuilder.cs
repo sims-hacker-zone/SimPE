@@ -8,6 +8,7 @@ using Ambertation.Windows.Forms;
 using Ambertation.Windows.Forms.Graph;
 
 using SimPe.Extensions;
+using SimPe.Interfaces.Plugin;
 namespace SimPe.Plugin
 {
 	/// <summary>
@@ -67,8 +68,7 @@ namespace SimPe.Plugin
 			GraphItem gi
 		)
 		{
-			GenericRcol rcol = new GenericRcol(null, false);
-			rcol.ProcessData(pfd, pkg);
+			GenericRcol rcol = new GenericRcol(null, false).ProcessFile(pfd, pkg);
 
 			gi.Text = Hashes.StripHashFromName(rcol.FileName);
 			gi.Tag = rcol;
@@ -91,8 +91,7 @@ namespace SimPe.Plugin
 			GraphItem gi
 		)
 		{
-			MmatWrapper mmat = new MmatWrapper();
-			mmat.ProcessData(pfd, pkg);
+			MmatWrapper mmat = new MmatWrapper().ProcessFile(pfd, pkg);
 
 			gi.Text =
 				mmat.GetSaveItem("subsetName").StringValue

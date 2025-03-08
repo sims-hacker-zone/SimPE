@@ -3,6 +3,8 @@
 
 using System;
 
+using SimPe.Interfaces.Plugin;
+
 namespace SimPe.Plugin.Tool.Dockable.Finder
 {
 	public partial class FindInStr : Interfaces.AFinderTool
@@ -77,34 +79,29 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 				return;
 			}
 
-			PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
-			str.ProcessData(pfd, pkg);
 
-			PackedFiles.Wrapper.StrItemList sitems = str.Items;
 			//check all stored nMap entries for a match
-			foreach (PackedFiles.Wrapper.StrToken item in sitems)
+			foreach (PackedFiles.Wrapper.StrToken item in new PackedFiles.Wrapper.Str().ProcessFile(pfd, pkg).Items)
 			{
 				bool found = false;
 				string n = item.Title.Trim().ToLower();
-				if (compareType == CompareType.Equal)
+				switch (compareType)
 				{
-					found = n == name;
-				}
-				else if (compareType == CompareType.Start)
-				{
-					found = n.StartsWith(name);
-				}
-				else if (compareType == CompareType.End)
-				{
-					found = n.EndsWith(name);
-				}
-				else if (compareType == CompareType.Contain)
-				{
-					found = n.IndexOf(name) > -1;
-				}
-				else if (compareType == CompareType.RegExp && reg != null)
-				{
-					found = reg.IsMatch(n);
+					case CompareType.Equal:
+						found = n == name;
+						break;
+					case CompareType.Start:
+						found = n.StartsWith(name);
+						break;
+					case CompareType.End:
+						found = n.EndsWith(name);
+						break;
+					case CompareType.Contain:
+						found = n.IndexOf(name) > -1;
+						break;
+					case CompareType.RegExp when reg != null:
+						found = reg.IsMatch(n);
+						break;
 				}
 
 				//we have a match, so add the result item

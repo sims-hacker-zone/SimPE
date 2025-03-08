@@ -8,6 +8,7 @@ using System.Linq;
 using System.Windows.Forms;
 
 using SimPe.Data;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Idno;
 using SimPe.PackedFiles.ThreeIdr;
@@ -578,8 +579,7 @@ namespace SimPe.Plugin
 				)
 				{
 					Cpf skin =
-						new Cpf();
-					skin.ProcessData(item);
+						new Cpf().ProcessFile(item);
 					if (
 						(skin.GetSaveItem("type").StringValue == "skin")
 						&& (
@@ -638,8 +638,6 @@ namespace SimPe.Plugin
 								).FirstOrDefault();
 							if (idr != null)
 							{
-								ThreeIdr reffile = new ThreeIdr();
-								reffile.ProcessData(idr);
 
 								ListViewItem lvi = new ListViewItem(
 									skin.GetSaveItem("name").StringValue
@@ -654,7 +652,7 @@ namespace SimPe.Plugin
 
 								lvi.Tag = skin.GetSaveItem("skintone").StringValue;
 								foreach (
-									Interfaces.Files.IPackedFileDescriptor pfd in reffile.Items
+									Interfaces.Files.IPackedFileDescriptor pfd in new ThreeIdr().ProcessFile(idr).Items
 								)
 								{
 									if (pfd.Type == FileTypes.TXMT)
@@ -666,13 +664,11 @@ namespace SimPe.Plugin
 											Rcol rcol = new GenericRcol(
 												null,
 												false
-											);
-											rcol.ProcessData(txmt);
+											).ProcessFile(txmt);
 
-											MaterialDefinition md = (MaterialDefinition)
-												rcol.Blocks[0];
 											string txtrname =
-												md.FindProperty(
+												((MaterialDefinition)
+												rcol.Blocks[0]).FindProperty(
 													"stdMatBaseTextureName"
 												).Value + "_txtr";
 
@@ -685,12 +681,10 @@ namespace SimPe.Plugin
 												);
 											if (txtri != null)
 											{
-												rcol = new GenericRcol(null, false);
-												rcol.ProcessData(txtri);
+												rcol = new GenericRcol(null, false).ProcessFile(txtri);
 
-												ImageData id = (ImageData)
-													rcol.Blocks[0];
-												MipMap mm = id.GetLargestTexture(
+												MipMap mm = ((ImageData)
+													rcol.Blocks[0]).GetLargestTexture(
 													iskin.ImageSize
 												);
 
@@ -758,18 +752,14 @@ namespace SimPe.Plugin
 			ilist.Images.Clear();
 			lv.Items.Clear();
 
-			Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(
-				FileTypes.SDSC
-			);
 			WaitingScreen.Wait();
 			try
 			{
-				foreach (Interfaces.Files.IPackedFileDescriptor spfd in pfds)
+				foreach (Interfaces.Files.IPackedFileDescriptor spfd in package.FindFiles(
+				FileTypes.SDSC
+			))
 				{
-					PackedFiles.Wrapper.ExtSDesc sdesc =
-						new PackedFiles.Wrapper.ExtSDesc();
-					sdesc.ProcessData(spfd, package);
-					AddSim(sdesc);
+					AddSim(new PackedFiles.Wrapper.ExtSDesc().ProcessFile(spfd, package));
 				}
 
 				Cursor = Cursors.Default;
@@ -1139,8 +1129,7 @@ namespace SimPe.Plugin
 							) //property set and 3IDR
 							{
 								Cpf cpf =
-									new Cpf();
-								cpf.ProcessData(pfd, patient);
+									new Cpf().ProcessFile(pfd, patient);
 
 								CpfItem ci =
 									new CpfItem
@@ -1357,18 +1346,14 @@ namespace SimPe.Plugin
 			ilist.Images.Clear();
 			lv.Items.Clear();
 
-			Interfaces.Files.IPackedFileDescriptor[] pfds = ngbh.FindFiles(
-				FileTypes.SDSC
-			);
 			WaitingScreen.Wait();
 			try
 			{
-				foreach (Interfaces.Files.IPackedFileDescriptor spfd in pfds)
+				foreach (Interfaces.Files.IPackedFileDescriptor spfd in ngbh.FindFiles(
+				FileTypes.SDSC
+			))
 				{
-					PackedFiles.Wrapper.ExtSDesc sdesc =
-						new PackedFiles.Wrapper.ExtSDesc();
-					sdesc.ProcessData(spfd, ngbh);
-					AddSim(sdesc);
+					AddSim(new PackedFiles.Wrapper.ExtSDesc().ProcessFile(spfd, ngbh));
 				}
 
 				Cursor = Cursors.Default;
@@ -1411,12 +1396,9 @@ namespace SimPe.Plugin
 				);
 				if (pfdAged != null)
 				{
-					Cpf aged =
-						new Cpf();
-					aged.ProcessData(pfdAged, package, true);
 
 					SimInfo nfo = new SimInfo(
-						aged,
+						new Cpf().ProcessFile(pfdAged, package, true),
 						System.IO.Path.GetFileName(sim.CharacterFileName),
 						string.Format("{0} {1}", sim.SimName, sim.SimFamilyName)
 					);
@@ -1435,16 +1417,11 @@ namespace SimPe.Plugin
 			);
 			if (pfdAged != null)
 			{
-				Cpf aged =
-					new Cpf();
-				aged.ProcessData(pfdAged, package, true);
-
-				SimInfo nfo = new SimInfo(
-					aged,
+				pg.SelectedObject = new SimInfo(
+					new Cpf().ProcessFile(pfdAged, package, true),
 					System.IO.Path.GetFileName(package.FileName),
 					null
 				);
-				pg.SelectedObject = nfo;
 			}
 		}
 

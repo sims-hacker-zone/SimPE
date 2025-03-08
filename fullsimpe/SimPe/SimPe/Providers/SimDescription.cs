@@ -7,6 +7,7 @@ using System.Linq;
 
 using SimPe.Data;
 using SimPe.Interfaces.Files;
+using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Providers;
 using SimPe.PackedFiles.Picture;
 using SimPe.PackedFiles.Wrapper;
@@ -94,8 +95,7 @@ namespace SimPe.Providers
 
 			foreach (IPackedFileDescriptor pfd in BasePackage.FindFiles(FileTypes.SDSC))
 			{
-				LinkedSDesc sdesc = new LinkedSDesc();
-				sdesc.ProcessData(pfd, BasePackage);
+				LinkedSDesc sdesc = new LinkedSDesc().ProcessFile(pfd, BasePackage);
 
 				if (!didwarndoubleguid)
 				{
@@ -381,11 +381,8 @@ namespace SimPe.Providers
 				{
 					try
 					{
-						Xml xml =
-							new Xml();
-						xml.ProcessData(pfd, pkg);
 
-						string[] lines = xml.Text.Split(new char[] { '\r' });
+						string[] lines = new Xml().ProcessFile(pfd, pkg).Text.Split(new char[] { '\r' });
 						Picture pic = new Picture();
 						// SimPe.FileTable.FileIndex.Load();
 						foreach (string fulline in lines)

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using SimPe.Interfaces;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Glob;
 
 namespace SimPe.Plugin
@@ -48,8 +49,7 @@ namespace SimPe.Plugin
 
 				ct++;
 
-				Glob glb = new Glob();
-				glb.ProcessData(item);
+				Glob glb = new Glob().ProcessFile(item);
 
 				if (!added.Contains(glb.SemiGlobalGroup))
 				{

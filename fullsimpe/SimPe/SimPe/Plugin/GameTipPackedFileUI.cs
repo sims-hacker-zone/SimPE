@@ -211,9 +211,7 @@ namespace SimPe.Plugin
 				);
 				if (pfd != null)
 				{
-					Picture pic = new Picture();
-					pic.ProcessData(pfd, pkg);
-					gtpbimage.Image = pic.Image;
+					gtpbimage.Image = new Picture().ProcessFile(pfd, pkg).Image;
 				}
 			}
 		}
@@ -241,11 +239,8 @@ namespace SimPe.Plugin
 				);
 				if (pfd != null)
 				{
-					PackedFiles.Wrapper.Str str =
-						new PackedFiles.Wrapper.Str();
-					str.ProcessData(pfd, package);
 					PackedFiles.Wrapper.StrItemList items =
-						str.FallbackedLanguageItems(
+						new PackedFiles.Wrapper.Str().ProcessFile(pfd, package).FallbackedLanguageItems(
 							Helper.WindowsRegistry.LanguageCode
 						);
 					if (items.Length > gtnm)

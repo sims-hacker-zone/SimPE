@@ -4,6 +4,7 @@
 using System;
 
 using SimPe.Data;
+using SimPe.Interfaces.Plugin;
 
 namespace SimPe.PackedFiles.UserInterface
 {
@@ -454,14 +455,11 @@ namespace SimPe.PackedFiles.UserInterface
 			Packages.GeneratableFile pkg =
 				Packages.File.LoadFromFile(Sim.CharacterFileName);
 			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
-				Data.FileTypes.AGED
+				FileTypes.AGED
 			);
 			if (pfds.Length == 1)
 			{
-				Cpf.Cpf ageData =
-					new Cpf.Cpf();
-				ageData.ProcessData(pfds[0], pkg);
-				curspec = ageData.GetItem("species").UIntegerValue;
+				curspec = new Cpf.Cpf().ProcessFile(pfds[0], pkg).GetItem("species").UIntegerValue;
 				if (curspec == 8)
 				{
 					curspec = 3; // cat
@@ -494,12 +492,11 @@ namespace SimPe.PackedFiles.UserInterface
 				return;
 			}
 
-			pfds = pkg.FindFiles(Data.FileTypes.OBJD);
+			pfds = pkg.FindFiles(FileTypes.OBJD);
 			if (pfds.Length == 1)
 			{
 				Wrapper.ExtObjd objd =
-					new Wrapper.ExtObjd();
-				objd.ProcessData(pfds[0], pkg);
+					new Wrapper.ExtObjd().ProcessFile(pfds[0], pkg);
 				if (
 					objd.OriginalGuid == 0x9985408B
 					|| objd.OriginalGuid == 0x00845D42
@@ -519,7 +516,7 @@ namespace SimPe.PackedFiles.UserInterface
 				{
 					Sim.CharacterDescription.NPCType = 79;
 					Sim.Nightlife.Species = 0; // EP9 Tiny Sim, Don't apply gooee and do force age
-					Sim.CharacterDescription.LifeSection = Data.LifeSections.Child;
+					Sim.CharacterDescription.LifeSection = LifeSections.Child;
 					fixresult = "Tiny Sim, Changes Must Not be applied";
 				}
 				else
@@ -541,11 +538,10 @@ namespace SimPe.PackedFiles.UserInterface
 
 					objd.SynchronizeUserData();
 
-					pfds = pkg.FindFiles(Data.FileTypes.GLOB);
+					pfds = pkg.FindFiles(FileTypes.GLOB);
 					if (pfds.Length == 1)
 					{
-						Glob.Glob globy = new Glob.Glob();
-						globy.ProcessData(pfds[0], pkg);
+						Glob.Glob globy = new Glob.Glob().ProcessFile(pfds[0], pkg);
 						globy.SemiGlobalName = semig;
 						globy.SynchronizeUserData();
 					}
@@ -627,9 +623,7 @@ namespace SimPe.PackedFiles.UserInterface
 				);
 				if (pfd != null)
 				{
-					Picture.Picture pic = new Picture.Picture();
-					pic.ProcessData(pfd, pkg);
-					return pic.Image;
+					return new Picture.Picture().ProcessFile(pfd, pkg).Image;
 				}
 			}
 			return null;
@@ -768,7 +762,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 				ret += hairc;
 			}
-			if (Sim.CharacterDescription.Gender == Data.MetaData.Gender.Female)
+			if (Sim.CharacterDescription.Gender == MetaData.Gender.Female)
 			{
 				if (Sim.CharacterDescription.BodyFlag.Fit)
 				{
@@ -842,7 +836,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			//else ret += ".";
 
-			if (Sim.CharacterDescription.Gender == Data.MetaData.Gender.Female)
+			if (Sim.CharacterDescription.Gender == MetaData.Gender.Female)
 			{
 				ret += " She aspires to ";
 			}
@@ -853,56 +847,56 @@ namespace SimPe.PackedFiles.UserInterface
 
 			if (
 				Sim.Freetime.PrimaryAspiration
-				== Data.AspirationTypes.Romance
+				== AspirationTypes.Romance
 			)
 			{
 				ret += "get lots of lovers";
 			}
 			else if (
 				Sim.Freetime.PrimaryAspiration
-				== Data.AspirationTypes.Family
+				== AspirationTypes.Family
 			)
 			{
 				ret += "raise a large, happy family";
 			}
 			else if (
 				Sim.Freetime.PrimaryAspiration
-				== Data.AspirationTypes.Chees
+				== AspirationTypes.Chees
 			) //
 			{
 				ret += "eat grilled cheese";
 			}
 			else if (
 				Sim.Freetime.PrimaryAspiration
-				== Data.AspirationTypes.Fortune
+				== AspirationTypes.Fortune
 			)
 			{
 				ret += "be successful";
 			}
 			else if (
 				Sim.Freetime.PrimaryAspiration
-				== Data.AspirationTypes.Knowledge
+				== AspirationTypes.Knowledge
 			)
 			{
 				ret += "learn all the secrets of the universe";
 			}
 			else if (
 				Sim.Freetime.PrimaryAspiration
-				== Data.AspirationTypes.Pleasure
+				== AspirationTypes.Pleasure
 			)
 			{
 				ret += "party hard and often";
 			}
 			else if (
 				Sim.Freetime.PrimaryAspiration
-				== Data.AspirationTypes.Reputation
+				== AspirationTypes.Reputation
 			)
 			{
 				ret += "make as many friends as possible";
 			}
 			else if (
 				Sim.Freetime.PrimaryAspiration
-				== Data.AspirationTypes.Growup
+				== AspirationTypes.Growup
 			)
 			{
 				ret += "grow up";
@@ -919,55 +913,55 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				if (
 					Sim.Freetime.SecondaryAspiration
-					!= Data.AspirationTypes.Nothing
+					!= AspirationTypes.Nothing
 				)
 				{
 					ret += " and ";
 					if (
 						Sim.Freetime.SecondaryAspiration
-						== Data.AspirationTypes.Romance
+						== AspirationTypes.Romance
 					)
 					{
 						ret += "get lots of lovers.";
 					}
 					else if (
 						Sim.Freetime.SecondaryAspiration
-						== Data.AspirationTypes.Family
+						== AspirationTypes.Family
 					)
 					{
 						ret += "raise a large, happy family.";
 					}
 					else if (
 						Sim.Freetime.SecondaryAspiration
-						== Data.AspirationTypes.Chees
+						== AspirationTypes.Chees
 					) //
 					{
 						ret += "eat grilled cheese.";
 					}
 					else if (
 						Sim.Freetime.SecondaryAspiration
-						== Data.AspirationTypes.Fortune
+						== AspirationTypes.Fortune
 					)
 					{
 						ret += "be successful.";
 					}
 					else if (
 						Sim.Freetime.SecondaryAspiration
-						== Data.AspirationTypes.Knowledge
+						== AspirationTypes.Knowledge
 					)
 					{
 						ret += "learn all the secrets of the universe.";
 					}
 					else if (
 						Sim.Freetime.SecondaryAspiration
-						== Data.AspirationTypes.Pleasure
+						== AspirationTypes.Pleasure
 					)
 					{
 						ret += "party hard and often.";
 					}
 					else if (
 						Sim.Freetime.SecondaryAspiration
-						== Data.AspirationTypes.Reputation
+						== AspirationTypes.Reputation
 					)
 					{
 						ret += "make as many friends as possible.";
@@ -1232,7 +1226,7 @@ namespace SimPe.PackedFiles.UserInterface
 				>= (int)Wrapper.SDescVersions.Apartment
 			)
 			{
-				if (Sim.CharacterDescription.Gender == Data.MetaData.Gender.Female)
+				if (Sim.CharacterDescription.Gender == MetaData.Gender.Female)
 				{
 					ret += ", she ";
 				}

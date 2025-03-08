@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Collections;
 
+using SimPe.Interfaces.Plugin;
 using SimPe.Packages;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Txtr;
@@ -65,8 +66,7 @@ namespace SimPe.Plugin
 						MMAT.Package.FindFile(flname);
 					for (int i = 0; i < pfds.Length; i++)
 					{
-						matd = new GenericRcol(null, false);
-						matd.ProcessData(pfds[0], MMAT.Package);
+						matd = new GenericRcol(null, false).ProcessFile(pfds[0], MMAT.Package);
 
 						if (matd.FileName.Trim().ToLower() == flname)
 						{
@@ -106,8 +106,7 @@ namespace SimPe.Plugin
 						MMAT.Package.FindFile(flname);
 					for (int i = 0; i < pfds.Length; i++)
 					{
-						txtr = new Txtr(null, false);
-						txtr.ProcessData(pfds[0], MMAT.Package);
+						txtr = new Txtr(null, false).ProcessFile(pfds[0], MMAT.Package);
 
 						if (txtr.FileName.Trim().ToLower() == flname)
 						{

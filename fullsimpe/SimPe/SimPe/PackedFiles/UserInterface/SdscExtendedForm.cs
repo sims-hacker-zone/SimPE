@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 using SimPe.Data;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Swaf;
 using SimPe.PackedFiles.Wrapper;
 
@@ -303,8 +304,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 					if (pfd != null)
 					{
-						Str str = new Str();
-						str.ProcessData(pfd, fl);
+						Str str = new Str().ProcessFile(pfd, fl);
 
 						StrItemList list = str.LanguageItems(
 							1

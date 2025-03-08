@@ -3,6 +3,7 @@
 using System;
 
 using SimPe.Data;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Nmap;
 
 namespace SimPe.Plugin.Tool.Action
@@ -98,13 +99,8 @@ namespace SimPe.Plugin.Tool.Action
 							(Packages.PackedFileDescriptor)
 								e.Resource.FileDescriptor;
 
-						Rcol rcol = new GenericRcol(
-							null,
-							false
-						);
-						rcol.ProcessData(p, es.LoadedPackage.Package);
 
-						p.Filename = rcol.FileName;
+						p.Filename = new GenericRcol(null, false).ProcessFile(p, es.LoadedPackage.Package).FileName;
 						list.Add(p);
 					}
 					catch (Exception) { }

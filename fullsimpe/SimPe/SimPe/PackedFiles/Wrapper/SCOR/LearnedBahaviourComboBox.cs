@@ -6,6 +6,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 
+using SimPe.Interfaces.Plugin;
+
 namespace SimPe.PackedFiles.Wrapper.SCOR
 {
 	public partial class LearnedBahaviourComboBox : ComboBox
@@ -90,8 +92,7 @@ namespace SimPe.PackedFiles.Wrapper.SCOR
 			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem ofii in objs)
 			{
 				Wait.Progress = ct++;
-				ExtObjd obj = new ExtObjd();
-				obj.ProcessData(ofii);
+				ExtObjd obj = new ExtObjd().ProcessFile(ofii);
 				if (obj.FileName.StartsWith("Learned Behavior"))
 				{
 					objds.Add(obj);

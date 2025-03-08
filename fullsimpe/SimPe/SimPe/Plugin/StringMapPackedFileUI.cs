@@ -183,8 +183,7 @@ namespace SimPe.Plugin
 				try
 				{
 					Cpf colour =
-						new Cpf();
-					colour.ProcessData(item);
+						new Cpf().ProcessFile(item);
 					if (
 						!wallsandfloors.ContainsKey(
 							colour.GetSaveItem("guid").UIntegerValue

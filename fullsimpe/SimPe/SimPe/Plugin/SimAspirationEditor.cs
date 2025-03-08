@@ -3,6 +3,7 @@
 
 using System;
 
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Wrapper;
 
 namespace SimPe.Plugin
@@ -133,26 +134,16 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			pkg = sim != null ? sim.Package : null;
+			pkg = sim?.Package;
 
 			ngbh = null;
-			if (sim == null)
+			if (sim == null || sim.Package == null)
 			{
 				return;
 			}
 
-			if (sim.Package == null)
-			{
-				return;
-			}
-
-			if (!Helper.WindowsRegistry.AllowChangeOfSecondaryAspiration)
-			{
-				return;
-			}
-
-			Interfaces.Plugin.IFileWrapper wrapper =
-				(Interfaces.Plugin.IFileWrapper)
+			IFileWrapper wrapper =
+				(IFileWrapper)
 					FileTableBase.WrapperRegistry.FindHandler(Data.FileTypes.NGBH);
 
 			if (wrapper == null)
@@ -160,13 +151,11 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			Interfaces.Files.IPackedFileDescriptor[] mems = sim.Package.FindFiles(
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in sim.Package.FindFiles(
 				Data.FileTypes.NGBH
-			);
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in mems)
+			))
 			{
-				ngbh = new Ngbh(FileTableBase.ProviderRegistry);
-				ngbh.ProcessData(pfd, pkg, false);
+				ngbh = new Ngbh(FileTableBase.ProviderRegistry).ProcessFile(pfd, pkg, false);
 				return;
 			}
 		}

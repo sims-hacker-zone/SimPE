@@ -2187,7 +2187,7 @@ namespace SimPe.PackedFiles.Ttab
 		private void GetTTABGuard(object sender, EventArgs e)
 		{
 			pjse.FileTable.Entry item = new ResourceChooser().Execute(
-				Data.FileTypes.BHAV,
+				FileTypes.BHAV,
 				wrapper.FileDescriptor.Group,
 				ttabPanel.Parent,
 				false
@@ -2201,7 +2201,7 @@ namespace SimPe.PackedFiles.Ttab
 		private void GetTTABAction(object sender, EventArgs e)
 		{
 			pjse.FileTable.Entry item = new ResourceChooser().Execute(
-				Data.FileTypes.BHAV,
+				FileTypes.BHAV,
 				wrapper.FileDescriptor.Group,
 				ttabPanel.Parent,
 				false
@@ -2218,11 +2218,10 @@ namespace SimPe.PackedFiles.Ttab
 		)
 		{
 			pjse.FileTable.Entry item = wrapper.ResourceByInstance(
-				Data.FileTypes.BHAV,
+				FileTypes.BHAV,
 				sender == llAction ? currentItem.Action : currentItem.Guardian
 			);
-			Bhav b = new Bhav();
-			b.ProcessData(item.PFD, item.Package);
+			Bhav b = new Bhav().ProcessFile(item.PFD, item.Package);
 
 			BhavForm ui = (BhavForm)b.UIHandler;
 			ui.Tag =

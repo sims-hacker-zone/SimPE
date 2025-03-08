@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Windows.Forms;
 
 using SimPe.Data;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Txtr;
 
@@ -449,8 +450,7 @@ namespace SimPe.Plugin
 								prov.SimNameProvider,
 								prov.SimFamilynameProvider,
 								null
-							);
-						sdesc.ProcessData(spfd, package);
+							).ProcessFile(spfd, package);
 
 						WaitingScreen.UpdateImage(
 							ImageLoader.Preview(

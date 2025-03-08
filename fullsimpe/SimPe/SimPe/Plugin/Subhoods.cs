@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Idno;
 
 namespace SimPe.Plugin
@@ -84,18 +85,14 @@ namespace SimPe.Plugin
 						pkg.FindFileAnyGroup(Data.FileTypes.IDNO, 0, 1);
 					if (pfd != null)
 					{
-						Idno idno = new Idno();
-						idno.ProcessData(pfd, pkg);
+						Idno idno = new Idno().ProcessFile(pfd, pkg);
 						uid = idno.Uid;
 
 						pfd = pkg.FindFileAnyGroup(Data.FileTypes.CTSS, 0, 1);
 						if (pfd != null)
 						{
-							PackedFiles.Wrapper.Str str =
-								new PackedFiles.Wrapper.Str();
-							str.ProcessData(pfd, pkg);
 							PackedFiles.Wrapper.StrItemList items =
-								str.FallbackedLanguageItems(
+								new PackedFiles.Wrapper.Str().ProcessFile(pfd, pkg).FallbackedLanguageItems(
 									Helper.WindowsRegistry.LanguageCode
 								);
 							if (items.Length > 0)

@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 using SimPe.Data;
 using SimPe.Forms.MainUI;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
 
 using Message = SimPe.Forms.MainUI.Message;
@@ -480,8 +481,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			Interfaces.Files.IPackageFile pkg
 		)
 		{
-			PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
-			str.ProcessData(pfd, pkg);
+			PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str().ProcessFile(pfd, pkg);
 			PackedFiles.Wrapper.StrItemList items = str.LanguageItems(1);
 			for (int i = 1; i < items.Length; i++)
 			{

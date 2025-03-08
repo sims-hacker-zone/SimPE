@@ -3,6 +3,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 
+using SimPe.Interfaces.Plugin;
+
 namespace SimPe.Plugin.Anim
 {
 	/// <summary>
@@ -377,26 +379,18 @@ namespace SimPe.Plugin.Anim
 			Interfaces.Files.IPackageFile pkg
 		)
 		{
-			GenericRcol rcol = new GenericRcol();
-			rcol.ProcessData(pfd, pkg);
+			GenericRcol rcol = new GenericRcol().ProcessFile(pfd, pkg);
 
 			ResourceNode rn = (ResourceNode)rcol.Blocks[0];
 			foreach (int i in rn.ChildBlocks)
 			{
 				Interfaces.Scenegraph.ICresChildren icc = rn.GetBlock(i);
 
-				if (icc != null)
+				if (icc != null && icc.StoredTransformNode != null && icc.StoredTransformNode.ObjectGraphNode.FileName
+						== Name
+)
 				{
-					if (icc.StoredTransformNode != null)
-					{
-						if (
-							icc.StoredTransformNode.ObjectGraphNode.FileName
-							== Name
-						)
-						{
-							return rcol;
-						}
-					}
+					return rcol;
 				}
 			}
 			return null;
@@ -452,8 +446,7 @@ namespace SimPe.Plugin.Anim
 				cres.FindReferencedType(Data.FileTypes.SHPE);
 			if (item != null)
 			{
-				GenericRcol rcol = new GenericRcol();
-				rcol.ProcessData(item);
+				GenericRcol rcol = new GenericRcol().ProcessFile(item);
 
 				item = rcol.FindReferencedType(Data.FileTypes.GMND);
 				if (item != null)
@@ -506,9 +499,7 @@ namespace SimPe.Plugin.Anim
 				{
 					if (iteme != null)
 					{
-						GenericRcol rcol = new GenericRcol();
-						rcol.ProcessData(iteme);
-						return rcol;
+						return new GenericRcol().ProcessFile(iteme);
 					}
 				}
 			}

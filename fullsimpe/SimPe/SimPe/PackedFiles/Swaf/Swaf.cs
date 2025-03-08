@@ -80,21 +80,17 @@ namespace SimPe.PackedFiles.Swaf
 				{
 					//return provider.SimDescriptionProvider.FindSim((ushort)this.FileDescriptor.Instance);
 					Interfaces.Files.IPackedFileDescriptor[] pfds = Package.FindFile(
-						Data.FileTypes.SDSC,
+						FileTypes.SDSC,
 						0,
 						FileDescriptor.Instance
 					);
 					if (pfds.Length > 0)
 					{
-						Wrapper.SDesc sdsc =
-							new Wrapper.SDesc(
+						return new Wrapper.SDesc(
 								Provider.SimNameProvider,
 								Provider.SimFamilynameProvider,
 								Provider.SimDescriptionProvider
-							);
-						sdsc.ProcessData(pfds[0], Package);
-
-						return sdsc;
+							).ProcessFile(pfds[0], Package);
 					}
 				}
 				return null;

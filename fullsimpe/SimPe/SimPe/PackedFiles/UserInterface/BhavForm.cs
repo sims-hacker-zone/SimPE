@@ -500,8 +500,7 @@ namespace SimPe.PackedFiles.UserInterface
 				return; // this should never happen
 			}
 
-			Bhav bhav = new Bhav();
-			bhav.ProcessData(item.PFD, item.Package);
+			Bhav bhav = new Bhav().ProcessFile(item.PFD, item.Package);
 
 			BhavForm ui = (BhavForm)bhav.UIHandler;
 			string tag = "Popup"; // tells the SetReadOnly function it's in a popup - so everything locked down

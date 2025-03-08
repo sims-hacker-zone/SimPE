@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Idno;
 
 namespace SimPe.Plugin
@@ -57,8 +58,7 @@ namespace SimPe.Plugin
 							Interfaces.Files.IPackedFileDescriptor spfd in pfds
 						)
 						{
-							Idno idno = new Idno();
-							idno.ProcessData(spfd, fl);
+							Idno idno = new Idno().ProcessFile(spfd, fl);
 							idno.MakeUnique(ht);
 
 							idno.SynchronizeUserData();
