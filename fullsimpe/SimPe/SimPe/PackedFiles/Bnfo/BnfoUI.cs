@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Ambertation.Windows.Forms;
 
 using SimPe.Data;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Wrapper;
 
 namespace SimPe.PackedFiles.Bnfo
@@ -1138,8 +1139,7 @@ namespace SimPe.PackedFiles.Bnfo
 					);
 				if (pfd != null)
 				{
-					Ltxt.Ltxt ltx = new Ltxt.Ltxt();
-					ltx.ProcessData(pfd, Bnfo.Package);
+					Ltxt.Ltxt ltx = new Ltxt.Ltxt().ProcessFile(pfd, Bnfo.Package);
 					owner = (ushort)ltx.OwnerInstance;
 					ltname = ltx.LotName;
 					homeb = ltx.Type == Ltxt.Ltxt.LotType.Residential ? 0 : 1;
@@ -1721,16 +1721,7 @@ namespace SimPe.PackedFiles.Bnfo
 					0x499DB772,
 					inst
 				);
-				if (pfd != null)
-				{
-					Picture.Picture pic = new Picture.Picture();
-					pic.ProcessData(pfd, pkg);
-					pbox.Image = pic.Image;
-				}
-				else
-				{
-					pbox.Image = null;
-				}
+				pbox.Image = pfd != null ? new Picture.Picture().ProcessFile(pfd, pkg).Image : null;
 			}
 			else
 			{
@@ -2183,8 +2174,7 @@ namespace SimPe.PackedFiles.Bnfo
 						);
 					if (pfd != null)
 					{
-						Ltxt.Ltxt ltx = new Ltxt.Ltxt();
-						ltx.ProcessData(pfd, Bnfo.Package);
+						Ltxt.Ltxt ltx = new Ltxt.Ltxt().ProcessFile(pfd, Bnfo.Package);
 						ltx.OwnerInstance = s.Instance;
 						ltx.SynchronizeUserData();
 					}

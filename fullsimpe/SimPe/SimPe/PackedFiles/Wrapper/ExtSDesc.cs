@@ -356,8 +356,7 @@ namespace SimPe.PackedFiles.Wrapper
 
 				if (spfd != null)
 				{
-					srel = new ExtSrel();
-					srel.ProcessData(spfd, cache.Package);
+					srel = new ExtSrel().ProcessFile(spfd, cache.Package);
 				}
 			}
 
@@ -506,8 +505,7 @@ namespace SimPe.PackedFiles.Wrapper
 					);
 					if (pfd != null)
 					{
-						sdna = new SimDNA();
-						sdna.ProcessData(pfd, package, true);
+						sdna = new SimDNA().ProcessFile(pfd, package, true);
 					}
 				}
 

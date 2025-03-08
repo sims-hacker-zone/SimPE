@@ -7,6 +7,7 @@ using System.Linq;
 using System.Windows.Forms;
 
 using SimPe.Data;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Txtr;
 
@@ -1023,16 +1024,13 @@ namespace SimPe.Plugin
 		private uint[] CheckGuid(Packages.File package)
 		{
 			Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(
-				Data.FileTypes.OBJD
+				FileTypes.OBJD
 			);
 			uint[] res = new uint[pfds.Length];
 
 			for (int i = 0; i < res.Length; i++)
 			{
-				PackedFiles.Wrapper.Objd objd =
-					new PackedFiles.Wrapper.Objd(null);
-				objd.ProcessData(pfds[i], package);
-				res[i] = objd.SimId;
+				res[i] = new PackedFiles.Wrapper.Objd(null).ProcessFile(pfds[i], package).SimId;
 			}
 			return res;
 		}
@@ -1087,15 +1085,12 @@ namespace SimPe.Plugin
 					{
 						if (cbprev.Checked)
 						{
-							pfds = package.FindFiles(Data.FileTypes.TXTR);
+							pfds = package.FindFiles(FileTypes.TXTR);
 							if (pfds.Length > 0)
 							{
-								Txtr txtr = new Txtr(null, false);
-								txtr.ProcessData(pfds[0], package);
 
-								ImageData id = (ImageData)
-									txtr.Blocks[0];
-								MipMap mm = id.GetLargestTexture(iList.ImageSize);
+								MipMap mm = ((ImageData)
+									new Txtr(null, false).ProcessFile(pfds[0], package).Blocks[0]).GetLargestTexture(iList.ImageSize);
 								if (mm != null)
 								{
 									img = ImageLoader.Preview(
@@ -1109,19 +1104,16 @@ namespace SimPe.Plugin
 					catch { }
 
 					//find Name
-					pfds = package.FindFiles(Data.FileTypes.CTSS);
+					pfds = package.FindFiles(FileTypes.CTSS);
 					if (pfds.Length == 0)
 					{
-						pfds = package.FindFiles(Data.FileTypes.STR);
+						pfds = package.FindFiles(FileTypes.STR);
 					}
 
 					if (pfds.Length > 0)
 					{
-						PackedFiles.Wrapper.Str str =
-							new PackedFiles.Wrapper.Str();
-						str.ProcessData(pfds[0], package);
 						PackedFiles.Wrapper.StrItemList items =
-							str.FallbackedLanguageItems(
+							new PackedFiles.Wrapper.Str().ProcessFile(pfds[0], package).FallbackedLanguageItems(
 								Helper.WindowsRegistry.LanguageCode
 							);
 						if (items != null)
@@ -1144,26 +1136,20 @@ namespace SimPe.Plugin
 								pfds = package.FindFiles(FileTypes.MMAT); //MMAT
 								if (pfds.Length > 0)
 								{
-									Cpf mmat =
-										new Cpf();
-									mmat.ProcessData(pfds[0], package);
 									desc =
 										"[recolor] "
-										+ mmat.GetSaveItem("modelName").StringValue;
+										+ new Cpf().ProcessFile(pfds[0], package).GetSaveItem("modelName").StringValue;
 								}
 							}
 						}
 					}
 
 					bool isskin = false;
-					pfds = package.FindFiles(Data.FileTypes.GZPS);
+					pfds = package.FindFiles(FileTypes.GZPS);
 					foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 					{
-						Cpf cpf =
-							new Cpf();
-						cpf.ProcessData(pfd, package);
 
-						desc = "[" + cpf.GetSaveItem("type").StringValue + "] " + desc;
+						desc = "[" + new Cpf().ProcessFile(pfd, package).GetSaveItem("type").StringValue + "] " + desc;
 						isskin = true;
 					}
 
@@ -1207,7 +1193,7 @@ namespace SimPe.Plugin
 							)
 							&& (
 								package
-									.FindFilesByGroup(Data.MetaData.CUSTOM_GROUP)
+									.FindFilesByGroup(MetaData.CUSTOM_GROUP)
 									.Length == 0
 							)
 						)
@@ -1356,22 +1342,22 @@ namespace SimPe.Plugin
 			uint age = cpf.GetSaveItem("age").UIntegerValue;
 			uint cat = cpf.GetSaveItem("category").UIntegerValue;
 
-			SetSkinBoxes(cbbaby, age, (uint)Data.Ages.Baby);
-			SetSkinBoxes(cbtoddler, age, (uint)Data.Ages.Toddler);
-			SetSkinBoxes(cbchild, age, (uint)Data.Ages.Child);
-			SetSkinBoxes(cbteen, age, (uint)Data.Ages.Teen);
-			SetSkinBoxes(cbyoung, age, (uint)Data.Ages.YoungAdult);
-			SetSkinBoxes(cbadult, age, (uint)Data.Ages.Adult);
-			SetSkinBoxes(cbelder, age, (uint)Data.Ages.Elder);
+			SetSkinBoxes(cbbaby, age, (uint)Ages.Baby);
+			SetSkinBoxes(cbtoddler, age, (uint)Ages.Toddler);
+			SetSkinBoxes(cbchild, age, (uint)Ages.Child);
+			SetSkinBoxes(cbteen, age, (uint)Ages.Teen);
+			SetSkinBoxes(cbyoung, age, (uint)Ages.YoungAdult);
+			SetSkinBoxes(cbadult, age, (uint)Ages.Adult);
+			SetSkinBoxes(cbelder, age, (uint)Ages.Elder);
 
-			SetSkinBoxes(cbact, cat, (uint)Data.SkinCategories.Activewear);
-			SetSkinBoxes(cbevery, cat, (uint)Data.SkinCategories.Everyday);
-			SetSkinBoxes(cbformal, cat, (uint)Data.SkinCategories.Formal);
-			SetSkinBoxes(cbpj, cat, (uint)Data.SkinCategories.PJ);
-			SetSkinBoxes(cbpreg, cat, (uint)Data.SkinCategories.Pregnant);
-			SetSkinBoxes(cbskin, cat, (uint)Data.SkinCategories.Skin);
-			SetSkinBoxes(cbswim, cat, (uint)Data.SkinCategories.Swimmwear);
-			SetSkinBoxes(cbundies, cat, (uint)Data.SkinCategories.Undies);
+			SetSkinBoxes(cbact, cat, (uint)SkinCategories.Activewear);
+			SetSkinBoxes(cbevery, cat, (uint)SkinCategories.Everyday);
+			SetSkinBoxes(cbformal, cat, (uint)SkinCategories.Formal);
+			SetSkinBoxes(cbpj, cat, (uint)SkinCategories.PJ);
+			SetSkinBoxes(cbpreg, cat, (uint)SkinCategories.Pregnant);
+			SetSkinBoxes(cbskin, cat, (uint)SkinCategories.Skin);
+			SetSkinBoxes(cbswim, cat, (uint)SkinCategories.Swimmwear);
+			SetSkinBoxes(cbundies, cat, (uint)SkinCategories.Undies);
 		}
 
 		void SetSkinBoxes(ListViewItem lvi)
@@ -1401,13 +1387,12 @@ namespace SimPe.Plugin
 					(string)lvi.Tag
 				);
 				Interfaces.Files.IPackedFileDescriptor[] pfds = skin.FindFiles(
-					Data.FileTypes.GZPS
+					FileTypes.GZPS
 				);
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
 					Cpf cpf =
-						new Cpf();
-					cpf.ProcessData(pfd, skin);
+						new Cpf().ProcessFile(pfd, skin);
 
 					if (cpf.GetSaveItem("type").StringValue == "skin")
 					{
@@ -1431,15 +1416,12 @@ namespace SimPe.Plugin
 					(string)lvi.Tag
 				);
 				Interfaces.Files.IPackedFileDescriptor[] pfds = skin.FindFiles(
-					Data.FileTypes.TXTR
+					FileTypes.TXTR
 				);
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
-					Txtr txtr = new Txtr(null, false);
-					txtr.ProcessData(pfd, skin);
-					ImageData id = (ImageData)txtr.Blocks[0];
 
-					MipMap mm = id.GetLargestTexture(pb.Size);
+					MipMap mm = ((ImageData)new Txtr(null, false).ProcessFile(pfd, skin).Blocks[0]).GetLargestTexture(pb.Size);
 					if (mm != null)
 					{
 						Image img = ImageLoader.Preview(mm.Texture, pbprev.Size);
@@ -1799,72 +1781,71 @@ namespace SimPe.Plugin
 							Packages.File.LoadFromFile(name);
 
 						Interfaces.Files.IPackedFileDescriptor[] pfds =
-							skin.FindFiles(Data.FileTypes.GZPS);
+							skin.FindFiles(FileTypes.GZPS);
 						foreach (
 							Interfaces.Files.IPackedFileDescriptor pfd in pfds
 						)
 						{
 							Cpf cpf =
-								new Cpf();
-							cpf.ProcessData(pfd, skin);
+								new Cpf().ProcessFile(pfd, skin);
 
 							if (cpf.GetSaveItem("type").StringValue == "skin")
 							{
 								age = cpf.GetSaveItem("age").UIntegerValue;
 								cat = cpf.GetSaveItem("category").UIntegerValue;
 
-								SetSkinAge(cbbaby, ref age, (uint)Data.Ages.Baby);
-								SetSkinAge(cbtoddler, ref age, (uint)Data.Ages.Toddler);
-								SetSkinAge(cbchild, ref age, (uint)Data.Ages.Child);
-								SetSkinAge(cbteen, ref age, (uint)Data.Ages.Teen);
+								SetSkinAge(cbbaby, ref age, (uint)Ages.Baby);
+								SetSkinAge(cbtoddler, ref age, (uint)Ages.Toddler);
+								SetSkinAge(cbchild, ref age, (uint)Ages.Child);
+								SetSkinAge(cbteen, ref age, (uint)Ages.Teen);
 								SetSkinAge(
 									cbyoung,
 									ref age,
-									(uint)Data.Ages.YoungAdult
+									(uint)Ages.YoungAdult
 								);
 								if (cbyoung.Checked)
 								{
 									AddUniversityFields(cpf);
 								}
 
-								SetSkinAge(cbadult, ref age, (uint)Data.Ages.Adult);
-								SetSkinAge(cbelder, ref age, (uint)Data.Ages.Elder);
+								SetSkinAge(cbadult, ref age, (uint)Ages.Adult);
+								SetSkinAge(cbelder, ref age, (uint)Ages.Elder);
 
 								SetSkinAge(
 									cbact,
 									ref cat,
-									(uint)Data.SkinCategories.Activewear
+									(uint)SkinCategories.Activewear
 								);
 								SetSkinAge(
 									cbevery,
 									ref cat,
-									(uint)Data.SkinCategories.Everyday
+									(uint)SkinCategories.Everyday
 								);
 								SetSkinAge(
 									cbformal,
 									ref cat,
-									(uint)Data.SkinCategories.Formal
+									(uint)SkinCategories.Formal
 								);
-								SetSkinAge(cbpj, ref cat, (uint)Data.SkinCategories.PJ);
+								SetSkinAge(cbpj, ref cat, (uint)SkinCategories.PJ);
 								SetSkinAge(
 									cbpreg,
 									ref cat,
-									(uint)Data.SkinCategories.Pregnant
+									(uint)SkinCategories.Pregnant
 								);
 								SetSkinAge(
 									cbskin,
 									ref cat,
-									(uint)Data.SkinCategories.Skin
+									(uint)SkinCategories.Skin
 								);
 								SetSkinAge(
 									cbswim,
 									ref cat,
-									(uint)Data.SkinCategories.Swimmwear
+									(uint)SkinCategories.Swimmwear
 								);
 								SetSkinAge(
 									cbundies,
 									ref cat,
-									(uint)Data.SkinCategories.Undies
+									(uint)SkinCategories.Undies
 								);
 
 								cpf.GetSaveItem("age").UIntegerValue = age;

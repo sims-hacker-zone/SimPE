@@ -566,8 +566,7 @@ namespace SimPe.PackedFiles.UserInterface
 				Data.FileTypes.BHAV,
 				(sender == llAction) ? currentItem.Action : currentItem.Guardian
 			);
-			Bhav b = new Bhav();
-			b.ProcessData(item.PFD, item.Package);
+			Bhav b = new Bhav().ProcessFile(item.PFD, item.Package);
 
 			BhavForm ui = (BhavForm)b.UIHandler;
 			ui.Tag =

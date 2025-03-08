@@ -7,6 +7,7 @@ using System.Collections.Specialized;
 using System.Linq;
 
 using SimPe.Interfaces.Files;
+using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Scenegraph;
 using SimPe.Packages;
 using SimPe.PackedFiles.ThreeIdr;
@@ -104,8 +105,7 @@ namespace SimPe.Plugin
 				IPackedFileDescriptor pfd = Get3IDRResource(item);
 				if (pfd != null)
 				{
-					ThreeIdr refFile = new ThreeIdr();
-					refFile.ProcessData(pfd, item.PropertySet.Package, false);
+					ThreeIdr refFile = new ThreeIdr().ProcessFile(pfd, item.PropertySet.Package, false);
 
 					int idxCres = item.GetProperty("resourcekeyidx").IntegerValue;
 					int idxShpe = item.GetProperty("shapekeyidx").IntegerValue;
@@ -230,8 +230,7 @@ namespace SimPe.Plugin
 				IPackedFileDescriptor idr = Get3IDRResource(item);
 				if (idr != null)
 				{
-					ThreeIdr refFile = new ThreeIdr();
-					refFile.ProcessData(idr, item.PropertySet.Package, false);
+					ThreeIdr refFile = new ThreeIdr().ProcessFile(idr, item.PropertySet.Package, false);
 
 					MeshInfo mi = new MeshInfo();
 					//mi.Description = "<not found in FileTable>";
@@ -255,15 +254,15 @@ namespace SimPe.Plugin
 						if (idx != null)
 						{
 							mi.FileName = idx.Package.FileName;
-							using (GenericRcol rcol = new GenericRcol())
-							{
-								rcol.ProcessData(
+							using (GenericRcol rcol = new GenericRcol().ProcessFile(
 									idx.FileDescriptor,
 									idx.Package,
 									false
-								);
+								))
+							{
 								mi.Description = rcol.FileName.Replace("_cres", "");
 							}
+
 						}
 					}
 				}

@@ -6,6 +6,7 @@ using System.Linq;
 
 using SimPe.Data;
 using SimPe.Interfaces.Files;
+using SimPe.Interfaces.Plugin;
 using SimPe.Packages;
 
 namespace SimPe.Plugin
@@ -242,10 +243,7 @@ namespace SimPe.Plugin
 
 			if (pfds.Length > 0)
 			{
-				PackedFiles.Wrapper.ExtObjd objd =
-					new PackedFiles.Wrapper.ExtObjd();
-				objd.ProcessData(pfds[0], Package);
-				guid = objd.Guid;
+				guid = new PackedFiles.Wrapper.ExtObjd().ProcessFile(pfds[0], Package).Guid;
 			}
 			return guid;
 		}
@@ -254,53 +252,41 @@ namespace SimPe.Plugin
 		/// Load a List of all available GUIDs in the package
 		/// </summary>
 		/// <returns>The list of GUIDs</returns>
-		public ArrayList GetGuidList()
-		{
-			ArrayList list = new ArrayList();
-			IPackedFileDescriptor[] pfds = Package.FindFiles(
-				FileTypes.OBJD
-			);
-
-			foreach (IPackedFileDescriptor pfd in pfds)
-			{
-				PackedFiles.Wrapper.ExtObjd objd =
-					new PackedFiles.Wrapper.ExtObjd();
-				objd.ProcessData(pfd, Package);
-				list.Add(objd.Guid);
-			}
-
-			return list;
-		}
+		// public IEnumerable<uint> GetGuidList()
+		// {
+		// 	return from pfd in Package.FindFiles(FileTypes.OBJD)
+		// 		   select new PackedFiles.Wrapper.ExtObjd().ProcessFile(pfd, Package).Guid;
+		// }
 
 		/// <summary>
 		/// Updates the MMATGuids
 		/// </summary>
 		/// <param name="guids">list of allowed GUIDS</param>
 		/// <param name="primary">the guid you want to use if the guid was not allowed</param>
-		public void UpdateMMATGuids(ArrayList guids, uint primary)
-		{
-			if (primary == 0)
-			{
-				return;
-			}
+		// public void UpdateMMATGuids(IEnumerable<uint> guids, uint primary)
+		// {
+		// 	if (primary == 0)
+		// 	{
+		// 		return;
+		// 	}
 
-			IPackedFileDescriptor[] pfds = Package.FindFiles(
-				FileTypes.MMAT
-			);
+		// 	IPackedFileDescriptor[] pfds = Package.FindFiles(
+		// 		FileTypes.MMAT
+		// 	);
 
-			foreach (IPackedFileDescriptor pfd in pfds)
-			{
-				MmatWrapper mmat = new MmatWrapper();
-				mmat.ProcessData(pfd, Package);
+		// 	foreach (IPackedFileDescriptor pfd in pfds)
+		// 	{
+		// 		MmatWrapper mmat = new MmatWrapper();
+		// 		mmat.ProcessData(pfd, Package);
 
-				//this seems to cause problems with slave Objects
-				/*if (!guids.Contains(mmat.ObjectGUID))
-				{
-					mmat.ObjectGUID = primary;
-					mmat.SynchronizeUserData();
-				}*/
-			}
-		}
+		// 		//this seems to cause problems with slave Objects
+		// 		/*if (!guids.Contains(mmat.ObjectGUID))
+		// 		{
+		// 			mmat.ObjectGUID = primary;
+		// 			mmat.SynchronizeUserData();
+		// 		}*/
+		// 	}
+		// }
 
 		/// <summary>
 		/// Clone a InGame Object based on the relations of the RCOL Files
@@ -332,20 +318,15 @@ namespace SimPe.Plugin
 		/// <param name="instances">Instances of TextLists that should be searched</param>
 		/// <param name="ext">extension (in lowercase) that should be added (can be null for none)</param>
 		/// <returns>List of found Names</returns>
-		public string[] GetNames(ArrayList instances, string ext)
+		public IEnumerable<string> GetNames(IEnumerable<uint> instances, string ext)
 		{
-			ArrayList list = new ArrayList();
+			HashSet<string> list = new HashSet<string>();
 
-			IPackedFileDescriptor[] pfds =
-				Package.FindFiles(FileTypes.STR);
-			foreach (IPackedFileDescriptor pfd in pfds)
+			foreach (IPackedFileDescriptor pfd in Package.FindFiles(FileTypes.STR))
 			{
 				if (instances.Contains(pfd.Instance))
 				{
-					PackedFiles.Wrapper.Str str =
-						new PackedFiles.Wrapper.Str();
-					str.ProcessData(pfd, Package);
-					foreach (PackedFiles.Wrapper.StrToken si in str.Items)
+					foreach (PackedFiles.Wrapper.StrToken si in new PackedFiles.Wrapper.Str().ProcessFile(pfd, Package).Items)
 					{
 						string s = si.Title.Trim();
 						if (s != "")
@@ -357,33 +338,21 @@ namespace SimPe.Plugin
 									s += ext;
 								}
 							}
-
 							list.Add(s);
 						}
 					}
 				}
 			}
-
-			string[] ret = new string[list.Count];
-			list.CopyTo(ret);
-			return ret;
+			return list;
 		}
 
 		/// <summary>
 		/// Returns a List of all stored Anim Resources
 		/// </summary>
 		/// <returns></returns>
-		public string[] GetAnimNames()
+		public IEnumerable<string> GetAnimNames()
 		{
-			ArrayList instances = new ArrayList
-			{
-				(uint)0x81,
-				(uint)0x82,
-				(uint)0x86,
-				(uint)0x192
-			};
-
-			return GetNames(instances, "_anim");
+			return GetNames(new HashSet<uint> { 0x81, 0x82, 0x86, 0x192 }, "_anim");
 		}
 
 		/// <summary>
@@ -496,7 +465,7 @@ namespace SimPe.Plugin
 					WaitingScreen.UpdateMessage("Fixing MMAT Files");
 				}
 
-				UpdateMMATGuids(GetGuidList(), GetPrimaryGuid());
+				// UpdateMMATGuids(GetGuidList(), GetPrimaryGuid()); // TODO(autinerd): This function doesn't do anything
 			}
 		}
 
@@ -547,8 +516,7 @@ namespace SimPe.Plugin
 					//Update the modeName in the MMAT
 					if ((pfd.Type == FileTypes.MMAT) && (names.Count > 0))
 					{
-						MmatWrapper mmat = new MmatWrapper();
-						mmat.ProcessData(pfd, Package);
+						MmatWrapper mmat = new MmatWrapper().ProcessFile(pfd, Package);
 
 						string n = mmat.ModelName.Trim().ToLower();
 						if (!n.EndsWith("_cres"))
@@ -604,8 +572,7 @@ namespace SimPe.Plugin
 			);
 			foreach (IPackedFileDescriptor pfd in pfds)
 			{
-				Rcol rcol = new GenericRcol(null, false);
-				rcol.ProcessData(pfd, Package);
+				Rcol rcol = new GenericRcol(null, false).ProcessFile(pfd, Package);
 
 				foreach (ShapePart p in ((Shape)rcol.Blocks[0]).Parts)
 				{
@@ -650,10 +617,8 @@ namespace SimPe.Plugin
 							{
 								rpfd.MarkForDelete = true;
 								deleted = true;
-								GenericRcol fl = new GenericRcol(null, false);
-								fl.ProcessData(rpfd, Package);
 
-								names.AddRange((from items in fl.ReferenceChains.Values
+								names.AddRange((from items in new GenericRcol(null, false).ProcessFile(rpfd, Package).ReferenceChains.Values
 												from lpfd in items
 												where !names.Contains(lpfd)
 												select lpfd).ToArray());

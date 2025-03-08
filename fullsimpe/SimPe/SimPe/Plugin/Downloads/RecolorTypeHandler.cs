@@ -3,6 +3,8 @@
 
 using System;
 
+using SimPe.Interfaces.Plugin;
+
 namespace SimPe.Plugin.Downloads
 {
 	/// <summary>
@@ -85,8 +87,7 @@ namespace SimPe.Plugin.Downloads
 			);
 			if (pfds.Length > 0)
 			{
-				MmatWrapper mmat = new MmatWrapper();
-				mmat.ProcessData(pfds[0], pkg);
+				MmatWrapper mmat = new MmatWrapper().ProcessFile(pfds[0], pkg);
 				nfo.Name = mmat.ModelName + ", " + mmat.SubsetName;
 
 				if (DownloadsToolFactory.Settings.LoadBasedataForRecolors)

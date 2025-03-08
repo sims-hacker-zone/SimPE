@@ -9,6 +9,7 @@ using System.Linq;
 using SimPe.Data;
 using SimPe.Extensions;
 using SimPe.Interfaces.Files;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.ThreeIdr;
 using SimPe.PackedFiles.Wrapper;
@@ -65,9 +66,7 @@ namespace SimPe.Plugin
 				///This is a scenegraph Resource so get the Hash from there!
 				if (MetaData.RcolList.Contains(pfd.Type))
 				{
-					Rcol rcol = new GenericRcol(null, false);
-					rcol.ProcessData(pfd, patient);
-					hashgroup = Hashes.GroupHash(rcol.FileName);
+					hashgroup = Hashes.GroupHash(new GenericRcol(null, false).ProcessFile(pfd, patient).FileName);
 					break;
 				}
 			}
@@ -115,8 +114,7 @@ namespace SimPe.Plugin
 					///This is a scenegraph Resource and needs a new Hash
 					if (MetaData.RcolList.Contains(pfd.Type))
 					{
-						Rcol rcol = new GenericRcol(null, false);
-						rcol.ProcessData(newpfd, ret);
+						Rcol rcol = new GenericRcol(null, false).ProcessFile(newpfd, ret);
 
 						rcol.FileName =
 							"#0x"
@@ -216,8 +214,7 @@ namespace SimPe.Plugin
 					spatient.Instance
 				);
 
-				Cpf cpf = new Cpf();
-				cpf.ProcessData(dna, ngbh);
+				Cpf cpf = new Cpf().ProcessFile(dna, ngbh);
 
 				AddCpfItem(cpf, "2", skintone);
 				AddCpfItem(cpf, "6", skintone);
@@ -295,10 +292,8 @@ namespace SimPe.Plugin
 
 				// next, find the clothing references in the patient package.
 				// copy them to the arcTargetRef items
-				using (ThreeIdr arcRef = new ThreeIdr())
+				using (ThreeIdr arcRef = new ThreeIdr().ProcessFile(arcTargetRef, archetype, false))
 				{
-					arcRef.ProcessData(arcTargetRef, archetype, false);
-
 					ArrayList items = new ArrayList(arcRef.Items);
 					ArrayList inUse = new ArrayList(); // SkinCategories
 
@@ -332,8 +327,7 @@ namespace SimPe.Plugin
 		{
 			ArrayList ret = new ArrayList();
 
-			ThreeIdr refFile = new ThreeIdr();
-			refFile.ProcessData(pfd, file, true); // <-- ERROR is here!
+			ThreeIdr refFile = new ThreeIdr().ProcessFile(pfd, file, true); // <-- ERROR is here!
 			if (refFile.Items.Length > 0)
 			{
 				foreach (IPackedFileDescriptor ptr in refFile.Items)
@@ -389,9 +383,7 @@ namespace SimPe.Plugin
 				///This is a scenegraph Resource so get the Hash from there!
 				if (pfd.Type == FileTypes.GZPS)
 				{
-					Cpf cpf = new Cpf();
-					cpf.ProcessData(pfd, pkg);
-					return cpf.GetSaveItem("skintone").StringValue;
+					return new Cpf().ProcessFile(pfd, pkg).GetSaveItem("skintone").StringValue;
 				}
 			}
 			return "";
@@ -407,9 +399,8 @@ namespace SimPe.Plugin
 			{
 				if (pfd.Type == type)
 				{
-					using (Cpf cpf = new Cpf())
+					using (Cpf cpf = new Cpf().ProcessFile(pfd, pkg))
 					{
-						cpf.ProcessData(pfd, pkg);
 						CpfItem item = cpf.GetItem(key);
 						if (item != null)
 						{
@@ -545,10 +536,7 @@ namespace SimPe.Plugin
 						FileTableBase.FileIndex.FindFile(pfd, reffile.Package).FirstOrDefault();
 					if (fii != null)
 					{
-						Cpf skinfile = new Cpf();
-						skinfile.ProcessData(fii);
-
-						reffile.Items[i] = UpdateSkintone(skinfile, skin, skinfiles);
+						reffile.Items[i] = UpdateSkintone(new Cpf().ProcessFile(fii), skin, skinfiles);
 					}
 				}
 			}
@@ -567,9 +555,7 @@ namespace SimPe.Plugin
 				);
 			if (item != null)
 			{
-				Rcol txtr = new GenericRcol(null, false);
-				txtr.ProcessData(item);
-				name = txtr.FileName.Trim();
+				name = new GenericRcol(null, false).ProcessFile(item).FileName.Trim();
 				if (name.ToLower().EndsWith("_txtr"))
 				{
 					name = name.Substring(0, name.Length - 5);
@@ -762,10 +748,9 @@ namespace SimPe.Plugin
 
 					switch (newpfd.Type)
 					{
-						case FileTypes.AGED: //AGED
+						case FileTypes.AGED:
 						{
-							Cpf cpf = new Cpf();
-							cpf.ProcessData(newpfd, ret);
+							Cpf cpf = new Cpf().ProcessFile(newpfd, ret);
 							cpf.GetSaveItem("skincolor").StringValue = skin;
 
 							cpf.SynchronizeUserData();
@@ -773,8 +758,7 @@ namespace SimPe.Plugin
 						}
 						case FileTypes.GZPS:
 						{
-							Cpf cpf = new Cpf();
-							cpf.ProcessData(newpfd, ret);
+							Cpf cpf = new Cpf().ProcessFile(newpfd, ret);
 							cpf.GetSaveItem("skintone").StringValue = skin;
 
 							cpf.SynchronizeUserData();
@@ -782,8 +766,7 @@ namespace SimPe.Plugin
 						}
 						case FileTypes.TXMT:
 						{
-							Rcol rcol = new GenericRcol(null, false);
-							rcol.ProcessData(newpfd, ret);
+							Rcol rcol = new GenericRcol(null, false).ProcessFile(newpfd, ret);
 							MaterialDefinition txmt = (MaterialDefinition)
 								rcol.Blocks[0];
 							txmt.FindProperty("cafSkinTone").Value = skin;
@@ -804,8 +787,7 @@ namespace SimPe.Plugin
 			);
 			if (dna != null)
 			{
-				Cpf cpf = new Cpf();
-				cpf.ProcessData(dna, ngbh);
+				Cpf cpf = new Cpf().ProcessFile(dna, ngbh);
 				cpf.GetSaveItem("2").StringValue = skin;
 				cpf.GetSaveItem("6").StringValue = skin;
 
@@ -818,21 +800,16 @@ namespace SimPe.Plugin
 			);
 			foreach (IPackedFileDescriptor pfd in pfds)
 			{
-				ThreeIdr reffile = new ThreeIdr();
-				reffile.ProcessData(pfd, ret);
-
-				UpdateSkintone(reffile, skin, skinfiles);
+				UpdateSkintone(new ThreeIdr().ProcessFile(pfd, ret), skin, skinfiles);
 			}
 
 			//Update TXMT Files for the Face
 			pfds = ret.FindFiles(FileTypes.TXMT);
 			foreach (IPackedFileDescriptor pfd in pfds)
 			{
-				Rcol rcol = new GenericRcol(null, false);
-				rcol.ProcessData(pfd, ret);
+				Rcol rcol = new GenericRcol(null, false).ProcessFile(pfd, ret);
 
-				MaterialDefinition md = (MaterialDefinition)rcol.Blocks[0];
-				UpdateSkintone(md, skin, skinfiles);
+				UpdateSkintone((MaterialDefinition)rcol.Blocks[0], skin, skinfiles);
 
 				rcol.SynchronizeUserData();
 			}
@@ -1087,11 +1064,9 @@ namespace SimPe.Plugin
 			);
 			foreach (IPackedFileDescriptor pfd in pfds)
 			{
-				Rcol rcol = new GenericRcol(null, false);
-				rcol.ProcessData(pfd, ret);
+				Rcol rcol = new GenericRcol(null, false).ProcessFile(pfd, ret);
 
-				MaterialDefinition md = (MaterialDefinition)rcol.Blocks[0];
-				UpdateMakeup(md, eyecolor, makeups);
+				UpdateMakeup((MaterialDefinition)rcol.Blocks[0], eyecolor, makeups);
 
 				rcol.SynchronizeUserData();
 			}
@@ -1137,8 +1112,7 @@ namespace SimPe.Plugin
 					);
 					if (dna != null)
 					{
-						Cpf cpf = new Cpf();
-						cpf.ProcessData(dna, ngbh);
+						Cpf cpf = new Cpf().ProcessFile(dna, ngbh);
 
 						cpf.GetSaveItem("3").StringValue = eyecolorGuid1;
 						cpf.GetSaveItem("268435459").StringValue = eyecolorGuid2;

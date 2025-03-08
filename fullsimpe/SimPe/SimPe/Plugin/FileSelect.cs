@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Windows.Forms;
 
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.ThreeIdr;
 
@@ -94,8 +95,7 @@ namespace SimPe.Plugin
 				foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
 				{
 					Cpf skin =
-						new Cpf();
-					skin.ProcessData(item);
+						new Cpf().ProcessFile(item);
 
 					if (
 						skin.GetSaveItem("type").StringValue == "skin"

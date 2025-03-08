@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Nmap;
 
 namespace SimPe.Plugin.Tool.Dockable.Finder
@@ -28,11 +29,8 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 				return;
 			}
 
-			Nmap nmap = new Nmap(FileTableBase.ProviderRegistry);
-			nmap.ProcessData(pfd, pkg);
-
 			//check all stored nMap entries for a match
-			foreach (Interfaces.Files.IPackedFileDescriptor mypfd in nmap.Items)
+			foreach (Interfaces.Files.IPackedFileDescriptor mypfd in new Nmap(FileTableBase.ProviderRegistry).ProcessFile(pfd, pkg).Items)
 			{
 				bool found = false;
 				string n = mypfd.Filename.Trim().ToLower();

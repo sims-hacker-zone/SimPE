@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Linq;
 
+using SimPe.Interfaces.Plugin;
+
 namespace SimPe.PackedFiles.ThreeIdr
 {
 
@@ -48,11 +50,7 @@ namespace SimPe.PackedFiles.ThreeIdr
 							FileTableBase.FileIndex.FindFile(this, parent.Package).FirstOrDefault();
 						if (item != null)
 						{
-							Cpf.Cpf cpff =
-								new Cpf.Cpf();
-							cpff.ProcessData(item);
-
-							skin = new SkinChain(cpff);
+							skin = new SkinChain(new Cpf.Cpf().ProcessFile(item));
 						}
 					}
 					catch { }

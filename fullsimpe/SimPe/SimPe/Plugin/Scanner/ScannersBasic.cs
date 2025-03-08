@@ -8,6 +8,7 @@ using System.Linq;
 
 using SimPe.Cache;
 using SimPe.Data;
+using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Plugin.Scanner;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Picture;
@@ -362,22 +363,17 @@ namespace SimPe.Plugin.Scanner
 			si.PackageCacheItem.Name = Localization.Manager.GetString("unknown");
 
 			Interfaces.Files.IPackedFileDescriptor[] pfds = si.Package.FindFiles(
-				Data.FileTypes.CTSS
+				FileTypes.CTSS
 			);
 			if (pfds.Length == 0)
 			{
-				pfds = si.Package.FindFiles(Data.FileTypes.STR);
+				pfds = si.Package.FindFiles(FileTypes.STR);
 			}
 
 			//Check for Str compatible Items
 			if (pfds.Length > 0)
 			{
-				Str str = new Str();
-				str.ProcessData(pfds[0], si.Package, false);
-
-				StrItemList list =
-					str.FallbackedLanguageItems(Helper.WindowsRegistry.LanguageCode);
-				foreach (StrToken item in list)
+				foreach (StrToken item in new Str().ProcessFile(pfds[0], si.Package, false).FallbackedLanguageItems(Helper.WindowsRegistry.LanguageCode))
 				{
 					if (item.Title.Trim() != "")
 					{
@@ -389,7 +385,7 @@ namespace SimPe.Plugin.Scanner
 			}
 			else
 			{
-				pfds = si.Package.FindFiles(Data.FileTypes.GZPS);
+				pfds = si.Package.FindFiles(FileTypes.GZPS);
 				if (pfds.Length == 0)
 				{
 					pfds = si.Package.FindFiles(FileTypes.XOBJ); //Object XML
@@ -397,17 +393,14 @@ namespace SimPe.Plugin.Scanner
 
 				if (pfds.Length == 0)
 				{
-					pfds = si.Package.FindFiles(Data.FileTypes.MMAT);
+					pfds = si.Package.FindFiles(FileTypes.MMAT);
 				}
 
 				//Check for Cpf compatible Items
 				if (pfds.Length > 0)
 				{
-					Cpf cpf =
-						new Cpf();
-					cpf.ProcessData(pfds[0], si.Package, false);
 
-					si.PackageCacheItem.Name = cpf.GetSaveItem("name").StringValue;
+					si.PackageCacheItem.Name = new Cpf().ProcessFile(pfds[0], si.Package, false).GetSaveItem("name").StringValue;
 					if (si.PackageCacheItem.Name.Trim() != "")
 					{
 						ps.State = TriState.True;
@@ -477,7 +470,7 @@ namespace SimPe.Plugin.Scanner
 			)
 			{
 				Interfaces.Files.IPackedFileDescriptor[] pfds =
-					si.Package.FindFiles(Data.FileTypes.OBJD);
+					si.Package.FindFiles(FileTypes.OBJD);
 
 				uint group = 0;
 				if (pfds.Length > 0)
@@ -485,7 +478,7 @@ namespace SimPe.Plugin.Scanner
 					group = pfds[0].Group;
 				}
 
-				if (group == Data.MetaData.LOCAL_GROUP)
+				if (group == MetaData.LOCAL_GROUP)
 				{
 					Interfaces.Wrapper.IGroupCacheItem gci =
 						FileTableBase.GroupCache.GetItem(si.FileName);
@@ -550,7 +543,7 @@ namespace SimPe.Plugin.Scanner
 			{
 				//load the Texture Image
 				Interfaces.Files.IPackedFileDescriptor[] pfds =
-					si.Package.FindFiles(Data.FileTypes.TXTR);
+					si.Package.FindFiles(FileTypes.TXTR);
 				if (pfds.Length > 0)
 				{
 					GenericRcol rcol = new GenericRcol(null, false);
@@ -655,10 +648,7 @@ namespace SimPe.Plugin.Scanner
 			{
 				try
 				{
-					Picture pic =
-						new Picture();
-					pic.ProcessData(ipfd, thumbs);
-					return pic.Image;
+					return new Picture().ProcessFile(ipfd, thumbs).Image;
 				}
 				catch (Exception) { }
 			}
@@ -729,14 +719,12 @@ namespace SimPe.Plugin.Scanner
 			System.Windows.Forms.ListViewItem lvi
 		)
 		{
-			Interfaces.Files.IPackedFileDescriptor[] pfds = si.Package.FindFiles(
-				Data.FileTypes.OBJD
-			);
 			List<uint> mylist = new List<uint>();
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in si.Package.FindFiles(
+				FileTypes.OBJD
+			))
 			{
-				ExtObjd objd = new ExtObjd();
-				objd.ProcessData(pfd, si.Package, false);
+				ExtObjd objd = new ExtObjd().ProcessFile(pfd, si.Package, false);
 
 				mylist.Add(objd.Guid);
 				objd.Dispose();
@@ -786,7 +774,7 @@ namespace SimPe.Plugin.Scanner
 				// string fl = si.Package.FileName.Trim().ToLower();
 				if (list.ContainsKey(guid))
 				{
-					string cmp = (string)list[guid];
+					string cmp = list[guid];
 					if (cmp != fl)
 					{
 						ps.State = TriState.False;
@@ -857,7 +845,7 @@ namespace SimPe.Plugin.Scanner
 		)
 		{
 			Interfaces.Files.IPackedFileDescriptor[] pfds = si.Package.FindFiles(
-				Data.FileTypes.MMAT
+				FileTypes.MMAT
 			);
 			//ArrayList list = new ArrayList();
 
@@ -877,8 +865,7 @@ namespace SimPe.Plugin.Scanner
 			FileIndex.AddIndexFromPackage(si.Package);
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
-				MmatWrapper mmat = new MmatWrapper();
-				mmat.ProcessData(pfd, si.Package, false);
+				MmatWrapper mmat = new MmatWrapper().ProcessFile(pfd, si.Package, false);
 
 				string m = mmat.ModelName.Trim().ToLower();
 				if (!m.EndsWith("_cres"))
@@ -890,8 +877,8 @@ namespace SimPe.Plugin.Scanner
 				Interfaces.Scenegraph.IScenegraphFileIndexItem item =
 					FileTableBase.FileIndex.FindFileByName(
 						m,
-						Data.FileTypes.CRES,
-						Data.MetaData.LOCAL_GROUP,
+						FileTypes.CRES,
+						MetaData.LOCAL_GROUP,
 						true
 					);
 
@@ -968,7 +955,7 @@ namespace SimPe.Plugin.Scanner
 		)
 		{
 			Interfaces.Files.IPackedFileDescriptor[] pfds = si.Package.FindFiles(
-				Data.FileTypes.GMDC
+				FileTypes.GMDC
 			);
 			//ArrayList list = new ArrayList();
 
@@ -978,12 +965,9 @@ namespace SimPe.Plugin.Scanner
 			uint vct = 0;
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
-				Rcol rcol = new GenericRcol();
-				rcol.ProcessData(pfd, si.Package, true);
+				Rcol rcol = new GenericRcol().ProcessFile(pfd, si.Package, true);
 
-				GeometryDataContainer gmdc =
-					rcol.Blocks[0] as GeometryDataContainer;
-				foreach (Gmdc.GmdcGroup g in gmdc.Groups)
+				foreach (Gmdc.GmdcGroup g in (rcol.Blocks[0] as GeometryDataContainer).Groups)
 				{
 					fct += (uint)g.FaceCount;
 					vct += (uint)g.UsedVertexCount;

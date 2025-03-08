@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Windows.Forms;
 
 using SimPe.Data;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Idno;
 
 namespace SimPe.Plugin
@@ -680,8 +681,7 @@ namespace SimPe.Plugin
 				{
 					Application.DoEvents();
 					PackedFiles.Wrapper.ExtSDesc sdesc =
-						new PackedFiles.Wrapper.ExtSDesc();
-					sdesc.ProcessData(spfd, package);
+						new PackedFiles.Wrapper.ExtSDesc().ProcessFile(spfd, package);
 
 					bool doAdd = false;
 					doAdd |= cbNpc.Checked && realIsNPC(sdesc);

@@ -8,6 +8,7 @@ using System.Linq;
 
 using SimPe.Data;
 using SimPe.Interfaces.Files;
+using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Scenegraph;
 
 namespace SimPe.Plugin
@@ -300,28 +301,26 @@ namespace SimPe.Plugin
 				IScenegraphFileIndexItem item =
 					FileTableBase.FileIndex.FindFileByName(
 						lifofile,
-						SimPe.Data.FileTypes.LIFO,
-						SimPe.Data.MetaData.LOCAL_GROUP,
+						FileTypes.LIFO,
+						MetaData.LOCAL_GROUP,
 						true
 					);
 				GenericRcol rcol = null;
 
 				if (item != null) //we have a global LIFO (loads faster)
 				{
-					rcol = new GenericRcol(null, false);
-					rcol.ProcessData(item.FileDescriptor, item.Package);
+					rcol = new GenericRcol(null, false).ProcessFile(item.FileDescriptor, item.Package);
 				}
 				else //the lifo wasn't found globaly, so we look for it in the local package
 				{
-					Interfaces.Files.IPackageFile pkg = parent.Parent.Package;
-					Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFile(
+					IPackageFile pkg = parent.Parent.Package;
+					IPackedFileDescriptor[] pfds = pkg.FindFile(
 						lifofile,
-						SimPe.Data.FileTypes.LIFO
+						FileTypes.LIFO
 					);
 					if (pfds.Length > 0)
 					{
-						rcol = new GenericRcol(null, false);
-						rcol.ProcessData(pfds[0], pkg);
+						rcol = new GenericRcol(null, false).ProcessFile(pfds[0], pkg);
 					}
 				}
 

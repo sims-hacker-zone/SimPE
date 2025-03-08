@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Linq;
 
+using SimPe.Interfaces.Plugin;
+
 namespace SimPe.Plugin.Tool.Action
 {
 	/// <summary>
@@ -46,8 +48,7 @@ namespace SimPe.Plugin.Tool.Action
 				)
 				{
 					PackedFiles.Wrapper.ExtObjd objd =
-						new PackedFiles.Wrapper.ExtObjd();
-					objd.ProcessData(item);
+						new PackedFiles.Wrapper.ExtObjd().ProcessFile(item);
 
 					if (guids.Contains(objd.Guid) || objd.Type == Data.ObjectTypes.Memory || objd.Type == Data.ObjectTypes.Person)
 					{

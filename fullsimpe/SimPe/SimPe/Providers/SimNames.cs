@@ -12,6 +12,7 @@ using Ambertation.Threading;
 using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Picture;
 
 namespace SimPe.Providers
@@ -119,11 +120,8 @@ namespace SimPe.Providers
 			int step
 		)
 		{
-			PackedFiles.Wrapper.ExtObjd objd =
-				new PackedFiles.Wrapper.ExtObjd();
-			objd.ProcessData(objdpfd, fl);
 
-			return AddSim(objd, ref ct, step, false);
+			return AddSim(new PackedFiles.Wrapper.ExtObjd().ProcessFile(objdpfd, fl), ref ct, step, false);
 		}
 
 		/// <summary>
@@ -182,18 +180,12 @@ namespace SimPe.Providers
 
 			if (str_pfd != null)
 			{
-				PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
-				str.ProcessData(str_pfd, fl);
-				PackedFiles.Wrapper.StrItemList its = str.FallbackedLanguageItems(
+				PackedFiles.Wrapper.StrItemList its = new PackedFiles.Wrapper.Str().ProcessFile(str_pfd, fl).FallbackedLanguageItems(
 					Helper.WindowsRegistry.LanguageCode
 				);
 				if (its.Length > 0)
 				{
-#if DEBUG
 					a = new Alias(objd.Guid, its[0].Title, "{name} {2} (0x{id})");
-#else
-					a = new Alias(objd.Guid, its[0].Title, "{name} {2} (0x{id})");
-#endif
 					if (its.Length > 2)
 					{
 						tags[2] = its[2].Title;
@@ -215,10 +207,7 @@ namespace SimPe.Providers
 
 					if (pfd.Instance < 0x200)
 					{
-						Picture pic = new Picture();
-						pic.ProcessData(pfd, fl);
-
-						tags[1] = pic.Image;
+						tags[1] = new Picture().ProcessFile(pfd, fl).Image;
 						break;
 					}
 				}
@@ -310,17 +299,12 @@ namespace SimPe.Providers
 				}
 
 				PackedFiles.Wrapper.ExtObjd objd =
-					new PackedFiles.Wrapper.ExtObjd();
-				objd.ProcessData(item);
+					new PackedFiles.Wrapper.ExtObjd().ProcessFile(item);
 				if (
-					Helper.WindowsRegistry.DeepSimTemplateScan
-					&& objd.Type == ObjectTypes.Template
+					(Helper.WindowsRegistry.DeepSimTemplateScan
+					&& objd.Type == ObjectTypes.Template)
+					|| objd.Type == ObjectTypes.Person
 				)
-				{
-					AddSim(objd, ref ct, step, true);
-				}
-
-				if (objd.Type == ObjectTypes.Person)
 				{
 					AddSim(objd, ref ct, step, true);
 				}

@@ -4,6 +4,7 @@
 using System.Collections;
 
 using SimPe.Data;
+using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
 {
@@ -42,13 +43,11 @@ namespace SimPe.Plugin
 				lpackage = Packages.File.LoadFromFile(flname);
 			}
 
-			Interfaces.Files.IPackedFileDescriptor[] pfds = lpackage.FindFiles(
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in lpackage.FindFiles(
 				FileTypes.GMND
-			);
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			))
 			{
-				Rcol rcol = new GenericRcol(null, false);
-				rcol.ProcessData(pfd, lpackage);
+				Rcol rcol = new GenericRcol(null, false).ProcessFile(pfd, lpackage);
 				foreach (
 					Interfaces.Files.IPackedFileDescriptor rpfd in rcol.ReferencedFiles
 				)
@@ -87,13 +86,11 @@ namespace SimPe.Plugin
 				lpackage = Packages.File.LoadFromFile(flname);
 			}
 
-			Interfaces.Files.IPackedFileDescriptor[] pfds = lpackage.FindFiles(
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in lpackage.FindFiles(
 				FileTypes.SHPE
-			);
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			))
 			{
-				Rcol rcol = new GenericRcol(null, false);
-				rcol.ProcessData(pfd, lpackage);
+				Rcol rcol = new GenericRcol(null, false).ProcessFile(pfd, lpackage);
 
 				Shape shp = (Shape)rcol.Blocks[0];
 				foreach (ShapeItem i in shp.Items)
@@ -138,14 +135,12 @@ namespace SimPe.Plugin
 					Hashes.StripHashFromName(p.FileName).Trim().ToLower() + "_txmt";
 				string subset = p.Subset.Trim().ToLower();
 
-				Interfaces.Files.IPackedFileDescriptor[] pfds = lpackage.FindFile(
+				foreach (Interfaces.Files.IPackedFileDescriptor pfd in lpackage.FindFile(
 					txmtflname,
 					FileTypes.TXMT
-				);
-				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+				))
 				{
-					Rcol rcol = new GenericRcol(null, false);
-					rcol.ProcessData(pfd, lpackage);
+					Rcol rcol = new GenericRcol(null, false).ProcessFile(pfd, lpackage);
 
 					if (
 						Hashes.StripHashFromName(rcol.FileName).Trim().ToLower()
@@ -193,14 +188,12 @@ namespace SimPe.Plugin
 					) + "_txtr";
 				txtrname = txtrname.Trim().ToLower();
 
-				Interfaces.Files.IPackedFileDescriptor[] pfds = lpackage.FindFile(
+				foreach (Interfaces.Files.IPackedFileDescriptor pfd in lpackage.FindFile(
 					txtrname,
 					FileTypes.TXTR
-				);
-				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+				))
 				{
-					Rcol txtr = new GenericRcol(null, false);
-					txtr.ProcessData(pfd, lpackage);
+					Rcol txtr = new GenericRcol(null, false).ProcessFile(pfd, lpackage);
 
 					if (
 						Hashes.StripHashFromName(txtr.FileName).Trim().ToLower()

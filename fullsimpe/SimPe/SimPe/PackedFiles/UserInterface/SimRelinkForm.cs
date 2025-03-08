@@ -5,6 +5,8 @@ using System.Collections;
 using System.Drawing;
 using System.Windows.Forms;
 
+using SimPe.Interfaces.Plugin;
+
 namespace SimPe.PackedFiles.UserInterface
 {
 	/// <summary>
@@ -270,8 +272,7 @@ namespace SimPe.PackedFiles.UserInterface
 				if (pfds.Length == 1)
 				{
 					Wrapper.ExtObjd objd =
-						new Wrapper.ExtObjd();
-					objd.ProcessData(pfds[0], pkg);
+						new Wrapper.ExtObjd().ProcessFile(pfds[0], pkg);
 
 					if (srf.cbfile.Checked)
 					{

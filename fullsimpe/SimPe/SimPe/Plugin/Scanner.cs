@@ -6,6 +6,7 @@ using System.Drawing;
 
 using SimPe.Cache;
 using SimPe.Data;
+using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Plugin.Scanner;
 using SimPe.PackedFiles.Idno;
 using SimPe.Plugin.Scanner;
@@ -74,8 +75,7 @@ namespace SimPe.Plugin
 				);
 				if (pfds.Length > 0)
 				{
-					Idno idno = new Idno();
-					idno.ProcessData(pfds[0], si.Package);
+					Idno idno = new Idno().ProcessFile(pfds[0], si.Package);
 
 					ps.Data = new List<uint>
 					{
@@ -243,8 +243,7 @@ namespace SimPe.Plugin
 							si.Package.FindFiles(FileTypes.IDNO);
 						if (pfds.Length > 0)
 						{
-							Idno idno = new Idno();
-							idno.ProcessData(pfds[0], si.Package);
+							Idno idno = new Idno().ProcessFile(pfds[0], si.Package);
 							idno.MakeUnique(ids);
 
 							if (ps.Data.Count < 2)

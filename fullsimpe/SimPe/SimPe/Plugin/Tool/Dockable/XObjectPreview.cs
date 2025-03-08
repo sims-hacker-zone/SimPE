@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Drawing;
 
 using SimPe.Data;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
 
 namespace SimPe.Plugin.Tool.Dockable
@@ -68,11 +69,10 @@ namespace SimPe.Plugin.Tool.Dockable
 			cpf = null;
 			if (oci.Tag != null)
 			{
-				if (oci.Tag is Interfaces.Scenegraph.IScenegraphFileIndexItem)
+				if (oci.Tag is Interfaces.Scenegraph.IScenegraphFileIndexItem item)
 				{
-					cpf = new Cpf();
-					cpf.ProcessData(
-						(Interfaces.Scenegraph.IScenegraphFileIndexItem)oci.Tag
+					cpf = new Cpf().ProcessFile(
+						item
 					);
 				}
 			}
@@ -111,8 +111,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(t);
 				if (pfds.Length > 0)
 				{
-					cpf = new Cpf();
-					cpf.ProcessData(pfds[0], pkg);
+					cpf = new Cpf().ProcessFile(pfds[0], pkg);
 					break;
 				}
 			}

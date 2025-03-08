@@ -6,6 +6,7 @@ using System.Linq;
 
 using SimPe.Data;
 using SimPe.Forms.MainUI;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Fami;
 
 namespace SimPe.Plugin.Tool.Action
@@ -87,11 +88,7 @@ namespace SimPe.Plugin.Tool.Action
 			{
 				for (int i = 0; i < e.Items.Count; i++)
 				{
-					PackedFiles.Wrapper.ExtSDesc victim =
-						new PackedFiles.Wrapper.ExtSDesc();
-					victim.ProcessData(e.Items[i].Resource);
-
-					c += DeleteSim(victim);
+					c += DeleteSim(new PackedFiles.Wrapper.ExtSDesc().ProcessFile(e.Items[i].Resource));
 				}
 			}
 			else
@@ -236,8 +233,7 @@ namespace SimPe.Plugin.Tool.Action
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
 				PackedFiles.Wrapper.FamilyTies ft =
-					new PackedFiles.Wrapper.FamilyTies(null);
-				ft.ProcessData(pfd, pkg);
+					new PackedFiles.Wrapper.FamilyTies(null).ProcessFile(pfd, pkg);
 
 				ArrayList sims = new ArrayList();
 				foreach (
@@ -273,8 +269,7 @@ namespace SimPe.Plugin.Tool.Action
 			);
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
-				Ngbh n = new Ngbh(null);
-				n.ProcessData(pfd, pkg);
+				Ngbh n = new Ngbh(null).ProcessFile(pfd, pkg);
 
 				ArrayList slotsToRemove = new ArrayList();
 
@@ -347,8 +342,7 @@ namespace SimPe.Plugin.Tool.Action
 		{
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pkg.FindFiles(FileTypes.FAMI))
 			{
-				Fami f = new Fami(null);
-				f.ProcessData(pfd, pkg);
+				Fami f = new Fami(null).ProcessFile(pfd, pkg);
 				if (f.Members.Contains(guid))
 				{
 					f.Members.Remove(guid);
@@ -376,8 +370,7 @@ namespace SimPe.Plugin.Tool.Action
 
 				ArrayList list = new ArrayList();
 				PackedFiles.Wrapper.ExtSDesc sdsc =
-					new PackedFiles.Wrapper.ExtSDesc();
-				sdsc.ProcessData(pfd, pkg);
+					new PackedFiles.Wrapper.ExtSDesc().ProcessFile(pfd, pkg);
 
 				sdsc.Relations.SimInstances = (from i in sdsc.Relations.SimInstances
 											   where i != inst

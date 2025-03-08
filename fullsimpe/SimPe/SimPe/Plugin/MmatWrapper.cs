@@ -7,6 +7,7 @@ using System.Linq;
 
 using SimPe.Data;
 using SimPe.Interfaces.Files;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
 
 namespace SimPe.Plugin
@@ -122,10 +123,7 @@ namespace SimPe.Plugin
 
 					if (pfd != null)
 					{
-						GenericRcol cresfile = new GenericRcol(null, false);
-						cresfile.ProcessData(pfd, package);
-
-						return cresfile;
+						return new GenericRcol(null, false).ProcessFile(pfd, package);
 					}
 					else //FileTable fallback code
 					{
@@ -133,13 +131,10 @@ namespace SimPe.Plugin
 							FileTableBase.FileIndex.FindFileDiscardingGroup(cres).FirstOrDefault();
 						if (item != null)
 						{
-							GenericRcol cresfile = new GenericRcol(null, false);
-							cresfile.ProcessData(
+							return new GenericRcol(null, false).ProcessFile(
 								item.FileDescriptor,
 								item.Package
 							);
-
-							return cresfile;
 						}
 					}
 				}
@@ -166,10 +161,7 @@ namespace SimPe.Plugin
 
 					if (pfd != null)
 					{
-						GenericRcol txmtfile = new GenericRcol(null, false);
-						txmtfile.ProcessData(pfd, package);
-
-						return txmtfile;
+						return new GenericRcol(null, false).ProcessFile(pfd, package);
 					}
 					else //FileTable fallback code
 					{
@@ -177,13 +169,10 @@ namespace SimPe.Plugin
 							FileTableBase.FileIndex.FindFileDiscardingGroup(txmt).FirstOrDefault();
 						if (item != null)
 						{
-							GenericRcol txmtfile = new GenericRcol(null, false);
-							txmtfile.ProcessData(
+							return new GenericRcol(null, false).ProcessFile(
 								item.FileDescriptor,
 								item.Package
 							);
-
-							return txmtfile;
 						}
 					}
 				}
@@ -206,10 +195,7 @@ namespace SimPe.Plugin
 
 				if (pfd != null)
 				{
-					GenericRcol txtrfile = new GenericRcol(null, false);
-					txtrfile.ProcessData(pfd, package);
-
-					return txtrfile;
+					return new GenericRcol(null, false).ProcessFile(pfd, package);
 				}
 				else //FileTable fallback code
 				{
@@ -217,13 +203,10 @@ namespace SimPe.Plugin
 						FileTableBase.FileIndex.FindFileDiscardingGroup(txtr).FirstOrDefault();
 					if (item != null)
 					{
-						GenericRcol txtrfile = new GenericRcol(null, false);
-						txtrfile.ProcessData(
+						return new GenericRcol(null, false).ProcessFile(
 							item.FileDescriptor,
 							item.Package
 						);
-
-						return txtrfile;
 					}
 				}
 			}
@@ -249,25 +232,19 @@ namespace SimPe.Plugin
 			Interfaces.Scenegraph.IScenegraphFileIndexItem item = FileTableBase.FileIndex.FindFile(shp, null).FirstOrDefault();
 			if (item != null)
 			{
-				GenericRcol shpe = new GenericRcol(null, false);
-				shpe.ProcessData(item.FileDescriptor, item.Package);
-				IPackedFileDescriptor gmnd = shpe.ReferenceChains["Models"]?.FirstOrDefault();
+				IPackedFileDescriptor gmnd = new GenericRcol(null, false).ProcessFile(item.FileDescriptor, item.Package).ReferenceChains["Models"]?.FirstOrDefault();
 				if (gmnd != null)
 				{
 					Interfaces.Scenegraph.IScenegraphFileIndexItem item1 = FileTableBase.FileIndex.FindFile(gmnd, null).FirstOrDefault();
 					if (item1 != null)
 					{
-						GenericRcol gmndfile = new GenericRcol(null, false);
-						gmndfile.ProcessData(item1.FileDescriptor, item1.Package);
-						IPackedFileDescriptor gmdc = gmndfile.ReferenceChains["Generic"]?.FirstOrDefault();
+						IPackedFileDescriptor gmdc = new GenericRcol(null, false).ProcessFile(item1.FileDescriptor, item1.Package).ReferenceChains["Generic"]?.FirstOrDefault();
 						if (gmdc != null)
 						{
 							Interfaces.Scenegraph.IScenegraphFileIndexItem item2 = FileTableBase.FileIndex.FindFile(gmdc, null).FirstOrDefault();
 							if (item2 != null)
 							{
-								GenericRcol gmdcfile = new GenericRcol(null, false);
-								gmdcfile.ProcessData(item2.FileDescriptor, item2.Package);
-								return gmdcfile;
+								return new GenericRcol(null, false).ProcessFile(item2.FileDescriptor, item2.Package);
 							}
 						}
 					}

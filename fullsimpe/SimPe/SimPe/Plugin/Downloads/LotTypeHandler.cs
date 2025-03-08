@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 using SimPe.Data;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Picture;
 
 namespace SimPe.Plugin.Downloads
@@ -40,9 +41,7 @@ namespace SimPe.Plugin.Downloads
 
 			if (pfd != null)
 			{
-				Picture pic = new Picture();
-				pic.ProcessData(pfd, pkg);
-				nfo.Image = pic.Image;
+				nfo.Image = new Picture().ProcessFile(pfd, pkg).Image;
 			}
 
 			nfo.KnockoutThumbnail = false;

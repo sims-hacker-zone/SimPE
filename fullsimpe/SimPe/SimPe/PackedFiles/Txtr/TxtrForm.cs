@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Windows.Forms;
 
 using SimPe.Data;
+using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Scenegraph;
 using SimPe.Plugin;
 
@@ -1525,11 +1526,8 @@ namespace SimPe.PackedFiles.Txtr
 			{
 				cbitem.Tag = true;
 				MipMap mm = (MipMap)lbimg.Items[lbimg.SelectedIndex];
-				Interfaces.Files.IPackedFileDescriptor pfd = GetLocalLifo(mm);
-				Lifo.Lifo lifo = new Lifo.Lifo(null, false);
-				lifo.ProcessData(pfd, wrapper.Package);
 				mm.Texture = null; //((LevelInfo)lifo.Blocks[0]).Texture;
-				mm.Data = ((LevelInfo)lifo.Blocks[0]).Data;
+				mm.Data = ((LevelInfo)new Lifo.Lifo(null, false).ProcessFile(GetLocalLifo(mm), wrapper.Package).Blocks[0]).Data;
 				pb.Image = mm.Texture;
 				lbimg.Items[lbimg.SelectedIndex] = mm;
 			}

@@ -303,8 +303,7 @@ namespace SimPe.PackedFiles.UserInterface
 				return; // this should never happen
 			}
 
-			Bcon bcon = new Bcon();
-			bcon.ProcessData(item.PFD, item.Package);
+			Bcon bcon = new Bcon().ProcessFile(item.PFD, item.Package);
 
 			BconForm ui = (BconForm)bcon.UIHandler;
 			string tag = "Popup"; // tells the SetReadOnly function it's in a popup - so everything locked down
@@ -361,8 +360,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 
 			pjse.FileTable.Entry item = (pjse.FileTable.Entry)llIsOverride.Tag;
-			Bcon bcon = new Bcon();
-			bcon.ProcessData(item.PFD, item.Package);
+			Bcon bcon = new Bcon().ProcessFile(item.PFD, item.Package);
 			internalchg = true;
 			while (wrapper.Count < bcon.Count)
 			{

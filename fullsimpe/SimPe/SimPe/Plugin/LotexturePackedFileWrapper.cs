@@ -176,7 +176,7 @@ namespace SimPe.Plugin
 				PackedFiles.Wrapper.ExtSDesc sdesc =
 					new PackedFiles.Wrapper.ExtSDesc();
 				Interfaces.Files.IPackedFileDescriptor[] files =
-					package.FindFiles(Data.FileTypes.SDSC);
+					package.FindFiles(FileTypes.SDSC);
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in files)
 				{
 					sdesc.ProcessData(pfd, package);
@@ -213,24 +213,14 @@ namespace SimPe.Plugin
 					remeberid[i] = reader.ReadUInt32(); // Nid
 					badgesid[i] = reader.ReadUInt32(); // Instance - GUID
 					Interfaces.Files.IPackedFileDescriptor pfd = package.FindFile(
-						Data.FileTypes.SDSC,
+						FileTypes.SDSC,
 						0,
 						0xFFFFFFFF,
 						badgesid[i]
 					);
-					if (pfd == null)
-					{
-						texchure[i] = pjse.GUIDIndex.TheGUIDIndex[badgesid[i]] != null
-							? pjse.GUIDIndex.TheGUIDIndex[badgesid[i]]
-							: Localization.GetString("Unknown");
-					}
-					else
-					{
-						PackedFiles.Wrapper.ExtSDesc sdesc =
-							new PackedFiles.Wrapper.ExtSDesc();
-						sdesc.ProcessData(pfd, package);
-						texchure[i] = sdesc.SimName;
-					}
+					texchure[i] = pfd == null
+						? pjse.GUIDIndex.TheGUIDIndex[badgesid[i]] ?? Localization.GetString("Unknown")
+						: new PackedFiles.Wrapper.ExtSDesc().ProcessFile(pfd, package).SimName;
 				}
 			}
 		}

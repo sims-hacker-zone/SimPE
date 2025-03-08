@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 
 using SimPe.Data;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Nmap;
 using SimPe.PackedFiles.ThreeIdr;
@@ -50,10 +51,7 @@ namespace SimPe.Providers
 			{
 				try
 				{
-					Cpf cpf =
-						new Cpf();
-					cpf.ProcessData(pfd, package);
-					sets.Add(cpf);
+					sets.Add(new Cpf().ProcessFile(pfd, package));
 				}
 				catch (Exception) { }
 			}
@@ -70,9 +68,7 @@ namespace SimPe.Providers
 			{
 				try
 				{
-					ThreeIdr reffile = new ThreeIdr();
-					reffile.ProcessData(pfd, package);
-					refs.Add(reffile);
+					refs.Add(new ThreeIdr().ProcessFile(pfd, package));
 				}
 				catch (Exception) { }
 			}
@@ -82,9 +78,7 @@ namespace SimPe.Providers
 			{
 				try
 				{
-					Plugin.Rcol matd = new Plugin.GenericRcol(null, true);
-					matd.ProcessData(pfd, package);
-					matds.Add(matd);
+					matds.Add(new Plugin.GenericRcol(null, true).ProcessFile(pfd, package));
 				}
 				catch (Exception) { }
 			}
@@ -341,8 +335,7 @@ namespace SimPe.Providers
 				//look for the right one
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
-					Plugin.Rcol rcol = new Plugin.GenericRcol(null, false);
-					rcol.ProcessData(pfd, package);
+					Plugin.Rcol rcol = new Plugin.GenericRcol(null, false).ProcessFile(pfd, package);
 					if (
 						(rcol.FileName.Trim().ToLower() == matdname.Trim().ToLower())
 						|| (
@@ -437,16 +430,11 @@ namespace SimPe.Providers
 			{
 				Interfaces.Files.IPackageFile package =
 					Packages.File.LoadFromFile(file);
-				Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFile(
-					name,
-					FileTypes.TXTR
-				);
 
 				//look for the right one
-				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+				foreach (Interfaces.Files.IPackedFileDescriptor pfd in package.FindFile(name, FileTypes.TXTR))
 				{
-					Txtr rcol = new Txtr(null, false);
-					rcol.ProcessData(pfd, package);
+					Txtr rcol = new Txtr(null, false).ProcessFile(pfd, package);
 					if (rcol.FileName.Trim().ToLower() == name.Trim().ToLower())
 					{
 						return rcol;

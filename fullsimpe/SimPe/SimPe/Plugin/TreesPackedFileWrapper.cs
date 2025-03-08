@@ -136,15 +136,9 @@ namespace SimPe.Plugin
 				FileDescriptor.Group,
 				FileDescriptor.Instance
 			];
-			if (items == null || items.Length == 0)
-			{
-				return null;
-			}
-
-			Interfaces.Plugin.Internal.IPackedFileWrapper wrp =
-				FileTableBase.WrapperRegistry.FindHandler(type);
-			wrp.ProcessData(items[0].PFD, items[0].Package);
-			return wrp;
+			return items == null || items.Length == 0
+				? null
+				: FileTableBase.WrapperRegistry.FindHandler(type).ProcessFile(items[0].PFD, items[0].Package);
 		}
 
 		#endregion

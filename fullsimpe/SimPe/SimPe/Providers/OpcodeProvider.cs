@@ -7,6 +7,7 @@ using System.Linq;
 using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Picture;
 
 namespace SimPe.Providers
@@ -228,9 +229,7 @@ namespace SimPe.Providers
 				0x7FE59FD0,
 				instance
 			);
-			PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
-			str.ProcessData(pfd, BasePackage);
-			PackedFiles.Wrapper.StrItemList sis = str.FallbackedLanguageItems(
+			PackedFiles.Wrapper.StrItemList sis = new PackedFiles.Wrapper.Str().ProcessFile(pfd, BasePackage).FallbackedLanguageItems(
 				(Languages)lang
 			);
 			for (ushort i = 0; i < sis.Length; i++)

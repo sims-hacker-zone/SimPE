@@ -5,6 +5,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
+using SimPe.Interfaces.Plugin;
+
 using Message = SimPe.Forms.MainUI.Message;
 
 namespace SimPe
@@ -72,12 +74,10 @@ namespace SimPe
 				return;
 			}
 
-			Interfaces.Plugin.IFileWrapper wrp =
-				(Interfaces.Plugin.IFileWrapper)doc.Tag;
+			IFileWrapper wrp = (IFileWrapper)doc.Tag;
 			if (UnloadWrapper(wrp))
 			{
-				wrp.ProcessData(fii);
-				wrp.RefreshUI();
+				wrp.ProcessFile(fii).RefreshUI();
 			}
 		}
 
@@ -123,15 +123,13 @@ namespace SimPe
 		/// </summary>
 		/// <param name="fii"></param>
 		/// <returns></returns>
-		public void LoadWrapper(
-			ref Interfaces.Plugin.IFileWrapper wrapper,
+		public void LoadWrapper(ref IFileWrapper wrapper,
 			Interfaces.Scenegraph.IScenegraphFileIndexItem fii
 		)
 		{
 			if (wrapper != null)
 			{
-				wrapper = wrapper.Activate();
-				wrapper.ProcessData(
+				wrapper = wrapper.Activate().ProcessFile(
 					fii.Package.FindExactFile(fii.FileDescriptor),
 					fii.Package
 				);
@@ -174,12 +172,10 @@ namespace SimPe
 						return false;
 					}
 
-					Interfaces.Plugin.IFileWrapper wrp =
-						(Interfaces.Plugin.IFileWrapper)doc.Tag;
+					IFileWrapper wrp = (IFileWrapper)doc.Tag;
 					if (UnloadWrapper(wrp))
 					{
-						wrp.ProcessData(fii);
-						wrp.RefreshUI();
+						wrp.ProcessFile(fii).RefreshUI();
 					}
 				}
 				return true;

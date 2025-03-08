@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 
+using SimPe.Interfaces.Plugin;
+
 namespace SimPe.PackedFiles.Swaf
 {
 	/// <summary>
@@ -68,9 +70,7 @@ namespace SimPe.PackedFiles.Swaf
 					);
 					if (pfd != null)
 					{
-						Xml.Xml xml = new Xml.Xml();
-						xml.ProcessData(pfd, pkg);
-						ParseXml(xml.Text);
+						ParseXml(new Xml.Xml().ProcessFile(pfd, pkg).Text);
 					}
 				}
 			}

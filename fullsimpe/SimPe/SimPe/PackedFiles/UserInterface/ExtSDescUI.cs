@@ -2071,27 +2071,7 @@ namespace SimPe.PackedFiles.UserInterface
 		private void Activate_biLezby(object sender, EventArgs e)
 		{
 			InternalChange = true;
-
-			Wrapper.SimDNA sdna;
 			Random slt = new Random();
-			uint booty = 0;
-			Interfaces.Files.IPackedFileDescriptor pfd = Sdesc.Package.NewDescriptor(
-				FileTypes.SDNA,
-				Sdesc.FileDescriptor.SubType,
-				Sdesc.FileDescriptor.Group,
-				Sdesc.FileDescriptor.Instance
-			);
-			pfd = Sdesc.Package.FindFile(pfd);
-			if (pfd != null)
-			{
-				sdna = new Wrapper.SimDNA();
-				sdna.ProcessData(pfd, Sdesc.Package, true);
-				booty = MetaData.GetBodyShapeid(sdna.Dominant.Skintone);
-			}
-			else
-			{
-				booty = 0;
-			}
 
 			Sdesc.Interests.Animals = (ushort)slt.Next(400, 600);
 			Sdesc.Interests.Crime = (ushort)slt.Next(400, 600);

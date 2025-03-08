@@ -4,6 +4,7 @@ using System;
 
 using SimPe.Data;
 using SimPe.Events;
+using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin.Tool
 {
@@ -21,7 +22,7 @@ namespace SimPe.Plugin.Tool
 		public static void WriteHeader(
 			System.IO.StreamWriter sw,
 			Interfaces.Files.IPackedFileDescriptor pfd,
-			Interfaces.Plugin.IFileWrapper wrapper
+			IFileWrapper wrapper
 		)
 		{
 			sw.WriteLine(Serializer.SerializeTypeHeader(wrapper, pfd, true));
@@ -30,7 +31,7 @@ namespace SimPe.Plugin.Tool
 		public static void WriteItem(
 			System.IO.StreamWriter sw,
 			Interfaces.Files.IPackedFileDescriptor pfd,
-			Interfaces.Plugin.IFileWrapper wrapper
+			IFileWrapper wrapper
 		)
 		{
 			sw.WriteLine(Serializer.Serialize(wrapper, pfd, true));
@@ -56,10 +57,9 @@ namespace SimPe.Plugin.Tool
 			try
 			{
 				Interfaces.Files.IPackedFileDescriptor pfd = e.Resource.FileDescriptor;
-				Interfaces.Plugin.IFileWrapper wrapper =
-					(Interfaces.Plugin.IFileWrapper)
-						FileTableBase.WrapperRegistry.FindHandler(pfd.Type);
-				wrapper?.ProcessData(e.Resource);
+				IFileWrapper wrapper =
+					(IFileWrapper)
+						FileTableBase.WrapperRegistry.FindHandler(pfd.Type)?.ProcessFile(e.Resource);
 
 				if (first)
 				{

@@ -4,6 +4,7 @@ using System;
 using System.Drawing;
 
 using SimPe.Data;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Txtr;
 
@@ -45,8 +46,7 @@ namespace SimPe.Plugin
 				);
 				if (pfd != null)
 				{
-					ctss = new PackedFiles.Wrapper.Str();
-					ctss.ProcessData(pfd, package);
+					ctss = new PackedFiles.Wrapper.Str().ProcessFile(pfd, package);
 				}
 			}
 		}

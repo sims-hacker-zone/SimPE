@@ -6,6 +6,7 @@ using System.Collections;
 using SimPe.Data;
 using SimPe.Extensions;
 using SimPe.Interfaces.Files;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Lifo;
 using SimPe.PackedFiles.Nref;
@@ -297,12 +298,8 @@ namespace SimPe.Plugin
 									package.FindFile(mm.LifoFile, FileTypes.LIFO);
 								if (pfd.Length > 0)
 								{
-									Lifo lifo = new Lifo(null, false);
-									lifo.ProcessData(pfd[0], package);
-									LevelInfo li = (LevelInfo)lifo.Blocks[0];
-
 									mm.Texture = null;
-									mm.Data = li.Data;
+									mm.Data = ((LevelInfo)new Lifo(null, false).ProcessFile(pfd[0], package).Blocks[0]).Data;
 
 									pfd[0].MarkForDelete = true;
 								}
@@ -386,8 +383,7 @@ namespace SimPe.Plugin
 				IPackedFileDescriptor[] pfds = package.FindFiles(type);
 				foreach (IPackedFileDescriptor pfd in pfds)
 				{
-					Rcol rcol = new GenericRcol(null, false);
-					rcol.ProcessData(pfd, package);
+					Rcol rcol = new GenericRcol(null, false).ProcessFile(pfd, package);
 
 					string name = Hashes.StripHashFromName(
 						FindReplacementName(map, rcol)
@@ -418,8 +414,7 @@ namespace SimPe.Plugin
 			foreach (IPackedFileDescriptor pfd in mpfds)
 			{
 				Cpf mmat =
-					new Cpf();
-				mmat.ProcessData(pfd, package);
+					new Cpf().ProcessFile(pfd, package);
 
 				string content = Scenegraph.MmatContent(mmat);
 
@@ -503,8 +498,7 @@ namespace SimPe.Plugin
 
 				if (MetaData.RcolList.Contains(pfd.Type))
 				{
-					GenericRcol rcol = new GenericRcol(null, false);
-					rcol.ProcessData(pfd, package);
+					GenericRcol rcol = new GenericRcol(null, false).ProcessFile(pfd, package);
 
 					foreach (
 						IPackedFileDescriptor p in rcol.ReferencedFiles
@@ -578,15 +572,9 @@ namespace SimPe.Plugin
 				//build a List of RefItems
 				foreach (IPackedFileDescriptor pfd in pfds)
 				{
-					Rcol rcol = new GenericRcol(null, false);
-					rcol.ProcessData(pfd, package);
-
-					//rcol.FileName = Hashes.StripHashFromName(rcol.);
-					/*if (types.Contains(pfd.Type)) rcol. = Hashes.StripHashFromName(rcol.);
-					else rcol.FileName = grouphash + Hashes.StripHashFromName(rcol.FileName);*/
 
 					foreach (
-						IPackedFileDescriptor rpfd in rcol.ReferencedFiles
+						IPackedFileDescriptor rpfd in new GenericRcol(null, false).ProcessFile(pfd, package).ReferencedFiles
 					)
 					{
 						string refstr = BuildRefString(rpfd);
@@ -595,7 +583,6 @@ namespace SimPe.Plugin
 							refmap.Add(refstr, null);
 						}
 					}
-					//rcol.SynchronizeUserData();
 				}
 			}
 
@@ -612,8 +599,7 @@ namespace SimPe.Plugin
 				foreach (IPackedFileDescriptor pfd in pfds)
 				{
 					string refstr = BuildRefString(pfd);
-					Rcol rcol = new GenericRcol(null, false);
-					rcol.ProcessData(pfd, package);
+					Rcol rcol = new GenericRcol(null, false).ProcessFile(pfd, package);
 
 					//rcol.FileName = grouphash + Hashes.StripHashFromName(rcol.);
 					rcol.FileDescriptor.Instance = Hashes.InstanceHash(
@@ -644,8 +630,7 @@ namespace SimPe.Plugin
 
 				foreach (IPackedFileDescriptor pfd in pfds)
 				{
-					Rcol rcol = new GenericRcol(null, false);
-					rcol.ProcessData(pfd, package);
+					Rcol rcol = new GenericRcol(null, false).ProcessFile(pfd, package);
 
 					foreach (
 						IPackedFileDescriptor rpfd in rcol.ReferencedFiles
@@ -699,8 +684,7 @@ namespace SimPe.Plugin
 			string modelname = null;
 			foreach (IPackedFileDescriptor pfd in mpfds)
 			{
-				PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
-				str.ProcessData(pfd, package);
+				PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str().ProcessFile(pfd, package);
 
 				foreach (PackedFiles.Wrapper.StrToken i in str.Items)
 				{
@@ -840,8 +824,7 @@ namespace SimPe.Plugin
 				foreach (IPackedFileDescriptor pfd in mpfds)
 				{
 					Nref nref =
-						new Nref();
-					nref.ProcessData(pfd, package);
+						new Nref().ProcessFile(pfd, package);
 					nref.FileName = ver == FixVersion.UniversityReady ? "SIMPE_" + modelname : "SIMPE_v2_" + modelname;
 
 					nref.SynchronizeUserData();
@@ -870,8 +853,7 @@ namespace SimPe.Plugin
 			foreach (IPackedFileDescriptor pfd in pfds)
 			{
 				PackedFiles.Wrapper.ExtObjd objd =
-					new PackedFiles.Wrapper.ExtObjd();
-				objd.ProcessData(pfd, package);
+					new PackedFiles.Wrapper.ExtObjd().ProcessFile(pfd, package);
 
 				//is one of the objd's a rug?
 				if (
@@ -890,8 +872,7 @@ namespace SimPe.Plugin
 				foreach (IPackedFileDescriptor pfd in pfds)
 				{
 					PackedFiles.Wrapper.ExtObjd objd =
-						new PackedFiles.Wrapper.ExtObjd();
-					objd.ProcessData(pfd, package);
+						new PackedFiles.Wrapper.ExtObjd().ProcessFile(pfd, package);
 
 					//make sure the Type of a Rug is not a Tile, but Normal
 					if (objd.Type == ObjectTypes.Tiles)
@@ -923,8 +904,7 @@ namespace SimPe.Plugin
 			uint mininst = 0x5000;
 			foreach (IPackedFileDescriptor pfd in mpfds)
 			{
-				MmatWrapper mmat = new MmatWrapper();
-				mmat.ProcessData(pfd, package);
+				MmatWrapper mmat = new MmatWrapper().ProcessFile(pfd, package);
 				//make the MMAT Instance number unique
 				pfd.Instance = mininst++;
 

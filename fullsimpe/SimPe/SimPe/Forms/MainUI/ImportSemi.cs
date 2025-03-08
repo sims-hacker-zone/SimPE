@@ -7,6 +7,7 @@ using System.Linq;
 using System.Windows.Forms;
 
 using SimPe.Data;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Glob;
 using SimPe.PackedFiles.Ttab;
 
@@ -57,8 +58,7 @@ namespace SimPe.Forms.MainUI
 
 					ct++;
 
-					NamedGlob glob = new NamedGlob();
-					glob.ProcessData(item.FileDescriptor, item.Package);
+					NamedGlob glob = new NamedGlob().ProcessFile(item.FileDescriptor, item.Package);
 
 					if (!names.Contains(glob.SemiGlobalName.Trim().ToLower()))
 					{
@@ -411,8 +411,7 @@ namespace SimPe.Forms.MainUI
 				{
 					if (item.FileDescriptor.Type == FileTypes.BHAV)
 					{
-						Plugin.Bhav bhav = new Plugin.Bhav(null);
-						bhav.ProcessData(item);
+						Plugin.Bhav bhav = new Plugin.Bhav(null).ProcessFile(item);
 						item.FileDescriptor.Filename =
 							item.FileDescriptor.TypeInfo.ShortName
 							+ ": "
@@ -424,8 +423,7 @@ namespace SimPe.Forms.MainUI
 					else if (item.FileDescriptor.Type == FileTypes.STR)
 					{
 						PackedFiles.Wrapper.Str str =
-							new PackedFiles.Wrapper.Str();
-						str.ProcessData(item);
+							new PackedFiles.Wrapper.Str().ProcessFile(item);
 						item.FileDescriptor.Filename =
 							item.FileDescriptor.TypeInfo.ShortName
 							+ ": "
@@ -436,8 +434,7 @@ namespace SimPe.Forms.MainUI
 					}
 					else if (item.FileDescriptor.Type == FileTypes.BCON) //BCON
 					{
-						Plugin.Bcon bcon = new Plugin.Bcon();
-						bcon.ProcessData(item);
+						Plugin.Bcon bcon = new Plugin.Bcon().ProcessFile(item);
 						item.FileDescriptor.Filename =
 							item.FileDescriptor.TypeInfo.ShortName
 							+ ": "
@@ -542,8 +539,7 @@ namespace SimPe.Forms.MainUI
 
 						Plugin.Bhav bhav = new Plugin.Bhav(
 							prov.OpcodeProvider
-						);
-						bhav.ProcessData(npfd, package);
+						).ProcessFile(npfd, package);
 						if (cbname.Checked)
 						{
 							bhav.FileName = "[" + cbsemi.Text + "] " + bhav.FileName;
@@ -559,8 +555,7 @@ namespace SimPe.Forms.MainUI
 						npfd.Group = 0xffffffff;
 						bconalias[(ushort)npfd.Instance] = (ushort)npfd.Instance;
 
-						Plugin.Bcon bcon = new Plugin.Bcon();
-						bcon.ProcessData(npfd, package);
+						Plugin.Bcon bcon = new Plugin.Bcon().ProcessFile(npfd, package);
 						if (cbname.Checked)
 						{
 							bcon.FileName = "[" + cbsemi.Text + "] " + bcon.FileName;
@@ -568,14 +563,12 @@ namespace SimPe.Forms.MainUI
 
 						bcon.SynchronizeUserData();
 					}
-					else if (npfd.Type == FileTypes.TTAB) //TTAB
+					else if (npfd.Type == FileTypes.TTAB)
 					{
-						Ttab ttab = new Ttab(
-							prov.OpcodeProvider
-						);
-						ttab.ProcessData(npfd, package);
 
-						ttabs.Add(ttab);
+						ttabs.Add(new Ttab(
+							prov.OpcodeProvider
+						).ProcessFile(npfd, package));
 					}
 				}
 
@@ -584,23 +577,17 @@ namespace SimPe.Forms.MainUI
 					pfds = package.FindFiles(FileTypes.BHAV);
 					foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 					{
-						Plugin.Bhav bhav = new Plugin.Bhav(
+						bhavs.Add(new Plugin.Bhav(
 							prov.OpcodeProvider
-						);
-						bhav.ProcessData(pfd, package);
-
-						bhavs.Add(bhav);
+						).ProcessFile(pfd, package));
 					}
 
 					pfds = package.FindFiles(FileTypes.TTAB);
 					foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 					{
-						Ttab ttab = new Ttab(
+						ttabs.Add(new Ttab(
 							prov.OpcodeProvider
-						);
-						ttab.ProcessData(pfd, package);
-
-						ttabs.Add(ttab);
+						).ProcessFile(pfd, package));
 					}
 				}
 

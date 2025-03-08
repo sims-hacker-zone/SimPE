@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 using SimPe.Data;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Nref;
 
 namespace SimPe.Plugin.Tool.Dockable.Finder
@@ -29,30 +30,26 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 				return;
 			}
 
-			Nref nref = new Nref();
-			nref.ProcessData(pfd, pkg);
 
 			bool found = false;
-			string n = nref.FileName.Trim().ToLower();
-			if (compareType == CompareType.Equal)
+			string n = new Nref().ProcessFile(pfd, pkg).FileName.Trim().ToLower();
+			switch (compareType)
 			{
-				found = n == name;
-			}
-			else if (compareType == CompareType.Start)
-			{
-				found = n.StartsWith(name);
-			}
-			else if (compareType == CompareType.End)
-			{
-				found = n.EndsWith(name);
-			}
-			else if (compareType == CompareType.Contain)
-			{
-				found = n.IndexOf(name) > -1;
-			}
-			else if (compareType == CompareType.RegExp && reg != null)
-			{
-				found = reg.IsMatch(n);
+				case CompareType.Equal:
+					found = n == name;
+					break;
+				case CompareType.Start:
+					found = n.StartsWith(name);
+					break;
+				case CompareType.End:
+					found = n.EndsWith(name);
+					break;
+				case CompareType.Contain:
+					found = n.IndexOf(name) > -1;
+					break;
+				case CompareType.RegExp when reg != null:
+					found = reg.IsMatch(n);
+					break;
 			}
 
 			//we have a match, so add the result item

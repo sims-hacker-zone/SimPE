@@ -139,8 +139,7 @@ namespace SimPe.Plugin
 						else
 						{
 							PackedFiles.Wrapper.ExtSDesc sdesc =
-								new PackedFiles.Wrapper.ExtSDesc();
-							sdesc.ProcessData(pfd, package);
+								new PackedFiles.Wrapper.ExtSDesc().ProcessFile(pfd, package);
 							displaystring +=
 								"0x"
 								+ Helper.HexString(Convert.ToInt16(currentsim))

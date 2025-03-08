@@ -5,6 +5,7 @@ using System.Drawing;
 using System.IO;
 
 using SimPe.Data;
+using SimPe.Interfaces.Plugin;
 
 namespace SimPe
 {
@@ -69,11 +70,7 @@ namespace SimPe
 				);
 				if (pfd != null)
 				{
-					// TODO Uncomment when circular dependencies are sorted out.
-					// SimPe.PackedFiles.Wrapper.Picture pic = new SimPe.PackedFiles.Wrapper.Picture();
-					// pic.ProcessData(pfd, pkg);
-					// return pic.Image;
-					return null;
+					return new PackedFiles.Picture.Picture().ProcessFile(pfd, pkg).Image;
 				}
 			}
 			return null;
@@ -101,11 +98,7 @@ namespace SimPe
 				);
 				if (pfd != null)
 				{
-					// TODO Uncomment when circular dependencies are sorted out.
-					// SimPe.PackedFiles.Wrapper.Picture pic = new SimPe.PackedFiles.Wrapper.Picture();
-					// pic.ProcessData(pfd, pkg);
-					// return pic.Image;
-					return null;
+					return new PackedFiles.Picture.Picture().ProcessFile(pfd, pkg).Image;
 				}
 			}
 			if (
@@ -130,11 +123,7 @@ namespace SimPe
 					);
 					if (pfd != null)
 					{
-						// TODO Uncomment when circular dependencies are sorted out.
-						// SimPe.PackedFiles.Wrapper.Picture pic = new SimPe.PackedFiles.Wrapper.Picture();
-						// pic.ProcessData(pfd, pkg);
-						// return pic.Image;
-						return null;
+						return new PackedFiles.Picture.Picture().ProcessFile(pfd, pkg).Image;
 					}
 				}
 			}

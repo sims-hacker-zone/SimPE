@@ -6,6 +6,7 @@ using System.Collections;
 using System.Drawing;
 
 using SimPe.Data;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Picture;
 
 namespace SimPe.Plugin.Downloads
@@ -222,13 +223,11 @@ namespace SimPe.Plugin.Downloads
 					Interfaces.Files.IPackedFileDescriptor pfd = pfds[0];
 					try
 					{
-						Picture pic = new Picture();
-						pic.ProcessData(pfd, thumbs);
-						Bitmap bm = (Bitmap)
-							ImageLoader.Preview(pic.Image, WaitingScreen.ImageSize);
+						Picture pic = new Picture().ProcessFile(pfd, thumbs);
 						if (WaitingScreen.Running)
 						{
-							WaitingScreen.Update(bm, message);
+							WaitingScreen.Update((Bitmap)
+							ImageLoader.Preview(pic.Image, WaitingScreen.ImageSize), message);
 						}
 
 						return pic.Image;
@@ -277,17 +276,16 @@ namespace SimPe.Plugin.Downloads
 			objd = null;
 			if (oci.Tag != null)
 			{
-				if (oci.Tag is Interfaces.Scenegraph.IScenegraphFileIndexItem)
+				if (oci.Tag is Interfaces.Scenegraph.IScenegraphFileIndexItem item)
 				{
-					objd = new PackedFiles.Wrapper.ExtObjd();
-					objd.ProcessData(
-						(Interfaces.Scenegraph.IScenegraphFileIndexItem)oci.Tag
+					objd = new PackedFiles.Wrapper.ExtObjd().ProcessFile(
+						item
 					);
 				}
 			}
 
 			UpdateScreen(null, false);
-			nfo.Image = oci.Thumbnail == null ? null : oci.Thumbnail;
+			nfo.Image = oci.Thumbnail ?? null;
 
 			nfo.Name = oci.Name;
 			nfo.VertexCount = 0;
@@ -319,8 +317,7 @@ namespace SimPe.Plugin.Downloads
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
 					PackedFiles.Wrapper.ExtObjd mobjd =
-						new PackedFiles.Wrapper.ExtObjd();
-					mobjd.ProcessData(pfd, pkg);
+						new PackedFiles.Wrapper.ExtObjd().ProcessFile(pfd, pkg);
 
 					nfo.AddGuid(mobjd.Guid);
 
@@ -386,8 +383,7 @@ namespace SimPe.Plugin.Downloads
 				System.Windows.Forms.Application.DoEvents();
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
-					Rcol rcol = new GenericRcol();
-					rcol.ProcessData(pfd, pkg, true);
+					Rcol rcol = new GenericRcol().ProcessFile(pfd, pkg, true);
 
 					GeometryDataContainer gmdc =
 						rcol.Blocks[0] as GeometryDataContainer;
@@ -565,9 +561,7 @@ namespace SimPe.Plugin.Downloads
 			ArrayList list = new ArrayList();
 			if (pfd != null)
 			{
-				PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
-				str.ProcessData(pfd, objd.Package);
-				PackedFiles.Wrapper.StrItemList items = str.LanguageItems(1);
+				PackedFiles.Wrapper.StrItemList items = new PackedFiles.Wrapper.Str().ProcessFile(pfd, objd.Package).LanguageItems(1);
 				for (int i = 1; i < items.Length; i++)
 				{
 					list.Add(items[i].Title);
@@ -586,10 +580,8 @@ namespace SimPe.Plugin.Downloads
 		{
 			if (ctss != null)
 			{
-				PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
-				str.ProcessData(ctss, pkg);
 
-				return str.FallbackedLanguageItems(Helper.WindowsRegistry.LanguageCode);
+				return new PackedFiles.Wrapper.Str().ProcessFile(ctss, pkg).FallbackedLanguageItems(Helper.WindowsRegistry.LanguageCode);
 			}
 
 			return null;

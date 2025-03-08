@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 
 using SimPe.Data;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Picture;
 using SimPe.PackedFiles.Swaf;
 using SimPe.Plugin;
@@ -297,8 +298,7 @@ namespace SimPe.Cache
 				if (sitem != null)
 				{
 					PackedFiles.Wrapper.Str str =
-						new PackedFiles.Wrapper.Str();
-					str.ProcessData(sitem);
+						new PackedFiles.Wrapper.Str().ProcessFile(sitem);
 					PackedFiles.Wrapper.StrItemList strs = str.LanguageItems(
 						Helper.WindowsRegistry.LanguageCode
 					);
@@ -332,8 +332,7 @@ namespace SimPe.Cache
 				if (sitem != null)
 				{
 					PackedFiles.Wrapper.Str str =
-						new PackedFiles.Wrapper.Str();
-					str.ProcessData(sitem);
+						new PackedFiles.Wrapper.Str().ProcessFile(sitem);
 					PackedFiles.Wrapper.StrItemList strs = str.LanguageItems(
 						Data.Languages.English
 					);
@@ -409,11 +408,8 @@ namespace SimPe.Cache
 					MemoryCacheFileIndex.FindFile(item.GetLocalFileDescriptor(), null);
 				if (citems.Count() == 0)
 				{
-					PackedFiles.Wrapper.ExtObjd objd =
-						new PackedFiles.Wrapper.ExtObjd();
-					objd.ProcessData(item);
 
-					AddMemoryItem(objd);
+					AddMemoryItem(new PackedFiles.Wrapper.ExtObjd().ProcessFile(item));
 					added = true;
 				}
 				Wait.Progress = ct++;

@@ -1,9 +1,12 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 using SimPe.Data;
 using SimPe.Interfaces.Files;
+using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Scenegraph;
 using SimPe.PackedFiles.Cpf;
 
@@ -118,8 +121,7 @@ namespace SimPe.Plugin
 
 			foreach (IPackedFileDescriptor pfd in pfds)
 			{
-				Rcol gmnd = new GenericRcol(null, false);
-				gmnd.ProcessData(pfd, Package);
+				Rcol gmnd = new GenericRcol(null, false).ProcessFile(pfd, Package);
 				foreach (IRcolBlock rb in gmnd.Blocks)
 				{
 					if (rb.BlockName == "cDataListExtension")
@@ -148,34 +150,13 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="gmnd">a GMND</param>
 		/// <returns>List of SHPEs</returns>
-		protected Rcol[] GetReferingShape(Rcol gmnd)
+		protected IEnumerable<Rcol> GetReferringShape(Rcol gmnd)
 		{
-			ArrayList list = new ArrayList();
-			IPackedFileDescriptor[] pfds = Package.FindFiles(
-				FileTypes.SHPE
-			);
-
-			foreach (IPackedFileDescriptor pfd in pfds)
-			{
-				Rcol shpe = new GenericRcol(null, false);
-				shpe.ProcessData(pfd, Package);
-				Shape sh = (Shape)shpe.Blocks[0];
-
-				foreach (ShapeItem item in sh.Items)
-				{
-					if (
-						item.FileName.Trim().ToLower() == gmnd.FileName.Trim().ToLower()
-					)
-					{
-						list.Add(shpe);
-						break;
-					}
-				}
-			}
-
-			Rcol[] rcols = new Rcol[list.Count];
-			list.CopyTo(rcols);
-			return rcols;
+			return from pfd in Package.FindFiles(FileTypes.SHPE)
+				   let shpe = new GenericRcol(null, false).ProcessFile(pfd, Package)
+				   from item in ((Shape)shpe.Blocks[0]).Items
+				   where item.FileName.Trim().ToLower() == gmnd.FileName.Trim().ToLower()
+				   select shpe;
 		}
 
 		/// <summary>
@@ -203,33 +184,13 @@ namespace SimPe.Plugin
 		/// <returns></returns>
 		protected Rcol FindResourceNode(Rcol shpe)
 		{
-			IPackedFileDescriptor[] pfds = Package.FindFiles(
-				FileTypes.CRES
-			);
-			IPackedFileDescriptor pfd = shpe.FileDescriptor;
-
-			foreach (IPackedFileDescriptor cpfd in pfds)
-			{
-				Rcol cres = new GenericRcol(null, false);
-				cres.ProcessData(cpfd, Package);
-
-				foreach (
-					IPackedFileDescriptor rpfd in cres.ReferencedFiles
-				)
-				{
-					if (
-						(rpfd.Group == pfd.Group)
-						&& (rpfd.Instance == pfd.Instance)
-						&& (rpfd.SubType == pfd.SubType)
-						&& (rpfd.Type == pfd.Type)
-					)
-					{
-						return cres;
-					}
-				}
-			}
-
-			return new GenericRcol(null, false);
+			return (from cpfd in Package.FindFiles(FileTypes.CRES)
+					let pfd = shpe.FileDescriptor
+					let cres = new GenericRcol(null, false).ProcessFile(cpfd, Package)
+					from rpfd in cres.ReferencedFiles
+					where (rpfd.Group == pfd.Group) && (rpfd.Instance == pfd.Instance)
+								&& (rpfd.SubType == pfd.SubType) && (rpfd.Type == pfd.Type)
+					select cres).FirstOrDefault() ?? new GenericRcol(null, false);
 		}
 
 		/// <summary>
@@ -239,7 +200,7 @@ namespace SimPe.Plugin
 		/// <param name="gmnd"></param>
 		/// <param name="subsets"></param>
 		protected void GetSubsets(
-			Rcol[] shpes,
+			IEnumerable<Rcol> shpes,
 			Rcol gmnd,
 			ArrayList subsets
 		)
@@ -267,14 +228,12 @@ namespace SimPe.Plugin
 					}
 
 					//Read the MATD
-					IPackedFileDescriptor[] pfds = Package.FindFile(
+					foreach (IPackedFileDescriptor pfd in Package.FindFile(
 						part.FileName + "_txmt",
 						FileTypes.TXMT
-					);
-					foreach (IPackedFileDescriptor pfd in pfds)
+					))
 					{
-						Rcol matd = new GenericRcol(null, false);
-						matd.ProcessData(pfd, Package);
+						Rcol matd = new GenericRcol(null, false).ProcessFile(pfd, Package);
 						MaterialDefinition md =
 							(MaterialDefinition)matd.Blocks[0];
 
@@ -293,24 +252,19 @@ namespace SimPe.Plugin
 							)
 							{
 								localsubsets.Add(part.Subset);
-
-								ExtensionItem ei = new ExtensionItem
+								list.Add(new WorkshopMMAT(part.Subset)
 								{
-									Name = part.Subset,
-									Typecode = ExtensionItem.ItemTypes.Array
-								};
-
-								WorkshopMMAT i = new WorkshopMMAT(part.Subset);
-								object[] tag = new object[3];
-								tag[0] = matd;
-								tag[1] = cres.FileName;
-								tag[2] = ei;
-								i.Tag = tag;
-
-								//if (md.GetProperty("stdMatAlphaBlendMode").Value!="none") i.AddObjectStateIndex(1);
-								list.Add(i);
-								//dle.Extension.Items = (ExtensionItem[])Helper.Add(dle.Extension.Items, ei);
-								//AddMMAT(matd, part.Type, cres.FileName, index++);
+									Tag = new object[3]
+									{
+										matd,
+										cres.FileName,
+										new ExtensionItem
+										{
+											Name = part.Subset,
+											Typecode = ExtensionItem.ItemTypes.Array
+										}
+									}
+								});
 							}
 						}
 					}
@@ -374,8 +328,7 @@ namespace SimPe.Plugin
 				};
 
 			Package.Add(pfd1);
-			Cpf mmat = new Cpf();
-			mmat.ProcessData(pfd1, Package);
+			Cpf mmat = new Cpf().ProcessFile(pfd1, Package);
 
 			if (!substate)
 			{
@@ -393,15 +346,12 @@ namespace SimPe.Plugin
 
 			//Get the GUID
 			IPackedFileDescriptor[] pfds = Package.FindFiles(
-				Data.FileTypes.OBJD
+				FileTypes.OBJD
 			);
 			mmat.GetSaveItem("objectGUID").UIntegerValue = 0x00000000;
 			foreach (IPackedFileDescriptor pfd in pfds)
 			{
-				PackedFiles.Wrapper.Objd objd =
-					new PackedFiles.Wrapper.Objd(null);
-				objd.ProcessData(pfds[0], Package);
-				mmat.GetSaveItem("objectGUID").UIntegerValue = objd.SimId;
+				mmat.GetSaveItem("objectGUID").UIntegerValue = new PackedFiles.Wrapper.Objd(null).ProcessFile(pfds[0], Package).SimId;
 
 				if (pfd.Instance == 0x000041A7)
 				{
@@ -424,11 +374,8 @@ namespace SimPe.Plugin
 				{
 					if (pfds.Length > 0)
 					{
-						Rcol submatd = new GenericRcol(null, false);
-						submatd.ProcessData(pfds[0], Package);
-
 						Cpf mmat2 = AddMMAT(
-							submatd,
+							new GenericRcol(null, false).ProcessFile(pfds[0], Package),
 							subset,
 							cresname,
 							instance,
@@ -449,13 +396,9 @@ namespace SimPe.Plugin
 		/// </summary>
 		public void EnableColorOptions()
 		{
-			Rcol[] gmnds = GetGeometryNodes();
-
-			ArrayList subsets = new ArrayList();
-			foreach (Rcol gmnd in gmnds)
+			foreach (Rcol gmnd in GetGeometryNodes())
 			{
-				Rcol[] shpes = GetReferingShape(gmnd);
-				GetSubsets(shpes, gmnd, subsets);
+				GetSubsets(GetReferringShape(gmnd), gmnd, new ArrayList());
 			}
 
 			dn_pkg.Save();
@@ -474,19 +417,16 @@ namespace SimPe.Plugin
 					"TSData\\Res\\Sims3D\\Objects02.package"
 				)
 			);
-			ArrayList list = new ArrayList();
 			string flname =
 				Hashes.StripHashFromName(mmat.GetSaveItem("name").StringValue)
 				+ "_txmt";
-			IPackedFileDescriptor[] pfds = pkg.FindFile(
+
+			foreach (IPackedFileDescriptor pfd in pkg.FindFile(
 				flname,
 				FileTypes.TXMT
-			);
-
-			foreach (IPackedFileDescriptor pfd in pfds)
+			))
 			{
-				Rcol matd = new GenericRcol(null, false);
-				matd.ProcessData(pfd, pkg);
+				Rcol matd = new GenericRcol(null, false).ProcessFile(pfd, pkg);
 
 				if (matd.FileName.Trim().ToLower() == flname.Trim().ToLower())
 				{
@@ -517,10 +457,7 @@ namespace SimPe.Plugin
 
 			foreach (IPackedFileDescriptor pfd in pfds)
 			{
-				Cpf mmat =
-					new Cpf();
-				mmat.ProcessData(pfd, Package);
-				AddMATD(mmat);
+				AddMATD(new Cpf().ProcessFile(pfd, Package));
 			}
 			//WaitingScreen.Stop();
 		}

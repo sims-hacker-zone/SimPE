@@ -9,6 +9,7 @@ using System.Threading;
 using Ambertation.Threading;
 
 using SimPe.Data;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Picture;
 
 namespace SimPe.Providers
@@ -106,7 +107,7 @@ namespace SimPe.Providers
 						LtxtFileIndexItem.Package.FindFile(
 							FileTypes.BNFO,
 							0,
-							Data.MetaData.LOCAL_GROUP,
+							MetaData.LOCAL_GROUP,
 							Instance
 						);
 					return pfd == null
@@ -129,9 +130,9 @@ namespace SimPe.Providers
 
 					Interfaces.Files.IPackedFileDescriptor pfd =
 						LtxtFileIndexItem.Package.FindFile(
-							Data.FileTypes.STR,
+							FileTypes.STR,
 							0,
-							Data.MetaData.LOCAL_GROUP,
+							MetaData.LOCAL_GROUP,
 							Instance | 0x8000
 						);
 					return pfd == null
@@ -152,8 +153,7 @@ namespace SimPe.Providers
 					if (stri != null)
 					{
 						PackedFiles.Wrapper.Str str =
-							new PackedFiles.Wrapper.Str();
-						str.ProcessData(stri);
+							new PackedFiles.Wrapper.Str().ProcessFile(stri);
 						PackedFiles.Wrapper.StrItemList items =
 							str.FallbackedLanguageItems(
 								Helper.WindowsRegistry.LanguageCode
@@ -259,8 +259,8 @@ namespace SimPe.Providers
 		protected override void StartThread()
 		{
 			lotfi.Load();
-			var items =
-				lotfi.FindFile(FileTypes.IMG, Data.MetaData.LOCAL_GROUP, 0x35CA0002, null);
+			System.Collections.Generic.IEnumerable<Interfaces.Scenegraph.IScenegraphFileIndexItem> items =
+				lotfi.FindFile(FileTypes.IMG, MetaData.LOCAL_GROUP, 0x35CA0002, null);
 			bool run = Wait.Running;
 			if (!run)
 			{
@@ -284,20 +284,16 @@ namespace SimPe.Providers
 					Interfaces.Files.IPackageFile pkg = item.Package;
 
 					Interfaces.Files.IPackedFileDescriptor pfd = pkg.FindFile(
-						Data.FileTypes.STR,
+						FileTypes.STR,
 						0,
-						Data.MetaData.LOCAL_GROUP,
+						MetaData.LOCAL_GROUP,
 						0x00000A46
 					);
 					string name = Localization.GetString("Unknown");
 					if (pfd != null)
 					{
-						PackedFiles.Wrapper.Str str =
-							new PackedFiles.Wrapper.Str();
-						str.ProcessData(pfd, pkg);
-
 						PackedFiles.Wrapper.StrItemList list =
-							str.FallbackedLanguageItems(
+							new PackedFiles.Wrapper.Str().ProcessFile(pfd, pkg).FallbackedLanguageItems(
 								Helper.WindowsRegistry.LanguageCode
 							);
 						if (list.Count > 0)
@@ -306,15 +302,13 @@ namespace SimPe.Providers
 						}
 					}
 
-					Picture pic = new Picture();
-					pic.ProcessData(item);
 
 					uint inst = GetInstanceFromFilename(pkg.SaveFileName);
 
 
-					LotItem li = new LotItem(inst, name, pic.Image, ngbhfi.FindFile(
+					LotItem li = new LotItem(inst, name, new Picture().ProcessFile(item).Image, ngbhfi.FindFile(
 							FileTypes.LTXT,
-							Data.MetaData.LOCAL_GROUP,
+							MetaData.LOCAL_GROUP,
 							inst,
 							null
 						).FirstOrDefault());

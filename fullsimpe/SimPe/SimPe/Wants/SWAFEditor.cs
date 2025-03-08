@@ -1155,8 +1155,7 @@ namespace SimPe.Wants
 				return;
 			}
 
-			XWNTWrapper xwnt = new XWNTWrapper();
-			xwnt.ProcessData(
+			XWNTWrapper xwnt = new XWNTWrapper().ProcessFile(
 				xwnts[i.WantId][0] as Interfaces.Files.IPackedFileDescriptor,
 				xwnts[i.WantId][1] as Interfaces.Files.IPackageFile
 			);

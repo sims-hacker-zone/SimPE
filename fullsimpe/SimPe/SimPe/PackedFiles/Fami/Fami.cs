@@ -152,11 +152,9 @@ namespace SimPe.PackedFiles.Fami
 					//found a Text Resource
 					if (pfd != null)
 					{
-						Str str = new Str();
-						str.ProcessData(pfd, package);
 
 						StrItemList items =
-							str.FallbackedLanguageItems(
+							new Str().ProcessFile(pfd, package).FallbackedLanguageItems(
 								Helper.WindowsRegistry.LanguageCode
 							);
 						if (items.Length > 0)
@@ -182,8 +180,7 @@ namespace SimPe.PackedFiles.Fami
 					// found a Text Resource
 					if (pfd != null)
 					{
-						Str str = new Str();
-						str.ProcessData(pfd, package);
+						Str str = new Str().ProcessFile(pfd, package);
 
 						foreach (
 							StrLanguage lng in str.Languages
@@ -226,11 +223,8 @@ namespace SimPe.PackedFiles.Fami
 					{
 						try
 						{
-							Picture.Picture pic =
-								new Picture.Picture();
-							pic.ProcessData(pfc, package);
 							return Ambertation.Drawing.GraphicRoutines.MakeTransparent(
-								pic.Image,
+								new Picture.Picture().ProcessFile(pfc, package).Image,
 								Color.Black,
 								0.05f,
 								true
@@ -275,10 +269,8 @@ namespace SimPe.PackedFiles.Fami
 					{
 						try
 						{
-							Picture.Picture pic = new Picture.Picture();
-							pic.ProcessData(pfd, fumbs);
 							return Ambertation.Drawing.GraphicRoutines.MakeTransparent(
-								pic.Image,
+								new Picture.Picture().ProcessFile(pfd, fumbs).Image,
 								Color.Black,
 								0.05f,
 								true

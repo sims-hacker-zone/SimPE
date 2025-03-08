@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using Ambertation.Windows.Forms;
 
 using SimPe.Data;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Wrapper;
 
@@ -864,8 +865,7 @@ namespace SimPe.Plugin
 				}
 			}
 
-			Bhav bhav = new Bhav(prov.OpcodeProvider);
-			bhav.ProcessData(pfd, package);
+			Bhav bhav = new Bhav(prov.OpcodeProvider).ProcessFile(pfd, package);
 
 			foreach (Instruction i in bhav)
 			{
@@ -892,17 +892,10 @@ namespace SimPe.Plugin
 		)
 		{
 			string flname = Hashes.StripHashFromName(tbflname.Text);
-			uint inst = Hashes.InstanceHash(flname);
-			uint st = Hashes.SubTypeHash(flname);
 
-			if ((pfd.Instance == inst) && ((pfd.SubType == st) || pfd.SubType == 0))
-			{
-				Rcol rcol = new GenericRcol(prov, false);
-				rcol.ProcessData(pfd, package);
-				return new SearchItem(rcol.FileName, pfd);
-			}
-
-			return null;
+			return (pfd.Instance == Hashes.InstanceHash(flname)) && ((pfd.SubType == Hashes.SubTypeHash(flname)) || pfd.SubType == 0)
+				? new SearchItem(new GenericRcol(prov, false).ProcessFile(pfd, package).FileName, pfd)
+				: null;
 		}
 
 		/// <summary>
@@ -924,8 +917,7 @@ namespace SimPe.Plugin
 				prov.SimNameProvider,
 				prov.SimFamilynameProvider,
 				prov.SimDescriptionProvider
-			);
-			sdesc.ProcessData(pfd, package);
+			).ProcessFile(pfd, package);
 
 			string ext = "";
 			if (sdesc.Unlinked != 0x00)
@@ -1020,8 +1012,7 @@ namespace SimPe.Plugin
 		)
 		{
 			ushort opcode = Convert.ToUInt16(tbOpcode.Text, 16);
-			Cpf cpf = new Cpf();
-			cpf.ProcessData(pfd, package);
+			Cpf cpf = new Cpf().ProcessFile(pfd, package);
 
 			//foreach (CpfItem i in cpf.Items)
 			{
@@ -1075,8 +1066,7 @@ namespace SimPe.Plugin
 			uint guid = Convert.ToUInt32(tbguid.Text, 16);
 
 			ExtObjd objd =
-				new ExtObjd();
-			objd.ProcessData(pfd, package);
+				new ExtObjd().ProcessFile(pfd, package);
 
 			return objd.Guid == guid ? new SearchItem(objd.FileName, pfd) : null;
 		}

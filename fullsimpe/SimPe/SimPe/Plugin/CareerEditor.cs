@@ -7,6 +7,7 @@ using System.IO;
 using System.Windows.Forms;
 
 using SimPe.Data;
+using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Picture;
 using SimPe.PackedFiles.Wrapper;
 
@@ -4525,16 +4526,7 @@ namespace SimPe.Plugin
 					}
 				}
 				Interfaces.Files.IPackedFileDescriptor bfd = this.package.FindFile(FileTypes.IMG, 0, groupId, 1);
-				if (bfd != null)
-				{
-					Picture pic = new Picture();
-					pic.ProcessData(bfd, this.package);
-					pictureBox1.Image = pic.Image;
-				}
-				else
-				{
-					pictureBox1.Image = null;
-				}
+				pictureBox1.Image = bfd != null ? new Picture().ProcessFile(bfd, this.package).Image : null;
 
 				//menuItem6.Enabled = !isPetCareer;
 				miEnglishOnly.Checked = englishOnly;
@@ -4604,14 +4596,7 @@ namespace SimPe.Plugin
 		private Bcon getBcon(uint instance)
 		{
 			Interfaces.Files.IPackedFileDescriptor pfd = package.FindFile(FileTypes.BCON, 0, groupId, instance);
-			if (pfd == null)
-			{
-				return null;
-			}
-
-			Bcon bcon = new Bcon();
-			bcon.ProcessData(pfd, package);
-			return bcon;
+			return pfd == null ? null : new Bcon().ProcessFile(pfd, package);
 		}
 		private bool makeBcon(uint instance, int lvls, string flname)
 		{
@@ -4623,8 +4608,7 @@ namespace SimPe.Plugin
 			}
 
 			lvls++;
-			Bcon bcon = new Bcon();
-			bcon.ProcessData(pfd, package);
+			Bcon bcon = new Bcon().ProcessFile(pfd, package);
 			bcon.FileName = flname;
 			for (int i = 0; i < lvls; i++)
 			{
@@ -4665,8 +4649,7 @@ namespace SimPe.Plugin
 				return null;
 			}
 
-			StrWrapper str = new StrWrapper();
-			str.ProcessData(pfd, package);
+			StrWrapper str = new StrWrapper().ProcessFile(pfd, package);
 
 			// This makes sure US English is as long the longest str[lng] array
 			int count = 0;
@@ -4708,8 +4691,7 @@ namespace SimPe.Plugin
 					continue;
 				}
 
-				bhav = new Bhav();
-				bhav.ProcessData(p, package);
+				bhav = new Bhav().ProcessFile(p, package);
 
 				#region Find Career Reward
 				if (bhav.FileName.Equals("CT - Career Reward")) // Must be adult career

@@ -1,6 +1,8 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+using SimPe.Interfaces.Plugin;
+
 namespace SimPe.Plugin.Tool.Dockable.Finder
 {
 	public partial class FindObj : FindInStr
@@ -46,8 +48,7 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 		)
 		{
 			PackedFiles.Wrapper.ExtObjd obj =
-				new PackedFiles.Wrapper.ExtObjd();
-			obj.ProcessData(pfd, pkg);
+				new PackedFiles.Wrapper.ExtObjd().ProcessFile(pfd, pkg);
 
 			bool found = false;
 

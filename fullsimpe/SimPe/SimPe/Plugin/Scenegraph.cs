@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using SimPe.Data;
+using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Scenegraph;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Nmap;
@@ -111,11 +112,7 @@ namespace SimPe.Plugin
 				0x85
 			))
 			{
-				PackedFiles.Wrapper.Str str =
-					new PackedFiles.Wrapper.Str();
-				str.ProcessData(pfd, pkg);
-
-				foreach (PackedFiles.Wrapper.StrToken item in str.Items)
+				foreach (PackedFiles.Wrapper.StrToken item in new PackedFiles.Wrapper.Str().ProcessFile(pfd, pkg).Items)
 				{
 					string mname = Hashes.StripHashFromName(
 						item.Title.Trim().ToLower()
@@ -134,11 +131,8 @@ namespace SimPe.Plugin
 
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pkg.FindFiles(FileTypes.MMAT))
 			{
-				Cpf cpf = new Cpf();
-				cpf.ProcessData(pfd, pkg);
-
 				string mname = Hashes.StripHashFromName(
-					cpf.GetSaveItem("modelName").StringValue.Trim().ToLower()
+					new Cpf().ProcessFile(pfd, pkg).GetSaveItem("modelName").StringValue.Trim().ToLower()
 				);
 				if (!mname.EndsWith("_cres"))
 				{
@@ -245,8 +239,7 @@ namespace SimPe.Plugin
 								GenericRcol sub = new GenericRcol(
 									null,
 									false
-								);
-								sub.ProcessData(
+								).ProcessFile(
 									subitem.FileDescriptor,
 									subitem.Package,
 									false
@@ -325,8 +318,7 @@ namespace SimPe.Plugin
 			ExcludedReferences = ex;
 			foreach (IScenegraphFileIndexItem item in LoadCres(modelnames))
 			{
-				GenericRcol sub = new GenericRcol(null, false);
-				sub.ProcessData(item);
+				GenericRcol sub = new GenericRcol(null, false).ProcessFile(item);
 				LoadReferenced(
 					this.modelnames,
 					ex,
@@ -391,8 +383,7 @@ namespace SimPe.Plugin
 							);
 						if (item != null)
 						{
-							GenericRcol txmt = new GenericRcol(null, false);
-							txmt.ProcessData(item);
+							GenericRcol txmt = new GenericRcol(null, false).ProcessFile(item);
 							txmt.FileDescriptor =
 								item.FileDescriptor.Clone();
 
@@ -451,8 +442,7 @@ namespace SimPe.Plugin
 
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pkg.FindFiles(FileTypes.TXMT))
 			{
-				GenericRcol rcol = new GenericRcol(null, false);
-				rcol.ProcessData(pfd, pkg);
+				GenericRcol rcol = new GenericRcol(null, false).ProcessFile(pfd, pkg);
 
 				if (rcol.FileDescriptor.Type == FileTypes.TXMT)
 				{
@@ -535,10 +525,7 @@ namespace SimPe.Plugin
 													  where citem.FileDescriptor.Filename != item.Package.FileName.Trim().ToLower()
 													  select item)
 			{
-				MmatWrapper mmat = new MmatWrapper();
-				mmat.ProcessData(item.FileDescriptor, item.Package);
-
-				cachefile.AddMmatItem(mmat);
+				cachefile.AddMmatItem(new MmatWrapper().ProcessFile(item.FileDescriptor, item.Package));
 				chgcache = true;
 			}
 
@@ -568,8 +555,7 @@ namespace SimPe.Plugin
 				if (!itemlist.Contains(item))
 				{
 					itemlist.Add(item);
-					MmatWrapper mmat = new MmatWrapper();
-					mmat.ProcessData(item);
+					MmatWrapper mmat = new MmatWrapper().ProcessFile(item);
 
 					string content = MmatContent(mmat).Trim().ToLower();
 					if (!contentlist.Contains(content))
@@ -597,8 +583,7 @@ namespace SimPe.Plugin
 								try
 								{
 									GenericRcol sub =
-										new GenericRcol(null, false);
-									sub.ProcessData(
+										new GenericRcol(null, false).ProcessFile(
 										txmtitem.FileDescriptor,
 										txmtitem.Package,
 										false
@@ -705,15 +690,11 @@ namespace SimPe.Plugin
 			}
 
 			blockname = blockname.Trim().ToLower();
-			Interfaces.Files.IPackedFileDescriptor[] gmnds = pkg.FindFiles(
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pkg.FindFiles(
 				FileTypes.GMND
-			);
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in gmnds)
+			))
 			{
-				GenericRcol gmnd = new GenericRcol(null, false);
-				gmnd.ProcessData(pfd, pkg);
-
-				foreach (IRcolBlock irb in gmnd.Blocks)
+				foreach (IRcolBlock irb in new GenericRcol(null, false).ProcessFile(pfd, pkg).Blocks)
 				{
 					if (irb.BlockName == "cDataListExtension")
 					{
@@ -789,15 +770,11 @@ namespace SimPe.Plugin
 		public static Hashtable GetSlaveSubsets(Interfaces.Files.IPackageFile pkg)
 		{
 			Hashtable map = new Hashtable();
-			Interfaces.Files.IPackedFileDescriptor[] gmnds = pkg.FindFiles(
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pkg.FindFiles(
 				FileTypes.GMND
-			);
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in gmnds)
+			))
 			{
-				GenericRcol gmnd = new GenericRcol(null, false);
-				gmnd.ProcessData(pfd, pkg);
-
-				GetSlaveSubsets(gmnd, map);
+				GetSlaveSubsets(new GenericRcol(null, false).ProcessFile(pfd, pkg), map);
 			}
 			return map;
 		}
@@ -821,8 +798,7 @@ namespace SimPe.Plugin
 
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in mmats)
 			{
-				MmatWrapper mmat = new MmatWrapper();
-				mmat.ProcessData(pfd, pkg);
+				MmatWrapper mmat = new MmatWrapper().ProcessFile(pfd, pkg);
 
 				string subset = mmat.GetSaveItem("subsetName")
 					.StringValue.Trim()
@@ -921,13 +897,11 @@ namespace SimPe.Plugin
 
 			List<string> list = new List<string>();
 
-			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pkg.FindFiles(
 				FileTypes.GMND
-			);
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			))
 			{
-				Rcol rcol = new GenericRcol(null, false);
-				rcol.ProcessData(pfd, pkg);
+				Rcol rcol = new GenericRcol(null, false).ProcessFile(pfd, pkg);
 
 				foreach (IRcolBlock irb in rcol.Blocks)
 				{
@@ -970,16 +944,13 @@ namespace SimPe.Plugin
 		)
 		{
 			ArrayList list = new ArrayList();
-			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFile(
+			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pkg.FindFile(
 				FileTypes.STR,
 				0,
 				instance.Instance
-			);
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			))
 			{
-				PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
-				str.ProcessData(pfd, pkg);
-				foreach (PackedFiles.Wrapper.StrToken si in str.Items)
+				foreach (PackedFiles.Wrapper.StrToken si in new PackedFiles.Wrapper.Str().ProcessFile(pfd, pkg).Items)
 				{
 					string name = Hashes.StripHashFromName(si.Title).Trim();
 					if (name == "")
@@ -1020,20 +991,16 @@ namespace SimPe.Plugin
 		{
 			foreach (CloneSettings.StrIntsanceAlias instance in instances)
 			{
-				ArrayList rcols = LoadStrLinked(pkg, instance);
-
 				foreach (
-					IScenegraphFileIndexItem item in rcols
+					IScenegraphFileIndexItem item in LoadStrLinked(pkg, instance)
 				)
 				{
-					GenericRcol sub = new GenericRcol(null, false);
-					sub.ProcessData(item);
 					LoadReferenced(
 						modelnames,
 						ExcludedReferences,
 						files,
 						itemlist,
-						sub,
+						new GenericRcol(null, false).ProcessFile(item),
 						item,
 						true,
 						setup
@@ -1089,10 +1056,7 @@ namespace SimPe.Plugin
 				)
 			)
 			{
-				Nmap nmap = new Nmap(null);
-				nmap.ProcessData(namemap);
-
-				foreach (NmapItem ni in nmap.Items)
+				foreach (NmapItem ni in new Nmap(null).ProcessFile(namemap).Items)
 				{
 					string name = ni.Filename.Trim().ToLower();
 					if (name.StartsWith(modelname) && name.EndsWith("_wallmask_txmt"))
@@ -1143,14 +1107,12 @@ namespace SimPe.Plugin
 					IScenegraphFileIndexItem item in txmt
 				)
 				{
-					GenericRcol sub = new GenericRcol(null, false);
-					sub.ProcessData(item);
 					LoadReferenced(
 						this.modelnames,
 						ExcludedReferences,
 						files,
 						itemlist,
-						sub,
+						new GenericRcol(null, false).ProcessFile(item),
 						item,
 						true,
 						setup
@@ -1166,9 +1128,9 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="name"></param>
 		/// <returns></returns>
-		protected ArrayList LoadAnim(string name)
+		protected IEnumerable<IScenegraphFileIndexItem> LoadAnim(string name)
 		{
-			ArrayList anim = new ArrayList();
+			HashSet<IScenegraphFileIndexItem> anim = new HashSet<IScenegraphFileIndexItem>();
 
 			name = name.Trim().ToLower();
 			if (!name.EndsWith("_anim"))
@@ -1195,24 +1157,20 @@ namespace SimPe.Plugin
 		/// Add Anim Resources (if available) to the Clone
 		/// </summary>
 		/// <param name="names"></param>
-		public void AddAnims(string[] names)
+		public void AddAnims(IEnumerable<string> names)
 		{
 			foreach (string s in names)
 			{
-				ArrayList anim = LoadAnim(s);
-
 				foreach (
-					IScenegraphFileIndexItem item in anim
+					IScenegraphFileIndexItem item in LoadAnim(s)
 				)
 				{
-					GenericRcol sub = new GenericRcol(null, false);
-					sub.ProcessData(item);
 					LoadReferenced(
 						modelnames,
 						ExcludedReferences,
 						files,
 						itemlist,
-						sub,
+						new GenericRcol(null, false).ProcessFile(item),
 						item,
 						true,
 						setup
@@ -1233,10 +1191,7 @@ namespace SimPe.Plugin
 				FileTypes.THREE_IDR
 			))
 			{
-				ThreeIdr re = new ThreeIdr();
-				re.ProcessData(pfd, pkg);
-
-				foreach (Interfaces.Files.IPackedFileDescriptor p in re.Items)
+				foreach (Interfaces.Files.IPackedFileDescriptor p in new ThreeIdr().ProcessFile(pfd, pkg).Items)
 				{
 					foreach (
 						IScenegraphFileIndexItem item in FileTableBase.FileIndex.FindFile(p, null)
@@ -1245,14 +1200,12 @@ namespace SimPe.Plugin
 						try
 						{
 							// if (item.FileDescriptor.Type == Data.FileTypes.STR)
-							GenericRcol sub = new GenericRcol(null, false);
-							sub.ProcessData(item);
 							LoadReferenced(
 								modelnames,
 								ExcludedReferences,
 								files,
 								itemlist,
-								sub,
+								new GenericRcol(null, false).ProcessFile(item),
 								item,
 								true,
 								setup
@@ -1391,14 +1344,12 @@ namespace SimPe.Plugin
 			{
 				try
 				{
-					GenericRcol sub = new GenericRcol(null, false);
-					sub.ProcessData(item);
 					LoadReferenced(
 						modelnames,
 						ExcludedReferences,
 						files,
 						itemlist,
-						sub,
+						new GenericRcol(null, false).ProcessFile(item),
 						item,
 						true,
 						setup
