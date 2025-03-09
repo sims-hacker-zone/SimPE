@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 using SimPe.Data;
 using SimPe.Forms.MainUI;
+using SimPe.PackedFiles.Ngbh;
 using SimPe.PackedFiles.Sdsc;
 
 using Message = SimPe.Forms.MainUI.Message;
@@ -505,7 +506,7 @@ namespace SimPe.Plugin
 		{
 			if (spc.SelectedSim != null)
 			{
-				Collections.NgbhSlots slots = Ngbh.GetSlots(
+				NgbhSlots slots = Ngbh.GetSlots(
 					Data.NeighborhoodSlots.Sims
 				);
 				if (slots != null)
@@ -565,7 +566,7 @@ namespace SimPe.Plugin
 		{
 			if (spc.SelectedSim != null)
 			{
-				Collections.NgbhSlots slots = Ngbh.GetSlots(
+				NgbhSlots slots = Ngbh.GetSlots(
 					Data.NeighborhoodSlots.Sims
 				);
 				if (slots != null)

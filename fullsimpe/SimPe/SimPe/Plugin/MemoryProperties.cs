@@ -5,6 +5,8 @@ using System;
 using System.Collections;
 using System.Windows.Forms;
 
+using SimPe.PackedFiles.Ngbh;
+
 namespace SimPe.Plugin
 {
 	/// <summary>

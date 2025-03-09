@@ -16,34 +16,54 @@ using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Bnfo;
 using SimPe.PackedFiles.Clst;
 using SimPe.PackedFiles.Cpf;
+using SimPe.PackedFiles.Creg;
+using SimPe.PackedFiles.Famh;
 using SimPe.PackedFiles.Fami;
 using SimPe.PackedFiles.Famt;
+using SimPe.PackedFiles.Fcns;
+using SimPe.PackedFiles.Ginv;
 using SimPe.PackedFiles.Glob;
+using SimPe.PackedFiles.Goal;
 using SimPe.PackedFiles.Grop;
+using SimPe.PackedFiles.Gtip;
 using SimPe.PackedFiles.Idno;
+using SimPe.PackedFiles.Iidx;
+using SimPe.PackedFiles.Init;
 using SimPe.PackedFiles.Lifo;
+using SimPe.PackedFiles.Lotd;
 using SimPe.PackedFiles.Ltxt;
+using SimPe.PackedFiles.Mmat;
+using SimPe.PackedFiles.Ngbh;
+using SimPe.PackedFiles.Nhtr;
 using SimPe.PackedFiles.Nmap;
 using SimPe.PackedFiles.Nref;
 using SimPe.PackedFiles.Objd;
 using SimPe.PackedFiles.Objf;
 using SimPe.PackedFiles.Olua;
+using SimPe.PackedFiles.Pepv;
 using SimPe.PackedFiles.Picture;
+using SimPe.PackedFiles.Pops;
+using SimPe.PackedFiles.Rtex;
 using SimPe.PackedFiles.Scid;
 using SimPe.PackedFiles.Scor;
 using SimPe.PackedFiles.Sdna;
 using SimPe.PackedFiles.Sdsc;
 using SimPe.PackedFiles.Slot;
+using SimPe.PackedFiles.Smap;
 using SimPe.PackedFiles.Str;
 using SimPe.PackedFiles.Swaf;
 using SimPe.PackedFiles.Tatt;
 using SimPe.PackedFiles.ThreeIdr;
 using SimPe.PackedFiles.Tprp;
 using SimPe.PackedFiles.Trcn;
+using SimPe.PackedFiles.Tree;
 using SimPe.PackedFiles.Ttab;
 using SimPe.PackedFiles.Txtr;
+using SimPe.PackedFiles.Wlay;
 using SimPe.PackedFiles.Wrapper;
+using SimPe.PackedFiles.Wthr;
 using SimPe.PackedFiles.Xml;
+using SimPe.PackedFiles.Xwnt;
 using SimPe.Plugin.Tool;
 using SimPe.Plugin.Tool.Action;
 using SimPe.Plugin.Tool.Dockable;
@@ -215,18 +235,18 @@ namespace SimPe.Plugin
 						new Trcn(),
 						new Ttab(),
 						new TreesPackedFileWrapper(),
-						new FamiuPackedFileWrapper(),
+						new Famh(),
 						new ExtFamilyTies(),
 						new LinkedSDesc(),
 						new ExtSrel(),
 						new SimDNA(),
 						new Scor(),
-						new GametipPackedFileWrapper(),
+						new Gtip(),
 						new LastEPusePackedFileWrapper(),
-						new GWInvPackedFileWrapper(),
+						new Ginv(),
 						new XGoal(),
 						new Scid(),
-						new FunctionPackedFileWrapper(),
+						new Fcns(),
 						new SimpleTextPackedFileWrapper(),
 						new SimListPackedFileWrapper(),
 						new HugBugPackedFileWrapper(),
@@ -235,7 +255,7 @@ namespace SimPe.Plugin
 						new InventItemPackedFileWrapper(),
 						new WinfoPackedFileWrapper(),
 						new LotexturePackedFileWrapper(),
-						new CregPackedFileWrapper(),
+						new Creg(),
 						new WallLayerPackedFileWrapper(),
 						new StringMapPackedFileWrapper(),
 						new SWAFWrapper(),

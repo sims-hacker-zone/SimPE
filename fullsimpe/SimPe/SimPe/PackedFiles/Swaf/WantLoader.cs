@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using SimPe.Interfaces.Plugin;
-using SimPe.Plugin;
+using SimPe.PackedFiles.Xwnt;
 
 namespace SimPe.PackedFiles.Swaf
 {

@@ -4,6 +4,7 @@
 using System;
 
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Ngbh;
 using SimPe.PackedFiles.Sdsc;
 using SimPe.PackedFiles.Wrapper;
 

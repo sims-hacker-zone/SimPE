@@ -9,6 +9,7 @@ using SimPe.Forms.MainUI;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Fami;
 using SimPe.PackedFiles.Famt;
+using SimPe.PackedFiles.Ngbh;
 using SimPe.PackedFiles.Sdsc;
 
 namespace SimPe.Plugin.Tool.Action

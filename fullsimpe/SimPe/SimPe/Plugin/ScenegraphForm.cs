@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using Ambertation.Windows.Forms.Graph;
 
 using SimPe.Interfaces;
+using SimPe.PackedFiles.Mmat;
 
 namespace SimPe.Plugin
 {
