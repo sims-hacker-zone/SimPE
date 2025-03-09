@@ -1114,7 +1114,7 @@ namespace SimPe.Plugin
 					{
 						PackedFiles.Wrapper.StrItemList items =
 							new PackedFiles.Wrapper.Str().ProcessFile(pfds[0], package).FallbackedLanguageItems(
-								Helper.WindowsRegistry.LanguageCode
+								Helper.WindowsRegistry.Config.LanguageCode
 							);
 						if (items != null)
 						{
@@ -1467,7 +1467,7 @@ namespace SimPe.Plugin
 				}
 			}
 
-			if (Helper.WindowsRegistry.HiddenMode)
+			if (Helper.WindowsRegistry.Config.HiddenMode)
 			{
 				llfix.Enabled = true;
 			}
@@ -1617,7 +1617,7 @@ namespace SimPe.Plugin
 				{
 					//only non EP Ready packages
 					if (
-						(!Helper.WindowsRegistry.HiddenMode)
+						(!Helper.WindowsRegistry.Config.HiddenMode)
 						&& (lvi.SubItems[4].Text != STR_NOT_EP)
 					)
 					{

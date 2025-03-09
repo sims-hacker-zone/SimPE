@@ -15,7 +15,7 @@ namespace SimPe
 	{
 		private void SetupMainForm()
 		{
-			if (Helper.WindowsRegistry.HiddenMode)
+			if (Helper.WindowsRegistry.Config.HiddenMode)
 			{
 				ToolStripButton tbDebug = new ToolStripButton
 				{
@@ -34,7 +34,7 @@ namespace SimPe
 
 			Wait.Bar = waitControl1;
 
-			if (Helper.WindowsRegistry.UseBigIcons)
+			if (Helper.WindowsRegistry.Config.UseBigIcons)
 			{
 				toolBar1.ImageScalingSize = new System.Drawing.Size(32, 32);
 				tbWindow.ImageScalingSize = new System.Drawing.Size(32, 32);
@@ -169,17 +169,8 @@ namespace SimPe
 				cbsemig.SelectedIndex = 0;
 			}
 
-			if (!System.IO.File.Exists(Helper.DataFolder.SimPeLayout))
-			{
-				ResetLayout(this, null);
-			}
-			else
-			{
-				ReloadLayout();
-			}
-
 			//Set the Lock State of the Docks
-			MakeFloatable(!Helper.WindowsRegistry.LockDocks);
+			MakeFloatable(!Helper.WindowsRegistry.Config.LockDocks);
 
 			int eep = PathProvider.Global.Latest.Version;
 			if (eep == 20)

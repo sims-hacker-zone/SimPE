@@ -86,7 +86,7 @@ namespace SimPe.PackedFiles.UserInterface
 			pjse.FileTable.GFT.FiletableRefresh += new EventHandler(
 				FiletableRefresh
 			);
-			if (Helper.WindowsRegistry.UseBigIcons)
+			if (Helper.WindowsRegistry.Config.UseBigIcons)
 			{
 				lvTrcnItem.Font = new Font(
 					"Microsoft Sans Serif",

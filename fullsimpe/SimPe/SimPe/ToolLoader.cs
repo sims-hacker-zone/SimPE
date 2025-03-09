@@ -308,10 +308,7 @@ namespace SimPe
 		/// </summary>
 		public void DeleteSettings()
 		{
-			XmlRegistryKey rk = Helper.WindowsRegistry.RegistryKey.CreateSubKey(
-				"ExtTools"
-			);
-			rk.DeleteSubKey(Helper.HexString(type) + "-" + name, false);
+			Helper.WindowsRegistry.Config.ExtTools.Remove(Helper.HexString(type) + "-" + name);
 		}
 
 		/// <summary>
@@ -319,15 +316,17 @@ namespace SimPe
 		/// </summary>
 		public void SaveSettings()
 		{
-			XmlRegistryKey rk = Helper.WindowsRegistry.RegistryKey.CreateSubKey(
-				"ExtTools"
-			);
-			rk = rk.CreateSubKey(Helper.HexString(type) + "-" + name);
+			Dictionary<string, Dictionary<string, string>> exttools = Helper.WindowsRegistry.Config.ExtTools;
+			if (!exttools.ContainsKey(Helper.HexString(type) + "-" + name))
+			{
+				exttools[Helper.HexString(type) + "-" + name] = new Dictionary<string, string>();
+			}
+			exttools[Helper.HexString(type) + "-" + name]["name"] = Name;
+			exttools[Helper.HexString(type) + "-" + name]["type"] = Type.ToString();
+			exttools[Helper.HexString(type) + "-" + name]["filename"] = FileName;
+			exttools[Helper.HexString(type) + "-" + name]["attributes"] = Attributes;
 
-			rk.SetValue("name", Name);
-			rk.SetValue("type", Type);
-			rk.SetValue("filename", FileName);
-			rk.SetValue("attributes", Attributes);
+			Helper.WindowsRegistry.SaveConfig();
 		}
 
 		/// <summary>
@@ -420,20 +419,7 @@ namespace SimPe
 				return;
 			}
 
-			string[] names = Helper
-				.WindowsRegistry.RegistryKey.CreateSubKey("ExtTools")
-				.GetSubKeyNames();
-
-			foreach (string name in names)
-			{
-				Helper
-					.WindowsRegistry.RegistryKey.CreateSubKey("ExtTools")
-					.DeleteSubKey(name, false);
-			}
-			Helper.WindowsRegistry.RegistryKey.DeleteSubKey("ExtTools", false);
-			XmlRegistryKey rk = Helper.WindowsRegistry.RegistryKey.CreateSubKey(
-				"ExtTools"
-			);
+			Helper.WindowsRegistry.Config.ExtTools.Clear();
 
 			foreach (ToolLoaderItemExt tli in items)
 			{
@@ -445,20 +431,13 @@ namespace SimPe
 		{
 			items.Clear();
 
-			XmlRegistryKey rk = Helper.WindowsRegistry.RegistryKey.CreateSubKey(
-				"ExtTools"
-			);
-			string[] names = rk.GetSubKeyNames();
-
-			foreach (string name in names)
+			foreach (KeyValuePair<string, Dictionary<string, string>> name in Helper.WindowsRegistry.Config.ExtTools)
 			{
-				XmlRegistryKey srk = rk.CreateSubKey(name);
-				items.Add(new ToolLoaderItemExt(ToolLoaderItemExt.SplitName(name))
+				items.Add(new ToolLoaderItemExt(ToolLoaderItemExt.SplitName(name.Key))
 				{
-					Type = (FileTypes)Convert.ToUInt32(srk.GetValue("type")),
-					//tli.Name = Convert.ToString(srk.GetValue("name"));
-					FileName = Convert.ToString(srk.GetValue("filename")),
-					Attributes = Convert.ToString(srk.GetValue("attributes"))
+					Type = (FileTypes)Enum.Parse(typeof(FileTypes), name.Value["type"]),
+					FileName = name.Value["filename"],
+					Attributes = name.Value["attributes"]
 				});
 			}
 		}

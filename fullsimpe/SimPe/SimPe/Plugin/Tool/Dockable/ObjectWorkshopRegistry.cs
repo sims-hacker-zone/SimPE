@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 using System;
+using System.Collections.Generic;
 
 namespace SimPe.Plugin.Tool.Dockable
 {
@@ -10,13 +11,18 @@ namespace SimPe.Plugin.Tool.Dockable
 	/// </summary>
 	class ObjectWorkshopRegistry : IDisposable
 	{
+		Dictionary<string, string> settings;
 		XmlRegistryKey xrk;
 		dcObjectWorkshop dock;
 
 		public ObjectWorkshopRegistry(dcObjectWorkshop dock)
 		{
 			this.dock = dock;
-			xrk = Helper.WindowsRegistry.PluginRegistryKey;
+			if (!Helper.WindowsRegistry.Config.PluginSettings.ContainsKey("ObjectWorkshop"))
+			{
+				Helper.WindowsRegistry.Config.PluginSettings["ObjectWorkshop"] = new Dictionary<string, string>();
+			}
+			settings = Helper.WindowsRegistry.Config.PluginSettings["ObjectWorkshop"];
 
 			try
 			{
@@ -42,7 +48,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			dock.cbclean.Checked = FixCloned;
 			dock.cbclean.CheckedChanged += new EventHandler(cbclean_CheckedChanged);
 
-			dock.cbRemTxt.Checked = RemoveNoneDefaultLangaugeStrings;
+			dock.cbRemTxt.Checked = RemoveNoneDefaultLanguageStrings;
 			dock.cbRemTxt.CheckedChanged += new EventHandler(cbRemTxt_CheckedChanged);
 
 			dock.cbparent.Checked = CreateStandAlone;
@@ -89,180 +95,156 @@ namespace SimPe.Plugin.Tool.Dockable
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
-				object o = rkf.GetValue("LastOWAction", 0);
-				return Convert.ToInt32(o);
+				if (!settings.ContainsKey("LastOWAction"))
+				{
+					settings["LastOWAction"] = 0.ToString();
+				}
+				return int.Parse(settings["LastOWAction"]);
 			}
-			set
-			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
-				rkf.SetValue("LastOWAction", value);
-			}
+			set => settings["LastOWAction"] = value.ToString();
 		}
 
 		public bool ChangeDescription
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
-				object o = rkf.GetValue("ChangeDescription", true);
-				return Convert.ToBoolean(o);
+				if (!settings.ContainsKey("ChangeDescription"))
+				{
+					settings["ChangeDescription"] = true.ToString();
+				}
+				return bool.Parse(settings["ChangeDescription"]);
 			}
-			set
-			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
-				rkf.SetValue("ChangeDescription", value);
-			}
+			set => settings["ChangeDescription"] = value.ToString();
 		}
 
 		public bool SetCustomGroup
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
-				object o = rkf.GetValue("SetCustomGroup", true);
-				return Convert.ToBoolean(o);
+				if (!settings.ContainsKey("SetCustomGroup"))
+				{
+					settings["SetCustomGroup"] = true.ToString();
+				}
+				return bool.Parse(settings["SetCustomGroup"]);
 			}
-			set
-			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
-				rkf.SetValue("SetCustomGroup", value);
-			}
+			set => settings["SetCustomGroup"] = value.ToString();
 		}
 
 		public bool FixCloned
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
-				object o = rkf.GetValue("FixCloned", true);
-				return Convert.ToBoolean(o);
+				if (!settings.ContainsKey("FixCloned"))
+				{
+					settings["FixCloned"] = true.ToString();
+				}
+				return bool.Parse(settings["FixCloned"]);
 			}
-			set
-			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
-				rkf.SetValue("FixCloned", value);
-			}
+			set => settings["FixCloned"] = value.ToString();
 		}
 
 		public bool Cleanup
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
-				object o = rkf.GetValue("Cleanup", true);
-				return Convert.ToBoolean(o);
+				if (!settings.ContainsKey("Cleanup"))
+				{
+					settings["Cleanup"] = true.ToString();
+				}
+				return bool.Parse(settings["Cleanup"]);
 			}
-			set
-			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
-				rkf.SetValue("Cleanup", value);
-			}
+			set => settings["Cleanup"] = value.ToString();
 		}
 
-		public bool RemoveNoneDefaultLangaugeStrings
+		public bool RemoveNoneDefaultLanguageStrings
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
-				object o = rkf.GetValue("RemoveNoneDefaultLangaugeStrings", true);
-				return Convert.ToBoolean(o);
+				if (!settings.ContainsKey("RemoveNoneDefaultLanguageStrings"))
+				{
+					settings["RemoveNoneDefaultLanguageStrings"] = true.ToString();
+				}
+				return bool.Parse(settings["RemoveNoneDefaultLanguageStrings"]);
 			}
-			set
-			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
-				rkf.SetValue("RemoveNoneDefaultLangaugeStrings", value);
-			}
+			set => settings["RemoveNoneDefaultLanguageStrings"] = value.ToString();
 		}
 
 		public bool CreateStandAlone
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
-				object o = rkf.GetValue("CreateStandAlone", false);
-				return Convert.ToBoolean(o);
+				if (!settings.ContainsKey("CreateStandAlone"))
+				{
+					settings["CreateStandAlone"] = false.ToString();
+				}
+				return bool.Parse(settings["CreateStandAlone"]);
 			}
-			set
-			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
-				rkf.SetValue("CreateStandAlone", value);
-			}
+			set => settings["CreateStandAlone"] = value.ToString();
 		}
 
 		public bool PullDefaultColorOnly
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
-				object o = rkf.GetValue("PullDefaultColorOnly", true);
-				return Convert.ToBoolean(o);
+				if (!settings.ContainsKey("PullDefaultColorOnly"))
+				{
+					settings["PullDefaultColorOnly"] = true.ToString();
+				}
+				return bool.Parse(settings["PullDefaultColorOnly"]);
 			}
-			set
-			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
-				rkf.SetValue("PullDefaultColorOnly", value);
-			}
+			set => settings["PullDefaultColorOnly"] = value.ToString();
 		}
 
 		public bool PullWallmasks
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
-				object o = rkf.GetValue("PullWallmaks", true);
-				return Convert.ToBoolean(o);
+				if (!settings.ContainsKey("PullWallmasks"))
+				{
+					settings["PullWallmasks"] = true.ToString();
+				}
+				return bool.Parse(settings["PullWallmasks"]);
 			}
-			set
-			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
-				rkf.SetValue("PullWallmaks", value);
-			}
+			set => settings["PullWallmasks"] = value.ToString();
 		}
 
 		public bool PullAnimations
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
-				object o = rkf.GetValue("PullAnimations", false);
-				return Convert.ToBoolean(o);
+				if (!settings.ContainsKey("PullAnimations"))
+				{
+					settings["PullAnimations"] = false.ToString();
+				}
+				return bool.Parse(settings["PullAnimations"]);
 			}
-			set
-			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
-				rkf.SetValue("PullAnimations", value);
-			}
+			set => settings["PullAnimations"] = value.ToString();
 		}
 
 		public bool PullStrLinkedResources
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
-				object o = rkf.GetValue("PullStrLinkedResources", true);
-				return Convert.ToBoolean(o);
+				if (!settings.ContainsKey("PullStrLinkedResources"))
+				{
+					settings["PullStrLinkedResources"] = true.ToString();
+				}
+				return bool.Parse(settings["PullStrLinkedResources"]);
 			}
-			set
-			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
-				rkf.SetValue("PullStrLinkedResources", value);
-			}
+			set => settings["PullStrLinkedResources"] = value.ToString();
 		}
 
 		public bool ReferenceOriginalMesh
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
-				object o = rkf.GetValue("ReferenceOriginalMesh", false);
-				return Convert.ToBoolean(o);
+				if (!settings.ContainsKey("ReferenceOriginalMesh"))
+				{
+					settings["ReferenceOriginalMesh"] = false.ToString();
+				}
+				return bool.Parse(settings["ReferenceOriginalMesh"]);
 			}
-			set
-			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("ObjectWorkshop");
-				rkf.SetValue("ReferenceOriginalMesh", value);
-			}
+			set => settings["ReferenceOriginalMesh"] = value.ToString();
 		}
 
 		#endregion
@@ -330,7 +312,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		private void cbRemTxt_CheckedChanged(object sender, EventArgs e)
 		{
 			System.Windows.Forms.CheckBox cb = sender as System.Windows.Forms.CheckBox;
-			RemoveNoneDefaultLangaugeStrings = cb.Checked;
+			RemoveNoneDefaultLanguageStrings = cb.Checked;
 		}
 
 		private void cbparent_CheckedChanged(object sender, EventArgs e)

@@ -37,7 +37,7 @@ namespace SimPe.Windows.Forms
 
 			if (sc == ResourceViewManager.SortColumn.Name)
 			{
-				if (Helper.WindowsRegistry.AsynchronSort)
+				if (Helper.WindowsRegistry.Config.AsynchronSort)
 				{
 					Wait.SubStart(names.Count);
 				}

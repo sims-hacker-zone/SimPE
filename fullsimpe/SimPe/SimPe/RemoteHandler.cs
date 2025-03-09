@@ -70,8 +70,8 @@ namespace SimPe
 				{
 					if (!fii.Package.Equals(lp.Package))
 					{
-						int bprc = Helper.WindowsRegistry.BigPackageResourceCount;
-						Helper.WindowsRegistry.BigPackageResourceCount = int.MaxValue;
+						int bprc = Helper.WindowsRegistry.Config.BigPackageResourceCount;
+						Helper.WindowsRegistry.Config.BigPackageResourceCount = int.MaxValue;
 
 						if (
 							!lp.LoadFromPackage(
@@ -79,10 +79,10 @@ namespace SimPe
 							)
 						)
 						{
-							Helper.WindowsRegistry.BigPackageResourceCount = bprc;
+							Helper.WindowsRegistry.Config.BigPackageResourceCount = bprc;
 							return false;
 						}
-						Helper.WindowsRegistry.BigPackageResourceCount = bprc;
+						Helper.WindowsRegistry.Config.BigPackageResourceCount = bprc;
 					}
 				}
 			}

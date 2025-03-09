@@ -181,7 +181,7 @@ namespace SimPe
 			}
 
 			Application.UseWaitCursor = true;
-			if (!Helper.WindowsRegistry.WaitingScreen)
+			if (!Helper.WindowsRegistry.Config.WaitingScreen)
 			{
 				return;
 			}
@@ -236,7 +236,7 @@ namespace SimPe
 		private WaitingScreen()
 		{
 			System.Diagnostics.Trace.WriteLine("SimPe.WaitingScreen..ctor(): " + count);
-			if (Helper.WindowsRegistry.WaitingScreen)
+			if (Helper.WindowsRegistry.Config.WaitingScreen)
 			{
 				lock (lockFrm)
 				{

@@ -98,8 +98,8 @@ namespace SimPe.Windows.Forms
 				!dontselect
 				&& (
 					maps.Everything.Count
-						<= Helper.WindowsRegistry.BigPackageResourceCount
-					|| Helper.WindowsRegistry.ResoruceTreeAllwaysAutoselect
+						<= Helper.WindowsRegistry.Config.BigPackageResourceCount
+					|| Helper.WindowsRegistry.Config.ResoruceTreeAlwaysAutoselect
 				)
 			)
 			{

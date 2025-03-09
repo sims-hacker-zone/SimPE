@@ -20,6 +20,7 @@ namespace SimPe.Plugin
 	/// </summary>
 	public class Surgery : Form
 	{
+		private SimsRegistry reg;
 		private ImageList ilist;
 		private ListView lv;
 		private Button button1;
@@ -43,7 +44,7 @@ namespace SimPe.Plugin
 		private LinkLabel ctlLoadPackage;
 		private OpenFileDialog opd;
 		private Label lbUbi;
-		private CheckBox cbgals;
+		private CheckBox cbgirls;
 		private CheckBox cbmens;
 		private CheckBox cbadults;
 		private PropertyGrid pgPatientDetails;
@@ -60,10 +61,12 @@ namespace SimPe.Plugin
 			InitializeComponent();
 
 			LoadArchetyp();
-			cbTownie.Checked = ShowTownies;
-			cbNpc.Checked = ShowNPCs;
-			cbadults.Checked = AdultsOnly;
-			cbgals.Checked = JustGals;
+			reg = new SimsRegistry();
+			cbTownie.Checked = reg.ShowTownies;
+			cbNpc.Checked = reg.ShowNPCs;
+			cbadults.Checked = reg.AdultsOnly;
+			cbgirls.Checked = reg.JustGirls;
+
 		}
 
 		/// <summary>
@@ -113,7 +116,7 @@ namespace SimPe.Plugin
 			lvskin = new ListView();
 			iskin = new ImageList(components);
 			opd = new OpenFileDialog();
-			cbgals = new CheckBox();
+			cbgirls = new CheckBox();
 			cbmens = new CheckBox();
 			cbadults = new CheckBox();
 			cbTownie = new CheckBox();
@@ -368,12 +371,12 @@ namespace SimPe.Plugin
 				opd_FileOk
 			);
 			//
-			// cbgals
+			// cbgirls
 			//
-			resources.ApplyResources(cbgals, "cbgals");
-			cbgals.Name = "cbgals";
-			cbgals.UseVisualStyleBackColor = true;
-			cbgals.CheckedChanged += new EventHandler(
+			resources.ApplyResources(cbgirls, "cbgirls");
+			cbgirls.Name = "cbgirls";
+			cbgirls.UseVisualStyleBackColor = true;
+			cbgirls.CheckedChanged += new EventHandler(
 				genderFilter_CheckedChanged
 			);
 			//
@@ -417,7 +420,7 @@ namespace SimPe.Plugin
 			Controls.Add(lbUbi);
 			Controls.Add(cbTownie);
 			Controls.Add(cbNpc);
-			Controls.Add(cbgals);
+			Controls.Add(cbgirls);
 			Controls.Add(cbmens);
 			Controls.Add(cbadults);
 			Controls.Add(groupBox2);
@@ -528,7 +531,7 @@ namespace SimPe.Plugin
 			}
 
 			if (
-				cbgals.Checked
+				cbgirls.Checked
 				&& sdesc.CharacterDescription.Gender == MetaData.Gender.Male
 			)
 			{
@@ -642,7 +645,7 @@ namespace SimPe.Plugin
 								ListViewItem lvi = new ListViewItem(
 									skin.GetSaveItem("name").StringValue
 								);
-								if (Helper.WindowsRegistry.HiddenMode)
+								if (Helper.WindowsRegistry.Config.HiddenMode)
 								{
 									lvi.Text +=
 										" ("
@@ -1373,8 +1376,8 @@ namespace SimPe.Plugin
 
 		private void genderFilter_CheckedChanged(object sender, EventArgs e)
 		{
-			cbgals.Enabled = !cbmens.Checked;
-			cbmens.Enabled = !cbgals.Checked;
+			cbgirls.Enabled = !cbmens.Checked;
+			cbmens.Enabled = !cbgirls.Checked;
 			if (ngbh != null)
 			{
 				FillList();
@@ -1422,61 +1425,6 @@ namespace SimPe.Plugin
 					System.IO.Path.GetFileName(package.FileName),
 					null
 				);
-			}
-		}
-
-		private bool ShowTownies
-		{
-			get
-			{
-				XmlRegistryKey rkf =
-					Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey("SimBrowser");
-				object o = rkf.GetValue("ShowTownies", false);
-				return Convert.ToBoolean(o);
-			}
-		}
-
-		private bool ShowNPCs
-		{
-			get
-			{
-				XmlRegistryKey rkf =
-					Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey("SimBrowser");
-				object o = rkf.GetValue("ShowNPCs", false);
-				return Convert.ToBoolean(o);
-			}
-		}
-
-		private bool UseBigIcons
-		{
-			get
-			{
-				XmlRegistryKey rkf =
-					Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey("SimBrowser");
-				object o = rkf.GetValue("UseBiggerIcons", false);
-				return Convert.ToBoolean(o);
-			}
-		}
-
-		private bool AdultsOnly
-		{
-			get
-			{
-				XmlRegistryKey rkf =
-					Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey("SimBrowser");
-				object o = rkf.GetValue("AdultsOnly", false);
-				return Convert.ToBoolean(o);
-			}
-		}
-
-		private bool JustGals
-		{
-			get
-			{
-				XmlRegistryKey rkf =
-					Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey("SimBrowser");
-				object o = rkf.GetValue("JustGals", false);
-				return Convert.ToBoolean(o);
 			}
 		}
 	}

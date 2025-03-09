@@ -25,7 +25,7 @@ namespace SimPe.PackedFiles.Cpf
 			//
 			InitializeComponent();
 
-			if (Helper.WindowsRegistry.UseBigIcons)
+			if (Helper.WindowsRegistry.Config.UseBigIcons)
 			{
 				lbcpf.Font = new System.Drawing.Font("Verdana", 12F);
 				rtbcpfname.Font = rtbcpf.Font = new System.Drawing.Font(

@@ -4537,7 +4537,7 @@ namespace SimPe.Plugin
 				}
 				else
 				{
-					currentLanguage = (byte)Helper.WindowsRegistry.LanguageCode; // CJH
+					currentLanguage = (byte)Helper.WindowsRegistry.Config.LanguageCode; // CJH
 				}
 
 				internalchg = true;

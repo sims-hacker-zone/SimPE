@@ -100,8 +100,8 @@ namespace SimPe.Windows.Forms
 				if (newpkg != null)
 				{
 					if (
-						Helper.WindowsRegistry.ShowProgressWhenPackageLoads
-						|| !Helper.WindowsRegistry.AsynchronSort
+						Helper.WindowsRegistry.Config.ShowProgressWhenPackageLoads
+						|| !Helper.WindowsRegistry.Config.AsynchronSort
 					)
 					{
 						Wait.Start(newpkg.Index.Length);
@@ -121,7 +121,7 @@ namespace SimPe.Windows.Forms
 							pfd,
 							newpkg
 						);
-						if (!Helper.WindowsRegistry.AsynchronSort)
+						if (!Helper.WindowsRegistry.Config.AsynchronSort)
 						{
 							npfd.GetRealName();
 						}
@@ -129,8 +129,8 @@ namespace SimPe.Windows.Forms
 						maps.Everything.Add(npfd);
 						AddResourceToMaps(npfd);
 						if (
-							Helper.WindowsRegistry.ShowProgressWhenPackageLoads
-							|| !Helper.WindowsRegistry.AsynchronSort
+							Helper.WindowsRegistry.Config.ShowProgressWhenPackageLoads
+							|| !Helper.WindowsRegistry.Config.AsynchronSort
 						)
 						{
 							Wait.Progress = ct++;
@@ -158,7 +158,7 @@ namespace SimPe.Windows.Forms
 			maps.Clear(false);
 			foreach (NamedPackedFileDescriptor npfd in maps.Everything)
 			{
-				if (!Helper.WindowsRegistry.AsynchronSort)
+				if (!Helper.WindowsRegistry.Config.AsynchronSort)
 				{
 					npfd.GetRealName();
 				}
@@ -181,8 +181,8 @@ namespace SimPe.Windows.Forms
 			if (
 				(
 					maps.Everything.Count
-						> Helper.WindowsRegistry.BigPackageResourceCount
-					&& !Helper.WindowsRegistry.ResoruceTreeAllwaysAutoselect
+						> Helper.WindowsRegistry.Config.BigPackageResourceCount
+					&& !Helper.WindowsRegistry.Config.ResoruceTreeAlwaysAutoselect
 				) || Helper.IsNeighborhoodFile(filonam)
 			)
 			{
@@ -288,7 +288,7 @@ namespace SimPe.Windows.Forms
 
 		internal static int GetIndexForResourceType(FileTypes type)
 		{
-			if (Helper.WindowsRegistry.DecodeFilenamesState)
+			if (Helper.WindowsRegistry.Config.DecodeFilenamesState)
 			{
 				Interfaces.Plugin.Internal.IPackedFileWrapper wrp =
 					FileTableBase.WrapperRegistry.FindHandler(type);

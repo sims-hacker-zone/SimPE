@@ -278,7 +278,7 @@ namespace SimPe.PackedFiles.UserInterface
 					Sim.Castaway.Subspecies = 1;
 					semig = "PetGlobals"; // CS Wild Dog
 				}
-				else if (Helper.WindowsRegistry.LoadOnlySimsStory == 29)
+				else if (Helper.WindowsRegistry.Config.LoadOnlySimsStory == 29)
 				{
 					gooee = 0x926DF19F; // Dog Show Judge
 				}
@@ -572,7 +572,7 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			uint j;
 			int to1 = 13;
-			if (Helper.WindowsRegistry.LoadOnlySimsStory > 0)
+			if (Helper.WindowsRegistry.Config.LoadOnlySimsStory > 0)
 			{
 				to1 = 12; // All Sims Story Editions Don't use Tattoos
 			}

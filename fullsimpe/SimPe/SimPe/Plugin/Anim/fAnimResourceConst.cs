@@ -49,7 +49,7 @@ namespace SimPe.Plugin.Anim
 
 			llInTxt.Visible = llTxt.Visible = UserVerification.HaveUserId;
 
-			if (Helper.WindowsRegistry.UseBigIcons)
+			if (Helper.WindowsRegistry.Config.UseBigIcons)
 			{
 				tv.Font = new System.Drawing.Font("Verdana", 12F);
 				rtbnotes.Font = new System.Drawing.Font("Verdana", 12F);

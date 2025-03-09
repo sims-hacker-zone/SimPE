@@ -66,12 +66,12 @@ namespace SimPe.Plugin.Gmdc
 
 				ScaleMatrix =
 					Geometry.Matrixd.Scale(
-						Helper.WindowsRegistry.ImportExportScaleFactor
+						Helper.WindowsRegistry.Config.ImportExportScaleFactor
 					)
 					.To33Matrix();
 				msi =
 					Geometry.Matrixd.Scale(
-						1.0 / Helper.WindowsRegistry.ImportExportScaleFactor
+						1.0 / Helper.WindowsRegistry.Config.ImportExportScaleFactor
 					)
 					.To33Matrix();
 

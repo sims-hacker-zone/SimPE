@@ -147,7 +147,7 @@ namespace SimPe.Data
 			string s = Localization.Manager.GetString(data.ToString());
 			if (s != null)
 			{
-				if (Helper.WindowsRegistry.LoadOnlySimsStory == 28 && s == "Seasons")
+				if (Helper.WindowsRegistry.Config.LoadOnlySimsStory == 28 && s == "Seasons")
 				{
 					s = "Castaway";
 				}

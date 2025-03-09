@@ -54,7 +54,7 @@ namespace SimPe
 			{
 				Name = tool.ToString()
 			};
-			if (Helper.WindowsRegistry.UseBigIcons)
+			if (Helper.WindowsRegistry.Config.UseBigIcons)
 			{
 				LinkLabel.Font = new System.Drawing.Font(
 					"Verdana",

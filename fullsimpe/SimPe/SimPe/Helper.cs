@@ -410,18 +410,18 @@ namespace SimPe
 		/// <returns></returns>
 		public static string GetSimPeLanguageCache(string prefix)
 		{
-			return WindowsRegistry.LoadOnlySimsStory > 0
+			return WindowsRegistry.Config.LoadOnlySimsStory > 0
 				? Path.Combine(
 					SimPeDataPath,
 					prefix
-						+ HexString((byte)WindowsRegistry.LanguageCode)
-						+ Convert.ToString(WindowsRegistry.LoadOnlySimsStory)
+						+ HexString((byte)WindowsRegistry.Config.LanguageCode)
+						+ Convert.ToString(WindowsRegistry.Config.LoadOnlySimsStory)
 						+ ".simpepkg"
 				)
 				: Path.Combine(
 					SimPeDataPath,
 					prefix
-						+ HexString((byte)WindowsRegistry.LanguageCode)
+						+ HexString((byte)WindowsRegistry.Config.LanguageCode)
 						+ ".simpepkg"
 				);
 		}
@@ -509,36 +509,6 @@ namespace SimPe
 			}
 
 			/// <summary>
-			/// The path of the main SimPe settings file (write)
-			/// </summary>
-			public static string SimPeXREGW => ProfilePath("simpe.xreg");
-
-			/// <summary>
-			/// The path of the main SimPe settings file (readonly)
-			/// </summary>
-			public static string SimPeXREG => ProfilePath("simpe.xreg", true);
-
-			/// <summary>
-			/// The path of the current layout (write)
-			/// </summary>
-			public static string SimPeLayoutW => ProfilePath("simpe.layout");
-
-			/// <summary>
-			/// The path of the current layout (readonly)
-			/// </summary>
-			public static string SimPeLayout => ProfilePath("simpe.layout", true);
-
-			/// <summary>
-			/// The path of the layout settings file (write)
-			/// </summary>
-			public static string Layout2XREGW => ProfilePath("layout2.xreg");
-
-			/// <summary>
-			/// The path of the layout settings file (readonly)
-			/// </summary>
-			public static string Layout2XREG => ProfilePath("layout2.xreg", true);
-
-			/// <summary>
 			/// The path of the filetable folders file (write)
 			/// </summary>
 			public static string FoldersXREGW => ProfilePath("folders.xreg");
@@ -557,16 +527,6 @@ namespace SimPe
 			/// The path of the filetable folders file (readonly)
 			/// </summary>
 			public static string ExpansionsXREG => ECCorNewSEfound ? ProfilePath("expansions2.xreg", true) : ProfilePath("expansions.xreg", true);
-
-			/// <summary>
-			/// The path of the MRU registry file (write)
-			/// </summary>
-			public static string MRUXREGW => ProfilePath("mru.xreg");
-
-			/// <summary>
-			/// The path of the MRU registry file (readonly)
-			/// </summary>
-			public static string MRUXREG => MRUXREGW; // Only one global MRU list, held in the Data folder
 		}
 
 		/// <summary>
@@ -796,7 +756,7 @@ namespace SimPe
 		/// <summary>
 		/// Returnst the Gui that was started
 		/// </summary>
-		public static Executable StartedGui => WindowsRegistry.Layout.IsClassicPreset ? Executable.Classic
+		public static Executable StartedGui => WindowsRegistry.Config.Layout.IsClassicPreset ? Executable.Classic
 					: System
 											.Windows.Forms.Application.ExecutablePath.Trim()
 											.ToLower()
@@ -1167,7 +1127,7 @@ namespace SimPe
 		/// <summary>
 		/// Returns true, if the Helper dll was compiled with the DEBUG Flag
 		/// </summary>
-		public static bool DebugMode => WindowsRegistry.HiddenMode;
+		public static bool DebugMode => WindowsRegistry.Config.HiddenMode;
 
 		/// <summary>
 		/// Returns filename of the Main Neighborhood

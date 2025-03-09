@@ -37,7 +37,7 @@ namespace SimPe.Plugin
 		public FamiuPackedFileUI()
 		{
 			InitializeComponent();
-			if (Helper.WindowsRegistry.UseBigIcons)
+			if (Helper.WindowsRegistry.Config.UseBigIcons)
 			{
 				pbImage.Size = new Size(168, 168);
 				pbImage.Location = new Point(6, 28);
@@ -72,8 +72,8 @@ namespace SimPe.Plugin
 			RefreshGraphs();
 			//if (Wrapper.Version == 86) fundGraph.Title = "Resources";
 			//else fundGraph.Title = "Family Funds";
-			shwraw = Helper.WindowsRegistry.HiddenMode;
-			btRawd.Visible = !Helper.WindowsRegistry.HiddenMode;
+			shwraw = Helper.WindowsRegistry.Config.HiddenMode;
+			btRawd.Visible = !Helper.WindowsRegistry.Config.HiddenMode;
 			lbraw.Text = "Data :";
 			btRawd.Text = "Show Raw Data";
 			filimuptext();
@@ -334,7 +334,7 @@ gtname.Text += "(0x" + Helper.HexString(filedata[(currentsectionindex * 42) + 36
 		{
 			if (
 				filedata[currentsectionindex * 42] == 0
-				&& !Helper.WindowsRegistry.AllowLotZero
+				&& !Helper.WindowsRegistry.Config.AllowLotZero
 			)
 			{
 				return false; // Lot Number, only sims in a playable family could age a day

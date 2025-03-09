@@ -121,42 +121,42 @@ namespace SimPe
 			Tag = true;
 			tbdds.Text = PathProvider.Global.NvidiaDDSPath;
 			cbdebug.Checked = Helper.WindowsRegistry.GameDebug;
-			cbautobak.Checked = Helper.WindowsRegistry.AutoBackup;
+			cbautobak.Checked = Helper.WindowsRegistry.Config.AutoBackup;
 			cbblur.Checked = Helper.WindowsRegistry.BlurNudity;
-			cbsound.Checked = Helper.WindowsRegistry.EnableSound;
-			cbwait.Checked = Helper.WindowsRegistry.WaitingScreen;
-			cbow.Checked = Helper.WindowsRegistry.LoadOWFast;
+			cbsound.Checked = Helper.WindowsRegistry.Config.EnableSound;
+			cbwait.Checked = Helper.WindowsRegistry.Config.WaitingScreen;
+			cbow.Checked = Helper.WindowsRegistry.Config.LoadOWFast;
 			//cbsilent.Checked = Helper.WindowsRegistry.Silent;
 			cbcache.Checked = Helper.WindowsRegistry.Config.UseCache;
 			cbshowobjd.Checked = Helper.WindowsRegistry.Config.ShowObjdNames;
-			cbhidden.Checked = Helper.WindowsRegistry.HiddenMode;
+			cbhidden.Checked = Helper.WindowsRegistry.Config.HiddenMode;
 			cbjointname.Checked = Helper.WindowsRegistry.Config.ShowJointNames;
-			tbthumb.Text = Helper.WindowsRegistry.OWThumbSize.ToString();
-			cbshowalls.Checked = Helper.WindowsRegistry.OWincludewalls;
-			cbtrimname.Checked = Helper.WindowsRegistry.OWtrimnames;
-			tbscale.Text = Helper.WindowsRegistry.ImportExportScaleFactor.ToString();
-			cbpkgmaint.Checked = Helper.WindowsRegistry.UsePackageMaintainer;
-			cbmulti.Checked = Helper.WindowsRegistry.MultipleFiles;
-			cbSimple.Checked = Helper.WindowsRegistry.SimpleResourceSelect;
-			cbFirefox.Checked = Helper.WindowsRegistry.FirefoxTabbing;
-			cbDeep.Checked = Helper.WindowsRegistry.DeepSimScan;
-			cbSimTemp.Checked = Helper.WindowsRegistry.DeepSimTemplateScan;
-			cbAsync.Checked = Helper.WindowsRegistry.AsynchronLoad;
-			cbLock.Checked = Helper.WindowsRegistry.LockDocks;
+			tbthumb.Text = Helper.WindowsRegistry.Config.OWThumbSize.ToString();
+			cbshowalls.Checked = Helper.WindowsRegistry.Config.OWincludewalls;
+			cbtrimname.Checked = Helper.WindowsRegistry.Config.OWtrimnames;
+			tbscale.Text = Helper.WindowsRegistry.Config.ImportExportScaleFactor.ToString();
+			cbpkgmaint.Checked = Helper.WindowsRegistry.Config.UsePackageMaintainer;
+			cbmulti.Checked = Helper.WindowsRegistry.Config.MultipleFiles;
+			cbSimple.Checked = Helper.WindowsRegistry.Config.SimpleResourceSelect;
+			cbFirefox.Checked = Helper.WindowsRegistry.Config.FirefoxTabbing;
+			cbDeep.Checked = Helper.WindowsRegistry.Config.DeepSimScan;
+			cbSimTemp.Checked = Helper.WindowsRegistry.Config.DeepSimTemplateScan;
+			cbAsync.Checked = Helper.WindowsRegistry.Config.AsynchronLoad;
+			cbLock.Checked = Helper.WindowsRegistry.Config.LockDocks;
 			cbsplash.Checked = Helper.WindowsRegistry.Config.ShowStartupSplash;
-			cbAsyncSort.Checked = Helper.WindowsRegistry.AsynchronSort;
+			cbAsyncSort.Checked = Helper.WindowsRegistry.Config.AsynchronSort;
 			//cbexthemes.Checked = Helper.WindowsRegistry.ThemedForms;
-			cbBigIcons.Checked = Helper.WindowsRegistry.UseBigIcons;
-			cbautostore.Checked = Helper.WindowsRegistry.Layout.AutoStoreLayout;
-			cbmoreskills.Checked = Helper.WindowsRegistry.ShowMoreSkills;
-			cbpetability.Checked = Helper.WindowsRegistry.ShowPetAbilities;
+			cbBigIcons.Checked = Helper.WindowsRegistry.Config.UseBigIcons;
+			cbautostore.Checked = Helper.WindowsRegistry.Config.Layout.AutoStoreLayout;
+			cbmoreskills.Checked = Helper.WindowsRegistry.Config.ShowMoreSkills;
+			cbpetability.Checked = Helper.WindowsRegistry.Config.ShowPetAbilities;
 
 			cbLock_CheckedChanged(cbLock, null);
 
 			tbUsername.Text = Helper.WindowsRegistry.Config.UserName;
-			tbPassword.Text = Helper.WindowsRegistry.Password;
+			tbPassword.Text = Helper.WindowsRegistry.Config.Password;
 			tbUserid.Text =
-				"0x" + Helper.HexString(Helper.WindowsRegistry.CachedUserId);
+				"0x" + Helper.HexString(Helper.WindowsRegistry.Config.CachedUserId);
 			if (!UserVerification.HaveValidUserId)
 			{
 				btcreateid.Visible = true;
@@ -168,15 +168,15 @@ namespace SimPe
 
 			toolTip1.SetToolTip(panel1, "");
 
-			groupBox5.Visible = !Helper.WindowsRegistry.Layout.IsClassicPreset;
-			cbBigIcons.Visible = !Helper.WindowsRegistry.Layout.IsClassicPreset;
+			groupBox5.Visible = !Helper.WindowsRegistry.Config.Layout.IsClassicPreset;
+			cbBigIcons.Visible = !Helper.WindowsRegistry.Config.Layout.IsClassicPreset;
 
 			if (
-				((byte)Helper.WindowsRegistry.LanguageCode <= cblang.Items.Count)
-				&& ((byte)Helper.WindowsRegistry.LanguageCode > 0)
+				((byte)Helper.WindowsRegistry.Config.LanguageCode <= cblang.Items.Count)
+				&& ((byte)Helper.WindowsRegistry.Config.LanguageCode > 0)
 			)
 			{
-				cblang.SelectedIndex = (byte)Helper.WindowsRegistry.LanguageCode - 1;
+				cblang.SelectedIndex = (byte)Helper.WindowsRegistry.Config.LanguageCode - 1;
 			}
 
 			lbext.Items.Clear();
@@ -195,7 +195,7 @@ namespace SimPe
 
 			//Report Format
 			Registry.ReportFormats rf =
-				Helper.WindowsRegistry.ReportFormat;
+				Helper.WindowsRegistry.Config.ReportFormat;
 			for (int i = 0; i < cbReport.Items.Count; i++)
 			{
 				if ((Registry.ReportFormats)cbReport.Items[i] == rf)
@@ -206,7 +206,7 @@ namespace SimPe
 
 			Registry.ResourceListExtensionFormats rlf =
 
-					Helper.WindowsRegistry.ResourceListExtensionFormat;
+					Helper.WindowsRegistry.Config.ResourceListExtensionFormat;
 			for (int i = 0; i < cbRLExt.Items.Count; i++)
 			{
 				if (
@@ -219,7 +219,7 @@ namespace SimPe
 
 			Registry.ResourceListFormats rif =
 
-					Helper.WindowsRegistry.ResourceListFormat;
+					Helper.WindowsRegistry.Config.ResourceListFormat;
 			for (int i = 0; i < cbRLNames.Items.Count; i++)
 			{
 				if ((Registry.ResourceListFormats)cbRLNames.Items[i] == rif)
@@ -230,7 +230,7 @@ namespace SimPe
 
 			Registry.ResourceListUnnamedFormats ruf =
 
-					Helper.WindowsRegistry.ResourceListUnknownDescriptionFormat;
+					Helper.WindowsRegistry.Config.ResourceListUnknownDescriptionFormat;
 			for (int i = 0; i < cbRLTGI.Items.Count; i++)
 			{
 				if ((Registry.ResourceListUnnamedFormats)cbRLTGI.Items[i] == ruf)
@@ -243,7 +243,7 @@ namespace SimPe
 			//state
 			cbSimTemp.Enabled = cbDeep.Checked;
 
-			if (!Helper.WindowsRegistry.FileTableSimpleSelectUseGroups)
+			if (!Helper.WindowsRegistry.Config.FileTableSimpleSelectUseGroups)
 			{
 				groupBox8.Visible = false;
 				groupBox9.Location = groupBox8.Location;
@@ -260,43 +260,43 @@ namespace SimPe
 		private void SaveOptionsClick(object sender, EventArgs e)
 		{
 			PathProvider.Global.NvidiaDDSPath = tbdds.Text;
-			Helper.WindowsRegistry.LanguageCode =
+			Helper.WindowsRegistry.Config.LanguageCode =
 				(Data.Languages)cblang.SelectedIndex + 1;
 			Helper.WindowsRegistry.GameDebug = cbdebug.Checked;
-			Helper.WindowsRegistry.AutoBackup = cbautobak.Checked;
+			Helper.WindowsRegistry.Config.AutoBackup = cbautobak.Checked;
 			Helper.WindowsRegistry.BlurNudity = PathProvider.Global.EPInstalled >= 18 || cbblur.Checked;
 
-			Helper.WindowsRegistry.EnableSound = cbsound.Checked;
-			Helper.WindowsRegistry.WaitingScreen = cbwait.Checked;
-			Helper.WindowsRegistry.LoadOWFast = cbow.Checked;
+			Helper.WindowsRegistry.Config.EnableSound = cbsound.Checked;
+			Helper.WindowsRegistry.Config.WaitingScreen = cbwait.Checked;
+			Helper.WindowsRegistry.Config.LoadOWFast = cbow.Checked;
 			//Helper.WindowsRegistry.Silent = cbsilent.Checked;
 			Helper.WindowsRegistry.Config.UseCache = cbcache.Checked;
 			Helper.WindowsRegistry.Config.ShowObjdNames = cbshowobjd.Checked;
-			Helper.WindowsRegistry.HiddenMode = cbhidden.Checked;
+			Helper.WindowsRegistry.Config.HiddenMode = cbhidden.Checked;
 			Helper.WindowsRegistry.Config.ShowJointNames = cbjointname.Checked;
-			Helper.WindowsRegistry.UsePackageMaintainer = cbpkgmaint.Checked;
-			Helper.WindowsRegistry.MultipleFiles = cbmulti.Checked;
-			// Helper.WindowsRegistry.Layout.SelectedTheme = (byte)
+			Helper.WindowsRegistry.Config.UsePackageMaintainer = cbpkgmaint.Checked;
+			Helper.WindowsRegistry.Config.MultipleFiles = cbmulti.Checked;
+			// Helper.WindowsRegistry.Config.Layout.SelectedTheme = (byte)
 			// 	cbThemes.Items[cbThemes.SelectedIndex];
-			Helper.WindowsRegistry.SimpleResourceSelect = cbSimple.Checked;
-			Helper.WindowsRegistry.FirefoxTabbing = cbFirefox.Checked;
-			Helper.WindowsRegistry.DeepSimScan = cbDeep.Checked;
-			Helper.WindowsRegistry.DeepSimTemplateScan = cbSimTemp.Checked;
-			Helper.WindowsRegistry.AsynchronLoad = cbAsync.Checked;
-			Helper.WindowsRegistry.ReportFormat = (Registry.ReportFormats)
+			Helper.WindowsRegistry.Config.SimpleResourceSelect = cbSimple.Checked;
+			Helper.WindowsRegistry.Config.FirefoxTabbing = cbFirefox.Checked;
+			Helper.WindowsRegistry.Config.DeepSimScan = cbDeep.Checked;
+			Helper.WindowsRegistry.Config.DeepSimTemplateScan = cbSimTemp.Checked;
+			Helper.WindowsRegistry.Config.AsynchronLoad = cbAsync.Checked;
+			Helper.WindowsRegistry.Config.ReportFormat = (Registry.ReportFormats)
 				cbReport.SelectedItem;
-			Helper.WindowsRegistry.LockDocks = cbLock.Checked;
+			Helper.WindowsRegistry.Config.LockDocks = cbLock.Checked;
 			Helper.WindowsRegistry.Config.ShowStartupSplash = cbsplash.Checked;
-			Helper.WindowsRegistry.AsynchronSort = cbAsyncSort.Checked;
-			Helper.WindowsRegistry.ResourceListExtensionFormat =
+			Helper.WindowsRegistry.Config.AsynchronSort = cbAsyncSort.Checked;
+			Helper.WindowsRegistry.Config.ResourceListExtensionFormat =
 				(Registry.ResourceListExtensionFormats)cbRLExt.SelectedIndex;
-			Helper.WindowsRegistry.ResourceListFormat = (Registry.ResourceListFormats)
+			Helper.WindowsRegistry.Config.ResourceListFormat = (Registry.ResourceListFormats)
 				cbRLNames.SelectedIndex;
-			Helper.WindowsRegistry.ResourceListUnknownDescriptionFormat =
+			Helper.WindowsRegistry.Config.ResourceListUnknownDescriptionFormat =
 				(Registry.ResourceListUnnamedFormats)cbRLTGI.SelectedIndex;
 			Helper.WindowsRegistry.Config.UserName = tbUsername.Text;
-			Helper.WindowsRegistry.Password = tbPassword.Text;
-			Helper.WindowsRegistry.FileTableSimpleSelectUseGroups = !cbhidden.Checked;
+			Helper.WindowsRegistry.Config.Password = tbPassword.Text;
+			Helper.WindowsRegistry.Config.FileTableSimpleSelectUseGroups = !cbhidden.Checked;
 
 			List<FileTableItem> lfti =
 				new List<FileTableItem>();
@@ -308,8 +308,8 @@ namespace SimPe
 			FileTableBase.StoreFoldersXml(lfti);
 			try
 			{
-				Helper.WindowsRegistry.OWThumbSize = Convert.ToInt32(tbthumb.Text);
-				Helper.WindowsRegistry.ImportExportScaleFactor = Convert.ToSingle(
+				Helper.WindowsRegistry.Config.OWThumbSize = Convert.ToInt32(tbthumb.Text);
+				Helper.WindowsRegistry.Config.ImportExportScaleFactor = Convert.ToSingle(
 					tbscale.Text
 				);
 			}
@@ -497,7 +497,7 @@ namespace SimPe
 
 		public Control BuildPanel(Interfaces.IWrapper wrapper, int index)
 		{
-			if (Helper.WindowsRegistry.HiddenMode)
+			if (Helper.WindowsRegistry.Config.HiddenMode)
 			{
 				height = 148;
 			}
@@ -711,7 +711,7 @@ namespace SimPe
 				| AnchorStyles.Right,
 				Text = wrapper.WrapperDescription.Description
 			};
-			if (Helper.WindowsRegistry.HiddenMode)
+			if (Helper.WindowsRegistry.Config.HiddenMode)
 			{
 				tb.Text +=
 					Helper.lbr
@@ -1171,13 +1171,13 @@ namespace SimPe
 
 		private void btcreateid_Click(object sender, EventArgs e)
 		{
-			Helper.WindowsRegistry.CachedUserId = UserVerification.GenerateUserId(
+			Helper.WindowsRegistry.Config.CachedUserId = UserVerification.GenerateUserId(
 				0,
 				tbUsername.Text,
 				tbPassword.Text
 			);
 			tbUserid.Text =
-				"0x" + Helper.HexString(Helper.WindowsRegistry.CachedUserId);
+				"0x" + Helper.HexString(Helper.WindowsRegistry.Config.CachedUserId);
 			btcreateid.Visible = false;
 		}
 
@@ -1613,7 +1613,7 @@ namespace SimPe
 					ExpansionItem ei = cb.Tag as ExpansionItem;
 					if (
 						cb.Checked
-						&& Helper.WindowsRegistry.FileTableSimpleSelectUseGroups
+						&& Helper.WindowsRegistry.Config.FileTableSimpleSelectUseGroups
 					)
 					{
 						foreach (Control c in groupBox8.Controls)
@@ -1782,7 +1782,7 @@ namespace SimPe
 		{
 			if (
 				cbautobak.CheckState == CheckState.Checked
-				&& !Helper.WindowsRegistry.AutoBackup)
+				&& !Helper.WindowsRegistry.Config.AutoBackup)
 			{
 				MessageBox.Show(
 					Localization.GetString("cbautobak_CheckedChanged"),
@@ -1805,9 +1805,9 @@ namespace SimPe
 
 		private void cbBigIcons_CheckedChanged(object sender, EventArgs e)
 		{
-			if (Helper.WindowsRegistry.UseBigIcons != cbBigIcons.Checked)
+			if (Helper.WindowsRegistry.Config.UseBigIcons != cbBigIcons.Checked)
 			{
-				Helper.WindowsRegistry.UseBigIcons = cbBigIcons.Checked;
+				Helper.WindowsRegistry.Config.UseBigIcons = cbBigIcons.Checked;
 				lbBigIconNote.Visible = true;
 			}
 		}
@@ -1828,9 +1828,9 @@ namespace SimPe
 
 		private void cbautostore_CheckedChanged(object sender, EventArgs e)
 		{
-			if (Helper.WindowsRegistry.Layout.AutoStoreLayout != cbautostore.Checked)
+			if (Helper.WindowsRegistry.Config.Layout.AutoStoreLayout != cbautostore.Checked)
 			{
-				Helper.WindowsRegistry.Layout.AutoStoreLayout = cbautostore.Checked;
+				Helper.WindowsRegistry.Config.Layout.AutoStoreLayout = cbautostore.Checked;
 			}
 		}
 
@@ -1841,7 +1841,7 @@ namespace SimPe
 				return;
 			}
 
-			Helper.WindowsRegistry.ShowPetAbilities = cbpetability.Checked;
+			Helper.WindowsRegistry.Config.ShowPetAbilities = cbpetability.Checked;
 		}
 
 		private void cbmoreskills_CheckedChanged(object sender, EventArgs e)
@@ -1851,7 +1851,7 @@ namespace SimPe
 				return;
 			}
 
-			Helper.WindowsRegistry.ShowMoreSkills = cbmoreskills.Checked;
+			Helper.WindowsRegistry.Config.ShowMoreSkills = cbmoreskills.Checked;
 		}
 
 		private void btNuffing_Click(object sender, EventArgs e)
@@ -1974,7 +1974,7 @@ namespace SimPe
 				return;
 			}
 
-			Helper.WindowsRegistry.OWtrimnames = cbtrimname.Checked;
+			Helper.WindowsRegistry.Config.OWtrimnames = cbtrimname.Checked;
 		}
 
 		private void cbshowalls_CheckedChanged(object sender, EventArgs e)
@@ -1984,7 +1984,7 @@ namespace SimPe
 				return;
 			}
 
-			Helper.WindowsRegistry.OWincludewalls = cbshowalls.Checked;
+			Helper.WindowsRegistry.Config.OWincludewalls = cbshowalls.Checked;
 		}
 	}
 }

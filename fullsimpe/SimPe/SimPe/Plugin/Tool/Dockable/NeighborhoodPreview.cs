@@ -227,8 +227,8 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		protected void ClearScreen()
 		{
-			label5.Visible = Helper.WindowsRegistry.HiddenMode;
-			lbVer.Visible = Helper.WindowsRegistry.HiddenMode;
+			label5.Visible = Helper.WindowsRegistry.Config.HiddenMode;
+			lbVer.Visible = Helper.WindowsRegistry.Config.HiddenMode;
 
 			if (CatalogDescription != null)
 			{
@@ -359,7 +359,7 @@ namespace SimPe.Plugin.Tool.Dockable
 						? "Hidden " + idno.Type.ToString().Replace("_", " ")
 						: idno.Type.ToString().Replace("_", " ");
 
-					if (Helper.WindowsRegistry.HiddenMode)
+					if (Helper.WindowsRegistry.Config.HiddenMode)
 					{
 						ShowVersion();
 					}
@@ -435,7 +435,7 @@ namespace SimPe.Plugin.Tool.Dockable
 					ctss_ChangedUserData
 				);
 
-				return new PackedFiles.Wrapper.Str().ProcessFile(ctss, Package).LanguageItems(Helper.WindowsRegistry.LanguageCode);
+				return new PackedFiles.Wrapper.Str().ProcessFile(ctss, Package).LanguageItems(Helper.WindowsRegistry.Config.LanguageCode);
 			}
 			return null;
 		}

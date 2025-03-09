@@ -65,7 +65,7 @@ namespace SimPe.Plugin
 			InitializeComponent();
 
 			prov = null;
-			if (Helper.WindowsRegistry.UseBigIcons)
+			if (Helper.WindowsRegistry.Config.UseBigIcons)
 			{
 				lblist.Font = new System.Drawing.Font("Verdana", 11F);
 			}

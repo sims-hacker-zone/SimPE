@@ -426,7 +426,7 @@ namespace SimPe.Forms.MainUI
 			text = text.Replace("\n", @"\par\pard");
 			frm.rtb.Rtf = text;
 
-			if (Helper.WindowsRegistry.HiddenMode)
+			if (Helper.WindowsRegistry.Config.HiddenMode)
 			{
 				frm.lldetail.Visible = false;
 			}

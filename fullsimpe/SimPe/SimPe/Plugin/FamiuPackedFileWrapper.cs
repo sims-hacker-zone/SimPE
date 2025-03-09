@@ -77,7 +77,7 @@ namespace SimPe.Plugin
 					{
 						PackedFiles.Wrapper.StrItemList items =
 							new PackedFiles.Wrapper.Str().ProcessFile(pfd, package).FallbackedLanguageItems(
-								Helper.WindowsRegistry.LanguageCode
+								Helper.WindowsRegistry.Config.LanguageCode
 							);
 						if (items.Length > 0)
 						{
@@ -133,7 +133,7 @@ namespace SimPe.Plugin
 						{
 							PackedFiles.Wrapper.StrItemList items =
 								new PackedFiles.Wrapper.Str().ProcessFile(pfd, pkg).FallbackedLanguageItems(
-									Helper.WindowsRegistry.LanguageCode
+									Helper.WindowsRegistry.Config.LanguageCode
 								);
 							if (items.Length > 0)
 							{
@@ -281,7 +281,7 @@ namespace SimPe.Plugin
 
 					fval[(i * 42) + 41] = Convert.ToUInt16(reader.ReadByte());
 
-					if (Helper.WindowsRegistry.AllowLotZero || fval[i * 42] > 0)
+					if (Helper.WindowsRegistry.Config.AllowLotZero || fval[i * 42] > 0)
 					{
 						if (
 							(fval[(i * 42) + 1] < 33)

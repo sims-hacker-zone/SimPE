@@ -32,10 +32,6 @@ namespace SimPe
 				Wait.Stop();
 				Wait.Bar = null;
 
-				if (Helper.WindowsRegistry.Layout.AutoStoreLayout)
-				{
-					StoreLayout();
-				}
 			}
 		}
 
@@ -311,7 +307,7 @@ namespace SimPe
 		{
 			if (
 				e.Button == MouseButtons.Middle
-				&& Helper.WindowsRegistry.FirefoxTabbing
+				&& Helper.WindowsRegistry.Config.FirefoxTabbing
 				&& dc.SelectedPage != null
 			)
 			{
@@ -479,7 +475,7 @@ namespace SimPe
 			ToolStripMenuItem mi = (ToolStripMenuItem)sender;
 			mi.Checked = !mi.Checked;
 
-			Helper.WindowsRegistry.LoadMetaInfo = !mi.Checked;
+			Helper.WindowsRegistry.Config.LoadMetaInfo = !mi.Checked;
 		}
 
 		private void Activate_miFileNames(object sender, EventArgs e)
@@ -487,7 +483,7 @@ namespace SimPe
 			ToolStripMenuItem mi = (ToolStripMenuItem)sender;
 			mi.Checked = !mi.Checked;
 
-			Helper.WindowsRegistry.DecodeFilenamesState = mi.Checked;
+			Helper.WindowsRegistry.Config.DecodeFilenamesState = mi.Checked;
 		}
 
 		private void Activate_miExit(object sender, EventArgs e)
@@ -504,7 +500,7 @@ namespace SimPe
 
 			System.Diagnostics.Process p = new System.Diagnostics.Process();
 			p.StartInfo.FileName = PathProvider.Global.SimsApplication;
-			p.StartInfo.Arguments = Helper.WindowsRegistry.EnableSound ? "-w" : "-w -nosound";
+			p.StartInfo.Arguments = Helper.WindowsRegistry.Config.EnableSound ? "-w" : "-w -nosound";
 			p.Start();
 		}
 
@@ -695,10 +691,6 @@ namespace SimPe
 			ResetLayout(null, null);
 		}
 
-		private void Activate_miReload(object sender, EventArgs e)
-		{
-			ReloadLayout();
-		}
 
 		void MakeFloatable(DockPanel dw, bool fl)
 		{
@@ -794,9 +786,7 @@ namespace SimPe
 		/// </summary>
 		private void saveProfile()
 		{
-			Helper.WindowsRegistry.Flush(); // Writes SimPeXREGW
-			StoreLayout(); // Writes SimPeLayoutW
-			Helper.WindowsRegistry.Layout.Flush(); // Writes Layout2XREGW
+			Helper.WindowsRegistry.SaveConfig();
 			File.SetLastWriteTime(Helper.DataFolder.FoldersXREGW, DateTime.Now); // It was written by the Options form
 		}
 
@@ -812,21 +802,6 @@ namespace SimPe
 
 			saveProfile();
 
-			File.Copy(
-				Helper.DataFolder.SimPeXREGW,
-				Path.Combine(path, Path.GetFileName(Helper.DataFolder.SimPeXREG)),
-				true
-			);
-			File.Copy(
-				Helper.DataFolder.SimPeLayoutW,
-				Path.Combine(path, Path.GetFileName(Helper.DataFolder.SimPeLayout)),
-				true
-			);
-			File.Copy(
-				Helper.DataFolder.Layout2XREGW,
-				Path.Combine(path, Path.GetFileName(Helper.DataFolder.Layout2XREG)),
-				true
-			);
 			File.Copy(
 				Helper.DataFolder.FoldersXREGW,
 				Path.Combine(path, Path.GetFileName(Helper.DataFolder.FoldersXREG)),

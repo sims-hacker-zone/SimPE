@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -22,7 +23,7 @@ namespace SimPe.Wants
 
 			internalchg = true;
 			lvItems.Sorting = SortOrder.Ascending;
-			groupColumn = Settings.SWAFSortColumn;
+			groupColumn = Settings.Options.SWAFSortColumn;
 
 			lbtn = new List<Button>(
 				new Button[] { btnAddWant, btnAddFear, btnAddLTWant }
@@ -71,21 +72,21 @@ namespace SimPe.Wants
 				}
 			);
 
-			int[] ai = Settings.SWAFColumns;
+			IEnumerable<int> ai = Settings.Options.SWAFColumns;
 			if (ai != null)
 			{
-				for (int i = 0; i < ai.Length; i++)
+				foreach ((int item, int i) in ai.Select((item, i) => (item, i)))
 				{
-					lvItems.Columns[i].Width = ai[i];
+					lvItems.Columns[i].Width = item;
 				}
 			}
 
-			bool[] ab = Settings.SWAFItemTypes;
+			IEnumerable<bool> ab = Settings.Options.SWAFItemTypes;
 			if (ab != null)
 			{
-				for (int i = 0; i < ab.Length; i++)
+				foreach ((bool item, int i) in ab.Select((item, i) => (item, i)))
 				{
-					lincs[i].Checked = ab[i];
+					lincs[i].Checked = item;
 				}
 			}
 
@@ -871,7 +872,7 @@ namespace SimPe.Wants
 			}
 
 			// I don't like this being here
-			int sd = Settings.SWAFSplitterDistance;
+			int sd = Settings.Options.SWAFSplitterDistance;
 			if (sd != -1)
 			{
 				splitContainer1.SplitterDistance = sd;
@@ -920,7 +921,7 @@ namespace SimPe.Wants
 				|| (isRunningXPOrLater && (e.Column != groupColumn))
 				? SortOrder.Ascending
 				: SortOrder.Descending;
-			Settings.SWAFSortColumn = groupColumn = e.Column;
+			Settings.Options.SWAFSortColumn = groupColumn = e.Column;
 
 			// Set the groups to those created for the clicked column.
 			if (isRunningXPOrLater)
@@ -1478,21 +1479,7 @@ namespace SimPe.Wants
 			ColumnWidthChangedEventArgs e
 		)
 		{
-			int[] ai = Settings.SWAFColumns;
-			if (ai == null)
-			{
-				ai = new int[lvItems.Columns.Count];
-				for (int i = 0; i < ai.Length; i++)
-				{
-					ai[i] = lvItems.Columns[i].Width;
-				}
-			}
-			else
-			{
-				ai[e.ColumnIndex] = lvItems.Columns[e.ColumnIndex].Width;
-			}
-
-			Settings.SWAFColumns = ai;
+			Settings.Options.SWAFColumns = from column in lvItems.Columns.Cast<ColumnHeader>() select column.Width;
 		}
 
 		private void ckbInc_CheckedChanged(object sender, EventArgs e)
@@ -1523,9 +1510,9 @@ namespace SimPe.Wants
 			internalchg = true;
 			try
 			{
-				bool[] ab = Settings.SWAFItemTypes;
+				bool[] ab = Settings.Options.SWAFItemTypes.ToArray();
 				ab[lincs.IndexOf(ckb)] = ckb.Checked;
-				Settings.SWAFItemTypes = ab;
+				Settings.Options.SWAFItemTypes = ab;
 
 				groupTables = new Hashtable[lvItems.Columns.Count];
 				setLV();
@@ -1561,7 +1548,7 @@ namespace SimPe.Wants
 				return;
 			}
 
-			Settings.SWAFSplitterDistance = splitContainer1.SplitterDistance;
+			Settings.Options.SWAFSplitterDistance = splitContainer1.SplitterDistance;
 		}
 
 		private void tbSISimID2_TextChanged(object sender, EventArgs e)

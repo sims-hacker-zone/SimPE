@@ -832,7 +832,7 @@ namespace SimPe
 				try
 				{
 					string path;
-					if (Helper.WindowsRegistry.LoadOnlySimsStory == 0)
+					if (Helper.WindowsRegistry.Config.LoadOnlySimsStory == 0)
 					{
 						path = Path.Combine(PersonalFolder, "EA Games");
 					}
@@ -859,42 +859,8 @@ namespace SimPe
 		/// </summary>
 		public static string SimSavegameFolder
 		{
-			get
-			{
-				try
-				{
-					XmlRegistryKey rkf =
-						Helper.WindowsRegistry.RegistryKey.CreateSubKey("Settings");
-					object o = rkf.GetValue("SavegamePath");
-					if (o == null)
-					{
-						return RealSavegamePath;
-					}
-					else
-					{
-						string fl = o.ToString();
-						return !Directory.Exists(fl) ? RealSavegamePath : fl;
-					}
-				}
-				catch (Exception)
-				{
-					return RealSavegamePath;
-				}
-			}
-			set
-			{
-				XmlRegistryKey rkf = Helper.WindowsRegistry.RegistryKey.CreateSubKey(
-					"Settings"
-				);
-				if (value == "")
-				{
-					rkf.DeleteSubKey("SavegamePath", false);
-				}
-				else
-				{
-					rkf.SetValue("SavegamePath", value);
-				}
-			}
+			get => Helper.WindowsRegistry.Config.SaveGamePath != "" ? Helper.WindowsRegistry.Config.SaveGamePath : RealSavegamePath;
+			set => Helper.WindowsRegistry.Config.SaveGamePath = value;
 		}
 
 		/// <summary>
@@ -945,17 +911,17 @@ namespace SimPe
 			{
 				try
 				{
-					Microsoft.Win32.RegistryKey tk = Helper.WindowsRegistry.LoadOnlySimsStory == 28
+					Microsoft.Win32.RegistryKey tk = Helper.WindowsRegistry.Config.LoadOnlySimsStory == 28
 						? Microsoft.Win32.Registry.LocalMachine.OpenSubKey(
 							"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\SimsCS.exe",
 							false
 						)
-						: Helper.WindowsRegistry.LoadOnlySimsStory == 29
+						: Helper.WindowsRegistry.Config.LoadOnlySimsStory == 29
 							? Microsoft.Win32.Registry.LocalMachine.OpenSubKey(
 													"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\SimsPS.exe",
 													false
 												)
-							: Helper.WindowsRegistry.LoadOnlySimsStory == 30
+							: Helper.WindowsRegistry.Config.LoadOnlySimsStory == 30
 													? Microsoft.Win32.Registry.LocalMachine.OpenSubKey(
 																			"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\SimsLS.exe",
 																			false
@@ -997,27 +963,8 @@ namespace SimPe
 		/// </summary>
 		public string NvidiaDDSPath
 		{
-			get
-			{
-				try
-				{
-					XmlRegistryKey rkf =
-						Helper.WindowsRegistry.RegistryKey.CreateSubKey("Settings");
-					object o = rkf.GetValue("NvidiaDDS");
-					return o == null ? "" : o.ToString();
-				}
-				catch (Exception)
-				{
-					return "";
-				}
-			}
-			set
-			{
-				XmlRegistryKey rkf = Helper.WindowsRegistry.RegistryKey.CreateSubKey(
-					"Settings"
-				);
-				rkf.SetValue("NvidiaDDS", value);
-			}
+			get => Helper.WindowsRegistry.Config.NvidiaDDSPath;
+			set => Helper.WindowsRegistry.Config.NvidiaDDSPath = value;
 		}
 
 		/// <summary>

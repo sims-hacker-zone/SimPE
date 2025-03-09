@@ -87,7 +87,7 @@ namespace SimPe.Plugin.Gmdc
 			{
 				AuskelCorrection = Helper
 				.WindowsRegistry
-				.CorrectJointDefinitionOnExport
+				.Config.CorrectJointDefinitionOnExport
 			};
 		}
 

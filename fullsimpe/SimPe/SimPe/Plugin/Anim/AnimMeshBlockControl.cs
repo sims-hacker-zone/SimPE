@@ -62,7 +62,7 @@ namespace SimPe.Plugin.Anim
 
 			cbCorrect.Checked = Helper
 				.WindowsRegistry
-				.CorrectJointDefinitionOnExport;
+				.Config.CorrectJointDefinitionOnExport;
 		}
 
 		/// <summary>
@@ -506,7 +506,7 @@ namespace SimPe.Plugin.Anim
 
 		private void cbCorrect_CheckedChanged(object sender, System.EventArgs e)
 		{
-			Helper.WindowsRegistry.CorrectJointDefinitionOnExport =
+			Helper.WindowsRegistry.Config.CorrectJointDefinitionOnExport =
 				cbCorrect.Checked;
 		}
 	}

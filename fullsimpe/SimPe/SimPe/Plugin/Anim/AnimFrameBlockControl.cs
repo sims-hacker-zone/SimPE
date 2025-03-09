@@ -62,7 +62,7 @@ namespace SimPe.Plugin.Anim
 			panel1.BackColor = splitter1.BackColor;
 			panel3.BackColor = splitter1.BackColor;
 			panel6.BackColor = splitter1.BackColor;
-			if (Helper.WindowsRegistry.UseBigIcons)
+			if (Helper.WindowsRegistry.Config.UseBigIcons)
 			{
 				tv.Font = new System.Drawing.Font("Verdana", 12F);
 			}

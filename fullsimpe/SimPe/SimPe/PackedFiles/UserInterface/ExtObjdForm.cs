@@ -230,7 +230,7 @@ namespace SimPe.PackedFiles.UserInterface
 					Data.BuildFunctionSubSort.Openings_TallDoor
 				)
 			);
-			if (Helper.WindowsRegistry.HiddenMode)
+			if (Helper.WindowsRegistry.Config.HiddenMode)
 			{
 				cbBuildSort.Items.Add(
 					new Data.LocalizedBuildSubSort(
@@ -247,7 +247,7 @@ namespace SimPe.PackedFiles.UserInterface
 				cbExtras.Text = "Extra Stuff";
 			}
 
-			if (Helper.WindowsRegistry.UseBigIcons)
+			if (Helper.WindowsRegistry.Config.UseBigIcons)
 			{
 				pg.Font = new System.Drawing.Font(
 					"Verdana",
@@ -346,7 +346,7 @@ namespace SimPe.PackedFiles.UserInterface
 					}
 					catch (Exception ex)
 					{
-						if (Helper.WindowsRegistry.HiddenMode)
+						if (Helper.WindowsRegistry.Config.HiddenMode)
 						{
 							Helper.ExceptionMessage("Error converting " + name, ex);
 						}
@@ -532,24 +532,10 @@ namespace SimPe.PackedFiles.UserInterface
 			cbStoreEd.Checked = objd.EpRequired2.StoreEdition;
 		}
 
-		static string subKey = "ExtObdjForm";
 		private int InitialTab
 		{
-			get
-			{
-				XmlRegistryKey rkf = Helper.WindowsRegistry.RegistryKey.CreateSubKey(
-					subKey
-				);
-				object o = rkf.GetValue("initialTab", 0);
-				return Convert.ToInt16(o);
-			}
-			set
-			{
-				XmlRegistryKey rkf = Helper.WindowsRegistry.RegistryKey.CreateSubKey(
-					subKey
-				);
-				rkf.SetValue("initialTab", value);
-			}
+			get => Helper.WindowsRegistry.Config.ExtObdjFormInitialTab;
+			set => Helper.WindowsRegistry.Config.ExtObdjFormInitialTab = value;
 		}
 		#endregion
 
@@ -622,7 +608,7 @@ namespace SimPe.PackedFiles.UserInterface
 				cbBuildSort.SelectedIndex = 0;
 				if (objd.BuildType.Value != 0)
 				{
-					if (Helper.WindowsRegistry.HiddenMode)
+					if (Helper.WindowsRegistry.Config.HiddenMode)
 					{
 						cbBuildSort.SelectedIndex = 19; // set to unknown
 					}
@@ -642,7 +628,7 @@ namespace SimPe.PackedFiles.UserInterface
 						}
 					}
 				}
-				if (!Helper.WindowsRegistry.HiddenMode && UserVerification.HaveUserId)
+				if (!Helper.WindowsRegistry.Config.HiddenMode && UserVerification.HaveUserId)
 				{
 					//this.toolTip1.SetToolTip(this.tbgrid, SimPe.Plugin.Subhoods.getgooee(objd.GridAlignedGuid));
 					//this.toolTip1.SetToolTip(this.tbdiag, SimPe.Plugin.Subhoods.getgooee(objd.DiagonalGuid));
@@ -2568,7 +2554,7 @@ namespace SimPe.PackedFiles.UserInterface
 				wrapper.DiagonalGuid = Convert.ToUInt32(tbdiag.Text, 16);
 				wrapper.GridAlignedGuid = Convert.ToUInt32(tbgrid.Text, 16);
 				wrapper.Changed = true;
-				if (!Helper.WindowsRegistry.HiddenMode && UserVerification.HaveUserId)
+				if (!Helper.WindowsRegistry.Config.HiddenMode && UserVerification.HaveUserId)
 				{
 					//this.toolTip1.SetToolTip(this.tbgrid, SimPe.Plugin.Subhoods.getgooee(wrapper.GridAlignedGuid));
 					//this.toolTip1.SetToolTip(this.tbdiag, SimPe.Plugin.Subhoods.getgooee(wrapper.DiagonalGuid));

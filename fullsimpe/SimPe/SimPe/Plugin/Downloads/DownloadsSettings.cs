@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Collections.Generic;
 using System.Resources;
 
 namespace SimPe.Plugin.Downloads
@@ -12,12 +13,16 @@ namespace SimPe.Plugin.Downloads
 	{
 		static ResourceManager rm = new ResourceManager(typeof(DownloadsSettings));
 		const string BASENAME = "DownloadsPlugin";
-		XmlRegistryKey xrk;
+		Dictionary<string, string> settings;
 
 		public DownloadsSettings()
 			: base(rm)
 		{
-			xrk = Helper.WindowsRegistry.PluginRegistryKey;
+			if (!Helper.WindowsRegistry.Config.PluginSettings.ContainsKey(BASENAME))
+			{
+				Helper.WindowsRegistry.Config.PluginSettings[BASENAME] = new Dictionary<string, string>();
+			}
+			settings = Helper.WindowsRegistry.Config.PluginSettings[BASENAME];
 		}
 
 		[System.ComponentModel.Category("Other")]
@@ -25,15 +30,13 @@ namespace SimPe.Plugin.Downloads
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey(BASENAME);
-				object o = rkf.GetValue("BuildPreviewForObjects", true);
-				return Convert.ToBoolean(o);
+				if (!settings.ContainsKey("BuildPreviewForObjects"))
+				{
+					settings["BuildPreviewForObjects"] = true.ToString();
+				}
+				return bool.Parse(settings["BuildPreviewForObjects"]);
 			}
-			set
-			{
-				XmlRegistryKey rkf = xrk.CreateSubKey(BASENAME);
-				rkf.SetValue("BuildPreviewForObjects", value);
-			}
+			set => settings["BuildPreviewForObjects"] = value.ToString();
 		}
 
 		[System.ComponentModel.Category("Recolors")]
@@ -41,15 +44,15 @@ namespace SimPe.Plugin.Downloads
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey(BASENAME);
-				object o = rkf.GetValue("BuildPreviewForRecolors", true);
-				return Convert.ToBoolean(o);
+				if (!settings.ContainsKey("BuildPreviewForRecolors"))
+				{
+					settings["BuildPreviewForRecolors"] = true.ToString();
+				}
+				return bool.Parse(settings["BuildPreviewForRecolors"]);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey(BASENAME);
-				rkf.SetValue("BuildPreviewForRecolors", value);
-
+				settings["BuildPreviewForRecolors"] = value.ToString();
 				if (value)
 				{
 					LoadBasedataForRecolors = true;
@@ -62,15 +65,15 @@ namespace SimPe.Plugin.Downloads
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey(BASENAME);
-				object o = rkf.GetValue("LoadBasedataForRecolors", true);
-				return Convert.ToBoolean(o);
+				if (!settings.ContainsKey("LoadBasedataForRecolors"))
+				{
+					settings["LoadBasedataForRecolors"] = true.ToString();
+				}
+				return bool.Parse(settings["LoadBasedataForRecolors"]);
 			}
 			set
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey(BASENAME);
-				rkf.SetValue("LoadBasedataForRecolors", value);
-
+				settings["LoadBasedataForRecolors"] = value.ToString();
 				if (!value)
 				{
 					BuildPreviewForRecolors = false;

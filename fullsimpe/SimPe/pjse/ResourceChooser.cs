@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
+using SimPe;
 using SimPe.Data;
 using SimPe.Interfaces.Files;
 using SimPe.PackedFiles.Glob;
@@ -50,6 +51,8 @@ namespace pjse
 		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
+
+		private readonly Dictionary<string, string> options;
 		#endregion
 
 		public ResourceChooser()
@@ -58,6 +61,11 @@ namespace pjse
 			// Required for Windows Form Designer support
 			//
 			InitializeComponent();
+			if (!Helper.WindowsRegistry.Config.PluginSettings.ContainsKey(BASENAME))
+			{
+				Helper.WindowsRegistry.Config.PluginSettings[BASENAME] = new Dictionary<string, string>();
+			}
+			options = Helper.WindowsRegistry.Config.PluginSettings[BASENAME];
 		}
 
 		/// <summary>
@@ -75,48 +83,34 @@ namespace pjse
 		#region ResourceChooser
 
 		const string BASENAME = "PJSE\\Bhav";
-		private static int ChooserOrder
+		private int ChooserOrder
 		{
 			get
 			{
-				SimPe.XmlRegistryKey rkf =
-					SimPe.Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(
-						BASENAME
-					);
-				object o = rkf.GetValue("chooserOrder", 0);
-				return (int)Math.Max(Convert.ToUInt32(o), 1);
+				if (!options.ContainsKey("ChooserOrder"))
+				{
+					options["ChooserOrder"] = 0.ToString();
+				}
+				return int.Parse(options["ChooserOrder"]);
 			}
-			set
-			{
-				SimPe.XmlRegistryKey rkf =
-					SimPe.Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(
-						BASENAME
-					);
-				rkf.SetValue("chooserOrder", value);
-			}
+			set => options["ChooserOrder"] = value.ToString();
 		}
 
-		private static Size ChooserSize
+		private Size ChooserSize
 		{
 			get
 			{
-				SimPe.XmlRegistryKey rkf =
-					SimPe.Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(
-						BASENAME
-					);
-				ResourceChooser rc = new ResourceChooser();
-				object w = rkf.GetValue("chooserSize.Width", rc.Size.Width);
-				object h = rkf.GetValue("chooserSize.Height", rc.Size.Height);
-				return new Size(Convert.ToInt32(w), Convert.ToInt32(h));
+				if (!options.ContainsKey("ChooserSize.Width") || !options.ContainsKey("ChooserSize.Width"))
+				{
+					options["ChooserSize.Width"] = Size.Width.ToString();
+					options["ChooserSize.Height"] = Size.Height.ToString();
+				}
+				return new Size(Convert.ToInt32(options["ChooserSize.Width"]), Convert.ToInt32(options["ChooserSize.Height"]));
 			}
 			set
 			{
-				SimPe.XmlRegistryKey rkf =
-					SimPe.Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(
-						BASENAME
-					);
-				rkf.SetValue("chooserSize.Width", value.Width);
-				rkf.SetValue("chooserSize.Height", value.Height);
+				options["ChooserSize.Width"] = value.Width.ToString();
+				options["ChooserSize.Height"] = value.Height.ToString();
 			}
 		}
 
@@ -126,7 +120,7 @@ namespace pjse
 
 			public ListViewItemComparer()
 			{
-				col = ChooserOrder;
+				col = new ResourceChooser().ChooserOrder;
 			}
 
 			public ListViewItemComparer(int column)
@@ -145,25 +139,17 @@ namespace pjse
 
 		private bool CanDoEA;
 
-		public static int PersistentTab
+		public int PersistentTab
 		{
 			get
 			{
-				SimPe.XmlRegistryKey rkf =
-					SimPe.Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(
-						BASENAME
-					);
-				object o = rkf.GetValue("rcPersistentTab", false);
-				return Convert.ToInt32(o);
+				if (!options.ContainsKey("PersistentTab"))
+				{
+					options["PersistentTab"] = 0.ToString();
+				}
+				return int.Parse(options["PersistentTab"]);
 			}
-			set
-			{
-				SimPe.XmlRegistryKey rkf =
-					SimPe.Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(
-						BASENAME
-					);
-				rkf.SetValue("rcPersistentTab", value);
-			}
+			set => options["PersistentTab"] = value.ToString();
 		}
 
 		private ListView getListView()
@@ -237,7 +223,7 @@ namespace pjse
 				}
 			);
 
-			btnViewBHAV.Visible = resourceType == SimPe.Data.FileTypes.BHAV;
+			btnViewBHAV.Visible = resourceType == FileTypes.BHAV;
 
 			tcResources.TabPages.Clear();
 
@@ -284,7 +270,7 @@ namespace pjse
 				);
 			}
 
-			if (!skip_pages[4] && resourceType == SimPe.Data.FileTypes.BHAV)
+			if (!skip_pages[4] && resourceType == FileTypes.BHAV)
 			{
 				FillBuiltIn(resourceType, lvPrim, tpBuiltIn);
 			}
@@ -363,7 +349,7 @@ namespace pjse
 				lvi = new ListViewItem(
 					new string[]
 					{
-						"0x" + SimPe.Helper.HexString((ushort)item.Instance),
+						"0x" + Helper.HexString((ushort)item.Instance),
 						item,
 					}
 				)
@@ -391,7 +377,7 @@ namespace pjse
 				if (!s.StartsWith("~"))
 				{
 					lvi = new ListViewItem(
-						new string[] { "0x" + SimPe.Helper.HexString((ushort)i), s }
+						new string[] { "0x" + Helper.HexString((ushort)i), s }
 					)
 					{
 						Tag = i

@@ -72,7 +72,7 @@ namespace SimPe.Plugin
 				}
 
 				PackedFiles.Wrapper.StrItemList items =
-					ctss.FallbackedLanguageItems(Helper.WindowsRegistry.LanguageCode);
+					ctss.FallbackedLanguageItems(Helper.WindowsRegistry.Config.LanguageCode);
 				return items.Length > 0 ? items[0].Title : Package.FileName;
 			}
 		}

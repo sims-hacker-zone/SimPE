@@ -359,7 +359,7 @@ namespace SimPe
 			}
 
 			//only one File at a Time?
-			if (!Helper.WindowsRegistry.MultipleFiles)
+			if (!Helper.WindowsRegistry.Config.MultipleFiles)
 			{
 				Clear();
 			}

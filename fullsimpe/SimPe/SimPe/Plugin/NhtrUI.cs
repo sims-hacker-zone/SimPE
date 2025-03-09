@@ -21,7 +21,7 @@ namespace SimPe.Plugin
 			// Required designer variable.
 			InitializeComponent();
 
-			CanCommit = Helper.WindowsRegistry.HiddenMode;
+			CanCommit = Helper.WindowsRegistry.Config.HiddenMode;
 			//ThemeManager.AddControl(this.toolBar1);
 		}
 

@@ -133,24 +133,8 @@ namespace SimPe
 				CompleteSetup("SemiGlobals.package");
 			}
 
-			//check if the settings File is valid
-			CheckFile(
-				Helper.DataFolder.SimPeXREG,
-				"registry",
-				"Settings",
-				"your settings made in \"Extra->Preferences\" be reset"
-			);
-
-			//check if the layout File is valid
-			CheckFile(
-				Helper.DataFolder.Layout2XREG,
-				"registry",
-				"Window Layout",
-				"your window layout will be reset"
-			);
-
 			//replace file table if needed
-			if (Helper.WindowsRegistry.UseExpansions2 != Helper.ECCorNewSEfound)
+			if (Helper.WindowsRegistry.Config.UseExpansions2 != Helper.ECCorNewSEfound)
 			{
 				if (
 					File.Exists(Helper.DataFolder.FoldersXREGW)
@@ -179,7 +163,7 @@ namespace SimPe
 						);
 					}
 				}
-				Helper.WindowsRegistry.UseExpansions2 = Helper.ECCorNewSEfound;
+				Helper.WindowsRegistry.Config.UseExpansions2 = Helper.ECCorNewSEfound;
 				Helper.WindowsRegistry.Flush();
 			}
 			else
@@ -201,8 +185,6 @@ namespace SimPe
 			new Splash(),
 			new NoSplash(),
 			new EnableFlags(),
-			new MakeClassic(),
-			new MakeModern(),
 		};
 
 		public static bool PreSplash(List<string> argv)
@@ -431,8 +413,6 @@ namespace SimPe
 				)
 				{
 					Helper.Profile = argv[index];
-					Helper.WindowsRegistry.Reload();
-					Helper.WindowsRegistry.ReloadLayout();
 					// if (!System.IO.Directory.Exists(System.IO.Path.GetDirectoryName(Helper.DataFolder.SimPeXREG))) { Message.Show(Help()[0]); return true; }
 					if (Helper.Profile == "Short")
 					{
@@ -447,210 +427,6 @@ namespace SimPe
 			public string[] Help()
 			{
 				return new string[] { "-profile savedprofilename\r\n", null };
-			}
-			#endregion
-		}
-
-		#region Theme Presets
-		public static void ForceModernLayout()
-		{
-			Overridelayout("modern_layout.xreg");
-
-			Helper.WindowsRegistry.Layout.SelectedTheme = 2;
-			Helper.WindowsRegistry.AsynchronLoad = false;
-			Helper.WindowsRegistry.DecodeFilenamesState = true;
-			Helper.WindowsRegistry.DeepSimScan = true;
-			Helper.WindowsRegistry.DeepSimTemplateScan = false;
-			Helper.WindowsRegistry.HiddenMode = false;
-			Helper.WindowsRegistry.SimpleResourceSelect = true;
-			Helper.WindowsRegistry.MultipleFiles = true;
-			Helper.WindowsRegistry.FirefoxTabbing = true;
-			Helper.WindowsRegistry.Config.ShowStartupSplash = true;
-			Helper.WindowsRegistry.Layout.IsClassicPreset = false;
-			Helper.WindowsRegistry.LockDocks = false;
-			Helper.WindowsRegistry.Config.ShowWaitBarPermanent = true;
-			Helper.WindowsRegistry.UseBigIcons = false;
-			Helper.WindowsRegistry.LoadOnlySimsStory = 0;
-			Helper.WindowsRegistry.Flush();
-		}
-
-		public static void ForceDefaultLayout()
-		{
-			Overridelayout("original_layout.xreg");
-
-			Helper.WindowsRegistry.Layout.IsClassicPreset = false;
-			Helper.WindowsRegistry.Layout.SelectedTheme = 1;
-			Helper.WindowsRegistry.Layout.AutoStoreLayout = true;
-			Helper.WindowsRegistry.AsynchronLoad = false;
-			Helper.WindowsRegistry.DecodeFilenamesState = true;
-			Helper.WindowsRegistry.DeepSimScan = true;
-			Helper.WindowsRegistry.DeepSimTemplateScan = false;
-			Helper.WindowsRegistry.HiddenMode = false;
-			Helper.WindowsRegistry.LoadOWFast = false;
-			Helper.WindowsRegistry.Config.ShowStartupSplash = true;
-			Helper.WindowsRegistry.SimpleResourceSelect = true;
-			Helper.WindowsRegistry.MultipleFiles = true;
-			Helper.WindowsRegistry.FirefoxTabbing = true;
-			Helper.WindowsRegistry.LockDocks = false;
-			Helper.WindowsRegistry.Config.ShowWaitBarPermanent = true;
-			Helper.WindowsRegistry.WaitingScreen = true;
-			Helper.WindowsRegistry.UseBigIcons = false;
-			Helper.WindowsRegistry.LoadOnlySimsStory = 0;
-			Helper.WindowsRegistry.Flush();
-		}
-
-		static void Overridelayout(string name)
-		{
-			Stream s = typeof(Commandline).Assembly.GetManifestResourceStream(
-				"SimPe.files." + name
-			);
-			if (s != null)
-			{
-				try
-				{
-					StreamWriter sw = File.CreateText(
-						Helper.DataFolder.Layout2XREGW
-					);
-					sw.BaseStream.SetLength(0);
-					try
-					{
-						StreamReader sr = new StreamReader(s);
-						sw.Write(sr.ReadToEnd());
-						sw.Flush();
-					}
-					finally
-					{
-						sw.Close();
-						sw.Dispose();
-						sw = null;
-					}
-				}
-				catch (Exception ex)
-				{
-					Helper.ExceptionMessage(ex);
-				}
-			}
-
-			string name2 = name.Replace("_layout.xreg", ".layout");
-			s = typeof(Commandline).Assembly.GetManifestResourceStream(
-				"SimPe.files." + name2
-			);
-			if (s != null)
-			{
-				try
-				{
-					FileStream fs = File.OpenWrite(
-						Helper.DataFolder.SimPeLayoutW
-					);
-					BinaryWriter sw = new BinaryWriter(fs);
-					sw.BaseStream.SetLength(0);
-					try
-					{
-						BinaryReader sr = new BinaryReader(s);
-						sw.Write(sr.ReadBytes((int)sr.BaseStream.Length));
-						sw.Flush();
-					}
-					finally
-					{
-						sw.Close();
-						sw = null;
-						fs.Close();
-						fs.Dispose();
-						fs = null;
-						s.Close();
-						s.Dispose();
-						s = null;
-					}
-
-					Helper.WindowsRegistry.ReloadLayout();
-				}
-				catch (Exception ex)
-				{
-					Helper.ExceptionMessage(ex);
-				}
-			}
-		}
-
-		#endregion
-
-		class MakeClassic : ICommandLine
-		{
-			#region ICommandLine Members
-			public bool Parse(List<string> argv)
-			{
-				if (ArgParser.Parse(argv, "-classicpreset") < 0)
-				{
-					return false;
-				}
-
-				Overridelayout("classic_layout.xreg");
-
-				Helper.WindowsRegistry.Layout.SelectedTheme = 0;
-				Helper.WindowsRegistry.Layout.AutoStoreLayout = true;
-				Helper.WindowsRegistry.AsynchronLoad = false;
-				Helper.WindowsRegistry.DecodeFilenamesState = false;
-				Helper.WindowsRegistry.DeepSimScan = false;
-				Helper.WindowsRegistry.DeepSimTemplateScan = false;
-				Helper.WindowsRegistry.SimpleResourceSelect = true;
-				Helper.WindowsRegistry.MultipleFiles = false;
-				Helper.WindowsRegistry.FirefoxTabbing = false;
-				Helper.WindowsRegistry.Config.ShowWaitBarPermanent = false;
-				Helper.WindowsRegistry.Layout.IsClassicPreset = true;
-				Helper.WindowsRegistry.Config.ShowStartupSplash = true;
-				Helper.WindowsRegistry.WaitingScreen = true;
-				Helper.WindowsRegistry.LockDocks = true;
-				Helper.WindowsRegistry.UseBigIcons = false;
-				Helper.WindowsRegistry.LoadOnlySimsStory = 0;
-				Helper.WindowsRegistry.Flush();
-
-				System.Windows.Forms.DialogResult dr = Message.Show(
-
-						Localization.GetString("PresetChanged")
-						.Replace(
-							"{name}",
-							Localization.GetString("PresetClassic")
-						),
-					Localization.GetString("Information"),
-					System.Windows.Forms.MessageBoxButtons.YesNo
-				);
-				return dr != System.Windows.Forms.DialogResult.Yes;
-			}
-
-			public string[] Help()
-			{
-				return new string[] { "-classicpreset", null };
-			}
-			#endregion
-		}
-
-		class MakeModern : ICommandLine
-		{
-			#region ICommandLine Members
-			public bool Parse(List<string> argv)
-			{
-				if (ArgParser.Parse(argv, "-modernpreset") < 0)
-				{
-					return false;
-				}
-
-				ForceModernLayout();
-
-				System.Windows.Forms.DialogResult dr = Message.Show(
-
-						Localization.GetString("PresetChanged")
-						.Replace(
-							"{name}",
-							Localization.GetString("PresetModern")
-						),
-					Localization.GetString("Information"),
-					System.Windows.Forms.MessageBoxButtons.YesNo
-				);
-				return dr != System.Windows.Forms.DialogResult.Yes;
-			}
-
-			public string[] Help()
-			{
-				return new string[] { "-modernpreset", null };
 			}
 			#endregion
 		}

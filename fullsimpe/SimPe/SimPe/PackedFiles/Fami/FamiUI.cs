@@ -43,7 +43,7 @@ namespace SimPe.PackedFiles.Fami
 			form.tbname.Text = fami.Name;
 			form.tbmoney.Text = fami.Money.ToString();
 			form.tbfamily.Text = fami.Friends.ToString();
-			form.tblotinst.Text = Helper.WindowsRegistry.AllowLotZero
+			form.tblotinst.Text = Helper.WindowsRegistry.Config.AllowLotZero
 				&& fami.LotInstance == 0
 				&& fami.FileDescriptor.Instance > 0
 				&& fami.FileDescriptor.Instance < 32512

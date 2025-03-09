@@ -1,13 +1,17 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Resources;
 
+using SimPe;
+
 namespace pjse
 {
-	class Settings : SimPe.GlobalizedObject, SimPe.Interfaces.ISettings
+	class Settings : GlobalizedObject, SimPe.Interfaces.ISettings
 	{
+		private readonly Dictionary<string, string> options;
 		static ResourceManager rm = new ResourceManager(typeof(Localization));
 
 		public static Settings PJSE
@@ -21,19 +25,22 @@ namespace pjse
 		}
 
 		const string BASENAME = "PJSE\\Bhav";
-		SimPe.XmlRegistryKey xrk = SimPe.Helper.WindowsRegistry.PluginRegistryKey;
 
 		public Settings()
-			: base(rm) { }
+			: base(rm)
+		{
+			if (!Helper.WindowsRegistry.Config.PluginSettings.ContainsKey(BASENAME))
+			{
+				Helper.WindowsRegistry.Config.PluginSettings[BASENAME] = new Dictionary<string, string>();
+			}
+			options = Helper.WindowsRegistry.Config.PluginSettings[BASENAME];
+		}
 
 		public event EventHandler DecimalDOValueChanged;
 
 		public virtual void OnDecimalDOValueChanged(object sender, EventArgs e)
 		{
-			if (DecimalDOValueChanged != null)
-			{
-				DecimalDOValueChanged(sender, e);
-			}
+			DecimalDOValueChanged?.Invoke(sender, e);
 		}
 
 		[Category("PJSE")]
@@ -41,22 +48,17 @@ namespace pjse
 		{
 			get
 			{
-				SimPe.XmlRegistryKey rkf =
-					SimPe.Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(
-						BASENAME
-					);
-				object o = rkf.GetValue("decimalDOValue", false);
-				return Convert.ToBoolean(o);
+				if (!options.ContainsKey("DecimalDOValue"))
+				{
+					options["DecimalDOValue"] = false.ToString();
+				}
+				return bool.Parse(options["DecimalDOValue"]);
 			}
 			set
 			{
 				if (DecimalDOValue != value)
 				{
-					SimPe.XmlRegistryKey rkf =
-						SimPe.Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(
-							BASENAME
-						);
-					rkf.SetValue("decimalDOValue", value);
+					options["DecimalDOValue"] = value.ToString();
 					OnDecimalDOValueChanged(this, new EventArgs());
 				}
 			}
@@ -66,10 +68,7 @@ namespace pjse
 
 		public virtual void OnInstancePickerAsTextChanged(object sender, EventArgs e)
 		{
-			if (InstancePickerAsTextChanged != null)
-			{
-				InstancePickerAsTextChanged(sender, e);
-			}
+			InstancePickerAsTextChanged?.Invoke(sender, e);
 		}
 
 		[Category("PJSE")]
@@ -77,22 +76,17 @@ namespace pjse
 		{
 			get
 			{
-				SimPe.XmlRegistryKey rkf =
-					SimPe.Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(
-						BASENAME
-					);
-				object o = rkf.GetValue("attrPickerAsText", true);
-				return Convert.ToBoolean(o);
+				if (!options.ContainsKey("InstancePickerAsText"))
+				{
+					options["InstancePickerAsText"] = true.ToString();
+				}
+				return bool.Parse(options["InstancePickerAsText"]);
 			}
 			set
 			{
 				if (InstancePickerAsText != value)
 				{
-					SimPe.XmlRegistryKey rkf =
-						SimPe.Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(
-							BASENAME
-						);
-					rkf.SetValue("attrPickerAsText", value);
+					options["InstancePickerAsText"] = value.ToString();
 					OnInstancePickerAsTextChanged(this, new EventArgs());
 				}
 			}
@@ -103,21 +97,13 @@ namespace pjse
 		{
 			get
 			{
-				SimPe.XmlRegistryKey rkf =
-					SimPe.Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(
-						"PJSE\\Bhav"
-					);
-				object o = rkf.GetValue("showSpecialButtons", false);
-				return Convert.ToBoolean(o);
+				if (!options.ContainsKey("ShowSpecialButtons"))
+				{
+					options["ShowSpecialButtons"] = false.ToString();
+				}
+				return bool.Parse(options["ShowSpecialButtons"]);
 			}
-			set
-			{
-				SimPe.XmlRegistryKey rkf =
-					SimPe.Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(
-						"PJSE\\Bhav"
-					);
-				rkf.SetValue("showSpecialButtons", value);
-			}
+			set => options["ShowSpecialButtons"] = value.ToString();
 		}
 
 		[Category("PJSE")]
@@ -125,21 +111,13 @@ namespace pjse
 		{
 			get
 			{
-				SimPe.XmlRegistryKey rkf =
-					SimPe.Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(
-						BASENAME
-					);
-				object o = rkf.GetValue("strShowDefault", false);
-				return Convert.ToBoolean(o);
+				if (!options.ContainsKey("StrShowDefault"))
+				{
+					options["StrShowDefault"] = false.ToString();
+				}
+				return bool.Parse(options["StrShowDefault"]);
 			}
-			set
-			{
-				SimPe.XmlRegistryKey rkf =
-					SimPe.Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(
-						BASENAME
-					);
-				rkf.SetValue("strShowDefault", value);
-			}
+			set => options["StrShowDefault"] = value.ToString();
 		}
 
 		[Category("PJSE")]
@@ -147,21 +125,13 @@ namespace pjse
 		{
 			get
 			{
-				SimPe.XmlRegistryKey rkf =
-					SimPe.Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(
-						BASENAME
-					);
-				object o = rkf.GetValue("strShowDesc", false);
-				return Convert.ToBoolean(o);
+				if (!options.ContainsKey("StrShowDesc"))
+				{
+					options["StrShowDesc"] = false.ToString();
+				}
+				return bool.Parse(options["StrShowDesc"]);
 			}
-			set
-			{
-				SimPe.XmlRegistryKey rkf =
-					SimPe.Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(
-						BASENAME
-					);
-				rkf.SetValue("strShowDesc", value);
-			}
+			set => options["StrShowDesc"] = value.ToString();
 		}
 
 		[Category("GI")]
@@ -169,21 +139,13 @@ namespace pjse
 		{
 			get
 			{
-				SimPe.XmlRegistryKey rkf =
-					SimPe.Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(
-						BASENAME
-					);
-				object o = rkf.GetValue("loadGUIDIndexAtStartup", true);
-				return Convert.ToBoolean(o);
+				if (!options.ContainsKey("LoadGUIDIndexAtStartup"))
+				{
+					options["LoadGUIDIndexAtStartup"] = true.ToString();
+				}
+				return bool.Parse(options["LoadGUIDIndexAtStartup"]);
 			}
-			set
-			{
-				SimPe.XmlRegistryKey rkf =
-					SimPe.Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(
-						BASENAME
-					);
-				rkf.SetValue("loadGUIDIndexAtStartup", value);
-			}
+			set => options["LoadGUIDIndexAtStartup"] = value.ToString();
 		}
 
 		#region ISettings Members

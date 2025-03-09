@@ -241,7 +241,7 @@ namespace SimPe.Plugin
 				{
 					PackedFiles.Wrapper.StrItemList items =
 						new PackedFiles.Wrapper.Str().ProcessFile(pfd, package).FallbackedLanguageItems(
-							Helper.WindowsRegistry.LanguageCode
+							Helper.WindowsRegistry.Config.LanguageCode
 						);
 					if (items.Length > gtnm)
 					{

@@ -10,7 +10,7 @@ namespace Ambertation.Threading
 		bool async;
 
 		public StoppableThread()
-			: this(SimPe.Helper.WindowsRegistry.AsynchronLoad) { }
+			: this(SimPe.Helper.WindowsRegistry.Config.AsynchronLoad) { }
 
 		public StoppableThread(bool async)
 		{

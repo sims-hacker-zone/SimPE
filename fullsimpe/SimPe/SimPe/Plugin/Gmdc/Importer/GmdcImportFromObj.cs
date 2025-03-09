@@ -122,7 +122,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 				{
 					;
 				} //material assignement;
-				else if (Helper.WindowsRegistry.HiddenMode)
+				else if (Helper.WindowsRegistry.Config.HiddenMode)
 				{
 					lineerror = "[Warning:] Unknown token. (will be ignored)";
 				}
@@ -184,7 +184,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 
 			if (
 				tokens.Length < 3
-				|| (tokens.Length != 3 && Helper.WindowsRegistry.HiddenMode)
+				|| (tokens.Length != 3 && Helper.WindowsRegistry.Config.HiddenMode)
 			)
 			{
 				lineerror = "No FloatTriplet line";
@@ -225,7 +225,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 
 			if (
 				tokens.Length < 2
-				|| (tokens.Length != 2 && Helper.WindowsRegistry.HiddenMode)
+				|| (tokens.Length != 2 && Helper.WindowsRegistry.Config.HiddenMode)
 			)
 			{
 				lineerror = "No FloatPair line";

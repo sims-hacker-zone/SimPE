@@ -80,7 +80,7 @@ namespace SimPe.Plugin
 		/// Loads the GroupCache
 		/// </summary>
 		/// <param name="force">Will force the load of the GroupsCache even
-		/// if <see cref="Helper.WindowsRegistry.UseMaxisGroupsCache"/> is set to false</param>
+		/// if <see cref="Helper.WindowsRegistry.Config.UseMaxisGroupsCache"/> is set to false</param>
 		public static void LoadGroupCache(bool force)
 		{
 			if (FileTableBase.GroupCache != null)
@@ -91,7 +91,7 @@ namespace SimPe.Plugin
 			GroupCache gc =
 				new GroupCache();
 
-			if (!Helper.WindowsRegistry.UseMaxisGroupsCache && !force)
+			if (!Helper.WindowsRegistry.Config.UseMaxisGroupsCache && !force)
 			{
 				FileTableBase.GroupCache = gc;
 				return;

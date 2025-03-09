@@ -213,7 +213,7 @@ namespace SimPe.Forms.MainUI
 					vtext = "QA " + vtext;
 				}
 
-				if (Helper.WindowsRegistry.HiddenMode)
+				if (Helper.WindowsRegistry.Config.HiddenMode)
 				{
 					vtext += " [debug]";
 				}

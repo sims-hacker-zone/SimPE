@@ -95,9 +95,7 @@ namespace SimPe
 				}
 				Console.WriteLine("Exiting Application!");
 
-				Helper.WindowsRegistry.Flush();
-				Helper.WindowsRegistry.Layout.Flush();
-				// ExpansionLoader.Global.Flush(); SimPe should not edit this File!
+				Helper.WindowsRegistry.SaveConfig();
 			}
 			catch (Exception ex)
 			{
@@ -131,6 +129,7 @@ namespace SimPe
 
 			try
 			{
+
 				Packages.StreamFactory.UnlockAll();
 				//Packages.StreamFactory.CloseAll(true); // TODO(autinerd): Let's care another time about closing files cleanly on app shutdown
 				Packages.StreamFactory.CleanupTeleport();

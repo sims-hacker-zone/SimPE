@@ -1314,8 +1314,8 @@ namespace SimPe.PackedFiles.Wrapper
 			}
 
 			return ObjLuaFunction.DEBUG
-				? Helper.WindowsRegistry.HiddenMode ? ret + "; //" + name : ret + "; //" + name + ": " + GetOpcodeDescription(oc)
-				: Helper.WindowsRegistry.HiddenMode ? ret + "; //" + name : ret + "; //" + GetOpcodeDescription(oc);
+				? Helper.WindowsRegistry.Config.HiddenMode ? ret + "; //" + name : ret + "; //" + name + ": " + GetOpcodeDescription(oc)
+				: Helper.WindowsRegistry.Config.HiddenMode ? ret + "; //" + name : ret + "; //" + GetOpcodeDescription(oc);
 			//return ret+"; //"+name+" (a=0x"+Helper.HexString(a)+", b=0x"+Helper.HexString(b)+", c=0x"+Helper.HexString(c)+", bx="+bx.ToString()+", sbx="+sbx.ToString()+") "+GetOpcodeDescription(oc);
 		}
 

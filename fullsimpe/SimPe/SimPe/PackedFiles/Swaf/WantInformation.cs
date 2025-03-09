@@ -53,7 +53,7 @@ namespace SimPe.PackedFiles.Swaf
 		/// </summary>
 		public static void SaveCache()
 		{
-			if (!Helper.WindowsRegistry.UseCache)
+			if (!Helper.WindowsRegistry.Config.UseCache)
 			{
 				return;
 			}
@@ -95,7 +95,7 @@ namespace SimPe.PackedFiles.Swaf
 		public virtual string Name => str == null
 					? "0x" + Helper.HexString(guid)
 					: str.FallbackedLanguageItem(
-					Helper.WindowsRegistry.LanguageCode,
+					Helper.WindowsRegistry.Config.LanguageCode,
 					0).Title;
 
 		/// <summary>

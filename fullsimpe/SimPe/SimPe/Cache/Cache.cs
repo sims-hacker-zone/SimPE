@@ -300,7 +300,7 @@ namespace SimPe.Cache
 					PackedFiles.Wrapper.Str str =
 						new PackedFiles.Wrapper.Str().ProcessFile(sitem);
 					PackedFiles.Wrapper.StrItemList strs = str.LanguageItems(
-						Helper.WindowsRegistry.LanguageCode
+						Helper.WindowsRegistry.Config.LanguageCode
 					);
 					if (strs.Length > 0)
 					{

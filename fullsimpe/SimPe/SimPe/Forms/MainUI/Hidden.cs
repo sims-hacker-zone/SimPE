@@ -198,7 +198,7 @@ namespace SimPe.Forms.MainUI
 		private void UpdateDialog()
 		{
 			tbComp.Text = Packages.PackedFile.CompressionStrength.ToString();
-			tbBig.Text = Helper.WindowsRegistry.BigPackageResourceCount.ToString();
+			tbBig.Text = Helper.WindowsRegistry.Config.BigPackageResourceCount.ToString();
 
 			lbMem.Text = GC.GetTotalMemory(false).ToString("N0") + " Byte";
 		}
@@ -210,7 +210,7 @@ namespace SimPe.Forms.MainUI
 				Packages.PackedFile.CompressionStrength = Convert.ToInt32(
 					tbComp.Text
 				);
-				Helper.WindowsRegistry.BigPackageResourceCount = Convert.ToInt32(
+				Helper.WindowsRegistry.Config.BigPackageResourceCount = Convert.ToInt32(
 					tbBig.Text
 				);
 			}

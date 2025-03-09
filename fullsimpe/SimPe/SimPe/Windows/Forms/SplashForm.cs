@@ -27,18 +27,18 @@ namespace SimPe.Windows.Forms
 			FormBorderStyle = FormBorderStyle.None;
 			lbtxt.Text = msg;
 			lbver.Text = Helper.VersionToString(Helper.SimPeVersion);
-			if (Helper.WindowsRegistry.HiddenMode && Helper.QARelease)
-			{
-				lbver.Text += " [Debug, QA]";
-			}
-			else if (Helper.WindowsRegistry.HiddenMode)
-			{
-				lbver.Text += " [Debug]";
-			}
-			else if (Helper.QARelease)
-			{
-				lbver.Text += " [QA]";
-			}
+			// if (Helper.WindowsRegistry.Config.HiddenMode && Helper.QARelease)
+			// {
+			// 	lbver.Text += " [Debug, QA]";
+			// }
+			// else if (Helper.WindowsRegistry.Config.HiddenMode)
+			// {
+			// 	lbver.Text += " [Debug]";
+			// }
+			// else if (Helper.QARelease)
+			// {
+			// 	lbver.Text += " [QA]";
+			// }
 		}
 
 		protected override void OnCreateBitmap(Graphics g, Bitmap b)

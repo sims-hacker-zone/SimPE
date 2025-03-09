@@ -371,7 +371,7 @@ namespace pj
 				#endregion
 
 				#region Find the Property Set or XML Mesh Overlay
-				if (Settings.BodyMeshExtractUseCres)
+				if (Settings.Options.BodyMeshExtractUseCres)
 				{
 					IPackedFileDescriptor[] pf3d = p.FindFiles(FileTypes.THREE_IDR);
 					if (pf3d != null && pf3d.Length > 0)

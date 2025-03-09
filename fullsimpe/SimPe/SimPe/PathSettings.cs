@@ -91,7 +91,7 @@ namespace SimPe
 			}
 			catch (Exception ex)
 			{
-				if (Helper.WindowsRegistry.HiddenMode || Helper.QARelease)
+				if (Helper.WindowsRegistry.Config.HiddenMode || Helper.QARelease)
 				{
 					System.IO.StreamWriter sw = new System.IO.StreamWriter(
 						System.IO.Path.Combine(

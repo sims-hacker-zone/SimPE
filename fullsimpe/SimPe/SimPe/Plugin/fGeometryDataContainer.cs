@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 
@@ -187,7 +188,7 @@ namespace SimPe.Plugin
 
 			cbCorrect.Checked = Helper
 				.WindowsRegistry
-				.CorrectJointDefinitionOnExport;
+				.Config.CorrectJointDefinitionOnExport;
 			ElementSorting[] vs = (ElementSorting[])
 				Enum.GetValues(typeof(ElementSorting));
 			foreach (ElementSorting es in vs)
@@ -212,7 +213,7 @@ namespace SimPe.Plugin
 				cbaxis.SelectedIndex = DefaultSelectedAxisIndex;
 			}
 
-			if (Helper.WindowsRegistry.UseBigIcons)
+			if (Helper.WindowsRegistry.Config.UseBigIcons)
 			{
 				lbmodel.Font = new System.Drawing.Font(
 					"Microsoft Sans Serif",
@@ -3885,7 +3886,7 @@ namespace SimPe.Plugin
 
 		private void cbCorrect_CheckedChanged(object sender, EventArgs e)
 		{
-			Helper.WindowsRegistry.CorrectJointDefinitionOnExport =
+			Helper.WindowsRegistry.Config.CorrectJointDefinitionOnExport =
 				cbCorrect.Checked;
 		}
 
@@ -3987,16 +3988,23 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				XmlRegistryKey rkf =
-					Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey("SceneGraph");
-				object o = rkf.GetValue("DefaultAxis", 1);
-				return Convert.ToInt32(o);
+				if (!Helper.WindowsRegistry.Config.PluginSettings.ContainsKey("SceneGraph"))
+				{
+					Helper.WindowsRegistry.Config.PluginSettings["SceneGraph"] = new Dictionary<string, string>();
+				}
+				if (!Helper.WindowsRegistry.Config.PluginSettings["SceneGraph"].ContainsKey("DefaultAxis"))
+				{
+					Helper.WindowsRegistry.Config.PluginSettings["SceneGraph"]["DefaultAxis"] = 1.ToString();
+				}
+				return int.Parse(Helper.WindowsRegistry.Config.PluginSettings["SceneGraph"]["DefaultAxis"]);
 			}
 			set
 			{
-				XmlRegistryKey rkf =
-					Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey("SceneGraph");
-				rkf.SetValue("DefaultAxis", value);
+				if (!Helper.WindowsRegistry.Config.PluginSettings.ContainsKey("SceneGraph"))
+				{
+					Helper.WindowsRegistry.Config.PluginSettings["SceneGraph"] = new Dictionary<string, string>();
+				}
+				Helper.WindowsRegistry.Config.PluginSettings["SceneGraph"]["DefaultAxis"] = value.ToString();
 			}
 		}
 
@@ -4287,7 +4295,7 @@ namespace SimPe.Plugin
 					StartImport(
 						ofd,
 						gmdc,
-						Helper.WindowsRegistry.GmdcExtension,
+						Helper.WindowsRegistry.Config.GmdcExtension,
 						(ElementSorting)cbaxis.Items[cbaxis.SelectedIndex],
 						false
 					);
@@ -4414,7 +4422,7 @@ namespace SimPe.Plugin
 			{
 				//Now perpare the Import
 				IGmdcImporter importer = ExporterLoader.Importers[ofd.FilterIndex - 1];
-				Helper.WindowsRegistry.GmdcExtension = importer.FileExtension;
+				Helper.WindowsRegistry.Config.GmdcExtension = importer.FileExtension;
 				importer.Component.Sorting = sorting;
 				FileStream meshreader = File.OpenRead(ofd.FileName);
 
@@ -4505,7 +4513,7 @@ namespace SimPe.Plugin
 					IGmdcExporter exporter = ExporterLoader.Exporters[
 						sfd.FilterIndex - 1
 					];
-					Helper.WindowsRegistry.GmdcExtension = exporter.FileExtension;
+					Helper.WindowsRegistry.Config.GmdcExtension = exporter.FileExtension;
 					exporter.Component.Sorting = sorting;
 					exporter.CorrectJointSetup = corjoints;
 					if (
@@ -4550,7 +4558,7 @@ namespace SimPe.Plugin
 					StartExport(
 						sfd,
 						gmdc,
-						Helper.WindowsRegistry.GmdcExtension,
+						Helper.WindowsRegistry.Config.GmdcExtension,
 						GetModelsExt(),
 						(ElementSorting)cbaxis.Items[cbaxis.SelectedIndex],
 						cbCorrect.Checked

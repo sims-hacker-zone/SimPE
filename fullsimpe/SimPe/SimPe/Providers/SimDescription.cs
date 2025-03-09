@@ -207,7 +207,7 @@ namespace SimPe.Providers
 			{
 				return;
 			}
-			else if (Helper.WindowsRegistry.LoadOnlySimsStory > 0)
+			else if (Helper.WindowsRegistry.Config.LoadOnlySimsStory > 0)
 			{
 				to1 = 12;
 			}
@@ -230,7 +230,7 @@ namespace SimPe.Providers
 			{
 				str.ProcessData(pfd, pkg);
 				StrItemList strs =
-					str.FallbackedLanguageItems(Helper.WindowsRegistry.LanguageCode);
+					str.FallbackedLanguageItems(Helper.WindowsRegistry.Config.LanguageCode);
 				if (to1 == 12)
 				{
 					for (int i = 0; i < strs.Count; i++)
@@ -368,7 +368,7 @@ namespace SimPe.Providers
 			{
 				str.ProcessData(pfd, pkg);
 				StrItemList strs =
-					str.FallbackedLanguageItems(Helper.WindowsRegistry.LanguageCode);
+					str.FallbackedLanguageItems(Helper.WindowsRegistry.Config.LanguageCode);
 
 				pkg = Packages.File.LoadFromFile(
 					System.IO.Path.Combine(
@@ -432,7 +432,7 @@ namespace SimPe.Providers
 							"ERROR during Voyage Collectible Image Parsing:\n"
 								+ e.ToString()
 						);
-						if (Helper.WindowsRegistry.HiddenMode)
+						if (Helper.WindowsRegistry.Config.HiddenMode)
 						{
 							Helper.ExceptionMessage(e);
 						}

@@ -176,7 +176,7 @@ namespace SimPe
 
 				Package = Packages.File.LoadFromFile(e.FileName, sync);
 
-				if (Package.Index.Length < Helper.WindowsRegistry.BigPackageResourceCount)
+				if (Package.Index.Length < Helper.WindowsRegistry.Config.BigPackageResourceCount)
 				{
 					Package.LoadCompressedState();
 				}
@@ -335,7 +335,7 @@ namespace SimPe
 		{
 			if (
 				Helper.IsNeighborhoodFile(FileName)
-				&& Helper.WindowsRegistry.LoadMetaInfo
+				&& Helper.WindowsRegistry.Config.LoadMetaInfo
 			)
 			{
 				Interfaces.Files.IPackageFile pkg = Package;
@@ -365,7 +365,7 @@ namespace SimPe
 			{
 				if (
 					Helper.IsLotCatalogFile(FileName)
-					&& Helper.WindowsRegistry.LoadMetaInfo
+					&& Helper.WindowsRegistry.Config.LoadMetaInfo
 				)
 				{
 					FileTableBase.ProviderRegistry.SimFamilynameProvider.BasePackage = Package;
@@ -533,8 +533,7 @@ namespace SimPe
 		{
 			menu.DropDownItems.Clear();
 
-			string[] files = Helper.WindowsRegistry.GetRecentFiles();
-			foreach (string file in files)
+			foreach (string file in Helper.WindowsRegistry.GetRecentFiles())
 			{
 				if (System.IO.File.Exists(file))
 				{

@@ -373,7 +373,7 @@ namespace SimPe.Plugin.Scanner
 			//Check for Str compatible Items
 			if (pfds.Length > 0)
 			{
-				foreach (StrToken item in new Str().ProcessFile(pfds[0], si.Package, false).FallbackedLanguageItems(Helper.WindowsRegistry.LanguageCode))
+				foreach (StrToken item in new Str().ProcessFile(pfds[0], si.Package, false).FallbackedLanguageItems(Helper.WindowsRegistry.Config.LanguageCode))
 				{
 					if (item.Title.Trim() != "")
 					{

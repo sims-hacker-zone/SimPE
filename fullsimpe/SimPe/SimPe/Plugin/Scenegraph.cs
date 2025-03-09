@@ -1213,7 +1213,7 @@ namespace SimPe.Plugin
 						}
 						catch (Exception ex)
 						{
-							if (Helper.WindowsRegistry.HiddenMode)
+							if (Helper.WindowsRegistry.Config.HiddenMode)
 							{
 								Helper.ExceptionMessage("", ex);
 							}
@@ -1357,7 +1357,7 @@ namespace SimPe.Plugin
 				}
 				catch (Exception ex)
 				{
-					if (Helper.WindowsRegistry.HiddenMode)
+					if (Helper.WindowsRegistry.Config.HiddenMode)
 					{
 						Helper.ExceptionMessage("", ex);
 					}

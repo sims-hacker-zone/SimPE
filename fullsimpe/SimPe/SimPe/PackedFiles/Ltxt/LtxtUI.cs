@@ -242,7 +242,7 @@ namespace SimPe.PackedFiles.Ltxt
 				(
 					wrp.Version >= LtxtVersion.Apartment
 					|| wrp.SubVersion >= LtxtSubVersion.Apartment
-				) && Helper.WindowsRegistry.HiddenMode;
+				) && Helper.WindowsRegistry.Config.HiddenMode;
 			form.btnAddApt.Enabled = form.btnDelApt.Enabled =
 				wrp.Type == Ltxt.LotType.ApartmentBase
 			;

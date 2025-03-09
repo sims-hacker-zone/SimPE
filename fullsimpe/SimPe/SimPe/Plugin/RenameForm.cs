@@ -39,7 +39,7 @@ namespace SimPe.Plugin
 			//
 			InitializeComponent();
 
-			cbv2.Visible = Helper.WindowsRegistry.HiddenMode;
+			cbv2.Visible = Helper.WindowsRegistry.Config.HiddenMode;
 		}
 
 		/// <summary>

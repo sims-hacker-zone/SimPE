@@ -173,7 +173,7 @@ namespace pjHoodTool
 				{
 					heady +=
 						",Body,Charisma,Cleaning,Cooking,Creativity,Fatness,Logic,Mechanical"; //Skills
-					if (Helper.WindowsRegistry.ShowMoreSkills)
+					if (Helper.WindowsRegistry.Config.ShowMoreSkills)
 					{
 						heady += ",Art,Music";
 					}
@@ -303,9 +303,9 @@ namespace pjHoodTool
 			{
 				ctss = new StrWrapper();
 				ctss.ProcessData(pfds[0], pkg);
-				hoodName = ctss[(byte)Helper.WindowsRegistry.LanguageCode, 0] == null
+				hoodName = ctss[(byte)Helper.WindowsRegistry.Config.LanguageCode, 0] == null
 					? q(ctss[1, 0])
-					: q(ctss[(byte)Helper.WindowsRegistry.LanguageCode, 0]);
+					: q(ctss[(byte)Helper.WindowsRegistry.Config.LanguageCode, 0]);
 			}
 			else
 			{
@@ -379,12 +379,12 @@ namespace pjHoodTool
 							{
 								ctss = new StrWrapper();
 								ctss.ProcessData(pfds[0], pkg);
-								hoodName = ctss[(byte)Helper.WindowsRegistry.LanguageCode, 0]
+								hoodName = ctss[(byte)Helper.WindowsRegistry.Config.LanguageCode, 0]
 									== null
 									? q(ctss[1, 0])
 									: q(
 										ctss[
-											(byte)Helper.WindowsRegistry.LanguageCode,
+											(byte)Helper.WindowsRegistry.Config.LanguageCode,
 											0
 										]
 									);
@@ -480,32 +480,32 @@ namespace pjHoodTool
 					{
 						StrWrapper ctss = new StrWrapper();
 						ctss.ProcessData(pfds[0], pkg);
-						if (ctss[(byte)Helper.WindowsRegistry.LanguageCode, 0] == null)
+						if (ctss[(byte)Helper.WindowsRegistry.Config.LanguageCode, 0] == null)
 						{
 							desc = q(ctss[1, 0]) + ",";
 						}
 						else
 						{
 							desc =
-								q(ctss[(byte)Helper.WindowsRegistry.LanguageCode, 0])
+								q(ctss[(byte)Helper.WindowsRegistry.Config.LanguageCode, 0])
 								+ ","; // firstname
 						}
 
-						if (ctss[(byte)Helper.WindowsRegistry.LanguageCode, 2] == null)
+						if (ctss[(byte)Helper.WindowsRegistry.Config.LanguageCode, 2] == null)
 						{
 							desc += q(ctss[1, 2]) + "";
 						}
 						else
 						{
 							desc +=
-								q(ctss[(byte)Helper.WindowsRegistry.LanguageCode, 2])
+								q(ctss[(byte)Helper.WindowsRegistry.Config.LanguageCode, 2])
 								+ ""; // lastname
 						}
 
 						if (incdes)
 						{
 							if (
-								ctss[(byte)Helper.WindowsRegistry.LanguageCode, 1]
+								ctss[(byte)Helper.WindowsRegistry.Config.LanguageCode, 1]
 								== null
 							)
 							{
@@ -524,7 +524,7 @@ namespace pjHoodTool
 									+ q(
 											ctss[
 												(byte)
-													Helper.WindowsRegistry.LanguageCode,
+													Helper.WindowsRegistry.Config.LanguageCode,
 												1
 											]
 										)
@@ -697,7 +697,7 @@ namespace pjHoodTool
 				+ sdsc.Skills.Logic
 				+ ","
 				+ sdsc.Skills.Mechanical;
-			if (Helper.WindowsRegistry.ShowMoreSkills)
+			if (Helper.WindowsRegistry.Config.ShowMoreSkills)
 			{
 				skills += "," + sdsc.Skills.Art + "," + sdsc.Skills.Music;
 			}

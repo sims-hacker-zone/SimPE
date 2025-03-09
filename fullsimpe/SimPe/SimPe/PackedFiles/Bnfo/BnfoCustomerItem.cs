@@ -83,7 +83,7 @@ namespace SimPe.PackedFiles.Bnfo
 				s = Localization.GetString("Unknown");
 			}
 
-			return Helper.WindowsRegistry.HiddenMode
+			return Helper.WindowsRegistry.Config.HiddenMode
 				? s
 					+ " (0x"
 					+ Helper.HexString(SimInstance)

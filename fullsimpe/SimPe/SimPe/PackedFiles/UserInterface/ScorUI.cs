@@ -41,7 +41,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 			Text = "Sim Scores";
 			Commited += new EventHandler(ScorUI_Commited);
-			CanCommit = Helper.WindowsRegistry.HiddenMode;
+			CanCommit = Helper.WindowsRegistry.Config.HiddenMode;
 		}
 
 		/// <summary>
@@ -356,13 +356,13 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 			}
 			btRem.Enabled =
-				lb.SelectedItem != null && Helper.WindowsRegistry.HiddenMode;
+				lb.SelectedItem != null && Helper.WindowsRegistry.Config.HiddenMode;
 		}
 
 		private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			btAdd.Enabled =
-				cbType.SelectedItem != null && Helper.WindowsRegistry.HiddenMode;
+				cbType.SelectedItem != null && Helper.WindowsRegistry.Config.HiddenMode;
 		}
 
 		private void btAdd_Click(object sender, EventArgs e)

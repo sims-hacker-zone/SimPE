@@ -201,9 +201,9 @@ namespace SimPe
 					false
 				);
 
-				if (Helper.WindowsRegistry.LoadOnlySimsStory > 0)
+				if (Helper.WindowsRegistry.Config.LoadOnlySimsStory > 0)
 				{
-					isfound = Version == Helper.WindowsRegistry.LoadOnlySimsStory;
+					isfound = Version == Helper.WindowsRegistry.Config.LoadOnlySimsStory;
 				}
 				else
 				{
@@ -507,7 +507,7 @@ namespace SimPe
 						}
 						catch (Exception ex)
 						{
-							if (Helper.WindowsRegistry.HiddenMode)
+							if (Helper.WindowsRegistry.Config.HiddenMode)
 							{
 								Helper.ExceptionMessage(ex);
 							}
@@ -723,43 +723,10 @@ namespace SimPe
 		/// </summary>
 		public string InstallFolder
 		{
-			get
-			{
-				try
-				{
-					XmlRegistryKey rkf =
-						Helper.WindowsRegistry.RegistryKey.CreateSubKey("Settings");
-					object o = rkf.GetValue(IdKey + "Path");
-					if (o == null)
-					{
-						return RealInstallFolder;
-					}
-					else
-					{
-						string fl = o.ToString();
-
-						return !System.IO.Directory.Exists(fl) ? RealInstallFolder : fl;
-					}
-				}
-				catch (Exception)
-				{
-					return RealInstallFolder;
-				}
-			}
-			set
-			{
-				XmlRegistryKey rkf = Helper.WindowsRegistry.RegistryKey.CreateSubKey(
-					"Settings"
-				);
-				if (value == "")
-				{
-					rkf.DeleteSubKey(IdKey + "Path", false);
-				}
-				else
-				{
-					rkf.SetValue(IdKey + "Path", value);
-				}
-			}
+			get => Helper.WindowsRegistry.Config.ExpansionInstallPaths.ContainsKey(IdKey) && System.IO.Directory.Exists(Helper.WindowsRegistry.Config.ExpansionInstallPaths[IdKey])
+				? Helper.WindowsRegistry.Config.ExpansionInstallPaths[IdKey]
+				: RealInstallFolder;
+			set => Helper.WindowsRegistry.Config.ExpansionInstallPaths[IdKey] = value;
 		}
 
 		/// <summary>
@@ -824,31 +791,7 @@ namespace SimPe
 		/// <summary>
 		/// Manually Set Location of the Sims Application
 		/// </summary>
-		public string ManuallySet
-		{
-			get
-			{
-				try
-				{
-					XmlRegistryKey rkf =
-						Helper.WindowsRegistry.RegistryKey.CreateSubKey("Settings");
-					object o = rkf.GetValue(IdKey + "Path");
-					if (o == null)
-					{
-						return null;
-					}
-					else
-					{
-						string fl = o.ToString();
-						return fl;
-					}
-				}
-				catch (Exception)
-				{
-					return null;
-				}
-			}
-		}
+		public string ManuallySet => Helper.WindowsRegistry.Config.ExpansionInstallPaths.ContainsKey(IdKey) ? Helper.WindowsRegistry.Config.ExpansionInstallPaths[IdKey] : null;
 
 		public override string ToString()
 		{

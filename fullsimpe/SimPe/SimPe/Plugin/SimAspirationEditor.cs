@@ -115,7 +115,7 @@ namespace SimPe.Plugin
 			sim.CharacterDescription.Aspiration =
 				(Data.AspirationTypes)a;
 
-			if (Helper.WindowsRegistry.AllowChangeOfSecondaryAspiration && chg2)
+			if (chg2)
 			{
 				NgbhItem itm = GetSecondaryAspirationToken(sim, true);
 				itm.Value = v;
@@ -185,11 +185,6 @@ namespace SimPe.Plugin
 
 		protected ushort GetSecondaryAspirationValue(SDesc sim)
 		{
-			if (!Helper.WindowsRegistry.AllowChangeOfSecondaryAspiration)
-			{
-				return 0;
-			}
-
 			NgbhItem ni = GetSecondaryAspirationToken(sim, false);
 			return ni == null ? (ushort)0 : ni.Value;
 		}

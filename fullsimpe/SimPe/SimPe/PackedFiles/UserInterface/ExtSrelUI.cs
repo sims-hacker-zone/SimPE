@@ -27,7 +27,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 			InitializeComponent();
 
-			if (Helper.WindowsRegistry.UseBigIcons)
+			if (Helper.WindowsRegistry.Config.UseBigIcons)
 			{
 				lbsims.Font = new Font("Tahoma", 12);
 			}

@@ -21,7 +21,7 @@ namespace SimPe.Windows.Forms
 			int ticket
 		)
 		{
-			int numberofthreads = Helper.WindowsRegistry.SortProcessCount;
+			int numberofthreads = Helper.WindowsRegistry.Config.SortProcessCount;
 			handle = parent.Handle;
 			this.parent = parent;
 			this.ticket = ticket;
@@ -32,7 +32,7 @@ namespace SimPe.Windows.Forms
 			}
 
 			counter = 0;
-			if (Helper.WindowsRegistry.AsynchronSort)
+			if (Helper.WindowsRegistry.Config.AsynchronSort)
 			{
 				started = numberofthreads;
 				for (int i = 0; i < numberofthreads; i++)
@@ -76,7 +76,7 @@ namespace SimPe.Windows.Forms
 					}
 
 					pfd = names.Pop();
-					if (Helper.WindowsRegistry.AsynchronSort)
+					if (Helper.WindowsRegistry.Config.AsynchronSort)
 					{
 						Wait.Progress = counter++;
 					}

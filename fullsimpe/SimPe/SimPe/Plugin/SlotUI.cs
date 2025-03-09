@@ -44,7 +44,7 @@ namespace SimPe.Plugin
 			SlotType = Data.NeighborhoodSlots.Sims;
 			tabPage2_VisibleChanged(null, null);
 
-			if (Helper.WindowsRegistry.HiddenMode)
+			if (Helper.WindowsRegistry.Config.HiddenMode)
 			{
 				tabControl1.Controls.Remove(tabPage3);
 				tabControl1.LayoutSystem = new TD.SandDock.SplitLayoutSystem(

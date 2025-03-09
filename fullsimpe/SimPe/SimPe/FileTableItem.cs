@@ -313,7 +313,7 @@ namespace SimPe
 				n = "(Missing) " + n;
 			}
 
-			if (!Helper.WindowsRegistry.UseExpansions2 && Type.ToString() == "Extra")
+			if (!Helper.WindowsRegistry.Config.UseExpansions2 && Type.ToString() == "Extra")
 			{
 				n += "{Store}" + path;
 			}

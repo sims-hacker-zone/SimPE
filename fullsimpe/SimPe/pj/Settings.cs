@@ -1,43 +1,43 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Resources;
 
+using SimPe;
+
 namespace pj
 {
-	class Settings : SimPe.GlobalizedObject
+	internal class Settings : GlobalizedObject
 	{
-		const string BASENAME = "PJSE\\BMtool";
-		SimPe.XmlRegistryKey xrk = SimPe.Helper.WindowsRegistry.PluginRegistryKey;
-		SimPe.XmlRegistryKey rkf =
-			SimPe.Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(BASENAME);
+		private readonly Dictionary<string, string> options;
+		private const string BASENAME = "PJSE\\BMtool";
 
 		public Settings()
-			: base(new ResourceManager(typeof(Settings))) { }
+			: base(new ResourceManager(typeof(Settings)))
+		{
+			if (!Helper.WindowsRegistry.Config.PluginSettings.ContainsKey(BASENAME))
+			{
+				Helper.WindowsRegistry.Config.PluginSettings[BASENAME] = new Dictionary<string, string>();
+			}
+			options = Helper.WindowsRegistry.Config.PluginSettings[BASENAME];
+		}
 
-		private static Settings settings = new Settings();
+		public static Settings Options = new Settings();
 
 		[Category("PJSE")]
-		public static bool BodyMeshExtractUseCres
+		public bool BodyMeshExtractUseCres
 		{
 			get
 			{
-				SimPe.XmlRegistryKey rkf =
-					SimPe.Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(
-						BASENAME
-					);
-				object o = rkf.GetValue("meshexttractusecres", false);
-				return Convert.ToBoolean(o);
+				if (!options.ContainsKey("BodyMeshExtractUseCres"))
+				{
+					options["BodyMeshExtractUseCres"] = false.ToString();
+				}
+				return bool.Parse(options["BodyMeshExtractUseCres"]);
 			}
-			set
-			{
-				SimPe.XmlRegistryKey rkf =
-					SimPe.Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(
-						BASENAME
-					);
-				rkf.SetValue("meshexttractusecres", value);
-			}
+			set => options["BodyMeshExtractUseCres"] = value.ToString();
 		}
 	}
 }

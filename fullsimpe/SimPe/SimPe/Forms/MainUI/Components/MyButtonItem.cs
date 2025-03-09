@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace SimPe.Forms.MainUI.Components
@@ -13,11 +14,10 @@ namespace SimPe.Forms.MainUI.Components
 		#region Layout stuff
 		public static void GetLayoutInformations(Control b)
 		{
-			ArrayList list = Helper.WindowsRegistry.Layout.VisibleToolbarButtons;
-			GetLayoutInformations(b, list);
+			GetLayoutInformations(b, Helper.WindowsRegistry.Config.Layout.VisibleToolbarButtons);
 		}
 
-		static void GetLayoutInformations(Control b, ArrayList list)
+		static void GetLayoutInformations(Control b, List<string> list)
 		{
 			foreach (Control c in b.Controls)
 			{
@@ -39,14 +39,12 @@ namespace SimPe.Forms.MainUI.Components
 
 		public static void SetLayoutInformations(Control b)
 		{
-			ArrayList list = new ArrayList();
-			SetLayoutInformations(b, list);
-
-			Helper.WindowsRegistry.Layout.VisibleToolbarButtons = list;
+			SetLayoutInformations(b, Helper.WindowsRegistry.Config.Layout.VisibleToolbarButtons);
 		}
 
-		static void SetLayoutInformations(Control b, ArrayList list)
+		static void SetLayoutInformations(Control b, List<string> list)
 		{
+			list.Clear();
 			foreach (Control c in b.Controls)
 			{
 				SetLayoutInformations(c, list);

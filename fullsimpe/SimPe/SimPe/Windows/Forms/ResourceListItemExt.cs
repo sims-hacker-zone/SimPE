@@ -48,9 +48,9 @@ namespace SimPe.Windows.Forms
 			subitems[3] = "0x" + Helper.HexString(pfd.Descriptor.SubType); // InstHi
 
 			// Inst
-			subitems[4] = Helper.WindowsRegistry.ResourceListInstanceFormatHexOnly
+			subitems[4] = Helper.WindowsRegistry.Config.ResourceListInstanceFormat == Registry.ResourceListInstanceFormats.HexOnly
 				? "0x" + Helper.HexString(pfd.Descriptor.Instance)
-				: Helper.WindowsRegistry.ResourceListInstanceFormatDecOnly
+				: Helper.WindowsRegistry.Config.ResourceListInstanceFormat == Registry.ResourceListInstanceFormats.DecOnly
 					? ((int)pfd.Descriptor.Instance).ToString()
 					: "0x"
 									+ Helper.HexString(pfd.Descriptor.Instance)
@@ -82,7 +82,7 @@ namespace SimPe.Windows.Forms
 		string GetExtText()
 		{
 			switch (
-				Helper.WindowsRegistry.ResourceListExtensionFormat
+				Helper.WindowsRegistry.Config.ResourceListExtensionFormat
 			)
 			{
 				case Registry.ResourceListExtensionFormats.Short:
@@ -156,9 +156,9 @@ namespace SimPe.Windows.Forms
 
 				SubItems[2].Text = "0x" + Helper.HexString(pfd.Descriptor.Group);
 				SubItems[3].Text = "0x" + Helper.HexString(pfd.Descriptor.SubType);
-				SubItems[4].Text = Helper.WindowsRegistry.ResourceListInstanceFormatHexOnly
+				SubItems[4].Text = Helper.WindowsRegistry.Config.ResourceListInstanceFormat == Registry.ResourceListInstanceFormats.HexOnly
 					? "0x" + Helper.HexString(pfd.Descriptor.Instance)
-					: Helper.WindowsRegistry.ResourceListInstanceFormatDecOnly
+					: Helper.WindowsRegistry.Config.ResourceListInstanceFormat == Registry.ResourceListInstanceFormats.DecOnly
 						? ((int)pfd.Descriptor.Instance).ToString()
 						: "0x"
 											+ Helper.HexString(pfd.Descriptor.Instance)

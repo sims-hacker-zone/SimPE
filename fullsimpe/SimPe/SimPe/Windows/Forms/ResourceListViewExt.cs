@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace SimPe.Windows.Forms
@@ -37,7 +38,7 @@ namespace SimPe.Windows.Forms
 			sc = ResourceViewManager.SortColumn.Offset;
 			asc = true;
 			InitializeComponent();
-			if (Helper.WindowsRegistry.UseBigIcons)
+			if (Helper.WindowsRegistry.Config.UseBigIcons)
 			{
 				lv.Font = new System.Drawing.Font("Tahoma", Font.Size + 3F); // was 1F
 			}
@@ -50,7 +51,7 @@ namespace SimPe.Windows.Forms
 				lv.Columns.Remove(clType);
 			}
 
-			if (!Helper.WindowsRegistry.HiddenMode)
+			if (!Helper.WindowsRegistry.Config.HiddenMode)
 			{
 				lv.Columns.Remove(clSize);
 				lv.Columns.Remove(clOffset);
@@ -301,7 +302,7 @@ namespace SimPe.Windows.Forms
 			{
 				if (
 					manager != null
-					&& Helper.WindowsRegistry.UpdateResourceListWhenTGIChanges
+					&& Helper.WindowsRegistry.Config.UpdateResourceListWhenTGIChanges
 				)
 				{
 					manager.UpdateTree();
@@ -342,7 +343,7 @@ namespace SimPe.Windows.Forms
 						DoTheSorting();
 						Refresh();
 
-						if (Helper.WindowsRegistry.AsynchronSort)
+						if (Helper.WindowsRegistry.Config.AsynchronSort)
 						{
 							Wait.SubStop();
 						}
@@ -521,28 +522,28 @@ namespace SimPe.Windows.Forms
 
 		public void StoreLayout()
 		{
-			Helper.WindowsRegistry.Layout.NameColumnWidth = clTName.Width;
-			Helper.WindowsRegistry.Layout.TypeColumnWidth = clType.Width;
-			Helper.WindowsRegistry.Layout.GroupColumnWidth = clGroup.Width;
-			Helper.WindowsRegistry.Layout.InstanceHighColumnWidth = clInstHi.Width;
-			Helper.WindowsRegistry.Layout.InstanceColumnWidth = clInst.Width;
-			Helper.WindowsRegistry.Layout.OffsetColumnWidth = clOffset.Width;
-			Helper.WindowsRegistry.Layout.SizeColumnWidth = clSize.Width;
+			Helper.WindowsRegistry.Config.Layout.NameColumnWidth = clTName.Width;
+			Helper.WindowsRegistry.Config.Layout.TypeColumnWidth = clType.Width;
+			Helper.WindowsRegistry.Config.Layout.GroupColumnWidth = clGroup.Width;
+			Helper.WindowsRegistry.Config.Layout.InstanceHighColumnWidth = clInstHi.Width;
+			Helper.WindowsRegistry.Config.Layout.InstanceColumnWidth = clInst.Width;
+			Helper.WindowsRegistry.Config.Layout.OffsetColumnWidth = clOffset.Width;
+			Helper.WindowsRegistry.Config.Layout.SizeColumnWidth = clSize.Width;
 
-			Helper.WindowsRegistry.Layout.ColumnOrder = Columns;
+			Helper.WindowsRegistry.Config.Layout.ColumnOrder = string.Join(",", Columns);
 		}
 
 		public void RestoreLayout()
 		{
-			clTName.Width = Helper.WindowsRegistry.Layout.NameColumnWidth;
-			clType.Width = Helper.WindowsRegistry.Layout.TypeColumnWidth;
-			clGroup.Width = Helper.WindowsRegistry.Layout.GroupColumnWidth;
-			clInstHi.Width = Helper.WindowsRegistry.Layout.InstanceHighColumnWidth;
-			clInst.Width = Helper.WindowsRegistry.Layout.InstanceColumnWidth;
-			clOffset.Width = Helper.WindowsRegistry.Layout.OffsetColumnWidth;
-			clSize.Width = Helper.WindowsRegistry.Layout.SizeColumnWidth;
+			clTName.Width = Helper.WindowsRegistry.Config.Layout.NameColumnWidth;
+			clType.Width = Helper.WindowsRegistry.Config.Layout.TypeColumnWidth;
+			clGroup.Width = Helper.WindowsRegistry.Config.Layout.GroupColumnWidth;
+			clInstHi.Width = Helper.WindowsRegistry.Config.Layout.InstanceHighColumnWidth;
+			clInst.Width = Helper.WindowsRegistry.Config.Layout.InstanceColumnWidth;
+			clOffset.Width = Helper.WindowsRegistry.Config.Layout.OffsetColumnWidth;
+			clSize.Width = Helper.WindowsRegistry.Config.Layout.SizeColumnWidth;
 
-			order = Helper.WindowsRegistry.Layout.ColumnOrder;
+			order = Helper.WindowsRegistry.Config.Layout.ColumnOrder.Split(new char[] { ',' }).ToList();
 			lv.Columns.Clear();
 			for (int i = 0; i < colHeads.Count; i++)
 			{
@@ -562,7 +563,7 @@ namespace SimPe.Windows.Forms
 				lv.Columns.Remove(clType);
 			}
 
-			if (!Helper.WindowsRegistry.HiddenMode)
+			if (!Helper.WindowsRegistry.Config.HiddenMode)
 			{
 				lv.Columns.Remove(clSize);
 				lv.Columns.Remove(clOffset);

@@ -418,8 +418,8 @@ namespace SimPe.Plugin
 				DateTime start = DateTime.Now;
 				WaitingScreen.Wait();
 				ilist.ImageSize = new Size(
-					Helper.WindowsRegistry.OWThumbSize,
-					Helper.WindowsRegistry.OWThumbSize
+					Helper.WindowsRegistry.Config.OWThumbSize,
+					Helper.WindowsRegistry.Config.OWThumbSize
 				);
 				//LoadCachIndex();
 				lbobj.BeginUpdate();
@@ -1067,7 +1067,7 @@ namespace SimPe.Plugin
 			}
 			package = null;
 
-			if (!Helper.WindowsRegistry.LoadOWFast)
+			if (!Helper.WindowsRegistry.Config.LoadOWFast)
 			{
 				BuildListing();
 			}

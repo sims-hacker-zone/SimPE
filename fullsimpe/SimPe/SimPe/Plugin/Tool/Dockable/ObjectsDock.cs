@@ -175,10 +175,10 @@ namespace SimPe.Plugin.Tool.Dockable
 			biNext.Enabled = wizard1.NextEnabled;
 			biPrev.Enabled = wizard1.PrevEnabled;
 			ilist.ImageSize = new Size(
-				Helper.WindowsRegistry.OWThumbSize,
-				Helper.WindowsRegistry.OWThumbSize
+				Helper.WindowsRegistry.Config.OWThumbSize,
+				Helper.WindowsRegistry.Config.OWThumbSize
 			);
-			tv.ItemHeight = Helper.WindowsRegistry.OWThumbSize + 1;
+			tv.ItemHeight = Helper.WindowsRegistry.Config.OWThumbSize + 1;
 			registry = new ObjectWorkshopRegistry(this);
 		}
 
@@ -1105,7 +1105,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 			if (
 				oci.Class == Cache.ObjectClass.XObject
-				&& !Helper.WindowsRegistry.OWincludewalls
+				&& !Helper.WindowsRegistry.Config.OWincludewalls
 			)
 			{
 				return;

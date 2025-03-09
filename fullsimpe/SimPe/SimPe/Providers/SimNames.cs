@@ -156,7 +156,7 @@ namespace SimPe.Providers
 			tags[2] = Localization.Manager.GetString("Unknown");
 			tags[3] = hasagedata;
 			tags[4] = null;
-			/*if (Helper.WindowsRegistry.HiddenMode)
+			/*if (Helper.WindowsRegistry.Config.HiddenMode)
 				tags[5] = (!hasagedata) && (fl.FindFiles(FileTypes.THREE_IDR).Length>0); //if this is true, the Sim has a Problem, and the package was probably split
 			else
 				tags[5] = false;*/
@@ -181,7 +181,7 @@ namespace SimPe.Providers
 			if (str_pfd != null)
 			{
 				PackedFiles.Wrapper.StrItemList its = new PackedFiles.Wrapper.Str().ProcessFile(str_pfd, fl).FallbackedLanguageItems(
-					Helper.WindowsRegistry.LanguageCode
+					Helper.WindowsRegistry.Config.LanguageCode
 				);
 				if (its.Length > 0)
 				{
@@ -246,13 +246,13 @@ namespace SimPe.Providers
 		{
 			if (
 				Helper.StartedGui == Executable.Classic
-				|| !Helper.WindowsRegistry.DeepSimScan
+				|| !Helper.WindowsRegistry.Config.DeepSimScan
 			)
 			{
 				return;
 			}
 
-			if (Helper.WindowsRegistry.DeepSimTemplateScan)
+			if (Helper.WindowsRegistry.Config.DeepSimTemplateScan)
 			{
 				characterfi.Load();
 			}
@@ -261,7 +261,7 @@ namespace SimPe.Providers
 			try
 			{
 				ScanFileTable(0x80);
-				if (Helper.WindowsRegistry.DeepSimTemplateScan)
+				if (Helper.WindowsRegistry.Config.DeepSimTemplateScan)
 				{
 					ScanFileTable(0x81); // some templates are instance 0x81
 				}
@@ -277,7 +277,7 @@ namespace SimPe.Providers
 			// Mystery Sim - Girl GUID 0x6DD33865 group 0x7FBA59DA, Instance 0x000041A7 / Mystery Sim - Boy GUID 0x006D2D59 group 0x7FCB2EBC img instance 1 - Type normal
 			if (
 				Helper.StartedGui == Executable.Classic
-				|| !Helper.WindowsRegistry.DeepSimScan
+				|| !Helper.WindowsRegistry.Config.DeepSimScan
 			)
 			{
 				return;
@@ -301,7 +301,7 @@ namespace SimPe.Providers
 				PackedFiles.Wrapper.ExtObjd objd =
 					new PackedFiles.Wrapper.ExtObjd().ProcessFile(item);
 				if (
-					(Helper.WindowsRegistry.DeepSimTemplateScan
+					(Helper.WindowsRegistry.Config.DeepSimTemplateScan
 					&& objd.Type == ObjectTypes.Template)
 					|| objd.Type == ObjectTypes.Person
 				)
@@ -412,7 +412,7 @@ namespace SimPe.Providers
 			}
 
 			if (
-				Helper.WindowsRegistry.DeepSimScan
+				Helper.WindowsRegistry.Config.DeepSimScan
 				&& Helper.StartedGui != Executable.Classic
 			)
 			{
