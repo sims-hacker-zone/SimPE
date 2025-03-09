@@ -280,15 +280,9 @@ namespace SimPe.PackedFiles.UserInterface
 			);
 
 			cbcareer.Items.Clear();
-			foreach (
-				Interfaces.IAlias a in
-					PackedFiles
-					.Wrapper
-					.SDesc
-					.AddonCarrers
-			)
+			foreach (KeyValuePair<uint, string> a in PackedFiles.Wrapper.SDesc.AddonCarrers)
 			{
-				cbcareer.Items.Add(a);
+				cbcareer.Items.Add((a.Key, a.Value));
 			}
 
 			cbcareer.Items.Add(
@@ -640,11 +634,9 @@ namespace SimPe.PackedFiles.UserInterface
 									select new LocalizedGrades(value)).ToArray());
 
 			cbmajor.Items.Clear();
-			foreach (
-				Interfaces.IAlias a in PackedFiles.Wrapper.SDesc.AddonMajors
-			)
+			foreach (KeyValuePair<uint, string> a in PackedFiles.Wrapper.SDesc.AddonMajors)
 			{
-				cbmajor.Items.Add(a);
+				cbmajor.Items.Add((a.Key, a.Value));
 			}
 
 			Array majors = Enum.GetValues(typeof(Majors));
@@ -654,15 +646,9 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 
 			cbschooltype.Items.Clear();
-			foreach (
-				Interfaces.IAlias a in
-					PackedFiles
-					.Wrapper
-					.SDesc
-					.AddonSchools
-			)
+			foreach (KeyValuePair<uint, string> a in PackedFiles.Wrapper.SDesc.AddonSchools)
 			{
-				cbschooltype.Items.Add(a);
+				cbschooltype.Items.Add((a.Key, a.Value));
 			}
 
 			cbschooltype.Items.Add(
@@ -1189,7 +1175,7 @@ namespace SimPe.PackedFiles.UserInterface
 			for (int i = 0; i < cbmajor.Items.Count; i++)
 			{
 				object o = cbmajor.Items[i];
-				Majors at = o.GetType() == typeof(Alias) ? (Majors)((Alias)o).Id : (Majors)o;
+				Majors at = o is ValueTuple<uint, string> tuple ? (Majors)tuple.Item1 : (Majors)o;
 
 				if (at == sdesc.University.Major)
 				{
@@ -1634,7 +1620,7 @@ namespace SimPe.PackedFiles.UserInterface
 			for (int i = 0; i < cbcareer.Items.Count; i++)
 			{
 				object o = cbcareer.Items[i];
-				Careers at = o.GetType() == typeof(Alias) ? (Careers)(LocalizedCareers)((Alias)o).Id : (Careers)(LocalizedCareers)o;
+				Careers at = o is ValueTuple<uint, string> tuple ? (Careers)(LocalizedCareers)tuple.Item1 : (Careers)(LocalizedCareers)o;
 
 				if (at == sdesc.CharacterDescription.Career)
 				{
@@ -1647,7 +1633,7 @@ namespace SimPe.PackedFiles.UserInterface
 			for (int i = 0; i < cbRetirement.Items.Count; i++)
 			{
 				object o = cbRetirement.Items[i];
-				Careers at = o.GetType() == typeof(Alias) ? (Careers)(LocalizedCareers)((Alias)o).Id : (Careers)(LocalizedCareers)o;
+				Careers at = o is ValueTuple<uint, string> tuple ? (Careers)(LocalizedCareers)tuple.Item1 : (Careers)(LocalizedCareers)o;
 
 				if (at == sdesc.CharacterDescription.Retired)
 				{
@@ -1663,7 +1649,7 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				LocalizedSchoolType type;
 				object o = cbschooltype.Items[i];
-				type = o.GetType() == typeof(Alias) ? (LocalizedSchoolType)((Alias)o).Id : (LocalizedSchoolType)o;
+				type = o is ValueTuple<uint, string> tuple ? (LocalizedSchoolType)tuple.Item1 : (LocalizedSchoolType)o;
 
 				if (
 					sdesc.CharacterDescription.SchoolType
@@ -1975,7 +1961,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 
 			object o = cbmajor.Items[cbmajor.SelectedIndex];
-			Majors v = o.GetType() == typeof(Alias) ? (Majors)((Alias)o).Id : (Majors)o;
+			Majors v = o is ValueTuple<uint, string> tuple ? (Majors)tuple.Item1 : (Majors)o;
 
 			if (v == Majors.Unknown)
 			{
@@ -1993,18 +1979,17 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 
 			object o = cbcareer.Items[cbcareer.SelectedIndex];
-			if (o.GetType() != typeof(Alias))
+			if (o is ValueTuple<uint, string> a)
+			{
+				tbcareervalue.Text = "0x" + Helper.HexString(a.Item1);
+			}
+			else
 			{
 				Careers career = (LocalizedCareers)o;
 				if (career != Careers.Unknown)
 				{
 					tbcareervalue.Text = "0x" + Helper.HexString((uint)career);
 				}
-			}
-			else
-			{
-				Alias a = (Alias)o;
-				tbcareervalue.Text = "0x" + Helper.HexString(a.Id);
 			}
 		}
 
@@ -2052,6 +2037,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 
 			object o = cbschooltype.Items[cbschooltype.SelectedIndex];
+			LocalizedSchoolType a = o is ValueTuple<uint, string> tuple ? (LocalizedSchoolType)tuple.Item1 : (LocalizedSchoolType)o;
 			if (o.GetType() != typeof(Alias))
 			{
 				SchoolTypes st = (LocalizedSchoolType)o;
@@ -2062,8 +2048,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			else
 			{
-				Alias a = (Alias)o;
-				tbschooltype.Text = "0x" + Helper.HexString(a.Id);
+				tbschooltype.Text = "0x" + Helper.HexString((uint)a);
 			}
 		}
 

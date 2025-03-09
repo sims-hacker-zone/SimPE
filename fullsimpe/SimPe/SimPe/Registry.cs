@@ -323,6 +323,9 @@ namespace SimPe
 			public int ExtObdjFormInitialTab { get; set; } = 0;
 			public Dictionary<string, Dictionary<string, string>> PluginSettings { get; set; } = new Dictionary<string, Dictionary<string, string>>();
 			public LayoutConfiguration Layout { get; set; } = new LayoutConfiguration();
+			public Dictionary<uint, string> AdditionalCareers { get; set; } = new Dictionary<uint, string>();
+			public Dictionary<uint, string> AdditionalMajors { get; set; } = new Dictionary<uint, string>();
+			public Dictionary<uint, string> AdditionalSchools { get; set; } = new Dictionary<uint, string>();
 		}
 
 		#region Attributes

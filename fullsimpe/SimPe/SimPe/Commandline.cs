@@ -82,33 +82,6 @@ namespace SimPe
 			)
 			{
 				if (
-					!File.Exists(
-						Path.Combine(Helper.SimPeDataPath, "additional_careers.xml")
-					)
-				)
-				{
-					CompleteSetup("additional_careers.xml");
-				}
-
-				if (
-					!File.Exists(
-						Path.Combine(Helper.SimPeDataPath, "additional_majors.xml")
-					)
-				)
-				{
-					CompleteSetup("additional_majors.xml");
-				}
-
-				if (
-					!File.Exists(
-						Path.Combine(Helper.SimPeDataPath, "additional_schools.xml")
-					)
-				)
-				{
-					CompleteSetup("additional_schools.xml");
-				}
-
-				if (
 					File.Exists(
 						Path.Combine(Helper.SimPeDataPath, "vport.set")
 					)
@@ -123,7 +96,6 @@ namespace SimPe
 				CompleteSetup("expansions.xreg");
 				CompleteSetup("expansions2.xreg");
 				CompleteSetup("objddefinition.xml");
-				CompleteSetup("release.nfo");
 				CompleteSetup("txmtdefinition.xml");
 				CompleteSetup("guidindex.txt");
 				CompleteSetup("GLOBALS-AO.package");
