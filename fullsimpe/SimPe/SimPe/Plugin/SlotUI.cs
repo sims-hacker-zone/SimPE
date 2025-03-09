@@ -3,6 +3,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
+using SimPe.PackedFiles.Ngbh;
 using SimPe.PackedFiles.Sdsc;
 
 namespace SimPe.Plugin

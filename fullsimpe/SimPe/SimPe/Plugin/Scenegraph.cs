@@ -10,6 +10,7 @@ using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Scenegraph;
 using SimPe.PackedFiles.Cpf;
+using SimPe.PackedFiles.Mmat;
 using SimPe.PackedFiles.Nmap;
 using SimPe.PackedFiles.Str;
 using SimPe.PackedFiles.ThreeIdr;

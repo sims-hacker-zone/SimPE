@@ -8,6 +8,7 @@ using System.Linq;
 
 using SimPe.Data;
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Mmat;
 using SimPe.PackedFiles.Objd;
 using SimPe.PackedFiles.Picture;
 using SimPe.PackedFiles.Str;

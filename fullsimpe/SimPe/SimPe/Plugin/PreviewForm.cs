@@ -5,6 +5,7 @@ using System;
 using System.Windows.Forms;
 
 using SimPe.PackedFiles.Cpf;
+using SimPe.PackedFiles.Mmat;
 
 namespace SimPe.Plugin
 {

@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using SimPe.Cache;
 using SimPe.PackedFiles.Cpf;
-using SimPe.Plugin;
+using SimPe.PackedFiles.Xwnt;
 
 namespace SimPe.PackedFiles.Swaf
 {

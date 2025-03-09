@@ -3,6 +3,8 @@
 using System.Drawing;
 using System.Windows.Forms;
 
+using SimPe.PackedFiles.Ngbh;
+
 namespace SimPe.Plugin
 {
 	public class NgbhItemsListViewItem : ListViewItem, System.IDisposable

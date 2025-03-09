@@ -10,6 +10,7 @@ using SimPe.Cache;
 using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
+using SimPe.PackedFiles.Goal;
 using SimPe.PackedFiles.Picture;
 using SimPe.PackedFiles.Str;
 

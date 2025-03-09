@@ -9,6 +9,7 @@ using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Lifo;
+using SimPe.PackedFiles.Mmat;
 using SimPe.PackedFiles.Nref;
 using SimPe.PackedFiles.Objd;
 using SimPe.PackedFiles.Str;

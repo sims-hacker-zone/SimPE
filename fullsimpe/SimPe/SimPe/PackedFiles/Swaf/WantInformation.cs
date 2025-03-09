@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using SimPe.Cache;
-using SimPe.Plugin;
+using SimPe.PackedFiles.Xwnt;
 
 namespace SimPe.PackedFiles.Swaf
 {

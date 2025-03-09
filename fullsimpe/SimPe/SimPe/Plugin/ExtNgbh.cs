@@ -5,6 +5,7 @@ using System.Linq;
 
 using SimPe.Cache;
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Ngbh;
 
 namespace SimPe.Plugin
 {

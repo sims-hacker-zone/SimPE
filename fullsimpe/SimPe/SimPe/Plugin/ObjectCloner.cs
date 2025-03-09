@@ -8,6 +8,7 @@ using SimPe.Data;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
 using SimPe.Packages;
+using SimPe.PackedFiles.Mmat;
 using SimPe.PackedFiles.Str;
 
 namespace SimPe.Plugin

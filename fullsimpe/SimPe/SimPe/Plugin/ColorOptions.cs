@@ -4,6 +4,7 @@ using System.Collections;
 
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Mmat;
 
 namespace SimPe.Plugin
 {
