@@ -13,14 +13,15 @@
 using pjse.BhavOperandWizards;
 
 using SimPe.Data;
-using SimPe.PackedFiles.Wrapper;
+using SimPe.PackedFiles.Bhav;
+using SimPe.PackedFiles.Str;
 
 using System;
 using System.Windows.Forms;
 
 /*
  * 0x0070 - Effect Stop / Start
- * 
+ *
  * See https://www.picknmixmods.com/Sims2/Notes/Primitives/0x0070.html
  */
 namespace whse.PrimitiveWizards.Wiz0x0070

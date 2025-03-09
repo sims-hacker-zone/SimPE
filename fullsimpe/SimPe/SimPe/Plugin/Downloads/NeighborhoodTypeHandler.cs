@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 using SimPe.Data;
+using SimPe.PackedFiles.Str;
 
 namespace SimPe.Plugin.Downloads
 {
@@ -22,7 +23,7 @@ namespace SimPe.Plugin.Downloads
 
 			if (pfds.Length > 0)
 			{
-				PackedFiles.Wrapper.StrItemList items =
+				StrItemList items =
 					DefaultTypeHandler.GetCtssItems(pfds[0], pkg);
 				if (items.Length > 0)
 				{

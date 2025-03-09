@@ -11,8 +11,8 @@ using SimPe.Extensions;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
+using SimPe.PackedFiles.Sdsc;
 using SimPe.PackedFiles.ThreeIdr;
-using SimPe.PackedFiles.Wrapper;
 
 namespace SimPe.Plugin
 {

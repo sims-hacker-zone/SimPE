@@ -3,6 +3,8 @@
 using System;
 using System.Windows.Forms;
 
+using SimPe.PackedFiles.Objd;
+
 namespace SimPe.Plugin.Scanner
 {
 	/// <summary>
@@ -120,7 +122,7 @@ namespace SimPe.Plugin.Scanner
 			cbskins.SelectedIndex = 0;
 			sfd.InitialDirectory = PathProvider.SimSavegameFolder;
 
-			cbshelve.Enum = typeof(PackedFiles.Wrapper.ShelveDimension);
+			cbshelve.Enum = typeof(ShelveDimension);
 			cbshelve.ResourceManager = Localization.Manager;
 		}
 
@@ -1133,21 +1135,21 @@ namespace SimPe.Plugin.Scanner
 			LinkLabelLinkClickedEventArgs e
 		)
 		{
-			PackedFiles.Wrapper.ShelveDimension sd =
-				(PackedFiles.Wrapper.ShelveDimension)cbshelve.SelectedValue;
+			ShelveDimension sd =
+				(ShelveDimension)cbshelve.SelectedValue;
 			ShelveScanner cs = (ShelveScanner)pnShelve.Tag;
 			cs.Set(sd);
 		}
 
 		private void cbshelve_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			PackedFiles.Wrapper.ShelveDimension sd =
-				(PackedFiles.Wrapper.ShelveDimension)cbshelve.SelectedValue;
+			ShelveDimension sd =
+				(ShelveDimension)cbshelve.SelectedValue;
 			llShelve.Enabled =
-				sd != PackedFiles.Wrapper.ShelveDimension.Indetermined
-				&& sd != PackedFiles.Wrapper.ShelveDimension.Multitile
-				&& sd != PackedFiles.Wrapper.ShelveDimension.Unknown1
-				&& sd != PackedFiles.Wrapper.ShelveDimension.Unknown2
+				sd != ShelveDimension.Indetermined
+				&& sd != ShelveDimension.Multitile
+				&& sd != ShelveDimension.Unknown1
+				&& sd != ShelveDimension.Unknown2
 			;
 		}
 

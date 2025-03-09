@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
+using SimPe.PackedFiles.Bhav;
 using SimPe.PackedFiles.Wrapper;
 
 namespace pjse.BhavOperandWizards.Wiz0x0033

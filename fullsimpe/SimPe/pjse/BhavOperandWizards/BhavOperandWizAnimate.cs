@@ -4,7 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-using SimPe.PackedFiles.Wrapper;
+using SimPe.PackedFiles.Bhav;
+using SimPe.PackedFiles.Str;
 
 namespace pjse.BhavOperandWizards.WizAnimate
 {
@@ -1243,8 +1244,8 @@ namespace pjse.BhavOperandWizards.WizAnimate
 			Bhav b = new Bhav();
 			b.ProcessData(item.PFD, item.Package);
 
-			SimPe.PackedFiles.UserInterface.BhavForm ui =
-				(SimPe.PackedFiles.UserInterface.BhavForm)b.UIHandler;
+			BhavForm ui =
+				(BhavForm)b.UIHandler;
 			ui.Tag = "Popup"; // tells the SetReadOnly function it's in a popup - so everything locked down
 			ui.Text =
 				Localization.GetString("viewbhav")

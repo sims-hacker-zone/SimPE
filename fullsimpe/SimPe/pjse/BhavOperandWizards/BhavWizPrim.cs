@@ -33,6 +33,7 @@
 
 using System;
 
+using SimPe.PackedFiles.Bhav;
 using SimPe.PackedFiles.Wrapper;
 
 namespace pjse.BhavNameWizards

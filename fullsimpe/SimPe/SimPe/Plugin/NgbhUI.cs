@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using SimPe.Cache;
 using SimPe.Interfaces.Plugin;
 using System.Linq;
+using SimPe.PackedFiles.Sdsc;
 
 namespace SimPe.Plugin
 {
@@ -98,7 +99,7 @@ namespace SimPe.Plugin
 			form.cbown.Sorted = false;
 			foreach (Interfaces.Files.IPackedFileDescriptor spfd in pfds)
 			{
-				PackedFiles.Wrapper.SDesc sdesc = new PackedFiles.Wrapper.SDesc(
+				SDesc sdesc = new PackedFiles.Sdsc.SDesc(
 					wrp.Provider.SimNameProvider,
 					wrp.Provider.SimFamilynameProvider,
 					null

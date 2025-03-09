@@ -1,6 +1,8 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Objd;
+using SimPe.PackedFiles.Str;
 
 namespace SimPe.Packages
 {
@@ -74,7 +76,7 @@ namespace SimPe.Packages
 			);
 			if (pfd != null)
 			{
-				PackedFiles.Wrapper.StrItemList sitems = new PackedFiles.Wrapper.Str().ProcessFile(pfd, p).LanguageItems(1);
+				StrItemList sitems = new PackedFiles.Str.Str().ProcessFile(pfd, p).LanguageItems(1);
 
 				if (sitems.Length > 0)
 				{
@@ -107,8 +109,8 @@ namespace SimPe.Packages
 			uint group = 0xffffffff;
 			if (pfds.Length > 0)
 			{
-				PackedFiles.Wrapper.Objd objd =
-					new PackedFiles.Wrapper.Objd(null).ProcessFile(pfds[0], p);
+				Objd objd =
+					new PackedFiles.Objd.Objd(null).ProcessFile(pfds[0], p);
 				ctssid = objd.CTSSId;
 				group = objd.FileDescriptor.Group;
 			}
@@ -116,7 +118,7 @@ namespace SimPe.Packages
 			pfd = p.FindFile(Data.FileTypes.CTSS, 0, group, ctssid);
 			if (pfd != null)
 			{
-				PackedFiles.Wrapper.StrItemList sitems = new PackedFiles.Wrapper.Str().ProcessFile(pfd, p).LanguageItems(1);
+				StrItemList sitems = new PackedFiles.Str.Str().ProcessFile(pfd, p).LanguageItems(1);
 
 				if (sitems.Length > 0)
 				{
@@ -368,15 +370,15 @@ namespace SimPe.Packages
 				0x00000000,
 				0xffffffff
 			);
-			PackedFiles.Wrapper.Str str = null;
+			Str str = null;
 
-			PackedFiles.Wrapper.StrLanguage[] lng =
-				new PackedFiles.Wrapper.StrLanguage[1];
-			lng[0] = new PackedFiles.Wrapper.StrLanguage(1);
+			StrLanguage[] lng =
+				new StrLanguage[1];
+			lng[0] = new PackedFiles.Str.StrLanguage(1);
 
 			if (pfd == null)
 			{
-				str = new PackedFiles.Wrapper.Str
+				str = new PackedFiles.Str.Str
 				{
 					FileDescriptor = new PackedFileDescriptor
 					{
@@ -393,9 +395,9 @@ namespace SimPe.Packages
 			}
 			else
 			{
-				str = new PackedFiles.Wrapper.Str().ProcessFile(pfd, p);
+				str = new PackedFiles.Str.Str().ProcessFile(pfd, p);
 			}
-			PackedFiles.Wrapper.StrItemList items = str.LanguageItems(1);
+			StrItemList items = str.LanguageItems(1);
 
 			if (guid == null)
 			{
@@ -410,7 +412,7 @@ namespace SimPe.Packages
 			else
 			{
 				str.Add(
-					new PackedFiles.Wrapper.StrToken(0, lng[0], guid, gameguid)
+					new PackedFiles.Str.StrToken(0, lng[0], guid, gameguid)
 				);
 			}
 
@@ -422,7 +424,7 @@ namespace SimPe.Packages
 			else
 			{
 				str.Add(
-					new PackedFiles.Wrapper.StrToken(1, lng[0], author, contact)
+					new PackedFiles.Str.StrToken(1, lng[0], author, contact)
 				);
 			}
 
@@ -433,7 +435,7 @@ namespace SimPe.Packages
 			}
 			else
 			{
-				str.Add(new PackedFiles.Wrapper.StrToken(2, lng[0], name, ""));
+				str.Add(new PackedFiles.Str.StrToken(2, lng[0], name, ""));
 			}
 
 			str.SynchronizeUserData();
@@ -449,11 +451,11 @@ namespace SimPe.Packages
 		public static void UpdateGlobalGuid(File p, string title, string description)
 		{
 			Interfaces.Files.IPackedFileDescriptor pfd = null;
-			PackedFiles.Wrapper.Str str = null;
+			Str str = null;
 
-			PackedFiles.Wrapper.StrLanguage[] lng =
-				new PackedFiles.Wrapper.StrLanguage[1];
-			lng[0] = new PackedFiles.Wrapper.StrLanguage(1);
+			StrLanguage[] lng =
+				new StrLanguage[1];
+			lng[0] = new PackedFiles.Str.StrLanguage(1);
 
 			//Title and Description is stored in the CatalogString
 			Interfaces.Files.IPackedFileDescriptor[] pfds = p.FindFiles(
@@ -463,8 +465,8 @@ namespace SimPe.Packages
 			uint group = 0xffffffff;
 			if (pfds.Length > 0)
 			{
-				PackedFiles.Wrapper.Objd objd =
-					new PackedFiles.Wrapper.Objd(null).ProcessFile(pfds[0], p);
+				Objd objd =
+					new PackedFiles.Objd.Objd(null).ProcessFile(pfds[0], p);
 				ctssid = objd.CTSSId;
 				group = objd.FileDescriptor.Group;
 			}
@@ -472,7 +474,7 @@ namespace SimPe.Packages
 			pfd = p.FindFile(Data.FileTypes.CTSS, 0, group, ctssid);
 			if (pfd == null)
 			{
-				str = new PackedFiles.Wrapper.Str
+				str = new PackedFiles.Str.Str
 				{
 					FileDescriptor = new PackedFileDescriptor
 					{
@@ -489,17 +491,17 @@ namespace SimPe.Packages
 			}
 			else
 			{
-				str = new PackedFiles.Wrapper.Str().ProcessFile(pfd, p);
+				str = new PackedFiles.Str.Str().ProcessFile(pfd, p);
 			}
 
-			PackedFiles.Wrapper.StrItemList items = str.LanguageItems(1);
+			StrItemList items = str.LanguageItems(1);
 			if (str.Items.Length > 0)
 			{
 				str.Items[0].Title = title;
 			}
 			else
 			{
-				str.Add(new PackedFiles.Wrapper.StrToken(0, lng[0], title, ""));
+				str.Add(new PackedFiles.Str.StrToken(0, lng[0], title, ""));
 			}
 
 			if (str.Items.Length > 1)
@@ -509,7 +511,7 @@ namespace SimPe.Packages
 			else
 			{
 				str.Add(
-					new PackedFiles.Wrapper.StrToken(1, lng[0], description, "")
+					new PackedFiles.Str.StrToken(1, lng[0], description, "")
 				);
 			}
 
@@ -588,8 +590,8 @@ namespace SimPe.Packages
 			uint group = 0xffffffff;
 			if (pfds.Length > 0)
 			{
-				PackedFiles.Wrapper.Objd objd =
-					new PackedFiles.Wrapper.Objd(null).ProcessFile(pfds[0], p);
+				Objd objd =
+					new PackedFiles.Objd.Objd(null).ProcessFile(pfds[0], p);
 				ctssid = objd.CTSSId;
 				group = objd.FileDescriptor.Group;
 			}
@@ -770,8 +772,8 @@ namespace SimPe.Packages
 				gameguid = "";
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
-					PackedFiles.Wrapper.Objd objd =
-						new PackedFiles.Wrapper.Objd(null).ProcessFile(pfd, package);
+					Objd objd =
+						new PackedFiles.Objd.Objd(null).ProcessFile(pfd, package);
 					gameguid += " 0x" + Helper.HexString(objd.Guid);
 					// gameguid += " " + objd.Guid.ToString();
 				}

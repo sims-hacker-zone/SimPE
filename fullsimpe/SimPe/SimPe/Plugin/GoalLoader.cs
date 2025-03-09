@@ -11,6 +11,7 @@ using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Picture;
+using SimPe.PackedFiles.Str;
 
 namespace SimPe.Plugin
 {
@@ -91,7 +92,7 @@ namespace SimPe.Plugin
 	public class GoalInformation
 	{
 		protected XGoal wnt; // Fuick
-		PackedFiles.Wrapper.Str str;
+		Str str;
 		Picture primicon;
 		protected uint guid;
 		internal string prefix = "";
@@ -315,7 +316,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="wnt">The Goal File</param>
 		/// <returns>The Str File or null if none was found</returns>
-		public static PackedFiles.Wrapper.Str LoadText(XGoal wnt)
+		public static Str LoadText(XGoal wnt)
 		{
 			if (wnt == null)
 			{
@@ -336,7 +337,7 @@ namespace SimPe.Plugin
 			{
 				pfds[0].UserData = txtpkg.Read(pfds[0]).UncompressedData;
 
-				return new PackedFiles.Wrapper.Str().ProcessFile(pfds[0], txtpkg);
+				return new PackedFiles.Str.Str().ProcessFile(pfds[0], txtpkg);
 
 			}
 

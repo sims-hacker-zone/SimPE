@@ -8,6 +8,7 @@ using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
 using SimPe.PackedFiles.Fami;
+using SimPe.PackedFiles.Sdsc;
 
 namespace SimPe.Providers
 {
@@ -71,7 +72,7 @@ namespace SimPe.Providers
 
 			///add unlisted Sims
 			foreach (
-				PackedFiles.Wrapper.SDesc sdesc in FileTableBase
+				SDesc sdesc in FileTableBase
 					.ProviderRegistry
 					.SimDescriptionProvider
 					.SimInstance.SelectMany(item => item)

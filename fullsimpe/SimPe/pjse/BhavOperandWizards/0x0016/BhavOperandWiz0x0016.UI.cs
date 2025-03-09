@@ -10,54 +10,56 @@
  *
  */
 
+using SimPe.PackedFiles.Bhav;
 using SimPe.PackedFiles.Wrapper;
+
 using System.Windows.Forms;
 
 /*
  * 0x0016 - Turn Body Towards
- * 
+ *
  * See https://www.picknmixmods.com/Sims2/Notes/Primitives/0x0016.html
  */
 namespace whse.PrimitiveWizards.Wiz0x0016
 {
-    public partial class UI : UserControl, pjse.iBhavOperandWizForm
-    {
-        // private Instruction inst;
+	public partial class UI : UserControl, pjse.iBhavOperandWizForm
+	{
+		// private Instruction inst;
 
-        // private bool internalchg;
+		// private bool internalchg;
 
-        public UI()
-        {
-            InitializeComponent();
-        }
+		public UI()
+		{
+			InitializeComponent();
+		}
 
-        public Panel WizPanel => this.panelMain;
+		public Panel WizPanel => this.panelMain;
 
-        public void Execute(Instruction inst)
-        {
-            // this.inst = inst;
+		public void Execute(Instruction inst)
+		{
+			// this.inst = inst;
 
-            wrappedByteArray operands = inst.Operands;
-            // wrappedByteArray reserved1 = inst.Reserved1;
+			wrappedByteArray operands = inst.Operands;
+			// wrappedByteArray reserved1 = inst.Reserved1;
 
-            // internalchg = true;
+			// internalchg = true;
 
-            WizardHelpers.ComboSelectIndex(comboDirection, operands[OperandConstants.Operand0] - 1);
+			WizardHelpers.ComboSelectIndex(comboDirection, operands[OperandConstants.Operand0] - 1);
 
-            // internalchg = false;
-        }
+			// internalchg = false;
+		}
 
-        public Instruction Write(Instruction inst)
-        {
-            if (inst != null)
-            {
-                wrappedByteArray operands = inst.Operands;
-                // wrappedByteArray reserved1 = inst.Reserved1;
+		public Instruction Write(Instruction inst)
+		{
+			if (inst != null)
+			{
+				wrappedByteArray operands = inst.Operands;
+				// wrappedByteArray reserved1 = inst.Reserved1;
 
-                operands[OperandConstants.Operand0] = (byte)(comboDirection.SelectedIndex + 1);
-            }
+				operands[OperandConstants.Operand0] = (byte)(comboDirection.SelectedIndex + 1);
+			}
 
-            return inst;
-        }
-    }
+			return inst;
+		}
+	}
 }

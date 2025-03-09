@@ -3,6 +3,8 @@
 using System;
 using System.Linq;
 
+using SimPe.PackedFiles.Sdsc;
+
 namespace SimPe.PackedFiles.Wrapper
 {
 	/// <summary>

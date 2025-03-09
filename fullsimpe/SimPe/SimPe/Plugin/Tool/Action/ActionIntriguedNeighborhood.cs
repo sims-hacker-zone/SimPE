@@ -3,6 +3,8 @@
 using System;
 
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Sdna;
+using SimPe.PackedFiles.Sdsc;
 
 namespace SimPe.Plugin.Tool.Action
 {
@@ -44,12 +46,12 @@ namespace SimPe.Plugin.Tool.Action
 				);
 				return;
 			}
-			PackedFiles.Wrapper.SimDNA sdna; // Fuck
+			SimDNA sdna; // Fuck
 
 			Interfaces.Files.IPackedFileDescriptor[] pfds =
 				e.LoadedPackage.Package.FindFiles(Data.FileTypes.SDSC);
 
-			PackedFiles.Wrapper.SDesc sdesc = new PackedFiles.Wrapper.SDesc(
+			SDesc sdesc = new PackedFiles.Sdsc.SDesc(
 				null,
 				null,
 				null
@@ -62,7 +64,7 @@ namespace SimPe.Plugin.Tool.Action
 					sdesc.Nightlife.Species != 0
 					|| (
 						(int)sdesc.Version
-							== (int)PackedFiles.Wrapper.SDescVersions.Castaway
+							== (int)SDescVersions.Castaway
 						&& sdesc.Castaway.Subspecies > 0
 					)
 				)
@@ -78,7 +80,7 @@ namespace SimPe.Plugin.Tool.Action
 					);
 				if (pfb != null)
 				{
-					sdna = new PackedFiles.Wrapper.SimDNA().ProcessFile(pfb, e.LoadedPackage.Package, true);
+					sdna = new SimDNA().ProcessFile(pfb, e.LoadedPackage.Package, true);
 				}
 
 				sdesc.Interests.Animals = 1000;

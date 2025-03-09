@@ -3,6 +3,8 @@
 using System;
 using System.Linq;
 
+using SimPe.PackedFiles.Sdsc;
+
 namespace SimPe.PackedFiles.Bnfo
 {
 	/// <summary>
@@ -39,7 +41,7 @@ namespace SimPe.PackedFiles.Bnfo
 		} = new byte[0x60];
 
 		private readonly Bnfo parent;
-		public Wrapper.ExtSDesc SimDescription => (Wrapper.ExtSDesc)FileTableBase
+		public ExtSDesc SimDescription => (ExtSDesc)FileTableBase
 			.ProviderRegistry
 			.SimDescriptionProvider
 			.SimInstance[SimInstance]

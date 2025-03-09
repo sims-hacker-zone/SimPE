@@ -8,7 +8,9 @@ using System.Linq;
 
 using SimPe.Data;
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Objd;
 using SimPe.PackedFiles.Picture;
+using SimPe.PackedFiles.Str;
 using SimPe.PackedFiles.Swaf;
 using SimPe.Plugin;
 
@@ -261,7 +263,7 @@ namespace SimPe.Cache
 			}
 			Wait.SubStop();
 		}
-		public MemoryCacheItem AddMemoryItem(PackedFiles.Wrapper.ExtObjd objd)
+		public MemoryCacheItem AddMemoryItem(ExtObjd objd)
 		{
 			if (!Items[ContainerType.Memory].ContainsKey(objd.Package.FileName))
 			{
@@ -297,9 +299,9 @@ namespace SimPe.Cache
 
 				if (sitem != null)
 				{
-					PackedFiles.Wrapper.Str str =
-						new PackedFiles.Wrapper.Str().ProcessFile(sitem);
-					PackedFiles.Wrapper.StrItemList strs = str.LanguageItems(
+					Str str =
+						new PackedFiles.Str.Str().ProcessFile(sitem);
+					StrItemList strs = str.LanguageItems(
 						Helper.WindowsRegistry.Config.LanguageCode
 					);
 					if (strs.Length > 0)
@@ -331,9 +333,9 @@ namespace SimPe.Cache
 					).FirstOrDefault();
 				if (sitem != null)
 				{
-					PackedFiles.Wrapper.Str str =
-						new PackedFiles.Wrapper.Str().ProcessFile(sitem);
-					PackedFiles.Wrapper.StrItemList strs = str.LanguageItems(
+					Str str =
+						new PackedFiles.Str.Str().ProcessFile(sitem);
+					StrItemList strs = str.LanguageItems(
 						Data.Languages.English
 					);
 					mci.ValueNames.AddRange((IEnumerable<string>)strs);
@@ -409,7 +411,7 @@ namespace SimPe.Cache
 				if (citems.Count() == 0)
 				{
 
-					AddMemoryItem(new PackedFiles.Wrapper.ExtObjd().ProcessFile(item));
+					AddMemoryItem(new PackedFiles.Objd.ExtObjd().ProcessFile(item));
 					added = true;
 				}
 				Wait.Progress = ct++;

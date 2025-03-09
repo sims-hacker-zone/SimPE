@@ -13,16 +13,17 @@
 using pjse.BhavOperandWizards;
 
 using SimPe.Data;
-using SimPe.PackedFiles.Wrapper;
+using SimPe.PackedFiles.Bhav;
+using SimPe.PackedFiles.Str;
 
 using System;
 using System.Windows.Forms;
 
 /*
  * 0x0074 - Reach / Put
- * 
+ *
  * See https://modthesims.info/wiki.php?title=0x0074
- * 
+ *
  * NOTE: There is an error with operand 10 on that link, it swaps the meaning of the values 1 and 2
  */
 namespace whse.PrimitiveWizards.Wiz0x0074

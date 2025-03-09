@@ -10,6 +10,8 @@ using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Lifo;
 using SimPe.PackedFiles.Nref;
+using SimPe.PackedFiles.Objd;
+using SimPe.PackedFiles.Str;
 using SimPe.PackedFiles.ThreeIdr;
 
 namespace SimPe.Plugin
@@ -684,9 +686,9 @@ namespace SimPe.Plugin
 			string modelname = null;
 			foreach (IPackedFileDescriptor pfd in mpfds)
 			{
-				PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str().ProcessFile(pfd, package);
+				Str str = new PackedFiles.Str.Str().ProcessFile(pfd, package);
 
-				foreach (PackedFiles.Wrapper.StrToken i in str.Items)
+				foreach (StrToken i in str.Items)
 				{
 					string name = Hashes.StripHashFromName(i.Title.Trim().ToLower());
 
@@ -852,8 +854,8 @@ namespace SimPe.Plugin
 			bool updaterugs = false;
 			foreach (IPackedFileDescriptor pfd in pfds)
 			{
-				PackedFiles.Wrapper.ExtObjd objd =
-					new PackedFiles.Wrapper.ExtObjd().ProcessFile(pfd, package);
+				ExtObjd objd =
+					new PackedFiles.Objd.ExtObjd().ProcessFile(pfd, package);
 
 				//is one of the objd's a rug?
 				if (
@@ -871,8 +873,8 @@ namespace SimPe.Plugin
 			{
 				foreach (IPackedFileDescriptor pfd in pfds)
 				{
-					PackedFiles.Wrapper.ExtObjd objd =
-						new PackedFiles.Wrapper.ExtObjd().ProcessFile(pfd, package);
+					ExtObjd objd =
+						new PackedFiles.Objd.ExtObjd().ProcessFile(pfd, package);
 
 					//make sure the Type of a Rug is not a Tile, but Normal
 					if (objd.Type == ObjectTypes.Tiles)

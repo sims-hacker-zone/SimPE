@@ -8,6 +8,8 @@ using System.Linq;
 
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Idno;
+using SimPe.PackedFiles.Sdsc;
+using SimPe.PackedFiles.Str;
 
 namespace SimPe.Plugin
 {
@@ -91,8 +93,8 @@ namespace SimPe.Plugin
 						pfd = pkg.FindFileAnyGroup(Data.FileTypes.CTSS, 0, 1);
 						if (pfd != null)
 						{
-							PackedFiles.Wrapper.StrItemList items =
-								new PackedFiles.Wrapper.Str().ProcessFile(pfd, pkg).FallbackedLanguageItems(
+							StrItemList items =
+								new PackedFiles.Str.Str().ProcessFile(pfd, pkg).FallbackedLanguageItems(
 									Helper.WindowsRegistry.Config.LanguageCode
 								);
 							if (items.Length > 0)
@@ -144,7 +146,7 @@ namespace SimPe.Plugin
 			try
 			{
 				foreach (
-					PackedFiles.Wrapper.SDesc simdesc in FileTableBase
+					SDesc simdesc in FileTableBase
 						.ProviderRegistry
 						.SimDescriptionProvider
 						.SimInstance

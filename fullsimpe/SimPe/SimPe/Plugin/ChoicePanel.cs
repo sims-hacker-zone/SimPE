@@ -11,7 +11,7 @@ namespace SimPe.Plugin
 			InitializeComponent();
 		}
 		private const int mm = 100;
-		public void setValues(bool labels, string label, string value, PackedFiles.Wrapper.Bcon[] bcon, ushort level)
+		public void setValues(bool labels, string label, string value, PackedFiles.Bcon.Bcon[] bcon, ushort level)
 		{
 			Labels = labels;
 			lbChoice.Text = label;
@@ -32,7 +32,7 @@ namespace SimPe.Plugin
 					lnudCreativity.Enabled = lnudLogic.Enabled = lnudCleaning.Enabled = false;
 			}
 		}
-		public void getValues(PackedFiles.Wrapper.Bcon[] bcon, ushort level)
+		public void getValues(PackedFiles.Bcon.Bcon[] bcon, ushort level)
 		{
 			bcon[0][level] = (short)(lnudCooking.Value * mm);
 			bcon[1][level] = (short)(lnudMechanical.Value * mm);

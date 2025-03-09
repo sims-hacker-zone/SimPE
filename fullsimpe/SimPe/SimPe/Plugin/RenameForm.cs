@@ -9,6 +9,7 @@ using SimPe.Data;
 using SimPe.Extensions;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
+using SimPe.PackedFiles.Str;
 
 namespace SimPe.Plugin
 {
@@ -265,10 +266,10 @@ namespace SimPe.Plugin
 			{
 				if (pfd.Instance == 0x85)
 				{
-					PackedFiles.Wrapper.Str str =
-						new PackedFiles.Wrapper.Str().ProcessFile(pfd, package);
+					Str str =
+						new PackedFiles.Str.Str().ProcessFile(pfd, package);
 
-					PackedFiles.Wrapper.StrItemList sil = str.LanguageItems(1);
+					StrItemList sil = str.LanguageItems(1);
 					if (sil.Length > 1)
 					{
 						return sil[1].Title;

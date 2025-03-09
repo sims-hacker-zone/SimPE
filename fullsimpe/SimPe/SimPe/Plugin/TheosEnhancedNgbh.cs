@@ -7,7 +7,7 @@ using System.Linq;
 using SimPe.Forms.MainUI;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
-using SimPe.PackedFiles.Wrapper;
+using SimPe.PackedFiles.Sdsc;
 
 namespace SimPe.Plugin
 {

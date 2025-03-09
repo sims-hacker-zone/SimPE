@@ -8,7 +8,9 @@ using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Objd;
 using SimPe.PackedFiles.Picture;
+using SimPe.PackedFiles.Str;
 
 namespace SimPe.Providers
 {
@@ -64,9 +66,9 @@ namespace SimPe.Providers
 		/// <returns>the IAlias Object</returns>
 		protected static void ProcessMemoryFile(
 			IPackedFileDescriptor pfd,
-			PackedFiles.Wrapper.ExtObjd objd,
-			PackedFiles.Wrapper.ExtObjd objd_pr,
-			PackedFiles.Wrapper.Str str,
+			ExtObjd objd,
+			ExtObjd objd_pr,
+			Str str,
 			ArrayList list,
 			ref Hashtable memories,
 			IPackageFile BasePackage
@@ -86,9 +88,9 @@ namespace SimPe.Providers
 			ArrayList list = new ArrayList();
 			IPackedFileDescriptor pfd;
 
-			PackedFiles.Wrapper.ExtObjd objd =
-				new PackedFiles.Wrapper.ExtObjd();
-			PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
+			ExtObjd objd =
+				new PackedFiles.Objd.ExtObjd();
+			Str str = new PackedFiles.Str.Str();
 
 			FileTableBase.FileIndex.Load();
 			var items =
@@ -137,7 +139,7 @@ namespace SimPe.Providers
 							if (sitem != null)
 							{
 								str.ProcessData(sitem);
-								PackedFiles.Wrapper.StrItemList strs =
+								StrItemList strs =
 									str.LanguageItems(
 										Helper.WindowsRegistry.Config.LanguageCode
 									);
@@ -229,7 +231,7 @@ namespace SimPe.Providers
 				0x7FE59FD0,
 				instance
 			);
-			PackedFiles.Wrapper.StrItemList sis = new PackedFiles.Wrapper.Str().ProcessFile(pfd, BasePackage).FallbackedLanguageItems(
+			StrItemList sis = new PackedFiles.Str.Str().ProcessFile(pfd, BasePackage).FallbackedLanguageItems(
 				(Languages)lang
 			);
 			for (ushort i = 0; i < sis.Length; i++)
@@ -299,7 +301,7 @@ namespace SimPe.Providers
 					0x000000000000008B,
 					null
 				);
-			PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
+			Str str = new PackedFiles.Str.Str();
 
 			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
 			{
@@ -307,7 +309,7 @@ namespace SimPe.Providers
 
 				for (ushort i = 0; i < str.Items.Length; i++)
 				{
-					PackedFiles.Wrapper.StrToken si = str.Items[i];
+					StrToken si = str.Items[i];
 
 					if (si.Language.Id == 1)
 					{

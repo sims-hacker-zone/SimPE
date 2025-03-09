@@ -13,7 +13,7 @@
 using pjse.BhavOperandWizards;
 
 using SimPe.Data;
-using SimPe.PackedFiles.UserInterface;
+using SimPe.PackedFiles.Bhav;
 using SimPe.PackedFiles.Wrapper;
 
 using System;
@@ -21,7 +21,7 @@ using System.Windows.Forms;
 
 /*
  * 0x007A - On Timer
- * 
+ *
  * See https://www.picknmixmods.com/Sims2/Notes/Primitives/0x007A.html
  */
 namespace whse.PrimitiveWizards.Wiz0x007a

@@ -75,7 +75,7 @@ namespace SimPe
 
 				for (byte i = 1; i < 0x2d; i++)
 				{
-					cblang.Items.Add(new PackedFiles.Wrapper.StrLanguage(i)); // CJH
+					cblang.Items.Add(new PackedFiles.Str.StrLanguage(i)); // CJH
 				}
 
 				Registry.ReportFormats[] rfs = (Registry.ReportFormats[])

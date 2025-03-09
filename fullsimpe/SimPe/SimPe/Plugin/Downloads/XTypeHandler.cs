@@ -6,6 +6,7 @@ using System.Drawing;
 using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
+using SimPe.PackedFiles.Str;
 
 namespace SimPe.Plugin.Downloads
 {
@@ -144,7 +145,7 @@ namespace SimPe.Plugin.Downloads
 				RenderGmdcPreview(pkg);
 			}
 
-			PackedFiles.Wrapper.StrItemList strs = GetCtssItems();
+			StrItemList strs = GetCtssItems();
 			if (strs != null)
 			{
 				if (strs.Count > 0)
@@ -167,7 +168,7 @@ namespace SimPe.Plugin.Downloads
 			UpdateScreen();
 		}
 
-		protected override PackedFiles.Wrapper.StrItemList GetCtssItems()
+		protected override StrItemList GetCtssItems()
 		{
 			if (cpf != null)
 			{

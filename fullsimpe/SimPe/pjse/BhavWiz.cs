@@ -7,10 +7,12 @@ using System.Collections.Generic;
 using pjse.BhavNameWizards;
 
 using SimPe.Data;
+using SimPe.PackedFiles.Bhav;
 using SimPe.PackedFiles.Glob;
-using SimPe.PackedFiles.Wrapper;
+using SimPe.PackedFiles.Tprp;
+using SimPe.PackedFiles.Trcn;
 
-using Bhav = SimPe.PackedFiles.Wrapper.Bhav;
+using Bhav = SimPe.PackedFiles.Bhav.Bhav;
 
 namespace pjse
 {
@@ -1435,7 +1437,7 @@ namespace pjse
 				return "[" + Localization.GetString("notfound") + "]";
 			}
 
-			SimPe.PackedFiles.Wrapper.Bcon bcon = new SimPe.PackedFiles.Wrapper.Bcon();
+			SimPe.PackedFiles.Bcon.Bcon bcon = new SimPe.PackedFiles.Bcon.Bcon();
 			bcon.ProcessData(items[0].PFD, items[0].Package);
 
 			if (temp)

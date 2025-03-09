@@ -10,6 +10,8 @@ using SimPe.Data;
 using SimPe.Forms.MainUI;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
+using SimPe.PackedFiles.Objd;
+using SimPe.PackedFiles.Str;
 
 using Message = SimPe.Forms.MainUI.Message;
 
@@ -297,7 +299,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				out OWCloneSettings cs
 			);
 
-			PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str
+			Str str = new PackedFiles.Str.Str
 			{
 				FileDescriptor = new Packages.PackedFileDescriptor
 				{
@@ -316,7 +318,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 			str.FileName = "Model - Names";
 			str.Add(
-				new PackedFiles.Wrapper.StrToken(
+				new PackedFiles.Str.StrToken(
 					0,
 					(byte)Data.Languages.English,
 					"",
@@ -324,7 +326,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				)
 			);
 			str.Add(
-				new PackedFiles.Wrapper.StrToken(
+				new PackedFiles.Str.StrToken(
 					1,
 					(byte)Data.Languages.English,
 					name,
@@ -481,8 +483,8 @@ namespace SimPe.Plugin.Tool.Dockable
 			Interfaces.Files.IPackageFile pkg
 		)
 		{
-			PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str().ProcessFile(pfd, pkg);
-			PackedFiles.Wrapper.StrItemList items = str.LanguageItems(1);
+			Str str = new PackedFiles.Str.Str().ProcessFile(pfd, pkg);
+			StrItemList items = str.LanguageItems(1);
 			for (int i = 1; i < items.Length; i++)
 			{
 				list.Add(items[i].Title);
@@ -909,7 +911,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		protected static Interfaces.Files.IPackedFileDescriptor UpdateDescription(
 			OWCloneSettings cs,
 			Packages.GeneratableFile package,
-			PackedFiles.Wrapper.ExtObjd obj
+			ExtObjd obj
 		)
 		{
 			obj.Price = cs.Price;
@@ -964,14 +966,14 @@ namespace SimPe.Plugin.Tool.Dockable
 
 		protected static void UpdateDescription(
 			OWCloneSettings cs,
-			PackedFiles.Wrapper.Str str
+			Str str
 		)
 		{
 			str.ClearNonDefault();
 			while (str.Items.Length < 2)
 			{
 				str.Add(
-					new PackedFiles.Wrapper.StrToken(str.Items.Length, 1, "", "")
+					new PackedFiles.Str.StrToken(str.Items.Length, 1, "", "")
 				);
 			}
 
@@ -987,9 +989,9 @@ namespace SimPe.Plugin.Tool.Dockable
 		)
 		{
 			//change the price in the OBJd
-			PackedFiles.Wrapper.ExtObjd obj =
-				new PackedFiles.Wrapper.ExtObjd();
-			PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str();
+			ExtObjd obj =
+				new PackedFiles.Objd.ExtObjd();
+			Str str = new PackedFiles.Str.Str();
 			Interfaces.Files.IPackedFileDescriptor[] pfds = package.FindFiles(
 				Data.FileTypes.OBJD
 			);

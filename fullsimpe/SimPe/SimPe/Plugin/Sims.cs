@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Idno;
+using SimPe.PackedFiles.Sdsc;
 
 namespace SimPe.Plugin
 {
@@ -374,7 +375,7 @@ namespace SimPe.Plugin
 		}
 		#endregion
 
-		protected void AddImage(PackedFiles.Wrapper.ExtSDesc sdesc)
+		protected void AddImage(ExtSDesc sdesc)
 		{
 			Image img = null;
 			if (sdesc.Unlinked != 0x00 || !sdesc.AvailableCharacterData || sdesc.IsNPC)
@@ -475,7 +476,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		protected void AddSim(PackedFiles.Wrapper.ExtSDesc sdesc)
+		protected void AddSim(ExtSDesc sdesc)
 		{
 			AddImage(sdesc);
 			ListViewItem lvi = new ListViewItem
@@ -607,20 +608,20 @@ namespace SimPe.Plugin
 			}
 			if (
 				sdesc.Nightlife.Species
-				== PackedFiles.Wrapper.SdscNightlife.SpeciesType.Human
+				== SdscNightlife.SpeciesType.Human
 			)
 			{
 				lvi.SubItems.Add("Human");
 			}
 			else if (
-				sdesc.Version == PackedFiles.Wrapper.SDescVersions.Castaway
+				sdesc.Version == SDescVersions.Castaway
 				&& sdesc.Castaway.Subspecies == 2
 			)
 			{
 				lvi.SubItems.Add("Orang-utan");
 			}
 			else if (
-				sdesc.Version == PackedFiles.Wrapper.SDescVersions.Castaway
+				sdesc.Version == SDescVersions.Castaway
 				&& sdesc.Castaway.Subspecies > 0
 				&& (int)sdesc.Nightlife.Species == 3
 			)
@@ -628,7 +629,7 @@ namespace SimPe.Plugin
 				lvi.SubItems.Add("Leopard");
 			}
 			else if (
-				sdesc.Version == PackedFiles.Wrapper.SDescVersions.Castaway
+				sdesc.Version == SDescVersions.Castaway
 				&& sdesc.Castaway.Subspecies == 1
 				&& (int)sdesc.Nightlife.Species < 3
 			)
@@ -637,21 +638,21 @@ namespace SimPe.Plugin
 			}
 			else if (
 				sdesc.Nightlife.Species
-				== PackedFiles.Wrapper.SdscNightlife.SpeciesType.LargeDog
+				== SdscNightlife.SpeciesType.LargeDog
 			)
 			{
 				lvi.SubItems.Add("Large Dog");
 			}
 			else if (
 				sdesc.Nightlife.Species
-				== PackedFiles.Wrapper.SdscNightlife.SpeciesType.SmallDog
+				== SdscNightlife.SpeciesType.SmallDog
 			)
 			{
 				lvi.SubItems.Add("Small Dog");
 			}
 			else if (
 				sdesc.Nightlife.Species
-				== PackedFiles.Wrapper.SdscNightlife.SpeciesType.Cat
+				== SdscNightlife.SpeciesType.Cat
 			)
 			{
 				lvi.SubItems.Add("Cat");
@@ -680,8 +681,8 @@ namespace SimPe.Plugin
 				foreach (Interfaces.Files.IPackedFileDescriptor spfd in pfds)
 				{
 					Application.DoEvents();
-					PackedFiles.Wrapper.ExtSDesc sdesc =
-						new PackedFiles.Wrapper.ExtSDesc().ProcessFile(spfd, package);
+					ExtSDesc sdesc =
+						new PackedFiles.Sdsc.ExtSDesc().ProcessFile(spfd, package);
 
 					bool doAdd = false;
 					doAdd |= cbNpc.Checked && realIsNPC(sdesc);
@@ -709,32 +710,32 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private bool realIsNPC(PackedFiles.Wrapper.ExtSDesc sdesc)
+		private bool realIsNPC(ExtSDesc sdesc)
 		{
 			return sdesc.FamilyInstance == 0x7fff;
 		}
 
-		private bool realIsTownie(PackedFiles.Wrapper.ExtSDesc sdesc)
+		private bool realIsTownie(ExtSDesc sdesc)
 		{
 			return sdesc.FamilyInstance < 0x7fff && sdesc.FamilyInstance >= 0x7f00;
 		}
 
-		private bool realIsPlayable(PackedFiles.Wrapper.ExtSDesc sdesc)
+		private bool realIsPlayable(ExtSDesc sdesc)
 		{
 			return sdesc.FamilyInstance < 0x7f00 && sdesc.FamilyInstance > 0;
 		}
 
-		private bool realIsUneditable(PackedFiles.Wrapper.ExtSDesc sdesc)
+		private bool realIsUneditable(ExtSDesc sdesc)
 		{
 			return sdesc.FamilyInstance == 0 || sdesc.FamilyInstance > 0x7fff;
 		}
 
-		private bool realIsWoman(PackedFiles.Wrapper.ExtSDesc sdesc)
+		private bool realIsWoman(ExtSDesc sdesc)
 		{
 			return sdesc.CharacterDescription.Gender == Data.MetaData.Gender.Female;
 		}
 
-		private bool realIsAdult(PackedFiles.Wrapper.ExtSDesc sdesc)
+		private bool realIsAdult(ExtSDesc sdesc)
 		{
 			return sdesc.CharacterDescription.LifeSection
 				== LifeSections.Adult;
@@ -789,7 +790,7 @@ namespace SimPe.Plugin
 			}
 
 			pfd =
-				((PackedFiles.Wrapper.SDesc)lv.SelectedItems[0].Tag).FileDescriptor;
+				((SDesc)lv.SelectedItems[0].Tag).FileDescriptor;
 			Close();
 		}
 

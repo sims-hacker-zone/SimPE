@@ -86,7 +86,7 @@ namespace SimPe.PackedFiles.Swaf
 					);
 					if (pfds.Length > 0)
 					{
-						return new Wrapper.SDesc(
+						return new Sdsc.SDesc(
 								Provider.SimNameProvider,
 								Provider.SimFamilynameProvider,
 								Provider.SimDescriptionProvider

@@ -6,6 +6,7 @@ using System;
 using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Picture;
+using SimPe.PackedFiles.Str;
 
 namespace SimPe.Plugin
 {
@@ -239,8 +240,8 @@ namespace SimPe.Plugin
 				);
 				if (pfd != null)
 				{
-					PackedFiles.Wrapper.StrItemList items =
-						new PackedFiles.Wrapper.Str().ProcessFile(pfd, package).FallbackedLanguageItems(
+					StrItemList items =
+						new PackedFiles.Str.Str().ProcessFile(pfd, package).FallbackedLanguageItems(
 							Helper.WindowsRegistry.Config.LanguageCode
 						);
 					if (items.Length > gtnm)

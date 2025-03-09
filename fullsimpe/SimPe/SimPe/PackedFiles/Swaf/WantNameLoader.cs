@@ -5,6 +5,7 @@ using System.Linq;
 using System.Xml.Linq;
 
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Sdsc;
 
 namespace SimPe.PackedFiles.Swaf
 {
@@ -25,12 +26,12 @@ namespace SimPe.PackedFiles.Swaf
 		/// Create a New Instance
 		/// </summary>
 		public WantNameLoader()
-			: this(Wrapper.SDescVersions.Nightlife) { }
+			: this(SDescVersions.Nightlife) { }
 
 		/// <summary>
 		/// Create a New Instance
 		/// </summary>
-		public WantNameLoader(Wrapper.SDescVersions version)
+		public WantNameLoader(SDescVersions version)
 		{
 			ParseXml(version);
 		}
@@ -48,10 +49,10 @@ namespace SimPe.PackedFiles.Swaf
 		/// Create a HashTable with the needed Names from the UI xml File
 		/// </summary>
 		/// <param name="version">Version where you want to load the Description from</param>
-		private void ParseXml(Wrapper.SDescVersions version)
+		private void ParseXml(SDescVersions version)
 		{
 			// version is Sdsc version - must be converted to EP version
-			ExpansionItem ei = Wrapper.SDesc.GetIEVersion(version);
+			ExpansionItem ei = SDesc.GetIEVersion(version);
 			if (ei != null)
 			{
 				Packages.File pkg = Packages.File.LoadFromFile(
@@ -134,8 +135,8 @@ namespace SimPe.PackedFiles.Swaf
 					.SimInstance
 			)
 			{
-				Wrapper.SDesc sdsc =
-					(Wrapper.SDesc)FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(inst.Key);
+				SDesc sdsc =
+					(SDesc)FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(inst.Key);
 				sdsc.SetProviders(FileTableBase.ProviderRegistry);
 				sims[inst.Key] = $"{sdsc.SimName} {sdsc.SimFamilyName} ({sdsc.HouseholdName})";
 			}

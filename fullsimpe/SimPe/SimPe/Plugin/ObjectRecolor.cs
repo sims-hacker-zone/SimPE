@@ -351,7 +351,7 @@ namespace SimPe.Plugin
 			mmat.GetSaveItem("objectGUID").UIntegerValue = 0x00000000;
 			foreach (IPackedFileDescriptor pfd in pfds)
 			{
-				mmat.GetSaveItem("objectGUID").UIntegerValue = new PackedFiles.Wrapper.Objd(null).ProcessFile(pfds[0], Package).SimId;
+				mmat.GetSaveItem("objectGUID").UIntegerValue = new PackedFiles.Objd.Objd(null).ProcessFile(pfds[0], Package).SimId;
 
 				if (pfd.Instance == 0x000041A7)
 				{

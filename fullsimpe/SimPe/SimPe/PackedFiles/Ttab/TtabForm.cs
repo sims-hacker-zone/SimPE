@@ -9,7 +9,7 @@ using pjse;
 
 using SimPe.Data;
 using SimPe.Interfaces.Plugin;
-using SimPe.PackedFiles.UserInterface;
+using SimPe.PackedFiles.Bhav;
 using SimPe.PackedFiles.Wrapper;
 
 using Str = pjse.Str;
@@ -373,14 +373,14 @@ namespace SimPe.PackedFiles.Ttab
 			internalchg = savedstate;
 		}
 
-		private Str str = null;
-		private Str StrRes
+		private pjse.Str str = null;
+		private pjse.Str StrRes
 		{
 			get
 			{
 				if (str == null)
 				{
-					str = new Str(wrapper, wrapper.FileDescriptor.Instance, FileTypes.TTAs);
+					str = new pjse.Str(wrapper, wrapper.FileDescriptor.Instance, FileTypes.TTAs);
 				}
 
 				return str;
@@ -389,7 +389,7 @@ namespace SimPe.PackedFiles.Ttab
 
 		private uint getTTAsCount()
 		{
-			Str w = StrRes;
+			pjse.Str w = StrRes;
 			if (w == null)
 			{
 				return 0;
@@ -441,7 +441,7 @@ namespace SimPe.PackedFiles.Ttab
 			cbStringIndex.Items.Clear();
 
 			uint c = getTTAsCount();
-			Str w = StrRes;
+			pjse.Str w = StrRes;
 			for (int i = 0; i < c; i++)
 			{
 				FallbackStrItem si = w[1, i];
@@ -2221,7 +2221,7 @@ namespace SimPe.PackedFiles.Ttab
 				FileTypes.BHAV,
 				sender == llAction ? currentItem.Action : currentItem.Guardian
 			);
-			Bhav b = new Bhav().ProcessFile(item.PFD, item.Package);
+			Bhav.Bhav b = new Bhav.Bhav().ProcessFile(item.PFD, item.Package);
 
 			BhavForm ui = (BhavForm)b.UIHandler;
 			ui.Tag =

@@ -9,8 +9,10 @@ using Ambertation.Windows.Forms;
 
 using SimPe.Data;
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Bhav;
 using SimPe.PackedFiles.Cpf;
-using SimPe.PackedFiles.Wrapper;
+using SimPe.PackedFiles.Objd;
+using SimPe.PackedFiles.Sdsc;
 
 namespace SimPe.Plugin
 {

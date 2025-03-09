@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 using SimPe.Data;
 using SimPe.Forms.MainUI;
+using SimPe.PackedFiles.Sdsc;
 
 using Message = SimPe.Forms.MainUI.Message;
 
@@ -84,10 +85,10 @@ namespace SimPe.Plugin
 					ChoosePage(biSim, null);
 				}
 
-				PackedFiles.Wrapper.ExtSDesc sdesc =
+				ExtSDesc sdesc =
 					FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
 						(ushort)inst
-					) as PackedFiles.Wrapper.ExtSDesc;
+					) as ExtSDesc;
 				bool found = SelectSimByInstance(sdesc);
 
 				if (!found && sdesc != null)
@@ -100,7 +101,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		protected bool SelectSimByInstance(PackedFiles.Wrapper.SDesc sdesc)
+		protected bool SelectSimByInstance(SDesc sdesc)
 		{
 			bool ret = false;
 			if (sdesc != null)
@@ -499,7 +500,7 @@ namespace SimPe.Plugin
 		private void spc_SelectedSimChanged(
 			object sender,
 			System.Drawing.Image thumb,
-			PackedFiles.Wrapper.SDesc sdesc
+			SDesc sdesc
 		)
 		{
 			if (spc.SelectedSim != null)

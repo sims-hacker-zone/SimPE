@@ -7,6 +7,8 @@ using System.Linq;
 
 using Ambertation.Windows.Forms.Graph;
 
+using SimPe.PackedFiles.Sdsc;
+
 namespace SimPe.PackedFiles.Wrapper
 {
 	/// <summary>

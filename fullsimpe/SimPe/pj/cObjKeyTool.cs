@@ -11,6 +11,7 @@ using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
+using SimPe.PackedFiles.Str;
 using SimPe.PackedFiles.ThreeIdr;
 
 namespace pj
@@ -768,7 +769,7 @@ namespace pj
 				return;
 			}
 
-			SimPe.PackedFiles.Wrapper.Str str = new SimPe.PackedFiles.Wrapper.Str();
+			Str str = new SimPe.PackedFiles.Str.Str();
 			str.ProcessData(ps, srcCpf.Package);
 
 			addFile(str);

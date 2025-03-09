@@ -7,7 +7,7 @@ using System.IO;
 using SimPe.Data;
 using SimPe.Events;
 using SimPe.Interfaces.Files;
-using SimPe.PackedFiles.Wrapper;
+using SimPe.PackedFiles.Clst;
 
 namespace SimPe.Packages
 {
@@ -48,7 +48,7 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Contains the FileListFile
 		/// </summary>
-		protected CompressedFileList filelistfile = null;
+		protected Clst filelistfile = null;
 
 		/// <summary>
 		/// Will contain the File Index
@@ -303,7 +303,7 @@ namespace SimPe.Packages
 			{
 				fl.filelist = (PackedFileDescriptor)
 					fl.FindFile(filelist);
-				fl.filelistfile = new CompressedFileList(
+				fl.filelistfile = new Clst(
 					fl.Header.IndexType
 				);
 			}
@@ -669,7 +669,7 @@ namespace SimPe.Packages
 				//get the FileListFile
 				if (filelist != null)
 				{
-					filelistfile = new CompressedFileList(
+					filelistfile = new Clst(
 						filelist,
 						this
 					);
@@ -680,14 +680,14 @@ namespace SimPe.Packages
 		/// <summary>
 		/// Returns the FileListFile
 		/// </summary>
-		public CompressedFileList FileListFile
+		public Clst FileListFile
 		{
 			get
 			{
 				//get the FileListFile
 				if ((filelist != null) && (filelist == null))
 				{
-					filelistfile = new CompressedFileList(
+					filelistfile = new Clst(
 						filelist,
 						this
 					);

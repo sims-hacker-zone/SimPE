@@ -11,6 +11,7 @@ using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Idno;
+using SimPe.PackedFiles.Sdsc;
 using SimPe.PackedFiles.ThreeIdr;
 
 namespace SimPe.Plugin
@@ -447,7 +448,7 @@ namespace SimPe.Plugin
 		}
 		#endregion
 
-		protected void AddImage(PackedFiles.Wrapper.ExtSDesc sdesc)
+		protected void AddImage(ExtSDesc sdesc)
 		{
 			if (sdesc.HasImage) // if (sdesc.Image != null) -Chris H
 			{
@@ -459,17 +460,17 @@ namespace SimPe.Plugin
 			}
 		}
 
-		private bool realIsNPC(PackedFiles.Wrapper.ExtSDesc sdesc)
+		private bool realIsNPC(ExtSDesc sdesc)
 		{
 			return sdesc.FamilyInstance == 0x7fff;
 		}
 
-		private bool realIsTownie(PackedFiles.Wrapper.ExtSDesc sdesc)
+		private bool realIsTownie(ExtSDesc sdesc)
 		{
 			return sdesc.FamilyInstance < 0x7fff && sdesc.FamilyInstance >= 0x7f00;
 		}
 
-		protected void AddSim(PackedFiles.Wrapper.ExtSDesc sdesc)
+		protected void AddSim(ExtSDesc sdesc)
 		{
 			if (!sdesc.AvailableCharacterData)
 			{
@@ -496,7 +497,7 @@ namespace SimPe.Plugin
 
 			if (
 				(int)sdesc.Version
-					== (int)PackedFiles.Wrapper.SDescVersions.Castaway
+					== (int)SDescVersions.Castaway
 				&& sdesc.Castaway.Subspecies > 0
 			)
 			{
@@ -762,7 +763,7 @@ namespace SimPe.Plugin
 				FileTypes.SDSC
 			))
 				{
-					AddSim(new PackedFiles.Wrapper.ExtSDesc().ProcessFile(spfd, package));
+					AddSim(new PackedFiles.Sdsc.ExtSDesc().ProcessFile(spfd, package));
 				}
 
 				Cursor = Cursors.Default;
@@ -921,12 +922,12 @@ namespace SimPe.Plugin
 
 			llusearche.Enabled = true;
 			llusepatient.Enabled = !(
-				(PackedFiles.Wrapper.ExtSDesc)lv.SelectedItems[0].Tag
+				(ExtSDesc)lv.SelectedItems[0].Tag
 			).IsNPC;
 		}
 
-		PackedFiles.Wrapper.SDesc spatient = null;
-		PackedFiles.Wrapper.SDesc sarche = null;
+		SDesc spatient = null;
+		SDesc sarche = null;
 
 		private void UsePatient(
 			object sender,
@@ -944,7 +945,7 @@ namespace SimPe.Plugin
 				pbpatient.Image = ilist.Images[lv.SelectedItems[0].ImageIndex];
 			}
 
-			spatient = (PackedFiles.Wrapper.SDesc)lv.SelectedItems[0].Tag;
+			spatient = (SDesc)lv.SelectedItems[0].Tag;
 
 			button1.Enabled =
 				(pbpatient.Image != null)
@@ -972,7 +973,7 @@ namespace SimPe.Plugin
 			iskin.Images[0] = ImageLoader.Preview(pbarche.Image, iskin.ImageSize);
 			lvskin.Refresh();
 
-			sarche = (PackedFiles.Wrapper.SDesc)lv.SelectedItems[0].Tag;
+			sarche = (SDesc)lv.SelectedItems[0].Tag;
 			button1.Enabled = (pbpatient.Image != null) && (sarche != null);
 			ShowSimDetails(sarche, pgArchetypeDetails);
 		}
@@ -1356,7 +1357,7 @@ namespace SimPe.Plugin
 				FileTypes.SDSC
 			))
 				{
-					AddSim(new PackedFiles.Wrapper.ExtSDesc().ProcessFile(spfd, ngbh));
+					AddSim(new PackedFiles.Sdsc.ExtSDesc().ProcessFile(spfd, ngbh));
 				}
 
 				Cursor = Cursors.Default;
@@ -1384,7 +1385,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		void ShowSimDetails(PackedFiles.Wrapper.SDesc sim, PropertyGrid pg)
+		void ShowSimDetails(SDesc sim, PropertyGrid pg)
 		{
 			Packages.File package = Packages.File.LoadFromFile(
 				sim.CharacterFileName

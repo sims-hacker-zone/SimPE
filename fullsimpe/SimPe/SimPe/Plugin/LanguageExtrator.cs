@@ -10,6 +10,7 @@ using Ambertation.Windows.Forms;
 
 using SimPe.Data;
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Str;
 
 namespace SimPe.Plugin
 {
@@ -315,8 +316,8 @@ namespace SimPe.Plugin
 					+ Helper.HexString(pfd.Group)
 					+ "-"
 					+ Helper.HexString(pfd.Instance);
-				PackedFiles.Wrapper.StrWrapper str =
-					new PackedFiles.Wrapper.StrWrapper().ProcessFile(pfd, package);
+				StrWrapper str =
+					new PackedFiles.Str.StrWrapper().ProcessFile(pfd, package);
 				if (str.HasLanguage(currentLanguage))
 				{
 					str.ExportLanguage(currentLanguage, floder + "\\" + parf + ".txt");
@@ -332,8 +333,8 @@ namespace SimPe.Plugin
 					+ Helper.HexString(pfd.Group)
 					+ "-"
 					+ Helper.HexString(pfd.Instance);
-				PackedFiles.Wrapper.StrWrapper str =
-					new PackedFiles.Wrapper.StrWrapper().ProcessFile(pfd, package);
+				StrWrapper str =
+					new PackedFiles.Str.StrWrapper().ProcessFile(pfd, package);
 				if (str.HasLanguage(currentLanguage))
 				{
 					str.ExportLanguage(currentLanguage, floder + "\\" + parf + ".txt");
@@ -349,8 +350,8 @@ namespace SimPe.Plugin
 					+ Helper.HexString(pfd.Group)
 					+ "-"
 					+ Helper.HexString(pfd.Instance);
-				PackedFiles.Wrapper.StrWrapper str =
-					new PackedFiles.Wrapper.StrWrapper().ProcessFile(pfd, package);
+				StrWrapper str =
+					new PackedFiles.Str.StrWrapper().ProcessFile(pfd, package);
 				if (str.HasLanguage(currentLanguage))
 				{
 					str.ExportLanguage(currentLanguage, floder + "\\" + parf + ".txt");
@@ -420,8 +421,8 @@ namespace SimPe.Plugin
 					package.FindFile(tipe, 0, groop, insta);
 				if (pfd != null)
 				{
-					PackedFiles.Wrapper.StrWrapper str =
-						new PackedFiles.Wrapper.StrWrapper().ProcessFile(pfd, package);
+					StrWrapper str =
+						new PackedFiles.Str.StrWrapper().ProcessFile(pfd, package);
 					str.ImportLanguage(currentLanguage, file);
 					str.SynchronizeUserData();
 				}
@@ -446,8 +447,8 @@ namespace SimPe.Plugin
 
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfdc)
 			{
-				PackedFiles.Wrapper.StrWrapper str =
-					new PackedFiles.Wrapper.StrWrapper().ProcessFile(pfd, package);
+				StrWrapper str =
+					new PackedFiles.Str.StrWrapper().ProcessFile(pfd, package);
 				str.CleanHim();
 				str.SynchronizeUserData();
 				Progress.Value += 1;
@@ -455,8 +456,8 @@ namespace SimPe.Plugin
 
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfdm)
 			{
-				PackedFiles.Wrapper.StrWrapper str =
-					new PackedFiles.Wrapper.StrWrapper().ProcessFile(pfd, package);
+				StrWrapper str =
+					new PackedFiles.Str.StrWrapper().ProcessFile(pfd, package);
 				str.CleanHim();
 				str.SynchronizeUserData();
 				Progress.Value += 1;
@@ -464,8 +465,8 @@ namespace SimPe.Plugin
 
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfdt)
 			{
-				PackedFiles.Wrapper.StrWrapper str =
-					new PackedFiles.Wrapper.StrWrapper().ProcessFile(pfd, package);
+				StrWrapper str =
+					new PackedFiles.Str.StrWrapper().ProcessFile(pfd, package);
 				str.CleanHim();
 				str.SynchronizeUserData();
 				Progress.Value += 1;

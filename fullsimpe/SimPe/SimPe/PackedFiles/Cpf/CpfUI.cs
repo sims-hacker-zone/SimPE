@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Linq;
 
 using SimPe.Interfaces.Plugin;
 
@@ -30,7 +31,7 @@ namespace SimPe.PackedFiles.Cpf
 		public CpfUI(ExecutePreview fkt)
 		{
 			form = new CpfForm();
-			form.cbtype.Items.AddRange((object[])Enum.GetValues(typeof(Data.DataTypes)));
+			form.cbtype.Items.AddRange(Enum.GetValues(typeof(Data.DataTypes)).Cast<object>().ToArray());
 
 			form.cbtype.SelectedIndex = 0;
 

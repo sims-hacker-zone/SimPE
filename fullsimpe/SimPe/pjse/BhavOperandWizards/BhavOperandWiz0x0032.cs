@@ -3,7 +3,8 @@
 using System;
 using System.Windows.Forms;
 
-using SimPe.PackedFiles.Wrapper;
+using SimPe.PackedFiles.Bhav;
+using SimPe.PackedFiles.Str;
 
 namespace pjse.BhavOperandWizards.Wiz0x0032
 {

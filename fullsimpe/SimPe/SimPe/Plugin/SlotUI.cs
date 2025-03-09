@@ -3,6 +3,8 @@
 using System.Drawing;
 using System.Windows.Forms;
 
+using SimPe.PackedFiles.Sdsc;
+
 namespace SimPe.Plugin
 {
 	/// <summary>
@@ -409,7 +411,7 @@ namespace SimPe.Plugin
 		private void pc_SelectedSimChanged(
 			object sender,
 			Image thumb,
-			PackedFiles.Wrapper.SDesc sdesc
+			SDesc sdesc
 		)
 		{
 			if (ngbh != null && pc != null)

@@ -3,7 +3,8 @@
 using System;
 
 using SimPe.Data;
-using SimPe.PackedFiles.Wrapper;
+using SimPe.PackedFiles.Bhav;
+using SimPe.PackedFiles.Tprp;
 
 namespace pjse.BhavNameWizards
 {

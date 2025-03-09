@@ -13,7 +13,9 @@ using Ambertation.Threading;
 using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
+using SimPe.PackedFiles.Objd;
 using SimPe.PackedFiles.Picture;
+using SimPe.PackedFiles.Str;
 
 namespace SimPe.Plugin.Tool.Dockable
 {
@@ -315,8 +317,8 @@ namespace SimPe.Plugin.Tool.Dockable
 				).FirstOrDefault(); //Data.FileTypes.STR
 			if (ctssitem != null)
 			{
-				PackedFiles.Wrapper.Str str = new PackedFiles.Wrapper.Str().ProcessFile(ctssitem);
-				PackedFiles.Wrapper.StrItemList items = str.LanguageItems(
+				Str str = new PackedFiles.Str.Str().ProcessFile(ctssitem);
+				StrItemList items = str.LanguageItems(
 					deflang
 				);
 				if (items.Length > 0)
@@ -379,8 +381,8 @@ namespace SimPe.Plugin.Tool.Dockable
 				&& nrefitem.FileDescriptor.Type == Data.FileTypes.OBJD
 			)
 			{
-				PackedFiles.Wrapper.ExtObjd objd =
-					new PackedFiles.Wrapper.ExtObjd();
+				ExtObjd objd =
+					new PackedFiles.Objd.ExtObjd();
 				nrefitem.FileDescriptor.UserData = nrefitem
 					.Package.Read(nrefitem.FileDescriptor)
 					.UncompressedData;
@@ -410,9 +412,9 @@ namespace SimPe.Plugin.Tool.Dockable
 					).FirstOrDefault();
 				if (ctssitem != null)
 				{
-					PackedFiles.Wrapper.Str str =
-						new PackedFiles.Wrapper.Str().ProcessFile(ctssitem);
-					PackedFiles.Wrapper.StrItemList items = str.LanguageItems(
+					Str str =
+						new PackedFiles.Str.Str().ProcessFile(ctssitem);
+					StrItemList items = str.LanguageItems(
 						deflang
 					);
 					if (items.Length > 0)
@@ -445,7 +447,7 @@ namespace SimPe.Plugin.Tool.Dockable
 					).FirstOrDefault();
 				if (txtitem != null)
 				{
-					PackedFiles.Wrapper.StrItemList items = new PackedFiles.Wrapper.Str(2).ProcessFile(txtitem).LanguageItems(1);
+					StrItemList items = new PackedFiles.Str.Str(2).ProcessFile(txtitem).LanguageItems(1);
 					if (items.Length > 1)
 					{
 						oci.ModelName = items[1].Title;

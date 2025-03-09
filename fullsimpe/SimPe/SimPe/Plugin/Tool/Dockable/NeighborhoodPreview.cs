@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Idno;
+using SimPe.PackedFiles.Str;
 
 namespace SimPe.Plugin.Tool.Dockable
 {
@@ -264,7 +265,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 			try
 			{
-				PackedFiles.Wrapper.StrItemList strs = GetCtssItems();
+				StrItemList strs = GetCtssItems();
 				if (strs != null)
 				{
 					if (strs.Count > 0)
@@ -425,7 +426,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			lbVer.Text = idno != null ? idno.Version.ToString().Replace("_", " ") : NeighborhoodVersion.Unknown.ToString();
 		}
 
-		protected PackedFiles.Wrapper.StrItemList GetCtssItems()
+		protected StrItemList GetCtssItems()
 		{
 			//Get the Name of the Object
 			Interfaces.Files.IPackedFileDescriptor ctss = CatalogDescription;
@@ -435,7 +436,7 @@ namespace SimPe.Plugin.Tool.Dockable
 					ctss_ChangedUserData
 				);
 
-				return new PackedFiles.Wrapper.Str().ProcessFile(ctss, Package).LanguageItems(Helper.WindowsRegistry.Config.LanguageCode);
+				return new PackedFiles.Str.Str().ProcessFile(ctss, Package).LanguageItems(Helper.WindowsRegistry.Config.LanguageCode);
 			}
 			return null;
 		}

@@ -10,7 +10,8 @@ using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Providers;
 using SimPe.PackedFiles.Picture;
-using SimPe.PackedFiles.Wrapper;
+using SimPe.PackedFiles.Sdsc;
+using SimPe.PackedFiles.Str;
 using SimPe.PackedFiles.Xml;
 
 namespace SimPe.Providers

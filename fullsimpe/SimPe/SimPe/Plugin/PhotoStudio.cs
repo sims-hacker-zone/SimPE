@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
+using SimPe.PackedFiles.Sdsc;
 using SimPe.PackedFiles.Txtr;
 
 namespace SimPe.Plugin
@@ -384,7 +385,7 @@ namespace SimPe.Plugin
 		}
 		#endregion
 
-		protected void AddImage(PackedFiles.Wrapper.SDesc sdesc)
+		protected void AddImage(SDesc sdesc)
 		{
 			if (sdesc.HasImage)
 			{
@@ -396,7 +397,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		protected void AddSim(PackedFiles.Wrapper.SDesc sdesc)
+		protected void AddSim(SDesc sdesc)
 		{
 			if (!sdesc.AvailableCharacterData || !sdesc.HasImage)
 			{
@@ -445,8 +446,8 @@ namespace SimPe.Plugin
 				{
 					foreach (Interfaces.Files.IPackedFileDescriptor spfd in pfds)
 					{
-						PackedFiles.Wrapper.SDesc sdesc =
-							new PackedFiles.Wrapper.SDesc(
+						SDesc sdesc =
+							new PackedFiles.Sdsc.SDesc(
 								prov.SimNameProvider,
 								prov.SimFamilynameProvider,
 								null
@@ -882,7 +883,7 @@ namespace SimPe.Plugin
 					return;
 				}
 
-				PackedFiles.Wrapper.SDesc sdesc = (PackedFiles.Wrapper.SDesc)
+				SDesc sdesc = (SDesc)
 					lv.SelectedItems[0].Tag;
 				img = sdesc.Image;
 			}
@@ -930,7 +931,7 @@ namespace SimPe.Plugin
 			{
 				if (lv.SelectedItems.Count > 0)
 				{
-					PackedFiles.Wrapper.SDesc sdesc = (PackedFiles.Wrapper.SDesc)
+					SDesc sdesc = (SDesc)
 						lv.SelectedItems[0].Tag;
 					preview = ShowPreview(sdesc.Image);
 				}

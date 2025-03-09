@@ -10,7 +10,7 @@ namespace SimPe.Plugin
 		{
 			InitializeComponent();
 		}
-		public void setValues(ushort maxLevel, ushort level, PackedFiles.Wrapper.Bcon[] bcon, string male, string female)
+		public void setValues(ushort maxLevel, ushort level, PackedFiles.Bcon.Bcon[] bcon, string male, string female)
 		{
 			IsPetCareer = bcon[0] == null;
 			IsCastaway = bcon[9] != null;
@@ -39,7 +39,7 @@ namespace SimPe.Plugin
 			tbMale.Text = male;
 			tbFemale.Text = female;
 		}
-		public void getValues(PackedFiles.Wrapper.Bcon[] bcon, ushort level, ref string male, ref string female)
+		public void getValues(PackedFiles.Bcon.Bcon[] bcon, ushort level, ref string male, ref string female)
 		{
 			IsPetCareer = bcon[0] == null;
 			IsCastaway = bcon[9] != null;

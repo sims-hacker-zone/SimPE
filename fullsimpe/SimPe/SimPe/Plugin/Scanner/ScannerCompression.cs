@@ -7,7 +7,8 @@ using System.Linq;
 using SimPe.Cache;
 using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Plugin.Scanner;
-using SimPe.PackedFiles.Wrapper;
+using SimPe.PackedFiles.Clst;
+using SimPe.PackedFiles.Objd;
 
 namespace SimPe.Plugin.Scanner
 {

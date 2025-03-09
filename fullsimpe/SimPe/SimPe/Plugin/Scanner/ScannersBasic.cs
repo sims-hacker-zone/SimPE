@@ -11,8 +11,9 @@ using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Plugin.Scanner;
 using SimPe.PackedFiles.Cpf;
+using SimPe.PackedFiles.Objd;
 using SimPe.PackedFiles.Picture;
-using SimPe.PackedFiles.Wrapper;
+using SimPe.PackedFiles.Str;
 
 namespace SimPe.Plugin.Scanner
 {
