@@ -9,5 +9,10 @@
   "omnisharp.enableEditorConfigSupport": true,
   "files.associations": {
     ".globalconfig": "editorconfig"
-  }
+  },
+  "githubPullRequests.remotes": [
+    "origin"
+  ],
+  "githubPullRequests.showPullRequestNumberInTree": true,
+  "githubPullRequests.upstreamRemote": "never"
 }
