@@ -119,7 +119,6 @@ namespace SimPe
 		private Panel hdPlugins;
 		private Panel hdTools;
 		private Panel hdIdent;
-		private SimPe.infocheck infocheck1;
 		private ToolStrip toolBar1;
 		private ToolStripButton tbFolders;
 		private ToolStripButton tbFileTable;
@@ -273,7 +272,6 @@ namespace SimPe
 			this.tbUsername = new System.Windows.Forms.TextBox();
 			this.label11 = new System.Windows.Forms.Label();
 			this.hcCheck = new System.Windows.Forms.Panel();
-			this.infocheck1 = new SimPe.infocheck();
 			this.hdCheck = new Panel();
 			this.checkControl1 = new CheckControl();
 			this.hcCustom = new System.Windows.Forms.Panel();
@@ -1073,16 +1071,10 @@ namespace SimPe
 			//
 			// hcCheck
 			//
-			this.hcCheck.Controls.Add(this.infocheck1);
 			this.hcCheck.Controls.Add(this.hdCheck);
 			this.hcCheck.Controls.Add(this.checkControl1);
 			resources.ApplyResources(this.hcCheck, "hcCheck");
 			this.hcCheck.Name = "hcCheck";
-			//
-			// infocheck1
-			//
-			resources.ApplyResources(this.infocheck1, "infocheck1");
-			this.infocheck1.Name = "infocheck1";
 			//
 			// hdCheck
 			//

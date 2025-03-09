@@ -2876,74 +2876,20 @@ namespace SimPe.PackedFiles.Wrapper
 		#endregion
 
 		#region static values
-		static Interfaces.IAlias[] addoncarrer;
-
 		/// <summary>
 		/// Returns a List of Userdefined Add On Careers
 		/// </summary>
-		public static Interfaces.IAlias[] AddonCarrers
-		{
-			get
-			{
-				if (addoncarrer == null)
-				{
-					addoncarrer = Alias.LoadFromXml(
-						Path.Combine(
-							Helper.SimPeDataPath,
-							"additional_careers.xml"
-						)
-					);
-				}
-
-				return addoncarrer;
-			}
-		}
-
-		static Interfaces.IAlias[] addonmajor;
+		public static Dictionary<uint, string> AddonCarrers => Helper.WindowsRegistry.Config.AdditionalCareers;/*  */
 
 		/// <summary>
 		/// Returns a List of Userdefined Add On Majors
 		/// </summary>
-		public static Interfaces.IAlias[] AddonMajors
-		{
-			get
-			{
-				if (addonmajor == null)
-				{
-					addonmajor = Alias.LoadFromXml(
-						Path.Combine(
-							Helper.SimPeDataPath,
-							"additional_majors.xml"
-						)
-					);
-				}
-
-				return addonmajor;
-			}
-		}
-
-		static Interfaces.IAlias[] addonschool;
+		public static Dictionary<uint, string> AddonMajors => Helper.WindowsRegistry.Config.AdditionalMajors;
 
 		/// <summary>
 		/// Returns a List of Userdefined Add On Schools
 		/// </summary>
-		public static Interfaces.IAlias[] AddonSchools
-		{
-			get
-			{
-				if (addonschool == null)
-				{
-					addonschool = Alias.LoadFromXml(
-						Path.Combine(
-							Helper.SimPeDataPath,
-							"additional_schools.xml"
-						)
-					);
-				}
-
-				return addonschool;
-			}
-		}
+		public static Dictionary<uint, string> AddonSchools => Helper.WindowsRegistry.Config.AdditionalSchools;
 		#endregion
 
 		public static Expansions GetMinExpansion(SDescVersions ver)
