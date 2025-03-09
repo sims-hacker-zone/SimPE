@@ -10,27 +10,29 @@
  *
  */
 
+using SimPe.PackedFiles.Bhav;
 using SimPe.PackedFiles.Wrapper;
+
 using whse.PrimitiveWizards.Wiz0x002e;
 
 namespace whse.PrimitiveWizards
 {
-    // 0x002E - Snap
-    public class BhavOperandWiz0x002e : pjse.ABhavOperandWiz
-    {
-        public BhavOperandWiz0x002e(Instruction i) : base(i)
-        {
-            this.myForm = new UI();
-        }
+	// 0x002E - Snap
+	public class BhavOperandWiz0x002e : pjse.ABhavOperandWiz
+	{
+		public BhavOperandWiz0x002e(Instruction i) : base(i)
+		{
+			this.myForm = new UI();
+		}
 
-        public override void Dispose()
-        {
-            if (this.myForm != null)
-            {
-                // Clean up as necessary
+		public override void Dispose()
+		{
+			if (this.myForm != null)
+			{
+				// Clean up as necessary
 
-                this.myForm = null;
-            }
-        }
-    }
+				this.myForm = null;
+			}
+		}
+	}
 }

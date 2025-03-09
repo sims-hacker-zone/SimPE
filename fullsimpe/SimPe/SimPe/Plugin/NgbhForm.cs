@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 using SimPe.Data;
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Sdsc;
 
 namespace SimPe.Plugin
 {
@@ -49,8 +50,8 @@ namespace SimPe.Plugin
 				uint inst = (uint)os[0];
 				foreach (ListViewItem lvi in lv.Items)
 				{
-					PackedFiles.Wrapper.SDesc sdesc =
-						lvi.Tag as PackedFiles.Wrapper.SDesc;
+					SDesc sdesc =
+						lvi.Tag as SDesc;
 					if (sdesc.FileDescriptor.Instance == inst)
 					{
 						lvi.Selected = true;
@@ -574,7 +575,7 @@ namespace SimPe.Plugin
 			{
 				//change also in the Items List
 				Ngbh wrp = (Ngbh)wrapper;
-				PackedFiles.Wrapper.SDesc sdesc = (PackedFiles.Wrapper.SDesc)
+				SDesc sdesc = (SDesc)
 					lv.SelectedItems[0].Tag;
 				NgbhSlot slot = wrp.Sims.GetInstanceSlot(sdesc.Instance);
 				(slot.ItemsB[SelectedIndex], slot.ItemsB[SelectedIndex - 1]) = (slot.ItemsB[SelectedIndex - 1], slot.ItemsB[SelectedIndex]);
@@ -616,7 +617,7 @@ namespace SimPe.Plugin
 			{
 				//change also in the Items List
 				Ngbh wrp = (Ngbh)wrapper;
-				PackedFiles.Wrapper.SDesc sdesc = (PackedFiles.Wrapper.SDesc)
+				SDesc sdesc = (SDesc)
 					lv.SelectedItems[0].Tag;
 				NgbhSlot slot = wrp.Sims.GetInstanceSlot(sdesc.Instance);
 				(slot.ItemsB[SelectedIndex], slot.ItemsB[SelectedIndex + 1]) = (slot.ItemsB[SelectedIndex + 1], slot.ItemsB[SelectedIndex]);
@@ -676,7 +677,7 @@ namespace SimPe.Plugin
 
 			try
 			{
-				PackedFiles.Wrapper.SDesc sdesc = (PackedFiles.Wrapper.SDesc)
+				SDesc sdesc = (SDesc)
 					lv.SelectedItems[0].Tag;
 
 				cbown.SelectedIndex = 0;
@@ -720,7 +721,7 @@ namespace SimPe.Plugin
 			try
 			{
 				lbname.Text = lv.SelectedItems[0].Text;
-				PackedFiles.Wrapper.SDesc sdesc = (PackedFiles.Wrapper.SDesc)
+				SDesc sdesc = (SDesc)
 					lv.SelectedItems[0].Tag;
 				lbmem.Items.Clear();
 
@@ -1091,7 +1092,7 @@ namespace SimPe.Plugin
 			Cursor = Cursors.WaitCursor;
 			try
 			{
-				PackedFiles.Wrapper.SDesc sdesc = (PackedFiles.Wrapper.SDesc)
+				SDesc sdesc = (SDesc)
 					lv.SelectedItems[0].Tag;
 
 				Ngbh wrp = (Ngbh)wrapper;

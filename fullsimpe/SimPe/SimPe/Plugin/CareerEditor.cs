@@ -8,9 +8,10 @@ using System.Windows.Forms;
 
 using SimPe.Data;
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Bcon;
+using SimPe.PackedFiles.Bhav;
 using SimPe.PackedFiles.Picture;
-using SimPe.PackedFiles.Wrapper;
-
+using SimPe.PackedFiles.Str;
 
 namespace SimPe.Plugin
 {

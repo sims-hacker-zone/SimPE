@@ -14,19 +14,32 @@ using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Bnfo;
+using SimPe.PackedFiles.Clst;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Fami;
+using SimPe.PackedFiles.Famt;
 using SimPe.PackedFiles.Glob;
+using SimPe.PackedFiles.Grop;
 using SimPe.PackedFiles.Idno;
 using SimPe.PackedFiles.Lifo;
 using SimPe.PackedFiles.Ltxt;
 using SimPe.PackedFiles.Nmap;
 using SimPe.PackedFiles.Nref;
+using SimPe.PackedFiles.Objd;
+using SimPe.PackedFiles.Objf;
+using SimPe.PackedFiles.Olua;
 using SimPe.PackedFiles.Picture;
 using SimPe.PackedFiles.Scid;
+using SimPe.PackedFiles.Scor;
+using SimPe.PackedFiles.Sdna;
+using SimPe.PackedFiles.Sdsc;
+using SimPe.PackedFiles.Slot;
+using SimPe.PackedFiles.Str;
 using SimPe.PackedFiles.Swaf;
 using SimPe.PackedFiles.Tatt;
 using SimPe.PackedFiles.ThreeIdr;
+using SimPe.PackedFiles.Tprp;
+using SimPe.PackedFiles.Trcn;
 using SimPe.PackedFiles.Ttab;
 using SimPe.PackedFiles.Txtr;
 using SimPe.PackedFiles.Wrapper;
@@ -173,7 +186,7 @@ namespace SimPe.Plugin
 						new ExtObjd(),
 						new Glob(),
 						new ObjLua(),
-						new CompressedFileList(),
+						new Clst(),
 						new ThreeIdr(),
 						new Txtr(LinkedProvider, false),
 						new Lifo(LinkedProvider, false),

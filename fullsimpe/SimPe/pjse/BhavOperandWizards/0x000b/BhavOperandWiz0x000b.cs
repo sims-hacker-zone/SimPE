@@ -10,27 +10,29 @@
  *
  */
 
+using SimPe.PackedFiles.Bhav;
 using SimPe.PackedFiles.Wrapper;
+
 using whse.PrimitiveWizards.Wiz0x000b;
 
 namespace whse.PrimitiveWizards
 {
-    // 0x000B - Distance
-    public class BhavOperandWiz0x000b : pjse.ABhavOperandWiz
-    {
-        public BhavOperandWiz0x000b(Instruction i) : base(i)
-        {
-            this.myForm = new UI();
-        }
+	// 0x000B - Distance
+	public class BhavOperandWiz0x000b : pjse.ABhavOperandWiz
+	{
+		public BhavOperandWiz0x000b(Instruction i) : base(i)
+		{
+			this.myForm = new UI();
+		}
 
-        public override void Dispose()
-        {
-            if (this.myForm != null)
-            {
-                // Clean up as necessary
+		public override void Dispose()
+		{
+			if (this.myForm != null)
+			{
+				// Clean up as necessary
 
-                this.myForm = null;
-            }
-        }
-    }
+				this.myForm = null;
+			}
+		}
+	}
 }

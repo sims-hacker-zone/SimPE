@@ -8,6 +8,7 @@ using SimPe.Data;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
 using SimPe.Packages;
+using SimPe.PackedFiles.Str;
 
 namespace SimPe.Plugin
 {
@@ -243,7 +244,7 @@ namespace SimPe.Plugin
 
 			if (pfds.Length > 0)
 			{
-				guid = new PackedFiles.Wrapper.ExtObjd().ProcessFile(pfds[0], Package).Guid;
+				guid = new PackedFiles.Objd.ExtObjd().ProcessFile(pfds[0], Package).Guid;
 			}
 			return guid;
 		}
@@ -326,7 +327,7 @@ namespace SimPe.Plugin
 			{
 				if (instances.Contains(pfd.Instance))
 				{
-					foreach (PackedFiles.Wrapper.StrToken si in new PackedFiles.Wrapper.Str().ProcessFile(pfd, Package).Items)
+					foreach (StrToken si in new PackedFiles.Str.Str().ProcessFile(pfd, Package).Items)
 					{
 						string s = si.Title.Trim();
 						if (s != "")

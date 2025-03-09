@@ -347,7 +347,7 @@ namespace SimPe.Plugin
 				);
 				if (pfd != null)
 				{
-					name = new PackedFiles.Wrapper.Str().ProcessFile(pfd, pk).FallbackedLanguageItem(
+					name = new PackedFiles.Str.Str().ProcessFile(pfd, pk).FallbackedLanguageItem(
 						Helper.WindowsRegistry.Config.LanguageCode,
 						0
 					).Title;

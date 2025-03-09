@@ -4,6 +4,8 @@
 using System;
 using System.Windows.Forms;
 
+using SimPe.PackedFiles.Sdsc;
+
 namespace SimPe.PackedFiles.Wrapper
 {
 	public partial class PetTraitSelect : UserControl

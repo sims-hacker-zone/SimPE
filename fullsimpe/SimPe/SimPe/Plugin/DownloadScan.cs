@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
+using SimPe.PackedFiles.Str;
 using SimPe.PackedFiles.Txtr;
 
 namespace SimPe.Plugin
@@ -1030,7 +1031,7 @@ namespace SimPe.Plugin
 
 			for (int i = 0; i < res.Length; i++)
 			{
-				res[i] = new PackedFiles.Wrapper.Objd(null).ProcessFile(pfds[i], package).SimId;
+				res[i] = new PackedFiles.Objd.Objd(null).ProcessFile(pfds[i], package).SimId;
 			}
 			return res;
 		}
@@ -1112,8 +1113,8 @@ namespace SimPe.Plugin
 
 					if (pfds.Length > 0)
 					{
-						PackedFiles.Wrapper.StrItemList items =
-							new PackedFiles.Wrapper.Str().ProcessFile(pfds[0], package).FallbackedLanguageItems(
+						StrItemList items =
+							new PackedFiles.Str.Str().ProcessFile(pfds[0], package).FallbackedLanguageItems(
 								Helper.WindowsRegistry.Config.LanguageCode
 							);
 						if (items != null)

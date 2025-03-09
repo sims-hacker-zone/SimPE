@@ -7,7 +7,8 @@ using System.Windows.Forms;
 using pjse.BhavNameWizards;
 
 using SimPe.Data;
-using SimPe.PackedFiles.Wrapper;
+using SimPe.PackedFiles.Bhav;
+using SimPe.PackedFiles.Tprp;
 
 namespace pjse.BhavOperandWizards.WizBhav
 {

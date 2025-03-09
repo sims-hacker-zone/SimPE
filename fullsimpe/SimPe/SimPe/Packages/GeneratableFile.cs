@@ -7,6 +7,7 @@ using System.IO;
 using SimPe.Collections.IO;
 using SimPe.Data;
 using SimPe.Interfaces.Files;
+using SimPe.PackedFiles.Clst;
 
 namespace SimPe.Packages
 {
@@ -253,7 +254,7 @@ namespace SimPe.Packages
 				return;
 			}
 
-			filelistfile = new PackedFiles.Wrapper.CompressedFileList(
+			filelistfile = new PackedFiles.Clst.Clst(
 				Header.IndexType
 			);
 			filelist = new PackedFileDescriptor
@@ -461,15 +462,15 @@ namespace SimPe.Packages
 			//so we only need to delete entries in the Filelist that do not exist any longer. The Size
 			//won't change!
 			byte[] b = Read(filelist).UncompressedData;
-			PackedFiles.Wrapper.CompressedFileList fl =
-				new PackedFiles.Wrapper.CompressedFileList(filelist, this);
+			Clst fl =
+				new PackedFiles.Clst.Clst(filelist, this);
 			if (filelist.MarkForDelete)
 			{
 				fl.Clear();
 			}
 
-			PackedFiles.Wrapper.CompressedFileList newfl =
-				new PackedFiles.Wrapper.CompressedFileList(Header.IndexType)
+			Clst newfl =
+				new PackedFiles.Clst.Clst(Header.IndexType)
 				{
 					FileDescriptor = filelist
 				};
@@ -482,14 +483,14 @@ namespace SimPe.Packages
 
 					if (pos != -1) //the file did already exist, so the size did not change!
 					{
-						PackedFiles.Wrapper.ClstItem fi = fl.Items[pos];
+						ClstItem fi = fl.Items[pos];
 						newfl.Add(fi);
 					}
 					else //the file is new but compressed
 					{
 						//IPackedFile pf = this.Read((IPackedFileDescriptor)tmpindex[i]);
-						PackedFiles.Wrapper.ClstItem fi =
-							new PackedFiles.Wrapper.ClstItem(newfl.IndexType);
+						ClstItem fi =
+							new PackedFiles.Clst.ClstItem(newfl.IndexType);
 						PackedFileDescriptor pfd = (PackedFileDescriptor)tmpindex[i];
 						fi.Type = pfd.Type;
 						fi.Group = pfd.Group;

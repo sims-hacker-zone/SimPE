@@ -11,6 +11,7 @@ using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Scenegraph;
 using SimPe.PackedFiles.Cpf;
 using SimPe.PackedFiles.Nmap;
+using SimPe.PackedFiles.Str;
 using SimPe.PackedFiles.ThreeIdr;
 
 namespace SimPe.Plugin
@@ -112,7 +113,7 @@ namespace SimPe.Plugin
 				0x85
 			))
 			{
-				foreach (PackedFiles.Wrapper.StrToken item in new PackedFiles.Wrapper.Str().ProcessFile(pfd, pkg).Items)
+				foreach (StrToken item in new PackedFiles.Str.Str().ProcessFile(pfd, pkg).Items)
 				{
 					string mname = Hashes.StripHashFromName(
 						item.Title.Trim().ToLower()
@@ -950,7 +951,7 @@ namespace SimPe.Plugin
 				instance.Instance
 			))
 			{
-				foreach (PackedFiles.Wrapper.StrToken si in new PackedFiles.Wrapper.Str().ProcessFile(pfd, pkg).Items)
+				foreach (StrToken si in new PackedFiles.Str.Str().ProcessFile(pfd, pkg).Items)
 				{
 					string name = Hashes.StripHashFromName(si.Title).Trim();
 					if (name == "")

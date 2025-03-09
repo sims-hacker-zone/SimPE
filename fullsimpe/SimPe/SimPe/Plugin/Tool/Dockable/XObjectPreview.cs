@@ -7,6 +7,7 @@ using System.Drawing;
 using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
+using SimPe.PackedFiles.Str;
 
 namespace SimPe.Plugin.Tool.Dockable
 {
@@ -147,7 +148,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			pb.Image = null;
 			pb.Image = GenerateImage(pb.Size, GetXThumbnail(cpf), true);
 
-			PackedFiles.Wrapper.StrItemList strs = GetCtssItems();
+			StrItemList strs = GetCtssItems();
 			if (strs != null)
 			{
 				if (strs.Count > 0)
@@ -174,7 +175,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 		}
 
-		protected override PackedFiles.Wrapper.StrItemList GetCtssItems()
+		protected override StrItemList GetCtssItems()
 		{
 			if (cpf != null)
 			{

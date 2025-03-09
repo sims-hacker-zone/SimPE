@@ -12,9 +12,11 @@ using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
 using SimPe.PackedFiles.Idno;
 using SimPe.PackedFiles.Ltxt;
-using SimPe.PackedFiles.Wrapper;
 using SimPe.Plugin;
 using SimPe.PackedFiles.Fami;
+using SimPe.PackedFiles.Famt;
+using SimPe.PackedFiles.Str;
+using SimPe.PackedFiles.Sdsc;
 
 namespace pjHoodTool
 {

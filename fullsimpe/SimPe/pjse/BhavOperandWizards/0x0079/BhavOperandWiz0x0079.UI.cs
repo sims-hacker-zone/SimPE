@@ -12,6 +12,7 @@
 
 using pjse.BhavOperandWizards;
 
+using SimPe.PackedFiles.Bhav;
 using SimPe.PackedFiles.Wrapper;
 
 using System;

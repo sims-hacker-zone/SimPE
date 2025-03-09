@@ -9,7 +9,7 @@ namespace SimPe.Plugin
 	/// The wrapper is used to (un)serialize the Data of a file into it's Attributes. So Basically it reads
 	/// a BinaryStream and translates the data into some userdefine Attributes.
 	/// </remarks>
-	public class Bcon : PackedFiles.Wrapper.Bcon
+	public class Bcon : PackedFiles.Bcon.Bcon
 	{
 		public Bcon()
 			: base() { }

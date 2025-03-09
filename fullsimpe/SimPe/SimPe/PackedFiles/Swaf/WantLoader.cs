@@ -115,7 +115,7 @@ namespace SimPe.PackedFiles.Swaf
 		/// </summary>
 		/// <param name="wnt">The Want File</param>
 		/// <returns>The Str File or null if none was found</returns>
-		public static Wrapper.Str LoadText(XWant wnt)
+		public static Str.Str LoadText(XWant wnt)
 		{
 			if (wnt == null)
 			{
@@ -136,7 +136,7 @@ namespace SimPe.PackedFiles.Swaf
 			{
 				pfds[0].UserData = txtpkg.Read(pfds[0]).UncompressedData;
 
-				return new Wrapper.Str().ProcessFile(pfds[0], txtpkg);
+				return new Str.Str().ProcessFile(pfds[0], txtpkg);
 
 			}
 			return null;

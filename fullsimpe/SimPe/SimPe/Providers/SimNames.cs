@@ -13,7 +13,9 @@ using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Objd;
 using SimPe.PackedFiles.Picture;
+using SimPe.PackedFiles.Str;
 
 namespace SimPe.Providers
 {
@@ -121,7 +123,7 @@ namespace SimPe.Providers
 		)
 		{
 
-			return AddSim(new PackedFiles.Wrapper.ExtObjd().ProcessFile(objdpfd, fl), ref ct, step, false);
+			return AddSim(new PackedFiles.Objd.ExtObjd().ProcessFile(objdpfd, fl), ref ct, step, false);
 		}
 
 		/// <summary>
@@ -141,7 +143,7 @@ namespace SimPe.Providers
 		/// [4] : When NPC, this will get the Filename
 		/// </remarks>
 		protected Alias AddSim(
-			PackedFiles.Wrapper.ExtObjd objd,
+			ExtObjd objd,
 			ref int ct,
 			int step,
 			bool npc
@@ -180,7 +182,7 @@ namespace SimPe.Providers
 
 			if (str_pfd != null)
 			{
-				PackedFiles.Wrapper.StrItemList its = new PackedFiles.Wrapper.Str().ProcessFile(str_pfd, fl).FallbackedLanguageItems(
+				StrItemList its = new PackedFiles.Str.Str().ProcessFile(str_pfd, fl).FallbackedLanguageItems(
 					Helper.WindowsRegistry.Config.LanguageCode
 				);
 				if (its.Length > 0)
@@ -298,8 +300,8 @@ namespace SimPe.Providers
 					break;
 				}
 
-				PackedFiles.Wrapper.ExtObjd objd =
-					new PackedFiles.Wrapper.ExtObjd().ProcessFile(item);
+				ExtObjd objd =
+					new PackedFiles.Objd.ExtObjd().ProcessFile(item);
 				if (
 					(Helper.WindowsRegistry.Config.DeepSimTemplateScan
 					&& objd.Type == ObjectTypes.Template)
@@ -328,10 +330,10 @@ namespace SimPe.Providers
 				try
 				{
 					bool breaked = false;
-					PackedFiles.Wrapper.ExtObjd objd =
-						new PackedFiles.Wrapper.ExtObjd();
-					PackedFiles.Wrapper.Str str =
-						new PackedFiles.Wrapper.Str();
+					ExtObjd objd =
+						new PackedFiles.Objd.ExtObjd();
+					Str str =
+						new PackedFiles.Str.Str();
 					//ArrayList al = new ArrayList();
 					int ct = 0;
 					int step = Math.Max(2, Wait.MaxProgress / 100);

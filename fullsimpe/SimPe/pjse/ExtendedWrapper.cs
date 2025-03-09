@@ -7,9 +7,10 @@ using System.Collections.Generic;
 using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Glob;
-using SimPe.PackedFiles.Wrapper;
+using SimPe.PackedFiles.Tprp;
+using SimPe.PackedFiles.Trcn;
 
-using Bhav = SimPe.PackedFiles.Wrapper.Bhav;
+using Bhav = SimPe.PackedFiles.Bhav.Bhav;
 
 namespace pjse
 {
@@ -80,7 +81,7 @@ namespace pjse
 					(
 						this is Bhav
 						|| this is TPRP
-						|| this is SimPe.PackedFiles.Wrapper.Bcon
+						|| this is SimPe.PackedFiles.Bcon.Bcon
 						|| this is Trcn
 					)
 					&& FileDescriptor != null

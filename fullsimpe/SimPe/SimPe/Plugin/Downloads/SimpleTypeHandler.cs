@@ -4,6 +4,7 @@
 using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Picture;
+using SimPe.PackedFiles.Str;
 
 namespace SimPe.Plugin.Downloads
 {
@@ -27,7 +28,7 @@ namespace SimPe.Plugin.Downloads
 
 			if (pfds.Length > 0)
 			{
-				PackedFiles.Wrapper.StrItemList items =
+				StrItemList items =
 					DefaultTypeHandler.GetCtssItems(pfds[0], pkg);
 				if (items.Length > 0)
 				{

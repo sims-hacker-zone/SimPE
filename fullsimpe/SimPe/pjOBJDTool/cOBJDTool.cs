@@ -8,6 +8,7 @@ using pjse.BhavOperandWizards;
 
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Str;
 
 namespace pjOBJDTool
 {
@@ -77,8 +78,8 @@ namespace pjOBJDTool
 			];
 			wrapper[0x29] = docCTSSInstance.Value;
 
-			SimPe.PackedFiles.Wrapper.StrWrapper ctss =
-				new SimPe.PackedFiles.Wrapper.StrWrapper();
+			StrWrapper ctss =
+				new SimPe.PackedFiles.Str.StrWrapper();
 			if (actss.Length > 0)
 			{
 				ctss.ProcessData(actss[0].PFD, actss[0].Package);

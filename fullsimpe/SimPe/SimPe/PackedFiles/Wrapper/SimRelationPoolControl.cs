@@ -5,6 +5,8 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 
+using SimPe.PackedFiles.Sdsc;
+
 namespace SimPe.PackedFiles.Wrapper
 {
 	[DefaultEvent("SelectedSimChanged")]

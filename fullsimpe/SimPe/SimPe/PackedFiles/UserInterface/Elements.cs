@@ -8,7 +8,10 @@ using System.Windows.Forms;
 using SimPe.Data;
 using SimPe.Forms.MainUI;
 using SimPe.PackedFiles.Fami;
-using SimPe.PackedFiles.Wrapper.Supporting;
+using SimPe.PackedFiles.Famt;
+using SimPe.PackedFiles.Objd;
+using SimPe.PackedFiles.Sdsc;
+using SimPe.PackedFiles.Srel;
 
 using Message = SimPe.Forms.MainUI.Message;
 
@@ -1128,7 +1131,7 @@ namespace SimPe.PackedFiles.UserInterface
 					foreach (Interfaces.IAlias member in lbmembers.Items)
 					{
 						fami.Members.Add(member.Id);
-						Wrapper.SDesc sdesc = fami.GetDescriptionFile(member.Id);
+						SDesc sdesc = fami.GetDescriptionFile(member.Id);
 						sdesc.FamilyInstance = (ushort)fami.FileDescriptor.Instance;
 						sdesc.SynchronizeUserData();
 					}
@@ -1162,7 +1165,7 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				Fami.Fami fami = (Fami.Fami)wrapper;
 				Data.Alias a = (Data.Alias)lbmembers.SelectedItem;
-				Wrapper.SDesc sdsc = fami.GetDescriptionFile(a.Id);
+				SDesc sdsc = fami.GetDescriptionFile(a.Id);
 				if (sdsc == null)
 				{
 					return;
@@ -1458,7 +1461,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 			try
 			{
-				Wrapper.FamilyTies famt = (Wrapper.FamilyTies)wrapper;
+				Famt.Famt famt = (Famt.Famt)wrapper;
 				Data.MetaData.FamilyTieTypes ftt = (Data.LocalizedFamilyTieTypes)
 					cbtietype.Items[cbtietype.SelectedIndex];
 				FamilyTieSim fts = (FamilyTieSim)
@@ -1520,8 +1523,8 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				try
 				{
-					Wrapper.FamilyTies famt =
-						(Wrapper.FamilyTies)wrapper;
+					Famt.Famt famt =
+						(Famt.Famt)wrapper;
 
 					FamilyTieSim[] sims = new FamilyTieSim[cbtiesims.Items.Count];
 					for (int i = 0; i < sims.Length; i++)
@@ -1579,7 +1582,7 @@ namespace SimPe.PackedFiles.UserInterface
 			{
 				try
 				{
-					Wrapper.SRel srel = (Wrapper.SRel)wrapper;
+					SRel srel = (SRel)wrapper;
 					srel.Shortterm = Convert.ToInt32(tbshortterm.Text);
 					srel.Longterm = Convert.ToInt32(tblongterm.Text);
 
@@ -1669,7 +1672,7 @@ namespace SimPe.PackedFiles.UserInterface
 				try
 				{
 					Cursor = Cursors.WaitCursor;
-					Wrapper.Objd objd = (Wrapper.Objd)wrapper;
+					Objd.Objd objd = (Objd.Objd)wrapper;
 
 					foreach (Control c in pnelements.Controls)
 					{
@@ -1679,7 +1682,7 @@ namespace SimPe.PackedFiles.UserInterface
 							if (tb.Tag != null)
 							{
 								string name = (string)tb.Tag;
-								Wrapper.ObjdItem item = (Wrapper.ObjdItem)
+								ObjdItem item = (ObjdItem)
 									objd.Attributes[name];
 								item.val = Convert.ToUInt16(tb.Text, 16);
 								objd.Attributes[name] = item;

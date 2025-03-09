@@ -10,8 +10,8 @@ using System.Xml;
 
 using SimPe.Data;
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Sdsc;
 using SimPe.PackedFiles.Swaf;
-using SimPe.PackedFiles.Wrapper;
 
 namespace SimPe.Wants
 {

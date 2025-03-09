@@ -8,6 +8,8 @@ using SimPe.Data;
 using SimPe.Forms.MainUI;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Fami;
+using SimPe.PackedFiles.Famt;
+using SimPe.PackedFiles.Sdsc;
 
 namespace SimPe.Plugin.Tool.Action
 {
@@ -88,13 +90,13 @@ namespace SimPe.Plugin.Tool.Action
 			{
 				for (int i = 0; i < e.Items.Count; i++)
 				{
-					c += DeleteSim(new PackedFiles.Wrapper.ExtSDesc().ProcessFile(e.Items[i].Resource));
+					c += DeleteSim(new PackedFiles.Sdsc.ExtSDesc().ProcessFile(e.Items[i].Resource));
 				}
 			}
 			else
 			{
-				PackedFiles.Wrapper.ExtSDesc victim =
-					new PackedFiles.Wrapper.ExtSDesc();
+				ExtSDesc victim =
+					new PackedFiles.Sdsc.ExtSDesc();
 				Interfaces.Files.IPackedFileDescriptor[] pfds =
 					e.LoadedPackage.Package.FindFiles(
 						Data.FileTypes.SDSC
@@ -125,7 +127,7 @@ namespace SimPe.Plugin.Tool.Action
 		}
 		#endregion
 
-		int DeleteSim(PackedFiles.Wrapper.ExtSDesc victim)
+		int DeleteSim(ExtSDesc victim)
 		{
 			int ret = 0;
 			uint inst = victim.FileDescriptor.Instance;
@@ -151,7 +153,7 @@ namespace SimPe.Plugin.Tool.Action
 			uint inst,
 			uint guid,
 			Interfaces.Files.IPackageFile pkg,
-			PackedFiles.Wrapper.ExtSDesc victim
+			ExtSDesc victim
 		)
 		{
 			int ret = 0;
@@ -184,7 +186,7 @@ namespace SimPe.Plugin.Tool.Action
 			uint inst,
 			uint guid,
 			Interfaces.Files.IPackageFile pkg,
-			PackedFiles.Wrapper.ExtSDesc victim
+			ExtSDesc victim
 		)
 		{
 			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
@@ -207,7 +209,7 @@ namespace SimPe.Plugin.Tool.Action
 			uint inst,
 			uint guid,
 			Interfaces.Files.IPackageFile pkg,
-			PackedFiles.Wrapper.ExtSDesc victim
+			ExtSDesc victim
 		)
 		{
 			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(type);
@@ -224,7 +226,7 @@ namespace SimPe.Plugin.Tool.Action
 			uint inst,
 			uint guid,
 			Interfaces.Files.IPackageFile pkg,
-			PackedFiles.Wrapper.ExtSDesc victim
+			ExtSDesc victim
 		)
 		{
 			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
@@ -232,12 +234,12 @@ namespace SimPe.Plugin.Tool.Action
 			);
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 			{
-				PackedFiles.Wrapper.FamilyTies ft =
-					new PackedFiles.Wrapper.FamilyTies(null).ProcessFile(pfd, pkg);
+				Famt ft =
+					new PackedFiles.Famt.Famt(null).ProcessFile(pfd, pkg);
 
 				ArrayList sims = new ArrayList();
 				foreach (
-					PackedFiles.Wrapper.Supporting.FamilyTieSim fts in ft.Sims
+					FamilyTieSim fts in ft.Sims
 				)
 				{
 					if (fts.Instance != inst)
@@ -247,8 +249,8 @@ namespace SimPe.Plugin.Tool.Action
 					}
 				}
 
-				PackedFiles.Wrapper.Supporting.FamilyTieSim[] fsims =
-					new PackedFiles.Wrapper.Supporting.FamilyTieSim[sims.Count];
+				FamilyTieSim[] fsims =
+					new FamilyTieSim[sims.Count];
 				sims.CopyTo(fsims);
 
 				ft.Sims = fsims;
@@ -261,7 +263,7 @@ namespace SimPe.Plugin.Tool.Action
 			uint inst,
 			uint guid,
 			Interfaces.Files.IPackageFile pkg,
-			PackedFiles.Wrapper.ExtSDesc victim
+			ExtSDesc victim
 		)
 		{
 			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
@@ -337,7 +339,7 @@ namespace SimPe.Plugin.Tool.Action
 			uint inst,
 			uint guid,
 			Interfaces.Files.IPackageFile pkg,
-			PackedFiles.Wrapper.ExtSDesc victim
+			ExtSDesc victim
 		)
 		{
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pkg.FindFiles(FileTypes.FAMI))
@@ -355,7 +357,7 @@ namespace SimPe.Plugin.Tool.Action
 			uint inst,
 			uint guid,
 			Interfaces.Files.IPackageFile pkg,
-			PackedFiles.Wrapper.ExtSDesc victim
+			ExtSDesc victim
 		)
 		{
 			Interfaces.Files.IPackedFileDescriptor[] pfds = pkg.FindFiles(
@@ -369,8 +371,8 @@ namespace SimPe.Plugin.Tool.Action
 				}
 
 				ArrayList list = new ArrayList();
-				PackedFiles.Wrapper.ExtSDesc sdsc =
-					new PackedFiles.Wrapper.ExtSDesc().ProcessFile(pfd, pkg);
+				ExtSDesc sdsc =
+					new PackedFiles.Sdsc.ExtSDesc().ProcessFile(pfd, pkg);
 
 				sdsc.Relations.SimInstances = (from i in sdsc.Relations.SimInstances
 											   where i != inst

@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 using SimPe.Data;
-using SimPe.PackedFiles.Wrapper;
+using SimPe.PackedFiles.Str;
 
 namespace pjse
 {

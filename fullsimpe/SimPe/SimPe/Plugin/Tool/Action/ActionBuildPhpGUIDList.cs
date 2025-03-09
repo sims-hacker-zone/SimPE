@@ -3,6 +3,7 @@
 using System.Linq;
 
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Objd;
 
 namespace SimPe.Plugin.Tool.Action
 {
@@ -47,8 +48,8 @@ namespace SimPe.Plugin.Tool.Action
 					Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
 				)
 				{
-					PackedFiles.Wrapper.ExtObjd objd =
-						new PackedFiles.Wrapper.ExtObjd().ProcessFile(item);
+					ExtObjd objd =
+						new PackedFiles.Objd.ExtObjd().ProcessFile(item);
 
 					if (guids.Contains(objd.Guid) || objd.Type == Data.ObjectTypes.Memory || objd.Type == Data.ObjectTypes.Person)
 					{
@@ -76,9 +77,9 @@ namespace SimPe.Plugin.Tool.Action
 					if (list.Length==0) sw.Write(objd.FileName.Replace("'", "").Replace("\\", "").Replace("\"", ""));
 					else
 					{
-						SimPe.PackedFiles.Wrapper.Str str = new SimPe.PackedFiles.Wrapper.Str(1);
+						SimPe.PackedFiles.Str.Str str = new SimPe.PackedFiles.Str.Str(1);
 						str.ProcessData(list[0]);
-						SimPe.PackedFiles.Wrapper.StrItemList strs = str.LanguageItems(SimPe.Data.MetaData.Languages.English);
+						SimPe.PackedFiles.Str.StrItemList strs = str.LanguageItems(SimPe.Data.MetaData.Languages.English);
 						if (strs.Count==0) sw.Write(objd.FileName.Replace("'", "").Replace("\\", "").Replace("\"", ""));
 						else sw.Write(strs[0].Title.Replace("'", "").Replace("\\", "").Replace("\"", ""));
 					}*/

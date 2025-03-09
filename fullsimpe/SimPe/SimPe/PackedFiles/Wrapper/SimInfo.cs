@@ -4,6 +4,8 @@
 using System.Drawing;
 using System.Windows.Forms;
 
+using SimPe.PackedFiles.Sdsc;
+
 namespace SimPe.PackedFiles.Wrapper
 {
 	public partial class SimInfo : Form
@@ -79,7 +81,7 @@ namespace SimPe.PackedFiles.Wrapper
 					lbshead.Text += " School";
 				}
 			}
-			lbInform.Text = UserInterface.SimOriGuid.AboutSim(
+			lbInform.Text = SimOriGuid.AboutSim(
 				Sim
 			);
 		}

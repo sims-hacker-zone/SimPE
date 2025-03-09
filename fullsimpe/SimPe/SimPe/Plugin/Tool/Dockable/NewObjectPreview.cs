@@ -8,7 +8,9 @@ using System.Windows.Forms;
 
 using SimPe.Data;
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Objd;
 using SimPe.PackedFiles.Picture;
+using SimPe.PackedFiles.Str;
 
 namespace SimPe.Plugin.Tool.Dockable
 {
@@ -37,10 +39,10 @@ namespace SimPe.Plugin.Tool.Dockable
 		}
 
 		#region Public Properties
-		protected PackedFiles.Wrapper.ExtObjd objd;
+		protected ExtObjd objd;
 
 		[Browsable(false)]
-		public PackedFiles.Wrapper.ExtObjd SelectedObject
+		public ExtObjd SelectedObject
 		{
 			get => objd;
 			set
@@ -322,7 +324,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			{
 				if (oci.Tag is Interfaces.Scenegraph.IScenegraphFileIndexItem item)
 				{
-					objd = new PackedFiles.Wrapper.ExtObjd().ProcessFile(
+					objd = new PackedFiles.Objd.ExtObjd().ProcessFile(
 						item
 					);
 				}
@@ -351,7 +353,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			);
 			if (pfds.Length > 0)
 			{
-				objd = new PackedFiles.Wrapper.ExtObjd().ProcessFile(pfds[0], pkg);
+				objd = new PackedFiles.Objd.ExtObjd().ProcessFile(pfds[0], pkg);
 			}
 			int fct = 0;
 			int vct = 0;
@@ -421,7 +423,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				)
 			);
 
-			PackedFiles.Wrapper.StrItemList strs = GetCtssItems();
+			StrItemList strs = GetCtssItems();
 			if (strs != null)
 			{
 				if (strs.Count > 0)
@@ -503,7 +505,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			ArrayList list = new ArrayList();
 			if (pfd != null)
 			{
-				PackedFiles.Wrapper.StrItemList items = new PackedFiles.Wrapper.Str().ProcessFile(pfd, objd.Package).LanguageItems(1);
+				StrItemList items = new PackedFiles.Str.Str().ProcessFile(pfd, objd.Package).LanguageItems(1);
 				for (int i = 1; i < items.Length; i++)
 				{
 					list.Add(items[i].Title);
@@ -515,17 +517,17 @@ namespace SimPe.Plugin.Tool.Dockable
 			return refname;
 		}
 
-		protected virtual PackedFiles.Wrapper.StrItemList GetCtssItems(
+		protected virtual StrItemList GetCtssItems(
 			Interfaces.Files.IPackedFileDescriptor ctss,
 			Interfaces.Files.IPackageFile pkg
 		)
 		{
 			return ctss != null
-				? new PackedFiles.Wrapper.Str().ProcessFile(ctss, pkg).FallbackedLanguageItems(Helper.WindowsRegistry.Config.LanguageCode)
+				? new PackedFiles.Str.Str().ProcessFile(ctss, pkg).FallbackedLanguageItems(Helper.WindowsRegistry.Config.LanguageCode)
 				: null;
 		}
 
-		protected virtual PackedFiles.Wrapper.StrItemList GetCtssItems()
+		protected virtual StrItemList GetCtssItems()
 		{
 			if (objd == null)
 			{

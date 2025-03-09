@@ -9,7 +9,8 @@ using SimPe.Data;
 using SimPe.Extensions;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
-using SimPe.PackedFiles.Wrapper;
+using SimPe.PackedFiles.Sdsc;
+using SimPe.PackedFiles.Str;
 
 namespace SimPe.PackedFiles.Fami
 {
@@ -154,7 +155,7 @@ namespace SimPe.PackedFiles.Fami
 					{
 
 						StrItemList items =
-							new Str().ProcessFile(pfd, package).FallbackedLanguageItems(
+							new Str.Str().ProcessFile(pfd, package).FallbackedLanguageItems(
 								Helper.WindowsRegistry.Config.LanguageCode
 							);
 						if (items.Length > 0)
@@ -180,7 +181,7 @@ namespace SimPe.PackedFiles.Fami
 					// found a Text Resource
 					if (pfd != null)
 					{
-						Str str = new Str().ProcessFile(pfd, package);
+						Str.Str str = new Str.Str().ProcessFile(pfd, package);
 
 						foreach (
 							StrLanguage lng in str.Languages

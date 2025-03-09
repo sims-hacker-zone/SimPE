@@ -6,6 +6,7 @@ using System;
 using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Idno;
+using SimPe.PackedFiles.Sdsc;
 
 namespace SimPe.Plugin
 {
@@ -82,8 +83,8 @@ namespace SimPe.Plugin
 					if (Helper.IsLotCatalogFile(package.FileName)) // Search by Nid, slow but accurate
 					{
 						found = false;
-						PackedFiles.Wrapper.ExtSDesc sdesc =
-							new PackedFiles.Wrapper.ExtSDesc();
+						ExtSDesc sdesc =
+							new PackedFiles.Sdsc.ExtSDesc();
 						Interfaces.Files.IPackedFileDescriptor[] files =
 							package.FindFiles(FileTypes.SDSC);
 						foreach (
@@ -138,8 +139,8 @@ namespace SimPe.Plugin
 						}
 						else
 						{
-							PackedFiles.Wrapper.ExtSDesc sdesc =
-								new PackedFiles.Wrapper.ExtSDesc().ProcessFile(pfd, package);
+							ExtSDesc sdesc =
+								new PackedFiles.Sdsc.ExtSDesc().ProcessFile(pfd, package);
 							displaystring +=
 								"0x"
 								+ Helper.HexString(Convert.ToInt16(currentsim))

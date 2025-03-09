@@ -4,6 +4,7 @@
 using System;
 
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Str;
 
 namespace SimPe.Plugin.Tool.Dockable.Finder
 {
@@ -81,7 +82,7 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 
 
 			//check all stored nMap entries for a match
-			foreach (PackedFiles.Wrapper.StrToken item in new PackedFiles.Wrapper.Str().ProcessFile(pfd, pkg).Items)
+			foreach (StrToken item in new PackedFiles.Str.Str().ProcessFile(pfd, pkg).Items)
 			{
 				bool found = false;
 				string n = item.Title.Trim().ToLower();

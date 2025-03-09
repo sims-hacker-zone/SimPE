@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using SimPe.Data;
 using SimPe.Extensions;
 using SimPe.Interfaces.Plugin;
-using SimPe.PackedFiles.Wrapper;
+using SimPe.PackedFiles.Sdsc;
 
 namespace SimPe.Wants
 {

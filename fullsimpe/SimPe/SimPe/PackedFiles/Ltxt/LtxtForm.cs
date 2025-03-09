@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Windows.Forms;
 
 using SimPe.Data;
+using SimPe.PackedFiles.Sdsc;
 
 namespace SimPe.PackedFiles.Ltxt
 {
@@ -1685,7 +1686,7 @@ namespace SimPe.PackedFiles.Ltxt
 
 			if (FileTableBase.ProviderRegistry.SimDescriptionProvider.SimInstance[
 					(ushort)simmy
-				] is Wrapper.ExtSDesc sdsc)
+				] is ExtSDesc sdsc)
 			{
 				Interfaces.Files.IPackedFileDescriptor pfd = sdsc.Package.NewDescriptor(
 					FileTypes.SDSC,

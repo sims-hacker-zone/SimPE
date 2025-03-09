@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Objd;
 
 namespace SimPe.Plugin.Tool.Dockable.Finder
 {
@@ -47,8 +48,8 @@ namespace SimPe.Plugin.Tool.Dockable.Finder
 			Interfaces.Files.IPackedFileDescriptor pfd
 		)
 		{
-			PackedFiles.Wrapper.ExtObjd obj =
-				new PackedFiles.Wrapper.ExtObjd().ProcessFile(pfd, pkg);
+			ExtObjd obj =
+				new PackedFiles.Objd.ExtObjd().ProcessFile(pfd, pkg);
 
 			bool found = false;
 

@@ -11,6 +11,7 @@ using Ambertation.Threading;
 using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Picture;
+using SimPe.PackedFiles.Str;
 
 namespace SimPe.Providers
 {
@@ -152,9 +153,9 @@ namespace SimPe.Providers
 						StrFileIndexItem;
 					if (stri != null)
 					{
-						PackedFiles.Wrapper.Str str =
-							new PackedFiles.Wrapper.Str().ProcessFile(stri);
-						PackedFiles.Wrapper.StrItemList items =
+						Str str =
+							new PackedFiles.Str.Str().ProcessFile(stri);
+						StrItemList items =
 							str.FallbackedLanguageItems(
 								Helper.WindowsRegistry.Config.LanguageCode
 							);
@@ -292,8 +293,8 @@ namespace SimPe.Providers
 					string name = Localization.GetString("Unknown");
 					if (pfd != null)
 					{
-						PackedFiles.Wrapper.StrItemList list =
-							new PackedFiles.Wrapper.Str().ProcessFile(pfd, pkg).FallbackedLanguageItems(
+						StrItemList list =
+							new PackedFiles.Str.Str().ProcessFile(pfd, pkg).FallbackedLanguageItems(
 								Helper.WindowsRegistry.Config.LanguageCode
 							);
 						if (list.Count > 0)

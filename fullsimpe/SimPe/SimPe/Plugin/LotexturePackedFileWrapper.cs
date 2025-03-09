@@ -6,6 +6,7 @@ using System;
 using SimPe.Data;
 using SimPe.Extensions;
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Sdsc;
 
 namespace SimPe.Plugin
 {
@@ -173,8 +174,8 @@ namespace SimPe.Plugin
 					}
 				}
 				bool dided = false;
-				PackedFiles.Wrapper.ExtSDesc sdesc =
-					new PackedFiles.Wrapper.ExtSDesc();
+				ExtSDesc sdesc =
+					new PackedFiles.Sdsc.ExtSDesc();
 				Interfaces.Files.IPackedFileDescriptor[] files =
 					package.FindFiles(FileTypes.SDSC);
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in files)
@@ -220,7 +221,7 @@ namespace SimPe.Plugin
 					);
 					texchure[i] = pfd == null
 						? pjse.GUIDIndex.TheGUIDIndex[badgesid[i]] ?? Localization.GetString("Unknown")
-						: new PackedFiles.Wrapper.ExtSDesc().ProcessFile(pfd, package).SimName;
+						: new PackedFiles.Sdsc.ExtSDesc().ProcessFile(pfd, package).SimName;
 				}
 			}
 		}
@@ -283,7 +284,7 @@ namespace SimPe.Plugin
 			return FileDescriptor.Type == FileTypes.SMEM
 				? !(FileTableBase.ProviderRegistry.SimDescriptionProvider.FindSim(
 						(ushort)FileDescriptor.Instance
-					) is PackedFiles.Wrapper.ExtSDesc sdsc)
+					) is ExtSDesc sdsc)
 					? base.GetResourceName(fti)
 					: sdsc.SimName + " Memories"
 				: base.GetResourceName(fti);

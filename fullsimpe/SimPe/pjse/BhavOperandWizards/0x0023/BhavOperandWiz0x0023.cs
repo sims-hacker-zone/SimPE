@@ -10,27 +10,29 @@
  *
  */
 
+using SimPe.PackedFiles.Bhav;
 using SimPe.PackedFiles.Wrapper;
+
 using whse.PrimitiveWizards.Wiz0x0023;
 
 namespace whse.PrimitiveWizards
 {
-    // 0x0023 - Camera Control
-    public class BhavOperandWiz0x0023 : pjse.ABhavOperandWiz
-    {
-        public BhavOperandWiz0x0023(Instruction i) : base(i)
-        {
-            this.myForm = new UI();
-        }
+	// 0x0023 - Camera Control
+	public class BhavOperandWiz0x0023 : pjse.ABhavOperandWiz
+	{
+		public BhavOperandWiz0x0023(Instruction i) : base(i)
+		{
+			this.myForm = new UI();
+		}
 
-        public override void Dispose()
-        {
-            if (this.myForm != null)
-            {
-                // Clean up as necessary
+		public override void Dispose()
+		{
+			if (this.myForm != null)
+			{
+				// Clean up as necessary
 
-                this.myForm = null;
-            }
-        }
-    }
+				this.myForm = null;
+			}
+		}
+	}
 }

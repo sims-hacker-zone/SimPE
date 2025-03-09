@@ -5,7 +5,7 @@ using System;
 using SimPe.Cache;
 using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Plugin.Scanner;
-using SimPe.PackedFiles.Wrapper;
+using SimPe.PackedFiles.Objd;
 
 namespace SimPe.Plugin.Scanner
 {

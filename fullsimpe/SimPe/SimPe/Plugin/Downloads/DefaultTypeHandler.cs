@@ -7,7 +7,9 @@ using System.Drawing;
 
 using SimPe.Data;
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Objd;
 using SimPe.PackedFiles.Picture;
+using SimPe.PackedFiles.Str;
 
 namespace SimPe.Plugin.Downloads
 {
@@ -42,7 +44,7 @@ namespace SimPe.Plugin.Downloads
 
 		protected PackageInfo nfo;
 		protected string flname;
-		protected PackedFiles.Wrapper.ExtObjd objd;
+		protected ExtObjd objd;
 		bool rendergmdc;
 		bool countvert;
 
@@ -278,7 +280,7 @@ namespace SimPe.Plugin.Downloads
 			{
 				if (oci.Tag is Interfaces.Scenegraph.IScenegraphFileIndexItem item)
 				{
-					objd = new PackedFiles.Wrapper.ExtObjd().ProcessFile(
+					objd = new PackedFiles.Objd.ExtObjd().ProcessFile(
 						item
 					);
 				}
@@ -316,8 +318,8 @@ namespace SimPe.Plugin.Downloads
 			{
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
-					PackedFiles.Wrapper.ExtObjd mobjd =
-						new PackedFiles.Wrapper.ExtObjd().ProcessFile(pfd, pkg);
+					ExtObjd mobjd =
+						new PackedFiles.Objd.ExtObjd().ProcessFile(pfd, pkg);
 
 					nfo.AddGuid(mobjd.Guid);
 
@@ -518,7 +520,7 @@ namespace SimPe.Plugin.Downloads
 				)
 			);
 
-			PackedFiles.Wrapper.StrItemList strs = GetCtssItems();
+			StrItemList strs = GetCtssItems();
 			if (strs != null)
 			{
 				if (strs.Count > 0)
@@ -561,7 +563,7 @@ namespace SimPe.Plugin.Downloads
 			ArrayList list = new ArrayList();
 			if (pfd != null)
 			{
-				PackedFiles.Wrapper.StrItemList items = new PackedFiles.Wrapper.Str().ProcessFile(pfd, objd.Package).LanguageItems(1);
+				StrItemList items = new PackedFiles.Str.Str().ProcessFile(pfd, objd.Package).LanguageItems(1);
 				for (int i = 1; i < items.Length; i++)
 				{
 					list.Add(items[i].Title);
@@ -573,7 +575,7 @@ namespace SimPe.Plugin.Downloads
 			return refname;
 		}
 
-		internal static PackedFiles.Wrapper.StrItemList GetCtssItems(
+		internal static StrItemList GetCtssItems(
 			Interfaces.Files.IPackedFileDescriptor ctss,
 			Interfaces.Files.IPackageFile pkg
 		)
@@ -581,13 +583,13 @@ namespace SimPe.Plugin.Downloads
 			if (ctss != null)
 			{
 
-				return new PackedFiles.Wrapper.Str().ProcessFile(ctss, pkg).FallbackedLanguageItems(Helper.WindowsRegistry.Config.LanguageCode);
+				return new PackedFiles.Str.Str().ProcessFile(ctss, pkg).FallbackedLanguageItems(Helper.WindowsRegistry.Config.LanguageCode);
 			}
 
 			return null;
 		}
 
-		protected virtual PackedFiles.Wrapper.StrItemList GetCtssItems()
+		protected virtual StrItemList GetCtssItems()
 		{
 			if (objd == null)
 			{

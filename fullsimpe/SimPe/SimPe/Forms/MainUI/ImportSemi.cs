@@ -8,7 +8,9 @@ using System.Windows.Forms;
 
 using SimPe.Data;
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Bhav;
 using SimPe.PackedFiles.Glob;
+using SimPe.PackedFiles.Str;
 using SimPe.PackedFiles.Ttab;
 
 namespace SimPe.Forms.MainUI
@@ -422,8 +424,8 @@ namespace SimPe.Forms.MainUI
 					}
 					else if (item.FileDescriptor.Type == FileTypes.STR)
 					{
-						PackedFiles.Wrapper.Str str =
-							new PackedFiles.Wrapper.Str().ProcessFile(item);
+						Str str =
+							new PackedFiles.Str.Str().ProcessFile(item);
 						item.FileDescriptor.Filename =
 							item.FileDescriptor.TypeInfo.ShortName
 							+ ": "
@@ -594,7 +596,7 @@ namespace SimPe.Forms.MainUI
 				//Relink all SemiGlobals in imported BHAV's
 				foreach (Plugin.Bhav bhav in bhavs)
 				{
-					foreach (PackedFiles.Wrapper.Instruction i in bhav)
+					foreach (Instruction i in bhav)
 					{
 						if (bhavalias.Contains(i.OpCode))
 						{

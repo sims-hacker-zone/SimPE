@@ -6,6 +6,7 @@ using System.Drawing;
 using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
+using SimPe.PackedFiles.Str;
 using SimPe.PackedFiles.Txtr;
 
 namespace SimPe.Plugin
@@ -16,7 +17,7 @@ namespace SimPe.Plugin
 	public class PhotoStudioTemplate
 	{
 		Cpf pset;
-		PackedFiles.Wrapper.Str ctss;
+		Str ctss;
 
 		/// <summary>
 		/// Create a new Instance and load the main Template Files
@@ -46,7 +47,7 @@ namespace SimPe.Plugin
 				);
 				if (pfd != null)
 				{
-					ctss = new PackedFiles.Wrapper.Str().ProcessFile(pfd, package);
+					ctss = new PackedFiles.Str.Str().ProcessFile(pfd, package);
 				}
 			}
 		}
@@ -71,7 +72,7 @@ namespace SimPe.Plugin
 					return Package.FileName;
 				}
 
-				PackedFiles.Wrapper.StrItemList items =
+				StrItemList items =
 					ctss.FallbackedLanguageItems(Helper.WindowsRegistry.Config.LanguageCode);
 				return items.Length > 0 ? items[0].Title : Package.FileName;
 			}

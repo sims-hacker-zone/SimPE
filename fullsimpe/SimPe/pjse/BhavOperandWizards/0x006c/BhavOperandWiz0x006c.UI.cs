@@ -13,14 +13,15 @@
 using pjse.BhavOperandWizards;
 
 using SimPe.Data;
-using SimPe.PackedFiles.Wrapper;
+using SimPe.PackedFiles.Bhav;
+using SimPe.PackedFiles.Str;
 
 using System;
 using System.Windows.Forms;
 
 /*
  * 0x006C - Animate Stop
- * 
+ *
  * See https://modthesims.info/wiki.php?title=0x006C
  */
 namespace whse.PrimitiveWizards.Wiz0x006c

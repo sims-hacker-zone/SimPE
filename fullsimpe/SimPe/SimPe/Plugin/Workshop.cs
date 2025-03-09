@@ -10,7 +10,9 @@ using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Cpf;
+using SimPe.PackedFiles.Objd;
 using SimPe.PackedFiles.Picture;
+using SimPe.PackedFiles.Str;
 
 namespace SimPe.Plugin
 {
@@ -202,8 +204,8 @@ namespace SimPe.Plugin
 			Alias a,
 			Image img,
 			ObjectTypes type,
-			PackedFiles.Wrapper.ObjFunctionSort functionsort,
-			PackedFiles.Wrapper.ObjBuildType buildtype,
+			ObjFunctionSort functionsort,
+			ObjBuildType buildtype,
 			string name,
 			uint group
 		)
@@ -1409,7 +1411,7 @@ namespace SimPe.Plugin
 
 				if ((npfd.Instance == 0x85) && (npfd.Type == FileTypes.STR))
 				{
-					PackedFiles.Wrapper.StrItemList items = new PackedFiles.Wrapper.Str().ProcessFile(npfd, item.Package).LanguageItems(1);
+					StrItemList items = new PackedFiles.Str.Str().ProcessFile(npfd, item.Package).LanguageItems(1);
 					for (int i = 1; i < items.Length; i++)
 					{
 						list.Add(items[i].Title);
@@ -1815,10 +1817,10 @@ namespace SimPe.Plugin
 					a,
 					oci.Thumbnail,
 					oci.ObjectType,
-					new PackedFiles.Wrapper.ObjFunctionSort(
+					new PackedFiles.Objd.ObjFunctionSort(
 						(oci.ObjectFunctionSort >> 8) & 0xfff
 					),
-					new PackedFiles.Wrapper.ObjBuildType(oci.ObjBuildType),
+					new PackedFiles.Objd.ObjBuildType(oci.ObjBuildType),
 					oci.FileDescriptor.Filename,
 					oci.FileDescriptor.Group
 				);
@@ -1829,10 +1831,10 @@ namespace SimPe.Plugin
 					a,
 					oci.Thumbnail,
 					oci.ObjectType,
-					new PackedFiles.Wrapper.ObjFunctionSort(
+					new PackedFiles.Objd.ObjFunctionSort(
 						oci.ObjectFunctionSort
 					),
-					new PackedFiles.Wrapper.ObjBuildType(oci.ObjBuildType),
+					new PackedFiles.Objd.ObjBuildType(oci.ObjBuildType),
 					oci.FileDescriptor.Filename,
 					oci.FileDescriptor.Group
 				);

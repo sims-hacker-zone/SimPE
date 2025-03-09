@@ -10,6 +10,7 @@ using Ambertation.Windows.Forms;
 
 using SimPe.Data;
 using SimPe.Interfaces.Plugin;
+using SimPe.PackedFiles.Sdsc;
 using SimPe.PackedFiles.Wrapper;
 
 namespace SimPe.PackedFiles.Bnfo

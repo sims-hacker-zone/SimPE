@@ -9,9 +9,11 @@ using System.Windows.Forms;
 using Ambertation.Windows.Forms;
 
 using SimPe.Data;
+using SimPe.PackedFiles.Bhav;
 using SimPe.PackedFiles.Glob;
+using SimPe.PackedFiles.Objf;
+using SimPe.PackedFiles.Str;
 using SimPe.PackedFiles.Ttab;
-using SimPe.PackedFiles.Wrapper;
 
 namespace pjse.guidtool
 {

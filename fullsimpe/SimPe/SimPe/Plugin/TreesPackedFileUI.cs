@@ -378,7 +378,7 @@ namespace SimPe.Plugin
 
 		private void btBhave_Click(object sender, EventArgs e)
 		{
-			PackedFiles.Wrapper.Bhav bhave = (PackedFiles.Wrapper.Bhav)
+			PackedFiles.Bhav.Bhav bhave = (PackedFiles.Bhav.Bhav)
 				Wrapper.SiblingResource(FileTypes.BHAV);
 			if (bhave == null)
 			{

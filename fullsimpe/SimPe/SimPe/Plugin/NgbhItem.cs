@@ -4,6 +4,7 @@ using System;
 using System.Linq;
 
 using SimPe.Cache;
+using SimPe.PackedFiles.Objd;
 
 namespace SimPe.Plugin
 {
@@ -175,7 +176,7 @@ namespace SimPe.Plugin
 			}
 		}
 
-		protected PackedFiles.Wrapper.ExtObjd objd = null;
+		protected ExtObjd objd = null;
 
 		/// <summary>
 		/// Returns the Slot that owns this Item
@@ -241,7 +242,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns the ObjectData for this Item
 		/// </summary>
-		public PackedFiles.Wrapper.ExtObjd ObjectDataFile
+		public ExtObjd ObjectDataFile
 		{
 			get
 			{
@@ -250,7 +251,7 @@ namespace SimPe.Plugin
 					return objd;
 				}
 
-				objd = new PackedFiles.Wrapper.ExtObjd();
+				objd = new PackedFiles.Objd.ExtObjd();
 
 				MemoryCacheItem mci = Cache.Cache.GlobalCache.FindMemoryItem(guid);
 				if (mci != null)
