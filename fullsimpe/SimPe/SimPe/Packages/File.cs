@@ -213,7 +213,7 @@ namespace SimPe.Packages
 		internal void ReloadFromFile(string filename)
 		{
 			// Not sure exactly what this does...
-			persistent = Custom.Settings.Persistent;
+			persistent = Helper.WindowsRegistry.Config.KeepFilesOpen;
 			StreamItem si = StreamFactory.UseStream(
 				filename,
 				FileAccess.Read

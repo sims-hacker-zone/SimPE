@@ -2,187 +2,84 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Resources;
 
 namespace SimPe.Wants
 {
-	class Settings : GlobalizedObject
+	internal class Settings : GlobalizedObject
 	{
-		const string BASENAME = "PJSE\\Wants";
-		XmlRegistryKey xrk = Helper.WindowsRegistry.PluginRegistryKey;
-		XmlRegistryKey rkf =
-			Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(BASENAME);
+		private readonly Dictionary<string, string> options;
+		private const string BASENAME = "PJSE\\Wants";
 
 		public Settings()
-			: base(new ResourceManager(typeof(Settings))) { }
-
-		private static Settings settings = new Settings();
-
-		public static int[] SWAFColumns
+			: base(new ResourceManager(typeof(Settings)))
 		{
-			get
+			if (!Helper.WindowsRegistry.Config.PluginSettings.ContainsKey(BASENAME))
 			{
-				object o = settings.rkf.GetValue("SWAFColumns", null);
-				if (o == null || o as string == null)
-				{
-					return null;
-				}
-
-				try
-				{
-					string[] cols = ((string)o).Split(new char[] { ',' }, 11);
-					if (cols.Length != 11)
-					{
-						return null;
-					}
-
-					List<int> li = new List<int>();
-					foreach (string s in cols)
-					{
-						li.Add(Convert.ToInt32(s));
-					}
-
-					return li.ToArray();
-				}
-				catch
-				{
-					return null;
-				}
+				Helper.WindowsRegistry.Config.PluginSettings[BASENAME] = new Dictionary<string, string>();
 			}
-			set
-			{
-				if (value.Length != 11)
-				{
-					throw new ArgumentOutOfRangeException();
-				}
-
-				bool nc = true;
-				int[] old = SWAFColumns;
-				if (old == null)
-				{
-					nc = false;
-				}
-				else
-				{
-					for (int i = 0; i < value.Length && nc; i++)
-					{
-						nc = value[i] == old[i];
-					}
-				}
-
-				if (nc)
-				{
-					return;
-				}
-
-				string s = value[0].ToString();
-				for (int i = 1; i < value.Length; i++)
-				{
-					s += "," + value[i].ToString();
-				}
-
-				settings.rkf.SetValue("SWAFColumns", s);
-			}
+			options = Helper.WindowsRegistry.Config.PluginSettings[BASENAME];
 		}
 
-		public static bool[] SWAFItemTypes
+		public static Settings Options = new Settings();
+
+		public IEnumerable<int> SWAFColumns
 		{
 			get
 			{
-				bool[] def = new bool[] { true, true, true, true };
-				object o = settings.rkf.GetValue("SWAFItemTypes", null);
-				if (o == null || o as string == null)
+				if (!options.ContainsKey("SWAFColumns"))
 				{
-					return def;
+					options["SWAFColumns"] = null;
 				}
-
-				try
-				{
-					string[] ckbs = ((string)o).Split(new char[] { ',' }, 4);
-					if (ckbs.Length != 4)
-					{
-						return def;
-					}
-
-					List<bool> li = new List<bool>();
-					foreach (string s in ckbs)
-					{
-						li.Add(Convert.ToBoolean(s));
-					}
-
-					return li.ToArray();
-				}
-				catch
-				{
-					return def;
-				}
+				return options["SWAFColumns"] == null
+					? null
+					: (from col in options["SWAFColumns"].Split(new char[] { ',' })
+					   select int.Parse(col));
 			}
-			set
-			{
-				if (value.Length != 4)
-				{
-					throw new ArgumentOutOfRangeException();
-				}
-
-				bool nc = true;
-				bool[] old = SWAFItemTypes;
-				if (old == null)
-				{
-					nc = false;
-				}
-				else
-				{
-					for (int i = 0; i < value.Length && nc; i++)
-					{
-						nc = value[i] == old[i];
-					}
-				}
-
-				if (nc)
-				{
-					return;
-				}
-
-				string s = value[0].ToString();
-				for (int i = 1; i < value.Length; i++)
-				{
-					s += "," + value[i].ToString();
-				}
-
-				settings.rkf.SetValue("SWAFItemTypes", s);
-			}
+			set => options["SWAFColumns"] = string.Join(",", value);
 		}
 
-		public static int SWAFSplitterDistance
+		public IEnumerable<bool> SWAFItemTypes
 		{
 			get
 			{
-				try
+				if (!options.ContainsKey("SWAFItemTypes"))
 				{
-					return (int)settings.rkf.GetValue("SWAFSplitterDistance", -1);
+					options["SWAFItemTypes"] = "true,true,true,true,true";
 				}
-				catch
-				{
-					return -1;
-				}
+				return options["SWAFItemTypes"] == null
+					? null
+					: (from col in options["SWAFItemTypes"].Split(new char[] { ',' })
+					   select bool.Parse(col));
 			}
-			set => settings.rkf.SetValue("SWAFSplitterDistance", value);
+			set => options["SWAFColumns"] = string.Join(",", value);
 		}
 
-		public static int SWAFSortColumn
+		public int SWAFSplitterDistance
 		{
 			get
 			{
-				try
+				if (!options.ContainsKey("SWAFSplitterDistance"))
 				{
-					return (int)settings.rkf.GetValue("SWAFSortColumn", 2);
+					options["SWAFSplitterDistance"] = (-1).ToString();
 				}
-				catch
-				{
-					return 2;
-				}
+				return int.Parse(options["SWAFSplitterDistance"]);
 			}
-			set => settings.rkf.SetValue("SWAFSortColumn", value);
+			set => options["SWAFSplitterDistance"] = value.ToString();
+		}
+
+		public int SWAFSortColumn
+		{
+			get
+			{
+				if (!options.ContainsKey("SWAFSortColumn"))
+				{
+					options["SWAFSortColumn"] = 2.ToString();
+				}
+				return int.Parse(options["SWAFSortColumn"]);
+			}
+			set => options["SWAFSortColumn"] = value.ToString();
 		}
 	}
 }

@@ -2,16 +2,16 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
+
+using SimPe;
 
 namespace pjHoodTool
 {
 	public partial class Settims : Form
 	{
-		internal SimPe.XmlRegistryKey xrk = SimPe
-			.Helper
-			.WindowsRegistry
-			.PluginRegistryKey;
+		private readonly Dictionary<string, string> options;
 		string[] noo = new string[13]
 		{
 			"1",
@@ -36,6 +36,12 @@ namespace pjHoodTool
 
 			//SimPe.GetImage.Loadimges(this.simLogo, SimPe.PathProvider.Global.Latest.Version);
 			//this.simLogo.Run = true;
+
+			if (!Helper.WindowsRegistry.Config.PluginSettings.ContainsKey("PJSE\\HoodTool"))
+			{
+				Helper.WindowsRegistry.Config.PluginSettings["PJSE\\HoodTool"] = new Dictionary<string, string>();
+			}
+			options = Helper.WindowsRegistry.Config.PluginSettings["PJSE\\HoodTool"];
 
 			dun = Settings; // Load settings
 			cbshowbasic.Checked = cHoodTool.incbas;
@@ -78,8 +84,8 @@ namespace pjHoodTool
 			get
 			{
 				if (
-					!SimPe
-						.PathProvider.Global.GetExpansion(SimPe.Expansions.University)
+					!
+						PathProvider.Global.GetExpansion(Expansions.University)
 						.Exists
 				)
 				{
@@ -87,8 +93,8 @@ namespace pjHoodTool
 				}
 
 				if (
-					!SimPe
-						.PathProvider.Global.GetExpansion(SimPe.Expansions.Business)
+					!
+						PathProvider.Global.GetExpansion(Expansions.Business)
 						.Exists
 				)
 				{
@@ -96,8 +102,8 @@ namespace pjHoodTool
 				}
 
 				if (
-					!SimPe
-						.PathProvider.Global.GetExpansion(SimPe.Expansions.FreeTime)
+					!
+						PathProvider.Global.GetExpansion(Expansions.FreeTime)
 						.Exists
 				)
 				{
@@ -105,8 +111,8 @@ namespace pjHoodTool
 				}
 
 				if (
-					!SimPe
-						.PathProvider.Global.GetExpansion(SimPe.Expansions.Apartments)
+					!
+						PathProvider.Global.GetExpansion(Expansions.Apartments)
 						.Exists
 				)
 				{
@@ -118,12 +124,11 @@ namespace pjHoodTool
 				{
 					temp += s;
 				}
-				SimPe.XmlRegistryKey rkf =
-					SimPe.Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(
-						"PJSE\\HoodTool"
-					);
-				object o = rkf.GetValue("SavedValue", temp);
-				string[] now = Convert.ToString(o).Split(",".ToCharArray());
+				if (options.ContainsKey("SavedValue"))
+				{
+					temp = options["SavedValue"];
+				}
+				string[] now = temp.Split(",".ToCharArray());
 				cHoodTool.incbas = now[0] == "1";
 				cHoodTool.incint = now[1] == "1";
 				cHoodTool.inccha = now[2] == "1";
@@ -250,12 +255,7 @@ namespace pjHoodTool
 				{
 					temp += ",.txt";
 				}
-
-				SimPe.XmlRegistryKey rkf =
-					SimPe.Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(
-						"PJSE\\HoodTool"
-					);
-				rkf.SetValue("SavedValue", temp);
+				options["SavedValue"] = temp;
 			}
 		}
 	}

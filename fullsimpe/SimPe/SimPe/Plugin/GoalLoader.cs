@@ -128,7 +128,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		public static void SaveCache()
 		{
-			if (Helper.WindowsRegistry.UseCache && hasnew)
+			if (!Helper.WindowsRegistry.Config.UseCache && hasnew)
 			{
 				Cache.Cache.GlobalCache.Save();
 			}
@@ -173,7 +173,7 @@ namespace SimPe.Plugin
 					return "0x" + Helper.HexString(guid);
 				}
 
-				stg = str.FallbackedLanguageItem(Helper.WindowsRegistry.LanguageCode, 0)
+				stg = str.FallbackedLanguageItem(Helper.WindowsRegistry.Config.LanguageCode, 0)
 					.Title.Replace("$NeighborLocal:2", "True Love");
 				return stg.Replace("$NeighborLocal:3", "Orangutan");
 			}
@@ -251,7 +251,7 @@ namespace SimPe.Plugin
 		{
 			if (
 				PathProvider.Global.GetExpansion(Expansions.IslandStories).Exists
-				&& Helper.WindowsRegistry.LoadOnlySimsStory != 28
+				&& Helper.WindowsRegistry.Config.LoadOnlySimsStory != 28
 			)
 			{
 				string gly =

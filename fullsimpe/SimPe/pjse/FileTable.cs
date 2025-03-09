@@ -2,10 +2,12 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Resources;
 
+using SimPe;
 using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
@@ -25,7 +27,7 @@ namespace pjse
 			{
 				if (gft == null)
 				{
-					if (SimPe.FileTableBase.FileIndex != null)
+					if (FileTableBase.FileIndex != null)
 					{
 						gft = new FileTable();
 					}
@@ -41,9 +43,9 @@ namespace pjse
 
 		public FileTable()
 		{
-			if (SimPe.FileTableBase.FileIndex != null)
+			if (FileTableBase.FileIndex != null)
 			{
-				SimPe.FileTableBase.FileIndex.FILoad += new EventHandler(
+				FileTableBase.FileIndex.FILoad += new EventHandler(
 					FileIndex_FILoad
 				);
 			}
@@ -56,16 +58,16 @@ namespace pjse
 
 		void wm(string message)
 		{
-			SimPe.Wait.Message = message;
-			SimPe.Wait.Progress++;
-			if (SimPe.Splash.Running)
+			Wait.Message = message;
+			Wait.Progress++;
+			if (Splash.Running)
 			{
-				SimPe.Splash.Screen.SetMessage(message);
+				Splash.Screen.SetMessage(message);
 			}
 
-			if (SimPe.WaitingScreen.Running)
+			if (WaitingScreen.Running)
 			{
-				SimPe.WaitingScreen.Message = message;
+				WaitingScreen.Message = message;
 			}
 
 			System.Windows.Forms.Application.DoEvents();
@@ -75,8 +77,8 @@ namespace pjse
 		{
 			string SplashScreenSetMessage = ""; //can't get old message
 			string SimPeWaitingScreenMessage =
-				SimPe.WaitingScreen.Running ? SimPe.WaitingScreen.Message : "";
-			SimPe.Wait.SubStart();
+				WaitingScreen.Running ? WaitingScreen.Message : "";
+			Wait.SubStart();
 
 			try
 			{
@@ -84,15 +86,15 @@ namespace pjse
 			}
 			finally
 			{
-				SimPe.Wait.SubStop();
-				if (SimPe.Splash.Running)
+				Wait.SubStop();
+				if (Splash.Running)
 				{
-					SimPe.Splash.Screen.SetMessage(SplashScreenSetMessage);
+					Splash.Screen.SetMessage(SplashScreenSetMessage);
 				}
 
-				if (SimPe.WaitingScreen.Running)
+				if (WaitingScreen.Running)
 				{
-					SimPe.WaitingScreen.Message = SimPeWaitingScreenMessage;
+					WaitingScreen.Message = SimPeWaitingScreenMessage;
 				}
 			}
 		}
@@ -111,7 +113,7 @@ namespace pjse
 
 		public void Refresh()
 		{
-			Refresh(!SimPe.Helper.LocalMode);
+			Refresh(!Helper.LocalMode);
 		}
 
 		private void Refresh(bool loadEverything)
@@ -132,12 +134,12 @@ namespace pjse
 
 			if (loadEverything)
 			{
-				if (SimPe.Wait.Running)
+				if (Wait.Running)
 				{
-					SimPe.Wait.Progress = 0;
-					SimPe.Wait.MaxProgress = SimPe.FileTableBase.DefaultFolders.Count;
+					Wait.Progress = 0;
+					Wait.MaxProgress = FileTableBase.DefaultFolders.Count;
 				}
-				foreach (SimPe.FileTableItem fii in SimPe.FileTableBase.DefaultFolders)
+				foreach (FileTableItem fii in FileTableBase.DefaultFolders)
 				{
 					if (fii.Use)
 					{
@@ -145,19 +147,19 @@ namespace pjse
 					}
 				}
 
-				if (SimPe.Wait.Running)
+				if (Wait.Running)
 				{
-					SimPe.Wait.MaxProgress = 0;
+					Wait.MaxProgress = 0;
 				}
 			}
 
 			Add(
 				Path.Combine(
-					SimPe.Helper.SimPePluginPath,
+					Helper.SimPePluginPath,
 					"pjse.coder.plugin\\GlobalStrings.package"
 				),
 				false,
-				SimPe.Expansions.Custom,
+				Expansions.Custom,
 				true
 			);
 
@@ -165,17 +167,17 @@ namespace pjse
 			{
 				Add(
 					Path.Combine(
-						SimPe.Helper.SimPePluginDataPath,
+						Helper.SimPePluginDataPath,
 						"pjse.coder.plugin\\Includes"
 					),
 					true,
-					SimPe.Expansions.Custom,
+					Expansions.Custom,
 					true
 				);
 			}
 
 			string packages_txt = Path.Combine(
-				SimPe.Helper.SimPePluginDataPath,
+				Helper.SimPePluginDataPath,
 				"pjse.coder.plugin\\packages.txt"
 			);
 			if (loadEverything)
@@ -192,7 +194,7 @@ namespace pjse
 						Add(
 							line.TrimEnd(new char[] { '+' }),
 							line.EndsWith("+"),
-							SimPe.Expansions.Custom,
+							Expansions.Custom,
 							true
 						);
 					}
@@ -300,7 +302,7 @@ namespace pjse
 			return package != null && fixedPackages.Contains(package);
 		}
 
-		private void Add(string v, bool recurse, SimPe.Expansions ep, bool isFixed)
+		private void Add(string v, bool recurse, Expansions ep, bool isFixed)
 		{
 			wm(
 				"Loading "
@@ -325,13 +327,13 @@ namespace pjse
 			}
 			else if (
 				!v.ToLowerInvariant()
-					.EndsWith(SimPe.Helper.PATH_SEP + "globalcatbin.bundle.package")
+					.EndsWith(Helper.PATH_SEP + "globalcatbin.bundle.package")
 				&& File.Exists(v)
 			)
 			{
 				Add(
 					SimPe.Packages.File.LoadFromFile(v),
-					ep != SimPe.Expansions.Custom,
+					ep != Expansions.Custom,
 					isFixed
 				);
 			}
@@ -482,7 +484,7 @@ namespace pjse
 			}
 			catch (Exception e)
 			{
-				SimPe.Helper.ExceptionMessage(e);
+				Helper.ExceptionMessage(e);
 				throw e;
 			}
 
@@ -563,7 +565,7 @@ namespace pjse
 				IsMaxis = isMaxis;
 				IsFixed = isFixed;
 
-				fii = SimPe.FileTableBase.FileIndex.FindFile(pfd, package).FirstOrDefault();
+				fii = FileTableBase.FileIndex.FindFile(pfd, package).FirstOrDefault();
 
 				PFD.ChangedData += new SimPe.Events.PackedFileChanged(
 					pfd_ChangedData
@@ -611,7 +613,7 @@ namespace pjse
 				get
 				{
 					AbstractWrapper wrapper = (AbstractWrapper)
-						SimPe.FileTableBase.WrapperRegistry.FindHandler(Type);
+						FileTableBase.WrapperRegistry.FindHandler(Type);
 					wrapper?.ProcessData(PFD, Package);
 
 					return wrapper;
@@ -620,7 +622,7 @@ namespace pjse
 
 			public override string ToString()
 			{
-				return this + " (0x" + SimPe.Helper.HexString((ushort)Instance) + ")";
+				return this + " (0x" + Helper.HexString((ushort)Instance) + ")";
 			}
 
 			public static implicit operator string(Entry e)
@@ -630,8 +632,8 @@ namespace pjse
 					AbstractWrapper wrapper = e.Wrapper;
 					if (wrapper != null)
 					{
-						filenames[e] = SimPe
-							.Helper.ToString(wrapper.StoredData.ReadBytes(64))
+						filenames[e] =
+							Helper.ToString(wrapper.StoredData.ReadBytes(64))
 							.Trim();
 					}
 				}
@@ -906,8 +908,9 @@ namespace pjse
 		#endregion
 	}
 
-	public class FileTableSettings : SimPe.GlobalizedObject, ISettings
+	public class FileTableSettings : GlobalizedObject, ISettings
 	{
+		private readonly Dictionary<string, string> options;
 		static ResourceManager rm = new ResourceManager(typeof(Localization));
 
 		public static FileTableSettings FTS
@@ -921,31 +924,29 @@ namespace pjse
 		}
 
 		const string BASENAME = "PJSE\\Bhav";
-		SimPe.XmlRegistryKey xrk = SimPe.Helper.WindowsRegistry.PluginRegistryKey;
 
 		public FileTableSettings()
-			: base(rm) { }
+			: base(rm)
+		{
+			if (!Helper.WindowsRegistry.Config.PluginSettings.ContainsKey(BASENAME))
+			{
+				Helper.WindowsRegistry.Config.PluginSettings[BASENAME] = new Dictionary<string, string>();
+			}
+			options = Helper.WindowsRegistry.Config.PluginSettings[BASENAME];
+		}
 
 		[System.ComponentModel.Category("FT")]
 		public bool LoadAtStartup
 		{
 			get
 			{
-				SimPe.XmlRegistryKey rkf =
-					SimPe.Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(
-						BASENAME
-					);
-				object o = rkf.GetValue("loadAtStartup", true);
-				return Convert.ToBoolean(o);
+				if (!options.ContainsKey("LoadAtStartup"))
+				{
+					options["LoadAtStartup"] = true.ToString();
+				}
+				return bool.Parse(options["LoadAtStartup"]);
 			}
-			set
-			{
-				SimPe.XmlRegistryKey rkf =
-					SimPe.Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey(
-						BASENAME
-					);
-				rkf.SetValue("loadAtStartup", value);
-			}
+			set => options["LoadAtStartup"] = value.ToString();
 		}
 
 		#region ISettings Members

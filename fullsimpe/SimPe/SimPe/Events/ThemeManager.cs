@@ -496,7 +496,7 @@ namespace SimPe
 				if (tm == null)
 				{
 					tm = new ThemeManager(
-						(GuiTheme)Helper.WindowsRegistry.Layout.SelectedTheme
+						(GuiTheme)Helper.WindowsRegistry.Config.Layout.SelectedTheme
 					);
 				}
 

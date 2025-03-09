@@ -15,7 +15,7 @@ namespace SimPe
 	{
 		private void SetupMainForm()
 		{
-			if (Helper.WindowsRegistry.HiddenMode)
+			if (Helper.WindowsRegistry.Config.HiddenMode)
 			{
 				ToolStripButton tbDebug = new ToolStripButton
 				{
@@ -34,7 +34,7 @@ namespace SimPe
 
 			Wait.Bar = waitControl1;
 
-			if (Helper.WindowsRegistry.UseBigIcons)
+			if (Helper.WindowsRegistry.Config.UseBigIcons)
 			{
 				toolBar1.ImageScalingSize = new System.Drawing.Size(32, 32);
 				tbWindow.ImageScalingSize = new System.Drawing.Size(32, 32);
@@ -131,7 +131,7 @@ namespace SimPe
 			manager.ForceCleanUp();
 			lv.Filter = filter;
 
-			if (Helper.WindowsRegistry.LoadTableAtStartup)
+			if (Helper.WindowsRegistry.Config.LoadTableAtStartup)
 			{
 				FileTableBase.FileIndex.AllowEvent = false;
 				Splash.Screen.SetMessage("Loading the FileTable");
@@ -145,7 +145,7 @@ namespace SimPe
 			waitControl1.ShowProgress = false;
 			waitControl1.Progress = 0;
 			waitControl1.Message = "";
-			waitControl1.Visible = Helper.WindowsRegistry.ShowWaitBarPermanent;
+			waitControl1.Visible = Helper.WindowsRegistry.Config.ShowWaitBarPermanent;
 		}
 
 		void LoadForm(object sender, EventArgs e)
@@ -169,17 +169,8 @@ namespace SimPe
 				cbsemig.SelectedIndex = 0;
 			}
 
-			if (!System.IO.File.Exists(Helper.DataFolder.SimPeLayout))
-			{
-				ResetLayout(this, null);
-			}
-			else
-			{
-				ReloadLayout();
-			}
-
 			//Set the Lock State of the Docks
-			MakeFloatable(!Helper.WindowsRegistry.LockDocks);
+			MakeFloatable(!Helper.WindowsRegistry.Config.LockDocks);
 
 			int eep = PathProvider.Global.Latest.Version;
 			if (eep == 20)

@@ -581,7 +581,7 @@ namespace SimPe.Plugin.Downloads
 			if (ctss != null)
 			{
 
-				return new PackedFiles.Wrapper.Str().ProcessFile(ctss, pkg).FallbackedLanguageItems(Helper.WindowsRegistry.LanguageCode);
+				return new PackedFiles.Wrapper.Str().ProcessFile(ctss, pkg).FallbackedLanguageItems(Helper.WindowsRegistry.Config.LanguageCode);
 			}
 
 			return null;

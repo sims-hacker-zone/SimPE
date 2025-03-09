@@ -32,7 +32,7 @@ namespace SimPe.PackedFiles.UserInterface
 			InitializeComponent();
 
 			button2.Enabled = Helper.QARelease;
-			if (Helper.WindowsRegistry.UseBigIcons)
+			if (Helper.WindowsRegistry.Config.UseBigIcons)
 			{
 				tv.Font = new System.Drawing.Font("Tahoma", 12F);
 			}

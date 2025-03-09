@@ -357,7 +357,7 @@ namespace SimPe.PackedFiles.Wrapper
 				{
 					img = GetImage.NoOne;
 				}
-				else if (Helper.WindowsRegistry.GraphQuality)
+				else if (Helper.WindowsRegistry.Config.GraphQuality)
 				{
 					img = Ambertation.Drawing.GraphicRoutines.KnockoutImage(
 						img,
@@ -370,7 +370,7 @@ namespace SimPe.PackedFiles.Wrapper
 					img,
 					48,
 					48,
-					Helper.WindowsRegistry.GraphQuality
+					Helper.WindowsRegistry.Config.GraphQuality
 				);
 
 				eip.ImagePanelColor = GetImagePanelColor(sdesc);

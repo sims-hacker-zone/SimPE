@@ -878,7 +878,7 @@ namespace pjse
 			if (str != null)
 			{
 				FallbackStrItem fsi = str[
-					(byte)SimPe.Helper.WindowsRegistry.LanguageCode,
+					(byte)SimPe.Helper.WindowsRegistry.Config.LanguageCode,
 					sid
 				];
 				if (fsi != null)

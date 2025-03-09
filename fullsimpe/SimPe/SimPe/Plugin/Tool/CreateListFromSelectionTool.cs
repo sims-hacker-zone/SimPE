@@ -80,7 +80,7 @@ namespace SimPe.Plugin.Tool
 		public static void Execute(ResourceContainers es)
 		{
 			//Select the Type
-			if (Helper.WindowsRegistry.ReportFormat == Registry.ReportFormats.CSV)
+			if (Helper.WindowsRegistry.Config.ReportFormat == Registry.ReportFormats.CSV)
 			{
 				Serializer.Formater = new CsvSerializer();
 			}

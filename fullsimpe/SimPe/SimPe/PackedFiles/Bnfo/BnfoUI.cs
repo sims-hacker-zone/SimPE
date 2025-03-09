@@ -91,7 +91,7 @@ namespace SimPe.PackedFiles.Bnfo
 			// Required for Windows Form Designer support
 			//
 			InitializeComponent();
-			if (Helper.WindowsRegistry.UseBigIcons)
+			if (Helper.WindowsRegistry.Config.UseBigIcons)
 			{
 				lv.Font = new Font("Tahoma", 12F);
 			}

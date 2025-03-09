@@ -22,7 +22,7 @@ namespace SimPe.Providers
 
 		public override string ToString()
 		{
-			return Helper.WindowsRegistry.HiddenMode ? Name + $" (0x{Id:X16})" : Name;
+			return Helper.WindowsRegistry.Config.HiddenMode ? Name + $" (0x{Id:X16})" : Name;
 		}
 	}
 }

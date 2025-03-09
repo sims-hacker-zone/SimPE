@@ -107,7 +107,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 		void Initialize()
 		{
-			if (Helper.WindowsRegistry.UseBigIcons)
+			if (Helper.WindowsRegistry.Config.UseBigIcons)
 			{
 				llep3openinfo.Font = new Font(
 					"Tahoma",
@@ -298,8 +298,8 @@ namespace SimPe.PackedFiles.UserInterface
 				new LocalizedCareers(Careers.Unemployed)
 			);
 			if (
-				Helper.WindowsRegistry.LoadOnlySimsStory == 28
-				&& !Helper.WindowsRegistry.HiddenMode
+				Helper.WindowsRegistry.Config.LoadOnlySimsStory == 28
+				&& !Helper.WindowsRegistry.Config.HiddenMode
 			)
 			{
 				cbcareer.Items.Add(
@@ -370,7 +370,7 @@ namespace SimPe.PackedFiles.UserInterface
 				);
 				if (
 					PathProvider.Global.GetExpansion(Expansions.University).Exists
-					|| Helper.WindowsRegistry.HiddenMode
+					|| Helper.WindowsRegistry.Config.HiddenMode
 				)
 				{
 					cbcareer.Items.Add(
@@ -389,7 +389,7 @@ namespace SimPe.PackedFiles.UserInterface
 				if (
 					PathProvider
 						.Global.GetExpansion(Expansions.IslandStories)
-						.Exists || Helper.WindowsRegistry.HiddenMode
+						.Exists || Helper.WindowsRegistry.Config.HiddenMode
 				)
 				{
 					cbcareer.Items.Add(
@@ -404,7 +404,7 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 				if (
 					PathProvider.Global.GetExpansion(Expansions.Seasons).Exists
-					|| Helper.WindowsRegistry.HiddenMode
+					|| Helper.WindowsRegistry.Config.HiddenMode
 				)
 				{
 					cbcareer.Items.Add(
@@ -428,7 +428,7 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 				if (
 					PathProvider.Global.GetExpansion(Expansions.FreeTime).Exists
-					|| Helper.WindowsRegistry.HiddenMode
+					|| Helper.WindowsRegistry.Config.HiddenMode
 				)
 				{
 					cbcareer.Items.Add(
@@ -450,7 +450,7 @@ namespace SimPe.PackedFiles.UserInterface
 				if (
 					PathProvider
 						.Global.GetExpansion(Expansions.LifeStories)
-						.Exists || Helper.WindowsRegistry.HiddenMode
+						.Exists || Helper.WindowsRegistry.Config.HiddenMode
 				)
 				{
 					cbcareer.Items.Add(
@@ -462,7 +462,7 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 				if (
 					PathProvider.Global.GetExpansion(Expansions.Business).Exists
-					|| Helper.WindowsRegistry.HiddenMode
+					|| Helper.WindowsRegistry.Config.HiddenMode
 				)
 				{
 					cbcareer.Items.Add(
@@ -507,7 +507,7 @@ namespace SimPe.PackedFiles.UserInterface
 				);
 				if (
 					PathProvider.Global.GetExpansion(Expansions.Seasons).Exists
-					|| Helper.WindowsRegistry.HiddenMode
+					|| Helper.WindowsRegistry.Config.HiddenMode
 				)
 				{
 					cbcareer.Items.Add(
@@ -532,7 +532,7 @@ namespace SimPe.PackedFiles.UserInterface
 				if (
 					PathProvider
 						.Global.GetExpansion(Expansions.IslandStories)
-						.Exists || Helper.WindowsRegistry.HiddenMode
+						.Exists || Helper.WindowsRegistry.Config.HiddenMode
 				)
 				{
 					cbcareer.Items.Add(
@@ -547,7 +547,7 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 				if (
 					PathProvider.Global.GetExpansion(Expansions.FreeTime).Exists
-					|| Helper.WindowsRegistry.HiddenMode
+					|| Helper.WindowsRegistry.Config.HiddenMode
 				)
 				{
 					cbcareer.Items.Add(
@@ -574,7 +574,7 @@ namespace SimPe.PackedFiles.UserInterface
 				}
 				if (
 					PathProvider.Global.GetExpansion(Expansions.Business).Exists
-					|| Helper.WindowsRegistry.HiddenMode
+					|| Helper.WindowsRegistry.Config.HiddenMode
 				)
 				{
 					cbcareer.Items.Add(
@@ -586,7 +586,7 @@ namespace SimPe.PackedFiles.UserInterface
 					|| PathProvider
 						.Global.GetExpansion(Expansions.PetStories)
 						.Exists
-					|| Helper.WindowsRegistry.HiddenMode
+					|| Helper.WindowsRegistry.Config.HiddenMode
 				)
 				{
 					cbcareer.Items.Add(
@@ -611,7 +611,7 @@ namespace SimPe.PackedFiles.UserInterface
 				if (
 					PathProvider
 						.Global.GetExpansion(Expansions.IslandStories)
-						.Exists || Helper.WindowsRegistry.HiddenMode
+						.Exists || Helper.WindowsRegistry.Config.HiddenMode
 				)
 				{
 					cbcareer.Items.Add(
@@ -808,7 +808,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 					PathProvider.Global.GetExpansion(Expansions.Business).Exists
 					|| PathProvider.Global.STInstalled >= 28
-				 || Helper.WindowsRegistry.HiddenMode
+				 || Helper.WindowsRegistry.Config.HiddenMode
 			)
 			{
 				cbservice.Items.Add(
@@ -825,7 +825,7 @@ namespace SimPe.PackedFiles.UserInterface
 
 					PathProvider.Global.GetExpansion(Expansions.Pets).Exists
 					|| PathProvider.Global.STInstalled >= 28
-				 || Helper.WindowsRegistry.HiddenMode
+				 || Helper.WindowsRegistry.Config.HiddenMode
 			)
 			{
 				cbservice.Items.Add(
@@ -853,7 +853,7 @@ namespace SimPe.PackedFiles.UserInterface
 					|| PathProvider
 						.Global.GetExpansion(Expansions.PetStories)
 						.Exists
-				 || Helper.WindowsRegistry.HiddenMode
+				 || Helper.WindowsRegistry.Config.HiddenMode
 			)
 			{
 				cbservice.Items.Add(
@@ -867,7 +867,7 @@ namespace SimPe.PackedFiles.UserInterface
 					|| PathProvider
 						.Global.GetExpansion(Expansions.IslandStories)
 						.Exists
-				 || Helper.WindowsRegistry.HiddenMode
+				 || Helper.WindowsRegistry.Config.HiddenMode
 			)
 			{
 				cbservice.Items.Add(
@@ -879,7 +879,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			if (
 				PathProvider.Global.GetExpansion(Expansions.Voyage).Exists
-				|| Helper.WindowsRegistry.HiddenMode
+				|| Helper.WindowsRegistry.Config.HiddenMode
 			)
 			{
 				cbservice.Items.Add(
@@ -912,7 +912,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			if (
 				PathProvider.Global.GetExpansion(Expansions.FreeTime).Exists
-				|| Helper.WindowsRegistry.HiddenMode
+				|| Helper.WindowsRegistry.Config.HiddenMode
 			)
 			{
 				cbservice.Items.Add(
@@ -930,7 +930,7 @@ namespace SimPe.PackedFiles.UserInterface
 			}
 			if (
 				PathProvider.Global.GetExpansion(Expansions.Apartments).Exists
-				|| Helper.WindowsRegistry.HiddenMode
+				|| Helper.WindowsRegistry.Config.HiddenMode
 			)
 			{
 				cbservice.Items.Add(
@@ -1220,7 +1220,7 @@ namespace SimPe.PackedFiles.UserInterface
 			pnEP1.BackgroundImage = pnimage;
 		}
 
-		void RefreshSkills(Wrapper.ExtSDesc sdesc) // Updated Dog skills only for T&A, A&N or Pet Story
+		void RefreshSkills(Wrapper.ExtSDesc sdesc) // Updated Dog skills only for Pet Story
 		{
 			// should not be reading Nightlife.Species if version is below Pets !!
 			if ((int)Sdesc.Version >= (int)PackedFiles.Wrapper.SDescVersions.Pets)
@@ -1232,10 +1232,10 @@ namespace SimPe.PackedFiles.UserInterface
 					)
 					&& (
 						(
-							Helper.WindowsRegistry.ShowPetAbilities
-							&& Helper.WindowsRegistry.LoadOnlySimsStory == 0
+							Helper.WindowsRegistry.Config.ShowPetAbilities
+							&& Helper.WindowsRegistry.Config.LoadOnlySimsStory == 0
 						)
-						|| Helper.WindowsRegistry.LoadOnlySimsStory == 29
+						|| Helper.WindowsRegistry.Config.LoadOnlySimsStory == 29
 					)
 				)
 				{
@@ -1307,8 +1307,8 @@ namespace SimPe.PackedFiles.UserInterface
 						pbCharisma.Visible = true;
 						pbClean.Visible = true;
 						pbCreative.Visible = true;
-						pbMusic.Visible = Helper.WindowsRegistry.ShowMoreSkills;
-						pbArty.Visible = Helper.WindowsRegistry.ShowMoreSkills;
+						pbMusic.Visible = Helper.WindowsRegistry.Config.ShowMoreSkills;
+						pbArty.Visible = Helper.WindowsRegistry.Config.ShowMoreSkills;
 						pbLogic.Visible = true;
 						pbReputate.Visible = true;
 						pbMech.Visible = true;
@@ -1351,8 +1351,8 @@ namespace SimPe.PackedFiles.UserInterface
 				pbCharisma.Visible = true;
 				pbClean.Visible = true;
 				pbCreative.Visible = true;
-				pbMusic.Visible = Helper.WindowsRegistry.ShowMoreSkills;
-				pbArty.Visible = Helper.WindowsRegistry.ShowMoreSkills;
+				pbMusic.Visible = Helper.WindowsRegistry.Config.ShowMoreSkills;
+				pbArty.Visible = Helper.WindowsRegistry.Config.ShowMoreSkills;
 				pbLogic.Visible = true;
 				pbMech.Visible = true;
 				pbCooking.Visible = true;
@@ -1700,8 +1700,7 @@ namespace SimPe.PackedFiles.UserInterface
 				sdesc.CharacterDescription.LifelineScore.ToString();
 			pnCareer.BackgroundImage = pnimage;
 			cbaspiration.Enabled = (int)sdesc.Version
-					< (int)PackedFiles.Wrapper.SDescVersions.Freetime
-				|| Helper.WindowsRegistry.AllowChangeOfSecondaryAspiration || sdesc.Freetime.SecondaryAspiration == AspirationTypes.Nothing;
+					< (int)PackedFiles.Wrapper.SDescVersions.Freetime || sdesc.Freetime.SecondaryAspiration == AspirationTypes.Nothing;
 		}
 
 		void RefreshInterests(Wrapper.ExtSDesc sdesc)
@@ -2483,10 +2482,10 @@ namespace SimPe.PackedFiles.UserInterface
 						)
 						&& (
 							(
-								Helper.WindowsRegistry.ShowPetAbilities
-								&& Helper.WindowsRegistry.LoadOnlySimsStory == 0
+								Helper.WindowsRegistry.Config.ShowPetAbilities
+								&& Helper.WindowsRegistry.Config.LoadOnlySimsStory == 0
 							)
-							|| Helper.WindowsRegistry.LoadOnlySimsStory == 29
+							|| Helper.WindowsRegistry.Config.LoadOnlySimsStory == 29
 						)
 					)
 					{
@@ -2547,12 +2546,12 @@ namespace SimPe.PackedFiles.UserInterface
 							Sdesc.Skills.Logic = (ushort)pbLogic.Value;
 							Sdesc.Skills.Mechanical = (ushort)pbMech.Value;
 							Sdesc.Skills.Fatness = (ushort)pbFat.Value;
-							if (Helper.WindowsRegistry.ShowMoreSkills)
+							if (Helper.WindowsRegistry.Config.ShowMoreSkills)
 							{
 								Sdesc.Skills.Music = (ushort)pbMusic.Value;
 							}
 
-							if (Helper.WindowsRegistry.ShowMoreSkills)
+							if (Helper.WindowsRegistry.Config.ShowMoreSkills)
 							{
 								Sdesc.Skills.Art = (ushort)pbArty.Value;
 							}
@@ -2573,8 +2572,8 @@ namespace SimPe.PackedFiles.UserInterface
 							pbCooking.Visible = true;
 							pbMusic.Visible = Helper
 								.WindowsRegistry
-								.ShowMoreSkills;
-							pbArty.Visible = Helper.WindowsRegistry.ShowMoreSkills;
+								.Config.ShowMoreSkills;
+							pbArty.Visible = Helper.WindowsRegistry.Config.ShowMoreSkills;
 							if (
 								(int)Sdesc.Version
 								>= (int)
@@ -2602,12 +2601,12 @@ namespace SimPe.PackedFiles.UserInterface
 					Sdesc.Skills.Logic = (ushort)pbLogic.Value;
 					Sdesc.Skills.Mechanical = (ushort)pbMech.Value;
 					Sdesc.Skills.Fatness = (ushort)pbFat.Value;
-					if (Helper.WindowsRegistry.ShowMoreSkills)
+					if (Helper.WindowsRegistry.Config.ShowMoreSkills)
 					{
 						Sdesc.Skills.Music = (ushort)pbMusic.Value;
 					}
 
-					if (Helper.WindowsRegistry.ShowMoreSkills)
+					if (Helper.WindowsRegistry.Config.ShowMoreSkills)
 					{
 						Sdesc.Skills.Art = (ushort)pbArty.Value;
 					}
@@ -2626,8 +2625,8 @@ namespace SimPe.PackedFiles.UserInterface
 					pbReputate.Visible = true;
 					pbMech.Visible = true;
 					pbCooking.Visible = true;
-					pbMusic.Visible = Helper.WindowsRegistry.ShowMoreSkills;
-					pbArty.Visible = Helper.WindowsRegistry.ShowMoreSkills;
+					pbMusic.Visible = Helper.WindowsRegistry.Config.ShowMoreSkills;
+					pbArty.Visible = Helper.WindowsRegistry.Config.ShowMoreSkills;
 					pbReputate.Visible = false;
 				}
 				Sdesc.Changed = true;
@@ -3334,7 +3333,7 @@ if (System.IO.File.Exists(Sdesc.CharacterFileName))
 			CommonSrel c
 		)
 		{
-			if (src.Equals(dst) && (c == dstRel || !Helper.WindowsRegistry.HiddenMode))
+			if (src.Equals(dst) && (c == dstRel || !Helper.WindowsRegistry.Config.HiddenMode))
 			{
 				c.Srel = null;
 			}
@@ -3374,7 +3373,7 @@ if (System.IO.File.Exists(Sdesc.CharacterFileName))
 		{
 			if (lv.SelectedItems.Count == 1)
 			{
-				miAddRelation.Enabled = Helper.WindowsRegistry.HiddenMode
+				miAddRelation.Enabled = Helper.WindowsRegistry.Config.HiddenMode
 					? (
 							(SteepValley.Windows.Forms.XPListViewItem)
 								lv.SelectedItems[0]
@@ -3956,7 +3955,7 @@ if (System.IO.File.Exists(Sdesc.CharacterFileName))
 		{
 			bool showsim = IsHumanoid();
 			pnSimInt.Visible = pnHumanChar.Visible = showsim;
-			btProfile.Visible = showsim && !Helper.WindowsRegistry.HiddenMode;
+			btProfile.Visible = showsim && !Helper.WindowsRegistry.Config.HiddenMode;
 			pnPetChar.Visible = pnPetInt.Visible = !showsim;
 			if (!InternalChange && btOriGuid.Enabled)
 			{
@@ -3978,7 +3977,7 @@ if (System.IO.File.Exists(Sdesc.CharacterFileName))
 		{
 			bool showsim = Sdesc == null || (int)Sdesc.Version < (int)PackedFiles.Wrapper.SDescVersions.Pets || Sdesc.Nightlife.IsHuman;
 			pnSimInt.Visible = pnHumanChar.Visible = showsim;
-			btProfile.Visible = showsim && !Helper.WindowsRegistry.HiddenMode;
+			btProfile.Visible = showsim && !Helper.WindowsRegistry.Config.HiddenMode;
 			pnPetChar.Visible = pnPetInt.Visible = !showsim;
 		}
 
@@ -3986,7 +3985,7 @@ if (System.IO.File.Exists(Sdesc.CharacterFileName))
 		{
 			bool showsim = IsHumanoid();
 			pnSimInt.Visible = pnHumanChar.Visible = showsim;
-			btProfile.Visible = showsim && !Helper.WindowsRegistry.HiddenMode;
+			btProfile.Visible = showsim && !Helper.WindowsRegistry.Config.HiddenMode;
 			pnPetChar.Visible = pnPetInt.Visible = !showsim;
 		}
 
@@ -3999,9 +3998,7 @@ if (System.IO.File.Exists(Sdesc.CharacterFileName))
 		void RefreshEP7(Wrapper.ExtSDesc sdesc)
 		{
 			InternalChange = true;
-			cbaspiration2.Enabled = Helper
-				.WindowsRegistry
-				.AllowChangeOfSecondaryAspiration;
+			cbaspiration2.Enabled = true;
 
 			if (cbHobbyEnth.SelectedIndex < 0)
 			{

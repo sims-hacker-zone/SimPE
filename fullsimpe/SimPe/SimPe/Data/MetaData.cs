@@ -576,7 +576,7 @@ namespace SimPe.Data
 						.Global.GetExpansion(Expansions.Mansions)
 						.Exists
 				)
-				&& Helper.WindowsRegistry.LoadOnlySimsStory != 28
+				&& Helper.WindowsRegistry.Config.LoadOnlySimsStory != 28
 			)
 			{
 				KnownFences.Add(0xCF61A57E, "Chic Fence");
@@ -777,7 +777,7 @@ namespace SimPe.Data
 			}
 			if (
 				PathProvider.Global.GetExpansion(Expansions.Mansions).Exists
-				&& Helper.WindowsRegistry.LoadOnlySimsStory == 0
+				&& Helper.WindowsRegistry.Config.LoadOnlySimsStory == 0
 			)
 			{
 				KnownFences.Add(0x95D75F26, "?Near the Floora? Half Wall-Fieldstone");

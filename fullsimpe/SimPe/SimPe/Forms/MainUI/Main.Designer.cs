@@ -756,14 +756,8 @@ namespace SimPe
 			resources.ApplyResources(this.miOpenDownloads, "miOpenDownloads");
 			this.miOpenDownloads.Click += new System.EventHandler(this.Activate_miOpenDownloads);
 			//
-			// miReloadL
+			// miShowName
 			//
-			resources.ApplyResources(this.miReloadL, "miReloadL");
-			this.miReloadL.Name = "miReloadL";
-			this.miReloadL.Click += new System.EventHandler(this.Activate_miReload); //Fuck
-																					 //
-																					 // miShowName
-																					 //
 			resources.ApplyResources(this.miShowName, "miShowName");
 			this.miShowName.Name = "miShowName";
 			this.miShowName.Click += new System.EventHandler(this.miShowName_Click);

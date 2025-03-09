@@ -155,7 +155,7 @@ namespace SimPe.PackedFiles.Fami
 
 						StrItemList items =
 							new Str().ProcessFile(pfd, package).FallbackedLanguageItems(
-								Helper.WindowsRegistry.LanguageCode
+								Helper.WindowsRegistry.Config.LanguageCode
 							);
 						if (items.Length > 0)
 						{

@@ -505,7 +505,7 @@ namespace SimPe.Plugin
 
 			try
 			{
-				GetSelectedItem().Value = Helper.WindowsRegistry.HiddenMode
+				GetSelectedItem().Value = Helper.WindowsRegistry.Config.HiddenMode
 					? Helper.StringToUInt16(
 						tbval.Text,
 						GetSelectedItem().Value,
@@ -778,7 +778,7 @@ namespace SimPe.Plugin
 				>= (uint)NgbhVersion.Nightlife;
 			tbUnk.Text =
 				"0x" + Helper.HexString(GetSelectedItem().InventoryNumber);
-			tbval.Text = Helper.WindowsRegistry.HiddenMode ? "0x" + Helper.HexString(GetSelectedItem().Value) : GetSelectedItem().Value.ToString();
+			tbval.Text = Helper.WindowsRegistry.Config.HiddenMode ? "0x" + Helper.HexString(GetSelectedItem().Value) : GetSelectedItem().Value.ToString();
 
 			tbFlag.Tag = null;
 

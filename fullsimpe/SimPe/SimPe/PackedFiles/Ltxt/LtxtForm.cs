@@ -126,7 +126,7 @@ namespace SimPe.PackedFiles.Ltxt
 			cborient.ResourceManager = Localization.Manager;
 			cborient.Enum = typeof(LotOrientation);
 
-			if (!Helper.WindowsRegistry.UseBigIcons)
+			if (!Helper.WindowsRegistry.Config.UseBigIcons)
 			{
 				pb.Size = new Size(124, 108);
 				pb.Location = new Point(25, 56);

@@ -47,7 +47,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 			cachechg = false;
 
-			if (!Helper.WindowsRegistry.UseCache)
+			if (!Helper.WindowsRegistry.Config.UseCache)
 			{
 				return;
 			}
@@ -62,7 +62,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		/// </summary>
 		void SaveCacheIndex()
 		{
-			if (!Helper.WindowsRegistry.UseCache)
+			if (!Helper.WindowsRegistry.Config.UseCache)
 			{
 				return;
 			}
@@ -89,7 +89,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				FileTableBase.FileIndex.Sort(FileTableBase.FileIndex.FindFile(type, true));
 			string len = " / " + nrefitems.Count().ToString();
 
-			Data.Languages deflang = Helper.WindowsRegistry.LanguageCode;
+			Data.Languages deflang = Helper.WindowsRegistry.Config.LanguageCode;
 			Wait.Message = "Loading Walls, Fences and Floors";
 			Wait.MaxProgress = nrefitems.Count();
 			foreach (
@@ -165,7 +165,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 			string len = " / " + nrefitems.Count().ToString();
 
-			Data.Languages deflang = Helper.WindowsRegistry.LanguageCode;
+			Data.Languages deflang = Helper.WindowsRegistry.Config.LanguageCode;
 			Wait.Message = "Loading Objects";
 			Wait.MaxProgress = nrefitems.Count();
 			foreach (
@@ -233,7 +233,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				}
 			}
 
-			if (Helper.WindowsRegistry.OWincludewalls)
+			if (Helper.WindowsRegistry.Config.OWincludewalls)
 			{
 				//In the second pass we use ObjectXml Resources to load Objects like Walls. What For?? who cares??
 				ProduceByXObj(Data.FileTypes.XOBJ);
@@ -259,7 +259,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		internal ObjectConsumer(ProducerThread pt)
 			: base(pt)
 		{
-			deflang = Helper.WindowsRegistry.LanguageCode;
+			deflang = Helper.WindowsRegistry.Config.LanguageCode;
 
 			pict = new List<FileTypes>();
 			Picture pw = new Picture();
@@ -494,7 +494,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 			a.Tag = os;
 
-			a.Name = Helper.WindowsRegistry.ShowObjdNames ? oci.ObjectFileName : oci.Name;
+			a.Name = Helper.WindowsRegistry.Config.ShowObjdNames ? oci.ObjectFileName : oci.Name;
 
 			a.Name += " (cached)";
 			Image img = oci.Thumbnail;
@@ -531,8 +531,8 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 
 			ilist.ImageSize = new Size(
-				Helper.WindowsRegistry.OWThumbSize,
-				Helper.WindowsRegistry.OWThumbSize
+				Helper.WindowsRegistry.Config.OWThumbSize,
+				Helper.WindowsRegistry.Config.OWThumbSize
 			);
 			ilist.ColorDepth = ColorDepth.Depth32Bit;
 
@@ -569,7 +569,7 @@ namespace SimPe.Plugin.Tool.Dockable
 						ObjectConsumer.DoConsume(
 							oci,
 							null,
-							Helper.WindowsRegistry.LanguageCode
+							Helper.WindowsRegistry.Config.LanguageCode
 						);
 
 						first = false;
@@ -675,7 +675,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			if (id == 0)
 			{
 				twine = a.ToString();
-				if (Helper.WindowsRegistry.OWtrimnames)
+				if (Helper.WindowsRegistry.Config.OWtrimnames)
 				{
 					while (
 						twine.StartsWith("\"")
@@ -712,12 +712,12 @@ namespace SimPe.Plugin.Tool.Dockable
 				else if (oci.Thumbnail != null)
 				{
 					Image img = oci.Thumbnail;
-					//if (Helper.WindowsRegistry.GraphQuality) img = Ambertation.Drawing.GraphicRoutines.KnockoutImage(img, new System.Drawing.Point(0,0), System.Drawing.Color.Magenta);
+					//if (Helper.WindowsRegistry.Config.GraphQuality) img = Ambertation.Drawing.GraphicRoutines.KnockoutImage(img, new System.Drawing.Point(0,0), System.Drawing.Color.Magenta);
 					img = Ambertation.Drawing.GraphicRoutines.ScaleImage(
 						img,
 						ilist.ImageSize.Width,
 						ilist.ImageSize.Height,
-						Helper.WindowsRegistry.GraphQuality
+						Helper.WindowsRegistry.Config.GraphQuality
 					);
 
 					ilist.Images.Add(img);

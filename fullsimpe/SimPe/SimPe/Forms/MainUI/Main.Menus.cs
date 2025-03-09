@@ -152,8 +152,8 @@ namespace SimPe
 		/// </summary>
 		void InitMenuItems()
 		{
-			miMetaInfo.Checked = !Helper.WindowsRegistry.LoadMetaInfo;
-			miFileNames.Checked = Helper.WindowsRegistry.DecodeFilenamesState;
+			miMetaInfo.Checked = !Helper.WindowsRegistry.Config.LoadMetaInfo;
+			miFileNames.Checked = Helper.WindowsRegistry.Config.DecodeFilenamesState;
 
 			AddDockMenus();
 			UpdateMenuItems();

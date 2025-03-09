@@ -30,7 +30,7 @@ namespace SimPe.Forms.MainUI
 			// Required designer variable.
 			//
 			InitializeComponent();
-			//this.TopMost = Helper.WindowsRegistry.WaitingScreenTopMost;
+			//this.TopMost = Helper.WindowsRegistry.Config.WaitingScreenTopMost;
 			myhandle = Handle;
 			image = pbsimpe.Image;
 			Message = lbmsg.Text;

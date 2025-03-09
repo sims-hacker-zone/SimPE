@@ -43,7 +43,7 @@ namespace SimPe
 		{
 			get
 			{
-				switch (Helper.WindowsRegistry.Layout.SelectedTheme)
+				switch (Helper.WindowsRegistry.Config.Layout.SelectedTheme)
 				{
 					case 6:
 						return Properties.Resources.blNew;
@@ -62,7 +62,7 @@ namespace SimPe
 		{
 			get
 			{
-				switch (Helper.WindowsRegistry.Layout.SelectedTheme)
+				switch (Helper.WindowsRegistry.Config.Layout.SelectedTheme)
 				{
 					case 6:
 						return Properties.Resources.blOpen;
@@ -81,7 +81,7 @@ namespace SimPe
 		{
 			get
 			{
-				switch (Helper.WindowsRegistry.Layout.SelectedTheme)
+				switch (Helper.WindowsRegistry.Config.Layout.SelectedTheme)
 				{
 					case 6:
 						return Properties.Resources.blSave;
@@ -100,7 +100,7 @@ namespace SimPe
 		{
 			get
 			{
-				switch (Helper.WindowsRegistry.Layout.SelectedTheme)
+				switch (Helper.WindowsRegistry.Config.Layout.SelectedTheme)
 				{
 					case 6:
 						return Properties.Resources.blSaveAs;
@@ -119,7 +119,7 @@ namespace SimPe
 		{
 			get
 			{
-				switch (Helper.WindowsRegistry.Layout.SelectedTheme)
+				switch (Helper.WindowsRegistry.Config.Layout.SelectedTheme)
 				{
 					case 6:
 						return Properties.Resources.blDelete;
@@ -134,240 +134,240 @@ namespace SimPe
 		/// <summary>
 		/// Standard Toolbar Icon
 		/// </summary>
-		public static Image Reset => Helper.WindowsRegistry.Layout.SelectedTheme == 6 ? Properties.Resources.blReset : (Image)Properties.Resources.bgReset;
+		public static Image Reset => Helper.WindowsRegistry.Config.Layout.SelectedTheme == 6 ? Properties.Resources.blReset : (Image)Properties.Resources.bgReset;
 
 		/// <summary>
 		/// Standard Toolbar Icon
 		/// </summary>
-		public static Image actionClone => Helper.WindowsRegistry.UseBigIcons
-					&& Helper.WindowsRegistry.Layout.SelectedTheme >= 4
+		public static Image actionClone => Helper.WindowsRegistry.Config.UseBigIcons
+					&& Helper.WindowsRegistry.Config.Layout.SelectedTheme >= 4
 					? Properties.Resources.acbgclone
 					: (Image)Properties.Resources.acclone;
 
 		/// <summary>
 		/// Standard Toolbar Icon
 		/// </summary>
-		public static Image actionCreate => Helper.WindowsRegistry.UseBigIcons
-					&& Helper.WindowsRegistry.Layout.SelectedTheme >= 4
+		public static Image actionCreate => Helper.WindowsRegistry.Config.UseBigIcons
+					&& Helper.WindowsRegistry.Config.Layout.SelectedTheme >= 4
 					? Properties.Resources.acbgcreate
 					: (Image)Properties.Resources.accreate;
 
 		/// <summary>
 		/// Standard Toolbar Icon
 		/// </summary>
-		public static Image actionDelete => Helper.WindowsRegistry.UseBigIcons
-					&& Helper.WindowsRegistry.Layout.SelectedTheme >= 4
+		public static Image actionDelete => Helper.WindowsRegistry.Config.UseBigIcons
+					&& Helper.WindowsRegistry.Config.Layout.SelectedTheme >= 4
 					? Properties.Resources.acbgdelete
 					: (Image)Properties.Resources.acdelete;
 
 		/// <summary>
 		/// Standard Toolbar Icon
 		/// </summary>
-		public static Image actionExport => Helper.WindowsRegistry.UseBigIcons
-					&& Helper.WindowsRegistry.Layout.SelectedTheme >= 4
+		public static Image actionExport => Helper.WindowsRegistry.Config.UseBigIcons
+					&& Helper.WindowsRegistry.Config.Layout.SelectedTheme >= 4
 					? Properties.Resources.acbgexport
 					: (Image)Properties.Resources.acexport;
 
 		/// <summary>
 		/// Standard Toolbar Icon
 		/// </summary>
-		public static Image actionFilter => Helper.WindowsRegistry.UseBigIcons
-					&& Helper.WindowsRegistry.Layout.SelectedTheme >= 4
+		public static Image actionFilter => Helper.WindowsRegistry.Config.UseBigIcons
+					&& Helper.WindowsRegistry.Config.Layout.SelectedTheme >= 4
 					? Properties.Resources.acbgfilter
 					: (Image)Properties.Resources.acfilter;
 
 		/// <summary>
 		/// Standard Toolbar Icon
 		/// </summary>
-		public static Image actionImport => Helper.WindowsRegistry.UseBigIcons
-					&& Helper.WindowsRegistry.Layout.SelectedTheme >= 4
+		public static Image actionImport => Helper.WindowsRegistry.Config.UseBigIcons
+					&& Helper.WindowsRegistry.Config.Layout.SelectedTheme >= 4
 					? Properties.Resources.acbgimport
 					: (Image)Properties.Resources.acimport;
 
 		/// <summary>
 		/// Standard Toolbar Icon
 		/// </summary>
-		public static Image actionReplace => Helper.WindowsRegistry.UseBigIcons
-					&& Helper.WindowsRegistry.Layout.SelectedTheme >= 4
+		public static Image actionReplace => Helper.WindowsRegistry.Config.UseBigIcons
+					&& Helper.WindowsRegistry.Config.Layout.SelectedTheme >= 4
 					? Properties.Resources.acbgreplace
 					: (Image)Properties.Resources.acreplace;
 
 		/// <summary>
 		/// Standard Toolbar Icon
 		/// </summary>
-		public static Image actionRestore => Helper.WindowsRegistry.UseBigIcons
-					&& Helper.WindowsRegistry.Layout.SelectedTheme >= 4
+		public static Image actionRestore => Helper.WindowsRegistry.Config.UseBigIcons
+					&& Helper.WindowsRegistry.Config.Layout.SelectedTheme >= 4
 					? Properties.Resources.acbgrestore
 					: (Image)Properties.Resources.acrestore;
 
 		/// <summary>
 		/// Standard Toolbar Icon
 		/// </summary>
-		public static Image actionStart => Helper.WindowsRegistry.UseBigIcons
-					&& Helper.WindowsRegistry.Layout.SelectedTheme >= 4
+		public static Image actionStart => Helper.WindowsRegistry.Config.UseBigIcons
+					&& Helper.WindowsRegistry.Config.Layout.SelectedTheme >= 4
 					? Properties.Resources.acbgstart
 					: (Image)Properties.Resources.acstart;
 
 		/// <summary>
 		/// Standard Toolbar Icon
 		/// </summary>
-		public static Image actionFixTGI => Helper.WindowsRegistry.UseBigIcons
-					&& Helper.WindowsRegistry.Layout.SelectedTheme >= 4
+		public static Image actionFixTGI => Helper.WindowsRegistry.Config.UseBigIcons
+					&& Helper.WindowsRegistry.Config.Layout.SelectedTheme >= 4
 					? Properties.Resources.acbgfixtgi
 					: (Image)Properties.Resources.acfixtgi;
 
 		/// <summary>
 		/// Dockbox Icons
 		/// </summary>
-		public static Image dbUnique => Helper.WindowsRegistry.UseBigIcons
-					|| Helper.WindowsRegistry.Layout.SelectedTheme >= 4
+		public static Image dbUnique => Helper.WindowsRegistry.Config.UseBigIcons
+					|| Helper.WindowsRegistry.Config.Layout.SelectedTheme >= 4
 					? Properties.Resources.dbbgagent
 					: (Image)Properties.Resources.dbagent;
 
 		/// <summary>
 		/// Dockbox Icons
 		/// </summary>
-		public static Image dbPackage => Helper.WindowsRegistry.UseBigIcons ? Properties.Resources.dbbgpackage : (Image)Properties.Resources.dbpackage;
+		public static Image dbPackage => Helper.WindowsRegistry.Config.UseBigIcons ? Properties.Resources.dbbgpackage : (Image)Properties.Resources.dbpackage;
 
 		/// <summary>
 		/// Dockbox Icons
 		/// </summary>
-		public static Image dbRecure => Helper.WindowsRegistry.UseBigIcons ? Properties.Resources.dbbgrecur : (Image)Properties.Resources.dbrecur;
+		public static Image dbRecure => Helper.WindowsRegistry.Config.UseBigIcons ? Properties.Resources.dbbgrecur : (Image)Properties.Resources.dbrecur;
 
 		/// <summary>
 		/// Tool Icons
 		/// </summary>
-		public static Image S2pack => Helper.WindowsRegistry.UseBigIcons ? Properties.Resources.dbbgS2pack : (Image)Properties.Resources.dbS2pack;
+		public static Image S2pack => Helper.WindowsRegistry.Config.UseBigIcons ? Properties.Resources.dbbgS2pack : (Image)Properties.Resources.dbS2pack;
 
 		/// <summary>
 		/// Tool Icons
 		/// </summary>
-		public static Image S2pc => Helper.WindowsRegistry.UseBigIcons ? Properties.Resources.dbbgs2pc : (Image)Properties.Resources.dbs2pc;
+		public static Image S2pc => Helper.WindowsRegistry.Config.UseBigIcons ? Properties.Resources.dbbgs2pc : (Image)Properties.Resources.dbs2pc;
 
 		/// <summary>
 		/// Tool Icons
 		/// </summary>
-		public static Image S2packOpen => Helper.WindowsRegistry.UseBigIcons ? Properties.Resources.dbbgoS2pack : (Image)Properties.Resources.dbS2pack;
+		public static Image S2packOpen => Helper.WindowsRegistry.Config.UseBigIcons ? Properties.Resources.dbbgoS2pack : (Image)Properties.Resources.dbS2pack;
 
 		/// <summary>
 		/// Tool Icons
 		/// </summary>
-		public static Image S2pcOpen => Helper.WindowsRegistry.UseBigIcons ? Properties.Resources.dbbgos2pc : (Image)Properties.Resources.dbs2pc;
+		public static Image S2pcOpen => Helper.WindowsRegistry.Config.UseBigIcons ? Properties.Resources.dbbgos2pc : (Image)Properties.Resources.dbs2pc;
 
 		/// <summary>
 		/// Dockbox Icons
 		/// </summary>
-		public static Image Selection => Helper.WindowsRegistry.UseBigIcons ? Properties.Resources.dbbgselected : (Image)Properties.Resources.dbselected;
+		public static Image Selection => Helper.WindowsRegistry.Config.UseBigIcons ? Properties.Resources.dbbgselected : (Image)Properties.Resources.dbselected;
 
 		/// <summary>
 		/// Tool Box Icons
 		/// </summary>
-		public static Image Camera => Helper.WindowsRegistry.UseBigIcons ? Properties.Resources.tbbgcamera : (Image)Properties.Resources.tbcamera;
+		public static Image Camera => Helper.WindowsRegistry.Config.UseBigIcons ? Properties.Resources.tbbgcamera : (Image)Properties.Resources.tbcamera;
 
 		/// <summary>
 		/// Tool Box Icons
 		/// </summary>
-		public static Image NameMap => Helper.WindowsRegistry.UseBigIcons ? Properties.Resources.tbbgcontents : (Image)Properties.Resources.tbcontents;
+		public static Image NameMap => Helper.WindowsRegistry.Config.UseBigIcons ? Properties.Resources.tbbgcontents : (Image)Properties.Resources.tbcontents;
 
 		/// <summary>
 		/// Tool Box Icons
 		/// </summary>
-		public static Image CreatePackage => Helper.WindowsRegistry.UseBigIcons ? Properties.Resources.tbbgcreatepackage : (Image)Properties.Resources.tbcreatepackage;
+		public static Image CreatePackage => Helper.WindowsRegistry.Config.UseBigIcons ? Properties.Resources.tbbgcreatepackage : (Image)Properties.Resources.tbcreatepackage;
 
 		/// <summary>
 		/// Tool Box Icons
 		/// </summary>
-		public static Image CreatePackageW => Helper.WindowsRegistry.UseBigIcons ? Properties.Resources.tbbgwcreatepackage : (Image)Properties.Resources.tbcreatepackage;
+		public static Image CreatePackageW => Helper.WindowsRegistry.Config.UseBigIcons ? Properties.Resources.tbbgwcreatepackage : (Image)Properties.Resources.tbcreatepackage;
 
 		/// <summary>
 		/// Tool Box Icons
 		/// </summary>
-		public static Image tbNeighboorhood => Helper.WindowsRegistry.UseBigIcons ? Properties.Resources.tbbgneighboorhood : (Image)Properties.Resources.tbneighboorhood;
+		public static Image tbNeighboorhood => Helper.WindowsRegistry.Config.UseBigIcons ? Properties.Resources.tbbgneighboorhood : (Image)Properties.Resources.tbneighboorhood;
 
 		/// <summary>
 		/// Tool Box Icons
 		/// </summary>
-		public static Image SimBrowser => Helper.WindowsRegistry.UseBigIcons ? Properties.Resources.tbbgsimbrowser : (Image)Properties.Resources.tbsimbrowser;
+		public static Image SimBrowser => Helper.WindowsRegistry.Config.UseBigIcons ? Properties.Resources.tbbgsimbrowser : (Image)Properties.Resources.tbsimbrowser;
 
 		/// <summary>
 		/// Tool Box Icons
 		/// </summary>
-		public static Image SimSurgery => Helper.WindowsRegistry.UseBigIcons ? Properties.Resources.tbbgsurg : (Image)Properties.Resources.tbsurg;
+		public static Image SimSurgery => Helper.WindowsRegistry.Config.UseBigIcons ? Properties.Resources.tbbgsurg : (Image)Properties.Resources.tbsurg;
 
 		/// <summary>
 		/// Tool Box Icons
 		/// </summary>
-		public static Image SkinWorkshop => Helper.WindowsRegistry.UseBigIcons ? Properties.Resources.tbbgskinn : (Image)Properties.Resources.tbskinn;
+		public static Image SkinWorkshop => Helper.WindowsRegistry.Config.UseBigIcons ? Properties.Resources.tbbgskinn : (Image)Properties.Resources.tbskinn;
 
 		/// <summary>
 		/// Tool Box Icons
 		/// </summary>
-		public static Image HashGenerator => Helper.WindowsRegistry.UseBigIcons ? Properties.Resources.tbbggenerator : (Image)Properties.Resources.tbgenerator;
+		public static Image HashGenerator => Helper.WindowsRegistry.Config.UseBigIcons ? Properties.Resources.tbbggenerator : (Image)Properties.Resources.tbgenerator;
 
 		/// <summary>
 		/// Tool Box Icons
 		/// </summary>
-		public static Image FixIntegrity => Helper.WindowsRegistry.UseBigIcons ? Properties.Resources.tbbgintegrity : (Image)Properties.Resources.tbintegrit;
+		public static Image FixIntegrity => Helper.WindowsRegistry.Config.UseBigIcons ? Properties.Resources.tbbgintegrity : (Image)Properties.Resources.tbintegrit;
 
 		/// <summary>
 		/// Generic Icon
 		/// </summary>
-		public static Image DeleteSim => Helper.WindowsRegistry.UseBigIcons ? Properties.Resources.bgdeletesim : (Image)Properties.Resources.deletesim;
+		public static Image DeleteSim => Helper.WindowsRegistry.Config.UseBigIcons ? Properties.Resources.bgdeletesim : (Image)Properties.Resources.deletesim;
 
 		/// <summary>
 		/// for optional.simpe.3d.plugin (anim preview)
 		/// </summary>
-		public static Image AnimCamera => Helper.WindowsRegistry.UseBigIcons ? Properties.Resources.anibgcamera : (Image)Properties.Resources.anicamera;
+		public static Image AnimCamera => Helper.WindowsRegistry.Config.UseBigIcons ? Properties.Resources.anibgcamera : (Image)Properties.Resources.anicamera;
 
 		/// <summary>
 		/// for pj Hood Tool
 		/// </summary>
-		public static Image HoodTool => Helper.WindowsRegistry.UseBigIcons ? Properties.Resources.bghoodtool : (Image)Properties.Resources.hoodtool;
+		public static Image HoodTool => Helper.WindowsRegistry.Config.UseBigIcons ? Properties.Resources.bghoodtool : (Image)Properties.Resources.hoodtool;
 
 		/// <summary>
 		/// for Bhav Plugin
 		/// </summary>
-		public static Image OpenLua => Helper.WindowsRegistry.UseBigIcons ? Properties.Resources.bhbglua : (Image)Properties.Resources.bhlua;
+		public static Image OpenLua => Helper.WindowsRegistry.Config.UseBigIcons ? Properties.Resources.bhbglua : (Image)Properties.Resources.bhlua;
 
 		/// <summary>
 		/// for Bhav Plugin
 		/// </summary>
-		public static Image ImportSemi => Helper.WindowsRegistry.UseBigIcons ? Properties.Resources.bhbgimport : (Image)Properties.Resources.bhimport;
+		public static Image ImportSemi => Helper.WindowsRegistry.Config.UseBigIcons ? Properties.Resources.bhbgimport : (Image)Properties.Resources.bhimport;
 
 		/// <summary>
 		/// for Copyright Plugin
 		/// </summary>
-		public static Image Copyright => Helper.WindowsRegistry.UseBigIcons ? Properties.Resources.copyrightbg : (Image)Properties.Resources.copyright;
+		public static Image Copyright => Helper.WindowsRegistry.Config.UseBigIcons ? Properties.Resources.copyrightbg : (Image)Properties.Resources.copyright;
 
 		/// <summary>
 		/// for Downloads Plugin (Content Preview)
 		/// </summary>
-		public static Image ContentPreview => Helper.WindowsRegistry.UseBigIcons ? Properties.Resources.cbgpreview : (Image)Properties.Resources.cpreview;
+		public static Image ContentPreview => Helper.WindowsRegistry.Config.UseBigIcons ? Properties.Resources.cbgpreview : (Image)Properties.Resources.cpreview;
 
 		/// <summary>
 		/// for Check File Table (Content Preview)
 		/// </summary>
-		public static Image CheckTable => Helper.WindowsRegistry.UseBigIcons ? Properties.Resources.bgacchecktable : (Image)Properties.Resources.acchecktable;
+		public static Image CheckTable => Helper.WindowsRegistry.Config.UseBigIcons ? Properties.Resources.bgacchecktable : (Image)Properties.Resources.acchecktable;
 
 		/// <summary>
 		/// for Action Build GUID List
 		/// </summary>
-		public static Image BuildPhpGuid => Helper.WindowsRegistry.UseBigIcons ? Properties.Resources.bgPhpGuid : (Image)Properties.Resources.tbPhpGuid;
+		public static Image BuildPhpGuid => Helper.WindowsRegistry.Config.UseBigIcons ? Properties.Resources.bgPhpGuid : (Image)Properties.Resources.tbPhpGuid;
 
 		/// <summary>
 		/// Dockbox Icons
 		/// </summary>
-		public static Image pjSearch => Helper.WindowsRegistry.UseBigIcons ? Properties.Resources.bgfinder : (Image)Properties.Resources.pjfinder;
+		public static Image pjSearch => Helper.WindowsRegistry.Config.UseBigIcons ? Properties.Resources.bgfinder : (Image)Properties.Resources.pjfinder;
 
 		/// <summary>
 		/// pjOBJDTool Icon
 		/// </summary>
-		public static Image pjOBJDtool => Helper.WindowsRegistry.UseBigIcons ? Properties.Resources.bgpjobjdtool : (Image)Properties.Resources.pjobjdtool;
+		public static Image pjOBJDtool => Helper.WindowsRegistry.Config.UseBigIcons ? Properties.Resources.bgpjobjdtool : (Image)Properties.Resources.pjobjdtool;
 
 		/// <summary>
 		/// Bnfo Icon
 		/// </summary>
-		public static Image BnfoIco => Helper.WindowsRegistry.UseBigIcons ? Properties.Resources.bgbookmark : (Image)Properties.Resources.bookmark;
+		public static Image BnfoIco => Helper.WindowsRegistry.Config.UseBigIcons ? Properties.Resources.bgbookmark : (Image)Properties.Resources.bookmark;
 
 		/// <summary>
 		/// Misc Icon
@@ -387,31 +387,31 @@ namespace SimPe
 		/// <summary>
 		/// Butterfly Icon
 		/// </summary>
-		public static Image Butterfly => Helper.WindowsRegistry.UseBigIcons ? Properties.Resources.bgbutflie : (Image)Properties.Resources.butflie;
+		public static Image Butterfly => Helper.WindowsRegistry.Config.UseBigIcons ? Properties.Resources.bgbutflie : (Image)Properties.Resources.butflie;
 
 		/// <summary>
 		/// PJSE Body Mesh Icons
 		/// </summary>
-		public static Image BMExtract => Helper.WindowsRegistry.UseBigIcons ? Properties.Resources.bgExtractSt : (Image)Properties.Resources.ExtractSt;
+		public static Image BMExtract => Helper.WindowsRegistry.Config.UseBigIcons ? Properties.Resources.bgExtractSt : (Image)Properties.Resources.ExtractSt;
 
 		/// <summary>
 		/// PJSE Body Mesh Icons
 		/// </summary>
-		public static Image BMlinker => Helper.WindowsRegistry.UseBigIcons ? Properties.Resources.bgLinkSt : (Image)Properties.Resources.LinkSt;
+		public static Image BMlinker => Helper.WindowsRegistry.Config.UseBigIcons ? Properties.Resources.bgLinkSt : (Image)Properties.Resources.LinkSt;
 
 		/// <summary>
 		/// PJSE ObjKeyTool Icon
 		/// </summary>
-		public static Image ObjKeyTool => Helper.WindowsRegistry.UseBigIcons ? Properties.Resources.bgKey : (Image)Properties.Resources.pjkey;
+		public static Image ObjKeyTool => Helper.WindowsRegistry.Config.UseBigIcons ? Properties.Resources.bgKey : (Image)Properties.Resources.pjkey;
 
 		/// <summary>
 		/// Information Icon
 		/// </summary>
-		public static Image Information => Helper.WindowsRegistry.UseBigIcons ? Properties.Resources.Infobg : (Image)Properties.Resources.Info;
+		public static Image Information => Helper.WindowsRegistry.Config.UseBigIcons ? Properties.Resources.Infobg : (Image)Properties.Resources.Info;
 
 		/// <summary>
 		/// Debug Icon
 		/// </summary>
-		public static Image Debug => Helper.WindowsRegistry.UseBigIcons ? Properties.Resources.bgdebug : (Image)Properties.Resources.debug;
+		public static Image Debug => Helper.WindowsRegistry.Config.UseBigIcons ? Properties.Resources.bgdebug : (Image)Properties.Resources.debug;
 	}
 }

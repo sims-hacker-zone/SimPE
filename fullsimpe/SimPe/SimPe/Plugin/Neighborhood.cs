@@ -348,7 +348,7 @@ namespace SimPe.Plugin
 				if (pfd != null)
 				{
 					name = new PackedFiles.Wrapper.Str().ProcessFile(pfd, pk).FallbackedLanguageItem(
-						Helper.WindowsRegistry.LanguageCode,
+						Helper.WindowsRegistry.Config.LanguageCode,
 						0
 					).Title;
 				}
@@ -402,7 +402,7 @@ namespace SimPe.Plugin
 						}
 					}
 				}
-				if (Helper.WindowsRegistry.LoadAllNeighbourhoods && LoadNgbh)
+				if (Helper.WindowsRegistry.Config.LoadAllHoods && LoadNgbh)
 				{
 					if (
 						PathProvider

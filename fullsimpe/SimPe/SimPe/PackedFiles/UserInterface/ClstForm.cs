@@ -31,7 +31,7 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 			InitializeComponent();
 
-			if (Helper.WindowsRegistry.UseBigIcons)
+			if (Helper.WindowsRegistry.Config.UseBigIcons)
 			{
 				lbclst.Font = new System.Drawing.Font("Verdana", 11F);
 			}

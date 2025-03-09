@@ -289,7 +289,7 @@ else
 			Graph.AutoSize = true;
 			coords.Clear();
 			names.Clear();
-			if (Helper.WindowsRegistry.CresPrioritize)
+			if (Helper.WindowsRegistry.Config.CresPrioritize)
 			{
 				if (WaitingScreen.Running)
 				{

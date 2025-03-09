@@ -90,7 +90,7 @@ namespace SimPe.Packages
 			}
 
 			//can we write to the .bak File?
-			if (Helper.WindowsRegistry.AutoBackup)
+			if (Helper.WindowsRegistry.Config.AutoBackup)
 			{
 				if (!CanWriteToFile(GetBakFileName(flname), true))
 				{
@@ -195,7 +195,7 @@ namespace SimPe.Packages
 				if (System.IO.File.Exists(flname))
 				{
 					// ...back up the current package content...
-					if (Helper.WindowsRegistry.AutoBackup)
+					if (Helper.WindowsRegistry.Config.AutoBackup)
 					{
 						string bakfile = GetBakFileName(flname);
 						if (System.IO.File.Exists(bakfile))
@@ -367,7 +367,7 @@ namespace SimPe.Packages
 						newpfd.size = pf.data.Length;
 						newpfd.SetUserData(pfd.UserData, false);
 
-						if (Helper.WindowsRegistry.HiddenMode)
+						if (Helper.WindowsRegistry.Config.HiddenMode)
 						{
 							Helper.ExceptionMessage(ex);
 						}

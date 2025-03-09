@@ -34,7 +34,7 @@ namespace SimPe.PackedFiles.Bnfo
 
 			try
 			{
-				tb.Visible = Helper.WindowsRegistry.HiddenMode;
+				tb.Visible = Helper.WindowsRegistry.Config.HiddenMode;
 				SetContent();
 			}
 			catch { }

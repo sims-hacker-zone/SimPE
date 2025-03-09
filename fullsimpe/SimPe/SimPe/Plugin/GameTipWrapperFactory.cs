@@ -42,7 +42,7 @@ namespace SimPe.Plugin
 			{
 				if (
 					Helper.StartedGui == Executable.Classic
-					|| Helper.WindowsRegistry.HiddenMode
+					|| Helper.WindowsRegistry.Config.HiddenMode
 				)
 				{
 					return new IHelp[0];

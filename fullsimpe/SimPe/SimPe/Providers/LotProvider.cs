@@ -156,7 +156,7 @@ namespace SimPe.Providers
 							new PackedFiles.Wrapper.Str().ProcessFile(stri);
 						PackedFiles.Wrapper.StrItemList items =
 							str.FallbackedLanguageItems(
-								Helper.WindowsRegistry.LanguageCode
+								Helper.WindowsRegistry.Config.LanguageCode
 							);
 						if (items.Length > 0)
 						{
@@ -294,7 +294,7 @@ namespace SimPe.Providers
 					{
 						PackedFiles.Wrapper.StrItemList list =
 							new PackedFiles.Wrapper.Str().ProcessFile(pfd, pkg).FallbackedLanguageItems(
-								Helper.WindowsRegistry.LanguageCode
+								Helper.WindowsRegistry.Config.LanguageCode
 							);
 						if (list.Count > 0)
 						{

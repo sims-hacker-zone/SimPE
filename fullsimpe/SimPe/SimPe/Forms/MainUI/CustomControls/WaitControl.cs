@@ -224,7 +224,7 @@ namespace SimPe
 			}
 			else
 			{
-				if (!DesignMode && !Helper.WindowsRegistry.ShowWaitBarPermanent)
+				if (!DesignMode && !Helper.WindowsRegistry.Config.ShowWaitBarPermanent)
 				{
 					Visible = false;
 				}

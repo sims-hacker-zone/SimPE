@@ -25,7 +25,7 @@ namespace SimPe.Plugin
 		{
 			InitializeComponent();
 			if (
-				Helper.WindowsRegistry.UseBigIcons
+				Helper.WindowsRegistry.Config.UseBigIcons
 				&& Screen.PrimaryScreen.WorkingArea.Width > 1600
 			)
 			{

@@ -409,7 +409,7 @@ namespace SimPe.PackedFiles.Wrapper
 					+ Items.Length.ToString();
 				foreach (
 					StrToken i in FallbackedLanguageItems(
-						Helper.WindowsRegistry.LanguageCode
+						Helper.WindowsRegistry.Config.LanguageCode
 					)
 				)
 				{

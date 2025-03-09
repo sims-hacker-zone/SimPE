@@ -40,7 +40,7 @@ namespace SimPe.Windows.Forms
 		{
 			if (realname == null)
 			{
-				if (Helper.WindowsRegistry.DecodeFilenamesState)
+				if (Helper.WindowsRegistry.Config.DecodeFilenamesState)
 				{
 					Interfaces.Plugin.Internal.IPackedFileWrapper wrp =
 						FileTableBase.WrapperRegistry.FindHandler(Descriptor.Type);

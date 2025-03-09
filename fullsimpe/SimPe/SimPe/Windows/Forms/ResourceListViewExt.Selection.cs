@@ -90,7 +90,7 @@ namespace SimPe.Windows.Forms
 
 		private void lv_Click(object sender, EventArgs e)
 		{
-			if (Helper.WindowsRegistry.SimpleResourceSelect)
+			if (Helper.WindowsRegistry.Config.SimpleResourceSelect)
 			{
 				OnSelectResource();
 			}
@@ -121,7 +121,7 @@ namespace SimPe.Windows.Forms
 
 		private void lv_DoubleClick(object sender, EventArgs e)
 		{
-			if (!Helper.WindowsRegistry.SimpleResourceSelect)
+			if (!Helper.WindowsRegistry.Config.SimpleResourceSelect)
 			{
 				OnSelectResource();
 			}
@@ -189,7 +189,7 @@ namespace SimPe.Windows.Forms
 		protected void OnSelectResource()
 		{
 			bool rctrl = ctrldown;
-			if (!Helper.WindowsRegistry.FirefoxTabbing)
+			if (!Helper.WindowsRegistry.Config.FirefoxTabbing)
 			{
 				rctrl = false;
 			}

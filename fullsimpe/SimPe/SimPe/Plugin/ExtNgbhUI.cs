@@ -46,8 +46,8 @@ namespace SimPe.Plugin
 			biDebug.Tag = pnDebug;
 			biBadge.Tag = pnBadge;
 
-			biDebug.Visible = Helper.WindowsRegistry.HiddenMode;
-			if (!Helper.WindowsRegistry.HiddenMode)
+			biDebug.Visible = Helper.WindowsRegistry.Config.HiddenMode;
+			if (!Helper.WindowsRegistry.Config.HiddenMode)
 			{
 				menu.Items.Remove(miFix);
 			}
@@ -556,7 +556,7 @@ namespace SimPe.Plugin
 		#region Extensions by Theo
 		void menu_VisibleChanged(object sender, EventArgs e)
 		{
-			miFix.Enabled = (Ngbh != null) && Helper.WindowsRegistry.HiddenMode;
+			miFix.Enabled = (Ngbh != null) && Helper.WindowsRegistry.Config.HiddenMode;
 			miNuke.Enabled = spc.SelectedSim != null;
 		}
 

@@ -133,7 +133,7 @@ namespace SimPe.PackedFiles.UserInterface
 			//
 
 			InitializeComponent();
-			if (Helper.WindowsRegistry.UseBigIcons)
+			if (Helper.WindowsRegistry.Config.UseBigIcons)
 			{
 				tbname.Font = new System.Drawing.Font(
 					tbname.Font.FontFamily,

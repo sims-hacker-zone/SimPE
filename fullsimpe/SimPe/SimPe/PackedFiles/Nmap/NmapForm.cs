@@ -25,7 +25,7 @@ namespace SimPe.PackedFiles.Nmap
 			//
 			InitializeComponent();
 
-			if (Helper.WindowsRegistry.UseBigIcons)
+			if (Helper.WindowsRegistry.Config.UseBigIcons)
 			{
 				lblist.Font = new System.Drawing.Font(
 					lblist.Font.FontFamily,

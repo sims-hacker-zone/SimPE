@@ -43,7 +43,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 			packages = new System.Collections.Generic.List<string>();
 			threads = new System.Threading.Thread[
-				Helper.WindowsRegistry.SortProcessCount / 2
+				Helper.WindowsRegistry.Config.SortProcessCount / 2
 			];
 
 			runningthreads = 0;
@@ -303,7 +303,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		{
 			lock (lv)
 			{
-				if (lv.Items.Count > Helper.WindowsRegistry.MaxSearchResults)
+				if (lv.Items.Count > Helper.WindowsRegistry.Config.MaxSearchResults)
 				{
 					truncated = true;
 					return;
@@ -422,7 +422,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 			pnErr.Text = pnErr.Text.Replace(
 				"{nr}",
-				Helper.WindowsRegistry.MaxSearchResults.ToString()
+				Helper.WindowsRegistry.Config.MaxSearchResults.ToString()
 			);
 			pnErr.Visible = truncated;
 			Wait.Stop();

@@ -2986,12 +2986,12 @@ namespace SimPe.PackedFiles.Wrapper
 				case SDescVersions.Castaway:
 					return PathProvider.Global.GetExpansion(28);
 				case SDescVersions.Pets:
-					return Helper.WindowsRegistry.LoadOnlySimsStory == 29
+					return Helper.WindowsRegistry.Config.LoadOnlySimsStory == 29
 						? PathProvider.Global.GetExpansion(29)
 						: PathProvider.Global.GetHighestAvailableExpansion(6, 9);
 
 				case SDescVersions.Business:
-					return Helper.WindowsRegistry.LoadOnlySimsStory == 30
+					return Helper.WindowsRegistry.Config.LoadOnlySimsStory == 30
 						? PathProvider.Global.GetExpansion(30)
 						: PathProvider.Global.GetHighestAvailableExpansion(3, 5);
 

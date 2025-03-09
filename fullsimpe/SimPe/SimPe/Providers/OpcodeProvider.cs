@@ -139,7 +139,7 @@ namespace SimPe.Providers
 								str.ProcessData(sitem);
 								PackedFiles.Wrapper.StrItemList strs =
 									str.LanguageItems(
-										Helper.WindowsRegistry.LanguageCode
+										Helper.WindowsRegistry.Config.LanguageCode
 									);
 								if (strs.Length > 0)
 								{

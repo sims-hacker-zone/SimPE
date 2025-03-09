@@ -527,7 +527,7 @@ namespace SimPe.PackedFiles.Wrapper.Lua
 
 		public override string ToString()
 		{
-			return Helper.WindowsRegistry.HiddenMode ? GetType().Name + ": " + ToAsmString() : ToAsmString();
+			return Helper.WindowsRegistry.Config.HiddenMode ? GetType().Name + ": " + ToAsmString() : ToAsmString();
 		}
 	}
 

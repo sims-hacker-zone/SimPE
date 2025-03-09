@@ -366,7 +366,7 @@ namespace SimPe.Packages
 		string GetResDescString()
 		{
 			switch (
-				Helper.WindowsRegistry.ResourceListUnknownDescriptionFormat
+				Helper.WindowsRegistry.Config.ResourceListUnknownDescriptionFormat
 			)
 			{
 				case Registry.ResourceListUnnamedFormats.FullTGI:
@@ -393,7 +393,7 @@ namespace SimPe.Packages
 		public string ToResListString()
 		{
 			if (
-				Helper.WindowsRegistry.ResourceListFormat
+				Helper.WindowsRegistry.Config.ResourceListFormat
 				== Registry.ResourceListFormats.ShortTypeNames
 			)
 			{
@@ -401,7 +401,7 @@ namespace SimPe.Packages
 			}
 
 			if (
-				Helper.WindowsRegistry.ResourceListFormat
+				Helper.WindowsRegistry.Config.ResourceListFormat
 				== Registry.ResourceListFormats.JustNames
 			)
 			{
@@ -409,7 +409,7 @@ namespace SimPe.Packages
 			}
 
 			if (
-				Helper.WindowsRegistry.ResourceListFormat
+				Helper.WindowsRegistry.Config.ResourceListFormat
 				== Registry.ResourceListFormats.JustLongType
 			)
 			{

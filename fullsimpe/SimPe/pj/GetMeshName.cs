@@ -122,14 +122,14 @@ namespace pj
 		{
 			InitializeComponent();
 
-			cbusecres.Checked = Settings.BodyMeshExtractUseCres;
+			cbusecres.Checked = Settings.Options.BodyMeshExtractUseCres;
 		}
 
 		public string MeshName => tbMeshName.Text;
 
 		private void cbusecres_CheckedChanged(object sender, EventArgs e)
 		{
-			Settings.BodyMeshExtractUseCres = cbusecres.Checked;
+			Settings.Options.BodyMeshExtractUseCres = cbusecres.Checked;
 		}
 	}
 }

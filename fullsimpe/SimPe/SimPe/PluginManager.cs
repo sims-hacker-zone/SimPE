@@ -105,7 +105,6 @@ namespace SimPe
 		{
 			Splash.Screen.SetMessage("Loading Static Wrappers");
 			FileTableBase.WrapperRegistry.Register(new CommandlineHelpFactory());
-			FileTableBase.WrapperRegistry.Register(new Custom.SettingsFactory());
 			FileTableBase.WrapperRegistry.Register(
 				new PackedFiles.Wrapper.Factory.SimFactory()
 			);

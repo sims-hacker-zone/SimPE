@@ -548,7 +548,7 @@ namespace SimPe.Interfaces.Plugin
 				if (FileDescriptor != null)
 				{
 					FileTypeInformation typeinfo = FileDescriptor.Type.ToFileTypeInformation();
-					res = Helper.WindowsRegistry.ResourceListFormat
+					res = Helper.WindowsRegistry.Config.ResourceListFormat
 						== Registry.ResourceListFormats.JustLongType
 						? typeinfo.LongName
 						: GetResourceName(typeinfo);
@@ -565,14 +565,14 @@ namespace SimPe.Interfaces.Plugin
 					else
 					{
 						if (
-							Helper.WindowsRegistry.ResourceListFormat
+							Helper.WindowsRegistry.Config.ResourceListFormat
 							== Registry.ResourceListFormats.LongTypeNames
 						)
 						{
 							res = typeinfo.LongName + ": " + res;
 						}
 						else if (
-							Helper.WindowsRegistry.ResourceListFormat
+							Helper.WindowsRegistry.Config.ResourceListFormat
 							== Registry.ResourceListFormats.ShortTypeNames
 						)
 						{

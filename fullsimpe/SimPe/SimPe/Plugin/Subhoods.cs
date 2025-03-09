@@ -93,7 +93,7 @@ namespace SimPe.Plugin
 						{
 							PackedFiles.Wrapper.StrItemList items =
 								new PackedFiles.Wrapper.Str().ProcessFile(pfd, pkg).FallbackedLanguageItems(
-									Helper.WindowsRegistry.LanguageCode
+									Helper.WindowsRegistry.Config.LanguageCode
 								);
 							if (items.Length > 0)
 							{

@@ -45,7 +45,7 @@ namespace SimPe.Plugin
 		internal CheckBox ckbPlayable;
 		internal CheckBox cbdetail;
 		internal CheckBox ckbUnEditable;
-		internal CheckBox cbgals;
+		internal CheckBox cbgirls;
 		internal CheckBox cbmens;
 		internal CheckBox cbadults;
 		private ColumnHeader columnHeader11;
@@ -117,7 +117,7 @@ namespace SimPe.Plugin
 			cbTownie = new CheckBox();
 			cbNpc = new CheckBox();
 			ckbUnEditable = new CheckBox();
-			cbgals = new CheckBox();
+			cbgirls = new CheckBox();
 			cbmens = new CheckBox();
 			cbadults = new CheckBox();
 			cbdetail = new CheckBox();
@@ -271,7 +271,7 @@ namespace SimPe.Plugin
 			flowLayoutPanel1.Controls.Add(cbTownie);
 			flowLayoutPanel1.Controls.Add(cbNpc);
 			flowLayoutPanel1.Controls.Add(ckbUnEditable);
-			flowLayoutPanel1.Controls.Add(cbgals);
+			flowLayoutPanel1.Controls.Add(cbgirls);
 			flowLayoutPanel1.Controls.Add(cbmens);
 			flowLayoutPanel1.Controls.Add(cbadults);
 			flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -312,12 +312,12 @@ namespace SimPe.Plugin
 				ckbFilter_CheckedChanged
 			);
 			//
-			// cbgals
+			// cbgirls
 			//
-			resources.ApplyResources(cbgals, "cbgals");
-			cbgals.Name = "cbgals";
-			cbgals.UseVisualStyleBackColor = true;
-			cbgals.CheckedChanged += new EventHandler(
+			resources.ApplyResources(cbgirls, "cbgirls");
+			cbgirls.Name = "cbgirls";
+			cbgirls.UseVisualStyleBackColor = true;
+			cbgirls.CheckedChanged += new EventHandler(
 				ckbFilter_CheckedChanged
 			);
 			//
@@ -689,7 +689,7 @@ namespace SimPe.Plugin
 					doAdd |= ckbPlayable.Checked && realIsPlayable(sdesc);
 					doAdd |= ckbUnEditable.Checked && realIsUneditable(sdesc);
 					doAdd &= !cbmens.Checked || !realIsWoman(sdesc);
-					doAdd &= !cbgals.Checked || realIsWoman(sdesc);
+					doAdd &= !cbgirls.Checked || realIsWoman(sdesc);
 					doAdd &= !cbadults.Checked || realIsAdult(sdesc);
 
 					if (doAdd)
@@ -820,22 +820,11 @@ namespace SimPe.Plugin
 
 		private void ckbFilter_CheckedChanged(object sender, EventArgs e)
 		{
-			cbgals.Enabled = !cbmens.Checked;
-			cbmens.Enabled = !cbgals.Checked;
+			cbgirls.Enabled = !cbmens.Checked;
+			cbmens.Enabled = !cbgirls.Checked;
 			if (package != null)
 			{
 				FillList();
-			}
-		}
-
-		private bool UseBigIcons
-		{
-			get
-			{
-				XmlRegistryKey rkf =
-					Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey("SimBrowser");
-				object o = rkf.GetValue("UseBiggerIcons", false);
-				return Convert.ToBoolean(o);
 			}
 		}
 	}

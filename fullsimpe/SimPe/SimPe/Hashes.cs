@@ -280,16 +280,16 @@ namespace SimPe
 			return guid;
 		}
 
-		public static bool HaveUserId => (Helper.WindowsRegistry.CachedUserId != 0)
-					&& (Helper.WindowsRegistry.Username.Trim() != "");
+		public static bool HaveUserId => (Helper.WindowsRegistry.Config.CachedUserId != 0)
+					&& (Helper.WindowsRegistry.Config.UserName.Trim() != "");
 
 		public static bool HaveValidUserId => HaveUserId
 					&& ValidUserId(
-						Helper.WindowsRegistry.CachedUserId,
-						Helper.WindowsRegistry.Username,
-						Helper.WindowsRegistry.Password
+						Helper.WindowsRegistry.Config.CachedUserId,
+						Helper.WindowsRegistry.Config.UserName,
+						Helper.WindowsRegistry.Config.Password
 					);
 
-		public static uint UserId => Helper.WindowsRegistry.CachedUserId;
+		public static uint UserId => Helper.WindowsRegistry.Config.CachedUserId;
 	}
 }

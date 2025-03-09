@@ -106,7 +106,7 @@ namespace SimPe.Packages
 			}
 			catch (Exception ex)
 			{
-				if (Helper.WindowsRegistry.HiddenMode)
+				if (Helper.WindowsRegistry.Config.HiddenMode)
 				{
 					Helper.ExceptionMessage("", ex);
 				}

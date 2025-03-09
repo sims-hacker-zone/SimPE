@@ -50,15 +50,15 @@ namespace SimPe.Plugin
 			foreach (LinkControlLineMode l in ls)
 			{
 				cbLineStyle.Items.Add(l);
-				if ((int)l == Helper.WindowsRegistry.GraphLineMode)
+				if ((int)l == Helper.WindowsRegistry.Config.GraphLineMode)
 				{
 					cbLineStyle.SelectedIndex = cbLineStyle.Items.Count - 1;
 				}
 			}
 			//			if (cbLineStyle.SelectedIndex==-1) cbLineStyle.SelectedIndex = 2;
 
-			cbQuality.Checked = Helper.WindowsRegistry.GraphQuality;
-			cbPriority.Checked = Helper.WindowsRegistry.CresPrioritize;
+			cbQuality.Checked = Helper.WindowsRegistry.Config.GraphQuality;
+			cbPriority.Checked = Helper.WindowsRegistry.Config.CresPrioritize;
 
 			cbQuality_CheckedChanged(cbQuality, null);
 			cbLineStyle_SelectedIndexChanged(cbLineStyle, null);
@@ -495,7 +495,7 @@ namespace SimPe.Plugin
 
 				WaitingScreen.Stop();
 				TimeSpan runtime = DateTime.Now.Subtract(start);
-				if (Helper.WindowsRegistry.HiddenMode)
+				if (Helper.WindowsRegistry.Config.HiddenMode)
 				{
 					Text =
 						"Runtime: "
@@ -538,7 +538,7 @@ namespace SimPe.Plugin
 		private void cbQuality_CheckedChanged(object sender, EventArgs e)
 		{
 			gb.Graph.Quality = cbQuality.Checked;
-			Helper.WindowsRegistry.GraphQuality = gb.Graph.Quality;
+			Helper.WindowsRegistry.Config.GraphQuality = gb.Graph.Quality;
 		}
 
 		private void cbLineStyle_SelectedIndexChanged(object sender, EventArgs e)
@@ -550,12 +550,12 @@ namespace SimPe.Plugin
 
 			gb.Graph.LineMode = (LinkControlLineMode)
 				cbLineStyle.Items[cbLineStyle.SelectedIndex];
-			Helper.WindowsRegistry.GraphLineMode = (int)gb.Graph.LineMode;
+			Helper.WindowsRegistry.Config.GraphLineMode = (int)gb.Graph.LineMode;
 		}
 
 		private void cbPriority_CheckedChanged(object sender, EventArgs e)
 		{
-			Helper.WindowsRegistry.CresPrioritize = cbPriority.Checked;
+			Helper.WindowsRegistry.Config.CresPrioritize = cbPriority.Checked;
 		}
 	}
 }

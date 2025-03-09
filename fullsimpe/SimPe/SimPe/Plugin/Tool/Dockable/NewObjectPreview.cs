@@ -521,7 +521,7 @@ namespace SimPe.Plugin.Tool.Dockable
 		)
 		{
 			return ctss != null
-				? new PackedFiles.Wrapper.Str().ProcessFile(ctss, pkg).FallbackedLanguageItems(Helper.WindowsRegistry.LanguageCode)
+				? new PackedFiles.Wrapper.Str().ProcessFile(ctss, pkg).FallbackedLanguageItems(Helper.WindowsRegistry.Config.LanguageCode)
 				: null;
 		}
 

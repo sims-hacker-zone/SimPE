@@ -67,7 +67,7 @@ namespace SimPe.PackedFiles.UserInterface
 			pjse.FileTable.GFT.FiletableRefresh += new EventHandler(
 				GFT_FiletableRefresh
 			);
-			if (Helper.WindowsRegistry.UseBigIcons)
+			if (Helper.WindowsRegistry.Config.UseBigIcons)
 			{
 				lvParams.Font = new Font(
 					"Microsoft Sans Serif",
@@ -115,16 +115,23 @@ namespace SimPe.PackedFiles.UserInterface
 		{
 			get
 			{
-				XmlRegistryKey rkf =
-					Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey("PJSE\\TPRP");
-				object o = rkf.GetValue("initialTab", 1);
-				return Convert.ToInt16(o);
+				if (!Helper.WindowsRegistry.Config.PluginSettings.ContainsKey("PJSE\\TPRP"))
+				{
+					Helper.WindowsRegistry.Config.PluginSettings["PJSE\\TPRP"] = new System.Collections.Generic.Dictionary<string, string>();
+				}
+				if (!Helper.WindowsRegistry.Config.PluginSettings["PJSE\\TPRP"].ContainsKey("InitialTab"))
+				{
+					Helper.WindowsRegistry.Config.PluginSettings["PJSE\\TPRP"]["InitialTab"] = "1";
+				}
+				return int.Parse(Helper.WindowsRegistry.Config.PluginSettings["PJSE\\TPRP"]["InitialTab"]);
 			}
 			set
 			{
-				XmlRegistryKey rkf =
-					Helper.WindowsRegistry.PluginRegistryKey.CreateSubKey("PJSE\\TPRP");
-				rkf.SetValue("initialTab", value);
+				if (!Helper.WindowsRegistry.Config.PluginSettings.ContainsKey("PJSE\\TPRP"))
+				{
+					Helper.WindowsRegistry.Config.PluginSettings["PJSE\\TPRP"] = new System.Collections.Generic.Dictionary<string, string>();
+				}
+				Helper.WindowsRegistry.Config.PluginSettings["PJSE\\TPRP"]["InitialTab"] = value.ToString();
 			}
 		}
 

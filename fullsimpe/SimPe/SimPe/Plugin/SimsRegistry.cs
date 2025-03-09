@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 using System;
+using System.Collections.Generic;
 
 namespace SimPe.Plugin
 {
@@ -10,13 +11,21 @@ namespace SimPe.Plugin
 	/// </summary>
 	class SimsRegistry : IDisposable
 	{
-		XmlRegistryKey xrk;
+		Dictionary<string, string> settings;
 		Sims form;
+
+		public SimsRegistry()
+		{
+			if (!Helper.WindowsRegistry.Config.PluginSettings.ContainsKey("SimBrowser"))
+			{
+				Helper.WindowsRegistry.Config.PluginSettings["SimBrowser"] = new Dictionary<string, string>();
+			}
+			settings = Helper.WindowsRegistry.Config.PluginSettings["SimBrowser"];
+		}
 
 		public SimsRegistry(Sims form)
 		{
 			this.form = form;
-			xrk = Helper.WindowsRegistry.PluginRegistryKey;
 
 			form.ckbPlayable.Checked = ShowPlayable;
 			form.ckbPlayable.CheckedChanged += new EventHandler(
@@ -37,9 +46,9 @@ namespace SimPe.Plugin
 			form.cbdetail.Checked = ShowDetails;
 			form.cbdetail.CheckedChanged += new EventHandler(cbdetail_CheckedChanged);
 
-			form.cbgals.Checked = JustGals;
-			form.cbgals.CheckedChanged += new EventHandler(cbgals_CheckedChanged);
-			form.cbmens.Enabled = !form.cbgals.Checked;
+			form.cbgirls.Checked = JustGirls;
+			form.cbgirls.CheckedChanged += new EventHandler(cbgirls_CheckedChanged);
+			form.cbmens.Enabled = !form.cbgirls.Checked;
 
 			form.cbadults.Checked = AdultsOnly;
 			form.cbadults.CheckedChanged += new EventHandler(cbadults_CheckedChanged);
@@ -47,6 +56,12 @@ namespace SimPe.Plugin
 			form.sorter.CurrentColumn = SortedColumn;
 			form.sorter.Sorting = SortOrder;
 			form.sorter.Changed += new EventHandler(sorter_Changed);
+
+			if (!Helper.WindowsRegistry.Config.PluginSettings.ContainsKey("SimBrowser"))
+			{
+				Helper.WindowsRegistry.Config.PluginSettings["SimBrowser"] = new Dictionary<string, string>();
+			}
+			settings = Helper.WindowsRegistry.Config.PluginSettings["SimBrowser"];
 		}
 
 		#region Properties
@@ -54,138 +69,117 @@ namespace SimPe.Plugin
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("SimBrowser");
-				object o = rkf.GetValue("ShowPlayable", true);
-				return Convert.ToBoolean(o);
+				if (!settings.ContainsKey("ShowPlayable"))
+				{
+					settings["ShowPlayable"] = true.ToString();
+				}
+				return bool.Parse(settings["ShowPlayable"]);
 			}
-			set
-			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("SimBrowser");
-				rkf.SetValue("ShowPlayable", value);
-			}
+			set => settings["ShowPlayable"] = value.ToString();
 		}
 
 		public bool ShowTownies
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("SimBrowser");
-				object o = rkf.GetValue("ShowTownies", false);
-				return Convert.ToBoolean(o);
+				if (!settings.ContainsKey("ShowTownies"))
+				{
+					settings["ShowTownies"] = false.ToString();
+				}
+				return bool.Parse(settings["ShowTownies"]);
 			}
-			set
-			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("SimBrowser");
-				rkf.SetValue("ShowTownies", value);
-			}
+			set => settings["ShowTownies"] = value.ToString();
 		}
 
 		public bool ShowNPCs
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("SimBrowser");
-				object o = rkf.GetValue("ShowNPCs", false);
-				return Convert.ToBoolean(o);
+				if (!settings.ContainsKey("ShowNPCs"))
+				{
+					settings["ShowNPCs"] = false.ToString();
+				}
+				return bool.Parse(settings["ShowNPCs"]);
 			}
-			set
-			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("SimBrowser");
-				rkf.SetValue("ShowNPCs", value);
-			}
+			set => settings["ShowNPCs"] = value.ToString();
 		}
 
 		public bool ShowUnEditable
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("SimBrowser");
-				object o = rkf.GetValue("ShowUnEditable", false);
-				return Convert.ToBoolean(o);
+				if (!settings.ContainsKey("ShowUnEditable"))
+				{
+					settings["ShowUnEditable"] = false.ToString();
+				}
+				return bool.Parse(settings["ShowUnEditable"]);
 			}
-			set
-			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("SimBrowser");
-				rkf.SetValue("ShowUnEditable", value);
-			}
+			set => settings["ShowUnEditable"] = value.ToString();
 		}
 
 		public bool ShowDetails
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("SimBrowser");
-				object o = rkf.GetValue("ShowDetails", true);
-				return Convert.ToBoolean(o);
+				if (!settings.ContainsKey("ShowDetails"))
+				{
+					settings["ShowDetails"] = true.ToString();
+				}
+				return bool.Parse(settings["ShowDetails"]);
 			}
-			set
-			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("SimBrowser");
-				rkf.SetValue("ShowDetails", value);
-			}
+			set => settings["ShowDetails"] = value.ToString();
 		}
 
-		public bool JustGals
+		public bool JustGirls
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("SimBrowser");
-				object o = rkf.GetValue("JustGals", false);
-				return Convert.ToBoolean(o);
+				if (!settings.ContainsKey("JustGirls"))
+				{
+					settings["JustGirls"] = false.ToString();
+				}
+				return bool.Parse(settings["JustGirls"]);
 			}
-			set
-			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("SimBrowser");
-				rkf.SetValue("JustGals", value);
-			}
+			set => settings["JustGirls"] = value.ToString();
 		}
 
 		public bool AdultsOnly
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("SimBrowser");
-				object o = rkf.GetValue("AdultsOnly", false);
-				return Convert.ToBoolean(o);
+				if (!settings.ContainsKey("AdultsOnly"))
+				{
+					settings["AdultsOnly"] = false.ToString();
+				}
+				return bool.Parse(settings["AdultsOnly"]);
 			}
-			set
-			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("SimBrowser");
-				rkf.SetValue("AdultsOnly", value);
-			}
+			set => settings["AdultsOnly"] = value.ToString();
 		}
 
 		public int SortedColumn
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("SimBrowser");
-				object o = rkf.GetValue("SortedColumn", 3);
-				return Convert.ToInt32(o);
+				if (!settings.ContainsKey("SortedColumn"))
+				{
+					settings["SortedColumn"] = 3.ToString();
+				}
+				return int.Parse(settings["SortedColumn"]);
 			}
-			set
-			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("SimBrowser");
-				rkf.SetValue("SortedColumn", value);
-			}
+			set => settings["SortedColumn"] = value.ToString();
 		}
 
 		public System.Windows.Forms.SortOrder SortOrder
 		{
 			get
 			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("SimBrowser");
-				object o = rkf.GetValue(
-					"SortOrder",
-					(int)System.Windows.Forms.SortOrder.Ascending
-				);
-				return (System.Windows.Forms.SortOrder)Convert.ToInt32(o);
+				if (!settings.ContainsKey("SortOrder"))
+				{
+					settings["SortOrder"] = System.Windows.Forms.SortOrder.Ascending.ToString();
+				}
+				return (System.Windows.Forms.SortOrder)Enum.Parse(typeof(System.Windows.Forms.SortOrder), settings["SortOrder"]);
 			}
-			set
-			{
-				XmlRegistryKey rkf = xrk.CreateSubKey("SimBrowser");
-				rkf.SetValue("SortOrder", (int)value);
-			}
+			set => settings["SortOrder"] = value.ToString();
 		}
 
 		#endregion
@@ -196,7 +190,6 @@ namespace SimPe.Plugin
 		public void Dispose()
 		{
 			form = null;
-			xrk = null;
 		}
 
 		#endregion
@@ -231,10 +224,10 @@ namespace SimPe.Plugin
 			ShowDetails = cb.Checked;
 		}
 
-		private void cbgals_CheckedChanged(object sender, EventArgs e)
+		private void cbgirls_CheckedChanged(object sender, EventArgs e)
 		{
 			System.Windows.Forms.CheckBox cb = sender as System.Windows.Forms.CheckBox;
-			JustGals = cb.Checked;
+			JustGirls = cb.Checked;
 		}
 
 		private void cbadults_CheckedChanged(object sender, EventArgs e)

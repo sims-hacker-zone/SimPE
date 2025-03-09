@@ -30,7 +30,7 @@ namespace SimPe.Plugin
 		{
 			base.RefreshGUI();
 			intern = true;
-			if (Helper.WindowsRegistry.UseBigIcons)
+			if (Helper.WindowsRegistry.Config.UseBigIcons)
 			{
 				rtbContent.Size = new System.Drawing.Size(
 					530,
