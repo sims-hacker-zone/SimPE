@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Numerics;
 using System.Windows.Forms;
 
 using SimPe.Geometry;
@@ -3808,12 +3809,12 @@ namespace SimPe.Plugin
 		/// Get all Selected Models
 		/// </summary>
 		/// <returns></returns>
-		GmdcGroups GetModelsExt()
+		List<GmdcGroup> GetModelsExt()
 		{
-			GmdcGroups list = new GmdcGroups();
+			List<GmdcGroup> list = new List<GmdcGroup>();
 			for (int i = 0; i < lbmodel.CheckedItems.Count; i++)
 			{
-				list.Add(lbmodel.CheckedItems[i]);
+				list.Add((GmdcGroup)lbmodel.CheckedItems[i]);
 			}
 
 			return list;
@@ -4350,7 +4351,7 @@ namespace SimPe.Plugin
 					).Object;
 
 				lb_sub_faces.Items.Clear();
-				foreach (Vector3f i in item.Vertices)
+				foreach (Vector3 i in item.Vertices)
 				{
 					CountedListItem.Add(lb_sub_faces, i);
 				}
@@ -4462,7 +4463,7 @@ namespace SimPe.Plugin
 			SaveFileDialog sfd,
 			GeometryDataContainer gmdc,
 			string defext,
-			GmdcGroups groups,
+			List<GmdcGroup> groups,
 			ElementSorting sorting,
 			bool corjoints
 		)

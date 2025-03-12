@@ -2,8 +2,8 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
-
-using SimPe.Geometry;
+using System.Collections.Generic;
+using System.Numerics;
 
 namespace SimPe.Plugin.Gmdc.Exporter
 {
@@ -19,7 +19,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 		/// <param name="gmdc">The Gmdc File the Export is based on</param>
 		/// <param name="groups">The list of Groups you want to export</param>
 		/// <remarks><see cref="AbstractGmdcExporter.FileContent"/> will contain the Exported .obj File</remarks>
-		public GmdcExportToNorm(GeometryDataContainer gmdc, GmdcGroups groups)
+		public GmdcExportToNorm(GeometryDataContainer gmdc, List<GmdcGroup> groups)
 			: base(gmdc, groups) { }
 
 		/// <summary>
@@ -65,14 +65,14 @@ namespace SimPe.Plugin.Gmdc.Exporter
 
 		protected override void InitFile()
 		{
-			if (Groups.Length > 1)
+			if (Groups.Count > 1)
 			{
 				throw new Warning(
 					"Too Many Meshes Selected",
 					"You've selected too many meshes\nSmd File only support 1 mesh per file"
 				);
 			}
-			else if (Groups.Length < 1)
+			else if (Groups.Count < 1)
 			{
 				throw new Warning(
 					"No Mesh Selected",
@@ -129,8 +129,8 @@ namespace SimPe.Plugin.Gmdc.Exporter
 
 			string[] faceforvert = new string[nbvert];
 
-			Vector3f[] facetangent = new Vector3f[nbfaces];
-			Vector3f[] verttangent = new Vector3f[nbvert];
+			Vector3[] facetangent = new Vector3[nbfaces];
+			Vector3[] verttangent = new Vector3[nbvert];
 
 			int facenumber = 0;
 			for (int i = 0; i < Group.Faces.Count; i += 3)
@@ -143,34 +143,34 @@ namespace SimPe.Plugin.Gmdc.Exporter
 				faceforvert[j3] += facenumber.ToString() + " "; // add this face number to vert num array
 
 				//get vert position v1,v2,v3 and vert uvmap uv1,uv2,uv3
-				Vector3f v1 = new Vector3f(
+				Vector3 v1 = new Vector3(
 					Link.GetValue(nr, j1).Data[0],
 					Link.GetValue(nr, j1).Data[1],
 					Link.GetValue(nr, j1).Data[2]
 				);
-				Vector3f uv1 = new Vector3f(
+				Vector3 uv1 = new Vector3(
 					Link.GetValue(nm, j1).Data[0],
 					1 - Link.GetValue(nm, j1).Data[1],
 					0
 				);
 
-				Vector3f v2 = new Vector3f(
+				Vector3 v2 = new Vector3(
 					Link.GetValue(nr, j2).Data[0],
 					Link.GetValue(nr, j2).Data[1],
 					Link.GetValue(nr, j2).Data[2]
 				);
-				Vector3f uv2 = new Vector3f(
+				Vector3 uv2 = new Vector3(
 					Link.GetValue(nm, j2).Data[0],
 					1 - Link.GetValue(nm, j2).Data[1],
 					0
 				);
 
-				Vector3f v3 = new Vector3f(
+				Vector3 v3 = new Vector3(
 					Link.GetValue(nr, j3).Data[0],
 					Link.GetValue(nr, j3).Data[1],
 					Link.GetValue(nr, j3).Data[2]
 				);
-				Vector3f uv3 = new Vector3f(
+				Vector3 uv3 = new Vector3(
 					Link.GetValue(nm, j3).Data[0],
 					1 - Link.GetValue(nm, j3).Data[1],
 					0
@@ -186,7 +186,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 				uv2 = uv3;
 
 				//Calculate Face Tangent "Factor"
-				double r = 1f / ((uv1.X * uv2.Y) - (uv2.X * uv1.Y));
+				float r = 1f / ((uv1.X * uv2.Y) - (uv2.X * uv1.Y));
 
 				//correct extrem values of "Factor"
 				if (r > 10000000000000000)
@@ -200,7 +200,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 				}
 
 				//Calculate Face Tangent
-				Vector3f tangent = (uv2.Y * v1) - (uv1.Y * v2);
+				Vector3 tangent = (uv2.Y * v1) - (uv1.Y * v2);
 				tangent *= r;
 				facetangent[facenumber] = tangent;
 
@@ -241,7 +241,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 			for (int i = 0; i < nbvert; i++)
 			{
 				//Get Gmdc Vertex Normal Informations
-				Vector3f vertnormalgmdc = new Vector3f(
+				Vector3 vertnormalgmdc = new Vector3(
 					Link.GetValue(nn, i).Data[0],
 					Link.GetValue(nn, i).Data[1],
 					Link.GetValue(nn, i).Data[2]
@@ -258,16 +258,16 @@ namespace SimPe.Plugin.Gmdc.Exporter
 				}
 
 				//Add face tangent for each face used
-				Vector3f tangent = new Vector3f(0, 0, 0);
+				Vector3 tangent = new Vector3(0, 0, 0);
 				for (int j = 0; j < nbfaceused; j++)
 				{
 					tangent += facetangent[faceused[j]];
 				}
 
 				//Finalize tangent calculation
-				tangent = tangent.UnitVector;
-				tangent -= (vertnormalgmdc * (tangent * vertnormalgmdc));
-				tangent = tangent.UnitVector;
+				tangent = Vector3.Normalize(tangent);
+				tangent -= vertnormalgmdc * (tangent * vertnormalgmdc);
+				tangent = Vector3.Normalize(tangent);
 
 				verttangent[i] = tangent;
 			}

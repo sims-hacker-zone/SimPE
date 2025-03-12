@@ -5,7 +5,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-using SimPe.Geometry;
+using System.Numerics;
 
 namespace SimPe.PackedFiles.Nhtr
 {
@@ -19,13 +19,12 @@ namespace SimPe.PackedFiles.Nhtr
 	{
 		public NhtrLocation()
 		{
-			Position = Vector3f.Zero;
 		}
 
-		public Vector3f Position
+		public Vector3 Position
 		{
 			get; set;
-		}
+		} = Vector3.Zero;
 
 		public float Orientation1
 		{
@@ -39,19 +38,21 @@ namespace SimPe.PackedFiles.Nhtr
 
 		internal void Unserialize(System.IO.BinaryReader reader)
 		{
-			Position.Y = reader.ReadSingle();
-			Position.X = reader.ReadSingle();
-			Position.Z = reader.ReadSingle();
-
+			Position = new Vector3
+			{
+				Y = reader.ReadSingle(),
+				X = reader.ReadSingle(),
+				Z = reader.ReadSingle()
+			};
 			Orientation1 = reader.ReadSingle();
 			Orientation2 = reader.ReadSingle();
 		}
 
 		internal void Serialize(System.IO.BinaryWriter writer)
 		{
-			writer.Write((float)Position.Y);
-			writer.Write((float)Position.X);
-			writer.Write((float)Position.Z);
+			writer.Write(Position.Y);
+			writer.Write(Position.X);
+			writer.Write(Position.Z);
 
 			writer.Write(Orientation1);
 			writer.Write(Orientation2);

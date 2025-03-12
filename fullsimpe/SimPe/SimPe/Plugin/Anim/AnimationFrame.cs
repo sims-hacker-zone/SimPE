@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.ComponentModel;
+using System.Numerics;
 
 using SimPe.Geometry;
 
@@ -235,17 +236,7 @@ namespace SimPe.Plugin.Anim
 			Category("Information"),
 			DefaultValue(0x11BA05F0)
 		]
-		public Vector3f Vector
-		{
-			get
-			{
-				double x = Float_X;
-				double y = Float_Y;
-				double z = Float_Z;
-
-				return new Vector3f(Float_X, Float_Y, Float_Z);
-			}
-		}
+		public Vector3 Vector => new Vector3(Float_X, Float_Y, Float_Z);
 
 		[
 			Description(

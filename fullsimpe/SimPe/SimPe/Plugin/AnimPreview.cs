@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
+using SimPe.Extensions;
 using SimPe.Interfaces.Plugin;
 
 namespace SimPe.Plugin
@@ -235,9 +236,9 @@ namespace SimPe.Plugin
 
 				Ambertation.Scenes.Transformation trans =
 					new Ambertation.Scenes.Transformation();
-				trans.Rotation.X = tn.Rotation.GetEulerAngles().X;
-				trans.Rotation.Y = tn.Rotation.GetEulerAngles().Y;
-				trans.Rotation.Z = tn.Rotation.GetEulerAngles().Z;
+				trans.Rotation.X = tn.Rotation.GetEulerAnglesZYX().X;
+				trans.Rotation.Y = tn.Rotation.GetEulerAnglesZYX().Y;
+				trans.Rotation.Z = tn.Rotation.GetEulerAnglesZYX().Z;
 
 				trans.Translation.X = tn.TransformX;
 				trans.Translation.Y = tn.TransformY;

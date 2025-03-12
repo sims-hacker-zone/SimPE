@@ -1,5 +1,6 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using System.Collections.Generic;
 namespace SimPe.Plugin.Gmdc
 {
 	/// <summary>
@@ -24,7 +25,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <param name="gmdc"></param>
 		/// <param name="groups"></param>
 		/// <returns>The created Stream</returns>
-		System.IO.Stream Process(GeometryDataContainer gmdc, GmdcGroups groups);
+		System.IO.Stream Process(GeometryDataContainer gmdc, List<GmdcGroup> groups);
 
 		/// <summary>
 		/// Retunrs or sets the FileName that is used to create the File

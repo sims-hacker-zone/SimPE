@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-using SimPe.Geometry;
+using System.Numerics;
 
 namespace SimPe.PackedFiles.Nhtr
 {
@@ -10,8 +10,8 @@ namespace SimPe.PackedFiles.Nhtr
 	/// </summary>
 	public abstract class NhtrBaseItem : NhtrItem
 	{
-		protected Vector3f pos;
-		protected Vector2f min,
+		protected Vector3 pos;
+		protected Vector2 min,
 			max;
 		protected byte marker2;
 
@@ -19,24 +19,24 @@ namespace SimPe.PackedFiles.Nhtr
 			: base(parent)
 		{
 			marker2 = marker;
-			pos = Vector3f.Zero;
-			min = Vector2f.Zero;
-			max = Vector2f.Zero;
+			pos = Vector3.Zero;
+			min = Vector2.Zero;
+			max = Vector2.Zero;
 		}
 
-		public Vector3f Position
+		public Vector3 Position
 		{
 			get => pos;
 			set => pos = value;
 		}
 
-		public Vector2f BoundingBoxMinimum
+		public Vector2 BoundingBoxMinimum
 		{
 			get => min;
 			set => min = value;
 		}
 
-		public Vector2f BoundingBoxMaximum
+		public Vector2 BoundingBoxMaximum
 		{
 			get => max;
 			set => max = value;
@@ -69,15 +69,15 @@ namespace SimPe.PackedFiles.Nhtr
 		{
 			base.Serialize(writer);
 
-			writer.Write((float)pos.Y);
-			writer.Write((float)pos.X);
-			writer.Write((float)pos.Z);
+			writer.Write(pos.Y);
+			writer.Write(pos.X);
+			writer.Write(pos.Z);
 
-			writer.Write((float)min.Y);
-			writer.Write((float)min.X);
+			writer.Write(min.Y);
+			writer.Write(min.X);
 
-			writer.Write((float)max.Y);
-			writer.Write((float)max.X);
+			writer.Write(max.Y);
+			writer.Write(max.X);
 
 			writer.Write(marker2);
 

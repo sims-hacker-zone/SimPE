@@ -3,9 +3,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 
 using Ambertation.Scenes;
 
+using SimPe.Extensions;
 using SimPe.Geometry;
 using SimPe.Plugin.Gmdc;
 
@@ -101,7 +103,7 @@ namespace SimPe.Plugin
 
 			if (j.AssignedTransformNode != null)
 			{
-				Vector3f tmp = j.AssignedTransformNode.Transformation.Translation;
+				Vector3 tmp = j.AssignedTransformNode.Transformation.Translation;
 				tmp = component.TransformScaled(tmp);
 				//tmp = component.ScaleMatrix * tmp;
 
@@ -109,10 +111,10 @@ namespace SimPe.Plugin
 				nj.Translation.Y = tmp.Y;
 				nj.Translation.Z = tmp.Z;
 
-				Quaternion q = component.TransformRotation(
+				System.Numerics.Quaternion q = component.TransformRotation(
 					j.AssignedTransformNode.Transformation.Rotation
 				);
-				tmp = q.GetEulerAngles();
+				tmp = q.GetEulerAnglesZYX();
 
 				//Console.WriteLine("        "+q.ToLinedString());
 				nj.Rotation.X = tmp.X;
@@ -154,8 +156,8 @@ namespace SimPe.Plugin
 				}
 			}
 
-			Quaternion r = Quaternion.FromRotationMatrix(component.TransformMatrix);
-			Vector3f tmp = r.GetEulerAngles();
+			System.Numerics.Quaternion r = System.Numerics.Quaternion.CreateFromRotationMatrix(component.TransformMatrix);
+			Vector3 tmp = r.GetEulerAnglesZYX();
 			scn.RootJoint.Name = "SIMPE_ROOT_IGNORE";
 			//scn.RootJoint.Rotation.X = tmp.X; scn.RootJoint.Rotation.Y = tmp.Y; scn.RootJoint.Rotation.Z = tmp.Z;
 
@@ -169,7 +171,7 @@ namespace SimPe.Plugin
 		}
 
 		public Scene GetScene(
-			GmdcGroups groups,
+			List<GmdcGroup> groups,
 			ElementOrder component
 		)
 		{
@@ -177,7 +179,7 @@ namespace SimPe.Plugin
 		}
 
 		public Scene GetScene(
-			GmdcGroups groups,
+			List<GmdcGroup> groups,
 			string absimgpath,
 			ElementOrder component
 		)
@@ -186,7 +188,7 @@ namespace SimPe.Plugin
 		}
 
 		public Scene GetScene(
-			GmdcGroups groups,
+			List<GmdcGroup> groups,
 			string absimgpath,
 			string imgfolder,
 			ElementOrder component
@@ -300,7 +302,7 @@ namespace SimPe.Plugin
 				//	int mnr = g.Link.GetElementNr(vertexme);
 				for (int i = 0; i < g.Link.ReferencedSize; i++)
 				{
-					Vector3f v = new Vector3f(
+					Vector3 v = new Vector3(
 						g.Link.GetValue(nr, i).Data[0],
 						g.Link.GetValue(nr, i).Data[1],
 						g.Link.GetValue(nr, i).Data[2]
@@ -317,7 +319,7 @@ namespace SimPe.Plugin
 					nr = g.Link.GetElementNr(normale);
 					for (int i = 0; i < g.Link.ReferencedSize; i++)
 					{
-						Vector3f v = new Vector3f(
+						Vector3 v = new Vector3(
 							g.Link.GetValue(nr, i).Data[0],
 							g.Link.GetValue(nr, i).Data[1],
 							g.Link.GetValue(nr, i).Data[2]
@@ -332,7 +334,7 @@ namespace SimPe.Plugin
 					nr = g.Link.GetElementNr(bumpnormal);
 					for (int i = 0; i < g.Link.ReferencedSize; i++)
 					{
-						Vector3f v = new Vector3f(
+						Vector3 v = new Vector3(
 							g.Link.GetValue(nr, i).Data[0],
 							g.Link.GetValue(nr, i).Data[1],
 							g.Link.GetValue(nr, i).Data[2]
@@ -347,7 +349,7 @@ namespace SimPe.Plugin
 					nr = g.Link.GetElementNr(texte);
 					for (int i = 0; i < g.Link.ReferencedSize; i++)
 					{
-						Vector2f v = new Vector2f(
+						Vector2 v = new Vector2(
 							g.Link.GetValue(nr, i).Data[0],
 							g.Link.GetValue(nr, i).Data[1]
 						);

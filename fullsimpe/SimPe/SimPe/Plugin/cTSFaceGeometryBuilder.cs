@@ -1,7 +1,10 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Collections;
+using System.Collections.Generic;
+using System.Numerics;
 
+using SimPe.Extensions;
 using SimPe.Geometry;
 
 namespace SimPe.Plugin
@@ -12,12 +15,12 @@ namespace SimPe.Plugin
 	public class TSFaceGeometryBuilderItem
 	{
 		#region Attributes
-		public Vectors3f Vectors1
+		public List<Vector3> Vectors1
 		{
 			get; set;
 		}
 
-		public Vectors3f Vectors2
+		public List<Vector3> Vectors2
 		{
 			get; set;
 		}
@@ -35,8 +38,8 @@ namespace SimPe.Plugin
 
 		public TSFaceGeometryBuilderItem()
 		{
-			Vectors1 = new Vectors3f();
-			Vectors2 = new Vectors3f();
+			Vectors1 = new List<Vector3>();
+			Vectors2 = new List<Vector3>();
 		}
 
 		/// <summary>
@@ -51,7 +54,7 @@ namespace SimPe.Plugin
 			Vectors1.Clear();
 			for (int i = 0; i < count; i++)
 			{
-				Vector3f o = new Vector3f();
+				Vector3 o = new Vector3();
 				o.Unserialize(reader);
 				Vectors1.Add(o);
 			}
@@ -60,7 +63,7 @@ namespace SimPe.Plugin
 			Vectors2.Clear();
 			for (int i = 0; i < count; i++)
 			{
-				Vector3f o = new Vector3f();
+				Vector3 o = new Vector3();
 				o.Unserialize(reader);
 				Vectors2.Add(o);
 			}

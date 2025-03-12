@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
-using SimPe.Geometry;
+using System.Collections.Generic;
+using System.Numerics;
 
 namespace SimPe.Plugin.Gmdc.Exporter
 {
@@ -15,7 +16,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 		/// <param name="gmdc">The Gmdc File the Export is based on</param>
 		/// <param name="groups">The list of Groups you want to export</param>
 		/// <remarks><see cref="AbstractGmdcExporter.FileContent"/> will contain the Exported .x File</remarks>
-		public GmdcExportToX(GeometryDataContainer gmdc, GmdcGroups groups)
+		public GmdcExportToX(GeometryDataContainer gmdc, List<GmdcGroup> groups)
 			: base(gmdc, groups) { }
 
 		/// <summary>
@@ -112,7 +113,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 					writer.WriteLine(",");
 				}
 
-				Vector3f v = new Vector3f(
+				Vector3 v = new Vector3(
 					Link.GetValue(nr, i).Data[0],
 					Link.GetValue(nr, i).Data[1],
 					Link.GetValue(nr, i).Data[2]
@@ -172,7 +173,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 						writer.WriteLine(",");
 					}
 
-					Vector3f v = new Vector3f(
+					Vector3 v = new Vector3(
 						Link.GetValue(nr, i).Data[0],
 						Link.GetValue(nr, i).Data[1],
 						Link.GetValue(nr, i).Data[2]

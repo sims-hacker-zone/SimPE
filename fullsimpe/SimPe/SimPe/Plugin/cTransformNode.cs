@@ -3,6 +3,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Numerics;
 
 using SimPe.Geometry;
 
@@ -91,46 +92,49 @@ namespace SimPe.Plugin
 			get; set;
 		}
 
-		public Vector3f Translation => Transformation.Translation;
-
+		public Vector3 Translation
+		{
+			get => Transformation.Translation;
+			set => Transformation.Translation = value;
+		}
 		public float TransformX
 		{
-			get => (float)Transformation.Translation.X;
-			set => Transformation.Translation.X = value;
+			get => Translation.X;
+			set => Translation = new Vector3(value, Translation.Y, Translation.Z);
 		}
 		public float TransformY
 		{
-			get => (float)Transformation.Translation.Y;
-			set => Transformation.Translation.Y = value;
+			get => (float)Translation.Y;
+			set => Translation = new Vector3(Translation.X, value, Translation.Z);
 		}
 		public float TransformZ
 		{
-			get => (float)Transformation.Translation.Z;
-			set => Transformation.Translation.Z = value;
+			get => (float)Translation.Z;
+			set => Translation = new Vector3(Translation.X, Translation.Y, value);
 		}
 
 		public float RotationX
 		{
-			get => (float)Transformation.Rotation.X;
-			set => Transformation.Rotation.X = value;
+			get => (float)Rotation.X;
+			set => Rotation = new System.Numerics.Quaternion(value, Rotation.Y, Rotation.Z, Rotation.W);
 		}
 		public float RotationY
 		{
-			get => (float)Transformation.Rotation.Y;
-			set => Transformation.Rotation.Y = value;
+			get => (float)Rotation.Y;
+			set => Rotation = new System.Numerics.Quaternion(Rotation.X, value, Rotation.Z, Rotation.W);
 		}
 		public float RotationZ
 		{
-			get => (float)Transformation.Rotation.Z;
-			set => Transformation.Rotation.Z = value;
+			get => (float)Rotation.Z;
+			set => Rotation = new System.Numerics.Quaternion(Rotation.X, Rotation.Y, value, Rotation.W);
 		}
 		public float RotationW
 		{
-			get => (float)Transformation.Rotation.W;
-			set => Transformation.Rotation.W = value;
+			get => (float)Rotation.W;
+			set => Rotation = new System.Numerics.Quaternion(Rotation.X, Rotation.Y, Rotation.Z, value);
 		}
 
-		public Quaternion Rotation
+		public System.Numerics.Quaternion Rotation
 		{
 			get => Transformation.Rotation;
 			set => Transformation.Rotation = value;

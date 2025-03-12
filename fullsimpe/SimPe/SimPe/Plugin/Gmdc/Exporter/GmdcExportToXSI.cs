@@ -1,5 +1,6 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using System.Collections.Generic;
 namespace SimPe.Plugin.Gmdc.Exporter
 {
 	/// <summary>
@@ -13,7 +14,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 		/// <param name="gmdc">The Gmdc File the Export is based on</param>
 		/// <param name="groups">The list of Groups you want to export</param>
 		/// <remarks><see cref="AbstractGmdcExporter.FileContent"/> will contain the Exported .x File</remarks>
-		public GmdcExportToXSI(GeometryDataContainer gmdc, GmdcGroups groups)
+		public GmdcExportToXSI(GeometryDataContainer gmdc, List<GmdcGroup> groups)
 			: base(gmdc, groups) { }
 
 		/// <summary>

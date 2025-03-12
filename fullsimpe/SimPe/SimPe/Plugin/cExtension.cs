@@ -2,7 +2,9 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 
+using SimPe.Extensions;
 using SimPe.Geometry;
 
 namespace SimPe.Plugin
@@ -83,7 +85,7 @@ namespace SimPe.Plugin
 			get; set;
 		}
 
-		public Vector3f Translation
+		public Vector3 Translation
 		{
 			get; set;
 		}
@@ -98,7 +100,7 @@ namespace SimPe.Plugin
 			get; set;
 		}
 
-		public Quaternion Rotation
+		public System.Numerics.Quaternion Rotation
 		{
 			get; set;
 		}
@@ -113,10 +115,10 @@ namespace SimPe.Plugin
 		public ExtensionItem()
 		{
 			varname = "";
-			Translation = new Vector3f();
+			Translation = new Vector3();
 			Single = 0;
 			Items = new List<ExtensionItem>();
-			Rotation = new Quaternion();
+			Rotation = new System.Numerics.Quaternion();
 			Data = new byte[0];
 			String = "";
 		}

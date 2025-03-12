@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Numerics;
 
 using SimPe.Data;
 using SimPe.Forms.MainUI;
@@ -39,7 +40,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns a List of stored Groups
 		/// </summary>
-		public GmdcGroups Groups
+		public List<GmdcGroup> Groups
 		{
 			get; set;
 		}
@@ -74,7 +75,7 @@ namespace SimPe.Plugin
 
 			Elements = new GmdcElements();
 			Links = new GmdcLinks();
-			Groups = new GmdcGroups();
+			Groups = new List<GmdcGroup>();
 
 			Model = new GmdcModel(this);
 
@@ -176,8 +177,8 @@ namespace SimPe.Plugin
 				Links[i].Serialize(writer);
 			}
 
-			writer.Write(Groups.Length);
-			for (int i = 0; i < Groups.Length; i++)
+			writer.Write(Groups.Count);
+			for (int i = 0; i < Groups.Count; i++)
 			{
 				Groups[i].Parent = this;
 				Groups[i].Serialize(writer);
@@ -243,7 +244,7 @@ namespace SimPe.Plugin
 					CountedListItem.Add(form.list_links, l);
 				}
 
-				form.label_groups.Text = "Groups: " + Groups.Length.ToString();
+				form.label_groups.Text = "Groups: " + Groups.Count.ToString();
 				form.list_groups.Items.Clear();
 				foreach (GmdcGroup g in Groups)
 				{
@@ -304,7 +305,7 @@ namespace SimPe.Plugin
 				}
 
 				form.lb_model_faces.Items.Clear();
-				foreach (Vector3f i in Model.BoundingMesh.Vertices)
+				foreach (Vector3 i in Model.BoundingMesh.Vertices)
 				{
 					CountedListItem.Add(form.lb_model_faces, i);
 				}
@@ -367,7 +368,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="models">List of all P3Models you want to export</param>
 		/// <returns>The content of the x File</returns>
-		public MemoryStream GenerateX(GmdcGroups models)
+		public MemoryStream GenerateX(List<GmdcGroup> models)
 		{
 			IGmdcExporter exporter = ExporterLoader.FindExporterByExtension(".x") ?? throw new Exception("No valid Direct X Exporter plugin was found!");
 

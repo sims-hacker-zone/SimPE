@@ -1,6 +1,10 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+using System.Collections.Generic;
+using System.Numerics;
+
+using SimPe.Extensions;
 using SimPe.Plugin.Anim;
 
 namespace SimPe.Plugin
@@ -13,7 +17,7 @@ namespace SimPe.Plugin
 		AnimationFrameBlock afb;
 		Ambertation.Graphics.MeshBox mb;
 		int fct;
-		Geometry.Vectors3f frames;
+		List<Vector3> frames;
 
 		public AnimationData(
 			AnimationFrameBlock afb,
@@ -25,7 +29,7 @@ namespace SimPe.Plugin
 			this.afb = afb;
 			this.mb = mb;
 			fct = framecount;
-			frames = new Geometry.Vectors3f();
+			frames = new List<Vector3>();
 
 			AnimationFrame[] iframes = afb.Frames;
 
@@ -39,7 +43,7 @@ namespace SimPe.Plugin
 			);
 			for (int i = 0; i <= framecount; i++)
 			{
-				frames.Add(new Geometry.Vector3f());
+				frames.Add(new Vector3());
 			}
 
 			InterpolateFrames(iframes, 0); //X-Axis
@@ -92,7 +96,7 @@ namespace SimPe.Plugin
 
 		void InterpolateFrames(byte axis, AnimationFrame first, AnimationFrame last)
 		{
-			short max = (short)(frames.Length - 1);
+			short max = (short)(frames.Count - 1);
 			if (last != null)
 			{
 				max = last.TimeCode;
@@ -120,26 +124,26 @@ namespace SimPe.Plugin
 			AnimationFrame last
 		)
 		{
-			double pos =
-				(index - first.TimeCode) / (double)(last.TimeCode - first.TimeCode);
-			double v = Interpolate(
+			float pos =
+				(index - first.TimeCode) / (float)(last.TimeCode - first.TimeCode);
+			float v = Interpolate(
 				axis,
 				pos,
 				first.GetBlock(axis),
 				last.GetBlock(axis)
 			);
 
-			frames[index].SetComponent(axis, v);
+			frames[index] = frames[index].SetComponent(axis, v);
 		}
 
-		double Interpolate(
+		float Interpolate(
 			byte axis,
-			double pos,
+			float pos,
 			AnimationAxisTransform first,
 			AnimationAxisTransform last
 		)
 		{
-			double f = 0;
+			float f = 0;
 			if (first != null)
 			{
 				f = AnimationAxisTransformBlock.GetCompressedFloat(
@@ -151,7 +155,7 @@ namespace SimPe.Plugin
 				);
 			}
 
-			double l = f;
+			float l = f;
 			if (last != null)
 			{
 				l = (float)
@@ -169,7 +173,7 @@ namespace SimPe.Plugin
 
 		public void SetFrame(int timecode)
 		{
-			Geometry.Vector3f v = frames[timecode];
+			Vector3 v = frames[timecode];
 			Ambertation.Scenes.Transformation trans =
 				new Ambertation.Scenes.Transformation();
 			if (afb.TransformationType == FrameType.Translation)

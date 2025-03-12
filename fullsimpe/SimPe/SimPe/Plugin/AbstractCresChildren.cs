@@ -3,6 +3,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 
 using SimPe.Geometry;
 using SimPe.Interfaces.Scenegraph;
@@ -184,12 +185,12 @@ namespace SimPe.Plugin
 				for (int i = list.Length - 1; i >= 0; i--)
 				{
 					VectorTransformation t = list[i];
-					t.Rotation.MakeUnitQuaternion();
+					t.Rotation = System.Numerics.Quaternion.Normalize(t.Rotation);
 
 					v.Rotation *= t.Rotation;
 					v.Translation =
-						t.Rotation.Rotate(v.Translation)
-						- t.Rotation.Rotate(t.Translation);
+					Vector3.Transform(v.Translation, t.Rotation)
+					- Vector3.Transform(t.Translation, t.Rotation);
 					//v.Rotation.MakeUnitQuaternion();
 
 

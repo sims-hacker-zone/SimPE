@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Numerics;
 
 using SimPe.Geometry;
 
@@ -521,9 +522,9 @@ namespace SimPe.Plugin.Anim
 			}
 		}
 
-		public void AddFrame(short tc, Vector3f v, bool linear)
+		public void AddFrame(short tc, Vector3 v, bool linear)
 		{
-			AddFrame(tc, (float)v.X, (float)v.Y, (float)v.Z, linear);
+			AddFrame(tc, v.X, v.Y, v.Z, linear);
 		}
 
 		public AnimationFrameBlock(AnimationMeshBlock parent)

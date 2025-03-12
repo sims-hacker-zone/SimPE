@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Numerics;
 
 using SimPe.Geometry;
 
@@ -164,7 +165,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 						);
 					}
 
-					Vector3f vec = new Vector3f(data[0], data[1], data[2]);
+					Vector3 vec = new Vector3(data[0], data[1], data[2]);
 					vec = !normal ? Component.InverseTransformScaled(vec) : Component.InverseTransformNormal(vec);
 
 					GmdcElementValueThreeFloat v =

@@ -2,7 +2,9 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 
+using SimPe.Extensions;
 using SimPe.Geometry;
 
 namespace SimPe.Plugin
@@ -23,7 +25,7 @@ namespace SimPe.Plugin
 			get; set;
 		}
 
-		public Vectors4f Vectors
+		public List<Vector4> Vectors
 		{
 			get; set;
 		}
@@ -39,7 +41,7 @@ namespace SimPe.Plugin
 			String1 = "";
 			String2 = "";
 
-			Vectors = new Vectors4f();
+			Vectors = new List<Vector4>();
 		}
 
 		/// <summary>
@@ -54,7 +56,7 @@ namespace SimPe.Plugin
 			Vectors.Clear();
 			for (int i = 0; i < count; i++)
 			{
-				Vector4f o = new Vector4f();
+				Vector4 o = new Vector4();
 				o.Unserialize(reader);
 				Vectors.Add(o);
 			}
@@ -91,32 +93,32 @@ namespace SimPe.Plugin
 		#region Attributes
 		GeometryBuilder gb;
 
-		public Vectors3f Vectors1
+		public List<Vector3> Vectors1
 		{
 			get; set;
 		}
 
-		public Vectors3f Vectors2
+		public List<Vector3> Vectors2
 		{
 			get; set;
 		}
 
-		public Vectors2f Vectors3
+		public List<Vector2> Vectors3
 		{
 			get; set;
 		}
 
-		public Vectors2f Vectors4
+		public List<Vector2> Vectors4
 		{
 			get; set;
 		}
 
-		public Vectors2f Vectors5
+		public List<Vector2> Vectors5
 		{
 			get; set;
 		}
 
-		public Vectors2f Vectors6
+		public List<Vector2> Vectors6
 		{
 			get; set;
 		}
@@ -228,12 +230,12 @@ namespace SimPe.Plugin
 			gb = new GeometryBuilder(null);
 			BlockID = 0x9bffc10d;
 
-			Vectors1 = new Vectors3f();
-			Vectors2 = new Vectors3f();
-			Vectors3 = new Vectors2f();
-			Vectors4 = new Vectors2f();
-			Vectors5 = new Vectors2f();
-			Vectors6 = new Vectors2f();
+			Vectors1 = new List<Vector3>();
+			Vectors2 = new List<Vector3>();
+			Vectors3 = new List<Vector2>();
+			Vectors4 = new List<Vector2>();
+			Vectors5 = new List<Vector2>();
+			Vectors6 = new List<Vector2>();
 
 			Numbers1 = new List<int>();
 			Numbers2 = new List<int>();
@@ -268,7 +270,7 @@ namespace SimPe.Plugin
 			Vectors1.Clear();
 			for (int i = 0; i < count; i++)
 			{
-				Vector3f o = new Vector3f();
+				Vector3 o = new Vector3();
 				o.Unserialize(reader);
 				Vectors1.Add(o);
 			}
@@ -277,7 +279,7 @@ namespace SimPe.Plugin
 			Vectors2.Clear();
 			for (int i = 0; i < count; i++)
 			{
-				Vector3f o = new Vector3f();
+				Vector3 o = new Vector3();
 				o.Unserialize(reader);
 				Vectors2.Add(o);
 			}
@@ -286,9 +288,11 @@ namespace SimPe.Plugin
 			Vectors3.Clear();
 			for (int i = 0; i < count; i++)
 			{
-				Vector2f o = new Vector2f();
-				o.Unserialize(reader);
-				Vectors3.Add(o);
+				Vectors3.Add(new Vector2
+				{
+					X = reader.ReadSingle(),
+					Y = reader.ReadSingle()
+				});
 			}
 
 			Zero1 = reader.ReadBytes(Zero1.Length);
@@ -300,27 +304,33 @@ namespace SimPe.Plugin
 			Vectors4.Clear();
 			for (int i = 0; i < count; i++)
 			{
-				Vector2f o = new Vector2f();
-				o.Unserialize(reader);
-				Vectors4.Add(o);
+				Vectors4.Add(new Vector2
+				{
+					X = reader.ReadSingle(),
+					Y = reader.ReadSingle()
+				});
 			}
 
 			count = reader.ReadInt32();
 			Vectors5.Clear();
 			for (int i = 0; i < count; i++)
 			{
-				Vector2f o = new Vector2f();
-				o.Unserialize(reader);
-				Vectors5.Add(o);
+				Vectors5.Add(new Vector2
+				{
+					X = reader.ReadSingle(),
+					Y = reader.ReadSingle()
+				});
 			}
 
 			count = reader.ReadInt32();
 			Vectors6.Clear();
 			for (int i = 0; i < count; i++)
 			{
-				Vector2f o = new Vector2f();
-				o.Unserialize(reader);
-				Vectors6.Add(o);
+				Vectors6.Add(new Vector2
+				{
+					X = reader.ReadSingle(),
+					Y = reader.ReadSingle()
+				});
 			}
 
 			for (int i = 0; i < Unknown2.Length; i++)

@@ -3,8 +3,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 
-using SimPe.Geometry;
+using SimPe.Extensions;
 using SimPe.Plugin.Anim;
 
 namespace SimPe.Plugin.Gmdc.Exporter
@@ -20,7 +21,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 		/// <param name="gmdc">The Gmdc File the Export is based on</param>
 		/// <param name="groups">The list of Groups you want to export</param>
 		/// <remarks><see cref="AbstractGmdcExporter.FileContent"/> will contain the Exported .txt File</remarks>
-		public GmdcExportToMilkShapeAscii(GeometryDataContainer gmdc, GmdcGroups groups)
+		public GmdcExportToMilkShapeAscii(GeometryDataContainer gmdc, List<GmdcGroup> groups)
 			: base(gmdc, groups) { }
 
 		/// <summary>
@@ -121,7 +122,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 			for (int i = 0; i < Link.ReferencedSize; i++)
 			{
 				//Make sure we transform to the desired Coordinate-System
-				Vector3f v = new Vector3f(
+				Vector3 v = new Vector3(
 					Link.GetValue(nr, i).Data[0],
 					Link.GetValue(nr, i).Data[1],
 					Link.GetValue(nr, i).Data[2]
@@ -205,7 +206,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 				writer.WriteLine(Link.ReferencedSize.ToString());
 				for (int i = 0; i < Link.ReferencedSize; i++)
 				{
-					Vector3f v = new Vector3f(
+					Vector3 v = new Vector3(
 						Link.GetValue(nr, i).Data[0],
 						Link.GetValue(nr, i).Data[1],
 						Link.GetValue(nr, i).Data[2]
@@ -251,9 +252,9 @@ namespace SimPe.Plugin.Gmdc.Exporter
 			modelnr++;
 		}
 
-		Vector3f Correct(Vector3f t, object cor)
+		Vector3 Correct(Vector3 t, object cor)
 		{
-			return cor == null || cor is Quaternion || !(cor is Vector3f f) ? t : t + f;
+			return cor == null || cor is Quaternion || !(cor is Vector3 f) ? t : t + f;
 		}
 
 		Quaternion Correct(Quaternion t, object cor)
@@ -295,7 +296,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 						if (Gmdc.Joints.Contains(aname))
 						{
 							correct_trans[name] = Gmdc.Joints[i]
-								.AssignedTransformNode.Translation.GetInverse();
+								.AssignedTransformNode.Translation * -1f;
 							correct_trans[aname] = Gmdc.Joints[i]
 								.AssignedTransformNode
 								.Translation;
@@ -307,7 +308,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 						if (Gmdc.Joints.Contains(aname))
 						{
 							correct_rot[name] = Gmdc.Joints[i]
-								.AssignedTransformNode.Rotation.GetInverse();
+								.AssignedTransformNode.Rotation * -1f;
 							correct_rot[aname] = Gmdc.Joints[i]
 								.AssignedTransformNode
 								.Rotation;
@@ -346,7 +347,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 
 				if (Gmdc.Joints[i].AssignedTransformNode != null)
 				{
-					Vector3f t = Gmdc.Joints[i].AssignedTransformNode.Translation;
+					Vector3 t = Gmdc.Joints[i].AssignedTransformNode.Translation;
 					if (CorrectJointSetup)
 					{
 						t = Correct(t, correct_trans[Gmdc.Joints[i].Name]);
@@ -360,11 +361,11 @@ namespace SimPe.Plugin.Gmdc.Exporter
 						q = Correct(q, correct_rot[Gmdc.Joints[i].Name]);
 					}
 
-					Vector3f r = q.Axis;
+					Vector3 r = q.GetAxis();
 					r = Component.Transform(r);
-					q = Quaternion.FromAxisAngle(r, q.Angle);
+					q = Quaternion.CreateFromAxisAngle(r, q.GetAngle());
 					//q.W = -q.W;
-					r = q.GetEulerAngles();
+					r = q.GetEulerAnglesZYX();
 
 					writer.WriteLine(
 						"8 "
@@ -389,7 +390,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 				if (Gmdc.LinkedAnimation != null)
 				{
 					//get the correction Vector
-					Vector3f cv = AbstractGmdcImporter.GetCorrectionVector(
+					Vector3 cv = AbstractGmdcImporter.GetCorrectionVector(
 						Gmdc.Joints[i].Name
 					);
 
@@ -417,7 +418,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 							//bool first = true;
 							foreach (AnimationFrame af in afs)
 							{
-								Vector3f v = af.Vector;
+								Vector3 v = af.Vector;
 
 								//if (first)
 								v += cv; //corect static Values
@@ -487,13 +488,13 @@ namespace SimPe.Plugin.Gmdc.Exporter
 						//bool first = true;
 						foreach (AnimationFrame af in afs)
 						{
-							Vector3f v = af.Vector;
+							Vector3 v = af.Vector;
 							//Transform the Angles in their Axis/Angle Form
-							Quaternion q = Quaternion.FromEulerAngles(v);
-							v = q.Axis;
+							Quaternion q = Quaternion.CreateFromYawPitchRoll(v.X, v.Y, v.Z);
+							v = q.GetAxis();
 							v = Component.Transform(v);
-							q = Quaternion.FromAxisAngle(v, q.Angle);
-							v = q.GetEulerAngles();
+							q = Quaternion.CreateFromAxisAngle(v, q.GetAngle());
+							v = q.GetEulerAnglesZYX();
 
 							//if (first)
 							v += Component.Transform(cv); //correct static Values

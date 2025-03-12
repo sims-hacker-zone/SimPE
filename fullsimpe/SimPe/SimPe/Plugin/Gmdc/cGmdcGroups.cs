@@ -1,8 +1,8 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 
 namespace SimPe.Plugin.Gmdc
 {
@@ -221,9 +221,9 @@ namespace SimPe.Plugin.Gmdc
 		/// Returns a List with all available Vertices
 		/// </summary>
 		/// <returns></returns>
-		public Geometry.Vectors4f GetVectors(ElementIdentity id)
+		public List<Vector4> GetVectors(ElementIdentity id)
 		{
-			Geometry.Vectors4f ret = new Geometry.Vectors4f();
+			List<Vector4> ret = new List<Vector4>();
 			if (Link != null)
 			{
 				GmdcElement e = Link.FindElementType(id);
@@ -234,34 +234,34 @@ namespace SimPe.Plugin.Gmdc
 					for (int i = 0; i < Link.ReferencedSize; i++)
 					{
 						GmdcElementValueBase vb = Link.GetValue(nr, i);
-						Geometry.Vector4f v;
+						Vector4 v;
 						if (vb is GmdcElementValueOneInt oi)
 						{
 							byte[] data = oi.Bytes;
 							v = data.Length == 4
-								? new Geometry.Vector4f(
+								? new Vector4(
 									data[0],
 									data[1],
 									data[2],
 									data[3]
 								)
 								: data.Length == 3
-									? new Geometry.Vector4f(
+									? new Vector4(
 																	data[0],
 																	data[1],
-																	data[2]
+																	data[2], 0
 																)
-									: data.Length == 2 ? new Geometry.Vector4f(data[0], data[1], 0) : new Geometry.Vector4f(data[0], 0, 0);
+									: data.Length == 2 ? new Vector4(data[0], data[1], 0, 0) : new Vector4(data[0], 0, 0, 0);
 						}
 						else
 						{
 							v = vb.Data.Length == 3
-								? new Geometry.Vector4f(
+								? new Vector4(
 															vb.Data[0],
 															vb.Data[1],
-															vb.Data[2]
+															vb.Data[2], 0
 														)
-								: vb.Data.Length == 2 ? new Geometry.Vector4f(vb.Data[0], vb.Data[1], 0) : new Geometry.Vector4f(vb.Data[0], 0, 0);
+								: vb.Data.Length == 2 ? new Vector4(vb.Data[0], vb.Data[1], 0, 0) : new Vector4(vb.Data[0], 0, 0, 0);
 						}
 
 						ret.Add(v);
@@ -276,7 +276,7 @@ namespace SimPe.Plugin.Gmdc
 		/// Returns a List with all available Vertices
 		/// </summary>
 		/// <returns></returns>
-		public Geometry.Vectors4f GetVertices()
+		public List<Vector4> GetVertices()
 		{
 			return GetVectors(ElementIdentity.Vertex);
 		}
@@ -285,7 +285,7 @@ namespace SimPe.Plugin.Gmdc
 		/// Returns a List with all available Normals
 		/// </summary>
 		/// <returns></returns>
-		public Geometry.Vectors4f GetNormals()
+		public List<Vector4> GetNormals()
 		{
 			return GetVectors(ElementIdentity.Normal);
 		}
@@ -294,7 +294,7 @@ namespace SimPe.Plugin.Gmdc
 		/// Returns a List with all available UV-Coords
 		/// </summary>
 		/// <returns></returns>
-		public Geometry.Vectors4f GetUV()
+		public List<Vector4> GetUV()
 		{
 			return GetVectors(ElementIdentity.UVCoordinate);
 		}
@@ -303,166 +303,20 @@ namespace SimPe.Plugin.Gmdc
 		/// Returns a List with all available UV-Coords
 		/// </summary>
 		/// <returns></returns>
-		public Geometry.Vectors4f GetBones()
+		public List<Vector4> GetBones()
 		{
-			Geometry.Vectors4f ret = GetVectors(ElementIdentity.BoneAssignment);
+			List<Vector4> ret = GetVectors(ElementIdentity.BoneAssignment);
 
-			foreach (Geometry.Vector4f v in ret)
+			for (int i = 0; i < ret.Count; i++)
 			{
-				if ((int)v.X != 0xff)
-				{
-					v.X = UsedJoints[(byte)v.X];
-				}
-
-				if ((int)v.Y != 0xff)
-				{
-					v.Y = UsedJoints[(byte)v.Y];
-				}
-
-				if ((int)v.Z != 0xff)
-				{
-					v.Z = UsedJoints[(byte)v.Z];
-				}
-
-				if ((int)v.W != 0xff)
-				{
-					v.W = UsedJoints[(byte)v.W];
-				}
+				ret[i] = new Vector4(
+					(int)ret[i].X != 0xff ? UsedJoints[(byte)ret[i].X] : ret[i].X,
+					(int)ret[i].Y != 0xff ? UsedJoints[(byte)ret[i].Y] : ret[i].Y,
+					(int)ret[i].Z != 0xff ? UsedJoints[(byte)ret[i].Z] : ret[i].Z,
+					(int)ret[i].W != 0xff ? UsedJoints[(byte)ret[i].W] : ret[i].W
+				);
 			}
-			return ret;
-		}
-
-		/// <summary>
-		/// Returns the Face Indices
-		/// </summary>
-		/// <returns></returns>
-		public Geometry.Vectors3i GetFaces()
-		{
-			Geometry.Vectors3i ret = new Geometry.Vectors3i();
-			Geometry.Vector3i v = null;
-			for (int i = 0; i < Faces.Count; i++)
-			{
-				if (i % 3 == 0)
-				{
-					v = new Geometry.Vector3i
-					{
-						X = Faces[i]
-					};
-				}
-				else if (i % 3 == 2)
-				{
-					ret.Add(v);
-					v.Z = Faces[i];
-				}
-				else
-				{
-					v.Y = Faces[i];
-				}
-			}
-
-			return ret;
-		}
-
-		public static Geometry.Vectors3i GetUsingFaces(
-			Geometry.Vectors3i faces,
-			int vertexid
-		)
-		{
-			Geometry.Vectors3i ret = new Geometry.Vectors3i();
-			foreach (Geometry.Vector3i v in faces)
-			{
-				if (v.X == vertexid || v.Y == vertexid || v.Z == vertexid)
-				{
-					ret.Add(v);
-				}
-			}
-
 			return ret;
 		}
 	}
-
-	#region Container
-	/// <summary>
-	/// Typesave ArrayList for GmdcGroup Objects
-	/// </summary>
-	public class GmdcGroups : ArrayList
-	{
-		/// <summary>
-		/// Integer Indexer
-		/// </summary>
-		public new GmdcGroup this[int index]
-		{
-			get => (GmdcGroup)base[index];
-			set => base[index] = value;
-		}
-
-		/// <summary>
-		/// unsigned Integer Indexer
-		/// </summary>
-		public GmdcGroup this[uint index]
-		{
-			get => (GmdcGroup)base[(int)index];
-			set => base[(int)index] = value;
-		}
-
-		/// <summary>
-		/// add a new Element
-		/// </summary>
-		/// <param name="item">The object you want to add</param>
-		/// <returns>The index it was added on</returns>
-		public int Add(GmdcGroup item)
-		{
-			return base.Add(item);
-		}
-
-		/// <summary>
-		/// insert a new Element
-		/// </summary>
-		/// <param name="index">The Index where the Element should be stored</param>
-		/// <param name="item">The object that should be inserted</param>
-		public void Insert(int index, GmdcGroup item)
-		{
-			base.Insert(index, item);
-		}
-
-		/// <summary>
-		/// remove an Element
-		/// </summary>
-		/// <param name="item">The object that should be removed</param>
-		public void Remove(GmdcGroup item)
-		{
-			base.Remove(item);
-		}
-
-		/// <summary>
-		/// Checks wether or not the object is already stored in the List
-		/// </summary>
-		/// <param name="item">The Object you are looking for</param>
-		/// <returns>true, if it was found</returns>
-		public bool Contains(GmdcGroup item)
-		{
-			return base.Contains(item);
-		}
-
-		/// <summary>
-		/// Number of stored Elements
-		/// </summary>
-		public int Length => Count;
-
-		/// <summary>
-		/// Create a clone of this Object
-		/// </summary>
-		/// <returns>The clone</returns>
-		public override object Clone()
-		{
-			GmdcGroups list = new GmdcGroups();
-			foreach (GmdcGroup item in this)
-			{
-				list.Add(item);
-			}
-
-			return list;
-		}
-	}
-	#endregion
 }
