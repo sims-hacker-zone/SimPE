@@ -1,7 +1,10 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Numerics;
 using System.Windows.Forms;
+
+using SimPe.Extensions;
 
 namespace SimPe.Plugin.TabPage
 {
@@ -1032,7 +1035,7 @@ namespace SimPe.Plugin.TabPage
 				//set Angles
 
 
-				Geometry.Quaternion q = tn.Rotation;
+				Quaternion q = tn.Rotation;
 				TNUpdateTextValues(q, false, true, true);
 
 				tn.Changed = true;
@@ -1058,13 +1061,13 @@ namespace SimPe.Plugin.TabPage
 			try
 			{
 				Plugin.TransformNode tn = (Plugin.TransformNode)Tag;
-				Geometry.Quaternion q = Geometry.Quaternion.FromAxisAngle(
-					new Geometry.Vector3f(
+				Quaternion q = Quaternion.CreateFromAxisAngle(
+					new Vector3(
 						Convert.ToSingle(tb_tn_ax.Text),
 						Convert.ToSingle(tb_tn_ay.Text),
 						Convert.ToSingle(tb_tn_az.Text)
 					),
-					Geometry.Quaternion.DegToRad(Convert.ToSingle(tb_tn_a.Text))
+					Convert.ToSingle(tb_tn_a.Text).DegreesToRadians()
 				);
 
 				tn.Rotation = q;
@@ -1079,7 +1082,7 @@ namespace SimPe.Plugin.TabPage
 		}
 
 		internal void TNUpdateTextValues(
-			Geometry.Quaternion q,
+			Quaternion q,
 			bool quat,
 			bool axis,
 			bool euler
@@ -1099,25 +1102,25 @@ namespace SimPe.Plugin.TabPage
 
 				if (axis)
 				{
-					tb_tn_ax.Text = q.Axis.X.ToString("N6");
-					tb_tn_ay.Text = q.Axis.Y.ToString("N6");
-					tb_tn_az.Text = q.Axis.Z.ToString("N6");
+					tb_tn_ax.Text = q.GetAxis().X.ToString("N6");
+					tb_tn_ay.Text = q.GetAxis().Y.ToString("N6");
+					tb_tn_az.Text = q.GetAxis().Z.ToString("N6");
 					tb_tn_a.Text =
-						Geometry.Quaternion.RadToDeg(q.Angle)
+						q.GetAngle().RadiansToDegrees()
 						.ToString("N6");
 				}
 
 				if (euler)
 				{
-					Geometry.Vector3f ea = q.GetEulerAngles();
+					Vector3 ea = q.GetEulerAnglesZYX();
 					tb_tn_ey.Text =
-						Geometry.Quaternion.RadToDeg(ea.Y)
+						ea.Y.RadiansToDegrees()
 						.ToString("N6");
 					tb_tn_ep.Text =
-						Geometry.Quaternion.RadToDeg(ea.X)
+						ea.X.RadiansToDegrees()
 						.ToString("N6");
 					tb_tn_er.Text =
-						Geometry.Quaternion.RadToDeg(ea.Z)
+						ea.Z.RadiansToDegrees()
 						.ToString("N6");
 				}
 			}
@@ -1142,10 +1145,10 @@ namespace SimPe.Plugin.TabPage
 			try
 			{
 				Plugin.TransformNode tn = (Plugin.TransformNode)Tag;
-				Geometry.Quaternion q = Geometry.Quaternion.FromEulerAngles(
-					Geometry.Quaternion.DegToRad(Convert.ToSingle(tb_tn_ey.Text)),
-					Geometry.Quaternion.DegToRad(Convert.ToSingle(tb_tn_ep.Text)),
-					Geometry.Quaternion.DegToRad(Convert.ToSingle(tb_tn_er.Text))
+				Quaternion q = Quaternion.CreateFromYawPitchRoll(
+					Convert.ToSingle(tb_tn_ey.Text).DegreesToRadians(),
+					Convert.ToSingle(tb_tn_ep.Text).DegreesToRadians(),
+					Convert.ToSingle(tb_tn_er.Text).DegreesToRadians()
 				);
 				tn.Rotation = q;
 

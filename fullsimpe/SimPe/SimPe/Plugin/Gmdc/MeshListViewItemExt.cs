@@ -1,7 +1,10 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+using System.Numerics;
 using System.Windows.Forms;
+
+using SimPe.Extensions;
 
 namespace SimPe.Plugin.Gmdc
 {
@@ -35,8 +38,8 @@ namespace SimPe.Plugin.Gmdc
 
 			foreach (Ambertation.Geometry.Vector3 v in mesh.Vertices)
 			{
-				Ambertation.Geometry.Vector3 vt = gmi.Component.InverseTransformScaled(
-					v
+				Vector3 vt = gmi.Component.InverseTransformScaled(
+					v.ToNumericsVector()
 				);
 				e.Values.Add(
 					new GmdcElementValueThreeFloat(
@@ -69,8 +72,8 @@ namespace SimPe.Plugin.Gmdc
 
 			foreach (Ambertation.Geometry.Vector3 v in mesh.Normals)
 			{
-				Ambertation.Geometry.Vector3 vt = gmi.Component.InverseTransformNormal(
-					v
+				Vector3 vt = gmi.Component.InverseTransformNormal(
+					v.ToNumericsVector()
 				);
 				e.Values.Add(
 					new GmdcElementValueThreeFloat(

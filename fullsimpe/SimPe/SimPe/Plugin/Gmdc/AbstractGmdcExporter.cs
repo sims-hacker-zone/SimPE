@@ -1,5 +1,6 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 
@@ -41,7 +42,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Returns the MeshGroups that should be processed
 		/// </summary>
-		protected GmdcGroups Groups
+		protected List<GmdcGroup> Groups
 		{
 			get; private set;
 		}
@@ -108,7 +109,7 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		/// <param name="gmdc">The gmdc File you want to use</param>
 		/// <param name="groups"></param>
-		public AbstractGmdcExporter(GeometryDataContainer gmdc, GmdcGroups groups)
+		public AbstractGmdcExporter(GeometryDataContainer gmdc, List<GmdcGroup> groups)
 			: this()
 		{
 			Gmdc = gmdc;
@@ -148,7 +149,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <param name="gmdc"></param>
 		/// <param name="groups"></param>
 		/// <returns>The created Stream</returns>
-		public Stream Process(GeometryDataContainer gmdc, GmdcGroups groups)
+		public Stream Process(GeometryDataContainer gmdc, List<GmdcGroup> groups)
 		{
 			Gmdc = gmdc;
 			LoadGroups(groups);
@@ -160,7 +161,7 @@ namespace SimPe.Plugin.Gmdc
 		/// Load the given Group Set
 		/// </summary>
 		/// <param name="groups"></param>
-		void LoadGroups(GmdcGroups groups)
+		void LoadGroups(List<GmdcGroup> groups)
 		{
 			writer = new StreamWriter(new MemoryStream());
 			Groups = groups;

@@ -3,8 +3,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 
-using SimPe.Geometry;
+using SimPe.Extensions;
 using SimPe.Plugin.Anim;
 
 namespace SimPe.Plugin.Gmdc.Importer
@@ -316,7 +317,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 
 			try
 			{
-				Vector3f coord = new Vector3f(
+				Vector3 coord = new Vector3(
 					Convert.ToSingle(linetoks[1], DefaultCulture),
 					Convert.ToSingle(linetoks[2], DefaultCulture),
 					Convert.ToSingle(linetoks[3], DefaultCulture)
@@ -360,9 +361,9 @@ namespace SimPe.Plugin.Gmdc.Importer
 				g.Elements[0]
 					.Values.Add(
 						new GmdcElementValueThreeFloat(
-							(float)coord.X,
-							(float)coord.Y,
-							(float)coord.Z
+							coord.X,
+							coord.Y,
+							coord.Z
 						)
 					);
 				g.Elements[2].Values.Add(new GmdcElementValueTwoFloat(u, v));
@@ -386,7 +387,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 
 			try
 			{
-				Vector3f coord = new Vector3f(
+				Vector3 coord = new Vector3(
 					Convert.ToSingle(linetoks[0], DefaultCulture),
 					Convert.ToSingle(linetoks[1], DefaultCulture),
 					Convert.ToSingle(linetoks[2], DefaultCulture)
@@ -396,9 +397,9 @@ namespace SimPe.Plugin.Gmdc.Importer
 				g.Elements[1]
 					.Values.Add(
 						new GmdcElementValueThreeFloat(
-							(float)coord.X,
-							(float)coord.Y,
-							(float)coord.Z
+							coord.X,
+							coord.Y,
+							coord.Z
 						)
 					);
 			}
@@ -581,26 +582,26 @@ namespace SimPe.Plugin.Gmdc.Importer
 
 			try
 			{
-				Vector3f trans = new Vector3f(
-					ToDouble(linetoks[1]),
-					ToDouble(linetoks[2]),
-					ToDouble(linetoks[3])
+				Vector3 trans = new Vector3(
+					ToSingle(linetoks[1]),
+					ToSingle(linetoks[2]),
+					ToSingle(linetoks[3])
 				);
 				trans = Component.InverseTransformScaled(trans);
 
-				Vector3f rot = new Vector3f(
-					ToDouble(linetoks[4]),
-					ToDouble(linetoks[5]),
-					ToDouble(linetoks[6])
+				Vector3 rot = new Vector3(
+					ToSingle(linetoks[4]),
+					ToSingle(linetoks[5]),
+					ToSingle(linetoks[6])
 				);
-				Quaternion q = Quaternion.FromEulerAngles(rot);
-				rot = Component.InverseTransform(q.Axis);
+				Quaternion q = Quaternion.CreateFromYawPitchRoll(rot.X, rot.Y, rot.Z);
+				rot = Component.InverseTransform(q.GetAxis());
 
 				//Quaternion from Euler Angles
 				b.Transformation.Translation = trans;
-				b.Transformation.Rotation = Quaternion.FromAxisAngle(
+				b.Transformation.Rotation = Quaternion.CreateFromAxisAngle(
 					rot,
-					q.Angle
+					q.GetAngle()
 				);
 			}
 			catch
@@ -626,10 +627,10 @@ namespace SimPe.Plugin.Gmdc.Importer
 				);
 				bool isscaled = t == -1;
 				t = Math.Max(0, t - 1);
-				Vector3f trans = new Vector3f(
-					ToDouble(linetoks[1]),
-					ToDouble(linetoks[2]),
-					ToDouble(linetoks[3])
+				Vector3 trans = new Vector3(
+					ToSingle(linetoks[1]),
+					ToSingle(linetoks[2]),
+					ToSingle(linetoks[3])
 				);
 
 				trans = Component.InverseTransformScaled(trans);
@@ -680,17 +681,17 @@ namespace SimPe.Plugin.Gmdc.Importer
 				);
 				bool isscaled = t == -1;
 				t = Math.Max(0, t - 1);
-				Vector3f rot = new Vector3f(
-					ToDouble(linetoks[1]),
-					ToDouble(linetoks[2]),
-					ToDouble(linetoks[3])
+				Vector3 rot = new Vector3(
+					ToSingle(linetoks[1]),
+					ToSingle(linetoks[2]),
+					ToSingle(linetoks[3])
 				);
 
-				Quaternion q = Quaternion.FromEulerAngles(rot);
-				rot = q.Axis;
+				Quaternion q = Quaternion.CreateFromYawPitchRoll(rot.X, rot.Y, rot.Z);
+				rot = q.GetAxis();
 				rot = Component.InverseTransform(rot);
-				q = Quaternion.FromAxisAngle(rot, q.Angle);
-				rot = q.GetEulerAngles();
+				q = Quaternion.CreateFromAxisAngle(rot, q.GetAngle());
+				rot = q.GetEulerAnglesZYX();
 
 				if (currotblock != null)
 				{

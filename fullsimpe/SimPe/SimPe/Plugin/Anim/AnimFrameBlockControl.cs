@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Windows.Forms;
 
+using SimPe.Extensions;
+
 namespace SimPe.Plugin.Anim
 {
 	/// <summary>
@@ -2125,7 +2127,7 @@ namespace SimPe.Plugin.Anim
 					f = af.XBlock.GetCompressedFloat(af.XBlock.Parameter);
 					if (afb.TransformationType == FrameType.Rotation)
 					{
-						f = (float)Geometry.Quaternion.RadToDeg(f);
+						f = f.RadiansToDegrees();
 					}
 
 					if (f == 0)
@@ -2174,7 +2176,7 @@ namespace SimPe.Plugin.Anim
 					f = af.YBlock.GetCompressedFloat(af.YBlock.Parameter);
 					if (afb.TransformationType == FrameType.Rotation)
 					{
-						f = (float)Geometry.Quaternion.RadToDeg(f);
+						f = f.RadiansToDegrees();
 					}
 
 					if (f == 0)
@@ -2223,7 +2225,7 @@ namespace SimPe.Plugin.Anim
 					f = af.ZBlock.GetCompressedFloat(af.ZBlock.Parameter);
 					if (afb.TransformationType == FrameType.Rotation)
 					{
-						f = (float)Geometry.Quaternion.RadToDeg(f);
+						f = f.RadiansToDegrees();
 					}
 
 					if (f == 0)

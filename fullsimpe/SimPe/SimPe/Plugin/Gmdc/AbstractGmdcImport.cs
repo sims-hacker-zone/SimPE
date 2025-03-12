@@ -2,8 +2,11 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Numerics;
 
+using SimPe.Extensions;
 using SimPe.Geometry;
 using SimPe.Plugin.Anim;
 
@@ -58,9 +61,9 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		/// <param name="s"></param>
 		/// <returns></returns>
-		protected static double ToDouble(string s)
+		protected static float ToSingle(string s)
 		{
-			double d = Convert.ToDouble(s, DefaultCulture);
+			float d = Convert.ToSingle(s, DefaultCulture);
 			if (Math.Abs(d) < SMALLNUMBER)
 			{
 				d = 0;
@@ -295,7 +298,7 @@ namespace SimPe.Plugin.Gmdc
 			//remove all existing Groups and Elements
 			if (Options.CleanGroups)
 			{
-				for (int i = Gmdc.Groups.Length - 1; i >= 0; i--)
+				for (int i = Gmdc.Groups.Count - 1; i >= 0; i--)
 				{
 					Gmdc.RemoveGroup(i);
 				}
@@ -487,7 +490,7 @@ namespace SimPe.Plugin.Gmdc
 		protected virtual void ReplaceGroup(ImportedGroups gs, ImportedGroup g)
 		{
 			int index = g.Target.Index;
-			if (index < 0 || index >= Gmdc.Groups.Length)
+			if (index < 0 || index >= Gmdc.Groups.Count)
 			{
 				index = Gmdc.FindGroupByName(g.Target.Name);
 			}
@@ -516,7 +519,7 @@ namespace SimPe.Plugin.Gmdc
 		protected virtual void UpdateGroup(ImportedGroup g)
 		{
 			int index = g.Target.Index;
-			if (index < 0 || index >= Gmdc.Groups.Length)
+			if (index < 0 || index >= Gmdc.Groups.Count)
 			{
 				index = Gmdc.FindGroupByName(g.Target.Name);
 			}
@@ -727,7 +730,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// This Map contains static correction Values used for specific animation Joints
 		/// </summary>
-		static Hashtable ajcor;
+		static Dictionary<string, Vector3> ajcor;
 
 		protected static void BuildCorrectionMap()
 		{
@@ -736,12 +739,12 @@ namespace SimPe.Plugin.Gmdc
 				return;
 			}
 
-			ajcor = new Hashtable
+			ajcor = new Dictionary<string, Vector3>
 			{
-				["l_thigh"] = new Vector3f(-Quaternion.DegToRad(180), 0, 0),
-				["r_thigh"] = new Vector3f(-Quaternion.DegToRad(180), 0, 0),
-				["l_clavicle"] = new Vector3f(0, 0, Quaternion.DegToRad(90)),
-				["r_clavicle"] = new Vector3f(0, 0, -Quaternion.DegToRad(90))
+				["l_thigh"] = new Vector3(-(180f.DegreesToRadians()), 0, 0),
+				["r_thigh"] = new Vector3(-(180f.DegreesToRadians()), 0, 0),
+				["l_clavicle"] = new Vector3(0, 0, (90f.DegreesToRadians())),
+				["r_clavicle"] = new Vector3(0, 0, -(90f.DegreesToRadians()))
 			};
 		}
 
@@ -752,7 +755,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <returns></returns>
 		/// <remarks>The vector should be added during Export,
 		/// and will be substracted during Import</remarks>
-		public static Vector3f GetCorrectionVector(string name)
+		public static Vector3 GetCorrectionVector(string name)
 		{
 			if (ajcor == null)
 			{
@@ -760,7 +763,7 @@ namespace SimPe.Plugin.Gmdc
 			}
 
 
-			return (Vector3f)ajcor[name] ?? new Vector3f(0, 0, 0);
+			return ajcor.ContainsKey(name) ? ajcor[name] : new Vector3(0, 0, 0);
 		}
 
 		/// <summary>
@@ -792,7 +795,7 @@ namespace SimPe.Plugin.Gmdc
 						{
 							foreach (AnimationFrame af in ifb.FrameBlock.Frames)
 							{
-								Vector3f v = GetCorrectionVector(ifb.ImportedName);
+								Vector3 v = GetCorrectionVector(ifb.ImportedName);
 
 								af.Float_X -= (float)v.X;
 								af.Float_Y -= (float)v.Y;

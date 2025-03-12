@@ -1408,9 +1408,11 @@ namespace SimPe.Plugin.TabPage
 				tb_itemname.Tag = true;
 				ExtensionItem ei = (ExtensionItem)
 					lb_items.Items[lb_items.SelectedIndex];
-				ei.Translation.X = Convert.ToSingle(tbtrans1.Text);
-				ei.Translation.Y = Convert.ToSingle(tbtrans2.Text);
-				ei.Translation.Z = Convert.ToSingle(tbtrans3.Text);
+				ei.Translation = new System.Numerics.Vector3(
+					Convert.ToSingle(tbtrans1.Text),
+					Convert.ToSingle(tbtrans2.Text),
+					Convert.ToSingle(tbtrans3.Text)
+				);
 
 				lb_items.Items[lb_items.SelectedIndex] = ei;
 			}
@@ -1438,10 +1440,12 @@ namespace SimPe.Plugin.TabPage
 				tb_itemname.Tag = true;
 				ExtensionItem ei = (ExtensionItem)
 					lb_items.Items[lb_items.SelectedIndex];
-				ei.Rotation.X = Convert.ToSingle(tbrot1.Text);
-				ei.Rotation.Y = Convert.ToSingle(tbrot2.Text);
-				ei.Rotation.Z = Convert.ToSingle(tbrot3.Text);
-				ei.Rotation.W = Convert.ToSingle(tbrot4.Text);
+				ei.Rotation = new System.Numerics.Quaternion(
+					Convert.ToSingle(tbrot1.Text),
+					Convert.ToSingle(tbrot2.Text),
+					Convert.ToSingle(tbrot3.Text),
+					Convert.ToSingle(tbrot4.Text)
+				);
 
 				lb_items.Items[lb_items.SelectedIndex] = ei;
 			}

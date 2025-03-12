@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Collections;
+using System.Numerics;
 
 using SimPe.Geometry;
 
@@ -209,7 +210,7 @@ namespace SimPe.Plugin.Gmdc
 
 			for (int i = 0; i < g.Link.ReferencedSize; i++)
 			{
-				Vector3f v = new Vector3f(
+				Vector3 v = new Vector3(
 					g.Link.GetValue(nr, i).Data[0],
 					g.Link.GetValue(nr, i).Data[1],
 					g.Link.GetValue(nr, i).Data[2]

@@ -3,6 +3,8 @@
 using System;
 using System.Windows.Forms;
 
+using SimPe.Extensions;
+
 namespace SimPe.Plugin.Anim
 {
 	/// <summary>
@@ -35,7 +37,7 @@ namespace SimPe.Plugin.Anim
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		private System.ComponentModel.Container components = null;
+		private readonly System.ComponentModel.Container components = null;
 
 		public AnimAxisTransformControl()
 		{
@@ -1582,10 +1584,7 @@ namespace SimPe.Plugin.Anim
 
 			llAdd.Enabled = true;
 
-			if (Cleared != null)
-			{
-				Cleared(this, new EventArgs());
-			}
+			Cleared?.Invoke(this, new EventArgs());
 
 			intern = false;
 			refresh = false;
@@ -1688,7 +1687,7 @@ namespace SimPe.Plugin.Anim
 					float f = aat.GetCompressedFloat(val);
 					if (aat.Parent.Parent.TransformationType == FrameType.Rotation)
 					{
-						f = (float)Geometry.Quaternion.RadToDeg(f);
+						f = f.RadiansToDegrees();
 					}
 
 					tbParameterFloat.Text = f.ToString("N8");
@@ -1709,10 +1708,7 @@ namespace SimPe.Plugin.Anim
 			}
 
 			aat.Parameter = val;
-			if (Changed != null)
-			{
-				Changed(this, new EventArgs());
-			}
+			Changed?.Invoke(this, new EventArgs());
 		}
 
 		private void tbU2_TextChanged(object sender, EventArgs e)
@@ -1753,10 +1749,7 @@ namespace SimPe.Plugin.Anim
 			}
 
 			aat.Unknown2 = val;
-			if (Changed != null)
-			{
-				Changed(this, new EventArgs());
-			}
+			Changed?.Invoke(this, new EventArgs());
 		}
 
 		private void tbU1_TextChanged(object sender, EventArgs e)
@@ -1794,10 +1787,7 @@ namespace SimPe.Plugin.Anim
 			}
 
 			aat.Unknown1 = val;
-			if (Changed != null)
-			{
-				Changed(this, new EventArgs());
-			}
+			Changed?.Invoke(this, new EventArgs());
 		}
 
 		private void tbTimeCode_TextChanged(object sender, EventArgs e)
@@ -1808,10 +1798,7 @@ namespace SimPe.Plugin.Anim
 			}
 
 			aat.TimeCode = Helper.StringToInt16(tbTimeCode.Text, aat.TimeCode, 10);
-			if (Changed != null)
-			{
-				Changed(this, new EventArgs());
-			}
+			Changed?.Invoke(this, new EventArgs());
 		}
 
 		private void cbEvent_CheckedChanged(object sender, EventArgs e)
@@ -1822,10 +1809,7 @@ namespace SimPe.Plugin.Anim
 			}
 
 			aat.Linear = cbEvent.Checked;
-			if (Changed != null)
-			{
-				Changed(this, new EventArgs());
-			}
+			Changed?.Invoke(this, new EventArgs());
 		}
 
 		private void tbParameterFloat_TextChanged(object sender, EventArgs e)
@@ -1846,7 +1830,7 @@ namespace SimPe.Plugin.Anim
 						float f = Convert.ToSingle(tbParameterFloat.Text);
 						if (aat.Parent.Parent.TransformationType == FrameType.Rotation)
 						{
-							f = (float)Geometry.Quaternion.DegToRad(f);
+							f = f.DegreesToRadians();
 						}
 
 						val = aat.FromCompressedFloat(f);
@@ -1861,10 +1845,7 @@ namespace SimPe.Plugin.Anim
 
 			intern = false;
 			aat.Parameter = val;
-			if (Changed != null)
-			{
-				Changed(this, new EventArgs());
-			}
+			Changed?.Invoke(this, new EventArgs());
 		}
 
 		private void tbU1Float_TextChanged(object sender, EventArgs e)
@@ -1894,10 +1875,7 @@ namespace SimPe.Plugin.Anim
 
 			intern = false;
 			aat.Unknown1 = val;
-			if (Changed != null)
-			{
-				Changed(this, new EventArgs());
-			}
+			Changed?.Invoke(this, new EventArgs());
 		}
 
 		private void tbU2Float_TextChanged(object sender, EventArgs e)
@@ -1927,10 +1905,7 @@ namespace SimPe.Plugin.Anim
 
 			intern = false;
 			aat.Unknown2 = val;
-			if (Changed != null)
-			{
-				Changed(this, new EventArgs());
-			}
+			Changed?.Invoke(this, new EventArgs());
 		}
 
 		private void tbParameterHex_TextChanged(object sender, EventArgs e)
@@ -1956,7 +1931,7 @@ namespace SimPe.Plugin.Anim
 					float f = aat.GetCompressedFloat(val);
 					if (aat.Parent.Parent.TransformationType == FrameType.Rotation)
 					{
-						f = (float)Geometry.Quaternion.RadToDeg(f);
+						f = f.RadiansToDegrees();
 					}
 
 					tbParameterFloat.Text = f.ToString("N8");
@@ -1973,10 +1948,7 @@ namespace SimPe.Plugin.Anim
 			}
 
 			aat.Parameter = val;
-			if (Changed != null)
-			{
-				Changed(this, new EventArgs());
-			}
+			Changed?.Invoke(this, new EventArgs());
 		}
 
 		private void tbU1Hex_TextChanged(object sender, EventArgs e)
@@ -2010,10 +1982,7 @@ namespace SimPe.Plugin.Anim
 			}
 
 			aat.Unknown1 = val;
-			if (Changed != null)
-			{
-				Changed(this, new EventArgs());
-			}
+			Changed?.Invoke(this, new EventArgs());
 		}
 
 		private void tbU2Hex_TextChanged(object sender, EventArgs e)
@@ -2047,10 +2016,7 @@ namespace SimPe.Plugin.Anim
 			}
 
 			aat.Unknown2 = val;
-			if (Changed != null)
-			{
-				Changed(this, new EventArgs());
-			}
+			Changed?.Invoke(this, new EventArgs());
 		}
 
 		private void tbParameterBin_TextChanged(object sender, EventArgs e)
@@ -2076,7 +2042,7 @@ namespace SimPe.Plugin.Anim
 					float f = aat.GetCompressedFloat(val);
 					if (aat.Parent.Parent.TransformationType == FrameType.Rotation)
 					{
-						f = (float)Geometry.Quaternion.RadToDeg(f);
+						f = f.RadiansToDegrees();
 					}
 
 					tbParameterFloat.Text = f.ToString("N8");
@@ -2093,10 +2059,7 @@ namespace SimPe.Plugin.Anim
 			}
 
 			aat.Parameter = val;
-			if (Changed != null)
-			{
-				Changed(this, new EventArgs());
-			}
+			Changed?.Invoke(this, new EventArgs());
 		}
 
 		private void tbU1Bin_TextChanged(object sender, EventArgs e)
@@ -2130,10 +2093,7 @@ namespace SimPe.Plugin.Anim
 			}
 
 			aat.Unknown1 = val;
-			if (Changed != null)
-			{
-				Changed(this, new EventArgs());
-			}
+			Changed?.Invoke(this, new EventArgs());
 		}
 
 		private void tbU2Bin_TextChanged(object sender, EventArgs e)
@@ -2167,10 +2127,7 @@ namespace SimPe.Plugin.Anim
 			}
 
 			aat.Unknown2 = val;
-			if (Changed != null)
-			{
-				Changed(this, new EventArgs());
-			}
+			Changed?.Invoke(this, new EventArgs());
 		}
 
 		private void llDelete_LinkClicked(
@@ -2185,10 +2142,7 @@ namespace SimPe.Plugin.Anim
 
 			aat.Parent.Remove(aat);
 			aat = null;
-			if (Deleted != null)
-			{
-				Deleted(this, new EventArgs());
-			}
+			Deleted?.Invoke(this, new EventArgs());
 		}
 
 		private void llAdd_LinkClicked(
@@ -2196,10 +2150,7 @@ namespace SimPe.Plugin.Anim
 			LinkLabelLinkClickedEventArgs e
 		)
 		{
-			if (CreateClicked != null)
-			{
-				CreateClicked(this, new EventArgs());
-			}
+			CreateClicked?.Invoke(this, new EventArgs());
 		}
 
 		private void cbParentLock_CheckedChanged(object sender, EventArgs e)
@@ -2212,10 +2163,7 @@ namespace SimPe.Plugin.Anim
 			aat.ParentLocked = cbParentLock.Checked;
 
 			RefreshData();
-			if (Changed != null)
-			{
-				Changed(this, new EventArgs());
-			}
+			Changed?.Invoke(this, new EventArgs());
 		}
 
 		#region Events

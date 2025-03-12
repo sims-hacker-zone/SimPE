@@ -1,6 +1,10 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Drawing.Drawing2D;
+using System.Numerics;
+
+using SimPe.Extensions;
 
 namespace SimPe.Plugin.Gmdc
 {
@@ -43,52 +47,32 @@ namespace SimPe.Plugin.Gmdc
 				s = value;
 				if (s == ElementSorting.XZY || s == ElementSorting.Preview)
 				{
-					Geometry.Matrixd mt =
-						Geometry.Matrixd.RotateYawPitchRoll(
-							Math.PI,
-							-Math.PI / 2,
-							0
-						);
-					TransformMatrix = mt.To33Matrix();
-
-					mt = Geometry.Matrixd.RotateYawPitchRoll(
-						Math.PI,
-						-Math.PI / 2,
-						0
-					);
-					mi = mt.To33Matrix();
+					TransformMatrix = TrigonometricExtensions.RotateYawPitchRoll((float)Math.PI, (float)(-Math.PI / 2), 0);
+					mi = TrigonometricExtensions.RotateYawPitchRoll((float)Math.PI, (float)(-Math.PI / 2), 0);
 				}
 				else
 				{
-					TransformMatrix = Geometry.Matrixd.GetIdentity(3, 3);
-					mi = Geometry.Matrixd.GetIdentity(3, 3);
+					TransformMatrix = Matrix4x4.Identity;
+					mi = Matrix4x4.Identity;
 				}
 
-				ScaleMatrix =
-					Geometry.Matrixd.Scale(
-						Helper.WindowsRegistry.Config.ImportExportScaleFactor
-					)
-					.To33Matrix();
-				msi =
-					Geometry.Matrixd.Scale(
-						1.0 / Helper.WindowsRegistry.Config.ImportExportScaleFactor
-					)
-					.To33Matrix();
+				ScaleMatrix = Matrix4x4.CreateScale(Helper.WindowsRegistry.Config.ImportExportScaleFactor);
+				msi = Matrix4x4.CreateScale(1.0f / Helper.WindowsRegistry.Config.ImportExportScaleFactor);
 
-				if (TransformMatrix.Orthogonal)
+				if (TransformMatrix.IsOrthogonal())
 				{
 					mn = TransformMatrix;
-					mni = mn.GetTranspose();
+					mni = Matrix4x4.Transpose(mn);
 				}
 				else
 				{
-					mn = mi.GetTranspose();
-					mni = !mn;
+					mn = Matrix4x4.Transpose(mi);
+					Matrix4x4.Invert(mn, out mni);
 				}
 			}
 		}
 
-		Geometry.Matrixd mn,
+		Matrix4x4 mn,
 			mi,
 			mni, msi;
 
@@ -101,34 +85,24 @@ namespace SimPe.Plugin.Gmdc
 			Sorting = sorting;
 		}
 
-		public Geometry.Matrixd TransformMatrix
+		public Matrix4x4 TransformMatrix
 		{
 			get; private set;
 		}
 
-		public Geometry.Matrixd ScaleMatrix
+		public Matrix4x4 ScaleMatrix
 		{
 			get; private set;
 		}
 
-		public Geometry.Quaternion TransformRotation(Geometry.Quaternion q)
+		public Quaternion TransformRotation(Quaternion q)
 		{
-			Geometry.Vector3f r = q.Axis;
-			r = Transform(r);
-			q = Geometry.Quaternion.FromAxisAngle(r, q.Angle);
-
-			return q;
+			return Quaternion.CreateFromAxisAngle(Transform(q.GetAxis()), q.GetAngle());
 		}
 
-		public Geometry.Quaternion InverseTransformRotation(
-			Geometry.Quaternion q
-		)
+		public Quaternion InverseTransformRotation(Quaternion q)
 		{
-			Geometry.Vector3f r = q.Axis;
-			r = InverseTransform(r);
-			q = Geometry.Quaternion.FromAxisAngle(r, q.Angle);
-
-			return q;
+			return Quaternion.CreateFromAxisAngle(InverseTransform(q.GetAxis()), q.GetAngle());
 		}
 
 		/// <summary>
@@ -136,9 +110,9 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		/// <param name="v"></param>
 		/// <returns></returns>
-		public Geometry.Vector3f Transform(Geometry.Vector3f v)
+		public Vector3 Transform(Vector3 v)
 		{
-			return TransformMatrix * v;
+			return Vector3.Transform(v, TransformMatrix);
 		}
 
 		/// <summary>
@@ -146,9 +120,9 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		/// <param name="v"></param>
 		/// <returns></returns>
-		public Geometry.Vector3f InverseTransform(Geometry.Vector3f v)
+		public Vector3 InverseTransform(Vector3 v)
 		{
-			return mi * v;
+			return Vector3.Transform(v, mi);
 		}
 
 		/// <summary>
@@ -156,9 +130,9 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		/// <param name="v"></param>
 		/// <returns></returns>
-		public Geometry.Vector3f TransformNormal(Geometry.Vector3f v)
+		public Vector3 TransformNormal(Vector3 v)
 		{
-			return mn * v;
+			return Vector3.Transform(v, mn);
 		}
 
 		/// <summary>
@@ -166,9 +140,9 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		/// <param name="v"></param>
 		/// <returns></returns>
-		public Geometry.Vector3f InverseTransformNormal(Geometry.Vector3f v)
+		public Vector3 InverseTransformNormal(Vector3 v)
 		{
-			return mni * v;
+			return Vector3.Transform(v, mni);
 		}
 
 		/// <summary>
@@ -176,9 +150,9 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		/// <param name="v"></param>
 		/// <returns></returns>
-		public Geometry.Vector3f TransformScaled(Geometry.Vector3f v)
+		public Vector3 TransformScaled(Vector3 v)
 		{
-			return TransformMatrix * ScaleMatrix * v;
+			return Vector3.Transform(v, TransformMatrix * ScaleMatrix);
 		}
 
 		/// <summary>
@@ -186,9 +160,10 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		/// <param name="v"></param>
 		/// <returns></returns>
-		public Geometry.Vector3f InverseTransformScaled(Geometry.Vector3f v)
+		public Vector3 InverseTransformScaled(Vector3 v)
 		{
-			return !(TransformMatrix * ScaleMatrix) * v;
+			Matrix4x4.Invert((TransformMatrix * ScaleMatrix), out Matrix4x4 result);
+			return Vector3.Transform(v, result);
 		}
 
 		/// <summary>
@@ -196,9 +171,9 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		/// <param name="v"></param>
 		/// <returns></returns>
-		public Geometry.Vector3f Scale(Geometry.Vector3f v)
+		public Vector3 Scale(Vector3 v)
 		{
-			return ScaleMatrix * v;
+			return Vector3.Transform(v, ScaleMatrix);
 		}
 
 		/// <summary>
@@ -206,9 +181,9 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		/// <param name="v"></param>
 		/// <returns></returns>
-		public Geometry.Vector3f InverseScale(Geometry.Vector3f v)
+		public Vector3 InverseScale(Vector3 v)
 		{
-			return msi * v;
+			return Vector3.Transform(v, msi);
 		}
 	}
 }

@@ -80,7 +80,7 @@ namespace SimPe.Plugin.Gmdc
 
 			if (ClearGroupsOnImport)
 			{
-				for (int i = Gmdc.Groups.Length - 1; i >= 0; i--)
+				for (int i = Gmdc.Groups.Count - 1; i >= 0; i--)
 				{
 					Gmdc.RemoveGroup(i);
 				}

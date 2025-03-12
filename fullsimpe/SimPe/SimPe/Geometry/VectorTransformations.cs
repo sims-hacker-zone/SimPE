@@ -1,6 +1,9 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Collections;
+using System.Numerics;
+
+using SimPe.Extensions;
 
 namespace SimPe.Geometry
 {
@@ -40,10 +43,10 @@ namespace SimPe.Geometry
 		/// <summary>
 		/// The Translation
 		/// </summary>
-		public Vector3f Translation
+		public Vector3 Translation
 		{
 			get; set;
-		}
+		} = new Vector3();
 
 		/// <summary>
 		/// The Rotation
@@ -61,7 +64,6 @@ namespace SimPe.Geometry
 		public VectorTransformation(TransformOrder o)
 		{
 			Order = o;
-			Translation = new Vector3f();
 			Rotation = Quaternion.Identity;
 		}
 
@@ -122,17 +124,17 @@ namespace SimPe.Geometry
 		/// </summary>
 		/// <param name="v">The Vertex you want to Transform</param>
 		/// <returns>Transformed Vertex</returns>
-		public Vector3f Transform(Vector3f v)
+		public Vector3 Transform(Vector3 v)
 		{
 			if (Order == TransformOrder.RotateTranslate)
 			{
-				v = Rotation.Rotate(v);
+				v = Vector3.Transform(v, Rotation);
 				return v + Translation;
 			}
 			else
 			{
 				v += Translation;
-				return Rotation.Rotate(v);
+				return Vector3.Transform(v, Rotation);
 			}
 		}
 
@@ -142,13 +144,11 @@ namespace SimPe.Geometry
 		/// <returns></returns>
 		public VectorTransformation Clone()
 		{
-			VectorTransformation v = new VectorTransformation(Order)
+			return new VectorTransformation(Order)
 			{
-				Rotation = Rotation.Clone(),
-				Translation = Translation.Clone()
+				Rotation = Rotation,
+				Translation = Translation
 			};
-
-			return v;
 		}
 
 #if DEBUG

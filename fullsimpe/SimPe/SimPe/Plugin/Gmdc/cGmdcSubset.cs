@@ -3,7 +3,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 
+using SimPe.Extensions;
 using SimPe.Geometry;
 
 namespace SimPe.Plugin.Gmdc
@@ -17,12 +19,12 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// Number of Vertices stored in this SubSet
 		/// </summary>
-		public int VertexCount => Vertices.Length;
+		public int VertexCount => Vertices.Count;
 
 		/// <summary>
 		/// Vertex Definitions for this SubSet
 		/// </summary>
-		public Vectors3f Vertices
+		public List<Vector3> Vertices
 		{
 			get; set;
 		}
@@ -42,7 +44,7 @@ namespace SimPe.Plugin.Gmdc
 		public GmdcJoint(GeometryDataContainer parent)
 			: base(parent)
 		{
-			Vertices = new Vectors3f();
+			Vertices = new List<Vector3>();
 			Items = new List<int>();
 		}
 
@@ -62,7 +64,7 @@ namespace SimPe.Plugin.Gmdc
 					Vertices.Clear();
 					for (int i = 0; i < vcount; i++)
 					{
-						Vector3f f = new Vector3f();
+						Vector3 f = new Vector3();
 						f.Unserialize(reader);
 						Vertices.Add(f);
 					}
@@ -187,7 +189,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <param name="index">Index of the current Joint withi it�s parent</param>
 		/// <param name="v">The Vertex you want to Transform</param>
 		/// <returns>Transformed Vertex</returns>
-		protected Vector3f Transform(int index, Vector3f v)
+		protected Vector3 Transform(int index, Vector3 v)
 		{
 			//no Parent -> no Transform
 			if (parent == null)
@@ -271,7 +273,7 @@ namespace SimPe.Plugin.Gmdc
 								Vertices.Add(
 									Transform(
 										index,
-										new Vector3f(
+										new Vector3(
 											vertices.Values[k].Data[0],
 											vertices.Values[k].Data[1],
 											vertices.Values[k].Data[2]
@@ -282,7 +284,7 @@ namespace SimPe.Plugin.Gmdc
 							else //all unassigned Vertices get 0
 							{
 								empty.Add(k, Vertices.Count);
-								Vertices.Add(new Vector3f(0, 0, 0));
+								Vertices.Add(new Vector3(0, 0, 0));
 							}
 						}
 
@@ -313,7 +315,7 @@ namespace SimPe.Plugin.Gmdc
 										indices.Add(nr, face_index);
 										Vertices[face_index] = Transform(
 											index,
-											new Vector3f(
+											new Vector3(
 												vertices.Values[nr].Data[0],
 												vertices.Values[nr].Data[1],
 												vertices.Values[nr].Data[2]
