@@ -14,9 +14,7 @@ namespace SimPe.Plugin
 	/// If a Plugin isn't returned, SimPe won't recognize it!
 	/// </remarks>
 	public class WorkshopToolFactory
-		: Interfaces.Plugin.AbstractWrapperFactory,
-			Interfaces.Plugin.IToolFactory,
-			Interfaces.Plugin.IHelpFactory
+		: Interfaces.Plugin.IHelpFactory
 	{
 		internal static IToolPlugin[] Last;
 
@@ -27,22 +25,6 @@ namespace SimPe.Plugin
 					PreviewForm.Execute
 				);
 		}
-
-		#region AbstractWrapperFactory Member
-		/// <summary>
-		/// Returns a List of all available Plugins in this Package
-		/// </summary>
-		/// <returns>A List of all provided Plugins (=FileType Wrappers)</returns>
-		public override IWrapper[] KnownWrappers =>
-				// TODO:  You can add more Wrappers here
-				new IWrapper[] { };
-
-		#endregion
-
-		#region IToolFactory Member
-
-		public IToolPlugin[] KnownTools => new IToolPlugin[] { };
-		#endregion
 
 		#region IHelpFactory Members
 

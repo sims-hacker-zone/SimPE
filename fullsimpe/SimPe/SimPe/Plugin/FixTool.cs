@@ -11,15 +11,8 @@ namespace SimPe.Plugin
 	/// </summary>
 	public class FixTool : AbstractTool, ITool
 	{
-		internal static Registry WindowsRegistry => Helper.WindowsRegistry;
-
-		IWrapperRegistry reg;
-		IProviderRegistry prov;
-
-		internal FixTool(IWrapperRegistry reg, IProviderRegistry prov)
+		internal FixTool()
 		{
-			this.reg = reg;
-			this.prov = prov;
 		}
 
 		#region ITool Member

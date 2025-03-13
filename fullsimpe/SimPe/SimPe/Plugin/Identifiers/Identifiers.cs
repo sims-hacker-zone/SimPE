@@ -10,21 +10,13 @@ namespace SimPe.Plugin.Identifiers
 	/// <summary>
 	/// Comapers two IIdentifierBase Instances
 	/// </summary>
-	internal class PluginScannerBaseComparer : System.Collections.IComparer
+	internal class PluginScannerBaseComparer : System.Collections.Generic.IComparer<IScannerPluginBase>
 	{
 		#region IComparer Member
 
-		public int Compare(object x, object y)
+		public int Compare(IScannerPluginBase x, IScannerPluginBase y)
 		{
-			if (x == null)
-			{
-				return y == null ? 0 : 1;
-			}
-
-			IScannerPluginBase ix = (IScannerPluginBase)x;
-			IScannerPluginBase iy = (IScannerPluginBase)y;
-
-			return ix.Index - iy.Index;
+			return x.Index - y.Index;
 		}
 
 		#endregion

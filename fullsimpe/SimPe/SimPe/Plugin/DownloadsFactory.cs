@@ -12,9 +12,7 @@ namespace SimPe.Plugin
 	/// If a Plugin isn't returned, SimPe won't recognize it!
 	/// </remarks>
 	public class DownloadsToolFactory
-		: Interfaces.Plugin.AbstractWrapperFactory,
-			Interfaces.Plugin.IToolFactory,
-			Interfaces.Plugin.ISettingsFactory
+		: Interfaces.Plugin.ISettingsFactory
 	{
 		static Interfaces.Scenegraph.IScenegraphFileIndex fii,
 			tfii;
@@ -52,22 +50,6 @@ namespace SimPe.Plugin
 		{
 			Packages.StreamFactory.CleanupTeleport();
 		}
-
-		#region AbstractWrapperFactory Member
-		/// <summary>
-		/// Returns a List of all available Plugins in this Package
-		/// </summary>
-		/// <returns>A List of all provided Plugins (=FileType Wrappers)</returns>
-		public override IWrapper[] KnownWrappers =>
-				// TODO:  You can add more Wrappers here
-				new IWrapper[] { };
-
-		#endregion
-
-		#region IToolFactory Member
-
-		public IToolPlugin[] KnownTools => new IToolPlugin[] { };
-		#endregion
 
 		#region ISettingsFactory Member
 		static Downloads.DownloadsSettings settings;

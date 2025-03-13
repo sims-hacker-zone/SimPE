@@ -469,13 +469,8 @@ namespace SimPe.Plugin
 				}
 				catch (Exception ex)
 				{
-					errorlog +=
-						file
-						+ ": "
-						+ ex.Message
-						+ Helper.lbr
-						+ "----------------------------------------"
-						+ Helper.lbr;
+					Helper.ExceptionMessage(ex);
+					return;
 				}
 			} //foreach
 		}

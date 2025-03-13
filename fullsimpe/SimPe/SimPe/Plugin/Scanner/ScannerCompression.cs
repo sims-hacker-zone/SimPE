@@ -54,7 +54,7 @@ namespace SimPe.Plugin.Scanner
 		{
 			ps.Data = new List<uint>
 			{
-				[0] = (uint)HealthState.Ok
+				(uint)HealthState.Ok
 			};
 			ps.State = TriState.True;
 			if (

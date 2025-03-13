@@ -92,10 +92,7 @@ namespace SimPe
 		/// <param name="pk"></param>
 		void ClosedToolPluginHandler(object sender, PackageArg pk)
 		{
-			if (ClosedToolPlugin != null)
-			{
-				ClosedToolPlugin(sender, pk);
-			}
+			ClosedToolPlugin?.Invoke(sender, pk);
 		}
 
 		/// <summary>
@@ -105,15 +102,6 @@ namespace SimPe
 		{
 			Splash.Screen.SetMessage("Loading Static Wrappers");
 			FileTableBase.WrapperRegistry.Register(new CommandlineHelpFactory());
-			FileTableBase.WrapperRegistry.Register(
-				new PackedFiles.Wrapper.Factory.SimFactory()
-			);
-			FileTableBase.WrapperRegistry.Register(
-				new PackedFiles.Wrapper.Factory.DefaultWrapperFactory()
-			);
-			//FileTable.WrapperRegistry.Register(new Plugin.ScenegraphWrapperFactory());
-			//FileTable.WrapperRegistry.Register(new Plugin.RefFileFactory());
-			//FileTable.WrapperRegistry.Register(new PackedFiles.Wrapper.Factory.ClstWrapperFactory());
 		}
 
 		/// <summary>
@@ -122,54 +110,7 @@ namespace SimPe
 		void LoadDynamicWrappers()
 		{
 			Splash.Screen.SetMessage("Loading Dynamic Wrappers");
-			// try
-			// {
-			Plugin.WrapperFactory factory = new Plugin.WrapperFactory();
-			FileTableBase.WrapperRegistry.Register(factory); //moved here to max priority, when a StaticWrapper Clst was higher
-			FileTable.ToolRegistry.Register(factory);
-			// }
-			// catch (Exception ex)
-			// {
-			// 	throw ex;
-			// }
-
-			string folder = Helper.SimPePluginPath;
-			if (!System.IO.Directory.Exists(folder))
-			{
-				return;
-			}
-
-			foreach (string file in System.IO.Directory.GetFiles(folder, "*.plugin.dll"))
-			{
-				try
-				{
-					LoadFileWrappers.LoadWrapperFactory(file, wloader);
-				}
-				catch (Exception ex)
-				{
-					Exception e = new Exception(
-						"Unable to load WrapperFactory",
-						new Exception("Invalid Interface in " + file, ex)
-					);
-					LoadFileWrappers.LoadErrorWrapper(
-						new PackedFiles.Wrapper.ErrorWrapper(file, ex),
-						wloader
-					);
-					Helper.ExceptionMessage(ex);
-				}
-				try
-				{
-					LoadFileWrappers.LoadToolFactory(file, wloader);
-				}
-				catch (Exception ex)
-				{
-					Exception e = new Exception(
-						"Unable to load ToolFactory",
-						new Exception("Invalid Interface in " + file, ex)
-					);
-					Helper.ExceptionMessage(e);
-				}
-			}
+			FileTableBase.WrapperRegistry.Register(new Plugin.WrapperFactory());
 		}
 
 		void LoadMenuItems(ToolStripMenuItem toolmenu, ToolStrip tootoolbar)
@@ -223,13 +164,13 @@ namespace SimPe
 
 		protected override void StartThread()
 		{
-			Delegate[] dls = ChangedGuiResourceEvent.GetInvocationList();
-			foreach (Delegate d in dls)
+			foreach (Delegate d in ChangedGuiResourceEvent.GetInvocationList())
 			{
 				if (HaveToStop)
 				{
 					break;
-				} ((Events.ChangedResourceEvent)d)(thsender, the);
+				}
+				((Events.ChangedResourceEvent)d)(thsender, the);
 			}
 		}
 
@@ -263,16 +204,13 @@ namespace SimPe
 
 				//ChangedGuiResourceEvent(sender, e);
 
-				Delegate[] dls = ChangedGuiResourceEvent.GetInvocationList();
-				foreach (Delegate d in dls)
+				foreach (Delegate d in ChangedGuiResourceEvent.GetInvocationList())
 				{
-					if (d.Target is IToolExt ext)
+					if (d.Target is IToolExt ext && !ext.Visible)
 					{
-						if (!ext.Visible)
-						{
-							continue;
-						}
-					} ((Events.ChangedResourceEvent)d)(sender, e);
+						continue;
+					}
+					((Events.ChangedResourceEvent)d)(sender, e);
 				}
 			}
 		}
@@ -367,7 +305,7 @@ namespace SimPe
 		#endregion
 
 		#region External Program Tools
-		IEnumerable<IToolAction> LoadExternalTools()
+		private IEnumerable<IToolAction> LoadExternalTools()
 		{
 			return from item in ToolLoaderExt.Items
 				   select new Actions.Default.StartExternalToolAction(item);

@@ -4,10 +4,24 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+using pj;
+
+using pjHoodTool;
+
+using pjOBJDTool;
+
+using pjse;
+using pjse.guidtool;
+
 using SimPe.Data;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
 using SimPe.Interfaces.Plugin.Internal;
+using SimPe.Plugin;
+using SimPe.Plugin.Tool;
+using SimPe.Plugin.Tool.Action;
+using SimPe.Plugin.Tool.Dockable;
+using SimPe.Plugin.Tool.Window;
 
 namespace SimPe.PackedFiles
 {
@@ -27,6 +41,7 @@ namespace SimPe.PackedFiles
 			ISettingsRegistry,
 			ICommandLineRegistry
 	{
+		static ResourceDock rd = new ResourceDock();
 		/// <summary>
 		/// Coontains all available handler Objects
 		/// </summary>
@@ -52,8 +67,6 @@ namespace SimPe.PackedFiles
 				lotprov.sdescprovider_ChangedPackage
 			);
 
-			Listeners = new List<IListener>();
-
 			WrapperImageList = new System.Windows.Forms.ImageList
 			{
 				ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit
@@ -69,6 +82,30 @@ namespace SimPe.PackedFiles
 						.Assembly.GetManifestResourceStream("SimPe.img.binary.png")
 				)
 			});
+
+			Tools = new HashSet<ITool>
+			{
+				new NeighborhoodTool(this, this),
+				new SimsTool(this, this),
+				new SurgeryTool(this, this),
+				new HashTool(this, this),
+				new FixTool(),
+				new SkinWorkshopTool(),
+				new PhotoStudioTool(this, this),
+				new ImportSemiTool(this, this),
+				new OpenLuaTool(),
+				new SearchTool(this, this),
+				new GeneticCategorizerTool(),
+				new GUIDTool(),
+				new CareerTool(this, this),
+				new tOBJDTool(this, this),
+				new cHoodTool(),
+				new FileTableTool(),
+				new cObjKeyTool(),
+				new BodyMeshExtractor(),
+				new BodyMeshLinker(),
+				new ScannerTool(),
+			};
 		}
 
 		#region IWrapperRegistry Member
@@ -248,78 +285,61 @@ namespace SimPe.PackedFiles
 		#endregion
 
 		#region IToolRegistry Member
-		public void Register(IToolPlugin tool)
-		{
-			switch (tool)
-			{
-				case IDockableTool dtool:
-					Docks.Add(dtool);
-					break;
-				case IToolAction atool:
-					Actions.Add(atool);
-					break;
-				case IToolPlus toolp:
-					ToolsPlus.Add(toolp);
-					break;
-				case IListener listener:
-					Listeners.Add(listener);
-					break;
-				case ITool tool1:
-					Tools.Add(tool1);
-					break;
-				case null:
-					break;
-			}
-		}
 
-		public void Register(IEnumerable<IToolPlugin> tools)
-		{
-			if (tools != null)
-			{
-				foreach (IToolPlugin tool in tools)
-				{
-					Register(tool);
-				}
-			}
-		}
+		public List<IListener> Listeners { get; } = new List<IListener>();
 
-		public void Register(IToolFactory factory)
-		{
-			factory.LinkedRegistry = this;
-			factory.LinkedProvider = this;
-			string s = Localization.GetString("Unknown");
-#if !DEBUG
-			try
-#endif
-			{
-				s = factory.FileName;
-				Register(factory.KnownTools);
-			}
-#if !DEBUG
-			catch (Exception ex)
-			{
-				Helper.ExceptionMessage(
-					"Unable to load Tool \""
-						+ s
-						+ "\". You Probaly have a Plugin/Tool installed, that is not compatible with the current SimPe Release.",
-					ex
-				);
-			}
-#endif
-		}
-
-		public List<IListener> Listeners
+		public HashSet<ITool> Tools
 		{
 			get;
 		}
 
-		public HashSet<ITool> Tools { get; } = new HashSet<ITool>();
+		public HashSet<IToolPlus> ToolsPlus
+		{
+			get;
+		} = new HashSet<IToolPlus>()
+		{
 
-		public HashSet<IToolPlus> ToolsPlus { get; } = new HashSet<IToolPlus>();
+					new CreateListFromPackageTool(),
+					new CreateListFromSelectionTool(),
+					new InstallerTool(),
+					new SaveSims2PackTool(),
+					new LoadSims2PackTool(),
+					new PackageRepairTool(),
+					new AnimTool(),
+		};
 
-		public HashSet<IDockableTool> Docks { get; } = new HashSet<IDockableTool>();
+		public HashSet<IDockableTool> Docks
+		{
+			get;
+		} = new HashSet<IDockableTool>()
+		{
 
-		public HashSet<IToolAction> Actions { get; } = new HashSet<IToolAction>();
+					new PackageDockTool(rd),
+					new ResourceDockTool(rd),
+					new WrapperDockTool(rd),
+					new HexDecConverterTool(rd),
+					new HexDockTool(rd),
+					new FinderDock(),
+					new ObectWorkshopDockTool(),
+					new PackageDetailDockTool(),
+					new DebugDock(),
+		};
+
+		public HashSet<IToolAction> Actions
+		{
+			get;
+		} = new HashSet<IToolAction>
+		{
+
+					new ActionGlobalFixTGI(),
+					new ActionBuildNameMap(),
+					new ActionIntriguedNeighborhood(),
+					new ActionDeleteSim(),
+					new ActionReloadFiletable(),
+					new ActionUniqueInstance(),
+					new ActionCheckFiletable(),
+					new ActionBuildPhpGuidList(),
+		};
 
 		#endregion
 
@@ -413,29 +433,5 @@ namespace SimPe.PackedFiles
 		public HashSet<ICommandLine> CommandLines { get; } = new HashSet<ICommandLine>();
 
 		#endregion
-
-		/// <summary>
-		/// This will perform some basic tasks, to bring the SimPe API into an useable state
-		/// </summary>
-		/* unused ?? ?? ?? -> see SimPe Main\PluginManager.cs LoadStaticWrappers()
-		public static void InitDefaultFileTable()
-		{
-			SimPe.PackedFiles.TypeRegistry tr = new SimPe.PackedFiles.TypeRegistry();
-
-			SimPe.FileTable.ProviderRegistry = tr;
-			SimPe.FileTable.ToolRegistry = tr;
-			SimPe.FileTable.WrapperRegistry = tr;
-			SimPe.FileTable.HelpTopicRegistry = tr;
-			SimPe.FileTable.SettingsRegistry = tr;
-
-			SimPe.FileTable.WrapperRegistry.Register(new SimPe.PackedFiles.Wrapper.Factory.SimFactory());
-			SimPe.FileTable.WrapperRegistry.Register(new SimPe.PackedFiles.Wrapper.Factory.ExtendedWrapperFactory());
-			SimPe.FileTable.WrapperRegistry.Register(new SimPe.PackedFiles.Wrapper.Factory.DefaultWrapperFactory());
-			SimPe.FileTable.WrapperRegistry.Register(new SimPe.Plugin.ScenegraphWrapperFactory());
-			SimPe.FileTable.WrapperRegistry.Register(new SimPe.PackedFiles.Wrapper.Factory.ClstWrapperFactory());
-			SimPe.FileTable.WrapperRegistry.Register(new SimPe.Commandline.Help());
-
-		}
-		*/
 	}
 }
