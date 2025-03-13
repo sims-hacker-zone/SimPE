@@ -1,5 +1,8 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using System.Collections.Generic;
+
+using SimPe.Interfaces.Files;
 namespace SimPe.Actions.Default
 {
 	/// <summary>
@@ -31,9 +34,9 @@ namespace SimPe.Actions.Default
 				return;
 			}
 
-			Collections.PackedFileDescriptors pfds = LoadDescriptors(true);
+			List<IPackedFileDescriptor> pfds = LoadDescriptors(true);
 			es.LoadedPackage.Package.BeginUpdate();
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			foreach (IPackedFileDescriptor pfd in pfds)
 			{
 				es.LoadedPackage.Package.Add(pfd);
 			}

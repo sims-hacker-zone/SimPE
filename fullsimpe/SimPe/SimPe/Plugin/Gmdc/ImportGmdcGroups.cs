@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace SimPe.Plugin.Gmdc
@@ -867,8 +868,8 @@ namespace SimPe.Plugin.Gmdc
 		/// <returns>DialogResult.OK or DialogResult.Cancel</returns>
 		public static ImportOptions Execute(
 			GeometryDataContainer gmdc,
-			ImportedGroups actions,
-			ImportedBones joints
+			List<ImportedGroup> actions,
+			List<ImportedBone> joints
 		)
 		{
 			ImportGmdcGroupsForm f = new ImportGmdcGroupsForm
@@ -880,7 +881,7 @@ namespace SimPe.Plugin.Gmdc
 				f.cbnames.Items.Add(g.Name);
 			}
 
-			for (int i = 0; i < gmdc.Joints.Length; i++)
+			for (int i = 0; i < gmdc.Joints.Count; i++)
 			{
 				f.cbbones.Items.Add(f.BuildBoneName(i));
 			}
@@ -963,7 +964,7 @@ namespace SimPe.Plugin.Gmdc
 			{
 				a.Action = GmdcImporterAction.Update;
 				a.FindBestFitJoint(gmdc);
-				if (ct < gmdc.Joints.Length && a.TargetIndex == -1)
+				if (ct < gmdc.Joints.Count && a.TargetIndex == -1)
 				{
 					a.TargetIndex = ct;
 				}

@@ -201,7 +201,7 @@ namespace SimPe.Plugin.Gmdc
 			//TransformNode tn = AssignedTransformNode(index);
 
 			//Get the Transformation Hirarchy
-			VectorTransformations t = new VectorTransformations
+			List<VectorTransformation> t = new List<VectorTransformation>
 			{
 				parent.Model.Transformations[index]
 			};
@@ -350,108 +350,4 @@ namespace SimPe.Plugin.Gmdc
 			return s;
 		}
 	}
-
-	#region Container
-	/// <summary>
-	/// Typesave ArrayList for GmdcJoint Objects
-	/// </summary>
-	public class GmdcJoints : ArrayList
-	{
-		/// <summary>
-		/// Integer Indexer
-		/// </summary>
-		public new GmdcJoint this[int index]
-		{
-			get => (GmdcJoint)base[index];
-			set => base[index] = value;
-		}
-
-		/// <summary>
-		/// unsigned Integer Indexer
-		/// </summary>
-		public GmdcJoint this[uint index]
-		{
-			get => (GmdcJoint)base[(int)index];
-			set => base[(int)index] = value;
-		}
-
-		/// <summary>
-		/// add a new Element
-		/// </summary>
-		/// <param name="item">The object you want to add</param>
-		/// <returns>The index it was added on</returns>
-		public int Add(GmdcJoint item)
-		{
-			return base.Add(item);
-		}
-
-		/// <summary>
-		/// insert a new Element
-		/// </summary>
-		/// <param name="index">The Index where the Element should be stored</param>
-		/// <param name="item">The object that should be inserted</param>
-		public void Insert(int index, GmdcJoint item)
-		{
-			base.Insert(index, item);
-		}
-
-		/// <summary>
-		/// remove an Element
-		/// </summary>
-		/// <param name="item">The object that should be removed</param>
-		public void Remove(GmdcJoint item)
-		{
-			base.Remove(item);
-		}
-
-		/// <summary>
-		/// Checks wether or not the object is already stored in the List
-		/// </summary>
-		/// <param name="item">The Object you are looking for</param>
-		/// <returns>true, if it was found</returns>
-		public bool Contains(GmdcJoint item)
-		{
-			return base.Contains(item);
-		}
-
-		/// <summary>
-		/// Checks weteher or not a Joint with the passed name is stored in the List
-		/// </summary>
-		/// <param name="name"></param>
-		/// <returns></returns>
-		public bool Contains(string name)
-		{
-			name = name.Trim().ToLower();
-			foreach (GmdcJoint gj in this)
-			{
-				if (gj.Name.Trim().ToLower() == name)
-				{
-					return true;
-				}
-			}
-
-			return false;
-		}
-
-		/// <summary>
-		/// Number of stored Elements
-		/// </summary>
-		public int Length => Count;
-
-		/// <summary>
-		/// Create a clone of this Object
-		/// </summary>
-		/// <returns>The clone</returns>
-		public override object Clone()
-		{
-			GmdcJoints list = new GmdcJoints();
-			foreach (GmdcJoint item in this)
-			{
-				list.Add(item);
-			}
-
-			return list;
-		}
-	}
-	#endregion
 }

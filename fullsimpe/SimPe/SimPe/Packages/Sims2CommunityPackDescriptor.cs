@@ -1,5 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using System.Collections.Generic;
+
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Objd;
 using SimPe.PackedFiles.Str;
@@ -76,9 +78,9 @@ namespace SimPe.Packages
 			);
 			if (pfd != null)
 			{
-				StrItemList sitems = new PackedFiles.Str.Str().ProcessFile(pfd, p).LanguageItems(1);
+				List<StrToken> sitems = new PackedFiles.Str.Str().ProcessFile(pfd, p).LanguageItems(1);
 
-				if (sitems.Length > 0)
+				if (sitems.Count > 0)
 				{
 					guid = sitems[0].Title;
 					gameguid = sitems[0].Description;
@@ -88,13 +90,13 @@ namespace SimPe.Packages
 					guid = System.Guid.NewGuid().ToString();
 				}
 
-				if (sitems.Length > 1)
+				if (sitems.Count > 1)
 				{
 					author = sitems[1].Title;
 					contact = sitems[1].Description;
 				}
 
-				if (sitems.Length > 2)
+				if (sitems.Count > 2)
 				{
 					name = sitems[2].Title;
 				}
@@ -118,14 +120,14 @@ namespace SimPe.Packages
 			pfd = p.FindFile(Data.FileTypes.CTSS, 0, group, ctssid);
 			if (pfd != null)
 			{
-				StrItemList sitems = new PackedFiles.Str.Str().ProcessFile(pfd, p).LanguageItems(1);
+				List<StrToken> sitems = new PackedFiles.Str.Str().ProcessFile(pfd, p).LanguageItems(1);
 
-				if (sitems.Length > 0)
+				if (sitems.Count > 0)
 				{
 					title = sitems[0].Title;
 				}
 
-				if (sitems.Length > 1)
+				if (sitems.Count > 1)
 				{
 					description = sitems[1].Title;
 				}
@@ -397,14 +399,14 @@ namespace SimPe.Packages
 			{
 				str = new PackedFiles.Str.Str().ProcessFile(pfd, p);
 			}
-			StrItemList items = str.LanguageItems(1);
+			List<StrToken> items = str.LanguageItems(1);
 
 			if (guid == null)
 			{
 				guid = System.Guid.NewGuid().ToString();
 			}
 
-			if (str.Items.Length > 0)
+			if (str.Items.Count > 0)
 			{
 				str.Items[0].Title = guid;
 				str.Items[0].Description = gameguid;
@@ -416,7 +418,7 @@ namespace SimPe.Packages
 				);
 			}
 
-			if (str.Items.Length > 1)
+			if (str.Items.Count > 1)
 			{
 				str.Items[1].Title = author;
 				str.Items[1].Description = contact;
@@ -428,7 +430,7 @@ namespace SimPe.Packages
 				);
 			}
 
-			if (str.Items.Length > 2)
+			if (str.Items.Count > 2)
 			{
 				str.Items[2].Title = name;
 				str.Items[2].Description = "";
@@ -494,8 +496,8 @@ namespace SimPe.Packages
 				str = new PackedFiles.Str.Str().ProcessFile(pfd, p);
 			}
 
-			StrItemList items = str.LanguageItems(1);
-			if (str.Items.Length > 0)
+			List<StrToken> items = str.LanguageItems(1);
+			if (str.Items.Count > 0)
 			{
 				str.Items[0].Title = title;
 			}
@@ -504,7 +506,7 @@ namespace SimPe.Packages
 				str.Add(new PackedFiles.Str.StrToken(0, lng[0], title, ""));
 			}
 
-			if (str.Items.Length > 1)
+			if (str.Items.Count > 1)
 			{
 				str.Items[1].Title = description;
 			}

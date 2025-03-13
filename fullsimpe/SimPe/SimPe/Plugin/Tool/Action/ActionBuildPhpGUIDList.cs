@@ -79,7 +79,7 @@ namespace SimPe.Plugin.Tool.Action
 					{
 						SimPe.PackedFiles.Str.Str str = new SimPe.PackedFiles.Str.Str(1);
 						str.ProcessData(list[0]);
-						SimPe.PackedFiles.Str.StrItemList strs = str.LanguageItems(SimPe.Data.MetaData.Languages.English);
+						SimPe.PackedFiles.Str.List<StrToken> strs = str.LanguageItems(SimPe.Data.MetaData.Languages.English);
 						if (strs.Count==0) sw.Write(objd.FileName.Replace("'", "").Replace("\\", "").Replace("\"", ""));
 						else sw.Write(strs[0].Title.Replace("'", "").Replace("\\", "").Replace("\"", ""));
 					}*/

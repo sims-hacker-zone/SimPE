@@ -3,6 +3,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Numerics;
 
 using SimPe.Extensions;
@@ -284,7 +285,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 
 				foreach (int i in js)
 				{
-					if (i >= Gmdc.Model.Transformations.Length)
+					if (i >= Gmdc.Model.Transformations.Count)
 					{
 						break;
 					}
@@ -293,7 +294,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 					if (name.EndsWith("_rot"))
 					{
 						string aname = name.Substring(0, name.Length - 4) + "_trans";
-						if (Gmdc.Joints.Contains(aname))
+						if (Gmdc.Joints.Any(joint => joint.Name.Trim().ToLower() == aname))
 						{
 							correct_trans[name] = Gmdc.Joints[i]
 								.AssignedTransformNode.Translation * -1f;
@@ -305,7 +306,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 					else if (name.EndsWith("_trans"))
 					{
 						string aname = name.Substring(0, name.Length - 6) + "_rot";
-						if (Gmdc.Joints.Contains(aname))
+						if (Gmdc.Joints.Any(joint => joint.Name.Trim().ToLower() == aname))
 						{
 							correct_rot[name] = Gmdc.Joints[i]
 								.AssignedTransformNode.Rotation * -1f;
@@ -321,7 +322,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 			writer.WriteLine("Bones: " + js.Count.ToString());
 			foreach (int i in js)
 			{
-				if (i >= Gmdc.Model.Transformations.Length)
+				if (i >= Gmdc.Model.Transformations.Count)
 				{
 					break;
 				}

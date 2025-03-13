@@ -484,8 +484,8 @@ namespace SimPe.Plugin.Tool.Dockable
 		)
 		{
 			Str str = new PackedFiles.Str.Str().ProcessFile(pfd, pkg);
-			StrItemList items = str.LanguageItems(1);
-			for (int i = 1; i < items.Length; i++)
+			List<StrToken> items = str.LanguageItems(1);
+			for (int i = 1; i < items.Count; i++)
 			{
 				list.Add(items[i].Title);
 			}
@@ -970,10 +970,10 @@ namespace SimPe.Plugin.Tool.Dockable
 		)
 		{
 			str.ClearNonDefault();
-			while (str.Items.Length < 2)
+			while (str.Items.Count < 2)
 			{
 				str.Add(
-					new PackedFiles.Str.StrToken(str.Items.Length, 1, "", "")
+					new PackedFiles.Str.StrToken(str.Items.Count, 1, "", "")
 				);
 			}
 

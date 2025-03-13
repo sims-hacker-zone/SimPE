@@ -24,7 +24,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns a List of stored Elements
 		/// </summary>
-		public GmdcElements Elements
+		public List<GmdcElement> Elements
 		{
 			get; set;
 		}
@@ -32,7 +32,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns a List of stored Links
 		/// </summary>
-		public GmdcLinks Links
+		public List<GmdcLink> Links
 		{
 			get; set;
 		}
@@ -56,7 +56,7 @@ namespace SimPe.Plugin
 		/// <summary>
 		/// Returns a List of stored Joints
 		/// </summary>
-		public GmdcJoints Joints
+		public List<GmdcJoint> Joints
 		{
 			get; set;
 		}
@@ -73,13 +73,13 @@ namespace SimPe.Plugin
 			version = 0x04;
 			BlockID = (uint)FileTypes.GMDC;
 
-			Elements = new GmdcElements();
-			Links = new GmdcLinks();
+			Elements = new List<GmdcElement>();
+			Links = new List<GmdcLink>();
 			Groups = new List<GmdcGroup>();
 
 			Model = new GmdcModel(this);
 
-			Joints = new GmdcJoints();
+			Joints = new List<GmdcJoint>();
 			TriedToLoadParentResourceNode = false;
 		}
 
@@ -163,15 +163,15 @@ namespace SimPe.Plugin
 			writer.Write(sgres.BlockID);
 			sgres.Serialize(writer);
 
-			writer.Write(Elements.Length);
-			for (int i = 0; i < Elements.Length; i++)
+			writer.Write(Elements.Count);
+			for (int i = 0; i < Elements.Count; i++)
 			{
 				Elements[i].Parent = this;
 				Elements[i].Serialize(writer);
 			}
 
-			writer.Write(Links.Length);
-			for (int i = 0; i < Links.Length; i++)
+			writer.Write(Links.Count);
+			for (int i = 0; i < Links.Count; i++)
 			{
 				Links[i].Parent = this;
 				Links[i].Serialize(writer);
@@ -187,8 +187,8 @@ namespace SimPe.Plugin
 			Model.Parent = this;
 			Model.Serialize(writer);
 
-			writer.Write(Joints.Length);
-			for (int i = 0; i < Joints.Length; i++)
+			writer.Write(Joints.Count);
+			for (int i = 0; i < Joints.Count; i++)
 			{
 				Joints[i].Parent = this;
 				Joints[i].Serialize(writer);
@@ -230,14 +230,14 @@ namespace SimPe.Plugin
 
 			if (UserVerification.HaveUserId)
 			{
-				form.label_elements.Text = "Elements: " + Elements.Length.ToString();
+				form.label_elements.Text = "Elements: " + Elements.Count.ToString();
 				form.list_elements.Items.Clear();
 				foreach (GmdcElement e in Elements)
 				{
 					CountedListItem.Add(form.list_elements, e);
 				}
 
-				form.label_links.Text = "Links: " + Links.Length.ToString();
+				form.label_links.Text = "Links: " + Links.Count.ToString();
 				form.list_links.Items.Clear();
 				foreach (GmdcLink l in Links)
 				{
@@ -251,7 +251,7 @@ namespace SimPe.Plugin
 					CountedListItem.Add(form.list_groups, g);
 				}
 
-				form.label_subsets.Text = "Joints: " + Joints.Length.ToString();
+				form.label_subsets.Text = "Joints: " + Joints.Count.ToString();
 				form.list_subsets.Items.Clear();
 				foreach (GmdcJoint s in Joints)
 				{
@@ -546,7 +546,7 @@ namespace SimPe.Plugin
 				}
 			}
 
-			for (int i = Joints.Length - 1; i >= 0; i--)
+			for (int i = Joints.Count - 1; i >= 0; i--)
 			{
 				if (!usebones.Contains(i))
 				{
@@ -846,7 +846,7 @@ namespace SimPe.Plugin
 		/// <param name="relmap"><see cref="LoadJointRelationMap"/></param>
 		/// <returns></returns>
 		public static List<int> SortJoints(
-			GmdcJoints joints,
+			List<GmdcJoint> joints,
 			Hashtable relmap
 		)
 		{

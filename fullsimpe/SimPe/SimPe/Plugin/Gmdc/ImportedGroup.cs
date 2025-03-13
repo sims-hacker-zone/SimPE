@@ -1,6 +1,6 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
-using System.Collections;
+using System.Collections.Generic;
 
 namespace SimPe.Plugin.Gmdc
 {
@@ -127,7 +127,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <summary>
 		/// All Elements used by this Group
 		/// </summary>
-		public GmdcElements Elements
+		public List<GmdcElement> Elements
 		{
 			get;
 		}
@@ -195,93 +195,8 @@ namespace SimPe.Plugin.Gmdc
 			KeepOrder = true;
 			Group = new GmdcGroup(parent);
 			Link = new GmdcLink(parent);
-			Elements = new GmdcElements();
+			Elements = new List<GmdcElement>();
 			UseInBoundingMesh = false;
 		}
 	}
-
-	#region Container
-	/// <summary>
-	/// Typesave ArrayList for <see cref="ImportedGroup"/> Objects
-	/// </summary>
-	public class ImportedGroups : ArrayList
-	{
-		/// <summary>
-		/// Integer Indexer
-		/// </summary>
-		public new ImportedGroup this[int index]
-		{
-			get => (ImportedGroup)base[index];
-			set => base[index] = value;
-		}
-
-		/// <summary>
-		/// unsigned Integer Indexer
-		/// </summary>
-		public ImportedGroup this[uint index]
-		{
-			get => (ImportedGroup)base[(int)index];
-			set => base[(int)index] = value;
-		}
-
-		/// <summary>
-		/// add a new Element
-		/// </summary>
-		/// <param name="item">The object you want to add</param>
-		/// <returns>The index it was added on</returns>
-		public int Add(ImportedGroup item)
-		{
-			return base.Add(item);
-		}
-
-		/// <summary>
-		/// insert a new Element
-		/// </summary>
-		/// <param name="index">The Index where the Element should be stored</param>
-		/// <param name="item">The object that should be inserted</param>
-		public void Insert(int index, ImportedGroup item)
-		{
-			base.Insert(index, item);
-		}
-
-		/// <summary>
-		/// remove an Element
-		/// </summary>
-		/// <param name="item">The object that should be removed</param>
-		public void Remove(ImportedGroup item)
-		{
-			base.Remove(item);
-		}
-
-		/// <summary>
-		/// Checks wether or not the object is already stored in the List
-		/// </summary>
-		/// <param name="item">The Object you are looking for</param>
-		/// <returns>true, if it was found</returns>
-		public bool Contains(ImportedGroup item)
-		{
-			return base.Contains(item);
-		}
-
-		/// <summary>
-		/// Number of stored Elements
-		/// </summary>
-		public int Length => Count;
-
-		/// <summary>
-		/// Create a clone of this Object
-		/// </summary>
-		/// <returns>The clone</returns>
-		public override object Clone()
-		{
-			ImportedGroups list = new ImportedGroups();
-			foreach (ImportedGroup item in this)
-			{
-				list.Add(item);
-			}
-
-			return list;
-		}
-	}
-	#endregion
 }

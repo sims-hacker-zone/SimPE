@@ -154,11 +154,11 @@ namespace SimPe.PackedFiles.Fami
 					if (pfd != null)
 					{
 
-						StrItemList items =
+						List<StrToken> items =
 							new Str.Str().ProcessFile(pfd, package).FallbackedLanguageItems(
 								Helper.WindowsRegistry.Config.LanguageCode
 							);
-						if (items.Length > 0)
+						if (items.Count > 0)
 						{
 							name = items[0].Title;
 						}

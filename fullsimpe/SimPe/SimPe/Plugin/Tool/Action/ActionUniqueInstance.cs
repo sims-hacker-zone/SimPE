@@ -1,5 +1,8 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using System.Collections.Generic;
+
+using SimPe.Interfaces.Files;
 namespace SimPe.Plugin.Tool.Action
 {
 	/*public class TestListener  : SimPe.Interfaces.IListener, SimPe.Interfaces.ITool
@@ -75,10 +78,10 @@ namespace SimPe.Plugin.Tool.Action
 				return;
 			}
 
-			SimPe.Collections.PackedFileDescriptors pfds = e.GetDescriptors();
+			List<IPackedFileDescriptor> pfds = e.GetDescriptors();
 			bool first = true;
 			uint inst = 0x8000;
-			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
+			foreach (IPackedFileDescriptor pfd in pfds)
 			{
 				if (first)
 				{

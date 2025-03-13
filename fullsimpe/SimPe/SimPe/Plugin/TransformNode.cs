@@ -1,6 +1,5 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Numerics;
@@ -9,56 +8,6 @@ using SimPe.Geometry;
 
 namespace SimPe.Plugin
 {
-	public class TransformNodeItem
-	{
-		public TransformNodeItem()
-		{
-			Unknown1 = 1;
-			ChildNode = 0;
-		}
-
-		public ushort Unknown1
-		{
-			get; set;
-		}
-		public int ChildNode
-		{
-			get; set;
-		}
-
-		/// <summary>
-		/// Unserializes a BinaryStream into the Attributes of this Instance
-		/// </summary>
-		/// <param name="reader">The Stream that contains the FileData</param>
-		public void Unserialize(System.IO.BinaryReader reader)
-		{
-			Unknown1 = reader.ReadUInt16();
-			ChildNode = reader.ReadInt32();
-		}
-
-		/// <summary>
-		/// Serializes a the Attributes stored in this Instance to the BinaryStream
-		/// </summary>
-		/// <param name="writer">The Stream the Data should be stored to</param>
-		/// <remarks>
-		/// Be sure that the Position of the stream is Proper on
-		/// return (i.e. must point to the first Byte after your actual File)
-		/// </remarks>
-		public void Serialize(System.IO.BinaryWriter writer)
-		{
-			writer.Write(Unknown1);
-			writer.Write(ChildNode);
-		}
-
-		public override string ToString()
-		{
-			return "0x"
-				+ Helper.HexString(Unknown1)
-				+ " 0x"
-				+ Helper.HexString((uint)ChildNode);
-		}
-	}
-
 	/// <summary>
 	/// Summary description for cTransformNode.
 	/// </summary>
@@ -72,7 +21,7 @@ namespace SimPe.Plugin
 
 		#region Attributes
 
-		public TransformNodeItems Items
+		public List<TransformNodeItem> Items
 		{
 			get; set;
 		}
@@ -158,7 +107,7 @@ namespace SimPe.Plugin
 			CompositionTreeNode = new CompositionTreeNode(parent);
 			ObjectGraphNode = new ObjectGraphNode(parent);
 
-			Items = new TransformNodeItems();
+			Items = new List<TransformNodeItem>();
 
 			Transformation = new VectorTransformation(
 				VectorTransformation.TransformOrder.TranslateRotate
@@ -269,8 +218,8 @@ namespace SimPe.Plugin
 			writer.Write(ObjectGraphNode.BlockID);
 			ObjectGraphNode.Serialize(writer);
 
-			writer.Write((uint)Items.Length);
-			for (int i = 0; i < Items.Length; i++)
+			writer.Write((uint)Items.Count);
+			for (int i = 0; i < Items.Count; i++)
 			{
 				Items[i].Serialize(writer);
 			}
@@ -309,7 +258,7 @@ namespace SimPe.Plugin
 			tTransformNode.tb_tn_a.Tag = true;
 
 			tTransformNode.lb_tn.Items.Clear();
-			for (int i = 0; i < Items.Length; i++)
+			for (int i = 0; i < Items.Count; i++)
 			{
 				tTransformNode.lb_tn.Items.Add(Items[i]);
 			}
@@ -363,7 +312,7 @@ namespace SimPe.Plugin
 		/// <returns>True, when the Child was found</returns>
 		public bool RemoveChild(int index)
 		{
-			for (int i = 0; i < Items.Length; i++)
+			for (int i = 0; i < Items.Count; i++)
 			{
 				if (Items[i].ChildNode == index)
 				{
@@ -382,7 +331,7 @@ namespace SimPe.Plugin
 		/// <returns>True, when the Child was added</returns>
 		public bool AddChild(int index)
 		{
-			for (int i = 0; i < Items.Length; i++)
+			for (int i = 0; i < Items.Count; i++)
 			{
 				if (Items[i].ChildNode == index)
 				{
@@ -413,89 +362,4 @@ namespace SimPe.Plugin
 
 		#endregion
 	}
-
-	#region Container
-	/// <summary>
-	/// Typesave ArrayList for TransformNodeItem Objects
-	/// </summary>
-	public class TransformNodeItems : ArrayList
-	{
-		/// <summary>
-		/// Integer Indexer
-		/// </summary>
-		public new TransformNodeItem this[int index]
-		{
-			get => (TransformNodeItem)base[index];
-			set => base[index] = value;
-		}
-
-		/// <summary>
-		/// unsigned Integer Indexer
-		/// </summary>
-		public TransformNodeItem this[uint index]
-		{
-			get => (TransformNodeItem)base[(int)index];
-			set => base[(int)index] = value;
-		}
-
-		/// <summary>
-		/// add a new Element
-		/// </summary>
-		/// <param name="item">The object you want to add</param>
-		/// <returns>The index it was added on</returns>
-		public int Add(TransformNodeItem item)
-		{
-			return base.Add(item);
-		}
-
-		/// <summary>
-		/// insert a new Element
-		/// </summary>
-		/// <param name="index">The Index where the Element should be stored</param>
-		/// <param name="item">The object that should be inserted</param>
-		public void Insert(int index, TransformNodeItem item)
-		{
-			base.Insert(index, item);
-		}
-
-		/// <summary>
-		/// remove an Element
-		/// </summary>
-		/// <param name="item">The object that should be removed</param>
-		public void Remove(TransformNodeItem item)
-		{
-			base.Remove(item);
-		}
-
-		/// <summary>
-		/// Checks wether or not the object is already stored in the List
-		/// </summary>
-		/// <param name="item">The Object you are looking for</param>
-		/// <returns>true, if it was found</returns>
-		public bool Contains(TransformNodeItem item)
-		{
-			return base.Contains(item);
-		}
-
-		/// <summary>
-		/// Number of stored Elements
-		/// </summary>
-		public int Length => Count;
-
-		/// <summary>
-		/// Create a clone of this Object
-		/// </summary>
-		/// <returns>The clone</returns>
-		public override object Clone()
-		{
-			TransformNodeItems list = new TransformNodeItems();
-			foreach (TransformNodeItem item in this)
-			{
-				list.Add(item);
-			}
-
-			return list;
-		}
-	}
-	#endregion
 }

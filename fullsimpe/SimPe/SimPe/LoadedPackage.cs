@@ -1,12 +1,12 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
-using SimPe.Collections;
 using SimPe.Data;
 using SimPe.Events;
-using SimPe.Forms.MainUI;
+using SimPe.Interfaces.Files;
 
 using Message = SimPe.Forms.MainUI.Message;
 
@@ -338,7 +338,7 @@ namespace SimPe
 				&& Helper.WindowsRegistry.Config.LoadMetaInfo
 			)
 			{
-				Interfaces.Files.IPackageFile pkg = Package;
+				IPackageFile pkg = Package;
 				try
 				{
 					string mname = Helper.GetMainNeighborhoodFile(pkg.SaveFileName);
@@ -623,12 +623,12 @@ namespace SimPe
 					{
 						if (System.IO.File.Exists(names[i]))
 						{
-							PackedFileDescriptors pfds = LoadDescriptorsFromDisk(
+							List<IPackedFileDescriptor> pfds = LoadDescriptorsFromDisk(
 								names[i]
 							);
 
 							foreach (
-								Interfaces.Files.IPackedFileDescriptor pfd in pfds
+								IPackedFileDescriptor pfd in pfds
 							)
 							{
 								Package.Add(pfd);
@@ -651,9 +651,9 @@ namespace SimPe
 		/// </summary>
 		/// <param name="flnames">List of FileNames</param>
 		/// <returns></returns>
-		public static PackedFileDescriptors LoadDescriptorsFromDisk(string[] flnames)
+		public static List<IPackedFileDescriptor> LoadDescriptorsFromDisk(string[] flnames)
 		{
-			PackedFileDescriptors list = new PackedFileDescriptors();
+			List<IPackedFileDescriptor> list = new List<IPackedFileDescriptor>();
 			foreach (string flname in flnames)
 			{
 				LoadDescriptorsFromDisk(flname, list);
@@ -667,9 +667,9 @@ namespace SimPe
 		/// </summary>
 		/// <param name="flname"></param>
 		/// <returns></returns>
-		public static PackedFileDescriptors LoadDescriptorsFromDisk(string flname)
+		public static List<IPackedFileDescriptor> LoadDescriptorsFromDisk(string flname)
 		{
-			PackedFileDescriptors list = new PackedFileDescriptors();
+			List<IPackedFileDescriptor> list = new List<IPackedFileDescriptor>();
 			LoadDescriptorsFromDisk(flname, list);
 			return list;
 		}
@@ -682,7 +682,7 @@ namespace SimPe
 		/// <returns></returns>
 		public static void LoadDescriptorsFromDisk(
 			string flname,
-			PackedFileDescriptors list
+			List<IPackedFileDescriptor> list
 		)
 		{
 			if (list == null)
@@ -697,7 +697,7 @@ namespace SimPe
 			}
 
 			WaitingScreen.UpdateMessage("Load Descriptors From Disk");
-			//list = new PackedFileDescriptors();
+			//list = new List<IPackedFileDescriptor>();
 			try
 			{
 				if (flname.ToLower().EndsWith("package.xml"))
@@ -705,9 +705,9 @@ namespace SimPe
 					Packages.File pkg = Packages.File.LoadFromStream(
 						XmlPackageReader.OpenExtractedPackage(null, flname)
 					);
-					foreach (Interfaces.Files.IPackedFileDescriptor pfd in pkg.Index)
+					foreach (IPackedFileDescriptor pfd in pkg.Index)
 					{
-						Interfaces.Files.IPackedFile file = pkg.Read(pfd);
+						IPackedFile file = pkg.Read(pfd);
 						pfd.UserData = file.UncompressedData;
 						if (!list.Contains(pfd))
 						{
@@ -717,7 +717,7 @@ namespace SimPe
 				}
 				else if (flname.ToLower().EndsWith(".xml"))
 				{
-					Interfaces.Files.IPackedFileDescriptor pfd =
+					IPackedFileDescriptor pfd =
 						XmlPackageReader.OpenExtractedPackedFile(flname);
 					if (!list.Contains(pfd))
 					{
@@ -730,9 +730,9 @@ namespace SimPe
 				)
 				{
 					Packages.File pkg = Packages.File.LoadFromFile(flname);
-					foreach (Interfaces.Files.IPackedFileDescriptor pfd in pkg.Index)
+					foreach (IPackedFileDescriptor pfd in pkg.Index)
 					{
-						Interfaces.Files.IPackedFile file = pkg.Read(pfd);
+						IPackedFile file = pkg.Read(pfd);
 						pfd.UserData = file.UncompressedData;
 						if (!list.Contains(pfd))
 						{

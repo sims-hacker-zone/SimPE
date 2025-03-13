@@ -302,10 +302,10 @@ namespace SimPe.Cache
 				{
 					Str str =
 						new PackedFiles.Str.Str().ProcessFile(sitem);
-					StrItemList strs = str.LanguageItems(
+					List<StrToken> strs = str.LanguageItems(
 						Helper.WindowsRegistry.Config.LanguageCode
 					);
-					if (strs.Length > 0)
+					if (strs.Count > 0)
 					{
 						mci.Name = strs[0].Title;
 					}
@@ -314,7 +314,7 @@ namespace SimPe.Cache
 					if (mci.Name == "")
 					{
 						strs = str.LanguageItems(1);
-						if (strs.Length > 0)
+						if (strs.Count > 0)
 						{
 							mci.Name = strs[0].Title;
 						}
@@ -336,7 +336,7 @@ namespace SimPe.Cache
 				{
 					Str str =
 						new PackedFiles.Str.Str().ProcessFile(sitem);
-					StrItemList strs = str.LanguageItems(
+					List<StrToken> strs = str.LanguageItems(
 						Data.Languages.English
 					);
 					mci.ValueNames.AddRange((IEnumerable<string>)strs);

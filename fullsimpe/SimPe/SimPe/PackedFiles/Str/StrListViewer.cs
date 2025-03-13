@@ -1,5 +1,6 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace SimPe.PackedFiles.Str
@@ -288,13 +289,13 @@ namespace SimPe.PackedFiles.Str
 		{
 			listView1.Items.Clear();
 			StrLanguage l = (StrLanguage)e.Node.Tag;
-			StrItemList items = wrapper.LanguageItems(l);
+			List<StrToken> items = wrapper.LanguageItems(l);
 			if (items == null)
 			{
 				return;
 			}
 
-			for (int i = 0; i < items.Length; i++)
+			for (int i = 0; i < items.Count; i++)
 			{
 				StrToken s = items[i];
 				string[] ss = new string[3];

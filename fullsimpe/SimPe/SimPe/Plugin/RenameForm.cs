@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 using SimPe.Data;
@@ -269,12 +270,12 @@ namespace SimPe.Plugin
 					Str str =
 						new PackedFiles.Str.Str().ProcessFile(pfd, package);
 
-					StrItemList sil = str.LanguageItems(1);
-					if (sil.Length > 1)
+					List<StrToken> sil = str.LanguageItems(1);
+					if (sil.Count > 1)
 					{
 						return sil[1].Title;
 					}
-					else if (str.Items.Length > 1)
+					else if (str.Items.Count > 1)
 					{
 						return str.Items[1].Title;
 					}

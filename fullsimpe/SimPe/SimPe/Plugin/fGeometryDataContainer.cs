@@ -3962,7 +3962,7 @@ namespace SimPe.Plugin
 					bw.BlockFormat = BlockFormat.OneFloat;
 
 					//create an assignment for each Vertex
-					for (int i = 0; i < v.Values.Length; i++)
+					for (int i = 0; i < v.Values.Count; i++)
 					{
 						ba.Values.Add(
 							new GmdcElementValueOneInt((int)(id | 0xffffff00))

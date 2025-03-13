@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace SimPe.Plugin.Gmdc
 {
@@ -134,9 +135,9 @@ namespace SimPe.Plugin.Gmdc
 		/// <returns>A List of all available Groups</returns>
 		/// <remarks>You can use the Input and Gmdc Member to acces the Stream and
 		/// the Gmdc File that should be changed</remarks>
-		protected override ImportedGroups LoadGroups()
+		protected override List<ImportedGroup> LoadGroups()
 		{
-			ImportedGroups grps = new ImportedGroups();
+			List<ImportedGroup> grps = new List<ImportedGroup>();
 			LoadLists();
 			ProcessLists(grps);
 			return grps;
@@ -173,7 +174,7 @@ namespace SimPe.Plugin.Gmdc
 		/// the Imported Group Data
 		/// </summary>
 		/// <param name="grps">The List that should receive the Group Data</param>
-		void ProcessLists(ImportedGroups grps)
+		void ProcessLists(List<ImportedGroup> grps)
 		{
 			foreach (string k in groups.Keys)
 			{
@@ -203,7 +204,7 @@ namespace SimPe.Plugin.Gmdc
 		{
 			if (slotindex == -1)
 			{
-				g.Elements[index].Values.Add(val);
+				g.Elements[index].Values.Add((GmdcElementValueBase)val);
 			}
 			else
 			{

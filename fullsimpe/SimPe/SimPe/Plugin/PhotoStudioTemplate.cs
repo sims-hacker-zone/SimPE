@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 
 using SimPe.Data;
@@ -72,9 +73,9 @@ namespace SimPe.Plugin
 					return Package.FileName;
 				}
 
-				StrItemList items =
+				List<StrToken> items =
 					ctss.FallbackedLanguageItems(Helper.WindowsRegistry.Config.LanguageCode);
-				return items.Length > 0 ? items[0].Title : Package.FileName;
+				return items.Count > 0 ? items[0].Title : Package.FileName;
 			}
 		}
 

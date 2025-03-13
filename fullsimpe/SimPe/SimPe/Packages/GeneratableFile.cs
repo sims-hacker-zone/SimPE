@@ -2,10 +2,9 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 
-using SimPe.Collections.IO;
-using SimPe.Data;
 using SimPe.Interfaces.Files;
 using SimPe.PackedFiles.Clst;
 
@@ -254,7 +253,7 @@ namespace SimPe.Packages
 				return;
 			}
 
-			filelistfile = new PackedFiles.Clst.Clst(
+			filelistfile = new Clst(
 				Header.IndexType
 			);
 			filelist = new PackedFileDescriptor
@@ -300,8 +299,8 @@ namespace SimPe.Packages
 			header.Save(writer);
 
 			//now save the files
-			PackedFileDescriptors tmpindex = new PackedFileDescriptors();
-			ArrayList tmpcmp = new ArrayList();
+			List<IPackedFileDescriptor> tmpindex = new List<IPackedFileDescriptor>();
+			List<bool> tmpcmp = new List<bool>();
 			if (fileindex == null)
 			{
 				fileindex = new IPackedFileDescriptor[0];
@@ -332,7 +331,7 @@ namespace SimPe.Packages
 				//PackedFileDescriptor newpfd = (PackedFileDescriptor)pfd.Clone();
 				PackedFileDescriptor newpfd = pfd;
 
-				PackedFile pf = null;
+				PackedFile pf;
 				if (pfd.MarkForReCompress)
 				{
 					try
@@ -444,8 +443,8 @@ namespace SimPe.Packages
 		/// <param name="tmpindex">listing of the compressin state for each packed File</param>
 		protected void WriteFileList(
 			BinaryWriter writer,
-			ref PackedFileDescriptors tmpindex,
-			ArrayList tmpcmp
+			ref List<IPackedFileDescriptor> tmpindex,
+			List<bool> tmpcmp
 		)
 		{
 			if (filelist == null)
@@ -463,21 +462,21 @@ namespace SimPe.Packages
 			//won't change!
 			byte[] b = Read(filelist).UncompressedData;
 			Clst fl =
-				new PackedFiles.Clst.Clst(filelist, this);
+				new Clst(filelist, this);
 			if (filelist.MarkForDelete)
 			{
 				fl.Clear();
 			}
 
 			Clst newfl =
-				new PackedFiles.Clst.Clst(Header.IndexType)
+				new Clst(Header.IndexType)
 				{
 					FileDescriptor = filelist
 				};
 
 			for (int i = 0; i < tmpcmp.Count; i++)
 			{
-				if ((bool)tmpcmp[i])
+				if (tmpcmp[i])
 				{
 					int pos = fl.FindFile(tmpindex[i]);
 
@@ -490,7 +489,7 @@ namespace SimPe.Packages
 					{
 						//IPackedFile pf = this.Read((IPackedFileDescriptor)tmpindex[i]);
 						ClstItem fi =
-							new PackedFiles.Clst.ClstItem(newfl.IndexType);
+							new ClstItem(newfl.IndexType);
 						PackedFileDescriptor pfd = (PackedFileDescriptor)tmpindex[i];
 						fi.Type = pfd.Type;
 						fi.Group = pfd.Group;

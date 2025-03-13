@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 using SimPe.Data;
@@ -139,11 +140,11 @@ namespace SimPe.Providers
 							if (sitem != null)
 							{
 								str.ProcessData(sitem);
-								StrItemList strs =
+								List<StrToken> strs =
 									str.LanguageItems(
 										Helper.WindowsRegistry.Config.LanguageCode
 									);
-								if (strs.Length > 0)
+								if (strs.Count > 0)
 								{
 									name = strs[0].Title;
 								}
@@ -152,7 +153,7 @@ namespace SimPe.Providers
 								if (name == "")
 								{
 									strs = str.LanguageItems(1);
-									if (strs.Length > 0)
+									if (strs.Count > 0)
 									{
 										name = strs[0].Title;
 									}
@@ -231,10 +232,10 @@ namespace SimPe.Providers
 				0x7FE59FD0,
 				instance
 			);
-			StrItemList sis = new PackedFiles.Str.Str().ProcessFile(pfd, BasePackage).FallbackedLanguageItems(
+			List<StrToken> sis = new PackedFiles.Str.Str().ProcessFile(pfd, BasePackage).FallbackedLanguageItems(
 				(Languages)lang
 			);
-			for (ushort i = 0; i < sis.Length; i++)
+			for (ushort i = 0; i < sis.Count; i++)
 			{
 				list.Add(sis[i].Title);
 			} //for
@@ -307,7 +308,7 @@ namespace SimPe.Providers
 			{
 				str.ProcessData(item.FileDescriptor, BasePackage);
 
-				for (ushort i = 0; i < str.Items.Length; i++)
+				for (ushort i = 0; i < str.Items.Count; i++)
 				{
 					StrToken si = str.Items[i];
 

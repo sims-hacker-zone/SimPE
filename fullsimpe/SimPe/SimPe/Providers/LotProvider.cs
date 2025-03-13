@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -155,11 +156,11 @@ namespace SimPe.Providers
 					{
 						Str str =
 							new PackedFiles.Str.Str().ProcessFile(stri);
-						StrItemList items =
+						List<StrToken> items =
 							str.FallbackedLanguageItems(
 								Helper.WindowsRegistry.Config.LanguageCode
 							);
-						if (items.Length > 0)
+						if (items.Count > 0)
 						{
 							string ret = items[0].Title;
 							str.Dispose();
@@ -293,7 +294,7 @@ namespace SimPe.Providers
 					string name = Localization.GetString("Unknown");
 					if (pfd != null)
 					{
-						StrItemList list =
+						List<StrToken> list =
 							new PackedFiles.Str.Str().ProcessFile(pfd, pkg).FallbackedLanguageItems(
 								Helper.WindowsRegistry.Config.LanguageCode
 							);

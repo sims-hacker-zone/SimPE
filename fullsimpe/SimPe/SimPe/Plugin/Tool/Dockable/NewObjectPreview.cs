@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
@@ -423,7 +424,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				)
 			);
 
-			StrItemList strs = GetCtssItems();
+			List<StrToken> strs = GetCtssItems();
 			if (strs != null)
 			{
 				if (strs.Count > 0)
@@ -505,8 +506,8 @@ namespace SimPe.Plugin.Tool.Dockable
 			ArrayList list = new ArrayList();
 			if (pfd != null)
 			{
-				StrItemList items = new PackedFiles.Str.Str().ProcessFile(pfd, objd.Package).LanguageItems(1);
-				for (int i = 1; i < items.Length; i++)
+				List<StrToken> items = new PackedFiles.Str.Str().ProcessFile(pfd, objd.Package).LanguageItems(1);
+				for (int i = 1; i < items.Count; i++)
 				{
 					list.Add(items[i].Title);
 				}
@@ -517,7 +518,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			return refname;
 		}
 
-		protected virtual StrItemList GetCtssItems(
+		protected virtual List<StrToken> GetCtssItems(
 			Interfaces.Files.IPackedFileDescriptor ctss,
 			Interfaces.Files.IPackageFile pkg
 		)
@@ -527,7 +528,7 @@ namespace SimPe.Plugin.Tool.Dockable
 				: null;
 		}
 
-		protected virtual StrItemList GetCtssItems()
+		protected virtual List<StrToken> GetCtssItems()
 		{
 			if (objd == null)
 			{

@@ -33,7 +33,7 @@ namespace SimPe.Interfaces
 		/// <summary>
 		/// Return a Collection of loaded Listeners
 		/// </summary>
-		Collections.Listeners Listeners
+		List<IListener> Listeners
 		{
 			get;
 		}

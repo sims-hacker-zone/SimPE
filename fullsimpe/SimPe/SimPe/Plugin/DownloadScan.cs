@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -1113,13 +1114,13 @@ namespace SimPe.Plugin
 
 					if (pfds.Length > 0)
 					{
-						StrItemList items =
+						List<StrToken> items =
 							new PackedFiles.Str.Str().ProcessFile(pfds[0], package).FallbackedLanguageItems(
 								Helper.WindowsRegistry.Config.LanguageCode
 							);
 						if (items != null)
 						{
-							if (items.Length > 0)
+							if (items.Count > 0)
 							{
 								desc = items[0].Title;
 							}

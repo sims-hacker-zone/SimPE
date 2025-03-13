@@ -44,15 +44,15 @@ namespace SimPe.Plugin.Gmdc.Importer
 		/// <returns>A List of all available Groups</returns>
 		/// <remarks>You can use the Input and Gmdc Member to acces the Stream and
 		/// the Gmdc File that should be changed</remarks>
-		protected override ImportedGroups LoadGroups()
+		protected override List<ImportedGroup> LoadGroups()
 		{
-			ImportedGroups grps = new ImportedGroups();
-			bones = new ImportedBones();
+			List<ImportedGroup> grps = new List<ImportedGroup>();
+			bones = new List<ImportedBone>();
 			LineParser(grps);
 			return grps;
 		}
 
-		ImportedBones bones;
+		List<ImportedBone> bones;
 
 		/// <summary>
 		/// This Method is called during the Import to process the input Data and
@@ -61,7 +61,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 		/// <returns>A List of all available Bones</returns>
 		/// <remarks>You can use the <see cref="Input"/> and <see cref="Gmdc"/> Member to acces the Stream and
 		/// the Gmdc File that should be changed</remarks>
-		protected override ImportedBones LoadBones()
+		protected override List<ImportedBone> LoadBones()
 		{
 			return bones;
 		}
@@ -150,7 +150,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 		/// Start the Parsing of A File
 		/// </summary>
 		/// <param name="grps"></param>
-		void LineParser(ImportedGroups grps)
+		void LineParser(List<ImportedGroup> grps)
 		{
 			linect = 0;
 			error = "";
@@ -248,7 +248,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 		/// </summary>
 		/// <param name="grps"></param>
 		/// <param name="ct"></param>
-		void ParseMeshSection(ImportedGroups grps, int ct)
+		void ParseMeshSection(List<ImportedGroup> grps, int ct)
 		{
 			for (int i = 0; i < ct; i++)
 			{
@@ -455,7 +455,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 		/// </summary>
 		/// <param name="grps"></param>
 		/// <param name="ct"></param>
-		void ParseBonesSection(ImportedGroups grps, int ct)
+		void ParseBonesSection(List<ImportedGroup> grps, int ct)
 		{
 			List<int> sort = Gmdc.SortJoints();
 			for (int i = 0; i < ct; i++)

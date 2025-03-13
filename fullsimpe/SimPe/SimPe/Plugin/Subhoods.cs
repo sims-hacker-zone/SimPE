@@ -93,11 +93,11 @@ namespace SimPe.Plugin
 						pfd = pkg.FindFileAnyGroup(Data.FileTypes.CTSS, 0, 1);
 						if (pfd != null)
 						{
-							StrItemList items =
+							List<StrToken> items =
 								new PackedFiles.Str.Str().ProcessFile(pfd, pkg).FallbackedLanguageItems(
 									Helper.WindowsRegistry.Config.LanguageCode
 								);
-							if (items.Length > 0)
+							if (items.Count > 0)
 							{
 								subh = items[0].Title;
 							}

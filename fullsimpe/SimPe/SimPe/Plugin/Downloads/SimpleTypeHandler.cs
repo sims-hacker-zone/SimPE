@@ -1,6 +1,8 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+using System.Collections.Generic;
+
 using SimPe.Data;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Picture;
@@ -28,9 +30,9 @@ namespace SimPe.Plugin.Downloads
 
 			if (pfds.Length > 0)
 			{
-				StrItemList items =
+				List<StrToken> items =
 					DefaultTypeHandler.GetCtssItems(pfds[0], pkg);
-				if (items.Length > 0)
+				if (items.Count > 0)
 				{
 					nfo.Name = items[0].Title;
 				}

@@ -113,14 +113,14 @@ namespace SimPe.Plugin
 		/// <param name="b">The bone you want o get the Absolute position for</param>
 		/// <param name="v">The offset for the calculation</param>
 		/// <param name="eo">ElementOrder we want to use</param>
-		VectorTransformations GetAbsoluteTransformation(
+		List<VectorTransformation> GetAbsoluteTransformation(
 			ICresChildren node,
-			VectorTransformations v
+			List<VectorTransformation> v
 		)
 		{
 			if (v == null)
 			{
-				v = new VectorTransformations();
+				v = new List<VectorTransformation>();
 			}
 
 			if (node == null)
@@ -157,7 +157,7 @@ namespace SimPe.Plugin
 		/// Returns the effective Transformation, that is described by the CresHirarchy
 		/// </summary>
 		/// <returns></returns>
-		public VectorTransformations GetHirarchyTransformations()
+		public List<VectorTransformation> GetHirarchyTransformations()
 		{
 			seenbones = new ArrayList();
 			return GetAbsoluteTransformation(this, null);
@@ -169,7 +169,7 @@ namespace SimPe.Plugin
 		/// <returns></returns>
 		public VectorTransformation GetEffectiveTransformation()
 		{
-			VectorTransformations list = GetHirarchyTransformations();
+			List<VectorTransformation> list = GetHirarchyTransformations();
 			VectorTransformation v = new VectorTransformation();
 
 #if DEBUG
@@ -182,7 +182,7 @@ namespace SimPe.Plugin
 				sw.WriteLine("    " + v.ToString());
 #endif
 				VectorTransformation l = null;
-				for (int i = list.Length - 1; i >= 0; i--)
+				for (int i = list.Count - 1; i >= 0; i--)
 				{
 					VectorTransformation t = list[i];
 					t.Rotation = System.Numerics.Quaternion.Normalize(t.Rotation);

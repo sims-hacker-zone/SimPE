@@ -2,18 +2,21 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SimPe.PackedFiles.Ttab
 {
-	public class TtabItemAnimalMotiveItem : TtabItemMotiveItem, ICollection
+	public class TtabItemAnimalMotiveItem : TtabItemMotiveItem, ICollection<TtabItemSingleMotiveItem>
 	{
 		#region Attributes
-		private TtabItemSingleMotiveItemArrayList items =
-			new TtabItemSingleMotiveItemArrayList(new TtabItemSingleMotiveItem[0]);
+		private List<TtabItemSingleMotiveItem> items =
+			new List<TtabItemSingleMotiveItem>();
 		#endregion
 
 		#region Accessor Methods
 		// All covered by ICollection
+		public TtabItemSingleMotiveItem this[int index] => items[index];
 		#endregion
 
 		public TtabItemAnimalMotiveItem(TtabItemMotiveGroup parent)
@@ -30,8 +33,9 @@ namespace SimPe.PackedFiles.Ttab
 			if (!(target is TtabItemAnimalMotiveItem))
 			{
 				throw new ArgumentException("Argument must be of same type", "target");
-			} ((TtabItemAnimalMotiveItem)target).items =
-				items?.Clone((TtabItemAnimalMotiveItem)target);
+			}
+
+			((TtabItemAnimalMotiveItem)target).items = items.Select(item => item.Clone(target.Parent)).Cast<TtabItemSingleMotiveItem>().ToList();
 			if (doEvent && target.Wrapper != null)
 			{
 				target.Wrapper.OnWrapperChanged(target, new EventArgs());
@@ -48,18 +52,16 @@ namespace SimPe.PackedFiles.Ttab
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{
 			int count = reader.ReadInt32();
-			items = new TtabItemSingleMotiveItemArrayList(
-				new TtabItemSingleMotiveItem[count]
-			);
+			items = new List<TtabItemSingleMotiveItem>();
 			for (int i = 0; i < count; i++)
 			{
-				items[i] = new TtabItemSingleMotiveItem(parent, reader);
+				items.Add(new TtabItemSingleMotiveItem(parent, reader));
 			}
 		}
 
 		internal override void Serialize(System.IO.BinaryWriter writer)
 		{
-			int entries = items.EntriesInUse;
+			int entries = items.Select((item, i) => (item, i)).Where(item => item.item.InUse).Select(item => item.i).Last() + 1;
 			writer.Write(entries);
 			for (int i = 0; i < entries; i++)
 			{
@@ -67,163 +69,45 @@ namespace SimPe.PackedFiles.Ttab
 			}
 		}
 
-		public override bool InUse
+		public void Add(TtabItemSingleMotiveItem item)
 		{
-			get
-			{
-				foreach (TtabItemSingleMotiveItem i in items)
-				{
-					if (i.InUse)
-					{
-						return true;
-					}
-				}
-
-				return false;
-			}
-		}
-
-		private class TtabItemSingleMotiveItemArrayList : ArrayList
-		{
-			public TtabItemSingleMotiveItemArrayList()
-				: base() { }
-
-			public TtabItemSingleMotiveItemArrayList(TtabItemSingleMotiveItem[] c)
-				: base(c) { }
-
-			public TtabItemSingleMotiveItemArrayList(int capacity)
-				: base(capacity) { }
-
-			public new TtabItemSingleMotiveItem this[int index]
-			{
-				get => (TtabItemSingleMotiveItem)base[index];
-				set => base[index] = value;
-			}
-
-			/// <summary>
-			/// Creates a deep copy of the TtabItemMotiveItemArrayList
-			/// </summary>
-			public TtabItemSingleMotiveItemArrayList Clone(
-				TtabItemAnimalMotiveItem parent
-			)
-			{
-				TtabItemSingleMotiveItemArrayList clone =
-					new TtabItemSingleMotiveItemArrayList();
-				foreach (TtabItemSingleMotiveItem item in this)
-				{
-					clone.Add(item.Clone(parent.parent));
-				}
-
-				return clone;
-			}
-
-			public override object Clone()
-			{
-				return Clone(null);
-			}
-
-			public int EntriesInUse
-			{
-				get
-				{
-					for (int i = Count; i > 0; i--)
-					{
-						if (this[i - 1].InUse)
-						{
-							return i;
-						}
-					}
-
-					return 0;
-				}
-			}
-		}
-
-		#region ICollection Members
-		public int Add(TtabItemSingleMotiveItem item)
-		{
-			item.Parent = parent;
-			int result = items.Add(item);
-			if (result >= 0 && Wrapper != null)
-			{
-				Wrapper.OnWrapperChanged(this, new EventArgs());
-			}
-
-			return result;
+			((ICollection<TtabItemSingleMotiveItem>)items).Add(item);
 		}
 
 		public void Clear()
 		{
-			for (int i = 0; i < items.Count; i++)
-			{
-				items[i] = new TtabItemSingleMotiveItem(parent);
-			}
-
-			Wrapper?.OnWrapperChanged(this, new EventArgs());
-		}
-
-		public void Remove(TtabItemSingleMotiveItem item)
-		{
-			RemoveAt(items.IndexOf(item));
-		}
-
-		public void RemoveAt(int index)
-		{
-			if (index < 0 || index >= items.Count)
-			{
-				return;
-			}
-
-			items.RemoveAt(index);
-			Wrapper?.OnWrapperChanged(this, new EventArgs());
-		}
-
-		public TtabItemSingleMotiveItem this[int index]
-		{
-			get => items[index];
-			set
-			{
-				if (items[index] != value)
-				{
-					items[index] = value;
-					if (items[index] != null)
-					{
-						items[index].Parent = parent;
-					}
-
-					Wrapper?.OnWrapperChanged(this, new EventArgs());
-				}
-			}
+			((ICollection<TtabItemSingleMotiveItem>)items).Clear();
 		}
 
 		public bool Contains(TtabItemSingleMotiveItem item)
 		{
-			return items.Contains(item);
+			return ((ICollection<TtabItemSingleMotiveItem>)items).Contains(item);
 		}
 
-		public int IndexOf(object item)
+		public void CopyTo(TtabItemSingleMotiveItem[] array, int arrayIndex)
 		{
-			return items.IndexOf(item);
+			((ICollection<TtabItemSingleMotiveItem>)items).CopyTo(array, arrayIndex);
 		}
 
-		public void CopyTo(Array a, int i)
+		public bool Remove(TtabItemSingleMotiveItem item)
 		{
-			items.CopyTo(a, i);
+			return ((ICollection<TtabItemSingleMotiveItem>)items).Remove(item);
 		}
 
-		public int Count => items.Count;
-
-		public bool IsSynchronized => items.IsSynchronized;
-
-		public object SyncRoot => items.SyncRoot;
-
-		#region IEnumerable Members
-		public IEnumerator GetEnumerator()
+		public IEnumerator<TtabItemSingleMotiveItem> GetEnumerator()
 		{
-			return items.GetEnumerator();
+			return ((IEnumerable<TtabItemSingleMotiveItem>)items).GetEnumerator();
 		}
 
-		#endregion
-		#endregion
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return ((IEnumerable)items).GetEnumerator();
+		}
+
+		public override bool InUse => items.Any(item => item.InUse);
+
+		public int Count => ((ICollection<TtabItemSingleMotiveItem>)items).Count;
+
+		public bool IsReadOnly => ((ICollection<TtabItemSingleMotiveItem>)items).IsReadOnly;
 	}
 }

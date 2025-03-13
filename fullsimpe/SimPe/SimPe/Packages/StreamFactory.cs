@@ -212,15 +212,11 @@ namespace SimPe.Packages
 				filename = "";
 			}
 			filename = filename.Trim().ToLower();
-			if (streams.ContainsKey(filename))
-			{
-				return streams[filename];
-			}
-			if (createnew)
-			{
-				streams[filename] = new StreamItem(null);
-			}
-			return streams[filename];
+			return streams.ContainsKey(filename)
+				? streams[filename]
+				: createnew
+					? (streams[filename] = new StreamItem(null))
+					: null;
 		}
 
 		/// <summary>

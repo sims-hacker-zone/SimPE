@@ -318,17 +318,17 @@ namespace SimPe.Plugin.Tool.Dockable
 			if (ctssitem != null)
 			{
 				Str str = new PackedFiles.Str.Str().ProcessFile(ctssitem);
-				StrItemList items = str.LanguageItems(
+				List<StrToken> items = str.LanguageItems(
 					deflang
 				);
-				if (items.Length > 0)
+				if (items.Count > 0)
 				{
 					oci.Name = items[0].Title;
 				}
 				else
 				{
 					items = str.LanguageItems(1);
-					oci.Name = items.Length > 0 ? items[0].Title : "";
+					oci.Name = items.Count > 0 ? items[0].Title : "";
 				}
 			}
 			else
@@ -414,17 +414,17 @@ namespace SimPe.Plugin.Tool.Dockable
 				{
 					Str str =
 						new PackedFiles.Str.Str().ProcessFile(ctssitem);
-					StrItemList items = str.LanguageItems(
+					List<StrToken> items = str.LanguageItems(
 						deflang
 					);
-					if (items.Length > 0)
+					if (items.Count > 0)
 					{
 						oci.Name = items[0].Title;
 					}
 					else
 					{
 						items = str.LanguageItems(1);
-						oci.Name = items.Length > 0 ? items[0].Title : "";
+						oci.Name = items.Count > 0 ? items[0].Title : "";
 					}
 				}
 				else
@@ -447,8 +447,8 @@ namespace SimPe.Plugin.Tool.Dockable
 					).FirstOrDefault();
 				if (txtitem != null)
 				{
-					StrItemList items = new PackedFiles.Str.Str(2).ProcessFile(txtitem).LanguageItems(1);
-					if (items.Length > 1)
+					List<StrToken> items = new PackedFiles.Str.Str(2).ProcessFile(txtitem).LanguageItems(1);
+					if (items.Count > 1)
 					{
 						oci.ModelName = items[1].Title;
 					}
