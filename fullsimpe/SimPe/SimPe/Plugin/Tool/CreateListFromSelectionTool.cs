@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Collections.Generic;
 
 using SimPe.Data;
 using SimPe.Events;
@@ -77,7 +78,7 @@ namespace SimPe.Plugin.Tool
 			return error;
 		}
 
-		public static void Execute(ResourceContainers es)
+		public static void Execute(List<ResourceContainer> es)
 		{
 			//Select the Type
 			if (Helper.WindowsRegistry.Config.ReportFormat == Registry.ReportFormats.CSV)
@@ -90,9 +91,9 @@ namespace SimPe.Plugin.Tool
 			foreach (ResourceContainer e in es)
 			{
 				FileTypes t = e.Resource.FileDescriptor.Type;
-				if (!(map[t] is ResourceContainers o))
+				if (!(map[t] is List<ResourceContainer> o))
 				{
-					o = new ResourceContainers();
+					o = new List<ResourceContainer>();
 					map[t] = o;
 				}
 
@@ -111,8 +112,8 @@ namespace SimPe.Plugin.Tool
 			{
 				foreach (uint type in map.Keys)
 				{
-					ResourceContainers rc =
-						map[type] as ResourceContainers;
+					List<ResourceContainer> rc =
+						map[type] as List<ResourceContainer>;
 					bool first = true;
 
 					foreach (ResourceContainer e in rc)

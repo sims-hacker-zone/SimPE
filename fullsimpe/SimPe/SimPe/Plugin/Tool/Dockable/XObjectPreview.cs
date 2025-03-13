@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 
@@ -148,7 +149,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			pb.Image = null;
 			pb.Image = GenerateImage(pb.Size, GetXThumbnail(cpf), true);
 
-			StrItemList strs = GetCtssItems();
+			List<StrToken> strs = GetCtssItems();
 			if (strs != null)
 			{
 				if (strs.Count > 0)
@@ -175,7 +176,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			}
 		}
 
-		protected override StrItemList GetCtssItems()
+		protected override List<StrToken> GetCtssItems()
 		{
 			if (cpf != null)
 			{

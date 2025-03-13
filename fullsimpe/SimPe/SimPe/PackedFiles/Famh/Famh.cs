@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 
@@ -77,11 +78,11 @@ namespace SimPe.PackedFiles.Famh
 					);
 					if (pfd != null)
 					{
-						StrItemList items =
+						List<StrToken> items =
 							new Str.Str().ProcessFile(pfd, package).FallbackedLanguageItems(
 								Helper.WindowsRegistry.Config.LanguageCode
 							);
-						if (items.Length > 0)
+						if (items.Count > 0)
 						{
 							name = items[0].Title;
 						}
@@ -133,11 +134,11 @@ namespace SimPe.PackedFiles.Famh
 						);
 						if (pfd != null)
 						{
-							StrItemList items =
+							List<StrToken> items =
 								new Str.Str().ProcessFile(pfd, pkg).FallbackedLanguageItems(
 									Helper.WindowsRegistry.Config.LanguageCode
 								);
-							if (items.Length > 0)
+							if (items.Count > 0)
 							{
 								subh = items[0].Title;
 							}

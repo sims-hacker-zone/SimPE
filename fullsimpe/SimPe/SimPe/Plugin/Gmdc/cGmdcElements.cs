@@ -427,7 +427,7 @@ namespace SimPe.Plugin.Gmdc
 		/// Contains a List of <see cref="GmdcElementValueBase"/> Values. The Type of the Elements
 		/// is determined by the <see cref="BlockFormat"/> Property.
 		/// </summary>
-		public GmdcElementValues Values
+		public List<GmdcElementValueBase> Values
 		{
 			get; set;
 		}
@@ -447,7 +447,7 @@ namespace SimPe.Plugin.Gmdc
 		public GmdcElement(GeometryDataContainer parent)
 			: base(parent)
 		{
-			Values = new GmdcElementValues();
+			Values = new List<GmdcElementValueBase>();
 			Items = new List<int>();
 		}
 
@@ -512,7 +512,7 @@ namespace SimPe.Plugin.Gmdc
 			//automatically keep the Number Field correct
 			if (Items.Count == 0)
 			{
-				Number = Values.Length;
+				Number = Values.Count;
 				foreach (int i in Items)
 				{
 					if (i > Number)
@@ -530,13 +530,13 @@ namespace SimPe.Plugin.Gmdc
 			writer.Write((uint)SetFormat);
 
 			int size = 1;
-			if (Values.Length > 0)
+			if (Values.Count > 0)
 			{
 				size = Values[0].Size;
 			}
 
-			writer.Write(Values.Length * 4 * size);
-			for (int i = 0; i < Values.Length; i++)
+			writer.Write(Values.Count * 4 * size);
+			for (int i = 0; i < Values.Count; i++)
 			{
 				Values[i].Serialize(writer);
 			}
@@ -560,172 +560,4 @@ namespace SimPe.Plugin.Gmdc
 				+ ")";
 		}
 	}
-
-	#region Container
-	/// <summary>
-	/// Typesave ArrayList for GmdcElementValueBase Objects
-	/// </summary>
-	public class GmdcElementValues : ArrayList
-	{
-		/// <summary>
-		/// Integer Indexer
-		/// </summary>
-		public new GmdcElementValueBase this[int index]
-		{
-			get => (GmdcElementValueBase)base[index];
-			set => base[index] = value;
-		}
-
-		/// <summary>
-		/// unsigned Integer Indexer
-		/// </summary>
-		public GmdcElementValueBase this[uint index]
-		{
-			get => (GmdcElementValueBase)base[(int)index];
-			set => base[(int)index] = value;
-		}
-
-		/// <summary>
-		/// add a new Element
-		/// </summary>
-		/// <param name="item">The object you want to add</param>
-		/// <returns>The index it was added on</returns>
-		public int Add(GmdcElementValueBase item)
-		{
-			return base.Add(item);
-		}
-
-		/// <summary>
-		/// insert a new Element
-		/// </summary>
-		/// <param name="index">The Index where the Element should be stored</param>
-		/// <param name="item">The object that should be inserted</param>
-		public void Insert(int index, GmdcElementValueBase item)
-		{
-			base.Insert(index, item);
-		}
-
-		/// <summary>
-		/// remove an Element
-		/// </summary>
-		/// <param name="item">The object that should be removed</param>
-		public void Remove(GmdcElementValueBase item)
-		{
-			base.Remove(item);
-		}
-
-		/// <summary>
-		/// Checks wether or not the object is already stored in the List
-		/// </summary>
-		/// <param name="item">The Object you are looking for</param>
-		/// <returns>true, if it was found</returns>
-		public bool Contains(GmdcElementValueBase item)
-		{
-			return base.Contains(item);
-		}
-
-		/// <summary>
-		/// Number of stored Elements
-		/// </summary>
-		public int Length => Count;
-
-		/// <summary>
-		/// Create a clone of this Object
-		/// </summary>
-		/// <returns>The clone</returns>
-		public override object Clone()
-		{
-			GmdcElementValues list = new GmdcElementValues();
-			foreach (GmdcElementValueBase item in this)
-			{
-				list.Add(item);
-			}
-
-			return list;
-		}
-	}
-
-	/// <summary>
-	/// Typesave ArrayList for GmdcElement Objects
-	/// </summary>
-	public class GmdcElements : ArrayList
-	{
-		/// <summary>
-		/// Integer Indexer
-		/// </summary>
-		public new GmdcElement this[int index]
-		{
-			get => (GmdcElement)base[index];
-			set => base[index] = value;
-		}
-
-		/// <summary>
-		/// unsigned Integer Indexer
-		/// </summary>
-		public GmdcElement this[uint index]
-		{
-			get => (GmdcElement)base[(int)index];
-			set => base[(int)index] = value;
-		}
-
-		/// <summary>
-		/// add a new Element
-		/// </summary>
-		/// <param name="item">The object you want to add</param>
-		/// <returns>The index it was added on</returns>
-		public int Add(GmdcElement item)
-		{
-			return base.Add(item);
-		}
-
-		/// <summary>
-		/// insert a new Element
-		/// </summary>
-		/// <param name="index">The Index where the Element should be stored</param>
-		/// <param name="item">The object that should be inserted</param>
-		public void Insert(int index, GmdcElement item)
-		{
-			base.Insert(index, item);
-		}
-
-		/// <summary>
-		/// remove an Element
-		/// </summary>
-		/// <param name="item">The object that should be removed</param>
-		public void Remove(GmdcElement item)
-		{
-			base.Remove(item);
-		}
-
-		/// <summary>
-		/// Checks wether or not the object is already stored in the List
-		/// </summary>
-		/// <param name="item">The Object you are looking for</param>
-		/// <returns>true, if it was found</returns>
-		public bool Contains(GmdcElement item)
-		{
-			return base.Contains(item);
-		}
-
-		/// <summary>
-		/// Number of stored Elements
-		/// </summary>
-		public int Length => Count;
-
-		/// <summary>
-		/// Create a clone of this Object
-		/// </summary>
-		/// <returns>The clone</returns>
-		public override object Clone()
-		{
-			GmdcElements list = new GmdcElements();
-			foreach (GmdcElement item in this)
-			{
-				list.Add(item);
-			}
-
-			return list;
-		}
-	}
-	#endregion
 }

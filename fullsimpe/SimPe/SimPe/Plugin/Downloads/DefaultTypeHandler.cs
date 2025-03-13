@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Drawing;
 
 using SimPe.Data;
@@ -520,7 +521,7 @@ namespace SimPe.Plugin.Downloads
 				)
 			);
 
-			StrItemList strs = GetCtssItems();
+			List<StrToken> strs = GetCtssItems();
 			if (strs != null)
 			{
 				if (strs.Count > 0)
@@ -563,8 +564,8 @@ namespace SimPe.Plugin.Downloads
 			ArrayList list = new ArrayList();
 			if (pfd != null)
 			{
-				StrItemList items = new PackedFiles.Str.Str().ProcessFile(pfd, objd.Package).LanguageItems(1);
-				for (int i = 1; i < items.Length; i++)
+				List<StrToken> items = new PackedFiles.Str.Str().ProcessFile(pfd, objd.Package).LanguageItems(1);
+				for (int i = 1; i < items.Count; i++)
 				{
 					list.Add(items[i].Title);
 				}
@@ -575,7 +576,7 @@ namespace SimPe.Plugin.Downloads
 			return refname;
 		}
 
-		internal static StrItemList GetCtssItems(
+		internal static List<StrToken> GetCtssItems(
 			Interfaces.Files.IPackedFileDescriptor ctss,
 			Interfaces.Files.IPackageFile pkg
 		)
@@ -589,7 +590,7 @@ namespace SimPe.Plugin.Downloads
 			return null;
 		}
 
-		protected virtual StrItemList GetCtssItems()
+		protected virtual List<StrToken> GetCtssItems()
 		{
 			if (objd == null)
 			{

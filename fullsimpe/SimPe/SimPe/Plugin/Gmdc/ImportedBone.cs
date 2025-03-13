@@ -1,6 +1,6 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
-using System.Collections;
+using System.Collections.Generic;
 
 using SimPe.Geometry;
 
@@ -97,7 +97,7 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		/// <param name="bones">List of Bones, where we should look for Parents</param>
 		/// <returns>null if no Parent is available or the Parent Bone</returns>
-		public ImportedBone GetParentFrom(ImportedBones bones)
+		public ImportedBone GetParentFrom(List<ImportedBone> bones)
 		{
 			ParentName = ParentName.Trim();
 			if (ParentName.Trim() == "")
@@ -125,7 +125,7 @@ namespace SimPe.Plugin.Gmdc
 			FindBestFitJoint(gmdc.Joints);
 		}
 
-		protected void FindBestFitJoint(GmdcJoints joints)
+		protected void FindBestFitJoint(List<GmdcJoint> joints)
 		{
 			int ct = 0;
 			foreach (GmdcJoint j in joints)
@@ -139,89 +139,4 @@ namespace SimPe.Plugin.Gmdc
 			}
 		}
 	}
-
-	#region Container
-	/// <summary>
-	/// Typesave ArrayList for <see cref="ImportedGroup"/> Objects
-	/// </summary>
-	public class ImportedBones : ArrayList
-	{
-		/// <summary>
-		/// Integer Indexer
-		/// </summary>
-		public new ImportedBone this[int index]
-		{
-			get => (ImportedBone)base[index];
-			set => base[index] = value;
-		}
-
-		/// <summary>
-		/// unsigned Integer Indexer
-		/// </summary>
-		public ImportedBone this[uint index]
-		{
-			get => (ImportedBone)base[(int)index];
-			set => base[(int)index] = value;
-		}
-
-		/// <summary>
-		/// add a new Element
-		/// </summary>
-		/// <param name="item">The object you want to add</param>
-		/// <returns>The index it was added on</returns>
-		public int Add(ImportedBone item)
-		{
-			return base.Add(item);
-		}
-
-		/// <summary>
-		/// insert a new Element
-		/// </summary>
-		/// <param name="index">The Index where the Element should be stored</param>
-		/// <param name="item">The object that should be inserted</param>
-		public void Insert(int index, ImportedBone item)
-		{
-			base.Insert(index, item);
-		}
-
-		/// <summary>
-		/// remove an Element
-		/// </summary>
-		/// <param name="item">The object that should be removed</param>
-		public void Remove(ImportedBone item)
-		{
-			base.Remove(item);
-		}
-
-		/// <summary>
-		/// Checks wether or not the object is already stored in the List
-		/// </summary>
-		/// <param name="item">The Object you are looking for</param>
-		/// <returns>true, if it was found</returns>
-		public bool Contains(ImportedBone item)
-		{
-			return base.Contains(item);
-		}
-
-		/// <summary>
-		/// Number of stored Elements
-		/// </summary>
-		public int Length => Count;
-
-		/// <summary>
-		/// Create a clone of this Object
-		/// </summary>
-		/// <returns>The clone</returns>
-		public override object Clone()
-		{
-			ImportedBones list = new ImportedBones();
-			foreach (ImportedBone item in this)
-			{
-				list.Add(item);
-			}
-
-			return list;
-		}
-	}
-	#endregion
 }

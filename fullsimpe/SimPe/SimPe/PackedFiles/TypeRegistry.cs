@@ -34,11 +34,6 @@ namespace SimPe.PackedFiles
 		private readonly HashSet<IFileWrapper> handlers = new HashSet<IFileWrapper>();
 
 		/// <summary>
-		/// Contains all available Listeners
-		/// </summary>
-		private readonly Collections.InternalListeners listeners;
-
-		/// <summary>
 		/// Used to access the Windows Registry
 		/// </summary>
 		private readonly Registry reg = Helper.WindowsRegistry;
@@ -57,7 +52,7 @@ namespace SimPe.PackedFiles
 				lotprov.sdescprovider_ChangedPackage
 			);
 
-			listeners = new Collections.InternalListeners();
+			Listeners = new List<IListener>();
 
 			WrapperImageList = new System.Windows.Forms.ImageList
 			{
@@ -267,7 +262,7 @@ namespace SimPe.PackedFiles
 					ToolsPlus.Add(toolp);
 					break;
 				case IListener listener:
-					listeners.Add(listener);
+					Listeners.Add(listener);
 					break;
 				case ITool tool1:
 					Tools.Add(tool1);
@@ -313,7 +308,10 @@ namespace SimPe.PackedFiles
 #endif
 		}
 
-		public Collections.Listeners Listeners => listeners;
+		public List<IListener> Listeners
+		{
+			get;
+		}
 
 		public HashSet<ITool> Tools { get; } = new HashSet<ITool>();
 

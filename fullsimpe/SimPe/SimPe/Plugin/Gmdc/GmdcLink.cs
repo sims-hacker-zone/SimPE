@@ -1,7 +1,6 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace SimPe.Plugin.Gmdc
@@ -251,7 +250,7 @@ namespace SimPe.Plugin.Gmdc
 			for (int k = 0; k < ReferencedElement.Count; k++)
 			{
 				int id = ReferencedElement[k];
-				if (parent.Elements[id].Values.Length > 0)
+				if (parent.Elements[id].Values.Count > 0)
 				{
 					minct = Math.Min(minct, parent.Elements[id].Values.Count);
 				}
@@ -294,8 +293,8 @@ namespace SimPe.Plugin.Gmdc
 
 			//contains a List of all additional Elements assigned to this Link, which
 			//are related to the Vertex Element (like BoneWeights)
-			GmdcElements ovelements = new GmdcElements();
-			GmdcElements velements = new GmdcElements();
+			List<GmdcElement> ovelements = new List<GmdcElement>();
+			List<GmdcElement> velements = new List<GmdcElement>();
 			ovelements.Add(FindElementType(ElementIdentity.Vertex));
 			velements.Add(new GmdcElement(Parent));
 
@@ -321,7 +320,7 @@ namespace SimPe.Plugin.Gmdc
 
 			for (int i = 0; i < ReferencedSize; i++)
 			{
-				for (int j = 0; j < velements.Length; j++)
+				for (int j = 0; j < velements.Count; j++)
 				{
 					velements[j]
 						.Values.Add(ovelements[j].Values[GetRealIndex(nv, i)]);
@@ -338,7 +337,7 @@ namespace SimPe.Plugin.Gmdc
 				}
 			}
 
-			for (int i = 0; i < velements.Length; i++)
+			for (int i = 0; i < velements.Count; i++)
 			{
 				ovelements[i].Values = velements[i].Values;
 				ovelements[i].Number = velements[i].Number;
@@ -360,89 +359,4 @@ namespace SimPe.Plugin.Gmdc
 			}
 		}
 	}
-
-	#region Container
-	/// <summary>
-	/// Typesave ArrayList for GmdcLink Objects
-	/// </summary>
-	public class GmdcLinks : ArrayList
-	{
-		/// <summary>
-		/// Integer Indexer
-		/// </summary>
-		public new GmdcLink this[int index]
-		{
-			get => (GmdcLink)base[index];
-			set => base[index] = value;
-		}
-
-		/// <summary>
-		/// unsigned Integer Indexer
-		/// </summary>
-		public GmdcLink this[uint index]
-		{
-			get => (GmdcLink)base[(int)index];
-			set => base[(int)index] = value;
-		}
-
-		/// <summary>
-		/// add a new Element
-		/// </summary>
-		/// <param name="item">The object you want to add</param>
-		/// <returns>The index it was added on</returns>
-		public int Add(GmdcLink item)
-		{
-			return base.Add(item);
-		}
-
-		/// <summary>
-		/// insert a new Element
-		/// </summary>
-		/// <param name="index">The Index where the Element should be stored</param>
-		/// <param name="item">The object that should be inserted</param>
-		public void Insert(int index, GmdcLink item)
-		{
-			base.Insert(index, item);
-		}
-
-		/// <summary>
-		/// remove an Element
-		/// </summary>
-		/// <param name="item">The object that should be removed</param>
-		public void Remove(GmdcLink item)
-		{
-			base.Remove(item);
-		}
-
-		/// <summary>
-		/// Checks wether or not the object is already stored in the List
-		/// </summary>
-		/// <param name="item">The Object you are looking for</param>
-		/// <returns>true, if it was found</returns>
-		public bool Contains(GmdcLink item)
-		{
-			return base.Contains(item);
-		}
-
-		/// <summary>
-		/// Number of stored Elements
-		/// </summary>
-		public int Length => Count;
-
-		/// <summary>
-		/// Create a clone of this Object
-		/// </summary>
-		/// <returns>The clone</returns>
-		public override object Clone()
-		{
-			GmdcLinks list = new GmdcLinks();
-			foreach (GmdcLink item in this)
-			{
-				list.Add(item);
-			}
-
-			return list;
-		}
-	}
-	#endregion
 }

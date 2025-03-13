@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 
 namespace SimPe.PackedFiles.Str
@@ -63,6 +64,16 @@ namespace SimPe.PackedFiles.Str
 		{
 			return val.Id;
 		}
+
+		public static implicit operator Data.Languages(StrLanguage val)
+		{
+			return (Data.Languages)val.Id;
+		}
+
+		public static implicit operator StrLanguage(Data.Languages val)
+		{
+			return new StrLanguage((byte)val);
+		}
 		#endregion
 
 		public override bool Equals(object obj)
@@ -118,50 +129,6 @@ namespace SimPe.PackedFiles.Str
 		#endregion
 	}
 	#endregion
-
-
-	#region StrLanguageList
-	/// <summary>
-	/// Typesave ArrayList for StrItem Objects
-	/// </summary>
-	public class StrLanguageList : ArrayList
-	{
-		public new StrLanguage this[int index]
-		{
-			get => (StrLanguage)base[index];
-			set => base[index] = value;
-		}
-
-		public int Add(StrLanguage strlng)
-		{
-			return base.Add(strlng);
-		}
-
-		public void Insert(int index, StrLanguage strlng)
-		{
-			base.Insert(index, strlng);
-		}
-
-		public void Remove(StrLanguage strlng)
-		{
-			base.Remove(strlng);
-		}
-
-		public bool Contains(StrLanguage strlng)
-		{
-			return base.Contains(strlng);
-		}
-
-		public int Length => Count;
-
-		public override void Sort()
-		{
-			StrLanguage sl = new StrLanguage(0);
-			base.Sort(sl);
-		}
-	}
-	#endregion
-
 
 	#region StrItem
 	/// <summary>
@@ -253,9 +220,9 @@ namespace SimPe.PackedFiles.Str
 
 			if (lines[lid.Id] == null)
 			{
-				lines[lid.Id] = new StrItemList(); // Add a new StrItemList if needed
-			} ((StrItemList)lines[lid.Id]).Add(
-				new StrToken(((StrItemList)lines[lid.Id]).Count, lid, title, desc)
+				lines[lid.Id] = new List<StrToken>(); // Add a new List<StrToken> if needed
+			} ((List<StrToken>)lines[lid.Id]).Add(
+				new StrToken(((List<StrToken>)lines[lid.Id]).Count, lid, title, desc)
 			);
 		}
 
@@ -295,60 +262,6 @@ namespace SimPe.PackedFiles.Str
 		public override string ToString()
 		{
 			return "0x" + Index.ToString("X") + " - " + Title;
-		}
-	}
-	#endregion
-
-
-	#region StrItemList
-	/// <summary>
-	/// Typesave ArrayList for StrItem Objects
-	/// </summary>
-	public class StrItemList : ArrayList
-	{
-		public new StrToken this[int index]
-		{
-			get => (StrToken)base[index];
-			set => base[index] = value;
-		}
-
-		public StrToken this[uint index]
-		{
-			get => (StrToken)base[(int)index];
-			set => base[(int)index] = value;
-		}
-
-		public int Add(StrToken stritem)
-		{
-			return base.Add(stritem);
-		}
-
-		public void Insert(int index, StrToken stritem)
-		{
-			base.Insert(index, stritem);
-		}
-
-		public void Remove(StrToken stritem)
-		{
-			base.Remove(stritem);
-		}
-
-		public bool Contains(StrToken stritem)
-		{
-			return base.Contains(stritem);
-		}
-
-		public int Length => Count;
-
-		public override object Clone()
-		{
-			StrItemList sil = new StrItemList();
-			foreach (StrToken si in this)
-			{
-				sil.Add(si);
-			}
-
-			return sil;
 		}
 	}
 	#endregion

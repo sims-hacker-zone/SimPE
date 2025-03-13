@@ -165,7 +165,7 @@ namespace SimPe.PackedFiles.Ttab
 
 			ushort itemCount = reader.ReadUInt16();
 			items = new List<TtabItem>();
-			while (items.Count < itemCount)
+			for (int i = 0; i < itemCount; i++)
 			{
 				items.Add(new TtabItem(this, reader));
 			}

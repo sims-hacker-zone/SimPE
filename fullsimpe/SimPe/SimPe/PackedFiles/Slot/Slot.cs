@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Collections.Generic;
 
 using SimPe.Data;
 using SimPe.Interfaces.Plugin;
@@ -19,7 +20,7 @@ namespace SimPe.PackedFiles.Slot
 		/// Returns the Items stored in the FIle
 		/// </summary>
 		/// <remarks>Do not add Items based on this List! use the Add Method!!</remarks>
-		public SlotItems Items
+		public List<SlotItem> Items
 		{
 			get;
 		}
@@ -47,7 +48,7 @@ namespace SimPe.PackedFiles.Slot
 		public Slot()
 			: base()
 		{
-			Items = new SlotItems();
+			Items = new List<SlotItem>();
 			FileName = "";
 			id = FileTypes.SLOT;
 			Version = 4;
@@ -121,8 +122,8 @@ namespace SimPe.PackedFiles.Slot
 			writer.Write(Version);
 			writer.Write(Unknown);
 
-			writer.Write(Items.Length);
-			for (int i = 0; i < Items.Length; i++)
+			writer.Write(Items.Count);
+			for (int i = 0; i < Items.Count; i++)
 			{
 				Items[i].Serialize(writer, this);
 			}

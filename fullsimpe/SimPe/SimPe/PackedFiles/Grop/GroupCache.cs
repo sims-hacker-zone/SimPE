@@ -24,7 +24,7 @@ namespace SimPe.PackedFiles.Grop
 		/// Returns the Items stored in the FIle
 		/// </summary>
 		/// <remarks>Do not add Items based on this List! use the Add Method!!</remarks>
-		internal GroupCacheItems Items
+		internal List<GroupCacheItem> Items
 		{
 			get;
 		}
@@ -41,7 +41,7 @@ namespace SimPe.PackedFiles.Grop
 			: base()
 		{
 			id = 0x05;
-			Items = new GroupCacheItems();
+			Items = new List<GroupCacheItem>();
 			maxgroup = 0x6f000000;
 			over = new byte[0];
 		}
@@ -194,8 +194,8 @@ namespace SimPe.PackedFiles.Grop
 		{
 			writer.Write(id);
 
-			writer.Write((uint)Items.Length);
-			for (int i = 0; i < Items.Length; i++)
+			writer.Write((uint)Items.Count);
+			for (int i = 0; i < Items.Count; i++)
 			{
 				Items[i].Serialize(writer);
 			}

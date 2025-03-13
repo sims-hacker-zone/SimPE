@@ -1,5 +1,8 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using System.Collections.Generic;
+
+using SimPe.Interfaces.Files;
 namespace SimPe.Actions.Default
 {
 	/// <summary>
@@ -16,7 +19,7 @@ namespace SimPe.Actions.Default
 		/// </summary>
 		/// <param name="add">true if you want to add them lateron</param>
 		/// <returns></returns>
-		protected Collections.PackedFileDescriptors LoadDescriptors(bool add)
+		protected List<IPackedFileDescriptor> LoadDescriptors(bool add)
 		{
 			System.Windows.Forms.OpenFileDialog ofd =
 				new System.Windows.Forms.OpenFileDialog();
@@ -45,12 +48,12 @@ namespace SimPe.Actions.Default
 			ofd.Multiselect = add;
 			if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
 			{
-				Collections.PackedFileDescriptors pfds =
+				List<IPackedFileDescriptor> pfds =
 					LoadedPackage.LoadDescriptorsFromDisk(ofd.FileNames);
 				return pfds;
 			}
 
-			return new Collections.PackedFileDescriptors();
+			return new List<IPackedFileDescriptor>();
 		}
 
 		#region IToolAction Member
@@ -74,7 +77,7 @@ namespace SimPe.Actions.Default
 				return;
 			}
 
-			Collections.PackedFileDescriptors pfds = LoadDescriptors(false);
+			List<IPackedFileDescriptor> pfds = LoadDescriptors(false);
 			if (es.Count > 0)
 			{
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)

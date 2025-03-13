@@ -1,6 +1,8 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 using SimPe.Data;
 using SimPe.Interfaces.Plugin;
@@ -77,11 +79,11 @@ namespace SimPe.PackedFiles.Str
 		/// Gets or Sets the list of languages in the file
 		/// </summary>
 		/// <remarks>Adds empty lists when setting for missing languages</remarks>
-		public StrLanguageList Languages
+		public List<StrLanguage> Languages
 		{
 			get
 			{
-				StrLanguageList lngs = new StrLanguageList();
+				List<StrLanguage> lngs = new List<StrLanguage>();
 				foreach (byte k in Lines.Keys)
 				{
 					lngs.Add(k);
@@ -97,7 +99,7 @@ namespace SimPe.PackedFiles.Str
 				{
 					if (!Lines.ContainsKey(l.Id))
 					{
-						Lines.Add(l.Id, new StrItemList());
+						Lines.Add(l.Id, new List<StrToken>());
 					}
 				}
 			}
@@ -109,10 +111,10 @@ namespace SimPe.PackedFiles.Str
 		/// <param name="item">The Item you want to add</param>
 		public void Add(StrToken item)
 		{
-			StrItemList lng = (StrItemList)Lines[item.Language.Id];
+			List<StrToken> lng = (List<StrToken>)Lines[item.Language.Id];
 			if (lng == null)
 			{
-				lng = new StrItemList();
+				lng = new List<StrToken>();
 				Lines[item.Language.Id] = lng;
 			}
 
@@ -125,22 +127,22 @@ namespace SimPe.PackedFiles.Str
 		/// <param name="item">The Item you want to remove</param>
 		public void Remove(StrToken item)
 		{
-			StrItemList lng = (StrItemList)Lines[item.Language.Id];
+			List<StrToken> lng = (List<StrToken>)Lines[item.Language.Id];
 			lng?.Remove(item);
 		}
 
 		/// <summary>
-		/// StrItemList interface to the lines hashtable
+		/// List<StrToken> interface to the lines hashtable
 		/// </summary>
-		public StrItemList Items
+		public List<StrToken> Items
 		{
 			get
 			{
-				StrItemList items = new StrItemList();
-				StrLanguageList lngs = Languages;
+				List<StrToken> items = new List<StrToken>();
+				List<StrLanguage> lngs = Languages;
 				foreach (StrLanguage k in lngs)
 				{
-					items.AddRange((StrItemList)Lines[k.Id]);
+					items.AddRange((List<StrToken>)Lines[k.Id]);
 				}
 
 				return items;
@@ -160,9 +162,9 @@ namespace SimPe.PackedFiles.Str
 		/// </summary>
 		/// <param name="l">the Language</param>
 		/// <returns>List of Strings</returns>
-		public StrItemList LanguageItems(StrLanguage l)
+		public List<StrToken> LanguageItems(StrLanguage l)
 		{
-			return l == null ? new StrItemList() : LanguageItems((Languages)l.Id);
+			return l == null ? new List<StrToken>() : LanguageItems((Languages)l.Id);
 		}
 
 		/// <summary>
@@ -170,9 +172,9 @@ namespace SimPe.PackedFiles.Str
 		/// </summary>
 		/// <param name="l">the Language</param>
 		/// <returns>List of Strings</returns>
-		public StrItemList LanguageItems(Languages l)
+		public List<StrToken> LanguageItems(Languages l)
 		{
-			StrItemList items = (StrItemList)Lines[(byte)l] ?? new StrItemList();
+			List<StrToken> items = (List<StrToken>)Lines[(byte)l] ?? new List<StrToken>();
 
 			return items;
 		}
@@ -184,13 +186,13 @@ namespace SimPe.PackedFiles.Str
 		/// <returns>List of Strings</returns>
 		public StrToken FallbackedLanguageItem(Languages l, int index)
 		{
-			StrItemList list = LanguageItems(l);
-			StrToken name = list.Length > index ? list[index] : new StrToken(0, 0, "", "");
+			List<StrToken> list = LanguageItems(l);
+			StrToken name = list.Count > index ? list[index] : new StrToken(0, 0, "", "");
 
 			if (name.Title.Trim() == "")
 			{
 				list = LanguageItems(1);
-				if (list.Length > index)
+				if (list.Count > index)
 				{
 					name = list[index];
 				}
@@ -205,21 +207,21 @@ namespace SimPe.PackedFiles.Str
 		/// </summary>
 		/// <param name="l">the Language</param>
 		/// <returns>List of Strings</returns>
-		public StrItemList FallbackedLanguageItems(Languages l)
+		public List<StrToken> FallbackedLanguageItems(Languages l)
 		{
 			if (l == Data.Languages.English)
 			{
 				return LanguageItems(l);
 			}
 
-			StrItemList real = (StrItemList)LanguageItems(l).Clone();
-			StrItemList fallback = Languages.Contains(Data.Languages.English)
+			List<StrToken> real = LanguageItems(l).Select(item => item).ToList();
+			List<StrToken> fallback = Languages.Contains(Data.Languages.English)
 				? LanguageItems(Data.Languages.English)
 				: Languages.Count == 1 ? LanguageItems(Languages[0]) : LanguageItems(Data.Languages.English);
 
-			for (int i = 0; i < fallback.Length; i++)
+			for (int i = 0; i < fallback.Count; i++)
 			{
-				if (real.Length <= i)
+				if (real.Count <= i)
 				{
 					real.Add(fallback[i]);
 				}
@@ -263,7 +265,7 @@ namespace SimPe.PackedFiles.Str
 		/// </summary>
 		public void ClearNonDefault()
 		{
-			StrItemList sil = Items;
+			List<StrToken> sil = Items;
 			foreach (StrToken si in sil)
 			{
 				if (si.Language.Id != 1)
@@ -278,8 +280,8 @@ namespace SimPe.PackedFiles.Str
 		/// </summary>
 		public void CopyFromDefaultToAll()
 		{
-			StrItemList sil = Items;
-			StrItemList def = LanguageItems(new StrLanguage(1));
+			List<StrToken> sil = Items;
+			List<StrToken> def = LanguageItems(new StrLanguage(1));
 			foreach (StrToken si in sil)
 			{
 				if (si.Language.Id != 1)
@@ -374,7 +376,7 @@ namespace SimPe.PackedFiles.Str
 		{
 			writer.Write(filename);
 			writer.Write((ushort)Format);
-			ArrayList lngs = Languages;
+			List<StrLanguage> lngs = Languages;
 
 			ArrayList items = new ArrayList();
 			foreach (StrLanguage k in lngs)
@@ -404,9 +406,9 @@ namespace SimPe.PackedFiles.Str
 					"filename="
 					+ FileName
 					+ ", languages="
-					+ Languages.Length.ToString()
+					+ Languages.Count.ToString()
 					+ ", lines="
-					+ Items.Length.ToString();
+					+ Items.Count.ToString();
 				foreach (
 					StrToken i in FallbackedLanguageItems(
 						Helper.WindowsRegistry.Config.LanguageCode

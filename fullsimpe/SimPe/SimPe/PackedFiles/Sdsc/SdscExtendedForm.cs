@@ -306,12 +306,12 @@ namespace SimPe.PackedFiles.Sdsc
 					{
 						Str.Str str = new Str.Str().ProcessFile(pfd, fl);
 
-						StrItemList list = str.LanguageItems(
+						List<StrToken> list = str.LanguageItems(
 							1
 						);
 						string xml = "<wantSimulator>" + Helper.lbr;
 						xml += "  <persondata>" + Helper.lbr;
-						for (int sid = 0; sid < list.Length; sid++)
+						for (int sid = 0; sid < list.Count; sid++)
 						{
 							StrToken si = list[sid];
 							xml +=

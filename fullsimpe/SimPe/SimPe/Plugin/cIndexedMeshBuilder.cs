@@ -1,11 +1,9 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
-using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 
 using SimPe.Extensions;
-using SimPe.Geometry;
 
 namespace SimPe.Plugin
 {
@@ -168,7 +166,7 @@ namespace SimPe.Plugin
 			get;
 		}
 
-		public IndexedMeshBuilderItems Items
+		public List<IndexedMeshBuilderItem> Items
 		{
 			get; set;
 		}
@@ -242,7 +240,7 @@ namespace SimPe.Plugin
 			Numbers3 = new List<int>();
 			Numbers4 = new List<int>();
 
-			Items = new IndexedMeshBuilderItems();
+			Items = new List<IndexedMeshBuilderItem>();
 
 			Zero1 = new byte[0x14];
 			Zero2 = new byte[0x14];
@@ -540,89 +538,4 @@ namespace SimPe.Plugin
 
 		#endregion
 	}
-
-	#region Container
-	/// <summary>
-	/// Typesave ArrayList for IndexedMeshBuilderItem Objects
-	/// </summary>
-	public class IndexedMeshBuilderItems : ArrayList
-	{
-		/// <summary>
-		/// Integer Indexer
-		/// </summary>
-		public new IndexedMeshBuilderItem this[int index]
-		{
-			get => (IndexedMeshBuilderItem)base[index];
-			set => base[index] = value;
-		}
-
-		/// <summary>
-		/// unsigned Integer Indexer
-		/// </summary>
-		public IndexedMeshBuilderItem this[uint index]
-		{
-			get => (IndexedMeshBuilderItem)base[(int)index];
-			set => base[(int)index] = value;
-		}
-
-		/// <summary>
-		/// add a new Element
-		/// </summary>
-		/// <param name="item">The object you want to add</param>
-		/// <returns>The index it was added on</returns>
-		public int Add(IndexedMeshBuilderItem item)
-		{
-			return base.Add(item);
-		}
-
-		/// <summary>
-		/// insert a new Element
-		/// </summary>
-		/// <param name="index">The Index where the Element should be stored</param>
-		/// <param name="item">The object that should be inserted</param>
-		public void Insert(int index, IndexedMeshBuilderItem item)
-		{
-			base.Insert(index, item);
-		}
-
-		/// <summary>
-		/// remove an Element
-		/// </summary>
-		/// <param name="item">The object that should be removed</param>
-		public void Remove(IndexedMeshBuilderItem item)
-		{
-			base.Remove(item);
-		}
-
-		/// <summary>
-		/// Checks wether or not the object is already stored in the List
-		/// </summary>
-		/// <param name="item">The Object you are looking for</param>
-		/// <returns>true, if it was found</returns>
-		public bool Contains(IndexedMeshBuilderItem item)
-		{
-			return base.Contains(item);
-		}
-
-		/// <summary>
-		/// Number of stored Elements
-		/// </summary>
-		public int Length => Count;
-
-		/// <summary>
-		/// Create a clone of this Object
-		/// </summary>
-		/// <returns>The clone</returns>
-		public override object Clone()
-		{
-			IndexedMeshBuilderItems list = new IndexedMeshBuilderItems();
-			foreach (IndexedMeshBuilderItem item in this)
-			{
-				list.Add(item);
-			}
-
-			return list;
-		}
-	}
-	#endregion
 }

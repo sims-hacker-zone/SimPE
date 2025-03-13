@@ -487,7 +487,7 @@ namespace SimPe.PackedFiles.Objd
 			}
 
 			List<StrToken> lST = new List<StrToken>(
-				(StrToken[])objDef.LanguageItems(1).ToArray(typeof(StrToken))
+				(StrToken[])objDef.LanguageItems(1).ToArray()
 			);
 			names = new Dictionary<int, string>();
 			for (int i = 0; i < lST.Count; i++)

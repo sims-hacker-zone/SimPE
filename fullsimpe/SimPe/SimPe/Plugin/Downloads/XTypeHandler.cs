@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+using System.Collections.Generic;
 using System.Drawing;
 
 using SimPe.Data;
@@ -145,7 +146,7 @@ namespace SimPe.Plugin.Downloads
 				RenderGmdcPreview(pkg);
 			}
 
-			StrItemList strs = GetCtssItems();
+			List<StrToken> strs = GetCtssItems();
 			if (strs != null)
 			{
 				if (strs.Count > 0)
@@ -168,7 +169,7 @@ namespace SimPe.Plugin.Downloads
 			UpdateScreen();
 		}
 
-		protected override StrItemList GetCtssItems()
+		protected override List<StrToken> GetCtssItems()
 		{
 			if (cpf != null)
 			{

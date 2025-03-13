@@ -230,7 +230,7 @@ namespace SimPe.Providers
 			if (pfd != null)
 			{
 				str.ProcessData(pfd, pkg);
-				StrItemList strs =
+				List<StrToken> strs =
 					str.FallbackedLanguageItems(Helper.WindowsRegistry.Config.LanguageCode);
 				if (to1 == 12)
 				{
@@ -368,7 +368,7 @@ namespace SimPe.Providers
 			if (pfd != null)
 			{
 				str.ProcessData(pfd, pkg);
-				StrItemList strs =
+				List<StrToken> strs =
 					str.FallbackedLanguageItems(Helper.WindowsRegistry.Config.LanguageCode);
 
 				pkg = Packages.File.LoadFromFile(
@@ -443,7 +443,7 @@ namespace SimPe.Providers
 		}
 
 		private int CreateCollectibleAlias(
-			StrItemList strs,
+			List<StrToken> strs,
 			Picture pic,
 			string line,
 			int index

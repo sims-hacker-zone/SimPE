@@ -1,7 +1,9 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Collections;
+using System.Collections.Generic;
 
+using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Sdna;
 using SimPe.PackedFiles.Wrapper;
@@ -232,8 +234,8 @@ namespace SimPe.PackedFiles.Sdsc
 				return;
 			}
 
-			Collections.PackedFileDescriptors pfds =
-				new Collections.PackedFileDescriptors();
+			List<IPackedFileDescriptor> pfds =
+				new List<IPackedFileDescriptor>();
 			locked = true;
 
 			try

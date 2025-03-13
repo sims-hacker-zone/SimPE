@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
-using System.Collections;
+using System.Collections.Generic;
 
 namespace SimPe.Plugin.Anim
 {
@@ -172,88 +172,11 @@ namespace SimPe.Plugin.Anim
 	/// <summary>
 	/// Typesave ArrayList for <see cref="ImportedGroup"/> Objects
 	/// </summary>
-	public class ImportedFrameBlocks : ArrayList
+	public class ImportedFrameBlocks : List<ImportedFrameBlock>
 	{
 		public bool AuskelCorrection
 		{
 			get; set;
-		}
-
-		/// <summary>
-		/// Integer Indexer
-		/// </summary>
-		public new ImportedFrameBlock this[int index]
-		{
-			get => (ImportedFrameBlock)base[index];
-			set => base[index] = value;
-		}
-
-		/// <summary>
-		/// unsigned Integer Indexer
-		/// </summary>
-		public ImportedFrameBlock this[uint index]
-		{
-			get => (ImportedFrameBlock)base[(int)index];
-			set => base[(int)index] = value;
-		}
-
-		/// <summary>
-		/// add a new Element
-		/// </summary>
-		/// <param name="item">The object you want to add</param>
-		/// <returns>The index it was added on</returns>
-		public int Add(ImportedFrameBlock item)
-		{
-			return base.Add(item);
-		}
-
-		/// <summary>
-		/// insert a new Element
-		/// </summary>
-		/// <param name="index">The Index where the Element should be stored</param>
-		/// <param name="item">The object that should be inserted</param>
-		public void Insert(int index, ImportedFrameBlock item)
-		{
-			base.Insert(index, item);
-		}
-
-		/// <summary>
-		/// remove an Element
-		/// </summary>
-		/// <param name="item">The object that should be removed</param>
-		public void Remove(ImportedFrameBlock item)
-		{
-			base.Remove(item);
-		}
-
-		/// <summary>
-		/// Checks wether or not the object is already stored in the List
-		/// </summary>
-		/// <param name="item">The Object you are looking for</param>
-		/// <returns>true, if it was found</returns>
-		public bool Contains(ImportedFrameBlock item)
-		{
-			return base.Contains(item);
-		}
-
-		/// <summary>
-		/// Number of stored Elements
-		/// </summary>
-		public int Length => Count;
-
-		/// <summary>
-		/// Create a clone of this Object
-		/// </summary>
-		/// <returns>The clone</returns>
-		public override object Clone()
-		{
-			ImportedFrameBlocks list = new ImportedFrameBlocks();
-			foreach (ImportedFrameBlock item in this)
-			{
-				list.Add(item);
-			}
-
-			return list;
 		}
 	}
 	#endregion

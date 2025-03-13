@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 using System;
+using System.Collections.Generic;
 
 using SimPe.Data;
 using SimPe.Interfaces.Plugin;
@@ -222,9 +223,9 @@ namespace SimPe.PackedFiles.Gtip
 		{
 			FileTableBase.FileIndex.Load();
 			gtnametxt.Text = gtheadtxt.Text = gtbodytxt.Text = "-";
-			uint gtnm = Convert.ToUInt32(Wrapper.Tipname) - 1;
-			uint gthd = Convert.ToUInt32(Wrapper.Tipheader) - 1;
-			uint gtby = Convert.ToUInt32(Wrapper.Tipbody) - 1;
+			int gtnm = Convert.ToInt32(Wrapper.Tipname) - 1;
+			int gthd = Convert.ToInt32(Wrapper.Tipheader) - 1;
+			int gtby = Convert.ToInt32(Wrapper.Tipbody) - 1;
 			Packages.File package = Packages.File.LoadFromFile(
 				System.IO.Path.Combine(
 					PathProvider.Global.Latest.InstallFolder,
@@ -241,21 +242,21 @@ namespace SimPe.PackedFiles.Gtip
 				);
 				if (pfd != null)
 				{
-					StrItemList items =
+					List<StrToken> items =
 						new PackedFiles.Str.Str().ProcessFile(pfd, package).FallbackedLanguageItems(
 							Helper.WindowsRegistry.Config.LanguageCode
 						);
-					if (items.Length > gtnm)
+					if (items.Count > gtnm)
 					{
 						gtnametxt.Text = items[gtnm].Title;
 					}
 
-					if (items.Length > gthd)
+					if (items.Count > gthd)
 					{
 						gtheadtxt.Text = items[gthd].Title;
 					}
 
-					if (items.Length > gtby)
+					if (items.Count > gtby)
 					{
 						gtbodytxt.Text = items[gtby].Title;
 					}

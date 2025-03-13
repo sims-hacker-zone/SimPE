@@ -1411,8 +1411,8 @@ namespace SimPe.Plugin
 
 				if ((npfd.Instance == 0x85) && (npfd.Type == FileTypes.STR))
 				{
-					StrItemList items = new PackedFiles.Str.Str().ProcessFile(npfd, item.Package).LanguageItems(1);
-					for (int i = 1; i < items.Length; i++)
+					List<StrToken> items = new PackedFiles.Str.Str().ProcessFile(npfd, item.Package).LanguageItems(1);
+					for (int i = 1; i < items.Count; i++)
 					{
 						list.Add(items[i].Title);
 					}

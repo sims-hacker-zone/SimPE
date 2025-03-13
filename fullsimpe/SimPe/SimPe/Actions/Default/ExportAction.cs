@@ -1,9 +1,10 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Collections.Generic;
 
-using SimPe.Extensions;
 using SimPe.Forms.MainUI;
+using SimPe.Interfaces.Files;
 
 namespace SimPe.Actions.Default
 {
@@ -59,7 +60,7 @@ namespace SimPe.Actions.Default
 
 		public void ExtractAllFiles(
 			string selpath,
-			Interfaces.Files.IPackedFileDescriptor[] pfds,
+			IPackedFileDescriptor[] pfds,
 			Packages.ExtractableFile package
 		)
 		{
@@ -250,8 +251,8 @@ namespace SimPe.Actions.Default
 				}
 				else //extract multiple Files
 				{
-					Collections.PackedFileDescriptors pfds =
-						new Collections.PackedFileDescriptors();
+					List<IPackedFileDescriptor> pfds =
+						new List<IPackedFileDescriptor>();
 					foreach (Events.ResourceContainer e in es)
 					{
 						if (e.HasFileDescriptor)
@@ -260,8 +261,8 @@ namespace SimPe.Actions.Default
 						}
 					}
 
-					Interfaces.Files.IPackedFileDescriptor[] ar =
-						new Interfaces.Files.IPackedFileDescriptor[pfds.Length];
+					IPackedFileDescriptor[] ar =
+						new IPackedFileDescriptor[pfds.Count];
 					pfds.CopyTo(ar);
 					ExtractAllFiles(flname, ar, es.LoadedPackage.Package);
 				}

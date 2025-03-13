@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
@@ -265,7 +266,7 @@ namespace SimPe.Plugin.Tool.Dockable
 
 			try
 			{
-				StrItemList strs = GetCtssItems();
+				List<StrToken> strs = GetCtssItems();
 				if (strs != null)
 				{
 					if (strs.Count > 0)
@@ -426,7 +427,7 @@ namespace SimPe.Plugin.Tool.Dockable
 			lbVer.Text = idno != null ? idno.Version.ToString().Replace("_", " ") : NeighborhoodVersion.Unknown.ToString();
 		}
 
-		protected StrItemList GetCtssItems()
+		protected List<StrToken> GetCtssItems()
 		{
 			//Get the Name of the Object
 			Interfaces.Files.IPackedFileDescriptor ctss = CatalogDescription;

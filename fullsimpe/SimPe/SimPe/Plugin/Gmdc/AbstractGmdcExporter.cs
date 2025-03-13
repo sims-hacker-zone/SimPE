@@ -205,12 +205,12 @@ namespace SimPe.Plugin.Gmdc
 				return;
 			}
 
-			if (group.LinkIndex < Gmdc.Links.Length)
+			if (group.LinkIndex < Gmdc.Links.Count)
 			{
 				Link = Gmdc.Links[group.LinkIndex];
 				foreach (int i in Link.ReferencedElement)
 				{
-					if (i < Gmdc.Elements.Length)
+					if (i < Gmdc.Elements.Count)
 					{
 						GmdcElement e = Gmdc.Elements[i];
 						if (e.Identity == ElementIdentity.Vertex)

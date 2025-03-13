@@ -182,13 +182,13 @@ namespace SimPe.Providers
 
 			if (str_pfd != null)
 			{
-				StrItemList its = new PackedFiles.Str.Str().ProcessFile(str_pfd, fl).FallbackedLanguageItems(
+				List<StrToken> its = new PackedFiles.Str.Str().ProcessFile(str_pfd, fl).FallbackedLanguageItems(
 					Helper.WindowsRegistry.Config.LanguageCode
 				);
-				if (its.Length > 0)
+				if (its.Count > 0)
 				{
 					a = new Alias(objd.Guid, its[0].Title, "{name} {2} (0x{id})");
-					if (its.Length > 2)
+					if (its.Count > 2)
 					{
 						tags[2] = its[2].Title;
 					}

@@ -126,7 +126,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <returns>A List of all available Groups</returns>
 		/// <remarks>You can use the <see cref="Input"/> and <see cref="Gmdc"/> Member to acces the Stream and
 		/// the Gmdc File that should be changed</remarks>
-		protected abstract ImportedGroups LoadGroups();
+		protected abstract List<ImportedGroup> LoadGroups();
 
 		/// <summary>
 		/// This Method is called during the Import to process the input Data and
@@ -135,9 +135,9 @@ namespace SimPe.Plugin.Gmdc
 		/// <returns>A List of all available Joints</returns>
 		/// <remarks>You can use the <see cref="Input"/> and <see cref="Gmdc"/> Member to acces the Stream and
 		/// the Gmdc File that should be changed. This Method is allways called AFTER <see cref="LoadGroups"/>.</remarks>
-		protected virtual ImportedBones LoadBones()
+		protected virtual List<ImportedBone> LoadBones()
 		{
-			return new ImportedBones();
+			return new List<ImportedBone>();
 		}
 		#endregion
 
@@ -195,8 +195,8 @@ namespace SimPe.Plugin.Gmdc
 				return false;
 			}
 
-			ImportedGroups g = LoadGroups();
-			ImportedBones b = LoadBones();
+			List<ImportedGroup> g = LoadGroups();
+			List<ImportedBone> b = LoadBones();
 
 			if (!AnimationOnly)
 			{
@@ -252,8 +252,8 @@ namespace SimPe.Plugin.Gmdc
 		/// let the User validate the Content. Override this Method, if you want a
 		/// diffrent Import Dialog</remarks>
 		protected virtual bool ValidateImportedGroups(
-			ImportedGroups grps,
-			ImportedBones bns
+			List<ImportedGroup> grps,
+			List<ImportedBone> bns
 		)
 		{
 			foreach (ImportedGroup g in grps)
@@ -262,7 +262,7 @@ namespace SimPe.Plugin.Gmdc
 				for (int k = 0; k < g.Elements.Count; k++)
 				{
 					g.Elements[k].Number = g.Elements[k].Values.Count;
-					if (g.Elements[k].Values.Length > 0)
+					if (g.Elements[k].Values.Count > 0)
 					{
 						g.Link.ReferencedElement.Add(k);
 					}
@@ -293,7 +293,7 @@ namespace SimPe.Plugin.Gmdc
 		/// to the Gmdc. Override AddGroup(), ReplaceGroup() or RenameGroup() if you just
 		/// want to alter a specific Behaviuour.
 		/// </remarks>
-		protected virtual void ChangeGmdc(ImportedGroups grps, ImportedBones bns)
+		protected virtual void ChangeGmdc(List<ImportedGroup> grps, List<ImportedBone> bns)
 		{
 			//remove all existing Groups and Elements
 			if (Options.CleanGroups)
@@ -306,7 +306,7 @@ namespace SimPe.Plugin.Gmdc
 
 			//Add the Joints
 			Hashtable boneIndexMap = new Hashtable();
-			for (int i = 0; i < bns.Length; i++)
+			for (int i = 0; i < bns.Count; i++)
 			{
 				ImportedBone b = bns[i];
 				boneIndexMap[i] = b.Action == GmdcImporterAction.Add
@@ -389,7 +389,7 @@ namespace SimPe.Plugin.Gmdc
 			}
 
 			//Make sure the Elements are assigned to the correct Bones
-			for (int i = 0; i < bns.Length; i++)
+			for (int i = 0; i < bns.Count; i++)
 			{
 				ImportedBone b = bns[i];
 				if (
@@ -472,9 +472,9 @@ namespace SimPe.Plugin.Gmdc
 				//foreach (GmdcElementValueBase evb in e.Values) evb *= g.Scale;
 
 				Gmdc.Elements.Add(e);
-				g.Link.ReferencedElement[i] = Gmdc.Elements.Length - 1;
+				g.Link.ReferencedElement[i] = Gmdc.Elements.Count - 1;
 			}
-			g.Group.LinkIndex = Gmdc.Links.Length;
+			g.Group.LinkIndex = Gmdc.Links.Count;
 			Gmdc.Links.Add(g.Link);
 			Gmdc.Groups.Add(g.Group);
 
@@ -487,7 +487,7 @@ namespace SimPe.Plugin.Gmdc
 		/// </summary>
 		/// <param name="gs">List of all available Groups</param>
 		/// <param name="g"></param>
-		protected virtual void ReplaceGroup(ImportedGroups gs, ImportedGroup g)
+		protected virtual void ReplaceGroup(List<ImportedGroup> gs, ImportedGroup g)
 		{
 			int index = g.Target.Index;
 			if (index < 0 || index >= Gmdc.Groups.Count)
@@ -540,7 +540,7 @@ namespace SimPe.Plugin.Gmdc
 				if (old == null)
 				{
 					Gmdc.Elements.Add(e);
-					lnk.ReferencedElement.Add(Gmdc.Elements.Length - 1);
+					lnk.ReferencedElement.Add(Gmdc.Elements.Count - 1);
 				}
 				else
 				{
@@ -585,13 +585,13 @@ namespace SimPe.Plugin.Gmdc
 		/// <param name="index">The Number of the Bone that should be added</param>
 		/// <returns>the real Bone Index</returns>
 		protected virtual int AddBone(
-			ImportedGroups grps,
-			ImportedBones bns,
+			List<ImportedGroup> grps,
+			List<ImportedBone> bns,
 			ImportedBone b,
 			int index
 		)
 		{
-			int nindex = Gmdc.Joints.Length;
+			int nindex = Gmdc.Joints.Count;
 			Gmdc.Joints.Add(b.Bone);
 
 			VectorTransformation t = new VectorTransformation(
@@ -627,8 +627,8 @@ namespace SimPe.Plugin.Gmdc
 		/// <param name="index">The Number of the Bone that should be added</param>
 		/// <returns>the real Bone Index</returns>
 		protected virtual int ReplaceBone(
-			ImportedGroups grps,
-			ImportedBones bns,
+			List<ImportedGroup> grps,
+			List<ImportedBone> bns,
 			ImportedBone b,
 			int index
 		)
@@ -665,7 +665,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <param name="b"></param>
 		/// <param name="index">The Number of the Bone that should be added</param>
 		/// <returns>the real Bone Index</returns>
-		protected virtual int UpdateBone(ImportedGroups grps, ImportedBone b, int index)
+		protected virtual int UpdateBone(List<ImportedGroup> grps, ImportedBone b, int index)
 		{
 			int nindex = b.TargetIndex;
 			return nindex;
@@ -679,7 +679,7 @@ namespace SimPe.Plugin.Gmdc
 		/// <param name="index">The Number of the Bone that should be added</param>
 		/// <returns>the real Bone Index</returns>
 		protected virtual int NothingBone(
-			ImportedGroups grps,
+			List<ImportedGroup> grps,
 			ImportedBone b,
 			int index
 		)

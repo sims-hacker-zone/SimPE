@@ -1,5 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using System.Collections.Generic;
+
 using SimPe.Events;
 
 namespace SimPe.Plugin.Tool
@@ -27,7 +29,7 @@ namespace SimPe.Plugin.Tool
 				return;
 			}
 
-			ResourceContainers c = new ResourceContainers();
+			List<ResourceContainer> c = new List<ResourceContainer>();
 			foreach (
 				Interfaces.Files.IPackedFileDescriptor pfd in es.LoadedPackage
 					.Package
