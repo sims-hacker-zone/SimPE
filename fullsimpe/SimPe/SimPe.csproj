@@ -8,7 +8,7 @@
     <LangVersion>7.3</LangVersion>
     <TargetFramework>net471</TargetFramework>
     <ApplicationIcon>SimPe\img\Simpe2.ico</ApplicationIcon>
-    <StartupObject>SimPe.MainForm</StartupObject>
+    <StartupObject>SimPe.Program</StartupObject>
     <RuntimeIdentifier>win-x86</RuntimeIdentifier>
     <EnableDefaultCompileItems>true</EnableDefaultCompileItems>
     <EnableDefaultEmbeddedResourceItems>true</EnableDefaultEmbeddedResourceItems>

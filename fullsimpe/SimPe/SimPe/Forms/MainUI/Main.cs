@@ -9,7 +9,7 @@ using Ambertation.Windows.Forms;
 using SimPe.Events;
 using SimPe.Forms.MainUI;
 
-namespace SimPe
+namespace SimPe.Forms.MainUI
 {
 	/// <summary>
 	/// Summary description for MainForm.
@@ -36,7 +36,7 @@ namespace SimPe
 		}
 
 		#region Custom Attributes
-		LoadedPackage package;
+		internal LoadedPackage package;
 		ViewFilter filter;
 
 		//TreeView lasttreeview;

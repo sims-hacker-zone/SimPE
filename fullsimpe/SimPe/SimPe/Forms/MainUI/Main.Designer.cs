@@ -9,7 +9,7 @@ using System.Data;
 using SimPe.Events;
 using Ambertation.Windows.Forms;
 
-namespace SimPe
+namespace SimPe.Forms.MainUI
 {
 	partial class MainForm
 	{

@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
-namespace SimPe
+namespace SimPe.Forms.MainUI
 {
 	public partial class MainForm
 	{
