@@ -10,27 +10,6 @@ namespace SimPe.Interfaces
 	public interface IToolRegistry
 	{
 		/// <summary>
-		/// Registers a Tool to the Registry
-		/// </summary>
-		/// <param name="tool">The Tool to register</param>
-		/// <remarks>The tool must only be added if the Registry doesnt already contain it</remarks>
-		void Register(IToolPlugin tool);
-
-		/// <summary>
-		/// Registers all listed Tools with this Registry
-		/// </summary>
-		/// <param name="tools">The Tools to register</param>
-		/// <remarks>The tool must only be added if the Registry doesnt already contain it</remarks>
-		void Register(IEnumerable<IToolPlugin> tools);
-
-		/// <summary>
-		/// Registers all Tools supported by the Factory
-		/// </summary>
-		/// <param name="factory">The Factory Elements you want to register</param>
-		/// <remarks>The tool must only be added if the Registry doesnt already contain it</remarks>
-		void Register(Plugin.IToolFactory factory);
-
-		/// <summary>
 		/// Return a Collection of loaded Listeners
 		/// </summary>
 		List<IListener> Listeners

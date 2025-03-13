@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Numerics;
 using System.Windows.Forms;
 
@@ -4422,7 +4423,7 @@ namespace SimPe.Plugin
 			if (ofd.ShowDialog() == DialogResult.OK)
 			{
 				//Now perpare the Import
-				IGmdcImporter importer = ExporterLoader.Importers[ofd.FilterIndex - 1];
+				IGmdcImporter importer = ExporterLoader.Importers.Take(ofd.FilterIndex).Last();
 				Helper.WindowsRegistry.Config.GmdcExtension = importer.FileExtension;
 				importer.Component.Sorting = sorting;
 				FileStream meshreader = File.OpenRead(ofd.FileName);
@@ -4511,9 +4512,7 @@ namespace SimPe.Plugin
 				if (sfd.ShowDialog() == DialogResult.OK)
 				{
 					//Now perfor the Export
-					IGmdcExporter exporter = ExporterLoader.Exporters[
-						sfd.FilterIndex - 1
-					];
+					IGmdcExporter exporter = ExporterLoader.Exporters.Take(sfd.FilterIndex).Last();
 					Helper.WindowsRegistry.Config.GmdcExtension = exporter.FileExtension;
 					exporter.Component.Sorting = sorting;
 					exporter.CorrectJointSetup = corjoints;

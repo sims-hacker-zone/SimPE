@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
-using System.Collections;
+using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 using SimPe.Data;
@@ -44,7 +45,7 @@ namespace SimPe.Interfaces.Scenegraph
 		/// </summary>
 		/// <param name="listing"></param>
 		/// <returns>The Name of the Class Type</returns>
-		string Register(Hashtable listing);
+		string Register(Dictionary<string, Type> listing);
 
 		/// <summary>
 		/// Name of the Block containing the Object

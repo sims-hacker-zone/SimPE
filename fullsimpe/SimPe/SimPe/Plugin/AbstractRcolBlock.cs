@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
@@ -226,7 +226,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <param name="listing"></param>
 		/// <returns>The Name of the Class Type</returns>
-		public string Register(Hashtable listing)
+		public string Register(Dictionary<string, Type> listing)
 		{
 			string name = BlockName;
 			if (listing != null)

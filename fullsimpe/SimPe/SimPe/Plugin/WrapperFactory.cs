@@ -64,9 +64,6 @@ using SimPe.PackedFiles.Wrapper;
 using SimPe.PackedFiles.Wthr;
 using SimPe.PackedFiles.Xml;
 using SimPe.PackedFiles.Xwnt;
-using SimPe.Plugin.Tool;
-using SimPe.Plugin.Tool.Action;
-using SimPe.Plugin.Tool.Dockable;
 using SimPe.Wants;
 
 namespace SimPe.Plugin
@@ -83,23 +80,7 @@ namespace SimPe.Plugin
 			ICommandLineFactory,
 			IToolFactory
 	{
-		static bool inited = false;
 
-		ResourceDock rd = new ResourceDock();
-
-		/// <summary>
-		/// Add all other default RCol Extensions
-		/// </summary>
-		public static void InitRcolBlocks()
-		{
-			if (!inited)
-			{
-				Rcol.TokenAssemblies.Add(
-					typeof(GeometryDataContainer).Assembly
-				);
-				inited = true;
-			}
-		}
 
 		/// <summary>
 		/// Loads the GroupCache
@@ -188,7 +169,6 @@ namespace SimPe.Plugin
 				}
 				else
 				{
-					InitRcolBlocks();
 					SdscFreetime.RegisterAsAspirationEditor(
 						new SimAspirationEditor()
 					);
@@ -196,7 +176,7 @@ namespace SimPe.Plugin
 						new Interfaces.Providers.LoadLotData(
 							LotProvider_LoadingLot
 						);
-					IWrapper[] wrappers =
+					return new IWrapper[]
 					{
 						new Picture(),
 						new Xml(),
@@ -261,7 +241,6 @@ namespace SimPe.Plugin
 						new SWAFWrapper(),
 						new XWNTWrapper(),
 					};
-					return wrappers;
 				}
 			}
 		}
@@ -272,52 +251,6 @@ namespace SimPe.Plugin
 
 		public IToolPlugin[] KnownTools => new IToolPlugin[]
 				{
-					new NeighborhoodTool(LinkedRegistry, LinkedProvider),
-					new SimsTool(LinkedRegistry, LinkedProvider),
-					new SurgeryTool(LinkedRegistry, LinkedProvider),
-					new HashTool(LinkedRegistry, LinkedProvider),
-					new FixTool(LinkedRegistry, LinkedProvider),
-					new SkinWorkshopTool(),
-					new PhotoStudioTool(LinkedRegistry, LinkedProvider),
-					new ActionGlobalFixTGI(),
-					new ActionBuildNameMap(),
-					new ImportSemiTool(LinkedRegistry, LinkedProvider),
-					new OpenLuaTool(),
-					new SearchTool(LinkedRegistry, LinkedProvider),
-					new ActionIntriguedNeighborhood(),
-					new ActionDeleteSim(),
-					new GeneticCategorizerTool(),
-					new pjse.guidtool.GUIDTool(),
-					new CareerTool(LinkedRegistry, LinkedProvider),
-					new tOBJDTool(LinkedRegistry, LinkedProvider),
-					new cHoodTool(),
-					new PackageDockTool(rd),
-					new ResourceDockTool(rd),
-					new WrapperDockTool(rd),
-					new HexDecConverterTool(rd),
-					new ActionReloadFiletable(),
-					new ActionUniqueInstance(),
-					new CreateListFromPackageTool(),
-					new CreateListFromSelectionTool(),
-					new HexDockTool(rd),
-					new FinderDock(),
-					new Tool.Window.InstallerTool(),
-					new SaveSims2PackTool(),
-					new LoadSims2PackTool(),
-					new ObectWorkshopDockTool(),
-					new PackageDetailDockTool(),
-					new Tool.Window.PackageRepairTool(),
-					new AnimTool(),
-					new FileTableTool(),
-					new cHoodTool(),
-					new cObjKeyTool(),
-					new BodyMeshExtractor(),
-					new BodyMeshLinker(),
-#if DEBUG
-					new ActionCheckFiletable(),
-					new ActionBuildPhpGuidList(),
-					new DebugDock(),
-#endif
 				};
 
 		#endregion

@@ -5,11 +5,11 @@ namespace SimPe.Plugin
 	/// <summary>
 	/// Summary description for ImportSemiTool.
 	/// </summary>
-	internal class ScanerTool : Interfaces.AbstractTool, Interfaces.ITool
+	internal class ScannerTool : Interfaces.AbstractTool, Interfaces.ITool
 	{
 		static ScannerForm ds;
 
-		internal ScanerTool()
+		internal ScannerTool()
 		{
 		}
 

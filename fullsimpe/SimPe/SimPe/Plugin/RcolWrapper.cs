@@ -93,19 +93,47 @@ namespace SimPe.Plugin
 			}
 		}
 
-		static Hashtable tokens;
-		public static Hashtable Tokens
+		public static Dictionary<string, Type> Tokens => new Dictionary<string, Type>
 		{
-			get
-			{
-				if (tokens == null)
-				{
-					LoadTokens();
-				}
-
-				return tokens;
-			}
-		}
+			["cAmbientLight"] = typeof(AmbientLight),
+			["cBoneDataExtension"] = typeof(BoneDataExtension),
+			["cBoundedNode"] = typeof(BoundedNode),
+			["cBoundingVolumeBuilder"] = typeof(BoundingVolumeBuilder),
+			["cCinematicScene"] = typeof(CinematicScene),
+			["cCompactorBuilder"] = typeof(CompactorBuilder),
+			["cCompositionTreeNode"] = typeof(CompositionTreeNode),
+			["cDataListExtension"] = typeof(DataListExtension),
+			["cDirectionalLight"] = typeof(DirectionalLight),
+			["cExtension"] = typeof(Extension),
+			["cGeometryBuilder"] = typeof(GeometryBuilder),
+			["cGeometryDataContainer"] = typeof(GeometryDataContainer),
+			["cGeometryNode"] = typeof(GeometryNode),
+			["cImageData"] = typeof(ImageData),
+			["cIndexedMeshBuilder"] = typeof(IndexedMeshBuilder),
+			["cLevelInfo"] = typeof(LevelInfo),
+			["cLightRefNode"] = typeof(LightRefNode),
+			["cLightT"] = typeof(LightT),
+			["cMaterialDefinition"] = typeof(MaterialDefinition),
+			["cObjectGraphNode"] = typeof(ObjectGraphNode),
+			["cPointLight"] = typeof(PointLight),
+			["cProcessDeformationsBuilder"] = typeof(ProcessDeformationsBuilder),
+			["cReferentNode"] = typeof(ReferentNode),
+			["cRenderableNode"] = typeof(RenderableNode),
+			["cResourceNode"] = typeof(ResourceNode),
+			["cSGResource"] = typeof(SGResource),
+			["cShape"] = typeof(Shape),
+			["cShapeRefNode"] = typeof(ShapeRefNode),
+			["cSpotLight"] = typeof(SpotLight),
+			["cStandardLightBase"] = typeof(StandardLightBase),
+			["cTagExtension"] = typeof(TagExtension),
+			["cTangentSpaceBuilder"] = typeof(TangentSpaceBuilder),
+			["cViewerRefNode"] = typeof(ViewerRefNode),
+			["cViewerRefNodeBase"] = typeof(ViewerRefNodeBase),
+			["cViewerRefNodeRecursive"] = typeof(ViewerRefNodeRecursive),
+			["cTransformNode"] = typeof(TransformNode),
+			["cTSFaceGeometryBuilder"] = typeof(TSFaceGeometryBuilder),
+			["cAnimResourceConst"] = typeof(Anim.AnimResourceConst),
+		};
 
 		public Interfaces.IProviderRegistry Provider
 		{
@@ -132,61 +160,6 @@ namespace SimPe.Plugin
 		public bool Fast
 		{
 			get; set;
-		}
-
-		/// <summary>
-		/// Loads all Tokens in the assemblies given in the <see cref="TokenAssemblies"/> List
-		/// </summary>
-		static void LoadTokens()
-		{
-			tokens = new Hashtable();
-			foreach (System.Reflection.Assembly a in assemblies)
-			{
-				LoadTokens(a);
-			}
-		}
-
-		static ArrayList assemblies;
-
-		/// <summary>
-		/// keeps a List of all <see cref="System.Reflection.Assembly"/>, SimPe should use to look for Tokens
-		/// </summary>
-		public static ArrayList TokenAssemblies
-		{
-			get
-			{
-				if (assemblies == null)
-				{
-					assemblies = new ArrayList
-					{
-						typeof(Rcol).Assembly
-					};
-				}
-				return assemblies;
-			}
-		}
-
-		/// <summary>
-		/// Creates the Tokenlist for the given Assembly
-		/// </summary>
-		static void LoadTokens(System.Reflection.Assembly a)
-		{
-			if (tokens == null)
-			{
-				tokens = new Hashtable();
-			}
-
-			object[] args = new object[1];
-			args[0] = null;
-			object[] statics = LoadFileWrappers.LoadPlugins(
-				a,
-				typeof(IRcolBlock),
-				args
-			);
-			foreach (IRcolBlock isb in statics)
-			{
-				isb.Register(tokens);
-			}
 		}
 
 		/// <summary>

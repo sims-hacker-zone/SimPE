@@ -9,45 +9,6 @@ using SimPe.Geometry;
 
 namespace SimPe.Plugin
 {
-	/*public class Point3D : SimPe.Geometry.Vector3i
-	{
-		public Point3D(int x, int y, int z) : base (x, y, z)
-		{
-		}
-
-		internal Point3D() : base ()
-		{
-		}
-
-		public override string ToString()
-		{
-			return X.ToString()+"/"+Y.ToString()+"/"+Z.ToString();
-		}
-
-	}
-
-	public class Point4D : Point3D
-	{
-		int r;
-		public Point4D() : base() {}
-		public Point4D(int x, int y, int z) : base (x, y, z) {}
-		public Point4D(int x, int y, int z, int r)  : base (x, y, z)
-		{
-			this.r = r;
-		}
-
-		public int R
-		{
-			get { return r; }
-			set { r = value; }
-		}
-
-		public override string ToString()
-		{
-			return X.ToString()+"/"+Y.ToString()+"/"+Z.ToString()+"/"+r.ToString();
-		}
-	}*/
-
 	public class ExtensionItem
 	{
 		//Known Types
@@ -100,7 +61,7 @@ namespace SimPe.Plugin
 			get; set;
 		}
 
-		public System.Numerics.Quaternion Rotation
+		public Quaternion Rotation
 		{
 			get; set;
 		}
@@ -118,7 +79,7 @@ namespace SimPe.Plugin
 			Translation = new Vector3();
 			Single = 0;
 			Items = new List<ExtensionItem>();
-			Rotation = new System.Numerics.Quaternion();
+			Rotation = new Quaternion();
 			Data = new byte[0];
 			String = "";
 		}
