@@ -4,7 +4,7 @@ using System;
 using System.Collections;
 using System.Windows.Forms;
 
-namespace SimPe
+namespace SimPe.Forms.MainUI
 {
 	partial class MainForm
 	{

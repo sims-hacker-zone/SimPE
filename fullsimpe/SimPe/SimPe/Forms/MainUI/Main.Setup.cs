@@ -9,7 +9,7 @@ using SimPe.Events;
 using SimPe.Forms.MainUI;
 using SimPe.Forms.MainUI.Components;
 
-namespace SimPe
+namespace SimPe.Forms.MainUI
 {
 	partial class MainForm
 	{

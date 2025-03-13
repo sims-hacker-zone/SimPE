@@ -12,7 +12,7 @@ using Message = SimPe.Forms.MainUI.Message;
 
 namespace SimPe
 {
-	partial class MainForm
+	public class Program
 	{
 		public static MainForm Global;
 

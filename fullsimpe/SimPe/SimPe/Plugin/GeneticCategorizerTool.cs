@@ -4,6 +4,7 @@
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
+using SimPe.Plugin.UI;
 
 namespace SimPe.Plugin
 {
