@@ -20,8 +20,6 @@ namespace SimPe.PackedFiles.Ngbh
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
-		ThemeManager tm;
-
 		public NgbhSkillHelper()
 		{
 			SetStyle(
@@ -39,10 +37,6 @@ namespace SimPe.PackedFiles.Ngbh
 
 			try
 			{
-				tm = ThemeManager.Global.CreateChild();
-				tm.AddControl(xpBadges);
-				tm.AddControl(xpSkills);
-
 				xpBadges.Visible =
 					PathProvider.Global.EPInstalled >= 3
 					|| PathProvider.Global.STInstalled >= 28
@@ -59,13 +53,6 @@ namespace SimPe.PackedFiles.Ngbh
 		{
 			if (disposing)
 			{
-				if (tm != null)
-				{
-					tm.Clear();
-					tm.Parent = null;
-					tm = null;
-				}
-
 				components?.Dispose();
 			}
 			base.Dispose(disposing);

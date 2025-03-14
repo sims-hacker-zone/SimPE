@@ -301,7 +301,7 @@ namespace SimPe.Plugin.Tool.Dockable
 					sz,
 					8,
 					Color.FromArgb(90, Color.Black),
-					ThemeManager.Global.ThemeColorDark,
+					SystemColors.Highlight,
 					Color.White,
 					Color.FromArgb(80, Color.White),
 					true,

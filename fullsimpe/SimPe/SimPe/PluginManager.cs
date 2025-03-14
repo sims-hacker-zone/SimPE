@@ -23,10 +23,7 @@ namespace SimPe
 			ToolStrip tootoolbar,
 			TD.SandDock.TabControl dc,
 			LoadedPackage lp,
-			SteepValley.Windows.Forms.ThemedControls.XPTaskBox defaultactiontaskbox,
 			ContextMenuStrip defaultactionmenu,
-			SteepValley.Windows.Forms.ThemedControls.XPTaskBox toolactiontaskbox,
-			SteepValley.Windows.Forms.ThemedControls.XPTaskBox extactiontaskbox,
 			ToolStrip actiontoolbar,
 			Ambertation.Windows.Forms.DockContainer docktooldc,
 			ToolStripMenuItem helpmenu,
@@ -57,20 +54,18 @@ namespace SimPe
 
 			Splash.Screen.SetMessage("Loading Default Actions");
 			LoadActionTools(
-				defaultactiontaskbox,
 				actiontoolbar,
 				defaultactionmenu,
 				GetDefaultActions(lv)
 			);
 			Splash.Screen.SetMessage("Loading External Tools");
 			LoadActionTools(
-				toolactiontaskbox,
 				actiontoolbar,
 				defaultactionmenu,
 				LoadExternalTools()
 			);
 			Splash.Screen.SetMessage("Loading Default Tools");
-			LoadActionTools(extactiontaskbox, actiontoolbar, null, null);
+			LoadActionTools(actiontoolbar, null, null);
 
 			Splash.Screen.SetMessage("Loading Docks");
 			LoadDocks(docktooldc, lp);
@@ -238,7 +233,6 @@ namespace SimPe
 		/// Load all available Action Tools
 		/// </summary>
 		void LoadActionTools(
-			SteepValley.Windows.Forms.ThemedControls.XPTaskBox taskbox,
 			ToolStrip tb,
 			ContextMenuStrip mi,
 			IEnumerable<IToolAction> tools
@@ -249,12 +243,6 @@ namespace SimPe
 				tools = FileTable.ToolRegistry.Actions;
 			}
 
-			int top = 4 + taskbox.DockPadding.Top;
-			if (taskbox.Tag != null)
-			{
-				top = (int)taskbox.Tag;
-			}
-
 			bool tfirst = true;
 			bool mfirst = true;
 			foreach (IToolAction tool in tools)
@@ -263,16 +251,6 @@ namespace SimPe
 				ChangedGuiResourceEvent += new Events.ChangedResourceEvent(
 					atd.ChangeEnabledStateEventHandler
 				);
-
-				if (taskbox != null)
-				{
-					atd.LinkLabel.Top = top;
-					atd.LinkLabel.Left = 12;
-					top += atd.LinkLabel.Height;
-					atd.LinkLabel.Parent = taskbox;
-					atd.LinkLabel.Visible = true;
-					atd.LinkLabel.AutoSize = true;
-				}
 
 				if (mi != null)
 				{
@@ -299,8 +277,6 @@ namespace SimPe
 					tfirst = false;
 				}
 			}
-			taskbox.Height = top + 8;
-			taskbox.Tag = top;
 		}
 		#endregion
 

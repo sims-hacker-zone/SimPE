@@ -13,7 +13,6 @@ namespace SimPe.Plugin.Tool.Dockable
 			Interfaces.IDockableTool,
 			Interfaces.IFinderResultGui
 	{
-		ThemeManager tm;
 		ColumnSorter sorter;
 
 		System.Collections.Generic.List<string> packages;
@@ -26,12 +25,6 @@ namespace SimPe.Plugin.Tool.Dockable
 		{
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
-
-			tm = ThemeManager.Global.CreateChild();
-			tm.AddControl(xpGradientPanel1);
-
-			tm.AddControl(tbResult);
-			tm.AddControl(toolBar1);
 
 			sorter = new ColumnSorter
 			{

@@ -14,7 +14,6 @@ namespace SimPe.Plugin.Tool.Dockable
 		: Ambertation.Windows.Forms.DockPanel,
 			Interfaces.IDockableTool
 	{
-		ThemeManager tm;
 		private SteepValley.Windows.Forms.XPGradientPanel xpGradientPanel1;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label lbMem;
@@ -30,9 +29,6 @@ namespace SimPe.Plugin.Tool.Dockable
 		{
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
-
-			tm = ThemeManager.Global.CreateChild();
-			tm.AddControl(xpGradientPanel1);
 		}
 
 		/// <summary>
@@ -42,8 +38,6 @@ namespace SimPe.Plugin.Tool.Dockable
 		{
 			if (disposing)
 			{
-				tm.RemoveControl(xpGradientPanel1);
-				tm = null;
 				components?.Dispose();
 			}
 			base.Dispose(disposing);

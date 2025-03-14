@@ -131,7 +131,7 @@ namespace SimPe.PackedFiles.Srel
 				pb.Size,
 				12,
 				Color.FromArgb(90, Color.Black),
-				ThemeManager.Global.ThemeColorDark,
+				SystemColors.Highlight,
 				Color.White,
 				Color.FromArgb(80, Color.White),
 				true,

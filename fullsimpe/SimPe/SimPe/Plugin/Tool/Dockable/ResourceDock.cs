@@ -71,12 +71,6 @@ namespace SimPe.Plugin.Tool.Dockable
 			//
 			InitializeComponent();
 
-			ThemeManager tm = ThemeManager.Global.CreateChild();
-			tm.AddControl(xpGradientPanel1);
-			tm.AddControl(xpGradientPanel2);
-			tm.AddControl(xpGradientPanel3);
-			tm.AddControl(xpGradientPanel4);
-
 			lv.View = View.Details;
 			cbtypes.Items.AddRange((from FileTypes type in Enum.GetValues(typeof(FileTypes))
 									select type.ToFileTypeInformation()).Cast<object>().ToArray());

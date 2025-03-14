@@ -17,10 +17,6 @@ namespace SimPe.Forms.MainUI
 		private OpenFileDialog ofd;
 		private SaveFileDialog sfd;
 		private Panel GradientPanel1;
-		private Panel GradientPanel2;
-		private SteepValley.Windows.Forms.ThemedControls.XPTaskBox tbDefaultAction;
-		private SteepValley.Windows.Forms.ThemedControls.XPTaskBox tbExtAction;
-		private SteepValley.Windows.Forms.ThemedControls.XPTaskBox tbPlugAction;
 		private ToolStrip toolBar1;
 		private ToolStrip tbAction;
 		private ToolStrip tbTools;
@@ -81,7 +77,6 @@ namespace SimPe.Forms.MainUI
 		private TD.SandDock.TabControl dc;
 		private DockManager manager;
 		private DockPanel dcPlugin;
-		private DockPanel dcAction;
 		private DockPanel dcFilter;
 		private DockPanel dcResource;
 		private DockContainer dockLeft;
@@ -130,11 +125,6 @@ namespace SimPe.Forms.MainUI
 			this.dcResource = new Ambertation.Windows.Forms.DockPanel();
 			this.tv = new SimPe.Windows.Forms.ResourceTreeViewExt();
 			this.dockRight = new Ambertation.Windows.Forms.DockContainer();
-			this.dcAction = new Ambertation.Windows.Forms.DockPanel();
-			this.GradientPanel2 = new Panel();
-			this.tbExtAction = new SteepValley.Windows.Forms.ThemedControls.XPTaskBox();
-			this.tbPlugAction = new SteepValley.Windows.Forms.ThemedControls.XPTaskBox();
-			this.tbDefaultAction = new SteepValley.Windows.Forms.ThemedControls.XPTaskBox();
 			this.dcFilter = new Ambertation.Windows.Forms.DockPanel();
 			this.GradientPanel1 = new Panel();
 			this.label1 = new Label();
@@ -209,8 +199,6 @@ namespace SimPe.Forms.MainUI
 			this.dockLeft.SuspendLayout();
 			this.dcResource.SuspendLayout();
 			this.dockRight.SuspendLayout();
-			this.dcAction.SuspendLayout();
-			this.GradientPanel2.SuspendLayout();
 			this.dcFilter.SuspendLayout();
 			this.GradientPanel1.SuspendLayout();
 			this.dockBottom.SuspendLayout();
@@ -356,58 +344,6 @@ namespace SimPe.Forms.MainUI
 			this.dockRight.TabImage = null;
 			this.dockRight.TabText = "";
 			//
-			// dcAction
-			//
-			this.dcAction.AllowClose = true;
-			this.dcAction.AllowCollapse = true;
-			this.dcAction.AllowDockBottom = true;
-			this.dcAction.AllowDockCenter = true;
-			this.dcAction.AllowDockLeft = true;
-			this.dcAction.AllowDockRight = true;
-			this.dcAction.AllowDockTop = true;
-			this.dcAction.AllowFloat = true;
-			resources.ApplyResources(this.dcAction, "dcAction");
-			this.dcAction.CanResize = true;
-			this.dcAction.CanUndock = true;
-			this.dcAction.Controls.Add(this.GradientPanel2);
-			this.dcAction.DragBorder = false;
-			this.dcAction.FloatingSize = new System.Drawing.Size(255, 290);
-			this.dcAction.Image = ((System.Drawing.Image)(resources.GetObject("dcAction.Image")));
-			this.dcAction.Manager = this.manager;
-			this.dcAction.Name = "dcAction";
-			this.dcAction.ShowCloseButton = true;
-			this.dcAction.ShowCollapseButton = true;
-			this.dcAction.TabImage = ((System.Drawing.Image)(resources.GetObject("dcAction.TabImage")));
-			this.dcAction.TabText = "Resource Actions";
-			this.dcAction.UndockByCaptionThreshold = 150;
-			//
-			// GradientPanel2
-			//
-			resources.ApplyResources(this.GradientPanel2, "GradientPanel2");
-			this.GradientPanel2.BackColor = System.Drawing.Color.Transparent;
-			this.GradientPanel2.Controls.Add(this.tbExtAction);
-			this.GradientPanel2.Controls.Add(this.tbPlugAction);
-			this.GradientPanel2.Controls.Add(this.tbDefaultAction);
-			this.GradientPanel2.Name = "GradientPanel2";
-			//
-			// tbExtAction
-			//
-			this.tbExtAction.BackColor = System.Drawing.Color.Transparent;
-			resources.ApplyResources(this.tbExtAction, "tbExtAction");
-			this.tbExtAction.Name = "tbExtAction";
-			//
-			// tbPlugAction
-			//
-			this.tbPlugAction.BackColor = System.Drawing.Color.Transparent;
-			resources.ApplyResources(this.tbPlugAction, "tbPlugAction");
-			this.tbPlugAction.Name = "tbPlugAction";
-			//
-			// tbDefaultAction
-			//
-			this.tbDefaultAction.BackColor = System.Drawing.Color.Transparent;
-			resources.ApplyResources(this.tbDefaultAction, "tbDefaultAction");
-			this.tbDefaultAction.Name = "tbDefaultAction";
-			//
 			// dcFilter
 			//
 			this.dcFilter.AllowClose = true;
@@ -540,7 +476,6 @@ namespace SimPe.Forms.MainUI
 			//
 			// dockBottom
 			//
-			this.dockBottom.Controls.Add(this.dcAction);
 			this.dockBottom.Controls.Add(this.dcFilter);
 			this.dockBottom.Controls.Add(this.dcPlugin);
 			resources.ApplyResources(this.dockBottom, "dockBottom");
@@ -943,8 +878,6 @@ namespace SimPe.Forms.MainUI
 			this.dockLeft.ResumeLayout(false);
 			this.dcResource.ResumeLayout(false);
 			this.dockRight.ResumeLayout(false);
-			this.dcAction.ResumeLayout(false);
-			this.GradientPanel2.ResumeLayout(false);
 			this.dcFilter.ResumeLayout(false);
 			this.GradientPanel1.ResumeLayout(false);
 			this.GradientPanel1.PerformLayout();

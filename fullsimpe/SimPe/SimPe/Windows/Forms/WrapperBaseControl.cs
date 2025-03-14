@@ -82,8 +82,6 @@ namespace SimPe.Windows.Forms
 				mPicFit = false;
 				bklayout = ImageLayout.TopLeft;
 
-				ThemeManager.Global.AddControl(this);
-
 				txt = "";
 				CanCommit = true;
 			}
@@ -109,14 +107,6 @@ namespace SimPe.Windows.Forms
 				{
 					SetWrapper(null);
 				}
-
-				if (ThemeManager != null)
-				{
-					ThemeManager.Parent = null;
-					ThemeManager.CreateChild();
-					ThemeManager.Dispose();
-				}
-				ThemeManager = null;
 				components?.Dispose();
 			}
 			base.Dispose(disposing);
@@ -331,10 +321,6 @@ namespace SimPe.Windows.Forms
 		#region Properties
 
 		[Browsable(false)]
-		public ThemeManager ThemeManager
-		{
-			get; private set;
-		}
 
 		public class WrapperChangedEventArgs : EventArgs
 		{

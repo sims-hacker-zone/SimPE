@@ -32,8 +32,6 @@ namespace SimPe.PackedFiles.Ngbh
 		private ListView lv;
 		private CheckBox cbnogoss;
 
-		ThemeManager tm;
-
 		public NgbhItemsListView()
 		{
 			SetStyle(
@@ -59,8 +57,6 @@ namespace SimPe.PackedFiles.Ngbh
 
 			SlotType = Data.NeighborhoodSlots.Sims;
 
-			tm = ThemeManager.Global.CreateChild();
-			tm.AddControl(menu);
 			InitTheo();
 		}
 
@@ -71,12 +67,6 @@ namespace SimPe.PackedFiles.Ngbh
 		{
 			if (disposing)
 			{
-				if (tm != null)
-				{
-					tm.Clear();
-					tm.Parent = null;
-					tm = null;
-				}
 				clipboard?.Clear();
 
 				components?.Dispose();
