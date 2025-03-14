@@ -34,10 +34,6 @@ namespace SimPe.Plugin.Tool.Dockable
 		{
 			if (disposing)
 			{
-				if (tm != null)
-					tm.Clear();
-				tm = null;
-
 				if (components != null)
 				{
 					components.Dispose();

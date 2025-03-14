@@ -63,8 +63,6 @@ namespace SimPe.Plugin
 
 			cbQuality_CheckedChanged(cbQuality, null);
 			cbLineStyle_SelectedIndexChanged(cbLineStyle, null);
-			ThemeManager tm = ThemeManager.Global.CreateChild();
-			tm.AddControl(panel2);
 		}
 
 		/// <summary>

@@ -18,14 +18,6 @@ namespace SimPe
 		Events.ResourceEventArgs lasteventarg;
 
 		/// <summary>
-		/// Returns the generated LinkLabel
-		/// </summary>
-		public LinkLabel LinkLabel
-		{
-			get;
-		}
-
-		/// <summary>
 		/// Returns the generated ToolBar ButtonItem (can be null)
 		/// </summary>
 		public ToolStripButton ToolBarButton
@@ -49,50 +41,7 @@ namespace SimPe
 		{
 			//this.lp = lp;
 			this.tool = tool;
-
-			LinkLabel = new LinkLabel
-			{
-				Name = tool.ToString()
-			};
-			if (Helper.WindowsRegistry.Config.UseBigIcons)
-			{
-				LinkLabel.Font = new System.Drawing.Font(
-					"Verdana",
-					12,
-					System.Drawing.FontStyle.Bold
-				);
-				LinkLabel.Height = 24;
-			}
-			else
-			{
-				LinkLabel.Font = new System.Drawing.Font(
-					"Verdana",
-					LinkLabel.Font.Size,
-					System.Drawing.FontStyle.Bold
-				);
-				LinkLabel.Height = 16;
-			}
-			if (tool.Icon != null)
-			{
-				if (tool.Icon is System.Drawing.Bitmap)
-				{
-					//ll.Icon = System.Drawing.Icon.FromHandle(((System.Drawing.Bitmap)tool.Icon).GetHicon());
-					LinkLabel.Text = Localization.GetString(tool.ToString());
-				}
-			}
-
-			LinkLabel.LinkArea = new LinkArea(0, LinkLabel.Text.Length);
-			LinkLabel.Font = new System.Drawing.Font(
-				"Verdana",
-				LinkLabel.Font.Size,
-				System.Drawing.FontStyle.Bold
-			);
-			LinkLabel.Height = 16;
-			LinkLabel.AutoSize = true;
-
-			LinkLabel.LinkClicked += new LinkLabelLinkClickedEventHandler(LinkClicked);
-
-			MenuButton = new ToolStripMenuItem(LinkLabel.Text);
+			MenuButton = new ToolStripMenuItem(Localization.GetString(tool.ToString()));
 			MenuButton.Click += new EventHandler(LinkClicked);
 			MenuButton.Image = tool.Icon;
 			LoadFileWrappersExt.SetShurtcutKey(MenuButton, tool.Shortcut);
@@ -148,7 +97,6 @@ namespace SimPe
 		)
 		{
 			lp = e.LoadedPackage;
-			LinkLabel.Enabled = tool.ChangeEnabledStateEventHandler(sender, e);
 			MenuButton.Enabled = tool.ChangeEnabledStateEventHandler(sender, e);
 
 			lasteventarg = e;

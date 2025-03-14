@@ -223,9 +223,6 @@ namespace SimPe.Forms.MainUI
 					+ m.panel1.Height
 					+ SystemInformation.CaptionHeight;
 
-				ThemeManager.Global.Theme(m.panel2);
-				m.panel1.BackColor = ThemeManager.Global.ThemeColorDark;
-
 				m.ShowDialog();
 
 				return m.DialogResult;

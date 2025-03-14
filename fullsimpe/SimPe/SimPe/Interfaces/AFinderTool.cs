@@ -16,15 +16,8 @@ namespace SimPe.Interfaces
 		{
 			ResultGui = rgui;
 			InitializeComponent();
-			ThemeManager = ThemeManager.Global.CreateChild();
-			ThemeManager.AddControl(grp);
 
 			btStart.Enabled = rgui != null;
-		}
-
-		protected ThemeManager ThemeManager
-		{
-			get;
 		}
 
 		/// <summary>

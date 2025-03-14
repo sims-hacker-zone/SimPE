@@ -176,50 +176,6 @@ namespace System.Windows.Forms
 			Controls.Add(c);
 		}
 
-		/// <summary>
-		/// Remove a control from the ListView
-		/// </summary>
-		/// <param name="c">Control to be removed</param>
-		public void RemoveEmbeddedControl(Control c)
-		{
-			if (c == null)
-			{
-				throw new ArgumentNullException();
-			}
-
-			for (int i = 0; i < _embeddedControls.Count; i++)
-			{
-				EmbeddedControl ec = (EmbeddedControl)_embeddedControls[i];
-				if (ec.Control == c)
-				{
-					c.Click -= new EventHandler(_embeddedControl_Click);
-					Controls.Remove(c);
-					_embeddedControls.RemoveAt(i);
-					return;
-				}
-			}
-			throw new Exception("Control not found!");
-		}
-
-		/// <summary>
-		/// Retrieve the control embedded at a given location
-		/// </summary>
-		/// <param name="col">Index of Column</param>
-		/// <param name="row">Index of Row</param>
-		/// <returns>Control found at given location or null if none assigned.</returns>
-		public Control GetEmbeddedControl(int col, int row)
-		{
-			foreach (EmbeddedControl ec in _embeddedControls)
-			{
-				if (ec.Row == row && ec.Column == col)
-				{
-					return ec.Control;
-				}
-			}
-
-			return null;
-		}
-
 		[DefaultValue(View.LargeIcon)]
 		public new View View
 		{
