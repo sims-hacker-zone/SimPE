@@ -132,10 +132,6 @@ namespace SimPe.PackedFiles.Grop
 		#endregion
 
 		#region AbstractWrapper Member
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new GroupCacheUI();
-		}
 
 		/// <summary>
 		/// Returns a Human Readable Description of this Wrapper

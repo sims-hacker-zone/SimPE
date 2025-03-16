@@ -16,58 +16,17 @@ namespace pj
 
 		private string getFilename()
 		{
-			OpenFileDialog ofd = new OpenFileDialog
-			{
-				AddExtension = true,
-				CheckFileExists = true,
-				CheckPathExists = true,
-				DefaultExt = ".package",
-				DereferenceLinks = true,
-				FileName = "",
-				Filter = L.Get("pkgFilter"),
-				FilterIndex = 0,
-				InitialDirectory = System.IO.Path.Combine(
-				SimPe.PathProvider.SimSavegameFolder,
-				"SavedSims"
-			),
-				Multiselect = false,
-				ReadOnlyChecked = true
-			};
-			ofd.ShowHelp = ofd.ShowReadOnly = false;
-			ofd.Title = L.Get("selectPkgMesh");
-			ofd.ValidateNames = true;
-			DialogResult dr = ofd.ShowDialog();
-			return DialogResult.OK.Equals(dr) ? ofd.FileName : null;
+			return null;
 		}
 
 		private void Main()
 		{
-			if (
-				!MessageBox
-					.Show(
-						L.Get("pjSMLbegin"),
-						L.Get("pjSML"),
-						MessageBoxButtons.OKCancel,
-						MessageBoxIcon.Information
-					)
-					.Equals(DialogResult.OK)
-			)
-			{
-				return;
-			}
-
 			ThreeIdr refFile = new ThreeIdr();
 			refFile.ProcessData(refFilePFD, currentPackage);
 
 			if (LinkBodyMesh(refFile))
 			{
 				refFile.SynchronizeUserData();
-				MessageBox.Show(
-					L.Get("pjSMLdone"),
-					L.Get("pjSML"),
-					MessageBoxButtons.OK,
-					MessageBoxIcon.Information
-				);
 			}
 		}
 
@@ -78,12 +37,6 @@ namespace pj
 				|| refFile.Items[1].Type != SimPe.Data.FileTypes.SHPE
 			)
 			{
-				MessageBox.Show(
-					L.Get("noCRESSHPE"),
-					L.Get("pjSML"),
-					MessageBoxButtons.OK,
-					MessageBoxIcon.Error
-				);
 				return false;
 			}
 
@@ -104,12 +57,6 @@ namespace pj
 			}
 			if (p == null)
 			{
-				MessageBox.Show(
-					L.Get("didNotOpen") + "\r\n" + meshPackage,
-					L.Get("pjSML"),
-					MessageBoxButtons.OK,
-					MessageBoxIcon.Error
-				);
 				return false;
 			}
 
@@ -117,12 +64,6 @@ namespace pj
 			IPackedFileDescriptor[] pfb = p.FindFiles(SimPe.Data.FileTypes.SHPE);
 			if (pfa == null || pfa.Length != 1 || pfb == null || pfb.Length != 1)
 			{
-				MessageBox.Show(
-					L.Get("badMeshPackage") + "\r\n" + meshPackage,
-					L.Get("pjSML"),
-					MessageBoxButtons.OK,
-					MessageBoxIcon.Error
-				);
 				return false;
 			}
 
@@ -158,12 +99,6 @@ namespace pj
 		{
 			if (!IsReallyEnabled(pfd, package))
 			{
-				MessageBox.Show(
-					SimPe.Localization.GetString(
-						"This is not an appropriate context in which to use this tool"
-					),
-					L.Get("pjSML")
-				);
 				return new SimPe.Plugin.ToolResult(false, false);
 			}
 			Main();

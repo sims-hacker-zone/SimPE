@@ -1,5 +1,8 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using System.Threading.Tasks;
+
+using SimPe.Forms.MainUI;
 using SimPe.Interfaces;
 
 namespace SimPe.Plugin
@@ -13,17 +16,12 @@ namespace SimPe.Plugin
 
 		IWrapperRegistry reg;
 		IProviderRegistry prov;
-		Search sc;
 		string flname;
 
 		internal SearchTool(IWrapperRegistry reg, IProviderRegistry prov)
 		{
 			this.reg = reg;
 			this.prov = prov;
-			sc = new Search
-			{
-				prov = prov
-			};
 			flname = "";
 		}
 
@@ -49,7 +47,6 @@ namespace SimPe.Plugin
 
 			if (flname.ToLower().Trim() != package.FileName.ToLower().Trim())
 			{
-				sc.Reset();
 			}
 
 			flname = package.FileName;
@@ -63,27 +60,9 @@ namespace SimPe.Plugin
 		{
 			if (!IsReallyEnabled(pfd, package))
 			{
-				System.Windows.Forms.MessageBox.Show(
-					Localization.GetString(
-						"This is not an appropriate context in which to use this tool"
-					),
-					ToString()
-				);
 				return new ToolResult(false, false);
 			}
-			if (flname.ToLower().Trim() != package.FileName.ToLower().Trim())
-			{
-				sc.Reset();
-			}
 
-			Interfaces.Files.IPackedFileDescriptor selpfd = sc.Execute(package);
-
-			if (selpfd != null)
-			{
-				pfd = selpfd;
-				return new ToolResult(true, false);
-			}
-			else
 			{
 				return new ToolResult(false, false);
 			}

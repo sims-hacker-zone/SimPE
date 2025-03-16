@@ -37,10 +37,6 @@ namespace SimPe.PackedFiles.Fcns
 		#endregion
 
 		#region AbstractWrapper Member
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new FcnsUI();
-		}
 
 		protected override IWrapperInfo CreateWrapperInfo()
 		{

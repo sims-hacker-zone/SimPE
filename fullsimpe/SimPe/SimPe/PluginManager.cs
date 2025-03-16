@@ -3,9 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Forms;
 
-using SimPe.Forms.MainUI.Components;
 using SimPe.Interfaces;
 
 namespace SimPe
@@ -16,22 +14,12 @@ namespace SimPe
 	public class PluginManager : Ambertation.Threading.StoppableThread
 	{
 		LoadFileWrappersExt wloader;
-		LoadHelpTopics lht;
 
 		internal PluginManager(
-			ToolStripMenuItem toolmenu,
-			ToolStrip tootoolbar,
-			TD.SandDock.TabControl dc,
-			LoadedPackage lp,
-			ContextMenuStrip defaultactionmenu,
-			ToolStrip actiontoolbar,
-			Ambertation.Windows.Forms.DockContainer docktooldc,
-			ToolStripMenuItem helpmenu,
-			Windows.Forms.ResourceListViewExt lv
+			LoadedPackage lp
 		)
 			: base(true)
 		{
-			Splash.Screen.SetMessage("Loading Type Registry"); // the first message clearly seen
 			PackedFiles.TypeRegistry tr = new PackedFiles.TypeRegistry();
 
 			FileTableBase.ProviderRegistry = tr;
@@ -44,50 +32,16 @@ namespace SimPe
 
 			LoadDynamicWrappers();
 			LoadStaticWrappers();
-			LoadMenuItems(toolmenu, tootoolbar);
-
-			Splash.Screen.SetMessage("Loading Listeners");
+			LoadMenuItems();
 			wloader.AddListeners(ref ChangedGuiResourceEvent);
-			//dc.ActiveDocumentChanged += new TD.SandDock.ActiveDocumentEventHandler(wloader.ActiveDocumentChanged);
-			//lp.AfterFileLoad += new Events.PackageFileLoadedEvent(wloader.ChangedPackage);
-
-
-			Splash.Screen.SetMessage("Loading Default Actions");
 			LoadActionTools(
-				actiontoolbar,
-				defaultactionmenu,
-				GetDefaultActions(lv)
+				GetDefaultActions()
 			);
-			Splash.Screen.SetMessage("Loading External Tools");
 			LoadActionTools(
-				actiontoolbar,
-				defaultactionmenu,
 				LoadExternalTools()
 			);
-			Splash.Screen.SetMessage("Loading Default Tools");
-			LoadActionTools(actiontoolbar, null, null);
-
-			Splash.Screen.SetMessage("Loading Docks");
-			LoadDocks(docktooldc, lp);
-			Splash.Screen.SetMessage("Loading Help Topics");
-			lht = new LoadHelpTopics(helpmenu);
-
-			Splash.Screen.SetMessage("Loaded Help Topics");
-		}
-
-		/// <summary>
-		/// fired whenever a (classic) Tool was closed
-		/// </summary>
-		public event ToolMenuItemExt.ExternalToolNotify ClosedToolPlugin;
-
-		/// <summary>
-		/// Event Wrapper
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="pk"></param>
-		void ClosedToolPluginHandler(object sender, PackageArg pk)
-		{
-			ClosedToolPlugin?.Invoke(sender, pk);
+			LoadActionTools(null);
+			LoadDocks(lp);
 		}
 
 		/// <summary>
@@ -95,7 +49,6 @@ namespace SimPe
 		/// </summary>
 		void LoadStaticWrappers()
 		{
-			Splash.Screen.SetMessage("Loading Static Wrappers");
 			FileTableBase.WrapperRegistry.Register(new CommandlineHelpFactory());
 		}
 
@@ -104,28 +57,16 @@ namespace SimPe
 		/// </summary>
 		void LoadDynamicWrappers()
 		{
-			Splash.Screen.SetMessage("Loading Dynamic Wrappers");
 			FileTableBase.WrapperRegistry.Register(new Plugin.WrapperFactory());
 		}
 
-		void LoadMenuItems(ToolStripMenuItem toolmenu, ToolStrip tootoolbar)
+		void LoadMenuItems()
 		{
-			Splash.Screen.SetMessage("Loading Menu Items");
-			ToolMenuItemExt.ExternalToolNotify chghandler =
-				new ToolMenuItemExt.ExternalToolNotify(ClosedToolPluginHandler);
 			foreach (IToolExt tool in FileTable.ToolRegistry.ToolsPlus)
 			{
 				string name = tool.ToString();
 				string[] parts = name.Split("\\".ToCharArray());
 				name = Localization.GetString(parts[parts.Length - 1]);
-				ToolMenuItemExt item = new ToolMenuItemExt(name, tool, chghandler);
-
-				LoadFileWrappersExt.AddMenuItem(
-					ref ChangedGuiResourceEvent,
-					toolmenu.DropDownItems,
-					item,
-					parts
-				);
 			}
 
 			foreach (ITool tool in FileTable.ToolRegistry.Tools)
@@ -138,17 +79,7 @@ namespace SimPe
 
 				string[] parts = name.Split("\\".ToCharArray());
 				name = Localization.GetString(parts[parts.Length - 1]);
-				ToolMenuItemExt item = new ToolMenuItemExt(name, tool, chghandler);
-
-				LoadFileWrappersExt.AddMenuItem(
-					ref ChangedGuiResourceEvent,
-					toolmenu.DropDownItems,
-					item,
-					parts
-				);
 			}
-
-			LoadFileWrappersExt.BuildToolBar(tootoolbar, toolmenu.DropDownItems);
 		}
 
 		#region Action Tools
@@ -214,7 +145,7 @@ namespace SimPe
 		/// Returns a List of Builtin Actions
 		/// </summary>
 		/// <returns></returns>
-		IToolAction[] GetDefaultActions(Windows.Forms.ResourceListViewExt lv)
+		IToolAction[] GetDefaultActions()
 		{
 			return new IToolAction[]
 			{
@@ -225,7 +156,7 @@ namespace SimPe
 				new Actions.Default.RestoreAction(),
 				new Actions.Default.CloneAction(),
 				new Actions.Default.CreateAction(),
-				new Actions.Default.ActionGroupFilter(lv),
+				new Actions.Default.ActionGroupFilter(),
 			};
 		}
 
@@ -233,8 +164,6 @@ namespace SimPe
 		/// Load all available Action Tools
 		/// </summary>
 		void LoadActionTools(
-			ToolStrip tb,
-			ContextMenuStrip mi,
 			IEnumerable<IToolAction> tools
 		)
 		{
@@ -251,31 +180,6 @@ namespace SimPe
 				ChangedGuiResourceEvent += new Events.ChangedResourceEvent(
 					atd.ChangeEnabledStateEventHandler
 				);
-
-				if (mi != null)
-				{
-					bool beggrp = mfirst && mi.Items.Count != 0;
-					if (beggrp)
-					{
-						mi.Items.Add("-");
-					}
-
-					mi.Items.Add(atd.MenuButton);
-
-					mfirst = false;
-				}
-
-				if (tb != null && atd.ToolBarButton != null)
-				{
-					if (tfirst && tb.Items.Count != 0)
-					{
-						tb.Items.Add(new ToolStripSeparator());
-					}
-
-					tb.Items.Add(atd.ToolBarButton);
-
-					tfirst = false;
-				}
 			}
 		}
 		#endregion
@@ -289,27 +193,8 @@ namespace SimPe
 		#endregion
 
 		#region dockable Tools
-		void LoadDocks(Ambertation.Windows.Forms.DockContainer dc, LoadedPackage lp)
+		void LoadDocks(LoadedPackage lp)
 		{
-			foreach (IDockableTool idt in FileTable.ToolRegistry.Docks)
-			{
-				Ambertation.Windows.Forms.DockPanel dctrl = idt.GetDockableControl();
-
-				if (dctrl != null)
-				{
-					dctrl.Name =
-						"dc." + idt.GetType().Namespace + "." + idt.GetType().Name;
-					dctrl.Manager = dc.Manager;
-					dc.Controls.Add(dctrl);
-					//dctrl.DockNextTo(dc);
-
-					ChangedGuiResourceEvent += new Events.ChangedResourceEvent(
-						idt.RefreshDock
-					);
-					dctrl.Tag = idt.Shortcut;
-					idt.RefreshDock(this, new Events.ResourceEventArgs(lp));
-				}
-			}
 		}
 		#endregion
 	}

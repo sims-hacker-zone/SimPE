@@ -253,7 +253,6 @@ namespace Ambertation.Threading
 		public void start()
 		{
 			Init();
-			Wait.SubStart();
 			Produce();
 
 			Finish();
@@ -262,7 +261,6 @@ namespace Ambertation.Threading
 				Thread.Sleep(500);
 			}
 
-			Wait.SubStop();
 			OnFinish();
 			if (Finished != null)
 			{

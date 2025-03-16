@@ -18,8 +18,6 @@ namespace SimPe.Plugin.Tool
 		{
 		}
 
-		static Report f;
-
 		public static void WriteHeader(
 			System.IO.StreamWriter sw,
 			Interfaces.Files.IPackedFileDescriptor pfd,
@@ -107,7 +105,6 @@ namespace SimPe.Plugin.Tool
 			int ct = 0;
 			string max = "/ " + es.Count.ToString();
 
-			WaitingScreen.Wait();
 			try
 			{
 				foreach (uint type in map.Keys)
@@ -119,37 +116,23 @@ namespace SimPe.Plugin.Tool
 					foreach (ResourceContainer e in rc)
 					{
 						error += ProcessItem(sw, e, first);
-						WaitingScreen.UpdateMessage(
-							ct++.ToString() + " / " + max.ToString()
-						);
 						first = false;
 					}
 				}
-				WaitingScreen.Stop();
 
 				if (error != "")
 				{
 					throw new Warning("Not all Selected Files were processed.", error);
 				}
-
-				if (f == null)
-				{
-					f = new Report();
-				}
-
-				f.Execute(sw);
 			}
-#if !DEBUG
 			catch (Exception ex)
 			{
 				Helper.ExceptionMessage(ex);
 			}
-#endif
 			finally
 			{
 				sw.Close();
 				Serializer.ResetFormater();
-				WaitingScreen.Stop();
 			}
 		}
 
@@ -178,7 +161,6 @@ namespace SimPe.Plugin.Tool
 		#endregion
 
 		#region IToolExt Member
-		public System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.CtrlD;
 
 		public System.Drawing.Image Icon => System.Drawing.Image.FromStream(
 					GetType()

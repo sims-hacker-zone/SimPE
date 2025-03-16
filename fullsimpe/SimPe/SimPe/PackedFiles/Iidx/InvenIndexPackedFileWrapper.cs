@@ -30,10 +30,6 @@ namespace SimPe.PackedFiles.Iidx
 		#endregion
 
 		#region AbstractWrapper Member
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new InvenIndexPackedFileUI();
-		}
 
 		protected override IWrapperInfo CreateWrapperInfo()
 		{

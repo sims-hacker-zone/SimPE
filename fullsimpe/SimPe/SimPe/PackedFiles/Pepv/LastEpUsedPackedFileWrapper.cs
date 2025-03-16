@@ -38,10 +38,6 @@ namespace SimPe.PackedFiles.Pepv
 		#endregion
 
 		#region AbstractWrapper Member
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new LastEPusePackedFileUI();
-		}
 
 		protected override IWrapperInfo CreateWrapperInfo()
 		{

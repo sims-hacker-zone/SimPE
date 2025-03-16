@@ -57,8 +57,9 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return /*Wrapper == null ? null :*/
-			new BhavOperandWizards.BhavOperandWizBhav(instruction);
+			return null;
+			// return /*Wrapper == null ? null :*/
+			// new BhavOperandWizards.BhavOperandWizBhav(instruction);
 		}
 
 		internal enum dataFormat

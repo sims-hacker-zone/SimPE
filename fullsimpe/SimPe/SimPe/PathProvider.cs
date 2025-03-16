@@ -4,6 +4,9 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
+
+using SimPe.Forms.MainUI;
 
 namespace SimPe
 {
@@ -491,7 +494,7 @@ namespace SimPe
 			return true;
 		}
 
-		void SetBlurNudity(bool value, string resname, bool silent)
+		async Task SetBlurNudity(bool value, string resname, bool silent)
 		{
 			if (Global.EPInstalled > 17)
 			{
@@ -512,13 +515,13 @@ namespace SimPe
 				if (!silent)
 				{
 					if (
-						System.Windows.Forms.MessageBox.Show(
+						await Message.Show(
 
 								Localization.GetString("Censor_Install_Warn")
 								.Replace("{filename}", fl),
 							Localization.GetString("Warning"),
-							System.Windows.Forms.MessageBoxButtons.YesNo
-						) == System.Windows.Forms.DialogResult.No
+							MsBox.Avalonia.Enums.ButtonEnum.YesNo
+						) == MsBox.Avalonia.Enums.ButtonResult.No
 					)
 					{
 						return;
@@ -585,15 +588,15 @@ namespace SimPe
 							if (!silent)
 							{
 								if (
-									System.Windows.Forms.MessageBox.Show(
+									await Message.Show(
 
 											Localization.GetString(
 												"Censor_UnInstall_Warn"
 											)
 											.Replace("{filename}", fl),
 										Localization.GetString("Warning"),
-										System.Windows.Forms.MessageBoxButtons.YesNo
-									) == System.Windows.Forms.DialogResult.No
+										MsBox.Avalonia.Enums.ButtonEnum.YesNo
+									) == MsBox.Avalonia.Enums.ButtonResult.No
 								)
 								{
 									return;

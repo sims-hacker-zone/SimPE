@@ -22,11 +22,6 @@ namespace SimPe.PackedFiles.Txtr
 			: base(provider, fast) { }
 
 		#region AbstractWrapper Member
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new TxtrUI();
-		}
-
 		/// <summary>
 		/// Returns a Human Readable Description of this Wrapper
 		/// </summary>

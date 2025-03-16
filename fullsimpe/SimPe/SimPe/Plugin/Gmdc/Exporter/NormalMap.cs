@@ -4,6 +4,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+using System.Threading.Tasks;
+
+using SimPe.Forms.MainUI;
 
 namespace SimPe.Plugin.Gmdc.Exporter
 {
@@ -118,7 +121,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 		}
 
 		//This function create a Vector3f array named verttangent which contain bumpmapnormal value for each vertex
-		protected override void ProcessGroup()
+		protected override async Task ProcessGroup()
 		{
 			int nr = Link.GetElementNr(VertexElement);
 			int nn = Link.GetElementNr(NormalElement);
@@ -283,11 +286,13 @@ namespace SimPe.Plugin.Gmdc.Exporter
 			//
 			*/
 
+			await Message.Show("bla");
+
 			//Note :
 			//Algo creation inspired by the one found here : http://www.c4engine.com/code/tangent.html
 		}
 
-		protected override void FinishFile()
+		protected override async Task FinishFile()
 		{
 		}
 	}

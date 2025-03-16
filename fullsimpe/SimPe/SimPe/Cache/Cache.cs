@@ -132,10 +132,6 @@ namespace SimPe.Cache
 					}
 
 					int count = reader.ReadInt32();
-					if (withprogress)
-					{
-						Wait.MaxProgress = count;
-					}
 
 					for (int i = 0; i < count; i++)
 					{
@@ -150,15 +146,6 @@ namespace SimPe.Cache
 						else
 						{
 							c.Items[cc.Type][cc.FileName] = cc;
-						}
-						if (withprogress)
-						{
-							Wait.Progress = i;
-						}
-
-						if (i % 10 == 0)
-						{
-							System.Windows.Forms.Application.DoEvents();
 						}
 					}
 				}
@@ -255,14 +242,11 @@ namespace SimPe.Cache
 
 		public void InitMemoryCache(Interfaces.Scenegraph.IScenegraphFileIndex fileindex)
 		{
-			Wait.SubStart();
-			Wait.Message = "Loading Memorycache";
 			if (!memoryCacheInitialized)
 			{
 				ReloadMemoryCache(fileindex, true);
 				memoryCacheInitialized = true;
 			}
-			Wait.SubStop();
 		}
 		public MemoryCacheItem AddMemoryItem(ExtObjd objd)
 		{
@@ -370,10 +354,8 @@ namespace SimPe.Cache
 			{
 				pic.ProcessData(iitem);
 				mci.Icon = pic.Image;
-				Wait.Image = mci.Icon;
 			}
 
-			Wait.Message = $"Initializing Memory Cache ({mci.Name})";
 			mci.ParentCacheContainer.Items.Add(mci);
 
 			return mci;
@@ -401,8 +383,6 @@ namespace SimPe.Cache
 			);
 
 			bool added = false;
-			Wait.MaxProgress = items.Count();
-			Wait.Message = "Validating Memory Cache";
 			int ct = 0;
 
 			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
@@ -415,11 +395,9 @@ namespace SimPe.Cache
 					AddMemoryItem(new PackedFiles.Objd.ExtObjd().ProcessFile(item));
 					added = true;
 				}
-				Wait.Progress = ct++;
 			}
 			if (added)
 			{
-				Wait.Message = "Saving Chache";
 				if (save)
 				{
 					Save();

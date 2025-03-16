@@ -101,10 +101,6 @@ namespace SimPe.PackedFiles.Olua
 		#endregion
 
 		#region AbstractWrapper Member
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new ObjLuaUI();
-		}
 
 		public ObjLua()
 			: base()

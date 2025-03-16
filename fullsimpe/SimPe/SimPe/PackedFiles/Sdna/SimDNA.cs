@@ -113,11 +113,6 @@ namespace SimPe.PackedFiles.Sdna
 			get;
 		}
 
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new SimDNAUI();
-		}
-
 		/// <summary>
 		/// Returns a Human Readable Description of this Wrapper
 		/// </summary>

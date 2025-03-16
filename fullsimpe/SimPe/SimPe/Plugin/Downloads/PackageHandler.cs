@@ -28,10 +28,6 @@ namespace SimPe.Plugin.Downloads
 				|| type == Cache.PackageType.Object
 			)
 			{
-				PackedFiles.Wrapper.ObjectComboBox.ObjectCache.ReloadMemoryCache(
-					DownloadsToolFactory.FileIndex,
-					false
-				);
 			}
 
 			hnd = HandlerRegistry.Global.LoadTypeHandler(type, pkg);

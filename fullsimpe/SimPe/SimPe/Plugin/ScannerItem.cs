@@ -63,10 +63,5 @@ namespace SimPe.Plugin
 			ParentContainer = cc;
 			filename = "";
 		}
-
-		public System.Windows.Forms.ListViewItem ListViewItem
-		{
-			get; set;
-		}
 	}
 }

@@ -34,17 +34,15 @@ namespace SimPe.Plugin.Scanner
 
 		public void ScanPackage(
 			ScannerItem si,
-			PackageState ps,
-			System.Windows.Forms.ListViewItem lvi
+			PackageState ps
 		)
 		{
-			UpdateState(si, ps, lvi);
+			UpdateState(si, ps);
 		}
 
 		public void UpdateState(
 			ScannerItem si,
-			PackageState ps,
-			System.Windows.Forms.ListViewItem lvi
+			PackageState ps
 		)
 		{
 		}
@@ -62,13 +60,11 @@ namespace SimPe.Plugin.Scanner
 			selection = items;
 			if (!active)
 			{
-				OperationControl.Enabled = false;
 				return;
 			}
 
 			if (items.Length > 1)
 			{
-				OperationControl.Enabled = false;
 				return;
 			}
 
@@ -85,13 +81,6 @@ namespace SimPe.Plugin.Scanner
 					break;
 				}
 			}
-			OperationControl.Enabled = en;
-		}
-
-		protected override System.Windows.Forms.Control CreateOperationControl()
-		{
-			ScannerPanelForm.Form.pnskin.Tag = this;
-			return ScannerPanelForm.Form.pnskin;
 		}
 
 		#endregion
@@ -159,7 +148,6 @@ namespace SimPe.Plugin.Scanner
 					null
 				);
 
-			WaitingScreen.Wait();
 			//Save the old FileTable and the source File
 			FileTableBase.FileIndex.Load();
 			FileTableBase.FileIndex.StoreCurrentState();
@@ -194,7 +182,6 @@ namespace SimPe.Plugin.Scanner
 
 					SkinChain sc = new SkinChain(cpf);
 					basecpf.Add(sc);
-					WaitingScreen.UpdateMessage(cpf.GetSaveItem("name").StringValue);
 				}
 
 				ArrayList compare = new ArrayList
@@ -420,7 +407,6 @@ namespace SimPe.Plugin.Scanner
 			{
 				//restore the Previous FileTable
 				FileTableBase.FileIndex.RestoreLastState();
-				WaitingScreen.Stop();
 			}
 
 			return pkg;

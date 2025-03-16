@@ -21,8 +21,7 @@ namespace SimPe.Plugin.Gmdc
 			new GmdcExportToMilkShapeAscii(),
 			new GmdcExportToNorm(),
 			new GmdcExportToObj(),
-			new GmdcExportToX(),
-			new GmdcExportToXSI()
+			new GmdcExportToX()
 		};
 
 		/// <summary>

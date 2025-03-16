@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 
 using pj;
@@ -20,7 +21,6 @@ using SimPe.Interfaces.Plugin.Internal;
 using SimPe.Plugin;
 using SimPe.Plugin.Tool;
 using SimPe.Plugin.Tool.Action;
-using SimPe.Plugin.Tool.Dockable;
 using SimPe.Plugin.Tool.Window;
 
 namespace SimPe.PackedFiles
@@ -41,7 +41,6 @@ namespace SimPe.PackedFiles
 			ISettingsRegistry,
 			ICommandLineRegistry
 	{
-		static ResourceDock rd = new ResourceDock();
 		/// <summary>
 		/// Coontains all available handler Objects
 		/// </summary>
@@ -67,32 +66,12 @@ namespace SimPe.PackedFiles
 				lotprov.sdescprovider_ChangedPackage
 			);
 
-			WrapperImageList = new System.Windows.Forms.ImageList
-			{
-				ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit
-			};
-
-			WrapperImageList.Images.AddRange(new System.Drawing.Image[] {
-				System.Drawing.Image.FromStream(
-					GetType()
-						.Assembly.GetManifestResourceStream("SimPe.img.empty.png")
-				),
-				System.Drawing.Image.FromStream(
-					GetType()
-						.Assembly.GetManifestResourceStream("SimPe.img.binary.png")
-				)
-			});
-
 			Tools = new HashSet<ITool>
 			{
-				new NeighborhoodTool(this, this),
 				new SimsTool(this, this),
 				new SurgeryTool(this, this),
-				new HashTool(this, this),
 				new FixTool(),
-				new SkinWorkshopTool(),
 				new PhotoStudioTool(this, this),
-				new ImportSemiTool(this, this),
 				new OpenLuaTool(),
 				new SearchTool(this, this),
 				new GeneticCategorizerTool(),
@@ -117,12 +96,6 @@ namespace SimPe.PackedFiles
 				handlers.Add(wrapper1);
 				if (wrapper.WrapperDescription is AbstractWrapperInfo info)
 				{
-					if (wrapper.WrapperDescription.Icon != null)
-					{
-						info.IconIndex = WrapperImageList.Images.Count;
-						WrapperImageList.Images.Add(wrapper.WrapperDescription.Icon);
-					}
-					else
 					{
 						info.IconIndex = 1;
 					}
@@ -188,14 +161,6 @@ namespace SimPe.PackedFiles
 		public IEnumerable<IWrapper> Wrappers => AllWrappers.Where((item) => item.Priority >= 0);
 
 		public IEnumerable<IWrapper> AllWrappers => handlers.OrderByDescending((item) => item.Priority);
-
-		/// <summary>
-		/// Contains a Listing of all available Wrapper Icons
-		/// </summary>
-		public System.Windows.Forms.ImageList WrapperImageList
-		{
-			get;
-		}
 		#endregion
 
 		/// <summary>
@@ -306,23 +271,6 @@ namespace SimPe.PackedFiles
 					new LoadSims2PackTool(),
 					new PackageRepairTool(),
 					new AnimTool(),
-		};
-
-		public HashSet<IDockableTool> Docks
-		{
-			get;
-		} = new HashSet<IDockableTool>()
-		{
-
-					new PackageDockTool(rd),
-					new ResourceDockTool(rd),
-					new WrapperDockTool(rd),
-					new HexDecConverterTool(rd),
-					new HexDockTool(rd),
-					new FinderDock(),
-					new ObectWorkshopDockTool(),
-					new PackageDetailDockTool(),
-					new DebugDock(),
 		};
 
 		public HashSet<IToolAction> Actions

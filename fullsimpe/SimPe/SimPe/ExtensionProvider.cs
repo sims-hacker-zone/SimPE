@@ -100,66 +100,6 @@ namespace SimPe
 	/// </summary>
 	public class ExtensionProvider
 	{
-		static Hashtable map;
-
-		/// <summary>
-		/// Creates the Extension Map
-		/// </summary>
-		static void BuildMap()
-		{
-			map = new Hashtable
-			{
-				{
-					ExtensionType.Package,
-					new ExtensionDescriptor(
-					"DBPF Package",
-					"*.package;*.cache;*.template;*.sims"
-				)
-				},
-				{
-					ExtensionType.DisabledPackage,
-					new ExtensionDescriptor(
-					"Disabled DBPF Package",
-					"*.packagedisabled;*.simpedis"
-				)
-				},
-				{
-					ExtensionType.ExtractedFile,
-					new ExtensionDescriptor("Extracted File", GetExtractExtensions(""))
-				},
-				{
-					ExtensionType.ExtractedFileDescriptor,
-					new ExtensionDescriptor(
-					"Extracted File Descriptor",
-					GetExtractExtensions(".xml")
-				)
-				},
-				{
-					ExtensionType.ExtrackedPackageDescriptor,
-					new ExtensionDescriptor("Extracted Package", "package.xml")
-				},
-				{
-					ExtensionType.Sim2Pack,
-					new ExtensionDescriptor("Packed Objects", "*.sims2pack")
-				},
-				{
-					ExtensionType.Sim2PackCommunity,
-					new ExtensionDescriptor("Sims 2 Community Package", "*.s2cp")
-				},
-				{
-					ExtensionType.AllFiles,
-					new ExtensionDescriptor("All Files", "*.*")
-				},
-				{
-					ExtensionType.LuaScript,
-					new ExtensionDescriptor(
-					"LUA Script",
-					"*.lua;*.globalObjLua;*.objLua;luac.out"
-				)
-				}
-			};
-		}
-
 		/// <summary>
 		/// Returns a list of all extractable Extensions
 		/// </summary>
@@ -173,29 +113,86 @@ namespace SimPe
 		/// <summary>
 		/// Returns a List of known Extensions (key=ExtensionType, value =ExtensionDescriptor)
 		/// </summary>
-		public static Hashtable ExtensionMap
+		public static Dictionary<ExtensionType, Avalonia.Platform.Storage.FilePickerFileType> ExtensionMap
 		{
-			get
+			get;
+		} = new Dictionary<ExtensionType, Avalonia.Platform.Storage.FilePickerFileType>
+		{
+			[ExtensionType.Package] = new Avalonia.Platform.Storage.FilePickerFileType("DBPF Package")
 			{
-				if (map == null)
-				{
-					BuildMap();
-				}
-
-				return map;
-			}
-		}
+				Patterns = new List<string>
+					{
+						"*.package",
+						"*.cache",
+						"*.template",
+						"*.sims"
+					}
+			},
+			[ExtensionType.DisabledPackage] = new Avalonia.Platform.Storage.FilePickerFileType("Disabled DBPF Package")
+			{
+				Patterns = new List<string>
+					{
+						"*.packagedisabled",
+						"*.simpedis",
+					}
+			},
+			[ExtensionType.ExtractedFile] = new Avalonia.Platform.Storage.FilePickerFileType("Extracted File")
+			{
+				Patterns = GetExtractExtensions("").ToList()
+			},
+			[ExtensionType.ExtractedFileDescriptor] = new Avalonia.Platform.Storage.FilePickerFileType("Extracted File Descriptor")
+			{
+				Patterns = GetExtractExtensions(".xml").ToList()
+			},
+			[ExtensionType.ExtrackedPackageDescriptor] = new Avalonia.Platform.Storage.FilePickerFileType("Extracted Package")
+			{
+				Patterns = new List<string>
+					{
+						"package.xml"
+					}
+			},
+			[ExtensionType.Sim2Pack] = new Avalonia.Platform.Storage.FilePickerFileType("Packed Objects")
+			{
+				Patterns = new List<string>
+					{
+						"*.sims2pack"
+					}
+			},
+			[ExtensionType.Sim2PackCommunity] = new Avalonia.Platform.Storage.FilePickerFileType("Sims 2 Community Package")
+			{
+				Patterns = new List<string>
+					{
+						"*.s2cp"
+					}
+			},
+			[ExtensionType.AllFiles] = new Avalonia.Platform.Storage.FilePickerFileType("All Files")
+			{
+				Patterns = new List<string>
+					{
+						"*.*"
+					}
+			},
+			[ExtensionType.LuaScript] = new Avalonia.Platform.Storage.FilePickerFileType("LUA Script")
+			{
+				Patterns = new List<string>
+					{
+						"*.lua",
+						"*.globalObjLua",
+						"*.objLua",
+						"luac.out",
+					}
+			},
+		};
 
 		/// <summary>
 		/// Returns the descriptor for a given Type (returns a default Extension when the type was not found)
 		/// </summary>
 		/// <param name="type"></param>
 		/// <returns></returns>
-		public static ExtensionDescriptor GetExtension(ExtensionType type)
+		public static Avalonia.Platform.Storage.FilePickerFileType GetExtension(ExtensionType type)
 		{
-			ExtensionDescriptor res = (ExtensionDescriptor)ExtensionMap[type] ?? new ExtensionDescriptor("Unknown Type", "*.*");
 
-			return res;
+			return ExtensionMap.TryGetValue(type, out Avalonia.Platform.Storage.FilePickerFileType value) ? value : new Avalonia.Platform.Storage.FilePickerFileType("Unknown Type") { Patterns = new List<string> { "*.*" } };
 		}
 
 		/// <summary>
@@ -203,20 +200,11 @@ namespace SimPe
 		/// </summary>
 		/// <param name="type"></param>
 		/// <returns></returns>
-		public static string BuildFilterString(ExtensionType[] types)
+		public static IEnumerable<Avalonia.Platform.Storage.FilePickerFileType> BuildFilterString(ExtensionType[] types)
 		{
-			string s = "";
-			for (int i = 0; i < types.Length; i++)
-			{
-				if (i != 0)
-				{
-					s += "|";
-				}
-
-				s += GetExtension(types[i]).ToString();
-			}
-
-			return s;
+			return from type in types
+				   where ExtensionMap.ContainsKey(type)
+				   select ExtensionMap[type];
 		}
 
 		/// <summary>
@@ -228,11 +216,7 @@ namespace SimPe
 		{
 			foreach (ExtensionType et in ExtensionMap.Keys)
 			{
-				ExtensionDescriptor ed = (ExtensionDescriptor)ExtensionMap[et];
-				if (ed.AllowedExtension(filename))
-				{
-					return et;
-				}
+				Avalonia.Platform.Storage.FilePickerFileType ed = ExtensionMap[et];
 			}
 
 			return ExtensionType.AllFiles;

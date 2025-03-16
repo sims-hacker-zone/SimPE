@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+using System.Threading.Tasks;
 
 using SimPe.Extensions;
 using SimPe.Plugin.Anim;
@@ -455,9 +456,9 @@ namespace SimPe.Plugin.Gmdc.Importer
 		/// </summary>
 		/// <param name="grps"></param>
 		/// <param name="ct"></param>
-		void ParseBonesSection(List<ImportedGroup> grps, int ct)
+		async Task ParseBonesSection(List<ImportedGroup> grps, int ct)
 		{
-			List<int> sort = Gmdc.SortJoints();
+			List<int> sort = await Gmdc.SortJoints();
 			for (int i = 0; i < ct; i++)
 			{
 				ImportedBone b = new ImportedBone(Gmdc)

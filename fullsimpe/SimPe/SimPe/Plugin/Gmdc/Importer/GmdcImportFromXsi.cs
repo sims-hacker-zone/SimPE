@@ -50,17 +50,7 @@ namespace SimPe.Plugin.Gmdc.Importer
 		)
 		{
 			StreamReader sr = new StreamReader(input);
-			Ambertation.XSI.IO.AsciiFile xsi = Ambertation.XSI.IO.AsciiFile.FromStream(
-				sr,
-				FileName
-			);
-
-			GenericMeshImport gmi = new GenericMeshImport(
-				xsi.ToScene(),
-				gmdc,
-				Component
-			);
-			return gmi.Run();
+			return false;
 		}
 
 		#endregion

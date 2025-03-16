@@ -15,19 +15,16 @@ namespace SimPe.Plugin
 	class AnimationData
 	{
 		AnimationFrameBlock afb;
-		Ambertation.Graphics.MeshBox mb;
 		int fct;
 		List<Vector3> frames;
 
 		public AnimationData(
 			AnimationFrameBlock afb,
-			Ambertation.Graphics.MeshBox mb,
 			int framecount
 		)
 		{
 			//Console.WriteLine(mb.ToString());
 			this.afb = afb;
-			this.mb = mb;
 			fct = framecount;
 			frames = new List<Vector3>();
 
@@ -174,15 +171,10 @@ namespace SimPe.Plugin
 		public void SetFrame(int timecode)
 		{
 			Vector3 v = frames[timecode];
-			Ambertation.Scenes.Transformation trans =
-				new Ambertation.Scenes.Transformation();
 			if (afb.TransformationType == FrameType.Translation)
 			{
 				if (timecode != 0)
 				{
-					trans.Translation.X = v.X;
-					trans.Translation.Y = v.Y;
-					trans.Translation.Z = v.Z;
 				}
 				//else nb.Transform = mt;
 			}
@@ -190,14 +182,8 @@ namespace SimPe.Plugin
 			{
 				if (timecode != 0)
 				{
-					trans.Rotation.X = v.X;
-					trans.Rotation.Y = v.Y;
-					trans.Rotation.Z = v.Z;
 				}
 			}
-
-			//mb.Transform = Microsoft.DirectX.Matrix.Multiply(mb.Transform, Ambertation.Scenes.Converter.ToDx(trans));
-			mb.Transform = Ambertation.Scenes.Converter.ToDx(trans);
 		}
 	}
 }

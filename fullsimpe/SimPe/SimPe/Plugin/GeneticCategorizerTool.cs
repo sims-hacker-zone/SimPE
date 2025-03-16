@@ -4,7 +4,6 @@
 using SimPe.Interfaces;
 using SimPe.Interfaces.Files;
 using SimPe.Interfaces.Plugin;
-using SimPe.Plugin.UI;
 
 namespace SimPe.Plugin
 {
@@ -37,9 +36,6 @@ namespace SimPe.Plugin
 		)
 		{
 			// EnsureFileTable();
-			MainForm form = new MainForm();
-			form.Show();
-
 			return new ToolResult(false, false);
 		}
 

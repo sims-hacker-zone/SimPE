@@ -51,14 +51,6 @@ namespace SimPe.Plugin
 		protected override void InitTabPage()
 		{
 			base.InitTabPage();
-			tDirectionalLight.tb_l_8.Text = Val8.ToString();
-			tDirectionalLight.tb_l_9.Text = Val9.ToString();
-
-			tDirectionalLight.label45.Visible = true;
-			tDirectionalLight.label46.Visible = true;
-
-			tDirectionalLight.tb_l_8.Visible = true;
-			tDirectionalLight.tb_l_9.Visible = true;
 		}
 	}
 }

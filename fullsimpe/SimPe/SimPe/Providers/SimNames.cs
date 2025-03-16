@@ -118,12 +118,11 @@ namespace SimPe.Providers
 		protected Alias AddSim(
 			IPackageFile fl,
 			IPackedFileDescriptor objdpfd,
-			ref int ct,
-			int step
+			ref int ct
 		)
 		{
 
-			return AddSim(new PackedFiles.Objd.ExtObjd().ProcessFile(objdpfd, fl), ref ct, step, false);
+			return AddSim(new PackedFiles.Objd.ExtObjd().ProcessFile(objdpfd, fl), ref ct, false);
 		}
 
 		/// <summary>
@@ -145,7 +144,6 @@ namespace SimPe.Providers
 		protected Alias AddSim(
 			ExtObjd objd,
 			ref int ct,
-			int step,
 			bool npc
 		)
 		{
@@ -218,11 +216,6 @@ namespace SimPe.Providers
 				//if (Helper.StartedGui!=Executable.Classic)
 				{
 					ct++;
-					if (ct % step == 1)
-					{
-						Wait.Message = a.ToString();
-						Wait.Progress = ct;
-					}
 				}
 
 				//set stuff for NPCs
@@ -290,9 +283,7 @@ namespace SimPe.Providers
 					FileTypes.OBJD,
 					inst
 				);
-			Wait.MaxProgress = items.Count();
 			int ct = 0;
-			int step = Math.Max(2, Wait.MaxProgress / 100);
 			foreach (Interfaces.Scenegraph.IScenegraphFileIndexItem item in items)
 			{
 				if (HaveToStop)
@@ -308,7 +299,7 @@ namespace SimPe.Providers
 					|| objd.Type == ObjectTypes.Person
 				)
 				{
-					AddSim(objd, ref ct, step, true);
+					AddSim(objd, ref ct, true);
 				}
 			}
 		}
@@ -318,14 +309,6 @@ namespace SimPe.Providers
 			if (Directory.Exists(dir))
 			{
 				string[] files = Directory.GetFiles(dir, "*.package");
-				if (Helper.StartedGui == Executable.Classic)
-				{
-					WaitingScreen.Wait();
-				}
-				else
-				{
-					Wait.SubStart(files.Length);
-				}
 
 				try
 				{
@@ -336,7 +319,6 @@ namespace SimPe.Providers
 						new PackedFiles.Str.Str();
 					//ArrayList al = new ArrayList();
 					int ct = 0;
-					int step = Math.Max(2, Wait.MaxProgress / 100);
 					foreach (string file in files)
 					{
 						if (HaveToStop)
@@ -360,7 +342,7 @@ namespace SimPe.Providers
 						);
 						if (list.Length > 0)
 						{
-							AddSim(fl, list[0], ref ct, step);
+							AddSim(fl, list[0], ref ct);
 						}
 						//fl.Reader.Close();
 					} //foreach
@@ -376,14 +358,6 @@ namespace SimPe.Providers
 				}
 				finally
 				{
-					if (Helper.StartedGui == Executable.Classic)
-					{
-						WaitingScreen.Stop();
-					}
-					else
-					{
-						Wait.Stop(true);
-					}
 				}
 				ended.Set();
 			}

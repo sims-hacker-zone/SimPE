@@ -1,15 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <RootNamespace></RootNamespace>
     <AssemblyName>SimPe</AssemblyName>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <LangVersion>7.3</LangVersion>
-    <TargetFramework>net471</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <ApplicationIcon>SimPe\img\Simpe2.ico</ApplicationIcon>
     <StartupObject>SimPe.Program</StartupObject>
-    <RuntimeIdentifier>win-x86</RuntimeIdentifier>
     <EnableDefaultCompileItems>true</EnableDefaultCompileItems>
     <EnableDefaultEmbeddedResourceItems>true</EnableDefaultEmbeddedResourceItems>
     <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
@@ -45,76 +43,25 @@
     <CompilerVisibleProperty Include="ProjectDir" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="mscorlib" />
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Design" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-    <Reference Include="NetDocks">
-      <HintPath>..\.assemblys\NetDocks.dll</HintPath>
-    </Reference>
-    <Reference Include="XPCommonControls">
-      <HintPath>..\.assemblys\XPCommonControls.dll</HintPath>
-    </Reference>
-    <Reference Include="ambertation.3D">
-      <HintPath>..\.assemblys\ambertation.3D.dll</HintPath>
-    </Reference>
-    <Reference Include="ambertation.utilities">
-      <HintPath>..\.assemblys\ambertation.utilities.dll</HintPath>
-    </Reference>
-    <Reference Include="ambertation.3D.mdx.binding">
-      <HintPath>..\.assemblys\ambertation.3D.mdx.binding.dll</HintPath>
-    </Reference>
-    <Reference Include="SandDock">
-      <HintPath>..\.assemblys\SandDock.dll</HintPath>
-    </Reference>
-    <Reference Include="Eyefinder">
-      <HintPath>..\.assemblys\Eyefinder.dll</HintPath>
-    </Reference>
-    <Reference Include="AdvancedForms">
-      <HintPath>..\.assemblys\AdvancedForms.dll</HintPath>
-    </Reference>
-    <Reference Include="microsoft.directx.audiovideoplayback">
-      <HintPath>..\.assemblys\microsoft.directx.audiovideoplayback.dll</HintPath>
-    </Reference>
-    <Reference Include="microsoft.directx.diagnostics">
-      <HintPath>..\.assemblys\microsoft.directx.diagnostics.dll</HintPath>
-    </Reference>
-    <Reference Include="microsoft.directx.direct3d">
-      <HintPath>..\.assemblys\microsoft.directx.direct3d.dll</HintPath>
-    </Reference>
-    <Reference Include="microsoft.directx.direct3dx">
-      <HintPath>..\.assemblys\microsoft.directx.direct3dx.dll</HintPath>
-    </Reference>
-    <Reference Include="microsoft.directx.directdraw">
-      <HintPath>..\.assemblys\microsoft.directx.directdraw.dll</HintPath>
-    </Reference>
-    <Reference Include="microsoft.directx.directinput">
-      <HintPath>..\.assemblys\microsoft.directx.directinput.dll</HintPath>
-    </Reference>
-    <Reference Include="microsoft.directx.directplay">
-      <HintPath>..\.assemblys\microsoft.directx.directplay.dll</HintPath>
-    </Reference>
-    <Reference Include="microsoft.directx.directsound">
-      <HintPath>..\.assemblys\microsoft.directx.directsound.dll</HintPath>
-    </Reference>
-    <Reference Include="microsoft.directx">
-      <HintPath>..\.assemblys\microsoft.directx.dll</HintPath>
-    </Reference>
-    <Reference Include="xsi.lib">
-      <HintPath>..\.assemblys\xsi.lib.dll</HintPath>
-    </Reference>
-    <Reference Include="7z">
-      <HintPath>..\.assemblys\7z.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies.net471" Version="1.0.3" />
+    <PackageReference Include="Avalonia.Controls.TreeDataGrid" Version="11.1.1" />
+    <PackageReference Include="MessageBox.Avalonia" Version="3.2.0" />
     <PackageReference Include="SharpZipLib" Version="1.4.2" />
+    <PackageReference Include="System.Drawing.Common" Version="9.0.3" />
     <PackageReference Include="System.Resources.Extensions" Version="9.0.0" />
     <PackageReference Include="System.Text.Json" Version="9.0.2" />
+    <PackageReference Include="Avalonia" Version="11.2.5" />
+    <PackageReference Include="Avalonia.Desktop" Version="11.2.5" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.2.5" />
+    <PackageReference Include="Avalonia.Fonts.Inter" Version="11.2.5" />
+    <!--Condition
+    below is needed to remove Avalonia.Diagnostics package from build output in Release
+    configuration.-->
+    <PackageReference Include="Avalonia.Diagnostics" Version="11.2.5">
+      <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
+      <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="CommunityToolkit.HighPerformance" Version="8.4.0" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Plugins\pjse.coder.plugin\GlobalStrings.package">

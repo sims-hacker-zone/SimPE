@@ -1,0 +1,40 @@
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
+
+using CommunityToolkit.Mvvm.ComponentModel;
+
+using SimPe.Data;
+using SimPe.Models.Interfaces;
+using SimPe.Models.Package;
+
+namespace SimPe.Models.PackedFile.Clst
+{
+	public partial class Clst(PackedFile file) : ObservableObject, IWrapper
+	{
+		[ObservableProperty]
+		private PackedFile file = file;
+
+		[ObservableProperty]
+		private ObservableCollection<ClstItem> items = [];
+
+		public static HashSet<FileTypes> AssignableTypes => [FileTypes.CLST];
+
+		public static IWrapper Unserialize(BinaryReader reader, PackedFile file)
+		{
+			Clst clst = new(file);
+			int size = file.Size;
+			int count = file.Package.Header.IndexType == IndexTypes.ptLongFileIndex ? size / 20 : size / 16;
+			for (int i = 0; i < count; count++)
+			{
+				clst.Items.Add(ClstItem.Unserialize(reader, clst));
+			}
+			return clst;
+		}
+
+		public void Serialize(BinaryWriter writer)
+		{
+			throw new System.NotImplementedException();
+		}
+	}
+}

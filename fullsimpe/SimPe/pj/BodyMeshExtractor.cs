@@ -81,28 +81,7 @@ namespace pj
 
 		private string getFilename()
 		{
-			OpenFileDialog ofd = new OpenFileDialog
-			{
-				AddExtension = true,
-				CheckFileExists = true,
-				CheckPathExists = true,
-				DefaultExt = ".package",
-				DereferenceLinks = true,
-				FileName = "",
-				Filter = L.Get("pkgFilter"),
-				FilterIndex = 0,
-				InitialDirectory = Path.Combine(
-				SimPe.PathProvider.SimSavegameFolder,
-				"SavedSims"
-			),
-				Multiselect = false,
-				ReadOnlyChecked = true
-			};
-			ofd.ShowHelp = ofd.ShowReadOnly = false;
-			ofd.Title = L.Get("selectPkgTexture");
-			ofd.ValidateNames = true;
-			DialogResult dr = ofd.ShowDialog();
-			return DialogResult.OK.Equals(dr) ? ofd.FileName : null;
+			return null;
 		}
 
 		private bool findAndAdd(string name, FileTypes type, string source)
@@ -335,26 +314,7 @@ namespace pj
 			bool gotem = false;
 
 			#region Prompt for mesh name or browse for package and extract names
-			GetMeshName gmn = new GetMeshName();
-			DialogResult dr = gmn.ShowDialog();
-			if (dr.Equals(DialogResult.OK))
-			{
-				if (gmn.MeshName.Length > 0)
-				{
-					al.Add(gmn.MeshName);
-				}
-				else
-				{
-					MessageBox.Show(
-						L.Get("noMeshName"),
-						L.Get("pjSME"),
-						MessageBoxButtons.OK,
-						MessageBoxIcon.Error
-					);
-					return;
-				}
-			}
-			else if (dr.Equals(DialogResult.Retry)) // nasty... Result of Browse button which is required
+			if (false) // nasty... Result of Browse button which is required
 			{
 				#region Get body mesh package file name and open the package
 				string bodyMeshPackage = getFilename();
@@ -400,12 +360,6 @@ namespace pj
 						&& (pfb == null || pfb.Length == 0)
 					)
 					{
-						MessageBox.Show(
-							L.Get("noGZPSXMOL"),
-							L.Get("pjSME"),
-							MessageBoxButtons.OK,
-							MessageBoxIcon.Error
-						);
 						return;
 					}
 					#endregion
@@ -434,14 +388,6 @@ namespace pj
 
 							if (al.Count > 1 && !prompted)
 							{
-								if (
-									MessageBox.Show(
-										L.Get("multipleMeshes"),
-										L.Get("pjSME"),
-										MessageBoxButtons.YesNo,
-										MessageBoxIcon.Warning
-									) != DialogResult.Yes
-								)
 								{
 									return;
 								}
@@ -452,12 +398,6 @@ namespace pj
 					}
 					if (al.Count == 0)
 					{
-						MessageBox.Show(
-							L.Get("noMeshPkg"),
-							L.Get("pjSME"),
-							MessageBoxButtons.OK,
-							MessageBoxIcon.Error
-						);
 						return;
 					}
 					#endregion
@@ -487,7 +427,6 @@ namespace pj
 				}
 
 				bool success = true;
-				SimPe.RemoteControl.ApplicationForm.Cursor = Cursors.WaitCursor;
 				success =
 					success
 					&& findAndAdd(mesh, FileTypes.GMDC, "Sims03.package");
@@ -500,15 +439,8 @@ namespace pj
 				success =
 					success
 					&& findAndAdd(mesh, FileTypes.CRES, "Sims06.package");
-				SimPe.RemoteControl.ApplicationForm.Cursor = Cursors.Default;
 				if (!success)
 				{
-					MessageBox.Show(
-						L.Get("notAllPartsFound") + m,
-						L.Get("pjSME"),
-						MessageBoxButtons.OK,
-						MessageBoxIcon.Warning
-					);
 				}
 			}
 			#endregion

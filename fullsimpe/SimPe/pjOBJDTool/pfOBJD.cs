@@ -62,11 +62,6 @@ namespace pjOBJDTool
 
 			writer.Write(endName);
 		}
-
-		protected override SimPe.Interfaces.Plugin.IPackedFileUI CreateDefaultUIHandler()
-		{
-			throw new Exception("The method or operation is not implemented.");
-		}
 	}
 
 	public class pfOBJDItem

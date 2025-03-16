@@ -52,8 +52,6 @@ namespace SimPe.Actions.Default
 
 		#region IToolExt Member
 		public override System.Drawing.Image Icon => GetIcon.actionClone;
-
-		public override System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.ShiftIns;
 		#endregion
 	}
 }

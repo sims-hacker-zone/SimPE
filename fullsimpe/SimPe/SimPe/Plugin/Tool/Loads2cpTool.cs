@@ -26,33 +26,6 @@ namespace SimPe.Plugin.Tool
 			{
 				return;
 			}
-
-			System.Windows.Forms.OpenFileDialog ofd =
-				new System.Windows.Forms.OpenFileDialog
-				{
-					Filter = ExtensionProvider.BuildFilterString(
-				new ExtensionType[]
-				{
-					ExtensionType.Sim2PackCommunity,
-					ExtensionType.AllFiles,
-				}
-			)
-				};
-			if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-			{
-				Packages.S2CPDescriptor[] ds =
-					Packages.Sims2CommunityPack.ShowOpenDialog(
-						ofd.FileName,
-						System.Windows.Forms.SelectionMode.MultiExtended
-					);
-				if (ds != null)
-				{
-					foreach (Packages.S2CPDescriptor d in ds)
-					{
-						RemoteControl.OpenMemoryPackage(d.Package);
-					}
-				}
-			}
 		}
 
 		public override string ToString()
@@ -63,7 +36,6 @@ namespace SimPe.Plugin.Tool
 		#endregion
 
 		#region IToolExt Member
-		public System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.None;
 
 		public System.Drawing.Image Icon => GetIcon.S2pcOpen;
 

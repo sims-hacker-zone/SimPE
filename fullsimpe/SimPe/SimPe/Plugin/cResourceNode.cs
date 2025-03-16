@@ -139,48 +139,6 @@ namespace SimPe.Plugin
 		[Browsable(false)]
 		public override int ImageIndex => 3; //mesh
 
-		/// <summary>
-		/// Add a ChildNode (and all it's subChilds) to a TreeNode
-		/// </summary>
-		/// <param name="parent">The parent TreeNode</param>
-		/// <param name="index">The Index of the Child Block in the Parent</param>
-		/// <param name="child">The ChildBlock (can be null)</param>
-		protected void AddChildNode(
-			System.Windows.Forms.TreeNodeCollection parent,
-			int index,
-			Interfaces.Scenegraph.ICresChildren child
-		)
-		{
-			//Make the user aware, that a Node was left out!
-			if (child == null)
-			{
-				System.Windows.Forms.TreeNode unode = new System.Windows.Forms.TreeNode(
-					"[Error: Unsupported Child on Index " + index.ToString() + "]"
-				)
-				{
-					Tag = index,
-					ImageIndex = 4,
-					SelectedImageIndex = 4
-				};
-				parent.Add(unode);
-				return;
-			}
-
-			System.Windows.Forms.TreeNode node = new System.Windows.Forms.TreeNode(
-				"0x" + index.ToString("X") + ": " + child.ToString()
-			)
-			{
-				Tag = index,
-				ImageIndex = child.ImageIndex
-			};
-			node.SelectedImageIndex = node.ImageIndex;
-			parent.Add(node);
-
-			foreach (int i in child.ChildBlocks)
-			{
-				AddChildNode(node.Nodes, i, child.GetBlock(i));
-			}
-		}
 		#endregion
 
 		#region IRcolBlock Member
@@ -305,99 +263,12 @@ namespace SimPe.Plugin
 			writer.Write(Unknown2);
 		}
 
-		TabPage.ResourceNode tResourceNode;
-		public override System.Windows.Forms.TabPage TabPage
-		{
-			get
-			{
-				if (tResourceNode == null)
-				{
-					tResourceNode = new TabPage.ResourceNode();
-				}
-
-				return tResourceNode;
-			}
-		}
-
-		TabPage.Cres tCres;
-		public override System.Windows.Forms.TabPage ResourceTabPage
-		{
-			get
-			{
-				if (tCres == null)
-				{
-					tCres = new TabPage.Cres();
-				}
-
-				return tCres;
-			}
-		}
-
 		#endregion
-
-		/// <summary>
-		/// Init the Ressource Cres
-		/// </summary>
-		protected override void InitResourceTabPage()
-		{
-			if (tResourceNode == null)
-			{
-				tResourceNode = new TabPage.ResourceNode();
-			}
-
-			if (tCres == null)
-			{
-				tCres = new TabPage.Cres();
-			}
-
-			tCres.cres_tv.Nodes.Clear();
-			tCres.tbfjoint.Text = "";
-			AddChildNode(tCres.cres_tv.Nodes, 0, this);
-			tCres.cres_tv.ExpandAll();
-		}
-
-		/// <summary>
-		/// You can use this to setop the Controls on a TabPage befor it is dispplayed
-		/// </summary>
-		protected override void InitTabPage()
-		{
-			if (tResourceNode == null)
-			{
-				tResourceNode = new TabPage.ResourceNode();
-			}
-
-			tResourceNode.lb_rn.Items.Clear();
-			for (int i = 0; i < Items.Count; i++)
-			{
-				tResourceNode.lb_rn.Items.Add(Items[i]);
-			}
-
-			tResourceNode.tb_rn_uk1.Text = "0x" + Helper.HexString((uint)Unknown1);
-			tResourceNode.tb_rn_uk2.Text = "0x" + Helper.HexString((uint)Unknown2);
-			tResourceNode.tb_rn_ver.Text = "0x" + Helper.HexString(version);
-		}
-
-		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
-		{
-			base.ExtendTabControl(tc);
-			if (TypeCode == 0x1)
-			{
-				TreeNode.AddToTabControl(tc);
-			}
-
-			GraphNode.AddToTabControl(tc);
-		}
 
 		#region IDisposable Member
 
 		public override void Dispose()
 		{
-			tResourceNode?.Dispose();
-
-			tResourceNode = null;
-			tCres?.Dispose();
-
-			tCres = null;
 			sgres = null;
 			GraphNode = null;
 			TreeNode = null;

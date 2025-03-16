@@ -190,9 +190,6 @@ namespace SimPe.Plugin
 				name = name.Substring(0, name.Length - 5);
 			}
 
-			string tname = RenameForm.ReplaceOldUnique(name, unique, true);
-			txtr.FileName = tname + "_txtr";
-
 			txtr.FileDescriptor = ScenegraphHelper.BuildPfd(
 				txtr.FileName,
 				Data.FileTypes.TXTR,
@@ -206,8 +203,7 @@ namespace SimPe.Plugin
 					md.Listing[i] =
 						"##0x"
 						+ Helper.HexString(Data.MetaData.CUSTOM_GROUP)
-						+ "!"
-						+ tname;
+						+ "!";
 				}
 			}
 
@@ -228,8 +224,7 @@ namespace SimPe.Plugin
 					string nname =
 						"##0x"
 						+ Helper.HexString(Data.MetaData.CUSTOM_GROUP)
-						+ "!"
-						+ tname;
+						+ "!";
 					//Console.WriteLine("    --> Updating to "+nname);
 					md.FindProperty(k).Value = nname;
 				}
@@ -309,25 +304,16 @@ namespace SimPe.Plugin
 			Hashtable fullmap
 		)
 		{
-			if (WaitingScreen.Running)
-			{
-				WaitingScreen.UpdateMessage("Loading Slave Subsets");
-			}
 
 			AddSlavesSubsets(map, fullmap);
 			Hashtable slaves = Scenegraph.GetSlaveSubsets(Package);
 
 			uint inst = 0x6000;
-			string unique = RenameForm.GetUniqueName(true);
 			foreach (Hashtable ht in map.Values)
 			{
 				foreach (ArrayList list in ht.Values)
 				{
 					string family = System.Guid.NewGuid().ToString();
-					if (unique == null)
-					{
-						unique = family;
-					}
 
 					foreach (MmatWrapper mmat in list)
 					{
@@ -339,7 +325,6 @@ namespace SimPe.Plugin
 
 						GenericRcol txmt = mmat.TXMT;
 						GenericRcol txtr = mmat.TXTR;
-						AddTxmt(newpkg, mmat, txmt, txtr, unique, slaves);
 
 						mmat.SynchronizeUserData();
 						newpkg.Add(mmat.FileDescriptor);
@@ -465,12 +450,6 @@ namespace SimPe.Plugin
 			}
 		}
 
-		public delegate void CreateSelectionCallback(
-			SubsetSelectForm ssf,
-			bool userselect,
-			Hashtable fullmap
-		);
-
 		/// <summary>
 		/// Create a new Color Options package
 		/// </summary>
@@ -479,123 +458,33 @@ namespace SimPe.Plugin
 		/// user decide which Subsets to recolor</param>
 		public void Create(IPackageFile newpkg)
 		{
-			WaitingScreen.Wait();
-			try
+			Hashtable fullmap = Scenegraph.GetMMATMap(Package);
+			Hashtable map = fullmap;
+			ArrayList allowedSubsets = Scenegraph.GetRecolorableSubsets(Package);
+
+			//Check if the User can select a Subset
+			bool userselect = false;
+			if (map.Count > 1)
 			{
-				//this.newpkg = newpkg;
-
-				WaitingScreen.UpdateMessage("Loading available Color Options");
-				Hashtable fullmap = Scenegraph.GetMMATMap(Package);
-				Hashtable map = fullmap;
-				ArrayList allowedSubsets = Scenegraph.GetRecolorableSubsets(Package);
-
-				//Check if the User can select a Subset
-				bool userselect = false;
-				if (map.Count > 1)
+				userselect = true;
+			}
+			else
+			{
+				if (map.Count == 1)
 				{
-					userselect = true;
-				}
-				else
-				{
-					if (map.Count == 1)
+					foreach (string s in map.Keys)
 					{
-						foreach (string s in map.Keys)
+						Hashtable ht = (Hashtable)map[s];
+						if (ht.Count > 1)
 						{
-							Hashtable ht = (Hashtable)map[s];
-							if (ht.Count > 1)
-							{
-								userselect = true;
-							}
+							userselect = true;
 						}
 					}
 				}
-
-				//let the user Select now
-				if (userselect)
-				{
-					map = SubsetSelectForm.Execute(map, allowedSubsets);
-				}
-
-				ProcessMmatMap(newpkg, map, fullmap);
-			}
-			finally
-			{
-				WaitingScreen.Stop();
-			}
-		}
-
-		/// <summary>
-		/// Create a new Color Options package
-		/// </summary>
-		/// <param name="newpkg">The Package the color Option should be added to</param>
-		/// <param name="fkt">The function that ahs to be called wne the Selection should be displayed</param>
-		public void Create(IPackageFile newpkg, CreateSelectionCallback fkt)
-		{
-			WaitingScreen.Wait();
-			try
-			{
-				//this.newpkg = newpkg;
-
-				WaitingScreen.UpdateMessage("Loading available Color Options");
-				Hashtable fullmap = Scenegraph.GetMMATMap(Package);
-				Hashtable map = fullmap;
-				ArrayList allowedSubsets = Scenegraph.GetRecolorableSubsets(Package);
-
-				//Check if the User can select a Subset
-				bool userselect = false;
-				if (map.Count > 1)
-				{
-					userselect = true;
-				}
-				else
-				{
-					if (map.Count == 1)
-					{
-						foreach (string s in map.Keys)
-						{
-							Hashtable ht = (Hashtable)map[s];
-							if (ht.Count > 1)
-							{
-								userselect = true;
-							}
-						}
-					}
-				}
-
-				SubsetSelectForm ssf = SubsetSelectForm.Prepare(map, allowedSubsets);
-				fkt(ssf, userselect, fullmap);
-			}
-			finally
-			{
-				WaitingScreen.Stop();
-			}
-			return;
-			/*string[] subsets = GetSubsets();
-
-			//let the user Select
-			if ((subsets.Length>1) && (ask))
-			{
-				Listing l = new Listing();
-				subsets = l.Execute(subsets);
 			}
 
-			WaitingScreen.Wait();
-			WaitingScreen.UpdateMessage("Getting slave Subsets");
-			SubsetItem[] subsetsi = GetSlaveSubsets(subsets);
 
-			WaitingScreen.UpdateMessage("Getting Resource Nodes");
-			ArrayList cres = GetCresNames(subsetsi);
-
-			WaitingScreen.UpdateMessage("Getting Material Overrides");
-			Hashtable mmats = GetMMATs(subsetsi, cres);
-			ArrayList guids = GetGUIDs();
-
-			LoadSubSetList(mmats, guids, subsetsi);
-
-			WaitingScreen.UpdateMessage("Load LIFO Files");
-			GetLifoFiles();
-
-			WaitingScreen.Stop();*/
+			ProcessMmatMap(newpkg, map, fullmap);
 		}
 	}
 }

@@ -27,7 +27,6 @@ namespace Ambertation.Threading
 		/// </summary>
 		protected void WaitForEnd()
 		{
-			WaitForEnd(SimPe.Wait.TIMEOUT / 100);
 		}
 
 		/// <summary>
@@ -56,7 +55,6 @@ namespace Ambertation.Threading
 			{
 				ct++;
 				stop.Set();
-				System.Windows.Forms.Application.DoEvents();
 				Thread.Sleep(100);
 			}
 
@@ -154,7 +152,6 @@ namespace Ambertation.Threading
 						worker.Join(synctime);
 						if (events)
 						{
-							System.Windows.Forms.Application.DoEvents();
 						}
 					}
 				}

@@ -10,15 +10,6 @@ namespace pjse
 
 		public static void Help(string s)
 		{
-			SimPe.RemoteControl.ShowHelp(
-				protocol
-					+ SimPe.Helper.SimPePluginPath
-					+ "/"
-					+ relativePathToHelp
-					+ "/"
-					+ s
-					+ ".htm"
-			);
 		}
 	}
 }

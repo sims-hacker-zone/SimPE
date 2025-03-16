@@ -85,10 +85,6 @@ namespace SimPe.Packages
 		public static void WriteToConsole()
 		{
 			InitTable();
-			System.Windows.Forms.Form f = new System.Windows.Forms.Form();
-			System.Windows.Forms.ListBox lb = new System.Windows.Forms.ListBox();
-			f.Controls.Add(lb);
-			lb.Dock = System.Windows.Forms.DockStyle.Fill;
 
 			foreach (string k in streams.Keys)
 			{
@@ -111,13 +107,7 @@ namespace SimPe.Packages
 				{
 					add += "[managed]";
 				}
-
-				lb.Items.Add(add);
 			}
-
-			lb.Sorted = true;
-			f.ShowDialog();
-			f.Dispose();
 		}
 
 		/// <summary>

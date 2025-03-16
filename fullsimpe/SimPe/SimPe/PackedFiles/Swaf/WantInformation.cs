@@ -58,10 +58,7 @@ namespace SimPe.PackedFiles.Swaf
 				return;
 			}
 
-			Wait.SubStart();
-			Wait.Message = "Saving Cache";
 			cachefile.Save();
-			Wait.SubStop();
 		}
 		#endregion
 

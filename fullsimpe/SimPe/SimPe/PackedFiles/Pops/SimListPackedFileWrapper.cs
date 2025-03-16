@@ -42,10 +42,6 @@ namespace SimPe.PackedFiles.Pops
 		#endregion
 
 		#region AbstractWrapper Member
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new SimmyListPackedFileUI();
-		}
 
 		protected override IWrapperInfo CreateWrapperInfo()
 		{

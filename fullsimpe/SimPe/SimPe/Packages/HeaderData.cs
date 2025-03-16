@@ -48,19 +48,7 @@ namespace SimPe.Packages
 		/// </summary>
 		/// <remarks>This value should be DBPF</remarks>
 		[Description("Package Identifier"), DefaultValue("DBPF")]
-		public string Identifier
-		{
-			get
-			{
-				string ret = "";
-				foreach (char c in id)
-				{
-					ret += c;
-				}
-
-				return ret;
-			}
-		}
+		public string Identifier => new(id);
 
 		/// <summary>
 		/// The Icon to display (for lot packages)

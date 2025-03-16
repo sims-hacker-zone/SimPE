@@ -17,14 +17,6 @@ namespace SimPe.Interfaces
 		}
 
 		/// <summary>
-		/// Returns the wanted Shortcut
-		/// </summary>
-		System.Windows.Forms.Shortcut Shortcut
-		{
-			get;
-		}
-
-		/// <summary>
 		/// Returns true if the Tool is curently visible on the GUI
 		/// </summary>
 		bool Visible

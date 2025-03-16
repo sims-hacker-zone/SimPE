@@ -21,10 +21,6 @@ namespace SimPe.PackedFiles.Mmat
 			Interfaces.Scenegraph.IScenegraphBlock,
 			Interfaces.Scenegraph.IScenegraphItem
 	{
-		public static CpfUI.ExecutePreview GlobalCpfPreview
-		{
-			get; set;
-		}
 
 		#region IScenegraphBlock Member
 
@@ -76,11 +72,6 @@ namespace SimPe.PackedFiles.Mmat
 			return "";
 		}
 		#endregion
-
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new CpfUI(GlobalCpfPreview);
-		}
 
 		/// <summary>
 		/// Returns a Human Readable Description of this Wrapper

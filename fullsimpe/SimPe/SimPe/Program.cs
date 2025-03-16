@@ -2,7 +2,9 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
+using System.Threading.Tasks;
+
+using Avalonia;
 
 using SimPe.Forms.MainUI;
 
@@ -15,16 +17,17 @@ namespace SimPe
 	public class Program
 	{
 		public static MainForm Global;
+		public static MainWindow mainWindow;
 
 		/// <summary>
 		/// Der Haupteinstiegspunkt für die Anwendung.
 		/// </summary>
 		[STAThread]
-		public static void Main(string[] args)
+		public static async Task Main(string[] args)
 		{
 			if (Environment.Version.Major < 4)
 			{
-				Message.Show(
+				await Message.Show(
 						Localization.GetString("NoDotNet")
 						.Replace("{VERSION}", Environment.Version.ToString())
 				);
@@ -32,18 +35,18 @@ namespace SimPe
 			}
 
 			List<string> argv = new List<string>(args);
-			if (Commandline.PreSplash(argv))
+			if (await Commandline.PreSplash(argv))
 			{
 				return;
 			}
 
-			Commandline.CheckFiles();
+			await Commandline.CheckFiles();
 
 			/* Test for a New or Unknown EP, probably pointless now  */
 			if (Helper.WindowsRegistry.FoundUnknownEP())
 			{
 				if (
-					Message.Show(
+					await Message.Show(
 							Localization.GetString("Unknown EP found")
 							.Replace(
 								"{name}",
@@ -54,78 +57,55 @@ namespace SimPe
 									.Name
 							),
 						Localization.GetString("Warning"),
-						MessageBoxButtons.YesNo
-					) == DialogResult.No
+						MsBox.Avalonia.Enums.ButtonEnum.YesNo
+					) == MsBox.Avalonia.Enums.ButtonResult.No
 				)
 				{
 					return;
 				}
 			}
 
-			try
+			// try
+			// {
+			Helper.WindowsRegistry.UpdateSimPEDirectory();
+			if (!await Commandline.FullEnvStart(argv))
 			{
-				Splash.Screen.SetMessage(
-					Localization.GetString("Starting SimPe...")
-				);
-
-				Application.DoEvents();
-
-				Helper.WindowsRegistry.UpdateSimPEDirectory();
-				Global = new MainForm();
-				if (!Commandline.FullEnvStart(argv))
+				// Tashiketh
+				if (argv.Count > 0)
 				{
-					//load Files passed on the commandline
-					Splash.Screen.SetMessage(
-						Localization.GetString("Load or Import Files")
-					);
-					// Tashiketh
-					if (argv.Count > 0)
+					if (argv[0] != "-load")
 					{
-						if (argv[0] != "-load")
-						{
-							Global.package.LoadOrImportFiles(argv.ToArray(), true);
-						}
-						else
-						{
-							Global.package.LoadOrImportFiles(argv.ToArray(), false);
-						}
+						Global.package.LoadOrImportFiles(argv.ToArray(), true);
 					}
-					// Global.package.LoadOrImportFiles(argv.ToArray(), true);
-					Application.Run(Global);
+					else
+					{
+						Global.package.LoadOrImportFiles(argv.ToArray(), false);
+					}
 				}
-				Console.WriteLine("Exiting Application!");
+				// Global.package.LoadOrImportFiles(argv.ToArray(), true);
+				BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
+			}
+			Console.WriteLine("Exiting Application!");
 
-				Helper.WindowsRegistry.SaveConfig();
-			}
-			catch (Exception ex)
-			{
-				try
-				{
-					MessageBox.Show(
-						"SimPe will shutdown due to an unhandled Exception.\n\nMessage: "
-							+ ex.Message + "\n" + ex.StackTrace
-					);
-					Splash.Screen.Stop();
-					Helper.ExceptionMessage(
-						"SimPe will shutdown due to an unhandled Exception.",
-						ex
-					);
-				}
-				catch (Exception ex2)
-				{
-					MessageBox.Show(
-						"SimPe will shutdown due to an unhandled Exception.\n\nMessage: "
-							+ ex2.Message + "\n" + ex2.StackTrace
-					);
-				}
-			}
-			finally
-			{
-				if (Splash.Running)
-				{
-					Splash.Screen.ShutDown();
-				}
-			}
+			Helper.WindowsRegistry.SaveConfig();
+			// }
+			// catch (Exception ex)
+			// {
+			// 	try
+			// 	{
+			// 		await Message.Show(
+			// 			"SimPe will shutdown due to an unhandled Exception.\n\nMessage: "
+			// 				+ ex.Message + "\n" + ex.StackTrace
+			// 		);
+			// 	}
+			// 	catch (Exception ex2)
+			// 	{
+			// 		await Message.Show(
+			// 			"SimPe will shutdown due to an unhandled Exception.\n\nMessage: "
+			// 				+ ex2.Message + "\n" + ex2.StackTrace
+			// 		);
+			// 	}
+			// }
 
 			try
 			{
@@ -136,5 +116,12 @@ namespace SimPe
 			}
 			catch { }
 		}
+
+		// Avalonia configuration, don't remove; also used by visual designer.
+		public static AppBuilder BuildAvaloniaApp()
+			=> AppBuilder.Configure<App>()
+				.UsePlatformDetect()
+				.WithInterFont()
+				.LogToTrace();
 	}
 }

@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 
 using SimPe.Forms.MainUI;
 using SimPe.Interfaces;
@@ -28,7 +29,7 @@ namespace SimPe
 			}
 		}
 
-		static void CheckFile(
+		static async Task CheckFile(
 			string file,
 			string elementName,
 			string filename,
@@ -47,8 +48,7 @@ namespace SimPe
 			catch
 			{
 				if (
-					System.Windows.Forms.MessageBox.Show(
-						"The "
+					await MsBox.Avalonia.MessageBoxManager.GetMessageBoxStandard("Error", "The "
 							+ filename
 							+ " file was not valid XML.\n"
 							+ file
@@ -58,10 +58,9 @@ namespace SimPe
 							+ ").\n\nShould SimPe delete the "
 							+ filename
 							+ " File?",
-						"Error",
-						System.Windows.Forms.MessageBoxButtons.YesNo,
-						System.Windows.Forms.MessageBoxIcon.Error
-					) == System.Windows.Forms.DialogResult.Yes
+							MsBox.Avalonia.Enums.ButtonEnum.YesNo,
+							MsBox.Avalonia.Enums.Icon.Error).ShowAsync()
+							== MsBox.Avalonia.Enums.ButtonResult.Yes
 				)
 				{
 					File.Delete(file);
@@ -69,7 +68,7 @@ namespace SimPe
 			}
 		}
 
-		public static void CheckFiles()
+		public static async Task CheckFiles()
 		{
 			//check if installation for user is done
 			if (
@@ -116,23 +115,15 @@ namespace SimPe
 					File.Delete(Helper.DataFolder.FoldersXREGW);
 					if (Helper.ECCorNewSEfound)
 					{
-						Message.Show(
-							"The Newest Stuff Packs have been found,"
+						await MsBox.Avalonia.MessageBoxManager.GetMessageBoxStandard("Warning", "The Newest Stuff Packs have been found,"
 								+ "\r\n"
-								+ "Your file table folder settings had to be reset!",
-							"Warning",
-							System.Windows.Forms.MessageBoxButtons.OK
-						);
+								+ "Your file table folder settings had to be reset!").ShowAsync();
 					}
 					else
 					{
-						Message.Show(
-							"Newest Stuff Packs are gone!"
+						await MsBox.Avalonia.MessageBoxManager.GetMessageBoxStandard("Warning", "Newest Stuff Packs are gone!"
 								+ "\r\n"
-								+ "Your file table folder settings had to be reset!",
-							"Warning",
-							System.Windows.Forms.MessageBoxButtons.OK
-						);
+								+ "Your file table folder settings had to be reset!").ShowAsync();
 					}
 				}
 				Helper.WindowsRegistry.Config.UseExpansions2 = Helper.ECCorNewSEfound;
@@ -141,7 +132,7 @@ namespace SimPe
 			else
 			{
 				//check if the file table is valid
-				CheckFile(
+				await CheckFile(
 					Helper.DataFolder.FoldersXREG,
 					"folders",
 					"File table settings",
@@ -159,11 +150,11 @@ namespace SimPe
 			new EnableFlags(),
 		};
 
-		public static bool PreSplash(List<string> argv)
+		public static async Task<bool> PreSplash(List<string> argv)
 		{
 			foreach (ICommandLine cmd in preSplashCommands)
 			{
-				if (cmd.Parse(argv))
+				if (await cmd.Parse(argv))
 				{
 					return true;
 				}
@@ -175,7 +166,7 @@ namespace SimPe
 		class Splash : ICommandLine
 		{
 			#region ICommandLine Members
-			public bool Parse(List<string> argv)
+			public async Task<bool> Parse(List<string> argv)
 			{
 				if (
 					ArgParser.Parse(argv, "--splash") >= 0
@@ -198,7 +189,7 @@ namespace SimPe
 		class NoSplash : ICommandLine
 		{
 			#region ICommandLine Members
-			public bool Parse(List<string> argv)
+			public async Task<bool> Parse(List<string> argv)
 			{
 				if (
 					ArgParser.Parse(argv, "--nosplash") >= 0
@@ -222,7 +213,7 @@ namespace SimPe
 		{
 			#region ICommandLine Members
 
-			public bool Parse(List<string> argv)
+			public async Task<bool> Parse(List<string> argv)
 			{
 				int i = ArgParser.Parse(argv, "-localmode");
 				if (i >= 0)
@@ -262,7 +253,7 @@ namespace SimPe
 				{
 					if (argv.Count <= i)
 					{
-						Message.Show(Help()[0]);
+						await Message.Show(Help()[0]);
 						return true;
 					} // -enable {nothing}
 					switch (ArgParser.Parse(argv, i, flags))
@@ -290,7 +281,7 @@ namespace SimPe
 						default:
 							if (haveEnable)
 							{
-								Message.Show(Help()[0]);
+								await Message.Show(Help()[0]);
 								return true;
 							} // -enable {unknown}
 							else
@@ -335,10 +326,10 @@ namespace SimPe
 						s += "\r\n" + Localization.GetString("NoErrors");
 					}
 
-					Message.Show(
+					await Message.Show(
 						s,
 						"Notice",
-						System.Windows.Forms.MessageBoxButtons.OK
+						MsBox.Avalonia.Enums.ButtonEnum.Ok
 					);
 				}
 
@@ -362,7 +353,7 @@ namespace SimPe
 		class Profile : ICommandLine
 		{
 			#region ICommandLine Members
-			public bool Parse(List<string> argv)
+			public async Task<bool> Parse(List<string> argv)
 			{
 				int index = ArgParser.Parse(argv, "-profile");
 				if (index < 0)
@@ -372,7 +363,7 @@ namespace SimPe
 
 				if (index >= argv.Count || argv[index].Length == 0)
 				{
-					Message.Show(Help()[0]);
+					await Message.Show(Help()[0]);
 					return true;
 				}
 				if (
@@ -408,7 +399,7 @@ namespace SimPe
 		/// </summary>
 		/// <param name="args"></param>
 		/// <returns>true if the GUI should <b>NOT</b> show up</returns>
-		public static bool FullEnvStart(List<string> argv)
+		public static async Task<bool> FullEnvStart(List<string> argv)
 		{
 			if (argv.Count < 1)
 			{
@@ -417,9 +408,6 @@ namespace SimPe
 
 			try
 			{
-				SimPe.Splash.Screen.SetMessage(
-					Localization.GetString("Checking commandline parameters")
-				);
 				foreach (
 					ICommandLine cmdline in
 						FileTable
@@ -427,7 +415,7 @@ namespace SimPe
 						.CommandLines
 				)
 				{
-					if (cmdline.Parse(argv))
+					if (await cmdline.Parse(argv))
 					{
 						return true;
 					}
@@ -437,9 +425,6 @@ namespace SimPe
 			}
 			finally
 			{
-				SimPe.Splash.Screen.SetMessage(
-					Localization.GetString("Checked commandline parameters")
-				);
 			}
 		}
 
@@ -523,7 +508,7 @@ namespace SimPe
 	public class CommandlineHelp : ICommandLine
 	{
 		#region ICommandLine Members
-		public bool Parse(List<string> argv)
+		public async Task<bool> Parse(List<string> argv)
 		{
 			if (ArgParser.Parse(argv, "-help") < 0)
 			{
@@ -552,14 +537,10 @@ namespace SimPe
 				}
 			}
 
-			Splash.Screen.Stop();
-
-			// System.Windows.Forms.MessageBox.Show(""
-			Message.Show(
+			await Message.Show(
 				"" + "  -load filename" + pluginHelp + "\r\n",
 				"SimPe Commandline Parameters",
-				System.Windows.Forms.MessageBoxButtons.OK
-			// , System.Windows.Forms.MessageBoxIcon.Information
+				MsBox.Avalonia.Enums.ButtonEnum.Ok
 			);
 
 			return true;

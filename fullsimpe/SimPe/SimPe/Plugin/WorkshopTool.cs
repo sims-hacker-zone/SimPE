@@ -1,5 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using System.Threading.Tasks;
+
 using SimPe.Forms.MainUI;
 using SimPe.Interfaces;
 
@@ -14,14 +16,11 @@ namespace SimPe.Plugin
 
 		IWrapperRegistry reg;
 		IProviderRegistry prov;
-		Workshop ws;
 
 		internal WorkshopTool(IWrapperRegistry reg, IProviderRegistry prov)
 		{
 			this.reg = reg;
 			this.prov = prov;
-
-			ws = new Workshop();
 		}
 
 		#region ITool Member
@@ -39,36 +38,6 @@ namespace SimPe.Plugin
 			ref Interfaces.Files.IPackageFile package
 		)
 		{
-			if (Helper.StartedGui == Executable.Default)
-			{
-				if (
-					Message.Show(
-						Localization.GetString("ObsoleteOW"),
-						Localization.GetString("Warning"),
-						System.Windows.Forms.MessageBoxButtons.YesNo
-					) == System.Windows.Forms.DialogResult.No
-				)
-				{
-					return new ToolResult(false, false);
-				}
-			}
-
-			Interfaces.Files.IPackageFile pkg = ws.Execute(prov, package);
-
-			if (pkg != null)
-			{
-				if (pkg.Reader != null)
-				{
-					if (!pkg.Reader.BaseStream.CanWrite)
-					{
-						new ToolResult(false, false);
-					}
-				}
-
-				package = pkg;
-				return new ToolResult(false, true);
-			}
-			else
 			{
 				return new ToolResult(false, false);
 			}
@@ -85,7 +54,6 @@ namespace SimPe.Plugin
 
 		#region IToolExt Member
 		public override System.Drawing.Image Icon => GetIcon.CreatePackageW;
-		public override System.Windows.Forms.Shortcut Shortcut => Helper.StartedGui == Executable.Default ? System.Windows.Forms.Shortcut.None : System.Windows.Forms.Shortcut.CtrlW;
 		#endregion
 	}
 }

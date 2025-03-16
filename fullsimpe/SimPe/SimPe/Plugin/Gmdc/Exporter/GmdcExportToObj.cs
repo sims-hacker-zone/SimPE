@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Collections.Generic;
 using System.Numerics;
+using System.Threading.Tasks;
 
 namespace SimPe.Plugin.Gmdc.Exporter
 {
@@ -79,7 +80,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 		///
 		/// Use the writer member to write to the File.
 		/// </remarks>
-		protected override void ProcessGroup()
+		protected override async Task ProcessGroup()
 		{
 			//Find the Vertex Reference Number
 			int vertref = Link.GetElementNr(VertexElement);
@@ -173,7 +174,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 				int vertexnr = Group.Faces[i] + 1 + vertexoffset;
 				if (i % 3 == 0)
 				{
-					writer.Write(
+					await writer.WriteAsync(
 						"f "
 							+ vertexnr.ToString()
 							+ "/"
@@ -184,7 +185,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 				}
 				else if (i % 3 == 1)
 				{
-					writer.Write(
+					await writer.WriteAsync(
 						" "
 							+ vertexnr.ToString()
 							+ "/"
@@ -195,7 +196,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 				}
 				else
 				{
-					writer.WriteLine(
+					await writer.WriteLineAsync(
 						" "
 							+ vertexnr.ToString()
 							+ "/"
@@ -215,7 +216,7 @@ namespace SimPe.Plugin.Gmdc.Exporter
 		/// </summary>
 		/// <remarks>you should use this to write Footer Informations.
 		/// Use the writer member to write to the File</remarks>
-		protected override void FinishFile()
+		protected override async Task FinishFile()
 		{
 			//nothing to do here
 		}

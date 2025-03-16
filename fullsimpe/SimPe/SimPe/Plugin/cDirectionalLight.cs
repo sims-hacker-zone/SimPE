@@ -158,68 +158,13 @@ namespace SimPe.Plugin
 			writer.Write(Green);
 			writer.Write(Blue);
 		}
-
-		protected TabPage.DirectionalLight tDirectionalLight;
-		public override System.Windows.Forms.TabPage TabPage
-		{
-			get
-			{
-				if (tDirectionalLight == null)
-				{
-					tDirectionalLight = new TabPage.DirectionalLight();
-				}
-
-				return tDirectionalLight;
-			}
-		}
 		#endregion
 
-		/// <summary>
-		/// You can use this to setop the Controls on a TabPage befor it is dispplayed
-		/// </summary>
-		protected override void InitTabPage()
-		{
-			if (tDirectionalLight == null)
-			{
-				tDirectionalLight = new TabPage.DirectionalLight();
-			}
-
-			tDirectionalLight.tb_l_ver.Text = "0x" + Helper.HexString(version);
-			tDirectionalLight.tb_l_name.Text = Name;
-
-			tDirectionalLight.tb_l_1.Text = Val1.ToString();
-			tDirectionalLight.tb_l_2.Text = Val2.ToString();
-			tDirectionalLight.tb_l_3.Text = Red.ToString();
-			tDirectionalLight.tb_l_4.Text = Green.ToString();
-			tDirectionalLight.tb_l_5.Text = Blue.ToString();
-
-			tDirectionalLight.label39.Visible = false;
-			tDirectionalLight.label44.Visible = false;
-			tDirectionalLight.label45.Visible = false;
-			tDirectionalLight.label46.Visible = false;
-
-			tDirectionalLight.tb_l_6.Visible = false;
-			tDirectionalLight.tb_l_7.Visible = false;
-			tDirectionalLight.tb_l_8.Visible = false;
-			tDirectionalLight.tb_l_9.Visible = false;
-		}
-
-		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
-		{
-			base.ExtendTabControl(tc);
-			StandardLightBase.AddToTabControl(tc);
-			LightT.AddToTabControl(tc);
-			ReferentNode.AddToTabControl(tc);
-			ObjectGraphNode.AddToTabControl(tc);
-		}
 
 		#region IDisposable Member
 
 		public override void Dispose()
 		{
-			tDirectionalLight?.Dispose();
-
-			tDirectionalLight = null;
 		}
 
 		#endregion

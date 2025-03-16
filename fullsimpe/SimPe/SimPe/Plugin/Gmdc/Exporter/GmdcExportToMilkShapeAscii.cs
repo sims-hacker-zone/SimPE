@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Threading.Tasks;
 
 using SimPe.Extensions;
 using SimPe.Plugin.Anim;
@@ -98,14 +99,14 @@ namespace SimPe.Plugin.Gmdc.Exporter
 		///
 		/// Use the writer member to write to the File.
 		/// </remarks>
-		protected override void ProcessGroup()
+		protected override async Task ProcessGroup()
 		{
 			//Find the BoneAssignment
 			GmdcElement boneelement = Link.FindElementType(
 				ElementIdentity.BoneAssignment
 			);
 			//List of ordered Joints
-			List<int> js = Gmdc.SortJoints();
+			List<int> js = await Gmdc.SortJoints();
 
 			writer.WriteLine("\"" + Group.Name + "\" 0 -1");
 
@@ -268,11 +269,11 @@ namespace SimPe.Plugin.Gmdc.Exporter
 		/// </summary>
 		/// <remarks>you should use this to write Footer Informations.
 		/// Use the writer member to write to the File</remarks>
-		protected override void FinishFile()
+		protected override async Task FinishFile()
 		{
 			writer.WriteLine("Materials: 0");
 
-			Hashtable relationmap = Gmdc.LoadJointRelationMap();
+			Hashtable relationmap = await Gmdc.LoadJointRelationMap();
 			List<int> js = Gmdc.SortJoints(relationmap);
 			ArrayList animbname = new ArrayList();
 

@@ -84,7 +84,6 @@ namespace SimPe.Plugin
 		)
 		{
 			name = name.Trim();
-			name = RenameForm.ReplaceOldUnique(name, "", false);
 
 			if (name.ToLower().EndsWith("_txmt"))
 			{
@@ -405,10 +404,6 @@ namespace SimPe.Plugin
 		/// </summary>
 		public void CleanUp()
 		{
-			if (WaitingScreen.Running)
-			{
-				WaitingScreen.UpdateMessage("Cleaning up");
-			}
 
 			IPackedFileDescriptor[] mpfds = package.FindFiles(
 				FileTypes.MMAT
@@ -485,11 +480,6 @@ namespace SimPe.Plugin
 				FileTypes.TXTR,
 			};
 
-			if (WaitingScreen.Running)
-			{
-				WaitingScreen.UpdateMessage("Fixing Groups");
-			}
-
 			foreach (IPackedFileDescriptor pfd in package.Index)
 			{
 				bool RCOLcheck = types.Contains(pfd.Type);
@@ -537,7 +527,7 @@ namespace SimPe.Plugin
 		/// <returns></returns>
 		public Hashtable GetNameMap(bool uniquename)
 		{
-			return RenameForm.Execute(package, uniquename, ref ver);
+			return null;
 		}
 
 		string BuildRefString(IPackedFileDescriptor pfd)
@@ -561,11 +551,6 @@ namespace SimPe.Plugin
 			Hashtable refmap = new Hashtable();
 			Hashtable completerefmap = new Hashtable();
 
-			if (WaitingScreen.Running)
-			{
-				WaitingScreen.UpdateMessage("Fixing Names");
-			}
-
 			FixNames(map);
 
 			foreach (FileTypes type in MetaData.RcolList)
@@ -587,12 +572,6 @@ namespace SimPe.Plugin
 						}
 					}
 				}
-			}
-
-			//Updated TGI Values and update the refmap
-			if (WaitingScreen.Running)
-			{
-				WaitingScreen.UpdateMessage("Updating TGI Values");
 			}
 
 			foreach (FileTypes type in MetaData.RcolList)
@@ -619,12 +598,6 @@ namespace SimPe.Plugin
 
 					completerefmap[refstr] = rcol.FileDescriptor;
 				}
-			}
-
-			//Update the References
-			if (WaitingScreen.Running)
-			{
-				WaitingScreen.UpdateMessage("Updating TGI References");
 			}
 
 			foreach (FileTypes type in MetaData.RcolList)
@@ -674,12 +647,6 @@ namespace SimPe.Plugin
 
 			//Make sure OBJd's get fixed too
 			FixOBJd();
-
-			//And finally the Root String
-			if (WaitingScreen.Running)
-			{
-				WaitingScreen.UpdateMessage("Updating Root");
-			}
 
 			IPackedFileDescriptor[] mpfds = package.FindFiles(
 				FileTypes.STR
@@ -843,10 +810,6 @@ namespace SimPe.Plugin
 		/// </remarks>
 		void FixOBJd()
 		{
-			if (WaitingScreen.Running)
-			{
-				WaitingScreen.UpdateMessage("Updating Object Descriuptions");
-			}
 
 			IPackedFileDescriptor[] pfds = package.FindFiles(
 				FileTypes.OBJD
@@ -895,10 +858,6 @@ namespace SimPe.Plugin
 		/// <param name="grouphash"></param>
 		void FixMMAT(Hashtable map, bool uniquefamily, string grouphash)
 		{
-			if (WaitingScreen.Running)
-			{
-				WaitingScreen.UpdateMessage("Updating Material Overrides");
-			}
 
 			IPackedFileDescriptor[] mpfds = package.FindFiles(
 				FileTypes.MMAT

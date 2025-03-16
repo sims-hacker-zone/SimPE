@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace SimPe.Interfaces
 {
@@ -16,7 +17,7 @@ namespace SimPe.Interfaces
 		/// </summary>
 		/// <param name="args"></param>
 		/// <returns>False if SimPe should start; True if SimPe should exit</returns>
-		bool Parse(List<string> argv);
+		Task<bool> Parse(List<string> argv);
 
 		/// <summary>
 		/// Called to determine what the "-help" option will display.

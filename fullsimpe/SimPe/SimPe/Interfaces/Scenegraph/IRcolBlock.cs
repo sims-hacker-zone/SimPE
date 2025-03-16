@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
 
 using SimPe.Data;
 using SimPe.Plugin;
@@ -72,31 +71,9 @@ namespace SimPe.Interfaces.Scenegraph
 		}
 
 		/// <summary>
-		/// Returns a tabPage that contains a GUI for this Element
-		/// </summary>
-		TabPage TabPage
-		{
-			get;
-		}
-
-		/// <summary>
-		/// Returns a tabPage that contains a GUI for the first Block in a RCOL Resource
-		/// </summary>
-		TabPage ResourceTabPage
-		{
-			get;
-		}
-
-		/// <summary>
 		/// Update the displayed Data
 		/// </summary>
 		void Refresh();
-
-		/// <summary>
-		/// Adds more TabPages (which are needed to process the Class) to the Control
-		/// </summary>
-		/// <param name="tc">The TabControl the Pages will be added to</param>
-		void ExtendTabControl(TabControl tc);
 
 		/// <summary>
 		/// Data was changed

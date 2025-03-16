@@ -58,10 +58,6 @@ namespace SimPe.PackedFiles.Wlay
 		#endregion
 
 		#region AbstractWrapper Member
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new WallLayerPackedFileUI();
-		}
 
 		/// <summary>
 		/// Returns a Human Readable Description of this Wrapper

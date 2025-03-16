@@ -10,7 +10,6 @@ namespace pjOBJDTool
 
 		IWrapperRegistry reg;
 		IProviderRegistry prov;
-		cOBJDTool cobjdtool;
 
 		internal tOBJDTool(IWrapperRegistry reg, IProviderRegistry prov)
 		{
@@ -49,17 +48,7 @@ namespace pjOBJDTool
 			ref SimPe.Interfaces.Files.IPackageFile package
 		)
 		{
-			if (!IsReallyEnabled(pfd, package))
-			{
-				return new SimPe.Plugin.ToolResult(false, false);
-			}
-
-			if (cobjdtool == null)
-			{
-				cobjdtool = new cOBJDTool();
-			}
-
-			return cobjdtool.Execute(ref pfd, ref package, prov);
+			return new SimPe.Plugin.ToolResult(false, false);
 		}
 
 		public override string ToString()
@@ -84,7 +73,6 @@ namespace pjOBJDTool
 
 		#region IToolExt Member
 		public override System.Drawing.Image Icon => SimPe.GetIcon.pjOBJDtool;
-		public override System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.None;
 		#endregion
 	}
 }

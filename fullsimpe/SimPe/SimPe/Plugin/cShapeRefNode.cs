@@ -290,20 +290,6 @@ namespace SimPe.Plugin
 			writer.Write(Data);
 			writer.Write(Unknown6);
 		}
-
-		TabPage.ShapeRefNode tShapeRefNode;
-		public override System.Windows.Forms.TabPage TabPage
-		{
-			get
-			{
-				if (tShapeRefNode == null)
-				{
-					tShapeRefNode = new TabPage.ShapeRefNode();
-				}
-
-				return tShapeRefNode;
-			}
-		}
 		#endregion
 
 		#region AbstractCresChildren Member
@@ -322,54 +308,6 @@ namespace SimPe.Plugin
 		public override int ImageIndex => 3; //mesh
 		#endregion
 
-		/// <summary>
-		/// You can use this to setop the Controls on a TabPage befor it is dispplayed
-		/// </summary>
-		protected override void InitTabPage()
-		{
-			if (tShapeRefNode == null)
-			{
-				tShapeRefNode = new TabPage.ShapeRefNode();
-			}
-
-			tShapeRefNode.lb_srn_a.Items.Clear();
-			for (int i = 0; i < ItemsA.Count; i++)
-			{
-				tShapeRefNode.lb_srn_a.Items.Add(ItemsA[i]);
-			}
-
-			tShapeRefNode.lb_srn_b.Items.Clear();
-			for (int i = 0; i < ItemsB.Count; i++)
-			{
-				tShapeRefNode.lb_srn_b.Items.Add(ItemsB[i]);
-			}
-
-			tShapeRefNode.tb_srn_uk1.Text =
-				"0x" + Helper.HexString((ushort)Unknown1);
-			tShapeRefNode.tb_srn_uk2.Text =
-				"0x" + Helper.HexString((uint)Unknown2);
-			tShapeRefNode.tb_srn_uk3.Text =
-				"0x" + Helper.HexString((uint)Unknown3);
-			tShapeRefNode.tb_srn_uk4.Text = "0x" + Helper.HexString(Unknown4);
-			tShapeRefNode.tb_srn_uk5.Text =
-				"0x" + Helper.HexString((uint)Unknown5);
-			tShapeRefNode.tb_srn_uk6.Text =
-				"0x" + Helper.HexString((uint)Unknown6);
-
-			tShapeRefNode.tb_srn_kind.Text = Name;
-			tShapeRefNode.tb_srn_data.Text = Helper.BytesToHexList(Data);
-
-			tShapeRefNode.tb_srn_ver.Text = "0x" + Helper.HexString(version);
-		}
-
-		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
-		{
-			base.ExtendTabControl(tc);
-			rn.AddToTabControl(tc);
-			bn.AddToTabControl(tc);
-			tn.AddToTabControl(tc);
-		}
-
 		public override string ToString()
 		{
 			return Name
@@ -384,9 +322,6 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			tShapeRefNode?.Dispose();
-
-			tShapeRefNode = null;
 		}
 
 		#endregion

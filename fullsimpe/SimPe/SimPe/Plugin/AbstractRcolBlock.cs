@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Windows.Forms;
 
 using SimPe.Data;
 using SimPe.Interfaces.Scenegraph;
@@ -107,66 +106,6 @@ namespace SimPe.Plugin
 		{
 		}
 
-		/// <summary>
-		/// Adds the Ressource TabPage to the Form
-		/// </summary>
-		/// <param name="tc">The TabControl you want to add the resourceTabPage to</param>
-		/// <param name="cb">The ComboBox that selects the SubBlocks</param>
-		/// <returns></returns>
-		internal virtual void AddToResourceTabControl(TabControl tc, ComboBox cb)
-		{
-			tc.Tag = cb;
-
-			//remove all additional Pages
-			for (int i = tc.TabPages.Count - 1; i >= 0; i--)
-			{
-				if (tc.TabPages[i].Tag != null)
-				{
-					tc.TabPages.RemoveAt(i);
-				}
-			}
-
-			if (ResourceTabPage != null)
-			{
-				ResourceTabPage.Tag = null;
-				InitResourceTabPage();
-				ResourceTabPage.Tag = this;
-				tc.TabPages.Add(ResourceTabPage);
-			}
-		}
-
-		/// <summary>
-		/// Add this Class to the tabControl
-		/// </summary>
-		/// <param name="tc">The tabControl the Page will be added to</param>
-		public void AddToTabControl(TabControl tc)
-		{
-			parent?.ClearTabPageChanged();
-
-			if (TabPage != null)
-			{
-				TabPage.Tag = null;
-				InitTabPage();
-			}
-			AddToTabControl(tc, this);
-			ExtendTabControl(tc);
-		}
-
-		/// <summary>
-		/// Add the TabPage (assigned to a RcolBlock) to the tabControl
-		/// </summary>
-		/// <param name="tc">The tabControl the Page will be added to</param>
-		/// <param name="rb">The RcolBlock</param>
-		public static void AddToTabControl(TabControl tc, IRcolBlock rb)
-		{
-			if (rb.TabPage != null)
-			{
-				rb.TabPage.Tag = rb;
-				rb.TabPage.Text = rb.BlockName;
-				tc.TabPages.Add(rb.TabPage);
-			}
-		}
-
 		#region IRcolBlock Members
 		/// <summary>
 		/// Unserializes a BinaryStream into the Attributes of this Instance
@@ -260,27 +199,6 @@ namespace SimPe.Plugin
 			get => blockname ?? "c" + GetType().Name;
 			set => blockname = value;
 		}
-
-		/// <summary>
-		/// Returns a tabPage that contains a GUI for this Element
-		/// </summary>
-		[Browsable(false)]
-		public virtual System.Windows.Forms.TabPage TabPage => null;
-
-		/// <summary>
-		/// Returns a tabPage that will be displayed in the top TabControl on the Rcol
-		/// Page if the Block is is the first one
-		/// </summary>
-		[Browsable(false)]
-		public virtual System.Windows.Forms.TabPage ResourceTabPage => null;
-
-		/// <summary>
-		/// Adds more TabPages (which are needed to process the Class) to the Control
-		/// </summary>
-		/// <param name="tc">The TabControl the Pages will be added to</param>
-		public virtual void ExtendTabControl(TabControl tc)
-		{
-		}
 		#endregion
 
 		public override string ToString()
@@ -330,25 +248,9 @@ namespace SimPe.Plugin
 				FileTableBase.FileIndex.FindFile(type, true);
 			try
 			{
-				if (Wait.Running)
-				{
-					wm = delegate (string message)
-					{
-						Wait.Message = message;
-						Wait.Progress++;
-					};
-					Wait.SubStart(items.Count());
-				}
-				else
-				{
-					wm = delegate (string message)
-					{
-					};
-				}
 
 				foreach (IScenegraphFileIndexItem item in items)
 				{
-					wm("");
 					Rcol r = new GenericRcol(null, false);
 
 					//try to open the File in the same package, not in the FileTable Package!
@@ -392,10 +294,6 @@ namespace SimPe.Plugin
 			}
 			finally
 			{
-				if (Wait.Running)
-				{
-					Wait.SubStop();
-				}
 			}
 
 			return null;

@@ -220,7 +220,7 @@ namespace SimPe
 	/// The main task of this class is to instantiate our own property descriptor
 	/// of type GlobalizedPropertyDescriptor.
 	/// </summary>
-	public class GlobalizedObject : ICustomTypeDescriptor
+	public class GlobalizedObject
 	{
 		System.Resources.ResourceManager resource;
 

@@ -73,11 +73,6 @@ namespace SimPe.PackedFiles.Objf
 				|| version == 0013; //0.10
 		}
 
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new ObjfForm();
-		}
-
 		/// <summary>
 		/// Returns a Human Readable Description of this Wrapper
 		/// </summary>

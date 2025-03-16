@@ -1,8 +1,10 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Threading.Tasks;
 
 using SimPe.Cache;
 using SimPe.Data;
@@ -55,16 +57,12 @@ namespace SimPe.Plugin
 		#region IScanner Member
 		protected override void DoInitScan()
 		{
-			ListView.SmallImageList = ListView.LargeImageList;
 			ids.Clear();
-			AddColumn(ListView, "Neighbourhood Type", 140);
-			AddColumn(ListView, "Neighbourhood UID", 80);
 		}
 
 		public void ScanPackage(
 			ScannerItem si,
-			PackageState ps,
-			System.Windows.Forms.ListViewItem lvi
+			PackageState ps
 		)
 		{
 			LoadThumbnail(si, ps);
@@ -100,16 +98,14 @@ namespace SimPe.Plugin
 				}
 			}
 
-			UpdateState(si, ps, lvi);
+			UpdateState(si, ps);
 		}
 
 		public void UpdateState(
 			ScannerItem si,
-			PackageState ps,
-			System.Windows.Forms.ListViewItem lvi
+			PackageState ps
 		)
 		{
-			SetSubItem(lvi, StartColum + 1, "");
 			if (si.PackageCacheItem.Type == PackageType.Neighbourhood)
 			{
 				if (si.PackageCacheItem.Thumbnail == null)
@@ -120,68 +116,17 @@ namespace SimPe.Plugin
 				//Add the Thumbnail if available
 				if (si.PackageCacheItem.Thumbnail != null)
 				{
-					ListView.SmallImageList.Images.Add(si.PackageCacheItem.Thumbnail);
-					lvi.ImageIndex = ListView.SmallImageList.Images.Count - 1;
 				}
 
 				if (ps.Data.Count > 1)
 				{
 					ids.Add(ps.Data[1]);
-					SetSubItem(
-						lvi,
-						StartColum,
-						((NeighborhoodType)ps.Data[0]).ToString().Replace("_", " ")
-					);
-					SetSubItem(
-						lvi,
-						StartColum + 1,
-						"0x" + Helper.HexString(ps.Data[1]),
-						ps
-					);
 				}
 			}
 		}
 
 		public void FinishScan()
 		{
-		}
-
-		protected override System.Windows.Forms.Control CreateOperationControl()
-		{
-			if (PathProvider.Global.EPInstalled >= 18)
-			{
-				System.Windows.Forms.Label ll = new System.Windows.Forms.Label
-				{
-					AutoSize = true,
-					Text =
-					"Create Unique ID - Disabled:\r\nChanging Neighbourhood IDs Destroys Neighbourhood Stories\r\nYour game will correctly fix Neighbourhood IDs if needed"
-				};
-				ll.Font = new Font(
-					"Verdana",
-					ll.Font.Size,
-					FontStyle.Bold
-				);
-				return ll;
-			}
-			else
-			{
-				System.Windows.Forms.LinkLabel ll =
-					new System.Windows.Forms.LinkLabel
-					{
-						AutoSize = true,
-						Text = "Create Unique ID"
-					};
-				ll.Font = new Font(
-					"Verdana",
-					ll.Font.Size,
-					FontStyle.Bold
-				);
-				ll.LinkClicked +=
-					new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
-						MakeUnique
-					);
-				return ll;
-			}
 		}
 
 		ScannerItem[] selection;
@@ -191,7 +136,6 @@ namespace SimPe.Plugin
 			selection = items;
 			if (!active)
 			{
-				OperationControl.Enabled = false;
 				return;
 			}
 
@@ -204,7 +148,6 @@ namespace SimPe.Plugin
 					break;
 				}
 			}
-			OperationControl.Enabled = en;
 		}
 
 		#endregion
@@ -214,9 +157,8 @@ namespace SimPe.Plugin
 			return "Neighbourhood Scanner";
 		}
 
-		private void MakeUnique(
-			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+		private async Task MakeUnique(
+			object sender
 		)
 		{
 			if (selection == null || PathProvider.Global.EPInstalled >= 18)
@@ -224,14 +166,12 @@ namespace SimPe.Plugin
 				return;
 			}
 
-			WaitingScreen.Wait();
 			bool chg = false;
 			try
 			{
 				Hashtable ids = Idno.FindUids(PathProvider.SimSavegameFolder, true);
 				foreach (ScannerItem si in selection)
 				{
-					WaitingScreen.UpdateMessage(si.FileName);
 
 					PackageState ps = si.PackageCacheItem.FindState(
 						Uid,
@@ -269,15 +209,9 @@ namespace SimPe.Plugin
 					CallbackFinish(false, false);
 				}
 			}
-#if !DEBUG
 			catch (Exception ex)
 			{
-				Helper.ExceptionMessage("", ex);
-			}
-#endif
-			finally
-			{
-				WaitingScreen.Stop();
+				await Helper.ExceptionMessage("", ex);
 			}
 		}
 	}

@@ -43,31 +43,12 @@ namespace SimPe.Plugin
 				|| Helper.IsLotCatalogFile(package.FileName));
 		}
 
-		Surgery surg;
-
 		public Interfaces.Plugin.IToolResult ShowDialog(
 			ref Interfaces.Files.IPackedFileDescriptor pfd,
 			ref Interfaces.Files.IPackageFile package
 		)
 		{
-			if (!IsReallyEnabled(pfd, package))
-			{
-				System.Windows.Forms.MessageBox.Show(
-					Localization.GetString(
-						"This is not an appropriate context in which to use this tool"
-					),
-					Localization.Manager.GetString("Sims Surgery Tool")
-				);
-				return new ToolResult(false, false);
-			}
-			if (surg == null)
-			{
-				surg = new Surgery();
-			}
-
-			surg.Text = Localization.Manager.GetString("Sims Surgery Tool");
-
-			return surg.Execute(ref pfd, ref package, prov);
+			return null;
 		}
 
 		public override string ToString()
@@ -79,7 +60,6 @@ namespace SimPe.Plugin
 
 		#region IToolExt Member
 		public override System.Drawing.Image Icon => GetIcon.SimSurgery;
-		public override System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.None;
 		#endregion
 	}
 }

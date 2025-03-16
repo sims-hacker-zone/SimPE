@@ -235,7 +235,6 @@ namespace pjse
 
 		#region ExtendedWrapper Members
 		protected abstract override void Unserialize(System.IO.BinaryReader reader);
-		protected abstract override IPackedFileUI CreateDefaultUIHandler();
 		#endregion
 
 		#region IList<T> Members

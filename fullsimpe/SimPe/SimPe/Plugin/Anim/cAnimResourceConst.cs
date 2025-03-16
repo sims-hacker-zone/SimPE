@@ -24,8 +24,6 @@ namespace SimPe.Plugin.Anim
 			get; set;
 		}
 
-		public Ambertation.BaseChangeShort B_Unknown1 => new Ambertation.BaseChangeShort(TotalTime);
-
 		[Description("Index 0 and 5 contain string Lengths.")]
 		public byte[] HeaderBytes
 		{
@@ -392,194 +390,13 @@ namespace SimPe.Plugin.Anim
 
 			writer.Write(Data);
 		}
-
-		fAnimResourceConst form = null;
-
-		[Browsable(false)]
-		public override System.Windows.Forms.TabPage TabPage
-		{
-			get
-			{
-				if (form == null)
-				{
-					form = new fAnimResourceConst();
-				}
-
-				return form.tMesh;
-			}
-		}
 		#endregion
 
-		/// <summary>
-		/// You can use this to setop the Controls on a TabPage befor it is dispplayed
-		/// </summary>
-		protected override void InitTabPage()
-		{
-			if (form == null)
-			{
-				form = new fAnimResourceConst();
-			}
-
-			form.tv.Nodes.Clear();
-			System.Windows.Forms.TreeNode btn = new System.Windows.Forms.TreeNode(
-				"Header"
-			)
-			{
-				Tag = this
-			};
-			form.tv.Nodes.Add(btn);
-			// can get a null reference exception here, it seems some AnimationMeshBlocks may not be readable
-			foreach (AnimationMeshBlock ab in MeshBlock)
-			{
-				try
-				{
-					System.Windows.Forms.TreeNode tn =
-						new System.Windows.Forms.TreeNode(ab.ToString())
-						{
-							Tag = ab
-						};
-					form.tv.Nodes.Add(tn);
-
-					foreach (AnimationFrameBlock ab2 in ab.Part2)
-					{
-						System.Windows.Forms.TreeNode tn2 =
-							new System.Windows.Forms.TreeNode(ab2.ToString())
-							{
-								Tag = ab2
-							};
-						tn.Nodes.Add(tn2);
-						foreach (AnimationAxisTransformBlock ab3 in ab2.AxisSet)
-						{
-							System.Windows.Forms.TreeNode tn3 =
-								new System.Windows.Forms.TreeNode(ab3.ToString())
-								{
-									Tag = ab3
-								};
-							tn2.Nodes.Add(tn3);
-
-							foreach (AnimationAxisTransform ab4 in ab3)
-							{
-								System.Windows.Forms.TreeNode tn4 =
-									new System.Windows.Forms.TreeNode(ab4.ToString())
-									{
-										Tag = ab4
-									};
-								tn3.Nodes.Add(tn4);
-							}
-						}
-
-						//Add a FrameList
-						if (ab2.FrameCount > 0)
-						{
-							System.Windows.Forms.TreeNode frames =
-								new System.Windows.Forms.TreeNode("Frames");
-							tn2.Nodes.Add(frames);
-							AnimationFrame[] afs = ab2.Frames;
-
-							for (int i = 0; i < afs.Length; i++)
-							{
-								AnimationFrame af = afs[i];
-								System.Windows.Forms.TreeNode tnf =
-									new System.Windows.Forms.TreeNode(af.ToString())
-									{
-										Tag = af
-									};
-								frames.Nodes.Add(tnf);
-							}
-							frames.Tag = afs;
-						}
-
-						//Add a FrameList
-						if (ab2.FrameCount > 0 && UserVerification.HaveUserId)
-						{
-							System.Windows.Forms.TreeNode frames =
-								new System.Windows.Forms.TreeNode(
-									"Interpolated Frames"
-								);
-							tn2.Nodes.Add(frames);
-							AnimationFrame[] afs = ab2.InterpolateMissingFrames();
-
-							for (int i = 0; i < afs.Length; i++)
-							{
-								AnimationFrame af = afs[i];
-								System.Windows.Forms.TreeNode tnf =
-									new System.Windows.Forms.TreeNode(af.ToString())
-									{
-										Tag = af
-									};
-								frames.Nodes.Add(tnf);
-							}
-							frames.Tag = afs;
-						}
-					}
-
-					foreach (AnimBlock4 ab4 in ab.Part4)
-					{
-						System.Windows.Forms.TreeNode tn4 =
-							new System.Windows.Forms.TreeNode(ab4.ToString())
-							{
-								Tag = ab4
-							};
-						tn.Nodes.Add(tn4);
-						foreach (AnimBlock5 ab5 in ab4.Part5)
-						{
-							System.Windows.Forms.TreeNode tn5 =
-								new System.Windows.Forms.TreeNode(ab5.ToString())
-								{
-									Tag = ab5
-								};
-							tn4.Nodes.Add(tn5);
-						}
-					}
-				}
-				catch
-				{
-					btn.Text = "Header (faulty)";
-				}
-			}
-
-			foreach (AnimBlock6 ab in ab6)
-			{
-				System.Windows.Forms.TreeNode tn = new System.Windows.Forms.TreeNode(
-					ab.ToString()
-				)
-				{
-					Tag = ab
-				};
-				form.tv.Nodes.Add(tn);
-			}
-
-			form.tb_arc_ver.Tag = true;
-			form.tb_arc_ver.Text = "0x" + Helper.HexString(version);
-			form.tb_arc_ver.Tag = null;
-
-			form.ambc.MeshBlocks = MeshBlock;
-		}
-
-		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
-		{
-			if (form == null)
-			{
-				form = new fAnimResourceConst();
-			}
-
-			base.ExtendTabControl(tc);
-
-			form.tMisc.Tag = this;
-			tc.TabPages.Add(form.tMisc);
-
-			form.tAnimResourceConst.Tag = this;
-			if (UserVerification.HaveUserId)
-			{
-				tc.TabPages.Add(form.tAnimResourceConst);
-			}
-		}
 
 		#region IDisposable Member
 
 		public override void Dispose()
 		{
-			form?.Dispose();
 		}
 
 		#endregion

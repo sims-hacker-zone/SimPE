@@ -7,7 +7,6 @@ namespace SimPe.Plugin
 	/// </summary>
 	internal class ScannerTool : Interfaces.AbstractTool, Interfaces.ITool
 	{
-		static ScannerForm ds;
 
 		internal ScannerTool()
 		{
@@ -28,24 +27,7 @@ namespace SimPe.Plugin
 			ref Interfaces.Files.IPackageFile package
 		)
 		{
-			if (ds == null)
-			{
-				ds = new ScannerForm();
-			}
-
-			RemoteControl.ShowSubForm(ds);
-
-			if (ds.FileName == null)
-			{
-				return new ToolResult(false, false);
-			}
-			else
-			{
-				Packages.GeneratableFile gf =
-					Packages.File.LoadFromFile(ds.FileName);
-				package = gf;
-				return new ToolResult(false, true);
-			}
+			return new ToolResult(false, false);
 		}
 
 		public override string ToString()
@@ -60,8 +42,6 @@ namespace SimPe.Plugin
 					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.scanfolder.png")
 				);
-
-		public override System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.CtrlF;
 		#endregion
 	}
 }

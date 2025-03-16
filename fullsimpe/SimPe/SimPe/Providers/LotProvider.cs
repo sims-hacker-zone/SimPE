@@ -263,17 +263,10 @@ namespace SimPe.Providers
 			lotfi.Load();
 			System.Collections.Generic.IEnumerable<Interfaces.Scenegraph.IScenegraphFileIndexItem> items =
 				lotfi.FindFile(FileTypes.IMG, MetaData.LOCAL_GROUP, 0x35CA0002, null);
-			bool run = Wait.Running;
-			if (!run)
-			{
-				Wait.Start();
-			}
 
-			Wait.SubStart(items.Count());
 			try
 			{
 				int ct = 0;
-				int step = Math.Max(2, Wait.MaxProgress / 100);
 				foreach (
 					Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
 				)
@@ -318,11 +311,6 @@ namespace SimPe.Providers
 
 					content[li.Instance] = li;
 					ct++;
-					if (ct % step == 0)
-					{
-						Wait.Message = name;
-						Wait.Progress = ct;
-					}
 				} //foreach
 			}
 #if !DEBUG
@@ -333,11 +321,6 @@ namespace SimPe.Providers
 #endif
 			finally
 			{
-				Wait.SubStop();
-				if (!run)
-				{
-					Wait.Stop(true);
-				}
 			}
 
 			ended.Set();
@@ -392,12 +375,10 @@ namespace SimPe.Providers
 				return;
 			}
 
-			Wait.SubStart();
 			ngbhfi.Clear();
 
 			AddLotsToFileIndex();
 			AddHoodsToFileIndex();
-			Wait.SubStop();
 
 			ExecuteThread(ThreadPriority.AboveNormal, "Lot Provider", true, true);
 		}

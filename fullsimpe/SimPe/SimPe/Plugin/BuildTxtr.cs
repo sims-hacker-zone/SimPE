@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Threading.Tasks;
 
 using SimPe.Forms.MainUI;
 using SimPe.Interfaces;
@@ -210,7 +211,7 @@ namespace SimPe.Plugin
 
 		#region ICommandLine Members
 
-		public bool Parse(List<string> argv)
+		public async Task<bool> Parse(List<string> argv)
 		{
 			int i = ArgParser.Parse(argv, "-txtr");
 			if (i < 0)
@@ -295,7 +296,7 @@ namespace SimPe.Plugin
 			//check if the File exists
 			if (!System.IO.File.Exists(filename))
 			{
-				Message.Show(filename + " was not found.");
+				await Message.Show(filename + " was not found.");
 				return true;
 			}
 			if (output.Trim() == "")
@@ -316,15 +317,6 @@ namespace SimPe.Plugin
 				)
 			)
 			{
-				LoadDDS(
-					id,
-					DDSTool.BuildDDS(
-						filename,
-						levels,
-						format,
-						"-sharpenMethod Smoothen"
-					)
-				);
 			}
 			else
 			{

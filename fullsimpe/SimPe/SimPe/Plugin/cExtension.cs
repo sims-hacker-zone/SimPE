@@ -432,52 +432,12 @@ namespace SimPe.Plugin
 				}
 			}
 		}
-
-		TabPage.Extension form = null;
-		public override System.Windows.Forms.TabPage TabPage
-		{
-			get
-			{
-				if (form == null)
-				{
-					form = new TabPage.Extension();
-				}
-
-				return form;
-			}
-		}
 		#endregion
-
-		/// <summary>
-		/// You can use this to setop the Controls on a TabPage befor it is dispplayed
-		/// </summary>
-		protected override void InitTabPage()
-		{
-			if (form == null)
-			{
-				form = new TabPage.Extension();
-			}
-
-			form.tb_ver.Text = "0x" + Helper.HexString(version);
-			form.tb_type.Text = "0x" + Helper.HexString(TypeCode);
-			form.tb_name.Text = varname;
-
-			form.lb_items.Items.Clear();
-			foreach (ExtensionItem ei in Items)
-			{
-				form.lb_items.Items.Add(ei);
-			}
-
-			form.gbIems.Tag = Items;
-		}
 
 		#region IDisposable Member
 
 		public override void Dispose()
 		{
-			form?.Dispose();
-
-			form = null;
 		}
 
 		#endregion

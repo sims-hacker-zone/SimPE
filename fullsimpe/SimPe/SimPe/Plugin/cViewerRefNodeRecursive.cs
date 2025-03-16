@@ -149,52 +149,12 @@ namespace SimPe.Plugin
 			writer.Write(Unknown5);
 		}
 
-		//fShapeRefNode form = null;
-		TabPage.GenericRcol tGenericRcol;
-		public override System.Windows.Forms.TabPage TabPage
-		{
-			get
-			{
-				if (tGenericRcol == null)
-				{
-					tGenericRcol = new TabPage.GenericRcol();
-				}
-
-				return tGenericRcol;
-			}
-		}
 		#endregion
-
-		/// <summary>
-		/// You can use this to setop the Controls on a TabPage befor it is dispplayed
-		/// </summary>
-		protected override void InitTabPage()
-		{
-			if (tGenericRcol == null)
-			{
-				tGenericRcol = new TabPage.GenericRcol();
-			}
-
-			tGenericRcol.tb_ver.Text = "0x" + Helper.HexString(version);
-			tGenericRcol.gen_pg.SelectedObject = this;
-		}
-
-		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
-		{
-			base.ExtendTabControl(tc);
-			vrnb.AddToTabControl(tc);
-			rn.AddToTabControl(tc);
-			bn.AddToTabControl(tc);
-			tn.AddToTabControl(tc);
-		}
 
 		#region IDisposable Member
 
 		public override void Dispose()
 		{
-			tGenericRcol?.Dispose();
-
-			tGenericRcol = null;
 		}
 
 		#endregion

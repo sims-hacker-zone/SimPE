@@ -3,6 +3,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace SimPe.Plugin.Gmdc
 {
@@ -292,14 +293,14 @@ namespace SimPe.Plugin.Gmdc
 		///
 		/// Use the <see cref="writer"/> member to write to the File.
 		/// </remarks>
-		protected abstract void ProcessGroup();
+		protected abstract Task ProcessGroup();
 
 		/// <summary>
 		/// Called when the export was finished
 		/// </summary>
 		/// <remarks>you should use this to write Footer Informations.
 		/// Use the <see cref="writer"/> member to write to the File</remarks>
-		protected abstract void FinishFile();
+		protected abstract Task FinishFile();
 		#endregion
 
 		string flname;

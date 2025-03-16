@@ -33,7 +33,6 @@ namespace SimPe.PackedFiles.Objd
 		/// </summary>
 		private byte[] filename = new byte[0x40];
 		private byte[] filename2 = new byte[0];
-		static ObjdPropertyParser tpp;
 		#endregion
 
 		#region Accessor methods
@@ -243,27 +242,6 @@ namespace SimPe.PackedFiles.Objd
 			get; private set;
 		}
 
-		/// <summary>
-		/// Return a PropertyParser, that enumerates all known Properties as <see cref="Ambertation.PropertyDescription"/> Objects
-		/// </summary>
-		public static ObjdPropertyParser PropertyParser
-		{
-			get
-			{
-				if (tpp == null)
-				{
-					tpp = new ObjdPropertyParser(
-						System.IO.Path.Combine(
-							Helper.SimPeDataPath,
-							"objddefinition.xml"
-						)
-					);
-				}
-
-				return tpp;
-			}
-		}
-
 		internal uint createguid =>
 				// TODO
 				//string gooee = "";
@@ -310,10 +288,6 @@ namespace SimPe.PackedFiles.Objd
 		}
 
 		#region AbstractWrapper Member
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new ExtObjdForm();
-		}
 
 		protected override IWrapperInfo CreateWrapperInfo()
 		{

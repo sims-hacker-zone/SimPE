@@ -1,7 +1,10 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+using System.Threading.Tasks;
+
 using SimPe.Data;
+using SimPe.Forms.MainUI;
 using SimPe.Interfaces;
 
 namespace SimPe.Plugin
@@ -32,7 +35,7 @@ namespace SimPe.Plugin
 			return package != null && package.FileName != null;
 		}
 
-		private bool IsReallyEnabled(
+		private async Task<bool> IsReallyEnabled(
 			Interfaces.Files.IPackedFileDescriptor pfd,
 			Interfaces.Files.IPackageFile package
 		)
@@ -49,7 +52,7 @@ namespace SimPe.Plugin
 				return true;
 			}
 
-			System.Windows.Forms.MessageBox.Show(
+			await Message.Show(
 				"This package does not contain any Text Files."
 			);
 			return false;
@@ -60,13 +63,7 @@ namespace SimPe.Plugin
 			ref Interfaces.Files.IPackageFile package
 		)
 		{
-			if (!IsReallyEnabled(pfd, package))
-			{
-				return new ToolResult(false, false);
-			}
-
-			LanguageExtrator languagextrator = new LanguageExtrator();
-			return languagextrator.Execute(ref pfd, ref package, prov);
+			return new ToolResult(false, false);
 		}
 
 		public override string ToString()
@@ -81,7 +78,6 @@ namespace SimPe.Plugin
 					GetType()
 						.Assembly.GetManifestResourceStream("SimPe.img.Extractor.png")
 				);
-		public override System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.None;
 		#endregion
 	}
 }

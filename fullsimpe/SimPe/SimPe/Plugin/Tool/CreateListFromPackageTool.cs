@@ -53,7 +53,6 @@ namespace SimPe.Plugin.Tool
 		#endregion
 
 		#region IToolExt Member
-		public System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.CtrlShiftD;
 
 		public System.Drawing.Image Icon => System.Drawing.Image.FromStream(
 					GetType()

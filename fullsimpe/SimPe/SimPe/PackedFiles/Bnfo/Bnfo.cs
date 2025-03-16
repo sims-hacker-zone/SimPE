@@ -69,10 +69,6 @@ namespace SimPe.PackedFiles.Bnfo
 		#endregion
 
 		#region AbstractWrapper Member
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new BnfoUI();
-		}
 
 		private byte[] over;
 

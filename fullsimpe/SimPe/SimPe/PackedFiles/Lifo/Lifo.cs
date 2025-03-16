@@ -25,10 +25,6 @@ namespace SimPe.PackedFiles.Lifo
 			: base(provider, fast) { }
 
 		#region AbstractWrapper Member
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new LifoUI();
-		}
 
 		/// <summary>
 		/// Returns a Human Readable Description of this Wrapper

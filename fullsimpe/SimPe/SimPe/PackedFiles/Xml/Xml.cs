@@ -27,10 +27,6 @@ namespace SimPe.PackedFiles.Xml
 		#endregion
 
 		#region AbstractWrapper Member
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new XmlUI();
-		}
 
 		public Xml()
 			: base() { }

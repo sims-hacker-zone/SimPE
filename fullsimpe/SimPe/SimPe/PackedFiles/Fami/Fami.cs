@@ -349,10 +349,6 @@ namespace SimPe.PackedFiles.Fami
 		}
 
 		#region AbstractWrapper Member
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new FamiUI();
-		}
 
 		public Fami(Interfaces.Providers.ISimNames names)
 			: base()

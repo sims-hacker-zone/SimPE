@@ -3,7 +3,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Windows.Forms;
+using System.Threading.Tasks;
 
 using SimPe.Cache;
 using SimPe.Data;
@@ -31,15 +31,14 @@ namespace SimPe.Plugin.Scanner
 
 		protected override void DoInitScan()
 		{
-			AddColumn(ListView, "Ages", 150);
-			AddColumn(ListView, "Categories", 150);
-			AddColumn(ListView, "Gender", 50);
+			AddColumn("Ages", 150);
+			AddColumn("Categories", 150);
+			AddColumn("Gender", 50);
 		}
 
 		public void ScanPackage(
 			ScannerItem si,
-			PackageState ps,
-			ListViewItem lvi
+			PackageState ps
 		)
 		{
 			if (
@@ -97,18 +96,14 @@ namespace SimPe.Plugin.Scanner
 				ps.State = TriState.False;
 			}
 
-			UpdateState(si, ps, lvi);
+			UpdateState(si, ps);
 		}
 
 		public void UpdateState(
 			ScannerItem si,
-			PackageState ps,
-			ListViewItem lvi
+			PackageState ps
 		)
 		{
-			SetSubItem(lvi, StartColum + 2, "");
-
-			System.Drawing.Color cl = lvi.ForeColor;
 			if (ps.State == TriState.True)
 			{
 				uint f = 0;
@@ -136,12 +131,6 @@ namespace SimPe.Plugin.Scanner
 						age += ag.ToString();
 					}
 				}
-				if (a == 0)
-				{
-					cl = System.Drawing.Color.Red;
-				}
-
-				SetSubItem(lvi, StartColum, age, cl);
 
 				string sex = "";
 				Data.Gender[] sexs = (Data.Gender[])Enum.GetValues(typeof(Data.Gender));
@@ -157,9 +146,6 @@ namespace SimPe.Plugin.Scanner
 						sex += sx.ToString();
 					}
 				}
-				cl = f == 0 ? System.Drawing.Color.Red : lvi.ForeColor;
-
-				SetSubItem(lvi, StartColum + 2, sex, cl);
 
 				if (si.PackageCacheItem.Type != PackageType.Skin)
 				{
@@ -178,9 +164,6 @@ namespace SimPe.Plugin.Scanner
 							category += cat.ToString();
 						}
 					}
-					cl = c == 0 ? System.Drawing.Color.Red : lvi.ForeColor;
-
-					SetSubItem(lvi, StartColum + 1, category, cl);
 				}
 			}
 		}
@@ -196,32 +179,6 @@ namespace SimPe.Plugin.Scanner
 		public override void EnableControl(ScannerItem[] items, bool active)
 		{
 			selection = items;
-			if (!active)
-			{
-				OperationControl.Enabled = false;
-				return;
-			}
-
-			bool en = false;
-
-			int[] agect = new int[ScannerPanelForm.Form.cbages.Length];
-			for (int i = 0; i < agect.Length; i++)
-			{
-				agect[i] = 0;
-			}
-
-			int[] catct = new int[ScannerPanelForm.Form.cbcategories.Length];
-			for (int i = 0; i < catct.Length; i++)
-			{
-				catct[i] = 0;
-			}
-
-			int[] sexct = new int[ScannerPanelForm.Form.cbsexes.Length];
-			for (int i = 0; i < sexct.Length; i++)
-			{
-				sexct[i] = 0;
-			}
-
 			int maxagecount = 0;
 			foreach (ScannerItem si in items)
 			{
@@ -231,93 +188,9 @@ namespace SimPe.Plugin.Scanner
 				);
 				for (int ct = 0; ct < ps.Data.Count - 2; ct += 3)
 				{
-					en = true;
 					maxagecount++;
-					for (int i = 0; i < agect.Length; i++)
-					{
-						if (
-							(ps.Data[ct] & (uint)ScannerPanelForm.Form.cbages[i].Tag)
-							!= 0
-						)
-						{
-							agect[i]++;
-						}
-					}
-
-					for (int i = 0; i < catct.Length; i++)
-					{
-						if (
-							(
-								ps.Data[ct + 1]
-								& (uint)ScannerPanelForm.Form.cbcategories[i].Tag
-							) != 0
-						)
-						{
-							catct[i]++;
-						}
-					}
-
-					for (int i = 0; i < sexct.Length; i++)
-					{
-						if (
-							(
-								ps.Data[ct + 2]
-								& (uint)ScannerPanelForm.Form.cbsexes[i].Tag
-							) != 0
-						)
-						{
-							sexct[i]++;
-						}
-					}
 				} //for ct
 			}
-
-			//Set the State of the Checkboxes
-			for (int i = 0; i < agect.Length; i++)
-			{
-				ScannerPanelForm.Form.cbages[i].CheckState = agect[i] == 0
-					? CheckState
-						.Unchecked
-					: agect[i] == maxagecount
-						? CheckState
-											.Checked
-						: CheckState
-											.Indeterminate;
-			}
-
-			//Set the State of the Checkboxes
-			for (int i = 0; i < catct.Length; i++)
-			{
-				ScannerPanelForm.Form.cbcategories[i].CheckState = catct[i] == 0
-					? CheckState
-						.Unchecked
-					: catct[i] == maxagecount
-						? CheckState
-											.Checked
-						: CheckState
-											.Indeterminate;
-			}
-
-			//Set the State of the Checkboxes
-			for (int i = 0; i < sexct.Length; i++)
-			{
-				ScannerPanelForm.Form.cbsexes[i].CheckState = sexct[i] == 0
-					? CheckState
-						.Unchecked
-					: sexct[i] == maxagecount
-						? CheckState
-											.Checked
-						: CheckState
-											.Indeterminate;
-			}
-
-			OperationControl.Enabled = en;
-		}
-
-		protected override Control CreateOperationControl()
-		{
-			ScannerPanelForm.Form.pncloth.Tag = this;
-			return ScannerPanelForm.Form.pncloth;
 		}
 
 		#endregion
@@ -353,14 +226,13 @@ namespace SimPe.Plugin.Scanner
 		/// <param name="name"></param>
 		/// <param name="cbs"></param>
 		/// <param name="yacheck">true, if you want to perform a check for YoungAdulst and add apropriate Filds to the cpf</param>
-		void SetProperty(string name, CheckBox[] cbs, bool yacheck)
+		async Task SetProperty(string name, bool yacheck)
 		{
 			if (selection == null)
 			{
 				return;
 			}
 
-			WaitingScreen.Wait();
 			try
 			{
 				bool chg = false;
@@ -380,7 +252,6 @@ namespace SimPe.Plugin.Scanner
 						|| si.PackageCacheItem.Type == PackageType.Hair
 					)
 					{
-						WaitingScreen.UpdateMessage(si.FileName);
 
 						//make sure, the file is rescanned on the next Cache Update
 						PackageState ps = si.PackageCacheItem.FindState(
@@ -417,19 +288,6 @@ namespace SimPe.Plugin.Scanner
 							Cpf cpf = new Cpf().ProcessFile(pfd, si.Package, false);
 
 							uint age = cpf.GetSaveItem(name).UIntegerValue;
-							foreach (CheckBox cb in cbs)
-							{
-								if (cb.CheckState == CheckState.Indeterminate)
-								{
-									continue;
-								}
-
-								age |= (uint)cb.Tag;
-								if (cb.CheckState == CheckState.Unchecked)
-								{
-									age ^= (uint)cb.Tag;
-								}
-							}
 
 							if (yacheck)
 							{
@@ -460,37 +318,8 @@ namespace SimPe.Plugin.Scanner
 			}
 			catch (Exception ex)
 			{
-				Helper.ExceptionMessage("", ex);
+				await Helper.ExceptionMessage("", ex);
 			}
-			finally
-			{
-				WaitingScreen.UpdateImage(null);
-				WaitingScreen.Stop();
-			}
-		}
-
-		/// <summary>
-		/// Set the Age of the Files
-		/// </summary>
-		public void SetAge()
-		{
-			SetProperty("age", ScannerPanelForm.Form.cbages, true);
-		}
-
-		/// <summary>
-		/// Set the Gender of the Files
-		/// </summary>
-		public void SetSex()
-		{
-			SetProperty("gender", ScannerPanelForm.Form.cbsexes, true);
-		}
-
-		/// <summary>
-		/// Set the Category of the Files
-		/// </summary>
-		public void SetCategory()
-		{
-			SetProperty("category", ScannerPanelForm.Form.cbcategories, false);
 		}
 
 		public override string ToString()

@@ -321,11 +321,6 @@ namespace SimPe.Wants
 			writer.Write(unknown4);
 		}
 
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new SWAFEditor();
-		}
-
 		/// <summary>
 		/// Returns a Human Readable Description of this Wrapper
 		/// </summary>

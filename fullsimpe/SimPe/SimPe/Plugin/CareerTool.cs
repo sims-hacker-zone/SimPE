@@ -1,5 +1,8 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+using System.Threading.Tasks;
+
+using SimPe.Forms.MainUI;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Glob;
@@ -31,7 +34,7 @@ namespace SimPe.Plugin
 			return true;
 		}
 
-		private bool IsReallyEnabled(Interfaces.Files.IPackedFileDescriptor pfd, Interfaces.Files.IPackageFile package)
+		private async Task<bool> IsReallyEnabled(Interfaces.Files.IPackedFileDescriptor pfd, Interfaces.Files.IPackageFile package)
 		{
 			if (package == null || package.FileName == null)
 			{
@@ -43,19 +46,13 @@ namespace SimPe.Plugin
 			{
 				return true;
 			}
-			System.Windows.Forms.MessageBox.Show("This package does not contain a career.");
+			await Message.Show("This package does not contain a career.");
 			return false;
 		}
 
 		public Interfaces.Plugin.IToolResult ShowDialog(ref Interfaces.Files.IPackedFileDescriptor pfd, ref Interfaces.Files.IPackageFile package)
 		{
-			if (!IsReallyEnabled(pfd, package))
-			{
-				return new ToolResult(false, false);
-			}
-
-			CareerEditor careerEditor = new CareerEditor();
-			return careerEditor.Execute(ref pfd, ref package, prov);
+			return null;
 		}
 
 
@@ -68,7 +65,6 @@ namespace SimPe.Plugin
 
 		#region IToolExt Member
 		public override System.Drawing.Image Icon => System.Drawing.Image.FromStream(GetType().Assembly.GetManifestResourceStream("SimPe.img.CareerIcon.png"));
-		public override System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.None;
 		#endregion
 	}
 }

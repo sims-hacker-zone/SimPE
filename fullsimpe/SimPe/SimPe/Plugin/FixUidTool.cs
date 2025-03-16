@@ -1,7 +1,9 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Threading.Tasks;
 
+using SimPe.Forms.MainUI;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Idno;
 
@@ -26,55 +28,39 @@ namespace SimPe.Plugin
 			return true;
 		}
 
-		public Interfaces.Plugin.IToolResult ShowDialog(
+		public IToolResult ShowDialog(
 			ref Interfaces.Files.IPackedFileDescriptor pfd,
 			ref Interfaces.Files.IPackageFile package
 		)
 		{
-			System.Windows.Forms.DialogResult dr = System.Windows.Forms.MessageBox.Show(
-				"Using this Tool can serioulsy mess up all of your Neighbourhoods and Neighbourhood Stories, it can acheive nothing usefull.\n\nMake sure you have a Backup of ALL your Neighbourhoods before starting this Tool!\n\nDo you want to start this Tool?",
-				"Confirmation",
-				System.Windows.Forms.MessageBoxButtons.YesNo
-			);
 
-			if (dr == System.Windows.Forms.DialogResult.Yes)
+			try
 			{
-				Wait.SubStop();
-				try
+				System.Collections.Hashtable ht = Idno.FindUids(
+					PathProvider.SimSavegameFolder,
+					true
+				);
+				foreach (string file in ht.Keys)
 				{
-					System.Collections.Hashtable ht = Idno.FindUids(
-						PathProvider.SimSavegameFolder,
-						true
-					);
-					foreach (string file in ht.Keys)
+					Packages.GeneratableFile fl =
+						Packages.File.LoadFromFile(file);
+					Interfaces.Files.IPackedFileDescriptor[] pfds =
+						fl.FindFiles(Data.FileTypes.IDNO);
+					foreach (
+						Interfaces.Files.IPackedFileDescriptor spfd in pfds
+					)
 					{
-						Wait.Message = file;
+						Idno idno = new Idno().ProcessFile(spfd, fl);
+						idno.MakeUnique(ht);
 
-						Packages.GeneratableFile fl =
-							Packages.File.LoadFromFile(file);
-						Interfaces.Files.IPackedFileDescriptor[] pfds =
-							fl.FindFiles(Data.FileTypes.IDNO);
-						foreach (
-							Interfaces.Files.IPackedFileDescriptor spfd in pfds
-						)
-						{
-							Idno idno = new Idno().ProcessFile(spfd, fl);
-							idno.MakeUnique(ht);
-
-							idno.SynchronizeUserData();
-						}
-
-						fl.Save();
+						idno.SynchronizeUserData();
 					}
+
+					fl.Save();
 				}
-				catch (Exception ex)
-				{
-					Helper.ExceptionMessage("", ex);
-				}
-				finally
-				{
-					Wait.SubStop();
-				}
+			}
+			catch (Exception ex)
+			{
 			}
 			return new ToolResult(false, false);
 		}

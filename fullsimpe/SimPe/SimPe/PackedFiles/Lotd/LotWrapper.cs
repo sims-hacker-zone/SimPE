@@ -81,10 +81,6 @@ namespace SimPe.PackedFiles.Lotd
 		#endregion
 
 		#region AbstractWrapper Member
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new LoteUI();
-		}
 
 		/// <summary>
 		/// Returns a Human Readable Description of this Wrapper

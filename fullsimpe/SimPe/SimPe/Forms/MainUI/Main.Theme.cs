@@ -7,11 +7,6 @@ namespace SimPe.Forms.MainUI
 	{
 		void InitTheme()
 		{
-			dcResourceList.Visible = true;
-			dcResource.Visible = true;
-			//setup the Theme Manager
-
-			manager.Renderer = new Ambertation.Windows.Forms.GlossyRenderer();
 		}
 
 		/// <summary>

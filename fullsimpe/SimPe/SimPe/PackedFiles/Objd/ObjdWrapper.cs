@@ -254,10 +254,6 @@ catch (Exception) {};*/
 		#endregion
 
 		#region AbstractWrapper Member
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new ObjdUI();
-		}
 
 		Interfaces.Providers.IOpcodeProvider opcodes;
 

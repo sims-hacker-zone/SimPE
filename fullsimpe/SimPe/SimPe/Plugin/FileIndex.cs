@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 using SimPe.Data;
 using SimPe.Interfaces.Files;
@@ -261,8 +262,6 @@ namespace SimPe.Plugin
 		/// </summary>
 		protected override void StartThread()
 		{
-			Wait.SubStart(BaseFolders.Count);
-			Wait.Message = Localization.GetString("Loading") + " Group Cache";
 			WrapperFactory.LoadGroupCache();
 
 			Clear();
@@ -275,11 +274,9 @@ namespace SimPe.Plugin
 					break;
 				}
 
-				Wait.Progress = ct++;
 				AddIndexFromFolder(fti);
 			}
 
-			Wait.SubStop();
 			if (AllowEvent)
 			{
 				OnFILoad(this, new EventArgs()); // this triggers loading of PJSE filetable
@@ -401,12 +398,6 @@ namespace SimPe.Plugin
 			{
 				return;
 			}
-
-			Wait.Message =
-				Localization.GetString("Loading")
-				+ " \""
-				+ System.IO.Path.GetFileNameWithoutExtension(file)
-				+ "\"";
 			try
 			{
 				IPackageFile package =
@@ -415,7 +406,6 @@ namespace SimPe.Plugin
 			}
 			catch (Exception ex)
 			{
-				Helper.ExceptionMessage("", ex);
 			}
 		}
 
@@ -773,12 +763,6 @@ namespace SimPe.Plugin
 
 		public void WriteContentToConsole()
 		{
-			System.Windows.Forms.Form f = new System.Windows.Forms.Form();
-			System.Windows.Forms.ListBox lb = new System.Windows.Forms.ListBox
-			{
-				Dock = System.Windows.Forms.DockStyle.Fill
-			};
-			f.Controls.Add(lb);
 
 			foreach (IScenegraphFileIndex fi in Children)
 			{
@@ -787,15 +771,6 @@ namespace SimPe.Plugin
 					index1.WriteContentToConsole();
 				}
 			}
-
-			lb.Items.AddRange((from types in Index
-							   from groups in types.Value
-							   from instances in groups.Value
-							   from item in instances.Value
-							   select $"{item.FileDescriptor} in {item.Package.SaveFileName}").ToArray());
-
-			f.ShowDialog();
-			f.Dispose();
 		}
 
 		/// <summary>

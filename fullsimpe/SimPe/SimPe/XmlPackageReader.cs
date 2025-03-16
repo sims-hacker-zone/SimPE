@@ -3,7 +3,6 @@
 using System;
 using System.Collections;
 using System.IO;
-using System.Windows.Forms;
 using System.Xml;
 
 using SimPe.Data;
@@ -22,7 +21,6 @@ namespace SimPe
 		/// <param name="pb">A Progressbar indicating the progress</param>
 		/// <returns>Binary Reader representing the Package File</returns>
 		public static BinaryReader OpenExtractedPackage(
-			ProgressBar pb,
 			string filename
 		)
 		{
@@ -44,19 +42,10 @@ namespace SimPe
 
 				type = (Data.IndexTypes)uint.Parse(o.ToString());
 
-				if (pb != null)
-				{
-					pb.Maximum = node.ChildNodes.Count;
-				}
 
 				int count = 0;
 				foreach (XmlNode subnode in node)
 				{
-					if (pb != null)
-					{
-						pb.Value = count++;
-						Application.DoEvents();
-					}
 					///a New FileItem
 					if (subnode.LocalName == "packedfile")
 					{
@@ -81,10 +70,6 @@ namespace SimPe
 
 			MemoryStream ms = file.Build();
 			file.EndUpdate();
-			if (pb != null)
-			{
-				pb.Value = pb.Maximum;
-			}
 
 			return new BinaryReader(ms);
 		}

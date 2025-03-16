@@ -52,10 +52,6 @@ namespace SimPe.PackedFiles.ThreeIdr
 		#endregion
 
 		#region AbstractWrapper Member
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new ThreeIdrUI();
-		}
 
 		/// <summary>
 		/// Returns a Human Readable Description of this Wrapper

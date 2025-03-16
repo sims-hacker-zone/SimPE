@@ -70,13 +70,5 @@ namespace SimPe.Interfaces
 		/// to the signature provided by the Handler
 		/// </remarks>
 		Plugin.IFileWrapper FindHandler(byte[] data);
-
-		/// <summary>
-		/// Contains a Listing of all available Wrapper Icons
-		/// </summary>
-		System.Windows.Forms.ImageList WrapperImageList
-		{
-			get;
-		}
 	}
 }

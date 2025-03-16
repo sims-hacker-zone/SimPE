@@ -100,10 +100,6 @@ namespace SimPe.PackedFiles.Picture
 		}
 
 		#region AbstractWrapper Member
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new PictureUI();
-		}
 
 		public Picture()
 			: base() { }

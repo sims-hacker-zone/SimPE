@@ -31,10 +31,6 @@ namespace SimPe.Plugin
 		#endregion
 
 		#region AbstractWrapper Member
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new AudioRefPackedFileUI();
-		}
 
 		protected override IWrapperInfo CreateWrapperInfo()
 		{

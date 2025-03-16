@@ -36,11 +36,6 @@ namespace SimPe.PackedFiles.Sdsc
 			);
 		}
 
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new ExtSDescUI();
-		}
-
 		/// <summary>
 		/// Returns the Name of the File the Character is stored in
 		/// </summary>

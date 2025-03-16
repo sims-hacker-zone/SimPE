@@ -288,34 +288,11 @@ namespace SimPe.Plugin.Downloads
 					new Point(0, 0),
 					Color.Magenta
 				);
-				return Ambertation.Windows.Forms.Graph.ImagePanel.CreateThumbnail(
-					img,
-					sz,
-					8,
-					Color.FromArgb(90, Color.Black),
-					Color.FromArgb(10, 10, 40),
-					Color.White,
-					Color.FromArgb(80, Color.White),
-					true,
-					3,
-					3
-				);
 			}
 			else
 			{
-				return Ambertation.Windows.Forms.Graph.ImagePanel.CreateThumbnail(
-					img,
-					sz,
-					8,
-					Color.FromArgb(90, Color.Black),
-					Color.FromArgb(10, 10, 40),
-					Color.White,
-					Color.FromArgb(80, Color.White),
-					true,
-					3,
-					3
-				);
 			}
+			return null;
 		}
 
 		/// <summary>

@@ -205,10 +205,6 @@ namespace SimPe.PackedFiles.Ltxt
 		#endregion
 
 		#region AbstractWrapper Member
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new LtxtUI();
-		}
 
 		/// <summary>
 		/// Returns a Human Readable Description of this Wrapper

@@ -184,18 +184,11 @@ namespace SimPe.Packages
 
 			long lastitem = -1;
 			long firstitem = -1;
-			WaitingScreen.Wait();
 
 			try
 			{
 				while (pos > 0x04)
 				{
-					WaitingScreen.UpdateMessage(
-						"0x"
-							+ $"{pos:X16}"
-							+ " / 0x"
-							+ $"{br.BaseStream.Length:X16}"
-					);
 
 					bool hit = CouldBeIndexItem(br, pos, step, lastitem == -1);
 					if (hit && lastitem == -1)
@@ -221,7 +214,6 @@ namespace SimPe.Packages
 			}
 			finally
 			{
-				WaitingScreen.Stop();
 			}
 
 			hi.offset = (uint)firstitem;

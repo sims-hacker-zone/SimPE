@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 using SimPe.Forms.MainUI;
 using SimPe.Interfaces;
@@ -11,15 +12,13 @@ namespace SimPe.Plugin
 	class BuildPackage : ICommandLine
 	{
 		#region ICommandLine Members
-		public bool Parse(List<string> argv)
+		public async Task<bool> Parse(List<string> argv)
 		{
 			int i = ArgParser.Parse(argv, "-build");
 			if (i < 0)
 			{
 				return false;
 			}
-
-			Splash.Screen.SetMessage("Building Package...");
 
 			string output = "";
 			string input = "";
@@ -36,7 +35,7 @@ namespace SimPe.Plugin
 					continue;
 				}
 
-				Message.Show(Help()[0]);
+				await Message.Show(Help()[0]);
 				return true;
 			}
 
@@ -52,11 +51,9 @@ namespace SimPe.Plugin
 			}
 
 			GeneratableFile pkg = File.LoadFromStream(
-				XmlPackageReader.OpenExtractedPackage(null, input)
+				XmlPackageReader.OpenExtractedPackage(input)
 			);
 			pkg.Save(output);
-
-			Splash.Screen.SetMessage("");
 			return true;
 		}
 

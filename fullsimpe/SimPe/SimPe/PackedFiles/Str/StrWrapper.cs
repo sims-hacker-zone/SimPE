@@ -145,11 +145,6 @@ namespace SimPe.PackedFiles.Str
 			return true;
 		}
 
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new StrForm();
-		}
-
 		/// <summary>
 		/// Returns a Human Readable Description of this Wrapper
 		/// </summary>

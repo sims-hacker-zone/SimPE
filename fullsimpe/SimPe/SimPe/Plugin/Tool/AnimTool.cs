@@ -33,7 +33,6 @@ namespace SimPe.Plugin.Tool
 
 			try
 			{
-				AnimPreview.Execute(es.Items[0].Resource);
 			}
 			catch (Exception ex)
 			{
@@ -49,7 +48,6 @@ namespace SimPe.Plugin.Tool
 		#endregion
 
 		#region IToolExt Member
-		public System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.CtrlShiftA;
 
 		public System.Drawing.Image Icon => GetIcon.AnimCamera;
 

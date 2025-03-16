@@ -18,14 +18,11 @@ namespace SimPe.Plugin.Tool.Window
 
 		public void Execute(object sender, Events.ResourceEventArgs e)
 		{
-			PackageRepairForm f = new PackageRepairForm();
 			if (e.Loaded)
 			{
 				string flname = e.LoadedPackage.Package.SaveFileName;
 				e.LoadedPackage.Package.Close(true);
-				f.Setup(flname);
 			}
-			RemoteControl.ShowSubForm(f);
 		}
 
 		public bool ChangeEnabledStateEventHandler(
@@ -40,8 +37,6 @@ namespace SimPe.Plugin.Tool.Window
 		#endregion
 
 		#region IToolExt Member
-
-		public System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.None;
 
 		public bool Visible => true;
 

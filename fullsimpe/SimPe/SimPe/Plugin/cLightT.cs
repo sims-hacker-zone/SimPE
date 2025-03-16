@@ -55,43 +55,12 @@ namespace SimPe.Plugin
 			writer.Write(sgres.BlockID);
 			sgres.Serialize(writer);
 		}
-
-		TabPage.LightT tLightT;
-		public override System.Windows.Forms.TabPage TabPage
-		{
-			get
-			{
-				if (tLightT == null)
-				{
-					tLightT = new TabPage.LightT();
-				}
-
-				return tLightT;
-			}
-		}
 		#endregion
-
-		/// <summary>
-		/// You can use this to setop the Controls on a TabPage befor it is dispplayed
-		/// </summary>
-		protected override void InitTabPage()
-		{
-			if (tLightT == null)
-			{
-				tLightT = new TabPage.LightT();
-			}
-
-			tLightT.tb_lt_ver.Text = "0x" + Helper.HexString(version);
-			tLightT.tb_lt_name.Text = sgres.FileName;
-		}
 
 		#region IDisposable Member
 
 		public override void Dispose()
 		{
-			tLightT?.Dispose();
-
-			tLightT = null;
 		}
 
 		#endregion

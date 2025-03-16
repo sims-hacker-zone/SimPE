@@ -50,95 +50,10 @@ namespace SimPe.Plugin.Scanner
 		/// <param name="lv"></param>
 		/// <param name="name"></param>
 		public static void AddColumn(
-			System.Windows.Forms.ListView lv,
 			string name,
 			int width
 		)
 		{
-			System.Windows.Forms.ColumnHeader ch =
-				new System.Windows.Forms.ColumnHeader
-				{
-					Text = name
-				};
-			lv.Columns.Add(ch);
-
-			if (width > 0)
-			{
-				ch.Width = width;
-			}
-		}
-
-		/// <summary>
-		/// Set the Name and color of a Column
-		/// </summary>
-		/// <param name="lvi">The ListViewItem where you want to add that column</param>
-		/// <param name="index">The Index of the Column</param>
-		/// <param name="name">The Name you want to display</param>
-		public static void SetSubItem(
-			System.Windows.Forms.ListViewItem lvi,
-			int index,
-			string name
-		)
-		{
-			SetSubItem(lvi, index, name, lvi.ForeColor);
-		}
-
-		/// <summary>
-		/// Set the Name and color of a Column
-		/// </summary>
-		/// <param name="lvi">The ListViewItem where you want to add that column</param>
-		/// <param name="index">The Index of the Column</param>
-		/// <param name="name">The Name you want to display</param>
-		/// <param name="ps">If state is null, the default color is used, false will be red, true will be green</param>
-		public static void SetSubItem(
-			System.Windows.Forms.ListViewItem lvi,
-			int index,
-			string name,
-			PackageState ps
-		)
-		{
-			Color cl = lvi.ForeColor;
-			if (ps != null)
-			{
-				if (ps.State == TriState.True)
-				{
-					cl = Color.Green;
-				}
-				else if (ps.State == TriState.False)
-				{
-					cl = Color.Red;
-				}
-			}
-
-			SetSubItem(lvi, index, name, cl);
-		}
-
-		/// <summary>
-		/// Set the Name and color of a Column
-		/// </summary>
-		/// <param name="lvi">The ListViewItem where you want to add that column</param>
-		/// <param name="index">The Index of the Column</param>
-		/// <param name="name">The Name you want to display</param>
-		/// <param name="cl">The Color for this Item</param>
-		public static void SetSubItem(
-			System.Windows.Forms.ListViewItem lvi,
-			int index,
-			string name,
-			Color cl
-		)
-		{
-			if (cl == Color.Red)
-			{
-				lvi.ForeColor = cl;
-			}
-
-			while (lvi.SubItems.Count <= index)
-			{
-				lvi.SubItems.Add("");
-			}
-
-			lvi.SubItems[index].Text = name;
-			lvi.SubItems[index].ForeColor = cl;
 		}
 
 		#endregion
@@ -223,14 +138,6 @@ namespace SimPe.Plugin.Scanner
 			get; private set;
 		}
 
-		/// <summary>
-		/// Returns the ListView that was assigned to this Scanner
-		/// </summary>
-		protected System.Windows.Forms.ListView ListView
-		{
-			get; private set;
-		}
-
 		protected AbstractScanner()
 		{
 			byte[] b = Helper.ToBytes(UniqueName);
@@ -241,28 +148,12 @@ namespace SimPe.Plugin.Scanner
 			StartColum = 0;
 		}
 
-		public void InitScan(System.Windows.Forms.ListView lv)
+		public void InitScan()
 		{
-			ListView = lv;
-			StartColum = lv.Columns.Count;
 			DoInitScan();
 		}
 
 		public virtual bool IsActiveByDefault => false;
-
-		System.Windows.Forms.Control mycontrol;
-		public virtual System.Windows.Forms.Control OperationControl
-		{
-			get
-			{
-				if (mycontrol == null)
-				{
-					mycontrol = CreateOperationControl();
-				}
-
-				return mycontrol;
-			}
-		}
 
 		public void EnableControl(bool active)
 		{
@@ -286,10 +177,6 @@ namespace SimPe.Plugin.Scanner
 
 		public virtual void EnableControl(ScannerItem[] items, bool active)
 		{
-			if (OperationControl != null)
-			{
-				OperationControl.Enabled = active;
-			}
 		}
 
 		/// <summary>
@@ -325,11 +212,6 @@ namespace SimPe.Plugin.Scanner
 			}
 		}
 
-		protected virtual System.Windows.Forms.Control CreateOperationControl()
-		{
-			return null;
-		}
-
 		protected abstract void DoInitScan();
 	}
 
@@ -352,13 +234,12 @@ namespace SimPe.Plugin.Scanner
 
 		protected override void DoInitScan()
 		{
-			AddColumn(ListView, "Caption", 180);
+			AddColumn("Caption", 180);
 		}
 
 		public void ScanPackage(
 			ScannerItem si,
-			PackageState ps,
-			System.Windows.Forms.ListViewItem lvi
+			PackageState ps
 		)
 		{
 			ps.State = TriState.False;
@@ -410,16 +291,14 @@ namespace SimPe.Plugin.Scanner
 				}
 			}
 
-			UpdateState(si, ps, lvi);
+			UpdateState(si, ps);
 		}
 
 		public void UpdateState(
 			ScannerItem si,
-			PackageState ps,
-			System.Windows.Forms.ListViewItem lvi
+			PackageState ps
 		)
 		{
-			SetSubItem(lvi, StartColum, si.PackageCacheItem.Name);
 		}
 
 		public void FinishScan()
@@ -455,13 +334,11 @@ namespace SimPe.Plugin.Scanner
 
 		protected override void DoInitScan()
 		{
-			ListView.SmallImageList = ListView.LargeImageList;
 		}
 
 		public void ScanPackage(
 			ScannerItem si,
-			PackageState ps,
-			System.Windows.Forms.ListViewItem lvi
+			PackageState ps
 		)
 		{
 			Size sz = ThumbnailSize;
@@ -579,21 +456,14 @@ namespace SimPe.Plugin.Scanner
 				}
 			}
 
-			UpdateState(si, ps, lvi);
+			UpdateState(si, ps);
 		}
 
 		public void UpdateState(
 			ScannerItem si,
-			PackageState ps,
-			System.Windows.Forms.ListViewItem lvi
+			PackageState ps
 		)
 		{
-			//Add the Thumbnail if available
-			if (si.PackageCacheItem.Thumbnail != null)
-			{
-				ListView.SmallImageList.Images.Add(si.PackageCacheItem.Thumbnail);
-				lvi.ImageIndex = ListView.SmallImageList.Images.Count - 1;
-			}
 		}
 
 		public void FinishScan()
@@ -637,7 +507,8 @@ namespace SimPe.Plugin.Scanner
 			if (modelname.EndsWith("_cres", true, null))
 			{
 				modelname = modelname.Substring(0, modelname.Length - 5);
-			};
+			}
+			;
 
 			uint inst = ThumbnailHash(group, modelname);
 			Interfaces.Files.IPackedFileDescriptor ipfd = thumbs.FindFile(
@@ -681,25 +552,6 @@ namespace SimPe.Plugin.Scanner
 
 		protected override void DoInitScan()
 		{
-			string WaitingScreenMessage = "";
-			if (WaitingScreen.Running)
-			{
-				WaitingScreenMessage = WaitingScreen.Message;
-			}
-
-			if (WaitingScreen.Running)
-			{
-				WaitingScreen.Message = "Init Cache File";
-			}
-
-			AddColumn(ListView, "GUIDs", 180);
-			AddColumn(ListView, "Duplicate GUID", 80);
-			AddColumn(ListView, "First found", 80);
-
-			if (WaitingScreen.Running)
-			{
-				WaitingScreen.Message = "Create hashtable";
-			}
 
 			list = (from container in Cache.Cache.GlobalCache.Items[ContainerType.Memory].Values
 					from MemoryCacheItem mci in container
@@ -708,17 +560,11 @@ namespace SimPe.Plugin.Scanner
 						Key = mci.Guid,
 						Value = mci.ParentCacheContainer == null ? mci.FileDescriptor.Filename : mci.ParentCacheContainer.FileName
 					}).ToDictionary(item => item.Key, item => item.Value);
-
-			if (WaitingScreen.Running)
-			{
-				WaitingScreen.Message = WaitingScreenMessage;
-			}
 		}
 
 		public void ScanPackage(
 			ScannerItem si,
-			PackageState ps,
-			System.Windows.Forms.ListViewItem lvi
+			PackageState ps
 		)
 		{
 			List<uint> mylist = new List<uint>();
@@ -734,13 +580,12 @@ namespace SimPe.Plugin.Scanner
 			si.PackageCacheItem.Guids = mylist;
 			ps.State = TriState.True;
 
-			UpdateState(si, ps, lvi);
+			UpdateState(si, ps);
 		}
 
 		public void UpdateState(
 			ScannerItem si,
-			PackageState ps,
-			System.Windows.Forms.ListViewItem lvi
+			PackageState ps
 		)
 		{
 			ps.State = TriState.True;
@@ -798,10 +643,6 @@ namespace SimPe.Plugin.Scanner
 			{
 				text = "yes";
 			}
-
-			SetSubItem(lvi, StartColum, guids);
-			SetSubItem(lvi, StartColum + 1, text, ps);
-			SetSubItem(lvi, StartColum + 2, ff);
 		}
 
 		public void FinishScan()
@@ -837,13 +678,12 @@ namespace SimPe.Plugin.Scanner
 
 		protected override void DoInitScan()
 		{
-			AddColumn(ListView, "Found Base", 180);
+			AddColumn("Found Base", 180);
 		}
 
 		public void ScanPackage(
 			ScannerItem si,
-			PackageState ps,
-			System.Windows.Forms.ListViewItem lvi
+			PackageState ps
 		)
 		{
 			Interfaces.Files.IPackedFileDescriptor[] pfds = si.Package.FindFiles(
@@ -895,22 +735,14 @@ namespace SimPe.Plugin.Scanner
 			}
 			//FileTable.FileIndex.RestoreLastState();
 
-			UpdateState(si, ps, lvi);
+			UpdateState(si, ps);
 		}
 
 		public void UpdateState(
 			ScannerItem si,
-			PackageState ps,
-			System.Windows.Forms.ListViewItem lvi
+			PackageState ps
 		)
 		{
-			string text = "yes";
-			if (ps.State == TriState.False)
-			{
-				text = "no";
-			}
-
-			SetSubItem(lvi, StartColum, text, ps);
 		}
 
 		public void FinishScan()
@@ -946,14 +778,13 @@ namespace SimPe.Plugin.Scanner
 
 		protected override void DoInitScan()
 		{
-			AddColumn(ListView, "Vertices", 60);
-			AddColumn(ListView, "Faces", 60);
+			AddColumn("Vertices", 60);
+			AddColumn("Faces", 60);
 		}
 
 		public void ScanPackage(
 			ScannerItem si,
-			PackageState ps,
-			System.Windows.Forms.ListViewItem lvi
+			PackageState ps
 		)
 		{
 			Interfaces.Files.IPackedFileDescriptor[] pfds = si.Package.FindFiles(
@@ -978,19 +809,14 @@ namespace SimPe.Plugin.Scanner
 			}
 			ps.Data = new List<uint> { vct, fct };
 
-			UpdateState(si, ps, lvi);
+			UpdateState(si, ps);
 		}
 
 		public void UpdateState(
 			ScannerItem si,
-			PackageState ps,
-			System.Windows.Forms.ListViewItem lvi
+			PackageState ps
 		)
 		{
-			uint fct = ps.Data[1];
-			uint vct = ps.Data[0];
-			SetSubItem(lvi, StartColum, vct.ToString(), ps);
-			SetSubItem(lvi, StartColum + 1, fct.ToString(), ps);
 		}
 
 		public void FinishScan()

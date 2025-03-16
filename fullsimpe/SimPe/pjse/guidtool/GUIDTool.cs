@@ -24,8 +24,6 @@ namespace pjse.guidtool
 			ref SimPe.Interfaces.Files.IPackageFile package
 		)
 		{
-			GUIDForm form = new GUIDForm(package != null);
-			form.Show();
 			return new SimPe.Plugin.ToolResult(false, false);
 		}
 

@@ -85,9 +85,6 @@ namespace SimPe.Plugin.Tool.Action
 						);
 					}
 				}
-
-				Report f = new Report();
-				f.Execute(sw);
 			}
 			finally
 			{
@@ -106,7 +103,6 @@ namespace SimPe.Plugin.Tool.Action
 		#endregion
 
 		#region IToolExt Member
-		public System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.None;
 
 		public System.Drawing.Image Icon => null;
 

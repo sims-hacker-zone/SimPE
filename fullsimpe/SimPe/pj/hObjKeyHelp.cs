@@ -10,18 +10,6 @@ namespace pj
 
 		public void ShowHelp(SimPe.ShowHelpEventArgs e)
 		{
-#if NET1
-			string relativePathToHelp = "pjObjKeyTool_NET1.plugin/pjObjKeyTool_Help";
-#else
-			string relativePathToHelp = "pjObjKeyTool.plugin/pjObjKeyTool_Help";
-#endif
-			SimPe.RemoteControl.ShowHelp(
-				"file://"
-					+ SimPe.Helper.SimPePluginPath
-					+ "/"
-					+ relativePathToHelp
-					+ "/Contents.htm"
-			);
 		}
 
 		public override string ToString()

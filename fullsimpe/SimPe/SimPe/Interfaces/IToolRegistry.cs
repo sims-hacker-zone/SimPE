@@ -36,14 +36,6 @@ namespace SimPe.Interfaces
 		}
 
 		/// <summary>
-		/// Returns a List of Know Doackable Tools
-		/// </summary>
-		HashSet<IDockableTool> Docks
-		{
-			get;
-		}
-
-		/// <summary>
 		/// Returns a List of Know Action Tool
 		/// </summary>
 		HashSet<IToolAction> Actions

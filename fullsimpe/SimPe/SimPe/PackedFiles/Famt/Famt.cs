@@ -60,10 +60,6 @@ namespace SimPe.PackedFiles.Famt
 		#endregion
 
 		#region AbstractWrapper Member
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new FamtUI();
-		}
 
 		public Famt(Interfaces.Providers.ISimNames names)
 			: base()

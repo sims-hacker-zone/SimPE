@@ -74,20 +74,6 @@ namespace SimPe
 
 			try
 			{
-				System.Reflection.Assembly a = RuntimeCompiler.Compile(
-					src,
-					new string[]
-					{
-						System.IO.Path.Combine(Helper.SimPePath, "SimPe.exe"),
-						"system.drawing.dll",
-					}
-				);
-				return (PathSettings)
-					RuntimeCompiler.CreateInstance(
-						a,
-						"SimPe.RuntimePathSettings",
-						new object[0]
-					);
 			}
 			catch (Exception ex)
 			{
@@ -107,6 +93,7 @@ namespace SimPe
 				}
 				return null;
 			}
+			return null;
 		}
 
 		protected PathSettings(Registry r)
@@ -129,13 +116,6 @@ namespace SimPe
 			return userpath.Trim() == "" ? defpath : userpath;
 		}
 
-		[
-			Category("BaseGame"),
-			Editor(
-				typeof(SelectSimFolderUITypeEditor),
-				typeof(System.Drawing.Design.UITypeEditor)
-			)
-		]
 		public string SaveGamePath
 		{
 			get => GetPath(

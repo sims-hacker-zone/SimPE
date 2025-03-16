@@ -250,7 +250,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new BhavOperandWizards.BhavOperandWiz0x0001(instruction);
+			return null;
+			// return new BhavOperandWizards.BhavOperandWiz0x0001(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -364,7 +365,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new BhavOperandWizards.BhavOperandWiz0x0002(instruction);
+			return null;
+			// return new BhavOperandWizards.BhavOperandWiz0x0002(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -645,7 +647,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new whse.PrimitiveWizards.BhavOperandWiz0x0007(instruction);
+			return null;
+			// return new whse.PrimitiveWizards.BhavOperandWiz0x0007(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -686,7 +689,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new BhavOperandWizards.BhavOperandWiz0x0008(instruction);
+			return null;
+			// return new BhavOperandWizards.BhavOperandWiz0x0008(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -717,7 +721,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new whse.PrimitiveWizards.BhavOperandWiz0x000b(instruction);
+			return null;
+			// return new whse.PrimitiveWizards.BhavOperandWiz0x000b(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -769,7 +774,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new whse.PrimitiveWizards.BhavOperandWiz0x000c(instruction);
+			return null;
+			// return new whse.PrimitiveWizards.BhavOperandWiz0x000c(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -821,7 +827,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new whse.PrimitiveWizards.BhavOperandWiz0x000d(instruction);
+			return null;
+			// return new whse.PrimitiveWizards.BhavOperandWiz0x000d(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -975,7 +982,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new whse.PrimitiveWizards.BhavOperandWiz0x000e(instruction);
+			return null;
+			// return new whse.PrimitiveWizards.BhavOperandWiz0x000e(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -1075,7 +1083,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new whse.PrimitiveWizards.BhavOperandWiz0x0010(instruction);
+			return null;
+			// return new whse.PrimitiveWizards.BhavOperandWiz0x0010(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -1268,7 +1277,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new whse.PrimitiveWizards.BhavOperandWiz0x0011(instruction);
+			return null;
+			// return new whse.PrimitiveWizards.BhavOperandWiz0x0011(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -1320,7 +1330,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new whse.PrimitiveWizards.BhavOperandWiz0x0012(instruction);
+			return null;
+			// return new whse.PrimitiveWizards.BhavOperandWiz0x0012(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -1515,7 +1526,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new whse.PrimitiveWizards.BhavOperandWiz0x0014(instruction);
+			return null;
+			// return new whse.PrimitiveWizards.BhavOperandWiz0x0014(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -1567,7 +1579,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new whse.PrimitiveWizards.BhavOperandWiz0x0016(instruction);
+			return null;
+			// return new whse.PrimitiveWizards.BhavOperandWiz0x0016(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -1597,7 +1610,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new whse.PrimitiveWizards.BhavOperandWiz0x0017(instruction);
+			return null;
+			// return new whse.PrimitiveWizards.BhavOperandWiz0x0017(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -1811,7 +1825,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new whse.PrimitiveWizards.BhavOperandWiz0x001a(instruction);
+			return null;
+			// return new whse.PrimitiveWizards.BhavOperandWiz0x001a(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -1977,7 +1992,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new BhavOperandWizards.BhavOperandWiz0x001b(instruction);
+			return null;
+			// return new BhavOperandWizards.BhavOperandWiz0x001b(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -2033,7 +2049,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new BhavOperandWizards.BhavOperandWiz0x001c(instruction);
+			return null;
+			// return new BhavOperandWizards.BhavOperandWiz0x001c(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -2166,7 +2183,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new whse.PrimitiveWizards.BhavOperandWiz0x001d(instruction);
+			return null;
+			// return new whse.PrimitiveWizards.BhavOperandWiz0x001d(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -2258,7 +2276,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new BhavOperandWizards.BhavOperandWiz0x001f(instruction);
+			return null;
+			// return new BhavOperandWizards.BhavOperandWiz0x001f(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -2336,7 +2355,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new BhavOperandWizards.BhavOperandWiz0x0020(instruction);
+			return null;
+			// return new BhavOperandWizards.BhavOperandWiz0x0020(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -2657,7 +2677,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new whse.PrimitiveWizards.BhavOperandWiz0x0023(instruction);
+			return null;
+			// return new whse.PrimitiveWizards.BhavOperandWiz0x0023(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -2766,7 +2787,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new BhavOperandWizards.BhavOperandWiz0x0024(instruction);
+			return null;
+			// return new BhavOperandWizards.BhavOperandWiz0x0024(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -3182,7 +3204,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new whse.PrimitiveWizards.BhavOperandWiz0x002a(instruction);
+			return null;
+			// return new whse.PrimitiveWizards.BhavOperandWiz0x002a(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -3316,7 +3339,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new BhavOperandWizards.BhavOperandWiz0x002d(instruction);
+			return null;
+			// return new BhavOperandWizards.BhavOperandWiz0x002d(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -3416,7 +3440,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new whse.PrimitiveWizards.BhavOperandWiz0x002e(instruction);
+			return null;
+			// return new whse.PrimitiveWizards.BhavOperandWiz0x002e(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -3508,7 +3533,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new whse.PrimitiveWizards.BhavOperandWiz0x0030(instruction);
+			return null;
+			// return new whse.PrimitiveWizards.BhavOperandWiz0x0030(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -3552,7 +3578,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new BhavOperandWizards.BhavOperandWiz0x0032(instruction);
+			return null;
+			// return new BhavOperandWizards.BhavOperandWiz0x0032(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -3742,7 +3769,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new BhavOperandWizards.BhavOperandWiz0x0033(instruction);
+			return null;
+			// return new BhavOperandWizards.BhavOperandWiz0x0033(instruction);
 		}
 
 		private string tokenType(int i, int j, bool all)
@@ -4385,10 +4413,11 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new BhavOperandWizards.BhavOperandWizAnimate(
-				instruction,
-				"bwp_Object"
-			);
+			return null;
+			// return new BhavOperandWizards.BhavOperandWizAnimate(
+			// 	instruction,
+			// 	"bwp_Object"
+			// );
 		}
 
 		protected override string Operands(bool lng)
@@ -4563,10 +4592,11 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new BhavOperandWizards.BhavOperandWizAnimate(
-				instruction,
-				"bwp_Sim"
-			);
+			return null;
+			// return new BhavOperandWizards.BhavOperandWizAnimate(
+			// 	instruction,
+			// 	"bwp_Sim"
+			// );
 		}
 
 		protected override string Operands(bool lng)
@@ -4858,10 +4888,11 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new BhavOperandWizards.BhavOperandWizAnimate(
-				instruction,
-				"bwp_Overlay"
-			);
+			return null;
+			// return new BhavOperandWizards.BhavOperandWizAnimate(
+			// 	instruction,
+			// 	"bwp_Overlay"
+			// );
 		}
 
 		protected override string Operands(bool lng)
@@ -5173,7 +5204,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new whse.PrimitiveWizards.BhavOperandWiz0x006c(instruction);
+			return null;
+			// return new whse.PrimitiveWizards.BhavOperandWiz0x006c(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -5435,7 +5467,7 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new BhavOperandWizards.BhavOperandWiz0x006d(instruction);
+			return null; // new BhavOperandWizards.BhavOperandWiz0x006d(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -5874,7 +5906,7 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new whse.PrimitiveWizards.BhavOperandWiz0x006f(instruction);
+			return null;
 		}
 
 		protected override string Operands(bool lng)
@@ -5953,7 +5985,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new whse.PrimitiveWizards.BhavOperandWiz0x0070(instruction);
+			return null;
+			// return new whse.PrimitiveWizards.BhavOperandWiz0x0070(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -6200,7 +6233,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new whse.PrimitiveWizards.BhavOperandWiz0x0071(instruction);
+			return null;
+			// return new whse.PrimitiveWizards.BhavOperandWiz0x0071(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -6268,7 +6302,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new whse.PrimitiveWizards.BhavOperandWiz0x0072(instruction);
+			return null;
+			// return new whse.PrimitiveWizards.BhavOperandWiz0x0072(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -6466,7 +6501,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new whse.PrimitiveWizards.BhavOperandWiz0x0074(instruction);
+			return null;
+			// return new whse.PrimitiveWizards.BhavOperandWiz0x0074(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -6661,7 +6697,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new BhavOperandWizards.BhavOperandWiz0x0076(instruction);
+			return null;
+			// return new BhavOperandWizards.BhavOperandWiz0x0076(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -6882,7 +6919,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new whse.PrimitiveWizards.BhavOperandWiz0x0077(instruction);
+			return null;
+			// return new whse.PrimitiveWizards.BhavOperandWiz0x0077(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -7078,7 +7116,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new whse.PrimitiveWizards.BhavOperandWiz0x0078(instruction);
+			return null;
+			// return new whse.PrimitiveWizards.BhavOperandWiz0x0078(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -7172,7 +7211,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new whse.PrimitiveWizards.BhavOperandWiz0x0079(instruction);
+			return null;
+			// return new whse.PrimitiveWizards.BhavOperandWiz0x0079(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -7286,7 +7326,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new whse.PrimitiveWizards.BhavOperandWiz0x007a(instruction);
+			return null;
+			// return new whse.PrimitiveWizards.BhavOperandWiz0x007a(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -7554,7 +7595,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new whse.PrimitiveWizards.BhavOperandWiz0x007c(instruction);
+			return null;
+			// return new whse.PrimitiveWizards.BhavOperandWiz0x007c(instruction);
 		}
 
 		protected override string Operands(bool lng)
@@ -7693,7 +7735,8 @@ namespace pjse.BhavNameWizards
 
 		public override ABhavOperandWiz Wizard()
 		{
-			return new whse.PrimitiveWizards.BhavOperandWiz0x007e(instruction);
+			return null;
+			// return new whse.PrimitiveWizards.BhavOperandWiz0x007e(instruction);
 		}
 
 		protected override string Operands(bool lng)

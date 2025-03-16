@@ -42,7 +42,6 @@ namespace SimPe.Plugin.Tool.Action
 				sw.WriteLine("<?");
 				sw.WriteLine("$guids = array(");
 				sw.Write("    ");
-				Wait.SubStart(items.Count());
 				int ct = 0;
 				foreach (
 					Interfaces.Scenegraph.IScenegraphFileIndexItem item in items
@@ -62,7 +61,6 @@ namespace SimPe.Plugin.Tool.Action
 					}
 
 					ct++;
-					Wait.Progress = ct;
 					sw.Write("array(");
 					sw.Write("0x" + Helper.HexString(objd.Guid));
 					guids.Add(objd.Guid);
@@ -85,12 +83,8 @@ namespace SimPe.Plugin.Tool.Action
 					}*/
 					sw.WriteLine("')");
 				}
-				Wait.SubStop();
 				sw.WriteLine(");");
 				sw.WriteLine("?>");
-
-				Report f = new Report();
-				f.Execute(sw);
 			}
 			finally
 			{
@@ -109,7 +103,6 @@ namespace SimPe.Plugin.Tool.Action
 		#endregion
 
 		#region IToolExt Member
-		public System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.None;
 
 		public System.Drawing.Image Icon => null;
 

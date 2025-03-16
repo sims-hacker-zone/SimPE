@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Numerics;
+using System.Threading.Tasks;
 
 using SimPe.Data;
 using SimPe.Forms.MainUI;
@@ -194,173 +195,7 @@ namespace SimPe.Plugin
 				Joints[i].Serialize(writer);
 			}
 		}
-
-		fGeometryDataContainer form = null;
-
-		/// <summary>
-		/// Returns null or the Instance of a <see cref="System.Windows.Forms.TabPage"/> that
-		/// should be displayed as Primary Interface
-		/// </summary>
-		public override System.Windows.Forms.TabPage TabPage
-		{
-			get
-			{
-				if (form == null)
-				{
-					form = new fGeometryDataContainer();
-				}
-
-				return form.tMesh;
-			}
-		}
 		#endregion
-
-		/// <summary>
-		/// You can use this to setop the Controls on a TabPage befor it is dispplayed
-		/// </summary>
-		protected override void InitTabPage()
-		{
-			if (form == null)
-			{
-				form = new fGeometryDataContainer();
-			}
-
-			form.ResetPreview();
-			form.tb_ver.Text = "0x" + Helper.HexString(version);
-
-			if (UserVerification.HaveUserId)
-			{
-				form.label_elements.Text = "Elements: " + Elements.Count.ToString();
-				form.list_elements.Items.Clear();
-				foreach (GmdcElement e in Elements)
-				{
-					CountedListItem.Add(form.list_elements, e);
-				}
-
-				form.label_links.Text = "Links: " + Links.Count.ToString();
-				form.list_links.Items.Clear();
-				foreach (GmdcLink l in Links)
-				{
-					CountedListItem.Add(form.list_links, l);
-				}
-
-				form.label_groups.Text = "Groups: " + Groups.Count.ToString();
-				form.list_groups.Items.Clear();
-				foreach (GmdcGroup g in Groups)
-				{
-					CountedListItem.Add(form.list_groups, g);
-				}
-
-				form.label_subsets.Text = "Joints: " + Joints.Count.ToString();
-				form.list_subsets.Items.Clear();
-				foreach (GmdcJoint s in Joints)
-				{
-					CountedListItem.Add(form.list_subsets, s);
-				}
-			}
-
-			try
-			{
-				form.lb_models.Text =
-					"Models (Faces="
-					+ TotalFaceCount.ToString()
-					+ ", Vertices="
-					+ TotalUsedVertices.ToString()
-					+ "):";
-				form.lb_itemsc2.Items.Clear();
-				form.lb_itemsc3.Items.Clear();
-				form.lb_itemsc.Items.Clear();
-				form.lbmodel.Items.Clear();
-				foreach (GmdcGroup g in Groups)
-				{
-					form.lbmodel.Items.Add(g, g.Opacity >= 0x10);
-					form.lb_itemsc.Items.Add(g);
-				}
-
-				form.lb_itemsa2.Items.Clear();
-				form.lb_itemsa.Items.Clear();
-				foreach (GmdcElement i in Elements)
-				{
-					CountedListItem.Add(form.lb_itemsa, i);
-				}
-
-				form.lb_itemsb2.Items.Clear();
-				form.lb_itemsb3.Items.Clear();
-				form.lb_itemsb4.Items.Clear();
-				form.lb_itemsb5.Items.Clear();
-				form.lb_itemsb.Items.Clear();
-				foreach (GmdcLink i in Links)
-				{
-					CountedListItem.Add(form.lb_itemsb, i);
-				}
-
-				form.lb_subsets.Items.Clear();
-				form.lb_sub_faces.Items.Clear();
-				form.lb_sub_items.Items.Clear();
-				form.cbGroupJoint.Items.Clear();
-				foreach (GmdcJoint i in Joints)
-				{
-					CountedListItem.Add(form.lb_subsets, i);
-					CountedListItem.Add(form.cbGroupJoint, i);
-				}
-
-				form.lb_model_faces.Items.Clear();
-				foreach (Vector3 i in Model.BoundingMesh.Vertices)
-				{
-					CountedListItem.Add(form.lb_model_faces, i);
-				}
-
-				form.lb_model_items.Items.Clear();
-				foreach (int i in Model.BoundingMesh.Items)
-				{
-					CountedListItem.Add(form.lb_model_items, i);
-				}
-
-				form.lb_model_names.Items.Clear();
-				foreach (GmdcNamePair i in Model.BlendGroupDefinition)
-				{
-					CountedListItem.Add(form.lb_model_names, i);
-				}
-
-				form.lb_model_trans.Items.Clear();
-				foreach (VectorTransformation i in Model.Transformations)
-				{
-					CountedListItem.Add(form.lb_model_trans, i);
-				}
-			}
-			catch (Exception ex)
-			{
-				Helper.ExceptionMessage("", ex);
-			}
-		}
-
-		/// <summary>
-		/// Add Additional <see cref="System.Windows.Forms.TabPage"/> to show more Informations
-		/// </summary>
-		/// <param name="tc">The TabPage will be added here.</param>
-		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
-		{
-			form.tGeometryDataContainer.Tag = this;
-			tc.TabPages.Add(form.tGeometryDataContainer);
-
-			form.tGeometryDataContainer2.Tag = this;
-			tc.TabPages.Add(form.tGeometryDataContainer2);
-
-			form.tGeometryDataContainer3.Tag = this;
-			tc.TabPages.Add(form.tGeometryDataContainer3);
-
-			form.tModel.Tag = this;
-			tc.TabPages.Add(form.tModel);
-
-			form.tSubset.Tag = this;
-			tc.TabPages.Add(form.tSubset);
-
-			if (UserVerification.HaveUserId)
-			{
-				form.tAdvncd.Tag = this;
-				tc.TabPages.Add(form.tAdvncd);
-			}
-		}
 
 		#region .x-Files
 		/// <summary>
@@ -679,29 +514,20 @@ namespace SimPe.Plugin
 		/// <returns>null or the RCOl Ressource</returns>
 		public Rcol FindReferencingCRES()
 		{
-			Wait.SubStart();
-			//WaitingScreen.Wait();
-			try
-			{
-				Interfaces.Scenegraph.IScenegraphFileIndex nfi =
-					FileTableBase.FileIndex.AddNewChild();
-				nfi.AddIndexFromPackage(Parent.Package);
-				Rcol cres = FindReferencingCRES_Int();
-				FileTableBase.FileIndex.RemoveChild(nfi);
-				nfi.Clear();
+			Interfaces.Scenegraph.IScenegraphFileIndex nfi =
+				FileTableBase.FileIndex.AddNewChild();
+			nfi.AddIndexFromPackage(Parent.Package);
+			Rcol cres = FindReferencingCRES_Int();
+			FileTableBase.FileIndex.RemoveChild(nfi);
+			nfi.Clear();
 
-				if (cres == null && !FileTableBase.FileIndex.Loaded)
-				{
-					FileTableBase.FileIndex.Load();
-					cres = FindReferencingCRES_Int();
-				}
-
-				return cres;
-			}
-			finally
+			if (cres == null && !FileTableBase.FileIndex.Loaded)
 			{
-				Wait.SubStop(); /*WaitingScreen.Stop();*/
+				FileTableBase.FileIndex.Load();
+				cres = FindReferencingCRES_Int();
 			}
+
+			return cres;
 		}
 
 		/// <summary>
@@ -710,24 +536,18 @@ namespace SimPe.Plugin
 		/// <returns>null or the RCOl Ressource</returns>
 		Rcol FindReferencingCRES_Int()
 		{
-			//WaitingScreen.UpdateMessage("Loading Geometry Node");
-			Wait.Message = "Loading Geometry Node";
 			Rcol step = FindReferencingParent_NoLoad(Data.FileTypes.GMND);
 			if (step == null)
 			{
 				return null;
 			}
 
-			//WaitingScreen.UpdateMessage("Loading Shape");
-			Wait.Message = "Loading Shape";
 			step = ((GeometryNode)step.Blocks[0]).FindReferencingSHPE_NoLoad();
 			if (step == null)
 			{
 				return null;
 			}
 
-			//WaitingScreen.UpdateMessage("Loading ResourceNode");
-			Wait.Message = "Loading ResourceNode";
 			step = ((AbstractRcolBlock)step.Blocks[0]).FindReferencingParent_NoLoad(
 				Data.FileTypes.CRES
 			);
@@ -774,7 +594,7 @@ namespace SimPe.Plugin
 		/// </summary>
 		/// <returns>The JointRelation Map</returns>
 		/// <remarks>key=ChildJoint ID, value=ParentJoint ID (-1=top Level Joint)</remarks>
-		public virtual Hashtable LoadJointRelationMap()
+		public virtual async Task<Hashtable> LoadJointRelationMap()
 		{
 			//Get the Cres for the Bone Hirarchy
 			ResourceNode rn = ParentResourceNode;
@@ -782,10 +602,10 @@ namespace SimPe.Plugin
 			Hashtable parentmap = new Hashtable();
 			if (rn == null)
 			{
-				Message.Show(
+				await Message.Show(
 					Localization.GetString("NO_CRES_FOUND"),
 					Localization.GetString("Information"),
-					System.Windows.Forms.MessageBoxButtons.OK
+					MsBox.Avalonia.Enums.ButtonEnum.Ok
 				);
 				return parentmap;
 			}
@@ -902,9 +722,9 @@ namespace SimPe.Plugin
 		/// Sort the passed list of Joints so that parent joints allways come first
 		/// </summary>
 		/// <returns></returns>
-		public List<int> SortJoints()
+		public async Task<List<int>> SortJoints()
 		{
-			return SortJoints(Joints, LoadJointRelationMap());
+			return SortJoints(Joints, await LoadJointRelationMap());
 		}
 
 		/// <summary>
@@ -927,7 +747,6 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			form?.Dispose();
 		}
 
 		#endregion

@@ -141,38 +141,7 @@ namespace SimPe.Plugin
 				writer.Write(FileName);
 			}
 		}
-
-		TabPage.ObjectGraphNode tObjectGraphNode;
-		public override System.Windows.Forms.TabPage TabPage
-		{
-			get
-			{
-				if (tObjectGraphNode == null)
-				{
-					tObjectGraphNode = new TabPage.ObjectGraphNode();
-				}
-
-				return tObjectGraphNode;
-			}
-		}
 		#endregion
-
-		/// <summary>
-		/// You can use this to setop the Controls on a TabPage befor it is dispplayed
-		/// </summary>
-		protected override void InitTabPage()
-		{
-			if (tObjectGraphNode == null)
-			{
-				tObjectGraphNode = new TabPage.ObjectGraphNode();
-			}
-
-			tObjectGraphNode.lb_ogn.Items.Clear();
-			tObjectGraphNode.lb_ogn.Items.AddRange(Items.ToArray());
-
-			tObjectGraphNode.tb_ogn_file.Text = FileName;
-			tObjectGraphNode.tb_ogn_ver.Text = "0x" + Helper.HexString(version);
-		}
 
 		public override string ToString()
 		{
@@ -183,9 +152,6 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			tObjectGraphNode?.Dispose();
-
-			tObjectGraphNode = null;
 		}
 
 		#endregion

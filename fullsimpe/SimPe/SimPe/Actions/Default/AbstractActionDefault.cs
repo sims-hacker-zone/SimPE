@@ -26,8 +26,6 @@ namespace SimPe.Actions.Default
 
 		#region IToolExt Member
 
-		public virtual System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.None;
-
 		public virtual System.Drawing.Image Icon => null;
 
 		public virtual bool Visible => true;

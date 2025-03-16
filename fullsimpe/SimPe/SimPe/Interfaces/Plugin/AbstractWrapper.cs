@@ -52,12 +52,6 @@ namespace SimPe.Interfaces.Plugin
 		protected abstract void Unserialize(System.IO.BinaryReader reader);
 
 		/// <summary>
-		/// Creates the default UI Handler Object
-		/// </summary>
-		/// <returns>the default UI Handler Object is needed when the UIHandler is set to null</returns>
-		protected abstract IPackedFileUI CreateDefaultUIHandler();
-
-		/// <summary>
 		/// Called when the data Stored in the Wrappers Attributes must be written to a Stream
 		/// </summary>
 		/// <param name="writer">The Stream the Data should be written to</param>
@@ -289,20 +283,6 @@ namespace SimPe.Interfaces.Plugin
 			}
 		}
 
-		public IPackedFileUI UIHandler
-		{
-			get
-			{
-				if (ui == null)
-				{
-					ui = CreateDefaultUIHandler();
-				}
-
-				return ui;
-			}
-			set => ui = value;
-		}
-
 		public IPackageFile Package
 		{
 			get => package;
@@ -483,7 +463,6 @@ namespace SimPe.Interfaces.Plugin
 
 		public void RefreshUI()
 		{
-			UIHandler?.UpdateGUI((IFileWrapper)this);
 		}
 
 		public void Refresh()

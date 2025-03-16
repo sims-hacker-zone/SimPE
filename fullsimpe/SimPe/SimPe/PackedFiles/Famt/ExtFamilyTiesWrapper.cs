@@ -37,10 +37,6 @@ namespace SimPe.PackedFiles.Famt
 		#endregion
 
 		#region AbstractWrapper Member
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new ExtFamilyTiesUI();
-		}
 		#endregion
 
 		/// <summary>

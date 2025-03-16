@@ -336,121 +336,8 @@ namespace SimPe.Plugin
 				Parts[i].Serialize(writer);
 			}
 		}
-
-		TabPage.ObjectGraphNode tObjectGraphNode;
-		TabPage.GenericRcol tGenericRcol;
-		TabPage.ShpeLod tShpeLod;
-		TabPage.ShpeItems tShpeItems;
-		TabPage.ShpeParts tShpeParts;
-		public override System.Windows.Forms.TabPage TabPage
-		{
-			get
-			{
-				if (tGenericRcol == null)
-				{
-					tGenericRcol = new TabPage.GenericRcol();
-				}
-
-				return tGenericRcol;
-			}
-		}
 		#endregion
 
-		/// <summary>
-		/// You can use this to setop the Controls on a TabPage befor it is dispplayed
-		/// </summary>
-		protected override void InitTabPage()
-		{
-			if (tObjectGraphNode == null)
-			{
-				tObjectGraphNode = new TabPage.ObjectGraphNode();
-			}
-
-			if (tGenericRcol == null)
-			{
-				tGenericRcol = new TabPage.GenericRcol();
-			}
-
-			if (tShpeLod == null)
-			{
-				tShpeLod = new TabPage.ShpeLod();
-			}
-
-			if (tShpeItems == null)
-			{
-				tShpeItems = new TabPage.ShpeItems();
-			}
-
-			if (tShpeParts == null)
-			{
-				tShpeParts = new TabPage.ShpeParts();
-			}
-
-			tGenericRcol.tb_ver.Text = "0x" + Helper.HexString(version);
-			tGenericRcol.gen_pg.SelectedObject = this;
-
-			tShpeLod.lbunk.Items.Clear();
-			tShpeItems.lbitem.Items.Clear();
-			tShpeParts.lbpart.Items.Clear();
-			try
-			{
-				Shape wrp = this;
-
-				foreach (uint val in wrp.Unknwon)
-				{
-					tShpeLod.lbunk.Items.Add(val);
-				}
-
-				foreach (ShapeItem item in wrp.Items)
-				{
-					tShpeItems.lbitem.Items.Add(item);
-				}
-
-				foreach (ShapePart part in wrp.Parts)
-				{
-					tShpeParts.lbpart.Items.Add(part);
-				}
-
-				foreach (ObjectGraphNodeItem ogni in wrp.GraphNode.Items)
-				{
-					tObjectGraphNode.lb_ogn.Items.Add(ogni);
-				}
-
-				tObjectGraphNode.tb_ogn_file.Text = wrp.GraphNode.FileName;
-				tObjectGraphNode.tb_ogn_ver.Text = Helper.HexString(
-					wrp.GraphNode.Version
-				);
-			}
-			catch (Exception ex)
-			{
-				Helper.ExceptionMessage(
-					Localization.Manager.GetString("erropenfile"),
-					ex
-				);
-			}
-		}
-
-		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
-		{
-			tShpeLod.Tag = this;
-			tc.TabPages.Add(tShpeLod);
-
-			tShpeItems.Tag = this;
-			tc.TabPages.Add(tShpeItems);
-
-			tShpeParts.Tag = this;
-			tc.TabPages.Add(tShpeParts);
-
-			if (tObjectGraphNode == null)
-			{
-				tObjectGraphNode = new TabPage.ObjectGraphNode();
-			}
-
-			tObjectGraphNode.Tag = GraphNode;
-			tc.TabPages.Add(tObjectGraphNode);
-
-			tc.SelectedTab = tShpeParts;
-		}
 
 		#region IScenegraphItem Member
 
@@ -476,25 +363,6 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			tObjectGraphNode?.Dispose();
-
-			tObjectGraphNode = null;
-
-			tGenericRcol?.Dispose();
-
-			tGenericRcol = null;
-
-			tShpeLod?.Dispose();
-
-			tShpeLod = null;
-
-			tShpeItems?.Dispose();
-
-			tShpeItems = null;
-
-			tShpeParts?.Dispose();
-
-			tShpeParts = null;
 		}
 
 		#endregion

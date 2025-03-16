@@ -538,7 +538,6 @@ namespace pj
 				IPackedFileDescriptor[] apfd = p.FindFiles(
 					FileTypes.BINX /*BINX*/
 				);
-				SimPe.Wait.SubStart(apfd.Length);
 				foreach (IPackedFileDescriptor bx in apfd)
 				{
 					try
@@ -587,10 +586,8 @@ namespace pj
 					}
 					finally
 					{
-						SimPe.Wait.Progress++;
 					}
 				}
-				SimPe.Wait.SubStop();
 			}
 			return fragKeys;
 		}
@@ -598,7 +595,6 @@ namespace pj
 		private List<AbstractWrapper[]> findBinKeys(List<AbstractWrapper[]> fragKeys)
 		{
 			List<AbstractWrapper[]> binKeys = new List<AbstractWrapper[]>();
-			SimPe.Wait.SubStart(fragkeys.Count);
 			foreach (AbstractWrapper[] fk in fragKeys)
 			{
 				AbstractWrapper[] tgt = getCpf3idrPair(
@@ -611,10 +607,7 @@ namespace pj
 				{
 					binKeys.Add(tgt);
 				}
-
-				SimPe.Wait.Progress++;
 			}
-			SimPe.Wait.SubStop();
 			return binKeys;
 		}
 
@@ -826,33 +819,17 @@ namespace pj
 			makeCpf3idrPair();
 			if (objKey3IDR == null)
 			{
-				MessageBox.Show(
-					L.Get("missing3IDR"),
-					L.Get("pjObjKeyHelp"),
-					MessageBoxButtons.OK,
-					MessageBoxIcon.Exclamation
-				);
 				return;
 			}
 			if (objKeyCPF == null)
 			{
-				MessageBox.Show(
-					L.Get("missingCPF"),
-					L.Get("pjObjKeyHelp"),
-					MessageBoxButtons.OK,
-					MessageBoxIcon.Exclamation
-				);
 				return;
 			}
-
-			SimPe.RemoteControl.ApplicationForm.Cursor = Cursors.WaitCursor;
-			SimPe.Wait.Start();
 
 			List<AbstractWrapper[]> fragKeys = findFragKeys();
 			List<AbstractWrapper[]> binKeys = findBinKeys(fragKeys);
 			List<SimPe.Plugin.GenericRcol> rcolChain = findrcolChain();
 
-			SimPe.Wait.SubStart(fragkeys.Count);
 			foreach (AbstractWrapper[] ap in fragKeys)
 			{
 				addFile(ap[0]);
@@ -861,11 +838,8 @@ namespace pj
 					(Cpf)ap[0],
 					(ThreeIdr)ap[1]
 				);
-				SimPe.Wait.Progress++;
 			}
-			SimPe.Wait.SubStop();
 
-			SimPe.Wait.SubStart(binKeys.Count);
 			foreach (AbstractWrapper[] ap in binKeys)
 			{
 				addFile(ap[0]);
@@ -874,17 +848,11 @@ namespace pj
 					(Cpf)ap[0],
 					(ThreeIdr)ap[1]
 				);
-				SimPe.Wait.Progress++;
 			}
-			SimPe.Wait.SubStop();
-
-			SimPe.Wait.SubStart(rcolChain.Count);
 			foreach (SimPe.Plugin.GenericRcol p in rcolChain)
 			{
 				addFile(p);
-				SimPe.Wait.Progress++;
 			}
-			SimPe.Wait.SubStop();
 
 			if (pfd.Equals(objKey3IDR.FileDescriptor))
 			{
@@ -894,9 +862,6 @@ namespace pj
 			{
 				addFile(objKey3IDR);
 			}
-
-			SimPe.Wait.Stop();
-			SimPe.RemoteControl.ApplicationForm.Cursor = Cursors.Default;
 		}
 
 		#region ITool Members
@@ -941,12 +906,6 @@ namespace pj
 		{
 			if (!IsReallyEnabled(pfd, package))
 			{
-				MessageBox.Show(
-					SimPe.Localization.GetString(
-						"This is not an appropriate context in which to use this tool"
-					),
-					L.Get("pjObjKeyHelp")
-				);
 				return new SimPe.Plugin.ToolResult(false, false);
 			}
 			Main(pfd, package);

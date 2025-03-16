@@ -21,38 +21,6 @@ namespace SimPe.Actions.Default
 		/// <returns></returns>
 		protected List<IPackedFileDescriptor> LoadDescriptors(bool add)
 		{
-			System.Windows.Forms.OpenFileDialog ofd =
-				new System.Windows.Forms.OpenFileDialog();
-			ofd.Filter = !add
-				? ExtensionProvider.BuildFilterString(
-					new ExtensionType[]
-					{
-						ExtensionType.ExtractedFile,
-						ExtensionType.ExtractedFileDescriptor,
-						ExtensionType.AllFiles,
-					}
-				)
-				: ExtensionProvider.BuildFilterString(
-					new ExtensionType[]
-					{
-						ExtensionType.ExtractedFileDescriptor,
-						ExtensionType.ExtrackedPackageDescriptor,
-						ExtensionType.ExtractedFile,
-						ExtensionType.Package,
-						ExtensionType.DisabledPackage,
-						ExtensionType.AllFiles,
-					}
-				);
-
-			ofd.Title = Localization.GetString(ToString());
-			ofd.Multiselect = add;
-			if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-			{
-				List<IPackedFileDescriptor> pfds =
-					LoadedPackage.LoadDescriptorsFromDisk(ofd.FileNames);
-				return pfds;
-			}
-
 			return new List<IPackedFileDescriptor>();
 		}
 
@@ -109,8 +77,6 @@ namespace SimPe.Actions.Default
 
 		#region IToolExt Member
 		public override System.Drawing.Image Icon => GetIcon.actionReplace;
-
-		public override System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.ShiftIns;
 		#endregion
 	}
 }

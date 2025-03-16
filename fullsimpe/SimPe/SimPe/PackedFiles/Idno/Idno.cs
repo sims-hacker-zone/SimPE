@@ -294,7 +294,6 @@ namespace SimPe.PackedFiles.Idno
 		///  </param>
 		private static void FindUids(string folder, Hashtable ids, bool scanall)
 		{
-			Wait.Message = folder;
 
 			ArrayList names = new ArrayList();
 			if (!scanall)
@@ -343,9 +342,7 @@ namespace SimPe.PackedFiles.Idno
 		/// </summary>
 		public void MakeUnique()
 		{
-			Wait.SubStart();
 			MakeUnique(this, Package.FileName, true);
-			Wait.SubStop();
 		}
 
 		/// <summary>
@@ -354,9 +351,7 @@ namespace SimPe.PackedFiles.Idno
 		/// <param name="ids">a Map of all available Group Ids (can be obtained by calling Idno::FindUids())</param>
 		public void MakeUnique(Hashtable ids)
 		{
-			Wait.SubStart();
 			MakeUnique(this, Package.FileName, ids);
-			Wait.SubStop();
 		}
 
 		/// <summary>
@@ -382,10 +377,6 @@ namespace SimPe.PackedFiles.Idno
 		#endregion
 
 		#region AbstractWrapper Member
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new IdnoUI();
-		}
 
 		/// <summary>
 		/// Returns a Human Readable Description of this Wrapper

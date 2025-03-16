@@ -2178,10 +2178,6 @@ namespace SimPe.PackedFiles.Sdsc
 		#endregion
 
 		#region AbstractWrapper Member
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return null;
-		}
 
 		/// <summary>
 		/// Change the links to the Providers

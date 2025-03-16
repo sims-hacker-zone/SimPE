@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Threading.Tasks;
 
 using SimPe.Data;
 
@@ -108,133 +109,9 @@ namespace SimPe
 		/// <summary>
 		/// Delegate you have to implement for the Remote PackedFile Opener
 		/// </summary>
-		public delegate bool OpenPackedFileDelegate(
+		public delegate Task<bool> OpenPackedFileDelegate(
 			Interfaces.Scenegraph.IScenegraphFileIndexItem fii
 		);
-
-		/// <summary>
-		/// Used to show/hide a Dock
-		/// </summary>
-		public delegate void ShowDockDelegate(
-			Ambertation.Windows.Forms.DockPanel doc,
-			bool hide
-		);
-
-		#region Application Form
-		static System.Windows.Forms.Form appform;
-
-		/// <summary>
-		/// Returns the Main Application Form
-		/// </summary>
-		public static System.Windows.Forms.Form ApplicationForm
-		{
-			get => appform;
-			set
-			{
-				appform = value;
-				appstate = appform != null ? appform.WindowState : System.Windows.Forms.FormWindowState.Maximized;
-			}
-		}
-
-		static bool VisibleForm(System.Windows.Forms.Form form)
-		{
-			return form.ShowInTaskbar && form.FormBorderStyle
-				!= System.Windows.Forms.FormBorderStyle.FixedToolWindow
-&& form.FormBorderStyle
-				!= System.Windows.Forms.FormBorderStyle.SizableToolWindow
-&& form.MinimizeBox;
-		}
-
-		public static void ShowSubForm(System.Windows.Forms.Form form)
-		{
-			if (VisibleForm(form))
-			{
-				HideApplicationForm();
-			}
-
-			form.ShowDialog(ApplicationForm);
-			if (VisibleForm(form))
-			{
-				ShowApplicationForm();
-			}
-		}
-
-		public static void HideApplicationForm()
-		{
-			if (ApplicationForm == null)
-			{
-				return;
-			}
-
-			if (ApplicationForm.Visible)
-			{
-				ApplicationForm.Hide();
-				ApplicationForm.ShowInTaskbar = true;
-			}
-		}
-
-		public static void ShowApplicationForm()
-		{
-			if (ApplicationForm == null)
-			{
-				return;
-			}
-
-			if (!ApplicationForm.Visible)
-			{
-				ApplicationForm.Show();
-				ApplicationForm.ShowInTaskbar = true;
-			}
-		}
-
-		static System.Windows.Forms.FormWindowState appstate;
-
-		public static void MinimizeApplicationForm()
-		{
-			if (ApplicationForm == null)
-			{
-				return;
-			}
-
-			if (
-				ApplicationForm.WindowState
-				!= System.Windows.Forms.FormWindowState.Minimized
-			)
-			{
-				appstate = ApplicationForm.WindowState;
-				ApplicationForm.WindowState = System
-					.Windows
-					.Forms
-					.FormWindowState
-					.Minimized;
-			}
-		}
-
-		public static void RestoreApplicationForm()
-		{
-			if (ApplicationForm == null)
-			{
-				return;
-			}
-
-			if (
-				ApplicationForm.WindowState
-				== System.Windows.Forms.FormWindowState.Minimized
-			)
-			{
-				ApplicationForm.WindowState = appstate;
-			}
-		}
-		#endregion
-
-
-		/// <summary>
-		/// Returns/Sets the ShowDock Delegate
-		/// </summary>
-		public static ShowDockDelegate ShowDockFkt
-		{
-			get; set;
-		}
 
 		/// <summary>
 		/// Returns/Sets the Function that should be called if you want to open a PackedFile
@@ -253,26 +130,11 @@ namespace SimPe
 		}
 
 		/// <summary>
-		/// Show/Hide a given Dock
-		/// </summary>
-		/// <param name="doc"></param>
-		/// <param name="hide"></param>
-		public static void ShowDock(Ambertation.Windows.Forms.DockPanel doc, bool hide)
-		{
-			if (ShowDockFkt == null)
-			{
-				return;
-			}
-
-			ShowDockFkt(doc, hide);
-		}
-
-		/// <summary>
 		/// Open a Package in the main SimPe Gui
 		/// </summary>
 		/// <param name="filename">The Filename of the package</param>
 		/// <returns>true, if the package was opened</returns>
-		public static bool OpenPackage(string filename)
+		public static async Task<bool> OpenPackage(string filename)
 		{
 			if (OpenPackageFkt == null)
 			{
@@ -285,7 +147,7 @@ namespace SimPe
 			}
 			catch (Exception ex)
 			{
-				Helper.ExceptionMessage(
+				await Helper.ExceptionMessage(
 					"Unable to open a Package in the SimPe GUI. (file="
 						+ filename
 						+ ")",
@@ -308,7 +170,7 @@ namespace SimPe
 		/// </summary>
 		/// <param name="filename">The Filename of the package</param>
 		/// <returns>true, if the package was opened</returns>
-		public static bool OpenMemoryPackage(Interfaces.Files.IPackageFile pkg)
+		public static async Task<bool> OpenMemoryPackage(Interfaces.Files.IPackageFile pkg)
 		{
 			if (OpenMemoryPackageFkt == null)
 			{
@@ -321,7 +183,7 @@ namespace SimPe
 			}
 			catch (Exception ex)
 			{
-				Helper.ExceptionMessage(
+				await Helper.ExceptionMessage(
 					"Unable to open a Package in the SimPe GUI. (package="
 						+ pkg.ToString()
 						+ ")",
@@ -337,12 +199,12 @@ namespace SimPe
 		/// <param name="pfd">The FileDescriptor</param>
 		/// <param name="pkg">The package the descriptor is in</param>
 		/// <returns>true, if the package was opened</returns>
-		public static bool OpenPackedFile(
+		public static async Task<bool> OpenPackedFile(
 			Interfaces.Files.IPackedFileDescriptor pfd,
 			Interfaces.Files.IPackageFile pkg
 		)
 		{
-			return OpenPackedFile(FileTableBase.FileIndex.CreateFileIndexItem(pfd, pkg));
+			return await OpenPackedFile(FileTableBase.FileIndex.CreateFileIndexItem(pfd, pkg));
 		}
 
 		/// <summary>
@@ -350,7 +212,7 @@ namespace SimPe
 		/// </summary>
 		/// <param name="pfd">The FileDescriptor</param>
 		/// <returns>true, if the package was opened</returns>
-		public static bool OpenPackedFile(
+		public static async Task<bool> OpenPackedFile(
 			Interfaces.Scenegraph.IScenegraphFileIndexItem fii
 		)
 		{
@@ -361,11 +223,11 @@ namespace SimPe
 
 			try
 			{
-				return OpenPackedFileFkt(fii);
+				return await OpenPackedFileFkt(fii);
 			}
 			catch (Exception ex)
 			{
-				Helper.ExceptionMessage(
+				await Helper.ExceptionMessage(
 					"Unable to open a resource in the SimPe GUI. ("
 						+ fii.ToString()
 						+ ")",
@@ -373,58 +235,6 @@ namespace SimPe
 				);
 			}
 			return false;
-		}
-
-		/// <summary>
-		/// Displays a certain Help Topic
-		/// </summary>
-		/// <param name="url">Url (can be a local File) of the Help Document</param>
-		public static void ShowHelp(string url)
-		{
-			try
-			{
-				System.Windows.Forms.Help.ShowHelp(ApplicationForm, url);
-			}
-			catch { }
-		}
-
-		/// <summary>
-		/// Displays a certain Help Topic
-		/// </summary>
-		/// <param name="url">Url (can be a local File) of the Help Document</param>
-		/// <param name="topic">the Topic in that document</param>
-		/// <remarks>Produces an URL like "url#topic"</remarks>
-		public static void ShowHelp(string url, string topic)
-		{
-			try
-			{
-				System.Windows.Forms.Help.ShowHelp(ApplicationForm, url, topic);
-			}
-			catch { }
-		}
-
-		/// <summary>
-		/// Displays a Form, with the passed Custom Settings
-		/// </summary>
-		/// <param name="settings"></param>
-		public static void ShowCustomSettings(Interfaces.ISettings settings)
-		{
-			System.Windows.Forms.Form f = new System.Windows.Forms.Form
-			{
-				Text = settings.ToString(),
-				Width = 600,
-				Height = 450,
-				FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow,
-				StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-			};
-
-			System.Windows.Forms.PropertyGrid pg =
-				new System.Windows.Forms.PropertyGrid();
-			f.Controls.Add(pg);
-			pg.Dock = System.Windows.Forms.DockStyle.Fill;
-			pg.SelectedObject = settings.GetSettingsObject();
-			ShowSubForm(f);
-			f.Dispose();
 		}
 
 		public delegate void ResourceListSelectionChangedHandler(

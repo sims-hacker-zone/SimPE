@@ -66,10 +66,6 @@ namespace SimPe.PackedFiles.Tatt
 		#endregion
 
 		#region AbstractWrapper Member
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new TattUI();
-		}
 
 		/// <summary>
 		/// Returns a Human Readable Description of this Wrapper

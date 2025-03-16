@@ -1,7 +1,9 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Threading.Tasks;
 
+using SimPe.Forms.MainUI;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Sdna;
 using SimPe.PackedFiles.Sdsc;
@@ -38,12 +40,6 @@ namespace SimPe.Plugin.Tool.Action
 		{
 			if (!RealChangeEnabledStateEventHandler(null, e))
 			{
-				System.Windows.Forms.MessageBox.Show(
-					Localization.GetString(
-						"This is not an appropriate context in which to use this tool"
-					),
-					ToString()
-				);
 				return;
 			}
 			SimDNA sdna; // Fuck
@@ -117,7 +113,6 @@ namespace SimPe.Plugin.Tool.Action
 		#endregion
 
 		#region IToolExt Member
-		public System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.None;
 
 		public System.Drawing.Image Icon => System.Drawing.Image.FromStream(
 					GetType()

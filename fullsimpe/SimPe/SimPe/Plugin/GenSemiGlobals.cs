@@ -2,7 +2,9 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
+using SimPe.Forms.MainUI;
 using SimPe.Interfaces;
 using SimPe.Interfaces.Plugin;
 using SimPe.PackedFiles.Glob;
@@ -13,22 +15,20 @@ namespace SimPe.Plugin
 	{
 		#region ICommandLine Members
 
-		public bool Parse(List<string> argv)
+		public async Task<bool> Parse(List<string> argv)
 		{
 			if (!argv.Remove("-gensemiglob"))
 			{
 				return false;
 			}
 
+			await Message.Show("bla");
+
 			List<uint> added =
 				new List<uint>();
-			Splash.Screen.SetMessage("Loading FileTable...");
 			FileTableBase.FileIndex.Load();
-			Splash.Screen.SetMessage("Looking for GLOB Resources...");
 			IEnumerable<Interfaces.Scenegraph.IScenegraphFileIndexItem> resources =
 				FileTableBase.FileIndex.FindFile(Data.FileTypes.GLOB, true);
-
-			Splash.Screen.SetMessage("Found " + resources.Count() + " GLOB Resources");
 			string fl = Helper.SimPeSemiGlobalFile;
 			//            Console.WriteLine("Opening " + fl);
 			System.IO.StreamWriter sw = new System.IO.StreamWriter(fl, false);
@@ -42,9 +42,6 @@ namespace SimPe.Plugin
 			{
 				if (ct % 23 == 0)
 				{
-					Splash.Screen.SetMessage(
-						"Wrote " + ct + " (" + unq + " unique) entries"
-					);
 				}
 
 				ct++;
@@ -73,7 +70,6 @@ namespace SimPe.Plugin
 			sw.Dispose();
 			sw = null;
 			//            Console.WriteLine("Closed File");
-			Splash.Screen.SetMessage("");
 
 			return true;
 		}

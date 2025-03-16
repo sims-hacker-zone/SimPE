@@ -39,10 +39,6 @@ namespace SimPe.PackedFiles.Ginv
 		#endregion
 
 		#region AbstractWrapper Member
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new GinvUI();
-		}
 
 		protected override IWrapperInfo CreateWrapperInfo()
 		{

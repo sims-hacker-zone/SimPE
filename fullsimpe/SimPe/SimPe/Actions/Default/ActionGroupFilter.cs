@@ -4,12 +4,9 @@ namespace SimPe.Actions.Default
 {
 	class ActionGroupFilter : AbstractActionDefault
 	{
-		private Windows.Forms.ResourceListViewExt lv = null;
-		private ViewFilter Filter => (ViewFilter)(lv?.Filter);
 
-		public ActionGroupFilter(Windows.Forms.ResourceListViewExt value)
+		public ActionGroupFilter()
 		{
-			lv = value;
 		}
 
 		public override bool ChangeEnabledStateEventHandler(
@@ -18,7 +15,7 @@ namespace SimPe.Actions.Default
 		)
 		{
 			bool res = base.ChangeEnabledStateEventHandler(sender, es);
-			return (Filter != null && Filter.FilterGroup) || (res && es.Count == 1);
+			return (res && es.Count == 1);
 		}
 
 		#region IToolAction Member
@@ -31,16 +28,6 @@ namespace SimPe.Actions.Default
 			if (!ChangeEnabledStateEventHandler(sender, es))
 			{
 				return;
-			}
-
-			if (Filter != null && Filter.FilterGroup)
-			{
-				Filter.FilterGroup = false;
-			}
-			else
-			{
-				Filter.Group = es.GetDescriptors()[0].Group;
-				Filter.FilterGroup = true;
 			}
 		}
 
@@ -56,8 +43,6 @@ namespace SimPe.Actions.Default
 
 		#region IToolExt Member
 		public override System.Drawing.Image Icon => GetIcon.actionFilter;
-
-		public override System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.CtrlT; // for "Toggle"...
 		#endregion
 	}
 }

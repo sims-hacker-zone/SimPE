@@ -87,11 +87,6 @@ namespace SimPe.PackedFiles.Ttab
 				|| version == 0013; //0.10
 		}
 
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new TtabForm();
-		}
-
 		/// <summary>
 		/// Returns a Human Readable Description of this Wrapper
 		/// </summary>

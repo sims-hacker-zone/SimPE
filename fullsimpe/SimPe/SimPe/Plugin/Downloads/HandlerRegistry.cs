@@ -37,13 +37,6 @@ namespace SimPe.Plugin.Downloads
 			AddFilehandler(ExtensionType.DisabledPackage, typeof(PackageHandler));
 			AddFilehandler(ExtensionType.Sim2Pack, typeof(Sims2PackHandler));
 			AddFilehandler(ExtensionType.Sim2PackCommunity, typeof(Sims2PackHandler));
-			// Nothing is 'Supported For Unpack' if SimPe folder is Windows protected
-			Ambertation.SevenZip.IO.CommandlineArchive a =
-				new Ambertation.SevenZip.IO.CommandlineArchive("");
-			foreach (string ext in a.SupportedForUnpack)
-			{
-				AddFileHandler(ext, typeof(SevenZipHandler));
-			}
 
 			AddTypeHandler(Cache.PackageType.Lot, typeof(LotTypeHandler));
 			AddTypeHandler(
@@ -75,9 +68,9 @@ namespace SimPe.Plugin.Downloads
 
 		void AddFilehandler(ExtensionType ext, Type handler)
 		{
-			ExtensionDescriptor ed =
-				ExtensionProvider.ExtensionMap[ext] as ExtensionDescriptor;
-			foreach (string mext in ed.Extensions)
+			Avalonia.Platform.Storage.FilePickerFileType ed =
+				ExtensionProvider.ExtensionMap[ext];
+			foreach (string mext in ed.Patterns)
 			{
 				string fext = mext.Replace("*", "");
 				if (!fext.StartsWith("."))

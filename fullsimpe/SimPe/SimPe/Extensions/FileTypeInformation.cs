@@ -3,17 +3,24 @@
 
 using System;
 
+using CommunityToolkit.Mvvm.ComponentModel;
+
 using SimPe.Data;
 
 namespace SimPe.Extensions
 {
-	public struct FileTypeInformation
+	public partial class FileTypeInformation : ObservableObject
 	{
-		public FileTypes Type;
-		public string ShortName;
-		public string LongName;
-		public string Extension;
-		public bool ContainsFileName;
+		[ObservableProperty]
+		private FileTypes type;
+		[ObservableProperty]
+		private string shortName;
+		[ObservableProperty]
+		private string longName;
+		[ObservableProperty]
+		private string extension;
+		[ObservableProperty]
+		private bool containsFileName;
 
 		public static bool operator ==(FileTypeInformation a, FileTypeInformation b)
 		{

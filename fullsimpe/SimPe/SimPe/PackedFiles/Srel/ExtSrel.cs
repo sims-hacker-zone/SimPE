@@ -31,10 +31,6 @@ namespace SimPe.PackedFiles.Wrapper
 			);
 		}
 
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new ExtSrelUI();
-		}
 
 		#region Descriptions
 		protected ExtSDesc GetDescriptionByInstance(uint inst)

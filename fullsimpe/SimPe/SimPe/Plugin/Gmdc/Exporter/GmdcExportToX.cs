@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Collections.Generic;
 using System.Numerics;
+using System.Threading.Tasks;
 
 namespace SimPe.Plugin.Gmdc.Exporter
 {
@@ -92,12 +93,12 @@ namespace SimPe.Plugin.Gmdc.Exporter
 		///
 		/// Use the writer member to write to the File.
 		/// </remarks>
-		protected override void ProcessGroup()
+		protected override async Task ProcessGroup()
 		{
 			string txtrname = Group.Name;
 			string umodelname = GetUniqueGroupName(Group.Name);
 
-			writer.WriteLine("Frame " + umodelname + " {");
+			await writer.WriteLineAsync("Frame " + umodelname + " {");
 			writer.WriteLine("Mesh {");
 			writer.WriteLine();
 
@@ -275,9 +276,9 @@ namespace SimPe.Plugin.Gmdc.Exporter
 		/// </summary>
 		/// <remarks>you should use this to write Footer Informations.
 		/// Use the writer member to write to the File</remarks>
-		protected override void FinishFile()
+		protected override async Task FinishFile()
 		{
-			writer.WriteLine("}");
+			await writer.WriteLineAsync("}");
 		}
 	}
 }

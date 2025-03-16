@@ -65,10 +65,6 @@ namespace SimPe.PackedFiles.Wthr
 		#endregion
 
 		#region AbstractWrapper Member
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new WinfoPackedFileUI();
-		}
 
 		/// <summary>
 		/// Returns a Human Readable Description of this Wrapper

@@ -104,8 +104,6 @@ namespace SimPe.Providers
 			int ct = 0;
 			if (items.Any()) //found anything?
 			{
-				bool wasrunning = WaitingScreen.Running;
-				WaitingScreen.Wait();
 				try
 				{
 					foreach (
@@ -113,10 +111,6 @@ namespace SimPe.Providers
 					)
 					{
 						ct++;
-						if (ct % 137 == 1)
-						{
-							WaitingScreen.UpdateMessage(ct.ToString() + max);
-						}
 
 						pfd = item.FileDescriptor;
 
@@ -192,7 +186,6 @@ namespace SimPe.Providers
 							System.Drawing.Image img = pic.Image;
 							o[2] = img;
 
-							WaitingScreen.Update(img, ct.ToString() + max);
 						}
 						a.Tag = o;
 						if (!memories.Contains(objd.Guid))
@@ -203,10 +196,6 @@ namespace SimPe.Providers
 				}
 				finally
 				{
-					if (!wasrunning)
-					{
-						WaitingScreen.Stop();
-					}
 				}
 			} // if items>0
 			  //System.Threading.Thread.CurrentThread.Priority = System.Threading.ThreadPriority.Normal;

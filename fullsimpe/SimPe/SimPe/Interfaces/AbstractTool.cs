@@ -11,8 +11,6 @@ namespace SimPe.Interfaces
 
 		public virtual System.Drawing.Image Icon => null;
 
-		public virtual System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.None;
-
 		public virtual bool Visible => true;
 		#endregion
 	}

@@ -254,11 +254,6 @@ namespace SimPe.Wants
 			xw.Flush();
 		}
 
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new XWNTEditor();
-		}
-
 		/// <summary>
 		/// Returns a Human Readable Description of this Wrapper
 		/// </summary>

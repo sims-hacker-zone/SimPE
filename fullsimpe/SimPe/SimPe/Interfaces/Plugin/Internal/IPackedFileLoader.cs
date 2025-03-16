@@ -98,15 +98,6 @@ namespace SimPe.Interfaces.Plugin.Internal
 		}
 
 		/// <summary>
-		/// Returns / Sets the assigned UI Handler (can be null!)
-		/// </summary>
-		/// <remarks>If you set this value to null, it will Return the Default UIHandler or null if no default exists</remarks>
-		IPackedFileUI UIHandler
-		{
-			get; set;
-		}
-
-		/// <summary>
 		/// Processes the stored Data again and Sends an Update Request to the assigned UI Handler (if not null)
 		/// </summary>
 		void Refresh();

@@ -81,8 +81,6 @@ namespace SimPe.Actions.Default
 		#region IToolExt Member
 		public override System.Drawing.Image Icon => GetIcon.actionDelete;
 
-		public override System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.ShiftDel;
-
 		#endregion
 	}
 }

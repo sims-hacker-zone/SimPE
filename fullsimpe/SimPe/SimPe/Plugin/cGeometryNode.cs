@@ -132,64 +132,7 @@ namespace SimPe.Plugin
 				Parent.WriteBlock(Blocks[i], writer);
 			}
 		}
-
-		TabPage.GeometryNode tGeometryNode;
-		public override System.Windows.Forms.TabPage TabPage
-		{
-			get
-			{
-				if (tGeometryNode == null)
-				{
-					tGeometryNode = new TabPage.GeometryNode();
-				}
-
-				return tGeometryNode;
-			}
-		}
 		#endregion
-
-		/// <summary>
-		/// You can use this to setop the Controls on a TabPage befor it is dispplayed
-		/// </summary>
-		protected override void InitTabPage()
-		{
-			if (tGeometryNode == null)
-			{
-				tGeometryNode = new TabPage.GeometryNode();
-			}
-
-			tGeometryNode.tb_gn_ver.Text = "0x" + Helper.HexString(version);
-
-			tGeometryNode.tb_gn_uk1.Text =
-				"0x" + Helper.HexString((ushort)Unknown1);
-			tGeometryNode.tb_gn_uk2.Text =
-				"0x" + Helper.HexString((ushort)Unknown2);
-			tGeometryNode.tb_gn_uk3.Text = "0x" + Helper.HexString(Unknown3);
-
-			tGeometryNode.tb_gn_count.Text = Count.ToString();
-
-			tGeometryNode.cb_gn_list.Items.Clear();
-
-			foreach (IRcolBlock irb in Blocks)
-			{
-				CountedListItem.Add(tGeometryNode.cb_gn_list, irb);
-			}
-
-			if (tGeometryNode.cb_gn_list.Items.Count > 0)
-			{
-				tGeometryNode.cb_gn_list.SelectedIndex = 0;
-			}
-			else
-			{
-				tGeometryNode.BuildChildTabControl(null);
-			}
-		}
-
-		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
-		{
-			base.ExtendTabControl(tc);
-			ObjectGraphNode.AddToTabControl(tc);
-		}
 
 		#region ReferencingShape
 		/// <summary>
@@ -249,9 +192,6 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			tGeometryNode?.Dispose();
-
-			tGeometryNode = null;
 		}
 
 		#endregion

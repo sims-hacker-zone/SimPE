@@ -11,14 +11,11 @@ namespace SimPe.Plugin
 	{
 		IWrapperRegistry reg;
 		IProviderRegistry prov;
-		ScenegraphForm sg;
 
 		internal ScenegraphTool(IWrapperRegistry reg, IProviderRegistry prov)
 		{
 			this.reg = reg;
 			this.prov = prov;
-
-			sg = new ScenegraphForm();
 		}
 
 		#region ITool Member
@@ -37,7 +34,6 @@ namespace SimPe.Plugin
 		)
 		{
 			Interfaces.Files.IPackedFileDescriptor opfd = pfd;
-			sg.Execute(prov, package, ref pfd);
 
 			return (pfd == null) && (opfd == null)
 				? new ToolResult(false, false)
@@ -58,8 +54,6 @@ namespace SimPe.Plugin
 							"SimPe.img.scenegrapher.png"
 						)
 				);
-
-		public override System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.CtrlG;
 		#endregion
 	}
 }

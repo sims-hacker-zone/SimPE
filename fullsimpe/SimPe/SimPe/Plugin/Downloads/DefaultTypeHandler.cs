@@ -20,26 +20,9 @@ namespace SimPe.Plugin.Downloads
 	public class DefaultTypeHandler : ITypeHandler, IDisposable
 	{
 		#region Preview
-		static Ambertation.Graphics.DirectXPanel dxp;
 
 		static void InitPreview()
 		{
-			if (dxp != null)
-			{
-				return;
-			}
-
-			dxp = new Ambertation.Graphics.DirectXPanel
-			{
-				Width = 128 * 3
-			};
-			dxp.Height = dxp.Width;
-			dxp.BackColor = Color.FromArgb(10, 10, 40);
-			dxp.Settings.MeshPassCullMode = Microsoft.DirectX.Direct3D.Cull.Clockwise;
-
-			dxp.Settings.AddAxis = false;
-			dxp.Settings.AddLightIndicators = false;
-			dxp.Settings.RenderJoints = false;
 		}
 		#endregion
 
@@ -227,11 +210,6 @@ namespace SimPe.Plugin.Downloads
 					try
 					{
 						Picture pic = new Picture().ProcessFile(pfd, thumbs);
-						if (WaitingScreen.Running)
-						{
-							WaitingScreen.Update((Bitmap)
-							ImageLoader.Preview(pic.Image, WaitingScreen.ImageSize), message);
-						}
 
 						return pic.Image;
 					}
@@ -295,8 +273,6 @@ namespace SimPe.Plugin.Downloads
 			nfo.FaceCount = 0;
 		}
 
-		static Ambertation.Scenes.Scene scn;
-
 		public virtual void SetFromPackage(Interfaces.Files.IPackageFile pkg)
 		{
 			ClearScreen();
@@ -347,22 +323,6 @@ namespace SimPe.Plugin.Downloads
 
 		protected void PostponedRender(object sender, EventArgs e)
 		{
-			Wait.SubStart();
-			Wait.Message = "Building Preview";
-			GeometryDataContainerExt ext =
-				(sender as PackageInfo).RenderData
-				as GeometryDataContainerExt;
-			Ambertation.Scenes.Scene scn = ext.GetScene(
-				new Gmdc.ElementOrder(
-					Gmdc.ElementSorting.Preview
-				)
-			);
-			nfo.RenderedImage = Get3dPreview(scn);
-			scn.Dispose();
-
-			ext.Gmdc.Dispose();
-			ext.Dispose();
-			Wait.SubStop();
 		}
 
 		/// <summary>
@@ -380,10 +340,6 @@ namespace SimPe.Plugin.Downloads
 				);
 				bool first = !nfo.HasThumbnail;
 
-				Wait.SubStart();
-				System.Windows.Forms.Application.DoEvents();
-				Wait.Message = "Counting Vertices";
-				System.Windows.Forms.Application.DoEvents();
 				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
 				{
 					Rcol rcol = new GenericRcol().ProcessFile(pfd, pkg, true);
@@ -403,24 +359,6 @@ namespace SimPe.Plugin.Downloads
 					}
 
 					bool dispose = true;
-					if (
-
-
-							DownloadsToolFactory
-							.Settings
-							.BuildPreviewForObjects
-					)
-					{
-						if (first && hasmesh && rendergmdc)
-						{
-							first = false;
-							GeometryDataContainerExt ext =
-								new GeometryDataContainerExt(gmdc);
-							nfo.RenderData = ext;
-							nfo.PostponedRenderer = new EventHandler(PostponedRender);
-							dispose = false;
-						}
-					}
 
 					if (dispose)
 					{
@@ -428,7 +366,6 @@ namespace SimPe.Plugin.Downloads
 						rcol.Dispose();
 					}
 				}
-				Wait.SubStop();
 				pfds = null;
 			}
 			nfo.VertexCount = vct;
@@ -436,43 +373,11 @@ namespace SimPe.Plugin.Downloads
 
 			if (
 				!nfo.HasThumbnail
-				&& !DownloadsToolFactory.Settings.BuildPreviewForObjects
 			)
 			{
 				nfo.Image = WallpaperTypeHandler.SetFromTxtr(pkg);
 				nfo.KnockoutThumbnail = false;
 			}
-		}
-
-		public static Image Get3dPreview(Ambertation.Scenes.Scene scene)
-		{
-			if (scene == null)
-			{
-				return null;
-			}
-
-			scn = scene;
-			InitPreview();
-
-			dxp.ResetDevice += new EventHandler(dxp_ResetDevice);
-
-			dxp.Reset();
-			dxp.ResetDefaultViewport();
-			dxp.Settings.AngelX = (float)(Math.PI / 8.0);
-			dxp.Settings.AngelY = (float)(Math.PI / -6.0);
-			dxp.Settings.Z *= 0.3f;
-			dxp.UpdateRotation();
-			dxp.Render();
-			Image ret = dxp.Screenshot(Microsoft.DirectX.Direct3D.ImageFileFormat.Png);
-
-			/*System.Windows.Forms.Form f = new System.Windows.Forms.Form();
-			f.Controls.Add(dxp);
-			f.ShowDialog();*/
-
-
-			dxp.ResetDevice -= new EventHandler(dxp_ResetDevice);
-
-			return ret;
 		}
 
 		protected void ClearScreen()
@@ -623,14 +528,6 @@ namespace SimPe.Plugin.Downloads
 		public IPackageInfo[] Objects => new IPackageInfo[] { nfo };
 
 		#endregion
-
-		private static void dxp_ResetDevice(object sender, EventArgs e)
-		{
-			Ambertation.Graphics.DirectXPanel dxp =
-				sender as Ambertation.Graphics.DirectXPanel;
-			dxp.Meshes.Clear();
-			dxp.AddScene(scn);
-		}
 
 		#region IDisposable Member
 

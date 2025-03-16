@@ -238,23 +238,6 @@ namespace SimPe.Plugin
 			return txtrs;
 		}
 
-		public Hashtable GetMaterials(Hashtable txmts, Ambertation.Scenes.Scene scn)
-		{
-			Hashtable list = new Hashtable();
-
-			foreach (string s in txmts.Keys)
-			{
-				Rcol rcol = (Rcol)txmts[s];
-				MaterialDefinition md = (MaterialDefinition)rcol.Blocks[0];
-
-				list[s] = md.ToSceneMaterial(
-					scn,
-					Hashes.StripHashFromName(rcol.FileName)
-				);
-			}
-			return list;
-		}
-
 		/// <summary>
 		/// Retusn a Hashtable that contains the largest Images of the passed Textures
 		/// </summary>

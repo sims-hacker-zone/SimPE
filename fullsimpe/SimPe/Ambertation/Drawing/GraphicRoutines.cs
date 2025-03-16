@@ -350,10 +350,6 @@ namespace Ambertation.Drawing
 			attr.SetRemapTable(colorMap);
 
 			System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(bm);
-			Windows.Forms.Graph.GraphPanelElement.SetGraphicsMode(
-				g,
-				!quality
-			);
 			Rectangle rect = new Rectangle(0, 0, img.Width, img.Height);
 			g.DrawImage(
 				img,
@@ -474,10 +470,6 @@ namespace Ambertation.Drawing
 			Bitmap bm = new Bitmap(width, height);
 
 			System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(bm);
-			Windows.Forms.Graph.GraphPanelElement.SetGraphicsMode(
-				g,
-				!quality
-			);
 			g.DrawImage(
 				img,
 				new Rectangle(0, 0, width, height),

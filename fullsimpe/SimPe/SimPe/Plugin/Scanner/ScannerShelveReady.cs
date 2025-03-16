@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Threading.Tasks;
 
 using SimPe.Cache;
 using SimPe.Interfaces.Plugin;
@@ -27,13 +28,12 @@ namespace SimPe.Plugin.Scanner
 
 		protected override void DoInitScan()
 		{
-			AddColumn(ListView, "Shelve Dimension", 80);
+			AddColumn("Shelve Dimension", 80);
 		}
 
 		public void ScanPackage(
 			ScannerItem si,
-			PackageState ps,
-			System.Windows.Forms.ListViewItem lvi
+			PackageState ps
 		)
 		{
 			ps.Data = new System.Collections.Generic.List<uint> { (uint)ShelveDimension.Indetermined };
@@ -68,21 +68,14 @@ namespace SimPe.Plugin.Scanner
 				}
 			}
 
-			UpdateState(si, ps, lvi);
+			UpdateState(si, ps);
 		}
 
 		public void UpdateState(
 			ScannerItem si,
-			PackageState ps,
-			System.Windows.Forms.ListViewItem lvi
+			PackageState ps
 		)
 		{
-			if (ps.State != TriState.Null)
-			{
-				ShelveDimension cs =
-					(ShelveDimension)ps.Data[0];
-				SetSubItem(lvi, StartColum, cs.ToString(), ps);
-			}
 		}
 
 		public void FinishScan()
@@ -98,13 +91,11 @@ namespace SimPe.Plugin.Scanner
 			selection = items;
 			if (!active)
 			{
-				OperationControl.Enabled = false;
 				return;
 			}
 
 			if (items.Length == 0)
 			{
-				OperationControl.Enabled = false;
 			}
 			else if (items.Length == 1)
 			{
@@ -112,25 +103,11 @@ namespace SimPe.Plugin.Scanner
 					.PackageCacheItem.FindState(Uid, true);
 				if (ps.Data.Count > 0)
 				{
-					ScannerPanelForm.Form.cbshelve.SelectedValue =
-						(ShelveDimension)ps.Data[0];
-					OperationControl.Enabled = true;
 				}
 			}
 			else
 			{
-				ScannerPanelForm.Form.cbshelve.SelectedValue =
-
-					ShelveDimension
-					.Indetermined;
-				OperationControl.Enabled = true;
 			}
-		}
-
-		protected override System.Windows.Forms.Control CreateOperationControl()
-		{
-			ScannerPanelForm.Form.pnShelve.Tag = this;
-			return ScannerPanelForm.Form.pnShelve;
 		}
 
 		#endregion
@@ -145,20 +122,18 @@ namespace SimPe.Plugin.Scanner
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		public void Set(ShelveDimension sd)
+		public async Task Set(ShelveDimension sd)
 		{
 			if (selection == null)
 			{
 				return;
 			}
 
-			WaitingScreen.Wait();
 			bool chg = false;
 			try
 			{
 				foreach (ScannerItem si in selection)
 				{
-					WaitingScreen.UpdateMessage(si.FileName);
 
 					PackageState ps = si.PackageCacheItem.FindState(
 						Uid,
@@ -193,7 +168,7 @@ namespace SimPe.Plugin.Scanner
 					}
 					catch (Exception ex)
 					{
-						Helper.ExceptionMessage("", ex);
+						await Helper.ExceptionMessage("", ex);
 					}
 				}
 
@@ -204,12 +179,7 @@ namespace SimPe.Plugin.Scanner
 			}
 			catch (Exception ex)
 			{
-				Helper.ExceptionMessage("", ex);
-			}
-			finally
-			{
-				WaitingScreen.UpdateImage(null);
-				WaitingScreen.Stop();
+				await Helper.ExceptionMessage("", ex);
 			}
 		}
 	}

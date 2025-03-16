@@ -111,10 +111,6 @@ namespace SimPe.PackedFiles.Srel
 		}
 
 		#region AbstractWrapper Member
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new SRelUI();
-		}
 
 		/// <summary>
 		/// Unserializes a BinaryStream into the Attributes of this Instance

@@ -229,67 +229,8 @@ namespace SimPe.Plugin
 
 			writer.Write(JointReference);
 		}
-
-		TabPage.TransformNode tTransformNode;
-		public override System.Windows.Forms.TabPage TabPage
-		{
-			get
-			{
-				if (tTransformNode == null)
-				{
-					tTransformNode = new TabPage.TransformNode();
-				}
-
-				return tTransformNode;
-			}
-		}
 		#endregion
 
-		/// <summary>
-		/// You can use this to setop the Controls on a TabPage befor it is dispplayed
-		/// </summary>
-		protected override void InitTabPage()
-		{
-			if (tTransformNode == null)
-			{
-				tTransformNode = new TabPage.TransformNode();
-			}
-
-			tTransformNode.tb_tn_a.Tag = true;
-
-			tTransformNode.lb_tn.Items.Clear();
-			for (int i = 0; i < Items.Count; i++)
-			{
-				tTransformNode.lb_tn.Items.Add(Items[i]);
-			}
-
-			tTransformNode.tb_tn_ver.Text = "0x" + Helper.HexString(version);
-			tTransformNode.tb_tn_ukn.Text = "0x" + Helper.HexStringInt(JointReference);
-
-			tTransformNode.tb_tn_tx.Text = Transformation.Translation.X.ToString("N6");
-			tTransformNode.tb_tn_ty.Text = Transformation.Translation.Y.ToString("N6");
-			tTransformNode.tb_tn_tz.Text = Transformation.Translation.Z.ToString("N6");
-
-			/*form.tb_tn_rx.Text = trans.Rotation.X.ToString("N6");
-			form.tb_tn_ry.Text = trans.Rotation.Y.ToString("N6");
-			form.tb_tn_rz.Text = trans.Rotation.Z.ToString("N6");
-			form.tb_tn_rw.Text = trans.Rotation.W.ToString("N6");
-
-			form.tb_tn_ax.Text = trans.Rotation.Axis.X.ToString("N6");
-			form.tb_tn_ay.Text = trans.Rotation.Axis.Y.ToString("N6");
-			form.tb_tn_az.Text = trans.Rotation.Axis.Z.ToString("N6");
-			form.tb_tn_a.Text = Quaternion.RadToDeg(trans.Rotation.Angle).ToString("N6");*/
-			tTransformNode.TNUpdateTextValues(Transformation.Rotation, true, true, true);
-
-			tTransformNode.tb_tn_a.Tag = null;
-		}
-
-		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
-		{
-			base.ExtendTabControl(tc);
-			ObjectGraphNode.AddToTabControl(tc);
-			CompositionTreeNode.AddToTabControl(tc);
-		}
 
 		public override string ToString()
 		{
@@ -351,9 +292,6 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			tTransformNode?.Dispose();
-
-			tTransformNode = null;
 			CompositionTreeNode = null;
 			ObjectGraphNode = null;
 			Items = null;

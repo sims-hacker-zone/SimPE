@@ -1,12 +1,9 @@
 {
   "[csharp]": {
-    "editor.defaultFormatter": "ms-dotnettools.csharp"
+    "editor.defaultFormatter": "blipk.csharp"
   },
   "editor.formatOnSave": true,
   "editor.formatOnType": true,
-  "dotnet.server.useOmnisharp": true,
-  "omnisharp.useModernNet": false,
-  "omnisharp.enableEditorConfigSupport": true,
   "files.associations": {
     ".globalconfig": "editorconfig"
   },

@@ -62,10 +62,6 @@ namespace SimPe.PackedFiles.Slot
 		#endregion
 
 		#region AbstractWrapper Member
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new SlotUI();
-		}
 
 		/// <summary>
 		/// Returns a Human Readable Description of this Wrapper

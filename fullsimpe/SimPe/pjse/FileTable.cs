@@ -53,50 +53,6 @@ namespace pjse
 
 		private void FileIndex_FILoad(object sender, EventArgs e)
 		{
-			UIRefresh();
-		}
-
-		void wm(string message)
-		{
-			Wait.Message = message;
-			Wait.Progress++;
-			if (Splash.Running)
-			{
-				Splash.Screen.SetMessage(message);
-			}
-
-			if (WaitingScreen.Running)
-			{
-				WaitingScreen.Message = message;
-			}
-
-			System.Windows.Forms.Application.DoEvents();
-		}
-
-		public void UIRefresh()
-		{
-			string SplashScreenSetMessage = ""; //can't get old message
-			string SimPeWaitingScreenMessage =
-				WaitingScreen.Running ? WaitingScreen.Message : "";
-			Wait.SubStart();
-
-			try
-			{
-				Refresh(true);
-			}
-			finally
-			{
-				Wait.SubStop();
-				if (Splash.Running)
-				{
-					Splash.Screen.SetMessage(SplashScreenSetMessage);
-				}
-
-				if (WaitingScreen.Running)
-				{
-					WaitingScreen.Message = SimPeWaitingScreenMessage;
-				}
-			}
 		}
 
 		private ArrayList fixedPackages = new ArrayList();
@@ -134,22 +90,12 @@ namespace pjse
 
 			if (loadEverything)
 			{
-				if (Wait.Running)
-				{
-					Wait.Progress = 0;
-					Wait.MaxProgress = FileTableBase.DefaultFolders.Count;
-				}
 				foreach (FileTableItem fii in FileTableBase.DefaultFolders)
 				{
 					if (fii.Use)
 					{
 						Add(fii.Name, fii.IsRecursive, fii.Type.AsExpansions, true);
 					}
-				}
-
-				if (Wait.Running)
-				{
-					Wait.MaxProgress = 0;
 				}
 			}
 
@@ -304,12 +250,6 @@ namespace pjse
 
 		private void Add(string v, bool recurse, Expansions ep, bool isFixed)
 		{
-			wm(
-				"Loading "
-					+ ep
-					+ " "
-					+ Path.GetFileName(v).Replace(".package", "")
-			);
 			if (Directory.Exists(v))
 			{
 				foreach (string i in Directory.GetFiles(v, "*.package"))

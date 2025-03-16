@@ -39,7 +39,6 @@ namespace SimPe.Plugin
 					return new ToolResult(false, false);
 				}
 
-				WaitingScreen.Wait();
 
 				fo.Fix(map, false);
 				fo.CleanUp();
@@ -51,7 +50,6 @@ namespace SimPe.Plugin
 			}
 			finally
 			{
-				WaitingScreen.Stop();
 			}
 
 			return Helper.StartedGui != Executable.Classic ? new ToolResult(false, false) : (Interfaces.Plugin.IToolResult)new ToolResult(false, true);

@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 using SimPe.Cache;
 using SimPe.Interfaces.Plugin.Scanner;
@@ -33,13 +34,12 @@ namespace SimPe.Plugin.Scanner
 
 		protected override void DoInitScan()
 		{
-			AddColumn(ListView, "Ready?", 80);
+			AddColumn("Ready?", 80);
 		}
 
 		public void ScanPackage(
 			ScannerItem si,
-			PackageState ps,
-			System.Windows.Forms.ListViewItem lvi
+			PackageState ps
 		)
 		{
 			ps.Data = new List<uint>
@@ -79,19 +79,17 @@ namespace SimPe.Plugin.Scanner
 				}
 			}
 
-			UpdateState(si, ps, lvi);
+			UpdateState(si, ps);
 		}
 
 		public void UpdateState(
 			ScannerItem si,
-			PackageState ps,
-			System.Windows.Forms.ListViewItem lvi
+			PackageState ps
 		)
 		{
 			if (ps.State != TriState.Null)
 			{
 				ReadyState cs = (ReadyState)ps.Data[0];
-				SetSubItem(lvi, StartColum, cs.ToString(), ps);
 			}
 		}
 
@@ -108,7 +106,6 @@ namespace SimPe.Plugin.Scanner
 			selection = items;
 			if (!active)
 			{
-				OperationControl.Enabled = false;
 				return;
 			}
 
@@ -122,18 +119,10 @@ namespace SimPe.Plugin.Scanner
 				{
 					if ((ReadyState)ps.Data[0] != ReadyState.Yes)
 					{
-						OperationControl.Enabled = true;
 						return;
 					}
 				}
 			} //foreach
-			OperationControl.Enabled = false;
-		}
-
-		protected override System.Windows.Forms.Control CreateOperationControl()
-		{
-			ScannerPanelForm.Form.pnep.Tag = this;
-			return ScannerPanelForm.Form.pnep;
 		}
 
 		#endregion
@@ -148,20 +137,18 @@ namespace SimPe.Plugin.Scanner
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		public void Fix(string name)
+		public async Task Fix(string name)
 		{
 			if (selection == null)
 			{
 				return;
 			}
 
-			WaitingScreen.Wait();
 			bool chg = false;
 			try
 			{
 				foreach (ScannerItem si in selection)
 				{
-					WaitingScreen.UpdateMessage(si.FileName);
 
 					PackageState ps = si.PackageCacheItem.FindState(
 						Uid,
@@ -196,7 +183,7 @@ namespace SimPe.Plugin.Scanner
 					}
 					catch (Exception ex)
 					{
-						Helper.ExceptionMessage("", ex);
+						await Helper.ExceptionMessage("", ex);
 					}
 				}
 
@@ -207,12 +194,7 @@ namespace SimPe.Plugin.Scanner
 			}
 			catch (Exception ex)
 			{
-				Helper.ExceptionMessage("", ex);
-			}
-			finally
-			{
-				WaitingScreen.UpdateImage(null);
-				WaitingScreen.Stop();
+				await Helper.ExceptionMessage("", ex);
 			}
 		}
 	}

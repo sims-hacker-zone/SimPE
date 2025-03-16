@@ -77,11 +77,6 @@ namespace SimPe.PackedFiles.Bcon
 				|| version == 0013; //0.10
 		}
 
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new BconForm();
-		}
-
 		/// <summary>
 		/// Returns a Human Readable Description of this Wrapper
 		/// </summary>

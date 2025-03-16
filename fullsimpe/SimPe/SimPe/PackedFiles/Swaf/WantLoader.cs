@@ -45,7 +45,6 @@ namespace SimPe.PackedFiles.Swaf
 		/// </summary>
 		private static void LoadTextPackage()
 		{
-			Wait.SubStart();
 			txtpkg = Packages.File.LoadFromFile(
 				System.IO.Path.Combine(
 					PathProvider.Global.Latest.InstallFolder,
@@ -69,8 +68,6 @@ namespace SimPe.PackedFiles.Swaf
 						));
 				}
 			}
-
-			Wait.SubStop();
 		}
 
 		/// <summary>
@@ -78,7 +75,6 @@ namespace SimPe.PackedFiles.Swaf
 		/// </summary>
 		private static void LoadWants()
 		{
-			Wait.SubStart();
 			wants = new Dictionary<uint, Interfaces.Scenegraph.IScenegraphFileIndexItem>();
 
 			FileTableBase.FileIndex.Load();
@@ -87,8 +83,6 @@ namespace SimPe.PackedFiles.Swaf
 			{
 				wants.Add(wts.FileDescriptor.Instance, wts);
 			}
-
-			Wait.SubStop();
 		}
 
 		/// <summary>

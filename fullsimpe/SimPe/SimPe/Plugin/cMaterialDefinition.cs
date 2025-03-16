@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 
 using SimPe.Data;
 using SimPe.Interfaces.Files;
@@ -226,106 +227,7 @@ namespace SimPe.Plugin
 				}
 			}
 		}
-
-		TabPage.MaterialDefinition tMaterialDefinition;
-		TabPage.MatdForm tMaterialDefinitionProperties;
-		TabPage.MaterialDefinitionCategories tMaterialDefinitionCat;
-		TabPage.MaterialDefinitionFiles tMaterialDefinitionFiles;
-		public override System.Windows.Forms.TabPage TabPage
-		{
-			get
-			{
-				if (tMaterialDefinition == null)
-				{
-					tMaterialDefinition = new TabPage.MaterialDefinition();
-				}
-
-				return tMaterialDefinition;
-			}
-		}
 		#endregion
-
-		/// <summary>
-		/// You can use this to setop the Controls on a TabPage befor it is dispplayed
-		/// </summary>
-		protected override void InitTabPage()
-		{
-			if (tMaterialDefinition == null)
-			{
-				tMaterialDefinition = new TabPage.MaterialDefinition();
-			}
-
-			if (tMaterialDefinitionProperties == null)
-			{
-				tMaterialDefinitionProperties = new TabPage.MatdForm();
-			}
-
-			if (tMaterialDefinitionCat == null)
-			{
-				tMaterialDefinitionCat =
-					new TabPage.MaterialDefinitionCategories();
-			}
-
-			if (tMaterialDefinitionFiles == null)
-			{
-				tMaterialDefinitionFiles =
-					new TabPage.MaterialDefinitionFiles();
-			}
-
-			tMaterialDefinitionProperties.tbname.Tag = true;
-			tMaterialDefinition.tbdsc.Tag = true;
-			try
-			{
-				tMaterialDefinition.tb_ver.Text = "0x" + Helper.HexString(version);
-
-				tMaterialDefinitionProperties.lldel.Enabled = false;
-				tMaterialDefinitionProperties.lbprop.Items.Clear();
-				foreach (MaterialDefinitionProperty mdp in Properties)
-				{
-					tMaterialDefinitionProperties.lbprop.Items.Add(mdp);
-				}
-
-				tMaterialDefinition.tbdsc.Text = FileDescription;
-				tMaterialDefinition.tbtype.Text = MatterialType;
-
-				tMaterialDefinitionFiles.lbfl.Items.Clear();
-				foreach (string fl in Listing)
-				{
-					tMaterialDefinitionFiles.lbfl.Items.Add(fl);
-				}
-
-				tMaterialDefinitionCat.SetupGrid(this);
-			}
-			finally
-			{
-				tMaterialDefinitionProperties.tbname.Tag = null;
-				tMaterialDefinition.tbdsc.Tag = null;
-			}
-		}
-
-		public override void ExtendTabControl(System.Windows.Forms.TabControl tc)
-		{
-			tMaterialDefinitionProperties.Tag = this;
-			tc.TabPages.Add(tMaterialDefinitionProperties);
-
-			tMaterialDefinitionFiles.Tag = this;
-			tc.TabPages.Add(tMaterialDefinitionFiles);
-			{
-				tMaterialDefinitionCat.Tag = this;
-				tc.TabPages.Add(tMaterialDefinitionCat);
-			}
-
-			tc.SelectedIndex = 1;
-			if (parent != null)
-			{
-				parent.TabPageChanged += new EventHandler(
-					tMaterialDefinitionProperties.TxmtChangeTab
-				);
-				parent.TabPageChanged += new EventHandler(
-					tMaterialDefinitionCat.TxmtChangeTab
-				);
-			}
-		}
 
 		#region IScenegraphBlock Member
 
@@ -417,28 +319,6 @@ namespace SimPe.Plugin
 		#endregion
 
 		#region Property Grid
-		static Ambertation.PropertyParser tpp;
-
-		/// <summary>
-		/// Return a PropertyParser, that enumerates all known Properties as <see cref="Ambertation.PropertyDescription"/> Objects
-		/// </summary>
-		public static Ambertation.PropertyParser PropertyParser
-		{
-			get
-			{
-				if (tpp == null)
-				{
-					tpp = new Ambertation.PropertyParser(
-						System.IO.Path.Combine(
-							Helper.SimPeDataPath,
-							"txmtdefinition.xml"
-						)
-					);
-				}
-
-				return tpp;
-			}
-		}
 
 		#endregion
 
@@ -457,67 +337,6 @@ namespace SimPe.Plugin
 					}
 				}
 			}
-		}
-
-		/// <summary>
-		/// Creates a Material Object form this Block
-		/// </summary>
-		/// <returns></returns>
-		public Ambertation.Scenes.Material ToSceneMaterial(
-			Ambertation.Scenes.Scene scn,
-			string name
-		)
-		{
-			MaterialDefinitionProperty p;
-			Ambertation.Scenes.Material mat = scn.CreateMaterial(name);
-			p = GetProperty("stdMatSpecCoef");
-			if (p != null)
-			{
-				mat.Specular = p.ToARGB();
-			}
-
-			p = GetProperty("stdMatDiffCoef");
-			if (p != null)
-			{
-				mat.Diffuse = p.ToARGB();
-			}
-
-			p = GetProperty("stdMatEmissiveCoef");
-			if (p != null)
-			{
-				mat.Emmissive = p.ToARGB();
-			}
-
-			p = GetProperty("stdMatSpecPower");
-			if (p != null)
-			{
-				mat.SpecularPower = p.ToValue();
-			}
-
-			p = GetProperty("stdMatAlphaBlendMode");
-
-			if (p != null)
-			{
-				if (p.Value == "blend")
-				{
-					MaterialDefinitionProperty p2 = GetProperty(
-						"stdMatLightingEnabled"
-					);
-					if (p2 != null)
-					{
-						if (p2.ToValue() == 0)
-						{
-							mat.Mode = Ambertation
-								.Scenes
-								.Material
-								.TextureModes
-								.ShadowTexture;
-						}
-					}
-				}
-				//if (mat.Texture.AlphaBlend) mat.Diffuse = System.Drawing.Color.FromArgb(0x10, mat.Diffuse);
-			}
-			return mat;
 		}
 
 		/// <summary>
@@ -618,18 +437,6 @@ namespace SimPe.Plugin
 
 		public override void Dispose()
 		{
-			tMaterialDefinition?.Dispose();
-
-			tMaterialDefinitionProperties?.Dispose();
-
-			tMaterialDefinitionCat?.Dispose();
-
-			tMaterialDefinitionFiles?.Dispose();
-
-			tMaterialDefinitionFiles = null;
-			tMaterialDefinitionCat = null;
-			tMaterialDefinitionProperties = null;
-			tMaterialDefinition = null;
 		}
 
 		#endregion
@@ -680,22 +487,22 @@ namespace SimPe.Plugin
 			writer.Write(Value);
 		}
 
-		public double ToValue()
+		public float ToValue()
 		{
-			double[] list = ToFloat();
-			return list.Length > 0 ? list[0] : 0;
+			IEnumerable<float> list = ToFloat();
+			return list.Any() ? list.First() : 0;
 		}
 
-		public Ambertation.Geometry.Vector2 ToVector2()
+		public Vector2 ToVector2()
 		{
-			double[] list = ToFloat();
-			Ambertation.Geometry.Vector2 v = Ambertation.Geometry.Vector2.Zero;
-			if (list.Length > 0)
+			var list = ToFloat().ToList();
+			Vector2 v = Vector2.Zero;
+			if (list.Count > 0)
 			{
 				v.X = list[0];
 			}
 
-			if (list.Length > 1)
+			if (list.Count > 1)
 			{
 				v.Y = list[1];
 			}
@@ -705,8 +512,8 @@ namespace SimPe.Plugin
 
 		public System.Drawing.Color ToRGB()
 		{
-			Ambertation.Geometry.Vector3 v = ToVector3();
-			Clamp(v);
+			Vector3 v = ToVector3();
+			Clamp(ref v);
 			return System.Drawing.Color.FromArgb(
 				(int)(v.X * 0xff),
 				(int)(v.Y * 0xff),
@@ -714,7 +521,7 @@ namespace SimPe.Plugin
 			);
 		}
 
-		void Clamp(Ambertation.Geometry.Vector4 v)
+		void Clamp(ref Vector4 v)
 		{
 			v.X = Math.Max(0, Math.Min(1, v.X));
 			v.Y = Math.Max(0, Math.Min(1, v.Y));
@@ -722,7 +529,7 @@ namespace SimPe.Plugin
 			v.W = Math.Max(0, Math.Min(1, v.W));
 		}
 
-		void Clamp(Ambertation.Geometry.Vector3 v)
+		void Clamp(ref Vector3 v)
 		{
 			v.X = Math.Max(0, Math.Min(1, v.X));
 			v.Y = Math.Max(0, Math.Min(1, v.Y));
@@ -731,13 +538,13 @@ namespace SimPe.Plugin
 
 		public System.Drawing.Color ToARGB()
 		{
-			if (ToFloat().Length < 4)
+			if (ToFloat().Count() < 4)
 			{
 				return ToRGB();
 			}
 
-			Ambertation.Geometry.Vector4 v = ToVector4();
-			Clamp(v);
+			Vector4 v = ToVector4();
+			Clamp(ref v);
 			return System.Drawing.Color.FromArgb(
 				(int)(v.W * 0xff),
 				(int)(v.X * 0xff),
@@ -746,21 +553,21 @@ namespace SimPe.Plugin
 			);
 		}
 
-		public Ambertation.Geometry.Vector3 ToVector3()
+		public Vector3 ToVector3()
 		{
-			double[] list = ToFloat();
-			Ambertation.Geometry.Vector3 v = Ambertation.Geometry.Vector3.Zero;
-			if (list.Length > 0)
+			var list = ToFloat().ToList();
+			Vector3 v = Vector3.Zero;
+			if (list.Count > 0)
 			{
 				v.X = list[0];
 			}
 
-			if (list.Length > 1)
+			if (list.Count > 1)
 			{
 				v.Y = list[1];
 			}
 
-			if (list.Length > 2)
+			if (list.Count > 2)
 			{
 				v.Z = list[2];
 			}
@@ -768,31 +575,31 @@ namespace SimPe.Plugin
 			return v;
 		}
 
-		public Ambertation.Geometry.Vector4 ToVector4()
+		public Vector4 ToVector4()
 		{
-			double[] list = ToFloat();
-			Ambertation.Geometry.Vector4 v = new Ambertation.Geometry.Vector4(
+			List<float> list = ToFloat().ToList();
+			Vector4 v = new Vector4(
 				0,
 				0,
 				0,
 				0
 			);
-			if (list.Length > 0)
+			if (list.Count != 0)
 			{
 				v.X = list[0];
 			}
 
-			if (list.Length > 1)
+			if (list.Count > 1)
 			{
 				v.Y = list[1];
 			}
 
-			if (list.Length > 2)
+			if (list.Count > 2)
 			{
 				v.Z = list[2];
 			}
 
-			if (list.Length > 3)
+			if (list.Count > 3)
 			{
 				v.W = list[3];
 			}
@@ -800,32 +607,10 @@ namespace SimPe.Plugin
 			return v;
 		}
 
-		public double[] ToFloat()
+		public IEnumerable<float> ToFloat()
 		{
-			Ambertation.Collections.DoubleCollection dc =
-				new Ambertation.Collections.DoubleCollection();
-			string[] parts = Value.Split(new char[] { ',' });
-			foreach (string s in parts)
-			{
-				try
-				{
-					dc.Add(
-						Convert.ToDouble(
-							s,
-							System.Globalization.CultureInfo.InvariantCulture
-						)
-					);
-				}
-				catch { }
-			}
-
-			double[] ret = new double[dc.Count];
-			for (int i = 0; i < dc.Count; i++)
-			{
-				ret[i] = dc[i];
-			}
-
-			return ret;
+			return from part in Value.Split(new char[] { ',' })
+				   select Convert.ToSingle(part);
 		}
 
 		public override string ToString()

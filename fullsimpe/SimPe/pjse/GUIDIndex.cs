@@ -52,12 +52,10 @@ namespace pjse
 					]
 					: FileTable.GFT[SimPe.Data.FileTypes.OBJD];
 
-			SimPe.Wait.Start(items.Length);
 			try
 			{
 				foreach (FileTable.Entry item in items)
 				{
-					System.Windows.Forms.Application.DoEvents();
 					try
 					{
 						SimPe.Interfaces.Plugin.AbstractWrapper wrapper = item.Wrapper;
@@ -109,14 +107,12 @@ namespace pjse
 					}
 					finally
 					{
-						SimPe.Wait.Progress++;
 					}
 				}
 				FileTable.GFT.OnFiletableRefresh(this, new EventArgs());
 			}
 			finally
 			{
-				SimPe.Wait.Stop();
 			}
 		}
 

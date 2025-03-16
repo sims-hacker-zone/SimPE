@@ -43,12 +43,6 @@ namespace pjOBJDTool
 
 			public void ShowHelp(SimPe.ShowHelpEventArgs e)
 			{
-				SimPe.RemoteControl.ShowHelp(
-					"file://"
-						+ SimPe.Helper.SimPePluginPath
-						+ "/pjOBJDTool.plugin/pjOBJDTool_Help"
-						+ "/Contents.htm"
-				);
 			}
 		}
 

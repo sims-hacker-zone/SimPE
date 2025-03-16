@@ -18,7 +18,7 @@ namespace SimPe.Interfaces.Plugin.Scanner
 		/// <summary>
 		/// Caleed before a new Scan is stared
 		/// </summary>
-		void InitScan(System.Windows.Forms.ListView lv);
+		void InitScan();
 
 		/// <summary>
 		/// Called if a non Cached Item was found that should be displayed
@@ -29,8 +29,7 @@ namespace SimPe.Interfaces.Plugin.Scanner
 		/// <remarks>This needs to update the cache Item!</remarks>
 		void ScanPackage(
 			ScannerItem si,
-			Cache.PackageState ps,
-			System.Windows.Forms.ListViewItem lvi
+			Cache.PackageState ps
 		);
 
 		/// <summary>
@@ -41,8 +40,7 @@ namespace SimPe.Interfaces.Plugin.Scanner
 		/// <param name="lvi">The ListView Item that is used to display</param>
 		void UpdateState(
 			ScannerItem si,
-			Cache.PackageState ps,
-			System.Windows.Forms.ListViewItem lvi
+			Cache.PackageState ps
 		);
 
 		/// <summary>
@@ -70,14 +68,6 @@ namespace SimPe.Interfaces.Plugin.Scanner
 		/// Returns true, if this Scanner should be listed on the Top of the List
 		/// </summary>
 		bool OnTop
-		{
-			get;
-		}
-
-		/// <summary>
-		/// Returns null or a valid Control, that will be displayed on the Controls Tab
-		/// </summary>
-		System.Windows.Forms.Control OperationControl
 		{
 			get;
 		}

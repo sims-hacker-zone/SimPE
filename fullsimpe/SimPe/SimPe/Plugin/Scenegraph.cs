@@ -892,11 +892,6 @@ namespace SimPe.Plugin
 			bool delete
 		)
 		{
-			if (WaitingScreen.Running)
-			{
-				WaitingScreen.UpdateMessage("Loading Parent Modelnames");
-			}
-
 			List<string> list = new List<string>();
 
 			foreach (Interfaces.Files.IPackedFileDescriptor pfd in pkg.FindFiles(

@@ -69,10 +69,6 @@ namespace SimPe.PackedFiles.Nhtr
 
 
 		#region AbstractWrapper Member
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new NhtrUI();
-		}
 
 		protected override void Unserialize(System.IO.BinaryReader reader)
 		{

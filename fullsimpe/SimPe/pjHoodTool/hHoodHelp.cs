@@ -10,18 +10,6 @@ namespace pjHoodTool
 
 		public void ShowHelp(SimPe.ShowHelpEventArgs e)
 		{
-#if NET1
-			string relativePathToHelp = "pjHoodTool_NET1.plugin/pjHoodTool_Help";
-#else
-			string relativePathToHelp = "pjHoodTool.plugin/pjHoodTool_Help";
-#endif
-			SimPe.RemoteControl.ShowHelp(
-				"file://"
-					+ SimPe.Helper.SimPePluginPath
-					+ "/"
-					+ relativePathToHelp
-					+ "/Contents.htm"
-			);
 		}
 
 		public override string ToString()

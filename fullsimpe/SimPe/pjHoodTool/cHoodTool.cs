@@ -17,6 +17,7 @@ using SimPe.PackedFiles.Fami;
 using SimPe.PackedFiles.Famt;
 using SimPe.PackedFiles.Str;
 using SimPe.PackedFiles.Sdsc;
+using System.Threading.Tasks;
 
 namespace pjHoodTool
 {
@@ -26,8 +27,6 @@ namespace pjHoodTool
 		{
 			return u == null ? u : "\"" + u.Replace("\"", "\"\"") + "\"";
 		}
-
-		Settims getim = new Settims();
 		internal static bool incbas = true;
 		internal static bool incint = true;
 		internal static bool inccha = true;
@@ -319,7 +318,6 @@ namespace pjHoodTool
 				Directory.CreateDirectory(Path.Combine(outPath, "SimImage"));
 			}
 
-			System.Windows.Forms.Application.DoEvents();
 			splash("Loading Neighborhood " + hood + ": " + hoodName);
 			SetProvider(pkg);
 
@@ -391,7 +389,6 @@ namespace pjHoodTool
 										]
 									);
 
-								System.Windows.Forms.Application.DoEvents();
 								splash("Loading Subhood : " + hoodName);
 							}
 							pfds = pkg.FindFiles(FileTypes.IDNO);
@@ -840,7 +837,6 @@ namespace pjHoodTool
 				|| dt.AddMilliseconds(200).CompareTo(DateTime.UtcNow) < 0
 			)
 			{
-				System.Windows.Forms.Application.DoEvents();
 				if (
 					!(sdsc.SimName + " " + sdsc.SimFamilyName)
 						.Trim()
@@ -1231,67 +1227,10 @@ namespace pjHoodTool
 		{
 			if (!Directory.Exists(PathProvider.Global.NeighborhoodFolder))
 			{
-				System.Windows.Forms.MessageBox.Show(
-					"The Folder "
-						+ PathProvider.Global.NeighborhoodFolder
-						+ " was not found.\n"
-						+ "Please specify the correct SaveGame Folder in the Options Dialog."
-				);
 				return new ToolResult(false, false);
 			}
 
-			System.Windows.Forms.FolderBrowserDialog fbd =
-				new System.Windows.Forms.FolderBrowserDialog
-				{
-					Description = "Choose the folder for extracted Sim data",
-					SelectedPath = PathProvider.SimSavegameFolder,
-					ShowNewFolderButton = true
-				};
-			System.Windows.Forms.DialogResult dr = fbd.ShowDialog();
-			if (dr != System.Windows.Forms.DialogResult.OK)
-			{
-				return new ToolResult(false, false);
-			}
-
-			NeighborhoodForm nfm = new NeighborhoodForm
-			{
-				LoadNgbh = false,
-				ShowBackupManager = false,
-				ShowSubHoods = false,
-				Text = "Close window without selection to extract all"
-			};
-			SimPe.Interfaces.Plugin.IToolResult ret = nfm.Execute(ref package, null);
-
-			string hood = "";
-			if (
-				nfm.DialogResult == System.Windows.Forms.DialogResult.OK
-				&& nfm.SelectedNgbh != null
-			)
-			{
-				hood = Path.GetFileName(Path.GetDirectoryName(nfm.SelectedNgbh));
-			}
-
-			Settims sf = new Settims
-			{
-				Text = hood
-			};
-			sf.ShowDialog();
-
-			try
-			{
-				WaitingScreen.Wait();
-				splash = delegate (string message)
-				{
-					WaitingScreen.UpdateMessage(message);
-				};
-				Rufio(fbd.SelectedPath, hood, 0);
-				return new ToolResult(false, false);
-			}
-			finally
-			{
-				WaitingScreen.UpdateImage(null);
-				WaitingScreen.Stop();
-			}
+			return new ToolResult(false, false);
 		}
 
 		bool ITool.IsEnabled(
@@ -1319,7 +1258,7 @@ namespace pjHoodTool
 
 		#region ICommandLine Members
 
-		public bool Parse(List<string> argv)
+		public async Task<bool> Parse(List<string> argv)
 		{
 			int i = ArgParser.Parse(argv, "-rufio");
 			if (i < 0)
@@ -1331,7 +1270,6 @@ namespace pjHoodTool
 			string hood = "";
 			string group = "";
 			int groupno = 0;
-			bool dun = getim.Settings;
 			bool previ = Helper.WindowsRegistry.Config.LoadTableAtStartup;
 			Helper.WindowsRegistry.Config.LoadTableAtStartup = false;
 			while (argv.Count > i)
@@ -1351,7 +1289,7 @@ namespace pjHoodTool
 					continue;
 				}
 
-				Message.Show(Help()[0]);
+				await Message.Show(Help()[0]);
 				return true;
 			}
 
@@ -1394,12 +1332,7 @@ namespace pjHoodTool
 				}
 			}
 
-			splash = delegate (string message)
-			{
-				SimPe.Splash.Screen.SetMessage(message);
-			};
 			Rufio(outpath, hood, groupno);
-			splash("");
 			Helper.WindowsRegistry.Config.LoadTableAtStartup = previ;
 			return true;
 		}

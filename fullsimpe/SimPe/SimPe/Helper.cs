@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Windows.Forms;
+using System.Threading.Tasks;
 
 using SimPe.Data;
 using SimPe.Forms.MainUI;
@@ -313,28 +313,19 @@ namespace SimPe
 		/// <param name="input">The String you want to change</param>
 		/// <param name="allowed">A string coinatining all Allowed Characters</param>
 		/// <returns>the string without illegal Characters</returns>
-		public static string RemoveUnlistedCharacters(string input, string allowed)
+		public static string RemoveUnlistedCharacters(string input)
 		{
-			string output = "";
-			for (int i = 0; i < input.Length; i++)
-			{
-				char c = input[i];
-				if (allowed.IndexOf(c) != -1)
-				{
-					output += c;
-				}
-			}
-
-			return output;
+			HashSet<char> chars = new(Path.GetInvalidFileNameChars());
+			return new string(input.Where(c => !chars.Contains(c)).ToArray());
 		}
 
 		/// <summary>
 		/// Shows an Exception Message for the User
 		/// </summary>
 		/// <param name="ex">The Exception</param>
-		public static void ExceptionMessage(Exception ex)
+		public static async Task ExceptionMessage(Exception ex)
 		{
-			MessageBox.Show($"{ex.Message}\n\n{ex.StackTrace}");
+			await Message.Show($"{ex.Message}\n\n{ex.StackTrace}");
 		}
 
 		/// <summary>
@@ -342,9 +333,9 @@ namespace SimPe
 		/// </summary>
 		/// <param name="ex">The Exception</param>
 		/// <param name="message">An operation Description (when did the Exception occur)</param>
-		public static void ExceptionMessage(string message, Exception ex)
+		public static async Task ExceptionMessage(string message, Exception ex)
 		{
-			MessageBox.Show($"{message}\n\n{ex.Message}\n\n{ex.StackTrace}");
+			await Message.Show($"{message}\n\n{ex.Message}\n\n{ex.StackTrace}");
 		}
 
 		/// <summary>
@@ -360,17 +351,12 @@ namespace SimPe
 		/// <summary>
 		/// Returns the Path SimPe is located in
 		/// </summary>
-		public static string SimPePath => Path.GetDirectoryName(
-					System.Windows.Forms.Application.ExecutablePath
-				);
+		public static string SimPePath => AppDomain.CurrentDomain.BaseDirectory;
 
 		/// <summary>
 		/// Returns the Path SimPe Plugins are located in
 		/// </summary>
-		public static string SimPePluginPath => Path.Combine(
-					Path.GetDirectoryName(
-						System.Windows.Forms.Application.ExecutablePath
-					),
+		public static string SimPePluginPath => Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
 					"Plugins"
 				);
 
@@ -390,7 +376,6 @@ namespace SimPe
 					),
 					"Teleport"
 				);
-				// string dir = Path.Combine(Path.GetDirectoryName(System.Windows.Forms.Application.ExecutablePath), "Teleport");
 				try
 				{
 					if (!Directory.Exists(dir))
@@ -635,7 +620,7 @@ namespace SimPe
 		/// Returns the Version Information for the started Executable
 		/// </summary>
 		public static System.Diagnostics.FileVersionInfo ExecutableVersion => System.Diagnostics.FileVersionInfo.GetVersionInfo(
-					System.Windows.Forms.Application.ExecutablePath
+					Environment.ProcessPath
 				);
 
 		/// <summary>
@@ -757,13 +742,11 @@ namespace SimPe
 		/// Returnst the Gui that was started
 		/// </summary>
 		public static Executable StartedGui => WindowsRegistry.Config.Layout.IsClassicPreset ? Executable.Classic
-					: System
-											.Windows.Forms.Application.ExecutablePath.Trim()
+					: Environment.ProcessPath.Trim()
 											.ToLower()
 											.EndsWith("wizards of simpe.exe")
 						? Executable.WizardsOfSimpe
-						: System
-																.Windows.Forms.Application.ExecutablePath.Trim()
+						: Environment.ProcessPath.Trim()
 																.ToLower()
 																.EndsWith("simpe.exe")
 											? Executable.Default
@@ -1297,307 +1280,5 @@ namespace SimPe
 		}
 
 		#endregion
-
-#pragma warning disable IDE0046
-		public static System.Windows.Forms.Keys ToKeys(System.Windows.Forms.Shortcut sc)
-		{
-			System.Windows.Forms.Keys ret = System.Windows.Forms.Keys.None;
-			string name = sc.ToString().ToLower();
-
-			if (name == "none")
-			{
-				return ret;
-			}
-
-			SetKey(ref ret, ref name, "ctrl", System.Windows.Forms.Keys.Control);
-			SetKey(ref ret, ref name, "shift", System.Windows.Forms.Keys.Shift);
-			SetKey(ref ret, ref name, "alt", System.Windows.Forms.Keys.Alt);
-			SetKey(ref ret, ref name, "ins", System.Windows.Forms.Keys.Insert);
-			SetKey(ref ret, ref name, "del", System.Windows.Forms.Keys.Delete);
-			SetKey(ref ret, ref name, "bksp", System.Windows.Forms.Keys.Back);
-
-			if (SetKey(ref ret, ref name, "uparrow", System.Windows.Forms.Keys.Up))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "downarrow", System.Windows.Forms.Keys.Down))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "leftarrow", System.Windows.Forms.Keys.Left))
-			{
-				return ret;
-			}
-
-			if (
-				SetKey(ref ret, ref name, "rightarrow", System.Windows.Forms.Keys.Right)
-			)
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "f1", System.Windows.Forms.Keys.F1))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "f2", System.Windows.Forms.Keys.F2))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "f3", System.Windows.Forms.Keys.F3))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "f4", System.Windows.Forms.Keys.F4))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "f5", System.Windows.Forms.Keys.F5))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "f6", System.Windows.Forms.Keys.F6))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "f7", System.Windows.Forms.Keys.F7))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "f8", System.Windows.Forms.Keys.F8))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "f9", System.Windows.Forms.Keys.F9))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "f10", System.Windows.Forms.Keys.F10))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "f11", System.Windows.Forms.Keys.F11))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "f12", System.Windows.Forms.Keys.F12))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "1", System.Windows.Forms.Keys.D1))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "2", System.Windows.Forms.Keys.D2))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "3", System.Windows.Forms.Keys.D3))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "4", System.Windows.Forms.Keys.D4))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "5", System.Windows.Forms.Keys.D5))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "6", System.Windows.Forms.Keys.D6))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "7", System.Windows.Forms.Keys.D7))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "8", System.Windows.Forms.Keys.D8))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "9", System.Windows.Forms.Keys.D9))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "0", System.Windows.Forms.Keys.D0))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "a", System.Windows.Forms.Keys.A))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "b", System.Windows.Forms.Keys.B))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "c", System.Windows.Forms.Keys.C))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "d", System.Windows.Forms.Keys.D))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "e", System.Windows.Forms.Keys.E))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "f", System.Windows.Forms.Keys.F))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "g", System.Windows.Forms.Keys.G))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "h", System.Windows.Forms.Keys.H))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "i", System.Windows.Forms.Keys.I))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "j", System.Windows.Forms.Keys.J))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "k", System.Windows.Forms.Keys.K))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "l", System.Windows.Forms.Keys.L))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "m", System.Windows.Forms.Keys.M))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "n", System.Windows.Forms.Keys.N))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "o", System.Windows.Forms.Keys.O))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "p", System.Windows.Forms.Keys.P))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "q", System.Windows.Forms.Keys.Q))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "r", System.Windows.Forms.Keys.R))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "s", System.Windows.Forms.Keys.S))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "t", System.Windows.Forms.Keys.T))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "u", System.Windows.Forms.Keys.U))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "v", System.Windows.Forms.Keys.V))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "w", System.Windows.Forms.Keys.W))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "x", System.Windows.Forms.Keys.X))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "y", System.Windows.Forms.Keys.Y))
-			{
-				return ret;
-			}
-
-			if (SetKey(ref ret, ref name, "z", System.Windows.Forms.Keys.Z))
-			{
-				return ret;
-			}
-
-			return ret;
-		}
-
-		private static bool SetKey(
-			ref System.Windows.Forms.Keys ret,
-			ref string name,
-			string capt,
-			System.Windows.Forms.Keys key
-		)
-		{
-			if (name.IndexOf(capt) >= 0)
-			{
-				name = name.Replace(capt, "");
-				ret |= key;
-
-				//System.Diagnostics.Debug.WriteLine(name+": "+ret);
-				return true;
-			}
-
-			return false;
-		}
 	}
 }

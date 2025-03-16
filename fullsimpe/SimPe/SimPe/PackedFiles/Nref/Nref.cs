@@ -31,10 +31,6 @@ namespace SimPe.PackedFiles.Nref
 		#endregion
 
 		#region AbstractWrapper Member
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new NrefUI();
-		}
 
 		/// <summary>
 		/// Unserializes a BinaryStream into the Attributes of this Instance

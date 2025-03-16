@@ -1,0 +1,16 @@
+<UserControl
+    x:Class="SimPe.Views.Tabs.ResourceInfoTab"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:m="using:SimPe.Models"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:SimPe.ViewModels"
+    x:DataType="m:PackedFile.PackedFile">
+    <WrapPanel>
+        <StackPanel Margin="0,5,0,5" Orientation="Horizontal">
+            <Label VerticalContentAlignment="Center">Offset:</Label>
+            <TextBlock Text="{Binding Offset, StringFormat=0x{0:X8}}" />
+        </StackPanel>
+    </WrapPanel>
+</UserControl>

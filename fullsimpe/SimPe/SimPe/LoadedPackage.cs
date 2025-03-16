@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
+using System.Threading.Tasks;
 
 using SimPe.Data;
 using SimPe.Events;
@@ -166,9 +166,6 @@ namespace SimPe
 					return false;
 				}
 
-				Wait.SubStart();
-				Wait.Message = "Loading File";
-
 				if (Package != null)
 				{
 					SetupEvents(false);
@@ -183,8 +180,6 @@ namespace SimPe
 
 				SetupEvents(true);
 				Helper.WindowsRegistry.AddRecentFile(flname);
-
-				Wait.SubStop();
 
 				if (AfterFileLoad != null)
 				{
@@ -212,9 +207,9 @@ namespace SimPe
 		/// Save the current package
 		/// </summary>
 		/// <returns></returns>
-		public bool Save()
+		public async Task<bool> Save()
 		{
-			return FileName.Trim() != "" && Save(FileName, false);
+			return FileName.Trim() != "" && await Save(FileName, false);
 		}
 
 		/// <summary>
@@ -223,7 +218,7 @@ namespace SimPe
 		/// <param name="filname">the new Filename</param>
 		/// <param name="savetocopy">true if you want to save to a copy</param>
 		/// <returns></returns>
-		public bool Save(string filname, bool savetocopy)
+		public async Task<bool> Save(string filname, bool savetocopy)
 		{
 			if (!Loaded)
 			{
@@ -243,9 +238,6 @@ namespace SimPe
 					return false;
 				}
 
-				Wait.SubStart();
-				Wait.Message = "Saving File";
-
 				string oname = FileName;
 				if (Package.Header.Created == 0 && UserVerification.HaveValidUserId)
 				{
@@ -261,8 +253,6 @@ namespace SimPe
 
 				Helper.WindowsRegistry.AddRecentFile(e.FileName);
 
-				Wait.SubStop();
-
 				if (AfterFileSave != null)
 				{
 					AfterFileSave(this);
@@ -270,7 +260,7 @@ namespace SimPe
 			}
 			catch (Exception ex)
 			{
-				Helper.ExceptionMessage(ex);
+				await Helper.ExceptionMessage(ex);
 				return false;
 			}
 
@@ -390,26 +380,26 @@ namespace SimPe
 		/// Close the current Package
 		/// </summary>
 		/// <returns>true, if the Package was closed</returns>
-		public bool Close()
+		public async Task<bool> Close()
 		{
 			if (Package != null)
 			{
 				bool res = true;
 				if (Package.HasUserChanges)
 				{
-					DialogResult dr = Message.Show(
+					var dr = await Message.Show(
 
 							Localization.Manager.GetString("savechanges")
 							.Replace("{filename}", FileName),
 						Localization.Manager.GetString("savechanges?"),
-						MessageBoxButtons.YesNoCancel
+						MsBox.Avalonia.Enums.ButtonEnum.YesNoCancel
 					);
 
-					if (dr == DialogResult.Yes)
+					if (dr == MsBox.Avalonia.Enums.ButtonResult.Yes)
 					{
-						res = Save();
+						res = await Save();
 					}
-					else if (dr == DialogResult.Cancel)
+					else if (dr == MsBox.Avalonia.Enums.ButtonResult.Cancel)
 					{
 						return false;
 					}
@@ -441,129 +431,6 @@ namespace SimPe
 			}
 
 			return true;
-		}
-
-		/// <summary>
-		/// Executed when the user clicks on one of the RecentFiles Menu Items
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		void OpenRecent(object sender, EventArgs e)
-		{
-			if (sender is ToolStripMenuItem mbi)
-			{
-				FileNameEventArg me = new FileNameEventArg(mbi.Tag.ToString());
-				if (BeforeRecentFileLoad != null)
-				{
-					BeforeRecentFileLoad(this, me);
-				}
-
-				if (!me.Cancel)
-				{
-					if (LoadFromFile(me.FileName))
-					{
-						if (AfterRecentFileLoad != null)
-						{
-							AfterRecentFileLoad(this);
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// Get a fitting Shortcut
-		/// </summary>
-		/// <param name="i">Number of the Item</param>
-		/// <returns></returns>
-		Shortcut GetShortCut(int i)
-		{
-			switch (i)
-			{
-				case 1:
-					return Shortcut.Ctrl1;
-				case 2:
-					return Shortcut.Ctrl2;
-				case 3:
-					return Shortcut.Ctrl3;
-				case 4:
-					return Shortcut.Ctrl4;
-				case 5:
-					return Shortcut.Ctrl5;
-				case 6:
-					return Shortcut.Ctrl6;
-				case 7:
-					return Shortcut.Ctrl7;
-				case 8:
-					return Shortcut.Ctrl8;
-				case 9:
-					return Shortcut.Ctrl9;
-				case 10:
-					return Shortcut.Ctrl0;
-				case 11:
-					return Shortcut.Alt1;
-				case 12:
-					return Shortcut.Alt2;
-				case 13:
-					return Shortcut.Alt3;
-				case 14:
-					return Shortcut.Alt4;
-				case 15:
-					return Shortcut.Alt5;
-				case 16:
-					return Shortcut.Alt6;
-				case 17:
-					return Shortcut.Alt7;
-				case 18:
-					return Shortcut.Alt8;
-				case 19:
-					return Shortcut.Alt9;
-				case 20:
-					return Shortcut.Alt0;
-				default:
-					return Shortcut.None;
-			}
-		}
-
-		/// <summary>
-		/// Add a List of recently Opened Files to the Menu
-		/// </summary>
-		/// <param name="menu"></param>
-		public void UpdateRecentFileMenu(ToolStripMenuItem menu)
-		{
-			menu.DropDownItems.Clear();
-
-			foreach (string file in Helper.WindowsRegistry.GetRecentFiles())
-			{
-				if (System.IO.File.Exists(file))
-				{
-					string sname = file;
-					if (sname.Length > MAX_FILENAME_LENGTH)
-					{
-						sname =
-							"..."
-							+ sname.Substring(
-								file.Length - MAX_FILENAME_LENGTH,
-								MAX_FILENAME_LENGTH
-							);
-					}
-
-					ToolStripMenuItem mbi =
-						new ToolStripMenuItem(sname)
-						{
-							Tag = file
-						};
-					mbi.Click += new EventHandler(OpenRecent);
-					KeysConverter kc = new KeysConverter();
-
-					LoadFileWrappersExt.SetShurtcutKey(
-						mbi,
-						GetShortCut(menu.DropDownItems.Count + 1)
-					);
-
-					menu.DropDownItems.Add(mbi);
-				}
-			}
 		}
 
 		/// <summary>
@@ -690,20 +557,13 @@ namespace SimPe
 				return;
 			}
 
-			bool run = WaitingScreen.Running;
-			if (!run)
-			{
-				WaitingScreen.Wait();
-			}
-
-			WaitingScreen.UpdateMessage("Load Descriptors From Disk");
 			//list = new List<IPackedFileDescriptor>();
 			try
 			{
 				if (flname.ToLower().EndsWith("package.xml"))
 				{
 					Packages.File pkg = Packages.File.LoadFromStream(
-						XmlPackageReader.OpenExtractedPackage(null, flname)
+						XmlPackageReader.OpenExtractedPackage(flname)
 					);
 					foreach (IPackedFileDescriptor pfd in pkg.Index)
 					{
@@ -753,10 +613,6 @@ namespace SimPe
 			}
 			finally
 			{
-				if (!run)
-				{
-					WaitingScreen.Stop();
-				}
 			}
 		}
 		#endregion

@@ -585,31 +585,6 @@ namespace SimPe.Packages
 			GeneratableFile[] packages
 		)
 		{
-			SaveSims2Pack form = new SaveSims2Pack();
-			bool extension = false;
-			S2CPDescriptor[] desc = form.Execute(packages, ref extension);
-
-			if (desc != null)
-			{
-				MemoryStream ms = Create(desc, extension);
-
-				FileStream fs = new FileStream(
-					form.tbflname.Text,
-					FileMode.Create
-				);
-				try
-				{
-					fs.Write(ms.ToArray(), 0, (int)ms.Length);
-				}
-				finally
-				{
-					fs.Close();
-					fs.Dispose();
-					fs = null;
-				}
-				return true;
-			}
-
 			return false;
 		}
 
@@ -625,63 +600,7 @@ namespace SimPe.Packages
 			bool extension
 		)
 		{
-			SaveSims2CommunityPack form = new SaveSims2CommunityPack();
-			S2CPDescriptor[] desc = form.Execute(packages, ref extension);
-
-			if (desc != null)
-			{
-				MemoryStream ms = Create(desc, extension);
-
-				FileStream fs = new FileStream(
-					form.tbflname.Text,
-					FileMode.Create
-				);
-				try
-				{
-					fs.Write(ms.ToArray(), 0, (int)ms.Length);
-				}
-				finally
-				{
-					fs.Close();
-					fs.Dispose();
-					fs = null;
-				}
-				return true;
-			}
-
 			return false;
-		}
-
-		/// <summary>
-		/// Show the Package Selector Dialog for a Sims2Pack File
-		/// </summary>
-		/// <param name="filename">The Filename of the Sims2Pack File</param>
-		/// <param name="selmode">Selection Mode for the Listview</param>
-		/// <returns>All Packages that were selected in the Dialog by the User or null
-		/// if the User Cancled the Dialog</returns>
-		public static S2CPDescriptor[] ShowSimpleOpenDialog(
-			string filename,
-			System.Windows.Forms.SelectionMode selmode
-		)
-		{
-			SaveSims2Pack form = new SaveSims2Pack();
-			return form.Execute(Open(filename), selmode);
-		}
-
-		/// <summary>
-		/// Show the Package Selector Dialog for a S2CP File
-		/// </summary>
-		/// <param name="filename">The Filename of the S2CP File</param>
-		/// <param name="selmode">Selection Mode for the Listview</param>
-		/// <returns>All Packages that were selected in the Dialog by the User or null
-		/// if the User Cancled the Dialog</returns>
-		public static S2CPDescriptor[] ShowOpenDialog(
-			string filename,
-			System.Windows.Forms.SelectionMode selmode
-		)
-		{
-			SaveSims2CommunityPack form = new SaveSims2CommunityPack();
-			return form.Execute(Open(filename), selmode);
 		}
 	}
 }

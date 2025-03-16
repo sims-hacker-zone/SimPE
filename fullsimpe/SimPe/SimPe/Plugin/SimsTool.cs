@@ -48,22 +48,7 @@ namespace SimPe.Plugin
 			ref Interfaces.Files.IPackageFile package
 		)
 		{
-			if (!IsReallyEnabled(pfd, package))
-			{
-				System.Windows.Forms.MessageBox.Show(
-					Localization.GetString(
-						"This is not an appropriate context in which to use this tool"
-					),
-					Localization.Manager.GetString("simsbrowser")
-				);
-				return new ToolResult(false, false);
-			}
-			Sims sims = new Sims
-			{
-				Text = Localization.Manager.GetString("simsbrowser")
-			};
-
-			return sims.Execute(ref pfd, ref package, prov);
+			return new ToolResult(false, false);
 		}
 
 		public override string ToString()
@@ -77,7 +62,6 @@ namespace SimPe.Plugin
 
 		#region IToolExt Member
 		public override System.Drawing.Image Icon => GetIcon.SimBrowser;
-		public override System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.CtrlShiftS;
 		#endregion
 	}
 }

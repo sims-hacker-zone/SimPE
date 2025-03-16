@@ -28,10 +28,6 @@ namespace SimPe.Plugin
 			: base() { }
 
 		#region AbstractWrapper Member
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new RcolUI();
-		}
 		#endregion
 
 

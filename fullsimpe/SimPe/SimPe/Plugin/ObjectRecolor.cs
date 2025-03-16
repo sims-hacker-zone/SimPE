@@ -274,10 +274,8 @@ namespace SimPe.Plugin
 			WorkshopMMAT[] mmats = new WorkshopMMAT[list.Count];
 			list.CopyTo(mmats);
 
-			Listing li = new Listing();
 			if (mmats.Length > 0)
 			{
-				mmats = li.Execute(mmats);
 			}
 
 			foreach (WorkshopMMAT mmat in mmats)
@@ -449,17 +447,11 @@ namespace SimPe.Plugin
 			IPackedFileDescriptor[] pfds
 		)
 		{
-			//WaitingScreen.Wait();
-			if (WaitingScreen.Running)
-			{
-				WaitingScreen.UpdateMessage("Loading Material Overrides");
-			}
 
 			foreach (IPackedFileDescriptor pfd in pfds)
 			{
 				AddMATD(new Cpf().ProcessFile(pfd, Package));
 			}
-			//WaitingScreen.Stop();
 		}
 
 		/// <summary>

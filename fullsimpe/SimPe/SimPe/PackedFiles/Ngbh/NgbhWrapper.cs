@@ -186,10 +186,6 @@ namespace SimPe.PackedFiles.Ngbh
 		#endregion
 
 		#region AbstractWrapper Member
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new NgbhUI();
-		}
 
 		/// <summary>
 		/// Returns a Human Readable Description of this Wrapper

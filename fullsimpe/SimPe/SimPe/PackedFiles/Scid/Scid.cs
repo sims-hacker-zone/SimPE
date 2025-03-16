@@ -32,10 +32,6 @@ namespace SimPe.PackedFiles.Scid
 		#endregion
 
 		#region AbstractWrapper Member
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new ScidUI();
-		}
 
 		protected override IWrapperInfo CreateWrapperInfo()
 		{

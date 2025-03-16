@@ -157,10 +157,5 @@ namespace SimPe.Extensions
 					return v;
 			}
 		}
-
-		public static Vector3 ToNumericsVector(this Ambertation.Geometry.Vector3 v)
-		{
-			return new Vector3((float)v.X, (float)v.Y, (float)v.Z);
-		}
 	}
 }

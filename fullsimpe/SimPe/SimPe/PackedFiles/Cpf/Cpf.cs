@@ -132,10 +132,6 @@ namespace SimPe.PackedFiles.Cpf
 		#endregion
 
 		#region AbstractWrapper Member
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new CpfUI(null);
-		}
 
 		/// <summary>
 		/// Returns a Human Readable Description of this Wrapper

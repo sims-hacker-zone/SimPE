@@ -230,7 +230,7 @@ namespace SimPe.Plugin.Gmdc
 				if (importoptionsresult == null)
 				{
 					importoptionsresult = new ImportOptions(
-						System.Windows.Forms.DialogResult.Cancel,
+						MsBox.Avalonia.Enums.ButtonResult.Cancel,
 						false,
 						false,
 						false
@@ -277,9 +277,7 @@ namespace SimPe.Plugin.Gmdc
 					Console.WriteLine(bn.ImportedName + " -- " + bn.ParentName);
 				}
 			}
-
-			importoptionsresult = ImportGmdcGroupsForm.Execute(Gmdc, grps, bns);
-			return importoptionsresult.Result == System.Windows.Forms.DialogResult.OK;
+			return true;
 		}
 
 		/// <summary>
@@ -781,41 +779,6 @@ namespace SimPe.Plugin.Gmdc
 			foreach (ImportedFrameBlock ifb in AnimationBlocks)
 			{
 				ifb.FindTarget(Gmdc.LinkedAnimation);
-			}
-
-			if (ImportJointAnim.Execute(AnimationBlocks, Gmdc))
-			{
-				//correct some transformation in special Joints, don't know yet
-				//why they work diffrent
-				if (AnimationBlocks.AuskelCorrection)
-				{
-					foreach (ImportedFrameBlock ifb in AnimationBlocks)
-					{
-						if (ifb.Action != AnimImporterAction.Nothing)
-						{
-							foreach (AnimationFrame af in ifb.FrameBlock.Frames)
-							{
-								Vector3 v = GetCorrectionVector(ifb.ImportedName);
-
-								af.Float_X -= (float)v.X;
-								af.Float_Y -= (float)v.Y;
-								af.Float_Z -= (float)v.Z;
-							}
-						}
-					}
-				}
-
-				foreach (ImportedFrameBlock ifb in AnimationBlocks)
-				{
-					if (ifb.Action == AnimImporterAction.Replace)
-					{
-						ifb.ReplaceFrames();
-					}
-					else if (ifb.Action == AnimImporterAction.Add)
-					{
-						ifb.AddFrameBlock(Gmdc.LinkedAnimation);
-					}
-				}
 			}
 		}
 

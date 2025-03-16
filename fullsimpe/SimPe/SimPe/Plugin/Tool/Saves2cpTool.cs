@@ -51,7 +51,6 @@ namespace SimPe.Plugin.Tool
 		#endregion
 
 		#region IToolExt Member
-		public System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.None;
 
 		public System.Drawing.Image Icon => GetIcon.S2pc;
 

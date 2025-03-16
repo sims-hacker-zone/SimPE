@@ -13,14 +13,11 @@ namespace SimPe.Plugin
 
 		IWrapperRegistry reg;
 		IProviderRegistry prov;
-		PhotoStudio ps;
 
 		internal PhotoStudioTool(IWrapperRegistry reg, IProviderRegistry prov)
 		{
 			this.reg = reg;
 			this.prov = prov;
-
-			ps = null;
 		}
 
 		#region ITool Member
@@ -46,17 +43,7 @@ namespace SimPe.Plugin
 			ref Interfaces.Files.IPackageFile package
 		)
 		{
-			if (!IsReallyEnabled(pfd, package))
-			{
-				return new ToolResult(false, false);
-			}
-
-			if (ps == null)
-			{
-				ps = new PhotoStudio();
-			}
-
-			return ps.Execute(ref pfd, ref package, prov);
+			return new ToolResult(false, false);
 		}
 
 		public override string ToString()
@@ -68,8 +55,6 @@ namespace SimPe.Plugin
 
 		#region IToolExt Member
 		public override System.Drawing.Image Icon => GetIcon.Camera;
-
-		public override System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.CtrlP;
 		#endregion
 	}
 }

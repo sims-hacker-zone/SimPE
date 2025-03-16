@@ -278,8 +278,7 @@ namespace SimPe.Packages
 					path +=
 						" - "
 						+ Helper.RemoveUnlistedCharacters(
-							TypeInfo.LongName,
-							Helper.PATH_CHARACTERS
+							TypeInfo.LongName
 						);
 				}
 

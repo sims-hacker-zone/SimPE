@@ -20,10 +20,6 @@ namespace SimPe.Plugin
 
 		public WorkshopToolFactory()
 		{
-			MmatWrapper.GlobalCpfPreview =
-				new CpfUI.ExecutePreview(
-					PreviewForm.Execute
-				);
 		}
 
 		#region IHelpFactory Members
@@ -39,9 +35,6 @@ namespace SimPe.Plugin
 
 			public void ShowHelp(ShowHelpEventArgs e)
 			{
-				RemoteControl.ShowHelp(
-					"file://" + Helper.SimPePath + "/Doc/OWoptions.htm"
-				);
 			}
 		}
 

@@ -45,15 +45,10 @@ namespace SimPe.Plugin.Downloads
 
 		protected void LoadContent()
 		{
-			Wait.Message = "Extracting Archive";
 			List<string> files = ExtractArchive();
-
-			Wait.SubStart(files.Count);
 
 			files = SortFilesByType(files);
 			LoadFiles(files);
-
-			Wait.SubStop();
 		}
 
 		private void LoadFiles(List<string> files)
@@ -61,14 +56,12 @@ namespace SimPe.Plugin.Downloads
 			int nr = 0;
 			foreach (string file in files)
 			{
-				Wait.Progress = nr++;
-				Wait.Message = System.IO.Path.GetFileName(file);
 
 				if (!FileTableBase.FileIndex.Contains(file))
 				{
-					DownloadsToolFactory.TeleportFileIndex.AddIndexFromPackage(
-						file
-					);
+					// DownloadsToolFactory.TeleportFileIndex.AddIndexFromPackage(
+					// 	file
+					// );
 				}
 
 				IPackageHandler hnd = HandlerRegistry.Global.LoadFileHandler(
@@ -92,9 +85,9 @@ namespace SimPe.Plugin.Downloads
 				if (file.EndsWith(".package", true, null))
 				{
 					Cache.PackageType type = PackageInfo.ClassifyPackage(file);
-					DownloadsToolFactory.TeleportFileIndex.AddIndexFromPackage(
-						file
-					);
+					// DownloadsToolFactory.TeleportFileIndex.AddIndexFromPackage(
+					// 	file
+					// );
 
 					if (
 						type == Cache.PackageType.CustomObject

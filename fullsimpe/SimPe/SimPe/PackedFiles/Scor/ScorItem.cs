@@ -61,43 +61,7 @@ namespace SimPe.PackedFiles.Scor
 
 			deftoken = new ScorItemTokenDefault();
 
-			guis.Add("Learned Behaviors", typeof(ScoreItemLearnedBehaviour));
-			guis.Add("Business Rewards", typeof(ScoreItemBusinessRewards));
-
 			readers.Add("Business Rewards", new ScorItemTokenBusinessRewards());
-		}
-
-		internal void LoadGuiElement(string name)
-		{
-			gui = GetGuiElement(name, null);
-		}
-
-		protected AScorItem GetGuiElement(string name, byte[] data)
-		{
-			AScorItem ret = null;
-			if (GuiElements.ContainsKey(name))
-			{
-				ret =
-					Activator.CreateInstance(
-						GuiElements[name],
-						new object[] { this }
-					) as AScorItem;
-			}
-			if (ret == null)
-			{
-				ret = new ScoreItemDefault(this);
-			}
-
-			if (data != null)
-			{
-				System.IO.BinaryReader br = new System.IO.BinaryReader(
-					new System.IO.MemoryStream(data)
-				);
-				ret.SetData(name, br);
-				br.Close();
-			}
-
-			return ret;
 		}
 
 		internal IScorItemToken GetTokenParser(string name)
@@ -105,20 +69,6 @@ namespace SimPe.PackedFiles.Scor
 			return Readers.ContainsKey(name) ? Readers[name] : DefaultTokenParser;
 		}
 		#endregion
-
-		AScorItem gui;
-		public AScorItem Gui
-		{
-			get
-			{
-				if (gui == null)
-				{
-					SetGui("", new byte[0]);
-				}
-
-				return gui;
-			}
-		}
 
 		public Scor Parent
 		{
@@ -131,24 +81,16 @@ namespace SimPe.PackedFiles.Scor
 		public ScorItem(string name, Scor parent)
 			: this(parent)
 		{
-			SetGui(name, new byte[0]);
 		}
 
 		internal ScorItem(Scor parent)
 		{
 			Parent = parent;
-			SetGui("", new byte[0]);
 		}
 
 		~ScorItem()
 		{
 			//if (gui != null) gui.Dispose();
-		}
-
-		protected void SetGui(string name, byte[] data)
-		{
-			//if (gui != null) gui.Dispose();
-			gui = GetGuiElement(name, data);
 		}
 
 		/// <summary>
@@ -164,16 +106,6 @@ namespace SimPe.PackedFiles.Scor
 			lock (tp)
 			{
 				byte[] data = tp.UnserializeToken(this, reader);
-
-				if (tp.ActivatedGUI == null)
-				{
-					SetGui(name, data);
-				}
-				else
-				{
-					gui = tp.ActivatedGUI;
-					gui.SetData(name, null);
-				}
 			}
 		}
 
@@ -224,7 +156,6 @@ namespace SimPe.PackedFiles.Scor
 		/// </remarks>
 		internal void Serialize(System.IO.BinaryWriter writer, bool last)
 		{
-			Gui.Serialize(writer, last);
 			SerializeDefaultToken(writer, last);
 		}
 
@@ -237,11 +168,6 @@ namespace SimPe.PackedFiles.Scor
 			{
 				writer.Write((ushort)0x0400);
 			}
-		}
-
-		public override string ToString()
-		{
-			return Gui.TokenName;
 		}
 	}
 
@@ -282,10 +208,6 @@ namespace SimPe.PackedFiles.Scor
 		{
 			for (int i = 0; i < list.Count; i++)
 			{
-				if (this[i].Gui.Name == name)
-				{
-					return i;
-				}
 			}
 
 			return -1;

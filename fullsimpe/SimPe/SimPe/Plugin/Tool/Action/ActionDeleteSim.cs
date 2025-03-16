@@ -3,6 +3,7 @@
 using System;
 using System.Collections;
 using System.Linq;
+using System.Threading.Tasks;
 
 using SimPe.Data;
 using SimPe.Forms.MainUI;
@@ -53,12 +54,6 @@ namespace SimPe.Plugin.Tool.Action
 		{
 			if (!ChangeEnabledStateEventHandler(null, e))
 			{
-				System.Windows.Forms.MessageBox.Show(
-					Localization.GetString(
-						"This is not an appropriate context in which to use this tool"
-					),
-					ToString()
-				);
 				return;
 			}
 			string messige = "All ";
@@ -67,64 +62,10 @@ namespace SimPe.Plugin.Tool.Action
 				messige = "The selected ";
 			}
 
-			if (
-				Message.Show(
-					messige
-						+ "sims will be deleted from your Neighbourhood!\nYou MUST commit the changes to the neighbourhood after this procedure.\nYou can not undo this, so make sure you have created a Backup!\n\nDelete the Sims?",
-					"Warning",
-					System.Windows.Forms.MessageBoxButtons.YesNo
-				) == System.Windows.Forms.DialogResult.No
-			)
 			{
 				return;
 			}
 
-			deleteInvalidDna =
-				Message.Show(
-					"Delete all orphan DNA, Scores and Wants records as well?",
-					"Clean Up",
-					System.Windows.Forms.MessageBoxButtons.YesNo
-				) == System.Windows.Forms.DialogResult.Yes
-			;
-			int c = 0;
-			if (e.Items.Count > 0)
-			{
-				for (int i = 0; i < e.Items.Count; i++)
-				{
-					c += DeleteSim(new PackedFiles.Sdsc.ExtSDesc().ProcessFile(e.Items[i].Resource));
-				}
-			}
-			else
-			{
-				ExtSDesc victim =
-					new PackedFiles.Sdsc.ExtSDesc();
-				Interfaces.Files.IPackedFileDescriptor[] pfds =
-					e.LoadedPackage.Package.FindFiles(
-						Data.FileTypes.SDSC
-					);
-				foreach (Interfaces.Files.IPackedFileDescriptor pfd in pfds)
-				{
-					victim.ProcessData(pfd, e.LoadedPackage.Package);
-					if (
-						victim.CharacterDescription.Gender == Data.MetaData.Gender.Male
-						&& !victim.IsNPC
-					)
-					{
-						c += DeleteSim(victim);
-					}
-				}
-			}
-
-			if (deleteInvalidDna)
-			{
-				DeleteOrphanDna(e.LoadedPackage.Package);
-			}
-
-			Message.Show(
-				string.Format("Done. {0} sim character file(s) deleted", c),
-				"Notice",
-				System.Windows.Forms.MessageBoxButtons.OK
-			);
 		}
 		#endregion
 
@@ -437,7 +378,6 @@ namespace SimPe.Plugin.Tool.Action
 		#endregion
 
 		#region IToolExt Member
-		public System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.None;
 
 		public System.Drawing.Image Icon => GetIcon.DeleteSim;
 

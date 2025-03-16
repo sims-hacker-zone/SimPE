@@ -11,7 +11,5 @@ namespace SimPe.PackedFiles.Scor
 		{
 			return ScorItem.UnserializeDefaultToken(reader);
 		}
-
-		public AScorItem ActivatedGUI => null;
 	}
 }

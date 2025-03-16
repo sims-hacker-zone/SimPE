@@ -15,7 +15,7 @@ namespace SimPe.Interfaces
 			Files.IPackedFileDescriptor pfd
 		);
 
-		void StartSearch(AFinderTool sender);
+		void StartSearch();
 		void StopSearch();
 
 		bool ForcedStop

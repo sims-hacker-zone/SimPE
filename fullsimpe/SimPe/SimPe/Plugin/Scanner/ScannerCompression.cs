@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 using SimPe.Cache;
 using SimPe.Interfaces.Plugin;
@@ -43,13 +44,12 @@ namespace SimPe.Plugin.Scanner
 
 		protected override void DoInitScan()
 		{
-			AddColumn(ListView, "Health", 100);
+			AddColumn("Health", 100);
 		}
 
 		public void ScanPackage(
 			ScannerItem si,
-			PackageState ps,
-			System.Windows.Forms.ListViewItem lvi
+			PackageState ps
 		)
 		{
 			ps.Data = new List<uint>
@@ -166,19 +166,17 @@ namespace SimPe.Plugin.Scanner
 				}
 			}
 
-			UpdateState(si, ps, lvi);
+			UpdateState(si, ps);
 		}
 
 		public void UpdateState(
 			ScannerItem si,
-			PackageState ps,
-			System.Windows.Forms.ListViewItem lvi
+			PackageState ps
 		)
 		{
 			if (ps.State != TriState.Null)
 			{
 				HealthState cs = (HealthState)ps.Data[0];
-				SetSubItem(lvi, StartColum, cs.ToString(), ps);
 
 				//if (ps.Data.Length>1) AbstractScanner.SetSubItem(lvi, this.StartColum+1, ps.Data[1].ToString(), ps);
 			}
@@ -197,7 +195,6 @@ namespace SimPe.Plugin.Scanner
 			selection = items;
 			if (!active)
 			{
-				OperationControl.Enabled = false;
 				return;
 			}
 
@@ -211,31 +208,10 @@ namespace SimPe.Plugin.Scanner
 				{
 					if ((HealthState)ps.Data[0] == HealthState.WrongCompressionSize) // if ((HealthState)ps.Data[0]!=HealthState.Ok)
 					{
-						OperationControl.Enabled = true;
 						return;
 					}
 				}
 			} //foreach
-			OperationControl.Enabled = false;
-		}
-
-		protected override System.Windows.Forms.Control CreateOperationControl()
-		{
-			System.Windows.Forms.LinkLabel ll = new System.Windows.Forms.LinkLabel
-			{
-				AutoSize = true,
-				Text = "fix unhealthy Package"
-			};
-			ll.Font = new System.Drawing.Font(
-				"Verdana",
-				ll.Font.Size,
-				System.Drawing.FontStyle.Bold
-			);
-
-			ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(
-				FixCompression
-			);
-			return ll;
 		}
 
 		#endregion
@@ -250,9 +226,8 @@ namespace SimPe.Plugin.Scanner
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void FixCompression(
-			object sender,
-			System.Windows.Forms.LinkLabelLinkClickedEventArgs e
+		private async Task FixCompression(
+			object sender
 		)
 		{
 			if (selection == null)
@@ -260,13 +235,11 @@ namespace SimPe.Plugin.Scanner
 				return;
 			}
 
-			WaitingScreen.Wait();
 			bool chg = false;
 			try
 			{
 				foreach (ScannerItem si in selection)
 				{
-					WaitingScreen.UpdateMessage(si.FileName);
 
 					PackageState ps = si.PackageCacheItem.FindState(
 						Uid,
@@ -323,8 +296,7 @@ namespace SimPe.Plugin.Scanner
 
 							si.Package.Save();
 							chg = true;
-							si.ListViewItem.ForeColor = System.Drawing.Color.Black;
-							ScanPackage(si, ps, si.ListViewItem);
+							ScanPackage(si, ps);
 						}
 					}
 				}
@@ -336,12 +308,7 @@ namespace SimPe.Plugin.Scanner
 			}
 			catch (Exception ex)
 			{
-				Helper.ExceptionMessage("", ex);
-			}
-			finally
-			{
-				WaitingScreen.UpdateImage(null);
-				WaitingScreen.Stop();
+				await Helper.ExceptionMessage("", ex);
 			}
 		}
 	}

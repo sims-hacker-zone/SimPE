@@ -2,6 +2,10 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+using Avalonia.Controls;
 
 using SimPe.Forms.MainUI;
 using SimPe.Interfaces.Files;
@@ -22,43 +26,39 @@ namespace SimPe.Actions.Default
 		/// </summary>
 		/// <param name="multi"></param>
 		/// <returns></returns>
-		string SetupSaveDialog(string name, bool multi)
+		async Task<string> SetupSaveDialog(string name, bool multi)
 		{
 			name = name.Replace(" ", "").Replace(":", "_").Replace(@"\", "_");
 			if (!multi)
 			{
-				System.Windows.Forms.SaveFileDialog sfd =
-					new System.Windows.Forms.SaveFileDialog
-					{
-						FileName = name,
-						Filter = ExtensionProvider.BuildFilterString(
-					new ExtensionType[]
+				Avalonia.Platform.Storage.IStorageFile result = await TopLevel.GetTopLevel(Program.mainWindow).StorageProvider.SaveFilePickerAsync(new Avalonia.Platform.Storage.FilePickerSaveOptions
+				{
+					Title = Localization.GetString(ToString()),
+					SuggestedFileName = name,
+					FileTypeChoices = ExtensionProvider.BuildFilterString(new ExtensionType[]
 					{
 						ExtensionType.ExtractedFile,
 						ExtensionType.AllFiles,
-					}
-				),
-						Title = Localization.GetString(ToString())
-					};
-				if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+					}).ToList()
+				});
+				if (result != null)
 				{
-					return sfd.FileName;
+					return result.Path.AbsolutePath;
 				}
 			}
 			else
 			{
-				System.Windows.Forms.FolderBrowserDialog fbd =
-					new System.Windows.Forms.FolderBrowserDialog();
-				if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+				IReadOnlyList<Avalonia.Platform.Storage.IStorageFolder> result = await TopLevel.GetTopLevel(Program.mainWindow).StorageProvider.OpenFolderPickerAsync(new Avalonia.Platform.Storage.FolderPickerOpenOptions { AllowMultiple = false });
+				if (result.Any())
 				{
-					return fbd.SelectedPath;
+					return result[0].Path.AbsolutePath;
 				}
 			}
 
 			return null;
 		}
 
-		public void ExtractAllFiles(
+		public async Task ExtractAllFiles(
 			string selpath,
 			IPackedFileDescriptor[] pfds,
 			Packages.ExtractableFile package
@@ -67,146 +67,129 @@ namespace SimPe.Actions.Default
 			int excount = 0;
 			int filecount = 0;
 			string xml = "";
-			bool run = WaitingScreen.Running;
-			if (!run)
+
+			if (Helper.Profile == "Short")
 			{
-				WaitingScreen.Wait();
-			}
-
-			try
-			{
-				if (Helper.Profile == "Short")
+				for (int i = 0; i < pfds.Length; i++)
 				{
-					for (int i = 0; i < pfds.Length; i++)
-					{
-						System.Windows.Forms.Application.DoEvents();
-						Packages.PackedFileDescriptor fii =
-							(Packages.PackedFileDescriptor)pfds[i];
-						fii.Path = null;
-						string path = System.IO.Path.Combine(selpath, fii.Path);
-						fii.Filename = null;
-						string name = System.IO.Path.Combine(path, fii.Filename);
-						try
-						{
-							if (!System.IO.Directory.Exists(path))
-							{
-								System.IO.Directory.CreateDirectory(path);
-							}
-
-							fii.Path = "";
-							package.SavePackedFile(name, null, fii, true);
-							filecount++;
-							fii.Dispose();
-						}
-						catch (Exception ex)
-						{
-							Helper.ExceptionMessage(
-								Localization.Manager.GetString("errwritingfile")
-									+ " "
-									+ name,
-								ex
-							);
-						}
-					}
-				}
-				else
-				{
-					xml += "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>" + Helper.lbr;
-					xml +=
-						"<package type=\""
-						+ ((uint)package.Header.IndexType).ToString()
-						+ "\">"
-						+ Helper.lbr;
-					for (int i = 0; i < pfds.Length; i++)
-					{
-						System.Windows.Forms.Application.DoEvents();
-						Packages.PackedFileDescriptor fii =
-							(Packages.PackedFileDescriptor)pfds[i];
-
-						fii.Path = null;
-						string path = System.IO.Path.Combine(selpath, fii.Path);
-
-						fii.Filename = null;
-						string name = System.IO.Path.Combine(path, fii.Filename);
-
-						try
-						{
-							if (!System.IO.Directory.Exists(path))
-							{
-								System.IO.Directory.CreateDirectory(path);
-							}
-
-							//make sure the sub xmls don't have a Filename
-							fii.Path = "";
-							package.SavePackedFile(name, null, fii, true);
-							fii.Path = null;
-
-							xml += fii.GenerateXmlMetaInfo();
-
-							filecount++;
-						}
-						catch (Exception ex)
-						{
-							excount++;
-							Helper.ExceptionMessage(
-								Localization.Manager.GetString("errwritingfile")
-									+ " "
-									+ name,
-								ex
-							);
-							if (excount >= 5)
-							{
-								if (
-									Message.Show(
-										Localization.Manager.GetString("ask000"),
-										Localization.Manager.GetString("proceed"),
-										System.Windows.Forms.MessageBoxButtons.YesNo
-									) == System.Windows.Forms.DialogResult.Yes
-								)
-								{
-									i = pfds.Length;
-								}
-							}
-						}
-					} //for i
-					xml += "</package>" + Helper.lbr;
-
-					System.IO.TextWriter tw = System.IO.File.CreateText(
-						System.IO.Path.Combine(selpath, "package.xml")
-					);
+					Packages.PackedFileDescriptor fii =
+						(Packages.PackedFileDescriptor)pfds[i];
+					fii.Path = null;
+					string path = System.IO.Path.Combine(selpath, fii.Path);
+					fii.Filename = null;
+					string name = System.IO.Path.Combine(path, fii.Filename);
 					try
 					{
-						tw.Write(xml);
+						if (!System.IO.Directory.Exists(path))
+						{
+							System.IO.Directory.CreateDirectory(path);
+						}
+
+						fii.Path = "";
+						package.SavePackedFile(name, null, fii, true);
+						filecount++;
+						fii.Dispose();
 					}
 					catch (Exception ex)
 					{
-						Helper.ExceptionMessage(
-							Localization.Manager.GetString("err001"),
+						await Helper.ExceptionMessage(
+							Localization.Manager.GetString("errwritingfile")
+								+ " "
+								+ name,
 							ex
 						);
 					}
-					finally
-					{
-						tw.Close();
-						tw.Dispose();
-						tw = null;
-					}
 				}
 			}
-			finally
+			else
 			{
-				if (!run)
+				xml += "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>" + Helper.lbr;
+				xml +=
+					"<package type=\""
+					+ ((uint)package.Header.IndexType).ToString()
+					+ "\">"
+					+ Helper.lbr;
+				for (int i = 0; i < pfds.Length; i++)
 				{
-					WaitingScreen.Stop();
+					Packages.PackedFileDescriptor fii =
+						(Packages.PackedFileDescriptor)pfds[i];
+
+					fii.Path = null;
+					string path = System.IO.Path.Combine(selpath, fii.Path);
+
+					fii.Filename = null;
+					string name = System.IO.Path.Combine(path, fii.Filename);
+
+					try
+					{
+						if (!System.IO.Directory.Exists(path))
+						{
+							System.IO.Directory.CreateDirectory(path);
+						}
+
+						//make sure the sub xmls don't have a Filename
+						fii.Path = "";
+						package.SavePackedFile(name, null, fii, true);
+						fii.Path = null;
+
+						xml += fii.GenerateXmlMetaInfo();
+
+						filecount++;
+					}
+					catch (Exception ex)
+					{
+						excount++;
+						await Helper.ExceptionMessage(
+							Localization.Manager.GetString("errwritingfile")
+								+ " "
+								+ name,
+							ex
+						);
+						if (excount >= 5)
+						{
+							if (
+								await Message.Show(
+									Localization.Manager.GetString("ask000"),
+									Localization.Manager.GetString("proceed"),
+									MsBox.Avalonia.Enums.ButtonEnum.YesNo
+								) == MsBox.Avalonia.Enums.ButtonResult.Yes
+							)
+							{
+								i = pfds.Length;
+							}
+						}
+					}
+				} //for i
+				xml += "</package>" + Helper.lbr;
+
+				System.IO.TextWriter tw = System.IO.File.CreateText(
+					System.IO.Path.Combine(selpath, "package.xml")
+				);
+				try
+				{
+					tw.Write(xml);
+				}
+				catch (Exception ex)
+				{
+					await Helper.ExceptionMessage(
+						Localization.Manager.GetString("err001"),
+						ex
+					);
+				}
+				finally
+				{
+					tw.Close();
+					tw.Dispose();
+					tw = null;
 				}
 			}
 
-			Message.Show(
+			await Message.Show(
 				Localization
 					.Manager.GetString("nfo000")
 					.Replace("{0}", filecount.ToString()),
 				"Info",
-				System.Windows.Forms.MessageBoxButtons.OK
+				MsBox.Avalonia.Enums.ButtonEnum.Ok
 			);
 		}
 
@@ -223,10 +206,11 @@ namespace SimPe.Actions.Default
 			}
 
 			bool multi = es.Count > 1;
-			string flname = SetupSaveDialog(
-				es[0].Resource.FileDescriptor.ExportFileName,
-				multi
-			);
+			string flname = "";
+			// await SetupSaveDialog(
+			// 	es[0].Resource.FileDescriptor.ExportFileName,
+			// 	multi
+			// );
 
 			if (flname == null)
 			{
@@ -264,15 +248,11 @@ namespace SimPe.Actions.Default
 					IPackedFileDescriptor[] ar =
 						new IPackedFileDescriptor[pfds.Count];
 					pfds.CopyTo(ar);
-					ExtractAllFiles(flname, ar, es.LoadedPackage.Package);
+					// await ExtractAllFiles(flname, ar, es.LoadedPackage.Package);
 				}
 			}
 			catch (Exception ex)
 			{
-				Helper.ExceptionMessage(
-					Localization.Manager.GetString("err002") + flname,
-					ex
-				);
 			}
 		}
 
@@ -289,8 +269,6 @@ namespace SimPe.Actions.Default
 
 		#region IToolExt Member
 		public override System.Drawing.Image Icon => GetIcon.actionExport;
-
-		public override System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.ShiftIns;
 		#endregion
 	}
 }

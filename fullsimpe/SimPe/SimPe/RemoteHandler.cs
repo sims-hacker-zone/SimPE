@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System;
+using System.Threading.Tasks;
 
 namespace SimPe
 {
@@ -11,19 +12,15 @@ namespace SimPe
 	{
 		LoadedPackage lp;
 		ResourceLoader rl;
-		System.Windows.Forms.ToolStripMenuItem docs;
 		PluginManager plugger;
 
 		internal RemoteHandler(
-			System.Windows.Forms.Form form,
 			LoadedPackage lp,
-			ResourceLoader rl,
-			System.Windows.Forms.ToolStripMenuItem docmenu
+			ResourceLoader rl
 		)
 		{
 			this.lp = lp;
 			this.rl = rl;
-			docs = docmenu;
 			plugger = null;
 
 			RemoteControl.OpenPackageFkt = new RemoteControl.OpenPackageDelegate(
@@ -33,11 +30,6 @@ namespace SimPe
 				new RemoteControl.OpenPackedFileDelegate(OpenPackedFile);
 			RemoteControl.OpenMemoryPackageFkt =
 				new RemoteControl.OpenMemPackageDelegate(OpenMemPackage);
-			RemoteControl.ShowDockFkt = new RemoteControl.ShowDockDelegate(
-				ShowDock
-			);
-
-			RemoteControl.ApplicationForm = form;
 		}
 
 		internal void SetPlugger(PluginManager plugger)
@@ -55,7 +47,7 @@ namespace SimPe
 			return pkg != null && pkg is Packages.GeneratableFile file && lp.LoadFromPackage(file);
 		}
 
-		public bool OpenPackedFile(
+		public async Task<bool> OpenPackedFile(
 			Interfaces.Scenegraph.IScenegraphFileIndexItem fii
 		)
 		{
@@ -88,7 +80,7 @@ namespace SimPe
 			}
 			catch (Exception ex)
 			{
-				Helper.ExceptionMessage(ex);
+				await Helper.ExceptionMessage(ex);
 				return false;
 			}
 
@@ -118,49 +110,5 @@ namespace SimPe
 		/// Fires when the Remote COntrol did select a File
 		/// </summary>
 		public event Events.ChangedResourceEvent LoadedResource;
-
-		/// <summary>
-		/// Make a doc Visible or Hide it
-		/// </summary>
-		/// <param name="doc">The Doc you want to show/hide</param>
-		public void ShowDock(Ambertation.Windows.Forms.DockPanel doc, bool hide)
-		{
-			if (hide && doc.IsOpen)
-			{
-				doc.Close();
-			}
-
-			if (!hide)
-			{
-				if (!doc.IsOpen)
-				{
-					doc.OpenFloating();
-				}
-
-				if (doc.Collapsed)
-				{
-					doc.Expand(false);
-				}
-
-				doc.EnsureVisible();
-				if (!doc.IsOpen)
-				{
-					plugger.ChangedGuiResourceEventHandler();
-				}
-			}
-
-			foreach (object o in docs.DropDownItems)
-			{
-				if (!(o is System.Windows.Forms.ToolStripMenuItem mi))
-				{
-					continue;
-				}
-
-				if (mi.Tag as Ambertation.Windows.Forms.DockPanel == doc)
-				{
-					mi.Checked = doc.IsOpen;
-				}
-			}
-		}
 	}
 }

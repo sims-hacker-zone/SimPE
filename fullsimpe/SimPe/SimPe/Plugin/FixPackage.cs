@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 using SimPe.Forms.MainUI;
 using SimPe.Interfaces;
@@ -11,7 +12,7 @@ namespace SimPe.Plugin
 	{
 		#region ICommandLine Members
 
-		public bool Parse(List<string> argv)
+		public async Task<bool> Parse(List<string> argv)
 		{
 			int i = ArgParser.Parse(argv, "-fix");
 			if (i < 0)
@@ -55,7 +56,7 @@ namespace SimPe.Plugin
 					}
 					continue;
 				}
-				Message.Show(Help()[0]);
+				await Message.Show(Help()[0]);
 				return true;
 			}
 
@@ -82,14 +83,7 @@ namespace SimPe.Plugin
 				Packages.GeneratableFile pkg =
 					Packages.File.LoadFromFile(package);
 
-				System.Collections.Hashtable map = RenameForm.GetNames(
-					modelname.Trim() != "",
-					pkg,
-					null,
-					modelname
-				);
 				FixObject fo = new FixObject(pkg, ver, false);
-				fo.Fix(map, false);
 				fo.CleanUp();
 				fo.FixGroup();
 

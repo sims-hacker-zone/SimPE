@@ -18,8 +18,6 @@ namespace SimPe.Plugin.Tool.Window
 
 		public void Execute(object sender, Events.ResourceEventArgs e)
 		{
-			InstallerForm f = new InstallerForm();
-			f.ShowDialog();
 		}
 
 		public bool ChangeEnabledStateEventHandler(
@@ -33,8 +31,6 @@ namespace SimPe.Plugin.Tool.Window
 		#endregion
 
 		#region IToolExt Member
-
-		public System.Windows.Forms.Shortcut Shortcut => System.Windows.Forms.Shortcut.CtrlShiftI;
 
 		public bool Visible => true;
 

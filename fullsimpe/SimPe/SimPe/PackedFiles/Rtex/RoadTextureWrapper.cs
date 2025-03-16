@@ -78,10 +78,6 @@ namespace SimPe.PackedFiles.Rtex
 		#endregion
 
 		#region AbstractWrapper Member
-		protected override IPackedFileUI CreateDefaultUIHandler()
-		{
-			return new RoadTextureControl();
-		}
 
 		/// <summary>
 		/// Returns a Human Readable Description of this Wrapper
