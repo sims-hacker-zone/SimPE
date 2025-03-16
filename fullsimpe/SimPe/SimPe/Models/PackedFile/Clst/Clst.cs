@@ -21,8 +21,6 @@ namespace SimPe.Models.PackedFile.Clst
 		[ObservableProperty]
 		private ObservableCollection<ClstItem> items = [];
 
-		public static HashSet<FileTypes> AssignableTypes => [FileTypes.CLST];
-
 		public static IWrapper Unserialize(BinaryReader reader, PackedFile file)
 		{
 			Clst clst = new(file);

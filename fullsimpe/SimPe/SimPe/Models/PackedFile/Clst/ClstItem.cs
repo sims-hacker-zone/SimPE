@@ -4,6 +4,7 @@ using System.IO;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 using SimPe.Data;
+using SimPe.Extensions;
 using SimPe.Models.Package;
 
 namespace SimPe.Models.PackedFile.Clst
@@ -54,6 +55,11 @@ namespace SimPe.Models.PackedFile.Clst
 				writer.Write(InstanceHigh);
 			}
 			writer.Write(UncompressedSize);
+		}
+
+		public override string ToString()
+		{
+			return $"{Type.ToFileTypeInformation().LongName}: {Group:X8} - {InstanceHigh:X8} - {Instance:X8}";
 		}
 	}
 }
