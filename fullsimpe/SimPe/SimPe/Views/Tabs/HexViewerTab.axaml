@@ -1,0 +1,23 @@
+<UserControl
+    x:Class="SimPe.Views.Tabs.HexViewerTab"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:m="using:SimPe.Models"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:SimPe.ViewModels"
+    x:DataType="m:PackedFile.PackedFile">
+    <ScrollViewer>
+        <StackPanel>
+            <ComboBox
+                Name="DataComboBox"
+                Margin="5,5"
+                SelectionChanged="ComboBox_SelectionChanged" />
+            <TextBox
+                Name="HexTextBox"
+                FontFamily="monospace"
+                IsReadOnly="True"
+                TextWrapping="Wrap" />
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: © SimPE contributors
+// SPDX-License-Identifier: GPL-2.0-or-later
+
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -57,7 +60,19 @@ namespace SimPe
 							AncestorType=typeof(MainWindow)
 						}
 					}
-				})
+				}),
+				new("Hex Viewer", new HexViewerTab()
+				{
+					[!DataContextProperty] = new Binding("SelectedItem.FileSource.RowSelection.SelectedItem")
+					{
+						ElementName = "ResourceTreeView",
+						NameScope = new(this.FindNameScope()),
+						RelativeSource = new(RelativeSourceMode.FindAncestor)
+						{
+							AncestorType=typeof(MainWindow)
+						}
+					}
+				}),
 			};
 		}
 

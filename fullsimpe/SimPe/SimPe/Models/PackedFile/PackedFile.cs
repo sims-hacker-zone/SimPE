@@ -1,11 +1,12 @@
+// SPDX-FileCopyrightText: © SimPE contributors
+// SPDX-License-Identifier: GPL-2.0-or-later
+
 using System;
 using System.Buffers.Binary;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-
-using Avalonia.Controls.Platform;
 
 using CommunityToolkit.Mvvm.ComponentModel;
 
@@ -58,14 +59,20 @@ namespace SimPe.Models.PackedFile
 		[ObservableProperty]
 		private byte[] userData;
 
+		public string UserDataHexString => BitConverter.ToString(UserData).Replace("-", " ");
+
 		[ObservableProperty]
 		private bool isCompressed;
 
 		[ObservableProperty]
 		private byte[] rawData;
 
+		public string RawDataHexString => BitConverter.ToString(RawData).Replace("-", " ");
+
 		[ObservableProperty]
 		private byte[] uncompressedData;
+
+		public string UncompressedDataHexString => BitConverter.ToString(UncompressedData).Replace("-", " ");
 
 		[ObservableProperty]
 		private uint uncompressedSize;
@@ -148,7 +155,7 @@ namespace SimPe.Models.PackedFile
 
 		public async Task ReadContent()
 		{
-			if (Package.StorageFile == null || Offset == 0)
+			if (Package.StorageFile == null || Offset == 0 || RawData != null)
 			{
 				return;
 			}
@@ -156,21 +163,26 @@ namespace SimPe.Models.PackedFile
 			using BinaryReader reader = new(stream);
 			reader.BaseStream.Seek(Offset, SeekOrigin.Begin);
 			RawData = reader.ReadBytes(Size);
-			CheckCompressionStatus();
+			await CheckCompressionStatus();
 		}
 
 		#region Compression
 
-		public void CheckCompressionStatus()
+		public async Task CheckCompressionStatus()
 		{
+			if (RawData.Length < 9)
+			{
+				return;
+			}
 			ClstItem clstItem;
+			await Package.FindFiles(FileTypes.CLST)?.FirstOrDefault()?.ReadContent();
 			if ((clstItem = Package.FindFiles(FileTypes.CLST)?.FirstOrDefault()?.Wrapper?.As<Clst.Clst>().Items.FirstOrDefault(item => item.Type == Type && item.Group == Group && item.Instance == Instance && item.InstanceHigh == InstanceHigh)) != null)
 			{
 				IsCompressed = true;
 				UncompressedSize = clstItem.UncompressedSize;
 			}
 			uint size = BinaryPrimitives.ReadUInt32LittleEndian(RawData);
-			byte[] signature = RawData[4..5];
+			byte[] signature = [.. RawData[4..6]];
 			uint uncompressedsize = (uint)((RawData[6] << 16) | (RawData[7] << 8) | RawData[8]);
 			if (signature.SequenceEqual(new byte[] { 0x10, 0xFB }) && size == Size)
 			{
@@ -251,6 +263,7 @@ namespace SimPe.Models.PackedFile
 					UncompressedData[uncindex++] = RawData[index++];
 				}
 			}
+			OnPropertyChanged(nameof(UncompressedDataHexString));
 		}
 
 

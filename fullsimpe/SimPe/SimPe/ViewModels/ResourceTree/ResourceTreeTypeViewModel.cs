@@ -50,6 +50,7 @@ namespace SimPe.ViewModels.ResourceTree
 				new TextColumn<PackedFile, string>("Group", x => $"0x{x.Group:X8}"),
 				new TextColumn<PackedFile, string>("Instance (high)", x => $"0x{x.InstanceHigh:X8}"),
 				new TextColumn<PackedFile, string>("Instance", x => $"0x{x.Instance:X8}"),
+				new TextColumn<PackedFile, string>("Size", x => $"{x.Size}"),
 			]);
 			FileSource.RowSelection.SelectionChanged += parent.parent.parent.RowSelection_Changed;
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Files)));

@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: © SimPE contributors
+// SPDX-License-Identifier: GPL-2.0-or-later
+
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -25,7 +28,7 @@ namespace SimPe.Models.PackedFile.Clst
 			Clst clst = new(file);
 			int size = file.Size;
 			int count = file.Package.Header.IndexType == IndexTypes.ptLongFileIndex ? size / 20 : size / 16;
-			for (int i = 0; i < count; count++)
+			for (int i = 0; i < count; i++)
 			{
 				clst.Items.Add(ClstItem.Unserialize(reader, clst));
 			}
