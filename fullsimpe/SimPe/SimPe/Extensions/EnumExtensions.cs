@@ -70,8 +70,19 @@ namespace SimPe.Extensions
 				{
 					Type = item,
 					ShortName = $"UNK_{(uint)item:X8}",
-					LongName = $"Unknown (0x{(uint)item:X8})"
+					LongName = $"Unknown (0x{(uint)item:X8})",
+					Extension = "simpe"
 				};
+		}
+
+		public static string GetDisplayName<T>(this T item) where T : struct, Enum
+		{
+			DisplayNameAttribute attr = item.GetType()
+							.GetMember(item.ToString())
+							.FirstOrDefault()?.GetCustomAttributes(false)
+							.OfType<DisplayNameAttribute>()
+							.FirstOrDefault();
+			return attr != null ? attr.DisplayName : item.ToString();
 		}
 	}
 }

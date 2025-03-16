@@ -1,9 +1,10 @@
+// SPDX-FileCopyrightText: © SimPE contributors
+// SPDX-License-Identifier: GPL-2.0-or-later
+
 using System;
-using System.Collections.Generic;
 using System.IO;
 
-using SimPe.Data;
-using SimPe.Models.PackedFile;
+using Avalonia.Controls;
 
 namespace SimPe.Models.Interfaces
 {
@@ -24,6 +25,11 @@ namespace SimPe.Models.Interfaces
 		public T As<T>() where T : IWrapper
 		{
 			return (T)this;
+		}
+
+		public abstract UserControl Panel
+		{
+			get;
 		}
 	}
 }

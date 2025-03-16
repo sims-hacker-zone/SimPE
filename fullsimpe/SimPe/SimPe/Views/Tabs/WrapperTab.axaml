@@ -7,5 +7,5 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:SimPe.ViewModels"
     x:DataType="m:PackedFile.PackedFile">
-    
+    <ContentControl Content="{CompiledBinding Wrapper.Panel}" />
 </UserControl>

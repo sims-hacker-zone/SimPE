@@ -2,23 +2,17 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 using System;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Threading.Tasks;
-using System.Xml;
 
 using Avalonia.Controls;
 using Avalonia.Controls.Selection;
 using Avalonia.Data;
-using Avalonia.Dialogs.Internal;
 using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
 
-using SimPe.Forms.MainUI;
 using SimPe.Models.Package;
 using SimPe.Models.PackedFile;
 using SimPe.ViewModels;
-using SimPe.ViewModels.ResourceTree;
 using SimPe.Views.Tabs;
 
 namespace SimPe
@@ -62,6 +56,18 @@ namespace SimPe
 					}
 				}),
 				new("Hex Viewer", new HexViewerTab()
+				{
+					[!DataContextProperty] = new Binding("SelectedItem.FileSource.RowSelection.SelectedItem")
+					{
+						ElementName = "ResourceTreeView",
+						NameScope = new(this.FindNameScope()),
+						RelativeSource = new(RelativeSourceMode.FindAncestor)
+						{
+							AncestorType=typeof(MainWindow)
+						}
+					}
+				}),
+				new("Wrapper View", new WrapperTab()
 				{
 					[!DataContextProperty] = new Binding("SelectedItem.FileSource.RowSelection.SelectedItem")
 					{

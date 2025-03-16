@@ -1,15 +1,16 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+
+using Avalonia.Controls;
 
 using CommunityToolkit.Mvvm.ComponentModel;
 
 using SimPe.Data;
 using SimPe.Models.Interfaces;
-using SimPe.Models.Package;
+using SimPe.Views.PackedFile.Clst;
 
 namespace SimPe.Models.PackedFile.Clst
 {
@@ -21,6 +22,11 @@ namespace SimPe.Models.PackedFile.Clst
 		[ObservableProperty]
 		private ObservableCollection<ClstItem> items = [];
 
+		public UserControl Panel
+		{
+			get; private set;
+		}
+
 		public static IWrapper Unserialize(BinaryReader reader, PackedFile file)
 		{
 			Clst clst = new(file);
@@ -30,12 +36,16 @@ namespace SimPe.Models.PackedFile.Clst
 			{
 				clst.Items.Add(ClstItem.Unserialize(reader, clst));
 			}
+			clst.Panel = new ClstPanel(clst);
 			return clst;
 		}
 
 		public void Serialize(BinaryWriter writer)
 		{
-			throw new System.NotImplementedException();
+			foreach (ClstItem item in Items)
+			{
+				item.Serialize(writer);
+			}
 		}
 	}
 }

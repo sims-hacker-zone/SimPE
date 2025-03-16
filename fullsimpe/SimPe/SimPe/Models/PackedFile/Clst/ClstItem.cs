@@ -59,7 +59,7 @@ namespace SimPe.Models.PackedFile.Clst
 
 		public override string ToString()
 		{
-			return $"{Type.ToFileTypeInformation().LongName}: {Group:X8} - {InstanceHigh:X8} - {Instance:X8}";
+			return $"{Type.ToFileTypeInformation().LongName}: {Group:X8} - {InstanceHigh:X8} - {Instance:X8}; Uncompressed size = {UncompressedSize}";
 		}
 	}
 }

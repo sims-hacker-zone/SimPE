@@ -9,10 +9,13 @@
     x:DataType="m:PackedFile.PackedFile">
     <ScrollViewer>
         <StackPanel>
-            <ComboBox
-                Name="DataComboBox"
-                Margin="5,5"
-                SelectionChanged="ComboBox_SelectionChanged" />
+            <StackPanel Margin="5,5" Orientation="Horizontal">
+                <ComboBox
+                    Name="DataComboBox"
+                    Margin="5,5"
+                    SelectionChanged="ComboBox_SelectionChanged" />
+                <Button Name="ExtractButton" Click="ExtractButton_Click">Extract...</Button>
+            </StackPanel>
             <TextBox
                 Name="HexTextBox"
                 FontFamily="monospace"

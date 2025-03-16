@@ -88,7 +88,7 @@ namespace SimPe.Models.PackedFile
 			set => fileName = value;
 		}
 
-		public string ExportFileName => $"{Type:X8}-{FileName}";
+		public string ExportFileName => $"{(uint)Type:X8}-{FileName}";
 
 		private string path;
 		public string Path
@@ -170,7 +170,7 @@ namespace SimPe.Models.PackedFile
 
 		public async Task CheckCompressionStatus()
 		{
-			if (RawData.Length < 9)
+			if (RawData.Length < 9 || Type == FileTypes.CLST)
 			{
 				return;
 			}
