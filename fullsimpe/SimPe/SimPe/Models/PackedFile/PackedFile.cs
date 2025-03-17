@@ -3,6 +3,7 @@
 
 using System;
 using System.Buffers.Binary;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -114,6 +115,7 @@ namespace SimPe.Models.PackedFile
 						using MemoryStream memory = new(IsCompressed ? UncompressedData : RawData);
 						using BinaryReader reader = new(memory);
 						wrapper = func(reader, this);
+						wrapper.PropertyChanged += Wrapper_PropertyChanged;
 					}
 				}
 				return wrapper;
@@ -265,9 +267,14 @@ namespace SimPe.Models.PackedFile
 			}
 			OnPropertyChanged(nameof(UncompressedDataHexString));
 		}
-
-
-
 		#endregion
+
+		internal void Wrapper_PropertyChanged(object sender, PropertyChangedEventArgs e)
+		{
+			using MemoryStream memory = new();
+			using BinaryWriter writer = new(memory);
+			wrapper.Serialize(writer);
+			UserData = memory.ToArray();
+		}
 	}
 }

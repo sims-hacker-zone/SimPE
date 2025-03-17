@@ -2,13 +2,14 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 using System;
+using System.ComponentModel;
 using System.IO;
 
 using Avalonia.Controls;
 
 namespace SimPe.Models.Interfaces
 {
-	public interface IWrapper
+	public interface IWrapper : INotifyPropertyChanged, INotifyPropertyChanging
 	{
 		public abstract PackedFile.PackedFile File
 		{

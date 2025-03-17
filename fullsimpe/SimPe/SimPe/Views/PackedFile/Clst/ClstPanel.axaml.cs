@@ -9,6 +9,7 @@ namespace SimPe.Views.PackedFile.Clst
 	{
 		public ClstPanel(Models.PackedFile.Clst.Clst clst)
 		{
+			DataContext = clst;
 			InitializeComponent();
 		}
 	}
