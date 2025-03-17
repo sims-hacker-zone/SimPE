@@ -1,6 +1,8 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+using SimPe.Extensions;
+
 namespace SimPe.Data
 {
 	/// <summary>
@@ -9,8 +11,10 @@ namespace SimPe.Data
 	public enum Languages : byte
 	{
 		Unknown = 0x00,
+		[DisplayName("English (US)")]
 		English = 0x01,
-		English_uk = 0x02,
+		[DisplayName("English (UK)")]
+		EnglishUK = 0x02,
 		French = 0x03,
 		German = 0x04,
 		Italian = 0x05,
@@ -25,7 +29,9 @@ namespace SimPe.Data
 		Portuguese = 0x0e,
 		Japanese = 0x0f,
 		Polish = 0x10,
+		[DisplayName("Chinese (Simplified)")]
 		SimplifiedChinese = 0x11,
+		[DisplayName("Chinese (Traditional)")]
 		TraditionalChinese = 0x12,
 		Thai = 0x13,
 		Korean = 0x14,
@@ -41,8 +47,9 @@ namespace SimPe.Data
 		Romanian = 0x1e,
 		Latin = 0x1f,
 		Slovak = 0x20,
-		Albabian = 0x21,
+		Albanian = 0x21,
 		Turkish = 0x22,
+		[DisplayName("Brazilian Portuguese")]
 		Brazilian = 0x23,
 		SwissFrench = 0x24,
 		CanadianFrench = 0x25,

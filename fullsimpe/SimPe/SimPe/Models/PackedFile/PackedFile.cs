@@ -6,6 +6,7 @@ using System.Buffers.Binary;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
@@ -86,10 +87,43 @@ namespace SimPe.Models.PackedFile
 				fileName ??= $"{InstanceHigh:X8}-{Group:X8}-{Instance:X8}.{TypeInfo.Extension}";
 				return fileName;
 			}
-			set => fileName = value;
+			set => SetProperty(ref fileName, value);
 		}
 
 		public string ExportFileName => $"{(uint)Type:X8}-{FileName}";
+
+		private string displayName;
+
+		public string DisplayName
+		{
+			get
+			{
+				if (Type.ToFileTypeInformation().ContainsFileName)
+				{
+					if (UserData != null)
+					{
+						return Encoding.ASCII.GetString(UserData[..64]);
+					}
+					else if (UncompressedData != null)
+					{
+						return Encoding.ASCII.GetString(UncompressedData[..64]);
+					}
+					else if (RawData != null)
+					{
+						return Encoding.ASCII.GetString(RawData[..64]);
+					}
+					else
+					{
+						return FileName;
+					}
+				}
+				else
+				{
+					return FileName;
+				}
+			}
+		}
+
 
 		private string path;
 		public string Path
@@ -165,6 +199,10 @@ namespace SimPe.Models.PackedFile
 			using BinaryReader reader = new(stream);
 			reader.BaseStream.Seek(Offset, SeekOrigin.Begin);
 			RawData = reader.ReadBytes(Size);
+			if (Type.ToFileTypeInformation().ContainsFileName)
+			{
+				OnPropertyChanged(nameof(DisplayName));
+			}
 			await CheckCompressionStatus();
 		}
 
@@ -266,6 +304,10 @@ namespace SimPe.Models.PackedFile
 				}
 			}
 			OnPropertyChanged(nameof(UncompressedDataHexString));
+			if (Type.ToFileTypeInformation().ContainsFileName)
+			{
+				OnPropertyChanged(nameof(DisplayName));
+			}
 		}
 		#endregion
 
@@ -275,6 +317,10 @@ namespace SimPe.Models.PackedFile
 			using BinaryWriter writer = new(memory);
 			wrapper.Serialize(writer);
 			UserData = memory.ToArray();
+			if (Type.ToFileTypeInformation().ContainsFileName)
+			{
+				OnPropertyChanged(nameof(DisplayName));
+			}
 		}
 	}
 }

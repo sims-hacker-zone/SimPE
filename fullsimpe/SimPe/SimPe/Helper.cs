@@ -952,7 +952,7 @@ namespace SimPe
 				case "Traditional Chinese":
 					return Languages.TraditionalChinese;
 				case "English":
-					return Languages.English_uk;
+					return Languages.EnglishUK;
 				case "Polish":
 					return Languages.Polish;
 				case "Thai":
@@ -968,15 +968,15 @@ namespace SimPe
 			switch (System.Threading.Thread.CurrentThread.CurrentCulture.ThreeLetterISOLanguageName.ToUpper())
 			{
 				case "ENA":
-					return Languages.English_uk;
+					return Languages.EnglishUK;
 				case "ENG":
-					return Languages.English_uk;
+					return Languages.EnglishUK;
 				case "ENZ":
-					return Languages.English_uk;
+					return Languages.EnglishUK;
 				case "ENS":
-					return Languages.English_uk;
+					return Languages.EnglishUK;
 				case "ENC":
-					return Languages.English_uk;
+					return Languages.EnglishUK;
 				case "ENU":
 					return Languages.English;
 				case "DEU":

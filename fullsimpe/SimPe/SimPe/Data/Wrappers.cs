@@ -9,6 +9,7 @@ using SimPe.Models.Interfaces;
 using SimPe.Models.PackedFile;
 using SimPe.Models.PackedFile.Clst;
 using SimPe.Models.PackedFile.Idno;
+using SimPe.Models.PackedFile.Str;
 
 namespace SimPe.Data
 {
@@ -20,7 +21,9 @@ namespace SimPe.Data
 		} = new()
 		{
 			[FileTypes.CLST] = Clst.Unserialize,
-			[FileTypes.IDNO] = Idno.Unserialize
+			[FileTypes.IDNO] = Idno.Unserialize,
+			[FileTypes.STR] = Str.Unserialize,
+			[FileTypes.CTSS] = Str.Unserialize
 		};
 	}
 }
