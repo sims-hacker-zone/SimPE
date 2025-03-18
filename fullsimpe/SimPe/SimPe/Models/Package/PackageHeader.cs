@@ -5,6 +5,7 @@ using System;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 using CommunityToolkit.Mvvm.ComponentModel;
 
@@ -15,9 +16,9 @@ namespace SimPe.Models.Package
 	public partial class PackageHeader : ObservableObject
 	{
 		[ObservableProperty]
-		private char[] magic = ['D', 'B', 'P', 'F'];
+		private byte[] magic = "DBPF"u8.ToArray();
 
-		public string MagicString => new(Magic);
+		public string MagicString => Encoding.ASCII.GetString(Magic);
 
 		[ObservableProperty]
 		private uint majorVersion;
@@ -64,9 +65,9 @@ namespace SimPe.Models.Package
 		{
 			PackageHeader header = new()
 			{
-				Magic = reader.ReadChars(4)
+				Magic = reader.ReadBytes(4)
 			};
-			if (!header.Magic.SequenceEqual(['D', 'B', 'P', 'F']))
+			if (!header.Magic.SequenceEqual("DBPF"u8.ToArray()))
 			{
 				throw new InvalidDataException("The package header must start with \"DBPF\"");
 			}

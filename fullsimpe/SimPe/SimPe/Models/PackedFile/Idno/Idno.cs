@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 using System.IO;
+using System.Text;
 
 using Avalonia.Controls;
 
@@ -121,7 +122,7 @@ namespace SimPe.Models.PackedFile.Idno
 				Version = new((NeighborhoodVersion)reader.ReadUInt32())
 			};
 			int nameLength = reader.ReadInt32();
-			idno.Name = new(reader.ReadChars(nameLength));
+			idno.Name = Encoding.ASCII.GetString(reader.ReadBytes(nameLength));
 			idno.Uid = reader.ReadUInt32();
 			if (idno.IsUniOrLater)
 			{
@@ -129,7 +130,7 @@ namespace SimPe.Models.PackedFile.Idno
 				int subnameLength = reader.ReadInt32();
 				if (subnameLength > 0)
 				{
-					idno.SubhoodName = new(reader.ReadChars(subnameLength));
+					idno.SubhoodName = Encoding.ASCII.GetString(reader.ReadBytes(subnameLength));
 				}
 				else
 				{

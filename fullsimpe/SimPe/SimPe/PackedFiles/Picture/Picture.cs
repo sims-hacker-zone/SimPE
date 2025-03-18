@@ -80,8 +80,6 @@ namespace SimPe.PackedFiles.Picture
 			{
 				try
 				{
-					image = Ambertation.Viewer.LoadTGAClass.LoadTGA(reader.BaseStream);
-
 					return true;
 				}
 				catch (Exception ex)

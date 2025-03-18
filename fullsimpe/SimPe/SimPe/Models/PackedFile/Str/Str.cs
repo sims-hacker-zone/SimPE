@@ -1,14 +1,18 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
+using System.Text;
 
 using Avalonia.Controls;
 using Avalonia.Controls.Models.TreeDataGrid;
 
 using CommunityToolkit.Mvvm.ComponentModel;
 
+using SimPe.Data;
 using SimPe.Extensions;
 using SimPe.Models.Interfaces;
 using SimPe.Views.PackedFile.Str;
@@ -34,17 +38,28 @@ namespace SimPe.Models.PackedFile.Str
 		[ObservableProperty]
 		private FlatTreeDataGridSource<StrItem> gridSource;
 
+		public ILookup<EnumDisplayNameItem<Languages>, StrItem> ByLanguage => Items.ToLookup(item => item.Language);
+
+		public ILookup<int, StrItem> ByIndex => (from item in ByLanguage
+												 from data in item.Select((item, i) => (item, i))
+												 select data).ToLookup(item => item.i, item => item.item);
+
 
 		public UserControl Panel
 		{
 			get; private set;
 		}
 
+		public StrItem this[Languages l, int index] => Items.Where(item => item.Language == l).Skip(index).FirstOrDefault();
+
+		public IEnumerable<StrItem> this[int index] => from item in ByLanguage
+													   select item.Skip(index).FirstOrDefault();
+
 		public static IWrapper Unserialize(BinaryReader reader, PackedFile file)
 		{
 			Str str = new(file)
 			{
-				FileName = new(reader.ReadChars(64))
+				FileName = Encoding.ASCII.GetString(reader.ReadBytes(64))
 			};
 
 			byte type = reader.ReadByte();

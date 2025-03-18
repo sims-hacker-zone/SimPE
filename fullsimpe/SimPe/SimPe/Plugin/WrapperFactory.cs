@@ -230,7 +230,6 @@ namespace SimPe.Plugin
 						new SimpleTextPackedFileWrapper(),
 						new SimListPackedFileWrapper(),
 						new HugBugPackedFileWrapper(),
-						new AudioRefPackedFileWrapper(),
 						new InvenIndexPackedFileWrapper(),
 						new InventItemPackedFileWrapper(),
 						new WinfoPackedFileWrapper(),

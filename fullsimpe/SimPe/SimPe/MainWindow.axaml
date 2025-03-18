@@ -18,6 +18,9 @@
             <Setter Property="MaxHeight" Value="20" />
             <Setter Property="Margin" Value="0,5,0,0" />
         </Style>
+        <Style Selector="TextBlock.HasWrapper">
+            <Setter Property="Foreground" Value="ForestGreen" />
+        </Style>
     </Window.Styles>
     <DockPanel>
         <Menu DockPanel.Dock="Top">
@@ -54,6 +57,7 @@
                             <DataTemplate DataType="vm:ResourceTree.ResourceTreeTypeViewModel">
                                 <TextBlock
                                     Button.Click="BtnChunk_Click"
+                                    Classes.HasWrapper="{Binding HasWrapper}"
                                     Text="{Binding Caption}"
                                     ToolTip.Tip="{Binding Caption}" />
                             </DataTemplate>
