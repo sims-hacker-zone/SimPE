@@ -338,28 +338,6 @@ namespace SimPe
 		/// </summary>
 		internal Registry()
 		{
-			string configpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SimPe", "config.json");
-			bool success = true;
-			if (File.Exists(configpath))
-			{
-				try
-				{
-					Config = JsonSerializer.Deserialize<Configuration>(File.ReadAllText(configpath, Encoding.UTF8), new JsonSerializerOptions
-					{
-						UnmappedMemberHandling = System.Text.Json.Serialization.JsonUnmappedMemberHandling.Skip,
-						DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
-					});
-				}
-				catch (Exception ex) { Message.Show($"Config could not be loaded!\n{ex.Message}\n{ex.StackTrace}"); success = false; }
-			}
-			else
-			{
-				success = false;
-			}
-			if (!success)
-			{
-				Message.Show("No config found! Creating a new one.");
-			}
 		}
 
 		/// <summary>
@@ -386,15 +364,6 @@ namespace SimPe
 
 		public void SaveConfig()
 		{
-			string configpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SimPe", "config.json");
-			try
-			{
-				File.WriteAllText(configpath, JsonSerializer.Serialize(Config, new JsonSerializerOptions { WriteIndented = true }), Encoding.UTF8);
-			}
-			catch (Exception ex)
-			{
-				Message.Show($"Config could not be saved!\n{ex.Message}\n{ex.StackTrace}");
-			}
 		}
 
 		/// <summary>

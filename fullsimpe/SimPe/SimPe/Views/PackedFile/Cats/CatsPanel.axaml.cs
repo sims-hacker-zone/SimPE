@@ -3,12 +3,13 @@
 
 using Avalonia.Controls;
 
-namespace SimPe.Views.PackedFile.Ttab
+namespace SimPe.Views.PackedFile.Cats
 {
-	public partial class TtabPanel : UserControl
+	public partial class CatsPanel : UserControl
 	{
-		public TtabPanel()
+		public CatsPanel(Models.PackedFile.Cats.Cats cats)
 		{
+			DataContext = cats;
 			InitializeComponent();
 		}
 	}

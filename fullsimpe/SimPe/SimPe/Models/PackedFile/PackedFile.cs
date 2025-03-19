@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
+using AvaloniaHex.Document;
+
 using CommunityToolkit.Mvvm.ComponentModel;
 
 using SimPe.Data;
@@ -61,7 +63,7 @@ namespace SimPe.Models.PackedFile
 		[ObservableProperty]
 		private byte[] userData;
 
-		public string UserDataHexString => BitConverter.ToString(UserData).Replace("-", " ");
+		public DynamicBinaryDocument UserDataDocument => new(UserData) { IsReadOnly = true };
 
 		[ObservableProperty]
 		private bool isCompressed;
@@ -69,12 +71,12 @@ namespace SimPe.Models.PackedFile
 		[ObservableProperty]
 		private byte[] rawData;
 
-		public string RawDataHexString => BitConverter.ToString(RawData).Replace("-", " ");
+		public DynamicBinaryDocument RawDataDocument => new(RawData) { IsReadOnly = true };
 
 		[ObservableProperty]
 		private byte[] uncompressedData;
 
-		public string UncompressedDataHexString => BitConverter.ToString(UncompressedData).Replace("-", " ");
+		public DynamicBinaryDocument UncompressedDataDocument => new(UncompressedData) { IsReadOnly = true };
 
 		[ObservableProperty]
 		private uint uncompressedSize;
@@ -189,7 +191,7 @@ namespace SimPe.Models.PackedFile
 			return $"{TypeInfo.LongName}: {(uint)Type:X8} - {InstanceHigh:X8} - {Group:X8} - {Instance:X8}";
 		}
 
-		public async Task ReadContent()
+		public async void ReadContent()
 		{
 			if (Package.StorageFile == null || Offset == 0 || RawData != null)
 			{
@@ -203,19 +205,19 @@ namespace SimPe.Models.PackedFile
 			{
 				OnPropertyChanged(nameof(DisplayName));
 			}
-			await CheckCompressionStatus();
+			CheckCompressionStatus();
 		}
 
 		#region Compression
 
-		public async Task CheckCompressionStatus()
+		public void CheckCompressionStatus()
 		{
 			if (RawData.Length < 9 || Type == FileTypes.CLST)
 			{
 				return;
 			}
 			ClstItem clstItem;
-			await Package.FindFiles(FileTypes.CLST)?.FirstOrDefault()?.ReadContent();
+			Package.FindFiles(FileTypes.CLST)?.FirstOrDefault()?.ReadContent();
 			if ((clstItem = Package.FindFiles(FileTypes.CLST)?.FirstOrDefault()?.Wrapper?.As<Clst.Clst>().Items.FirstOrDefault(item => item.Type == Type && item.Group == Group && item.Instance == Instance && item.InstanceHigh == InstanceHigh)) != null)
 			{
 				IsCompressed = true;
@@ -303,7 +305,7 @@ namespace SimPe.Models.PackedFile
 					UncompressedData[uncindex++] = RawData[index++];
 				}
 			}
-			OnPropertyChanged(nameof(UncompressedDataHexString));
+			OnPropertyChanged(nameof(UncompressedDataDocument));
 			if (Type.ToFileTypeInformation().ContainsFileName)
 			{
 				OnPropertyChanged(nameof(DisplayName));

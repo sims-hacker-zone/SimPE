@@ -19,13 +19,13 @@
             <Setter Property="Margin" Value="0,5,0,0" />
         </Style>
         <Style Selector="TextBlock.HasWrapper">
-            <Setter Property="Foreground" Value="ForestGreen" />
+            <Setter Property="Foreground" Value="LimeGreen" />
         </Style>
     </Window.Styles>
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="File">
-                <MenuItem Header="New" />
+                <!-- <MenuItem Header="New" /> -->
                 <MenuItem Click="BtnOpen_Click" Header="Open..." />
                 <MenuItem
                     Classes="SubItems"
@@ -35,12 +35,15 @@
                         <Style Selector="MenuItem.SubItems MenuItem">
                             <Setter Property="Header" Value="{Binding Header}" />
                             <Setter Property="ItemsSource" Value="{Binding Items}" />
-                            <Setter Property="Command" Value="{Binding Command}" />
+                            <Setter Property="Command" Value="{Binding OpenRecent}" />
                             <Setter Property="CommandParameter" Value="{Binding CommandParameter}" />
                         </Style>
                     </MenuItem.Styles>
                 </MenuItem>
                 <MenuItem Header="Exit" />
+            </MenuItem>
+            <MenuItem Header="Extras">
+                <MenuItem Click="SettingsMenuItem_Click" Header="Settings" />
             </MenuItem>
         </Menu>
         <Grid RowDefinitions="4*,4,1*">

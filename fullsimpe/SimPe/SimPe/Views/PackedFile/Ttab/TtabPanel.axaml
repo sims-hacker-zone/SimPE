@@ -3,6 +3,7 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ext="using:SimPe.Extensions"
     xmlns:m="using:SimPe.Models"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:SimPe.ViewModels"
@@ -14,7 +15,13 @@
         <Style Selector=".rootpanel StackPanel &gt; Label">
             <Setter Property="Margin" Value="0,0,5,0" />
         </Style>
+        <Style Selector=".rootpanel &gt; DockPanel">
+            <Setter Property="Margin" Value="5,5" />
+        </Style>
     </UserControl.Styles>
+    <UserControl.Resources>
+        <ext:HexConverter x:Key="HexConverter" />
+    </UserControl.Resources>
     <DockPanel>
         <TextBlock
             Margin="5,5"
@@ -25,26 +32,39 @@
             TTAB Wrapper
         </TextBlock>
         <Grid Classes="rootpanel" ColumnDefinitions="*,2,4*">
-            <StackPanel Orientation="Vertical">
-                <StackPanel Orientation="Horizontal">
+            <DockPanel>
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
                     <Label VerticalAlignment="Center">File name:</Label>
                     <TextBox MaxLength="64" Text="{Binding FileName}" />
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
                     <Label VerticalAlignment="Center">Version:</Label>
                     <NumericUpDown Increment="1" Value="{Binding Version}" />
                 </StackPanel>
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <ListBox Name="TtabItemList" ItemsSource="{Binding Items}" />
-                </ScrollViewer>
-            </StackPanel>
+                <ListBox
+                    Name="TtabItemList"
+                    ItemsSource="{Binding Items}"
+                    ScrollViewer.VerticalScrollBarVisibility="Auto" />
+            </DockPanel>
             <GridSplitter Grid.Column="1" ResizeDirection="Columns" />
             <TabControl Grid.Column="2" DataContext="{Binding #TtabItemList.SelectedItem}">
                 <TabItem Header="General">
-                    <WrapPanel>
+                    <WrapPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal">
+                            <Label VerticalAlignment="Center">Pie String Index:</Label>
+                            <TextBox MaxLength="6" Text="{Binding StrIndex}" />
+                        </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label VerticalAlignment="Center">Action:</Label>
-                            <TextBox MaxLength="64" Text="{Binding Action, StringFormat=0x{0:X4}}" />
+                            <TextBox MaxLength="6" Text="{Binding Action, Converter={StaticResource HexConverter}}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label VerticalAlignment="Center">Guard:</Label>
+                            <TextBox MaxLength="6" Text="{Binding Guard, Converter={StaticResource HexConverter}}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label VerticalAlignment="Center">Attenuation Code:</Label>
+                            <ComboBox ItemsSource="{Binding AttenuationCode.Values, Mode=OneTime}" SelectedItem="{Binding AttenuationCode}" />
                         </StackPanel>
                     </WrapPanel>
                 </TabItem>

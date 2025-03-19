@@ -7,9 +7,13 @@ using System.IO;
 
 using SimPe.Models.Interfaces;
 using SimPe.Models.PackedFile;
+using SimPe.Models.PackedFile.Cats;
 using SimPe.Models.PackedFile.Clst;
+using SimPe.Models.PackedFile.Cpf;
+using SimPe.Models.PackedFile.Fami;
 using SimPe.Models.PackedFile.Fwav;
 using SimPe.Models.PackedFile.Idno;
+using SimPe.Models.PackedFile.Ltxt;
 using SimPe.Models.PackedFile.Picture;
 using SimPe.Models.PackedFile.Str;
 using SimPe.Models.PackedFile.Ttab;
@@ -31,7 +35,30 @@ namespace SimPe.Data
 			[FileTypes.BMP] = Picture.Unserialize,
 			[FileTypes.IMG] = Picture.Unserialize,
 			[FileTypes.FWAV] = Fwav.Unserialize,
-			[FileTypes.TTAB] = Ttab.Unserialize
+			[FileTypes.CATS] = Cats.Unserialize,
+			[FileTypes.TTAB] = Ttab.Unserialize,
+			[FileTypes.VERS] = Cpf.Unserialize,
+			[FileTypes.GZPS] = Cpf.Unserialize,
+			[FileTypes.BINX] = Cpf.Unserialize,
+			[FileTypes.SDNA] = Cpf.Unserialize,
+			[FileTypes.XTOL] = Cpf.Unserialize,
+			[FileTypes.XOBJ] = Cpf.Unserialize,
+			[FileTypes.XSTN] = Cpf.Unserialize,
+			[FileTypes.XMOL] = Cpf.Unserialize,
+			[FileTypes.XHTN] = Cpf.Unserialize,
+			[FileTypes.XFRG] = Cpf.Unserialize,
+			[FileTypes.XFNU] = Cpf.Unserialize,
+			[FileTypes.XFMD] = Cpf.Unserialize,
+			[FileTypes.XFCH] = Cpf.Unserialize,
+			[FileTypes.XROF] = Cpf.Unserialize,
+			[FileTypes.XFLR] = Cpf.Unserialize,
+			[FileTypes.XFNC] = Cpf.Unserialize,
+			[FileTypes.XNGB] = Cpf.Unserialize,
+			[FileTypes.PBOP] = Cpf.Unserialize,
+			[FileTypes.COLL] = Cpf.Unserialize,
+			[FileTypes.AGED] = Cpf.Unserialize,
+			[FileTypes.LTXT] = Ltxt.Unserialize,
+			[FileTypes.FAMI] = Fami.Unserialize
 		};
 	}
 }

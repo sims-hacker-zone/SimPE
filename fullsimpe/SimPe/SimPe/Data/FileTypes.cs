@@ -206,7 +206,7 @@ namespace SimPe.Data
 		/// <summary>
 		/// Catalog Description
 		/// </summary>
-		[FileType(DisplayName = "Catalog Description")]
+		[FileType(DisplayName = "Catalog Description", ContainsFileName = true)]
 		CTSS = 0x43545353,
 		/// <summary>
 		/// Object Data

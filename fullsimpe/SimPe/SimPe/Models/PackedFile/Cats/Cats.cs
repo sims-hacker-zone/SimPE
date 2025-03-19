@@ -11,11 +11,11 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 using SimPe.Extensions;
 using SimPe.Models.Interfaces;
-using SimPe.Views.PackedFile.Fwav;
+using SimPe.Views.PackedFile.Cats;
 
-namespace SimPe.Models.PackedFile.Fwav
+namespace SimPe.Models.PackedFile.Cats
 {
-	public partial class Fwav(PackedFile file) : ObservableObject, IWrapper
+	public partial class Cats(PackedFile file) : ObservableObject, IWrapper
 	{
 		[ObservableProperty]
 		private PackedFile file = file;
@@ -34,15 +34,15 @@ namespace SimPe.Models.PackedFile.Fwav
 
 		public static IWrapper Unserialize(BinaryReader reader, PackedFile file)
 		{
-			Fwav fwav = new(file)
+			Cats Cats = new(file)
 			{
 				FileName = Encoding.ASCII.GetString(reader.ReadBytes(64)),
 				Content = reader.ReadUTF8CString()
 			};
 
-			fwav.Panel = new FwavPanel(fwav);
+			Cats.Panel = new CatsPanel(Cats);
 
-			return fwav;
+			return Cats;
 		}
 
 		public void Serialize(BinaryWriter writer)

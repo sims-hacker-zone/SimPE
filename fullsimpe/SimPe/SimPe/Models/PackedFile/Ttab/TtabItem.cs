@@ -3,8 +3,13 @@
 
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 
 using CommunityToolkit.Mvvm.ComponentModel;
+
+using SimPe.Data;
+using SimPe.Extensions;
+using SimPe.Models.PackedFile.Str;
 
 namespace SimPe.Models.PackedFile.Ttab
 {
@@ -29,7 +34,7 @@ namespace SimPe.Models.PackedFile.Ttab
 		[ObservableProperty]
 		private uint strIndex;
 		[ObservableProperty]
-		private uint attenuationCode;
+		private EnumDisplayNameItem<AttenuationCode> attenuationCode;
 		[ObservableProperty]
 		private float attenuationValue;
 		[ObservableProperty]
@@ -75,7 +80,7 @@ namespace SimPe.Models.PackedFile.Ttab
 			item.Flags2 = reader.ReadUInt16();
 
 			item.StrIndex = reader.ReadUInt32();
-			item.AttenuationCode = reader.ReadUInt32();
+			item.AttenuationCode = new((AttenuationCode)reader.ReadUInt32());
 			item.AttenuationValue = reader.ReadSingle();
 			item.Autonomy = reader.ReadUInt32();
 			item.JoinIndex = reader.ReadUInt32();
@@ -98,12 +103,83 @@ namespace SimPe.Models.PackedFile.Ttab
 				}
 			}
 
+			item.HumanGroups = TtabItemMotiveHumanTable.Unserialize(reader, item);
+			if (parent.Version >= 0x54)
+			{
+				item.AnimalGroups = TtabItemMotiveAnimalTable.Unserialize(reader, item);
+			}
+
 			return item;
+		}
+
+		public void Serialize(BinaryWriter writer)
+		{
+			writer.Write(Action);
+			writer.Write(Guard);
+
+			if (Parent.Version < 0x44)
+			{
+				if (!Counts.Any())
+				{
+					Counts.Add(16);
+				}
+				writer.Write(Counts[0]);
+			}
+			else if (Parent.Version < 0x54)
+			{
+				if (Counts.Count < 7)
+				{
+					for (int i = Counts.Count; i < 7; i++)
+					{
+						Counts.Add(16);
+					}
+				}
+				for (int i = 0; i < 7; i++)
+				{
+					writer.Write(Counts[i]);
+				}
+			}
+
+			writer.Write(Flags);
+			writer.Write(Flags2);
+			writer.Write(StrIndex);
+			writer.Write((uint)AttenuationCode.Item);
+			writer.Write(AttenuationValue);
+			writer.Write(Autonomy);
+			writer.Write(JoinIndex);
+
+			if (Parent.Version >= 0x45)
+			{
+				writer.Write(UIDisplayType);
+				if (Parent.Version >= 0x46)
+				{
+					if (Parent.Version >= 0x4A)
+					{
+						writer.Write(FacialAnimation);
+						if (Parent.Version >= 0x4C)
+						{
+							writer.Write(MemoryIterMult);
+							writer.Write(ObjectType);
+						}
+					}
+					writer.Write(ModelTableID);
+				}
+			}
+			HumanGroups.Serialize(writer);
+			if (Parent.Version >= 0x54)
+			{
+				AnimalGroups.Serialize(writer);
+			}
 		}
 
 		public override string ToString()
 		{
-			return $"[TTAB Item]";
+			PackedFile ttas_file = Parent.File.Package.FindFile(FileTypes.TTAs, Parent.File.Group, Parent.File.InstanceHigh, Parent.File.Instance);
+			ttas_file?.ReadContent();
+			ILookup<int, StrItem> index = ((ttas_file?.Wrapper) as Str.Str).ByIndex;
+			return index != null && index.Contains((int)StrIndex) && index[(int)StrIndex].Any()
+				? index[(int)StrIndex].First().Title
+				: "[TTAB Item]";
 		}
 	}
 }

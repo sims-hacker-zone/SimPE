@@ -3,7 +3,6 @@
 
 using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
 
 using CommunityToolkit.Mvvm.ComponentModel;
 
@@ -20,7 +19,8 @@ namespace SimPe.Models.PackedFile.Ttab
 		public static TtabItemMotiveAnimalTable Unserialize(BinaryReader reader, TtabItem parent)
 		{
 			TtabItemMotiveAnimalTable table = new(parent);
-			for (int i = 0; i < reader.ReadInt32(); i++)
+			int groupCount = reader.ReadInt32();
+			for (int i = 0; i < groupCount; i++)
 			{
 				table.Groups.Add(TtabItemMotiveAnimalGroup.Unserialize(reader, table));
 			}
@@ -49,7 +49,8 @@ namespace SimPe.Models.PackedFile.Ttab
 		public static TtabItemMotiveAnimalGroup Unserialize(BinaryReader reader, TtabItemMotiveAnimalTable parent)
 		{
 			TtabItemMotiveAnimalGroup group = new(parent);
-			for (int i = 0; i < reader.ReadInt32(); i++)
+			int itemCount = reader.ReadInt32();
+			for (int i = 0; i < itemCount; i++)
 			{
 				group.Items.Add(TtabItemMotiveAnimalItem.Unserialize(reader, group));
 			}
@@ -77,7 +78,8 @@ namespace SimPe.Models.PackedFile.Ttab
 		public static TtabItemMotiveAnimalItem Unserialize(BinaryReader reader, TtabItemMotiveAnimalGroup parent)
 		{
 			TtabItemMotiveAnimalItem item = new(parent);
-			for (int i = 0; i < reader.ReadInt32(); i++)
+			int itemCount = reader.ReadInt32();
+			for (int i = 0; i < itemCount; i++)
 			{
 				item.Items.Add(TtabItemMotiveAnimalSingleItem.Unserialize(reader, item));
 			}

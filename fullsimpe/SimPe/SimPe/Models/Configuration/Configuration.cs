@@ -3,17 +3,26 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
+using Avalonia.Collections;
+
+using CommunityToolkit.Mvvm.ComponentModel;
+
+using SimPe.Data;
+using SimPe.Extensions;
 using SimPe.Forms.MainUI;
 
-namespace SimPe.Models
+namespace SimPe.Models.Configuration
 {
-	public class Configuration
+	public partial class Configuration : ObservableObject
 	{
+
 		public string Path { get; set; } = Helper.SimPePath;
 		public string DataPath { get; set; } = Helper.SimPeDataPath;
 		public string PluginPath { get; set; } = Helper.SimPePluginPath;
@@ -215,21 +224,33 @@ namespace SimPe.Models
 		/// true, if user likes bigger Icons on the main tool bars
 		/// </summary>
 		public bool UseBigIcons { get; set; } = false;
-		public List<string> RecentFiles { get; set; } = [];
-		public Dictionary<ulong, int> WrapperPriority { get; set; } = [];
+		public ObservableCollection<string> RecentFiles { get; set; } = [];
+		public AvaloniaDictionary<ulong, int> WrapperPriority { get; set; } = [];
 		public bool KeepFilesOpen { get; set; } = true;
-		public Dictionary<string, string> ExpansionInstallPaths { get; set; } = [];
+		[ObservableProperty]
+		private ObservableCollection<InstalledExpansionConfig> expansionInstallPaths = [];
 		public string SaveGamePath { get; set; } = "";
 		public string NvidiaDDSPath { get; set; } = "";
-		public Dictionary<string, Dictionary<string, string>> ExtTools { get; set; } = [];
+		public AvaloniaDictionary<string, AvaloniaDictionary<string, string>> ExtTools { get; set; } = [];
 		public int ExtObdjFormInitialTab { get; set; } = 0;
-		public Dictionary<string, Dictionary<string, string>> PluginSettings { get; set; } = [];
-		public Dictionary<uint, string> AdditionalCareers { get; set; } = [];
-		public Dictionary<uint, string> AdditionalMajors { get; set; } = [];
-		public Dictionary<uint, string> AdditionalSchools { get; set; } = [];
+		public AvaloniaDictionary<string, AvaloniaDictionary<string, string>> PluginSettings { get; set; } = [];
+		public AvaloniaDictionary<uint, string> AdditionalCareers { get; set; } = [];
+		public AvaloniaDictionary<uint, string> AdditionalMajors { get; set; } = [];
+		public AvaloniaDictionary<uint, string> AdditionalSchools { get; set; } = [];
+
+		private static readonly JsonSerializerOptions options = new()
+		{
+			UnmappedMemberHandling = System.Text.Json.Serialization.JsonUnmappedMemberHandling.Skip,
+			DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
+			WriteIndented = true
+		};
 
 		public static async Task<Configuration> Load()
 		{
+			if (!options.Converters.OfType<DictionaryTKeyEnumTValueConverter>().Any())
+			{
+				options.Converters.Add(new DictionaryTKeyEnumTValueConverter());
+			}
 			string configpath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SimPe", "config.json");
 			bool success = true;
 			Configuration config = new();
@@ -237,11 +258,7 @@ namespace SimPe.Models
 			{
 				try
 				{
-					config = JsonSerializer.Deserialize<Configuration>(await File.ReadAllTextAsync(configpath, Encoding.UTF8), new JsonSerializerOptions
-					{
-						UnmappedMemberHandling = System.Text.Json.Serialization.JsonUnmappedMemberHandling.Skip,
-						DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
-					});
+					config = JsonSerializer.Deserialize<Configuration>(await File.ReadAllTextAsync(configpath, Encoding.UTF8), options);
 				}
 				catch (Exception ex) { await Message.Show($"Config could not be loaded!\n{ex.Message}\n{ex.StackTrace}"); success = false; }
 			}
@@ -258,10 +275,14 @@ namespace SimPe.Models
 
 		public async Task Save()
 		{
+			if (!options.Converters.OfType<DictionaryTKeyEnumTValueConverter>().Any())
+			{
+				options.Converters.Add(new DictionaryTKeyEnumTValueConverter());
+			}
 			string configpath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SimPe", "config.json");
 			try
 			{
-				await File.WriteAllTextAsync(configpath, JsonSerializer.Serialize(this, new JsonSerializerOptions { WriteIndented = true }), Encoding.UTF8);
+				await File.WriteAllTextAsync(configpath, JsonSerializer.Serialize(this, options), Encoding.UTF8);
 			}
 			catch (Exception ex)
 			{

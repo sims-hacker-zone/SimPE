@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using SimPe.Models;
+using SimPe.Models.Configuration;
 using SimPe.Models.Package;
 using SimPe.ViewModels.ResourceTree;
 
@@ -23,10 +25,10 @@ namespace SimPe.ViewModels
 		public IReadOnlyList<MenuItemViewModel> MenuItems
 		{
 			get; set;
-		}
+		} = [];
 		public Configuration Configuration { get; private set; } = new();
 
-		public IReadOnlyList<MenuItemViewModel> RecentFilesMenuItems => (from item in Configuration.RecentFiles.Select((item, i) => (item, i)) select new MenuItemViewModel { Header = $"_{item.i}: {(item.item.Length > 50 ? "..." + item.item[^50..] : item.item)}" }).ToList();
+		public IReadOnlyList<MenuItemViewModel> RecentFilesMenuItems => (from item in Configuration.RecentFiles.Select((item, i) => (item, i)) select new MenuItemViewModel(this) { Header = $"_{item.i}: {(item.item.Length > 50 ? "..." + item.item[^50..] : item.item)}", CommandParameter = item.item }).ToList();
 
 		public ObservableCollection<ResourceTreeViewModel> ResourceTree { get; set; } = [];
 
@@ -42,6 +44,7 @@ namespace SimPe.ViewModels
 				ResourceTree.Add(new(loadedPackage, this));
 				PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(LoadedPackage)));
 				PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(ResourceTree)));
+				PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(RecentFilesMenuItems)));
 			}
 		}
 
@@ -49,7 +52,7 @@ namespace SimPe.ViewModels
 
 		public async Task LoadConfiguration()
 		{
-			Configuration = await Models.Configuration.Load();
+			Configuration = await Configuration.Load();
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(RecentFilesMenuItems)));
 		}
 	}

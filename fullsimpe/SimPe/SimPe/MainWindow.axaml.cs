@@ -3,6 +3,7 @@
 
 using System;
 using System.Linq;
+using System.Reactive.Linq;
 
 using Avalonia.Controls;
 using Avalonia.Controls.Selection;
@@ -10,10 +11,12 @@ using Avalonia.Data;
 using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
 
+using SimPe.Models;
 using SimPe.Models.Package;
 using SimPe.Models.PackedFile;
 using SimPe.ViewModels;
 using SimPe.Views.Tabs;
+using SimPe.Views.Windows;
 
 namespace SimPe
 {
@@ -22,15 +25,7 @@ namespace SimPe
 		public MainWindow()
 		{
 			InitializeComponent();
-			DataContext = new MainWindowViewModel(this)
-			{
-				MenuItems = [
-					new MenuItemViewModel
-					{
-						Header = "Test"
-					}
-				]
-			};
+			DataContext = new MainWindowViewModel(this);
 			InfoTabs.DataContext = new TabItemViewModel[]
 			{
 				new("Resource Info", new ResourceInfoTab()
@@ -99,8 +94,12 @@ namespace SimPe
 			});
 			if (filelist.Any())
 			{
+				string path = Uri.UnescapeDataString(filelist[0].Path.AbsolutePath);
+				(DataContext as MainWindowViewModel).Configuration.RecentFiles.Insert(0, path);
+				(DataContext as MainWindowViewModel).Configuration.RecentFiles = new((DataContext as MainWindowViewModel).Configuration.RecentFiles.Take(15));
 				(DataContext as MainWindowViewModel).LoadedPackage = await PackageFile.Open(filelist[0]);
-				Title = $"SimPe - {Uri.UnescapeDataString(filelist[0].Path.AbsolutePath)}";
+				Title = $"SimPe - {path}";
+				await (DataContext as MainWindowViewModel).Configuration.Save();
 			}
 		}
 
@@ -119,9 +118,15 @@ namespace SimPe
 			Console.WriteLine($"Selected {sender.GetType()}: {sender}");
 		}
 
-		internal async void RowSelection_Changed(object sender, TreeSelectionModelSelectionChangedEventArgs<PackedFile> e)
+		internal void RowSelection_Changed(object sender, TreeSelectionModelSelectionChangedEventArgs<PackedFile> e)
 		{
-			await e.SelectedItems[0]?.ReadContent();
+			e.SelectedItems[0]?.ReadContent();
+		}
+
+		internal void SettingsMenuItem_Click(object sender, RoutedEventArgs e)
+		{
+			SettingsWindow w = new((DataContext as MainWindowViewModel).Configuration);
+			w.Show(this);
 		}
 	}
 }

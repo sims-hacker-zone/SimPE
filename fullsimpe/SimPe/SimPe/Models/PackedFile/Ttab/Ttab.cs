@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: © SimPE contributors
+// SPDX-License-Identifier: GPL-2.0-or-later
+
+using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
@@ -56,14 +60,24 @@ namespace SimPe.Models.PackedFile.Ttab
 				ttab.Items.Add(TtabItem.Unserialize(reader, ttab));
 			}
 
-			ttab.Panel = new TtabPanel(ttab);
+			ttab.Panel = new TtabPanel() { DataContext = ttab };
 
 			return ttab;
 		}
 
 		public void Serialize(BinaryWriter writer)
 		{
-			throw new System.NotImplementedException();
+			byte[] buffer = Encoding.ASCII.GetBytes(FileName);
+			Array.Resize(ref buffer, 64);
+			writer.Write(buffer);
+			writer.Write(Header_0);
+			writer.Write(Version);
+			writer.Write(Unknown_00);
+			writer.Write((ushort)Items.Count);
+			foreach (TtabItem item in Items)
+			{
+				item.Serialize(writer);
+			}
 		}
 	}
 }

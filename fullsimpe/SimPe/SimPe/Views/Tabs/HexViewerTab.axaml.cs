@@ -7,7 +7,13 @@ using System.IO;
 using Avalonia.Controls;
 using Avalonia.Data;
 using Avalonia.Interactivity;
+using Avalonia.Media;
 using Avalonia.Platform.Storage;
+
+using AvaloniaHex;
+using AvaloniaHex.Document;
+using AvaloniaHex.Editing;
+using AvaloniaHex.Rendering;
 
 namespace SimPe.Views.Tabs
 {
@@ -27,7 +33,15 @@ namespace SimPe.Views.Tabs
 				DataComboBox.Items.Add(item);
 			}
 			DataComboBox.SelectedItem = HexComboBoxDataType.RawData;
-			HexTextBox[!TextBox.TextProperty] = new Binding("RawDataHexString");
+			Editor[!HexEditor.DocumentProperty] = new Binding("RawDataDocument");
+			Editor.HexView.BytesPerLine = 32;
+			CellGroupsLayer layer = Editor.HexView.Layers.Get<CellGroupsLayer>();
+			layer.BytesPerGroup = 8;
+			layer.Backgrounds.Add(new SolidColorBrush(Colors.Gray, 0.1D));
+			layer.Backgrounds.Add(null);
+			layer.Border = new Pen(Brushes.Gray, dashStyle: DashStyle.Dash);
+			// Editor.Document = new MemoryBinaryDocument((DataContext as Models.PackedFile.PackedFile).RawData);
+			// HexTextBox[!TextBox.TextProperty] = new Binding("RawDataHexString");
 		}
 
 		internal void ComboBox_SelectionChanged(object sender, RoutedEventArgs e)
@@ -35,13 +49,13 @@ namespace SimPe.Views.Tabs
 			switch ((HexComboBoxDataType)DataComboBox.SelectedItem)
 			{
 				case HexComboBoxDataType.RawData:
-					HexTextBox[!TextBox.TextProperty] = new Binding("RawDataHexString");
+					Editor[!HexEditor.DocumentProperty] = new Binding("RawDataDocument");
 					break;
 				case HexComboBoxDataType.UncompressedData:
-					HexTextBox[!TextBox.TextProperty] = new Binding("UncompressedDataHexString");
+					Editor[!HexEditor.DocumentProperty] = new Binding("UncompressedDataDocument");
 					break;
 				case HexComboBoxDataType.UserData:
-					HexTextBox[!TextBox.TextProperty] = new Binding("UserDataHexString");
+					Editor[!HexEditor.DocumentProperty] = new Binding("UserDataDocument");
 					break;
 				default:
 					break;

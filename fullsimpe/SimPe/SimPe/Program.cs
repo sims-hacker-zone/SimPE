@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Avalonia;
 
 using SimPe.Forms.MainUI;
+using SimPe.ViewModels;
 
 using Message = SimPe.Forms.MainUI.Message;
 
@@ -34,7 +35,7 @@ namespace SimPe
 				return;
 			}
 
-			List<string> argv = new List<string>(args);
+			List<string> argv = new(args);
 			if (await Commandline.PreSplash(argv))
 			{
 				return;
@@ -87,7 +88,7 @@ namespace SimPe
 			}
 			Console.WriteLine("Exiting Application!");
 
-			Helper.WindowsRegistry.SaveConfig();
+			await (mainWindow.DataContext as MainWindowViewModel).Configuration.Save();
 			// }
 			// catch (Exception ex)
 			// {
