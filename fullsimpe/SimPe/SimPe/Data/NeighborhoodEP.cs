@@ -10,43 +10,43 @@ namespace SimPe.Data
 	/// </summary>
 	public enum NeighborhoodEP : uint
 	{
-		[DisplayName("Sims 2 Base Game")]
+		[DisplayName("Sims2", LocalizedResource = true)]
 		BaseGame = 0x00,
-		[DisplayName("Sims 2 University")]
+		[DisplayName("Sims2EP1", LocalizedResource = true)]
 		University = 0x01,
-		[DisplayName("Sims 2 Nightlife")]
+		[DisplayName("Sims2EP2", LocalizedResource = true)]
 		Nightlife = 0x02,
-		[DisplayName("Sims 2 Open for Business")]
+		[DisplayName("Sims2EP3", LocalizedResource = true)]
 		Business = 0x03,
-		[DisplayName("Sims 2 Family Fun Stuff")]
+		[DisplayName("Sims2SP1", LocalizedResource = true)]
 		FamilyFun = 0x04,
-		[DisplayName("Sims 2 Glamour Life Stuff")]
+		[DisplayName("Sims2SP2", LocalizedResource = true)]
 		GlamourLife = 0x05,
-		[DisplayName("Sims 2 Pets")]
+		[DisplayName("Sims2EP4", LocalizedResource = true)]
 		Pets = 0x06,
-		[DisplayName("Sims 2 Seasons")]
+		[DisplayName("Sims2EP5", LocalizedResource = true)]
 		Seasons = 0x07,
-		[DisplayName("Sims 2 Celebration! Stuff")]
+		[DisplayName("Sims2SP3", LocalizedResource = true)]
 		Celebration = 0x08,
-		[DisplayName("Sims 2 H&M Fashion Stuff")]
+		[DisplayName("Sims2SP4", LocalizedResource = true)]
 		Fashion = 0x09,
-		[DisplayName("Sims 2 Bon Voyage")]
+		[DisplayName("Sims2EP6", LocalizedResource = true)]
 		BonVoyage = 0x0a,
-		[DisplayName("Sims 2 Teen Style Stuff")]
+		[DisplayName("Sims2SP5", LocalizedResource = true)]
 		TeenStyle = 0x0b,
-		[DisplayName("Sims 2 Store Edition (old)")]
+		[DisplayName("Sims2StoreOld", LocalizedResource = true)]
 		StoreEdition_old = 0x0c,
-		[DisplayName("Sims 2 FreeTime")]
+		[DisplayName("Sims2EP7", LocalizedResource = true)]
 		Freetime = 0x0d,
-		[DisplayName("Sims 2 Kitchen & Bath Interior Design Stuff")]
+		[DisplayName("Sims2SP6", LocalizedResource = true)]
 		KitchenBath = 0x0e,
-		[DisplayName("Sims 2 IKEA Home Stuff")]
+		[DisplayName("Sims2SP7", LocalizedResource = true)]
 		IkeaHome = 0x0f,
-		[DisplayName("Sims 2 Apartment Life")]
+		[DisplayName("Sims2EP8", LocalizedResource = true)]
 		ApartmentLife = 0x10,
-		[DisplayName("Sims 2 Mansion & Garden Stuff")]
+		[DisplayName("Sims2SP9", LocalizedResource = true)]
 		MansionGarden = 0x11,
-		[DisplayName("Sims 2 Store Edition")]
+		[DisplayName("Sims2Store", LocalizedResource = true)]
 		StoreEdition = 0x1f,
 	}
 }

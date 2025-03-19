@@ -6,11 +6,11 @@ namespace SimPe.Models.PackedFile.Ltxt
 {
 	public enum LtxtMajorVersion : ushort
 	{
-		[DisplayName("Sims 2")]
+		[DisplayName("Sims2", LocalizedResource = true)]
 		Original = 0x000D,
-		[DisplayName("Sims 2 Open for Business")]
+		[DisplayName("Sims2EP3", LocalizedResource = true)]
 		Business = 0x000E,
-		[DisplayName("Sims 2 Apartment Life")]
+		[DisplayName("Sims2EP8", LocalizedResource = true)]
 		Apartment = 0x0012,
 	}
 }

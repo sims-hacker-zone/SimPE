@@ -11,17 +11,17 @@ namespace SimPe.Data
 	{
 		[DisplayName("Unknown")]
 		Unknown = 0x00,
-		[DisplayName("Sims 2")]
+		[DisplayName("Sims2", LocalizedResource = true)]
 		Sims2 = 0x03,
-		[DisplayName("Sims 2 University")]
+		[DisplayName("Sims2EP1", LocalizedResource = true)]
 		Sims2_University = 0x05,
-		[DisplayName("Sims 2 Nightlife")]
+		[DisplayName("Sims2EP2", LocalizedResource = true)]
 		Sims2_Nightlife = 0x07,
-		[DisplayName("Sims 2 Open for Business")]
+		[DisplayName("Sims2EP3", LocalizedResource = true)]
 		Sims2_Business = 0x08,
-		[DisplayName("Sims 2 Pets")]
+		[DisplayName("Sims2EP4", LocalizedResource = true)]
 		Sims2_Pets = 0x09,
-		[DisplayName("Sims 2 Seasons")]
+		[DisplayName("Sims2EP5", LocalizedResource = true)]
 		Sims2_Seasons = 0x0A,
 	}
 }

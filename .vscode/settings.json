@@ -5,11 +5,18 @@
   "editor.formatOnSave": true,
   "editor.formatOnType": true,
   "files.associations": {
-    ".globalconfig": "editorconfig"
+    ".globalconfig": "editorconfig",
+    ".resx": "xml"
   },
   "githubPullRequests.remotes": [
     "origin"
   ],
   "githubPullRequests.showPullRequestNumberInTree": true,
-  "githubPullRequests.upstreamRemote": "never"
+  "githubPullRequests.upstreamRemote": "never",
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "*.resx": "$(capture).*.resx, $(capture).Designer.cs, $(capture).Designer.vb",
+    "*.axaml": "$(capture).axaml.cs, $(capture).axaml.vb",
+    "*.cs": "$(capture).resx"
+  }
 }

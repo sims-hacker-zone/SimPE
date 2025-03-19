@@ -15,5 +15,10 @@ namespace SimPe.Extensions
 		{
 			get; set;
 		} = displayName;
+
+		public bool LocalizedResource
+		{
+			get; set;
+		}
 	}
 }

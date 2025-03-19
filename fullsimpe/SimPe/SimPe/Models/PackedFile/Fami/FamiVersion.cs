@@ -6,17 +6,17 @@ namespace SimPe.Models.PackedFile.Fami
 {
 	public enum FamiVersion : int
 	{
-		[DisplayName("Sims 2")]
+		[DisplayName("Sims2", LocalizedResource = true)]
 		BaseGame = 78,
-		[DisplayName("Sims 2 University")]
+		[DisplayName("Sims2EP1", LocalizedResource = true)]
 		University = 79,
-		[DisplayName("Sims 2 Open for Business")]
+		[DisplayName("Sims2EP3", LocalizedResource = true)]
 		Business = 81,
-		[DisplayName("Sims 2 Pets")]
+		[DisplayName("Sims2EP4", LocalizedResource = true)]
 		Pets = 84,
-		[DisplayName("Sims 2 Bon Voyage")]
+		[DisplayName("Sims2EP6", LocalizedResource = true)]
 		Voyage = 85,
-		[DisplayName("Sims Castaway Stories")]
+		[DisplayName("SimsCS", LocalizedResource = true)]
 		CastawayStories = 86,
 	}
 }

@@ -37,6 +37,14 @@
     <EmbeddedResource Include="SimPe\docs\*" />
     <EmbeddedResource Include="SimPe\files\*" />
     <EmbeddedResource Include="SimPe\img\*" />
+    <EmbeddedResource Update="SimPe\Resources.resx">
+      <Generator>MSBuild:Compile</Generator>
+      <PublicClass>true</PublicClass>
+      <StronglyTypedFileName>SimPe\Resources.Designer.cs</StronglyTypedFileName>
+      <StronglyTypedLanguage>CSharp</StronglyTypedLanguage>
+      <StronglyTypedNamespace>SimPe</StronglyTypedNamespace>
+      <StronglyTypedClassName>Resources</StronglyTypedClassName>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <CompilerVisibleProperty Include="RootNamespace" />
