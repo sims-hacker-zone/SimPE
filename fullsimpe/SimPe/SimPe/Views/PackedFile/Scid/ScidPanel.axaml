@@ -1,0 +1,46 @@
+<UserControl
+    x:Class="SimPe.Views.PackedFile.Scid.ScidPanel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ext="using:SimPe.Extensions"
+    xmlns:m="using:SimPe.Models"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:SimPe.ViewModels"
+    x:DataType="m:PackedFile.Scid.Scid">
+    <UserControl.Styles>
+        <Style Selector=".rootpanel &gt; StackPanel">
+            <Setter Property="Margin" Value="5,5" />
+        </Style>
+        <Style Selector=".rootpanel &gt; StackPanel &gt; Label">
+            <Setter Property="Margin" Value="0,0,5,0" />
+        </Style>
+    </UserControl.Styles>
+    <UserControl.Resources>
+        <ext:HexConverter x:Key="HexConverter" />
+    </UserControl.Resources>
+    <DockPanel>
+        <TextBlock
+            Margin="5,5"
+            Padding="5,5"
+            HorizontalAlignment="Stretch"
+            Background="DarkBlue"
+            DockPanel.Dock="Top">
+            Sim Creation Index Wrapper
+        </TextBlock>
+        <WrapPanel Classes="rootpanel" Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <Label VerticalAlignment="Center">Unknown 0:</Label>
+                <TextBox Text="{Binding Unknown_00, Converter={StaticResource HexConverter}}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label VerticalAlignment="Center">Unknown 1:</Label>
+                <TextBox Text="{Binding Unknown_01, Converter={StaticResource HexConverter}}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label VerticalAlignment="Center">Sim Creation Index:</Label>
+                <NumericUpDown Increment="1" Value="{Binding SCID}" />
+            </StackPanel>
+        </WrapPanel>
+    </DockPanel>
+</UserControl>

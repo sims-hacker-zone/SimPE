@@ -15,6 +15,7 @@ using SimPe.Models.PackedFile.Fwav;
 using SimPe.Models.PackedFile.Idno;
 using SimPe.Models.PackedFile.Ltxt;
 using SimPe.Models.PackedFile.Picture;
+using SimPe.Models.PackedFile.Scid;
 using SimPe.Models.PackedFile.Str;
 using SimPe.Models.PackedFile.Ttab;
 
@@ -58,7 +59,8 @@ namespace SimPe.Data
 			[FileTypes.COLL] = Cpf.Unserialize,
 			[FileTypes.AGED] = Cpf.Unserialize,
 			[FileTypes.LTXT] = Ltxt.Unserialize,
-			[FileTypes.FAMI] = Fami.Unserialize
+			[FileTypes.FAMI] = Fami.Unserialize,
+			[FileTypes.SCID] = Scid.Unserialize
 		};
 	}
 }

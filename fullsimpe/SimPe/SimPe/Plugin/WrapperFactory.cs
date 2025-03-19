@@ -44,7 +44,6 @@ using SimPe.PackedFiles.Pepv;
 using SimPe.PackedFiles.Picture;
 using SimPe.PackedFiles.Pops;
 using SimPe.PackedFiles.Rtex;
-using SimPe.PackedFiles.Scid;
 using SimPe.PackedFiles.Scor;
 using SimPe.PackedFiles.Sdna;
 using SimPe.PackedFiles.Sdsc;
@@ -225,7 +224,6 @@ namespace SimPe.Plugin
 						new LastEPusePackedFileWrapper(),
 						new Ginv(),
 						new XGoal(),
-						new Scid(),
 						new Fcns(),
 						new SimpleTextPackedFileWrapper(),
 						new SimListPackedFileWrapper(),
