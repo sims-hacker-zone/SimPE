@@ -24,7 +24,7 @@
     </Window.Styles>
     <DockPanel>
         <Menu DockPanel.Dock="Top">
-            <MenuItem Header="File">
+            <MenuItem Header="_File">
                 <!-- <MenuItem Header="New" /> -->
                 <MenuItem Click="BtnOpen_Click" Header="Open..." />
                 <MenuItem
@@ -56,7 +56,10 @@
                 </MenuItem>
                 <MenuItem Header="Exit" />
             </MenuItem>
-            <MenuItem Header="Extras">
+            <MenuItem Header="_Tools">
+                <MenuItem Click="NeighborhoodBrowserOpen_Click" Header="Neighborhood Browser..." />
+            </MenuItem>
+            <MenuItem Header="_Extras">
                 <MenuItem Click="SettingsMenuItem_Click" Header="Settings" />
             </MenuItem>
         </Menu>
@@ -67,6 +70,11 @@
                         Name="ResourceTreeView"
                         Background="#333333"
                         ItemsSource="{Binding ResourceTree}">
+                        <TreeView.Styles>
+                            <Style x:DataType="vm:ResourceTree.ResourceTreeViewModel" Selector="TreeViewItem">
+                                <Setter Property="IsExpanded" Value="True" />
+                            </Style>
+                        </TreeView.Styles>
                         <TreeView.DataTemplates>
                             <TreeDataTemplate DataType="vm:ResourceTree.ResourceTreeViewModel" ItemsSource="{Binding Nodes}">
                                 <TextBlock Text="{Binding Caption}" ToolTip.Tip="{Binding Caption}" />

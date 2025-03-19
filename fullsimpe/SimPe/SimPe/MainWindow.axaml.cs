@@ -18,6 +18,7 @@ using SimPe.Models.Configuration;
 using SimPe.Models.Package;
 using SimPe.Models.PackedFile;
 using SimPe.ViewModels;
+using SimPe.ViewModels.NeighborhoodBrowser;
 using SimPe.Views.Tabs;
 using SimPe.Views.Windows;
 
@@ -97,11 +98,19 @@ namespace SimPe
 			});
 			if (filelist.Any())
 			{
-				string path = Uri.UnescapeDataString(filelist[0].Path.AbsolutePath);
-				(DataContext as MainWindowViewModel).Configuration.RecentFiles.Insert(0, path);
+				PackageFile openfile = (DataContext as MainWindowViewModel).LoadedPackages.FirstOrDefault(x => x.StorageFile.Path == filelist[0].Path);
+				if (openfile != null)
+				{
+					(DataContext as MainWindowViewModel).LoadedPackage = openfile;
+				}
+				else
+				{
+					PackageFile file = await PackageFile.Open(filelist[0]);
+					(DataContext as MainWindowViewModel).LoadedPackages.Add(file);
+					(DataContext as MainWindowViewModel).LoadedPackage = file;
+				}
+				(DataContext as MainWindowViewModel).Configuration.RecentFiles.Insert(0, Uri.UnescapeDataString(filelist[0].Path.AbsolutePath));
 				(DataContext as MainWindowViewModel).Configuration.RecentFiles = new((DataContext as MainWindowViewModel).Configuration.RecentFiles.Take(15));
-				(DataContext as MainWindowViewModel).LoadedPackage = await PackageFile.Open(filelist[0]);
-				Title = $"SimPe - {path}";
 				await (DataContext as MainWindowViewModel).Configuration.Save();
 			}
 		}
@@ -160,6 +169,18 @@ namespace SimPe
 		{
 			SettingsWindow w = new((DataContext as MainWindowViewModel).Configuration);
 			w.Show(this);
+		}
+
+		internal async void NeighborhoodBrowserOpen_Click(object sender, RoutedEventArgs e)
+		{
+			NeighborhoodViewModel model = await new NeighborhoodBrowser()
+			{
+				DataContext = DataContext as MainWindowViewModel
+			}.ShowDialog<NeighborhoodViewModel>(this);
+			if (model != null)
+			{
+				(DataContext as MainWindowViewModel).LoadedPackage = model.PackageFile;
+			}
 		}
 	}
 }
