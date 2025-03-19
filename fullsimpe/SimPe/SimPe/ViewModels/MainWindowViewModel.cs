@@ -1,14 +1,12 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 
-using SimPe.Models;
 using SimPe.Models.Configuration;
 using SimPe.Models.Package;
 using SimPe.ViewModels.ResourceTree;
@@ -23,6 +21,11 @@ namespace SimPe.ViewModels
 			get; set;
 		}
 		public IReadOnlyList<MenuItemViewModel> MenuItems
+		{
+			get; set;
+		} = [];
+
+		public ObservableCollection<MenuItemViewModel> OpenInMenuItems
 		{
 			get; set;
 		} = [];

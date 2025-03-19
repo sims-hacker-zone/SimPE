@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 using System;
+using System.IO;
 using System.Linq;
 using System.Reactive.Linq;
 
@@ -11,7 +12,9 @@ using Avalonia.Data;
 using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
 
-using SimPe.Models;
+using SimPe.Data;
+using SimPe.Extensions;
+using SimPe.Models.Configuration;
 using SimPe.Models.Package;
 using SimPe.Models.PackedFile;
 using SimPe.ViewModels;
@@ -106,6 +109,36 @@ namespace SimPe
 		internal async void Window_Loaded(object sender, RoutedEventArgs e)
 		{
 			await (DataContext as MainWindowViewModel).LoadConfiguration();
+			foreach (EnumDisplayNameItem<PackageFolders> item in new EnumDisplayNameItem<PackageFolders>(PackageFolders.BaseGame).Values)
+			{
+				bool enabled = false;
+				IStorageFolder folder;
+				InstalledExpansionConfig installfolder = (DataContext as MainWindowViewModel).Configuration.ExpansionInstallPaths.FirstOrDefault(x => x.Item == item);
+				if (installfolder != null)
+				{
+					folder = item.Item >= PackageFolders.SaveGameSims2
+						? await StorageProvider.TryGetFolderFromPathAsync(installfolder.Path)
+						: await StorageProvider.TryGetFolderFromPathAsync(Path.Combine(installfolder.Path, "TSData", "Res"));
+					if (folder != null)
+					{
+						enabled = true;
+						(DataContext as MainWindowViewModel).OpenInMenuItems.Add(new MenuItemViewModel(DataContext as MainWindowViewModel)
+						{
+							Header = $"{item.Str}{(item.Item < PackageFolders.SaveGameSims2 ? ": TSData/Res" : "")}...",
+							CommandParameter = Uri.UnescapeDataString(folder.Path.AbsolutePath),
+							Enabled = true
+						});
+					}
+				}
+				if (!enabled)
+				{
+					(DataContext as MainWindowViewModel).OpenInMenuItems.Add(new MenuItemViewModel(DataContext as MainWindowViewModel)
+					{
+						Header = $"{item.Str}{(item.Item < PackageFolders.SaveGameSims2 ? ": TSData/Res" : "")}...",
+						Enabled = false
+					});
+				}
+			}
 		}
 
 		internal void BtnChunk_Click(object sender, RoutedEventArgs e)
