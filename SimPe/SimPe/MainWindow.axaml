@@ -1,0 +1,126 @@
+<Window
+    x:Class="SimPe.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:v="using:SimPe.Views"
+    xmlns:vm="using:SimPe.ViewModels"
+    Title="SimPe"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    x:DataType="vm:MainWindowViewModel"
+    Closing="Window_Closing"
+    Loaded="Window_Loaded"
+    mc:Ignorable="d">
+    <Window.Styles>
+        <Style Selector="TabItem &gt; TextBlock">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="MaxHeight" Value="20" />
+            <Setter Property="Margin" Value="0,5,0,0" />
+        </Style>
+        <Style Selector="TextBlock.HasWrapper">
+            <Setter Property="Foreground" Value="LimeGreen" />
+        </Style>
+    </Window.Styles>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <!-- <MenuItem Header="New" /> -->
+                <MenuItem Click="BtnOpen_Click" Header="Open..." />
+                <MenuItem
+                    Classes="SubItems"
+                    Header="Open in..."
+                    ItemsSource="{Binding OpenInMenuItems}">
+                    <MenuItem.Styles>
+                        <Style Selector="MenuItem.SubItems MenuItem">
+                            <Setter Property="Header" Value="{Binding Header}" />
+                            <Setter Property="ItemsSource" Value="{Binding Items}" />
+                            <Setter Property="Command" Value="{Binding OpenIn}" />
+                            <Setter Property="CommandParameter" Value="{Binding CommandParameter}" />
+                            <Setter Property="IsEnabled" Value="{Binding Enabled}" />
+                        </Style>
+                    </MenuItem.Styles>
+                </MenuItem>
+                <MenuItem
+                    Classes="SubItems"
+                    Header="Recent Files"
+                    ItemsSource="{Binding RecentFilesMenuItems}">
+                    <MenuItem.Styles>
+                        <Style Selector="MenuItem.SubItems MenuItem">
+                            <Setter Property="Header" Value="{Binding Header}" />
+                            <Setter Property="ItemsSource" Value="{Binding Items}" />
+                            <Setter Property="Command" Value="{Binding OpenRecent}" />
+                            <Setter Property="CommandParameter" Value="{Binding CommandParameter}" />
+                        </Style>
+                    </MenuItem.Styles>
+                </MenuItem>
+                <MenuItem Header="Exit" />
+            </MenuItem>
+            <MenuItem Header="_Tools">
+                <MenuItem Click="NeighborhoodBrowserOpen_Click" Header="Neighborhood Browser..." />
+            </MenuItem>
+            <MenuItem Header="_Extras">
+                <MenuItem Click="SettingsMenuItem_Click" Header="Settings" />
+            </MenuItem>
+        </Menu>
+        <Grid RowDefinitions="4*,4,1*">
+            <Grid Grid.Row="0" ColumnDefinitions="1*,4,4*">
+                <ScrollViewer Grid.Column="0">
+                    <TreeView
+                        Name="ResourceTreeView"
+                        Background="#333333"
+                        ItemsSource="{Binding ResourceTree}">
+                        <TreeView.Styles>
+                            <Style x:DataType="vm:ResourceTree.ResourceTreeViewModel" Selector="TreeViewItem">
+                                <Setter Property="IsExpanded" Value="True" />
+                            </Style>
+                        </TreeView.Styles>
+                        <TreeView.DataTemplates>
+                            <TreeDataTemplate DataType="vm:ResourceTree.ResourceTreeViewModel" ItemsSource="{Binding Nodes}">
+                                <TextBlock Text="{Binding Caption}" ToolTip.Tip="{Binding Caption}" />
+                            </TreeDataTemplate>
+                            <DataTemplate DataType="vm:ResourceTree.ResourceTreeTypeViewModel">
+                                <TextBlock
+                                    Button.Click="BtnChunk_Click"
+                                    Classes.HasWrapper="{Binding HasWrapper}"
+                                    Text="{Binding Caption}"
+                                    ToolTip.Tip="{Binding Caption}" />
+                            </DataTemplate>
+                        </TreeView.DataTemplates>
+                    </TreeView>
+                </ScrollViewer>
+                <GridSplitter
+                    Grid.Column="1"
+                    Background="#dddddd"
+                    ResizeDirection="Columns" />
+                <TreeDataGrid
+                    Name="ResourceList"
+                    Grid.Column="2"
+                    CanUserResizeColumns="true"
+                    Source="{Binding #ResourceTreeView.SelectedItem.FileSource}" />
+            </Grid>
+            <GridSplitter
+                Grid.Row="1"
+                Background="#dddddd"
+                ResizeDirection="Rows" />
+            <TabControl
+                Name="InfoTabs"
+                Grid.Row="2"
+                Background="#555555"
+                ItemsSource="{Binding}"
+                TabStripPlacement="Bottom">
+                <TabControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Header}" />
+                    </DataTemplate>
+                </TabControl.ItemTemplate>
+                <TabControl.ContentTemplate>
+                    <DataTemplate DataType="vm:TabItemViewModel">
+                        <ContentControl Content="{Binding Content}" />
+                    </DataTemplate>
+                </TabControl.ContentTemplate>
+            </TabControl>
+        </Grid>
+    </DockPanel>
+</Window>

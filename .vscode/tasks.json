@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/fullsimpe/SimPe/SimPe.csproj",
+                "${workspaceFolder}/SimPe/SimPe.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary;ForceNoAlign"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/fullsimpe/SimPe/SimPe.csproj",
+                "${workspaceFolder}/SimPe/SimPe.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary;ForceNoAlign"
             ],
@@ -33,7 +33,7 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/fullsimpe/SimPe/SimPe.csproj"
+                "${workspaceFolder}/SimPe/SimPe.csproj"
             ],
             "problemMatcher": "$msCompile"
         }

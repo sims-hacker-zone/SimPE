@@ -6,13 +6,6 @@
 __[Dd]ebug/
 __[Rr]elease/
 
-# PJ Repositories
-/pjBodyMeshTool-cvs
-/pjHoodTool-cvs
-/pjOBJDTool-cvs
-/pjObjKeyTool-cvs
-/pjseCoderPlugin-cvs
-
 # =========================
 # Operating System Files
 # =========================
@@ -322,4 +315,4 @@ paket-files/
 .idea/
 *.sln.iml
 
-/fullsimpe/SimPe/SimPe/Resources.Designer.cs
+*.Designer.cs
