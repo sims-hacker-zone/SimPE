@@ -114,7 +114,6 @@ namespace SimPe.Extensions
 					}
 				}
 			}
-
 			throw new NotSupportedException();
 		}
 	}

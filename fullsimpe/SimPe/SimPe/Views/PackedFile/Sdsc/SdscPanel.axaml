@@ -1,0 +1,48 @@
+<UserControl
+    x:Class="SimPe.Views.PackedFile.Sdsc.SdscPanel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ext="using:SimPe.Extensions"
+    xmlns:m="using:SimPe.Models"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:SimPe.ViewModels"
+    x:DataType="m:PackedFile.Sdsc.Sdsc">
+    <UserControl.Styles>
+        <Style Selector=".rootpanel &gt; DockPanel">
+            <Setter Property="Margin" Value="5,5" />
+        </Style>
+        <Style Selector=".rootpanel &gt; DockPanel &gt; Label">
+            <Setter Property="Margin" Value="0,0,5,0" />
+        </Style>
+    </UserControl.Styles>
+    <UserControl.Resources>
+        <ext:HexConverter x:Key="HexConverter" />
+    </UserControl.Resources>
+    <DockPanel>
+        <TextBlock
+            Margin="5,5"
+            Padding="5,5"
+            HorizontalAlignment="Stretch"
+            Background="DarkBlue"
+            DockPanel.Dock="Top">
+            Sim Description Wrapper
+        </TextBlock>
+        <DockPanel Classes="rootpanel">
+            <StackPanel DockPanel.Dock="Left">
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Version:</Label>
+                    <ComboBox ItemsSource="{Binding Version.Values, Mode=OneTime}" SelectedItem="{Binding Version}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Sim Instance:</Label>
+                    <TextBox Text="{Binding SimInstance, Converter={StaticResource HexConverter}}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Sim GUID:</Label>
+                    <TextBox Text="{Binding SimGUID, Converter={StaticResource HexConverter}}" />
+                </DockPanel>
+            </StackPanel>
+        </DockPanel>
+    </DockPanel>
+</UserControl>

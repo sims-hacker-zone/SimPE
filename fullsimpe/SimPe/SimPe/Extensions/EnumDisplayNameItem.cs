@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,6 +10,7 @@ namespace SimPe.Extensions
 {
 	public record EnumDisplayNameItem<T> : IComparable<T> where T : struct, Enum
 	{
+		private static readonly Hashtable valueCache = [];
 		public T Item
 		{
 			get;
@@ -71,13 +73,9 @@ namespace SimPe.Extensions
 			return a.Item.CompareTo(b) < 0;
 		}
 
-		public IEnumerable<EnumDisplayNameItem<T>> Values => from item in Enum.GetValues<T>()
-															 select new EnumDisplayNameItem<T> { Item = item };
-
-		public static IEnumerable<EnumDisplayNameItem<T>> GetValues()
-		{
-			return from item in Enum.GetValues<T>()
-				   select new EnumDisplayNameItem<T> { Item = item };
-		}
+		public IEnumerable<EnumDisplayNameItem<T>> Values => valueCache.ContainsKey(typeof(T))
+					? (IEnumerable<EnumDisplayNameItem<T>>)valueCache[typeof(T)]
+					: (IEnumerable<EnumDisplayNameItem<T>>)(valueCache[typeof(T)] = from item in Enum.GetValues<T>()
+																					select new EnumDisplayNameItem<T> { Item = item });
 	}
 }

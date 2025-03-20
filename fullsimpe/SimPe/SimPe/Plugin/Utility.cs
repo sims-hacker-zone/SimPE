@@ -31,17 +31,6 @@ namespace SimPe.Plugin
 			return @value == null || @value.Length == 0;
 		}
 
-		public static bool EnumTest(Enum compositeValue, Enum discreteValue)
-		{
-			uint c = Convert.ToUInt32(compositeValue);
-			uint d = Convert.ToUInt32(discreteValue);
-			return d == 0 ? c == 0 : (c & d) == d;
-		}
-
-		public static bool EnumCheck(Enum compValue, Enum disValue)
-		{
-			return Convert.ToUInt32(compValue) == Convert.ToUInt32(disValue);
-		}
 
 		/// <summary>
 		/// Finds file descriptors of a given type, group or instance in a given package.
