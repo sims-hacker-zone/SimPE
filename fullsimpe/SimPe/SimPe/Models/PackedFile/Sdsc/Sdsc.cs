@@ -53,6 +53,7 @@ namespace SimPe.Models.PackedFile.Sdsc
 		public bool IsVoyageOrLater => Version >= SdscVersion.Voyage;
 		public bool IsFreetimeOrLater => Version >= SdscVersion.Freetime;
 		public bool IsApartmentOrLater => Version >= SdscVersion.Apartment;
+
 		[ObservableProperty]
 		private ushort sitting;
 
@@ -195,7 +196,7 @@ namespace SimPe.Models.PackedFile.Sdsc
 		private ushort isSwimming;
 
 		[ObservableProperty]
-		private ushort gender;
+		private EnumDisplayNameItem<SdscGender> gender;
 
 		[ObservableProperty]
 		private ushort @private;
@@ -632,7 +633,7 @@ namespace SimPe.Models.PackedFile.Sdsc
 			sdsc.RouteResult = reader.ReadUInt16();
 			sdsc.JobPerformance = reader.ReadUInt16();
 			sdsc.IsSwimming = reader.ReadUInt16();
-			sdsc.Gender = reader.ReadUInt16();
+			sdsc.Gender = new((SdscGender)reader.ReadUInt16());
 			sdsc.Private = reader.ReadUInt16();
 			sdsc.LingeringHouseInstance = reader.ReadUInt16();
 			sdsc.GhostFlags = reader.ReadUInt16();
