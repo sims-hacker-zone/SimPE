@@ -1,0 +1,101 @@
+<UserControl
+    x:Class="SimPe.Views.PackedFile.Srel.SrelPanel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ext="using:SimPe.Extensions"
+    xmlns:m="using:SimPe.Models"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:SimPe.ViewModels"
+    x:DataType="m:PackedFile.Srel.Srel">
+    <UserControl.Styles>
+        <Style Selector=".rootpanel DockPanel">
+            <Setter Property="Margin" Value="5,5" />
+        </Style>
+        <Style Selector=".rootpanel DockPanel &gt; Label">
+            <Setter Property="Margin" Value="0,0,5,0" />
+        </Style>
+        <Style Selector=".rootpanel WrapPanel DockPanel">
+            <Setter Property="MinWidth" Value="250" />
+        </Style>
+    </UserControl.Styles>
+    <UserControl.Resources>
+        <ext:HexConverter x:Key="HexConverter" />
+        <GridLength x:Key="SliderPreContentMargin">5</GridLength>
+        <GridLength x:Key="SliderPostContentMargin">5</GridLength>
+        <ext:EnumToCheckedConverter
+            x:Key="RelationshipFlagsConverter"
+            Flags="True"
+            Type="{x:Type m:PackedFile.Srel.SrelRelationshipFlags}" />
+    </UserControl.Resources>
+    <DockPanel>
+        <TextBlock
+            Margin="5,5"
+            Padding="5,5"
+            HorizontalAlignment="Stretch"
+            Background="DarkBlue"
+            DockPanel.Dock="Top">
+            Sim Relation Wrapper
+        </TextBlock>
+        <DockPanel Classes="rootpanel">
+            <StackPanel DockPanel.Dock="Left">
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Format:</Label>
+                    <TextBox Text="{Binding Format, Converter={StaticResource HexConverter}}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Source Sim:</Label>
+                    <TextBox Text="{Binding SourceSimInstance, Converter={StaticResource HexConverter}}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Target Sim:</Label>
+                    <TextBox Text="{Binding TargetSimInstance, Converter={StaticResource HexConverter}}" />
+                </DockPanel>
+            </StackPanel>
+            <WrapPanel HorizontalAlignment="Stretch" Orientation="Vertical">
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Daily Score:</Label>
+                    <Label
+                        VerticalAlignment="Center"
+                        Content="{Binding DailyScore}"
+                        DockPanel.Dock="Right" />
+                    <Slider
+                        Maximum="100"
+                        Minimum="-100"
+                        Value="{Binding DailyScore}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Lifetime Score:</Label>
+                    <Label
+                        VerticalAlignment="Center"
+                        Content="{Binding LifetimeScore}"
+                        DockPanel.Dock="Right" />
+                    <Slider
+                        Maximum="100"
+                        Minimum="-100"
+                        Value="{Binding LifetimeScore}" />
+                </DockPanel>
+                <DockPanel>
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        DockPanel.Dock="Top"
+                        FontSize="16">
+                        Relationship Flags
+                    </TextBlock>
+                    <ListBox>
+                        <CheckBox Content="Crush" IsChecked="{Binding RelationshipFlags, Converter={StaticResource RelationshipFlagsConverter}, ConverterParameter=Crush}" />
+                        <CheckBox Content="Love" IsChecked="{Binding RelationshipFlags, Converter={StaticResource RelationshipFlagsConverter}, ConverterParameter=Love}" />
+                        <CheckBox Content="Engaged" IsChecked="{Binding RelationshipFlags, Converter={StaticResource RelationshipFlagsConverter}, ConverterParameter=Engaged}" />
+                        <CheckBox Content="Married" IsChecked="{Binding RelationshipFlags, Converter={StaticResource RelationshipFlagsConverter}, ConverterParameter=Married}" />
+                        <CheckBox Content="Friend" IsChecked="{Binding RelationshipFlags, Converter={StaticResource RelationshipFlagsConverter}, ConverterParameter=Friend}" />
+                        <CheckBox Content="BestFriend" IsChecked="{Binding RelationshipFlags, Converter={StaticResource RelationshipFlagsConverter}, ConverterParameter=BestFriend}" />
+                        <CheckBox Content="Going Steady" IsChecked="{Binding RelationshipFlags, Converter={StaticResource RelationshipFlagsConverter}, ConverterParameter=GoingSteady}" />
+                        <CheckBox Content="Enemy" IsChecked="{Binding RelationshipFlags, Converter={StaticResource RelationshipFlagsConverter}, ConverterParameter=Enemy}" />
+                        <CheckBox Content="Family" IsChecked="{Binding RelationshipFlags, Converter={StaticResource RelationshipFlagsConverter}, ConverterParameter=Family}" />
+                        <CheckBox Content="Known" IsChecked="{Binding RelationshipFlags, Converter={StaticResource RelationshipFlagsConverter}, ConverterParameter=Known}" />
+                    </ListBox>
+                </DockPanel>
+            </WrapPanel>
+        </DockPanel>
+    </DockPanel>
+</UserControl>

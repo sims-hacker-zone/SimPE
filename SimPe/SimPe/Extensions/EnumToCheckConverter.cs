@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: © SimPE contributors
+// SPDX-License-Identifier: GPL-2.0-or-later
+
 using System;
 using System.Globalization;
 
@@ -12,7 +15,7 @@ namespace SimPe.Extensions
 		{
 			get; set;
 		}
-		public int? LastValue
+		public uint? LastValue
 		{
 			get; private set;
 		}
@@ -31,8 +34,8 @@ namespace SimPe.Extensions
 
 					if (Flags)
 					{
-						int intParameter = (int)parameterValue;
-						int intValue = (int)value;
+						uint intParameter = (uint)parameterValue;
+						uint intValue = (uint)value;
 						LastValue = intValue;
 
 						return (intValue & intParameter) == intParameter;
@@ -70,7 +73,7 @@ namespace SimPe.Extensions
 						if (Flags && LastValue.HasValue)
 						{
 							object parameterValue = Enum.Parse(Type, parameter as string);
-							int intParameter = (int)parameterValue;
+							uint intParameter = (uint)parameterValue;
 
 							return Enum.ToObject(Type, LastValue | intParameter);
 						}
@@ -95,7 +98,7 @@ namespace SimPe.Extensions
 						if (Flags && LastValue.HasValue)
 						{
 							object parameterValue = Enum.Parse(Type, parameter as string);
-							int intParameter = (int)parameterValue;
+							uint intParameter = (uint)parameterValue;
 
 							return Enum.ToObject(Type, LastValue ^ intParameter);
 						}

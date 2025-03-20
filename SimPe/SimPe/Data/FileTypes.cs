@@ -728,5 +728,10 @@ namespace SimPe.Data
 		/// </summary>
 		[FileType(DisplayName = "Awning Thumbnail", Extension = "jpg")]
 		THUMB_AWN = 0xF03D464C,
+		/// <summary>
+		/// Neighborhood View
+		/// </summary>
+		[FileType(DisplayName = "Neighborhood View", ContainsFileName = true)]
+		NHVW = 0xEC44BDDC,
 	}
 }
