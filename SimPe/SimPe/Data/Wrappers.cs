@@ -18,6 +18,7 @@ using SimPe.Models.PackedFile.Picture;
 using SimPe.Models.PackedFile.Scid;
 using SimPe.Models.PackedFile.Sdsc;
 using SimPe.Models.PackedFile.Str;
+using SimPe.Models.PackedFile.ThreeIdr;
 using SimPe.Models.PackedFile.Ttab;
 
 namespace SimPe.Data
@@ -62,7 +63,8 @@ namespace SimPe.Data
 			[FileTypes.LTXT] = Ltxt.Unserialize,
 			[FileTypes.FAMI] = Fami.Unserialize,
 			[FileTypes.SCID] = Scid.Unserialize,
-			[FileTypes.SDSC] = Sdsc.Unserialize
+			[FileTypes.SDSC] = Sdsc.Unserialize,
+			[FileTypes.THREE_IDR] = ThreeIdr.Unserialize
 		};
 	}
 }
