@@ -76,6 +76,9 @@ namespace SimPe.Models.PackedFile.Sdsc
 		private ushort groupTalkStateFlags;
 
 		[ObservableProperty]
+		private ushort bodyTemp;
+
+		[ObservableProperty]
 		private ushort currentInteractionIndex;
 
 		[ObservableProperty]
@@ -282,6 +285,9 @@ namespace SimPe.Models.PackedFile.Sdsc
 		private short decaySocial;
 
 		[ObservableProperty]
+		private ushort decayShopping;
+
+		[ObservableProperty]
 		private short decayFun;
 
 		[ObservableProperty]
@@ -291,13 +297,13 @@ namespace SimPe.Models.PackedFile.Sdsc
 		private ushort currentRunningInteractionObjectID;
 
 		[ObservableProperty]
-		private ushort genetics1;
+		private ushort motivePower;
 
 		[ObservableProperty]
-		private ushort genetics2;
+		private ushort workOutfitID;
 
 		[ObservableProperty]
-		private ushort genetics3;
+		private ushort decayScratchChew;
 
 		[ObservableProperty]
 		private uint schoolGUID;
@@ -309,7 +315,7 @@ namespace SimPe.Models.PackedFile.Sdsc
 		private ushort interactionsLinkedDeleted;
 
 		[ObservableProperty]
-		private ushort romanceSkill;
+		private ushort sunshineMotive;
 
 		[ObservableProperty]
 		private ushort locoWeight0;
@@ -405,10 +411,13 @@ namespace SimPe.Models.PackedFile.Sdsc
 		private ushort semester;
 
 		[ObservableProperty]
-		private ushort onCampus;
+		private ushort youngAdult;
 
 		[ObservableProperty]
-		private uint unknown_01;
+		private ushort influenceBarLevel;
+
+		[ObservableProperty]
+		private ushort influenceMinimum;
 
 		[ObservableProperty]
 		private ushort influence;
@@ -438,10 +447,10 @@ namespace SimPe.Models.PackedFile.Sdsc
 		private ushort species;
 
 		[ObservableProperty]
-		private ushort countdown;
+		private ushort countdownTimerID;
 
 		[ObservableProperty]
-		private ushort perfumeTimer;
+		private ushort perfumeDuration;
 
 		[ObservableProperty]
 		private ushort dateTimer;
@@ -450,16 +459,16 @@ namespace SimPe.Models.PackedFile.Sdsc
 		private ushort dateScore;
 
 		[ObservableProperty]
-		private ushort dateUnlockCounter;
+		private ushort dateUnlockCount;
 
 		[ObservableProperty]
-		private ushort lovePotionTimer;
+		private ushort lovePotionDuration;
 
 		[ObservableProperty]
 		private ushort aspirationScoreLock;
 
 		[ObservableProperty]
-		private ushort dateUnlockCounter2;
+		private ushort dateNeighborID;
 
 		[ObservableProperty]
 		private ushort lotID;
@@ -588,7 +597,7 @@ namespace SimPe.Models.PackedFile.Sdsc
 			sdsc.Skills.Body = reader.ReadUInt16();
 			sdsc.Skills.Logic = reader.ReadUInt16();
 			sdsc.GroupTalkStateFlags = reader.ReadUInt16();
-			reader.ReadUInt16();
+			sdsc.BodyTemp = reader.ReadUInt16();
 			sdsc.CurrentInteractionIndex = reader.ReadUInt16();
 			sdsc.MalePreference = reader.ReadInt16();
 			sdsc.FemalePreference = reader.ReadInt16();
@@ -668,13 +677,13 @@ namespace SimPe.Models.PackedFile.Sdsc
 			sdsc.DecayFun = reader.ReadInt16();
 			sdsc.CurrentRunningInteractionIndex = reader.ReadUInt16();
 			sdsc.CurrentRunningInteractionObjectID = reader.ReadUInt16();
-			sdsc.Genetics1 = reader.ReadUInt16();
-			sdsc.Genetics2 = reader.ReadUInt16();
-			sdsc.Genetics3 = reader.ReadUInt16();
+			sdsc.MotivePower = reader.ReadUInt16();
+			sdsc.WorkOutfitID = reader.ReadUInt16();
+			sdsc.DecayScratchChew = reader.ReadUInt16();
 			sdsc.SchoolGUID = reader.ReadUInt32();
 			sdsc.CurrentInteractionGUID = reader.ReadUInt16();
 			sdsc.InteractionsLinkedDeleted = reader.ReadUInt16();
-			sdsc.RomanceSkill = reader.ReadUInt16();
+			sdsc.SunshineMotive = reader.ReadUInt16();
 			sdsc.LocoWeight0 = reader.ReadUInt16();
 			sdsc.LocoWeight1 = reader.ReadUInt16();
 			sdsc.LocoPersonalityIndex = reader.ReadUInt16();
@@ -737,8 +746,9 @@ namespace SimPe.Models.PackedFile.Sdsc
 				sdsc.RemainingTimeInSemester = reader.ReadUInt16();
 				sdsc.UniFlags = reader.ReadUInt16();
 				sdsc.Semester = reader.ReadUInt16();
-				sdsc.OnCampus = reader.ReadUInt16();
-				sdsc.Unknown_01 = reader.ReadUInt32();
+				sdsc.YoungAdult = reader.ReadUInt16();
+				sdsc.InfluenceBarLevel = reader.ReadUInt16();
+				sdsc.InfluenceMinimum = reader.ReadUInt16();
 				sdsc.Influence = reader.ReadUInt16();
 			}
 			if (sdsc.IsNightlifeOrLater)
@@ -751,14 +761,14 @@ namespace SimPe.Models.PackedFile.Sdsc
 				sdsc.TurnOffs1 = reader.ReadUInt16();
 				sdsc.TurnOffs2 = reader.ReadUInt16();
 				sdsc.Species = reader.ReadUInt16();
-				sdsc.Countdown = reader.ReadUInt16();
-				sdsc.PerfumeTimer = reader.ReadUInt16();
+				sdsc.CountdownTimerID = reader.ReadUInt16();
+				sdsc.PerfumeDuration = reader.ReadUInt16();
 				sdsc.DateTimer = reader.ReadUInt16();
 				sdsc.DateScore = reader.ReadUInt16();
-				sdsc.DateUnlockCounter = reader.ReadUInt16();
-				sdsc.LovePotionTimer = reader.ReadUInt16();
+				sdsc.DateUnlockCount = reader.ReadUInt16();
+				sdsc.LovePotionDuration = reader.ReadUInt16();
 				sdsc.AspirationScoreLock = reader.ReadUInt16();
-				sdsc.DateUnlockCounter2 = reader.ReadUInt16();
+				sdsc.DateNeighborID = reader.ReadUInt16();
 			}
 			if (sdsc.IsBusinessOrLater)
 			{

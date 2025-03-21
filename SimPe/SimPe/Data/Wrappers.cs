@@ -19,6 +19,7 @@ using SimPe.Models.PackedFile.Scid;
 using SimPe.Models.PackedFile.Sdsc;
 using SimPe.Models.PackedFile.Srel;
 using SimPe.Models.PackedFile.Str;
+using SimPe.Models.PackedFile.Swaf;
 using SimPe.Models.PackedFile.ThreeIdr;
 using SimPe.Models.PackedFile.Ttab;
 
@@ -66,7 +67,8 @@ namespace SimPe.Data
 			[FileTypes.SCID] = Scid.Unserialize,
 			[FileTypes.SDSC] = Sdsc.Unserialize,
 			[FileTypes.THREE_IDR] = ThreeIdr.Unserialize,
-			[FileTypes.SREL] = Srel.Unserialize
+			[FileTypes.SREL] = Srel.Unserialize,
+			[FileTypes.SWAF] = Swaf.Unserialize
 		};
 	}
 }

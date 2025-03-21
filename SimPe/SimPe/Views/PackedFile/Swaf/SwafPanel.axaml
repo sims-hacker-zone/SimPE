@@ -1,0 +1,228 @@
+<UserControl
+    x:Class="SimPe.Views.PackedFile.Swaf.SwafPanel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ext="using:SimPe.Extensions"
+    xmlns:m="using:SimPe.Models"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:SimPe.ViewModels"
+    x:DataType="m:PackedFile.Swaf.Swaf">
+    <UserControl.Styles>
+        <Style Selector=".rootpanel DockPanel">
+            <Setter Property="Margin" Value="5,5" />
+        </Style>
+        <Style Selector=".rootpanel DockPanel &gt; Label">
+            <Setter Property="Margin" Value="0,0,5,0" />
+        </Style>
+        <Style Selector=".rootpanel WrapPanel DockPanel">
+            <Setter Property="MinWidth" Value="250" />
+        </Style>
+    </UserControl.Styles>
+    <UserControl.Resources>
+        <ext:HexConverter x:Key="HexConverter" />
+        <GridLength x:Key="SliderPreContentMargin">5</GridLength>
+        <GridLength x:Key="SliderPostContentMargin">5</GridLength>
+        <!-- <ext:EnumToCheckedConverter
+            x:Key="RelationshipFlagsConverter"
+            Flags="True"
+            Type="{x:Type m:PackedFile.Srel.SrelRelationshipFlags}" />-->
+    </UserControl.Resources>
+    <DockPanel>
+        <TextBlock
+            Margin="5,5"
+            Padding="5,5"
+            HorizontalAlignment="Stretch"
+            Background="DarkBlue"
+            DockPanel.Dock="Top">
+            Sim Wants and Fears Wrapper
+        </TextBlock>
+        <DockPanel Classes="rootpanel">
+            <StackPanel DockPanel.Dock="Left">
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Version:</Label>
+                    <ComboBox ItemsSource="{Binding Version.Values, Mode=OneTime}" SelectedItem="{Binding Version}" />
+                </DockPanel>
+            </StackPanel>
+            <TabControl>
+                <TabItem Header="Lifetime Wants" IsVisible="{Binding IsVersion5OrLater}">
+                    <Grid ColumnDefinitions="*,4,*">
+                        <ListBox Name="ltwList" ItemsSource="{Binding LifetimeWants}" />
+                        <GridSplitter Grid.Column="1" />
+                        <StackPanel Grid.Column="2" DataContext="{Binding #ltwList.SelectedItem}">
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Version:</Label>
+                                <ComboBox ItemsSource="{Binding Version.Values, Mode=OneTime}" SelectedItem="{Binding Version}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Sim Instance:</Label>
+                                <TextBox Text="{Binding SimInstance, Converter={StaticResource HexConverter}}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">GUID:</Label>
+                                <TextBox Text="{Binding Guid, Converter={StaticResource HexConverter}}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Value:</Label>
+                                <TextBox Text="{Binding Value, Converter={StaticResource HexConverter}}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Property:</Label>
+                                <TextBox Text="{Binding Property, Converter={StaticResource HexConverter}}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Index:</Label>
+                                <TextBox Text="{Binding Index, Converter={StaticResource HexConverter}}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Score:</Label>
+                                <TextBox Text="{Binding Score}" />
+                            </DockPanel>
+                            <DockPanel IsVisible="{Binding $parent.IsVersion5OrLater}">
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Influence:</Label>
+                                <TextBox Text="{Binding Influence}" />
+                            </DockPanel>
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Wants">
+                    <Grid ColumnDefinitions="*,4,*">
+                        <DockPanel>
+                            <DockPanel DockPanel.Dock="Top">
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Maximum Wants</Label>
+                                <NumericUpDown Increment="1" Value="{Binding MaxWants}" />
+                            </DockPanel>
+                            <ListBox Name="wantList" ItemsSource="{Binding Wants}" />
+                        </DockPanel>
+                        <GridSplitter Grid.Column="1" />
+                        <StackPanel Grid.Column="2" DataContext="{Binding #wantList.SelectedItem}">
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Version:</Label>
+                                <ComboBox ItemsSource="{Binding Version.Values, Mode=OneTime}" SelectedItem="{Binding Version}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Sim Instance:</Label>
+                                <TextBox Text="{Binding SimInstance, Converter={StaticResource HexConverter}}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">GUID:</Label>
+                                <TextBox Text="{Binding Guid, Converter={StaticResource HexConverter}}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Value:</Label>
+                                <TextBox Text="{Binding Value, Converter={StaticResource HexConverter}}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Property:</Label>
+                                <TextBox Text="{Binding Property, Converter={StaticResource HexConverter}}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Index:</Label>
+                                <TextBox Text="{Binding Index, Converter={StaticResource HexConverter}}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Score:</Label>
+                                <TextBox Text="{Binding Score}" />
+                            </DockPanel>
+                            <DockPanel IsVisible="{Binding $parent.IsVersion5OrLater}">
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Influence:</Label>
+                                <TextBox Text="{Binding Influence}" />
+                            </DockPanel>
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Fears">
+                    <Grid ColumnDefinitions="*,4,*">
+                        <DockPanel>
+                            <DockPanel DockPanel.Dock="Top">
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Maximum Fears</Label>
+                                <NumericUpDown Increment="1" Value="{Binding MaxFears}" />
+                            </DockPanel>
+                            <ListBox Name="fearList" ItemsSource="{Binding Fears}" />
+                        </DockPanel>
+                        <GridSplitter Grid.Column="1" />
+                        <StackPanel Grid.Column="2" DataContext="{Binding #fearList.SelectedItem}">
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Version:</Label>
+                                <ComboBox ItemsSource="{Binding Version.Values, Mode=OneTime}" SelectedItem="{Binding Version}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Sim Instance:</Label>
+                                <TextBox Text="{Binding SimInstance, Converter={StaticResource HexConverter}}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">GUID:</Label>
+                                <TextBox Text="{Binding Guid, Converter={StaticResource HexConverter}}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Value:</Label>
+                                <TextBox Text="{Binding Value, Converter={StaticResource HexConverter}}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Property:</Label>
+                                <TextBox Text="{Binding Property, Converter={StaticResource HexConverter}}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Index:</Label>
+                                <TextBox Text="{Binding Index, Converter={StaticResource HexConverter}}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Score:</Label>
+                                <TextBox Text="{Binding Score}" />
+                            </DockPanel>
+                            <DockPanel IsVisible="{Binding $parent.IsVersion5OrLater}">
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Influence:</Label>
+                                <TextBox Text="{Binding Influence}" />
+                            </DockPanel>
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="History">
+                    <Grid ColumnDefinitions="*,*,4,*">
+                        <DockPanel>
+                            <ListBox Name="historyContainerList" ItemsSource="{Binding WantHistory}" />
+                        </DockPanel>
+                        <DockPanel Grid.Column="1">
+                            <ListBox Name="historyList" ItemsSource="{Binding #historyContainerList.SelectedItem.Items}" />
+                        </DockPanel>
+                        <GridSplitter Grid.Column="2" />
+                        <StackPanel Grid.Column="3" DataContext="{Binding #historyList.SelectedItem}">
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Version:</Label>
+                                <ComboBox ItemsSource="{Binding Version.Values, Mode=OneTime}" SelectedItem="{Binding Version}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Sim Instance:</Label>
+                                <TextBox Text="{Binding SimInstance, Converter={StaticResource HexConverter}}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">GUID:</Label>
+                                <TextBox Text="{Binding Guid, Converter={StaticResource HexConverter}}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Value:</Label>
+                                <TextBox Text="{Binding Value, Converter={StaticResource HexConverter}}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Property:</Label>
+                                <TextBox Text="{Binding Property, Converter={StaticResource HexConverter}}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Index:</Label>
+                                <TextBox Text="{Binding Index, Converter={StaticResource HexConverter}}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Score:</Label>
+                                <TextBox Text="{Binding Score}" />
+                            </DockPanel>
+                            <DockPanel IsVisible="{Binding $parent.IsVersion5OrLater}">
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Influence:</Label>
+                                <TextBox Text="{Binding Influence}" />
+                            </DockPanel>
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </DockPanel>
+    </DockPanel>
+</UserControl>

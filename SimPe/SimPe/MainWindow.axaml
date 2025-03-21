@@ -64,6 +64,16 @@
                 <MenuItem Click="SettingsMenuItem_Click" Header="Settings" />
             </MenuItem>
         </Menu>
+        <StackPanel
+            Height="24"
+            Background="#111111"
+            DockPanel.Dock="Bottom"
+            Orientation="Horizontal">
+            <DockPanel>
+                <Label DockPanel.Dock="Left" FontSize="12">Loaded Packages:</Label>
+                <Label Content="{Binding LoadedPackages.Count}" FontSize="12" />
+            </DockPanel>
+        </StackPanel>
         <Grid RowDefinitions="4*,4,1*">
             <Grid Grid.Row="0" ColumnDefinitions="1*,4,4*">
                 <ScrollViewer Grid.Column="0">

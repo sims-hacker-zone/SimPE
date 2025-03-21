@@ -44,7 +44,17 @@ namespace SimPe.ViewModels
 			Avalonia.Platform.Storage.IStorageFile file = await Program.MainWindow.StorageProvider.TryGetFileFromPathAsync(uri);
 			if (file != null)
 			{
-				Parent.LoadedPackage = await PackageFile.Open(file);
+				PackageFile openfile = Parent.LoadedPackages.FirstOrDefault(x => x.StorageFile.Path == file.Path);
+				if (openfile != null)
+				{
+					Parent.LoadedPackage = openfile;
+				}
+				else
+				{
+					PackageFile pfile = await PackageFile.Open(file);
+					Parent.LoadedPackages.Add(pfile);
+					Parent.LoadedPackage = pfile;
+				}
 			}
 		}
 
