@@ -20,8 +20,19 @@ namespace SimPe.Models.PackedFile.Cats
 		[ObservableProperty]
 		private PackedFile file = file;
 
-		[ObservableProperty]
 		private string fileName;
+
+		public string FileName
+		{
+			get => fileName;
+			set
+			{
+				if (SetProperty(ref fileName, value))
+				{
+					OnPropertyChanged(FriendlyName);
+				}
+			}
+		}
 
 		[ObservableProperty]
 		private string content;
@@ -32,6 +43,8 @@ namespace SimPe.Models.PackedFile.Cats
 			private set;
 		}
 
+		public string FriendlyName => FileName;
+
 		public static IWrapper Unserialize(BinaryReader reader, PackedFile file)
 		{
 			Cats Cats = new(file)
@@ -40,7 +53,7 @@ namespace SimPe.Models.PackedFile.Cats
 				Content = reader.ReadUTF8CString()
 			};
 
-			Cats.Panel = new CatsPanel(Cats);
+			Cats.Panel = new CatsPanel() { DataContext = Cats };
 
 			return Cats;
 		}

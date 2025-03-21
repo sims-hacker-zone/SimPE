@@ -180,6 +180,9 @@ namespace SimPe
 			if (model != null)
 			{
 				(DataContext as MainWindowViewModel).LoadedPackage = model.PackageFile;
+				(DataContext as MainWindowViewModel).Configuration.RecentFiles.Insert(0, Uri.UnescapeDataString(model.PackageFile.StorageFile.Path.AbsolutePath));
+				(DataContext as MainWindowViewModel).Configuration.RecentFiles = new((DataContext as MainWindowViewModel).Configuration.RecentFiles.Take(15));
+				await (DataContext as MainWindowViewModel).Configuration.Save();
 			}
 		}
 

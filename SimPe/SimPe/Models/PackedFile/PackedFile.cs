@@ -94,13 +94,15 @@ namespace SimPe.Models.PackedFile
 
 		public string ExportFileName => $"{(uint)Type:X8}-{FileName}";
 
-		private string displayName;
-
 		public string DisplayName
 		{
 			get
 			{
-				if (Type.ToFileTypeInformation().ContainsFileName)
+				if (wrapper != null && Wrapper.FriendlyName != null)
+				{
+					return Wrapper.FriendlyName;
+				}
+				else if (Type.ToFileTypeInformation().ContainsFileName)
 				{
 					if (UserData != null)
 					{
@@ -110,13 +112,9 @@ namespace SimPe.Models.PackedFile
 					{
 						return Encoding.ASCII.GetString(UncompressedData[..64]);
 					}
-					else if (RawData != null)
-					{
-						return Encoding.ASCII.GetString(RawData[..64]);
-					}
 					else
 					{
-						return FileName;
+						return RawData != null ? Encoding.ASCII.GetString(RawData[..64]) : FileName;
 					}
 				}
 				else
@@ -146,6 +144,10 @@ namespace SimPe.Models.PackedFile
 			{
 				if (wrapper == null)
 				{
+					if (Type != FileTypes.CLST)
+					{
+						ReadContent();
+					}
 					if (Wrappers.Unserializers.TryGetValue(Type, out Func<BinaryReader, PackedFile, IWrapper> func))
 					{
 						using MemoryStream memory = new(IsCompressed ? UncompressedData : RawData);
@@ -217,8 +219,8 @@ namespace SimPe.Models.PackedFile
 				return;
 			}
 			ClstItem clstItem;
-			Package.FindFiles(FileTypes.CLST)?.FirstOrDefault()?.ReadContent();
-			if ((clstItem = Package.FindFiles(FileTypes.CLST)?.FirstOrDefault()?.Wrapper?.As<Clst.Clst>().Items.FirstOrDefault(item => item.Type == Type && item.Group == Group && item.Instance == Instance && item.InstanceHigh == InstanceHigh)) != null)
+			Package.FindFiles(FileTypes.CLST, null, null, null)?.FirstOrDefault()?.ReadContent();
+			if ((clstItem = Package.FindFiles(FileTypes.CLST, null, null, null)?.FirstOrDefault()?.Wrapper?.As<Clst.Clst>().Items.FirstOrDefault(item => item.Type == Type && item.Group == Group && item.Instance == Instance && item.InstanceHigh == InstanceHigh)) != null)
 			{
 				IsCompressed = true;
 				UncompressedSize = clstItem.UncompressedSize;
@@ -319,7 +321,7 @@ namespace SimPe.Models.PackedFile
 			using BinaryWriter writer = new(memory);
 			wrapper.Serialize(writer);
 			UserData = memory.ToArray();
-			if (Type.ToFileTypeInformation().ContainsFileName)
+			if (Type.ToFileTypeInformation().ContainsFileName || wrapper.FriendlyName != null)
 			{
 				OnPropertyChanged(nameof(DisplayName));
 			}

@@ -571,6 +571,8 @@ namespace SimPe.Models.PackedFile.Sdsc
 			private set;
 		}
 
+		public string FriendlyName => null;
+
 		public static IWrapper Unserialize(BinaryReader reader, PackedFile file)
 		{
 			Sdsc sdsc = new(file);

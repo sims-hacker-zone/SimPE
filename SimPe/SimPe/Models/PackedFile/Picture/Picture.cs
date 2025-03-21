@@ -33,6 +33,8 @@ namespace SimPe.Models.PackedFile.Picture
 			get; private set;
 		}
 
+		public string FriendlyName => FileName;
+
 		public static IWrapper Unserialize(BinaryReader reader, PackedFile file)
 		{
 			Picture picture = new(file);
@@ -48,13 +50,13 @@ namespace SimPe.Models.PackedFile.Picture
 				buffer = reader.ReadBytes((int)reader.BaseStream.Length);
 				picture.Image = Tga.ReadTGA(new MemoryStream(buffer)) ?? new(new MemoryStream(buffer));
 			}
-			picture.Panel = new PicturePanel(picture);
+			picture.Panel = new PicturePanel() { DataContext = picture };
 			return picture;
 		}
 
 		public void Serialize(BinaryWriter writer)
 		{
-			throw new System.NotImplementedException();
+			throw new NotImplementedException();
 		}
 	}
 }

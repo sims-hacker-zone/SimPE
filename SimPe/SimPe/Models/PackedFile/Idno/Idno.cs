@@ -82,6 +82,8 @@ namespace SimPe.Models.PackedFile.Idno
 			get; private set;
 		}
 
+		public string FriendlyName => null;
+
 		public void Serialize(BinaryWriter writer)
 		{
 			writer.Write((uint)Version.Item);

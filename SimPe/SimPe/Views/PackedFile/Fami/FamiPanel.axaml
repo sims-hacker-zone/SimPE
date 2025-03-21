@@ -32,6 +32,10 @@
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
             <WrapPanel Classes="rootpanel" Orientation="Vertical">
                 <StackPanel Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Family Name:</Label>
+                    <TextBox Text="{Binding FamilyName}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
                     <Label VerticalAlignment="Center">Version:</Label>
                     <ComboBox ItemsSource="{Binding Version.Values, Mode=OneTime}" SelectedItem="{Binding Version}" />
                 </StackPanel>
@@ -48,8 +52,8 @@
                     <TextBox Text="{Binding VacationLotInstance, Converter={StaticResource HexConverter}}" />
                 </StackPanel>
                 <StackPanel IsVisible="{Binding IsNotCastawayStoriesOrHigher}" Orientation="Horizontal">
-                    <Label VerticalAlignment="Center">Family Name Instance:</Label>
-                    <TextBox Text="{Binding FamilyNameInstance, Converter={StaticResource HexConverter}}" />
+                    <Label VerticalAlignment="Center">Creation Order:</Label>
+                    <TextBox Text="{Binding CreationOrder, Converter={StaticResource HexConverter}}" />
                 </StackPanel>
                 <StackPanel IsVisible="{Binding IsCastawayStoriesOrHigher}" Orientation="Horizontal">
                     <Label VerticalAlignment="Center">Resources:</Label>

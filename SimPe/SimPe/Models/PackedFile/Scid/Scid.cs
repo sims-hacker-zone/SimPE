@@ -35,6 +35,8 @@ namespace SimPe.Models.PackedFile.Scid
 			private set;
 		}
 
+		public string FriendlyName => null;
+
 		public static IWrapper Unserialize(BinaryReader reader, PackedFile file)
 		{
 			if (!SIGNATURE.SequenceEqual(reader.ReadBytes(4)))

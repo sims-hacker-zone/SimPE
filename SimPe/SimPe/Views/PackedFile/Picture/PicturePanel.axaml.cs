@@ -7,9 +7,8 @@ namespace SimPe.Views.PackedFile.Picture
 {
 	public partial class PicturePanel : UserControl
 	{
-		public PicturePanel(Models.PackedFile.Picture.Picture picture)
+		public PicturePanel()
 		{
-			DataContext = picture;
 			InitializeComponent();
 		}
 	}

@@ -1,10 +1,11 @@
+// SPDX-FileCopyrightText: © SimPE contributors
+// SPDX-License-Identifier: GPL-2.0-or-later
+
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 using Avalonia.Controls;
@@ -14,8 +15,6 @@ using Avalonia.Platform.Storage;
 using SimPe.Data;
 using SimPe.Extensions;
 using SimPe.Models.Configuration;
-using SimPe.Models.Package;
-using SimPe.Models.PackedFile;
 using SimPe.Models.PackedFile.Idno;
 using SimPe.ViewModels;
 using SimPe.ViewModels.NeighborhoodBrowser;
@@ -42,7 +41,7 @@ namespace SimPe.Views.Windows
 					if (neighborhoods != null)
 					{
 						IEnumerable<IStorageItem> neighborhood_items = neighborhoods.GetItemsAsync().ToBlockingEnumerable();
-						if (neighborhood_items.Any(x => x.Name.ToLower() == "profiles.ini"))
+						if (neighborhood_items.Any(x => x.Name.Equals("profiles.ini", StringComparison.InvariantCultureIgnoreCase)))
 						{
 							foreach (IStorageFolder x1 in neighborhood_items.OfType<IStorageFolder>())
 							{
@@ -97,7 +96,7 @@ namespace SimPe.Views.Windows
 			MainWindowViewModel vm = DataContext as MainWindowViewModel;
 			NeighborhoodViewModel nbg = new();
 			IEnumerable<IStorageFile> folder_items = folder.GetItemsAsync().ToBlockingEnumerable().OfType<IStorageFile>();
-			IStorageFile neighborhood_package = folder_items.FirstOrDefault(x => x.Name.Contains("_Neighborhood.package", System.StringComparison.InvariantCultureIgnoreCase));
+			IStorageFile neighborhood_package = folder_items.FirstOrDefault(x => x.Name.Contains("_Neighborhood.package", StringComparison.InvariantCultureIgnoreCase));
 			if (neighborhood_package == null)
 			{
 				return null;
@@ -113,7 +112,7 @@ namespace SimPe.Views.Windows
 			{
 				nbg.Thumbnail = new(await neighborhood_png.OpenReadAsync());
 			}
-			Models.PackedFile.PackedFile idno = nbg.PackageFile.FindFiles(FileTypes.IDNO).FirstOrDefault();
+			Models.PackedFile.PackedFile idno = nbg.PackageFile.FindFiles(FileTypes.IDNO, null, null, null).FirstOrDefault();
 			if (idno == null)
 			{
 				return null;
@@ -121,7 +120,7 @@ namespace SimPe.Views.Windows
 			idno.ReadContent();
 			nbg.Idno = idno.Wrapper as Idno;
 			nbg.ShortName = nbg.Idno.Name;
-			Models.PackedFile.PackedFile ctss = nbg.PackageFile.FindFiles(FileTypes.CTSS).FirstOrDefault();
+			Models.PackedFile.PackedFile ctss = nbg.PackageFile.FindFiles(FileTypes.CTSS, null, null, null).FirstOrDefault();
 			if (ctss == null)
 			{
 				return null;
@@ -138,7 +137,7 @@ namespace SimPe.Views.Windows
 			}
 			nbg.FilePath = Uri.UnescapeDataString(neighborhood_package.Path.AbsolutePath);
 
-			IEnumerable<IStorageFile> subhood_files = folder_items.Where(x => !x.Name.Contains("_Neighborhood.package", System.StringComparison.InvariantCultureIgnoreCase) && x.Name.StartsWith(prefix) && x.Name.EndsWith(".package", System.StringComparison.InvariantCultureIgnoreCase));
+			IEnumerable<IStorageFile> subhood_files = folder_items.Where(x => !x.Name.Contains("_Neighborhood.package", StringComparison.InvariantCultureIgnoreCase) && x.Name.StartsWith(prefix) && x.Name.EndsWith(".package", StringComparison.InvariantCultureIgnoreCase));
 			foreach (IStorageFile file in subhood_files)
 			{
 				nbg.Subhoods.Add(await ProcessSubNeighborhood(folder_items, file));
@@ -163,12 +162,12 @@ namespace SimPe.Views.Windows
 			{
 				return null;
 			}
-			IStorageFile subhood_png = folder_items.FirstOrDefault(x => x.Name.Contains(subhood_package.Name.Replace(".package", ".png", System.StringComparison.InvariantCultureIgnoreCase), System.StringComparison.InvariantCultureIgnoreCase));
+			IStorageFile subhood_png = folder_items.FirstOrDefault(x => x.Name.Contains(subhood_package.Name.Replace(".package", ".png", StringComparison.InvariantCultureIgnoreCase), StringComparison.InvariantCultureIgnoreCase));
 			if (subhood_png != null)
 			{
 				nbg.Thumbnail = new(await subhood_png.OpenReadAsync());
 			}
-			Models.PackedFile.PackedFile idno = nbg.PackageFile.FindFiles(FileTypes.IDNO).FirstOrDefault();
+			Models.PackedFile.PackedFile idno = nbg.PackageFile.FindFiles(FileTypes.IDNO, null, null, null).FirstOrDefault();
 			if (idno == null)
 			{
 				return null;
@@ -176,7 +175,7 @@ namespace SimPe.Views.Windows
 			idno.ReadContent();
 			nbg.Idno = idno.Wrapper as Idno;
 			nbg.ShortName = nbg.Idno.SubhoodName;
-			Models.PackedFile.PackedFile ctss = nbg.PackageFile.FindFiles(FileTypes.CTSS).FirstOrDefault();
+			Models.PackedFile.PackedFile ctss = nbg.PackageFile.FindFiles(FileTypes.CTSS, null, null, null).FirstOrDefault();
 			if (ctss == null)
 			{
 				return null;

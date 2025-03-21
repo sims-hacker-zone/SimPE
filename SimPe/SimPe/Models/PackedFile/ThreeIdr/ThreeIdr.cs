@@ -37,6 +37,8 @@ namespace SimPe.Models.PackedFile.ThreeIdr
 			private set;
 		}
 
+		public string FriendlyName => null;
+
 		public static IWrapper Unserialize(BinaryReader reader, PackedFile file)
 		{
 			ThreeIdr threeIdr = new(file);

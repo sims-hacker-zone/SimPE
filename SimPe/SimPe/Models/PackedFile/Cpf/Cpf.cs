@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
@@ -36,6 +37,8 @@ namespace SimPe.Models.PackedFile.Cpf
 			private set;
 		}
 
+		public string FriendlyName => null;
+
 		public static IWrapper Unserialize(BinaryReader reader, PackedFile file)
 		{
 			byte[] sig = reader.ReadBytes(6);
@@ -55,6 +58,10 @@ namespace SimPe.Models.PackedFile.Cpf
 			for (int i = 0; i < item_count; i++)
 			{
 				cpf.Items.Add(CpfItem.Unserialize(reader, cpf));
+			}
+			foreach (CpfItem item in cpf.Items)
+			{
+				item.PropertyChanged += cpf.Item_OnPropertyChanged;
 			}
 			cpf.Panel = new CpfPanel { DataContext = cpf };
 			return cpf;
@@ -91,6 +98,10 @@ namespace SimPe.Models.PackedFile.Cpf
 					default:
 						break;
 				}
+			}
+			foreach (CpfItem item in cpf.Items)
+			{
+				item.PropertyChanged += cpf.Item_OnPropertyChanged;
 			}
 			cpf.Panel = new CpfPanel { DataContext = cpf };
 			return cpf;
@@ -144,6 +155,11 @@ namespace SimPe.Models.PackedFile.Cpf
 				});
 			}
 			new XDocument([root]).Save(writer.BaseStream);
+		}
+
+		public void Item_OnPropertyChanged(object sender, PropertyChangedEventArgs e)
+		{
+			OnPropertyChanged(nameof(Items));
 		}
 	}
 }

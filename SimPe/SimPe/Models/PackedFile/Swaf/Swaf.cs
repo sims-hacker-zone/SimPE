@@ -63,6 +63,8 @@ namespace SimPe.Models.PackedFile.Swaf
 			private set;
 		}
 
+		public string FriendlyName => null;
+
 		public static IWrapper Unserialize(BinaryReader reader, PackedFile file)
 		{
 			Swaf swaf = new(file)

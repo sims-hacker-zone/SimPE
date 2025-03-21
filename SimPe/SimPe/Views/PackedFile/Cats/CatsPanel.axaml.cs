@@ -7,9 +7,8 @@ namespace SimPe.Views.PackedFile.Cats
 {
 	public partial class CatsPanel : UserControl
 	{
-		public CatsPanel(Models.PackedFile.Cats.Cats cats)
+		public CatsPanel()
 		{
-			DataContext = cats;
 			InitializeComponent();
 		}
 	}

@@ -733,5 +733,10 @@ namespace SimPe.Data
 		/// </summary>
 		[FileType(DisplayName = "Neighborhood View", ContainsFileName = true)]
 		NHVW = 0xEC44BDDC,
+		/// <summary>
+		/// Hitlist
+		/// </summary>
+		[FileType(DisplayName = "Hitlist")]
+		HLS = 0x7B1ACFCD,
 	}
 }

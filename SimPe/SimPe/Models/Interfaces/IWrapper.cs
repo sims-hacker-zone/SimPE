@@ -32,5 +32,10 @@ namespace SimPe.Models.Interfaces
 		{
 			get;
 		}
+
+		public abstract string FriendlyName
+		{
+			get;
+		}
 	}
 }

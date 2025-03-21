@@ -27,6 +27,8 @@ namespace SimPe.Models.PackedFile.Clst
 			get; private set;
 		}
 
+		public string FriendlyName => null;
+
 		public static IWrapper Unserialize(BinaryReader reader, PackedFile file)
 		{
 			Clst clst = new(file);
@@ -36,7 +38,7 @@ namespace SimPe.Models.PackedFile.Clst
 			{
 				clst.Items.Add(ClstItem.Unserialize(reader, clst));
 			}
-			clst.Panel = new ClstPanel(clst);
+			clst.Panel = new ClstPanel() { DataContext = clst };
 			return clst;
 		}
 

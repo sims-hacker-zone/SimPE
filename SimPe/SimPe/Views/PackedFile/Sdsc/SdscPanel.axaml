@@ -173,8 +173,45 @@
                         </StackPanel>
                     </Grid>
                 </TabItem>
-                <TabItem Header="Skills">
+                <TabItem Header="Career / Skills">
                     <Grid ColumnDefinitions="*,*">
+                        <StackPanel>
+                            <TextBlock HorizontalAlignment="Center" FontSize="16">Career</TextBlock>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Job Data:</Label>
+                                <TextBox Text="{Binding JobData, Converter={StaticResource HexConverter}}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Job GUID:</Label>
+                                <TextBox Text="{Binding JobGUID, Converter={StaticResource HexConverter}}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Job Level:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding JobPromotionLevel}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="10"
+                                    Minimum="0"
+                                    Value="{Binding JobPromotionLevel}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Job Performance:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding JobPerformance}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding JobPerformance}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Pension:</Label>
+                                <TextBox Text="{Binding Pension}" />
+                            </DockPanel>
+                        </StackPanel>
                         <StackPanel Grid.Column="1">
                             <TextBlock HorizontalAlignment="Center" FontSize="16">Skills</TextBlock>
                             <DockPanel>

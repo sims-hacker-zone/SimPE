@@ -55,6 +55,8 @@ namespace SimPe.Models.PackedFile.Srel
 			private set;
 		}
 
+		public string FriendlyName => null;
+
 		public static IWrapper Unserialize(BinaryReader reader, PackedFile file)
 		{
 			Srel srel = new(file);

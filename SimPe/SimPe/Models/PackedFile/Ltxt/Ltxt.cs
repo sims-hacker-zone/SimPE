@@ -143,6 +143,8 @@ namespace SimPe.Models.PackedFile.Ltxt
 			private set;
 		}
 
+		public string FriendlyName => Name;
+
 		public static IWrapper Unserialize(BinaryReader reader, PackedFile file)
 		{
 			Ltxt ltxt = new(file)

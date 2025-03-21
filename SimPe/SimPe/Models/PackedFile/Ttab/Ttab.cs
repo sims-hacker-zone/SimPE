@@ -41,6 +41,8 @@ namespace SimPe.Models.PackedFile.Ttab
 			private set;
 		}
 
+		public string FriendlyName => FileName;
+
 		public static Ttab Unserialize(BinaryReader reader, PackedFile file)
 		{
 			Ttab ttab = new(file)

@@ -32,6 +32,8 @@ namespace SimPe.Models.PackedFile.Fwav
 			private set;
 		}
 
+		public string FriendlyName => FileName;
+
 		public static IWrapper Unserialize(BinaryReader reader, PackedFile file)
 		{
 			Fwav fwav = new(file)

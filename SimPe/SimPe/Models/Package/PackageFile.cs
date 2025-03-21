@@ -68,17 +68,13 @@ namespace SimPe.Models.Package
 					select file).FirstOrDefault();
 		}
 
-		public IEnumerable<PackedFile.PackedFile> FindFiles(FileTypes type)
+		public IEnumerable<PackedFile.PackedFile> FindFiles(FileTypes? type, uint? @group, uint? instanceHigh, uint? instance)
 		{
 			return from file in FileIndex
-				   where file.Type == type
-				   select file;
-		}
-
-		public IEnumerable<PackedFile.PackedFile> FindFilesByGroup(uint @group)
-		{
-			return from file in FileIndex
-				   where file.Group == @group
+				   where type == null || file.Type == type
+				   where @group == null || file.Group == @group
+				   where instanceHigh == null || file.InstanceHigh == instanceHigh
+				   where instance == null || file.Instance == instance
 				   select file;
 		}
 

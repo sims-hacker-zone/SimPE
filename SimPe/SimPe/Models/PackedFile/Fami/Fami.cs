@@ -4,11 +4,13 @@
 using System;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 
 using Avalonia.Controls;
 
 using CommunityToolkit.Mvvm.ComponentModel;
 
+using SimPe.Data;
 using SimPe.Extensions;
 using SimPe.Models.Interfaces;
 using SimPe.Views.PackedFile.Fami;
@@ -62,7 +64,7 @@ namespace SimPe.Models.PackedFile.Fami
 		private uint vacationLotInstance;
 
 		[ObservableProperty]
-		private uint familyNameInstance;
+		private uint creationOrder;
 
 		[ObservableProperty]
 		private int money;
@@ -100,6 +102,25 @@ namespace SimPe.Models.PackedFile.Fami
 			private set;
 		}
 
+		public string FamilyName
+		{
+			set
+			{
+				PackedFile strFile = File.Package.FindFile(FileTypes.STR, File.Group, File.InstanceHigh, File.Instance);
+				if (strFile != null)
+				{
+					(strFile.Wrapper as Str.Str).ByIndex[0].FirstOrDefault().Title = value;
+				}
+			}
+			get
+			{
+				PackedFile strFile = File.Package.FindFile(FileTypes.STR, File.Group, File.InstanceHigh, File.Instance);
+				return strFile == null ? null : (strFile.Wrapper as Str.Str).ByIndex[0].FirstOrDefault().Title;
+			}
+		}
+
+		public string FriendlyName => FamilyName;
+
 		public static IWrapper Unserialize(BinaryReader reader, PackedFile file)
 		{
 			Fami fami = new(file);
@@ -128,7 +149,7 @@ namespace SimPe.Models.PackedFile.Fami
 			}
 			else
 			{
-				fami.FamilyNameInstance = reader.ReadUInt32();
+				fami.CreationOrder = reader.ReadUInt32();
 				fami.Money = reader.ReadInt32();
 			}
 
@@ -158,6 +179,7 @@ namespace SimPe.Models.PackedFile.Fami
 				fami.BusinessMoney = reader.ReadInt32();
 			}
 			fami.Panel = new FamiPanel() { DataContext = fami };
+			fami.OnPropertyChanged(nameof(FriendlyName));
 			return fami;
 		}
 
@@ -185,7 +207,7 @@ namespace SimPe.Models.PackedFile.Fami
 			}
 			else
 			{
-				writer.Write(FamilyNameInstance);
+				writer.Write(CreationOrder);
 				writer.Write(Money);
 			}
 			writer.Write(FamilyFriends);
@@ -214,6 +236,11 @@ namespace SimPe.Models.PackedFile.Fami
 			{
 				writer.Write(BusinessMoney);
 			}
+		}
+
+		public void FamilyName_ValueChanged(object sender, EventArgs e)
+		{
+			OnPropertyChanged(nameof(FriendlyName));
 		}
 	}
 }

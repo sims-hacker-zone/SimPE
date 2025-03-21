@@ -50,6 +50,8 @@ namespace SimPe.Models.PackedFile.Str
 			get; private set;
 		}
 
+		public string FriendlyName => FileName;
+
 		public StrItem this[Languages l, int index] => Items.Where(item => item.Language == l).Skip(index).FirstOrDefault();
 
 		public IEnumerable<StrItem> this[int index] => from item in ByLanguage
