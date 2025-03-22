@@ -81,7 +81,7 @@ namespace SimPe.ViewModels
 
 		public async Task<PackageFile> GetOrLoadPackage(IStorageFile file)
 		{
-			PackageFile openfile = LoadedPackages.FirstOrDefault(x => x.StorageFile == file);
+			PackageFile openfile = LoadedPackages.FirstOrDefault(x => x.StorageFile.Path == file.Path);
 			if (openfile == null)
 			{
 				openfile = await PackageFile.Open(file);
@@ -95,7 +95,7 @@ namespace SimPe.ViewModels
 
 		public async void OpenPackage(IStorageFile file)
 		{
-			PackageFile openfile = LoadedPackages.FirstOrDefault(x => x.StorageFile == file);
+			PackageFile openfile = LoadedPackages.FirstOrDefault(x => x.StorageFile.Path == file.Path);
 			if (openfile != null)
 			{
 				LoadedPackage = openfile;

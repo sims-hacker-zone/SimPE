@@ -29,7 +29,5 @@ namespace SimPe.Data
 		Openings_Gate = 0x80008,
 		Openings_Arch = 0x80010,
 		Openings_TallDoor = 0x80100,
-
-		unknown = 0x00069, // just to locate unknown things, is read but not written
 	}
 }

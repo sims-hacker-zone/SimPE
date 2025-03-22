@@ -44,6 +44,9 @@
         <Style Selector="TabItem &gt; TextBlock, TabItem &gt; AccessText">
             <Setter Property="Foreground" Value="Black" />
         </Style>
+        <Style Selector="CheckBox:unchecked /template/ Border#NormalRectangle">
+            <Setter Property="BorderBrush" Value="Black" />
+        </Style>
     </Application.Styles>
 
 

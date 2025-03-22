@@ -174,5 +174,10 @@ namespace SimPe
 		{
 			await (DataContext as MainWindowViewModel).Configuration.Save();
 		}
+
+		internal void FindInFiles_Click(object sender, RoutedEventArgs e)
+		{
+			new FindInFiles() { DataContext = new FindInFilesViewModel(DataContext as MainWindowViewModel) }.Show();
+		}
 	}
 }

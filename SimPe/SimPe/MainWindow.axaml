@@ -59,6 +59,7 @@
             </MenuItem>
             <MenuItem Header="_Tools">
                 <MenuItem Click="NeighborhoodBrowserOpen_Click" Header="Neighborhood Browser..." />
+                <MenuItem Click="FindInFiles_Click" Header="Find in loaded files..." />
             </MenuItem>
             <MenuItem Header="_Extras">
                 <MenuItem Click="SettingsMenuItem_Click" Header="Settings" />
