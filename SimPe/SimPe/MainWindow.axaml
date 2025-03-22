@@ -66,7 +66,6 @@
         </Menu>
         <StackPanel
             Height="24"
-            Background="#111111"
             DockPanel.Dock="Bottom"
             Orientation="Horizontal">
             <DockPanel>
@@ -77,10 +76,7 @@
         <Grid RowDefinitions="4*,4,1*">
             <Grid Grid.Row="0" ColumnDefinitions="1*,4,4*">
                 <ScrollViewer Grid.Column="0">
-                    <TreeView
-                        Name="ResourceTreeView"
-                        Background="#333333"
-                        ItemsSource="{Binding ResourceTree}">
+                    <TreeView Name="ResourceTreeView" ItemsSource="{Binding ResourceTree}">
                         <TreeView.Styles>
                             <Style x:DataType="vm:ResourceTree.ResourceTreeViewModel" Selector="TreeViewItem">
                                 <Setter Property="IsExpanded" Value="True" />
@@ -100,24 +96,17 @@
                         </TreeView.DataTemplates>
                     </TreeView>
                 </ScrollViewer>
-                <GridSplitter
-                    Grid.Column="1"
-                    Background="#dddddd"
-                    ResizeDirection="Columns" />
+                <GridSplitter Grid.Column="1" ResizeDirection="Columns" />
                 <TreeDataGrid
                     Name="ResourceList"
                     Grid.Column="2"
                     CanUserResizeColumns="true"
                     Source="{Binding #ResourceTreeView.SelectedItem.FileSource}" />
             </Grid>
-            <GridSplitter
-                Grid.Row="1"
-                Background="#dddddd"
-                ResizeDirection="Rows" />
+            <GridSplitter Grid.Row="1" ResizeDirection="Rows" />
             <TabControl
                 Name="InfoTabs"
                 Grid.Row="2"
-                Background="#555555"
                 ItemsSource="{Binding}"
                 TabStripPlacement="Bottom">
                 <TabControl.ItemTemplate>

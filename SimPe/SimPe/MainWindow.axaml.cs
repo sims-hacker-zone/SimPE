@@ -98,20 +98,7 @@ namespace SimPe
 			});
 			if (filelist.Any())
 			{
-				PackageFile openfile = (DataContext as MainWindowViewModel).LoadedPackages.FirstOrDefault(x => x.StorageFile.Path == filelist[0].Path);
-				if (openfile != null)
-				{
-					(DataContext as MainWindowViewModel).LoadedPackage = openfile;
-				}
-				else
-				{
-					PackageFile file = await PackageFile.Open(filelist[0]);
-					(DataContext as MainWindowViewModel).LoadedPackages.Add(file);
-					(DataContext as MainWindowViewModel).LoadedPackage = file;
-				}
-				(DataContext as MainWindowViewModel).Configuration.RecentFiles.Insert(0, Uri.UnescapeDataString(filelist[0].Path.AbsolutePath));
-				(DataContext as MainWindowViewModel).Configuration.RecentFiles = new((DataContext as MainWindowViewModel).Configuration.RecentFiles.Take(15));
-				await (DataContext as MainWindowViewModel).Configuration.Save();
+				(DataContext as MainWindowViewModel).OpenPackage(filelist[0]);
 			}
 		}
 
@@ -179,10 +166,7 @@ namespace SimPe
 			}.ShowDialog<NeighborhoodViewModel>(this);
 			if (model != null)
 			{
-				(DataContext as MainWindowViewModel).LoadedPackage = model.PackageFile;
-				(DataContext as MainWindowViewModel).Configuration.RecentFiles.Insert(0, Uri.UnescapeDataString(model.PackageFile.StorageFile.Path.AbsolutePath));
-				(DataContext as MainWindowViewModel).Configuration.RecentFiles = new((DataContext as MainWindowViewModel).Configuration.RecentFiles.Take(15));
-				await (DataContext as MainWindowViewModel).Configuration.Save();
+				(DataContext as MainWindowViewModel).OpenPackage(model.PackageFile.StorageFile);
 			}
 		}
 

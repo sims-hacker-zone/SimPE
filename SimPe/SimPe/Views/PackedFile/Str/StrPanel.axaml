@@ -12,7 +12,7 @@
             Margin="5,5"
             Padding="5,5"
             HorizontalAlignment="Stretch"
-            Background="DarkBlue"
+            Background="{StaticResource SystemControlBackgroundAccentBrush}"
             DockPanel.Dock="Top">
             String Table Wrapper
         </TextBlock>
@@ -23,10 +23,7 @@
             <Label VerticalAlignment="Center">Format:</Label>
             <ComboBox ItemsSource="{Binding Format.Values, Mode=OneTime}" SelectedItem="{Binding Format}" />
         </StackPanel>
-        <TreeDataGrid
-            Background="#222222"
-            CanUserResizeColumns="true"
-            Source="{Binding GridSource}" />
+        <TreeDataGrid CanUserResizeColumns="true" Source="{Binding GridSource}" />
         <!-- <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
             <ListBox Margin="5,0" ItemsSource="{Binding Items}" />
         </ScrollViewer>-->

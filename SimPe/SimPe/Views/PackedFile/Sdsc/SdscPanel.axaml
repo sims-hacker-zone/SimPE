@@ -29,7 +29,7 @@
             Margin="5,5"
             Padding="5,5"
             HorizontalAlignment="Stretch"
-            Background="DarkBlue"
+            Background="{StaticResource SystemControlBackgroundAccentBrush}"
             DockPanel.Dock="Top">
             Sim Description Wrapper
         </TextBlock>

@@ -11,8 +11,10 @@ using Avalonia.Platform.Storage;
 
 using CommunityToolkit.Mvvm.ComponentModel;
 
+using SimPe.Data;
 using SimPe.Models.Configuration;
 using SimPe.Models.Package;
+using SimPe.Models.PackedFile;
 using SimPe.ViewModels.ResourceTree;
 
 namespace SimPe.ViewModels
@@ -89,6 +91,38 @@ namespace SimPe.ViewModels
 				}
 			}
 			return openfile;
+		}
+
+		public async void OpenPackage(IStorageFile file)
+		{
+			PackageFile openfile = LoadedPackages.FirstOrDefault(x => x.StorageFile == file);
+			if (openfile != null)
+			{
+				LoadedPackage = openfile;
+			}
+			else
+			{
+				PackageFile pfile = await PackageFile.Open(file);
+				LoadedPackages.Add(pfile);
+				LoadedPackage = pfile;
+			}
+			Configuration.RecentFiles.Insert(0, Uri.UnescapeDataString(file.Path.AbsolutePath));
+			Configuration.RecentFiles = new(Configuration.RecentFiles.Distinct().Take(15));
+			await Configuration.Save();
+		}
+
+		public void JumpToFile(FileTypes type, uint @group, uint instanceHigh, uint instance)
+		{
+			PackedFile file = LoadedPackage.FindFile(type, @group, instanceHigh, instance);
+			if (file != null)
+			{
+				int i = ResourceTree[0].FileSource.Items.Select((item, i) => (item, i)).Where(item => item.item == file).Select(item => item.i).FirstOrDefault(-1);
+				if (i > -1)
+				{
+					ResourceTree[0].FileSource.RowSelection.Select(new(i));
+					Parent.ResourceTreeView.SelectedItem = ResourceTree[0];
+				}
+			}
 		}
 
 		public async Task LoadConfiguration()

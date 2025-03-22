@@ -24,7 +24,7 @@
             Margin="5,5"
             Padding="5,5"
             HorizontalAlignment="Stretch"
-            Background="DarkBlue"
+            Background="{StaticResource SystemControlBackgroundAccentBrush}"
             DockPanel.Dock="Top">
             3D ID Referencing File Wrapper
         </TextBlock>

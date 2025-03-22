@@ -10,8 +10,6 @@ using Avalonia.Platform.Storage;
 
 using CommunityToolkit.Mvvm.ComponentModel;
 
-using SimPe.Models.Package;
-
 namespace SimPe.ViewModels
 {
 	public partial class MenuItemViewModel(MainWindowViewModel parent) : ObservableObject
@@ -41,20 +39,10 @@ namespace SimPe.ViewModels
 		public async void OpenRecent(object filepath)
 		{
 			Uri uri = new(filepath as string);
-			Avalonia.Platform.Storage.IStorageFile file = await Program.MainWindow.StorageProvider.TryGetFileFromPathAsync(uri);
+			IStorageFile file = await Program.MainWindow.StorageProvider.TryGetFileFromPathAsync(uri);
 			if (file != null)
 			{
-				PackageFile openfile = Parent.LoadedPackages.FirstOrDefault(x => x.StorageFile.Path == file.Path);
-				if (openfile != null)
-				{
-					Parent.LoadedPackage = openfile;
-				}
-				else
-				{
-					PackageFile pfile = await PackageFile.Open(file);
-					Parent.LoadedPackages.Add(pfile);
-					Parent.LoadedPackage = pfile;
-				}
+				Parent.OpenPackage(file);
 			}
 		}
 
@@ -76,20 +64,7 @@ namespace SimPe.ViewModels
 			});
 			if (filelist.Any())
 			{
-				PackageFile openfile = Parent.LoadedPackages.FirstOrDefault(x => x.StorageFile.Path == filelist[0].Path);
-				if (openfile != null)
-				{
-					Parent.LoadedPackage = openfile;
-				}
-				else
-				{
-					PackageFile file = await PackageFile.Open(filelist[0]);
-					Parent.LoadedPackages.Add(file);
-					Parent.LoadedPackage = file;
-				}
-				Parent.Configuration.RecentFiles.Insert(0, Uri.UnescapeDataString(filelist[0].Path.AbsolutePath));
-				Parent.Configuration.RecentFiles = new(Parent.Configuration.RecentFiles.Take(15));
-				await Parent.Configuration.Save();
+				Parent.OpenPackage(filelist[0]);
 			}
 		}
 	}

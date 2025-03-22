@@ -37,7 +37,7 @@ namespace SimPe.Views.Tabs
 			Editor.HexView.BytesPerLine = 32;
 			CellGroupsLayer layer = Editor.HexView.Layers.Get<CellGroupsLayer>();
 			layer.BytesPerGroup = 8;
-			layer.Backgrounds.Add(new SolidColorBrush(Colors.Gray, 0.1D));
+			layer.Backgrounds.Add(new SolidColorBrush(Colors.Gray, 0.3D));
 			layer.Backgrounds.Add(null);
 			layer.Border = new Pen(Brushes.Gray, dashStyle: DashStyle.Dash);
 			// Editor.Document = new MemoryBinaryDocument((DataContext as Models.PackedFile.PackedFile).RawData);

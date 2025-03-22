@@ -12,7 +12,7 @@
             Margin="5,5"
             Padding="5,5"
             HorizontalAlignment="Stretch"
-            Background="DarkBlue"
+            Background="{StaticResource SystemControlBackgroundAccentBrush}"
             DockPanel.Dock="Top">
             Picture Wrapper
         </TextBlock>

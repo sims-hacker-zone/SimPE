@@ -49,7 +49,6 @@
             <WrapPanel
                 HorizontalAlignment="Stretch"
                 x:DataType="vm:NeighborhoodBrowser.NeighborhoodViewModel"
-                Background="#333333"
                 Classes="rootpanel"
                 DataContext="{Binding #NeighborhoodTreeView.SelectedItem}"
                 Orientation="Vertical">

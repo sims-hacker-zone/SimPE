@@ -2,12 +2,49 @@
     x:Class="SimPe.App"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    RequestedThemeVariant="Dark">
+    RequestedThemeVariant="Light">
     <!--  "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options.  -->
 
     <Application.Styles>
-        <FluentTheme />
+        <FluentTheme>
+            <FluentTheme.Palettes>
+                <ColorPaletteResources
+                    x:Key="Light"
+                    Accent="#ff3cd932"
+                    AltHigh="White"
+                    AltLow="White"
+                    AltMedium="White"
+                    AltMediumHigh="White"
+                    AltMediumLow="White"
+                    BaseHigh="Black"
+                    BaseLow="#ffaebdfe"
+                    BaseMedium="#ff657dbf"
+                    BaseMediumHigh="#ff355395"
+                    BaseMediumLow="#ff4d68aa"
+                    ChromeAltLow="#ff355395"
+                    ChromeBlackHigh="Black"
+                    ChromeBlackLow="#ffaebdfe"
+                    ChromeBlackMedium="#ff355395"
+                    ChromeBlackMediumLow="#ff657dbf"
+                    ChromeDisabledHigh="#ffaebdfe"
+                    ChromeDisabledLow="#ff657dbf"
+                    ChromeGray="#ff4d68aa"
+                    ChromeHigh="#ffaebdfe"
+                    ChromeLow="#ffdde7ff"
+                    ChromeMedium="#ffd4dfff"
+                    ChromeMediumLow="#ffdde7ff"
+                    ChromeWhite="White"
+                    ListLow="#ffd4dfff"
+                    ListMedium="#ffaebdfe"
+                    RegionColor="#ff7079c8" />
+            </FluentTheme.Palettes>
+        </FluentTheme>
         <StyleInclude Source="avares://Avalonia.Controls.TreeDataGrid/Themes/Fluent.axaml" />
         <StyleInclude Source="avares://AvaloniaHex/Themes/Simple/AvaloniaHex.axaml" />
+        <Style Selector="TabItem &gt; TextBlock, TabItem &gt; AccessText">
+            <Setter Property="Foreground" Value="Black" />
+        </Style>
     </Application.Styles>
+
+
 </Application>
