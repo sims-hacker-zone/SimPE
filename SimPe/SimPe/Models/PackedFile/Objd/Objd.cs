@@ -68,7 +68,7 @@ namespace SimPe.Models.PackedFile.Objd
 		private ushort itemIsUnlockable;
 
 		[ObservableProperty]
-		private ObjdCatalogUseFlags catalogUseFlags;
+		private CheckableFlagEnum<ObjdCatalogUseFlags> catalogUseFlags;
 
 		[ObservableProperty]
 		private ushort price;
@@ -125,10 +125,10 @@ namespace SimPe.Models.PackedFile.Objd
 		private ushort depreciationLimit;
 
 		[ObservableProperty]
-		private ObjdRoomSortFlags roomSortFlags;
+		private CheckableFlagEnum<ObjdRoomSortFlags> roomSortFlags;
 
 		[ObservableProperty]
-		private ObjdFunctionSortFlags functionSortFlags;
+		private CheckableFlagEnum<ObjdFunctionSortFlags> functionSortFlags;
 
 		[ObservableProperty]
 		private ushort catalogStringsID;
@@ -203,7 +203,7 @@ namespace SimPe.Models.PackedFile.Objd
 		private ushort inhibitSuitCopying;
 
 		[ObservableProperty]
-		private ObjdBuildModeSort buildModeSort;
+		private CheckableFlagEnum<ObjdBuildModeSort> buildModeSort;
 
 		[ObservableProperty]
 		private uint originalGUID;
@@ -313,7 +313,7 @@ namespace SimPe.Models.PackedFile.Objd
 			objd.LookAtScore = reader.ReadUInt16();
 			objd.Guid = reader.ReadUInt32();
 			objd.ItemIsUnlockable = reader.ReadUInt16();
-			objd.CatalogUseFlags = (ObjdCatalogUseFlags)reader.ReadUInt16();
+			objd.CatalogUseFlags = new((ObjdCatalogUseFlags)reader.ReadUInt16());
 			objd.Price = reader.ReadUInt16();
 			objd.BodyStringsID = reader.ReadUInt16();
 			objd.SlotsID = reader.ReadUInt16();
@@ -332,8 +332,8 @@ namespace SimPe.Models.PackedFile.Objd
 			objd.DailyDepreciation = reader.ReadUInt16();
 			objd.SelfDepreciating = reader.ReadUInt16() == 1;
 			objd.DepreciationLimit = reader.ReadUInt16();
-			objd.RoomSortFlags = (ObjdRoomSortFlags)reader.ReadUInt16();
-			objd.FunctionSortFlags = (ObjdFunctionSortFlags)reader.ReadUInt16();
+			objd.RoomSortFlags = new((ObjdRoomSortFlags)reader.ReadUInt16());
+			objd.FunctionSortFlags = new((ObjdFunctionSortFlags)reader.ReadUInt16());
 			objd.CatalogStringsID = reader.ReadUInt16();
 			objd.IsGlobalSimObject = reader.ReadUInt16();
 			objd.ToolTipNameType = reader.ReadUInt16();
@@ -360,10 +360,10 @@ namespace SimPe.Models.PackedFile.Objd
 			objd.ChairEntryFlags = reader.ReadUInt16();
 			objd.TileWidth = reader.ReadUInt16();
 			objd.InhibitSuitCopying = reader.ReadUInt16();
-			objd.BuildModeSort = (ObjdBuildModeSort)((uint)reader.ReadUInt16() << 16);
+			objd.BuildModeSort = new((ObjdBuildModeSort)((uint)reader.ReadUInt16() << 16));
 			objd.OriginalGUID = reader.ReadUInt32();
 			objd.ObjectModelGUID = reader.ReadUInt32();
-			objd.BuildModeSort |= (ObjdBuildModeSort)reader.ReadUInt16();
+			objd.BuildModeSort.Value |= (ObjdBuildModeSort)reader.ReadUInt16();
 			reader.ReadUInt16();
 			reader.ReadUInt16();
 			objd.FootprintMask = reader.ReadUInt16();

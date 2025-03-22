@@ -89,24 +89,69 @@
                                 FontSize="16">
                                 Build mode sort
                             </TextBlock>
-                            <ListBox>
-                                <CheckBox Content="Miscellaneous / Columns" IsChecked="{Binding BuildModeSort, Converter={StaticResource BuildModeSortConverter}, ConverterParameter=Miscellaneous_Columns}" />
-                                <CheckBox Content="Staircases" IsChecked="{Binding BuildModeSort, Converter={StaticResource BuildModeSortConverter}, ConverterParameter=Staircases}" />
-                                <CheckBox Content="Miscellaneous / Swimming Pools" IsChecked="{Binding BuildModeSort, Converter={StaticResource BuildModeSortConverter}, ConverterParameter=Miscellaneous_SwimmingPools}" />
-                                <CheckBox Content="Miscellaneous / Multi-story Columns" IsChecked="{Binding BuildModeSort, Converter={StaticResource BuildModeSortConverter}, ConverterParameter=Miscellaneous_MultiStoryColumns}" />
-                                <CheckBox Content="Miscellaneous / Connecting Column Arches" IsChecked="{Binding BuildModeSort, Converter={StaticResource BuildModeSortConverter}, ConverterParameter=Miscellaneous_ConnectingColumnArches}" />
-                                <CheckBox Content="Garage" IsChecked="{Binding BuildModeSort, Converter={StaticResource BuildModeSortConverter}, ConverterParameter=Garage}" />
-                                <CheckBox Content="Miscellaneous / Elevators" IsChecked="{Binding BuildModeSort, Converter={StaticResource BuildModeSortConverter}, ConverterParameter=Miscellaneous_Elevators}" />
-                                <CheckBox Content="Architecture" IsChecked="{Binding BuildModeSort, Converter={StaticResource BuildModeSortConverter}, ConverterParameter=Architecture}" />
-                                <CheckBox Content="Garden Center / Tree" IsChecked="{Binding BuildModeSort, Converter={StaticResource BuildModeSortConverter}, ConverterParameter=Garden_Trees}" />
-                                <CheckBox Content="Garden Center / Shrubs" IsChecked="{Binding BuildModeSort, Converter={StaticResource BuildModeSortConverter}, ConverterParameter=Garden_Shrubs}" />
-                                <CheckBox Content="Garden Center / Flowers" IsChecked="{Binding BuildModeSort, Converter={StaticResource BuildModeSortConverter}, ConverterParameter=Garden_Flowers}" />
-                                <CheckBox Content="Garden Center / Gardening" IsChecked="{Binding BuildModeSort, Converter={StaticResource BuildModeSortConverter}, ConverterParameter=Garden_Gardening}" />
-                                <CheckBox Content="Doors &amp; Windows / Multi-story Windows" IsChecked="{Binding BuildModeSort, Converter={StaticResource BuildModeSortConverter}, ConverterParameter=DoorsWindows_MultistoryWindows}" />
-                                <CheckBox Content="Doors &amp; Windows / Single Story Windows" IsChecked="{Binding BuildModeSort, Converter={StaticResource BuildModeSortConverter}, ConverterParameter=DoorsWindows_SingleStoryWindows}" />
-                                <CheckBox Content="Miscellaneous / Gates" IsChecked="{Binding BuildModeSort, Converter={StaticResource BuildModeSortConverter}, ConverterParameter=Miscellaneous_Gates}" />
-                                <CheckBox Content="Doors &amp; Windows / Archways" IsChecked="{Binding BuildModeSort, Converter={StaticResource BuildModeSortConverter}, ConverterParameter=DoorsWindows_Archways}" />
-                                <CheckBox Content="Doors &amp; Windows / Multi-story Doors and Arches" IsChecked="{Binding BuildModeSort, Converter={StaticResource BuildModeSortConverter}, ConverterParameter=Garden_Gardening}" />
+                            <ListBox ItemsSource="{Binding BuildModeSort.Values}">
+                                <ListBox.DataTemplates>
+                                    <DataTemplate>
+                                        <DataTemplate.DataType>
+                                            <x:Type x:TypeArguments="m:PackedFile.Objd.ObjdBuildModeSort" TypeName="ext:CheckableEnumValue" />
+                                        </DataTemplate.DataType>
+                                        <CheckBox Content="{Binding Item.DisplayName}" IsChecked="{Binding Checked}" />
+                                    </DataTemplate>
+                                </ListBox.DataTemplates>
+                            </ListBox>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                DockPanel.Dock="Top"
+                                FontSize="16">
+                                Catalog use flags
+                            </TextBlock>
+                            <ListBox ItemsSource="{Binding CatalogUseFlags.Values}">
+                                <ListBox.DataTemplates>
+                                    <DataTemplate>
+                                        <DataTemplate.DataType>
+                                            <x:Type x:TypeArguments="m:PackedFile.Objd.ObjdCatalogUseFlags" TypeName="ext:CheckableEnumValue" />
+                                        </DataTemplate.DataType>
+                                        <CheckBox Content="{Binding Item.DisplayName}" IsChecked="{Binding Checked}" />
+                                    </DataTemplate>
+                                </ListBox.DataTemplates>
+                            </ListBox>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                DockPanel.Dock="Top"
+                                FontSize="16">
+                                Function Sort
+                            </TextBlock>
+                            <ListBox ItemsSource="{Binding FunctionSortFlags.Values}">
+                                <ListBox.DataTemplates>
+                                    <DataTemplate>
+                                        <DataTemplate.DataType>
+                                            <x:Type x:TypeArguments="m:PackedFile.Objd.ObjdFunctionSortFlags" TypeName="ext:CheckableEnumValue" />
+                                        </DataTemplate.DataType>
+                                        <CheckBox Content="{Binding Item.DisplayName}" IsChecked="{Binding Checked}" />
+                                    </DataTemplate>
+                                </ListBox.DataTemplates>
+                            </ListBox>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                DockPanel.Dock="Top"
+                                FontSize="16">
+                                Catalog use flags
+                            </TextBlock>
+                            <ListBox ItemsSource="{Binding RoomSortFlags.Values}">
+                                <ListBox.DataTemplates>
+                                    <DataTemplate>
+                                        <DataTemplate.DataType>
+                                            <x:Type x:TypeArguments="m:PackedFile.Objd.ObjdRoomSortFlags" TypeName="ext:CheckableEnumValue" />
+                                        </DataTemplate.DataType>
+                                        <CheckBox Content="{Binding Item.DisplayName}" IsChecked="{Binding Checked}" />
+                                    </DataTemplate>
+                                </ListBox.DataTemplates>
                             </ListBox>
                         </DockPanel>
                     </WrapPanel>

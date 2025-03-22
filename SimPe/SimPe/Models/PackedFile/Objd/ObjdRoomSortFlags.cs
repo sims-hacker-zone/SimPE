@@ -3,6 +3,8 @@
 
 using System;
 
+using SimPe.Extensions;
+
 namespace SimPe.Models.PackedFile.Objd
 {
 	[Flags]
@@ -11,8 +13,10 @@ namespace SimPe.Models.PackedFile.Objd
 		Kitchen = 0x0001,
 		Bedroom = 0x0002,
 		Bathroom = 0x0004,
+		[DisplayName("Living Room")]
 		LivingRoom = 0x0008,
 		Outside = 0x0010,
+		[DisplayName("Dining Room")]
 		DiningRoom = 0x0020,
 		Misc = 0x0040,
 		Study = 0x0080,

@@ -10,7 +10,6 @@ namespace SimPe.Models.PackedFile.Objd
 	[Flags]
 	public enum ObjdBuildModeSort : uint
 	{
-		None = 0x0000_0000,
 		[DisplayName("Miscellaneous / Columns")]
 		Miscellaneous_Columns = 0x0001_0008,
 		Staircases = 0x0001_0020,

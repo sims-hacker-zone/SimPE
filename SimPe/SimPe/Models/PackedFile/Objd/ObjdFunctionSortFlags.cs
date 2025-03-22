@@ -3,6 +3,8 @@
 
 using System;
 
+using SimPe.Extensions;
+
 namespace SimPe.Models.PackedFile.Objd
 {
 	[Flags]
@@ -14,10 +16,12 @@ namespace SimPe.Models.PackedFile.Objd
 		Electronics = 0x0008,
 		Plumbing = 0x0010,
 		Decorative = 0x0020,
-		General = 0x0040,
+		Miscellaneous = 0x0040,
 		Lighting = 0x0080,
 		Hobbies = 0x0100,
-		AspirationRewards = 0x0200,
-		CareerRewards = 0x0400,
+		[DisplayName("Career Rewards")]
+		CareerRewards = 0x0200,
+		[DisplayName("Aspiration Rewards")]
+		AspirationRewards = 0x0400,
 	}
 }

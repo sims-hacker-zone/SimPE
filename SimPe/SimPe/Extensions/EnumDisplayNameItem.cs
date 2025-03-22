@@ -28,6 +28,10 @@ namespace SimPe.Extensions
 
 		public string Str => $"{Item.GetDisplayName()} (0x{Convert.ChangeType(Item, Item.GetTypeCode()):X})";
 
+		public string EnumName => Item.ToString();
+
+		public string DisplayName => Item.GetDisplayName();
+
 		public override string ToString()
 		{
 			return Str;
