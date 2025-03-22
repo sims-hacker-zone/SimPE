@@ -23,10 +23,6 @@
         <ext:HexConverter x:Key="HexConverter" />
         <GridLength x:Key="SliderPreContentMargin">5</GridLength>
         <GridLength x:Key="SliderPostContentMargin">5</GridLength>
-        <ext:EnumToCheckedConverter
-            x:Key="RelationshipFlagsConverter"
-            Flags="True"
-            Type="{x:Type m:PackedFile.Srel.SrelRelationshipFlags}" />
     </UserControl.Resources>
     <DockPanel>
         <TextBlock
@@ -82,17 +78,15 @@
                         FontSize="16">
                         Relationship Flags
                     </TextBlock>
-                    <ListBox>
-                        <CheckBox Content="Crush" IsChecked="{Binding RelationshipFlags, Converter={StaticResource RelationshipFlagsConverter}, ConverterParameter=Crush}" />
-                        <CheckBox Content="Love" IsChecked="{Binding RelationshipFlags, Converter={StaticResource RelationshipFlagsConverter}, ConverterParameter=Love}" />
-                        <CheckBox Content="Engaged" IsChecked="{Binding RelationshipFlags, Converter={StaticResource RelationshipFlagsConverter}, ConverterParameter=Engaged}" />
-                        <CheckBox Content="Married" IsChecked="{Binding RelationshipFlags, Converter={StaticResource RelationshipFlagsConverter}, ConverterParameter=Married}" />
-                        <CheckBox Content="Friend" IsChecked="{Binding RelationshipFlags, Converter={StaticResource RelationshipFlagsConverter}, ConverterParameter=Friend}" />
-                        <CheckBox Content="BestFriend" IsChecked="{Binding RelationshipFlags, Converter={StaticResource RelationshipFlagsConverter}, ConverterParameter=BestFriend}" />
-                        <CheckBox Content="Going Steady" IsChecked="{Binding RelationshipFlags, Converter={StaticResource RelationshipFlagsConverter}, ConverterParameter=GoingSteady}" />
-                        <CheckBox Content="Enemy" IsChecked="{Binding RelationshipFlags, Converter={StaticResource RelationshipFlagsConverter}, ConverterParameter=Enemy}" />
-                        <CheckBox Content="Family" IsChecked="{Binding RelationshipFlags, Converter={StaticResource RelationshipFlagsConverter}, ConverterParameter=Family}" />
-                        <CheckBox Content="Known" IsChecked="{Binding RelationshipFlags, Converter={StaticResource RelationshipFlagsConverter}, ConverterParameter=Known}" />
+                    <ListBox ItemsSource="{Binding RelationshipFlags.Values}">
+                        <ListBox.DataTemplates>
+                            <DataTemplate>
+                                <DataTemplate.DataType>
+                                    <x:Type x:TypeArguments="m:PackedFile.Srel.SrelRelationshipFlags" TypeName="ext:CheckableEnumValue" />
+                                </DataTemplate.DataType>
+                                <CheckBox Content="{Binding Item.DisplayName}" IsChecked="{Binding Checked}" />
+                            </DataTemplate>
+                        </ListBox.DataTemplates>
                     </ListBox>
                 </DockPanel>
             </WrapPanel>

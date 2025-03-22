@@ -3,6 +3,8 @@
 
 using System;
 
+using SimPe.Extensions;
+
 namespace SimPe.Models.PackedFile.Srel
 {
 	[Flags]
@@ -13,7 +15,9 @@ namespace SimPe.Models.PackedFile.Srel
 		Engaged = 0x04,
 		Married = 0x08,
 		Friend = 0x10,
+		[DisplayName("Best Friend")]
 		BestFriend = 0x20,
+		[DisplayName("Going Steady")]
 		GoingSteady = 0x40,
 		Enemy = 0x80,
 		Family = 0x4000,

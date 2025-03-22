@@ -23,10 +23,6 @@
         <ext:HexConverter x:Key="HexConverter" />
         <GridLength x:Key="SliderPreContentMargin">5</GridLength>
         <GridLength x:Key="SliderPostContentMargin">5</GridLength>
-        <ext:EnumToCheckedConverter
-            x:Key="BuildModeSortConverter"
-            Flags="True"
-            Type="{x:Type m:PackedFile.Objd.ObjdBuildModeSort}" />
     </UserControl.Resources>
     <DockPanel>
         <TextBlock

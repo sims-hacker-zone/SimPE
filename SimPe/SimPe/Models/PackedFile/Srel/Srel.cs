@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+using System.ComponentModel;
 using System.IO;
 
 using Avalonia.Controls;
@@ -28,7 +29,7 @@ namespace SimPe.Models.PackedFile.Srel
 		private int dailyScore;
 
 		[ObservableProperty]
-		private SrelRelationshipFlags relationshipFlags;
+		private CheckableFlagEnum<SrelRelationshipFlags> relationshipFlags;
 
 		[ObservableProperty]
 		private EnumDisplayNameItem<SrelRelationshipType> relationshipType;
@@ -68,7 +69,8 @@ namespace SimPe.Models.PackedFile.Srel
 			}
 			if (srel.Format >= 2)
 			{
-				srel.RelationshipFlags = (SrelRelationshipFlags)reader.ReadUInt16();
+				srel.RelationshipFlags = new((SrelRelationshipFlags)reader.ReadUInt16());
+				srel.RelationshipFlags.PropertyChanged += srel.Data_OnPropertyChanged;
 				srel.RelationshipType = new((SrelRelationshipType)reader.ReadUInt16());
 			}
 			if (srel.Format >= 3)
@@ -76,7 +78,7 @@ namespace SimPe.Models.PackedFile.Srel
 				srel.LifetimeScore = reader.ReadInt32();
 			}
 			uint format = srel.Format;
-			if (srel.Format >= 4 && srel.RelationshipFlags.HasFlag(SrelRelationshipFlags.Family))
+			if (srel.Format >= 4 && srel.RelationshipFlags.Value.HasFlag(SrelRelationshipFlags.Family))
 			{
 				srel.FamilyRelation = new((SrelFamilyRelations)reader.ReadUInt32());
 				format--;
@@ -123,7 +125,7 @@ namespace SimPe.Models.PackedFile.Srel
 			}
 			if (Format >= 2)
 			{
-				writer.Write((ushort)RelationshipFlags);
+				writer.Write((ushort)RelationshipFlags.Value);
 				writer.Write((ushort)RelationshipType.Item);
 			}
 			if (Format >= 3)
@@ -131,7 +133,7 @@ namespace SimPe.Models.PackedFile.Srel
 				writer.Write(LifetimeScore);
 			}
 			uint format = Format;
-			if (Format >= 4 && RelationshipFlags.HasFlag(SrelRelationshipFlags.Family))
+			if (Format >= 4 && RelationshipFlags.Value.HasFlag(SrelRelationshipFlags.Family))
 			{
 				writer.Write((uint)FamilyRelation.Item);
 				format--;
@@ -160,6 +162,11 @@ namespace SimPe.Models.PackedFile.Srel
 			{
 				writer.Write(BFF ? 1 : (uint)0);
 			}
+		}
+
+		public void Data_OnPropertyChanged(object sender, PropertyChangedEventArgs e)
+		{
+			OnPropertyChanged();
 		}
 	}
 }

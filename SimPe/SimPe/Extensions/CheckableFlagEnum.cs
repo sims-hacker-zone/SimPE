@@ -2,8 +2,8 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -44,9 +44,22 @@ namespace SimPe.Extensions
 		{
 			get
 			{
-				return values ??= new(from item in Enum.GetValues<T>()
-									  select new CheckableEnumValue<T> { Parent = this, Item = new(item) });
+				if (values == null)
+				{
+					values = new(from item in Enum.GetValues<T>()
+								 select new CheckableEnumValue<T> { Parent = this, Item = new(item) });
+					foreach (CheckableEnumValue<T> item in values)
+					{
+						item.PropertyChanged += Value_PropertyChanged;
+					}
+				}
+				return values;
 			}
+		}
+
+		public void Value_PropertyChanged(object sender, PropertyChangedEventArgs e)
+		{
+			OnPropertyChanged(nameof(Values));
 		}
 	}
 }
