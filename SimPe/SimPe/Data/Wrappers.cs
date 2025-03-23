@@ -10,6 +10,7 @@ using SimPe.Models.PackedFile;
 using SimPe.Models.PackedFile.Cats;
 using SimPe.Models.PackedFile.Clst;
 using SimPe.Models.PackedFile.Cpf;
+using SimPe.Models.PackedFile.Famh;
 using SimPe.Models.PackedFile.Fami;
 using SimPe.Models.PackedFile.Famt;
 using SimPe.Models.PackedFile.Fwav;
@@ -74,7 +75,8 @@ namespace SimPe.Data
 			[FileTypes.SWAF] = Swaf.Unserialize,
 			[FileTypes.OBJD] = Objd.Unserialize,
 			[FileTypes.NGBH] = Ngbh.Unserialize,
-			[FileTypes.FAMT] = Famt.Unserialize
+			[FileTypes.FAMT] = Famt.Unserialize,
+			[FileTypes.FAMH] = Famh.Unserialize
 		};
 	}
 }

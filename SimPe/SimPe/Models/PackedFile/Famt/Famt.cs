@@ -1,10 +1,8 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-using System;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.Text;
 
 using Avalonia.Controls;
 
@@ -13,7 +11,6 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using SimPe.Extensions;
 using SimPe.Models.Interfaces;
 using SimPe.Views.PackedFile.Famt;
-using SimPe.Views.PackedFile.Ngbh;
 
 namespace SimPe.Models.PackedFile.Famt
 {
