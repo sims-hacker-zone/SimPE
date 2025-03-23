@@ -1,0 +1,61 @@
+<UserControl
+    x:Class="SimPe.Views.PackedFile.Famt.FamtPanel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ext="using:SimPe.Extensions"
+    xmlns:m="using:SimPe.Models"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:SimPe.ViewModels"
+    x:DataType="m:PackedFile.Famt.Famt">
+    <UserControl.Styles>
+        <Style Selector=".rootpanel  DockPanel">
+            <Setter Property="Margin" Value="5,5" />
+        </Style>
+        <Style Selector=".rootpanel DockPanel &gt; Label">
+            <Setter Property="Margin" Value="0,0,5,0" />
+        </Style>
+        <Style Selector=".rootpanel WrapPanel DockPanel">
+            <Setter Property="MinWidth" Value="250" />
+        </Style>
+    </UserControl.Styles>
+    <UserControl.Resources>
+        <ext:HexConverter x:Key="HexConverter" />
+        <GridLength x:Key="SliderPreContentMargin">5</GridLength>
+        <GridLength x:Key="SliderPostContentMargin">5</GridLength>
+    </UserControl.Resources>
+    <DockPanel>
+        <TextBlock
+            Margin="5,5"
+            Padding="5,5"
+            HorizontalAlignment="Stretch"
+            Background="{StaticResource SystemControlBackgroundAccentBrush}"
+            DockPanel.Dock="Top">
+            Family Ties Wrapper
+        </TextBlock>
+        <DockPanel Classes="rootpanel">
+            <Grid ColumnDefinitions="*,*,*">
+                <DockPanel>
+                    <ListBox Name="simsList" ItemsSource="{Binding Sims}" />
+                </DockPanel>
+                <DockPanel Grid.Column="1">
+                    <DockPanel DockPanel.Dock="Top">
+                        <Label VerticalAlignment="Center" DockPanel.Dock="Left">Sim Instance:</Label>
+                        <TextBox Text="{Binding #simsList.SelectedItem.SimInstance, Converter={StaticResource HexConverter}}" />
+                    </DockPanel>
+                    <ListBox Name="tiesList" ItemsSource="{Binding #simsList.SelectedItem.Ties}" />
+                </DockPanel>
+                <StackPanel Grid.Column="2" DataContext="{Binding #tiesList.SelectedItem}">
+                    <DockPanel>
+                        <Label VerticalAlignment="Center" DockPanel.Dock="Left">Type:</Label>
+                        <ComboBox ItemsSource="{Binding Type.Values, Mode=OneTime}" SelectedItem="{Binding Type}" />
+                    </DockPanel>
+                    <DockPanel>
+                        <Label VerticalAlignment="Center" DockPanel.Dock="Left">Target:</Label>
+                        <TextBox Text="{Binding TargetInstance, Converter={StaticResource HexConverter}}" />
+                    </DockPanel>
+                </StackPanel>
+            </Grid>
+        </DockPanel>
+    </DockPanel>
+</UserControl>
