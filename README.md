@@ -1,13 +1,10 @@
 # SimPE
 
-An editor designed for modding The Sims 2.
-
-> [!CAUTION]
-> This will become a full remaster, with breaking changes to all plugins for versions < 0.77.9999!
->
-> If you are a plugin author for SimPE, we encourage you to integrate the plugin into this codebase, as this will guarantee compatibility.
+An editor designed for modding The Sims 2, rewritten and remastered.
 
 ## Contributing
+
+Contributions are always welcome!
 
 ### Compiling
 
@@ -19,8 +16,14 @@ Inside the `fullsimpe` folder is the file `SimPe.sln`, which can be opened with 
 
 Use the build task to compile the program.
 
+#### Command line
+
+Go to the `SimPe` folder and run either `dotnet build` to build it or `dotnet run` to build and run the program.
+
 ### Prerequisites
 
-- Visual Studio 2022 or VSCode
-- .NET Framework >=4.7.1,<5
-- (for Linux) Mono, Wine (with installed .NET Framework >=4.7.1,<5) and the .NET SDK with the `dotnet` tool available
+- [.NET SDK 9.0](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
+- For code editing: Either Visual Studio 2022 or Visual Studio Code (or compatible forks)
+  - When using VSCodium or other open-source VSCode forks: As Microsoft has their C# tooling as closed-source,
+    you need to install the [C# with NetCoreDbg](https://open-vsx.org/extension/blipk/csharp) extension for debugging.
+  - Recommended extensions in Code are Avalonia (as this uses Avalonia UI), C# and the XAML Styler.
