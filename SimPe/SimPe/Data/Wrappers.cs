@@ -14,6 +14,7 @@ using SimPe.Models.PackedFile.Fami;
 using SimPe.Models.PackedFile.Fwav;
 using SimPe.Models.PackedFile.Idno;
 using SimPe.Models.PackedFile.Ltxt;
+using SimPe.Models.PackedFile.Ngbh;
 using SimPe.Models.PackedFile.Objd;
 using SimPe.Models.PackedFile.Picture;
 using SimPe.Models.PackedFile.Scid;
@@ -70,7 +71,8 @@ namespace SimPe.Data
 			[FileTypes.THREE_IDR] = ThreeIdr.Unserialize,
 			[FileTypes.SREL] = Srel.Unserialize,
 			[FileTypes.SWAF] = Swaf.Unserialize,
-			[FileTypes.OBJD] = Objd.Unserialize
+			[FileTypes.OBJD] = Objd.Unserialize,
+			[FileTypes.NGBH] = Ngbh.Unserialize
 		};
 	}
 }

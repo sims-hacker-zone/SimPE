@@ -13,6 +13,11 @@ namespace SimPe.Extensions
 	{
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
+			if (value is Enum e)
+			{
+				Type t = Enum.GetUnderlyingType(e.GetType());
+				value = System.Convert.ChangeType(value, t);
+			}
 			return targetType.IsAssignableTo(typeof(string))
 				? value switch
 				{
