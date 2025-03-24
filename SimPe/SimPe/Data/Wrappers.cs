@@ -20,6 +20,7 @@ using SimPe.Models.PackedFile.Ngbh;
 using SimPe.Models.PackedFile.Objd;
 using SimPe.Models.PackedFile.Picture;
 using SimPe.Models.PackedFile.Scid;
+using SimPe.Models.PackedFile.Scor;
 using SimPe.Models.PackedFile.Sdsc;
 using SimPe.Models.PackedFile.Srel;
 using SimPe.Models.PackedFile.Str;
@@ -76,7 +77,8 @@ namespace SimPe.Data
 			[FileTypes.OBJD] = Objd.Unserialize,
 			[FileTypes.NGBH] = Ngbh.Unserialize,
 			[FileTypes.FAMT] = Famt.Unserialize,
-			[FileTypes.FAMH] = Famh.Unserialize
+			[FileTypes.FAMH] = Famh.Unserialize,
+			[FileTypes.SCOR] = Scor.Unserialize
 		};
 	}
 }

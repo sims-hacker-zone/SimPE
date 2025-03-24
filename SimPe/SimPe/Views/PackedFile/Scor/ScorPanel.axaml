@@ -1,0 +1,129 @@
+<UserControl
+    x:Class="SimPe.Views.PackedFile.Scor.ScorPanel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ext="using:SimPe.Extensions"
+    xmlns:m="using:SimPe.Models"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:SimPe.ViewModels"
+    x:DataType="m:PackedFile.Scor.Scor">
+    <UserControl.Styles>
+        <Style Selector=".rootpanel DockPanel">
+            <Setter Property="Margin" Value="5,5" />
+        </Style>
+        <Style Selector=".rootpanel DockPanel &gt; Label">
+            <Setter Property="Margin" Value="0,0,5,0" />
+        </Style>
+        <Style Selector=".rootpanel WrapPanel DockPanel">
+            <Setter Property="MinWidth" Value="250" />
+        </Style>
+    </UserControl.Styles>
+    <UserControl.Resources>
+        <ext:HexConverter x:Key="HexConverter" />
+        <GridLength x:Key="SliderPreContentMargin">5</GridLength>
+        <GridLength x:Key="SliderPostContentMargin">5</GridLength>
+    </UserControl.Resources>
+    <DockPanel>
+        <TextBlock
+            Margin="5,5"
+            Padding="5,5"
+            HorizontalAlignment="Stretch"
+            Background="{StaticResource SystemControlBackgroundAccentBrush}"
+            DockPanel.Dock="Top">
+            Sim Scores Wrapper
+        </TextBlock>
+        <DockPanel Classes="rootpanel">
+            <TabControl>
+                <TabItem Header="Business Rewards" IsVisible="{Binding BusinessRewards.Count}">
+                    <DockPanel IsVisible="{Binding BusinessRewards.Count}">
+                        <ListBox
+                            Name="businessRewardsList"
+                            DockPanel.Dock="Left"
+                            ItemsSource="{Binding BusinessRewards}" />
+                        <StackPanel DataContext="{Binding #businessRewardsList.SelectedItem}">
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Type:</Label>
+                                <TextBox Text="{Binding Type}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Value:</Label>
+                                <TextBox Text="{Binding Value}" />
+                            </DockPanel>
+                        </StackPanel>
+                    </DockPanel>
+                </TabItem>
+                <TabItem Header="Learned Behaviors" IsVisible="{Binding LearnedBehaviors.Count}">
+                    <DockPanel IsVisible="{Binding LearnedBehaviors.Count}">
+                        <ListBox
+                            Name="learnedBehaviorsList"
+                            DockPanel.Dock="Left"
+                            ItemsSource="{Binding LearnedBehaviors}" />
+                        <StackPanel DataContext="{Binding #learnedBehaviorsList.SelectedItem}">
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Guid:</Label>
+                                <TextBox Text="{Binding Guid, Converter={StaticResource HexConverter}}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Value:</Label>
+                                <TextBox Text="{Binding Value}" />
+                            </DockPanel>
+                        </StackPanel>
+                    </DockPanel>
+                </TabItem>
+                <TabItem Header="Best Friend Forever List" IsVisible="{Binding BestFriendForeverList.Count}">
+                    <DockPanel IsVisible="{Binding BestFriendForeverList.Count}">
+                        <ListBox
+                            Name="bffList"
+                            DockPanel.Dock="Left"
+                            ItemsSource="{Binding BestFriendForeverList}" />
+                        <StackPanel DataContext="{Binding #bffList.SelectedItem}">
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Unknown00:</Label>
+                                <TextBox Text="{Binding Unknown00}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Unknown01:</Label>
+                                <TextBox Text="{Binding Unknown01}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Unknown02:</Label>
+                                <TextBox Text="{Binding Unknown02}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Unknown03:</Label>
+                                <TextBox Text="{Binding Unknown03}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Unknown04:</Label>
+                                <TextBox Text="{Binding Unknown04}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Unknown05:</Label>
+                                <TextBox Text="{Binding Unknown05}" />
+                            </DockPanel>
+                        </StackPanel>
+                    </DockPanel>
+                </TabItem>
+                <TabItem Header="Witch Names" IsVisible="{Binding WitchNames.Count}">
+                    <DockPanel IsVisible="{Binding WitchNames.Count}">
+                        <ListBox
+                            Name="witchNameList"
+                            DockPanel.Dock="Left"
+                            ItemsSource="{Binding WitchNames}" />
+                        <StackPanel DataContext="{Binding #witchNameList.SelectedItem}">
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Id:</Label>
+                                <TextBox Text="{Binding Id}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Name:</Label>
+                                <TextBox Text="{Binding Name}" />
+                            </DockPanel>
+                        </StackPanel>
+                    </DockPanel>
+                </TabItem>
+            </TabControl>
+        </DockPanel>
+    </DockPanel>
+</UserControl>
