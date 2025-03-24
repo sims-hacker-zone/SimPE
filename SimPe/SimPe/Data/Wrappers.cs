@@ -27,6 +27,7 @@ using SimPe.Models.PackedFile.Str;
 using SimPe.Models.PackedFile.Swaf;
 using SimPe.Models.PackedFile.ThreeIdr;
 using SimPe.Models.PackedFile.Ttab;
+using SimPe.Models.PackedFile.Wthr;
 
 namespace SimPe.Data
 {
@@ -78,7 +79,8 @@ namespace SimPe.Data
 			[FileTypes.NGBH] = Ngbh.Unserialize,
 			[FileTypes.FAMT] = Famt.Unserialize,
 			[FileTypes.FAMH] = Famh.Unserialize,
-			[FileTypes.SCOR] = Scor.Unserialize
+			[FileTypes.SCOR] = Scor.Unserialize,
+			[FileTypes.WTHR] = Wthr.Unserialize
 		};
 	}
 }
