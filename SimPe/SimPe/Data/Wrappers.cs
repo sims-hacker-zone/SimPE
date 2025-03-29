@@ -7,6 +7,7 @@ using System.IO;
 
 using SimPe.Models.Interfaces;
 using SimPe.Models.PackedFile;
+using SimPe.Models.PackedFile.Bhav;
 using SimPe.Models.PackedFile.Cats;
 using SimPe.Models.PackedFile.Clst;
 using SimPe.Models.PackedFile.Cpf;
@@ -80,7 +81,9 @@ namespace SimPe.Data
 			[FileTypes.FAMT] = Famt.Unserialize,
 			[FileTypes.FAMH] = Famh.Unserialize,
 			[FileTypes.SCOR] = Scor.Unserialize,
-			[FileTypes.WTHR] = Wthr.Unserialize
+			[FileTypes.WTHR] = Wthr.Unserialize,
+			[FileTypes.BHAV] = Bhav.Unserialize,
+			[FileTypes.THUMB_FAMILY] = Picture.Unserialize
 		};
 	}
 }

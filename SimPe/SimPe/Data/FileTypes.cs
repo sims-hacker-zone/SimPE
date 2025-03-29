@@ -376,7 +376,7 @@ namespace SimPe.Data
 		/// <summary>
 		/// Function
 		/// </summary>
-		[FileType(DisplayName = "Function")]
+		[FileType(DisplayName = "Function", ContainsFileName = true)]
 		FCNS = 0x46434E53,
 		/// <summary>
 		/// Maxis Material Shader
@@ -571,7 +571,7 @@ namespace SimPe.Data
 		/// <summary>
 		/// Layered Image
 		/// </summary>
-		[FileType(DisplayName = "Layered Image")]
+		[FileType(DisplayName = "Layered Image", ContainsFileName = true)]
 		DGRP = 0x44475250,
 		/// <summary>
 		/// Effects List
@@ -631,7 +631,7 @@ namespace SimPe.Data
 		/// <summary>
 		/// Stack Script
 		/// </summary>
-		[FileType(DisplayName = "Stack Script")]
+		[FileType(DisplayName = "Stack Script", ContainsFileName = true)]
 		POSI = 0x504F5349,
 		/// <summary>
 		/// UNK: 0x8CC0A14B
