@@ -1,15 +1,15 @@
+// SPDX-FileCopyrightText: © SimPE contributors
+// SPDX-License-Identifier: GPL-2.0-or-later
+
 using System;
 using System.IO;
-using System.Reflection;
+using System.Linq;
 using System.Text;
 
 using Avalonia.Controls;
 using Avalonia.Media.Imaging;
-using Avalonia.Platform;
 
 using CommunityToolkit.Mvvm.ComponentModel;
-
-using Pfim;
 
 using SimPe.Media;
 using SimPe.Models.Interfaces;
@@ -48,7 +48,9 @@ namespace SimPe.Models.PackedFile.Picture
 			else
 			{
 				buffer = reader.ReadBytes((int)reader.BaseStream.Length);
-				picture.Image = Tga.ReadTGA(new MemoryStream(buffer)) ?? new(new MemoryStream(buffer));
+				picture.Image = buffer[^18..].AsSpan().SequenceEqual("TRUEVISION-XFILE.\x00"u8)
+					? Tga.ReadTGA(new MemoryStream(buffer))
+					: JpegAlfa.LoadJpegAlfa(buffer);
 			}
 			picture.Panel = new PicturePanel() { DataContext = picture };
 			return picture;
