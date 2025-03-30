@@ -1,0 +1,56 @@
+<UserControl
+    x:Class="SimPe.Views.PackedFile.Bcon.BconPanel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ext="using:SimPe.Extensions"
+    xmlns:m="using:SimPe.Models"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:SimPe.ViewModels"
+    x:DataType="m:PackedFile.Bcon.Bcon">
+    <UserControl.Styles>
+        <Style Selector=".rootpanel  DockPanel">
+            <Setter Property="Margin" Value="5,5" />
+        </Style>
+        <Style Selector=".rootpanel DockPanel &gt; Label">
+            <Setter Property="Margin" Value="0,0,5,0" />
+        </Style>
+        <Style Selector=".rootpanel WrapPanel DockPanel">
+            <Setter Property="MinWidth" Value="150" />
+        </Style>
+    </UserControl.Styles>
+    <UserControl.Resources>
+        <ext:HexConverter x:Key="HexConverter" />
+        <GridLength x:Key="SliderPreContentMargin">5</GridLength>
+        <GridLength x:Key="SliderPostContentMargin">5</GridLength>
+    </UserControl.Resources>
+    <DockPanel>
+        <TextBlock
+            Margin="5,5"
+            Padding="5,5"
+            HorizontalAlignment="Stretch"
+            Background="{StaticResource SystemControlBackgroundAccentBrush}"
+            DockPanel.Dock="Top">
+            BCON Wrapper
+        </TextBlock>
+        <DockPanel Classes="rootpanel">
+            <StackPanel DockPanel.Dock="Left">
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">File name:</Label>
+                    <TextBox Text="{Binding FileName}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Flag:</Label>
+                    <TextBox Text="{Binding Flag, Converter={StaticResource HexConverter}}" />
+                </DockPanel>
+            </StackPanel>
+            <ListBox ItemsSource="{Binding Constants}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBox Text="{Binding, Converter={StaticResource HexConverter}}" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </DockPanel>
+    </DockPanel>
+</UserControl>
