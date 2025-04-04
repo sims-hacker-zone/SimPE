@@ -9,6 +9,7 @@ using SimPe.Models.Interfaces;
 using SimPe.Models.PackedFile;
 using SimPe.Models.PackedFile.Bcon;
 using SimPe.Models.PackedFile.Bhav;
+using SimPe.Models.PackedFile.Bnfo;
 using SimPe.Models.PackedFile.Cats;
 using SimPe.Models.PackedFile.Clst;
 using SimPe.Models.PackedFile.Cpf;
@@ -85,7 +86,21 @@ namespace SimPe.Data
 			[FileTypes.WTHR] = Wthr.Unserialize,
 			[FileTypes.BHAV] = Bhav.Unserialize,
 			[FileTypes.THUMB_FAMILY] = Picture.Unserialize,
+			[FileTypes.THUMB_AWN] = Picture.Unserialize,
+			[FileTypes.THUMB_CHIM] = Picture.Unserialize,
+			[FileTypes.THUMB_DORM] = Picture.Unserialize,
+			[FileTypes.THUB] = Picture.Unserialize,
+			[FileTypes.THUMB_FARC] = Picture.Unserialize,
+			[FileTypes.THUMB_FENCE] = Picture.Unserialize,
+			[FileTypes.THUMB_FLOOR] = Picture.Unserialize,
+			[FileTypes.THUMB_MODST] = Picture.Unserialize,
+			[FileTypes.THUMB_NHOBJ] = Picture.Unserialize,
+			[FileTypes.THUMB_POOL] = Picture.Unserialize,
+			[FileTypes.THUMB_ROOF] = Picture.Unserialize,
+			[FileTypes.THUMB_TERRAIN] = Picture.Unserialize,
+			[FileTypes.THUMB_WALL] = Picture.Unserialize,
 			[FileTypes.BCON] = Bcon.Unserialize,
+			[FileTypes.BNFO] = Bnfo.Unserialize,
 		};
 	}
 }
