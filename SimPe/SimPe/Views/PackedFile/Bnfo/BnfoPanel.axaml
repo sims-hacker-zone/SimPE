@@ -71,7 +71,7 @@
                             Name="CustomerListBox"
                             DockPanel.Dock="Left"
                             ItemsSource="{Binding Customers}" />
-                        <WrapPanel DataContext="{Binding #CustomerListBox.SelectedItem}">
+                        <WrapPanel DataContext="{Binding #CustomerListBox.SelectedItem}" Orientation="Vertical">
                             <DockPanel>
                                 <Label VerticalAlignment="Center" DockPanel.Dock="Left">Sim Instance:</Label>
                                 <TextBox Text="{Binding Instance, Converter={StaticResource HexConverter}}" />
@@ -103,7 +103,7 @@
                             Name="EmployeeListBox"
                             DockPanel.Dock="Left"
                             ItemsSource="{Binding Employees}" />
-                        <WrapPanel DataContext="{Binding #EmployeeListBox.SelectedItem}">
+                        <WrapPanel DataContext="{Binding #EmployeeListBox.SelectedItem}" Orientation="Vertical">
                             <DockPanel>
                                 <Label VerticalAlignment="Center" DockPanel.Dock="Left">Sim Instance:</Label>
                                 <TextBox Text="{Binding Instance, Converter={StaticResource HexConverter}}" />
@@ -125,7 +125,7 @@
                             Name="HistoryListBox"
                             DockPanel.Dock="Left"
                             ItemsSource="{Binding Histories}" />
-                        <WrapPanel DataContext="{Binding #HistoryListBox.SelectedItem}">
+                        <WrapPanel DataContext="{Binding #HistoryListBox.SelectedItem}" Orientation="Vertical">
                             <DockPanel>
                                 <Label VerticalAlignment="Center" DockPanel.Dock="Left">Unknown 00:</Label>
                                 <TextBox Text="{Binding Unknown_00}" />
