@@ -41,8 +41,40 @@
     <EmbeddedResource Include="SimPe\img\*" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Ambertation\Windows\Forms\bottom.png" />
+    <None Remove="Ambertation\Windows\Forms\closeX.png" />
+    <None Remove="Ambertation\Windows\Forms\closeX_f.png" />
+    <None Remove="Ambertation\Windows\Forms\dockhint.PNG" />
+    <None Remove="Ambertation\Windows\Forms\dockimg.png" />
+    <None Remove="Ambertation\Windows\Forms\left.png" />
+    <None Remove="Ambertation\Windows\Forms\pinD.png" />
+    <None Remove="Ambertation\Windows\Forms\pinD_f.png" />
+    <None Remove="Ambertation\Windows\Forms\pinH.png" />
+    <None Remove="Ambertation\Windows\Forms\pinH_f.png" />
+    <None Remove="Ambertation\Windows\Forms\pinV.png" />
+    <None Remove="Ambertation\Windows\Forms\pinV_f.png" />
+    <None Remove="Ambertation\Windows\Forms\right.png" />
+    <None Remove="Ambertation\Windows\Forms\top.png" />
+  </ItemGroup>
+  <ItemGroup>
     <CompilerVisibleProperty Include="RootNamespace" />
     <CompilerVisibleProperty Include="ProjectDir" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Ambertation\Windows\Forms\bottom.png" />
+    <EmbeddedResource Include="Ambertation\Windows\Forms\closeX.png" />
+    <EmbeddedResource Include="Ambertation\Windows\Forms\closeX_f.png" />
+    <EmbeddedResource Include="Ambertation\Windows\Forms\dockhint.PNG" />
+    <EmbeddedResource Include="Ambertation\Windows\Forms\dockimg.png" />
+    <EmbeddedResource Include="Ambertation\Windows\Forms\left.png" />
+    <EmbeddedResource Include="Ambertation\Windows\Forms\pinD.png" />
+    <EmbeddedResource Include="Ambertation\Windows\Forms\pinD_f.png" />
+    <EmbeddedResource Include="Ambertation\Windows\Forms\pinH.png" />
+    <EmbeddedResource Include="Ambertation\Windows\Forms\pinH_f.png" />
+    <EmbeddedResource Include="Ambertation\Windows\Forms\pinV.png" />
+    <EmbeddedResource Include="Ambertation\Windows\Forms\pinV_f.png" />
+    <EmbeddedResource Include="Ambertation\Windows\Forms\right.png" />
+    <EmbeddedResource Include="Ambertation\Windows\Forms\top.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
@@ -52,29 +84,14 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="NetDocks">
-      <HintPath>..\.assemblys\NetDocks.dll</HintPath>
-    </Reference>
     <Reference Include="XPCommonControls">
       <HintPath>..\.assemblys\XPCommonControls.dll</HintPath>
-    </Reference>
-    <Reference Include="ambertation.3D">
-      <HintPath>..\.assemblys\ambertation.3D.dll</HintPath>
-    </Reference>
-    <Reference Include="ambertation.utilities">
-      <HintPath>..\.assemblys\ambertation.utilities.dll</HintPath>
-    </Reference>
-    <Reference Include="ambertation.3D.mdx.binding">
-      <HintPath>..\.assemblys\ambertation.3D.mdx.binding.dll</HintPath>
     </Reference>
     <Reference Include="SandDock">
       <HintPath>..\.assemblys\SandDock.dll</HintPath>
     </Reference>
     <Reference Include="Eyefinder">
       <HintPath>..\.assemblys\Eyefinder.dll</HintPath>
-    </Reference>
-    <Reference Include="AdvancedForms">
-      <HintPath>..\.assemblys\AdvancedForms.dll</HintPath>
     </Reference>
     <Reference Include="microsoft.directx.audiovideoplayback">
       <HintPath>..\.assemblys\microsoft.directx.audiovideoplayback.dll</HintPath>
@@ -102,12 +119,6 @@
     </Reference>
     <Reference Include="microsoft.directx">
       <HintPath>..\.assemblys\microsoft.directx.dll</HintPath>
-    </Reference>
-    <Reference Include="xsi.lib">
-      <HintPath>..\.assemblys\xsi.lib.dll</HintPath>
-    </Reference>
-    <Reference Include="7z">
-      <HintPath>..\.assemblys\7z.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
