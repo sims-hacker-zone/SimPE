@@ -21,6 +21,7 @@ using SimPe.Models.PackedFile.Idno;
 using SimPe.Models.PackedFile.Ltxt;
 using SimPe.Models.PackedFile.Ngbh;
 using SimPe.Models.PackedFile.Objd;
+using SimPe.Models.PackedFile.Objf;
 using SimPe.Models.PackedFile.Picture;
 using SimPe.Models.PackedFile.Scid;
 using SimPe.Models.PackedFile.Scor;
@@ -101,6 +102,7 @@ namespace SimPe.Data
 			[FileTypes.THUMB_WALL] = Picture.Unserialize,
 			[FileTypes.BCON] = Bcon.Unserialize,
 			[FileTypes.BNFO] = Bnfo.Unserialize,
+			[FileTypes.OBJf] = Objf.Unserialize,
 		};
 	}
 }

@@ -31,7 +31,7 @@
             HorizontalAlignment="Stretch"
             Background="{StaticResource SystemControlBackgroundAccentBrush}"
             DockPanel.Dock="Top">
-            Sim Description Wrapper
+            Object Description Wrapper
         </TextBlock>
         <DockPanel Classes="rootpanel">
             <StackPanel DockPanel.Dock="Left">
