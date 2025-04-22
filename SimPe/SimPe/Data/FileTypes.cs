@@ -31,7 +31,7 @@ namespace SimPe.Data
 		/// <summary>
 		/// House Descriptor
 		/// </summary>
-		[FileType(DisplayName = "House Descriptor")]
+		[FileType(DisplayName = "House Descriptor", ContainsFileName = true)]
 		HOUS = 0x484F5553,
 		/// <summary>
 		/// Slot File
@@ -261,12 +261,12 @@ namespace SimPe.Data
 		/// <summary>
 		/// Wall Layer
 		/// </summary>
-		[FileType(DisplayName = "Wall Layer")]
+		[FileType(DisplayName = "Wall Layer", ContainsFileName = true)]
 		WLAY = 0x8A84D7B0,
 		/// <summary>
 		/// Behaviour Constant Labels
 		/// </summary>
-		[FileType(DisplayName = "Behavior Constant Labels")]
+		[FileType(DisplayName = "Behavior Constant Labels", ContainsFileName = true)]
 		TRCN = 0x5452434E,
 		/// <summary>
 		/// Edith Simantics Behavior Labels
@@ -291,7 +291,7 @@ namespace SimPe.Data
 		/// <summary>
 		/// String Map
 		/// </summary>
-		[FileType(DisplayName = "String Map")]
+		[FileType(DisplayName = "String Map", ContainsFileName = true)]
 		SMAP = 0xCAC4FC40,
 		/// <summary>
 		/// Family History
@@ -316,7 +316,7 @@ namespace SimPe.Data
 		/// <summary>
 		/// Road Texture
 		/// </summary>
-		[FileType(DisplayName = "Road Texture")]
+		[FileType(DisplayName = "Road Texture", ContainsFileName = true)]
 		RTEX = 0xACE46235,
 		/// <summary>
 		/// Accelerator Key Definitions
@@ -336,7 +336,7 @@ namespace SimPe.Data
 		/// <summary>
 		/// Lot Definition
 		/// </summary>
-		[FileType(DisplayName = "Lot Definition")]
+		[FileType(DisplayName = "Lot Definition", ContainsFileName = true)]
 		LOTD = 0x6C589723,
 		/// <summary>
 		/// Cinematic Scene
@@ -346,7 +346,7 @@ namespace SimPe.Data
 		/// <summary>
 		/// Lot Texture
 		/// </summary>
-		[FileType(DisplayName = "Lot Texture")]
+		[FileType(DisplayName = "Lot Texture", ContainsFileName = true)]
 		LTTX = 0x4B58975B,
 		/// <summary>
 		/// Single Sim Memory
@@ -421,7 +421,7 @@ namespace SimPe.Data
 		/// <summary>
 		/// Object
 		/// </summary>
-		[FileType(DisplayName = "Object")]
+		[FileType(DisplayName = "Object", ContainsFileName = true)]
 		OBJT = 0x6F626A74,
 		/// <summary>
 		/// Castaway Mission Goal
@@ -551,12 +551,12 @@ namespace SimPe.Data
 		/// <summary>
 		/// Lot Terrain Geometry
 		/// </summary>
-		[FileType(DisplayName = "Lot Terrain Geometry")]
+		[FileType(DisplayName = "Lot Terrain Geometry", ContainsFileName = true)]
 		LOTG = 0x6B943B43,
 		/// <summary>
 		/// 3D Array
 		/// </summary>
-		[FileType(DisplayName = "3D Array")]
+		[FileType(DisplayName = "3D Array", ContainsFileName = true)]
 		THREE_ARY = 0x2A51171B,
 		/// <summary>
 		/// Audio Test
@@ -616,17 +616,17 @@ namespace SimPe.Data
 		/// <summary>
 		/// Object Material?
 		/// </summary>
-		[FileType(DisplayName = "Object Material?")]
+		[FileType(DisplayName = "Object Material?", ContainsFileName = true)]
 		OBJM = 0x4F626A4D,
 		/// <summary>
 		/// Object
 		/// </summary>
-		[FileType(DisplayName = "Object")]
+		[FileType(DisplayName = "Object", ContainsFileName = true)]
 		OBJT2 = 0xFA1C39F7,
 		/// <summary>
 		/// Image Color Palette (Version 1)
 		/// </summary>
-		[FileType(DisplayName = "Image Color Palette (Version 1)")]
+		[FileType(DisplayName = "Image Color Palette (Version 1)", ContainsFileName = true)]
 		PALT = 0x50414C54,
 		/// <summary>
 		/// Stack Script
@@ -641,7 +641,7 @@ namespace SimPe.Data
 		/// <summary>
 		/// Sim Information
 		/// </summary>
-		[FileType(DisplayName = "Sim Information")]
+		[FileType(DisplayName = "Sim Information", ContainsFileName = true)]
 		SIMI = 0x53494D49,
 		/// <summary>
 		/// Sprites
@@ -656,32 +656,32 @@ namespace SimPe.Data
 		/// <summary>
 		/// TSSG System
 		/// </summary>
-		[FileType(DisplayName = "TSSG System")]
+		[FileType(DisplayName = "TSSG System", ContainsFileName = true)]
 		TSSG = 0xBA353CE1,
 		/// <summary>
 		/// Vertex
 		/// </summary>
-		[FileType(DisplayName = "Vertex")]
+		[FileType(DisplayName = "Vertex Layer", ContainsFileName = true)]
 		VERT = 0xCB4387A1,
 		/// <summary>
 		/// Wall Graph
 		/// </summary>
-		[FileType(DisplayName = "Wall Graph")]
+		[FileType(DisplayName = "Wall Graph", ContainsFileName = true)]
 		WGRA = 0x0A284D0B,
 		/// <summary>
 		/// World Database
 		/// </summary>
-		[FileType(DisplayName = "World Database")]
+		[FileType(DisplayName = "World Database", ContainsFileName = true)]
 		WRLD = 0x49FF7D76,
 		/// <summary>
 		/// Material Object?
 		/// </summary>
-		[FileType(DisplayName = "Material Object?")]
+		[FileType(DisplayName = "Material Object?", ContainsFileName = true)]
 		XMTO = 0x584D544F,
 		/// <summary>
 		/// Object XML
 		/// </summary>
-		[FileType(DisplayName = "Object XML", Extension = "xml")]
+		[FileType(DisplayName = "Object XML", Extension = "xml", ContainsFileName = true)]
 		XOBJ2 = 0x584F424A,
 		/// <summary>
 		/// Wants Tree Item
