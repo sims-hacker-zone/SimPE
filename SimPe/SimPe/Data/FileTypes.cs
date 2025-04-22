@@ -82,12 +82,12 @@ namespace SimPe.Data
 		/// Lighting (Directional Light)
 		/// </summary>
 		[FileType(DisplayName = "Lighting (Directional Light)", Extension = "5dl")]
-		LDIR = 0xC9C81B9B,
+		LDIR = 0xC9C81BA3,
 		/// <summary>
 		/// Lighting (Ambient Light)
 		/// </summary>
 		[FileType(DisplayName = "Lighting (Ambient Light)", Extension = "5al")]
-		LAMB = 0xC9C81BA3,
+		LAMB = 0xC9C81B9B,
 		/// <summary>
 		/// Lighting (Point Light)
 		/// </summary>
@@ -586,7 +586,7 @@ namespace SimPe.Data
 		/// <summary>
 		/// Fence Post Layer
 		/// </summary>
-		[FileType(DisplayName = "Fence Post Layer")]
+		[FileType(DisplayName = "Fence Post Layer", ContainsFileName = true)]
 		FPST = 0xAB4BA572,
 		/// <summary>
 		/// FX Sound
