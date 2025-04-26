@@ -18,6 +18,7 @@ using SimPe.Models.PackedFile.Fami;
 using SimPe.Models.PackedFile.Famt;
 using SimPe.Models.PackedFile.Fwav;
 using SimPe.Models.PackedFile.Idno;
+using SimPe.Models.PackedFile.Lotd;
 using SimPe.Models.PackedFile.Ltxt;
 using SimPe.Models.PackedFile.Matshad;
 using SimPe.Models.PackedFile.Ngbh;
@@ -105,6 +106,7 @@ namespace SimPe.Data
 			[FileTypes.BNFO] = Bnfo.Unserialize,
 			[FileTypes.OBJf] = Objf.Unserialize,
 			[FileTypes.MATSHAD] = Matshad.Unserialize,
+			[FileTypes.LOTD] = Lotd.Unserialize,
 		};
 	}
 }

@@ -40,7 +40,7 @@ namespace SimPe.ViewModels.ResourceTree
 			FileSource = new(packageFile.FileIndex);
 			FileSource.Columns.AddRange([
 				new TextColumn<PackedFile, string>("Name", x => x.DisplayName),
-				new TextColumn<PackedFile, string>("Type", x => x.TypeInfo.ShortName),
+				new TextColumn<PackedFile, string>("Type", x => $"{x.TypeInfo.ShortName} (0x{(uint)x.Type:X8})"),
 				new TextColumn<PackedFile, string>("Group", x => $"0x{x.Group:X8}"),
 				new TextColumn<PackedFile, string>("Instance (high)", x => $"0x{x.InstanceHigh:X8}"),
 				new TextColumn<PackedFile, string>("Instance", x => $"0x{x.Instance:X8}"),

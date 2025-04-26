@@ -738,5 +738,10 @@ namespace SimPe.Data
 		/// </summary>
 		[FileType(DisplayName = "Hitlist")]
 		HLS = 0x7B1ACFCD,
+		/// <summary>
+		/// TS Routing Object Aggregate
+		/// </summary>
+		[FileType(DisplayName = "TS Routing Object Aggregate", ContainsFileName = true)]
+		TSRO = 0xBC66BAEC,
 	}
 }
