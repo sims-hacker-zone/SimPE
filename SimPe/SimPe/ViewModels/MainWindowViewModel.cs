@@ -60,7 +60,7 @@ namespace SimPe.ViewModels
 				OnPropertyChanged(nameof(LoadedPackage));
 				OnPropertyChanged(nameof(ResourceTree));
 				OnPropertyChanged(nameof(RecentFilesMenuItems));
-				Parent.Title = $"SimPe - {Uri.UnescapeDataString(loadedPackage.StorageFile.Path.AbsolutePath)}";
+				Parent.Title = $"SimPE - {Uri.UnescapeDataString(loadedPackage.StorageFile.Path.AbsolutePath)}";
 			}
 		}
 

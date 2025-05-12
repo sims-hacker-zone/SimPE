@@ -6,7 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:v="using:SimPe.Views"
     xmlns:vm="using:SimPe.ViewModels"
-    Title="SimPe"
+    Title="SimPE"
     d:DesignHeight="450"
     d:DesignWidth="800"
     x:DataType="vm:MainWindowViewModel"

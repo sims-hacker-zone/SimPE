@@ -22,10 +22,6 @@ namespace SimPe.Models.Configuration
 {
 	public partial class Configuration : ObservableObject
 	{
-
-		public string Path { get; set; } = Helper.SimPePath;
-		public string DataPath { get; set; } = Helper.SimPeDataPath;
-		public string PluginPath { get; set; } = Helper.SimPePluginPath;
 		public long LastVersion
 		{
 			get; set;
@@ -270,9 +266,6 @@ namespace SimPe.Models.Configuration
 			{
 				await Message.Show("No config found! Creating a new one.");
 			}
-			config.Path = Helper.SimPePath;
-			config.DataPath = Helper.SimPeDataPath;
-			config.PluginPath = Helper.SimPePluginPath;
 			config.LastVersion = Helper.SimPeVersionLong;
 
 			return config;
