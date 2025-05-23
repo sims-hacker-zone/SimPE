@@ -12,7 +12,7 @@ namespace SimPe.Views.Windows
 			InitializeComponent();
 		}
 
-		public async void Window_Loaded(object sender, RoutedEventArgs e)
+		public void Window_Loaded(object sender, RoutedEventArgs e)
 		{
 
 		}

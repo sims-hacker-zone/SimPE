@@ -422,7 +422,7 @@ namespace SimPe.Data
 		/// Object
 		/// </summary>
 		[FileType(DisplayName = "Object", ContainsFileName = true)]
-		OBJT = 0x6F626A74,
+		MOBJT = 0x6F626A74,
 		/// <summary>
 		/// Castaway Mission Goal
 		/// </summary>
@@ -614,15 +614,15 @@ namespace SimPe.Data
 		[FileType(DisplayName = "Lighting (Linear Fog Light)", Extension = "5lf")]
 		LLIF = 0xAC06A66F,
 		/// <summary>
-		/// Object Material?
+		/// Object Metadata Imposters
 		/// </summary>
-		[FileType(DisplayName = "Object Material?", ContainsFileName = true)]
+		[FileType(DisplayName = "Object Metadata Imposters", ContainsFileName = true)]
 		OBJM = 0x4F626A4D,
 		/// <summary>
 		/// Object
 		/// </summary>
 		[FileType(DisplayName = "Object", ContainsFileName = true)]
-		OBJT2 = 0xFA1C39F7,
+		OBJT = 0xFA1C39F7,
 		/// <summary>
 		/// Image Color Palette (Version 1)
 		/// </summary>
@@ -743,5 +743,20 @@ namespace SimPe.Data
 		/// </summary>
 		[FileType(DisplayName = "TS Routing Object Aggregate", ContainsFileName = true)]
 		TSRO = 0xBC66BAEC,
+		/// <summary>
+		/// Pool Surface
+		/// </summary>
+		[FileType(DisplayName = "Pool Surface")]
+		POOL = 0x0C900FDB,
+		/// <summary>
+		/// Person state
+		/// </summary>
+		[FileType(DisplayName = "Person state", ContainsFileName = true)]
+		PERS = 0x50455253,
+		/// <summary>
+		/// Roof
+		/// </summary>
+		[FileType(DisplayName = "Roof", ContainsFileName = true)]
+		ROOF = 0xAB9406AA,
 	}
 }

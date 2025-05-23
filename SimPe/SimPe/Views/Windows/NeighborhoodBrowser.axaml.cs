@@ -197,17 +197,18 @@ namespace SimPe.Views.Windows
 			return nbg;
 		}
 
-		public void Select_Click(object sender, RoutedEventArgs e)
+		public async void Select_Click(object sender, RoutedEventArgs e)
 		{
 			if (NeighborhoodTreeView.SelectedItem is NeighborhoodViewModel)
 			{
-				Close(NeighborhoodTreeView.SelectedItem);
+				await (DataContext as MainWindowViewModel).OpenPackage((NeighborhoodTreeView.SelectedItem as NeighborhoodViewModel).PackageFile.StorageFile);
+				Close();
 			}
 		}
 
 		public void Cancel_Click(object sender, RoutedEventArgs e)
 		{
-			Close(null);
+			Close();
 		}
 
 		public async void OpenEditor_Click(object sender, RoutedEventArgs e)

@@ -96,7 +96,7 @@ namespace SimPe.ViewModels
 			return openfile;
 		}
 
-		public async void OpenPackage(IStorageFile file)
+		public async Task OpenPackage(IStorageFile file)
 		{
 			PackageFile openfile = LoadedPackages.FirstOrDefault(x => x.StorageFile.Path == file.Path);
 			if (openfile != null)

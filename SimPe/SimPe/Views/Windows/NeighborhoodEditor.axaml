@@ -20,7 +20,37 @@
         <TabItem Header="Neighborhood" />
         <TabItem Header="Sims">
             <Grid ColumnDefinitions="*,4,*">
-                <ListBox ItemsSource="{Binding Sims}" />
+                <ListBox ItemsSource="{Binding Sims}">
+                    <ListBox.DataTemplates>
+                        <DataTemplate x:DataType="m:Game.Sim">
+                            <StackPanel Orientation="Horizontal">
+                                <Image MaxHeight="64" Source="{Binding Portrait}" />
+                                <TextBlock
+                                    Margin="5,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.DataTemplates>
+                </ListBox>
+                <GridSplitter Grid.Column="1" />
+            </Grid>
+        </TabItem>
+        <TabItem Header="Lots">
+            <Grid ColumnDefinitions="*,4,*">
+                <ListBox ItemsSource="{Binding Lots}">
+                    <ListBox.DataTemplates>
+                        <DataTemplate x:DataType="m:Game.Lot">
+                            <StackPanel Orientation="Horizontal">
+                                <Image MaxHeight="64" Source="{Binding LotImage}" />
+                                <TextBlock
+                                    Margin="5,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.DataTemplates>
+                </ListBox>
                 <GridSplitter Grid.Column="1" />
             </Grid>
         </TabItem>

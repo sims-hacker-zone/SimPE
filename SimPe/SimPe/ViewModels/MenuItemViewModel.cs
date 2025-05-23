@@ -42,7 +42,7 @@ namespace SimPe.ViewModels
 			IStorageFile file = await Program.MainWindow.StorageProvider.TryGetFileFromPathAsync(uri);
 			if (file != null)
 			{
-				Parent.OpenPackage(file);
+				await Parent.OpenPackage(file);
 			}
 		}
 
@@ -64,7 +64,7 @@ namespace SimPe.ViewModels
 			});
 			if (filelist.Any())
 			{
-				Parent.OpenPackage(filelist[0]);
+				await Parent.OpenPackage(filelist[0]);
 			}
 		}
 	}

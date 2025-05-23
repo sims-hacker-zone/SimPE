@@ -98,7 +98,7 @@ namespace SimPe
 			});
 			if (filelist.Any())
 			{
-				(DataContext as MainWindowViewModel).OpenPackage(filelist[0]);
+				await (DataContext as MainWindowViewModel).OpenPackage(filelist[0]);
 			}
 		}
 
@@ -158,16 +158,12 @@ namespace SimPe
 			w.Show(this);
 		}
 
-		internal async void NeighborhoodBrowserOpen_Click(object sender, RoutedEventArgs e)
+		internal void NeighborhoodBrowserOpen_Click(object sender, RoutedEventArgs e)
 		{
-			NeighborhoodViewModel model = await new NeighborhoodBrowser()
+			new NeighborhoodBrowser()
 			{
 				DataContext = DataContext as MainWindowViewModel
-			}.ShowDialog<NeighborhoodViewModel>(this);
-			if (model != null)
-			{
-				(DataContext as MainWindowViewModel).OpenPackage(model.PackageFile.StorageFile);
-			}
+			}.Show(this);
 		}
 
 		internal async void Window_Closing(object sender, WindowClosingEventArgs e)
