@@ -1,0 +1,28 @@
+<Window
+    x:Class="SimPe.Views.Windows.NeighborhoodEditor"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:data="using:SimPe.Data"
+    xmlns:ext="using:SimPe.Extensions"
+    xmlns:gen="using:System.Collections.Generic"
+    xmlns:m="using:SimPe.Models"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sys="using:System"
+    xmlns:v="using:SimPe.Views"
+    xmlns:vm="using:SimPe.ViewModels"
+    Title="Neighborhood Editor"
+    d:DesignHeight="450"
+    d:DesignWidth="450"
+    x:DataType="m:Game.Neighborhood"
+    mc:Ignorable="d">
+    <TabControl TabStripPlacement="Left">
+        <TabItem Header="Neighborhood" />
+        <TabItem Header="Sims">
+            <Grid ColumnDefinitions="*,4,*">
+                <ListBox ItemsSource="{Binding Sims}" />
+                <GridSplitter Grid.Column="1" />
+            </Grid>
+        </TabItem>
+    </TabControl>
+</Window>

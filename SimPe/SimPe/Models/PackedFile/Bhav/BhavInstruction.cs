@@ -62,7 +62,7 @@ namespace SimPe.Models.PackedFile.Bhav
 
 		public override string ToString()
 		{
-			return $"{Parent.Instructions.IndexOf(this)}: 0x{Opcode:X4}({string.Join(", ", Operands)}); True: {GoToTrue}; False: {GoToFalse}";
+			return $"{Parent.Instructions.IndexOf(this)}: 0x{Opcode:X4}({string.Join(", ", Parent.Version >= 0x8003 ? Operands : Operands[..8])}); True: {GoToTrue}; False: {GoToFalse}";
 		}
 	}
 }

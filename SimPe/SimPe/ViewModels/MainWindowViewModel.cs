@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -70,6 +71,7 @@ namespace SimPe.ViewModels
 			PackageFile openfile = LoadedPackages.FirstOrDefault(x => x.StorageFile.Path == uri);
 			if (openfile == null)
 			{
+				Trace.WriteLine($"Loading package {path}");
 				openfile = await PackageFile.Open(await Parent.StorageProvider.TryGetFileFromPathAsync(uri));
 				if (openfile != null)
 				{
@@ -84,6 +86,7 @@ namespace SimPe.ViewModels
 			PackageFile openfile = LoadedPackages.FirstOrDefault(x => x.StorageFile.Path == file.Path);
 			if (openfile == null)
 			{
+				Debug.WriteLine($"Loading package {file.Path}");
 				openfile = await PackageFile.Open(file);
 				if (openfile != null)
 				{

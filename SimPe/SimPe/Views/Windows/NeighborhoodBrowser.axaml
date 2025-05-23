@@ -34,6 +34,7 @@
                 Orientation="Horizontal">
                 <Button Margin="10,0,5,0" Click="Select_Click">Select</Button>
                 <Button Click="Cancel_Click">Cancel</Button>
+                <Button Click="OpenEditor_Click">Open Neighborhood Editor...</Button>
             </StackPanel>
             <TreeView Name="NeighborhoodTreeView" VerticalAlignment="Stretch">
                 <TreeViewItem Header="Loading Neighborhoods..." />

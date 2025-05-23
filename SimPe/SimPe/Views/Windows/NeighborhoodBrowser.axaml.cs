@@ -15,6 +15,7 @@ using Avalonia.Platform.Storage;
 using SimPe.Data;
 using SimPe.Extensions;
 using SimPe.Models.Configuration;
+using SimPe.Models.Game;
 using SimPe.Models.PackedFile.Idno;
 using SimPe.ViewModels;
 using SimPe.ViewModels.NeighborhoodBrowser;
@@ -32,6 +33,8 @@ namespace SimPe.Views.Windows
 		{
 			MainWindowViewModel vm = DataContext as MainWindowViewModel;
 			List<(EnumDisplayNameItem<PackageFolders> game, string profile, IStorageFolder folder)> result_folders = [];
+
+			// Get all Neighborhood folders
 			foreach (EnumDisplayNameItem<PackageFolders> item in new EnumDisplayNameItem<PackageFolders>(PackageFolders.BaseGame).Values.Where(item => item.Item >= PackageFolders.SaveGameSims2))
 			{
 				InstalledExpansionConfig path = vm.Configuration.ExpansionInstallPaths.FirstOrDefault(x => x.Item == item);
@@ -205,6 +208,18 @@ namespace SimPe.Views.Windows
 		public void Cancel_Click(object sender, RoutedEventArgs e)
 		{
 			Close(null);
+		}
+
+		public async void OpenEditor_Click(object sender, RoutedEventArgs e)
+		{
+			if (NeighborhoodTreeView.SelectedItem is NeighborhoodViewModel nbg)
+			{
+				NeighborhoodEditor editor = new()
+				{
+					DataContext = await Neighborhood.LoadNeighborhood(nbg.PackageFile)
+				};
+				editor.Show();
+			}
 		}
 	}
 }
