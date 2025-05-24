@@ -54,5 +54,23 @@
                 <GridSplitter Grid.Column="1" />
             </Grid>
         </TabItem>
+        <TabItem Header="Families">
+            <Grid ColumnDefinitions="*,4,*">
+                <ListBox ItemsSource="{Binding Families}">
+                    <ListBox.DataTemplates>
+                        <DataTemplate x:DataType="m:Game.Family">
+                            <StackPanel Orientation="Horizontal">
+                                <Image MaxHeight="64" Source="{Binding Thumbnail}" />
+                                <TextBlock
+                                    Margin="5,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.DataTemplates>
+                </ListBox>
+                <GridSplitter Grid.Column="1" />
+            </Grid>
+        </TabItem>
     </TabControl>
 </Window>

@@ -1,4 +1,5 @@
-
+// SPDX-FileCopyrightText: © SimPE contributors
+// SPDX-License-Identifier: GPL-2.0-or-later
 
 using System;
 using System.Collections.ObjectModel;
@@ -11,9 +12,11 @@ using Avalonia.Platform.Storage;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 using SimPe.Models.Package;
+using SimPe.Models.PackedFile.Fami;
 using SimPe.Models.PackedFile.Lotd;
 using SimPe.Models.PackedFile.Ltxt;
 using SimPe.Models.PackedFile.Objd;
+using SimPe.Models.PackedFile.Picture;
 using SimPe.Models.PackedFile.Sdsc;
 using SimPe.ViewModels;
 
@@ -29,6 +32,9 @@ namespace SimPe.Models.Game
 
 		[ObservableProperty]
 		private ObservableCollection<Sim> sims = [];
+
+		[ObservableProperty]
+		private ObservableCollection<Family> families = [];
 
 		public static async Task<Neighborhood> LoadNeighborhood(PackageFile neighborhoodFile)
 		{
@@ -105,8 +111,27 @@ namespace SimPe.Models.Game
 				}
 			}
 
+			// Load family thumbnails
+
+			folder = await neighborhoodFile.StorageFile.GetParentAsync();
+			folder = (IStorageFolder)folder.GetItemsAsync().ToBlockingEnumerable().FirstOrDefault(x => x.Name == "Thumbnails");
+			if (folder == null)
+			{
+				throw new FileNotFoundException("Thumbnails folder not found");
+			}
+			IStorageFile thumbnailFile = (IStorageFile)folder.GetItemsAsync().ToBlockingEnumerable().FirstOrDefault(x => x.Name.EndsWith("FamilyThumbnails.package")) ?? throw new FileNotFoundException("FamilyThumbnails file not found");
+			PackageFile familyThumbnailFile = await (Program.MainWindow.DataContext as MainWindowViewModel).GetOrLoadPackage(thumbnailFile) ?? throw new FileNotFoundException($"Could not load family thumbnail file {thumbnailFile.Name}");
+
+			foreach (Fami fami in neighborhoodFile.FindFiles(Data.FileTypes.FAMI, 0xFFFFFFFF, null, null).Select(x => x.Wrapper.As<Fami>()))
+			{
+				Picture thumbnail = familyThumbnailFile.FindFiles(Data.FileTypes.THUMB_FAMILY, 0xFFFFFFFF, 0, fami.File.Instance).FirstOrDefault()?.Wrapper?.As<Picture>();
+				neighborhood.Families.Add(new Family(neighborhoodFile, fami, thumbnail));
+				Console.WriteLine($"Family loaded: {neighborhood.Families[^1].Name}");
+			}
+
 			neighborhood.Sims = new ObservableCollection<Sim>(neighborhood.Sims.OrderBy(x => x.SimInstance));
 			neighborhood.Lots = new ObservableCollection<Lot>(neighborhood.Lots.OrderBy(x => x.LotInstance));
+			neighborhood.Families = new ObservableCollection<Family>(neighborhood.Families.OrderBy(x => x.FamilyInstance));
 			return neighborhood;
 		}
 	}
