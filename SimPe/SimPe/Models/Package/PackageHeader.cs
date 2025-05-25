@@ -10,6 +10,7 @@ using System.Text;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 using SimPe.Data;
+using SimPe.Extensions;
 
 namespace SimPe.Models.Package
 {
@@ -44,13 +45,13 @@ namespace SimPe.Models.Package
 		private PackageHeaderHole hole;
 
 		[ObservableProperty]
-		private IndexTypes indexType;
+		private EnumDisplayNameItem<IndexTypes> indexType;
 
 		/// <summary>
 		/// The EP icon to show (for Lots)
 		/// </summary>
 		[ObservableProperty]
-		private short epIcon;
+		private short ePIcon;
 
 		/// <summary>
 		/// Whether the EP Icon should be shown
@@ -84,9 +85,9 @@ namespace SimPe.Models.Package
 			header.Hole = PackageHeaderHole.Unserialize(reader);
 			if (header.Version >= new Version(1, 1))
 			{
-				header.IndexType = (IndexTypes)reader.ReadUInt32();
+				header.IndexType = new((IndexTypes)reader.ReadUInt32());
 			}
-			header.EpIcon = reader.ReadInt16();
+			header.EPIcon = reader.ReadInt16();
 			header.ShowIcon = reader.ReadInt16();
 			header.Reserved_02 = reader.ReadBytes(28);
 			return header;
@@ -104,9 +105,9 @@ namespace SimPe.Models.Package
 			Hole.Serialize(writer);
 			if (Version >= new Version(1, 1))
 			{
-				writer.Write((uint)IndexType);
+				writer.Write((uint)IndexType.Item);
 			}
-			writer.Write(EpIcon);
+			writer.Write(EPIcon);
 			writer.Write(ShowIcon);
 			writer.Write(Reserved_02);
 		}

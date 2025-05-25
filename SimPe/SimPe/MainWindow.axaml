@@ -76,7 +76,11 @@
         </StackPanel>
         <Grid RowDefinitions="4*,4,1*">
             <Grid Grid.Row="0" ColumnDefinitions="1*,4,4*">
-                <ScrollViewer Grid.Column="0">
+                <DockPanel>
+                    <ComboBox
+                        DockPanel.Dock="Top"
+                        ItemsSource="{Binding LoadedPackages}"
+                        SelectedItem="{Binding LoadedPackage}" />
                     <TreeView Name="ResourceTreeView" ItemsSource="{Binding ResourceTree}">
                         <TreeView.Styles>
                             <Style x:DataType="vm:ResourceTree.ResourceTreeViewModel" Selector="TreeViewItem">
@@ -96,7 +100,7 @@
                             </DataTemplate>
                         </TreeView.DataTemplates>
                     </TreeView>
-                </ScrollViewer>
+                </DockPanel>
                 <GridSplitter Grid.Column="1" ResizeDirection="Columns" />
                 <TreeDataGrid
                     Name="ResourceList"

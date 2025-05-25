@@ -27,6 +27,8 @@ namespace SimPe.Models.Package
 			private set;
 		} = [];
 
+		public bool FileChanged => FileIndex.Any(file => file.FileChanged);
+
 		public static async Task<PackageFile> Open(IStorageFile file)
 		{
 			PackageFile package = new()
@@ -74,5 +76,10 @@ namespace SimPe.Models.Package
 		}
 
 		#endregion
+
+		public override string ToString()
+		{
+			return $"{(FileChanged ? "* " : "")}{StorageFile.Path.LocalPath} ({Header.Index.Count} resources)";
+		}
 	}
 }

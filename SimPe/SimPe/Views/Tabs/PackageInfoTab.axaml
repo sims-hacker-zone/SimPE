@@ -7,45 +7,74 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:SimPe.ViewModels"
     x:DataType="m:PackedFile.PackedFile">
-    <WrapPanel>
-        <StackPanel Margin="0,5,0,5" Orientation="Horizontal">
-            <Label>Magic:</Label>
-            <TextBox
-                Width="100"
-                IsReadOnly="True"
-                Text="{Binding Header.MagicString}" />
-        </StackPanel>
-        <StackPanel Margin="0,5,0,5" Orientation="Horizontal">
-            <Label>Major Version:</Label>
-            <TextBox
-                Width="100"
-                IsReadOnly="True"
-                Text="{Binding Header.MajorVersion}" />
-        </StackPanel>
-        <StackPanel Margin="0,5,0,5" Orientation="Horizontal">
-            <Label>Minor Version:</Label>
-            <TextBox
-                Width="100"
-                IsReadOnly="True"
-                Text="{Binding Header.MinorVersion}" />
-        </StackPanel>
-        <StackPanel Margin="0,5,0,5" Orientation="Horizontal">
-            <Label>EP Icon:</Label>
-            <TextBox
-                Width="100"
-                IsReadOnly="True"
-                Text="{Binding Header.EpIcon}" />
-        </StackPanel>
-        <StackPanel Margin="0,5,0,5" Orientation="Horizontal">
-            <Label VerticalContentAlignment="Center">Show Icon:</Label>
-            <TextBox
-                Width="100"
-                IsReadOnly="True"
-                Text="{Binding Header.ShowIcon}" />
-        </StackPanel>
-        <StackPanel Margin="0,5,0,5" Orientation="Horizontal">
-            <Label VerticalContentAlignment="Center">Index Type:</Label>
-            <TextBlock VerticalAlignment="Center" Text="{Binding Header.IndexType}" />
-        </StackPanel>
+    <UserControl.Styles>
+        <Style Selector=".rootpanel &gt; DockPanel">
+            <Setter Property="Margin" Value="5,5" />
+        </Style>
+        <Style Selector=".rootpanel &gt; DockPanel &gt; Label">
+            <Setter Property="Margin" Value="0,0,5,0" />
+        </Style>
+    </UserControl.Styles>
+    <WrapPanel Classes="rootpanel" Orientation="Vertical">
+        <DockPanel>
+            <Label VerticalAlignment="Center" DockPanel.Dock="Left">Magic:</Label>
+            <TextBox Text="{Binding Header.MagicString}" />
+        </DockPanel>
+        <DockPanel>
+            <Label VerticalAlignment="Center" DockPanel.Dock="Left">Major Version:</Label>
+            <TextBox Text="{Binding Header.MajorVersion}" />
+        </DockPanel>
+        <DockPanel>
+            <Label VerticalAlignment="Center" DockPanel.Dock="Left">Minor Version:</Label>
+            <TextBox Text="{Binding Header.MinorVersion}" />
+        </DockPanel>
+        <DockPanel>
+            <Label VerticalAlignment="Center" DockPanel.Dock="Left">Created:</Label>
+            <TextBox Text="{Binding Header.Created}" />
+        </DockPanel>
+        <DockPanel>
+            <Label VerticalAlignment="Center" DockPanel.Dock="Left">Modified:</Label>
+            <TextBox Text="{Binding Header.Modified}" />
+        </DockPanel>
+        <DockPanel>
+            <Label VerticalAlignment="Center" DockPanel.Dock="Left">Index Type:</Label>
+            <TextBox Text="{Binding Header.Index.Type}" />
+        </DockPanel>
+        <DockPanel>
+            <Label VerticalAlignment="Center" DockPanel.Dock="Left">Index Count:</Label>
+            <TextBox Text="{Binding Header.Index.Count}" />
+        </DockPanel>
+        <DockPanel>
+            <Label VerticalAlignment="Center" DockPanel.Dock="Left">Index Offset:</Label>
+            <TextBox Text="{Binding Header.Index.Offset}" />
+        </DockPanel>
+        <DockPanel>
+            <Label VerticalAlignment="Center" DockPanel.Dock="Left">Index Size:</Label>
+            <TextBox Text="{Binding Header.Index.Size}" />
+        </DockPanel>
+        <DockPanel>
+            <Label VerticalAlignment="Center" DockPanel.Dock="Left">Hole Count:</Label>
+            <TextBox Text="{Binding Header.Hole.Count}" />
+        </DockPanel>
+        <DockPanel>
+            <Label VerticalAlignment="Center" DockPanel.Dock="Left">Hole Offset:</Label>
+            <TextBox Text="{Binding Header.Hole.Offset}" />
+        </DockPanel>
+        <DockPanel>
+            <Label VerticalAlignment="Center" DockPanel.Dock="Left">Hole Size:</Label>
+            <TextBox Text="{Binding Header.Hole.Size}" />
+        </DockPanel>
+        <DockPanel>
+            <Label VerticalAlignment="Center" DockPanel.Dock="Left">Index Type:</Label>
+            <ComboBox ItemsSource="{Binding Header.IndexType.Values, Mode=OneTime}" SelectedItem="{Binding Header.IndexType}" />
+        </DockPanel>
+        <DockPanel>
+            <Label VerticalAlignment="Center" DockPanel.Dock="Left">EP Icon:</Label>
+            <TextBox Text="{Binding Header.EPIcon}" />
+        </DockPanel>
+        <DockPanel>
+            <Label VerticalAlignment="Center" DockPanel.Dock="Left">Show Icon:</Label>
+            <TextBox Text="{Binding Header.ShowIcon}" />
+        </DockPanel>
     </WrapPanel>
 </UserControl>
