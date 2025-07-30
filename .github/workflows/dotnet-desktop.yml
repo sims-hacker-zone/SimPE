@@ -57,4 +57,4 @@ jobs:
       run: dotnet pack
 
     - name: Publish the NuGet package
-      run: dotnet nuget push "./bin/Release/*.nupkg" github
+      run: dotnet nuget push "./SimPe/bin/Release/*.nupkg" -s github
