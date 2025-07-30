@@ -52,7 +52,18 @@ namespace SimPe.Extensions
 			return a.Item.Equals(b);
 		}
 
+
+		public static bool operator ==(EnumDisplayNameItem<T> a, T? b)
+		{
+			return a.Item.Equals(b);
+		}
+
 		public static bool operator !=(EnumDisplayNameItem<T> a, T b)
+		{
+			return !a.Item.Equals(b);
+		}
+
+		public static bool operator !=(EnumDisplayNameItem<T> a, T? b)
 		{
 			return !a.Item.Equals(b);
 		}

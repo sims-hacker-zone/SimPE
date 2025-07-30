@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: © SimPE contributors
+// SPDX-License-Identifier: GPL-2.0-or-later
+
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -47,6 +51,21 @@ namespace SimPe.Models.Package
 			package.OnPropertyChanged(nameof(FileIndex));
 
 			return package;
+		}
+
+		public async Task Save(IStorageFile file)
+		{
+			ArgumentNullException.ThrowIfNull(file);
+
+			using Stream stream = await file.OpenWriteAsync();
+			using BinaryWriter writer = new(stream, Encoding.ASCII);
+			writer.BaseStream.Seek(0, SeekOrigin.Begin);
+
+			Header.Serialize(writer);
+			foreach (PackedFile.PackedFile packedFile in FileIndex)
+			{
+				packedFile.Serialize(writer);
+			}
 		}
 
 		public void UnserializeFileIndex(BinaryReader reader)

@@ -8,7 +8,6 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 
 using AvaloniaHex.Document;
@@ -29,7 +28,7 @@ namespace SimPe.Models.PackedFile
 		private PackageFile package = package;
 
 		[ObservableProperty]
-		private FileTypes type;
+		private EnumDisplayNameItem<FileTypes> type;
 
 		[ObservableProperty]
 		private uint group;
@@ -59,7 +58,7 @@ namespace SimPe.Models.PackedFile
 		/// <summary>
 		/// Returns the Information of the represented Type
 		/// </summary>
-		public FileTypeInformation TypeInfo => Type.ToFileTypeInformation();
+		public FileTypeInformation TypeInfo => Type.Item.ToFileTypeInformation();
 
 		[ObservableProperty]
 		private byte[] userData;
@@ -93,7 +92,7 @@ namespace SimPe.Models.PackedFile
 			set => SetProperty(ref fileName, value);
 		}
 
-		public string ExportFileName => $"{(uint)Type:X8}-{FileName}";
+		public string ExportFileName => $"{(uint)Type.Item:X8}-{FileName}";
 
 		public string DisplayName
 		{
@@ -103,7 +102,7 @@ namespace SimPe.Models.PackedFile
 				{
 					return Wrapper.FriendlyName;
 				}
-				else if (Type.ToFileTypeInformation().ContainsFileName)
+				else if (Type.Item.ToFileTypeInformation().ContainsFileName)
 				{
 					if (UserData != null)
 					{
@@ -149,7 +148,7 @@ namespace SimPe.Models.PackedFile
 					{
 						ReadContent();
 					}
-					if (Wrappers.Unserializers.TryGetValue(Type, out Func<BinaryReader, PackedFile, IWrapper> func))
+					if (Wrappers.Unserializers.TryGetValue(Type.Item, out Func<BinaryReader, PackedFile, IWrapper> func))
 					{
 						using MemoryStream memory = new(IsCompressed ? UncompressedData : RawData);
 						using BinaryReader reader = new(memory);
@@ -167,7 +166,7 @@ namespace SimPe.Models.PackedFile
 		{
 			PackedFile file = new(package)
 			{
-				Type = (FileTypes)reader.ReadUInt32(),
+				Type = new((FileTypes)reader.ReadUInt32()),
 				Group = reader.ReadUInt32(),
 				Instance = reader.ReadUInt32()
 			};
@@ -180,12 +179,25 @@ namespace SimPe.Models.PackedFile
 			return file;
 		}
 
+		public void Serialize(BinaryWriter writer)
+		{
+			writer.Write((uint)Type.Item);
+			writer.Write(Group);
+			writer.Write(Instance);
+			if (Package.Header.IndexType == IndexTypes.ptLongFileIndex)
+			{
+				writer.Write(InstanceHigh);
+			}
+			writer.Write(Offset);
+			writer.Write(Size);
+		}
+
 		public XElement GenerateXmlMetaInfo()
 		{
 			return new XElement("packedfile",
 				new XAttribute("path", Path),
 				new XAttribute("name", FileName),
-				new XElement("type", new XElement("number", (uint)Type)),
+				new XElement("type", new XElement("number", (uint)Type.Item)),
 				new XElement("classid", InstanceHigh),
 				new XElement("group", Group),
 				new XElement("instance", Instance));
@@ -193,7 +205,7 @@ namespace SimPe.Models.PackedFile
 
 		public override string ToString()
 		{
-			return $"{TypeInfo.LongName}: {(uint)Type:X8} - {InstanceHigh:X8} - {Group:X8} - {Instance:X8}";
+			return $"{TypeInfo.LongName}: {(uint)Type.Item:X8} - {InstanceHigh:X8} - {Group:X8} - {Instance:X8}";
 		}
 
 		public async void ReadContent()
@@ -206,7 +218,7 @@ namespace SimPe.Models.PackedFile
 			using BinaryReader reader = new(stream);
 			reader.BaseStream.Seek(Offset, SeekOrigin.Begin);
 			RawData = reader.ReadBytes(Size);
-			if (Type.ToFileTypeInformation().ContainsFileName)
+			if (Type.Item.ToFileTypeInformation().ContainsFileName)
 			{
 				OnPropertyChanged(nameof(DisplayName));
 			}
@@ -223,7 +235,7 @@ namespace SimPe.Models.PackedFile
 			}
 			ClstItem clstItem;
 			Package.FindFiles(FileTypes.CLST, null, null, null)?.FirstOrDefault()?.ReadContent();
-			if ((clstItem = Package.FindFiles(FileTypes.CLST, null, null, null)?.FirstOrDefault()?.Wrapper?.As<Clst.Clst>().Items.FirstOrDefault(item => item.Type == Type && item.Group == Group && item.Instance == Instance && item.InstanceHigh == InstanceHigh)) != null)
+			if ((clstItem = Package.FindFiles(FileTypes.CLST, null, null, null)?.FirstOrDefault()?.Wrapper?.As<Clst.Clst>().Items.FirstOrDefault(item => item.Type == Type.Item && item.Group == Group && item.Instance == Instance && item.InstanceHigh == InstanceHigh)) != null)
 			{
 				IsCompressed = true;
 				UncompressedSize = clstItem.UncompressedSize;
@@ -311,7 +323,7 @@ namespace SimPe.Models.PackedFile
 				}
 			}
 			OnPropertyChanged(nameof(UncompressedDataDocument));
-			if (Type.ToFileTypeInformation().ContainsFileName)
+			if (Type.Item.ToFileTypeInformation().ContainsFileName)
 			{
 				OnPropertyChanged(nameof(DisplayName));
 			}
@@ -543,7 +555,7 @@ namespace SimPe.Models.PackedFile
 			using BinaryWriter writer = new(memory);
 			wrapper.Serialize(writer);
 			UserData = memory.ToArray();
-			if (Type.ToFileTypeInformation().ContainsFileName || wrapper.FriendlyName != null)
+			if (Type.Item.ToFileTypeInformation().ContainsFileName || wrapper.FriendlyName != null)
 			{
 				OnPropertyChanged(nameof(DisplayName));
 			}

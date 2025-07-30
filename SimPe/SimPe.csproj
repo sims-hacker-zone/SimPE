@@ -5,7 +5,7 @@
     <RootNamespace></RootNamespace>
     <AssemblyName>SimPe</AssemblyName>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
     <ApplicationIcon>SimPe\img\Simpe2.ico</ApplicationIcon>
     <StartupObject>SimPe.Program</StartupObject>
     <EnableDefaultCompileItems>true</EnableDefaultCompileItems>
@@ -17,6 +17,9 @@
     <Title>SimPE</Title>
     <Product>SimPE</Product>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PackageId>SimPE.SimPE</PackageId>
+    <Authors>SimPE contributors</Authors>
+    <Company>SimPE</Company>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

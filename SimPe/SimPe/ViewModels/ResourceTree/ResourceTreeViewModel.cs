@@ -36,11 +36,11 @@ namespace SimPe.ViewModels.ResourceTree
 		{
 			this.packageFile = packageFile;
 			this.parent = parent;
-			Nodes = new(packageFile.FileIndex.GroupBy(item => item.Type).Select(item => new ResourceTreeTypeViewModel(packageFile, item.Key, this)).OrderBy(item => item.Caption));
+			Nodes = new(packageFile.FileIndex.GroupBy(item => item.Type).Select(item => new ResourceTreeTypeViewModel(packageFile, item.Key.Item, this)).OrderBy(item => item.Caption));
 			FileSource = new(packageFile.FileIndex);
 			FileSource.Columns.AddRange([
 				new TextColumn<PackedFile, string>("Name", x => x.DisplayName),
-				new TextColumn<PackedFile, string>("Type", x => $"{x.TypeInfo.ShortName} (0x{(uint)x.Type:X8})"),
+				new TextColumn<PackedFile, string>("Type", x => $"{x.TypeInfo.ShortName} (0x{(uint)x.Type.Item:X8})"),
 				new TextColumn<PackedFile, string>("Group", x => $"0x{x.Group:X8}"),
 				new TextColumn<PackedFile, string>("Instance (high)", x => $"0x{x.InstanceHigh:X8}"),
 				new TextColumn<PackedFile, string>("Instance", x => $"0x{x.Instance:X8}"),
