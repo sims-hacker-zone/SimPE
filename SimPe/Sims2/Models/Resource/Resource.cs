@@ -165,12 +165,7 @@ public partial class Resource(PackageFile file) : ObservableObject, IResource
 
 	public void Serialize(BinaryWriter writer)
 	{
-		writer.Write((uint)Type.Item);
-		writer.Write(Group);
-		writer.Write(Instance);
-		if ((File as PackageFile).Header.IndexType == IndexTypes.ptLongFileIndex) writer.Write(InstanceHigh);
-		writer.Write(Offset);
-		writer.Write(Size);
+		writer.Write(UserData ?? Data);
 	}
 
 	public XElement GenerateXmlMetaInfo()

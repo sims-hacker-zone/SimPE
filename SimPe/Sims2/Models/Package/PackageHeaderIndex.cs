@@ -17,7 +17,7 @@ public partial class PackageHeaderIndex : ObservableObject
 
 	public static PackageHeaderIndex Unserialize(BinaryReader reader)
 	{
-		return new PackageHeaderIndex()
+		return new()
 		{
 			Type = reader.ReadInt32(),
 			Count = reader.ReadInt32(),

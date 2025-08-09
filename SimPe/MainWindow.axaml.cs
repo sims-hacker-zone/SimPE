@@ -2,9 +2,11 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reactive.Linq;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Selection;
 using Avalonia.Data;
@@ -12,6 +14,7 @@ using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
 using SimPe.Sims2.Data;
 using SimPe.Common.Extensions;
+using SimPe.Common.Models;
 using SimPe.Sims2.Models.Package;
 using SimPe.Sims2.Models.Resource;
 using SimPe.ViewModels;
@@ -83,8 +86,8 @@ public partial class MainWindow : Window
 
 	internal async void BtnOpen_Click(object sender, RoutedEventArgs e)
 	{
-		System.Collections.Generic.IReadOnlyList<IStorageFile> filelist = await GetTopLevel(this).StorageProvider
-			.OpenFilePickerAsync(new FilePickerOpenOptions
+		System.Collections.Generic.IReadOnlyList<IStorageFile> fileList = await GetTopLevel(this).StorageProvider
+			.OpenFilePickerAsync(new()
 			{
 				AllowMultiple = false,
 				Title = "Open Package File",
@@ -97,18 +100,22 @@ public partial class MainWindow : Window
 					}
 				]
 			});
-		if (filelist.Any())
-		{
-			await Common.Models.FileLoader.OpenFile(filelist[0]);
-			(DataContext as MainWindowViewModel).ResourceTree.Clear();
-			(DataContext as MainWindowViewModel).ResourceTree.Add(
-				new(Common.Models.FileLoader.Instance.OpenedFile,
-					DataContext as MainWindowViewModel));
-		}
+		if (!fileList.Any()) return;
+		await FileLoader.OpenFile(fileList[0]);
+		(DataContext as MainWindowViewModel).ResourceTree.Clear();
+		(DataContext as MainWindowViewModel).ResourceTree.Add(
+			new(FileLoader.Instance.OpenedFile,
+				DataContext as MainWindowViewModel));
+		Common.Configuration.Configuration.Config.RecentFiles = new(
+			Common.Configuration.Configuration.Config.RecentFiles.Count > 14
+				? [fileList[0].Path.AbsolutePath, ..Common.Configuration.Configuration.Config.RecentFiles.Take(14)]
+				: [fileList[0].Path.AbsolutePath, ..Common.Configuration.Configuration.Config.RecentFiles]);
 	}
 
 	internal async void Window_Loaded(object sender, RoutedEventArgs e)
 	{
+		await Common.Configuration.Configuration.Load();
+		await Sims2.Models.Configuration.Configuration.Load();
 		//await (DataContext as MainWindowViewModel).LoadConfiguration();
 		// foreach (EnumDisplayNameItem<PackageFolders> item in new EnumDisplayNameItem<PackageFolders>(PackageFolders.BaseGame).Values)
 		// {
@@ -147,11 +154,6 @@ public partial class MainWindow : Window
 		Console.WriteLine($"Clicked: {sender}");
 	}
 
-	internal void TreeDataGrid_SelectionChanging(object sender, RoutedEventArgs e)
-	{
-		Console.WriteLine($"Selected {sender.GetType()}: {sender}");
-	}
-
 	internal void RowSelection_Changed(object sender, TreeSelectionModelSelectionChangedEventArgs<IResource> e)
 	{
 		e.SelectedItems[0]?.ReadContent();
@@ -165,7 +167,7 @@ public partial class MainWindow : Window
 
 	internal void NeighborhoodBrowserOpen_Click(object sender, RoutedEventArgs e)
 	{
-		new NeighborhoodBrowser()
+		new NeighborhoodBrowser
 		{
 			DataContext = DataContext as MainWindowViewModel
 		}.Show(this);
@@ -178,6 +180,34 @@ public partial class MainWindow : Window
 
 	internal void FindInFiles_Click(object sender, RoutedEventArgs e)
 	{
-		new FindInFiles() { DataContext = new FindInFilesViewModel(DataContext as MainWindowViewModel) }.Show();
+		new FindInFiles { DataContext = new FindInFilesViewModel(DataContext as MainWindowViewModel) }.Show();
+	}
+
+	private async void SaveAs_OnClick(object? sender, RoutedEventArgs e)
+	{
+		if (FileLoader.Instance.OpenedFile == null) return;
+		IStorageFile? file = await GetTopLevel(this).StorageProvider.SaveFilePickerAsync(new()
+		{
+			Title = "Save as...",
+			ShowOverwritePrompt = true,
+			SuggestedStartLocation = await FileLoader.Instance.OpenedFile.StorageFile.GetParentAsync(),
+			SuggestedFileName = FileLoader.Instance.OpenedFile.StorageFile.Name,
+			FileTypeChoices =
+			[
+				new($"*.{FileLoader.Instance.OpenedFile.StorageFile.Name.Split('.').Last()}")
+				{
+					Patterns = [$"*.{FileLoader.Instance.OpenedFile.StorageFile.Name.Split('.').Last()}"]
+				}
+			]
+		});
+		if (file != null)
+		{
+			await FileLoader.Instance.OpenedFile.Save(file);
+		}
+	}
+
+	private void Exit_OnClick(object? sender, RoutedEventArgs e)
+	{
+		Close();
 	}
 }

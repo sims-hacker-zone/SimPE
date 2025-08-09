@@ -22,7 +22,7 @@ public partial class PackageFile : ObservableObject, IFile
 
 	[ObservableProperty] private PackageHeader header;
 
-	public ObservableCollection<IResource> Resources { get; private set; } = [];
+	public ObservableCollection<IResource> Resources { get; } = [];
 
 	public bool FileChanged => Resources.Any(resource => resource.ResourceChanged);
 
@@ -33,7 +33,7 @@ public partial class PackageFile : ObservableObject, IFile
 			StorageFile = file
 		};
 
-		using Stream stream = await package.StorageFile.OpenReadAsync();
+		await using Stream stream = await package.StorageFile.OpenReadAsync();
 		using BinaryReader reader = new(stream, Encoding.ASCII);
 		reader.BaseStream.Seek(0, SeekOrigin.Begin);
 
@@ -50,15 +50,53 @@ public partial class PackageFile : ObservableObject, IFile
 	{
 		ArgumentNullException.ThrowIfNull(file);
 
-		using Stream stream = await file.OpenWriteAsync();
-		using BinaryWriter writer = new(stream, Encoding.ASCII);
+		foreach (IResource resource in Resources)
+		{
+			resource.ReadContent();
+		}
+
+		Header.Hole.Count = 0;
+		Header.Hole.Offset = 0;
+		Header.Hole.Size = 0;
+
+		await using Stream stream = await file.OpenWriteAsync();
+		stream.SetLength(0);
+		await stream.FlushAsync();
+		await using BinaryWriter writer = new(stream, Encoding.ASCII);
 		writer.BaseStream.Seek(0, SeekOrigin.Begin);
 
 		Header.Serialize(writer);
+		List<FileIndexItem> indices = [];
 		foreach (Resource.Resource resource in Resources)
 		{
+			indices.Add(new()
+			{
+				Type = (uint)resource.Type.Item,
+				Group = resource.Group,
+				Instance = resource.Instance,
+				InstanceHigh = resource.InstanceHigh,
+				Offset = (uint)writer.BaseStream.Position,
+				Size = (uint)(resource.UserData ?? resource.Data).Length,
+			});
 			resource.Serialize(writer);
 		}
+
+		Header.Index.Count = indices.Count;
+		Header.Index.Offset = (uint)writer.BaseStream.Position;
+		Header.Index.Size = (uint)(indices.Count * (Header.IndexType == IndexTypes.ptLongFileIndex ? 24 : 20));
+
+		foreach (FileIndexItem item in indices)
+		{
+			writer.Write(item.Type);
+			writer.Write(item.Group);
+			writer.Write(item.Instance);
+			if (Header.IndexType == IndexTypes.ptLongFileIndex) writer.Write(item.InstanceHigh);
+			writer.Write(item.Offset);
+			writer.Write(item.Size);
+		}
+
+		writer.BaseStream.Seek(0, SeekOrigin.Begin);
+		Header.Serialize(writer);
 	}
 
 	public void UnserializeFileIndex(BinaryReader reader)

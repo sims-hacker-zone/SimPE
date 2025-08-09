@@ -7,6 +7,8 @@ using System.IO;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Avalonia.Controls;
+using Avalonia.Platform.Storage;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace SimPe.Common.Configuration;
@@ -15,14 +17,7 @@ public static class Configuration
 {
 	private static CommonConfig? config;
 
-	public static CommonConfig Config
-	{
-		get
-		{
-			config ??= Load().GetAwaiter().GetResult();
-			return config;
-		}
-	}
+	public static CommonConfig Config => config;
 
 	public partial class CommonConfig : ObservableObject
 	{
@@ -37,7 +32,7 @@ public static class Configuration
 		WriteIndented = true
 	};
 
-	public static async Task<CommonConfig> Load()
+	public static async Task Load()
 	{
 		string configpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SimPe",
 			"config.common.json");
@@ -45,18 +40,22 @@ public static class Configuration
 		{
 			try
 			{
-				return JsonSerializer.Deserialize<CommonConfig>(await File.ReadAllTextAsync(configpath, Encoding.UTF8),
+				IStorageFile? file = await TopLevel.GetTopLevel(Program.MainWindow)?.StorageProvider
+					.TryGetFileFromPathAsync(new(new("file://"), configpath));
+				await using Stream stream = await file?.OpenReadAsync();
+				using StreamReader reader = new(stream);
+				config = JsonSerializer.Deserialize<CommonConfig>(await reader.ReadToEndAsync(),
 					options) ?? new CommonConfig();
 			}
 			catch (JsonException)
 			{
 				// If deserialization fails, return a new config
-				return new();
+				config = new();
 			}
 		}
 		else
 		{
-			return new();
+			config = new();
 		}
 	}
 

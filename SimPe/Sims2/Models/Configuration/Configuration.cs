@@ -21,14 +21,7 @@ public partial class Configuration : ObservableObject
 {
 	private static Sims2Config? config;
 
-	public static Sims2Config Config
-	{
-		get
-		{
-			config ??= Load().GetAwaiter().GetResult();
-			return config;
-		}
-	}
+	public static Sims2Config Config => config;
 
 
 	private static readonly JsonSerializerOptions options = new()
@@ -38,7 +31,7 @@ public partial class Configuration : ObservableObject
 		WriteIndented = true
 	};
 
-	public static async Task<Sims2Config> Load()
+	public static async Task Load()
 	{
 		if (!options.Converters.OfType<DictionaryTKeyEnumTValueConverter>().Any())
 		{
@@ -52,18 +45,18 @@ public partial class Configuration : ObservableObject
 			try
 			{
 				string readAllTextAsync = await File.ReadAllTextAsync(configPath, Encoding.UTF8);
-				return JsonSerializer.Deserialize<Sims2Config>(readAllTextAsync,
+				config = JsonSerializer.Deserialize<Sims2Config>(readAllTextAsync,
 					options) ?? new Sims2Config();
 			}
 			catch (JsonException)
 			{
 				// If deserialization fails, return a new config
-				return new();
+				config = new();
 			}
 		}
 		else
 		{
-			return new();
+			config = new();
 		}
 	}
 

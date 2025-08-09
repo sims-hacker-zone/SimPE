@@ -3,6 +3,8 @@
 
 using SimPe.Sims2.Extensions;
 
+// ReSharper disable InconsistentNaming
+
 namespace SimPe.Sims2.Data;
 
 public enum FileTypes : uint
@@ -899,4 +901,10 @@ public enum FileTypes : uint
 	/// </summary>
 	[FileType(DisplayName = "Roof", ContainsFileName = true)]
 	ROOF = 0xAB9406AA,
+
+	/// <summary>
+	/// TODO: What is this format?
+	/// </summary>
+	[FileType(DisplayName = "Unknown (0x69DA3F9F)")]
+	UNK_69DA3F9F = 0x69DA3F9F,
 }

@@ -58,7 +58,9 @@
                         </Style>
                     </MenuItem.Styles>
                 </MenuItem>
-                <MenuItem Header="Exit" />
+                <Separator />
+                <MenuItem Header="Save as..." Click="SaveAs_OnClick" />
+                <MenuItem Header="Exit" Click="Exit_OnClick" />
             </MenuItem>
             <MenuItem Header="_Tools">
                 <MenuItem Click="NeighborhoodBrowserOpen_Click" Header="Neighborhood Browser..." />

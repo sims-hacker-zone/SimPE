@@ -14,7 +14,7 @@ public partial class PackageHeaderHole : ObservableObject
 
 	public static PackageHeaderHole Unserialize(BinaryReader reader)
 	{
-		return new PackageHeaderHole()
+		return new()
 		{
 			Count = reader.ReadInt32(),
 			Offset = reader.ReadUInt32(),
