@@ -1,0 +1,51 @@
+<UserControl
+    x:Class="SimPe.Views.Tabs.ResourceInfoTab"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ext="using:SimPe.Common.Extensions"
+    xmlns:m="using:SimPe.Common.Models.Interfaces"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:SimPe.ViewModels"
+    x:DataType="m:IResource">
+    <UserControl.Styles>
+        <Style Selector=".rootpanel &gt; DockPanel">
+            <Setter Property="Margin" Value="5,5" />
+        </Style>
+        <Style Selector=".rootpanel &gt; DockPanel &gt; Label">
+            <Setter Property="Margin" Value="0,0,5,0" />
+        </Style>
+    </UserControl.Styles>
+    <UserControl.Resources>
+        <ext:HexConverter x:Key="HexConverter" />
+        <GridLength x:Key="SliderPreContentMargin">5</GridLength>
+        <GridLength x:Key="SliderPostContentMargin">5</GridLength>
+    </UserControl.Resources>
+    <WrapPanel Classes="rootpanel" Orientation="Vertical">
+        <DockPanel>
+            <Label VerticalAlignment="Center" DockPanel.Dock="Left">Type:</Label>
+            <ComboBox ItemsSource="{Binding Type.Values, Mode=OneTime}" SelectedItem="{Binding Type}" />
+            <TextBox Text="{Binding Type.Item, Converter={StaticResource HexConverter}}" />
+        </DockPanel>
+        <DockPanel>
+            <Label VerticalAlignment="Center" DockPanel.Dock="Left">Group:</Label>
+            <TextBox Text="{Binding Group, Converter={StaticResource HexConverter}}" />
+        </DockPanel>
+        <DockPanel>
+            <Label VerticalAlignment="Center" DockPanel.Dock="Left">Instance (high):</Label>
+            <TextBox Text="{Binding InstanceHigh, Converter={StaticResource HexConverter}}" />
+        </DockPanel>
+        <DockPanel>
+            <Label VerticalAlignment="Center" DockPanel.Dock="Left">Instance:</Label>
+            <TextBox Text="{Binding Instance, Converter={StaticResource HexConverter}}" />
+        </DockPanel>
+        <DockPanel>
+            <Label VerticalAlignment="Center" DockPanel.Dock="Left">Offset:</Label>
+            <TextBox Text="{Binding Offset, Converter={StaticResource HexConverter}}" />
+        </DockPanel>
+        <DockPanel>
+            <Label VerticalAlignment="Center" DockPanel.Dock="Left">Size:</Label>
+            <TextBox Text="{Binding Size}" />
+        </DockPanel>
+    </WrapPanel>
+</UserControl>

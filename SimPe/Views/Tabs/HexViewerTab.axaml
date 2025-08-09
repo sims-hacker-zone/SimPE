@@ -1,0 +1,34 @@
+<UserControl
+    x:Class="SimPe.Views.Tabs.HexViewerTab"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:avaloniaHex="clr-namespace:AvaloniaHex;assembly=AvaloniaHex"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:m="using:SimPe.Common.Models.Interfaces"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:rendering="clr-namespace:AvaloniaHex.Rendering;assembly=AvaloniaHex"
+    xmlns:vm="using:SimPe.ViewModels"
+    x:DataType="m:IResource">
+    <ScrollViewer>
+        <DockPanel>
+            <StackPanel
+                Margin="5,5"
+                DockPanel.Dock="Top"
+                Orientation="Horizontal">
+                <ComboBox
+                    Name="DataComboBox"
+                    Margin="5,5"
+                    SelectionChanged="ComboBox_SelectionChanged" />
+                <Button Name="ExtractButton" Click="ExtractButton_Click">Extract...</Button>
+            </StackPanel>
+            <avaloniaHex:HexEditor Name="Editor" FontFamily="monospace">
+                <!--  Define columns to display  -->
+                <avaloniaHex:HexEditor.Columns>
+                    <rendering:OffsetColumn />
+                    <rendering:HexColumn />
+                    <rendering:AsciiColumn />
+                </avaloniaHex:HexEditor.Columns>
+            </avaloniaHex:HexEditor>
+        </DockPanel>
+    </ScrollViewer>
+</UserControl>

@@ -1,0 +1,71 @@
+<Window
+    x:Class="SimPe.Views.Windows.NeighborhoodEditor"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:m="using:SimPe.Sims2.Models"
+    xmlns:mg="using:SimPe.Sims2.Models.Game"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Neighborhood Editor"
+    d:DesignHeight="450"
+    d:DesignWidth="450"
+    mc:Ignorable="d">
+    <Design.DataContext><mg:Neighborhood /></Design.DataContext>
+    <TabControl TabStripPlacement="Left">
+        <TabItem Header="Neighborhood" />
+        <TabItem Header="Sims">
+            <Grid ColumnDefinitions="*,4,*">
+                <ListBox ItemsSource="{Binding Sims}">
+                    <ListBox.DataTemplates>
+                        <DataTemplate x:DataType="m:Game.Sim">
+                            <StackPanel Orientation="Horizontal">
+                                <Image MaxHeight="64" Source="{Binding Portrait}" />
+                                <TextBlock
+                                    Margin="5,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.DataTemplates>
+                </ListBox>
+                <GridSplitter Grid.Column="1" />
+            </Grid>
+        </TabItem>
+        <TabItem Header="Lots">
+            <Grid ColumnDefinitions="*,4,*">
+                <ListBox ItemsSource="{Binding Lots}">
+                    <ListBox.DataTemplates>
+                        <DataTemplate x:DataType="m:Game.Lot">
+                            <StackPanel Orientation="Horizontal">
+                                <Image MaxHeight="64" Source="{Binding LotImage}" />
+                                <TextBlock
+                                    Margin="5,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.DataTemplates>
+                </ListBox>
+                <GridSplitter Grid.Column="1" />
+            </Grid>
+        </TabItem>
+        <TabItem Header="Families">
+            <Grid ColumnDefinitions="*,4,*">
+                <ListBox ItemsSource="{Binding Families}">
+                    <ListBox.DataTemplates>
+                        <DataTemplate x:DataType="m:Game.Family">
+                            <StackPanel Orientation="Horizontal">
+                                <Image MaxHeight="64" Source="{Binding Thumbnail}" />
+                                <TextBlock
+                                    Margin="5,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.DataTemplates>
+                </ListBox>
+                <GridSplitter Grid.Column="1" />
+            </Grid>
+        </TabItem>
+    </TabControl>
+</Window>

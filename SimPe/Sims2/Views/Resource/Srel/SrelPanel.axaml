@@ -1,0 +1,95 @@
+<UserControl
+    x:Class="SimPe.Sims2.Views.Resource.Srel.SrelPanel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ext="using:SimPe.Common.Extensions"
+    xmlns:m="using:SimPe.Sims2.Models"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:SimPe.Sims2.ViewModels"
+    x:DataType="m:Resource.Srel.Srel">
+    <UserControl.Styles>
+        <Style Selector=".rootpanel DockPanel">
+            <Setter Property="Margin" Value="5,5" />
+        </Style>
+        <Style Selector=".rootpanel DockPanel &gt; Label">
+            <Setter Property="Margin" Value="0,0,5,0" />
+        </Style>
+        <Style Selector=".rootpanel WrapPanel DockPanel">
+            <Setter Property="MinWidth" Value="250" />
+        </Style>
+    </UserControl.Styles>
+    <UserControl.Resources>
+        <ext:HexConverter x:Key="HexConverter" />
+        <GridLength x:Key="SliderPreContentMargin">5</GridLength>
+        <GridLength x:Key="SliderPostContentMargin">5</GridLength>
+    </UserControl.Resources>
+    <DockPanel>
+        <TextBlock
+            Margin="5,5"
+            Padding="5,5"
+            HorizontalAlignment="Stretch"
+            Background="{StaticResource SystemControlBackgroundAccentBrush}"
+            DockPanel.Dock="Top">
+            Sim Relation Wrapper
+        </TextBlock>
+        <DockPanel Classes="rootpanel">
+            <StackPanel DockPanel.Dock="Left">
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Format:</Label>
+                    <TextBox Text="{Binding Format, Converter={StaticResource HexConverter}}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Source Sim:</Label>
+                    <TextBox Text="{Binding SourceSimInstance, Converter={StaticResource HexConverter}}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Target Sim:</Label>
+                    <TextBox Text="{Binding TargetSimInstance, Converter={StaticResource HexConverter}}" />
+                </DockPanel>
+            </StackPanel>
+            <WrapPanel HorizontalAlignment="Stretch" Orientation="Vertical">
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Daily Score:</Label>
+                    <Label
+                        VerticalAlignment="Center"
+                        Content="{Binding DailyScore}"
+                        DockPanel.Dock="Right" />
+                    <Slider
+                        Maximum="100"
+                        Minimum="-100"
+                        Value="{Binding DailyScore}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Lifetime Score:</Label>
+                    <Label
+                        VerticalAlignment="Center"
+                        Content="{Binding LifetimeScore}"
+                        DockPanel.Dock="Right" />
+                    <Slider
+                        Maximum="100"
+                        Minimum="-100"
+                        Value="{Binding LifetimeScore}" />
+                </DockPanel>
+                <DockPanel>
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        DockPanel.Dock="Top"
+                        FontSize="16">
+                        Relationship Flags
+                    </TextBlock>
+                    <ListBox ItemsSource="{Binding RelationshipFlags.Values}">
+                        <ListBox.DataTemplates>
+                            <DataTemplate>
+                                <DataTemplate.DataType>
+                                    <x:Type x:TypeArguments="m:Resource.Srel.SrelRelationshipFlags" TypeName="ext:CheckableEnumValue" />
+                                </DataTemplate.DataType>
+                                <CheckBox Content="{Binding Item.DisplayName}" IsChecked="{Binding Checked}" />
+                            </DataTemplate>
+                        </ListBox.DataTemplates>
+                    </ListBox>
+                </DockPanel>
+            </WrapPanel>
+        </DockPanel>
+    </DockPanel>
+</UserControl>

@@ -1,0 +1,127 @@
+<UserControl
+    x:Class="SimPe.Sims2.Views.Resource.Lotd.LotdPanel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ext="using:SimPe.Common.Extensions"
+    xmlns:m="using:SimPe.Sims2.Models"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:SimPe.Sims2.ViewModels"
+    x:DataType="m:Resource.Lotd.Lotd">
+    <UserControl.Styles>
+        <Style Selector=".rootpanel &gt; StackPanel">
+            <Setter Property="Margin" Value="5,5" />
+        </Style>
+        <Style Selector=".rootpanel &gt; StackPanel &gt; Label">
+            <Setter Property="Margin" Value="0,0,5,0" />
+        </Style>
+    </UserControl.Styles>
+    <UserControl.Resources>
+        <ext:HexConverter x:Key="HexConverter" />
+    </UserControl.Resources>
+    <DockPanel>
+        <TextBlock
+            Margin="5,5"
+            Padding="5,5"
+            HorizontalAlignment="Stretch"
+            Background="{StaticResource SystemControlBackgroundAccentBrush}"
+            DockPanel.Dock="Top">
+            Lot Description Wrapper
+        </TextBlock>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+            <WrapPanel Classes="rootpanel" Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Version:</Label>
+                    <ComboBox ItemsSource="{Binding Version.Values, Mode=OneTime}" SelectedItem="{Binding Version}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Width:</Label>
+                    <NumericUpDown
+                        Increment="1"
+                        Maximum="6"
+                        Minimum="1"
+                        Value="{Binding Width}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Height:</Label>
+                    <NumericUpDown
+                        Increment="1"
+                        Maximum="6"
+                        Minimum="1"
+                        Value="{Binding Height}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Type:</Label>
+                    <ComboBox ItemsSource="{Binding Type.Values, Mode=OneTime}" SelectedItem="{Binding Type}" />
+                </StackPanel>
+                <ListBox ItemsSource="{Binding LotRoads.Values}">
+                    <ListBox.DataTemplates>
+                        <DataTemplate>
+                            <DataTemplate.DataType>
+                                <x:Type x:TypeArguments="m:Resource.Ltxt.LotRoads" TypeName="ext:CheckableEnumValue" />
+                            </DataTemplate.DataType>
+                            <CheckBox Content="{Binding Item.DisplayName}" IsChecked="{Binding Checked}" />
+                        </DataTemplate>
+                    </ListBox.DataTemplates>
+                </ListBox>
+                <StackPanel Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Lot Rotation:</Label>
+                    <ComboBox ItemsSource="{Binding LotRotation.Values, Mode=OneTime}" SelectedItem="{Binding LotRotation}" />
+                </StackPanel>
+                <ListBox ItemsSource="{Binding LotFlags.Values}">
+                    <ListBox.DataTemplates>
+                        <DataTemplate>
+                            <DataTemplate.DataType>
+                                <x:Type x:TypeArguments="m:Resource.Ltxt.LotFlags" TypeName="ext:CheckableEnumValue" />
+                            </DataTemplate.DataType>
+                            <CheckBox Content="{Binding Item.DisplayName}" IsChecked="{Binding Checked}" />
+                        </DataTemplate>
+                    </ListBox.DataTemplates>
+                </ListBox>
+                <StackPanel Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Name:</Label>
+                    <TextBox Text="{Binding Name}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Description:</Label>
+                    <TextBox Text="{Binding Description}" />
+                </StackPanel>
+                <!--  TODO: ElevationOffsets  -->
+                <StackPanel IsVisible="{Binding IsVoyageOrHigher}" Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Unknown 00:</Label>
+                    <NumericUpDown Value="{Binding Unknown_00}" />
+                </StackPanel>
+                <ListBox IsVisible="{Binding IsFreeTimeOrHigher}" ItemsSource="{Binding LotHobbyFlags.Values}">
+                    <ListBox.DataTemplates>
+                        <DataTemplate>
+                            <DataTemplate.DataType>
+                                <x:Type x:TypeArguments="m:Resource.Ltxt.LotHobbyFlags" TypeName="ext:CheckableEnumValue" />
+                            </DataTemplate.DataType>
+                            <CheckBox Content="{Binding Item.DisplayName}" IsChecked="{Binding Checked}" />
+                        </DataTemplate>
+                    </ListBox.DataTemplates>
+                </ListBox>
+                <StackPanel IsVisible="{Binding IsApartmentOrHigher}" Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Apartment Count:</Label>
+                    <NumericUpDown Increment="1" Value="{Binding ApartmentCount}" />
+                </StackPanel>
+                <StackPanel IsVisible="{Binding IsApartmentOrHigher}" Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Apartment Price Range (high):</Label>
+                    <NumericUpDown Increment="1" Value="{Binding ApartmentPriceRangeHigh}" />
+                </StackPanel>
+                <StackPanel IsVisible="{Binding IsApartmentOrHigher}" Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Apartment Price Range (low):</Label>
+                    <NumericUpDown Increment="1" Value="{Binding ApartmentPriceRangeLow}" />
+                </StackPanel>
+                <StackPanel IsVisible="{Binding IsApartmentOrHigher}" Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Lot Class Value:</Label>
+                    <NumericUpDown Increment="1" Value="{Binding LotClassValue}" />
+                </StackPanel>
+                <StackPanel IsVisible="{Binding IsApartmentOrHigher}" Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Use Lot Class Value:</Label>
+                    <NumericUpDown Increment="1" Value="{Binding UseLotClassValue}" />
+                </StackPanel>
+            </WrapPanel>
+        </ScrollViewer>
+    </DockPanel>
+</UserControl>

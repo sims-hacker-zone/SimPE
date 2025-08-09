@@ -1,0 +1,22 @@
+<Window
+    x:Class="SimPe.Views.Windows.SettingsWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:s2vc="using:SimPe.Sims2.Views.Configuration"
+    Title="SimPE Configuration"
+    d:DesignHeight="450"
+    d:DesignWidth="450"
+    mc:Ignorable="d">
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Bottom">
+            <Button Click="SaveConfig_Click">Save</Button>
+        </StackPanel>
+        <TabControl TabStripPlacement="Left">
+            <TabItem Header="Sims 2">
+                <s2vc:ConfigurationControl />
+            </TabItem>
+        </TabControl>
+    </DockPanel>
+</Window>

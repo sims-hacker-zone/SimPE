@@ -1,0 +1,60 @@
+<UserControl
+    x:Class="SimPe.Sims2.Views.Resource.Objf.ObjfPanel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ext="using:SimPe.Common.Extensions"
+    xmlns:m="using:SimPe.Sims2.Models"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:SimPe.Sims2.ViewModels"
+    x:DataType="m:Resource.Objf.Objf">
+    <UserControl.Styles>
+        <Style Selector=".rootpanel  DockPanel">
+            <Setter Property="Margin" Value="5,5" />
+        </Style>
+        <Style Selector=".rootpanel DockPanel &gt; Label">
+            <Setter Property="Margin" Value="0,0,5,0" />
+        </Style>
+        <Style Selector=".rootpanel WrapPanel DockPanel">
+            <Setter Property="MinWidth" Value="250" />
+        </Style>
+    </UserControl.Styles>
+    <UserControl.Resources>
+        <ext:HexConverter x:Key="HexConverter" />
+        <GridLength x:Key="SliderPreContentMargin">5</GridLength>
+        <GridLength x:Key="SliderPostContentMargin">5</GridLength>
+    </UserControl.Resources>
+    <DockPanel>
+        <TextBlock
+            Margin="5,5"
+            Padding="5,5"
+            HorizontalAlignment="Stretch"
+            Background="{StaticResource SystemControlBackgroundAccentBrush}"
+            DockPanel.Dock="Top">
+            Object Function Wrapper
+        </TextBlock>
+        <DockPanel Classes="rootpanel">
+            <DockPanel DockPanel.Dock="Left">
+                <DockPanel DockPanel.Dock="Top">
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Filename:</Label>
+                    <TextBox Text="{Binding ResourceName}" />
+                </DockPanel>
+                <ListBox Name="EntriesList" ItemsSource="{Binding Entries}" />
+            </DockPanel>
+            <WrapPanel DataContext="{Binding #EntriesList.SelectedItem}">
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Function ID:</Label>
+                    <ComboBox ItemsSource="{Binding FunctionID.Values, Mode=OneTime}" SelectedItem="{Binding FunctionID}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Action ID:</Label>
+                    <TextBox Text="{Binding ActionID, Converter={StaticResource HexConverter}}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Guardian ID:</Label>
+                    <TextBox Text="{Binding GuardianID, Converter={StaticResource HexConverter}}" />
+                </DockPanel>
+            </WrapPanel>
+        </DockPanel>
+    </DockPanel>
+</UserControl>

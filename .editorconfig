@@ -7,3 +7,4 @@ indent_style = tab
 trim_trailing_whitespace = true
 charset = utf-8
 insert_final_newline = true
+file_header_template = SPDX-FileCopyrightText:© SimPE contributors\nSPDX-License-Identifier:GPL-2.0-or-later

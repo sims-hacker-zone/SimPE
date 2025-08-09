@@ -1,0 +1,86 @@
+<UserControl
+    x:Class="SimPe.Sims2.Views.Resource.Wthr.WthrPanel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:m="using:SimPe.Sims2.Models"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:SimPe.Sims2.ViewModels"
+    x:DataType="m:Resource.Wthr.Wthr">
+    <UserControl.Styles>
+        <Style Selector=".rootpanel &gt; StackPanel">
+            <Setter Property="Margin" Value="5,5" />
+        </Style>
+        <Style Selector=".rootpanel &gt; StackPanel &gt; Label">
+            <Setter Property="Margin" Value="0,0,5,0" />
+        </Style>
+    </UserControl.Styles>
+    <DockPanel>
+        <TextBlock
+            Margin="5,5"
+            Padding="5,5"
+            HorizontalAlignment="Stretch"
+            Background="{StaticResource SystemControlBackgroundAccentBrush}"
+            DockPanel.Dock="Top">
+            Weather Info Wrapper
+        </TextBlock>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+            <WrapPanel Classes="rootpanel" Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Name:</Label>
+                    <TextBox Text="{Binding Name}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Next season:</Label>
+                    <ComboBox ItemsSource="{Binding NextSeason.Values, Mode=OneTime}" SelectedItem="{Binding NextSeason}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Current season:</Label>
+                    <ComboBox ItemsSource="{Binding CurrentSeason.Values, Mode=OneTime}" SelectedItem="{Binding CurrentSeason}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Days left in season:</Label>
+                    <NumericUpDown
+                        Increment="1"
+                        Minimum="0"
+                        Value="{Binding DaysLeftInSeason}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Additional season days:</Label>
+                    <NumericUpDown
+                        Increment="1"
+                        Minimum="0"
+                        Value="{Binding AdditionalSeasonDays}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Precipitation Type:</Label>
+                    <ComboBox ItemsSource="{Binding PrecipitationType.Values, Mode=OneTime}" SelectedItem="{Binding PrecipitationType}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Precipitation Level:</Label>
+                    <ComboBox ItemsSource="{Binding PrecipitationLevel.Values, Mode=OneTime}" SelectedItem="{Binding PrecipitationLevel}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Accumulation Level:</Label>
+                    <ComboBox ItemsSource="{Binding AccumulationLevel.Values, Mode=OneTime}" SelectedItem="{Binding AccumulationLevel}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Accumulation Type:</Label>
+                    <ComboBox ItemsSource="{Binding AccumulationType.Values, Mode=OneTime}" SelectedItem="{Binding AccumulationType}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Temperature:</Label>
+                    <NumericUpDown Increment="1" Value="{Binding Temperature}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Sky clarity:</Label>
+                    <ComboBox ItemsSource="{Binding SkyClarity.Values, Mode=OneTime}" SelectedItem="{Binding SkyClarity}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Pond frozen state:</Label>
+                    <ComboBox ItemsSource="{Binding PondFrozenState.Values, Mode=OneTime}" SelectedItem="{Binding PondFrozenState}" />
+                </StackPanel>
+            </WrapPanel>
+        </ScrollViewer>
+    </DockPanel>
+</UserControl>

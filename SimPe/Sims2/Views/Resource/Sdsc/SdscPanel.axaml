@@ -1,0 +1,504 @@
+<UserControl
+    x:Class="SimPe.Sims2.Views.Resource.Sdsc.SdscPanel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ext="using:SimPe.Common.Extensions"
+    xmlns:m="using:SimPe.Sims2.Models"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:SimPe.Sims2.ViewModels"
+    x:DataType="m:Resource.Sdsc.Sdsc">
+    <UserControl.Styles>
+        <Style Selector=".rootpanel  DockPanel">
+            <Setter Property="Margin" Value="5,5" />
+        </Style>
+        <Style Selector=".rootpanel DockPanel &gt; Label">
+            <Setter Property="Margin" Value="0,0,5,0" />
+        </Style>
+        <Style Selector=".rootpanel WrapPanel DockPanel">
+            <Setter Property="MinWidth" Value="250" />
+        </Style>
+    </UserControl.Styles>
+    <UserControl.Resources>
+        <ext:HexConverter x:Key="HexConverter" />
+        <GridLength x:Key="SliderPreContentMargin">5</GridLength>
+        <GridLength x:Key="SliderPostContentMargin">5</GridLength>
+    </UserControl.Resources>
+    <DockPanel>
+        <TextBlock
+            Margin="5,5"
+            Padding="5,5"
+            HorizontalAlignment="Stretch"
+            Background="{StaticResource SystemControlBackgroundAccentBrush}"
+            DockPanel.Dock="Top">
+            Sim Description Wrapper
+        </TextBlock>
+        <DockPanel Classes="rootpanel">
+            <StackPanel DockPanel.Dock="Left">
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Version:</Label>
+                    <ComboBox ItemsSource="{Binding Version.Values, Mode=OneTime}" SelectedItem="{Binding Version}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Sim Instance:</Label>
+                    <TextBox Text="{Binding SimInstance, Converter={StaticResource HexConverter}}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Sim GUID:</Label>
+                    <TextBox Text="{Binding SimGUID, Converter={StaticResource HexConverter}}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Gender:</Label>
+                    <ComboBox ItemsSource="{Binding Gender.Values, Mode=OneTime}" SelectedItem="{Binding Gender}" />
+                </DockPanel>
+            </StackPanel>
+            <TabControl>
+                <TabItem Header="Personality">
+                    <Grid ColumnDefinitions="*,*">
+                        <StackPanel>
+                            <TextBlock HorizontalAlignment="Center" FontSize="16">Current Personality</TextBlock>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Nice:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Personality.Nice}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding Personality.Nice}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Active:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Personality.Active}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding Personality.Active}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Outgoing:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Personality.Outgoing}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding Personality.Outgoing}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Playful:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Personality.Playful}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding Personality.Playful}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Neat:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Personality.Neat}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding Personality.Neat}" />
+                            </DockPanel>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1">
+                            <TextBlock HorizontalAlignment="Center" FontSize="16">Original Personality</TextBlock>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Nice:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding OriginalPersonality.Nice}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding OriginalPersonality.Nice}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Active:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding OriginalPersonality.Active}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding OriginalPersonality.Active}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Outgoing:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding OriginalPersonality.Outgoing}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding OriginalPersonality.Outgoing}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Playful:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding OriginalPersonality.Playful}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding OriginalPersonality.Playful}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Neat:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding OriginalPersonality.Neat}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding OriginalPersonality.Neat}" />
+                            </DockPanel>
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Career / Skills">
+                    <Grid ColumnDefinitions="*,*">
+                        <StackPanel>
+                            <TextBlock HorizontalAlignment="Center" FontSize="16">Career</TextBlock>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Job Data:</Label>
+                                <TextBox Text="{Binding JobData, Converter={StaticResource HexConverter}}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Job GUID:</Label>
+                                <TextBox Text="{Binding JobGUID, Converter={StaticResource HexConverter}}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Job Level:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding JobPromotionLevel}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="10"
+                                    Minimum="0"
+                                    Value="{Binding JobPromotionLevel}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Job Performance:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding JobPerformance}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding JobPerformance}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Pension:</Label>
+                                <TextBox Text="{Binding Pension}" />
+                            </DockPanel>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1">
+                            <TextBlock HorizontalAlignment="Center" FontSize="16">Skills</TextBlock>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Cooking:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Skills.Cooking}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding Skills.Cooking}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Mechanical:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Skills.Mechanical}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding Skills.Mechanical}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Creativity:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Skills.Creativity}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding Skills.Creativity}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Body:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Skills.Body}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding Skills.Body}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Logic:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Skills.Logic}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding Skills.Logic}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Cleaning:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Skills.Cleaning}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding Skills.Cleaning}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Charisma:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Skills.Charisma}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding Skills.Charisma}" />
+                            </DockPanel>
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Interests">
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                        <WrapPanel HorizontalAlignment="Stretch" Orientation="Vertical">
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Politics:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Interests.Politics}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding Interests.Politics}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Money:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Interests.Money}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding Interests.Money}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Environment:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Interests.Environment}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding Interests.Environment}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Crime:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Interests.Crime}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding Interests.Crime}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Entertainment:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Interests.Entertainment}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding Interests.Entertainment}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Culture:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Interests.Culture}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding Interests.Culture}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Food:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Interests.Food}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding Interests.Food}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Health:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Interests.Health}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding Interests.Health}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Fashion:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Interests.Fashion}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding Interests.Fashion}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Sports:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Interests.Sports}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding Interests.Sports}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Paranormal:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Interests.Paranormal}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding Interests.Paranormal}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Travel:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Interests.Travel}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding Interests.Travel}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Work:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Interests.Work}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding Interests.Work}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Weather:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Interests.Weather}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding Interests.Weather}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Animals:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Interests.Animals}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding Interests.Animals}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">School:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Interests.School}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding Interests.School}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Toys:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Interests.Toys}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding Interests.Toys}" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label VerticalAlignment="Center" DockPanel.Dock="Left">Scifi:</Label>
+                                <Label
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Interests.Scifi}"
+                                    DockPanel.Dock="Right" />
+                                <Slider
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    Value="{Binding Interests.Scifi}" />
+                            </DockPanel>
+                        </WrapPanel>
+                    </ScrollViewer>
+                </TabItem>
+            </TabControl>
+        </DockPanel>
+    </DockPanel>
+</UserControl>

@@ -1,0 +1,38 @@
+<UserControl
+    x:Class="SimPe.Sims2.Views.Resource.Cats.CatsPanel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:m="using:SimPe.Sims2.Models"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:SimPe.Sims2.ViewModels"
+    x:DataType="m:Resource.Cats.Cats">
+    <UserControl.Styles>
+        <Style Selector=".rootpanel &gt; StackPanel">
+            <Setter Property="Margin" Value="5,5" />
+        </Style>
+        <Style Selector=".rootpanel &gt; StackPanel &gt; Label">
+            <Setter Property="Margin" Value="0,0,5,0" />
+        </Style>
+    </UserControl.Styles>
+    <DockPanel>
+        <TextBlock
+            Margin="5,5"
+            Padding="5,5"
+            HorizontalAlignment="Stretch"
+            Background="{StaticResource SystemControlBackgroundAccentBrush}"
+            DockPanel.Dock="Top">
+            CATS Wrapper
+        </TextBlock>
+        <WrapPanel Classes="rootpanel" Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <Label VerticalAlignment="Center">File name:</Label>
+                <TextBox MaxLength="64" Text="{Binding ResourceName}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label VerticalAlignment="Center">Content:</Label>
+                <TextBox Text="{Binding Content}" />
+            </StackPanel>
+        </WrapPanel>
+    </DockPanel>
+</UserControl>

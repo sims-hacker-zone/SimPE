@@ -1,0 +1,90 @@
+<Window
+    x:Class="SimPe.Views.Windows.FindInFiles"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:data="using:SimPe.Data"
+    xmlns:ext="using:SimPe.Common.Extensions"
+    xmlns:gen="using:System.Collections.Generic"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sys="using:System"
+    xmlns:v="using:SimPe.Views"
+    xmlns:vm="using:SimPe.ViewModels"
+    Title="Find in loaded files..."
+    d:DesignHeight="450"
+    d:DesignWidth="450"
+    x:DataType="vm:FindInFilesViewModel"
+    mc:Ignorable="d">
+    <Window.Styles>
+        <Style Selector=".rootpanel &gt; StackPanel, .rootpanel DockPanel">
+            <Setter Property="Margin" Value="5,5" />
+        </Style>
+        <Style Selector=".rootpanel  DockPanel &gt; CheckBox">
+            <Setter Property="Margin" Value="0,0,5,0" />
+        </Style>
+    </Window.Styles>
+    <Window.Resources>
+        <ext:HexConverter x:Key="HexConverter" />
+    </Window.Resources>
+    <DockPanel>
+        <StackPanel
+            Height="24"
+            DockPanel.Dock="Bottom"
+            Orientation="Horizontal">
+            <DockPanel>
+                <Label DockPanel.Dock="Left" FontSize="12">Found Items:</Label>
+                <Label Content="{Binding FoundFiles.Count}" FontSize="12" />
+            </DockPanel>
+        </StackPanel>
+        <DockPanel Classes="rootpanel">
+            <StackPanel DockPanel.Dock="Left">
+                <DockPanel>
+                    <CheckBox
+                        Name="typeCheckbox"
+                        VerticalAlignment="Center"
+                        DockPanel.Dock="Left">
+                        Type:
+                    </CheckBox>
+                    <ComboBox
+                        IsEnabled="{Binding #typeCheckbox.IsChecked}"
+                        ItemsSource="{Binding Type.Values, Mode=OneTime}"
+                        SelectedItem="{Binding Type}" />
+                </DockPanel>
+                <DockPanel>
+                    <CheckBox
+                        Name="groupCheckbox"
+                        VerticalAlignment="Center"
+                        DockPanel.Dock="Left">
+                        Group:
+                    </CheckBox>
+                    <TextBox IsEnabled="{Binding #groupCheckbox.IsChecked}"
+                             Text="{Binding Group, Converter={StaticResource HexConverter}}" />
+                </DockPanel>
+                <DockPanel>
+                    <CheckBox
+                        Name="instanceHighCheckbox"
+                        VerticalAlignment="Center"
+                        DockPanel.Dock="Left">
+                        Instance (high):
+                    </CheckBox>
+                    <TextBox IsEnabled="{Binding #instanceHighCheckbox.IsChecked}"
+                             Text="{Binding InstanceHigh, Converter={StaticResource HexConverter}}" />
+                </DockPanel>
+                <DockPanel>
+                    <CheckBox
+                        Name="instanceCheckbox"
+                        VerticalAlignment="Center"
+                        DockPanel.Dock="Left">
+                        Instance:
+                    </CheckBox>
+                    <TextBox IsEnabled="{Binding #instanceCheckbox.IsChecked}"
+                             Text="{Binding Instance, Converter={StaticResource HexConverter}}" />
+                </DockPanel>
+                <DockPanel>
+                    <Button Click="Search_Click">Search</Button>
+                </DockPanel>
+            </StackPanel>
+            <TreeDataGrid CanUserResizeColumns="true" Source="{Binding FileSource}" />
+        </DockPanel>
+    </DockPanel>
+</Window>

@@ -1,0 +1,199 @@
+<UserControl
+    x:Class="SimPe.Sims2.Views.Resource.Famh.FamhPanel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ext="using:SimPe.Common.Extensions"
+    xmlns:m="using:SimPe.Sims2.Models"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:SimPe.Sims2.ViewModels"
+    x:DataType="m:Resource.Famh.Famh">
+    <UserControl.Styles>
+        <Style Selector=".rootpanel  DockPanel">
+            <Setter Property="Margin" Value="5,5" />
+        </Style>
+        <Style Selector=".rootpanel DockPanel &gt; Label">
+            <Setter Property="Margin" Value="0,0,5,0" />
+        </Style>
+        <Style Selector=".rootpanel WrapPanel DockPanel">
+            <Setter Property="MinWidth" Value="150" />
+        </Style>
+    </UserControl.Styles>
+    <UserControl.Resources>
+        <ext:HexConverter x:Key="HexConverter" />
+        <GridLength x:Key="SliderPreContentMargin">5</GridLength>
+        <GridLength x:Key="SliderPostContentMargin">5</GridLength>
+    </UserControl.Resources>
+    <DockPanel>
+        <TextBlock
+            Margin="5,5"
+            Padding="5,5"
+            HorizontalAlignment="Stretch"
+            Background="{StaticResource SystemControlBackgroundAccentBrush}"
+            DockPanel.Dock="Top">
+            Family History Wrapper
+        </TextBlock>
+        <DockPanel Classes="rootpanel">
+            <DockPanel DockPanel.Dock="Left">
+                <DockPanel DockPanel.Dock="Top">
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Version:</Label>
+                    <ComboBox ItemsSource="{Binding Version.Values, Mode=OneTime}" SelectedItem="{Binding Version}" />
+                </DockPanel>
+                <ListBox Name="entryList" ItemsSource="{Binding Entries}" />
+            </DockPanel>
+            <WrapPanel DataContext="{Binding #entryList.SelectedItem}" Orientation="Vertical">
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Lot Instance:</Label>
+                    <TextBox Text="{Binding LotInstance, Converter={StaticResource HexConverter}}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Family Member Count:</Label>
+                    <TextBox Text="{Binding FamilyMembers}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Male Adult Count:</Label>
+                    <TextBox Text="{Binding MaleAdults}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Female Adult Count:</Label>
+                    <TextBox Text="{Binding FemaleAdults}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Male Children Count:</Label>
+                    <TextBox Text="{Binding MaleChildren}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Female Children Count:</Label>
+                    <TextBox Text="{Binding FemaleChildren}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Unknown00:</Label>
+                    <TextBox Text="{Binding Unknown00}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Unknown01:</Label>
+                    <TextBox Text="{Binding Unknown01}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Unknown02:</Label>
+                    <TextBox Text="{Binding Unknown02}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Unknown03:</Label>
+                    <TextBox Text="{Binding Unknown03}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Unknown04:</Label>
+                    <TextBox Text="{Binding Unknown04}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Unknown05:</Label>
+                    <TextBox Text="{Binding Unknown05}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Unknown06:</Label>
+                    <TextBox Text="{Binding Unknown06}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Unknown07:</Label>
+                    <TextBox Text="{Binding Unknown07}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Unknown08:</Label>
+                    <TextBox Text="{Binding Unknown08}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Unknown09:</Label>
+                    <TextBox Text="{Binding Unknown09}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Unknown10:</Label>
+                    <TextBox Text="{Binding Unknown10}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Unknown11:</Label>
+                    <TextBox Text="{Binding Unknown11}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Unknown12:</Label>
+                    <TextBox Text="{Binding Unknown12}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Unknown13:</Label>
+                    <TextBox Text="{Binding Unknown13}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Unknown14:</Label>
+                    <TextBox Text="{Binding Unknown14}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Unknown15:</Label>
+                    <TextBox Text="{Binding Unknown15}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Unknown16:</Label>
+                    <TextBox Text="{Binding Unknown16}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Unknown17:</Label>
+                    <TextBox Text="{Binding Unknown17}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Unknown18:</Label>
+                    <TextBox Text="{Binding Unknown18}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Unknown19:</Label>
+                    <TextBox Text="{Binding Unknown19}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Unknown20:</Label>
+                    <TextBox Text="{Binding Unknown20}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Unknown21:</Label>
+                    <TextBox Text="{Binding Unknown21}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Unknown22:</Label>
+                    <TextBox Text="{Binding Unknown22}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Unknown23:</Label>
+                    <TextBox Text="{Binding Unknown23}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Unknown24:</Label>
+                    <TextBox Text="{Binding Unknown24}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Money:</Label>
+                    <TextBox Text="{Binding Money}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Family Friends:</Label>
+                    <TextBox Text="{Binding FamilyFriends}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Unknown25:</Label>
+                    <TextBox Text="{Binding Unknown25}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Unknown26:</Label>
+                    <TextBox Text="{Binding Unknown26}" />
+                </DockPanel>
+                <DockPanel>
+                    <CheckBox Content="Unknown27" IsChecked="{Binding Unknown27}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label VerticalAlignment="Center" DockPanel.Dock="Left">Unknown28:</Label>
+                    <TextBox Text="{Binding Unknown28}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label HorizontalAlignment="Center" DockPanel.Dock="Top">Texts</Label>
+                    <ListBox ItemsSource="{Binding Texts}" />
+                </DockPanel>
+            </WrapPanel>
+        </DockPanel>
+    </DockPanel>
+</UserControl>

@@ -1,0 +1,79 @@
+<UserControl
+    x:Class="SimPe.Sims2.Views.Resource.Idno.IdnoPanel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:m="using:SimPe.Sims2.Models"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:SimPe.Sims2.ViewModels"
+    x:DataType="m:Resource.Idno.Idno">
+    <UserControl.Styles>
+        <Style Selector=".rootpanel &gt; StackPanel">
+            <Setter Property="Margin" Value="5,5" />
+        </Style>
+        <Style Selector=".rootpanel &gt; StackPanel &gt; Label">
+            <Setter Property="Margin" Value="0,0,5,0" />
+        </Style>
+    </UserControl.Styles>
+    <DockPanel>
+        <TextBlock
+            Margin="5,5"
+            Padding="5,5"
+            HorizontalAlignment="Stretch"
+            Background="{StaticResource SystemControlBackgroundAccentBrush}"
+            DockPanel.Dock="Top">
+            IDNO Wrapper
+        </TextBlock>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+            <WrapPanel Classes="rootpanel" Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Version:</Label>
+                    <ComboBox ItemsSource="{Binding Version.Values, Mode=OneTime}" SelectedItem="{Binding Version}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Name:</Label>
+                    <TextBox Text="{Binding Name}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">UID:</Label>
+                    <NumericUpDown
+                        Increment="1"
+                        Minimum="0"
+                        Value="{Binding Uid}" />
+                </StackPanel>
+                <StackPanel IsVisible="{Binding IsUniOrLater}" Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Type:</Label>
+                    <ComboBox ItemsSource="{Binding Type.Values, Mode=OneTime}" SelectedItem="{Binding Type}" />
+                </StackPanel>
+                <StackPanel IsVisible="{Binding IsUniOrLater}" Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Subhood Name:</Label>
+                    <TextBox Text="{Binding SubhoodName}" />
+                </StackPanel>
+                <StackPanel IsVisible="{Binding IsSeasonsOrLater}" Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Required EP:</Label>
+                    <ComboBox ItemsSource="{Binding RequiredEP.Values, Mode=OneTime}" SelectedItem="{Binding RequiredEP}" />
+                </StackPanel>
+                <StackPanel IsVisible="{Binding IsSeasonsOrLater}" Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Affiliated EP:</Label>
+                    <ComboBox ItemsSource="{Binding AffiliatedEP.Values, Mode=OneTime}" SelectedItem="{Binding AffiliatedEP}" />
+                </StackPanel>
+                <StackPanel IsVisible="{Binding IsSeasonsOrLater}" Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">1. Season:</Label>
+                    <ComboBox ItemsSource="{Binding FirstSeason.Values, Mode=OneTime}" SelectedItem="{Binding FirstSeason}" />
+                </StackPanel>
+                <StackPanel IsVisible="{Binding IsSeasonsOrLater}" Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">2. Season:</Label>
+                    <ComboBox ItemsSource="{Binding SecondSeason.Values, Mode=OneTime}" SelectedItem="{Binding SecondSeason}" />
+                </StackPanel>
+                <StackPanel IsVisible="{Binding IsSeasonsOrLater}" Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">3. Season:</Label>
+                    <ComboBox ItemsSource="{Binding ThirdSeason.Values, Mode=OneTime}" SelectedItem="{Binding ThirdSeason}" />
+                </StackPanel>
+                <StackPanel IsVisible="{Binding IsSeasonsOrLater}" Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">4. Season:</Label>
+                    <ComboBox ItemsSource="{Binding ForthSeason.Values, Mode=OneTime}" SelectedItem="{Binding ForthSeason}" />
+                </StackPanel>
+            </WrapPanel>
+        </ScrollViewer>
+    </DockPanel>
+</UserControl>
