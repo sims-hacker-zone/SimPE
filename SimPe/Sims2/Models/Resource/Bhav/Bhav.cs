@@ -108,7 +108,7 @@ public partial class Bhav(Resource resource) : ObservableObject, IWrapper
 		}
 	}
 
-	public void Item_PropertyChanged(object sender, PropertyChangedEventArgs e)
+	private void Item_PropertyChanged(object? sender, PropertyChangedEventArgs e)
 	{
 		OnPropertyChanged();
 	}

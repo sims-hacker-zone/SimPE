@@ -4,14 +4,15 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using SimPe.Common.Extensions;
 using SimPe.Common.Models.Interfaces;
+using SimPe.Sims1.Data;
 using SimPe.Sims2.Data;
 
-namespace SimPe.Sims2.Models.Configuration;
+namespace SimPe.Sims1.Models.Configuration;
 
 [ObservableObject]
 public partial class InstallPath : Common.Models.Interfaces.InstallPath
 {
-	[ObservableProperty] private EnumDisplayNameItem<PackageFolders> item = new(PackageFolders.BaseGame);
+	[ObservableProperty] private EnumDisplayNameItem<GameFolders> item = new(GameFolders.BaseGame);
 
 	[ObservableProperty] private string? path;
 

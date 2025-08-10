@@ -231,4 +231,7 @@
     <data name="Saves" xml:space="preserve">
     <value>Save Games</value>
   </data>
+    <data name="Sims1" xml:space="preserve">
+        <value>Sims 1</value>
+    </data>
 </root>

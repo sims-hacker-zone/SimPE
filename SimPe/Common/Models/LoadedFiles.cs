@@ -63,16 +63,13 @@ public partial class FileLoader : ObservableObject
 			try
 			{
 				IFile loadedFile = await loader(file);
-				if (loadedFile != null)
-				{
-					Instance.LoadedFiles.Add(loadedFile);
-					Instance.OnPropertyChanged(nameof(LoadedFiles));
-					Instance.OpenedFiles.Add(loadedFile);
-					Instance.OnPropertyChanged(nameof(OpenedFiles));
-					Instance.OpenedFile = loadedFile;
+				Instance.LoadedFiles.Add(loadedFile);
+				Instance.OnPropertyChanged(nameof(LoadedFiles));
+				Instance.OpenedFiles.Add(loadedFile);
+				Instance.OnPropertyChanged(nameof(OpenedFiles));
+				Instance.OpenedFile = loadedFile;
 
-					return loadedFile;
-				}
+				return loadedFile;
 			}
 			catch
 			{
@@ -98,12 +95,9 @@ public partial class FileLoader : ObservableObject
 			try
 			{
 				IFile loadedFile = await loader(file);
-				if (loadedFile != null)
-				{
-					Instance.LoadedFiles.Add(loadedFile);
-					Instance.OnPropertyChanged(nameof(LoadedFiles));
-					return loadedFile;
-				}
+				Instance.LoadedFiles.Add(loadedFile);
+				Instance.OnPropertyChanged(nameof(LoadedFiles));
+				return loadedFile;
 			}
 			catch
 			{

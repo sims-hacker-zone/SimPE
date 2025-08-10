@@ -25,6 +25,7 @@ public partial class Ngbh(Resource resource) : ObservableObject, IWrapper
 	public bool IsNightlifeOrHigher => Version >= NgbhVersion.Nightlife;
 	public bool IsSeasonsOrHigher => Version >= NgbhVersion.Seasons;
 	public bool IsCastawayOrHigher => Version == NgbhVersion.Castaway;
+	public bool IsUniOrHigher => Version >= NgbhVersion.University;
 
 	[ObservableProperty] private byte[] header = new byte[36];
 
@@ -48,7 +49,7 @@ public partial class Ngbh(Resource resource) : ObservableObject, IWrapper
 
 	public UserControl Panel { get; set; }
 
-	public string FriendlyName => null;
+	public string? FriendlyName => null;
 
 
 	public static Ngbh Unserialize(BinaryReader reader, Resource file)
@@ -95,7 +96,11 @@ public partial class Ngbh(Resource resource) : ObservableObject, IWrapper
 		}
 
 		ngbh.CustomHoodMarker = reader.ReadByte();
-		ngbh.EPReadyMarker = reader.ReadUInt32();
+		if (ngbh.IsUniOrHigher)
+		{
+			ngbh.EPReadyMarker = reader.ReadUInt32();
+		}
+
 		ngbh.Panel = new NgbhPanel() { DataContext = ngbh };
 		return ngbh;
 	}
@@ -139,6 +144,9 @@ public partial class Ngbh(Resource resource) : ObservableObject, IWrapper
 		}
 
 		writer.Write(CustomHoodMarker);
-		writer.Write(EPReadyMarker);
+		if (IsUniOrHigher)
+		{
+			writer.Write(EPReadyMarker);
+		}
 	}
 }

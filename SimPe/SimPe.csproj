@@ -47,14 +47,6 @@
             <StronglyTypedNamespace>SimPe</StronglyTypedNamespace>
             <StronglyTypedClassName>Resources</StronglyTypedClassName>
         </EmbeddedResource>
-        <EmbeddedResource Update="Common\Resources.resx">
-            <Generator>MSBuild:Compile</Generator>
-            <PublicClass>true</PublicClass>
-            <StronglyTypedFileName>Resources.Designer.cs</StronglyTypedFileName>
-            <StronglyTypedLanguage>CSharp</StronglyTypedLanguage>
-            <StronglyTypedNamespace>SimPe.Common</StronglyTypedNamespace>
-            <StronglyTypedClassName>Resources</StronglyTypedClassName>
-        </EmbeddedResource>
     </ItemGroup>
     <ItemGroup>
         <CompilerVisibleProperty Include="RootNamespace"/>
@@ -84,6 +76,13 @@
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0"/>
     </ItemGroup>
     <ItemGroup>
+        <Folder Include="Common\Data\"/>
         <Folder Include="Sims2\Models\Interfaces\"/>
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Update="Sims1\Views\Configuration\ConfigurationControl.axaml.cs">
+            <DependentUpon>ConfigurationControl.axaml</DependentUpon>
+            <SubType>Code</SubType>
+        </Compile>
     </ItemGroup>
 </Project>

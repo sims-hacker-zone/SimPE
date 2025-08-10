@@ -21,5 +21,5 @@ internal class FileTypeAttribute : Attribute
 	/// <summary>
 	/// Is the file contains a file name in the first 64 bytes
 	/// </summary>
-	public bool ContainsFileName { get; set; } = false;
+	public bool ContainsFileName { get; set; }
 }

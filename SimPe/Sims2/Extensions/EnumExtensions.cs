@@ -35,18 +35,18 @@ public static class EnumExtensions
 	/// <returns>The <see cref="FileTypeInformation"/></returns>
 	public static FileTypeInformation ToFileTypeInformation(this FileTypes item)
 	{
-		if (fticache.ContainsKey(item))
+		if (fticache.TryGetValue(item, out FileTypeInformation? information))
 		{
-			return fticache[item];
+			return information;
 		}
 
-		FileTypeAttribute attr = item.GetType()
-			.GetMember(item.ToString())
-			.FirstOrDefault()?.GetCustomAttributes(false)
-			.OfType<FileTypeAttribute>()
-			.FirstOrDefault();
+		FileTypeAttribute? attr = item.GetType()
+		                              .GetMember(item.ToString())
+		                              .FirstOrDefault()?.GetCustomAttributes(false)
+		                              .OfType<FileTypeAttribute>()
+		                              .FirstOrDefault();
 		return fticache[item] = attr != null
-			? new FileTypeInformation
+			? new()
 			{
 				ContainsFileName = attr.ContainsFileName,
 				Extension = attr.Extension,

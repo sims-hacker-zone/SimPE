@@ -30,7 +30,7 @@ public partial class Fwav(Resource resource) : ObservableObject, IWrapper
 		Fwav fwav = new(file)
 		{
 			ResourceName = Encoding.ASCII.GetString(reader.ReadBytes(64)),
-			Content = reader.ReadUTF8CString()
+			Content = reader.ReadUtf8CString()
 		};
 
 		fwav.Panel = new FwavPanel(fwav);

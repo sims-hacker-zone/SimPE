@@ -10,7 +10,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Avalonia.Platform.Storage;
 using CommunityToolkit.Mvvm.ComponentModel;
-using SimPe.Common.Models;
 using SimPe.Common.Models.Interfaces;
 using SimPe.Sims2.Data;
 
@@ -118,11 +117,14 @@ public partial class PackageFile : ObservableObject, IFile
 	public IEnumerable<Resource.Resource> FindFiles(FileTypes? type, uint? @group, uint? instanceHigh, uint? instance)
 	{
 		return (IEnumerable<Resource.Resource>)(from resource in Resources
-			where (type == null || (resource as Resource.Resource).Type == type)
-			      && (@group == null || (resource as Resource.Resource).Group == @group)
-			      && (instanceHigh == null || (resource as Resource.Resource).InstanceHigh == instanceHigh)
-			      && (instance == null || (resource as Resource.Resource).Instance == instance)
-			select resource as Resource.Resource);
+		                                        where (type == null || (resource as Resource.Resource).Type == type)
+		                                              && (@group == null || (resource as Resource.Resource).Group ==
+			                                              @group)
+		                                              && (instanceHigh == null ||
+		                                                  (resource as Resource.Resource).InstanceHigh == instanceHigh)
+		                                              && (instance == null ||
+		                                                  (resource as Resource.Resource).Instance == instance)
+		                                        select resource as Resource.Resource);
 	}
 
 	#endregion

@@ -2,28 +2,18 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Reactive.Linq;
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Selection;
 using Avalonia.Data;
 using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
-using SimPe.Sims2.Data;
-using SimPe.Common.Extensions;
 using SimPe.Common.Models;
-using SimPe.Sims2.Models.Package;
-using SimPe.Sims2.Models.Resource;
 using SimPe.ViewModels;
-using SimPe.Sims2.ViewModels.NeighborhoodBrowser;
 using SimPe.Views.Tabs;
 using SimPe.Views.Windows;
 using SimPe.Sims2.Views.Windows;
 using SimPe.Common.Models.Interfaces;
-using SimPe.ViewModels.ResourceTree;
 
 namespace SimPe;
 
@@ -105,7 +95,7 @@ public partial class MainWindow : Window
 		(DataContext as MainWindowViewModel).ResourceTree.Clear();
 		(DataContext as MainWindowViewModel).ResourceTree.Add(
 			new(FileLoader.Instance.OpenedFile,
-				DataContext as MainWindowViewModel));
+			    DataContext as MainWindowViewModel));
 		Common.Configuration.Configuration.Config.RecentFiles = new(
 			Common.Configuration.Configuration.Config.RecentFiles.Count > 14
 				? [fileList[0].Path.AbsolutePath, ..Common.Configuration.Configuration.Config.RecentFiles.Take(14)]
@@ -115,6 +105,7 @@ public partial class MainWindow : Window
 	internal async void Window_Loaded(object sender, RoutedEventArgs e)
 	{
 		await Common.Configuration.Configuration.Load();
+		await Sims1.Models.Configuration.Configuration.Load();
 		await Sims2.Models.Configuration.Configuration.Load();
 		//await (DataContext as MainWindowViewModel).LoadConfiguration();
 		// foreach (EnumDisplayNameItem<PackageFolders> item in new EnumDisplayNameItem<PackageFolders>(PackageFolders.BaseGame).Values)

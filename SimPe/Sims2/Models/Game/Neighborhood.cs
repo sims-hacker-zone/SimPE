@@ -37,7 +37,7 @@ public partial class Neighborhood(PackageFile neighborhoodFile) : ObservableObje
 
 		IStorageFolder? folder = await neighborhoodFile.StorageFile.GetParentAsync();
 		folder = (IStorageFolder?)folder?.GetItemsAsync().ToBlockingEnumerable()
-			.FirstOrDefault(x => x.Name == "Characters");
+		                                .FirstOrDefault(x => x.Name == "Characters");
 		if (folder == null)
 		{
 			throw new FileNotFoundException("Characters folder not found");
@@ -47,12 +47,12 @@ public partial class Neighborhood(PackageFile neighborhoodFile) : ObservableObje
 		{
 			if (item is IStorageFile file && file.Name.EndsWith(".package"))
 			{
-				PackageFile characterFile = await SimPe.Common.Models.FileLoader.LoadFile(file) as PackageFile ??
+				PackageFile characterFile = await Common.Models.FileLoader.LoadFile(file) as PackageFile ??
 				                            throw new FileNotFoundException(
 					                            $"Could not load character file {file.Name}");
 				// Get Sim GUID from OBJD
 				Objd? objd = characterFile.FindFiles(FileTypes.OBJD, 0xFFFFFFFF, null, null).FirstOrDefault()?.Wrapper
-					?.As<Objd>();
+				                          ?.As<Objd>();
 				if (objd == null)
 				{
 					continue;
@@ -63,8 +63,9 @@ public partial class Neighborhood(PackageFile neighborhoodFile) : ObservableObje
 				// Find Sim description of the GUID
 
 				Sdsc? sdsc = neighborhoodFile.FindFiles(FileTypes.SDSC, null, null, null)
-					.Where(x => x.Wrapper.As<Sdsc>().SimGUID == simGuid).Select(x => x.Wrapper.As<Sdsc>())
-					.FirstOrDefault();
+				                             .Where(x => x.Wrapper.As<Sdsc>().SimGUID == simGuid)
+				                             .Select(x => x.Wrapper.As<Sdsc>())
+				                             .FirstOrDefault();
 				if (sdsc == null)
 				{
 					continue;
@@ -92,7 +93,7 @@ public partial class Neighborhood(PackageFile neighborhoodFile) : ObservableObje
 		{
 			if (item is IStorageFile file && file.Name.EndsWith(".package"))
 			{
-				PackageFile lotFile = await SimPe.Common.Models.FileLoader.LoadFile(file) as PackageFile ??
+				PackageFile lotFile = await Common.Models.FileLoader.LoadFile(file) as PackageFile ??
 				                      throw new FileNotFoundException($"Could not load lot file {file.Name}");
 
 				// Get the Lot name from the LOTD of the lot file
@@ -106,8 +107,9 @@ public partial class Neighborhood(PackageFile neighborhoodFile) : ObservableObje
 
 				// Get the Lot name from the LTXT of the neighborhood file
 				Ltxt ltxt = neighborhoodFile.FindFiles(FileTypes.LTXT, 0xFFFFFFFF, null, null)
-					.Where(x => x.Wrapper.As<Ltxt>().Name == lotName).Select(x => x.Wrapper.As<Ltxt>())
-					.FirstOrDefault();
+				                            .Where(x => x.Wrapper.As<Ltxt>().Name == lotName)
+				                            .Select(x => x.Wrapper.As<Ltxt>())
+				                            .FirstOrDefault();
 				if (ltxt == null)
 				{
 					continue;
@@ -122,7 +124,7 @@ public partial class Neighborhood(PackageFile neighborhoodFile) : ObservableObje
 
 		folder = await neighborhoodFile.StorageFile.GetParentAsync();
 		folder = (IStorageFolder)folder.GetItemsAsync().ToBlockingEnumerable()
-			.FirstOrDefault(x => x.Name == "Thumbnails");
+		                               .FirstOrDefault(x => x.Name == "Thumbnails");
 		if (folder == null)
 		{
 			throw new FileNotFoundException("Thumbnails folder not found");
@@ -130,19 +132,20 @@ public partial class Neighborhood(PackageFile neighborhoodFile) : ObservableObje
 
 		IStorageFile thumbnailFile =
 			(IStorageFile)folder.GetItemsAsync().ToBlockingEnumerable()
-				.FirstOrDefault(x => x.Name.EndsWith("FamilyThumbnails.package")) ??
+			                    .FirstOrDefault(x => x.Name.EndsWith("FamilyThumbnails.package")) ??
 			throw new FileNotFoundException("FamilyThumbnails file not found");
-		PackageFile familyThumbnailFile = await SimPe.Common.Models.FileLoader.LoadFile(thumbnailFile) as PackageFile ??
+		PackageFile familyThumbnailFile = await Common.Models.FileLoader.LoadFile(thumbnailFile) as PackageFile ??
 		                                  throw new FileNotFoundException(
 			                                  $"Could not load family thumbnail file {thumbnailFile.Name}");
 
 		foreach (Fami fami in neighborhoodFile.FindFiles(FileTypes.FAMI, 0xFFFFFFFF, null, null)
-			         .Select(x => x.Wrapper.As<Fami>()))
+		                                      .Select(x => x.Wrapper.As<Fami>()))
 		{
 			Picture thumbnail = familyThumbnailFile
-				.FindFiles(FileTypes.THUMB_FAMILY, 0xFFFFFFFF, 0, (fami.Resource as Resource.Resource).Instance)
-				.FirstOrDefault()?.Wrapper
-				?.As<Picture>();
+			                    .FindFiles(FileTypes.THUMB_FAMILY, 0xFFFFFFFF, 0,
+			                               (fami.Resource as Resource.Resource).Instance)
+			                    .FirstOrDefault()?.Wrapper
+			                    ?.As<Picture>();
 			neighborhood.Families.Add(new Family(neighborhoodFile, fami, thumbnail));
 			Console.WriteLine($"Family loaded: {neighborhood.Families[^1].Name}");
 		}
@@ -153,7 +156,7 @@ public partial class Neighborhood(PackageFile neighborhoodFile) : ObservableObje
 			new ObservableCollection<Lot>(Enumerable.OrderBy<Lot, uint>(neighborhood.Lots, x => x.LotInstance));
 		neighborhood.Families =
 			new ObservableCollection<Family>(Enumerable.OrderBy<Family, uint>(neighborhood.Families,
-				x => x.FamilyInstance));
+			                                                                  x => x.FamilyInstance));
 		return neighborhood;
 	}
 }

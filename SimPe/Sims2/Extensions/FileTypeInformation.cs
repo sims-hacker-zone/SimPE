@@ -26,7 +26,7 @@ public partial class FileTypeInformation : ObservableObject
 		return a.Type != b.Type;
 	}
 
-	public override bool Equals(object obj)
+	public override bool Equals(object? obj)
 	{
 		return obj is FileTypeInformation fti && Type == fti.Type;
 	}

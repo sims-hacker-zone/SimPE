@@ -1,6 +1,9 @@
 // SPDX-FileCopyrightText: © SimPE contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+// ReSharper disable InconsistentNaming
+// ReSharper disable IdentifierTypo
+
 namespace SimPe.Sims1.Data;
 
 public enum ResourceTypes : uint
@@ -23,10 +26,12 @@ public enum ResourceTypes : uint
 	PALT = 0X50414C54,
 	SIMI = 0x53494D49,
 	HOUS = 0x484F5553,
-	FLRm = 0x464c526d,
-	WALm = 0x57414c6d,
+	FLRm = 0X464C526D,
+	WALm = 0X57414C6D,
 	Arry = 0x41727279,
-	objt = 0x6f626a74,
-	ObjM = 0x4f626a4d,
+	objt = 0X6F626A74,
+	ObjM = 0X4F626A4D,
 	THMB = 0x54484d42,
+	Optn = 0x4F70746E,
+	XXXX = 0x58585858,
 }

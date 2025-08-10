@@ -8,12 +8,21 @@ using System.Linq;
 
 namespace SimPe.Common.Extensions;
 
-public record EnumDisplayNameItem<T> : IComparable<T> where T : struct, Enum
+public record EnumDisplayNameItem
+{
+	public Enum Item { get; set; }
+
+	public string DisplayName { get; }
+
+	public IEnumerable<EnumDisplayNameItem> Values { get; }
+}
+
+public record EnumDisplayNameItem<T> : EnumDisplayNameItem, IComparable<T> where T : struct, Enum
 {
 	private static readonly Hashtable valueCache = [];
-	public T Item { get; set; }
+	public new T Item { get; init; }
 
-	public EnumDisplayNameItem()
+	private EnumDisplayNameItem()
 	{
 	}
 
@@ -22,11 +31,11 @@ public record EnumDisplayNameItem<T> : IComparable<T> where T : struct, Enum
 		Item = item;
 	}
 
-	public string Str => $"{Item.GetDisplayName()} (0x{Convert.ChangeType(Item, Item.GetTypeCode()):X})";
+	private string Str => $"{Item.GetDisplayName()} (0x{Convert.ChangeType(Item, Item.GetTypeCode()):X})";
 
 	public string EnumName => Item.ToString();
 
-	public string DisplayName => Item.GetDisplayName();
+	public new string DisplayName => Item.GetDisplayName();
 
 	public override string ToString()
 	{
@@ -43,7 +52,7 @@ public record EnumDisplayNameItem<T> : IComparable<T> where T : struct, Enum
 		return Item.CompareTo(other);
 	}
 
-	public static bool operator ==(EnumDisplayNameItem<T> a, T b)
+	public static bool operator ==(EnumDisplayNameItem<T>? a, T b)
 	{
 		return a.Item.Equals(b);
 	}
@@ -84,8 +93,9 @@ public record EnumDisplayNameItem<T> : IComparable<T> where T : struct, Enum
 		return a.Item.CompareTo(b) < 0;
 	}
 
-	public IEnumerable<EnumDisplayNameItem<T>> Values => valueCache.ContainsKey(typeof(T))
+	public new IEnumerable<EnumDisplayNameItem<T>> Values => valueCache.ContainsKey(typeof(T))
 		? (IEnumerable<EnumDisplayNameItem<T>>)valueCache[typeof(T)]
 		: (IEnumerable<EnumDisplayNameItem<T>>)(valueCache[typeof(T)] = from item in Enum.GetValues<T>()
-			select new EnumDisplayNameItem<T> { Item = item });
+		                                                                select new EnumDisplayNameItem<T>
+			                                                                { Item = item });
 }

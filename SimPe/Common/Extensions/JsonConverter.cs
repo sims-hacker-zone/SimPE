@@ -37,17 +37,17 @@ public class DictionaryTKeyEnumTValueConverter : JsonConverterFactory
 	private class EnumConverterInner<T>(JsonSerializerOptions options) :
 		JsonConverter<EnumDisplayNameItem<T>> where T : struct, Enum
 	{
-		private readonly JsonConverter<T> _valueConverter = (JsonConverter<T>)options
+		private readonly JsonConverter<T> valueConverter = (JsonConverter<T>)options
 			.GetConverter(typeof(T));
 
-		private readonly Type _valueType = typeof(T);
+		private readonly Type valueType = typeof(T);
 
 		public override EnumDisplayNameItem<T> Read(
 			ref Utf8JsonReader reader,
 			Type typeToConvert,
 			JsonSerializerOptions options)
 		{
-			T value = _valueConverter.Read(ref reader, _valueType, options)!;
+			T value = valueConverter.Read(ref reader, valueType, options);
 
 			return new(value);
 		}
@@ -57,7 +57,7 @@ public class DictionaryTKeyEnumTValueConverter : JsonConverterFactory
 			EnumDisplayNameItem<T> item,
 			JsonSerializerOptions options)
 		{
-			_valueConverter.Write(writer, item.Item, options);
+			valueConverter.Write(writer, item.Item, options);
 		}
 	}
 }

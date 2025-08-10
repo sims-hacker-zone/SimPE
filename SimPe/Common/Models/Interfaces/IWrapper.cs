@@ -10,21 +10,21 @@ namespace SimPe.Common.Models.Interfaces;
 
 public interface IWrapper : INotifyPropertyChanged, INotifyPropertyChanging
 {
-	public abstract IResource Resource { get; set; }
+	public IResource Resource { get; set; }
 
 	public static virtual IWrapper Unserialize(BinaryReader reader, Sims2.Models.Resource.Resource file)
 	{
 		throw new NotImplementedException();
 	}
 
-	public abstract void Serialize(BinaryWriter writer);
+	public void Serialize(BinaryWriter writer);
 
 	public T As<T>() where T : IWrapper
 	{
 		return (T)this;
 	}
 
-	public abstract UserControl Panel { get; }
+	public UserControl Panel { get; }
 
-	public abstract string FriendlyName { get; }
+	public string FriendlyName { get; }
 }

@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 using System;
-using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
@@ -29,11 +28,9 @@ public partial class IFFFile : ObservableObject, IFile
 			StorageFile = file
 		};
 
-		using Stream stream = await iffFile.StorageFile.OpenReadAsync();
+		await using Stream stream = await iffFile.StorageFile.OpenReadAsync();
 		using BinaryReader reader = new(stream, Encoding.ASCII);
 		reader.BaseStream.Seek(0, SeekOrigin.Begin);
-
-		uint? rsmp_pos;
 
 		if (!reader.ReadBytes(9).SequenceEqual("IFF FILE "u8.ToArray()))
 		{
@@ -50,25 +47,27 @@ public partial class IFFFile : ObservableObject, IFile
 		if (iffFile.Version == IFFFileVersion.VERSION_2_0)
 		{
 			if (!reader.ReadBytes(52)
-				    .SequenceEqual(":TYPE FOLLOWED BY SIZE\x00 JAMIE DOORNBOS & MAXIS 1996\x00"u8.ToArray()))
+			           .SequenceEqual((":TYPE FOLLOWED BY SIZE\0"u8 + " JAMIE DOORNBOS & MAXIS 1996\0"u8).ToArray()))
 			{
 				throw new InvalidDataException("Invalid IFF file header for version 2.0");
 			}
 		}
 		else if (iffFile.Version == IFFFileVersion.VERSION_2_5)
 		{
-			if (!reader.ReadBytes(48).SequenceEqual(":TYPE FOLLOWED BY SIZE\x00 JAMIE DOORNBOS & MAXIS 1"u8.ToArray()))
+			if (!reader.ReadBytes(48)
+			           .SequenceEqual((":TYPE FOLLOWED BY SIZE\0"u8 + " JAMIE DOORNBOS & MAXIS 1"u8).ToArray()))
 			{
 				throw new InvalidDataException("Invalid IFF file header for version 2.5");
 			}
 
-			rsmp_pos = reader.ReadUInt32();
+			reader.ReadUInt32();
 		}
 
 		while (reader.BaseStream.Position < reader.BaseStream.Length)
 		{
-			Resource.Resource resource = Resource.Resource.Unserialize(reader, iffFile);
-			iffFile.Resources.Add(resource);
+			Resource.Resource? resource = Resource.Resource.Unserialize(reader, iffFile);
+			if (resource is not null)
+				iffFile.Resources.Add(resource);
 		}
 
 		return iffFile;

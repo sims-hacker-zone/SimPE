@@ -13,12 +13,8 @@ public static class JpegAlfa
 	public static Bitmap LoadJpegAlfa(byte[] buffer)
 	{
 		Bitmap bitmap = new(new MemoryStream(buffer));
-		if (!buffer[..2].SequenceEqual(new byte[] { 0xFF, 0xD8 }))
-		{
-			return bitmap;
-		}
-
-		if (!buffer[2..4].SequenceEqual(new byte[] { 0xFF, 0xE0 }))
+		if (!buffer[..2].SequenceEqual(new byte[] { 0xFF, 0xD8 }) ||
+		    !buffer[2..4].SequenceEqual(new byte[] { 0xFF, 0xE0 }))
 		{
 			return bitmap;
 		}
@@ -62,7 +58,8 @@ public static class JpegAlfa
 		}
 
 		SKBitmap b = SKBitmap.Decode(buffer,
-			new((int)bitmap.Size.Width, (int)bitmap.Size.Height, SKColorType.Rgba8888, SKAlphaType.Premul));
+		                             new((int)bitmap.Size.Width, (int)bitmap.Size.Height, SKColorType.Rgba8888,
+		                                 SKAlphaType.Premul));
 		nint ptr = b.GetPixels();
 		unsafe
 		{

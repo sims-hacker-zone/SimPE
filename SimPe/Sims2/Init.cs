@@ -13,7 +13,7 @@ public static class Init
 		Common.Models.FileLoader.RegisterFileLoader(Sims2.Models.Package.PackageFile.Open);
 		Common.Models.FileLoader.FileTypeFilter.Add(new("Sims 2 Package")
 		{
-			Patterns = ["*.package", "*.sims"]
+			Patterns = ["*.package", "*.sims", "*.cache"]
 		});
 	}
 }

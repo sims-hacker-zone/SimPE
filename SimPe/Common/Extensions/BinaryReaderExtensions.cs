@@ -9,7 +9,7 @@ namespace SimPe.Common.Extensions;
 
 public static class BinaryReaderExtensions
 {
-	public static string ReadUTF8CString(this BinaryReader reader)
+	public static string ReadUtf8CString(this BinaryReader reader)
 	{
 		List<byte> bytes = [];
 		byte b;

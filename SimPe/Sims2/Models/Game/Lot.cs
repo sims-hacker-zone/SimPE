@@ -19,7 +19,7 @@ public partial class Lot(PackageFile neighborhoodFile, PackageFile lotFile, Ltxt
 
 	public string LotName => LotDescription.Name;
 
-	public Bitmap LotImage => LotFile.FindFile(FileTypes.IMG, 0xFFFFFFFF, 0, 0x35CA0002)?.Wrapper?.As<Picture>().Image;
+	public Bitmap? LotImage => LotFile.FindFile(FileTypes.IMG, 0xFFFFFFFF, 0, 0x35CA0002)?.Wrapper?.As<Picture>().Image;
 
 	public override string ToString()
 	{

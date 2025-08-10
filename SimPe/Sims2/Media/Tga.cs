@@ -9,15 +9,15 @@ namespace SimPe.Sims2.Media;
 
 public static class Tga
 {
-	public static Bitmap ReadTGA(Stream stream)
+	public static Bitmap? ReadTga(Stream stream)
 	{
-		SKColorType colorType;
 		try
 		{
 			using IImage image = Pfimage.FromStream(stream);
 			byte[] newData = image.Data;
 			int newDataLen = image.DataLen;
 			int stride = image.Stride;
+			SKColorType colorType;
 			switch (image.Format)
 			{
 				case ImageFormat.Rgb8:
@@ -57,7 +57,7 @@ public static class Tga
 			SKImageInfo imageInfo = new(image.Width, image.Height, colorType);
 			GCHandle handle = GCHandle.Alloc(newData, GCHandleType.Pinned);
 			nint ptr = Marshal.UnsafeAddrOfPinnedArrayElement(newData, 0);
-			using SKData data = SKData.Create(ptr, newDataLen, (address, context) => handle.Free());
+			using SKData data = SKData.Create(ptr, newDataLen, (_, _) => handle.Free());
 			using SKImage skImage = SKImage.FromPixels(imageInfo, data, stride);
 			using SKBitmap bitmap = SKBitmap.FromImage(skImage);
 			using MemoryStream stream1 = new();

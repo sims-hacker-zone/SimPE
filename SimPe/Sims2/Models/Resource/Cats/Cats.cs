@@ -42,7 +42,7 @@ public partial class Cats(Resource resource) : ObservableObject, IWrapper
 		Cats Cats = new(file)
 		{
 			ResourceName = Encoding.ASCII.GetString(reader.ReadBytes(64)),
-			Content = reader.ReadUTF8CString()
+			Content = reader.ReadUtf8CString()
 		};
 
 		Cats.Panel = new CatsPanel() { DataContext = Cats };

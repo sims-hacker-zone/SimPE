@@ -39,13 +39,13 @@ public partial class StrItem(Str parent) : ObservableObject
 		else if (parent.Format == StrFileFormat.NoDescriptions)
 		{
 			item.Language = new((Languages)(reader.ReadByte() + 1));
-			item.Title = reader.ReadUTF8CString();
+			item.Title = reader.ReadUtf8CString();
 		}
 		else if (parent.Format == StrFileFormat.WithDescriptions)
 		{
 			item.Language = new((Languages)reader.ReadByte());
-			item.Title = reader.ReadUTF8CString();
-			item.Description = reader.ReadUTF8CString();
+			item.Title = reader.ReadUtf8CString();
+			item.Description = reader.ReadUtf8CString();
 		}
 
 		return item;

@@ -101,17 +101,13 @@ public partial class Resource(PackageFile file) : ObservableObject, IResource
 	{
 		get
 		{
-			if (wrapper == null)
-			{
-				if (Type != FileTypes.CLST) ReadContent();
-				if (Wrappers.Unserializers.TryGetValue(Type.Item, out var func))
-				{
-					using MemoryStream memory = new(IsCompressed ? UncompressedData : Data);
-					using BinaryReader reader = new(memory);
-					wrapper = func(reader, this);
-					wrapper.PropertyChanged += Wrapper_PropertyChanged;
-				}
-			}
+			if (wrapper != null) return wrapper;
+			if (Type != FileTypes.CLST) ReadContent();
+			if (!Wrappers.Unserializers.TryGetValue(Type.Item, out var func)) return wrapper;
+			using MemoryStream memory = new(IsCompressed ? UncompressedData : Data);
+			using BinaryReader reader = new(memory);
+			wrapper = func(reader, this);
+			wrapper.PropertyChanged += Wrapper_PropertyChanged;
 
 			return wrapper;
 		}
@@ -123,16 +119,12 @@ public partial class Resource(PackageFile file) : ObservableObject, IResource
 		{
 			if (wrapper != null && Wrapper.FriendlyName != null) return Wrapper.FriendlyName;
 
-			if (Type.Item.ToFileTypeInformation().ContainsFileName)
-			{
-				if (UserData != null) return Encoding.ASCII.GetString(UserData[..64]);
+			if (!Type.Item.ToFileTypeInformation().ContainsFileName) return ResourceName;
+			if (UserData != null) return Encoding.ASCII.GetString(UserData[..64]);
 
-				if (UncompressedData != null) return Encoding.ASCII.GetString(UncompressedData[..64]);
+			if (UncompressedData != null) return Encoding.ASCII.GetString(UncompressedData[..64]);
 
-				return Data != null ? Encoding.ASCII.GetString(Data[..64]) : ResourceName;
-			}
-
-			return ResourceName;
+			return Data != null ? Encoding.ASCII.GetString(Data[..64]) : ResourceName;
 		}
 	}
 

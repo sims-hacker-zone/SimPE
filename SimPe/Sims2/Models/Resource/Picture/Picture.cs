@@ -40,7 +40,7 @@ public partial class Picture(Resource resource) : ObservableObject, IWrapper
 		{
 			buffer = reader.ReadBytes((int)reader.BaseStream.Length);
 			picture.Image = buffer[^18..].AsSpan().SequenceEqual("TRUEVISION-XFILE.\x00"u8)
-				? Tga.ReadTGA(new MemoryStream(buffer))
+				? Tga.ReadTga(new MemoryStream(buffer))
 				: JpegAlfa.LoadJpegAlfa(buffer);
 		}
 

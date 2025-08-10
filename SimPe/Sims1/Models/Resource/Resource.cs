@@ -7,7 +7,6 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using SimPe.Common.Extensions;
 using SimPe.Common.Models.Interfaces;
 using SimPe.Sims1.Data;
-using SimPe.Sims1.Models.IFFFile;
 
 namespace SimPe.Sims1.Models.Resource;
 
@@ -40,12 +39,21 @@ public partial class Resource(IFFFile.IFFFile file) : ObservableObject, IResourc
 
 	public IWrapper Wrapper { get; set; }
 
-	public static Resource Unserialize(BinaryReader reader, IFFFile.IFFFile file)
+	public static Resource? Unserialize(BinaryReader reader, IFFFile.IFFFile file)
 	{
+		EnumDisplayNameItem<ResourceTypes> type =
+			new((ResourceTypes)BinaryPrimitives.ReadUInt32BigEndian(reader.ReadBytes(4).AsSpan()));
+		uint size = BinaryPrimitives.ReadUInt32BigEndian(reader.ReadBytes(4).AsSpan());
+		if (type == ResourceTypes.XXXX)
+		{
+			reader.BaseStream.Position += size - 8;
+			return null;
+		}
+
 		Resource resource = new(file)
 		{
-			Type = new((ResourceTypes)BinaryPrimitives.ReadUInt32BigEndian(reader.ReadBytes(4).AsSpan())),
-			Size = BinaryPrimitives.ReadUInt32BigEndian(reader.ReadBytes(4).AsSpan()),
+			Type = type,
+			Size = size,
 			ID = BinaryPrimitives.ReadUInt16BigEndian(reader.ReadBytes(2).AsSpan()),
 			Flags = BinaryPrimitives.ReadUInt16BigEndian(reader.ReadBytes(2).AsSpan()),
 			Name = Encoding.UTF8.GetString(reader.ReadBytes(64)),

@@ -13,19 +13,17 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace SimPe.Common.Configuration;
 
-public static class Configuration
+public static partial class Configuration
 {
-	private static CommonConfig? config;
-
-	public static CommonConfig Config => config;
+	public static CommonConfig? Config { get; private set; }
 
 	public partial class CommonConfig : ObservableObject
 	{
-		public ObservableCollection<string> RecentFiles { get; set; } = [];
+		[ObservableProperty] private ObservableCollection<string> recentFiles = [];
 	}
 
 
-	private static readonly JsonSerializerOptions options = new()
+	private static readonly JsonSerializerOptions Options = new()
 	{
 		UnmappedMemberHandling = System.Text.Json.Serialization.JsonUnmappedMemberHandling.Skip,
 		DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
@@ -34,38 +32,38 @@ public static class Configuration
 
 	public static async Task Load()
 	{
-		string configpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SimPe",
-			"config.common.json");
-		if (File.Exists(configpath))
+		string configPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SimPe",
+		                                 "config.common.json");
+		if (File.Exists(configPath))
 		{
 			try
 			{
 				IStorageFile? file = await TopLevel.GetTopLevel(Program.MainWindow)?.StorageProvider
-					.TryGetFileFromPathAsync(new(new("file://"), configpath));
-				await using Stream stream = await file?.OpenReadAsync();
+				                                   .TryGetFileFromPathAsync(new(new("file://"), configPath))!;
+				await using Stream stream = await file?.OpenReadAsync()!;
 				using StreamReader reader = new(stream);
-				config = JsonSerializer.Deserialize<CommonConfig>(await reader.ReadToEndAsync(),
-					options) ?? new CommonConfig();
+				Config = JsonSerializer.Deserialize<CommonConfig>(await reader.ReadToEndAsync(),
+				                                                  Options) ?? new CommonConfig();
 			}
 			catch (JsonException)
 			{
 				// If deserialization fails, return a new config
-				config = new();
+				Config = new();
 			}
 		}
 		else
 		{
-			config = new();
+			Config = new();
 		}
 	}
 
 	public static async Task Save()
 	{
 		string configpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SimPe",
-			"config.common.json");
+		                                 "config.common.json");
 		try
 		{
-			await File.WriteAllTextAsync(configpath, JsonSerializer.Serialize(Config, options), Encoding.UTF8);
+			await File.WriteAllTextAsync(configpath, JsonSerializer.Serialize(Config, Options), Encoding.UTF8);
 		}
 		catch (Exception ex)
 		{

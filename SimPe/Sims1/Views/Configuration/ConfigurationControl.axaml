@@ -1,0 +1,66 @@
+<UserControl
+    x:Class="SimPe.Sims1.Views.Configuration.ConfigurationControl"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ext="using:SimPe.Common.Extensions"
+    xmlns:gen="using:System.Collections.Generic"
+    xmlns:mconf="using:SimPe.Sims1.Models.Configuration"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sys="using:System"
+    xmlns:v="using:SimPe.Views"
+    mc:Ignorable="d">
+    <Design.DataContext>
+        <mconf:Sims1Config />
+    </Design.DataContext>
+    <TabControl TabStripPlacement="Left">
+        <TabItem Header="Installed Games">
+            <Grid ColumnDefinitions="1*,4,3*">
+                <DockPanel>
+                    <DockPanel DockPanel.Dock="Top">
+                        <StackPanel Orientation="Horizontal">
+                            <Button Click="AddGame_OnClick">Add Game</Button>
+                            <Button Click="RemoveGame_OnClick">Remove Game</Button>
+                        </StackPanel>
+                    </DockPanel>
+                    <ListBox ItemsSource="{Binding InstalledGames}" Name="GameList">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding .}"></TextBlock>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </DockPanel>
+                <GridSplitter Grid.Column="1"></GridSplitter>
+                <DockPanel Grid.Column="2" DataContext="{Binding #GameList.SelectedItem}">
+                    <Design.DataContext>
+                        <mconf:InstalledGame></mconf:InstalledGame>
+                    </Design.DataContext>
+                    <DockPanel DockPanel.Dock="Top">
+                        <Label VerticalAlignment="Center" DockPanel.Dock="Left">Version:</Label>
+                        <ComboBox SelectionChanged="GameType_SelectionChanged"
+                                  ItemsSource="{Binding Type.Values, Mode=OneTime}" SelectedItem="{Binding Type}" />
+                    </DockPanel>
+                    <ListBox ItemsSource="{Binding Paths}">
+                        <ListBox.DataTemplates>
+                            <DataTemplate x:DataType="mconf:InstallPath">
+                                <Grid ColumnDefinitions="5*,14*,40">
+                                    <TextBlock
+                                        VerticalAlignment="Center"
+                                        Text="{Binding Item}"
+                                        TextWrapping="Wrap" />
+                                    <TextBox Grid.Column="1" Text="{Binding Path}" />
+                                    <Button
+                                        Grid.Column="2"
+                                        Margin="5,0"
+                                        Click="SetNewPath_OnClick"
+                                        Content="..." />
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.DataTemplates>
+                    </ListBox>
+                </DockPanel>
+            </Grid>
+        </TabItem>
+    </TabControl>
+</UserControl>

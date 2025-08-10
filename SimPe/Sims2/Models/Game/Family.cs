@@ -19,7 +19,7 @@ public partial class Family(PackageFile neighborhoodFile, Fami famiResource, Pic
 
 	public Fami FamiResource { get; } = famiResource;
 
-	public Picture ThumbnailResource { get; } = thumbnailResource;
+	public Picture? ThumbnailResource { get; } = thumbnailResource;
 
 	public Bitmap? Thumbnail => ThumbnailResource?.Image;
 

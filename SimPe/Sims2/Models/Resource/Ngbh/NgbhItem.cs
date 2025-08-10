@@ -29,9 +29,11 @@ public partial class NgbhItem(NgbhSlot parent) : ObservableObject
 			Guid = reader.ReadUInt32(),
 			Flags1 = new((NgbhItemFlags)reader.ReadUInt16())
 		};
+		item.Flags1.PropertyChanged += item.Item_PropertyChanged;
 		if (parent.Parent.IsBusinessOrHigher)
 		{
 			item.Flags2 = new((NgbhItemFlags)reader.ReadUInt16());
+			item.Flags2.PropertyChanged += item.Item_PropertyChanged;
 		}
 
 		if (parent.Parent.IsNightlifeOrHigher)
@@ -50,8 +52,6 @@ public partial class NgbhItem(NgbhSlot parent) : ObservableObject
 			item.DataItems.Add(reader.ReadUInt16());
 		}
 
-		item.Flags1.PropertyChanged += item.Item_PropertyChanged;
-		item.Flags2.PropertyChanged += item.Item_PropertyChanged;
 		return item;
 	}
 
@@ -86,7 +86,7 @@ public partial class NgbhItem(NgbhSlot parent) : ObservableObject
 		return $"0x{Guid:X8} - Items: {DataItems.Count}";
 	}
 
-	public void Item_PropertyChanged(object sender, PropertyChangedEventArgs e)
+	public void Item_PropertyChanged(object? sender, PropertyChangedEventArgs e)
 	{
 		OnPropertyChanged();
 	}

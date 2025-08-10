@@ -8,11 +8,14 @@ namespace SimPe.Sims2.Data;
 public enum GameTypes : byte
 {
 	[DisplayName("Sims2", LocalizedResource = true)]
-	Sims2 = 0x01,
+	Sims2 = 1,
+
 	[DisplayName("SimsLS", LocalizedResource = true)]
-	SimsLS = 0x02,
+	SimsLS,
+
 	[DisplayName("SimsPS", LocalizedResource = true)]
-	SimsPS = 0x03,
+	SimsPS,
+
 	[DisplayName("SimsCS", LocalizedResource = true)]
-	SimsCS = 0x04,
+	SimsCS,
 }

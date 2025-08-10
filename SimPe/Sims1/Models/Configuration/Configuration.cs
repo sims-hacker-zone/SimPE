@@ -10,13 +10,13 @@ using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using SimPe.Common.Extensions;
 
-namespace SimPe.Sims2.Models.Configuration;
+namespace SimPe.Sims1.Models.Configuration;
 
 public partial class Configuration : ObservableObject
 {
-	private static Sims2Config? config;
+	private static Sims1Config? config;
 
-	public static Sims2Config Config => config;
+	public static Sims1Config Config => config;
 
 
 	private static readonly JsonSerializerOptions Options = new()
@@ -34,14 +34,14 @@ public partial class Configuration : ObservableObject
 		}
 
 		string configPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SimPe",
-		                                 "config.sims2.json");
+		                                 "config.sims1.json");
 		if (File.Exists(configPath))
 		{
 			try
 			{
 				string readAllTextAsync = await File.ReadAllTextAsync(configPath, Encoding.UTF8);
-				config = JsonSerializer.Deserialize<Sims2Config>(readAllTextAsync,
-				                                                 Options) ?? new Sims2Config();
+				config = JsonSerializer.Deserialize<Sims1Config>(readAllTextAsync,
+				                                                 Options) ?? new Sims1Config();
 			}
 			catch (JsonException)
 			{
@@ -63,7 +63,7 @@ public partial class Configuration : ObservableObject
 		}
 
 		string configPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SimPe",
-		                                 "config.sims2.json");
+		                                 "config.sims1.json");
 		try
 		{
 			await File.WriteAllTextAsync(configPath, JsonSerializer.Serialize(Config, Options), Encoding.UTF8);

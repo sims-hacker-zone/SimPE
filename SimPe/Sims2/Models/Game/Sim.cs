@@ -26,22 +26,25 @@ public partial class Sim(PackageFile neighborhoodFile, PackageFile characterFile
 
 	[ObservableProperty] private PackageFile neighborhoodFile = neighborhoodFile;
 
-	private Sdsc simDescription;
+	private Sdsc? simDescription;
 
 	public Sdsc SimDescription => simDescription ??=
-		NeighborhoodFile.FindFile(FileTypes.SDSC, 0xFFFFFFFF, 0, SimInstance).Wrapper.As<Sdsc>();
+		NeighborhoodFile.FindFile(FileTypes.SDSC, 0xFFFFFFFF, 0, SimInstance)?.Wrapper.As<Sdsc>();
 
 	public Cpf SimDNA => NeighborhoodFile.FindFile(FileTypes.SDNA, 0xFFFFFFFF, 0, SimInstance).Wrapper.As<Cpf>();
 
-	private Str nameResource;
+	private Str? nameResource;
 
 	public Str NameResource => nameResource ??= Enumerable
-		.FirstOrDefault<Resource.Resource>(CharacterFile.FindFiles(FileTypes.CTSS, 0xFFFFFFFF, 0, null)).Wrapper
-		.As<Str>();
+	                                            .FirstOrDefault<Resource.Resource>(
+		                                            CharacterFile.FindFiles(FileTypes.CTSS, 0xFFFFFFFF, 0, null))
+	                                            .Wrapper
+	                                            .As<Str>();
 
 	public Bitmap Portrait => Enumerable
-		.FirstOrDefault<Resource.Resource>(CharacterFile.FindFiles(FileTypes.IMG, 0xFFFFFFFF, 0, null),
-			x => x.Instance < 0x100)?.Wrapper.As<Picture>().Image;
+	                          .FirstOrDefault<Resource.Resource>(
+		                          CharacterFile.FindFiles(FileTypes.IMG, 0xFFFFFFFF, 0, null),
+		                          x => x.Instance < 0x100)?.Wrapper.As<Picture>().Image;
 
 	public string FirstName => NameResource[Languages.English, 0].Title;
 

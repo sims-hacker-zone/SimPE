@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:s1vc="using:SimPe.Sims1.Views.Configuration"
     xmlns:s2vc="using:SimPe.Sims2.Views.Configuration"
     Title="SimPE Configuration"
     d:DesignHeight="450"
@@ -14,6 +15,9 @@
             <Button Click="SaveConfig_Click">Save</Button>
         </StackPanel>
         <TabControl TabStripPlacement="Left">
+            <TabItem Header="Sims 1">
+                <s1vc:ConfigurationControl />
+            </TabItem>
             <TabItem Header="Sims 2">
                 <s2vc:ConfigurationControl />
             </TabItem>
